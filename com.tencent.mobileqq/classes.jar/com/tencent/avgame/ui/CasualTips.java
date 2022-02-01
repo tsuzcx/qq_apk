@@ -1,6 +1,6 @@
 package com.tencent.avgame.ui;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
@@ -80,7 +80,7 @@ public class CasualTips
         QLog.e("CasualTips", 2, "setNextTip mContext is null");
         return;
       }
-      int k = afur.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int k = agej.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       int m = localObject1.length;
       int i = 0;
       int j = 0;

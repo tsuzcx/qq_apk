@@ -4,7 +4,7 @@ import com.tencent.widget.ListView;
 import com.tencent.widget.XListView;
 
 public class ct
-  implements bkmq
+  implements blnt
 {
   public ct(PrinterActivity paramPrinterActivity) {}
   

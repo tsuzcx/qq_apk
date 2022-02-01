@@ -1,18 +1,18 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class adrz
-  implements DialogInterface.OnClickListener
+public class adrz
+  extends BroadcastReceiver
 {
-  public adrz(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, Map paramMap) {}
+  public adrz(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilMap);
+    QLog.d("AddAccountActivity", 1, "AutoLoginReceiver onReceive");
+    AddAccountActivity.a(this.a, true);
   }
 }
 

@@ -1,29 +1,23 @@
-public class avvg
+import java.io.File;
+import java.util.Comparator;
+
+final class avvg
+  implements Comparator<File>
 {
-  public static String a(int paramInt)
+  private int a(long paramLong1, long paramLong2)
   {
-    switch (paramInt)
-    {
-    default: 
-      return " Unknow playState ";
-    case 0: 
-      return " IDLE ";
-    case 1: 
-      return " BUFFERING ";
-    case 2: 
-      return " PLAYING ";
-    case 3: 
-      return " PAUSE ";
-    case 4: 
-      return " STOP ";
-    case 5: 
-      return " ERROR_INTERNAL ";
-    case 7: 
-      return " ERROR_FOCUS ";
-    case 6: 
-      return " NETWORK_INTERRUPT ";
+    if (paramLong1 < paramLong2) {
+      return -1;
     }
-    return " COMPLETION ";
+    if (paramLong1 == paramLong2) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public int a(File paramFile1, File paramFile2)
+  {
+    return a(paramFile1.lastModified(), paramFile2.lastModified());
   }
 }
 

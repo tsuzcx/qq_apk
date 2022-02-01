@@ -1,16 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class amps
-  implements MediaPlayer.OnErrorListener
+  implements View.OnClickListener
 {
-  amps(ampr paramampr) {}
+  amps(ampp paramampp, QQAppInterface paramQQAppInterface) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    QLog.e("CmGameAudioPlayer", 1, "what " + paramInt1 + " ext " + paramInt2);
-    return false;
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A327", "0X800A327", 0, 0, "", "", "", "");
+    ampp.a(this.jdField_a_of_type_Ampp);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

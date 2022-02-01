@@ -1,36 +1,16 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.richframework.part.extendsblock.HorizontalRvInnerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Comparator;
 
-public class zyt
-  extends zxx
+class zyt
+  implements Comparator<zyr>
 {
-  public zyt(HorizontalRvInnerView paramHorizontalRvInnerView) {}
+  zyt(zys paramzys) {}
   
-  public zys a(ViewGroup paramViewGroup, int paramInt)
+  public int a(zyr paramzyr1, zyr paramzyr2)
   {
-    if (HorizontalRvInnerView.a(this.a) != null) {
-      return HorizontalRvInnerView.a(this.a).a(paramViewGroup, paramInt);
+    if (paramzyr1.d > paramzyr2.d) {
+      return 1;
     }
-    return null;
-  }
-  
-  public int getItemCount()
-  {
-    if (HorizontalRvInnerView.a(this.a) != null) {
-      return HorizontalRvInnerView.a(this.a).a();
-    }
-    return 0;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((!bkfj.a(paramInt, this.mDataList)) && (HorizontalRvInnerView.a(this.a) != null)) {
-      HorizontalRvInnerView.a(this.a).a(paramViewHolder, paramInt);
-    }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+    return -1;
   }
 }
 

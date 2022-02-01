@@ -1,28 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class befc
-  implements View.OnClickListener
+class befc
+  implements DialogInterface.OnKeyListener
 {
-  public befc(TribeVideoPreviewFragment paramTribeVideoPreviewFragment, String paramString) {}
+  befc(beez parambeez) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    FragmentActivity localFragmentActivity = this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity();
-    if (localFragmentActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.jdField_a_of_type_JavaLangString);
+    if ((paramInt == 4) && (beez.a(this.a) != null)) {
+      beez.a(this.a).a();
     }
-    for (;;)
-    {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().app, "dc00899", "Grp_tribe", "", "post", "save_video", 0, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localFragmentActivity.requestPermissions(new befd(this), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
-    }
+    return paramInt == 4;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import bgxp;
+import bhxt;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,11 +8,11 @@ import java.util.Iterator;
 public class CustomOnlineStatusManager$1
   implements Runnable
 {
-  public CustomOnlineStatusManager$1(bgxp parambgxp) {}
+  public CustomOnlineStatusManager$1(bhxt parambhxt) {}
   
   public void run()
   {
-    Iterator localIterator = bgxp.a(this.this$0).iterator();
+    Iterator localIterator = bhxt.a(this.this$0).iterator();
     while (localIterator.hasNext())
     {
       Runnable localRunnable = (Runnable)((WeakReference)localIterator.next()).get();

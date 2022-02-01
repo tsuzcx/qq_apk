@@ -1,277 +1,136 @@
-import android.util.SparseArray;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Set;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Pair;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class avdf
-  implements URLDrawable.DownloadListener
+  extends RecyclerView.Adapter<avdi>
 {
-  int jdField_a_of_type_Int = 1;
-  SparseArray<URLDrawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private HotPicPageView jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private LinkedList<URLDrawable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
-  boolean jdField_a_of_type_Boolean = false;
-  volatile int jdField_b_of_type_Int = 0;
-  boolean jdField_b_of_type_Boolean = false;
+  float jdField_a_of_type_Float = 1.0F;
+  Context jdField_a_of_type_AndroidContentContext;
+  aoof jdField_a_of_type_Aoof;
+  List<Pair<String, String>> jdField_a_of_type_JavaUtilList;
   
-  public avdf(HotPicPageView paramHotPicPageView)
+  public avdf(Context paramContext, aoof paramaoof, float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView = paramHotPicPageView;
-    if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_b_of_type_Int == 0)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Aoof = paramaoof;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public avdi a(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (paramInt == avdb.b)
     {
-      b(true);
-      return;
+      paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
+      int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297057);
+      paramInt = i;
+      if (this.jdField_a_of_type_Float != 0.0F) {
+        paramInt = (int)(i / this.jdField_a_of_type_Float);
+      }
+      paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, paramInt));
+      return new avdi(paramViewGroup);
     }
-    b(false);
-  }
-  
-  /* Error */
-  private void c()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 29	avdf:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: monitorenter
-    //   9: aload_0
-    //   10: aload_0
-    //   11: getfield 46	avdf:jdField_b_of_type_Int	I
-    //   14: iconst_1
-    //   15: isub
-    //   16: putfield 46	avdf:jdField_b_of_type_Int	I
-    //   19: aload_0
-    //   20: getfield 46	avdf:jdField_b_of_type_Int	I
-    //   23: aload_0
-    //   24: getfield 27	avdf:jdField_a_of_type_Int	I
-    //   27: if_icmpge +88 -> 115
-    //   30: aload_0
-    //   31: getfield 34	avdf:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   34: invokevirtual 62	java/util/LinkedList:size	()I
-    //   37: ifle +78 -> 115
-    //   40: aload_0
-    //   41: getfield 34	avdf:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   44: invokevirtual 66	java/util/LinkedList:removeFirst	()Ljava/lang/Object;
-    //   47: checkcast 68	com/tencent/image/URLDrawable
-    //   50: astore_2
-    //   51: aload_2
-    //   52: invokevirtual 71	com/tencent/image/URLDrawable:getStatus	()I
-    //   55: iconst_1
-    //   56: if_icmpeq -37 -> 19
-    //   59: aload_2
-    //   60: invokevirtual 71	com/tencent/image/URLDrawable:getStatus	()I
-    //   63: iconst_2
-    //   64: if_icmpne +94 -> 158
-    //   67: aload_2
-    //   68: invokevirtual 74	com/tencent/image/URLDrawable:restartDownload	()V
-    //   71: aload_0
-    //   72: aload_0
-    //   73: getfield 46	avdf:jdField_b_of_type_Int	I
-    //   76: iconst_1
-    //   77: iadd
-    //   78: putfield 46	avdf:jdField_b_of_type_Int	I
-    //   81: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   84: ifeq +31 -> 115
-    //   87: ldc 82
-    //   89: iconst_2
-    //   90: new 84	java/lang/StringBuilder
-    //   93: dup
-    //   94: invokespecial 85	java/lang/StringBuilder:<init>	()V
-    //   97: ldc 87
-    //   99: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: aload_0
-    //   103: getfield 46	avdf:jdField_b_of_type_Int	I
-    //   106: invokevirtual 94	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   109: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   112: invokestatic 102	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   115: aload_0
-    //   116: getfield 46	avdf:jdField_b_of_type_Int	I
-    //   119: ifne +34 -> 153
-    //   122: aload_0
-    //   123: getfield 34	avdf:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   126: invokevirtual 62	java/util/LinkedList:size	()I
-    //   129: ifne +24 -> 153
-    //   132: aload_0
-    //   133: getfield 50	avdf:jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView	Lcom/tencent/mobileqq/hotpic/HotPicPageView;
-    //   136: ifnull +17 -> 153
-    //   139: aload_0
-    //   140: getfield 25	avdf:jdField_a_of_type_Boolean	Z
-    //   143: ifeq +10 -> 153
-    //   146: aload_0
-    //   147: getfield 50	avdf:jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView	Lcom/tencent/mobileqq/hotpic/HotPicPageView;
-    //   150: invokevirtual 105	com/tencent/mobileqq/hotpic/HotPicPageView:m	()V
-    //   153: aload_1
-    //   154: monitorexit
-    //   155: aload_0
-    //   156: monitorexit
-    //   157: return
-    //   158: aload_2
-    //   159: invokevirtual 108	com/tencent/image/URLDrawable:startDownload	()V
-    //   162: aload_0
-    //   163: aload_0
-    //   164: getfield 46	avdf:jdField_b_of_type_Int	I
-    //   167: iconst_1
-    //   168: iadd
-    //   169: putfield 46	avdf:jdField_b_of_type_Int	I
-    //   172: goto -57 -> 115
-    //   175: astore_2
-    //   176: aload_1
-    //   177: monitorexit
-    //   178: aload_2
-    //   179: athrow
-    //   180: astore_1
-    //   181: aload_0
-    //   182: monitorexit
-    //   183: aload_1
-    //   184: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	185	0	this	avdf
-    //   180	4	1	localObject2	Object
-    //   50	109	2	localURLDrawable	URLDrawable
-    //   175	4	2	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   9	19	175	finally
-    //   19	115	175	finally
-    //   115	153	175	finally
-    //   153	155	175	finally
-    //   158	172	175	finally
-    //   176	178	175	finally
-    //   2	9	180	finally
-    //   178	180	180	finally
-  }
-  
-  public void a()
-  {
-    try
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559178, paramViewGroup, false);
+    if ((this.jdField_a_of_type_Float != 0.0F) && (paramViewGroup != null))
     {
-      c();
-      return;
+      Object localObject1 = paramViewGroup.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject1).height = agej.a(80.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
+      paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      localObject1 = (ImageView)paramViewGroup.findViewById(2131368580);
+      Object localObject2;
+      if (localObject1 != null)
+      {
+        localObject2 = ((ImageView)localObject1).getLayoutParams();
+        if (localObject2 != null)
+        {
+          paramInt = agej.a(40.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
+          ((ViewGroup.LayoutParams)localObject2).width = paramInt;
+          ((ViewGroup.LayoutParams)localObject2).height = paramInt;
+          ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        }
+      }
+      localObject1 = (TextView)paramViewGroup.findViewById(2131380309);
+      if (localObject1 != null)
+      {
+        ((TextView)localObject1).setTextSize(2, (int)(10.0D / this.jdField_a_of_type_Float));
+        localObject2 = (ViewGroup.MarginLayoutParams)((TextView)localObject1).getLayoutParams();
+        ((ViewGroup.MarginLayoutParams)localObject2).setMargins((int)(((ViewGroup.MarginLayoutParams)localObject2).leftMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).topMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).rightMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).bottomMargin / this.jdField_a_of_type_Float));
+        ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      }
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return new avdh(paramViewGroup);
   }
   
-  public void a(int paramInt, URLDrawable paramURLDrawable)
+  public void a(avdi paramavdi, int paramInt)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramURLDrawable);
-    paramURLDrawable.startDownload();
-    a(paramURLDrawable, paramInt);
-  }
-  
-  public void a(URLDrawable paramURLDrawable, int paramInt)
-  {
+    if (paramavdi.a == avdb.b) {}
     for (;;)
     {
-      try
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramavdi, paramInt, getItemId(paramInt));
+      return;
+      if (paramavdi.a == avdb.a)
       {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
-        {
-          if (this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt))) {
-            return;
-          }
-          this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
-          paramURLDrawable.setDownloadListener(this);
-          if (this.jdField_b_of_type_Int < this.jdField_a_of_type_Int) {
-            break label154;
-          }
-          if (!this.jdField_a_of_type_JavaUtilLinkedList.contains(paramURLDrawable))
-          {
-            paramURLDrawable.setAutoDownload(false);
-            this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramURLDrawable);
-            int i = this.jdField_a_of_type_JavaUtilLinkedList.size();
-            if (!this.jdField_b_of_type_Boolean) {
-              break label148;
-            }
-            paramInt = 20;
-            if (i > paramInt)
-            {
-              paramURLDrawable = (URLDrawable)this.jdField_a_of_type_JavaUtilLinkedList.removeLast();
-              paramURLDrawable.setAutoDownload(true);
-              paramURLDrawable.setDownloadListener(null);
-            }
-          }
+        int i = paramInt - 1;
+        if (i < 0) {
+          QLog.e("ForwardTroopMemberControllerForMiniPie", 2, "type normal in wrong index");
         }
-        paramInt = 15;
-      }
-      finally {}
-      label148:
-      continue;
-      label154:
-      if (paramURLDrawable.getStatus() == 2) {
-        paramURLDrawable.restartDownload();
-      }
-      this.jdField_b_of_type_Int += 1;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b()
-  {
-    int i = 0;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-      if (localIterator.hasNext()) {
-        ((URLDrawable)localIterator.next()).setDownloadListener(null);
+        Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(i);
+        if ((paramavdi instanceof avdh)) {
+          ((avdh)paramavdi).a((String)localPair.first, (String)localPair.second, this.jdField_a_of_type_Aoof);
+        }
       }
     }
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
-    {
-      ((URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(0)).setDownloadListener(null);
-      i += 1;
+  }
+  
+  public void a(List<Pair<String, String>> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return;
     }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
   }
   
-  public void b(boolean paramBoolean)
+  public int getItemCount()
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (int i = 3;; i = 4)
-      {
-        this.jdField_a_of_type_Int = i;
-        return;
-      }
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return 0;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 1;
+    return this.jdField_a_of_type_JavaUtilList.size() + 1;
   }
   
-  public void onFileDownloadFailed(int paramInt)
+  public int getItemViewType(int paramInt)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-    this.jdField_a_of_type_JavaUtilSet.remove(Integer.valueOf(paramInt));
-    c();
+    if (paramInt == 0) {
+      return avdb.b;
+    }
+    return avdb.a;
   }
   
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
   {
-    int i = (int)paramLong;
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
-    this.jdField_a_of_type_JavaUtilSet.remove(Integer.valueOf(i));
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.b(i);
-    c();
+    super.onAttachedToRecyclerView(paramRecyclerView);
+    paramRecyclerView = paramRecyclerView.getLayoutManager();
+    if ((paramRecyclerView instanceof GridLayoutManager)) {
+      ((GridLayoutManager)paramRecyclerView).setSpanSizeLookup(new avdg(this));
+    }
   }
 }
 

@@ -1,24 +1,30 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-public class xoh
+class xoh
+  extends wpz
 {
-  whl jdField_a_of_type_Whl;
+  xoh(xof paramxof) {}
   
-  private xoh(VideoViewVideoHolder paramVideoViewVideoHolder) {}
-  
-  public whl a()
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    if (this.jdField_a_of_type_Whl == null) {
-      this.jdField_a_of_type_Whl = new whl();
+    yuk.a("Q.qqstory.player.CommentFloatDialog", "post comment result is %s.", Boolean.valueOf(paramBoolean));
+    if (!xoa.b(this.a.a)) {
+      xoa.a(this.a.a).p();
     }
-    return this.jdField_a_of_type_Whl;
   }
   
-  public void a()
+  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
   {
-    if (this.jdField_a_of_type_Whl != null) {
-      this.jdField_a_of_type_Whl.a();
-    }
+    wse localwse = (wse)wth.a(17);
+    localwse.a(paramCommentEntry.commentId);
+    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
+    paramCommentEntry.status = 0;
+    localwse.a(paramCommentEntry);
+    return true;
   }
 }
 

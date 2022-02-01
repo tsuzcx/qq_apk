@@ -1,13 +1,12 @@
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
-
-public class bqhl
+class bqhl
+  implements zto
 {
-  public int a;
-  public int b = 0;
+  bqhl(bqhk parambqhk) {}
   
-  public bqhl(SVHwEncoder.HwEncode paramHwEncode)
+  public void a()
   {
-    this.jdField_a_of_type_Int = 0;
+    bqho localbqho = bqhk.a(this.a);
+    bqhk.a(this.a, bqhk.a(this.a)).a(localbqho);
   }
 }
 

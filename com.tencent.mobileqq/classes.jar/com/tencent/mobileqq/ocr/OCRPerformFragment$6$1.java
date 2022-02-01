@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ocr;
 
-import auqr;
-import ayfh;
+import avir;
+import ayya;
 
 public class OCRPerformFragment$6$1
   implements Runnable
 {
-  public OCRPerformFragment$6$1(ayfh paramayfh, boolean paramBoolean, auqr paramauqr) {}
+  public OCRPerformFragment$6$1(ayya paramayya, boolean paramBoolean, avir paramavir) {}
   
   public void run()
   {
-    OCRPerformFragment.a(this.jdField_a_of_type_Ayfh.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Auqr.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Auqr.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_Auqr);
+    OCRPerformFragment.a(this.jdField_a_of_type_Ayya.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Avir.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Avir.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_Avir);
   }
 }
 

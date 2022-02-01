@@ -1,31 +1,40 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.TransElem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
 
 public class aczk
-  extends aczg
 {
-  public int a()
+  private static int a = 3600;
+  
+  public static void a(int paramInt)
   {
-    return 1000;
+    if ((paramInt >= 0) && (a != paramInt)) {
+      a = paramInt;
+    }
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2)
   {
-    new bbzc().a(paramList, paramList1, paramStringBuilder, paramMsg);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return paramElem.trans_elem_info.has();
+    if ("doOnReconnect".equals(paramString2))
+    {
+      if (a > 0)
+      {
+        long l1 = PatchSharedPreUtil.getLastTimePullPatchReconnect(BaseApplicationImpl.sApplication);
+        long l2 = System.currentTimeMillis();
+        if (Math.abs(l2 - l1) > a * 1000L)
+        {
+          arry.a(paramQQAppInterface, paramString1, paramInt, paramString2);
+          PatchSharedPreUtil.updateLastTimePullPatchReconnect(BaseApplicationImpl.sApplication, l2);
+        }
+      }
+      return;
+    }
+    arry.a(paramQQAppInterface, paramString1, paramInt, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aczk
  * JD-Core Version:    0.7.0.1
  */

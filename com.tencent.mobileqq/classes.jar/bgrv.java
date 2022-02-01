@@ -1,13 +1,15 @@
-import android.os.Build.VERSION;
-
-public final class bgrv
+public class bgrv
+  implements bgru
 {
-  public static int a()
+  public boolean a(bfrs parambfrs)
   {
-    if (Build.VERSION.SDK_INT > 10) {
-      return 4;
+    if (parambfrs.b) {
+      return false;
     }
-    return 0;
+    switch (parambfrs.e)
+    {
+    }
+    return true;
   }
 }
 

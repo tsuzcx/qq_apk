@@ -1,88 +1,91 @@
+import android.content.Context;
+import android.content.MutableContextWrapper;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.biz.widgets.TabLayout;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebview;
+import com.tencent.biz.ui.TouchWebView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONException;
+import java.util.HashMap;
 
-class ogm
-  extends pmn
+public class ogm
 {
-  ogm(ogh paramogh) {}
+  private static volatile ogm jdField_a_of_type_Ogm;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private HashMap<String, EcshopWebview> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   
-  public void a(float paramFloat, int paramInt)
+  public static ogm a()
   {
-    super.a(paramFloat, paramInt);
-    paramFloat /= paramInt;
-    ogh.a(this.a).setY((1.0F - paramFloat) * ogh.a(this.a).getHeight() * 0.03F);
-  }
-  
-  public void a(TabChannelCoverInfo paramTabChannelCoverInfo)
-  {
-    super.a(paramTabChannelCoverInfo);
-    if (paramTabChannelCoverInfo != null)
-    {
-      QLog.d("ReadInJoyChannelViewPagerController", 2, new Object[] { "onChannelTabSelected, channelID = ", Integer.valueOf(paramTabChannelCoverInfo.mChannelCoverId), ", channelName = ", paramTabChannelCoverInfo.mChannelCoverName });
-      ogh.a(paramTabChannelCoverInfo.mChannelCoverId, 1);
-      this.a.c(paramTabChannelCoverInfo.mChannelCoverId);
-      ogh.a(this.a);
-      if (bmqa.A())
-      {
-        ogh.b(this.a, paramTabChannelCoverInfo);
-        ogh.b(this.a, ogh.a(this.a, ogh.a(this.a)));
-      }
-    }
+    if (jdField_a_of_type_Ogm == null) {}
     try
     {
-      ogh.a("0X8009B94", "", new phi().a("source", "303").a(paramTabChannelCoverInfo.mChannelCoverId).b("style", 0).a());
-      return;
-    }
-    catch (JSONException paramTabChannelCoverInfo)
-    {
-      QLog.d("ReadInJoyChannelViewPagerController", 2, "report click channel bar exception, e = ", paramTabChannelCoverInfo);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    super.a(paramBoolean1, paramInt, paramList, paramBoolean2);
-    paramInt = this.a.b();
-    ogh.a(this.a, paramInt);
-    ogh.a(this.a).a();
-  }
-  
-  public void a(boolean paramBoolean, List<TabChannelCoverInfo> paramList)
-  {
-    int i = 0;
-    if (paramList != null) {
-      i = paramList.size();
-    }
-    QLog.d("ReadInJoyChannelViewPagerController", 2, new Object[] { "onIndependentMainChannelListupdate, success = ", Boolean.valueOf(paramBoolean), ", size = ", Integer.valueOf(i) });
-    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0)) {
-      ogh.a(this.a, paramList);
-    }
-  }
-  
-  public void as_()
-  {
-    super.as_();
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    int i = 8;
-    ogh.a(this.a, paramBoolean);
-    if (!pih.a())
-    {
-      ImageView localImageView = ogh.a(this.a);
-      if (paramBoolean) {
-        i = 0;
+      if (jdField_a_of_type_Ogm == null) {
+        jdField_a_of_type_Ogm = new ogm();
       }
-      localImageView.setVisibility(i);
-      return;
+      return jdField_a_of_type_Ogm;
     }
-    ogh.a(this.a).setVisibility(8);
+    finally {}
+  }
+  
+  public EcshopWebview a(Context paramContext, String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        synchronized (this.jdField_a_of_type_ArrayOfByte)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("Ecshop_EcshopWebviewPool", 2, "【getWebView】= " + this.jdField_a_of_type_JavaUtilHashMap.size() + " preLoadUrl: " + paramString);
+          }
+          if (this.jdField_a_of_type_JavaUtilHashMap.size() > 0)
+          {
+            localObject = (EcshopWebview)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+            if (localObject != null)
+            {
+              paramString = (ViewGroup)((EcshopWebview)localObject).getParent();
+              if (paramString != null) {
+                paramString.removeView((View)localObject);
+              }
+              ((MutableContextWrapper)((EcshopWebview)localObject).getContext()).setBaseContext(paramContext);
+              return localObject;
+            }
+          }
+          else
+          {
+            EcshopWebview localEcshopWebview = EcshopWebview.a(paramContext);
+            localObject = localEcshopWebview;
+            if (bhsr.a(paramString)) {
+              continue;
+            }
+            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localEcshopWebview);
+            localObject = localEcshopWebview;
+          }
+        }
+        Object localObject = EcshopWebview.a(paramContext);
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("Ecshop_EcshopWebviewPool", 1, QLog.getStackTraceString(paramString));
+        return EcshopWebview.a(paramContext);
+      }
+    }
+  }
+  
+  public void a(TouchWebView paramTouchWebView, String paramString)
+  {
+    QLog.i("Ecshop_EcshopWebviewPool", 2, "ecshop recycleWebView  ");
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (!bhsr.a(paramString)) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString));
   }
 }
 

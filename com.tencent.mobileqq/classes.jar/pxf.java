@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x977.oidb_cmd0x977.FollowStatusInfo;
-import tencent.im.oidb.cmd0x977.oidb_cmd0x977.KdUserInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class pxf
-  implements riy<oidb_cmd0x977.FollowStatusInfo, rfi>
+  implements View.OnClickListener
 {
-  pxf(pxd parampxd) {}
+  pxf(pxe parampxe, Container paramContainer, ppu paramppu, int paramInt) {}
   
-  public rfi a(oidb_cmd0x977.FollowStatusInfo paramFollowStatusInfo)
+  public void onClick(View paramView)
   {
-    return new rfi(Long.valueOf(paramFollowStatusInfo.uint64_uin.get()), Integer.valueOf(paramFollowStatusInfo.enum_account_type.get()), paramFollowStatusInfo.user_info.bytes_nick.get().toStringUtf8(), paramFollowStatusInfo.user_info.bytes_qq_head_url.get().toStringUtf8());
+    pxe.a(this.jdField_a_of_type_Pxe, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Ppu, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("PgcProteusItem", 2, "click bottom bar for jumping to gallery articleinfo = " + this.jdField_a_of_type_Ppu.a() + " position = " + this.jdField_a_of_type_Int);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,39 +1,33 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-
 class ajjs
-  implements bkhe
+  extends blpy
 {
-  ajjs(ajjr paramajjr) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  ajjs(ajjr paramajjr, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("contacts.RecommendsAdapter", 2, "onScrollStateChanged firstVisibleItem: " + paramInt1 + " visibleItemCount: " + paramInt2 + " totalItemCount: " + paramInt3);
-    }
-    if ((paramInt1 >= 1) && (paramInt1 - 1 >= 0) && (paramInt1 - 1 < this.a.getCount()))
-    {
-      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 - 1);
-      if (paramAbsListView != null) {
-        this.a.a.b(paramAbsListView, 20, 0, 1);
-      }
-    }
-    if ((paramInt1 + paramInt2 < paramInt3) && (paramInt1 + paramInt2 >= 0) && (paramInt1 + paramInt2 < this.a.getCount()))
-    {
-      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 + paramInt2);
-      if (paramAbsListView != null) {
-        this.a.a.b(paramAbsListView, 20, 0, 1);
-      }
-    }
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(int paramInt, Object paramObject, blpx[] paramArrayOfblpx)
   {
-    if (paramInt != 0) {
+    paramInt = 1;
+    if ((paramArrayOfblpx == null) || (paramArrayOfblpx.length <= 0)) {}
+    for (;;)
+    {
       return;
+      int i = this.a.a();
+      if ((paramArrayOfblpx.length < 0) && ((i & 0xF) == 1))
+      {
+        paramArrayOfblpx[0].b = 0;
+        paramArrayOfblpx[0].a = 0;
+      }
+      while (paramInt < paramArrayOfblpx.length)
+      {
+        paramArrayOfblpx[paramInt].b = -1;
+        paramArrayOfblpx[paramInt].a = -1;
+        paramInt += 1;
+        continue;
+        paramInt = 0;
+      }
     }
-    this.a.e();
   }
 }
 

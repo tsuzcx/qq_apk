@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ae.AEPituCameraUnit.13;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.plugin.PluginRecord;
 
-public class bndz
-  implements View.OnClickListener
+public final class bndz
+  implements Parcelable.Creator<PluginRecord>
 {
-  public bndz(AEPituCameraUnit.13 param13) {}
-  
-  public void onClick(View paramView)
+  public PluginRecord a(Parcel paramParcel)
   {
-    if (bndy.a(this.a.this$0) != null) {
-      bndy.a(this.a.this$0).f();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new PluginRecord(paramParcel);
+  }
+  
+  public PluginRecord[] a(int paramInt)
+  {
+    return new PluginRecord[paramInt];
   }
 }
 

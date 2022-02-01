@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atei;
-import atej;
+import atwc;
+import atwd;
 
 public class MMApkFileSafeChecker$CheckTask$1$1
   implements Runnable
 {
-  public MMApkFileSafeChecker$CheckTask$1$1(atej paramatej) {}
+  public MMApkFileSafeChecker$CheckTask$1$1(atwd paramatwd) {}
   
   public void run()
   {

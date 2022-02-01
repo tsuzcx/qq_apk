@@ -1,18 +1,6 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
-
-public class stz
-  extends View.AccessibilityDelegate
+public abstract interface stz
 {
-  public stz(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
-  
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    if (paramInt != 4096) {
-      super.sendAccessibilityEvent(paramView, paramInt);
-    }
-  }
+  public abstract void a();
 }
 
 

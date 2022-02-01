@@ -1,56 +1,35 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.widget.ImageView;
-import dov.com.qq.im.ae.mode.AECaptureMode;
-import dov.com.qq.im.ae.mode.AECaptureModeSelectPager;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.ar.util.VipARUtils.3;
 
-class bnut
-  implements Observer<bnuq>
+public class bnut
+  implements ModuleDownloadListener
 {
-  bnut(bnur parambnur) {}
+  public bnut(VipARUtils.3 param3) {}
   
-  public void a(@Nullable bnuq parambnuq)
+  public void onDownloadCanceled(String paramString)
   {
-    boolean bool = false;
-    if (parambnuq == null) {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("vip_tar_engine.jar")) {
       return;
     }
-    parambnuq = parambnuq.b;
-    bnur.a(this.a, parambnuq);
-    if (parambnuq != AECaptureMode.NORMAL) {
-      bnur.a(this.a).a(196616, new Object[0]);
-    }
-    int i;
-    if (bnur.a(this.a) != null)
-    {
-      i = 0;
-      if (i < bnur.a(this.a).length) {
-        if (parambnuq != bnur.a(this.a)[i]) {}
-      }
-    }
-    for (;;)
-    {
-      if (i != -1) {
-        bnur.a(this.a).setCurrentItem(i, true);
-      }
-      bnur localbnur = this.a;
-      if (parambnuq == AECaptureMode.GIF) {
-        bool = true;
-      }
-      bnur.a(localbnur, bool);
-      bnur.a(this.a).notifyDataSetChanged();
-      parambnuq = bnur.a(this.a);
-      if (bnur.a(this.a)) {}
-      for (i = 2130837610;; i = 2130837611)
-      {
-        parambnuq.setImageResource(i);
-        return;
-        i += 1;
-        break;
-      }
-      i = -1;
-    }
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bnuq.a(), " onDownloadSucceed = ", bnuq.b() });
+    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bnuq.b());
   }
 }
 

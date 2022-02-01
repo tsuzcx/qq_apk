@@ -1,44 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.open.agent.AuthorityControlFragment;
-import com.tencent.widget.ListView;
-
-public class bijs
-  implements bkmq
+class bijs
+  implements bike
 {
-  public bijs(AuthorityControlFragment paramAuthorityControlFragment) {}
+  bijs(bijq parambijq) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
-  {
-    if (paramInt == 0) {
-      AuthorityControlFragment.a(this.a).c(0L);
-    }
-  }
+  public void a(int paramInt, String paramString) {}
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public void a(bijv parambijv)
   {
-    if (paramInt == 0)
+    if (parambijv.a)
     {
-      AuthorityControlFragment.a(this.a).a(0L);
-      AuthorityControlFragment.a(this.a, (biya)AuthorityControlFragment.a(this.a).a(151));
-      AuthorityControlFragment.a(this.a).a();
-      AuthorityControlFragment.a(this.a).notifyDataSetChanged();
-    }
-    return true;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    if (paramInt == 0) {
-      AuthorityControlFragment.a(this.a).b(0L);
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView)
-  {
-    if (paramInt == 0) {
-      AuthorityControlFragment.a(this.a).c(0L);
+      bijq.a(this.a, parambijv);
+      bijq.a(this.a);
     }
   }
 }

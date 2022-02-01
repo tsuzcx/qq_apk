@@ -1,37 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public class aati
-  implements View.OnClickListener
+class aati
+  extends aaty
 {
-  public aati(TroopGiftPanel paramTroopGiftPanel, aasl paramaasl, aasq paramaasq, DiniFlyAnimationView paramDiniFlyAnimationView) {}
-  
-  public void onClick(View paramView)
+  aati(aatd paramaatd, aatl paramaatl, String paramString)
   {
-    String str1 = this.jdField_a_of_type_Aasl.b;
-    String str2 = this.jdField_a_of_type_Aasq.jdField_a_of_type_JavaLangString;
-    float f = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getProgress();
-    Iterator localIterator = this.jdField_a_of_type_Aasl.a.iterator();
-    while (localIterator.hasNext())
+    super(paramaatd);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
     {
-      aask localaask = (aask)localIterator.next();
-      if ((f >= localaask.jdField_a_of_type_Float) && (f < localaask.b))
-      {
-        str1 = localaask.d;
-        str2 = localaask.jdField_a_of_type_JavaLangString;
-      }
+      QLog.d(".troop.VideoCombineHelper", 2, "splitVideoUnit end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "splitVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Aatd.a));
+      this.jdField_a_of_type_Aatd.a = System.currentTimeMillis();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(str1);
-      bcst.b(null, "dc00899", "grp_lbs", "", "qq_gift", "aio_top_click", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", "", str2);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Aatl.a(this.jdField_a_of_type_JavaLangString, false, "splitVideo done.");
     }
   }
 }

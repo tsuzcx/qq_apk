@@ -1,30 +1,39 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.view.DragFrameLayout;
 
 public class nvq
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements nxb
 {
-  public nvq(VideoCoverView paramVideoCoverView) {}
+  public nvq(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverView", 2, "is prepare");
-    }
-    if (VideoCoverView.a(this.a) == 1) {
-      com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.jdField_a_of_type_Long = System.currentTimeMillis();
-    }
-    bcst.a(null, "dc00898", "", VideoCoverView.a(this.a).a.jdField_a_of_type_JavaLangString, "0X8008F64", "0X8008F64", 0, 0, VideoCoverView.a(this.a).a.c, "", this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a).a.b);
-    nuv.a().b(this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a));
-    this.a.jdField_a_of_type_Long = VideoCoverView.a(this.a).getDuration();
-    if ((this.a.jdField_a_of_type_Int == 3) || (this.a.jdField_a_of_type_Int == 4))
+    if (paramInt1 - paramInt3 > bhgr.a(this.a, 60.0F))
     {
-      VideoCoverView.a(this.a).start();
-      this.a.jdField_a_of_type_Int = 4;
-      this.a.g();
+      PublicAccountAdvertisementActivity.a(this.a);
+      PublicAccountAdvertisementActivity.b(this.a);
+      this.a.finish();
+      return;
     }
+    PublicAccountAdvertisementActivity.a(this.a).a();
+  }
+  
+  public boolean a()
+  {
+    return (!PublicAccountAdvertisementActivity.a(this.a)) && (!PublicAccountAdvertisementActivity.b(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

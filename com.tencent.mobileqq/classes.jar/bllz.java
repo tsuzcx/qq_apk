@@ -1,106 +1,53 @@
-import com.qq.jce.wup.BasicClassTypeUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.PluginStatic;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import mqq.app.AppRuntime;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.GestureSelectGridView;
 
 public class bllz
+  implements blih
 {
-  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  public bllz(GestureSelectGridView paramGestureSelectGridView) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramBaseApplicationImpl == null) || (paramString == null))
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQIndividuality", 2, "QQIndividualityRuntime() application == null || processName == null");
+      int i = paramInt1 + paramInt2;
+      if ((!this.a.jdField_b_of_type_Boolean) || (Math.abs(i - this.a.c) < 3) || (Math.abs(i - this.a.c) > 5)) {
+        break label161;
       }
-      return null;
+      if (this.a.c + 3 <= paramInt3 - 1) {
+        break label140;
+      }
+      this.a.c = (paramInt3 - 1);
+      this.a.jdField_a_of_type_Blma.a(this.a.jdField_b_of_type_Int, this.a.c);
     }
-    try
-    {
-      Class localClass1 = Class.forName("com.qqindividuality.application.QQIndividualityRuntime");
-      if (localClass1 != null) {}
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
+    label140:
+    GestureSelectGridView localGestureSelectGridView;
+    label161:
+    while ((this.a.jdField_b_of_type_Boolean) || (Math.abs(paramInt1 - this.a.c) < 3) || (Math.abs(paramInt1 - this.a.c) > 5)) {
       for (;;)
       {
-        try
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("QQIndividuality", 2, "QQIndividualityRuntime() cls == null");
+        if (this.a.jdField_a_of_type_Blih != null) {
+          this.a.jdField_a_of_type_Blih.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
         }
-        catch (ClassNotFoundException paramBaseApplicationImpl)
-        {
-          ClassLoader localClassLoader;
-          paramBaseApplicationImpl.printStackTrace();
-        }
-        localClassNotFoundException = localClassNotFoundException;
-        localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "qqindividuality_plugin.apk");
-        Class localClass2 = localClassLoader.loadClass("com.qqindividuality.application.QQIndividualityRuntime");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
-        continue;
-        do
-        {
-          return null;
-          if (QLog.isColorLevel()) {
-            QLog.d("QQIndividuality", 2, "QQIndividualityRuntime() 1 ");
-          }
-          paramBaseApplicationImpl = localClass2.getDeclaredConstructor(new Class[] { BaseApplicationImpl.class, String.class }).newInstance(new Object[] { paramBaseApplicationImpl, paramString });
-        } while (!(paramBaseApplicationImpl instanceof AppRuntime));
-        if (QLog.isColorLevel()) {
-          QLog.d("QQIndividuality", 2, "QQIndividualityRuntime() succ");
-        }
-        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-        return paramBaseApplicationImpl;
+        return;
+        localGestureSelectGridView = this.a;
+        localGestureSelectGridView.c += 3;
       }
     }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
+    if (this.a.c - 3 < 0) {}
+    for (this.a.c = 0;; localGestureSelectGridView.c -= 3)
     {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
+      this.a.jdField_a_of_type_Blma.a(this.a.jdField_b_of_type_Int, this.a.c);
+      break;
+      localGestureSelectGridView = this.a;
     }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (this.a.jdField_a_of_type_Blih != null) {
+      this.a.jdField_a_of_type_Blih.onScrollStateChanged(paramAbsListView, paramInt);
     }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    return null;
   }
 }
 

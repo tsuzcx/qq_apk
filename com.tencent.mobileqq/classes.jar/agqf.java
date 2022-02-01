@@ -1,23 +1,16 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import java.util.Comparator;
 
-class agqf
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class agqf
+  implements Comparator
 {
-  agqf(agqe paramagqe1, agqe paramagqe2) {}
+  public agqf(LoadDataJob paramLoadDataJob) {}
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    if (paramBitmap != null)
-    {
-      this.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    paramObject1 = (agqr)paramObject1;
+    paramObject2 = (agqr)paramObject2;
+    return paramObject1.a - paramObject2.a;
   }
 }
 

@@ -5,43 +5,43 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import sxy;
-import tba;
+import sou;
+import srw;
 
 public class BaseData
   implements Parcelable
 {
-  public static final Parcelable.Creator<BaseData> CREATOR = new sxy();
+  public static final Parcelable.Creator<BaseData> CREATOR = new sou();
   public final float a;
   public FastWebArticleInfo a;
   public float b;
   public ArticleInfo b;
-  public boolean f;
-  public final int t;
-  public int u = -1;
-  public int v = -1;
+  public boolean d;
+  public final int r;
+  public int s = -1;
+  public int t = -1;
   
   public BaseData(int paramInt)
   {
     this.jdField_b_of_type_Float = -1000.0F;
-    this.t = paramInt;
+    this.r = paramInt;
     this.jdField_a_of_type_Float = a(this);
   }
   
   public BaseData(Parcel paramParcel)
   {
     this.jdField_b_of_type_Float = -1000.0F;
-    this.t = paramParcel.readInt();
+    this.r = paramParcel.readInt();
     this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = ((ArticleInfo)paramParcel.readParcelable(ArticleInfo.class.getClassLoader()));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo = ((FastWebArticleInfo)paramParcel.readParcelable(FastWebArticleInfo.class.getClassLoader()));
     this.jdField_a_of_type_Float = paramParcel.readFloat();
-    this.u = paramParcel.readInt();
-    this.v = paramParcel.readInt();
+    this.s = paramParcel.readInt();
+    this.t = paramParcel.readInt();
   }
   
   public static float a(BaseData paramBaseData)
   {
-    switch (paramBaseData.t)
+    switch (paramBaseData.r)
     {
     }
     do
@@ -52,8 +52,8 @@ public class BaseData
       return 2.0F;
       return 3.0F;
       return paramBaseData.jdField_b_of_type_Float;
-      return tba.a(paramBaseData, false);
-      return tba.a(paramBaseData, true);
+      return srw.a(paramBaseData, false);
+      return srw.a(paramBaseData, true);
       return 9.0F;
       return 10.0F;
       return 11.0F;
@@ -77,12 +77,12 @@ public class BaseData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.t);
+    paramParcel.writeInt(this.r);
     paramParcel.writeParcelable(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0);
     paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo, 0);
     paramParcel.writeFloat(this.jdField_a_of_type_Float);
-    paramParcel.writeInt(this.u);
-    paramParcel.writeInt(this.v);
+    paramParcel.writeInt(this.s);
+    paramParcel.writeInt(this.t);
   }
 }
 

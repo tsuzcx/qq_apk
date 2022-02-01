@@ -75,19 +75,19 @@ public class ProcessStats
       {
         if (paramBoolean)
         {
-          paramStats.base_utime = l1;
-          paramStats.base_stime = l2;
+          paramStats.baseUtime = l1;
+          paramStats.baseStime = l2;
           paramStats.name = paramString;
           return;
         }
-        if (paramStats.base_utime == -100L)
+        if (paramStats.baseUtime == -100L)
         {
-          paramStats.rel_utime = -100L;
-          paramStats.rel_stime = -100L;
+          paramStats.relUtime = -100L;
+          paramStats.relStime = -100L;
           return;
         }
-        paramStats.rel_utime = (l1 - paramStats.base_utime);
-        paramStats.rel_stime = (l2 - paramStats.base_stime);
+        paramStats.relUtime = (l1 - paramStats.baseUtime);
+        paramStats.relStime = (l2 - paramStats.baseStime);
         return;
         l1 = -100L;
         paramString = null;
@@ -576,12 +576,12 @@ public class ProcessStats
     //   30: ldc 176
     //   32: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
-    //   38: getfield 103	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:base_utime	J
+    //   38: getfield 103	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:baseUtime	J
     //   41: invokevirtual 183	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   44: ldc 185
     //   46: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   49: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
-    //   52: getfield 106	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:base_stime	J
+    //   52: getfield 106	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:baseStime	J
     //   55: invokevirtual 183	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   58: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   61: invokestatic 195	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
@@ -605,14 +605,14 @@ public class ProcessStats
     //   103: invokevirtual 222	java/lang/Process:getInputStream	()Ljava/io/InputStream;
     //   106: invokespecial 225	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   109: invokespecial 228	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   112: astore_2
-    //   113: aload_2
+    //   112: astore_1
+    //   113: aload_1
     //   114: invokevirtual 231	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   117: astore_1
-    //   118: aload_1
+    //   117: astore_2
+    //   118: aload_2
     //   119: ifnull +46 -> 165
     //   122: aload_3
-    //   123: aload_1
+    //   123: aload_2
     //   124: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   127: ldc 233
     //   129: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -646,12 +646,12 @@ public class ProcessStats
     //   183: ldc 176
     //   185: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   188: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
-    //   191: getfield 103	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:base_utime	J
+    //   191: getfield 103	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:baseUtime	J
     //   194: invokevirtual 183	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   197: ldc 185
     //   199: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   202: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
-    //   205: getfield 106	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:base_stime	J
+    //   205: getfield 106	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:baseStime	J
     //   208: invokevirtual 183	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   211: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   214: invokestatic 195	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
@@ -704,13 +704,13 @@ public class ProcessStats
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	299	0	paramInt	int
-    //   117	7	1	str1	String
+    //   112	2	1	localBufferedReader	java.io.BufferedReader
     //   136	1	1	localException1	Exception
-    //   222	29	1	str2	String
-    //   252	26	1	localObject1	Object
+    //   222	29	1	str1	String
+    //   252	26	1	localObject	Object
     //   283	1	1	localException2	Exception
     //   287	1	1	localException3	Exception
-    //   112	125	2	localObject2	Object
+    //   117	120	2	str2	String
     //   249	1	2	localException4	Exception
     //   279	1	2	localException5	Exception
     //   291	1	2	localException6	Exception
@@ -891,7 +891,7 @@ public class ProcessStats
               String str = (String)((Iterator)localObject1).next();
               ProcessStats.Stats localStats = (ProcessStats.Stats)sThreadUsageMap.get(str);
               collectProcessStats(str, localStats, false);
-              localStats.cpuUsage = ((int)(100L * (localStats.rel_stime + localStats.rel_utime) / l1));
+              localStats.cpuUsage = ((int)(100L * (localStats.relStime + localStats.relUtime) / l1));
               continue;
             }
           }
@@ -902,7 +902,7 @@ public class ProcessStats
       {
         return;
         sTotalCpuUsage = (int)(100L * (l2 - baseTotalCpu) / l1);
-        sAppSt.cpuUsage = ((int)(100L * (sAppSt.rel_stime + sAppSt.rel_utime) / l1));
+        sAppSt.cpuUsage = ((int)(100L * (sAppSt.relStime + sAppSt.relUtime) / l1));
         sLastUpdateTime = SystemClock.uptimeMillis();
         return;
       }

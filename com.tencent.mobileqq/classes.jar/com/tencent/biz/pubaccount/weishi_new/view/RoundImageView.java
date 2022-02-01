@@ -13,18 +13,19 @@ import android.graphics.Shader.TileMode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.ImageView.ScaleType;
 import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
-import com.tencent.mobileqq.app.ThreadManager;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import uvz;
+import uwa;
+import uwb;
+import uwc;
 
 public class RoundImageView
   extends ResizeURLImageView
-  implements Handler.Callback
 {
   private static final Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
   private static final ImageView.ScaleType jdField_a_of_type_AndroidWidgetImageView$ScaleType = ImageView.ScaleType.CENTER_CROP;
@@ -35,7 +36,6 @@ public class RoundImageView
   private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = 0;
@@ -78,17 +78,14 @@ public class RoundImageView
     }
     try
     {
-      if ((paramDrawable instanceof ColorDrawable)) {}
-      for (Bitmap localBitmap = Bitmap.createBitmap(1, 1, jdField_a_of_type_AndroidGraphicsBitmap$Config);; localBitmap = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), jdField_a_of_type_AndroidGraphicsBitmap$Config))
-      {
-        Canvas localCanvas = new Canvas(localBitmap);
-        paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
-        paramDrawable.draw(localCanvas);
-        return localBitmap;
+      if ((paramDrawable instanceof ColorDrawable)) {
+        return Bitmap.createBitmap(1, 1, jdField_a_of_type_AndroidGraphicsBitmap$Config);
       }
-      return null;
+      paramDrawable = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), jdField_a_of_type_AndroidGraphicsBitmap$Config);
+      return paramDrawable;
     }
     catch (OutOfMemoryError paramDrawable) {}
+    return null;
   }
   
   private void a()
@@ -118,7 +115,7 @@ public class RoundImageView
   
   private void a(Drawable paramDrawable)
   {
-    ThreadManager.post(new RoundImageView.1(this, paramDrawable), 8, null, true);
+    Observable.just(paramDrawable).map(new uwc(this)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).map(new uwb(this, paramDrawable)).subscribe(new uvz(this), new uwa(this));
   }
   
   private void b()
@@ -149,17 +146,6 @@ public class RoundImageView
   public ImageView.ScaleType getScaleType()
   {
     return jdField_a_of_type_AndroidWidgetImageView$ScaleType;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (paramMessage == null) {}
-    while ((paramMessage.what != 101) || (!(paramMessage.obj instanceof Bitmap))) {
-      return false;
-    }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)paramMessage.obj);
-    a();
-    return false;
   }
   
   public void onDraw(Canvas paramCanvas)

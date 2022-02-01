@@ -1,31 +1,41 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-public class beak
-  extends beah
-  implements beag
+final class beak
+  implements bliz
 {
-  String a;
+  beak(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, blir paramblir, QQAppInterface paramQQAppInterface, Context paramContext, String paramString, bean parambean) {}
   
-  public beak(String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = paramString;
-  }
-  
-  public Bitmap a(Bitmap paramBitmap)
-  {
-    int i = bdzx.a(this.a);
-    if (i == 0) {
-      return b(paramBitmap);
+    switch (paramInt)
+    {
     }
-    Object localObject = new Matrix();
-    ((Matrix)localObject).setRotate(i, paramBitmap.getWidth() / 2.0F, paramBitmap.getHeight() / 2.0F);
-    localObject = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject, true);
-    if ((localObject == null) || (localObject == paramBitmap)) {
-      throw new OutOfMemoryError("OOM");
-    }
-    paramBitmap.recycle();
-    return b((Bitmap)localObject);
+    do
+    {
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g = 2;
+        this.jdField_a_of_type_Blir.dismiss();
+        paramView = beaj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContext.getString(2131718622), true);
+        if (this.jdField_a_of_type_Bean != null) {
+          this.jdField_a_of_type_Bean.a(paramView);
+        }
+      } while (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d());
+      bedq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8009ED1");
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g = 0;
+      ((beav)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(120)).e(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      this.jdField_a_of_type_Blir.dismiss();
+      paramView = beaj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContext.getString(2131718622), true);
+      if (this.jdField_a_of_type_Bean != null) {
+        this.jdField_a_of_type_Bean.a(paramView);
+      }
+    } while (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d());
+    bedq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8009ED2");
   }
 }
 

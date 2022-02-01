@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import aovp;
+import apjf;
 
 public class ArConfigService$8$3
   implements Runnable
 {
-  public ArConfigService$8$3(aovp paramaovp) {}
+  public ArConfigService$8$3(apjf paramapjf) {}
   
   public void run()
   {

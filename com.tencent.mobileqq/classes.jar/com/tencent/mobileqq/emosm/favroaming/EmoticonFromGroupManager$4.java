@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import arre;
-import arrm;
+import asgs;
+import asha;
 
 public class EmoticonFromGroupManager$4
   implements Runnable
 {
-  public EmoticonFromGroupManager$4(arre paramarre) {}
+  public EmoticonFromGroupManager$4(asgs paramasgs) {}
   
   public void run()
   {
-    arre.a(this.this$0).b = (arrm.a - this.this$0.b());
+    asgs.a(this.this$0).b = (asha.a - this.this$0.b());
   }
 }
 

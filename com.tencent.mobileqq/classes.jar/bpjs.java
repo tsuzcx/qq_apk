@@ -1,17 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel;
 
-class bpjs
-  implements View.OnClickListener
+public class bpjs
+  implements Animator.AnimatorListener
 {
-  bpjs(bpjo parambpjo) {}
+  public bpjs(AEEditorTextControlPanel paramAEEditorTextControlPanel) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.a(false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    AEEditorTextControlPanel.b(this.a, false);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    AEEditorTextControlPanel.b(this.a, false);
+    AEEditorTextControlPanel.a(this.a);
+    this.a.setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

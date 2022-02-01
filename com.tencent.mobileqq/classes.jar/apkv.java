@@ -1,46 +1,58 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.manager.TicketManager;
 
-public class apkv
-  implements apld
+class apkv
+  extends aplx
 {
-  private void a(String paramString, apky paramapky)
+  apkv(apkr paramapkr) {}
+  
+  public void a(int paramInt)
   {
-    QQAppInterface localQQAppInterface = apkf.a();
-    TicketManager localTicketManager = (TicketManager)localQQAppInterface.getManager(2);
-    String str = localTicketManager.getPskey(localQQAppInterface.getCurrentAccountUin(), paramString);
-    if (!TextUtils.isEmpty(str))
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadSuccess success " + paramInt);
+    }
+    if (apkr.a(this.a) == null)
     {
-      if (paramapky != null) {
-        paramapky.a(str);
-      }
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "onMiniDownloadSuccess error mHandler is null ");
       return;
     }
-    str = localQQAppInterface.getCurrentAccountUin();
-    paramapky = new apkx(this, localTicketManager, localQQAppInterface, paramString, paramapky);
-    localTicketManager.GetPskey(str, 16L, new String[] { paramString }, paramapky);
+    Message localMessage = Message.obtain();
+    localMessage.what = 10;
+    localMessage.arg1 = paramInt;
+    apkr.a(this.a).sendMessage(localMessage);
   }
   
-  public void a(Bundle paramBundle, aplf paramaplf)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (apkf.a() == null)
-    {
-      QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "onCall, app interface is null");
-      paramaplf.a(EIPCResult.createResult(-102, new Bundle()));
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadProcess process " + paramInt1 + " : " + paramInt2);
+    }
+    if (apkr.a(this.a) == null) {
       return;
     }
-    paramBundle = paramBundle.getString("domain", "");
-    if (TextUtils.isEmpty(paramBundle))
+    Message localMessage = Message.obtain();
+    localMessage.what = 11;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    apkr.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadError " + paramInt1 + " : " + paramInt2);
+    }
+    if (apkr.a(this.a) == null)
     {
-      QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "onCall, domain is empty");
-      paramaplf.a(EIPCResult.createResult(0, new Bundle()));
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "onMiniDownloadError error mHandler is null ");
       return;
     }
-    a(paramBundle, new apkw(this, paramaplf));
+    Message localMessage = Message.obtain();
+    localMessage.what = 12;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    apkr.a(this.a).sendMessage(localMessage);
   }
 }
 

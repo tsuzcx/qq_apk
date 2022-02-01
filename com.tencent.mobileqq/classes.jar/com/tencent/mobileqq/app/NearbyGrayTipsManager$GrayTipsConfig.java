@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import android.text.TextUtils;
-import axby;
+import axup;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,7 +16,7 @@ public class NearbyGrayTipsManager$GrayTipsConfig
   public long createTime;
   public ArrayList<NearbyGrayTipsManager.Wording> favoriteGrayTipWordings1;
   public ArrayList<NearbyGrayTipsManager.Wording> favoriteGrayTipWordings2;
-  public int global_MaxTipsCountPerDay;
+  public int globalMaxTipsCountPerDay;
   public ArrayList<NearbyGrayTipsManager.Wording> grayTipWordings;
   public boolean grayTipsEnable;
   public int id;
@@ -32,8 +32,8 @@ public class NearbyGrayTipsManager$GrayTipsConfig
   public NearbyGrayTipsManager.SceneTwo sceneTwo;
   public ArrayList<Integer> sexTypes;
   public boolean showKeyboard;
-  public int singleTask_MaxTipsCountPerDay;
-  public int singleTask_maxTipsCount;
+  public int singleTaskMaxTipsCount;
+  public int singleTaskMaxTipsCountPerDay;
   public ArrayList<NearbyGrayTipsManager.TimeRangeInOneDay> timeRange;
   public boolean timeRangeControl;
   public String url;
@@ -266,7 +266,7 @@ public class NearbyGrayTipsManager$GrayTipsConfig
     }
     if (this.sexTypes != null)
     {
-      paramInt1 = ((axby)paramQQAppInterface.getManager(106)).a(paramInt2);
+      paramInt1 = ((axup)paramQQAppInterface.getManager(106)).a(paramInt2);
       if (!this.sexTypes.contains(Integer.valueOf(paramInt1))) {
         return false;
       }
@@ -276,7 +276,7 @@ public class NearbyGrayTipsManager$GrayTipsConfig
   
   public String toString()
   {
-    return "GrayTipsConfig{id=" + this.id + ", createTime=" + this.createTime + ", grayTipsEnable=" + this.grayTipsEnable + ", global_MaxTipsCountPerDay=" + this.global_MaxTipsCountPerDay + ", maxTipsCount=" + this.maxTipsCount + ", messageCount=" + this.messageCount + ", priority=" + this.priority + ", singleTask_MaxTipsCountPerDay=" + this.singleTask_MaxTipsCountPerDay + ", singleTask_maxTipsCount=" + this.singleTask_maxTipsCount + ", aioTypes=" + this.aioTypes + ", sexTypes=" + this.sexTypes + ", timeRangeControl=" + this.timeRangeControl + ", timeRange=" + this.timeRange + ", showKeyboard=" + this.showKeyboard + ", url='" + this.url + '\'' + ", grayTipWordings=" + this.grayTipWordings + ", favoriteGrayTipWordings1=" + this.favoriteGrayTipWordings1 + ", favoriteGrayTipWordings2=" + this.favoriteGrayTipWordings2 + ", sceneId=" + this.sceneId + ", randomWordings=" + this.randomWordings + ", sceneOne=" + this.sceneOne + ", sceneTwo=" + this.sceneTwo + ", sceneThree=" + this.sceneThree + ", sceneFour=" + this.sceneFour + ", sceneFive=" + this.sceneFive + '}';
+    return "GrayTipsConfig{id=" + this.id + ", createTime=" + this.createTime + ", grayTipsEnable=" + this.grayTipsEnable + ", global_MaxTipsCountPerDay=" + this.globalMaxTipsCountPerDay + ", maxTipsCount=" + this.maxTipsCount + ", messageCount=" + this.messageCount + ", priority=" + this.priority + ", singleTask_MaxTipsCountPerDay=" + this.singleTaskMaxTipsCountPerDay + ", singleTask_maxTipsCount=" + this.singleTaskMaxTipsCount + ", aioTypes=" + this.aioTypes + ", sexTypes=" + this.sexTypes + ", timeRangeControl=" + this.timeRangeControl + ", timeRange=" + this.timeRange + ", showKeyboard=" + this.showKeyboard + ", url='" + this.url + '\'' + ", grayTipWordings=" + this.grayTipWordings + ", favoriteGrayTipWordings1=" + this.favoriteGrayTipWordings1 + ", favoriteGrayTipWordings2=" + this.favoriteGrayTipWordings2 + ", sceneId=" + this.sceneId + ", randomWordings=" + this.randomWordings + ", sceneOne=" + this.sceneOne + ", sceneTwo=" + this.sceneTwo + ", sceneThree=" + this.sceneThree + ", sceneFour=" + this.sceneFour + ", sceneFive=" + this.sceneFive + '}';
   }
 }
 

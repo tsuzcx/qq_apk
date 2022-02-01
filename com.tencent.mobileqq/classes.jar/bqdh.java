@@ -1,6 +1,18 @@
-public abstract interface bqdh
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bqdh
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  bqdh(bqdc parambqdc) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    dov.com.qq.im.capture.view.MusicProviderView.a = false;
+    this.a.a.a.a(this.a.a.a());
+    bqdc.a(this.a);
+  }
 }
 
 

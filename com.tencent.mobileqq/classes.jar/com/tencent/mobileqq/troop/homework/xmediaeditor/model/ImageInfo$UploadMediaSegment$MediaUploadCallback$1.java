@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
-import bfei;
-import bfer;
-import bfet;
-import bfeu;
-import bfex;
-import bffk;
-import bffs;
-import bfgc;
-import bfgf;
+import bgec;
+import bgel;
+import bgen;
+import bgeo;
+import bger;
+import bgfe;
+import bgfm;
+import bgfw;
+import bgfz;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import java.lang.ref.WeakReference;
@@ -16,21 +16,21 @@ import java.lang.ref.WeakReference;
 public class ImageInfo$UploadMediaSegment$MediaUploadCallback$1
   implements Runnable
 {
-  public ImageInfo$UploadMediaSegment$MediaUploadCallback$1(bfeu parambfeu, bfex parambfex) {}
+  public ImageInfo$UploadMediaSegment$MediaUploadCallback$1(bgeo parambgeo, bger parambger) {}
   
   public void run()
   {
-    bfet.a(this.jdField_a_of_type_Bfeu.a).e = 95;
-    bfet.a(this.jdField_a_of_type_Bfeu.a).g = -2147483648;
-    XMediaEditor localXMediaEditor = (XMediaEditor)bfet.a(this.jdField_a_of_type_Bfeu.a).get();
+    bgen.a(this.jdField_a_of_type_Bgeo.a).e = 95;
+    bgen.a(this.jdField_a_of_type_Bgeo.a).g = -2147483648;
+    XMediaEditor localXMediaEditor = (XMediaEditor)bgen.a(this.jdField_a_of_type_Bgeo.a).get();
     if (localXMediaEditor != null)
     {
-      Object localObject = localXMediaEditor.findViewHolderForLayoutPosition(bfet.a(this.jdField_a_of_type_Bfeu.a).c);
-      if ((localObject instanceof bfgf))
+      Object localObject = localXMediaEditor.findViewHolderForLayoutPosition(bgen.a(this.jdField_a_of_type_Bgeo.a).c);
+      if ((localObject instanceof bgfz))
       {
-        localObject = (bfgf)localObject;
-        if (this.jdField_a_of_type_Bfex.d.equals(((bfgf)localObject).a.getTag())) {
-          ((bfgc)((bfei)localXMediaEditor.getAdapter()).a.a(2)).a((bffs)localObject, bfet.a(this.jdField_a_of_type_Bfeu.a), 0);
+        localObject = (bgfz)localObject;
+        if (this.jdField_a_of_type_Bger.d.equals(((bgfz)localObject).a.getTag())) {
+          ((bgfw)((bgec)localXMediaEditor.getAdapter()).a.a(2)).a((bgfm)localObject, bgen.a(this.jdField_a_of_type_Bgeo.a), 0);
         }
       }
     }

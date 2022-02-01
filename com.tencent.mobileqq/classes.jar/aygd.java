@@ -1,52 +1,50 @@
-import android.text.TextUtils;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.qphone.base.util.QLog;
 
-public class aygd
-  implements ActionMode.Callback
+class aygd
+  extends Handler
 {
-  public aygd(OCRResultFragmentNew paramOCRResultFragmentNew, EditText paramEditText) {}
-  
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  aygd(aygb paramaygb, Looper paramLooper)
   {
-    if (paramMenuItem.getItemId() == 2131371903)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      paramActionMode = ayfi.a(this.jdField_a_of_type_AndroidWidgetEditText);
-      if (TextUtils.isEmpty(paramActionMode)) {
-        QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), 1, anni.a(2131706589), 0).a();
+    }
+    do
+    {
+      return;
+      if (this.a.jdField_a_of_type_Aygm != null)
+      {
+        int i = this.a.jdField_a_of_type_Aygm.a();
+        this.a.jdField_a_of_type_Aygk.a(i);
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoPlayerView", 2, "PROGRESS_MSG :" + i);
+        }
       }
-    }
-    else
-    {
-      return false;
-    }
-    OCRTextSearchActivity.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), paramActionMode);
-    OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew).overridePendingTransition(2130771992, 0);
-    return true;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    paramActionMode = paramActionMode.getMenuInflater();
-    if (paramActionMode != null) {
-      paramActionMode.inflate(2131623940, paramMenu);
-    }
-    return true;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2025, 100L);
+      return;
+      if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.getParent() != null) && (((ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent()).getChildAt(0) != this.a.jdField_a_of_type_AndroidWidgetImageView))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("VideoPlayerView", 2, "UPDATE_COVER  mPlayer.getCurrentPosition()=" + this.a.jdField_a_of_type_Aygm.a());
+        }
+        ((ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent()).removeView(this.a.jdField_a_of_type_AndroidWidgetImageView);
+        aygb.a(this.a).addView(this.a.jdField_a_of_type_AndroidWidgetImageView, 0, new RelativeLayout.LayoutParams(-1, -1));
+        aygb.a(this.a).requestLayout();
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("VideoPlayerView", 2, "UPDATE_COVER  2do nothing()=");
   }
 }
 

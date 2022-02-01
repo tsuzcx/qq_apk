@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.util;
 
-import anhk;
-import pfk;
-import pfn;
-import tzo;
+import antf;
+import oyc;
+import oyf;
+import tzq;
 
 public final class PublicAccountUtil$22
   implements Runnable
@@ -12,17 +12,17 @@ public final class PublicAccountUtil$22
   
   public void run()
   {
-    if (anhk.aQ.equals(this.a))
+    if (antf.aQ.equals(this.a))
     {
-      pfn.a();
+      oyf.a();
       return;
     }
-    if (anhk.aR.equals(this.a))
+    if (antf.aR.equals(this.a))
     {
-      pfk.a();
+      oyc.a();
       return;
     }
-    tzo.c(this.a);
+    tzq.c(this.a);
   }
 }
 

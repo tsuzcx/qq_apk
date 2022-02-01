@@ -47,26 +47,26 @@ public class a
   static a.a d;
   static Handler e;
   static NetworkInfo f;
-  public static boolean g = false;
-  public static int h = 0;
-  public static String i;
+  public static final int g = 20;
+  public static boolean h = false;
+  public static int i = 0;
   public static String j;
   public static String k;
-  static BroadcastReceiver l = new b();
-  private static String m = "MSF.D.AppNetInfoImpl";
-  private static final String n = "https://3gimg.qq.com/ping.html";
-  private static int o = 0;
-  private static AtomicBoolean p = new AtomicBoolean(false);
-  private static final int q = 1;
-  private static final int r = 2;
-  private static final int s = 3;
-  private static final int t = 4;
-  private static final int u = 5;
-  private static final int v = 16;
-  private static final int w = 17;
-  private static final int x = 18;
-  private static final int y = 19;
-  private static final int z = 20;
+  public static String l;
+  static BroadcastReceiver m = new b();
+  private static String n = "MSF.D.AppNetInfoImpl";
+  private static final String o = "https://3gimg.qq.com/ping.html";
+  private static int p = 0;
+  private static AtomicBoolean q = new AtomicBoolean(false);
+  private static final int r = 1;
+  private static final int s = 2;
+  private static final int t = 3;
+  private static final int u = 4;
+  private static final int v = 5;
+  private static final int w = 16;
+  private static final int x = 17;
+  private static final int y = 18;
+  private static final int z = 19;
   
   static
   {
@@ -79,10 +79,10 @@ public class a
     F = -1;
     G = true;
     H = 0L;
-    h = 0;
-    i = "";
+    i = 0;
     j = "";
     k = "";
+    l = "";
   }
   
   private static String a(int paramInt)
@@ -122,9 +122,9 @@ public class a
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d(m, 2, "wifi ping resp content is " + (String)localObject);
+      QLog.d(n, 2, "wifi ping resp content is " + (String)localObject);
     }
-    g = true;
+    h = true;
   }
   
   public static void a(Context paramContext, NetworkInfo paramNetworkInfo)
@@ -134,7 +134,7 @@ public class a
     if (localNetworkInfo != null) {}
     try
     {
-      i = localNetworkInfo.getExtraInfo();
+      j = localNetworkInfo.getExtraInfo();
       f = paramContext.getActiveNetworkInfo();
       a(f, paramNetworkInfo);
       return;
@@ -143,7 +143,7 @@ public class a
     {
       for (;;)
       {
-        QLog.d(m, 1, "get currentAPN error " + localException);
+        QLog.d(n, 1, "get currentAPN error " + localException);
       }
     }
   }
@@ -151,7 +151,7 @@ public class a
   public static void a(Context paramContext, INetEventHandler paramINetEventHandler)
   {
     if (paramINetEventHandler == null) {
-      QLog.w(m, 1, Thread.currentThread().getName() + " registerNetChangeReceiver null");
+      QLog.w(n, 1, Thread.currentThread().getName() + " registerNetChangeReceiver null");
     }
     h();
     if ((!c) || (e == null)) {
@@ -166,7 +166,7 @@ public class a
   public static void a(Context paramContext, INetInfoHandler paramINetInfoHandler)
   {
     if (paramINetInfoHandler == null) {
-      QLog.w(m, 1, Thread.currentThread().getName() + " registerConnectionChangeReceiver null");
+      QLog.w(n, 1, Thread.currentThread().getName() + " registerConnectionChangeReceiver null");
     }
     h();
     if ((!c) || (e == null)) {
@@ -190,10 +190,10 @@ public class a
       {
         try
         {
-          j = paramNetworkInfo1.getSubtypeName();
+          k = paramNetworkInfo1.getSubtypeName();
           if (str.toLowerCase().contains("mobile_mms"))
           {
-            QLog.d(m, 1, "checkConnInfo current typeName: mobile_mms ignore.");
+            QLog.d(n, 1, "checkConnInfo current typeName: mobile_mms ignore.");
             return;
           }
         }
@@ -203,9 +203,9 @@ public class a
           {
             for (;;)
             {
-              QLog.d(m, 1, "get subtypeName error " + localException);
+              QLog.d(n, 1, "get subtypeName error " + localException);
             }
-            QLog.d(m, 1, "currentAPN:" + i + ". received networkInfo: " + paramNetworkInfo1.getDetailedState() + " :" + paramNetworkInfo1 + ". ExtraNetInfo: " + paramNetworkInfo2);
+            QLog.d(n, 1, "currentAPN:" + j + ". received networkInfo: " + paramNetworkInfo1.getDetailedState() + " :" + paramNetworkInfo1 + ". ExtraNetInfo: " + paramNetworkInfo2);
             if (paramNetworkInfo1.getDetailedState() == NetworkInfo.DetailedState.CONNECTED)
             {
               if (1 == paramNetworkInfo1.getType())
@@ -222,7 +222,7 @@ public class a
                 return;
               }
               r();
-              QLog.d(m, 1, "Unexcepted activeNetInfo type:" + paramNetworkInfo1.getType());
+              QLog.d(n, 1, "Unexcepted activeNetInfo type:" + paramNetworkInfo1.getType());
               return;
             }
           } while ((paramNetworkInfo1.getDetailedState() != NetworkInfo.DetailedState.DISCONNECTED) && (paramNetworkInfo1.getDetailedState() != NetworkInfo.DetailedState.FAILED) && (paramNetworkInfo1.getDetailedState() != NetworkInfo.DetailedState.IDLE) && (paramNetworkInfo1.getDetailedState() != NetworkInfo.DetailedState.SUSPENDED));
@@ -240,7 +240,7 @@ public class a
           return;
         }
       } while (paramNetworkInfo2 == null);
-      QLog.d(m, 1, "currentAPN:" + i + ". ActiveNetInfo: " + paramNetworkInfo1 + ". ExtraNetInfo: " + paramNetworkInfo2);
+      QLog.d(n, 1, "currentAPN:" + j + ". ActiveNetInfo: " + paramNetworkInfo1 + ". ExtraNetInfo: " + paramNetworkInfo2);
     } while ((paramNetworkInfo2.getDetailedState() != NetworkInfo.DetailedState.DISCONNECTED) && (paramNetworkInfo2.getDetailedState() != NetworkInfo.DetailedState.FAILED) && (paramNetworkInfo2.getDetailedState() != NetworkInfo.DetailedState.IDLE) && (paramNetworkInfo2.getDetailedState() != NetworkInfo.DetailedState.SUSPENDED));
     if (1 == paramNetworkInfo2.getType())
     {
@@ -290,7 +290,7 @@ public class a
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d(m, 2, localException2.toString(), localException2);
+        QLog.d(n, 2, localException2.toString(), localException2);
       }
       try
       {
@@ -314,7 +314,7 @@ public class a
   public static boolean a(INetEventHandler paramINetEventHandler)
   {
     if (paramINetEventHandler == null) {
-      QLog.w(m, 1, Thread.currentThread().getName() + " unregisterNetEventHandler null");
+      QLog.w(n, 1, Thread.currentThread().getName() + " unregisterNetEventHandler null");
     }
     do
     {
@@ -332,13 +332,13 @@ public class a
   {
     if (paramINetInfoHandler == null)
     {
-      QLog.w(m, 1, Thread.currentThread().getName() + " unregisterNetInfoHandler null");
+      QLog.w(n, 1, Thread.currentThread().getName() + " unregisterNetInfoHandler null");
       return false;
     }
     h();
     if ((!c) || (e == null))
     {
-      QLog.w(m, 1, Thread.currentThread().getName() + " unregisterNetInfoHandler initHandler=" + c + " handler=" + e);
+      QLog.w(n, 1, Thread.currentThread().getName() + " unregisterNetInfoHandler initHandler=" + c + " handler=" + e);
       return false;
     }
     Message localMessage = e.obtainMessage();
@@ -363,26 +363,26 @@ public class a
     {
       try
       {
-        if (o == paramInt)
+        if (p == paramInt)
         {
           if (QLog.isColorLevel()) {
-            QLog.d(m, 2, "found repeat net event , now is " + b() + " now:" + paramInt + " last:" + o);
+            QLog.d(n, 2, "found repeat net event , now is " + b() + " now:" + paramInt + " last:" + p);
           }
           return;
         }
         if (paramInt > 0)
         {
           b(true);
-          QLog.d(m, 1, "netchange " + a(o) + " to " + a(paramInt));
+          QLog.d(n, 1, "netchange " + a(p) + " to " + a(paramInt));
           F = -1;
           if (paramInt != 1) {
             break;
           }
-          if ((o != 0) && (o != -2)) {
+          if ((p != 0) && (p != -2)) {
             break label171;
           }
           F = 0;
-          o = paramInt;
+          p = paramInt;
           continue;
         }
         b(false);
@@ -390,26 +390,26 @@ public class a
       finally {}
       continue;
       label171:
-      if ((o == 2) || (o == 3)) {
+      if ((p == 2) || (p == 3)) {
         F = 1;
-      } else if (o <= 7) {
+      } else if (p <= 7) {
         F = 6;
       }
     }
     for (;;)
     {
       label208:
-      if ((o == 0) || (o == -2))
+      if ((p == 0) || (p == -2))
       {
         F = 2;
         break;
       }
-      if (o == 1)
+      if (p == 1)
       {
         F = 3;
         break;
       }
-      if (o > 7) {
+      if (p > 7) {
         break;
       }
       F = 7;
@@ -418,33 +418,33 @@ public class a
       {
         if ((paramInt > 3) && (paramInt <= 7))
         {
-          if ((o == 0) || (o == -2))
+          if ((p == 0) || (p == -2))
           {
             F = 8;
             break;
           }
-          if (o == 1)
+          if (p == 1)
           {
             F = 9;
             break;
           }
-          if ((o != 2) && (paramInt != 3)) {
+          if ((p != 2) && (paramInt != 3)) {
             break;
           }
           F = 10;
           break;
         }
-        if (o == 1)
+        if (p == 1)
         {
           F = 4;
           break;
         }
-        if ((o == 2) || (o == 3))
+        if ((p == 2) || (p == 3))
         {
           F = 5;
           break;
         }
-        if (o > 7) {
+        if (p > 7) {
           break;
         }
         F = 11;
@@ -458,19 +458,19 @@ public class a
   
   private static void b(boolean paramBoolean)
   {
-    p.set(paramBoolean);
+    q.set(paramBoolean);
   }
   
   public static boolean b()
   {
-    return p.get();
+    return q.get();
   }
   
   public static int c()
   {
     if (e())
     {
-      if (g) {
+      if (h) {
         return 3;
       }
       return 2;
@@ -483,17 +483,17 @@ public class a
   
   public static int d()
   {
-    return h;
+    return i;
   }
   
   public static boolean e()
   {
-    return (o == 2) || (o == 3);
+    return (p == 2) || (p == 3);
   }
   
   public static boolean f()
   {
-    return o == 1;
+    return p == 1;
   }
   
   public static NetworkInfo g()
@@ -511,7 +511,7 @@ public class a
         if ((!c) && (BaseApplication.getContext() != null))
         {
           IntentFilter localIntentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-          BaseApplication.getContext().registerReceiver(l, localIntentFilter);
+          BaseApplication.getContext().registerReceiver(m, localIntentFilter);
           a(false);
           c = true;
         }
@@ -531,7 +531,7 @@ public class a
     }
     catch (Exception localException)
     {
-      QLog.d(m, 1, "failed to check init ops " + localException.toString());
+      QLog.d(n, 1, "failed to check init ops " + localException.toString());
     }
   }
   
@@ -550,7 +550,7 @@ public class a
     //   17: ifnull +11 -> 28
     //   20: aload_0
     //   21: invokevirtual 261	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
-    //   24: putstatic 122	com/tencent/mobileqq/msf/sdk/a:i	Ljava/lang/String;
+    //   24: putstatic 122	com/tencent/mobileqq/msf/sdk/a:j	Ljava/lang/String;
     //   27: return
     //   28: invokestatic 398	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   31: invokevirtual 533	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
@@ -575,7 +575,7 @@ public class a
     //   64: ldc_w 546
     //   67: invokeinterface 550 2 0
     //   72: invokeinterface 553 2 0
-    //   77: putstatic 122	com/tencent/mobileqq/msf/sdk/a:i	Ljava/lang/String;
+    //   77: putstatic 122	com/tencent/mobileqq/msf/sdk/a:j	Ljava/lang/String;
     //   80: goto -35 -> 45
     //   83: astore_2
     //   84: aload_1
@@ -588,7 +588,7 @@ public class a
     //   95: invokeinterface 555 1 0
     //   100: return
     //   101: astore_0
-    //   102: getstatic 77	com/tencent/mobileqq/msf/sdk/a:m	Ljava/lang/String;
+    //   102: getstatic 77	com/tencent/mobileqq/msf/sdk/a:n	Ljava/lang/String;
     //   105: iconst_1
     //   106: new 223	java/lang/StringBuilder
     //   109: dup
@@ -654,45 +654,45 @@ public class a
       WifiInfo localWifiInfo = ((WifiManager)BaseApplication.getContext().getSystemService("wifi")).getConnectionInfo();
       if (localWifiInfo != null)
       {
-        QLog.d(m, 1, "checknetinfo get wifi ssid " + localWifiInfo.getSSID());
-        k = localWifiInfo.getSSID();
+        QLog.d(n, 1, "checknetinfo get wifi ssid " + localWifiInfo.getSSID());
+        l = localWifiInfo.getSSID();
       }
       return;
     }
     catch (Exception localException)
     {
-      QLog.d(m, 1, "failed to get wifi ssid");
+      QLog.d(n, 1, "failed to get wifi ssid");
     }
   }
   
   private static void p()
   {
-    b(o | 0x1);
+    b(p | 0x1);
   }
   
   private static void q()
   {
-    b(o | 0x2);
+    b(p | 0x2);
   }
   
   private static void r()
   {
-    b(o | 0x4);
+    b(p | 0x4);
   }
   
   private static void s()
   {
-    b(o & 0xFFFFFFFE);
+    b(p & 0xFFFFFFFE);
   }
   
   private static void t()
   {
-    b(o & 0xFFFFFFFD);
+    b(p & 0xFFFFFFFD);
   }
   
   private static void u()
   {
-    b(o & 0xFFFFFFFB);
+    b(p & 0xFFFFFFFB);
   }
   
   private static void v()
@@ -706,7 +706,7 @@ public class a
           {
             if (!d.isAlive())
             {
-              QLog.d(m, 1, "PID=" + Process.myPid() + " tid=" + Thread.currentThread().getId() + " AppNetInfoImpl checkInitHandler. looper=" + Looper.myLooper());
+              QLog.d(n, 1, "PID=" + Process.myPid() + " tid=" + Thread.currentThread().getId() + " AppNetInfoImpl checkInitHandler. looper=" + Looper.myLooper());
               d.start();
             }
             e = new Handler(d.getLooper(), d);
@@ -718,7 +718,7 @@ public class a
     }
     catch (Exception localException)
     {
-      QLog.d(m, 1, "initHandler exception " + localException.toString());
+      QLog.d(n, 1, "initHandler exception " + localException.toString());
     }
   }
 }

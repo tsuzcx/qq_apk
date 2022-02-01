@@ -1,10 +1,24 @@
-public abstract interface bhyp
+import com.tencent.image.NativeGifImage;
+import java.io.File;
+
+public class bhyp
+  extends NativeGifImage
 {
-  public abstract void b();
+  private int a = 1;
   
-  public abstract void c();
+  public bhyp(File paramFile, boolean paramBoolean, float paramFloat, int paramInt)
+  {
+    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
+    this.a = paramInt;
+  }
   
-  public abstract void c(boolean paramBoolean);
+  public void executeNewTask()
+  {
+    if (this.mCurrentLoop == this.a) {
+      return;
+    }
+    super.executeNewTask();
+  }
 }
 
 

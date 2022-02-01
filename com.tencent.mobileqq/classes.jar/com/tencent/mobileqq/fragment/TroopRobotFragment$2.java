@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.fragment;
 
-import bftv;
+import bgtw;
 
 class TroopRobotFragment$2
   implements Runnable
 {
-  TroopRobotFragment$2(TroopRobotFragment paramTroopRobotFragment, bftv parambftv) {}
+  TroopRobotFragment$2(TroopRobotFragment paramTroopRobotFragment, bgtw parambgtw) {}
   
   public void run()
   {

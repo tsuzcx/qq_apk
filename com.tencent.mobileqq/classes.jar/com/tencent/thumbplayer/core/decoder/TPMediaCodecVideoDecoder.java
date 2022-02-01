@@ -10,6 +10,7 @@ import android.view.Surface;
 import com.tencent.thumbplayer.core.common.TPNativeLog;
 import com.tencent.thumbplayer.core.common.TPSystemInfo;
 import com.tencent.tmediacodec.TMediaCodec;
+import java.nio.ByteBuffer;
 
 @RequiresApi(api=16)
 public class TPMediaCodecVideoDecoder
@@ -25,6 +26,9 @@ public class TPMediaCodecVideoDecoder
   private int mCropLeft = 0;
   private int mCropRight = 0;
   private int mCropTop = 0;
+  private byte[] mCsd0Data = null;
+  private byte[] mCsd1Data = null;
+  private byte[] mCsd2Data = null;
   private MediaCrypto mMediaCrypto = null;
   private String mMimeType = null;
   private int mRotation = 0;
@@ -44,6 +48,15 @@ public class TPMediaCodecVideoDecoder
     }
     if (TPSystemInfo.getDeviceName().equalsIgnoreCase("vivo X5L")) {
       localMediaFormat.setInteger("max-input-size", this.mVideoWidth * this.mVideoHeight);
+    }
+    if (this.mCsd0Data != null) {
+      localMediaFormat.setByteBuffer("csd-0", ByteBuffer.wrap(this.mCsd0Data));
+    }
+    if (this.mCsd1Data != null) {
+      localMediaFormat.setByteBuffer("csd-1", ByteBuffer.wrap(this.mCsd1Data));
+    }
+    if (this.mCsd2Data != null) {
+      localMediaFormat.setByteBuffer("csd-2", ByteBuffer.wrap(this.mCsd2Data));
     }
     paramTMediaCodec.configure(localMediaFormat, this.mSurface, this.mMediaCrypto, 0);
     paramTMediaCodec.setVideoScalingMode(1);
@@ -120,6 +133,22 @@ public class TPMediaCodecVideoDecoder
   public int setOutputSurface(Surface paramSurface)
   {
     return super.setOutputSurface(paramSurface);
+  }
+  
+  public boolean setParamBytes(int paramInt, byte[] paramArrayOfByte)
+  {
+    if (paramInt == 200) {
+      this.mCsd0Data = paramArrayOfByte;
+    }
+    for (;;)
+    {
+      return super.setParamBytes(paramInt, paramArrayOfByte);
+      if (paramInt == 201) {
+        this.mCsd1Data = paramArrayOfByte;
+      } else if (paramInt == 202) {
+        this.mCsd2Data = paramArrayOfByte;
+      }
+    }
   }
   
   public boolean setParamObject(int paramInt, Object paramObject)

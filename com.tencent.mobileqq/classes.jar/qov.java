@@ -1,21 +1,17 @@
-import com.tencent.pts.nativemodule.PTSNativeModuleRegistry.IPTSMarkArticleRead;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qov
-  implements PTSNativeModuleRegistry.IPTSMarkArticleRead
+  implements View.OnClickListener
 {
-  public void markArticleRead(long paramLong1, long paramLong2)
+  public qov(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
+  
+  public void onClick(View paramView)
   {
-    QLog.i("PTSMarkArticleReadModule", 1, "[markArticleRead], articleID = " + paramLong1 + ", channelID = " + paramLong2);
-    try
-    {
-      pmh.a().a(paramLong1, System.currentTimeMillis());
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("PTSMarkArticleReadModule", 1, "[markArticleRead], e = " + localException);
-    }
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

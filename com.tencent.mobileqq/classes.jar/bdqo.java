@@ -1,209 +1,890 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.BeancurdMsg;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.tofumsg.TofuItem;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.widget.FixRatioPAHighLightImageView;
+import com.tencent.mobileqq.widget.PAHighLightImageView;
+import com.tencent.mobileqq.widget.PAImageView;
 import com.tencent.qphone.base.util.QLog;
-import org.jetbrains.annotations.NotNull;
-import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfo;
-import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfoResult;
+import java.io.File;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLDecoder;
+import org.json.JSONObject;
+import org.xmlpull.v1.XmlSerializer;
 
-public abstract class bdqo
-  implements bdqm
+public class bdqo
+  extends bdol
 {
-  QQAppInterface a;
+  public static int q = 1;
+  public static int r = 2;
+  public static int s = 3;
+  private URLDrawableDownListener.Adapter a;
+  public boolean a;
+  public String ac;
+  public String ad;
+  public int o;
+  public int p;
+  public int t = s;
   
-  public bdqo(QQAppInterface paramQQAppInterface)
+  public bdqo()
   {
-    this.a = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bdqp(this);
+    this.jdField_a_of_type_JavaLangString = "picture";
+    this.jdField_a_of_type_Int = 19;
   }
   
-  public abstract int a();
-  
-  public TofuItem a(@NotNull TofuItem paramTofuItem, long paramLong, int paramInt)
+  public bdqo(String paramString)
   {
-    boolean bool2 = a(paramInt);
-    if (paramLong - paramTofuItem.lastPullTsLocal >= paramTofuItem.pullInterval) {}
-    for (boolean bool1 = true;; bool1 = false)
+    this();
+    this.ac = paramString;
+  }
+  
+  public bdqo(String paramString1, String paramString2)
+  {
+    this();
+    this.ac = paramString1;
+    this.ad = paramString2;
+  }
+  
+  public static Bitmap a(Drawable paramDrawable)
+  {
+    try
+    {
+      int i = paramDrawable.getIntrinsicWidth();
+      if (paramDrawable.getOpacity() != -1) {}
+      for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
+      {
+        localObject = Bitmap.createBitmap(i, i, (Bitmap.Config)localObject);
+        Canvas localCanvas = new Canvas((Bitmap)localObject);
+        paramDrawable.setBounds(0, 0, i, i);
+        paramDrawable.draw(localCanvas);
+        paramDrawable = bhmq.a((Bitmap)localObject, i, i, i);
+        ((Bitmap)localObject).recycle();
+        return paramDrawable;
+      }
+      return null;
+    }
+    catch (Exception paramDrawable)
+    {
+      return null;
+    }
+    catch (OutOfMemoryError paramDrawable)
+    {
+      QLog.e("StructMsgItemCover", 2, "getRoundedCornerBitmap  OutOfMemoryError");
+    }
+  }
+  
+  private URLDrawable a(String paramString, int paramInt1, int paramInt2, Drawable paramDrawable1, Drawable paramDrawable2, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
+  {
+    try
+    {
+      Object localObject1 = new URL(paramString);
+      Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = paramInt1;
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = paramInt2;
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = paramDrawable1;
+      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = paramDrawable2;
+      ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = paramBoolean1;
+      ((URLDrawable.URLDrawableOptions)localObject2).mGifRoundCorner = 0.0F;
+      ((URLDrawable.URLDrawableOptions)localObject2).mNeedCheckNetType = paramBoolean2;
+      ((URLDrawable.URLDrawableOptions)localObject2).mRetryCount = 3;
+      ((URLDrawable.URLDrawableOptions)localObject2).mExtraInfo = paramObject;
+      paramString = new beui();
+      paramString.jdField_a_of_type_Int = 1001;
+      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null)
+      {
+        paramString.b = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgServiceID;
+        paramString.c = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgTemplateID;
+        if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message != null) {
+          paramString.jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message.istroop);
+        }
+      }
+      ((URLDrawable.URLDrawableOptions)localObject2).mHttpDownloaderParams = paramString;
+      localObject2 = URLDrawable.getDrawable((URL)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
+      if ("url.cn".equals(((URL)localObject1).getHost()))
+      {
+        localObject1 = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = paramInt1;
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = paramInt2;
+        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = paramDrawable1;
+        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = paramDrawable2;
+        ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = paramBoolean1;
+        ((URLDrawable.URLDrawableOptions)localObject1).mGifRoundCorner = 0.0F;
+        ((URLDrawable.URLDrawableOptions)localObject1).mNeedCheckNetType = paramBoolean2;
+        ((URLDrawable.URLDrawableOptions)localObject1).mRetryCount = 3;
+        ((URLDrawable.URLDrawableOptions)localObject1).mExtraInfo = paramObject;
+        ((URLDrawable.URLDrawableOptions)localObject1).mHttpDownloaderParams = paramString;
+        ((URLDrawable)localObject2).setTag(localObject1);
+      }
+      return localObject2;
+    }
+    catch (MalformedURLException paramDrawable1)
+    {
+      throw new IllegalArgumentException("illegal url format: " + paramString);
+    }
+  }
+  
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    return a(paramContext, paramView, false, paramBundle);
+  }
+  
+  public View a(Context paramContext, View paramView, boolean paramBoolean, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("[@]", 2, "StructMsgItemCover createView start! mUrlString = " + this.ac);
+    }
+    boolean bool2;
+    if (paramBundle != null) {
+      bool2 = paramBundle.getBoolean("pre_dialog");
+    }
+    boolean bool1;
+    Object localObject3;
+    int i;
+    Object localObject1;
+    Object localObject2;
+    Drawable localDrawable2;
+    for (;;)
+    {
+      if (paramBundle == null) {
+        break label2028;
+      }
+      bool1 = paramBundle.getBoolean("pa_should_change");
+      localObject3 = paramContext.getResources();
+      i = ((Resources)localObject3).getDisplayMetrics().widthPixels;
+      try
+      {
+        Drawable localDrawable1 = odv.a().a((Resources)localObject3, 2130850460);
+        if ((paramView != null) && ((paramView instanceof PAImageView)))
+        {
+          localObject1 = (PAHighLightImageView)paramView;
+          localObject2 = paramView;
+          ((PAHighLightImageView)localObject1).setTag(this);
+          paramView = this.ac;
+          if ((TextUtils.isEmpty(paramView)) && (paramBundle != null) && (paramBundle.containsKey("extend-data-json")) && (paramBundle.getInt("serviceID", 0) == 128))
+          {
+            paramBundle = paramBundle.getString("extend-data-json");
+            if (TextUtils.isEmpty(paramBundle)) {}
+          }
+        }
+        else
+        {
+          try
+          {
+            if (!(paramContext instanceof BaseActivity)) {
+              break label317;
+            }
+            paramBundle = new JSONObject(paramBundle);
+            ((PAHighLightImageView)localObject1).setImageDrawable(aoot.a(((BaseActivity)paramContext).app, 4, paramBundle.optString("groupcode")));
+            ((PAHighLightImageView)localObject1).setBackgroundDrawable(null);
+            return localObject2;
+          }
+          catch (Throwable paramContext)
+          {
+            QLog.d("StructMsgItemCover", 1, "createView error:" + paramContext.getMessage());
+          }
+          bool2 = false;
+        }
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        for (;;)
+        {
+          localDrawable2 = null;
+          continue;
+          localObject2 = new FixRatioPAHighLightImageView(paramContext);
+          ((PAHighLightImageView)localObject2).setId(2131368493);
+          ((PAHighLightImageView)localObject2).setContentDescription(((Resources)localObject3).getString(2131691094));
+          localObject1 = localObject2;
+        }
+      }
+    }
+    label317:
+    if (TextUtils.isEmpty(paramView))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("Tofu_TofuDataBaseHandler", 2, String.format("makeReqItemIfPull [%s] [canPull,tsCheck]=[%b,%b] [curTs,lastTs,interval]=[%d,%d,%d]", new Object[] { bdqn.a(paramTofuItem.busId), Boolean.valueOf(bool2), Boolean.valueOf(bool1), Long.valueOf(paramLong), Long.valueOf(paramTofuItem.lastPullTsLocal), Long.valueOf(paramTofuItem.pullInterval) }));
+        QLog.d("[@]", 2, "StructMsgItemCover createView ,url = " + paramView);
       }
-      if ((!bool2) || (!bool1)) {
+      ((PAHighLightImageView)localObject1).setImageDrawable(localDrawable2);
+      ((PAHighLightImageView)localObject1).setScaleType(ImageView.ScaleType.CENTER_CROP);
+      if (bool1) {
+        ((PAHighLightImageView)localObject1).setBackgroundColor(Color.parseColor("#dddfe2"));
+      }
+      for (;;)
+      {
+        if ((this.c != null) && (!this.c.equals("")))
+        {
+          ((View)localObject2).setClickable(true);
+          ((View)localObject2).setOnClickListener(this);
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("[@]", 2, "StructMsgItemCover createView end!");
+        return localObject2;
+        ((PAHighLightImageView)localObject1).setBackgroundColor(Color.parseColor("#dddfe4"));
+      }
+    }
+    label387:
+    label552:
+    label632:
+    label2045:
+    for (;;)
+    {
+      int j;
+      try
+      {
+        if ((paramView.startsWith("http://")) || (paramView.startsWith("https://"))) {
+          break label1230;
+        }
+        boolean bool3 = paramView.startsWith("https://sqimg.qq.com/qq_product_operations/flower/images/aio-msg/android/%s".substring(0, "https://sqimg.qq.com/qq_product_operations/flower/images/aio-msg/android/%s".length() - 2));
+        if (bool3) {
+          break label1230;
+        }
+        try
+        {
+          if (!paramView.startsWith("mqqapi://card")) {
+            break label1111;
+          }
+          i = paramView.lastIndexOf("&uin=");
+          if (i != -1) {
+            break label758;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.e("StructMsgItemCover", 2, "createView, error: index is -1");
+          }
+          ((PAHighLightImageView)localObject1).setImageDrawable(bhmq.a());
+          return localObject2;
+        }
+        catch (MalformedURLException paramContext)
+        {
+          i = 0;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e("StructMsgItemCover", 2, "createView, error: " + paramContext.getMessage());
+        }
+        ((PAHighLightImageView)localObject1).setImageDrawable(bhmq.a());
+        paramContext = null;
+        if ((paramContext == null) || (paramContext.getStatus() != 1)) {
+          break label1957;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("[@]", 2, "StructMsgItemCover createView ,set null");
+        }
+        ((PAHighLightImageView)localObject1).setScaleType(ImageView.ScaleType.CENTER_CROP);
+        if (paramBoolean) {
+          ((PAHighLightImageView)localObject1).setBackgroundDrawable(null);
+        }
+        if ((paramContext == null) || (!paramBoolean)) {
+          break label1984;
+        }
+        j = i;
+        if (i == 0) {
+          j = paramContext.getIntrinsicWidth();
+        }
+        paramContext.setTag(bhez.b(j, j, j));
+        paramContext.setDecodeHandler(bhez.j);
+        ((PAHighLightImageView)localObject1).setImageDrawable(paramContext);
+        if (paramContext.getStatus() == 1) {
+          break label387;
+        }
+        paramContext.restartDownload();
+      }
+      catch (Exception paramContext)
+      {
+        if (!QLog.isColorLevel()) {
+          break label748;
+        }
+      }
+      if ("StructMsgItemCover createView ,exception  = " + paramContext != null)
+      {
+        paramContext = paramContext.getMessage();
+        QLog.d("StructMsgItemCover", 2, paramContext);
+        ((PAHighLightImageView)localObject1).setImageDrawable(localDrawable2);
+        break label387;
+        paramContext = paramView.substring("&uin=".length() + i);
+        i = paramContext.lastIndexOf("&");
+        paramBundle = paramContext;
+        if (i != -1) {
+          paramBundle = paramContext.substring(0, i);
+        }
+        if (localObject2 != null)
+        {
+          localObject3 = ((View)localObject2).getContext();
+          if ((localObject3 instanceof BaseActivity))
+          {
+            ((PAHighLightImageView)localObject1).e = "";
+            QQAppInterface localQQAppInterface = ((BaseActivity)localObject3).app;
+            paramContext = bhmq.a();
+            if (paramView.indexOf("internal_phone") > -1)
+            {
+              i = paramView.indexOf("&headtext=");
+              paramContext = "";
+              if (i != -1)
+              {
+                j = paramView.indexOf("&", i + 1);
+                if (j == -1) {
+                  paramContext = paramView.substring("&headtext=".length() + i);
+                }
+              }
+              else
+              {
+                paramContext = URLDecoder.decode(paramContext);
+                if (TextUtils.isEmpty(paramContext.trim())) {
+                  break label1052;
+                }
+                if (!bool2) {
+                  break label1013;
+                }
+                if (!bhlg.a(paramContext)) {
+                  break label997;
+                }
+                i = ((Context)localObject3).getResources().getDimensionPixelSize(2131298954);
+                ((PAHighLightImageView)localObject1).setTextSize(i);
+                ((PAHighLightImageView)localObject1).e = paramContext;
+                paramContext = ((Context)localObject3).getResources().getDrawable(2130842062);
+              }
+            }
+            for (;;)
+            {
+              ((PAHighLightImageView)localObject1).setImageDrawable(paramContext);
+              return localObject2;
+              paramContext = paramView.substring(i + "&headtext=".length(), j);
+              break;
+              i = ((Context)localObject3).getResources().getDimensionPixelSize(2131298956);
+              break label944;
+              if (bhlg.a(paramContext))
+              {
+                i = ((Context)localObject3).getResources().getDimensionPixelSize(2131298950);
+                break label944;
+              }
+              i = ((Context)localObject3).getResources().getDimensionPixelSize(2131298952);
+              break label944;
+              if (paramBundle.startsWith("+"))
+              {
+                paramContext = aoot.b(localQQAppInterface, paramBundle, (byte)3);
+              }
+              else
+              {
+                paramContext = aoot.a(11, 3);
+                continue;
+                paramContext = aoot.a(localQQAppInterface, 1, paramBundle, 3, paramContext, paramContext);
+              }
+            }
+          }
+        }
+        ((PAHighLightImageView)localObject1).setImageDrawable(bhmq.a());
+        return localObject2;
+        if (paramView.startsWith("troop_notice"))
+        {
+          ((PAHighLightImageView)localObject1).setImageResource(2130843833);
+          return localObject2;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("[@]", 2, "StructMsgItemCover createView ,begin decode");
+        }
+        paramContext = new File(paramView).toURL().toString();
+        for (;;)
+        {
+          for (;;)
+          {
+            try
+            {
+              if (this.t == q)
+              {
+                j = agej.a(70.0F, (Resources)localObject3);
+                i = j;
+              }
+            }
+            catch (MalformedURLException paramContext) {}
+            try
+            {
+              paramContext = URLDrawable.getDrawable(paramContext, i, i, localDrawable2, localDrawable2, true);
+            }
+            catch (MalformedURLException paramContext) {}
+          }
+          if (this.t != r) {
+            break label2025;
+          }
+          j = agej.a(140.0F, (Resources)localObject3);
+          i = j;
+          continue;
+          paramBundle = null;
+          if (paramView.startsWith("https://p.qlogo.cn/gh/"))
+          {
+            j = paramView.lastIndexOf("gh/");
+            paramContext = paramView.substring("gh/".length() + j).split("/")[0];
+            if (TextUtils.isEmpty(paramContext)) {
+              break label2034;
+            }
+            paramView = ((View)localObject2).getContext();
+            if ((paramView instanceof BaseActivity))
+            {
+              paramView = ((BaseActivity)paramView).app;
+              paramBundle = aoot.a(4, 3);
+              ((PAHighLightImageView)localObject1).setImageDrawable(aoot.a(paramView, 4, paramContext, 3, paramBundle, paramBundle));
+              return localObject2;
+            }
+            ((PAHighLightImageView)localObject1).setImageDrawable(bhmq.a());
+            return localObject2;
+          }
+        }
+      }
+      for (;;)
+      {
+        if (this.t == q)
+        {
+          ((PAHighLightImageView)localObject1).setScaleType(ImageView.ScaleType.CENTER_CROP);
+          i = agej.a(70.0F, (Resources)localObject3);
+          if (!bool1) {
+            break label1943;
+          }
+          ((PAHighLightImageView)localObject1).setBackgroundColor(Color.parseColor("#dddfe2"));
+        }
+        for (;;)
+        {
+          paramContext = a(paramContext, i, i, localDrawable2, localDrawable2, true, true, paramView);
+          if (paramContext.getTag() == null) {
+            paramContext.setTag(Integer.valueOf(0));
+          }
+          paramContext.setAutoDownload(true);
+          if (paramContext.getStatus() != 2) {
+            break label2045;
+          }
+          paramContext.restartDownload();
+          break label2045;
+          if ((paramView.startsWith(aavs.b)) || (paramView.startsWith(aavs.c)) || (paramView.startsWith(aavs.d)))
+          {
+            ((PAHighLightImageView)localObject1).setBackgroundDrawable(null);
+            i = paramView.lastIndexOf("&uin=");
+            paramContext = paramView.substring("&uin=".length() + i);
+            paramView = ((View)localObject2).getContext();
+            if ((paramView instanceof BaseActivity))
+            {
+              ((PAHighLightImageView)localObject1).setImageDrawable(((BaseActivity)paramView).app.a(paramContext, false, (byte)4));
+              return localObject2;
+            }
+            ((PAHighLightImageView)localObject1).setImageDrawable(bhmq.a());
+            return localObject2;
+          }
+          if (paramView.startsWith("https://sqimg.qq.com/qq_product_operations/flower/images/aio-msg/android/%s".substring(0, "https://sqimg.qq.com/qq_product_operations/flower/images/aio-msg/android/%s".length() - 2)))
+          {
+            paramContext = new ColorDrawable(0);
+            ((PAHighLightImageView)localObject1).setImageDrawable(URLDrawable.getDrawable(paramView, paramContext, paramContext));
+            return localObject2;
+          }
+          if ((paramView.startsWith("http://imgplat.store.qq.com/bqq_qfpic/520520")) || (paramView.contains(aapa.jdField_a_of_type_JavaLangString)))
+          {
+            paramBoolean = true;
+            this.jdField_a_of_type_Boolean = true;
+            paramBundle = null;
+            paramContext = paramView;
+            paramView = paramBundle;
+            break;
+          }
+          if ((this.ad != null) && (this.ad.equals("1")))
+          {
+            paramBoolean = true;
+            this.jdField_a_of_type_Boolean = true;
+            paramBundle = null;
+            paramContext = paramView;
+            paramView = paramBundle;
+            break;
+          }
+          bool2 = paramView.startsWith("http://qqpublic.qpic.cn");
+          if (bool2)
+          {
+            for (;;)
+            {
+              for (;;)
+              {
+                try
+                {
+                  if (new URL(paramView).getQuery() != null)
+                  {
+                    paramContext = "&spec=screen";
+                    if (this.t == q)
+                    {
+                      paramContext = "&spec=small";
+                      new String(paramView);
+                      paramContext = paramView + paramContext;
+                      paramView = paramBundle;
+                    }
+                  }
+                }
+                catch (MalformedURLException paramContext) {}
+                try
+                {
+                  if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null)
+                  {
+                    paramView = paramBundle;
+                    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message != null) {
+                      paramView = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message;
+                    }
+                  }
+                }
+                catch (MalformedURLException paramView)
+                {
+                  for (;;)
+                  {
+                    paramView = paramContext;
+                  }
+                }
+              }
+              if (this.t == r)
+              {
+                paramContext = "&spec=middle";
+                continue;
+                paramContext = "?spec=screen";
+                if (this.t == q) {
+                  paramContext = "?spec=small";
+                } else if (this.t == r) {
+                  paramContext = "?spec=middle";
+                }
+              }
+            }
+            throw new IllegalArgumentException("illegal url format: " + paramView);
+          }
+          if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg == null) || (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message == null) || (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message.istroop != 1008)) {
+            break label2014;
+          }
+          paramBundle = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message;
+          paramContext = paramView;
+          paramView = paramBundle;
+          break;
+          if (this.t == r)
+          {
+            ((PAHighLightImageView)localObject1).setScaleType(ImageView.ScaleType.CENTER);
+            i = agej.a(140.0F, (Resources)localObject3);
+            break label1367;
+          }
+          ((PAHighLightImageView)localObject1).setScaleType(ImageView.ScaleType.CENTER);
+          break label1367;
+          ((PAHighLightImageView)localObject1).setBackgroundColor(Color.parseColor("#dddfe4"));
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("[@]", 2, "StructMsgItemCover createView ,set listener");
+        }
+        ((PAHighLightImageView)localObject1).setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
+        break label632;
+        ((PAHighLightImageView)localObject1).setImageDrawable(paramContext);
+        break label387;
+        paramContext = " happens error ";
+        break label741;
+        break label552;
+        break label552;
+        paramBundle = null;
+        paramContext = paramView;
+        paramView = paramBundle;
+        continue;
+        break label1186;
+        bool1 = false;
         break;
+        paramBundle = null;
+        paramContext = paramView;
+        paramView = paramBundle;
       }
-      TofuItem localTofuItem = new TofuItem(Long.toString(paramTofuItem.frdUin), paramTofuItem.busId);
-      localTofuItem.cloneFrom(paramTofuItem);
-      return localTofuItem;
+    }
+  }
+  
+  StructMsgForGeneralShare a(View paramView)
+  {
+    for (paramView = paramView.getParent(); paramView != null; paramView = paramView.getParent())
+    {
+      paramView = (ViewGroup)paramView;
+      if (paramView.getId() == 2131378101) {
+        return (StructMsgForGeneralShare)paramView.getTag(2131378101);
+      }
     }
     return null;
   }
   
-  public abstract String a(TofuItem paramTofuItem);
-  
-  public final oidb_0xe61.BeancurdCubeInfo a(TofuItem paramTofuItem)
+  public String a()
   {
-    oidb_0xe61.BeancurdCubeInfo localBeancurdCubeInfo = paramTofuItem.packToPbReq();
-    paramTofuItem = a(paramTofuItem);
-    if (paramTofuItem != null) {
-      localBeancurdCubeInfo.bytes_busi_data_req.set(ByteStringMicro.copyFrom(paramTofuItem));
-    }
-    return localBeancurdCubeInfo;
+    return "Cover";
   }
   
-  public void a() {}
-  
-  public final void a(@NotNull TofuItem paramTofuItem, oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult, long paramLong)
+  public void a(View paramView, int paramInt1, int paramInt2)
   {
-    boolean bool;
-    if ((paramBeancurdCubeInfoResult.uint32_result.has()) && (paramBeancurdCubeInfoResult.uint32_result.get() == 0)) {
-      bool = true;
-    }
-    for (;;)
+    Object localObject1 = null;
+    try
     {
-      if (paramBeancurdCubeInfoResult.beancurdCubeInfo.has())
-      {
-        paramBeancurdCubeInfoResult = (oidb_0xe61.BeancurdCubeInfo)paramBeancurdCubeInfoResult.beancurdCubeInfo.get();
-        bool = a(paramTofuItem, bool, paramLong, paramBeancurdCubeInfoResult);
-        if (!bool) {}
-      }
+      localObject2 = agej.a(paramView);
+      localObject1 = localObject2;
+    }
+    catch (ClassCastException localClassCastException)
+    {
+      Object localObject2;
+      label13:
+      Object localObject3;
+      break label13;
+    }
+    if (localObject1 == null) {}
+    do
+    {
+      return;
+      localObject3 = ((ChatMessage)localObject1).getExtInfoFromExtStr("gdt_msgClick");
+    } while ((TextUtils.isEmpty((CharSequence)localObject3)) || (!this.ac.endsWith("gif")));
+    localObject1 = "0";
+    localObject2 = ((FragmentActivity)paramView.getContext()).getChatFragment();
+    if (localObject2 == null) {}
+    for (localObject2 = null;; localObject2 = ((ChatFragment)localObject2).a())
+    {
       try
       {
-        paramBeancurdCubeInfoResult = a(paramTofuItem);
-        if (!TextUtils.isEmpty(paramBeancurdCubeInfoResult))
-        {
-          BeancurdMsg localBeancurdMsg = new BeancurdMsg();
-          localBeancurdMsg.frienduin = Long.toString(paramTofuItem.frdUin);
-          localBeancurdMsg.busiid = a();
-          localBeancurdMsg.isNeedDelHistory = paramTofuItem.bNeedDelHistory();
-          localBeancurdMsg.ispush = paramTofuItem.bInsertImmediate();
-          localBeancurdMsg.originTime = paramTofuItem.eventTs;
-          localBeancurdMsg.startTime = bbyp.a();
-          localBeancurdMsg.validTime = paramTofuItem.validTime;
-          localBeancurdMsg.buffer = paramBeancurdCubeInfoResult;
-          bdqr.a(this.a, localBeancurdMsg, a(), b());
+        localObject3 = new JSONObject((String)localObject3);
+        if (((JSONObject)localObject3).has("ad_id")) {
+          localObject1 = ((JSONObject)localObject3).getString("ad_id");
         }
-        QLog.d("Tofu_TofuDataBaseHandler", 1, String.format("onGetRsp [%s] bNew=%b ts=%d item=%s", new Object[] { bdqn.a(paramTofuItem.busId), Boolean.valueOf(bool), Long.valueOf(paramLong), paramTofuItem }));
-        return;
-        bool = false;
-        continue;
-        paramBeancurdCubeInfoResult = null;
       }
-      catch (Exception paramBeancurdCubeInfoResult)
+      catch (Exception localException)
       {
+        String str;
         for (;;)
         {
-          QLog.d("Tofu_TofuDataBaseHandler", 1, "onGetRsp exception=" + paramBeancurdCubeInfoResult.getMessage(), paramBeancurdCubeInfoResult);
+          if (QLog.isColorLevel()) {
+            QLog.e("StructMsgItemCover", 2, "parse ad_id error");
+          }
+          str = "0";
         }
+        bdll.b((QQAppInterface)localObject2, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D93", "0X8005D93", paramInt2, 1, paramInt1, str, String.valueOf(paramView.msgId), "1", "");
+        return;
       }
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return paramInt == 0;
-  }
-  
-  public boolean a(TofuItem paramTofuItem, boolean paramBoolean, long paramLong, oidb_0xe61.BeancurdCubeInfo paramBeancurdCubeInfo)
-  {
-    if ((paramBoolean) && (paramBeancurdCubeInfo != null))
-    {
-      long l1 = paramTofuItem.eventTs;
-      long l2 = paramTofuItem.lastPullTsSvr;
-      paramTofuItem.lastPullTsLocal = paramLong;
-      label71:
-      label112:
-      byte[] arrayOfByte;
-      if (paramBeancurdCubeInfo.uint64_event_time.has())
-      {
-        paramLong = paramBeancurdCubeInfo.uint64_event_time.get();
-        paramTofuItem.eventTs = paramLong;
-        if (!paramBeancurdCubeInfo.uint64_pull_interval_time.has()) {
-          break label257;
-        }
-        paramLong = paramBeancurdCubeInfo.uint64_pull_interval_time.get();
-        paramTofuItem.pullInterval = paramLong;
-        if (paramTofuItem.pullInterval <= 0L) {
-          paramTofuItem.pullInterval = 86400L;
-        }
-        if (!paramBeancurdCubeInfo.uint64_last_pull_time.has()) {
-          break label264;
-        }
-        paramLong = paramBeancurdCubeInfo.uint64_last_pull_time.get();
-        paramTofuItem.lastPullTsSvr = paramLong;
-        if (!paramBeancurdCubeInfo.uint64_valid_time.has()) {
-          break label272;
-        }
-        paramLong = paramBeancurdCubeInfo.uint64_valid_time.get();
-        label137:
-        paramTofuItem.validTime = paramLong;
-        if (!paramBeancurdCubeInfo.uint64_flag.has()) {
-          break label280;
-        }
-        paramLong = paramBeancurdCubeInfo.uint64_flag.get();
-        label162:
-        paramTofuItem.flags = paramLong;
-        if (!paramBeancurdCubeInfo.bytes_busi_data_rsp.has()) {
-          break label288;
-        }
-        arrayOfByte = paramBeancurdCubeInfo.bytes_busi_data_rsp.get().toByteArray();
-        label191:
-        paramTofuItem.bytesFromServer = arrayOfByte;
-        if (!paramBeancurdCubeInfo.bytes_busi_data_req.has()) {
-          break label294;
-        }
+      paramView = a(paramView);
+      if (paramView != null) {
+        break label168;
       }
-      label257:
-      label264:
-      label272:
-      label280:
-      label288:
-      label294:
-      for (paramBeancurdCubeInfo = paramBeancurdCubeInfo.bytes_busi_data_req.get().toByteArray();; paramBeancurdCubeInfo = null)
-      {
-        paramTofuItem.bytesFromClient = paramBeancurdCubeInfo;
-        if ((paramTofuItem.eventTs <= l1) || (paramTofuItem.lastPullTsSvr <= l2)) {
-          break label300;
-        }
-        return true;
-        paramLong = paramTofuItem.eventTs;
+      if (!QLog.isColorLevel()) {
         break;
-        paramLong = 86400L;
-        break label71;
-        paramLong = paramTofuItem.lastPullTsSvr;
-        break label112;
-        paramLong = paramTofuItem.validTime;
-        break label137;
-        paramLong = paramTofuItem.flags;
-        break label162;
-        arrayOfByte = null;
-        break label191;
       }
-      label300:
-      return false;
+      QLog.d("StructMsgItemCover", 2, "StructMsgForGeneralShare == NULL");
+      return;
     }
-    paramTofuItem.lastPullTsLocal = paramLong;
-    return false;
   }
   
-  public abstract byte[] a(TofuItem paramTofuItem);
-  
-  public boolean b()
+  public void a(AbsShareMsg paramAbsShareMsg)
   {
-    return false;
+    paramAbsShareMsg.mContentCover = this.ac;
   }
   
-  public boolean c()
+  public void a(ObjectInput paramObjectInput)
   {
-    return false;
+    super.a(paramObjectInput);
+    this.ac = paramObjectInput.readUTF();
+    if (this.jdField_a_of_type_Int <= 3) {}
+    do
+    {
+      do
+      {
+        return;
+        this.c = paramObjectInput.readUTF();
+        this.b = paramObjectInput.readUTF();
+      } while (this.jdField_a_of_type_Int <= 5);
+      this.j = paramObjectInput.readUTF();
+      this.k = paramObjectInput.readUTF();
+      this.l = paramObjectInput.readUTF();
+      this.o = paramObjectInput.readInt();
+      this.p = paramObjectInput.readInt();
+    } while (this.jdField_a_of_type_Int <= 8);
+    this.ad = paramObjectInput.readUTF();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    if (this.ac == null)
+    {
+      str = "";
+      paramObjectOutput.writeUTF(str);
+      if (this.jdField_a_of_type_Int > 3) {
+        break label40;
+      }
+    }
+    label40:
+    label69:
+    label95:
+    label113:
+    do
+    {
+      do
+      {
+        return;
+        str = this.ac;
+        break;
+        if (this.c != null) {
+          break label186;
+        }
+        str = "";
+        paramObjectOutput.writeUTF(str);
+        if (this.b != null) {
+          break label194;
+        }
+        str = "";
+        paramObjectOutput.writeUTF(str);
+      } while (this.jdField_a_of_type_Int <= 5);
+      if (this.j != null) {
+        break label202;
+      }
+      str = "";
+      paramObjectOutput.writeUTF(str);
+      if (this.k != null) {
+        break label210;
+      }
+      str = "";
+      paramObjectOutput.writeUTF(str);
+      if (this.l != null) {
+        break label218;
+      }
+      str = "";
+      paramObjectOutput.writeUTF(str);
+      paramObjectOutput.writeInt(this.o);
+      paramObjectOutput.writeInt(this.p);
+    } while (this.jdField_a_of_type_Int <= 8);
+    label131:
+    if (this.ad == null) {}
+    for (String str = "";; str = this.ad)
+    {
+      paramObjectOutput.writeUTF(str);
+      return;
+      label186:
+      str = this.c;
+      break;
+      label194:
+      str = this.b;
+      break label69;
+      label202:
+      str = this.j;
+      break label95;
+      label210:
+      str = this.k;
+      break label113;
+      label218:
+      str = this.l;
+      break label131;
+    }
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "picture");
+    if (this.ac == null) {}
+    for (String str = "";; str = this.ac)
+    {
+      paramXmlSerializer.attribute(null, "cover", str);
+      if (this.jdField_a_of_type_Int > 3)
+      {
+        if (!TextUtils.isEmpty(this.c)) {
+          paramXmlSerializer.attribute(null, "action", this.c);
+        }
+        if (!TextUtils.isEmpty(this.b)) {
+          paramXmlSerializer.attribute(null, "url", this.b);
+        }
+        if (this.jdField_a_of_type_Int > 5)
+        {
+          if (!TextUtils.isEmpty(this.j)) {
+            paramXmlSerializer.attribute(null, "index", this.j);
+          }
+          if (!TextUtils.isEmpty(this.k)) {
+            paramXmlSerializer.attribute(null, "index_name", this.k);
+          }
+          if (!TextUtils.isEmpty(this.l)) {
+            paramXmlSerializer.attribute(null, "index_type", this.l);
+          }
+          paramXmlSerializer.attribute(null, "w", String.valueOf(this.o));
+          paramXmlSerializer.attribute(null, "h", String.valueOf(this.p));
+          if ((this.jdField_a_of_type_Int > 8) && (!TextUtils.isEmpty(this.ad))) {
+            paramXmlSerializer.attribute(null, "needRoundView", this.ad);
+          }
+        }
+      }
+      paramXmlSerializer.endTag(null, "picture");
+      return;
+    }
+  }
+  
+  public boolean a(bdqc parambdqc)
+  {
+    if (parambdqc == null) {}
+    String str;
+    label18:
+    do
+    {
+      do
+      {
+        return true;
+        str = parambdqc.a("cover");
+        if (str == null) {
+          break;
+        }
+        this.ac = str;
+      } while (this.jdField_a_of_type_Int <= 3);
+      this.c = parambdqc.a("action");
+      this.b = parambdqc.a("url");
+    } while (this.jdField_a_of_type_Int <= 5);
+    this.j = parambdqc.a("index");
+    this.k = parambdqc.a("index_name");
+    this.l = parambdqc.a("index_type");
+    for (;;)
+    {
+      try
+      {
+        str = parambdqc.a("w");
+        if (str != null) {
+          continue;
+        }
+        i = 0;
+        this.o = i;
+        str = parambdqc.a("h");
+        if (str != null) {
+          continue;
+        }
+        i = 0;
+        this.p = i;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        int i;
+        this.o = 0;
+        this.p = 0;
+        continue;
+      }
+      if (this.jdField_a_of_type_Int <= 8) {
+        break;
+      }
+      this.ad = parambdqc.a("needRoundView");
+      return true;
+      str = "";
+      break label18;
+      i = Integer.parseInt(str);
+      continue;
+      i = Integer.parseInt(str);
+    }
   }
 }
 

@@ -1,31 +1,33 @@
-public class pnm
+import android.os.Bundle;
+import android.text.TextUtils;
+import eipc.EIPCResult;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+class pnm
+  implements tfg
 {
-  public int a;
-  public long a;
-  float[] a;
-  public int b;
-  long jdField_b_of_type_Long;
-  float[] jdField_b_of_type_ArrayOfFloat;
-  public int c;
-  public int d;
-  int e;
-  int f;
-  int g;
-  int h;
-  int i;
+  pnm(pnl parampnl, int paramInt, ono paramono) {}
   
-  public String a()
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    double d1 = this.g * 1.0D / this.h;
-    double d2 = 1000.0D * d1 / this.jdField_a_of_type_Long;
-    double d3 = this.jdField_a_of_type_ArrayOfFloat[0] / this.i;
-    double d4 = this.jdField_a_of_type_ArrayOfFloat[1] / this.h;
-    double d5 = this.b[0] / this.i;
-    double d6 = this.b[1] / this.h;
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (int j = 0;; j = 1) {
-      return j + "_" + String.format("%.2f", new Object[] { Double.valueOf(d1) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d2) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d4) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d3) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d6) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d5) });
+    if ((!TextUtils.isEmpty(paramString)) && (paramJSONObject != null)) {}
+    try
+    {
+      paramJSONObject.put("arg_callback", paramString);
+      paramString = new Bundle();
+      paramString.putString("action_update_biu_and_comment_request_string", paramJSONObject.toString());
+      paramString = EIPCResult.createResult(0, paramString);
+      this.jdField_a_of_type_Pnl.callbackResult(this.jdField_a_of_type_Int, paramString);
+      this.jdField_a_of_type_Ono.a();
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
     }
   }
 }

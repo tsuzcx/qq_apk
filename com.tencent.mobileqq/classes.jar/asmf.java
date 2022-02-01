@@ -1,14 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.RelativeLayout;
 
-final class asmf
-  implements DialogInterface.OnClickListener
+public class asmf
+  extends asoz
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bcst.b(null, "dc00898", "", "", "0X800ADA8", "0X800ADA8", 2, 0, "", "", "", "");
-    paramDialogInterface.dismiss();
-  }
+  public RelativeLayout[] a;
 }
 
 

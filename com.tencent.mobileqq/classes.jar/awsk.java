@@ -1,286 +1,415 @@
-import android.content.Intent;
+import android.app.Activity;
 import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.SystemClock;
 import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ImageView;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
-import com.tencent.mobileqq.multiaio.presenter.MultiAioContext.1;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.LocationShareController.4;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import java.util.HashMap;
 
 public class awsk
+  implements aoog
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private awsj jdField_a_of_type_Awsj;
-  private awsn jdField_a_of_type_Awsn;
-  private awso jdField_a_of_type_Awso;
-  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private List<akaj> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private volatile Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private volatile List<RecentBaseData> jdField_b_of_type_JavaUtilList;
-  private int jdField_c_of_type_Int;
-  private volatile Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private anyu jdField_a_of_type_Anyu;
+  private aojs jdField_a_of_type_Aojs;
+  private aoof jdField_a_of_type_Aoof;
+  private aoog jdField_a_of_type_Aoog;
+  private awpk jdField_a_of_type_Awpk;
+  private awpp jdField_a_of_type_Awpp = new awsl(this);
+  private awpq jdField_a_of_type_Awpq;
+  private awqj jdField_a_of_type_Awqj;
+  private awsu jdField_a_of_type_Awsu;
+  private awta jdField_a_of_type_Awta;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MapWidget jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget;
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler;
+  private HashMap<String, awst> jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
+  private View b;
+  private View c;
   
-  public awsk(awsj paramawsj)
+  public awsk(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Awsj = paramawsj;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Awpq = awpq.a(paramQQAppInterface);
   }
   
-  public static awsk a(AppInterface paramAppInterface)
+  private String a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioContext", 2, "create() called with: app = [" + paramAppInterface + "]");
+    if (Long.parseLong(paramString) <= 0L) {
+      return paramString;
     }
-    paramAppInterface = (awsj)paramAppInterface.getManager(325);
-    awsk localawsk = new awsk(paramAppInterface);
-    localawsk.c(paramAppInterface.a(localawsk));
-    return localawsk;
-  }
-  
-  private void a(List<RecentBaseData> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioContext", 2, "setRecentUserList() called with: recentUserList = [" + paramList + "]");
+    String str = bhlg.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, paramString, 0);
+    if (this.jdField_a_of_type_Awpk.a() == 0) {
+      str = ((anyw)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(51)).e(paramString).getFriendNickWithAlias();
     }
-    this.jdField_b_of_type_JavaUtilList = paramList;
-  }
-  
-  private void c(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public akaj a(MultiAIOItemFragment paramMultiAIOItemFragment)
-  {
-    Object localObject2 = null;
-    int i = paramMultiAIOItemFragment.a();
-    Object localObject1 = localObject2;
-    if (i >= 0)
+    for (;;)
     {
-      localObject1 = localObject2;
-      if (i < this.jdField_a_of_type_JavaUtilList.size()) {
-        localObject1 = (akaj)this.jdField_a_of_type_JavaUtilList.get(i);
+      return str;
+      if (this.jdField_a_of_type_Awpk.a() == 1) {
+        str = bhlg.h(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_Awpk.a(), paramString);
       }
     }
-    localObject2 = localObject1;
-    if (localObject1 == null)
-    {
-      localObject2 = akaq.a(paramMultiAIOItemFragment.getActivity(), paramMultiAIOItemFragment.a(), paramMultiAIOItemFragment.getActivity().app);
-      a(i, (akaj)localObject2);
+  }
+  
+  private void a(Activity paramActivity)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new awso(this, paramActivity));
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.setListener(new awsp(this, paramActivity));
+    this.jdField_a_of_type_Aoof = new aoof(paramActivity, (AppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    this.jdField_a_of_type_Aoof.a(this);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    a(paramQQAppInterface, paramInt, paramString, -1);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, new Object[] { "stopOnErrorSituationByReason: invoked. ", " uin: ", paramString, " reason: ", Integer.valueOf(paramInt2) });
     }
-    return localObject2;
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public View a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {}
-    for (View localView1 = null;; localView1 = (View)this.jdField_a_of_type_JavaUtilArrayList.remove(0))
+    awpk localawpk = new awpk(paramInt1, paramString);
+    awpq localawpq = awpq.a(paramQQAppInterface);
+    localawpq.a(localawpk, false);
+    localawpq.a.b();
+    ThreadManager.excute(new LocationShareController.4(paramQQAppInterface, paramInt1, paramString), 32, null, false);
+    awtz.a(paramQQAppInterface, paramInt1, paramString, false);
+    localawpq.b(localawpk, paramInt2);
+    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
     {
-      if (localView1 != null)
+      paramQQAppInterface = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      if (paramQQAppInterface != null)
       {
-        localObject = localView1.getParent();
-        if (localObject != null) {
-          ((ViewGroup)localObject).removeView(localView1);
+        paramQQAppInterface = paramQQAppInterface.a();
+        if ((paramQQAppInterface == null) || (paramQQAppInterface.h() < 2)) {}
+      }
+    }
+    try
+    {
+      paramQQAppInterface.f(131072);
+      bdll.b(null, "CliOper", "", "", "0X800A8BC", "0X800A8BC", 0, 0, "", "0", "0", "");
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      for (;;)
+      {
+        paramQQAppInterface.printStackTrace();
+      }
+    }
+  }
+  
+  private void a(Integer paramInteger)
+  {
+    if (!bhnv.a())
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693429, 0).a();
+      return;
+    }
+    int i;
+    Integer localInteger;
+    if (paramInteger == null)
+    {
+      i = 0;
+      localInteger = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(i);
+      if ((paramInteger == null) && (localInteger != null))
+      {
+        if (localInteger.intValue() != 3) {
+          break label141;
         }
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("MultiAioContext", 2, "getCacheViewFor() called with: position = [" + paramInt + "], v = " + localView1);
-      Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        View localView2 = (View)((Iterator)localObject).next();
-        QLog.d("MultiAioContext", 2, "getCacheViewFor() cached v = [" + localView2 + "]");
+        bdll.b(null, "CliOper", "", "", "0X800A96C", "0X800A96C", 1, 0, "", "0", "0", "");
       }
     }
-    return localView1;
+    for (;;)
+    {
+      if (localInteger == null) {
+        break label185;
+      }
+      this.c.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Awsu.a(localInteger.intValue());
+      this.jdField_a_of_type_Awta.b();
+      this.jdField_a_of_type_Awsu.a();
+      return;
+      i = paramInteger.intValue();
+      break;
+      label141:
+      if (localInteger.intValue() == 1) {
+        bdll.b(null, "CliOper", "", "", "0X800A96C", "0X800A96C", 2, 0, "", "0", "0", "");
+      }
+    }
+    label185:
+    paramInteger = new awtq();
+    paramInteger.a = Integer.valueOf(i);
+    a(false, paramInteger);
   }
   
-  public awso a()
-  {
-    return this.jdField_a_of_type_Awso;
-  }
-  
-  public List<RecentBaseData> a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, String paramString1, int paramInt, String paramString2, String paramString3)
+  private void a(boolean paramBoolean, awtq paramawtq)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MultiAioContext", 2, "getRecentUserList() called with: app = [" + paramQQAppInterface + "], activity = [" + paramFragmentActivity + "], openedFrom = [" + paramString1 + "], enteranceType = [" + paramInt + "], enteranceUin = [" + paramString2 + "], enterNickName = [" + paramString3 + "], mRecentUserList = " + this.jdField_b_of_type_JavaUtilList);
+      QLog.d("LocationShareController", 2, "[venue] finishRoute: called. success: " + paramBoolean + " routeType: " + paramawtq.a);
     }
-    List localList2 = this.jdField_b_of_type_JavaUtilList;
-    List localList1 = localList2;
-    if (localList2 == null)
+    LocationRoom.Venue localVenue = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a();
+    if (localVenue == null)
     {
-      localList1 = awry.a(paramFragmentActivity, paramQQAppInterface, paramString1, paramInt, paramString2, paramString3);
-      a(localList1);
+      if (QLog.isColorLevel()) {
+        QLog.e("LocationShareController", 2, "[venue] finishRoute: called. venue null");
+      }
+      e();
+      return;
     }
-    return localList1;
+    if (paramawtq.a != null) {
+      if (paramBoolean) {
+        this.jdField_a_of_type_Awsu.a(paramawtq, localVenue);
+      }
+    }
+    for (;;)
+    {
+      this.c.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Awta.b();
+      this.jdField_a_of_type_Awsu.a();
+      return;
+      this.jdField_a_of_type_Awsu.a(paramawtq);
+      continue;
+      this.jdField_a_of_type_Awsu.a(paramawtq);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, "路径规划失败，请稍后重试", 1).a();
+    }
+  }
+  
+  private void b(LocationRoom.Venue paramVenue)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "[venue] showVenue: called.");
+    }
+    this.c.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_Awta.a(paramVenue);
+    this.jdField_a_of_type_Awsu.b();
+    this.jdField_a_of_type_Awta.a();
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_Anyu = new awsm(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anyu);
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_Aojs = new awsn(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aojs);
+  }
+  
+  private void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "[venue] hideVenueAndRoute: called.");
+    }
+    this.c.setVisibility(4);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_Awta.b();
+    this.jdField_a_of_type_Awsu.b();
+  }
+  
+  private void f()
+  {
+    b(null);
+  }
+  
+  private void g()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new awss(this);
+    AppNetConnInfo.registerConnectionChangeReceiver(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+  }
+  
+  private void h()
+  {
+    if (this.jdField_a_of_type_Awpk != null)
+    {
+      awql.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Awpq.a(), this.jdField_a_of_type_Awpk.a(), this.jdField_a_of_type_Awpk.a());
+      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Awpk.a(), this.jdField_a_of_type_Awpk.a(), 2);
+    }
+  }
+  
+  public Bitmap a(String paramString)
+  {
+    Object localObject2 = (awst)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    long l = System.currentTimeMillis();
+    Object localObject1;
+    if (localObject2 != null)
+    {
+      if ((l - ((awst)localObject2).jdField_a_of_type_Long < 4000L) && (((awst)localObject2).jdField_a_of_type_AndroidGraphicsBitmap != null)) {
+        return ((awst)localObject2).jdField_a_of_type_AndroidGraphicsBitmap;
+      }
+      localObject1 = localObject2;
+      if (l - ((awst)localObject2).b < 2000L) {
+        return null;
+      }
+    }
+    else
+    {
+      localObject1 = new awst(null);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject1);
+    }
+    ((awst)localObject1).b = l;
+    localObject2 = this.jdField_a_of_type_Aoof.a(1, paramString);
+    if (localObject2 == null) {
+      this.jdField_a_of_type_Aoof.a(paramString, 200, false, 1, true, (byte)0, 4);
+    }
+    for (;;)
+    {
+      return localObject2;
+      ((awst)localObject1).jdField_a_of_type_Long = l;
+      ((awst)localObject1).jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject2);
+    }
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioContext", 2, "destroy() called");
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this);
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (this.jdField_b_of_type_JavaUtilList != null) {
-      this.jdField_b_of_type_JavaUtilList = null;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_b_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_c_of_type_AndroidGraphicsBitmap = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt, akaj paramakaj)
-  {
-    while (this.jdField_a_of_type_JavaUtilList.size() <= paramInt) {
-      this.jdField_a_of_type_JavaUtilList.add(null);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioContext", 2, "setMiniPie() called with: position = [" + paramInt + "], miniPie = [" + paramakaj + "]");
-    }
-    this.jdField_a_of_type_JavaUtilList.set(paramInt, paramakaj);
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    if (this.jdField_a_of_type_Awsn != null) {
-      this.jdField_a_of_type_Awsn.a(paramIntent);
-    }
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioContext", 2, "setDecorViewBitmap() called with: decorViewBitmap = [" + paramBitmap + "]");
-    }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public void a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, int paramInt)
-  {
-    while (paramInt > 0)
+    try
     {
-      a(paramLayoutInflater.inflate(2131558867, paramViewGroup, false));
-      paramInt -= 1;
+      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+      this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aojs);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anyu);
+      if (this.jdField_a_of_type_Aoof != null) {
+        this.jdField_a_of_type_Aoof.d();
+      }
+      this.jdField_a_of_type_Awpq.b(this.jdField_a_of_type_Awpp);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("LocationShareController", 1, "onFragmentDestroy: failed. ", localException);
+      }
     }
   }
   
-  public void a(View paramView)
+  public void a(aoog paramaoog)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
+    this.jdField_a_of_type_Aoog = paramaoog;
+  }
+  
+  public void a(BaseActivity paramBaseActivity, awpk paramawpk, MapWidget paramMapWidget, awqj paramawqj, ImageView paramImageView, View paramView1, View paramView2, View paramView3)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget = paramMapWidget;
+    this.jdField_a_of_type_Awqj = paramawqj;
+    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    this.jdField_a_of_type_Awpk = paramawpk;
+    this.jdField_a_of_type_AndroidViewView = paramView2;
+    this.b = paramView1;
+    this.c = paramView3;
+    this.jdField_a_of_type_Awta = new awta(this, paramView3);
+    this.jdField_a_of_type_Awsu = new awsu(this, paramView3);
+    this.b.setVisibility(8);
+    LiuHaiUtils.a(paramBaseActivity);
+    if (LiuHaiUtils.jdField_a_of_type_Boolean) {}
+    for (int i = bhgr.a(paramBaseActivity, 112.0F) + LiuHaiUtils.jdField_a_of_type_Int;; i = bhgr.a(paramBaseActivity, 112.0F))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(paramBaseActivity, this.jdField_a_of_type_Awpq.a(this.jdField_a_of_type_Awpk), null, i, paramView3);
+      a(paramBaseActivity);
+      this.jdField_a_of_type_Awpq.a(this.jdField_a_of_type_Awpp);
+      g();
+      d();
+      c();
+      if (blqj.a())
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130840546);
+        paramView3.setBackgroundResource(2130838778);
+      }
+      return;
+    }
+  }
+  
+  public void a(LocationRoom.Venue paramVenue)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("MultiAioContext", 2, "putCacheView() called size = " + this.jdField_a_of_type_JavaUtilArrayList.size() + " with: v = [" + paramView + "]");
+      QLog.d("LocationShareController", 2, "[venue] setVenue: invoked. location: " + paramVenue);
     }
-  }
-  
-  public void a(awsn paramawsn)
-  {
-    this.jdField_a_of_type_Awsn = paramawsn;
-  }
-  
-  public void a(awso paramawso)
-  {
-    this.jdField_a_of_type_Awso = paramawso;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, String paramString1, int paramInt, String paramString2, String paramString3)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getRecentThreadLooper());
+    if (!bhnv.a()) {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693429, 0).a();
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this);
-    this.jdField_a_of_type_AndroidOsHandler.postAtTime(new MultiAioContext.1(this, paramFragmentActivity, paramQQAppInterface, paramString1, paramInt, paramString2, paramString3), this, 0L);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean) {
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    while (paramVenue == null) {
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.setVenueOprating(true);
+    b(paramVenue);
+    this.b.setVisibility(0);
+    this.jdField_a_of_type_Awpq.a(this.jdField_a_of_type_Awpk, paramVenue, new awsq(this, paramVenue));
   }
   
-  public boolean a()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(paramString, true);
   }
   
-  public int b()
+  boolean a()
   {
-    return this.jdField_c_of_type_Int;
+    return this.b.getVisibility() == 0;
   }
   
-  public Bitmap b()
+  void b()
   {
-    return this.jdField_b_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Awso != null) {
-      this.jdField_a_of_type_Awso.a();
+    if (!bhnv.a())
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693429, 0).a();
+      return;
     }
+    LocationRoom.Venue localVenue = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a();
+    if (localVenue == null)
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, "移除失败，请稍后重试", 0).a();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.setVenueOprating(true);
+    this.b.setVisibility(0);
+    this.jdField_a_of_type_Awpq.b(this.jdField_a_of_type_Awpk, localVenue, new awsr(this, localVenue));
   }
   
-  public void b(int paramInt)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(Bitmap paramBitmap)
-  {
-    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public int c()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public Bitmap c()
-  {
-    return this.jdField_c_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public void c(Bitmap paramBitmap)
-  {
-    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, new Object[] { "[location] onDecodeTaskCompleted invoked. ", "remainingTasks = [" + paramInt1 + "], uin = [" + paramString + "], avatar = [" + paramBitmap + "]" });
+    }
+    Bitmap localBitmap = bhmq.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+    awst localawst = (awst)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    long l = System.currentTimeMillis();
+    paramBitmap = localawst;
+    if (localawst == null)
+    {
+      paramBitmap = new awst(null);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramBitmap);
+    }
+    paramBitmap.jdField_a_of_type_Long = l;
+    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(paramString, localBitmap);
+    if (this.jdField_a_of_type_Aoog != null) {
+      this.jdField_a_of_type_Aoog.onDecodeTaskCompleted(paramInt1, paramInt2, paramString, localBitmap);
+    }
   }
 }
 

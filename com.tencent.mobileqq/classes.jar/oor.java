@@ -1,66 +1,82 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class oor
-  implements bklx
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerModule$ChannelBannerInfo;", "", "(Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerModule;)V", "cardReportJson", "", "getCardReportJson", "()Ljava/lang/String;", "setCardReportJson", "(Ljava/lang/String;)V", "channelId", "", "getChannelId", "()I", "setChannelId", "(I)V", "dynamicJson", "getDynamicJson", "setDynamicJson", "pageName", "getPageName", "setPageName", "uniqueId", "getUniqueId", "setUniqueId", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oor
 {
-  oor(oop paramoop, int paramInt, VideoInfo paramVideoInfo) {}
+  private int jdField_a_of_type_Int = -1;
+  @NotNull
+  private String jdField_a_of_type_JavaLangString = "";
+  @NotNull
+  private String b = "";
+  @NotNull
+  private String c = "";
+  @NotNull
+  private String d = "";
   
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public final int a()
   {
-    int i = 0;
-    if (paramInt == this.jdField_a_of_type_Int)
-    {
-      QQToast.a(oop.a(this.jdField_a_of_type_Oop), 0, 2131694579, 0).a();
-      if (oop.a(this.jdField_a_of_type_Oop) != null) {
-        oop.a(this.jdField_a_of_type_Oop).d(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
-      }
-      if ((paramObject == null) || (!(paramObject instanceof DislikeInfo))) {
-        break label359;
-      }
-    }
-    label356:
-    label359:
-    for (long l = ((DislikeInfo)paramObject).a;; l = 0L)
-    {
-      paramView = "";
-      paramInt = i;
-      if (paramInt < paramArrayList.size())
-      {
-        paramObject = (DislikeInfo)paramArrayList.get(paramInt);
-        if (paramObject == null) {
-          break label356;
-        }
-        paramObject = paramView + paramObject.a;
-        paramView = paramObject;
-        if (paramInt != paramArrayList.size() - 1) {
-          paramView = paramObject + ",";
-        }
-      }
-      for (;;)
-      {
-        paramInt += 1;
-        break;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a != null)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f = l;
-          paramArrayList = nxw.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
-          if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a(oop.a(this.jdField_a_of_type_Oop))) {
-            nxw.a(new omp().a(oop.a(this.jdField_a_of_type_Oop)).a(nxw.c).b(nxw.R).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
-          }
-        }
-        else
-        {
-          return;
-        }
-        nxw.a(new omp().a(oop.a(this.jdField_a_of_type_Oop)).a(nxw.c).b(nxw.P).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
-        return;
-      }
-    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @NotNull
+  public final String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public final void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public final void a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  @NotNull
+  public final String b()
+  {
+    return this.b;
+  }
+  
+  public final void b(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.b = paramString;
+  }
+  
+  @NotNull
+  public final String c()
+  {
+    return this.c;
+  }
+  
+  public final void c(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.c = paramString;
+  }
+  
+  @NotNull
+  public final String d()
+  {
+    return this.d;
+  }
+  
+  public final void d(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.d = paramString;
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "channelId = " + this.jdField_a_of_type_Int + ", uniqueId = " + this.jdField_a_of_type_JavaLangString + ", pageName = " + this.b + ", \n dynamicJson = " + this.c + ", \n cardReportJson = " + this.d;
   }
 }
 

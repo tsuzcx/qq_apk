@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.qphone.base.util.QLog;
-import sfb;
+import rwf;
 
 class VideoFeedsPlayManager$4
   implements Runnable

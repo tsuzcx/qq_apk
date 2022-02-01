@@ -1,24 +1,66 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.6.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-final class aszk
-  extends Handler
+public class aszk
+  extends RecyclerView.OnScrollListener
 {
-  aszk(Looper paramLooper)
+  public aszk(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  
+  public void onScrollStateChanged(RecyclerView arg1, int paramInt)
   {
-    super(paramLooper);
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSearchFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    if (this.a.jdField_a_of_type_Aoof != null)
+    {
+      if (paramInt != 0) {
+        break label87;
+      }
+      this.a.c = false;
+      this.a.jdField_a_of_type_Aoof.b();
+      this.a.av_();
+    }
+    for (;;)
+    {
+      if (paramInt == 0)
+      {
+        this.a.g();
+        this.a.b(false);
+      }
+      return;
+      label87:
+      this.a.c = true;
+      this.a.jdField_a_of_type_Aoof.c();
+      this.a.jdField_a_of_type_Aoof.a();
+      synchronized (ExtendFriendBaseFragment.a)
+      {
+        if (this.a.jdField_a_of_type_JavaUtilMap != null) {
+          this.a.jdField_a_of_type_JavaUtilMap.clear();
+        }
+      }
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    Object[] arrayOfObject = (Object[])paramMessage.obj;
-    ((aszq)arrayOfObject[0]).a(paramMessage.what, ((Boolean)arrayOfObject[1]).booleanValue(), arrayOfObject[2]);
+    if ((!ExtendFriendSearchFragment.a(this.a)) && (!ExtendFriendSearchFragment.b(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_Aszx != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_Aszx.getItemCount() - 2) != null))
+    {
+      this.a.a(true);
+      ExtendFriendSearchFragment.a(this.a).post(new ExtendFriendSearchFragment.6.1(this));
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
+    }
+    this.a.a(false, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aszk
  * JD-Core Version:    0.7.0.1
  */

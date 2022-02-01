@@ -1,313 +1,231 @@
-import MQQ.VipUserInfo;
-import VIP.AIOSendRes;
-import android.annotation.TargetApi;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
+import java.util.LinkedList;
+import java.util.Locale;
 
 public class bhgy
+  implements Handler.Callback
 {
-  public static int a;
-  private static bhgy jdField_a_of_type_Bhgy;
-  public static String a;
-  public static int b;
-  public static String b;
-  public static String c;
-  public static String d;
-  public static String e;
-  public static String f;
-  public static String g;
-  public static String h;
-  public static String i;
-  public static String j;
-  public static String k;
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private int c;
-  private int d;
-  private int e;
-  private String l;
-  private String m;
-  private String n;
-  private String o;
+  private long jdField_a_of_type_Long;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final bhgz jdField_a_of_type_Bhgz;
+  private final LinkedList<bhha> jdField_a_of_type_JavaUtilLinkedList;
+  private final LinkedList<bhha> b;
   
-  static
+  public bhgy(bhgz parambhgz)
   {
-    jdField_a_of_type_JavaLangString = "aioVipDonateInfoSpFile_";
-    jdField_b_of_type_JavaLangString = "lastCheckTime_";
-    jdField_c_of_type_JavaLangString = "sendDisable";
-    jdField_d_of_type_JavaLangString = "checkFreq";
-    jdField_e_of_type_JavaLangString = "grayTail";
-    f = "sendList";
-    g = "popGraytips";
-    h = "graytips";
-    i = "hightLight";
-    j = "jumpUrl";
-    jdField_a_of_type_Int = 1;
-    k = "";
-    jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_Bhgz = parambhgz;
+    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    this.b = new LinkedList();
+    this.jdField_a_of_type_AndroidOsHandler = new blhq(ThreadManager.getSubThreadLooper(), this);
+    this.jdField_a_of_type_Long = 0L;
   }
   
-  public bhgy()
+  private void a(bhha parambhha)
   {
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
-  }
-  
-  public static bhgy a()
-  {
-    if (jdField_a_of_type_Bhgy == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bhgy == null) {
-        jdField_a_of_type_Bhgy = new bhgy();
+    if (!parambhha.a()) {
+      if (QLog.isColorLevel()) {
+        QLog.d("FetchInfoListManager", 2, bhsr.a(new Object[] { "addToNeedFetchInfoListInner() ", parambhha.toString(), "非法请求" }));
       }
-      return jdField_a_of_type_Bhgy;
     }
-    finally {}
-  }
-  
-  public long a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return -1L;
-    }
-    if (this.jdField_d_of_type_Int == -1) {
-      this.jdField_d_of_type_Int = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).getInt(jdField_d_of_type_JavaLangString, -1);
-    }
-    return this.jdField_d_of_type_Int * 60 * 1000;
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return null;
-    }
-    if (TextUtils.isEmpty(this.m)) {
-      this.m = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).getString(h, null);
-    }
-    return this.m;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    this.jdField_e_of_type_Int = paramInt;
-    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).edit();
-    paramQQAppInterface.putInt(g, paramInt);
-    if (Build.VERSION.SDK_INT < 9)
+    do
     {
-      paramQQAppInterface.commit();
-      return;
-    }
-    paramQQAppInterface.apply();
-  }
-  
-  @TargetApi(9)
-  public void a(QQAppInterface paramQQAppInterface, VipUserInfo paramVipUserInfo)
-  {
-    int i2 = 0;
-    if ((paramQQAppInterface == null) || (paramVipUserInfo == null)) {
-      return;
-    }
-    Object localObject = paramQQAppInterface.getCurrentAccountUin();
-    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + (String)localObject, 0).edit();
-    this.jdField_c_of_type_Int = paramVipUserInfo.iSendDisable;
-    this.jdField_d_of_type_Int = paramVipUserInfo.iCheckFreq;
-    if (!TextUtils.isEmpty(paramVipUserInfo.sGrayTail))
-    {
-      this.l = paramVipUserInfo.sGrayTail;
-      paramQQAppInterface.putString(jdField_e_of_type_JavaLangString, paramVipUserInfo.sGrayTail);
-    }
-    if ((paramVipUserInfo.vSendList != null) && (paramVipUserInfo.vSendList.size() > 0))
-    {
-      localObject = new StringBuilder();
-      int i1 = i2;
-      if (this.jdField_a_of_type_JavaUtilList == null)
+      do
       {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        i1 = i2;
-      }
-      while (i1 < paramVipUserInfo.vSendList.size())
-      {
-        String str = String.valueOf(paramVipUserInfo.vSendList.get(i1));
-        ((StringBuilder)localObject).append(str).append(",");
-        this.jdField_a_of_type_JavaUtilList.add(str);
-        i1 += 1;
-      }
-      paramQQAppInterface.putString(f, ((StringBuilder)localObject).toString());
-    }
-    paramQQAppInterface.putInt(jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Int);
-    paramQQAppInterface.putInt(jdField_d_of_type_JavaLangString, this.jdField_d_of_type_Int);
-    if (Build.VERSION.SDK_INT < 9)
-    {
-      paramQQAppInterface.commit();
-      return;
-    }
-    paramQQAppInterface.apply();
-  }
-  
-  @TargetApi(9)
-  public void a(QQAppInterface paramQQAppInterface, AIOSendRes paramAIOSendRes)
-  {
-    if ((paramQQAppInterface == null) || (paramAIOSendRes == null)) {}
-    label251:
-    for (;;)
-    {
-      return;
-      this.jdField_e_of_type_Int = paramAIOSendRes.iPopGrayStip;
-      this.m = paramAIOSendRes.sGrayStipMsg;
-      paramAIOSendRes = paramAIOSendRes.mHighLightMap;
-      if ((paramAIOSendRes != null) && (paramAIOSendRes.size() > 0))
-      {
-        this.n = ((String)paramAIOSendRes.keySet().iterator().next());
-        if (!TextUtils.isEmpty(this.n)) {
-          this.o = ((String)paramAIOSendRes.get(this.n));
-        }
-      }
-      paramAIOSendRes = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString, 0).edit();
-      paramAIOSendRes.putInt(g, this.jdField_e_of_type_Int);
-      if (!TextUtils.isEmpty(this.m)) {
-        paramAIOSendRes.putString(h, this.m);
-      }
-      if (!TextUtils.isEmpty(this.n)) {
-        paramAIOSendRes.putString(i, this.n);
-      }
-      if (!TextUtils.isEmpty(this.o)) {
-        paramAIOSendRes.putString(j, this.o);
-      }
-      if (Build.VERSION.SDK_INT < 9) {
-        paramAIOSendRes.commit();
-      }
-      for (;;)
-      {
-        if (this.jdField_e_of_type_Int != jdField_b_of_type_Int) {
-          break label251;
-        }
-        paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
-        if (paramQQAppInterface == null) {
+        return;
+        if ((!this.jdField_a_of_type_JavaUtilLinkedList.contains(parambhha)) && (!this.b.contains(parambhha))) {
           break;
         }
-        paramQQAppInterface.sendMessage(paramQQAppInterface.obtainMessage(58));
-        return;
-        paramAIOSendRes.apply();
+      } while (!QLog.isDevelopLevel());
+      QLog.d("FetchInfoListManager", 4, bhsr.a(new Object[] { "addToNeedFetchInfoListInner()", parambhha.toString(), "已经在队列中了" }));
+      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("FetchInfoListManager", 4, bhsr.a(new Object[] { "addToNeedFetchInfoListInner()", parambhha.toString() }));
       }
-    }
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
-    do
+      this.jdField_a_of_type_JavaUtilLinkedList.addFirst(parambhha);
+    } while (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1));
+    long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+    if ((l < 0L) || (l > 2000L))
     {
-      return false;
-      if (this.jdField_c_of_type_Int == -1) {
-        this.jdField_c_of_type_Int = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).getInt(jdField_c_of_type_JavaLangString, -1);
-      }
-    } while (this.jdField_c_of_type_Int != jdField_a_of_type_Int);
-    return true;
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
-      return false;
-      if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1))
-      {
-        if (this.jdField_a_of_type_JavaUtilList == null) {
-          this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        }
-        paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).getString(f, null);
-        if (!TextUtils.isEmpty(paramQQAppInterface))
-        {
-          paramQQAppInterface = paramQQAppInterface.split(",");
-          int i1 = 0;
-          while (i1 < paramQQAppInterface.length)
-          {
-            CharSequence localCharSequence = paramQQAppInterface[i1];
-            if (!TextUtils.isEmpty(localCharSequence)) {
-              this.jdField_a_of_type_JavaUtilList.add(localCharSequence.trim());
-            }
-            i1 += 1;
-          }
-        }
-      }
-    } while ((this.jdField_a_of_type_JavaUtilList == null) || (!this.jdField_a_of_type_JavaUtilList.contains(paramString)));
-    return true;
-  }
-  
-  public String b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return null;
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      return;
     }
-    if (TextUtils.isEmpty(this.n)) {
-      this.n = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).getString(i, null);
-    }
-    return this.n;
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 300L);
   }
   
-  public boolean b(QQAppInterface paramQQAppInterface)
+  private void b()
   {
-    if (paramQQAppInterface == null) {}
+    if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("FetchInfoListManager", 4, "doFetchInfo fetch list is empty!");
+      }
+    }
     for (;;)
     {
-      return false;
-      String str = paramQQAppInterface.getCurrentAccountUin();
-      if (TextUtils.isEmpty(this.l)) {
-        this.l = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).getString(jdField_e_of_type_JavaLangString, null);
-      }
-      if (!TextUtils.isEmpty(this.l))
+      return;
+      bhha localbhha;
+      do
       {
-        paramQQAppInterface = this.l.split(",");
-        int i1 = 0;
-        while (i1 < paramQQAppInterface.length)
+        localbhha = (bhha)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+      } while ((localbhha == null) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()));
+      if (localbhha == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("FetchInfoListManager", 4, "doFetchInfo req is null !");
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+        if (QLog.isColorLevel()) {
+          QLog.d("FetchInfoListManager", 2, String.format(Locale.getDefault(), "doFetchInfo type:%d  key: %s time:%d", new Object[] { Integer.valueOf(localbhha.jdField_a_of_type_Int), localbhha.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long) }));
+        }
+        if (localbhha.jdField_a_of_type_Int == 1)
         {
-          CharSequence localCharSequence = paramQQAppInterface[i1];
-          if ((!TextUtils.isEmpty(localCharSequence)) && (str.endsWith(localCharSequence.trim()))) {
-            return true;
+          ArrayList localArrayList = new ArrayList();
+          b(localbhha);
+          localArrayList.add(localbhha);
+          int i = Math.min(this.jdField_a_of_type_JavaUtilLinkedList.size(), 20) - 1;
+          while (i >= 0)
+          {
+            localbhha = (bhha)this.jdField_a_of_type_JavaUtilLinkedList.get(i);
+            if ((localbhha != null) && (localbhha.jdField_a_of_type_Int == 1))
+            {
+              this.jdField_a_of_type_JavaUtilLinkedList.remove(i);
+              b(localbhha);
+              localArrayList.add(localbhha);
+            }
+            i -= 1;
           }
-          i1 += 1;
+          this.jdField_a_of_type_Bhgz.a(1, localArrayList);
+        }
+        while (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+        {
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+          return;
+          b(localbhha);
+          this.jdField_a_of_type_Bhgz.a(localbhha);
         }
       }
     }
   }
   
-  public String c(QQAppInterface paramQQAppInterface)
+  private void b(bhha parambhha)
   {
-    if (paramQQAppInterface == null) {
-      return null;
+    if ((parambhha != null) && (!this.b.contains(parambhha)))
+    {
+      parambhha.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      this.b.add(parambhha);
+      if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 30000L);
+      }
     }
-    if (TextUtils.isEmpty(this.o)) {
-      this.o = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).getString(j, k);
-    }
-    return this.o;
   }
   
-  public boolean c(QQAppInterface paramQQAppInterface)
+  private void c()
   {
-    if (paramQQAppInterface == null) {}
+    StringBuilder localStringBuilder;
+    if (QLog.isDevelopLevel())
+    {
+      localStringBuilder = new StringBuilder(200);
+      localStringBuilder.append("dealTimeOut  size:").append(this.b.size()).append(" {");
+    }
+    for (;;)
+    {
+      long l4 = SystemClock.elapsedRealtime();
+      int i = this.b.size() - 1;
+      long l1 = 30000L;
+      if (i >= 0)
+      {
+        bhha localbhha = (bhha)this.b.get(i);
+        long l2;
+        if (localbhha == null)
+        {
+          this.b.remove(localbhha);
+          l2 = l1;
+        }
+        for (;;)
+        {
+          i -= 1;
+          l1 = l2;
+          break;
+          long l3 = l4 - localbhha.jdField_a_of_type_Long;
+          if ((l3 < 0L) || (l3 >= 30000L))
+          {
+            this.b.remove(localbhha);
+            l2 = l1;
+            if (localStringBuilder != null)
+            {
+              localStringBuilder.append(", [").append(localbhha.jdField_a_of_type_Int).append(",").append(localbhha.jdField_a_of_type_JavaLangString).append("]");
+              l2 = l1;
+            }
+          }
+          else
+          {
+            l2 = l1;
+            if (l3 < l1) {
+              l2 = l3;
+            }
+          }
+        }
+      }
+      if (!this.b.isEmpty()) {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, Math.max(1000L, l1));
+      }
+      if ((QLog.isDevelopLevel()) && (localStringBuilder != null))
+      {
+        localStringBuilder.append("}");
+        localStringBuilder.append(" isEmpty: ").append(this.b.isEmpty());
+        QLog.d("FetchInfoListManager", 4, localStringBuilder.toString());
+      }
+      return;
+      localStringBuilder = null;
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilLinkedList.clear();
+    this.b.clear();
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("FetchInfoListManager", 4, "clear");
+    }
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2, Object paramObject, Bundle paramBundle)
+  {
+    paramString2 = new bhha(paramInt, paramString1, paramString2, paramObject, paramBundle);
+    paramString2 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3, paramString2);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString2);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("FetchInfoListManager", 4, String.format(Locale.getDefault(), "addToNeedFetchInfoList [%d, %s]", new Object[] { Integer.valueOf(paramInt), paramString1 }));
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 3) {
+      if ((paramMessage.obj instanceof bhha)) {
+        a((bhha)paramMessage.obj);
+      }
+    }
     do
     {
-      return false;
-      if (this.jdField_e_of_type_Int == -1) {
-        this.jdField_e_of_type_Int = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), 0).getInt(g, 0);
+      return true;
+      if (paramMessage.what == 1)
+      {
+        b();
+        return true;
       }
-    } while (this.jdField_e_of_type_Int != jdField_b_of_type_Int);
+    } while (paramMessage.what != 2);
+    c();
     return true;
   }
 }

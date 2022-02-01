@@ -1,17 +1,18 @@
-import java.util.Comparator;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class maz
-  implements Comparator<lnn>
+final class maz
+  extends ClickableSpan
 {
-  maz(may parammay) {}
+  maz(mbe parammbe) {}
   
-  public int a(lnn paramlnn1, lnn paramlnn2)
+  public void onClick(View paramView)
   {
-    if (paramlnn1.a) {}
-    while (paramlnn2.a) {
-      return 1;
+    View.OnClickListener localOnClickListener = this.a.a();
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(paramView);
     }
-    return 0;
   }
 }
 

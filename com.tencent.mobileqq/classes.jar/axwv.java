@@ -1,34 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class axwv
-  implements View.OnClickListener
+  extends bern
 {
-  public axwv(NearbyProfileFragment paramNearbyProfileFragment) {}
+  private NearbyAppInterface a;
   
-  public void onClick(View paramView)
+  public axwv(NearbyAppInterface paramNearbyAppInterface)
   {
-    this.a.a(false);
-    if (this.a.a.app != null)
+    super(paramNearbyAppInterface);
+    this.a = paramNearbyAppInterface;
+  }
+  
+  public berp a(beyg parambeyg)
+  {
+    if (parambeyg == null) {}
+    do
     {
-      if ((NearbyProfileFragment.a(this.a).iIsGodFlag != 1) || (NearbyProfileFragment.a(this.a).gender != 0)) {
-        break label89;
+      return null;
+      if ((parambeyg.b == 8) || (parambeyg.b == 64) || (parambeyg.b == 21)) {
+        return new bevi(this, parambeyg);
       }
-      bcst.b(this.a.a.app, "CliOper", "", "", "0X800528A", "0X800528A", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label89:
-      if ((NearbyProfileFragment.a(this.a).iIsGodFlag == 1) && (NearbyProfileFragment.a(this.a).gender == 1)) {
-        bcst.b(this.a.a.app, "CliOper", "", "", "0X800528B", "0X800528B", 0, 0, "", "", "", "");
-      }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.richmedia.TransFileController", 2, parambeyg.toString());
+    return null;
   }
 }
 

@@ -1,114 +1,36 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.profile.lifeachivement.LifeAchivementHelper.1;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class azhc
+  implements TextWatcher
 {
-  public static String a(int paramInt)
+  private int jdField_a_of_type_Int;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private int b;
+  
+  public azhc(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    String str = "";
-    if ((paramInt >= 1) && (paramInt < 10000)) {
-      str = String.valueOf(paramInt);
-    }
-    do
+    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (behh.a(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 100))
     {
-      return str;
-      if ((paramInt >= 10000) && (paramInt < 100000000))
-      {
-        if (paramInt % 10000 < 500) {
-          return paramInt / 10000 + "万";
-        }
-        f = paramInt * 1.0F / 10000.0F;
-        return Math.round(f * 10.0F) * 1.0F / 10.0F + "万";
-      }
-    } while (paramInt < 100000000);
-    if (paramInt % 100000000 < 5000000) {
-      return paramInt / 100000000 + "亿";
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity.getActivity(), 1, 2131690196, 0).a();
+      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
     }
-    float f = paramInt * 1.0F / 1.0E+008F;
-    return Math.round(f * 10.0F) * 1.0F / 10.0F + "亿";
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity.rightViewText.setEnabled(AutoReplyEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity, String.valueOf(AutoReplyEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyEditActivity).getText())));
   }
   
-  public static void a(Context paramContext)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LifeAchivementHelper", 2, String.format("jumpToLifeAchivementMiniAppAddPage miniAppUrl=%s", new Object[] { "mqqapi://miniapp/open?_atype=0&_mappid=1110348796&_mvid=&_path=pages%2Findex%2Findex&_vt=3&referer=2062&via=2062_3&_sig=1925072163" }));
-    }
-    MiniAppLauncher.startMiniApp(paramContext, "mqqapi://miniapp/open?_atype=0&_mappid=1110348796&_mvid=&_path=pages%2Findex%2Findex&_vt=3&referer=2062&via=2062_3&_sig=1925072163", 2062, null);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public static void a(Context paramContext, String paramString)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramString = "mqqapi://miniapp/open?_atype=0&_mappid=1110348796&_mvid=&_path=pages%2Fachievement%2Fachievement&_vt=3&referer=2062&via=2062_3&_sig=831969013&openid=" + paramString;
-    if (QLog.isColorLevel()) {
-      QLog.d("LifeAchivementHelper", 2, String.format("jumpToLifeAchivementMiniAppAchivementListPage miniAppUrl=%s", new Object[] { paramString }));
-    }
-    MiniAppLauncher.startMiniApp(paramContext, paramString, 2062, null);
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    paramString = "mqqapi://miniapp/open?_atype=0&_mappid=1110348796&_mvid=&_path=pages%2Fachievement%2Fachievement&_vt=3&referer=2062&via=2062_3&_sig=831969013&openid=" + paramString + "&achievement_id=" + paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("LifeAchivementHelper", 2, String.format("jumpToLifeAchivementMiniAppAchiivementDetailPage miniAppUrl=%s", new Object[] { paramString }));
-    }
-    MiniAppLauncher.startMiniApp(paramContext, paramString, 2062, null);
-  }
-  
-  public static void a(View paramView)
-  {
-    if (paramView == null) {
-      return;
-    }
-    paramView.setClickable(false);
-    paramView.postDelayed(new LifeAchivementHelper.1(paramView), 500L);
-  }
-  
-  public static boolean a(Card paramCard, biab parambiab, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    boolean bool2;
-    boolean bool3;
-    label31:
-    boolean bool1;
-    if ((parambiab == null) || (parambiab.a(10)))
-    {
-      bool2 = true;
-      if ((paramCard == null) || (paramCard.switch_life_achievement == 1)) {
-        break label116;
-      }
-      bool3 = true;
-      if (!paramBoolean1) {
-        break label128;
-      }
-      if ((!bool2) || (!bool3)) {
-        break label122;
-      }
-      bool1 = true;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LifeAchivementHelper", 2, String.format("shouldShowAchivementPanelOrNot configEnable:%s,switchEnable:%s,hasLifeAchivement:%s,isSelf:%s,result:%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean1), Boolean.valueOf(bool1) }));
-      }
-      return bool1;
-      bool2 = false;
-      break;
-      label116:
-      bool3 = false;
-      break label31;
-      label122:
-      bool1 = false;
-      continue;
-      label128:
-      if ((bool2) && (bool3) && (paramBoolean2)) {
-        bool1 = true;
-      } else {
-        bool1 = false;
-      }
-    }
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = (paramInt1 + paramInt3);
   }
 }
 

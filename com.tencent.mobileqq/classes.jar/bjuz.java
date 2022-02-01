@@ -1,19 +1,29 @@
-public final class bjuz
+public class bjuz
 {
-  private static int jdField_a_of_type_Int;
-  private bjvl jdField_a_of_type_Bjvl;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
   
-  private bjuz(bjvl parambjvl)
+  public bjuz()
   {
-    this.jdField_a_of_type_Bjvl = parambjvl;
+    this.jdField_a_of_type_Long = 259200L;
   }
   
-  private String a()
+  public boolean equals(Object paramObject)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("AD_PROXY_ACTION_MOTIVE_BROWSING_END#index#");
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    return i;
+    paramObject = (bjuz)paramObject;
+    if (paramObject != null) {
+      return paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_JavaLangString.hashCode();
   }
 }
 

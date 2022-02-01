@@ -1,59 +1,43 @@
 import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.avgame.ui.AvGameLoadingActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 class mxg
-  implements Application.ActivityLifecycleCallbacks
+  implements DialogInterface.OnClickListener
 {
-  mxg(mxb parammxb) {}
+  mxg(mxc parammxc, Activity paramActivity) {}
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatWindowController", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
-    }
-  }
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatWindowController", 2, "onActivityResumed: " + paramActivity.getClass().getName() + " mHoldByPermission: " + this.a.b + " mIsFloatWindowShowing: " + mxb.b(this.a) + " mIgnoreByOpenSdkForeGround: " + mxb.c(this.a));
-    }
-    if ((this.a.b) && (!mxb.b(this.a)))
+    if (paramInt == 1)
     {
-      ThreadManager.getUIHandlerV2().removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      ThreadManager.getUIHandlerV2().postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
-      paramActivity.finish();
+      paramDialogInterface.cancel();
+      if (this.jdField_a_of_type_AndroidAppActivity != null)
+      {
+        paramDialogInterface = this.jdField_a_of_type_Mxc.a();
+        if (TextUtils.isEmpty(paramDialogInterface))
+        {
+          QLog.e("AvGameManager", 1, "preCheckIsUserGamePlaying roomPlayingId empty");
+          QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131690343, 0).a();
+        }
+      }
+      for (;;)
+      {
+        bdll.b(mxc.a(this.jdField_a_of_type_Mxc), "dc00898", "", "", "0X800B016", "0X800B016", 0, 0, "", "", "", "");
+        return;
+        mxc.a(this.jdField_a_of_type_Mxc);
+        AvGameLoadingActivity.a(false, this.jdField_a_of_type_AndroidAppActivity, null, paramDialogInterface, null, "");
+        continue;
+        QLog.e("AvGameManager", 1, "alertDialogWithRetCode createAvGameRoom context  null ");
+      }
     }
-    while (!mxb.c(this.a)) {
-      return;
-    }
-    mxb.a(this.a, false);
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.a(true);
-  }
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatWindowController", 2, "onActivityStarted: " + paramActivity.getClass().getName());
-    }
-  }
-  
-  public void onActivityStopped(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatWindowController", 2, "onActivityStopped: " + paramActivity.getClass().getName());
-    }
+    paramDialogInterface.cancel();
+    QLog.d("AvGameManager", 2, "showInPlayDialog dialog cancel");
+    bdll.b(mxc.a(this.jdField_a_of_type_Mxc), "dc00898", "", "", "0X800B017", "0X800B017", 0, 0, "", "", "", "");
   }
 }
 

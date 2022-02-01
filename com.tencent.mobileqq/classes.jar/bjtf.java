@@ -1,62 +1,22 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import org.json.JSONObject;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 
-@JsPlugin(secondary=true)
-public class bjtf
-  extends BaseJsPlugin
+class bjtf
+  implements DialogInterface.OnClickListener
 {
-  @JsEvent({"checkGameBuddyType"})
-  public void checkGameBuddyType(RequestEvent paramRequestEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameBuddyPlugin", 2, new Object[] { "[checkGameBuddyType 2.0], req:", paramRequestEvent });
-    }
-    try
-    {
-      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
-      if ("checkGameBuddyType".equals(((JSONObject)localObject).optString("api_name")))
-      {
-        localObject = ((JSONObject)localObject).optJSONObject("data").optString("uid");
-        Bundle localBundle = new Bundle();
-        localBundle.putString("uin_value", (String)localObject);
-        QIPCClientHelper.getInstance().callServer("module_game_buddy", "action_check_aio_type", localBundle, new bjtg(this, paramRequestEvent));
-      }
-      return;
-    }
-    catch (Throwable paramRequestEvent)
-    {
-      QLog.e("GameBuddyPlugin", 1, paramRequestEvent, new Object[0]);
-    }
-  }
+  bjtf(bjtd parambjtd, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  @JsEvent({"invokeGameBuddyAio"})
-  public void invokeGameBuddyAio(RequestEvent paramRequestEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameBuddyPlugin", 2, new Object[] { "[invokeGameBuddyAio 2.0], req:", paramRequestEvent });
-    }
-    try
-    {
-      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
-      if ("invokeGameBuddyAio".equals(((JSONObject)localObject).optString("api_name")))
-      {
-        localObject = ((JSONObject)localObject).optJSONObject("data").optString("uid");
-        Bundle localBundle = new Bundle();
-        localBundle.putString("uin_value", (String)localObject);
-        QIPCClientHelper.getInstance().callServer("module_game_buddy", "action_check_aio_type", localBundle, new bjth(this, paramRequestEvent, (String)localObject));
-      }
-      return;
-    }
-    catch (Throwable paramRequestEvent)
-    {
-      QLog.e("GameBuddyPlugin", 1, paramRequestEvent, new Object[0]);
-    }
+    bjtd.a(this.jdField_a_of_type_Bjtd, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    bdll.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
+    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(bjwo.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjwo.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjwo.d);
+    paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 101 + "|" + paramDialogInterface;
+    bjqw.a().a(25, paramDialogInterface);
+    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString("pageId") + "_" + this.jdField_a_of_type_AndroidOsBundle.getString("moduleId") + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjwo.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjwo.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjwo.d);
+    bjto.b("6006", "2", "0", this.jdField_a_of_type_AndroidOsBundle.getString(bjwo.i), paramDialogInterface);
   }
 }
 

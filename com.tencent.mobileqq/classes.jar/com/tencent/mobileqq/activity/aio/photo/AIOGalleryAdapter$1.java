@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahrx;
+import aibl;
 
 class AIOGalleryAdapter$1
   implements Runnable

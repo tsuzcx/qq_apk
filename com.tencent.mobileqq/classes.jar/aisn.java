@@ -1,15 +1,12 @@
-import android.app.Activity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 public abstract interface aisn
 {
-  public abstract Activity a();
+  public abstract List<? extends aism> a(String paramString, SessionInfo paramSessionInfo);
   
-  public abstract QQAppInterface a();
-  
-  public abstract void a();
-  
-  public abstract void b();
+  public abstract boolean a(QQAppInterface paramQQAppInterface, String paramString);
 }
 
 

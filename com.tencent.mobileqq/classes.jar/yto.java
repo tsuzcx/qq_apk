@@ -1,21 +1,37 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class yto
-  implements Animation.AnimationListener
+  extends zsv
 {
-  public yto(EditVideoGuide paramEditVideoGuide) {}
+  private final String a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public yto(Context paramContext, String paramString)
   {
-    this.a.g();
-    this.a.a.a(0);
+    super(paramContext);
+    this.a = paramString;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public int a()
+  {
+    return 0;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public View a(int paramInt, yqw paramyqw, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public yqw a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
 }
 
 

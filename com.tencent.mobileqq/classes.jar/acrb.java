@@ -1,8 +1,17 @@
-public class acrb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingFragment;
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
+public final class acrb
+  implements DialogInterface.OnDismissListener
 {
-  public static String a()
+  public acrb(GdtMotiveBrowsingFragment paramGdtMotiveBrowsingFragment) {}
+  
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    return "8.4.1";
+    GdtMotiveBrowsingFragment.a(this.a).b();
   }
 }
 

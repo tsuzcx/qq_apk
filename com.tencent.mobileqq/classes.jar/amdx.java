@@ -1,31 +1,22 @@
-class amdx
-  extends bkov
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import mqq.os.MqqHandler;
+
+public class amdx
+  extends MqqHandler
 {
-  amdx(amdv paramamdv, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  public amdx(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public void a(int paramInt, Object paramObject, bkou[] paramArrayOfbkou)
+  public void handleMessage(Message paramMessage)
   {
-    paramInt = 0;
-    if ((paramArrayOfbkou == null) || (paramArrayOfbkou.length <= 0)) {}
-    for (;;)
+    switch (paramMessage.what)
     {
+    case 1: 
+    case 2: 
+    default: 
       return;
-      if (paramArrayOfbkou.length < 0)
-      {
-        paramArrayOfbkou[0].b = 0;
-        paramArrayOfbkou[0].a = 0;
-        paramInt = 1;
-      }
-      while (paramInt < paramArrayOfbkou.length)
-      {
-        paramArrayOfbkou[paramInt].b = -1;
-        paramArrayOfbkou[paramInt].a = -1;
-        paramInt += 1;
-      }
     }
+    this.a.d();
   }
 }
 

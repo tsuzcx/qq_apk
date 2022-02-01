@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agjo;
+import agsp;
 import android.content.Context;
 import android.content.IntentFilter;
 import com.tencent.mobileqq.activity.BaseChatPie;
@@ -9,20 +9,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class AIOIconChangeByTimeHelper$1
   implements Runnable
 {
-  public AIOIconChangeByTimeHelper$1(agjo paramagjo) {}
+  public AIOIconChangeByTimeHelper$1(agsp paramagsp) {}
   
   public void run()
   {
-    synchronized (agjo.a(this.this$0))
+    synchronized (agsp.a(this.this$0))
     {
-      if (agjo.a(this.this$0) != null)
+      if (agsp.a(this.this$0) != null)
       {
         IntentFilter localIntentFilter = new IntentFilter();
         localIntentFilter.addAction("android.intent.action.TIME_TICK");
         localIntentFilter.addAction("android.intent.action.TIMEZONE_CHANGED");
         localIntentFilter.addAction("android.intent.action.TIME_SET");
-        agjo.a(this.this$0).a.registerReceiver(agjo.a(this.this$0), localIntentFilter);
-        agjo.a(this.this$0).set(1);
+        agsp.a(this.this$0).a.registerReceiver(agsp.a(this.this$0), localIntentFilter);
+        agsp.a(this.this$0).set(1);
       }
       return;
     }

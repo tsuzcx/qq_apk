@@ -1,18 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class akdm
-  implements DialogInterface.OnDismissListener
+  implements akfu
 {
-  public akdm(DialogBaseActivity paramDialogBaseActivity) {}
+  public akdm(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    if (this.a.a != null) {
-      this.a.a.setOnDismissListener(null);
-    }
-    this.a.a = null;
+    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void b()
+  {
+    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(2);
   }
 }
 

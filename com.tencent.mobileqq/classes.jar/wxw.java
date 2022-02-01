@@ -1,62 +1,35 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class wxw
-  extends wvq
-  implements wld<wzk, xba>
+public final class wxw
+  extends QQUIEventReceiver<wxp, wtz>
 {
-  protected String a;
-  protected List<String> a;
-  
-  public wxw(String paramString, List<String> paramList)
+  public wxw(@NonNull wxp paramwxp)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
+    super(paramwxp);
   }
   
-  public void a()
+  public void a(@NonNull wxp paramwxp, @NonNull wtz paramwtz)
   {
-    wzk localwzk = new wzk();
-    localwzk.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    wlb.a().a(localwzk, this);
-  }
-  
-  public void a(@NonNull wzk paramwzk, @Nullable xba paramxba, @NonNull ErrorMessage paramErrorMessage)
-  {
-    wxy localwxy = new wxy();
-    if ((paramxba == null) || (paramErrorMessage.isFail()))
+    yuk.a(this.TAG, "onEvent, %s", String.valueOf(paramwtz));
+    wvn localwvn = paramwxp.a.a(3, "");
+    if ((localwvn != null) && (paramwtz.jdField_b_of_type_JavaLangString.equals(localwvn.jdField_e_of_type_JavaLangString)))
     {
-      c();
-      wfo.a().dispatch(localwxy);
+      yuk.b(this.TAG, "onEvent, guideInfoNode read");
+      paramwxp = new wwv();
+      paramwxp.jdField_b_of_type_JavaLangString = localwvn.jdField_a_of_type_JavaLangString;
+      paramwxp.c = localwvn.jdField_a_of_type_Int;
+      paramwxp.d = 5;
+      paramwxp.jdField_b_of_type_Long = localwvn.jdField_e_of_type_Long;
+      wow.a().a(paramwxp, null);
       return;
     }
-    yqp.b("Q.qqstory.net:VidToShareGroupVideoInfoHandler", "onCmdRespond: request.count=" + paramwzk.jdField_a_of_type_JavaUtilList.size() + ",content=" + paramwzk.jdField_a_of_type_JavaUtilList.toString());
-    yqp.b("Q.qqstory.net:VidToShareGroupVideoInfoHandler", "onCmdRespond: count=" + paramxba.jdField_a_of_type_JavaUtilList.size() + ",content=" + paramxba.toString());
-    b();
-    paramxba.jdField_a_of_type_JavaUtilList = ((wpj)wpm.a(5)).a(paramxba.jdField_a_of_type_JavaUtilList);
-    localwxy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramwzk = paramxba.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramwzk.hasNext())
-    {
-      paramxba = (StoryVideoItem)paramwzk.next();
-      paramxba = new ygo(paramxba.mVid, paramxba);
-      localwxy.jdField_a_of_type_JavaUtilList.add(paramxba);
-    }
-    wfo.a().dispatch(localwxy);
+    paramwxp.a.a(paramwtz.jdField_a_of_type_JavaLangString, paramwtz.jdField_a_of_type_Long);
   }
   
-  public String toString()
+  public Class acceptEventClass()
   {
-    return "VidToShareGroupVideoInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + ", mCollectionId='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    return wtz.class;
   }
 }
 

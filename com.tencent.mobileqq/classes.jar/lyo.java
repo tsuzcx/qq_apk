@@ -1,16 +1,48 @@
-import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
+import android.text.TextUtils;
+import com.tencent.av.share.AVSchema;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface lyo
+public class lyo
+  extends aojs
 {
-  public abstract int a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
+  public String a;
   
-  public abstract void a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
+  private lyo(AVSchema paramAVSchema) {}
   
-  public abstract void a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  protected void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
+    }
+  }
   
-  public abstract boolean a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
-  
-  public abstract int b(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
+  protected void a(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
+  {
+    long l = AudioHelper.b();
+    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.a("onGetSimpleTroopInfoResult", l)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (paramTroopInfo == null);
+        paramString = paramTroopInfo.troopuin;
+      } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)));
+      QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "], enum_verify_status[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lym.a + "], seq[" + l + "]");
+      this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lym.b = paramTroopInfo.troopname;
+    } while (this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lym.a != 0);
+    if (ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new lyp(this, l)))
+    {
+      this.jdField_a_of_type_ComTencentAvShareAVSchema.b(l, this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onGetSimpleTroopInfoResult, 等权限确认, seq[" + l + "]");
+  }
 }
 
 

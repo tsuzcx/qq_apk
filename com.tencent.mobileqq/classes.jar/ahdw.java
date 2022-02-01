@@ -1,28 +1,12 @@
-import android.app.Activity;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import mqq.os.MqqHandler;
-
-class ahdw
-  implements awnc<EmoticonPackage>
+final class ahdw
 {
-  ahdw(ahdu paramahdu, String paramString) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  ahdw(String paramString, int paramInt)
   {
-    if ((paramEmoticonPackage != null) && (this.jdField_a_of_type_Ahdu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1008) && (this.jdField_a_of_type_Ahdu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1000) && (this.jdField_a_of_type_Ahdu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 10004) && (this.jdField_a_of_type_Ahdu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1001) && (this.jdField_a_of_type_Ahdu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1002) && (this.jdField_a_of_type_Ahdu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1003) && (this.jdField_a_of_type_Ahdu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1004) && (this.jdField_a_of_type_Ahdu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1005) && (this.jdField_a_of_type_Ahdu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1006))
-    {
-      paramEmoticonPackage = this.jdField_a_of_type_Ahdu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-      if (paramEmoticonPackage != null) {
-        paramEmoticonPackage.obtainMessage(22, this.jdField_a_of_type_JavaLangString).sendToTarget();
-      }
-      return;
-    }
-    EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Ahdu.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahdu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_JavaLangString, false, false);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

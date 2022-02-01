@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 import android.content.Intent;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 import com.tencent.mobileqq.app.BaseActivity;
-import pha;
-import phd;
+import ozs;
+import ozv;
 
 public class ReadInJoyUtils$16$1
   implements Runnable
 {
-  public ReadInJoyUtils$16$1(phd paramphd) {}
+  public ReadInJoyUtils$16$1(ozv paramozv) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ReadInJoyUtils$16$1
     localIntent.putExtra("is_from_dian_dian", true);
     localIntent.putExtra("support_topic", true);
     this.this$0.a.startActivity(localIntent);
-    pha.a("3", "1");
+    ozs.a("3", "1");
   }
 }
 

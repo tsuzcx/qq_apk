@@ -1,24 +1,33 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class aoxu
+  extends aoxh
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
-  public float c = 0.0F;
-  public float d = 0.0F;
-  public float e = 0.0F;
-  
-  public aoxu()
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    this.jdField_a_of_type_Float = 2.0F;
-    this.jdField_b_of_type_Float = 2.0F;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ARVideoLayout {width: ").append(this.jdField_a_of_type_Int).append(", height: ").append(this.jdField_b_of_type_Int).append(", scaleX: ").append(this.jdField_a_of_type_Float).append(", scaleY: ").append(this.jdField_b_of_type_Float).append(", transX: ").append(this.c).append(", transY: ").append(this.d).append(", transZ: ").append(this.e).append("}");
-    return localStringBuilder.toString();
+    paramQQAppInterface = new aoxt(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "profile";
+    paramQQAppInterface.c = "setting";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
   }
 }
 

@@ -1,7 +1,6 @@
 package com.tencent.biz.qqcircle.fragments;
 
-import aaaf;
-import aavz;
+import aabg;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,44 +8,27 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import bgru;
-import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
 import com.tencent.biz.qqcircle.report.QCircleReportBean;
 import com.tencent.biz.richframework.part.BasePartFragment;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import uwz;
-import uxb;
-import uxh;
-import uxp;
-import uxx;
-import vjg;
-import zwe;
-import zwj;
-import zxl;
+import com.tencent.superplayer.api.ISPBandwidthPredictor;
+import com.tencent.superplayer.api.SuperPlayerFactory;
+import uys;
+import uyy;
+import uzg;
 
 public abstract class QCircleBaseFragment
   extends BasePartFragment
-  implements zxl<QCircleReportBean>
+  implements aabg<QCircleReportBean>
 {
+  public static final ISPBandwidthPredictor a;
   protected QCircleReportBean a;
   
-  private void a()
+  static
   {
-    File localFile = new File(uxb.i);
-    if ((localFile.exists()) || (bgru.a() == null))
-    {
-      QLog.i("QCircleBaseFragment", 1, "DownLoadZipFile Save file is exist");
-      return;
-    }
-    aaaf.a(localFile, (String)aavz.a().a("KEY_QCIRCLE_BASE_VIEW_DOWNLOAD_URL", "https://downv6.qq.com/video_story/qcircle/base/qcircle_download_pics.zip"), uxb.f);
-  }
-  
-  private void b()
-  {
-    zwe localzwe = zwj.a(uwz.a());
-    vjg localvjg = new vjg(this);
-    localzwe.a(new String[] { "https://downv6.qq.com/video_story/qcircle/animation/rocket1.zip", "https://downv6.qq.com/video_story/qcircle/animation/rocket2.zip", "https://downv6.qq.com/video_story/qcircle/animation/rocket3.zip", "https://downv6.qq.com/video_story/qcircle/animation/rocket_start.zip", "https://downv6.qq.com/video_story/qcircle/animation/rocket_end.zip", "https://downv6.qq.com/video_story/qcircle/animation/single_rocket.zip", "https://downv6.qq.com/video_story/qcircle/animation/list_to_grid.zip", "https://downv6.qq.com/video_story/qcircle/animation/grid_to_list.zip", "https://downv6.qq.com/video_story/qcircle/ttf/qcircle_number_bold_italic.ttf", "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf", "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/2020-empty-state/6-preload/img_preload_fullscreen_disconnect.png", "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/2020-empty-state/6-preload/img_preload_halfscreen_disconnect.png", "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/2020-empty-state/6-preload/img_preload_detailpage_disconnect.png" }, localvjg);
+    jdField_a_of_type_ComTencentSuperplayerApiISPBandwidthPredictor = SuperPlayerFactory.createBandwidthPredictor(BaseApplicationImpl.getContext());
   }
   
   public QCircleInitBean a()
@@ -59,29 +41,27 @@ public abstract class QCircleBaseFragment
   
   public QCircleReportBean a()
   {
-    if (this.a == null) {
-      this.a = new QCircleReportBean();
+    if (this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean == null) {
+      this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean = new QCircleReportBean();
     }
     j();
-    return this.a.setPageId(c()).setPageIdStr(d());
+    return this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean.setPageId(c()).setPageIdStr(d());
   }
   
   public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     QLog.d(c(), 1, c() + "->doOnCreateView");
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    a();
-    b();
   }
   
   public void a(QCircleReportBean paramQCircleReportBean)
   {
-    this.a = QCircleReportBean.setReportBean(c(), paramQCircleReportBean);
+    this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean = QCircleReportBean.setReportBean(c(), paramQCircleReportBean);
   }
   
   public int b()
   {
-    return uxx.a();
+    return uzg.a();
   }
   
   public abstract int c();
@@ -107,8 +87,8 @@ public abstract class QCircleBaseFragment
         localObject = getActivity().getIntent();
       } while ((localObject == null) || (!((Intent)localObject).hasExtra("key_bundle_common_init_bean")));
       localObject = (QCircleInitBean)((Intent)localObject).getSerializableExtra("key_bundle_common_init_bean");
-    } while ((localObject == null) || (((QCircleInitBean)localObject).mFromReportBean == null) || (this.a == null));
-    this.a.assembleFromReportData(((QCircleInitBean)localObject).mFromReportBean);
+    } while ((localObject == null) || (((QCircleInitBean)localObject).getFromReportBean() == null) || (this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean == null));
+    this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean.assembleFromReportData(((QCircleInitBean)localObject).getFromReportBean());
   }
   
   public void onAttach(Activity paramActivity)
@@ -121,14 +101,30 @@ public abstract class QCircleBaseFragment
   {
     QLog.d(c(), 1, c() + "->onDestroy");
     super.onDestroy();
-    uxp.a().a();
-    uxh.a();
+    uyy.a().a();
+    uys.a();
   }
   
   public void onDetach()
   {
     QLog.d(c(), 1, c() + "->onDetach");
     super.onDetach();
+  }
+  
+  public void onPause()
+  {
+    super.onPause();
+    if (getActivity() != null) {
+      jdField_a_of_type_ComTencentSuperplayerApiISPBandwidthPredictor.stop(getActivity());
+    }
+  }
+  
+  public void onResume()
+  {
+    super.onResume();
+    if (getActivity() != null) {
+      jdField_a_of_type_ComTencentSuperplayerApiISPBandwidthPredictor.start(getActivity());
+    }
   }
   
   public void setUserVisibleHint(boolean paramBoolean)

@@ -1,29 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
 class scf
-  implements DialogInterface.OnDismissListener
+  extends sbh
 {
-  scf(sce paramsce) {}
+  scf(sbi paramsbi) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public int a()
   {
-    paramDialogInterface = this.a;
-    StringBuilder localStringBuilder = new StringBuilder().append("DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
-    if (!sce.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      sce.a(paramDialogInterface, bool);
-      if ((sce.a(this.a) != null) && (sce.a(this.a).b()) && (sce.b(this.a)) && (sce.a(this.a))) {
-        sce.a(this.a).c();
-      }
-      if (sce.a(this.a) != null) {
-        sce.a(this.a).g();
-      }
-      sce.a(this.a, false);
-      return;
-    }
+    return 19;
+  }
+  
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    sbi.a(this.a, false);
+    sbi.a(this.a, sbi.a(this.a), paramActionSheetItem.uin, paramActionSheetItem.uinType, paramActionSheetItem.label);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public int c()
+  {
+    return 1;
   }
 }
 

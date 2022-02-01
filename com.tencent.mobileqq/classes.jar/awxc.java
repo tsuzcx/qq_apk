@@ -1,24 +1,26 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class awxc
 {
-  public static HashMap<Integer, String> a = new HashMap();
+  private List<awxd> a = Collections.synchronizedList(new ArrayList());
   
-  static
+  void a(long paramLong)
   {
-    a.put(Integer.valueOf(10001), BaseApplication.getContext().getString(2131717407));
-    a.put(Integer.valueOf(10002), BaseApplication.getContext().getString(2131717405));
-    a.put(Integer.valueOf(10003), BaseApplication.getContext().getString(2131718195));
-    a.put(Integer.valueOf(10004), BaseApplication.getContext().getString(2131691138));
-    a.put(Integer.valueOf(10005), BaseApplication.getContext().getString(2131717402));
-    a.put(Integer.valueOf(10006), BaseApplication.getContext().getString(2131717419));
-    a.put(Integer.valueOf(10007), BaseApplication.getContext().getString(2131717406));
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((awxd)localIterator.next()).a(paramLong);
+    }
   }
   
-  public static String a(int paramInt)
+  void b(long paramLong)
   {
-    return (String)a.get(Integer.valueOf(paramInt));
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((awxd)localIterator.next()).b(paramLong);
+    }
   }
 }
 

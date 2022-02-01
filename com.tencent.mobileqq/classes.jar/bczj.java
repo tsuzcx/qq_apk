@@ -1,23 +1,12 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.util.Size;
+import java.util.Comparator;
 
-class bczj
-  implements AdExposureChecker.ExposureCallback
+public class bczj
+  implements Comparator<Size>
 {
-  bczj(bczi parambczi, akmh paramakmh, Context paramContext, GdtAd paramGdtAd) {}
-  
-  public void onExposure(WeakReference<View> paramWeakReference)
+  public int a(Size paramSize1, Size paramSize2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletGdtAdManager_StructMsgItemLayout31", 2, "reportImpression...");
-    }
-    this.jdField_a_of_type_Akmh.a(this.jdField_a_of_type_AndroidContentContext, 1);
-    this.jdField_a_of_type_Akmh.a(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForImpression());
-    akmh.a("public.tailplace.show", "", "", "1", "");
+    return Long.signum(paramSize1.getWidth() * paramSize1.getHeight() - paramSize2.getWidth() * paramSize2.getHeight());
   }
 }
 

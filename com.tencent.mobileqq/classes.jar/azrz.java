@@ -1,39 +1,86 @@
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
 
 public class azrz
-  extends aupb
+  implements Comparable<azrz>
 {
-  public azrz(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public int a;
+  public Drawable a;
+  public String a;
+  public int[] a;
+  public int b;
+  public Drawable b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  protected void a(boolean paramBoolean, String paramString)
+  public int a(azrz paramazrz)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onBandIntimateRelationship");
+    if (paramazrz != null) {
+      return this.c - paramazrz.c;
     }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
-      QLog.d("intimate_relationship", 1, String.format("onBandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
-    }
-    while (!paramBoolean) {
-      return;
-    }
-    ProfileCardMoreActivity.a(this.a);
+    return 0;
   }
   
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public Drawable a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "ProfileCard onDisbandIntimateRelationship");
+    try
+    {
+      if ((this.a == null) && (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)))
+      {
+        Object localObject = URLDrawable.URLDrawableOptions.obtain();
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(this.e, (URLDrawable.URLDrawableOptions)localObject);
+        localObject = URLDrawable.getDrawable(this.f, (URLDrawable.URLDrawableOptions)localObject);
+        StateListDrawable localStateListDrawable = new StateListDrawable();
+        localStateListDrawable.addState(new int[] { -16842908, -16842913, -16842919 }, localURLDrawable);
+        localStateListDrawable.addState(new int[] { -16842908, 16842913, -16842919 }, (Drawable)localObject);
+        this.a = localStateListDrawable;
+      }
+      return this.a;
     }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
-      QLog.d("intimate_relationship", 1, String.format("ProfileCard onDisbandIntimateRelationship, friendUin: %s", new Object[] { paramString }));
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("AIOPanelIconItem", 1, localThrowable, new Object[0]);
+      }
     }
-    while (!paramBoolean1) {
-      return;
+  }
+  
+  public Drawable b()
+  {
+    try
+    {
+      if ((this.b == null) && (!TextUtils.isEmpty(this.g)) && (!TextUtils.isEmpty(this.h)))
+      {
+        Object localObject = URLDrawable.URLDrawableOptions.obtain();
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(this.g, (URLDrawable.URLDrawableOptions)localObject);
+        localObject = URLDrawable.getDrawable(this.h, (URLDrawable.URLDrawableOptions)localObject);
+        StateListDrawable localStateListDrawable = new StateListDrawable();
+        localStateListDrawable.addState(new int[] { -16842908, -16842913, -16842919 }, localURLDrawable);
+        localStateListDrawable.addState(new int[] { -16842908, 16842913, -16842919 }, (Drawable)localObject);
+        this.b = localStateListDrawable;
+      }
+      return this.b;
     }
-    ProfileCardMoreActivity.a(this.a);
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("AIOPanelIconItem", 1, localThrowable, new Object[0]);
+      }
+    }
   }
 }
 

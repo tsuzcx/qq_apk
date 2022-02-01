@@ -1,50 +1,28 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.ContainerView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afhf
-  extends Handler
+  implements View.OnClickListener
 {
-  public afhf(TextPreviewActivity paramTextPreviewActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public afhf(QQMapActivity paramQQMapActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    if (this.a.a == null)
     {
-    default: 
-    case 100: 
-    case 16: 
-    case 18: 
-    case 19: 
-      do
-      {
-        do
-        {
-          return;
-          if (this.a.jdField_a_of_type_JavaLangCharSequence != null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(this.a.jdField_a_of_type_JavaLangCharSequence);
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a.setMovementMethod(bhvn.a());
-          return;
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_Gc.a(this.a.e));
-          return;
-        } while (!(paramMessage.obj instanceof Drawable));
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)paramMessage.obj);
-        return;
-      } while (!(paramMessage.obj instanceof Bitmap));
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)paramMessage.obj);
-      return;
+      this.a.a = ((blir)blji.a(this.a, null));
+      this.a.a.b(2131697415);
+      this.a.a.b(2131691990);
+      this.a.a.c(2131690580);
+      this.a.a.a(new afhg(this));
     }
-    this.a.a();
+    if (!this.a.a.isShowing()) {
+      this.a.a.show();
+    }
+    bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,16 +1,8 @@
-public class bbzl
+public abstract interface bbzl
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
+  public abstract double a();
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("----dump tempSession info----");
-    localStringBuilder.append("friendType:").append(this.jdField_a_of_type_Int).append(" groupCode:").append(this.jdField_a_of_type_Long).append(" groupUin:").append(this.b);
-    return localStringBuilder.toString();
-  }
+  public abstract double b();
 }
 
 

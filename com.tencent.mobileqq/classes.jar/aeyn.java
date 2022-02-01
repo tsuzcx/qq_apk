@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.MainFragment;
 
 public class aeyn
-  implements bdov
+  implements DialogInterface.OnDismissListener
 {
-  public aeyn(QQSettingMe paramQQSettingMe) {}
+  public aeyn(MainFragment paramMainFragment) {}
   
-  public void onCancel() {}
-  
-  public void onConfirm()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QQSettingMe.d(this.a);
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
   }
 }
 

@@ -1,55 +1,60 @@
-import android.graphics.drawable.Drawable;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class atsn
-  implements bkjj
+  implements atqw
 {
-  atsn(atsm paramatsm) {}
+  atsn(atsm paramatsm, String paramString, atte paramatte) {}
   
-  public void F()
+  public void a(int paramInt, String paramString)
   {
-    atsm.a(this.a, false);
-    this.a.jdField_a_of_type_Atsk.o();
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2DiscTaskExcuter faild");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atsm.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter faild:" + paramInt);
+      }
+      this.jdField_a_of_type_Atte.a(atsi.a(this.jdField_a_of_type_Atsm.jdField_a_of_type_Long, bool2), bool1);
+      return;
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
+      }
+    }
   }
   
-  public void G()
+  public void a(String paramString1, String paramString2)
   {
-    atsm.a(this.a, false);
-    if (atsm.a(this.a)) {
-      this.a.b(true);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "2");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Atsm.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Atsm.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Atsm.d);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Atsm.e);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Atsm.f);
+    localBundle.putString("_m_ForwardUuid", paramString1);
+    localBundle.putString("_m_ForwardFileIdCrc", paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atsm.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter success");
     }
-    if (atsm.b(this.a)) {
-      this.a.a(true);
-    }
-  }
-  
-  public void H() {}
-  
-  public void a(float paramFloat)
-  {
-    atsm.a(this.a, true);
-    if (atsm.a(this.a) != null)
-    {
-      Drawable localDrawable = atsm.a(this.a).getBackground();
-      if (localDrawable != null) {
-        localDrawable.mutate().setAlpha((int)(255.0F * paramFloat));
-      }
-    }
-    if (paramFloat < 0.8F)
-    {
-      if (atsm.a(this.a) != null) {
-        atsm.a(this.a).setVisibility(8);
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      }
-    }
+    this.jdField_a_of_type_Atte.a(paramString1, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsn
  * JD-Core Version:    0.7.0.1
  */

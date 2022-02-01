@@ -1,34 +1,24 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage;
+import com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage.2.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.observer.BusinessObserver;
 
-class agcs
-  implements ImageAssetDelegate
+public class agcs
+  implements BusinessObserver
 {
-  agcs(agcq paramagcq) {}
+  public agcs(ReminderCardItemPage paramReminderCardItemPage) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inScaled = true;
-    localOptions.inDensity = 320;
-    try
+    paramBundle = new ReminderCardItemPage.2.1(this, paramInt, paramBoolean, paramBundle);
+    if (Looper.myLooper() == Looper.getMainLooper())
     {
-      paramLottieImageAsset = bgmo.a(agcq.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
-      return paramLottieImageAsset;
+      paramBundle.run();
+      return;
     }
-    catch (Exception paramLottieImageAsset)
-    {
-      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap error");
-      return null;
-    }
-    catch (OutOfMemoryError paramLottieImageAsset)
-    {
-      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap OOM");
-    }
-    return null;
+    ReminderCardItemPage.a(this.a).runOnUiThread(paramBundle);
   }
 }
 

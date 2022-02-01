@@ -1,19 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.nearby.widget.GradientAnimTextView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class aytw
-  implements View.OnClickListener
+public class aytw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aytw(aytv paramaytv) {}
+  public aytw(GradientAnimTextView paramGradientAnimTextView) {}
   
-  public final void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.dismiss();
-    this.a.a().a(1040);
-    EventCollector.getInstance().onViewClicked(paramView);
+    GradientAnimTextView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 

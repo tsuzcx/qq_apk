@@ -1,30 +1,23 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ahqn
-  implements View.OnTouchListener
+public class ahqn
+  implements View.OnClickListener
 {
-  ahqn(ahqj paramahqj) {}
+  public ahqn(ScribbleItemBuilder paramScribbleItemBuilder) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    MessageRecord localMessageRecord = (MessageRecord)paramView.getTag();
+    if (localMessageRecord != null) {
+      ((FlashChatManager)this.a.a.getManager(217)).a(paramView.getContext(), localMessageRecord);
     }
-    for (;;)
-    {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramView.setAlpha(1.0F);
-        }
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import arov;
+import asej;
 
 public class QFlutterAppData
   extends XmlData
 {
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public String assetResMD5 = "";
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public String libAppSoMD5 = "";
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public String libSkinSoMD5 = "";
   
   public String getSharedPreferencesName()

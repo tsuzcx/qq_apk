@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.phonecontact;
 
-import awna;
+import axfs;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -15,7 +15,7 @@ class PhoneContactManagerImp$11
     {
       Iterator localIterator = PhoneContactManagerImp.a(this.this$0).iterator();
       if (localIterator.hasNext()) {
-        ((awna)localIterator.next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+        ((axfs)localIterator.next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
       }
     }
   }

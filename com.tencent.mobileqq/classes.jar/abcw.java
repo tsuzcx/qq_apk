@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class abcw
+class abcw
+  implements View.OnClickListener
 {
-  public PBStringField a;
-  public PBStringField b;
+  abcw(abcu paramabcu) {}
   
-  public abcw(PBStringField paramPBStringField1, PBStringField paramPBStringField2)
+  public void onClick(View paramView)
   {
-    this.a = paramPBStringField1;
-    this.b = paramPBStringField2;
+    abcu.a(this.a).setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

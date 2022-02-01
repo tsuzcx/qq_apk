@@ -1,49 +1,25 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import msf.msgcomm.msg_comm.MsgType0x210;
-import tencent.im.s2c.msgtype0x210.submsgtype0x7c.submsgtype0x7c.MsgBody;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bcaw
-  implements bcba
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static void a(int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SecSpyFileDecoder", 4, "OnLinePushMessageProcessor receive 0x7c push message, seq = " + paramInt1 + "submsgtype:" + paramInt2);
-    }
-    submsgtype0x7c.MsgBody localMsgBody = new submsgtype0x7c.MsgBody();
-    try
-    {
-      localMsgBody.mergeFrom(paramArrayOfByte);
-      long l = localMsgBody.uint64_uin.get();
-      if (paramQQAppInterface.getCurrentAccountUin().equals(String.valueOf(l))) {
-        ((bbxa)paramQQAppInterface.getManager(94)).a(localMsgBody, 3);
-      }
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("SecSpyFileDecoder", 2, "parse 0x7c push msg error", paramQQAppInterface);
-    }
-  }
+  public bcaw(MixSearchWebFragment paramMixSearchWebFragment) {}
   
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbyn parambbyn, MessageHandler paramMessageHandler)
+  public void onGlobalLayout()
   {
-    int i = paramMsg.msg_head.msg_seq.get();
-    int j = paramMsg.msg_head.msg_type.get();
-    paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
-    a(i, j, paramMessageHandler.app, paramMsgType0x210);
+    InputMethodManager localInputMethodManager = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    if (localInputMethodManager != null)
+    {
+      this.a.a.requestFocus();
+      localInputMethodManager.showSoftInput(this.a.a, 0);
+    }
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

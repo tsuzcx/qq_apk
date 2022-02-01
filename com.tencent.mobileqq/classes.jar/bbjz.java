@@ -1,26 +1,13 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
-import com.tencent.mobileqq.search.fragment.MessageSearchDetailFragment;
-import com.tencent.widget.ListView;
-
-public class bbjz
-  extends bbiq<bbnb, bbww>
+public abstract class bbjz
+  extends bbke
 {
-  public bbjz(MessageSearchDetailFragment paramMessageSearchDetailFragment, ListView paramListView, aobu paramaobu, FullMessageSearchResult.SearchResultItem paramSearchResultItem, String paramString, QQAppInterface paramQQAppInterface)
-  {
-    super(paramListView, paramaobu, paramSearchResultItem, paramString, paramQQAppInterface);
-  }
-  
-  protected bbps a(int paramInt)
-  {
-    return new bbqp(MessageSearchDetailFragment.a(this.a));
-  }
-  
-  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new bbww(paramViewGroup, 2131562848);
-  }
+  public int b = -1;
+  public int c;
+  public int d = -1;
+  public int e = -1;
+  public int f = -1;
+  public int g = -1;
+  public int h = -1;
 }
 
 

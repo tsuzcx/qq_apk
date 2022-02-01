@@ -1,16 +1,34 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-class beqp
-  extends Handler
+public abstract class beqp
+  implements INetInfoHandler
 {
-  beqp(beqo parambeqo) {}
+  protected abstract void a();
   
-  public void handleMessage(Message paramMessage)
+  protected abstract void b();
+  
+  public void onNetMobile2None()
   {
-    if ((paramMessage.what == beqo.j) && (beqo.e == this.a.k)) {
-      beqo.a(this.a);
-    }
+    b();
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    a();
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    a();
+  }
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    b();
   }
 }
 

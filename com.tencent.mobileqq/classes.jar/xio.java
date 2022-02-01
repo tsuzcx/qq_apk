@@ -1,13 +1,31 @@
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
 
-class xio
-  implements yco
+public final class xio
+  implements Parcelable.Creator
 {
-  xio(xin paramxin, List paramList) {}
-  
-  public void a(ycp paramycp)
+  public StoryPushMsg a(Parcel paramParcel)
   {
-    xin.a(this.jdField_a_of_type_Xin, this.jdField_a_of_type_JavaUtilList, paramycp);
+    int i = paramParcel.readInt();
+    Object localObject = paramParcel.readString();
+    String str1 = paramParcel.readString();
+    long l = paramParcel.readLong();
+    String str2 = paramParcel.readString();
+    String str3 = paramParcel.readString();
+    int j = paramParcel.readInt();
+    String str4 = paramParcel.readString();
+    String str5 = paramParcel.readString();
+    String str6 = paramParcel.readString();
+    paramParcel = paramParcel.readBundle();
+    localObject = new StoryPushMsg(i, (String)localObject, str1, l, str3, str4, j, str5, str6, str2);
+    ((StoryPushMsg)localObject).a = paramParcel;
+    return localObject;
+  }
+  
+  public StoryPushMsg[] a(int paramInt)
+  {
+    return new StoryPushMsg[paramInt];
   }
 }
 

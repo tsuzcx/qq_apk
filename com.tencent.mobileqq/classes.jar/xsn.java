@@ -1,19 +1,19 @@
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.io.File;
 
-public class xsn
-  extends xmr
+public abstract interface xsn
 {
-  public xsn(AbsVideoInfoWidget paramAbsVideoInfoWidget) {}
+  public abstract void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean);
   
-  public void g()
-  {
-    super.g();
-    if (this.a.jdField_b_of_type_Boolean)
-    {
-      AbsVideoInfoWidget.a(this.a);
-      yqp.b(this.a.jdField_b_of_type_JavaLangString, "destroy by activity");
-    }
-  }
+  public abstract void a(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg);
+  
+  public abstract boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg, int paramInt, Object paramObject);
+  
+  public abstract boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg, boolean paramBoolean);
+  
+  public abstract void b(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg);
+  
+  public abstract void c(VideoViewVideoHolder paramVideoViewVideoHolder, xtg paramxtg);
 }
 
 

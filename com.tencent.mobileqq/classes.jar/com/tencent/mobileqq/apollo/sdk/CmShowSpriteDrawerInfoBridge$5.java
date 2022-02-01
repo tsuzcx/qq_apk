@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import amur;
-import amvm;
-import amvn;
+import angl;
+import anhg;
+import anhh;
 
 public class CmShowSpriteDrawerInfoBridge$5
   implements Runnable
 {
-  public CmShowSpriteDrawerInfoBridge$5(amvn paramamvn, amvm paramamvm) {}
+  public CmShowSpriteDrawerInfoBridge$5(anhh paramanhh, anhg paramanhg) {}
   
   public void run()
   {
-    amur localamur = this.a.a();
-    if (localamur != null) {
-      localamur.b();
+    angl localangl = this.a.a();
+    if (localangl != null) {
+      localangl.b();
     }
   }
 }

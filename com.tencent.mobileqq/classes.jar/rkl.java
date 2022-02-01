@@ -1,20 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class rkl
-  implements View.OnClickListener
+public abstract class rkl
 {
-  rkl(rkk paramrkk) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  rkm jdField_a_of_type_Rkm;
   
-  public void onClick(View paramView)
+  public rkl(Context paramContext, QQAppInterface paramQQAppInterface, rkm paramrkm)
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    if (rkk.a(this.a) != null) {
-      rkk.a(this.a).a(paramView, i);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Rkm = paramrkm;
   }
+  
+  public void a() {}
+  
+  public abstract void a(String paramString, boolean paramBoolean);
+  
+  public abstract void b();
 }
 
 

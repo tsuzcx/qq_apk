@@ -1,16 +1,22 @@
-import kotlin.Lazy;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule$Companion;", "", "()V", "TAG", "", "instance", "Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule;", "getInstance", "()Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule;", "instance$delegate", "Lkotlin/Lazy;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qpw
+public class qpw
+  extends ClickableSpan
 {
-  @NotNull
-  public final qpv a()
+  public qpw(ComponentHeaderPublish paramComponentHeaderPublish) {}
+  
+  public void onClick(View paramView)
   {
-    Lazy localLazy = qpv.a();
-    qpw localqpw = qpv.a;
-    return (qpv)localLazy.getValue();
+    ozs.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(agej.a(2, 14, this.a.getResources()));
   }
 }
 

@@ -1,6 +1,14 @@
+import android.view.View.OnClickListener;
+
 public abstract interface bltd
 {
-  public abstract void a(boolean paramBoolean, int paramInt, String paramString);
+  public abstract int a();
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean b(int paramInt);
+  
+  public abstract void setOnClickListener(View.OnClickListener paramOnClickListener);
 }
 
 

@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bbte
-  extends bbti
+  implements bbsw
 {
-  public bbte(GroupSearchEngine paramGroupSearchEngine, bbtj parambbtj, String paramString, int paramInt)
+  public bbte(SignTextEditFragment paramSignTextEditFragment) {}
+  
+  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    super(paramGroupSearchEngine, parambbtj, paramString, paramInt);
+    SignTextEditFragment.a(this.a, this.a.a, paramBoolean);
   }
   
-  public bbmx a(List<bbmy> paramList, String paramString)
+  public void b(int paramInt, boolean paramBoolean)
   {
-    return new bbmq(paramList, paramString, GroupSearchEngine.a(this.a));
+    if (paramInt == -1) {
+      QQToast.a(this.a.getActivity(), 2131717966, 1).a();
+    }
+    SignTextEditFragment.a(this.a, this.a.a, SignTextEditFragment.a(this.a).b());
   }
 }
 

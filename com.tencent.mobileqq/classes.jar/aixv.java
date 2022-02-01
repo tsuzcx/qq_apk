@@ -1,35 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.AddRequestSuspiciousMsgFragment;
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
 
-public class aixv
-  extends anmu
+public abstract interface aixv
 {
-  public aixv(AddRequestSuspiciousMsgFragment paramAddRequestSuspiciousMsgFragment) {}
+  public abstract void a();
   
-  public void onAgreeSuspiciousMsg(boolean paramBoolean, int paramInt, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddRequestSuspiciousMsgFragment", 2, "onAgreeSuspiciousMsg " + paramBoolean + " " + paramInt + " " + paramLong);
-    }
-    if ((AddRequestSuspiciousMsgFragment.a(this.a) != null) && (AddRequestSuspiciousMsgFragment.a(this.a).uin == paramLong))
-    {
-      AddRequestSuspiciousMsgFragment.a(this.a);
-      if (paramBoolean)
-      {
-        QQToast.a(this.a.getActivity(), anni.a(2131698684), 0).a();
-        AddRequestSuspiciousMsgFragment.b(this.a);
-        this.a.getActivity().finish();
-      }
-    }
-    else
-    {
-      return;
-    }
-    QQToast.a(this.a.getActivity(), anni.a(2131698685), 0).a();
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b();
 }
 
 

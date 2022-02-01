@@ -1,20 +1,20 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import vyb;
+import wbv;
 
 public class QCircleRecommendImageView$4$1
   implements Runnable
 {
-  public QCircleRecommendImageView$4$1(vyb paramvyb) {}
+  public QCircleRecommendImageView$4$1(wbv paramwbv) {}
   
   public void run()
   {
     if (this.a.jdField_a_of_type_Boolean)
     {
-      QCircleRecommendImageView.c(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRecommendImageView);
+      QCircleRecommendImageView.b(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRecommendImageView);
       return;
     }
-    QCircleRecommendImageView.d(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRecommendImageView);
+    QCircleRecommendImageView.c(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRecommendImageView);
   }
 }
 

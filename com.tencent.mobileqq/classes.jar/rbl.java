@@ -1,9 +1,12 @@
-import android.os.IInterface;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 
-public abstract interface rbl
-  extends IInterface
+public class rbl
 {
-  public abstract void a(boolean paramBoolean);
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
+  ReadInJoyNickNameTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView;
 }
 
 

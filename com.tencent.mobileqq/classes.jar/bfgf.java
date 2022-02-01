@@ -1,21 +1,13 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
 
 public class bfgf
-  extends bffs
+  implements DialogInterface.OnClickListener
 {
-  public bfgf(View paramView)
-  {
-    super(paramView);
-  }
+  public bfgf(MediaPreviewActivity paramMediaPreviewActivity) {}
   
-  protected void a()
-  {
-    this.a.setVisibility(4);
-    this.c.setVisibility(0);
-    this.b.setVisibility(4);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

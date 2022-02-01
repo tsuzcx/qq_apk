@@ -1,28 +1,15 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.image.URLImageView;
+import java.util.ArrayList;
 
-public class ppl
-  extends RecyclerView.ViewHolder
+public abstract interface ppl
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  URLImageView jdField_b_of_type_ComTencentImageURLImageView;
+  public abstract ArrayList<BaseArticleInfo> a(int paramInt);
   
-  ppl(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
-  {
-    super(paramView);
-  }
+  public abstract void a(int paramInt);
   
-  protected int a()
-  {
-    return getAdapterPosition() - 1;
-  }
+  public abstract void a(int paramInt, ppm paramppm);
+  
+  public abstract int[] a(int paramInt);
 }
 
 

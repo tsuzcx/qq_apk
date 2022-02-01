@@ -2,14 +2,14 @@ package com.tencent.mobileqq.profile.PersonalityLabel;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import azep;
-import azeq;
-import azes;
-import bglf;
-import blsb;
-import blsi;
+import azxc;
+import azxd;
+import azxf;
+import bhlg;
+import bmtd;
+import bmtk;
 import com.tencent.mobileqq.app.QQAppInterface;
-import zvc;
+import zyx;
 
 class ShareHelper$1$2$1
   implements Runnable
@@ -21,16 +21,16 @@ class ShareHelper$1$2$1
     if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$2.a.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$2.a.a.jdField_a_of_type_Azes.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$2.a.a.jdField_a_of_type_Azxf.a(false);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      zvc.a(1, 2131695773);
+      zyx.a(1, 2131695816);
       return;
     }
-    blsi localblsi = blsi.a();
-    localblsi.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$2.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    localblsi.b = bglf.h(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$2.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$2.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-    blsb.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$2.a.a.jdField_a_of_type_AndroidAppActivity, localblsi, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$2.a.a.jdField_a_of_type_AndroidAppActivity.getString(2131691908), "快来看看我的QQ个性标签吧", 1);
+    bmtk localbmtk = bmtk.a();
+    localbmtk.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$2.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+    localbmtk.b = bhlg.h(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$2.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$2.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    bmtd.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$2.a.a.jdField_a_of_type_AndroidAppActivity, localbmtk, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$2.a.a.jdField_a_of_type_AndroidAppActivity.getString(2131691912), "快来看看我的QQ个性标签吧", 1);
   }
 }
 

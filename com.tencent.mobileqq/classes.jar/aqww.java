@@ -1,33 +1,94 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.qphone.base.util.QLog;
 
-class aqww
-  extends ClickableSpan
+public class aqww
+  implements DialogInterface.OnDismissListener
 {
-  aqww(aqwv paramaqwv, String paramString, Context paramContext) {}
+  public aqww(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bgrl.a(this.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getApplication().getRuntime().getAccount(), (Activity)this.jdField_a_of_type_AndroidContentContext);
-    bcst.b(null, "dc00898", "", "", aqwv.a(this.jdField_a_of_type_Aqwv), aqwv.a(this.jdField_a_of_type_Aqwv), 2, 0, "", "", "", "");
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
-    paramTextPaint.setUnderlineText(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearchFriendActivity", 2, "onDismiss|pickerType : " + this.a.i);
+    }
+    if (this.a.i == 0)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
+      this.a.jdField_a_of_type_Anve.a(this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int);
+      paramDialogInterface = this.a.jdField_a_of_type_Anve.a(this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int);
+      if (AppSetting.c)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(anzj.a(2131701265) + paramDialogInterface);
+        bhga.a(this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, anzj.a(2131701268) + paramDialogInterface);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearchFriendActivity", 2, "onDismiss|mCurAgeIndex1 : " + this.a.f + ", mCurAgeIndex2 : " + this.a.g + ", mAgeSelectIndex1 : " + this.a.jdField_b_of_type_Int + ", mAgeSelectIndex2 : " + this.a.jdField_c_of_type_Int);
+      }
+      bdll.b(this.a.app, "CliOper", "", "", "0X8004243", "0X8004243", 0, 0, this.a.jdField_b_of_type_Int + "", this.a.jdField_c_of_type_Int + "", "", "");
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = null;
+      if (ConditionSearchFriendActivity.a(this.a) > 0)
+      {
+        this.a.jdField_e_of_type_AndroidViewView.scrollBy(0, -ConditionSearchFriendActivity.a(this.a));
+        ConditionSearchFriendActivity.c(this.a, 0);
+      }
+      return;
+      if (this.a.i == 3)
+      {
+        this.a.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
+        this.a.jdField_a_of_type_Anve.b(this.a.jdField_d_of_type_Int);
+        if (AppSetting.c)
+        {
+          this.a.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(anzj.a(2131701267) + anve.c[this.a.jdField_d_of_type_Int]);
+          bhga.a(this.a.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem, anzj.a(2131701278) + anve.c[this.a.jdField_d_of_type_Int]);
+        }
+        bdll.b(this.a.app, "CliOper", "", "", "0X8006F0B", "0X8006F0B", 0, 0, this.a.jdField_d_of_type_Int + "", "", "", "");
+      }
+      else
+      {
+        this.a.jdField_d_of_type_AndroidWidgetTextView = null;
+        paramDialogInterface = ConditionSearchFriendActivity.a(this.a);
+        String[] arrayOfString = new String[4];
+        arrayOfString[0] = this.a.jdField_b_of_type_JavaLangString;
+        arrayOfString[1] = this.a.jdField_a_of_type_ArrayOfJavaLangString[0];
+        arrayOfString[2] = this.a.jdField_a_of_type_ArrayOfJavaLangString[1];
+        arrayOfString[3] = this.a.jdField_a_of_type_ArrayOfJavaLangString[2];
+        if (this.a.i == 1)
+        {
+          this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
+          this.a.jdField_a_of_type_Anve.a(0, paramDialogInterface);
+          this.a.jdField_a_of_type_Anve.b(arrayOfString);
+          if (AppSetting.c)
+          {
+            this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(anzj.a(2131701264) + paramDialogInterface);
+            bhga.a(this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem, anzj.a(2131701263) + paramDialogInterface);
+          }
+        }
+        else if (this.a.i == 2)
+        {
+          this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
+          this.a.jdField_a_of_type_Anve.a(1, paramDialogInterface);
+          this.a.jdField_a_of_type_Anve.c(arrayOfString);
+          if (AppSetting.c)
+          {
+            this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(anzj.a(2131701274) + paramDialogInterface);
+            bhga.a(this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem, anzj.a(2131701275) + paramDialogInterface);
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqww
  * JD-Core Version:    0.7.0.1
  */

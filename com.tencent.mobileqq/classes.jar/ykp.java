@@ -1,30 +1,23 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.AutoPlayImageView;
-import com.tencent.image.QQLiveDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.content.Context;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class ykp
-  implements URLDrawable.URLDrawableListener
+  extends ytp
 {
-  public ykp(AutoPlayImageView paramAutoPlayImageView) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public ykp(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if (AutoPlayImageView.a(this.a) == 2) {
-      if ((paramURLDrawable != null) && ((paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
-        ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).pause();
-      }
-    }
-    while ((AutoPlayImageView.a(this.a) != 3) || (paramURLDrawable == null) || (!(paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
+    super(paramContext, paramString1, paramString2, paramInt1, paramInt2);
+  }
+  
+  protected void U_()
+  {
+    zsv localzsv = a().a("FeedSegment");
+    if ((localzsv != null) && (localzsv.a() == 0))
+    {
+      this.a = true;
       return;
     }
-    ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).recyleAndKeepPostion();
+    this.a = false;
   }
 }
 

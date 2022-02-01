@@ -1,41 +1,54 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.BrowserAppInterface.TBSLogRunnable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.utils.TbsLogClient;
+import mqq.os.MqqHandler;
+
 public class anub
-  implements anil
+  extends TbsLogClient
 {
-  protected void a(int paramInt) {}
-  
-  protected void a(int paramInt1, int paramInt2) {}
-  
-  protected void b(int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public anub(BrowserAppInterface paramBrowserAppInterface, Context paramContext)
   {
-    switch (paramInt)
-    {
+    super(paramContext);
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-            } while (paramObject == null);
-            paramObject = (Object[])paramObject;
-            a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
-            return;
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 1);
-        a(((Integer)paramObject[0]).intValue());
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length < 1);
-    b(((Integer)paramObject[0]).intValue());
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
+    }
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+  }
+  
+  public void showLog(String paramString)
+  {
+    if (this.a.b == -1) {
+      this.a.b = 0;
+    }
+    if (this.a.b == 1) {
+      this.a.getHandler(BrowserAppInterface.class).post(new BrowserAppInterface.TBSLogRunnable(this.a, paramString));
+    }
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
   }
 }
 

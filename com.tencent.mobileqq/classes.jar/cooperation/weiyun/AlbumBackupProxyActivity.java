@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.view.MotionEvent;
-import blfh;
-import blfq;
+import bmgk;
+import bmgt;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -26,9 +26,9 @@ public class AlbumBackupProxyActivity
     localIntent.putExtra("userQqResources", 1);
     localIntent.putExtra("useSkinEngine", true);
     localIntent.putExtra("weiyun_backup_source", paramString2);
-    paramString2 = new blfq(0);
+    paramString2 = new bmgt(0);
     paramString2.jdField_b_of_type_JavaLangString = "WeiyunPlugin.apk";
-    paramString2.d = paramActivity.getResources().getString(2131719144);
+    paramString2.d = paramActivity.getResources().getString(2131719314);
     paramString2.jdField_a_of_type_JavaLangString = paramString1;
     paramString2.e = "com.weiyun.plugin.cloudalbum.activity.CloudAlbumActivity";
     paramString2.jdField_a_of_type_JavaLangClass = AlbumBackupProxyActivity.class;
@@ -36,7 +36,7 @@ public class AlbumBackupProxyActivity
     if (paramInt != -1) {
       paramString2.jdField_b_of_type_Int = paramInt;
     }
-    blfh.a(paramActivity, paramString2);
+    bmgk.a(paramActivity, paramString2);
   }
   
   @Override

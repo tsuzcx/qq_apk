@@ -1,26 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Spanned;
 
 class bprq
-  implements View.OnClickListener
+  extends bqlx
 {
-  bprq(bprp parambprp, bprs parambprs) {}
-  
-  public void onClick(View paramView)
+  bprq(bpro parambpro, int paramInt)
   {
-    if (!this.jdField_a_of_type_Bprs.a()) {
-      this.jdField_a_of_type_Bprs.b();
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Bprp.a != null) {
-        this.jdField_a_of_type_Bprp.a.a(this.jdField_a_of_type_Bprp);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Bprs.c();
-    }
+    super(paramInt);
+  }
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    String str = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
+    this.jdField_a_of_type_Int = (str.length() - bgsk.b(str).length() + 20);
+    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
   }
 }
 

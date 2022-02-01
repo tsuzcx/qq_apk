@@ -1,13 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
-
-public class lxn
-  implements DialogInterface.OnClickListener
+class lxn
+  implements bmeo
 {
-  public lxn(AVSchema paramAVSchema) {}
+  lxn(lxm paramlxm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(bmen parambmen)
+  {
+    parambmen.b();
+    parambmen.a();
+  }
 }
 
 

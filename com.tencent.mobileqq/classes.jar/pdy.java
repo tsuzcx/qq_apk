@@ -1,28 +1,90 @@
-import android.os.Bundle;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function1;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/helper/RIJBiuNetworkHelper$requestBiuAfterComment$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pdy
-  extends niv
+public class pdy
 {
-  pdy(Function1 paramFunction1) {}
+  private static volatile pdy jdField_a_of_type_Pdy;
+  private final List<pdz> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
+  public static pdy a()
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    if (jdField_a_of_type_Pdy == null) {}
+    try
     {
-      this.a.invoke(Boolean.valueOf(true));
-      return;
+      if (jdField_a_of_type_Pdy == null) {
+        jdField_a_of_type_Pdy = new pdy();
+      }
+      return jdField_a_of_type_Pdy;
     }
-    this.a.invoke(Boolean.valueOf(false));
+    finally {}
   }
   
-  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
+  public void a(int paramInt, List<DynamicChannelDataModel> paramList)
   {
-    this.a.invoke(Boolean.valueOf(false));
-    return true;
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
+      if (localIterator.hasNext()) {
+        ((pdz)localIterator.next()).a(paramInt, paramList);
+      }
+    }
+  }
+  
+  public void a(int paramInt1, boolean paramBoolean, List<peg> paramList, int paramInt2)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
+      if (localIterator.hasNext()) {
+        ((pdz)localIterator.next()).a(paramInt1, paramBoolean, paramList, paramInt2);
+      }
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
+      if (localIterator.hasNext()) {
+        ((pdz)localIterator.next()).a(paramInt, paramBoolean1, paramBoolean2, paramList);
+      }
+    }
+  }
+  
+  public void a(pdz parampdz)
+  {
+    if (parampdz == null) {}
+    while (this.jdField_a_of_type_JavaUtilList.contains(parampdz)) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(parampdz);
+      return;
+    }
+  }
+  
+  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
+      if (localIterator.hasNext()) {
+        ((pdz)localIterator.next()).b(paramInt, paramBoolean1, paramBoolean2, paramList);
+      }
+    }
+  }
+  
+  public void b(pdz parampdz)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(parampdz);
+      return;
+    }
   }
 }
 

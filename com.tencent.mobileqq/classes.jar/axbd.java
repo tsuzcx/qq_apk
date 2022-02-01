@@ -1,31 +1,32 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import com.tencent.mobileqq.mvvm.LifeCycleFragment;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"LIFE_CYCLE_FRAGMENT_TAG", "", "checkAndAddLifeCycleFragment", "Lcom/tencent/mobileqq/mvvm/LifeCycleFragment;", "Landroid/support/v4/app/FragmentActivity;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class axbd
+public class axbd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  @NotNull
-  public static final LifeCycleFragment a(@NotNull FragmentActivity paramFragmentActivity)
+  public axbd(MedalGuideView paramMedalGuideView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Intrinsics.checkParameterIsNotNull(paramFragmentActivity, "$this$checkAndAddLifeCycleFragment");
-    Object localObject = paramFragmentActivity.getSupportFragmentManager().findFragmentByTag("fragment_tag_life_cycle_fragment");
-    if ((localObject instanceof LifeCycleFragment)) {
-      return (LifeCycleFragment)localObject;
+    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
+    f = ((Float)paramValueAnimator.getAnimatedValue("translate")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
+    f = paramValueAnimator.getAnimatedFraction();
+    if ((!this.a.c) && (f >= 0.8857143F))
+    {
+      this.a.c = true;
+      this.a.jdField_a_of_type_Blhq.sendEmptyMessage(4);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("MedalWallMng", 4, "send MSG_START_3D_ROTATE");
+      }
     }
-    paramFragmentActivity = paramFragmentActivity.getSupportFragmentManager().beginTransaction();
-    if (localObject != null) {
-      paramFragmentActivity.remove((Fragment)localObject);
+    if (f >= 1.0F) {
+      paramValueAnimator.removeAllUpdateListeners();
     }
-    localObject = new LifeCycleFragment();
-    paramFragmentActivity.add((Fragment)localObject, "fragment_tag_life_cycle_fragment");
-    paramFragmentActivity.commitAllowingStateLoss();
-    return localObject;
   }
 }
 

@@ -1,19 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.apollo.ApolloGameNormalStartHandler.3;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class amhc
-  implements View.OnClickListener
+public abstract interface amhc
 {
-  public amhc(ApolloGameNormalStartHandler.3 param3) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    amhb.a(this.a.this$0).dismiss();
-    amhb.a(this.a.this$0, true);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3);
 }
 
 

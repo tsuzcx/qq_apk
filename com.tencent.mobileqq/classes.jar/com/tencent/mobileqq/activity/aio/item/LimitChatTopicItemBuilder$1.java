@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahbs;
-import ahbu;
-import asfu;
+import ahle;
+import ahlg;
+import asvi;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class LimitChatTopicItemBuilder$1
   implements Runnable
 {
-  public LimitChatTopicItemBuilder$1(ahbs paramahbs, ahbu paramahbu) {}
+  public LimitChatTopicItemBuilder$1(ahle paramahle, ahlg paramahlg) {}
   
   public void run()
   {
     if ((this.this$0.a != null) && (this.a != null)) {
-      ((asfu)this.this$0.a.getManager(264)).a(this.a.a);
+      ((asvi)this.this$0.a.getManager(264)).a(this.a.a);
     }
   }
 }

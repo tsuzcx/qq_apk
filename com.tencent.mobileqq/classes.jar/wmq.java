@@ -1,8 +1,33 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-
-public abstract interface wmq
+public class wmq
 {
-  public abstract void a(long paramLong, String paramString, CommentLikeFeedItem paramCommentLikeFeedItem);
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  
+  public wmq(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

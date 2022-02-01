@@ -1,71 +1,52 @@
-import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-class bhfw
-  implements Handler.Callback
+final class bhfw
+  implements DownloadParams.DecodeHandler
 {
-  bhfw(bhft parambhft) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (paramMessage.what == 1)
-    {
-      paramMessage = bhft.a();
-      int i = paramMessage.getInt("timer2_interval", 0);
-      int m = paramMessage.getInt("timer2_retry_times", 0);
-      int j = paramMessage.getInt("timer2_start_hour", 0);
-      int k = paramMessage.getInt("timer2_end_hour", 0);
-      if ((bhfq.a == 0L) || (NetConnInfoCenter.getServerTimeMillis() - bhfq.a < i))
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i);
-        return true;
-      }
-      if (this.a.jdField_a_of_type_Int >= m)
-      {
-        QLog.i("SportManager", 2, "retry time enough cancel task.");
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        return true;
-      }
-      paramMessage = Calendar.getInstance();
-      paramMessage.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
-      m = paramMessage.get(11);
-      if (m >= j)
-      {
-        paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Int += 1;
-        this.a.a("timer2 callback report1");
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i + 2000);
-        return true;
-        if (m >= k) {
-          break;
-        }
-        paramMessage.set(11, 0);
-        paramMessage.set(12, 0);
-        paramMessage.set(13, 0);
-        paramMessage.set(14, 0);
-        if (bhfq.a - paramMessage.getTimeInMillis() > 0L)
-        {
-          QLog.i("SportManager", 2, "already report cancel task.");
-          this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-          return true;
-        }
-        paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Int += 1;
-        this.a.a("timer2 callback report2");
-      }
-      QLog.i("SportManager", 2, "over time cancel task.");
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      return true;
+    if (paramBitmap == null) {
+      localObject1 = null;
     }
-    return false;
+    Object localObject2;
+    do
+    {
+      do
+      {
+        return localObject1;
+        localObject2 = paramDownloadParams.tag;
+        localObject1 = paramBitmap;
+      } while (!(localObject2 instanceof int[]));
+      localObject1 = paramBitmap;
+    } while (((int[])localObject2).length != 3);
+    Object localObject1 = (int[])localObject2;
+    int j = localObject1[0];
+    int i = j;
+    if (j == 0)
+    {
+      if (paramDownloadParams.reqWidth == 0) {
+        i = paramBitmap.getWidth();
+      }
+    }
+    else
+    {
+      int k = localObject1[1];
+      j = k;
+      if (k == 0) {
+        if (paramDownloadParams.reqHeight != 0) {
+          break label128;
+        }
+      }
+    }
+    label128:
+    for (j = paramBitmap.getHeight();; j = paramDownloadParams.reqHeight)
+    {
+      return bhmq.d(paramBitmap, localObject1[2], i, j);
+      i = paramDownloadParams.reqWidth;
+      break;
+    }
   }
 }
 

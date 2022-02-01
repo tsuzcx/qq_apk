@@ -1,17 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-
-class ayrk
-  implements ayqp
+public abstract interface ayrk
 {
-  ayrk(ayrj paramayrj) {}
-  
-  public void a(aysk paramaysk)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VehicleMovementDetector", 2, "[status][vehicle] onLocationChanged: " + paramaysk);
-    }
-    this.a.a(paramaysk);
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 

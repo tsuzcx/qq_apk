@@ -1,49 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class pif
-  implements AladdinConfigHandler
+  implements View.OnClickListener
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("BiuTriggerTypeConfigHandler", 2, "[onReceiveConfig] " + paramString);
-    paramString = phv.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("BiuTriggerTypeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "on_click"))
-      {
-        if (TextUtils.equals(str2, "fast_biu")) {}
-        for (paramInt1 = 1;; paramInt1 = 0)
-        {
-          bmqa.a("sp_key_biu_button_click_behaviour", Integer.valueOf(paramInt1));
-          break;
-        }
-      }
-      if (TextUtils.equals(str1, "on_long_pressed"))
-      {
-        if (TextUtils.equals(str2, "fast_biu")) {}
-        for (paramInt1 = 1;; paramInt1 = 0)
-        {
-          bmqa.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(paramInt1));
-          break;
-        }
-      }
-    }
-    return true;
-  }
+  public pif(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public void onWipeConfig(int paramInt)
+  public void onClick(View paramView)
   {
-    bmqa.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0));
-    bmqa.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1));
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

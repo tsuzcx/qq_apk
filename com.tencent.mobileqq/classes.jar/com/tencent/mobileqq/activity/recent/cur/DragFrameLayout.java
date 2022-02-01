@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.recent.cur;
 
-import aleb;
-import alec;
-import aled;
-import aleg;
+import alpt;
+import alpu;
+import alpv;
+import alpy;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -31,13 +31,13 @@ import java.util.List;
 
 public class DragFrameLayout
   extends FrameLayout
-  implements aleg
+  implements alpy
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842352, 2130842353, 2130842354, 2130842355, 2130842356 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842364, 2130842365, 2130842366, 2130842367, 2130842368 };
   private float jdField_a_of_type_Float;
   private final int jdField_a_of_type_Int;
-  private aleb jdField_a_of_type_Aleb;
-  private alec jdField_a_of_type_Alec;
+  private alpt jdField_a_of_type_Alpt;
+  private alpu jdField_a_of_type_Alpu;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF(-1.0F, -1.0F);
@@ -46,7 +46,7 @@ public class DragFrameLayout
   private DragFrameLayout.AllBornRunner jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner;
   private DragFrameLayout.BornRunner jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$BornRunner;
   private DragFrameLayout.ShakeRunner jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$ShakeRunner;
-  private final List<aled> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final List<alpv> jdField_a_of_type_JavaUtilList = new ArrayList();
   private final int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private final int c;
@@ -120,8 +120,8 @@ public class DragFrameLayout
   
   private void a(float paramFloat1, float paramFloat2, int paramInt)
   {
-    if (this.jdField_a_of_type_Alec != null) {
-      this.jdField_a_of_type_Alec.a(paramFloat1, paramFloat2, paramInt, this.jdField_a_of_type_AndroidViewView);
+    if (this.jdField_a_of_type_Alpu != null) {
+      this.jdField_a_of_type_Alpu.a(paramFloat1, paramFloat2, paramInt, this.jdField_a_of_type_AndroidViewView);
     }
   }
   
@@ -267,7 +267,7 @@ public class DragFrameLayout
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((aled)localIterator.next()).onChange(paramBoolean, this.f, this);
+      ((alpv)localIterator.next()).onChange(paramBoolean, this.f, this);
     }
   }
   
@@ -316,25 +316,25 @@ public class DragFrameLayout
     }
   }
   
-  public void a(aled paramaled)
+  public void a(alpv paramalpv)
   {
-    if ((paramaled != null) && (this.jdField_a_of_type_JavaUtilList.contains(paramaled))) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramaled);
+    if ((paramalpv != null) && (this.jdField_a_of_type_JavaUtilList.contains(paramalpv))) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramalpv);
     }
   }
   
-  public void a(aled paramaled, boolean paramBoolean)
+  public void a(alpv paramalpv, boolean paramBoolean)
   {
-    if ((paramaled != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramaled)))
+    if ((paramalpv != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramalpv)))
     {
       if (!paramBoolean) {
-        this.jdField_a_of_type_JavaUtilList.add(paramaled);
+        this.jdField_a_of_type_JavaUtilList.add(paramalpv);
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.add(0, paramaled);
+    this.jdField_a_of_type_JavaUtilList.add(0, paramalpv);
   }
   
   public void a(View paramView, int paramInt)
@@ -400,7 +400,7 @@ public class DragFrameLayout
     if (i < paramArrayList.size())
     {
       localView = (View)paramArrayList.get(i);
-      if (localView.getId() != 2131369606) {}
+      if (localView.getId() != 2131369700) {}
     }
     for (;;)
     {
@@ -561,14 +561,14 @@ public class DragFrameLayout
     return true;
   }
   
-  public void setDragViewProvider(aleb paramaleb)
+  public void setDragViewProvider(alpt paramalpt)
   {
-    this.jdField_a_of_type_Aleb = paramaleb;
+    this.jdField_a_of_type_Alpt = paramalpt;
   }
   
-  public void setOnDragListener(alec paramalec)
+  public void setOnDragListener(alpu paramalpu)
   {
-    this.jdField_a_of_type_Alec = paramalec;
+    this.jdField_a_of_type_Alpu = paramalpu;
   }
 }
 

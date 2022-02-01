@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="100" android:drawable="@drawable/f8g" />
-    <item android:duration="100" android:drawable="@drawable/f8h" />
-    <item android:duration="100" android:drawable="@drawable/f8i" />
-    <item android:duration="100" android:drawable="@drawable/f8j" />
-    <item android:duration="100" android:drawable="@drawable/f8k" />
-    <item android:duration="100" android:drawable="@drawable/f8m" />
-    <item android:duration="100" android:drawable="@drawable/f8o" />
-    <item android:duration="100" android:drawable="@drawable/f8p" />
-    <item android:duration="100" android:drawable="@drawable/f8r" />
-    <item android:duration="100" android:drawable="@drawable/f8t" />
-    <item android:duration="100" android:drawable="@drawable/f8u" />
-    <item android:duration="100" android:drawable="@drawable/f8v" />
-    <item android:duration="100" android:drawable="@drawable/f8w" />
-    <item android:duration="100" android:drawable="@drawable/f8x" />
-    <item android:duration="100" android:drawable="@drawable/f8y" />
-</animation-list>
+    <item android:state_enabled="true" android:state_checked="false" android:state_pressed="true" android:drawable="@drawable/f96" />
+    <item android:state_enabled="false" android:drawable="@drawable/f95" />
+    <item android:state_enabled="true" android:state_checked="true" android:state_pressed="true" android:drawable="@drawable/f93" />
+    <item android:state_checked="true" android:drawable="@drawable/f92" />
+    <item android:drawable="@drawable/f95" />
+</selector>

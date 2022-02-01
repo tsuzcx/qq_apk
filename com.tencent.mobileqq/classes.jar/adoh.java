@@ -1,26 +1,107 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import android.content.Context;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-public class adoh
-  extends Handler
+class adoh
+  implements AdapterView.OnItemClickListener
 {
-  public adoh(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  adoh(adog paramadog, int paramInt, admy paramadmy) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramMessage.what)
+    Object localObject1 = paramView.getTag();
+    long l;
+    if (localObject1 == null)
     {
-    default: 
+      l = paramLong;
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, l);
       return;
     }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131718943);
+    this.jdField_a_of_type_Adog.a.dismiss();
+    label104:
+    int j;
+    int i;
+    switch (((bhsc)localObject1).a.action)
+    {
+    case 4: 
+    case 5: 
+    case 6: 
+    case 7: 
+    case 8: 
+    default: 
+      j = (int)paramLong;
+      if ((paramLong == 2L) || (paramLong == 3L)) {
+        if (!WXShareHelper.a().a()) {
+          i = 2131719399;
+        }
+      }
+      break;
     }
-    this.a.a(paramMessage, 1);
+    for (;;)
+    {
+      for (;;)
+      {
+        if (i != -1)
+        {
+          localObject1 = BaseApplicationImpl.getContext();
+          QQToast.a((Context)localObject1, ((Context)localObject1).getString(i), 0).b(this.jdField_a_of_type_Int);
+          l = paramLong;
+          break;
+          paramLong = 0L;
+          break label104;
+          paramLong = 1L;
+          break label104;
+          paramLong = 3L;
+          break label104;
+          paramLong = 2L;
+          break label104;
+          paramLong = 4L;
+          break label104;
+          if (WXShareHelper.a().b()) {
+            break label358;
+          }
+          i = 2131719400;
+          continue;
+        }
+        localObject1 = new JSONObject();
+        try
+        {
+          ((JSONObject)localObject1).put("selectChanel", j);
+          adqf.a(this.jdField_a_of_type_Admy, (JSONObject)localObject1);
+          l = paramLong;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i("DoraemonApi.ShareModule", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
+          l = paramLong;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            String str = localException.getMessage();
+            QLog.e("DoraemonApi.ShareModule", 1, "put channel failed!");
+            admy localadmy = this.jdField_a_of_type_Admy;
+            Object localObject2 = str;
+            if (str == null) {
+              localObject2 = "";
+            }
+            adqf.a(localadmy, -1, (String)localObject2);
+          }
+        }
+      }
+      label358:
+      i = -1;
+    }
   }
 }
 

@@ -1,20 +1,21 @@
-class ayld
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class ayld
+  implements View.OnClickListener
 {
-  public int a;
-  public aykz a;
-  public ayla a;
-  public aylc a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b = true;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
+  ayld(aykx paramaykx) {}
   
-  private ayld(ayko paramayko) {}
+  public void onClick(View paramView)
+  {
+    blir localblir = blir.a(this.a.a);
+    localblir.a(2131716719, 1);
+    localblir.c(2131690580);
+    localblir.a(new ayle(this, localblir));
+    localblir.show();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

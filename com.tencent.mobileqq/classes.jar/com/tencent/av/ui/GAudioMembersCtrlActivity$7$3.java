@@ -1,16 +1,16 @@
 package com.tencent.av.ui;
 
-import mdf;
-import mdr;
+import meb;
+import men;
 
 public class GAudioMembersCtrlActivity$7$3
   implements Runnable
 {
-  public GAudioMembersCtrlActivity$7$3(mdr parammdr, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  public GAudioMembersCtrlActivity$7$3(men parammen, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Mdr.a.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Men.a.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Boolean);
   }
 }
 

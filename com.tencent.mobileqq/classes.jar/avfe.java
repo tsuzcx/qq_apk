@@ -1,86 +1,56 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.fragment.NowLiveFragment.3.1;
+import com.tencent.mobileqq.fragment.NowLiveFragment.3.2;
+import com.tencent.mobileqq.fragment.NowLiveFragment.3.3;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import face.qqlogin.faceproto.Response;
-import java.io.File;
-import java.util.HashMap;
+import com.tencent.smtt.sdk.CookieManager;
+import com.tencent.smtt.sdk.CookieSyncManager;
+import java.util.Map;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class avfe
-  implements ITransactionCallback
+public class avfe
+  implements WtTicketPromise
 {
-  avfe(avfb paramavfb, File paramFile, EIPCResult paramEIPCResult, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, int paramInt3) {}
+  public avfe(NowLiveFragment paramNowLiveFragment) {}
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void Done(Ticket paramTicket)
   {
-    QLog.i("qqidentification_server", 1, "BDH.Upload fail  : result:" + paramInt);
-    avfb.a(this.jdField_a_of_type_Avfb);
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097EC", "0X80097EC", 0, 0, "", "", this.c + "", "");
-    this.jdField_a_of_type_EipcEIPCResult.code = -102;
-    paramArrayOfByte = new Bundle();
-    paramArrayOfByte.putInt("ret", 209);
-    paramArrayOfByte.putString("subError", "UPLOAD onFailed I=" + paramInt);
-    paramArrayOfByte.putString("errMsg", anni.a(2131704494));
-    this.jdField_a_of_type_EipcEIPCResult.data = paramArrayOfByte;
-    this.jdField_a_of_type_Avfb.callbackResult(avfb.a(this.jdField_a_of_type_Avfb), this.jdField_a_of_type_EipcEIPCResult);
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    QLog.d("qqidentification_server", 1, "upload file success");
-    avfb.a(this.jdField_a_of_type_Avfb);
-    this.jdField_a_of_type_JavaIoFile.delete();
-    paramHashMap = new faceproto.Response();
-    for (;;)
+    if (paramTicket != null)
     {
-      try
-      {
-        paramHashMap.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = new Bundle();
-        i = paramHashMap.Ret.get();
-        paramArrayOfByte.putInt("ret", i);
-        str = paramHashMap.ErrMsg.get();
-        paramArrayOfByte.putString("errMsg", str);
-        paramArrayOfByte.putBoolean("needRetry", paramHashMap.NeedRetry.get());
-        QLog.d("qqidentification_server", 1, "retry: " + paramHashMap.NeedRetry.get() + " ret=" + i);
-        paramArrayOfByte.putString("idKey", paramHashMap.IDKey.get());
-        this.jdField_a_of_type_EipcEIPCResult.data = paramArrayOfByte;
-        if (i != 0) {
-          continue;
-        }
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097ED", "0X80097ED", 0, 0, this.jdField_a_of_type_Int + "", "" + this.b, this.c + "", "");
+      if (QLog.isColorLevel()) {
+        QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService : Done");
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        int i;
-        String str;
-        QLog.e("qqidentification_server", 1, new Object[] { "parse bytes error : ", paramArrayOfByte.getMessage() });
-        this.jdField_a_of_type_EipcEIPCResult.code = -102;
-        paramArrayOfByte = new Bundle();
-        paramArrayOfByte.putString("subError", "InvalidProtocolBufferMicroException");
-        paramArrayOfByte.putInt("ret", 208);
-        paramArrayOfByte.putString("errMsg", anni.a(2131704496));
-        this.jdField_a_of_type_EipcEIPCResult.data = paramArrayOfByte;
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097EC", "0X80097EC", 0, 0, this.jdField_a_of_type_Int + "", "" + this.b, this.c + "", "");
-        continue;
-      }
-      this.jdField_a_of_type_Avfb.callbackResult(avfb.a(this.jdField_a_of_type_Avfb), this.jdField_a_of_type_EipcEIPCResult);
-      return;
-      QLog.e("qqidentification_server", 1, "request err: " + i + ", " + str);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097EE", "0X80097EE", 0, 0, this.jdField_a_of_type_Int + "", "" + this.b, this.c + "", i + "");
+      String str = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
+      this.a.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie("now.qq.com", "p_skey=" + str);
+      CookieSyncManager.getInstance().sync();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putString("pskey", "" + str).commit();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putLong("pskey_t", System.currentTimeMillis()).commit();
+      NowLiveFragment.b = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
     }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new NowLiveFragment.3.1(this));
   }
   
-  public void onSwitch2BackupChannel() {}
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new NowLiveFragment.3.2(this));
+  }
   
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new NowLiveFragment.3.3(this));
+  }
 }
 
 

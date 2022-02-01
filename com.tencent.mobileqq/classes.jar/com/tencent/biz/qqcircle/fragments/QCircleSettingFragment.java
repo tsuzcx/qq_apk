@@ -1,26 +1,26 @@
 package com.tencent.biz.qqcircle.fragments;
 
+import aabe;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Window;
 import java.util.ArrayList;
 import java.util.List;
-import vdd;
-import vrf;
-import zxj;
+import vfh;
+import vtq;
 
 public class QCircleSettingFragment
   extends QCircleBaseFragment
 {
   public int a()
   {
-    return 2131560782;
+    return 2131560807;
   }
   
-  public List<zxj> a()
+  public List<aabe> a()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new vdd());
+    localArrayList.add(new vfh());
     return localArrayList;
   }
   
@@ -43,7 +43,7 @@ public class QCircleSettingFragment
   {
     super.onActivityCreated(paramBundle);
     getActivity().getWindow().setSoftInputMode(32);
-    vrf.a("", 11, 22, 1, c());
+    vtq.a("", 11, 22, 1, c());
   }
 }
 

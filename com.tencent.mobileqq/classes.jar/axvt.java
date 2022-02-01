@@ -1,36 +1,26 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class axvt
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  axvt(axuv paramaxuv, int paramInt) {}
+  axvt(axvr paramaxvr, Activity paramActivity, QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PicInfo localPicInfo = (PicInfo)paramView.getTag();
-    if (localPicInfo == null) {}
-    for (;;)
+    paramDialogInterface = this.jdField_a_of_type_Axvr.a;
+    if ((paramDialogInterface != null) && (!TextUtils.isEmpty(paramDialogInterface.b)))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bkho localbkho = bkho.a(this.jdField_a_of_type_Axuv.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-      if (this.jdField_a_of_type_Int != 0) {
-        localbkho.c(this.jdField_a_of_type_Axuv.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131693937));
-      }
-      localbkho.c(anni.a(2131706046));
-      if (this.jdField_a_of_type_Axuv.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
-        localbkho.a(anni.a(2131706129), 3);
-      }
-      localbkho.c(2131690582);
-      localbkho.a(new axvu(this, paramView, localPicInfo, localbkho));
-      localbkho.show();
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramDialogInterface.b);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
     }
+    axvr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_up", this.jdField_a_of_type_JavaLangString);
   }
 }
 

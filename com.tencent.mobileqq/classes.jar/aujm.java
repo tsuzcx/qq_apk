@@ -1,24 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public class aujm
-  implements DialogInterface.OnClickListener
+class aujm
+  implements DialogInterface.OnDismissListener
 {
-  public aujm(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  aujm(aujj paramaujj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      QLog.d("ForwardOption.ForwardSdkBaseOption", 1, "handleSDForImageShare dismiss Exception:", paramDialogInterface);
-    }
+    if (ImmersiveUtils.isSupporImmersive() == 1) {}
   }
 }
 

@@ -1,6 +1,17 @@
-public abstract interface avso
+import android.support.v4.util.LruCache;
+
+class avso
+  extends LruCache<String, avsp>
 {
-  public abstract void a(boolean paramBoolean);
+  avso(avsn paramavsn, int paramInt)
+  {
+    super(paramInt);
+  }
+  
+  protected int a(String paramString, avsp paramavsp)
+  {
+    return 1;
+  }
 }
 
 

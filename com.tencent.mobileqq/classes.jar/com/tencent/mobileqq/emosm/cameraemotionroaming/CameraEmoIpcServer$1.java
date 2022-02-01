@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.emosm.cameraemotionroaming;
 
-import arqi;
-import arqo;
+import asfw;
+import asgc;
 import java.util.ArrayList;
 
 public class CameraEmoIpcServer$1
   implements Runnable
 {
-  public CameraEmoIpcServer$1(arqi paramarqi, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3, ArrayList paramArrayList4) {}
+  public CameraEmoIpcServer$1(asfw paramasfw, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3, ArrayList paramArrayList4) {}
   
   public void run()
   {
     if (this.a != null)
     {
-      arqo.a().a(this.b, this.c, this.a, this.d);
+      asgc.a().a(this.b, this.c, this.a, this.d);
       return;
     }
-    arqo.a().a(this.b, this.c, this.d);
+    asgc.a().a(this.b, this.c, this.d);
   }
 }
 

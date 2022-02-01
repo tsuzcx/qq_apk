@@ -1,53 +1,22 @@
-import android.text.TextUtils;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.avgame.gameroom.stage.guesssong.GuessSongStageView;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class ndr
-  extends aber
+  implements nbb
 {
-  static final String[] a = { "ProfileService", "OnlinePush" };
-  private final HashMap<String, nds> b = new HashMap();
+  public ndr(GuessSongStageView paramGuessSongStageView) {}
   
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public void a(LottieDrawable paramLottieDrawable)
   {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if (!TextUtils.isEmpty(str)) {}
-    for (nds localnds = (nds)this.b.get(str);; localnds = null)
-    {
-      if (localnds != null) {}
-      for (paramToServiceMsg = localnds.a(paramToServiceMsg, paramFromServiceMsg);; paramToServiceMsg = null)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("AVGameProtocolCoder", 4, "decode, cmd[" + str + "], coder[" + localnds + "], result[" + paramToServiceMsg + "]");
-        }
-        return paramToServiceMsg;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("GuessSongStageView", 2, "onLoad lottieDrawable = " + paramLottieDrawable);
     }
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    String str = paramToServiceMsg.getServiceCmd();
-    if (!TextUtils.isEmpty(str)) {}
-    for (nds localnds = (nds)this.b.get(str);; localnds = null)
+    if (paramLottieDrawable != null)
     {
-      if (localnds != null) {}
-      for (boolean bool = localnds.a(paramToServiceMsg, paramUniPacket);; bool = false)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("AVGameProtocolCoder", 4, "encodeReqMsg, cmd[" + str + "], coder[" + localnds + "], ret[" + bool + "]");
-        }
-        return bool;
-      }
+      this.a.a = paramLottieDrawable;
+      GuessSongStageView.a(this.a);
     }
-  }
-  
-  public String[] a()
-  {
-    return a;
   }
 }
 

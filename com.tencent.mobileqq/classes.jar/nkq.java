@@ -1,55 +1,91 @@
 import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.lang.ref.WeakReference;
 import mqq.observer.BusinessObserver;
-import tencent.im.sso.offlinpkg.OfflinePkg.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-final class nkq
+public abstract class nkq
   implements BusinessObserver
 {
-  nkq(NewIntent paramNewIntent, nkl paramnkl, boolean paramBoolean1, boolean paramBoolean2, AppRuntime paramAppRuntime, boolean paramBoolean3) {}
+  public boolean a;
+  public int b;
+  public WeakReference<QQAppInterface> b;
+  
+  public nkq()
+  {
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(null);
+    this.a = true;
+  }
+  
+  public nkq(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(null);
+    this.a = paramBoolean;
+  }
+  
+  private void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (!paramBoolean) {
+      a(-1, null, paramBundle);
+    }
+    label168:
+    do
+    {
+      for (;;)
+      {
+        return;
+        Object localObject = paramBundle.getByteArray("data");
+        if (this.jdField_b_of_type_Int != 1) {
+          break label168;
+        }
+        oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+        try
+        {
+          localObject = (oidb_sso.OIDBSSOPkg)localOIDBSSOPkg.mergeFrom((byte[])localObject);
+          if ((((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get() == 0) || (!a(((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get(), ((oidb_sso.OIDBSSOPkg)localObject).str_error_msg.get(), paramBundle))) {
+            if ((localObject == null) || (!((oidb_sso.OIDBSSOPkg)localObject).uint32_result.has()) || (!((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.has()) || (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get() == null))
+            {
+              a(-1, null, paramBundle);
+              return;
+            }
+          }
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          a(-1, null, paramBundle);
+          return;
+        }
+      }
+      a(localInvalidProtocolBufferMicroException.uint32_result.get(), localInvalidProtocolBufferMicroException.bytes_bodybuffer.get().toByteArray(), paramBundle);
+      return;
+    } while (this.jdField_b_of_type_Int != 2);
+    a(0, localInvalidProtocolBufferMicroException, paramBundle);
+  }
+  
+  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
+  
+  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    return false;
+  }
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (QLog.isColorLevel()) {
-      QLog.d("HtmlCheckUpdate", 2, "-->offline:checkUpdate,onReceive:isSuccess=" + paramBoolean);
+    if (this.a)
+    {
+      a(paramInt, paramBoolean, paramBundle);
+      return;
     }
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          return;
-        }
-        OfflinePkg.RspBody localRspBody = new OfflinePkg.RspBody();
-        localRspBody.mergeFrom(paramBundle);
-        paramBundle = new String(localRspBody.str_offline_pkg.get().toByteArray(), "UTF-8");
-        if (this.jdField_a_of_type_Nkl != null) {
-          this.jdField_a_of_type_Nkl.loaded(paramBundle, 0);
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          return;
-        }
-        if (this.b)
-        {
-          nko.c(paramBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.c, this.jdField_a_of_type_Nkl);
-          return;
-        }
-        nko.c(paramBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.c, null);
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        this.jdField_a_of_type_Nkl.loaded("{\"r\":-1}", 2);
-        return;
-      }
-    } else if (this.jdField_a_of_type_Nkl != null) {
-      this.jdField_a_of_type_Nkl.loaded("{\"r\":-1}", 2);
-    }
+    ThreadManager.post(new ProtoUtils.TroopProtocolObserver.1(this, paramInt, paramBoolean, paramBundle), 5, null, false);
   }
 }
 

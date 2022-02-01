@@ -1,23 +1,23 @@
 package dov.com.qq.im;
 
-import anni;
-import biti;
-import bncj;
+import anzj;
+import bjuh;
+import bodr;
 
 public class QIMQzoneEffectsCameraCaptureUnit$4
   implements Runnable
 {
-  public QIMQzoneEffectsCameraCaptureUnit$4(bncj parambncj, boolean paramBoolean, String paramString) {}
+  public QIMQzoneEffectsCameraCaptureUnit$4(bodr parambodr, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    bncj.a(this.this$0);
+    bodr.a(this.this$0);
     if (this.jdField_a_of_type_Boolean)
     {
-      bncj.b(this.this$0, this.jdField_a_of_type_JavaLangString);
+      bodr.b(this.this$0, this.jdField_a_of_type_JavaLangString);
       return;
     }
-    biti.a().a(anni.a(2131708603));
+    bjuh.a().a(anzj.a(2131708712));
   }
 }
 

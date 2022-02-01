@@ -1,18 +1,19 @@
-public abstract interface auop
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+final class auop
+  implements View.OnClickListener
 {
-  public abstract String a();
+  auop(aunx paramaunx) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void aO_();
-  
-  public abstract String b();
-  
-  public abstract void b();
-  
-  public abstract void b(String paramString);
+  public void onClick(View paramView)
+  {
+    if (this.a != null) {
+      this.a.onClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

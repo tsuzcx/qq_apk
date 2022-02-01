@@ -1,22 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeUsersCommentsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class qeg
-  implements ViewBase.OnClickListener
+public class qeg
+  implements View.OnClickListener
 {
-  qeg(qec paramqec, ArticleInfo paramArticleInfo, Container paramContainer) {}
+  public qeg(NativeUsersCommentsView paramNativeUsersCommentsView) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.b;
-    if (paramViewBase != null)
-    {
-      ryx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
-      qec.a(this.jdField_a_of_type_Qec, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 3, paramViewBase.e, "");
-    }
+    this.a.callOnClick();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

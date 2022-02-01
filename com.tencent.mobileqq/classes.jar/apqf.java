@@ -1,26 +1,99 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class apqf
-  implements View.OnClickListener
+class apqf
+  implements nmg
 {
-  public apqf(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  apqf(apqd paramapqd, apqg paramapqg, ArrayList paramArrayList, apqc paramapqc) {}
   
-  public void onClick(View paramView)
+  public void loaded(String paramString, int paramInt)
   {
-    bkho localbkho = (bkho)bkif.a(BaseActivity.sTopActivity, null);
-    localbkho.a(BaseActivity.sTopActivity.getString(2131690102));
-    localbkho.a(2131690101, 3);
-    localbkho.c(2131690103);
-    localbkho.setOnDismissListener(new apqg(this, localbkho));
-    localbkho.a(new apqh(this, localbkho));
-    if (!localbkho.isShowing()) {
-      localbkho.show();
+    QLog.d("AREngine_ARResourceManagerTools", 2, "Load offline package finish, code = " + paramInt + "param1" + paramString);
+    if (paramInt == 0) {
+      if (paramString == null) {
+        if (this.jdField_a_of_type_Apqg != null)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Apqc);
+          if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+          {
+            this.jdField_a_of_type_Apqg.a(true);
+            this.jdField_a_of_type_Apqg.a(4, true);
+            this.jdField_a_of_type_Apqd.a();
+          }
+        }
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    label244:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              for (;;)
+              {
+                return;
+                try
+                {
+                  paramString = new JSONObject(paramString);
+                  if (!paramString.has("data")) {
+                    break label244;
+                  }
+                  paramString = paramString.getJSONArray("data");
+                  if (((paramString.length() == 0) || (!paramString.getJSONObject(0).has("bid"))) || (this.jdField_a_of_type_Apqg != null))
+                  {
+                    this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Apqc);
+                    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+                    {
+                      this.jdField_a_of_type_Apqg.a(true);
+                      this.jdField_a_of_type_Apqg.a(4, true);
+                      this.jdField_a_of_type_Apqd.a();
+                      return;
+                    }
+                  }
+                }
+                catch (JSONException paramString)
+                {
+                  paramString.printStackTrace();
+                }
+              }
+            } while (this.jdField_a_of_type_Apqg == null);
+            this.jdField_a_of_type_Apqg.a(false);
+            this.jdField_a_of_type_Apqg.a(4, false);
+            this.jdField_a_of_type_Apqd.a();
+            return;
+            paramString = this.jdField_a_of_type_Apqg;
+          } while (paramString == null);
+          return;
+          if (paramInt != 7) {
+            break;
+          }
+        } while (this.jdField_a_of_type_Apqg == null);
+        this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Apqc);
+      } while (this.jdField_a_of_type_JavaUtilArrayList.size() != 0);
+      this.jdField_a_of_type_Apqg.a(true);
+      this.jdField_a_of_type_Apqg.a(4, true);
+      this.jdField_a_of_type_Apqd.a();
+      return;
+    } while (this.jdField_a_of_type_Apqg == null);
+    this.jdField_a_of_type_Apqg.a(false);
+    this.jdField_a_of_type_Apqg.a(4, false);
+    this.jdField_a_of_type_Apqd.a();
+  }
+  
+  public void progress(int paramInt)
+  {
+    QLog.d("AREngine_ARResourceManagerTools", 2, "Load offline progress  = " + paramInt);
+    if (this.jdField_a_of_type_Apqg != null) {
+      this.jdField_a_of_type_Apqg.a(apqd.a(this.jdField_a_of_type_Apqd, 0L, paramInt));
+    }
   }
 }
 

@@ -39,7 +39,7 @@ class MiniAppVideoPlayer$10
   
   public void onFullScreenClick(AbsVideoPlayer paramAbsVideoPlayer)
   {
-    MiniAppVideoPlayer.access$4100(this.this$0);
+    MiniAppVideoPlayer.access$4200(this.this$0);
   }
 }
 

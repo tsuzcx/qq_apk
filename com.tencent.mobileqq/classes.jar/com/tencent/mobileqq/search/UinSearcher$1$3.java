@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.search;
 
 import android.text.TextUtils;
-import aqzl;
-import bbhl;
-import bbhm;
-import bblw;
-import bcst;
-import bkho;
+import arpc;
+import bcaf;
+import bcag;
+import bcep;
+import bdll;
+import blir;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class UinSearcher$1$3
   implements Runnable
 {
-  public UinSearcher$1$3(bbhm parambbhm, bkho parambkho, bblw[] paramArrayOfbblw1, bblw[] paramArrayOfbblw2, aqzl paramaqzl, QQAppInterface paramQQAppInterface, bblw[] paramArrayOfbblw3) {}
+  public UinSearcher$1$3(bcag parambcag, blir paramblir, bcep[] paramArrayOfbcep1, bcep[] paramArrayOfbcep2, arpc paramarpc, QQAppInterface paramQQAppInterface, bcep[] paramArrayOfbcep3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bkho.show();
+    this.jdField_a_of_type_Blir.show();
     String str1;
     String str2;
-    if (this.jdField_a_of_type_ArrayOfBblw[0] == null) {
+    if (this.jdField_a_of_type_ArrayOfBcep[0] == null) {
       if (this.b[0] == null)
       {
         str1 = "0X800A923";
-        if ((this.jdField_a_of_type_ArrayOfBblw[0] != null) || (this.b[0] != null)) {
+        if ((this.jdField_a_of_type_ArrayOfBcep[0] != null) || (this.b[0] != null)) {
           break label286;
         }
         str2 = "";
         label49:
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str1, str1, bbhl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bbhl.a(this.jdField_a_of_type_Bbhm.a), bbhl.d(this.jdField_a_of_type_Bbhm.a)), 0, str2, "", "", "");
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str1, str1, bcaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bcaf.a(this.jdField_a_of_type_Bcag.a), bcaf.d(this.jdField_a_of_type_Bcag.a)), 0, str2, "", "", "");
         if ((this.c[0] == null) || (TextUtils.isEmpty(this.c[0].m))) {
           break label352;
         }
@@ -58,7 +58,7 @@ public class UinSearcher$1$3
       if (QLog.isColorLevel()) {
         QLog.d("UinSearcher", 2, "baoguang TValue r4 r5: " + str1 + ", " + str2 + ", " + str3);
       }
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str1, str1, bbhl.a(bbhl.a(this.jdField_a_of_type_Bbhm.a)), 0, "", "", str2, str3);
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str1, str1, bcaf.a(bcaf.a(this.jdField_a_of_type_Bcag.a)), 0, "", "", str2, str3);
       return;
       str1 = "0X800A921";
       break;
@@ -69,12 +69,12 @@ public class UinSearcher$1$3
       }
       str1 = "0X800A922";
       break;
-      if (this.jdField_a_of_type_Aqzl.a())
+      if (this.jdField_a_of_type_Arpc.a())
       {
-        str2 = aqzl.a + "";
+        str2 = arpc.a + "";
         break label49;
       }
-      str2 = aqzl.b + "";
+      str2 = arpc.b + "";
       break label49;
       str1 = "0X800B0BE";
       break label143;

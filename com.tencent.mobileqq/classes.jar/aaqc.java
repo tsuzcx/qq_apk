@@ -1,26 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aaqc
-  extends Handler
+public class aaqc
+  implements View.OnClickListener
 {
-  aaqc(aaqa paramaaqa) {}
+  public aaqc(RelativePersonalDetailHeadItemView paramRelativePersonalDetailHeadItemView, CertifiedAccountMeta.StYouZanShop paramStYouZanShop) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopTipsPopWindow", 2, "MSG_SHOW_WINDOW mTroopNotify = " + this.a.jdField_a_of_type_Besj + ", mTroopNotifyAd = " + this.a.jdField_a_of_type_Besk);
-    }
-    if (this.a.jdField_a_of_type_Besk != null) {
-      this.a.a(this.a.jdField_a_of_type_Besk);
-    }
-    this.a.a();
+    aaej.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StYouZanShop.schema.get());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,26 +1,47 @@
-class bbpc
-  implements begx
+import android.text.TextUtils;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class bbpc
 {
-  bbpc(bboz parambboz, bblw parambblw) {}
-  
-  public void a(String paramString, int paramInt)
+  public static List<bbph> a(String paramString)
   {
-    if ((this.jdField_a_of_type_Bblw.b != null) && (this.jdField_a_of_type_Bblw.b.equals(paramString)))
-    {
-      if (paramInt != 3) {
-        break label45;
+    localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (paramString.has("LiuHaiArray"))
+        {
+          paramString = paramString.getJSONArray("LiuHaiArray");
+          int i = 0;
+          while (i < paramString.length())
+          {
+            bbph localbbph = new bbph();
+            JSONObject localJSONObject = paramString.getJSONObject(i);
+            if (localJSONObject.has("manufacturer")) {
+              localbbph.a = localJSONObject.optString("manufacturer", "");
+            }
+            if (localJSONObject.has("brand")) {
+              localbbph.b = localJSONObject.optString("brand", "");
+            }
+            if (localJSONObject.has("model")) {
+              localbbph.c = localJSONObject.optString("model", "");
+            }
+            localArrayList.add(localbbph);
+            i += 1;
+          }
+        }
+        return localArrayList;
       }
-      this.jdField_a_of_type_Bblw.k = 2;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bboz.a();
-      return;
-      label45:
-      if ((paramInt == 2) || (paramInt == 4)) {
-        this.jdField_a_of_type_Bblw.k = 1;
-      } else if (paramInt == 1) {
-        this.jdField_a_of_type_Bblw.k = 0;
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        BrowserLogHelper.getInstance().getGalleryLog().d("ListConfigParseUtils", 4, "parseWhiteListConfig exception = " + paramString.getMessage());
       }
     }
   }

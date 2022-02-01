@@ -1,15 +1,17 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aahv
-  implements zxa<CertifiedAccountRead.StGetMainPageRsp>
+public class aahv
+  implements View.OnClickListener
 {
-  aahv(aahu paramaahu, zzp paramzzp) {}
+  public aahv(CommentBottomBar paramCommentBottomBar) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Zzp != null) {
-      this.jdField_a_of_type_Zzp.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetMainPageRsp });
-    }
+    this.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

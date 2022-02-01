@@ -1,37 +1,58 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.content.ComponentName;
-import android.os.Bundle;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.redtouch.RedTouchLifeTimeManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class baie
-  implements Application.ActivityLifecycleCallbacks
+class baie
 {
-  public baie(RedTouchLifeTimeManager paramRedTouchLifeTimeManager) {}
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private File jdField_a_of_type_JavaIoFile;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity) {}
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
+  public baie(baid parambaid, String paramString, File paramFile, Drawable paramDrawable)
   {
-    if (paramActivity.getComponentName() != null)
-    {
-      RedTouchLifeTimeManager.a(this.a, paramActivity.getComponentName().getClassName());
-      if ((!TextUtils.isEmpty(RedTouchLifeTimeManager.a(this.a))) && (RedTouchLifeTimeManager.a(this.a).equals(RedTouchLifeTimeManager.b(this.a)))) {
-        RedTouchLifeTimeManager.a(this.a);
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
   }
   
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  public Drawable a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  }
   
-  public void onActivityStarted(Activity paramActivity) {}
+  public baie a()
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (aroa.c().b()))
+    {
+      String str = this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
+      if ((baid.a(this.jdField_a_of_type_Baid) != null) && (TextUtils.equals(baid.a(this.jdField_a_of_type_Baid), str)) && (bicd.a(baid.a(this.jdField_a_of_type_Baid))))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(this.jdField_a_of_type_Baid.b(), 2, "initProfileCardBackground: use old etc-drawable");
+        }
+        this.jdField_a_of_type_Boolean = true;
+        return this;
+      }
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bicd.a().a(this.jdField_a_of_type_JavaIoFile, true);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      {
+        bicd.a().a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true);
+        baid.a(this.jdField_a_of_type_Baid, str);
+        if (QLog.isColorLevel()) {
+          QLog.i(this.jdField_a_of_type_Baid.b(), 2, "initProfileCardBackground use new etc-drawable");
+        }
+      }
+    }
+    this.jdField_a_of_type_Boolean = false;
+    return this;
+  }
   
-  public void onActivityStopped(Activity paramActivity) {}
+  boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
 }
 
 

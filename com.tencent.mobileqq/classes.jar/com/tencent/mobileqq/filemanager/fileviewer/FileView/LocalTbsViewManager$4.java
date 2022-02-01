@@ -1,26 +1,18 @@
 package com.tencent.mobileqq.filemanager.fileviewer.FileView;
 
-import atlp;
-import atlt;
+import audj;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.tbs.reader.ITbsReaderCallback;
+import com.tencent.tbs.reader.ReaderEngine;
 
 public class LocalTbsViewManager$4
   implements Runnable
 {
-  public LocalTbsViewManager$4(atlp paramatlp, int paramInt, atlt paramatlt) {}
+  public LocalTbsViewManager$4(audj paramaudj, ITbsReaderCallback paramITbsReaderCallback) {}
   
   public void run()
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 12: 
-    case 19: 
-    default: 
-      return;
-    case 5001: 
-      this.jdField_a_of_type_Atlt.a(true);
-      return;
-    }
-    this.jdField_a_of_type_Atlt.a(false);
+    ReaderEngine.getInstance().initReaderEntryAsync(BaseApplicationImpl.getApplication(), this.a);
   }
 }
 

@@ -1,101 +1,152 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.SystemClock;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerVideoItemData;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 class oog
-  implements ViewBase.OnClickListener
+  extends pfh
 {
   oog(oof paramoof) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(int paramInt, boolean paramBoolean, List<ChannelCoverInfo> paramList)
   {
-    boolean bool1;
-    int i;
-    if ((this.a.jdField_a_of_type_Ooe.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData instanceof ProteusItemData)) {
-      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-      {
-      default: 
-        bool1 = true;
-        i = -1;
-        if (opz.g((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)) {
-          opz.b(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
-        }
-        break;
+    if ((paramBoolean) && (paramList != null) && (oof.a(this.a) == paramInt))
+    {
+      oof.a(this.a, (ArrayList)paramList);
+      if ((oof.a(this.a) == null) || (oof.a(this.a) == null) || (oof.a(this.a).size() <= 0)) {
+        break label200;
+      }
+      oof.a(this.a).a(oof.a(this.a));
+      oof.a(this.a).notifyDataSetChanged();
+      if (oof.a(this.a).findHeaderViewPosition(oof.a(this.a)) < 0) {
+        oof.a(this.a).addHeaderView(oof.a(this.a));
       }
     }
-    do
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            tby.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
-          } while (!ood.b);
-          ood.c = true;
-        } while (ooe.a(this.a.jdField_a_of_type_Ooe) == null);
-        ooe.a(this.a.jdField_a_of_type_Ooe).q();
-        ooe.a(this.a.jdField_a_of_type_Ooe).o();
-        return;
-        bool1 = true;
-        i = 4;
-        break;
-        bool1 = true;
-        i = 3;
-        break;
-        bool1 = false;
-        i = 5;
-        break;
-        bool1 = true;
-        i = 8;
-        break;
-        bool1 = true;
-        i = 1000;
-        break;
-        paramViewBase = oqk.a((ProteusBannerVideoItemData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
-      } while (paramViewBase == null);
-      if (!ubb.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase)) {
-        break label302;
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onSubChannelListUpdate infos size" + oof.a(this.a).size());
       }
-    } while (ooe.a(this.a.jdField_a_of_type_Ooe) == null);
-    ooe.a(this.a.jdField_a_of_type_Ooe).q();
-    return;
-    label302:
-    if (ooe.a(this.a.jdField_a_of_type_Ooe) != null) {}
-    for (boolean bool2 = ooe.a(this.a.jdField_a_of_type_Ooe).a();; bool2 = false)
-    {
-      paramViewBase.setClickPos(i);
-      Object localObject = new oml(bool2);
-      if (i == 8) {
-        ((oml)localObject).c = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onSubChannelListUpdate" + paramBoolean);
       }
-      localObject = ubb.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, paramViewBase, null, 2, bool1, (oml)localObject);
-      if (localObject == null) {
-        break;
-      }
-      ((GdtHandler.Params)localObject).f = oqi.a((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
-      ubb.a((GdtHandler.Params)localObject, this.a.jdField_a_of_type_AndroidContentContext, paramViewBase);
-      ood.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = (GdtHandler.Params)localObject;
-      ood.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      paramViewBase.setClickPos(i);
-      olm.a(true, (Context)this.a.jdField_a_of_type_Ooe.jdField_a_of_type_JavaLangRefWeakReference.get(), oqk.a((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData), 2, nxw.a, 3);
-      if (ooe.a(this.a.jdField_a_of_type_Ooe) == null) {
-        break;
-      }
-      ooe.a(this.a.jdField_a_of_type_Ooe).q();
       return;
+      label200:
+      oof.a(this.a).removeHeaderView(oof.a(this.a));
+    }
+  }
+  
+  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
+  {
+    if ((paramBoolean) && (paramList != null) && (oof.a(this.a) == 0))
+    {
+      oof.a(this.a, (ArrayList)paramList);
+      if ((oof.a(this.a) != null) && (oof.a(this.a) != null) && (oof.a(this.a).size() > 0))
+      {
+        oof.a(this.a).a(oof.a(this.a));
+        oof.a(this.a).notifyDataSetChanged();
+        if (oof.a(this.a).findHeaderViewPosition(oof.a(this.a)) < 0) {
+          oof.a(this.a).addHeaderView(oof.a(this.a));
+        }
+        paramList = paramList.iterator();
+      }
+      label134:
+      while (paramList.hasNext())
+      {
+        Object localObject = (ChannelCoverInfo)paramList.next();
+        if ((!TextUtils.isEmpty(((ChannelCoverInfo)localObject).mChannelJumpUrl)) && (((ChannelCoverInfo)localObject).mChannelJumpUrl.indexOf("html/topic.html") != -1)) {
+          for (;;)
+          {
+            int i;
+            try
+            {
+              for (;;)
+              {
+                localObject = new URL(((ChannelCoverInfo)localObject).mChannelJumpUrl);
+                if (TextUtils.isEmpty(((URL)localObject).getQuery())) {
+                  break;
+                }
+                localObject = ((URL)localObject).getQuery().split("[&]");
+                int j = localObject.length;
+                i = 0;
+                if (i >= j) {
+                  break;
+                }
+                String[] arrayOfString = localObject[i].split("[=]");
+                if (arrayOfString.length <= 1) {
+                  break label388;
+                }
+                boolean bool = "topicid".equals(arrayOfString[0]);
+                if (!bool) {
+                  break label388;
+                }
+                try
+                {
+                  Integer.valueOf(arrayOfString[1]).intValue();
+                  if (!QLog.isColorLevel()) {
+                    break;
+                  }
+                  QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate preload topic and topicId = " + arrayOfString[1]);
+                }
+                catch (Exception localException) {}
+              }
+              if (!QLog.isColorLevel()) {
+                break label134;
+              }
+              QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate preload topic and topic is illegal");
+            }
+            catch (MalformedURLException localMalformedURLException) {}
+            if (!QLog.isColorLevel()) {
+              break label134;
+            }
+            QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate preload topic MalformedURLException " + localMalformedURLException);
+            break label134;
+            oof.a(this.a).removeHeaderView(oof.a(this.a));
+            break;
+            i += 1;
+          }
+        }
+      }
+      label388:
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate infos size" + oof.a(this.a).size());
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate" + paramBoolean);
+    }
+  }
+  
+  public void c(boolean paramBoolean, List<ChannelCoverInfo> paramList)
+  {
+    if ((paramBoolean) && (paramList != null) && (oof.a(this.a) == 56))
+    {
+      oof.a(this.a, (ArrayList)paramList);
+      if ((oof.a(this.a) == null) || (oof.a(this.a) == null) || (oof.a(this.a).size() <= 0)) {
+        break label201;
+      }
+      oof.a(this.a).a(oof.a(this.a));
+      oof.a(this.a).notifyDataSetChanged();
+      if (oof.a(this.a).findHeaderViewPosition(oof.a(this.a)) < 0) {
+        oof.a(this.a).addHeaderView(oof.a(this.a));
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onVideoChannelListUpdate infos size" + oof.a(this.a).size());
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onVideoChannelListUpdate" + paramBoolean);
+      }
+      return;
+      label201:
+      oof.a(this.a).removeHeaderView(oof.a(this.a));
     }
   }
 }

@@ -1,295 +1,111 @@
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
 public class alos
+  extends alnl
 {
-  private final float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -1;
-  private alom jdField_a_of_type_Alom;
-  private alot jdField_a_of_type_Alot;
-  private final Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private final float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 4;
-  private final Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private final float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int = Color.parseColor("#298be7");
-  private final float d;
-  private float e;
-  private float f;
-  private float g;
-  private float h;
-  private float i;
-  private float j;
-  private float k;
-  
-  public alos(alom paramalom, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private static void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_Alom = paramalom;
-    Object localObject = this.jdField_a_of_type_Alom.getContext();
-    this.jdField_a_of_type_Float = (bgtn.a() * 0.0375F);
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float * 0.5F);
-    this.d = paramInt3;
-    paramalom = a(((Context)localObject).getResources(), 2130849140, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
-    localObject = a(((Context)localObject).getResources(), 2130849142, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
-    ColorDrawable localColorDrawable = new ColorDrawable(this.jdField_c_of_type_Int);
-    localColorDrawable.setBounds(0, 0, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, Bitmap.Config.RGB_565);
-    Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    localColorDrawable.draw(localCanvas);
-    if (paramalom != null) {
-      localCanvas.drawBitmap(paramalom, (this.jdField_a_of_type_Float - paramalom.getWidth()) / 2.0F, (this.jdField_b_of_type_Float - paramalom.getHeight()) / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, Bitmap.Config.RGB_565);
-    localCanvas.setBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap);
-    localColorDrawable.draw(localCanvas);
-    if (localObject != null) {
-      localCanvas.drawBitmap((Bitmap)localObject, (this.jdField_a_of_type_Float - ((Bitmap)localObject).getWidth()) / 2.0F, (this.jdField_b_of_type_Float - ((Bitmap)localObject).getHeight()) / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    this.h = (1.0F * paramInt4 / paramInt2 * paramFloat1 + this.jdField_a_of_type_Float);
-    this.g = (2000.0F / paramInt2 * paramFloat1);
-    this.j = (paramInt3 - this.jdField_a_of_type_Float);
-    this.k = this.jdField_a_of_type_Float;
-    this.e = this.jdField_a_of_type_Float;
-    this.f = this.h;
+    Animation localAnimation = AnimationUtils.loadAnimation(paramContext, 2130772120);
+    paramContext = AnimationUtils.loadAnimation(paramContext, 2130772119);
+    localAnimation.setAnimationListener(new alot(paramView, paramContext));
+    paramContext.setAnimationListener(new alou(paramView, localAnimation));
+    paramView.startAnimation(localAnimation);
   }
   
-  private void a(float paramFloat, Canvas paramCanvas)
+  public View a(int paramInt, Object paramObject, alno paramalno, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, alpv paramalpv)
   {
-    paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, paramFloat, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    return (Math.abs(paramFloat1 - paramFloat3) <= this.jdField_a_of_type_Float * 2.0F) && (paramFloat2 > 0.0F) && (paramFloat2 < this.jdField_b_of_type_Float);
-  }
-  
-  private void b(float paramFloat, Canvas paramCanvas)
-  {
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramFloat - this.jdField_a_of_type_Float, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  private boolean b(float paramFloat1, float paramFloat2)
-  {
-    return Math.abs(paramFloat1 - paramFloat2) == 0.0F;
-  }
-  
-  public float a()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
-  {
-    int i1 = paramOptions.outHeight;
-    int i2 = paramOptions.outWidth;
-    int n = 1;
-    int m = 1;
-    if ((i1 > paramInt2) || (i2 > paramInt1))
+    alov localalov;
+    if ((paramView == null) || (!(paramView.getTag() instanceof alov)))
     {
-      i1 /= 2;
-      i2 /= 2;
-      for (;;)
+      localalov = new alov(null);
+      View localView = a(paramContext, 2131562820, localalov);
+      localalov.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)localView.findViewById(2131368212));
+      localalov.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131380442));
+      localalov.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131378936));
+      localalov.b = ((SingleLineTextView)localView.findViewById(2131365413));
+      localalov.b.setGravity(16);
+      localalov.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131362686));
+      localalov.c = ((ImageView)localView.findViewById(2131362685));
+      Object localObject = paramContext.getResources();
+      float f = bhlo.a();
+      paramView = ((Resources)localObject).getColorStateList(2131167074);
+      ColorStateList localColorStateList = ((Resources)localObject).getColorStateList(2131166997);
+      localObject = ((Resources)localObject).getColorStateList(2131167075);
+      localalov.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(localColorStateList);
+      if (ThemeUtil.isNowThemeIsDefault(null, false, null))
       {
-        n = m;
-        if (i1 / m <= paramInt2) {
-          break;
+        localalov.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject, 0);
+        localalov.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
+        localalov.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
+        localalov.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding((int)(2.0F * f), (int)(1.0F * f));
+        localalov.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(5.0F * f), 2);
+        localalov.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 2);
+        localalov.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
+        localalov.b.setTextColor(paramView);
+        localalov.b.setExtendTextPadding((int)(f * 2.0F), 1);
+        localalov.b.setExtendTextSize(14.0F, 1);
+        localView.setTag(localalov);
+        paramView = localView;
+        if (this.a != null)
+        {
+          localalov.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.a.a());
+          paramView = localView;
         }
-        n = m;
-        if (i2 / m <= paramInt1) {
-          break;
-        }
-        m *= 2;
       }
-    }
-    return n;
-  }
-  
-  public Bitmap a(Resources paramResources, int paramInt1, int paramInt2, int paramInt3)
-  {
-    int m = 1;
-    if (paramResources == null) {}
-    while (paramInt1 <= 0) {
-      return null;
-    }
-    try
-    {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      BitmapFactory.decodeResource(paramResources, paramInt1, localOptions);
-      if ((paramInt2 <= 0) && (paramInt3 <= 0)) {}
-      for (paramInt2 = m;; paramInt2 = a(localOptions, paramInt2, paramInt3))
-      {
-        localOptions.inJustDecodeBounds = false;
-        localOptions.inSampleSize = paramInt2;
-        return BitmapFactory.decodeResource(paramResources, paramInt1, localOptions);
-      }
-      return null;
-    }
-    catch (Exception paramResources)
-    {
-      paramResources.printStackTrace();
-      return null;
-    }
-    catch (OutOfMemoryError paramResources)
-    {
-      paramResources.printStackTrace();
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Alot = null;
-    this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    if (paramFloat1 >= 0.0F) {}
-    for (this.k = (this.jdField_a_of_type_Float + paramFloat1);; this.k = this.jdField_a_of_type_Float)
-    {
-      if (paramFloat2 >= 0.0F) {
-        this.j = Math.min(this.jdField_a_of_type_Float + paramFloat2, this.d - this.jdField_a_of_type_Float);
-      }
-      return;
-    }
-  }
-  
-  public void a(alot paramalot)
-  {
-    this.jdField_a_of_type_Alot = paramalot;
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    paramCanvas.save();
-    int m = this.jdField_a_of_type_AndroidGraphicsPaint.getColor();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_c_of_type_Int);
-    paramCanvas.drawRect(this.e, 0.0F, this.f, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawRect(this.e, this.jdField_b_of_type_Float - this.jdField_b_of_type_Int, this.f, this.jdField_b_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(m);
-    b(this.e, paramCanvas);
-    a(this.f, paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    if (paramMotionEvent.getAction() == 1) {
-      this.jdField_a_of_type_Int = -1;
-    }
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.i = paramMotionEvent.getX();
-      return;
-    }
-    float f2;
-    float f3;
-    if (paramMotionEvent.getAction() == 2)
-    {
-      f2 = f1 - this.i;
-      if (this.jdField_a_of_type_Int != 0) {
-        break label186;
-      }
-      f3 = Math.max(this.f - this.h, this.k);
-      if (f1 < f3)
-      {
-        this.e = f3;
-        return;
-      }
-      if ((f2 >= 0.0F) || (f2 + this.e > this.jdField_a_of_type_Float)) {
-        break label148;
-      }
-      this.e = f3;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Alom.invalidate();
-      if (this.jdField_a_of_type_Alot == null) {
-        break;
+      return super.a(paramInt, paramObject, paramalno, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramalpv);
+      localalov.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 0);
+      break;
+    }
+  }
+  
+  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable)
+  {
+    if ((paramView == null) || (paramRecentBaseData == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "bindView|param invalidate");
       }
-      this.jdField_a_of_type_Alot.a(this.e, this.f);
       return;
-      label148:
-      if (this.f - f1 < this.g)
+    }
+    if ((paramView.getTag() instanceof alov)) {}
+    for (alov localalov = (alov)paramView.getTag();; localalov = null)
+    {
+      if (localalov == null)
       {
-        this.e = (this.f - this.g);
-      }
-      else
-      {
-        this.e = f1;
-        continue;
-        label186:
-        if (this.jdField_a_of_type_Int == 1)
-        {
-          f3 = Math.min(this.e + this.h, this.j);
-          if (f1 > f3)
-          {
-            this.f = f3;
-            return;
-          }
-          if ((f2 > 0.0F) && (f2 + this.f >= this.h)) {
-            this.f = f3;
-          } else if (f1 - this.e < this.g) {
-            this.f = (this.e + this.g);
-          } else {
-            this.f = f1;
-          }
+        if (!QLog.isColorLevel()) {
+          break;
         }
+        QLog.i("Q.recent", 2, "bindView|holder is null, tag = " + paramView.getTag());
+        return;
       }
+      super.a(paramView, paramRecentBaseData, paramContext, paramDrawable);
+      paramView = (RelativeLayout.LayoutParams)localalov.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      paramView.height = localalov.b.getMeasuredHeight();
+      localalov.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+      a(paramContext, localalov.c);
+      return;
     }
-  }
-  
-  public boolean a()
-  {
-    return (!b(this.e, this.jdField_a_of_type_Float)) || (!b(this.f, this.h));
-  }
-  
-  public boolean a(float paramFloat1, float paramFloat2)
-  {
-    boolean bool1 = a(paramFloat1, paramFloat2, this.e - this.jdField_c_of_type_Float);
-    boolean bool2 = a(paramFloat1, paramFloat2, this.f + this.jdField_c_of_type_Float);
-    if (bool1)
-    {
-      this.jdField_a_of_type_Int = 0;
-      return true;
-    }
-    if (bool2)
-    {
-      this.jdField_a_of_type_Int = 1;
-      return true;
-    }
-    return false;
-  }
-  
-  public float b()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Alot = null;
-    this.e = 0.0F;
-    this.f = 0.0F;
-  }
-  
-  public float c()
-  {
-    return this.f - this.e;
   }
 }
 

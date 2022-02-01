@@ -1,21 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.ocr.OCRPerformFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class ayfd
-  extends BroadcastReceiver
+  implements View.OnTouchListener
 {
-  public ayfd(OCRPerformFragment paramOCRPerformFragment) {}
+  public ayfd(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      ShortVideoCommentsView.a(this.a).setTextColor(2130706432);
+    }
+    for (;;)
     {
-      QLog.d("OCRPerformFragment", 4, "receive videochat");
-      this.a.getActivity().finish();
+      return false;
+      ShortVideoCommentsView.a(this.a).setTextColor(-16777216);
     }
   }
 }

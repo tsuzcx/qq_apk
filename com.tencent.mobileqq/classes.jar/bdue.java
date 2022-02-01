@@ -1,109 +1,27 @@
-import ConfigPush.FileStorageServerListInfo;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
 
 public class bdue
+  extends CountDownTimer.CountDownTimerListener
 {
-  public String a;
-  public ArrayList<FileStorageServerListInfo> a;
-  public int[] a;
-  public String b;
-  public ArrayList<FileStorageServerListInfo> b;
-  public int[] b;
-  
-  public bdue()
+  public bdue(CountdownTextView paramCountdownTextView, long paramLong, bduf parambduf)
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[6];
-    this.jdField_b_of_type_ArrayOfInt = new int[6];
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    super(paramLong);
   }
   
-  public ArrayList<FileStorageServerListInfo> a(String paramString)
+  public void onFinish()
   {
-    if ((paramString != null) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
-      return this.jdField_a_of_type_JavaUtilArrayList;
+    if (this.jdField_a_of_type_Bduf != null) {
+      this.jdField_a_of_type_Bduf.a();
     }
-    if ((paramString != null) && (paramString.equals(this.jdField_b_of_type_JavaLangString))) {
-      return this.jdField_b_of_type_JavaUtilArrayList;
-    }
-    return null;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.a();
   }
   
-  public void a()
+  public void onTick(long paramLong)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilArrayList.size()];
+    if (this.jdField_a_of_type_Bduf != null) {
+      this.jdField_a_of_type_Bduf.a(paramLong);
     }
-    if ((this.jdField_b_of_type_JavaUtilArrayList != null) && (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)) {
-      this.jdField_b_of_type_ArrayOfInt = new int[this.jdField_b_of_type_JavaUtilArrayList.size()];
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (paramString1 != null) {}
-    for (;;)
-    {
-      try
-      {
-        int i;
-        if (paramString1.equals(this.jdField_a_of_type_JavaLangString))
-        {
-          localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-          paramString1 = this.jdField_a_of_type_ArrayOfInt;
-          if ((localArrayList == null) || (localArrayList.size() <= 0) || (paramString1 == null) || (paramString1.length <= 0)) {
-            break;
-          }
-          paramString2 = new URL(paramString2).getHost();
-          if ((paramString2 == null) || (paramString2.length() <= 0)) {
-            break;
-          }
-          i = 0;
-          if (i >= localArrayList.size()) {
-            break;
-          }
-          String str = ((FileStorageServerListInfo)localArrayList.get(i)).sIP;
-          if ((str != null) && (str.equalsIgnoreCase(paramString2)))
-          {
-            if (paramString1.length <= i) {
-              break;
-            }
-            paramString1[i] += 1;
-          }
-        }
-        else
-        {
-          if ((paramString1 == null) || (!paramString1.equals(this.jdField_b_of_type_JavaLangString))) {
-            break label163;
-          }
-          localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
-          paramString1 = this.jdField_b_of_type_ArrayOfInt;
-          continue;
-        }
-        i += 1;
-        continue;
-        paramString1 = null;
-      }
-      catch (MalformedURLException paramString1)
-      {
-        return;
-      }
-      label163:
-      ArrayList localArrayList = null;
-    }
-  }
-  
-  public int[] a(String paramString)
-  {
-    if ((paramString != null) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
-      return this.jdField_a_of_type_ArrayOfInt;
-    }
-    if ((paramString != null) && (paramString.equals(this.jdField_b_of_type_JavaLangString))) {
-      return this.jdField_b_of_type_ArrayOfInt;
-    }
-    return null;
   }
 }
 

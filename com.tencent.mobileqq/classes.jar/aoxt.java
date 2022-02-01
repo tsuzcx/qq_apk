@@ -1,18 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aoxt
-  implements Parcelable.Creator<ArCloudConfigInfo>
+public class aoxt
+  extends aoxg
 {
-  public ArCloudConfigInfo a(Parcel paramParcel)
+  public aoxt(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    return new ArCloudConfigInfo(paramParcel);
+    super(paramQQAppInterface, paramContext);
   }
   
-  public ArCloudConfigInfo[] a(int paramInt)
+  public boolean a()
   {
-    return new ArCloudConfigInfo[paramInt];
+    try
+    {
+      boolean bool = f();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("OpenOnProfileSettingAction", 1, "doAction error: " + localException.getMessage());
+      a("OpenOnProfileSettingAction");
+    }
+    return false;
+  }
+  
+  public boolean f()
+  {
+    Intent localIntent = new Intent(this.a, InterestSwitchEditActivity.class);
+    localIntent.setFlags(67108864);
+    this.a.startActivity(localIntent);
+    return true;
   }
 }
 

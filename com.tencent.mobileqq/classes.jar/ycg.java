@@ -1,55 +1,24 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedLikeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class ycg
-  extends wlf<xat>
+class ycg
+  extends SimpleJob<Object>
 {
-  public String a;
-  public boolean a;
-  public int c = -1;
-  
-  public String a()
+  ycg(ycf paramycf, String paramString)
   {
-    return wjz.a("StorySvc.feed_like_list_715");
+    super(paramString);
   }
   
-  public wla a(byte[] paramArrayOfByte)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
-    try
-    {
-      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
-      return new ych(localRspFeedLikeList);
+    if (this.a.a == null) {
+      this.a.a = new yci(this.a, this.a.c);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yqp.d("Q.qqstory:GetLikeListRequest", "" + paramArrayOfByte);
-    }
+    this.a.d = "";
+    ycf.a(this.a);
     return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
-    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 2;; i = 1)
-    {
-      localReqFeedLikeList.source.set(i);
-      if (this.c != -1) {
-        localReqFeedLikeList.type.set(this.c);
-      }
-      return localReqFeedLikeList.toByteArray();
-    }
-  }
-  
-  public String toString()
-  {
-    return "GetLikeListRequest{, feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isOpen=" + this.jdField_a_of_type_Boolean + ", type=" + this.c + '}';
   }
 }
 

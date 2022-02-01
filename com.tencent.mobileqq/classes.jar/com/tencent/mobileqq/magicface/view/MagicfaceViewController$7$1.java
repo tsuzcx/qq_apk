@@ -2,33 +2,33 @@ package com.tencent.mobileqq.magicface.view;
 
 import android.view.View;
 import android.widget.TextView;
-import awfj;
-import awgs;
-import awgv;
+import awyb;
+import awzk;
+import awzn;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class MagicfaceViewController$7$1
   implements Runnable
 {
-  public MagicfaceViewController$7$1(awgv paramawgv, awfj paramawfj) {}
+  public MagicfaceViewController$7$1(awzn paramawzn, awyb paramawyb) {}
   
   public void run()
   {
     
-    if (this.jdField_a_of_type_Awgv.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Awgv.jdField_a_of_type_Awgs.c();
+    if (this.jdField_a_of_type_Awzn.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Awzn.jdField_a_of_type_Awzk.c();
     }
     for (;;)
     {
-      this.jdField_a_of_type_Awgv.jdField_a_of_type_Awgs.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      this.jdField_a_of_type_Awgv.jdField_a_of_type_Awgs.jdField_b_of_type_AndroidWidgetTextView.setText("");
-      if ((this.jdField_a_of_type_Awfj != null) && ("gravity".equalsIgnoreCase(this.jdField_a_of_type_Awfj.c))) {
-        this.jdField_a_of_type_Awgv.jdField_a_of_type_Awgs.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aL();
+      this.jdField_a_of_type_Awzn.jdField_a_of_type_Awzk.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      this.jdField_a_of_type_Awzn.jdField_a_of_type_Awzk.jdField_b_of_type_AndroidWidgetTextView.setText("");
+      if ((this.jdField_a_of_type_Awyb != null) && ("gravity".equalsIgnoreCase(this.jdField_a_of_type_Awyb.c))) {
+        this.jdField_a_of_type_Awzn.jdField_a_of_type_Awzk.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aL();
       }
       return;
-      ((View)this.jdField_a_of_type_Awgv.jdField_a_of_type_Awgs.jdField_b_of_type_Awgo).setBackgroundColor(this.jdField_a_of_type_Awfj.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Awgv.jdField_a_of_type_Awgs.d();
+      ((View)this.jdField_a_of_type_Awzn.jdField_a_of_type_Awzk.jdField_b_of_type_Awzg).setBackgroundColor(this.jdField_a_of_type_Awyb.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Awzn.jdField_a_of_type_Awzk.d();
     }
   }
 }

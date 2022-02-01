@@ -1,112 +1,122 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcel;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 import org.json.JSONObject;
 
 public class aqso
+  implements aqsi
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = -1;
-  public int d = -1;
-  public int e;
-  public int f;
+  public static String a;
+  public static String b;
   
-  public aqso()
+  static
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    jdField_a_of_type_JavaLangString = "videofeeds:";
+    jdField_b_of_type_JavaLangString = "mainFeeds:";
   }
   
-  public static aqso a(JSONObject paramJSONObject)
+  private void a(Context paramContext, ColorNote paramColorNote)
   {
-    aqso localaqso = new aqso();
-    if (paramJSONObject == null) {}
+    Object localObject1 = paramColorNote.getReserve();
+    if (localObject1 == null) {}
     do
     {
-      do
-      {
-        do
-        {
-          return localaqso;
-          paramJSONObject = paramJSONObject.optJSONObject("emoticon_guide_config");
-        } while (paramJSONObject == null);
-        if (QLog.isColorLevel()) {
-          QLog.i("QQSysAndEmojiConfProcessor", 2, "parse GuideConfBean: ");
-        }
-        if (paramJSONObject.has("emoticon_guide_url")) {
-          localaqso.jdField_a_of_type_JavaLangString = paramJSONObject.optString("emoticon_guide_url");
-        }
-        if (paramJSONObject.has("emoticon_guide_night_url")) {
-          localaqso.jdField_b_of_type_JavaLangString = paramJSONObject.optString("emoticon_guide_night_url");
-        }
-        if (paramJSONObject.has("emoticon_guide_serverid")) {
-          localaqso.c = paramJSONObject.optInt("emoticon_guide_serverid", -1);
-        }
-        if (paramJSONObject.has("emoticon_guide_serverid_type")) {
-          localaqso.d = paramJSONObject.optInt("emoticon_guide_serverid_type", -1);
-        }
-        if (paramJSONObject.has("emoticon_guide_width")) {
-          localaqso.e = paramJSONObject.optInt("emoticon_guide_width", 0);
-        }
-        if (paramJSONObject.has("emoticon_guide_height")) {
-          localaqso.f = paramJSONObject.optInt("emoticon_guide_height", 0);
-        }
-        if (paramJSONObject.has("emoticon_guide_open")) {
-          localaqso.jdField_a_of_type_Int = paramJSONObject.optInt("emoticon_guide_open", 0);
-        }
-        if (paramJSONObject.has("emoticon_guide_version")) {
-          localaqso.jdField_b_of_type_Int = paramJSONObject.optInt("emoticon_guide_version", 0);
-        }
-      } while (!paramJSONObject.has("emoticon_guide_invalid_time"));
-      paramJSONObject = paramJSONObject.optString("emoticon_guide_invalid_time", null);
-    } while (TextUtils.isEmpty(paramJSONObject));
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
+      return;
+      Object localObject2 = Parcel.obtain();
+      ((Parcel)localObject2).unmarshall((byte[])localObject1, 0, localObject1.length);
+      ((Parcel)localObject2).setDataPosition(0);
+      localObject1 = new VideoInfo((Parcel)localObject2);
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putLong("VIDEO_PLAY_POSITION", paramColorNote.mExtLong);
+      ((Bundle)localObject2).putBoolean("FLAG_ACTIVITY_NEW_TASK", true);
+      rpt.a(paramContext, (Bundle)localObject2, 32, ((VideoInfo)localObject1).g, ((VideoInfo)localObject1).jdField_a_of_type_Int, ((VideoInfo)localObject1).jdField_a_of_type_JavaLangString, ((VideoInfo)localObject1).b(), ((VideoInfo)localObject1).c(), ((VideoInfo)localObject1).a(), ((VideoInfo)localObject1).c, ((VideoInfo)localObject1).jdField_b_of_type_JavaLangString, ((VideoInfo)localObject1).f, ((VideoInfo)localObject1).k, ((VideoInfo)localObject1).j, ((VideoInfo)localObject1).jdField_b_of_type_Long, ((VideoInfo)localObject1).jdField_b_of_type_Boolean, ((VideoInfo)localObject1).jdField_d_of_type_Long, ((VideoInfo)localObject1).h, ((VideoInfo)localObject1).r, ((VideoInfo)localObject1).jdField_d_of_type_JavaLangString, ((VideoInfo)localObject1).o, ((VideoInfo)localObject1).p, ((VideoInfo)localObject1).e);
+    } while (!QLog.isColorLevel());
+    QLog.d("ReadInJoyLauncher", 2, "colorNote handleVideoFeedsJump() videoInfo=" + ((VideoInfo)localObject1).b());
+  }
+  
+  private void b(Context paramContext, ColorNote paramColorNote)
+  {
+    paramColorNote = paramColorNote.getReserve();
+    if (paramColorNote == null) {
+      return;
+    }
     try
     {
-      localaqso.jdField_a_of_type_Long = localSimpleDateFormat.parse(paramJSONObject).getTime();
-      return localaqso;
+      Parcel localParcel = Parcel.obtain();
+      localParcel.unmarshall(paramColorNote, 0, paramColorNote.length);
+      localParcel.setDataPosition(0);
+      paramColorNote = new ArticleInfo(localParcel);
+      if (paramColorNote == null)
+      {
+        QLog.d("ReadInJoyLauncher", 2, "init color error something is null");
+        return;
+      }
     }
-    catch (Exception paramJSONObject)
+    catch (Exception paramColorNote)
     {
-      QLog.d("QQSysAndEmojiConfProcessor", 2, "parse invalidTime failed!", paramJSONObject);
+      for (;;)
+      {
+        QLog.e("ReadInJoyLauncher", 2, "unmarshall error");
+        paramColorNote.printStackTrace();
+        paramColorNote = null;
+      }
+      QLog.d("ReadInJoyLauncher", 2, "articleInfo From ColorNote :\n" + paramColorNote.toString());
+      paramColorNote = pac.b(paramContext, paramColorNote);
+      paramColorNote.addFlags(268435456);
+      paramColorNote.putExtra("from_color_note", true);
+      paramColorNote.putExtra("native_article_launch_from", 1004);
+      paramContext.startActivity(paramColorNote);
     }
-    return localaqso;
   }
   
-  boolean a()
+  private void c(Context paramContext, ColorNote paramColorNote)
   {
-    int i = bgsg.c("key_emoticon_guide_version");
-    if (this.jdField_b_of_type_Int > i)
+    if ((paramContext == null) || (paramColorNote == null) || (paramColorNote.getReserve() == null)) {
+      return;
+    }
+    try
     {
-      bgsg.a("key_emoticon_guide_version", Integer.valueOf(this.jdField_b_of_type_Int));
-      bgsg.a("key_show_emoticon_guide", Boolean.valueOf(true));
-      return true;
+      paramColorNote = new String(paramColorNote.getReserve());
+      Object localObject = new JSONObject(paramColorNote);
+      String str1 = ((JSONObject)localObject).optString("url");
+      String str2 = ((JSONObject)localObject).optString("param");
+      boolean bool = ((JSONObject)localObject).optBoolean("useTransParentFragment");
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("param", str2);
+      ((Bundle)localObject).putString("colorBallData", paramColorNote);
+      ((Bundle)localObject).putBoolean("from_color_note", true);
+      tbz.a(paramContext, null, str1, (Bundle)localObject, bool);
+      return;
     }
-    return false;
+    catch (Exception paramContext)
+    {
+      QLog.e("ReadInJoyLauncher", 1, "error: " + paramContext.getMessage());
+    }
   }
   
-  public boolean b()
+  public void launch(Context paramContext, ColorNote paramColorNote)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQSysAndEmojiConfProcessor", 2, "currentTimeMillis: " + System.currentTimeMillis() + " mInvalidTime: " + this.jdField_a_of_type_Long);
+    if (paramColorNote.mSubType.startsWith(jdField_a_of_type_JavaLangString))
+    {
+      a(paramContext, paramColorNote);
+      return;
     }
-    return (this.jdField_a_of_type_Int == 1) && (System.currentTimeMillis() < this.jdField_a_of_type_Long);
-  }
-  
-  public String toString()
-  {
-    return "{mOpen=" + this.jdField_a_of_type_Int + ", mDrawableUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mNightDrawableUrl=" + this.jdField_b_of_type_JavaLangString + ", mServerId=" + this.c + ", mEmoType=" + this.d + ", mInvalidTime=" + this.jdField_a_of_type_Long + '}';
+    if (paramColorNote.mSubType.startsWith("viola:"))
+    {
+      c(paramContext, paramColorNote);
+      return;
+    }
+    b(paramContext, paramColorNote);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqso
  * JD-Core Version:    0.7.0.1
  */

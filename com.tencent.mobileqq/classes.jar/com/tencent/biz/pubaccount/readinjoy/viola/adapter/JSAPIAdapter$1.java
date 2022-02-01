@@ -6,12 +6,12 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.core.ViolaEnvironment;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tmc;
+import tda;
 
 public class JSAPIAdapter$1
   implements Runnable
 {
-  public JSAPIAdapter$1(tmc paramtmc, JSONObject paramJSONObject) {}
+  public JSAPIAdapter$1(tda paramtda, JSONObject paramJSONObject) {}
   
   public void run()
   {
@@ -29,7 +29,7 @@ public class JSAPIAdapter$1
             String str = (String)this.a.get("url");
             if (!TextUtils.isEmpty(str))
             {
-              tmc.a(localApplication.getApplicationContext(), str, null);
+              tda.a(localApplication.getApplicationContext(), str, null);
               return;
             }
           }

@@ -1,54 +1,38 @@
-import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
-
-public class vji
-  extends uzb
+class vji
 {
-  public vji(QCircleBaseTabFragment paramQCircleBaseTabFragment) {}
+  public int a;
+  public String a;
+  public int b;
   
-  public int a()
+  public vji(int paramInt1, int paramInt2, String paramString)
   {
-    if (this.a.jdField_a_of_type_Zxj != null)
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      Object localObject = this.a.jdField_a_of_type_Zxj.a().a("get_current_page_index", null);
-      if ((localObject instanceof Integer)) {
-        return ((Integer)localObject).intValue();
+      return true;
+      if (getClass() != paramObject.getClass()) {
+        break;
       }
-    }
-    return -1;
+      paramObject = (vji)paramObject;
+    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b) && (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)));
+    return false;
+    return false;
   }
   
-  public QCirclePolyLikeAniView a()
+  public int hashCode()
   {
-    return this.a.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView;
-  }
-  
-  public String a()
-  {
-    if (this.a.jdField_a_of_type_Uzo != null) {
-      return this.a.jdField_a_of_type_Uzo.b();
-    }
-    return "";
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.a.jdField_a_of_type_Vde != null) {
-      this.a.jdField_a_of_type_Vde.a("share_action_show_share_sheet", paramObject);
-    }
-  }
-  
-  public void a(String paramString, uzc paramuzc)
-  {
-    if (this.a.jdField_a_of_type_Zxj != null) {
-      this.a.jdField_a_of_type_Zxj.a().a(paramString, paramuzc);
-    }
-  }
-  
-  public void a(vca paramvca)
-  {
-    if (this.a.jdField_a_of_type_Zxj != null) {
-      this.a.jdField_a_of_type_Zxj.a().a("light_interact_list_show", paramvca);
+    int j = this.jdField_a_of_type_Int;
+    int k = this.b;
+    if (this.jdField_a_of_type_JavaLangString != null) {}
+    for (int i = this.jdField_a_of_type_JavaLangString.hashCode();; i = 0) {
+      return i + (k + j);
     }
   }
 }

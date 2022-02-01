@@ -1,21 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.idlefish.flutterboost.FlutterBoost;
+import com.idlefish.flutterboost.FlutterBoost.BoostLifecycleListener;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.embedding.engine.FlutterEngine;
+import io.flutter.plugins.GeneratedPluginRegistrant;
 
 class auxl
-  implements DialogInterface.OnClickListener
+  implements FlutterBoost.BoostLifecycleListener
 {
   auxl(auxj paramauxj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void beforeCreateEngine()
   {
-    apwh.a().a(this.a.jdField_a_of_type_Int, -1);
-    if (this.a.jdField_a_of_type_JavaLangString == null) {}
-    for (paramDialogInterface = "";; paramDialogInterface = this.a.jdField_a_of_type_JavaLangString)
-    {
-      bcst.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "1", "", paramDialogInterface, "");
-      return;
-    }
+    QLog.d("QFlutter.launcher", 1, "beforeCreateEngine");
   }
+  
+  public void onEngineCreated()
+  {
+    QLog.d("QFlutter.launcher", 1, "onEngineCreated");
+    FlutterEngine localFlutterEngine = FlutterBoost.instance().engineProvider();
+    GeneratedPluginRegistrant.registerWith(localFlutterEngine);
+    auwa.a().a(localFlutterEngine.getDartExecutor(), localFlutterEngine.getRenderer());
+    auxj.a(this.a).e();
+    auxj.a(this.a, 0, true);
+  }
+  
+  public void onEngineDestroy()
+  {
+    QLog.d("QFlutter.launcher", 1, "onEngineDestroy");
+  }
+  
+  public void onPluginsRegistered() {}
 }
 
 

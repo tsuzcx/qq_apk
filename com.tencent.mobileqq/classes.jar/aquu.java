@@ -1,72 +1,59 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aquu
-  extends aqkz<aqut>
+  implements Application.ActivityLifecycleCallbacks
 {
-  @NonNull
-  public aqut a(int paramInt)
-  {
-    return new aqut();
-  }
+  public aquu(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
   
-  @Nullable
-  public aqut a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
-    {
-      aqut localaqut = aqut.a(paramArrayOfaqlg[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVWhiteListConfProcessor", 2, "onParsed  " + paramArrayOfaqlg[0].a);
-      }
-      return localaqut;
-    }
-    return null;
-  }
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
   
-  public void a(aqut paramaqut)
+  public void onActivityDestroyed(Activity paramActivity)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("WVWhiteListConfProcessor", 2, "onUpdate " + paramaqut.toString());
+      QLog.d("ColorNoteSmallScreenService", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
     }
   }
   
-  public Class<aqut> clazz()
+  public void onActivityPaused(Activity paramActivity) {}
+  
+  public void onActivityResumed(Activity paramActivity)
   {
-    return aqut.class;
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteSmallScreenService", 2, "onActivityResumed: " + paramActivity.getClass().getName());
+    }
+    if (this.a.f)
+    {
+      this.a.f = false;
+      this.a.d = true;
+      this.a.a().removeCallbacks(this.a.b);
+      this.a.a().postDelayed(this.a.b, 200L);
+    }
   }
   
-  public boolean isAccountRelated()
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStarted: " + paramActivity.getClass().getName());
+    }
   }
   
-  public boolean isNeedCompressed()
+  public void onActivityStopped(Activity paramActivity)
   {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 207;
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStopped: " + paramActivity.getClass().getName());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aquu
  * JD-Core Version:    0.7.0.1
  */

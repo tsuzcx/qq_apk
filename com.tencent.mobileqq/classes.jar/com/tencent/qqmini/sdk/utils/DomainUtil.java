@@ -255,10 +255,8 @@ public class DomainUtil
       paramBoolean = bool;
     } while (checkWnsConfig(paramString, paramInt, (DomainConfig)localObject));
     QMLog.e("[mini] http.domainValid", DOMAIN_NAME_LIST[paramInt] + ":请求域名不合法，请配置，requestUrl:" + paramString);
-    if (!isOnlineVersion(paramMiniAppInfo))
-    {
+    if (!isOnlineVersion(paramMiniAppInfo)) {
       ThreadManager.getUIHandler().post(new DomainUtil.1(paramInt, (DomainConfig)localObject));
-      return false;
     }
     return false;
   }
@@ -270,13 +268,12 @@ public class DomainUtil
   
   private static boolean isValidPrefix(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      if ((TextUtils.isEmpty(paramString)) || ((!paramString.startsWith("https://")) && (!paramString.startsWith("wss://")) && (!paramString.startsWith("http://")))) {}
-    }
-    while ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("https://")) || (paramString.startsWith("wss://"))))
+    if (!TextUtils.isEmpty(paramString))
     {
-      return true;
-      return false;
+      if (paramString.startsWith("https://")) {}
+      while ((paramString.startsWith("wss://")) || ((paramBoolean) && (paramString.startsWith("http://")))) {
+        return true;
+      }
     }
     return false;
   }

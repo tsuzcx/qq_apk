@@ -1,28 +1,76 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.QQBroadcastReceiver;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.util.List;
 
-public class aylx
-  extends QQBroadcastReceiver
+class aylx
+  implements DownloadListener
 {
-  public aylx(ScanTorchActivity paramScanTorchActivity) {}
+  aylx(aykx paramaykx) {}
   
-  public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      paramAppRuntime = paramIntent.getAction();
-      if (QLog.isColorLevel()) {
-        QLog.d("ScanTorchActivity", 2, new Object[] { "onReceive, action=", paramAppRuntime });
-      }
-    } while (!"com.tencent.mobileqq__alive".equals(paramAppRuntime));
-    ScanTorchActivity.a(this.a);
+    this.a.jdField_a_of_type_Int = 4;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+    if (aykx.a(this.a) != null) {
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_done", 0, 0, aykx.a(this.a).uin, "", "yes", "android");
+    }
   }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 2;
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 3;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    if (this.a.jdField_a_of_type_Aypz != null) {
+      this.a.jdField_a_of_type_Aypz.a(5);
+    }
+    if (aykx.a(this.a) != null) {
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_done", 0, 0, aykx.a(this.a).uin, "", "yes", "android");
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 2;
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    this.a.jdField_a_of_type_Int = 1;
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramList = (DownloadInfo)paramList.get(0);
+      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      localMessage.what = 2;
+      localMessage.arg1 = paramList.f;
+      localMessage.sendToTarget();
+      if ((paramList.f == 0) && (aykx.a(this.a) != null)) {
+        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_begin", 0, 0, aykx.a(this.a).uin, "", "yes", "android");
+      }
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 2;
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

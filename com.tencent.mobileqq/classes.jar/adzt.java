@@ -1,24 +1,50 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.Conversation;
+import java.util.Calendar;
 
-public class adzt
-  extends BroadcastReceiver
+class adzt
+  implements aqxz
 {
-  public adzt(Conversation paramConversation) {}
+  final int jdField_a_of_type_Int;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public adzt(adzq paramadzq, int paramInt)
   {
-    if ("login".equals(paramIntent.getStringExtra("status")))
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      this.a.a.a(29, 2);
-      this.a.a.b = paramIntent.getStringExtra("loginInfo");
-      this.a.a.a = paramIntent.getLongExtra("subappid", 1L);
-      this.a.a.a(-1, null);
-      return;
+    default: 
+      return 0;
+    case 0: 
+      return this.jdField_a_of_type_Int;
+    case 1: 
+      return 12;
     }
-    this.a.a.k();
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, adzq.a(this.jdField_a_of_type_Adzq) + adzq.d(this.jdField_a_of_type_Adzq));
+    localCalendar.set(2, adzq.b(this.jdField_a_of_type_Adzq));
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return "";
+    case 0: 
+      return adzq.d(this.jdField_a_of_type_Adzq, paramInt2) + anzj.a(2131698936);
+    case 1: 
+      return adzq.e(this.jdField_a_of_type_Adzq, paramInt2) + anzj.a(2131698933);
+    }
+    return adzq.f(this.jdField_a_of_type_Adzq, paramInt2) + anzj.a(2131698934);
   }
 }
 

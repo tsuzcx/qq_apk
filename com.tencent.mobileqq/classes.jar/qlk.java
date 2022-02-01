@@ -1,63 +1,19 @@
-import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
+import android.view.View.OnClickListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
-public class qlk
-  extends BaseAdapter
+class qlk
+  implements View.OnClickListener
 {
-  List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
-  List<svs> b = new ArrayList();
+  qlk(qli paramqli) {}
   
-  public qlk(NativeGridImageView paramNativeGridImageView) {}
-  
-  public List<URL> a()
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(qll paramqll)
-  {
-    this.b = paramqll.a();
-    this.jdField_a_of_type_JavaUtilList = paramqll.b();
-  }
-  
-  public int getCount()
-  {
-    return this.b.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.b.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Context localContext = paramViewGroup.getContext();
-    if (paramView == null)
-    {
-      paramView = new SquareCornerTextImageView(localContext);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
+    if (localsgf != null) {
+      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
     }
-    for (;;)
-    {
-      ((SquareCornerTextImageView)paramView).a((svs)this.b.get(paramInt));
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,17 +1,9 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView.1.1;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import org.json.JSONObject;
 
 public class ssx
-  implements bdfl
 {
-  public ssx(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView) {}
-  
-  public void a(bdeo parambdeo)
-  {
-    ReadInJoySkinSlideDownView.a(this.a, parambdeo);
-    this.a.a.post(new ReadInJoySkinSlideDownView.1.1(this, parambdeo));
-  }
+  public int a;
+  public JSONObject a;
 }
 
 

@@ -1,74 +1,249 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.biz.troopgift.AIOGiftPanelContainer.2;
-import com.tencent.biz.troopgift.AIOGiftPanelContainer.2.1.1.1;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import org.json.JSONException;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import com.tencent.mobileqq.widget.share.ShareActionSheetFactory;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2.Param;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.StringsKt;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class aarv
-  extends bhhe
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/tribe/webplugins/ShowShareMenuProcessor;", "Lcom/tencent/biz/tribe/TribeWebViewPlugin$BaseTribePluginProcessor;", "Lcom/tencent/mobileqq/widget/share/ShareActionSheet$OnItemClickListener;", "Landroid/content/DialogInterface$OnCancelListener;", "plugin", "Lcom/tencent/biz/tribe/TribeWebViewPlugin;", "(Lcom/tencent/biz/tribe/TribeWebViewPlugin;)V", "actionToIdMap", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "callbackId", "hasInit", "", "idToActionMap", "shareActionSheet", "Lcom/tencent/mobileqq/widget/share/ShareActionSheet;", "shareToComputerHelper", "Lcom/tencent/biz/pubaccount/util/ShareToComputerHelper;", "init", "", "initMaps", "onCancel", "dialog", "Landroid/content/DialogInterface;", "onItemClick", "item", "Lcom/tencent/mobileqq/utils/ShareActionSheetBuilder$ActionSheetItem;", "process", "json", "Lorg/json/JSONObject;", "putToMap", "id", "action", "showActionSheet", "showRecentFriend", "paths", "", "operations", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class aarv
+  extends aart
+  implements DialogInterface.OnCancelListener, ShareActionSheet.OnItemClickListener
 {
-  aarv(aaru paramaaru, long paramLong, String paramString, int paramInt) {}
+  private ShareActionSheet jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+  private String jdField_a_of_type_JavaLangString = "";
+  private final HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private ubt jdField_a_of_type_Ubt;
+  private boolean jdField_a_of_type_Boolean;
+  private final HashMap<Integer, String> b = new HashMap();
   
-  public void onDone(bhhf parambhhf)
+  public aarv(@NotNull aars paramaars)
   {
-    long l = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGiftPanel.time", 2, "onDone, time=" + (l - this.jdField_a_of_type_Long) + ", total=" + (l - this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Long));
-    }
-    if (parambhhf.jdField_a_of_type_Int == 0) {
-      localObject = parambhhf.a().getString("filePath");
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        Object localObject;
-        parambhhf = new File((String)localObject);
-        String str = bgmg.b(parambhhf);
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOGiftPanelContainer", 2, "onDone() content =  " + str + ", filePath = " + (String)localObject);
-        }
-        if (!TextUtils.isEmpty(str))
-        {
-          localObject = new aasj(new JSONObject(str), this.jdField_a_of_type_JavaLangString);
-          ((aasj)localObject).a(this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int);
-          this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_Aasj = ((aasj)localObject);
-          this.jdField_a_of_type_Aaru.jdField_a_of_type_Bfst.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int);
-          this.jdField_a_of_type_Aaru.jdField_a_of_type_Bfst.a(false);
-          if (!this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
-            this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_AndroidOsHandler.post(new AIOGiftPanelContainer.2.1.1.1(this));
-          }
-          parambhhf.deleteOnExit();
-        }
-        aart.a(this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0, true);
-        this.jdField_a_of_type_Aaru.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.a(0);
-        return;
-      }
-      catch (IOException parambhhf)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("AIOGiftPanelContainer", 2, QLog.getStackTraceString(parambhhf));
-        return;
-      }
-      catch (JSONException parambhhf)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("AIOGiftPanelContainer", 2, QLog.getStackTraceString(parambhhf));
-        return;
-      }
-    }
-    QLog.d("AIOGiftPanelContainer", 2, "onError() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Aaru.jdField_a_of_type_Long) + ", errorCode = " + parambhhf.jdField_a_of_type_Int);
+    super(paramaars);
   }
   
-  public boolean onStart(bhhf parambhhf)
+  private final ShareActionSheet a(boolean paramBoolean, List<? extends ShareActionSheetBuilder.ActionSheetItem> paramList1, List<? extends ShareActionSheetBuilder.ActionSheetItem> paramList2)
   {
-    return super.onStart(parambhhf);
+    Object localObject = a().mRuntime;
+    if (localObject != null)
+    {
+      localObject = ((bioy)localObject).a();
+      if (localObject != null)
+      {
+        localObject = ((Activity)localObject).getIntent();
+        if (localObject != null) {
+          ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_feeds_buluo");
+        }
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+      if (localObject == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
+      }
+      ((ShareActionSheet)localObject).setActionSheetItems(paramList1, paramList2);
+      paramList1 = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+      if (paramList1 == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
+      }
+      paramList1.setItemClickListenerV2((ShareActionSheet.OnItemClickListener)this);
+      paramList1 = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+      if (paramList1 == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
+      }
+      paramList1.setCancelListener((DialogInterface.OnCancelListener)this);
+      paramList1 = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+      if (paramList1 == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
+      }
+      paramList1.setIntentForStartForwardRecentActivity(new Intent());
+      paramList1 = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+      if (paramList1 == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
+      }
+      if (!paramBoolean) {
+        break label221;
+      }
+    }
+    label221:
+    for (int i = 0;; i = 8)
+    {
+      paramList1.setRowVisibility(i, 0, 0);
+      paramList1 = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+      if (paramList1 == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
+      }
+      paramList1.show();
+      paramList1 = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+      if (paramList1 == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
+      }
+      return paramList1;
+      localObject = null;
+      break;
+    }
+  }
+  
+  private final void a()
+  {
+    Object localObject1 = new ShareActionSheetV2.Param();
+    bioy localbioy = a().mRuntime;
+    if (localbioy != null)
+    {
+      Object localObject2 = a().mRuntime;
+      Intrinsics.checkExpressionValueIsNotNull(localObject2, "plugin.mRuntime");
+      localObject2 = ((bioy)localObject2).a();
+      ((ShareActionSheetV2.Param)localObject1).context = ((Context)localObject2);
+      localObject1 = ShareActionSheetFactory.create((ShareActionSheetV2.Param)localObject1);
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "ShareActionSheetFactory.create(param)");
+      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet = ((ShareActionSheet)localObject1);
+      Intrinsics.checkExpressionValueIsNotNull(localObject2, "activity");
+      ((Activity)localObject2).getIntent().putExtra("big_brother_source_key", "biz_src_feeds_kandian");
+      this.jdField_a_of_type_Ubt = new ubt(localbioy.a());
+    }
+    b();
+  }
+  
+  private final void a(String paramString, int paramInt)
+  {
+    ((Map)this.jdField_a_of_type_JavaUtilHashMap).put(paramString, Integer.valueOf(paramInt));
+    ((Map)this.b).put(Integer.valueOf(paramInt), paramString);
+  }
+  
+  private final void b()
+  {
+    a("Qfriend", 2);
+    a("Qzone", 3);
+    a("wechat", 9);
+    a("wechat_", 10);
+    a("weibo", 12);
+    a("Qbrowser", 5);
+    a("sys_browser", 4);
+    a("sent_pc", 26);
+    a("add_to_digest", 145);
+    a("cancel_digest", 146);
+    a("interest", 147);
+    a("look_owner", 148);
+    a("push_topics", 149);
+    a("pull_black", 150);
+    a("feedback", 151);
+    a("colornote", 70);
+    a("colornote_cancel", 82);
+    a("save", 43);
+    a("adjust_font", 7);
+    a("copy_link", 1);
+    a("report", 11);
+    a("aio_position", 54);
+    a("collect", 6);
+    a("collect_cancel", 84);
+    a("stick", 96);
+    a("unstick", 97);
+    a("follow", 87);
+    a("unfollow", 32);
+  }
+  
+  public void a(@NotNull JSONObject paramJSONObject)
+  {
+    int j = 0;
+    Intrinsics.checkParameterIsNotNull(paramJSONObject, "json");
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      a();
+    }
+    Object localObject = paramJSONObject.optJSONArray("secondLineIcons");
+    JSONArray localJSONArray = paramJSONObject.optJSONArray("thirdLineIcons");
+    boolean bool = paramJSONObject.optBoolean("needRecentFriend");
+    ArrayList localArrayList = new ArrayList();
+    int k = ((JSONArray)localObject).length();
+    int i = 0;
+    Integer localInteger;
+    while (i < k)
+    {
+      localInteger = (Integer)((Map)this.jdField_a_of_type_JavaUtilHashMap).get(((JSONArray)localObject).get(i));
+      if (localInteger != null) {
+        localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(localInteger.intValue()));
+      }
+      i += 1;
+    }
+    localObject = new ArrayList();
+    k = localJSONArray.length();
+    i = j;
+    while (i < k)
+    {
+      localInteger = (Integer)((Map)this.jdField_a_of_type_JavaUtilHashMap).get(localJSONArray.get(i));
+      if (localInteger != null) {
+        ((ArrayList)localObject).add(ShareActionSheetBuilder.ActionSheetItem.build(localInteger.intValue()));
+      }
+      i += 1;
+    }
+    paramJSONObject = paramJSONObject.optString("callback");
+    Intrinsics.checkExpressionValueIsNotNull(paramJSONObject, "json.optString(\"callback\")");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject;
+    a(bool, (List)localArrayList, (List)localObject);
+  }
+  
+  public void onCancel(@Nullable DialogInterface paramDialogInterface)
+  {
+    paramDialogInterface = new JSONObject();
+    paramDialogInterface.putOpt("id", Integer.valueOf(0));
+    paramDialogInterface.putOpt("shared", Boolean.valueOf(false));
+    paramDialogInterface.putOpt("toUin", Long.valueOf(0L));
+    paramDialogInterface.putOpt("uinType", Integer.valueOf(0));
+    a().callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramDialogInterface.toString() });
+  }
+  
+  public void onItemClick(@Nullable ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, @Nullable ShareActionSheet paramShareActionSheet)
+  {
+    JSONObject localJSONObject;
+    if (paramActionSheetItem != null)
+    {
+      localJSONObject = new JSONObject();
+      paramShareActionSheet = (String)this.b.get(Integer.valueOf(paramActionSheetItem.action));
+      if (paramShareActionSheet == null) {
+        break label140;
+      }
+      localJSONObject.putOpt("id", paramShareActionSheet);
+      localJSONObject.putOpt("shared", Boolean.valueOf(true));
+      paramShareActionSheet = paramActionSheetItem.uin;
+      if (paramShareActionSheet == null) {
+        break label148;
+      }
+      paramShareActionSheet = StringsKt.toLongOrNull(paramShareActionSheet);
+      if (paramShareActionSheet == null) {
+        break label148;
+      }
+    }
+    for (;;)
+    {
+      localJSONObject.putOpt("toUin", paramShareActionSheet);
+      localJSONObject.putOpt("uinType", Integer.valueOf(paramActionSheetItem.uinType));
+      a().callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      paramActionSheetItem = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+      if (paramActionSheetItem == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
+      }
+      paramActionSheetItem.dismiss();
+      return;
+      label140:
+      paramShareActionSheet = Integer.valueOf(0);
+      break;
+      label148:
+      paramShareActionSheet = Long.valueOf(0L);
+    }
   }
 }
 

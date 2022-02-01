@@ -1,15 +1,24 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import java.util.ArrayList;
+
 class bmnn
+  extends bbvi
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  private bmnn(bmnj parambmnj) {}
   
-  public bmnn(bmnm parambmnm, int paramInt)
+  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RichStatus> paramArrayList, boolean paramBoolean3)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("isSuccess", paramBoolean1);
+    localBundle.putInt("start", paramInt1);
+    localBundle.putInt("end", paramInt2);
+    localBundle.putBoolean("over", paramBoolean2);
+    localBundle.putSerializable("data", paramArrayList);
+    localBundle.putBoolean("isAddFromCard", paramBoolean3);
+    localBundle.putInt("which_method", 0);
+    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 5, localBundle);
   }
 }
 

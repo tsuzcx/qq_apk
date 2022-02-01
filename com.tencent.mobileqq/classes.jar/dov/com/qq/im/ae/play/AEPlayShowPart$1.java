@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.play;
 
-import bnvo;
-import bnvr;
+import bowy;
+import boxb;
 import com.tencent.qphone.base.util.QLog;
 
 public class AEPlayShowPart$1
   implements Runnable
 {
-  public AEPlayShowPart$1(bnvr parambnvr) {}
+  public AEPlayShowPart$1(boxb paramboxb) {}
   
   public void run()
   {
     QLog.d("AEPlayShowPart", 4, "load data");
-    bnvr.a(this.this$0).d();
+    boxb.a(this.this$0).c();
   }
 }
 

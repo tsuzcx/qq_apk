@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import agci;
+import agmi;
 
 public class XBubbleAnimation$2
   implements Runnable
 {
-  public XBubbleAnimation$2(agci paramagci) {}
+  public XBubbleAnimation$2(agmi paramagmi) {}
   
   public void run()
   {

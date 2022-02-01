@@ -1,22 +1,15 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
+import kotlin.Metadata;
 
-public class sac
-  implements anil
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerHelper;", "", "()V", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sac
 {
-  public sac(sab paramsab) {}
+  private static int a;
+  public static final sad a;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  static
   {
-    if ((paramObject == null) || (!(paramObject instanceof Bundle))) {}
-    while (!paramBoolean) {
-      return;
-    }
-    paramObject = (Bundle)paramObject;
-    sab.a(this.a, (LikeAnimationInfo)paramObject.getParcelable("key_like_animation_info"));
-    bmqa.a();
-    bmqa.a(sab.a(this.a));
-    sab.a(this.a, sab.a(this.a));
+    jdField_a_of_type_Sad = new sad(null);
+    jdField_a_of_type_Int = -1;
   }
 }
 

@@ -179,7 +179,7 @@ class CanvasView$1$1
     //   314: getstatic 113	com/tencent/qqmini/sdk/core/utils/NativeBuffer:TYPE_BUFFER_BASE64	I
     //   317: ldc 115
     //   319: aload 14
-    //   321: invokestatic 119	com/tencent/qqmini/sdk/core/utils/NativeBuffer:packNativeBuffer	(Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;[BILjava/lang/String;Lorg/json/JSONObject;)V
+    //   321: invokestatic 119	com/tencent/qqmini/sdk/core/utils/NativeBuffer:packNativeBuffer	(Lcom/tencent/qqmini/sdk/launcher/core/IJsService;[BILjava/lang/String;Lorg/json/JSONObject;)V
     //   324: aload_0
     //   325: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$1$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$1;
     //   328: getfield 29	com/tencent/qqmini/miniapp/widget/CanvasView$1:val$req	Lcom/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent;

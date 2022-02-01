@@ -1,18 +1,13 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
 public class akcj
   implements DialogInterface.OnClickListener
 {
-  public akcj(BindNumberActivity paramBindNumberActivity) {}
+  public akcj(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a("dc00898", "0X8009F15", 0);
-    paramDialogInterface.dismiss();
-    BindNumberActivity.b(this.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

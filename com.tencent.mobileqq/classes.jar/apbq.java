@@ -1,17 +1,33 @@
-public class apbq
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.RspBody;
+
+class apbq
+  implements apbw
 {
-  public float a;
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  apbq(apbp paramapbp) {}
   
-  public String toString()
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, oidb_cmd0xe27.RspBody paramRspBody)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("xMIN:").append(this.a).append(",xMAX:").append(this.b).append(",yMIN:").append(this.c).append(",yMAX:").append(this.d);
-    return localStringBuilder.toString();
+    long l = paramRspBody.uint32_test_keep_silence_sec.get();
+    paramToServiceMsg = this.a;
+    if (l <= 0L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      apbp.a(paramToServiceMsg, bool);
+      if (l > 0L)
+      {
+        apbp.a(this.a).removeMessages(6);
+        apbp.a(this.a).sendEmptyMessageDelayed(6, l);
+        if (QLog.isColorLevel()) {
+          QLog.d("FrontBackReportManager", 2, "receive keep silence");
+        }
+      }
+      return;
+    }
   }
 }
 

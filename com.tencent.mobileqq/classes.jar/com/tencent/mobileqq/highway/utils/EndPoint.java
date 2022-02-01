@@ -9,9 +9,9 @@ public class EndPoint
   public int connIndex;
   public int connResult = -1;
   public long cost = -1L;
-  public int failCount;
+  public int failCount = 0;
   public String host;
-  public int ipIndex;
+  public int ipIndex = 0;
   public boolean isSameIsp = true;
   public String keyOfAPN = "";
   public int port;

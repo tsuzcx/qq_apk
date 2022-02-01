@@ -1,36 +1,66 @@
-import com.tencent.mobileqq.data.CameraEmotionData;
-import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arqp
-  implements bnty
 {
-  public arqp(CameraEmoSingleSend paramCameraEmoSingleSend, bntw parambntw, long paramLong) {}
+  public String a;
+  public boolean a;
+  public String[] a;
+  public String b;
+  public boolean b;
+  public String c;
   
-  public void a()
+  public arqp(JSONObject paramJSONObject)
   {
-    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onGifCreateFail, emoId:", Integer.valueOf(CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend).emoId) });
-    CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend, false, null);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("sucFlag", "0");
-    bctj.a(BaseApplication.getContext()).a(null, "CamEmoCreateGIF", false, System.currentTimeMillis() - this.jdField_a_of_type_Long, 0L, localHashMap, null);
+    try
+    {
+      String str = paramJSONObject.getString("extension");
+      if (str != null) {
+        this.jdField_a_of_type_ArrayOfJavaLangString = str.split("\\|");
+      }
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("text");
+      this.b = paramJSONObject.getString("tShow");
+      this.c = paramJSONObject.getString("tPress");
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      QLog.e("TencentDocLocalCooperationBean", 1, paramJSONObject.getLocalizedMessage(), paramJSONObject);
+    }
   }
   
-  public void a(String paramString)
+  public boolean a(String paramString)
   {
-    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onGifCreateSuccess, emoId:", Integer.valueOf(CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend).emoId) });
-    CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend, true, paramString);
-    this.jdField_a_of_type_Bntw.a();
-    paramString = new HashMap();
-    paramString.put("sucFlag", "1");
-    bctj.a(BaseApplication.getContext()).a(null, "CamEmoCreateGIF", true, System.currentTimeMillis() - this.jdField_a_of_type_Long, 0L, paramString, null);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    int i;
+    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+    {
+      bool1 = bool2;
+      if (paramString != null) {
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      {
+        if (paramString.equals(this.jdField_a_of_type_ArrayOfJavaLangString[i])) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arqp
  * JD-Core Version:    0.7.0.1
  */

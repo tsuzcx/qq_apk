@@ -1,32 +1,24 @@
-import com.tencent.aladdin.config.utils.AladdinLogger;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
 
 public class phw
-  implements AladdinLogger
+  extends BroadcastReceiver
 {
-  public void d(String paramString1, String paramString2)
-  {
-    QLog.d(paramString1, 2, paramString2);
-  }
+  public phw(ReadInJoyDailyFragment paramReadInJoyDailyFragment) {}
   
-  public void e(String paramString1, String paramString2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public boolean isDebugVersion()
-  {
-    return false;
+    if (this.a.getActivity() != null)
+    {
+      if (ReadInJoyDailyFragment.a(this.a) != null) {
+        ReadInJoyDailyFragment.a(this.a).i();
+      }
+      ReadInJoyDailyFragment.a(this.a, true);
+      this.a.getActivity().finish();
+    }
   }
 }
 

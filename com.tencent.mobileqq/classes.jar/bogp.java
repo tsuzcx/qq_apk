@@ -1,11 +1,26 @@
 class bogp
-  implements boak
+  implements bogd
 {
-  bogp(bogo parambogo) {}
+  bogp(bogn parambogn) {}
+  
+  public void a(float paramFloat)
+  {
+    this.a.a.a(paramFloat);
+  }
   
   public void a(int paramInt)
   {
-    bogo.a(this.a, paramInt);
+    this.a.a.a(paramInt);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    this.a.a.a(paramInt, paramBoolean);
+  }
+  
+  public void b(float paramFloat)
+  {
+    this.a.a.b(paramFloat);
   }
 }
 

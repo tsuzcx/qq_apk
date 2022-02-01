@@ -1,86 +1,111 @@
-import android.content.Context;
+import Wallet.RedInfoSyncReq;
+import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig;
+import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig.RedInfo;
+import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager.1;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.manager.Manager;
 
 public class alex
-  extends alej
+  implements alas, Manager
 {
-  public alex(Context paramContext)
+  private QWRedConfig jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public alex(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = anni.a(2131698407);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "QWalletRedManager init");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig = QWRedConfig.readConfig(paramQQAppInterface);
+    a();
   }
   
-  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  private void a()
   {
-    if ((paramObject instanceof alex))
-    {
-      paramMessageRecord = (alex)paramObject;
-      paramObject = paramMessageRecord;
+    ThreadManager.executeOnSubThread(new QWalletRedManager.1(this));
+  }
+  
+  public alez a(String paramString)
+  {
+    alez localalez = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getShowInfoByPath(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "getShowInfo path=" + paramString + ",res=" + localalez);
     }
-    for (;;)
+    return localalez;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getNotShowListStr();
+  }
+  
+  public void a(String paramString)
+  {
+    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getCurShowRedInfosByPath(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "doClick" + paramString + "|" + localList);
+    }
+    paramString = new LinkedList();
+    Iterator localIterator = localList.iterator();
+    while (localIterator.hasNext())
     {
-      paramMessageRecord.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
-      return paramObject;
-      paramMessageRecord = new alex(BaseApplication.getContext());
-      if (!(paramObject instanceof alff))
-      {
-        paramQQAppInterface = paramMessageRecord;
-        paramObject = paramMessageRecord;
-        paramMessageRecord = paramQQAppInterface;
+      QWRedConfig.RedInfo localRedInfo = (QWRedConfig.RedInfo)localIterator.next();
+      if (localRedInfo.doClick()) {
+        paramString.add(localRedInfo);
       }
+    }
+    if (paramString.size() > 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.saveConfig();
+      akxq.a(RedInfoSyncReq.createReq(paramString), new aley(this));
+    }
+    if (localList.size() > 0) {
+      VACDReportUtil.a(null, "QWalletStat", "QWalletRedClick", "QWalletRedClick", QWRedConfig.RedInfo.transToReportStr(localList), 0, null);
     }
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public void a(String paramString1, String paramString2, alam paramalam)
   {
-    QLog.d("TroopKeyWordMsg", 2, "deSerialize");
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.parseConfig(paramalam);
+  }
+  
+  public void a(List<String> paramList)
+  {
+    if (paramList == null) {}
+    LinkedList localLinkedList;
+    do
     {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      this.c = paramArrayOfByte.getString("messageNavInfo");
-      if ((this.c != null) && (this.c.length() != 0)) {
-        this.jdField_a_of_type_Beps.a(this.c);
-      }
       return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", paramArrayOfByte);
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("time", this.jdField_a_of_type_Int);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      this.c = this.jdField_a_of_type_Beps.a();
-      localJSONObject.put("messageNavInfo", this.c);
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      localLinkedList = new LinkedList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", localJSONException);
+        String str = (String)paramList.next();
+        localLinkedList.addAll(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getCurShowRedInfosByPath(str));
       }
+    } while (localLinkedList.size() <= 0);
+    VACDReportUtil.a(null, "QWalletStat", "QWalletRedShow", "QWalletRedShow", QWRedConfig.RedInfo.transToReportStr(localLinkedList), 0, null);
+  }
+  
+  public void b(String paramString)
+  {
+    LinkedList localLinkedList = new LinkedList();
+    localLinkedList.add(paramString);
+    a(localLinkedList);
+  }
+  
+  public void onDestroy()
+  {
+    alao localalao = (alao)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245);
+    if (localalao != null) {
+      localalao.d("redPoint", this);
     }
   }
 }

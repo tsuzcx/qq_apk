@@ -1,15 +1,32 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.widget.VideoView;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.turingfd.sdk.xq.TuringFdConfig;
+import com.tencent.turingfd.sdk.xq.TuringFdConfig.Builder;
+import com.tencent.turingfd.sdk.xq.TuringFdService;
 
-final class bhjw
-  implements MediaPlayer.OnCompletionListener
+public class bhjw
 {
-  bhjw(VideoView paramVideoView) {}
+  private static boolean a;
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public static void a()
   {
-    this.a.start();
+    Context localContext = BaseApplicationImpl.getContext().getApplicationContext();
+    if (!a) {
+      QLog.d("TuringSdkInitHelper", 1, "init TuringSDK");
+    }
+    try
+    {
+      TuringFdService.init(TuringFdConfig.newBuilder(localContext, "").appid("1109803375").build());
+      a = true;
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("TuringSdkInitHelper", 1, localThrowable, new Object[] { "Turing init crash fail" });
+      throw localThrowable;
+    }
   }
 }
 

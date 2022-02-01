@@ -1,62 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.JumpActivity;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aeue
-  extends anut
+  extends WtloginObserver
 {
-  public aeue(PhoneUnityPhoneLoginActivity paramPhoneUnityPhoneLoginActivity) {}
+  public aeue(JumpActivity paramJumpActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
-    {
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
-      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(true);
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      return;
+    if (paramDevlockInfo != null) {
+      asuz.a().a(paramDevlockInfo.TransferInfo);
     }
-    if (paramInt == 39)
-    {
-      bcst.b(this.a.app, "CliOper", "", "", "0X8005BFD", "0X8005BFD", 0, 0, "", "", "", "");
-      bglp.a(this.a, 230, this.a.getString(2131694209), this.a.getString(2131694208), null, this.a.getString(2131691829), new aeuf(this), null).show();
-      return;
-    }
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = this.a.getString(2131694207);
-    }
-    QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
-    {
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
-      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(false);
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      return;
-    }
-    String str;
-    if (paramInt == 36) {
-      str = this.a.getString(2131694213);
-    }
+    paramWUserSigInfo = this.a;
+    if (paramInt == 0) {}
     for (;;)
     {
-      QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+      paramWUserSigInfo.a(paramDevlockInfo);
       return;
-      str = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        str = this.a.getString(2131694212);
-      }
+      paramDevlockInfo = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeue
  * JD-Core Version:    0.7.0.1
  */

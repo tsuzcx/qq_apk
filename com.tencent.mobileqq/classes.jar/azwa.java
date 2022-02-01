@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
 
-public class azwa
-  implements bkhy
+public final class azwa
+  implements Parcelable.Creator<PersonalityLabel>
 {
-  public azwa(QCallDetailActivity paramQCallDetailActivity) {}
-  
-  public void onDismiss()
+  public PersonalityLabel a(Parcel paramParcel)
   {
-    bcst.b(this.a.app, "CliOper", "", "", "0X8005AFA", "0X8005AFA", 0, 0, "", "", "", "");
+    return new PersonalityLabel(paramParcel);
+  }
+  
+  public PersonalityLabel[] a(int paramInt)
+  {
+    return new PersonalityLabel[paramInt];
   }
 }
 

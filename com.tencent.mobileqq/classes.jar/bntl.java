@@ -1,50 +1,78 @@
-import android.text.InputFilter;
-import android.text.Spanned;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class bntl
-  implements InputFilter
+public class bntl
 {
-  private int jdField_a_of_type_Int = 32;
-  
-  public bntl(bnta parambnta) {}
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public static ArrayList<Object> a(JSONArray paramJSONArray)
   {
-    if (paramCharSequence.equals("\n")) {
-      return "";
+    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
+      return null;
     }
-    for (;;)
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    if (i < paramJSONArray.length())
     {
-      char c;
-      if ((paramInt1 <= this.jdField_a_of_type_Int) && (paramInt2 < paramSpanned.length()))
+      Object localObject = paramJSONArray.opt(i);
+      if (localObject == null) {}
+      for (;;)
       {
-        c = paramSpanned.charAt(paramInt2);
-        paramInt1 += bnta.a(this.jdField_a_of_type_Bnta, c);
-        paramInt2 += 1;
-      }
-      else
-      {
-        if (paramInt1 > this.jdField_a_of_type_Int) {
-          return paramSpanned.subSequence(0, paramInt2 - 1);
+        i += 1;
+        break;
+        if (localObject.getClass() == JSONObject.class) {
+          localArrayList.add(a((JSONObject)localObject));
+        } else if (localObject.getClass() == JSONArray.class) {
+          localArrayList.add(a((JSONArray)localObject));
         }
-        paramInt3 = 0;
-        paramInt2 = paramInt1;
-        paramInt1 = paramInt3;
-        while ((paramInt2 <= this.jdField_a_of_type_Int) && (paramInt1 < paramCharSequence.length()))
-        {
-          c = paramCharSequence.charAt(paramInt1);
-          paramInt2 = bnta.a(this.jdField_a_of_type_Bnta, c) + paramInt2;
-          paramInt1 += 1;
-        }
-        paramInt3 = paramInt1;
-        if (paramInt2 > this.jdField_a_of_type_Int) {
-          paramInt3 = paramInt1 - 1;
-        }
-        return paramCharSequence.subSequence(0, paramInt3);
-        paramInt1 = 0;
-        paramInt2 = 0;
       }
     }
+    return localArrayList;
+  }
+  
+  public static Map<String, Object> a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    try
+    {
+      paramString = a(new JSONObject(paramString));
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return localLinkedHashMap;
+  }
+  
+  public static Map<String, Object> a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return null;
+    }
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    Iterator localIterator = paramJSONObject.keys();
+    while (localIterator.hasNext())
+    {
+      String str = localIterator.next() + "";
+      Object localObject = paramJSONObject.get(str);
+      if (localObject != null) {
+        if (localObject.getClass() == JSONObject.class) {
+          localLinkedHashMap.put(str, a((JSONObject)localObject));
+        } else if (localObject.getClass() == JSONArray.class) {
+          localLinkedHashMap.put(str, a((JSONArray)localObject));
+        } else {
+          localLinkedHashMap.put(str, localObject);
+        }
+      }
+    }
+    return localLinkedHashMap;
   }
 }
 

@@ -11,7 +11,7 @@ class LikeRankingListActivity$6
   public void run()
   {
     this.this$0.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.this$0.b.setImageResource(2130845730);
+    this.this$0.b.setImageResource(2130845745);
   }
 }
 

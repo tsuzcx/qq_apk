@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean;
 
-public class asuu
-  implements View.OnClickListener
+public final class asuu
+  implements Parcelable.Creator<SearchEmoticonWebBean>
 {
-  public asuu(QfileCloudFileTabView paramQfileCloudFileTabView) {}
-  
-  public void onClick(View paramView)
+  public SearchEmoticonWebBean a(Parcel paramParcel)
   {
-    QfileCloudFileTabView.a(this.a, paramView, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new SearchEmoticonWebBean(paramParcel);
+  }
+  
+  public SearchEmoticonWebBean[] a(int paramInt)
+  {
+    return new SearchEmoticonWebBean[paramInt];
   }
 }
 

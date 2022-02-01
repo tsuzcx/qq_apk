@@ -1,9 +1,19 @@
-import cooperation.wadl.ipc.WadlResult;
-import java.util.ArrayList;
+import java.util.HashMap;
 
-abstract interface aphw
+public class aphw
 {
-  public abstract void a(ArrayList<WadlResult> paramArrayList);
+  private HashMap<String, Object> a = new HashMap();
+  public float[] a;
+  
+  public Object a(String paramString)
+  {
+    return this.a.get(paramString);
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    this.a.put(paramString, paramObject);
+  }
 }
 
 

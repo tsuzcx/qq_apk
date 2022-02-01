@@ -1,21 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class akyt
-  implements View.OnClickListener
+public class akyt
 {
-  akyt(akyh paramakyh) {}
-  
-  public void onClick(View paramView)
-  {
-    akyh.a(this.a).app.a().a("0X800474F", 1);
-    blhj.a(akyh.a(this.a), 4, null);
-    bcst.a(akyh.a(this.a).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 3, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

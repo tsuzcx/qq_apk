@@ -115,7 +115,7 @@ public class SensorJsPlugin
     if (this.miniAppSensorJsPlugin != null) {
       stopAccelerometer();
     }
-    this.miniAppSensorJsPlugin = new SensorJsPlugin.MiniAppSensorJsPlugin(this, null);
+    this.miniAppSensorJsPlugin = new SensorJsPlugin.MiniAppSensorJsPlugin(this, paramIJsService);
     this.senSensorManager.registerListener(this.miniAppSensorJsPlugin, this.senAccelerometer, paramInt);
     this.senSensorManager.registerListener(this.miniAppSensorJsPlugin, this.magneticSensor, paramInt);
     this.senSensorManager.registerListener(this.miniAppSensorJsPlugin, this.gyroscopeSensor, paramInt);
@@ -130,7 +130,7 @@ public class SensorJsPlugin
     if (this.gyroscopeSensorJsPlugin != null) {
       stopGyroscope();
     }
-    this.gyroscopeSensorJsPlugin = new SensorJsPlugin.GyroscopeSensorJsPlugin(this, null);
+    this.gyroscopeSensorJsPlugin = new SensorJsPlugin.GyroscopeSensorJsPlugin(this, paramIJsService);
     this.senSensorManager.registerListener(this.gyroscopeSensorJsPlugin, this.gyroscopeSensor, paramInt);
     return true;
   }

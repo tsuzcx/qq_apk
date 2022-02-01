@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-
-public final class bkdl
-  implements Parcelable.Creator<String>
+public abstract interface bkdl
 {
-  public String a(Parcel paramParcel)
-  {
-    return paramParcel.readString();
-  }
+  public abstract int a();
   
-  public String[] a(int paramInt)
-  {
-    return new String[paramInt];
-  }
+  public abstract int a(bkdc parambkdc);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a_(long paramLong, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

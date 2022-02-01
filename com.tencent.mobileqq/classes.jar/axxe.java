@@ -1,9 +1,16 @@
+import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface axxe
+final class axxe
+  implements ayud
 {
-  public abstract void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo);
+  axxe(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  
+  public void onClick(View paramView)
+  {
+    axxd.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
+  }
 }
 
 

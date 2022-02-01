@@ -1,32 +1,44 @@
-import android.graphics.Bitmap;
-import android.widget.LinearLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class aumu
-  extends axir
 {
-  public aumu(NearbyHybridFragment paramNearbyHybridFragment) {}
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  public String b;
+  public String c;
   
-  protected void a(int paramInt, String paramString) {}
+  private aumu(aumo paramaumo) {}
   
-  protected void a(int paramInt, String paramString, Bitmap paramBitmap)
+  public void a() {}
+  
+  public void a(Context paramContext)
   {
-    if ((this.a.d != null) && (this.a.d.equals(paramString)) && (paramBitmap != null) && (this.a.b != null) && (this.a.b.getVisibility() == 0)) {
-      this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageBitmap(paramBitmap);
+    paramContext.getSharedPreferences("FMSETTING_59", 3).edit().putString("DefaultRootPath", this.b).commit();
+    paramContext = aumo.a(this.jdField_a_of_type_Aumo, this.b + this.c);
+    Object localObject = aumo.b(this.jdField_a_of_type_Aumo, this.b + this.c);
+    String str = aumo.c(this.jdField_a_of_type_Aumo, this.b + this.c);
+    aumo.a(this.jdField_a_of_type_Aumo, paramContext);
+    aumo.a(this.jdField_a_of_type_Aumo, str);
+    aumo.a(this.jdField_a_of_type_Aumo, (String)localObject);
+    paramContext = this.jdField_a_of_type_Aumo.a.keySet().iterator();
+    while (paramContext.hasNext())
+    {
+      localObject = (String)paramContext.next();
+      localObject = (aumu)this.jdField_a_of_type_Aumo.a.get(localObject);
+      if ((((aumu)localObject).jdField_a_of_type_Boolean) && (localObject != this))
+      {
+        aumo.a(2, "getDefaultStorage[" + ((aumu)localObject).b + "]");
+        ((aumu)localObject).jdField_a_of_type_Boolean = false;
+      }
     }
+    this.jdField_a_of_type_Boolean = true;
   }
-  
-  protected void b()
-  {
-    if (this.a.jdField_a_of_type_Axcj != null) {
-      this.a.jdField_a_of_type_Axcj.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
-    }
-    this.a.l();
-    this.a.m();
-  }
-  
-  protected void b(int paramInt, String paramString) {}
 }
 
 

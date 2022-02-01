@@ -1,42 +1,26 @@
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class alxg
-  implements bhgo
+class alxg
+  implements beuq
 {
-  public alxg(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  alxg(alxd paramalxd) {}
   
-  public void a(bhgl parambhgl)
+  public void onResp(bevm parambevm)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onPrepared: mDuration=" + this.a.b);
-    }
-    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid())) {
-      atvf.a(2131691151);
-    }
-    do
+    FilterDesc localFilterDesc = (FilterDesc)parambevm.jdField_a_of_type_Bevl.a();
+    if (parambevm.jdField_a_of_type_Int != 0)
     {
-      do
-      {
-        return;
-        bgjj.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.e, this.a.f, this.a.jdField_a_of_type_Bhgl.d(), this.a.jdField_a_of_type_Bhgl.e());
-      } while (this.a.j != 10);
-      parambhgl.a(localSurfaceHolder);
-      this.a.jdField_a_of_type_Int = parambhgl.c();
-    } while (this.a.jdField_a_of_type_Int <= 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "此时的时长为" + ShortVideoUtils.a(this.a.jdField_a_of_type_Int));
+      lbj.c("VideoFilterTools", "download IconFile failed. errorCode: " + parambevm.b + ", errorMsg: " + parambevm.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
+      return;
     }
-    this.a.d.setText(ShortVideoUtils.a(this.a.jdField_a_of_type_Int));
-    this.a.jdField_a_of_type_AndroidWidgetSeekBar.setMax(this.a.jdField_a_of_type_Int);
+    if ((alxd.a(this.a).decrementAndGet() == 0) && (alxd.a(this.a) != null)) {
+      alxd.a(this.a).a(true);
+    }
+    lbj.c("VideoFilterTools", "download iconFile success. file: " + localFilterDesc.iconurl);
   }
+  
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

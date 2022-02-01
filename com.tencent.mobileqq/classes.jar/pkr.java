@@ -1,10 +1,23 @@
+import android.content.Intent;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment.9.1;
+import com.tencent.mobileqq.app.ThreadManager;
+
 public class pkr
+  implements pks
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public pkr(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void a()
+  {
+    ThreadManager.postImmediately(new ReadInJoySelfFragment.9.1(this), null, true);
+    Intent localIntent = new Intent(this.a.a.getContext(), ReadInJoySettingActivity.class);
+    this.a.startActivity(localIntent);
+    ReadInJoySelfFragment.a(this.a, 15);
+    bdll.b(null, "CliOper", "", "", "0X800705B", "0X800705B", 0, 0, "", "", "", ozs.e());
+  }
 }
 
 

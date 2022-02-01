@@ -1,18 +1,26 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class bozj
-  implements bgub
+  implements View.OnClickListener
 {
-  bozj(boza paramboza) {}
+  bozj(bozi parambozi, int paramInt) {}
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (boza.a(this.a) != null) {
-      boza.a(this.a, paramString);
+    if (!bozi.a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bozi.a(this.jdField_a_of_type_Bozi, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bozi.notifyDataSetChanged();
+      if (bozi.a(this.jdField_a_of_type_Bozi) != null) {
+        bozi.a(this.jdField_a_of_type_Bozi).a(this.jdField_a_of_type_Int);
+      }
     }
   }
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void b(String paramString, int paramInt1, int paramInt2) {}
 }
 
 

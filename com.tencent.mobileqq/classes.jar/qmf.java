@@ -1,20 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
 class qmf
-  implements qlx
+  implements View.OnTouchListener
 {
-  qmf(qly paramqly) {}
+  qmf(qmb paramqmb, LinearLayout paramLinearLayout) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (qly.a(this.a) != null)
-    {
-      qly.a(this.a).a();
-      return;
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
     }
-    pha.a(qly.c(this.a).getContext(), qly.a(this.a));
-    QLog.d("RvPolymericContainer", 1, "mScrollJumpUrl : " + qly.a(this.a));
+    return false;
   }
 }
 

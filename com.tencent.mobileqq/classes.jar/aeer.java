@@ -1,20 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForceLogoutActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
 
 public class aeer
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aeer(ForceLogoutActivity paramForceLogoutActivity) {}
+  public aeer(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
-    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.a != null)
+    {
+      this.a.a.b = false;
+      this.a.a.a(false);
+    }
   }
 }
 

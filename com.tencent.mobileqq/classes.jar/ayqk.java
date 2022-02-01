@@ -1,17 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.onlinestatus.auto.OnlineStatusSmartDisplayInfo.1.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ayqk
-  implements ayqf
+class ayqk
+  implements DialogInterface.OnClickListener
 {
-  ayqk(ayqj paramayqj) {}
+  ayqk(ayqg paramayqg, aysk paramaysk, ayqn paramayqn) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((ayqj.a(this.a)) && (ayqj.a(this.a) != null)) {
-      ThreadManagerV2.getUIHandlerV2().post(new OnlineStatusSmartDisplayInfo.1.1(this, paramInt));
+    if (!bhnv.g(this.jdField_a_of_type_Ayqg.jdField_a_of_type_AndroidContentContext))
+    {
+      QQToast.a(this.jdField_a_of_type_Ayqg.jdField_a_of_type_AndroidContentContext, 1, anzj.a(2131699941), 0).a();
+      return;
     }
+    ((ayrf)this.jdField_a_of_type_Ayqg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).a(this.jdField_a_of_type_Aysk.c, this.jdField_a_of_type_Aysk.a, this.jdField_a_of_type_Aysk.d, new ayql(this));
   }
 }
 

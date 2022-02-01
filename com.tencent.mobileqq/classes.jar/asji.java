@@ -1,48 +1,23 @@
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.widget.ImageView;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.33;
 
-class asji
-  extends niu
+public class asji
+  implements anlr
 {
-  asji(asjh paramasjh, boolean paramBoolean) {}
+  public asji(MessengerService.IncomingHandler.33 param33) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(long paramLong, String paramString)
   {
-    boolean bool = true;
-    if (paramInt != 0)
+    Bundle localBundle = new Bundle();
+    if (paramLong == 0L) {}
+    for (int i = 0;; i = 1)
     {
-      QLog.e("ExtendFriendHandler", 1, "setShowVipIconSwitch error: " + paramInt);
-      ExtendFriendProfileEditFragment.a(this.a.a).setOnCheckedChangeListener(null);
-      paramArrayOfByte = ExtendFriendProfileEditFragment.a(this.a.a);
-      if (!this.b) {}
-      for (bool = true;; bool = false)
-      {
-        paramArrayOfByte.setChecked(bool);
-        ExtendFriendProfileEditFragment.a(this.a.a).setOnCheckedChangeListener(ExtendFriendProfileEditFragment.a(this.a.a));
-        return;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendHandler", 2, "setShowVipIconSwitch(" + this.b + ") success");
-    }
-    paramArrayOfByte = (asht)ExtendFriendProfileEditFragment.a(this.a.a).getTag();
-    if (!this.b) {}
-    for (;;)
-    {
-      paramArrayOfByte.mVipHide = bool;
-      VipUtils.a(paramArrayOfByte, ExtendFriendProfileEditFragment.a(this.a.a));
-      paramArrayOfByte = this.a.a.getActivity();
-      if (paramArrayOfByte == null) {
-        break;
-      }
-      paramArrayOfByte.setResult(8193);
+      localBundle.putInt("result", i);
+      localBundle.putString("message", paramString);
+      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
       return;
-      bool = false;
     }
   }
 }

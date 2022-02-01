@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.LebaListMgrActivity.3.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.ArrayList;
 
 public class aenh
-  extends ayes
+  implements askp
 {
-  public aenh(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public aenh(EmosmActivity paramEmosmActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void a(EmoticonPackage paramEmoticonPackage) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  
+  public void b(EmoticonPackage paramEmoticonPackage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.mgr", 2, "onGameCenterMsgReceive. notifyData.");
-    }
-    if ((this.a.isResume()) && (paramBoolean1) && (paramInt != 2) && (LebaListMgrActivity.a(this.a) != null))
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      List localList = ajvi.a().a();
-      this.a.runOnUiThread(new LebaListMgrActivity.3.1(this, localList));
+      if (((EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).epId.equals(paramEmoticonPackage.epId)) {
+        return;
+      }
+      i += 1;
     }
+    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

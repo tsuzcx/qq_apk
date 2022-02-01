@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/moe" android:background="@drawable/bk0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="125.0dip" />
-    <com.tencent.avgame.gameroom.stage.CountDownClockView android:id="@id/mj_" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginBottom="20.5dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/nlk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-        <TextView android:textSize="25.0dip" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nlc" android:paddingLeft="3.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:text="@string/wgf" android:layout_weight="0.27" />
-        <TextView android:textSize="30.0dip" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nla" android:paddingLeft="16.0dip" android:paddingRight="19.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:maxLines="2" android:layout_weight="0.73" />
+    <View android:id="@id/mqm" android:background="@drawable/bk4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="125.0dip" />
+    <com.tencent.avgame.gameroom.stage.CountDownClockView android:id="@id/mkr" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginBottom="20.5dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/n06" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginBottom="20.5dip" android:layout_toRightOf="@id/mkr" android:layout_alignParentBottom="true">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:layout_centerHorizontal="true">
+            <RelativeLayout android:id="@id/mz3" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
+                <com.tencent.avgame.ui.AVGameText android:id="@id/nsm" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="14.0dip" android:layout_toRightOf="@id/mz3">
+                <com.tencent.avgame.ui.AVGameText android:id="@id/nsn" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/nr9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textSize="25.0dip" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nr1" android:paddingLeft="3.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:text="@string/wfv" android:layout_weight="0.27" />
+        <TextView android:textSize="30.0dip" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nqz" android:paddingLeft="16.0dip" android:paddingRight="19.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:maxLines="2" android:layout_weight="0.73" />
     </LinearLayout>
-    <ImageView android:id="@id/njc" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="20.5dip" android:src="@drawable/bk1" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
 </merge>

@@ -1,45 +1,69 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.forward.ForwardMixedMsgOption;
-import com.tencent.mobileqq.forward.ForwardReplyMsgOption;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.UUID;
 
-public class auhp
-  implements View.OnClickListener
+class auhp
+  implements auey
 {
-  public auhp(ForwardMixedMsgOption paramForwardMixedMsgOption) {}
+  auhp(auha paramauha) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg != null) {
-      if (this.a.jdField_a_of_type_Bgpa != null) {}
+    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Auei.a();
+    bftf localbftf = this.a.a(localFileManagerEntity);
+    if ((TextUtils.isEmpty(auha.a(this.a))) && (localbftf.a != null)) {
+      auha.a(this.a, localbftf.a.toString());
     }
-    for (;;)
+    bfsf localbfsf = new bfsf(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
+    if ((localbftf.b == 10) || (localbftf.b == 9)) {
+      if (localbftf.a != null)
+      {
+        localbfsf.b(localbftf.a);
+        localFileManagerEntity.status = 2;
+      }
+    }
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.i("TroopFileModel<FileAssistant>", 2, "TroopFileModel doStartDownload : resumeDownload error, infoId is null");
       return;
-      this.a.jdField_a_of_type_Bgpa.hideSoftInputFromWindow();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.hasReplyText())
+      if (localbftf.b == 7)
       {
-        ((bakq)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(340)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
-        ForwardReplyMsgOption.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+        if (localFileManagerEntity.isZipInnerFile) {
+          localbfsf.a(localFileManagerEntity);
+        }
+        for (;;)
+        {
+          localFileManagerEntity.status = 2;
+          return;
+          localbfsf.a(localFileManagerEntity.strTroopFilePath, localbftf.g, localbftf.c, localbftf.h);
+        }
       }
-      for (;;)
-      {
-        this.a.E();
-        break;
-        auio localauio = new auio(this.a.jdField_a_of_type_Bgpa, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        localauio.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692399), this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
-        this.a.jdField_a_of_type_Bgpa.addPreviewView(localauio.b());
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "no msg not enter preview");
+    } while (!QLog.isColorLevel());
+    QLog.i("TroopFileModel<FileAssistant>", 2, "TroopFileModel doStartDownload : can not handle file info status,download error");
+  }
+  
+  public void b()
+  {
+    Object localObject = this.a.jdField_a_of_type_Auei.a();
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
+    localObject = this.a.a((FileManagerEntity)localObject);
+    if ((TextUtils.isEmpty(auha.a(this.a))) && (((bftf)localObject).a != null)) {
+      auha.a(this.a, ((bftf)localObject).a.toString());
+    }
+    if (!TextUtils.isEmpty(auha.a(this.a)))
+    {
+      localTroopFileTransferManager.d(UUID.fromString(auha.a(this.a)));
+      if (auoo.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+        this.a.a("0x8009D61", null);
       }
     }
+    auha.a(this.a, (bftf)localObject);
   }
 }
 

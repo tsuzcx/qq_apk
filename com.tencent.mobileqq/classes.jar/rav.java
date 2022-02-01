@@ -1,23 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity.3;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+
 public class rav
+  implements DialogInterface.OnClickListener
 {
-  public double a;
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public int c = -2019;
-  public int d = -2019;
-  public int e = -2019;
+  public rav(ReadInJoyDeliverVideoActivity.3 param3) {}
   
-  public rav(rat paramrat)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_b_of_type_Int = -2019;
-  }
-  
-  public String toString()
-  {
-    return "\nFeedScrollStateInfo{feedID='" + this.jdField_a_of_type_JavaLangString + '\'' + ", viewHeight=" + this.jdField_a_of_type_Int + ", starTopOffset=" + this.jdField_b_of_type_Int + ", endTopOffset=" + this.c + ", startBottomOffset=" + this.d + ", endBottomOffset=" + this.e + ", enterAZSpeed=" + this.jdField_a_of_type_Double + ", enterAZTime=" + this.jdField_a_of_type_Long + ", exitAZTime=" + this.jdField_b_of_type_Long + "}";
+    ForwardSdkShareOption.a(this.a.this$0, true, "shareToQQ", ReadInJoyDeliverVideoActivity.a(this.a.this$0));
+    this.a.this$0.moveTaskToBack(true);
+    this.a.this$0.finish();
   }
 }
 

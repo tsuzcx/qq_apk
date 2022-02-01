@@ -1,16 +1,20 @@
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+
 public class wnz
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  
-  public wnz(int paramInt, String paramString1, String paramString2, String paramString3)
+  public static String a(QQUserUIItem paramQQUserUIItem)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    return wos.a(paramQQUserUIItem);
+  }
+  
+  public static boolean a()
+  {
+    return true;
+  }
+  
+  public static String b(QQUserUIItem paramQQUserUIItem)
+  {
+    return wos.b(paramQQUserUIItem);
   }
 }
 

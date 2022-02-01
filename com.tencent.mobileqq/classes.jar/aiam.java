@@ -1,23 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.MotionEvent;
 
-class aiam
-  implements View.OnClickListener
+public abstract interface aiam
 {
-  aiam(ahzy paramahzy) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "mQimStatusOnClickListener.onClick: invoked. info: v = " + paramView);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X80087E6");
-    ahvz.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

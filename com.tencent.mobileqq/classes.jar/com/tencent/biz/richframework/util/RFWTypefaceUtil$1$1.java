@@ -1,13 +1,13 @@
 package com.tencent.biz.richframework.util;
 
+import aadw;
 import android.graphics.Typeface;
 import android.widget.TextView;
-import zzs;
 
 public class RFWTypefaceUtil$1$1
   implements Runnable
 {
-  public RFWTypefaceUtil$1$1(zzs paramzzs, Typeface paramTypeface) {}
+  public RFWTypefaceUtil$1$1(aadw paramaadw, Typeface paramTypeface) {}
   
   public void run()
   {

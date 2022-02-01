@@ -1,18 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.VirtualInfo;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.widget.GridListView;
 
-public final class biyg
-  implements Parcelable.Creator<VirtualInfo>
+public class biyg
+  extends DataSetObserver
 {
-  public VirtualInfo a(Parcel paramParcel)
+  public biyg(GridListView paramGridListView) {}
+  
+  public void onChanged()
   {
-    return new VirtualInfo(paramParcel);
+    if (this.a.jdField_a_of_type_Biyj != null) {
+      GridListView.a(this.a, this.a.jdField_a_of_type_Biyj.getCount());
+    }
+    if (this.a.jdField_a_of_type_Biyk != null) {
+      this.a.jdField_a_of_type_Biyk.notifyDataSetChanged();
+    }
   }
   
-  public VirtualInfo[] a(int paramInt)
+  public void onInvalidated()
   {
-    return new VirtualInfo[paramInt];
+    if (this.a.jdField_a_of_type_Biyj != null) {
+      GridListView.a(this.a, this.a.jdField_a_of_type_Biyj.getCount());
+    }
+    if (this.a.jdField_a_of_type_Biyk != null) {
+      this.a.jdField_a_of_type_Biyk.notifyDataSetInvalidated();
+    }
   }
 }
 

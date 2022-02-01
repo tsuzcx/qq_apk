@@ -3,12 +3,12 @@ package com.tencent.mobileqq.medalwall;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import awis;
+import axbk;
 
 public class MedalID
   implements Parcelable
 {
-  public static final Parcelable.Creator<MedalID> CREATOR = new awis();
+  public static final Parcelable.Creator<MedalID> CREATOR = new axbk();
   public int a;
   public int b;
   

@@ -1,59 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.articlesummary.feeds_info.IconWordingInfo;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask.ViolaVideoUpdateController.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import org.jetbrains.annotations.NotNull;
 
 public class rhd
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
+  private long jdField_a_of_type_Long = 500L;
+  @NotNull
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private boolean jdField_a_of_type_Boolean;
+  private Runnable b = new ViolaVideoUpdateController.1(this);
   
-  private static rhd b(feeds_info.IconWordingInfo paramIconWordingInfo)
+  public rhd(@NotNull Runnable paramRunnable, long paramLong)
   {
-    rhd localrhd = new rhd();
-    localrhd.jdField_a_of_type_Int = pvd.a(paramIconWordingInfo.uint32_type);
-    if (paramIconWordingInfo.bytes_icon_url.has()) {
-      localrhd.jdField_a_of_type_JavaLangString = paramIconWordingInfo.bytes_icon_url.get().toStringUtf8();
-    }
-    if (paramIconWordingInfo.bytes_wording.has()) {
-      localrhd.jdField_b_of_type_JavaLangString = paramIconWordingInfo.bytes_wording.get().toStringUtf8();
-    }
-    if (paramIconWordingInfo.bytes_status_icon_url.has()) {
-      localrhd.jdField_c_of_type_JavaLangString = paramIconWordingInfo.bytes_status_icon_url.get().toStringUtf8();
-    }
-    localrhd.jdField_b_of_type_Int = pvd.a(paramIconWordingInfo.uint32_status);
-    if (paramIconWordingInfo.bytes_status.has()) {
-      localrhd.d = paramIconWordingInfo.bytes_status.get().toStringUtf8();
-    }
-    localrhd.jdField_c_of_type_Int = pvd.a(paramIconWordingInfo.uint32_icon_show_mode);
-    return localrhd;
+    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public feeds_info.IconWordingInfo a()
+  public void a()
   {
-    feeds_info.IconWordingInfo localIconWordingInfo = new feeds_info.IconWordingInfo();
-    localIconWordingInfo.uint32_type.set(this.jdField_a_of_type_Int);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localIconWordingInfo.bytes_icon_url.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Boolean) {
+      return;
     }
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localIconWordingInfo.bytes_wording.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    }
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      localIconWordingInfo.bytes_status_icon_url.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    }
-    localIconWordingInfo.uint32_status.set(this.jdField_b_of_type_Int);
-    localIconWordingInfo.uint32_icon_show_mode.set(this.jdField_c_of_type_Int);
-    if (!TextUtils.isEmpty(this.d)) {
-      localIconWordingInfo.bytes_status.set(ByteStringMicro.copyFromUtf8(this.d));
-    }
-    return localIconWordingInfo;
+    this.jdField_a_of_type_Boolean = true;
+    ThreadManagerV2.getUIHandlerV2().post(this.b);
+  }
+  
+  public void b()
+  {
+    ThreadManagerV2.getUIHandlerV2().removeCallbacks(this.b);
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

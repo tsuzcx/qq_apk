@@ -1,27 +1,52 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerFrameLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class ascp
-  implements Animator.AnimatorListener
+public class ascp
 {
-  ascp(asco paramasco) {}
+  public ascq a;
+  public String a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public JSONObject a()
   {
-    if (this.a.a != null)
+    JSONObject localJSONObject1 = new JSONObject();
+    try
     {
-      float f = this.a.a.getTranslationX();
-      this.a.a.setTranslationX(0.0F);
-      this.a.a((int)(this.a.a.getLeft() + f), this.a.a.getTop(), (int)(f + this.a.a.getLeft() + this.a.a.getWidth()), this.a.a.getBottom());
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("user_id", this.jdField_a_of_type_Ascq.jdField_a_of_type_JavaLangString);
+      localJSONObject2.put("source_md5", this.jdField_a_of_type_Ascq.jdField_b_of_type_JavaLangString);
+      localJSONObject2.put("source_url", this.jdField_a_of_type_Ascq.c);
+      localJSONArray = new JSONArray();
+      localIterator = this.jdField_a_of_type_Ascq.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        localJSONArray.put((String)localIterator.next());
+      }
+      localException.put("expose_md5s", localJSONArray);
     }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("DoutuReportData", 2, "convert error:" + localException);
+      }
+      return localJSONObject1;
+    }
+    JSONArray localJSONArray = new JSONArray();
+    Iterator localIterator = this.jdField_a_of_type_Ascq.jdField_b_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      localJSONArray.put((String)localIterator.next());
+    }
+    localException.put("expose_urls", localJSONArray);
+    localException.put("click_md5", this.jdField_a_of_type_Ascq.d);
+    localException.put("click_url", this.jdField_a_of_type_Ascq.e);
+    localException.put("aio_type", this.jdField_a_of_type_Ascq.f);
+    localException.put("mobile_type", this.jdField_a_of_type_Ascq.g);
+    localException.put("to_user_id", this.jdField_a_of_type_Ascq.h);
+    localJSONObject1.put("dcId", this.jdField_a_of_type_JavaLangString);
+    localJSONObject1.put("data", localException);
+    return localJSONObject1;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

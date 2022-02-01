@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import amqf;
-import amqg;
-import anai;
+import anbz;
+import anca;
+import anmc;
 import com.tencent.TMG.sdk.AVContext;
 import com.tencent.TMG.sdk.AVRoomMulti;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -12,12 +12,12 @@ import java.util.ArrayList;
 public class CmGameAvHandler$11
   implements Runnable
 {
-  public CmGameAvHandler$11(amqf paramamqf, Boolean paramBoolean) {}
+  public CmGameAvHandler$11(anbz paramanbz, Boolean paramBoolean) {}
   
   public void run()
   {
     if (this.a.booleanValue()) {
-      if (amqf.a(this.this$0).size() > 0)
+      if (anbz.a(this.this$0).size() > 0)
       {
         localObject = BaseApplicationImpl.getApplication().getRuntime();
         if ((localObject == null) || (!(localObject instanceof QQAppInterface))) {
@@ -32,9 +32,9 @@ public class CmGameAvHandler$11
         return;
       }
       localObject = ((QQAppInterface)localObject).c();
-      amqf.a(this.this$0, (String[])amqf.a(this.this$0).toArray(new String[amqf.a(this.this$0).size()]), (String)localObject);
+      anbz.a(this.this$0, (String[])anbz.a(this.this$0).toArray(new String[anbz.a(this.this$0).size()]), (String)localObject);
       return;
-      anai.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new amqg(this));
+      anmc.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new anca(this));
       return;
     }
   }

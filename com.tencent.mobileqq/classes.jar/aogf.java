@@ -1,151 +1,890 @@
-import com.tencent.imcore.message.QQMessageFacade;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.beacon.event.UserAction;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.app.RedpointHandler.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.LbsDetailInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.LbsInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.LbsSubnation;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.NumRedInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.NumRedPath;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.TimeReqBody;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.TimeRspBody;
 import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspNextSystemMsg;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import mqq.app.NewIntent;
 
-class aogf
-  implements bdxd
+public class aogf
+  extends anud
+  implements anug
 {
-  aogf(aogd paramaogd) {}
+  public static final HashSet<String> a;
+  public int a;
+  private apck a;
   
-  public void a(bdxf parambdxf, bdxe parambdxe)
+  static
   {
-    if (parambdxf.a.getResultCode() != 1000)
+    jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  }
+  
+  protected aogf(QQAppInterface paramQQAppInterface)
+  {
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Int = 600000;
+    this.jdField_a_of_type_Apck = new aogg(this, "vas_red_point", false);
+  }
+  
+  private BusinessInfoCheckUpdate.LbsInfo a(SosoInterface.SosoLocation paramSosoLocation)
+  {
+    if (paramSosoLocation == null) {
+      return null;
+    }
+    BusinessInfoCheckUpdate.LbsInfo localLbsInfo = new BusinessInfoCheckUpdate.LbsInfo();
+    BusinessInfoCheckUpdate.LbsDetailInfo localLbsDetailInfo = new BusinessInfoCheckUpdate.LbsDetailInfo();
+    BusinessInfoCheckUpdate.LbsSubnation localLbsSubnation = new BusinessInfoCheckUpdate.LbsSubnation();
+    if (TextUtils.isEmpty(paramSosoLocation.f)) {}
+    for (paramSosoLocation = "";; paramSosoLocation = paramSosoLocation.f)
     {
-      this.a.a(4006, false, null);
+      localLbsSubnation.code.set(paramSosoLocation);
+      localLbsSubnation.nation.set("unknown");
+      localLbsSubnation.province.set("unknown");
+      localLbsSubnation.city.set("unknown");
+      localLbsSubnation.district.set("unknown");
+      localLbsDetailInfo.subnation.set(localLbsSubnation);
+      localLbsInfo.detail_info.set(localLbsDetailInfo);
+      return localLbsInfo;
+    }
+  }
+  
+  public static List<aogh> a(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime == null) {}
+    ArrayList localArrayList;
+    do
+    {
+      return null;
+      localArrayList = new ArrayList();
+      paramAppRuntime = LebaPluginInfo.getAll(((QQAppInterface)paramAppRuntime).a().createEntityManager());
+    } while (paramAppRuntime == null);
+    int i = 0;
+    while (i < paramAppRuntime.size())
+    {
+      aogh localaogh = new aogh();
+      localaogh.jdField_a_of_type_Long = ((LebaPluginInfo)paramAppRuntime.get(i)).uiResId;
+      localaogh.jdField_a_of_type_Int = ((int)((LebaPluginInfo)paramAppRuntime.get(i)).uiResId);
+      localArrayList.add(localaogh);
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  private void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      ThreadManager.post(new RedpointHandler.2(this, paramInt, paramSosoLbsInfo), 5, null, true);
       return;
     }
-    Object localObject1;
-    int i;
-    for (;;)
+    b(paramInt, paramSosoLbsInfo);
+  }
+  
+  private void a(long paramLong)
+  {
+    if (jdField_a_of_type_JavaUtilHashSet == null) {}
+    do
     {
-      structmsg.RspNextSystemMsg localRspNextSystemMsg;
-      Object localObject2;
-      Object localObject3;
-      MessageForSystemMsg localMessageForSystemMsg;
-      try
+      return;
+      if (paramLong == 1113L)
       {
-        localObject1 = (anmw)aogd.b(this.a).getManager(51);
-        parambdxe = aogd.c(this.a).getAccount();
-        localRspNextSystemMsg = new structmsg.RspNextSystemMsg();
-        localRspNextSystemMsg.mergeFrom((byte[])parambdxf.a.getWupBuffer());
-        new StringBuilder();
-        if ((localRspNextSystemMsg == null) || (localRspNextSystemMsg.head.result.get() != 0)) {
-          this.a.a(4006, false, null);
-        }
-        parambdxf = new ArrayList();
-        localObject2 = localRspNextSystemMsg.msgs.get();
-        j = ((List)localObject2).size();
-        if (!QLog.isColorLevel()) {
-          break label860;
-        }
-        QLog.e("Q.systemmsg.", 2, "<---sendGetNextFriendSystemMsg Resp : decode pb size = " + j);
-      }
-      catch (Exception parambdxf)
-      {
-        int j;
-        long l3;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp exception", parambdxf);
-        this.a.a(4006, false, null);
+        jdField_a_of_type_JavaUtilHashSet.add("1113.100800");
+        jdField_a_of_type_JavaUtilHashSet.add("1113.100801");
+        jdField_a_of_type_JavaUtilHashSet.add("1113.100802");
+        jdField_a_of_type_JavaUtilHashSet.add("1113.100803");
+        jdField_a_of_type_JavaUtilHashSet.add("1113.100804");
         return;
       }
-      if (i < j)
+    } while (paramLong != 100001113L);
+    jdField_a_of_type_JavaUtilHashSet.add("100600.100001113.100100800");
+    jdField_a_of_type_JavaUtilHashSet.add("100600.100001113.100100801");
+    jdField_a_of_type_JavaUtilHashSet.add("100600.100001113.100100802");
+    jdField_a_of_type_JavaUtilHashSet.add("100600.100001113.100100803");
+    jdField_a_of_type_JavaUtilHashSet.add("100600.100001113.100100804");
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    Object localObject = (bcuy)paramQQAppInterface.getManager(12);
+    if (localObject != null) {
+      ((bcuy)localObject).a();
+    }
+    localObject = new NewIntent(paramQQAppInterface.getApplication(), bcvb.class);
+    ((NewIntent)localObject).setAction("gc_refresh_ui");
+    ((NewIntent)localObject).putExtra("gc_notify_type", 6);
+    paramQQAppInterface.startServlet((NewIntent)localObject);
+    ((aogf)paramQQAppInterface.a(87)).notifyUI(3, true, null);
+  }
+  
+  private void a(BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("Rsp Body :");
+    Object localObject;
+    if (paramTimeRspBody.rptMsgAppInfo.has())
+    {
+      localObject = paramTimeRspBody.rptMsgAppInfo.get().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localObject3 = bbzh.a(-2018);
-        ((MessageRecord)localObject3).msgtype = -2018;
-        ((MessageRecord)localObject3).selfuin = parambdxe;
-        ((MessageRecord)localObject3).frienduin = anhk.M;
-        ((MessageRecord)localObject3).senderuin = (((structmsg.StructMsg)((List)localObject2).get(i)).req_uin.get() + "");
-        ((MessageRecord)localObject3).istroop = 0;
-        ((MessageRecord)localObject3).time = ((structmsg.StructMsg)((List)localObject2).get(i)).msg_time.get();
-        ((MessageRecord)localObject3).isread = true;
-        localMessageForSystemMsg = (MessageForSystemMsg)localObject3;
-        localMessageForSystemMsg.structMsg = ((structmsg.StructMsg)((structmsg.StructMsg)((List)localObject2).get(i)).get());
-        ((MessageRecord)localObject3).msgData = localMessageForSystemMsg.structMsg.toByteArray();
-        localMessageForSystemMsg.parse();
-        parambdxf.add(localMessageForSystemMsg);
-        i += 1;
-      }
-      else if (parambdxf.size() > 0)
-      {
-        i = parambdxf.size();
-        long l1 = ((MessageRecord)parambdxf.get(0)).time;
-        long l2 = ((MessageRecord)parambdxf.get(i - 1)).time;
-        l3 = bdgm.a().a(aogd.d(this.a));
-        localObject2 = aogd.e(this.a).a().a(anhk.M, 0, l3).iterator();
-        while (((Iterator)localObject2).hasNext())
+        BusinessInfoCheckUpdate.AppInfo localAppInfo = (BusinessInfoCheckUpdate.AppInfo)((Iterator)localObject).next();
+        if (localAppInfo != null)
         {
-          localObject3 = (ChatMessage)((Iterator)localObject2).next();
-          if ((((ChatMessage)localObject3).time >= l2) && (((ChatMessage)localObject3).time <= l1))
-          {
-            aogd.f(this.a).a().b(anhk.M, 0, ((ChatMessage)localObject3).uniseq, false);
-            ((Iterator)localObject2).remove();
-          }
-          else if ((localObject3 instanceof MessageForSystemMsg))
-          {
-            localMessageForSystemMsg = (MessageForSystemMsg)localObject3;
-            if (localMessageForSystemMsg.structMsg == null) {
-              localMessageForSystemMsg.parse();
-            }
-            String str = localMessageForSystemMsg.senderuin;
-            if ((localMessageForSystemMsg.structMsg.msg.sub_type.get() == 13) && (((anmw)localObject1).b(str)))
-            {
-              aogd.g(this.a).a().b(anhk.M, 0, ((ChatMessage)localObject3).uniseq, false);
-              ((Iterator)localObject2).remove();
-            }
-          }
-        }
-        bdgm.a().a(aogd.h(this.a), l2);
-        if (parambdxf.size() < 20) {
-          bdgm.a().a(true, aogd.i(this.a));
-        }
-        l2 = localRspNextSystemMsg.following_friend_seq.get();
-        l1 = l2;
-        if (l2 <= 0L) {
-          l1 = aogd.j(this.a).a().e("following_friend_seq_47");
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.systemmsg.", 2, "<---sendGetNextFriendSystemMsg : decode pb following_friend_seq" + l1);
-        }
-        aogd.k(this.a).a().e("following_friend_seq_47", l1);
-        localObject1 = aogd.m(this.a).a();
-        parambdxe = String.valueOf(parambdxe);
-        if ((!anqc.a(parambdxf)) || (!aogd.l(this.a).isBackground_Stop)) {
-          break label865;
+          localStringBuilder.append("appid = ").append(localAppInfo.uiAppId.get());
+          localStringBuilder.append(" path = ").append(localAppInfo.path.get());
+          localStringBuilder.append(" inewflag = ").append(localAppInfo.iNewFlag.get());
+          localStringBuilder.append(" exposure_max = ").append(localAppInfo.exposure_max.get());
+          localStringBuilder.append(" mission_level = ").append(localAppInfo.mission_level.get());
+          localStringBuilder.append(" missions = ").append(localAppInfo.missions.get());
+          localStringBuilder.append(";");
         }
       }
     }
-    label860:
-    label865:
-    for (boolean bool = true;; bool = false)
+    if (paramTimeRspBody.rptMsgNumRedInfo.has())
     {
-      ((QQMessageFacade)localObject1).a(parambdxf, parambdxe, bool);
-      this.a.a("handleGetSystemMsgResp", true, parambdxf.size(), false, false);
+      paramTimeRspBody = paramTimeRspBody.rptMsgNumRedInfo.get().iterator();
+      while (paramTimeRspBody.hasNext())
+      {
+        localObject = (BusinessInfoCheckUpdate.NumRedInfo)paramTimeRspBody.next();
+        if (localObject != null)
+        {
+          localStringBuilder.append("numred appid = ").append(((BusinessInfoCheckUpdate.NumRedInfo)localObject).appid.get());
+          localStringBuilder.append(" appset = ").append(((BusinessInfoCheckUpdate.NumRedInfo)localObject).appset.get());
+          localStringBuilder.append(";");
+        }
+      }
+    }
+    QLog.d("RedPointLog.RedpointHandler", 1, localStringBuilder.toString());
+  }
+  
+  private void a(BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody, bbav parambbav)
+  {
+    List localList = paramTimeRspBody.rptSetting.get();
+    parambbav = parambbav.a();
+    ArrayList localArrayList = new ArrayList();
+    int i;
+    BusinessInfoCheckUpdate.AppSetting localAppSetting;
+    if ((localList != null) && (parambbav != null))
+    {
+      i = 0;
+      if (i < localList.size())
+      {
+        localAppSetting = (BusinessInfoCheckUpdate.AppSetting)localList.get(i);
+        j = 0;
+        label61:
+        if (j >= parambbav.size()) {
+          break label176;
+        }
+        if (((BusinessInfoCheckUpdate.AppSetting)parambbav.get(j)).appid.get() == localAppSetting.appid.get()) {
+          parambbav.set(j, localAppSetting);
+        }
+      }
+    }
+    label176:
+    for (int j = 1;; j = 0)
+    {
+      if (j == 0) {
+        localArrayList.add(localAppSetting);
+      }
+      i += 1;
+      break;
+      j += 1;
+      break label61;
+      parambbav.addAll(localArrayList);
       for (;;)
       {
-        this.a.a(4005, true, null);
+        paramTimeRspBody.rptSetting.set(parambbav);
         return;
-        bdgm.a().a(true, aogd.n(this.a));
+        if (parambbav == null) {
+          parambbav = localList;
+        }
       }
+    }
+  }
+  
+  private void a(Object paramObject)
+  {
+    if (paramObject == null) {
+      QLog.e("RedPointLog.RedpointHandler", 1, "handleResponse data = null");
+    }
+    Object localObject;
+    do
+    {
+      return;
+      try
+      {
+        localObject = new BusinessInfoCheckUpdate.TimeRspBody();
+        ((BusinessInfoCheckUpdate.TimeRspBody)localObject).mergeFrom((byte[])paramObject);
+        paramObject = localObject;
+      }
+      catch (InvalidProtocolBufferMicroException paramObject)
+      {
+        for (;;)
+        {
+          paramObject.printStackTrace();
+          QLog.e("RedPointLog.RedpointHandler", 1, "mergeFrom failed");
+          paramObject = null;
+        }
+      }
+      if (paramObject == null)
+      {
+        QLog.e("RedPointLog.RedpointHandler", 1, "handleResponse prb = null");
+        return;
+      }
+      if (paramObject.iResult.get() == 0) {
+        break;
+      }
+      QLog.d("RedPointLog.RedpointHandler", 2, "handleResponse,return fail ,TimeRspBody result:" + paramObject.iResult.get());
+    } while (paramObject.iResult.get() != 104005);
+    paramObject = new BusinessInfoCheckUpdate.TimeRspBody();
+    for (;;)
+    {
+      for (;;)
+      {
+        QLog.i("RedPointLog.RedpointHandler", 1, "handleResponse");
+        b(paramObject);
+        this.app.a().createEntityManager();
+        localObject = (bbav)this.app.getManager(36);
+        try
+        {
+          if (!a(paramObject, (bbav)localObject)) {
+            break;
+          }
+          a(paramObject, (bbav)localObject);
+          a(paramObject);
+          ((bbav)localObject).a(paramObject);
+          c(paramObject);
+          a(this.app);
+          return;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            QLog.i("RedPointLog.RedpointHandler", 2, "handleResponse", localException);
+          }
+        }
+      }
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    if (paramAppInfo == null) {}
+    for (;;)
+    {
+      return false;
+      if (paramAppInfo.appset.get() == 3) {
+        return true;
+      }
+      Object localObject1 = a(paramQQAppInterface);
+      Object localObject2;
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      {
+        int j = ((List)localObject1).size();
+        i = 0;
+        while (i < j)
+        {
+          long l = ((aogh)((List)localObject1).get(i)).jdField_a_of_type_Long;
+          localObject2 = "100600." + (100000000L + l) + "";
+          if (((((aogh)((List)localObject1).get(i)).jdField_a_of_type_Long + "").equals(paramAppInfo.path.get())) || (((String)localObject2).equals(paramAppInfo.path.get()))) {
+            return true;
+          }
+          if ((jdField_a_of_type_JavaUtilHashSet != null) && (jdField_a_of_type_JavaUtilHashSet.contains(paramAppInfo.path.get()))) {
+            return true;
+          }
+          i += 1;
+        }
+      }
+      localObject1 = anug.a.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (anuh)((Iterator)localObject1).next();
+        if (localObject2 != null)
+        {
+          localObject2 = ((anuh)localObject2).a(paramQQAppInterface);
+          if ((localObject2 != null) && (((List)localObject2).contains(paramAppInfo.path.get()))) {
+            return true;
+          }
+        }
+      }
+      int i = 0;
+      while (i < jdField_a_of_type_Array2dOfJavaLangString.length)
+      {
+        paramQQAppInterface = paramAppInfo.path.get();
+        if (jdField_a_of_type_Array2dOfJavaLangString[i][1].equals(paramQQAppInterface)) {
+          return true;
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  private boolean a(BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody, bbav parambbav)
+  {
+    if (paramTimeRspBody.rptMsgAppInfo.has())
+    {
+      Iterator localIterator = paramTimeRspBody.rptMsgAppInfo.get().iterator();
+      while (localIterator.hasNext())
+      {
+        BusinessInfoCheckUpdate.AppInfo localAppInfo1 = (BusinessInfoCheckUpdate.AppInfo)localIterator.next();
+        if (localAppInfo1 != null)
+        {
+          if ((!a(this.app, localAppInfo1)) && (1 == localAppInfo1.iNewFlag.get()))
+          {
+            localAppInfo1.modify_ts.set((int)(NetConnInfoCenter.getServerTimeMillis() / 1000L));
+            localAppInfo1.iNewFlag.set(0);
+            if (QLog.isColorLevel()) {
+              QLog.d("RedPointLog.RedpointHandler", 2, "verifyDataCorrect,return false ,appInfo.path.get():" + localAppInfo1.path.get());
+            }
+          }
+          if (localAppInfo1.use_cache.get())
+          {
+            BusinessInfoCheckUpdate.AppInfo localAppInfo2 = parambbav.a(localAppInfo1.path.get());
+            if (localAppInfo2 != null) {
+              localAppInfo1.buffer.set(localAppInfo2.buffer.get());
+            }
+          }
+        }
+      }
+    }
+    if (paramTimeRspBody.rptMsgNumRedInfo.has())
+    {
+      paramTimeRspBody = paramTimeRspBody.rptMsgNumRedInfo.get();
+      if (paramTimeRspBody == null) {
+        return false;
+      }
+      paramTimeRspBody = paramTimeRspBody.iterator();
+      while (paramTimeRspBody.hasNext())
+      {
+        parambbav = ((BusinessInfoCheckUpdate.NumRedInfo)paramTimeRspBody.next()).num_red_path.get();
+        if (parambbav != null)
+        {
+          int i = 0;
+          while (i < parambbav.size())
+          {
+            ((BusinessInfoCheckUpdate.NumRedPath)parambbav.get(i)).uint32_push_num_red_ts.set((int)(System.currentTimeMillis() / 1000L));
+            i += 1;
+          }
+        }
+      }
+    }
+    return true;
+  }
+  
+  private void b(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    int i = 0;
+    QLog.d("RedPointLog.RedpointHandler", 1, "sendReq start");
+    BusinessInfoCheckUpdate.TimeReqBody localTimeReqBody = new BusinessInfoCheckUpdate.TimeReqBody();
+    localTimeReqBody.iProtocolVer.set(1);
+    localTimeReqBody.uiClientPlatID.set(109);
+    localTimeReqBody.sClientVer.set("8.4.5.4745");
+    localTimeReqBody.uiUin.set(Long.parseLong(this.app.getCurrentAccountUin()));
+    int j = bhnv.a(BaseApplication.getContext());
+    localTimeReqBody.uiNetType.set(j);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      paramSosoLbsInfo = a(paramSosoLbsInfo.a);
+      if (paramSosoLbsInfo != null) {
+        localTimeReqBody.lbs.set(paramSosoLbsInfo);
+      }
+    }
+    Object localObject = a(this.app);
+    bbav localbbav = (bbav)this.app.getManager(36);
+    if (localbbav == null) {}
+    ArrayList localArrayList1;
+    ArrayList localArrayList2;
+    ArrayList localArrayList3;
+    for (paramSosoLbsInfo = null;; paramSosoLbsInfo = localbbav.a())
+    {
+      localArrayList1 = new ArrayList();
+      localArrayList2 = new ArrayList();
+      localArrayList3 = new ArrayList();
+      a(localTimeReqBody, (List)localObject, paramSosoLbsInfo, localArrayList1);
+      localArrayList1.addAll(jdField_a_of_type_JavaUtilHashSet);
+      paramSosoLbsInfo = anug.a.iterator();
+      while (paramSosoLbsInfo.hasNext())
+      {
+        localObject = (anuh)paramSosoLbsInfo.next();
+        if (localObject != null) {
+          try
+          {
+            if (((anuh)localObject).a(this.app) != null) {
+              localArrayList1.addAll(((anuh)localObject).a(this.app));
+            }
+          }
+          catch (Exception localException)
+          {
+            QLog.e("RedPointLog.RedpointHandler", 1, "add exception error" + localException);
+          }
+        }
+      }
+    }
+    paramInt = 0;
+    while (paramInt < jdField_a_of_type_Array2dOfJavaLangString.length)
+    {
+      localArrayList1.add(jdField_a_of_type_Array2dOfJavaLangString[paramInt][1]);
+      paramInt += 1;
+    }
+    if (localbbav != null)
+    {
+      paramSosoLbsInfo = localbbav.b(3).iterator();
+      while (paramSosoLbsInfo.hasNext()) {
+        localArrayList1.add(((BusinessInfoCheckUpdate.AppInfo)paramSosoLbsInfo.next()).path.get());
+      }
+      if (localbbav.a() == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RedPointLog.RedpointHandler", 2, "BusinessInfoCheckUpdateItem pb file does not exist");
+        }
+        localArrayList2.addAll(localArrayList1);
+      }
+    }
+    else
+    {
+      localTimeReqBody.rptMsgAppInfo.set(localArrayList3);
+      localTimeReqBody.rptNoRedPath.set(localArrayList2);
+      localTimeReqBody.sQimei.set(String.valueOf(UserAction.getQIMEI()));
+      if (!this.app.q) {
+        break label632;
+      }
+      localTimeReqBody.bHebaFlag.set(true);
+      label486:
+      if ((!((gc)this.app.getManager(42)).jdField_a_of_type_Boolean) && (localTimeReqBody.rptMsgAppInfo.has())) {
+        paramInt = i;
+      }
+    }
+    for (;;)
+    {
+      if (paramInt < localTimeReqBody.rptMsgAppInfo.size())
+      {
+        if ("100005.100011".equals(((BusinessInfoCheckUpdate.AppInfo)localTimeReqBody.rptMsgAppInfo.get(paramInt)).path.get())) {
+          localTimeReqBody.rptMsgAppInfo.remove(paramInt);
+        }
+      }
+      else
+      {
+        a(localTimeReqBody);
+        QLog.d("RedPointLog.RedpointHandler", 1, "getNewFlagOp local message ok");
+        paramSosoLbsInfo = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "QQClubComm.getNewFlag");
+        paramSosoLbsInfo.putWupBuffer(localTimeReqBody.toByteArray());
+        sendPbReq(paramSosoLbsInfo);
+        return;
+        a(localbbav, localArrayList1, localArrayList2, localArrayList3);
+        break;
+        label632:
+        localTimeReqBody.bHebaFlag.set(false);
+        break label486;
+      }
+      paramInt += 1;
+    }
+  }
+  
+  private void b(BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody)
+  {
+    int i = 0;
+    SharedPreferences.Editor localEditor = this.app.getApp().getSharedPreferences("check_update_sp_key", 0).edit();
+    if (paramTimeRspBody.iInterval.has())
+    {
+      String str = "businessinfo_check_update_interval_" + this.app.getCurrentAccountUin();
+      if (paramTimeRspBody.iInterval.get() > 0) {
+        i = paramTimeRspBody.iInterval.get();
+      }
+      localEditor.putInt(str, i);
+    }
+    for (;;)
+    {
+      localEditor.putInt("businessinfo_check_update_interval_lbsinfo_" + this.app.getCurrentAccountUin(), paramTimeRspBody.iLbsInterval.get());
+      QLog.d("RedPointLog.RedpointHandler", 1, "handleResponse, iInterval = " + paramTimeRspBody.iInterval.get() + "; lbsInterval = " + paramTimeRspBody.iLbsInterval.get());
+      localEditor.putInt("businessinfo_last_check_update_timestamp_" + this.app.getCurrentAccountUin(), (int)(System.currentTimeMillis() / 1000L));
+      localEditor.apply();
+      return;
+      localEditor.remove("businessinfo_check_update_interval_" + this.app.getCurrentAccountUin());
+    }
+  }
+  
+  private void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    QLog.d("RedPointLog.RedpointHandler", 2, "getNewFlagOp:send redInfo start");
+    SharedPreferences localSharedPreferences = this.app.getApp().getSharedPreferences("check_update_sp_key", 0);
+    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+    int i = localSharedPreferences.getInt("businessinfo_check_update_interval_" + this.app.getCurrentAccountUin(), 600);
+    this.jdField_a_of_type_Int = (i * 1000);
+    int j = localSharedPreferences.getInt("businessinfo_check_update_interval_lbsinfo_" + this.app.getCurrentAccountUin(), 43200000);
+    int k = localSharedPreferences.getInt("businessinfo_last_check_update_timestamp_" + this.app.getCurrentAccountUin(), 0);
+    int m = localSharedPreferences.getInt("businessinfo_last_check_lbsinfo_timestamp_" + this.app.getCurrentAccountUin(), 0);
+    int n = (int)(System.currentTimeMillis() / 1000L);
+    boolean bool = localSharedPreferences.getBoolean("redtouch_force", false);
+    QLog.d("RedPointLog.RedpointHandler", 1, "getNewFlagOp:sendredInfo :systemTimestamp = " + n + ";lastUpdateTimestamp = " + k + ";updateInterval = " + i + ";updateLbsInterval = " + j + ";lastCheckLbsInfo = " + m + ";isDebugVersion = " + false);
+    if ((!bool) && (!paramBoolean1) && (n - k <= i) && (n >= k)) {
+      return;
+    }
+    localEditor.putInt("businessinfo_last_check_update_timestamp_" + this.app.getCurrentAccountUin(), (int)(System.currentTimeMillis() / 1000L));
+    localEditor.putBoolean("redtouch_force", false);
+    localEditor.apply();
+    if ((paramBoolean2) && ((n - m > j) || (n < k)))
+    {
+      localEditor.putInt("businessinfo_last_check_lbsinfo_timestamp_" + this.app.getCurrentAccountUin(), (int)(System.currentTimeMillis() / 1000L)).commit();
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        if (this.app.getApplication().getApplicationContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
+        {
+          a(-1, null);
+          return;
+        }
+        apch.a(this.jdField_a_of_type_Apck);
+        return;
+      }
+      apch.a(this.jdField_a_of_type_Apck);
+      return;
+    }
+    a(-1, null);
+  }
+  
+  private void c(BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody)
+  {
+    Object localObject1 = (bhyg)this.app.getManager(177);
+    if ((!((bhyg)localObject1).jdField_b_of_type_Boolean) && (!((bhyg)localObject1).jdField_a_of_type_Boolean)) {
+      ((bhyg)localObject1).a(this.app.getCurrentAccountUin());
+    }
+    int j;
+    int i;
+    if (paramTimeRspBody.rptMsgAppInfo.has())
+    {
+      j = paramTimeRspBody.rptMsgAppInfo.size();
       i = 0;
+    }
+    for (;;)
+    {
+      if (i < j)
+      {
+        localObject2 = (BusinessInfoCheckUpdate.AppInfo)paramTimeRspBody.rptMsgAppInfo.get(i);
+        if (localObject2 == null) {
+          break label269;
+        }
+        if (String.valueOf(100005).equals(((BusinessInfoCheckUpdate.AppInfo)localObject2).path.get()))
+        {
+          if ((((bhyg)localObject1).jdField_a_of_type_Int == 0) || (TextUtils.isEmpty(((bhyg)localObject1).jdField_a_of_type_JavaLangString)) || (((bhyg)localObject1).jdField_b_of_type_Int != 0)) {
+            break label269;
+          }
+          ((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.set(0);
+          ((BusinessInfoCheckUpdate.AppInfo)localObject2).modify_ts.set((int)(NetConnInfoCenter.getServerTimeMillis() / 1000L));
+        }
+      }
+      else
+      {
+        if (!paramTimeRspBody.rptMsgNumRedInfo.has()) {
+          break label346;
+        }
+        localObject1 = new ArrayList();
+        localObject2 = paramTimeRspBody.rptMsgNumRedInfo.get();
+        if (localObject2 != null) {
+          break;
+        }
+        return;
+      }
+      if (((BusinessInfoCheckUpdate.AppInfo)localObject2).uiAppId.get() == 769) {
+        this.app.getApp().getSharedPreferences("check_update_sp_key", 0).edit().putInt("reader_zone_appinfo_last_pull_timestamp_" + this.app.getCurrentAccountUin(), (int)(NetConnInfoCenter.getServerTimeMillis() / 1000L)).apply();
+      }
+      label269:
+      i += 1;
+    }
+    Object localObject2 = ((List)localObject2).iterator();
+    Object localObject3;
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject3 = (BusinessInfoCheckUpdate.NumRedInfo)((Iterator)localObject2).next();
+      if (((BusinessInfoCheckUpdate.NumRedInfo)localObject3).appid.get() == 7719) {
+        ((List)localObject1).add(localObject3);
+      }
+    }
+    axwa.a().a(this.app, (List)localObject1);
+    label346:
+    if (QLog.isColorLevel()) {
+      QLog.d("RedPointLog.RedpointHandler", 2, "individuation jump open");
+    }
+    if (paramTimeRspBody.rptSetting.get() != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder("switch ");
+        localObject3 = paramTimeRspBody.rptSetting.get().iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          BusinessInfoCheckUpdate.AppSetting localAppSetting = (BusinessInfoCheckUpdate.AppSetting)((Iterator)localObject3).next();
+          if (localAppSetting != null)
+          {
+            StringBuilder localStringBuilder = ((StringBuilder)localObject2).append("appid: ");
+            if (localAppSetting.appid.has())
+            {
+              localObject1 = Integer.valueOf(localAppSetting.appid.get());
+              label465:
+              localStringBuilder = localStringBuilder.append(localObject1).append("  setting:");
+              if (!localAppSetting.setting.has()) {
+                break label568;
+              }
+              localObject1 = Boolean.valueOf(localAppSetting.setting.get());
+              label504:
+              localStringBuilder = localStringBuilder.append(localObject1).append(" modify_ts:");
+              if (!localAppSetting.modify_ts.has()) {
+                break label576;
+              }
+            }
+            label568:
+            label576:
+            for (localObject1 = Long.valueOf(localAppSetting.modify_ts.get());; localObject1 = "null")
+            {
+              localStringBuilder.append(localObject1).append(",");
+              break;
+              localObject1 = "null";
+              break label465;
+              localObject1 = "null";
+              break label504;
+            }
+          }
+        }
+        QLog.i("RedPointLog.RedpointHandler", 2, ((StringBuilder)localObject2).toString());
+      }
+      akgr.a().a(paramTimeRspBody.rptSetting.get());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("RedPointLog.RedpointHandler", 2, "update NearbyNumAppinfo");
+    }
+    ayuo.a(this.app, true);
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("RedPointLog.RedpointHandler", 1, "forceSendReq fromSrc:" + paramInt);
+    a(-1, null);
+  }
+  
+  protected void a(bbav parambbav, List<String> paramList1, List<String> paramList2, List<BusinessInfoCheckUpdate.AppInfo> paramList)
+  {
+    parambbav = parambbav.a();
+    int j;
+    String str;
+    int i;
+    label45:
+    BusinessInfoCheckUpdate.AppInfo localAppInfo;
+    Object localObject;
+    if (parambbav.rptMsgAppInfo.has())
+    {
+      j = 0;
+      if (j >= paramList1.size()) {
+        break label370;
+      }
+      str = (String)paramList1.get(j);
+      i = 0;
+      if (i >= parambbav.rptMsgAppInfo.size()) {
+        break label377;
+      }
+      localAppInfo = (BusinessInfoCheckUpdate.AppInfo)parambbav.rptMsgAppInfo.get(i);
+      if (str.equals(localAppInfo.path.get()))
+      {
+        localObject = localAppInfo.missions.get();
+        if ((localObject != null) && (((List)localObject).size() != 0)) {
+          break label371;
+        }
+        i = 1;
+        label115:
+        if ((localAppInfo.iNewFlag.get() == 0) && (i != 0)) {
+          i = 1;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        paramList2.add(str);
+      }
+      j += 1;
       break;
+      localObject = new BusinessInfoCheckUpdate.AppInfo();
+      ((BusinessInfoCheckUpdate.AppInfo)localObject).path.set(localAppInfo.path.get());
+      ((BusinessInfoCheckUpdate.AppInfo)localObject).uiAppId.set(localAppInfo.uiAppId.get());
+      ((BusinessInfoCheckUpdate.AppInfo)localObject).buffer.set(localAppInfo.buffer.get());
+      ((BusinessInfoCheckUpdate.AppInfo)localObject).modify_ts.set(localAppInfo.modify_ts.get());
+      ((BusinessInfoCheckUpdate.AppInfo)localObject).iNewFlag.set(localAppInfo.iNewFlag.get());
+      ((BusinessInfoCheckUpdate.AppInfo)localObject).type.set(localAppInfo.type.get());
+      ((BusinessInfoCheckUpdate.AppInfo)localObject).push_red_ts.set(localAppInfo.push_red_ts.get());
+      ((BusinessInfoCheckUpdate.AppInfo)localObject).mission_level.set(localAppInfo.mission_level.get());
+      i = 0;
+      while (i < localAppInfo.missions.size())
+      {
+        ((BusinessInfoCheckUpdate.AppInfo)localObject).missions.add(localAppInfo.missions.get(i));
+        i += 1;
+      }
+      paramList.add(localObject);
+      i = 0;
+      continue;
+      i += 1;
+      break label45;
+      paramList2.addAll(paramList1);
+      label370:
+      return;
+      label371:
+      i = 0;
+      break label115;
+      label377:
+      i = 1;
+    }
+  }
+  
+  protected void a(BusinessInfoCheckUpdate.TimeReqBody paramTimeReqBody)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("req red pathlist:");
+      if (paramTimeReqBody.rptMsgAppInfo.has())
+      {
+        int i = 0;
+        while (i < paramTimeReqBody.rptMsgAppInfo.size())
+        {
+          String str = ((BusinessInfoCheckUpdate.AppInfo)paramTimeReqBody.rptMsgAppInfo.get(i)).path.get();
+          if (!TextUtils.isEmpty(str))
+          {
+            localStringBuilder.append(str);
+            localStringBuilder.append(";");
+          }
+          i += 1;
+        }
+      }
+      QLog.d("RedPointLog.RedpointHandler", 1, "getNewFlagOp rptMsginfoPath:" + localStringBuilder.toString());
+    }
+    if (QLog.isColorLevel()) {}
+  }
+  
+  protected void a(BusinessInfoCheckUpdate.TimeReqBody paramTimeReqBody, List<aogh> paramList, List<BusinessInfoCheckUpdate.AppSetting> paramList1, List<String> paramList2)
+  {
+    BusinessInfoCheckUpdate.AppSetting localAppSetting;
+    int j;
+    String str;
+    if (paramList != null)
+    {
+      localAppSetting = null;
+      int i;
+      int m;
+      int k;
+      if (paramList1 == null)
+      {
+        i = 0;
+        j = 0;
+        if (j >= paramList.size()) {
+          break label302;
+        }
+        str = ((aogh)paramList.get(j)).jdField_a_of_type_Long + "";
+        m = ((aogh)paramList.get(j)).jdField_a_of_type_Int;
+        k = 0;
+        label81:
+        if (k >= i) {
+          break label139;
+        }
+        localAppSetting = (BusinessInfoCheckUpdate.AppSetting)paramList1.get(k);
+        if (localAppSetting != null) {
+          break label126;
+        }
+      }
+      label126:
+      while (m != localAppSetting.appid.get())
+      {
+        k += 1;
+        break label81;
+        i = paramList1.size();
+        break;
+      }
+      label139:
+      if ((k != i) && (localAppSetting != null)) {
+        break label303;
+      }
+      localAppSetting = new BusinessInfoCheckUpdate.AppSetting();
+      localAppSetting.appid.set(m);
+      localAppSetting.setting.set(true);
+      localAppSetting.modify_ts.set(0L);
+    }
+    label302:
+    label303:
+    for (;;)
+    {
+      if (!localAppSetting.setting.get())
+      {
+        long l = 100000000L + ((aogh)paramList.get(j)).jdField_a_of_type_Long;
+        str = "100600." + l + "";
+        a(l);
+      }
+      for (;;)
+      {
+        paramTimeReqBody.rptSetting.add(localAppSetting);
+        paramList2.add(str);
+        j += 1;
+        break;
+        a(((aogh)paramList.get(j)).jdField_a_of_type_Long);
+      }
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    b(paramBoolean1, paramBoolean2);
+  }
+  
+  protected Class<? extends anui> observerClass()
+  {
+    return aogi.class;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    apch.b(this.jdField_a_of_type_Apck);
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {}
+    for (int i = 1;; i = 0)
+    {
+      if (("QQClubComm.getNewFlag".equals(paramFromServiceMsg.getServiceCmd())) && (i != 0)) {
+        a(paramObject);
+      }
+      return;
     }
   }
 }

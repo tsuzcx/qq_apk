@@ -1,18 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
 
-public class apzj
-  implements View.OnClickListener
+public abstract class apzj
+  implements apyu
 {
-  public apzj(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  private final long a;
+  private final long b;
   
-  public void onClick(View paramView)
+  public apzj(long paramLong1, long paramLong2)
   {
-    apzo localapzo = (apzo)paramView.getTag();
-    this.a.a(localapzo.jdField_a_of_type_JavaLangString, localapzo.b, localapzo.jdField_a_of_type_Boolean);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramLong1;
+    this.b = paramLong2;
+  }
+  
+  public Bundle a()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("srcAppID", this.a);
+    localBundle.putLong("dstAppID", this.b);
+    return localBundle;
+  }
+  
+  public String a()
+  {
+    return "QQ.Login";
   }
 }
 

@@ -1,17 +1,32 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class apag
+  extends aoxh
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  
-  public String toString()
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    return "StarInfo{faceID=" + this.jdField_a_of_type_Int + ", uin=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", pinyin_name='" + this.b + '\'' + ", wiki='" + this.c + '\'' + ", wikiTitle='" + this.d + '\'' + ", wikiURL='" + this.e + '\'' + ", confidence='" + this.jdField_a_of_type_Float + '\'' + '}';
+    paramQQAppInterface = new apaf(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "groupopenapp";
+    paramQQAppInterface.c = "openapp";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {}
+    for (;;)
+    {
+      return paramQQAppInterface;
+      paramContext = paramContext[1].split("&");
+      int j = paramContext.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramString = paramContext[i].split("=");
+        if (paramString.length == 2) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
   }
 }
 

@@ -1,30 +1,15 @@
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.14.1;
 
 public class aymp
-  extends AccountObserver
+  extends axud
 {
-  public aymp(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  aymp(aymj paramaymj) {}
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  public void a(axue paramaxue)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountOnlineStateActivity", 2, "onOnlineStatusChanged, isSuccess: " + paramBoolean1 + " , mIsUpdateStatus: " + AccountOnlineStateActivity.a(this.a) + ", isUserSet: " + paramBoolean2);
-    }
-    if (AccountOnlineStateActivity.a(this.a))
-    {
-      AccountOnlineStateActivity.a(this.a, false);
-      if (paramBoolean1) {
-        AccountOnlineStateActivity.a(this.a, true, 0);
-      }
-    }
-    else
-    {
-      return;
-    }
-    AccountOnlineStateActivity.a(this.a, false, -1);
+    ThreadManager.post(new NearbyProfileDisplayTribePanel.14.1(this, paramaxue), 8, null, false);
+    this.a.a = paramaxue;
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.item;
 
-import pmk;
-import szt;
+import pfd;
+import sqp;
 
 public class WebFastVideoViewCreator$VideoViewHolder$1$1
   implements Runnable
 {
-  public WebFastVideoViewCreator$VideoViewHolder$1$1(szt paramszt) {}
+  public WebFastVideoViewCreator$VideoViewHolder$1$1(sqp paramsqp) {}
   
   public void run()
   {
-    pmk.a().b();
+    pfd.a().b();
   }
 }
 

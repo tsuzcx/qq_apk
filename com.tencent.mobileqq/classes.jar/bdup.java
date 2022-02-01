@@ -1,382 +1,393 @@
+import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsShareMsg.ShareData;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.1;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONObject;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class bdup
-  extends bdsx
-  implements augo
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/ModeSwitchManager;", "Lmqq/manager/Manager;", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "(Lcom/tencent/mobileqq/app/QQAppInterface;)V", "bPref", "", "getBPref", "()I", "setBPref", "(I)V", "isSwitching", "", "()Z", "setSwitching", "(Z)V", "mQQCustomDialog", "Lcom/tencent/mobileqq/utils/QQCustomDialog;", "needCheckShowModeSwitchDialog", "oldType", "getOldType", "setOldType", "onModeChangeResultCallbacks", "", "Lcom/tencent/mobileqq/studymode/ModeSwitchManager$OnModeChangeResultCallback;", "simpleUIObserver", "Lcom/tencent/mobileqq/simpleui/SimpleUIObserver;", "studentFlagPullStatus", "studyModePullStatus", "tag", "", "targetType", "getTargetType", "setTargetType", "addCallback", "", "onModeChangeResultCallback", "changeMode", "Lcom/tencent/mobileqq/studymode/ModeSwitchManager$SwitchingStatus;", "activity", "Landroid/app/Activity;", "bSwitchElsePref", "checkAndReportStockStudyMode", "doChangeMode", "endChangebPref", "isSameDayWithLastReport", "onChangeStudyModeComplete", "isSuc", "message", "onColorfulChangeResult", "onDestroy", "onModeChangeResult", "onStudentFlagPullComplete", "isStudent", "onStudyModePullComplete", "isStudy", "onSwitchUICallBackInManager", "bChangeTheme", "statusCode", "releaseDialog", "removeCallback", "showModeSwitchDialog", "Lcom/tencent/mobileqq/app/BaseActivity;", "OnModeChangeResultCallback", "SwitchingStatus", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bdup
+  implements Manager
 {
   private int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long = 0L;
-  public Context a;
-  private bduq jdField_a_of_type_Bduq;
-  private bduw jdField_a_of_type_Bduw;
-  private bdzo jdField_a_of_type_Bdzo;
-  public QQAppInterface a;
-  private String jdField_a_of_type_JavaLangString;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private final bdga jdField_a_of_type_Bdga;
+  private bhpc jdField_a_of_type_Bhpc;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final String jdField_a_of_type_JavaLangString;
+  private final List<bduq> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private bduq jdField_b_of_type_Bduq;
-  private String jdField_b_of_type_JavaLangString;
-  private HashMap<String, String> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  private AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private String jdField_c_of_type_JavaLangString;
-  private AtomicBoolean jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private String d;
-  private String e;
-  private String f;
-  private String l;
-  private String m;
-  private int p;
+  private boolean jdField_b_of_type_Boolean;
+  private int c;
+  private int d;
+  private int e;
   
-  public bdup(bdsv parambdsv, bdzn parambdzn)
+  public bdup(@NotNull QQAppInterface paramQQAppInterface)
   {
-    super(parambdsv, parambdzn);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.a);
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext();
-    if ((this.jdField_a_of_type_Bdzn.jdField_a_of_type_JavaLangObject instanceof bdzt))
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = "GeneralModeSwitcherManager";
+    this.jdField_a_of_type_JavaUtilList = ((List)new ArrayList());
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.c = -1;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Bdga = ((bdga)new bduv(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver((anui)this.jdField_a_of_type_Bdga);
+  }
+  
+  private final void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    this.jdField_a_of_type_Boolean = true;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(154);
+    if (localObject == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.simpleui.SimpleUIHandler");
+    }
+    localObject = (bdfv)localObject;
+    boolean bool1;
+    if (paramInt2 == 1)
     {
-      parambdsv = (bdzt)this.jdField_a_of_type_Bdzn.jdField_a_of_type_JavaLangObject;
-      this.jdField_a_of_type_Int = parambdsv.jdField_a_of_type_Int;
-      this.jdField_b_of_type_Int = parambdsv.jdField_b_of_type_Int;
-      this.jdField_b_of_type_JavaLangString = parambdsv.jdField_b_of_type_JavaLangString;
-      this.jdField_c_of_type_JavaLangString = parambdsv.jdField_c_of_type_JavaLangString;
-      this.jdField_d_of_type_JavaLangString = parambdsv.jdField_d_of_type_JavaLangString;
-      this.l = parambdsv.f;
-      this.jdField_b_of_type_Long = parambdsv.jdField_a_of_type_Long;
-      this.jdField_a_of_type_JavaLangString = parambdsv.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Bdzo = parambdsv.jdField_a_of_type_Bdzo;
-      if (parambdsv.jdField_c_of_type_Int == 2)
-      {
-        this.e = parambdsv.e;
-        QLog.i("BaseTransProcessor", 1, "forwardShare info.imageUrlStatus =" + parambdsv.jdField_c_of_type_Int + ",mRemoteImgUrl=" + this.f);
-        parambdzn = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-        if ((parambdsv.jdField_c_of_type_Int != 1) && (parambdsv.jdField_c_of_type_Int != 3)) {
-          break label319;
-        }
-        bool1 = true;
-        label261:
-        parambdzn.set(bool1);
-        parambdzn = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-        if (parambdsv.jdField_c_of_type_Int != 1) {
-          break label324;
-        }
-        bool1 = true;
-        label281:
-        parambdzn.set(bool1);
-        parambdzn = this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-        if (parambdsv.jdField_d_of_type_Int != 1) {
-          break label329;
-        }
+      bool1 = true;
+      if (paramInt2 != 2) {
+        break label159;
       }
-      label319:
-      label324:
-      label329:
-      for (boolean bool1 = bool2;; bool1 = false)
-      {
-        parambdzn.set(bool1);
-        return;
-        this.f = parambdsv.e;
-        break;
-        bool1 = false;
-        break label261;
-        bool1 = false;
-        break label281;
-      }
-    }
-    QLog.i("BaseTransProcessor", 1, "mUiRequest.mExtraObj instanceof TransferRequest.ShareExtraInfo : false");
-  }
-  
-  public static bdzn a(MessageRecord paramMessageRecord, AbsShareMsg paramAbsShareMsg)
-  {
-    bdzt localbdzt = new bdzt();
-    localbdzt.jdField_a_of_type_Int = paramAbsShareMsg.forwardType;
-    localbdzt.jdField_b_of_type_Int = paramAbsShareMsg.mMsgServiceID;
-    localbdzt.jdField_a_of_type_Long = paramAbsShareMsg.mSourceAppid;
-    localbdzt.jdField_a_of_type_JavaLangString = paramAbsShareMsg.shareData.pkgName;
-    localbdzt.jdField_b_of_type_JavaLangString = paramAbsShareMsg.mMsgUrl;
-    localbdzt.jdField_c_of_type_JavaLangString = paramAbsShareMsg.mContentTitle;
-    localbdzt.jdField_d_of_type_JavaLangString = paramAbsShareMsg.mContentSummary;
-    localbdzt.e = paramAbsShareMsg.mContentCover;
-    localbdzt.f = paramAbsShareMsg.mContentSrc;
-    localbdzt.jdField_c_of_type_Int = paramAbsShareMsg.shareData.imageUrlStatus;
-    localbdzt.jdField_d_of_type_Int = paramAbsShareMsg.shareData.shortUrlStatus;
-    localbdzt.jdField_a_of_type_Bdzo = new bdzo();
-    localbdzt.jdField_a_of_type_Bdzo.jdField_b_of_type_JavaLangString = paramAbsShareMsg.mSourceName;
-    localbdzt.jdField_a_of_type_Bdzo.jdField_d_of_type_JavaLangString = paramAbsShareMsg.mSourceIcon;
-    localbdzt.jdField_a_of_type_Bdzo.e = paramAbsShareMsg.shareData.sourceIconBig;
-    localbdzt.jdField_a_of_type_Bdzo.jdField_c_of_type_JavaLangString = paramAbsShareMsg.mSourceUrl;
-    localbdzt.jdField_a_of_type_Bdzo.jdField_a_of_type_JavaLangString = paramAbsShareMsg.mSource_A_ActionData;
-    localbdzt.jdField_a_of_type_Bdzo.jdField_a_of_type_Int = paramAbsShareMsg.shareData.appInfoStatus;
-    paramAbsShareMsg = new bdzn();
-    paramAbsShareMsg.jdField_b_of_type_JavaLangString = paramMessageRecord.selfuin;
-    paramAbsShareMsg.jdField_c_of_type_JavaLangString = paramMessageRecord.frienduin;
-    paramAbsShareMsg.jdField_a_of_type_Int = paramMessageRecord.istroop;
-    paramAbsShareMsg.jdField_b_of_type_Int = 52;
-    paramAbsShareMsg.jdField_a_of_type_Long = paramMessageRecord.uniseq;
-    paramAbsShareMsg.jdField_a_of_type_Boolean = true;
-    paramAbsShareMsg.jdField_e_of_type_Int = 11;
-    paramAbsShareMsg.jdField_e_of_type_Boolean = false;
-    paramAbsShareMsg.jdField_a_of_type_JavaLangObject = localbdzt;
-    return paramAbsShareMsg;
-  }
-  
-  public static bdzn a(MessageRecord paramMessageRecord, AbsShareMsg paramAbsShareMsg, ayyt paramayyt)
-  {
-    paramMessageRecord = a(paramMessageRecord, paramAbsShareMsg);
-    paramMessageRecord.jdField_a_of_type_Ayyt = paramayyt;
-    return paramMessageRecord;
-  }
-  
-  public static bdzn a(MessageRecord paramMessageRecord, JSONObject paramJSONObject, ayyt paramayyt)
-  {
-    bdzt localbdzt = new bdzt();
-    localbdzt.jdField_a_of_type_Int = paramJSONObject.optInt("forward_type");
-    localbdzt.jdField_b_of_type_Int = paramJSONObject.optInt("serviceType");
-    localbdzt.jdField_a_of_type_Long = paramJSONObject.optLong("appId");
-    localbdzt.jdField_a_of_type_JavaLangString = paramJSONObject.optString("pkg_name");
-    localbdzt.jdField_b_of_type_JavaLangString = paramJSONObject.optString("targetUrl");
-    localbdzt.jdField_c_of_type_JavaLangString = paramJSONObject.optString("title");
-    localbdzt.jdField_d_of_type_JavaLangString = paramJSONObject.optString("summary");
-    localbdzt.e = paramJSONObject.optString("image_url");
-    localbdzt.f = paramJSONObject.optString("audio_url");
-    localbdzt.jdField_c_of_type_Int = paramJSONObject.optInt("imageUrlStatus");
-    localbdzt.jdField_d_of_type_Int = paramJSONObject.optInt("shortUrlStatus");
-    localbdzt.jdField_a_of_type_Bdzo = new bdzo();
-    localbdzt.jdField_a_of_type_Bdzo.jdField_b_of_type_JavaLangString = paramJSONObject.optString("appInfo_sourceName");
-    localbdzt.jdField_a_of_type_Bdzo.jdField_d_of_type_JavaLangString = paramJSONObject.optString("appInfo_sourceIconSmall");
-    localbdzt.jdField_a_of_type_Bdzo.e = paramJSONObject.optString("appInfo_sourceIconBig");
-    localbdzt.jdField_a_of_type_Bdzo.jdField_c_of_type_JavaLangString = paramJSONObject.optString("appInfo_sourceUrl");
-    localbdzt.jdField_a_of_type_Bdzo.jdField_a_of_type_JavaLangString = paramJSONObject.optString("appInfo_packName");
-    localbdzt.jdField_a_of_type_Bdzo.jdField_a_of_type_Int = paramJSONObject.optInt("appInfo_status");
-    paramJSONObject = new bdzn();
-    paramJSONObject.jdField_b_of_type_JavaLangString = paramMessageRecord.selfuin;
-    paramJSONObject.jdField_c_of_type_JavaLangString = paramMessageRecord.frienduin;
-    paramJSONObject.jdField_a_of_type_Int = paramMessageRecord.istroop;
-    paramJSONObject.jdField_b_of_type_Int = 52;
-    paramJSONObject.jdField_a_of_type_Long = paramMessageRecord.uniseq;
-    paramJSONObject.jdField_a_of_type_Boolean = true;
-    paramJSONObject.jdField_e_of_type_Int = 11;
-    paramJSONObject.jdField_e_of_type_Boolean = false;
-    paramJSONObject.jdField_a_of_type_JavaLangObject = localbdzt;
-    paramJSONObject.jdField_a_of_type_Ayyt = paramayyt;
-    return paramJSONObject;
-  }
-  
-  private void f()
-  {
-    if (this.q) {
-      return;
-    }
-    if (this.jdField_a_of_type_Bduq != null) {
-      this.jdField_a_of_type_Bduq.e();
-    }
-    if (this.jdField_b_of_type_Bduq != null) {
-      this.jdField_b_of_type_Bduq.e();
-    }
-    this.jdField_a_of_type_Bdsv.a.post(new ForwardSdkShareProcessor.1(this));
-  }
-  
-  public int a()
-  {
-    QLog.d("Q.share.ForwardSdkShareProcessor", 1, "cancel");
-    super.a();
-    if (this.jdField_a_of_type_Bduq != null) {
-      this.jdField_a_of_type_Bduq.e();
-    }
-    if (this.jdField_b_of_type_Bduq != null) {
-      this.jdField_b_of_type_Bduq.e();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bdzn.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int, this.jdField_a_of_type_Bdzn.jdField_a_of_type_Long, 32768, 9037);
-    d(1004);
-    return 0;
-  }
-  
-  public void aN_()
-  {
-    QLog.i("Q.share.ForwardSdkShareProcessor", 1, "start");
-    this.jdField_a_of_type_Bduq = new bduy(this);
-    this.jdField_b_of_type_Bduq = new bdux(this);
-    bduz localbduz = new bduz(this);
-    bdut localbdut;
-    bdur localbdur;
-    bduv localbduv;
-    if (this.jdField_a_of_type_Int == 11)
-    {
-      this.jdField_b_of_type_Bduq.a(new bduq[] { localbduz });
-      localbdut = new bdut(this);
-      localbdur = new bdur(this);
-      localbduv = new bduv(this);
-      if ((localbduz.a()) || (!localbduv.a())) {
-        break label168;
-      }
-      localbduz.a(new bduq[] { localbdur, localbdut });
     }
     for (;;)
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (this.jdField_a_of_type_Int != 11) {
-        break label220;
+      if (((bdfv)localObject).a(bool1, paramInt1, paramBoolean, bool2)) {
+        break label165;
       }
-      this.jdField_b_of_type_Bduq.a();
-      return;
-      this.jdField_a_of_type_Bduq.a(new bduq[] { localbduz });
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doChangeMode switching");
+      }
+      QQToast.a((Context)BaseApplication.getContext(), 0, 2131717987, 0).a();
+      localObject = ((Iterable)this.jdField_a_of_type_JavaUtilList).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((bduq)((Iterator)localObject).next()).d(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      }
+      bool1 = false;
       break;
-      label168:
-      localbduz.a(new bduq[] { localbdur, localbduv });
-      this.jdField_a_of_type_Bduw = new bduw(this);
-      localbduv.a(new bduq[] { this.jdField_a_of_type_Bduw, localbdut });
+      label159:
+      bool2 = false;
     }
-    label220:
-    this.jdField_a_of_type_Bduq.a();
-    d(1001);
-    a(1002, MessageHandler.f);
+    label165:
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doChangeMode switch start");
+    }
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt3;
+    this.c = paramInt1;
+    localObject = ((Iterable)this.jdField_a_of_type_JavaUtilList).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((bduq)((Iterator)localObject).next()).b(paramInt2, paramInt3);
+    }
   }
   
-  public int b()
+  private final void a(boolean paramBoolean, String paramString)
   {
-    QLog.i("Q.share.ForwardSdkShareProcessor", 1, "resume");
-    if (this.jdField_m_of_type_Boolean)
-    {
-      this.jdField_m_of_type_Boolean = false;
-      this.q = false;
-      aN_();
+    Iterator localIterator = ((Iterable)this.jdField_a_of_type_JavaUtilList).iterator();
+    while (localIterator.hasNext()) {
+      ((bduq)localIterator.next()).a(paramBoolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramString);
     }
-    return 0;
+    if ((paramBoolean) && ((this.jdField_a_of_type_Int == 2) || (this.jdField_b_of_type_Int == 2))) {
+      bhsi.a((Context)BaseApplicationImpl.context, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true, "study_mode_has_change", Boolean.valueOf(true));
+    }
   }
   
-  public int c()
+  private final void b()
   {
-    if (!(this.jdField_a_of_type_Bdzn.jdField_a_of_type_JavaLangObject instanceof bdzt))
-    {
-      QLog.w("Q.share.ForwardSdkShareProcessor", 1, "checkParam|" + "SdkShareInfo null");
-      b(9302, a(new Exception("SdkShareInfo null")));
-      d();
-      return -1;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkAndReportStockStudyMode -> studyModePullStatus : " + this.d + ", studentFlagPullStatus : " + this.e);
     }
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    if ((this.d == 1) && (this.e != 0))
     {
-      QLog.w("Q.share.ForwardSdkShareProcessor", 1, "checkParam|" + "share targetUrl null");
-      b(9302, a(new Exception("share targetUrl null")));
-      d();
-      return -1;
-    }
-    if (this.jdField_a_of_type_Bdzo == null)
-    {
-      QLog.w("Q.share.ForwardSdkShareProcessor", 1, "checkParam|" + "mAppInfo null");
-      b(9302, a(new Exception("mAppInfo null")));
-      d();
-      return -1;
-    }
-    if (!ForwardUtils.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int))
-    {
-      String str = "err forwardType=" + this.jdField_a_of_type_Int + ",serviceType=" + this.jdField_b_of_type_Int;
-      QLog.w("Q.share.ForwardSdkShareProcessor", 1, "checkParam|" + str);
-      b(9302, a(new Exception(str)));
-      d();
-      return -1;
-    }
-    return 0;
-  }
-  
-  public void c()
-  {
-    QLog.i("Q.share.ForwardSdkShareProcessor", 1, "pause");
-    if (!this.jdField_m_of_type_Boolean)
-    {
-      this.jdField_m_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Bduq != null) {
-        this.jdField_a_of_type_Bduq.e();
+      boolean bool1 = bduy.b();
+      boolean bool2 = b();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkAndReportStockStudyMode -> configSwitch : " + bool1 + ", isSameDay ： " + bool2);
       }
-      if (this.jdField_b_of_type_Bduq != null) {
-        this.jdField_b_of_type_Bduq.e();
-      }
-    }
-  }
-  
-  void d()
-  {
-    long l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    QLog.e("Q.share.ForwardSdkShareProcessor", 1, "On Error, code=" + this.j + ", cost=" + l1);
-    super.d();
-    if (this.jdField_a_of_type_Bduq != null) {
-      this.jdField_a_of_type_Bduq.e();
-    }
-    if (this.jdField_b_of_type_Bduq != null) {
-      this.jdField_b_of_type_Bduq.e();
-    }
-    ayyu localayyu = new ayyu();
-    localayyu.jdField_a_of_type_Int = -1;
-    Object localObject;
-    if ((this.jdField_a_of_type_Bdzn != null) && (this.jdField_a_of_type_Bdzn.jdField_a_of_type_Ayyt != null))
-    {
-      if ((this.jdField_a_of_type_Int == 11) && (this.j == 9402) && (!ForwardUtils.a(this.jdField_a_of_type_AndroidContentContext)))
-      {
-        String str1 = (String)this.jdField_b_of_type_JavaUtilHashMap.get("audioUrl");
-        String str2 = this.f;
-        localObject = str1;
-        if (TextUtils.isEmpty(str1)) {
-          localObject = this.l;
+      if ((bool1) && (!bool2)) {
+        if (this.e != 1) {
+          break label253;
         }
-        localayyu.jdField_a_of_type_JavaLangObject = new String[] { str2, localObject };
-        localayyu.jdField_b_of_type_Int = this.j;
       }
-      this.jdField_a_of_type_Bdzn.jdField_a_of_type_Ayyt.b(localayyu);
     }
-    if (this.jdField_a_of_type_Int == 11) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 1, "SDK_SHARE onError");
-    }
-    for (;;)
+    label253:
+    for (int i = 1;; i = 2)
     {
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("report_type", "102");
-      ((Bundle)localObject).putString("act_type", "56");
-      ((Bundle)localObject).putString("intext_1", "" + this.j);
-      ((Bundle)localObject).putString("intext_5", "" + l1);
-      bipi.a().a((Bundle)localObject, "" + this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), false);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkAndReportStockStudyMode ReportController 0X800AD6C ， identity ： " + i);
+      }
+      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE);
+      bhsi.a((Context)BaseApplicationImpl.context, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true, "study_mode_last_report_time", localSimpleDateFormat.format(new Date()));
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD6C", "0X800AD6C", 0, i, "", "", "", "");
       return;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bdzn.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int, this.jdField_a_of_type_Bdzn.jdField_a_of_type_Long, 32768, this.j);
-      d(1005);
     }
   }
   
-  void e()
+  private final boolean b()
   {
-    long l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    QLog.d("Q.share.ForwardSdkShareProcessor", 1, "OnSuccess, cost=" + l1);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Bdzn.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int, this.jdField_a_of_type_Bdzn.jdField_a_of_type_Long);
-    if ((localObject != null) && ((localObject instanceof MessageForStructing)) && ((((MessageForStructing)localObject).structingMsg instanceof AbsShareMsg)))
+    Object localObject1 = (String)bhsi.b((Context)BaseApplicationImpl.context, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "study_mode_last_report_time", "");
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      localObject = (AbsShareMsg)((MessageForStructing)localObject).structingMsg;
-      ((AbsShareMsg)localObject).shareData.status = 1003;
-      ((AbsShareMsg)localObject).forwardType = 0;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bdzn.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int, this.jdField_a_of_type_Bdzn.jdField_a_of_type_Long, ((AbsShareMsg)localObject).getBytes());
+      Object localObject2 = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE).parse((String)localObject1);
+      localObject1 = Calendar.getInstance();
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "calendarLast");
+      ((Calendar)localObject1).setTime((Date)localObject2);
+      localObject2 = Calendar.getInstance();
+      Intrinsics.checkExpressionValueIsNotNull(localObject2, "calendarNow");
+      ((Calendar)localObject2).setTime(new Date());
+      if ((((Calendar)localObject1).get(0) == ((Calendar)localObject2).get(0)) && (((Calendar)localObject1).get(1) == ((Calendar)localObject2).get(1)) && (((Calendar)localObject1).get(6) == ((Calendar)localObject2).get(6))) {
+        return true;
+      }
     }
-    super.e();
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("report_type", "102");
-    ((Bundle)localObject).putString("act_type", "56");
-    ((Bundle)localObject).putString("intext_1", "0");
-    ((Bundle)localObject).putString("intext_5", "" + l1);
-    bipi.a().a((Bundle)localObject, "" + this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), false);
+    return false;
+  }
+  
+  private final void d(boolean paramBoolean)
+  {
+    int i;
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      i = 2131692619;
+      str = anzj.a(i);
+      if (!paramBoolean) {
+        break;
+      }
+    }
+    for (String str = BaseApplicationImpl.getContext().getString(2131693736, new Object[] { str });; str = BaseApplicationImpl.getContext().getString(2131693738, new Object[] { str }))
+    {
+      Intrinsics.checkExpressionValueIsNotNull(str, "message");
+      a(paramBoolean, str);
+      return;
+      i = 2131692622;
+      break;
+      i = 2131692624;
+      break;
+    }
+  }
+  
+  private final void e(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      String str = BaseApplicationImpl.getContext().getString(2131693737);
+      Intrinsics.checkExpressionValueIsNotNull(str, "BaseApplicationImpl.getC…mode_operation_open_fail)");
+      a(false, str);
+      return;
+    }
+    a(true, "");
+  }
+  
+  public final int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @NotNull
+  public final bdus a(@NotNull Activity paramActivity, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "changeMode targetType: " + paramInt1 + ", bPref : " + paramInt2);
+    }
+    int i = bdum.a();
+    if ((!this.jdField_a_of_type_Boolean) && ((i != paramInt1) || (paramInt2 != this.c)))
+    {
+      if (!AppNetConnInfo.isNetSupport())
+      {
+        QQToast.a((Context)BaseApplication.getContext(), 1, 2131694008, 0).a();
+        paramActivity = ((Iterable)this.jdField_a_of_type_JavaUtilList).iterator();
+        while (paramActivity.hasNext()) {
+          ((bduq)paramActivity.next()).c(paramInt1, i);
+        }
+        return new bdus(false, paramInt1, i);
+      }
+      if (paramInt1 == 1)
+      {
+        Object localObject = ThemeUtil.getUinThemePreferences((AppRuntime)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        if (((SharedPreferences)localObject).getBoolean("key_simple_should_show_switch_dialog", true))
+        {
+          ((SharedPreferences)localObject).edit().putBoolean("key_simple_should_show_switch_dialog", false).apply();
+          localObject = (DialogInterface.OnClickListener)new bduu(this, paramInt2, paramInt1, i, paramBoolean);
+          bhpc localbhpc = this.jdField_a_of_type_Bhpc;
+          if (localbhpc != null) {
+            localbhpc.dismiss();
+          }
+          this.jdField_a_of_type_Bhpc = bhlq.a(paramActivity, BaseApplicationImpl.getContext().getString(2131717982), 0, 2131717980, (DialogInterface.OnClickListener)localObject, null);
+          paramActivity = this.jdField_a_of_type_Bhpc;
+          if (paramActivity == null) {
+            Intrinsics.throwNpe();
+          }
+          paramActivity.setOnDismissListener((DialogInterface.OnDismissListener)new bdut(this, paramInt1, i));
+          paramActivity = this.jdField_a_of_type_Bhpc;
+          if (paramActivity == null) {
+            Intrinsics.throwNpe();
+          }
+          paramActivity.show();
+        }
+      }
+      for (;;)
+      {
+        return new bdus(true, paramInt1, i);
+        a(paramInt2, paramInt1, i, paramBoolean);
+        continue;
+        a(paramInt2, paramInt1, i, paramBoolean);
+      }
+    }
+    return new bdus(this.jdField_a_of_type_Boolean, paramInt1, i);
+  }
+  
+  public final void a()
+  {
+    bhpc localbhpc = this.jdField_a_of_type_Bhpc;
+    if (localbhpc != null) {
+      localbhpc.setOnDismissListener(null);
+    }
+    localbhpc = this.jdField_a_of_type_Bhpc;
+    if (localbhpc != null) {
+      localbhpc.dismiss();
+    }
+    this.jdField_a_of_type_Bhpc = ((bhpc)null);
+  }
+  
+  public final void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt2;
+    this.c = paramInt1;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public final void a(@Nullable bduq parambduq)
+  {
+    if (parambduq != null) {
+      this.jdField_a_of_type_JavaUtilList.add(parambduq);
+    }
+  }
+  
+  public final void a(@NotNull BaseActivity paramBaseActivity)
+  {
+    Intrinsics.checkParameterIsNotNull(paramBaseActivity, "activity");
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "showModeSwitchDialog studyModePullStatus : " + this.d + " , studentFlagPullStatus : " + this.e);
+    }
+    if (this.jdField_b_of_type_Boolean) {
+      if ((this.d != 0) && (this.e != 0)) {
+        break label202;
+      }
+    }
+    label202:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_b_of_type_Boolean = bool;
+      if ((this.d == 2) && (this.e == 1) && (bduy.c()) && (!((Boolean)bhsi.b((Context)paramBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "study_mode_has_change", Boolean.valueOf(false))).booleanValue()) && (!((Boolean)bhsi.b((Context)paramBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "study_mode_change_dialog_has_show", Boolean.valueOf(false))).booleanValue()))
+      {
+        new bdvc(paramBaseActivity).show();
+        bhsi.a((Context)BaseApplicationImpl.context, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true, "study_mode_change_dialog_has_show", Boolean.valueOf(true));
+      }
+      return;
+    }
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public final void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onSwitchUICallBack targetType : " + this.jdField_a_of_type_Int + ", isSuc : " + paramBoolean1 + " , bChangeTheme : " + paramBoolean2 + ", bSwitchElsePref : " + paramBoolean3 + " , statusCode : " + paramInt);
+    }
+    if (paramBoolean3)
+    {
+      d(paramBoolean1);
+      return;
+    }
+    e(paramBoolean1);
+  }
+  
+  public final boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public final int b()
+  {
+    return this.c;
+  }
+  
+  public final void b(@Nullable bduq parambduq)
+  {
+    if ((parambduq != null) && (this.jdField_a_of_type_JavaUtilList.contains(parambduq))) {
+      this.jdField_a_of_type_JavaUtilList.remove(parambduq);
+    }
+  }
+  
+  public final void b(boolean paramBoolean)
+  {
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onStudyModePullComplete isStudy : " + paramBoolean);
+    }
+    if (paramBoolean) {
+      i = 1;
+    }
+    this.d = i;
+    b();
+  }
+  
+  public final void c(boolean paramBoolean)
+  {
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onStudentFlagPullComplete isStudent : " + paramBoolean);
+    }
+    if (paramBoolean) {
+      i = 1;
+    }
+    this.e = i;
+    b();
+  }
+  
+  public void onDestroy()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onDestroy");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((anui)this.jdField_a_of_type_Bdga);
+    a();
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.d = 0;
+    this.e = 0;
   }
 }
 

@@ -1,23 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.qqcircle.widgets.QCircleLottileAnimView;
-import com.tencent.biz.qqcircle.widgets.QCirclePushToastView;
-import com.tencent.biz.qqcircle.widgets.QCirclePushToastView.1;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
 
 public class vxx
-  implements Animator.AnimatorListener
+  extends ClickableSpan
 {
-  public vxx(QCirclePushToastView.1 param1) {}
+  public vxx(QCircleAsyncTextView paramQCircleAsyncTextView, vya paramvya) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void onClick(@NonNull View paramView)
   {
-    QCirclePushToastView.a(this.a.this$0).setVisibility(0);
+    QCircleAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView, true);
+    if (this.jdField_a_of_type_Vya != null) {
+      this.jdField_a_of_type_Vya.a();
+    }
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.a);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setFakeBoldText(true);
   }
 }
 

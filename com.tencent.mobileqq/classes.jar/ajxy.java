@@ -1,75 +1,83 @@
-import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ajxy
-  implements bkhe
+  extends BaseAdapter
 {
-  int jdField_a_of_type_Int = 0;
-  int b;
-  int c = 0;
+  private ajxy(ajxw paramajxw) {}
   
-  ajxy(ajxt paramajxt)
+  public int getCount()
   {
-    this.jdField_b_of_type_Int = 0;
+    return 6;
   }
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public Object getItem(int paramInt)
   {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-    this.jdField_b_of_type_Int = paramInt3;
+    return null;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public long getItemId(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged, reach bottom, scrollState " + paramInt + " firstVisibleItem: " + this.c + ", lastItem:" + this.jdField_a_of_type_Int + ", totalItemCount = " + this.jdField_b_of_type_Int + ", mIsComplete: " + this.jdField_a_of_type_Ajxt.d + ", requesting:" + this.jdField_a_of_type_Ajxt.jdField_c_of_type_Boolean + ", mSearchMode: " + this.jdField_a_of_type_Ajxt.jdField_b_of_type_Int + ", mCurrentKeyword: " + this.jdField_a_of_type_Ajxt.jdField_a_of_type_JavaLangString);
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = LayoutInflater.from(ajxw.a(this.a)).inflate(2131563032, null);
     }
-    if (this.jdField_b_of_type_Int == 0) {}
-    do
+    for (;;)
     {
-      do
+      int k;
+      int j;
+      int i;
+      switch (paramInt)
       {
-        return;
-      } while ((this.jdField_a_of_type_Int != this.jdField_b_of_type_Int) || (paramInt != 0));
-      if ((this.c != 0) && (!this.jdField_a_of_type_Ajxt.jdField_c_of_type_Boolean))
-      {
-        this.jdField_a_of_type_Ajxt.jdField_c_of_type_Boolean = true;
-        if (this.jdField_a_of_type_Ajxt.jdField_b_of_type_Int == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageLocal >>>>> isComplete: " + this.jdField_a_of_type_Ajxt.d);
-          }
-          this.jdField_a_of_type_Ajxt.jdField_a_of_type_Ajuu.a(this.jdField_a_of_type_Ajxt.jdField_a_of_type_Long, this.jdField_a_of_type_Ajxt.jdField_a_of_type_JavaLangString, 2);
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageInCloud >>>>> isComplete: " + this.jdField_a_of_type_Ajxt.d);
-        }
-        if (this.jdField_a_of_type_Ajxt.d)
-        {
-          this.jdField_a_of_type_Ajxt.jdField_c_of_type_AndroidWidgetTextView.setText(anni.a(2131704915));
-          this.jdField_a_of_type_Ajxt.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131372927).setVisibility(8);
-          this.jdField_a_of_type_Ajxt.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-          this.jdField_a_of_type_Ajxt.jdField_b_of_type_AndroidViewView.setVisibility(0);
-          return;
-        }
-        this.jdField_a_of_type_Ajxt.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Ajxt.jdField_a_of_type_AndroidContentContext.getString(2131717624));
-        this.jdField_a_of_type_Ajxt.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_Ajxt.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131372927).setVisibility(0);
-        this.jdField_a_of_type_Ajxt.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        this.jdField_a_of_type_Ajxt.jdField_a_of_type_Long = System.currentTimeMillis();
-        return;
+      case 4: 
+      default: 
+        k = 2130839087;
+        j = 2131718150;
+        i = 2131718540;
       }
-    } while ((this.c != 0) || (this.jdField_a_of_type_Ajxt.jdField_c_of_type_Boolean) || (!this.jdField_a_of_type_Ajxt.d) || (this.jdField_a_of_type_Ajxt.jdField_b_of_type_Int != 1));
-    this.jdField_a_of_type_Ajxt.jdField_c_of_type_AndroidWidgetTextView.setText(anni.a(2131704911));
-    this.jdField_a_of_type_Ajxt.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131372927).setVisibility(8);
-    this.jdField_a_of_type_Ajxt.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_Ajxt.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      for (;;)
+      {
+        ImageView localImageView = (ImageView)paramView.findViewById(2131362822);
+        TextView localTextView = (TextView)paramView.findViewById(2131362834);
+        localImageView.setImageResource(k);
+        localTextView.setText(j);
+        if (AppSetting.c) {
+          paramView.setContentDescription(ajxw.a(this.a).getString(i));
+        }
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        j = 2131718164;
+        k = 2130839091;
+        i = 2131718556;
+        continue;
+        j = 2131718166;
+        k = 2130839092;
+        i = 2131718557;
+        continue;
+        j = 2131718171;
+        k = 2130839095;
+        i = 2131718564;
+        continue;
+        j = 2131718162;
+        k = 2130839089;
+        i = 2131718547;
+        continue;
+        i = 2131715920;
+        j = 2131715920;
+        k = 2130842427;
+      }
+    }
   }
 }
 

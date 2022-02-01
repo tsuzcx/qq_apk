@@ -1,20 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import com.tencent.mobileqq.activity.photo.SendPhotoTask;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class akru
-  extends beat
+public class akru
+  implements MessageQueue.IdleHandler
 {
-  akru(akrs paramakrs, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, bhhe parambhhe, DownloadParam paramDownloadParam)
-  {
-    super(paramQQAppInterface, paramString);
-  }
+  public akru(SendPhotoActivity paramSendPhotoActivity) {}
   
-  protected void realCancel() {}
-  
-  protected void realStart()
+  public boolean queueIdle()
   {
-    akrs.a(this.jdField_a_of_type_Akrs, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bhhe, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam);
+    azpw.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "queueIdle", "start");
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask = new SendPhotoTask(this.a, null, this.a.jdField_a_of_type_AndroidOsHandler);
+    ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask, 8, null, false);
+    return false;
   }
 }
 

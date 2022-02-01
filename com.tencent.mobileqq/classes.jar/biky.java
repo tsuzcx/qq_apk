@@ -1,131 +1,33 @@
-import android.content.Intent;
-import android.widget.Toast;
-import com.tencent.open.agent.ChallengeBragBase;
-import com.tencent.open.base.http.HttpBaseUtil.HttpStatusException;
-import com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.SocketTimeoutException;
-import org.apache.http.conn.ConnectTimeoutException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
 
-public class biky
-  implements bitu
+class biky
+  implements nmg
 {
-  public biky(ChallengeBragBase paramChallengeBragBase) {}
+  biky(bikv parambikv, long paramLong1, String paramString1, long paramLong2, String paramString2) {}
   
-  protected void a(Intent paramIntent)
+  public void loaded(String paramString, int paramInt)
   {
-    int i = paramIntent.getIntExtra("key_error_code", -6);
-    if (i != 0)
-    {
-      Toast.makeText(this.a, paramIntent.getStringExtra("key_error_msg"), 0).show();
-      bisy.e("qqBaseActivity", "onSendChallengeComplete error:{KEY_ERROR_CODE:" + i + "; KEY_ERROR_MSG:" + paramIntent.getStringExtra("key_error_msg") + "}");
+    if (QLog.isColorLevel()) {
+      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid loaded,code:" + paramInt + ",cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    this.a.setResult(-1, paramIntent);
-    this.a.finish();
+    if (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("280")) {
+      this.jdField_a_of_type_Bikv.a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
+    }
+    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {
+      if (this.jdField_a_of_type_Bikv.a(2L, this.jdField_b_of_type_Long)) {
+        this.jdField_a_of_type_Bikv.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long);
+      }
+    }
+    while ((!this.jdField_a_of_type_Bikv.a(5L, this.jdField_b_of_type_Long)) || (this.jdField_b_of_type_JavaLangString == null)) {
+      return;
+    }
+    this.jdField_a_of_type_Bikv.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Long);
   }
   
-  public void a(Exception paramException)
+  public void progress(int paramInt)
   {
-    this.a.d();
-    bisy.c("qqBaseActivity", "SendChallenge exception." + paramException.getMessage(), paramException);
-    Intent localIntent = new Intent();
-    if ((paramException instanceof ConnectTimeoutException))
-    {
-      localIntent.putExtra("key_error_code", -7);
-      localIntent.putExtra("key_error_msg", biuc.e);
-    }
-    for (;;)
-    {
-      a(localIntent);
-      return;
-      if ((paramException instanceof SocketTimeoutException))
-      {
-        localIntent.putExtra("key_error_code", -8);
-        localIntent.putExtra("key_error_msg", biuc.f);
-      }
-      else if ((paramException instanceof MalformedURLException))
-      {
-        localIntent.putExtra("key_error_code", -3);
-        localIntent.putExtra("key_error_msg", "访问url有误!");
-      }
-      else if ((paramException instanceof HttpBaseUtil.HttpStatusException))
-      {
-        localIntent.putExtra("key_error_code", -10);
-        localIntent.putExtra("key_error_msg", "Http返回码异常!");
-      }
-      else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
-      {
-        localIntent.putExtra("key_error_code", -9);
-        localIntent.putExtra("key_error_msg", biuc.g);
-      }
-      else if ((paramException instanceof IOException))
-      {
-        localIntent.putExtra("key_error_code", -2);
-        localIntent.putExtra("key_error_msg", biuc.a);
-      }
-      else
-      {
-        localIntent.putExtra("key_error_code", -6);
-        localIntent.putExtra("key_error_msg", biuc.d);
-      }
-    }
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    int i = 0;
-    try
-    {
-      this.a.d();
-      int j = paramJSONObject.getInt("ret");
-      String str = paramJSONObject.getString("msg");
-      Object localObject;
-      if (j == 0)
-      {
-        localObject = null;
-        if (!"action_brag".equals(this.a.p)) {
-          break label131;
-        }
-        localObject = "ANDROIDQQ.BRAG.ASSISTANT";
-        i = 2131690832;
-      }
-      for (;;)
-      {
-        if (localObject != null)
-        {
-          biuh.a("400", (String)localObject, this.a.c);
-          Toast.makeText(this.a, i, 0).show();
-        }
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("key_error_code", j);
-        ((Intent)localObject).putExtra("key_error_msg", str);
-        ((Intent)localObject).putExtra("key_response", paramJSONObject.toString());
-        a((Intent)localObject);
-        return;
-        label131:
-        if ("action_challenge".equals(this.a.p))
-        {
-          localObject = "ANDROIDQQ.PK.ASSISTANT";
-          i = 2131690833;
-        }
-      }
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      bisy.c("qqBaseActivity", "SendChallenge exception." + paramJSONObject.getMessage(), paramJSONObject);
-      paramJSONObject = new Intent();
-      paramJSONObject.putExtra("key_error_code", -4);
-      paramJSONObject.putExtra("key_error_msg", biuc.b);
-      a(paramJSONObject);
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      a(paramJSONObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid progress:" + paramInt);
     }
   }
 }

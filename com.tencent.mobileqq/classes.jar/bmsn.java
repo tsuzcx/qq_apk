@@ -1,24 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.vip.pb.TianShuAccess.AdItem;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.CellInfo;
 
-class bmsn
-  implements View.OnClickListener
+public final class bmsn
+  implements Parcelable.Creator<LbsDataV2.CellInfo>
 {
-  bmsn(bmsl parambmsl) {}
-  
-  public void onClick(View paramView)
+  public LbsDataV2.CellInfo a(Parcel paramParcel)
   {
-    bmsl.a(this.a);
-    if ((bmsl.a(this.a) != null) && (bmsl.a(this.a).a() != null) && (bmsl.a(this.a).a().app != null) && (bmsl.a(this.a) != null)) {
-      bmsk.a(bmsl.a(this.a).a().app, 122, String.valueOf(bmsl.a(this.a).iAdId.get()), bmsl.a(this.a).traceinfo.get());
+    LbsDataV2.CellInfo localCellInfo = new LbsDataV2.CellInfo();
+    if (paramParcel != null)
+    {
+      localCellInfo.mcc = paramParcel.readInt();
+      localCellInfo.mnc = paramParcel.readInt();
+      localCellInfo.lac = paramParcel.readInt();
+      localCellInfo.cellId = paramParcel.readInt();
+      localCellInfo.rssi = paramParcel.readInt();
+      localCellInfo.stationLat = paramParcel.readDouble();
+      localCellInfo.stationLon = paramParcel.readDouble();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return localCellInfo;
+  }
+  
+  public LbsDataV2.CellInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 

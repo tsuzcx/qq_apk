@@ -1,26 +1,23 @@
+import android.os.SystemClock;
+
 public class birv
 {
-  private android.webkit.CookieManager jdField_a_of_type_AndroidWebkitCookieManager = android.webkit.CookieManager.getInstance();
-  private com.tencent.smtt.sdk.CookieManager jdField_a_of_type_ComTencentSmttSdkCookieManager = com.tencent.smtt.sdk.CookieManager.getInstance();
+  final long a;
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public void a(String paramString1, String paramString2)
+  birv(String paramString1, String paramString2, String paramString3)
   {
-    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie(paramString1, paramString2);
-    }
-    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
-      this.jdField_a_of_type_AndroidWebkitCookieManager.setCookie(paramString1, paramString2);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
   }
   
-  public void a(boolean paramBoolean)
+  boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setAcceptCookie(paramBoolean);
-    }
-    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
-      this.jdField_a_of_type_AndroidWebkitCookieManager.setAcceptCookie(paramBoolean);
-    }
+    return SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > 300000L;
   }
 }
 

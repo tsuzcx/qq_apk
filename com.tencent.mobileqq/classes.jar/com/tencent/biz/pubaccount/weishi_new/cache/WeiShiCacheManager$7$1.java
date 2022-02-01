@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
 import UserGrowth.stSimpleGetFeedListRsp;
-import uej;
-import upe;
+import uel;
+import uqf;
 
 class WeiShiCacheManager$7$1
   implements Runnable
@@ -13,7 +13,7 @@ class WeiShiCacheManager$7$1
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCacheWeiShiCacheManager$7.a != null)
     {
-      upe.b("CacheResponseLog", "getCachedRecommendData endTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
+      uqf.b("CacheResponseLog", "getCachedRecommendData endTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCacheWeiShiCacheManager$7.a.a(this.jdField_a_of_type_UserGrowthStSimpleGetFeedListRsp);
     }
   }

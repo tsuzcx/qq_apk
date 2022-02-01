@@ -1,20 +1,18 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 
-final class avkb
-  implements apvt
+public abstract class avkb
+  extends RecyclerView.ViewHolder
 {
-  public void a(int paramInt1, int paramInt2)
+  public avkb(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    if (paramInt1 == avju.a)
-    {
-      Intent localIntent = new Intent();
-      localIntent.setAction("action.now.jump");
-      localIntent.putExtra("jump_action", paramInt2);
-      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
-    }
+    super(paramView);
   }
+  
+  public abstract void a(FeedsItemData paramFeedsItemData);
 }
 
 

@@ -1,22 +1,29 @@
-import com.tencent.av.ui.RedbagToolbar;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.QavOperationMenuView;
 
 public class mil
-  implements mpo
+  implements mmo
 {
-  public mil(RedbagToolbar paramRedbagToolbar, moy parammoy) {}
+  public mil(QavOperationMenuView paramQavOperationMenuView) {}
   
-  public void a(boolean paramBoolean)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (paramBoolean) {}
-    for (paramBoolean = this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.startActivity_SendRedBag(true);; paramBoolean = false)
+    switch (paramInt1)
     {
-      if (!paramBoolean)
+    case 1: 
+    default: 
+    case 2: 
+      do
       {
-        this.jdField_a_of_type_Moy.a(false);
-        this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.exitCurrentToolbar();
-      }
+        return;
+      } while (this.a.a == null);
+      this.a.a.a(paramString, paramInt2, false);
       return;
     }
+    if (this.a.a != null) {
+      this.a.a.a(paramString, paramInt2, true);
+    }
+    mru.c(2131373511);
   }
 }
 

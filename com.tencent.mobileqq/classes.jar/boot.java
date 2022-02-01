@@ -1,21 +1,47 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.2;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
 
 public class boot
-  implements boov
+  extends bojt
 {
-  public boot(QIMInformationPasterManager.2 param2) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void a(float paramFloat, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString, bpnf parambpnf)
+  public boot(ViewStub paramViewStub)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "isSucess:" + paramBoolean + " url:" + paramString + " item:" + parambpnf);
+    super(paramViewStub);
+  }
+  
+  protected void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366227);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366226));
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692285);
+  }
+  
+  public void c()
+  {
+    if (a())
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    if (parambpnf.a() != null) {
-      parambpnf.a().a(paramBoolean);
+  }
+  
+  public void d()
+  {
+    if (!a()) {
+      return;
     }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

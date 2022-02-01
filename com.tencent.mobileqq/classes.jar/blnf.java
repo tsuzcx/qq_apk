@@ -1,35 +1,27 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
-
-public final class blnf
-  extends WtloginObserver
+public class blnf
 {
-  public blnf(Handler.Callback paramCallback) {}
+  private int a;
+  private int b;
   
-  public void OnException(String paramString, int paramInt)
+  public int a()
   {
-    paramString = Message.obtain();
-    paramString.what = 1001;
-    if (this.a != null) {
-      this.a.handleMessage(paramString);
-    }
+    return this.a;
   }
   
-  public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
+  public void a(int paramInt1, int paramInt2)
   {
-    paramString = Message.obtain();
-    paramString.what = 1000;
-    if (this.a != null) {
-      this.a.handleMessage(paramString);
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blnf
  * JD-Core Version:    0.7.0.1
  */

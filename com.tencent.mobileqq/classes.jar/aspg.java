@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.data.Emoticon;
 
 class aspg
-  implements DialogInterface.OnClickListener
 {
-  aspg(aspe paramaspe) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.a = false;
-    this.a.a.doOnBackPressed();
-  }
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  Emoticon jdField_a_of_type_ComTencentMobileqqDataEmoticon;
 }
 
 

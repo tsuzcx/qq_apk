@@ -1,17 +1,14 @@
-import android.graphics.Bitmap;
-import java.net.URL;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bdtv
-  implements beai
+  implements DialogInterface.OnClickListener
 {
-  public bdtu a;
-  
   bdtv(bdtt parambdtt) {}
   
-  public Bitmap getBitmap(URL paramURL)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bdtu = this.jdField_a_of_type_Bdtt.a(paramURL);
-    return bdtt.a(this.jdField_a_of_type_Bdtt, this.jdField_a_of_type_Bdtu);
+    paramDialogInterface.dismiss();
   }
 }
 

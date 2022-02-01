@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import pwt;
-import pwx;
+import ppe;
+import ppi;
 
 public class FastWebModule$1
   implements Runnable
 {
-  public FastWebModule$1(pwt parampwt, pwx parampwx, boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo) {}
+  public FastWebModule$1(ppe paramppe, ppi paramppi, boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Pwx.a(this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
+    this.jdField_a_of_type_Ppi.a(this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
   }
 }
 

@@ -1,30 +1,63 @@
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.HashSet;
+import java.util.Set;
 
 public class axeh
-  extends bfvj
 {
-  private NearbyAppInterface a;
+  public int a;
+  public long a;
+  public Bundle a;
+  public String a;
+  public Set<String> a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f = "";
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
   
-  public axeh(NearbyAppInterface paramNearbyAppInterface, String paramString1, String paramString2, String paramString3)
+  public axeh(String paramString, int paramInt)
   {
-    super(paramString1, paramString2, paramString3);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.h = a(paramString, paramInt);
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
   }
   
-  public UsingTimeReportManager a()
+  public static String a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface == null) {
-      return null;
-    }
-    return (UsingTimeReportManager)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(221);
+    return paramInt + "_" + paramString;
   }
   
-  public void a(long paramLong)
+  public static String[] a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.reportClickEvent("dc00899", this.jdField_a_of_type_JavaLangString, "", this.b, this.c, 0, 0, String.valueOf(paramLong), "", "", "");
-    }
+    return paramString.split("_");
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_c_of_type_Long > NetConnInfoCenter.getServerTimeMillis();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis();
+  }
+  
+  public String toString()
+  {
+    return "MiniAppInfo: appId=" + this.jdField_a_of_type_JavaLangString + ", appType=" + this.jdField_a_of_type_Int + ", platform=" + this.jdField_b_of_type_Int + ", appName=" + this.jdField_b_of_type_JavaLangString + ", appState=" + this.jdField_c_of_type_Int + ", appVersion=" + this.d + ", appPkgUrl=" + this.f + ", wording=" + this.g + ", infoNextReqMillis=" + this.jdField_a_of_type_Long;
   }
 }
 

@@ -1,39 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class aibp
-  implements View.OnTouchListener
+final class aibp
+  implements DialogInterface.OnClickListener
 {
-  aibp(aiay paramaiay) {}
+  aibp(Activity paramActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = false;
-    int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_Bhtu.a();
-    if (i == 0)
-    {
-      this.a.m.setText(anni.a(2131703926));
-      this.a.m.setTextColor(this.a.r);
-      this.a.jdField_a_of_type_Axey.b();
-      if (paramView != null) {
-        paramView.a(true);
-      }
-      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "wolf_talk", 0, 0, "", "", "", "");
-      bool = true;
-    }
-    while ((i != 3) && (i != 1)) {
-      return bool;
-    }
-    this.a.m.setText(anni.a(2131703865));
-    this.a.m.setTextColor(this.a.q);
-    this.a.jdField_a_of_type_Axey.c();
-    if (paramView != null) {
-      paramView.a(false);
-    }
-    return true;
+    this.a.finish();
   }
 }
 

@@ -1,41 +1,17 @@
-import java.util.Iterator;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public class nyb
 {
-  private static JSONObject a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
-  {
-    if ((paramJSONObject1 != null) && (paramJSONObject2 != null)) {
-      try
-      {
-        Iterator localIterator = paramJSONObject2.keys();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          paramJSONObject1.put(str, paramJSONObject2.get(str));
-        }
-        return paramJSONObject1;
-      }
-      catch (Exception paramJSONObject2) {}
-    }
-    while (paramJSONObject1 != null) {}
-    if (paramJSONObject2 != null) {
-      return paramJSONObject2;
-    }
-    return new JSONObject();
-  }
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public static JSONObject a(JSONObject... paramVarArgs)
+  public nyb(CustomWebView paramCustomWebView)
   {
-    JSONObject localJSONObject = new JSONObject();
-    new JSONObject();
-    int i = 0;
-    while (i < paramVarArgs.length)
-    {
-      localJSONObject = a(localJSONObject, paramVarArgs[i]);
-      i += 1;
-    }
-    return localJSONObject;
+    this.jdField_a_of_type_Int = 1;
   }
 }
 

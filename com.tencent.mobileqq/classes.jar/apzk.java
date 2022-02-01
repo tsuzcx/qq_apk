@@ -1,26 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.ark.open.ArkAppMgr;
 
 public class apzk
-  implements View.OnClickListener
 {
-  public apzk(BusinessCardEditActivity paramBusinessCardEditActivity) {}
-  
-  public void onClick(View paramView)
+  public static void a(String paramString1, String paramString2, String paramString3, apwf paramapwf)
   {
-    Object localObject = (apzo)paramView.getTag();
-    if (!((anmw)this.a.app.getManager(51)).b(((apzo)localObject).a)) {}
-    for (int i = 35;; i = 1)
-    {
-      localObject = new ProfileActivity.AllInOne(((apzo)localObject).a, i);
-      ProfileActivity.a(this.a, (ProfileActivity.AllInOne)localObject, 1016);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString3)) && (apxt.a() != null)) {
+      ArkAppMgr.getInstance().getAppPathByNameTimeout(3000L, paramString1, paramString2, "0.0.0.1", null, new apzl(paramString1, paramString3, paramapwf));
     }
   }
 }

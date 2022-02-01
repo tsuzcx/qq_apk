@@ -1,17 +1,39 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem.AudioUploadCallback.1;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem.AudioUploadCallback.2;
+import com.tencent.qphone.base.util.QLog;
 
-final class bggc
-  extends View.AccessibilityDelegate
+public final class bggc
+  implements bnsp
 {
-  bggc(bgge parambgge) {}
+  public bgei a;
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public bggc(HWReciteItem paramHWReciteItem, bgei parambgei)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
-    if ((paramInt == 1) && (this.a != null)) {
-      this.a.onClick(paramView);
+    this.jdField_a_of_type_Bgei = parambgei;
+  }
+  
+  public void a(int paramInt)
+  {
+    HWReciteItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).post(new HWReciteItem.AudioUploadCallback.1(this));
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HWReciteItem", 2, "upload onComplete " + this.jdField_a_of_type_Bgei.b);
     }
+    this.jdField_a_of_type_Bgei.b(paramString);
+    this.jdField_a_of_type_Bgei.g = 3;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("HWReciteItem", 2, "onError errorCode = " + paramInt);
+    }
+    this.jdField_a_of_type_Bgei.g = 2;
+    HWReciteItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).post(new HWReciteItem.AudioUploadCallback.2(this));
   }
 }
 

@@ -1,14 +1,67 @@
-class pbu
-  extends pcm
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+public class pbu
+  implements AladdinConfigHandler
 {
-  pbu(pbe parampbe)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super(parampbe, null);
+    QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    Map localMap = pan.a(paramString);
+    Object localObject2 = localMap.keySet();
+    Object localObject1 = "";
+    paramString = "";
+    Iterator localIterator = ((Set)localObject2).iterator();
+    String str;
+    if (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      localObject2 = (String)localMap.get(str);
+      QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
+      if (TextUtils.equals(str, "reset_kandian_configuration"))
+      {
+        localObject1 = paramString;
+        paramString = (String)localObject2;
+      }
+    }
+    for (;;)
+    {
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
+      break;
+      if (TextUtils.equals(str, "reset_version"))
+      {
+        paramString = (String)localObject1;
+        localObject1 = localObject2;
+        continue;
+        if ((TextUtils.equals("1", (CharSequence)localObject1)) && (!TextUtils.isEmpty(paramString))) {}
+        try
+        {
+          paramInt1 = Integer.valueOf(paramString).intValue();
+          bhsi.q(BaseApplicationImpl.getApplication(), paramInt1, ozs.a());
+          return true;
+        }
+        catch (NumberFormatException paramString)
+        {
+          QLog.e("ResetAllConfigHandler", 1, "[onReceiveConfig] e = " + paramString);
+          return true;
+        }
+      }
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
+    }
   }
   
-  void a(pcp parampcp)
+  public void onWipeConfig(int paramInt)
   {
-    parampcp.onCommentStateError(1001);
+    QLog.d("ResetAllConfigHandler", 2, "[onWipeConfig] id=" + paramInt);
   }
 }
 

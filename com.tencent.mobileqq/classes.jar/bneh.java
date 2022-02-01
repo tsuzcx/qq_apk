@@ -1,37 +1,27 @@
-import android.graphics.SurfaceTexture;
+import android.content.Context;
 
 class bneh
-  implements bnhn
+  extends bndw
 {
-  bneh(bndy parambndy) {}
+  bneh(bneg parambneg, bndq parambndq, Context paramContext, bndr parambndr) {}
   
-  public void a()
+  public void a(String paramString) {}
+  
+  public void a(String paramString, float paramFloat, long paramLong) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    bnzb.b("AEPituCameraUnit", "onPreviewSurfaceTextureRelease---" + bndy.a(this.a));
-    bndy.a(this.a, null);
+    if (paramInt == 2)
+    {
+      this.jdField_a_of_type_Bndq.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bndr);
+      return;
+    }
+    this.jdField_a_of_type_Bndq.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bndr);
   }
   
-  public void a(int paramInt)
+  public void b(String paramString)
   {
-    bndy.a(this.a).a(paramInt, new bnei(this));
-  }
-  
-  public void a(SurfaceTexture paramSurfaceTexture)
-  {
-    bndy.a(this.a, paramSurfaceTexture);
-    bnzb.b("AEPituCameraUnit", "onPreviewSurfaceTextureCreate---" + bndy.a(this.a));
-    bndy.g(this.a);
-  }
-  
-  public void b()
-  {
-    bnvd.a().a("onFirstFrameDone");
-    bndy.i(this.a);
-  }
-  
-  public void c()
-  {
-    bndy.a(this.a).b(new bnej(this));
+    this.jdField_a_of_type_Bndq.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bndr);
   }
 }
 

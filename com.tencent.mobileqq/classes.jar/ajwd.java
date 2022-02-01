@@ -1,18 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-
-class ajwd
-  implements DialogInterface.OnClickListener
+public abstract interface ajwd
 {
-  ajwd(ajvr paramajvr) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.getIntent().removeExtra("if_check_account_same");
-    this.a.b.dismiss();
-  }
+  public abstract void a();
 }
 
 

@@ -1,20 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
 
 public class ytu
-  extends Handler
+  implements Animation.AnimationListener
 {
-  public ytu(EditVideoMusic paramEditVideoMusic) {}
+  public ytu(NewMessageYellowBar paramNewMessageYellowBar) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.b();
+    this.a.setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.setAlpha(1.0F);
   }
 }
 

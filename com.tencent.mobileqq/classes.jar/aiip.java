@@ -1,105 +1,39 @@
 import android.content.Context;
-import android.graphics.Point;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleTouchDelegateCallbackForAIO.1;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Rect;
+import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3;
+import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3.1.2;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aiip
-  implements aiii, aiio
+  implements OnCompositionLoadedListener
 {
-  private aihw jdField_a_of_type_Aihw;
-  private aiin jdField_a_of_type_Aiin;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  public aiip(ConfessChatPie.3 param3) {}
   
-  public aiip(Context paramContext, BaseChatPie paramBaseChatPie)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    aiif.a().b(this);
-  }
-  
-  public int a()
-  {
-    return aheh.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 10);
-  }
-  
-  public int a(float paramFloat1, float paramFloat2)
-  {
-    return 0;
-  }
-  
-  public void a() {}
-  
-  public void a(float paramFloat1, float paramFloat2) {}
-  
-  public void a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Aihw = aihx.b(aihy.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
-    if (this.jdField_a_of_type_Aihw == null) {}
-    String str;
-    do
+    int i = agej.a(30.0F, this.a.this$0.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = agej.a(30.0F, this.a.this$0.jdField_a_of_type_AndroidContentContext.getResources());
+    if (paramLottieComposition == null)
     {
+      QLog.e(this.a.this$0.jdField_a_of_type_JavaLangString, 1, "onCompositionLoaded lottieComposition is null");
       return;
-      str = this.jdField_a_of_type_Aihw.jdField_a_of_type_JavaLangString;
-    } while (str == null);
-    aiif.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d, this.jdField_a_of_type_AndroidContentContext).a(aihy.b(new Point((int)paramFloat1, (int)paramFloat2), str, paramInt2));
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    aiif.a().d(this.jdField_a_of_type_AndroidContentContext).a();
-    aihw localaihw = this.jdField_a_of_type_Aihw;
-    if (localaihw != null)
-    {
-      aihy.a(localaihw, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c(null);
-      ThreadManager.post(new StickerBubbleTouchDelegateCallbackForAIO.1(this, localaihw, paramInt2), 10, null, false);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X80091A5", "0X80091A5", localaihw.jdField_a_of_type_Int, 0, Integer.toString(paramInt2), "", "", "");
     }
+    Object localObject = paramLottieComposition.getBounds();
+    float f1 = i / ((Rect)localObject).width();
+    float f2 = j / ((Rect)localObject).height();
+    localObject = new LottieDrawable();
+    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
+    ((LottieDrawable)localObject).setScale(f1, f2);
+    ((LottieDrawable)localObject).loop(false);
+    aiim.a(this.a.this$0, (LottieDrawable)localObject);
+    aiim.a(this.a.this$0).addAnimatorListener(new aiiq(this));
+    ThreadManager.getUIHandler().post(new ConfessChatPie.3.1.2(this));
   }
-  
-  public void a(aiin paramaiin)
-  {
-    this.jdField_a_of_type_Aiin = paramaiin;
-  }
-  
-  public boolean a(float paramFloat1, float paramFloat2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetImageButton == null) {}
-    do
-    {
-      return false;
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetImageButton.getLeft() > paramFloat1) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetImageButton.getRight() < paramFloat1)) {
-        return true;
-      }
-    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetImageButton.getTop() <= paramFloat2) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetImageButton.getBottom() >= paramFloat2));
-    return true;
-  }
-  
-  public void b()
-  {
-    d();
-    if (this.jdField_a_of_type_Aiin != null) {
-      this.jdField_a_of_type_Aiin.a();
-    }
-  }
-  
-  public void c()
-  {
-    aihy.b(this, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d);
-  }
-  
-  public void d()
-  {
-    aihy.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d);
-  }
-  
-  public void e() {}
 }
 
 

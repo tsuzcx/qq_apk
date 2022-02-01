@@ -1,39 +1,37 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.SeekBar;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.qzonevip.gift.QzoneGiftUtil.1;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
 
-class bayx
-  implements View.OnTouchListener
+public class bayx
+  implements QzoneZipCacheHelperCallBack
 {
-  bayx(bayw parambayw) {}
+  public bayx(QzoneGiftUtil.1 param1) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onResult(boolean paramBoolean)
   {
-    float f1 = 0.0F;
-    paramView = new Rect();
-    this.a.a.getHitRect(paramView);
-    if ((paramMotionEvent.getY() >= paramView.top - 600) && (paramMotionEvent.getY() <= paramView.bottom + 600)) {}
-    for (int i = 1; i == 0; i = 0) {
-      return false;
-    }
-    float f3 = paramView.top + (paramView.height() >> 1);
-    float f2 = paramMotionEvent.getX() - paramView.left;
-    if (f2 < 0.0F) {}
-    for (;;)
+    if (paramBoolean)
     {
-      paramView = MotionEvent.obtain(paramMotionEvent.getDownTime(), paramMotionEvent.getEventTime(), paramMotionEvent.getAction(), f1, f3, paramMotionEvent.getMetaState());
-      boolean bool = this.a.a.onTouchEvent(paramView);
-      paramView.recycle();
-      return bool;
-      if (f2 > paramView.width()) {
-        f1 = paramView.width();
-      } else {
-        f1 = f2;
+      QzoneGiftUtil.1.a(this.a);
+      QLog.i("QzoneGiftUtil", 1, "downloadGiftZip onResult mLoadSuccessTimes = " + QzoneGiftUtil.1.c(this.a) + " mLoadFailTimes = " + QzoneGiftUtil.1.d(this.a));
+      if (this.a.jdField_a_of_type_Bayz != null)
+      {
+        if (QzoneGiftUtil.1.c(this.a) != this.a.jdField_a_of_type_Int) {
+          break label109;
+        }
+        this.a.jdField_a_of_type_Bayz.a();
       }
     }
+    label109:
+    while (QzoneGiftUtil.1.c(this.a) + QzoneGiftUtil.1.d(this.a) != this.a.jdField_a_of_type_Int)
+    {
+      return;
+      QzoneGiftUtil.1.b(this.a);
+      break;
+    }
+    this.a.jdField_a_of_type_Bayz.b();
   }
+  
+  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
 }
 
 

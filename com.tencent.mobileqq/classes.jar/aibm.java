@@ -1,20 +1,8 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 
-class aibm
-  extends BroadcastReceiver
+public abstract interface aibm
 {
-  aibm(aiay paramaiay) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (this.a.jdField_a_of_type_Axey != null) {
-      this.a.jdField_a_of_type_Axey.a(paramContext);
-    }
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
-  }
+  public abstract void a(AIOImageData paramAIOImageData, boolean paramBoolean);
 }
 
 

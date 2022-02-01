@@ -1,120 +1,172 @@
-import android.app.Activity;
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.mobileim.structmsg.structmsg.GroupInfo;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.widget.GridView;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ajds
-  implements View.OnClickListener
+  extends BaseAdapter
+  implements aoog, ocg
 {
-  public ajds(NotificationView paramNotificationView) {}
+  private alno jdField_a_of_type_Alno = new alno(paramClassificationSearchFragment.a, this, false);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ajdt(this);
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<oci> jdField_a_of_type_JavaUtilArrayList;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public ajds(ClassificationSearchFragment paramClassificationSearchFragment)
   {
-    ajdm localajdm = (ajdm)paramView.getTag();
-    Object localObject;
-    if (localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 80)
+    a(true);
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public ArrayList<oci> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Alno != null) {
+      this.jdField_a_of_type_Alno.a();
+    }
+  }
+  
+  public void a(ArrayList<oci> paramArrayList, String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment) != null)
     {
-      localObject = TroopInfoActivity.a(String.valueOf(localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get()), 5);
-      TroopInfoActivity.a(this.a.a(), (Bundle)localObject);
+      if (getCount() == 0)
+      {
+        ((TextView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131377178)).setText(anzj.a(2131700833));
+        ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).setVisibility(8);
+      }
+    }
+    else
+    {
+      if (!QLog.isColorLevel()) {
+        return;
+      }
+      paramString = new StringBuilder("onGetRecommendSuccess->isFromRecommend:" + paramBoolean + ", title:" + paramString + ", list:");
+      if (paramArrayList != null) {
+        break label271;
+      }
+      paramString.append("null");
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (bgnt.d(this.a.a())) {
+      QLog.d("ClassificationSearchFragment", 2, paramString.toString());
+      if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
+        return;
+      }
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        paramString = (oci)paramArrayList.next();
+        QLog.d("ClassificationSearchFragment", 2, "onGetRecommendSuccess->" + paramString.toString());
+      }
+      if (TextUtils.isEmpty(paramString)) {
+        ((TextView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131377178)).setText(anzj.a(2131700838));
+      }
+      for (;;)
+      {
+        ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).setVisibility(0);
+        notifyDataSetChanged();
         break;
+        ((TextView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131377178)).setText(paramString);
       }
-      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.a().getString(2131693946), 0).b(this.a.a());
+      label271:
+      paramString.append("size:").append(paramArrayList.size());
     }
-    ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).b(String.valueOf(localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get()));
-    NotificationView.a(this.a, (structmsg.StructMsg)localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get(), localajdm.c);
-    String str2 = localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_info.msg_alert.get();
-    String str3 = localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "";
-    label247:
-    int i;
-    label274:
-    String str1;
-    if (localajdm.b < this.a.jdField_a_of_type_Ajdk.jdField_a_of_type_Int)
-    {
-      localObject = "1";
-      i = localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_inviter_role.get();
-      if ((i != 2) && (i != 3)) {
-        break label431;
-      }
-      i = 0;
-      if (i == 0) {
-        break label436;
-      }
-      str1 = "0";
-      label282:
-      if ((str2 != null) && (!"".equals(str2))) {
-        break label768;
-      }
-      if (localajdm.jdField_a_of_type_Int != 82) {
-        break label443;
-      }
-      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "oper", "focus_notice", 0, 0, "", "", "", localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
-      NotificationView.a(this.a, localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get(), (structmsg.StructMsg)localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    oce.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment.a, paramBoolean, this);
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
     }
-    label768:
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return null;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment.getActivity()).inflate(2131559637, null);
+    }
     for (;;)
     {
-      NotificationView.c(this.a);
-      this.a.jdField_a_of_type_Biau.c(2131717771);
-      this.a.jdField_a_of_type_Biau.show();
-      break;
-      localObject = "0";
-      break label247;
-      label431:
-      i = 1;
-      break label274;
-      label436:
-      str1 = "1";
-      break label282;
-      label443:
-      if (localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 2)
+      oci localoci = (oci)getItem(paramInt);
+      if (localoci != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("NotificationView", 2, "doCheckPayTroopReq start: " + str3);
+        if (this.jdField_a_of_type_Alno != null)
+        {
+          Drawable localDrawable = this.jdField_a_of_type_Alno.a(1008, localoci.jdField_a_of_type_JavaLangString);
+          ((URLImageView)paramView.findViewById(2131367895)).setImageDrawable(localDrawable);
         }
-        TroopRequestActivity.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str3, localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.a.jdField_a_of_type_Ajer);
-        bgjt.a("Grp_contacts_news", "notice", "agree_invite", 0, 0, new String[] { str3, localObject, str1, "1" });
+        ((TextView)paramView.findViewById(2131371647)).setText(localoci.b);
+        paramView.findViewById(2131365008).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        paramView.findViewById(2131365008).setTag(localoci);
+        paramView.setTag(localoci);
       }
-      else
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if ((ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment) == null) || (TextUtils.isEmpty(paramString))) {}
+    for (;;)
+    {
+      return;
+      if (((paramBitmap != null) || (paramInt1 <= 0)) && (paramBitmap != null))
       {
-        NotificationView.a(this.a, 1, (structmsg.StructMsg)localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
-        if ((localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.has()) && (localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.req_uin_nick.has())) {
-          ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a(str3, localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "", localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.req_uin_nick.get());
-        }
-        if (localajdm.jdField_a_of_type_Int == 1)
+        GridView localGridView = (GridView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131377174);
+        paramInt2 = localGridView.getChildCount();
+        paramInt1 = 0;
+        while (paramInt1 < paramInt2)
         {
-          bgjt.a("Grp_contacts_news", "notice", "agree_ask", 0, 0, new String[] { str3, localObject, str1, "1" });
-        }
-        else if (localajdm.jdField_a_of_type_Int == 2)
-        {
-          bgjt.a("Grp_contacts_news", "notice", "agree_invite", 0, 0, new String[] { str3, localObject, str1, "1" });
-          continue;
-          NotificationView.a(this.a, 0, (structmsg.StructMsg)localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
-          if (localajdm.jdField_a_of_type_Int == 1) {
-            bgjt.a("Grp_contacts_news", "notice", "refuse_ask", 0, 0, new String[] { str3, localObject, str1, "1" });
-          } else if (localajdm.jdField_a_of_type_Int == 2) {
-            bgjt.a("Grp_contacts_news", "notice", "refuse_invite", 0, 0, new String[] { str3, localObject, str1, "1" });
+          View localView = localGridView.getChildAt(paramInt1);
+          if (paramString.equals(((oci)localView.getTag()).jdField_a_of_type_JavaLangString)) {
+            ((URLImageView)localView.findViewById(2131367895)).setImageBitmap(paramBitmap);
           }
+          paramInt1 += 1;
         }
       }
     }

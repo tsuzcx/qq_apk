@@ -1,20 +1,20 @@
 package com.tencent.qidian.controller;
 
-import bjhd;
+import bkid;
 import com.tencent.qidian.data.PubAccountNavigationMenu;
 
 public class QidianPubAccountBigDataHandler$3
   implements Runnable
 {
-  public QidianPubAccountBigDataHandler$3(bjhd parambjhd, PubAccountNavigationMenu paramPubAccountNavigationMenu) {}
+  public QidianPubAccountBigDataHandler$3(bkid parambkid, PubAccountNavigationMenu paramPubAccountNavigationMenu) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 14	com/tencent/qidian/controller/QidianPubAccountBigDataHandler$3:this$0	Lbjhd;
-    //   4: getfield 29	bjhd:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1: getfield 14	com/tencent/qidian/controller/QidianPubAccountBigDataHandler$3:this$0	Lbkid;
+    //   4: getfield 29	bkid:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   7: invokevirtual 34	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/data/QQEntityManagerFactory;
     //   10: invokevirtual 40	com/tencent/mobileqq/data/QQEntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   13: astore_1

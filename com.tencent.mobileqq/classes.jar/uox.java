@@ -1,14 +1,13 @@
-final class uox
-  implements bkhy
+import NS_KING_INTERFACE.stPostFeedDingReq;
+import NS_KING_INTERFACE.stPostFeedDingRsp;
+
+public class uox
+  extends ukl<stPostFeedDingRsp>
 {
-  uox(bkhy parambkhy) {}
-  
-  public void onDismiss()
+  public uox(String paramString, int paramInt)
   {
-    upe.b("WSFeedUtils", "onDismiss entered");
-    if (this.a != null) {
-      this.a.onDismiss();
-    }
+    super("PostFeedDing");
+    this.a = new stPostFeedDingReq(paramString, null, paramInt);
   }
 }
 

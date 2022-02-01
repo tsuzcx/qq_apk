@@ -1,37 +1,43 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import java.util.ArrayList;
 
 class rty
-  implements bcfg
+  extends sbh
 {
-  rty(rtv paramrtv) {}
+  rty(rsx paramrsx) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", "onConfigResult result=" + paramInt1 + ", serverError=" + paramInt2, null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
-    {
-      if (paramInt2 != 0)
-      {
-        VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", anni.a(2131706385) + paramInt2 + "]", null);
-        bceg.a(1, paramInt2);
-        return;
-      }
-      ArrayList localArrayList = new ArrayList(1);
-      paramInt1 = ShortVideoResourceManager.a(rtv.a(this.a), localArrayList);
-      if (paramInt1 == 0)
-      {
-        VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", anni.a(2131706382), null);
-        ShortVideoResourceManager.a(rtv.a(this.a), localArrayList, this.a.a);
-        return;
-      }
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", anni.a(2131706383) + paramInt1 + "]", null);
-      bceg.a(1, paramInt1);
-      return;
+    rsx.a(this.a).b(rsx.b(this.a));
+    paramActionSheetItem = new Bundle();
+    paramActionSheetItem.putString("title", paramVideoInfo.c);
+    paramActionSheetItem.putString("desc", paramVideoInfo.d);
+    if ((paramVideoInfo.n != null) && (paramVideoInfo.n.contains("kandianshare.html5.qq.com"))) {
+      paramActionSheetItem.putString("detail_url", paramVideoInfo.n);
     }
-    VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", anni.a(2131706376) + paramInt2 + "]", null);
-    bceg.a(1, paramInt2);
+    for (;;)
+    {
+      paramString = new ArrayList(1);
+      paramString.add(paramVideoInfo.b);
+      paramActionSheetItem.putStringArrayList("image_url", paramString);
+      paramActionSheetItem.putLong("req_share_id", 0L);
+      bmud.a(rsx.a(this.a), rsx.a(this.a), paramActionSheetItem, null, 10001);
+      return;
+      paramActionSheetItem.putString("detail_url", paramString + "&sourcefrom=1");
+    }
+  }
+  
+  public int b()
+  {
+    return 1;
+  }
+  
+  public int c()
+  {
+    return 2;
   }
 }
 

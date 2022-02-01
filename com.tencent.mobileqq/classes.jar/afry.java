@@ -1,12 +1,21 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class afry
+  extends aocj
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public afry(TroopAssistantActivity paramTroopAssistantActivity) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    this.a.c();
+  }
+  
+  protected void b()
+  {
+    this.a.c();
+  }
 }
 
 

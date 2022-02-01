@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount;
 
-import aaum;
+import aayp;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -14,9 +14,9 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import androidx.annotation.RequiresApi;
-import bgtn;
-import bkho;
-import bkif;
+import bhtq;
+import blir;
+import blji;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mp.mobileqq_mp.ButtonInfo;
@@ -29,10 +29,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import nzz;
-import oaq;
-import oar;
-import oas;
+import nqw;
+import nqx;
+import obj;
+import oca;
+import ocb;
+import occ;
 
 public class PublicAccountMenuBar
   extends LinearLayout
@@ -68,18 +70,18 @@ public class PublicAccountMenuBar
     a(paramContext);
   }
   
-  private CharSequence a(aaum paramaaum)
+  private CharSequence a(aayp paramaayp)
   {
-    if (paramaaum == null) {
+    if (paramaayp == null) {
       return "";
     }
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841608);
-    paramaaum = new SpannableStringBuilder("[]" + paramaaum.b());
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841618);
+    paramaayp = new SpannableStringBuilder("[]" + paramaayp.b());
     ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
     localObject = new VerticalCenterImageSpan((Drawable)localObject, 0);
-    ((VerticalCenterImageSpan)localObject).setPadding(bgtn.a(4.0F), bgtn.a(4.0F));
-    paramaaum.setSpan(localObject, 0, "[]".length(), 18);
-    return paramaaum;
+    ((VerticalCenterImageSpan)localObject).setPadding(bhtq.a(4.0F), bhtq.a(4.0F));
+    paramaayp.setSpan(localObject, 0, "[]".length(), 18);
+    return paramaayp;
   }
   
   private List<mobileqq_mp.ButtonInfo> a(List<mobileqq_mp.ButtonInfo> paramList)
@@ -116,27 +118,32 @@ public class PublicAccountMenuBar
     return localArrayList;
   }
   
-  private void a(aaum paramaaum)
+  private void a(aayp paramaayp)
   {
-    if (paramaaum != null) {}
+    if (paramaayp != null) {}
     try
     {
-      String str = paramaaum.c();
-      int i = paramaaum.a();
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_MqqOsMqqHandler != null)) {
-        nzz.a().a(str, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, i, null, this.jdField_a_of_type_MqqOsMqqHandler, 2, new SessionInfo());
+      String str = paramaayp.c();
+      int i = paramaayp.a();
+      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_MqqOsMqqHandler != null))
+      {
+        obj.a().a(str, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, i, null, this.jdField_a_of_type_MqqOsMqqHandler, 2, new SessionInfo());
+        paramaayp = obj.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, i);
+        if (paramaayp != null) {
+          nqw.a.d(this.jdField_a_of_type_JavaLangString, paramaayp.id.get(), paramaayp.name.get());
+        }
       }
       return;
     }
-    catch (Exception paramaaum)
+    catch (Exception paramaayp)
     {
-      paramaaum.printStackTrace();
+      paramaayp.printStackTrace();
     }
   }
   
-  private void a(aaum paramaaum, mobileqq_mp.ButtonInfo paramButtonInfo, boolean paramBoolean)
+  private void a(aayp paramaayp, mobileqq_mp.ButtonInfo paramButtonInfo, boolean paramBoolean)
   {
-    if (paramaaum == null) {
+    if (paramaayp == null) {
       return;
     }
     RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
@@ -145,7 +152,7 @@ public class PublicAccountMenuBar
     Object localObject = new TextView(this.jdField_a_of_type_AndroidContentContext);
     boolean bool = paramButtonInfo.sub_button.has();
     if (bool) {
-      ((TextView)localObject).setText(a(paramaaum));
+      ((TextView)localObject).setText(a(paramaayp));
     }
     for (;;)
     {
@@ -157,16 +164,17 @@ public class PublicAccountMenuBar
       if (!paramBoolean)
       {
         localObject = new View(this.jdField_a_of_type_AndroidContentContext);
-        ((View)localObject).setBackgroundResource(2130849692);
-        localLayoutParams1 = new RelativeLayout.LayoutParams(bgtn.a(0.5F), bgtn.a(25.0F));
+        ((View)localObject).setBackgroundResource(2130849703);
+        localLayoutParams1 = new RelativeLayout.LayoutParams(bhtq.a(0.5F), bhtq.a(25.0F));
         localLayoutParams1.addRule(11, -1);
         localLayoutParams1.addRule(15, -1);
         localRelativeLayout.addView((View)localObject, localLayoutParams1);
       }
-      localRelativeLayout.setOnClickListener(new oaq(this, bool, paramButtonInfo, paramaaum));
+      localRelativeLayout.setOnClickListener(new oca(this, bool, paramButtonInfo, paramaayp));
+      AccountDetailActivity.a(localRelativeLayout, "gzh_ele_enter_subprofile", this.jdField_a_of_type_JavaLangString);
       addView(localRelativeLayout, localLayoutParams);
       return;
-      ((TextView)localObject).setText(paramaaum.b());
+      ((TextView)localObject).setText(paramaayp.b());
     }
   }
   
@@ -204,8 +212,8 @@ public class PublicAccountMenuBar
           break label250;
         }
         i = paramButtonInfo.id.get();
-        localObject2 = new aaum((String)localObject1, (String)localObject2, null, i);
-        ((aaum)localObject2).a(paramButtonInfo);
+        localObject2 = new aayp((String)localObject1, (String)localObject2, null, i);
+        ((aayp)localObject2).a(paramButtonInfo);
         if (!paramButtonInfo.sub_button.has()) {
           break label255;
         }
@@ -235,9 +243,9 @@ public class PublicAccountMenuBar
       }
       for (int i = ((mobileqq_mp.ButtonInfo)localObject4).id.get();; i = 0)
       {
-        paramButtonInfo = new aaum(paramButtonInfo, (String)localObject1, null, i);
+        paramButtonInfo = new aayp(paramButtonInfo, (String)localObject1, null, i);
         paramButtonInfo.a((mobileqq_mp.ButtonInfo)localObject4);
-        ((aaum)localObject2).a(paramButtonInfo);
+        ((aayp)localObject2).a(paramButtonInfo);
         break label119;
         localObject1 = "";
         break;
@@ -252,33 +260,33 @@ public class PublicAccountMenuBar
         localObject1 = "";
         break label190;
       }
-      paramButtonInfo = ((aaum)localObject2).a();
+      paramButtonInfo = ((aayp)localObject2).a();
     } while ((paramButtonInfo == null) || (paramButtonInfo.size() <= 0));
     label260:
     label266:
     label272:
     label277:
-    Object localObject1 = (bkho)bkif.a(this.jdField_a_of_type_AndroidContentContext, null);
-    ((bkho)localObject1).b(true);
-    ((bkho)localObject1).a(((aaum)localObject2).b(), 11);
+    Object localObject1 = (blir)blji.a(this.jdField_a_of_type_AndroidContentContext, null);
+    ((blir)localObject1).b(true);
+    ((blir)localObject1).a(((aayp)localObject2).b(), 11);
     Object localObject2 = paramButtonInfo.iterator();
     while (((Iterator)localObject2).hasNext())
     {
-      localObject3 = (aaum)((Iterator)localObject2).next();
+      localObject3 = (aayp)((Iterator)localObject2).next();
       if (localObject3 != null)
       {
-        localObject4 = ((aaum)localObject3).a();
+        localObject4 = ((aayp)localObject3).a();
         if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-          ((bkho)localObject1).a(((aaum)localObject3).b(), (String)localObject4);
+          ((blir)localObject1).a(((aayp)localObject3).b(), (String)localObject4);
         } else {
-          ((bkho)localObject1).c(((aaum)localObject3).b());
+          ((blir)localObject1).c(((aayp)localObject3).b());
         }
       }
     }
-    ((bkho)localObject1).c(2131690582);
-    ((bkho)localObject1).a(new oar(this, paramButtonInfo, (bkho)localObject1));
-    ((bkho)localObject1).setOnDismissListener(new oas(this));
-    ((bkho)localObject1).show();
+    ((blir)localObject1).c(2131690580);
+    ((blir)localObject1).a(new ocb(this, paramButtonInfo, (blir)localObject1));
+    ((blir)localObject1).setOnDismissListener(new occ(this));
+    ((blir)localObject1).show();
   }
   
   private boolean a(mobileqq_mp.ButtonInfo paramButtonInfo)
@@ -336,31 +344,32 @@ public class PublicAccountMenuBar
     {
       localButtonInfo = (mobileqq_mp.ButtonInfo)localList.get(i);
       if (!localButtonInfo.key.has()) {
-        break label169;
+        break label195;
       }
       paramList = localButtonInfo.key.get();
       if (!localButtonInfo.name.has()) {
-        break label175;
+        break label201;
       }
       str = localButtonInfo.name.get();
       if (!localButtonInfo.id.has()) {
-        break label182;
+        break label208;
       }
       j = localButtonInfo.id.get();
       label123:
-      paramList = new aaum(paramList, str, null, j);
+      paramList = new aayp(paramList, str, null, j);
       paramList.a(localButtonInfo);
       if (i != k - 1) {
-        break label187;
+        break label213;
       }
     }
-    label169:
-    label175:
-    label182:
-    label187:
+    label195:
+    label201:
+    label208:
+    label213:
     for (boolean bool = true;; bool = false)
     {
       a(paramList, localButtonInfo, bool);
+      nqw.a.c(this.jdField_a_of_type_JavaLangString, localButtonInfo.id.get(), localButtonInfo.name.get());
       i += 1;
       break label43;
       break;

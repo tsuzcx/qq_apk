@@ -1,60 +1,58 @@
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class wuz
-  extends wva
 {
-  public wuz(ViewGroup paramViewGroup)
+  public final int a;
+  public final int b;
+  public final int c;
+  
+  public wuz(int paramInt1, int paramInt2)
   {
-    super(paramViewGroup, 2131561744);
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = 1;
   }
   
-  private void c(wrs paramwrs)
+  public wuz(int paramInt1, int paramInt2, int paramInt3)
   {
-    paramwrs.d = false;
-    wsl.a(QQStoryContext.a()).a(paramwrs);
-    wta localwta = new wta();
-    localwta.jdField_b_of_type_JavaLangString = paramwrs.jdField_a_of_type_JavaLangString;
-    localwta.c = paramwrs.jdField_a_of_type_Int;
-    localwta.d = 4;
-    localwta.jdField_b_of_type_Long = paramwrs.e;
-    wlb.a().a(localwta, null);
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
   
-  public void a(wrs paramwrs)
+  public static wuz a(SosoInterface.SosoLocation paramSosoLocation)
   {
-    super.a(paramwrs);
-    if (!TextUtils.isEmpty(paramwrs.g)) {
-      c(paramwrs.g);
+    if (paramSosoLocation != null) {
+      return new wuz((int)(paramSosoLocation.a * 1000000.0D), (int)(paramSosoLocation.b * 1000000.0D));
     }
-    if (!TextUtils.isEmpty(paramwrs.j))
+    return new wuz(0, 0);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      localStoryMsgNodeFrameLayout = this.a;
-      if (TextUtils.isEmpty(paramwrs.c)) {}
-      for (str = anni.a(2131705729);; str = paramwrs.c)
-      {
-        localStoryMsgNodeFrameLayout.setNodeName(str, paramwrs.j);
-        if (paramwrs.d) {
-          c(paramwrs);
-        }
-        return;
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-    }
-    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout = this.a;
-    if (TextUtils.isEmpty(paramwrs.c)) {}
-    for (String str = anni.a(2131705728);; str = paramwrs.c)
-    {
-      localStoryMsgNodeFrameLayout.setNodeName(str, 0);
-      break;
-    }
+      paramObject = (wuz)paramObject;
+      if (this.a != paramObject.a) {
+        return false;
+      }
+    } while (this.b == paramObject.b);
+    return false;
   }
   
-  protected void b(wrs paramwrs)
+  public int hashCode()
   {
-    this.a.setDisplayState(6);
-    this.a.a(paramwrs);
+    return this.a * 31 + this.b;
+  }
+  
+  public String toString()
+  {
+    return "GpsMsg{latitude=" + this.a + ", longitude=" + this.b + '}';
   }
 }
 

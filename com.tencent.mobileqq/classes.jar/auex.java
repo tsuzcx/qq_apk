@@ -1,166 +1,68 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QFlutterAppData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.UUID;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class auex
-  extends arnz
+  implements aqrn
 {
-  private boolean d;
+  private bftf jdField_a_of_type_Bftf;
+  private String jdField_a_of_type_JavaLangString;
   
-  public auex(QQAppInterface paramQQAppInterface)
+  public auex(long paramLong, bftf parambftf)
   {
-    super("qq.android.flutter.app.v8.3.9", paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangString = (paramLong + "");
+    this.jdField_a_of_type_Bftf = parambftf;
   }
   
-  public static String e()
+  private String a()
   {
-    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject == null)
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QFlutter.QFlutterAppDownloader", 2, "getFilesDir is null");
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("file_color_note_peerType", 1);
+      localJSONObject.put("file_color_note_peerUin", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("file_color_note_fileName", this.jdField_a_of_type_Bftf.g);
+      localJSONObject.put("file_color_note_fileSize", this.jdField_a_of_type_Bftf.c);
+      if (this.jdField_a_of_type_Bftf.a != null) {
+        localJSONObject.put("file_color_note_file_uuid", this.jdField_a_of_type_Bftf.a.toString());
       }
-      localObject = "";
-    }
-    String str;
-    do
-    {
-      return localObject;
-      str = localObject + "/pddata/prd/" + "qq.android.flutter.app.v8.3.9";
-      localObject = str;
-    } while (!QLog.isColorLevel());
-    QLog.i("QFlutter.QFlutterAppDownloader", 2, "getLibDir ,path = " + str);
-    return str;
-  }
-  
-  public int a()
-  {
-    return 10093;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return QFlutterAppData.class;
-  }
-  
-  public String a()
-  {
-    return QFlutterAppData.class.getSimpleName();
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, "restoreState");
-    }
-    a().loadState = 0;
-    a().Version = 0;
-    arnn.a(a(), new String[0]);
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    super.a(paramLong1, paramLong2);
-    int i = (int)(100L * paramLong1 / paramLong2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, "download progress: " + i);
-    }
-    auez.a(1, paramLong1, paramLong2);
-  }
-  
-  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
-  {
-    super.a(paramXmlData, paramBoolean, paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("onDownloadFinish, result: %s, errCode: %s, filepath: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString }));
-    }
-    if (!paramBoolean) {
-      auez.a(1, false);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, "download success: " + paramString);
-    }
-    if (auez.a(paramString, (QFlutterAppData)a())) {
-      auez.a(1, true);
-    }
-    for (;;)
-    {
-      super.a(paramString);
-      return;
-      a();
-      auez.a(1, false);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("restartDownload userClick: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    super.a(paramBoolean);
-    if (!this.d) {
-      this.d = paramBoolean;
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return "prd";
-  }
-  
-  public void b(XmlData paramXmlData)
-  {
-    super.b(paramXmlData);
-    if (paramXmlData != null) {}
-    for (long l = paramXmlData.totalSize;; l = 0L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QFlutter.QFlutterAppDownloader", 2, new Object[] { "download begin, totalLen: %s", Long.valueOf(l) });
+      for (;;)
+      {
+        localJSONObject.put("file_color_note_file_url", this.jdField_a_of_type_Bftf.e);
+        localJSONObject.put("file_color_note_busId", this.jdField_a_of_type_Bftf.h);
+        return localJSONObject.toString();
+        localJSONObject.put("file_color_note_file_uuid", "");
       }
-      return;
+      return "";
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
     }
   }
   
-  public boolean b()
+  public ColorNote getColorNote()
   {
+    if (this.jdField_a_of_type_Bftf != null) {}
+    aqrv localaqrv = new aqrv();
+    localaqrv.a(17039360);
+    String str = auoo.b(2, this.jdField_a_of_type_Bftf.e);
     if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("isNetValid2Download mHadRequestedByUser: %s", new Object[] { Boolean.valueOf(this.d) }));
+      QLog.i("TroopFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
     }
-    if (this.d) {
-      return true;
+    localaqrv.a(str);
+    localaqrv.b(this.jdField_a_of_type_Bftf.g);
+    localaqrv.c(auog.a(this.jdField_a_of_type_Bftf.c));
+    int i = aunj.a(aunj.a(this.jdField_a_of_type_Bftf.g));
+    localaqrv.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localaqrv.a(str.getBytes());
     }
-    return super.b();
-  }
-  
-  public void c()
-  {
-    String str = e();
-    boolean bool = atwl.a(new File(str));
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("delete unzipFile: %s, ret: %s", new Object[] { str, Boolean.valueOf(bool) }));
-    }
-  }
-  
-  public boolean e()
-  {
-    QLog.d("QFlutter.QFlutterAppDownloader", 1, String.format("downloadResource, mHadRequestedByUser = %s", new Object[] { Boolean.valueOf(this.d) }));
-    if (!this.d) {
-      return false;
-    }
-    return super.e();
+    return localaqrv.a();
   }
 }
 

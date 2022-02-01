@@ -1,16 +1,25 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class afva
-  implements afvp
+public class afva
+  implements View.OnClickListener
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  public afva(TroopMemberListActivity paramTroopMemberListActivity, int paramInt1, int paramInt2) {}
+  
+  public void onClick(View paramView)
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 74);
-    paramQQAppInterface.h = paramSessionInfo.d;
-    return paramQQAppInterface;
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, TroopMemberListActivity.class);
+    localIntent.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b);
+    localIntent.putExtra("param_from", 15);
+    localIntent.putExtra("param_seq_days", TroopMemberListActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
+    localIntent.putExtra("param_seq_name", TroopMemberListActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
+    localIntent.putExtra("TROOP_INFO_MEMBER_NUM", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.startActivityForResult(localIntent, 4);
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "dc00899", "Grp_mber", "", "mber_list", "clk_inacentry", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, "" + this.b, "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

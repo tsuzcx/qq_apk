@@ -3,24 +3,24 @@ package com.tencent.av.ui;
 import android.os.Handler;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import mdz;
-import mkf;
-import mue;
+import mev;
+import mlb;
+import mvd;
 
 public class MultiIncomingCallUICtr$5
   implements Runnable
 {
-  public MultiIncomingCallUICtr$5(mdz parammdz) {}
+  public MultiIncomingCallUICtr$5(mev parammev) {}
   
   public void run()
   {
-    String str = mue.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a());
-    if (this.this$0.jdField_a_of_type_Mkf != null)
+    String str = mvd.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a());
+    if (this.this$0.jdField_a_of_type_Mlb != null)
     {
-      this.this$0.jdField_a_of_type_Mkf.a(str);
+      this.this$0.jdField_a_of_type_Mlb.a(str);
       if (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a() % 60L >= 1L)
       {
-        this.this$0.jdField_a_of_type_Mkf.a();
+        this.this$0.jdField_a_of_type_Mlb.a();
         this.this$0.a();
       }
     }

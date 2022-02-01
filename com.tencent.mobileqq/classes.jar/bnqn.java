@@ -1,11 +1,18 @@
-class bnqn
-  implements bnsd
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.widget.RedTouchExtendButton.RedInfo;
+
+public final class bnqn
+  implements Parcelable.Creator<RedTouchExtendButton.RedInfo>
 {
-  bnqn(bnqm parambnqm) {}
-  
-  public void a(bnpk parambnpk)
+  public RedTouchExtendButton.RedInfo a(Parcel paramParcel)
   {
-    bnqm.a(this.a, parambnpk);
+    return new RedTouchExtendButton.RedInfo(paramParcel);
+  }
+  
+  public RedTouchExtendButton.RedInfo[] a(int paramInt)
+  {
+    return new RedTouchExtendButton.RedInfo[paramInt];
   }
 }
 

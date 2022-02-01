@@ -1,20 +1,41 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfgh
-  extends BroadcastReceiver
+  extends AsyncTask<Void, Void, String>
 {
-  public bfgh(HWReciteItem paramHWReciteItem) {}
+  public bfgh(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected String a(Void... paramVarArgs)
   {
-    if (("com.tnecnet.mobileqq.homework.recite.stopAudio".equals(paramIntent.getAction())) && (HWReciteItem.a(this.a)) && (this.a.a != null) && (this.a.a.a != null))
+    try
     {
-      this.a.b();
-      this.a.a.a.a();
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null)
+      {
+        bhmq.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramVarArgs);
+        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131694371) + " " + paramVarArgs;
+      }
     }
+    catch (Exception paramVarArgs)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PhotoPreviewActivity", 2, QLog.getStackTraceString(paramVarArgs));
+        }
+        paramVarArgs = null;
+      }
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131694369);
+  }
+  
+  protected void a(String paramString)
+  {
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
   }
 }
 

@@ -1,31 +1,19 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class aigs
-  extends auwq
 {
-  public aigs(TroopChatPie paramTroopChatPie) {}
+  public String a;
   
-  protected void a()
+  public aigs(String paramString)
   {
-    if (((auwj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      TroopChatPie.c(this.a).a(this.a.jdField_a_of_type_Ailk, new Object[0]);
-    }
+    this.a = paramString;
   }
   
-  protected void b()
-  {
-    if (((auwj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_Ailk.a();
-    }
-  }
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
-  protected void c()
+  public boolean a()
   {
-    if ((((auwj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (TroopChatPie.d(this.a).a() == 14)) {
-      TroopChatPie.e(this.a).a();
-    }
+    return false;
   }
 }
 

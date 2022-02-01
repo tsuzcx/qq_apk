@@ -1,21 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
-public class aeqn
-  implements DialogInterface.OnClickListener
+class aeqn
+  implements bliz
 {
-  public aeqn(NotificationActivity paramNotificationActivity) {}
+  aeqn(aeqm paramaeqm, aeqz paramaeqz, blir paramblir) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    bcst.a(this.a.app, "dc00898", "", "", "0X800AA16", "0X800AA16", 0, 0, "", "", NotificationActivity.b(this.a), "");
-    this.a.finish();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      this.jdField_a_of_type_Aeqm.a.b(this.jdField_a_of_type_Aeqz);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqn
  * JD-Core Version:    0.7.0.1
  */

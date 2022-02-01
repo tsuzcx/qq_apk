@@ -1,51 +1,43 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
-import java.util.List;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bjgu
-  extends Handler
+  implements AdapterView.OnItemClickListener
 {
-  public bjgu(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public bjgu(ShareActionSheetV2 paramShareActionSheetV2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramMessage.what)
+    Object localObject = paramView.getTag();
+    if (!(localObject instanceof bhsc))
     {
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+    }
+    localObject = ((bhsc)localObject).a;
+    if (ShareActionSheetV2.a(this.a) != null) {
+      ShareActionSheetV2.a(this.a).onItemClick((ShareActionSheetBuilder.ActionSheetItem)localObject, this.a);
+    }
+    ShareActionSheetV2 localShareActionSheetV2 = this.a;
+    int i;
+    if (paramAdapterView == this.a.a) {
+      i = 0;
     }
     for (;;)
     {
-      super.handleMessage(paramMessage);
-      return;
-      try
-      {
-        BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.a.getResources(), this.a.jdField_a_of_type_AndroidGraphicsBitmap);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localBitmapDrawable);
-      }
-      catch (Exception localException) {}
-      continue;
-      Object localObject = (QidianProfileCardActivity.QidianSimpleProfileItem)paramMessage.getData().getParcelable("data");
-      localObject = this.a.a((QidianProfileCardActivity.QidianSimpleProfileItem)localObject);
-      if (localObject != null)
-      {
-        this.a.b.addView((View)localObject);
-        continue;
-        localObject = paramMessage.getData().getParcelableArrayList("data");
-        localObject = this.a.a((List)localObject);
-        if (localObject != null)
-        {
-          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-          localLayoutParams.leftMargin = this.a.d;
-          ((View)localObject).setPadding(0, this.a.e, this.a.d, this.a.e);
-          this.a.b.addView((View)localObject, localLayoutParams);
-        }
+      ShareActionSheetV2.a(localShareActionSheetV2, (ShareActionSheetBuilder.ActionSheetItem)localObject, i);
+      break;
+      if (paramAdapterView == this.a.b) {
+        i = 1;
+      } else if (paramAdapterView == this.a.c) {
+        i = 2;
+      } else {
+        i = -1;
       }
     }
   }

@@ -1,22 +1,24 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
-
-public class bofk
-  implements View.OnTouchListener
+class bofk
+  implements boja
 {
-  public bofk(AEEditorVideoEditFragment paramAEEditorVideoEditFragment, GestureDetector paramGestureDetector) {}
+  bofk(bofh parambofh) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-      AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment).toggleAEKit(true);
+    if (paramBoolean)
+    {
+      if (bofh.d(this.a)) {
+        bbgb.a(paramInt);
+      }
+      if (bofh.a(this.a)) {
+        bofh.f(this.a);
+      }
     }
-    return false;
+    else
+    {
+      return;
+    }
+    bofh.b(this.a, false);
   }
 }
 

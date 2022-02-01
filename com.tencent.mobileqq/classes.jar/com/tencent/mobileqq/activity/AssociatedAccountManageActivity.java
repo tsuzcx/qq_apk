@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adnb;
-import adnc;
-import adnd;
-import adne;
-import adnf;
-import adng;
-import adnh;
-import adni;
-import adnj;
-import adnk;
-import adnl;
+import adwc;
+import adwd;
+import adwe;
+import adwf;
+import adwg;
+import adwh;
+import adwi;
+import adwj;
+import adwk;
+import adwl;
+import adwm;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -37,21 +37,21 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import anip;
-import aniz;
-import anmu;
-import anvp;
-import aoch;
-import axdm;
-import bddy;
-import bdee;
-import bdeh;
-import bglf;
-import bgmk;
-import bgnt;
-import biau;
-import bkho;
-import bkif;
+import anum;
+import anuw;
+import anyu;
+import aoib;
+import aoot;
+import axwf;
+import bdwt;
+import bdwz;
+import bdxc;
+import bhlg;
+import bhmm;
+import bhnv;
+import bjbs;
+import blir;
+import blji;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -78,28 +78,28 @@ public class AssociatedAccountManageActivity
   extends SubAccountBaseActivity
   implements CompoundButton.OnCheckedChangeListener
 {
-  private adnj jdField_a_of_type_Adnj = new adnj(this);
-  private adnl jdField_a_of_type_Adnl = new adnl(this);
+  private adwk jdField_a_of_type_Adwk = new adwk(this);
+  private adwm jdField_a_of_type_Adwm = new adwm(this);
   Dialog jdField_a_of_type_AndroidAppDialog;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adne(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adwf(this);
   public View a;
   public LinearLayout a;
   private Toast jdField_a_of_type_AndroidWidgetToast;
-  private aniz jdField_a_of_type_Aniz = new adnc(this);
-  anmu jdField_a_of_type_Anmu = new adnh(this);
-  private anvp jdField_a_of_type_Anvp = new adni(this);
-  private biau jdField_a_of_type_Biau;
-  public bkho a;
+  private anuw jdField_a_of_type_Anuw = new adwd(this);
+  anyu jdField_a_of_type_Anyu = new adwi(this);
+  private aoib jdField_a_of_type_Aoib = new adwj(this);
+  private bjbs jdField_a_of_type_Bjbs;
+  public blir a;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private RotateSwitchImageView jdField_a_of_type_ComTencentMobileqqWidgetRotateSwitchImageView;
   private String jdField_a_of_type_JavaLangString;
   public List<SimpleAccount> a;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new adnb(this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new adwc(this);
   public boolean a;
   private View.OnClickListener b;
   public View b;
   public LinearLayout b;
-  public bkho b;
+  public blir b;
   public List<SubAccountInfo> b;
   public boolean b;
   private View.OnClickListener c;
@@ -108,17 +108,17 @@ public class AssociatedAccountManageActivity
   public AssociatedAccountManageActivity()
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new adnf(this);
-    this.jdField_c_of_type_AndroidViewView$OnClickListener = new adng(this);
-    this.jdField_a_of_type_Bkho = null;
-    this.jdField_b_of_type_Bkho = null;
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new adwg(this);
+    this.jdField_c_of_type_AndroidViewView$OnClickListener = new adwh(this);
+    this.jdField_a_of_type_Blir = null;
+    this.jdField_b_of_type_Blir = null;
   }
   
   private View a(View paramView)
   {
     paramView = (View)paramView.getParent();
     if (paramView != null) {
-      return paramView.findViewById(2131377341);
+      return paramView.findViewById(2131377481);
     }
     return null;
   }
@@ -168,12 +168,12 @@ public class AssociatedAccountManageActivity
   
   private void a(String paramString, boolean paramBoolean)
   {
-    ((AccountManager)getAppRuntime().getManager(0)).deleteAccount(this.jdField_a_of_type_JavaLangString, this.app.b(this.jdField_a_of_type_JavaLangString), new adnk(this, paramString, paramBoolean));
+    ((AccountManager)getAppRuntime().getManager(0)).deleteAccount(this.jdField_a_of_type_JavaLangString, this.app.b(this.jdField_a_of_type_JavaLangString), new adwl(this, paramString, paramBoolean));
     if (QLog.isColorLevel()) {
       QLog.d("AssociatedAccountManage", 2, "am.deleteAccount " + this.jdField_a_of_type_JavaLangString);
     }
     if (paramBoolean) {
-      axdm.a(paramString);
+      axwf.a(paramString);
     }
   }
   
@@ -188,7 +188,7 @@ public class AssociatedAccountManageActivity
   {
     paramView = (View)paramView.getParent();
     if (paramView != null) {
-      return paramView.findViewById(2131371539);
+      return paramView.findViewById(2131371647);
     }
     return null;
   }
@@ -208,8 +208,8 @@ public class AssociatedAccountManageActivity
     if (this.jdField_b_of_type_JavaUtilList == null)
     {
       this.jdField_b_of_type_JavaUtilList = new ArrayList();
-      localObject = (bdeh)this.app.getManager(61);
-      this.jdField_b_of_type_JavaUtilList.addAll(((bdeh)localObject).b());
+      localObject = (bdxc)this.app.getManager(61);
+      this.jdField_b_of_type_JavaUtilList.addAll(((bdxc)localObject).b());
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder().append("initSubAccountList subaccountList=").append(this.jdField_b_of_type_JavaUtilList).append(", size=");
@@ -251,10 +251,10 @@ public class AssociatedAccountManageActivity
       {
         i += 1;
         break;
-        View localView = getLayoutInflater().inflate(2131562924, this.jdField_b_of_type_AndroidWidgetLinearLayout, false);
+        View localView = getLayoutInflater().inflate(2131562958, this.jdField_b_of_type_AndroidWidgetLinearLayout, false);
         localView.setTag(localSubAccountInfo);
-        localView.setBackgroundResource(2130839432);
-        ((Button)localView.findViewById(2131380203)).setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+        localView.setBackgroundResource(2130839440);
+        ((Button)localView.findViewById(2131380389)).setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
         this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(localView);
       }
     }
@@ -302,18 +302,18 @@ public class AssociatedAccountManageActivity
       ImageView localImageView2;
       if (i > 0)
       {
-        ((LinearLayout.LayoutParams)localObject1).topMargin = getResources().getDimensionPixelSize(2131296533);
+        ((LinearLayout.LayoutParams)localObject1).topMargin = getResources().getDimensionPixelSize(2131296537);
         localView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        ImageView localImageView1 = (ImageView)localView.findViewById(2131368138);
-        localImageView2 = (ImageView)localView.findViewById(2131368153);
-        SingleLineTextView localSingleLineTextView = (SingleLineTextView)localView.findViewById(2131371539);
-        Object localObject2 = bglf.b(this.app, localSubAccountInfo.subuin, false);
+        ImageView localImageView1 = (ImageView)localView.findViewById(2131368212);
+        localImageView2 = (ImageView)localView.findViewById(2131368227);
+        SingleLineTextView localSingleLineTextView = (SingleLineTextView)localView.findViewById(2131371647);
+        Object localObject2 = bhlg.b(this.app, localSubAccountInfo.subuin, false);
         localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           localObject1 = localSubAccountInfo.subuin;
         }
         localSingleLineTextView.setText((CharSequence)localObject1);
-        localObject2 = aoch.a(this.app, localSubAccountInfo.subuin, (byte)3);
+        localObject2 = aoot.a(this.app, localSubAccountInfo.subuin, (byte)3);
         if (localObject2 != null) {
           localImageView1.setImageDrawable((Drawable)localObject2);
         }
@@ -331,7 +331,7 @@ public class AssociatedAccountManageActivity
         break;
         ((LinearLayout.LayoutParams)localObject1).topMargin = 0;
         break label187;
-        localImageView2.setBackgroundResource(2130850365);
+        localImageView2.setBackgroundResource(2130850377);
       }
     }
   }
@@ -424,11 +424,11 @@ public class AssociatedAccountManageActivity
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(0);
-      findViewById(2131365578).setVisibility(0);
+      findViewById(2131365620).setVisibility(0);
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
-    findViewById(2131365578).setVisibility(8);
+    findViewById(2131365620).setVisibility(8);
   }
   
   private void l()
@@ -454,7 +454,7 @@ public class AssociatedAccountManageActivity
       }
       else
       {
-        View localView = getLayoutInflater().inflate(2131562923, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+        View localView = getLayoutInflater().inflate(2131562957, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
         if ((localView instanceof FormItemRelativeLayout))
         {
           ((FormItemRelativeLayout)localView).setNeedFocusBg(false);
@@ -467,9 +467,9 @@ public class AssociatedAccountManageActivity
         {
           ((FormItemRelativeLayout)localView).setNeedFocusBg(true);
           localView.setTag(localSimpleAccount);
-          ((ImageView)localView.findViewById(2131368138)).setScaleType(ImageView.ScaleType.FIT_CENTER);
-          ((RotateSwitchImageView)localView.findViewById(2131365321)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-          ((Button)localView.findViewById(2131365294)).setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
+          ((ImageView)localView.findViewById(2131368212)).setScaleType(ImageView.ScaleType.FIT_CENTER);
+          ((RotateSwitchImageView)localView.findViewById(2131365365)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+          ((Button)localView.findViewById(2131365338)).setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
           break;
           label267:
@@ -514,11 +514,11 @@ public class AssociatedAccountManageActivity
       break label75;
       break;
       label153:
-      ImageView localImageView = (ImageView)localView.findViewById(2131368138);
-      SingleLineTextView localSingleLineTextView = (SingleLineTextView)localView.findViewById(2131371539);
-      String str = bddy.a(this.app, (SimpleAccount)localObject);
+      ImageView localImageView = (ImageView)localView.findViewById(2131368212);
+      SingleLineTextView localSingleLineTextView = (SingleLineTextView)localView.findViewById(2131371647);
+      String str = bdwt.a(this.app, (SimpleAccount)localObject);
       localSingleLineTextView.setText(str);
-      localObject = aoch.a(this.app, ((SimpleAccount)localObject).getUin(), (byte)3);
+      localObject = aoot.a(this.app, ((SimpleAccount)localObject).getUin(), (byte)3);
       if ((localObject != null) && (localImageView != null)) {
         localImageView.setImageDrawable((Drawable)localObject);
       }
@@ -534,9 +534,9 @@ public class AssociatedAccountManageActivity
     {
       if (this.jdField_a_of_type_AndroidAppDialog == null)
       {
-        this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this, 2131755823);
+        this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this, 2131755824);
         this.jdField_a_of_type_AndroidAppDialog.setContentView(2131558434);
-        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365475)).setText(getString(2131691345));
+        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365519)).setText(getString(2131691348));
         this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
       }
       this.jdField_a_of_type_AndroidAppDialog.show();
@@ -551,23 +551,23 @@ public class AssociatedAccountManageActivity
   
   public void a()
   {
-    setTitle(2131690133);
+    setTitle(2131690143);
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setText(2131692257);
-    this.rightViewText.setOnClickListener(new adnd(this));
+    this.rightViewText.setText(2131692262);
+    this.rightViewText.setOnClickListener(new adwe(this));
     this.jdField_a_of_type_AndroidViewView = findViewById(2131361923);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131378019);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131378174);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131361859));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131377986));
-    this.leftView.setText(2131690563);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378142));
+    this.leftView.setText(2131690559);
     this.leftView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131365577));
-    a(bddy.d(this.app));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131365619));
+    a(bdwt.d(this.app));
     if (AppSetting.jdField_c_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131718281));
-      this.leftView.setContentDescription(getString(2131690563));
-      this.rightViewText.setContentDescription(getString(2131692257));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131718417));
+      this.leftView.setContentDescription(getString(2131690559));
+      this.rightViewText.setContentDescription(getString(2131692262));
     }
   }
   
@@ -577,20 +577,20 @@ public class AssociatedAccountManageActivity
     do
     {
       return;
-      this.jdField_a_of_type_Bkho = ((bkho)bkif.a(this, null));
+      this.jdField_a_of_type_Blir = ((blir)blji.a(this, null));
       String[] arrayOfString = getResources().getStringArray(2130968670);
       int i = 0;
       while (i < arrayOfString.length)
       {
-        this.jdField_a_of_type_Bkho.a(arrayOfString[i], 3);
+        this.jdField_a_of_type_Blir.a(arrayOfString[i], 3);
         i += 1;
       }
-      this.jdField_a_of_type_Bkho.c(2131690582);
-      this.jdField_a_of_type_Bkho.a(this.jdField_a_of_type_Adnl);
-      this.jdField_a_of_type_Adnl.a(paramSubAccountInfo);
-      this.jdField_a_of_type_Bkho.a(getString(2131718922));
-    } while (this.jdField_a_of_type_Bkho.isShowing());
-    this.jdField_a_of_type_Bkho.show();
+      this.jdField_a_of_type_Blir.c(2131690580);
+      this.jdField_a_of_type_Blir.a(this.jdField_a_of_type_Adwm);
+      this.jdField_a_of_type_Adwm.a(paramSubAccountInfo);
+      this.jdField_a_of_type_Blir.a(getString(2131719072));
+    } while (this.jdField_a_of_type_Blir.isShowing());
+    this.jdField_a_of_type_Blir.show();
   }
   
   public void a(SimpleAccount paramSimpleAccount)
@@ -599,21 +599,21 @@ public class AssociatedAccountManageActivity
     do
     {
       return;
-      this.jdField_b_of_type_Bkho = ((bkho)bkif.a(this, null));
+      this.jdField_b_of_type_Blir = ((blir)blji.a(this, null));
       String[] arrayOfString = getResources().getStringArray(2130968576);
       int i = 0;
       while (i < arrayOfString.length)
       {
-        this.jdField_b_of_type_Bkho.a(arrayOfString[i], 1);
+        this.jdField_b_of_type_Blir.a(arrayOfString[i], 1);
         i += 1;
       }
-      this.jdField_b_of_type_Bkho.c(2131690582);
-      this.jdField_b_of_type_Bkho.a(this.jdField_a_of_type_Adnj);
-      this.jdField_a_of_type_Adnj.a(paramSimpleAccount);
+      this.jdField_b_of_type_Blir.c(2131690580);
+      this.jdField_b_of_type_Blir.a(this.jdField_a_of_type_Adwk);
+      this.jdField_a_of_type_Adwk.a(paramSimpleAccount);
       paramSimpleAccount = getString(2131690714).replace("${account}", paramSimpleAccount.getUin());
-      this.jdField_b_of_type_Bkho.a(paramSimpleAccount);
-    } while (this.jdField_b_of_type_Bkho.isShowing());
-    this.jdField_b_of_type_Bkho.show();
+      this.jdField_b_of_type_Blir.a(paramSimpleAccount);
+    } while (this.jdField_b_of_type_Blir.isShowing());
+    this.jdField_b_of_type_Blir.show();
   }
   
   public void a(SimpleAccount paramSimpleAccount, boolean paramBoolean)
@@ -638,7 +638,7 @@ public class AssociatedAccountManageActivity
     return;
     this.jdField_c_of_type_Boolean = true;
     a(this.jdField_a_of_type_JavaLangString, paramBoolean);
-    bgmk.a(str);
+    bhmm.a(str);
     this.jdField_a_of_type_JavaUtilList.remove(paramSimpleAccount);
     GesturePWDUtils.clearGestureData(this, paramSimpleAccount.getUin());
     ThreadManager.post(new AssociatedAccountManageActivity.7(this, paramBoolean, str), 8, null, true);
@@ -673,7 +673,7 @@ public class AssociatedAccountManageActivity
   public void b(SubAccountInfo paramSubAccountInfo)
   {
     if ((paramSubAccountInfo == null) || (TextUtils.isEmpty(paramSubAccountInfo.subuin))) {}
-    bdee localbdee;
+    bdwz localbdwz;
     do
     {
       do
@@ -681,10 +681,10 @@ public class AssociatedAccountManageActivity
         return;
       } while (!c());
       this.jdField_c_of_type_Boolean = true;
-      a(2131718319);
-      localbdee = (bdee)this.app.getManager(28);
-    } while (localbdee == null);
-    localbdee.a(paramSubAccountInfo.subuin);
+      a(2131718455);
+      localbdwz = (bdwz)this.app.getManager(28);
+    } while (localbdwz == null);
+    localbdwz.a(paramSubAccountInfo.subuin);
   }
   
   @Override
@@ -698,18 +698,18 @@ public class AssociatedAccountManageActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131562922);
-    setContentBackgroundResource(2130838758);
-    this.jdField_a_of_type_Boolean = bddy.b(this.app, false);
+    super.setContentView(2131562956);
+    setContentBackgroundResource(2130838778);
+    this.jdField_a_of_type_Boolean = bdwt.b(this.app, false);
     if ((getIntent() != null) && (TextUtils.equals(getIntent().getStringExtra("fromWhere"), AccountManageActivity.class.getSimpleName()))) {
       this.jdField_b_of_type_Boolean = true;
     }
     a();
     d();
     j();
-    addObserver(this.jdField_a_of_type_Anmu);
-    addObserver(this.jdField_a_of_type_Aniz);
-    addObserver(this.jdField_a_of_type_Anvp);
+    addObserver(this.jdField_a_of_type_Anyu);
+    addObserver(this.jdField_a_of_type_Anuw);
+    addObserver(this.jdField_a_of_type_Aoib);
     this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
     return true;
   }
@@ -721,9 +721,9 @@ public class AssociatedAccountManageActivity
     }
     this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
     this.app.removeHandler(getClass());
-    removeObserver(this.jdField_a_of_type_Anmu);
-    removeObserver(this.jdField_a_of_type_Aniz);
-    removeObserver(this.jdField_a_of_type_Anvp);
+    removeObserver(this.jdField_a_of_type_Anyu);
+    removeObserver(this.jdField_a_of_type_Anuw);
+    removeObserver(this.jdField_a_of_type_Aoib);
     b();
     e();
     super.doOnDestroy();
@@ -751,10 +751,10 @@ public class AssociatedAccountManageActivity
     boolean bool = false;
     if (paramCompoundButton == this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
     {
-      if (!bgnt.g(this)) {
+      if (!bhnv.g(this)) {
         break label58;
       }
-      ((anip)this.app.a(2)).n(paramBoolean);
+      ((anum)this.app.a(2)).n(paramBoolean);
       this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(8193, 800L);
     }
     for (;;)
@@ -764,7 +764,7 @@ public class AssociatedAccountManageActivity
       label58:
       Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(8195);
       localMessage.arg1 = 0;
-      localMessage.arg2 = 2131691985;
+      localMessage.arg2 = 2131691989;
       this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
       if (!paramBoolean) {
         bool = true;

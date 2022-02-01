@@ -1,139 +1,589 @@
-import android.os.Bundle;
-import android.os.Parcelable;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.GradientDrawable.Orientation;
+import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.CommonCommentData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.util.DisplayMetrics;
+import android.util.Pair;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.io.Serializable;
-import java.math.BigInteger;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.net.URL;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class ozc
 {
-  public static String a()
+  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#E9E9E9"));
+  
+  public static float a(int paramInt1, int paramInt2)
   {
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(243);
-    double d = 3.0D;
-    if (localAladdinConfig != null)
-    {
-      d = localAladdinConfig.getIntegerFromString("family_comment_card_hide_interval", 3);
-      QLog.d("ReadInJoyCommentHelper", 1, "shoudHideCommentView | comment hide interval  " + d + " 天");
+    paramInt1 = a(paramInt1, paramInt2);
+    if (paramInt1 == 1) {
+      return 0.5625F;
     }
-    return "确定" + (int)d + "天内不再展示家族占领入口？";
+    if (paramInt1 == 2) {
+      return 1.333F;
+    }
+    return 1.0F;
   }
   
-  public static boolean a()
+  public static float a(Context paramContext, rwc paramrwc)
   {
-    long l = ((Long)bmqa.a("family_comment_card_hide_timestamp", Long.valueOf(-1L))).longValue();
-    if (l == -1L)
+    int j = 28;
+    int i;
+    if (paramrwc != null)
     {
-      QLog.d("ReadInJoyCommentHelper", 1, "shoudHideCommentView | false cuz never click hide btn ");
-      return false;
+      i = j;
+      if (paramrwc.o == 0)
+      {
+        i = j;
+        if (paramrwc.p == 0)
+        {
+          i = j;
+          if (paramrwc.q == 0)
+          {
+            if (paramrwc.r == 0) {
+              break label56;
+            }
+            i = j;
+          }
+        }
+      }
     }
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(243);
-    double d = 3.0D;
-    if (localAladdinConfig != null)
+    for (;;)
     {
-      d = localAladdinConfig.getIntegerFromString("family_comment_card_hide_interval", 3);
-      QLog.d("ReadInJoyCommentHelper", 1, "shoudHideCommentView | comment hide interval  " + d + " 天");
+      return bhlo.b(paramContext) - bhgr.a(paramContext, i);
+      label56:
+      if ((paramrwc.a != null) && (paramrwc.a.mChannelID == 56L))
+      {
+        i = j;
+        if (ozs.u()) {}
+      }
+      else
+      {
+        i = 12;
+      }
     }
-    if (System.currentTimeMillis() - l <= d * 24.0D * 60.0D * 60.0D * 1000.0D)
-    {
-      QLog.d("ReadInJoyCommentHelper", 1, "shoudHideCommentView | true ");
-      return true;
-    }
-    QLog.d("ReadInJoyCommentHelper", 1, "shoudHideCommentView | false ");
-    return false;
   }
   
-  public Bundle a(JSONObject paramJSONObject)
+  /* Error */
+  public static float a(android.view.View paramView)
   {
-    try
-    {
-      Object localObject1 = paramJSONObject.optString("uniqueKey");
-      int i = paramJSONObject.optInt("source", 3);
-      Object localObject2 = paramJSONObject.optString("feedsID", "");
-      int j = paramJSONObject.optInt("feedsType", -1);
-      int k = paramJSONObject.optInt("adTag", -1);
-      String str3 = paramJSONObject.optString("title", "");
-      Object localObject3 = paramJSONObject.optString("sourceName", "");
-      String str4 = paramJSONObject.optString("picUrl", "");
-      long l = paramJSONObject.optLong("duration", -1L);
-      String str5 = paramJSONObject.optString("articleID", "");
-      String str1 = paramJSONObject.optString("commentID");
-      String str2 = paramJSONObject.optString("subCommentID");
-      boolean bool = paramJSONObject.optBoolean("isAwesome");
-      int m = paramJSONObject.optInt("jumpType");
-      int n = paramJSONObject.optInt("serviceType", 5);
-      QLog.d("ReadInJoyCommentHelper", 1, "constructCommentConfigData |   uniqueKey = " + (String)localObject1 + "source = " + i + "feedsId = " + (String)localObject2 + " feedsType=" + j + "adTag = " + k + "title = " + str3 + "sourceName = " + (String)localObject3 + "picUrl =" + str4 + "duration = " + l + "articleId =" + str5 + " feedsServiceType = " + n);
-      paramJSONObject = new AnchorData();
-      paramJSONObject.jdField_a_of_type_JavaLangString = str1;
-      paramJSONObject.b = str2;
-      paramJSONObject.jdField_a_of_type_Boolean = bool;
-      localObject2 = new CommonCommentData(str5, j, (String)localObject2, k, str3, (String)localObject3, str4, l);
-      QLog.d("ReadInJoyCommentHelper", 1, "constructCommentConfigData | commonCommentData " + localObject2 + "\n anchorData " + paramJSONObject);
-      localObject3 = new ArticleInfo();
-      ((ArticleInfo)localObject3).innerUniqueID = ((String)localObject1);
-      ((ArticleInfo)localObject3).mTitle = str3;
-      ((ArticleInfo)localObject3).mSummary = "";
-      ((ArticleInfo)localObject3).mFirstPagePicUrl = str4;
-      if ((localObject2 != null) && (!TextUtils.isEmpty(((CommonCommentData)localObject2).getArticleId()))) {
-        ((ArticleInfo)localObject3).mArticleID = Long.parseLong(((CommonCommentData)localObject2).getArticleId());
-      }
-      if ((localObject2 != null) && (!TextUtils.isEmpty(((CommonCommentData)localObject2).getFeedsId()))) {
-        ((ArticleInfo)localObject3).mFeedId = new BigInteger(((CommonCommentData)localObject2).getFeedsId()).longValue();
-      }
-      if ((localObject2 != null) && (((CommonCommentData)localObject2).getFeedsType() != -1)) {
-        ((ArticleInfo)localObject3).mFeedType = ((CommonCommentData)localObject2).getFeedsType();
-      }
-      QLog.d("ReadInJoyCommentHelper", 1, "constructCommentConfigData | articleInfo " + localObject3);
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putSerializable("commonCommentData", (Serializable)localObject2);
-      ((Bundle)localObject1).putParcelable("anchorData", paramJSONObject);
-      ((Bundle)localObject1).putParcelable("articleInfo", (Parcelable)localObject3);
-      ((Bundle)localObject1).putInt("source", i);
-      ((Bundle)localObject1).putString("commentId", str1);
-      ((Bundle)localObject1).putString("subCommentId", str2);
-      ((Bundle)localObject1).putBoolean("isAwesome", bool);
-      ((Bundle)localObject1).putInt("jumpType", m);
-      ((Bundle)localObject1).putBoolean("fromViola", true);
-      ((Bundle)localObject1).putInt("serviceType", n);
-      QLog.d("ReadInJoyCommentHelper", 1, "constructCommentConfigData | bundle " + localObject1);
-      return localObject1;
+    // Byte code:
+    //   0: ldc 84
+    //   2: fstore_2
+    //   3: ldc 2
+    //   5: monitorenter
+    //   6: aload_0
+    //   7: getstatic 31	ozc:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   10: invokevirtual 90	android/view/View:getLocalVisibleRect	(Landroid/graphics/Rect;)Z
+    //   13: pop
+    //   14: aload_0
+    //   15: invokevirtual 94	android/view/View:getHeight	()I
+    //   18: istore_3
+    //   19: getstatic 31	ozc:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   22: getfield 97	android/graphics/Rect:top	I
+    //   25: ifne +24 -> 49
+    //   28: getstatic 31	ozc:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   31: getfield 100	android/graphics/Rect:bottom	I
+    //   34: istore 4
+    //   36: iload 4
+    //   38: iload_3
+    //   39: if_icmpne +10 -> 49
+    //   42: fload_2
+    //   43: fstore_1
+    //   44: ldc 2
+    //   46: monitorexit
+    //   47: fload_1
+    //   48: freturn
+    //   49: getstatic 31	ozc:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   52: getfield 97	android/graphics/Rect:top	I
+    //   55: ifle +22 -> 77
+    //   58: ldc 84
+    //   60: iload_3
+    //   61: getstatic 31	ozc:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   64: getfield 97	android/graphics/Rect:top	I
+    //   67: isub
+    //   68: i2f
+    //   69: fmul
+    //   70: iload_3
+    //   71: i2f
+    //   72: fdiv
+    //   73: fstore_1
+    //   74: goto -30 -> 44
+    //   77: fload_2
+    //   78: fstore_1
+    //   79: getstatic 31	ozc:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   82: getfield 100	android/graphics/Rect:bottom	I
+    //   85: ifle -41 -> 44
+    //   88: fload_2
+    //   89: fstore_1
+    //   90: getstatic 31	ozc:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   93: getfield 100	android/graphics/Rect:bottom	I
+    //   96: iload_3
+    //   97: if_icmpge -53 -> 44
+    //   100: getstatic 31	ozc:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   103: getfield 100	android/graphics/Rect:bottom	I
+    //   106: istore 4
+    //   108: ldc 84
+    //   110: iload 4
+    //   112: i2f
+    //   113: fmul
+    //   114: iload_3
+    //   115: i2f
+    //   116: fdiv
+    //   117: fstore_1
+    //   118: goto -74 -> 44
+    //   121: astore_0
+    //   122: ldc 2
+    //   124: monitorexit
+    //   125: aload_0
+    //   126: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	127	0	paramView	android.view.View
+    //   43	75	1	f1	float
+    //   2	87	2	f2	float
+    //   18	97	3	i	int
+    //   34	77	4	j	int
+    // Exception table:
+    //   from	to	target	type
+    //   6	36	121	finally
+    //   49	74	121	finally
+    //   79	88	121	finally
+    //   90	108	121	finally
+  }
+  
+  public static int a(int paramInt1, int paramInt2)
+  {
+    return 1;
+  }
+  
+  public static int a(int paramInt, Resources paramResources)
+  {
+    return (paramInt - (agej.a(24.0F, paramResources) + agej.a(3.0F, paramResources))) / 2;
+  }
+  
+  public static Drawable a(String paramString)
+  {
+    int i = Color.parseColor(paramString);
+    paramString = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { i, i & 0x14FFFFFF });
+    paramString.setShape(0);
+    paramString.setGradientType(0);
+    paramString.setBounds(0, 0, 400, 400);
+    return paramString;
+  }
+  
+  public static Pair<Integer, Integer> a()
+  {
+    Resources localResources = BaseApplicationImpl.getApplication().getResources();
+    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - agej.a(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131298673)));
+  }
+  
+  public static Pair<Integer, Integer> a(int paramInt1, int paramInt2)
+  {
+    Resources localResources = BaseApplicationImpl.getApplication().getResources();
+    int i = agej.a(1.5F, localResources);
+    if (paramInt2 == 56) {
+      i = agej.a(3.0F, localResources);
     }
-    catch (Exception paramJSONObject)
+    bnrj localbnrj = bnrf.a(BaseApplicationImpl.getApplication().getRuntime());
+    float f1;
+    float f2;
+    if (localbnrj != null)
+    {
+      f1 = localbnrj.a;
+      f2 = localbnrj.jdField_b_of_type_Float;
+      paramInt2 = agej.a(localbnrj.jdField_b_of_type_Int, localResources);
+    }
+    for (;;)
+    {
+      switch (paramInt1)
+      {
+      default: 
+        if (paramInt2 != 0) {
+          break;
+        }
+      }
+      for (paramInt1 = (int)((localResources.getDisplayMetrics().widthPixels - agej.a(6, localResources) - i * 2) / 2.1F);; paramInt1 = paramInt2)
+      {
+        i = (int)(paramInt1 / f2);
+        paramInt2 = paramInt1;
+        paramInt1 = i;
+        for (;;)
+        {
+          return new Pair(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
+          paramInt2 = localResources.getDisplayMetrics().widthPixels - agej.a(12, localResources);
+          paramInt1 = (int)((localResources.getDisplayMetrics().widthPixels - agej.a(6, localResources) - i * 2) / 2.5F * 1.3356F);
+          continue;
+          paramInt2 = (int)((localResources.getDisplayMetrics().widthPixels - agej.a(12, localResources) - i) * 0.5F);
+          paramInt1 = (int)(paramInt2 / f1);
+        }
+      }
+      paramInt2 = 0;
+      f1 = 0.7511F;
+      f2 = 0.7487F;
+    }
+  }
+  
+  public static String a(int paramInt)
+  {
+    int k = paramInt / 3600;
+    int j = paramInt / 60;
+    int i = j;
+    if (k > 0) {
+      i = j - k * 60;
+    }
+    paramInt %= 60;
+    String str1;
+    String str2;
+    if (i >= 10)
+    {
+      str1 = String.valueOf(i);
+      if (paramInt < 10) {
+        break label115;
+      }
+      str2 = String.valueOf(paramInt);
+      label53:
+      if (k <= 0) {
+        break label157;
+      }
+      if (k < 10) {
+        break label136;
+      }
+    }
+    label136:
+    for (String str3 = String.valueOf(k);; str3 = String.format("0%d", new Object[] { Integer.valueOf(k) }))
+    {
+      return String.format("%s:%s:%s", new Object[] { str3, str1, str2 });
+      str1 = String.format("0%d", new Object[] { Integer.valueOf(i) });
+      break;
+      label115:
+      str2 = String.format("0%d", new Object[] { Integer.valueOf(paramInt) });
+      break label53;
+    }
+    label157:
+    return String.format("%s:%s", new Object[] { str1, str2 });
+  }
+  
+  public static String a(int paramInt, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (paramInt <= 0)) {
+      return "";
+    }
+    return a(paramInt);
+  }
+  
+  public static String a(String paramString)
+  {
+    String str;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "";
+    }
+    do
+    {
+      return str;
+      str = paramString;
+    } while (!behh.a(paramString));
+    paramString = new StringBuilder(paramString);
+    int i = 0;
+    while (i < begd.a.length)
+    {
+      str = begd.a[i];
+      int j = -1;
+      for (;;)
+      {
+        int k = paramString.indexOf(str, j + 1);
+        if (k == -1) {
+          break;
+        }
+        j = k;
+        if (k != 0)
+        {
+          j = k;
+          if (paramString.codePointAt(k - 1) == 20)
+          {
+            char c = (char)i;
+            paramString.replace(k, str.length() + k, String.valueOf(c));
+            j = k;
+          }
+        }
+      }
+      i += 1;
+    }
+    return paramString.toString();
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    String str = paramString;
+    if (paramString.length() > paramInt) {
+      str = paramString.substring(0, paramInt - 1) + "…";
+    }
+    return str;
+  }
+  
+  public static void a()
+  {
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      BaseApplicationImpl.sImageCache.evict(0);
+      return;
+    }
+    BaseApplicationImpl.sImageCache.evictAll();
+  }
+  
+  public static void a(ImageView paramImageView, String paramString, Context paramContext)
+  {
+    a(paramImageView, ozs.a(paramString), paramContext);
+  }
+  
+  public static void a(ImageView paramImageView, URL paramURL, Context paramContext)
+  {
+    if (paramURL == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentHelper", 2, QLog.getStackTraceString(paramJSONObject));
+        QLog.d("Q.readinjoy.ui", 2, "configImage url is empty! use default preload image");
+      }
+      paramImageView.setImageResource(2130841690);
+      return;
+    }
+    if ((paramContext instanceof BaseActivity)) {}
+    for (Object localObject = (BaseActivity)paramContext;; localObject = null)
+    {
+      if (localObject != null) {}
+      for (boolean bool = SettingCloneUtil.readValue((Context)localObject, ((BaseActivity)localObject).app.getCurrentAccountUin(), null, "qqsetting_kandian_download_pic_flag", false);; bool = false)
+      {
+        if ((!bhnv.h(paramContext)) && (bool) && (!sun.a().a(paramURL)))
+        {
+          paramImageView.setImageResource(2130841690);
+          return;
+        }
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130841690);
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130841690);
+        paramImageView.setImageDrawable(URLDrawable.getDrawable(paramURL, (URLDrawable.URLDrawableOptions)localObject));
+        return;
       }
     }
-    return new Bundle();
   }
   
-  public ReadInJoyCommentListFragment a(String paramString, ozq paramozq, ozg paramozg)
+  public static void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL, Context paramContext)
   {
-    QLog.d("ReadInJoyCommentHelper", 1, "buildCommentFragment | configJsonStr : " + paramString);
-    try
+    a(paramKandianUrlImageView, paramURL, paramContext, false);
+  }
+  
+  public static void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL, Context paramContext, boolean paramBoolean)
+  {
+    if (paramURL == null)
     {
-      paramString = new JSONObject(paramString);
-      QLog.d("ReadInJoyCommentHelper", 2, "buildCommentFragment | paramJsonStr " + paramString.toString());
-      paramString = a(paramString);
-      ReadInJoyCommentListFragment localReadInJoyCommentListFragment = new ReadInJoyCommentListFragment();
-      localReadInJoyCommentListFragment.setArguments(paramString);
-      localReadInJoyCommentListFragment.a(paramozq);
-      localReadInJoyCommentListFragment.a(paramozg);
-      return localReadInJoyCommentListFragment;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.ui", 2, "configImage url is empty! use default preload image");
+      }
+      paramKandianUrlImageView.setImageResource(2130841690);
+      return;
     }
-    catch (JSONException paramString)
+    if (a(paramContext, paramURL))
     {
-      paramString.printStackTrace();
+      if (!paramBoolean)
+      {
+        paramKandianUrlImageView.setImageResource(2130841690);
+        return;
+      }
+      paramKandianUrlImageView.setImageDrawable(new ColorDrawable(paramContext.getResources().getColor(2131165343)));
+      return;
     }
-    return null;
+    if (!paramBoolean)
+    {
+      if (paramKandianUrlImageView.isRound())
+      {
+        paramKandianUrlImageView.setImagePlaceHolder(paramContext.getResources().getDrawable(2130840403)).setImage(paramURL);
+        return;
+      }
+      paramKandianUrlImageView.setImagePlaceHolder(paramContext.getResources().getDrawable(2130841690)).setImage(paramURL);
+      return;
+    }
+    paramKandianUrlImageView.setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(2131165343)));
+    paramKandianUrlImageView.setImagePlaceHolder(new ColorDrawable(paramContext.getResources().getColor(2131165343))).setImage(paramURL);
+  }
+  
+  public static void a(ViewBase paramViewBase, BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (paramBaseArticleInfo == null) {
+      return;
+    }
+    ppr localppr = pfa.a().a();
+    if ((localppr != null) && (localppr.b()))
+    {
+      a(false, paramViewBase, null);
+      paramBaseArticleInfo.isShowFreeNetFlow = false;
+      return;
+    }
+    if (paramBaseArticleInfo.isShowFreeNetFlow)
+    {
+      a(true, paramViewBase, localppr);
+      return;
+    }
+    if ((localppr != null) && (localppr.a()))
+    {
+      a(true, paramViewBase, localppr);
+      paramBaseArticleInfo.isShowFreeNetFlow = true;
+      localppr.a(true);
+      return;
+    }
+    a(false, paramViewBase, null);
+  }
+  
+  public static void a(List<KandianUrlImageView> paramList, List<URL> paramList1, Context paramContext)
+  {
+    int j = paramList.size();
+    if (j != paramList1.size()) {
+      throw new IllegalArgumentException("imageViewListSize != urlListSize");
+    }
+    if (paramContext != null) {}
+    for (boolean bool = SettingCloneUtil.readValue(paramContext, BaseApplicationImpl.getApplication().getRuntime().getAccount(), null, "qqsetting_kandian_download_pic_flag", false);; bool = false)
+    {
+      int i;
+      if ((!bool) || (bhnv.h(paramContext))) {
+        i = 0;
+      }
+      while (i < j)
+      {
+        ((KandianUrlImageView)paramList.get(i)).setImagePlaceHolder(jdField_a_of_type_AndroidGraphicsDrawableDrawable).setImage((URL)paramList1.get(i));
+        i += 1;
+        continue;
+        i = 0;
+        while (i < j)
+        {
+          ((KandianUrlImageView)paramList.get(i)).setImageDrawable(jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          i += 1;
+        }
+      }
+      return;
+    }
+  }
+  
+  public static void a(boolean paramBoolean, ViewBase paramViewBase, ppr paramppr)
+  {
+    if (paramViewBase == null) {}
+    ViewBase localViewBase1;
+    ViewBase localViewBase2;
+    do
+    {
+      return;
+      localViewBase1 = paramViewBase.findViewBaseByName("id_large_video_activity_wrapper");
+      localViewBase2 = paramViewBase.findViewBaseByName("id_large_video_activity_img");
+      paramViewBase = (NativeText)paramViewBase.findViewBaseByName("id_large_video_activity_label");
+    } while ((localViewBase1 == null) || (paramViewBase == null) || (localViewBase2 == null));
+    if ((paramBoolean) && (paramppr != null))
+    {
+      localViewBase1.setVisibility(0);
+      localViewBase2.setVisibility(0);
+      paramViewBase.setVisibility(0);
+      paramViewBase.setText(paramppr.a());
+      ppr.a("0X8009660");
+      return;
+    }
+    localViewBase1.setVisibility(8);
+    localViewBase2.setVisibility(8);
+    paramViewBase.setVisibility(8);
+  }
+  
+  public static boolean a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 0) || (paramInt2 == 0)) {}
+    while (paramInt1 > paramInt2) {
+      return false;
+    }
+    return true;
+  }
+  
+  private static boolean a(Context paramContext)
+  {
+    if ((paramContext instanceof BaseActivity)) {}
+    for (paramContext = (BaseActivity)paramContext;; paramContext = null)
+    {
+      if (paramContext != null)
+      {
+        if (paramContext.app != null) {}
+        for (String str = paramContext.app.getCurrentAccountUin();; str = ozs.a()) {
+          return SettingCloneUtil.readValue(paramContext, str, null, "qqsetting_kandian_download_pic_flag", false);
+        }
+      }
+      return false;
+    }
+  }
+  
+  public static boolean a(Context paramContext, URL paramURL)
+  {
+    return (a(paramContext)) && (!bhnv.h(paramContext)) && (!sun.a().a(paramURL));
+  }
+  
+  public static boolean a(rwc paramrwc)
+  {
+    if (paramrwc == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("ReadInJoyDisplayUtils", 2, "isProtraitVideo return false for videoPlayParam is null.");
+      }
+      return false;
+    }
+    return a(paramrwc.c, paramrwc.d);
+  }
+  
+  public static Pair<Integer, Integer> b()
+  {
+    Resources localResources = BaseApplicationImpl.getApplication().getResources();
+    int i = (localResources.getDisplayMetrics().widthPixels - agej.a(3.0F, localResources)) / 2;
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 1.33F)));
+  }
+  
+  public static Pair<Integer, Integer> c()
+  {
+    int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 0.597F)));
+  }
+  
+  public static Pair<Integer, Integer> d()
+  {
+    Resources localResources = BaseApplicationImpl.getApplication().getResources();
+    int i = (localResources.getDisplayMetrics().widthPixels - agej.a(3.0F, localResources)) / 3;
+    return new Pair(Integer.valueOf(i), Integer.valueOf(i));
+  }
+  
+  public static Pair<Integer, Integer> e()
+  {
+    int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 0.562F)));
+  }
+  
+  public static Pair<Integer, Integer> f()
+  {
+    int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 0.5625F)));
+  }
+  
+  public static Pair<Integer, Integer> g()
+  {
+    int i = (int)(BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels * 0.5F);
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 1.3333F)));
   }
 }
 

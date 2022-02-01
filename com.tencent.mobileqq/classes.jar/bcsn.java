@@ -1,94 +1,10 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
-
 public class bcsn
 {
-  public static boolean a;
+  public boolean a;
   
-  private static String a(QQAppInterface paramQQAppInterface)
+  public bcsn(bcsm parambcsm)
   {
-    if (paramQQAppInterface == null) {
-      return "unknown";
-    }
-    switch (bgnt.b(paramQQAppInterface.getApp()))
-    {
-    default: 
-      return "unknown";
-    case 0: 
-      return "none";
-    case 1: 
-      return "Wi-Fi";
-    case 2: 
-      return "2G";
-    case 3: 
-      return "3G";
-    case 4: 
-      return "4G";
-    }
-    return "5G";
-  }
-  
-  private static String a(QQAppInterface paramQQAppInterface, bcso parambcso)
-  {
-    parambcso.a = bgln.d();
-    SosoInterface.SosoLbsInfo localSosoLbsInfo = SosoInterface.b();
-    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null)) {
-      parambcso.c = localSosoLbsInfo.a.e;
-    }
-    parambcso.b = a(paramQQAppInterface);
-    return parambcso.toString();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, bcso parambcso)
-  {
-    parambcso = a(paramQQAppInterface, parambcso);
-    if (QLog.isColorLevel()) {
-      QLog.i("PushReportController", 1, "reportPushEvent detail=" + parambcso);
-    }
-    if (paramQQAppInterface == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PushReportController", 1, "not Rumtime");
-      }
-      paramQQAppInterface = new Intent();
-      paramQQAppInterface.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      paramQQAppInterface.putExtra("reporting_tag", "dc03266");
-      paramQQAppInterface.putExtra("reporting_detail", parambcso);
-      paramQQAppInterface.putExtra("reporting_count", 1);
-      paramQQAppInterface.putExtra("is_runtime", 0);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramQQAppInterface);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("PushReportController", 1, " Rumtime");
-    }
-    bcst.b(paramQQAppInterface, "dc03266", parambcso, 1);
-  }
-  
-  public static void a(String paramString, bcso parambcso)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.contains("&")))
-    {
-      paramString = paramString.split("&");
-      int i = 0;
-      while (i < paramString.length)
-      {
-        if (paramString[i].contains("pushfrom"))
-        {
-          String[] arrayOfString = paramString[i].split("=");
-          if ((arrayOfString != null) && (arrayOfString.length >= 2)) {
-            parambcso.g = arrayOfString[1];
-          }
-        }
-        i += 1;
-      }
-    }
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

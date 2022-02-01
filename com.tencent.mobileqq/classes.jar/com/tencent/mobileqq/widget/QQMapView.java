@@ -5,9 +5,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import biar;
-import bias;
-import biat;
+import bjbp;
+import bjbq;
+import bjbr;
 import com.tencent.map.lib.basemap.data.GeoPoint;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.maps.MapView;
@@ -21,7 +21,7 @@ import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 public class QQMapView
   extends MapView
 {
-  public biat a;
+  public bjbr a;
   GeoPoint jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint;
   private TencentMap.OnCameraChangeListener jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener;
   public boolean a;
@@ -30,14 +30,14 @@ public class QQMapView
   public QQMapView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = new bias(this);
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = new bjbq(this);
     getMap().setOnCameraChangeListener(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener);
   }
   
   public QQMapView(Context paramContext, AttributeSet paramAttributeSet, TencentMapOptions paramTencentMapOptions)
   {
     super(paramContext, paramTencentMapOptions);
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = new biar(this);
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = new bjbp(this);
     getMap().setOnCameraChangeListener(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener);
   }
   
@@ -61,14 +61,14 @@ public class QQMapView
       j = Math.abs(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() - paramCameraPosition.getLongitudeE6());
       QLog.d("QQMapView", 2, "dealMapScroll() latScroll =" + i + " lngScroll =" + j);
     } while ((i == 0) || (j == 0));
-    this.jdField_a_of_type_Biat.onMapScrollEnd(paramCameraPosition);
+    this.jdField_a_of_type_Bjbr.onMapScrollEnd(paramCameraPosition);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = paramCameraPosition;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Biat = null;
+    this.jdField_a_of_type_Bjbr = null;
     this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = null;
   }
   
@@ -88,9 +88,9 @@ public class QQMapView
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void setObserver(biat parambiat)
+  public void setObserver(bjbr parambjbr)
   {
-    this.jdField_a_of_type_Biat = parambiat;
+    this.jdField_a_of_type_Bjbr = parambjbr;
   }
 }
 

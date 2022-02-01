@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.hotpic.HotPicData;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public final class avbb
-  implements Parcelable.Creator<HotPicData>
+class avbb
+  implements DialogInterface.OnClickListener
 {
-  public HotPicData a(Parcel paramParcel)
-  {
-    return new HotPicData(paramParcel);
-  }
+  avbb(avba paramavba, int paramInt, String paramString) {}
   
-  public HotPicData[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new HotPicData[paramInt];
+    if (paramInt == 1)
+    {
+      avcj.a(avba.a(this.jdField_a_of_type_Avba), "shareToQQ", avba.a(this.jdField_a_of_type_Avba), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      noe.a(avba.a(this.jdField_a_of_type_Avba), 0, "", "");
+      if (avba.a(this.jdField_a_of_type_Avba) != null) {
+        avba.a(this.jdField_a_of_type_Avba).b(1);
+      }
+      avba.a(this.jdField_a_of_type_Avba).moveTaskToBack(true);
+    }
   }
 }
 

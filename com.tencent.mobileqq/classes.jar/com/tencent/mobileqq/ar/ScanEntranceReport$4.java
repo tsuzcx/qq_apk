@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar;
 
-import aoxj;
-import bctj;
+import apkz;
+import bdmc;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ScanEntranceReport$4
   implements Runnable
 {
-  public ScanEntranceReport$4(aoxj paramaoxj, boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4) {}
+  public ScanEntranceReport$4(apkz paramapkz, boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ScanEntranceReport$4
     localHashMap.put("first_select_time", String.valueOf(this.b));
     localHashMap.put("first_upload_delay", String.valueOf(this.c));
     localHashMap.put("neon_opened", String.valueOf(this.jdField_a_of_type_Int));
-    bctj.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_upload", true, this.d, 0L, localHashMap, "");
+    bdmc.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_upload", true, this.d, 0L, localHashMap, "");
   }
 }
 

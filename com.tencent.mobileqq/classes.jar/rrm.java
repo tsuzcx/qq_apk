@@ -1,98 +1,57 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.VideoInfo;
 
 public class rrm
-  implements bbtj<bbmy>, bbtk<bbmy>
 {
-  private bbtk<bbmy> jdField_a_of_type_Bbtk;
-  private List<bbtj> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<bbmy> b = new ArrayList();
+  public int a;
+  public long a;
+  public Bundle a;
+  public View a;
+  public ViewGroup a;
+  public VideoInfo a;
+  public String a;
+  public qwu a;
+  public qwv a;
+  public rlr a;
+  public rwf a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public boolean c;
   
-  public rrm(List<bbtj> paramList)
+  public rrm()
   {
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidOsBundle.putBoolean(paramString, paramBoolean);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
     }
   }
   
-  public List<bbmy> a(bbtx parambbtx)
+  public boolean a(String paramString, boolean paramBoolean)
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.addAll(((bbtj)localIterator.next()).a(parambbtx));
+    try
+    {
+      paramBoolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean(paramString, paramBoolean);
+      return paramBoolean;
     }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((bbtj)localIterator.next()).a();
-    }
-  }
-  
-  public void a(bbtx parambbtx, bbtk<bbmy> parambbtk)
-  {
-    this.b.clear();
-    this.jdField_a_of_type_Bbtk = parambbtk;
-    parambbtk = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (parambbtk.hasNext()) {
-      ((bbtj)parambbtk.next()).a(parambbtx, this);
-    }
-  }
-  
-  public void a(List<bbmy> paramList)
-  {
-    if (this.jdField_a_of_type_Bbtk != null) {
-      this.jdField_a_of_type_Bbtk.a(paramList);
-    }
-  }
-  
-  public void a(List<bbmy> paramList, int paramInt)
-  {
-    this.b.addAll(paramList);
-    if (this.jdField_a_of_type_Bbtk != null) {
-      this.jdField_a_of_type_Bbtk.a(this.b, paramInt);
-    }
-  }
-  
-  public void a(List<bbmy> paramList, bbty parambbty)
-  {
-    a(paramList, parambbty.a);
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((bbtj)localIterator.next()).b();
-    }
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((bbtj)localIterator.next()).c();
-    }
-  }
-  
-  public void d()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((bbtj)localIterator.next()).d();
-    }
-  }
-  
-  public void e()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((bbtj)localIterator.next()).e();
+    finally
+    {
+      paramString = finally;
+      throw paramString;
     }
   }
 }

@@ -4,14 +4,16 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class AvGameShare$CmdInviteCheckRsp
   extends MessageMicro<CmdInviteCheckRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "roomid", "share_uin", "game_type" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(1) }, CmdInviteCheckRsp.class);
-  public final PBEnumField game_type = PBField.initEnum(1);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "roomid", "share_uin", "game_type", "share_type" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, CmdInviteCheckRsp.class);
+  public final PBEnumField game_type = PBField.initEnum(0);
   public final PBUInt64Field roomid = PBField.initUInt64(0L);
+  public final PBUInt32Field share_type = PBField.initUInt32(0);
   public final PBUInt64Field share_uin = PBField.initUInt64(0L);
 }
 

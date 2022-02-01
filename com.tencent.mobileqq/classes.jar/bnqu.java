@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Handler;
+import cooperation.qzone.zipanimate.ZipAnimationDrawable.ZipAnimationState.1.1;
 
-class bnqu
-  implements Animation.AnimationListener
+public class bnqu
+  implements bnrc
 {
   bnqu(bnqt parambnqt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onZipLoaded(boolean paramBoolean)
   {
-    bnqt.a(this.a).setVisibility(4);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_Boolean = paramBoolean;
+      this.a.jdField_a_of_type_Bnqp.a.post(new ZipAnimationDrawable.ZipAnimationState.1.1(this));
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

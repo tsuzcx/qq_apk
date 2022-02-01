@@ -1,26 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class qjk
-  implements Animator.AnimatorListener
+  implements blmv
 {
-  qjk(qji paramqji) {}
+  qjk(qjh paramqjh) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a()
   {
-    qji.a(this.a).setSelected(this.a.isSelected());
+    if (QLog.isColorLevel()) {
+      QLog.d("FeedItemCell", 2, "onAdComplain");
+    }
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_from_type", 1);
+      localIntent.putExtra("key_ad_info", ((ppu)this.a.jdField_a_of_type_JavaLangObject).a());
+      PublicFragmentActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    qji.a(this.a, false);
-    qji.a(this.a).setSelected(this.a.isSelected());
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

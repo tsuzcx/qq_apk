@@ -1,50 +1,35 @@
-public class blru
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+
+class blru
+  extends Handler
 {
-  private static String a;
-  private static String b;
-  
-  public static String a()
+  public blru()
   {
-    return "V1_AND_SQ_8.4.1_1442_YYB_D";
+    super(Looper.getMainLooper());
   }
   
-  public static String b()
+  public void handleMessage(Message paramMessage)
   {
-    if (a == null) {
-      a = d();
-    }
-    return a;
-  }
-  
-  public static String c()
-  {
-    if (b == null) {
-      b = d();
-    }
-    return b;
-  }
-  
-  private static String d()
-  {
-    int i = "V1_AND_SQ_8.4.1_1442_YYB_D".indexOf("_");
-    int k = "V1_AND_SQ_8.4.1_1442_YYB_D".lastIndexOf("_");
-    if (i < 0) {
-      i = 0;
-    }
-    for (;;)
+    switch (paramMessage.what)
     {
-      int j = k;
-      if (k < 0) {
-        j = "V1_AND_SQ_8.4.1_1442_YYB_D".length();
-      }
-      return "V1_AND_SQ_8.4.1_1442_YYB_D".substring(i, j);
-      i += 1;
     }
+    do
+    {
+      do
+      {
+        return;
+      } while (paramMessage.obj == null);
+      paramMessage = ((WeakReference)paramMessage.obj).get();
+    } while ((paramMessage == null) || (!(paramMessage instanceof blrr)));
+    ((blrr)paramMessage).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blru
  * JD-Core Version:    0.7.0.1
  */

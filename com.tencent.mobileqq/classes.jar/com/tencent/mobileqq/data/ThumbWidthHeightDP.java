@@ -1,13 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import afur;
+import agej;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
-import bdzx;
+import beqw;
+import besm;
+import beyq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.RoundRectBitmap;
@@ -37,8 +39,18 @@ public class ThumbWidthHeightDP
   
   public static ThumbWidthHeightDP getThumbWidthHeightDP(boolean paramBoolean)
   {
-    int i = bdzx.d(paramBoolean);
-    int j = bdzx.c(paramBoolean);
+    int i = besm.d(paramBoolean);
+    int j = besm.c(paramBoolean);
+    return new ThumbWidthHeightDP(i, i, j, j);
+  }
+  
+  public static ThumbWidthHeightDP getThumbWidthHeightDPForPicMsg(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean2) {
+      return getThumbWidthHeightDP(paramBoolean1);
+    }
+    int i = beqw.d(paramBoolean1, paramBoolean2);
+    int j = beqw.c(paramBoolean1, paramBoolean2);
     return new ThumbWidthHeightDP(i, i, j, j);
   }
   
@@ -59,25 +71,25 @@ public class ThumbWidthHeightDP
     {
       f3 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density;
       i8 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().densityDpi;
-      j = bdzx.b(paramBoolean);
-      i = bdzx.b(paramBoolean);
-      k = bdzx.a(paramBoolean);
-      m = bdzx.a(paramBoolean);
+      j = besm.b(paramBoolean);
+      i = besm.b(paramBoolean);
+      k = besm.a(paramBoolean);
+      m = besm.a(paramBoolean);
       if (paramThumbWidthHeightDP != null)
       {
-        j = afur.a(paramThumbWidthHeightDP.mMinWidth, BaseApplicationImpl.getApplication().getResources());
-        i = afur.a(paramThumbWidthHeightDP.mMinHeight, BaseApplicationImpl.getApplication().getResources());
-        k = afur.a(paramThumbWidthHeightDP.mMaxWidth, BaseApplicationImpl.getApplication().getResources());
-        m = afur.a(paramThumbWidthHeightDP.mMaxHeight, BaseApplicationImpl.getApplication().getResources());
+        j = agej.a(paramThumbWidthHeightDP.mMinWidth, BaseApplicationImpl.getApplication().getResources());
+        i = agej.a(paramThumbWidthHeightDP.mMinHeight, BaseApplicationImpl.getApplication().getResources());
+        k = agej.a(paramThumbWidthHeightDP.mMaxWidth, BaseApplicationImpl.getApplication().getResources());
+        m = agej.a(paramThumbWidthHeightDP.mMaxHeight, BaseApplicationImpl.getApplication().getResources());
       }
       i6 = paramBitmap.getWidth();
       i7 = paramBitmap.getHeight();
       paramDownloadParams = new Paint(1);
       paramDownloadParams.setColor(-16777216);
-      i5 = bdzx.d(paramBoolean);
-      i4 = bdzx.d(paramBoolean);
-      i3 = bdzx.c(paramBoolean);
-      i2 = bdzx.c(paramBoolean);
+      i5 = besm.d(paramBoolean);
+      i4 = besm.d(paramBoolean);
+      i3 = besm.c(paramBoolean);
+      i2 = besm.c(paramBoolean);
       if (paramThumbWidthHeightDP == null) {
         break label449;
       }
@@ -104,7 +116,7 @@ public class ThumbWidthHeightDP
     for (;;)
     {
       label240:
-      paramThumbWidthHeightDP = Bitmap.createBitmap(j, i, bdzx.b);
+      paramThumbWidthHeightDP = Bitmap.createBitmap(j, i, beyq.b);
       paramThumbWidthHeightDP.setDensity(i8);
       new Canvas(paramThumbWidthHeightDP).drawBitmap(paramBitmap, new Rect(0, 0, i1, n), new Rect(0, 0, j, i), paramDownloadParams);
       return new RoundRectBitmap(paramThumbWidthHeightDP, 12.0F * f3);
@@ -170,12 +182,12 @@ public class ThumbWidthHeightDP
   
   public int maxPx()
   {
-    return afur.a((this.mMaxWidth + this.mMaxHeight) / 2, BaseApplicationImpl.getContext().getResources());
+    return agej.a((this.mMaxWidth + this.mMaxHeight) / 2, BaseApplicationImpl.getContext().getResources());
   }
   
   public int minPx()
   {
-    return afur.a((this.mMinWidth + this.mMinHeight) / 2, BaseApplicationImpl.getContext().getResources());
+    return agej.a((this.mMinWidth + this.mMinHeight) / 2, BaseApplicationImpl.getContext().getResources());
   }
   
   public String toString()

@@ -1,33 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.content.Intent;
+import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
 
 public class awbb
-  implements Animator.AnimatorListener
+  implements awbf
 {
-  public awbb(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
+  public awbb(HuayangLoadbackgroudActivity paramHuayangLoadbackgroudActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    PoiSlideBottomPanel.c(this.a, false);
-    if (PoiSlideBottomPanel.e(this.a) != null) {
-      PoiSlideBottomPanel.f(this.a).displayPanelFinish();
-    }
+    Intent localIntent = new Intent(awax.d(HuayangLoadbackgroudActivity.a(this.a)));
+    localIntent.putExtra("key_state", 4);
+    localIntent.putExtra("key_progress", paramInt);
+    localIntent.putExtra("key_totalSize", 100L);
+    this.a.sendBroadcast(localIntent);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(boolean paramBoolean, Throwable paramThrowable)
   {
-    PoiSlideBottomPanel.b(this.a, false);
-    if (PoiSlideBottomPanel.c(this.a) != null) {
-      PoiSlideBottomPanel.d(this.a).displayPanelFinish();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    PoiSlideBottomPanel.a(this.a, true);
+    this.a.finish();
   }
 }
 

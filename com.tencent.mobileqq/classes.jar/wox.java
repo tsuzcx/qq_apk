@@ -1,9 +1,33 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public abstract interface wox
+class wox<Request extends wpa, Respond extends wov>
+  implements wpb<Respond>
 {
-  public abstract void a(List<StoryVideoItem> paramList, boolean paramBoolean);
+  protected final long a;
+  protected woy<Request, Respond> a;
+  public Request a;
+  
+  public wox(Request paramRequest)
+  {
+    this.jdField_a_of_type_Wpa = paramRequest;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  private void b(int paramInt, String paramString, Respond paramRespond)
+  {
+    woy localwoy = this.jdField_a_of_type_Woy;
+    if (localwoy != null)
+    {
+      localwoy.a(this.jdField_a_of_type_Wpa, paramRespond, new ErrorMessage(paramInt, paramString));
+      return;
+    }
+    yuk.d("Q.qqstory.net:CmdTaskManager", "cmd callback is null");
+  }
+  
+  public void a(int paramInt, String paramString, Respond paramRespond)
+  {
+    b(paramInt, paramString, paramRespond);
+  }
 }
 
 

@@ -1,48 +1,38 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
 
 public class bani
 {
-  public static int a()
+  private static String a(int paramInt1, int paramInt2)
   {
-    int j = 2;
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4);
-    long l = localSharedPreferences.getLong("key_open_camera_time", 0L);
-    int i = j;
-    if (l != 0L)
+    switch (paramInt1)
     {
-      i = j;
-      if (System.currentTimeMillis() - l < 300000L) {
-        i = localSharedPreferences.getInt("camera", 2);
+    }
+    for (;;)
+    {
+      return null;
+      switch (paramInt2)
+      {
+      default: 
+        switch (paramInt2)
+        {
+        }
+        break;
       }
     }
-    return i;
+    return "0X8009E09";
+    return "0X8009E06";
+    return "0X8009E07";
+    return "0X8009E08";
+    return "0X8009E0A";
+    return "0X8009E0B";
   }
   
-  public static void a()
+  public static void a(int paramInt1, int paramInt2)
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).edit();
-    localEditor.putLong("key_open_camera_time", System.currentTimeMillis());
-    localEditor.apply();
-  }
-  
-  public static void a(int paramInt)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).edit();
-    localEditor.putInt("camera", paramInt);
-    localEditor.putLong("key_open_camera_time", System.currentTimeMillis());
-    localEditor.apply();
-  }
-  
-  public static boolean a()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).contains("camera");
-  }
-  
-  public static int b()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).getInt("camera", 1);
+    String str = a(paramInt1, paramInt2);
+    if (!TextUtils.isEmpty(str)) {
+      bdll.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+    }
   }
 }
 

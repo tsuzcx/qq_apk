@@ -1,119 +1,66 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import mqq.app.AppRuntime;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoRsp;
 
-public class ocs
-  implements aqlb<String>
+class ocs
+  implements BusinessObserver
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private ArrayList<tyh> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
-  private boolean jdField_a_of_type_Boolean;
+  private NewIntent a;
   
-  public static ocs a(String paramString)
+  ocs(NewIntent paramNewIntent)
   {
-    try
-    {
-      ocs localocs = (ocs)aqlu.a(paramString, ocs.class);
-      return localocs;
-    }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + paramString, localQStorageInstantiateException);
-    }
-    return null;
+    this.a = paramNewIntent;
   }
   
-  public static ocs a(aqlg[] paramArrayOfaqlg)
-  {
-    ocs localocs = null;
-    int i = 0;
-    while (i < paramArrayOfaqlg.length)
-    {
-      localocs = a(paramArrayOfaqlg[i].jdField_a_of_type_JavaLangString);
-      i += 1;
-    }
-    return localocs;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        bgsg.f(((QQAppInterface)localAppRuntime).getApplication(), this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      AppRuntime localAppRuntime;
-      return;
-    }
-    QLog.e("PublicAccountConfProcessor", 2, "updateEqqConfig fail");
-  }
-  
-  public void a(String paramString)
+  private void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfProcessor", 2, "parseConfigXml xml: " + paramString);
-    }
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        this.jdField_a_of_type_JavaLangString = paramString;
-        paramString = paramString.trim();
-        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8"))).getElementsByTagName("public-account-folder");
-        int j = paramString.getLength();
-        Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-        if ((localObject1 instanceof QQAppInterface))
-        {
-          QQAppInterface localQQAppInterface = (QQAppInterface)localObject1;
-          localObject1 = ((AppRuntime)localObject1).getApplication();
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(j);
-          int i = 0;
-          while (i < j)
-          {
-            Object localObject2 = (Element)paramString.item(i);
-            localObject2 = new tyh(localQQAppInterface, (Context)localObject1, Integer.parseInt(((Element)localObject2).getElementsByTagName("id").item(0).getFirstChild().getNodeValue()), ((Element)localObject2).getElementsByTagName("name").item(0).getFirstChild().getNodeValue(), ((Element)localObject2).getElementsByTagName("icon").item(0).getFirstChild().getNodeValue());
-            this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-            i += 1;
-          }
-          this.jdField_a_of_type_Boolean = true;
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("PublicAccountConfProcessor", 2, "parsePublicAccountConfigXml xml is empty");
-        return;
-      }
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PublicAccountConfProcessor", 2, "parsePublicAccountConfigXml error", paramString);
-      }
-      paramString.printStackTrace();
+      QLog.d("QualityReporter", 2, "onSuccess: ");
     }
   }
   
-  public void b()
+  private void a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      tyg.a(this.jdField_a_of_type_JavaUtilArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.d("QualityReporter", 2, "onError: code=" + paramInt + ", msg=" + paramString);
     }
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    this.a.setObserver(null);
+    if (paramBoolean)
+    {
+      cc_sso_report_svr.ReportInfoRsp localReportInfoRsp;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null)
+        {
+          a(-123, "data null");
+          return;
+        }
+        localReportInfoRsp = new cc_sso_report_svr.ReportInfoRsp();
+        localReportInfoRsp.mergeFrom(paramBundle);
+        if ((localReportInfoRsp.ret_code.has()) && (localReportInfoRsp.ret_code.get() == 0))
+        {
+          a();
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+      a(localReportInfoRsp.ret_code.get(), localReportInfoRsp.ret_msg.get());
+      return;
+    }
+    a(-123, "success=false");
   }
 }
 

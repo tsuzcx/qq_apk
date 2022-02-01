@@ -1,34 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class agfe
-  implements View.OnClickListener
+final class agfe
+  implements agfh
 {
-  public agfe(VoiceTextEditPanel paramVoiceTextEditPanel) {}
-  
-  public void onClick(View paramView)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    VoiceTextEditPanel.a(this.a).a.setVisibility(0);
-    if (!this.a.a())
-    {
-      VoiceTextEditPanel.a(this.a).h(false);
-      VoiceTextEditPanel.a(this.a).a();
-      VoiceTextEditPanel.b(this.a);
-      bcst.b(null, "dc00898", "", "", "0X800A1DB", "0X800A1DB", 1, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      VoiceTextEditPanel.c(this.a);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      VoiceTextEditPanel.a(this.a).a(1);
-      VoiceTextEditPanel.a(this.a).aJ();
-      bcst.b(null, "dc00898", "", "", "0X800A1DB", "0X800A1DB", 2, 0, "", "", "", "");
-    }
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.frienduin, 58);
+    paramQQAppInterface.h = paramSessionInfo.d;
+    return paramQQAppInterface;
   }
 }
 

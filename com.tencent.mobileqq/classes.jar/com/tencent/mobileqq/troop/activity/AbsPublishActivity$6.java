@@ -16,8 +16,8 @@ class AbsPublishActivity$6
     this.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     this.this$0.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
     this.this$0.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemBar.a(5, 0);
-    this.this$0.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130847888);
-    this.this$0.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(this.this$0.getString(2131695546));
+    this.this$0.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130847907);
+    this.this$0.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(this.this$0.getString(2131695589));
     if (this.this$0.b != null) {
       this.this$0.b.requestLayout();
     }

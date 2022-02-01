@@ -7,7 +7,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bgtn;
+import bhtq;
 import com.tencent.biz.qqcircle.fragments.chat.QCircleRecentChatListData;
 import com.tencent.biz.qqcircle.widgets.QCircleAvatarView;
 import com.tencent.biz.qqcircle.widgets.QCircleBaseWidgetView;
@@ -22,8 +22,8 @@ import com.tencent.widget.SingleLineTextView;
 import qqcircle.QQCirclePrivateMsgShow.PMGiftDisplayInfo;
 import qqcircle.QQCirclePrivateMsgShow.PMGiftInfo;
 import qqcircle.QQCirclePrivateMsgShow.UserPMGiftInfo;
-import uxx;
-import vhk;
+import uzg;
+import vjo;
 
 public class QCircleChatItemView
   extends QCircleBaseWidgetView<QCircleRecentChatListData>
@@ -72,7 +72,7 @@ public class QCircleChatItemView
               this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
               break label259;
             }
-            ((LinearLayout.LayoutParams)localObject2).leftMargin = bgtn.b(4.0F);
+            ((LinearLayout.LayoutParams)localObject2).leftMargin = bhtq.b(4.0F);
             continue;
           }
         }
@@ -100,7 +100,7 @@ public class QCircleChatItemView
   
   public int a()
   {
-    return 2131560675;
+    return 2131560691;
   }
   
   public DragTextView a()
@@ -117,14 +117,14 @@ public class QCircleChatItemView
   {
     if (paramView != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView = ((QCircleAvatarView)paramView.findViewById(2131369037));
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131379860));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView = ((QCircleAvatarView)paramView.findViewById(2131369131));
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131380040));
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, paramView);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379783));
-      this.b = ((TextView)paramView.findViewById(2131379947));
-      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131379603));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370082));
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = uxx.a(getContext());
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379962));
+      this.b = ((TextView)paramView.findViewById(2131380131));
+      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131379777));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370177));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = uzg.a(getContext());
     }
   }
   
@@ -150,7 +150,7 @@ public class QCircleChatItemView
         break label128;
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setText(vhk.a(paramQCircleRecentChatListData.mUnreadNum));
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setText(vjo.a(paramQCircleRecentChatListData.mUnreadNum));
     }
     for (;;)
     {

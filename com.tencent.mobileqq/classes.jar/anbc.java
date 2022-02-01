@@ -1,6 +1,6 @@
 class anbc
 {
-  private static final anba a = new anba(null);
+  private static anav a = new anav("cm_game_module");
 }
 
 

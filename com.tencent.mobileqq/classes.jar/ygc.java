@@ -1,27 +1,48 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ygc
-  extends QQUIEventReceiver<yfw, wor>
+  extends wov
 {
-  public ygc(yfw paramyfw)
+  public List<LikeEntry> a;
+  public int b;
+  public int c;
+  
+  public ygc(qqstory_service.RspFeedLikeList paramRspFeedLikeList)
   {
-    super(paramyfw);
+    super(paramRspFeedLikeList.result);
+    paramRspFeedLikeList = (qqstory_struct.FeedLikeInfo)paramRspFeedLikeList.feed_like_info.get();
+    this.a = a(paramRspFeedLikeList);
+    this.b = paramRspFeedLikeList.like_total_count.get();
+    this.c = paramRspFeedLikeList.has_like.get();
   }
   
-  public void a(@NonNull yfw paramyfw, @NonNull wor paramwor)
+  public List<LikeEntry> a(qqstory_struct.FeedLikeInfo paramFeedLikeInfo)
   {
-    if (paramwor.a.isSuccess())
+    paramFeedLikeInfo = paramFeedLikeInfo.like_list.get();
+    ArrayList localArrayList1 = new ArrayList();
+    wtt localwtt = (wtt)wth.a(2);
+    ArrayList localArrayList2 = new ArrayList();
+    int i = 0;
+    while (i < paramFeedLikeInfo.size())
     {
-      yqp.a("Q.qqstory.memories.ProfileFeedPresenter", "receive video delete event. %s. start to refresh year node list", paramwor.toString());
-      yfw.a(paramyfw, true);
+      LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)paramFeedLikeInfo.get(i));
+      if (localwtt.b(localLikeEntry.unionId) == null) {
+        localArrayList2.add(new wuo("", localLikeEntry.unionId));
+      }
+      localArrayList1.add(localLikeEntry);
+      i += 1;
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wor.class;
+    if (!localArrayList2.isEmpty()) {
+      new xaq().a(1, localArrayList2);
+    }
+    return localArrayList1;
   }
 }
 

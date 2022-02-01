@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.emoticon;
 
-import arvk;
+import asky;
 
 final class QQSysAndEmojiResInfo$1
   implements Runnable
 {
   public void run()
   {
-    if (arvk.a() != null) {
-      arvk.a().a();
+    if (asky.a() != null) {
+      asky.a().a();
     }
   }
 }

@@ -1,18 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 class bqao
-  implements DialogInterface.OnClickListener
+  extends QQUIEventReceiver<bqal, bqan>
 {
-  bqao(bqan parambqan) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bqao(@NonNull bqal parambqal)
   {
-    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.a.a.b, this.a.a.a, this.a.a.g + ".mp4", true));
+    super(parambqal);
+  }
+  
+  public void a(@NonNull bqal parambqal, @NonNull bqan parambqan)
+  {
+    if (bqan.a(parambqan))
+    {
+      switch (parambqan.a())
+      {
+      }
+      for (;;)
+      {
+        bqal.a(parambqal);
+        return;
+        bqal.a(parambqal, true);
+        yuk.b("QGEnvironment", "surface created");
+        continue;
+        yuk.b("QGEnvironment", "qg so loaded");
+        continue;
+        yuk.b("QGEnvironment", "filter manager inited");
+      }
+    }
+    yuk.e("QGEnvironment", "QG environment init error :  event type = " + parambqan.a());
+  }
+  
+  public Class acceptEventClass()
+  {
+    return bqan.class;
   }
 }
 

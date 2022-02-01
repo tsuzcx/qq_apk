@@ -1,56 +1,56 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.mobileqq.videoplatform.api.ILoadSo;
-import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
-import com.tencent.mobileqq.videoplatform.util.LogUtil;
+import android.view.View;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class azwu
-  implements ILoadSo
+class azwu
+  implements bliz
 {
-  boolean a = false;
+  azwu(azwt paramazwt, azvy paramazvy) {}
   
-  public boolean isCkeygeneratorV2Load()
+  public void OnClick(View paramView, int paramInt)
   {
-    return this.a;
-  }
-  
-  public boolean isCkguardLoad()
-  {
-    return this.a;
-  }
-  
-  public boolean isDownProxyLoad()
-  {
-    return this.a;
-  }
-  
-  public boolean isTPCoreLoad()
-  {
-    return this.a;
-  }
-  
-  public boolean loadDownProxySync()
-  {
-    boolean bool = bcof.a().a("DownloadProxy").isSucc();
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "loadDownProxySync, bDownProxyResult  = " + bool);
+    switch (paramInt)
+    {
+    default: 
+    case 0: 
+      for (;;)
+      {
+        this.jdField_a_of_type_Azwt.a.jdField_a_of_type_Blir.e();
+        return;
+        this.jdField_a_of_type_Azwt.a.jdField_a_of_type_Azvx.a(azwt.a(this.jdField_a_of_type_Azwt), this.jdField_a_of_type_Azvy.a);
+      }
     }
-    return bool;
-  }
-  
-  public void loadSo(LoadSoCallback paramLoadSoCallback)
-  {
-    bcof localbcof = bcof.a();
-    paramLoadSoCallback = new azwv(this, paramLoadSoCallback);
-    localbcof.a(new String[] { "TPCore-master", "DownloadProxy", "ckguard", "ckeygeneratorV2" }, paramLoadSoCallback);
-  }
-  
-  public boolean loadTPCoreSync()
-  {
-    boolean bool = bcof.a().a("TPCore-master").isSucc();
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "loadTPCoreSync, bTPCoreResult  = " + bool);
+    paramView = (PersonalityLabelInfo)PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Azwt.a).get(Long.valueOf(azwt.a(this.jdField_a_of_type_Azwt)));
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Azwt.a.jdField_a_of_type_Blir.e();
+      return;
     }
-    return bool;
+    paramInt = 0;
+    label115:
+    if (paramInt < paramView.personalityLabelPhotos.size()) {
+      if (((PersonalityLabelPhoto)paramView.personalityLabelPhotos.get(paramInt)).uniseq == this.jdField_a_of_type_Azvy.a.uniseq) {
+        paramView.personalityLabelPhotos.remove(paramInt);
+      }
+    }
+    for (;;)
+    {
+      if (paramInt < 0)
+      {
+        this.jdField_a_of_type_Azwt.a.jdField_a_of_type_Blir.e();
+        return;
+        paramInt += 1;
+        break label115;
+      }
+      paramView.photoCount -= 1;
+      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Azwt.a, azwt.a(this.jdField_a_of_type_Azwt), paramView);
+      this.jdField_a_of_type_Azwt.a.jdField_a_of_type_Azvx.b(azwt.a(this.jdField_a_of_type_Azwt), this.jdField_a_of_type_Azvy.a);
+      break;
+      paramInt = -1;
+    }
   }
 }
 

@@ -1,27 +1,21 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axzq
+  implements View.OnClickListener
 {
-  public long a;
-  public axkm a;
-  public List<axzo> a;
-  public boolean a;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n;
+  public axzq(PlayerInvitePanel paramPlayerInvitePanel, int paramInt) {}
+  
+  public void onClick(View paramView)
+  {
+    if (PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel) != null) {
+      PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel).onItemClick(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

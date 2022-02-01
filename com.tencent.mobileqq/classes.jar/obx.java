@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.KdTagItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class obx
-  implements Parcelable.Creator<VideoInfo.KdTagItem>
+class obx
+  implements DialogInterface.OnClickListener
 {
-  public VideoInfo.KdTagItem a(Parcel paramParcel)
-  {
-    return new VideoInfo.KdTagItem(paramParcel);
-  }
+  obx(obj paramobj) {}
   
-  public VideoInfo.KdTagItem[] a(int paramInt)
-  {
-    return new VideoInfo.KdTagItem[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

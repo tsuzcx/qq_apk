@@ -1,7 +1,11 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import Wallet.AcsMsg;
-import afsx;
+import agce;
+import agci;
+import agcr;
+import agcs;
+import agdi;
 import android.content.Context;
 import android.net.Uri;
 import android.text.TextUtils;
@@ -14,11 +18,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anni;
-import bcst;
-import bgsp;
-import blyl;
-import bqja;
+import anzj;
+import bdll;
+import bhsr;
+import bhsw;
+import bhtq;
+import bmzn;
+import brkm;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -26,14 +32,14 @@ import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.widget.RoundImageView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import common.config.service.QzoneConfig;
 import cooperation.qwallet.plugin.FakeUrl;
-import zlx;
+import zps;
 
 public class ReminderCardItemPage
   extends ActivateBasePage
   implements View.OnClickListener
 {
+  private static int jdField_a_of_type_Int;
   public AcsMsg a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -47,6 +53,7 @@ public class ReminderCardItemPage
   private TextView h;
   private TextView i;
   private TextView j;
+  private TextView k;
   
   public ReminderCardItemPage(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -60,13 +67,14 @@ public class ReminderCardItemPage
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  private void a(ImageView paramImageView, String paramString)
+  private void a(ImageView paramImageView, String paramString, boolean paramBoolean)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mRequestHeight = paramImageView.getHeight();
     localURLDrawableOptions.mRequestWidth = paramImageView.getWidth();
     localURLDrawableOptions.mUseMemoryCache = false;
     paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+    paramString.setURLDrawableListener(new agcr(this, paramBoolean, paramImageView));
     if (paramString != null) {
       paramImageView.setImageDrawable(paramString);
     }
@@ -75,14 +83,14 @@ public class ReminderCardItemPage
   private void a(String paramString, int paramInt)
   {
     String str = paramString;
-    if (bgsp.a(paramString)) {
+    if (bhsr.a(paramString)) {
       str = "https://act.qzone.qq.com/vip/meteor/blockly/p/4403xdf3cc";
     }
     paramString = Uri.parse(str);
     if (paramString != null)
     {
       paramString = paramString.getScheme();
-      if (!bgsp.a(paramString)) {
+      if (!bhsr.a(paramString)) {
         if ((paramString.startsWith("http")) || (paramString.startsWith("https")))
         {
           if (paramInt != 0) {
@@ -107,7 +115,7 @@ public class ReminderCardItemPage
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (!bgsp.a(paramString))
+    if (!bhsr.a(paramString))
     {
       bool1 = bool2;
       if (MiniAppLauncher.isMiniAppUrl(paramString)) {
@@ -119,7 +127,7 @@ public class ReminderCardItemPage
   
   private void b(View paramView)
   {
-    String str = (String)paramView.getTag(2131364179);
+    String str = (String)paramView.getTag(2131364222);
     if (a(str))
     {
       MiniAppLauncher.startMiniApp(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity, str, 2102, null);
@@ -130,25 +138,41 @@ public class ReminderCardItemPage
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561004, this, false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364185));
-    this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364186));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364184));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364181));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364182));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius(zlx.a(getContext(), 5.0F), true);
-    this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364187));
-    this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364180));
-    this.i = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364178));
-    this.i.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364179));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364183));
-    int k = bqja.a(getContext()) * 542 / 1334;
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.getLayoutParams();
-    localLayoutParams.height = k;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setLayoutParams(localLayoutParams);
-    addView(this.jdField_a_of_type_AndroidViewView);
+    try
+    {
+      if (jdField_a_of_type_Int == 0) {
+        jdField_a_of_type_Int = bhtq.a() - bhtq.b(84.0F);
+      }
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561038, this, false);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364229));
+      this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364230));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364228));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364225));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364226));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius(zps.a(getContext(), 4.0F), true);
+      this.i = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364231));
+      this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364224));
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364221)).setOnClickListener(this);
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364222));
+      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
+      this.k = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364227));
+      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364223));
+      this.g.setOnClickListener(this);
+      this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364253));
+      int m = brkm.a(getContext()) * 452 / 1334;
+      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.getLayoutParams();
+      localLayoutParams.height = m;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setLayoutParams(localLayoutParams);
+      addView(this.jdField_a_of_type_AndroidViewView);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("ReminderCardItemPage", 1, "initUI getWidth with a error: ", localThrowable);
+      }
+    }
   }
   
   public void a(AcsMsg paramAcsMsg)
@@ -164,25 +188,34 @@ public class ReminderCardItemPage
           this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
           this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
           this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
-          a(this.jdField_a_of_type_AndroidWidgetImageView, "https://i.gtimg.cn/channel/imglib/201905/upload_d06258d2e506e8f9f37614f2826e8234.png");
+          a(this.jdField_a_of_type_AndroidWidgetImageView, "https://i.gtimg.cn/channel/imglib/201905/upload_d06258d2e506e8f9f37614f2826e8234.png", false);
           return;
         }
         this.f.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
         this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
         this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
-        this.f.setText(afsx.a(paramAcsMsg.notice_time * 1000L, "HH:mm"));
-        RoundImageView localRoundImageView = this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView;
-        if (TextUtils.isEmpty(paramAcsMsg.banner_url))
+        localObject = bhsw.a(getContext(), 3, paramAcsMsg.notice_time * 1000L);
+        this.f.setText((CharSequence)localObject);
+        if (paramAcsMsg.banner_type == 1)
         {
-          str = "https://sola.gtimg.cn/aoi/sola/20200520104458_ifeJLiwYMW.png";
-          a(localRoundImageView, str);
-          this.j.setText(afsx.a(paramAcsMsg.sub_time * 1000L, "yyyy.MM.dd") + anni.a(2131716129) + paramAcsMsg.busi_name + anni.a(2131716130));
-          this.g.setText(paramAcsMsg.title);
-          this.h.setText(paramAcsMsg.content);
+          bool = true;
+          RoundImageView localRoundImageView = this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView;
+          if (!TextUtils.isEmpty(paramAcsMsg.banner_url)) {
+            break label268;
+          }
+          localObject = "https://sola.gtimg.cn/aoi/sola/20200520104458_ifeJLiwYMW.png";
+          a(localRoundImageView, (String)localObject, bool);
+          this.i.setText(paramAcsMsg.title);
+          this.j.setText(paramAcsMsg.content);
           this.jdField_b_of_type_AndroidWidgetButton.setText(paramAcsMsg.btn_text);
           this.jdField_b_of_type_AndroidWidgetButton.setTag(paramAcsMsg.jump_url);
-          this.jdField_b_of_type_AndroidWidgetButton.setTag(2131364179, paramAcsMsg.applet_jump_url);
+          this.jdField_b_of_type_AndroidWidgetButton.setTag(2131364222, paramAcsMsg.applet_jump_url);
+          if (paramAcsMsg.type != 1) {
+            break;
+          }
+          this.h.setVisibility(0);
+          this.g.setVisibility(0);
           return;
         }
       }
@@ -191,8 +224,19 @@ public class ReminderCardItemPage
         QLog.e("ReminderCardItemPage", 1, "initData throw an exception: " + paramAcsMsg);
         return;
       }
-      String str = paramAcsMsg.banner_url;
+      boolean bool = false;
+      continue;
+      label268:
+      Object localObject = paramAcsMsg.banner_url;
     }
+    if (paramAcsMsg.type == 0) {
+      this.k.setText(agce.a(paramAcsMsg.sub_time * 1000L, "yyyy.MM.dd") + anzj.a(2131716242) + paramAcsMsg.busi_name + anzj.a(2131716243));
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0;
   }
   
   public void onClick(View paramView)
@@ -209,26 +253,24 @@ public class ReminderCardItemPage
         if (QLog.isColorLevel()) {
           QLog.d("ReminderCardItemPage", 2, "do report: QQnotice.aio.detail.all");
         }
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.all", 0, 0, "", "", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id);
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.all", 0, 0, "", "", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id);
+        agci.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "remindcontentpage_allclick", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id, null, null);
       }
-      if (1 == QzoneConfig.getInstance().getConfig("QZoneSetting", "QQRemindAllRemindUseH5", 1))
+      a("https://ti.qq.com/remind/index", 2001);
+      continue;
+      if (this.jdField_a_of_type_WalletAcsMsg != null)
       {
-        a(QzoneConfig.getInstance().getConfig("H5Url", "QQRemindAllRemind", "https://h5.qianbao.qq.com/notice?_wv=1027&_wvx=10&_wwv=4"), 2001);
-      }
-      else
-      {
-        ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity);
-        continue;
-        if (this.jdField_a_of_type_WalletAcsMsg != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ReminderCardItemPage", 2, "do report: QQnotice.aio.detail.click");
-          }
-          bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.click", 0, 0, "", "", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id);
-          blyl.a().a("qqremind", "3", "2", 102, this.jdField_a_of_type_WalletAcsMsg.msg_id, "15", 1);
+        if (QLog.isColorLevel()) {
+          QLog.d("ReminderCardItemPage", 2, "do report: QQnotice.aio.detail.click");
         }
-        b(paramView);
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.click", 0, 0, "", "", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id);
+        bmzn.a().a("qqremind", "3", "2", 102, this.jdField_a_of_type_WalletAcsMsg.msg_id, "15", 1);
+        agci.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "remindcontentpage_contentclick", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id, null, null);
       }
+      b(paramView);
+      continue;
+      agci.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "remindcontentpage_rejectclick", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id, null, null);
+      agdi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_WalletAcsMsg.msg_id, new agcs(this));
     }
   }
 }

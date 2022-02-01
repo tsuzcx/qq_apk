@@ -1,39 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.util.WeakReference;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import com.tencent.qphone.base.util.QLog;
 
-class uxu
-  implements View.OnClickListener
+public class uxu
+  extends oam
 {
-  uxu(uxp paramuxp) {}
+  public uxu(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, uyc paramuyc, byte[] paramArrayOfByte, String paramString)
   {
-    uxv localuxv;
-    if (uxp.a(this.a) != null)
+    if (paramBoolean)
     {
-      localuxv = (uxv)uxp.a(this.a).get();
-      if (localuxv != null) {
-        switch (paramView.getId())
-        {
+      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(true, this.jdField_a_of_type_Long);
+      if (paramuyc != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond isSuccess=" + paramBoolean + " ;articleID = " + paramuyc.a);
         }
+        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(paramuyc, paramArrayOfByte);
+        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.b(paramuyc);
       }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      localuxv.a(uxw.a);
-      continue;
-      localuxv.a(uxw.b);
-      continue;
-      localuxv.a(uxw.c);
-      continue;
-      localuxv.a(uxw.d);
-      continue;
-      localuxv.a(uxw.e);
     }
+    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(false, this.jdField_a_of_type_Long);
   }
 }
 

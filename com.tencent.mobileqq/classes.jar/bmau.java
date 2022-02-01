@@ -1,412 +1,421 @@
-import NS_MOBILE_CLIENT_UPDATE.SQ_CLIENT_UPDATE_RSP;
-import NS_MOBILE_CLIENT_UPDATE.UPDATE_INFO;
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.readinjoy.ReadInJoyManager;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.QzoneModuleConst;
-import cooperation.qzone.networkedmodule.QzoneModuleRecordFactory;
-import java.io.File;
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class bmau
+public abstract class bmau
 {
-  private static volatile bmau jdField_a_of_type_Bmau;
-  private Map<String, bmav> jdField_a_of_type_JavaUtilMap = a(LocalMultiProcConfig.getString("Qz_setting", "NetworkedModuleConfig_cur", ""));
-  private Map<String, bmav> b = new ConcurrentHashMap();
+  public int a;
+  public String a;
+  protected boolean a;
+  public int b;
+  protected String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
   
-  public static bmau a()
+  public bmau()
   {
-    if (jdField_a_of_type_Bmau == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bmau == null) {
-        jdField_a_of_type_Bmau = new bmau();
-      }
-      return jdField_a_of_type_Bmau;
-    }
-    finally {}
+    this.jdField_a_of_type_Int = 256;
   }
   
-  private bmav a(UPDATE_INFO paramUPDATE_INFO)
+  private void a(bmba parambmba, String paramString)
   {
-    String str3 = paramUPDATE_INFO.id;
-    String str4 = paramUPDATE_INFO.md5;
-    Object localObject1 = "";
-    if (QLog.isDevelopLevel()) {
-      QLog.i("QzoneModuleConfigManager", 1, "id:" + str3);
-    }
-    String str5 = paramUPDATE_INFO.ver;
-    String str6 = paramUPDATE_INFO.mainVersion;
-    Object localObject3 = "";
-    Object localObject4 = "";
-    String str2;
-    String str1;
-    String[] arrayOfString;
-    if (paramUPDATE_INFO.plugin_info != null)
+    if (parambmba != null)
     {
-      str2 = (String)paramUPDATE_INFO.plugin_info.get(Integer.valueOf(2));
-      str1 = (String)paramUPDATE_INFO.plugin_info.get(Integer.valueOf(0));
-      paramUPDATE_INFO = (String)paramUPDATE_INFO.plugin_info.get(Integer.valueOf(1));
-      localObject1 = str2;
-      localObject3 = str1;
-      localObject4 = paramUPDATE_INFO;
-      if (!TextUtils.isEmpty(paramUPDATE_INFO))
-      {
-        arrayOfString = paramUPDATE_INFO.split("#");
-        localObject1 = str2;
-        localObject3 = str1;
-        localObject4 = paramUPDATE_INFO;
-        if (arrayOfString.length < 2) {}
-      }
+      parambmba.jdField_a_of_type_Int = 2;
+      parambmba.jdField_a_of_type_JavaLangString = paramString;
     }
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginPreloadStrategy", 2, "pluginType:" + this.jdField_b_of_type_Int + "  " + paramString);
+    }
+  }
+  
+  public int a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((paramQQAppInterface == null) || (paramString == null)) {
+      return 3;
+    }
+    Object localObject1 = (nlb)paramQQAppInterface.getManager(70);
+    int m;
+    if (localObject1 != null) {
+      m = ((nlb)localObject1).a(paramQQAppInterface);
+    }
+    for (int k = ((nlb)localObject1).a();; k = 0)
     {
-      Object localObject2;
-      try
-      {
-        i = Integer.parseInt(arrayOfString[0]);
-        localObject4 = arrayOfString[1];
-        paramUPDATE_INFO = str2;
-        localObject3 = str1;
-        if (QLog.isColorLevel()) {
-          QLog.i("QzoneModuleConfigManager", 1, "id:" + str3 + " ,md5:" + str4 + ",url:" + (String)localObject3 + " ,keyClassName:" + paramUPDATE_INFO + ",version:" + str5 + ",mainVersion:" + str6 + ",classIds:" + (String)localObject4 + ",classIDsCount:" + i);
-        }
-        if ((TextUtils.isEmpty(str3)) || (TextUtils.isEmpty((CharSequence)localObject3)) || (TextUtils.isEmpty(str4))) {
-          break;
-        }
-        localObject1 = new bmaw();
-        ((bmaw)localObject1).a(str3).b(str5).c(str6).d((String)localObject3).e(str4).f(paramUPDATE_INFO).g((String)localObject4).a(i).a(0L);
-        return ((bmaw)localObject1).a();
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        QLog.e("QzoneModuleConfigManager", 1, "catch an exception: ", localNumberFormatException);
-        localObject4 = paramUPDATE_INFO;
-        localObject3 = str1;
-        localObject2 = str2;
-      }
-      paramUPDATE_INFO = localObject2;
+      Object localObject2 = (bbav)paramQQAppInterface.getManager(36);
       int i = 0;
-    }
-    return null;
-  }
-  
-  static String a(Map<String, bmav> paramMap)
-  {
-    if ((paramMap != null) && (paramMap.size() > 0))
-    {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = paramMap.keySet().iterator();
-      for (;;)
+      int j = 0;
+      boolean bool1 = false;
+      boolean bool2 = bool1;
+      int n = j;
+      int i1;
+      if (localObject2 != null)
       {
-        if (localIterator.hasNext())
+        n = ((bbav)localObject2).b(0);
+        localObject1 = ((bbav)localObject2).b(0);
+        localObject2 = ((bbav)localObject2).a();
+        if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
+          break label663;
+        }
+        bool1 = false;
+        i = 0;
+        i1 = 0;
+        if (i1 < ((List)localObject1).size())
         {
-          Object localObject = (String)localIterator.next();
-          JSONObject localJSONObject2 = new JSONObject();
-          localObject = (bmav)paramMap.get(localObject);
-          try
-          {
-            localJSONObject2.put("module_id", ((bmav)localObject).jdField_a_of_type_JavaLangString);
-            localJSONObject2.put("module_md5", ((bmav)localObject).e);
-            localJSONObject2.put("module_url", ((bmav)localObject).d);
-            localJSONObject2.put("module_version", ((bmav)localObject).b);
-            localJSONObject2.put("module_main_version", ((bmav)localObject).c);
-            localJSONObject2.put("module_key_class_name", ((bmav)localObject).f);
-            localJSONObject2.put("module_class_ids", ((bmav)localObject).h);
-            localJSONObject2.put("module_class_ids_count", ((bmav)localObject).jdField_a_of_type_Int);
-            localJSONObject2.put("module_file_length", ((bmav)localObject).jdField_a_of_type_Long);
-            localJSONArray.put(localJSONObject2);
+          BusinessInfoCheckUpdate.AppInfo localAppInfo = (BusinessInfoCheckUpdate.AppInfo)((List)localObject1).get(i1);
+          j = i;
+          if (localAppInfo.mission_level.get() != 0) {
+            break label657;
           }
-          catch (JSONException localJSONException)
+          j = i;
+          if (localAppInfo.path.get().contains(".")) {
+            break label657;
+          }
+          if (localAppInfo.iNewFlag.get() != 1) {}
+          for (;;)
           {
+            i1 += 1;
+            break;
+            j = 0;
             for (;;)
             {
-              localJSONException.printStackTrace();
+              if ((j >= ((List)localObject2).size()) || (localAppInfo.uiAppId.get() == ((BusinessInfoCheckUpdate.AppSetting)((List)localObject2).get(j)).appid.get()))
+              {
+                if ((j >= ((List)localObject2).size()) || (((BusinessInfoCheckUpdate.AppSetting)((List)localObject2).get(j)).setting.get())) {
+                  break label288;
+                }
+                break;
+              }
+              j += 1;
             }
+            label288:
+            i += 1;
+            j = i;
+            if (!paramString.equals(localAppInfo.path.get())) {
+              break label657;
+            }
+            bool1 = true;
           }
         }
+        j = i;
+        i = n;
+        n = j;
+        bool2 = bool1;
       }
-      try
+      for (;;)
       {
-        localJSONObject1.put("qzone_networked_modules", localJSONArray);
-        paramMap = localJSONObject1.toString();
-        return paramMap;
-      }
-      catch (JSONException paramMap)
-      {
-        paramMap.printStackTrace();
-      }
-    }
-    return "";
-  }
-  
-  static Map<String, bmav> a(String paramString)
-  {
-    localConcurrentHashMap = new ConcurrentHashMap();
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject(paramString).optJSONArray("qzone_networked_modules");
+        paramString = (bcvn)paramQQAppInterface.getManager(10);
+        int i2 = 0;
+        i1 = 0;
         if (paramString != null)
         {
-          int j = paramString.length();
-          int i = 0;
-          while (i < j)
-          {
-            Object localObject2 = paramString.getJSONObject(i);
-            Object localObject1 = ((JSONObject)localObject2).optString("module_id");
-            String str1 = ((JSONObject)localObject2).optString("module_md5");
-            String str2 = ((JSONObject)localObject2).optString("module_url");
-            String str3 = ((JSONObject)localObject2).optString("module_version");
-            String str4 = ((JSONObject)localObject2).optString("module_main_version");
-            String str5 = ((JSONObject)localObject2).optString("module_key_class_name");
-            String str6 = ((JSONObject)localObject2).optString("module_class_ids");
-            int k = ((JSONObject)localObject2).optInt("module_class_ids_count");
-            long l = ((JSONObject)localObject2).optLong("module_file_length");
-            if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)))
-            {
-              localObject2 = new bmaw();
-              ((bmaw)localObject2).a((String)localObject1).b(str3).c(str4).d(str2).e(str1).f(str5).g(str6).a(k).a(l);
-              localObject1 = ((bmaw)localObject2).a();
-              localConcurrentHashMap.put(((bmav)localObject1).jdField_a_of_type_JavaLangString, localObject1);
-            }
-            i += 1;
-          }
+          i2 = paramString.a(1);
+          i1 = paramString.a(2);
         }
-        return localConcurrentHashMap;
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
-        QLog.e("QzoneModuleConfigManager", 1, paramString, new Object[0]);
-      }
-    }
-  }
-  
-  public bmav a(String paramString)
-  {
-    boolean bool = true;
-    label386:
-    for (;;)
-    {
-      try
-      {
-        bmav localbmav1 = (bmav)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-        bmav localbmav2 = (bmav)this.b.get(paramString);
-        Object localObject = localbmav2;
-        if (localbmav2 == null)
+        j = 0;
+        bool1 = false;
+        paramQQAppInterface = (ReadInJoyManager)paramQQAppInterface.getManager(96);
+        label413:
+        int i6;
+        int i3;
+        label433:
+        int i4;
+        if (paramQQAppInterface != null)
         {
-          localbmav2 = QzoneModuleRecordFactory.getInstance().createRecord(paramString);
-          localObject = new StringBuilder().append("try to create record locally,success ? : ");
-          if (localbmav2 == null) {
-            continue;
-          }
-          QLog.i("QzoneModuleConfigManager", 2, String.valueOf(bool));
-          localObject = localbmav2;
-          if (localbmav2 != null)
+          paramQQAppInterface = paramQQAppInterface.a();
+          if (paramQQAppInterface != null)
           {
-            this.b.put(paramString, localbmav2);
-            localObject = localbmav2;
-          }
-        }
-        if (localbmav1 != null)
-        {
-          localbmav1.jdField_a_of_type_Bmav = ((bmav)localObject);
-          paramString = localbmav1;
-          localObject = paramString;
-          if (paramString != null)
-          {
-            if ((paramString.jdField_a_of_type_Bmav != null) && (!TextUtils.isEmpty(paramString.jdField_a_of_type_Bmav.g)) && (!blru.a().equalsIgnoreCase(paramString.jdField_a_of_type_Bmav.g)))
-            {
-              QLog.i("QzoneModuleConfigManager", 1, "mNewVersion.mQua=" + paramString.jdField_a_of_type_Bmav.g + " is not equal QUA=" + blru.a());
-              paramString.jdField_a_of_type_Bmav = null;
+            j = paramQQAppInterface.a();
+            if ((paramQQAppInterface == null) || (!paramQQAppInterface.a())) {
+              break label617;
             }
-            localObject = paramString;
-            if (!TextUtils.isEmpty(paramString.g))
-            {
-              localObject = paramString;
-              if (!blru.a().equalsIgnoreCase(paramString.g))
-              {
-                QLog.i("QzoneModuleConfigManager", 1, "curRecord.mQua=" + paramString.g + " is not equal QUA=" + blru.a());
-                if ((paramString.jdField_a_of_type_Bmav == null) || (!paramString.e.equalsIgnoreCase(paramString.jdField_a_of_type_Bmav.e))) {
-                  continue;
-                }
-                localObject = paramString.jdField_a_of_type_Bmav;
-                a((bmav)localObject);
-                QLog.i("QzoneModuleConfigManager", 1, "curRecord and updateRecord has the same md5,so needn't to download again,just call updateConfigAfterDownloaded to update cur configs");
-              }
-            }
+            bool1 = true;
           }
-          return localObject;
-          bool = false;
         }
         else
         {
-          paramString = localbmav1;
-          if (localObject == null) {
-            continue;
+          i6 = i2 + k + i + j;
+          if (m <= 0) {
+            break label623;
           }
-          ((bmav)localObject).jdField_a_of_type_Bmav = ((bmav)localObject);
-          if (!TextUtils.equals(((bmav)localObject).e, ((bmav)localObject).e)) {
-            break label386;
+          i3 = 1;
+          if (i1 <= 0) {
+            break label629;
           }
-          ((bmav)localObject).jdField_a_of_type_Long = ((bmav)localObject).jdField_a_of_type_Long;
-          break label386;
+          i4 = 1;
+          label441:
+          if (!bool1) {
+            break label635;
+          }
         }
-        localObject = paramString.jdField_a_of_type_Bmav;
-        continue;
-        paramString = (String)localObject;
+        label617:
+        label623:
+        label629:
+        label635:
+        for (int i5 = 1;; i5 = 0)
+        {
+          i3 = i5 + (n + i3 + i4);
+          if (QLog.isColorLevel()) {
+            QLog.d("PluginPreloadStrategy", 2, "Troop redTouch: " + m + "; Troop num: " + k + "; Message num: " + i + "; Leba redTouch: " + n + "; Business has redTouch: " + bool2 + "; QZone msg count: " + i2 + "; QZone new count: " + i1 + "; ReadInJoy notify count: " + j + "; ReadInJoy need show notify: " + bool1 + "; Total redTouch: " + i3 + "; Total num: " + i6);
+          }
+          if (!bool2) {
+            break label643;
+          }
+          if ((i6 != 0) || (i3 != 1)) {
+            break label641;
+          }
+          return 4;
+          j = 0;
+          break;
+          bool1 = false;
+          break label413;
+          i3 = 0;
+          break label433;
+          i4 = 0;
+          break label441;
+        }
+        label641:
+        return 1;
+        label643:
+        if ((i6 > 0) || (i3 > 0)) {
+          return 2;
+        }
+        return 3;
+        label657:
+        i = j;
+        break;
+        label663:
+        i = n;
+        bool2 = bool1;
+        n = j;
       }
-      finally {}
+      m = 0;
     }
   }
   
-  public ArrayList<UPDATE_INFO> a()
+  protected abstract void a();
+  
+  public void a(bmba parambmba) {}
+  
+  public boolean a(int paramInt1, int paramInt2)
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = QzoneModuleConst.QZONE_MODULES_QBOSS.iterator();
-    if (localIterator.hasNext())
+    if ((1 << Calendar.getInstance().get(7) - 1 & paramInt1) == 0) {}
+    while ((1 << Calendar.getInstance().get(11) & paramInt2) == 0) {
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean a(bmaw parambmaw, String paramString1, QQAppInterface paramQQAppInterface, String paramString2, int paramInt, long paramLong, int[] paramArrayOfInt, bmba parambmba)
+  {
+    if (parambmaw == null) {
+      return false;
+    }
+    if ((parambmaw.jdField_h_of_type_Boolean) && (!a(paramString2)))
     {
-      String str = (String)localIterator.next();
-      UPDATE_INFO localUPDATE_INFO = new UPDATE_INFO();
-      localUPDATE_INFO.id = str;
-      bmav localbmav = (bmav)this.jdField_a_of_type_JavaUtilMap.get(str);
-      if (localbmav != null) {}
-      for (localUPDATE_INFO.ver = localbmav.b;; localUPDATE_INFO.ver = "0")
+      a(parambmba, "preload:fail:notinleba");
+      return false;
+    }
+    if (parambmaw.jdField_b_of_type_Boolean)
+    {
+      int i = a(paramQQAppInterface, paramString1);
+      if ((parambmaw.jdField_c_of_type_Boolean) && (i == 4))
       {
-        localArrayList.add(localUPDATE_INFO);
-        QLog.i("QzoneModuleConfigManager", 1, "getUpdateInfo:" + str);
+        a(parambmba, "preload:ok:reddotonly");
+        return true;
+      }
+      if ((parambmaw.jdField_d_of_type_Boolean) && ((i == 1) || (i == 4)))
+      {
+        a(parambmba, "preload:ok:reddot");
+        return true;
+      }
+      if ((parambmaw.jdField_e_of_type_Boolean) && (i == 2))
+      {
+        a(parambmba, "preload:fail:lebareddot");
+        return false;
+      }
+    }
+    if ((parambmaw.a) && (!a(parambmaw.jdField_b_of_type_Int, parambmaw.jdField_c_of_type_Int)))
+    {
+      a(parambmba, "preload:fail:timecontrol");
+      return false;
+    }
+    if ((parambmaw.j) && (paramInt < parambmaw.jdField_f_of_type_Int))
+    {
+      a(parambmba, "preload:fail:usedtimeslimit");
+      return false;
+    }
+    if (parambmaw.jdField_i_of_type_Boolean)
+    {
+      long l = parambmaw.jdField_e_of_type_Int * 60 * 60 * 1000;
+      if (System.currentTimeMillis() - paramLong > l)
+      {
+        a(parambmba, "preload:fail:notactive");
+        return false;
+      }
+    }
+    if (parambmaw.jdField_f_of_type_Boolean)
+    {
+      if ((System.currentTimeMillis() - paramLong) / 1000L <= parambmaw.jdField_d_of_type_Int) {
+        paramInt = 1;
+      }
+      while (paramInt != 0) {
+        if (parambmaw.jdField_g_of_type_Boolean)
+        {
+          a(parambmba, "preload:ok:cdperiod");
+          return true;
+          paramInt = 0;
+        }
+        else
+        {
+          a(parambmba, "preload:fail:cdperiod");
+          return false;
+        }
+      }
+    }
+    if ((parambmaw.k) && (parambmaw.jdField_g_of_type_Int > 0) && (!a(paramString1, paramQQAppInterface.getCurrentAccountUin(), parambmaw.jdField_g_of_type_Int, paramArrayOfInt, parambmaw.jdField_h_of_type_Int, parambmaw.jdField_i_of_type_Int)))
+    {
+      a(parambmba, "preload:fail:notinuserlearn");
+      return false;
+    }
+    a(parambmba, "preload:ok:normal");
+    return true;
+  }
+  
+  public abstract boolean a(bmba parambmba);
+  
+  public boolean a(String paramString)
+  {
+    Object localObject = akgr.a().b();
+    if ((localObject == null) || (((List)localObject).size() == 0)) {
+      return false;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      arsh localarsh = (arsh)((Iterator)localObject).next();
+      if ((localarsh != null) && (localarsh.a != null) && (localarsh.a.strPkgName != null) && (localarsh.a.strPkgName.contains(paramString))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString1, String paramString2, int paramInt1, int[] paramArrayOfInt, int paramInt2, int paramInt3)
+  {
+    if ((paramString1 == null) || (paramString2 == null) || (paramInt1 <= 0) || (paramArrayOfInt == null)) {
+      return false;
+    }
+    String str1 = paramString1 + "_userlearn_lasttime:" + paramString2;
+    String str2 = paramString1 + "_userlearn_timearea:" + paramString2;
+    String str3 = paramString1 + "_userlearn_timearea_inhour:" + paramString2 + ":";
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("ppp_profile", bhrx.a());
+    long l = localSharedPreferences.getLong(str1, 0L);
+    int i = localSharedPreferences.getInt(str2, 3);
+    if ((System.currentTimeMillis() - l > 86400000L) || (paramInt1 != i))
+    {
+      paramString2 = a(paramArrayOfInt, paramInt1, paramInt2, paramInt3);
+      paramString1 = paramString2;
+      if (paramString2 == null) {
+        break label382;
+      }
+      paramInt2 = 0;
+      while (paramInt2 < paramInt1)
+      {
+        localSharedPreferences.edit().putInt(str3 + paramInt2, paramString2[paramInt2]).commit();
+        paramInt2 += 1;
+      }
+      localSharedPreferences.edit().putInt(str2, paramInt1).commit();
+      localSharedPreferences.edit().putLong(str1, System.currentTimeMillis()).commit();
+    }
+    for (;;)
+    {
+      if (paramString2 != null)
+      {
+        paramInt2 = Calendar.getInstance().get(11);
+        paramInt3 = paramString2.length;
+        paramInt1 = 0;
+        while (paramInt1 < paramInt3)
+        {
+          if (paramInt2 == paramString2[paramInt1])
+          {
+            return true;
+            paramString2 = new int[i];
+            paramInt1 = 0;
+            for (;;)
+            {
+              paramString1 = paramString2;
+              if (paramInt1 >= i) {
+                break;
+              }
+              paramString2[paramInt1] = localSharedPreferences.getInt(str3 + paramInt1, paramInt1 + 20);
+              paramInt1 += 1;
+            }
+          }
+          paramInt1 += 1;
+        }
+      }
+      return false;
+      label382:
+      paramString2 = paramString1;
+    }
+  }
+  
+  public int[] a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramArrayOfInt == null) || (paramInt1 <= 0) || (paramInt1 > paramArrayOfInt.length)) {}
+    do
+    {
+      return null;
+      localObject = new bmav(this, paramInt3);
+      switch (paramInt2)
+      {
+      default: 
+        return null;
+      case 1: 
+        paramInt2 = ((bmav)localObject).a(paramArrayOfInt, paramInt1);
+      }
+    } while (paramInt2 == -1);
+    paramInt3 = paramInt2 - paramInt1 / 2;
+    paramInt2 = paramInt3;
+    if (paramInt3 < 0) {
+      paramInt2 = paramInt3 + paramArrayOfInt.length;
+    }
+    Object localObject = new int[paramInt1];
+    paramInt3 = 0;
+    if (paramInt3 < paramInt1)
+    {
+      localObject[paramInt3] = paramInt2;
+      int i = paramInt2 + 1;
+      if (i >= paramArrayOfInt.length) {}
+      for (paramInt2 = -paramArrayOfInt.length;; paramInt2 = 0)
+      {
+        paramInt3 += 1;
+        paramInt2 = i + paramInt2;
         break;
       }
     }
-    return localArrayList;
+    return localObject;
+    return ((bmav)localObject).a(paramArrayOfInt, paramInt1);
   }
   
-  public void a(SQ_CLIENT_UPDATE_RSP paramSQ_CLIENT_UPDATE_RSP)
+  public boolean b(bmba parambmba)
   {
-    for (;;)
-    {
-      try
-      {
-        QLog.i("QzoneModuleConfigManager", 1, "handleModuleRsp:");
-        if ((paramSQ_CLIENT_UPDATE_RSP == null) || (paramSQ_CLIENT_UPDATE_RSP.vModule == null) || (paramSQ_CLIENT_UPDATE_RSP.vModule.size() <= 0)) {
-          break label505;
-        }
-        QLog.i("QzoneModuleConfigManager", 1, "handleModuleRsp:" + paramSQ_CLIENT_UPDATE_RSP.vModule.size());
-        paramSQ_CLIENT_UPDATE_RSP = paramSQ_CLIENT_UPDATE_RSP.vModule;
-        i = 0;
-        paramSQ_CLIENT_UPDATE_RSP = paramSQ_CLIENT_UPDATE_RSP.iterator();
-        if (paramSQ_CLIENT_UPDATE_RSP.hasNext())
-        {
-          UPDATE_INFO localUPDATE_INFO = (UPDATE_INFO)paramSQ_CLIENT_UPDATE_RSP.next();
-          Object localObject = a(localUPDATE_INFO);
-          if (localObject != null) {
-            this.b.put(((bmav)localObject).jdField_a_of_type_JavaLangString, localObject);
-          }
-          if (localUPDATE_INFO.actype == 4)
-          {
-            QLog.w("QzoneModuleConfigManager", 1, "clear module config:" + localUPDATE_INFO.id);
-            localObject = (bmav)this.jdField_a_of_type_JavaUtilMap.get(localUPDATE_INFO.id);
-            if (localObject == null) {
-              break label508;
-            }
-            localObject = new File(QzoneModuleConst.getModuleSavePath(BaseApplicationImpl.getApplication(), (bmav)localObject));
-            if (((File)localObject).exists()) {
-              ((File)localObject).delete();
-            }
-            this.jdField_a_of_type_JavaUtilMap.remove(localUPDATE_INFO.id);
-            i = 1;
-            if (this.b.containsKey(localUPDATE_INFO.id)) {
-              this.b.remove(localUPDATE_INFO.id);
-            }
-            QzoneModuleConst.clearLastCrashCount(localUPDATE_INFO.id);
-            continue;
-          }
-          if (localUPDATE_INFO.actype == 0) {
-            continue;
-          }
-          QLog.w("QzoneModuleConfigManager", 1, "force update module config:" + localUPDATE_INFO.id);
-          bmav localbmav = (bmav)this.jdField_a_of_type_JavaUtilMap.get(localUPDATE_INFO.id);
-          if (localbmav == null) {
-            continue;
-          }
-          this.jdField_a_of_type_JavaUtilMap.remove(localUPDATE_INFO.id);
-          if (!localbmav.e.equalsIgnoreCase(localUPDATE_INFO.md5))
-          {
-            localObject = new File(QzoneModuleConst.getModuleSavePath(BaseApplicationImpl.getApplication(), localbmav));
-            if (((File)localObject).exists()) {
-              ((File)localObject).delete();
-            }
-            QLog.w("QzoneModuleConfigManager", 1, "force update module md5 is not same,so just delete local file and config:" + localUPDATE_INFO.id);
-          }
-          else if (localObject != null)
-          {
-            this.jdField_a_of_type_JavaUtilMap.put(localUPDATE_INFO.id, localObject);
-            QLog.w("QzoneModuleConfigManager", 1, "force update module md5 is same,so just update config:" + localUPDATE_INFO.id);
-            QzoneModuleConst.clearLastCrashCount(localUPDATE_INFO.id);
-          }
-        }
-      }
-      finally {}
-      if (i != 0) {
-        LocalMultiProcConfig.putString("Qz_setting", "NetworkedModuleConfig_cur", a(this.jdField_a_of_type_JavaUtilMap));
-      }
-      label505:
-      return;
-      label508:
-      continue;
-      int i = 1;
-    }
-  }
-  
-  public void a(bmav parambmav)
-  {
-    if (parambmav != null) {}
-    try
-    {
-      this.b.remove(parambmav.jdField_a_of_type_JavaLangString);
-      Object localObject = (bmav)this.jdField_a_of_type_JavaUtilMap.get(parambmav.jdField_a_of_type_JavaLangString);
-      if ((localObject != null) && (!((bmav)localObject).e.equalsIgnoreCase(parambmav.e)))
-      {
-        localObject = new File(QzoneModuleConst.getModuleSavePath(BaseApplicationImpl.getApplication(), (bmav)localObject));
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
-      }
-      localObject = new File(QzoneModuleConst.getModuleSavePath(BaseApplicationImpl.getApplication(), parambmav));
-      if (((File)localObject).exists()) {
-        parambmav.jdField_a_of_type_Long = ((File)localObject).length();
-      }
-      this.jdField_a_of_type_JavaUtilMap.put(parambmav.jdField_a_of_type_JavaLangString, parambmav);
-      LocalMultiProcConfig.putString("Qz_setting", "NetworkedModuleConfig_cur", a(this.jdField_a_of_type_JavaUtilMap));
-      QzoneModuleConst.clearLastCrashCount(parambmav.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    finally {}
-  }
-  
-  public void b(bmav parambmav)
-  {
-    try
-    {
-      this.b.put(parambmav.jdField_a_of_type_JavaLangString, parambmav);
-      return;
-    }
-    finally
-    {
-      parambmav = finally;
-      throw parambmav;
-    }
+    return true;
   }
 }
 

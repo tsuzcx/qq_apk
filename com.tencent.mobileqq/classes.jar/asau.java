@@ -1,36 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
-import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
+import android.os.Bundle;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.dating.MsgBoxListActivity.6.1;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class asau
-  implements Animator.AnimatorListener
+  implements aydt
 {
-  public asau(EmotionSearchPanel paramEmotionSearchPanel) {}
+  public asau(MsgBoxListActivity paramMsgBoxListActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("EmotionSearchPanel", 2, "upAndDownAnim onAnimationEnd=");
+      QLog.i("MsgBoxListActivity", 2, "follow onReceive errorCode = [" + paramInt + "]");
     }
-    afur.a(this.a.jdField_a_of_type_AndroidWidgetEditText);
-    this.a.c();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionSearchPanel", 2, "upAndDownAnim start animStartBottom=" + EmotionSearchPanel.b(this.a));
-    }
-    EmotionSearchPanel.c(this.a, EmotionSearchPanel.b(this.a));
-    ((aryi)this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(7)).c(4);
+    this.a.b.post(new MsgBoxListActivity.6.1(this, paramInt));
   }
 }
 

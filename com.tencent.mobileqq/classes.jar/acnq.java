@@ -1,50 +1,30 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import com.tencent.ad.tangram.image.AdImageViewAdapter;
+import com.tencent.ad.tangram.image.AdImageViewAdapter.Params;
+import com.tencent.gdtad.views.image.GdtGifImageView;
+import java.lang.ref.WeakReference;
 
-class acnq
-  extends acuc
+public class acnq
+  implements AdImageViewAdapter
 {
-  acnq(acno paramacno, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
+  public View buildImageView(AdImageViewAdapter.Params paramParams)
   {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-    QLog.i("AbsWebView", 1, "onPageFinished:" + paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-    QLog.i("AbsWebView", 1, "onPageStarted:" + paramString);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-    QLog.i("AbsWebView", 1, "onReceivedError url = " + paramInt + ",description = " + paramString1 + ",failingUrl = " + paramString2);
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    super.onReceivedTitle(paramWebView, paramString);
-    QLog.i("AbsWebView", 1, "onReceivedTitle: " + paramString);
-    acno.a(this.a, paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if (acno.a(this.a, paramWebView, paramString)) {
-      return true;
+    if ((paramParams != null) && (paramParams.isValid()))
+    {
+      WeakReference localWeakReference = new WeakReference(new acnr(this, paramParams));
+      return new GdtGifImageView((Context)paramParams.context.get(), paramParams.url, paramParams.gaussianUrl, localWeakReference, paramParams.isOnlyLoadGaussianUrl);
     }
-    return a(paramWebView, paramString);
+    return null;
+  }
+  
+  public void buildImageView(AdImageViewAdapter.Params paramParams, View paramView)
+  {
+    if ((paramView != null) && (paramParams != null) && (paramParams.isValid()))
+    {
+      WeakReference localWeakReference = new WeakReference(new acns(this, paramParams));
+      ((GdtGifImageView)paramView).a(paramParams.url, localWeakReference);
+    }
   }
 }
 

@@ -1,49 +1,29 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class xuw
-  extends QQUIEventReceiver<xui, xfu>
+class xuw
+  implements xvs
 {
-  public xuw(@NonNull xui paramxui)
-  {
-    super(paramxui);
-  }
+  xuw(xut paramxut, xtk paramxtk) {}
   
-  public void a(@NonNull xui paramxui, @NonNull xfu paramxfu)
+  public boolean a_(xvo paramxvo, int paramInt1, int paramInt2)
   {
-    if (!TextUtils.equals(paramxfu.b, String.valueOf(paramxui.hashCode()))) {
-      return;
+    int i;
+    if (paramInt1 == 3) {
+      i = 1;
     }
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramxui.a()).a();
-    if (localVideoViewVideoHolder != null) {
-      localVideoViewVideoHolder.c(false);
-    }
-    paramxui.l();
-    if (paramxfu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    for (;;)
     {
-      yqp.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramxfu.jdField_a_of_type_JavaLangString);
-      if (paramxfu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
+      return this.jdField_a_of_type_Xtk.a(this.jdField_a_of_type_Xut, i, Integer.valueOf(paramInt2));
+      if (paramInt1 == 701)
       {
-        xfs.a().a(paramxui.b(), paramxfu.jdField_a_of_type_JavaLangString);
-        return;
+        i = 2;
       }
-      xfs.a().a(paramxui.b(), paramxfu.jdField_a_of_type_JavaLangString, paramxfu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramxui.hashCode());
-      return;
+      else
+      {
+        i = paramInt1;
+        if (paramInt1 == 702) {
+          i = 3;
+        }
+      }
     }
-    yqp.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131705663), 0).a();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return xfu.class;
   }
 }
 

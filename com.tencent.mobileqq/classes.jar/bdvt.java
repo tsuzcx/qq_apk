@@ -2,7 +2,9 @@ public abstract interface bdvt
 {
   public abstract void a();
   
-  public abstract byte[] a(byte[] paramArrayOfByte);
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(long paramLong1, long paramLong2, int paramInt);
 }
 
 

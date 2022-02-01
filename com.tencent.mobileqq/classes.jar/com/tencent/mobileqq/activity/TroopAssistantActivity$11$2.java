@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import afif;
+import afrj;
 
 public class TroopAssistantActivity$11$2
   implements Runnable
 {
-  public TroopAssistantActivity$11$2(afif paramafif, String paramString) {}
+  public TroopAssistantActivity$11$2(afrj paramafrj, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Afif.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Afrj.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

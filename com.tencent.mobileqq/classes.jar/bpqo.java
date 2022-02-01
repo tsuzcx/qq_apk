@@ -1,23 +1,21 @@
-import android.view.KeyEvent;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.paster.QIMInformationPasterManager.2;
 
-class bpqo
-  implements TextView.OnEditorActionListener
+public class bpqo
+  implements bpqq
 {
-  bpqo(bpqn parambpqn) {}
+  public bpqo(QIMInformationPasterManager.2 param2) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(float paramFloat, String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean, String paramString, bqpa parambqpa)
   {
-    if (paramInt == 6)
-    {
-      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
-      if (paramTextView != null) {
-        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMInformationPasterManager", 2, "isSucess:" + paramBoolean + " url:" + paramString + " item:" + parambqpa);
     }
-    return false;
+    if (parambqpa.a() != null) {
+      parambqpa.a().a(paramBoolean);
+    }
   }
 }
 

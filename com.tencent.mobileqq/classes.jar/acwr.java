@@ -1,40 +1,106 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
 import java.util.List;
 
 public class acwr
 {
-  public int a;
-  long a;
-  public acwb a;
-  public Object a;
-  public String a;
-  public List<MessageRecord> a;
-  public boolean a;
-  public int b;
-  long b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d = true;
-  public int e;
-  public boolean e;
-  public int f;
-  public boolean f = true;
-  public boolean g = true;
-  public boolean h;
-  public volatile boolean i;
+  public View a;
+  private WeakReference<acws> jdField_a_of_type_JavaLangRefWeakReference;
+  private List<WeakReference<acws>> jdField_a_of_type_JavaUtilList;
   
-  public acwr()
+  private int a(WeakReference<acws> paramWeakReference)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = 9223372036854775807L;
-    this.jdField_b_of_type_Long = 0L;
+    int j;
+    if ((paramWeakReference == null) || (paramWeakReference.get() == null))
+    {
+      j = -1;
+      return j;
+    }
+    int i = 0;
+    for (;;)
+    {
+      if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+        break label71;
+      }
+      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (localWeakReference != null)
+      {
+        j = i;
+        if (localWeakReference.get() == paramWeakReference.get()) {
+          break;
+        }
+      }
+      i += 1;
+    }
+    label71:
+    return -1;
   }
   
-  public String toString()
+  private acws a()
   {
-    return "[isComplete = " + this.jdField_a_of_type_Boolean + ", isJoined = " + this.jdField_b_of_type_Boolean + ", isLocalOnly = " + this.c + "]";
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      return (acws)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    }
+    return null;
+  }
+  
+  private void a()
+  {
+    if (a() != null) {
+      a().b();
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+  }
+  
+  private boolean b(WeakReference<acws> paramWeakReference)
+  {
+    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {}
+    while (a(paramWeakReference) != -1) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaUtilList.add(paramWeakReference);
+    return true;
+  }
+  
+  private boolean c(WeakReference<acws> paramWeakReference)
+  {
+    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {}
+    int i;
+    do
+    {
+      return false;
+      i = a(paramWeakReference);
+    } while (i == -1);
+    this.jdField_a_of_type_JavaUtilList.remove(i);
+    return true;
+  }
+  
+  public void a(WeakReference<acws> paramWeakReference)
+  {
+    if ((paramWeakReference == null) || (paramWeakReference.get() == a()))
+    {
+      acvc.a("GdtVideoCommonView", "MutiVideoManager play return: " + paramWeakReference);
+      return;
+    }
+    a();
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    b(paramWeakReference);
+  }
+  
+  public boolean a(WeakReference<acws> paramWeakReference)
+  {
+    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {}
+    do
+    {
+      return false;
+      c(paramWeakReference);
+    } while (this.jdField_a_of_type_JavaUtilList.size() <= 0);
+    paramWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilList.iterator().next();
+    if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
+      ((acws)paramWeakReference.get()).a();
+    }
+    return true;
   }
 }
 

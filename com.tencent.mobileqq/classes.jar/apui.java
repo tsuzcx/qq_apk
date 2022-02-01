@@ -1,50 +1,17 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x74b.oidb_0x74b.VideoHeadInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import com.tencent.mobileqq.ar.view.ViewfinderView;
 
 public class apui
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public String a;
+  public apui(ViewfinderView paramViewfinderView, Rect paramRect) {}
   
-  public static apui a(oidb_0x74b.VideoHeadInfo paramVideoHeadInfo)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Object localObject;
-    if (paramVideoHeadInfo == null) {
-      localObject = null;
-    }
-    apui localapui;
-    do
-    {
-      return localObject;
-      localapui = new apui();
-      if (paramVideoHeadInfo.str_url.has()) {
-        localapui.jdField_a_of_type_JavaLangString = paramVideoHeadInfo.str_url.get();
-      }
-      localObject = localapui;
-    } while (!paramVideoHeadInfo.uint32_video_size.has());
-    localapui.jdField_a_of_type_Int = paramVideoHeadInfo.uint32_video_size.get();
-    return localapui;
-  }
-  
-  public static ArrayList<apui> a(List<oidb_0x74b.VideoHeadInfo> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      apui localapui = a((oidb_0x74b.VideoHeadInfo)paramList.next());
-      if (localapui != null) {
-        localArrayList.add(localapui);
-      }
-    }
-    return localArrayList;
+    ViewfinderView.a(this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView.postInvalidate(this.jdField_a_of_type_AndroidGraphicsRect.left - 6, this.jdField_a_of_type_AndroidGraphicsRect.top - 6, this.jdField_a_of_type_AndroidGraphicsRect.right + 6, this.jdField_a_of_type_AndroidGraphicsRect.bottom + 6);
   }
 }
 

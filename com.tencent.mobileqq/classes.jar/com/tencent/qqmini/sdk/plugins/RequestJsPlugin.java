@@ -27,6 +27,7 @@ import com.tencent.qqmini.sdk.report.MiniReportManager;
 import com.tencent.qqmini.sdk.utils.DomainUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -162,6 +163,17 @@ public class RequestJsPlugin
     return null;
   }
   
+  private static void mergeHeaders(Map<String, String> paramMap, JSONObject paramJSONObject)
+  {
+    if (paramJSONObject.has("header"))
+    {
+      paramJSONObject = paramJSONObject.optJSONObject("header");
+      if (paramJSONObject != null) {
+        paramMap.putAll(JSONUtil.toMap(paramJSONObject));
+      }
+    }
+  }
+  
   private void onCloseCallback(RequestEvent paramRequestEvent, int paramInt1, String paramString, int paramInt2)
   {
     try
@@ -214,7 +226,7 @@ public class RequestJsPlugin
         Object localObject1 = new JSONObject(paramRequestEvent.jsonParams);
         ((RequestStrategyProxy)ProxyManager.get(RequestStrategyProxy.class)).addHttpForwardingInfo((JSONObject)localObject1);
         bool = ((JSONObject)localObject1).optBoolean("__skipDomainCheck__", false);
-        localObject1 = new RequestJsPlugin.RequestTask(this, (JSONObject)localObject1);
+        localObject1 = new RequestJsPlugin.RequestTask(this, paramRequestEvent.jsService, (JSONObject)localObject1);
         str2 = ((RequestJsPlugin.RequestTask)localObject1).mOriginUrl;
         if ((((RequestJsPlugin.RequestTask)localObject1).mMethod != null) && (!supportMethod.contains(((RequestJsPlugin.RequestTask)localObject1).mMethod.toUpperCase())))
         {
@@ -225,7 +237,7 @@ public class RequestJsPlugin
           return localObject1;
         }
         if ((!TextUtils.isEmpty(str2)) && ((str2.startsWith("https://")) || (str2.startsWith("http://")))) {
-          break label222;
+          break label226;
         }
         if (!this.mIsMiniGame) {
           callbackFail(paramRequestEvent, null, "url is invalid");
@@ -243,7 +255,7 @@ public class RequestJsPlugin
     }
     for (;;)
     {
-      label222:
+      label226:
       String str1;
       if (!DomainUtil.isDomainValid(this.mMiniAppInfo, bool, str2, 0))
       {
@@ -480,7 +492,7 @@ public class RequestJsPlugin
     }
     if (NativeBuffer.hasNativeBuffer((JSONObject)localObject7))
     {
-      ??? = NativeBuffer.unpackNativeBuffer(this.mMiniAppContext, (JSONObject)localObject7, "data");
+      ??? = NativeBuffer.unpackNativeBuffer(paramRequestEvent.jsService, (JSONObject)localObject7, "data");
       if ((??? != null) && (((NativeBuffer)???).buf != null) && (this.wsrequestMap != null) && (this.wsrequestMap.size() != 0))
       {
         localObject7 = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(i));

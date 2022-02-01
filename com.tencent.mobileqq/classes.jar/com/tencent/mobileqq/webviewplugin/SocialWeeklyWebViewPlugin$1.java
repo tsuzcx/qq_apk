@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.webviewplugin;
 
-import bhsh;
+import bitc;
 
 public class SocialWeeklyWebViewPlugin$1
   implements Runnable
 {
-  public SocialWeeklyWebViewPlugin$1(bhsh parambhsh, String paramString) {}
+  public SocialWeeklyWebViewPlugin$1(bitc parambitc, String paramString) {}
   
   public void run()
   {
-    bhsh.a(this.this$0, bhsh.b(this.this$0, this.a));
+    bitc.a(this.this$0, bitc.b(this.this$0, this.a));
   }
 }
 

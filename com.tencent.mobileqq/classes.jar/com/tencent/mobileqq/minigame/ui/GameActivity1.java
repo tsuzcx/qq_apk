@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.minigame.ui;
 
 import Override;
-import acsb;
-import acsc;
+import acwf;
+import acwg;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,12 +21,12 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aqcb;
-import aqfv;
-import aqfx;
-import bies;
-import bjwg;
-import bjxj;
+import aqre;
+import aquy;
+import aqva;
+import bjfr;
+import bkxg;
+import bkyl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -48,9 +48,9 @@ import org.json.JSONObject;
 public class GameActivity1
   extends BaseActivity
 {
-  private bjwg mAddColorSingListener;
-  protected aqcb mColorNoteController;
-  private aqfx mColorNoteServiceListenr;
+  private bkxg mAddColorSingListener;
+  protected aqre mColorNoteController;
+  private aqva mColorNoteServiceListenr;
   private RelativeLayout mRoot;
   private IUIProxy mUIProxy;
   private MiniAIOEntryView miniAIOEntryView;
@@ -80,7 +80,7 @@ public class GameActivity1
     //   0: aconst_null
     //   1: astore_3
     //   2: aload_0
-    //   3: invokestatic 119	bjxn:a	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   3: invokestatic 119	bkyr:a	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
     //   6: astore_2
     //   7: invokestatic 125	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   10: astore_0
@@ -235,7 +235,7 @@ public class GameActivity1
         setContentView(localRelativeLayout);
         localFrameLayout = new FrameLayout(this);
         localRelativeLayout.addView(localFrameLayout, new RelativeLayout.LayoutParams(-1, -1));
-        bjxj.a();
+        bkyl.a();
         initUIProxy(getIntent());
         if (this.mUIProxy == null)
         {
@@ -256,14 +256,14 @@ public class GameActivity1
         this.mUIProxy.onAttachActivity(this, paramBundle, localFrameLayout);
         this.mUIProxy.onIntentUpdate(getIntent());
         paramBundle = (MiniAppInfo)getIntent().getParcelableExtra("KEY_APPINFO");
-        this.mColorNoteController = new aqcb(this, false, true);
+        this.mColorNoteController = new aqre(this, false, true);
         this.mColorNoteController.a(this);
         this.mColorNoteController.a(new GameActivity1.1(this, paramBundle));
         this.mColorNoteController.a(new GameActivity1.2(this));
         this.mColorNoteController.a(new GameActivity1.3(this));
         this.mColorNoteServiceListenr = new GameActivity1.4(this);
         this.mColorNoteController.a(this.mColorNoteServiceListenr);
-        acsb.a().a(this, new acsc());
+        acwf.a().a(this, new acwg());
         getSharedPreferences("sdk_conf", 4).edit().putInt("usersdk", 1).apply();
       }
     }
@@ -279,7 +279,7 @@ public class GameActivity1
     if (this.mUIProxy != null) {
       this.mUIProxy.onDetachActivity(this);
     }
-    bjxj.b();
+    bkyl.b();
     QLog.i("qqBaseActivity", 1, "[MiniEng]doOnDestroy " + this);
   }
   
@@ -335,7 +335,7 @@ public class GameActivity1
     if (this.mColorNoteController != null) {
       this.mColorNoteController.b();
     }
-    aqfv.a(this, 2, true);
+    aquy.a(this, 2, true);
   }
   
   public void doOnResume()
@@ -344,11 +344,11 @@ public class GameActivity1
     if (this.mUIProxy != null) {
       this.mUIProxy.onMiniResume();
     }
-    bies.a(this);
+    bjfr.a(this);
     if (this.mColorNoteController != null) {
       this.mColorNoteController.a();
     }
-    aqfv.a(BaseApplicationImpl.getContext(), 2, false);
+    aquy.a(BaseApplicationImpl.getContext(), 2, false);
   }
   
   public void doOnStart()
@@ -387,7 +387,7 @@ public class GameActivity1
     }
   }
   
-  public aqcb getColorNoteController()
+  public aqre getColorNoteController()
   {
     return this.mColorNoteController;
   }
@@ -434,9 +434,9 @@ public class GameActivity1
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void setColorSignAddListener(bjwg parambjwg)
+  public void setColorSignAddListener(bkxg parambkxg)
   {
-    this.mAddColorSingListener = parambjwg;
+    this.mAddColorSingListener = parambkxg;
   }
   
   public boolean showMiniAIOEntrance(JSONObject paramJSONObject)

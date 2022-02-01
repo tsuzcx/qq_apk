@@ -1,20 +1,14 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class nth
-  implements View.OnClickListener
+class nth
+  implements DialogInterface.OnDismissListener
 {
-  public nth(AccountDetailActivity paramAccountDetailActivity, String paramString) {}
+  nth(ntc paramntc) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Intent localIntent = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.f = false;
   }
 }
 

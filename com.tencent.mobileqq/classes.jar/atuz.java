@@ -1,43 +1,36 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class atuz
+class atuz
+  implements aumn
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  public String b;
-  public String c;
+  atuz(atuv paramatuv) {}
   
-  private atuz(atut paramatut) {}
-  
-  public void a() {}
-  
-  public void a(Context paramContext)
+  public void a()
   {
-    paramContext.getSharedPreferences("FMSETTING_59", 3).edit().putString("DefaultRootPath", this.b).commit();
-    paramContext = atut.a(this.jdField_a_of_type_Atut, this.b + this.c);
-    Object localObject = atut.b(this.jdField_a_of_type_Atut, this.b + this.c);
-    String str = atut.c(this.jdField_a_of_type_Atut, this.b + this.c);
-    atut.a(this.jdField_a_of_type_Atut, paramContext);
-    atut.a(this.jdField_a_of_type_Atut, str);
-    atut.a(this.jdField_a_of_type_Atut, (String)localObject);
-    paramContext = this.jdField_a_of_type_Atut.a.keySet().iterator();
-    while (paramContext.hasNext())
-    {
-      localObject = (String)paramContext.next();
-      localObject = (atuz)this.jdField_a_of_type_Atut.a.get(localObject);
-      if ((((atuz)localObject).jdField_a_of_type_Boolean) && (localObject != this))
-      {
-        atut.a(2, "getDefaultStorage[" + ((atuz)localObject).b + "]");
-        ((atuz)localObject).jdField_a_of_type_Boolean = false;
-      }
+    this.a.b();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.a(2005);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 12, null, paramInt, null);
+    aunj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.j, this.a.jdField_g_of_type_Long, atuv.a(this.a), this.a.e, this.a.jdField_g_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9040L, "", this.a.i, this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Long, atuv.a(this.a), "", atuv.a(this.a), "sdcard full", null);
+    aunj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.k, this.a.jdField_g_of_type_Long, atuv.a(this.a), this.a.e, this.a.jdField_g_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9040L, "", this.a.i, this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Long, atuv.a(this.a), "", atuv.b(this.a), "sdcard full", null);
+  }
+  
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.a.jdField_d_of_type_JavaLangString.equalsIgnoreCase(paramString1)) {
+      this.a.jdField_d_of_type_JavaLangString = paramString2;
     }
-    this.jdField_a_of_type_Boolean = true;
+    while (!this.a.jdField_b_of_type_JavaLangString.equalsIgnoreCase(paramString1)) {
+      return;
+    }
+    this.a.jdField_b_of_type_JavaLangString = paramString2;
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(paramString2);
   }
 }
 

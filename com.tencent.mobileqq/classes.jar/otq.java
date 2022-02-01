@@ -1,28 +1,33 @@
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class otq
-  implements oqy
+  extends ClickableSpan
 {
-  otq(otn paramotn) {}
+  otq(otp paramotp, SubCommentData paramSubCommentData) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (otn.a(this.a).booleanValue())
+    osp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.uin, BaseActivity.sTopActivity);
+    paramView = new orb(this.jdField_a_of_type_Otp).a().a();
+    ocd.a(null, osp.a(this.jdField_a_of_type_Otp.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Otp.a.mArticleID), String.valueOf(this.jdField_a_of_type_Otp.a.mAlgorithmID), this.jdField_a_of_type_Otp.a.innerUniqueID, paramView, false);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.isAuthorSelection()) {}
+    for (String str = "#FF8444";; str = "#737373")
     {
-      if ((otn.a(this.a).isShown()) && (otn.a(this.a).getWindowVisibility() == 0))
-      {
-        otn.a(this.a, otn.a(this.a));
-        otn.a(this.a).removeCallbacks(otn.a(this.a));
-        otn.a(this.a).postDelayed(otn.a(this.a), otn.a(this.a).mAdvertisementExtInfo.p);
-      }
-    }
-    else {
+      paramTextPaint.setColor(Color.parseColor(str));
+      paramTextPaint.setUnderlineText(false);
       return;
     }
-    otn.a(this.a, Boolean.valueOf(false));
-    otn.a(this.a, otn.a(this.a));
   }
 }
 

@@ -1,10 +1,15 @@
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerViewNew;
+
 public class aafk
+  implements aaex
 {
-  private static boolean a;
+  public aafk(RecommendBannerViewNew paramRecommendBannerViewNew) {}
   
-  public static boolean a()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    return a;
+    if (paramBoolean) {
+      RecommendBannerViewNew.a(this.a, paramInt);
+    }
   }
 }
 

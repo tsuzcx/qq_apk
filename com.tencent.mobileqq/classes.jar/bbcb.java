@@ -1,10 +1,8 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.view.View;
 
-public class bbcb
+public abstract interface bbcb
 {
-  public ProgressBar a;
-  public TextView a;
+  public abstract void a(View paramView);
 }
 
 

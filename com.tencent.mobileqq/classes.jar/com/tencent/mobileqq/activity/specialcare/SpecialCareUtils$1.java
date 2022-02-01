@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import aueq;
-import auez;
+import auwl;
+import auwu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -12,12 +12,12 @@ public final class SpecialCareUtils$1
   
   public void run()
   {
-    if (aueq.a().a())
+    if (auwl.a().a())
     {
       if (QLog.isColorLevel()) {
         QLog.d("SpecialCareUtils", 2, "preLoadSpecialCareSettingPage");
       }
-      auez.a(this.a, null);
+      auwu.a(this.a, null);
     }
   }
 }

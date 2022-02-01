@@ -1,26 +1,18 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class npb
-  implements View.OnClickListener
+  implements aasd
 {
-  public npb(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  public npb(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void onClick(View paramView)
+  public void callback(Bundle paramBundle)
   {
-    if (this.a.a != null)
+    if (paramBundle != null)
     {
-      Intent localIntent = new Intent(this.a, ChatHistory.class);
-      localIntent.putExtra("uin", EqqAccountDetailActivity.i(this.a));
-      localIntent.putExtra("uintype", 1024);
-      this.a.startActivity(localIntent);
-      oat.a(EqqAccountDetailActivity.i(this.a), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.j(this.a), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
+      int i = paramBundle.getInt("mode");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

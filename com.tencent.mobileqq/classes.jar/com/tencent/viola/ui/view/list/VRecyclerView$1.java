@@ -11,7 +11,10 @@ class VRecyclerView$1
   public void onRefreshMove(int paramInt)
   {
     ViolaLogUtils.d("VRecyclerView", "onRefreshMove offset:" + paramInt);
-    VRecyclerView.access$102(this.this$0, paramInt);
+    if (VRecyclerView.access$100(this.this$0) != null) {
+      VRecyclerView.access$100(this.this$0).onVerticalScroll(this.this$0, paramInt);
+    }
+    VRecyclerView.access$202(this.this$0, paramInt);
     this.this$0.performOnScroll(0, 0);
   }
 }

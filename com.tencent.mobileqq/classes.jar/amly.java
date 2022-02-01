@@ -1,11 +1,15 @@
-import com.tencent.mobileqq.apollo.ApolloTicker.NativeDrawTask;
-import java.util.Timer;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class amly
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherPreloadWebPageConfigProcessor$Companion;", "", "()V", "CONFIG_ID", "", "TAG", "", "enablePreloadWebProcess", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amly
 {
-  public int a;
-  public ApolloTicker.NativeDrawTask a;
-  public Timer a;
+  public final boolean a()
+  {
+    Object localObject = aran.a().a(638);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
+    return ((amlz)localObject).a();
+  }
 }
 
 

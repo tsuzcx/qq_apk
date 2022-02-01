@@ -1,26 +1,11 @@
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.intimate.IntimateScoreCardView;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 
-public class agob
-  implements Animator.AnimatorListener
+public abstract interface agob
 {
-  public agob(IntimateScoreCardView paramIntimateScoreCardView) {}
+  public abstract void a(Animator paramAnimator, int paramInt);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    onAnimationEnd(paramAnimator);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    IntimateScoreCardView.a(this.a).setAlpha(1.0F);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void a(LottieDrawable paramLottieDrawable, int paramInt);
 }
 
 

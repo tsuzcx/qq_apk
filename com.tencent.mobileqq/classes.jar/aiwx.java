@@ -1,20 +1,20 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-public class aiwx
-  extends MqqHandler
+class aiwx
+  implements aixl
 {
-  public aiwx(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
+  aiwx(aiwv paramaiwv, List paramList) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(long paramLong, boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    if (paramBoolean)
     {
-    default: 
+      aiwv.a(this.jdField_a_of_type_Aiwv, this.jdField_a_of_type_JavaUtilList, paramLong, 1);
       return;
     }
-    NewFriendVerifyBlockedListFragment.a(this.a);
+    QQToast.a(aiwv.a(this.jdField_a_of_type_Aiwv).a(), 0, 2131719109, 0).a();
   }
 }
 

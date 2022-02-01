@@ -1,21 +1,14 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.util.Comparator;
 
 public class afwj
-  extends View.AccessibilityDelegate
+  implements Comparator<afwe>
 {
-  public afwj(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  public afwj(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  @TargetApi(16)
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public int a(afwe paramafwe1, afwe paramafwe2)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      paramAccessibilityNodeInfo.setVisibleToUser(false);
-    }
+    return paramafwe1.f.compareToIgnoreCase(paramafwe2.f);
   }
 }
 

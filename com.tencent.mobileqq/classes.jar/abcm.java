@@ -1,463 +1,296 @@
-import android.app.Activity;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Bundle;
+import UserGrowth.stReportItem;
+import WEISHI_USER_GROWTH.WEISHI.stGetPersonalPageRsp;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBInt64Field;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.network.request.GetMineWSPersonalRequest;
+import com.tencent.biz.videostory.widget.view.MineWSPanel.3;
+import com.tencent.biz.videostory.widget.view.MineWSPanel.4;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.CookieManager;
-import com.tencent.util.Pair;
-import java.util.HashMap;
-import mqq.app.NewIntent;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.List;
+import mqq.app.MobileQQ;
 
 public class abcm
-  extends WebViewPlugin
+  implements IEventReceiver
 {
-  int jdField_a_of_type_Int = 5;
-  long jdField_a_of_type_Long = 0L;
-  protected Activity a;
-  private arpd jdField_a_of_type_Arpd = new abcn(this);
-  private CookieManager jdField_a_of_type_ComTencentSmttSdkCookieManager;
-  public HashMap<String, Long> a;
-  NewIntent jdField_a_of_type_MqqAppNewIntent;
-  int b;
-  public HashMap<String, Long> b;
-  public HashMap<String, Long> c = new HashMap();
-  HashMap<String, Pair<Long, Integer>> d = new HashMap();
-  HashMap<String, Integer> e = new HashMap();
+  private aazc jdField_a_of_type_Aazc;
+  private abcr jdField_a_of_type_Abcr;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bahu jdField_a_of_type_Bahu;
+  private GetMineWSPersonalRequest jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestGetMineWSPersonalRequest;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private View jdField_b_of_type_AndroidViewView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private String jdField_b_of_type_JavaLangString;
   
-  public abcm()
+  public abcm(bahu parambahu)
   {
-    this.jdField_b_of_type_Int = 204800;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.mPluginNameSpace = "sso";
+    this.jdField_a_of_type_Bahu = parambahu;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = parambahu.a();
+    this.jdField_a_of_type_Aazc = new aazc(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
   }
   
-  private void a(String paramString, int paramInt)
+  @NonNull
+  private WSDownloadParams a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SSOWebviewPlugin_apollo_store_stability_", 2, "reportSSOTimeout. cmd=" + paramString);
-    }
-    amix localamix = amix.a();
-    if (localamix.a(paramString)) {
-      localamix.a(paramString, null, -1001, paramInt);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("SSOWebviewPlugin_apollo_store_stability_", 2, "reportSSOTimeout. cmd is not in white list");
+    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
+    localWSDownloadParams.mScene = 3;
+    localWSDownloadParams.mLinkStrategyType = 0;
+    localWSDownloadParams.mEventId = paramInt;
+    stReportItem localstReportItem = uno.a();
+    localstReportItem.pagetype = 1;
+    localstReportItem.optype = 115;
+    localWSDownloadParams.mStReportItem = localstReportItem;
+    return localWSDownloadParams;
   }
   
-  private void a(String paramString, long paramLong, int paramInt)
+  private void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SSOWebviewPlugin_apollo_store_stability_", 2, "reportSSORetCodeNonZero. cmd=" + paramString + " ssoErrorCode=" + paramLong);
+    if ((this.jdField_a_of_type_Bahu != null) && ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof FriendProfileCardActivity)))
+    {
+      QLog.i("MineWSPanel", 2, "setWeiShiPanelState isShow:" + paramBoolean);
+      this.jdField_a_of_type_Bahu.a(paramBoolean);
     }
-    amix localamix = amix.a();
-    if (localamix.a(paramString)) {
-      localamix.a(paramString, null, -1002, paramInt);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("SSOWebviewPlugin_apollo_store_stability_", 2, "reportSSORetCodeNonZero. cmd is not in white list");
   }
   
-  private void b(String paramString, int paramInt)
+  private void a(byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SSOWebviewPlugin_apollo_store_stability_", 2, "reportSSOSuccessCost. cmd=" + paramString + " ssoCost=" + paramInt);
-    }
-    amix localamix = amix.a();
-    if (localamix.a(paramString)) {
-      localamix.a(paramString, null, 1000, paramInt);
-    }
-    while (!QLog.isColorLevel()) {
+    if (paramArrayOfByte == null)
+    {
+      QLog.i("MineWSPanel", 2, "response is null");
       return;
     }
-    QLog.d("SSOWebviewPlugin_apollo_store_stability_", 2, "reportSSORetCodeNonZero. cmd is not in white list");
+    ThreadManager.excute(new MineWSPanel.3(this, paramArrayOfByte), 32, null, true);
   }
   
-  private void b(String paramString1, String paramString2)
+  private void b(boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString1)) {}
-    while (this.mRuntime == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SSOWebviewPlugin", 2, "uniAgent, jsonStr=" + paramString1 + ", url=" + paramString2);
-    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) {}
+    label135:
+    label142:
+    label191:
     for (;;)
     {
-      try
+      return;
+      int i;
+      if (this.jdField_a_of_type_Boolean)
       {
-        JSONObject localJSONObject = new JSONObject(paramString1);
-        String str1 = localJSONObject.getString("cmd");
-        paramString2 = localJSONObject.getString("callback");
-        if (localJSONObject.has("timeout"))
+        i = 1;
+        abbe.a("weishi_share_prof", "entry_clk", i, 0, new String[0]);
+        boolean bool = zqd.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+        umm.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, bool, paramBoolean);
+        if (bool) {
+          break label142;
+        }
+        abbe.a("weishi_share_prof", "dl_clk", 0, 0, new String[0]);
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, anzj.a(2131705658), 0).a();
+        if (!this.jdField_a_of_type_Boolean) {
+          break label135;
+        }
+        i = 201;
+        label96:
+        WSDownloadParams localWSDownloadParams = a(i);
+        ugz.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localWSDownloadParams, false);
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Abcr == null) {
+          break label191;
+        }
+        this.jdField_a_of_type_Abcr.a();
+        return;
+        i = 2;
+        break;
+        i = 200;
+        break label96;
+        if ((this.jdField_a_of_type_Boolean) && (paramBoolean))
         {
-          l1 = localJSONObject.getLong("timeout");
-          if (QLog.isColorLevel()) {
-            QLog.d("SSOWebviewPlugin", 2, "uniAgent, req, cmd=" + str1 + ", callbackId=" + paramString2 + ",timeout = " + l1);
-          }
-          if (TextUtils.isEmpty(paramString2))
-          {
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("SSOWebviewPlugin", 2, "uniAgent, req aborted, reason: no callbackId");
-            return;
-          }
-          if (TextUtils.isEmpty(str1))
-          {
-            paramString1 = new JSONObject();
-            paramString1.put("ssoRet", 255);
-            paramString1.put("businessRet", 0);
-            paramString1.put("msg", anni.a(2131713033));
-            super.callJs(paramString2, new String[] { paramString1.toString() });
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("SSOWebviewPlugin", 2, "uniAgent, req aborted, reason: no cmd");
-            return;
-          }
-          if (!bgnt.g(this.jdField_a_of_type_AndroidAppActivity))
-          {
-            paramString1 = new JSONObject();
-            paramString1.put("ssoRet", 103);
-            paramString1.put("businessRet", 0);
-            paramString1.put("msg", "MSF未连接");
-            super.callJs(paramString2, new String[] { paramString1.toString() });
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("SSOWebviewPlugin", 2, "uniAgent, req aborted, reason: network unavailable");
-            return;
-          }
-          long l2 = 10240L;
-          if (this.jdField_b_of_type_JavaUtilHashMap.containsKey(str1)) {
-            l2 = ((Long)this.jdField_b_of_type_JavaUtilHashMap.get(str1)).longValue();
-          }
-          if (l2 > 0L)
-          {
-            long l3 = localJSONObject.toString().getBytes().length;
-            if (l3 > l2)
-            {
-              paramString1 = new JSONObject();
-              paramString1.put("ssoRet", 101);
-              paramString1.put("businessRet", 0);
-              paramString1.put("msg", anni.a(2131713041));
-              super.callJs(paramString2, new String[] { paramString1.toString() });
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("SSOWebviewPlugin", 2, "uniAgent, req aborted, reason: pkg size exceeded, dataLength=" + l3 + ", maxPkgSize=" + l2);
-              return;
-            }
-          }
-          l2 = System.currentTimeMillis() / 1000L;
-          if (this.d.containsKey(str1))
-          {
-            localObject = (Pair)this.d.get(str1);
-            if (!this.e.containsKey(str1)) {
-              break label1484;
-            }
-            i = ((Integer)this.e.get(str1)).intValue();
-            if (((Long)((Pair)localObject).first).longValue() != l2)
-            {
-              this.d.put(str1, new Pair(Long.valueOf(l2), Integer.valueOf(0)));
-              if (localJSONObject.has("needCookie"))
-              {
-                i = localJSONObject.getInt("needCookie");
-                if (QLog.isColorLevel()) {
-                  QLog.d("SSOWebviewPlugin", 2, "uniAgent, req, needCookie=" + i);
-                }
-                if (i == 1)
-                {
-                  localObject = this.mRuntime.a();
-                  if (localObject != null)
-                  {
-                    localObject = ((CustomWebView)localObject).getUrl();
-                    if (!TextUtils.isEmpty((CharSequence)localObject))
-                    {
-                      if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager == null)
-                      {
-                        this.jdField_a_of_type_ComTencentSmttSdkCookieManager = CookieManager.getInstance();
-                        this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setAcceptCookie(true);
-                      }
-                      String str2 = this.jdField_a_of_type_ComTencentSmttSdkCookieManager.getCookie((String)localObject);
-                      if (!TextUtils.isEmpty(str2))
-                      {
-                        if (str2.indexOf(',') != -1) {
-                          str2.replace(',', ';');
-                        }
-                        localJSONObject.put("Cookie", str2);
-                      }
-                      if (QLog.isColorLevel()) {
-                        QLog.d("SSOWebviewPlugin", 2, "Get cookie:" + nmj.c(str2, new String[0]) + " from " + nmj.b((String)localObject, new String[0]));
-                      }
-                    }
-                  }
-                }
-              }
-              if ((this.mRuntime.a() == null) || (!amzk.a().a(this.mRuntime.a().getUrl(), paramString1, this.mRuntime.a(), this))) {
-                continue;
-              }
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("SSOWebviewPlugin", 2, "apollo_client_ApolloWebDataHandler uniAgent, req, cmd=" + str1 + " doInterceptApolloCmd:true");
-              return;
-            }
-            if (((Integer)((Pair)localObject).second).intValue() + 1 <= i)
-            {
-              this.d.put(str1, new Pair(Long.valueOf(l2), Integer.valueOf(((Integer)((Pair)localObject).second).intValue() + 1)));
-              continue;
-            }
-            paramString1 = new JSONObject();
-            paramString1.put("ssoRet", 102);
-            paramString1.put("businessRet", 0);
-            paramString1.put("msg", anni.a(2131713030));
-            super.callJs(paramString2, new String[] { paramString1.toString() });
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("SSOWebviewPlugin", 2, "uniAgent, req aborted, reason: requests too frequently, cmd: " + str1 + ", freq: " + i);
-            return;
-          }
-          this.d.put(str1, new Pair(Long.valueOf(l2), Integer.valueOf(0)));
-          continue;
-          Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-          ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-          ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-          ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
-          paramString1 = new WebSSOAgent.UniSsoServerReq();
-          paramString1.comm.set((MessageMicro)localObject);
-          localJSONObject.remove("callback");
-          localJSONObject.remove("cmd");
-          localJSONObject.remove("needCookie");
-          localJSONObject.remove("timeout");
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("fingerprint", Build.FINGERPRINT);
-          ((JSONObject)localObject).put("model", Build.MODEL);
-          ((JSONObject)localObject).put("manufacturer", Build.MANUFACTURER);
-          ((JSONObject)localObject).put("brand", Build.BRAND);
-          ((JSONObject)localObject).put("device", Build.DEVICE);
-          ((JSONObject)localObject).put("product", Build.PRODUCT);
-          ((JSONObject)localObject).put("id", Build.ID);
-          ((JSONObject)localObject).put("level", Build.VERSION.SDK_INT);
-          ((JSONObject)localObject).put("cpu_abi", Build.CPU_ABI);
-          ((JSONObject)localObject).put("cpu_abi2", Build.CPU_ABI2);
-          localJSONObject.put("option", localObject);
-          paramString1.reqdata.set(localJSONObject.toString());
-          localObject = new NewIntent(this.mRuntime.a().getApplicationContext(), avqx.class);
-          ((NewIntent)localObject).putExtra("extra_cmd", str1);
-          ((NewIntent)localObject).putExtra("extra_data", paramString1.toByteArray());
-          ((NewIntent)localObject).putExtra("extra_callbackid", paramString2);
-          ((NewIntent)localObject).putExtra("extra_timeout", l1);
-          if (QLog.isColorLevel()) {
-            QLog.d("SSOWebviewPlugin", 2, "uniAgent, req, cmd=" + str1 + ", reqData=" + localJSONObject.toString());
-          }
-          ((NewIntent)localObject).setObserver(new abco(this, System.currentTimeMillis(), str1));
-          if (QLog.isColorLevel()) {
-            QLog.d("SSOWebviewPlugin", 2, "uniAgent, req, send request to msf");
-          }
-          this.mRuntime.a().startServlet((NewIntent)localObject);
-          return;
+          e();
+          abbe.a("weishi_share_prof", "clk_ws", 1, 0, new String[0]);
+        }
+        else
+        {
+          d();
+          abbe.a("weishi_share_prof", "clk_ws", 2, 0, new String[0]);
         }
       }
-      catch (JSONException paramString1)
-      {
-        return;
-        long l1 = -1L;
-        continue;
-      }
-      catch (NullPointerException paramString1)
-      {
-        return;
-      }
-      label1484:
-      int i = 10;
     }
   }
   
-  private void c(String paramString1, String paramString2) {}
-  
-  protected void a(String paramString1, String paramString2)
+  private void d()
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    String[] arrayOfString;
-    String str2;
-    String str3;
-    String str1;
-    do
-    {
-      return;
-      try
-      {
-        arrayOfString = Uri.parse(paramString2).getHost().split("\\.");
-        paramString1 = new JSONObject(paramString1);
-        str2 = paramString1.getString("data");
-        str3 = paramString1.getString("cmd");
-        c(str3, str2);
-        str1 = paramString1.getString("callback");
-        if (this.jdField_a_of_type_Long == 0L) {
-          break label202;
-        }
-        if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= this.jdField_a_of_type_Int * 1000) {
-          break;
-        }
-        paramString1 = new JSONObject();
-        paramString1.put("cret", 1);
-        callJs(str1, new String[] { paramString1.toString() });
-        return;
-      }
-      catch (Exception paramString1) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("SSOWebviewPlugin", 2, "send request error!");
-    return;
-    if (str2.getBytes().length > this.jdField_b_of_type_Int)
-    {
-      paramString1 = new JSONObject();
-      paramString1.put("cret", 2);
-      callJs(str1, new String[] { paramString1.toString() });
-      return;
-      label202:
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+    String str = "weishi://profile?person_id=";
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      str = "weishi://profile?person_id=" + this.jdField_b_of_type_JavaLangString;
     }
-    int i = arrayOfString.length;
-    paramString1 = "";
-    i -= 1;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (str = str + "&logsour=2020020031";; str = str + "&logsour=2020020029")
+    {
+      uqh.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "biz_src_jc_gxl", str);
+      return;
+    }
+  }
+  
+  private void e()
+  {
+    uqh.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "biz_src_jc_gxl", "weishi://camera?logsour=2020020030");
+  }
+  
+  public ImageView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public void a()
+  {
+    QLog.i("MineWSPanel", 2, "requestWeiShiFeedListDataFromServer mUin=" + this.jdField_a_of_type_JavaLangString);
+    if (!nny.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getApplication().getApplicationContext())) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestGetMineWSPersonalRequest = new GetMineWSPersonalRequest(this.jdField_a_of_type_JavaLangString + "", 1);
+    VSNetworkHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestGetMineWSPersonalRequest, new abcq(this));
+  }
+  
+  public void a(WEISHI.stGetPersonalPageRsp paramstGetPersonalPageRsp, boolean paramBoolean)
+  {
+    if (paramstGetPersonalPageRsp == null) {
+      QLog.i("MineWSPanel", 2, "rsp is null");
+    }
+    label211:
     for (;;)
     {
-      if (i >= 0)
-      {
-        paramString2 = paramString1 + arrayOfString[i];
-        paramString1 = paramString2;
-        if (i != 0) {
-          paramString1 = paramString2 + "_";
+      return;
+      int j = paramstGetPersonalPageRsp.feed_num.get();
+      this.jdField_b_of_type_JavaLangString = paramstGetPersonalPageRsp.personid.get();
+      QLog.i("MineWSPanel", 2, "[MineWSPanel.java][setData] feedNum:" + j + ", isFromDb:" + paramBoolean);
+      int i;
+      if (j > 0) {
+        if (!paramBoolean)
+        {
+          if (this.jdField_a_of_type_Boolean)
+          {
+            i = 1;
+            abbe.a("weishi_share_prof", "entry_exp", i, 0, new String[0]);
+          }
+        }
+        else
+        {
+          a(true);
+          if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+            this.jdField_b_of_type_AndroidWidgetTextView.setText(j + anzj.a(2131705659));
+          }
         }
       }
-      else
+      for (;;)
       {
-        paramString2 = new NewIntent(this.mRuntime.a().getApplicationContext(), niq.class);
-        paramString2.putExtra("cmd", "MQUpdateSvc_" + paramString1 + ".web." + str3);
-        paramString1 = new WebSsoBody.WebSsoRequestBody();
-        paramString1.type.set(0);
-        paramString1.data.set(str2);
-        paramString2.putExtra("data", paramString1.toByteArray());
-        paramString2.setObserver(new abcp(this, str1, str3));
-        this.mRuntime.a().startServlet(paramString2);
+        if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) {
+          break label211;
+        }
+        paramstGetPersonalPageRsp = paramstGetPersonalPageRsp.feeds.get();
+        if ((paramstGetPersonalPageRsp != null) && (paramstGetPersonalPageRsp.size() != 0)) {
+          break label213;
+        }
+        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
         return;
-      }
-      i -= 1;
-    }
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool = true;
-    if (!"sso".equals(paramString2)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          if (!"sendRequest".equals(paramString3)) {
-            break;
-          }
-        } while (paramVarArgs.length <= 0);
-        a(paramVarArgs[0], this.mRuntime.a().getUrl());
-        return true;
-        if (!"uniAgent".equals(paramString3)) {
-          break;
-        }
-      } while (paramVarArgs.length <= 0);
-      avqx.jdField_a_of_type_Long = System.currentTimeMillis();
-      b(paramVarArgs[0], paramString1);
-      return true;
-    } while ((!"PublicFollow".equals(paramString3)) || (paramVarArgs.length <= 0));
-    for (;;)
-    {
-      try
-      {
-        paramString1 = new JSONObject(paramVarArgs[0]);
-        if (paramString1.optInt("follow") == 1)
-        {
-          paramJsBridgeListener = paramString1.optString("uin");
-          paramString1 = paramString1.getString("callback");
-          if (QLog.isColorLevel()) {
-            QLog.d("SSOWebviewPlugin", 2, "sso.PublicFollow isFollow: " + bool + "  uin: " + paramJsBridgeListener);
-          }
-          paramString2 = new Bundle();
-          paramString2.putBoolean("isFollow", bool);
-          paramString2.putString("uin", paramJsBridgeListener);
-          paramString2.putString("callback", paramString1);
-          paramJsBridgeListener = arph.a("ipc_cmd_certified_account_web_plugin_follow", null, this.jdField_a_of_type_Arpd.key, paramString2);
-          arui.a().a(paramJsBridgeListener);
-          return false;
+        i = 2;
+        break;
+        a(false);
+        if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+          this.jdField_b_of_type_AndroidWidgetTextView.setText("");
         }
       }
-      catch (Throwable paramJsBridgeListener)
-      {
-        QLog.e("SSOWebviewPlugin", 2, "sso.PublicFollow failed! " + QLog.getStackTraceString(paramJsBridgeListener));
-        return false;
-      }
-      bool = false;
     }
+    label213:
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
+    QLog.i("MineWSPanel", 2, "setData(),mIsCurrentUser=" + this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Aazc.a(paramstGetPersonalPageRsp, this.jdField_a_of_type_Boolean);
   }
   
-  public void onCreate()
+  public void a(abcr paramabcr)
   {
-    super.onCreate();
-    this.jdField_a_of_type_AndroidAppActivity = this.mRuntime.a();
-    arui.a().a(this.jdField_a_of_type_Arpd);
+    this.jdField_a_of_type_Abcr = paramabcr;
   }
   
-  public void onDestroy()
+  public void a(View paramView)
   {
-    if (this.jdField_a_of_type_MqqAppNewIntent != null) {
-      this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    }
-    this.jdField_a_of_type_ComTencentSmttSdkCookieManager = null;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    this.jdField_b_of_type_AndroidViewView = paramView;
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370989));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368212);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370990));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370991));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131381478));
+    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    localLinearLayoutManager.setOrientation(0);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
+    localLinearLayoutManager.setRecycleChildrenOnDetach(true);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(true);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aazc);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371390));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new abcn(this));
+    this.jdField_a_of_type_Aazc.a(new abco(this));
+    umm.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+    QLog.i("MineWSPanel", 2, "[MineWSPanel.java][initUI] mIsCurrentUser:" + this.jdField_a_of_type_Boolean + ", mUin:" + this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_a_of_type_JavaUtilHashMap = null;
+      QLog.i("MineWSPanel", 2, "mMineWeiShiIcon is null");
+      return;
     }
-    if (this.jdField_b_of_type_JavaUtilHashMap != null)
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
-      this.jdField_b_of_type_JavaUtilHashMap.clear();
-      this.jdField_b_of_type_JavaUtilHashMap = null;
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130850274);
+      return;
     }
-    if (this.c != null)
-    {
-      this.c.clear();
-      this.c = null;
-    }
-    if (this.d != null) {
-      this.d.clear();
-    }
-    if (this.e != null) {
-      this.e.clear();
-    }
-    arui.a().b(this.jdField_a_of_type_Arpd);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130845781);
+  }
+  
+  public void c()
+  {
+    ThreadManager.excute(new MineWSPanel.4(this), 32, null, true);
+  }
+  
+  public boolean isValidate()
+  {
+    return true;
   }
 }
 

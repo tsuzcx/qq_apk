@@ -1,23 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.VideoCaptureFragment;
+import android.app.Activity;
+import android.database.ContentObserver;
+import android.net.Uri;
+import android.os.Handler;
+import android.provider.Settings.System;
 
-public class rms
-  implements sme
+class rms
+  extends ContentObserver
 {
-  public rms(VideoCaptureFragment paramVideoCaptureFragment) {}
-  
-  public void a()
+  rms(rmr paramrmr, Handler paramHandler)
   {
-    VideoCaptureFragment.a(this.a).b();
+    super(paramHandler);
   }
   
-  public void a(int paramInt)
+  public void onChange(boolean paramBoolean, Uri paramUri)
   {
-    VideoCaptureFragment.a(this.a).a(paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    VideoCaptureFragment.a(this.a).a(paramInt1, paramInt2);
+    super.onChange(paramBoolean, paramUri);
+    int i = Settings.System.getInt(rmr.a(this.a).getContentResolver(), "screen_brightness", 125);
+    if ((rmr.a(this.a)) && (i > 0)) {
+      this.a.a(i / 255.0F);
+    }
   }
 }
 

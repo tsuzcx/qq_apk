@@ -1,22 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import android.text.TextUtils;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import org.json.JSONObject;
 
-class bisg
-  implements DialogInterface.OnClickListener
+public class bisg
 {
-  bisg(bise parambise, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
+  private final birg a;
+  public String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bisg(birg parambirg)
   {
-    bise.a(this.jdField_a_of_type_Bise, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
-    bcst.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
-    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(bivp.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bivp.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bivp.d);
-    paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 101 + "|" + paramDialogInterface;
-    bipx.a().a(25, paramDialogInterface);
-    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString("pageId") + "_" + this.jdField_a_of_type_AndroidOsBundle.getString("moduleId") + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bivp.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bivp.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bivp.d);
-    bisp.b("6006", "2", "0", this.jdField_a_of_type_AndroidOsBundle.getString(bivp.i), paramDialogInterface);
+    this.jdField_a_of_type_Birg = parambirg;
+  }
+  
+  public void a(int paramInt)
+  {
+    TouchWebView localTouchWebView = this.jdField_a_of_type_Birg.a();
+    JSONObject localJSONObject1;
+    JSONObject localJSONObject2;
+    if ((localTouchWebView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      localJSONObject1 = new JSONObject();
+      localJSONObject2 = new JSONObject();
+    }
+    try
+    {
+      localJSONObject1.put("code", 0);
+      localJSONObject1.put("message", "ok");
+      localJSONObject2.put("subIndex", paramInt);
+      localJSONObject1.put("data", localJSONObject2);
+      localTouchWebView.callJs(WebViewPlugin.toJsScript(this.jdField_a_of_type_JavaLangString, localJSONObject1, null));
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        this.jdField_a_of_type_JavaLangString = paramString;
+      }
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

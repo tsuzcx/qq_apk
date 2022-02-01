@@ -1,62 +1,881 @@
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class anvc
-  implements anil
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  public static final String a;
+  private static Map<String, int[]> jdField_a_of_type_JavaUtilMap;
+  private static Map<String, int[]> b;
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  protected void c(boolean paramBoolean, Object paramObject) {}
-  
-  protected void d(boolean paramBoolean, Object paramObject) {}
-  
-  protected void e(boolean paramBoolean, Object paramObject) {}
-  
-  protected void f(boolean paramBoolean, Object paramObject) {}
-  
-  protected void g(boolean paramBoolean, Object paramObject) {}
-  
-  protected void h(boolean paramBoolean, Object paramObject) {}
-  
-  protected void i(boolean paramBoolean, Object paramObject) {}
-  
-  protected void j(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  static
   {
-    switch (paramInt)
+    jdField_a_of_type_JavaLangString = anvc.class.getName();
+  }
+  
+  public static Map<String, int[]> a()
+  {
+    if (jdField_a_of_type_JavaUtilMap == null) {}
+    for (;;)
     {
-    case 4: 
-    default: 
-      return;
-    case 7: 
-      b(paramBoolean, paramObject);
-      return;
-    case 5: 
-      c(paramBoolean, paramObject);
-      return;
-    case 6: 
-      a(paramBoolean, paramObject);
-      return;
-    case 3: 
-      d(paramBoolean, paramObject);
-      return;
-    case 8: 
-      e(paramBoolean, paramObject);
-      return;
-    case 9: 
-      f(paramBoolean, paramObject);
-      return;
-    case 10: 
-      g(paramBoolean, paramObject);
-      return;
-    case 11: 
-      h(paramBoolean, paramObject);
-      return;
-    case 12: 
-      i(paramBoolean, paramObject);
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (jdField_a_of_type_JavaUtilMap == null)
+        {
+          jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+          if ((BaseApplicationImpl.sProcessId == 5) || (BaseApplicationImpl.sProcessId == 7))
+          {
+            d();
+            a();
+            b();
+            c();
+          }
+        }
+        else
+        {
+          return jdField_a_of_type_JavaUtilMap;
+        }
+        if (BaseApplicationImpl.sProcessId == 12) {
+          nho.a(jdField_a_of_type_JavaUtilMap);
+        }
+      }
+      f();
+    }
+  }
+  
+  private static void a()
+  {
+    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqGetBusinessTorch", new int[] { 0 });
+  }
+  
+  public static void a(String paramString, int[] paramArrayOfInt)
+  {
+    if (jdField_a_of_type_JavaUtilMap == null) {}
+    while (TextUtils.isEmpty(paramString)) {
       return;
     }
-    j(paramBoolean, paramObject);
+    if (paramArrayOfInt != null)
+    {
+      jdField_a_of_type_JavaUtilMap.put(paramString, paramArrayOfInt);
+      return;
+    }
+    jdField_a_of_type_JavaUtilMap.remove(paramString);
+  }
+  
+  public static Map<String, int[]> b()
+  {
+    if (b == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (b == null)
+      {
+        b = new ConcurrentHashMap();
+        e();
+      }
+      return b;
+    }
+  }
+  
+  private static void b()
+  {
+    jdField_a_of_type_JavaUtilMap.put("XX.XXX", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x95a", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb49", new int[] { 5 });
+  }
+  
+  private static void c()
+  {
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6cf", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6a6", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.CheckArticleLike", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GetArticleLikeCount", new int[] { 2 });
+  }
+  
+  private static void d()
+  {
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8dd", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("EncounterSvc.ReqGetEncounter", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("RoamClientSvr.GetQualify", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x66b", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("NeighborSvc.ReqGetPoint", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x686", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c7_0", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4f0_0", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6be", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xafc_1", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xafc_2", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xafc_3", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xada_0", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("MQ_nearby_sso_proxy.0x667_1", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("MultibusidURLSvr.HeadUrlReq", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqFavorite", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x74b", new int[] { 97 });
+  }
+  
+  private static void e()
+  {
+    b.put("CameraModuleSvc.GetRecommandTextByEmotion", new int[] { 3 });
+    b.put("CameraModuleSvc.GetTextValidStatus", new int[] { 3 });
+    b.put("CameraModuleSvc.GetCompressedCategoryMaterial", new int[] { 3 });
+    b.put("CameraModuleSvc.GetPlayShowCatMatTree", new int[] { 3 });
+    b.put("CameraModuleSvc.GetCameraConfig", new int[] { 3 });
+    b.put("CameraModuleSvc.GetOnlineUserNum", new int[] { 3 });
+    b.put("CameraModuleSvc.GetFontData", new int[] { 3 });
+    b.put("CameraModuleSvc.GetImgValidStatus", new int[] { 3 });
+    b.put("CameraModuleSvc.GetBulkImageClassify", new int[] { 3 });
+  }
+  
+  private static void f()
+  {
+    jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetCompressedCategoryMaterial", new int[] { 159 });
+    jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetPlayShowCatMatTree", new int[] { 159 });
+    jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetCameraConfig", new int[] { 159 });
+    jdField_a_of_type_JavaUtilMap.put("AccostSvc.SvrMsg", new int[] { 0, 2 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.getGroupInfoReq", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("AccostSvc.ClientMsg", new int[] { 0, 2 });
+    jdField_a_of_type_JavaUtilMap.put("AccostSvc.ReqDeleteBlackList", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("AccostSvc.ReqInsertBlackList", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9db", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("AccostSvc.ReqGetBlackList", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_42024", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("TransService.ReqGetSign", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("SharpSvr.s2c", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetRoamMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.DelRoamMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbSearchRoamMsgInCloud", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("SharpSvr.c2sack", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.RequestPushStatus", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.SvcReqMSFLoginNotify", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("ADMsgSvc.PushMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("StreamSvr.PushStreamMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.ReqPush", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.PbPushTransMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.PbC2CMsgSync", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbBindUinGetMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbBindUinMsgReadedConfirm", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d0_1", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.PbPushDisMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PullGroupMsgSeq", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbUnReadMsgSeq", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetOneDayRoamMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("StreamSvr.RespUploadStreamMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("TransService.ReqOffFilePack", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetGroupMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetDiscussMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.DelMsgV2", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.SetRoamMsgAllUser", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.PbPushGroupMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.PbPushBindUinGroupMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.PbPushC2CMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("VideoSvc.Send", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("VideoCCSvc.Adaptation", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("StreamSvr.UploadStreamMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MultiVideo.s2c", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("NearFieldTranFileSvr.NotifyList", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbSendMsg", new int[] { 0, 8 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa89", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbMultiMsgSend", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("SecSvcBlessingHelper.blessing_helper", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PushReaded", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.RespPush", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("TransService.ReqTmpChatPicDownload", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MultiVideo.c2sack", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbDelOneRoamMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbMsgWithDraw", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PushNotify", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.GetMsgV4", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PullDisMsgSeq", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PbGetMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.GetMsgV2", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PbGetDiscussMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PbGetGroupMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PullDisGroupSeq", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.NoticeEnd", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.infoLogin", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PullGroupMsgSeq", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.getOffMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.infoSync", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PbSyncMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgRead", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Friend", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Group", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgAction", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbMsgReadedReport", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbReceiptRead", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb31", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("QQRTCSvc.group_video_create_share_url", new int[] { 52 });
+    jdField_a_of_type_JavaUtilMap.put("QQRTCSvc.group_video_share_backflow_verify", new int[] { 52 });
+    jdField_a_of_type_JavaUtilMap.put("QQRTCSvc.group_video_terminate_msg", new int[] { 52 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5e1_8", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.delFriend", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.GetAutoInfoReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.SetGroupReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.GetLastLoginInfoReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.getFriendGroupList", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xaed_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.MovGroupMemReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.GetSimpleOnlineFriendInfoReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("BumpSvc.ReqComfirmContactFriend", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.addFriend", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x777", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc34_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc34_1", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc83", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc85", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.GetSimpleInfo", new int[] { 1, 107 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.getUserAddFriendSetting", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d1_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4fc_30", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("DevLockAuthSvc.RecommendAuth", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("DevLockAuthSvc.ConfirmAuth", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcf0_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("SummaryCard.ReqSearch", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("SummaryCard.ReqCondSearch", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("AvatarInfoSvr.QQHeadUrlReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.ReqGetSettings", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.register", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.GetRichSig", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.DelDevLoginInfo", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.BindUin", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.ReqSetSettings", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.SvcReqKikOut", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.CheckUpdateReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.ChangeFriendName", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.SetRichSig", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("IncreaseURLSvr.QQHeadUrlReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("MultibusidURLSvr.HeadUrlReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("MultibusidURLSvr.HeadUrlReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.GetDevLoginInfo", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.GetOnlineInfoReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x49d_107", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x476_146", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x476_147", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x491_107", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x490_107", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7c4_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4f4_5", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7c6_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7c7_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x847_3", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x53b_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6c9_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7df_3", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_7", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_18", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_19", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x77c", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_21", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x829_1", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc26_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc36_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc35_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_21", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc26_1", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.ReqBatchProcess", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8c9_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x935_9", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x935_10", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x935_20", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x935_23", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xded_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_0", new int[] { 20, 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_7", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_75", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b8_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_10", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.GroupMngReq", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.GetMultiTroopInfoReq", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.GetTroopListReqV2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.GetTroopAppointRemarkReq", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x899_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x899_9", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.ModifyGroupInfoReq", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.getTroopMemberList", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x42d_4", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x903_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x91a_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x91c_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x91b_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("group_member_card.get_group_member_card_info", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x406_3", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89e_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.getTroopRemark", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_1", new int[] { 22, 20, 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a0_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.ModifyGroupCardReq", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8bb_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("group_anonymous_generate_nick.group", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("qunVideoOnlineLevel.0x3fe_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8bb_9", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8bb_7", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b4", new int[] { 20, 22, 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_3", new int[] { 20, 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x787_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a7_0", new int[] { 20, 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8ca_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x787_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x787_11", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x711_127", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9fa", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa80_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6b6", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6b5", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6c2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6c3", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa8d", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ba_4", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ba_7", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6d1_3", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_86", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_94", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("SHomeworkSvc.querycard", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("SHomeworkSvc.modifycard", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("NearbyExt.query_user_follow_status", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put(aoja.jdField_a_of_type_JavaLangString, new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("HwSvc.send_msg", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x928", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("qunVideoGray.0x3fb_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa2a_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa2a_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa2a_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa2a_6", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("oidbSvc.0x783_15", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd71", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xaf6_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8f9_14", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd40_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xce5_3", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xce5_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xce5_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xce5_6", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd22_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd22_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd23_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("oidbSvc.0xe3a", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("oidbSvc.0xe3b", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("oidbSvc.0xe72", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xebc", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe2e_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("oidbSvc.0xe83", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xeac_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xeac_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqFavorite", new int[] { 2, 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8e6_1", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8e7_1", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x491_100", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqGetVoterList", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqHYMakeFriendsCard", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqGetFavoriteList", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("SummaryCard.ReqSummaryCard", new int[] { 2, 60 });
+    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqDelFace", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqGetCardSwitch", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqPicSafetyCheck", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqSetCard", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqSetCardSwitch", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x490_100", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("SummaryCard.SetLabel", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("SummaryCard.LikeIt", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("SQQzoneSvc.getCover", new int[] { 2, 60 });
+    jdField_a_of_type_JavaUtilMap.put("SQQzoneSvc.getPhotoWall", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("SQQzoneSvc.delPhotoWall", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x480_9", new int[] { 98, 2, 66, 59, 91, 109 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_9", new int[] { 98, 2, 66, 59, 109 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_2", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x82f_0", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x82f_0", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9ae_2", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_42092", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_40350", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7ba", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqDeleteVisitorRecord", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd2d", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_42326", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MusicSongInfoMatchSvc.songquery", new int[] { 92 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb4b", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb4b_6", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb4c", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb51", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcb5", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xdb1", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xdb1_2", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe52_3", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe03", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe09", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe51", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe67", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xeae", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xeaf", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("NearbyGroup.GetGroupList", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("NeighborRecommender.ReqGetRecommender", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("NeighborSvc.ReqGetSwitches", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("NeighborSvc.ReqSetStateSwitch", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("NeighborSvc.ReqGetPoint", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("NearbyGroup.ReqGetAreaList", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7f5_1", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("LbsShareSvr.nearby_shops", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("LbsShareSvr.location", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("LbsShareSvr.get_shops_by_ids", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c0_0", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c1_0", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("ConfigService.ClientReq", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("ResourceConfig.GetResourceReq", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("MobileTipsSvc.TipsReport", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("MAAControl.CheckSinglePkgSig", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("MAAControl.GetSinglePkgSig", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqGetDiscussInteRemark", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QRCodeSvc.discuss_geturl", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x58a", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqCreateDiscuss", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QRCodeSvc.discuss_decode", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqJoinDiscuss", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqSetDiscussFlag", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqChangeDiscussName", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqAddDiscussMember", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqSetDiscussAttr", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqGetDiscussInfo", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x58b_0", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqQuitDiscuss", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x865_3", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x870_4", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x870_5", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x921_0", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x751", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x44c", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QzoneService.GetNewAndUnread", new int[] { 7 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PushParam", new int[] { 10 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.infoAndroid", new int[] { 10 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.GetOnlineStatus", new int[] { 10 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.QueryIpwdStat", new int[] { 10 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.SetMute", new int[] { 10 });
+    jdField_a_of_type_JavaUtilMap.put("wtlogin_device.trans_emp", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("wtlogin_device.trans_reg", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_status.stat_reg", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_status.stat_hello", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_pullstatus.pull_status", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_msg.device_sharp", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_msg.multi_video", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_status.stat_forceoffline", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_msg.msg_send", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_push.msg_push", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_status.stat_queryhb", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x634", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x633", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x632", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x582", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x631", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x630", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x61e", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x61d", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x61f", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_msg.device_dataline", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_msg.openserver_req", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x60f", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x60d", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_msg.device_report", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_msg.get_bluetooth_info", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("ConfigService.DeviceUp", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x5e6", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_msg.open_smart_c2s", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("ConfigPushSvc.RTOSReq", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0xac7", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("QFindSvc.ReqReportMyDev", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("QFindSvc.ReqClearTrack", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("QFindSvc.ReqLostStatus", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0xa11", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("QFindSvc.ReqReportDevs", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("ConfigPushSvc.RTOSReq", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountSvc.ReportLbs", new int[] { 11 });
+    jdField_a_of_type_JavaUtilMap.put("QQWeatherReport.getWeatherInfo", new int[] { 11 });
+    jdField_a_of_type_JavaUtilMap.put("BQMallSvc.TabOpReq", new int[] { 12 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x490_92", new int[] { 12 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_99", new int[] { 12 });
+    jdField_a_of_type_JavaUtilMap.put("gxzbIpsit.ipsite", new int[] { 12 });
+    jdField_a_of_type_JavaUtilMap.put("AvatarUpdate.checkUpdate", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("Font.fresh", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("FriendClone.CloneAuthStatus", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("groupnick.readitem", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("profilelogic.readUserInfo", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("profilelogic.setUserFlag", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("profilelogic.setUserProfile", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("FontBubbleRecommend.getFontRecommend", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("FontBubbleRecommend.getBubbleRecommend", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("GroupCare.getMessageRemindInfo", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("FontBubbleRecommend.setFontBubble", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("RoamWrap.GetRoamToast", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("Face.setFace", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("QCUniBusinessLogin.check", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileMusicBox.getMusicList", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileMusicBox.getQzoneMusicInfo", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("FunCallSvr.call", new int[] { 46 });
+    jdField_a_of_type_JavaUtilMap.put("voiceChange.Auth", new int[] { 96 });
+    jdField_a_of_type_JavaUtilMap.put("AuthSvr.ThemeAuth", new int[] { 14 });
+    jdField_a_of_type_JavaUtilMap.put("SpecialRemind.Service", new int[] { 15 });
+    jdField_a_of_type_JavaUtilMap.put("ClubContentUpdate.Req", new int[] { 16 });
+    jdField_a_of_type_JavaUtilMap.put("apollo_content_update.Req", new int[] { 115 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7a1_0", new int[] { 17 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7a0_0", new int[] { 17 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7a2_0", new int[] { 17 });
+    jdField_a_of_type_JavaUtilMap.put("SsoSnsSession.Cmd0x3_SubCmd0x3_FuncDelBlockList", new int[] { 18 });
+    jdField_a_of_type_JavaUtilMap.put("SsoSnsSession.Cmd0x3_SubCmd0x1_FuncGetBlockList", new int[] { 18 });
+    jdField_a_of_type_JavaUtilMap.put("SsoSnsSession.Cmd0x3_SubCmd0x2_FuncAddBlockList", new int[] { 18 });
+    jdField_a_of_type_JavaUtilMap.put("HwSvc.assign_homework", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("HwSvc.submit_homework", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("HwSvc.get_homework_info", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("GroupSvc.JoinGroupLink", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("GroupOpen.CheckJsApiToken", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x53c_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("mq_crm.get_menu", new int[] { 21 });
+    jdField_a_of_type_JavaUtilMap.put("mq_crm.send_key", new int[] { 21 });
+    jdField_a_of_type_JavaUtilMap.put("EqqAccountSvc.get_eqq_list", new int[] { 21 });
+    jdField_a_of_type_JavaUtilMap.put("CrmSvcEx.ReportLbs", new int[] { 21 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89b_1", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a1_0", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OpenGroupSvc.GroupActivityInfo", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.DelFile", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileInfo", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileSearch", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("CommunityForum.GetLatestPost", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8cf_6", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8d3_1", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("GroupActivity.GetList", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x78f_1", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileList", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_1", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88c_1", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileListV2", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x852_35", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x580_1", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x852_48", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89a_0", new int[] { 22, 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89a_8", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x570_8", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("VideoShareSrv.get_video_src", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x568_21", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x568_22", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_3", new int[] { 22, 20 });
+    jdField_a_of_type_JavaUtilMap.put("GrpMemberLBS.ReportLBS", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b4", new int[] { 22, 20 });
+    jdField_a_of_type_JavaUtilMap.put("ModifyExamine.GetModifyTimes", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x874_1", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x904_1", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d4_0", new int[] { 26 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d2_0", new int[] { 26 });
+    jdField_a_of_type_JavaUtilMap.put("ClubInfoSvc.queryPrivExt", new int[] { 27 });
+    jdField_a_of_type_JavaUtilMap.put("ClubInfoSvc.guanjiaReport", new int[] { 27 });
+    jdField_a_of_type_JavaUtilMap.put("VipCustom.GetCustomOnlineStatus", new int[] { 27 });
+    jdField_a_of_type_JavaUtilMap.put("QCUniBusinessLogic.uniSet", new int[] { 27 });
+    jdField_a_of_type_JavaUtilMap.put("QCUniBusinessLogic.uniGet", new int[] { 27 });
+    jdField_a_of_type_JavaUtilMap.put("RedTouchSvc.EntranceSetting", new int[] { 31 });
+    jdField_a_of_type_JavaUtilMap.put("SecuritySvc.GetConfig", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("DevLockAuthSvc.WxMsgOpt", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("DevLockSecSvc.DevLockQuery", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x614_1", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa13", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ad", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("SecuritySvc.AlertReport", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("MobileQQprotect.QPUpdate", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("MobileQQprotect.QSecCb", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("QSec.AVEng", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xeb8", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xebd", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xec0", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("MamonoSvc.Pa", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("SecCheckSigSvc.UploadReq", new int[] { 23, 63 });
+    jdField_a_of_type_JavaUtilMap.put("SecSafeChkSvc.MainCmd", new int[] { 63 });
+    jdField_a_of_type_JavaUtilMap.put("SecIntChkSvc.MainCmd", new int[] { 63 });
+    jdField_a_of_type_JavaUtilMap.put("NearFieldDiscussSvr.ReqJoinDiscuss", new int[] { 33 });
+    jdField_a_of_type_JavaUtilMap.put("NearFieldDiscussSvr.ReqGetList", new int[] { 33 });
+    jdField_a_of_type_JavaUtilMap.put("NearFieldDiscussSvr.ReqExit", new int[] { 33 });
+    jdField_a_of_type_JavaUtilMap.put("NearFieldDiscussSvr.NotifyList", new int[] { 33 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a4", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a2", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89b_3", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x823_0", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8ab", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b3", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b2", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x81f", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa81", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x435", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa8b", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a3_7", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x897_0", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("hrtxformqq.getUsrSimpleInfo", new int[] { 37 });
+    jdField_a_of_type_JavaUtilMap.put("QQWalletPayAuthServer.checkChangePwdAuth", new int[] { 42 });
+    jdField_a_of_type_JavaUtilMap.put("WalletGestureSvc.GetPassword", new int[] { 42 });
+    jdField_a_of_type_JavaUtilMap.put("VacThirdCodeSvc.fetchCodes", new int[] { 42 });
+    jdField_a_of_type_JavaUtilMap.put("QWalletPfa.RecFriend", new int[] { 42 });
+    jdField_a_of_type_JavaUtilMap.put("VipSTCheckServer.UinPay", new int[] { 44 });
+    jdField_a_of_type_JavaUtilMap.put("ComicProtoConvSvr.tunnel", new int[] { 80 });
+    jdField_a_of_type_JavaUtilMap.put("QcallOidbSvc.0x5e3_1", new int[] { 79 });
+    jdField_a_of_type_JavaUtilMap.put("Background.checkAuth", new int[] { 54 });
+    jdField_a_of_type_JavaUtilMap.put("red_touch_num_svr.get_num_msg", new int[] { 56 });
+    jdField_a_of_type_JavaUtilMap.put("QQClubComm.getNewFlag", new int[] { 87 });
+    jdField_a_of_type_JavaUtilMap.put("VipPayLogicServer.getCommPayInfo ", new int[] { 73 });
+    jdField_a_of_type_JavaUtilMap.put("QPayReminderSvc.query_over_due_info", new int[] { 47 });
+    jdField_a_of_type_JavaUtilMap.put("NearfieldGroupSvr.ReqGetGroupList", new int[] { 57 });
+    jdField_a_of_type_JavaUtilMap.put("NearfieldGroupSvr.ReqExit", new int[] { 57 });
+    jdField_a_of_type_JavaUtilMap.put("NearfieldGroupSvr.ReqJoinGroup", new int[] { 57 });
+    jdField_a_of_type_JavaUtilMap.put("Loginauth.1", new int[] { 58 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x42e_3", new int[] { 59 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_0", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_1", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9ab_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("GroupOpen.ReadAppList", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("GroupOpen.SortAppList", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("GroupOpen.ClearRedPoint", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_96", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c9_0", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c9_1", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb5b", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c5_0", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c8_0", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c7_0", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9e4_22", new int[] { 66 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x682", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.1081", new int[] { 64 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x472", new int[] { 64 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_41993", new int[] { 66 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5fc_0", new int[] { 66 });
+    jdField_a_of_type_JavaUtilMap.put("bubble.1", new int[] { 70 });
+    jdField_a_of_type_JavaUtilMap.put("Faceroam.OpReq", new int[] { 72 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xdc4", new int[] { 72 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xdcf", new int[] { 72 });
+    jdField_a_of_type_JavaUtilMap.put("SelfGif.Op", new int[] { 160 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x438", new int[] { 76 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x66b", new int[] { 2, 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x682", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x686", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_1", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_3", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_4", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_6", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_7", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("MQKanDianSvc.0x001", new int[] { 81 });
+    jdField_a_of_type_JavaUtilMap.put(aokj.jdField_a_of_type_JavaLangString, new int[] { 86 });
+    jdField_a_of_type_JavaUtilMap.put(aokj.b, new int[] { 86 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x59f", new int[] { 84 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.WpaAssignKfext", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.clickReplyCmd", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.getUserDetailInfo", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.verifyWpaAndKey", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.getShieldStatus", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.blockBulkMsg", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.getCustomerTransferInfo", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.getNavigationConfig", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.corpUinWpaReport", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.fetchCorpDetailInfo", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7e7_0", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.emanClickReport", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.closeAIOSessionReport", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.WpaGenSigMsg", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.webimAddFriend", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.getQidianGroupInfo", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x782", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("SQQShopCliLog.RtReport", new int[] { 88 });
+    jdField_a_of_type_JavaUtilMap.put("SQQShopMsgSvc.GetRichMsgInfo", new int[] { 88 });
+    jdField_a_of_type_JavaUtilMap.put("SQQShopCliLog.AdFeedback", new int[] { 88 });
+    jdField_a_of_type_JavaUtilMap.put("EncounterSvc.ReqGetEncounter", new int[] { 89 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8dd", new int[] { 89 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6cf", new int[] { 90, 163 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6a6", new int[] { 99, 93 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8c8", new int[] { 126 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x83e", new int[] { 126 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbcd", new int[] { 132 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbd2", new int[] { 133 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc13", new int[] { 136 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb73", new int[] { 138 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.ArticleLike", new int[] { 93 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.CheckArticleLike", new int[] { 93 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GetArticleLikeCount", new int[] { 93 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.CreateArticleComment", new int[] { 93 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GetArticleCommentCount", new int[] { 93 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.PictureInfo", new int[] { 93 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GetRecommendInfo", new int[] { 93 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GalleryReport", new int[] { 93 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0x6cd", new int[] { 91 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0x6ce", new int[] { 91 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0x6f5", new int[] { 91 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x77d_0", new int[] { 53 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8db_0", new int[] { 53 });
+    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqGetTorchAward", new int[] { 94 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6f0", new int[] { 94 });
+    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqDeliverTorch", new int[] { 94 });
+    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqExitDeliverTorch", new int[] { 94 });
+    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqClearTorchFlag", new int[] { 94 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_40525", new int[] { 94 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x74b", new int[] { 97 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8f0", new int[] { 112 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x91d", new int[] { 112 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x909", new int[] { 112 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x90c", new int[] { 112 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8f3", new int[] { 112 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8f1", new int[] { 112 });
+    jdField_a_of_type_JavaUtilMap.put(wja.jdField_a_of_type_JavaLangString, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(wja.c, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(wja.e, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(wja.b, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(wja.d, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(wja.f, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(wja.h, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(wja.i, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(wja.j, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(wja.k, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(wja.l, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(wja.m, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_42073", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_42073", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("gxhreport.report", new int[] { 103 });
+    jdField_a_of_type_JavaUtilMap.put("HttpConn.0x6ff_501", new int[] { 104 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x922", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe26", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa28", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xac6", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7a8", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("trpc.qqshop.adpush.PushService.GetAd", new int[] { 139 });
+    jdField_a_of_type_JavaUtilMap.put("trpc.qqshop.adreport.ReportService.AdReport", new int[] { 139 });
+    jdField_a_of_type_JavaUtilMap.put("dynamic_tab_search.1", new int[] { 152 });
+    jdField_a_of_type_JavaUtilMap.put("UnifySearch.BusiHotWord", new int[] { 152 });
+    jdField_a_of_type_JavaUtilMap.put("UnifySearch.Unite", new int[] { 152 });
+    jdField_a_of_type_JavaUtilMap.put("UnifySearch.AssociationWord", new int[] { 152 });
+    jdField_a_of_type_JavaUtilMap.put("UnifySearch.Tab", new int[] { 152 });
+    jdField_a_of_type_JavaUtilMap.put("UnifySearch.Discovery", new int[] { 152 });
+    jdField_a_of_type_JavaUtilMap.put("dynamic_tab_search.1", new int[] { 111 });
+    jdField_a_of_type_JavaUtilMap.put("dynamic_busi_hot_word.1", new int[] { 111 });
+    jdField_a_of_type_JavaUtilMap.put("dynamic_unite_search.1", new int[] { 111 });
+    jdField_a_of_type_JavaUtilMap.put("dynamic_association_word.1", new int[] { 111 });
+    jdField_a_of_type_JavaUtilMap.put("qb_association_word.1", new int[] { 111 });
+    jdField_a_of_type_JavaUtilMap.put("DynamicScDiscovery.1", new int[] { 111 });
+    jdField_a_of_type_JavaUtilMap.put("qb_discovery.1", new int[] { 111 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd78_0", new int[] { 111 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x990", new int[] { 113 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x987_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("ReadDiyAddonInfo.1", new int[] { 114 });
+    jdField_a_of_type_JavaUtilMap.put("videohub_group_notify_read.cmd0x2323", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x62c_4", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put(wja.n, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb01", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xaf4_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb70_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("TimDocSvc.GetPadRightInfo", new int[] { 122 });
+    jdField_a_of_type_JavaUtilMap.put("TimDocSvc.SetPadRightInfo", new int[] { 122 });
+    jdField_a_of_type_JavaUtilMap.put("TimDocSvc.GetSharedPadList", new int[] { 122 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbab_1", new int[] { 122 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbab_2", new int[] { 122 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbab_3", new int[] { 122 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbab_4", new int[] { 122 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb14", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xb67", new int[] { 125 });
+    jdField_a_of_type_JavaUtilMap.put("NowGetRecordInfoSvr.get_record_info", new int[] { 130 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xbc3", new int[] { 125 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbe8", new int[] { 134 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbf2", new int[] { 134 });
+    jdField_a_of_type_JavaUtilMap.put("WifiCloudCheckSvc.req", new int[] { 135 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc33_42220", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_22", new int[] { 2, 182 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_15", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put(beee.b, new int[] { 143 });
+    jdField_a_of_type_JavaUtilMap.put(beee.d, new int[] { 143 });
+    jdField_a_of_type_JavaUtilMap.put(beee.f, new int[] { 143 });
+    jdField_a_of_type_JavaUtilMap.put(beee.e, new int[] { 143 });
+    jdField_a_of_type_JavaUtilMap.put(beee.g, new int[] { 143 });
+    jdField_a_of_type_JavaUtilMap.put(beee.h, new int[] { 143 });
+    jdField_a_of_type_JavaUtilMap.put(beee.c, new int[] { 143 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xc6c", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xcca", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc7a", new int[] { 148 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc76", new int[] { 148 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc96", new int[] { 148 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcd4", new int[] { 150 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_42261", new int[] { 150 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_42261", new int[] { 150 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcd5", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc05", new int[] { 151 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xccd", new int[] { 151 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcf3", new int[] { 153 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcf4", new int[] { 153 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe3e", new int[] { 153 });
+    jdField_a_of_type_JavaUtilMap.put("PluginConfig.dynamic_plugin", new int[] { 128 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd8a", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_42315", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0x758", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_SimpleUI", new int[] { 154 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_SimpleUI", new int[] { 154 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd45", new int[] { 153 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcf4_1", new int[] { 153 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd4a", new int[] { 153 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd4b", new int[] { 155 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.get_latest_playing_state", new int[] { 156, 165 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.get_song_extended_info", new int[] { 156 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.media_operation", new int[] { 156 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.room_operation", new int[] { 156 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.get_play_show_info", new int[] { 156 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.share_trans_check", new int[] { 156 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.share_trans", new int[] { 156 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.report_download_fail", new int[] { 156 });
+    jdField_a_of_type_JavaUtilMap.put("QQLBSShareSvc.room_operation", new int[] { 164 });
+    jdField_a_of_type_JavaUtilMap.put("QQLBSShareSvc.report_location", new int[] { 164 });
+    jdField_a_of_type_JavaUtilMap.put("QQLBSShareSvc.assembly_point_operation", new int[] { 164 });
+    jdField_a_of_type_JavaUtilMap.put("QQLBSShareSvc.room_query", new int[] { 164 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd79", new int[] { 161 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd86", new int[] { 158 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd83", new int[] { 158 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd82", new int[] { 158 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd7e", new int[] { 158 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd69", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd72", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcdd", new int[] { 162 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcde", new int[] { 162 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_15(2)", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xdc9", new int[] { 166 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xdcc", new int[] { 167 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.get_dynamic_info", new int[] { 165 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_cn_switch", new int[] { 168 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_cn_switch", new int[] { 168 });
+    jdField_a_of_type_JavaUtilMap.put("NearFieldFriendSvr.ReqEnter", new int[] { 169 });
+    jdField_a_of_type_JavaUtilMap.put("NearFieldFriendSvr.ReqExit", new int[] { 169 });
+    jdField_a_of_type_JavaUtilMap.put("NearFieldFriendSvr.ReqHeartBeat", new int[] { 169 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe07_0", new int[] { 170 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe82", new int[] { 171 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe0e", new int[] { 171 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.SetStatusFromClient", new int[] { 174 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.SetBusinessInfo", new int[] { 174 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.SyncBusinessInfo", new int[] { 174 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.SetSong", new int[] { 174 });
+    jdField_a_of_type_JavaUtilMap.put("ImStatus.ReqPushStatus", new int[] { 174 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe59", new int[] { 174 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe27", new int[] { 173 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd68", new int[] { 176 });
+    jdField_a_of_type_JavaUtilMap.put("DynamicPluginSvc.GetList", new int[] { 128 });
+    jdField_a_of_type_JavaUtilMap.put("DynamicPluginSvc.SetList", new int[] { 128 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe5f_2", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6e1_1", new int[] { 177 });
+    jdField_a_of_type_JavaUtilMap.put("qqvgame.RoomManager-RoomCreate", new int[] { 178 });
+    jdField_a_of_type_JavaUtilMap.put("qqvgame.RoomManager-RoomEnter", new int[] { 178 });
+    jdField_a_of_type_JavaUtilMap.put("qqvgame.RoomManager-RoomLeave", new int[] { 178 });
+    jdField_a_of_type_JavaUtilMap.put("qqvgame.RoomManager-RoomBatchForGroup", new int[] { 178 });
+    jdField_a_of_type_JavaUtilMap.put("qqvgame.ResultShare-FileUpload", new int[] { 178 });
+    jdField_a_of_type_JavaUtilMap.put("qqvgame.Share-GetShareLink", new int[] { 178 });
+    jdField_a_of_type_JavaUtilMap.put("qqvgame.Share-InviteBackflowCheck", new int[] { 178 });
+    jdField_a_of_type_JavaUtilMap.put("qqvgame.RoomManager-RoomDestroy", new int[] { 178 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x587_74", new int[] { 182 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe8c", new int[] { 179 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe9c_1", new int[] { 180 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x484_15", new int[] { 181 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvcTcp.0xea3", new int[] { 171 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xeb5", new int[] { 186 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd51", new int[] { 186 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0x587", new int[] { 186 });
+    jdField_a_of_type_JavaUtilMap.put("SelfStudyRoomForQQ.17101", new int[] { 185 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvcTcp.0xe89_0", new int[] { 184 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvcTcp.0xe89_1", new int[] { 184 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvcTcp.0xe89_2", new int[] { 184 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe95", new int[] { 184 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe94", new int[] { 184 });
   }
 }
 

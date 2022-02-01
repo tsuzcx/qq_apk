@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.qphone.base.util.QLog;
 
-class rpx
-  implements oue
+final class rpx
+  implements pre
 {
-  rpx(rps paramrps) {}
+  rpx(String paramString, boolean paramBoolean) {}
   
-  public void a(@NotNull Runnable paramRunnable)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    ThreadManagerV2.excute(paramRunnable, 16, null, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsHelper", 2, "followPubAccount() onFollowPublicAccount uin=" + this.jdField_a_of_type_JavaLangString + ", isSuccess=" + paramBoolean + ", isUGC=" + this.jdField_a_of_type_Boolean + ", data=" + paramInt);
+    }
+    rpt.a(paramBoolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
   }
 }
 

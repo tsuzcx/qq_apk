@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import akif;
-import bqfh;
+import aktq;
+import brgs;
 import java.io.File;
 
 public class PhotoPreviewLogicDefault$9
   implements Runnable
 {
-  public PhotoPreviewLogicDefault$9(akif paramakif, String paramString) {}
+  public PhotoPreviewLogicDefault$9(aktq paramaktq, String paramString) {}
   
   public void run()
   {
-    bqfh.a(new File(this.a).getParent());
+    brgs.a(new File(this.a).getParent());
   }
 }
 

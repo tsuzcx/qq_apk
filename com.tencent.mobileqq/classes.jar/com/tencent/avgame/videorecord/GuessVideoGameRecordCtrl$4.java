@@ -2,12 +2,12 @@ package com.tencent.avgame.videorecord;
 
 import android.graphics.Bitmap;
 import android.view.View;
-import ngx;
+import nis;
 
 public class GuessVideoGameRecordCtrl$4
   implements Runnable
 {
-  public GuessVideoGameRecordCtrl$4(ngx paramngx, View paramView) {}
+  public GuessVideoGameRecordCtrl$4(nis paramnis, View paramView) {}
   
   public void run()
   {

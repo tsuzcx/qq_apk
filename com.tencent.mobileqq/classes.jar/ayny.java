@@ -1,19 +1,44 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
 class ayny
-  implements Animation.AnimationListener
+  implements aqxz
 {
-  ayny(aynq paramaynq, int paramInt) {}
+  ayny(aynp paramaynp) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a()
   {
-    aynq.a(this.jdField_a_of_type_Aynq, this.jdField_a_of_type_Int);
+    return 1;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public int a(int paramInt)
+  {
+    return 4;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String a(int paramInt1, int paramInt2)
+  {
+    int i = 3;
+    if (paramInt2 < 0) {}
+    for (paramInt1 = 0;; paramInt1 = paramInt2)
+    {
+      if (paramInt1 > 3) {
+        paramInt1 = i;
+      }
+      for (;;)
+      {
+        switch (paramInt1)
+        {
+        default: 
+          return "";
+        case 0: 
+          return anzj.a(2131706195);
+        case 1: 
+          return anzj.a(2131706166);
+        case 2: 
+          return anzj.a(2131706136);
+        }
+        return anzj.a(2131706168);
+      }
+    }
+  }
 }
 
 

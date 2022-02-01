@@ -1,19 +1,130 @@
-import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
-import com.tencent.biz.qqcircle.scrollers.QCircleFeedPicPreloadScroller.1;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import qqcircle.QQCircleFeedBase.StPolyLike;
 
 public class vry
-  extends voy
 {
-  public vry(QCircleFeedPicPreloadScroller.1 param1) {}
+  private static String jdField_a_of_type_JavaLangString = "QCirclePolyLikeInfoManger";
+  public static HashMap<String, AnimationView.AnimationInfo> a;
+  private static vry jdField_a_of_type_Vry;
+  private float jdField_a_of_type_Float = 0.0F;
+  private List<QQCircleFeedBase.StPolyLike> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void a(int paramInt, vou paramvou)
+  static
   {
-    if ((paramInt == QCircleFeedPicLoader.f) || (paramInt == QCircleFeedPicLoader.c))
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public static vry a()
+  {
+    try
     {
-      vrx.a(this.a.this$0).put(paramvou.b(), Boolean.valueOf(true));
-      QLog.d(vrx.a, 4, "preload time lin video success");
+      if (jdField_a_of_type_Vry == null) {
+        jdField_a_of_type_Vry = new vry();
+      }
+      vry localvry = jdField_a_of_type_Vry;
+      return localvry;
+    }
+    finally {}
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    QCircleGetTabListRequest localQCircleGetTabListRequest = new QCircleGetTabListRequest(null);
+    localQCircleGetTabListRequest.setJustQueryRewardInfo(paramBoolean);
+    vrz localvrz = new vrz(this, localQCircleGetTabListRequest, paramBoolean);
+    VSNetworkHelper.a().a(localQCircleGetTabListRequest, localvrz);
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public List<QQCircleFeedBase.StPolyLike> a()
+  {
+    Object localObject;
+    int i;
+    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      localObject = bhjc.a(BaseApplicationImpl.getApplication(), "qcircle_stpoly_key");
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = ((String)localObject).split("#");
+        if (localObject.length > 0) {
+          i = 0;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (i < localObject.length) {}
+      try
+      {
+        QQCircleFeedBase.StPolyLike localStPolyLike = (QQCircleFeedBase.StPolyLike)new QQCircleFeedBase.StPolyLike().mergeFrom(localObject[i].getBytes());
+        this.jdField_a_of_type_JavaUtilList.add(localStPolyLike);
+        label79:
+        i += 1;
+        continue;
+        QLog.d(jdField_a_of_type_JavaLangString, 4, "get poly success from share:" + this.jdField_a_of_type_JavaUtilList.size());
+        if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+        {
+          QQToast.a(BaseApplicationImpl.getContext(), 0, 2131697330, 0);
+          a(false);
+        }
+        return this.jdField_a_of_type_JavaUtilList;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        break label79;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    a(true);
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (paramFloat < 0.0F) {}
+    for (this.jdField_a_of_type_Float = 0.0F;; this.jdField_a_of_type_Float = paramFloat)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "updateCurrentMoney result: " + this.jdField_a_of_type_Float);
+      return;
+    }
+  }
+  
+  public void a(List<QQCircleFeedBase.StPolyLike> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramList != null)
+    {
+      int i = 0;
+      while (i < paramList.size())
+      {
+        QQCircleFeedBase.StPolyLike localStPolyLike1 = (QQCircleFeedBase.StPolyLike)paramList.get(i);
+        QQCircleFeedBase.StPolyLike localStPolyLike2 = uzg.a(localStPolyLike1);
+        this.jdField_a_of_type_JavaUtilList.add(localStPolyLike2);
+        localStringBuilder.append(new String(localStPolyLike1.toByteArray())).append("#");
+        i += 1;
+      }
+      if (!TextUtils.isEmpty(localStringBuilder.toString()))
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 4, "set poly success:" + this.jdField_a_of_type_JavaUtilList.size());
+        bhjc.a(BaseApplicationImpl.getApplication(), "qcircle_stpoly_key", localStringBuilder.toString());
+      }
     }
   }
 }

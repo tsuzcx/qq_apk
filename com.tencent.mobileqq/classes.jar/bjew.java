@@ -1,44 +1,47 @@
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.ksong.KSongView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.lang.ref.WeakReference;
 
-class bjew
-  implements nkl
+public class bjew
+  extends Handler
 {
-  bjew(bjev parambjev, String paramString, boolean paramBoolean) {}
+  WeakReference<KSongView> a;
   
-  public void loaded(String paramString, int paramInt)
+  public bjew(KSongView paramKSongView)
   {
-    if (((paramInt != 0) || (paramString == null) || (!paramString.contains("url"))) && (paramInt != 7)) {
-      bjes.a.set(false);
-    }
-    this.jdField_a_of_type_Bjev.a = -1;
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 6: 
-    default: 
-      this.jdField_a_of_type_Bjev.a(this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QGDownloader.offline", 2, new Object[] { "onSoDownload loaded. code = ", Integer.valueOf(paramInt), ", param1:", paramString, ", DownloadStatus = " + this.jdField_a_of_type_Bjev.a });
-      }
-      return;
-      this.jdField_a_of_type_Bjev.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-      continue;
-      if (paramString == null) {
-        this.jdField_a_of_type_Bjev.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-      }
-    }
+    this.a = new WeakReference(paramKSongView);
   }
   
-  public void progress(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Bjev.a(this.jdField_a_of_type_JavaLangString, paramInt);
+    if (paramMessage.what == 0)
+    {
+      paramMessage = (KSongView)this.a.get();
+      if ((paramMessage != null) && (1 == paramMessage.a())) {
+        break label31;
+      }
+    }
+    label31:
+    do
+    {
+      return;
+      long l = System.currentTimeMillis() - KSongView.a(paramMessage) - paramMessage.a;
+      bjes localbjes = paramMessage.a();
+      paramMessage.a(l);
+      if (l >= localbjes.d) {
+        KSongView.a(paramMessage, l);
+      }
+      QLog.i("KSongView", 2, "real_duration = " + l);
+      if (l < localbjes.e)
+      {
+        sendEmptyMessageDelayed(0, 50L);
+        return;
+      }
+      KSongView.a(paramMessage, 3);
+    } while (KSongView.a(paramMessage) == null);
+    KSongView.a(paramMessage).a();
   }
 }
 

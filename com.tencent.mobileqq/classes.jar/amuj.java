@@ -1,7 +1,6 @@
-public class amuj
+public abstract interface amuj
 {
-  public int a;
-  public int b;
+  public abstract void a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, long paramLong);
 }
 
 

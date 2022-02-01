@@ -1,17 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 import com.tencent.qphone.base.util.QLog;
 
-class ahsj
-  implements DialogInterface.OnClickListener
+public class ahsj
+  extends AnimatorListenerAdapter
 {
-  ahsj(ahsd paramahsd) {}
+  public ahsj(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "showSaveFileTips cancel");
-    }
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {}
+    do
+    {
+      do
+      {
+        return;
+        SixCombolEffectView.jdField_a_of_type_Int = 4;
+        if (QLog.isColorLevel()) {
+          QLog.w("SixCombolEffectView", 2, "Animation 4 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+        }
+      } while (SixCombolEffectView.a(this.a) == null);
+      paramAnimator = SixCombolEffectView.a(this.a);
+    } while (paramAnimator == null);
+    SixCombolEffectView.a(this.a).a(paramAnimator);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    if (SixCombolEffectView.a(this.a)) {}
+    do
+    {
+      return;
+      SixCombolEffectView.jdField_a_of_type_Int = 3;
+    } while (!QLog.isColorLevel());
+    QLog.w("SixCombolEffectView", 2, "Animation 3 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
   }
 }
 

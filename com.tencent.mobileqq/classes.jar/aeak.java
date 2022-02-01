@@ -1,28 +1,22 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aeak
-  implements aled
+final class aeak
+  implements DialogInterface.OnClickListener
 {
-  private final int jdField_a_of_type_Int = -2147483648;
+  aeak(aeca paramaeca, aebz paramaebz) {}
   
-  private aeak(Conversation paramConversation) {}
-  
-  public void a(int paramInt, List<RecentBaseData> paramList) {}
-  
-  public void onChange(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDragFrameLayout.a() == -1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b.sendEmptyMessage(10);
-      FrameHelperActivity.c(true);
-      return;
+    if (this.jdField_a_of_type_Aeca.a) {
+      bdll.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
     }
-    FrameHelperActivity.c(false);
+    if (this.jdField_a_of_type_Aebz != null) {
+      this.jdField_a_of_type_Aebz.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

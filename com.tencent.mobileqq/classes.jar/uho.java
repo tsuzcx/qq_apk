@@ -1,24 +1,62 @@
-class uho
-  implements uoh
+import UserGrowth.stSimpleMetaFeed;
+import android.text.TextUtils;
+import java.util.ArrayList;
+
+public class uho
+  extends uhn<ArrayList<stSimpleMetaFeed>>
 {
-  uho(uhk paramuhk) {}
+  protected int a;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(String paramString)
+  public uho()
   {
-    uhk.a(this.a, true);
-    upe.b("WSFollowFeedHolder", "[onUserClick] uid: " + paramString);
-    String str = "weishi://profile?person_id=" + paramString;
-    uov.a(uhk.a(this.a).a(), str, 700, uhk.a(this.a), "content");
-    uhk.a(this.a, paramString);
+    this.jdField_a_of_type_JavaLangObject = new ArrayList();
+    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
   }
   
-  public void b(String paramString)
+  private boolean b(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    uhk.a(this.a, true);
-    upe.b("WSFollowFeedHolder", "[onTopicClick] tid: " + paramString);
-    String str = "weishi://topic?topic_id=" + paramString;
-    uov.a(uhk.a(this.a).a(), str, 700, uhk.a(this.a), "content");
-    uhk.b(this.a, paramString);
+    return ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (a() == 0)) || (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramstSimpleMetaFeed.poster_id));
+  }
+  
+  public int a()
+  {
+    return ((ArrayList)this.jdField_a_of_type_JavaLangObject).size();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Boolean) {
+      uep.a().a(a());
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    if ((paramstSimpleMetaFeed == null) || (!b(paramstSimpleMetaFeed))) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaLangString = paramstSimpleMetaFeed.poster_id;
+    this.jdField_a_of_type_JavaLangStringBuilder.append(paramstSimpleMetaFeed.id);
+    ((ArrayList)this.jdField_a_of_type_JavaLangObject).add(paramstSimpleMetaFeed);
+    return true;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

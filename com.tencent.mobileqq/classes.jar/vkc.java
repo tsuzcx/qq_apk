@@ -1,13 +1,16 @@
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetCommentListRsp;
 
 class vkc
-  implements zzq
+  implements aadm<Object>
 {
-  vkc(vkb paramvkb) {}
+  vkc(vjy paramvjy, int paramInt, FeedCloudMeta.StFeed paramStFeed) {}
   
-  public void a(Object[] paramArrayOfObject)
+  public void a(Object... paramVarArgs)
   {
-    vkb.a(this.a, ((Boolean)paramArrayOfObject[0]).booleanValue(), ((Long)paramArrayOfObject[1]).longValue(), (String)paramArrayOfObject[2], (FeedCloudRead.StGetFeedListRsp)paramArrayOfObject[3], false);
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
+      vjy.a(this.jdField_a_of_type_Vjy, this.jdField_a_of_type_Int, ((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetCommentListRsp)paramVarArgs[3], this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, false);
+    }
   }
 }
 

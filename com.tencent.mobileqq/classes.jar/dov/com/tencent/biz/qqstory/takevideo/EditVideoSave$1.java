@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.content.Intent;
-import anni;
-import bpep;
-import bpff;
-import bpfx;
+import anzj;
+import bqgk;
+import bqha;
+import bqhs;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class EditVideoSave$1
   implements Runnable
 {
-  public EditVideoSave$1(bpff parambpff, int paramInt, Intent paramIntent) {}
+  public EditVideoSave$1(bqha parambqha, int paramInt, Intent paramIntent) {}
   
   public void run()
   {
@@ -18,14 +18,14 @@ public class EditVideoSave$1
     if (this.jdField_a_of_type_Int == 222)
     {
       str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("key_video_save_path");
-      this.this$0.jdField_a_of_type_Bpep.a(str);
+      this.this$0.jdField_a_of_type_Bqgk.a(str);
     }
-    while (this.this$0.jdField_a_of_type_Bpep.a.a() == 102)
+    while (this.this$0.jdField_a_of_type_Bqgk.a.a() == 102)
     {
       String str;
       return;
     }
-    QQToast.a(this.this$0.jdField_a_of_type_Bpfx.a(), 2, anni.a(2131702553), 0).a();
+    QQToast.a(this.this$0.jdField_a_of_type_Bqhs.a(), 2, anzj.a(2131702660), 0).a();
   }
 }
 

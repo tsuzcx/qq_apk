@@ -1,57 +1,36 @@
 package com.tencent.qqmini.minigame.manager;
 
-import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.action.Action;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import java.lang.ref.WeakReference;
 
 public class GameVideoPlayerManager
 {
   private static final String TAG = "GameVideoPlayerManager";
-  private static volatile GameVideoPlayerManager instance;
-  private WeakReference<Activity> activityRef;
-  private WeakReference<ViewGroup> parentRef;
+  private static final Action<ViewGroup> getAdViewContainerAction = new GameVideoPlayerManager.1();
   
-  public static GameVideoPlayerManager getInstance()
+  public static void addPlayerView(IMiniAppContext paramIMiniAppContext, ViewGroup paramViewGroup)
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new GameVideoPlayerManager();
-      }
-      return instance;
-    }
-    finally {}
-  }
-  
-  public void addPlayerView(ViewGroup paramViewGroup)
-  {
-    if (this.parentRef != null) {}
-    for (ViewGroup localViewGroup = (ViewGroup)this.parentRef.get(); localViewGroup == null; localViewGroup = null)
+    paramIMiniAppContext = (ViewGroup)paramIMiniAppContext.performAction(getAdViewContainerAction);
+    if (paramIMiniAppContext == null)
     {
       QMLog.e("GameVideoPlayerManager", "addPlayerView error: parent == null");
       return;
     }
-    localViewGroup.addView(paramViewGroup);
+    paramIMiniAppContext.addView(paramViewGroup);
   }
   
-  public void init(Activity paramActivity, ViewGroup paramViewGroup)
+  public static void removeView(IMiniAppContext paramIMiniAppContext, View paramView)
   {
-    this.activityRef = new WeakReference(paramActivity);
-    this.parentRef = new WeakReference(paramViewGroup);
-  }
-  
-  public void removeView(View paramView)
-  {
-    ViewGroup localViewGroup = (ViewGroup)this.parentRef.get();
-    if (localViewGroup == null)
+    paramIMiniAppContext = (ViewGroup)paramIMiniAppContext.performAction(getAdViewContainerAction);
+    if (paramIMiniAppContext == null)
     {
       QMLog.e("GameVideoPlayerManager", "removePlayerView error: parent == null");
       return;
     }
-    localViewGroup.removeView(paramView);
+    paramIMiniAppContext.removeView(paramView);
   }
 }
 

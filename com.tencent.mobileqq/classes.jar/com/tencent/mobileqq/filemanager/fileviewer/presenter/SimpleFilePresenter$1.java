@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import atoo;
-import atri;
-import bdiq;
+import augj;
+import aujd;
+import bebl;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
 public class SimpleFilePresenter$1
   implements Runnable
 {
-  public SimpleFilePresenter$1(atri paramatri, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  public SimpleFilePresenter$1(aujd paramaujd, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
-    bdiq.a(this.a.m, this.this$0.a.m());
+    bebl.a(this.a.m, this.this$0.a.m());
   }
 }
 

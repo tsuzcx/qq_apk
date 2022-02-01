@@ -1,16 +1,19 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.widget.ImageView;
+import android.os.Bundle;
 
-class apso
-  extends bkfi
+public final class apso
 {
-  apso(apsl paramapsl) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public static Bundle a(Bundle paramBundle)
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    paramBundle = new apst(localBundle);
+    paramBundle.a(10L);
+    paramBundle.b(true);
+    paramBundle.a(true);
+    paramBundle.b(4096L);
+    return paramBundle.a();
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.av;
 
-import lbu;
-import ley;
+import lcb;
+import lff;
 
 class VideoController$35
   implements Runnable
@@ -10,9 +10,9 @@ class VideoController$35
   
   public void run()
   {
-    ley localley = this.this$0.a.c(this.jdField_a_of_type_JavaLangString);
-    if ((!this.this$0.e) && (localley != null) && (localley.j != 21) && (localley.j != 1011)) {
-      this.this$0.a(this.jdField_a_of_type_JavaLangString, localley.f, false, false, true);
+    lff locallff = this.this$0.a.c(this.jdField_a_of_type_JavaLangString);
+    if ((!this.this$0.e) && (locallff != null) && (locallff.j != 21) && (locallff.j != 1011)) {
+      this.this$0.a(this.jdField_a_of_type_JavaLangString, locallff.f, false, false, true);
     }
     this.this$0.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Boolean, false, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int);
   }

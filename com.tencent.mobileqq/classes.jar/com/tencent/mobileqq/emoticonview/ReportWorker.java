@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amhd;
+import amsx;
 import android.util.SparseIntArray;
-import arpm;
-import awmr;
-import bcst;
-import bdnh;
-import bdol;
+import asfa;
+import axfj;
+import bdll;
+import begd;
+import behh;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.VipUtils;
@@ -48,7 +48,7 @@ public class ReportWorker
         break label592;
       }
       k = localStringBuilder.charAt(i + 1);
-      if ((k >= bdnh.jdField_a_of_type_Int) && (250 != k)) {
+      if ((k >= begd.jdField_a_of_type_Int) && (250 != k)) {
         break label245;
       }
       if (250 != k) {
@@ -59,11 +59,11 @@ public class ReportWorker
     label702:
     for (;;)
     {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X80057A3", 0, 0, k + "", "", "", "");
-      if (bdol.a(k)) {
-        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "0X800812E", ApolloUtil.b(this.jdField_a_of_type_Int), 0, new String[] { String.valueOf(k), String.valueOf(amhd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) });
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X80057A3", 0, 0, k + "", "", "", "");
+      if (behh.a(k)) {
+        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "0X800812E", ApolloUtil.b(this.jdField_a_of_type_Int), 0, new String[] { String.valueOf(k), String.valueOf(amsx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) });
       }
-      awmr.b("0", 1);
+      axfj.b("0", 1);
       j = i;
       if (QLog.isColorLevel())
       {
@@ -101,7 +101,7 @@ public class ReportWorker
           }
         }
       }
-      localObject = arpm.a((char[])localObject);
+      localObject = asfa.a((char[])localObject);
       if ((localObject != null) && (localObject.length == 2))
       {
         k = localObject[0];
@@ -122,8 +122,8 @@ public class ReportWorker
         if (this.jdField_a_of_type_Boolean) {}
         for (localObject = "0X800588C";; localObject = "0X80057AF")
         {
-          bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", (String)localObject, 0, 0, k + "", j + "", str, "");
-          awmr.b("0", 5);
+          bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", (String)localObject, 0, 0, k + "", j + "", str, "");
+          axfj.b("0", 5);
           if (QLog.isColorLevel()) {
             QLog.d("ReportWorker", 2, "report small emoticon send amount, epId:" + k + ",eId:" + j + ",tabOrder:" + str);
           }
@@ -131,13 +131,13 @@ public class ReportWorker
           break;
         }
         label592:
-        k = bdnh.jdField_a_of_type_AndroidUtilSparseIntArray.get(j, -1);
+        k = begd.jdField_a_of_type_AndroidUtilSparseIntArray.get(j, -1);
         j = i;
         if (k < 0) {
           break;
         }
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X80057A4", 0, 0, k + "", "", "", "");
-        awmr.b("0", 1);
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X80057A4", 0, 0, k + "", "", "", "");
+        axfj.b("0", 1);
         j = i;
         if (!QLog.isColorLevel()) {
           break;

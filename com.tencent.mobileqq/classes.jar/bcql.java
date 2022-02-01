@@ -1,13 +1,10 @@
-import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ThreadRegulator.Proxy;
-
-public final class bcql
-  implements IMCoreProxyRoute.ThreadRegulator.Proxy
+public class bcql
 {
-  public void checkInNextBusiness()
-  {
-    ThreadRegulator.a().b();
-  }
+  public Object a;
+  public boolean a;
+  public Object b;
+  
+  public bcql(bcqk parambcqk) {}
 }
 
 

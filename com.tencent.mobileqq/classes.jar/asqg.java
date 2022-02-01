@@ -1,23 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
 
-class asqg
-  implements Animation.AnimationListener
+public class asqg
+  implements Animator.AnimatorListener
 {
-  asqg(asqe paramasqe) {}
+  public asqg(EmotionSearchPanel paramEmotionSearchPanel) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendDisappearAnimation disappear ( disappearCount: " + this.a.h + ", disappearSize: " + this.a.i + " )");
-    }
+    EmotionSearchPanel.b(this.a);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

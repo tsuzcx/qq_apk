@@ -1,8 +1,19 @@
-public abstract interface qyz
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+
+public final class qyz
+  implements Parcelable.Creator<TopicInfo>
 {
-  public abstract void a();
+  public TopicInfo a(Parcel paramParcel)
+  {
+    return new TopicInfo(paramParcel);
+  }
   
-  public abstract void a(int paramInt, long paramLong, String paramString1, qzh paramqzh, String paramString2, String paramString3, String paramString4);
+  public TopicInfo[] a(int paramInt)
+  {
+    return new TopicInfo[paramInt];
+  }
 }
 
 

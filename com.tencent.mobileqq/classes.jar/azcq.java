@@ -1,57 +1,72 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.qphone.base.BaseConstants;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.graphics.Matrix;
 
 public class azcq
 {
-  private static HashMap<Long, azcr> a = new HashMap();
+  private static final Matrix a = new Matrix();
+  private static final Matrix b = new Matrix();
   
-  public static void a(int paramInt1, int paramInt2)
+  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("business_type", String.valueOf(paramInt1));
-    localHashMap.put("prediction_step", String.valueOf(paramInt2));
-    bctj.a(BaseApplication.getContext()).a(null, "actPredictionData", true, 0L, 0L, localHashMap, "");
+    return Math.max(paramFloat2, Math.min(paramFloat1, paramFloat3));
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
+  public static void a(azcn paramazcn1, azcn paramazcn2, float paramFloat1, float paramFloat2, azcn paramazcn3, float paramFloat3, float paramFloat4, float paramFloat5)
   {
-    if (paramMessageForShortVideo.getBitValue(1) == 1) {}
-    long l;
-    do
+    paramazcn1.a(paramazcn2);
+    if (!azcn.a(paramazcn2.c(), paramazcn3.c())) {
+      paramazcn1.b(b(paramazcn2.c(), paramazcn3.c(), paramFloat5), paramFloat1, paramFloat2);
+    }
+    float f2 = paramazcn2.d();
+    float f3 = paramazcn3.d();
+    float f1;
+    if (Math.abs(f2 - f3) <= 180.0F)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPredictionEvaluator", 2, "msgViewedInAIO, size=" + a.size());
+      if (azcn.a(f2, f3)) {
+        break label189;
       }
-      l = System.currentTimeMillis();
-    } while ((a.containsKey(Long.valueOf(paramMessageForShortVideo.uniseq))) || (a.size() >= 24));
-    paramQQAppInterface = new azcr(paramQQAppInterface, paramMessageForShortVideo, l, 0L);
-    a.put(Long.valueOf(paramMessageForShortVideo.uniseq), paramQQAppInterface);
+      f1 = b(f2, f3, paramFloat5);
+    }
+    for (;;)
+    {
+      if (!Float.isNaN(f1)) {
+        paramazcn1.d(f1, paramFloat1, paramFloat2);
+      }
+      paramazcn1.a(b(0.0F, paramFloat3 - paramFloat1, paramFloat5), b(0.0F, paramFloat4 - paramFloat2, paramFloat5));
+      return;
+      f1 = f2;
+      if (f2 < 0.0F) {
+        f1 = f2 + 360.0F;
+      }
+      f2 = f3;
+      if (f3 < 0.0F) {
+        f2 = f3 + 360.0F;
+      }
+      if (!azcn.a(f1, f2)) {
+        f1 = b(f1, f2, paramFloat5);
+      } else {
+        label189:
+        f1 = (0.0F / 0.0F);
+      }
+    }
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
+  public static void a(azcn paramazcn1, azcn paramazcn2, azcn paramazcn3, float paramFloat)
   {
-    if (paramMessageForShortVideo.getBitValue(1) == 1) {}
-    long l;
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPredictionEvaluator", 2, "msgClicked, size=" + a.size());
-        }
-        l = System.currentTimeMillis();
-      } while (!a.containsKey(Long.valueOf(paramMessageForShortVideo.uniseq)));
-      paramQQAppInterface = (azcr)a.remove(Long.valueOf(paramMessageForShortVideo.uniseq));
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.a(l);
-    paramQQAppInterface.a();
+    a(paramazcn1, paramazcn2, paramazcn2.a(), paramazcn2.b(), paramazcn3, paramazcn3.a(), paramazcn3.b(), paramFloat);
+  }
+  
+  public static void a(float[] paramArrayOfFloat, azcn paramazcn1, azcn paramazcn2)
+  {
+    paramazcn1.a(a);
+    a.invert(b);
+    b.mapPoints(paramArrayOfFloat);
+    paramazcn2.a(a);
+    a.mapPoints(paramArrayOfFloat);
+  }
+  
+  public static float b(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    return (paramFloat2 - paramFloat1) * paramFloat3 + paramFloat1;
   }
 }
 

@@ -1,46 +1,57 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
-class mab
-  extends lzz
+public class mab
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public static String a;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public int a;
+  @Deprecated
+  lkk a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  mab(LinearLayout paramLinearLayout)
+  static
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131373499));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLinearLayout.findViewById(2131373212));
-  }
-  
-  Resources a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView.getResources();
-  }
-  
-  void a()
-  {
-    if (!a()) {
-      return;
+    jdField_b_of_type_JavaLangString = "sharp/small_window/" + "close_flag";
+    jdField_a_of_type_JavaLangString = "sharp/small_window/" + "version";
+    jdField_c_of_type_JavaLangString = "sharp/small_window/" + "use_textureview";
+    jdField_d_of_type_JavaLangString = "sharp/small_window/" + "close_video";
+    jdField_e_of_type_JavaLangString = "sharp/small_window/" + "close_audio";
+    if (QLog.isColorLevel()) {
+      QLog.d("SmallScreenConfigParser", 2, " SmallScreenConfigParser --> key_open_flag = " + jdField_b_of_type_JavaLangString + " , key_version = " + jdField_a_of_type_JavaLangString + " , key_textureview = " + jdField_c_of_type_JavaLangString + " , key_close_video_flag = " + jdField_d_of_type_JavaLangString + " , key_close_audio_flag = " + jdField_e_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
-  boolean a()
+  public mab()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView != null;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_Lkk = null;
   }
   
-  boolean a(mac parammac)
+  public boolean a(lkk paramlkk)
   {
-    a();
-    if ((parammac.a != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
+    try
     {
-      lzx.a(this.jdField_a_of_type_AndroidWidgetTextView, parammac);
+      this.jdField_a_of_type_Int = paramlkk.a(jdField_a_of_type_JavaLangString, 0);
+      this.jdField_b_of_type_Int = paramlkk.a(jdField_b_of_type_JavaLangString, 0);
+      this.jdField_c_of_type_Int = paramlkk.a(jdField_c_of_type_JavaLangString, -1);
+      this.jdField_d_of_type_Int = paramlkk.a(jdField_d_of_type_JavaLangString, 0);
+      this.jdField_e_of_type_Int = paramlkk.a(jdField_e_of_type_JavaLangString, 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("SmallScreenConfigParser", 2, "value_version = " + this.jdField_a_of_type_Int + " , value_close_flag = " + this.jdField_b_of_type_Int + " , value_use_textureview = " + this.jdField_c_of_type_Int + " ,value_close_video = " + this.jdField_d_of_type_Int + " , value_close_audio = " + this.jdField_e_of_type_Int);
+      }
       return true;
+    }
+    catch (Exception paramlkk)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SmallScreenConfigParser", 2, "parseConfig --> Error");
+      }
     }
     return false;
   }

@@ -1,18 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqpim.QQPimTipsInfo;
+import android.app.Activity;
+import android.os.IBinder;
+import android.widget.Button;
 
-public final class blnb
-  implements Parcelable.Creator<QQPimTipsInfo>
+public class blnb
+  extends blmw
 {
-  public QQPimTipsInfo a(Parcel paramParcel)
+  public boolean b = true;
+  
+  public blnb(Activity paramActivity)
   {
-    return new QQPimTipsInfo(paramParcel, null);
+    super(paramActivity);
   }
   
-  public QQPimTipsInfo[] a(int paramInt)
+  public void a()
   {
-    return new QQPimTipsInfo[paramInt];
+    super.a();
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
+      this.jdField_a_of_type_AndroidWidgetButton.setText(anzj.a(2131704836));
+    }
+    b();
+  }
+  
+  protected void a(IBinder paramIBinder)
+  {
+    if (this.b) {
+      super.a(paramIBinder);
+    }
   }
 }
 

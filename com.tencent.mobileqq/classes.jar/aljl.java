@@ -1,28 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21.1.1;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class aljl
-  implements alls
 {
-  public aljl(NewFlowCameraActivity.21.1.1 param1) {}
+  public long a;
+  public MessageRecord a;
+  public String a;
+  public byte[] a;
   
-  public void a(int paramInt)
+  public aljl(MessageRecord paramMessageRecord, long paramLong, byte[] paramArrayOfByte, String paramString)
   {
-    if (paramInt == 0)
-    {
-      NewFlowCameraActivity.b(this.a.a.a.this$0, true);
-      if (this.a.a.a.this$0.d.getVisibility() == 0)
-      {
-        this.a.a.a.this$0.d.setVisibility(8);
-        this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
-      }
-      return;
-    }
-    NewFlowCameraActivity.b(this.a.a.a.this$0, false);
-    this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

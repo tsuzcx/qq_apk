@@ -1,6 +1,16 @@
-public abstract interface amhp
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+
+public class amhp
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public amhp(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.s();
+  }
 }
 
 

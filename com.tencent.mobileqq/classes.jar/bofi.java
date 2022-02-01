@@ -1,17 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import dov.com.qq.im.ae.AEPituCameraUnit.13;
 
 public class bofi
   implements View.OnClickListener
 {
-  public bofi(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
+  public bofi(AEPituCameraUnit.13 param13) {}
   
   public void onClick(View paramView)
   {
-    this.a.f();
-    this.a.j();
+    if (bofh.a(this.a.this$0) != null) {
+      bofh.a(this.a.this$0).f();
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

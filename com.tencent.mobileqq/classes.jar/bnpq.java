@@ -1,8 +1,20 @@
-public abstract interface bnpq
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+
+public class bnpq
 {
-  public abstract void a(bnpf parambnpf, int paramInt);
-  
-  public abstract void a(bnpf parambnpf, boolean paramBoolean);
+  public static void a(bioy parambioy, String... paramVarArgs)
+  {
+    paramVarArgs = new Intent("action_js2qzone");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("cmd", "CleanZebraNum");
+    paramVarArgs.putExtras(localBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneZebraAlbumJsHandleLogicQZonePersonalizePlugin", 2, "actionString: " + paramVarArgs.getAction());
+    }
+    bmtd.a(parambioy.a(), bmtk.a(), paramVarArgs);
+  }
 }
 
 

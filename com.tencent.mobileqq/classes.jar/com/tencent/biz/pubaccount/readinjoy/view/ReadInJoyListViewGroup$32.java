@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.text.TextUtils;
-import bgsg;
-import bmqa;
+import bhsi;
+import bnrf;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import oat;
-import och;
-import pha;
-import phi;
-import rcx;
-import rdd;
+import ocd;
+import odr;
+import ozs;
+import paa;
+import qtq;
+import qtw;
 
 class ReadInJoyListViewGroup$32
   implements Runnable
@@ -29,10 +29,10 @@ class ReadInJoyListViewGroup$32
     }
     label357:
     label376:
-    for (boolean bool = bgsg.v(this.this$0.getContext(), ((BaseActivity)this.this$0.a()).getCurrentAccountUin());; bool = false)
+    for (boolean bool = bhsi.u(this.this$0.getContext(), ((BaseActivity)this.this$0.a()).getCurrentAccountUin());; bool = false)
     {
       if ((this.this$0.getContext() instanceof BaseActivity)) {}
-      for (Object localObject1 = ((rdd)((BaseActivity)this.this$0.getContext()).app.getManager(261)).a();; localObject1 = "0")
+      for (Object localObject1 = ((qtw)((BaseActivity)this.this$0.getContext()).app.getManager(261)).a();; localObject1 = "0")
       {
         int i;
         if ((TextUtils.isEmpty((CharSequence)localObject1)) || (((String)localObject1).equals("0")))
@@ -46,31 +46,31 @@ class ReadInJoyListViewGroup$32
           if (!(this.this$0.getContext() instanceof BaseActivity)) {
             break label357;
           }
-          rcx localrcx = (rcx)((BaseActivity)this.this$0.getContext()).app.getManager(270);
+          qtq localqtq = (qtq)((BaseActivity)this.this$0.getContext()).app.getManager(270);
           k = i;
           localObject2 = localObject1;
           m = j;
-          if (localrcx.a() != 1) {
+          if (localqtq.a() != 1) {
             break label357;
           }
           k = i;
           localObject2 = localObject1;
           m = j;
-          if (!localrcx.b()) {
+          if (!localqtq.b()) {
             break label357;
           }
-          localObject1 = localrcx.a();
+          localObject1 = localqtq.a();
           i = 0;
         }
         for (int j = 2;; j = k)
         {
           if (this.this$0.a == 40677)
           {
-            oat.a(null, "CliOper", "", "", "0X8009294", "0X8009294", 0, 0, bmqa.a("default_feeds_proteus_offline_bid"), "", "", pha.a(this.this$0.a, (String)localObject1, i, j, false, -1).a(), false);
-            oat.a("0X8009294", "", "", "", "", pha.b(this.this$0.a));
+            ocd.a(null, "CliOper", "", "", "0X8009294", "0X8009294", 0, 0, bnrf.a("default_feeds_proteus_offline_bid"), "", "", ozs.a(this.this$0.a, (String)localObject1, i, j, false, -1).a(), false);
+            ocd.a("0X8009294", "", "", "", "", ozs.b(this.this$0.a));
           }
           if (this.this$0.a == 56) {
-            oat.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "1", "", och.a(this.this$0.a, null), false);
+            ocd.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "1", "", odr.a(this.this$0.a, null), false);
           }
           return;
           if (bool)

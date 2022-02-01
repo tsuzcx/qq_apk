@@ -1,24 +1,24 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import android.support.v4.content.FileProvider;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.MobileQQ;
 
 class uyl
-  extends RecyclerView.ViewHolder
+  implements aaad
 {
-  public uyl(View paramView)
-  {
-    super(paramView);
-  }
+  uyl(uyk paramuyk) {}
   
-  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo, uzb paramuzb)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if ((this.itemView instanceof BaseWidgetView))
+    QLog.d("QCircleConfig", 1, "tryGetSplashVideoAsync onRspCallback " + paramBoolean + ", " + paramString);
+    if (paramBoolean)
     {
-      this.itemView.setTag(this);
-      ((BaseWidgetView)this.itemView).setInteractor(paramuzb);
-      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
+      paramString = new File(paramString, uyk.a(this.a));
+      if ((paramString.exists()) && (paramString.length() > 0L))
+      {
+        uyk.a(FileProvider.getUriForFile(MobileQQ.getContext(), "com.tencent.mobileqq.fileprovider", paramString));
+        QLog.d("QCircleConfig", 1, "tryGetSplashVideoAsync splashVideoPath: " + uyk.b());
+      }
     }
   }
 }

@@ -1,14 +1,21 @@
-public abstract interface awxg
+import android.util.Log;
+
+class awxg
+  implements awxi
 {
-  public abstract void a();
+  awxg(awxf paramawxf) {}
   
-  public abstract void a(awxe paramawxe);
+  public void a(int paramInt)
+  {
+    this.a.a = true;
+    this.a.c(paramInt);
+  }
   
-  public abstract void a(awxe paramawxe, int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void b(int paramInt)
+  {
+    Log.d("ModuleController", "onScrollStop -> top:" + paramInt);
+    this.a.b(paramInt);
+  }
 }
 
 

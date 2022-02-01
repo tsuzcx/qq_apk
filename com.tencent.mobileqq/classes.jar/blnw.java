@@ -1,72 +1,90 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class blnw
+  extends BaseAdapter
 {
-  public static int a(Context paramContext)
-  {
-    return a(paramContext, "QR_USERPREF58", -1);
-  }
+  private int jdField_a_of_type_Int = 1;
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
+  private int b;
   
-  public static int a(@NonNull Context paramContext, String paramString, int paramInt)
+  public blnw(BaseAdapter paramBaseAdapter, int paramInt)
   {
-    return paramContext.getSharedPreferences("QR_OUT_SETTING", 0).getInt(paramString, paramInt);
-  }
-  
-  public static int a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    int j = 0;
-    int i = j;
-    int k;
-    if (paramQQAppInterface != null)
+    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
+    if (paramInt > 0) {}
+    for (;;)
     {
-      k = VipUtils.a(paramQQAppInterface, paramString);
-      if ((k & 0x4) == 0) {
-        break label26;
+      this.jdField_a_of_type_Int = paramInt;
+      if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null) {
+        this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(new blnx(this));
       }
-      i = 2;
+      return;
+      paramInt = 1;
     }
-    label26:
-    do
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public BaseAdapter a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = b();
+    if (paramInt < 0)
     {
-      return i;
-      i = j;
-    } while ((k & 0x2) == 0);
-    return 1;
-  }
-  
-  public static short a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    return VipUtils.a(paramQQAppInterface, paramString);
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    a(paramContext, "QR_USERPREF58", paramInt);
-  }
-  
-  public static void a(@NonNull Context paramContext, String paramString, int paramInt)
-  {
-    paramContext = paramContext.getSharedPreferences("QR_OUT_SETTING", 0).edit();
-    paramContext.putInt(paramString, paramInt);
-    paramContext.commit();
-  }
-  
-  public static boolean a(AppInterface paramAppInterface)
-  {
-    if (paramAppInterface != null)
-    {
-      paramAppInterface = (anrs)paramAppInterface.getManager(56);
-      if (paramAppInterface != null) {
-        return paramAppInterface.b("1805987832") != null;
-      }
+      this.b = 0;
+      return;
     }
-    return false;
+    if (paramInt >= i)
+    {
+      this.b = (i - 1);
+      return;
+    }
+    this.b = paramInt;
+  }
+  
+  public int b()
+  {
+    int i = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
+    int j = i / this.jdField_a_of_type_Int;
+    if (i % this.jdField_a_of_type_Int != 0) {}
+    for (i = 1;; i = 0) {
+      return i + j;
+    }
+  }
+  
+  public int getCount()
+  {
+    int i = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
+    if ((this.b + 1) * this.jdField_a_of_type_Int > i) {
+      return i % this.jdField_a_of_type_Int;
+    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItem(this.b * this.jdField_a_of_type_Int + paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemId(this.b * this.jdField_a_of_type_Int + paramInt);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(this.b * this.jdField_a_of_type_Int + paramInt, paramView, paramViewGroup);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 

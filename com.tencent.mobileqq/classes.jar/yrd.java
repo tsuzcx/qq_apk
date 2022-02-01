@@ -1,39 +1,58 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryUploadProgressView.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import mqq.os.MqqHandler;
 
-public abstract interface yrd
-  extends ytx
+public class yrd
+  implements wmh
 {
-  public abstract void Z_();
+  public MessageProgressView a;
+  private String a;
   
-  public abstract int a();
+  public yrd(MessageProgressView paramMessageProgressView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = paramMessageProgressView;
+  }
   
-  public abstract Bitmap a();
+  private void b(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramInt, this.jdField_a_of_type_JavaLangString + "_" + hashCode());
+  }
   
-  public abstract Bitmap a(int paramInt);
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(zps.a(this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getContext(), 8.0F), false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
+  }
   
-  @NonNull
-  public abstract DoodleLayout a();
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(paramInt);
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void a(bizc parambizc)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(parambizc);
+  }
   
-  public abstract void a(Bitmap paramBitmap);
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
-  public abstract void a(MotionEvent paramMotionEvent);
+  public void a(String paramString, int paramInt)
+  {
+    b(paramString, paramInt);
+    if (paramInt >= 100) {
+      ThreadManager.getUIHandler().postDelayed(new StoryUploadProgressView.1(this), 500L);
+    }
+  }
   
-  public abstract boolean a(int paramInt);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
-  
-  public abstract byte[] a(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean f_();
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(this.jdField_a_of_type_JavaLangString + "_" + hashCode());
+  }
 }
 
 

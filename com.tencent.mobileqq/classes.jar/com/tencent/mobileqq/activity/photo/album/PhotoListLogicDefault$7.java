@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import akhu;
+import aktf;
 import android.os.Handler;
 import android.os.Message;
-import bgkc;
+import bhkd;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.util.Map;
 
 public class PhotoListLogicDefault$7
   implements Runnable
 {
-  public PhotoListLogicDefault$7(akhu paramakhu, String paramString) {}
+  public PhotoListLogicDefault$7(aktf paramaktf, String paramString) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class PhotoListLogicDefault$7
     String str = ((NewPhotoListActivity)this.this$0.mActivity).a(this.a);
     localMessage.obj = str;
     LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    bgkc.a(localLocalMediaInfo, str);
+    bhkd.a(localLocalMediaInfo, str);
     PhotoListBaseData.newCaptureMediaInfo.put(str, localLocalMediaInfo);
     ((NewPhotoListActivity)this.this$0.mActivity).a.sendMessage(localMessage);
   }

@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.portal.PortalManager.TimerConfig;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
-public final class azbs
-  implements Comparator<PortalManager.TimerConfig>
+public class azbs
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a(PortalManager.TimerConfig paramTimerConfig1, PortalManager.TimerConfig paramTimerConfig2)
+  public azbs(ScanOcrView paramScanOcrView, azbt paramazbt) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    long l = paramTimerConfig1.uiBegin - paramTimerConfig2.uiBegin;
-    if (l > 0L) {
-      return 1;
-    }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_Azbt.e = i;
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
   }
 }
 

@@ -1,11 +1,10 @@
-import android.widget.ImageView;
+import android.view.View;
 
 public class amfg
-  extends bkot
+  extends amfi
 {
-  public String a;
-  public int b = 1;
-  public ImageView d;
+  public long a;
+  public View a;
 }
 
 

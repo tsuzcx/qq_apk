@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
-import java.util.Set;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
 public class bbub
-  extends bbsj
+  implements gf
 {
-  private Comparator<bbmu> a = new bbuc(this);
+  public bbub(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public bbub(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
+  public void a()
   {
-    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
-  }
-  
-  public Comparator<bbmu> a()
-  {
-    return this.a;
+    Message localMessage = SignatureHistoryFragment.a(this.a).obtainMessage(1);
+    SignatureHistoryFragment.a(this.a).sendMessage(localMessage);
   }
 }
 

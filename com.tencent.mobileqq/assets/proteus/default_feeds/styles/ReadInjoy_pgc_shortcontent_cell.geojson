@@ -89,7 +89,7 @@
         }
       },
       {
-        "$includeComponet": "componet/social_bottom_share.geojson"
+        "$includeComponet": "componet/social_bottom.geojson"
       },
       {
           "$includeComponet": "componet/social_bottom_share_style_a.geojson"

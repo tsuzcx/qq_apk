@@ -1,11 +1,11 @@
-import android.view.View;
-
-public class bbpm
-  implements bbps
+class bbpm
+  implements auoj
 {
-  public void a(bbmw parambbmw, bbvh parambbvh)
+  bbpm(bbpk parambbpk, bbqw parambbqw) {}
+  
+  public void a()
   {
-    parambbvh.a().setVisibility(8);
+    this.jdField_a_of_type_Bbqw.i();
   }
 }
 

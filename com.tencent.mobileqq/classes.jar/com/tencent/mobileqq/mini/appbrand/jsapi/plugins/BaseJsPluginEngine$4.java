@@ -2,19 +2,16 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import java.util.List;
 import org.json.JSONObject;
 
 class BaseJsPluginEngine$4
   implements MiniAppCmdInterface
 {
-  BaseJsPluginEngine$4(BaseJsPluginEngine paramBaseJsPluginEngine, JsRuntime paramJsRuntime, List paramList, int paramInt) {}
+  BaseJsPluginEngine$4(BaseJsPluginEngine paramBaseJsPluginEngine, String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt) {}
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (paramBoolean) {
-      this.this$0.onceSubMsgCallbackSuc(this.val$webview, this.val$allSubMsg, this.val$callbackId);
-    }
+    BaseJsPluginEngine.access$200(this.this$0, this.val$eventName, this.val$jsonParams, this.val$webview, this.val$callbackId, paramBoolean, paramJSONObject);
   }
 }
 

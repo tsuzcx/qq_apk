@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afys;
-import bgse;
+import agim;
+import bhsg;
 
 class IntimateInfoShareHelper$1$1
   implements Runnable
@@ -10,7 +10,7 @@ class IntimateInfoShareHelper$1$1
   
   public void run()
   {
-    afys.a(this.a.this$0).show();
+    agim.a(this.a.this$0).show();
   }
 }
 

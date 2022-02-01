@@ -1,10 +1,24 @@
-import android.widget.RelativeLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface mgl
+public class mgl
+  implements View.OnClickListener
 {
-  public abstract void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean);
+  public mgl(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, ImageView paramImageView) {}
   
-  public abstract void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    ((TextView)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.findViewById(2131373655)).setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.f = true;
+    bdll.b(null, "CliOper", "", "", "0X800AEB8", "0X800AEB8", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import arov;
+import asej;
 
 public class MiniScanDecodeSoData
   extends XmlData
 {
-  @arov(a=true, b=true)
+  @asej(a=true, b=true)
   public boolean block_user_download;
   
   public String getSharedPreferencesName()

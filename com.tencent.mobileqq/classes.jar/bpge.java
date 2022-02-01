@@ -1,13 +1,30 @@
-public abstract interface bpge
-  extends bpeo
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+
+public class bpge
+  implements bplf
 {
-  public abstract bpgd a();
+  public bpge(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
-  public abstract void a(bpim parambpim, float paramFloat1, float paramFloat2);
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    if (AEEditorImageEditFragment.a(this.a).getVisibility() == 0)
+    {
+      Rect localRect = new Rect();
+      AEEditorImageEditFragment.a(this.a).getGlobalVisibleRect(localRect);
+      if (!localRect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
+        AEEditorImageEditFragment.a(this.a);
+      }
+    }
+    return false;
+  }
   
-  public abstract void b(int paramInt, bpsf parambpsf);
-  
-  public abstract void d();
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
 }
 
 

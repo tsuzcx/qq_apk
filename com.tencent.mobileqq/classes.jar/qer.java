@@ -1,41 +1,20 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
 
 class qer
-  implements View.OnClickListener
+  implements qej
 {
-  qer(qeq paramqeq, ArticleInfo paramArticleInfo, Context paramContext) {}
+  qer(qek paramqek) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.isEmpty())) {
-      QLog.d("PackProteusItem", 1, "articleInfo is null or topicRecommendInfo is null or topicRecommendInfoList is empty");
-    }
-    String str1;
-    do
+    if (qek.a(this.a) != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      qek.a(this.a).a();
       return;
-      str1 = ((rik)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).b;
-    } while (TextUtils.isEmpty(str1));
-    String str2 = pha.a("1", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    if (ube.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID)) {}
-    for (Object localObject = "0X800935C";; localObject = "0X8007BA3")
-    {
-      oat.a(null, "", (String)localObject, (String)localObject, 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), "" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId, str2, false);
-      localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
-      ((Intent)localObject).putExtra("url", str1);
-      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-      break;
     }
+    ozs.a(qek.c(this.a).getContext(), qek.a(this.a));
+    QLog.d("RvPolymericContainer", 1, "mScrollJumpUrl : " + qek.a(this.a));
   }
 }
 

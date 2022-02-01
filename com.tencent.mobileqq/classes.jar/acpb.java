@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.statistics.GdtReporter;
 
 class acpb
-  implements SDKInitListener
+  implements acvm
 {
-  acpb(acow paramacow) {}
+  acpb(acox paramacox, ImageView paramImageView) {}
   
-  public void onSDKInited(boolean paramBoolean)
+  public void reportImpression(View paramView)
   {
-    QLog.i("VideoGdtGdtMvViewController", 1, "onSDKInited " + paramBoolean);
-    if (paramBoolean) {
-      acow.a(this.a).sendEmptyMessage(3);
+    paramView = paramView.getTag(2131381107);
+    if ((paramView != null) && ((paramView instanceof GdtAd)))
+    {
+      paramView = (GdtAd)paramView;
+      GdtReporter.doCgiReport(acox.a(this.jdField_a_of_type_Acox).b(paramView.getUrlForImpression(), this.jdField_a_of_type_Acox.a(this.jdField_a_of_type_AndroidWidgetImageView)));
     }
   }
 }

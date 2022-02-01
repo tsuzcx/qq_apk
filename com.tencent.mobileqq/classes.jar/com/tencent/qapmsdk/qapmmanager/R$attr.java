@@ -14,17 +14,17 @@ public final class R$attr
   public static final int fontStyle = 2131034478;
   public static final int fontWeight = 2131034480;
   public static final int icon = 2131034535;
-  public static final int spinnerStyle = 2131035023;
-  public static final int switchMinWidth = 2131035058;
-  public static final int switchPadding = 2131035059;
-  public static final int switchStyle = 2131035060;
-  public static final int switchTextAppearance = 2131035064;
-  public static final int textAllCaps = 2131035102;
-  public static final int thumbTextPadding = 2131035152;
-  public static final int tint = 2131035159;
-  public static final int title = 2131035164;
-  public static final int titleTextColor = 2131035167;
-  public static final int track = 2131035179;
+  public static final int spinnerStyle = 2131035028;
+  public static final int switchMinWidth = 2131035063;
+  public static final int switchPadding = 2131035064;
+  public static final int switchStyle = 2131035065;
+  public static final int switchTextAppearance = 2131035069;
+  public static final int textAllCaps = 2131035107;
+  public static final int thumbTextPadding = 2131035157;
+  public static final int tint = 2131035164;
+  public static final int title = 2131035169;
+  public static final int titleTextColor = 2131035172;
+  public static final int track = 2131035184;
 }
 
 

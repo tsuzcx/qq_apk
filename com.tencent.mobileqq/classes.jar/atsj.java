@@ -1,158 +1,34 @@
-import android.app.Activity;
-import android.graphics.Rect;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class atsj
+final class atsj
+  extends aavo
 {
-  public Activity a;
-  protected Bundle a;
-  public View a;
-  protected ViewGroup a;
-  protected ProgressBar a;
-  protected RelativeLayout a;
-  protected TextView a;
-  protected atsk a;
-  protected View b;
-  protected TextView b;
-  protected TextView c;
+  atsj(String paramString, atte paramatte, long paramLong) {}
   
-  public atsj(Activity paramActivity)
+  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public Rect a()
-  {
-    if (this.jdField_a_of_type_AndroidOsBundle != null) {
-      return (Rect)this.jdField_a_of_type_AndroidOsBundle.getParcelable("file_browser_params_thumb_bound");
-    }
-    return null;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public abstract void a();
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null))
+    if (!paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379123));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131379089));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379099));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366115));
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379087);
-    }
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
-  }
-  
-  public void a(atsk paramatsk)
-  {
-    this.jdField_a_of_type_Atsk = paramatsk;
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    }
-  }
-  
-  public void a(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    if (this.c == null) {
-      this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371966));
-    }
-    if (this.c != null)
-    {
-      this.c.setText(paramString);
-      this.c.setOnClickListener(paramOnClickListener);
-      this.c.setVisibility(0);
-      a(true);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    TextView localTextView;
-    if (this.c != null)
-    {
-      localTextView = this.c;
-      if (!paramBoolean) {
-        break label24;
-      }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localTextView.setVisibility(i);
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return failed fileid " + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Atte.a(atsi.a(this.jdField_a_of_type_Long, false), true);
       return;
     }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_b_of_type_AndroidViewView != null) {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    RelativeLayout localRelativeLayout;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    paramBundle.putString("_m_ForwardBusType", String.valueOf(paramInt2));
+    paramBundle.putString("_m_ForwardDeadTime", String.valueOf(paramInt3));
+    if (paramInt1 == 0)
     {
-      localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      if (!paramBoolean) {
-        break label24;
-      }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localRelativeLayout.setVisibility(i);
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult success fileid " + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Atte.a(this.jdField_a_of_type_JavaLangString, paramBundle);
       return;
     }
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return[" + paramInt1 + "] fileid " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Atte.a(atsi.a(this.jdField_a_of_type_Long, false), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsj
  * JD-Core Version:    0.7.0.1
  */

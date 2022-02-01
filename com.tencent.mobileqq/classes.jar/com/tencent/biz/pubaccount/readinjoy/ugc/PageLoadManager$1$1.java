@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
 import java.util.List;
-import rjf;
-import rjg;
+import qzy;
+import qzz;
 
 class PageLoadManager$1$1
   implements Runnable
@@ -11,16 +11,16 @@ class PageLoadManager$1$1
   
   public void run()
   {
-    rjf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager$1.this$0, rjf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager$1.this$0) + this.jdField_a_of_type_JavaUtilList.size());
-    rjf localrjf = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager$1.this$0;
+    qzy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager$1.this$0, qzy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager$1.this$0) + this.jdField_a_of_type_JavaUtilList.size());
+    qzy localqzy = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager$1.this$0;
     if (this.jdField_a_of_type_JavaUtilList.size() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      rjf.a(localrjf, bool);
-      if (rjf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager$1.this$0) != null) {
-        rjf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager$1.this$0).a(this.jdField_a_of_type_JavaUtilList, rjf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager$1.this$0));
+      qzy.a(localqzy, bool);
+      if (qzy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager$1.this$0) != null) {
+        qzy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager$1.this$0).a(this.jdField_a_of_type_JavaUtilList, qzy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager$1.this$0));
       }
-      rjf.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager$1.this$0, false);
+      qzy.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager$1.this$0, false);
       return;
     }
   }

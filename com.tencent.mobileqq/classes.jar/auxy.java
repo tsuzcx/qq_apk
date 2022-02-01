@@ -1,43 +1,75 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.net.Uri;
-import com.tencent.qphone.base.util.QLog;
-import java.io.InputStream;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import java.util.Iterator;
+import java.util.List;
 
 class auxy
-  implements DialogInterface.OnClickListener
+  implements avac
 {
-  auxy(auxw paramauxw, Uri paramUri, String paramString, InputStream paramInputStream, long paramLong) {}
+  auxy(auxu paramauxu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(View paramView)
   {
-    try
+    paramView = this.a.a.getBooleanArray("forward_is_write_together");
+    for (;;)
     {
-      auxw.a(this.jdField_a_of_type_Auxw, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_Auxw.b = false;
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      QLog.e("UriParserPathHelper", 1, "system share.copy file error", paramDialogInterface);
-      if (auxw.jdField_a_of_type_JavaLangString != null) {}
-    }
-    for (paramDialogInterface = this.jdField_a_of_type_Auxw.jdField_a_of_type_AndroidContentContext.getString(2131718011);; paramDialogInterface = auxw.jdField_a_of_type_JavaLangString)
-    {
-      auxw.a(this.jdField_a_of_type_Auxw, paramDialogInterface);
-      if (auxw.a(this.jdField_a_of_type_Auxw) == null) {
-        break;
+      int i;
+      try
+      {
+        Object localObject = this.a.a.getParcelableArrayList("forward_multi_target");
+        String str = this.a.a.getString("forward_source_uin");
+        if ((localObject == null) || (((List)localObject).isEmpty()))
+        {
+          localObject = this.a.a.getString("uin");
+          if ((this.a.a.getInt("uintype") == 1) && (((String)localObject).equals(str)))
+          {
+            i = 0;
+            if (i < paramView.length)
+            {
+              if (paramView[i] == 0) {
+                break label197;
+              }
+              return true;
+            }
+          }
+        }
+        else
+        {
+          localObject = ((List)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            ResultRecord localResultRecord = (ResultRecord)((Iterator)localObject).next();
+            if ((localResultRecord.a() != 1) || (!str.equals(localResultRecord.a))) {
+              continue;
+            }
+            i = 0;
+            if (i < paramView.length)
+            {
+              int j = paramView[i];
+              if (j != 0) {
+                return true;
+              }
+              i += 1;
+              continue;
+            }
+            continue;
+          }
+        }
+        return false;
       }
-      auxw.a(this.jdField_a_of_type_Auxw).a(this.jdField_a_of_type_AndroidNetUri);
-      auxw.a(this.jdField_a_of_type_Auxw, null);
-      return;
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      label197:
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     auxy
  * JD-Core Version:    0.7.0.1
  */

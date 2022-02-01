@@ -1,74 +1,32 @@
-import android.content.res.Resources;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.MultiImageTextView;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aert
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public aert(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public aert(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    int j = nlw.a();
-    int i = j;
-    if (j == -1) {
-      i = 2;
-    }
-    Object localObject;
-    if (i == 0)
+    switch (paramView.getId())
     {
-      QQToast.a(this.a.getActivity(), 1, 2131695415, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298998));
-      localObject = this.a;
-      if (!paramBoolean) {
-        NotifyPushSettingActivity.a((NotifyPushSettingActivity)localObject, bool1);
-      }
     }
     for (;;)
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bool1 = false;
-      break;
-      if (NotifyPushSettingActivity.a(this.a).compareAndSet(true, true))
-      {
-        QQToast.a(this.a.getActivity(), 1, 2131697524, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298998));
-        localObject = this.a;
-        if (!paramBoolean) {}
-        for (bool1 = bool2;; bool1 = false)
-        {
-          NotifyPushSettingActivity.a((NotifyPushSettingActivity)localObject, bool1);
-          break;
-        }
-      }
-      NotifyPushSettingActivity.a(this.a, paramBoolean);
-      if (paramBoolean)
-      {
-        localObject = anni.a(2131706414) + aesp.a(3600000L);
-        NotifyPushSettingActivity.a(this.a).setRightText((CharSequence)localObject);
-        NotifyPushSettingActivity.a(this.a).set(true);
-        long l = NetConnInfoCenter.getServerTime();
-        ((anip)this.a.app.a(2)).a((int)(3600L + l), "", "not_disturb_from_notify_push_setting_activity");
-        bcst.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 1, 60L + "", "0", "", "");
-      }
-      else
-      {
-        localObject = NotifyPushSettingActivity.a(this.a).a().getText().toString();
-        NotifyPushSettingActivity.a(this.a).a().setText("");
-        NotifyPushSettingActivity.a(this.a).set(true);
-        ((anip)this.a.app.a(2)).a(0, (String)localObject, "not_disturb_from_notify_push_setting_activity");
-        bcst.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 2, "0", "0", "", "");
-      }
+      ((bbav)this.a.app.getManager(36)).b("100190.100194");
+      Intent localIntent = new Intent();
+      localIntent.putExtra("set_display_type", 1);
+      PublicFragmentActivity.a(this.a.getActivity(), localIntent, QQSettingMsgClearFragment.class);
+      bdll.b(this.a.app, "CliOper", "", "", "0X800A1F2", "0X800A1F2", 0, 0, "", "", "", "");
+      bdll.b(this.a.app, "CliOper", "", "", "Setting_tab", "My_settab_log", 0, 0, "", "", "", "");
     }
   }
 }

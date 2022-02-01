@@ -1,23 +1,26 @@
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+
 public class ashs
+  extends DataSetObserver
 {
-  public long a;
-  public String a;
-  public String b;
+  public ashs(DragSortListView paramDragSortListView) {}
   
-  public ashs(String paramString1, String paramString2, long paramLong)
+  private void a()
   {
-    this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
+    if (this.a.g == 4) {
+      this.a.a();
+    }
   }
   
-  public String toString()
+  public void onChanged()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{schoolId: ").append(this.b).append("}");
-    localStringBuilder.append("{schoolName: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{schoolState: ").append(this.jdField_a_of_type_Long).append("}");
-    return localStringBuilder.toString();
+    a();
+  }
+  
+  public void onInvalidated()
+  {
+    a();
   }
 }
 

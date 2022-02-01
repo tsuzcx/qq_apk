@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import amvi;
-import amvj;
-import amvm;
-import amvx;
+import anhc;
+import anhd;
+import anhg;
+import anhr;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.Iterator;
 public class CmShowViewListener$2
   implements Runnable
 {
-  public CmShowViewListener$2(amvx paramamvx, boolean paramBoolean, Object paramObject) {}
+  public CmShowViewListener$2(anhr paramanhr, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {
@@ -20,23 +20,23 @@ public class CmShowViewListener$2
     {
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangObject != null))
       {
-        if (amvx.a(this.this$0).get() == null) {
+        if (anhr.a(this.this$0).get() == null) {
           return;
         }
         Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaLangObject;
         if ((localObject2 != null) && (((ArrayList)localObject2).size() != 0))
         {
-          Object localObject1 = (amvi)amvx.a(this.this$0).get();
-          amvj localamvj = ((amvi)localObject1).a();
-          localObject1 = ((amvi)localObject1).a();
-          if ((localamvj != null) && (localObject1 != null))
+          Object localObject1 = (anhc)anhr.a(this.this$0).get();
+          anhd localanhd = ((anhc)localObject1).a();
+          localObject1 = ((anhc)localObject1).a();
+          if ((localanhd != null) && (localObject1 != null))
           {
             localObject2 = ((ArrayList)localObject2).iterator();
             while (((Iterator)localObject2).hasNext())
             {
               String str = (String)((Iterator)localObject2).next();
-              if (str.equals(((amvm)localObject1).b)) {
-                localamvj.a(str, true);
+              if (str.equals(((anhg)localObject1).b)) {
+                localanhd.a(str, true);
               }
             }
           }

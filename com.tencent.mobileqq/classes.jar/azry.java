@@ -1,24 +1,53 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$onBindViewHolder$3$1"}, k=3, mv={1, 1, 16})
-final class azry
-  implements View.OnClickListener
+public final class azry
 {
-  azry(azrq paramazrq, azrp paramazrp, azru paramazru, int paramInt) {}
+  public final List<azrz> a = new ArrayList();
   
-  public final void onClick(View paramView)
+  private void a(String paramString)
   {
-    azrq localazrq = this.jdField_a_of_type_Azrq;
-    Intrinsics.checkExpressionValueIsNotNull(paramView, "view");
-    Object localObject = azrp.a(this.jdField_a_of_type_Azrp).get(this.jdField_a_of_type_Int);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "mData[position]");
-    localazrq.b(paramView, (azsj)localObject);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("c2c");
+        if (paramString.length() > 0)
+        {
+          int j = paramString.length();
+          int i = 0;
+          while (i < j)
+          {
+            azrz localazrz = new azrz();
+            JSONObject localJSONObject = paramString.getJSONObject(i);
+            localazrz.jdField_a_of_type_Int = localJSONObject.optInt("appid");
+            localazrz.d = localJSONObject.optString("title");
+            localazrz.e = localJSONObject.optString("iconNormal");
+            localazrz.f = localJSONObject.optString("iconPress");
+            localazrz.g = localJSONObject.optString("iconNightNormal");
+            localazrz.h = localJSONObject.optString("iconNightPress");
+            localazrz.jdField_b_of_type_Int = localJSONObject.optInt("redDotID");
+            localazrz.jdField_c_of_type_JavaLangString = localJSONObject.optString("redDotPath");
+            localazrz.jdField_a_of_type_JavaLangString = localJSONObject.optString("actionType");
+            localazrz.jdField_b_of_type_JavaLangString = localJSONObject.optString("action");
+            localazrz.jdField_c_of_type_Int = localJSONObject.optInt("order");
+            localazrz.a();
+            localazrz.b();
+            this.a.add(localazrz);
+            i += 1;
+          }
+        }
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("AIOPanelIconConfigProcessor", 1, paramString, new Object[0]);
+      }
+    }
   }
 }
 

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import angy;
+import anst;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +16,7 @@ public class ApolloPanelAdapter
   Context jdField_a_of_type_AndroidContentContext;
   public BaseChatPie a;
   SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private List<angy> jdField_a_of_type_JavaUtilList;
+  private List<anst> jdField_a_of_type_JavaUtilList;
   
   public ApolloPanelAdapter(Context paramContext)
   {
@@ -33,7 +33,7 @@ public class ApolloPanelAdapter
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
   }
   
-  public void a(List<angy> paramList)
+  public void a(List<anst> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     super.notifyDataSetChanged();
@@ -65,16 +65,16 @@ public class ApolloPanelAdapter
     if (QLog.isColorLevel()) {
       QLog.d("ApolloPanelAdapter", 2, "instantiateItem position = " + paramInt);
     }
-    angy localangy = null;
-    Object localObject = localangy;
+    anst localanst = null;
+    Object localObject = localanst;
     if (paramInt >= 0)
     {
-      localObject = localangy;
+      localObject = localanst;
       if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
       {
-        localangy = (angy)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        localObject = localangy.b();
-        localangy.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+        localanst = (anst)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        localObject = localanst.b();
+        localanst.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
       }
     }
     if ((localObject != null) && (((View)localObject).getParent() != paramViewGroup) && (paramInt < getCount())) {

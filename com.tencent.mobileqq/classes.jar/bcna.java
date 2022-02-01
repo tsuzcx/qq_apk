@@ -1,122 +1,87 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
-import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bcna
-  extends bcnb
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = -1;
-  public boolean a;
-  int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  int d = 0;
-  public int e;
+  public static bcna a;
+  public long a;
+  public Map<Long, WeakReference<Object>> a;
   
-  public bcna(TCProgressBar paramTCProgressBar)
+  static
   {
-    super(paramTCProgressBar);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = true;
+    jdField_a_of_type_Bcna = new bcna();
   }
   
-  public int a()
+  private bcna()
   {
-    return this.f + this.d;
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   }
   
-  public void a(Canvas paramCanvas)
+  public static bcna a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.left = this.f;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.right = (this.f + this.g);
-    int i = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top;
-    int j = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = 0;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = this.e;
-    if (this.jdField_a_of_type_Boolean) {
-      a(paramCanvas, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsBitmap);
+    return jdField_a_of_type_Bcna;
+  }
+  
+  public long a(Object paramObject)
+  {
+    long l;
+    if (paramObject == null) {
+      l = -9223372036854775808L;
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = i;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = j;
-      super.a(paramCanvas);
-      return;
-      a(paramCanvas, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsBitmap);
-    }
-  }
-  
-  void a(Canvas paramCanvas, Bitmap paramBitmap)
-  {
-    if (paramBitmap == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
-      }
-      paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    paramCanvas.drawBitmap(paramBitmap, null, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(false);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_c_of_type_Int < 0) {}
-    for (int i = -this.jdField_c_of_type_Int; i > 1; i = this.jdField_c_of_type_Int) {
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.f + ",x_coord + length = " + (this.f + this.g));
-    }
-    return (paramFloat > this.f - 25) && (paramFloat < this.f + this.g + 25);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    float f = paramMotionEvent.getX();
-    int i = paramMotionEvent.getAction();
-    switch (i)
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
+      return l;
+      try
       {
-        return true;
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_Float = f;
-        this.jdField_b_of_type_Int = 0;
-        this.jdField_a_of_type_Boolean = false;
-        return true;
-        this.jdField_c_of_type_Int = ((int)(f - this.jdField_a_of_type_Float));
-        this.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_Float = f;
-        this.jdField_b_of_type_Int += 1;
-        this.jdField_c_of_type_Boolean = false;
-      } while (!a());
-      this.f += this.jdField_c_of_type_Int;
-      return true;
+        l = this.jdField_a_of_type_Long;
+        this.jdField_a_of_type_Long = (1L + l);
+        this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), new WeakReference(paramObject));
+      }
+      finally {}
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Boolean = true;
-    return true;
+  }
+  
+  /* Error */
+  public Object a(long paramLong)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 23	bcna:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   6: lload_1
+    //   7: invokestatic 35	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   10: invokeinterface 51 2 0
+    //   15: checkcast 37	java/lang/ref/WeakReference
+    //   18: astore_3
+    //   19: aload_3
+    //   20: ifnull +12 -> 32
+    //   23: aload_3
+    //   24: invokevirtual 54	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   27: astore_3
+    //   28: aload_0
+    //   29: monitorexit
+    //   30: aload_3
+    //   31: areturn
+    //   32: aconst_null
+    //   33: astore_3
+    //   34: goto -6 -> 28
+    //   37: astore_3
+    //   38: aload_0
+    //   39: monitorexit
+    //   40: aload_3
+    //   41: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	42	0	this	bcna
+    //   0	42	1	paramLong	long
+    //   18	16	3	localObject1	Object
+    //   37	4	3	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	19	37	finally
+    //   23	28	37	finally
   }
 }
 

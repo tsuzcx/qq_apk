@@ -33,7 +33,6 @@ import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 import com.tencent.qqmini.sdk.launcher.widget.VideoGestureRelativeLayout;
 import com.tencent.qqmini.sdk.utils.ImmersiveUtils;
 import com.tencent.qqmini.sdk.utils.JarReflectUtil;
-import com.tencent.qqmini.sdk.widget.media.VideoGestureLayout;
 import com.tencent.qqmini.sdk.widget.media.danmu.Barrage;
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -74,13 +73,12 @@ public class MiniAppLivePlayer
   private TXLivePlayerJSAdapter livePlayerJsAdapter;
   public boolean loop = false;
   private Context mContext;
-  private VideoGestureLayout mVideoGestureLayout;
   public WeakReference<IMiniAppContext> miniAppContextRef;
   public boolean muted = false;
   public boolean needEvent;
   public int parentId;
   public String playBtnPosition;
-  private ImageView play_status_img;
+  private ImageView playStatusImg;
   public String poster;
   public boolean showCenterPlayBtn = true;
   public boolean showControlProgress;
@@ -93,8 +91,8 @@ public class MiniAppLivePlayer
   private Object tXCloudVideoView;
   public String title;
   private View vdView;
-  private VideoGestureRelativeLayout video_container;
-  private FrameLayout video_pop_container;
+  private VideoGestureRelativeLayout videoContainer;
+  private FrameLayout videoPopContainer;
   private View view;
   public int webviewId;
   
@@ -181,41 +179,41 @@ public class MiniAppLivePlayer
     this.vdView = ((View)this.tXCloudVideoView);
     this.vdView.setLayoutParams(localLayoutParams);
     this.vdView.setVisibility(0);
-    this.video_pop_container.setVisibility(0);
-    this.video_container.removeAllViews();
-    this.video_container.addView(this.vdView);
-    this.video_container.setBackgroundColor(-16777216);
-    localLayoutParams = new FrameLayout.LayoutParams(DisplayUtil.dip2px(this.mContext, 100.0F), DisplayUtil.dip2px(this.mContext, 100.0F));
-    localLayoutParams.gravity = 17;
-    this.video_container.addView(this.mVideoGestureLayout, localLayoutParams);
+    this.videoPopContainer.setVisibility(0);
+    this.videoContainer.removeAllViews();
+    this.videoContainer.addView(this.vdView);
+    this.videoContainer.setBackgroundColor(-16777216);
+    this.videoContainer.setEnablePageGesture(false);
+    this.videoContainer.setEnablePlayGesture(false);
+    this.videoContainer.setEnableProgressGesture(false);
   }
   
   /* Error */
   private static void saveJpeg(android.graphics.Bitmap paramBitmap, java.io.File paramFile)
   {
     // Byte code:
-    //   0: new 385	java/io/BufferedOutputStream
+    //   0: new 376	java/io/BufferedOutputStream
     //   3: dup
-    //   4: new 387	java/io/FileOutputStream
+    //   4: new 378	java/io/FileOutputStream
     //   7: dup
     //   8: aload_1
-    //   9: invokespecial 390	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   12: invokespecial 393	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   9: invokespecial 381	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 384	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   15: astore_1
     //   16: aload_0
-    //   17: getstatic 399	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   17: getstatic 390	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   20: bipush 100
     //   22: bipush 100
-    //   24: invokestatic 405	java/lang/Math:min	(II)I
+    //   24: invokestatic 396	java/lang/Math:min	(II)I
     //   27: aload_1
-    //   28: invokevirtual 411	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   28: invokevirtual 402	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   31: pop
     //   32: aload_1
-    //   33: invokevirtual 414	java/io/BufferedOutputStream:flush	()V
+    //   33: invokevirtual 405	java/io/BufferedOutputStream:flush	()V
     //   36: aload_1
     //   37: ifnull +7 -> 44
     //   40: aload_1
-    //   41: invokevirtual 417	java/io/BufferedOutputStream:close	()V
+    //   41: invokevirtual 408	java/io/BufferedOutputStream:close	()V
     //   44: return
     //   45: astore_0
     //   46: aconst_null
@@ -223,7 +221,7 @@ public class MiniAppLivePlayer
     //   48: aload_1
     //   49: ifnull +7 -> 56
     //   52: aload_1
-    //   53: invokevirtual 417	java/io/BufferedOutputStream:close	()V
+    //   53: invokevirtual 408	java/io/BufferedOutputStream:close	()V
     //   56: aload_0
     //   57: athrow
     //   58: astore_0
@@ -253,14 +251,12 @@ public class MiniAppLivePlayer
     setTag("MiniAppLivePlayer");
     this.mContext = paramContext;
     this.view = LayoutInflater.from(paramContext).inflate(R.layout.mini_sdk_player_view, null);
-    this.video_container = ((VideoGestureRelativeLayout)this.view.findViewById(R.id.layout_videolayout));
-    this.video_container.setContentDescription("video_container");
-    this.video_pop_container = ((FrameLayout)this.view.findViewById(R.id.video_pop_container));
-    this.play_status_img = ((ImageView)this.view.findViewById(R.id.play_status_img));
-    this.play_status_img.setVisibility(8);
-    this.video_container.setOnClickListener(this);
-    this.mVideoGestureLayout = new VideoGestureLayout(this.mContext);
-    this.mVideoGestureLayout.setContentDescription("VideoGestureLayout");
+    this.videoContainer = ((VideoGestureRelativeLayout)this.view.findViewById(R.id.layout_videolayout));
+    this.videoContainer.setContentDescription("videoContainer");
+    this.videoPopContainer = ((FrameLayout)this.view.findViewById(R.id.video_pop_container));
+    this.playStatusImg = ((ImageView)this.view.findViewById(R.id.play_status_img));
+    this.playStatusImg.setVisibility(8);
+    this.videoContainer.setOnClickListener(this);
     addView(this.view);
   }
   

@@ -1,31 +1,18 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ajxq
-  implements bkik
+public class ajxq
+  extends aojs
 {
-  ajxq(ajxi paramajxi) {}
+  public ajxq(ContactsTroopAdapter paramContactsTroopAdapter) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
+    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
+    if (localBitmap != null) {
+      ContactsTroopAdapter.a(this.a, paramString, localBitmap);
     }
-    if ((this.a.jdField_a_of_type_Ajxg.getCount() <= 0) || (paramInt <= 0)) {}
-    do
-    {
-      return true;
-      paramAdapterView = (ajyc)this.a.jdField_a_of_type_Ajxg.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_Ajyc = paramAdapterView;
-    paramView.setSelected(true);
-    paramAdapterView = new bguh();
-    paramAdapterView.a(2131365147, anni.a(2131700089), 2130838920);
-    paramAdapterView.a(2131367027, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692395), 2130838929);
-    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bgkw.a(paramView, paramAdapterView, ajxi.a(this.a), new ajxr(this, paramView));
-    return true;
   }
 }
 

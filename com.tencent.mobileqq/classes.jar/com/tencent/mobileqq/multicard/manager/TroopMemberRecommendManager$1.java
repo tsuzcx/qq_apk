@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.multicard.manager;
 
-import awvy;
+import axor;
 
 public class TroopMemberRecommendManager$1
   implements Runnable
 {
-  public TroopMemberRecommendManager$1(awvy paramawvy) {}
+  public TroopMemberRecommendManager$1(axor paramaxor) {}
   
   public void run()
   {
-    awvy.a(this.this$0);
+    axor.a(this.this$0);
   }
 }
 

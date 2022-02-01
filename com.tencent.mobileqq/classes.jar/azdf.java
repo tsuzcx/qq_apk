@@ -1,76 +1,57 @@
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.content.Intent;
+import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class azdf
-  extends axqt
+  extends MSFServlet
 {
-  FriendProfilePicBrowserActivity a;
-  
-  public azdf(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, abfp paramabfp)
+  public String[] getPreferSSOCommands()
   {
-    super(paramFriendProfilePicBrowserActivity, paramabfp);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity = paramFriendProfilePicBrowserActivity;
+    return null;
   }
   
-  public int a()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (this.jdField_a_of_type_Axqz != null) {
-      return this.jdField_a_of_type_Axqz.b();
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
-    return -1;
-  }
-  
-  protected RelativeLayout a()
-  {
-    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131561441, null);
-  }
-  
-  public PicInfo a()
-  {
-    PicInfo localPicInfo = null;
-    if (this.jdField_a_of_type_Axqz.a() != null) {
-      localPicInfo = this.jdField_a_of_type_Axqz.a().a;
-    }
-    return localPicInfo;
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    super.a(paramViewGroup);
-    if (this.jdField_a_of_type_Axqs != null) {
-      this.jdField_a_of_type_Axqs.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+    for (;;)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("OlympicToolServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
+      }
+      ((OlympicToolAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
     }
   }
   
-  public boolean a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return false;
-  }
-  
-  protected void d(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.c();
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
+      {
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+        if (QLog.isDevelopLevel()) {
+          QLog.i("OlympicToolServlet", 4, "send: " + paramIntent.getServiceCmd());
+        }
+      }
     }
-  }
-  
-  public void h()
-  {
-    super.h();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.b();
-    }
-  }
-  
-  public void u()
-  {
-    if (this.jdField_a_of_type_Axqs != null) {
-      this.jdField_a_of_type_Axqs.a(null);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity = null;
   }
 }
 

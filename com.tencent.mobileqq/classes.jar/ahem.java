@@ -1,10 +1,17 @@
-import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
+import android.view.View;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public abstract interface ahem
+class ahem
+  implements aunx
 {
-  public abstract void a(PttAudioWaveView paramPttAudioWaveView);
+  ahem(ahed paramahed) {}
   
-  public abstract void a(PttAudioWaveView paramPttAudioWaveView, float paramFloat);
+  public void onClick(View paramView)
+  {
+    PermisionPrivacyActivity.a(this.a.jdField_a_of_type_AndroidContentContext);
+    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X800994C", "0X800994C", 0, 0, "", "", "", "");
+  }
 }
 
 

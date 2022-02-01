@@ -1,7 +1,7 @@
 import com.dataline.activities.LiteActivity;
 
 public class aq
-  implements bkiz
+  implements blkc
 {
   public aq(LiteActivity paramLiteActivity) {}
   

@@ -1,27 +1,75 @@
+import java.util.concurrent.ConcurrentHashMap;
+
 public class woh
 {
-  public final int a;
-  public final String a;
-  public final int b;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
+  public static ConcurrentHashMap<Class<?>, Class<?>> a = new ConcurrentHashMap();
+  public static ConcurrentHashMap<Class<?>, Class<?>> b = new ConcurrentHashMap();
   
-  public woh(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2)
+  static
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    a.put(yab.class, woe.class);
+    b.put(wsw.class, wof.class);
   }
   
-  public String toString()
+  public static <I> I a(Class<? extends I> paramClass, Class<I> paramClass1, Object... paramVarArgs)
   {
-    return "AddressInfo{country='" + this.jdField_a_of_type_JavaLangString + '\'' + ", province='" + this.jdField_b_of_type_JavaLangString + '\'' + ", city='" + this.c + '\'' + ", district='" + this.d + '\'' + ", street='" + this.e + '\'' + ", longitude=" + this.jdField_a_of_type_Int + ", latitude=" + this.jdField_b_of_type_Int + '}';
+    try
+    {
+      if (paramClass.equals(yab.class))
+      {
+        Object localObject = paramClass1.cast(new woe());
+        return localObject;
+      }
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      yuk.e("ExtensionFactoryImplement", "parse int exception");
+      try
+      {
+        paramClass = (Class)a.get(paramClass);
+        if (paramClass != null)
+        {
+          if (wnt.class.isAssignableFrom(paramClass)) {
+            break label110;
+          }
+          throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
+        }
+      }
+      catch (Exception paramClass)
+      {
+        yuk.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
+      }
+      return woi.a(paramClass1);
+    }
+    label110:
+    paramClass = woi.a(paramClass, paramVarArgs);
+    return paramClass;
+  }
+  
+  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
+  {
+    if (!wnt.class.isAssignableFrom(paramClass)) {
+      throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
+    }
+    try
+    {
+      Class localClass = (Class)b.get(paramClass);
+      if (localClass != null)
+      {
+        if (wnt.class.isAssignableFrom(localClass)) {
+          break label124;
+        }
+        throw new IllegalArgumentException("createExtendableObject class " + localClass.getName() + " should have a KeepConstructor interface");
+      }
+    }
+    catch (Exception localException)
+    {
+      yuk.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
+    }
+    return woi.a(paramClass, paramVarArgs);
+    label124:
+    Object localObject = woi.a(localException, paramVarArgs);
+    return localObject;
   }
 }
 

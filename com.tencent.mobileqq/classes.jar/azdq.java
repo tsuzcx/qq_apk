@@ -1,41 +1,17 @@
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ObjectAnimator;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import android.widget.RelativeLayout;
 
-public class azdq
-  implements Animator.AnimatorListener
+class azdq
+  extends AnimatorListenerAdapter
 {
-  public azdq(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ObjectAnimator paramObjectAnimator) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    paramAnimator = (ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget();
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {}
-    for (int i = 2130845657;; i = 2130845649)
-    {
-      paramAnimator.setImageResource(i);
-      ((ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget()).setRotation(0.0F);
-      return;
-    }
-  }
+  azdq(azdh paramazdh, View paramView) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    paramAnimator = (ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget();
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {}
-    for (int i = 2130845657;; i = 2130845649)
-    {
-      paramAnimator.setImageResource(i);
-      ((ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget()).setRotation(0.0F);
-      return;
-    }
+    azdh.a(this.jdField_a_of_type_Azdh).removeView(this.jdField_a_of_type_AndroidViewView);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

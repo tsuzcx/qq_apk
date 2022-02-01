@@ -1,16 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class bpdb
-  implements View.OnTouchListener
+  extends Handler
 {
-  bpdb(bpcv parambpcv) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  bpdb(bpcz parambpcz, Looper paramLooper)
   {
-    return this.a.a.a(paramMotionEvent);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 993323) {
+      this.a.a();
+    }
   }
 }
 

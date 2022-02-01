@@ -1,115 +1,70 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.ViolaBizLibData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aros
-  extends arnz
 {
-  public static final String[] a = { "libviola.so" };
+  private int jdField_a_of_type_Int = 1;
+  private String jdField_a_of_type_JavaLangString = "";
   
-  public aros(QQAppInterface paramQQAppInterface)
+  public static aros a()
   {
-    super("android.qq.readinjoy.viola_biz_810", paramQQAppInterface);
+    return (aros)aran.a().a(460);
   }
   
-  public static void a()
+  public static aros a(araj paramaraj)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (arno)((QQAppInterface)localObject).getManager(77);
-      if (localObject != null)
-      {
-        localObject = (aros)((arno)localObject).a("android.qq.readinjoy.viola_biz_810");
-        if (localObject != null)
-        {
-          ((aros)localObject).a(true);
-          QLog.i("viola.ViolaBizLibHandler", 1, "restartDownloadLib");
-        }
+    aros localaros = new aros();
+    if (paramaraj != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopRobotConfBean", 2, "parse taskid->" + paramaraj.jdField_a_of_type_Int + " content->" + paramaraj.jdField_a_of_type_JavaLangString);
       }
     }
-  }
-  
-  public static boolean i()
-  {
-    String str = pmx.a();
-    int i = 0;
-    while (i < a.length)
+    try
     {
-      File localFile = new File(str, a[i]);
-      if ((localFile == null) || (!localFile.exists()) || (!localFile.isFile())) {
-        return false;
-      }
-      i += 1;
+      paramaraj = new JSONObject(paramaraj.jdField_a_of_type_JavaLangString);
+      int i = paramaraj.optInt("robotswitch", 0);
+      paramaraj = paramaraj.optString("c2cwarning", "");
+      localaros.a(i);
+      localaros.a(paramaraj);
+      return localaros;
     }
-    return true;
-  }
-  
-  public int a()
-  {
-    return 10079;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return ViolaBizLibData.class;
+    catch (JSONException paramaraj)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("TroopRobotConfBean", 2, "parse error->" + paramaraj.toString());
+    }
+    return localaros;
   }
   
   public String a()
   {
-    return "viola.ViolaBizLibHandler";
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public void a(String paramString)
   {
-    QLog.i("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess]:" + paramString);
-    XmlData localXmlData = a();
-    if (localXmlData != null) {
-      QLog.i("viola.ViolaBizLibHandler", 1, "version:" + localXmlData.Version);
-    }
-    if (new File(paramString).exists())
-    {
-      if (pmx.a(paramString)) {
-        break label124;
-      }
-      if (localXmlData != null)
-      {
-        localXmlData.loadState = 0;
-        localXmlData.Version = 0;
-        arnn.a(localXmlData, new String[] { "loadState", "Version" });
-      }
-      QLog.e("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess],unzip android.qq.readinjoy.viola_biz_810 lib failed!");
-    }
-    label124:
-    do
-    {
-      return;
-      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
-      if (paramString != null) {
-        paramString.edit().putString("res_name", "android.qq.readinjoy.viola_biz_810").commit();
-      }
-    } while (!arot.i());
-    pmr.a("biz doOnDownloadSuccess");
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public boolean a()
   {
-    return true;
+    return this.jdField_a_of_type_Int == 1;
   }
   
-  public String b()
+  public String toString()
   {
-    return null;
+    return String.format("mTroopRobotSwitch:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aros
  * JD-Core Version:    0.7.0.1
  */

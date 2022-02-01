@@ -1,56 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class oem
-  extends aqkz<oek>
+class oem
+  implements aoog
 {
-  public static oek a()
-  {
-    return (oek)aqlk.a().a(593);
-  }
+  oem(oek paramoek) {}
   
-  @NonNull
-  public oek a(int paramInt)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    return new oek();
-  }
-  
-  @Nullable
-  public oek a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length == 0)) {
-      return new oek();
+    if ((!TextUtils.isEmpty(paramString)) && (paramBitmap != null))
+    {
+      Intent localIntent = new Intent("action_decode_finish");
+      localIntent.putExtra("bitmap", paramBitmap);
+      localIntent.putExtra("uin", paramString);
+      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
     }
-    return oek.a(paramArrayOfaqlg[0].a);
-  }
-  
-  public void a(oek paramoek) {}
-  
-  public Class<oek> clazz()
-  {
-    return oek.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 593;
   }
 }
 

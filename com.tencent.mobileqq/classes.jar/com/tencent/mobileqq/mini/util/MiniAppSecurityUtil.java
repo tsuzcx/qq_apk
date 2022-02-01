@@ -59,13 +59,16 @@ public class MiniAppSecurityUtil
     return false;
   }
   
-  public static void doClearAfterLoginSuccess()
+  public static void doClearAfterLoginSuccess(boolean paramBoolean)
   {
     try
     {
       String str = getLoginMiniAppUin(BaseApplicationImpl.sApplication);
       if (!TextUtils.isEmpty(str))
       {
+        if (paramBoolean) {
+          QLog.e("MiniAppSecurityUtil", 1, "doClearAfterLoginSuccess, forbid_token: " + getLoginMiniAppForbidToken(BaseApplicationImpl.sApplication, str));
+        }
         removeLoginMiniAppForbidToken(BaseApplicationImpl.sApplication, str);
         removeLoginMiniAppUin(BaseApplicationImpl.sApplication);
       }

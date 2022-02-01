@@ -1,96 +1,163 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.pts.core.jni.PTSJsJniHandler;
-import com.tencent.pts.nativemodule.IPTSRequestFeeds;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.io.Serializable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 import java.util.List;
 
 public class qoy
-  implements IPTSRequestFeeds
+  extends BaseAdapter
 {
-  private qnn a = new qoz(this);
+  private List<qwc> jdField_a_of_type_JavaUtilList;
   
-  public qoy()
+  private qoy(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
+  
+  public void a(List<qwc> paramList)
   {
-    qnm.a().a(this.a);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
   }
   
-  private void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg)
+  public int getCount()
   {
-    if (paramToServiceMsg == null) {
-      QLog.i("PTSRequestFeedsModule", 1, "[handleResponse], req is null.");
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
-    StringBuilder localStringBuilder;
-    do
-    {
-      return;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[handleResponse] channelID = ").append(paramInt).append(", success = ").append(paramBoolean1).append("\n");
-      paramToServiceMsg = (Bundle)paramToServiceMsg.getAttribute("request_extra_data_key");
-      if ((paramToServiceMsg == null) || (!paramToServiceMsg.containsKey("request_callback_ptr_key"))) {
-        break;
-      }
-      paramList = pmh.a().a(Integer.valueOf(paramInt), paramList);
-      long l = paramToServiceMsg.getLong("request_callback_ptr_key");
-      paramToServiceMsg = qor.a(paramBoolean1, paramList);
-      PTSJsJniHandler.jsFunctionCallbackAsync(Long.valueOf(l).longValue(), new Object[] { paramToServiceMsg });
-    } while (!QLog.isColorLevel());
-    paramInt = 0;
-    while (paramInt < paramList.size())
-    {
-      localStringBuilder.append("articleInfo [").append(paramInt).append("]: ").append(paramList.get(paramInt)).append("\n");
-      paramInt += 1;
-    }
-    QLog.i("PTSRequestFeedsModule", 1, localStringBuilder.toString());
-    return;
-    QLog.i("PTSRequestFeedsModule", 1, localStringBuilder.toString());
-    QLog.i("PTSRequestFeedsModule", 1, "[handleResponse], request extra data is null.");
+    return 0;
   }
   
-  public void requestFeeds(long paramLong1, long paramLong2, boolean paramBoolean, long paramLong3, long paramLong4)
+  public Object getItem(int paramInt)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)pha.a();
-    KandianRedDotInfo localKandianRedDotInfo = KandianRedDotInfo.createRedDotFromMessageRecord(localQQAppInterface.a().b(anhk.aR, 1008), "kandian_daily_red_pnt");
-    Object localObject3 = null;
-    long l1 = 0L;
-    long l2 = 0L;
-    Object localObject4 = null;
-    int j = -1;
-    Object localObject2 = localObject3;
-    int i = j;
-    paramLong4 = l1;
-    paramLong2 = l2;
-    Object localObject1 = localObject4;
-    if (localKandianRedDotInfo != null)
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int k = 0;
+    View localView;
+    Object localObject1;
+    label325:
+    Object localObject2;
+    if (paramView == null)
     {
-      localObject2 = localObject3;
-      i = j;
-      paramLong4 = l1;
-      paramLong2 = l2;
-      localObject1 = localObject4;
-      if (localKandianRedDotInfo.hasArticleID())
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560251, paramViewGroup, false);
+      paramView = new qoz(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup, null);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367746));
+      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366971));
+      paramView.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131366962));
+      paramView.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131367720));
+      paramView.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout = new RelativeLayout[3];
+      paramView.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[3];
+      paramView.jdField_b_of_type_ArrayOfAndroidWidgetImageView = new ImageView[3];
+      paramView.c = new ImageView[3];
+      paramView.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[3];
+      i = 0;
+      while (i < paramView.jdField_b_of_type_AndroidWidgetLinearLayout.getChildCount())
       {
-        QLog.i("PTSRequestFeedsModule", 1, "[requestDailyFeeds], has redDotInfo.");
-        paramLong4 = localKandianRedDotInfo.algorithmID;
-        paramLong2 = localKandianRedDotInfo.strategyID;
-        localObject2 = localKandianRedDotInfo.articleIDList;
-        i = 1;
-        localObject1 = localKandianRedDotInfo.cookie;
+        localObject1 = (RelativeLayout)paramView.jdField_b_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+        paramView.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout[i] = ((RelativeLayout)((RelativeLayout)localObject1).findViewById(2131367926));
+        paramView.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i] = ((ImageView)((RelativeLayout)localObject1).findViewById(2131367917));
+        paramView.jdField_b_of_type_ArrayOfAndroidWidgetImageView[i] = ((ImageView)((RelativeLayout)localObject1).findViewById(2131380601));
+        paramView.c[i] = ((ImageView)((RelativeLayout)localObject1).findViewById(2131377938));
+        paramView.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i] = ((TextView)((RelativeLayout)localObject1).findViewById(2131371833));
+        paramView.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout[i].setOnClickListener(paramView);
+        paramView.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setOnClickListener(paramView);
+        i += 1;
+      }
+      localView.setTag(paramView);
+      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(paramView);
+      paramView.jdField_a_of_type_Qwc = ((qwc)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramView.jdField_a_of_type_Qwc.jdField_a_of_type_JavaLangString);
+      i = 0;
+      if (i >= paramView.jdField_a_of_type_Qwc.jdField_a_of_type_JavaUtilList.size()) {
+        break label611;
+      }
+      localObject1 = (RecommendFollowInfo)paramView.jdField_a_of_type_Qwc.jdField_a_of_type_JavaUtilList.get(i);
+      paramView.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setText(((RecommendFollowInfo)localObject1).nickName);
+      paramView.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setTag(localObject1);
+      paramView.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout[i].setTag(localObject1);
+      if (TextUtils.isEmpty(((RecommendFollowInfo)localObject1).headUrl)) {
+        break label581;
+      }
+      localObject2 = URLDrawable.URLDrawableOptions.obtain();
+      Drawable localDrawable = bhmq.b();
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = localDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = localDrawable;
+      localObject2 = URLDrawable.getDrawable(((RecommendFollowInfo)localObject1).headUrl, (URLDrawable.URLDrawableOptions)localObject2);
+      ((URLDrawable)localObject2).setDecodeHandler(bhez.a);
+      ((URLDrawable)localObject2).setFadeInImage(true);
+      paramView.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setImageDrawable((Drawable)localObject2);
+      label473:
+      localObject2 = paramView.jdField_b_of_type_ArrayOfAndroidWidgetImageView[i];
+      if (!((RecommendFollowInfo)localObject1).isVip) {
+        break label597;
+      }
+      j = 0;
+      label493:
+      ((ImageView)localObject2).setVisibility(j);
+      localObject2 = paramView.c[i];
+      if (!((RecommendFollowInfo)localObject1).isStar) {
+        break label604;
       }
     }
-    localObject3 = new Bundle();
-    ((Bundle)localObject3).putLong("request_callback_ptr_key", paramLong3);
-    ((pmm)localQQAppInterface.getManager(163)).a().a((int)paramLong1, (List)localObject2, i, true, false, 1, null, -1L, null, 0, paramLong4, paramLong2, (String)localObject1, 1, false, null, 0, null, null, (Bundle)localObject3);
-    localObject3 = new StringBuilder().append(" [requestFeeds] , channelID = ").append(paramLong1).append(", algorithmID = ").append(paramLong4).append(", strategyID = ").append(paramLong2).append(", articleID = ");
-    if ((localObject2 != null) && (((List)localObject2).size() > 0)) {}
-    for (localObject2 = (Serializable)((List)localObject2).get(0);; localObject2 = "null")
+    label581:
+    label597:
+    label604:
+    for (int j = 0;; j = 8)
     {
-      QLog.i("PTSRequestFeedsModule", 1, localObject2 + ", pushContext = " + (String)localObject1 + ", articleListFrom = " + i);
-      return;
+      ((ImageView)localObject2).setVisibility(j);
+      ComponentContentRecommendFollowGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup).mRecommendFollowInfos.a.put(Long.valueOf(((RecommendFollowInfo)localObject1).uin), localObject1);
+      i += 1;
+      break label325;
+      localObject1 = (qoz)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject1;
+      break;
+      paramView.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setImageDrawable(bhmq.b());
+      break label473;
+      j = 8;
+      break label493;
+    }
+    label611:
+    int i = 0;
+    if (i < paramView.jdField_a_of_type_Qwc.jdField_a_of_type_JavaUtilList.size()) {
+      if (((RecommendFollowInfo)paramView.jdField_a_of_type_Qwc.jdField_a_of_type_JavaUtilList.get(i)).isFollowed) {}
+    }
+    for (i = k;; i = 1)
+    {
+      if (i != 0)
+      {
+        paramView.jdField_b_of_type_AndroidWidgetTextView.setText(anzj.a(2131701168));
+        paramView.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-8947849);
+        paramView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130849447);
+      }
+      for (;;)
+      {
+        EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+        return localView;
+        i += 1;
+        break;
+        paramView.jdField_b_of_type_AndroidWidgetTextView.setText(anzj.a(2131701203));
+        paramView.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
+        paramView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130849404);
+      }
     }
   }
 }

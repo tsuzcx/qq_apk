@@ -1,31 +1,29 @@
-import android.text.TextUtils;
-import io.flutter.plugin.common.BinaryMessenger;
-import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodCodec;
+import android.content.Intent;
 
-public abstract class auee
-  extends aued
+public class auee
 {
-  MethodChannel a;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int c;
   
-  public auee(String paramString, BinaryMessenger paramBinaryMessenger)
+  public auee a(Intent paramIntent)
   {
-    super(paramString, paramBinaryMessenger);
-    MethodCodec localMethodCodec = a();
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalArgumentException("channelName must not be empty");
-    }
-    if (localMethodCodec == null) {
-      throw new IllegalArgumentException("methodCodec must not be null");
-    }
-    this.a = new MethodChannel(paramBinaryMessenger, paramString, a());
-    this.a.setMethodCallHandler(a());
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("targetUin");
+    this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("srcDiscGroup");
+    this.jdField_a_of_type_Int = paramIntent.getIntExtra("peerType", 0);
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("rootEntrace", true);
+    this.jdField_b_of_type_Int = paramIntent.getIntExtra("busiType", 0);
+    this.c = paramIntent.getIntExtra("enterfrom", 0);
+    return this;
   }
   
-  public abstract MethodChannel.MethodCallHandler a();
-  
-  public abstract MethodCodec a();
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
 }
 
 

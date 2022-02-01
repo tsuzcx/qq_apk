@@ -1,40 +1,19 @@
-import android.graphics.RectF;
-import android.support.annotation.NonNull;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
 public class tgk
+  extends tgb
 {
-  private float jdField_a_of_type_Float;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private float jdField_b_of_type_Float;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF;
-  
-  public tgk(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
+  tgk(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF1;
-    this.jdField_b_of_type_AndroidGraphicsRectF = paramRectF2;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
+    super(paramtfy1, paramActivity, paramtfy2, paramJSONObject);
   }
   
-  public float a()
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public RectF a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRectF;
-  }
-  
-  public RectF b()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsRectF;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "cropRect:" + this.jdField_a_of_type_AndroidGraphicsRectF + " ,imageRect:" + this.jdField_b_of_type_AndroidGraphicsRectF + " ,scale:" + this.jdField_a_of_type_Float + " ,angle:" + this.jdField_b_of_type_Float;
+    tfy.a(this.a).mShareHelper.d(paramString1);
   }
 }
 

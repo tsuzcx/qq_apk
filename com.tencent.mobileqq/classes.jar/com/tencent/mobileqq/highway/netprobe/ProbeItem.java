@@ -7,7 +7,7 @@ public abstract class ProbeItem
   protected ProbeRequest mRequest;
   public ProbeItem.ProbeResult mResult;
   int priority = 5;
-  protected ProbeItem successor;
+  protected ProbeItem successor = null;
   
   public ProbeItem() {}
   

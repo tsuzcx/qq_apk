@@ -1,26 +1,57 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.qphone.base.util.QLog;
 
 final class anhq
-  implements Animation.AnimationListener
+  implements angy
 {
-  anhq(View paramView) {}
+  anhq(CmShowRenderView paramCmShowRenderView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((this.a != null) && (this.a.getVisibility() == 0))
-    {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.getContext(), 2130772234);
-      paramAnimation.setAnimationListener(this);
-      this.a.startAnimation(paramAnimation);
-    }
+    QLog.i("CmShowTest", 1, "onViewReady w:" + paramInt1);
+    this.a.a("1669140032", "1174992642", 1.0F, 0, null);
+    anho.a(this.a);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(int paramInt, String paramString)
+  {
+    QLog.i("CmShowTest", 1, "onClick apolloId:" + paramString);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(String paramString)
+  {
+    QLog.i("CmShowTest", 1, "onLongTouch name:" + paramString);
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    QLog.i("CmShowTest", 1, "onActionStart actionId:" + paramInt1);
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle)
+  {
+    QLog.i("CmShowTest", 1, "onActionComplete actionId:" + paramInt1 + " actionSeqId:" + paramInt2 + " playFragment:" + paramInt3);
+    if (paramInt2 == 100)
+    {
+      anho.b(this.a);
+      return;
+    }
+    if (paramInt2 == 101)
+    {
+      if (anho.a() < 3)
+      {
+        anho.b();
+        anho.b(this.a);
+        return;
+      }
+      anho.c(this.a);
+      return;
+    }
+    anho.a(0);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt) {}
 }
 
 

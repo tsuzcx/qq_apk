@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import aopw;
+import apdm;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForVIPDonate
@@ -14,7 +14,7 @@ public class MessageForVIPDonate
   {
     try
     {
-      this.donateMsg = ((VIPDonateMsg)aopw.a(this.msgData));
+      this.donateMsg = ((VIPDonateMsg)apdm.a(this.msgData));
       if (QLog.isColorLevel()) {
         QLog.d("MessageForVIPDonate", 2, "doParse :VIPDonateMsg = " + this.donateMsg);
       }
@@ -54,7 +54,7 @@ public class MessageForVIPDonate
     while (!QLog.isColorLevel()) {
       try
       {
-        this.msgData = aopw.a(this.donateMsg);
+        this.msgData = apdm.a(this.donateMsg);
         return;
       }
       catch (Exception localException)

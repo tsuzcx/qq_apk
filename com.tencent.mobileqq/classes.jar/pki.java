@@ -1,8 +1,20 @@
-public abstract interface pki
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
+
+public class pki
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  public pki(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public abstract void b();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = ReadInJoySelfFragment.a(this.a).getLayoutParams();
+    paramValueAnimator.height = i;
+    ReadInJoySelfFragment.a(this.a).setLayoutParams(paramValueAnimator);
+  }
 }
 
 

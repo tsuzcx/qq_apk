@@ -33,22 +33,21 @@ public class LiuHaiUtils
   private static String[] LIUHAI_LIST;
   private static String[] MANUFACTURER;
   public static final int NOTCH_IN_SCREEN_VOIO = 32;
+  public static final ArrayList<String> NotchWhiteList = new ArrayList();
   public static final int ROUNDED_IN_SCREEN_VOIO = 8;
   private static final String TAG = "LiuHaiUtils";
   public static boolean hasInitHasNotch = false;
   public static int sCenterOffset = 0;
   public static boolean sEnableNotchOK = false;
   private static final boolean sForceCenter_16_9 = true;
-  public static boolean sHasNotch;
+  public static boolean sHasNotch = false;
   public static boolean sIsIrregularScreen;
   public static int sNotchHeight;
-  public static final ArrayList<String> sNotchWhiteList = new ArrayList();
   public static int sScreenHeight;
   public static int sScreenWidth;
   
   static
   {
-    sHasNotch = false;
     sEnableNotchOK = false;
     sNotchHeight = 0;
     hasInitHasNotch = false;
@@ -58,7 +57,7 @@ public class LiuHaiUtils
     sIsIrregularScreen = false;
     LIUHAI_LIST = new String[] { "PAAM00", "Lenovo L78011", "Pixel 3 XL", "SM-G9750" };
     MANUFACTURER = new String[] { "HUAWEI", "OPPO", "VIVO", "XIAOMI" };
-    sNotchWhiteList.add("SHARP_FS8010".toLowerCase());
+    NotchWhiteList.add("SHARP_FS8010".toLowerCase());
   }
   
   public static void closeFullScreen(Activity paramActivity)
@@ -567,7 +566,7 @@ public class LiuHaiUtils
     //   52: astore_1
     //   53: invokestatic 146	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
     //   56: ifeq +30 -> 86
-    //   59: ldc 29
+    //   59: ldc 32
     //   61: new 214	java/lang/StringBuilder
     //   64: dup
     //   65: invokespecial 215	java/lang/StringBuilder:<init>	()V
@@ -588,7 +587,7 @@ public class LiuHaiUtils
     //   92: astore_1
     //   93: invokestatic 146	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
     //   96: ifeq -10 -> 86
-    //   99: ldc 29
+    //   99: ldc 32
     //   101: ldc_w 523
     //   104: invokestatic 294	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   107: aload_0
@@ -600,7 +599,7 @@ public class LiuHaiUtils
     //   113: astore_1
     //   114: invokestatic 146	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
     //   117: ifeq -31 -> 86
-    //   120: ldc 29
+    //   120: ldc 32
     //   122: ldc_w 525
     //   125: invokestatic 294	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   128: aload_0
@@ -612,7 +611,7 @@ public class LiuHaiUtils
     //   134: astore_1
     //   135: invokestatic 146	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
     //   138: ifeq -52 -> 86
-    //   141: ldc 29
+    //   141: ldc 32
     //   143: ldc_w 527
     //   146: invokestatic 294	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   149: aload_0
@@ -665,7 +664,7 @@ public class LiuHaiUtils
     //   38: istore_2
     //   39: invokestatic 146	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
     //   42: ifeq +30 -> 72
-    //   45: ldc 29
+    //   45: ldc 32
     //   47: new 214	java/lang/StringBuilder
     //   50: dup
     //   51: invokespecial 215	java/lang/StringBuilder:<init>	()V
@@ -686,7 +685,7 @@ public class LiuHaiUtils
     //   78: istore_2
     //   79: invokestatic 146	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
     //   82: ifeq -10 -> 72
-    //   85: ldc 29
+    //   85: ldc 32
     //   87: ldc_w 537
     //   90: invokestatic 294	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   93: iload_1
@@ -698,7 +697,7 @@ public class LiuHaiUtils
     //   99: istore_2
     //   100: invokestatic 146	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
     //   103: ifeq -31 -> 72
-    //   106: ldc 29
+    //   106: ldc 32
     //   108: ldc_w 539
     //   111: invokestatic 294	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   114: iload_1
@@ -710,7 +709,7 @@ public class LiuHaiUtils
     //   120: istore_2
     //   121: invokestatic 146	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
     //   124: ifeq -52 -> 72
-    //   127: ldc 29
+    //   127: ldc 32
     //   129: ldc_w 541
     //   132: invokestatic 294	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   135: iload_1
@@ -781,7 +780,7 @@ public class LiuHaiUtils
   public static boolean isInNotchWhiteList()
   {
     String str = (Build.MANUFACTURER + "_" + Build.MODEL).toLowerCase();
-    return sNotchWhiteList.contains(str);
+    return NotchWhiteList.contains(str);
   }
   
   private static boolean isLiuHaiModel()

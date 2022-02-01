@@ -1,38 +1,54 @@
-import android.view.ViewGroup;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
-
 public class bnmg
-  implements SeekBar.OnSeekBarChangeListener
 {
-  public bnmg(AEBeautyProviderView paramAEBeautyProviderView) {}
+  public static String a;
+  public static String[] a;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public static String f;
+  public static String g;
+  public static String h;
+  public static String i;
+  public static final String j;
+  public static final String k;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  static
   {
-    if (AEBeautyProviderView.a(this.a) != null)
+    jdField_a_of_type_JavaLangString = "JsFamousShare";
+    b = "famousShareToQQFriend";
+    c = "famousShareToQzone";
+    d = "famousShareToWxFriend";
+    e = "famousShareToWxPengyouquan";
+    f = "famousJubao";
+    g = "setUserHomePageMsgBoardGate";
+    h = "SetHostMessage";
+    i = "writeMood";
+    j = anzj.a(2131710806);
+    k = anzj.a(2131710805);
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "SetPersonalizeFinished", "setAvatar", "SetNaviDeco", "setFloat", "updateCustomPraise", "setcardfinish", "updatePloymorphicPraise", "setResponsiveLike", "OpenCustomVipSucc", "SetFacade", "setFriendNaviDeco", "SetPlayerDeco", "setDefaultFont", "refreshFeeds", "setCustomTrack" };
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int n = arrayOfString.length;
+    int m = 0;
+    for (;;)
     {
-      AEBeautyProviderView.a(this.a).b(paramInt);
-      this.a.b.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
+      boolean bool1 = bool2;
+      if (m < n)
+      {
+        if (arrayOfString[m].equalsIgnoreCase(paramString)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      m += 1;
     }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    AEBeautyProviderView.a(this.a, AEBeautyProviderView.b(this.a), AEBeautyProviderView.a(this.a));
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((AEBeautyProviderView.c(this.a) != null) && ((AEBeautyProviderView.c(this.a) instanceof ViewGroup))) {
-      ((ViewGroup)AEBeautyProviderView.c(this.a)).setMotionEventSplittingEnabled(true);
-    }
-    AEBeautyProviderView.b(this.a, paramSeekBar.getProgress());
-    bnyl.a().e(paramSeekBar.getProgress());
-    AEBeautyProviderView.b(this.a, AEBeautyProviderView.b(this.a), AEBeautyProviderView.a(this.a));
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

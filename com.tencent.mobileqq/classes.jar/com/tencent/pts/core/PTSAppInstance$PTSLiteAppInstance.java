@@ -2,6 +2,7 @@ package com.tencent.pts.core;
 
 import android.view.View;
 import com.tencent.pts.core.itemview.PTSItemData;
+import com.tencent.pts.core.itemview.PTSItemData.Builder;
 import com.tencent.pts.core.jni.PTSLiteJniHandler;
 import com.tencent.pts.core.lite.IPTSLiteEventListener;
 import com.tencent.pts.core.lite.PTSLiteBridge;
@@ -66,7 +67,7 @@ public class PTSAppInstance$PTSLiteAppInstance
     this.ptsLiteBridge.setData(getItemData(), this);
   }
   
-  public void triggerLiteEvent(int paramInt, String paramString, HashMap<String, String> paramHashMap, View paramView)
+  public void triggerLiteEvent(int paramInt, String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer)
   {
     if (this.liteEventListener == null)
     {
@@ -84,19 +85,28 @@ public class PTSAppInstance$PTSLiteAppInstance
       PTSLog.i("PTSAppInstance", "[triggerLiteEvent] unknown, eventType = " + paramInt);
       return;
     case 1: 
-      this.liteEventListener.onTapEventTriggered(paramString, (HashMap)localObject, paramView);
+      this.liteEventListener.onTapEventTriggered(paramString, (HashMap)localObject, paramView, paramPTSComposer);
       return;
     case 2: 
-      this.liteEventListener.onExposureTriggered(paramString, (HashMap)localObject, paramView);
+      this.liteEventListener.onExposureTriggered(paramString, (HashMap)localObject, paramView, paramPTSComposer);
       return;
     case 3: 
-      this.liteEventListener.onSwiperItemExposureTriggered(paramString, (HashMap)localObject, paramView);
+      this.liteEventListener.onSwiperItemExposureTriggered(paramString, (HashMap)localObject, paramView, paramPTSComposer);
       return;
     case 4: 
-      this.liteEventListener.onSwiperDragTriggered(paramString, (HashMap)localObject, paramView);
+      this.liteEventListener.onSwiperDragTriggered(paramString, (HashMap)localObject, paramView, paramPTSComposer);
       return;
     }
-    this.liteEventListener.onScrollViewItemExposureTriggered(paramString, (HashMap)localObject, paramView);
+    this.liteEventListener.onScrollViewItemExposureTriggered(paramString, (HashMap)localObject, paramView, paramPTSComposer);
+  }
+  
+  public String updateData(String paramString)
+  {
+    paramString = this.ptsLiteBridge.updateData(paramString, this);
+    if (getItemData() != null) {
+      this.itemData = new PTSItemData.Builder().withPageName(getItemData().getPageName()).withFrameTreeJson(getItemData().getFrameTreeJson()).withJsonData(paramString).build();
+    }
+    return paramString;
   }
 }
 

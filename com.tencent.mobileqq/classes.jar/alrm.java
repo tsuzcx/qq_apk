@@ -1,24 +1,42 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Rect;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.qphone.base.util.QLog;
+import java.io.InputStream;
 
 public class alrm
-  implements QQPermissionCallback
+  implements ImageAssetDelegate
 {
-  public alrm(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity, int paramInt) {}
+  private Context a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public alrm(Context paramContext)
   {
-    paramArrayOfString = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.a.obtainMessage(2);
-    paramArrayOfString.arg1 = 1;
-    paramArrayOfString.arg2 = 2131698034;
-    paramArrayOfString.sendToTarget();
+    this.a = paramContext;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  @Nullable
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    CreateFaceToFaceDiscussionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, this.jdField_a_of_type_Int);
+    try
+    {
+      paramLottieImageAsset = this.a.getAssets().open("login_btn_lottie_images/" + paramLottieImageAsset.getFileName());
+      Object localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inScaled = false;
+      localObject = BitmapFactory.decodeStream(paramLottieImageAsset, (Rect)null, (BitmapFactory.Options)localObject);
+      paramLottieImageAsset.close();
+      return localObject;
+    }
+    catch (Throwable paramLottieImageAsset)
+    {
+      QLog.i("LoginBtnImageAssetDelegate", 2, "fetchBitmap error " + paramLottieImageAsset.getMessage());
+    }
+    return null;
   }
 }
 

@@ -1,22 +1,9 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import qqcircle.QQCirclePrivateMsgShow.StGetPMSettingRsp;
-
 class vcr
-  implements Observer<vup<QQCirclePrivateMsgShow.StGetPMSettingRsp>>
+  implements aaav
 {
   vcr(vcq paramvcq) {}
   
-  public void a(@Nullable vup<QQCirclePrivateMsgShow.StGetPMSettingRsp> paramvup)
-  {
-    if ((paramvup != null) && (paramvup.a() == 3)) {
-      vcq.a(this.a, (QQCirclePrivateMsgShow.StGetPMSettingRsp)paramvup.a());
-    }
-    while ((paramvup == null) || (paramvup.a() != 4)) {
-      return;
-    }
-    vcq.a(this.a, paramvup.a(), paramvup.a());
-  }
+  public void onReceive(boolean paramBoolean, long paramLong, String paramString, Object paramObject) {}
 }
 
 

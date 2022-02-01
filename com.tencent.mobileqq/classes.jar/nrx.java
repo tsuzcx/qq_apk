@@ -1,22 +1,26 @@
-import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-class nrx
-  implements View.OnClickListener
+public class nrx
 {
-  nrx(nre paramnre, String paramString) {}
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  public ImageView a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public ImageView b;
+  TextView b;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  ImageView d;
+  ImageView e;
   
-  public void onClick(View paramView)
-  {
-    Intent localIntent = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    ((BaseActivity)this.jdField_a_of_type_Nre.a.get()).startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public nrx(nrk paramnrk) {}
 }
 
 

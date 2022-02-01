@@ -408,7 +408,7 @@ public class LogReporter
     //   545: aload 11
     //   547: invokevirtual 375	java/util/zip/ZipOutputStream:close	()V
     //   550: aload 5
-    //   552: ifnull +219 -> 771
+    //   552: ifnull +223 -> 775
     //   555: aload 5
     //   557: invokevirtual 376	java/io/FileInputStream:close	()V
     //   560: aconst_null
@@ -431,7 +431,7 @@ public class LogReporter
     //   594: aload 5
     //   596: invokevirtual 375	java/util/zip/ZipOutputStream:close	()V
     //   599: iconst_0
-    //   600: ifeq +173 -> 773
+    //   600: ifeq +177 -> 777
     //   603: new 381	java/lang/NullPointerException
     //   606: dup
     //   607: invokespecial 382	java/lang/NullPointerException:<init>	()V
@@ -481,46 +481,48 @@ public class LogReporter
     //   705: aconst_null
     //   706: astore 12
     //   708: goto -53 -> 655
-    //   711: astore 13
-    //   713: aload 5
-    //   715: astore 12
-    //   717: aload 11
-    //   719: astore 5
-    //   721: aload 13
-    //   723: astore 11
-    //   725: goto -70 -> 655
-    //   728: astore 12
-    //   730: aconst_null
-    //   731: astore 5
-    //   733: aconst_null
-    //   734: astore 11
-    //   736: goto -210 -> 526
-    //   739: astore 12
-    //   741: aconst_null
-    //   742: astore 13
-    //   744: aload 5
-    //   746: astore 11
-    //   748: aload 13
-    //   750: astore 5
-    //   752: goto -226 -> 526
-    //   755: astore 12
-    //   757: aconst_null
-    //   758: astore 13
-    //   760: aload 5
-    //   762: astore 11
-    //   764: aload 13
-    //   766: astore 5
-    //   768: goto -242 -> 526
-    //   771: aconst_null
-    //   772: areturn
-    //   773: aload 15
-    //   775: areturn
+    //   711: astore 12
+    //   713: aload 11
+    //   715: astore 13
+    //   717: aload 12
+    //   719: astore 11
+    //   721: aload 5
+    //   723: astore 12
+    //   725: aload 13
+    //   727: astore 5
+    //   729: goto -74 -> 655
+    //   732: astore 12
+    //   734: aconst_null
+    //   735: astore 5
+    //   737: aconst_null
+    //   738: astore 11
+    //   740: goto -214 -> 526
+    //   743: astore 12
+    //   745: aconst_null
+    //   746: astore 13
+    //   748: aload 5
+    //   750: astore 11
+    //   752: aload 13
+    //   754: astore 5
+    //   756: goto -230 -> 526
+    //   759: astore 12
+    //   761: aconst_null
+    //   762: astore 13
+    //   764: aload 5
+    //   766: astore 11
+    //   768: aload 13
+    //   770: astore 5
+    //   772: goto -246 -> 526
+    //   775: aconst_null
+    //   776: areturn
+    //   777: aload 15
+    //   779: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	776	0	this	LogReporter
-    //   0	776	1	paramLong1	long
-    //   0	776	3	paramLong2	long
-    //   0	776	5	paramString	String
+    //   0	780	0	this	LogReporter
+    //   0	780	1	paramLong1	long
+    //   0	780	3	paramLong2	long
+    //   0	780	5	paramString	String
     //   108	304	6	i	int
     //   178	407	7	j	int
     //   491	18	8	k	int
@@ -529,19 +531,19 @@ public class LogReporter
     //   631	3	11	localIOException1	java.io.IOException
     //   650	26	11	localObject2	Object
     //   698	1	11	localObject3	Object
-    //   703	15	11	localObject4	Object
-    //   723	40	11	localObject5	Object
+    //   703	11	11	localObject4	Object
+    //   719	48	11	localObject5	Object
     //   43	459	12	localObject6	Object
     //   516	11	12	localIOException2	java.io.IOException
-    //   564	152	12	localObject7	Object
-    //   728	1	12	localIOException3	java.io.IOException
-    //   739	1	12	localIOException4	java.io.IOException
-    //   755	1	12	localIOException5	java.io.IOException
-    //   324	252	13	localFileInputStream	java.io.FileInputStream
-    //   711	11	13	localObject8	Object
-    //   742	23	13	localObject9	Object
+    //   564	143	12	localObject7	Object
+    //   711	7	12	localObject8	Object
+    //   723	1	12	str	String
+    //   732	1	12	localIOException3	java.io.IOException
+    //   743	1	12	localIOException4	java.io.IOException
+    //   759	1	12	localIOException5	java.io.IOException
+    //   324	445	13	localObject9	Object
     //   105	365	14	arrayOfString	String[]
-    //   120	654	15	localObject10	Object
+    //   120	658	15	localObject10	Object
     //   259	247	16	localObject11	Object
     // Exception table:
     //   from	to	target	type
@@ -565,9 +567,9 @@ public class LogReporter
     //   575	580	698	finally
     //   414	459	703	finally
     //   526	540	711	finally
-    //   329	393	728	java/io/IOException
-    //   397	404	739	java/io/IOException
-    //   414	459	755	java/io/IOException
+    //   329	393	732	java/io/IOException
+    //   397	404	743	java/io/IOException
+    //   414	459	759	java/io/IOException
   }
   
   public int reportLog()

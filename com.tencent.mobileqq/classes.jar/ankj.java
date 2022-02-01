@@ -1,49 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.io.File;
+import org.json.JSONArray;
 
-public class ankj
-  extends BroadcastReceiver
+class ankj
+  implements anjh
 {
-  public ankj(DeviceProfileManager paramDeviceProfileManager) {}
+  ankj(ankf paramankf, String paramString1, File paramFile, JSONArray paramJSONArray, int[] paramArrayOfInt, String paramString2) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.e("DeviceProfileManager", 4, "onReceive");
-    }
-    if (paramIntent == null) {}
-    do
+    QLog.d("ApolloPluginRscLoader", 1, "getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:" + paramBoolean);
+    Object localObject = this.jdField_a_of_type_Ankf;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_JavaIoFile.exists()) {}
+    for (paramInt = 0;; paramInt = 2)
     {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramContext = paramIntent.getExtras();
-          if (paramContext != null)
-          {
-            DeviceProfileManager.a(this.a, (HashMap)paramContext.getSerializable("featureMapLV2"));
-            if (DeviceProfileManager.a() != null)
-            {
-              DeviceProfileManager.a().a = ((HashMap)paramContext.getSerializable("featureAccountMapLV2"));
-              return;
-            }
-          }
-        }
-        catch (Exception paramContext) {}
+      localObject = ankf.a((ankf)localObject, 6, str, paramInt);
+      this.jdField_a_of_type_OrgJsonJSONArray.put(localObject);
+      if ((this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0)) {
+        break;
       }
-    } while (!QLog.isDevelopLevel());
-    paramContext.printStackTrace();
+      this.jdField_a_of_type_Ankf.a(this.b, anzj.a(2131699418), this.jdField_a_of_type_OrgJsonJSONArray);
+      return;
+    }
+    ankf.a(this.jdField_a_of_type_Ankf, this.jdField_a_of_type_ArrayOfInt, this.b, this.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankj
  * JD-Core Version:    0.7.0.1
  */

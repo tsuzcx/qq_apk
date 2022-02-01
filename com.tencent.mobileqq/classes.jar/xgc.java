@@ -1,13 +1,54 @@
-import android.support.v4.view.ViewPager;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.TicketManager;
 
-class xgc
-  implements bics
+public class xgc
+  extends xho
 {
-  xgc(xgb paramxgb) {}
+  private HashMap<String, String> a;
+  private boolean c;
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public xgc()
   {
-    this.a.a.setCurrentItem(paramInt2);
+    this(null, false);
+  }
+  
+  public xgc(HashMap<String, String> paramHashMap, boolean paramBoolean)
+  {
+    a(false, true);
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.c = paramBoolean;
+  }
+  
+  public void a()
+  {
+    Object localObject2 = xiz.a();
+    Object localObject1 = ((QQAppInterface)localObject2).getCurrentAccountUin();
+    String str = ((TicketManager)((QQAppInterface)localObject2).getManager(2)).getSkey((String)localObject1);
+    localObject2 = new Bundle();
+    localObject1 = nnr.a(BaseApplication.getContext(), (String)localObject1, str, 1, this.jdField_a_of_type_JavaUtilHashMap, (Bundle)localObject2);
+    if ((!((Bundle)localObject2).getBoolean("isSuccess", false)) && (this.c))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w(this.b, 2, "shortenUrl failed size:" + ((HashMap)localObject1).size());
+      }
+      b(false);
+      return;
+    }
+    a("ShortenUrlJob_shortenedUrls", localObject1);
+    b(true);
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) && (paramMap.containsKey("ShortenUrlJob_shortenedUrls"))) {
+      this.jdField_a_of_type_JavaUtilHashMap = ((HashMap)xif.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "ShortenUrlJob_shortenedUrls", this.jdField_a_of_type_JavaUtilHashMap));
+    }
   }
 }
 

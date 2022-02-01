@@ -1,266 +1,355 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.cache.QQConcurrentHashMap;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SQLiteDatabase;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.ShieldListInfo;
+import com.tencent.mobileqq.managers.ShieldMsgManger.1;
+import com.tencent.mobileqq.managers.ShieldMsgManger.2;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.ArrayList;
-import mqq.util.WeakReference;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
 public class axad
+  implements Manager
 {
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  WeakReference<beaw> jdField_a_of_type_MqqUtilWeakReference;
-  boolean jdField_a_of_type_Boolean = false;
-  ArrayList<axah> b = new ArrayList();
+  private QQConcurrentHashMap<String, ShieldListInfo> jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
   
-  private static String a()
+  public axad(QQAppInterface paramQQAppInterface)
   {
-    Object localObject1 = null;
-    Object localObject2 = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject2 != null)
-    {
-      localObject2 = ((File)localObject2).getAbsolutePath() + "/pddata/prd/common_resources";
-      File localFile = new File((String)localObject2);
-      localObject1 = localObject2;
-      if (!localFile.exists())
-      {
-        localFile.mkdirs();
-        localObject1 = localObject2;
-      }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      throw new IllegalArgumentException("ShieldMsgManger this.app = null");
     }
-    return localObject1;
+    ThreadManager.post(new ShieldMsgManger.1(this), 2, null, false);
   }
   
-  public static String a(String paramString1, String paramString2)
+  private ShieldListInfo a(int paramInt, String paramString)
   {
-    return c(paramString2);
-  }
-  
-  private void a(String paramString1, String arg2, boolean paramBoolean, axai paramaxai)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZipResourcesDownloader", 2, "onDownloadEnd url:" + paramString1 + " success:" + paramBoolean + " mDestroyed:" + this.jdField_a_of_type_Boolean);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    for (;;)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramString1);
-      if (paramaxai != null) {
-        paramaxai.a(paramBoolean);
-      }
-    }
-    synchronized (this.b)
-    {
-      int i = this.b.size() - 1;
-      while (i >= 0)
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        paramaxai = (axah)this.b.get(i);
-        if ((paramaxai != null) && (TextUtils.equals(paramString1, paramaxai.jdField_a_of_type_JavaLangString)))
+        if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap == null) {
+          b();
+        }
+        if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap != null) && (paramString != null) && (paramString.length() > 0))
         {
-          if (paramaxai.jdField_a_of_type_Axai != null) {
-            paramaxai.jdField_a_of_type_Axai.a(paramBoolean);
+          if (paramInt == 2)
+          {
+            str = a(paramString);
+            paramString = (ShieldListInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(str);
+            return paramString;
           }
-          this.b.remove(i);
         }
-        i -= 1;
-        continue;
-        paramString1 = finally;
-        throw paramString1;
-      }
-      return;
-    }
-  }
-  
-  private static boolean a(String paramString)
-  {
-    return new File(paramString).exists();
-  }
-  
-  public static boolean a(String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    return c(paramString1, paramString2, paramArrayOfString);
-  }
-  
-  private static String b(String paramString)
-  {
-    return String.format("%s/%s.zip", new Object[] { a(), paramString });
-  }
-  
-  private static void b(String paramString)
-  {
-    bgmg.a(paramString, false);
-  }
-  
-  private static String c(String paramString)
-  {
-    return String.format("%s/%s", new Object[] { a(), paramString });
-  }
-  
-  private static boolean c(String paramString1, String paramString2)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (new File(paramString1).exists())
-    {
-      paramString1 = azby.a(paramString1);
-      bool1 = bool2;
-      if (paramString2 != null)
-      {
-        bool1 = bool2;
-        if (paramString2.equalsIgnoreCase(paramString1)) {
-          bool1 = true;
+        else {
+          return null;
         }
       }
+      String str = paramString;
+      if (paramInt == 1) {
+        str = paramString;
+      }
     }
-    return bool1;
   }
   
-  private static boolean c(String paramString1, String paramString2, String[] paramArrayOfString)
+  private String a(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    String str2 = paramString.trim();
+    String str1 = str2;
+    if (!str2.startsWith("+"))
     {
-      paramString1 = a(paramString1, paramString2);
-      if (a(paramString1)) {}
+      str1 = str2;
+      if (str2.length() == 11) {
+        str1 = "+86" + paramString;
+      }
     }
-    else
-    {
-      return false;
+    return str1;
+  }
+  
+  private void a() {}
+  
+  private boolean a(int paramInt, String paramString)
+  {
+    boolean bool = false;
+    paramString = a(paramInt, paramString);
+    if (paramString != null) {
+      bool = paramString.isShieldMsg();
     }
-    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
+    return bool;
+  }
+  
+  private boolean a(EntityManager paramEntityManager, Entity paramEntity)
+  {
+    boolean bool = false;
+    if (paramEntity.getStatus() == 1000)
     {
-      int j = paramArrayOfString.length;
-      int i = 0;
-      while (i < j)
+      paramEntityManager.persistOrReplace(paramEntity);
+      if (paramEntity.getStatus() == 1001) {
+        bool = true;
+      }
+    }
+    while ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
+      return bool;
+    }
+    return paramEntityManager.update(paramEntity);
+  }
+  
+  private void b()
+  {
+    for (;;)
+    {
+      EntityManager localEntityManager;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        paramString2 = paramArrayOfString[i];
-        paramString2 = paramString1 + "/" + paramString2;
-        if (!a(paramString2))
+        localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+        try
         {
-          QLog.e("ZipResourcesDownloader", 1, String.format("isFilesExist check fail. filePath=%s", new Object[] { paramString2 }));
-          return false;
+          QQConcurrentHashMap localQQConcurrentHashMap = new QQConcurrentHashMap(1006, 0, 36);
+          List localList = localEntityManager.query(ShieldListInfo.class);
+          int i;
+          if (localList == null)
+          {
+            i = 0;
+            break label169;
+            if (j < i)
+            {
+              ShieldListInfo localShieldListInfo = (ShieldListInfo)localList.get(j);
+              if ((localShieldListInfo == null) || (localShieldListInfo.uin == null)) {
+                break label174;
+              }
+              localQQConcurrentHashMap.put(localShieldListInfo.uin, localShieldListInfo);
+              break label174;
+            }
+          }
+          else
+          {
+            i = localList.size();
+            break label169;
+          }
+          this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap = localQQConcurrentHashMap;
         }
-        i += 1;
+        catch (Exception localException)
+        {
+          if (!QLog.isColorLevel()) {
+            break label144;
+          }
+          QLog.d("ShieldMsgManger", 2, localException.toString());
+          localEntityManager.close();
+          continue;
+          localObject2 = finally;
+          throw localObject2;
+        }
+        finally
+        {
+          localObject2.close();
+        }
+        return;
       }
+      label144:
+      label169:
+      int j = 0;
+      continue;
+      label174:
+      j += 1;
     }
-    return true;
   }
   
-  private static boolean d(String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    try
+    for (;;)
     {
-      aovr.a(paramString1, paramString2);
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap == null) {
+          b();
+        }
+        if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap != null) && (paramString != null) && (paramString.length() > 0))
+        {
+          if (paramInt2 != 2) {
+            break label114;
+          }
+          localObject1 = a(paramString);
+          paramString = (ShieldListInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject1);
+          if (paramString != null)
+          {
+            paramString.flags = paramInt1;
+            localObject1 = new ArrayList();
+            ((ArrayList)localObject1).add(paramString);
+            ThreadManager.post(new ShieldMsgManger.2(this, (ArrayList)localObject1), 5, null, false);
+          }
+        }
+        return;
+      }
+      label114:
+      Object localObject1 = paramString;
+      if (paramInt2 == 1) {
+        localObject1 = paramString;
+      }
+    }
+  }
+  
+  public void a(int paramInt, List<Long> paramList)
+  {
+    a(paramInt, paramList, 0);
+  }
+  
+  public void a(int paramInt1, List<Long> paramList, int paramInt2)
+  {
+    aohh localaohh = (aohh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(18);
+    int j = paramList.size();
+    long[] arrayOfLong = new long[j];
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfLong[i] = ((Long)paramList.get(i)).longValue();
+      i += 1;
+    }
+    localaohh.a(paramInt1, arrayOfLong, paramInt2);
+  }
+  
+  public boolean a(String paramString)
+  {
+    a();
+    boolean bool = a(1, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldMsgManger", 2, "isUinInShieldList:" + paramString + ",result:" + bool);
+    }
+    return bool;
+  }
+  
+  public boolean a(List<ShieldListInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.size() <= 0)) {
       return true;
     }
-    catch (Exception paramString1)
+    for (;;)
     {
-      QLog.e("ZipResourcesDownloader", 1, "unzipResource fail.", paramString1);
+      EntityManager localEntityManager;
+      EntityTransaction localEntityTransaction;
+      int i;
+      ShieldListInfo localShieldListInfo1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+        if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap == null) {
+          b();
+        }
+        localEntityTransaction = localEntityManager.getTransaction();
+        try
+        {
+          localEntityTransaction.begin();
+          int j = paramList.size();
+          i = 0;
+          if (i >= j) {
+            break label333;
+          }
+          localShieldListInfo1 = (ShieldListInfo)paramList.get(i);
+          localShieldListInfo2 = (ShieldListInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localShieldListInfo1.uin);
+          if ((localShieldListInfo1.flags == 0) && (localShieldListInfo2 == null)) {
+            break label349;
+          }
+          if ((localShieldListInfo2 != null) && ((localShieldListInfo2.getStatus() == 1001) || (localShieldListInfo2.getStatus() == 1002))) {
+            if (localShieldListInfo1.flags != localShieldListInfo2.flags)
+            {
+              localShieldListInfo2.flags = localShieldListInfo1.flags;
+              localShieldListInfo2.source_id = localShieldListInfo1.source_id;
+              localShieldListInfo2.source_sub_id = localShieldListInfo1.source_sub_id;
+              a(localEntityManager, localShieldListInfo2);
+            }
+          }
+        }
+        catch (Exception paramList)
+        {
+          ShieldListInfo localShieldListInfo2;
+          paramList.printStackTrace();
+          localEntityTransaction.end();
+          bool = false;
+          localEntityManager.close();
+          a();
+          return bool;
+          if ((localShieldListInfo1.flags != 1) || (localShieldListInfo2.source_id == localShieldListInfo1.source_id)) {
+            break label349;
+          }
+          localShieldListInfo2.flags = localShieldListInfo1.flags;
+          localShieldListInfo2.source_id = localShieldListInfo1.source_id;
+          localShieldListInfo2.source_sub_id = localShieldListInfo1.source_sub_id;
+          a(localEntityManager, localShieldListInfo2);
+        }
+        finally
+        {
+          localEntityTransaction.end();
+        }
+      }
+      a(localEntityManager, localShieldListInfo1);
+      this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.put(localShieldListInfo1.uin, localShieldListInfo1);
+      break label349;
+      label333:
+      localEntityTransaction.commit();
+      localEntityTransaction.end();
+      boolean bool = true;
+      continue;
+      label349:
+      i += 1;
     }
-    return false;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    synchronized (this.b)
-    {
-      this.b.clear();
-      return;
-      localObject1 = finally;
-      throw localObject1;
-    }
-  }
-  
-  public void a(QQAppInterface arg1, int paramInt, String paramString1, String paramString2, String paramString3, String[] paramArrayOfString, axai paramaxai)
+  public boolean a(ConcurrentHashMap<String, ShieldListInfo> paramConcurrentHashMap)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ZipResourcesDownloader", 2, String.format("downloadResource url=%s md5=%s callback=%s", new Object[] { paramString2, paramString3, paramaxai }));
+      QLog.d("ShieldMsgManger", 2, "<---saveShieldListTotal : begin....");
     }
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (??? == null)) {
-      QLog.e("ZipResourcesDownloader", 1, "downloadResource invalid parameters.");
-    }
-    label359:
-    boolean bool1;
-    do
+    Object localObject2;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      Object localObject1;
-      Object localObject2;
-      for (;;)
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getWritableDatabase();
+      if (localObject2 != null)
       {
-        return;
-        localObject1 = null;
-        if (this.jdField_a_of_type_MqqUtilWeakReference != null) {
-          localObject1 = (beaw)this.jdField_a_of_type_MqqUtilWeakReference.get();
-        }
-        localObject2 = localObject1;
-        if (localObject1 == null)
-        {
-          localObject2 = (beaw)???.getManager(193);
-          this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(localObject2);
-        }
-        if (localObject2 != null)
-        {
-          localObject1 = b(paramString3);
-          if (c((String)localObject1, paramString3)) {
-            break label359;
-          }
-          int i = 0;
-          synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-          {
-            if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramString2)) {
-              i = 1;
-            }
-            if (i != 0)
-            {
-              if (paramaxai == null) {
-                continue;
-              }
-              synchronized (this.b)
-              {
-                this.b.add(new axah(this, paramString2, paramaxai));
-                return;
-              }
-            }
-          }
-        }
+        localObject3 = new ShieldListInfo().getTableName();
+        ((SQLiteDatabase)localObject2).execSQL("delete from " + (String)localObject3);
       }
-      b((String)localObject1);
-      ??? = new bdvs();
-      ((bdvs)???).jdField_a_of_type_Bdvw = new axae(this);
-      ((bdvs)???).jdField_a_of_type_JavaLangString = paramString2;
-      ((bdvs)???).jdField_a_of_type_Int = 0;
-      ((bdvs)???).c = ((String)localObject1);
-      ((bdvs)???).d = 0;
-      ((bdvs)???).jdField_a_of_type_Bdvv = new axaf(this);
-      ((beaw)localObject2).a(paramInt, paramString1, paramString3, 0, paramString2, (String)localObject1, 2, 0, false, new beau(???, paramString3, new axag(this, paramString3, paramArrayOfString, paramaxai), (bdvs)???));
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString2);
-        return;
+      if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap != null) && (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.size() > 0)) {
+        this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.clear();
       }
-      boolean bool2 = c(paramString2, paramString3, paramArrayOfString);
-      bool1 = bool2;
-      if (!bool2)
-      {
-        boolean bool3 = d((String)localObject1, c(paramString3));
-        bool2 = c(paramString2, paramString3, paramArrayOfString);
-        bool1 = bool2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ZipResourcesDownloader", 2, String.format("downloadResource unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool2) }));
-          bool1 = bool2;
-        }
+      localObject2 = new ArrayList();
+      Object localObject3 = paramConcurrentHashMap.keySet().iterator();
+      if (((Iterator)localObject3).hasNext()) {
+        ((ArrayList)localObject2).add(paramConcurrentHashMap.get((String)((Iterator)localObject3).next()));
       }
-    } while (paramaxai == null);
-    paramaxai.a(bool1);
+    }
+    boolean bool = a((List)localObject2);
+    return bool;
   }
+  
+  public void b(int paramInt, List<Long> paramList)
+  {
+    b(paramInt, paramList, 0);
+  }
+  
+  public void b(int paramInt1, List<Long> paramList, int paramInt2)
+  {
+    aohh localaohh = (aohh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(18);
+    int j = paramList.size();
+    long[] arrayOfLong = new long[j];
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfLong[i] = ((Long)paramList.get(i)).longValue();
+      i += 1;
+    }
+    localaohh.b(paramInt1, arrayOfLong, paramInt2);
+  }
+  
+  public void onDestroy() {}
 }
 
 

@@ -2,10 +2,10 @@ package com.tencent.mobileqq.intervideo.groupvideo;
 
 import android.os.Handler;
 import android.os.Looper;
-import avhx;
-import avid;
-import avig;
-import aviy;
+import awaa;
+import awag;
+import awaj;
+import awbg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hydevteam.pluginframework.pluginmanager.UpgradeablePluginManager;
 import java.util.List;
@@ -13,14 +13,14 @@ import java.util.List;
 public final class GroupVideoManager$7
   implements Runnable
 {
-  public GroupVideoManager$7(String paramString, avid paramavid) {}
+  public GroupVideoManager$7(String paramString, awag paramawag) {}
   
   public void run()
   {
     try
     {
       if ("huiyin2".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {}
-      for (List localList = new UpgradeablePluginManager(aviy.a(BaseApplicationImpl.getContext()), "huiyin2", avig.a()).getCachedLatestPlugin(this.jdField_a_of_type_JavaLangString);; localList = avhx.a().getCachedLatestPlugin(this.jdField_a_of_type_JavaLangString))
+      for (List localList = new UpgradeablePluginManager(awbg.a(BaseApplicationImpl.getContext()), "huiyin2", awaj.a()).getCachedLatestPlugin(this.jdField_a_of_type_JavaLangString);; localList = awaa.a().getCachedLatestPlugin(this.jdField_a_of_type_JavaLangString))
       {
         new Handler(Looper.getMainLooper()).post(new GroupVideoManager.7.1(this, localList));
         return;

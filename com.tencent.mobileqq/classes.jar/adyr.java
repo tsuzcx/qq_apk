@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
-class adyr
-  implements View.OnClickListener
+public class adyr
+  implements bjbn
 {
-  adyr(adyo paramadyo) {}
+  public adyr(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  public void a(Bundle paramBundle)
   {
-    this.a.a.onClick(this.a.a.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.b(false);
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    this.a.a.b(true);
   }
 }
 

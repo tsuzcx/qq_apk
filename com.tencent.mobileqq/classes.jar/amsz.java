@@ -1,18 +1,69 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class amsz
-  implements DialogInterface.OnKeyListener
+  implements anje
 {
-  amsz(amsv paramamsv, amtd paramamtd) {}
+  amsz(amsx paramamsx) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if ((paramInt == 4) && (this.jdField_a_of_type_Amtd != null)) {
-      this.jdField_a_of_type_Amtd.a(this.jdField_a_of_type_Amsv.a(), "sc.xy_alert_show_success.local", "{\"cancel\":1}");
+    if (paramBoolean) {
+      if ((paramInt1 > 0) && (!ApolloUtil.d(paramInt1))) {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloManager", 2, "role rsc NOT complete.");
+        }
+      }
     }
-    return true;
+    label96:
+    do
+    {
+      VasExtensionHandler localVasExtensionHandler;
+      do
+      {
+        return;
+        if (paramArrayOfInt != null)
+        {
+          paramInt1 = 0;
+          for (;;)
+          {
+            if (paramInt1 >= paramArrayOfInt.length) {
+              break label96;
+            }
+            if (!ApolloUtil.c(paramArrayOfInt[paramInt1]))
+            {
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("ApolloManager", 2, "dress rsc NOT complete, id:" + paramArrayOfInt[paramInt1]);
+              return;
+            }
+            paramInt1 += 1;
+          }
+        }
+        paramArrayOfInt = new ArrayList(1);
+        paramArrayOfInt.add(paramString);
+        localVasExtensionHandler = (VasExtensionHandler)this.a.a.a(71);
+        localVasExtensionHandler.notifyUI(2, true, paramArrayOfInt);
+        anav.a().a(paramArrayOfInt);
+        localVasExtensionHandler.a(paramString, null);
+      } while (!QLog.isColorLevel());
+      QLog.d("ApolloManager", 2, "apollo dress download ok notifyUI uin: " + ApolloUtil.d(paramString));
+      return;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramArrayOfInt = new ArrayList(1);
+        paramArrayOfInt.add(paramString);
+        localVasExtensionHandler = (VasExtensionHandler)this.a.a.a(71);
+        localVasExtensionHandler.notifyUI(2, false, paramArrayOfInt);
+        localVasExtensionHandler.a(paramString, null);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloManager", 2, "apollo dress download failed " + ApolloUtil.d(paramString));
   }
 }
 

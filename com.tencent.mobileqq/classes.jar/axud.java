@@ -1,12 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class axud
-  implements DialogInterface.OnClickListener
+public abstract class axud
 {
-  axud(axtp paramaxtp) {}
+  public void a(long paramLong1, long paramLong2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(axue paramaxue) {}
 }
 
 

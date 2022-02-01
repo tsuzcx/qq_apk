@@ -1,17 +1,33 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View;
 
 public class aljs
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public aljs(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public int a;
+  public View a;
+  public boolean a;
+  public int b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public aljs(int paramInt1, int paramInt2)
   {
-    NewFlowCameraActivity.a(this.a, paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return paramInt >= 2;
+  }
+  
+  public boolean a()
+  {
+    return this.b >= 2;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer(20);
+    localStringBuffer.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.b).append(",").append(this.jdField_a_of_type_Boolean).append(",").append(this.jdField_a_of_type_AndroidViewView).append("]");
+    return localStringBuffer.toString();
   }
 }
 

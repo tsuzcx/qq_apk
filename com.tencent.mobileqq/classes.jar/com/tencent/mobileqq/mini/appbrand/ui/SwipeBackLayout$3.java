@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
 import android.os.Bundle;
-import aqce;
+import aqrh;
 
 class SwipeBackLayout$3
-  extends aqce
+  extends aqrh
 {
   SwipeBackLayout$3(SwipeBackLayout paramSwipeBackLayout) {}
   

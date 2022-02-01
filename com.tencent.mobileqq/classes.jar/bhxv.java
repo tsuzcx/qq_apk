@@ -1,135 +1,179 @@
-import android.animation.ValueAnimator;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.animation.LinearInterpolator;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.pb.onlinestatus.CustomOnlineStatusPb.CustomOnlineStatusMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.FrdCustomOnlineStatusChange;
 
 public class bhxv
-  extends Drawable
 {
-  public static int a;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private PorterDuffXfermode jdField_a_of_type_AndroidGraphicsPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-  public int b = Color.argb(255, 137, 208, 67);
-  public int c = Color.argb(255, 255, 66, 34);
-  private int d;
-  private int e = -872415232;
-  private int f = 0;
-  private int g;
-  private int h;
-  private int i;
-  private int j = Color.argb(127, 255, 255, 255);
-  private int k = -1;
-  
-  private void a()
+  public static int a(CustomOnlineStatusPb.CustomOnlineStatusMsg paramCustomOnlineStatusMsg)
   {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 100 });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bhxw(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(3000L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-  }
-  
-  private void c(int paramInt)
-  {
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()) && (paramInt == 7)) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    if ((paramCustomOnlineStatusMsg != null) && (paramCustomOnlineStatusMsg.uUpdateInterval.get() > 0)) {
+      return paramCustomOnlineStatusMsg.uUpdateInterval.get();
     }
+    return 30000;
   }
   
-  public void a(int paramInt)
+  public static String a(CustomOnlineStatusPb.CustomOnlineStatusMsg paramCustomOnlineStatusMsg)
   {
-    this.h = paramInt;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.g != paramInt)
-    {
-      this.g = paramInt;
-      if (this.g == 6) {
-        a();
-      }
-    }
-    else
-    {
-      return;
-    }
-    c(this.g);
-    this.k = -1;
-    invalidateSelf();
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas)
-  {
-    Object localObject = getBounds();
-    paramCanvas.save();
-    int n = ((Rect)localObject).centerX();
-    int i1 = ((Rect)localObject).centerY();
-    int i2 = this.h;
-    paramCanvas.clipRect((Rect)localObject);
-    paramCanvas.drawColor(this.e);
-    int m;
-    if (this.g > jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
-      paramCanvas.drawCircle(n, i1, i2, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (this.g > 1)
+    if (paramCustomOnlineStatusMsg != null) {
+      try
       {
-        m = this.b;
-        switch (this.g)
+        if (paramCustomOnlineStatusMsg.uHasCustomInfo.get() == 1)
         {
+          String str = paramCustomOnlineStatusMsg.sCustomDesc.get();
+          paramCustomOnlineStatusMsg = paramCustomOnlineStatusMsg.sCustomModel.get();
+          if ((str != null) && (paramCustomOnlineStatusMsg != null))
+          {
+            paramCustomOnlineStatusMsg = str + paramCustomOnlineStatusMsg;
+            return paramCustomOnlineStatusMsg;
+          }
         }
       }
+      catch (Exception paramCustomOnlineStatusMsg)
+      {
+        QLog.d("CustomOnlineStatusManager", 1, paramCustomOnlineStatusMsg, new Object[0]);
+      }
+    }
+    return "";
+  }
+  
+  public static void a(Activity paramActivity, String paramString)
+  {
+    if (paramActivity == null)
+    {
+      QLog.e("CustomOnlineStatusManager", 1, "activity == null");
+      return;
+    }
+    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
+    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+    localIntent.putExtra("uin", ((QQAppInterface)localObject).getCurrentAccountUin());
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("hide_more_button", true);
+    localIntent.putExtra("selfSet_leftViewText", paramActivity.getString(2131690728));
+    localIntent.putExtra("leftViewText", paramActivity.getString(2131690728));
+    localIntent.putExtra("hide_title_left_arrow", true);
+    localIntent.putExtra("finish_animation_up_down", true);
+    localObject = "https://club.vip.qq.com/onlinestatus/set?_wv=67109895&_wvx=10&_proxy=1";
+    if ("panel".equals(paramString))
+    {
+      paramString = "https://club.vip.qq.com/onlinestatus/set?_wv=67109895&_wvx=10&_proxy=1" + "&src=1";
+      localObject = "0X8009F76";
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(m);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.i);
-      paramCanvas.drawCircle(n, i1, i2, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (this.k != -1)
-      {
-        localObject = new RectF(n - i2, i1 - i2, n + i2, i1 + i2);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.i);
-        paramCanvas.drawArc((RectF)localObject, 270.0F, this.k / 100.0F * 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+      VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, paramString, 256L, localIntent, false, 299);
+      paramActivity.overridePendingTransition(2130771997, 2130771990);
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break;
       }
-      paramCanvas.restore();
+      bdll.b(null, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
       return;
-      m = -1;
-      continue;
-      m = this.b;
-      continue;
-      m = this.c;
-      continue;
-      m = this.j;
+      if ("settings".equals(paramString))
+      {
+        paramString = "https://club.vip.qq.com/onlinestatus/set?_wv=67109895&_wvx=10&_proxy=1" + "&src=2";
+        localObject = "0X8009F77";
+      }
+      else if ("aio".equals(paramString))
+      {
+        paramString = "https://club.vip.qq.com/onlinestatus/set?_wv=67109895&_wvx=10&_proxy=1" + "&src=3";
+        localObject = "0X8009F78";
+      }
+      else
+      {
+        String str = "";
+        paramString = (String)localObject;
+        localObject = str;
+      }
     }
   }
   
-  public int getOpacity()
+  private static void a(String paramString)
   {
-    return this.d;
+    FriendListHandler localFriendListHandler = (FriendListHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(1);
+    try
+    {
+      localFriendListHandler.c(paramString, false);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("CustomOnlineStatusManager", 1, paramString, new Object[0]);
+    }
   }
   
-  public void setAlpha(int paramInt) {}
+  public static void a(SubMsgType0x27.FrdCustomOnlineStatusChange paramFrdCustomOnlineStatusChange)
+  {
+    long l = paramFrdCustomOnlineStatusChange.uint64_uin.get();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("CustomOnlineStatusManager", 4, "onPush uni = " + paramFrdCustomOnlineStatusChange.uint64_uin.get());
+    }
+    if (l == BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin())
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("CustomOnlineStatusManager", 4, "sync owner");
+      }
+      b();
+    }
+    while (TextUtils.isEmpty(String.valueOf(l))) {
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("CustomOnlineStatusManager", 4, "sync friend");
+    }
+    a(String.valueOf(l));
+  }
   
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
+  public static boolean a(int paramInt)
+  {
+    return paramInt == 1;
+  }
+  
+  public static int b(CustomOnlineStatusPb.CustomOnlineStatusMsg paramCustomOnlineStatusMsg)
+  {
+    if (paramCustomOnlineStatusMsg != null) {
+      return paramCustomOnlineStatusMsg.uHasCustomInfo.get();
+    }
+    return 0;
+  }
+  
+  public static String b(CustomOnlineStatusPb.CustomOnlineStatusMsg paramCustomOnlineStatusMsg)
+  {
+    if (paramCustomOnlineStatusMsg != null) {
+      try
+      {
+        if (paramCustomOnlineStatusMsg.uHasCustomInfo.get() == 1)
+        {
+          paramCustomOnlineStatusMsg = paramCustomOnlineStatusMsg.sCustomModel.get();
+          if (paramCustomOnlineStatusMsg != null) {
+            return paramCustomOnlineStatusMsg;
+          }
+        }
+      }
+      catch (Exception paramCustomOnlineStatusMsg)
+      {
+        QLog.d("CustomOnlineStatusManager", 1, paramCustomOnlineStatusMsg, new Object[0]);
+      }
+    }
+    return "";
+  }
+  
+  private static void b()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    ((aokv)localQQAppInterface.a(27)).a(localQQAppInterface.getLongAccountUin());
+  }
 }
 
 

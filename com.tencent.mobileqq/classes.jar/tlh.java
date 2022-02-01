@@ -1,53 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.2.1;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.2.2;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.2.3;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.2.4;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-final class tlh
-  implements tln
+public class tlh
+  implements tky
 {
+  tlh(tlf paramtlf) {}
+  
   public void a()
   {
-    Object localObject = tlg.a("https://viola/viola_config.json?v_bid=3192");
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      try
-      {
-        localObject = new JSONObject((String)localObject);
-        JSONArray localJSONArray = (JSONArray)((JSONObject)localObject).get("preload_bids");
-        int i = 0;
-        while (i < localJSONArray.length())
-        {
-          tlg.a((String)localJSONArray.get(i), null);
-          i += 1;
-        }
-        tlg.jdField_a_of_type_JavaLangString = pha.a();
-        tlg.jdField_a_of_type_Long = System.currentTimeMillis();
-        if (((JSONObject)localObject).has("use_main")) {
-          tlg.jdField_a_of_type_Boolean = ((Boolean)((JSONObject)localObject).get("use_main")).booleanValue();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ViolaAccessHelper", 2, "pre load all offline from offline is success!");
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ViolaAccessHelper", 2, "pre load all offline from offline is exception:" + localException.getMessage());
-        }
-        tlg.b();
-        return;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaAccessHelper", 2, "pre load all offline from offline is empty!");
-    }
-    tlg.b();
+    ThreadManager.getUIHandler().post(new GamesComponentAdDelegate.2.1(this));
   }
   
-  public void a(int paramInt) {}
+  public void a(int paramInt)
+  {
+    ThreadManager.getUIHandler().post(new GamesComponentAdDelegate.2.3(this, paramInt));
+  }
   
-  public void b() {}
+  public void a(tqt paramtqt, int paramInt1, int paramInt2)
+  {
+    ThreadManager.getUIHandler().post(new GamesComponentAdDelegate.2.4(this, paramInt1, paramInt2));
+  }
+  
+  public void b()
+  {
+    ThreadManager.getUIHandler().post(new GamesComponentAdDelegate.2.2(this));
+  }
 }
 
 

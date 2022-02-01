@@ -1,21 +1,19 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.5.1;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.5.2;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.widget.HorizontalListView;
 
 public class alwl
-  extends bllb
+  implements bcwn
 {
-  public alwl(ShortVideoPlayActivity paramShortVideoPlayActivity, Activity paramActivity, blld paramblld, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    super(paramActivity, paramblld, paramInt1, paramInt2, paramAppRuntime);
+    this.a.a.post(new PtvTemplateAdapter.5.2(this, paramPtvTemplateInfo, paramInt));
   }
   
-  public void onClick(View paramView)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
   {
-    super.onClick(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.post(new PtvTemplateAdapter.5.1(this, paramPtvTemplateInfo, paramBoolean));
   }
 }
 

@@ -1,17 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceStruct;
 
-class bntk
-  implements View.OnClickListener
+public class bntk
 {
-  bntk(bnta parambnta) {}
-  
-  public void onClick(View paramView)
+  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
   {
-    bnta.a(this.a).setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    try
+    {
+      paramClass = (JceStruct)paramClass.newInstance();
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+      paramArrayOfByte.setServerEncoding("utf8");
+      paramClass.readFrom(paramArrayOfByte);
+      return paramClass;
+    }
+    catch (Exception paramClass)
+    {
+      paramClass.printStackTrace();
+    }
+    return null;
   }
 }
 

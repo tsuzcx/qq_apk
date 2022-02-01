@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahsd;
+import aibr;
 import android.net.Uri;
-import auyg;
+import avqh;
 import java.io.File;
 import java.util.ArrayList;
 
 public class AIOGalleryScene$15
   implements Runnable
 {
-  public AIOGalleryScene$15(ahsd paramahsd, File paramFile, ArrayList paramArrayList) {}
+  public AIOGalleryScene$15(aibr paramaibr, File paramFile, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if (auyg.a().b()) {}
+    if (avqh.a().b()) {}
     while ((this.this$0.g == null) || (!this.this$0.g.equals(this.jdField_a_of_type_JavaIoFile.getPath()))) {
       return;
     }
     Uri localUri = Uri.parse("file://" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-    ahsd.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
+    aibr.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

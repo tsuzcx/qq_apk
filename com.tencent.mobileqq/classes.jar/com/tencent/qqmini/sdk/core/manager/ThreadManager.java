@@ -6,6 +6,7 @@ import android.os.Looper;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.core.utils.thread.ThreadPools;
 import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 
 @MiniKeep
 public class ThreadManager

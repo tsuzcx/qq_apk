@@ -1,40 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Rect;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class ayiy
-  implements ValueAnimator.AnimatorUpdateListener
+class ayiy
+  implements View.OnTouchListener
 {
-  public ayiy(ScanOcrView paramScanOcrView, ayja paramayja) {}
+  ayiy(ayix paramayix) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int j = (int)(this.jdField_a_of_type_Ayja.a * f);
-    int i = (int)(f * this.jdField_a_of_type_Ayja.jdField_b_of_type_Int);
-    int m = j - this.jdField_a_of_type_Ayja.a;
-    int k = i - this.jdField_a_of_type_Ayja.jdField_b_of_type_Int;
-    j = (int)(paramValueAnimator.getAnimatedFraction() * 255.0F);
-    i = j;
-    if (j > 255) {
-      i = 255;
+    switch (paramMotionEvent.getAction())
+    {
     }
-    j = i;
-    if (i < 0) {
-      j = 0;
+    for (;;)
+    {
+      return true;
+      this.a.dismiss();
     }
-    i = this.jdField_a_of_type_Ayja.jdField_b_of_type_AndroidGraphicsRect.left;
-    int n = m / 2;
-    int i1 = this.jdField_a_of_type_Ayja.jdField_b_of_type_AndroidGraphicsRect.top;
-    int i2 = k / 2;
-    int i3 = this.jdField_a_of_type_Ayja.jdField_b_of_type_AndroidGraphicsRect.right;
-    m /= 2;
-    int i4 = this.jdField_a_of_type_Ayja.jdField_b_of_type_AndroidGraphicsRect.bottom;
-    k /= 2;
-    this.jdField_a_of_type_Ayja.e = j;
-    this.jdField_a_of_type_Ayja.c.set(i - n, i1 - i2, m + i3, k + i4);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
   }
 }
 

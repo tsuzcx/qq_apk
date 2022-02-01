@@ -1,17 +1,14 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-
 public class svm
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public svm(SlideActiveAnimController paramSlideActiveAnimController, Runnable paramRunnable) {}
+  public final String a;
+  public final svn a;
+  public final String b;
   
-  public void onGlobalLayout()
+  public svm(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.a();
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Svn = new svn(paramString1, paramString2);
   }
 }
 

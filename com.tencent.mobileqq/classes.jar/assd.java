@@ -1,38 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerFrameLayout;
 
-public class assd
-  implements bkhw
+class assd
+  implements Animator.AnimatorListener
 {
-  public assd(LocalFileBrowserActivity paramLocalFileBrowserActivity, bkho parambkho) {}
+  assd(assc paramassc) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    switch (paramInt)
+    if (this.a.a != null)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e != -1)
-      {
-        paramView = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
-        if ((!atwl.a(paramView.c())) || (atwl.c(paramView.c())))
-        {
-          atvo.d(paramView.c());
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.remove(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
-          LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity);
-        }
-        else
-        {
-          atvf.a(2131692071);
-        }
-      }
+      float f = this.a.a.getTranslationX();
+      this.a.a.setTranslationX(0.0F);
+      this.a.a((int)(this.a.a.getLeft() + f), this.a.a.getTop(), (int)(f + this.a.a.getLeft() + this.a.a.getWidth()), this.a.a.getBottom());
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

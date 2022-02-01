@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo;
 
-import amhd;
-import ancd;
+import amsx;
 import android.content.SharedPreferences;
+import annx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,19 +22,19 @@ public final class ApolloManager$13
       if (QLog.isColorLevel()) {
         QLog.d("ApolloManager", 2, "[checkJsonParse]");
       }
-      Object localObject = (ancd)this.a.getManager(155);
-      amhd localamhd = (amhd)this.a.getManager(153);
-      List localList = ((ancd)localObject).a();
+      Object localObject = (annx)this.a.getManager(155);
+      amsx localamsx = (amsx)this.a.getManager(153);
+      List localList = ((annx)localObject).a();
       SharedPreferences localSharedPreferences = this.a.getApplication().getSharedPreferences("apollo_sp", 0);
-      boolean bool = localSharedPreferences.getBoolean("8.4.1" + this.a.getCurrentAccountUin(), false);
+      boolean bool = localSharedPreferences.getBoolean("8.4.5" + this.a.getCurrentAccountUin(), false);
       int i = localSharedPreferences.getInt("apollo_json_version" + this.a.getCurrentAccountUin(), 0);
       int j = localSharedPreferences.getInt("apollo_json_version", 0);
       if ((localList == null) || (localList.size() == 0) || (!bool) || (i != j))
       {
-        localamhd.b();
+        localamsx.b();
         QLog.d("ApolloManager", 1, "[checkJsonParse] parse action json");
       }
-      localObject = ((ancd)localObject).h();
+      localObject = ((annx)localObject).h();
       if ((localObject == null) || (((List)localObject).size() == 0))
       {
         ApolloGameUtil.a((QQAppInterface)this.a, 0L);

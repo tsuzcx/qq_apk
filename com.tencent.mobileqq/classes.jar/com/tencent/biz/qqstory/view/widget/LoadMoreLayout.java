@@ -8,13 +8,13 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import anni;
-import bksa;
-import wjz;
+import anzj;
+import bltd;
+import wnu;
 
 public class LoadMoreLayout
   extends FrameLayout
-  implements bksa
+  implements bltd
 {
   protected int a;
   protected Context a;
@@ -56,11 +56,11 @@ public class LoadMoreLayout
   
   private void a()
   {
-    this.jdField_a_of_type_JavaLangString = anni.a(2131705052);
-    this.c = anni.a(2131705054);
-    this.d = anni.a(2131705051);
-    this.b = wjz.a(2131698503);
-    this.e = anni.a(2131705053);
+    this.jdField_a_of_type_JavaLangString = anzj.a(2131705159);
+    this.c = anzj.a(2131705161);
+    this.d = anzj.a(2131705158);
+    this.b = wnu.a(2131698610);
+    this.e = anzj.a(2131705160);
   }
   
   private boolean a(int paramInt1, int paramInt2)
@@ -111,9 +111,9 @@ public class LoadMoreLayout
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561889, null));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131372935));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131378445));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561930, null));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131373048));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131378603));
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
     super.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, localLayoutParams);
     c(0);

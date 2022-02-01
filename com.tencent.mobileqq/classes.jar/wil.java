@@ -1,65 +1,45 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager.ProgressStatus.1;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
 public class wil
+  extends QQUIEventReceiver<wik, wfz>
 {
-  public int a;
-  private Runnable a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  private boolean b;
-  
-  private wil(wik paramwik)
+  public wil(@NonNull wik paramwik)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new StoryVideoUploadProgressManager.ProgressStatus.1(this);
+    super(paramwik);
   }
   
-  private void c()
+  public void a(@NonNull wik paramwik, @NonNull wfz paramwfz)
   {
-    switch (this.jdField_a_of_type_Int)
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramwfz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
     {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            this.jdField_b_of_type_Int = 0;
-            return;
-            this.jdField_b_of_type_Int += 1;
-          } while (this.jdField_b_of_type_Int < 60);
-          this.jdField_b_of_type_Int = 59;
-          return;
-          this.jdField_b_of_type_Int += 1;
-        } while (this.jdField_b_of_type_Int < 95);
-        this.jdField_b_of_type_Int = 94;
-        return;
-        this.jdField_b_of_type_Int += 1;
-      } while (this.jdField_b_of_type_Int < 100);
-      this.jdField_b_of_type_Int = 99;
-      return;
+      yuk.a("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "on receiver scan data ,error! code = %d", Integer.valueOf(paramwfz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode));
+      paramwik.d();
+      bool1 = bool2;
     }
-    this.jdField_b_of_type_Int = 100;
+    for (;;)
+    {
+      wik.a(paramwik).a(bool1);
+      return;
+      yuk.a("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "on receiver scan data ,size = %d", Integer.valueOf(paramwfz.jdField_a_of_type_JavaUtilList.size()));
+      bool1 = bool2;
+      if (paramwik.a(paramwfz.jdField_a_of_type_JavaUtilList))
+      {
+        bool1 = bool2;
+        if (paramwfz.jdField_a_of_type_JavaUtilList.size() > 0) {
+          bool1 = true;
+        }
+      }
+    }
   }
   
-  public void a()
+  public Class acceptEventClass()
   {
-    this.jdField_b_of_type_Boolean = false;
-    wik.a(this.jdField_a_of_type_Wik).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
-  }
-  
-  public void b()
-  {
-    this.jdField_b_of_type_Boolean = true;
-    wik.a(this.jdField_a_of_type_Wik).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    return wfz.class;
   }
 }
 

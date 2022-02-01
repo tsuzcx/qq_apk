@@ -1,17 +1,53 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tot
-  extends tou
 {
-  public tot(BridgeModule paramBridgeModule)
+  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
   {
-    super(paramBridgeModule);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    BridgeModule.access$1200(this.a, paramInt2, paramIntent);
+    try
+    {
+      paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_pk_cell");
+      if (paramAdData.M != null) {
+        tqa.a(paramJSONObject, paramAdData.a);
+      }
+      if (!TextUtils.isEmpty(paramAdData.b))
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("text", paramAdData.b);
+        paramJSONObject.put("id_tv_title", localObject);
+      }
+      if (!TextUtils.isEmpty(paramAdData.d))
+      {
+        localObject = tye.a(paramAdData.d, 4);
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("image_url", ((URL)localObject).toString());
+        paramJSONObject.put("id_ad_banner_bottom_imge", localJSONObject);
+      }
+      Object localObject = new JSONObject();
+      if (!TextUtils.isEmpty(paramAdData.D))
+      {
+        ((JSONObject)localObject).put("text", paramAdData.D);
+        paramJSONObject.put("id_ad_dislike_button", localObject);
+      }
+      if (!TextUtils.isEmpty(paramAdData.i))
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("text", paramAdData.i);
+        paramJSONObject.put("id_tv_author", localObject);
+      }
+    }
+    catch (JSONException paramAdData)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ReadInjoy_ad_banner_pk_cell", 2, "JSONException = " + paramAdData.getMessage());
+    }
+    return paramJSONObject;
+    return paramJSONObject;
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import argz;
+import arwo;
 
 public class IPSiteModel$ComicRich
   implements Parcelable
 {
-  public static final Parcelable.Creator<ComicRich> CREATOR = new argz();
+  public static final Parcelable.Creator<ComicRich> CREATOR = new arwo();
   public String extCover;
   public String extName;
   public String extTitle;

@@ -1,42 +1,96 @@
+import MessageSvcPack.RequestPushStatus;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MainService;
 
 public class bcug
+  extends abiv
 {
-  long a;
-  long b = 0L;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "Push" };
+  private aqwp jdField_a_of_type_Aqwp;
   
-  public bcug()
+  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public void a()
-  {
-    long l1 = MainService.sReceiverCpuTime;
-    long l2 = aonm.jdField_a_of_type_Long;
-    if (this.jdField_a_of_type_Long == 0L)
-    {
-      QLog.d("BatteryStats.BgCpu", 1, new Object[] { "bgPrintCpuStart msfrecv=", Long.valueOf(l1), "[", Integer.valueOf(MainService.sNativeTidOfReceiver), "], ", "  fts=", Long.valueOf(l2), "[", Integer.valueOf(aonm.jdField_a_of_type_Int), "]" });
-      this.jdField_a_of_type_Long = l1;
-      this.b = l2;
-      return;
+    paramToServiceMsg = paramFromServiceMsg;
+    if (paramFromServiceMsg.getWupBuffer() == null) {
+      paramToServiceMsg = null;
     }
-    c();
+    return paramToServiceMsg;
   }
   
-  public void b()
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    c();
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
+    if (paramFromServiceMsg.getServiceCmd().equals("MessageSvc.PushNotify")) {
+      return b(paramToServiceMsg, paramFromServiceMsg);
+    }
+    return null;
   }
   
-  void c()
+  public void a() {}
+  
+  public void a(aqwp paramaqwp)
   {
-    long l1 = MainService.sReceiverCpuTime;
-    long l2 = aonm.jdField_a_of_type_Long;
-    QLog.d("BatteryStats.BgCpu", 1, new Object[] { "bgPrintCpuCostSofar msfrecv=", Long.valueOf(l1 - this.jdField_a_of_type_Long), "[", Integer.valueOf(MainService.sNativeTidOfReceiver), "], ", "  fts=", Long.valueOf(l2 - this.b), "[", Integer.valueOf(aonm.jdField_a_of_type_Int), "]" });
+    this.jdField_a_of_type_Aqwp = paramaqwp;
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
+    if (paramToServiceMsg.equals("MessageSvc.RequestPushStatus"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StatusPush", 2, "decodeRespMsg MessageSvc.RequestPushStatus uin:" + paramFromServiceMsg.getUin() + " at " + System.currentTimeMillis());
+      }
+      paramToServiceMsg = paramFromServiceMsg.getWupBuffer();
+      if (paramToServiceMsg != null) {}
+    }
+    do
+    {
+      do
+      {
+        return;
+        paramFromServiceMsg = new UniPacket();
+        paramFromServiceMsg.decode(paramToServiceMsg);
+        paramToServiceMsg = (RequestPushStatus)paramFromServiceMsg.getByClass("req_PushStatus", new RequestPushStatus());
+        paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("share", 0);
+        if (paramToServiceMsg.cStatus == 1)
+        {
+          paramFromServiceMsg.edit().putBoolean("is_pc_online" + paramToServiceMsg.lUin, true).commit();
+          return;
+        }
+        paramFromServiceMsg.edit().putBoolean("is_pc_online" + paramToServiceMsg.lUin, false).commit();
+        return;
+        if (!"CliNotifySvc.register".equals(paramToServiceMsg)) {
+          break;
+        }
+      } while ((!paramFromServiceMsg.isSuccess()) || (paramFromServiceMsg.extraData.getLong("pushId") != 128L));
+      return;
+      if ("baseSdk.Msf.NotifyResp".equals(paramToServiceMsg))
+      {
+        paramToServiceMsg = new Intent("tencent.notify.album");
+        paramToServiceMsg.putExtra("resp", paramFromServiceMsg);
+        BaseApplication.getContext().sendBroadcast(paramToServiceMsg, "com.tencent.msg.permission.pushnotify");
+        return;
+      }
+      paramToServiceMsg = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    } while (this.jdField_a_of_type_Aqwp == null);
+    this.jdField_a_of_type_Aqwp.a(paramToServiceMsg, paramFromServiceMsg);
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    return false;
+  }
+  
+  public String[] a()
+  {
+    return jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 

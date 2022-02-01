@@ -1,27 +1,36 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel;
-
-public class bohw
-  implements Animator.AnimatorListener
+class bohw
 {
-  public bohw(AEEditorTextControlPanel paramAEEditorTextControlPanel) {}
+  private int jdField_a_of_type_Int;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public bohw(bohp parambohp, int paramInt)
   {
-    AEEditorTextControlPanel.a(this.a, false);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public String toString()
   {
-    AEEditorTextControlPanel.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.setVisibility(0);
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      return "未知错误";
+    case 0: 
+      return "初始化成功";
+    case -1: 
+      return "初始化AEKit失败";
+    case -2: 
+      return "加载YTCommon失败";
+    case -3: 
+      return "加载PtuTools失败";
+    case -4: 
+      return "加载PtuAlgo失败";
+    case -5: 
+      return "加载人脸检测失败";
+    case -6: 
+      return "加载PAG失败";
+    case -7: 
+      return "加载ImageAlgo失败";
+    }
+    return "初始化TAVCut失败";
   }
 }
 

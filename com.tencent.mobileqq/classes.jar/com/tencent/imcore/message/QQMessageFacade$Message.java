@@ -1,6 +1,6 @@
 package com.tencent.imcore.message;
 
-import aohs;
+import aovg;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
 import com.tencent.mobileqq.persistence.Entity;
@@ -24,7 +24,7 @@ public class QQMessageFacade$Message
   @notColumn
   public boolean isFromLS;
   public MessageRecord lastMsg;
-  public ArrayList<aohs> msgInfoList;
+  public ArrayList<aovg> msgInfoList;
   public String nickName;
   public String pttUrl;
   public long shareAppID;

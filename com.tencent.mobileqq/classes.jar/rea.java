@@ -1,11 +1,14 @@
-public class rea
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
+
+final class rea
+  implements SDKInitListener
 {
-  public static rdz a(int paramInt)
+  public void onSDKInited(boolean paramBoolean)
   {
-    if (paramInt == rdy.a) {
-      return new rec();
+    if (QLog.isColorLevel()) {
+      QLog.d("PlayerCaptureProxy", 2, "onSDKInited result:" + paramBoolean);
     }
-    return null;
   }
 }
 

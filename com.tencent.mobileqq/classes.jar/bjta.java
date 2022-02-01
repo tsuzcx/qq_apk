@@ -1,28 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import android.os.Bundle;
 
-public class bjta
-  extends BroadcastReceiver
+class bjta
+  implements bjwh
 {
-  public bjta(OpenSDKAppInterface paramOpenSDKAppInterface) {}
+  bjta(bjsz parambjsz) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("OpenSDKAppInterface", 2, "onReceive: invoked.  intent: " + paramIntent + " action: " + paramContext);
-    }
-    if ((paramContext != null) && (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED"))) {
-      OpenSDKAppInterface.a(this.a);
-    }
+    bjtx.b("DownloadManagerV2", "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("PackageName", paramString1);
+    localBundle.putString("Code", paramString2);
+    localBundle.putInt("VersionCode", paramInt);
+    localBundle.putBoolean("IsSuccess", paramBoolean);
+    localBundle.putAll(paramBundle);
+    bjsz.a(this.a, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjta
  * JD-Core Version:    0.7.0.1
  */

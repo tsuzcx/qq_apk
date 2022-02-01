@@ -1,13 +1,21 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class ajyn
-  implements bkiz
+  implements DialogInterface.OnClickListener
 {
-  ajyn(ajym paramajym, View paramView) {}
+  ajyn(ajyl paramajyl) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (paramInt == 1) {
+      bhzu.a(ajyl.a(this.a), ajyl.a(this.a), "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", ajyl.a(this.a).getApp().getString(2131718497), "");
+    }
   }
 }
 

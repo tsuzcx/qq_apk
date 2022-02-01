@@ -1,38 +1,31 @@
-import android.os.Handler;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3.1;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3.2;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3.3;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3.4;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.TextView;
+import com.tencent.avgame.gameroom.seat.MemberItemView;
+import com.tencent.avgame.gameroom.seat.TalkingEffectLayout;
 
 public class ncq
-  implements nea
+  implements Animator.AnimatorListener
 {
-  public ncq(AVGameControlUIImpl paramAVGameControlUIImpl) {}
+  public ncq(MemberItemView paramMemberItemView) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    neq.a().b().post(new AVGameControlUIImpl.3.4(this));
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
   }
   
-  public void a(long paramLong) {}
-  
-  public void a(long paramLong, boolean paramBoolean) {}
-  
-  public void b(long paramLong)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    neq.a().b().post(new AVGameControlUIImpl.3.3(this, paramLong));
+    this.a.jdField_a_of_type_ComTencentAvgameGameroomSeatTalkingEffectLayout.setVisibility(4);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
   }
   
-  public void b(long paramLong, boolean paramBoolean)
-  {
-    neq.a().b().post(new AVGameControlUIImpl.3.1(this));
-    nfv.a(paramBoolean);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void c(long paramLong, boolean paramBoolean)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    neq.a().b().post(new AVGameControlUIImpl.3.2(this));
+    this.a.jdField_a_of_type_ComTencentAvgameGameroomSeatTalkingEffectLayout.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-14558778);
   }
 }
 

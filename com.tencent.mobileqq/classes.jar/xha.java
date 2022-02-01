@@ -1,23 +1,27 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class xha
-  extends QQUIEventReceiver<StoryPlayerActivity, xgz>
+class xha
+  extends xft
 {
-  public xha(@NonNull StoryPlayerActivity paramStoryPlayerActivity)
+  xha(xgp paramxgp, StoryVideoItem paramStoryVideoItem, xhx paramxhx)
   {
-    super(paramStoryPlayerActivity);
+    super(paramStoryVideoItem);
   }
   
-  public void a(@NonNull StoryPlayerActivity paramStoryPlayerActivity, @NonNull xgz paramxgz)
+  public boolean b()
   {
-    paramStoryPlayerActivity.b = paramxgz.a;
-  }
-  
-  public Class acceptEventClass()
-  {
-    return xgz.class;
+    String str = (String)a("result");
+    znw.a(str);
+    znw.a(this.jdField_a_of_type_Xhx.d);
+    if (this.jdField_a_of_type_Xhx.d == null)
+    {
+      this.jdField_a_of_type_Xhx.d = "";
+      yuk.c(this.b, "imageLocalPath is null", new Throwable());
+    }
+    a("DownloadPic2FileJob_iiu", str);
+    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Xhx.d);
+    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Xhx.a));
+    return true;
   }
 }
 

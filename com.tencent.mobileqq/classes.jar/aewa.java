@@ -1,28 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqcircle.list.bizblocks.QCircleObserver;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
 
-class aewa
-  implements DialogInterface.OnClickListener
+public class aewa
+  extends QCircleObserver
 {
-  aewa(aevz paramaevz) {}
+  public aewa(Leba paramLeba) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onUpdateRedPoint(int paramInt)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.lebatab.leba", 2, "QCircleObserver onUpdateRedPoint " + paramInt);
     }
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_Aevy.a.app.a().b(this.a.jdField_a_of_type_Aevy.a.a(), 0, this.a.jdField_a_of_type_Long);
-      this.a.jdField_a_of_type_Aevy.a.b();
-      return;
-    } while (this.a.jdField_a_of_type_Aevy.a.jdField_a_of_type_Aevy.getCount() <= 0);
-    this.a.jdField_a_of_type_Aevy.a.app.a().a(this.a.jdField_a_of_type_Aevy.a.a(), 0);
-    this.a.jdField_a_of_type_Aevy.a.jdField_a_of_type_Aevy.changeCursor(this.a.jdField_a_of_type_Aevy.getCursor());
+    Leba.f(this.a);
   }
 }
 

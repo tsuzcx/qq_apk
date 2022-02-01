@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.jsp;
 
-import avog;
-import avoi;
+import awgr;
+import awgt;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class IdentificationApiPlugin$2$2
   implements Runnable
 {
-  public IdentificationApiPlugin$2$2(avoi paramavoi, String paramString) {}
+  public IdentificationApiPlugin$2$2(awgt paramawgt, String paramString) {}
   
   public void run()
   {
-    avog.a(this.jdField_a_of_type_Avoi.a);
-    QQToast.a(avog.a(this.jdField_a_of_type_Avoi.a), this.jdField_a_of_type_JavaLangString, 0).a();
+    awgr.a(this.jdField_a_of_type_Awgt.a);
+    QQToast.a(awgr.a(this.jdField_a_of_type_Awgt.a), this.jdField_a_of_type_JavaLangString, 0).a();
   }
 }
 

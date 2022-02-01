@@ -1,32 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import qqcircle.QQCircleFeedBase.StTabInfo;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.List;
 
 class vef
-  implements bkhw
+  implements Observer<vxq<List<FeedCloudMeta.StFeed>>>
 {
-  vef(vee paramvee, bkho parambkho) {}
+  vef(vee paramvee) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(@Nullable vxq<List<FeedCloudMeta.StFeed>> paramvxq)
   {
-    if (!aauy.a("showEnterAuthActionSheetClick")) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      if (vee.a(this.jdField_a_of_type_Vee) != null)
-      {
-        uxo.a(this.jdField_a_of_type_Vee.a(), uxn.a(vee.a(this.jdField_a_of_type_Vee).a.urlInfo.get(), "authSchoolUrl"));
-        continue;
-        if (vee.a(this.jdField_a_of_type_Vee) != null) {
-          uxo.a(this.jdField_a_of_type_Vee.a(), uxn.a(vee.a(this.jdField_a_of_type_Vee).a.urlInfo.get(), "authCampanyUrl"));
-        }
-      }
-    }
+    vee.a(this.a, paramvxq);
   }
 }
 

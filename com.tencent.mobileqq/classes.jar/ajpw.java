@@ -1,23 +1,42 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ajpw
-  extends asyw
+  implements blop
 {
-  public ajpw(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
+  public ajpw(TroopActivity paramTroopActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void a(bloo parambloo)
   {
-    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+    switch (parambloo.a)
+    {
+    default: 
+    case 0: 
+      do
+      {
+        return;
+        bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_create", 0, 0, "", "", "", "");
+        bdll.b(this.a.app, "CliOper", "", "", "0X8006622", "0X8006622", 0, 0, "", "", "", "");
+        parambloo = (bfqm)this.a.app.getManager(32);
+      } while (parambloo == null);
+      parambloo.a(this.a, 0);
+      return;
+    case 1: 
+      bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_join", 0, 0, "", "", "", "");
+      bdll.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_join", 47, 0, "", "", "", "");
+      AddContactsActivity.a(this.a, 1);
+      return;
+    case 2: 
+      bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_msgset", 0, 0, "", "", "", "");
+      bdll.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_setting", 0, 0, "", "", "", "");
+      parambloo = new Intent(this.a, TroopAssisSettingActivity.class);
+      this.a.startActivity(parambloo);
+      return;
+    }
+    TroopActivity.a(this.a);
   }
 }
 

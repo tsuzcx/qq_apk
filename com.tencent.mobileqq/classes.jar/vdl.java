@@ -1,18 +1,31 @@
-import android.graphics.Bitmap;
 import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.qqcircle.bizparts.QCircleSharePart.6;
+import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
+import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
 
-public class vdl
-  implements aobv
+class vdl
+  implements vwp
 {
-  public vdl(QCircleSharePart.6 param6, aobu paramaobu) {}
+  vdl(vdj paramvdj) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void b()
   {
-    QLog.d("QCircleSharePart", 1, "shareToWeChat share user icon(need decode task)  onDecodeTaskCompleted");
-    QCircleSharePart.6.a(this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleSharePart$6, paramBitmap);
-    this.jdField_a_of_type_Aobu.a(null);
-    this.jdField_a_of_type_Aobu.d();
+    vdj.a(this.a).a().scrollToPosition(0);
+    vdj.a(this.a).a().e();
+    vdj.a(this.a).clearData();
+    this.a.a(true, false, true);
+    if (vdj.a(this.a) == 1) {
+      vtn.a(87, 6, vdj.a(this.a), this.a.c());
+    }
+    for (;;)
+    {
+      QLog.d("QCircleLightInteractListPart", 3, "dismiss");
+      return;
+      vtn.a(75, 2, vdj.a(this.a), this.a.c());
+    }
   }
 }
 

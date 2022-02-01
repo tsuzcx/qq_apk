@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import pmk;
-import pxd;
+import pfd;
+import ppo;
 
 public class FollowListInfoModule$4
   implements Runnable
 {
-  public FollowListInfoModule$4(pxd parampxd, List paramList, long paramLong, boolean paramBoolean) {}
+  public FollowListInfoModule$4(ppo paramppo, List paramList, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
-    pmk.a().c(true, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    pfd.a().a(true, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
   }
 }
 

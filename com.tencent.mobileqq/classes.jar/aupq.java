@@ -1,13 +1,26 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface aupq {}
+public class aupq
+  implements aumz
+{
+  public aupq(QfileEditBottomBar paramQfileEditBottomBar) {}
+  
+  public void a()
+  {
+    QfileEditBottomBar.a(this.a).a().a(QfileEditBottomBar.a(this.a));
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
+    atyw.b();
+    QfileEditBottomBar.a(this.a).h();
+    QfileEditBottomBar.a(this.a).f(false);
+    QfileEditBottomBar.a(this.a).b();
+  }
+  
+  public void b() {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

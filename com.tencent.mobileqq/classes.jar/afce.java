@@ -1,28 +1,30 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class afce
-  implements afcg
+  extends aoau
 {
-  public afce(ScoreQAVFragment paramScoreQAVFragment) {}
+  public afce(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void a(View paramView, int paramInt)
+  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    paramView = (Button)paramView.findViewById(2131374702);
-    if (paramView.isSelected())
-    {
-      paramView.setSelected(false);
-      this.a.a(paramInt);
-      if (this.a.a.size() != 0) {}
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
     }
-    do
-    {
-      return;
-      paramView.setSelected(true);
-      this.a.a.add(Integer.valueOf(paramInt));
-    } while (this.a.a.size() <= 0);
+    if ((paramBoolean1) && (paramInt == 64)) {
+      this.a.a(paramBoolean2);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
+    }
+    if (!paramBoolean1) {
+      this.a.a(2131717966, 1);
+    }
+    this.a.a(paramBoolean2);
   }
 }
 

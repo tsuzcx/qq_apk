@@ -1,18 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallbackTimeOut;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class apzl
-  implements View.OnClickListener
+final class apzl
+  implements ArkAppMgr.IGetAppPathByNameCallbackTimeOut
 {
-  public apzl(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  apzl(String paramString1, String paramString2, apwf paramapwf) {}
   
-  public void onClick(View paramView)
+  public void onGetAppPathByNameTimeout(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    apzo localapzo = (apzo)paramView.getTag();
-    this.a.a(localapzo.jdField_a_of_type_JavaLangString, localapzo.b, localapzo.jdField_a_of_type_Boolean);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null))
+    {
+      paramString = ark.Application.Create(this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path);
+      if (paramString != null)
+      {
+        boolean bool = paramString.CheckShareUrlLegality(this.b);
+        paramString.Release();
+        if (bool)
+        {
+          this.jdField_a_of_type_Apwf.a(true);
+          ArkAppCenter.c("ArkApp.ArkSecureUtil", String.format("CheckShareUrlLegality, url is in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+        }
+      }
+      else
+      {
+        return;
+      }
+      this.jdField_a_of_type_Apwf.a(false);
+      ArkAppCenter.c("ArkApp.ArkSecureUtil", String.format("CheckShareUrlLegality, url is not in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+      return;
+    }
+    this.jdField_a_of_type_Apwf.a(false);
+    aqca.a(apxt.a(), this.jdField_a_of_type_JavaLangString, "ArkCheckShareUrlLegality", paramInt, 0, 0L, 0L, 0L, "", "");
+    ArkAppCenter.c("ArkApp.ArkSecureUtil", String.format("CheckShareUrlLegality,getAppInfo is failed and msg=%s", new Object[] { paramString }));
   }
 }
 

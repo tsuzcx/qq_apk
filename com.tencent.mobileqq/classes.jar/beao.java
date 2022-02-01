@@ -1,74 +1,55 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-
 public class beao
+  implements anui
 {
-  public static long a = -1L;
-  public static long b = -1L;
+  public void a(int paramInt) {}
   
-  public static long a()
+  public void a(String paramString1, String paramString2) {}
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4) {}
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (a < 0L)
+    switch (paramInt)
     {
-      a = a("SP_KEY_C2C_PIC_SIZE_LIMIT", 16777216L);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicUploadFileSizeLimit", 2, "getLimitC2C:" + a);
-      }
     }
-    return a;
-  }
-  
-  private static long a(String paramString, long paramLong)
-  {
-    long l = -1L;
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_PIC_SIZE_LIMIT", 4);
-    if (localSharedPreferences != null) {
-      l = localSharedPreferences.getLong(paramString, -1L);
-    }
-    if (l < 0L) {
-      return paramLong;
-    }
-    return l;
-  }
-  
-  public static void a(long paramLong)
-  {
-    a("SP_KEY_C2C_PIC_SIZE_LIMIT", paramLong);
-    if (paramLong > 0L) {
-      a = paramLong;
-    }
-  }
-  
-  private static void a(String paramString, long paramLong)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_PIC_SIZE_LIMIT", 4).edit();
-    localEditor.putLong(paramString, paramLong);
-    localEditor.commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("PicUploadFileSizeLimit", 2, "setLimit:" + paramString + " size:" + paramLong);
-    }
-  }
-  
-  public static long b()
-  {
-    if (b < 0L)
+    do
     {
-      b = a("SP_KEY_GROUP_PIC_SIZE_LIMIT", 16777216L);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicUploadFileSizeLimit", 2, "getLimitGroup:" + b);
-      }
-    }
-    return b;
-  }
-  
-  public static void b(long paramLong)
-  {
-    a("SP_KEY_GROUP_PIC_SIZE_LIMIT", paramLong);
-    if (paramLong > 0L) {
-      b = paramLong;
-    }
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    return;
+                  } while (paramObject == null);
+                  paramObject = (Object[])paramObject;
+                } while (paramObject.length != 2);
+                a((String)paramObject[0], (String)paramObject[1]);
+                return;
+              } while (paramObject == null);
+              paramObject = (Object[])paramObject;
+            } while (paramObject.length != 4);
+            a((String)paramObject[0], (String)paramObject[1], (String)paramObject[2], (String)paramObject[3]);
+            return;
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 2);
+        a(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    a(((Integer)paramObject[0]).intValue());
   }
 }
 

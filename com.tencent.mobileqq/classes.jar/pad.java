@@ -1,191 +1,129 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class pad
+  implements SensorEventListener
 {
-  private CommentInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+  private static volatile pad jdField_a_of_type_Pad;
+  private final float jdField_a_of_type_Float = 0.8F;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Sensor jdField_a_of_type_AndroidHardwareSensor;
+  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  private boolean jdField_a_of_type_Boolean = false;
+  private double[] jdField_a_of_type_ArrayOfDouble = new double[3];
+  private float[] jdField_a_of_type_ArrayOfFloat = new float[3];
+  private float jdField_b_of_type_Float;
+  private Sensor jdField_b_of_type_AndroidHardwareSensor;
+  private boolean jdField_b_of_type_Boolean;
+  private final double[] jdField_b_of_type_ArrayOfDouble = new double[4];
+  private boolean c;
   
-  public pad(ArticleInfo paramArticleInfo, CommentInfo paramCommentInfo)
+  public static pad a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo = paramCommentInfo;
-  }
-  
-  private pad e(int paramInt)
-  {
-    int j = 1;
-    int i = 1;
-    if (paramInt == 1) {}
+    if (jdField_a_of_type_Pad == null) {}
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("puin_type", 1);
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      JSONObject localJSONObject1;
-      localJSONException.printStackTrace();
-      return this;
-    }
-    if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null))
-    {
-      localJSONObject1 = this.jdField_a_of_type_OrgJsonJSONObject;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAccountLess == 0) {}
-      for (paramInt = i;; paramInt = 2)
-      {
-        localJSONObject1.put("puin_type", paramInt);
-        return this;
+      if (jdField_a_of_type_Pad == null) {
+        jdField_a_of_type_Pad = new pad();
       }
+      return jdField_a_of_type_Pad;
     }
-    if ((paramInt == 3) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null))
-    {
-      JSONObject localJSONObject2 = this.jdField_a_of_type_OrgJsonJSONObject;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAccountLess == 0) {}
-      for (paramInt = j;; paramInt = 2)
-      {
-        localJSONObject2.put("puin_type", paramInt);
-        return this;
-      }
-    }
-    return this;
+    finally {}
   }
   
-  public String a()
+  public void a()
   {
-    for (;;)
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
+      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("sensor"));
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {}
+    do
     {
-      try
+      return;
+      if (this.jdField_a_of_type_AndroidHardwareSensor == null) {
+        this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(4);
+      }
+      if (this.jdField_b_of_type_AndroidHardwareSensor == null) {
+        this.jdField_b_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(1);
+      }
+    } while (this.jdField_a_of_type_Boolean);
+    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, this.jdField_a_of_type_AndroidHardwareSensor, 3);
+    this.c = this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, this.jdField_b_of_type_AndroidHardwareSensor, 3);
+    this.jdField_a_of_type_Boolean = true;
+    QLog.d("ReadinjoySensorUtils", 1, "register,gyroscopeEnable=" + this.jdField_b_of_type_Boolean + " ,accelerometerEnable" + this.c);
+  }
+  
+  public double[] a()
+  {
+    return this.jdField_b_of_type_ArrayOfDouble;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager != null) {
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this);
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public double[] b()
+  {
+    return this.jdField_a_of_type_ArrayOfDouble;
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    switch (paramSensorEvent.sensor.getType())
+    {
+    case 2: 
+    case 3: 
+    default: 
+      return;
+    case 4: 
+      if (this.jdField_b_of_type_Float != 0.0F)
       {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
+        float f7 = (float)paramSensorEvent.timestamp;
+        float f8 = this.jdField_b_of_type_Float;
+        float f6 = paramSensorEvent.values[0];
+        float f5 = paramSensorEvent.values[1];
+        float f4 = paramSensorEvent.values[2];
+        double d1 = Math.sqrt(f6 * f6 + f5 * f5 + f4 * f4);
+        float f3 = f4;
+        float f2 = f5;
+        float f1 = f6;
+        if (d1 > 9.999999717180685E-010D)
         {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("algorithm_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAlgorithmID);
-          this.jdField_a_of_type_OrgJsonJSONObject.put("mp_article_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID);
+          f1 = (float)(f6 / d1);
+          f2 = (float)(f5 / d1);
+          f3 = (float)(f4 / d1);
         }
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo != null)
-        {
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.level != 1) {
-            continue;
-          }
-          this.jdField_a_of_type_OrgJsonJSONObject.put("comment_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.commentId);
-        }
-        this.jdField_a_of_type_OrgJsonJSONObject.put("source", pha.d());
-        this.jdField_a_of_type_OrgJsonJSONObject.put("kandian_mode", pha.e());
-        this.jdField_a_of_type_OrgJsonJSONObject.put("comment_platform", 3);
+        double d2 = d1 * ((f7 - f8) * 1.0E-009F) / 2.0D;
+        d1 = Math.sin(d2);
+        d2 = Math.cos(d2);
+        this.jdField_b_of_type_ArrayOfDouble[0] = (f1 * d1);
+        this.jdField_b_of_type_ArrayOfDouble[1] = (f2 * d1);
+        this.jdField_b_of_type_ArrayOfDouble[2] = (f3 * d1);
+        this.jdField_b_of_type_ArrayOfDouble[3] = d2;
       }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-        continue;
-      }
-      return this.jdField_a_of_type_OrgJsonJSONObject.toString();
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.level == 2) {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("sub_comment_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.commentId);
-      }
+      this.jdField_b_of_type_Float = ((float)paramSensorEvent.timestamp);
+      return;
     }
-  }
-  
-  public pad a()
-  {
-    int i = 1;
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo != null)
-      {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.authorSelection == 1) {}
-        while (i > 0)
-        {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("comment_type", i);
-          return this;
-          i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.awesome;
-          if (i == 1) {
-            i = 2;
-          } else {
-            i = 3;
-          }
-        }
-      }
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-  }
-  
-  public pad a(int paramInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("entry", paramInt);
-      return e(paramInt);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-  }
-  
-  public pad a(String paramString)
-  {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("to_uin", paramString);
-      return this;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return this;
-  }
-  
-  public pad b(int paramInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("area", paramInt);
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return this;
-  }
-  
-  public pad c(int paramInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("comment_level", paramInt);
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return this;
-  }
-  
-  public pad d(int paramInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("comment_icon_choose", paramInt);
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return this;
+    this.jdField_a_of_type_ArrayOfFloat[0] = (this.jdField_a_of_type_ArrayOfFloat[0] * 0.8F + paramSensorEvent.values[0] * 0.2F);
+    this.jdField_a_of_type_ArrayOfFloat[1] = (this.jdField_a_of_type_ArrayOfFloat[1] * 0.8F + paramSensorEvent.values[1] * 0.2F);
+    this.jdField_a_of_type_ArrayOfFloat[2] = (this.jdField_a_of_type_ArrayOfFloat[2] * 0.8F + paramSensorEvent.values[2] * 0.2F);
+    this.jdField_a_of_type_ArrayOfDouble[0] = (paramSensorEvent.values[0] - this.jdField_a_of_type_ArrayOfFloat[0]);
+    this.jdField_a_of_type_ArrayOfDouble[1] = (paramSensorEvent.values[1] - this.jdField_a_of_type_ArrayOfFloat[1]);
+    this.jdField_a_of_type_ArrayOfDouble[2] = (paramSensorEvent.values[2] - this.jdField_a_of_type_ArrayOfFloat[2]);
   }
 }
 

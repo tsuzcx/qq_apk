@@ -1,79 +1,33 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.Bundle;
-import com.tencent.tbs.reader.TbsReaderView.ReaderCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class atlu
-  implements TbsReaderView.ReaderCallback
+public class atlu
+  implements View.OnClickListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private atlt jdField_a_of_type_Atlt;
-  private String jdField_a_of_type_JavaLangString;
+  public atlu(QfileFavFileTabView paramQfileFavFileTabView) {}
   
-  public atlu(atlp paramatlp, atlt paramatlt, Activity paramActivity, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Atlt = paramatlt;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(Object paramObject, String paramString, int paramInt)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof Bundle))) {
-      return;
-    }
-    ((Bundle)paramObject).putInt(paramString, paramInt);
-  }
-  
-  public void a(Object paramObject, String paramString, boolean paramBoolean)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof Bundle))) {
-      return;
-    }
-    ((Bundle)paramObject).putBoolean(paramString, paramBoolean);
-  }
-  
-  public void onCallBackAction(Integer paramInteger, Object paramObject1, Object paramObject2)
-  {
-    boolean bool = true;
-    switch (paramInteger.intValue())
+    if ((paramView.getTag() instanceof atlk)) {}
+    for (FavFileInfo localFavFileInfo = (FavFileInfo)((atlk)paramView.getTag()).a;; localFavFileInfo = null)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Atlp.a(paramInteger.intValue(), this.jdField_a_of_type_Atlt);
-      if (paramInteger.intValue() == 6001) {
-        this.jdField_a_of_type_Atlp.a(this.jdField_a_of_type_AndroidAppActivity, paramObject1, paramObject2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atlt);
-      }
-      return;
-      this.jdField_a_of_type_Atlp.a(paramObject1, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Atlt);
-      continue;
-      a(paramObject2, "is_bar_animating", false);
-      continue;
-      this.jdField_a_of_type_Atlp.a(paramObject1, this.jdField_a_of_type_JavaLangString);
-      continue;
-      a(paramObject2, "TitleHeight", (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131298998));
-      continue;
-      if (this.jdField_a_of_type_Atlt != null)
+      QfileFavFileTabView localQfileFavFileTabView;
+      if (localFavFileInfo != null)
       {
-        if (this.jdField_a_of_type_Atlt.a()) {}
-        for (int i = 0;; i = 1)
-        {
-          a(paramObject2, "is_bar_show", i);
-          break;
+        localQfileFavFileTabView = this.a;
+        if (paramView.getId() != 2131366604) {
+          break label60;
         }
-        if ((paramObject1 != null) && ((paramObject1 instanceof Integer)))
-        {
-          atlp localatlp = this.jdField_a_of_type_Atlp;
-          if (((Integer)paramObject1).intValue() == 0) {}
-          for (;;)
-          {
-            atlp.a(localatlp, false, bool);
-            break;
-            bool = false;
-          }
-          atlp.a(this.jdField_a_of_type_Atlp, false, false);
-        }
+      }
+      label60:
+      for (boolean bool = true;; bool = false)
+      {
+        localQfileFavFileTabView.a(localFavFileInfo, bool);
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
       }
     }
   }

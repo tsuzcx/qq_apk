@@ -7,7 +7,15 @@ class SonicEngine$1
   
   public void run()
   {
-    this.val$helper.getWritableDatabase();
+    try
+    {
+      this.val$helper.getWritableDatabase();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      SonicUtils.log("SonicSdk_SonicEngine", 6, "initSonicDB getWritableDatabase encounter error." + localThrowable.getMessage());
+    }
   }
 }
 

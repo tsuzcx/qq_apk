@@ -2,9 +2,9 @@ package com.tencent.mobileqq.config.business.qfile;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aqwl;
-import atvm;
-import bbyp;
+import arlz;
+import aunh;
+import bcrg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -15,7 +15,7 @@ import org.json.JSONObject;
 public class QfileFileAssistantTipsConfigBean$5
   implements Runnable
 {
-  public QfileFileAssistantTipsConfigBean$5(aqwl paramaqwl) {}
+  public QfileFileAssistantTipsConfigBean$5(arlz paramarlz) {}
   
   public void run()
   {
@@ -29,17 +29,17 @@ public class QfileFileAssistantTipsConfigBean$5
         QLog.e("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, "app is null!!!");
         return;
       }
-      atvm.a("0X800AD01");
+      aunh.a("0X800AD01");
       localObject1 = ((QQAppInterface)localObject1).getApp().getSharedPreferences("qfile_file_assistant_tips" + ((QQAppInterface)localObject1).c(), 0);
       Object localObject3 = ((SharedPreferences)localObject1).getString("qfile_file_assistant_tips", "{}");
       try
       {
         localObject3 = new JSONObject((String)localObject3);
-        aqwl.a(this.this$0);
-        aqwl.b(this.this$0);
-        ((JSONObject)localObject3).put("local_day_last_time", bbyp.a());
-        ((JSONObject)localObject3).put("local_day_times", aqwl.c(this.this$0));
-        ((JSONObject)localObject3).put("local_max_times", aqwl.d(this.this$0));
+        arlz.a(this.this$0);
+        arlz.b(this.this$0);
+        ((JSONObject)localObject3).put("local_day_last_time", bcrg.a());
+        ((JSONObject)localObject3).put("local_day_times", arlz.c(this.this$0));
+        ((JSONObject)localObject3).put("local_max_times", arlz.d(this.this$0));
         localObject3 = ((JSONObject)localObject3).toString();
         if (QLog.isDebugVersion()) {
           QLog.i("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, (String)localObject3);

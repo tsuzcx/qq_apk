@@ -1,17 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-class bpxh
-  implements DialogInterface.OnClickListener
+public class bpxh
+  implements View.OnTouchListener
 {
-  bpxh(bpxe parambpxe) {}
+  public bpxh(CropVideoActivity paramCropVideoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
-    ((bpxa)this.a.a).f(false);
-    bpxe.a(this.a).setSelected(false);
+    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
+    CropVideoActivity.a(this.a).a(paramMotionEvent);
+    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

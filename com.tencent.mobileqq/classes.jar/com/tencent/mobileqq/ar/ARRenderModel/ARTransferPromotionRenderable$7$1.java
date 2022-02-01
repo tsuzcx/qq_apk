@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
 import android.widget.TextView;
-import aouh;
+import aphx;
 
 class ARTransferPromotionRenderable$7$1
   implements Runnable
@@ -10,8 +10,8 @@ class ARTransferPromotionRenderable$7$1
   
   public void run()
   {
-    aouh.a(this.a.this$0).setVisibility(8);
-    aouh.a(this.a.this$0, null);
+    aphx.a(this.a.this$0).setVisibility(8);
+    aphx.a(this.a.this$0, null);
   }
 }
 

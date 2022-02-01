@@ -1,42 +1,45 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
+import android.os.Bundle;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.share.QZoneShareActivity;
+import mqq.observer.BusinessObserver;
 
 public class bnhb
+  implements BusinessObserver
 {
-  public final int a;
-  public final boolean a;
-  public final int b;
-  public final int c;
-  public final int d;
-  public final int e;
-  public final int f;
-  public final int g;
+  public bnhb(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public bnhb(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5, int paramInt6, int paramInt7)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.f = paramInt5;
-    this.e = paramInt6;
-    this.g = paramInt7;
-  }
-  
-  public static bnhb a(Bitmap paramBitmap, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
-  {
-    return new bnhb(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), paramBoolean, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public static bnhb a(Rect paramRect, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
-  {
-    return new bnhb(paramRect.left, paramRect.top, paramRect.width(), paramRect.height(), paramBoolean, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public String toString()
-  {
-    return "CropConfig{x=" + this.jdField_a_of_type_Int + ", y=" + this.b + ", width=" + this.c + ", height=" + this.d + ", addPadding=" + this.jdField_a_of_type_Boolean + ", verticalPadding=" + this.e + ", horizontalPadding=" + this.f + '}';
+    synchronized (QZoneShareActivity.jdField_a_of_type_JavaLangObject)
+    {
+      this.a.h = false;
+      if (paramBoolean) {}
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
+          localGetAppinfoResponse.mergeFrom(paramBundle);
+          this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse = localGetAppinfoResponse;
+          if (QLog.isColorLevel()) {
+            QLog.d("QZoneShare", 2, "get appinfo time = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+          }
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QZoneShare", 2, paramBundle.getMessage());
+          }
+        }
+      }
+      QZoneShareActivity.jdField_a_of_type_JavaLangObject.notify();
+      return;
+    }
   }
 }
 

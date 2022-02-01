@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.comment;
 
-import aadr;
+import aahs;
 import android.text.TextUtils;
 import android.widget.TextView;
 
@@ -11,12 +11,12 @@ public class ActionSheetDialog$3
   {
     if (TextUtils.isEmpty(this.a))
     {
-      aadr.a(this.this$0).setText("");
-      aadr.a(this.this$0).setVisibility(8);
+      aahs.a(this.this$0).setText("");
+      aahs.a(this.this$0).setVisibility(8);
       return;
     }
-    aadr.a(this.this$0).setText(this.a);
-    aadr.a(this.this$0).setVisibility(0);
+    aahs.a(this.this$0).setText(this.a);
+    aahs.a(this.this$0).setVisibility(0);
   }
 }
 

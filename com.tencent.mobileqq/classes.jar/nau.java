@@ -1,12 +1,20 @@
-import android.content.Context;
-
 public abstract interface nau
 {
-  public abstract Context a();
+  public abstract void a();
   
-  public abstract void a(myc parammyc);
+  public abstract void a(int paramInt, String paramString1, String paramString2);
   
-  public abstract void a(int[] paramArrayOfInt);
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

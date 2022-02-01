@@ -1,29 +1,31 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.HashMap;
-
-public class zqg
-  extends QQUIEventReceiver<StoryUserBadgeView, wwu>
+class zqg
 {
-  public zqg(@NonNull StoryUserBadgeView paramStoryUserBadgeView)
+  final String jdField_a_of_type_JavaLangString;
+  final boolean jdField_a_of_type_Boolean;
+  boolean b;
+  
+  zqg(boolean paramBoolean, String paramString)
   {
-    super(paramStoryUserBadgeView);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(@NonNull StoryUserBadgeView paramStoryUserBadgeView, @NonNull wwu paramwwu)
+  static zqg a()
   {
-    if (paramwwu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
-    while (paramwwu.jdField_a_of_type_JavaUtilHashMap.get(paramStoryUserBadgeView.a()) == null) {
-      return;
+    return new zqg(false, "");
+  }
+  
+  static zqg a(Process paramProcess)
+  {
+    if (a(Integer.valueOf(paramProcess.exitValue()))) {}
+    for (String str = zrh.a(paramProcess.getInputStream());; str = zrh.a(paramProcess.getErrorStream())) {
+      return new zqg(a(Integer.valueOf(paramProcess.exitValue())), str);
     }
-    paramStoryUserBadgeView.a(paramStoryUserBadgeView.a());
   }
   
-  public Class acceptEventClass()
+  static boolean a(Integer paramInteger)
   {
-    return wwu.class;
+    return (paramInteger != null) && (paramInteger.intValue() == 0);
   }
 }
 

@@ -1,4 +1,17 @@
-// INTERNAL ERROR //
+public class bedy
+  implements beex
+{
+  public int getCloudFileType()
+  {
+    return 10;
+  }
+  
+  public boolean isClickable()
+  {
+    return false;
+  }
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bedy

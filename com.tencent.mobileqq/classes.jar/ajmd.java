@@ -1,20 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class ajmd
-  implements View.OnClickListener
+  extends ajmf
 {
-  public ajmd(ContactsTroopAdapter paramContactsTroopAdapter, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public boolean a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int] = 2;
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.notifyDataSetChanged();
-    int i = ContactsTroopAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter, this.jdField_a_of_type_Int);
-    new bcsy(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("Grp_contactlist").d("clk_inactive").a(new String[] { "", String.valueOf(i) }).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return true;
   }
 }
 

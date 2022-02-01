@@ -1,21 +1,19 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahjh
-  extends afwr
+  extends ahkx
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RoundCornerImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  View d;
+  ahjh(ahgk paramahgk)
+  {
+    super(paramahgk, null);
+  }
   
-  ahjh(ahjf paramahjf) {}
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ShortVideoRealItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

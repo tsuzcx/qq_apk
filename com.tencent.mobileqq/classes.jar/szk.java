@@ -1,12 +1,6 @@
-class szk
-  extends pww
+public abstract interface szk
 {
-  szk(szj paramszj) {}
-  
-  public void a(String paramString)
-  {
-    pmk.a().b();
-  }
+  public abstract void a(szl paramszl);
 }
 
 

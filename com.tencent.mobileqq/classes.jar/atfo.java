@@ -1,29 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class atfo
-  extends atfi
+public class atfo
+  implements View.OnClickListener
 {
-  public atfo(atfe paramatfe)
-  {
-    super(paramatfe);
-  }
+  public atfo(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  protected String a()
+  public void onClick(View paramView)
   {
-    return "StateChangeToOffWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    atfe.b(this.jdField_a_of_type_Atfe, 9, 11);
-    atfe.c(this.jdField_a_of_type_Atfe, 9, 14);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateUploadingWhenRecv)");
-    this.jdField_a_of_type_Atfi = new atgk(this.jdField_a_of_type_Atfe);
+    Intent localIntent = new Intent(this.a, MoveToGroupActivity.class).putExtra("friendUin", this.a.f).putExtra("mgid", (byte)this.a.l);
+    localIntent.putExtra("PARAM_EXECUTE_IMMEDIATELY", false);
+    this.a.startActivityForResult(localIntent, 100);
+    bdll.b(null, "CliOper", "", "", "0X80050F1", "0X80050F1", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

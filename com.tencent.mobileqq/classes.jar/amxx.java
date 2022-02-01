@@ -1,10 +1,24 @@
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
 
-public abstract interface amxx
+public class amxx
+  implements Animation.AnimationListener
 {
-  public abstract void a(int paramInt);
+  public amxx(CmGameDebugView paramCmGameDebugView) {}
   
-  public abstract void a(ApolloTextureView paramApolloTextureView);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    CmGameDebugView.a(this.a).setVisibility(8);
+    CmGameDebugView.b(this.a).setVisibility(8);
+    CmGameDebugView.a(this.a).clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

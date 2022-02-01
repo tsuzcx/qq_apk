@@ -25,7 +25,7 @@ class OtherJsPlugin$6$1
       if ((this.this$1.this$0.jsPluginEngine.appBrandRuntime != null) && ((this.this$1.this$0.jsPluginEngine.appBrandRuntime.getContainer() instanceof AppBrandPageContainer))) {
         ((AppBrandPageContainer)this.this$1.this$0.jsPluginEngine.appBrandRuntime.getContainer()).notifyOnAddColorNote();
       }
-      OtherJsPlugin.access$600(this.this$1.this$0, this.this$1.val$finalColorNoteController);
+      OtherJsPlugin.access$700(this.this$1.this$0, this.this$1.val$finalColorNoteController);
       QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690746), 5000).a();
       if (this.this$1.this$0.isMiniGameRuntime())
       {

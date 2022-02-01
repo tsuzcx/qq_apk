@@ -1,19 +1,7 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.contact.addfriendverifi.AddFriendBlockedInfo;
-
-public final class aiwr
-  implements Parcelable.Creator<AddFriendBlockedInfo>
+public class aiwr
 {
-  public AddFriendBlockedInfo a(Parcel paramParcel)
-  {
-    return new AddFriendBlockedInfo(paramParcel);
-  }
-  
-  public AddFriendBlockedInfo[] a(int paramInt)
-  {
-    return new AddFriendBlockedInfo[paramInt];
-  }
+  public String a = null;
+  public String b = null;
 }
 
 

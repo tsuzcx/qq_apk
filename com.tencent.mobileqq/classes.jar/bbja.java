@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
 
-class bbja
-  implements View.OnClickListener
+public class bbja
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bbja(bbiy parambbiy) {}
+  public bbja(QQSlidingTabView paramQQSlidingTabView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a.b(this.a.a.b);
-    this.a.a.e.setVisibility(0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QQSlidingTabView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 

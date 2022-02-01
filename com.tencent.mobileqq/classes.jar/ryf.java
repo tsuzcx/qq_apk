@@ -1,50 +1,60 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class ryf
-  implements pae
+abstract class ryf
 {
-  ryf(ryd paramryd) {}
+  protected long a;
+  private ArrayList<ryf> a;
+  protected long b;
+  
+  ryf()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  abstract long a(long paramLong);
   
   public void a()
   {
-    if (ryd.a(this.a) != null) {
-      ryd.a(this.a).a();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((ryf)localIterator.next()).a();
+    }
+    this.b = 0L;
+  }
+  
+  public void a(long paramLong)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((ryf)localIterator.next()).a(paramLong);
+    }
+    this.b = a(paramLong);
+    if (this.b < 0L) {
+      this.b = 0L;
+    }
+    if ((float)Math.abs(this.b - this.jdField_a_of_type_Long) / (float)this.jdField_a_of_type_Long < 0.2F)
+    {
+      this.jdField_a_of_type_Long = Math.max(this.b, this.jdField_a_of_type_Long);
+      return;
+    }
+    this.jdField_a_of_type_Long = this.b;
+  }
+  
+  protected void a(ryf paramryf)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramryf) < 0) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramryf);
     }
   }
   
-  public void a(int paramInt)
+  public void b()
   {
-    if (paramInt < 0) {
-      return;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((ryf)localIterator.next()).b();
     }
-    ryd.a(this.a).e = paramInt;
-    ryd.a(this.a).b(ryd.a(this.a));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    this.a.f();
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ryd.a(this.a).e();
-      this.a.f();
-    }
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 

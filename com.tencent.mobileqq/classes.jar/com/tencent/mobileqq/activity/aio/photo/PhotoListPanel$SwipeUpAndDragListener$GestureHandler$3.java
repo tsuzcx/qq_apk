@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahvq;
-import ahvv;
+import aife;
+import aifj;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
@@ -9,15 +9,15 @@ import mqq.os.MqqHandler;
 public class PhotoListPanel$SwipeUpAndDragListener$GestureHandler$3
   implements Runnable
 {
-  public PhotoListPanel$SwipeUpAndDragListener$GestureHandler$3(ahvv paramahvv, ahvq paramahvq) {}
+  public PhotoListPanel$SwipeUpAndDragListener$GestureHandler$3(aifj paramaifj, aife paramaife) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ahvv.c != null)
+    if (this.jdField_a_of_type_Aifj.c != null)
     {
-      this.jdField_a_of_type_Ahvv.c.clearAnimation();
-      this.jdField_a_of_type_Ahvv.c.removeAllViews();
-      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_Ahvv.b, 50L);
+      this.jdField_a_of_type_Aifj.c.clearAnimation();
+      this.jdField_a_of_type_Aifj.c.removeAllViews();
+      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_Aifj.b, 50L);
     }
   }
 }

@@ -1,48 +1,12 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mfsdk.MagnifierSDK;
 
-public class admo
-  implements CompoundButton.OnCheckedChangeListener
+public final class admo
+  implements admm
 {
-  public admo(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    int j = 1;
-    if (!paramCompoundButton.isPressed())
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
-    Object localObject;
-    if (paramBoolean)
-    {
-      localObject = "open_storyset";
-      label27:
-      yqu.a("dynamic_more", (String)localObject, 0, 0, new String[0]);
-      localObject = new Integer[5];
-      localObject[0] = Integer.valueOf(1);
-      if (!paramBoolean) {
-        break label125;
-      }
-    }
-    label125:
-    for (int i = 1;; i = 0)
-    {
-      localObject[3] = Integer.valueOf(i);
-      this.a.app.a().a((Integer[])localObject);
-      localObject = (wff)this.a.app.a(98);
-      i = j;
-      if (paramBoolean) {
-        i = 2;
-      }
-      ((wff)localObject).a(i);
-      break;
-      localObject = "close_storyset";
-      break label27;
+    if (MagnifierSDK.a != null) {
+      MagnifierSDK.a.a("result_objects", paramInt, 2);
     }
   }
 }

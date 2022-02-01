@@ -5,11 +5,11 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import aslq;
+import atbn;
 
 public abstract class LoadingLayoutBase
   extends FrameLayout
-  implements aslq
+  implements atbn
 {
   public LoadingLayoutBase(Context paramContext)
   {

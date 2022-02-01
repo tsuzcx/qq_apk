@@ -1,20 +1,23 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import androidx.annotation.RequiresApi;
 
 public class azkb
+  extends azjx
 {
-  public int a;
-  public Point a;
-  public int b;
-  public Point b;
-  public int c;
-  public Point c;
-  public int d;
-  public Point d;
-  public Point e;
-  public Point f;
+  @RequiresApi(api=19)
+  azkb()
+  {
+    super(18);
+    this.a = "StepSensorDetector";
+  }
   
-  public azkb(SingleTouchLayout paramSingleTouchLayout) {}
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    a();
+  }
 }
 
 

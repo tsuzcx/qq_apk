@@ -1,38 +1,29 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
-import org.json.JSONObject;
+import java.util.Observable;
+import java.util.Observer;
 
 public class avoq
-  implements QQPermissionCallback
+  implements Observer
 {
-  public avoq(MediaApiPlugin paramMediaApiPlugin, Intent paramIntent, Context paramContext, String paramString, JSONObject paramJSONObject, boolean paramBoolean, BasePluginActivity paramBasePluginActivity) {}
+  protected void a() {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.d(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, "User requestPermissions RECORD_AUDIO denied");
-    bglp.a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkBasePluginActivity.getOutActivity(), paramArrayOfString, paramArrayOfInt);
-  }
+  protected void b() {}
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void c() {}
+  
+  public void update(Observable paramObservable, Object paramObject)
   {
-    try
+    switch (((Integer)paramObject).intValue())
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
-      MediaApiPlugin.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).putString("getMediaParam", this.jdField_a_of_type_OrgJsonJSONObject.toString()).putBoolean("calledFromOpenApi", this.jdField_a_of_type_Boolean).commit();
+    default: 
+      return;
+    case 1: 
+      a();
+      return;
+    case 2: 
+      b();
       return;
     }
-    catch (Exception paramArrayOfString)
-    {
-      QLog.e(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, paramArrayOfString, new Object[0]);
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690580, 0).a();
-    }
+    c();
   }
 }
 

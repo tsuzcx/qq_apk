@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video.discovery;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
@@ -33,10 +33,10 @@ public class BannerView$DotsIndicator
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.f = paramInt1;
-    this.b = afur.a(6.0F, getResources());
-    this.c = afur.a(10.0F, getResources());
-    this.d = afur.a(7.0F, getResources());
-    this.e = afur.a(7.0F, getResources());
+    this.b = agej.a(6.0F, getResources());
+    this.c = agej.a(10.0F, getResources());
+    this.d = agej.a(7.0F, getResources());
+    this.e = agej.a(7.0F, getResources());
     paramContext = new FrameLayout.LayoutParams(-2, -2);
     paramContext.bottomMargin = this.b;
     paramContext.gravity = paramInt2;

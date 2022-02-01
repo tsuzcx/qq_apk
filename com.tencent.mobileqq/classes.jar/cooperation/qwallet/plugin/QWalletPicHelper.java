@@ -74,7 +74,7 @@ public class QWalletPicHelper
       boolean bool = localBundle.getBoolean("key_play_apng", true);
       paramArrayOfInt = paramString1;
       if (TextUtils.isEmpty(paramString1)) {
-        paramArrayOfInt = PreloadManager.f(paramString2);
+        paramArrayOfInt = PreloadManager.g(paramString2);
       }
       paramString1 = new URL("qwallet_downloader", paramArrayOfInt, paramString2);
       paramBundle = URLDrawable.URLDrawableOptions.obtain();
@@ -104,14 +104,14 @@ public class QWalletPicHelper
   
   public static URLDrawable getNetDrawableForQWallet(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, Bundle paramBundle)
   {
-    paramString = getDrawableInner(PreloadManager.f(paramString), paramString, paramDrawable1, paramDrawable2, new int[] { 26 }, paramBundle);
+    paramString = getDrawableInner(PreloadManager.g(paramString), paramString, paramDrawable1, paramDrawable2, new int[] { 26 }, paramBundle);
     ApngImage.playByTag(26);
     return paramString;
   }
   
   public static URLDrawable getNetDrawableForQWallet(String paramString1, Drawable paramDrawable1, Drawable paramDrawable2, String paramString2)
   {
-    String str = PreloadManager.f(paramString1);
+    String str = PreloadManager.g(paramString1);
     Bundle localBundle = new Bundle();
     if (!TextUtils.isEmpty(paramString2)) {
       localBundle.putString("qwallet_config_md5", paramString2);

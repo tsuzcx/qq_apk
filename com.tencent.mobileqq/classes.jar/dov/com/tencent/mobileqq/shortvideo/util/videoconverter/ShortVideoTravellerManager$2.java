@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.shortvideo.util.videoconverter;
 
 import android.text.TextUtils;
-import bgsg;
+import bhsi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
@@ -12,6 +12,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 class ShortVideoTravellerManager$2
   implements Runnable
 {
+  ShortVideoTravellerManager$2(ShortVideoTravellerManager paramShortVideoTravellerManager) {}
+  
   public void run()
   {
     for (;;)
@@ -48,8 +50,8 @@ class ShortVideoTravellerManager$2
         return;
       }
       label140:
-      String str = bgsg.s(ShortVideoTravellerManager.a(this.this$0).getApp(), ShortVideoTravellerManager.a(this.this$0).getCurrentAccountUin());
-      int i = bgsg.aH(ShortVideoTravellerManager.a(this.this$0).getApp(), ShortVideoTravellerManager.a(this.this$0).getCurrentAccountUin());
+      String str = bhsi.s(ShortVideoTravellerManager.a(this.this$0).getApp(), ShortVideoTravellerManager.a(this.this$0).getCurrentAccountUin());
+      int i = bhsi.aH(ShortVideoTravellerManager.a(this.this$0).getApp(), ShortVideoTravellerManager.a(this.this$0).getCurrentAccountUin());
       if (!TextUtils.isEmpty(str)) {
         this.this$0.a(str, i);
       }

@@ -1,20 +1,20 @@
 package com.tencent.avgame.gameresult;
 
-import bgmg;
-import mzn;
+import bhmi;
+import naq;
 
 public class GameResultUploadMgrForRemote$4
   implements Runnable
 {
-  public GameResultUploadMgrForRemote$4(mzn parammzn, String paramString1, String paramString2) {}
+  public GameResultUploadMgrForRemote$4(naq paramnaq, String paramString1, String paramString2) {}
   
   public void run()
   {
     if (this.a != null) {
-      bgmg.d(this.a);
+      bhmi.d(this.a);
     }
     if (this.b != null) {
-      bgmg.d(this.b);
+      bhmi.d(this.b);
     }
   }
 }

@@ -1,45 +1,32 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
 public class aepm
-  implements GestureDetector.OnDoubleTapListener
+  extends VasQuickUpdateManager.CallBacker
 {
-  public aepm(MainFragment paramMainFragment) {}
+  public aepm(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainFragment", 2, "onDoubleTap() called with: e = [" + paramMotionEvent + "]");
-    }
-    paramMotionEvent = (Conversation)this.a.a(Conversation.class);
-    if (paramMotionEvent != null) {}
-    for (int i = paramMotionEvent.d;; i = 0)
+    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (this.a.a != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DynimiIcon", 2, "onDoubleTap() unReadCount = " + i);
+      paramString1 = this.a.a.obtainMessage();
+      paramString1.what = 7;
+      if (paramInt1 != 0) {
+        break label82;
       }
-      paramMotionEvent = this.a.b();
-      if ((paramMotionEvent instanceof Conversation)) {
-        ((Conversation)paramMotionEvent).i();
-      }
-      if (i == 0) {
-        MainFragment.d(this.a);
-      }
-      return false;
+      paramString1.arg1 = 1;
     }
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return false;
+    for (paramString1.arg2 = 1;; paramString1.arg2 = 0)
+    {
+      if (this.a.a != null) {
+        this.a.a.sendMessage(paramString1);
+      }
+      return;
+      label82:
+      paramString1.arg1 = 0;
+    }
   }
 }
 

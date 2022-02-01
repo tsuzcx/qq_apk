@@ -1,71 +1,128 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISPlayerDownloader.Listener;
-import java.util.Map;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
-class bcer
-  implements ISPlayerDownloader.Listener
+public class bcer
+  extends bcfs
 {
-  bcer(bcep parambcep, bcev parambcev) {}
+  private AccountSearchPb.hotwordrecord jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord;
+  private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private String jdField_a_of_type_JavaLangString;
+  private CharSequence jdField_b_of_type_JavaLangCharSequence;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void onDownloadCdnUrlExpired(Map<String, String> paramMap) {}
-  
-  public void onDownloadCdnUrlInfoUpdate(String paramString1, String paramString2, String paramString3, String paramString4) {}
-  
-  public void onDownloadCdnUrlUpdate(String paramString) {}
-  
-  public void onDownloadError(int paramInt1, int paramInt2, String paramString)
+  public bcer(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreDownloader", 2, "onDownloadError, preLoadId = " + this.jdField_a_of_type_Bcev.f + " , uniseq = " + this.jdField_a_of_type_Bcev.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq + ", moduleID = " + paramInt1 + ", errorCode = " + paramInt2 + ", extInfo = " + paramString);
-    }
-    if ((this.jdField_a_of_type_Bcev != null) && (this.jdField_a_of_type_Bcev.jdField_a_of_type_Bceu != null)) {
-      this.jdField_a_of_type_Bcev.jdField_a_of_type_Bceu.a(paramInt2);
-    }
+    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord = paramhotwordrecord;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_JavaLangCharSequence = paramCharSequence2;
   }
   
-  public void onDownloadFinish()
+  public bcer(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreDownloader", 2, "onDownloadFinish, preLoadId = " + this.jdField_a_of_type_Bcev.f + " , uniseq = " + this.jdField_a_of_type_Bcev.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    }
-    if ((this.jdField_a_of_type_Bcev != null) && (this.jdField_a_of_type_Bcev.jdField_a_of_type_Bceu != null)) {
-      this.jdField_a_of_type_Bcev.jdField_a_of_type_Bceu.a(0);
-    }
+    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
   }
   
-  public void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
+  public AccountSearchPb.hotwordrecord a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreDownloader", 2, "onDownloadProgressUpdate, preLoadId = " + this.jdField_a_of_type_Bcev.f + " , uniseq = " + this.jdField_a_of_type_Bcev.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq + "currentDownloadSizeByte = " + paramLong1 + ", totalFileSizeByte = " + paramLong2);
-    }
-    if ((this.jdField_a_of_type_Bcev.jdField_a_of_type_Bceu != null) && (this.jdField_a_of_type_Bcev.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null))
+    return this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord;
+  }
+  
+  public AccountSearchPb.record a()
+  {
+    return this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
+  }
+  
+  public CharSequence a()
+  {
+    return this.jdField_a_of_type_JavaLangCharSequence;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(View paramView)
+  {
+    bcni.a(this.jdField_a_of_type_JavaLangString, 110, 0, paramView);
+    Intent localIntent = new Intent(paramView.getContext(), PublicAccountBrowser.class);
+    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord != null)
     {
-      if (paramLong1 <= this.jdField_a_of_type_Bcev.jdField_a_of_type_Long) {
-        break label233;
-      }
-      this.jdField_a_of_type_Bcev.jdField_a_of_type_Long = paramLong1;
+      localIntent.putExtra("url", this.jdField_b_of_type_JavaLangString);
+      ocd.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F28", "0X8006F28", 0, 0, a(), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword.get(), String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword_type.get()), "1");
     }
     for (;;)
     {
-      paramLong2 = this.jdField_a_of_type_Bcev.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileSize;
-      if ((paramLong2 > 0L) && (paramLong1 <= paramLong2))
-      {
-        paramInt1 = (int)(paramLong1 * 1.0D / paramLong2 * 100.0D);
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPreDownloader", 2, "onDownloadProgressUpdate, preLoadId = " + this.jdField_a_of_type_Bcev.f + ", pogress = " + paramInt1 + " , uniseq = " + this.jdField_a_of_type_Bcev.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-        }
-        this.jdField_a_of_type_Bcev.jdField_a_of_type_Bceu.b(paramInt1);
+      paramView.getContext().startActivity(localIntent);
+      if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record != null) {
+        ocd.a(null, "CliOper", "", "", "0X8006536", "0X8006536", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.account_id.get()));
       }
       return;
-      label233:
-      paramLong1 = this.jdField_a_of_type_Bcev.jdField_a_of_type_Long;
+      localIntent.putExtra("url", this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.article_short_url.get());
     }
   }
   
-  public void onDownloadProtocolUpdate(String paramString1, String paramString2) {}
+  public boolean a()
+  {
+    return false;
+  }
   
-  public void onDownloadStatusUpdate(int paramInt) {}
+  public CharSequence b()
+  {
+    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord != null) {
+      return this.jdField_b_of_type_JavaLangCharSequence;
+    }
+    return anzj.a(2131704251);
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public CharSequence c()
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord != null)
+    {
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword_description.has()) {
+        localObject1 = this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword_description.get();
+      }
+    }
+    return localObject1;
+  }
+  
+  public String c()
+  {
+    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord != null) {
+      return this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword_cover_url.get();
+    }
+    return this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.title_image.get();
+  }
+  
+  public CharSequence d()
+  {
+    return null;
+  }
 }
 
 

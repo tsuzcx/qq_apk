@@ -1,19 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.OverloadTipsActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aest
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public aest(OverloadTipsActivity paramOverloadTipsActivity) {}
+  public aest(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 4) {
-      this.a.finish();
-    }
-    return false;
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

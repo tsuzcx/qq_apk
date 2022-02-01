@@ -3,7 +3,7 @@ package com.tencent.mobileqq.secspy;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bbxa;
+import bcpr;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class SecSpyFileManager$2$1
@@ -26,7 +26,7 @@ class SecSpyFileManager$2$1
       this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0.a(l, 0, new Object[0]);
       return;
     }
-    bbxa.a(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0.a.getCurrentAccountUin(), l, this.b);
+    bcpr.a(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0.a.getCurrentAccountUin(), l, this.b);
   }
 }
 

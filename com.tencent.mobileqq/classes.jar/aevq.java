@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
 
 public class aevq
-  implements Comparator<aevm>
+  implements aewe
 {
-  public aevq(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public aevq(Leba paramLeba, View paramView, arsh paramarsh) {}
   
-  public int a(aevm paramaevm1, aevm paramaevm2)
+  public void a()
   {
-    long l = paramaevm1.a.certifiedGrade;
-    return (int)(paramaevm2.a.certifiedGrade - l);
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a(this.jdField_a_of_type_AndroidViewView, false, this.jdField_a_of_type_Arsh);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.i("Leba", 1, "clickAction", localException);
+    }
   }
 }
 

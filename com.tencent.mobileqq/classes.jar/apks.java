@@ -1,45 +1,100 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.RemoteException;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
 
-public class apks
-  implements aplg
+class apks
+  implements ServiceConnection
 {
-  private int a()
+  apks(apkr paramapkr) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    int i = -1;
-    if (lff.a(BaseApplicationImpl.getContext())) {
-      i = 1;
+    this.a.jdField_a_of_type_Apln = aplo.a(paramIBinder);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onServiceConnected configManager=" + this.a.jdField_a_of_type_Apln);
     }
-    QQAppInterface localQQAppInterface;
-    do
+    if (this.a.jdField_a_of_type_Apln != null) {}
+    try
     {
-      return i;
-      if (AudioHelper.a(BaseApplicationImpl.getContext())) {
-        return 2;
+      this.a.jdField_a_of_type_Apln.a(this.a.jdField_a_of_type_Aplz);
+      this.a.jdField_a_of_type_Apln.a(this.a.jdField_a_of_type_Aplq);
+      this.a.jdField_a_of_type_Apln.a(apkr.a(this.a));
+      this.a.jdField_a_of_type_Apln.a(this.a.jdField_a_of_type_Aplw);
+      if (apkr.a(this.a) != -1) {
+        this.a.jdField_a_of_type_Apln.c(apkr.a(this.a));
       }
-      localQQAppInterface = apkf.a();
-    } while (localQQAppInterface == null);
-    if (localQQAppInterface.z()) {
-      return 4;
+      if (apkr.a(this.a) != null) {
+        apkr.a(this.a).sendEmptyMessage(0);
+      }
+      if (this.a.c)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo = this.a.a();
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo != null) && (apkr.a(this.a) != null))
+        {
+          paramComponentName = Message.obtain();
+          paramComponentName.what = 1;
+          paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
+          apkr.a(this.a).sendMessage(paramComponentName);
+        }
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig = this.a.a();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig = new ArEffectConfig();
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig != null) && (apkr.a(this.a) != null))
+      {
+        paramComponentName = Message.obtain();
+        paramComponentName.what = 2;
+        paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
+        apkr.a(this.a).sendMessage(paramComponentName);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = this.a.a();
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) && (apkr.a(this.a) != null))
+      {
+        paramComponentName = Message.obtain();
+        paramComponentName.what = 9;
+        paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
+        apkr.a(this.a).sendMessage(paramComponentName);
+      }
+      return;
     }
-    return 3;
+    catch (RemoteException paramComponentName)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_RemoteArConfigManager", 2, "registerArCallback: " + paramComponentName.getMessage());
+        }
+      }
+    }
   }
   
-  public EIPCResult a(Bundle paramBundle)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    if (apkf.a() == null)
+    if (this.a.jdField_a_of_type_Apln != null) {}
+    try
     {
-      QLog.e("ArkApp.GetAudioOutputModeHandler", 1, "GetAudioOutputModeHandler.onCall, qq app is null");
-      return EIPCResult.createResult(-102, new Bundle());
+      this.a.jdField_a_of_type_Apln.b(this.a.jdField_a_of_type_Aplz);
+      this.a.jdField_a_of_type_Apln.b(this.a.jdField_a_of_type_Aplq);
+      this.a.jdField_a_of_type_Apln.b(apkr.a(this.a));
+      this.a.jdField_a_of_type_Apln.b(this.a.jdField_a_of_type_Aplw);
+      this.a.jdField_a_of_type_Apln = null;
+      return;
     }
-    int i = a();
-    paramBundle = new Bundle();
-    paramBundle.putInt("mode", i);
-    return EIPCResult.createResult(0, paramBundle);
+    catch (RemoteException paramComponentName)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_RemoteArConfigManager", 2, "unregisterCallback: " + paramComponentName.getMessage());
+        }
+      }
+    }
   }
 }
 

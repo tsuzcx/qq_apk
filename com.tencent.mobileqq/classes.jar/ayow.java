@@ -1,21 +1,33 @@
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.BounceScrollView;
 
 class ayow
-  implements mzy
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  ayow(ayov paramayov) {}
+  ayow(ayot paramayot) {}
   
-  public void a(LottieDrawable paramLottieDrawable)
+  public void onGlobalLayout()
   {
-    ayov.a(this.a, paramLottieDrawable);
-    ayov.a(this.a).setImageDrawable(ayov.a(this.a));
-    if (ayov.a(this.a))
+    Object localObject = new Rect();
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getRootView().getHeight() - ((Rect)localObject).bottom;
+    if (i <= 0) {}
+    int j;
+    do
     {
-      this.a.b();
       return;
-    }
-    this.a.a();
+      j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getScrollY();
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getCurrentFocus();
+    } while ((localObject == null) || (!(localObject instanceof EditText)) || (((View)localObject).getParent() == null));
+    int k = ((ViewGroup)((View)localObject).getParent()).getBottom();
+    int m = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getMeasuredHeight();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.smoothScrollBy(0, k + i - m - j);
   }
 }
 

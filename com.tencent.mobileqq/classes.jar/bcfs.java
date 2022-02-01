@@ -1,11 +1,37 @@
 public abstract class bcfs
-  implements bcfq
+  implements bcfr
 {
-  public void a(int paramInt) {}
+  private int a;
+  private int b;
+  public boolean g = true;
+  public int u;
+  public int v;
   
-  public void a(int paramInt, bcfj parambcfj) {}
+  public int a()
+  {
+    return this.a;
+  }
   
-  public void b(int paramInt, bcfj parambcfj) {}
+  public Object a(String paramString)
+  {
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.v = paramInt;
+  }
 }
 
 

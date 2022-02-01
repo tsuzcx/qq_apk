@@ -1,32 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import java.io.File;
+import java.util.Comparator;
 
-class bdkx
-  implements View.OnClickListener
+public class bdkx
+  implements Comparator<File>
 {
-  bdkx(bdkw parambdkw) {}
+  public bdkx(LocalCrashCollector paramLocalCrashCollector) {}
   
-  public void onClick(View paramView)
+  public int a(File paramFile1, File paramFile2)
   {
-    bdmc localbdmc;
-    if (bgjw.a("tag_swip_icon_menu_item", paramView.getTag()))
-    {
-      localbdmc = (bdmc)paramView.getTag(-10);
-      if (paramView.getId() != 2131364582) {
-        break label47;
-      }
-      bdkw.a(this.a, localbdmc);
+    long l = paramFile1.lastModified() - paramFile2.lastModified();
+    if (l > 0L) {
+      return -1;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label47:
-      if (bdkw.a(this.a) != null) {
-        bdkw.a(this.a).a(paramView.getId(), localbdmc);
-      }
+    if (l < 0L) {
+      return 1;
     }
+    return 0;
   }
 }
 

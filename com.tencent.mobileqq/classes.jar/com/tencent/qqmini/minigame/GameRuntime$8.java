@@ -1,19 +1,28 @@
 package com.tencent.qqmini.minigame;
 
-import com.tencent.qqmini.sdk.widget.MiniProgressDialog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.triton.engine.ScreenShotCallback;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.launcher.core.action.GetScreenshot.Callback;
+import org.jetbrains.annotations.NotNull;
 
 class GameRuntime$8
-  implements Runnable
+  implements ScreenShotCallback
 {
-  GameRuntime$8(GameRuntime paramGameRuntime) {}
+  GameRuntime$8(GameRuntime paramGameRuntime, GetScreenshot.Callback paramCallback) {}
   
-  public void run()
+  public void onGetScreenShot(@NotNull Object paramObject)
   {
-    if (GameRuntime.access$1000(this.this$0) != null)
+    if ((paramObject instanceof Bitmap)) {}
+    for (paramObject = (Bitmap)paramObject; (paramObject == null) || (paramObject.isRecycled()); paramObject = null)
     {
-      GameRuntime.access$1102(this.this$0, new MiniProgressDialog(GameRuntime.access$1000(this.this$0)));
-      GameRuntime.access$1100(this.this$0).show();
+      if (this.val$screenshotCallback != null) {
+        this.val$screenshotCallback.onGetScreenshot(null);
+      }
+      GameRuntime.access$900(this.this$0).isGettingScreenShot = false;
+      return;
     }
+    ThreadManager.executeOnDiskIOThreadPool(new GameRuntime.8.1(this, paramObject));
   }
 }
 

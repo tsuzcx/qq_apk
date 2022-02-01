@@ -1,38 +1,25 @@
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.ui.QavPanel;
+
 public class lnn
+  implements mif
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
+  public lnn(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public lnn()
+  public void a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 4L;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject != null) && ((paramObject instanceof lnn)))
+    if (this.a.a != null)
     {
-      paramObject = (lnn)paramObject;
-      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
-        return true;
-      }
+      this.a.a.setViewEnable(2131373496, false);
+      this.a.a.setViewEnable(2131373495, false);
+      this.a.a.setViewEnable(2131363092, false);
     }
-    return false;
   }
   
-  public String toString()
+  public void b()
   {
-    return "Uin[" + this.jdField_a_of_type_Long + "], VideoSrcType[" + this.jdField_a_of_type_Int + "], isBig[" + this.jdField_a_of_type_Boolean + "], isRender[" + this.jdField_b_of_type_Boolean + "], isNeedRequest[" + this.c + "], hasRecvData[" + this.d + "], inviteId[" + this.jdField_a_of_type_JavaLangString + "], isMirror[" + this.f + "]";
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772169);
   }
 }
 

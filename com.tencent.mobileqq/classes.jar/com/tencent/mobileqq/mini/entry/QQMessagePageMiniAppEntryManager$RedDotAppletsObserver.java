@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.entry;
 
-import aoqm;
+import apec;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 class QQMessagePageMiniAppEntryManager$RedDotAppletsObserver
-  extends aoqm
+  extends apec
 {
   private final WeakReference<QQMessagePageMiniAppEntryManager> miniAppEntryManagerWeakReference;
   

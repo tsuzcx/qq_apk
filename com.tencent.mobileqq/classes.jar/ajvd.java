@@ -1,128 +1,119 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contacts.mayknow.ContactReportUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import java.util.List;
+import org.json.JSONObject;
 
 public class ajvd
+  extends arac<ajuy>
 {
-  private ajve jdField_a_of_type_Ajve;
-  private avrl jdField_a_of_type_Avrl;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<arcs> jdField_a_of_type_JavaUtilList;
-  
-  private boolean a()
+  @NonNull
+  public ajuy a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    anov localanov;
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldOrDefaultContent");
+    }
+    return new ajuy();
+  }
+  
+  @Nullable
+  public ajuy a(araj[] paramArrayOfaraj)
+  {
+    int j;
+    int i;
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      return false;
-      localanov = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-    return localanov.a();
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Avrl != null) {
-      return this.jdField_a_of_type_Avrl.a();
-    }
-    return -1;
-  }
-  
-  public avrl a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return new avrq();
-    }
-    return new avrn();
-  }
-  
-  public void a()
-  {
-    QLog.i("Q.lebatab.LebaController", 1, "onResume");
-    if (this.jdField_a_of_type_Avrl != null)
-    {
-      a(true);
-      this.jdField_a_of_type_Avrl.a();
-    }
-  }
-  
-  public void a(int paramInt1, boolean paramBoolean, int paramInt2)
-  {
-    QLog.i("Q.lebatab.LebaController", 1, "onPause" + paramInt1 + "|" + paramBoolean + paramInt2);
-    if (this.jdField_a_of_type_Avrl != null) {
-      this.jdField_a_of_type_Avrl.a(paramInt1, paramBoolean, paramInt2);
-    }
-  }
-  
-  public void a(ajve paramajve)
-  {
-    this.jdField_a_of_type_Ajve = paramajve;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramajve.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_JavaUtilList = paramajve.jdField_a_of_type_JavaUtilList;
-    QLog.i("Q.lebatab.LebaController", 1, "initLebaView" + arcs.a(this.jdField_a_of_type_JavaUtilList));
-    if (this.jdField_a_of_type_Avrl == null)
-    {
-      boolean bool = a();
-      this.jdField_a_of_type_Avrl = a(bool);
-      QLog.i("Q.lebatab.LebaController", 1, String.format("init puginLogin modle = %b", new Object[] { Boolean.valueOf(bool) }));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Avrl.a(paramajve);
-      return;
-      a(false);
-    }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
-  {
-    if (this.jdField_a_of_type_Avrl != null) {
-      this.jdField_a_of_type_Avrl.a(paramAbsListView, paramInt);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Avrl != null)
-    {
-      boolean bool1 = a();
-      boolean bool2 = this.jdField_a_of_type_Avrl instanceof avrq;
-      if (bool1 != bool2)
+      QLog.d("ReportExposeConfigProcessor", 2, "onParsed :" + paramArrayOfaraj);
+      if (paramArrayOfaraj != null)
       {
-        QLog.i("Q.lebatab.LebaController", 1, String.format("checkAndSwtichModel old: %b new %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) }));
-        this.jdField_a_of_type_Avrl.d();
-        this.jdField_a_of_type_Avrl = a(bool1);
-        if (paramBoolean) {
-          this.jdField_a_of_type_Avrl.a(this.jdField_a_of_type_Ajve);
+        j = paramArrayOfaraj.length;
+        i = 0;
+        while (i < j)
+        {
+          localObject1 = paramArrayOfaraj[i];
+          if (localObject1 != null) {
+            QLog.d("ReportExposeConfigProcessor", 2, "onParsed item: " + ((araj)localObject1).a);
+          }
+          i += 1;
         }
       }
     }
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    {
+      j = paramArrayOfaraj.length;
+      i = 0;
+      while (i < j)
+      {
+        Object localObject2 = paramArrayOfaraj[i];
+        if ((localObject2 != null) && (!TextUtils.isEmpty(((araj)localObject2).a))) {
+          try
+          {
+            localObject1 = new ajuy();
+            localObject2 = new JSONObject(((araj)localObject2).a);
+            if (((JSONObject)localObject2).has("enable")) {
+              ((ajuy)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).getBoolean("enable");
+            }
+            if (((JSONObject)localObject2).has("interval")) {
+              ((ajuy)localObject1).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("interval");
+            }
+            return localObject1;
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("ReportExposeConfigProcessor", 1, localThrowable, new Object[0]);
+          }
+        }
+        i += 1;
+      }
+    }
+    return null;
   }
   
-  public int b()
+  public void a(ajuy paramajuy)
   {
-    if (this.jdField_a_of_type_Avrl != null) {
-      return this.jdField_a_of_type_Avrl.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "onUpdate");
+    }
+    if (paramajuy != null) {
+      ContactReportUtils.a(paramajuy);
+    }
+  }
+  
+  public Class<ajuy> clazz()
+  {
+    return ajuy.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldVersion");
     }
     return 0;
   }
   
-  public void b()
+  public void onReqFailed(int paramInt)
   {
-    QLog.i("Q.lebatab.LebaController", 1, "notifyDataSetChanged" + arcs.a(this.jdField_a_of_type_JavaUtilList));
-    if (this.jdField_a_of_type_Avrl != null) {
-      this.jdField_a_of_type_Avrl.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "onReqFailed, code = " + paramInt);
     }
   }
   
-  public void c()
+  public int type()
   {
-    QLog.i("Q.lebatab.LebaController", 1, "onPostThemeChanged");
-    if (this.jdField_a_of_type_Avrl != null) {
-      this.jdField_a_of_type_Avrl.b();
-    }
+    return 438;
   }
 }
 

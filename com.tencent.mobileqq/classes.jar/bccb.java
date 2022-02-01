@@ -1,33 +1,20 @@
-import com.qq.jce.wup.UniPacket;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bccb
-  extends aber
+  implements View.OnTouchListener
 {
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "QQServiceTroopSvc" };
-  private bcbz jdField_a_of_type_Bcbz = new bcbz();
-  private bcca jdField_a_of_type_Bcca;
+  public bccb(ActiveEntitySearchFragment paramActiveEntitySearchFragment) {}
   
-  public bccb(AppInterface paramAppInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Bcca = new bcca(paramAppInterface);
-  }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    return this.jdField_a_of_type_Bcbz.a(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    return this.jdField_a_of_type_Bcca.a(paramToServiceMsg, paramUniPacket);
-  }
-  
-  public String[] a()
-  {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

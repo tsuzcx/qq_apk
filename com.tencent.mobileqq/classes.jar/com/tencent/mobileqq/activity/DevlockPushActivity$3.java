@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import biau;
+import bjbs;
 
 class DevlockPushActivity$3
   implements Runnable
@@ -13,8 +13,8 @@ class DevlockPushActivity$3
     {
       if ((this.this$0.a == null) && (!this.this$0.isFinishing()))
       {
-        this.this$0.a = new biau(this.this$0, this.this$0.getTitleBarHeight());
-        this.this$0.a.c(2131694158);
+        this.this$0.a = new bjbs(this.this$0, this.this$0.getTitleBarHeight());
+        this.this$0.a.c(2131694176);
       }
       if ((this.this$0.a != null) && (!this.this$0.a.isShowing())) {
         this.this$0.a.show();

@@ -1,68 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
-class azfi
-  extends BroadcastReceiver
+public class azfi
+  extends AccountObserver
 {
-  azfi(azfh paramazfh) {}
+  public azfi(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
-    int k = 0;
-    if ((paramIntent != null) && ("com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())))
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountOnlineStateActivity", 2, "onOnlineStatusChanged, isSuccess: " + paramBoolean1 + " , mIsUpdateStatus: " + AccountOnlineStateActivity.a(this.a) + ", isUserSet: " + paramBoolean2);
+    }
+    if (AccountOnlineStateActivity.a(this.a))
     {
-      if (paramIntent.getIntExtra("faceType", -1) != 1) {
-        QLog.d("ProfileCardShareHelper", 1, "getHead onReceive FaceType not match!");
+      AccountOnlineStateActivity.a(this.a, false);
+      if (paramBoolean1) {
+        AccountOnlineStateActivity.a(this.a, true, 0);
       }
     }
-    else {
+    else
+    {
       return;
     }
-    if (TextUtils.isEmpty(azfh.a(this.a)))
-    {
-      QLog.d("ProfileCardShareHelper", 1, "getHead onReceive mUin is empty!");
-      return;
-    }
-    paramContext = paramIntent.getStringArrayListExtra("uinList");
-    paramIntent = paramIntent.getStringArrayListExtra("headPathList");
-    int j = k;
-    int i;
-    if (paramContext != null)
-    {
-      j = k;
-      if (paramIntent != null)
-      {
-        j = k;
-        if (paramContext.size() == paramIntent.size()) {
-          i = 0;
-        }
-      }
-    }
-    for (;;)
-    {
-      j = k;
-      if (i < paramContext.size())
-      {
-        if (((String)paramContext.get(i)).equals(azfh.a(this.a)))
-        {
-          azfh.a(this.a, (String)paramIntent.get(i));
-          j = 1;
-        }
-      }
-      else
-      {
-        if ((j == 0) || (!azfh.a(this.a))) {
-          break;
-        }
-        azfh.a(this.a, azfh.b(this.a));
-        return;
-      }
-      i += 1;
-    }
+    AccountOnlineStateActivity.a(this.a, false, -1);
   }
 }
 

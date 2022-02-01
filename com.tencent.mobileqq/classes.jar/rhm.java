@@ -1,40 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.articlesummary.articlesummary.OutsideLinkInfo;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
 
 public class rhm
+  implements TextWatcher
 {
-  public String a;
-  public String b;
-  public String c;
+  public rhm(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
   
-  public rhm(articlesummary.OutsideLinkInfo paramOutsideLinkInfo)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramOutsideLinkInfo.title.has()) {
-      this.a = paramOutsideLinkInfo.title.get();
+    if (paramEditable.length() > 0)
+    {
+      if (!ReadInJoySelectMemberFragment.a(this.a).isVisible()) {
+        this.a.getChildFragmentManager().beginTransaction().add(2131367118, ReadInJoySelectMemberFragment.a(this.a)).addToBackStack(null).commit();
+      }
+      ReadInJoySelectMemberFragment.a(this.a).a(paramEditable.toString());
     }
-    if (paramOutsideLinkInfo.bring_goods_url.has()) {
-      this.b = paramOutsideLinkInfo.bring_goods_url.get();
+    while (ReadInJoySelectMemberFragment.a(this.a).isDetached()) {
+      return;
     }
-    if (paramOutsideLinkInfo.icon_url.has()) {
-      this.c = paramOutsideLinkInfo.icon_url.get();
-    }
+    this.a.getChildFragmentManager().popBackStackImmediate();
   }
   
-  public articlesummary.OutsideLinkInfo a()
-  {
-    articlesummary.OutsideLinkInfo localOutsideLinkInfo = new articlesummary.OutsideLinkInfo();
-    if (!TextUtils.isEmpty(this.c)) {
-      localOutsideLinkInfo.icon_url.set(this.c);
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localOutsideLinkInfo.bring_goods_url.set(this.b);
-    }
-    if (!TextUtils.isEmpty(this.a)) {
-      localOutsideLinkInfo.title.set(this.a);
-    }
-    return localOutsideLinkInfo;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

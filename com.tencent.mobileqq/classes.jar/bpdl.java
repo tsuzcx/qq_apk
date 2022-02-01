@@ -1,13 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-
 public abstract interface bpdl
 {
-  public abstract void a(MotionEvent paramMotionEvent);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2);
-  
-  public abstract void onClick(View paramView);
+  public abstract void a();
 }
 
 

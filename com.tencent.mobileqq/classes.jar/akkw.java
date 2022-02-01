@@ -1,28 +1,23 @@
-import com.tencent.mobileqq.activity.photo.album.PhotoPreviewBaseData;
-import com.tencent.mobileqq.activity.photo.album.PhotoPreviewLogicBase;
-import com.tencent.mobileqq.activity.photo.album.preview.BasePreviewAdapter;
-import com.tencent.mobileqq.activity.photo.album.preview.BasePreviewPresent;
-import com.tencent.mobileqq.activity.photo.album.preview.PreviewBean;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
 
 public class akkw
-  extends BasePreviewAdapter
 {
-  public akkw(PhotoPreviewLogicBase paramPhotoPreviewLogicBase)
+  public static void a(String paramString)
   {
-    super(paramPhotoPreviewLogicBase);
+    a(paramString, "");
   }
   
-  public BasePreviewPresent generatePreviewPresent(PreviewBean paramPreviewBean)
+  public static void a(String paramString1, String paramString2)
   {
-    if ((this.mPhotoPreviewData.canUseURL) && (bgkc.isNetUrl(paramPreviewBean.getPath()))) {
-      return new akky(paramPreviewBean);
+    a(paramString1, paramString2, "");
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    bdll.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d(akmh.a + ".report", 2, "tag=" + paramString1 + ",extra1=" + paramString2 + ",extra2=" + paramString3);
     }
-    String str = paramPreviewBean.getPath();
-    if ((str != null) && (new File(str).exists()) && (paramPreviewBean.mMediaType == 1)) {
-      return new akkx(paramPreviewBean);
-    }
-    return super.generatePreviewPresent(paramPreviewBean);
   }
 }
 

@@ -36,9 +36,9 @@ public class GetJoinedHotChatListMessageStep
     return 7;
   }
   
-  public void c() {}
+  public void b() {}
   
-  public void d() {}
+  public void c() {}
 }
 
 

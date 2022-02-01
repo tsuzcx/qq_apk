@@ -1,12 +1,26 @@
+import com.tencent.mobileqq.shortvideo.util.ShortVideoGuideUtil.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+
 public class bder
+  implements TVK_SDKMgr.InstallListener
 {
-  public float a;
-  public float b;
+  public bder(ShortVideoGuideUtil.1 param1) {}
   
-  public bder(float paramFloat1, float paramFloat2)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
+    if (QLog.isColorLevel()) {
+      QLog.d(bdeq.a, 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(bdeq.a, 2, "installSDK onInstalledSuccessed=");
+    }
   }
 }
 

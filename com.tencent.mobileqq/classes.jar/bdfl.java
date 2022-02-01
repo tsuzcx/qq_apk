@@ -1,6 +1,14 @@
 public abstract interface bdfl
 {
-  public abstract void a(bdeo parambdeo);
+  public abstract bdfm a(int paramInt1, int paramInt2);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(Throwable paramThrowable);
+  
+  public abstract void b();
 }
 
 

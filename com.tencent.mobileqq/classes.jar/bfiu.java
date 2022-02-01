@@ -1,113 +1,13 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class bfiu
+  implements DialogInterface.OnClickListener
 {
-  private static int a(int paramInt, MessageRecord paramMessageRecord)
-  {
-    int j = -1;
-    boolean bool = axci.a(paramMessageRecord);
-    int i;
-    if (paramInt != 27) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder().append("getFlowersCounts, bizType = ").append(paramInt).append(", isNearbyFlowerMsg = ").append(bool).append(", msgType = ");
-        paramInt = j;
-        if (paramMessageRecord != null) {
-          paramInt = paramMessageRecord.msgtype;
-        }
-        QLog.d("Navigate.UpdateMsgInfoUtil", 2, paramInt + ", flowersCount = " + i);
-      }
-      return i;
-      if ((paramMessageRecord.msgtype != -2035) && (paramMessageRecord.msgtype != -2038) && (!bool))
-      {
-        i = -1;
-      }
-      else
-      {
-        if (bool)
-        {
-          if ((paramMessageRecord instanceof MessageForStructing)) {
-            i = axci.a((MessageForStructing)paramMessageRecord);
-          }
-        }
-        else
-        {
-          if ((paramMessageRecord instanceof MessageForDeliverGiftTips))
-          {
-            i = ((MessageForDeliverGiftTips)paramMessageRecord).giftCount;
-            continue;
-          }
-          i = -1;
-          continue;
-        }
-        i = -1;
-      }
-    }
-  }
+  public bfiu(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  @Nullable
-  public static Object a(QQAppInterface paramQQAppInterface, String paramString, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    a(paramQQAppInterface, paramString, parambepr, paramMessageRecord, paramBoolean);
-    return b(paramQQAppInterface, paramString, parambepr, paramObject, paramMessageRecord, paramBoolean);
-  }
-  
-  private static String a(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 3000) {
-      return bfiv.a(paramString, i);
-    }
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, String paramString, bepr parambepr, MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    int j = parambepr.a(paramQQAppInterface, paramBoolean, paramString);
-    int i = a(j, paramMessageRecord);
-    if (((!paramBoolean) && (!a(j))) || (i == -1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Navigate.UpdateMsgInfoUtil", 2, "isTroop = " + paramBoolean + ", bizType = " + j + ", flowers = " + i + ", troopCode = " + paramString + ", isTroop = " + paramBoolean);
-      }
-      return;
-    }
-    String str = a(paramString, paramBoolean);
-    j = bfhu.b(j);
-    paramString = null;
-    if (j == 102) {
-      paramString = paramMessageRecord;
-    }
-    long l = bepx.a(j, parambepr.a.a, parambepr.a.b);
-    ((bfiv)paramQQAppInterface.getManager(363)).a(str, j, parambepr.a.a, l, "", i, paramString);
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 13) || (paramInt == 24) || (paramInt == 12) || (paramInt == 20) || (paramInt == 22);
-  }
-  
-  @Nullable
-  private static Object b(QQAppInterface paramQQAppInterface, String paramString, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    int i = parambepr.a(paramQQAppInterface, paramBoolean, paramString);
-    if ((!paramBoolean) && (!a(i))) {
-      return null;
-    }
-    paramString = ((alem)paramQQAppInterface.getManager(366)).a(i);
-    if (paramString != null) {
-      return paramString.a(i, parambepr, paramObject, paramMessageRecord, paramQQAppInterface);
-    }
-    return null;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

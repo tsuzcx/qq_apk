@@ -1,61 +1,49 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 import com.tencent.qphone.base.util.QLog;
 
 public class aepu
-  extends anqw
+  implements DialogInterface.OnClickListener
 {
-  public aepu(NearbyActivity paramNearbyActivity) {}
+  public aepu(FriendProfileCardActivity paramFriendProfileCardActivity, Context paramContext) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("nearby.check.auth", 1, "onCheckNearbyUserAuth isSuccess=" + paramBoolean + ", checkRet=" + paramInt + ", checkMsg=" + paramString + ", isFinishing=" + this.a.isFinishing() + ", isStopHeartBeat=" + this.a.c);
-    if ((paramBoolean) && (paramInt != 0)) {
-      if (!this.a.isFinishing()) {}
-    }
-    while ((this.a.isFinishing()) || (this.a.c))
+    switch (paramInt)
     {
-      do
-      {
-        return;
-        try
-        {
-          bgpa localbgpa = bglp.a(this.a, 230);
-          localbgpa.setCancelable(false);
-          String str = paramString;
-          if (TextUtils.isEmpty(paramString)) {
-            str = anni.a(2131705880);
-          }
-          localbgpa.setMessage(str);
-          localbgpa.setNegativeButton(anni.a(2131705881), new aepv(this));
-          localbgpa.show();
-          new bcsy(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_exp").e(this.a.a.getCurrentAccountUin()).a();
-          return;
-        }
-        catch (Exception paramString) {}
-      } while (!QLog.isColorLevel());
-      QLog.d("nearby.NearbyActivity", 2, "onCheckNearbyUserAuth exp:" + paramString.toString());
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.dismiss();
+      com.tencent.mobileqq.activity.AddFriendLogicActivity.b = false;
       return;
-    }
-    this.a.e();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.heart_beat", 2, "onNearbyHeartBeat:isSucc=" + paramBoolean + ", cmd=" + paramString + ", interval=" + paramLong);
-    }
-    if ("OidbSvc.0xafc_1".equals(paramString))
-    {
-      if (paramBoolean) {
-        this.a.n = paramLong;
+      if (QLog.isColorLevel()) {
+        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog back");
       }
-      if (!this.a.c)
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getIntExtra("source_id", 3999) == 3090) {}
+      try
       {
-        this.a.b.removeMessages(1000);
-        this.a.b.sendEmptyMessageDelayed(1000, this.a.n);
+        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getStringExtra("extra");
+        ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, true, "action_game_make_friend", Long.valueOf(paramDialogInterface).longValue(), -1, anzj.a(2131703808));
+        if ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity))) {
+          continue;
+        }
+        ((Activity)this.jdField_a_of_type_AndroidContentContext).moveTaskToBack(true);
+      }
+      catch (Exception paramDialogInterface)
+      {
+        for (;;)
+        {
+          QLog.e("FriendProfileCardActivity", 1, "feedBackToGameSDK error = " + paramDialogInterface);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog stay");
       }
     }
   }

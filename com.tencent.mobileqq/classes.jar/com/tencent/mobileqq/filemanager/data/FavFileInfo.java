@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import athe;
+import atyy;
 
 public class FavFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FavFileInfo> CREATOR = new athe();
+  public static final Parcelable.Creator<FavFileInfo> CREATOR = new atyy();
   public long a;
   public String a;
   public boolean a;

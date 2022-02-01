@@ -1,25 +1,27 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
 
 class sdb
-  extends skd
+  implements Animator.AnimatorListener
 {
-  sdb(sce paramsce) {}
+  sdb(sda paramsda, boolean paramBoolean) {}
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    sce.a(this.a, paramVideoInfo);
+    sda.a(this.jdField_a_of_type_Sda, this.jdField_a_of_type_Boolean);
   }
   
-  public int b()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return 0;
+    sda.a(this.jdField_a_of_type_Sda, this.jdField_a_of_type_Boolean);
+    sda.a(this.jdField_a_of_type_Sda);
+    this.jdField_a_of_type_Sda.b.clearAnimation();
   }
   
-  public int c()
-  {
-    return 1;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

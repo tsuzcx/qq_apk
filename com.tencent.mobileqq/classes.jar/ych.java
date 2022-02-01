@@ -1,48 +1,24 @@
-import com.tencent.biz.qqstory.database.LikeEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class ych
-  extends wla
+class ych
+  extends SimpleJob<Object>
 {
-  public List<LikeEntry> a;
-  public int b;
-  public int c;
-  
-  public ych(qqstory_service.RspFeedLikeList paramRspFeedLikeList)
+  ych(ycf paramycf, String paramString)
   {
-    super(paramRspFeedLikeList.result);
-    paramRspFeedLikeList = (qqstory_struct.FeedLikeInfo)paramRspFeedLikeList.feed_like_info.get();
-    this.a = a(paramRspFeedLikeList);
-    this.b = paramRspFeedLikeList.like_total_count.get();
-    this.c = paramRspFeedLikeList.has_like.get();
+    super(paramString);
   }
   
-  public List<LikeEntry> a(qqstory_struct.FeedLikeInfo paramFeedLikeInfo)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    paramFeedLikeInfo = paramFeedLikeInfo.like_list.get();
-    ArrayList localArrayList1 = new ArrayList();
-    wpy localwpy = (wpy)wpm.a(2);
-    ArrayList localArrayList2 = new ArrayList();
-    int i = 0;
-    while (i < paramFeedLikeInfo.size())
-    {
-      LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)paramFeedLikeInfo.get(i));
-      if (localwpy.b(localLikeEntry.unionId) == null) {
-        localArrayList2.add(new wqt("", localLikeEntry.unionId));
-      }
-      localArrayList1.add(localLikeEntry);
-      i += 1;
+    if (this.a.a == null) {
+      this.a.a = new yci(this.a, this.a.c);
     }
-    if (!localArrayList2.isEmpty()) {
-      new wwv().a(1, localArrayList2);
-    }
-    return localArrayList1;
+    this.a.d = this.a.a.a;
+    ycf.a(this.a);
+    return null;
   }
 }
 

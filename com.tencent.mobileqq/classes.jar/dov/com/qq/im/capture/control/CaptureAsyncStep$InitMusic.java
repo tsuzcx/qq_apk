@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.control;
 
-import bojv;
-import bone;
+import bplq;
+import bpoz;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 
@@ -10,11 +10,11 @@ public class CaptureAsyncStep$InitMusic
 {
   public int a()
   {
-    bone localbone = (bone)bojv.a().c(8);
-    if (localbone != null) {
-      localbone.e();
+    bpoz localbpoz = (bpoz)bplq.a().c(8);
+    if (localbpoz != null) {
+      localbpoz.e();
     }
-    ((QIMMusicConfigManager)bojv.a(2)).j();
+    ((QIMMusicConfigManager)bplq.a(2)).e();
     return 7;
   }
 }

@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import com.tencent.biz.pubaccount.weishi_new.view.RotationSeekBar;
-import upe;
+import uqf;
 
 public class WSPlayerControlBar
   extends RelativeLayout
@@ -43,9 +43,9 @@ public class WSPlayerControlBar
   
   private void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560025, null);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar = ((RotationSeekBar)paramContext.findViewById(2131380713));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131380714));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560034, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar = ((RotationSeekBar)paramContext.findViewById(2131380891));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131380892));
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.setPadding(0, 0, 0, 0);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.setProgress(0);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.setMax(1000);
@@ -61,7 +61,7 @@ public class WSPlayerControlBar
     }
     try
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841789);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841801);
       AnimationDrawable localAnimationDrawable = (AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getBackground();
       if (localAnimationDrawable != null)
       {
@@ -75,7 +75,7 @@ public class WSPlayerControlBar
     {
       for (;;)
       {
-        upe.d("WS_VIDEO_seekBar", "showLoadingProgressBar error:" + localOutOfMemoryError);
+        uqf.d("WS_VIDEO_seekBar", "showLoadingProgressBar error:" + localOutOfMemoryError);
       }
     }
   }
@@ -107,10 +107,10 @@ public class WSPlayerControlBar
     if (this.jdField_a_of_type_AndroidWidgetImageView != null) {}
     for (Object localObject = Integer.valueOf(this.jdField_a_of_type_AndroidWidgetImageView.getVisibility());; localObject = "null")
     {
-      upe.b("WS_VIDEO_ProgressBar", localObject);
+      uqf.b("WS_VIDEO_ProgressBar", localObject);
       if (this.jdField_a_of_type_AndroidWidgetImageView != null)
       {
-        upe.b("WS_VIDEO_ProgressBar", "WSPlayerControlBar hideLoadingProgressBar() hide");
+        uqf.b("WS_VIDEO_ProgressBar", "WSPlayerControlBar hideLoadingProgressBar() hide");
         c();
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       }

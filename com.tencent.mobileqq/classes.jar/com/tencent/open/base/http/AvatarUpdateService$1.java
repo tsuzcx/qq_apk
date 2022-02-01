@@ -3,11 +3,11 @@ package com.tencent.open.base.http;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import atwl;
-import bitk;
-import bitl;
-import bitv;
-import bitw;
+import auog;
+import bjuj;
+import bjuk;
+import bjuu;
+import bjuv;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class AvatarUpdateService$1
   implements Runnable
 {
-  public AvatarUpdateService$1(bitk parambitk, String paramString1, String paramString2, String paramString3, String paramString4, Context paramContext, bitw parambitw) {}
+  public AvatarUpdateService$1(bjuj parambjuj, String paramString1, String paramString2, String paramString3, String paramString4, Context paramContext, bjuv parambjuv) {}
   
   public void run()
   {
@@ -59,15 +59,15 @@ public class AvatarUpdateService$1
       return;
     }
     ??? = this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.c, "");
-    if ((!atwl.a(this.d)) || (!str.equals(???)))
+    if ((!auog.a(this.d)) || (!str.equals(???)))
     {
       QLog.d("AvatarUpdateService", 1, "-->updateAvatar--avatar not exist or need update, will download new avatar");
       synchronized (this.this$0.jdField_a_of_type_JavaUtilHashMap)
       {
         if (!this.this$0.jdField_a_of_type_JavaUtilHashMap.containsKey(this.c))
         {
-          this.this$0.jdField_a_of_type_JavaUtilHashMap.put(this.c, new bitl(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.c, this.d, str, this.jdField_a_of_type_Bitw));
-          new bitv(this.c, str, null, "GET", this.this$0).execute(new Void[0]);
+          this.this$0.jdField_a_of_type_JavaUtilHashMap.put(this.c, new bjuk(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.c, this.d, str, this.jdField_a_of_type_Bjuv));
+          new bjuu(this.c, str, null, "GET", this.this$0).execute(new Void[0]);
         }
         return;
       }

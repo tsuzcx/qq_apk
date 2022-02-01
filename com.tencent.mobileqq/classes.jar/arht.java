@@ -1,32 +1,67 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.util.WeakReference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arht
-  implements DialogInterface.OnClickListener
+  extends arac<arhp>
 {
-  public arht(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @NonNull
+  public arhp a(int paramInt)
   {
-    if (bgnt.d(MessageForGrayTips.HightlightClickableSpan.access$100(this.a)))
-    {
-      paramDialogInterface.dismiss();
-      MessageForGrayTips.HightlightClickableSpan.access$300(this.a, (QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.a).get(), MessageForGrayTips.HightlightClickableSpan.access$200(this.a).mMsgActionData);
-      MessageForGrayTips.HightlightClickableSpan.access$300(this.a, (QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.a).get(), this.a.frienduin);
-      return;
+    return new arhp();
+  }
+  
+  @Nullable
+  public arhp a(araj[] paramArrayOfaraj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQComicConfProcessor", 2, "onParsed");
     }
-    QQToast.a(BaseApplication.getContext(), 1, 2131691307, 0).a();
+    return arhp.a(paramArrayOfaraj);
+  }
+  
+  public void a(arhp paramarhp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQComicConfProcessor", 2, "onUpdate " + paramarhp.toString());
+    }
+  }
+  
+  public Class<arhp> clazz()
+  {
+    return arhp.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 534;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arht
  * JD-Core Version:    0.7.0.1
  */

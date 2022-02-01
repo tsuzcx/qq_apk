@@ -4,40 +4,40 @@ import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 import java.util.List;
-import wfo;
-import woy;
-import wpm;
-import ycd;
-import ycf;
-import yqp;
+import wjj;
+import wst;
+import wth;
+import yfy;
+import yga;
+import yuk;
 
 public class DetailLikeListLoader$1
   implements Runnable
 {
   public void run()
   {
-    Object localObject1 = (woy)wpm.a(15);
-    ??? = ycd.a(this.this$0);
-    if (ycd.a(this.this$0) == 1) {}
+    Object localObject1 = (wst)wth.a(15);
+    ??? = yfy.a(this.this$0);
+    if (yfy.a(this.this$0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      ??? = ((woy)localObject1).a((String)???, bool);
-      localObject1 = new ycf(new ErrorMessage(), ycd.a(this.this$0));
-      ((ycf)localObject1).jdField_b_of_type_Boolean = true;
-      ((ycf)localObject1).jdField_a_of_type_Boolean = ycd.a(this.this$0);
-      ((ycf)localObject1).jdField_a_of_type_Int = ycd.a(this.this$0);
-      ((ycf)localObject1).c = -1;
-      ((ycf)localObject1).jdField_b_of_type_Int = -1;
-      ((ycf)localObject1).jdField_a_of_type_JavaUtilList = ((List)???);
+      ??? = ((wst)localObject1).a((String)???, bool);
+      localObject1 = new yga(new ErrorMessage(), yfy.a(this.this$0));
+      ((yga)localObject1).jdField_b_of_type_Boolean = true;
+      ((yga)localObject1).jdField_a_of_type_Boolean = yfy.a(this.this$0);
+      ((yga)localObject1).jdField_a_of_type_Int = yfy.a(this.this$0);
+      ((yga)localObject1).c = -1;
+      ((yga)localObject1).jdField_b_of_type_Int = -1;
+      ((yga)localObject1).jdField_a_of_type_JavaUtilList = ((List)???);
       synchronized (this.this$0)
       {
-        if (!ycd.b(this.this$0))
+        if (!yfy.b(this.this$0))
         {
-          wfo.a().dispatch((Dispatcher.Dispatchable)localObject1);
-          yqp.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from cache: %s", localObject1);
+          wjj.a().dispatch((Dispatcher.Dispatchable)localObject1);
+          yuk.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from cache: %s", localObject1);
           return;
         }
-        yqp.d("Q.qqstory.detail:DetailLikeListLoader", "load cache data later than load from network");
+        yuk.d("Q.qqstory.detail:DetailLikeListLoader", "load cache data later than load from network");
       }
     }
   }

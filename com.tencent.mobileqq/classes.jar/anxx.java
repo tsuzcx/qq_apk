@@ -1,73 +1,31 @@
-import VIP.AIOKeyWordReq;
-import VIP.AIOSendReq;
-import VIP.AIOSendRes;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class anxx
-  extends anii
+  implements Animation.AnimationListener
 {
-  public static int a;
-  public static String a;
-  public static String b = "AIOSendSvc.getUserKeyWordStips";
+  public anxx(FrameHelperActivity paramFrameHelperActivity, View paramView) {}
   
-  static
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    jdField_a_of_type_Int = 1;
-    jdField_a_of_type_JavaLangString = "AIOSendSvc.CheckPopGrayStips";
+    paramAnimation = new AnimationSet(true);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.3F, 1.2F, 1.3F, 1.2F, 1, 0.5F, 1, 0.5F);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.6F, 0.5F);
+    paramAnimation.addAnimation(localScaleAnimation);
+    paramAnimation.addAnimation(localAlphaAnimation);
+    paramAnimation.setDuration(30L);
+    paramAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
   }
   
-  public anxx(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(AIOSendReq paramAIOSendReq)
-  {
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putSerializable("VIPAioSendRequest", paramAIOSendReq);
-    super.send(localToServiceMsg);
-  }
-  
-  public void a(String paramString)
-  {
-    paramString = new AIOKeyWordReq(this.app.c(), paramString);
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), b);
-    localToServiceMsg.extraData.putSerializable("VIPAioSendRequest", paramString);
-    super.send(localToServiceMsg);
-  }
-  
-  protected Class<? extends anil> observerClass()
-  {
-    return anxy.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null))
-    {
-      notifyUI(jdField_a_of_type_Int, false, null);
-      return;
-    }
-    paramToServiceMsg = paramToServiceMsg.getServiceCmd();
-    if (jdField_a_of_type_JavaLangString.equals(paramToServiceMsg))
-    {
-      paramToServiceMsg = (AIOSendRes)paramObject;
-      bhgy.a().a(this.app, paramToServiceMsg);
-    }
-    for (;;)
-    {
-      notifyUI(jdField_a_of_type_Int, true, paramObject);
-      return;
-      if (b.equals(paramToServiceMsg))
-      {
-        paramToServiceMsg = (AIOSendRes)paramObject;
-        bhgz.a().a(this.app, paramToServiceMsg);
-      }
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

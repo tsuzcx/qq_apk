@@ -45,6 +45,16 @@ public class LabelInfo
   {
     return 0;
   }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("LabelInfo{\n");
+    localStringBuffer.append("id='").append(this.id).append('\'').append('\n');
+    localStringBuffer.append(", name='").append(this.name).append('\'').append('\n');
+    localStringBuffer.append(", hasSelected=").append(this.hasSelected).append('\n');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
+  }
 }
 
 

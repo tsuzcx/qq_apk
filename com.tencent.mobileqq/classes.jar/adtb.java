@@ -1,27 +1,55 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
+import android.graphics.drawable.Animatable;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.File;
+import java.net.MalformedURLException;
 
 public class adtb
+  extends Handler
 {
-  public adtb(ChatFragment paramChatFragment) {}
+  public adtb(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    if ((ChatFragment.b()) && (this.a.jdField_a_of_type_Boolean))
+    switch (paramMessage.what)
     {
-      bgso.b("AIO_Start_cost", null);
-      SuspendThreadManager.a().d();
-      bgso.a("AIO_onDrawView", "AIO_SysMsgCost");
-      ChatFragment.a(this.a);
-      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("uintype", -1) == 1008)
-      {
-        String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-        bgnv.a("pubAcc_aio_open", null, str);
-        bgnv.a("pubAcc_structMsg_display", null, str);
+    }
+    for (;;)
+    {
+      return;
+      if ((this.a.isFinishing()) || (AddFriendVerifyActivity.a(this.a) == null)) {
+        continue;
       }
-      ChatFragment.a(false);
+      AddFriendVerifyActivity.a(this.a).setVisibility(0);
+      ((Animatable)AddFriendVerifyActivity.a(this.a).getDrawable()).start();
+      return;
+      if (this.a.isFinishing()) {
+        continue;
+      }
+      if (!TextUtils.isEmpty(AddFriendVerifyActivity.c(this.a))) {}
+      try
+      {
+        paramMessage = new File(AddFriendVerifyActivity.d(this.a)).toURL();
+        AddFriendVerifyActivity.a(this.a).setImageDrawable(URLDrawable.getDrawable(paramMessage, 100, 100));
+        label142:
+        if (AddFriendVerifyActivity.a(this.a) == null) {
+          continue;
+        }
+        AddFriendVerifyActivity.a(this.a).setVisibility(8);
+        return;
+        QQToast.a(this.a.getApplicationContext(), 1, 2131719123, 0).b(this.a.getTitleBarHeight());
+        return;
+      }
+      catch (MalformedURLException paramMessage)
+      {
+        break label142;
+      }
     }
   }
 }

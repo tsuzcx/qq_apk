@@ -201,7 +201,7 @@ public class HumanSegmentInitializer
         return bool1;
       }
     }
-    if (Build.BRAND.toLowerCase().startsWith("huawei"))
+    if ((Build.BRAND.toLowerCase().startsWith("huawei")) || (Build.BRAND.toLowerCase().startsWith("honor")))
     {
       Log.i(TAG, "huawei device init human seg model: CPU + " + HumanSegmentInitializer.MODLE_LEVEL.SMALL_MODEL.toString());
       return initSmallCpu();

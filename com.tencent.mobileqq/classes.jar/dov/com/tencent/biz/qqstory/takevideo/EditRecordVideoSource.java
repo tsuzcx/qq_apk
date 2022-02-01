@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bpbn;
+import bqdi;
 import java.io.File;
 
 public class EditRecordVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditRecordVideoSource> CREATOR = new bpbn();
+  public static final Parcelable.Creator<EditRecordVideoSource> CREATOR = new bqdi();
   public final float a;
   public final int a;
   public final long a;

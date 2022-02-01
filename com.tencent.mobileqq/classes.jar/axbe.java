@@ -1,36 +1,23 @@
-import android.app.Application;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProvider.AndroidViewModelFactory;
-import android.arch.lifecycle.ViewModelProvider.Factory;
-import android.arch.lifecycle.ViewModelStoreOwner;
-import com.tencent.common.app.BaseApplicationImpl;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"ofViewModelProvider", "Landroid/arch/lifecycle/ViewModelProvider;", "owner", "Landroid/arch/lifecycle/ViewModelStoreOwner;", "observe", "", "T", "Landroid/arch/lifecycle/LifecycleOwner;", "liveData", "Landroid/arch/lifecycle/LiveData;", "observer", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "t", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class axbe
+public class axbe
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  @NotNull
-  public static final ViewModelProvider a(@NotNull ViewModelStoreOwner paramViewModelStoreOwner)
-  {
-    Intrinsics.checkParameterIsNotNull(paramViewModelStoreOwner, "owner");
-    ViewModelProvider.AndroidViewModelFactory localAndroidViewModelFactory = ViewModelProvider.AndroidViewModelFactory.getInstance((Application)BaseApplicationImpl.getApplication());
-    Intrinsics.checkExpressionValueIsNotNull(localAndroidViewModelFactory, "ViewModelProvider.Androi…ionImpl.getApplication())");
-    return new ViewModelProvider(paramViewModelStoreOwner.getViewModelStore(), (ViewModelProvider.Factory)localAndroidViewModelFactory);
-  }
+  public axbe(MedalGuideView paramMedalGuideView) {}
   
-  public static final <T> void a(@NotNull LifecycleOwner paramLifecycleOwner, @NotNull LiveData<T> paramLiveData, @NotNull Function1<? super T, Unit> paramFunction1)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Intrinsics.checkParameterIsNotNull(paramLifecycleOwner, "$this$observe");
-    Intrinsics.checkParameterIsNotNull(paramLiveData, "liveData");
-    Intrinsics.checkParameterIsNotNull(paramFunction1, "observer");
-    paramLiveData.observe(paramLifecycleOwner, (Observer)new axbf(paramFunction1));
+    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
+    MedalGuideView.a(this.a, f);
+    int i = ((Integer)this.a.jdField_a_of_type_AndroidAnimationArgbEvaluator.evaluate(f, Integer.valueOf(0), Integer.valueOf(this.a.jdField_a_of_type_Int))).intValue();
+    this.a.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(i);
+    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
+      paramValueAnimator.removeAllUpdateListeners();
+    }
   }
 }
 

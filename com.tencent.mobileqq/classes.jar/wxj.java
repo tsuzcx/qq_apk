@@ -1,23 +1,16 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspQQStoryGuide;
 
 public class wxj
-  extends weu
+  extends wov
 {
-  public final String a;
-  public final String b;
-  public final String c;
-  
-  public wxj(ErrorMessage paramErrorMessage, String paramString1, String paramString2, String paramString3)
+  public wxj(qqstory_service.RspQQStoryGuide paramRspQQStoryGuide)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.c = paramString3;
+    super(paramRspQQStoryGuide.result);
   }
   
   public String toString()
   {
-    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.c + "} " + super.toString();
+    return "QQStoryGuideResponse{}";
   }
 }
 

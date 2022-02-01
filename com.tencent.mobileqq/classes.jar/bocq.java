@@ -1,23 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import dov.com.qq.im.QIMCameraCaptureUnit.13;
 
 public class bocq
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public bocq(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  public bocq(QIMCameraCaptureUnit.13 param13) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AEEditorAILoadingView.a(this.a).setVisibility(8);
-    if (AEEditorAILoadingView.a(this.a) != null) {
-      AEEditorAILoadingView.a(this.a).a();
+    Activity localActivity = this.a.this$0.jdField_a_of_type_Bqai.a();
+    if (paramInt == 1)
+    {
+      this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setCameraPermissionFinish(true);
+      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      localIntent.setData(Uri.fromParts("package", localActivity.getPackageName(), null));
+      localActivity.startActivity(localIntent);
     }
-    ((ViewGroup)this.a.getParent()).removeAllViews();
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      localActivity.finish();
+    }
   }
 }
 

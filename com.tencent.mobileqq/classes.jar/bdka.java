@@ -1,39 +1,31 @@
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Method;
 
 public class bdka
-  implements bkhw
 {
-  public bdka(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, SparseArray paramSparseArray, bkho parambkho) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static void a()
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
-    {
-      paramInt = -1;
-      switch (paramInt)
-      {
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QIPCEnvironmentInit", 2, "tryConnect");
     }
-    for (;;)
+    try
     {
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
-      if (this.jdField_a_of_type_Bkho.isShowing()) {
-        this.jdField_a_of_type_Bkho.dismiss();
-      }
+      Method localMethod = BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.qipc.QIPCEnvironmentInit").getDeclaredMethod("initEnvironment", new Class[0]);
+      localMethod.setAccessible(true);
+      localMethod.invoke(null, new Object[0]);
       return;
-      paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
-      break;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 2);
-      continue;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 3);
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QIPCEnvironmentInit", 2, "tryConnect", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdka
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,8 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.net.URL;
+import com.tencent.mobileqq.data.MessageForPtt;
 
-class bduj
-  implements beai
+public abstract interface bduj
 {
-  bduj(bduh parambduh) {}
-  
-  public Bitmap getBitmap(URL paramURL)
-  {
-    paramURL = this.a.a(paramURL);
-    if (paramURL == null) {
-      return null;
-    }
-    return ShortVideoUtils.a(null, paramURL.a);
-  }
+  public abstract void a(boolean paramBoolean, MessageForPtt paramMessageForPtt);
 }
 
 

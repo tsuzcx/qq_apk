@@ -9,14 +9,14 @@ import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import aval;
-import bley;
-import bowl;
-import boyc;
-import bqcd;
+import avsm;
+import bmgb;
+import bpyg;
+import bpzx;
 import com.tencent.mobileqq.richmedia.RichmediaService;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XPanelContainer;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 
 public class AIOLongCaptureCtrl
   implements View.OnTouchListener
@@ -26,7 +26,7 @@ public class AIOLongCaptureCtrl
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private bowl jdField_a_of_type_Bowl;
+  private bpyg jdField_a_of_type_Bpyg;
   private RichmediaService jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService;
   private AIOLongCaptureCtrl.RunnableLW jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl$RunnableLW = new AIOLongCaptureCtrl.RunnableLW(this, null);
   private LWMotionEvent jdField_a_of_type_DovComQqImPtvLWMotionEvent = new LWMotionEvent();
@@ -37,9 +37,9 @@ public class AIOLongCaptureCtrl
   private boolean d;
   private boolean e;
   
-  public AIOLongCaptureCtrl(bowl parambowl)
+  public AIOLongCaptureCtrl(bpyg parambpyg)
   {
-    this.jdField_a_of_type_Bowl = parambowl;
+    this.jdField_a_of_type_Bpyg = parambpyg;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
@@ -109,10 +109,10 @@ public class AIOLongCaptureCtrl
     do
     {
       return false;
-      if (!this.jdField_a_of_type_Bowl.a()) {
+      if (!this.jdField_a_of_type_Bpyg.a()) {
         return true;
       }
-      int[] arrayOfInt = bqcd.a(this.jdField_a_of_type_Bowl.a());
+      int[] arrayOfInt = LiuHaiUtils.a(this.jdField_a_of_type_Bpyg.a());
       i = (int)(arrayOfInt[1] * 0.45F);
       if (QLog.isColorLevel()) {
         QLog.i("AIOLongCaptureCtrl", 2, "isLongClickSupport: h_40Height=" + i + " mExternalPanelheight=" + XPanelContainer.jdField_a_of_type_Int + " dataInfo[1]=" + arrayOfInt[1]);
@@ -141,7 +141,7 @@ public class AIOLongCaptureCtrl
     {
       Intent localIntent = new Intent("tencent.qq.ipc.event");
       localIntent.putExtras(paramBundle);
-      this.jdField_a_of_type_Bowl.a().sendBroadcast(localIntent);
+      this.jdField_a_of_type_Bpyg.a().sendBroadcast(localIntent);
     }
   }
   
@@ -153,23 +153,23 @@ public class AIOLongCaptureCtrl
   private void e()
   {
     Bundle localBundle = new Bundle();
-    if (this.jdField_a_of_type_Bowl.a())
+    if (this.jdField_a_of_type_Bpyg.a())
     {
       localBundle.putInt("flow_camera_show_mode_style", 1);
       localBundle.putBoolean("flow_camera_show_panel", true);
     }
     for (;;)
     {
-      localBundle.putParcelable("PhotoConst.SEND_SESSION_INFO", this.jdField_a_of_type_Bowl.a());
+      localBundle.putParcelable("PhotoConst.SEND_SESSION_INFO", this.jdField_a_of_type_Bpyg.a());
       localBundle.putInt("flow_camera_height", XPanelContainer.jdField_a_of_type_Int);
       localBundle.putBoolean("flow_camera_peak_live", this.d);
       localBundle.putInt("light_video_entry_type", this.jdField_a_of_type_Int);
-      boyc.a(this.jdField_a_of_type_Bowl.a(), this.jdField_a_of_type_Bowl.a(), localBundle, 20101);
+      bpzx.a(this.jdField_a_of_type_Bpyg.a(), this.jdField_a_of_type_Bpyg.a(), localBundle, 20101);
       if (QLog.isColorLevel()) {
         QLog.i("AIOLongCaptureCtrl", 2, "handleTouch longStartActivity peakLive: " + this.d);
       }
-      if (bley.a != null) {
-        bley.a.b();
+      if (bmgb.a != null) {
+        bmgb.a.b();
       }
       return;
       localBundle.putInt("flow_camera_show_mode_style", 1);
@@ -183,14 +183,14 @@ public class AIOLongCaptureCtrl
     localBundle.putInt("flow_camera_show_mode_style", 0);
     localBundle.putBoolean("flow_camera_show_panel", false);
     localBundle.putInt("flow_camera_height", XPanelContainer.jdField_a_of_type_Int);
-    localBundle.putParcelable("PhotoConst.SEND_SESSION_INFO", this.jdField_a_of_type_Bowl.a());
+    localBundle.putParcelable("PhotoConst.SEND_SESSION_INFO", this.jdField_a_of_type_Bpyg.a());
     localBundle.putInt("light_video_entry_type", this.jdField_a_of_type_Int);
-    boyc.a(this.jdField_a_of_type_Bowl.a(), this.jdField_a_of_type_Bowl.a(), localBundle, 20101);
+    bpzx.a(this.jdField_a_of_type_Bpyg.a(), this.jdField_a_of_type_Bpyg.a(), localBundle, 20101);
     if (QLog.isColorLevel()) {
       QLog.i("AIOLongCaptureCtrl", 2, "handleTouch clickStartActivity");
     }
-    if (bley.a != null) {
-      bley.a.b();
+    if (bmgb.a != null) {
+      bmgb.a.b();
     }
   }
   
@@ -225,7 +225,7 @@ public class AIOLongCaptureCtrl
     if (QLog.isColorLevel()) {
       QLog.i("AIOLongCaptureCtrl", 2, "handleTouch cocohe[AIO] entryX=" + paramMotionEvent.getRawX() + " entryY=" + paramMotionEvent.getRawY() + " actionEvent:" + i);
     }
-    if (this.jdField_a_of_type_Bowl == null)
+    if (this.jdField_a_of_type_Bpyg == null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("AIOLongCaptureCtrl", 2, "handleTouch cocohe[AIO] context=null actionEvent:" + i);

@@ -2,19 +2,19 @@ package com.tencent.biz.qqstory.playvideo.dataprovider;
 
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
-import xiz;
-import xjt;
+import xmu;
+import xno;
 
 public class SimpleDataProvider$5
   implements Runnable
 {
-  public SimpleDataProvider$5(xjt paramxjt) {}
+  public SimpleDataProvider$5(xno paramxno) {}
   
   public void run()
   {
-    Iterator localIterator = xjt.a(this.this$0).iterator();
+    Iterator localIterator = xno.a(this.this$0).iterator();
     while (localIterator.hasNext()) {
-      ((xiz)localIterator.next()).a();
+      ((xmu)localIterator.next()).a();
     }
   }
 }

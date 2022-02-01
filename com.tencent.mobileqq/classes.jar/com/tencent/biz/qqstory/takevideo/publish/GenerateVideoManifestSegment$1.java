@@ -1,28 +1,28 @@
 package com.tencent.biz.qqstory.takevideo.publish;
 
-import bcjg;
+import bdby;
 import com.tencent.maxvideo.mediadevice.AVCodec;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import java.util.concurrent.atomic.AtomicBoolean;
-import yqp;
-import zev;
+import yuk;
+import ziq;
 
 public class GenerateVideoManifestSegment$1
   implements Runnable
 {
-  public GenerateVideoManifestSegment$1(zev paramzev, RMVideoStateMgr paramRMVideoStateMgr) {}
+  public GenerateVideoManifestSegment$1(ziq paramziq, RMVideoStateMgr paramRMVideoStateMgr) {}
   
   public void run()
   {
     try
     {
-      yqp.a("Q.qqstory.publish.edit.GenerateVideoManifestSegment", "Async, mVideoFileDir:%s, before call AVideoCodec.recordSubmit()", this.a.jdField_a_of_type_JavaLangString);
-      bcjg.a().a().recordSubmit();
+      yuk.a("Q.qqstory.publish.edit.GenerateVideoManifestSegment", "Async, mVideoFileDir:%s, before call AVideoCodec.recordSubmit()", this.a.jdField_a_of_type_JavaLangString);
+      bdby.a().a().recordSubmit();
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      yqp.e("Q.qqstory.publish.edit.GenerateVideoManifestSegment", "Async, mVideoFileDir:%s, call AVideoCodec.recordSubmit() error = %s", new Object[] { this.a.jdField_a_of_type_JavaLangString, localUnsatisfiedLinkError });
+      yuk.e("Q.qqstory.publish.edit.GenerateVideoManifestSegment", "Async, mVideoFileDir:%s, call AVideoCodec.recordSubmit() error = %s", new Object[] { this.a.jdField_a_of_type_JavaLangString, localUnsatisfiedLinkError });
       synchronized (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
       {
         this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);

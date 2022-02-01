@@ -1,85 +1,86 @@
+import android.graphics.Bitmap;
+import android.view.SurfaceHolder;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCaptureImageListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnNetVideoInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnPreAdListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+
 public class ukw
-  implements ukc
+  implements TVK_IMediaPlayer.OnCaptureImageListener, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnPreAdListener, TVK_IMediaPlayer.OnSeekCompleteListener, TVK_IMediaPlayer.OnVideoPreparedListener, IVideoViewBase.IVideoViewCallBack
 {
-  private ucp a;
+  public void OnDownloadCallback(String paramString) {}
   
-  public ukw(ucp paramucp)
+  public void a(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.a = paramucp;
+    paramTVK_IMediaPlayer.setOnVideoPreparedListener(this);
+    paramTVK_IMediaPlayer.setOnCompletionListener(this);
+    paramTVK_IMediaPlayer.setOnPreAdListener(this);
+    paramTVK_IMediaPlayer.setOnErrorListener(this);
+    paramTVK_IMediaPlayer.setOnInfoListener(this);
+    paramTVK_IMediaPlayer.setOnCaptureImageListener(this);
+    paramTVK_IMediaPlayer.setOnSeekCompleteListener(this);
+    paramTVK_IMediaPlayer.setOnDownloadCallback(this);
+    paramTVK_IMediaPlayer.setOnNetVideoInfoListener(this);
   }
   
-  public void a(ukb paramukb) {}
-  
-  public void a(ukb paramukb, int paramInt) {}
-  
-  public void a(ukb paramukb, int paramInt1, int paramInt2, String paramString)
+  public void onCaptureImageFailed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2)
   {
-    paramString = new StringBuilder().append("[onVideoError] video: ");
-    if ((paramukb != null) && (paramukb.jdField_a_of_type_AndroidViewView != null)) {}
-    for (paramukb = paramukb.jdField_a_of_type_Ukf.d;; paramukb = "")
-    {
-      upe.b("WSFollowPlayerStatusListenerImpl", paramukb);
-      return;
-    }
+    uqf.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onCaptureImageFailed] id:" + paramInt1 + ", errCode:" + paramInt2);
   }
   
-  public void a(ukb paramukb, boolean paramBoolean)
+  public void onCaptureImageSucceed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("[onVideoStop] video: ");
-    if ((paramukb != null) && (paramukb.jdField_a_of_type_AndroidViewView != null)) {}
-    for (String str = paramukb.jdField_a_of_type_Ukf.d;; str = "")
-    {
-      upe.b("WSFollowPlayerStatusListenerImpl", str);
-      umu.a(paramukb, paramBoolean);
-      umw.a(paramukb, paramBoolean);
-      return;
-    }
+    uqf.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onCaptureImageSucceed] id:" + paramInt1 + ", width:" + paramInt2 + ", height:" + paramInt3);
   }
   
-  public void b(ukb paramukb)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("[onVideoStart] video: ");
-    if ((paramukb != null) && (paramukb.jdField_a_of_type_AndroidViewView != null)) {}
-    for (String str = paramukb.jdField_a_of_type_Ukf.d;; str = "")
-    {
-      upe.b("WSFollowPlayerStatusListenerImpl", str);
-      umu.a(paramukb);
-      if (this.a != null) {
-        this.a.a();
-      }
-      return;
-    }
+    uqf.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onCompletion]");
   }
   
-  public void c(ukb paramukb) {}
-  
-  public void d(ukb paramukb)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("[onVideoPause] video: ");
-    if ((paramukb != null) && (paramukb.jdField_a_of_type_AndroidViewView != null)) {}
-    for (paramukb = paramukb.jdField_a_of_type_Ukf.d;; paramukb = "")
-    {
-      upe.b("WSFollowPlayerStatusListenerImpl", paramukb);
-      return;
-    }
+    uqf.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onError] model:" + paramInt1 + ", what:" + paramInt2 + ", position:" + paramInt3 + ", detailInfo:" + paramString);
+    return false;
   }
   
-  public void e(ukb paramukb)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("[onVideoRestart] video: ");
-    if ((paramukb != null) && (paramukb.jdField_a_of_type_AndroidViewView != null)) {}
-    for (paramukb = paramukb.jdField_a_of_type_Ukf.d;; paramukb = "")
-    {
-      upe.b("WSFollowPlayerStatusListenerImpl", paramukb);
-      return;
-    }
+    uqf.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onInfo] what:" + paramInt + ", extra:" + paramObject);
+    return false;
   }
   
-  public void f(ukb paramukb)
+  public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
+    uqf.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onNetVideoInfo] player:" + paramTVK_IMediaPlayer + ", videoInfo:" + paramTVK_NetVideoInfo);
+  }
+  
+  public void onPreAdPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer, long paramLong) {}
+  
+  public void onPreAdPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  
+  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    uqf.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onSeekComplete] mediaPlayer:" + paramTVK_IMediaPlayer);
+  }
+  
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    uqf.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onVideoPrepared] mediaPlayer:" + paramTVK_IMediaPlayer);
   }
 }
 

@@ -1,27 +1,18 @@
 import android.content.BroadcastReceiver;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkChangeReceiver.1;
+import org.jetbrains.annotations.NotNull;
 
-public class ryb
+public final class ryb
+  extends BroadcastReceiver
 {
-  private static int jdField_a_of_type_Int = 5;
-  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ryc();
-  private static final String jdField_a_of_type_JavaLangString = ryb.class.getSimpleName();
-  private static Thread jdField_a_of_type_JavaLangThread;
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private static AtomicInteger b;
+  private ryb(rxy paramrxy) {}
   
-  static
+  public void onReceive(@NotNull Context paramContext, @NotNull Intent paramIntent)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    b = new AtomicInteger(0);
-  }
-  
-  private static long b()
-  {
-    for (long l = 0L; jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1; l += 1L) {}
-    return l;
+    rxy.a(this.a).post(new BandwidthPredictor.NetworkChangeReceiver.1(this));
   }
 }
 

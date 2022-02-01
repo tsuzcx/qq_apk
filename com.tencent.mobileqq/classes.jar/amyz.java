@@ -1,543 +1,449 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.store.webview.ApolloSSOConfig.3;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.ReqAppInfo;
-import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.ReqBody;
-import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.ReqItemInfo;
-import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.RspAppInfo;
-import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.RspBody;
-import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.RspItemInfo;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.util.LruCache;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collection;
+import com.tencent.util.LRULinkedHashMap;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.app.NewIntent;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class amyz
 {
-  private WeakReference<amzk> jdField_a_of_type_JavaLangRefWeakReference;
-  private final ConcurrentHashMap<String, amzf> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  public static amyz a;
+  private static LRULinkedHashMap<String, LruCache<String, amzb>> jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(2);
+  private static HashMap<String, anop> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  amyz(amzk paramamzk)
+  public static amyz a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramamzk);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    if (!a())
+    if (jdField_a_of_type_Amyz == null) {}
+    try
     {
-      paramamzk = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
-      if (paramamzk != null)
-      {
-        int i = BaseApplicationImpl.getApplication().getSharedPreferences("sp_apollo_webView", 4).getInt("sp_key_apollo_webView_config_version", 0);
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloSSOConfig", 2, "new ApolloSSOConfig updateConfigsFromDb=false, checkUpdateApolloWebViewConfig");
-        }
-        a(this, paramamzk, i, true);
+      if (jdField_a_of_type_Amyz == null) {
+        jdField_a_of_type_Amyz = new amyz();
       }
+      return jdField_a_of_type_Amyz;
     }
+    finally {}
   }
   
-  public static String a(String paramString1, String paramString2)
+  public static String a(String paramString)
   {
-    return paramString1 + "_" + paramString2;
+    return annv.a + "/game/" + String.valueOf(paramString);
   }
   
-  public static void a(amyz paramamyz, AppInterface paramAppInterface, int paramInt, boolean paramBoolean)
+  /* Error */
+  public amzb a(String paramString1, String paramString2)
   {
-    boolean bool2 = true;
-    if (paramAppInterface == null) {}
-    do
+    // Byte code:
+    //   0: aload_1
+    //   1: invokestatic 66	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: ifne +673 -> 677
+    //   7: aload_2
+    //   8: invokestatic 66	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   11: ifne +666 -> 677
+    //   14: getstatic 26	amyz:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   17: ifnonnull +13 -> 30
+    //   20: new 22	java/util/HashMap
+    //   23: dup
+    //   24: invokespecial 24	java/util/HashMap:<init>	()V
+    //   27: putstatic 26	amyz:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   30: aload_2
+    //   31: invokestatic 72	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   34: istore_3
+    //   35: iload_3
+    //   36: invokestatic 77	anop:a	(I)Z
+    //   39: ifne +654 -> 693
+    //   42: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   45: ifeq +11 -> 56
+    //   48: ldc 85
+    //   50: iconst_2
+    //   51: ldc 87
+    //   53: invokestatic 91	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   56: iconst_0
+    //   57: istore_3
+    //   58: iload_3
+    //   59: ifeq +62 -> 121
+    //   62: getstatic 26	amyz:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   65: astore 5
+    //   67: aload 5
+    //   69: monitorenter
+    //   70: aload_2
+    //   71: invokestatic 72	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   74: istore 4
+    //   76: getstatic 26	amyz:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   79: aload_2
+    //   80: invokevirtual 95	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   83: checkcast 74	anop
+    //   86: ifnonnull +32 -> 118
+    //   89: new 74	anop
+    //   92: dup
+    //   93: iload 4
+    //   95: invokespecial 96	anop:<init>	(I)V
+    //   98: astore 6
+    //   100: aload 6
+    //   102: invokevirtual 99	anop:b	()Z
+    //   105: ifeq +251 -> 356
+    //   108: getstatic 26	amyz:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   111: aload_2
+    //   112: aload 6
+    //   114: invokevirtual 103	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   117: pop
+    //   118: aload 5
+    //   120: monitorexit
+    //   121: aload_1
+    //   122: aload_2
+    //   123: invokestatic 72	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   126: aconst_null
+    //   127: iconst_1
+    //   128: invokestatic 108	amzf:a	(Ljava/lang/String;ILjava/lang/String;Z)Ljava/lang/String;
+    //   131: astore 7
+    //   133: aload 7
+    //   135: invokestatic 66	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   138: ifne +539 -> 677
+    //   141: getstatic 20	amyz:jdField_a_of_type_ComTencentUtilLRULinkedHashMap	Lcom/tencent/util/LRULinkedHashMap;
+    //   144: aload_2
+    //   145: invokevirtual 109	com/tencent/util/LRULinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   148: checkcast 111	android/util/LruCache
+    //   151: astore 5
+    //   153: aload 5
+    //   155: ifnonnull +535 -> 690
+    //   158: new 113	amza
+    //   161: dup
+    //   162: aload_0
+    //   163: ldc 114
+    //   165: invokespecial 117	amza:<init>	(Lamyz;I)V
+    //   168: astore 5
+    //   170: getstatic 20	amyz:jdField_a_of_type_ComTencentUtilLRULinkedHashMap	Lcom/tencent/util/LRULinkedHashMap;
+    //   173: aload_2
+    //   174: aload 5
+    //   176: invokevirtual 118	com/tencent/util/LRULinkedHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   179: pop
+    //   180: aload 5
+    //   182: aload 7
+    //   184: invokevirtual 119	android/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   187: checkcast 121	amzb
+    //   190: astore_1
+    //   191: aload_1
+    //   192: astore 6
+    //   194: aload_1
+    //   195: ifnonnull +139 -> 334
+    //   198: iload_3
+    //   199: ifeq +366 -> 565
+    //   202: getstatic 26	amyz:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   205: astore 8
+    //   207: aload 8
+    //   209: monitorenter
+    //   210: getstatic 26	amyz:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   213: aload_2
+    //   214: invokevirtual 95	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   217: checkcast 74	anop
+    //   220: astore 6
+    //   222: aload_2
+    //   223: invokestatic 123	amyz:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   226: astore_2
+    //   227: aload 7
+    //   229: new 35	java/lang/StringBuilder
+    //   232: dup
+    //   233: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   236: aload_2
+    //   237: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   240: ldc 125
+    //   242: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   245: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   248: ldc 127
+    //   250: invokevirtual 131	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   253: astore_2
+    //   254: aload 6
+    //   256: ifnull +23 -> 279
+    //   259: aload 6
+    //   261: aload_2
+    //   262: invokevirtual 134	anop:a	(Ljava/lang/String;)Z
+    //   265: ifeq +14 -> 279
+    //   268: aload 6
+    //   270: aload 7
+    //   272: aload_2
+    //   273: invokevirtual 137	anop:a	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   276: ifne +116 -> 392
+    //   279: ldc 85
+    //   281: iconst_1
+    //   282: new 35	java/lang/StringBuilder
+    //   285: dup
+    //   286: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   289: ldc 139
+    //   291: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   294: aload 7
+    //   296: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   299: ldc 141
+    //   301: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   304: aload_2
+    //   305: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   308: ldc 141
+    //   310: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   313: invokestatic 147	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   316: invokevirtual 150	java/lang/Thread:getName	()Ljava/lang/String;
+    //   319: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   325: invokestatic 153	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   328: aload 8
+    //   330: monitorexit
+    //   331: aconst_null
+    //   332: astore 6
+    //   334: aload 6
+    //   336: areturn
+    //   337: astore 5
+    //   339: ldc 85
+    //   341: iconst_1
+    //   342: aload 5
+    //   344: iconst_0
+    //   345: anewarray 4	java/lang/Object
+    //   348: invokestatic 156	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   351: iconst_0
+    //   352: istore_3
+    //   353: goto -318 -> 35
+    //   356: ldc 85
+    //   358: iconst_1
+    //   359: ldc 158
+    //   361: invokestatic 153	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   364: aload 5
+    //   366: monitorexit
+    //   367: aconst_null
+    //   368: areturn
+    //   369: astore 6
+    //   371: ldc 85
+    //   373: iconst_1
+    //   374: aload 6
+    //   376: iconst_0
+    //   377: anewarray 4	java/lang/Object
+    //   380: invokestatic 156	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   383: goto -265 -> 118
+    //   386: astore_1
+    //   387: aload 5
+    //   389: monitorexit
+    //   390: aload_1
+    //   391: athrow
+    //   392: new 121	amzb
+    //   395: dup
+    //   396: invokespecial 159	amzb:<init>	()V
+    //   399: astore 6
+    //   401: aload 6
+    //   403: astore_2
+    //   404: aload 6
+    //   406: aload 7
+    //   408: putfield 161	amzb:b	Ljava/lang/String;
+    //   411: ldc 163
+    //   413: astore_1
+    //   414: aload 6
+    //   416: astore_2
+    //   417: aload 7
+    //   419: ldc 165
+    //   421: invokevirtual 168	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   424: ifeq +45 -> 469
+    //   427: ldc 170
+    //   429: astore_1
+    //   430: aload 6
+    //   432: astore_2
+    //   433: aload 6
+    //   435: aload_1
+    //   436: putfield 171	amzb:a	Ljava/lang/String;
+    //   439: aload 6
+    //   441: astore_2
+    //   442: aload 6
+    //   444: invokevirtual 173	amzb:a	()V
+    //   447: aload 6
+    //   449: astore_2
+    //   450: aload 5
+    //   452: aload 7
+    //   454: aload 6
+    //   456: invokevirtual 174	android/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   459: pop
+    //   460: aload 6
+    //   462: astore_2
+    //   463: aload 8
+    //   465: monitorexit
+    //   466: aload 6
+    //   468: areturn
+    //   469: aload 6
+    //   471: astore_2
+    //   472: aload 7
+    //   474: ldc 176
+    //   476: invokevirtual 168	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   479: ifeq +9 -> 488
+    //   482: ldc 178
+    //   484: astore_1
+    //   485: goto -55 -> 430
+    //   488: aload 6
+    //   490: astore_2
+    //   491: aload 7
+    //   493: ldc 180
+    //   495: invokevirtual 168	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   498: ifne +200 -> 698
+    //   501: aload 6
+    //   503: astore_2
+    //   504: aload 7
+    //   506: ldc 182
+    //   508: invokevirtual 168	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   511: ifne +187 -> 698
+    //   514: aload 6
+    //   516: astore_2
+    //   517: aload 7
+    //   519: ldc 184
+    //   521: invokevirtual 168	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   524: ifne +174 -> 698
+    //   527: aload 6
+    //   529: astore_2
+    //   530: aload 7
+    //   532: ldc 186
+    //   534: invokevirtual 168	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   537: ifeq -107 -> 430
+    //   540: goto +158 -> 698
+    //   543: aload_1
+    //   544: astore_2
+    //   545: aload 8
+    //   547: monitorexit
+    //   548: aload 5
+    //   550: athrow
+    //   551: astore_2
+    //   552: ldc 85
+    //   554: iconst_1
+    //   555: aload_2
+    //   556: iconst_0
+    //   557: anewarray 4	java/lang/Object
+    //   560: invokestatic 156	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   563: aload_1
+    //   564: areturn
+    //   565: new 121	amzb
+    //   568: dup
+    //   569: invokespecial 159	amzb:<init>	()V
+    //   572: astore_2
+    //   573: aload_2
+    //   574: aload 7
+    //   576: putfield 161	amzb:b	Ljava/lang/String;
+    //   579: ldc 163
+    //   581: astore_1
+    //   582: aload 7
+    //   584: ldc 165
+    //   586: invokevirtual 168	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   589: ifeq +26 -> 615
+    //   592: ldc 170
+    //   594: astore_1
+    //   595: aload_2
+    //   596: aload_1
+    //   597: putfield 171	amzb:a	Ljava/lang/String;
+    //   600: aload_2
+    //   601: invokevirtual 173	amzb:a	()V
+    //   604: aload 5
+    //   606: aload 7
+    //   608: aload_2
+    //   609: invokevirtual 174	android/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   612: pop
+    //   613: aload_2
+    //   614: areturn
+    //   615: aload 7
+    //   617: ldc 176
+    //   619: invokevirtual 168	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   622: ifeq +9 -> 631
+    //   625: ldc 178
+    //   627: astore_1
+    //   628: goto -33 -> 595
+    //   631: aload 7
+    //   633: ldc 180
+    //   635: invokevirtual 168	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   638: ifne +33 -> 671
+    //   641: aload 7
+    //   643: ldc 182
+    //   645: invokevirtual 168	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   648: ifne +23 -> 671
+    //   651: aload 7
+    //   653: ldc 184
+    //   655: invokevirtual 168	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   658: ifne +13 -> 671
+    //   661: aload 7
+    //   663: ldc 186
+    //   665: invokevirtual 168	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   668: ifeq -73 -> 595
+    //   671: ldc 188
+    //   673: astore_1
+    //   674: goto -79 -> 595
+    //   677: aconst_null
+    //   678: areturn
+    //   679: astore_2
+    //   680: goto -128 -> 552
+    //   683: astore 5
+    //   685: aload_2
+    //   686: astore_1
+    //   687: goto -144 -> 543
+    //   690: goto -510 -> 180
+    //   693: iconst_1
+    //   694: istore_3
+    //   695: goto -637 -> 58
+    //   698: ldc 188
+    //   700: astore_1
+    //   701: goto -271 -> 430
+    //   704: astore 5
+    //   706: goto -163 -> 543
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	709	0	this	amyz
+    //   0	709	1	paramString1	String
+    //   0	709	2	paramString2	String
+    //   34	661	3	i	int
+    //   74	20	4	j	int
+    //   65	116	5	localObject1	Object
+    //   337	268	5	localThrowable1	Throwable
+    //   683	1	5	localObject2	Object
+    //   704	1	5	localObject3	Object
+    //   98	237	6	localObject4	Object
+    //   369	6	6	localThrowable2	Throwable
+    //   399	129	6	localamzb	amzb
+    //   131	531	7	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   30	35	337	java/lang/Throwable
+    //   70	118	369	java/lang/Throwable
+    //   356	364	369	java/lang/Throwable
+    //   70	118	386	finally
+    //   118	121	386	finally
+    //   356	364	386	finally
+    //   364	367	386	finally
+    //   371	383	386	finally
+    //   387	390	386	finally
+    //   548	551	551	java/lang/Throwable
+    //   202	210	679	java/lang/Throwable
+    //   404	411	683	finally
+    //   417	427	683	finally
+    //   433	439	683	finally
+    //   442	447	683	finally
+    //   450	460	683	finally
+    //   463	466	683	finally
+    //   472	482	683	finally
+    //   491	501	683	finally
+    //   504	514	683	finally
+    //   517	527	683	finally
+    //   530	540	683	finally
+    //   545	548	683	finally
+    //   210	254	704	finally
+    //   259	279	704	finally
+    //   279	331	704	finally
+    //   392	401	704	finally
+  }
+  
+  public void a()
+  {
+    try
     {
-      do
+      if (jdField_a_of_type_Amyz != null) {
+        jdField_a_of_type_Amyz = null;
+      }
+      if (jdField_a_of_type_ComTencentUtilLRULinkedHashMap != null) {
+        jdField_a_of_type_ComTencentUtilLRULinkedHashMap.clear();
+      }
+      if (jdField_a_of_type_JavaUtilHashMap != null)
       {
-        return;
-        SharedPreferences localSharedPreferences = paramAppInterface.getApplication().getSharedPreferences("sp_apollo_webView", 4);
-        int i = localSharedPreferences.getInt("sp_key_apollo_webView_config_version", 0);
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloSSOConfig", 2, "apollo_client checkUpdateApolloWebViewConfig, oldVersion" + i + ",version:" + paramInt);
-        }
-        Object localObject = new File(amyk.a());
-        boolean bool1 = paramBoolean;
-        if (paramInt > 0)
-        {
-          bool1 = paramBoolean;
-          if (!((File)localObject).exists()) {
-            bool1 = true;
-          }
-        }
-        localSharedPreferences.edit().putLong("sp_key_sso_check_time", System.currentTimeMillis()).commit();
-        if ((!bool1) && (paramInt <= i)) {
-          break;
-        }
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
-        ((File)localObject).getParentFile().mkdirs();
-        localObject = new bhhf("https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_thunder_config/xydata.json", (File)localObject);
-        ((bhhf)localObject).p = true;
-        ((bhhf)localObject).n = true;
-        ((bhhf)localObject).f = "apollo_res";
-        ((bhhf)localObject).b = 1;
-        ((bhhf)localObject).q = true;
-        ((bhhf)localObject).r = true;
-        ((bhhf)localObject).a(new amzb(localSharedPreferences, paramInt, paramamyz));
-        paramamyz = (bhhh)paramAppInterface.getManager(47);
-        paramBoolean = bool2;
-        if (paramamyz != null)
-        {
-          paramamyz = paramamyz.a(3);
-          paramBoolean = bool2;
-          if (paramamyz != null)
-          {
-            paramamyz.a((bhhf)localObject, ((bhhf)localObject).a(), null);
-            paramBoolean = false;
-          }
-        }
-        if (paramBoolean) {
-          ThreadManager.executeOnNetWorkThread(new ApolloSSOConfig.3((bhhf)localObject));
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("apollo_client_ApolloSSOConfig", 2, "checkUpdateApolloWebViewConfig async:" + paramBoolean);
+        jdField_a_of_type_JavaUtilHashMap.clear();
+        jdField_a_of_type_JavaUtilHashMap = null;
+      }
       return;
-    } while (!QLog.isColorLevel());
-    QLog.d("apollo_client_ApolloSSOConfig", 2, "checkUpdateApolloWebViewConfig local config is new， not need to download");
-  }
-  
-  private boolean a()
-  {
-    long l = System.currentTimeMillis();
-    Object localObject1 = new File(amyk.a());
-    Object localObject2;
-    int i;
-    Object localObject4;
-    int i1;
-    int j;
-    label244:
-    Object localObject6;
-    Object localObject5;
-    Object localObject7;
-    int i2;
-    int k;
-    label361:
-    Object localObject8;
-    String str1;
-    String str2;
-    if (((File)localObject1).exists())
+    }
+    catch (Throwable localThrowable)
     {
-      try
-      {
-        localObject2 = amyk.a((File)localObject1);
-        if (TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          if (!QLog.isColorLevel()) {
-            break label1046;
-          }
-          QLog.d("apollo_client_ApolloSSOConfig", 1, "updateConfigsFromDb, ApolloClientUtil.readFileSafety null");
-          break label1046;
-        }
-        localObject1 = new JSONObject((String)localObject2).optJSONObject("data").optJSONArray("thunderConfig");
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloSSOConfig", 1, "updateConfigsFromDb, content:" + (String)localObject2);
-        }
-        if (localObject1 == null) {
-          break label935;
-        }
-        int m = ((JSONArray)localObject1).length();
-        i = 0;
-        if (i >= m) {
-          break label935;
-        }
-        localObject3 = ((JSONArray)localObject1).getJSONObject(i);
-        if (localObject3 == null) {
-          break label1048;
-        }
-        n = ((JSONObject)localObject3).optInt("pageId");
-        localObject4 = ((JSONObject)localObject3).optString("md5");
-        if (TextUtils.isEmpty((CharSequence)localObject4)) {
-          break label1048;
-        }
-        localObject2 = new amzf();
-        ((amzf)localObject2).jdField_a_of_type_Int = n;
-        ((amzf)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject4);
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(String.valueOf(n), localObject2);
-        localObject4 = ((JSONObject)localObject3).optJSONArray("cmds");
-        if (localObject4 == null) {
-          break label543;
-        }
-        i1 = ((JSONArray)localObject4).length();
-        j = 0;
-        if (j >= i1) {
-          break label543;
-        }
-        localObject6 = ((JSONArray)localObject4).optJSONObject(j);
-        if (localObject6 == null) {
-          break label1055;
-        }
-        localObject5 = ((JSONObject)localObject6).optString("name");
-        if (TextUtils.isEmpty((CharSequence)localObject5)) {
-          break label1055;
-        }
-        localObject7 = ((JSONObject)localObject6).optJSONArray("parameters");
-        if (localObject7 == null) {
-          break label1055;
-        }
-        i2 = ((JSONArray)localObject7).length();
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloSSOConfig", 1, "updateConfigsFromDb, cmdName:" + (String)localObject5 + ",parameterLength:" + i2);
-        }
-        localObject6 = new ArrayList();
-        k = 0;
-        if (k < i2)
-        {
-          localObject8 = ((JSONArray)localObject7).optJSONObject(k);
-          if (localObject8 == null) {
-            break label1062;
-          }
-          str1 = ((JSONObject)localObject8).optString("key");
-          if (TextUtils.isEmpty(str1)) {
-            break label1062;
-          }
-          str2 = ((JSONObject)localObject8).optString("value");
-          int i3 = ((JSONObject)localObject8).optInt("valueType");
-          localObject8 = new amze(null);
-          ((amze)localObject8).jdField_a_of_type_JavaLangString = str1;
-          ((amze)localObject8).jdField_a_of_type_Int = i3;
-          ((amze)localObject8).b = str2;
-          ((List)localObject6).add(localObject8);
-        }
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          localException.printStackTrace();
-        }
-        QLog.e("apollo_client_ApolloSSOConfig", 1, localException.getMessage());
-        return false;
-      }
-      localObject7 = new amzd();
-      ((amzd)localObject7).jdField_a_of_type_JavaLangString = ((String)localObject5);
-      ((amzd)localObject7).jdField_a_of_type_Int = n;
-      ((amzd)localObject7).jdField_a_of_type_JavaUtilList.addAll((Collection)localObject6);
-      ((amzf)localObject2).jdField_a_of_type_JavaUtilList.add(localObject7);
-      break label1055;
-      label543:
-      Object localObject3 = ((JSONObject)localObject3).optJSONArray("cgis");
-      if (localObject3 == null) {
-        break label1048;
-      }
-      int n = ((JSONArray)localObject3).length();
-      j = 0;
-      label567:
-      if (j >= n) {
-        break label1048;
-      }
-      localObject5 = ((JSONArray)localObject3).optJSONObject(j);
-      if (localObject5 == null) {
-        break label1069;
-      }
-      str1 = ((JSONObject)localObject5).optString("url");
-      if (TextUtils.isEmpty(str1)) {
-        break label1069;
-      }
-      str2 = ((JSONObject)localObject5).optString("method");
-      if (TextUtils.isEmpty(str2)) {
-        break label1069;
-      }
-      localObject4 = new amzc();
-      ((amzc)localObject4).jdField_a_of_type_JavaLangString = str1;
-      ((amzc)localObject4).b = str2;
-      localObject6 = ((JSONObject)localObject5).optJSONArray("parameters");
-      if (localObject6 != null)
-      {
-        i1 = ((JSONArray)localObject6).length();
-        localObject7 = new ArrayList();
-        if (!QLog.isColorLevel()) {
-          break label1076;
-        }
-        QLog.d("apollo_client_ApolloSSOConfig", 2, "updateConfigsFromDb cgis url:" + str1 + " method:" + str2 + " parameterLength:" + i1);
-        break label1076;
-      }
+      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[0]);
     }
-    for (;;)
-    {
-      if (k < i1)
-      {
-        localObject8 = ((JSONArray)localObject6).optJSONObject(k);
-        if (localObject8 != null)
-        {
-          str1 = ((JSONObject)localObject8).optString("key");
-          if (!TextUtils.isEmpty(str1))
-          {
-            str2 = ((JSONObject)localObject8).optString("value");
-            i2 = ((JSONObject)localObject8).optInt("valueType");
-            localObject8 = new amze(null);
-            ((amze)localObject8).jdField_a_of_type_JavaLangString = str1;
-            ((amze)localObject8).jdField_a_of_type_Int = i2;
-            ((amze)localObject8).b = str2;
-            ((List)localObject7).add(localObject8);
-          }
-        }
-      }
-      else
-      {
-        ((amzc)localObject4).jdField_a_of_type_JavaUtilList.addAll((Collection)localObject7);
-        localObject5 = ((JSONObject)localObject5).optJSONObject("headers");
-        if (localObject5 != null)
-        {
-          localObject6 = ((JSONObject)localObject5).keys();
-          while (((Iterator)localObject6).hasNext())
-          {
-            localObject7 = (String)((Iterator)localObject6).next();
-            ((amzc)localObject4).jdField_a_of_type_JavaUtilHashMap.put(localObject7, ((JSONObject)localObject5).optString((String)localObject7));
-          }
-        }
-        ((amzf)localObject2).b.add(localObject4);
-        break label1069;
-        label935:
-        if (QLog.isColorLevel())
-        {
-          i = BaseApplicationImpl.getContext().getSharedPreferences("sp_apollo_webView", 4).getInt("sp_key_apollo_webView_config_version", 0);
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("mCurrentConfigVersion:").append(i).append("mThunderConfigs:").append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
-          QLog.d("apollo_client_ApolloSSOConfig", 2, localStringBuilder.toString());
-        }
-        return true;
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloSSOConfig", 2, "updateConfigsFromDb use:" + (System.currentTimeMillis() - l));
-        }
-        return false;
-        label1046:
-        return false;
-        label1048:
-        i += 1;
-        break;
-        label1055:
-        j += 1;
-        break label244;
-        label1062:
-        k += 1;
-        break label361;
-        label1069:
-        j += 1;
-        break label567;
-        label1076:
-        k = 0;
-        continue;
-      }
-      k += 1;
-    }
-  }
-  
-  public String a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = (amzf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.jdField_a_of_type_JavaLangString;
-      }
-    }
-    return "";
-  }
-  
-  public List<amzc> a(String paramString)
-  {
-    paramString = (amzf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (paramString != null) {
-      return paramString.b;
-    }
-    return null;
-  }
-  
-  public Set<String> a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      Object localObject = (amzf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (localObject != null)
-      {
-        paramString = new HashSet();
-        localObject = ((amzf)localObject).jdField_a_of_type_JavaUtilList.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          amzd localamzd = (amzd)((Iterator)localObject).next();
-          if ((localamzd != null) && (!TextUtils.isEmpty(localamzd.jdField_a_of_type_JavaLangString))) {
-            paramString.add(localamzd.jdField_a_of_type_JavaLangString);
-          }
-        }
-        return paramString;
-      }
-    }
-    return null;
-  }
-  
-  public JSONObject a(String paramString1, String paramString2, String paramString3, AppInterface paramAppInterface)
-  {
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramAppInterface == null)) {
-      return null;
-    }
-    paramString2 = (amzf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString2);
-    if (paramString2 != null)
-    {
-      paramString2 = paramString2.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramString2.hasNext())
-      {
-        amzd localamzd = (amzd)paramString2.next();
-        if ((localamzd != null) && (paramString3.equals(localamzd.jdField_a_of_type_JavaLangString))) {
-          return localamzd.a(paramString1, paramAppInterface);
-        }
-      }
-    }
-    return null;
-  }
-  
-  void a(AppInterface paramAppInterface)
-  {
-    if (paramAppInterface == null) {}
-    long l;
-    do
-    {
-      return;
-      localObject1 = paramAppInterface.getApplication().getSharedPreferences("sp_apollo_webView", 4);
-      l = ((SharedPreferences)localObject1).getLong("sp_key_sso_check_time", 0L);
-    } while (System.currentTimeMillis() - l <= 1800000L);
-    ClubContentUpdateInfoPb.ReqBody localReqBody = new ClubContentUpdateInfoPb.ReqBody();
-    Object localObject2 = paramAppInterface.getCurrentAccountUin();
-    if (TextUtils.isEmpty((CharSequence)localObject2))
-    {
-      QLog.e("apollo_client_ApolloSSOConfig", 1, "checkRequestSendSSO account is null!");
-      return;
-    }
-    localReqBody.int_protocolver.set(1);
-    localReqBody.uint_clientplatid.set(109);
-    localReqBody.str_clientver.set("8.4.1.4680");
-    localReqBody.uint_uin.set(Long.parseLong((String)localObject2));
-    int i = ((SharedPreferences)localObject1).getInt("sp_key_apollo_webView_config_version", 0);
-    localObject2 = new ClubContentUpdateInfoPb.ReqItemInfo();
-    ((ClubContentUpdateInfoPb.ReqItemInfo)localObject2).uint_version.set(i);
-    ((ClubContentUpdateInfoPb.ReqItemInfo)localObject2).str_name.set("apollo_thunder_json_v670");
-    Object localObject1 = new ClubContentUpdateInfoPb.ReqAppInfo();
-    ((ClubContentUpdateInfoPb.ReqAppInfo)localObject1).uint_appid.set(205);
-    ((ClubContentUpdateInfoPb.ReqAppInfo)localObject1).rpt_msg_reqiteminfo.add((MessageMicro)localObject2);
-    localObject2 = new ArrayList();
-    ((ArrayList)localObject2).add(localObject1);
-    localReqBody.rpt_msg_reqappinfo.set((List)localObject2);
-    localObject1 = new NewIntent(paramAppInterface.getApp(), avqx.class);
-    ((NewIntent)localObject1).putExtra("extra_cmd", "ClubContentUpdate.Req");
-    ((NewIntent)localObject1).putExtra("extra_data", localReqBody.toByteArray());
-    ((NewIntent)localObject1).putExtra("extra_callbackid", paramAppInterface.getCurrentAccountUin());
-    ((NewIntent)localObject1).setObserver(new amza(this, paramAppInterface));
-    paramAppInterface.startServlet((NewIntent)localObject1);
-    QLog.i("apollo_client_ApolloSSOConfig", 1, "checkRequestSendSSO local ver: " + i);
-  }
-  
-  void a(AppInterface paramAppInterface, boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramAppInterface == null) || (paramBundle == null)) {}
-    for (;;)
-    {
-      return;
-      if (paramBoolean)
-      {
-        Object localObject;
-        try
-        {
-          localObject = new ClubContentUpdateInfoPb.RspBody();
-          ((ClubContentUpdateInfoPb.RspBody)localObject).mergeFrom(paramBundle.getByteArray("extra_data"));
-          if (((ClubContentUpdateInfoPb.RspBody)localObject).int_result.get() != 0)
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("apollo_client_ApolloSSOConfig", 2, "handleReceiveSSO, result=" + ((ClubContentUpdateInfoPb.RspBody)localObject).int_result.get());
-            return;
-          }
-        }
-        catch (Exception paramAppInterface)
-        {
-          paramAppInterface.printStackTrace();
-          return;
-        }
-        paramBundle = ((ArrayList)((ClubContentUpdateInfoPb.RspBody)localObject).rpt_msg_rspappinfo.get()).iterator();
-        while (paramBundle.hasNext())
-        {
-          localObject = (ClubContentUpdateInfoPb.RspAppInfo)paramBundle.next();
-          if (localObject != null) {
-            switch (((ClubContentUpdateInfoPb.RspAppInfo)localObject).uint_appid.get())
-            {
-            case 205: 
-              if ((((ClubContentUpdateInfoPb.RspAppInfo)localObject).rpt_msg_rspiteminfo.has()) && (((ClubContentUpdateInfoPb.RspAppInfo)localObject).rpt_msg_rspiteminfo.size() > 0))
-              {
-                localObject = (ClubContentUpdateInfoPb.RspItemInfo)((ClubContentUpdateInfoPb.RspAppInfo)localObject).rpt_msg_rspiteminfo.get().get(0);
-                String str1 = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).str_name.get();
-                int i = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).uint_version.get();
-                String str2 = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).str_extend.get();
-                int j = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).uint_update_flag.get();
-                if (1 == (j & 0x1)) {}
-                for (paramBoolean = true;; paramBoolean = false)
-                {
-                  a(this, paramAppInterface, i, paramBoolean);
-                  QLog.i("apollo_client_ApolloSSOConfig", 1, "handleApolloWebViewResponse apollo_client ApolloWebView Config json: " + str1 + ", ver: " + i + ", updateFlag: " + j + ", extStr: " + str2);
-                  break;
-                }
-              }
-              break;
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
-    {
-      paramString1 = (amzf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
-      if (paramString1 != null)
-      {
-        paramString1 = paramString1.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramString1.hasNext())
-        {
-          amzd localamzd = (amzd)paramString1.next();
-          if ((localamzd != null) && (paramString2.equals(localamzd.jdField_a_of_type_JavaLangString))) {
-            return true;
-          }
-        }
-      }
-    }
-    return false;
   }
 }
 

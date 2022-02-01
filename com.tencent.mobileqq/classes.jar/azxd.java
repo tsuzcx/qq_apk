@@ -1,71 +1,71 @@
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.graphics.Bitmap;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.1;
+import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.2;
+import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.3;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class azxd
-  extends ClickableSpan
+public class azxd
+  implements AdapterView.OnItemClickListener
 {
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<BaseActivity> b;
+  azxd(azxc paramazxc) {}
   
-  public azxd(WeakReference<QQAppInterface> paramWeakReference, WeakReference<BaseActivity> paramWeakReference1)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    WeakReference localWeakReference;
-    if (a(paramWeakReference1, localWeakReference))
-    {
-      QLog.e("ClosePCVerifyImpl", 1, "ClosePCVerifyClickableSpan() error: params wrong");
-      return;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().isShowing()) {
+      this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().dismiss();
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference1;
-    this.b = localWeakReference;
-  }
-  
-  private boolean a()
-  {
-    return (this.b == null) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.b.get() == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
-  }
-  
-  private boolean a(WeakReference<QQAppInterface> paramWeakReference, WeakReference<BaseActivity> paramWeakReference1)
-  {
-    return (paramWeakReference == null) || (paramWeakReference1 == null);
-  }
-  
-  public void onClick(View paramView)
-  {
-    QLog.d("ClosePCVerifyImpl", 1, "onClick");
-    bcst.b(null, "dc00898", "", "", "0X800AE03", "0X800AE03", 0, 0, "", "", "", "");
-    if (a())
-    {
-      QLog.e("ClosePCVerifyImpl", 1, "onClick error: params wrong");
-      return;
+    int i;
+    if ((paramLong == 2L) || (paramLong == 3L)) {
+      if (!WXShareHelper.a().a()) {
+        i = 2131719399;
+      }
     }
-    paramView = (BaseActivity)this.b.get();
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (!bgnt.d(paramView))
+    for (;;)
     {
-      QQToast.a(paramView, 1, 2131698375, 1).a();
-      QLog.e("ClosePCVerifyImpl", 1, "NetworkError");
-      return;
+      if (i != -1) {
+        zyx.a(1, i);
+      }
+      for (;;)
+      {
+        EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+        return;
+        if (WXShareHelper.a().b()) {
+          break label233;
+        }
+        i = 2131719400;
+        break;
+        if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+        {
+          zyx.a(1, 2131698265);
+        }
+        else
+        {
+          this.a.jdField_a_of_type_Azxf.a(true);
+          switch ((int)paramLong)
+          {
+          default: 
+            break;
+          case 0: 
+            ThreadManager.postImmediately(new ShareHelper.1.1(this), null, true);
+            break;
+          case 1: 
+            ThreadManager.postImmediately(new ShareHelper.1.2(this), null, true);
+            break;
+          case 2: 
+          case 3: 
+            ThreadManager.postImmediately(new ShareHelper.1.3(this, paramLong), null, true);
+          }
+        }
+      }
+      label233:
+      i = -1;
     }
-    azxa.a(this.jdField_a_of_type_Azxa, localQQAppInterface, paramView);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    QLog.d("ClosePCVerifyImpl", 1, "updateDrawState");
-    if (a())
-    {
-      QLog.e("ClosePCVerifyImpl", 1, "updateDrawState error: param wrong");
-      return;
-    }
-    paramTextPaint.setColor(((BaseActivity)this.b.get()).getResources().getColor(2131165729));
-    paramTextPaint.setUnderlineText(false);
   }
 }
 

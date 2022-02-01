@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import bclm;
+import bdee;
 import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
 public class OffScreenGLSurface$1
   implements Runnable
 {
-  public OffScreenGLSurface$1(bclm parambclm) {}
+  public OffScreenGLSurface$1(bdee parambdee) {}
   
   public void run()
   {
-    bclm.a(this.this$0).sendFirstFrameMsg();
+    bdee.a(this.this$0).sendFirstFrameMsg();
   }
 }
 

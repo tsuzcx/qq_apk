@@ -1,22 +1,68 @@
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.manager.TicketManager;
+import mqq.observer.SSOAccountObserver;
 
-public abstract interface betn
+class betn
+  extends betk
 {
-  public abstract void a(int paramInt);
+  SSOAccountObserver a;
+  private AtomicBoolean c = new AtomicBoolean(false);
   
-  public abstract void a(besl parambesl);
+  betn(betj parambetj)
+  {
+    super(parambetj);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new beto(this);
+    this.jdField_a_of_type_JavaLangString = "GetSKeyStep";
+  }
   
-  public abstract void a(besl parambesl, String paramString);
+  protected boolean a()
+  {
+    return (this.c.get()) && (!TextUtils.isEmpty(betj.a(this.jdField_b_of_type_Betj)));
+  }
   
-  public abstract void a(List<besl> paramList, boolean paramBoolean, String paramString, long paramLong);
-  
-  public abstract void b(besl parambesl);
-  
-  public abstract void c(besl parambesl);
-  
-  public abstract void d(besl parambesl);
-  
-  public abstract void e(besl parambesl);
+  protected void d()
+  {
+    String str = this.jdField_b_of_type_Betj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|process|account=" + bjqq.a(str) + ",refresh=" + betj.a(this.jdField_b_of_type_Betj));
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      f();
+    }
+    for (;;)
+    {
+      return;
+      if (!this.jdField_b_of_type_Betj.e())
+      {
+        QLog.d("Q.share.ForwardSdkShareProcessor", 1, "illegal app = " + this.jdField_b_of_type_Betj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        this.jdField_b_of_type_Betj.b(9366, "illegal app");
+        c();
+        return;
+      }
+      int i;
+      if (!betj.a(this.jdField_b_of_type_Betj))
+      {
+        str = ((TicketManager)this.jdField_b_of_type_Betj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getSkey(str);
+        if (!TextUtils.isEmpty(str))
+        {
+          i = 0;
+          betj.a(this.jdField_b_of_type_Betj, str);
+          this.c.set(true);
+          b();
+        }
+      }
+      while (i != 0)
+      {
+        if (this.jdField_b_of_type_Betj.jdField_a_of_type_Int == 11) {
+          avcw.a("KEY_SSO_GET_TICKET_NO_PASSWD");
+        }
+        this.jdField_b_of_type_Betj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.ssoGetTicketNoPasswd(this.jdField_b_of_type_Betj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4096, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
+        return;
+        i = 1;
+      }
+    }
+  }
 }
 
 

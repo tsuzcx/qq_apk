@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.3.1;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.3.2;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x5ea.UpdatePhotoList.HeadInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 
 public class axhn
-  extends axeu
+  implements DialogInterface.OnClickListener
 {
-  public axhn(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public axhn(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
   
-  protected void a(boolean paramBoolean, ArrayList<UpdatePhotoList.HeadInfo> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.runOnUiThread(new NearbyGuideActivity.3.1(this, paramBoolean, paramInt1, paramArrayList));
-  }
-  
-  protected void b(boolean paramBoolean, ArrayList<UpdatePhotoList.HeadInfo> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.runOnUiThread(new NearbyGuideActivity.3.2(this, paramBoolean, paramInt1, paramArrayList));
+    MsgBackupCompleteFragment.a(this.a);
+    if (MsgBackupCompleteFragment.a(this.a) == 1) {
+      axjk.a("0X800A253", 5);
+    }
+    while ((MsgBackupCompleteFragment.a(this.a) != 4) || (!MsgBackupCompleteFragment.a(this.a))) {
+      return;
+    }
+    axjk.a("0X800A267", 2);
   }
 }
 

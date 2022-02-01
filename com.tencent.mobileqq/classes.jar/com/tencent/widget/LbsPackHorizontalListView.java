@@ -3,7 +3,7 @@ package com.tencent.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import bkmr;
+import blnu;
 
 public class LbsPackHorizontalListView
   extends HorizontalListView

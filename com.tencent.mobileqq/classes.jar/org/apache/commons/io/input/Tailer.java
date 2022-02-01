@@ -235,15 +235,15 @@ public class Tailer
   {
     // Byte code:
     //   0: lconst_0
-    //   1: lstore 5
+    //   1: lstore 7
     //   3: lconst_0
-    //   4: lstore 7
+    //   4: lstore 5
     //   6: aconst_null
     //   7: astore 12
     //   9: aload 12
-    //   11: astore 13
+    //   11: astore 14
     //   13: aload 12
-    //   15: astore 14
+    //   15: astore 13
     //   17: aload 12
     //   19: astore 11
     //   21: aload_0
@@ -251,24 +251,24 @@ public class Tailer
     //   25: istore 9
     //   27: aload 12
     //   29: astore 10
-    //   31: lload 5
+    //   31: lload 7
     //   33: lstore_1
-    //   34: lload 7
+    //   34: lload 5
     //   36: lstore_3
     //   37: iload 9
     //   39: ifeq +268 -> 307
     //   42: aload 12
     //   44: astore 10
-    //   46: lload 5
+    //   46: lload 7
     //   48: lstore_1
-    //   49: lload 7
+    //   49: lload 5
     //   51: lstore_3
     //   52: aload 12
     //   54: ifnonnull +253 -> 307
     //   57: aload 12
-    //   59: astore 13
+    //   59: astore 14
     //   61: aload 12
-    //   63: astore 14
+    //   63: astore 13
     //   65: aload 12
     //   67: astore 11
     //   69: new 124	java/io/RandomAccessFile
@@ -283,9 +283,9 @@ public class Tailer
     //   88: aload 12
     //   90: ifnonnull +133 -> 223
     //   93: aload 12
-    //   95: astore 13
+    //   95: astore 14
     //   97: aload 12
-    //   99: astore 14
+    //   99: astore 13
     //   101: aload 12
     //   103: astore 11
     //   105: aload_0
@@ -293,7 +293,7 @@ public class Tailer
     //   109: invokestatic 191	java/lang/Thread:sleep	(J)V
     //   112: goto -103 -> 9
     //   115: astore 12
-    //   117: aload 13
+    //   117: aload 14
     //   119: astore 10
     //   121: aload 10
     //   123: astore 11
@@ -314,9 +314,9 @@ public class Tailer
     //   160: return
     //   161: astore 10
     //   163: aload 12
-    //   165: astore 13
+    //   165: astore 14
     //   167: aload 12
-    //   169: astore 14
+    //   169: astore 13
     //   171: aload 12
     //   173: astore 11
     //   175: aload_0
@@ -324,7 +324,7 @@ public class Tailer
     //   179: invokeinterface 208 1 0
     //   184: goto -96 -> 88
     //   187: astore 12
-    //   189: aload 14
+    //   189: aload 13
     //   191: astore 10
     //   193: aload 10
     //   195: astore 11
@@ -340,18 +340,18 @@ public class Tailer
     //   219: invokevirtual 205	org/apache/commons/io/input/Tailer:stop	()V
     //   222: return
     //   223: aload 12
-    //   225: astore 13
+    //   225: astore 14
     //   227: aload 12
-    //   229: astore 14
+    //   229: astore 13
     //   231: aload 12
     //   233: astore 11
     //   235: aload_0
     //   236: getfield 53	org/apache/commons/io/input/Tailer:end	Z
     //   239: ifeq +841 -> 1080
     //   242: aload 12
-    //   244: astore 13
+    //   244: astore 14
     //   246: aload 12
-    //   248: astore 14
+    //   248: astore 13
     //   250: aload 12
     //   252: astore 11
     //   254: aload_0
@@ -359,40 +359,40 @@ public class Tailer
     //   258: invokevirtual 213	java/io/File:length	()J
     //   261: lstore_1
     //   262: aload 12
-    //   264: astore 13
+    //   264: astore 14
     //   266: aload 12
-    //   268: astore 14
+    //   268: astore 13
     //   270: aload 12
     //   272: astore 11
     //   274: aload_0
     //   275: getfield 49	org/apache/commons/io/input/Tailer:file	Ljava/io/File;
     //   278: invokevirtual 216	java/io/File:lastModified	()J
-    //   281: lstore 7
+    //   281: lstore 5
     //   283: aload 12
-    //   285: astore 13
+    //   285: astore 14
     //   287: aload 12
-    //   289: astore 14
+    //   289: astore 13
     //   291: aload 12
     //   293: astore 11
     //   295: aload 12
     //   297: lload_1
     //   298: invokevirtual 159	java/io/RandomAccessFile:seek	(J)V
     //   301: lload_1
-    //   302: lstore 5
+    //   302: lstore 7
     //   304: goto -295 -> 9
     //   307: aload 10
-    //   309: astore 13
+    //   309: astore 14
     //   311: aload 10
-    //   313: astore 14
+    //   313: astore 13
     //   315: aload 10
     //   317: astore 11
     //   319: aload_0
     //   320: invokevirtual 132	org/apache/commons/io/input/Tailer:getRun	()Z
     //   323: ifeq +578 -> 901
     //   326: aload 10
-    //   328: astore 13
+    //   328: astore 14
     //   330: aload 10
-    //   332: astore 14
+    //   332: astore 13
     //   334: aload 10
     //   336: astore 11
     //   338: aload_0
@@ -401,9 +401,9 @@ public class Tailer
     //   343: invokestatic 222	org/apache/commons/io/FileUtils:isFileNewer	(Ljava/io/File;J)Z
     //   346: istore 9
     //   348: aload 10
-    //   350: astore 13
+    //   350: astore 14
     //   352: aload 10
-    //   354: astore 14
+    //   354: astore 13
     //   356: aload 10
     //   358: astore 11
     //   360: aload_0
@@ -415,9 +415,9 @@ public class Tailer
     //   372: lcmp
     //   373: ifge +283 -> 656
     //   376: aload 10
-    //   378: astore 13
+    //   378: astore 14
     //   380: aload 10
-    //   382: astore 14
+    //   382: astore 13
     //   384: aload 10
     //   386: astore 11
     //   388: aload_0
@@ -472,35 +472,35 @@ public class Tailer
     //   495: aload 11
     //   497: astore 15
     //   499: aload 11
-    //   501: astore 14
+    //   501: astore 16
     //   503: aload 11
-    //   505: astore 16
+    //   505: astore 14
     //   507: aload 10
     //   509: invokevirtual 202	java/io/RandomAccessFile:close	()V
     //   512: aload 11
     //   514: astore 15
     //   516: aload 11
-    //   518: astore 14
+    //   518: astore 16
     //   520: aload 11
-    //   522: astore 16
+    //   522: astore 14
     //   524: aload 12
     //   526: athrow
     //   527: astore 10
     //   529: aload 11
     //   531: astore 15
     //   533: aload 11
-    //   535: astore 14
+    //   535: astore 16
     //   537: aload 11
-    //   539: astore 16
+    //   539: astore 14
     //   541: aload_0
     //   542: getfield 57	org/apache/commons/io/input/Tailer:listener	Lorg/apache/commons/io/input/TailerListener;
     //   545: invokeinterface 208 1 0
     //   550: aload 11
     //   552: astore 15
     //   554: aload 11
-    //   556: astore 14
+    //   556: astore 16
     //   558: aload 11
-    //   560: astore 16
+    //   560: astore 14
     //   562: aload_0
     //   563: getfield 51	org/apache/commons/io/input/Tailer:delayMillis	J
     //   566: invokestatic 191	java/lang/Thread:sleep	(J)V
@@ -523,9 +523,9 @@ public class Tailer
     //   605: aload 11
     //   607: astore 15
     //   609: aload 11
-    //   611: astore 14
+    //   611: astore 16
     //   613: aload 11
-    //   615: astore 16
+    //   615: astore 14
     //   617: aload 13
     //   619: aload 10
     //   621: invokevirtual 174	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
@@ -533,9 +533,9 @@ public class Tailer
     //   627: aload 11
     //   629: astore 15
     //   631: aload 11
-    //   633: astore 14
+    //   633: astore 16
     //   635: aload 11
-    //   637: astore 16
+    //   637: astore 14
     //   639: aload 10
     //   641: invokevirtual 202	java/io/RandomAccessFile:close	()V
     //   644: goto -132 -> 512
@@ -548,9 +548,9 @@ public class Tailer
     //   659: lcmp
     //   660: ifle +176 -> 836
     //   663: aload 10
-    //   665: astore 13
+    //   665: astore 14
     //   667: aload 10
-    //   669: astore 14
+    //   669: astore 13
     //   671: aload 10
     //   673: astore 11
     //   675: aload_0
@@ -558,9 +558,9 @@ public class Tailer
     //   678: invokespecial 227	org/apache/commons/io/input/Tailer:readLines	(Ljava/io/RandomAccessFile;)J
     //   681: lstore_1
     //   682: aload 10
-    //   684: astore 13
+    //   684: astore 14
     //   686: aload 10
-    //   688: astore 14
+    //   688: astore 13
     //   690: aload 10
     //   692: astore 11
     //   694: aload_0
@@ -568,9 +568,9 @@ public class Tailer
     //   698: invokevirtual 216	java/io/File:lastModified	()J
     //   701: lstore_3
     //   702: aload 10
-    //   704: astore 13
+    //   704: astore 14
     //   706: aload 10
-    //   708: astore 14
+    //   708: astore 13
     //   710: aload 10
     //   712: astore 11
     //   714: aload_0
@@ -579,44 +579,44 @@ public class Tailer
     //   721: aload 10
     //   723: ifnull +20 -> 743
     //   726: aload 10
-    //   728: astore 13
+    //   728: astore 14
     //   730: aload 10
-    //   732: astore 14
+    //   732: astore 13
     //   734: aload 10
     //   736: astore 11
     //   738: aload 10
     //   740: invokevirtual 202	java/io/RandomAccessFile:close	()V
     //   743: aload 10
-    //   745: astore 13
+    //   745: astore 14
     //   747: aload 10
-    //   749: astore 14
+    //   749: astore 13
     //   751: aload 10
     //   753: astore 11
     //   755: aload_0
     //   756: getfield 51	org/apache/commons/io/input/Tailer:delayMillis	J
     //   759: invokestatic 191	java/lang/Thread:sleep	(J)V
     //   762: aload 10
-    //   764: astore 13
+    //   764: astore 14
     //   766: aload 10
-    //   768: astore 14
+    //   768: astore 13
     //   770: aload 10
     //   772: astore 11
     //   774: aload_0
     //   775: invokevirtual 132	org/apache/commons/io/input/Tailer:getRun	()Z
     //   778: ifeq +296 -> 1074
     //   781: aload 10
-    //   783: astore 13
+    //   783: astore 14
     //   785: aload 10
-    //   787: astore 14
+    //   787: astore 13
     //   789: aload 10
     //   791: astore 11
     //   793: aload_0
     //   794: getfield 65	org/apache/commons/io/input/Tailer:reOpen	Z
     //   797: ifeq +277 -> 1074
     //   800: aload 10
-    //   802: astore 13
+    //   802: astore 14
     //   804: aload 10
-    //   806: astore 14
+    //   806: astore 13
     //   808: aload 10
     //   810: astore 11
     //   812: new 124	java/io/RandomAccessFile
@@ -633,18 +633,18 @@ public class Tailer
     //   836: iload 9
     //   838: ifeq +239 -> 1077
     //   841: aload 10
-    //   843: astore 13
+    //   843: astore 14
     //   845: aload 10
-    //   847: astore 14
+    //   847: astore 13
     //   849: aload 10
     //   851: astore 11
     //   853: aload 10
     //   855: lconst_0
     //   856: invokevirtual 159	java/io/RandomAccessFile:seek	(J)V
     //   859: aload 10
-    //   861: astore 13
+    //   861: astore 14
     //   863: aload 10
-    //   865: astore 14
+    //   865: astore 13
     //   867: aload 10
     //   869: astore 11
     //   871: aload_0
@@ -652,9 +652,9 @@ public class Tailer
     //   874: invokespecial 227	org/apache/commons/io/input/Tailer:readLines	(Ljava/io/RandomAccessFile;)J
     //   877: lstore_1
     //   878: aload 10
-    //   880: astore 13
+    //   880: astore 14
     //   882: aload 10
-    //   884: astore 14
+    //   884: astore 13
     //   886: aload 10
     //   888: astore 11
     //   890: aload_0
@@ -705,7 +705,7 @@ public class Tailer
     //   999: astore 10
     //   1001: goto -35 -> 966
     //   1004: astore 10
-    //   1006: aload 14
+    //   1006: aload 16
     //   1008: astore 11
     //   1010: goto -44 -> 966
     //   1013: astore 12
@@ -746,7 +746,7 @@ public class Tailer
     //   1088: lstore_1
     //   1089: goto -560 -> 529
     //   1092: astore 12
-    //   1094: aload 16
+    //   1094: aload 14
     //   1096: astore 10
     //   1098: goto -977 -> 121
     // Local variable table:
@@ -754,8 +754,8 @@ public class Tailer
     //   0	1101	0	this	Tailer
     //   33	1056	1	l1	long
     //   36	862	3	l2	long
-    //   1	656	5	l3	long
-    //   4	278	7	l4	long
+    //   4	653	5	l3	long
+    //   1	302	7	l4	long
     //   25	812	9	bool	boolean
     //   29	123	10	localObject1	Object
     //   161	1	10	localFileNotFoundException1	java.io.FileNotFoundException
@@ -794,14 +794,14 @@ public class Tailer
     //   1057	1	12	localObject17	Object
     //   1069	1	12	localObject18	Object
     //   1092	1	12	localInterruptedException4	java.lang.InterruptedException
-    //   11	368	13	localObject19	Object
+    //   15	368	13	localObject19	Object
     //   458	7	13	localThrowable4	Throwable
     //   475	586	13	localObject20	Object
-    //   15	368	14	localObject21	Object
+    //   11	368	14	localObject21	Object
     //   471	11	14	localObject22	Object
-    //   501	506	14	localObject23	Object
+    //   505	590	14	localObject23	Object
     //   497	153	15	localObject24	Object
-    //   505	590	16	localObject25	Object
+    //   501	506	16	localObject25	Object
     // Exception table:
     //   from	to	target	type
     //   21	27	115	java/lang/InterruptedException

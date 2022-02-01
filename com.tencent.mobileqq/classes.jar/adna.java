@@ -1,33 +1,39 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class adna
-  implements bkhw
 {
-  public adna(AssociatedAccountActivity paramAssociatedAccountActivity, boolean paramBoolean, bkho parambkho) {}
+  public static final JSONObject a = new JSONObject();
   
-  public void OnClick(View paramView, int paramInt)
+  public static JSONObject a(Bundle paramBundle)
   {
-    int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
+    JSONObject localJSONObject = new JSONObject();
+    if (paramBundle == null) {
+      return a;
     }
-    this.jdField_a_of_type_Bkho.cancel();
-    switch (i)
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
     {
-    default: 
-      return;
-    case 0: 
-      AssociatedAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007149", "0X8007149", 0, 0, "", "", "", "");
-      return;
-    case 2: 
-      AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007145", "0X8007145", 0, 0, "", "", "", "");
-      return;
+      String str = (String)localIterator.next();
+      Object localObject2 = paramBundle.get(str);
+      Object localObject1 = localObject2;
+      if ((localObject2 instanceof Bundle)) {
+        localObject1 = a((Bundle)localObject2);
+      }
+      try
+      {
+        localJSONObject.put(str, localObject1);
+      }
+      catch (JSONException localJSONException) {}
+      if (QLog.isColorLevel()) {
+        QLog.e("APIParam", 2, localJSONException.getMessage(), localJSONException);
+      }
     }
-    AssociatedAccountActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007148", "0X8007148", 0, 0, "", "", "", "");
+    return localJSONObject;
   }
 }
 

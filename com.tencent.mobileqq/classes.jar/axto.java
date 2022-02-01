@@ -1,36 +1,25 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import java.util.List;
+import java.util.Comparator;
 
-class axto
-  extends FragmentPagerAdapter
+final class axto
+  implements Comparator<String>
 {
-  private List<Fragment> jdField_a_of_type_JavaUtilList;
-  
-  axto(FragmentManager paramFragmentManager, List<Fragment> paramList)
+  public int a(String paramString1, String paramString2)
   {
-    super(paramList);
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  Fragment a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
-      return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramString1 != null) && (paramString2 != null)) {
+      if (paramString1.length() <= paramString2.length()) {}
     }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    return 2;
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    while (paramString1 != null)
+    {
+      return -1;
+      if (paramString1.length() >= paramString2.length()) {
+        break;
+      }
+      return 1;
+    }
+    if (paramString2 != null) {
+      return 1;
+    }
+    return 0;
   }
 }
 

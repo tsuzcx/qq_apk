@@ -1,31 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.widget.MultiImageTextView;
+import android.os.Build.VERSION;
+import android.os.MessageQueue.IdleHandler;
+import android.view.WindowManager.BadTokenException;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqih
-  implements DialogInterface.OnDismissListener
+  implements MessageQueue.IdleHandler
 {
-  public aqih(LocationSelectActivity paramLocationSelectActivity) {}
+  public aqih(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean queueIdle()
   {
-    LocationSelectActivity.a(this.a).setRightTextColor(2);
-    if (AppSetting.c)
-    {
-      LocationSelectActivity.b(this.a).setContentDescription(anni.a(2131705103) + LocationSelectActivity.a(this.a).name);
-      LocationSelectActivity.a(this.a).setContentDescription(anni.a(2131705101) + LocationSelectActivity.a(this.a).a().getText());
+    if (bdax.d(bdax.b)) {
+      this.a.a(true);
     }
-    paramDialogInterface = LocationSelectActivity.a(this.a);
-    if (LocationSelectActivity.a(this.a) == 0)
+    for (;;)
     {
-      bcst.b(this.a.app, "CliOper", "", "", "0X8004248", "0X8004248", 0, 0, paramDialogInterface[0], paramDialogInterface[1], paramDialogInterface[2], "");
-      return;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+      DynamicAvatarRecordActivity.a(this.a);
+      if (Build.VERSION.SDK_INT < 14) {
+        this.a.jdField_a_of_type_Bhpc = bhlq.a(this.a, 230).setMessage(anzj.a(2131702464)).setPositiveButton(this.a.getString(2131693485), new aqii(this));
+      }
+      try
+      {
+        this.a.jdField_a_of_type_Bhpc.setCancelable(false);
+        this.a.jdField_a_of_type_Bhpc.show();
+        if (QLog.isColorLevel()) {
+          QLog.i("PEAK_CAMERA", 2, "Added camera view.");
+        }
+        return false;
+        this.a.a(false);
+      }
+      catch (WindowManager.BadTokenException localBadTokenException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("DynamicAvatarRecordActivity", 2, "", localBadTokenException);
+          }
+        }
+      }
     }
-    bcst.b(this.a.app, "CliOper", "", "", "0X800424A", "0X800424A", 0, 0, paramDialogInterface[0], paramDialogInterface[1], paramDialogInterface[2], "");
   }
 }
 

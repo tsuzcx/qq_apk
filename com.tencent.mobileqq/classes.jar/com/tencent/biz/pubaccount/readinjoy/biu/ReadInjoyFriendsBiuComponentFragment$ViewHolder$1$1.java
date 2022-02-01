@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.biu;
 
-import oux;
-import ouy;
+import onk;
+import onl;
 
 public class ReadInjoyFriendsBiuComponentFragment$ViewHolder$1$1
   implements Runnable
 {
-  public ReadInjoyFriendsBiuComponentFragment$ViewHolder$1$1(ouy paramouy) {}
+  public ReadInjoyFriendsBiuComponentFragment$ViewHolder$1$1(onl paramonl) {}
   
   public void run()
   {
-    oux.a(this.a.a, this.a.a.a);
+    onk.a(this.a.a, this.a.a.a);
   }
 }
 

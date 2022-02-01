@@ -1,16 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.RunnableUpdateThumb;
 
 public class alwb
-  implements DialogInterface.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public alwb(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public alwb(NewFlowCameraActivity.RunnableUpdateThumb paramRunnableUpdateThumb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.finish();
+    if ((NewFlowCameraActivity.a(this.a.this$0) != null) && (NewFlowCameraActivity.b(this.a.this$0) != null) && (NewFlowCameraActivity.a(this.a.this$0) != null))
+    {
+      NewFlowCameraActivity.a(this.a.this$0).setVisibility(8);
+      NewFlowCameraActivity.b(this.a.this$0).setImageBitmap(this.a.b);
+      NewFlowCameraActivity.b(this.a.this$0).setVisibility(0);
+      NewFlowCameraActivity.a(this.a.this$0).setText(NewFlowCameraActivity.c(this.a.this$0) + "");
+      NewFlowCameraActivity.a(this.a.this$0).setVisibility(0);
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

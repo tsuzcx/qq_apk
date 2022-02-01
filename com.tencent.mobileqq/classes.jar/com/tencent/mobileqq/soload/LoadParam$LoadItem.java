@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.soload;
 
-import akww;
-import bcnx;
+import alil;
+import bdgp;
 import java.io.Serializable;
 
 public class LoadParam$LoadItem
@@ -25,12 +25,12 @@ public class LoadParam$LoadItem
       this.lops = paramLoadOptions;
       return;
     }
-    this.lops = new bcnx().a();
+    this.lops = new bdgp().a();
   }
   
   public boolean isSame(LoadItem paramLoadItem)
   {
-    if (!akww.c(paramLoadItem.name, this.name)) {
+    if (!alil.c(paramLoadItem.name, this.name)) {
       return false;
     }
     return this.lops.isSame(paramLoadItem.lops);

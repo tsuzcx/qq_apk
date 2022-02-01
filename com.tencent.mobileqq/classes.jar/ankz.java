@@ -1,30 +1,27 @@
-import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ankz
+class ankz
 {
-  public static String a(String paramString)
+  public int a;
+  public String a;
+  public List<ankx> a;
+  public List<ankw> b = new ArrayList();
+  
+  public ankz()
   {
-    String str2 = "";
-    String str1 = str2;
-    int i;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      i = paramString.lastIndexOf("diydoutu@");
-      str1 = str2;
-      if (i >= 0) {
-        str1 = paramString.substring(i, paramString.length());
-      }
-    }
-    paramString = str1;
-    if (!TextUtils.isEmpty(str1))
-    {
-      i = str1.lastIndexOf(".");
-      paramString = str1;
-      if (i >= 0) {
-        paramString = str1.substring(0, i);
-      }
-    }
-    return paramString;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("ThunderConfig{");
+    localStringBuffer.append("mPageId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mMd5='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mCmdConfigs=").append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append(", mCGIConfigs=").append(this.b);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

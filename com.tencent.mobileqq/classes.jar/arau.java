@@ -1,63 +1,26 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.qq.android.dexposed.XC_MethodHook;
+import com.qq.android.dexposed.XC_MethodHook.MethodHookParam;
+import com.tencent.mobileqq.config.QConfigureException;
+import com.tencent.qphone.base.util.QLog;
 
-public class arau
-  extends aqkz<arat>
+final class arau
+  extends XC_MethodHook
 {
-  public static arat a()
+  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
   {
-    return (arat)aqlk.a().a(483);
-  }
-  
-  @NonNull
-  public arat a(int paramInt)
-  {
-    return new arat();
-  }
-  
-  @Nullable
-  public arat a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return arat.a(paramArrayOfaqlg);
+    try
+    {
+      paramMethodHookParam = araq.a();
+      if ((paramMethodHookParam.contains("QConfigManager.save")) && (paramMethodHookParam.contains("onParsed"))) {
+        araq.a(new QConfigureException(paramMethodHookParam), "Can not switch thread when parsing config.", "QConfigWatchDog_threadswitch");
+      }
+      return;
     }
-    return null;
-  }
-  
-  public void a(arat paramarat)
-  {
-    BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt("key_tencent_doc_history_tab_tips_count", 0).apply();
-  }
-  
-  public Class<arat> clazz()
-  {
-    return arat.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 483;
+    catch (Exception paramMethodHookParam)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QConfigWatchDog", 2, "hook thread exception.", paramMethodHookParam);
+    }
   }
 }
 

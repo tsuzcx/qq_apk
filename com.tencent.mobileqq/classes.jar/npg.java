@@ -1,24 +1,25 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
 
 public class npg
-  implements bkhw
+  implements nmg
 {
-  public npg(EqqAccountDetailActivity paramEqqAccountDetailActivity, nyl paramnyl, bkho parambkho, int paramInt) {}
+  public npg(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void loaded(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b) {}
-    do
-    {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b(this.jdField_a_of_type_Nyl, paramInt + 1);
-      this.jdField_a_of_type_Bkho.dismiss();
-    } while ((!((oda)EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).getManager(88)).a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity))) || (this.jdField_a_of_type_Int == paramInt));
-    ((odu)EqqAccountDetailActivity.p(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).a(88)).a(134243867, EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), null, null, null, paramInt + 1, false);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("forceUpdate", 2, "loaded code:" + paramInt);
+    }
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.notifyCacheReady(paramInt);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

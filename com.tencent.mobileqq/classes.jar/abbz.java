@@ -1,21 +1,66 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.image.URLImageView;
+import android.text.TextUtils;
+import java.util.List;
 
-class abbz
-  implements Animation.AnimationListener
+public class abbz
 {
-  abbz(abbt paramabbt, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  private static abca jdField_a_of_type_Abca = new abca();
+  private abbu jdField_a_of_type_Abbu = new abbt();
+  private abbu b = new abcc();
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static abbz a()
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    return (abbz)jdField_a_of_type_Abca.getInstance();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public awwm a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString2)) {}
+    do
+    {
+      return null;
+      if ("LRC".equals(paramString2.toUpperCase())) {
+        return this.jdField_a_of_type_Abbu.a(paramString1);
+      }
+    } while (!"QRC".equals(paramString2.toUpperCase()));
+    return this.b.a(paramString1);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public awwo a(awwm paramawwm, long paramLong)
+  {
+    Object localObject;
+    if (paramawwm == null)
+    {
+      localObject = null;
+      return localObject;
+    }
+    List localList = paramawwm.a();
+    if (localList == null) {
+      return null;
+    }
+    int j = localList.size();
+    if (j < 1) {
+      return null;
+    }
+    int i = 0;
+    label43:
+    if (i < j - 1)
+    {
+      paramawwm = (awwo)localList.get(i);
+      localObject = (awwo)localList.get(i + 1);
+      if ((paramLong < paramawwm.a) || (((awwo)localObject).a < paramLong)) {}
+    }
+    for (;;)
+    {
+      localObject = paramawwm;
+      if (paramawwm != null) {
+        break;
+      }
+      return (awwo)localList.get(j - 1);
+      i += 1;
+      break label43;
+      paramawwm = null;
+    }
+  }
 }
 
 

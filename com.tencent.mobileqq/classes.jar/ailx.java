@@ -1,69 +1,20 @@
-import android.content.Context;
-import android.util.Base64;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.XListView;
 
-public class ailx
-  implements aimh
+class ailx
+  implements blih
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
+  ailx(ailn paramailn) {}
   
-  public ailx(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public int a()
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    return 66;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition() == this.a.jdField_a_of_type_ComTencentWidgetXListView.getCount() - 1) && (this.a.jdField_a_of_type_Amot != null) && (this.a.jdField_a_of_type_Amot.a() != 0) && (this.a.jdField_a_of_type_Amot.a()))
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558649, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362506));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362505));
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847334);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aily(this));
+      this.a.jdField_a_of_type_Amot.b();
+      ailn.a(this.a, this.a.jdField_a_of_type_Amot.a(), 10);
     }
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof String))) {
-      paramVarArgs = new String(Base64.decode((String)paramVarArgs[0], 0));
-    }
-    try
-    {
-      paramVarArgs = new JSONObject(paramVarArgs);
-      String str = paramVarArgs.getString("content");
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      this.jdField_a_of_type_JavaLangString = paramVarArgs.getString("url");
-      label150:
-      return this.jdField_a_of_type_AndroidViewView;
-    }
-    catch (JSONException paramVarArgs)
-    {
-      break label150;
-    }
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 17;
   }
 }
 

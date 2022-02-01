@@ -1,38 +1,41 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0x87a.RspBody;
 
-class avww
-  extends anxg
+final class avww
+  extends ayxn
 {
-  avww(avwv paramavwv) {}
+  avww(Activity paramActivity, String paramString, Runnable paramRunnable) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    super.a(paramInt1, paramInt2, paramString);
-    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0))
+    QLog.e("FaceLoginHelper", 1, new Object[] { "cmd : ", paramString1, " code : ", Integer.valueOf(paramInt), " message : ", paramString2 });
+    if (paramInt == 89) {
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131698101), 0).a();
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationHandler", 2, new Object[] { "onTroopManagerSuccess: invoked. 主动退群 or 解散群", " reqtype: ", Integer.valueOf(paramInt1), " troopUin: ", paramString });
+      if (this.jdField_a_of_type_JavaLangRunnable != null) {
+        this.jdField_a_of_type_JavaLangRunnable.run();
       }
-      avzs.a(this.a.app, 1, paramString);
+      return;
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, 0).a();
     }
   }
   
-  protected void b(String paramString, int paramInt)
+  public void a(oidb_0x87a.RspBody paramRspBody)
   {
-    super.b(paramString, paramInt);
-    if (!TextUtils.isEmpty(paramString))
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, AuthDevVerifyCodeActivity.class);
+    localIntent.putExtra("k_from", "f_SetFaceData");
+    if (this.jdField_a_of_type_JavaLangString == null) {}
+    for (paramRspBody = "";; paramRspBody = this.jdField_a_of_type_JavaLangString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationHandler", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
-      }
-      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-      if ((localBaseActivity != null) && (this.a.a.a())) {
-        QQToast.a(localBaseActivity, 2131692847, 1).a();
-      }
-      avzs.a(this.a.app, 1, paramString);
+      localIntent.putExtra("phone_num", paramRspBody);
+      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 11);
+      return;
     }
   }
 }

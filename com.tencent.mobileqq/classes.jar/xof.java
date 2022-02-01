@@ -1,107 +1,170 @@
-import android.os.SystemClock;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentHelperCallback.1;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class xof
-  extends JobSegment<StoryVideoItem, StoryVideoItem>
-  implements whm
+  implements ygp
 {
-  private StoryVideoItem jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
-  private xoh jdField_a_of_type_Xoh;
+  private xof(xoa paramxoa) {}
   
-  public xof(VideoViewVideoHolder paramVideoViewVideoHolder, xoh paramxoh)
+  public void P_()
   {
-    this.jdField_a_of_type_Xoh = paramxoh;
+    int i = xoa.a(this.a).b();
+    xoa.a(this.a).setSelectionFromBottom(i, 0);
   }
   
-  protected void a(StoryVideoItem paramStoryVideoItem)
+  public void a()
   {
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 4);
-    super.notifyResult(paramStoryVideoItem);
+    xoa.a(this.a).p();
   }
   
-  protected void a(JobContext paramJobContext, StoryVideoItem paramStoryVideoItem)
+  public void a(CommentEntry paramCommentEntry)
   {
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 3);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    int i = paramStoryVideoItem.isMaskDownloaded();
-    if (i == 0)
+    yme localyme = (yme)wth.a(11);
+    wse localwse = (wse)wth.a(17);
+    boolean bool = xoa.a(this.a).a();
+    if ((!xoa.a(this.a).a(bool)) && (xoa.a(this.a).a(bool) == null))
     {
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 4);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Xpl.a(8);
-      yqp.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display ... %s", paramStoryVideoItem.getDownloadMaskUrl());
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, anni.a(2131715111));
-      this.jdField_a_of_type_Xoh.a().a(paramStoryVideoItem.mVid, 1, true, this);
-      return;
+      CommentEntry localCommentEntry = ygl.a(xoa.a(this.a).a(bool) - xoa.a(this.a).a(bool).size());
+      xoa.a(this.a).c(localCommentEntry, bool);
+      xoa.a(this.a).a(localCommentEntry, bool);
     }
-    if (i == 1)
+    xoa.a(this.a).a(paramCommentEntry, bool);
+    yuk.b("Q.qqstory.player.CommentFloatDialog", "after add comment. mCommentCount = %d, mFanCommentCount = %d, mFanCommentCount = %d.", Integer.valueOf(xoa.a(this.a).a.mCommentCount), Integer.valueOf(xoa.a(this.a).a.mFanCommentCount), Integer.valueOf(xoa.a(this.a).a.mFriendCommentCount));
+    int i;
+    if (xoa.a(this.a).a.mDenyComment == 1)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b.setVisibility(0);
-      xfe.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b, paramStoryVideoItem.mLocalMaskPath, paramStoryVideoItem.getDownloadMaskUrl(), VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder));
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, anni.a(2131715106));
+      i = 1;
+      if (i != 0)
+      {
+        QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131701089), 0).a();
+        paramCommentEntry.status = 2;
+      }
+      xoa.a(this.a).p();
+      ThreadManager.getUIHandler().postDelayed(new CommentFloatDialog.OnCommentHelperCallback.1(this), 50L);
+      xoa.a(this.a).a = ((CommentLikeFeedItem)localyme.a(xoa.a(this.a).a));
+      if (!xoa.a(this.a).a()) {
+        break label347;
+      }
+      if (!bool) {
+        break label334;
+      }
+      paramCommentEntry.type = 4;
+      paramCommentEntry.pbType = 1;
+      label313:
+      localwse.a(paramCommentEntry);
     }
     for (;;)
     {
-      a(paramStoryVideoItem);
+      if (i == 0) {
+        b(paramCommentEntry);
+      }
       return;
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b.setVisibility(8);
+      i = 0;
+      break;
+      label334:
+      paramCommentEntry.type = 3;
+      paramCommentEntry.pbType = 0;
+      break label313;
+      label347:
+      paramCommentEntry.pbType = xoa.a(this.a).a.getCommentLikeType();
+      localwse.b(paramCommentEntry);
     }
   }
   
-  public void a(String paramString, int paramInt)
+  public void b(int paramInt)
   {
-    if (!isCanceled())
+    boolean bool = xoa.a(this.a).a();
+    Object localObject = xoa.a(this.a).a(bool);
+    if ((paramInt < 0) || (paramInt >= ((List)localObject).size()))
     {
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, "DD", SystemClock.uptimeMillis());
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b.setVisibility(0);
-      xfe.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalMaskPath, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getDownloadMaskUrl(), VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder));
-      a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      yuk.d("Q.qqstory.player.CommentFloatDialog", "delete comment error , IndexOutOfBoundsException , need index = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(((List)localObject).size()) });
       return;
     }
-    yqp.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display onSuccess. stream canceled.");
-  }
-  
-  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
-  {
-    if (!isCanceled())
+    localObject = (CommentEntry)xoa.a(this.a).a(bool).get(paramInt);
+    if (((CommentEntry)localObject).status != 0)
     {
-      yqp.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display error. vid :%s, error=%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramErrorMessage });
-      VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 2);
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
-      VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, paramErrorMessage.errorCode);
-      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), "doodle download failed"));
+      xoa.a(this.a).a((CommentEntry)localObject, bool);
       return;
     }
-    yqp.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display error. stream canceled.");
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    if (!isCanceled())
+    if (!bhnv.d(this.a.getContext()))
     {
-      yqp.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display cancel. vid :%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-      VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 2);
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
-      VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 1234);
-      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), "doodle download cancel"));
+      QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131701090), 0).a();
+      yuk.d("Q.qqstory.player.CommentFloatDialog", "delete comment failed. invalidate network.");
       return;
     }
-    yqp.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display cancel. stream canceled.");
+    ((CommentEntry)localObject).status = 1;
+    wpm.a((CommentEntry)localObject, new xog(this, (CommentEntry)localObject, bool));
   }
   
-  public void onCancel()
+  public void b(CommentEntry paramCommentEntry)
   {
-    super.onCancel();
-    yqp.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "DoodleSegment onCancel");
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) {
-      this.jdField_a_of_type_Xoh.a().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 1);
+    wqa.a(xoa.a(this.a).a, paramCommentEntry, xoa.c(this.a), xoa.a(this.a), new xoh(this));
+  }
+  
+  public void c()
+  {
+    Object localObject = xoa.a(this.a).a("CommentFloatDialog");
+    if (localObject != null) {
+      ((zti)localObject).a(false);
     }
+    localObject = xoa.a(this.a).getLayoutParams();
+    if (localObject == null) {
+      localObject = new ViewGroup.LayoutParams(-1, this.a.getContext().getResources().getDimensionPixelOffset(2131298898));
+    }
+    for (;;)
+    {
+      xoa.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
+      return;
+      ((ViewGroup.LayoutParams)localObject).height = this.a.getContext().getResources().getDimensionPixelOffset(2131298900);
+    }
+  }
+  
+  public void d()
+  {
+    boolean bool = false;
+    Object localObject = xoa.a(this.a).a("CommentFloatDialog");
+    if (localObject != null)
+    {
+      if (xoa.a(this.a) != null)
+      {
+        if (!xoa.a(this.a).a(xoa.a(this.a).a())) {
+          bool = true;
+        }
+        ((zti)localObject).a(bool);
+      }
+    }
+    else
+    {
+      localObject = xoa.a(this.a).getLayoutParams();
+      if (localObject != null) {
+        break label119;
+      }
+      localObject = new ViewGroup.LayoutParams(-1, this.a.getContext().getResources().getDimensionPixelOffset(2131298898));
+    }
+    for (;;)
+    {
+      xoa.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
+      return;
+      ((zti)localObject).a(false);
+      break;
+      label119:
+      ((ViewGroup.LayoutParams)localObject).height = this.a.getContext().getResources().getDimensionPixelOffset(2131298898);
+    }
+  }
+  
+  public void g_(int paramInt)
+  {
+    xoa.a(this.a).setSelectionFromBottom(xoa.a(this.a).a() + paramInt, 0);
   }
 }
 

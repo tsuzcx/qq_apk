@@ -1,38 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.weseevideo.model.MediaModel;
+import dov.com.qq.im.aeeditor.module.export.AEEditorGenerateRunnable;
 
-class bpbv
-  implements boqn
+public class bpbv
 {
-  private int jdField_a_of_type_Int = -1;
-  private bpep jdField_a_of_type_Bpep;
-  private String jdField_a_of_type_JavaLangString = "";
+  public float a;
+  public int a;
+  public long a;
+  public MediaModel a;
+  public AEEditorGenerateRunnable a;
+  public String a;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
   
-  public bpbv(bpep parambpep)
+  public bpbv(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, MediaModel paramMediaModel)
   {
-    this.jdField_a_of_type_Bpep = parambpep;
-  }
-  
-  public void a(float paramFloat, String paramString, int paramInt) {}
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditVideoAblumList", 2, "download Res Finished , type id, " + this.jdField_a_of_type_Int + " isSuccess : " + paramBoolean + " url : " + paramString + " StickerStr : " + this.jdField_a_of_type_JavaLangString + " mParent : " + this.jdField_a_of_type_Bpep);
-    }
-    if ((this.jdField_a_of_type_Int != -1) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Bpep != null)) {
-      this.jdField_a_of_type_Bpep.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    }
+    this.g = paramString1;
+    this.h = paramString2;
+    this.i = paramString3;
+    this.j = paramString4;
+    this.b = paramString6;
+    this.c = paramString7;
+    this.f = paramString5;
+    this.d = paramString8;
+    this.jdField_a_of_type_ComTencentWeseevideoModelMediaModel = paramMediaModel;
+    this.e = "AEEDITOR_GENERATE_STATUS_WAIT";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 

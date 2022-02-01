@@ -1,18 +1,29 @@
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
 
 public class algb
-  implements aeov
+  implements alha
 {
-  public algb(LoginView paramLoginView) {}
+  public algb(DoodleView paramDoodleView) {}
   
   public void a()
   {
-    LoginView.a(this.a);
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a(paramInt1, paramInt2);
+    }
   }
   
   public void b()
   {
-    LoginView.a(this.a);
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).b();
+    }
   }
 }
 

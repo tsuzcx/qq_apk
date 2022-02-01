@@ -1,8 +1,12 @@
-import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface mrp
+class mrp
+  implements View.OnClickListener
 {
-  public abstract void a(Context paramContext, String paramString);
+  mrp(mro parammro) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

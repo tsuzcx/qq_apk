@@ -1,34 +1,21 @@
-import Wallet.AcsPullMsgRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import java.util.ArrayList;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class aftk
-  implements afua
+  implements URLDrawable.URLDrawableListener
 {
-  public aftk(ReminderListFragment paramReminderListFragment) {}
+  public aftk(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (paramBoolean)
-    {
-      paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
-      if (paramBundle != null)
-      {
-        paramBundle = paramBundle.msgs;
-        if ((paramBundle != null) && (!paramBundle.isEmpty()))
-        {
-          ArrayList localArrayList = new ArrayList(paramBundle.size());
-          ReminderListFragment.a(this.a, paramBundle, localArrayList, true);
-          return;
-        }
-        ReminderListFragment.b(this.a);
-        return;
-      }
-      ReminderListFragment.b(this.a);
-      return;
-    }
-    ReminderListFragment.a(this.a, anni.a(2131712152));
+    TroopInfoActivity.b(this.a);
   }
 }
 

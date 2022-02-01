@@ -25,7 +25,10 @@ public class TVKNetVideoInfo$DefnInfo
       DefnInfo localDefnInfo = (DefnInfo)super.clone();
       return localDefnInfo;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      localCloneNotSupportedException.printStackTrace();
+    }
     return null;
   }
   

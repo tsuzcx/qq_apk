@@ -1,80 +1,128 @@
-import android.content.res.Resources;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.PhoneContactAddBuilder.1;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Locale;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.PhoneContactAdd;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajle
-  implements ajlp
+public class ajle
+  extends ajjr
+  implements View.OnClickListener
 {
-  ajle(ajld paramajld) {}
-  
-  public void a(List<MayKnowRecommend> paramList)
+  public ajle(Context paramContext, QQAppInterface paramQQAppInterface, ajln paramajln, ajmf paramajmf)
   {
-    Object localObject2 = this.a.a(3);
-    boolean bool3 = ((ajky)localObject2).c;
-    Object localObject1 = ((ajky)localObject2).jdField_a_of_type_JavaLangObject;
-    Object localObject3;
-    boolean bool2;
-    boolean bool1;
-    if ((paramList != null) && (paramList.size() > 0))
+    super(paramContext, paramQQAppInterface, paramajln, paramajmf);
+    this.jdField_a_of_type_Blpv = a(paramContext);
+  }
+  
+  protected int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, View paramView)
+  {
+    ajlf localajlf;
+    PhoneContactAdd localPhoneContactAdd;
+    if ((paramView == null) || (!(paramView.getTag() instanceof ajlf)))
     {
-      ((ajky)localObject2).jdField_a_of_type_JavaLangString = ajld.a(this.a).getApp().getResources().getString(2131698064);
-      ((ajky)localObject2).b = "";
-      ((ajky)localObject2).jdField_a_of_type_JavaLangObject = paramList;
-      localObject3 = (anpk)ajld.a(this.a).getManager(159);
-      if (localObject3 == null) {
-        break label262;
+      localajlf = new ajlf();
+      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2131561601, localajlf);
+      localajlf.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361795));
+      localajlf.h = ((TextView)paramView.findViewById(2131371827));
+      localajlf.i = ((TextView)paramView.findViewById(2131376588));
+      localajlf.l = ((TextView)paramView.findViewById(2131362302));
+      localajlf.j = ((TextView)paramView.findViewById(2131377861));
+      localajlf.k = ((TextView)paramView.findViewById(2131376585));
+      localajlf.a = ((Button)paramView.findViewById(2131376575));
+      b(localajlf.jdField_f_of_type_AndroidWidgetImageView);
+      paramView.setTag(localajlf);
+      localajlf.g.setTag(localajlf);
+      localajlf.g.setOnClickListener(this);
+      a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_Ajmf, localajlf, this);
+      a(localajlf.g, false);
+      localPhoneContactAdd = ((ajmo)this.jdField_a_of_type_Ajmf).a;
+      if (TextUtils.isEmpty(localPhoneContactAdd.name)) {
+        break label346;
       }
-      bool2 = ((anpk)localObject3).b("sp_mayknow_entry_list_recommend");
-      bool1 = ((anpk)localObject3).b("sp_mayknow_entry_list_head");
+      localajlf.h.setVisibility(0);
+      localajlf.h.setText(localPhoneContactAdd.name);
+      label221:
+      localajlf.l.setVisibility(8);
+      localajlf.j.setVisibility(8);
+      if (TextUtils.isEmpty(localPhoneContactAdd.remindInfo)) {
+        break label358;
+      }
+      localajlf.i.setVisibility(0);
+      localajlf.i.setText(localPhoneContactAdd.remindInfo);
     }
     for (;;)
     {
-      label128:
-      Object localObject4;
-      if ((bool1) && (!bool2))
-      {
-        ((ajky)localObject2).c = true;
-        ajld.a(this.a);
-        if (QLog.isColorLevel())
-        {
-          localObject3 = Locale.getDefault();
-          bool1 = ((ajky)localObject2).c;
-          localObject4 = ((ajky)localObject2).jdField_a_of_type_JavaLangObject;
-          localObject2 = ((ajky)localObject2).b;
-          if (paramList == null) {
-            break label257;
-          }
-        }
-      }
-      label257:
-      for (int i = paramList.size();; i = 0)
-      {
-        QLog.i("CTEntryMng", 2, String.format((Locale)localObject3, "updateMayKnow pre: [%s,%s], cur: [%s,%s], subtitle: %s recommends:%s", new Object[] { Boolean.valueOf(bool3), localObject1, Boolean.valueOf(bool1), localObject4, localObject2, Integer.valueOf(i) }));
-        return;
-        ((ajky)localObject2).jdField_a_of_type_JavaLangObject = null;
-        ((ajky)localObject2).b = null;
-        break;
-        ((ajky)localObject2).c = false;
-        break label128;
-      }
-      label262:
-      bool1 = true;
-      bool2 = false;
+      localajlf.k.setVisibility(0);
+      localajlf.a.setVisibility(8);
+      localajlf.k.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131717458));
+      localajlf.jdField_f_of_type_JavaLangString = localPhoneContactAdd.unifiedCode;
+      localajlf.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Ajln.a(11, localPhoneContactAdd.unifiedCode));
+      return paramView;
+      localajlf = (ajlf)paramView.getTag();
+      break;
+      label346:
+      localajlf.h.setVisibility(8);
+      break label221;
+      label358:
+      localajlf.i.setVisibility(8);
     }
   }
   
-  public boolean a()
+  protected void a()
   {
-    ajky localajky = this.a.a(3);
-    ajlk localajlk = this.a.a(3);
-    if (QLog.isColorLevel()) {
-      QLog.d("CTEntryMng", 2, "isMayKnowEntryShown, canBeShown = " + localajky.c + ", flagValue = " + localajlk.b);
+    ThreadManager.postImmediately(new PhoneContactAddBuilder.1(this), null, true);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      a(paramView);
     }
-    return (localajky.c) && (localajlk.b == 0);
+    PhoneContactAdd localPhoneContactAdd;
+    do
+    {
+      do
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        localObject = paramView.getTag();
+      } while ((localObject == null) || (!(localObject instanceof ajlf)));
+      localPhoneContactAdd = ((ajmo)this.jdField_a_of_type_Ajmf).a;
+    } while (localPhoneContactAdd == null);
+    Object localObject = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
+    if (((PhoneContactManagerImp)localObject).c(localPhoneContactAdd.unifiedCode) == null) {
+      localObject = new ProfileActivity.AllInOne(localPhoneContactAdd.unifiedCode, 29);
+    }
+    for (;;)
+    {
+      ((ProfileActivity.AllInOne)localObject).h = localPhoneContactAdd.name;
+      ProfileActivity.a((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext, (ProfileActivity.AllInOne)localObject, 227);
+      ((ajka)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).g();
+      break;
+      if (((PhoneContactManagerImp)localObject).i()) {
+        localObject = new ProfileActivity.AllInOne(localPhoneContactAdd.unifiedCode, 34);
+      } else {
+        localObject = new ProfileActivity.AllInOne(localPhoneContactAdd.unifiedCode, 29);
+      }
+    }
   }
 }
 

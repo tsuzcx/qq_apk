@@ -1,495 +1,465 @@
-import android.support.annotation.Nullable;
-import java.util.ConcurrentModificationException;
-import java.util.Map;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.image.QQLiveDrawable;
+import com.tencent.image.QQLiveDrawable.QQLiveDrawableParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter.2;
+import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter.3;
+import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter.4;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
+import com.tencent.mobileqq.widget.PAVideoView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.Gallery;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
 
-public class bgvw<K, V>
+public class bgvw
+  extends BaseAdapter
+  implements aqhu, URLDrawableDownListener
 {
-  static int jdField_a_of_type_Int;
-  @Nullable
-  static Object[] jdField_a_of_type_ArrayOfJavaLangObject;
-  static int jdField_b_of_type_Int;
-  @Nullable
-  static Object[] jdField_b_of_type_ArrayOfJavaLangObject;
-  int[] jdField_a_of_type_ArrayOfInt = bgvq.jdField_a_of_type_ArrayOfInt;
-  int jdField_c_of_type_Int = 0;
-  Object[] jdField_c_of_type_ArrayOfJavaLangObject = bgvq.jdField_a_of_type_ArrayOfJavaLangObject;
+  public static final int[] a;
+  protected Context a;
+  public Drawable a;
+  protected SparseArray<WeakReference<URLDrawable>> a;
+  protected LayoutInflater a;
+  protected aqhs a;
+  public Gallery a;
+  protected List<MediaPreviewInfo> a;
+  protected boolean a;
   
-  private static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  static
   {
-    try
-    {
-      paramInt1 = bgvq.a(paramArrayOfInt, paramInt1, paramInt2);
-      return paramInt1;
-    }
-    catch (ArrayIndexOutOfBoundsException paramArrayOfInt)
-    {
-      throw new ConcurrentModificationException();
-    }
+    jdField_a_of_type_ArrayOfInt = new int[] { 0, 480, 480 };
   }
   
-  private void a(int paramInt)
+  public bgvw(Context paramContext, Gallery paramGallery)
   {
-    if (paramInt == 8) {}
-    for (;;)
-    {
-      try
-      {
-        if (jdField_b_of_type_ArrayOfJavaLangObject != null)
-        {
-          Object[] arrayOfObject1 = jdField_b_of_type_ArrayOfJavaLangObject;
-          this.jdField_c_of_type_ArrayOfJavaLangObject = arrayOfObject1;
-          jdField_b_of_type_ArrayOfJavaLangObject = (Object[])arrayOfObject1[0];
-          this.jdField_a_of_type_ArrayOfInt = ((int[])arrayOfObject1[1]);
-          arrayOfObject1[1] = null;
-          arrayOfObject1[0] = null;
-          jdField_b_of_type_Int -= 1;
-          return;
-        }
-        this.jdField_a_of_type_ArrayOfInt = new int[paramInt];
-        this.jdField_c_of_type_ArrayOfJavaLangObject = new Object[paramInt << 1];
-        return;
-      }
-      finally {}
-      if (paramInt == 4) {
-        try
-        {
-          if (jdField_a_of_type_ArrayOfJavaLangObject != null)
-          {
-            Object[] arrayOfObject2 = jdField_a_of_type_ArrayOfJavaLangObject;
-            this.jdField_c_of_type_ArrayOfJavaLangObject = arrayOfObject2;
-            jdField_a_of_type_ArrayOfJavaLangObject = (Object[])arrayOfObject2[0];
-            this.jdField_a_of_type_ArrayOfInt = ((int[])arrayOfObject2[1]);
-            arrayOfObject2[1] = null;
-            arrayOfObject2[0] = null;
-            jdField_a_of_type_Int -= 1;
-            return;
-          }
-        }
-        finally {}
-      }
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_ComTencentWidgetGallery = paramGallery;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130838072);
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    paramContext = (aqib)((AppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(180);
+    if (paramContext == null) {}
+    this.jdField_a_of_type_Aqhs = paramContext.a();
+    this.jdField_a_of_type_Aqhs.a(this);
   }
   
-  private static void a(int[] paramArrayOfInt, Object[] paramArrayOfObject, int paramInt)
+  public Drawable a(String paramString)
   {
-    if (paramArrayOfInt.length == 8) {
-      try
-      {
-        if (jdField_b_of_type_Int < 10)
-        {
-          paramArrayOfObject[0] = jdField_b_of_type_ArrayOfJavaLangObject;
-          paramArrayOfObject[1] = paramArrayOfInt;
-          paramInt = (paramInt << 1) - 1;
-          break label117;
-          jdField_b_of_type_ArrayOfJavaLangObject = paramArrayOfObject;
-          jdField_b_of_type_Int += 1;
-        }
-        return;
-      }
-      finally {}
-    } else {
-      if (paramArrayOfInt.length != 4) {
-        break label133;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        if (jdField_a_of_type_Int < 10)
-        {
-          paramArrayOfObject[0] = jdField_a_of_type_ArrayOfJavaLangObject;
-          paramArrayOfObject[1] = paramArrayOfInt;
-          paramInt = (paramInt << 1) - 1;
-          break label134;
-          jdField_a_of_type_ArrayOfJavaLangObject = paramArrayOfObject;
-          jdField_a_of_type_Int += 1;
-        }
-        return;
-      }
-      finally {}
-      label117:
-      while (paramInt >= 2)
-      {
-        paramArrayOfObject[paramInt] = null;
-        paramInt -= 1;
-      }
-      break;
-      label133:
-      return;
-      label134:
-      while (paramInt >= 2)
-      {
-        paramArrayOfObject[paramInt] = null;
-        paramInt -= 1;
-      }
-    }
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mFailedDrawable = beyq.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    localURLDrawableOptions.mLoadingDrawable = beyq.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    return URLDrawable.getDrawable(paramString, localURLDrawableOptions);
   }
   
-  int a()
+  public MediaPreviewInfo a(int paramInt)
   {
-    int m = this.jdField_c_of_type_Int;
-    int i;
-    if (m == 0) {
-      i = -1;
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < getCount())) {
+      return (MediaPreviewInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    int j;
-    do
-    {
-      do
-      {
-        return i;
-        j = a(this.jdField_a_of_type_ArrayOfInt, m, 0);
-        i = j;
-      } while (j < 0);
-      i = j;
-    } while (this.jdField_c_of_type_ArrayOfJavaLangObject[(j << 1)] == null);
-    int k = j + 1;
-    while ((k < m) && (this.jdField_a_of_type_ArrayOfInt[k] == 0))
-    {
-      if (this.jdField_c_of_type_ArrayOfJavaLangObject[(k << 1)] == null) {
-        return k;
-      }
-      k += 1;
-    }
-    j -= 1;
-    for (;;)
-    {
-      if ((j < 0) || (this.jdField_a_of_type_ArrayOfInt[j] != 0)) {
-        break label121;
-      }
-      i = j;
-      if (this.jdField_c_of_type_ArrayOfJavaLangObject[(j << 1)] == null) {
-        break;
-      }
-      j -= 1;
-    }
-    label121:
-    return k ^ 0xFFFFFFFF;
-  }
-  
-  public int a(@Nullable Object paramObject)
-  {
-    if (paramObject == null) {
-      return a();
-    }
-    return a(paramObject, paramObject.hashCode());
-  }
-  
-  int a(Object paramObject, int paramInt)
-  {
-    int m = this.jdField_c_of_type_Int;
-    int i;
-    if (m == 0) {
-      i = -1;
-    }
-    int j;
-    do
-    {
-      do
-      {
-        return i;
-        j = a(this.jdField_a_of_type_ArrayOfInt, m, paramInt);
-        i = j;
-      } while (j < 0);
-      i = j;
-    } while (paramObject.equals(this.jdField_c_of_type_ArrayOfJavaLangObject[(j << 1)]));
-    int k = j + 1;
-    while ((k < m) && (this.jdField_a_of_type_ArrayOfInt[k] == paramInt))
-    {
-      if (paramObject.equals(this.jdField_c_of_type_ArrayOfJavaLangObject[(k << 1)])) {
-        return k;
-      }
-      k += 1;
-    }
-    j -= 1;
-    for (;;)
-    {
-      if ((j < 0) || (this.jdField_a_of_type_ArrayOfInt[j] != paramInt)) {
-        break label156;
-      }
-      i = j;
-      if (paramObject.equals(this.jdField_c_of_type_ArrayOfJavaLangObject[(j << 1)])) {
-        break;
-      }
-      j -= 1;
-    }
-    label156:
-    return k ^ 0xFFFFFFFF;
-  }
-  
-  public K a(int paramInt)
-  {
-    return this.jdField_c_of_type_ArrayOfJavaLangObject[(paramInt << 1)];
-  }
-  
-  @Nullable
-  public V a(Object paramObject)
-  {
-    return a(paramObject, null);
-  }
-  
-  public V a(Object paramObject, V paramV)
-  {
-    int i = a(paramObject);
-    if (i >= 0) {
-      paramV = this.jdField_c_of_type_ArrayOfJavaLangObject[((i << 1) + 1)];
-    }
-    return paramV;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Int <= 0;
-  }
-  
-  public boolean a(@Nullable Object paramObject)
-  {
-    return a(paramObject) >= 0;
-  }
-  
-  public int b()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public V b(int paramInt)
-  {
-    return this.jdField_c_of_type_ArrayOfJavaLangObject[((paramInt << 1) + 1)];
-  }
-  
-  @Nullable
-  public V b(K paramK, V paramV)
-  {
-    int k = 8;
-    int m = this.jdField_c_of_type_Int;
-    int i;
-    int j;
-    if (paramK == null)
-    {
-      i = a();
-      j = 0;
-    }
-    while (i >= 0)
-    {
-      i = (i << 1) + 1;
-      paramK = this.jdField_c_of_type_ArrayOfJavaLangObject[i];
-      this.jdField_c_of_type_ArrayOfJavaLangObject[i] = paramV;
-      return paramK;
-      j = paramK.hashCode();
-      i = a(paramK, j);
-    }
-    int n = i ^ 0xFFFFFFFF;
-    if (m >= this.jdField_a_of_type_ArrayOfInt.length)
-    {
-      if (m >= 8) {
-        i = (m >> 1) + m;
-      }
-      int[] arrayOfInt;
-      Object[] arrayOfObject;
-      for (;;)
-      {
-        arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-        arrayOfObject = this.jdField_c_of_type_ArrayOfJavaLangObject;
-        a(i);
-        if (m == this.jdField_c_of_type_Int) {
-          break;
-        }
-        throw new ConcurrentModificationException();
-        i = k;
-        if (m < 4) {
-          i = 4;
-        }
-      }
-      if (this.jdField_a_of_type_ArrayOfInt.length > 0)
-      {
-        System.arraycopy(arrayOfInt, 0, this.jdField_a_of_type_ArrayOfInt, 0, arrayOfInt.length);
-        System.arraycopy(arrayOfObject, 0, this.jdField_c_of_type_ArrayOfJavaLangObject, 0, arrayOfObject.length);
-      }
-      a(arrayOfInt, arrayOfObject, m);
-    }
-    if (n < m)
-    {
-      System.arraycopy(this.jdField_a_of_type_ArrayOfInt, n, this.jdField_a_of_type_ArrayOfInt, n + 1, m - n);
-      System.arraycopy(this.jdField_c_of_type_ArrayOfJavaLangObject, n << 1, this.jdField_c_of_type_ArrayOfJavaLangObject, n + 1 << 1, this.jdField_c_of_type_Int - n << 1);
-    }
-    if ((m != this.jdField_c_of_type_Int) || (n >= this.jdField_a_of_type_ArrayOfInt.length)) {
-      throw new ConcurrentModificationException();
-    }
-    this.jdField_a_of_type_ArrayOfInt[n] = j;
-    this.jdField_c_of_type_ArrayOfJavaLangObject[(n << 1)] = paramK;
-    this.jdField_c_of_type_ArrayOfJavaLangObject[((n << 1) + 1)] = paramV;
-    this.jdField_c_of_type_Int += 1;
     return null;
   }
   
-  public boolean equals(Object paramObject)
+  public void a()
   {
-    if (this == paramObject) {}
+    a(true, -1);
+    if (this.jdField_a_of_type_Aqhs != null) {
+      this.jdField_a_of_type_Aqhs.b(this);
+    }
+  }
+  
+  public void a(int paramInt, ImageView paramImageView, File paramFile, String paramString)
+  {
+    String str = paramFile.getAbsolutePath();
+    Object localObject = zqb.a(str);
+    paramFile = (File)localObject;
+    if (localObject == null) {
+      paramFile = jdField_a_of_type_ArrayOfInt;
+    }
+    localObject = new QQLiveDrawable.QQLiveDrawableParams();
+    int i = paramFile[1];
+    int j = paramFile[2];
+    ((QQLiveDrawable.QQLiveDrawableParams)localObject).mPreviewWidth = i;
+    ((QQLiveDrawable.QQLiveDrawableParams)localObject).mPreviewHeight = j;
+    ((QQLiveDrawable.QQLiveDrawableParams)localObject).mPlayType = 2;
+    ((QQLiveDrawable.QQLiveDrawableParams)localObject).mDataSourceType = 3;
+    ((QQLiveDrawable.QQLiveDrawableParams)localObject).mDataSource = str;
+    ((QQLiveDrawable.QQLiveDrawableParams)localObject).mCoverUrl = paramString;
+    ((QQLiveDrawable.QQLiveDrawableParams)localObject).mMute = false;
+    ((QQLiveDrawable.QQLiveDrawableParams)localObject).mCoverLoadingDrawable = PAVideoView.a;
+    ((QQLiveDrawable.QQLiveDrawableParams)localObject).mLoopback = true;
+    ((QQLiveDrawable.QQLiveDrawableParams)localObject).mLoopback = true;
+    paramFile = URLDrawable.URLDrawableOptions.obtain();
+    paramFile.mExtraInfo = localObject;
+    paramFile.mLoadingDrawable = a(paramString);
+    paramFile = URLDrawable.getDrawable("qqlive://msgId=" + str, paramFile);
+    paramImageView.setImageDrawable(paramFile);
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, new WeakReference(paramFile));
+    paramImageView.postDelayed(new MediaPreviewAdapter.2(this), 100L);
+    if (QLog.isColorLevel()) {
+      QLog.i("MediaPreviewAdapter", 2, "doShowVideoFile() drawable = " + paramImageView.getDrawable());
+    }
+  }
+  
+  protected void a(int paramInt, MediaPreviewInfo paramMediaPreviewInfo, bgvy parambgvy)
+  {
+    long l = System.currentTimeMillis();
+    if ((parambgvy == null) || (paramMediaPreviewInfo == null)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MediaPreviewAdapter", 2, "loadVideo() mediaInfo = " + paramMediaPreviewInfo);
+    }
+    parambgvy.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    File localFile;
+    boolean bool2;
+    if (!TextUtils.isEmpty(paramMediaPreviewInfo.c))
+    {
+      localFile = new File(paramMediaPreviewInfo.c);
+      bool2 = localFile.exists();
+      if (bool2) {
+        a(paramInt, parambgvy.jdField_a_of_type_ComTencentImageURLImageView, localFile, paramMediaPreviewInfo.jdField_a_of_type_JavaLangString);
+      }
+      bool1 = bool2;
+      if (QLog.isColorLevel()) {
+        QLog.e("MediaPreviewAdapter", 2, "loadVideo() videoFileExsits = " + bool2 + ", videoLocalPath = " + paramMediaPreviewInfo.c);
+      }
+    }
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      bool2 = bool1;
+      if (!bool1)
+      {
+        bool2 = bool1;
+        if (!TextUtils.isEmpty(paramMediaPreviewInfo.b))
+        {
+          bool1 = aqhs.b(paramMediaPreviewInfo.b);
+          if (bool1)
+          {
+            localFile = aqhs.a(paramMediaPreviewInfo.b);
+            a(paramInt, parambgvy.jdField_a_of_type_ComTencentImageURLImageView, localFile, paramMediaPreviewInfo.jdField_a_of_type_JavaLangString);
+          }
+          bool2 = bool1;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("MediaPreviewAdapter", 2, "loadVideo() videoFileExsits = " + bool1 + ", videoUrl = " + paramMediaPreviewInfo.b);
+            bool2 = bool1;
+          }
+        }
+      }
+      if (!bool2)
+      {
+        if (TextUtils.isEmpty(paramMediaPreviewInfo.b)) {
+          break label419;
+        }
+        parambgvy.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(a(paramMediaPreviewInfo.jdField_a_of_type_JavaLangString));
+        if (bhnv.a(this.jdField_a_of_type_AndroidContentContext)) {
+          break label401;
+        }
+        parambgvy.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        parambgvy.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bgvx(this, parambgvy, paramMediaPreviewInfo));
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.e("MediaPreviewAdapter", 2, "loadVideo() videoFileExsits = " + bool2 + ", videoUrl = " + paramMediaPreviewInfo.b + ", costTime = " + (System.currentTimeMillis() - l));
+        return;
+        label401:
+        parambgvy.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        b(paramMediaPreviewInfo, parambgvy);
+        continue;
+        label419:
+        parambgvy.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        if (QLog.isColorLevel()) {
+          QLog.e("MediaPreviewAdapter", 2, "loadVideo() error startDownloadDynamicAvatar: " + paramMediaPreviewInfo.b);
+        }
+      }
+      break;
+    }
+  }
+  
+  public void a(URLDrawable paramURLDrawable)
+  {
+    if (((paramURLDrawable instanceof URLDrawable)) && (paramURLDrawable.getStatus() == 1) && ((paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
+      ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).resume();
+    }
+  }
+  
+  protected void a(URLDrawable paramURLDrawable, boolean paramBoolean)
+  {
+    if (((paramURLDrawable instanceof URLDrawable)) && (paramURLDrawable.getStatus() == 1) && ((paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable)))
+    {
+      paramURLDrawable = (QQLiveDrawable)paramURLDrawable.getCurrDrawable();
+      paramURLDrawable.pause();
+      if (paramBoolean)
+      {
+        paramURLDrawable.setOnStateListener(null);
+        paramURLDrawable.setParams(null);
+        paramURLDrawable.release();
+      }
+    }
+  }
+  
+  public void a(MediaPreviewInfo paramMediaPreviewInfo, bgvy parambgvy)
+  {
+    if ((parambgvy == null) || (paramMediaPreviewInfo == null)) {}
     for (;;)
     {
-      return true;
-      int i;
-      Object localObject1;
-      Object localObject2;
-      Object localObject3;
-      boolean bool;
-      if ((paramObject instanceof bgvw))
-      {
-        paramObject = (bgvw)paramObject;
-        if (b() != paramObject.b()) {
-          return false;
-        }
-        i = 0;
-        try
-        {
-          while (i < this.jdField_c_of_type_Int)
-          {
-            localObject1 = a(i);
-            localObject2 = b(i);
-            localObject3 = paramObject.a(localObject1);
-            if (localObject2 == null)
-            {
-              if (localObject3 != null) {
-                break label227;
-              }
-              if (!paramObject.a(localObject1)) {
-                break label227;
-              }
-            }
-            else
-            {
-              bool = localObject2.equals(localObject3);
-              if (!bool) {
-                return false;
-              }
-            }
-            i += 1;
-          }
-          if (!(paramObject instanceof Map)) {
-            break;
-          }
-        }
-        catch (NullPointerException paramObject)
-        {
-          return false;
-        }
-        catch (ClassCastException paramObject)
-        {
-          return false;
-        }
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("MediaPreviewAdapter", 2, "loadBigImage() mediaInfo = " + paramMediaPreviewInfo);
       }
-      else
+      try
       {
-        paramObject = (Map)paramObject;
-        if (b() != paramObject.size()) {
-          return false;
-        }
-        i = 0;
-        try
+        paramMediaPreviewInfo = paramMediaPreviewInfo.jdField_a_of_type_JavaLangString;
+        Object localObject = Uri.parse(paramMediaPreviewInfo).getScheme();
+        if ((TextUtils.isEmpty((CharSequence)localObject)) || ((!((String)localObject).equals("http")) && (!((String)localObject).equals("https")))) {}
+        for (paramMediaPreviewInfo = new File(paramMediaPreviewInfo).toURL();; paramMediaPreviewInfo = new URL(paramMediaPreviewInfo))
         {
-          while (i < this.jdField_c_of_type_Int)
-          {
-            localObject1 = a(i);
-            localObject2 = b(i);
-            localObject3 = paramObject.get(localObject1);
-            if (localObject2 == null)
-            {
-              if (localObject3 != null) {
-                break label229;
-              }
-              if (!paramObject.containsKey(localObject1)) {
-                break label229;
-              }
-            }
-            else
-            {
-              bool = localObject2.equals(localObject3);
-              if (!bool) {
-                return false;
-              }
-            }
-            i += 1;
+          localObject = URLDrawable.URLDrawableOptions.obtain();
+          ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = AppSetting.jdField_a_of_type_Int;
+          ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = AppSetting.b;
+          ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = beyq.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+          if (this.jdField_a_of_type_Boolean) {
+            ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
           }
-          return false;
+          a(parambgvy.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+          parambgvy.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          paramMediaPreviewInfo = URLDrawable.getDrawable(paramMediaPreviewInfo, (URLDrawable.URLDrawableOptions)localObject);
+          parambgvy.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramMediaPreviewInfo);
+          parambgvy.jdField_a_of_type_ComTencentImageURLImageView.setTag(parambgvy);
+          parambgvy.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(this);
+          return;
         }
-        catch (NullPointerException paramObject)
-        {
-          return false;
-        }
-        catch (ClassCastException paramObject)
-        {
-          return false;
-        }
+        if (!QLog.isColorLevel()) {}
       }
+      catch (MalformedURLException paramMediaPreviewInfo) {}
     }
-    label227:
-    return false;
-    label229:
-    return false;
+    QLog.i("MediaPreviewAdapter", 2, paramMediaPreviewInfo.toString());
   }
   
-  public int hashCode()
+  public void a(ImageProgressCircle paramImageProgressCircle)
   {
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    Object[] arrayOfObject = this.jdField_c_of_type_ArrayOfJavaLangObject;
-    int n = this.jdField_c_of_type_Int;
-    int i = 1;
-    int j = 0;
-    int k = 0;
-    if (j < n)
-    {
-      Object localObject = arrayOfObject[i];
-      int i1 = arrayOfInt[j];
-      if (localObject == null) {}
-      for (int m = 0;; m = localObject.hashCode())
-      {
-        k += (m ^ i1);
-        j += 1;
-        i += 2;
-        break;
-      }
+    if (paramImageProgressCircle == null) {}
+    while (paramImageProgressCircle.getVisibility() == 4) {
+      return;
     }
-    return k;
+    paramImageProgressCircle.setVisibility(4);
   }
   
-  public String toString()
+  public void a(ImageProgressCircle paramImageProgressCircle, int paramInt)
   {
-    if (a()) {
-      return "{}";
+    if (paramImageProgressCircle == null) {
+      return;
     }
-    StringBuilder localStringBuilder = new StringBuilder(this.jdField_c_of_type_Int * 28);
-    localStringBuilder.append('{');
-    int i = 0;
-    if (i < this.jdField_c_of_type_Int)
+    if (paramImageProgressCircle.getVisibility() != 0) {
+      paramImageProgressCircle.setVisibility(0);
+    }
+    paramImageProgressCircle.setProgress(paramInt);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetGallery.getSelectedView().getTag();
+    MediaPreviewInfo localMediaPreviewInfo = a(this.jdField_a_of_type_ComTencentWidgetGallery.getSelectedItemPosition());
+    if ((localMediaPreviewInfo != null) && (paramString.equals(localMediaPreviewInfo.b)) && ((localObject instanceof bgvy)))
     {
-      if (i > 0) {
-        localStringBuilder.append(", ");
-      }
-      Object localObject = a(i);
-      if (localObject != this)
-      {
-        localStringBuilder.append(localObject);
-        label70:
-        localStringBuilder.append('=');
-        localObject = b(i);
-        if (localObject == this) {
-          break label111;
-        }
-        localStringBuilder.append(localObject);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.append("(this Map)");
-        break label70;
-        label111:
-        localStringBuilder.append("(this Map)");
+      a(((bgvy)localObject).jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle, paramInt);
+      if (QLog.isColorLevel()) {
+        QLog.i("MediaPreviewAdapter", 2, "onDownloadUpdate progress: " + paramInt);
       }
     }
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+  }
+  
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MediaPreviewAdapter", 2, "onDownloadFinish() isSuccess = " + paramBoolean1 + ", url = " + paramString);
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetGallery.getSelectedView().getTag();
+    int i = this.jdField_a_of_type_ComTencentWidgetGallery.getSelectedItemPosition();
+    MediaPreviewInfo localMediaPreviewInfo = a(i);
+    if ((localMediaPreviewInfo != null) && (paramString.equals(localMediaPreviewInfo.b)) && ((localObject instanceof bgvy)))
+    {
+      localObject = (bgvy)localObject;
+      boolean bool = false;
+      paramBoolean2 = bool;
+      if (paramBoolean1)
+      {
+        paramBoolean2 = bool;
+        if (aqhs.b(localMediaPreviewInfo.b))
+        {
+          File localFile = aqhs.a(localMediaPreviewInfo.b);
+          ((bgvy)localObject).jdField_a_of_type_ComTencentImageURLImageView.post(new MediaPreviewAdapter.3(this, (bgvy)localObject, i, localFile, localMediaPreviewInfo));
+          paramBoolean2 = true;
+        }
+      }
+      if (!paramBoolean2)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MediaPreviewAdapter", 2, "onDownloadFinish() finalSuc = " + paramBoolean2 + ", url = " + paramString);
+        }
+        ((bgvy)localObject).jdField_a_of_type_ComTencentImageURLImageView.post(new MediaPreviewAdapter.4(this, (bgvy)localObject));
+      }
+    }
+  }
+  
+  public void a(List<MediaPreviewInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("MediaPreviewAdapter", 2, "pauseOtherVideos() release = " + paramBoolean + ", specialPosition = " + paramInt);
+      }
+      int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+      int i = 0;
+      if (i < j)
+      {
+        int k = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
+        URLDrawable localURLDrawable = (URLDrawable)((WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(k)).get();
+        if (paramInt == k) {
+          a(localURLDrawable);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          a(localURLDrawable, paramBoolean);
+        }
+      }
+    } while (!paramBoolean);
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+  }
+  
+  protected void b(MediaPreviewInfo paramMediaPreviewInfo, bgvy parambgvy)
+  {
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Aqhs != null) {
+      this.jdField_a_of_type_Aqhs.a(paramMediaPreviewInfo.b);
+    }
+    a(parambgvy.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle, 0);
+    if (QLog.isColorLevel()) {
+      QLog.i("MediaPreviewAdapter", 2, "startDownloadVideo: " + paramMediaPreviewInfo.b + ", costTime = " + (System.currentTimeMillis() - l));
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    if (paramView == null)
+    {
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559334, null);
+      paramView = new bgvy(this);
+      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368320));
+      paramView.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle = ((ImageProgressCircle)localView.findViewById(2131368419));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131377948));
+      localView.setTag(paramView);
+      a(paramView.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+      localObject = (MediaPreviewInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (((MediaPreviewInfo)localObject).jdField_a_of_type_Int != 1) {
+        break label152;
+      }
+      a((MediaPreviewInfo)localObject, paramView);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (bgvy)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label152:
+      if (((MediaPreviewInfo)localObject).jdField_a_of_type_Int == 2) {
+        a(paramInt, (MediaPreviewInfo)localObject, paramView);
+      }
+    }
+  }
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (paramView = paramURLDrawable.getURL().toString();; paramView = "")
+    {
+      if (paramThrowable == null) {}
+      for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("MediaPreviewAdapter", 2, "onLoadFailed() urlStr = " + paramView + ", errorMsg = " + paramURLDrawable);
+        }
+        return;
+      }
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    a(((bgvy)paramView.getTag()).jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle, paramInt);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    paramView = (bgvy)paramView.getTag();
+    a(paramView.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
+    {
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MediaPreviewAdapter", 2, "onLoadSuccessed() urlStr = " + paramView);
+    }
   }
 }
 

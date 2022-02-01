@@ -1,49 +1,29 @@
 import android.support.annotation.NonNull;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
 
-class xxa
-  implements xwz
+public class xxa
+  extends wjm<xwr, wqm>
 {
-  private final int jdField_a_of_type_Int;
-  @NonNull
-  private final WeakReference<xwz> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public xxa(@NonNull xwz paramxwz)
+  public xxa(xwr paramxwr)
   {
-    this.jdField_a_of_type_Int = System.identityHashCode(paramxwz);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramxwz);
+    super(paramxwr);
   }
   
-  private boolean a()
+  public void a(@NonNull xwr paramxwr, @NonNull wqm paramwqm)
   {
-    return this.jdField_a_of_type_JavaLangRefWeakReference.get() != null;
-  }
-  
-  public void a(@NonNull xwx paramxwx)
-  {
-    xwz localxwz = (xwz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localxwz != null) {
-      localxwz.a(paramxwx);
+    if ((paramxwr.a != null) && (TextUtils.equals(paramxwr.a.b, paramwqm.a)))
+    {
+      yuk.a(this.TAG, "receive feed info change event. %s.", paramwqm.toString());
+      paramxwr.i();
     }
   }
   
-  public void b(@NonNull xwx paramxwx)
+  public Class acceptEventClass()
   {
-    xwz localxwz = (xwz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localxwz != null) {
-      localxwz.b(paramxwx);
-    }
+    return wqm.class;
   }
   
-  public boolean equals(Object paramObject)
-  {
-    return ((paramObject instanceof xxa)) && (((xxa)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int);
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  public void b(@NonNull xwr paramxwr, @NonNull wqm paramwqm) {}
 }
 
 

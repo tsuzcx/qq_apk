@@ -1,36 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.avgame.gameroom.video.AVGameControlUIImpl;
 
 public class nee
-  extends Handler
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public nee(ned paramned, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public nee(AVGameControlUIImpl paramAVGameControlUIImpl) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramMessage.what)
-    {
-    case 257: 
-    default: 
-      return;
-    case 152: 
-      ned.a(this.a);
-      return;
-    case 153: 
-      ned.b(this.a);
-      return;
-    case 256: 
-      int i = paramMessage.arg1;
-      int j = paramMessage.arg2;
-      long l = ((Long)paramMessage.obj).longValue();
-      this.a.a(null, i, j, l);
-      return;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if ((AVGameControlUIImpl.a(this.a)) && (this.a.a != null)) {
+      this.a.a.a(i);
     }
-    ned.b(this.a);
   }
 }
 

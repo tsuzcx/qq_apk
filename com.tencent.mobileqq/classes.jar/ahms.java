@@ -1,10 +1,11 @@
-import android.view.View;
+import android.widget.TextView;
 
-public abstract interface ahms
+class ahms
+  extends agen
 {
-  public abstract void a(View paramView);
+  TextView b;
   
-  public abstract void b(View paramView);
+  ahms(ahmr paramahmr) {}
 }
 
 

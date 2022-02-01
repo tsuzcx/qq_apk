@@ -1,16 +1,19 @@
-import com.tencent.avgame.ui.AVGameActivity;
+import android.os.Handler;
+import com.tencent.avgame.gameroom.video.AVGameNetWorkQualityManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class nen
-  implements bggu
+  extends mxs
 {
-  public nen(AVGameActivity paramAVGameActivity) {}
+  public nen(AVGameNetWorkQualityManager paramAVGameNetWorkQualityManager) {}
   
-  public void onInfo(long paramLong, double paramDouble)
+  public void a(int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("AVGameActivity", 2, String.format("fps=%.1f", new Object[] { Double.valueOf(paramDouble) }));
+      QLog.d("AVGameNetWorkQualityManager", 2, "onNetTypeChange, [" + paramInt1 + "-->" + paramInt2 + "]");
     }
+    AVGameNetWorkQualityManager.b(this.a).removeCallbacks(AVGameNetWorkQualityManager.a(this.a));
+    AVGameNetWorkQualityManager.b(this.a).post(AVGameNetWorkQualityManager.a(this.a));
   }
 }
 

@@ -1,19 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import java.util.Comparator;
 
-public class bcdn
-  extends Handler
+class bcdn
+  implements Comparator<bcdp>
 {
-  public bcdn(BaseShortVideoOprerator paramBaseShortVideoOprerator, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bcdn(bcdk parambcdk) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(bcdp parambcdp1, bcdp parambcdp2)
   {
-    this.a.a(paramMessage);
+    int j = Long.signum(parambcdp1.jdField_a_of_type_Int - parambcdp2.jdField_a_of_type_Int);
+    int i = j;
+    if (j == 0)
+    {
+      j = Long.signum(parambcdp1.b - parambcdp2.b);
+      i = j;
+      if (j == 0)
+      {
+        j = Long.signum(parambcdp1.c - parambcdp2.c);
+        i = j;
+        if (j == 0) {
+          i = Long.signum(-parambcdp1.jdField_a_of_type_Long + parambcdp2.jdField_a_of_type_Long);
+        }
+      }
+    }
+    return i;
   }
 }
 

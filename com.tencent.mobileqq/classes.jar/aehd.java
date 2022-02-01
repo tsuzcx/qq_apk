@@ -1,27 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-class aehd
-  implements akdi
+public class aehd
+  implements axfv<Void, bidm>
 {
-  aehd(aegy paramaegy) {}
+  public aehd(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void a(Context paramContext, boolean paramBoolean)
+  public bidm a(Void paramVoid)
   {
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.a.getApplicationContext(), 1, anni.a(2131703681), 0).a();
-      return;
-    }
-    paramContext = new Intent(this.a.a, GuideBindPhoneActivity.class);
-    paramContext.putExtra("fromKeyForContactBind", 5);
-    paramContext.putExtra("key_contact_name", this.a.a.a.a.k);
-    paramContext.putExtra("key_contact_phone", this.a.a.a.a.a);
-    this.a.a.startActivity(paramContext);
+    return bidn.a(this.a.app).a(this.a.a.troopUin);
   }
 }
 

@@ -1,23 +1,12 @@
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aitp
-  implements aitx
 {
-  public aitp(SearchContactsFragment paramSearchContactsFragment) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchContactsFragment", 2, "guide view | onItemClick type is:" + paramInt + " keyWords is:" + paramString);
-    }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = paramInt;
-    if (paramInt == 80000001) {
-      bbup.a("add_page", "search", "clk_search_grp", this.a.d + 1, 0, new String[] { "", "", paramString, "" });
-    }
-    this.a.a(paramString, false);
-  }
+  public int a = 0;
+  public String a;
+  public List<? extends aism> a;
+  public String b;
+  public List<? extends aism> b;
 }
 
 

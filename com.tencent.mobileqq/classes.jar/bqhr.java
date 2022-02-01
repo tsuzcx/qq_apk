@@ -1,235 +1,222 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaCodecInfo;
-import android.media.MediaCodecList;
-import android.media.MediaFormat;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.av.core.VcControllerImpl;
-import com.tencent.av.mediacodec.DeviceCheck;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.shortvideo.videotransfer.TransferConfig;
+import com.tencent.mobileqq.shortvideo.videotransfer.TransferConfig.ConfigData;
+import com.tencent.mobileqq.shortvideo.videotransfer.TransferData;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.nio.ByteBuffer;
+import com.tribe.async.dispatch.IEventReceiver;
+import dov.com.qq.im.capture.data.TransitionCategoryItem;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
+import org.json.JSONObject;
 
-@SuppressLint({"NewApi"})
 public class bqhr
-  extends lnr
+  extends bqgi
+  implements bqdo, IEventReceiver
 {
-  public static String e;
-  public static int f = -1;
+  private int jdField_a_of_type_Int = 0;
+  private TransferData jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData = new TransferData();
+  private int b;
   
-  static
+  public bqhr(@NonNull bqgk parambqgk)
   {
-    jdField_e_of_type_JavaLangString = "ShortVideoCodec";
+    super(parambqgk);
   }
   
-  public static int a(Context paramContext)
+  public static int a(int paramInt)
   {
-    if (f >= 0) {
-      return f;
+    int i = 1;
+    if (paramInt == 1) {
+      i = 0;
     }
-    f = 0;
-    if (paramContext == null) {
-      return f;
+    while (paramInt == 2) {
+      return i;
     }
-    VcControllerImpl.loadLibrary(paramContext);
-    if (Build.VERSION.SDK_INT < 16) {
-      return f;
-    }
-    if (Build.VERSION.SDK_INT >= 21)
+    return -1;
+  }
+  
+  public static long a()
+  {
+    return -200L;
+  }
+  
+  private void a(long paramLong)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.getPositions();
+    if ((localObject == null) || (((ArrayList)localObject).size() == 0))
     {
-      a();
-      if (!jdField_b_of_type_Boolean)
+      this.jdField_a_of_type_Int = 1;
+      return;
+    }
+    localObject = ((ArrayList)localObject).iterator();
+    Long localLong;
+    for (long l = 0L; ((Iterator)localObject).hasNext(); l = localLong.longValue())
+    {
+      localLong = (Long)((Iterator)localObject).next();
+      if (localLong.longValue() - l < 2000L)
       {
-        f = 0;
-        return f;
+        this.jdField_a_of_type_Int = 2;
+        return;
       }
     }
-    if (DeviceCheck.b())
+    if (paramLong - l < 2000L)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_e_of_type_JavaLangString, 2, "checkSupportMediaCodecFeature device is in white list.");
-      }
-      if (DeviceCheck.e()) {
-        f = 1;
-      }
-      if (!b()) {
-        break label146;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_e_of_type_JavaLangString, 2, "checkSupportMediaCodecFeature device is in white list.");
-      }
-      if (DeviceCheck.f()) {
-        f += 2;
-      }
+      this.jdField_a_of_type_Int = 2;
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  private boolean c()
+  {
+    return (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.mConfigData.mID != -1) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.getPositions().size() > 0);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    a(bqdo.class, this);
+    if ((this.jdField_a_of_type_Bqgk.a.a instanceof EditLocalPhotoSource)) {
+      this.jdField_a_of_type_Int = 3;
     }
     for (;;)
     {
-      return f;
-      if (!DeviceCheck.e()) {
-        break;
-      }
-      f = 1;
-      break;
-      label146:
-      if (DeviceCheck.f()) {
-        f += 2;
-      }
-    }
-  }
-  
-  @SuppressLint({"NewApi"})
-  public static List<MediaCodecInfo> a(String paramString, boolean paramBoolean)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int k = MediaCodecList.getCodecCount();
-    int i = 0;
-    if (i < k)
-    {
-      MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      if (localMediaCodecInfo.isEncoder()) {}
-      for (;;)
+      if (this.jdField_a_of_type_Int == 0)
       {
-        i += 1;
-        break;
-        if ((!paramBoolean) || ((!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE"))))
+        localObject = ((bpmw)bplq.a(5)).a;
+        if (localObject != null)
         {
-          String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
-          int j = 0;
-          while (j < arrayOfString.length)
-          {
-            if (arrayOfString[j].equalsIgnoreCase(paramString)) {
-              localArrayList.add(localMediaCodecInfo);
-            }
-            j += 1;
+          localObject = ((braa)localObject).a();
+          a(Integer.parseInt(((TransitionCategoryItem)localObject).a));
+          bqzz.a().a((TransitionCategoryItem)localObject);
+          localObject = (bqct)a(bqct.class);
+          if ((localObject != null) && (!(this.jdField_a_of_type_Bqgk instanceof bqyq))) {
+            ((bqct)localObject).b();
           }
+        }
+        if (AudioHelper.g()) {
+          this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.setReverseShift(a());
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.publish.edit.EditVideoTransfer", 2, "onCreate, state:" + this.jdField_a_of_type_Int);
+      }
+      Object localObject = (bqbp)a(bqbp.class);
+      if (this.jdField_a_of_type_Int != 0) {
+        ((bqbp)localObject).b();
+      }
+      yup.a("video_edit_transition", "exp_transition", a(this.jdField_a_of_type_Bqgk.a.a("extra_transiton_src_from", -1)), 0, new String[0]);
+      return;
+      if ((this.jdField_a_of_type_Bqgk.a.a instanceof EditLocalVideoSource))
+      {
+        this.jdField_a_of_type_Int = 3;
+      }
+      else if ((this.jdField_a_of_type_Bqgk.a.a instanceof EditTakeVideoSource))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.setPositions(((EditTakeVideoSource)this.jdField_a_of_type_Bqgk.a.a).a.mTransferPosList);
+        if (this.jdField_a_of_type_Bqgk.a.a("extra_transiton_src_from", -1) == 1) {
+          this.jdField_a_of_type_Int = 0;
+        } else {
+          a(((EditTakeVideoSource)this.jdField_a_of_type_Bqgk.a.a).a.mDuration);
         }
       }
     }
-    return localArrayList;
   }
   
-  public static boolean b()
+  public void a(int paramInt)
   {
-    if (Build.VERSION.SDK_INT < 19) {}
+    Object localObject = TransferConfig.getConfigData(paramInt);
+    if (paramInt == 1)
+    {
+      ((TransferConfig.ConfigData)localObject).mCommonFloat1 = null;
+      ((TransferConfig.ConfigData)localObject).mCommonFloat2 = null;
+      ((TransferConfig.ConfigData)localObject).mCommonFloat3 = null;
+      ((TransferConfig.ConfigData)localObject).mCommonFloat4 = null;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.setConfigData((TransferConfig.ConfigData)localObject);
+    if (c())
+    {
+      localObject = (bqgu)a(bqgu.class);
+      if (localObject != null) {
+        ((bqgu)localObject).a(this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData);
+      }
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    if (this.jdField_a_of_type_Int != 0) {}
     do
     {
-      return false;
-      if ((Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) && (Build.MODEL.equalsIgnoreCase("MI 3")) && (Build.PRODUCT.equalsIgnoreCase("pisces"))) {
-        return DeviceCheck.f();
+      return;
+      if (paramInt2 == 42)
+      {
+        this.b = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.mConfigData.mID;
+        a(-1);
+        return;
       }
-      if ((Build.MANUFACTURER.equalsIgnoreCase("OPPO")) && (Build.MODEL.equalsIgnoreCase("N5207")) && (Build.PRODUCT.equalsIgnoreCase("N5207"))) {
-        return DeviceCheck.f();
-      }
-      if ((Build.MANUFACTURER.equalsIgnoreCase("samsung")) && (Build.MODEL.equalsIgnoreCase("GT-I9500"))) {
-        return DeviceCheck.f();
-      }
-      if ((Build.MANUFACTURER.equalsIgnoreCase("Meizu")) && (Build.MODEL.equalsIgnoreCase("MX4"))) {
-        return DeviceCheck.f();
-      }
-    } while ((!Build.MANUFACTURER.equalsIgnoreCase("Meizu")) || (!Build.MODEL.equalsIgnoreCase("MX4 Pro")));
-    return DeviceCheck.f();
+    } while (paramInt1 != 42);
+    a(this.b);
   }
   
-  public MediaCodec a()
+  public void a(int paramInt, @NonNull bqua parambqua)
   {
-    return this.a;
-  }
-  
-  public lns b()
-  {
-    label404:
-    label510:
-    for (;;)
+    super.a(paramInt, parambqua);
+    if (!b()) {}
+    String str;
+    do
     {
-      Object localObject1;
-      int i;
-      try
-      {
-        localObject1 = this.a;
-        if (localObject1 == null)
-        {
-          localObject1 = null;
-          return localObject1;
-        }
-        localObject1 = new lns(this);
-        i = this.a.dequeueOutputBuffer(((lns)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, jdField_c_of_type_Int);
-        switch (i)
-        {
-        case -3: 
-          if (i < 0) {
-            break label510;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_e_of_type_JavaLangString, 2, "dequeueOutputBuffer ok,index = " + i + ",BufferInfo[flags = " + ((lns)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags + ",offset=" + ((lns)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + ",size= " + ((lns)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size + ",TimeUs=" + ((lns)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs + "]");
-          }
-          if (Build.VERSION.SDK_INT > 20) {
-            break label404;
-          }
-          ((lns)localObject1).jdField_a_of_type_JavaNioByteBuffer = this.jdField_b_of_type_ArrayOfJavaNioByteBuffer[i];
-          ((lns)localObject1).jdField_a_of_type_Int = i;
-          ((lns)localObject1).jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_b_of_type_AndroidMediaMediaFormat;
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.e(jdField_e_of_type_JavaLangString, 2, "INFO_OUTPUT_BUFFERS_CHANGED");
-          }
-          this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.a.getOutputBuffers();
-          ((lns)localObject1).jdField_a_of_type_Int = -3;
-        }
+      return;
+      str = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.toJSONObject();
+    } while (TextUtils.isEmpty(str));
+    parambqua.a.putExtra("transfer_effect_data", str);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      if (b()) {
+        paramJSONObject.put("EditVideoTransfer", this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.toJSONObject());
       }
-      finally {}
-      ((lns)localObject1).jdField_a_of_type_Int = -2;
-      this.jdField_b_of_type_AndroidMediaMediaFormat = this.a.getOutputFormat();
-      if (this.jdField_b_of_type_AndroidMediaMediaFormat != null)
-      {
-        ((lns)localObject1).jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_b_of_type_AndroidMediaMediaFormat;
-        if (this.jdField_e_of_type_Int == jdField_b_of_type_Int)
-        {
-          if (this.jdField_b_of_type_AndroidMediaMediaFormat.containsKey("color-format"))
-          {
-            i = this.jdField_b_of_type_AndroidMediaMediaFormat.getInteger("color-format");
-            if (QLog.isColorLevel()) {
-              QLog.e(jdField_e_of_type_JavaLangString, 2, "New color format " + i + "[0x" + Integer.toHexString(i) + "]");
-            }
-          }
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.e(jdField_e_of_type_JavaLangString, 2, "EncCodec,INFO_OUTPUT_FORMAT_CHANGED");
-          break label510;
-          if (QLog.isColorLevel()) {
-            QLog.e(jdField_e_of_type_JavaLangString, 2, "dequeueOutputBuffer timed out!");
-          }
-          localObject2.jdField_a_of_type_Int = -1;
-          continue;
-          localObject2.jdField_a_of_type_Int = i;
-          try
-          {
-            localObject2.jdField_a_of_type_JavaNioByteBuffer = ((ByteBuffer)jdField_b_of_type_JavaLangReflectMethod.invoke(this.a, new Object[] { Integer.valueOf(i) }));
-            localObject2.jdField_a_of_type_AndroidMediaMediaFormat = ((MediaFormat)jdField_c_of_type_JavaLangReflectMethod.invoke(this.a, new Object[] { Integer.valueOf(i) }));
-          }
-          catch (IllegalAccessException localIllegalAccessException)
-          {
-            localIllegalAccessException.printStackTrace();
-            localObject2.jdField_a_of_type_Boolean = false;
-          }
-          catch (IllegalArgumentException localIllegalArgumentException)
-          {
-            localIllegalArgumentException.printStackTrace();
-            localObject2.jdField_a_of_type_Boolean = false;
-          }
-          catch (InvocationTargetException localInvocationTargetException)
-          {
-            localInvocationTargetException.printStackTrace();
-            localObject2.jdField_a_of_type_Boolean = false;
-          }
-        }
-      }
+      return;
+    }
+    catch (Exception paramJSONObject) {}
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Int == 1) {
+      QQToast.a(a(), 2131718799, 0).a();
+    }
+    while (this.jdField_a_of_type_Int != 2) {
+      return;
+    }
+    QQToast.a(a(), 2131718798, 0).a();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int == 0;
+  }
+  
+  public void g()
+  {
+    super.g();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.publish.edit.EditVideoTransfer", 2, "onDestroy");
     }
   }
 }

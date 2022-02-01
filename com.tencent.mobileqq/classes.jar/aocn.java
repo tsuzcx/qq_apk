@@ -1,46 +1,39 @@
-import com.tencent.mobileqq.app.face.FaceInfo;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
 
-public class aocn
-  implements aocl
+class aocn
+  extends biht
 {
-  public String a;
-  public WeakReference<aoch> a;
+  aocn(aocm paramaocm) {}
   
-  aocn(aocj paramaocj, aoch paramaoch)
+  public void onDone(bihu parambihu)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaoch);
-    if ((paramaoch != null) && (paramaoch.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo != null)) {
-      this.jdField_a_of_type_JavaLangString = paramaoch.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_JavaLangString;
+    super.onDone(parambihu);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.roammsg.MessageRoamManager", 2, "onDone status: " + parambihu.f + ", url: " + parambihu.a);
     }
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    this.jdField_a_of_type_Aocj.a(paramBoolean, 11, paramString, this.jdField_a_of_type_Aocj.jdField_a_of_type_Aocn);
-  }
-  
-  public void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Aocj.a(paramBoolean1, 32, paramString, this.jdField_a_of_type_Aocj.jdField_a_of_type_Aocn);
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    this.jdField_a_of_type_Aocj.a(paramBoolean, 1, paramString, this.jdField_a_of_type_Aocj.jdField_a_of_type_Aocn);
-  }
-  
-  public void b(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    if ((this.jdField_a_of_type_Aocj.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo == null) || (paramInt != this.jdField_a_of_type_Aocj.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b)) {
+    int i = parambihu.a.indexOf("?");
+    String str;
+    if (i == -1)
+    {
+      str = parambihu.a;
+      if (!aocl.a.contains(str)) {
+        break label105;
+      }
+      this.a.a(parambihu);
+    }
+    label105:
+    do
+    {
       return;
-    }
-    this.jdField_a_of_type_Aocj.a(paramBoolean1, 16, paramString, this.jdField_a_of_type_Aocj.jdField_a_of_type_Aocn);
-  }
-  
-  public void c(boolean paramBoolean, String paramString)
-  {
-    this.jdField_a_of_type_Aocj.a(paramBoolean, 4, paramString, this.jdField_a_of_type_Aocj.jdField_a_of_type_Aocn);
+      str = parambihu.a.substring(0, i - 1);
+      break;
+      if ("https://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json".equals(str))
+      {
+        this.a.b(parambihu);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.roammsg.MessageRoamManager", 2, "onDone unkonw url: " + parambihu.a);
   }
 }
 

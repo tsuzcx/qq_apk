@@ -1,10 +1,17 @@
-public class agbf
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class agbf
+  implements View.OnClickListener
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  agbf(agbd paramagbd) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.b(paramView.getTag());
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

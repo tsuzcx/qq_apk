@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
 import Override;
-import afur;
+import agej;
 import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -15,11 +15,11 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
-import anni;
-import bcst;
-import bcvw;
-import bcwd;
-import bkfv;
+import anzj;
+import bdll;
+import bdop;
+import bdow;
+import blha;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
@@ -46,7 +46,7 @@ public class MessageShareActivity
   
   public MessageShareActivity()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new bkfv(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_MqqOsMqqHandler = new blha(Looper.getMainLooper(), this);
   }
   
   private void a(List<ResultRecord> paramList, Intent paramIntent, AbsStructMsg paramAbsStructMsg)
@@ -136,13 +136,13 @@ public class MessageShareActivity
           localObject3 = this.jdField_a_of_type_AndroidOsBundle.getString("detail_url");
           if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject3)))
           {
-            localObject2 = bcvw.a((String)localObject3);
+            localObject2 = bdop.a((String)localObject3);
             if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-              bcst.b(null, "CliOper", "", "", "0X8005F53", "0X8005F53", 0, 0, bcvw.a(j) + "", "", (String)localObject2, "");
+              bdll.b(null, "CliOper", "", "", "0X8005F53", "0X8005F53", 0, 0, bdop.a(j) + "", "", (String)localObject2, "");
             }
           }
         }
-        localObject2 = bcwd.a(this.jdField_a_of_type_AndroidOsBundle);
+        localObject2 = bdow.a(this.jdField_a_of_type_AndroidOsBundle);
         if ((localObject2 != null) && (this.app != null))
         {
           if (!(localObject2 instanceof StructMsgForImageShare)) {
@@ -154,7 +154,7 @@ public class MessageShareActivity
           if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("share_from_aio", false)) {
             break label675;
           }
-          paramMessage = afur.a(paramMessage, new int[] { 2 });
+          paramMessage = agej.a(paramMessage, new int[] { 2 });
           this.jdField_a_of_type_AndroidOsBundle.remove("share_from_aio");
           label511:
           paramMessage.putExtras(this.jdField_a_of_type_AndroidOsBundle);
@@ -187,14 +187,14 @@ public class MessageShareActivity
           AbsShareMsg.sendSdkShareMessage(this.app, (AbsShareMsg)localObject2, (String)localObject1, j, (String)localObject3);
           break label462;
           label675:
-          paramMessage = afur.a(paramMessage, null);
+          paramMessage = agej.a(paramMessage, null);
           paramMessage.putExtra("share_from_aio", true);
           break label511;
           label693:
           a(localArrayList, paramMessage, (AbsStructMsg)localObject2);
         }
-        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372466)).setText(anni.a(2131705446));
-        this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372465).setVisibility(4);
+        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372578)).setText(anzj.a(2131705553));
+        this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372577).setVisibility(4);
         this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(3, 800L);
         continue;
         finish();
@@ -213,10 +213,10 @@ public class MessageShareActivity
   {
     super.onCreate(paramBundle);
     super.setContentView(new View(this));
-    this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this, 2131755823);
+    this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this, 2131755824);
     this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559567);
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372466)).setText(2131694295);
+    this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559572);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372578)).setText(2131694337);
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
     if (this.jdField_a_of_type_AndroidOsBundle != null) {
       try

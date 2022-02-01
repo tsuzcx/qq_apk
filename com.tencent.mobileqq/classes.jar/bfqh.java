@@ -1,8 +1,34 @@
-public class bfqh
+import java.nio.ByteBuffer;
+
+class bfqh
 {
-  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
+  public final long a;
+  public final long b;
+  public final long c;
+  public final long d;
+  
+  public bfqh(long paramLong)
   {
-    new bcsy(null).a("dc00899").b("Grp_tribe").c(paramString1).d(paramString2).a(paramInt1).b(paramInt2).a(paramVarArgs).a();
+    this.a = 2882377846L;
+    this.b = 1007L;
+    this.c = 0L;
+    this.d = paramLong;
+  }
+  
+  public bfqh(ByteBuffer paramByteBuffer)
+  {
+    this.a = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.c = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.d = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+  }
+  
+  public void a(ByteBuffer paramByteBuffer)
+  {
+    paramByteBuffer.putInt((int)(this.a & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.b & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
   }
 }
 

@@ -2,20 +2,20 @@ package com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import nko;
-import ten;
-import teo;
+import nmj;
+import svf;
+import svg;
 
 public class StyleLoaderHelper$2
   implements Runnable
 {
-  public StyleLoaderHelper$2(ten paramten) {}
+  public StyleLoaderHelper$2(svf paramsvf) {}
   
   public void run()
   {
     try
     {
-      nko.a(ten.a(this.this$0), BaseApplicationImpl.getApplication().getRuntime(), new teo(this.this$0, ten.a(this.this$0), ten.b(this.this$0)), true, 5, true);
+      nmj.a(svf.a(this.this$0), BaseApplicationImpl.getApplication().getRuntime(), new svg(this.this$0, svf.a(this.this$0), svf.b(this.this$0)), true, 5, true);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)

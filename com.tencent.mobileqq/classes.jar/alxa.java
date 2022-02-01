@@ -1,23 +1,6 @@
-import android.view.SurfaceView;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class alxa
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface alxa
 {
-  public alxa(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
-  
-  public void onGlobalLayout()
-  {
-    this.a.e = this.a.a.getWidth();
-    this.a.f = this.a.a.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.e + ",mSurfaceViewHeight:" + this.a.f);
-    }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-  }
+  public abstract void a(String paramString, int paramInt);
 }
 
 

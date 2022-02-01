@@ -16,22 +16,22 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.widget.CheckBox;
-import anni;
-import avaj;
-import bcts;
-import bglp;
-import bgpa;
-import bgtn;
-import blsb;
-import blug;
-import bluh;
-import blui;
-import bluj;
-import blul;
-import blvm;
-import blvu;
-import bmei;
-import bmjj;
+import anzj;
+import avsk;
+import bdml;
+import bhlq;
+import bhpc;
+import bhtq;
+import bmtd;
+import bmvi;
+import bmvj;
+import bmvk;
+import bmvl;
+import bmvn;
+import bmwo;
+import bmww;
+import bnfk;
+import bnkm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -56,7 +56,7 @@ public class QzonePluginProxyActivity
   public static volatile ClassLoader a;
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "com.qzone.preview.QzonePictureViewer", "com.qzone.preview.LocalPictureViewer", "com.qzone.preview.QZonePanoramaActivity", "com.qzone.preview.QzonePictureSelectViewer" };
   private static final String[] b = { "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity", "com.qzone.common.activities.QzoneAdaptVideoActivity", "com.qzone.log.CrashNotificationActivity", "com.qzone.common.activities.NotificationActivity", "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity", "com.qzone.misc.web.QZoneTranslucentActivity", "com.qzone.misc.web.QZoneTranslucentActivity2", "com.qzone.bulletscreen.BulletScreenActivity", "com.qzone.album.business.dlna.activity.DLNAActivity", "com.qzone.bulletscreen.BulletScreenActivity", "com.qzone.common.activities.base.QzoneGiftPanelActivity", "com.qzone.common.activities.QzoneDualWarmActivity" };
-  private blvm jdField_a_of_type_Blvm = new blvm();
+  private bmwo jdField_a_of_type_Bmwo = new bmwo();
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   
   public static ClassLoader a()
@@ -67,7 +67,7 @@ public class QzonePluginProxyActivity
   public static ClassLoader a(Context paramContext)
   {
     if (jdField_a_of_type_JavaLangClassLoader == null) {
-      QLog.e("QzonePluginProxyActivity", 1, new Exception("getQZonePluginClassLoader"), new Object[] { BaseApplicationImpl.processName + " isQzonePluginInstalledAndVersionRight " + blvu.a + " " + blvu.b });
+      QLog.e("QzonePluginProxyActivity", 1, new Exception("getQZonePluginClassLoader"), new Object[] { BaseApplicationImpl.processName + " isQzonePluginInstalledAndVersionRight " + bmww.a + " " + bmww.b });
     }
     jdField_a_of_type_JavaLangClassLoader = PluginStatic.getOrCreateClassLoader(paramContext, "qzone_plugin.apk");
     return jdField_a_of_type_JavaLangClassLoader;
@@ -107,14 +107,14 @@ public class QzonePluginProxyActivity
     a(paramContext, paramString, paramIntent, paramInt, paramOnDismissListener, paramBoolean, null, false);
   }
   
-  public static void a(Context paramContext, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean1, avaj paramavaj, boolean paramBoolean2)
+  public static void a(Context paramContext, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean1, avsk paramavsk, boolean paramBoolean2)
   {
-    b(paramContext, paramString, paramIntent, paramInt, paramOnDismissListener, paramBoolean1, paramavaj, paramBoolean2);
+    b(paramContext, paramString, paramIntent, paramInt, paramOnDismissListener, paramBoolean1, paramavsk, paramBoolean2);
   }
   
-  public static void a(Context paramContext, String paramString, Intent paramIntent, int paramInt, avaj paramavaj)
+  public static void a(Context paramContext, String paramString, Intent paramIntent, int paramInt, avsk paramavsk)
   {
-    a(paramContext, paramString, paramIntent, paramInt, null, true, paramavaj, false);
+    a(paramContext, paramString, paramIntent, paramInt, null, true, paramavsk, false);
   }
   
   public static void a(Intent paramIntent, String paramString)
@@ -157,30 +157,30 @@ public class QzonePluginProxyActivity
     return PluginStatic.getOrCreateClassLoader(paramContext, "Photoplus.apk");
   }
   
-  private static void b(Context paramContext, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean1, avaj paramavaj, boolean paramBoolean2)
+  private static void b(Context paramContext, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean1, avsk paramavsk, boolean paramBoolean2)
   {
-    if ((blsb.a) && ((paramContext instanceof SplashActivity)))
+    if ((bmtd.a) && ((paramContext instanceof SplashActivity)))
     {
       paramInt = LocalMultiProcConfig.getInt("qzapp_vercode", 84);
       if (!LocalMultiProcConfig.getBool("qz_safe_mode_no_tip", false))
       {
-        paramContext = bglp.a(paramContext, 230, 2131562573, anni.a(2131710950), "空间出问题了，启用空间保护模式点\"确定\"；点击\"取消\"，保护模式不会生效。", anni.a(2131710962), anni.a(2131710946), new blug(paramContext, paramInt, paramString, paramIntent), new bluh());
-        ((CheckBox)paramContext.findViewById(2131365512)).setOnCheckedChangeListener(new blui());
+        paramContext = bhlq.a(paramContext, 230, 2131562614, anzj.a(2131711059), "空间出问题了，启用空间保护模式点\"确定\"；点击\"取消\"，保护模式不会生效。", anzj.a(2131711071), anzj.a(2131711055), new bmvi(paramContext, paramInt, paramString, paramIntent), new bmvj());
+        ((CheckBox)paramContext.findViewById(2131365554)).setOnCheckedChangeListener(new bmvk());
         paramContext.show();
       }
-      while (blsb.a(paramContext, paramInt, Long.valueOf(paramString).longValue(), "com.qzonex.app.tab.QZoneTabActivity")) {
+      while (bmtd.a(paramContext, paramInt, Long.valueOf(paramString).longValue(), "com.qzonex.app.tab.QZoneTabActivity")) {
         return;
       }
-      blsb.a(paramIntent.getStringExtra("sid"), paramContext);
+      bmtd.a(paramIntent.getStringExtra("sid"), paramContext);
       return;
     }
     if ((paramContext instanceof FriendProfileCardActivity)) {
-      bcts.a().c(paramString);
+      bdml.a().c(paramString);
     }
     if (QLog.isColorLevel()) {
       QLog.d("PluginDebug", 2, "launchPluingActivityForResult.isPluginInstalled start， showProgressDialog：" + paramBoolean1);
     }
-    blsb.a(paramBoolean1, new bluj(paramIntent, paramString, paramavaj, paramInt, paramBoolean2, paramContext, paramOnDismissListener));
+    bmtd.a(paramBoolean1, new bmvl(paramIntent, paramString, paramavsk, paramInt, paramBoolean2, paramContext, paramOnDismissListener));
   }
   
   private static boolean b(String[] paramArrayOfString, String paramString)
@@ -204,7 +204,7 @@ public class QzonePluginProxyActivity
   public static ClassLoader c(Context paramContext)
   {
     ClassLoader localClassLoader = null;
-    String str = bmei.a();
+    String str = bnfk.a();
     if (str.equals("qzone_live_video_plugin_hack.apk")) {
       localClassLoader = PluginStatic.getOrCreateClassLoader(paramContext, str);
     }
@@ -238,9 +238,9 @@ public class QzonePluginProxyActivity
     return paramContext;
   }
   
-  public blvm a()
+  public bmwo a()
   {
-    return this.jdField_a_of_type_Blvm;
+    return this.jdField_a_of_type_Bmwo;
   }
   
   public IPluginActivity a()
@@ -268,7 +268,7 @@ public class QzonePluginProxyActivity
   
   public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
-    return blul.a(paramString);
+    return bmvn.a(paramString);
   }
   
   public int getThemeResId()
@@ -278,7 +278,7 @@ public class QzonePluginProxyActivity
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    bgtn.a();
+    bhtq.a();
     super.onConfigurationChanged(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
@@ -297,10 +297,10 @@ public class QzonePluginProxyActivity
       for (;;)
       {
         paramBundle = paramBundle.getString("pluginsdk_launchActivity");
-        localObject = new StringBuffer(anni.a(2131710964));
+        localObject = new StringBuffer(anzj.a(2131711073));
         ((StringBuffer)localObject).append(paramBundle).append(" ").append(this.mCreateErrorInfo);
         QLog.e("QZLog", 1, ((StringBuffer)localObject).toString());
-        bmjj.a(new QZoneStartupFailException(this.mCreateErrorInfo), anni.a(2131710951) + getPluginActivity());
+        bnkm.a(new QZoneStartupFailException(this.mCreateErrorInfo), anzj.a(2131711060) + getPluginActivity());
         a();
         return;
         paramBundle = getIntent().getExtras();
@@ -316,18 +316,18 @@ public class QzonePluginProxyActivity
         a(this, (String)localObject, getIntent(), 1000);
       }
     }
-    this.jdField_a_of_type_Blvm.a(this);
+    this.jdField_a_of_type_Bmwo.a(this);
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_Blvm.c();
+    this.jdField_a_of_type_Bmwo.c();
     super.onDestroy();
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Blvm.a(paramInt, paramKeyEvent);
+    this.jdField_a_of_type_Bmwo.a(paramInt, paramKeyEvent);
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
   
@@ -339,13 +339,13 @@ public class QzonePluginProxyActivity
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Blvm.a();
+    this.jdField_a_of_type_Bmwo.a();
   }
   
   public void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_Blvm.b();
+    this.jdField_a_of_type_Bmwo.b();
   }
   
   public boolean shouldHandleStartPluginFailed(String paramString)

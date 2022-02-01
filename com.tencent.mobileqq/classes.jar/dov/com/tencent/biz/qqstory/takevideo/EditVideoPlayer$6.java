@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bpex;
+import bqgs;
 import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
-import yqp;
+import yuk;
 
 public class EditVideoPlayer$6
   implements Runnable
 {
-  public EditVideoPlayer$6(bpex parambpex, int paramInt) {}
+  public EditVideoPlayer$6(bqgs parambqgs, int paramInt) {}
   
   public void run()
   {
-    yqp.a("Q.qqstory.record.EditVideoPlayer", "setPlayMode %d", Integer.valueOf(this.a));
+    yuk.a("Q.qqstory.record.EditVideoPlayer", "setPlayMode %d", Integer.valueOf(this.a));
     VideoSourceHelper.nativeSetPlayMode(this.a);
   }
 }

@@ -1,26 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-class bdve
-  extends anqd
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class bdve
+  implements View.OnClickListener
 {
-  bdve(bdvb parambdvb) {}
+  bdve(bdvc parambdvc) {}
   
-  public void a(boolean paramBoolean, long paramLong, anqe paramanqe)
+  public final void onClick(View paramView)
   {
-    if ((this.a.a.a == 1026) && (QLog.isColorLevel())) {
-      QLog.i("PttShow", 2, "onNotifyResultAfterSendRich, UIN_TYPE_HOTCHAT_TOPIC  " + paramBoolean);
-    }
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramanqe);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    if (paramanqe != null) {
-      this.a.v = paramanqe.d;
-    }
-    this.a.d();
+    bdvc.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

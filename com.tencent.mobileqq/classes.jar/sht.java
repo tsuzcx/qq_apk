@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-public final class sht
-  implements Parcelable.Creator<DiscoveryBannerInfo>
+public class sht
+  extends pmr
 {
-  public DiscoveryBannerInfo a(Parcel paramParcel)
+  public sht(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    return new DiscoveryBannerInfo(paramParcel);
+    super(paramString);
   }
   
-  public DiscoveryBannerInfo[] a(int paramInt)
+  public void a(pmk parampmk)
   {
-    return new DiscoveryBannerInfo[paramInt];
+    parampmk.e();
   }
 }
 

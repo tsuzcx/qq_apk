@@ -1,34 +1,40 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBlackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-class xcj
-  implements ayyt
+public class xcj
+  extends wpa<xeh>
 {
-  xcj(xci paramxci) {}
+  public static final String a = wnu.a("StorySvc.get_user_black_status");
+  public String b;
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public String a()
   {
+    return a;
+  }
+  
+  public wov a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetBlackList localRspGetBlackList = new qqstory_service.RspGetBlackList();
+    try
+    {
+      localRspGetBlackList.mergeFrom(paramArrayOfByte);
+      return new xeh(localRspGetBlackList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return null;
   }
   
-  public void a(ayyu paramayyu) {}
-  
-  public void b(ayyu paramayyu)
+  protected byte[] a()
   {
-    if ((paramayyu.jdField_b_of_type_Int == 0) && (!TextUtils.isEmpty(paramayyu.jdField_b_of_type_JavaLangString)))
-    {
-      this.a.a("UploadImageJob_out_image_url", paramayyu.jdField_b_of_type_JavaLangString);
-      xci.a(this.a, true);
-      return;
-    }
-    paramayyu = new ErrorMessage(paramayyu.jdField_b_of_type_Int, paramayyu.a);
-    if (QLog.isColorLevel()) {
-      QLog.e(this.a.jdField_b_of_type_JavaLangString, 2, paramayyu, new Object[0]);
-    }
-    xci.b(this.a, false);
+    qqstory_service.ReqGetBlackList localReqGetBlackList = new qqstory_service.ReqGetBlackList();
+    localReqGetBlackList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localReqGetBlackList.toByteArray();
   }
 }
 

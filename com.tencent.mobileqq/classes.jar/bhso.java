@@ -1,9 +1,6 @@
 public abstract interface bhso
-  extends bhni
 {
-  public abstract long getLoadShareJsTime();
-  
-  public abstract boolean isNotNeedLoadShareJs(String paramString);
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

@@ -1,11 +1,45 @@
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+
 class uli
-  implements ujj
+  implements TVK_SDKMgr.OnLogListener
 {
-  uli(ulf paramulf, boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3) {}
-  
-  public void a(uju paramuju)
+  public int d(String paramString1, String paramString2)
   {
-    ulf.a(this.jdField_a_of_type_Ulf, paramuju, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.b, this.c);
+    if (QLog.isColorLevel()) {
+      uqf.b(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    uqf.d(paramString1, 1, paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      uqf.a(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      uqf.b(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      uqf.c(paramString1, 2, paramString2);
+    }
+    return 0;
   }
 }
 

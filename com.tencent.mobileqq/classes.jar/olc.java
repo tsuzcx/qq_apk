@@ -1,32 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ad.common_ad_action.download_action.AdDownloadUtil.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class olc
+  implements bliz
 {
-  public static void a(orb paramorb, old paramold)
+  public olc(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramorb == null)
+    switch (paramInt)
     {
-      paramold.a(false);
+    }
+    for (;;)
+    {
+      ReadInJoySettingActivity.b(this.a).cancel();
       return;
+      ReadInJoySettingActivity.e(this.a, false);
+      ReadInJoySettingActivity.e(this.a, ReadInJoySettingActivity.d(this.a));
     }
-    ThreadManager.getSubThreadHandler().post(new AdDownloadUtil.1(paramorb, paramold));
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return nxw.a(BaseApplicationImpl.getContext(), paramString);
-  }
-  
-  public static boolean a(orb paramorb)
-  {
-    if ((paramorb == null) || (TextUtils.isEmpty(paramorb.d))) {
-      return false;
-    }
-    return a(paramorb.d);
   }
 }
 

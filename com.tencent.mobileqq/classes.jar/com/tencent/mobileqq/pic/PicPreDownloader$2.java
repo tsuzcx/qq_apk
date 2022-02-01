@@ -1,16 +1,24 @@
 package com.tencent.mobileqq.pic;
 
-import ayyj;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.qphone.base.util.QLog;
 
 class PicPreDownloader$2
   implements Runnable
 {
-  PicPreDownloader$2(PicPreDownloader paramPicPreDownloader, QQAppInterface paramQQAppInterface) {}
+  PicPreDownloader$2(PicPreDownloader paramPicPreDownloader, MessageForPic paramMessageForPic, int paramInt) {}
   
   public void run()
   {
-    this.this$0.a.a(this.a);
+    if (!PicPreDownloader.a(this.this$0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PIC_TAG_PRELOAD", 2, "productAsync(): cannot preDownload");
+      }
+      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, -1);
+      return;
+    }
+    PicPreDownloader.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, this.jdField_a_of_type_Int, 5);
   }
 }
 

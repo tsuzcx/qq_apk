@@ -3,8 +3,8 @@ package com.tencent.mobileqq.forward;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aufu;
-import ayyz;
+import auxp;
+import azrm;
 import com.tencent.mobileqq.activity.photo.ImageInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pic.CompressInfo;
@@ -23,10 +23,10 @@ class ForwardSdkBaseOption$8
     int i = 0;
     for (;;)
     {
-      if ((i >= 3) || ((this.this$0.m) && (this.this$0.jdField_a_of_type_Aufu != null)))
+      if ((i >= 3) || ((this.this$0.m) && (this.this$0.jdField_a_of_type_Auxp != null)))
       {
-        if ((this.this$0.b != 65520L) && (!this.this$0.s())) {
-          this.this$0.K();
+        if ((this.this$0.b != 65520L) && (!this.this$0.t())) {
+          this.this$0.L();
         }
       }
       else {
@@ -40,7 +40,7 @@ class ForwardSdkBaseOption$8
         catch (InterruptedException localInterruptedException)
         {
           QLog.e("ForwardOption.ForwardSdkBaseOption", 1, "InterruptedException", localInterruptedException);
-          this.this$0.K();
+          this.this$0.L();
           return;
         }
       }
@@ -48,24 +48,24 @@ class ForwardSdkBaseOption$8
     if ((!this.this$0.m) || (TextUtils.isEmpty(this.this$0.k)))
     {
       this.this$0.a("ForwardOption.ForwardSdkBaseOption", "-->asyncUploadImageAndSendToBuddy--skey not ready");
-      this.this$0.I();
+      this.this$0.J();
       this.this$0.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new ForwardSdkBaseOption.8.1(this));
-      this.this$0.K();
+      this.this$0.L();
       return;
     }
-    if (this.this$0.jdField_a_of_type_Aufu != null)
+    if (this.this$0.jdField_a_of_type_Auxp != null)
     {
-      if ((this.this$0.jdField_a_of_type_Aufu.b() != null) && (this.this$0.b != Long.parseLong("1103584836"))) {
-        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_url", this.this$0.jdField_a_of_type_Aufu.b());
+      if ((this.this$0.jdField_a_of_type_Auxp.b() != null) && (this.this$0.b != Long.parseLong("1103584836"))) {
+        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_url", this.this$0.jdField_a_of_type_Auxp.b());
       }
-      if (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_Aufu.a())) {
-        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_icon", this.this$0.jdField_a_of_type_Aufu.a());
+      if (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_Auxp.a())) {
+        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_icon", this.this$0.jdField_a_of_type_Auxp.a());
       }
-      if (this.this$0.jdField_a_of_type_Aufu.c() != null) {
-        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_name", this.this$0.jdField_a_of_type_Aufu.c());
+      if (this.this$0.jdField_a_of_type_Auxp.c() != null) {
+        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_name", this.this$0.jdField_a_of_type_Auxp.c());
       }
-      if (this.this$0.jdField_a_of_type_Aufu.d() != null) {
-        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_a_action_data", this.this$0.jdField_a_of_type_Aufu.d());
+      if (this.this$0.jdField_a_of_type_Auxp.d() != null) {
+        this.this$0.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_a_action_data", this.this$0.jdField_a_of_type_Auxp.d());
       }
     }
     String str1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
@@ -91,7 +91,7 @@ class ForwardSdkBaseOption$8
     for (;;)
     {
       localObject2 = new CompressInfo((String)localObject1, 0);
-      ayyz.b((CompressInfo)localObject2);
+      azrm.b((CompressInfo)localObject2);
       if (((CompressInfo)localObject2).jdField_e_of_type_JavaLangString != null)
       {
         this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("struct_share_key_thumb_height", ((CompressInfo)localObject2).jdField_e_of_type_Int);

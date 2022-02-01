@@ -5,21 +5,21 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.Iterator;
 import java.util.List;
-import wfe;
+import wiz;
 
 public class QQStoryFeedManager$1
   implements Runnable
 {
-  public QQStoryFeedManager$1(wfe paramwfe, String paramString) {}
+  public QQStoryFeedManager$1(wiz paramwiz, String paramString) {}
   
   public void run()
   {
-    Iterator localIterator = wfe.a(this.this$0).a().a(this.a, 0, new int[] { -2061 }).iterator();
+    Iterator localIterator = wiz.a(this.this$0).a().a(this.a, 0, new int[] { -2061 }).iterator();
     while (localIterator.hasNext())
     {
       MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      wfe.a(this.this$0).a().a(localMessageRecord.frienduin, 0, localMessageRecord.msgtype, localMessageRecord.uniseq);
-      wfe.a(this.this$0).a().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
+      wiz.a(this.this$0).a().a(localMessageRecord.frienduin, 0, localMessageRecord.msgtype, localMessageRecord.uniseq);
+      wiz.a(this.this$0).a().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
     }
   }
 }

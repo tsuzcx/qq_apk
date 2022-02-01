@@ -1,20 +1,17 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.CustomEmotionBase;
 
-class anvt
-  extends bdpx
+public abstract class anvt<T extends CustomEmotionBase>
+  extends anud
 {
-  anvt(anvs paramanvs) {}
-  
-  public boolean a(bdps parambdps)
+  protected anvt(QQAppInterface paramQQAppInterface)
   {
-    String str = ThemeUtil.getCurrentThemeId();
-    if (!parambdps.a().equals(str)) {
-      QQToast.a(this.a.app.getApplication(), anni.a(2131713606), 4000).a();
-    }
-    return false;
+    super(paramQQAppInterface);
   }
+  
+  public abstract void a();
+  
+  protected abstract void a(Object paramObject, boolean paramBoolean);
 }
 
 

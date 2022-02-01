@@ -1,59 +1,73 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity;
-import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class oed
-  extends BroadcastReceiver
+  extends arac<oec>
 {
-  public oed(ShopWebViewFragment paramShopWebViewFragment) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  @NonNull
+  public oec a(int paramInt)
   {
-    if (paramIntent == null) {}
-    do
+    if (paramInt == 0)
     {
-      Object localObject;
-      do
-      {
-        do
-        {
-          return;
-          paramContext = paramIntent.getAction();
-          localObject = paramIntent.getStringExtra("uin");
-          Bitmap localBitmap = (Bitmap)paramIntent.getParcelableExtra("bitmap");
-          if (!"action_decode_finish".equals(paramContext)) {
-            break;
-          }
-          if ((this.a.jdField_a_of_type_Odq != null) && (!TextUtils.isEmpty((CharSequence)localObject)) && (localBitmap != null)) {
-            this.a.jdField_a_of_type_Odq.a((String)localObject, localBitmap);
-          }
-        } while (this.a.jdField_a_of_type_Ody == null);
-        this.a.jdField_a_of_type_Ody.a((String)localObject);
-        return;
-      } while (!"action_on_shop_msg_receive".equals(paramContext));
-      this.a.jdField_a_of_type_JavaUtilList = paramIntent.getParcelableArrayListExtra("datas");
-      paramContext = this.a.getActivity();
-      if ((paramContext instanceof EcshopWebActivity)) {
-        ((EcshopWebActivity)paramContext).jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_JavaUtilList;
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface)) {
+        return oec.a(bhsi.e(((QQAppInterface)localAppRuntime).getApplication()));
       }
-      paramContext = paramIntent.getStringExtra("uin");
-      paramIntent = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramIntent.hasNext())
-      {
-        localObject = (RecentShopParcel)paramIntent.next();
-        if ((!TextUtils.isEmpty(((RecentShopParcel)localObject).a)) && (((RecentShopParcel)localObject).a.equals(paramContext))) {
-          ((RecentShopParcel)localObject).b += 1;
-        }
-      }
-    } while ((this.a.b != 1) || (this.a.jdField_a_of_type_Ody == null));
-    this.a.jdField_a_of_type_Ody.a(this.a.jdField_a_of_type_JavaUtilList);
+    }
+    return new oec();
+  }
+  
+  @Nullable
+  public oec a(araj[] paramArrayOfaraj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountConfProcessor", 2, "[onParsed]");
+    }
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return oec.a(paramArrayOfaraj);
+    }
+    return null;
+  }
+  
+  public void a(oec paramoec)
+  {
+    paramoec.b();
+    paramoec.a();
+  }
+  
+  public Class<oec> clazz()
+  {
+    return oec.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return bhsi.m(((QQAppInterface)localAppRuntime).getApp());
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 32;
   }
 }
 

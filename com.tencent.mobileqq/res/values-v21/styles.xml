@@ -6,17 +6,17 @@
     <style name="fy" parent="@style/fx">
         <item name="android:windowDrawsSystemBarBackgrounds">false</item>
     </style>
-    <style name="zc" parent="@android:style/TextAppearance.Material.Notification" />
-    <style name="zd" parent="@android:style/TextAppearance.Material.Notification.Info" />
-    <style name="zf" parent="@android:style/TextAppearance.Material.Notification.Time" />
-    <style name="zg" parent="@android:style/TextAppearance.Material.Notification.Title" />
-    <style name="zl">
-        <item name="android:background">@drawable/bud</item>
-    </style>
+    <style name="zd" parent="@android:style/TextAppearance.Material.Notification" />
+    <style name="ze" parent="@android:style/TextAppearance.Material.Notification.Info" />
+    <style name="zg" parent="@android:style/TextAppearance.Material.Notification.Time" />
+    <style name="zh" parent="@android:style/TextAppearance.Material.Notification.Title" />
     <style name="zm">
+        <item name="android:background">@drawable/bx0</item>
+    </style>
+    <style name="zn">
         <item name="android:textAppearance">?android:textAppearanceButton</item>
-        <item name="android:textSize">@dimen/bba</item>
-        <item name="android:textColor">@color/ahv</item>
+        <item name="android:textSize">@dimen/bbm</item>
+        <item name="android:textColor">@color/ai4</item>
     </style>
     <style name="u1" parent="@style/u0">
         <item name="android:windowDrawsSystemBarBackgrounds">false</item>

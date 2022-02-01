@@ -1,19 +1,6 @@
-import com.tencent.av.VideoController;
-
-public class mqz
+abstract interface mqz
 {
-  public static void a()
-  {
-    mqw.a("0X800A3D9", VideoController.a().a().d);
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    int i = VideoController.a().a().d;
-    if (paramBoolean) {
-      mqw.a("0X800A3DA", i);
-    }
-  }
+  public abstract void a();
 }
 
 

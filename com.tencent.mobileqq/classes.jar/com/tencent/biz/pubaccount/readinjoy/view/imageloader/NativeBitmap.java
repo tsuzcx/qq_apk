@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Build.VERSION;
-import bctj;
+import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import ted;
+import suv;
 
 public class NativeBitmap
 {
@@ -25,7 +25,7 @@ public class NativeBitmap
     {
       a = false;
       if (QLog.isColorLevel()) {
-        ted.a("NativeBitmap", "load so fail");
+        suv.a("NativeBitmap", "load so fail");
       }
       if (BaseApplicationImpl.sProcessId == 1)
       {
@@ -33,14 +33,14 @@ public class NativeBitmap
         localHashMap.put("model", Build.MODEL);
         localHashMap.put("androidVersion", Build.VERSION.SDK);
         localHashMap.put("brand", Build.BRAND);
-        bctj.a(BaseApplicationImpl.getApplication()).a(null, "readinjoy.loadso", false, 0L, 0L, localHashMap, null);
+        bdmc.a(BaseApplicationImpl.getApplication()).a(null, "readinjoy.loadso", false, 0L, 0L, localHashMap, null);
       }
       return;
     }
     finally
     {
       if (QLog.isColorLevel()) {
-        ted.a("NativeBitmap", "canUseNativeBitmap:" + a);
+        suv.a("NativeBitmap", "canUseNativeBitmap:" + a);
       }
     }
   }

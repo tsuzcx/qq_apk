@@ -1,76 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-final class ahel
-  implements bdvw
+class ahel
+  extends ClickableSpan
 {
-  ahel(String paramString1, String paramString2) {}
+  ahel(ahed paramahed) {}
   
-  public void onResp(bdwt parambdwt)
+  public void onClick(View paramView) {}
+  
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (parambdwt.jdField_a_of_type_Int == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo", 2, "pe res download repeating ");
-      }
-      return;
-    }
-    boolean bool;
-    if (parambdwt.jdField_a_of_type_Int == 0)
-    {
-      parambdwt = parambdwt.jdField_a_of_type_Bdws.c;
-      String str1 = bgmg.c(parambdwt);
-      String str2 = this.a;
-      if ((str1 != null) && (str1.equalsIgnoreCase(this.b)))
-      {
-        try
-        {
-          bgmg.a(parambdwt, str2, false);
-          bqfh.a(str2);
-          bool = true;
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            label83:
-            if (QLog.isColorLevel()) {
-              QLog.d("PokeEmo", 2, "downloadRes.onResp download succ but unzip is failed");
-            }
-            bool = false;
-          }
-        }
-        bgmg.d(parambdwt);
-        if (!bool) {
-          break label189;
-        }
-        bgsg.a(true);
-        aheh.b = true;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo", 2, "downloadRes.onResp download result = " + bool);
-      }
-      aheh.c = false;
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo", 2, "downloadRes.onResp download succ but md5 is mismatched");
-      }
-      bool = false;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo", 2, "downloadRes.onResp failed ");
-      }
-      bool = false;
-      break label83;
-      label189:
-      aheh.o += 1;
-    }
+    paramTextPaint.setColor(-12541697);
   }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

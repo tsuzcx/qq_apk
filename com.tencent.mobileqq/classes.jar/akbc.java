@@ -1,20 +1,30 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
 
-class akbc
-  implements QQPermissionCallback
+public class akbc
+  implements aoco
 {
-  akbc(akbb paramakbb) {}
+  public akbc(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(aoco paramaoco) {}
+  
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    bglp.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+    if (QLog.isColorLevel()) {
+      QLog.d(ChatHistoryC2CDateFragment.b(), 2, "onGetRoamMsgForDate " + paramBoolean);
+    }
+    this.a.p();
+    if (paramBoolean)
+    {
+      ThreadManagerV2.executeOnSubThread(new ChatHistoryC2CDateFragment.3.1(this));
+      return;
+    }
+    this.a.c(this.a.getString(2131690650));
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a.grant();
-  }
+  public void b(int paramInt1, int paramInt2, Object paramObject) {}
 }
 
 

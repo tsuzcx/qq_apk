@@ -1,64 +1,71 @@
-import android.content.Intent;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.share.QZoneShareActivity;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.time.TimeMonitorData.1;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class bmfu
-  implements TextWatcher
 {
-  public bmfu(QZoneShareActivity paramQZoneShareActivity) {}
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString = "";
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public bmfu(String paramString)
   {
-    if (((paramInt2 == 1) || (paramInt2 == 2)) && (paramInt3 == 0)) {
-      try
-      {
-        QZoneShareActivity.b(this.a, QZoneShareActivity.a(this.a, paramCharSequence, paramInt1 + paramInt2));
-        if (QZoneShareActivity.b(this.a) == -1)
-        {
-          QZoneShareActivity.g(this.a);
-          return;
-        }
-        QZoneShareActivity.c(this.a, paramInt1);
-        QZoneShareActivity.a(this.a, paramCharSequence.toString().substring(QZoneShareActivity.b(this.a), QZoneShareActivity.c(this.a) + paramInt2));
-        return;
+    QLog.e("IliveTimeMonitorData", 1, "init TimeMonitor id：" + paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  private void b()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilHashMap.size() <= 0) {
+        QLog.e("IliveTimeMonitorData", 1, "mTimeTag is empty");
       }
-      catch (Exception paramCharSequence)
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      while (localIterator.hasNext())
       {
-        QZoneShareActivity.g(this.a);
+        String str = (String)localIterator.next();
+        QLog.e("IliveTimeMonitorData", 1, str + "：" + (String)this.jdField_a_of_type_JavaUtilHashMap.get(str));
       }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+      QLog.e("IliveTimeMonitorData", 1, "showDataToQLogcat msg = " + localThrowable.getMessage(), localThrowable);
     }
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a()
   {
-    this.a.a.removeTextChangedListener(this);
-    if (paramCharSequence == null)
-    {
-      this.a.a.addTextChangedListener(this);
-      QZoneShareActivity.g(this.a);
-      return;
+    if (this.jdField_a_of_type_JavaUtilHashMap.size() > 0) {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
     }
-    if ((paramInt3 == 1) && (paramInt2 == 0) && (paramCharSequence.toString().substring(paramInt1, paramInt1 + 1).equals("@")))
-    {
-      this.a.a(false);
-      this.a.g = true;
-      paramCharSequence = new Intent(BaseApplication.getContext(), SelectMemberActivity.class);
-      paramCharSequence.putExtra("param_only_friends", true);
-      paramCharSequence.putExtra("param_min", 1);
-      this.a.startActivityForResult(paramCharSequence, 1000);
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a(String paramString)
+  {
+    a(paramString, null);
+  }
+  
+  public void a(String paramString, long paramLong, HashMap<String, String> paramHashMap)
+  {
+    b();
+    ThreadManagerV2.postImmediately(new TimeMonitorData.1(this, paramString, paramHashMap, paramLong), null, false);
+  }
+  
+  public void a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
     }
-    if (QZoneShareActivity.a(this.a, QZoneShareActivity.a(this.a), false)) {
-      this.a.a.getEditableText().delete(QZoneShareActivity.b(this.a), QZoneShareActivity.c(this.a));
-    }
-    QZoneShareActivity.g(this.a);
-    this.a.i();
-    this.a.a.addTextChangedListener(this);
+    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, String.valueOf(l));
+    a(paramString, l, paramHashMap);
   }
 }
 

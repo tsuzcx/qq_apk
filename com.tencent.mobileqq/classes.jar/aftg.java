@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.pb.troop.bindgame.GCBindGroup.GCBindGroupSsoServerRsp;
+import com.tencent.qphone.base.util.QLog;
 
 public class aftg
-  implements View.OnClickListener
+  extends nkq
 {
-  public aftg(ReminderListFragment paramReminderListFragment) {}
+  public aftg(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (ReminderListFragment.a(this.a) != null) {
-      ReminderListFragment.a(this.a).dismiss();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
+    {
+      paramBundle = new GCBindGroup.GCBindGroupSsoServerRsp();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.a.a(paramBundle);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.e("Q.troopinfo", 1, "parse game bind status failed");
+    }
   }
 }
 

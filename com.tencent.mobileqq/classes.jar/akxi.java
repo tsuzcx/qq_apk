@@ -1,27 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
-import java.util.Iterator;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import java.util.List;
+import java.util.Map;
 
-public class akxi
-  implements ValueAnimator.AnimatorUpdateListener
+class akxi
+  implements aldq
 {
-  public akxi(RecordMicView paramRecordMicView) {}
+  akxi(akxg paramakxg, AppInterface paramAppInterface) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    float f = paramValueAnimator.getAnimatedFraction();
-    paramValueAnimator = RecordMicView.a(this.a).iterator();
-    while (paramValueAnimator.hasNext())
-    {
-      akxj localakxj = (akxj)paramValueAnimator.next();
-      localakxj.jdField_c_of_type_Float = (localakxj.f + (localakxj.g - localakxj.f) * f);
-      localakxj.d = (localakxj.h + (localakxj.i - localakxj.h) * f);
-      localakxj.e = (localakxj.j + (localakxj.k - localakxj.j) * f);
-      localakxj.a = (localakxj.b + (int)((localakxj.jdField_c_of_type_Int - localakxj.b) * f));
+    List localList = (List)akxg.a(this.jdField_a_of_type_Akxg).get(paramPathResult.url);
+    if (paramPathResult.url.endsWith(".zip")) {
+      akxg.a(this.jdField_a_of_type_Akxg, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, paramPathResult.folderPath, localList);
     }
-    this.a.invalidate();
+    while (!paramPathResult.url.endsWith(".png")) {
+      return;
+    }
+    akxg.a(this.jdField_a_of_type_Akxg, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, localList);
   }
 }
 

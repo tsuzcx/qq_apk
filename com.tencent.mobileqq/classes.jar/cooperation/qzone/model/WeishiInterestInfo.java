@@ -3,13 +3,13 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blzv;
+import bnax;
 import java.util.ArrayList;
 
 public class WeishiInterestInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiInterestInfo> CREATOR = new blzv();
+  public static final Parcelable.Creator<WeishiInterestInfo> CREATOR = new bnax();
   public String a;
   public ArrayList<Long> a;
   

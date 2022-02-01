@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import ampj;
-import amre;
-import amrk;
+import anbd;
+import ancy;
+import ande;
 import android.content.Context;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class GeneralEventHandler$2
   implements Runnable
 {
-  public GeneralEventHandler$2(amre paramamre, String paramString) {}
+  public GeneralEventHandler$2(ancy paramancy, String paramString) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class GeneralEventHandler$2
     {
       Object localObject1 = new JSONObject(this.a);
       int i = ((JSONObject)localObject1).getInt("xyId");
-      if (amre.a(this.this$0) == i)
+      if (ancy.a(this.this$0) == i)
       {
         QLog.e("apollochannel_GeneralEventHandler", 1, "startNewGame error mGameId == gameId");
         return;
@@ -30,10 +30,10 @@ public class GeneralEventHandler$2
       Object localObject2 = ((JSONObject)localObject1).optString("extendInfo");
       localObject1 = new CmGameStartChecker.StartCheckParam(i, true, "launch", 0L, 0, 0, 0, 0, "", j, null);
       ((CmGameStartChecker.StartCheckParam)localObject1).extendJson = ((String)localObject2);
-      localObject2 = ampj.a(amre.a(this.this$0));
+      localObject2 = anbd.a(ancy.a(this.this$0));
       if (localObject2 != null)
       {
-        localObject2 = ((amrk)localObject2).a();
+        localObject2 = ((ande)localObject2).a();
         if (localObject2 != null)
         {
           ((CmGameStartChecker.StartCheckParam)localObject1).sessionUin = ((CmGameStartChecker.StartCheckParam)localObject2).sessionUin;

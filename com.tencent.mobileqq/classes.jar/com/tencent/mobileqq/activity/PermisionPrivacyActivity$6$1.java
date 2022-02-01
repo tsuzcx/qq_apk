@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import anni;
+import anzj;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 
 class PermisionPrivacyActivity$6$1
@@ -15,7 +15,7 @@ class PermisionPrivacyActivity$6$1
       PermisionPrivacyActivity.a(this.a.this$0).setRightText("");
       return;
     }
-    PermisionPrivacyActivity.a(this.a.this$0).setRightText(PermisionPrivacyActivity.a(this.a.this$0) + anni.a(2131706687));
+    PermisionPrivacyActivity.a(this.a.this$0).setRightText(PermisionPrivacyActivity.a(this.a.this$0) + anzj.a(2131706796));
   }
 }
 

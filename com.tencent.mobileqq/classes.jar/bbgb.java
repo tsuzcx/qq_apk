@@ -1,35 +1,48 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class bbgb
-  implements View.OnClickListener
+public class bbgb
 {
-  bbgb(bbfs parambbfs) {}
-  
-  public void onClick(View paramView)
+  public static int a()
   {
-    ViewPager localViewPager;
-    if (bbfs.a(this.a).getCurrentItem() != 0)
+    int j = 2;
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4);
+    long l = localSharedPreferences.getLong("key_open_camera_time", 0L);
+    int i = j;
+    if (l != 0L)
     {
-      localViewPager = bbfs.a(this.a);
-      if (bbfs.a(this.a)) {
-        break label84;
+      i = j;
+      if (System.currentTimeMillis() - l < 300000L) {
+        i = localSharedPreferences.getInt("camera", 2);
       }
     }
-    label84:
-    for (boolean bool = true;; bool = false)
-    {
-      localViewPager.setCurrentItem(0, bool);
-      this.a.d();
-      this.a.a(0);
-      this.a.a(this.a.a.getResources().getString(2131717137));
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    return i;
+  }
+  
+  public static void a()
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).edit();
+    localEditor.putLong("key_open_camera_time", System.currentTimeMillis());
+    localEditor.apply();
+  }
+  
+  public static void a(int paramInt)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).edit();
+    localEditor.putInt("camera", paramInt);
+    localEditor.putLong("key_open_camera_time", System.currentTimeMillis());
+    localEditor.apply();
+  }
+  
+  public static boolean a()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).contains("camera");
+  }
+  
+  public static int b()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).getInt("camera", 1);
   }
 }
 

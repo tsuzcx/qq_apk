@@ -1,16 +1,28 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import androidx.annotation.NonNull;
 
 public class belk
-  implements beln
 {
-  public belk(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
+  private StringBuilder a = new StringBuilder();
   
-  public void a(Bitmap paramBitmap)
+  public void a(belm parambelm)
   {
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bihh);
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
+    this.a.append(parambelm.jdField_a_of_type_JavaLangString);
+    if (parambelm.b > 0) {
+      this.a.append('|').append(beks.a(parambelm.b));
+    }
+    this.a.append(parambelm.jdField_a_of_type_Char);
+    this.a.append(beks.a(parambelm.jdField_a_of_type_Int));
+  }
+  
+  public void c()
+  {
+    this.a.delete(0, this.a.length());
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return this.a.toString();
   }
 }
 

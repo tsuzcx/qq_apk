@@ -1,69 +1,38 @@
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 import org.json.JSONObject;
 
 public class awhb
+  implements QQPermissionCallback
 {
-  public String a;
-  public String b;
-  public String c;
+  public awhb(MediaApiPlugin paramMediaApiPlugin, Intent paramIntent, Context paramContext, String paramString, JSONObject paramJSONObject, boolean paramBoolean, BasePluginActivity paramBasePluginActivity) {}
   
-  public static awhb a(JSONObject paramJSONObject)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramJSONObject != null) {
-      for (;;)
-      {
-        try
-        {
-          localObject = new awhb();
-          try
-          {
-            if (paramJSONObject.has("tip"))
-            {
-              ((awhb)localObject).a = paramJSONObject.getString("tip");
-              if (!paramJSONObject.has("key_word")) {
-                continue;
-              }
-              ((awhb)localObject).b = paramJSONObject.getString("key_word");
-              if (!paramJSONObject.has("jump_url")) {
-                continue;
-              }
-              ((awhb)localObject).c = paramJSONObject.getString("jump_url");
-              return localObject;
-            }
-            ((awhb)localObject).a = "";
-            continue;
-            localObject = paramJSONObject;
-          }
-          catch (Exception localException1)
-          {
-            paramJSONObject = (JSONObject)localObject;
-          }
-        }
-        catch (Exception localException2)
-        {
-          paramJSONObject = null;
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          return localObject;
-        }
-        QLog.i("CUOpenCardGuideMng", 2, "GuideEntry-parse", localException1);
-        return paramJSONObject;
-        ((awhb)localObject).b = "";
-        continue;
-        ((awhb)localObject).c = "";
-        return localObject;
-      }
-    }
-    Object localObject = null;
-    return localObject;
+    QLog.d(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, "User requestPermissions RECORD_AUDIO denied");
+    bhlq.a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkBasePluginActivity.getOutActivity(), paramArrayOfString, paramArrayOfInt);
   }
   
-  public String toString()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("[tip:").append(this.a).append(", key_word:").append(this.b).append(", jump_url:").append(this.c).append("]");
-    return localStringBuilder.toString();
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+      MediaApiPlugin.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).putString("getMediaParam", this.jdField_a_of_type_OrgJsonJSONObject.toString()).putBoolean("calledFromOpenApi", this.jdField_a_of_type_Boolean).commit();
+      return;
+    }
+    catch (Exception paramArrayOfString)
+    {
+      QLog.e(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, paramArrayOfString, new Object[0]);
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690578, 0).a();
+    }
   }
 }
 

@@ -1,11 +1,11 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face;
 
-import bpnb;
+import bqow;
 
 class FaceListPage$1
   implements Runnable
 {
-  FaceListPage$1(FaceListPage paramFaceListPage, bpnb parambpnb) {}
+  FaceListPage$1(FaceListPage paramFaceListPage, bqow parambqow) {}
   
   public void run()
   {

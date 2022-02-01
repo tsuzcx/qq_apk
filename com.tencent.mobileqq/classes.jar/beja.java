@@ -1,32 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.4.1;
+import android.os.Bundle;
+import org.json.JSONObject;
 
-public class beja
-  implements Animation.AnimationListener
+public abstract interface beja
 {
-  public beja(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public abstract void callJs(String paramString, String... paramVarArgs);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (this.a.jdField_b_of_type_AndroidViewView == null) {
-      return;
-    }
-    this.a.jdField_b_of_type_AndroidViewView.post(new TroopAvatarWallPreviewActivity.4.1(this));
-  }
+  public abstract void diyThemeSetup(JSONObject paramJSONObject, String paramString);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void downloadBgPic(String paramString, Bundle paramBundle);
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (this.a.jdField_b_of_type_AndroidWidgetTextView == null) {
-      return;
-    }
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
+  public abstract void startDownload(JSONObject paramJSONObject, String paramString);
 }
 
 

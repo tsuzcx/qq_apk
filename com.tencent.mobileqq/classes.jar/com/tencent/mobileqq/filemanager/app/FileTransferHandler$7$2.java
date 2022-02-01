@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aszj;
+import atrd;
 import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
 
 class FileTransferHandler$7$2

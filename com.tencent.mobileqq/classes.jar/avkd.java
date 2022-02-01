@@ -1,24 +1,29 @@
-import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class avkd
-  implements ActionCallback
+  implements View.OnClickListener
 {
-  avkd(avju paramavju, avkm paramavkm) {}
+  avkd(avkc paramavkc, FeedsItemData paramFeedsItemData) {}
   
-  public void onResult(String paramString)
+  public void onClick(View paramView)
   {
-    try
-    {
-      i = Integer.parseInt(paramString);
-      this.jdField_a_of_type_Avkm.a(i, "");
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl.startsWith("mqqapi://miniapp/")) {
+      MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Avkc.itemView.getContext(), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl, 2016, null);
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      for (;;)
-      {
-        int i = -1;
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Intent localIntent = new Intent(this.jdField_a_of_type_Avkc.itemView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl);
+      this.jdField_a_of_type_Avkc.itemView.getContext().startActivity(localIntent);
     }
   }
 }

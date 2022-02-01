@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 
-public final class axkf
-  implements Parcelable.Creator<LocationInfo>
+public class axkf
+  extends AnimatorListenerAdapter
 {
-  public LocationInfo a(Parcel paramParcel)
+  public axkf(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return new LocationInfo(paramParcel);
+    super.onAnimationCancel(paramAnimator);
+    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
-  public LocationInfo[] a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new LocationInfo[paramInt];
+    super.onAnimationEnd(paramAnimator);
+    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
   }
 }
 

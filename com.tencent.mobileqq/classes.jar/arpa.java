@@ -1,33 +1,89 @@
-class arpa
-  extends anio
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+
+public class arpa
+  extends arac<aroy>
 {
-  arpa(arox paramarox) {}
-  
-  protected void a(int paramInt)
+  @NonNull
+  public aroy a(int paramInt)
   {
-    if ((paramInt == 0) && (this.a.a != null)) {
-      this.a.a.e();
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchRichConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new aroy();
+  }
+  
+  @Nullable
+  public aroy a(araj[] paramArrayOfaraj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchRichConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchRichConfProcessor", 2, "onParsed " + paramArrayOfaraj.length);
+      }
+      return aroy.a(paramArrayOfaraj[0]);
+    }
+    return null;
+  }
+  
+  public void a(aroy paramaroy)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramaroy == null) {
+        break label49;
+      }
+    }
+    label49:
+    for (paramaroy = paramaroy.toString();; paramaroy = " empty")
+    {
+      QLog.d("SearchRichConfProcessor", 2, paramaroy);
+      bcku.a().a();
+      return;
     }
   }
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public Class<aroy> clazz()
   {
-    if (this.a.a != null) {
-      this.a.a.e();
+    return aroy.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchRichConfProcessor", 2, "onReqFailed " + paramInt);
     }
   }
   
-  protected void b(int paramInt)
+  public int type()
   {
-    arox.a(this.a, false);
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
+    return 432;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arpa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,7 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import kotlin.Metadata;
 
-public class tgy
-  extends AnimatorListenerAdapter
-{
-  public tgy(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ReadInJoyDynamicGridView.b(this.a, false);
-    ReadInJoyDynamicGridView.a(this.a);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    ReadInJoyDynamicGridView.b(this.a, true);
-    ReadInJoyDynamicGridView.a(this.a);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DeviceBridgeInvokeHandler$Companion;", "", "()V", "GET_CLIENT_INFO", "", "GET_CU_KING_STATUS", "GET_DEVICE_INFO", "GET_GDT_INFO", "GET_NETWORK_INFO", "GET_NETWORK_TYPE", "GET_NET_TYPE", "GET_RECOMMEND_FLAG", "IS_MOBILE_QQ", "NS_DEVICE", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tgy {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

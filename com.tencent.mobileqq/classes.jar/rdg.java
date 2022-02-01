@@ -1,12 +1,10 @@
-class rdg
-  extends rcr
+public abstract interface rdg
 {
-  rdg(rdd paramrdd) {}
+  public abstract void a(int paramInt);
   
-  public int a()
-  {
-    return -15550475;
-  }
+  public abstract void a(qzp paramqzp);
+  
+  public abstract boolean a(int paramInt, qzp paramqzp);
 }
 
 

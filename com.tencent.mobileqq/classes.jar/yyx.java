@@ -1,28 +1,158 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.os.Message;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.util.Base64;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.view.ViewStub;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
+import com.tencent.qphone.base.util.QLog;
 
-class yyx
-  implements View.OnClickListener
+public class yyx
+  extends yxr
+  implements yvx
 {
-  yyx(yys paramyys) {}
+  private ViewStub jdField_a_of_type_AndroidViewViewStub;
+  public SubtitleLayout a;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  public void onClick(View paramView)
+  public yyx(@NonNull yxt paramyxt, byte[] paramArrayOfByte)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(this.a.jdField_a_of_type_JavaLangString);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(this.a.d);
-    this.a.jdField_a_of_type_Yyb.a = this.a.d;
-    this.a.jdField_a_of_type_Yyb.d = this.a.e;
-    this.a.dismiss();
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 3, 3);
+    super(paramyxt);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
+  
+  private void a(int paramInt)
+  {
+    switch (paramInt)
+    {
     }
-    yqv.a("0X80076C5");
-    yqv.b("0X80075D9");
-    EventCollector.getInstance().onViewClicked(paramView);
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.getVisibility() == paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.setVisibility(paramInt);
+      return;
+    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.getVisibility() == paramInt));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.setVisibility(paramInt);
+  }
+  
+  public void W_()
+  {
+    super.W_();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.d();
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131378237));
+    QQStoryContext.a();
+    QQStoryContext.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout == null)
+    {
+      yuk.b("Q.qqstory.publish.edit.Subtitle", "makeSureInitLayout");
+      ViewParent localViewParent = this.jdField_a_of_type_AndroidViewViewStub.getParent();
+      if ((localViewParent == null) || (!(localViewParent instanceof ViewGroup))) {
+        break label95;
+      }
+    }
+    label95:
+    for (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout = ((SubtitleLayout)this.jdField_a_of_type_AndroidViewViewStub.inflate());; this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout = ((SubtitleLayout)a(2131378236)))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.a(1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.a(this.jdField_a_of_type_ArrayOfByte);
+      a(yvx.class, this);
+      return;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    a(0);
+  }
+  
+  public void a(int paramInt, @NonNull zih paramzih)
+  {
+    super.a(paramInt, paramzih);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout == null) || (this.jdField_a_of_type_ArrayOfByte == null)) {
+      yuk.d("Q.qqstory.publish.edit.Subtitle", "editVideoPrePublish but subtitle layout is null");
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        String str = Base64.encodeToString(this.jdField_a_of_type_ArrayOfByte, 0);
+        if (!TextUtils.isEmpty(str))
+        {
+          paramzih.a.putExtra("subtitleData", str);
+          QLog.e("Q.qqstory.publish.edit.Subtitle", 2, "subtitle base64 encode :" + str.length());
+          return;
+        }
+      }
+      catch (Exception paramzih)
+      {
+        QLog.e("Q.qqstory.publish.edit.Subtitle", 2, "subtitle base64 encode exception:" + paramzih.toString());
+      }
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.setTimeStamp(paramLong);
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  protected boolean a(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return super.a(paramMessage);
+    }
+    a(0);
+    return true;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.publish.edit.Subtitle", 2, "videoplayer start");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.b();
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.e();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.f();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout = null;
+    }
+    this.jdField_a_of_type_ArrayOfByte = null;
+  }
+  
+  public void h()
+  {
+    super.h();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.c();
+    }
   }
 }
 

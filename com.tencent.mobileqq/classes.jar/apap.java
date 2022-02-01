@@ -1,34 +1,20 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArLBSActivity;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-public abstract interface apap
+public abstract class apap
 {
+  public QQAppInterface a;
+  public ProxyManager a;
+  
+  public apap(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramProxyManager;
+  }
+  
   public abstract void a();
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, aovf paramaovf, int paramInt2);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(long paramLong, int paramInt, aoud paramaoud, apbj paramapbj);
-  
-  public abstract void a(long paramLong, aovf paramaovf);
-  
-  public abstract void a(long paramLong, boolean paramBoolean, aovf paramaovf);
-  
-  public abstract void a(aozl paramaozl, ArLBSActivity paramArLBSActivity);
-  
-  public abstract void a(ArCloudConfigInfo paramArCloudConfigInfo1, ArCloudConfigInfo paramArCloudConfigInfo2, int paramInt1, int paramInt2, Object paramObject);
-  
-  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, aoua paramaoua);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
+  public abstract void b();
 }
 
 

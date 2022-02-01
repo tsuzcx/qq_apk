@@ -1,47 +1,32 @@
-import android.os.SystemClock;
-import android.util.AndroidRuntimeException;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.face.FaceInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aopa
+public class aopa
+  implements aopb
 {
-  public boolean askGPS;
-  protected String callerRoute;
-  protected long geoCacheInterval;
-  protected long globalCacheInterval;
-  public boolean goonListener;
-  private boolean isRemoved;
-  public int level;
-  protected long levelCacheInterval;
-  public long maxCacheInterval;
-  protected int maxFailCount = 3;
-  public boolean reqLocation;
-  private boolean requesting;
-  public long sTime;
-  public String tag;
-  public boolean uiThread;
+  public String a;
   
-  public aopa(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  aopa(aoov paramaoov, aoot paramaoot)
   {
-    if ((paramInt == 0) || (paramInt == 1) || (paramInt == 3) || (paramInt == 4))
-    {
-      this.tag = paramString;
-      this.level = paramInt;
-      this.askGPS = paramBoolean2;
-      this.reqLocation = paramBoolean1;
-      this.goonListener = paramBoolean4;
-      this.uiThread = paramBoolean3;
-      this.maxCacheInterval = paramLong;
-      this.sTime = SystemClock.elapsedRealtime();
-      return;
+    if ((paramaoot != null) && (paramaoot.a != null)) {
+      this.jdField_a_of_type_JavaLangString = paramaoot.a.jdField_a_of_type_JavaLangString;
     }
-    throw new AndroidRuntimeException("invalid level=" + paramInt);
   }
   
-  public void onConsecutiveFailure(int paramInt1, int paramInt2) {}
-  
-  public abstract void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo);
-  
-  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (paramBoolean2) {
+      this.jdField_a_of_type_Aoov.a(paramBoolean1, 113, paramString, this.jdField_a_of_type_Aoov.a);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqhead.FaceDrawableImpl", 2, "====faceDrawableImpl onUpdateGroupFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + 113);
+      }
+      return;
+      this.jdField_a_of_type_Aoov.a(paramBoolean1, 113, paramString, null);
+    }
+  }
 }
 
 

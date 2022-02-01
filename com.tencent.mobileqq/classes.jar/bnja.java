@@ -1,23 +1,9 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
-
-class bnja
-  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
+public final class bnja
+  extends ThreadLocal<Boolean>
 {
-  bnja(bniq parambniq) {}
-  
-  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
+  protected Boolean a()
   {
-    if (paramRatio == null) {
-      return;
-    }
-    if (paramRatio == AEVideoStoryTopBarViewModel.Ratio.R_1_1) {}
-    for (paramRatio = bnzg.a;; paramRatio = bnzg.b)
-    {
-      bniq.a(this.a, paramRatio);
-      return;
-    }
+    return Boolean.valueOf(false);
   }
 }
 

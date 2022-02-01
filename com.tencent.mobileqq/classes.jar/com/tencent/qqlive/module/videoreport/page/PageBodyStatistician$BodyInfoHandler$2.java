@@ -7,7 +7,7 @@ class PageBodyStatistician$BodyInfoHandler$2
   
   public void run()
   {
-    this.this$0.onScrolled(PageBodyStatistician.BodyInfoHandler.access$100(this.this$0).readScroll(PageBodyStatistician.BodyInfoHandler.access$000(this.this$0)));
+    PageBodyStatistician.BodyInfoHandler.access$000(this.this$0);
   }
 }
 

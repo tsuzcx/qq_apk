@@ -1,213 +1,121 @@
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import cooperation.qzone.util.QZLog;
-import cooperation.vip.webview.controller.BaseTranslucentController.2;
+import android.view.ViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
 public class bmwa
 {
-  private long jdField_a_of_type_Long;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bmwb(this);
-  protected Handler a;
-  protected QQBrowserActivity a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new BaseTranslucentController.2(this);
-  private volatile boolean jdField_a_of_type_Boolean;
-  private volatile boolean b;
+  private static bmwa a;
+  public bmsu<String> a;
+  public bmsu<String> b = new bmsu(10);
+  public bmsu<String> c = new bmsu(10);
   
-  public bmwa(QQBrowserActivity paramQQBrowserActivity)
+  private bmwa()
   {
-    QZLog.i("BaseTranslucentControll", "current controller = " + getClass().getName());
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = paramQQBrowserActivity;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_Bmsu = new bmsu(5);
   }
   
-  private void f()
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        QZLog.i("BaseTranslucentControll", "registerBroadcast");
-        IntentFilter localIntentFilter = new IntentFilter();
-        String[] arrayOfString = a();
-        if (arrayOfString != null)
-        {
-          int j = arrayOfString.length;
-          int i = 0;
-          while (i < j)
-          {
-            localIntentFilter.addAction(arrayOfString[i]);
-            i += 1;
-          }
-        }
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (bool) {
-          continue;
-        }
-        try
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-          this.jdField_a_of_type_Boolean = true;
-          return;
-        }
-        catch (Exception localException1)
-        {
-          QZLog.e("BaseTranslucentControll", "regist receiver error:", localException1);
-          return;
-        }
-        return;
-      }
-      catch (Exception localException2)
-      {
-        QZLog.e("BaseTranslucentControll", "registerBroadcast error", localException2);
-      }
-    }
-  }
-  
-  private void g()
+  public static bmwa a()
   {
     try
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (jdField_a_of_type_Bmwa == null) {
+        jdField_a_of_type_Bmwa = new bmwa();
+      }
+      bmwa localbmwa = jdField_a_of_type_Bmwa;
+      return localbmwa;
+    }
+    finally {}
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("activityNameQueue:\n");
+    if (this.jdField_a_of_type_Bmsu != null) {
+      localStringBuilder.append(this.jdField_a_of_type_Bmsu).append("\n");
+    }
+    localStringBuilder.append(" \n activityEventQueue:\n");
+    if (this.b != null) {
+      localStringBuilder.append(this.b);
+    }
+    localStringBuilder.append(" \n userActionQueue:\n");
+    if (this.c != null) {
+      localStringBuilder.append(this.c);
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public void a(String paramString)
+  {
+    if ((paramString != null) && (this.jdField_a_of_type_Bmsu != null))
+    {
+      if (this.jdField_a_of_type_Bmsu.a()) {
+        this.jdField_a_of_type_Bmsu.a();
+      }
+      this.jdField_a_of_type_Bmsu.a(paramString);
+    }
+  }
+  
+  public void a(String paramString, View paramView)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[Actvity] ").append(paramString);
+    if (paramView != null) {
+      localStringBuilder.append("  click view  id:0x").append(Integer.toHexString(paramView.getId()));
+    }
+    c(localStringBuilder.toString());
+  }
+  
+  public void a(String paramString, ViewGroup paramViewGroup, View paramView, int paramInt, long paramLong)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[Actvity] ").append(paramString);
+    if (paramViewGroup != null) {
+      localStringBuilder.append("parent id: ").append(paramViewGroup.getId());
+    }
+    if (paramView != null) {
+      localStringBuilder.append("view id: ").append(paramView.getId());
+    }
+    localStringBuilder.append(" onItemclick view  position:0x").append(Integer.toHexString(paramInt));
+    localStringBuilder.append(" id").append(paramLong);
+    a().c(localStringBuilder.toString());
+  }
+  
+  public void b(String paramString)
+  {
+    if ((paramString != null) && (this.b != null))
+    {
+      if (this.b.a()) {
+        this.b.a();
+      }
+      this.b.a(paramString);
+    }
+  }
+  
+  public void c(String paramString)
+  {
+    if (paramString != null) {}
+    try
+    {
+      if (this.c != null)
       {
-        QZLog.i("BaseTranslucentControll", "removeBroadcast");
-        try
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-          this.jdField_a_of_type_Boolean = false;
-          return;
+        if (this.c.a()) {
+          this.c.a();
         }
-        catch (Exception localException1)
-        {
-          for (;;)
-          {
-            QZLog.e("BaseTranslucentControll", "unregisterReceiver error ", localException1);
-          }
-        }
+        this.c.a(paramString);
       }
       return;
     }
-    catch (Exception localException2)
+    catch (Exception paramString)
     {
-      QZLog.e("BaseTranslucentControll", "removeBroadcast error", localException2);
+      while (!QLog.isColorLevel()) {}
+      QLog.w("RDMEtraMsgCollector", 2, "", paramString);
     }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a(false);
-    f();
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 6100L);
-  }
-  
-  public void a(Intent paramIntent) {}
-  
-  protected void a(View paramView)
-  {
-    if (!this.b)
-    {
-      this.b = true;
-      QZLog.i("BaseTranslucentControll", "setAlpha(1)");
-      if (paramView != null) {
-        paramView.setAlpha(1.0F);
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a() != null)
-        {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a().getWebView();
-          if (paramView != null)
-          {
-            Object localObject = paramView.getTag(2131375821);
-            if ((localObject == null) || (!((Boolean)localObject).booleanValue())) {
-              break label119;
-            }
-            i = 1;
-            paramView.setTag(2131375818, Boolean.TRUE);
-            if (i != 0)
-            {
-              QZLog.i("BaseTranslucentControll", "tiantai jsReady true,notify webview.");
-              bmmp.a(paramView);
-              return;
-            }
-            QZLog.i("BaseTranslucentControll", "tiantai jsReady false,not notify webview.");
-            return;
-          }
-        }
-      }
-      catch (Exception paramView)
-      {
-        QZLog.e("BaseTranslucentControll", "notify webview qzRoofStartAnimation fail.", paramView);
-      }
-      return;
-      label119:
-      int i = 0;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131365013);
-    if (localView == null) {
-      return;
-    }
-    if (!paramBoolean)
-    {
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 6000L)
-      {
-        localView.setAlpha(0.0F);
-        this.b = false;
-        QZLog.i("BaseTranslucentControll", "setAlpha(0)");
-        return;
-      }
-      QZLog.i("BaseTranslucentControll", "isLoadSuccess = true，setAlpha(1)");
-      a(localView);
-      return;
-    }
-    QZLog.i("BaseTranslucentControll", "isLoadSuccess = false，setAlpha(1)");
-    a(localView);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String[] a()
-  {
-    return null;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    g();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void e()
-  {
-    a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmwa
  * JD-Core Version:    0.7.0.1
  */

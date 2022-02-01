@@ -1,38 +1,19 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build.VERSION;
+import com.tencent.mobileqq.widget.RoundImageView;
 
 class aqwo
-  implements aqvn
 {
-  aqwo(aqwl paramaqwl) {}
+  public aruk a;
+  public RoundImageView a;
   
-  public void a(Context paramContext)
+  public aqwo(aqwk paramaqwk, RoundImageView paramRoundImageView, aruk paramaruk)
   {
-    Intent localIntent = new Intent();
-    localIntent.addFlags(268435456);
-    if (Build.VERSION.SDK_INT >= 9)
-    {
-      localIntent.setAction(aqwl.a(this.a));
-      localIntent.setData(Uri.fromParts("package", paramContext.getPackageName(), null));
-    }
-    for (;;)
-    {
-      paramContext.startActivity(localIntent);
-      return;
-      if (Build.VERSION.SDK_INT <= 8)
-      {
-        localIntent.setAction("android.intent.action.VIEW");
-        localIntent.setClassName("com.android.settings", aqwl.a(this.a));
-        localIntent.putExtra("com.android.settings.ApplicationPkgName", paramContext.getPackageName());
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = paramRoundImageView;
+    this.jdField_a_of_type_Aruk = paramaruk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqwo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo.camera2;
 
-import afur;
-import alio;
+import agej;
+import alug;
 import android.annotation.TargetApi;
 import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
@@ -25,24 +25,24 @@ import android.text.TextUtils;
 import android.util.Range;
 import android.util.Size;
 import android.view.Surface;
-import bcgh;
-import bcgi;
-import bcgj;
-import bcgk;
-import bcgl;
-import bcgm;
-import bcgn;
-import bcgo;
-import bcgp;
-import bcgq;
-import bcgr;
-import bcgu;
-import bcgv;
-import bcgw;
-import bcij;
-import bciw;
-import bciy;
-import bnzb;
+import bcyz;
+import bcza;
+import bczb;
+import bczc;
+import bczd;
+import bcze;
+import bczf;
+import bczg;
+import bczh;
+import bczi;
+import bczj;
+import bczm;
+import bczn;
+import bczo;
+import bdbb;
+import bdbo;
+import bdbq;
+import bpam;
 import com.samsung.android.sdk.camera.SCamera;
 import com.samsung.android.sdk.camera.SCameraCaptureProcessor;
 import com.samsung.android.sdk.camera.SCameraCaptureProcessor.CaptureParameter;
@@ -65,7 +65,7 @@ public class Camera2Control
   private static int jdField_a_of_type_Int = -1;
   private static Camera2Control jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control;
   public static String a;
-  private static HashMap<String, bcgo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static HashMap<String, bczg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private static int jdField_b_of_type_Int;
   private static String jdField_b_of_type_JavaLangString = "";
   private static boolean jdField_b_of_type_Boolean;
@@ -86,22 +86,22 @@ public class Camera2Control
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private Range<Integer> jdField_a_of_type_AndroidUtilRange;
-  private bcgo jdField_a_of_type_Bcgo;
-  public bcgp a;
-  private bcgq jdField_a_of_type_Bcgq;
-  private bcgw jdField_a_of_type_Bcgw = new bcgw(this);
-  private bcij jdField_a_of_type_Bcij;
+  private bczg jdField_a_of_type_Bczg;
+  public bczh a;
+  private bczi jdField_a_of_type_Bczi;
+  private bczo jdField_a_of_type_Bczo = new bczo(this);
+  private bdbb jdField_a_of_type_Bdbb;
   private SCameraCaptureProcessor jdField_a_of_type_ComSamsungAndroidSdkCameraSCameraCaptureProcessor;
   private Semaphore jdField_a_of_type_JavaUtilConcurrentSemaphore = new Semaphore(1);
   public boolean a;
   private long jdField_b_of_type_Long;
   private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private CameraCaptureSession.CaptureCallback jdField_b_of_type_AndroidHardwareCamera2CameraCaptureSession$CaptureCallback = new bcgl(this);
+  private CameraCaptureSession.CaptureCallback jdField_b_of_type_AndroidHardwareCamera2CameraCaptureSession$CaptureCallback = new bczd(this);
   private CaptureRequest jdField_b_of_type_AndroidHardwareCamera2CaptureRequest;
   private ImageReader jdField_b_of_type_AndroidMediaImageReader;
-  private bcij jdField_b_of_type_Bcij;
+  private bdbb jdField_b_of_type_Bdbb;
   private int jdField_c_of_type_Int = -1;
-  private bcij jdField_c_of_type_Bcij;
+  private bdbb jdField_c_of_type_Bdbb;
   private int jdField_d_of_type_Int = -1;
   private int jdField_e_of_type_Int = -1;
   private int jdField_f_of_type_Int;
@@ -157,7 +157,7 @@ public class Camera2Control
             n = m;
             localObject = (Integer)((CameraCharacteristics)localObject).get(CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL);
             n = m;
-            bcgu.a(1, "[Camera2]initCamera2SupportLevel supportLevel:" + localObject);
+            bczm.a(1, "[Camera2]initCamera2SupportLevel supportLevel:" + localObject);
             if (localObject != null) {
               continue;
             }
@@ -209,7 +209,7 @@ public class Camera2Control
     }
     for (;;)
     {
-      return (((Integer)this.jdField_a_of_type_Bcgo.a.get(CameraCharacteristics.SENSOR_ORIENTATION)).intValue() - paramInt + 360) % 360;
+      return (((Integer)this.jdField_a_of_type_Bczg.a.get(CameraCharacteristics.SENSOR_ORIENTATION)).intValue() - paramInt + 360) % 360;
       paramInt = 0;
       continue;
       paramInt = 90;
@@ -266,7 +266,7 @@ public class Camera2Control
   private void a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_Bcgo = ((bcgo)jdField_a_of_type_JavaUtilHashMap.get(paramString));
+      this.jdField_a_of_type_Bczg = ((bczg)jdField_a_of_type_JavaUtilHashMap.get(paramString));
     }
   }
   
@@ -389,13 +389,13 @@ public class Camera2Control
           Integer localInteger = (Integer)localCameraCharacteristics.get(CameraCharacteristics.LENS_FACING);
           if ((localInteger != null) && (localInteger.intValue() == 0) && ("1".equals(str)))
           {
-            jdField_a_of_type_JavaUtilHashMap.put(str, new bcgo(str, localCameraCharacteristics));
+            jdField_a_of_type_JavaUtilHashMap.put(str, new bczg(str, localCameraCharacteristics));
             jdField_c_of_type_JavaLangString = str;
             jdField_b_of_type_Int += 1;
           }
           else if ((localInteger != null) && (localInteger.intValue() == 1) && ("0".equals(str)))
           {
-            jdField_a_of_type_JavaUtilHashMap.put(str, new bcgo(str, localCameraCharacteristics));
+            jdField_a_of_type_JavaUtilHashMap.put(str, new bczg(str, localCameraCharacteristics));
             jdField_b_of_type_JavaLangString = str;
             jdField_b_of_type_Int += 1;
           }
@@ -405,14 +405,14 @@ public class Camera2Control
       {
         jdField_b_of_type_Int = 1;
         jdField_b_of_type_JavaLangString = "1";
-        bcgu.a(2, "[Camera2]initCamera2Ability exception!");
+        bczm.a(2, "[Camera2]initCamera2Ability exception!");
       }
       for (;;)
       {
         jdField_e_of_type_Boolean = true;
         return;
         label214:
-        bcgu.a(1, "[Camera2]initCamera2Ability front:" + jdField_c_of_type_JavaLangString + ", back:" + jdField_b_of_type_JavaLangString);
+        bczm.a(1, "[Camera2]initCamera2Ability front:" + jdField_c_of_type_JavaLangString + ", back:" + jdField_b_of_type_JavaLangString);
       }
       k += 1;
     }
@@ -420,10 +420,10 @@ public class Camera2Control
   
   private void g()
   {
-    this.jdField_a_of_type_AndroidMediaImageReader = ImageReader.newInstance(this.jdField_b_of_type_Bcij.jdField_a_of_type_Int, this.jdField_b_of_type_Bcij.jdField_b_of_type_Int, 256, 2);
-    this.jdField_a_of_type_AndroidMediaImageReader.setOnImageAvailableListener(new bcgj(this), this.jdField_a_of_type_AndroidOsHandler);
-    this.jdField_b_of_type_AndroidMediaImageReader = ImageReader.newInstance(this.jdField_c_of_type_Bcij.jdField_a_of_type_Int, this.jdField_c_of_type_Bcij.jdField_b_of_type_Int, 35, 2);
-    this.jdField_b_of_type_AndroidMediaImageReader.setOnImageAvailableListener(new bcgk(this), null);
+    this.jdField_a_of_type_AndroidMediaImageReader = ImageReader.newInstance(this.jdField_b_of_type_Bdbb.jdField_a_of_type_Int, this.jdField_b_of_type_Bdbb.jdField_b_of_type_Int, 256, 2);
+    this.jdField_a_of_type_AndroidMediaImageReader.setOnImageAvailableListener(new bczb(this), this.jdField_a_of_type_AndroidOsHandler);
+    this.jdField_b_of_type_AndroidMediaImageReader = ImageReader.newInstance(this.jdField_c_of_type_Bdbb.jdField_a_of_type_Int, this.jdField_c_of_type_Bdbb.jdField_b_of_type_Int, 35, 2);
+    this.jdField_b_of_type_AndroidMediaImageReader.setOnImageAvailableListener(new bczc(this), null);
   }
   
   private void h()
@@ -446,7 +446,7 @@ public class Camera2Control
       catch (Exception localException)
       {
         localException.printStackTrace();
-        bcgu.a(2, "[Camera2]updatePreview exp:" + localException);
+        bczm.a(2, "[Camera2]updatePreview exp:" + localException);
         return;
       }
       CaptureRequest localCaptureRequest2 = this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder.build();
@@ -458,12 +458,12 @@ public class Camera2Control
     try
     {
       this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder.set(CaptureRequest.CONTROL_AF_TRIGGER, Integer.valueOf(1));
-      this.jdField_a_of_type_Bcgw.a(1);
+      this.jdField_a_of_type_Bczo.a(1);
       CameraCaptureSession localCameraCaptureSession = this.jdField_a_of_type_AndroidHardwareCamera2CameraCaptureSession;
       if (this.jdField_a_of_type_Boolean) {}
       for (CaptureRequest localCaptureRequest = this.jdField_a_of_type_ComSamsungAndroidSdkCameraSCameraCaptureProcessor.buildCaptureRequest(this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder);; localCaptureRequest = this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder.build())
       {
-        localCameraCaptureSession.capture(localCaptureRequest, this.jdField_a_of_type_Bcgw, this.jdField_a_of_type_AndroidOsHandler);
+        localCameraCaptureSession.capture(localCaptureRequest, this.jdField_a_of_type_Bczo, this.jdField_a_of_type_AndroidOsHandler);
         return;
       }
       return;
@@ -538,7 +538,7 @@ public class Camera2Control
   private void n()
   {
     boolean bool1 = true;
-    if ((afur.a()) && (Build.VERSION.SDK_INT >= 28)) {}
+    if ((agej.a()) && (Build.VERSION.SDK_INT >= 28)) {}
     try
     {
       boolean bool2;
@@ -554,14 +554,14 @@ public class Camera2Control
       for (;;)
       {
         this.jdField_a_of_type_Boolean = bool1;
-        Size localSize = (Size)Collections.max(Arrays.asList(((StreamConfigurationMap)this.jdField_a_of_type_Bcgo.a.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)).getOutputSizes(256)), new bcgr());
+        Size localSize = (Size)Collections.max(Arrays.asList(((StreamConfigurationMap)this.jdField_a_of_type_Bczg.a.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)).getOutputSizes(256)), new bczj());
         if (this.jdField_a_of_type_Boolean)
         {
           this.jdField_f_of_type_Int = (localSize.getHeight() * localSize.getWidth());
           this.jdField_a_of_type_ComSamsungAndroidSdkCameraSCameraCaptureProcessor = SCameraCaptureProcessor.getInstance();
           this.jdField_a_of_type_ComSamsungAndroidSdkCameraSCameraCaptureProcessor.initialize(BaseApplicationImpl.getApplication(), jdField_a_of_type_JavaLangString, localSize);
         }
-        bcgu.a(1, "[Camera2]openCamera2 Samsung Sfront:" + bool2 + ", Sback:" + bool3 + ", picSize:" + localSize.toString());
+        bczm.a(1, "[Camera2]openCamera2 Samsung Sfront:" + bool2 + ", Sback:" + bool3 + ", picSize:" + localSize.toString());
         return;
         label208:
         bool1 = false;
@@ -570,32 +570,32 @@ public class Camera2Control
     }
     catch (Throwable localThrowable)
     {
-      bcgu.a(2, "[Camera2]openCamera2 Samsung Phone e:" + localThrowable.getCause());
+      bczm.a(2, "[Camera2]openCamera2 Samsung Phone e:" + localThrowable.getCause());
       this.jdField_a_of_type_Boolean = false;
     }
   }
   
-  public int a(int paramInt, bcgp parambcgp)
+  public int a(int paramInt, bczh parambczh)
   {
-    if (alio.a())
+    if (alug.a())
     {
-      bcgu.a(2, "[Camera2]openCamera2 AVcamera2Used!");
+      bczm.a(2, "[Camera2]openCamera2 AVcamera2Used!");
       return -101;
     }
     if ((this.jdField_f_of_type_Boolean) || (this.g))
     {
-      bcgu.a(2, "[Camera2]openCamera2 hasOpened!");
+      bczm.a(2, "[Camera2]openCamera2 hasOpened!");
       return -104;
     }
     this.g = true;
     long l = System.currentTimeMillis();
-    if (parambcgp == null)
+    if (parambczh == null)
     {
-      bcgu.a(2, "[Camera2]openCamera2 params Error!");
+      bczm.a(2, "[Camera2]openCamera2 params Error!");
       return -103;
     }
     f();
-    a(parambcgp);
+    a(parambczh);
     l();
     CameraManager localCameraManager = (CameraManager)BaseApplicationImpl.getApplication().getSystemService("camera");
     try
@@ -604,16 +604,16 @@ public class Camera2Control
         throw new Exception("[Camera2]openCamera2 time out waiting to lock camera opening.");
       }
     }
-    catch (Exception parambcgp)
+    catch (Exception parambczh)
     {
-      bcgu.a(2, "[Camera2]openCamera2 exception:" + parambcgp);
-      bnzb.b("Camera2Control", "【Camera2 Open】openCamera2 exception:" + parambcgp);
+      bczm.a(2, "[Camera2]openCamera2 exception:" + parambczh);
+      bpam.b("Camera2Control", "【Camera2 Open】openCamera2 exception:" + parambczh);
       this.jdField_f_of_type_Boolean = false;
       this.g = false;
       this.jdField_a_of_type_AndroidHardwareCamera2CameraDevice = null;
       this.jdField_a_of_type_JavaUtilConcurrentSemaphore.release();
-      if (this.jdField_a_of_type_Bcgp != null) {
-        this.jdField_a_of_type_Bcgp.a(-102);
+      if (this.jdField_a_of_type_Bczh != null) {
+        this.jdField_a_of_type_Bczh.a(-102);
       }
     }
     for (;;)
@@ -623,45 +623,45 @@ public class Camera2Control
       jdField_a_of_type_JavaLangString = str;
       a(str);
       n();
-      bcgh localbcgh = new bcgh(this, l);
-      bnzb.b("Camera2Control", "【Camera2 Open】");
-      parambcgp = localbcgh;
+      bcyz localbcyz = new bcyz(this, l);
+      bpam.b("Camera2Control", "【Camera2 Open】");
+      parambczh = localbcyz;
       if (this.jdField_a_of_type_Boolean) {
-        parambcgp = this.jdField_a_of_type_ComSamsungAndroidSdkCameraSCameraCaptureProcessor.createStateCallback(localbcgh, this.jdField_a_of_type_AndroidOsHandler);
+        parambczh = this.jdField_a_of_type_ComSamsungAndroidSdkCameraSCameraCaptureProcessor.createStateCallback(localbcyz, this.jdField_a_of_type_AndroidOsHandler);
       }
-      localCameraManager.openCamera(str, parambcgp, this.jdField_a_of_type_AndroidOsHandler);
+      localCameraManager.openCamera(str, parambczh, this.jdField_a_of_type_AndroidOsHandler);
     }
   }
   
-  public Rect a(bciw parambciw)
+  public Rect a(bdbo parambdbo)
   {
-    if ((parambciw == null) || (parambciw.a == null)) {
+    if ((parambdbo == null) || (parambdbo.a == null)) {
       return null;
     }
-    double d5 = parambciw.a.jdField_a_of_type_Float;
-    double d4 = parambciw.a.jdField_b_of_type_Float;
-    parambciw.a.jdField_c_of_type_Int = a(parambciw.a.jdField_c_of_type_Int);
-    int m = this.jdField_a_of_type_Bcij.jdField_a_of_type_Int;
-    int k = this.jdField_a_of_type_Bcij.jdField_b_of_type_Int;
-    if ((90 == parambciw.a.jdField_c_of_type_Int) || (270 == parambciw.a.jdField_c_of_type_Int))
+    double d5 = parambdbo.a.jdField_a_of_type_Float;
+    double d4 = parambdbo.a.jdField_b_of_type_Float;
+    parambdbo.a.jdField_c_of_type_Int = a(parambdbo.a.jdField_c_of_type_Int);
+    int m = this.jdField_a_of_type_Bdbb.jdField_a_of_type_Int;
+    int k = this.jdField_a_of_type_Bdbb.jdField_b_of_type_Int;
+    if ((90 == parambdbo.a.jdField_c_of_type_Int) || (270 == parambdbo.a.jdField_c_of_type_Int))
     {
-      m = this.jdField_a_of_type_Bcij.jdField_b_of_type_Int;
-      k = this.jdField_a_of_type_Bcij.jdField_a_of_type_Int;
+      m = this.jdField_a_of_type_Bdbb.jdField_b_of_type_Int;
+      k = this.jdField_a_of_type_Bdbb.jdField_a_of_type_Int;
     }
     double d2;
     double d1;
     double d3;
-    if (parambciw.a.jdField_a_of_type_Int * k > parambciw.a.jdField_b_of_type_Int * m)
+    if (parambdbo.a.jdField_a_of_type_Int * k > parambdbo.a.jdField_b_of_type_Int * m)
     {
-      d2 = parambciw.a.jdField_a_of_type_Int * 1.0D / m;
-      d1 = (k - parambciw.a.jdField_b_of_type_Int / d2) / 2.0D;
+      d2 = parambdbo.a.jdField_a_of_type_Int * 1.0D / m;
+      d1 = (k - parambdbo.a.jdField_b_of_type_Int / d2) / 2.0D;
       d3 = 0.0D;
       d3 += d5 / d2;
       d1 += d4 / d2;
-      if (90 != parambciw.a.jdField_c_of_type_Int) {
+      if (90 != parambdbo.a.jdField_c_of_type_Int) {
         break label552;
       }
-      d2 = this.jdField_a_of_type_Bcij.jdField_b_of_type_Int;
+      d2 = this.jdField_a_of_type_Bdbb.jdField_b_of_type_Int;
       d3 = d2 - d3;
       d2 = d1;
       d1 = d3;
@@ -673,88 +673,88 @@ public class Camera2Control
       Rect localRect;
       if (this.jdField_a_of_type_Boolean)
       {
-        parambciw = this.jdField_b_of_type_AndroidHardwareCamera2CaptureRequest;
-        localRect = (Rect)parambciw.get(CaptureRequest.SCALER_CROP_REGION);
-        parambciw = localRect;
+        parambdbo = this.jdField_b_of_type_AndroidHardwareCamera2CaptureRequest;
+        localRect = (Rect)parambdbo.get(CaptureRequest.SCALER_CROP_REGION);
+        parambdbo = localRect;
         if (localRect == null)
         {
-          bcgu.a(2, "[Camera2]getMeteringRect can't get crop region");
-          parambciw = this.jdField_a_of_type_AndroidGraphicsRect;
+          bczm.a(2, "[Camera2]getMeteringRect can't get crop region");
+          parambdbo = this.jdField_a_of_type_AndroidGraphicsRect;
         }
-        k = parambciw.width();
-        m = parambciw.height();
-        if (this.jdField_a_of_type_Bcij.jdField_b_of_type_Int * k <= this.jdField_a_of_type_Bcij.jdField_a_of_type_Int * m) {
+        k = parambdbo.width();
+        m = parambdbo.height();
+        if (this.jdField_a_of_type_Bdbb.jdField_b_of_type_Int * k <= this.jdField_a_of_type_Bdbb.jdField_a_of_type_Int * m) {
           break label591;
         }
-        d4 = m * 1.0D / this.jdField_a_of_type_Bcij.jdField_b_of_type_Int;
+        d4 = m * 1.0D / this.jdField_a_of_type_Bdbb.jdField_b_of_type_Int;
         d3 = 0.0D;
-        d5 = (k - this.jdField_a_of_type_Bcij.jdField_a_of_type_Int * d4) / 2.0D;
+        d5 = (k - this.jdField_a_of_type_Bdbb.jdField_a_of_type_Int * d4) / 2.0D;
       }
       for (;;)
       {
-        d2 = d2 * d4 + d5 + parambciw.left;
-        d1 = d1 * d4 + d3 + parambciw.top;
+        d2 = d2 * d4 + d5 + parambdbo.left;
+        d1 = d1 * d4 + d3 + parambdbo.top;
         localRect = new Rect();
-        localRect.left = a((int)(d2 - 0.1D / 2.0D * parambciw.width()), 0, parambciw.width());
-        localRect.right = a((int)(d2 + 0.1D / 2.0D * parambciw.width()), 0, parambciw.width());
-        localRect.top = a((int)(d1 - 0.1D / 2.0D * parambciw.height()), 0, parambciw.height());
-        localRect.bottom = a((int)(d1 + 0.1D / 2.0D * parambciw.height()), 0, parambciw.height());
+        localRect.left = a((int)(d2 - 0.1D / 2.0D * parambdbo.width()), 0, parambdbo.width());
+        localRect.right = a((int)(d2 + 0.1D / 2.0D * parambdbo.width()), 0, parambdbo.width());
+        localRect.top = a((int)(d1 - 0.1D / 2.0D * parambdbo.height()), 0, parambdbo.height());
+        localRect.bottom = a((int)(d1 + 0.1D / 2.0D * parambdbo.height()), 0, parambdbo.height());
         return localRect;
-        d2 = parambciw.a.jdField_b_of_type_Int * 1.0D / k;
-        d3 = (m - parambciw.a.jdField_a_of_type_Int / d2) / 2.0D;
+        d2 = parambdbo.a.jdField_b_of_type_Int * 1.0D / k;
+        d3 = (m - parambdbo.a.jdField_a_of_type_Int / d2) / 2.0D;
         d1 = 0.0D;
         break;
         label552:
-        if (270 != parambciw.a.jdField_c_of_type_Int) {
+        if (270 != parambdbo.a.jdField_c_of_type_Int) {
           break label634;
         }
-        d2 = this.jdField_a_of_type_Bcij.jdField_a_of_type_Int - d1;
+        d2 = this.jdField_a_of_type_Bdbb.jdField_a_of_type_Int - d1;
         d1 = d3;
         break label227;
-        parambciw = this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest;
+        parambdbo = this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest;
         break label239;
         label591:
-        d4 = k * 1.0D / this.jdField_a_of_type_Bcij.jdField_a_of_type_Int;
+        d4 = k * 1.0D / this.jdField_a_of_type_Bdbb.jdField_a_of_type_Int;
         d5 = 0.0D;
-        d3 = (m - this.jdField_a_of_type_Bcij.jdField_b_of_type_Int * d4) / 2.0D;
+        d3 = (m - this.jdField_a_of_type_Bdbb.jdField_b_of_type_Int * d4) / 2.0D;
       }
       label634:
       d2 = d3;
     }
   }
   
-  public bcgo a()
+  public bczg a()
   {
-    return this.jdField_a_of_type_Bcgo;
+    return this.jdField_a_of_type_Bczg;
   }
   
-  public bcij a()
+  public bdbb a()
   {
-    return this.jdField_c_of_type_Bcij;
+    return this.jdField_c_of_type_Bdbb;
   }
   
-  public bcij a(bcij parambcij)
+  public bdbb a(bdbb parambdbb)
   {
-    if ((parambcij == null) || (parambcij.jdField_a_of_type_Int <= 0) || (parambcij.jdField_b_of_type_Int <= 0))
+    if ((parambdbb == null) || (parambdbb.jdField_a_of_type_Int <= 0) || (parambdbb.jdField_b_of_type_Int <= 0))
     {
-      bcgu.a(2, "[Camera2] setViewSize params error!");
+      bczm.a(2, "[Camera2] setViewSize params error!");
       return null;
     }
-    b(parambcij);
+    b(parambdbb);
     if (QLog.isColorLevel()) {
-      QLog.i("Camera2Control", 2, "[Camera2]setViewSize:" + parambcij.toString());
+      QLog.i("Camera2Control", 2, "[Camera2]setViewSize:" + parambdbb.toString());
     }
-    return this.jdField_c_of_type_Bcij;
+    return this.jdField_c_of_type_Bdbb;
   }
   
   public List<int[]> a()
   {
-    if ((this.jdField_a_of_type_Bcgo == null) || (!this.jdField_a_of_type_Bcgo.a()))
+    if ((this.jdField_a_of_type_Bczg == null) || (!this.jdField_a_of_type_Bczg.a()))
     {
-      QLog.e("Camera2Control", 1, new Object[] { "[Camera2]getPreviewFps error, camera2Info: ", this.jdField_a_of_type_Bcgo });
+      QLog.e("Camera2Control", 1, new Object[] { "[Camera2]getPreviewFps error, camera2Info: ", this.jdField_a_of_type_Bczg });
       return null;
     }
-    Range[] arrayOfRange = (Range[])this.jdField_a_of_type_Bcgo.a.get(CameraCharacteristics.CONTROL_AE_AVAILABLE_TARGET_FPS_RANGES);
+    Range[] arrayOfRange = (Range[])this.jdField_a_of_type_Bczg.a.get(CameraCharacteristics.CONTROL_AE_AVAILABLE_TARGET_FPS_RANGES);
     ArrayList localArrayList = new ArrayList();
     if (arrayOfRange != null)
     {
@@ -778,20 +778,20 @@ public class Camera2Control
       {
         this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder.set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(4));
         h();
-        bcgu.a(1, "[Camera2] setFocusDefaultMode!");
+        bczm.a(1, "[Camera2] setFocusDefaultMode!");
       }
       return;
     }
     catch (Exception localException)
     {
-      bcgu.a(2, "[Camera2] setFocusDefaultMode exp:" + localException);
+      bczm.a(2, "[Camera2] setFocusDefaultMode exp:" + localException);
     }
   }
   
   public void a(int paramInt)
   {
-    Rect localRect1 = (Rect)this.jdField_a_of_type_Bcgo.a.get(CameraCharacteristics.SENSOR_INFO_ACTIVE_ARRAY_SIZE);
-    int k = ((Float)this.jdField_a_of_type_Bcgo.a.get(CameraCharacteristics.SCALER_AVAILABLE_MAX_DIGITAL_ZOOM)).intValue();
+    Rect localRect1 = (Rect)this.jdField_a_of_type_Bczg.a.get(CameraCharacteristics.SENSOR_INFO_ACTIVE_ARRAY_SIZE);
+    int k = ((Float)this.jdField_a_of_type_Bczg.a.get(CameraCharacteristics.SCALER_AVAILABLE_MAX_DIGITAL_ZOOM)).intValue();
     this.jdField_d_of_type_Int += paramInt;
     if (this.jdField_d_of_type_Int <= 0) {
       this.jdField_d_of_type_Int = 0;
@@ -810,14 +810,14 @@ public class Camera2Control
       if ((n >= localRect1.right / k) && (i1 >= localRect1.bottom / k)) {
         break;
       }
-      bcgu.a(1, "[Camera2] setZoom out of region!");
+      bczm.a(1, "[Camera2] setZoom out of region!");
       return;
       if (this.jdField_d_of_type_Int >= 100) {
         this.jdField_d_of_type_Int = 100;
       }
     }
     Rect localRect2 = new Rect((int)(paramInt * f1 / 0.4F + 40.0F), (int)(m * f1 / 0.4F + 40.0F), localRect1.right - (int)(paramInt * f1 / 0.4F) - 1, localRect1.bottom - (int)(f1 * m / 0.4F) - 1);
-    bcgu.a(1, "[Camera2] setZoom mZoomValue:" + this.jdField_d_of_type_Int + ", realRadio:" + k + ", minWidth:" + n + ", minHeight:" + i1 + ", rect:" + localRect1.toString() + ", destRect:" + localRect2.toString());
+    bczm.a(1, "[Camera2] setZoom mZoomValue:" + this.jdField_d_of_type_Int + ", realRadio:" + k + ", minWidth:" + n + ", minHeight:" + i1 + ", rect:" + localRect1.toString() + ", destRect:" + localRect2.toString());
     this.jdField_b_of_type_AndroidGraphicsRect = localRect2;
     this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder.set(CaptureRequest.SCALER_CROP_REGION, localRect2);
     h();
@@ -830,18 +830,18 @@ public class Camera2Control
       this.jdField_a_of_type_JavaUtilConcurrentSemaphore.acquire();
       if ((this.jdField_a_of_type_AndroidHardwareCamera2CameraDevice == null) || (!this.jdField_f_of_type_Boolean))
       {
-        bcgu.a(2, "[Camera2] startPreview mCameraDevice null!");
-        if (this.jdField_a_of_type_Bcgp != null) {
-          this.jdField_a_of_type_Bcgp.a(-203);
+        bczm.a(2, "[Camera2] startPreview mCameraDevice null!");
+        if (this.jdField_a_of_type_Bczh != null) {
+          this.jdField_a_of_type_Bczh.a(-203);
         }
         this.jdField_a_of_type_JavaUtilConcurrentSemaphore.release();
         return;
       }
       if (paramSurfaceTexture == null)
       {
-        bcgu.a(2, "[Camera2] startPreview params exception!");
-        if (this.jdField_a_of_type_Bcgp != null) {
-          this.jdField_a_of_type_Bcgp.a(-203);
+        bczm.a(2, "[Camera2] startPreview params exception!");
+        if (this.jdField_a_of_type_Bczh != null) {
+          this.jdField_a_of_type_Bczh.a(-203);
         }
         this.jdField_a_of_type_JavaUtilConcurrentSemaphore.release();
         return;
@@ -849,28 +849,28 @@ public class Camera2Control
     }
     catch (Exception paramSurfaceTexture)
     {
-      bcgu.a(2, "[Camera2]startPreview exception:" + paramSurfaceTexture);
+      bczm.a(2, "[Camera2]startPreview exception:" + paramSurfaceTexture);
       this.h = false;
       this.jdField_a_of_type_JavaUtilConcurrentSemaphore.release();
-      if (this.jdField_a_of_type_Bcgp != null)
+      if (this.jdField_a_of_type_Bczh != null)
       {
-        this.jdField_a_of_type_Bcgp.a(-202);
+        this.jdField_a_of_type_Bczh.a(-202);
         return;
         b(paramSurfaceTexture);
         g();
         k();
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setDefaultBufferSize(this.jdField_a_of_type_Bcij.jdField_a_of_type_Int, this.jdField_a_of_type_Bcij.jdField_b_of_type_Int);
+        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setDefaultBufferSize(this.jdField_a_of_type_Bdbb.jdField_a_of_type_Int, this.jdField_a_of_type_Bdbb.jdField_b_of_type_Int);
         paramSurfaceTexture = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
         this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder = this.jdField_a_of_type_AndroidHardwareCamera2CameraDevice.createCaptureRequest(3);
         this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder.addTarget(paramSurfaceTexture);
         this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder.addTarget(this.jdField_b_of_type_AndroidMediaImageReader.getSurface());
-        bcgi localbcgi = new bcgi(this);
+        bcza localbcza = new bcza(this);
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_AndroidHardwareCamera2CameraDevice.createCaptureSession(this.jdField_a_of_type_ComSamsungAndroidSdkCameraSCameraCaptureProcessor.createSessionConfiguration(Arrays.asList(new OutputConfiguration[] { new OutputConfiguration(paramSurfaceTexture), new OutputConfiguration(this.jdField_b_of_type_AndroidMediaImageReader.getSurface()) }), localbcgi, this.jdField_a_of_type_AndroidOsHandler));
+          this.jdField_a_of_type_AndroidHardwareCamera2CameraDevice.createCaptureSession(this.jdField_a_of_type_ComSamsungAndroidSdkCameraSCameraCaptureProcessor.createSessionConfiguration(Arrays.asList(new OutputConfiguration[] { new OutputConfiguration(paramSurfaceTexture), new OutputConfiguration(this.jdField_b_of_type_AndroidMediaImageReader.getSurface()) }), localbcza, this.jdField_a_of_type_AndroidOsHandler));
           return;
         }
-        this.jdField_a_of_type_AndroidHardwareCamera2CameraDevice.createCaptureSession(Arrays.asList(new Surface[] { paramSurfaceTexture, this.jdField_b_of_type_AndroidMediaImageReader.getSurface(), this.jdField_a_of_type_AndroidMediaImageReader.getSurface() }), localbcgi, this.jdField_a_of_type_AndroidOsHandler);
+        this.jdField_a_of_type_AndroidHardwareCamera2CameraDevice.createCaptureSession(Arrays.asList(new Surface[] { paramSurfaceTexture, this.jdField_b_of_type_AndroidMediaImageReader.getSurface(), this.jdField_a_of_type_AndroidMediaImageReader.getSurface() }), localbcza, this.jdField_a_of_type_AndroidOsHandler);
       }
     }
   }
@@ -880,72 +880,72 @@ public class Camera2Control
     this.jdField_a_of_type_AndroidHardwareCamera$PreviewCallback = paramPreviewCallback;
   }
   
-  public void a(bcgp parambcgp)
+  public void a(bczh parambczh)
   {
-    this.jdField_a_of_type_Bcgp = parambcgp;
+    this.jdField_a_of_type_Bczh = parambczh;
   }
   
-  public void a(bcgq parambcgq)
+  public void a(bczi parambczi)
   {
     if (!this.jdField_f_of_type_Boolean)
     {
-      bcgu.a(2, "[Camera2] camera not open");
+      bczm.a(2, "[Camera2] camera not open");
       return;
     }
     if (this.j)
     {
-      bcgu.a(2, "[Camera2] taking status!");
+      bczm.a(2, "[Camera2] taking status!");
       return;
     }
-    bcgu.a(1, "[Camera2] takePicture request!");
-    if (parambcgq == null)
+    bczm.a(1, "[Camera2] takePicture request!");
+    if (parambczi == null)
     {
-      bcgu.a(2, "[Camera2] takePicture request exception!");
+      bczm.a(2, "[Camera2] takePicture request exception!");
       return;
     }
     this.j = true;
-    this.jdField_a_of_type_Bcgq = parambcgq;
+    this.jdField_a_of_type_Bczi = parambczi;
     if (this.i)
     {
-      bcgu.a(1, "[Camera2] takePicture AutoFocusing!");
+      bczm.a(1, "[Camera2] takePicture AutoFocusing!");
       d();
       return;
     }
     i();
   }
   
-  public void a(bcij parambcij)
+  public void a(bdbb parambdbb)
   {
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder().append("[Camera2]setDarkModeSize:");
-      if (parambcij == null) {
+      if (parambdbb == null) {
         break label49;
       }
     }
     label49:
-    for (String str = parambcij.toString();; str = "")
+    for (String str = parambdbb.toString();; str = "")
     {
       QLog.i("Camera2Control", 2, str);
-      this.jdField_c_of_type_Bcij = parambcij;
+      this.jdField_c_of_type_Bdbb = parambdbb;
       return;
     }
   }
   
-  public void a(bciw parambciw)
+  public void a(bdbo parambdbo)
   {
     if (this.jdField_a_of_type_AndroidHardwareCamera2CameraDevice == null) {
       return;
     }
     if ((!this.h) || (this.i))
     {
-      bcgu.a(2, "[Camera2] autoFocus not preview, mPreview:" + this.h + ", mIsAutoFocusing:" + this.i);
+      bczm.a(2, "[Camera2] autoFocus not preview, mPreview:" + this.h + ", mIsAutoFocusing:" + this.i);
       return;
     }
     this.i = true;
-    this.jdField_a_of_type_AndroidGraphicsRect = ((Rect)this.jdField_a_of_type_Bcgo.a.get(CameraCharacteristics.SENSOR_INFO_ACTIVE_ARRAY_SIZE));
-    Object localObject = a(parambciw);
+    this.jdField_a_of_type_AndroidGraphicsRect = ((Rect)this.jdField_a_of_type_Bczg.a.get(CameraCharacteristics.SENSOR_INFO_ACTIVE_ARRAY_SIZE));
+    Object localObject = a(parambdbo);
     if (localObject != null) {}
     for (;;)
     {
@@ -956,22 +956,22 @@ public class Camera2Control
         this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder.set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(1));
         this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder.set(CaptureRequest.CONTROL_AF_TRIGGER, Integer.valueOf(1));
         this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder.set(CaptureRequest.CONTROL_AE_PRECAPTURE_TRIGGER, Integer.valueOf(1));
-        this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder.setTag(parambciw);
+        this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder.setTag(parambdbo);
         localObject = this.jdField_a_of_type_AndroidHardwareCamera2CameraCaptureSession;
         if (this.jdField_a_of_type_Boolean)
         {
-          parambciw = this.jdField_a_of_type_ComSamsungAndroidSdkCameraSCameraCaptureProcessor.buildCaptureRequest(this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder);
-          ((CameraCaptureSession)localObject).setRepeatingRequest(parambciw, this.jdField_b_of_type_AndroidHardwareCamera2CameraCaptureSession$CaptureCallback, this.jdField_a_of_type_AndroidOsHandler);
+          parambdbo = this.jdField_a_of_type_ComSamsungAndroidSdkCameraSCameraCaptureProcessor.buildCaptureRequest(this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder);
+          ((CameraCaptureSession)localObject).setRepeatingRequest(parambdbo, this.jdField_b_of_type_AndroidHardwareCamera2CameraCaptureSession$CaptureCallback, this.jdField_a_of_type_AndroidOsHandler);
           return;
         }
       }
-      catch (Exception parambciw)
+      catch (Exception parambdbo)
       {
-        bcgu.a(2, "[Camera2] autoFocus e:" + parambciw);
-        parambciw.printStackTrace();
+        bczm.a(2, "[Camera2] autoFocus e:" + parambdbo);
+        parambdbo.printStackTrace();
         return;
       }
-      parambciw = this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder.build();
+      parambdbo = this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder.build();
     }
   }
   
@@ -980,7 +980,7 @@ public class Camera2Control
     boolean bool = false;
     if ((!this.h) || (this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder == null))
     {
-      bcgu.a(1, "[Camera2]setFlashOn error status!");
+      bczm.a(1, "[Camera2]setFlashOn error status!");
       return;
     }
     if ((paramBoolean) && (this.jdField_e_of_type_Int != 2))
@@ -990,7 +990,7 @@ public class Camera2Control
     }
     for (;;)
     {
-      bcgu.a(1, "[Camera2]setFlashOn: " + paramBoolean + ", mode:" + this.jdField_e_of_type_Int + ", needUpdateView:" + bool);
+      bczm.a(1, "[Camera2]setFlashOn: " + paramBoolean + ", mode:" + this.jdField_e_of_type_Int + ", needUpdateView:" + bool);
       if ((!bool) || (this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder == null)) {
         break;
       }
@@ -1031,42 +1031,42 @@ public class Camera2Control
     return true;
   }
   
-  public boolean a(bcij parambcij)
+  public boolean a(bdbb parambdbb)
   {
-    if ((parambcij == null) || (parambcij.jdField_a_of_type_Int <= 0) || (parambcij.jdField_b_of_type_Int <= 0))
+    if ((parambdbb == null) || (parambdbb.jdField_a_of_type_Int <= 0) || (parambdbb.jdField_b_of_type_Int <= 0))
     {
-      bcgu.a(2, "[Camera2] setPreviewSize params error!");
+      bczm.a(2, "[Camera2] setPreviewSize params error!");
       return false;
     }
-    this.jdField_a_of_type_Bcij = parambcij;
+    this.jdField_a_of_type_Bdbb = parambdbb;
     if (QLog.isColorLevel()) {
-      QLog.i("Camera2Control", 2, "[Camera2]setPreviewSize:" + parambcij.toString());
+      QLog.i("Camera2Control", 2, "[Camera2]setPreviewSize:" + parambdbb.toString());
     }
     return true;
   }
   
-  public boolean a(bciy parambciy)
+  public boolean a(bdbq parambdbq)
   {
     if (!this.jdField_f_of_type_Boolean)
     {
-      bcgu.a(2, "[Camera2] setCamera2ParamOnce mIsOpened:" + this.jdField_f_of_type_Boolean);
+      bczm.a(2, "[Camera2] setCamera2ParamOnce mIsOpened:" + this.jdField_f_of_type_Boolean);
       return false;
     }
-    if ((parambciy == null) || (parambciy.jdField_a_of_type_Bcij == null) || (parambciy.jdField_b_of_type_Bcij == null) || (parambciy.jdField_c_of_type_Bcij == null))
+    if ((parambdbq == null) || (parambdbq.jdField_a_of_type_Bdbb == null) || (parambdbq.jdField_b_of_type_Bdbb == null) || (parambdbq.jdField_c_of_type_Bdbb == null))
     {
-      bcgu.a(2, "[Camera2] setCamera2ParamOnce error!");
+      bczm.a(2, "[Camera2] setCamera2ParamOnce error!");
       return false;
     }
-    bcgu.a(1, "[Camera2] setCamera2ParamOnce!");
-    a(parambciy.jdField_a_of_type_Bcij);
-    b(parambciy.jdField_b_of_type_Bcij);
-    a(parambciy.jdField_c_of_type_Bcij);
+    bczm.a(1, "[Camera2] setCamera2ParamOnce!");
+    a(parambdbq.jdField_a_of_type_Bdbb);
+    b(parambdbq.jdField_b_of_type_Bdbb);
+    a(parambdbq.jdField_c_of_type_Bdbb);
     return true;
   }
   
-  public bcij b()
+  public bdbb b()
   {
-    return this.jdField_a_of_type_Bcij;
+    return this.jdField_a_of_type_Bdbb;
   }
   
   public void b()
@@ -1077,13 +1077,13 @@ public class Camera2Control
       {
         this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder.set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(3));
         h();
-        bcgu.a(1, "[Camera2] setFocusRecordMode!");
+        bczm.a(1, "[Camera2] setFocusRecordMode!");
       }
       return;
     }
     catch (Exception localException)
     {
-      bcgu.a(2, "[Camera2] setFocusRecordMode exp:" + localException);
+      bczm.a(2, "[Camera2] setFocusRecordMode exp:" + localException);
     }
   }
   
@@ -1092,14 +1092,14 @@ public class Camera2Control
     this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
   }
   
-  public void b(bcij parambcij)
+  public void b(bdbb parambdbb)
   {
     for (;;)
     {
       int k;
       try
       {
-        Object localObject = (StreamConfigurationMap)this.jdField_a_of_type_Bcgo.a.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
+        Object localObject = (StreamConfigurationMap)this.jdField_a_of_type_Bczg.a.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
         if (localObject != null)
         {
           Size[] arrayOfSize = ((StreamConfigurationMap)localObject).getOutputSizes(35);
@@ -1111,21 +1111,21 @@ public class Camera2Control
             if (k < m)
             {
               Size localSize = arrayOfSize[k];
-              if ((localSize.getHeight() < parambcij.jdField_b_of_type_Int / 3) || (localSize.getHeight() * localSize.getWidth() >= ((Size)localObject).getWidth() * ((Size)localObject).getHeight())) {
+              if ((localSize.getHeight() < parambdbb.jdField_b_of_type_Int / 3) || (localSize.getHeight() * localSize.getWidth() >= ((Size)localObject).getWidth() * ((Size)localObject).getHeight())) {
                 break label145;
               }
               localObject = localSize;
               break label145;
             }
-            a(new bcij(((Size)localObject).getWidth(), ((Size)localObject).getHeight()));
+            a(new bdbb(((Size)localObject).getWidth(), ((Size)localObject).getHeight()));
           }
         }
-        if (this.jdField_c_of_type_Bcij == null) {
-          a(this.jdField_a_of_type_Bcij);
+        if (this.jdField_c_of_type_Bdbb == null) {
+          a(this.jdField_a_of_type_Bdbb);
         }
         return;
       }
-      catch (Exception parambcij)
+      catch (Exception parambdbb)
       {
         return;
       }
@@ -1139,16 +1139,16 @@ public class Camera2Control
     return this.g;
   }
   
-  public boolean b(bcij parambcij)
+  public boolean b(bdbb parambdbb)
   {
-    if ((parambcij == null) || (parambcij.jdField_a_of_type_Int <= 0) || (parambcij.jdField_b_of_type_Int <= 0))
+    if ((parambdbb == null) || (parambdbb.jdField_a_of_type_Int <= 0) || (parambdbb.jdField_b_of_type_Int <= 0))
     {
-      bcgu.a(2, "[Camera2] setRawPictureSize params error!");
+      bczm.a(2, "[Camera2] setRawPictureSize params error!");
       return false;
     }
-    this.jdField_b_of_type_Bcij = parambcij;
+    this.jdField_b_of_type_Bdbb = parambdbb;
     if (QLog.isColorLevel()) {
-      QLog.i("Camera2Control", 2, "[Camera2]setRawPictureSize:" + parambcij.toString());
+      QLog.i("Camera2Control", 2, "[Camera2]setRawPictureSize:" + parambdbb.toString());
     }
     return true;
   }
@@ -1157,7 +1157,7 @@ public class Camera2Control
   {
     if (this.jdField_a_of_type_AndroidHardwareCamera2CameraDevice == null)
     {
-      bcgu.a(2, "[Camera2] stopRecordVideo device null!");
+      bczm.a(2, "[Camera2] stopRecordVideo device null!");
       return;
     }
     this.jdField_a_of_type_AndroidHardwareCamera2CaptureRequest$Builder.set(CaptureRequest.FLASH_MODE, Integer.valueOf(0));
@@ -1168,10 +1168,10 @@ public class Camera2Control
   {
     try
     {
-      bcgu.a(1, "[Camera2]captureStillPicture request!");
+      bczm.a(1, "[Camera2]captureStillPicture request!");
       if (this.jdField_a_of_type_Long > 0L)
       {
-        bcgu.a(1, "[Camera2]captureStillPicture on id:" + this.jdField_a_of_type_Long);
+        bczm.a(1, "[Camera2]captureStillPicture on id:" + this.jdField_a_of_type_Long);
         return;
       }
       this.jdField_a_of_type_Long = System.currentTimeMillis();
@@ -1187,8 +1187,8 @@ public class Camera2Control
           ((CaptureRequest.Builder)localObject).set(CaptureRequest.SCALER_CROP_REGION, this.jdField_b_of_type_AndroidGraphicsRect);
         }
         this.jdField_b_of_type_Long = System.currentTimeMillis();
-        bcgm localbcgm = new bcgm(this);
-        this.jdField_a_of_type_AndroidHardwareCamera2CameraCaptureSession.capture(((CaptureRequest.Builder)localObject).build(), localbcgm, null);
+        bcze localbcze = new bcze(this);
+        this.jdField_a_of_type_AndroidHardwareCamera2CameraCaptureSession.capture(((CaptureRequest.Builder)localObject).build(), localbcze, null);
         return;
       }
       Object localObject = new ArrayList();
@@ -1200,7 +1200,7 @@ public class Camera2Control
         ((List)localObject).add(new SCameraCaptureProcessor.CaptureParameter(CaptureRequest.SCALER_CROP_REGION, this.jdField_b_of_type_AndroidGraphicsRect));
       }
       long l = System.currentTimeMillis();
-      this.jdField_a_of_type_ComSamsungAndroidSdkCameraSCameraCaptureProcessor.capture(this.jdField_a_of_type_AndroidHardwareCamera2CameraCaptureSession, new bcgn(this, l), null, (List)localObject);
+      this.jdField_a_of_type_ComSamsungAndroidSdkCameraSCameraCaptureProcessor.capture(this.jdField_a_of_type_AndroidHardwareCamera2CameraCaptureSession, new bczf(this, l), null, (List)localObject);
       return;
     }
     catch (Exception localException) {}
@@ -1222,8 +1222,8 @@ public class Camera2Control
         this.jdField_a_of_type_AndroidHardwareCamera2CameraDevice.close();
         this.jdField_a_of_type_AndroidHardwareCamera2CameraDevice = null;
       }
-      if (this.jdField_a_of_type_Bcgp != null) {
-        this.jdField_a_of_type_Bcgp = null;
+      if (this.jdField_a_of_type_Bczh != null) {
+        this.jdField_a_of_type_Bczh = null;
       }
       if (this.jdField_a_of_type_AndroidMediaImageReader != null)
       {
@@ -1238,8 +1238,8 @@ public class Camera2Control
       if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {
         this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
       }
-      if (this.jdField_a_of_type_Bcgo != null) {
-        this.jdField_a_of_type_Bcgo = null;
+      if (this.jdField_a_of_type_Bczg != null) {
+        this.jdField_a_of_type_Bczg = null;
       }
       if (this.jdField_a_of_type_AndroidHardwareCamera$PreviewCallback != null) {
         this.jdField_a_of_type_AndroidHardwareCamera$PreviewCallback = null;
@@ -1264,7 +1264,7 @@ public class Camera2Control
       this.j = false;
       this.i = false;
       this.jdField_a_of_type_Long = 0L;
-      bcgu.a(1, "[Camera2]closeCamera2!");
+      bczm.a(1, "[Camera2]closeCamera2!");
       return;
     }
     catch (Exception localException)
@@ -1273,7 +1273,7 @@ public class Camera2Control
       this.h = false;
       this.j = false;
       this.i = false;
-      bcgu.a(1, "[Camera2]closeCamera2 exception:" + localException);
+      bczm.a(1, "[Camera2]closeCamera2 exception:" + localException);
       return;
     }
     finally

@@ -1,22 +1,30 @@
-import android.view.View;
-
 public class aavu
-  implements aavy
 {
-  private float jdField_a_of_type_Float = 0.8F;
-  private aavs jdField_a_of_type_Aavs = aavs.a(1);
-  private float jdField_b_of_type_Float = 0.2F;
-  private aavs jdField_b_of_type_Aavs = aavs.b(1);
+  public static int a;
+  public static int b;
+  String a;
+  public boolean a;
+  String b;
+  public int c;
+  String c;
+  public int d;
   
-  public void a(View paramView, float paramFloat)
+  static
   {
-    this.jdField_a_of_type_Aavs.a(paramView);
-    this.jdField_b_of_type_Aavs.a(paramView);
-    paramFloat = Math.abs(paramFloat);
-    float f = this.jdField_a_of_type_Float;
-    paramFloat = (1.0F - paramFloat) * this.jdField_b_of_type_Float + f;
-    paramView.setScaleX(paramFloat);
-    paramView.setScaleY(paramFloat);
+    jdField_b_of_type_Int = 1;
+  }
+  
+  public aavu(String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_c_of_type_Int = jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

@@ -1,25 +1,6 @@
-import android.text.TextUtils;
-import cooperation.qqreader.host.webview.ReaderBaseWebViewPlugin;
-import cooperation.qqreader.proxy.ReaderJsCallback;
-
-class bloq
-  implements ReaderJsCallback
+public abstract interface bloq
 {
-  bloq(blop paramblop) {}
-  
-  public void onCallback(String paramString1, String paramString2)
-  {
-    if (!TextUtils.isEmpty(paramString1)) {
-      blop.a(this.a, paramString1, new String[] { paramString2 });
-    }
-  }
-  
-  public void onInitPluginCallBack(ReaderBaseWebViewPlugin paramReaderBaseWebViewPlugin)
-  {
-    if (paramReaderBaseWebViewPlugin != null) {
-      paramReaderBaseWebViewPlugin.init(this.a.mRuntime, blop.a(this.a));
-    }
-  }
+  public abstract void a();
 }
 
 

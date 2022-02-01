@@ -1,10 +1,17 @@
-public abstract interface amiq
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+
+public class amiq
+  implements aumz
 {
-  public abstract void a();
+  public amiq(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public abstract void a(long paramLong);
+  public void a()
+  {
+    ShortVideoPreviewActivity.b(this.a);
+    this.a.setResult(-1);
+  }
   
-  public abstract void b(long paramLong);
+  public void b() {}
 }
 
 

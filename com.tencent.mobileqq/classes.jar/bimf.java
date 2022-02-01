@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment;
-
-public class bimf
-  implements DialogInterface.OnClickListener
+public abstract interface bimf
 {
-  public bimf(OpenAuthorityFragment paramOpenAuthorityFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

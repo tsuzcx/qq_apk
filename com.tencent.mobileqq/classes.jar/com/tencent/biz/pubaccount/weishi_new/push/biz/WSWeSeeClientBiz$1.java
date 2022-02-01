@@ -2,18 +2,18 @@ package com.tencent.biz.pubaccount.weishi_new.push.biz;
 
 import android.content.Context;
 import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
-import ume;
-import upg;
+import unc;
+import uqh;
 
 public class WSWeSeeClientBiz$1
   implements Runnable
 {
-  public WSWeSeeClientBiz$1(ume paramume, Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo) {}
+  public WSWeSeeClientBiz$1(unc paramunc, Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo) {}
   
   public void run()
   {
-    upg.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), "biz_src_jc_gzh_weishi", this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSPushStrategyInfo.mScheme);
-    ume.a(this.this$0, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSPushStrategyInfo.mScheme);
+    uqh.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), "biz_src_jc_gzh_weishi", this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSPushStrategyInfo.mScheme);
+    unc.a(this.this$0, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSPushStrategyInfo.mScheme);
   }
 }
 

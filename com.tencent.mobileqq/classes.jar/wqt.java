@@ -1,49 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserId;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class wqt
-  implements wev
+class wqt
+  extends wrf
 {
-  public String a;
-  public String b;
+  wqt(wqs paramwqs) {}
   
-  public wqt(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public qqstory_struct.UserId a()
-  {
-    qqstory_struct.UserId localUserId = new qqstory_struct.UserId();
-    if (!TextUtils.isEmpty(this.a)) {
-      localUserId.uid.set(Long.valueOf(this.a).longValue());
-    }
-    localUserId.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localUserId;
-  }
-  
-  public boolean a()
-  {
-    return (QQStoryContext.a().a(this.b)) || (QQStoryContext.a().b(this.a));
-  }
-  
-  public void copy(Object paramObject)
-  {
-    if ((paramObject instanceof wqt))
+    wqg localwqg;
+    int i;
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_AndroidAppActivity != null))
     {
-      this.a = ((wqt)paramObject).a;
-      this.b = ((wqt)paramObject).b;
+      localwqg = (wqg)this.a.a();
+      if (wqs.a(this.a) != 11) {
+        break label145;
+      }
+      i = 211;
     }
-  }
-  
-  public String toString()
-  {
-    return "UserID{qq=" + this.a + ", unionId='" + this.b + '\'' + '}';
+    for (;;)
+    {
+      StoryDetailActivity.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, i, 0);
+      i = yup.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      yup.a("home_page", "clk_like_more", yup.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(i), yup.a(localwqg.a), "", this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label145:
+      if (wqs.a(this.a) == 12) {
+        i = 222;
+      } else {
+        i = 210;
+      }
+    }
   }
 }
 

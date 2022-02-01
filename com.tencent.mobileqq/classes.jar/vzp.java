@@ -1,43 +1,14 @@
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
-class vzp
-  implements vxr
+public class vzp
+  implements vya
 {
-  vzp(vzl paramvzl) {}
+  public vzp(QCircleFeedCommentWidget paramQCircleFeedCommentWidget, String paramString) {}
   
   public void a()
   {
-    vrc.a("", this.a.a(), this.a.jdField_a_of_type_Int, 43, this.a.b());
-    if ((this.a.jdField_a_of_type_Uzb != null) && ((this.a.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
-    {
-      vca localvca = new vca();
-      localvca.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = ((FeedCloudMeta.StFeed)this.a.jdField_a_of_type_JavaLangObject);
-      localvca.jdField_a_of_type_Int = this.a.jdField_a_of_type_Int;
-      localvca.b = 1;
-      this.a.jdField_a_of_type_Uzb.a(localvca);
-    }
-  }
-  
-  public void a(FeedCloudMeta.StUser paramStUser)
-  {
-    vrc.a(paramStUser.id.get(), this.a.a(), this.a.jdField_a_of_type_Int, 41, this.a.b());
-    uxo.a(paramStUser, this.a.a().clone().setElementIdStr("portrait"));
-  }
-  
-  public void b()
-  {
-    vrc.a("", this.a.a(), this.a.jdField_a_of_type_Int, 42, this.a.b());
-    if ((this.a.jdField_a_of_type_Uzb != null) && ((this.a.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
-    {
-      vca localvca = new vca();
-      localvca.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = ((FeedCloudMeta.StFeed)this.a.jdField_a_of_type_JavaLangObject);
-      localvca.jdField_a_of_type_Int = this.a.jdField_a_of_type_Int;
-      localvca.b = 1;
-      this.a.jdField_a_of_type_Uzb.a(localvca);
-    }
+    vtn.a(this.jdField_a_of_type_JavaLangString, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget), 44, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.d());
+    QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget, this.jdField_a_of_type_JavaLangString);
   }
 }
 

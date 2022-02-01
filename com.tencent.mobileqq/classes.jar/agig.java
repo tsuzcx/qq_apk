@@ -1,19 +1,25 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public class agig
-  implements View.OnClickListener
+class agig
 {
-  public agig(ColorView paramColorView) {}
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<agif> b;
   
-  public void onClick(View paramView)
+  public agig(agid paramagid, View paramView, agif paramagif)
   {
-    if (ColorView.a(this.a) != null) {
-      ColorView.a(this.a).a();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramagif);
+  }
+  
+  public agif a()
+  {
+    return (agif)this.b.get();
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
   }
 }
 

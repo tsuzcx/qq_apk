@@ -640,6 +640,13 @@ public class TAVCutVideoSession
     updatePlayer(getMediaModel(), true);
   }
   
+  public void setStickerTouchEnable(boolean paramBoolean)
+  {
+    if (getStickerController() != null) {
+      getStickerController().setStickerTouchEnable(paramBoolean);
+    }
+  }
+  
   public void setTAVCutVideoView(TAVCutVideoView paramTAVCutVideoView)
   {
     if (this.tavCutVideoView != null)

@@ -1,17 +1,38 @@
-import android.text.style.ClickableSpan;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 class aynj
-  extends View.AccessibilityDelegate
+  implements aypy
 {
-  aynj(aymu paramaymu, ClickableSpan paramClickableSpan) {}
+  aynj(aymj paramaymj, String paramString) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
-    if ((paramInt == 1) && (this.jdField_a_of_type_AndroidTextStyleClickableSpan != null)) {
-      this.jdField_a_of_type_AndroidTextStyleClickableSpan.onClick(paramView);
+    if (paramInterestTagInfo.tagJumpUrl.equals("icon_more_url"))
+    {
+      paramView = new Intent(this.jdField_a_of_type_Aymj.a, QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aymj.a.startActivity(paramView);
+      paramInterestTagInfo = this.jdField_a_of_type_Aymj.a.app;
+      if (this.jdField_a_of_type_Aymj.a.e == 2) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        bdll.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_more_tribe", 0, 0, paramView, "", "", "");
+        return;
+      }
+    }
+    paramView = new Intent(this.jdField_a_of_type_Aymj.a, QQBrowserActivity.class);
+    paramView.putExtra("url", paramInterestTagInfo.tagJumpUrl);
+    this.jdField_a_of_type_Aymj.a.startActivity(paramView);
+    paramInterestTagInfo = this.jdField_a_of_type_Aymj.a.app;
+    if (this.jdField_a_of_type_Aymj.a.e == 2) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      bdll.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_tribe", 0, 0, paramView, "", "", "");
+      return;
     }
   }
 }

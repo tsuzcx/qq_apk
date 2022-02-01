@@ -1,31 +1,19 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
 
-public class bokl
-  extends RecyclerView.ItemDecoration
+class bokl
+  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
 {
-  int a = 0;
-  int b = 0;
-  int c = 0;
-  int d = 0;
+  bokl(bojy parambojy) {}
   
-  public bokl(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    paramRect.left = this.a;
-    paramRect.right = this.b;
-    paramRect.bottom = this.d;
-    paramRect.top = this.c;
+    if (paramRatio == null) {
+      return;
+    }
+    paramRatio = bojy.a(paramRatio);
+    bojy.a(this.a, paramRatio);
   }
 }
 

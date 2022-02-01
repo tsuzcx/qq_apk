@@ -1,16 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class mje
-  implements DialogInterface.OnClickListener
+class mje
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public mje(VideoControlUI paramVideoControlUI, long paramLong) {}
+  mje(mjd parammjd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionNormalDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
+    paramValueAnimator.getAnimatedFraction();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    float f;
+    if (i <= 220)
+    {
+      f = i / 220.0F;
+      mjd.a(this.a).setAlpha(f);
+    }
+    if (i <= 160)
+    {
+      f = i / 100.0F;
+      mjd.a(this.a).setAlpha(f);
+    }
+    if (mjd.a(this.a) != null) {
+      mjd.a(this.a).requestLayout();
+    }
   }
 }
 

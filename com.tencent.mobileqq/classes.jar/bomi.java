@@ -1,12 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
 
 class bomi
-  implements DialogInterface.OnClickListener
+  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
 {
-  bomi(bomh parambomh) {}
+  bomi(bomg parambomg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
+  {
+    bolg.a(bojy.a(paramRatio).f);
+    this.a.a.notifyDataSetChanged();
+  }
 }
 
 

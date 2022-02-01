@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahen;
+import ahnz;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class PttItemBuilder$2
   implements Runnable
 {
-  public PttItemBuilder$2(ahen paramahen, MessageRecord paramMessageRecord) {}
+  public PttItemBuilder$2(ahnz paramahnz, MessageRecord paramMessageRecord) {}
   
   public void run()
   {

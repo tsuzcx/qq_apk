@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.utils;
 
-import bgln;
+import bhlo;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.QWalletHelper;
-import nlw;
+import nnr;
 
 public final class ReportUtils$1
   implements Runnable
@@ -14,7 +14,7 @@ public final class ReportUtils$1
   {
     try
     {
-      String str = "networkType=" + nlw.a() + "&stackType=" + NetConnInfoCenter.getActiveNetIpFamily(true) + "&carrierType=" + bgln.a(QWalletHelper.getIMSI());
+      String str = "networkType=" + nnr.a() + "&stackType=" + NetConnInfoCenter.getActiveNetIpFamily(true) + "&carrierType=" + bhlo.a(QWalletHelper.getIMSI());
       VACDReportUtil.a(str, "qqwallet", "walletNetworkStack", "walletNetworkStack", null, 0, null);
       if (QLog.isColorLevel()) {
         QLog.i("ReportUtils", 2, "reportNetworkStack...data:" + str);

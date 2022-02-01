@@ -1,49 +1,63 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.mobileqq.mini.share.MiniProgramShareUtils;
+import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.share.QZoneShareActivity;
+import cooperation.qzone.share.QZoneShareActivity.5.1;
+import cooperation.qzone.share.QZoneShareActivity.5.2;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
 public class bnhg
-  extends bnop
+  implements MiniAppCmdInterface
 {
-  public bnhg(AECameraGLSurfaceView paramAECameraGLSurfaceView, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public bnhg(QZoneShareActivity paramQZoneShareActivity, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, int paramInt4, String paramString6, MiniAppCmdInterface paramMiniAppCmdInterface) {}
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (AECameraGLSurfaceView.a(this.a) != null) {
-      AECameraGLSurfaceView.a(this.a).a(paramFloat3);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    int i = 0;
-    AECameraGLSurfaceView.a(this.a, paramInt);
-    AECameraGLSurfaceView.a(this.a).b(paramInt);
-    if (paramInt == -1) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AECameraGLSurfaceView", 2, "OrientationEventListener unknown");
-      }
-    }
-    for (int j = 90;; j = 0)
+    if (paramBoolean)
     {
-      if ((paramInt > 315) || (paramInt < 45)) {
-        i = 90;
-      }
-      for (;;)
+      MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
+      if (localMiniAppInfo != null)
       {
-        AECameraGLSurfaceView.b(this.a, i);
-        return;
-        if ((paramInt > 45) && (paramInt < 135)) {
-          i = 180;
-        } else if ((paramInt > 135) && (paramInt < 225)) {
-          i = 270;
-        } else if ((paramInt <= 225) || (paramInt >= 315)) {
-          i = j;
+        paramJSONObject = this.jdField_a_of_type_JavaLangString;
+        String str = this.jdField_b_of_type_JavaLangString;
+        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          paramJSONObject = localMiniAppInfo.name;
         }
+        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+          str = localMiniAppInfo.desc;
+        }
+        if (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) != null)
+        {
+          QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).jdField_b_of_type_JavaLangString = paramJSONObject;
+          QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).jdField_c_of_type_JavaLangString = str;
+          if ((QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).a != null) && (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).a.size() == 0)) {
+            QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).a.add(localMiniAppInfo.iconUrl);
+          }
+        }
+        MiniProgramShareUtils.shareAsQzoneFeeds(this.jdField_c_of_type_JavaLangString, paramJSONObject, str, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_JavaLangString, null, this.e, localMiniAppInfo.iconUrl, this.jdField_d_of_type_Int, localMiniAppInfo.versionId, this.f, this.jdField_a_of_type_ComTencentMobileqqMiniReuseMiniAppCmdInterface);
+        return;
       }
+      this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.runOnUiThread(new QZoneShareActivity.5.1(this));
+      return;
+    }
+    long l;
+    if (paramJSONObject != null)
+    {
+      l = paramJSONObject.optLong("retCode");
+      if (paramJSONObject == null) {
+        break label260;
+      }
+    }
+    label260:
+    for (paramJSONObject = paramJSONObject.optString("errMsg");; paramJSONObject = "")
+    {
+      this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.runOnUiThread(new QZoneShareActivity.5.2(this, paramJSONObject, l));
+      return;
+      l = 0L;
+      break;
     }
   }
 }

@@ -1,18 +1,13 @@
-import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public class bhko
+final class bhko
+  implements MediaPlayer.OnCompletionListener
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public String b;
-  
-  public bhko(int paramInt, String paramString1, String paramString2, Drawable paramDrawable)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    paramMediaPlayer.release();
+    bhkm.a = null;
   }
 }
 

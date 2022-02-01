@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
 
 public class bbhq
-  implements View.OnClickListener
 {
-  public bbhq(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  public int a;
+  public Bitmap a;
+  public String a;
+  public int b;
+  public int c;
   
-  public void onClick(View paramView)
+  public bbhq(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap, int paramInt3)
   {
-    this.a.a.setText("");
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.c = paramInt3;
   }
 }
 

@@ -1,10 +1,28 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class ajuq
+public class ajuq
+  extends anuw
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ajuq(FriendFragment paramFriendFragment) {}
+  
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      FriendFragment.a(this.a, 1400L, false);
+    }
+  }
 }
 
 

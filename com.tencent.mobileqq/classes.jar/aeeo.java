@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aeeo
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  public aeeo(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public aeeo(FontSettingActivity paramFontSettingActivity, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_b_of_type_Int = paramInt2;
+    paramDialogInterface = this.a;
+    ChatHistoryImageView.DownloadAndSaveTask localDownloadAndSaveTask = new ChatHistoryImageView.DownloadAndSaveTask(this.a, this.a.jdField_a_of_type_JavaUtilArrayList, true, false);
+    paramDialogInterface.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask = localDownloadAndSaveTask;
+    ThreadManager.post(localDownloadAndSaveTask, 5, null, true);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
+    }
   }
 }
 

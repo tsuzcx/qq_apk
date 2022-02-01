@@ -1,119 +1,68 @@
 public class lvj
+  extends lur
 {
-  public int a;
-  public long a;
   public int b;
-  public int c;
   
-  public lvj()
+  protected float a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Long = 67L;
+    return this.b + paramInt1;
   }
   
-  public boolean a()
+  public void a(long paramLong)
   {
-    return (this.jdField_a_of_type_Int != 0) && (this.b != 0) && (this.c != 0);
-  }
-  
-  public boolean a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    boolean bool2 = true;
-    boolean bool1 = false;
-    if (this.jdField_a_of_type_Int != paramInt1)
+    paramLong -= this.a;
+    float f2 = 0.0F;
+    float f1 = f2;
+    if (paramLong <= 3733L)
     {
-      this.jdField_a_of_type_Int = paramInt1;
-      bool1 = true;
-    }
-    if (this.b != paramInt2)
-    {
-      this.b = paramInt2;
-      bool1 = bool2;
+      paramLong = paramLong * 3L % 2800L / 3L;
+      if ((paramLong < 0L) || (paramLong >= 133L)) {
+        break label65;
+      }
+      f1 = (float)(-3L * paramLong) / 100.0F;
     }
     for (;;)
     {
-      if (this.c != paramInt3)
+      a(f1);
+      return;
+      label65:
+      if ((paramLong >= 133L) && (paramLong < 266L))
       {
-        this.c = paramInt3;
-        if (this.c == 0) {
-          this.c = 15;
-        }
-        this.jdField_a_of_type_Long = (1000 / this.c);
+        f1 = (float)(3L * paramLong) / 50.0F - 12.0F;
       }
-      return bool1;
+      else if ((paramLong >= 266L) && (paramLong < 400L))
+      {
+        f1 = (float)(-3L * paramLong) / 50.0F + 20.0F;
+      }
+      else if ((paramLong >= 400L) && (paramLong < 533L))
+      {
+        f1 = (float)(3L * paramLong) / 50.0F - 28.0F;
+      }
+      else
+      {
+        f1 = f2;
+        if (paramLong >= 533L)
+        {
+          f1 = f2;
+          if (paramLong < 666L) {
+            f1 = (float)(-3L * paramLong) / 100.0F + 20.0F;
+          }
+        }
+      }
     }
   }
   
-  public boolean a(lvj paramlvj)
+  protected float b(int paramInt1, int paramInt2)
   {
-    boolean bool2 = true;
-    boolean bool1 = false;
-    if ((paramlvj == null) || (!paramlvj.a()))
-    {
-      bool2 = false;
-      return bool2;
-    }
-    if (this.jdField_a_of_type_Int != paramlvj.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_Int = paramlvj.jdField_a_of_type_Int;
-      bool1 = true;
-    }
-    if (this.b != paramlvj.b)
-    {
-      this.b = paramlvj.b;
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (this.c == paramlvj.c) {
-        break;
-      }
-      this.c = paramlvj.c;
-      if (this.c == 0) {
-        this.c = 15;
-      }
-      this.jdField_a_of_type_Long = (1000 / this.c);
-      return bool1;
-    }
+    return paramInt2;
   }
   
-  public boolean equals(Object paramObject)
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this == paramObject) {}
-    label71:
-    label74:
-    for (;;)
-    {
-      return true;
-      if (!(paramObject instanceof lvj)) {
-        break;
-      }
-      paramObject = (lvj)paramObject;
-      if (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int)
-      {
-        i = 1;
-        if ((i == 0) || (this.b != paramObject.b)) {
-          break label71;
-        }
-      }
-      for (int i = 1;; i = 0)
-      {
-        if ((i != 0) && (this.c == paramObject.c)) {
-          break label74;
-        }
-        return false;
-        i = 0;
-        break;
-      }
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("RecordParam{").append("width: ").append(this.jdField_a_of_type_Int).append(", height: ").append(this.b).append(", fps: ").append(this.c).append("}");
-    return localStringBuilder.toString();
+    paramInt3 = paramInt1 * 102 / 160;
+    paramInt4 = paramInt1 * 140 / 160;
+    this.b = (paramInt1 * 24 / 160);
+    a((paramInt1 - paramInt3) / 2, (paramInt2 - paramInt4) / 2, (paramInt3 + paramInt1) / 2, (paramInt4 + paramInt2) / 2);
   }
 }
 

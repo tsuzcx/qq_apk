@@ -1,20 +1,33 @@
-import android.text.TextUtils.EllipsizeCallback;
-import android.widget.TextView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.together.writetogether.view.SavingAnimView;
 
-final class bepu
-  implements TextUtils.EllipsizeCallback
+public class bepu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bepu(bepv parambepv, String paramString) {}
+  public bepu(SavingAnimView paramSavingAnimView) {}
   
-  public void ellipsized(int paramInt1, int paramInt2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt1 == paramInt2)
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    float f2 = SavingAnimView.b(this.a) + f1;
+    float f3 = f1 + SavingAnimView.c(this.a);
+    f1 = f2;
+    if (f2 + 1.0E-005F >= 1.0F)
     {
-      this.jdField_a_of_type_Bepv.c.setText(this.jdField_a_of_type_JavaLangString);
-      return;
+      f1 = 0.0F;
+      SavingAnimView.a(this.a, 0.0F);
+      SavingAnimView.a(this.a, true);
     }
-    String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
-    this.jdField_a_of_type_Bepv.c.setText(new bdnt(nlw.b(nlw.c(str + "...")), 3, 14));
+    f2 = f3;
+    if (f3 + 1.0E-005F >= 1.0F) {
+      f2 = 1.0F;
+    }
+    if (!SavingAnimView.a(this.a)) {
+      SavingAnimView.a(this.a, f1);
+    }
+    SavingAnimView.b(this.a, f2);
+    this.a.invalidate();
   }
 }
 

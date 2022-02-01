@@ -5,14 +5,14 @@ import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
-import ozw;
+import osl;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJCommentNetworkHelper$updateCommentStickyStatus$2
   extends Lambda
   implements Function0<Unit>
 {
-  public RIJCommentNetworkHelper$updateCommentStickyStatus$2(ozw paramozw, FirstCommentStickyData paramFirstCommentStickyData)
+  public RIJCommentNetworkHelper$updateCommentStickyStatus$2(osl paramosl, FirstCommentStickyData paramFirstCommentStickyData)
   {
     super(0);
   }

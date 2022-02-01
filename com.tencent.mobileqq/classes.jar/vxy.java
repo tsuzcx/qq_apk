@@ -1,27 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqcircle.widgets.QCirclePushToastView;
+import com.tencent.biz.qqcircle.beans.Friend;
+import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
 
 public class vxy
-  extends Handler
+  implements vya
 {
-  private vxy(QCirclePushToastView paramQCirclePushToastView, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public vxy(QCircleAsyncTextView paramQCircleAsyncTextView, vxz paramvxz, Friend paramFriend) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.a();
-      return;
+    if (this.jdField_a_of_type_Vxz != null) {
+      this.jdField_a_of_type_Vxz.a(String.valueOf(this.jdField_a_of_type_ComTencentBizQqcircleBeansFriend.mUin));
     }
-    this.a.c();
   }
 }
 

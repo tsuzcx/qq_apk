@@ -1,57 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.LRULinkedHashMap;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class amzl
+public class amzl
+  implements View.OnLayoutChangeListener
 {
-  public String a;
-  public WeakReference<WebViewPlugin> a;
-  private WeakReference<amzk> b;
+  public amzl(ApolloWebViewFragment paramApolloWebViewFragment) {}
   
-  public amzl(amzk paramamzk, String paramString, WebViewPlugin paramWebViewPlugin)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.b = new WeakReference(paramamzk);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebViewPlugin);
-  }
-  
-  public void a(amzm paramamzm, amzn paramamzn)
-  {
-    amzk localamzk = (amzk)this.b.get();
-    WebViewPlugin localWebViewPlugin;
-    if ((localamzk != null) && (paramamzm != null))
+    paramView = this.a.getHostActivity();
+    if (paramView == null) {}
+    do
     {
-      localWebViewPlugin = (WebViewPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localWebViewPlugin != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      do
       {
-        if (paramamzn != null) {
-          paramamzn.d = System.currentTimeMillis();
-        }
-        if (amzm.a(paramamzm) == null) {
-          break label175;
-        }
-        localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { amzm.a(paramamzm).toString() });
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, plugin.callJs.mResultJson:" + amzm.a(paramamzm));
-      }
-      if (amzk.a(localamzk) != null)
-      {
-        amzk.a(localamzk).remove(amzm.a(paramamzm));
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, remove sso from mPreloadSSODatas:" + amzm.a(paramamzm));
-        }
-      }
-      return;
-      label175:
-      localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
-    }
+        return;
+        paramView = paramView.findViewById(16908290);
+      } while (paramView == null);
+      paramView.getWindowVisibleDisplayFrame(ApolloWebViewFragment.a(this.a));
+      paramInt1 = ApolloWebViewFragment.a(this.a).right - ApolloWebViewFragment.a(this.a).left;
+      paramInt2 = ApolloWebViewFragment.a(this.a).bottom - ApolloWebViewFragment.a(this.a).top;
+    } while ((ApolloWebViewFragment.a(this.a) == paramInt1) && (ApolloWebViewFragment.b(this.a) == paramInt2));
+    ThreadManager.getUIHandler().post(this.a.a);
+    ApolloWebViewFragment.a(this.a, paramInt1);
+    ApolloWebViewFragment.b(this.a, paramInt2);
   }
 }
 

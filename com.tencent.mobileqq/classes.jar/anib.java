@@ -1,31 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 
 public class anib
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  private anib(BaseActivity2 paramBaseActivity2) {}
+  public anib(ApolloGameActivity paramApolloGameActivity, Intent paramIntent, String paramString, Bitmap paramBitmap, anpf paramanpf, int paramInt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-    {
-      BaseActivity2.mAppForground = false;
-      GesturePWDUtils.setAppForground(paramContext, BaseActivity2.mAppForground);
-    }
-    while (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
-      return;
-    }
-    BaseActivity2.mAppForground = GesturePWDUtils.isAppOnForegroundByTasks(paramContext);
-    GesturePWDUtils.setAppForground(paramContext, BaseActivity2.mAppForground);
+    ApolloGameUtil.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, new anic(this));
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anib
  * JD-Core Version:    0.7.0.1
  */

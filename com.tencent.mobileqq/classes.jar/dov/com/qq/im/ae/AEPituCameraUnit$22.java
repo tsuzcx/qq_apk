@@ -1,28 +1,23 @@
 package dov.com.qq.im.ae;
 
-import android.os.Handler;
-import android.view.View;
-import android.view.ViewStub;
 import android.widget.ImageView;
-import bndy;
+import bofh;
 import com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable;
 
 public class AEPituCameraUnit$22
   implements Runnable
 {
-  public AEPituCameraUnit$22(bndy parambndy, LazyLoadAnimationDrawable paramLazyLoadAnimationDrawable) {}
+  public AEPituCameraUnit$22(bofh parambofh) {}
   
   public void run()
   {
-    if (bndy.a(this.this$0) == null)
+    bofh.a(this.this$0).setVisibility(8);
+    if (bofh.a(this.this$0).getDrawable() != null)
     {
-      ViewStub localViewStub = (ViewStub)bndy.b(this.this$0).findViewById(2131377955);
-      bndy.a(this.this$0, (ImageView)localViewStub.inflate().findViewById(2131362677));
+      LazyLoadAnimationDrawable localLazyLoadAnimationDrawable = (LazyLoadAnimationDrawable)bofh.a(this.this$0).getDrawable();
+      localLazyLoadAnimationDrawable.stop();
+      localLazyLoadAnimationDrawable.clear();
     }
-    bndy.a(this.this$0).postDelayed(bndy.a(this.this$0), this.a.getTotalDuration());
-    bndy.a(this.this$0).setVisibility(0);
-    bndy.a(this.this$0).setImageDrawable(this.a);
-    this.a.start();
   }
 }
 

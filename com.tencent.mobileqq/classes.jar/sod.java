@@ -1,23 +1,21 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.29.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
+import java.util.Map;
 
 public class sod
-  implements sow
+  implements ppq
 {
-  sod(snh paramsnh) {}
+  public sod(FastWebActivity paramFastWebActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, Map<Long, qwb> paramMap)
   {
-    pum localpum = (pum)paramView.getTag();
-    BaseArticleInfo localBaseArticleInfo = this.a.b(localpum.jdField_a_of_type_Int);
-    if (localBaseArticleInfo == null) {
-      return;
+    if (FastWebActivity.a(this.a) != null)
+    {
+      FastWebActivity.a(this.a).a(paramMap);
+      if (FastWebActivity.a(this.a) != null) {
+        FastWebActivity.a(this.a).notifyDataSetChanged();
+      }
     }
-    this.a.a(localpum.jdField_a_of_type_Sey, localBaseArticleInfo, true);
-    ThreadManager.executeOnSubThread(new ReadInJoyBaseAdapter.29.1(this, localBaseArticleInfo));
-    puf.a(paramView);
   }
 }
 

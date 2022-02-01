@@ -5,11 +5,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anni;
-import arib;
-import bbyw;
-import bcef;
-import biaj;
+import anzj;
+import arxq;
+import axjl;
+import bcrn;
+import bcwx;
+import bjbh;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -28,7 +29,7 @@ import tencent.im.msg.im_msg_body.VideoFile;
 
 public class MessageForShortVideo
   extends MessageForRichText
-  implements Parcelable
+  implements Parcelable, axjl
 {
   public static final int BUSI_TYPE_MULTI_FORWARD_VIDEO = 1010;
   public static final int BUSI_TYPE_PUBACCOUNT_PERM_VIDEO = 1009;
@@ -36,7 +37,7 @@ public class MessageForShortVideo
   public static final int BUSI_TYPE_SHORT_VIDEO = 1;
   public static final int BUSI_TYPE_SHORT_VIDEO_PTV = 2;
   public static final int BUSI_TYPE_VIDEO = 0;
-  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new arib();
+  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new arxq();
   public static final int EXTRA_FLAG_FORWARD = 2;
   public static final int EXTRA_FLAG_UPLOAD = 1;
   public static final int FORWARD_CHAT_TYPE_DISCUS = 2;
@@ -76,7 +77,7 @@ public class MessageForShortVideo
   public long lastModified;
   public String mLocalMd5;
   public boolean mPreUpload;
-  public biaj mProgressPie;
+  public bjbh mProgressPie;
   public Runnable mShowProgressTask;
   public String mThumbFilePath;
   public String mVideoFileSourceDir;
@@ -281,11 +282,11 @@ public class MessageForShortVideo
     }
     else
     {
-      if (!"1".equals(getExtInfoFromExtStr(bbyw.n))) {
+      if (!"1".equals(getExtInfoFromExtStr(bcrn.n))) {
         break label728;
       }
       this.syncToStory = true;
-      this.sendRawVideo = "1".equals(getExtInfoFromExtStr(bbyw.C));
+      this.sendRawVideo = "1".equals(getExtInfoFromExtStr(bcrn.C));
       return;
     }
   }
@@ -301,22 +302,22 @@ public class MessageForShortVideo
     return this.msgData;
   }
   
-  public bcef getDownloadInfo(int paramInt)
+  public bcwx getDownloadInfo(int paramInt)
   {
-    bcef localbcef = new bcef();
-    localbcef.jdField_a_of_type_Int = paramInt;
-    localbcef.jdField_a_of_type_Long = this.uniseq;
-    localbcef.jdField_b_of_type_Int = this.istroop;
-    localbcef.jdField_b_of_type_JavaLangString = this.selfuin;
-    localbcef.jdField_c_of_type_JavaLangString = this.frienduin;
-    localbcef.jdField_d_of_type_JavaLangString = this.senderuin;
-    localbcef.jdField_a_of_type_JavaLangString = this.uuid;
-    localbcef.e = this.md5;
-    localbcef.jdField_c_of_type_Int = this.videoFileTime;
-    localbcef.jdField_d_of_type_Int = this.videoFileFormat;
-    localbcef.jdField_c_of_type_Int = this.videoFileTime;
-    localbcef.g = this.thumbMD5;
-    return localbcef;
+    bcwx localbcwx = new bcwx();
+    localbcwx.jdField_a_of_type_Int = paramInt;
+    localbcwx.jdField_a_of_type_Long = this.uniseq;
+    localbcwx.jdField_b_of_type_Int = this.istroop;
+    localbcwx.jdField_b_of_type_JavaLangString = this.selfuin;
+    localbcwx.jdField_c_of_type_JavaLangString = this.frienduin;
+    localbcwx.jdField_d_of_type_JavaLangString = this.senderuin;
+    localbcwx.jdField_a_of_type_JavaLangString = this.uuid;
+    localbcwx.e = this.md5;
+    localbcwx.jdField_c_of_type_Int = this.videoFileTime;
+    localbcwx.jdField_d_of_type_Int = this.videoFileFormat;
+    localbcwx.jdField_c_of_type_Int = this.videoFileTime;
+    localbcwx.g = this.thumbMD5;
+    return localbcwx;
   }
   
   public String getMd5()
@@ -476,7 +477,7 @@ public class MessageForShortVideo
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return anni.a(2131705399);
+      return anzj.a(2131705506);
     }
     return this.msg;
   }
@@ -592,7 +593,7 @@ public class MessageForShortVideo
     boolean bool = isSendFromLocal();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nMessageForShortVideo").append(" isLocalSend:").append(bool).append(" busiType:").append(this.busiType);
-    localStringBuilder.append("\n |-").append("uniseq:").append(this.uniseq).append("(uuid:").append(this.uuid).append(")");
+    localStringBuilder.append("\n |-").append("uniseq:").append(this.uniseq).append(",(uuid:").append(this.uuid).append(")");
     localStringBuilder.append("\n |-").append("videoFile").append("(").append(formatToPeople(this.videoFileFormat)).append("):").append(this.videoFileName);
     localStringBuilder.append("\n |-").append("md5:").append(this.md5).append("(local:").append(this.mLocalMd5).append(")");
     localStringBuilder.append("\n |-").append("videoFileSize:").append(this.videoFileSize);

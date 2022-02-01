@@ -1,9 +1,18 @@
-final class blar
-  extends ThreadLocal<char[]>
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.2;
+
+public class blar
+  implements DialogInterface.OnClickListener
 {
-  protected char[] a()
+  public blar(VideoJsProxyImpl.2 param2) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new char[1024];
+    blao.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Boolean);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

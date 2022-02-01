@@ -1,39 +1,25 @@
-import android.content.Context;
 import android.view.View;
-import com.tencent.pts.core.itemview.PTSItemData;
-import com.tencent.pts.core.lite.IPTSLiteEventListener;
-import com.tencent.pts.core.lite.PTSLiteItemViewManager;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGallery;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Deprecated
 public class qnw
+  implements View.OnClickListener
 {
-  private PTSLiteItemViewManager a;
+  public qnw(ComponentContentGallery paramComponentContentGallery, ArticleInfo paramArticleInfo, int paramInt1, String paramString, int paramInt2) {}
   
-  public qnw(Context paramContext)
+  public void onClick(View paramView)
   {
-    this.a = new PTSLiteItemViewManager(paramContext);
-  }
-  
-  public View a(View paramView, PTSItemData paramPTSItemData)
-  {
-    Object localObject = paramView;
-    if (this.a != null) {
-      localObject = this.a.getView(paramView, paramPTSItemData);
-    }
-    return localObject;
-  }
-  
-  public void a()
-  {
-    if (this.a != null) {
-      this.a.destroy();
-    }
-  }
-  
-  public void a(IPTSLiteEventListener paramIPTSLiteEventListener)
-  {
-    if (this.a != null) {
-      this.a.setLiteEventListener(paramIPTSLiteEventListener);
+    if (ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery) == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      sgc localsgc = ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery).a();
+      if (localsgc != null) {
+        localsgc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1, ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery), this.b);
+      }
     }
   }
 }

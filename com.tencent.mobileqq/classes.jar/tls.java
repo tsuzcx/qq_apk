@@ -1,18 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tls
-  implements View.OnClickListener
 {
-  public tls(ViolaFragment paramViolaFragment) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public void onClick(View paramView)
+  public static tls a(String paramString)
   {
-    this.a.a.d();
-    this.a.c();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramString);
+      paramString = new tls();
+      try
+      {
+        paramString.jdField_a_of_type_Int = localJSONObject.optInt("gift_id", 0);
+        paramString.jdField_a_of_type_JavaLangString = localJSONObject.optString("gift_name", "");
+        paramString.b = localJSONObject.optString("activity_id", "");
+        paramString.c = localJSONObject.optString("gift_icon", "");
+        paramString.g = localJSONObject.optString("gift_desc", "");
+        paramString.d = localJSONObject.optString("bag_item_icon_1", "");
+        paramString.e = localJSONObject.optString("bag_item_icon_2", "");
+        paramString.f = localJSONObject.optString("bag_item_icon_3", "");
+        paramString.h = localJSONObject.optString("need_role", "");
+        return paramString;
+      }
+      catch (JSONException localJSONException1) {}
+    }
+    catch (JSONException localJSONException2)
+    {
+      for (;;)
+      {
+        paramString = null;
+      }
+    }
+    localJSONException1.printStackTrace();
+    return paramString;
   }
 }
 

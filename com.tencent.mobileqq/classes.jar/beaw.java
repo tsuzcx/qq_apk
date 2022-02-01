@@ -1,63 +1,35 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.manager.Manager;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class beaw
-  implements Manager
+class beaw
+  implements WtTicketPromise
 {
-  private beba jdField_a_of_type_Beba;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean = true;
+  beaw(beav parambeav, Runnable paramRunnable) {}
   
-  public beaw(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    BaseApplication.getContext().getSharedPreferences("mobileQQ", 4);
-    this.jdField_a_of_type_Beba = ((beba)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(233));
-    this.jdField_a_of_type_Beba.b(this.jdField_a_of_type_Boolean);
-  }
-  
-  public static String a(int paramInt, String paramString, boolean paramBoolean)
-  {
-    return beba.a(paramInt, paramString, paramBoolean);
-  }
-  
-  public static ArrayList<String> a(int paramInt1, int paramInt2)
-  {
-    return new ArrayList(5);
-  }
-  
-  public beat a(String paramString)
-  {
-    return this.jdField_a_of_type_Beba.a(paramString);
-  }
-  
-  void a(beat parambeat)
+  public void Done(Ticket paramTicket)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PreDownload.Controller", 2, "onTaskEnd: " + parambeat);
+      QLog.d("TeamWorkFileImportHandler", 2, "--- pskey invalid retry ---  ");
     }
-    this.jdField_a_of_type_Beba.a(parambeat);
+    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public void a(String paramString, long paramLong)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    this.jdField_a_of_type_Beba.a(paramString, paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.e("TeamWorkFileImportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
+    }
   }
   
-  public boolean a()
+  public void Timeout(ErrMsg paramErrMsg)
   {
-    return this.jdField_a_of_type_Boolean;
+    if (QLog.isColorLevel()) {
+      QLog.e("TeamWorkFileImportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
+    }
   }
-  
-  public boolean a(int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, int paramInt3, int paramInt4, boolean paramBoolean, beat parambeat)
-  {
-    return this.jdField_a_of_type_Beba.a(paramInt1, paramString1, paramString2, paramInt2, paramString3, paramString4, paramInt3, paramInt4, paramBoolean, parambeat);
-  }
-  
-  public void onDestroy() {}
 }
 
 

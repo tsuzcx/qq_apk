@@ -1,51 +1,31 @@
-import android.app.Activity;
-import android.arch.lifecycle.Observer;
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
-import dov.com.qq.im.ae.view.AECompoundButton;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import org.json.JSONObject;
 
-class bnnq
-  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
+public class bnnq
+  extends bnnn
 {
-  bnnq(bnnl parambnnl) {}
-  
-  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool2 = true;
-    if (paramRatio == null) {
-      return;
-    }
-    Object localObject = bnnl.b(this.a);
-    if (paramRatio == AEVideoStoryTopBarViewModel.Ratio.FULL)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ("jumpNuanProfile".equals(paramString3))
     {
+      bool1 = bool2;
+      if (!"Qzone".equals(paramString2)) {}
+    }
+    try
+    {
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("uin", "");
+      paramString1 = bmtk.a();
+      paramString1.a = this.a.mRuntime.a().getAccount();
+      bmtd.b(this.a.mRuntime.a(), paramString1, paramJsBridgeListener, -1);
       bool1 = true;
-      ((AECompoundButton)localObject).setSelected(bool1);
-      bnzc.a();
-      if (paramRatio != AEVideoStoryTopBarViewModel.Ratio.R_1_1) {
-        break label112;
-      }
-      localObject = bnzg.a;
-      label47:
-      bnnl.a(this.a, (bnzg)localObject);
-      localObject = new Intent();
-      ((Intent)localObject).setAction("ae_editor_bottom_tab_change_style");
-      if (paramRatio != AEVideoStoryTopBarViewModel.Ratio.FULL) {
-        break label120;
-      }
+      return bool1;
     }
-    label112:
-    label120:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      ((Intent)localObject).putExtra("is_full_screen_capture", bool1);
-      bnnl.a(this.a).a().sendBroadcast((Intent)localObject);
-      return;
-      bool1 = false;
-      break;
-      localObject = bnzg.b;
-      break label47;
-    }
+    catch (Throwable paramJsBridgeListener) {}
+    return false;
   }
 }
 

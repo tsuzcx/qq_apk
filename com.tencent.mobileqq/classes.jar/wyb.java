@@ -1,14 +1,23 @@
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgNodeShotView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
 public class wyb
-  extends weu
+  extends QQUIEventReceiver<wxp, wwm>
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  
-  public String toString()
+  public wyb(@NonNull wxp paramwxp)
   {
-    return "WatchVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin=" + this.b + ", isLiveVideo=" + this.jdField_a_of_type_Boolean + ", unReadCount=" + this.jdField_a_of_type_Int + '}';
+    super(paramwxp);
+  }
+  
+  public void a(@NonNull wxp paramwxp, @NonNull wwm paramwwm)
+  {
+    paramwxp.a.a.d();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wwm.class;
   }
 }
 

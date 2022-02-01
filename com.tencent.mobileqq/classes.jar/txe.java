@@ -1,19 +1,38 @@
-import kotlin.Metadata;
-import kotlin.jvm.JvmField;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/ImageActionItem;", "Lcom/tencent/biz/pubaccount/util/ActionItem;", "name", "", "action", "", "webHandle", "", "url", "(Ljava/lang/String;IZLjava/lang/String;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class txe
-  extends twm
+public class txe
+  extends NativeGifImage
 {
-  @JvmField
-  @NotNull
-  public String b;
+  private int jdField_a_of_type_Int = 3;
+  private txf jdField_a_of_type_Txf;
   
-  public txe(@NotNull String paramString1, int paramInt, boolean paramBoolean, @NotNull String paramString2)
+  public txe(File paramFile, boolean paramBoolean, int paramInt)
   {
-    super(paramString1, paramInt, paramBoolean);
-    this.b = paramString2;
+    super(paramFile, paramBoolean, false, 0, 0, 0.0F);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Txf = null;
+  }
+  
+  public void a(txf paramtxf)
+  {
+    this.jdField_a_of_type_Txf = paramtxf;
+  }
+  
+  public void executeNewTask()
+  {
+    if (this.mCurrentLoop == this.jdField_a_of_type_Int)
+    {
+      if (this.jdField_a_of_type_Txf != null) {
+        this.jdField_a_of_type_Txf.a();
+      }
+      return;
+    }
+    super.executeNewTask();
   }
 }
 

@@ -1,20 +1,51 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentAccountSummary;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class qnr
-  extends RecyclerView.OnScrollListener
+  extends ClickableSpan
+  implements skl
 {
-  public qnr(PTSFragment paramPTSFragment) {}
+  private int jdField_a_of_type_Int = -1;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public qnr(ComponentAccountSummary paramComponentAccountSummary, ArticleInfo paramArticleInfo, int paramInt)
   {
-    if (paramInt == 0)
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
+      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 3);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.jdField_a_of_type_Int;; i = 16119285)
     {
-      adcd.a().a("list_kandian_daily_new", false);
+      paramTextPaint.bgColor = i;
+      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
       return;
     }
-    adcd.a().a("list_kandian_daily_new");
   }
 }
 

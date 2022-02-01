@@ -1,481 +1,423 @@
+import android.content.Context;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.PluginInfo;
+import java.io.File;
+import java.util.HashMap;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class bmgy
-  extends bmhk
+  implements Handler.Callback, beup, beuq, bezu
 {
-  public static final int a;
-  protected bmhc a;
-  protected boolean a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bezv jdField_a_of_type_Bezv;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
+  private HashMap<String, bmha> b;
+  private HashMap<String, bezt> c;
   
-  static
+  public bmgy(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Int = "https://".length();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+    this.b = new HashMap();
+    this.c = new HashMap();
+    this.jdField_a_of_type_Bezv = ((bezv)paramQQAppInterface.getManager(193));
   }
   
-  public bmgy(String paramString)
+  private int a(String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bmhc = new bmgz(this, "https://wspeed.qq.com/w.cgi", false);
-    a(paramString);
-  }
-  
-  public static int a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, bmha parambmha, int paramInt1, int paramInt2, String paramString4)
-  {
-    if (paramString3 == null) {}
-    for (paramString3 = null;; paramString3 = paramString3.getBytes()) {
-      return a(paramString1, paramString2, paramString3, paramBoolean, parambmha, paramInt1, paramInt2, paramString4);
+    if ("qqreaderplugin.apk".equals(paramString)) {
+      return 10010;
     }
-  }
-  
-  /* Error */
-  public static int a(String paramString1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean, bmha parambmha, int paramInt1, int paramInt2, String paramString3)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 12
-    //   3: aconst_null
-    //   4: astore 13
-    //   6: aconst_null
-    //   7: astore 14
-    //   9: aconst_null
-    //   10: astore 11
-    //   12: sipush 4096
-    //   15: istore 8
-    //   17: aload 4
-    //   19: ifnull +460 -> 479
-    //   22: aload 14
-    //   24: astore 9
-    //   26: aload_0
-    //   27: invokestatic 57	bmgy:a	(Ljava/lang/String;)[Ljava/lang/String;
-    //   30: astore 10
-    //   32: aload 14
-    //   34: astore 9
-    //   36: new 59	java/lang/StringBuilder
-    //   39: dup
-    //   40: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   43: aload 4
-    //   45: invokevirtual 66	bmha:toString	()Ljava/lang/String;
-    //   48: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: aload 10
-    //   53: iconst_1
-    //   54: aaload
-    //   55: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   61: astore_0
-    //   62: aload 14
-    //   64: astore 9
-    //   66: aload_0
-    //   67: invokevirtual 74	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   70: ldc 12
-    //   72: invokevirtual 78	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   75: ifeq +158 -> 233
-    //   78: aload 14
-    //   80: astore 9
-    //   82: new 80	java/net/URL
-    //   85: dup
-    //   86: aload_0
-    //   87: invokespecial 82	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   90: invokevirtual 86	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   93: checkcast 88	java/net/HttpURLConnection
-    //   96: astore_0
-    //   97: aload_0
-    //   98: iload 6
-    //   100: invokevirtual 92	java/net/HttpURLConnection:setReadTimeout	(I)V
-    //   103: aload_0
-    //   104: iload 5
-    //   106: invokevirtual 95	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   109: aload_0
-    //   110: iconst_0
-    //   111: invokevirtual 99	java/net/HttpURLConnection:setUseCaches	(Z)V
-    //   114: aload_0
-    //   115: aload_1
-    //   116: invokevirtual 102	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   119: aload_0
-    //   120: iconst_1
-    //   121: invokevirtual 105	java/net/HttpURLConnection:setDoInput	(Z)V
-    //   124: aload 7
-    //   126: ifnull +19 -> 145
-    //   129: aload 7
-    //   131: invokevirtual 18	java/lang/String:length	()I
-    //   134: ifle +11 -> 145
-    //   137: aload_0
-    //   138: ldc 107
-    //   140: aload 7
-    //   142: invokevirtual 111	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   145: iload_3
-    //   146: ifeq +11 -> 157
-    //   149: aload_0
-    //   150: ldc 113
-    //   152: ldc 115
-    //   154: invokevirtual 111	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   157: aload 4
-    //   159: ifnull +13 -> 172
-    //   162: aload_0
-    //   163: ldc 117
-    //   165: aload 10
-    //   167: iconst_0
-    //   168: aaload
-    //   169: invokevirtual 111	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   172: aload_2
-    //   173: ifnull +121 -> 294
-    //   176: aload_0
-    //   177: iconst_1
-    //   178: invokevirtual 120	java/net/HttpURLConnection:setDoOutput	(Z)V
-    //   181: aload_0
-    //   182: invokevirtual 124	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   185: astore_1
-    //   186: iload_3
-    //   187: ifeq +60 -> 247
-    //   190: new 126	java/util/zip/GZIPOutputStream
-    //   193: dup
-    //   194: aload_1
-    //   195: invokespecial 129	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   198: astore_1
-    //   199: aload_1
-    //   200: aload_2
-    //   201: invokevirtual 133	java/util/zip/GZIPOutputStream:write	([B)V
-    //   204: aload_1
-    //   205: invokevirtual 136	java/util/zip/GZIPOutputStream:flush	()V
-    //   208: aload_1
-    //   209: invokevirtual 139	java/util/zip/GZIPOutputStream:close	()V
-    //   212: aload_0
-    //   213: invokevirtual 142	java/net/HttpURLConnection:getResponseCode	()I
-    //   216: istore 5
-    //   218: iload 5
-    //   220: istore 6
-    //   222: aload_0
-    //   223: ifnull +253 -> 476
-    //   226: aload_0
-    //   227: invokevirtual 145	java/net/HttpURLConnection:disconnect	()V
-    //   230: iload 5
-    //   232: ireturn
-    //   233: aload 14
-    //   235: astore 9
-    //   237: ldc 12
-    //   239: aload_0
-    //   240: invokevirtual 149	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   243: astore_0
-    //   244: goto -166 -> 78
-    //   247: aload_1
-    //   248: aload_2
-    //   249: invokevirtual 152	java/io/OutputStream:write	([B)V
-    //   252: aload_1
-    //   253: invokevirtual 153	java/io/OutputStream:flush	()V
-    //   256: aload_1
-    //   257: invokevirtual 154	java/io/OutputStream:close	()V
-    //   260: goto -48 -> 212
-    //   263: astore_1
-    //   264: aload_1
-    //   265: invokevirtual 157	java/net/MalformedURLException:printStackTrace	()V
-    //   268: sipush 2048
-    //   271: istore 5
-    //   273: aload_0
-    //   274: ifnull -44 -> 230
-    //   277: aload_0
-    //   278: invokevirtual 145	java/net/HttpURLConnection:disconnect	()V
-    //   281: sipush 2048
-    //   284: ireturn
-    //   285: astore_0
-    //   286: aload_0
-    //   287: invokevirtual 158	java/lang/Exception:printStackTrace	()V
-    //   290: sipush 2048
-    //   293: ireturn
-    //   294: aload_0
-    //   295: iconst_0
-    //   296: invokevirtual 120	java/net/HttpURLConnection:setDoOutput	(Z)V
-    //   299: goto -87 -> 212
-    //   302: astore_1
-    //   303: aload_0
-    //   304: astore 9
-    //   306: aload_1
-    //   307: invokevirtual 159	java/io/IOException:printStackTrace	()V
-    //   310: sipush 1024
-    //   313: istore 5
-    //   315: aload_0
-    //   316: ifnull -86 -> 230
-    //   319: aload_0
-    //   320: invokevirtual 145	java/net/HttpURLConnection:disconnect	()V
-    //   323: sipush 1024
-    //   326: ireturn
-    //   327: astore_0
-    //   328: aload_0
-    //   329: invokevirtual 158	java/lang/Exception:printStackTrace	()V
-    //   332: sipush 1024
-    //   335: ireturn
-    //   336: astore_0
-    //   337: aload_0
-    //   338: invokevirtual 158	java/lang/Exception:printStackTrace	()V
-    //   341: iload 5
-    //   343: ireturn
-    //   344: astore_1
-    //   345: aload 12
-    //   347: astore_0
-    //   348: aload_0
-    //   349: astore 9
-    //   351: aload_1
-    //   352: invokevirtual 158	java/lang/Exception:printStackTrace	()V
-    //   355: iload 8
-    //   357: istore 6
-    //   359: aload_0
-    //   360: ifnull +116 -> 476
-    //   363: aload_0
-    //   364: invokevirtual 145	java/net/HttpURLConnection:disconnect	()V
-    //   367: sipush 4096
-    //   370: ireturn
-    //   371: astore_0
-    //   372: aload_0
-    //   373: invokevirtual 158	java/lang/Exception:printStackTrace	()V
-    //   376: sipush 4096
-    //   379: ireturn
-    //   380: astore_1
-    //   381: aload 13
-    //   383: astore_0
-    //   384: aload_0
-    //   385: astore 9
-    //   387: aload_1
-    //   388: invokevirtual 160	java/lang/Error:printStackTrace	()V
-    //   391: iload 8
-    //   393: istore 6
-    //   395: aload_0
-    //   396: ifnull +80 -> 476
-    //   399: aload_0
-    //   400: invokevirtual 145	java/net/HttpURLConnection:disconnect	()V
-    //   403: sipush 4096
-    //   406: ireturn
-    //   407: astore_0
-    //   408: aload_0
-    //   409: invokevirtual 158	java/lang/Exception:printStackTrace	()V
-    //   412: sipush 4096
-    //   415: ireturn
-    //   416: astore_0
-    //   417: aload 9
-    //   419: ifnull +8 -> 427
-    //   422: aload 9
-    //   424: invokevirtual 145	java/net/HttpURLConnection:disconnect	()V
-    //   427: aload_0
-    //   428: athrow
-    //   429: astore_1
-    //   430: aload_1
-    //   431: invokevirtual 158	java/lang/Exception:printStackTrace	()V
-    //   434: goto -7 -> 427
-    //   437: astore_1
-    //   438: aload_0
-    //   439: astore 9
-    //   441: aload_1
-    //   442: astore_0
-    //   443: goto -26 -> 417
-    //   446: astore_1
-    //   447: aload_0
-    //   448: astore 9
-    //   450: aload_1
-    //   451: astore_0
-    //   452: goto -35 -> 417
-    //   455: astore_1
-    //   456: goto -72 -> 384
-    //   459: astore_1
-    //   460: goto -112 -> 348
-    //   463: astore_1
-    //   464: aload 11
-    //   466: astore_0
-    //   467: goto -164 -> 303
-    //   470: astore_1
-    //   471: aconst_null
-    //   472: astore_0
-    //   473: goto -209 -> 264
-    //   476: iload 6
-    //   478: ireturn
-    //   479: aconst_null
-    //   480: astore 10
-    //   482: goto -420 -> 62
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	485	0	paramString1	String
-    //   0	485	1	paramString2	String
-    //   0	485	2	paramArrayOfByte	byte[]
-    //   0	485	3	paramBoolean	boolean
-    //   0	485	4	parambmha	bmha
-    //   0	485	5	paramInt1	int
-    //   0	485	6	paramInt2	int
-    //   0	485	7	paramString3	String
-    //   15	377	8	i	int
-    //   24	425	9	localObject1	java.lang.Object
-    //   30	451	10	arrayOfString	String[]
-    //   10	455	11	localObject2	java.lang.Object
-    //   1	345	12	localObject3	java.lang.Object
-    //   4	378	13	localObject4	java.lang.Object
-    //   7	227	14	localObject5	java.lang.Object
-    // Exception table:
-    //   from	to	target	type
-    //   97	124	263	java/net/MalformedURLException
-    //   129	145	263	java/net/MalformedURLException
-    //   149	157	263	java/net/MalformedURLException
-    //   162	172	263	java/net/MalformedURLException
-    //   176	186	263	java/net/MalformedURLException
-    //   190	212	263	java/net/MalformedURLException
-    //   212	218	263	java/net/MalformedURLException
-    //   247	260	263	java/net/MalformedURLException
-    //   294	299	263	java/net/MalformedURLException
-    //   277	281	285	java/lang/Exception
-    //   97	124	302	java/io/IOException
-    //   129	145	302	java/io/IOException
-    //   149	157	302	java/io/IOException
-    //   162	172	302	java/io/IOException
-    //   176	186	302	java/io/IOException
-    //   190	212	302	java/io/IOException
-    //   212	218	302	java/io/IOException
-    //   247	260	302	java/io/IOException
-    //   294	299	302	java/io/IOException
-    //   319	323	327	java/lang/Exception
-    //   226	230	336	java/lang/Exception
-    //   26	32	344	java/lang/Exception
-    //   36	62	344	java/lang/Exception
-    //   66	78	344	java/lang/Exception
-    //   82	97	344	java/lang/Exception
-    //   237	244	344	java/lang/Exception
-    //   363	367	371	java/lang/Exception
-    //   26	32	380	java/lang/Error
-    //   36	62	380	java/lang/Error
-    //   66	78	380	java/lang/Error
-    //   82	97	380	java/lang/Error
-    //   237	244	380	java/lang/Error
-    //   399	403	407	java/lang/Exception
-    //   26	32	416	finally
-    //   36	62	416	finally
-    //   66	78	416	finally
-    //   82	97	416	finally
-    //   237	244	416	finally
-    //   306	310	416	finally
-    //   351	355	416	finally
-    //   387	391	416	finally
-    //   422	427	429	java/lang/Exception
-    //   97	124	437	finally
-    //   129	145	437	finally
-    //   149	157	437	finally
-    //   162	172	437	finally
-    //   176	186	437	finally
-    //   190	212	437	finally
-    //   212	218	437	finally
-    //   247	260	437	finally
-    //   294	299	437	finally
-    //   264	268	446	finally
-    //   97	124	455	java/lang/Error
-    //   129	145	455	java/lang/Error
-    //   149	157	455	java/lang/Error
-    //   162	172	455	java/lang/Error
-    //   176	186	455	java/lang/Error
-    //   190	212	455	java/lang/Error
-    //   212	218	455	java/lang/Error
-    //   247	260	455	java/lang/Error
-    //   294	299	455	java/lang/Error
-    //   97	124	459	java/lang/Exception
-    //   129	145	459	java/lang/Exception
-    //   149	157	459	java/lang/Exception
-    //   162	172	459	java/lang/Exception
-    //   176	186	459	java/lang/Exception
-    //   190	212	459	java/lang/Exception
-    //   212	218	459	java/lang/Exception
-    //   247	260	459	java/lang/Exception
-    //   294	299	459	java/lang/Exception
-    //   26	32	463	java/io/IOException
-    //   36	62	463	java/io/IOException
-    //   66	78	463	java/io/IOException
-    //   82	97	463	java/io/IOException
-    //   237	244	463	java/io/IOException
-    //   26	32	470	java/net/MalformedURLException
-    //   36	62	470	java/net/MalformedURLException
-    //   66	78	470	java/net/MalformedURLException
-    //   82	97	470	java/net/MalformedURLException
-    //   237	244	470	java/net/MalformedURLException
-  }
-  
-  public static String[] a(String paramString)
-  {
-    String[] arrayOfString = new String[2];
-    if ((paramString == null) || (paramString.length() < jdField_a_of_type_Int)) {
-      return arrayOfString;
+    if ("comic_plugin.apk".equals(paramString)) {
+      return 10011;
     }
-    if (paramString.toLowerCase().startsWith("https://"))
+    if ("qqdataline.apk".equals(paramString)) {
+      return 10013;
+    }
+    if ("qqsmartdevice.apk".equals(paramString)) {
+      return 10014;
+    }
+    if ("qlink_plugin.apk".equals(paramString)) {
+      return 10060;
+    }
+    return 10058;
+  }
+  
+  public static final File a(Context paramContext)
+  {
+    paramContext = new File(new File(new File(paramContext.getFilesDir(), "pddata"), "prd"), "plugin_download");
+    paramContext.mkdirs();
+    return paramContext;
+  }
+  
+  private void a(bevl parambevl, int paramInt1, int paramInt2)
+  {
+    String str = (String)parambevl.a();
+    if (paramInt2 > 0)
     {
-      int j = paramString.indexOf('/', jdField_a_of_type_Int);
-      int i = j;
-      if (j <= jdField_a_of_type_Int) {
-        i = paramString.length();
+      parambevl = (bmha)this.b.get(str);
+      if (parambevl == null) {
+        break label95;
       }
-      arrayOfString[0] = paramString.substring(jdField_a_of_type_Int, i);
-      if (i >= paramString.length()) {
-        break label100;
+    }
+    label95:
+    for (parambevl = bmha.a(parambevl);; parambevl = null)
+    {
+      if (parambevl != null) {
+        parambevl.a(paramInt1, paramInt2, str);
       }
-      arrayOfString[1] = paramString.substring(i, paramString.length());
+      if (QLog.isColorLevel()) {
+        QLog.d("plugin_tag", 2, "doOnProgress: " + paramInt1 / paramInt2 + ", " + str);
+      }
+      return;
+    }
+  }
+  
+  private void a(bevm parambevm)
+  {
+    String str = (String)parambevm.jdField_a_of_type_Bevl.a();
+    if (parambevm.jdField_a_of_type_Int == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Object localObject = (bezv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
+      bmha localbmha = (bmha)this.b.remove(str);
+      if (localbmha != null)
+      {
+        if (bmha.a(localbmha) != null) {
+          ((bezv)localObject).a(bmha.a(localbmha).jdField_a_of_type_JavaLangString, parambevm.jdField_a_of_type_Long);
+        }
+        localObject = bmha.a(localbmha);
+        a(str, parambevm);
+        a(a(this.jdField_a_of_type_AndroidContentContext), str, false);
+        if (QLog.isColorLevel())
+        {
+          QLog.d("plugin_tag", 2, "doOnResp. result,pluginid,length: " + parambevm.jdField_a_of_type_Int + "," + str + ", " + parambevm.jdField_a_of_type_Long);
+          if ((!bool) && (QLog.isColorLevel())) {
+            QLog.e("plugin_tag", 2, "doOnResp. err: " + parambevm.b + ", " + parambevm.jdField_a_of_type_JavaLangString);
+          }
+        }
+        if (localObject != null) {
+          ((bmhb)localObject).a(bool, str);
+        }
+      }
+      return;
+    }
+  }
+  
+  private void a(File paramFile, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "doDeleteDiscardFiles: " + paramString);
+    }
+    if ((paramFile != null) && (paramFile.exists()))
+    {
+      paramFile = paramFile.listFiles();
+      if (paramFile != null)
+      {
+        int j = paramFile.length;
+        int i = 0;
+        if (i < j)
+        {
+          Object localObject = paramFile[i];
+          String str = localObject.getPath();
+          if ((str == null) || (!str.startsWith(paramString))) {}
+          for (;;)
+          {
+            i += 1;
+            break;
+            if (!str.endsWith(".cfg")) {
+              if (str.equals(paramString))
+              {
+                if (paramBoolean)
+                {
+                  localObject.delete();
+                  if (QLog.isColorLevel()) {
+                    QLog.d("plugin_tag", 2, "doDeleteDiscardFiles: " + str);
+                  }
+                }
+              }
+              else
+              {
+                localObject.delete();
+                if (QLog.isColorLevel()) {
+                  QLog.d("plugin_tag", 2, "doDeleteDiscardFiles: " + str);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  private void a(String paramString, beum parambeum, bmhb parambmhb, bezs parambezs)
+  {
+    if (parambmhb != null) {
+      parambmhb.c(paramString);
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(SystemClock.uptimeMillis()));
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    try
+    {
+      Object localObject = (bezt)this.c.remove(paramString);
+      if (localObject != null) {
+        this.jdField_a_of_type_Bezv.a(((bezt)localObject).a.jdField_a_of_type_JavaLangString);
+      }
+      localObject = new bmha(null);
+      bmha.a((bmha)localObject, parambeum);
+      bmha.a((bmha)localObject, parambmhb);
+      bmha.a((bmha)localObject, parambezs);
+      this.b.put(paramString, localObject);
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    }
+  }
+  
+  private void a(String paramString, bevm parambevm)
+  {
+    HashMap localHashMap = new HashMap();
+    paramString = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (paramString == null) {
+      paramString = Long.valueOf(0L);
     }
     for (;;)
     {
-      return arrayOfString;
-      paramString = "https://".concat(paramString);
-      break;
-      label100:
-      arrayOfString[1] = "";
+      localHashMap.put("mResult", String.valueOf(parambevm.jdField_a_of_type_Int));
+      localHashMap.put("param_FailCode", String.valueOf(parambevm.b));
+      localHashMap.put("mErrDesc", parambevm.jdField_a_of_type_JavaLangString);
+      Object localObject = parambevm.jdField_a_of_type_Bevl;
+      if ((parambevm.jdField_a_of_type_Int != 0) && (localObject != null) && ((localObject instanceof beum))) {
+        localHashMap.put("Url", ((beum)localObject).jdField_a_of_type_JavaLangString);
+      }
+      localHashMap.put("mRespProperties[KeyReason]", parambevm.jdField_a_of_type_JavaUtilHashMap.get("netresp_param_reason"));
+      localHashMap.put("mRespProperties[KeyRawRespHttpHeader]", parambevm.jdField_a_of_type_JavaUtilHashMap.get("param_reqHeader"));
+      localObject = bdmc.a(BaseApplication.getContext());
+      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      if (parambevm.jdField_a_of_type_Int == 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        ((bdmc)localObject).a(str, "NetPluginsDownload", bool, paramString.longValue(), 0L, localHashMap, null);
+        return;
+      }
     }
   }
   
-  public int a(String paramString, int paramInt)
+  private void b(String paramString)
   {
-    int i;
-    if (paramInt < 1)
-    {
-      i = -1;
-      return i;
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "doCancelInstall: " + paramString);
     }
-    String str2 = a().c();
-    String str1;
-    if (paramInt == 1)
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    for (;;)
     {
-      str1 = "GET";
-      label27:
-      i = a(str2, str1, paramString, this.jdField_a_of_type_Boolean, a(), 60000, 60000, null);
-      if (i == 200) {
-        break label132;
+      bezt localbezt;
+      try
+      {
+        localObject = (bmha)this.b.remove(paramString);
+        localbezt = (bezt)this.c.remove(paramString);
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+        if ((localObject != null) || (localbezt != null))
+        {
+          if (localObject != null)
+          {
+            if (bmha.a((bmha)localObject) != null) {
+              this.jdField_a_of_type_Bezv.a(bmha.a((bmha)localObject).jdField_a_of_type_JavaLangString);
+            }
+          }
+          else
+          {
+            if (localObject != null) {
+              this.jdField_a_of_type_Bezv.a(bmha.a((bmha)localObject).jdField_a_of_type_JavaLangString);
+            }
+            if (localObject == null) {
+              break label185;
+            }
+            localObject = bmha.a((bmha)localObject);
+            if (localObject != null) {
+              ((bmhb)localObject).d(paramString);
+            }
+            c(paramString);
+          }
+        }
+        else {
+          return;
+        }
       }
-      str2 = a().d();
-      if (str2 == null) {
-        break label132;
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
       }
-      if (paramInt != 1) {
-        break label125;
-      }
-      str1 = "GET";
-    }
-    label79:
-    for (paramInt = a(str2, str1, paramString, this.jdField_a_of_type_Boolean, a(), 60000, 60000, a().b());; paramInt = i)
-    {
-      i = paramInt;
-      if (paramInt != 200) {
-        break;
-      }
-      return 0;
-      str1 = "POST";
-      break label27;
-      label125:
-      str1 = "POST";
-      break label79;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0).b(bmha.a((bmha)localObject));
+      continue;
+      label185:
+      Object localObject = (bmhb)localbezt.userData;
     }
   }
   
-  public bmha a()
+  private void c(String paramString)
   {
-    return null;
+    paramString = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (paramString == null) {
+      paramString = Long.valueOf(0L);
+    }
+    for (;;)
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_FailCode", "0");
+      bdmc.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "NetPluginsCancelDownload", false, paramString.longValue(), 0L, localHashMap, null);
+      return;
+    }
   }
   
-  public bmhc a()
+  public void a(bevl parambevl, bevm parambevm)
   {
-    return this.jdField_a_of_type_Bmhc;
+    if ((parambevl == null) || (parambevm == null)) {}
+    while (!(parambevl instanceof beum)) {
+      return;
+    }
+    parambevl = (beum)parambevl;
+    parambevl.jdField_a_of_type_Long += parambevm.c;
+    parambevm.c = 0L;
+    parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
+    parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
+  }
+  
+  public void a(bezt parambezt)
+  {
+    this.c.remove(parambezt.a.a());
+    a((String)parambezt.a.a(), parambezt.a, (bmhb)parambezt.userData, parambezt);
+  }
+  
+  public void a(PluginInfo paramPluginInfo, bmhb parambmhb, boolean paramBoolean)
+  {
+    QLog.d("plugin_tag", 1, "doDownloadPlugin." + paramPluginInfo.mID + ", isPreDownload " + paramBoolean);
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
+    if (localObject1 == null) {
+      QLog.d("plugin_tag", 1, "doDownloadPlugin nohttpabort" + paramPluginInfo.mID);
+    }
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+      try
+      {
+        if (this.b.containsKey(paramPluginInfo.mID))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("plugin_tag", 2, "downloading already");
+          }
+          return;
+        }
+        if (this.c.containsKey(paramPluginInfo.mID))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("plugin_tag", 2, "pending downloading already exist");
+          }
+          if (paramBoolean) {
+            break label248;
+          }
+          localObject2 = (bezt)this.c.remove(paramPluginInfo.mID);
+          if ((localObject2 != null) && (localObject2 != null)) {
+            this.jdField_a_of_type_Bezv.a(((bezt)localObject2).a.jdField_a_of_type_JavaLangString);
+          }
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+        label248:
+        if ((float)(paramPluginInfo.mLength * 1.75D) > bhmi.a())
+        {
+          if (parambmhb == null) {
+            continue;
+          }
+          parambmhb.b(paramPluginInfo.mID);
+          return;
+        }
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      }
+    }
+    Object localObject2 = new beum();
+    ((beum)localObject2).jdField_a_of_type_Beuq = this;
+    ((beum)localObject2).jdField_a_of_type_Beup = this;
+    ((beum)localObject2).jdField_a_of_type_JavaLangString = paramPluginInfo.mURL;
+    ((beum)localObject2).jdField_a_of_type_Int = 0;
+    ((beum)localObject2).jdField_a_of_type_Boolean = true;
+    ((beum)localObject2).n = true;
+    ((beum)localObject2).a(paramPluginInfo.mID);
+    String str = new File(a(this.jdField_a_of_type_AndroidContentContext), paramPluginInfo.mID).getPath();
+    ((beum)localObject2).c = str;
+    if ((paramBoolean) && (this.jdField_a_of_type_Bezv.a())) {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject1 = new bezt(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPluginInfo.mID, this, (beum)localObject2);
+        ((bezt)localObject1).userData = parambmhb;
+        this.jdField_a_of_type_Bezv.a(a(paramPluginInfo.mID), null, paramPluginInfo.mID + paramPluginInfo.mMD5, 0, paramPluginInfo.mURL, str, 1, 2, false, (bezs)localObject1);
+        this.c.put(paramPluginInfo.mID, localObject1);
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("plugin_tag", 2, "downloadPlugin: " + ((beum)localObject2).jdField_a_of_type_JavaLangString);
+        return;
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      }
+      a(paramPluginInfo.mID, (beum)localObject2, parambmhb, null);
+      ((beuo)localObject1).a((bevl)localObject2);
+    }
   }
   
   public void a(String paramString)
   {
-    a().a(paramString);
+    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(65794, paramString).sendToTarget();
   }
   
-  public void a(boolean paramBoolean)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      a((bevm)paramMessage.obj);
+      continue;
+      a((bevl)paramMessage.obj, paramMessage.arg1, paramMessage.arg2);
+      continue;
+      b((String)paramMessage.obj);
+    }
+  }
+  
+  public void onResp(bevm parambevm)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(65792, parambevm).sendToTarget();
+  }
+  
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(65793, (int)paramLong1, (int)paramLong2, parambevl).sendToTarget();
   }
 }
 

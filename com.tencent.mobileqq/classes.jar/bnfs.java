@@ -1,433 +1,319 @@
-import android.app.Activity;
-import android.content.ContentResolver;
+import android.annotation.TargetApi;
+import android.app.Notification;
+import android.app.Notification.Builder;
+import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.database.Cursor;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.provider.MediaStore.Video.Media;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.activity.photo.MediaScanner;
-import com.tencent.mobileqq.activity.photo.album.AlbumListBaseData;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.mobileqq.activity.photo.album.QAlbumCustomAlbumConstants;
-import com.tencent.mobileqq.activity.photo.album.QAlbumUtil;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QQAlbumInfo;
+import android.graphics.Bitmap;
+import android.os.Build.VERSION;
+import android.support.v4.app.NotificationCompat.Builder;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import com.tencent.commonsdk.util.notification.SdkInfoUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import dov.com.qq.im.ae.album.logic.AEAlbumListLogicBase.1;
-import dov.com.qq.im.ae.album.logic.AEAlbumListLogicBase.2;
-import dov.com.qq.im.ae.album.logic.AEAlbumListLogicBase.3;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import java.lang.reflect.Method;
 
-public class bnfs<K extends bnfa>
-  extends bnfq<K>
-  implements bnfr
+public class bnfs
 {
-  protected bnex a;
+  private static volatile bnfs jdField_a_of_type_Bnfs;
+  private String jdField_a_of_type_JavaLangString = "CHANNEL_ID_SHOW_BADGE";
   
-  protected bnfs(K paramK)
+  public static bnfs a()
   {
-    super(paramK);
-    this.jdField_a_of_type_Bnfr = this;
+    if (jdField_a_of_type_Bnfs == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bnfs == null) {
+        jdField_a_of_type_Bnfs = new bnfs();
+      }
+      return jdField_a_of_type_Bnfs;
+    }
+    finally {}
   }
   
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  @TargetApi(16)
+  public Notification a(PendingIntent paramPendingIntent, Context paramContext, Bitmap paramBitmap, String paramString1, String paramString2, int paramInt)
   {
-    Resources localResources = ((bnfa)this.jdField_a_of_type_MqqUtilWeakReference.get()).getResources();
-    bnex localbnex = b();
-    View localView;
-    TextView localTextView;
-    QQAlbumInfo localQQAlbumInfo;
-    label207:
-    Object localObject;
-    if (paramView == null)
-    {
-      localView = ((bnfa)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity().getLayoutInflater().inflate(2131561038, null);
-      localTextView = (TextView)localView;
-      localQQAlbumInfo = localbnex.a(paramInt);
-      localView.setContentDescription(localQQAlbumInfo.name + "，" + localQQAlbumInfo.mMediaFileCount + "张照片");
-      paramView = localQQAlbumInfo.name;
-      if (localQQAlbumInfo.mMediaFileCount > 0) {
-        paramView = localQQAlbumInfo.name + String.format(" (%d)", new Object[] { Integer.valueOf(localQQAlbumInfo.mMediaFileCount) });
-      }
-      localTextView.setText(paramView);
-      paramViewGroup = localTextView.getCompoundDrawables()[0];
-      if (localbnex.getItemViewType(paramInt) != 1) {
-        break label398;
-      }
-      if (!localQQAlbumInfo.mCoverInfo.isSystemMeidaStore) {
-        break label384;
-      }
-      paramView = QAlbumUtil.generateAlbumThumbURL(localQQAlbumInfo.mCoverInfo, "VIDEO");
-      localObject = localQQAlbumInfo.mCoverInfo;
-      localQQAlbumInfo.mCoverInfo.thumbHeight = 200;
-      ((LocalMediaInfo)localObject).thumbWidth = 200;
-      if ((paramViewGroup == null) || (!URLDrawable.class.isInstance(paramViewGroup))) {
-        break label415;
-      }
-      paramViewGroup = (URLDrawable)paramViewGroup;
-      if (!paramView.equals(paramViewGroup.getURL())) {
-        break label415;
-      }
-    }
+    Object localObject5 = null;
+    Object localObject3 = null;
+    Object localObject1 = localObject5;
     for (;;)
     {
-      localObject = paramViewGroup;
-      if (paramViewGroup == null)
+      try
       {
-        localObject = bdzx.a(paramView, bnex.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, bnex.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable);
-        ((URLDrawable)localObject).setTag(localQQAlbumInfo.mCoverInfo);
-        ((URLDrawable)localObject).setBounds(0, 0, localbnex.jdField_a_of_type_Int, localbnex.b);
-      }
-      if ((localQQAlbumInfo._id != null) && (localQQAlbumInfo._id.equals(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId)))
-      {
-        paramView = localbnex.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState.newDrawable(localResources);
-        paramView.setBounds(0, 0, paramView.getIntrinsicWidth(), paramView.getIntrinsicHeight());
-      }
-      for (;;)
-      {
-        localTextView.setCompoundDrawables((Drawable)localObject, null, paramView, null);
-        return localView;
-        localTextView = (TextView)paramView;
-        localView = paramView;
-        break;
-        label384:
-        paramView = QAlbumUtil.generateAlbumThumbURL(localQQAlbumInfo.mCoverInfo, "APP_VIDEO");
-        break label207;
-        label398:
-        paramView = QAlbumUtil.generateAlbumThumbURL(localQQAlbumInfo.mCoverInfo);
-        break label207;
-        paramView = null;
-      }
-      label415:
-      paramViewGroup = null;
-    }
-  }
-  
-  protected bnex a()
-  {
-    return new bnex((bnfa)this.jdField_a_of_type_MqqUtilWeakReference.get());
-  }
-  
-  public String a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter;
-    boolean bool1 = ((MediaFileFilter)localObject).isSupportHeif();
-    boolean bool2 = ((MediaFileFilter)localObject).isSupportWebp();
-    localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("_size>0 and (mime_type='image/jpeg' or mime_type='image/gif' or (mime_type='*/*' and _display_name LIKE'%.jpg%' )  or (mime_type='*/*' and _display_name LIKE'%.jpeg%' )  or (mime_type='*/*' and _display_name LIKE'%.gif%' )  or (mime_type='*/*' and _display_name LIKE'%.bmp%' )  or (mime_type='*/*' and _display_name LIKE'%.png%' )  or mime_type LIKE'%bmp%' or mime_type LIKE'%bitmap%' or mime_type='image/png'");
-    if (bool1) {
-      ((StringBuffer)localObject).append(" or mime_type='image/heif' or mime_type='image/heic'");
-    }
-    if (bool2) {
-      ((StringBuffer)localObject).append(" or mime_type='image/webp'");
-    }
-    ((StringBuffer)localObject).append(")) GROUP BY (1");
-    return ((StringBuffer)localObject).toString();
-  }
-  
-  public List<LocalMediaInfo> a(Context paramContext, int paramInt1, int paramInt2, MediaFileFilter paramMediaFileFilter, int paramInt3, boolean paramBoolean, ArrayList<String> paramArrayList)
-  {
-    return QAlbumUtil.queryRecentImages(paramContext, paramInt3, paramInt2, paramMediaFileFilter, paramBoolean, paramInt1, paramArrayList, false);
-  }
-  
-  public List<QQAlbumInfo> a(List<QQAlbumInfo> paramList1, List<QQAlbumInfo> paramList2, int paramInt)
-  {
-    if ((this.jdField_a_of_type_MqqUtilWeakReference.get() == null) || (((bnfa)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity() == null)) {
-      return null;
-    }
-    Object localObject;
-    if ((paramList1 == null) && (paramList2 == null)) {
-      localObject = null;
-    }
-    int j;
-    int i;
-    do
-    {
-      for (;;)
-      {
-        bgnl.a();
-        if ((localObject == null) || (((List)localObject).isEmpty())) {
-          break label559;
+        localBuilder = new Notification.Builder(paramContext);
+        localObject1 = localObject5;
+        Method localMethod = Class.forName("android.app.Notification$Builder").getDeclaredMethod("setInternalApp", new Class[] { Integer.TYPE });
+        if (localMethod == null) {
+          break label370;
         }
-        j = ((List)localObject).size();
-        i = 0;
-        while (i < j)
+        localObject1 = localObject5;
+        localMethod.invoke(localBuilder, new Object[] { Integer.valueOf(1) });
+        localObject1 = localObject5;
+        localBuilder.setContentIntent(paramPendingIntent).setSmallIcon(paramInt).setWhen(System.currentTimeMillis()).setAutoCancel(true).setTicker(paramString2).setContentTitle(paramString1).setContentText(paramString2);
+        if (paramBitmap != null)
         {
-          paramList1 = (QQAlbumInfo)((List)localObject).get(i);
-          if ((i != 0) && (bnex.a(paramList1.name)))
-          {
-            ((List)localObject).remove(paramList1);
-            ((List)localObject).add(0, paramList1);
-          }
-          i += 1;
+          localObject1 = localObject5;
+          localBuilder.setLargeIcon(paramBitmap);
         }
-        if (paramList1 != null) {
-          break;
-        }
-        localObject = paramList2;
-      }
-      localObject = paramList1;
-    } while (paramList2 == null);
-    paramList2 = paramList2.iterator();
-    label259:
-    label678:
-    label684:
-    for (;;)
-    {
-      localObject = paramList1;
-      if (!paramList2.hasNext()) {
-        break;
-      }
-      localObject = (QQAlbumInfo)paramList2.next();
-      Iterator localIterator = paramList1.iterator();
-      QQAlbumInfo localQQAlbumInfo;
-      while (localIterator.hasNext())
-      {
-        localQQAlbumInfo = (QQAlbumInfo)localIterator.next();
-        if (localQQAlbumInfo._id.equals(((QQAlbumInfo)localObject)._id)) {
-          localQQAlbumInfo.mMediaFileCount += ((QQAlbumInfo)localObject).mMediaFileCount;
-        }
-      }
-      for (i = 1;; i = 0)
-      {
-        if (i != 0) {
-          break label684;
-        }
-        localIterator = paramList1.iterator();
-        i = 0;
-        if (localIterator.hasNext())
+        localObject1 = localObject5;
+        if (Build.VERSION.SDK_INT >= 16)
         {
-          localQQAlbumInfo = (QQAlbumInfo)localIterator.next();
-          if (((QQAlbumInfo)localObject).coverDate > localQQAlbumInfo.coverDate)
-          {
-            j = 1;
-            paramList1.add(i, localObject);
-          }
+          localObject1 = localObject5;
+          paramBitmap = localBuilder.build();
+          localObject1 = paramBitmap;
         }
-        for (i = j;; i = 0)
-        {
-          if (i != 0) {
-            break label678;
-          }
-          paramList1.add(localObject);
-          break;
-          i += 1;
-          break label259;
-          boolean bool;
-          if (paramInt == -1)
-          {
-            paramList1 = b().b(((bnfa)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.recentImagesLimitSize, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.recentImagesMaxCount, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.recentImagesLimitWidth, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.isBothwidthheight, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.recentImagesBlockPaths);
-            ((List)localObject).add(0, paramList1);
-            if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter.showVideo()))
-            {
-              paramList1 = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
-              paramList1 = ((bnfa)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity().getContentResolver().query(paramList1, new String[] { "_id" }, "_size>0 ", null, null);
-              i = 0;
-              if (paramList1 != null)
-              {
-                i = paramList1.getCount();
-                paramList1.close();
-              }
-              bool = false;
-              if (i <= 0) {
-                break label607;
-              }
-              bool = true;
-              label510:
-              b().jdField_a_of_type_Boolean = bool;
-              if (bool)
-              {
-                if (paramInt != -1) {
-                  break label638;
-                }
-                paramList1 = b().a(((bnfa)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity());
-              }
-            }
-          }
-          for (;;)
-          {
-            ((List)localObject).add(1, paramList1);
-            label559:
-            bgnl.a("PEAK", "compact.queryRecentBucket");
-            return localObject;
-            paramList1 = new QQAlbumInfo();
-            paramList1._id = "$RecentAlbumId";
-            paramList1.name = QAlbumCustomAlbumConstants.RECENT_ALBUM_NAME;
-            paramList1.mCoverInfo = new LocalMediaInfo();
-            break;
-            label607:
-            paramList1 = MediaScanner.getInstance(BaseApplicationImpl.getContext());
-            i = 0;
-            if (paramList1 != null) {
-              i = paramList1.getMediaScannerInfosCount();
-            }
-            if (i <= 0) {
-              break label510;
-            }
-            bool = true;
-            break label510;
-            label638:
-            paramList1 = new QQAlbumInfo();
-            paramList1._id = "$VideoAlbumId";
-            paramList1.name = QAlbumCustomAlbumConstants.VIDEO_ALBUM_NAME;
-            paramList1.mCoverInfo = new LocalMediaInfo();
-          }
-        }
-        break;
       }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    int k = 0;
-    int j = 1;
-    bnex localbnex = b();
-    MediaFileFilter localMediaFileFilter = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter;
-    List localList1;
-    int i;
-    if ((localMediaFileFilter != null) && (localMediaFileFilter.showImage()))
-    {
-      bgnl.a();
-      localList1 = localbnex.a(((bnfa)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), paramInt);
-      if ((paramInt != -1) && (localList1 != null) && (localList1.size() == paramInt))
+      catch (Throwable localThrowable1)
       {
-        i = 1;
-        bgnl.a("PEAK", "queryImageBuckets");
+        Notification.Builder localBuilder;
+        paramBitmap = null;
       }
-    }
-    for (;;)
-    {
-      List localList2;
-      if ((localMediaFileFilter != null) && (localMediaFileFilter.showVideo()))
+      finally
       {
-        bgnl.a();
-        localList2 = localbnex.a(((bnfa)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), paramInt, localMediaFileFilter);
-        if ((paramInt != -1) && (localList2 != null) && (localList2.size() == paramInt))
+        try
         {
-          i = 1;
-          bgnl.a("PEAK", "queryVideoBuckets");
-        }
-      }
-      for (;;)
-      {
-        bgnl.a();
-        localList1 = this.jdField_a_of_type_Bnfr.a(localList1, localList2, paramInt);
-        if (localList1 != null) {
-          while (j < localList1.size())
-          {
-            k += ((QQAlbumInfo)localList1.get(j)).mMediaFileCount;
-            j += 1;
+          if (QLog.isColorLevel()) {
+            QLog.e("QZoneNotification.newNotificationForMeizu", 2, localThrowable1, new Object[0]);
           }
+          localObject2 = paramBitmap;
+          if (paramBitmap != null) {
+            continue;
+          }
+          paramBitmap = new Notification(paramInt, paramString2, System.currentTimeMillis());
+          paramBitmap.flags = 16;
+          paramBitmap.setLatestEventInfo(paramContext, paramString1, paramString2, paramPendingIntent);
+          return paramBitmap;
         }
-        bgnl.a("PEAK", "compact: medias ==null");
-        do
+        finally
         {
-          return;
-          bgnl.a("PEAK", "compact(" + (localList1.size() - 1) + "," + k + ")");
-          localbnex.b(localList1);
-        } while (paramInt == -1);
-        if (i != 0)
-        {
-          ThreadManager.getFileThreadHandler().post(new AEAlbumListLogicBase.2(this, localbnex));
-          return;
+          Object localObject2 = paramBitmap;
+          paramBitmap = localObject4;
         }
-        ThreadManager.getFileThreadHandler().post(new AEAlbumListLogicBase.3(this, localbnex, localMediaFileFilter));
-        return;
-        break;
-        localList2 = null;
+        paramBitmap = finally;
+        if (localObject2 == null)
+        {
+          localObject2 = new Notification(paramInt, paramString2, System.currentTimeMillis());
+          ((Notification)localObject2).flags = 16;
+          ((Notification)localObject2).setLatestEventInfo(paramContext, paramString1, paramString2, paramPendingIntent);
+        }
       }
-      i = 0;
-      break;
-      localList1 = null;
-      i = 0;
-    }
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.mIsAwlaysShowNumber = paramIntent.getBooleanExtra("PhotoConst.ALWAYS_SHOW_NUMBER_WHEN_ONLY_ONE_IMAGE", this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.mIsAwlaysShowNumber);
-    paramIntent = (HashMap)paramIntent.getSerializableExtra("PeakConstants.selectedMediaInfoHashMap");
-    if (paramIntent != null)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedMediaInfoHashMap != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedMediaInfoHashMap.isEmpty())) {
-        break label108;
+      try
+      {
+        QQNotificationManager.addChannelIfNeed(paramBitmap, this.jdField_a_of_type_JavaLangString);
+        localObject1 = paramBitmap;
+        if (paramBitmap == null)
+        {
+          localObject1 = new Notification(paramInt, paramString2, System.currentTimeMillis());
+          ((Notification)localObject1).flags = 16;
+          ((Notification)localObject1).setLatestEventInfo(paramContext, paramString1, paramString2, paramPendingIntent);
+        }
+        return localObject1;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedMediaInfoHashMap = paramIntent;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bnex = a();
-      ((bnfa)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_Bnex = this.jdField_a_of_type_Bnex;
-      ThreadManager.getFileThreadHandler().post(new AEAlbumListLogicBase.1(this));
-      return;
-      label108:
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedMediaInfoHashMap.putAll(paramIntent);
-    }
-  }
-  
-  boolean a(Intent paramIntent, QQAlbumInfo paramQQAlbumInfo)
-  {
-    String str1 = paramIntent.getStringExtra("ALBUM_NAME");
-    String str2 = paramIntent.getStringExtra("ALBUM_ID");
-    if (((str1 != null) && (!str1.equals(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumName))) || ((str2 != null) && (!str2.equals(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId)))) {}
-    for (boolean bool = true; a(bool, paramQQAlbumInfo); bool = false)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumName = str1;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId = str2;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.currentQualityType = paramIntent.getIntExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0);
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
-  {
-    paramIntent.putExtra("ALBUM_ID", paramQQAlbumInfo._id);
-    paramIntent.putExtra("ALBUM_NAME", paramQQAlbumInfo.name);
-    paramIntent.putExtra("album_enter_directly", false);
-    XListView localXListView = ((bnfa)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_ComTencentWidgetXListView;
-    paramIntent.putExtra("PhotoConst.photo_selection_index", localXListView.getFirstVisiblePosition());
-    View localView = localXListView.getChildAt(0);
-    if (localView == null) {}
-    for (paramInt = 0;; paramInt = localView.getTop())
-    {
-      paramIntent.putExtra("PhotoConst.photo_selection_y", paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.d("AlbumModule", 2, "save Scroll Position,index:" + localXListView.getFirstVisiblePosition() + " top:" + paramInt);
+      catch (Throwable localThrowable2)
+      {
+        continue;
       }
-      return a(paramIntent, paramQQAlbumInfo);
+      paramBitmap = localObject3;
+      localObject1 = localObject5;
+      if (Build.VERSION.SDK_INT < 16)
+      {
+        paramBitmap = localObject3;
+        localObject1 = localObject5;
+        if (Build.VERSION.SDK_INT >= 11)
+        {
+          localObject1 = localObject5;
+          paramBitmap = localBuilder.getNotification();
+          continue;
+          label370:
+          paramBitmap = null;
+        }
+      }
     }
   }
   
-  boolean a(boolean paramBoolean, QQAlbumInfo paramQQAlbumInfo)
+  /* Error */
+  @TargetApi(16)
+  public Notification b(PendingIntent paramPendingIntent, Context paramContext, Bitmap paramBitmap, String paramString1, String paramString2, int paramInt)
   {
-    return paramBoolean;
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 7
+    //   3: new 28	android/app/Notification$Builder
+    //   6: dup
+    //   7: aload_2
+    //   8: invokespecial 31	android/app/Notification$Builder:<init>	(Landroid/content/Context;)V
+    //   11: astore 8
+    //   13: aload 8
+    //   15: aload_1
+    //   16: invokevirtual 65	android/app/Notification$Builder:setContentIntent	(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
+    //   19: iload 6
+    //   21: invokevirtual 69	android/app/Notification$Builder:setSmallIcon	(I)Landroid/app/Notification$Builder;
+    //   24: invokestatic 75	java/lang/System:currentTimeMillis	()J
+    //   27: invokevirtual 79	android/app/Notification$Builder:setWhen	(J)Landroid/app/Notification$Builder;
+    //   30: iconst_1
+    //   31: invokevirtual 83	android/app/Notification$Builder:setAutoCancel	(Z)Landroid/app/Notification$Builder;
+    //   34: aload 5
+    //   36: invokevirtual 87	android/app/Notification$Builder:setTicker	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+    //   39: aload 4
+    //   41: invokevirtual 90	android/app/Notification$Builder:setContentTitle	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+    //   44: aload 5
+    //   46: invokevirtual 93	android/app/Notification$Builder:setContentText	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+    //   49: pop
+    //   50: aload_3
+    //   51: ifnull +10 -> 61
+    //   54: aload 8
+    //   56: aload_3
+    //   57: invokevirtual 97	android/app/Notification$Builder:setLargeIcon	(Landroid/graphics/Bitmap;)Landroid/app/Notification$Builder;
+    //   60: pop
+    //   61: getstatic 103	android/os/Build$VERSION:SDK_INT	I
+    //   64: bipush 16
+    //   66: if_icmplt +64 -> 130
+    //   69: aload 8
+    //   71: invokevirtual 107	android/app/Notification$Builder:build	()Landroid/app/Notification;
+    //   74: astore_3
+    //   75: aload_3
+    //   76: astore 7
+    //   78: aload_3
+    //   79: aload_0
+    //   80: getfield 15	bnfs:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   83: invokestatic 113	com/tencent/commonsdk/util/notification/QQNotificationManager:addChannelIfNeed	(Landroid/app/Notification;Ljava/lang/String;)V
+    //   86: aload_3
+    //   87: astore 7
+    //   89: aload_3
+    //   90: ifnonnull +37 -> 127
+    //   93: new 115	android/app/Notification
+    //   96: dup
+    //   97: iload 6
+    //   99: aload 5
+    //   101: invokestatic 75	java/lang/System:currentTimeMillis	()J
+    //   104: invokespecial 118	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
+    //   107: astore 7
+    //   109: aload 7
+    //   111: bipush 16
+    //   113: putfield 121	android/app/Notification:flags	I
+    //   116: aload 7
+    //   118: aload_2
+    //   119: aload 4
+    //   121: aload 5
+    //   123: aload_1
+    //   124: invokevirtual 125	android/app/Notification:setLatestEventInfo	(Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/app/PendingIntent;)V
+    //   127: aload 7
+    //   129: areturn
+    //   130: getstatic 103	android/os/Build$VERSION:SDK_INT	I
+    //   133: bipush 16
+    //   135: if_icmpge +139 -> 274
+    //   138: getstatic 103	android/os/Build$VERSION:SDK_INT	I
+    //   141: bipush 11
+    //   143: if_icmplt +131 -> 274
+    //   146: aload 8
+    //   148: invokevirtual 128	android/app/Notification$Builder:getNotification	()Landroid/app/Notification;
+    //   151: astore_3
+    //   152: goto -77 -> 75
+    //   155: astore 8
+    //   157: aconst_null
+    //   158: astore_3
+    //   159: aload_3
+    //   160: astore 7
+    //   162: invokestatic 134	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   165: ifeq +18 -> 183
+    //   168: aload_3
+    //   169: astore 7
+    //   171: ldc 144
+    //   173: iconst_2
+    //   174: aload 8
+    //   176: iconst_0
+    //   177: anewarray 4	java/lang/Object
+    //   180: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   183: aload_3
+    //   184: astore 7
+    //   186: aload_3
+    //   187: ifnonnull -60 -> 127
+    //   190: new 115	android/app/Notification
+    //   193: dup
+    //   194: iload 6
+    //   196: aload 5
+    //   198: invokestatic 75	java/lang/System:currentTimeMillis	()J
+    //   201: invokespecial 118	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
+    //   204: astore_3
+    //   205: aload_3
+    //   206: bipush 16
+    //   208: putfield 121	android/app/Notification:flags	I
+    //   211: aload_3
+    //   212: aload_2
+    //   213: aload 4
+    //   215: aload 5
+    //   217: aload_1
+    //   218: invokevirtual 125	android/app/Notification:setLatestEventInfo	(Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/app/PendingIntent;)V
+    //   221: aload_3
+    //   222: areturn
+    //   223: astore_3
+    //   224: aload 7
+    //   226: ifnonnull +37 -> 263
+    //   229: new 115	android/app/Notification
+    //   232: dup
+    //   233: iload 6
+    //   235: aload 5
+    //   237: invokestatic 75	java/lang/System:currentTimeMillis	()J
+    //   240: invokespecial 118	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
+    //   243: astore 7
+    //   245: aload 7
+    //   247: bipush 16
+    //   249: putfield 121	android/app/Notification:flags	I
+    //   252: aload 7
+    //   254: aload_2
+    //   255: aload 4
+    //   257: aload 5
+    //   259: aload_1
+    //   260: invokevirtual 125	android/app/Notification:setLatestEventInfo	(Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/app/PendingIntent;)V
+    //   263: aload_3
+    //   264: athrow
+    //   265: astore_3
+    //   266: goto -42 -> 224
+    //   269: astore 8
+    //   271: goto -112 -> 159
+    //   274: aconst_null
+    //   275: astore_3
+    //   276: goto -201 -> 75
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	279	0	this	bnfs
+    //   0	279	1	paramPendingIntent	PendingIntent
+    //   0	279	2	paramContext	Context
+    //   0	279	3	paramBitmap	Bitmap
+    //   0	279	4	paramString1	String
+    //   0	279	5	paramString2	String
+    //   0	279	6	paramInt	int
+    //   1	252	7	localObject	Object
+    //   11	136	8	localBuilder	Notification.Builder
+    //   155	20	8	localThrowable1	Throwable
+    //   269	1	8	localThrowable2	Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   3	50	155	java/lang/Throwable
+    //   54	61	155	java/lang/Throwable
+    //   61	75	155	java/lang/Throwable
+    //   130	152	155	java/lang/Throwable
+    //   3	50	223	finally
+    //   54	61	223	finally
+    //   61	75	223	finally
+    //   130	152	223	finally
+    //   78	86	265	finally
+    //   162	168	265	finally
+    //   171	183	265	finally
+    //   78	86	269	java/lang/Throwable
   }
   
-  protected bnex b()
+  public Notification c(PendingIntent paramPendingIntent, Context paramContext, Bitmap paramBitmap, String paramString1, String paramString2, int paramInt)
   {
-    return this.jdField_a_of_type_Bnex;
+    paramContext = new NotificationCompat.Builder(paramContext).setSmallIcon(paramInt).setAutoCancel(true).setWhen(System.currentTimeMillis()).setTicker(paramString2);
+    paramContext.setContentTitle(paramString1).setContentText(paramString2).setContentIntent(paramPendingIntent);
+    if ((SdkInfoUtil.isOreo()) && (SdkInfoUtil.isTargetSDKOreo())) {
+      paramContext.setChannelId(this.jdField_a_of_type_JavaLangString);
+    }
+    if (paramBitmap != null) {
+      paramContext.setLargeIcon(paramBitmap);
+    }
+    return paramContext.build();
   }
-  
-  public void b() {}
 }
 
 

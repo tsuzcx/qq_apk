@@ -1,29 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import android.app.Activity;
+import android.view.KeyEvent;
+import android.view.Window;
+import android.view.WindowManager;
 
 class akly
-  implements ThreadExcutor.IThreadListener
+  implements asna
 {
-  akly(aklv paramaklv, List paramList, Map paramMap, Bundle paramBundle) {}
+  akly(aklt paramaklt) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public boolean a(KeyEvent paramKeyEvent)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean))
     {
-      bhhf localbhhf = new bhhf(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilMap, UUID.randomUUID().toString());
-      localbhhf.a(this.jdField_a_of_type_AndroidOsBundle);
-      if (this.jdField_a_of_type_Aklv.a != null) {
-        this.jdField_a_of_type_Aklv.a.a(localbhhf, aklv.a(this.jdField_a_of_type_Aklv), null);
-      }
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+      this.a.jdField_a_of_type_Boolean = false;
+      paramKeyEvent = ((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
+      paramKeyEvent.y = 0;
+      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes(paramKeyEvent);
+      return true;
     }
+    return false;
   }
-  
-  public void onPreRun() {}
 }
 
 

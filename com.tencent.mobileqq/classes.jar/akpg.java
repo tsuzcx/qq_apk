@@ -1,8 +1,25 @@
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.PhoneFrame;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface akpg
+public class akpg
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString, Map<String, String> paramMap);
+  public akpg(PhoneFrameActivity paramPhoneFrameActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    auxu localauxu = this.a.a.a();
+    if (localauxu != null) {
+      localauxu.a(false);
+    }
+    com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = false;
+    this.a.setResult(1);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

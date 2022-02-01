@@ -1,31 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.Subscriber;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class yad
-  implements Subscriber
+class yad
+  extends nkq
 {
-  private WeakReference<QQStoryBaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  yad(yab paramyab, boolean paramBoolean) {}
   
-  public yad(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
-  }
-  
-  public void accept(@NonNull List<Class<? extends Dispatcher.Dispatchable>> paramList)
-  {
-    paramList.add(zkj.class);
-  }
-  
-  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
-  {
-    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramDispatchable != null) {
-      paramDispatchable.c();
+    if (paramInt != 0)
+    {
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramArrayOfByte.a(2, bool);
+        this.a.a(0, this.a.a.getString(2131718978));
+        return;
+      }
     }
+    ((wjb)this.a.a.app.getManager(181)).a(this.b);
   }
 }
 

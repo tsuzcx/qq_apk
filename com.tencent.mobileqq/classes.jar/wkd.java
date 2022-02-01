@@ -1,12 +1,6 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
-
-public class wkd
+public abstract interface wkd
 {
-  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
-  {
-    return wkw.a(paramQQStoryAutoPlayView, paramMotionEvent);
-  }
+  public abstract void a(wkb paramwkb);
 }
 
 

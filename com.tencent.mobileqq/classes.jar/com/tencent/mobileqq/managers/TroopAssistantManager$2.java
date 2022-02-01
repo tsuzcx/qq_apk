@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.managers;
 
-import awhv;
+import axan;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import java.util.List;
-import nir;
-import niv;
+import nkm;
+import nkq;
 import tencent.im.oidb.cmd0x72d.cmd0x72d.ReqBody;
 
 public class TroopAssistantManager$2
   implements Runnable
 {
-  public TroopAssistantManager$2(awhv paramawhv, QQAppInterface paramQQAppInterface, niv paramniv) {}
+  public TroopAssistantManager$2(axan paramaxan, QQAppInterface paramQQAppInterface, nkq paramnkq) {}
   
   public void run()
   {
     List localList = this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     cmd0x72d.ReqBody localReqBody = new cmd0x72d.ReqBody();
     localReqBody.rpt_uint64_groupcode.set(localList);
-    nir.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Niv, localReqBody.toByteArray(), "OidbSvc.0x72d_0", 1837, 0);
+    nkm.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nkq, localReqBody.toByteArray(), "OidbSvc.0x72d_0", 1837, 0);
   }
 }
 

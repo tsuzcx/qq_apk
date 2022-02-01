@@ -1,16 +1,47 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout.StressState;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-class rvg
-  implements rvi
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowHelper$startStretchAnim$3", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rvg
+  implements Animator.AnimatorListener
 {
-  rvg(rvd paramrvd) {}
+  rvg(Animator.AnimatorListener paramAnimatorListener) {}
   
-  public void a(JSONObject paramJSONObject)
+  public void onAnimationCancel(@Nullable Animator paramAnimator)
   {
-    rvd.a(this.a, paramJSONObject.toString());
-    if (QLog.isColorLevel()) {
-      QLog.w("ReadInJoyWebDataManager", 2, "preLoadMsgBox HttpFetchBizCallback jsonRetData result" + rvd.a(this.a));
+    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
+    if (localAnimatorListener != null) {
+      localAnimatorListener.onAnimationCancel(paramAnimator);
+    }
+  }
+  
+  public void onAnimationEnd(@Nullable Animator paramAnimator)
+  {
+    ruz.a(this.jdField_a_of_type_Ruz, false);
+    this.jdField_a_of_type_Ruz.a().setStressState(VideoFeedsStressFollowLayout.StressState.Stretched);
+    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
+    if (localAnimatorListener != null) {
+      localAnimatorListener.onAnimationEnd(paramAnimator);
+    }
+  }
+  
+  public void onAnimationRepeat(@Nullable Animator paramAnimator)
+  {
+    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
+    if (localAnimatorListener != null) {
+      localAnimatorListener.onAnimationRepeat(paramAnimator);
+    }
+  }
+  
+  public void onAnimationStart(@Nullable Animator paramAnimator)
+  {
+    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
+    if (localAnimatorListener != null) {
+      localAnimatorListener.onAnimationStart(paramAnimator);
     }
   }
 }

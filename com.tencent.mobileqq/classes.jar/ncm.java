@@ -1,31 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.widget.ImageView;
+import com.tencent.avgame.gameroom.overlay.OverlayView;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
 
-class ncm
-  implements QQPermissionCallback
+public class ncm
+  implements nbb
 {
-  ncm(ncl paramncl, String paramString, long paramLong, int paramInt, View paramView) {}
+  public ncm(OverlayView paramOverlayView) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(LottieDrawable paramLottieDrawable)
   {
-    QLog.w(this.jdField_a_of_type_Ncl.jdField_a_of_type_JavaLangString, 1, "onClick_Camera, deny, i[" + paramInt + "], mRequestPermissionIng[" + this.jdField_a_of_type_Ncl.jdField_a_of_type_Boolean + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.jdField_a_of_type_Ncl.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Ncl.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.w(this.jdField_a_of_type_Ncl.jdField_a_of_type_JavaLangString, 1, "onClick_Camera, grant, i[" + paramInt + "], mRequestPermissionIng[" + this.jdField_a_of_type_Ncl.jdField_a_of_type_Boolean + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.jdField_a_of_type_Ncl.jdField_a_of_type_Boolean = false;
-    if ("android.permission.CAMERA".equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Ncl.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView);
+    if (paramLottieDrawable != null)
+    {
+      OverlayView.b(this.a, paramLottieDrawable);
+      if (QLog.isColorLevel()) {
+        QLog.d("OverlayView", 2, "loadLottieAnim success needRecoverFriendHeadCheerLottie = " + OverlayView.b(this.a));
+      }
+      if (OverlayView.b(this.a))
+      {
+        OverlayView.b(this.a).setImageDrawable(OverlayView.b(this.a));
+        OverlayView.b(this.a).playAnimation();
+        OverlayView.c(this.a, false);
+      }
     }
-    while (!"android.permission.RECORD_AUDIO".equals(this.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    this.jdField_a_of_type_Ncl.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
   }
 }
 

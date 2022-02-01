@@ -1,32 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bblp
-  extends bbln
+  implements Handler.Callback
 {
-  public bblp(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    super(paramQQAppInterface, paramInt, paramString1, paramString2, paramString3, paramString4);
-  }
+  public bblp(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
   
-  public void a(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    super.a(paramView);
-    if (!bbup.a(this.b)) {
-      bbup.a(paramView, this);
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
     }
-    if (SearchConfigManager.needSeparate) {
-      bbup.a("search", "contact", "contacts", 0, 0, new String[] { bbup.a(this.b) });
+    if (!NeoVideoFilterPlayView.a(this.a))
+    {
+      this.a.requestRender();
+      return true;
     }
-  }
-  
-  public CharSequence c()
-  {
-    if (bbup.a(this.b)) {
-      return anni.a(2131701359);
-    }
-    return anni.a(2131701326);
+    NeoVideoFilterPlayView.a(this.a).set(true);
+    yuk.b("FlowEdit_NeoVideoFilterPlayView", "skip request render because of pause play");
+    return true;
   }
 }
 

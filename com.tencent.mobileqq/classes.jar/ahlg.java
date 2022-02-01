@@ -1,42 +1,37 @@
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.view.AioMiniProfileLabelFlowLayout;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.mobileqq.vas.avatar.AvatarLayout;
-import com.tencent.mobileqq.widget.RoundCorneredRelativeLayout;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.data.ExtendFriendUserInfo;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
+import com.tencent.mobileqq.limitchat.TopicTextView;
+import org.json.JSONObject;
 
 public class ahlg
-  extends afuv
+  extends agen
 {
-  private amau jdField_a_of_type_Amau;
-  private amef jdField_a_of_type_Amef;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private GridView jdField_a_of_type_AndroidWidgetGridView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private AioMiniProfileLabelFlowLayout jdField_a_of_type_ComTencentMobileqqActivityAioItemViewAioMiniProfileLabelFlowLayout;
-  private DynamicAvatarView jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView;
-  private AvatarLayout jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout;
-  private RoundCorneredRelativeLayout jdField_a_of_type_ComTencentMobileqqWidgetRoundCorneredRelativeLayout;
-  public String a;
-  public boolean a;
-  private View jdField_b_of_type_AndroidViewView;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private View jdField_c_of_type_AndroidViewView;
-  private LinearLayout jdField_c_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private View jdField_d_of_type_AndroidViewView;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private View jdField_e_of_type_AndroidViewView;
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
-  private TextView f;
-  private TextView g;
-  private TextView h;
+  public long a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  ETTextView jdField_a_of_type_ComEtrumpMixlayoutETTextView;
+  public ExtendFriendUserInfo a;
+  ExtendFriendVoiceView jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView;
+  TopicTextView jdField_a_of_type_ComTencentMobileqqLimitchatTopicTextView;
+  String jdField_a_of_type_JavaLangString;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  int jdField_b_of_type_Int;
+  View jdField_b_of_type_AndroidViewView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  String jdField_b_of_type_JavaLangString;
+  View jdField_c_of_type_AndroidViewView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  String jdField_c_of_type_JavaLangString;
+  View jdField_d_of_type_AndroidViewView;
+  TextView jdField_d_of_type_AndroidWidgetTextView;
+  TextView e;
 }
 
 

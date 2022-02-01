@@ -9,7 +9,7 @@ class StructMsgForAudioShare$3
   
   public void run()
   {
-    this.a.setImageResource(2130845417);
+    this.a.setImageResource(2130845432);
   }
 }
 

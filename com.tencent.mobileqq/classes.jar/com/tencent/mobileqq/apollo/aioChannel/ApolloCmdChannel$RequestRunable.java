@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.aioChannel;
 
-import amkw;
-import amlc;
+import amwq;
+import amww;
 import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -37,14 +37,14 @@ class ApolloCmdChannel$RequestRunable
       Iterator localIterator = ApolloCmdChannel.access$000(localApolloCmdChannel).iterator();
       while (localIterator.hasNext())
       {
-        amlc localamlc = ((amkw)localIterator.next()).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
-        if (localamlc != null)
+        amww localamww = ((amwq)localIterator.next()).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
+        if (localamww != null)
         {
-          if (localamlc.jdField_a_of_type_Boolean) {
+          if (localamww.jdField_a_of_type_Boolean) {
             localIterator.remove();
           }
-          if (localamlc.b) {
-            localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, localamlc.jdField_a_of_type_JavaLangString);
+          if (localamww.b) {
+            localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, localamww.jdField_a_of_type_JavaLangString);
           }
         }
       }

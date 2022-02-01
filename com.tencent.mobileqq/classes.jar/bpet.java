@@ -1,20 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import java.util.HashMap;
 
-class bpet
-  extends SimpleJob<Object>
+public class bpet
 {
-  bpet(bpep parambpep, String paramString)
+  private HashMap<String, bpez> a = new HashMap();
+  
+  public bpez a(String paramString)
   {
-    super(paramString);
+    return (bpez)this.a.get(paramString);
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(String paramString, bpez parambpez)
   {
-    yqv.a("0X80076BC");
-    return null;
+    this.a.put(paramString, parambpez);
   }
 }
 

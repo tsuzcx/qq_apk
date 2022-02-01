@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
-import auau;
-import auaw;
+import ausp;
+import ausr;
 
 class SimpleFileViewer$7
   implements Runnable
 {
-  SimpleFileViewer$7(SimpleFileViewer paramSimpleFileViewer, String paramString, auaw paramauaw) {}
+  SimpleFileViewer$7(SimpleFileViewer paramSimpleFileViewer, String paramString, ausr paramausr) {}
   
   public void run()
   {
-    auau localauau = auau.a();
-    SimpleFileViewer.a(this.this$0, localauau.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Auaw));
+    ausp localausp = ausp.a();
+    SimpleFileViewer.a(this.this$0, localausp.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ausr));
     SimpleFileViewer.a(this.this$0, null, SimpleFileViewer.a(this.this$0), false);
     SimpleFileViewer.a(this.this$0);
   }

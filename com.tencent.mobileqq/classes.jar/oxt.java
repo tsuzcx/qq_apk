@@ -1,26 +1,68 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class oxt
-  implements ViewBase.OnClickListener
+public class oxt
 {
-  oxt(pan parampan, pay parampay) {}
+  HashMap<String, HashSet<Object>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  oxu jdField_a_of_type_Oxu;
   
-  public final void onClick(ViewBase paramViewBase)
+  public oxt(oxu paramoxu)
   {
-    ArrayList localArrayList = new ArrayList();
-    Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "viewBase");
-    localArrayList.add(paramViewBase.getEventAttachedData());
-    QLog.d("CommentProteusUtil", 2, "comment media url : " + paramViewBase.getEventAttachedData());
-    bfhe.a((Activity)this.jdField_a_of_type_Pan.a(), 0, localArrayList, true, "", 1888);
-    if (this.jdField_a_of_type_Pan.a() != null) {
-      this.jdField_a_of_type_Pan.a().f(this.jdField_a_of_type_Pay);
+    this.jdField_a_of_type_Oxu = paramoxu;
+  }
+  
+  private void b(String paramString, Object paramObject)
+  {
+    HashSet localHashSet2 = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if ((localHashSet2 != null) && (localHashSet2.contains(paramObject))) {
+      return;
+    }
+    HashSet localHashSet1 = localHashSet2;
+    if (localHashSet2 == null) {
+      localHashSet1 = new HashSet();
+    }
+    localHashSet1.add(paramObject);
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localHashSet1);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    a(paramString, paramObject, true);
+  }
+  
+  public void a(String paramString, Object paramObject, boolean paramBoolean)
+  {
+    b(paramString, paramObject);
+    if (paramBoolean) {}
+    while (this.jdField_a_of_type_Oxu == null) {
+      return;
+    }
+    this.jdField_a_of_type_Oxu.a(paramString, paramObject);
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Oxu != null) && (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
+    {
+      Iterator localIterator1 = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      while (localIterator1.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator1.next();
+        Iterator localIterator2 = ((HashSet)localEntry.getValue()).iterator();
+        while (localIterator2.hasNext())
+        {
+          Object localObject = localIterator2.next();
+          this.jdField_a_of_type_Oxu.a((String)localEntry.getKey(), localObject);
+        }
+      }
     }
   }
 }

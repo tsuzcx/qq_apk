@@ -1,28 +1,22 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
 
 public class axnb
-  implements View.OnLayoutChangeListener
+  extends AnimatorListenerAdapter
 {
-  public axnb(StuffContainerView paramStuffContainerView) {}
+  public axnb(MultiCardFragment paramMultiCardFragment) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = StuffContainerView.a(this.a);
-    if ((StuffContainerView.a(this.a) > 0L) && (l1 - l2 < 500L)) {}
-    do
-    {
-      return;
-      StuffContainerView.a(this.a, l1);
-      if (QLog.isColorLevel()) {
-        QLog.d("StuffContainerView", 2, "VideoInfoListenerImpl onLayoutChange");
-      }
-    } while (this.a.a == null);
-    this.a.a.l();
+    super.onAnimationCancel(paramAnimator);
+    MultiCardFragment.c(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    MultiCardFragment.c(this.a);
   }
 }
 

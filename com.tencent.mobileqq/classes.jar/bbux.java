@@ -1,52 +1,125 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignatureManagerForTool.1;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResultCallback;
+import java.util.Observable;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bbux
-  implements bbvf
+  extends Observable
 {
-  protected View a;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bbvg jdField_a_of_type_Bbvg;
-  private List<bbvg> jdField_a_of_type_JavaUtilList;
-  private TextView b;
+  private static bbux jdField_a_of_type_Bbux;
+  public RichStatus a;
+  public EIPCResultCallback a;
+  private ConcurrentHashMap<Integer, bhzd> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public RichStatus b;
+  private EIPCResultCallback jdField_b_of_type_EipcEIPCResultCallback = new bbuy(this);
+  private ConcurrentHashMap<Integer, String> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public bbux() {}
-  
-  public bbux(ViewGroup paramViewGroup, int paramInt)
+  private bbux()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371277));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(new bbva(this.jdField_a_of_type_AndroidViewView.findViewById(2131368751)));
-    this.jdField_a_of_type_JavaUtilList.add(new bbva(this.jdField_a_of_type_AndroidViewView.findViewById(2131368757)));
-    this.jdField_a_of_type_JavaUtilList.add(new bbva(this.jdField_a_of_type_AndroidViewView.findViewById(2131368763)));
-    this.jdField_a_of_type_JavaUtilList.add(new bbva(this.jdField_a_of_type_AndroidViewView.findViewById(2131368769)));
-    this.jdField_a_of_type_JavaUtilList.add(new bbva(this.jdField_a_of_type_AndroidViewView.findViewById(2131368770)));
-    this.jdField_a_of_type_Bbvg = new bbva(this.jdField_a_of_type_AndroidViewView.findViewById(2131368771));
+    this.jdField_a_of_type_EipcEIPCResultCallback = new bbuz(this);
   }
   
-  public View a()
+  public static bbux a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    try
+    {
+      if (jdField_a_of_type_Bbux == null) {
+        jdField_a_of_type_Bbux = new bbux();
+      }
+      bbux localbbux = jdField_a_of_type_Bbux;
+      return localbbux;
+    }
+    finally {}
   }
   
-  public TextView a()
+  public static String a(int paramInt, String paramString)
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder("https://gxh.vip.qq.com/xydata/");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
-  public List<bbvg> a()
+  public bhzd a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return a(paramInt, false);
   }
   
-  public TextView b()
+  public bhzd a(int paramInt, boolean paramBoolean)
   {
-    return this.b;
+    bhzd localbhzd2 = (bhzd)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    Object localObject;
+    if ((localbhzd2 != null) && (!localbhzd2.a.get()))
+    {
+      localObject = localbhzd2;
+      if (!paramBoolean) {}
+    }
+    else
+    {
+      bhzd localbhzd1 = localbhzd2;
+      if (localbhzd2 == null)
+      {
+        localbhzd1 = new bhzd(Integer.toString(paramInt));
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localbhzd1);
+      }
+      localObject = localbhzd1;
+      if (paramInt != 0)
+      {
+        localbhzd1.a.set(true);
+        if (QLog.isColorLevel()) {
+          QLog.e("Signature.TOOL", 2, "before getTemplateInfo info");
+        }
+        ThreadManager.excute(new SignatureManagerForTool.1(this, paramInt), 128, null, true);
+        localObject = localbhzd1;
+      }
+    }
+    return localObject;
+  }
+  
+  public String a(int paramInt)
+  {
+    String str = (String)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    if (TextUtils.isEmpty(str))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("id", paramInt);
+      QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gm.g, localBundle, this.jdField_b_of_type_EipcEIPCResultCallback);
+    }
+    return str;
+  }
+  
+  public void a(RichStatus paramRichStatus)
+  {
+    if (paramRichStatus == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus == null) {
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(paramRichStatus);
+    QLog.d("Signature.TOOL", 2, "updateHandleStatus: tpdId=" + this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId + " fontId=" + this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.fontId);
+  }
+  
+  public void b(RichStatus paramRichStatus)
+  {
+    if (paramRichStatus == null) {
+      return;
+    }
+    if (this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus == null) {
+      this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
+    }
+    this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(paramRichStatus);
+    QLog.d("Signature.TOOL", 2, "updateSaveStatus: tpdId=" + this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.tplId + " fontId=" + this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.fontId);
+    a(paramRichStatus);
   }
 }
 

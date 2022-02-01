@@ -1,43 +1,100 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp;
+import tencent.im.oidb.oidb_0xb60.RspBody;
 
-public class adnw
-  implements bkhw
+class adnw
+  extends nkq
 {
-  public adnw(AuthDevActivity paramAuthDevActivity, String paramString, ArrayList paramArrayList, int paramInt, boolean paramBoolean, long paramLong) {}
+  adnw(adnv paramadnv, axeh paramaxeh) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    switch (paramInt)
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "onResult type=" + this.jdField_a_of_type_Axeh.jdField_a_of_type_Int + ", appid=" + this.jdField_a_of_type_Axeh.jdField_a_of_type_JavaLangString + ", code=" + paramInt);
+    }
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
+      adnv.a(this.jdField_a_of_type_Adnv, new AppInfoError(6, "jobApiPermission req error"));
+      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
+        break label513;
+      }
     }
     for (;;)
     {
-      if ((AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity) != null) && (AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.isFinishing()))
+      Object localObject;
+      try
       {
-        AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).dismiss();
-        AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).cancel();
-        AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, null);
+        paramBundle = ((oidb_0xb60.RspBody)new oidb_0xb60.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
+        localObject = new StringBuilder().append("req error code=").append(paramInt);
+        if (paramArrayOfByte == null)
+        {
+          paramArrayOfByte = ", data=null";
+          QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, paramArrayOfByte);
+          return;
+        }
       }
-      return;
-      if (!bgnt.d(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity))
+      catch (InvalidProtocolBufferMicroException paramBundle)
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.getString(2131691985), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.getTitleBarHeight());
+        paramBundle = "";
+        continue;
+        paramArrayOfByte = ", msg=" + paramBundle;
+        continue;
       }
-      else
+      paramBundle = new oidb_0xb60.RspBody();
+      try
       {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if ((paramBundle.get_privilege_rsp.api_groups.has()) && (paramBundle.get_privilege_rsp.next_req_duration.has())) {
+          break label297;
+        }
+        adnv.b(this.jdField_a_of_type_Adnv, new AppInfoError(6, "jobApiPermission rsp invalid"));
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "rsp invalid");
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        adnv.c(this.jdField_a_of_type_Adnv, new AppInfoError(6, "jobApiPermission parse rsp error"));
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "parse rsp error", paramArrayOfByte);
+        return;
+        label297:
         if (QLog.isColorLevel()) {
-          QLog.d("Q.devlock.AuthDevActivity", 2, "OnClick.begin to delAuthDev");
+          QLog.d("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "receive api_groups:" + paramBundle.get_privilege_rsp.api_groups.get() + ", api_names:" + paramBundle.get_privilege_rsp.api_names.get());
         }
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.app, "CliOper", "", "", "My_eq_lock", "My_eq_lock_delete", 0, 0, "", "", "", "");
-        if (asfr.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long)) {
-          AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
-        } else if (QLog.isColorLevel()) {
-          QLog.d("Q.devlock.AuthDevActivity", 2, "OnClick.delAuthDev fail");
+        paramArrayOfByte = adnn.a();
+        paramArrayOfByte.a(paramBundle.get_privilege_rsp.api_groups.get(), this.jdField_a_of_type_Axeh.jdField_a_of_type_JavaUtilSet);
+        if (paramBundle.get_privilege_rsp.api_names.size() > 0)
+        {
+          localObject = paramBundle.get_privilege_rsp.api_names.get().iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            String str = (String)((Iterator)localObject).next();
+            if (adnn.a(paramArrayOfByte, str)) {
+              this.jdField_a_of_type_Axeh.jdField_a_of_type_JavaUtilSet.add(str);
+            }
+          }
         }
+        this.jdField_a_of_type_Axeh.c = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.get_privilege_rsp.next_req_duration.get() * 1000L, 300000L));
+        axem.a().a(this.jdField_a_of_type_Axeh);
+        adnv.a(this.jdField_a_of_type_Adnv, this.jdField_a_of_type_Axeh);
+        return;
+        label513:
+        paramBundle = "";
       }
     }
   }

@@ -1,15 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class alww
   implements DialogInterface.OnClickListener
 {
-  public alww(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Runnable paramRunnable) {}
+  public alww(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    LpReportInfo_pf00064.allReport(680, 1, 2);
+    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
+    this.a.a();
   }
 }
 

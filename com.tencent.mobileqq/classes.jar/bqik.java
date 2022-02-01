@@ -1,24 +1,16 @@
+import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+
 public class bqik
+  implements xvr
 {
-  public static String a;
-  public static boolean a;
-  private static long[] a;
-  private static boolean jdField_b_of_type_Boolean = true;
-  private static long[] jdField_b_of_type_ArrayOfLong;
-  private static long[] c;
-  private static long[] d;
-  private static long[] e;
-  private static long[] f;
+  public bqik(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  static
+  public boolean a(xvo paramxvo, int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_ArrayOfLong = new long[20];
-    jdField_b_of_type_ArrayOfLong = new long[20];
-    c = new long[20];
-    d = new long[20];
-    e = new long[20];
-    f = new long[20];
-    jdField_a_of_type_JavaLangString = "";
+    LocalVideoSelectActivity.a(this.a).a();
+    LocalVideoSelectActivity.a(this.a).a(true);
+    return true;
   }
 }
 

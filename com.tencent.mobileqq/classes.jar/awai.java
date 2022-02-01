@@ -1,61 +1,58 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.content.Context;
+import android.support.annotation.NonNull;
 
-class awai
+public class awai
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  final Context jdField_a_of_type_AndroidContentContext;
+  final String jdField_a_of_type_JavaLangString;
+  String b = "";
+  String c = "";
+  String d = "";
+  String e;
+  String f;
+  String g;
+  String h;
   
-  awai(avzs paramavzs, View paramView)
+  public awai(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380441);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380443));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380440));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380445));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131380442);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131380444);
-    if (bkpg.a())
-    {
-      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130845365);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130845363);
-      if ((this.jdField_b_of_type_AndroidViewView instanceof TextView)) {
-        ((TextView)this.jdField_b_of_type_AndroidViewView).setTextColor(-1);
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
-      ((TextView)this.jdField_b_of_type_AndroidViewView).setTextColor(-1);
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  void a()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.b = paramString;
   }
   
-  void a(LocationRoom.Venue paramVenue)
+  public void b(String paramString)
   {
-    LocationRoom.Venue localVenue = paramVenue;
-    if (paramVenue == null) {
-      localVenue = avzs.a(this.jdField_a_of_type_Avzs).a();
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(avzs.a(this.jdField_a_of_type_Avzs).getResources().getString(2131693423), new Object[] { localVenue.b }));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(localVenue.c);
-    awao.a(avzs.a(this.jdField_a_of_type_Avzs, localVenue.a), avzs.a(this.jdField_a_of_type_Avzs).getResources().getString(2131693424), this.jdField_c_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new awaj(this));
-    this.jdField_c_of_type_AndroidViewView.setOnClickListener(new awak(this));
+    this.c = paramString;
   }
   
-  void b()
+  public void c(String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.d = paramString;
+  }
+  
+  public void d(String paramString)
+  {
+    this.e = paramString;
+  }
+  
+  public void e(String paramString)
+  {
+    this.g = paramString;
+  }
+  
+  public void f(String paramString)
+  {
+    this.h = paramString;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "uin: " + this.jdField_a_of_type_JavaLangString + " roomId: " + this.b + " roomGroupCode: " + this.c + " roomShowNumber: " + this.d + " fromId: " + this.e + " openType: " + this.f + " fromGroupId: " + this.g + " fromGroupOwnerUin: " + this.h;
   }
 }
 

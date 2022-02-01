@@ -1,15 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class nvv
-  implements DialogInterface.OnClickListener
+public class nvv
+  implements bliz
 {
-  nvv(nvu paramnvu, JsResult paramJsResult) {}
+  public nvv(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
+    PublicAccountAdvertisementActivity.a(this.a).dismiss();
+    if (paramView != null)
+    {
+      paramView = PublicAccountAdvertisementActivity.a(this.a).a(paramInt);
+      if (QLog.isColorLevel()) {
+        QLog.i("PublicAccountAdvertisementActivity", 2, "action" + paramView);
+      }
+      if (!TextUtils.isEmpty(paramView))
+      {
+        if (!paramView.equals(this.a.getResources().getString(2131692394))) {
+          break label91;
+        }
+        PublicAccountAdvertisementActivity.d(this.a);
+      }
+    }
+    label91:
+    while (!paramView.equals(this.a.getResources().getString(2131692950))) {
+      return;
+    }
+    avxv.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
+    bdll.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
   }
 }
 

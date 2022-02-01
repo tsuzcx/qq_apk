@@ -1,17 +1,13 @@
 public class bbcr
+  implements anui
 {
-  public long a;
-  public bbcs a;
+  public void a(boolean paramBoolean, bbcs parambbcs) {}
   
-  public bbcr()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public bbcr(long paramLong, bbcs parambbcs)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Bbcs = parambbcs;
+    if (paramInt == 1) {
+      a(paramBoolean, (bbcs)paramObject);
+    }
   }
 }
 

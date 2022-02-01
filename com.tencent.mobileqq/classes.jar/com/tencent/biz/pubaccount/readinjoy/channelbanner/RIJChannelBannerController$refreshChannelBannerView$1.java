@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.channelbanner;
 import com.tencent.pts.core.PTSComposer;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
-import ovz;
+import oom;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class RIJChannelBannerController$refreshChannelBannerView$1
   implements Runnable
 {
-  public RIJChannelBannerController$refreshChannelBannerView$1(ovz paramovz, PTSComposer paramPTSComposer) {}
+  public RIJChannelBannerController$refreshChannelBannerView$1(oom paramoom, PTSComposer paramPTSComposer) {}
   
   public final void run()
   {
@@ -18,9 +18,9 @@ public final class RIJChannelBannerController$refreshChannelBannerView$1
     {
       PTSComposer localPTSComposer = this.a;
       Intrinsics.checkExpressionValueIsNotNull(localPTSComposer, "newPtsComposer");
-      localRIJChannelBannerView.a(localPTSComposer, ovz.a(this.this$0));
+      localRIJChannelBannerView.a(localPTSComposer, oom.a(this.this$0));
     }
-    ovz.a(this.this$0, this.a);
+    oom.a(this.this$0, this.a);
   }
 }
 

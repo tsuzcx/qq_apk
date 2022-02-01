@@ -32,7 +32,7 @@ class SubMsgPermissionSettingFragment$2
       ((PBInt32Field)localObject).set(i);
       localObject = new ArrayList();
       ((ArrayList)localObject).add(localStSubscribeMessage);
-      this.this$0.authState.updateOnceSubMsgSetting(paramBoolean, (List)localObject, new SubMsgPermissionSettingFragment.2.1(this, localStSubscribeMessage, paramBoolean, paramCompoundButton));
+      this.this$0.authState.updateOnceSubMsgSetting(null, paramBoolean, (List)localObject, new SubMsgPermissionSettingFragment.2.1(this, localStSubscribeMessage, paramBoolean, paramCompoundButton));
       break;
     }
   }

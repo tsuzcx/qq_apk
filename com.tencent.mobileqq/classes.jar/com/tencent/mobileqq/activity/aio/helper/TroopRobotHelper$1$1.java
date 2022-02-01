@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agnt;
-import agnu;
-import ahxp;
+import agwy;
+import agwz;
+import aihd;
 
 public class TroopRobotHelper$1$1
   implements Runnable
 {
-  public TroopRobotHelper$1$1(agnu paramagnu) {}
+  public TroopRobotHelper$1$1(agwz paramagwz) {}
   
   public void run()
   {
-    if ((agnt.a(this.a.a) instanceof ahxp))
+    if ((agwy.a(this.a.a) instanceof aihd))
     {
-      ((ahxp)agnt.a(this.a.a)).W = false;
+      ((aihd)agwy.a(this.a.a)).W = false;
       this.a.a.a(false);
     }
   }

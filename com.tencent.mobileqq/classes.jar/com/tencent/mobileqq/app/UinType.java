@@ -4,7 +4,7 @@ import android.util.SparseArray;
 
 public enum UinType
 {
-  private static final SparseArray<UinType> sIdInstanceMap;
+  private static final SparseArray<UinType> S_ID_INSTANCE_MAP;
   private final int id;
   
   static
@@ -12,13 +12,13 @@ public enum UinType
     int i = 0;
     TEMP_GAME_MSG = new UinType.1("TEMP_GAME_MSG", 0, 10007);
     $VALUES = new UinType[] { TEMP_GAME_MSG };
-    sIdInstanceMap = new SparseArray();
+    S_ID_INSTANCE_MAP = new SparseArray();
     UinType[] arrayOfUinType = values();
     int j = arrayOfUinType.length;
     while (i < j)
     {
       UinType localUinType = arrayOfUinType[i];
-      sIdInstanceMap.put(localUinType.id, localUinType);
+      S_ID_INSTANCE_MAP.put(localUinType.id, localUinType);
       i += 1;
     }
   }
@@ -30,7 +30,7 @@ public enum UinType
   
   public static UinType valueOf(int paramInt)
   {
-    return (UinType)sIdInstanceMap.get(paramInt);
+    return (UinType)S_ID_INSTANCE_MAP.get(paramInt);
   }
   
   public abstract boolean isC2CConversation();

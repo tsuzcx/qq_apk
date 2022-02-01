@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class rfa
-  implements Parcelable.Creator<DislikeInfo>
+public class rfa
+  extends rgf
+  implements reo
 {
-  public DislikeInfo a(Parcel paramParcel)
+  private QQAppInterface a;
+  
+  public rfa(QQAppInterface paramQQAppInterface)
   {
-    return new DislikeInfo(paramParcel);
+    this.a = paramQQAppInterface;
   }
   
-  public DislikeInfo[] a(int paramInt)
+  public void a(UgcVideo paramUgcVideo, ren paramren)
   {
-    return new DislikeInfo[paramInt];
+    ((rgo)this.a.getManager(356)).a(paramUgcVideo, false);
   }
 }
 

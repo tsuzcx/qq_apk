@@ -1,68 +1,23 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.QQSettingMe.32.1;
-import com.tencent.mobileqq.activity.QQSettingMe.32.2;
-import com.tencent.mobileqq.activity.QQSettingMe.32.3;
-import com.tencent.mobileqq.activity.QQSettingMe.32.4;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public class aeyy
-  extends aniz
+class aeyy
+  implements DialogInterface.OnClickListener
 {
-  public aeyy(QQSettingMe paramQQSettingMe) {}
+  aeyy(aeyx paramaeyx) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramObject == null) {}
-    do
-    {
-      return;
-      if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && ((paramObject instanceof Card)) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((Card)paramObject).uin)))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new QQSettingMe.32.1(this));
-        ThreadManager.post(new QQSettingMe.32.2(this), 5, null, true);
-        return;
-      }
-    } while ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (!(paramObject instanceof Card)) || (this.a.c) || (!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((Card)paramObject).uin)));
-    ThreadManager.post(new QQSettingMe.32.3(this, (Card)paramObject), 5, null, true);
-  }
-  
-  protected void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.c)) {
-      QQSettingMe.a(this.a, false);
+    QLog.d("nearby.check.auth", 1, "onCheckNearbyUserAuth onClick exit");
+    this.a.a.finish();
+    if (bhnv.d(BaseApplication.getContext())) {
+      aveh.a(this.a.a.a);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, String.format("onGetMedal [%b, %b] medalSwitchDisable= ", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(this.a.c), Boolean.valueOf(paramBoolean2) }));
-    }
-  }
-  
-  protected void onGetSignInInfo(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().post(new QQSettingMe.32.4(this));
-    }
-  }
-  
-  protected void onSetMedal(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.a.c)) {
-      QQSettingMe.a(this.a, false);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, String.format("onSetMedal [%b %b]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.a.c) }));
-    }
-  }
-  
-  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (bgjw.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.b(paramString);
-    }
+    new bdlq(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_clk").e(this.a.a.a.getCurrentAccountUin()).a();
   }
 }
 

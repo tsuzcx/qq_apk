@@ -1,30 +1,28 @@
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerBigPicItemData;
+import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 
 public class tnh
-  implements View.OnClickListener
+  extends tnb
 {
-  public tnh(BridgeModule paramBridgeModule, String paramString) {}
-  
-  public void onClick(View paramView)
+  public tnh(View paramView, BaseData paramBaseData, WeakReference<Context> paramWeakReference)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("timestamp", System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
-      label30:
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      break label30;
-    }
+    super(paramBaseData, paramWeakReference, localWeakReference);
+  }
+  
+  public void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
+  {
+    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new tni(this, paramBaseData, paramContext));
+  }
+  
+  protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
+  {
+    return (paramBaseData1 == paramBaseData2) && ((paramBaseData2 instanceof ProteusBannerBigPicItemData));
   }
 }
 

@@ -1,28 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.webbundle.sdk.WebBundleLogListener;
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class blah
-  implements WebBundleLogListener
+class blah
+  implements View.OnClickListener
 {
-  public void log(int paramInt, @NotNull String paramString1, @NotNull String paramString2)
+  blah(blag paramblag) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {}
-    switch (paramInt)
+    CheckBox localCheckBox = blag.a(this.a);
+    if (!blag.a(this.a).isChecked()) {}
+    for (boolean bool = true;; bool = false)
     {
-    default: 
-      return;
-    case 4: 
-      QLog.i(paramString1, 2, paramString2);
-      return;
-    case 3: 
-      QLog.d(paramString1, 2, paramString2);
-      return;
-    case 5: 
-      QLog.w(paramString1, 2, paramString2);
+      localCheckBox.setChecked(bool);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    QLog.e(paramString1, 2, paramString2);
   }
 }
 

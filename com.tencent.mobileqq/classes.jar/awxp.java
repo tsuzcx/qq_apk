@@ -1,47 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.magicface.drawable.PngFrameManager.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class awxp
-  implements ayxc
+public class awxp
+  implements View.OnClickListener
 {
-  awxp(awxi paramawxi, awxd paramawxd) {}
+  public awxp(PngFrameManager.1 param1) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Awxd.a != null)
+    if (this.a.a.jdField_a_of_type_Ahmg.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() == 0) {}
+    for (;;)
     {
-      String str = this.jdField_a_of_type_Awxi.a(this.jdField_a_of_type_Awxd.a.a);
-      awxe localawxe = this.jdField_a_of_type_Awxi.a(str);
-      if ((localawxe != null) && (!localawxe.a))
-      {
-        localawxe.c = (paramInt / 100);
-        this.jdField_a_of_type_Awxi.a(str, localawxe);
-        awxi.a(this.jdField_a_of_type_Awxi, localawxe, paramInt / 100);
-      }
-    }
-  }
-  
-  public void a(ayxd paramayxd)
-  {
-    int i = 0;
-    String str = "";
-    int k;
-    if (paramayxd != null)
-    {
-      k = paramayxd.jdField_a_of_type_Int;
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiRichMediaSaveManager", 2, "isFilePreDownload shortVideoReq result = " + k);
-      }
-      j = k;
-      if (paramayxd.jdField_a_of_type_Ayxt != null)
-      {
-        i = paramayxd.jdField_a_of_type_Ayxt.jdField_a_of_type_Int;
-        str = paramayxd.jdField_a_of_type_Ayxt.b;
-      }
-    }
-    for (int j = k;; j = 0)
-    {
-      this.jdField_a_of_type_Awxi.a(this.jdField_a_of_type_Awxd, j, i, str);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (this.a.a.jdField_a_of_type_Ahmg.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0)
+      {
+        this.a.a.jdField_a_of_type_Boolean = true;
+        this.a.a.jdField_a_of_type_Ahmg.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        this.a.this$0.e(this.a.a);
+        if (this.a.a.jdField_a_of_type_Awxs != null) {
+          this.a.a.jdField_a_of_type_Awxs.a(this.a.a.jdField_a_of_type_Ahmg);
+        }
+      }
     }
   }
 }

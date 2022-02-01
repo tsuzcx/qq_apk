@@ -1,5 +1,6 @@
 package com.tencent.qqmini.minigame.plugins;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -17,6 +18,8 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 import com.tencent.qqmini.sdk.launcher.utils.LiuHaiUtils;
+import com.tencent.qqmini.sdk.utils.ImmersiveUtils;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 @JsPlugin
@@ -32,12 +35,13 @@ public class GameSystemInfoPlugin
     if ((paramContext == null) || (paramDisplayMetrics == null)) {
       return null;
     }
+    Activity localActivity = this.mMiniAppContext.getAttachedActivity();
     JSONObject localJSONObject = new JSONObject();
     int i;
     int j;
     for (;;)
     {
-      int k;
+      int n;
       try
       {
         d = paramDisplayMetrics.density;
@@ -45,19 +49,19 @@ public class GameSystemInfoPlugin
         i1 = paramDisplayMetrics.heightPixels;
         m = DisplayUtil.getStatusBarHeight(paramContext);
         if (!Build.MANUFACTURER.equalsIgnoreCase("huawei")) {
-          break label573;
+          break label695;
         }
         if (Settings.Secure.getInt(paramContext.getContentResolver(), "display_notch_status", 0) != 1) {
-          break label589;
+          break label711;
         }
         i = 1;
       }
       catch (Exception paramContext)
       {
         double d;
-        int n;
         int i1;
         int m;
+        int k;
         QMLog.e("SystemInfoPlugin", "getSystemInfo error " + paramContext.getMessage());
         break;
       }
@@ -67,70 +71,89 @@ public class GameSystemInfoPlugin
       {
         k = Math.min(n, i1);
         i = Math.max(n, i1);
-        k = (int)(k / d);
-        n = (int)(i / d);
+        n = (int)(k / d);
+        i1 = (int)(i / d);
         localJSONObject.put("pixelRatio", d);
         localJSONObject.put("devicePixelRatio", d);
-        i1 = (int)(m / d);
-        i = n;
+        k = (int)(m / d);
+        i = i1;
         if (paramBoolean)
         {
-          i = n;
+          i = i1;
           if (j != 0) {
-            i = n - i1;
+            i = i1 - k;
           }
         }
-        if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-          break label562;
-        }
-        j = (int)(paramInt1 / d);
-        paramInt1 = (int)(paramInt2 / d);
-        if ((j == 0) || (paramInt1 == 0)) {
-          break label562;
-        }
-        paramInt2 = j;
-        localJSONObject.put("screenWidth", paramInt2);
-        localJSONObject.put("screenHeight", paramInt1);
-        localJSONObject.put("windowWidth", paramInt2);
-        localJSONObject.put("windowHeight", paramInt1);
-        localJSONObject.put("statusBarHeight", i1);
-        localJSONObject.put("language", "zh_CN");
-        localJSONObject.put("system", "Android " + Build.VERSION.RELEASE);
-        localJSONObject.put("platform", "android");
-        localJSONObject.put("fontSizeSetting", 16);
-        localJSONObject.put("benchmarkLevel", DeviceUtil.getDeviceBenchmarkLevel());
-        if (paramMiniAppProxy != null)
+        if ((paramInt1 > 0) && (paramInt2 > 0))
         {
-          localJSONObject.put("version", paramMiniAppProxy.getAppVersion());
-          localJSONObject.put("AppPlatform", paramMiniAppProxy.getAppName());
-        }
-        paramMiniAppProxy = new JSONObject();
-        paramInt2 = DisplayUtil.dip2px(paramContext, 9.0F);
-        if ((LiuHaiUtils.isLiuHaiUseValid()) && (!paramBoolean))
-        {
-          paramInt1 = m;
-          paramMiniAppProxy.put("marginTop", paramInt1 + paramInt2);
-          paramMiniAppProxy.put("navbarHeight", DisplayUtil.dip2px(paramContext, 30.0F));
-          paramMiniAppProxy.put("marginRight", DisplayUtil.dip2px(paramContext, 12.5F));
-          paramMiniAppProxy.put("navbarWidth", DisplayUtil.dip2px(paramContext, 80.0F));
-          localJSONObject.put("navbarPosition", paramMiniAppProxy);
-          QMLog.i("SystemInfoPlugin", "minigame getSystemInfo : " + localJSONObject.toString());
-          break;
+          j = (int)(paramInt1 / d);
+          paramInt1 = (int)(paramInt2 / d);
+          if ((j != 0) && (paramInt1 != 0))
+          {
+            paramInt2 = j;
+            j = ImmersiveUtils.getNotchHeight(localActivity, localActivity);
+            i = j;
+            if (j == 0) {
+              i = k;
+            }
+            paramDisplayMetrics = new JSONObject();
+          }
         }
       }
       else
       {
-        k = Math.max(n, i1);
-        i = Math.min(n, i1);
+        try
+        {
+          paramDisplayMetrics.put("left", 0);
+          paramDisplayMetrics.put("top", i);
+          paramDisplayMetrics.put("right", paramInt2);
+          paramDisplayMetrics.put("bottom", paramInt1);
+          paramDisplayMetrics.put("width", paramInt2 - 0);
+          paramDisplayMetrics.put("height", paramInt1 - i);
+          localJSONObject.put("screenWidth", paramInt2);
+          localJSONObject.put("screenHeight", paramInt1);
+          localJSONObject.put("windowWidth", paramInt2);
+          localJSONObject.put("windowHeight", paramInt1);
+          localJSONObject.put("statusBarHeight", k);
+          localJSONObject.put("language", "zh_CN");
+          localJSONObject.put("system", "Android " + Build.VERSION.RELEASE);
+          localJSONObject.put("platform", "android");
+          localJSONObject.put("fontSizeSetting", 16);
+          localJSONObject.put("benchmarkLevel", DeviceUtil.getDeviceBenchmarkLevel());
+          localJSONObject.put("safeArea", paramDisplayMetrics);
+          if (paramMiniAppProxy != null)
+          {
+            localJSONObject.put("version", paramMiniAppProxy.getAppVersion());
+            localJSONObject.put("AppPlatform", paramMiniAppProxy.getAppName());
+          }
+          paramMiniAppProxy = new JSONObject();
+          paramInt2 = DisplayUtil.dip2px(paramContext, 9.0F);
+          if ((LiuHaiUtils.isLiuHaiUseValid()) && (!paramBoolean))
+          {
+            paramInt1 = m;
+            paramMiniAppProxy.put("marginTop", paramInt1 + paramInt2);
+            paramMiniAppProxy.put("navbarHeight", DisplayUtil.dip2px(paramContext, 30.0F));
+            paramMiniAppProxy.put("marginRight", DisplayUtil.dip2px(paramContext, 12.5F));
+            paramMiniAppProxy.put("navbarWidth", DisplayUtil.dip2px(paramContext, 80.0F));
+            localJSONObject.put("navbarPosition", paramMiniAppProxy);
+            QMLog.i("SystemInfoPlugin", "minigame getSystemInfo : " + localJSONObject.toString());
+            break;
+            k = Math.max(n, i1);
+            i = Math.min(n, i1);
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          QMLog.e("SystemInfoPlugin", "getSafeArea", localJSONException);
+          continue;
+        }
+        paramInt1 = 0;
         continue;
       }
-      paramInt1 = 0;
-      continue;
-      label562:
-      paramInt1 = k;
       paramInt2 = i;
+      paramInt1 = n;
       continue;
-      label573:
+      label695:
       j = 0;
     }
     for (;;)
@@ -138,7 +161,7 @@ public class GameSystemInfoPlugin
       j = i;
       break;
       return localJSONObject;
-      label589:
+      label711:
       i = 0;
     }
   }

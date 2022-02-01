@@ -1,8 +1,45 @@
-public abstract interface zrq
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import java.util.Iterator;
+import java.util.List;
+
+public class zrq
+  implements ViewPager.OnPageChangeListener
 {
-  public abstract void a();
+  public zrq(EmptySupportViewPager paramEmptySupportViewPager) {}
   
-  public abstract void b();
+  public void onPageScrollStateChanged(int paramInt)
+  {
+    if (this.a.a != null)
+    {
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
+      }
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (this.a.a != null)
+    {
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
+      }
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (this.a.a != null)
+    {
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      }
+    }
+  }
 }
 
 

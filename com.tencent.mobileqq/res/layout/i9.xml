@@ -5,6 +5,7 @@
     <FrameLayout android:id="@id/dvv" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
         <com.tencent.widget.ThemeImageView android:id="@id/dvu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@null" />
         <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/dvw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/dwd" android:background="@drawable/x6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@null" />
     </FrameLayout>
     <com.tencent.widget.ThemeImageView android:id="@id/dyb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignRight="@id/dvv" android:layout_alignBottom="@id/dvv" android:contentDescription="@null" />
     <LinearLayout android:id="@id/f9y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/dvv" android:layout_centerVertical="true">

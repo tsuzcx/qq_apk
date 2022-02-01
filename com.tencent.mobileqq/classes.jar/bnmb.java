@@ -1,22 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class bnmb
-  extends RecyclerView.ViewHolder
+public class bnmb
+  extends bnnn
 {
-  private TextView a;
-  
-  public bnmb(View paramView)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131362227));
-  }
-  
-  public void a(@NonNull bnmc parambnmc)
-  {
-    this.a.setText(parambnmc.a);
+    if ((!paramString2.equals("qqexplive")) || (this.a == null)) {}
+    while (TextUtils.isEmpty(paramString3)) {
+      return false;
+    }
+    QLog.i("QZoneECLiveJsPlugin", 2, "ec_live_jsbridge, dispatch method callback linkchain, " + paramString3);
+    try
+    {
+      paramJsBridgeListener = new Intent("com.tencent.mobileqq.action.ACTION_EC_LIVE_DISPATCH_EVENT");
+      paramJsBridgeListener.putExtra("event", paramString3);
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+      {
+        paramString1 = new JSONObject(paramVarArgs[0]);
+        if (paramString1 != null) {
+          paramJsBridgeListener.putExtra("data", paramString1.toString());
+        }
+      }
+      BaseApplicationImpl.getContext().sendBroadcast(paramJsBridgeListener, "com.tencent.msg.permission.pushnotify");
+      return true;
+    }
+    catch (Throwable paramJsBridgeListener)
+    {
+      QLog.e("QZoneECLiveJsPlugin", 1, "qz_livevideo_jsbridge, dispatch method callback linkchain exception", paramJsBridgeListener);
+    }
+    return false;
   }
 }
 

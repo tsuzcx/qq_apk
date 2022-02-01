@@ -1,59 +1,55 @@
-import android.os.Looper;
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class svt
 {
-  private int jdField_a_of_type_Int = this.jdField_a_of_type_JavaLangThread.getPriority();
-  private Thread jdField_a_of_type_JavaLangThread = Looper.getMainLooper().getThread();
-  private int jdField_b_of_type_Int;
-  private Thread jdField_b_of_type_JavaLangThread;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+  private Map<String, String[]> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public svt()
+  public svt(Context paramContext, String paramString)
   {
-    for (ThreadGroup localThreadGroup = Thread.currentThread().getThreadGroup(); localThreadGroup.getParent() != null; localThreadGroup = localThreadGroup.getParent()) {}
-    Thread[] arrayOfThread = new Thread[localThreadGroup.activeCount()];
-    localThreadGroup.enumerate(arrayOfThread);
-    int i = 0;
-    for (;;)
+    a(paramContext, paramString);
+  }
+  
+  private void a(Context paramContext, String paramString)
+  {
+    b(paramContext, paramString);
+  }
+  
+  private boolean a(String paramString)
+  {
+    return (paramString == null) || (paramString.endsWith(".geojson")) || (paramString.equals("manifest"));
+  }
+  
+  private void b(Context paramContext, String paramString)
+  {
+    try
     {
-      if (i < arrayOfThread.length)
+      String[] arrayOfString = paramContext.getAssets().list(paramString);
+      if (arrayOfString != null)
       {
-        if ((arrayOfThread[i] != null) && (arrayOfThread[i].isAlive()) && (arrayOfThread[i].getName().equalsIgnoreCase("RenderThread")))
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, arrayOfString);
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
         {
-          this.jdField_b_of_type_JavaLangThread = arrayOfThread[i];
-          this.jdField_b_of_type_Int = this.jdField_b_of_type_JavaLangThread.getPriority();
+          String str = arrayOfString[i];
+          if (!a(str)) {
+            b(paramContext, paramString + "/" + str);
+          }
+          i += 1;
         }
       }
-      else {
-        return;
-      }
-      i += 1;
+      return;
     }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangThread.setPriority(10);
-    if (this.jdField_b_of_type_JavaLangThread != null) {
-      this.jdField_b_of_type_JavaLangThread.setPriority(10);
+    catch (IOException paramContext)
+    {
+      QLog.e("Q.readinjoy.proteus", 1, "addFolderChild", paramContext);
     }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaLangThread.setPriority(this.jdField_a_of_type_Int);
-    if (this.jdField_b_of_type_JavaLangThread != null) {
-      this.jdField_b_of_type_JavaLangThread.setPriority(this.jdField_b_of_type_Int);
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("main:" + this.jdField_a_of_type_JavaLangThread.getPriority());
-    if (this.jdField_b_of_type_JavaLangThread != null) {
-      localStringBuilder.append(" render:" + this.jdField_b_of_type_JavaLangThread.getPriority());
-    }
-    return localStringBuilder.toString();
   }
 }
 

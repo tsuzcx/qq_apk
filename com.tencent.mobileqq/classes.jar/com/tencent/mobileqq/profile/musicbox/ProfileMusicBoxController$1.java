@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.profile.musicbox;
 
-import azhr;
+import baad;
 import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
 
 public class ProfileMusicBoxController$1
   implements Runnable
 {
-  public ProfileMusicBoxController$1(azhr paramazhr, boolean paramBoolean) {}
+  public ProfileMusicBoxController$1(baad parambaad, boolean paramBoolean) {}
   
   public void run()
   {
-    if (azhr.a(this.this$0) != null) {
-      azhr.b(this.this$0).setPlayState(this.a);
+    if (baad.a(this.this$0) != null) {
+      baad.b(this.this$0).setPlayState(this.a);
     }
   }
 }

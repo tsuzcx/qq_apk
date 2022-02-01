@@ -1,66 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.Date;
 
-public class avql
-  implements IMiniMsgUnreadCallback
+class avql
 {
-  public avql(UiApiPlugin paramUiApiPlugin) {}
+  static avql jdField_a_of_type_Avql = new avql(false, new Date(0L), new Date(0L));
+  final Date jdField_a_of_type_JavaUtilDate;
+  final boolean jdField_a_of_type_Boolean;
+  final Date b;
   
-  public void destroy() {}
-  
-  public void hide() {}
-  
-  public void hideUnread()
+  avql(boolean paramBoolean, @NonNull Date paramDate1, @NonNull Date paramDate2)
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("unReadHide", true);
-      this.a.a("UnRead", localJSONObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilDate = paramDate1;
+    this.b = paramDate2;
   }
   
-  public boolean show(int paramInt)
+  private boolean b()
   {
-    return false;
+    long l = NetConnInfoCenter.getServerTime() * 1000L;
+    return (this.jdField_a_of_type_JavaUtilDate.getTime() <= l) && (this.b.getTime() >= l);
   }
   
-  public void updateOnBackFromMiniAIO(Bundle paramBundle)
+  boolean a()
   {
-    try
-    {
-      paramBundle = new JSONObject();
-      this.a.a("backFromMiniAIO", paramBundle);
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      QLog.d("UiApiPlugin", 1, paramBundle, new Object[0]);
-    }
-  }
-  
-  public void updateUnreadCount(int paramInt, boolean paramBoolean)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("unReadC", paramInt);
-      localJSONObject.put("unReadHide", paramBoolean);
-      this.a.a("updateUnreadCount", localJSONObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("UiApiPlugin", 2, "mini_msg uiApiPlugin undateUnreadCount = " + paramInt);
-      }
-      return;
-    }
-    catch (Exception localException) {}
+    return (b()) && (this.jdField_a_of_type_Boolean);
   }
 }
 

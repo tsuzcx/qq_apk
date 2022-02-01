@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class bpxr
-  implements DialogInterface.OnClickListener
+final class bpxr
+  implements EIPCResultCallback
 {
-  bpxr(bpxo parambpxo) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    bpxo.a(this.a, "an_yuanshipin");
+    if (paramEIPCResult != null)
+    {
+      boolean bool = paramEIPCResult.data.getBoolean("key_result");
+      QLog.d("PeakIpcController", 2, "sendPic result:" + bool);
+    }
   }
 }
 

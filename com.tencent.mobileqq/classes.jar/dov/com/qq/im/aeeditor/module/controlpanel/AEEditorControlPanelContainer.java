@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bogc;
+import bphx;
 import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
 
 public abstract class AEEditorControlPanelContainer
@@ -36,16 +36,16 @@ public abstract class AEEditorControlPanelContainer
     a();
   }
   
-  public AEEditorFilterControlPanel a(bogc parambogc)
+  public AEEditorFilterControlPanel a(bphx parambphx)
   {
     removeAllViews();
     if (this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel == null)
     {
       this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel = new AEEditorFilterControlPanel(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.setFilterChangedComparator(parambogc);
+      this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.setFilterChangedComparator(parambphx);
     }
-    parambogc = new FrameLayout.LayoutParams(-1, -1);
-    addView(this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel, parambogc);
+    parambphx = new FrameLayout.LayoutParams(-1, -1);
+    addView(this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel, parambphx);
     return this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel;
   }
   

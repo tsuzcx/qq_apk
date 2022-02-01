@@ -1,21 +1,8 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.qphone.base.util.QLog;
 
-class avsb
-  implements View.OnLongClickListener
+public abstract interface avsb
 {
-  avsb(avsa paramavsa, avse paramavse) {}
-  
-  public boolean onLongClick(View paramView)
-  {
-    if (avsa.a(this.jdField_a_of_type_Avsa) != null)
-    {
-      QLog.i("leba_sort_LebaTableMgrAdpter", 1, "startDrag");
-      avsa.a(this.jdField_a_of_type_Avsa).startDrag(this.jdField_a_of_type_Avse);
-    }
-    return false;
-  }
+  public abstract void a(View paramView);
 }
 
 

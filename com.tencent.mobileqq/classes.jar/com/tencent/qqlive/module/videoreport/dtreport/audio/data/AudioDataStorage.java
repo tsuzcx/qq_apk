@@ -12,7 +12,7 @@ class AudioDataStorage
     return (AudioEntity)DATA_MAP.getData(paramObject);
   }
   
-  static void setData(@NonNull Object paramObject, AudioEntity paramAudioEntity)
+  static void setData(@NonNull Object paramObject, @NonNull AudioEntity paramAudioEntity)
   {
     DATA_MAP.setData(paramObject, paramAudioEntity);
   }

@@ -1,7 +1,7 @@
 import com.dataline.activities.PrinterActivity;
 
 public class cu
-  extends anke
+  extends anwb
 {
   public cu(PrinterActivity paramPrinterActivity) {}
   

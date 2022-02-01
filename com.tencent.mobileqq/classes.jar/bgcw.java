@@ -1,14 +1,15 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
-class bgcw
-  implements FilenameFilter
+public class bgcw
+  implements DialogInterface.OnClickListener
 {
-  bgcw(bgcs parambgcs, String paramString) {}
+  public bgcw(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
+    paramDialogInterface.dismiss();
   }
 }
 

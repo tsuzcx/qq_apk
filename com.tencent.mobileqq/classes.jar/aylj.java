@@ -1,12 +1,12 @@
-import android.widget.RelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface aylj
+class aylj
+  implements DialogInterface.OnClickListener
 {
-  public abstract RelativeLayout a();
+  aylj(aykx paramaykx) {}
   
-  public abstract void b(aosj paramaosj);
-  
-  public abstract boolean c();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

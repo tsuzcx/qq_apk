@@ -1,23 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.intervideo.nowproxy.proxyinner.channel.FromService;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public final class adav
-  implements Parcelable.Creator<FromService>
+public class adav
+  implements Comparator<MessageRecord>
 {
-  public FromService a(Parcel paramParcel)
-  {
-    FromService localFromService = new FromService();
-    localFromService.jdField_a_of_type_Int = paramParcel.readInt();
-    localFromService.b = paramParcel.readInt();
-    localFromService.c = paramParcel.readInt();
-    localFromService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
-    return localFromService;
-  }
+  public adav(QQMessageFacade paramQQMessageFacade) {}
   
-  public FromService[] a(int paramInt)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    return new FromService[paramInt];
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 

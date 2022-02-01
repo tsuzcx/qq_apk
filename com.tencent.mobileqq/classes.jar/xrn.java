@@ -1,71 +1,93 @@
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class xrn
-  extends Handler
+  extends SimpleJob<Object>
 {
-  private xrn(MediaPlayer paramMediaPlayer) {}
-  
-  public void handleMessage(Message paramMessage)
+  public xrn(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, boolean paramBoolean1, int paramInt1, Long paramLong, boolean paramBoolean2, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3, int paramInt5, int paramInt6, int paramInt7, xtt paramxtt, long paramLong1, String paramString4, String paramString5)
   {
-    switch (paramMessage.what)
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    int i = 0;
+    paramJobContext = "0";
+    int j;
+    if (this.jdField_a_of_type_Boolean)
     {
-    default: 
-    case 1: 
-    case 4: 
-    case 2: 
-    case 5: 
-      do
+      j = 200;
+      i = this.jdField_a_of_type_Int;
+      paramVarArgs = String.valueOf(i) + "*";
+      paramJobContext = paramVarArgs;
+      i = j;
+      if (this.jdField_a_of_type_JavaLangLong != null)
       {
-        do
-        {
-          do
-          {
-            return;
-            Log.d("Story-MediaPlayer", "onPrepared");
-          } while (this.a.jdField_a_of_type_Xry == null);
-          this.a.jdField_a_of_type_Xry.a_(this.a);
-          return;
-          Log.d("Story-MediaPlayer", "onSeekComplete");
-        } while (this.a.jdField_a_of_type_Xrz == null);
-        this.a.jdField_a_of_type_Xrz.a(this.a);
-        return;
-        Log.d("Story-MediaPlayer", "onPlaybackComplete");
-        if (this.a.jdField_a_of_type_Xrv != null) {
-          this.a.jdField_a_of_type_Xrv.a(this.a);
-        }
-        this.a.c(false);
-        return;
-        Log.d("Story-MediaPlayer", "onVideoSizeChanged");
-      } while (this.a.jdField_a_of_type_Xsb == null);
-      this.a.jdField_a_of_type_Xsb.a(this.a, paramMessage.arg1, paramMessage.arg2);
-      return;
-    case 100: 
-      Log.e("Story-MediaPlayer", "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
-      if (this.a.jdField_a_of_type_Xrw == null) {
-        break;
+        paramJobContext = paramVarArgs + String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_JavaLangLong.longValue());
+        i = j;
       }
+      if ((i != 0) && (i != 7) && ((i != 200) || (this.jdField_a_of_type_Int < 6) || (this.jdField_a_of_type_Int > 10))) {
+        break label509;
+      }
+      if (this.jdField_d_of_type_Int != 1) {
+        break label503;
+      }
+      paramVarArgs = "1";
+      label138:
+      if ((!TextUtils.equals(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString)) || (i == 0)) {
+        break label532;
+      }
+      yuk.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "reportDevPlayerDone, errorCode=%d, suError=%s => treat as success => 300", new Object[] { Integer.valueOf(i), paramJobContext });
+      j = 300;
+      String str = String.valueOf(i) + "*";
+      paramJobContext = str + paramJobContext;
     }
-    for (boolean bool = this.a.jdField_a_of_type_Xrw.a(this.a, paramMessage.arg1, paramMessage.arg2);; bool = false)
+    for (;;)
     {
-      if ((this.a.jdField_a_of_type_Xrv != null) && (!bool)) {
-        this.a.jdField_a_of_type_Xrv.a(this.a);
+      yup.b("play_video", "play_result", this.e, j, new String[] { paramJobContext, paramVarArgs, yup.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
+      yup.b("play_video", "play_buffering", this.e, j, new String[] { String.valueOf(this.f), String.valueOf(this.g), yup.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
+      if (this.jdField_a_of_type_Xtt.jdField_a_of_type_Long > 0L) {
+        yup.b("play_video", "play_bitRate", this.e, j, new String[] { paramJobContext, this.jdField_a_of_type_Xtt.toString(), yup.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
       }
-      this.a.c(false);
-      return;
-      Log.d("Story-MediaPlayer", "onInfo");
-      if (this.a.jdField_a_of_type_Xrx == null) {
+      if (this.jdField_a_of_type_Boolean) {
+        i = 1;
+      }
+      for (;;)
+      {
+        if (i != 0)
+        {
+          long l = 0L;
+          if (this.jdField_a_of_type_Long != 0L) {
+            l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
+          }
+          yup.b("sdk_download_video", "video_download_error", this.e, j, new String[] { this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString, String.valueOf(i), String.valueOf(l) });
+        }
+        return null;
+        if (!this.jdField_b_of_type_Boolean) {
+          break;
+        }
+        i = this.jdField_b_of_type_Int;
+        paramJobContext = String.valueOf(this.jdField_c_of_type_Int);
         break;
+        label503:
+        paramVarArgs = "2";
+        break label138;
+        label509:
+        paramVarArgs = "0";
+        break label138;
+        if (this.jdField_b_of_type_Boolean) {
+          i = 2;
+        } else {
+          i = 0;
+        }
       }
-      this.a.jdField_a_of_type_Xrx.a_(this.a, paramMessage.arg1, paramMessage.arg2);
-      return;
-      if (this.a.jdField_a_of_type_Xru != null) {
-        this.a.jdField_a_of_type_Xru.a(this.a, paramMessage.arg1);
-      }
-      this.a.e = paramMessage.arg1;
-      return;
+      label532:
+      j = i;
     }
   }
 }

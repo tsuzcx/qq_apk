@@ -1,19 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.gaudio.GaInviteLockActivity;
+import android.graphics.Bitmap;
 
-public class lnf
-  implements DialogInterface.OnClickListener
+public abstract interface lnf
 {
-  public lnf(GaInviteLockActivity paramGaInviteLockActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    mqw.e(false, false);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  public abstract boolean a(Bitmap paramBitmap, String paramString);
 }
 
 

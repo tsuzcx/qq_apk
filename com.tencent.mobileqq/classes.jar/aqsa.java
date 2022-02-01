@@ -1,18 +1,14 @@
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-class aqsa
-  implements bosh
+public abstract interface aqsa
 {
-  aqsa(aqrz paramaqrz) {}
+  public abstract void a(ColorNote paramColorNote);
   
-  public void a(String paramString)
-  {
-    ((QIMMusicConfigManager)bojv.a(2)).a(paramString);
-  }
+  public abstract void b(ColorNote paramColorNote);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqsa
  * JD-Core Version:    0.7.0.1
  */

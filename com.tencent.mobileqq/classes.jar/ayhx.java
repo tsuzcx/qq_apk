@@ -1,24 +1,30 @@
-import android.text.Editable;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ayhx
-  implements TextView.OnEditorActionListener
+class ayhx
+  implements ayrk
 {
-  public ayhx(OCRTextSearchActivity paramOCRTextSearchActivity) {}
+  ayhx(ayhw paramayhw) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    if (paramBoolean)
     {
-      OCRTextSearchActivity.a(this.a);
-      this.a.a.setSelection(this.a.a.getText().length());
-      return true;
+      ayrf localayrf = (ayrf)this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263);
+      if (localayrf != null) {
+        localayrf.d(paramString);
+      }
+      ayhj.a(this.a.a.a, paramString);
+      if ((this.a.a.a.jdField_a_of_type_AndroidViewView.getContext() instanceof Activity)) {
+        ((BaseActivity)this.a.a.a.jdField_a_of_type_AndroidViewView.getContext()).finish();
+      }
+      return;
     }
-    return false;
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anzj.a(2131707135), 0).a();
   }
 }
 

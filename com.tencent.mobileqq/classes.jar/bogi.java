@@ -1,158 +1,94 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.animation.Animator;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.Fragment;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Looper;
+import android.os.MessageQueue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.mobileqq.activity.photo.album.AlbumListBaseData;
+import com.tencent.qqlive.module.videoreport.inject.fragment.FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportFragment;
+import com.tencent.widget.XFrameLayout;
+import com.tencent.widget.XListView;
 
-public class bogi
+public abstract class bogi
+  extends ReportFragment
 {
-  private int jdField_a_of_type_Int;
-  private List<bogj> jdField_a_of_type_JavaUtilList = new ArrayList(9);
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[9];
-  private List<HashMap<Integer, Float>> b = new ArrayList();
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  public bogf a;
+  public bogm a;
+  public bogy a;
+  AlbumListBaseData jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData;
+  XFrameLayout jdField_a_of_type_ComTencentWidgetXFrameLayout;
+  public XListView a;
   
-  public bogi()
+  @TargetApi(14)
+  private void a(View paramView)
   {
-    b();
+    this.jdField_a_of_type_ComTencentWidgetXFrameLayout = ((XFrameLayout)paramView.findViewById(2131370040));
+    this.jdField_a_of_type_ComTencentWidgetXFrameLayout.setCornerRadiusAndMode(Utils.dp2px(10.0D), 5);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramView.findViewById(2131362567));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setWrapByScroll(true);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bogf);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new bogl(this, null));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362598));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new bogj(this));
+    paramView.findViewById(2131362597).setVisibility(8);
+    int i = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_index", 0);
+    int j = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_y", 0);
+    Looper.myQueue().addIdleHandler(new bogk(this, i, j));
+    this.jdField_a_of_type_Bogy.b();
   }
   
-  private bogj a(int paramInt)
+  protected abstract bogy a();
+  
+  public void a(bogm parambogm)
   {
-    return (bogj)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    this.jdField_a_of_type_Bogm = parambogm;
   }
   
-  public float a(int paramInt)
+  public void onCreate(Bundle paramBundle)
   {
-    return a(paramInt).a();
+    super.onCreate(paramBundle);
   }
   
-  public float a(int paramInt1, int paramInt2, float paramFloat)
+  public Animator onCreateAnimator(int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    if (!((HashMap)this.b.get(paramInt1)).containsKey(Integer.valueOf(paramInt2))) {
-      return paramFloat;
+    return null;
+  }
+  
+  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
+  {
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561073, paramViewGroup, false);
+    this.jdField_a_of_type_Bogy = a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData = this.jdField_a_of_type_Bogy.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData;
+    paramViewGroup = getActivity().getIntent();
+    this.jdField_a_of_type_Bogy.a(paramViewGroup);
+    a(paramLayoutInflater);
+    FragmentCollector.onFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+  }
+  
+  public void onDestroyView()
+  {
+    super.onDestroyView();
+    if (this.jdField_a_of_type_Bogy != null) {
+      this.jdField_a_of_type_Bogy.a();
     }
-    return ((Float)((HashMap)this.b.get(paramInt1)).get(Integer.valueOf(paramInt2))).floatValue();
-  }
-  
-  public int a(int paramInt)
-  {
-    return a(paramInt).a();
-  }
-  
-  public bode a(int paramInt)
-  {
-    return a(paramInt).a();
-  }
-  
-  public bodh a(int paramInt)
-  {
-    return a(paramInt).a();
-  }
-  
-  public String a(int paramInt)
-  {
-    return a(paramInt).a();
-  }
-  
-  public void a()
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int)
-    {
-      ((bogj)this.jdField_a_of_type_JavaUtilList.get(i)).a();
-      i += 1;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt > 9) {
-      throw new IllegalArgumentException("image count > max count 9");
-    }
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt, float paramFloat)
-  {
-    a(paramInt).a(paramFloat);
-  }
-  
-  public void a(int paramInt1, int paramInt2, float paramFloat)
-  {
-    ((HashMap)this.b.get(paramInt1)).put(Integer.valueOf(paramInt2), Float.valueOf(paramFloat));
-  }
-  
-  public void a(int paramInt, bode parambode)
-  {
-    a(paramInt).a(parambode);
-  }
-  
-  public void a(int paramInt1, bodh parambodh, int paramInt2)
-  {
-    a(paramInt1).a(parambodh, paramInt2);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_ArrayOfJavaLangString[paramInt] = paramString;
-  }
-  
-  public void a(int paramInt1, String paramString, float paramFloat, int paramInt2)
-  {
-    ((bogj)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).a(paramString, paramFloat, paramInt2);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return a(paramInt).a();
-  }
-  
-  public int b(int paramInt)
-  {
-    return a(paramInt).b();
-  }
-  
-  public String b(int paramInt)
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.b.clear();
-    int i = 0;
-    while (i < 9)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(new bogj());
-      this.b.add(new HashMap());
-      this.jdField_a_of_type_ArrayOfJavaLangString[i] = "";
-      i += 1;
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((bogj)this.jdField_a_of_type_JavaUtilList.get(i)).a(((bogj)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(), ((bogj)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(), ((bogj)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a());
-      ((HashMap)this.b.get(i)).put(Integer.valueOf(((bogj)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a()), Float.valueOf(((bogj)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a()));
-      i += 1;
-    }
-  }
-  
-  public boolean b(int paramInt)
-  {
-    return a(paramInt).b();
-  }
-  
-  public void c(int paramInt)
-  {
-    a(paramInt).a();
-  }
-  
-  public boolean c(int paramInt)
-  {
-    return a(paramInt).c();
   }
 }
 

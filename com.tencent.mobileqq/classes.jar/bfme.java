@@ -1,23 +1,61 @@
-import android.text.Spannable;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import javax.annotation.Nullable;
 
-final class bfme
-  implements Comparator<bfmd>
+public class bfme
+  extends arac<bfmd>
 {
-  bfme(Spannable paramSpannable) {}
-  
-  public int a(bfmd parambfmd1, bfmd parambfmd2)
+  @NonNull
+  public bfmd a(int paramInt)
   {
-    int i = 0;
-    int j = this.a.getSpanStart(parambfmd1);
-    int k = this.a.getSpanStart(parambfmd2);
-    if (j < k) {
-      i = -1;
+    QLog.d("TroopBlockConfigProcessor", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new bfmd();
+  }
+  
+  @Nullable
+  public bfmd a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return bfmd.a(paramArrayOfaraj[0].a);
     }
-    while (j <= k) {
-      return i;
-    }
-    return 1;
+    return null;
+  }
+  
+  public void a(bfmd parambfmd) {}
+  
+  public Class<bfmd> clazz()
+  {
+    return bfmd.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return true;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TroopBlockConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 673;
   }
 }
 

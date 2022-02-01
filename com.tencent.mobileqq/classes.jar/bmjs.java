@@ -1,84 +1,31 @@
-import android.text.TextUtils;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class bmjs
+  implements DialogInterface.OnClickListener
 {
-  private static String a(List<String> paramList)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      localStringBuilder.append((String)paramList.next());
-      localStringBuilder.append(";");
-    }
-    return localStringBuilder.toString();
-  }
+  public bmjs(QlinkStandardDialogActivity paramQlinkStandardDialogActivity, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public static List<String> a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return a(paramString, 500);
-  }
-  
-  public static List<String> a(String paramString, int paramInt)
-  {
-    int i = 0;
-    paramString = LocalMultiProcConfig.getString(paramString, "").split(";");
-    LinkedList localLinkedList = new LinkedList();
-    if ((paramString.length == 0) || (paramInt <= 0)) {
-      return localLinkedList;
-    }
-    int k;
-    for (int j = 0;; j = k)
-    {
-      if (i < paramString.length)
-      {
-        CharSequence localCharSequence = paramString[i];
-        k = j;
-        if (!TextUtils.isEmpty(localCharSequence))
-        {
-          localLinkedList.add(localCharSequence);
-          k = j + 1;
-        }
-        if (k != paramInt) {}
+    if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
+        aunj.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 777, false, 0);
       }
-      else
-      {
-        return localLinkedList;
-      }
-      i += 1;
     }
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    List localList;
-    do
+    for (;;)
     {
+      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
       return;
-      localList = a(paramString1, 500);
-    } while (localList.contains(paramString2));
-    localList.add(0, paramString2);
-    if (localList.size() > 500) {
-      localList.remove(500);
+      aunj.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 888, false, 0);
+      continue;
+      paramDialogInterface = new Intent(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, ScannerActivity.class);
+      paramDialogInterface.putExtra("from", "qlink");
+      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.startActivity(paramDialogInterface);
     }
-    LocalMultiProcConfig.putString(paramString1, a(localList));
-  }
-  
-  public static void a(String paramString, List<String> paramList)
-  {
-    if (paramList == null) {
-      return;
-    }
-    LinkedList localLinkedList = new LinkedList();
-    List localList = a(paramString, 500 - paramList.size());
-    localLinkedList.addAll(paramList);
-    localLinkedList.addAll(localList);
-    LocalMultiProcConfig.putString(paramString, a(localLinkedList));
   }
 }
 

@@ -1,16 +1,6 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-
-public final class aoow
-  extends aoou
+public abstract interface aoow
 {
-  public aoow(String paramString, boolean paramBoolean)
-  {
-    super(paramString, paramBoolean);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
-  
-  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
 }
 
 

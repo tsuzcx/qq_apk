@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/sy" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/l89" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.AutoBgImageView android:id="@id/l89" android:background="@drawable/bjg" android:paddingLeft="6.0dip" android:paddingTop="6.0dip" android:paddingRight="6.0dip" android:paddingBottom="6.0dip" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginTop="24.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/er1" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@string/wbb" />
-    <RelativeLayout android:id="@id/content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:id="@id/mty" android:layout_width="61.0dip" android:layout_height="61.0dip" android:src="@drawable/eqg" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="17.0sp" android:textStyle="bold" android:id="@id/loi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.5dip" android:text="@string/wew" android:layout_below="@id/mty" android:layout_centerHorizontal="true" />
-        <ImageView android:id="@id/mtf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_below="@id/loi" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="17.0sp" android:textStyle="bold" android:id="@id/nn8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:text="70%" android:layout_below="@id/mtf" android:layout_centerHorizontal="true" />
-        <com.tencent.avgame.ui.CasualTips android:id="@id/nkp" android:layout_width="wrap_content" android:layout_height="90.0dip" android:layout_marginTop="16.0dip" android:layout_below="@id/nn8" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
+    <com.tencent.image.URLImageView android:id="@id/mga" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/bjc" android:scaleType="fitXY" android:layout_centerInParent="true" />
+    <com.tencent.image.URLImageView android:id="@id/mrt" android:layout_width="47.0dip" android:layout_height="47.0dip" android:src="@drawable/ev_" />
+    <TextView android:textSize="@dimen/ayp" android:id="@id/n7v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+3" android:layout_centerInParent="true" />
 </RelativeLayout>

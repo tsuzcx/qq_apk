@@ -1,13 +1,27 @@
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
 
 public class aett
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public aett(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public aett(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
   
-  public void onClick(View paramView) {}
+  public void afterTextChanged(Editable paramEditable)
+  {
+    paramEditable = paramEditable.toString();
+    if ((paramEditable != null) && (paramEditable.trim().length() > 0))
+    {
+      this.a.b.setEnabled(true);
+      return;
+    }
+    this.a.b.setEnabled(false);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

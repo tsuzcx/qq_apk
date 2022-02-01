@@ -1,6 +1,4 @@
-public final class wsr
-  extends weu
-{}
+public abstract interface wsr {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

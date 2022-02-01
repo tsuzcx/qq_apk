@@ -1,160 +1,82 @@
-import android.net.Uri;
-import android.os.Bundle;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.now.FeedsProtocol.GetMediaDetailRsp;
-import com.tencent.pb.now.FeedsProtocol.LiveAggregateInfo;
-import com.tencent.pb.now.FeedsProtocol.MediaInfo;
-import com.tencent.pb.now.FeedsProtocol.PicFeedsInfo;
-import com.tencent.pb.now.FeedsProtocol.RichTitleElement;
-import com.tencent.pb.now.FeedsProtocol.ShortVideoInfo;
-import com.tencent.pb.now.FeedsProtocol.TextFeed;
-import com.tencent.pb.now.FeedsProtocol.TopicCfg;
-import com.tencent.pb.now.FeedsProtocol.UserInfo;
-import com.tencent.pb.now.FeedsProtocol.VideoItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.AudioHelper;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class axkb
-  extends axjw
 {
-  private String a;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  
-  private void a(int paramInt, List<FeedsProtocol.TopicCfg> paramList, FeedsProtocol.VideoItem paramVideoItem, ArrayList<VideoData> paramArrayList)
+  public static void a(Context paramContext, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, MessageRecord paramMessageRecord)
   {
-    if (paramVideoItem == null)
+    a(paramContext, paramString, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramMessageRecord, null);
+  }
+  
+  public static void a(Context paramContext, String paramString1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, MessageRecord paramMessageRecord, String paramString2)
+  {
+    if (zyx.b(paramString1))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("paseRecord", 1, "item is null!");
+      paramMessageRecord = new Intent(paramContext, JoinDiscussionActivity.class);
+      int i = paramString1.indexOf("dc/ft?k=");
+      if (i > 0) {
+        paramMessageRecord.putExtra("innerSig", paramString1.substring("dc/ft?k=".length() + i));
       }
+      for (;;)
+      {
+        paramContext.startActivity(paramMessageRecord);
+        return;
+        paramMessageRecord.putExtra("innerSig", paramString1);
+      }
+    }
+    if ((!TextUtils.isEmpty(paramString1)) && (tbz.b(paramString1)))
+    {
+      tbz.a(paramContext, null, tbz.b(paramString1), null);
       return;
     }
-    VideoData localVideoData = new VideoData();
-    localVideoData.jdField_a_of_type_Int = 1;
-    localVideoData.jdField_a_of_type_JavaLangString = paramVideoItem.id.get().toStringUtf8();
-    localVideoData.jdField_e_of_type_JavaLangString = paramVideoItem.jump_url.get().toStringUtf8();
-    localVideoData.jdField_a_of_type_Long = paramVideoItem.user_info.uid.get();
-    localVideoData.b = paramVideoItem.user_info.explicit_uid.get();
-    localVideoData.jdField_c_of_type_Int = paramVideoItem.user_info.id_type.get();
-    localVideoData.jdField_c_of_type_JavaLangString = paramVideoItem.video_cover_url.get().toStringUtf8();
-    localVideoData.f = ((FeedsProtocol.UserInfo)paramVideoItem.user_info.get()).head_img_url.get().toStringUtf8();
-    localVideoData.g = ((FeedsProtocol.UserInfo)paramVideoItem.user_info.get()).anchor_name.get().toStringUtf8();
-    localVideoData.jdField_e_of_type_Long = paramVideoItem.video_start_time.get();
-    localVideoData.m = paramInt;
-    localVideoData.j = "";
-    paramVideoItem = paramVideoItem.rpt_msg_rich_title.get().iterator();
-    while (paramVideoItem.hasNext())
-    {
-      FeedsProtocol.RichTitleElement localRichTitleElement = (FeedsProtocol.RichTitleElement)paramVideoItem.next();
-      if (localRichTitleElement.type.get() == 1) {
-        localVideoData.j += localRichTitleElement.text.get().toStringUtf8();
-      } else if (localRichTitleElement.type.get() == 2) {
-        localVideoData.j = (localVideoData.j + "#" + localRichTitleElement.text.get().toStringUtf8() + "#");
-      }
+    AudioHelper.b("gotoWebViewBrowser_" + paramString1);
+    Intent localIntent = new Intent(paramContext, QQBrowserDelegationActivity.class);
+    localIntent.putExtra("param_force_internal_browser", paramBoolean4);
+    localIntent.putExtra("key_isReadModeEnabled", paramBoolean1);
+    localIntent.putExtra("big_brother_source_key", paramString2);
+    if ((paramContext instanceof BaseActivity)) {
+      localIntent.putExtra("uin", ((BaseActivity)paramContext).getAppRuntime().getAccount());
     }
-    paramArrayList.add(axkm.a(paramList, localVideoData));
-    paramArrayList.add(localVideoData);
-  }
-  
-  private void a(FeedsProtocol.GetMediaDetailRsp paramGetMediaDetailRsp)
-  {
-    paramGetMediaDetailRsp = paramGetMediaDetailRsp.media_list.get();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    paramGetMediaDetailRsp = paramGetMediaDetailRsp.iterator();
-    while (paramGetMediaDetailRsp.hasNext())
+    localIntent.putExtra("useDefBackText", paramBoolean3);
+    localIntent.putExtra("injectrecommend", paramBoolean2);
+    if (paramMessageRecord != null)
     {
-      FeedsProtocol.MediaInfo localMediaInfo = (FeedsProtocol.MediaInfo)paramGetMediaDetailRsp.next();
-      if (localMediaInfo.type.get() == 1) {
-        b(localMediaInfo, this.jdField_a_of_type_JavaUtilArrayList);
-      } else if (localMediaInfo.type.get() == 2) {
-        a(localMediaInfo, this.jdField_a_of_type_JavaUtilArrayList);
-      } else if (localMediaInfo.type.get() == 3) {
-        a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.ShortVideoInfo)localMediaInfo.short_video.get(), this.jdField_a_of_type_JavaUtilArrayList);
-      } else if (localMediaInfo.type.get() == 5) {
-        a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.PicFeedsInfo)localMediaInfo.pic_info.get(), this.jdField_a_of_type_JavaUtilArrayList);
-      } else if (localMediaInfo.type.get() == 6) {
-        a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.TextFeed)localMediaInfo.text_feed.get(), this.jdField_a_of_type_JavaUtilArrayList);
+      localIntent.putExtra("curtype", paramMessageRecord.istroop);
+      localIntent.putExtra("friendUin", paramMessageRecord.frienduin);
+      if (paramMessageRecord.istroop != 0) {
+        break label347;
       }
-    }
-  }
-  
-  private void a(FeedsProtocol.MediaInfo paramMediaInfo, ArrayList<VideoData> paramArrayList)
-  {
-    FeedsProtocol.VideoItem localVideoItem = (FeedsProtocol.VideoItem)paramMediaInfo.video.get();
-    a(paramMediaInfo.is_my_feeds.get(), paramMediaInfo.topic_cfg.get(), localVideoItem, paramArrayList);
-  }
-  
-  private void b(FeedsProtocol.MediaInfo paramMediaInfo, ArrayList<VideoData> paramArrayList)
-  {
-    Object localObject1 = (FeedsProtocol.LiveAggregateInfo)paramMediaInfo.live_aggregate.get();
-    FeedsProtocol.VideoItem localVideoItem = (FeedsProtocol.VideoItem)((FeedsProtocol.LiveAggregateInfo)localObject1).video.get();
-    if ((((FeedsProtocol.LiveAggregateInfo)localObject1).total_short_size.get() == 0) && (localVideoItem != null) && (!TextUtils.isEmpty(localVideoItem.jump_url.get().toString()))) {
-      a(paramMediaInfo.is_my_feeds.get(), paramMediaInfo.topic_cfg.get(), localVideoItem, paramArrayList);
+      localIntent.putExtra("articalChannelId", 2);
     }
     for (;;)
     {
+      localIntent.putExtra("url", paramString1);
+      localIntent.putExtra("fromOneCLickCLose", true);
+      localIntent.putExtra("fromAio", true);
+      tzq.a(paramMessageRecord, localIntent, paramString1);
+      paramString2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if ((paramString2 instanceof QQAppInterface)) {
+        agdz.a(localIntent, (QQAppInterface)paramString2, paramMessageRecord);
+      }
+      agbh.a(paramContext, localIntent, paramString1);
+      bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString1, "", "", "");
       return;
-      localObject1 = ((FeedsProtocol.LiveAggregateInfo)localObject1).short_video.get().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (FeedsProtocol.ShortVideoInfo)((Iterator)localObject1).next();
-        localObject2 = a(paramMediaInfo.is_my_feeds.get(), paramMediaInfo.topic_cfg.get(), (FeedsProtocol.ShortVideoInfo)localObject2, paramArrayList);
-        ((VideoData)localObject2).jdField_e_of_type_JavaLangString = localVideoItem.jump_url.get().toStringUtf8();
-        ((VideoData)localObject2).jdField_a_of_type_Int = 3;
+      label347:
+      if (paramMessageRecord.istroop == 1) {
+        localIntent.putExtra("articalChannelId", 3);
+      } else if (paramMessageRecord.istroop == 3000) {
+        localIntent.putExtra("articalChannelId", 4);
       }
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    new axks(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_JavaLangString + "&num=" + 10, new axkd(this));
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getString("raw_url");
-    this.jdField_a_of_type_JavaLangString = Uri.parse(paramBundle).getQuery();
-    if (QLog.isColorLevel()) {
-      QLog.d("InfinitePlayListDataModel", 2, "InfinitePlayListDataModel, url=" + paramBundle);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    if (!TextUtils.isEmpty(paramString1)) {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replace(paramString1, paramString2);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    new axks(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_JavaLangString + "&num=" + 10, new axkc(this));
   }
 }
 

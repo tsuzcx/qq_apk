@@ -1,22 +1,16 @@
-import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-@TargetApi(11)
-public class bpkd
+class bpkd
+  implements DialogInterface.OnDismissListener
 {
-  public static ValueAnimator a(long paramLong, float paramFloat1, float paramFloat2, bpkg parambpkg)
-  {
-    return a(ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2 }), parambpkg, paramLong);
-  }
+  bpkd(bpkb parambpkb) {}
   
-  private static ValueAnimator a(ValueAnimator paramValueAnimator, bpkg parambpkg, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    paramValueAnimator.addUpdateListener(new bpke(parambpkg));
-    paramValueAnimator.addListener(new bpkf(parambpkg, paramValueAnimator));
-    paramValueAnimator.setDuration(paramLong);
-    return paramValueAnimator;
+    if (bpkb.a(this.a) != null) {
+      bpkb.a(this.a).a();
+    }
   }
 }
 

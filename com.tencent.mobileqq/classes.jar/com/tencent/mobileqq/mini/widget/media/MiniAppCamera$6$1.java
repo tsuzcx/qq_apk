@@ -2,10 +2,10 @@ package com.tencent.mobileqq.mini.widget.media;
 
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.qphone.base.util.QLog;
-import zmv;
+import zqq;
 
 class MiniAppCamera$6$1
-  implements zmv
+  implements zqq
 {
   MiniAppCamera$6$1(MiniAppCamera.6 param6) {}
   

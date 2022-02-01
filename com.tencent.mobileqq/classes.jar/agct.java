@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agct
-  implements OnCompositionLoadedListener
+public class agct
+  implements View.OnClickListener
 {
-  agct(agcq paramagcq) {}
+  public agct(ReminderListFragment paramReminderListFragment) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void onClick(View paramView)
   {
-    agcq.a(this.a, paramLottieComposition);
+    ReminderListFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

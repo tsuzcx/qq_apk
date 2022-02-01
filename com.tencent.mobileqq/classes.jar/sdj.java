@@ -1,12 +1,32 @@
-import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface sdj
+public class sdj
+  implements blmh
 {
-  public abstract void a(VideoInfo paramVideoInfo);
+  public sdj(ChannelClassificationListView paramChannelClassificationListView) {}
   
-  public abstract void f();
-  
-  public abstract void g();
+  public void onScrollStateChanged(int paramInt)
+  {
+    JSONObject localJSONObject;
+    if (paramInt == 4098) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("channelid", ChannelClassificationListView.a(this.a));
+      ocd.a(null, ozs.a() + "", "0X8009934", "0X8009934", 0, 0, "", "", "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
 }
 
 

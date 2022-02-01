@@ -2,16 +2,16 @@ package com.tencent.biz.pubaccount.weishi_new.holder;
 
 import UserGrowth.stSimpleMetaFeed;
 import android.content.Context;
-import uid;
+import uis;
 
 public class WSGridCardPresenter$2
   implements Runnable
 {
-  public WSGridCardPresenter$2(uid paramuid, Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed) {}
+  public WSGridCardPresenter$2(uis paramuis, Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed) {}
   
   public void run()
   {
-    uid.b(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    uis.b(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
   }
 }
 

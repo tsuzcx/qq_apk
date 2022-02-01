@@ -1,32 +1,58 @@
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class tlr
-  implements HippyQQEngine.HippyQQEngineListener
 {
-  public tlr(ViolaFragment paramViolaFragment, Bundle paramBundle, ViewGroup paramViewGroup) {}
+  public double a;
+  public int a;
+  public long a;
+  public String a;
+  public double b;
+  public int b;
+  public long b;
+  public String b;
+  public double c;
+  public long c;
+  public String c;
+  public double d;
   
-  public void onError(int paramInt, String paramString)
+  public static tlr a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.a.b();
-    if (paramInt != -11) {
-      ViolaFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_AndroidViewViewGroup);
+    if (paramJSONObject == null) {
+      return null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Hippy", 2, "Hippy: initHippy error statusCode=" + paramInt + ", msg=" + paramString);
+    try
+    {
+      tlr localtlr = new tlr();
+      try
+      {
+        localtlr.jdField_a_of_type_Int = paramJSONObject.optInt("showGesturesAdType");
+        localtlr.jdField_a_of_type_Long = paramJSONObject.optLong("showGesturesAd_beginTime");
+        localtlr.jdField_b_of_type_Long = paramJSONObject.optLong("showGesturesAd_endTime");
+        localtlr.jdField_a_of_type_JavaLangString = paramJSONObject.optString("DragGoods");
+        localtlr.jdField_a_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateH");
+        localtlr.jdField_b_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateW");
+        localtlr.jdField_c_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateX");
+        localtlr.d = paramJSONObject.optDouble("DragGoodsCoordinateY");
+        localtlr.jdField_b_of_type_JavaLangString = paramJSONObject.optString("LongPressColor");
+        localtlr.jdField_c_of_type_Long = paramJSONObject.optLong("LongPressTime");
+        localtlr.jdField_c_of_type_JavaLangString = paramJSONObject.optString("slideColor");
+        localtlr.jdField_b_of_type_Int = paramJSONObject.optInt("validSlideLength");
+        return localtlr;
+      }
+      catch (Exception localException1)
+      {
+        paramJSONObject = localtlr;
+      }
     }
-  }
-  
-  public void onSuccess()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.a.b();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.a.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("Hippy", 2, "Hippy: initHippy success!");
+    catch (Exception localException2)
+    {
+      for (;;)
+      {
+        paramJSONObject = null;
+      }
     }
+    localException1.printStackTrace();
+    return paramJSONObject;
   }
 }
 

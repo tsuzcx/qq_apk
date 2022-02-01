@@ -1,31 +1,14 @@
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyPatchAdView;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParserWithHotReload.IHotReloadChangedObserver;
 
 class sfu
-  implements oqo
+  implements ProteusParserWithHotReload.IHotReloadChangedObserver
 {
-  sfu(sfq paramsfq) {}
+  sfu(sel paramsel) {}
   
-  public void a(sey paramsey, AdvertisementInfo paramAdvertisementInfo)
+  public void onHotReloadChanged(Context paramContext, String paramString1, String paramString2)
   {
-    sfq.a(this.a).b(2);
-    sfq.a(this.a).a = paramAdvertisementInfo;
-    oqm.a(this.a);
-    sfq.a(this.a).setVisibility(0);
-    sfq.a(this.a).setVisibility(0);
-    sfq.a(this.a).setVisibility(0);
-    sfq.a(this.a).a(paramsey, paramAdvertisementInfo, 1);
-  }
-  
-  public void b(sey paramsey, AdvertisementInfo paramAdvertisementInfo)
-  {
-    sfq.a(this.a).a = paramAdvertisementInfo;
-    oqm.a(this.a);
-    sfq.a(this.a).setVisibility(0);
-    sfq.a(this.a).setVisibility(0);
-    sfq.a(this.a).a(paramsey, paramAdvertisementInfo, 2);
+    this.a.notifyDataSetChanged();
   }
 }
 

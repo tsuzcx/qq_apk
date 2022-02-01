@@ -1,469 +1,215 @@
-import android.app.ActivityManager;
-import android.app.admin.DevicePolicyManager;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.pm.ConfigurationInfo;
-import android.hardware.Camera;
-import android.hardware.Camera.Parameters;
 import android.opengl.GLES20;
-import android.os.Build.VERSION;
-import android.provider.MediaStore.MediaColumns;
-import android.view.View;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.opengl.program.TextureProgram;
+import com.tencent.av.opengl.utils.AVGLUtils;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
 public class lrz
 {
-  public static final boolean A;
-  public static final boolean B;
-  public static final boolean C;
-  public static final boolean D;
-  public static final boolean E;
-  public static final boolean F;
-  public static final boolean G;
-  public static final boolean H;
-  public static final boolean I;
-  public static final boolean J;
-  public static final boolean K;
-  public static final boolean L;
-  public static final boolean M;
-  public static final boolean N;
-  public static final boolean O;
-  public static final boolean P;
-  public static final boolean Q;
-  public static final boolean R;
-  public static final boolean S;
-  static int a;
-  public static final boolean a;
-  public static final boolean b;
-  public static final boolean c;
-  public static final boolean d;
-  public static final boolean e;
-  public static final boolean f;
-  public static final boolean g;
-  public static final boolean h;
-  public static final boolean i;
-  public static final boolean j;
-  public static final boolean k;
-  public static final boolean l;
-  public static final boolean m;
-  public static final boolean n;
-  public static final boolean o;
-  public static final boolean p;
-  public static final boolean q;
-  public static final boolean r;
-  public static final boolean s;
-  public static final boolean t;
-  public static final boolean u;
-  public static final boolean v;
-  public static final boolean w;
-  public static final boolean x;
-  public static final boolean y;
-  public static final boolean z;
+  private static int jdField_a_of_type_Int = -1;
+  private static lrz jdField_a_of_type_Lrz;
+  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
+  boolean jdField_a_of_type_Boolean = true;
+  private int b;
+  private int c;
+  private int d = jdField_a_of_type_Int;
+  private int e = jdField_a_of_type_Int;
+  private int f = jdField_a_of_type_Int;
+  private int g = jdField_a_of_type_Int;
   
-  static
+  private int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool2 = true;
-    if (Build.VERSION.SDK_INT >= 16)
+    int i = this.d;
+    if (this.d == jdField_a_of_type_Int)
     {
-      bool1 = true;
-      jdField_a_of_type_Boolean = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label703;
-      }
-      bool1 = true;
-      label26:
-      b = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        break label708;
-      }
-      bool1 = true;
-      label40:
-      c = bool1;
-      d = a(View.class, "SYSTEM_UI_FLAG_LAYOUT_STABLE");
-      e = a(View.class, "SYSTEM_UI_FLAG_HIDE_NAVIGATION");
-      f = a(MediaStore.MediaColumns.class, "WIDTH");
-      if (Build.VERSION.SDK_INT < 16) {
-        break label713;
-      }
-      bool1 = true;
-      label84:
-      g = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        break label718;
-      }
-      bool1 = true;
-      label98:
-      h = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label723;
-      }
-      bool1 = true;
-      label112:
-      i = bool1;
-      j = a("android.graphics.SurfaceTexture", "setDefaultBufferSize", new Class[] { Integer.TYPE, Integer.TYPE });
-      k = a("android.graphics.SurfaceTexture", "release", new Class[0]);
-      if (Build.VERSION.SDK_INT < 11) {
-        break label728;
-      }
-      bool1 = true;
-      label166:
-      l = bool1;
-      if (Build.VERSION.SDK_INT < 12) {
-        break label733;
-      }
-      bool1 = true;
-      label180:
-      m = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label738;
-      }
-      bool1 = true;
-      label194:
-      n = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        break label743;
-      }
-      bool1 = true;
-      label208:
-      o = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        break label748;
-      }
-      bool1 = true;
-      label222:
-      p = bool1;
-      q = a(View.class, "setSystemUiVisibility", new Class[] { Integer.TYPE });
+      int[] arrayOfInt = new int[1];
+      GLES20.glGenFramebuffers(1, arrayOfInt, 0);
+      i = arrayOfInt[0];
     }
     for (;;)
     {
-      try
-      {
-        if ((!a(Camera.class, "setFaceDetectionListener", new Class[] { Class.forName("android.hardware.Camera$FaceDetectionListener") })) || (!a(Camera.class, "startFaceDetection", new Class[0])) || (!a(Camera.class, "stopFaceDetection", new Class[0]))) {
-          continue;
-        }
-        bool1 = a(Camera.Parameters.class, "getMaxNumDetectedFaces", new Class[0]);
-        if (!bool1) {
-          continue;
-        }
-        bool1 = true;
-      }
-      catch (Throwable localThrowable)
-      {
-        label703:
-        label708:
-        label713:
-        label718:
-        label723:
-        label728:
-        label733:
-        label738:
-        label743:
-        label748:
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-      }
-      r = bool1;
-      s = a(DevicePolicyManager.class, "getCameraDisabled", new Class[] { ComponentName.class });
-      if (Build.VERSION.SDK_INT < 16) {
-        continue;
-      }
-      bool1 = true;
-      t = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      u = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        continue;
-      }
-      bool1 = true;
-      v = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        continue;
-      }
-      bool1 = true;
-      w = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        continue;
-      }
-      bool1 = true;
-      x = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      y = bool1;
-      if (Build.VERSION.SDK_INT < 17) {
-        continue;
-      }
-      bool1 = true;
-      z = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      A = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      B = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      C = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        continue;
-      }
-      bool1 = true;
-      D = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      E = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      F = bool1;
-      if (Build.VERSION.SDK_INT < 17) {
-        continue;
-      }
-      bool1 = true;
-      G = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      H = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        continue;
-      }
-      bool1 = true;
-      I = bool1;
-      if (Build.VERSION.SDK_INT < 12) {
-        continue;
-      }
-      bool1 = true;
-      J = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        continue;
-      }
-      bool1 = true;
-      K = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        continue;
-      }
-      bool1 = true;
-      L = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      M = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      N = bool1;
-      O = a(WindowManager.LayoutParams.class, "rotationAnimation");
-      if (Build.VERSION.SDK_INT < 18) {
-        continue;
-      }
-      bool1 = true;
-      P = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        continue;
-      }
-      bool1 = true;
-      Q = bool1;
-      if (Build.VERSION.SDK_INT < 18) {
-        continue;
-      }
-      bool1 = true;
-      R = bool1;
-      if (Build.VERSION.SDK_INT < 17) {
-        continue;
-      }
-      bool1 = bool2;
-      S = bool1;
+      GLES20.glBindFramebuffer(36160, i);
+      GLES20.glBindTexture(3553, paramInt3);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 33071.0F);
+      GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
+      GLES20.glBindTexture(3553, 0);
+      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt3, 0);
+      GLES20.glBindFramebuffer(36160, 0);
+      return i;
+    }
+  }
+  
+  public static lrz a()
+  {
+    if (jdField_a_of_type_Lrz == null) {
+      jdField_a_of_type_Lrz = new lrz();
+    }
+    return jdField_a_of_type_Lrz;
+  }
+  
+  private int b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    int i = this.f;
+    if (this.f == jdField_a_of_type_Int)
+    {
+      int[] arrayOfInt = new int[1];
+      GLES20.glGenFramebuffers(1, arrayOfInt, 0);
+      i = arrayOfInt[0];
+    }
+    for (;;)
+    {
+      GLES20.glBindFramebuffer(36160, i);
+      GLES20.glBindTexture(3553, paramInt3);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 33071.0F);
+      GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
+      GLES20.glBindTexture(3553, 0);
+      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt3, 0);
+      GLES20.glBindFramebuffer(36160, 0);
+      return i;
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_JavaNioFloatBuffer != null) {
       return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label26;
-      bool1 = false;
-      break label40;
-      bool1 = false;
-      break label84;
-      bool1 = false;
-      break label98;
-      bool1 = false;
-      break label112;
-      bool1 = false;
-      break label166;
-      bool1 = false;
-      break label180;
-      bool1 = false;
-      break label194;
-      bool1 = false;
-      break label208;
-      bool1 = false;
-      break label222;
-      bool1 = false;
     }
+    float[] arrayOfFloat = new float[8];
+    arrayOfFloat[0] = (-0.5F + 0.0F);
+    arrayOfFloat[1] = (-0.5F + 0.0F);
+    arrayOfFloat[2] = (0.5F + 0.0F);
+    arrayOfFloat[3] = (-0.5F + 0.0F);
+    arrayOfFloat[4] = (-0.5F + 0.0F);
+    arrayOfFloat[5] = (0.5F + 0.0F);
+    arrayOfFloat[6] = (0.5F + 0.0F);
+    arrayOfFloat[7] = (0.5F + 0.0F);
+    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(arrayOfFloat.length * 4);
+    localByteBuffer.order(ByteOrder.nativeOrder());
+    this.jdField_a_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
+    this.jdField_a_of_type_JavaNioFloatBuffer.put(arrayOfFloat);
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
   }
   
-  public static int a()
+  private void c()
   {
-    int i1 = GLES20.glGetError();
-    if (i1 != 0)
+    if (this.g == jdField_a_of_type_Int)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Utils", 2, "checkError error = " + i1);
-      }
-      lyu.a();
+      int[] arrayOfInt = new int[1];
+      GLES20.glGenTextures(1, arrayOfInt, 0);
+      this.g = arrayOfInt[0];
     }
-    return i1;
+    this.f = b(this.b, this.c, this.g);
   }
   
-  public static int a(int paramInt1, int paramInt2, int paramInt3)
+  private void d()
   {
-    if (paramInt1 > paramInt3) {
-      return paramInt3;
-    }
-    if (paramInt1 < paramInt2) {
-      return paramInt2;
-    }
-    return paramInt1;
-  }
-  
-  public static int a(Context paramContext)
-  {
-    if (jdField_a_of_type_Int == 0) {}
-    for (;;)
+    if (this.e == jdField_a_of_type_Int)
     {
-      try
-      {
-        paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getDeviceConfigurationInfo();
-        if (paramContext != null) {
-          continue;
-        }
-        jdField_a_of_type_Int = 1;
-      }
-      catch (Exception paramContext)
-      {
-        jdField_a_of_type_Int = 1;
-        continue;
-        int i1 = 1;
-        continue;
-      }
-      return jdField_a_of_type_Int;
-      if (paramContext.reqGlEsVersion < 131072) {
-        continue;
-      }
-      i1 = 2;
-      jdField_a_of_type_Int = i1;
+      int[] arrayOfInt = new int[1];
+      GLES20.glGenTextures(1, arrayOfInt, 0);
+      this.e = arrayOfInt[0];
+    }
+    this.d = a(this.b, this.c, this.e);
+  }
+  
+  public void a()
+  {
+    if (this.d != jdField_a_of_type_Int)
+    {
+      GLES20.glDeleteFramebuffers(2, new int[] { this.d, this.f }, 0);
+      GLES20.glDeleteTextures(2, new int[] { this.e, this.g }, 0);
+    }
+    this.d = jdField_a_of_type_Int;
+    this.e = jdField_a_of_type_Int;
+    this.f = jdField_a_of_type_Int;
+    this.g = jdField_a_of_type_Int;
+  }
+  
+  public void a(lqt paramlqt, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramlqt = lrs.a(0);
+      GLES20.glUseProgram(paramlqt.a());
+      GLES20.glActiveTexture(33984);
+      GLES20.glBindTexture(3553, this.g);
+      GLES20.glUniform1i(paramlqt.a()[4].jdField_a_of_type_Int, 0);
+      GLES20.glUniform1f(paramlqt.a()[2].jdField_a_of_type_Int, 1.0F);
     }
   }
   
-  private static boolean a(Class<?> paramClass, String paramString)
+  public void a(lqt paramlqt, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat, int paramInt8, int paramInt9)
   {
-    try
+    if ((this.b != paramInt1 * 2) || (this.d == jdField_a_of_type_Int))
     {
-      paramClass.getDeclaredField(paramString);
-      return true;
+      this.b = (paramInt1 * 2);
+      this.c = (paramInt2 * 2);
+      d();
+      c();
+      b();
     }
-    catch (NoSuchFieldException paramClass) {}
-    return false;
-  }
-  
-  private static boolean a(Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
-  {
-    try
-    {
-      paramClass.getDeclaredMethod(paramString, paramVarArgs);
-      return true;
-    }
-    catch (NoSuchMethodException paramClass) {}
-    return false;
-  }
-  
-  public static boolean a(Object paramObject1, Object paramObject2)
-  {
-    if (paramObject1 != paramObject2)
-    {
-      if (paramObject1 == null) {}
-      while (!paramObject1.equals(paramObject2)) {
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  private static boolean a(String paramString1, String paramString2, Class<?>... paramVarArgs)
-  {
-    try
-    {
-      Class.forName(paramString1).getDeclaredMethod(paramString2, paramVarArgs);
-      return true;
-    }
-    catch (Throwable paramString1) {}
-    return false;
+    GLES20.glBindFramebuffer(36160, this.d);
+    GLES20.glViewport(0, 0, this.b, this.c);
+    GLES20.glClearColor(0.4F, 0.4F, 0.4F, 1.0F);
+    GLES20.glClear(16640);
+    TextureProgram localTextureProgram = lrs.a(2);
+    lru[] arrayOflru = localTextureProgram.a();
+    GLES20.glUseProgram(localTextureProgram.a());
+    GLES20.glUniform1f(localTextureProgram.a()[7].jdField_a_of_type_Int, paramInt1);
+    GLES20.glUniform1f(localTextureProgram.a()[8].jdField_a_of_type_Int, paramInt2);
+    GLES20.glUniformMatrix4fv(localTextureProgram.a()[9].jdField_a_of_type_Int, 1, false, paramArrayOfFloat, 0);
+    GLES20.glUniform1i(localTextureProgram.a()[10].jdField_a_of_type_Int, paramInt8);
+    GLES20.glUniform1i(localTextureProgram.a()[11].jdField_a_of_type_Int, paramInt9);
+    lqu.a(false);
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, paramInt5);
+    GLES20.glUniform1i(arrayOflru[4].jdField_a_of_type_Int, 0);
+    GLES20.glActiveTexture(33985);
+    GLES20.glBindTexture(3553, paramInt6);
+    GLES20.glUniform1i(arrayOflru[5].jdField_a_of_type_Int, 1);
+    GLES20.glActiveTexture(33986);
+    GLES20.glBindTexture(3553, paramInt7);
+    GLES20.glUniform1i(arrayOflru[6].jdField_a_of_type_Int, 2);
+    GLES20.glUniform1f(arrayOflru[2].jdField_a_of_type_Int, 1.0F);
+    GLES20.glUniformMatrix4fv(arrayOflru[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixV, 0);
+    GLES20.glUniformMatrix4fv(arrayOflru[3].jdField_a_of_type_Int, 1, false, AVGLUtils.matrix, 0);
+    GLES20.glVertexAttribPointer(arrayOflru[0].jdField_a_of_type_Int, 2, 5126, false, 8, this.jdField_a_of_type_JavaNioFloatBuffer);
+    GLES20.glEnableVertexAttribArray(arrayOflru[0].jdField_a_of_type_Int);
+    GLES20.glDrawArrays(5, 0, 4);
+    GLES20.glDisableVertexAttribArray(arrayOflru[0].jdField_a_of_type_Int);
+    GLES20.glBindFramebuffer(36160, this.f);
+    GLES20.glViewport(0, 0, this.b, this.c);
+    GLES20.glClearColor(0.4F, 0.4F, 0.4F, 1.0F);
+    GLES20.glClear(16640);
+    localTextureProgram = lrs.a(3);
+    arrayOflru = localTextureProgram.a();
+    GLES20.glUseProgram(localTextureProgram.a());
+    GLES20.glUniform1f(localTextureProgram.a()[7].jdField_a_of_type_Int, paramInt1);
+    GLES20.glUniform1f(localTextureProgram.a()[8].jdField_a_of_type_Int, paramInt2);
+    GLES20.glUniformMatrix4fv(localTextureProgram.a()[9].jdField_a_of_type_Int, 1, false, paramArrayOfFloat, 0);
+    GLES20.glUniform1i(localTextureProgram.a()[10].jdField_a_of_type_Int, paramInt8);
+    GLES20.glUniform1i(localTextureProgram.a()[11].jdField_a_of_type_Int, paramInt9);
+    lqu.a(false);
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, this.e);
+    GLES20.glUniform1i(arrayOflru[4].jdField_a_of_type_Int, 0);
+    GLES20.glUniform1f(arrayOflru[2].jdField_a_of_type_Int, 1.0F);
+    GLES20.glUniformMatrix4fv(arrayOflru[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixV, 0);
+    GLES20.glUniformMatrix4fv(arrayOflru[3].jdField_a_of_type_Int, 1, false, AVGLUtils.matrix, 0);
+    GLES20.glVertexAttribPointer(arrayOflru[0].jdField_a_of_type_Int, 2, 5126, false, 8, this.jdField_a_of_type_JavaNioFloatBuffer);
+    GLES20.glEnableVertexAttribArray(arrayOflru[0].jdField_a_of_type_Int);
+    GLES20.glDrawArrays(5, 0, 4);
+    GLES20.glDisableVertexAttribArray(arrayOflru[0].jdField_a_of_type_Int);
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glViewport(0, 0, paramInt3, paramInt4);
+    a(paramlqt, paramInt1, paramInt2, paramInt5, paramInt6, paramInt7);
   }
 }
 

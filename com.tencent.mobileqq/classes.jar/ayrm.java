@@ -1,12 +1,16 @@
-class ayrm
-  implements ayrc
+public abstract class ayrm
 {
-  ayrm(ayrj paramayrj) {}
+  public void a(String paramString) {}
   
-  public void a(boolean paramBoolean)
-  {
-    ayrj.a(this.a, paramBoolean);
-  }
+  public void a(String paramString, long paramLong) {}
+  
+  public void b(String paramString) {}
+  
+  public void b(String paramString, long paramLong) {}
+  
+  public void c(String paramString) {}
+  
+  public void c(String paramString, long paramLong) {}
 }
 
 

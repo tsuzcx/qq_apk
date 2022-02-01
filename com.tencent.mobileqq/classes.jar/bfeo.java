@@ -1,180 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class bfeo
-  extends bfew
-  implements bfeq
+class bfeo
+  implements azrg
 {
-  public int a;
-  public long a;
-  public bmrl a;
-  public String a;
-  public List<Integer> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g;
+  bfeo(bfen parambfen) {}
   
-  public bfeo(JSONObject paramJSONObject)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = Collections.EMPTY_LIST;
-    this.jdField_f_of_type_Int = -1;
-    a(paramJSONObject);
+    return null;
   }
   
-  public static JSONObject a(bfeo parambfeo)
-  {
-    JSONObject localJSONObject = new JSONObject().put("type", "recite").put("troop_uin", parambfeo.jdField_f_of_type_JavaLangString).put("subtype", 1).put("title", parambfeo.jdField_b_of_type_JavaLangString).put("desc", parambfeo.c).put("kid", parambfeo.jdField_a_of_type_JavaLangString).put("error_count", parambfeo.jdField_d_of_type_Int).put("remind_count", parambfeo.jdField_e_of_type_Int).put("waste_time", parambfeo.jdField_a_of_type_Long).put("grade", parambfeo.jdField_f_of_type_Int).put("lyric", parambfeo.jdField_g_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(parambfeo.jdField_e_of_type_JavaLangString)) {
-      localJSONObject.put("file_url", parambfeo.jdField_e_of_type_JavaLangString);
-    }
-    if (!TextUtils.isEmpty(parambfeo.jdField_d_of_type_JavaLangString)) {
-      localJSONObject.put("file_path", parambfeo.jdField_d_of_type_JavaLangString);
-    }
-    if (parambfeo.jdField_a_of_type_JavaUtilList != null) {
-      localJSONObject.put("pid_list", new JSONArray(parambfeo.jdField_a_of_type_JavaUtilList));
-    }
-    return localJSONObject;
-  }
+  public void a(azrh paramazrh) {}
   
-  public static JSONObject a(String paramString1, String paramString2, String paramString3, List<Integer> paramList)
+  public void b(azrh paramazrh)
   {
-    StringBuilder localStringBuilder = new StringBuilder(anni.a(2131704480)).append(paramString2);
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      localStringBuilder.append(bfds.a(paramList));
-    }
-    paramString1 = new JSONObject().put("type", "recite").put("troop_uin", paramString1).put("subtype", 2).put("title", paramString2).put("desc", localStringBuilder.toString()).put("kid", paramString3);
-    if (paramList != null) {
-      paramString1.put("pid_list", new JSONArray(paramList));
-    }
-    return paramString1;
-  }
-  
-  public static JSONObject a(String paramString1, String paramString2, String paramString3, List<Integer> paramList, int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(anni.a(2131704482)).append(paramString2);
-    if ((paramList != null) && (!paramList.isEmpty()) && (paramList.size() != paramInt)) {
-      localStringBuilder.append(bfds.a(paramList));
-    }
-    paramString1 = new JSONObject().put("type", "recite").put("troop_uin", paramString1).put("subtype", 2).put("title", paramString2).put("desc", localStringBuilder.toString()).put("kid", paramString3);
-    if (paramList != null) {
-      paramString1.put("pid_list", new JSONArray(paramList));
-    }
-    return paramString1;
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public void a(String paramString)
-  {
-    super.a(paramString);
-    try
+    if (paramazrh.jdField_b_of_type_Int == 0)
     {
-      a(new JSONObject(paramString));
+      this.a.a.c = paramazrh.jdField_b_of_type_JavaLangString;
+      this.a.a.a = paramazrh.c;
+      bfen.a(this.a);
+      bfen.a(this.a, new ErrorMessage());
       return;
     }
-    catch (JSONException paramString)
+    if ((paramazrh.jdField_b_of_type_Int == bext.a(940010)) && (bfen.a(this.a).getAndIncrement() < 2))
     {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("subtype");
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("kid");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("title");
-    this.c = paramJSONObject.optString("desc");
-    this.jdField_d_of_type_Int = paramJSONObject.optInt("error_count");
-    this.jdField_e_of_type_Int = paramJSONObject.optInt("remind_count");
-    this.jdField_a_of_type_Long = paramJSONObject.optLong("waste_time");
-    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("file_path");
-    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("file_url");
-    this.jdField_f_of_type_Int = paramJSONObject.optInt("grade", -1);
-    this.jdField_f_of_type_JavaLangString = paramJSONObject.optString("troop_uin");
-    this.jdField_g_of_type_JavaLangString = paramJSONObject.optString("lyric");
-    paramJSONObject = paramJSONObject.optJSONArray("pid_list");
-    if (paramJSONObject != null)
-    {
-      int j = paramJSONObject.length();
-      if (j != 0)
-      {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList(j);
-        int i = 0;
-        while (i < j)
-        {
-          this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramJSONObject.getInt(i)));
-          i += 1;
-        }
-      }
-    }
-    else
-    {
-      this.jdField_a_of_type_JavaUtilList = Collections.EMPTY_LIST;
-    }
-    if (this.jdField_a_of_type_Bmrl != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("HWReciteInfo", 2, "cancel uploadFileTask");
-      }
-      this.jdField_a_of_type_Bmrl.c();
-      this.jdField_a_of_type_Bmrl = null;
-    }
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
-        this.jdField_g_of_type_Int = 0;
-      }
-    }
-    else {
+      bfen.b(this.a);
+      yuk.d("tribe_publish_TribeVideoFileObject", "retry load file");
       return;
     }
-    this.jdField_g_of_type_Int = 3;
-  }
-  
-  public int b()
-  {
-    return 4;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_e_of_type_JavaLangString = paramString;
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("file_url", paramString);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public int d()
-  {
-    if (this.jdField_g_of_type_Int == 3) {
-      return 1;
-    }
-    return 0;
+    bfen.c(this.a);
+    paramazrh = new ErrorMessage(paramazrh.jdField_b_of_type_Int, paramazrh.a);
+    bfen.a(this.a, paramazrh);
   }
 }
 

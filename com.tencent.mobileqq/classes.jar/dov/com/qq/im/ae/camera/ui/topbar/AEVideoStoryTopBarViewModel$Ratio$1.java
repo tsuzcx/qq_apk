@@ -9,7 +9,7 @@ package dov.com.qq.im.ae.camera.ui.topbar;
   
   public AEVideoStoryTopBarViewModel.Ratio next()
   {
-    return R_1_1;
+    return R_4_3;
   }
 }
 

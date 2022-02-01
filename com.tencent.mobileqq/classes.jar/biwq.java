@@ -1,60 +1,48 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener.1;
-import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener.2;
-import com.tencent.tmassistantsdk.ITMAssistantCallBackListener;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
-import mqq.os.MqqHandler;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class biwq
-  implements ITMAssistantCallBackListener
+class biwq
+  extends Animation
 {
-  protected biwq(biwe parambiwe) {}
+  private int jdField_a_of_type_Int;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private View jdField_a_of_type_AndroidViewView;
+  private int b;
   
-  public void onDownloadTaskProgressChanged(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, long paramLong1, long paramLong2)
+  public biwq(View paramView)
   {
-    biwe.a(this.a, true);
-    bisy.b("MyAppApi", "onDownloadTaskProgressChanged  receiveDataLen:" + paramLong1 + ",totalDataLen:" + paramLong2);
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    bivr localbivr = bivr.a();
-    DownloadInfo localDownloadInfo2 = localbivr.a(paramTMAssistantCallYYBParamStruct.SNGAppId);
-    DownloadInfo localDownloadInfo1 = localDownloadInfo2;
-    if (localDownloadInfo2 == null)
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    super.applyTransformation(paramFloat, paramTransformation);
+    paramFloat = 90.0F * paramFloat;
+    this.jdField_a_of_type_AndroidGraphicsCamera.save();
+    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(paramFloat);
+    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      localDownloadInfo1 = this.a.a(paramTMAssistantCallYYBParamStruct, null);
-      localbivr.e(localDownloadInfo1);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - paramFloat / 90.0F);
+      this.jdField_a_of_type_AndroidViewView.invalidate();
     }
-    localDownloadInfo1.f = i;
-    localDownloadInfo1.a(2);
-    localbivr.a(2, localDownloadInfo1);
-    bisa.a().a(paramTMAssistantCallYYBParamStruct, i);
-    bisy.a("MyAppApi", "onDownloadTaskProgressChanged info state=" + localDownloadInfo1.a() + " progress=" + localDownloadInfo1.f);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int, -this.b);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int, this.b);
+    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
   }
   
-  public void onDownloadTaskStateChanged(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, int paramInt1, int paramInt2, String paramString)
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.a.b = true;
-    biwe.a(this.a, true);
-    bisy.b("MyAppApi", "onDownloadTaskStateChanged");
-    ThreadManager.getSubThreadHandler().post(new MyAppApi.QQDownloadListener.1(this, paramTMAssistantCallYYBParamStruct, paramInt1, paramInt2, paramString));
-  }
-  
-  public void onQQDownloaderInvalid()
-  {
-    bisy.b("MyAppApi", anni.a(2131705828));
-    ThreadManager.getSubThreadHandler().post(new MyAppApi.QQDownloadListener.2(this));
-  }
-  
-  public void onServiceFree()
-  {
-    bisy.b("MyAppApi", "OnServiceFree");
-    try
-    {
-      ((TMAssistantCallYYB_V2)this.a.a).releaseIPCConnected();
-      return;
-    }
-    catch (Exception localException) {}
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

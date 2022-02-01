@@ -1,43 +1,80 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.FrameLayout;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-public abstract class aaro
-  extends niv
+public class aaro
+  extends Handler
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private WeakReference<TribeVideoPlugin> a;
+  
+  public aaro(TribeVideoPlugin paramTribeVideoPlugin)
   {
-    b(paramInt, paramArrayOfByte, paramBundle);
+    this.a = new WeakReference(paramTribeVideoPlugin);
   }
   
-  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.UploadFileRspBody paramUploadFileRspBody, Bundle paramBundle);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt != 0)
+    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.a.get();
+    Object localObject = paramMessage.obj;
+    if ((localTribeVideoPlugin == null) || (localObject == null) || (!(localObject instanceof String))) {}
+    do
     {
-      a(false, paramInt, null, paramBundle);
-      return;
-    }
-    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
-    try
-    {
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d6.UploadFileRspBody)localRspBody.upload_file_rsp.get();
-      if (paramArrayOfByte.int32_ret_code.has())
+      do
       {
-        a(true, 0, paramArrayOfByte, paramBundle);
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              switch (paramMessage.what)
+              {
+              default: 
+                return;
+              case 1: 
+                TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, true);
+                return;
+              case 2: 
+                TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, false);
+                return;
+              case 3: 
+                paramMessage = (aarr)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+              }
+            } while ((paramMessage == null) || (aarr.c(paramMessage)));
+            if (QLog.isColorLevel()) {
+              QLog.d("TribeVideoPlugin", 2, "sdk player is not prepared");
+            }
+            TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, 5);
+            aarr.b(paramMessage, true);
+            return;
+            paramMessage = (aarr)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+          } while (paramMessage == null);
+          if ((TribeVideoPlugin.a(localTribeVideoPlugin) == 0) && (!TribeVideoPlugin.a(localTribeVideoPlugin)))
+          {
+            QLog.d("TribeVideoPlugin", 2, "MSG_SHOW_PLAYER_LAYOUT plugin.mPlayMode == PARAM_RESULT_PLAY_FRONT videoWrapper.mPlayerID = " + aarr.a(paramMessage));
+            TribeVideoPlugin.a(localTribeVideoPlugin).bringToFront();
+            TribeVideoPlugin.a(localTribeVideoPlugin, true);
+          }
+          TribeVideoPlugin.a(localTribeVideoPlugin, aarr.a(paramMessage), 1);
+          return;
+          paramMessage = (aarr)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+        } while (paramMessage == null);
+        TribeVideoPlugin.a(localTribeVideoPlugin, paramMessage);
         return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1, null, paramBundle);
+        paramMessage = (aarr)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+      } while (paramMessage == null);
+      TribeVideoPlugin.b(localTribeVideoPlugin, paramMessage);
       return;
-    }
-    a(false, -1, null, paramBundle);
+      paramMessage = (aarr)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+    } while (paramMessage == null);
+    TribeVideoPlugin.c(localTribeVideoPlugin, paramMessage);
+    return;
+    TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject);
   }
 }
 

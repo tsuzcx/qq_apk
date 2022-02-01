@@ -1,46 +1,30 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.List;
 
 public class asgd
+  implements bovk
 {
-  public int a;
-  public String a;
-  public HashMap<String, asge> a;
-  public List<String> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public List<String> b = new ArrayList();
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public String l;
-  public int m = 2;
-  public String m;
-  public int n = 50;
-  public int o = 1;
+  public asgd(CameraEmoSingleSend paramCameraEmoSingleSend, bovi parambovi, long paramLong) {}
   
-  public asgd()
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onGifCreateFail, emoId:", Integer.valueOf(CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend).emoId) });
+    CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend, false, null);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("sucFlag", "0");
+    this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend.a().a(null, "CamEmoCreateGIF", false, System.currentTimeMillis() - this.jdField_a_of_type_Long, 0L, localHashMap, null);
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onGifCreateSuccess, emoId:", Integer.valueOf(CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend).emoId) });
+    CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend, true, paramString);
+    this.jdField_a_of_type_Bovi.a();
+    paramString = new HashMap();
+    paramString.put("sucFlag", "1");
+    this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend.a().a(null, "CamEmoCreateGIF", true, System.currentTimeMillis() - this.jdField_a_of_type_Long, 0L, paramString, null);
   }
 }
 

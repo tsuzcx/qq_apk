@@ -1,16 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAiAppPanel.4.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class apzz
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public apzz(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, String paramString) {}
+  apzz(apzw paramapzw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    CardPicGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    if ((apzw.a(this.a) == null) || (apzw.a(this.a).size() <= 0) || (apzw.a(this.a) >= apzw.a(this.a).size()) || (apzw.a(this.a).get(apzw.a(this.a)) == null)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      String str = ((agyv)apzw.a(this.a).get(apzw.a(this.a))).getAppName();
+      ArkAppCenter.a().post(str, new ArkAiAppPanel.4.1(this, str));
+    }
   }
 }
 

@@ -1,32 +1,15 @@
-public abstract interface sij
+class sij
+  extends pmr
 {
-  public abstract void onBufferEnd();
+  sij(sii paramsii, String paramString)
+  {
+    super(paramString);
+  }
   
-  public abstract void onBufferStart();
-  
-  public abstract void onCompletion();
-  
-  public abstract void onDownloadFinished();
-  
-  public abstract void onFirstFrameRendered();
-  
-  public abstract void onProgressChanged(long paramLong);
-  
-  public abstract void onVideoEnd(int paramInt);
-  
-  public abstract void onVideoError(int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void onVideoOpen();
-  
-  public abstract void onVideoPause();
-  
-  public abstract void onVideoPrepared();
-  
-  public abstract void onVideoRestart();
-  
-  public abstract void onVideoStart();
-  
-  public abstract void onVideoStop();
+  public void a(pmk parampmk)
+  {
+    parampmk.f();
+  }
 }
 
 

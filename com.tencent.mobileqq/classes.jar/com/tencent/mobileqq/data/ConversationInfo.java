@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import anmw;
+import anyw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.gamecenter.message.TinyInfo;
 import com.tencent.mobileqq.persistence.ConflictClause;
@@ -66,7 +66,7 @@ public class ConversationInfo
         localObject = ((BaseApplicationImpl)localObject).getRuntime();
         if (localObject != null)
         {
-          paramString = ((anmw)((AppRuntime)localObject).getManager(51)).c(paramString);
+          paramString = ((anyw)((AppRuntime)localObject).getManager(51)).c(paramString);
           if ((paramString != null) && (paramString.isFriend()))
           {
             publicaccountTypeErrorReported = true;

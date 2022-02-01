@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/ndw" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ndt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/ndu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:src="@drawable/g76" android:layout_centerInParent="true" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/al6" android:gravity="center" android:id="@id/ndv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/ndu" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/ne3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="55.0dip">
-        <com.qzone.widget.AsyncImageView android:id="@id/ne2" android:layout_width="321.0dip" android:layout_height="200.0dip" android:scaleType="fitCenter" />
-        <TextView android:textSize="18.0dip" android:textColor="#ffffffff" android:id="@id/ne5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" />
-        <TextView android:textSize="14.0dip" android:textColor="#c0ffffff" android:id="@id/ne4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.5dip" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n1a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="84.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="0.5dip" android:src="@drawable/gk8" android:scaleType="fitCenter" />
+        <TextView android:textSize="24.0dip" android:textStyle="bold" android:textColor="#ff000000" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/kbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="10.0dip" android:maxLines="1" android:includeFontPadding="false" />
     </LinearLayout>
-</FrameLayout>
+    <TextView android:textSize="13.0dip" android:textColor="#ff000000" android:id="@id/nuo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="6.0dip" android:layout_below="@id/n1a" />
+    <TextView android:textSize="14.0dip" android:textColor="#ff7a7a8d" android:id="@id/nt3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="16.0dip" android:layout_below="@id/nuo" />
+    <View android:id="@id/kw_" android:background="#99e0e0e6" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="21.0dip" android:layout_below="@id/nt3" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="21.0dip" android:layout_below="@id/kw_" layout="@layout/co_" />
+</RelativeLayout>

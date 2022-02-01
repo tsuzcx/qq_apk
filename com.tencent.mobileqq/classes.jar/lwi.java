@@ -1,56 +1,40 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.LBSInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class lwi
-  extends Binder
-  implements lwh
+public class lwi
 {
-  public static lwh a(IBinder paramIBinder)
+  public int a;
+  public final lwf a;
+  public int b;
+  public int c;
+  private int d;
+  
+  lwi()
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IQQServiceLocationCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof lwh))) {
-      return (lwh)localIInterface;
-    }
-    return new lwj(paramIBinder);
+    this.jdField_a_of_type_Lwf = new lwf();
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, lwf paramlwf)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.av.service.IQQServiceLocationCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceLocationCallback");
-      a(paramParcel1.readInt(), paramParcel1.readString());
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceLocationCallback");
-    boolean bool;
-    if (paramParcel1.readInt() != 0)
-    {
-      bool = true;
-      if (paramParcel1.readInt() == 0) {
-        break label125;
+    this.d += 1;
+    StringBuilder localStringBuilder;
+    if ((this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (!this.jdField_a_of_type_Lwf.equals(paramlwf)) || (this.c != paramInt3)) {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("updateFrame, frameIndex[").append(this.d).append("], data[");
+        if (paramArrayOfByte != null) {
+          break label198;
+        }
       }
     }
-    label125:
-    for (paramParcel1 = (LBSInfo)LBSInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    label198:
+    for (paramArrayOfByte = "null";; paramArrayOfByte = Integer.valueOf(paramArrayOfByte.length))
     {
-      a(bool, paramParcel1);
-      return true;
-      bool = false;
-      break;
+      QLog.i("AVShare", 2, paramArrayOfByte + "], imgFormat[" + this.b + "-->" + paramInt2 + "], recordParam[" + this.jdField_a_of_type_Lwf + "--->" + paramlwf + "], angle[" + this.c + "-->" + paramInt3 + "]");
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      this.jdField_a_of_type_Lwf.a(paramlwf);
+      this.c = paramInt3;
+      return;
     }
   }
 }

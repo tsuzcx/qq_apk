@@ -2,8 +2,8 @@ package com.tencent.mobileqq.richmedia.capture.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import banx;
-import bgmg;
+import bbgq;
+import bhmi;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils;
 import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils.BadDataFrame;
@@ -13,14 +13,14 @@ import java.util.ArrayList;
 public class ReportBadCase$1
   implements Runnable
 {
-  public ReportBadCase$1(banx parambanx, BadcaseReportUtils.BadDataFrame paramBadDataFrame) {}
+  public ReportBadCase$1(bbgq parambbgq, BadcaseReportUtils.BadDataFrame paramBadDataFrame) {}
   
   public void run()
   {
     ??? = Bitmap.createBitmap(this.a.width, this.a.height, Bitmap.Config.ARGB_8888);
     ((Bitmap)???).copyPixelsFromBuffer(this.a.pictureBuffer);
-    String str1 = banx.a();
-    boolean bool = banx.a((Bitmap)???, str1);
+    String str1 = bbgq.a();
+    boolean bool = bbgq.a((Bitmap)???, str1);
     if (QLog.isColorLevel()) {
       QLog.d("BadcaseReportUtils", 2, "BadcaseReportUtils|writeBitmapToFile success=" + bool);
     }
@@ -30,21 +30,21 @@ public class ReportBadCase$1
       this.a.picturePath = str1;
       this.a.convertedPath = (str1 + "_ct_2");
       BadcaseReportUtils.convertDataFormat(this.a);
-      synchronized (banx.a())
+      synchronized (bbgq.a())
       {
-        banx.a().add(this.a);
+        bbgq.a().add(this.a);
       }
     }
-    synchronized (banx.a())
+    synchronized (bbgq.a())
     {
-      int i = banx.a().size();
+      int i = bbgq.a().size();
       if (i == 3) {
         ThreadManager.postDownLoadTask(new ReportBadCase.1.1(this), 5, null, true);
       }
       return;
       str2 = finally;
       throw str2;
-      bgmg.d(str2);
+      bhmi.d(str2);
     }
   }
 }

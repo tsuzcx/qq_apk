@@ -1,14 +1,33 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class apfc
-  extends apfa
+class apfc
+  implements SoundPool.OnLoadCompleteListener
 {
-  public String a;
+  apfc(apfb paramapfb) {}
   
-  public void a(AppInterface paramAppInterface, Bundle paramBundle)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    this.a = paramBundle.getString("PromotionDescription", "");
+    if (paramInt2 != 0) {}
+    try
+    {
+      QLog.e("ARMusicController", 2, "load fire music failed. " + apfb.a(this.a));
+      return;
+    }
+    catch (Exception paramSoundPool)
+    {
+      paramSoundPool.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMusicController", 2, "load fire music success. : " + apfb.a(this.a));
+    }
+    apfb.a(this.a, true);
+    if (apfb.a(this.a))
+    {
+      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
+      return;
+    }
   }
 }
 

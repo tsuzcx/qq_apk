@@ -1,58 +1,55 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity.14.1;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import mqq.os.MqqHandler;
 
 public class advy
-  extends anqd
+  implements blnt
 {
-  public advy(ChatSettingActivity paramChatSettingActivity) {}
+  public advy(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.g(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "onInsertIntoBlackList, isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, true);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "onInsertIntoBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      ChatSettingActivity.b(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.aq_();
       return;
     }
-    ChatSettingActivity.a(this.a, 2131718045, 1);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
   }
   
-  protected void b(boolean paramBoolean, String paramString)
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
+    if (this.a.jdField_a_of_type_Boolean) {
+      return true;
     }
-    ChatSettingActivity.c(this.a, false);
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "onRemoveFromBlackList, isSuccess=" + paramBoolean);
+      QLog.d("AssociatedAccountActivity", 2, "onViewCompleteVisableAndReleased begin refresh");
     }
-    ChatSettingActivity.g(this.a);
-    if (paramBoolean)
+    if (this.a.c())
     {
-      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "onRemoveFromBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      ChatSettingActivity.b(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
+      this.a.b = true;
+      AssociatedAccountActivity.b(this.a, false, true);
+      return true;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new AssociatedAccountActivity.14.1(this), 800L);
+    return true;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
       return;
     }
-    ChatSettingActivity.a(this.a, 2131718045, 1);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
   }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

@@ -1,32 +1,47 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-final class bgfr
-  implements DownloadParams.DecodeHandler
+class bgfr
+  implements TextView.OnEditorActionListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  bgfr(bgfo parambgfo, bgfu parambgfu) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 2, "AVATAR_WALL_RECT__DECODER");
-    }
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
+    boolean bool2 = false;
+    boolean bool1;
+    if ((paramInt != 4) && (paramInt != 6))
     {
-      do
+      bool1 = bool2;
+      if (paramKeyEvent != null)
       {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return bgmo.b(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+        bool1 = bool2;
+        if (66 == paramKeyEvent.getKeyCode())
+        {
+          bool1 = bool2;
+          if (paramKeyEvent.getAction() != 0) {}
+        }
+      }
+    }
+    else
+    {
+      paramTextView = this.jdField_a_of_type_Bgfu.a.getEditableText().toString();
+      paramInt = this.jdField_a_of_type_Bgfu.a.getSelectionStart();
+      paramTextView = paramTextView.substring(0, paramInt);
+      paramTextView = this.jdField_a_of_type_Bgfo.a(paramTextView);
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramTextView))
+      {
+        this.jdField_a_of_type_Bgfu.a.getEditableText().replace(paramInt, paramInt, "\n" + paramTextView);
+        this.jdField_a_of_type_Bgfu.a.setSelection(paramTextView.length() + paramInt + 1);
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 

@@ -1,21 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import oat;
-import pha;
+import pfl;
+import rle;
+import rlf;
 
 class ReadinjoyTabFrame$17
   implements Runnable
 {
-  ReadinjoyTabFrame$17(ReadinjoyTabFrame paramReadinjoyTabFrame, long paramLong) {}
+  ReadinjoyTabFrame$17(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
   public void run()
   {
-    oat.a((QQAppInterface)pha.a(), "CliOper", "", "", "0X80066F7", "0X80066F7", 1, 1, Long.toString(this.a / 1000L), "", "", pha.f(), false);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.4tab", 2, "report ReadinjoyTabFrame use time: " + this.a / 1000L);
-    }
+    pfl.b();
+    rle.a.a();
   }
 }
 

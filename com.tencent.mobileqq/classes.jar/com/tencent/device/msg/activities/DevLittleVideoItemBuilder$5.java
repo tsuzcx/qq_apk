@@ -1,20 +1,20 @@
 package com.tencent.device.msg.activities;
 
-import abua;
-import bcec;
-import bcev;
+import abye;
+import bcwu;
+import bcxn;
 import com.tencent.device.msg.data.MessageForDevLittleVideo;
 
 public class DevLittleVideoItemBuilder$5
   implements Runnable
 {
-  public DevLittleVideoItemBuilder$5(abua paramabua, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
+  public DevLittleVideoItemBuilder$5(abye paramabye, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
   
   public void run()
   {
-    bcev localbcev = bcec.a(0, 4);
-    localbcev.a(bcec.a(this.a, localbcev));
-    bcec.a(localbcev, this.this$0.a);
+    bcxn localbcxn = bcwu.a(0, 4);
+    localbcxn.a(bcwu.a(this.a, localbcxn));
+    bcwu.a(localbcxn, this.this$0.a);
   }
 }
 

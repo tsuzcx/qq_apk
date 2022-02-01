@@ -1,48 +1,60 @@
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AgeSelectionActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.Metadata;
+import kotlin.jvm.JvmField;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class azky
-  implements bhat
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/constellation/ConstellationLauncher;", "", "()V", "DEFAULT_CONSTELLATION", "", "REQUEST_CODE_BIRTHDAY", "launchMiniProgram", "", "activity", "Landroid/app/Activity;", "url", "", "launchScene", "launchSelectAge", "launchFrom", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azky
 {
-  azky(azks paramazks) {}
+  @JvmField
+  public static final int a = 1001;
+  public static final azky a;
+  @JvmField
+  public static final int b = 0;
   
-  public void a()
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsProfileHeaderComponent", 2, "ZanDoubleDialog: onLeftClick: ");
-    }
-    if (azks.e(this.a).getIntent().hasExtra("troopUin")) {}
-    for (Object localObject = "1";; localObject = "0")
+    jdField_a_of_type_Azky = new azky();
+    jdField_a_of_type_Int = 1001;
+  }
+  
+  public final void a(@NotNull Activity paramActivity, @NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
+    Intrinsics.checkParameterIsNotNull(paramString, "launchFrom");
+    Intent localIntent = new Intent((Context)paramActivity, AgeSelectionActivity.class);
+    Object localObject = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
+    localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      VasWebviewUtil.reportCommercialDrainage(azks.d(this.a).getCurrentAccountUin(), "thumbup", "click_getit", "", 1, 0, 0, "", (String)localObject, "");
-      localObject = new Intent(azks.f(this.a), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("fragmentStyle", 3);
-      ((Intent)localObject).putExtra("url", "https://m.vip.qq.com/freedom/dbzan.html?_nav_alpha=0");
-      ((Intent)localObject).putExtra("isTransparentTitle", true);
-      ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-      azks.g(this.a).startActivity((Intent)localObject);
-      return;
+      int i = (int)bhhz.a((QQAppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin()).lBirthday;
+      if (QLog.isColorLevel()) {
+        QLog.d("ConstellationLauncher", 2, new Object[] { "launchSelectAge: called. ", "{card.lBirthday}: " + i });
+      }
+      localIntent.putExtra("param_birthday", i);
+      localIntent.putExtra("param_launch_from", paramString);
+      paramActivity.startActivityForResult(localIntent, jdField_a_of_type_Int);
     }
   }
   
-  public void b()
+  public final void a(@NotNull Activity paramActivity, @Nullable String paramString, int paramInt)
   {
+    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
     if (QLog.isColorLevel()) {
-      QLog.d("AbsProfileHeaderComponent", 2, "ZanDoubleDialog: onRightClick: ");
+      QLog.d("ConstellationLauncher", 2, new Object[] { "launchMiniProgram: called. ", "url: " + paramString + "  launchScene: " + paramInt });
     }
-    if (azks.h(this.a).getIntent().hasExtra("troopUin")) {}
-    for (String str = "1";; str = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage(azks.e(this.a).getCurrentAccountUin(), "thumbup", "click_pay", "", 1, 0, 0, "", str, "");
-      bgzo.a(azks.i(this.a), "mvip.n.a.dbzan_dbzan", "CJCLUBT", 3, false, true);
-      azks.a(this.a).set(true);
-      return;
-    }
+    MiniAppLauncher.startMiniApp((Context)paramActivity, paramString, paramInt, null, null);
   }
 }
 

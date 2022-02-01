@@ -1,44 +1,33 @@
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment;
-import com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment.WeakCallback.1;
-import com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment.WeakCallback.2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
 
-public class bddh
-  implements bdds
+class bddh
+  extends AsyncTask<String, Integer, Boolean>
 {
-  private WeakReference<StudyRoomLoadingFragment> a;
+  bddh(bdcy parambdcy) {}
   
-  public bddh(StudyRoomLoadingFragment paramStudyRoomLoadingFragment)
+  protected Boolean a(String... paramVarArgs)
   {
-    this.a = new WeakReference(paramStudyRoomLoadingFragment);
-  }
-  
-  public void a(Throwable paramThrowable)
-  {
-    ThreadManager.getUIHandler().post(new StudyRoomLoadingFragment.WeakCallback.1(this));
-  }
-  
-  public void onCloseLoadingView()
-  {
-    QLog.d("studyroom.StudyRoomLoadingFragment", 4, "onCloseLoadingView");
-    StudyRoomLoadingFragment localStudyRoomLoadingFragment = (StudyRoomLoadingFragment)this.a.get();
-    if (localStudyRoomLoadingFragment != null)
+    if (bdcy.a(this.a) != null)
     {
-      StudyRoomLoadingFragment.a(localStudyRoomLoadingFragment);
-      localStudyRoomLoadingFragment.a();
+      bdcy.a(this.a).h = 1;
+      long l = bdcy.a(this.a).a;
+      paramVarArgs = bdcy.a(this.a).e;
+      int i = bdcy.a(this.a).g;
+      Bundle localBundle = new Bundle();
+      localBundle.putLong("VALUE_MSG_UINSEQ", l);
+      localBundle.putString("VALUE_MSG_FRIENDUIN", paramVarArgs);
+      localBundle.putInt("VALUE_MSG_ISTROOP", i);
+      localBundle.putString("VALUE_MSG_VIDEO_ID", bdcy.a(this.a).c);
+      bddj.a().a("CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT", localBundle);
     }
+    return Boolean.valueOf(true);
   }
   
-  public void onEnterComplete() {}
-  
-  public void onShowLoadingView(View paramView)
+  protected void a(Boolean paramBoolean)
   {
-    QLog.d("studyroom.StudyRoomLoadingFragment", 4, "onShowLoadingView");
-    ThreadManager.getUIHandler().post(new StudyRoomLoadingFragment.WeakCallback.2(this, paramView));
+    this.a.b(bdcy.a(this.a));
   }
 }
 

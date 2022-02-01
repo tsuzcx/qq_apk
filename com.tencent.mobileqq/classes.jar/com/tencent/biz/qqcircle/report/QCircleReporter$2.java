@@ -5,26 +5,26 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import qqcircle.QQCircleReport.SingleDcData;
-import vri;
-import vrl;
+import vtt;
+import vtw;
 
 public class QCircleReporter$2
   implements Runnable
 {
-  public QCircleReporter$2(vrl paramvrl, byte[] paramArrayOfByte) {}
+  public QCircleReporter$2(vtw paramvtw, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    if (vrl.a(this.this$0).size() == 0) {
+    if (vtw.a(this.this$0).size() == 0) {
       return;
     }
-    QLog.w("QCircleReporter", 2, "reportCacheDataListToServer size:" + vrl.a(this.this$0).size());
-    Iterator localIterator = vrl.a(this.this$0).iterator();
+    QLog.w("QCircleReporter", 2, "reportCacheDataListToServer size:" + vtw.a(this.this$0).size());
+    Iterator localIterator = vtw.a(this.this$0).iterator();
     while (localIterator.hasNext()) {
-      ((QQCircleReport.SingleDcData)localIterator.next()).byteExtinfo.add(vri.a("SessionID", this.a));
+      ((QQCircleReport.SingleDcData)localIterator.next()).byteExtinfo.add(vtt.a("SessionID", this.a));
     }
-    vrl.a(this.this$0, vrl.a(this.this$0));
-    vrl.a(this.this$0).clear();
+    vtw.a(this.this$0, vtw.a(this.this$0));
+    vtw.a(this.this$0).clear();
   }
 }
 

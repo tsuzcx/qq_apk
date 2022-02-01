@@ -1,8 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public abstract interface rqc
+final class rqc
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(UgcVideo paramUgcVideo);
+  rqc(View paramView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.setLayerType(0, null);
+  }
 }
 
 

@@ -1,36 +1,51 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class tnn
-  implements qzb
+class tnn
+  implements ViewBase.OnClickListener
 {
-  public tnn(BridgeModule paramBridgeModule, String paramString) {}
+  tnn(tnm paramtnm) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(ViewBase paramViewBase)
   {
-    JSONObject localJSONObject = new JSONObject();
     int i;
-    if (paramBoolean) {
-      i = 1;
-    }
-    try
-    {
-      for (;;)
+    boolean bool;
+    if ((this.a.jdField_a_of_type_Tnl.a instanceof ProteusItemData)) {
+      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
       {
-        localJSONObject.put("result", i);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
-        return;
-        i = 0;
+      default: 
+        i = -1;
+        bool = true;
       }
     }
-    catch (JSONException localJSONException)
+    while (((i == 4) || (i == 3) || (i == 1000) || (i == 8)) && (tpp.g((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)))
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      tpp.b(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+      return;
+      ssu.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+      return;
+      bool = true;
+      i = 4;
+      continue;
+      bool = true;
+      i = 3;
+      continue;
+      i = 5;
+      bool = false;
+      continue;
+      bool = true;
+      i = 8;
+      continue;
+      bool = true;
+      i = 1000;
+      continue;
+      i = 2;
+      bool = true;
     }
+    ssa.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_Tnl.a, bool, i);
   }
 }
 

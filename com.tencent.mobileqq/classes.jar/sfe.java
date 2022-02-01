@@ -1,37 +1,32 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class sfe
-  implements Handler.Callback
+  implements sga
 {
-  sfe(sfd paramsfd) {}
+  sfe(sel paramsel) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    pmz localpmz = (pmz)paramView.getTag();
+    BaseArticleInfo localBaseArticleInfo = this.a.b(localpmz.jdField_a_of_type_Int);
+    if (localBaseArticleInfo == null)
     {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return true;
-          sfd.a(this.a, false);
-          sfd.a(this.a).removeMessages(0);
-        } while (sfd.a(this.a) == null);
-        sfd.a(this.a).c(true);
-        return true;
-        sfd.a(this.a, false);
-        sfd.a(this.a).removeMessages(1);
-      } while (sfd.a(this.a) == null);
-      sfd.a(this.a).c(false);
-      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseAdapter", 2, "articleInfo == null, ERROR");
+      }
+      return;
     }
-    sfd.a(this.a, true);
-    return true;
+    if ((this.a.a != null) && (this.a.a.b()))
+    {
+      this.a.a.a();
+      this.a.b = true;
+    }
+    sel.a(this.a).a(localpmz.f, localpmz.jdField_a_of_type_Int);
+    sel.a(this.a).a(this.a);
+    sel.a(this.a).a(localBaseArticleInfo, sel.a(this.a, localpmz.jdField_a_of_type_Rwc, localBaseArticleInfo), this.a.a, new sff(this, localBaseArticleInfo), this.a.c);
+    pms.a(paramView);
   }
 }
 

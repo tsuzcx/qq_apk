@@ -1,8 +1,10 @@
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-
-public abstract interface bpyk
+public class bpyk
 {
-  public abstract void a(int paramInt, QIMFilterCategoryItem paramQIMFilterCategoryItem);
+  public int a;
+  public boolean a;
+  public int b = 20;
+  public boolean b;
+  public int c = 500;
 }
 
 

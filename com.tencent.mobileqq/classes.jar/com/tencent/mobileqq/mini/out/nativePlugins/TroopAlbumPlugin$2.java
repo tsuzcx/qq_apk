@@ -2,11 +2,11 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.os.Bundle;
 import android.os.Handler;
-import bmfh;
+import bngj;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 
 class TroopAlbumPlugin$2
-  implements bmfh
+  implements bngj
 {
   TroopAlbumPlugin$2(TroopAlbumPlugin paramTroopAlbumPlugin, String paramString, NativePlugin.JSContext paramJSContext) {}
   

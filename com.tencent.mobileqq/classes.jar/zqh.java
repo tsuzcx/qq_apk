@@ -1,36 +1,20 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
-
 public class zqh
-  extends ImageSpan
+  implements zqq
 {
-  public zqh(Context paramContext, int paramInt)
+  public long b;
+  
+  public void onFailure(String paramString) {}
+  
+  public void onFinish(boolean paramBoolean) {}
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
   {
-    super(paramContext, paramInt);
+    this.b = System.currentTimeMillis();
   }
   
-  public zqh(Drawable paramDrawable)
-  {
-    super(paramDrawable);
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    paramCharSequence = getDrawable();
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramPaint.descent;
-    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
-    paramInt2 = paramCharSequence.getBounds().bottom / 2;
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
-  }
+  public void onSuccess(String paramString) {}
 }
 
 

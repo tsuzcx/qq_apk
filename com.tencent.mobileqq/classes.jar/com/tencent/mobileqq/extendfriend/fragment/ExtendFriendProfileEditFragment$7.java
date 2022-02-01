@@ -3,7 +3,7 @@ package com.tencent.mobileqq.extendfriend.fragment;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bgme;
+import bhmg;
 
 class ExtendFriendProfileEditFragment$7
   implements Runnable
@@ -12,12 +12,12 @@ class ExtendFriendProfileEditFragment$7
   
   public void run()
   {
-    if (bgme.a(ExtendFriendProfileEditFragment.a(this.this$0), ExtendFriendProfileEditFragment.a(this.this$0).getWidth()) > 4)
+    if (bhmg.a(ExtendFriendProfileEditFragment.a(this.this$0), ExtendFriendProfileEditFragment.a(this.this$0).getWidth()) > 4)
     {
       ExtendFriendProfileEditFragment.a(this.this$0).setText(this.a.d);
       ImageView localImageView = ExtendFriendProfileEditFragment.b(this.this$0);
       if (this.a.a == 2L) {}
-      for (int i = 2130845143;; i = 2130845144)
+      for (int i = 2130845158;; i = 2130845159)
       {
         localImageView.setImageResource(i);
         ExtendFriendProfileEditFragment.b(this.this$0).setVisibility(0);

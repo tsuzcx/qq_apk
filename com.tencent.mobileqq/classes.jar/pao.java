@@ -1,20 +1,33 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.aladdin.config.utils.AladdinLogger;
+import com.tencent.qphone.base.util.QLog;
 
-class pao
-  implements bkhe
+public class pao
+  implements AladdinLogger
 {
-  pao(pan parampan) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void d(String paramString1, String paramString2)
   {
-    if (this.a.a != null)
-    {
-      paramInt1 = pan.a(this.a, paramInt1);
-      this.a.a.onScroll(paramInt1);
-    }
+    QLog.d(paramString1, 2, paramString2);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public boolean isDebugVersion()
+  {
+    return false;
+  }
 }
 
 

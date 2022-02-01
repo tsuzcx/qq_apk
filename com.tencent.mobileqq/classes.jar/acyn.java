@@ -1,37 +1,85 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Iterator;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.util.AdUriUtil;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.smtt.sdk.WebView;
 
 public class acyn
-  extends aczg
+  extends acyg
 {
-  public int a()
+  public acyn(GdtVideoImaxFragment paramGdtVideoImaxFragment, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    return -1000;
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    super.onPageFinished(paramWebView, paramString);
+    acvc.b("AbsWebView", "onPageFinished:" + paramString);
+    GdtVideoImaxFragment.a(this.a, true);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    acvc.b("AbsWebView", "onPageStarted:" + paramString);
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+    GdtVideoImaxFragment.a(this.a, false);
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    super.onReceivedTitle(paramWebView, paramString);
+    acvc.b("AbsWebView", "onReceivedTitle: " + paramString);
+    GdtVideoImaxFragment.a(this.a).setWebBarTitle(paramString);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    acvc.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
+    for (;;)
     {
-      paramStringBuilder = (im_msg_body.Elem)paramList.next();
-      if (a(paramStringBuilder)) {
-        autm.a(paramMsg, paramStringBuilder, paramList1, (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), parambbyn);
+      return true;
+      Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
+      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+      {
+        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
+        for (boolean bool = true;; bool = false) {
+          return bool;
+        }
+      }
+      localObject = AdUriUtil.parse(paramString);
+      if (localObject != null) {}
+      for (paramString = ((Uri)localObject).getScheme(); niz.a().a(paramWebView.getUrl(), paramString).booleanValue(); paramString = null)
+      {
+        paramWebView = new Intent("android.intent.action.VIEW", (Uri)localObject);
+        paramWebView.addFlags(268435456);
+        try
+        {
+          this.mContext.startActivity(paramWebView);
+          return true;
+        }
+        catch (ActivityNotFoundException paramWebView)
+        {
+          acvc.d("AbsWebView", paramWebView.toString());
+          return true;
+        }
       }
     }
-    return false;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (34 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

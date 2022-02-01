@@ -1,43 +1,97 @@
-import android.graphics.Canvas;
-import android.text.TextPaint;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class arfq
-  extends arfn
+  extends arac<arfp>
 {
-  private TextPaint a = new TextPaint();
-  
-  private String a(aren paramaren)
+  @NonNull
+  public arfp a(int paramInt)
   {
-    return String.valueOf(paramaren.a());
+    return new arfp();
   }
   
-  public argl a(aren paramaren)
+  @Nullable
+  public arfp a(araj[] paramArrayOfaraj)
   {
-    arfm localarfm = arew.a();
-    float f1 = argo.a(localarfm.c(), a(paramaren)) + localarfm.f() + localarfm.f();
-    float f2 = argo.a(localarfm.c());
-    f2 = localarfm.e() * 2.0F + f2;
-    paramaren.a(f2);
-    paramaren.b(f1);
-    return new argl(f1, f2);
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
+    {
+      arfp localarfp = arfp.a(paramArrayOfaraj[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineAutoStatusConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
+      }
+      return localarfp;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineAutoStatusConfProcessor", 2, "onParsed is null");
+    }
+    return new arfp();
   }
   
-  public boolean a(aren paramaren)
+  public void a(arfp paramarfp)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localQQAppInterface == null) {
+      return;
+    }
+    azic localazic = (azic)localQQAppInterface.getManager(369);
+    aziu localaziu = localazic.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineAutoStatusConfProcessor", 2, "[status][parser] onUpdate try startDetector conf: " + paramarfp.toString());
+    }
+    if (azib.a(localQQAppInterface.getOnlineStatus(), localQQAppInterface.getExtOnlineStatus())) {
+      localaziu.a("configUpdate");
+    }
+    localazic.c(localQQAppInterface.getExtOnlineStatus());
+    localazic.b(localQQAppInterface.getExtOnlineStatus());
+  }
+  
+  public Class<arfp> clazz()
+  {
+    return arfp.class;
+  }
+  
+  public boolean isNeedCompressed()
   {
     return true;
   }
   
-  public void b(Canvas paramCanvas, aren paramaren, arew paramarew, float paramFloat1, float paramFloat2)
+  public boolean isNeedStoreLargeFile()
   {
-    paramarew = arew.a();
-    this.a.setTextSize(paramarew.c());
-    this.a.setColor(-1);
-    paramCanvas.drawText(a(paramaren), paramarew.f() + paramFloat1, paramarew.e() + paramFloat2 - this.a.ascent(), this.a);
+    return false;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    QLog.d("OnlineAutoStatusConfProcessor", 1, "isNeedUpgradeReset ");
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineAutoStatusConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineAutoStatusConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 652;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arfq
  * JD-Core Version:    0.7.0.1
  */

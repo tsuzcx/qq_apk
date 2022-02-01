@@ -1,27 +1,46 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.mobileqq.widget.TabBarView;
-
 public class bicr
-  extends AccessibilityDelegateCompat
+  extends bici
 {
-  public bicr(TabBarView paramTabBarView) {}
+  public static bicr a;
+  private int a;
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  static
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (this.a.a(paramView) == this.a.o) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
+    jdField_a_of_type_Bicr = new bicr();
+  }
+  
+  public void a(bhza parambhza)
+  {
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    if (i < 2) {
+      download(null, 0, parambhza, false);
     }
   }
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public long getBID()
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    return 3L;
+  }
+  
+  protected String getRootDir()
+  {
+    return "tintconfig";
+  }
+  
+  public String getScid(int paramInt)
+  {
+    return getScidPrefix();
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "theme_mapping_config_android";
+  }
+  
+  protected boolean isZip_KeepZip()
+  {
+    return false;
   }
 }
 

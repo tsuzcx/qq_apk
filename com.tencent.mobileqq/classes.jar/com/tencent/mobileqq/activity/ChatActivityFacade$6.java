@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import blwc;
+import bmxe;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -11,7 +11,7 @@ public final class ChatActivityFacade$6
   
   public void run()
   {
-    blwc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    bmxe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

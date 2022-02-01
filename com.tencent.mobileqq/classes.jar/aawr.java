@@ -1,21 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import org.json.JSONObject;
 
-class aawr
-  implements Animation.AnimationListener
+public class aawr
 {
-  aawr(aawn paramaawn) {}
+  public String a;
+  public String b;
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public aawr(JSONObject paramJSONObject)
   {
-    if (aawn.b(this.a) != null) {
-      aawn.b(this.a).setVisibility(0);
-    }
+    this.a = paramJSONObject.optString("icon");
+    this.b = paramJSONObject.optString("jumpUrl");
   }
 }
 

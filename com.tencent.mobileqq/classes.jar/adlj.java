@@ -1,73 +1,38 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-
-public class adlj
-  extends ClickableSpan
+abstract class adlj
+  implements com.tencent.mobileqq.javahooksdk.HookMethodCallback
 {
-  public int a;
-  public Bundle a;
-  public String a;
-  
-  public adlj(AddRequestActivity paramAddRequestActivity, int paramInt, String paramString, Bundle paramBundle)
+  public static com.tencent.qapmsdk.battery.monitor.MethodHookParam a(com.tencent.mobileqq.javahooksdk.MethodHookParam paramMethodHookParam)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    com.tencent.qapmsdk.battery.monitor.MethodHookParam localMethodHookParam = new com.tencent.qapmsdk.battery.monitor.MethodHookParam();
+    if (paramMethodHookParam != null)
+    {
+      localMethodHookParam.args = paramMethodHookParam.args;
+      localMethodHookParam.method = paramMethodHookParam.method;
+      localMethodHookParam.result = paramMethodHookParam.result;
+      localMethodHookParam.thisObject = paramMethodHookParam.thisObject;
+      localMethodHookParam.throwable = paramMethodHookParam.throwable;
+    }
+    return localMethodHookParam;
   }
   
-  public void onClick(View paramView)
+  public abstract com.tencent.qapmsdk.battery.monitor.HookMethodCallback a();
+  
+  public abstract void a();
+  
+  public void afterHookedMethod(com.tencent.mobileqq.javahooksdk.MethodHookParam paramMethodHookParam)
   {
-    if (paramView != null) {}
-    for (paramView = paramView.getContext(); paramView == null; paramView = null) {
-      return;
-    }
-    Object localObject;
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 1: 
-      bfup.a(paramView, this.jdField_a_of_type_AndroidOsBundle, 2);
-      return;
-    case 2: 
-      try
-      {
-        localObject = new Intent(paramView, DiscussionInfoCardActivity.class);
-        ((Intent)localObject).putExtras(this.jdField_a_of_type_AndroidOsBundle);
-        paramView.startActivity((Intent)localObject);
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-        return;
-      }
-    }
-    try
-    {
-      localObject = new ProfileActivity.AllInOne(this.jdField_a_of_type_AndroidOsBundle.getString("key_profile_uin"), this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_pa", 25));
-      ((ProfileActivity.AllInOne)localObject).h = 109;
-      ((ProfileActivity.AllInOne)localObject).d = this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_chatability");
-      ProfileActivity.b(paramView, (ProfileActivity.AllInOne)localObject);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      paramView.printStackTrace();
+    com.tencent.qapmsdk.battery.monitor.HookMethodCallback localHookMethodCallback = a();
+    if (localHookMethodCallback != null) {
+      localHookMethodCallback.afterHookedMethod(a(paramMethodHookParam));
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void beforeHookedMethod(com.tencent.mobileqq.javahooksdk.MethodHookParam paramMethodHookParam)
   {
-    paramTextPaint.setColor(-12541697);
+    com.tencent.qapmsdk.battery.monitor.HookMethodCallback localHookMethodCallback = a();
+    if (localHookMethodCallback != null) {
+      localHookMethodCallback.beforeHookedMethod(a(paramMethodHookParam));
+    }
   }
 }
 

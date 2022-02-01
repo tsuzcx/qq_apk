@@ -1,10 +1,18 @@
-import android.content.Context;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class xxr
-  implements wjy
+class xxr
+  implements DialogInterface.OnDismissListener
 {
-  public void a(Context paramContext, View paramView) {}
+  xxr(xxq paramxxq) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.a.a != null) {
+      this.a.a.c(false);
+    }
+  }
 }
 
 

@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import com.tencent.qphone.base.util.QLog;
-import pmh;
-import pmk;
+import pfa;
+import pfd;
 
 public class ReadInJoyLogicEngine$2
   implements Runnable
 {
-  public ReadInJoyLogicEngine$2(pmh parampmh, int paramInt) {}
+  public ReadInJoyLogicEngine$2(pfa parampfa, int paramInt) {}
   
   public void run()
   {
     QLog.d("ReadInJoyLogicEngine", 1, new Object[] { "onLoadMoreArticle, channelID = ", Integer.valueOf(this.a) });
-    pmk.a().b(false, this.a, null, false);
+    pfd.a().b(false, this.a, null, false);
   }
 }
 

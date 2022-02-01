@@ -2,8 +2,8 @@ package Wallet;
 
 import LBS.LBSInfo;
 import android.text.TextUtils;
-import bgln;
-import bgnt;
+import bhlo;
+import bhnv;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
@@ -37,9 +37,9 @@ public final class ReqWalletConfig
     ReqWalletConfig localReqWalletConfig = new ReqWalletConfig();
     localReqWalletConfig.reqType = paramLong1;
     localReqWalletConfig.uin = paramLong2;
-    localReqWalletConfig.platform = ("Android|" + bgln.e() + "|" + bgln.i());
-    localReqWalletConfig.version = bgln.c();
-    localReqWalletConfig.iNetType = bgnt.a(BaseApplicationImpl.getContext());
+    localReqWalletConfig.platform = ("Android|" + bhlo.e() + "|" + bhlo.i());
+    localReqWalletConfig.version = bhlo.c();
+    localReqWalletConfig.iNetType = bhnv.a(BaseApplicationImpl.getContext());
     localReqWalletConfig.seriesNo = paramLong3;
     if (!TextUtils.isEmpty(paramString)) {
       localReqWalletConfig.commonMsg = paramString;

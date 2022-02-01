@@ -1,17 +1,6 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
-final class aswn
-  implements atve
+public abstract interface aswn
 {
-  aswn(Activity paramActivity, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void a()
-  {
-    atvo.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
-  }
-  
-  public void b() {}
+  public abstract void a();
 }
 
 

@@ -1,15 +1,6 @@
-public final class aitb
+public class aitb
 {
-  public static String a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return "1";
-    }
-    if (paramInt == 1) {
-      return "2";
-    }
-    return "";
-  }
+  public static final String a = bigv.a(antf.ba + ".sticker_recommended_pics/");
 }
 
 

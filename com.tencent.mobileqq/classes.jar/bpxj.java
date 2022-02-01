@@ -1,27 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
 class bpxj
-  extends bomw
+  implements wmr
 {
   bpxj(bpxi parambpxi) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean) {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (paramBoolean)
+    this.a.a.b();
+    if (paramInt == 0)
     {
-      bpxi.a(this.a, true);
-      bpxi.a(this.a);
+      this.a.a.a.sendEmptyMessage(3);
       return;
     }
-    QLog.i("EditPicQzComment", 2, "download music fail" + paramInt);
+    this.a.a.a.sendEmptyMessage(5);
   }
 }
 

@@ -1,101 +1,125 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class arib
-  implements Parcelable.Creator<MessageForShortVideo>
+public class arib
 {
-  public MessageForShortVideo a(Parcel paramParcel)
+  public arhz a;
+  public aria a;
+  public String a;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  
+  public arib()
   {
-    boolean bool2 = true;
-    MessageForShortVideo localMessageForShortVideo = new MessageForShortVideo();
-    localMessageForShortVideo.uniseq = paramParcel.readLong();
-    localMessageForShortVideo.istroop = paramParcel.readInt();
-    localMessageForShortVideo.selfuin = paramParcel.readString();
-    localMessageForShortVideo.frienduin = paramParcel.readString();
-    localMessageForShortVideo.senderuin = paramParcel.readString();
-    localMessageForShortVideo.uuid = paramParcel.readString();
-    localMessageForShortVideo.md5 = paramParcel.readString();
-    localMessageForShortVideo.videoFileName = paramParcel.readString();
-    localMessageForShortVideo.videoFileSize = paramParcel.readInt();
-    localMessageForShortVideo.videoFileFormat = paramParcel.readInt();
-    localMessageForShortVideo.videoFileTime = paramParcel.readInt();
-    localMessageForShortVideo.thumbWidth = paramParcel.readInt();
-    localMessageForShortVideo.thumbHeight = paramParcel.readInt();
-    localMessageForShortVideo.videoFileStatus = paramParcel.readInt();
-    localMessageForShortVideo.videoFileProgress = paramParcel.readInt();
-    localMessageForShortVideo.fileType = paramParcel.readInt();
-    localMessageForShortVideo.thumbMD5 = paramParcel.readString();
-    localMessageForShortVideo.fileSource = paramParcel.readString();
-    localMessageForShortVideo.lastModified = paramParcel.readLong();
-    localMessageForShortVideo.thumbFileSize = paramParcel.readInt();
-    localMessageForShortVideo.busiType = paramParcel.readInt();
-    localMessageForShortVideo.fromChatType = paramParcel.readInt();
-    localMessageForShortVideo.toChatType = paramParcel.readInt();
-    localMessageForShortVideo.uiOperatorFlag = paramParcel.readInt();
-    localMessageForShortVideo.mVideoFileSourceDir = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Aria = new aria();
+    this.jdField_a_of_type_Arhz = new arhz();
+  }
+  
+  public static arib a(araj[] paramArrayOfaraj)
+  {
+    arib localarib = new arib();
+    int j;
+    int i;
+    try
     {
-      bool1 = true;
-      localMessageForShortVideo.supportProgressive = bool1;
-      localMessageForShortVideo.fileWidth = paramParcel.readInt();
-      localMessageForShortVideo.fileHeight = paramParcel.readInt();
-      localMessageForShortVideo.transferedSize = paramParcel.readInt();
-      localMessageForShortVideo.subBusiType = paramParcel.readInt();
-      localMessageForShortVideo.videoAttr = paramParcel.readInt();
-      localMessageForShortVideo.binarySet = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label466;
+      j = paramArrayOfaraj.length;
+      i = 0;
+    }
+    catch (Throwable paramArrayOfaraj)
+    {
+      boolean bool;
+      QLog.d("QQSysAndEmojiConfProcessor", 2, "parse S$EConfBean failed!", paramArrayOfaraj);
+      return localarib;
+    }
+    Object localObject = ((araj)localObject).jdField_a_of_type_JavaLangString;
+    bool = TextUtils.isEmpty((CharSequence)localObject);
+    if (!bool)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject((String)localObject);
+        if (localJSONObject.has("config_url")) {
+          localarib.jdField_a_of_type_JavaLangString = localJSONObject.optString("config_url");
+        }
+        if (localJSONObject.has("config_md5")) {
+          localarib.b = localJSONObject.optString("config_md5");
+        }
+        if (localJSONObject.has("sysface_res_url")) {
+          localarib.c = localJSONObject.optString("sysface_res_url");
+        }
+        if (localJSONObject.has("sysface_res_md5")) {
+          localarib.d = localJSONObject.optString("sysface_res_md5");
+        }
+        if (localJSONObject.has("emoji_res_url")) {
+          localarib.e = localJSONObject.optString("emoji_res_url");
+        }
+        if (localJSONObject.has("emoji_res_md5")) {
+          localarib.f = localJSONObject.optString("emoji_res_md5");
+        }
+        localarib.jdField_a_of_type_Aria = aria.a(localJSONObject);
+        localarib.jdField_a_of_type_Arhz = arhz.a(localJSONObject);
       }
-      bool1 = true;
-      label314:
-      localMessageForShortVideo.mediacodecEncode = bool1;
-      localMessageForShortVideo.hotVideoIconUrl = paramParcel.readString();
-      localMessageForShortVideo.hotVideoSubIconUrl = paramParcel.readString();
-      localMessageForShortVideo.hotVideoTitle = paramParcel.readString();
-      localMessageForShortVideo.hotVideoUrl = paramParcel.readString();
-      localMessageForShortVideo.specialVideoType = paramParcel.readInt();
-      localMessageForShortVideo.msgTailType = paramParcel.readInt();
-      localMessageForShortVideo.redBagType = paramParcel.readInt();
-      localMessageForShortVideo.shortVideoId = paramParcel.readString();
-      localMessageForShortVideo.redBagStat = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label471;
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
       }
-      bool1 = true;
-      label410:
-      localMessageForShortVideo.syncToStory = bool1;
-      localMessageForShortVideo.videoKandianType = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label476;
+      if (QLog.isColorLevel()) {
+        QLog.i("QQSysAndEmojiConfProcessor", 2, "parse S$EConfBean: " + (String)localObject);
       }
     }
-    label466:
-    label471:
-    label476:
-    for (boolean bool1 = bool2;; bool1 = false)
+    label283:
+    for (;;)
     {
-      localMessageForShortVideo.sendRawVideo = bool1;
-      localMessageForShortVideo.templateId = paramParcel.readString();
-      localMessageForShortVideo.templateName = paramParcel.readString();
-      return localMessageForShortVideo;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label314;
-      bool1 = false;
-      break label410;
+      localarib.a();
+      return localarib;
+      for (;;)
+      {
+        if (i >= j) {
+          break label283;
+        }
+        localObject = paramArrayOfaraj[i];
+        if (localObject != null) {
+          break;
+        }
+        i += 1;
+      }
     }
   }
   
-  public MessageForShortVideo[] a(int paramInt)
+  private void a()
   {
-    return new MessageForShortVideo[paramInt];
+    if (this.jdField_a_of_type_Aria.a())
+    {
+      String str = this.jdField_a_of_type_Aria.jdField_a_of_type_JavaLangString;
+      if (!TextUtils.isEmpty(str)) {
+        URLDrawable.getDrawable(str).startDownload(false);
+      }
+      str = this.jdField_a_of_type_Aria.b;
+      if (!TextUtils.isEmpty(str)) {
+        URLDrawable.getDrawable(str).startDownload(false);
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    new StringBuilder().append(", mConfigUrl:").append(this.jdField_a_of_type_JavaLangString).append(", mConfigMD5:").append(this.b).append(", mSysFaceUrl").append(this.c).append(", mSysFaceMD5").append(this.d).append(", mEmojiUrl").append(this.e).append(", mEmojiMD5").append(this.f).append(", mEmoticonGuideConfBean").append(this.jdField_a_of_type_Aria.toString());
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arib
  * JD-Core Version:    0.7.0.1
  */

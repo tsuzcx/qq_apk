@@ -1,48 +1,177 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.vas.FriendCloneSettingFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.ui.RoundProgressBar;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.observer.BusinessObserver;
+import tencent.im.cs.cmd0x6ff.subcmd0x608.troop_member_distribute.OStatisticInfo;
+import tencent.im.cs.cmd0x6ff.subcmd0x608.troop_member_distribute.RspBody;
 
 public class bgxt
-  extends anun
+  implements BusinessObserver
 {
-  public bgxt(FriendCloneSettingFragment paramFriendCloneSettingFragment) {}
+  private final WeakReference<TroopMoreDetailView> a;
   
-  public void d(boolean paramBoolean, Object paramObject)
+  public bgxt(TroopMoreDetailView paramTroopMoreDetailView)
   {
-    int i;
-    if ((paramBoolean) && ((paramObject instanceof ArrayList)))
+    this.a = new WeakReference(paramTroopMoreDetailView);
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    TroopMoreDetailView localTroopMoreDetailView = (TroopMoreDetailView)this.a.get();
+    if (localTroopMoreDetailView == null) {}
+    Object localObject2;
+    Context localContext;
+    int j;
+    label141:
+    View localView;
+    StringBuffer localStringBuffer;
+    do
     {
-      paramObject = (ArrayList)paramObject;
-      i = ((Integer)paramObject.get(1)).intValue();
-      if (i == 257) {
-        if (((Boolean)paramObject.get(2)).booleanValue())
+      do
+      {
+        for (;;)
         {
-          this.a.a(1);
-          this.a.jdField_a_of_type_Int = 1;
+          return;
+          localObject1 = TroopMoreDetailView.a(localTroopMoreDetailView);
+          if ((localObject1 != null) && (paramBoolean))
+          {
+            localObject2 = paramBundle.getByteArray("data");
+            if (localObject2 != null)
+            {
+              localContext = localTroopMoreDetailView.getContext();
+              if (localContext != null) {
+                try
+                {
+                  paramBundle = new troop_member_distribute.RspBody();
+                  paramBundle.mergeFrom((byte[])localObject2);
+                  if (paramBundle.uint32_result.get() == 0)
+                  {
+                    localObject2 = paramBundle.rpt_msg_statistic.get();
+                    j = paramBundle.uint32_group_member.get();
+                    if (j != 0) {
+                      break label141;
+                    }
+                    if (QLog.isColorLevel())
+                    {
+                      QLog.d("TroopMoreDetailView", 2, "mGetTroopMemberDistributeObserver.onReceive: memberCount should not be 0!");
+                      return;
+                    }
+                  }
+                }
+                catch (InvalidProtocolBufferMicroException paramBundle) {}
+              }
+            }
+          }
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("TroopMoreDetailView", 2, paramBundle, new Object[0]);
+      return;
+      localView = localTroopMoreDetailView.a[5];
+      localStringBuffer = new StringBuffer(localTroopMoreDetailView.getResources().getString(2131718970));
+    } while ((localView == null) || (((List)localObject2).size() < 4));
+    localView.setVisibility(0);
+    if (localTroopMoreDetailView.a[4] != null) {
+      localTroopMoreDetailView.a[4].setBackgroundResource(2130839447);
+    }
+    localStringBuffer.append(",本群共").append(j).append("人");
+    paramBundle = localView.findViewById(2131379460);
+    paramBoolean = ThemeUtil.isInNightMode((AppRuntime)localObject1);
+    int i = 0;
+    label300:
+    Object localObject3;
+    RoundProgressBar localRoundProgressBar;
+    if (i < ((List)localObject2).size())
+    {
+      paramInt = Color.parseColor("#ffffff00");
+      switch (i)
+      {
+      case 0: 
+        localObject3 = (troop_member_distribute.OStatisticInfo)((List)localObject2).get(i);
+        localRoundProgressBar = (RoundProgressBar)paramBundle.findViewById(2131376963);
+        localRoundProgressBar.setTextColor(localContext.getResources().getColor(2131166993));
+        if (!paramBoolean) {
+          break;
         }
       }
     }
-    for (;;)
+    for (Object localObject1 = "#FF1F1F1F";; localObject1 = "#FFDDDDDD")
     {
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      if (this.a.jdField_a_of_type_Biax != null) {
-        this.a.jdField_a_of_type_Biax.b();
-      }
-      return;
-      this.a.a(0);
-      this.a.jdField_a_of_type_Int = 0;
-      continue;
-      if (i == 258)
+      localRoundProgressBar.setCircleColor(Color.parseColor((String)localObject1));
+      localRoundProgressBar.setRoundWidth(agej.a(2.0F, localTroopMoreDetailView.getResources()));
+      localRoundProgressBar.setTextSize(34.0F);
+      localRoundProgressBar.setCircleProgressColor(paramInt);
+      paramInt = ((troop_member_distribute.OStatisticInfo)localObject3).uint32_count.get() * 100 / j;
+      localRoundProgressBar.setProgress(paramInt);
+      localObject1 = (TextView)paramBundle.findViewById(2131378936);
+      localObject3 = ((troop_member_distribute.OStatisticInfo)localObject3).bytes_desc.get().toStringUtf8();
+      ((TextView)localObject1).setText((CharSequence)localObject3);
+      localObject1 = ((String)localObject3).split("-");
+      localStringBuffer.append(", 百分之").append(paramInt).append("为").append(localObject1[0]);
+      i += 1;
+      break;
+      localObject1 = localView.findViewById(2131379460);
+      if (paramBoolean)
       {
-        this.a.jdField_a_of_type_Int = this.a.b;
-        continue;
-        this.a.a(this.a.jdField_a_of_type_Int);
-        if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) {
-          QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, anni.a(2131703654), 0).a();
+        paramBundle = "#FF371657";
+        label496:
+        paramInt = Color.parseColor(paramBundle);
+        paramBundle = (Bundle)localObject1;
+        break label300;
+        localObject1 = localView.findViewById(2131379461);
+        if (!paramBoolean) {
+          break label605;
         }
-        QLog.e("IphoneTitleBarFragment", 0, "onFriendCloneAuth: failed. ");
+        paramBundle = "#FF17470A";
+        label523:
+        paramInt = Color.parseColor(paramBundle);
+        paramBundle = (Bundle)localObject1;
+        break label300;
+        localObject1 = localView.findViewById(2131379462);
+        if (!paramBoolean) {
+          break label611;
+        }
+        paramBundle = "#FF074861";
+        label550:
+        paramInt = Color.parseColor(paramBundle);
+        paramBundle = (Bundle)localObject1;
+        break label300;
+        localObject1 = localView.findViewById(2131379463);
+        if (!paramBoolean) {
+          break label618;
+        }
+      }
+      label605:
+      label611:
+      label618:
+      for (paramBundle = "#FF615400";; paramBundle = "#ffff8400")
+      {
+        paramInt = Color.parseColor(paramBundle);
+        paramBundle = (Bundle)localObject1;
+        break;
+        localView.setContentDescription(localStringBuffer);
+        return;
+        break;
+        paramBundle = "#ff771bf4";
+        break label496;
+        paramBundle = "#ff0eddb8";
+        break label523;
+        paramBundle = "#ff0d8aff";
+        break label550;
       }
     }
   }

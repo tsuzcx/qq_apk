@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import aftc;
+import agcm;
 
 public class QQNotifySettingBaseFragment$1$2
   implements Runnable
 {
-  public QQNotifySettingBaseFragment$1$2(aftc paramaftc) {}
+  public QQNotifySettingBaseFragment$1$2(agcm paramagcm) {}
   
   public void run()
   {

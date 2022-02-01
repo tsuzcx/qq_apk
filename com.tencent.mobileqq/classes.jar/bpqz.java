@@ -1,509 +1,260 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.media.MediaMetadataRetriever;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Log;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.CodecHandler.1;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.CodecHandler.2;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewStub;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.XListView;
+import dov.com.qq.im.capture.poi.FacePoiSearchUI.2;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Locale;
-import java.util.concurrent.TimeoutException;
 
-@TargetApi(16)
 public class bpqz
-  extends Handler
+  implements View.OnClickListener, bljm
 {
-  public bpqz(bpqy parambpqy, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new bprc(this);
+  View jdField_a_of_type_AndroidViewView;
+  ViewStub jdField_a_of_type_AndroidViewViewStub;
+  public EditText a;
+  TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  private bprd jdField_a_of_type_Bprd;
+  bqtw jdField_a_of_type_Bqtw = null;
+  XListView jdField_a_of_type_ComTencentWidgetXListView = null;
+  EditVideoParams jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams;
+  WeakReference<bqgw> jdField_a_of_type_JavaLangRefWeakReference;
+  ArrayList<TroopBarPOI> jdField_a_of_type_JavaUtilArrayList = null;
+  wvg jdField_a_of_type_Wvg = wvg.a();
+  View b;
+  View c;
+  View d = null;
+  View e = null;
+  View f = null;
+  View g = null;
+  View h;
   
-  private void a(bpra parambpra)
+  private void g()
   {
-    int i = 0;
-    bprd localbprd = new bprd();
-    localbprd.jdField_a_of_type_Bpra = parambpra;
-    localbprd.jdField_b_of_type_Long = (bqfh.a(parambpra.jdField_a_of_type_JavaLangString) * 1000L);
-    for (;;)
+    yuk.b("FacePoiSearchUI", "requestPoiList");
+    String str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    this.jdField_a_of_type_Wvg.a(str);
+    if (TextUtils.isEmpty(str))
     {
-      MediaExtractor localMediaExtractor;
-      int k;
-      try
-      {
-        localObject1 = new File(parambpra.jdField_a_of_type_JavaLangString);
-        if (!((File)localObject1).canRead()) {
-          throw new FileNotFoundException("Unable to read " + localObject1);
-        }
-      }
-      catch (Exception parambpra)
-      {
-        parambpra = parambpra;
-        Log.e("MediaCodecThumbnailGen", "startCaptureThumbnails Error!", parambpra);
-        if (!(parambpra instanceof IllegalArgumentException)) {
-          break label548;
-        }
-        localbprd.jdField_a_of_type_Int = 100;
-        yqp.c("MediaCodecThumbnailGen", "Error when generate thumbnail", parambpra);
-        obtainMessage(4, localbprd).sendToTarget();
-        return;
-        localMediaExtractor = new MediaExtractor();
-        localMediaExtractor.setDataSource(((File)localObject1).toString());
-        k = bpqx.a(localMediaExtractor);
-        if (k < 0) {
-          throw new RuntimeException("No video track found in " + localObject1);
-        }
-      }
-      finally {}
-      localMediaExtractor.selectTrack(k);
-      int j = parambpra.jdField_b_of_type_Int;
-      Object localObject1 = new long[parambpra.d];
-      long[] arrayOfLong = new long[parambpra.d];
-      while (i < parambpra.d)
-      {
-        localMediaExtractor.seekTo(j * 1000L, 0);
-        arrayOfLong[i] = (j * 1000L);
-        localObject1[i] = localMediaExtractor.getSampleTime();
-        j += parambpra.c;
-        i += 1;
-      }
-      localMediaExtractor.seekTo(localObject1[0], 0);
-      MediaFormat localMediaFormat = localMediaExtractor.getTrackFormat(k);
-      boolean bool = localMediaFormat.containsKey("rotation-degrees");
-      if (bool) {}
-      try
-      {
-        localbprd.jdField_b_of_type_Int = localMediaFormat.getInteger("rotation-degrees");
-        label318:
-        i = localMediaFormat.getInteger("height");
-        j = localMediaFormat.getInteger("width");
-        Log.d("MediaCodecThumbnailGen", "Video size is " + j + "x" + i);
-        float f = parambpra.jdField_a_of_type_Int * 1.0F / Math.max(i, j);
-        parambpra = new bpre((int)(j * f), (int)(i * f));
-        Object localObject2 = MediaCodec.createDecoderByType(localMediaFormat.getString("mime"));
-        ((MediaCodec)localObject2).configure(localMediaFormat, parambpra.a(), null, 0);
-        ((MediaCodec)localObject2).start();
-        localbprd.jdField_a_of_type_AndroidMediaMediaExtractor = localMediaExtractor;
-        localbprd.jdField_a_of_type_Bpre = parambpra;
-        localbprd.jdField_a_of_type_AndroidMediaMediaCodec = ((MediaCodec)localObject2);
-        localbprd.c = k;
-        localbprd.jdField_a_of_type_Int = 0;
-        localbprd.d = 0;
-        localbprd.jdField_a_of_type_ArrayOfLong = ((long[])localObject1);
-        localbprd.jdField_b_of_type_ArrayOfLong = arrayOfLong;
-        obtainMessage(2, localbprd).sendToTarget();
-        return;
-        localObject2 = new MediaMetadataRetriever();
-        ((MediaMetadataRetriever)localObject2).setDataSource(localbprd.jdField_a_of_type_Bpra.jdField_a_of_type_JavaLangString);
-        String str = ((MediaMetadataRetriever)localObject2).extractMetadata(24);
-        try
-        {
-          localbprd.jdField_b_of_type_Int = Integer.parseInt(str);
-          label540:
-          ((MediaMetadataRetriever)localObject2).release();
-          break label318;
-          label548:
-          if ((parambpra instanceof RuntimeException))
-          {
-            localbprd.jdField_a_of_type_Int = 101;
-            continue;
-          }
-          localbprd.jdField_a_of_type_Int = -1;
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          break label540;
-        }
-      }
-      catch (NullPointerException localNullPointerException)
-      {
-        break label318;
-      }
-    }
-  }
-  
-  private void a(bprd parambprd)
-  {
-    boolean bool2 = true;
-    Log.e("MediaCodecThumbnailGen", "finishCapture");
-    if (parambprd.jdField_a_of_type_Int != 0) {}
-    for (boolean bool1 = false;; bool1 = true)
-    {
-      if (parambprd.jdField_a_of_type_Bpre != null)
-      {
-        parambprd.jdField_a_of_type_Bpre.a();
-        parambprd.jdField_a_of_type_Bpre = null;
-      }
-      if (parambprd.jdField_a_of_type_AndroidMediaMediaCodec != null)
-      {
-        parambprd.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-        parambprd.jdField_a_of_type_AndroidMediaMediaCodec.release();
-        parambprd.jdField_a_of_type_AndroidMediaMediaCodec = null;
-      }
-      if (parambprd.jdField_a_of_type_AndroidMediaMediaExtractor != null)
-      {
-        parambprd.jdField_a_of_type_AndroidMediaMediaExtractor.release();
-        parambprd.jdField_a_of_type_AndroidMediaMediaExtractor = null;
-      }
-      bprc localbprc = new bprc();
-      localbprc.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(parambprd.jdField_a_of_type_JavaUtilArrayList);
-      localbprc.b = Collections.unmodifiableList(parambprd.jdField_b_of_type_JavaUtilArrayList);
-      localbprc.jdField_a_of_type_Int = parambprd.jdField_a_of_type_Int;
-      if (bool1) {
-        if (parambprd.jdField_a_of_type_Boolean) {
-          break label221;
-        }
-      }
-      for (;;)
-      {
-        localbprc.jdField_a_of_type_Boolean = bool2;
-        yqp.c("MediaCodecThumbnailGen", "hasBlackThumbnail = " + localbprc.jdField_a_of_type_Boolean);
-        yqu.a("actBlackThumbnailVideo", localbprc.jdField_a_of_type_Boolean, System.currentTimeMillis() - bpqy.a(this.a), new String[0]);
-        this.a.a.post(new MediaCodecThumbnailGenerator.CodecHandler.1(this, parambprd, bool1, localbprc));
-        return;
-        label221:
-        bool2 = false;
-      }
-    }
-  }
-  
-  private void a(bprd parambprd, boolean paramBoolean)
-  {
-    Object localObject1 = parambprd.jdField_a_of_type_Bpre;
-    bpra localbpra = parambprd.jdField_a_of_type_Bpra;
-    int k = parambprd.d;
-    ArrayList localArrayList1 = parambprd.jdField_a_of_type_JavaUtilArrayList;
-    ArrayList localArrayList2 = parambprd.jdField_b_of_type_JavaUtilArrayList;
-    for (;;)
-    {
-      int j;
-      try
-      {
-        ((bpre)localObject1).c();
-        ((bpre)localObject1).d();
-        ((bpre)localObject1).a(false);
-        bprb localbprb = new bprb();
-        localObject1 = ((bpre)localObject1).a();
-        if (localObject1 == null) {
-          break label590;
-        }
-        j = parambprd.jdField_b_of_type_Int;
-        if ((parambprd.jdField_b_of_type_Int % 180 > 0) && (((Bitmap)localObject1).getWidth() < ((Bitmap)localObject1).getHeight())) {
-          break label593;
-        }
-        i = j;
-        if (parambprd.jdField_b_of_type_Int % 180 == 0)
-        {
-          i = j;
-          if (((Bitmap)localObject1).getWidth() > ((Bitmap)localObject1).getHeight()) {
-            break label593;
-          }
-        }
-        if (i > 0)
-        {
-          Object localObject2 = zlx.a((Bitmap)localObject1, i);
-          ((Bitmap)localObject1).recycle();
-          localObject1 = localObject2;
-          localArrayList2.add(localObject1);
-          if (!paramBoolean) {
-            break label603;
-          }
-          localObject2 = new File(localbpra.jdField_b_of_type_JavaLangString, String.format(Locale.getDefault(), a(k), new Object[0]));
-          try
-          {
-            BufferedOutputStream localBufferedOutputStream = new BufferedOutputStream(new FileOutputStream((File)localObject2));
-            float f2;
-            float f1;
-            localObject1 = parambprd.jdField_b_of_type_ArrayOfLong;
-          }
-          finally
-          {
-            try
-            {
-              ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, 80, localBufferedOutputStream);
-              if (localBufferedOutputStream == null) {}
-            }
-            finally
-            {
-              continue;
-            }
-            try
-            {
-              localBufferedOutputStream.close();
-              localArrayList1.add(((File)localObject2).getAbsolutePath());
-              localbprb.jdField_a_of_type_JavaLangString = ((File)localObject2).getAbsolutePath();
-              yqp.c("MediaCodecThumbnailGen", "dumpThumbnailSurfaces() add: " + ((File)localObject2).getPath());
-              localbprb.jdField_a_of_type_Int = parambprd.d;
-              localbprb.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject1);
-              f2 = 0.0F;
-              f1 = f2;
-              if (localbpra.jdField_b_of_type_Boolean)
-              {
-                f1 = f2;
-                if (parambprd.d == 0)
-                {
-                  f1 = bpqy.a((Bitmap)localObject1);
-                  yqp.c("MediaCodecThumbnailGen", "blackRegionPrecent = " + f1);
-                  localbprb.jdField_a_of_type_Long = parambprd.jdField_b_of_type_ArrayOfLong[parambprd.d];
-                }
-              }
-              if ((f1 >= 0.9F) && (localbprb.jdField_a_of_type_Long <= 500000L) && (localbprb.jdField_a_of_type_Long + 100000L <= parambprd.jdField_b_of_type_Long)) {
-                continue;
-              }
-              localArrayList1.add(localbprb.jdField_a_of_type_JavaLangString);
-              localArrayList2.add(localObject1);
-              if (f1 >= 0.9F) {
-                break label606;
-              }
-              paramBoolean = true;
-              parambprd.jdField_a_of_type_Boolean = paramBoolean;
-              this.a.a.post(new MediaCodecThumbnailGenerator.CodecHandler.2(this, parambprd, localbprb));
-              parambprd.d += 1;
-              obtainMessage(2, parambprd).sendToTarget();
-              return;
-            }
-            catch (IOException localIOException)
-            {
-              yqp.c("MediaCodecThumbnailGen", "dumpThumbnailSurfaces() error ", localIOException);
-            }
-            localObject3 = finally;
-            localBufferedOutputStream = null;
-            if (localBufferedOutputStream != null) {
-              localBufferedOutputStream.close();
-            }
-          }
-          i = parambprd.d;
-          localObject1[i] += 50000L;
-          obtainMessage(2, parambprd).sendToTarget();
-          return;
-        }
-      }
-      catch (TimeoutException localTimeoutException)
-      {
-        sendMessageDelayed(obtainMessage(3, parambprd), 100L);
-        Log.e("MediaCodecThumbnailGen", "dumpThumbnailSurfaces() timeout delay 100ms");
-        return;
-      }
-      continue;
-      label590:
-      continue;
-      label593:
-      int i = j + 90;
-      continue;
-      label603:
-      continue;
-      label606:
-      paramBoolean = false;
-    }
-  }
-  
-  private void b(bprd parambprd)
-  {
-    MediaCodec localMediaCodec;
-    long[] arrayOfLong2;
-    int i2;
-    long l1;
-    MediaCodec.BufferInfo localBufferInfo;
-    int j;
-    int i;
-    int k;
-    int m;
-    int n;
-    long l2;
-    try
-    {
-      MediaExtractor localMediaExtractor = parambprd.jdField_a_of_type_AndroidMediaMediaExtractor;
-      localMediaCodec = parambprd.jdField_a_of_type_AndroidMediaMediaCodec;
-      bpra localbpra = parambprd.jdField_a_of_type_Bpra;
-      long[] arrayOfLong1 = parambprd.jdField_a_of_type_ArrayOfLong;
-      arrayOfLong2 = parambprd.jdField_b_of_type_ArrayOfLong;
-      int i1 = parambprd.c;
-      i2 = parambprd.d;
-      l1 = localMediaExtractor.getSampleTime();
-      ByteBuffer[] arrayOfByteBuffer = localMediaCodec.getInputBuffers();
-      localBufferInfo = new MediaCodec.BufferInfo();
-      j = 0;
-      i = 0;
-      k = 0;
-      if ((i != 0) || (i2 >= localbpra.d)) {
-        break label724;
-      }
-      if ((parambprd.jdField_a_of_type_Long != arrayOfLong1[i2]) && (l1 < arrayOfLong1[i2]))
-      {
-        Log.e("MediaCodecThumbnailGen", "SeekTo: " + arrayOfLong1[i2]);
-        localMediaExtractor.seekTo(arrayOfLong1[i2], 0);
-        parambprd.jdField_a_of_type_Long = arrayOfLong1[i2];
-        localMediaCodec.flush();
-      }
-      m = k;
-      n = j;
-      l2 = l1;
-      if (k == 0)
-      {
-        m = localMediaCodec.dequeueInputBuffer(-1L);
-        if (m < 0) {
-          break label448;
-        }
-        n = localMediaExtractor.readSampleData(arrayOfByteBuffer[m], 0);
-        if (n >= 0) {
-          break label289;
-        }
-        localMediaCodec.queueInputBuffer(m, 0, 0, 0L, 4);
-        m = 1;
-        Log.d("MediaCodecThumbnailGen", "sent input EOS");
-        k = j;
-        j = m;
-        break label729;
-      }
-      for (;;)
-      {
-        label246:
-        k = m;
-        j = n;
-        l1 = l2;
-        if (i != 0) {
-          break;
-        }
-        j = localMediaCodec.dequeueOutputBuffer(localBufferInfo, 10000L);
-        if (j != -1) {
-          break label494;
-        }
-        Log.d("MediaCodecThumbnailGen", "no output from decoder available");
-        break label743;
-        label289:
-        if (localMediaExtractor.getSampleTrackIndex() != i1) {
-          Log.w("MediaCodecThumbnailGen", "WEIRD: got sample from track " + localMediaExtractor.getSampleTrackIndex() + ", expected " + i1);
-        }
-        localMediaCodec.queueInputBuffer(m, 0, n, localMediaExtractor.getSampleTime(), 0);
-        Log.d("MediaCodecThumbnailGen", "submitted frame " + j + " to dec, size=" + n);
-        l1 = localMediaExtractor.getSampleTime();
-        Log.d("MediaCodecThumbnailGen", "extractor sample time = " + l1);
-        localMediaExtractor.advance();
-        m = j + 1;
-        j = k;
-        k = m;
-        break label729;
-        label448:
-        Log.d("MediaCodecThumbnailGen", "input buffer not available");
-        m = k;
-        n = j;
-        l2 = l1;
-      }
-      if (j != -3) {
-        break label512;
-      }
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      QLog.e("MediaCodecThumbnailGen", 1, "decodeThumbnails fail", localIllegalStateException);
-      obtainMessage(4, parambprd).sendToTarget();
+      yuk.c("FacePoiSearchUI", "requestPoiList text is null ignore");
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_Bqtw.notifyDataSetChanged();
+      d();
       return;
     }
-    label494:
-    Log.d("MediaCodecThumbnailGen", "decoder output buffers changed");
-    break label743;
-    label512:
-    if (j == -2)
-    {
-      MediaFormat localMediaFormat = localMediaCodec.getOutputFormat();
-      Log.d("MediaCodecThumbnailGen", "decoder output format changed: " + localMediaFormat);
+    wva localwva = (wva)wth.a(9);
+    wuz localwuz = wva.a();
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null) {
+      localwuz = zos.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams);
     }
-    else if (j < 0)
-    {
-      bkfk.a("unexpected result from decoder.dequeueOutputBuffer: " + j);
+    if (localwuz != null) {
+      localwva.a(localwuz, this.jdField_a_of_type_Wvg, new bprb(this, str));
     }
-    else
+    if (this.jdField_a_of_type_Wvg.b())
     {
-      Log.d("MediaCodecThumbnailGen", "surface decoder given buffer " + j + " (size=" + localBufferInfo.size + ")");
-      if ((localBufferInfo.flags & 0x4) != 0)
-      {
-        Log.d("MediaCodecThumbnailGen", "output EOS");
-        i = 1;
-        break label757;
-      }
-    }
-    for (;;)
-    {
-      boolean bool;
-      localMediaCodec.releaseOutputBuffer(j, bool);
-      if (bool)
-      {
-        Log.d("MediaCodecThumbnailGen", "awaiting decode of time: " + l2);
-        label724:
-        for (i = 1;; i = 0)
-        {
-          if (i == 0)
-          {
-            obtainMessage(4, parambprd).sendToTarget();
-            return;
-          }
-          obtainMessage(3, parambprd).sendToTarget();
-          return;
-          break;
-        }
-        label729:
-        m = j;
-        n = k;
-        l2 = l1;
-        break label246;
-      }
-      label743:
-      k = m;
-      j = n;
-      l1 = l2;
-      break;
-      label757:
-      if (l2 > arrayOfLong2[i2]) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-    }
-  }
-  
-  public String a(int paramInt)
-  {
-    return String.format(Locale.getDefault(), "thumbnail-%d.jpg", new Object[] { Integer.valueOf(paramInt) });
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
+      c();
+      this.d.setVisibility(4);
       return;
-      Object localObject = (bpra)paramMessage.obj;
-      yqp.c("MediaCodecThumbnailGen", "startCaptureThumbnails");
-      a((bpra)localObject);
+    }
+    this.d.setVisibility(0);
+  }
+  
+  public bqgw a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      throw new IllegalStateException("EditVideoPoiPickerCallback is null");
+    }
+    return (bqgw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
+      this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131372839);
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131368754));
+      this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131364166);
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372838));
+      this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131372847);
+      this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131377212);
+      this.g = this.jdField_a_of_type_AndroidViewView.findViewById(2131377169);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377170));
+      this.b.setOnClickListener(this);
+      this.e.setOnClickListener(this);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
+      this.jdField_a_of_type_Bqtw = new bqtw(this.h.getContext());
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      this.jdField_a_of_type_Bqtw.a(this.jdField_a_of_type_JavaUtilArrayList, null);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(this.e);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new bpra(this));
+      b();
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bqtw);
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+      this.c.setOnClickListener(this);
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    this.jdField_a_of_type_AndroidWidgetEditText.post(new FacePoiSearchUI.2(this));
+    this.d.setVisibility(4);
+  }
+  
+  public void a(View paramView)
+  {
+    if (paramView == null) {
+      throw new IllegalStateException("FacePoiSearchUI rootView can't be null");
+    }
+    this.h = paramView;
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)this.h.findViewById(2131374687));
+  }
+  
+  public void a(bprd parambprd)
+  {
+    this.jdField_a_of_type_Bprd = parambprd;
+  }
+  
+  public void a(bqgw parambqgw)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambqgw);
+  }
+  
+  public void a(EditVideoParams paramEditVideoParams)
+  {
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams = paramEditVideoParams;
+  }
+  
+  void a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    this.e.setVisibility(0);
+    this.f.setVisibility(4);
+    this.g.setVisibility(0);
+    paramString = this.h.getResources().getString(2131698600, new Object[] { paramString });
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.d == null) {
+      return;
+    }
+    TextView localTextView = (TextView)this.d.findViewById(2131376444);
+    if (paramBoolean)
+    {
+      localTextView.setText(2131718369);
+      return;
+    }
+    localTextView.setText(2131718364);
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0))
+    {
+      blgx.b(this.h);
+      return true;
+    }
+    return false;
+  }
+  
+  protected void b()
+  {
+    if (this.d == null)
+    {
+      this.d = LayoutInflater.from(this.h.getContext()).inflate(2131559652, null);
+      ImageView localImageView = (ImageView)this.d.findViewById(2131376442);
+      TextView localTextView1 = (TextView)this.d.findViewById(2131376444);
+      TextView localTextView2 = (TextView)this.d.findViewById(2131376450);
+      ProgressBar localProgressBar = (ProgressBar)this.d.findViewById(2131376445);
+      localTextView1.setTextColor(-8355712);
+      localTextView1.setText(2131718364);
+      localTextView2.setVisibility(8);
+      localImageView.setVisibility(8);
+      localProgressBar.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_ComTencentWidgetXListView.getFooterViewsCount() > 0) {
+      this.jdField_a_of_type_ComTencentWidgetXListView.removeFooterView(this.d);
+    }
+    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.d);
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0);
+  }
+  
+  void c()
+  {
+    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
+    this.e.setVisibility(0);
+    this.f.setVisibility(0);
+    this.g.setVisibility(4);
+  }
+  
+  void d()
+  {
+    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+    this.e.setVisibility(8);
+  }
+  
+  public void e()
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    }
+  }
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
+      this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      blgx.b(this.h);
       continue;
-      localObject = (bprd)paramMessage.obj;
-      yqp.c("MediaCodecThumbnailGen", "decodeThumbnails");
-      b((bprd)localObject);
-      continue;
-      localObject = (bprd)paramMessage.obj;
-      yqp.c("MediaCodecThumbnailGen", "dumpThumbnailSurfaces");
-      a((bprd)localObject, false);
-      continue;
-      localObject = (bprd)paramMessage.obj;
-      yqp.c("MediaCodecThumbnailGen", "finishCapture");
-      a((bprd)localObject);
+      a();
+      e();
+      if (this.jdField_a_of_type_Bprd != null) {
+        this.jdField_a_of_type_Bprd.aW_();
+      }
+    }
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      paramAdapterView = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      paramView = (bqgw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramView != null) {
+        paramView.a(paramAdapterView);
+      }
+      if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) && (this.jdField_a_of_type_Bprd != null)) {
+        this.jdField_a_of_type_Bprd.aW_();
+      }
+      blgx.b(this.h);
     }
   }
 }

@@ -1,28 +1,29 @@
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
+
 public class ayjz
+  implements aqhu
 {
-  public int a = 0;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e = 1;
+  public ayjz(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
   
-  public ayjz()
+  public void a(String paramString, int paramInt)
   {
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_c_of_type_Int = 1000;
-    this.jdField_d_of_type_Int = 1;
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   progress:" + paramInt);
+    }
   }
   
-  public String toString()
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append("allUseInSimple_2=").append(this.jdField_b_of_type_Boolean).append(", bgUseInSimple_2=").append(this.jdField_c_of_type_Boolean).append(", cfgUse_argb8888=").append(this.jdField_d_of_type_Boolean).append(", networkControl=").append(this.a).append(", dailyRetryTimes=").append(this.jdField_b_of_type_Int).append(", countRetryTimes=").append(this.jdField_c_of_type_Int).append(", entranceControl=").append(this.jdField_d_of_type_Int).append(", autoPreDownload=").append(this.e);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
+    }
+    if ((this.a.isDetached()) || (this.a.getActivity() == null)) {
+      return;
+    }
+    this.a.getActivity().runOnUiThread(new NearbyAuthVideoPlayerFragment.2.1(this, paramBoolean1));
   }
 }
 

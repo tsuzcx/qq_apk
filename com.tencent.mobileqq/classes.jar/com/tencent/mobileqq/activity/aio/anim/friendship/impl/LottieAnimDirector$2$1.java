@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.activity.aio.anim.friendship.impl;
 
-import agcu;
-import agcw;
-import agdf;
+import agmu;
+import agmw;
+import agnf;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class LottieAnimDirector$2$1
   implements Runnable
 {
-  public LottieAnimDirector$2$1(agcw paramagcw, boolean paramBoolean) {}
+  public LottieAnimDirector$2$1(agmw paramagmw, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((agcu.b(this.jdField_a_of_type_Agcw.jdField_a_of_type_Agcu)) || (agcu.a(this.jdField_a_of_type_Agcw.jdField_a_of_type_Agcu))) {}
+    if ((agmu.b(this.jdField_a_of_type_Agmw.jdField_a_of_type_Agmu)) || (agmu.a(this.jdField_a_of_type_Agmw.jdField_a_of_type_Agmu))) {}
     do
     {
       return;
       if (this.jdField_a_of_type_Boolean)
       {
-        QQAppInterface localQQAppInterface = agcu.a(this.jdField_a_of_type_Agcw.jdField_a_of_type_Agcu);
+        QQAppInterface localQQAppInterface = agmu.a(this.jdField_a_of_type_Agmw.jdField_a_of_type_Agmu);
         if (localQQAppInterface != null) {
-          agcu.a(this.jdField_a_of_type_Agcw.jdField_a_of_type_Agcu, localQQAppInterface);
+          agmu.a(this.jdField_a_of_type_Agmw.jdField_a_of_type_Agmu, localQQAppInterface);
         }
       }
-    } while (this.jdField_a_of_type_Agcw.jdField_a_of_type_Agdf == null);
-    this.jdField_a_of_type_Agcw.jdField_a_of_type_Agdf.a(this.jdField_a_of_type_Boolean);
+    } while (this.jdField_a_of_type_Agmw.jdField_a_of_type_Agnf == null);
+    this.jdField_a_of_type_Agmw.jdField_a_of_type_Agnf.a(this.jdField_a_of_type_Boolean);
   }
 }
 

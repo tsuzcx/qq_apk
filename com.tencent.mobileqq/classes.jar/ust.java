@@ -1,24 +1,18 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import java.util.List;
 
 public class ust
 {
-  public static bkrv<uru> a(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
+  public Object a;
+  public List<usv> a;
+  public boolean a;
+  public boolean b;
+  
+  public ust(List<usv> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
   {
-    switch (paramInt)
-    {
-    default: 
-      return new uss(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-    case 1: 
-      return new utu(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-    case 2: 
-      return new utt(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-    case 1001: 
-      return new urw(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-    case 1002: 
-      return new usn(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-    }
-    return new usq(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
 }
 

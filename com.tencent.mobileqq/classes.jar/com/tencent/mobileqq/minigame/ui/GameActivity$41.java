@@ -1,32 +1,31 @@
 package com.tencent.mobileqq.minigame.ui;
 
+import android.text.TextUtils;
+import bkxw;
 import com.tencent.qphone.base.util.QLog;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
-final class GameActivity$41
+class GameActivity$41
   implements Runnable
 {
-  GameActivity$41(String paramString) {}
+  GameActivity$41(GameActivity paramGameActivity, String paramString, long paramLong) {}
   
   public void run()
   {
     try
     {
-      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.val$reportUrl).openConnection();
-      localHttpURLConnection.setRequestMethod("GET");
-      localHttpURLConnection.setConnectTimeout(10000);
-      localHttpURLConnection.setReadTimeout(10000);
-      localHttpURLConnection.setUseCaches(false);
-      localHttpURLConnection.setInstanceFollowRedirects(true);
-      localHttpURLConnection.connect();
-      int i = localHttpURLConnection.getResponseCode();
-      QLog.i("[minigame] GameActivity", 1, "reportBannerAd/BlockAd rspCode" + i);
+      String str = GameActivity.access$5600(this.this$0);
+      if (!TextUtils.isEmpty(str)) {}
+      for (str = this.val$url + "&" + str;; str = this.val$url)
+      {
+        GameActivity.reportAdByHttp(str);
+        bkxw.a(this.this$0, this.val$url, this.val$timestamp);
+        return;
+      }
       return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.i("[minigame] GameActivity", 1, "reportBannerAd/BlockAd error, url = " + this.val$reportUrl, localThrowable);
+      QLog.i("[minigame] GameActivity", 1, "reportBannerAd error, url = " + this.val$url, localThrowable);
     }
   }
 }

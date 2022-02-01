@@ -13,7 +13,7 @@
         "event_type": "cmd_url_click_card_report",
         "data_attributes": {
             "setLocalInfo:": {
-                "exposure_T": "0X800ADCE",
+                "expose_T": "0X800A9B3",
                 "click_T": "0X800ADCF",
                 "type": "1"
             },

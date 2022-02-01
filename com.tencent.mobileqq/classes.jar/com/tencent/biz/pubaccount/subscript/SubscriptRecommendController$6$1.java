@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import tvx;
-import twc;
+import tvz;
+import twe;
 
 public class SubscriptRecommendController$6$1
   implements Runnable
 {
-  public SubscriptRecommendController$6$1(twc paramtwc) {}
+  public SubscriptRecommendController$6$1(twe paramtwe) {}
   
   public void run()
   {
-    tvx.a(this.a.a.a, false);
+    tvz.a(this.a.a.a, false);
   }
 }
 

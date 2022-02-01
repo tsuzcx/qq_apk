@@ -1,6 +1,6 @@
 package cooperation.qlink;
 
-import atwe;
+import aunz;
 import java.io.Serializable;
 
 public class QlAndQQInterface$InsertFMFileInfo
@@ -20,7 +20,7 @@ public class QlAndQQInterface$InsertFMFileInfo
     this.uin = paramString1;
     this.bSend = paramBoolean;
     this.sessionId = paramLong;
-    this.filePath = atwe.c(paramString2);
+    this.filePath = aunz.c(paramString2);
     this.thumbPath = paramString3;
     this.transSeq = paramInt;
   }

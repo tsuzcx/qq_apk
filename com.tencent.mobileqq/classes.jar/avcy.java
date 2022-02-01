@@ -1,16 +1,18 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardStructingMsgOption;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface avcy
+public class avcy
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public avcy(ForwardStructingMsgOption paramForwardStructingMsgOption) {}
   
-  public abstract void a(int paramInt, View paramView);
-  
-  public abstract void a(View paramView);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    ForwardStructingMsgOption.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

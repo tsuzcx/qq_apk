@@ -1,21 +1,18 @@
-import android.arch.lifecycle.MutableLiveData;
-import com.tencent.TMG.utils.QLog;
-import qqcircle.QQCircleProfile.SetProfileRsp;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.requests.QCircleClientReportRequest;
+import com.tencent.qphone.base.util.QLog;
+import qqcircle.QQCircleReport.StDataReportRsp;
 
 class vty
-  implements zxa<QQCircleProfile.SetProfileRsp>
+  implements aaav<QQCircleReport.StDataReportRsp>
 {
-  vty(vtx paramvtx) {}
+  vty(vtw paramvtw, QCircleClientReportRequest paramQCircleClientReportRequest) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleProfile.SetProfileRsp paramSetProfileRsp)
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleReport.StDataReportRsp paramStDataReportRsp)
   {
-    QLog.d("QCircleDataEditViewMode", 1, "setProfileRequest isSuccess:" + paramBoolean + " retCode:" + paramLong + " errorMsg:" + paramString);
-    if ((!paramBoolean) || (paramLong != 0L) || (paramSetProfileRsp == null))
-    {
-      this.a.a.setValue(vup.a(paramString).a(paramLong));
-      return;
+    if (((!paramBoolean) || (paramLong != 0L) || (paramStDataReportRsp == null)) && (!TextUtils.isEmpty(paramString))) {
+      QLog.e("QCircleReporter", 1, "performClientReport error:" + paramString + ",traceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleClientReportRequest.getTraceId());
     }
-    this.a.a.setValue(vup.a(false).a(false, paramSetProfileRsp));
   }
 }
 

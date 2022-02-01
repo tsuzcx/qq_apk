@@ -1,17 +1,8 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Conversation.47.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-
-public class adzs
-  extends aezu
+public abstract interface adzs
 {
-  public adzs(Conversation paramConversation) {}
+  public abstract void a();
   
-  protected void a()
-  {
-    ThreadManagerV2.getUIHandlerV2().post(new Conversation.47.1(this));
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

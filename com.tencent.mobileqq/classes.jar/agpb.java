@@ -1,9 +1,10 @@
-import com.tencent.mobileqq.apollo.view.ApolloMessageProgressView;
+import android.graphics.Bitmap;
 
-public class agpb
-  extends agqe
+public abstract interface agpb
 {
-  public ApolloMessageProgressView a;
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString, long paramLong, Bitmap paramBitmap);
 }
 
 

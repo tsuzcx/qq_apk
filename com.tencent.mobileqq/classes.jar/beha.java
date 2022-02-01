@@ -1,27 +1,16 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.widget.AdapterView;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
-public class beha
-  implements bkil
+final class beha
+  extends Editable.Factory
 {
-  public beha(MediaPreviewActivity paramMediaPreviewActivity) {}
-  
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if (paramView == null) {
-      return;
+    if ((paramCharSequence instanceof begz)) {
+      return (Editable)paramCharSequence;
     }
-    if (this.a.jdField_a_of_type_Bfvv != null) {
-      this.a.jdField_a_of_type_Bfvv.a(false, paramInt);
-    }
-    this.a.jdField_a_of_type_Int = paramInt;
-    paramAdapterView = this.a.jdField_a_of_type_Int + 1 + "/" + this.a.b;
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdapterView);
+    return new begz(paramCharSequence, 3);
   }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

@@ -126,7 +126,7 @@ public class MapContext
     this.markerMaxSize = ((int)(this.density * 50.0F + 0.5D));
     try
     {
-      this.locationBitmap = BitmapFactory.decodeResource(paramCoverMapView.getResources(), 2130841154);
+      this.locationBitmap = BitmapFactory.decodeResource(paramCoverMapView.getResources(), 2130841163);
       this.markerSparseArray = new SparseArray();
       this.circleArrayList = new ArrayList();
       this.polylineArrayList = new ArrayList();
@@ -249,7 +249,7 @@ public class MapContext
         paramJSONObject = Drawable.createFromPath(paramJSONObject);
         Object localObject = paramJSONObject;
         if (paramJSONObject == null) {
-          localObject = this.context.getResources().getDrawable(2130841214);
+          localObject = this.context.getResources().getDrawable(2130841224);
         }
         localImageView.setImageDrawable((Drawable)localObject);
         if (this.mTencentMap == null) {
@@ -307,7 +307,7 @@ public class MapContext
         localObject1 = Drawable.createFromPath((String)localObject1);
         localObject3 = localObject1;
         if (localObject1 == null) {
-          localObject3 = this.context.getResources().getDrawable(2130841214);
+          localObject3 = this.context.getResources().getDrawable(2130841224);
         }
         localObject1 = createMarkerView();
         ((ImageView)localObject1).setLayoutParams(new ViewGroup.LayoutParams(k, m));

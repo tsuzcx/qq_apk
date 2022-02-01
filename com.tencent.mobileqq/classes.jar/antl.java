@@ -1,7 +1,26 @@
-public class antl
-  implements anil
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+
+final class antl
+  implements Animation.AnimationListener
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  antl(View paramView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if ((this.a != null) && (this.a.getVisibility() == 0))
+    {
+      paramAnimation = AnimationUtils.loadAnimation(this.a.getContext(), 2130772234);
+      paramAnimation.setAnimationListener(this);
+      this.a.startAnimation(paramAnimation);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

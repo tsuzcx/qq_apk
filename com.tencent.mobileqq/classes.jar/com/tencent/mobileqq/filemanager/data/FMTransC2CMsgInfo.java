@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.data;
 
-import aszq;
+import atrl;
 import java.io.Serializable;
 
 public class FMTransC2CMsgInfo
@@ -9,7 +9,7 @@ public class FMTransC2CMsgInfo
   public int busiType;
   public int cmd;
   public FileManagerEntity entity;
-  public aszq fileTransferObserver = null;
+  public atrl fileTransferObserver = null;
   public long msgSeq = -1L;
   public long msgUid = -1L;
   public long observerSeq = -1L;

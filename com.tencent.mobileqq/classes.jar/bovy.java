@@ -1,23 +1,59 @@
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.SurfaceTexture;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+import com.tencent.filter.SurfaceTextureFilter;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import dov.com.qq.im.ae.gif.video.VideoGIFCreator.1;
+import dov.com.qq.im.ae.gif.video.VideoGIFCreator.2;
+import dov.com.qq.im.ae.gif.video.VideoGIFCreator.3;
+import dov.com.qq.im.ae.gif.video.VideoGIFCreator.4;
+import dov.com.qq.im.video.GifEncoder;
 
-final class bovy
-  implements EIPCResultCallback
+public class bovy
 {
-  bovy(String paramString) {}
+  private static String jdField_a_of_type_JavaLangString = bovi.class.getSimpleName();
+  private int jdField_a_of_type_Int;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bovf jdField_a_of_type_Bovf = new bovf();
+  private bovx jdField_a_of_type_Bovx;
+  private bowa jdField_a_of_type_Bowa;
+  private bowb jdField_a_of_type_Bowb;
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new SurfaceTextureFilter();
+  private GifEncoder jdField_a_of_type_DovComQqImVideoGifEncoder = new GifEncoder();
+  private int jdField_b_of_type_Int = 380;
+  private BaseFilter jdField_b_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  private int jdField_c_of_type_Int = 380;
+  private BaseFilter jdField_c_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public bovy(String paramString)
   {
-    if (paramEIPCResult != null)
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("uinname");
-      if (QLog.isColorLevel()) {
-        QLog.i("PeakIpcController", 2, "getTroopMemberName success name = " + paramEIPCResult);
-      }
-      bptr.a().a(this.a, paramEIPCResult);
-    }
+    QLog.d(jdField_a_of_type_JavaLangString, 4, "input video = " + paramString);
+    HandlerThread localHandlerThread = new HandlerThread("GIFCreatorHT");
+    localHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoGIFCreator.1(this, paramString));
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoGIFCreator.4(this));
+  }
+  
+  public void a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoGIFCreator.2(this, paramBitmap, paramFloat1, paramFloat2, paramFloat3, paramFloat4));
+  }
+  
+  public void a(bowa parambowa)
+  {
+    this.jdField_a_of_type_Bowa = parambowa;
+    QLog.d(jdField_a_of_type_JavaLangString, 4, "start create gif");
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoGIFCreator.3(this));
   }
 }
 

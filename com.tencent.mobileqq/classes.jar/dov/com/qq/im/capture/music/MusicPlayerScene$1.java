@@ -1,12 +1,12 @@
 package dov.com.qq.im.capture.music;
 
-import bomy;
+import bpot;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
 
 public class MusicPlayerScene$1
   implements Runnable
 {
-  public MusicPlayerScene$1(bomy parambomy, String paramString, int paramInt) {}
+  public MusicPlayerScene$1(bpot parambpot, String paramString, int paramInt) {}
   
   public void run()
   {

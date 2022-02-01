@@ -1,13 +1,7 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.DrawerFrame;
-
 public class bhwn
-  implements View.OnClickListener
 {
-  public bhwn(DrawerFrame paramDrawerFrame) {}
-  
-  public void onClick(View paramView) {}
+  public String a;
+  public String b;
 }
 
 

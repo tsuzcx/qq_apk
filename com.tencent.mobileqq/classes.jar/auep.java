@@ -1,41 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
-import com.tencent.qphone.base.util.QLog;
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.MethodCodec;
-import io.flutter.plugin.common.StandardMethodCodec;
-import java.util.Map;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.List;
 
-public abstract class auep
-  implements MethodChannel.MethodCallHandler
+class auep
+  implements aucq
 {
-  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
+  auep(aueo paramaueo, BaseActivity paramBaseActivity) {}
   
-  protected abstract void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult);
-  
-  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
+  public augj a()
   {
-    String str = paramMethodCall.method;
-    QLog.d("SSOChannelHandler", 1, String.format("onMethodCall: %s", new Object[] { str }));
-    if (TextUtils.isEmpty(str))
+    Object localObject2 = null;
+    List localList = this.jdField_a_of_type_Aueo.a();
+    Object localObject1 = localObject2;
+    if (localList != null)
     {
-      paramResult.notImplemented();
-      return;
-    }
-    if (str.equals("sendRequest"))
-    {
-      paramMethodCall = paramMethodCall.argument("req");
-      if ((paramMethodCall instanceof Map))
-      {
-        a(RequestPacket.fromMap((Map)paramMethodCall), paramResult);
-        return;
+      localObject1 = localObject2;
+      if (localList.size() > 0) {
+        localObject1 = new auha(this.jdField_a_of_type_Aueo.a, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localList, aueo.a(this.jdField_a_of_type_Aueo));
       }
-      paramResult.notImplemented();
-      return;
     }
-    paramResult.notImplemented();
+    return localObject1;
   }
 }
 

@@ -1,45 +1,78 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.concurrent.ConcurrentHashMap;
 
 class ampx
-  implements AudioManager.OnAudioFocusChangeListener
+  extends anwt
 {
-  ampx(ampr paramampr) {}
+  ampx(ampp paramampp) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmGameAudioPlayer", 2, new Object[] { "[onAudioFocusChange],focusChange:", Integer.valueOf(paramInt) });
-    }
-    for (;;)
+    if (paramLong == 0L) {}
+    String str1;
+    String str2;
+    do
     {
-      JSONObject localJSONObject;
-      try
+      do
       {
-        localJSONObject = new JSONObject();
-        if (paramInt != 1) {
-          break label105;
-        }
-        localJSONObject.put("event", 2);
-        amrk localamrk = ampj.a(ampr.a(this.a));
-        if ((localamrk == null) || (localamrk.a() == null)) {
-          break label104;
-        }
-        ampj.a().callbackFromRequest(localamrk.a().getLuaState(), 0, "sc.audio_event.local", localJSONObject.toString());
         return;
+      } while (!this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong)));
+      str1 = (String)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+      str2 = bhlg.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramLong));
+      if ((!TextUtils.isEmpty(str2)) && (!str2.equals(str1))) {
+        ampp.a(this.a, false);
       }
-      catch (Throwable localThrowable) {}
-      localJSONObject.put("event", 1);
-      continue;
-      label104:
+    } while (!QLog.isColorLevel());
+    QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "checkIfNeedUpdate [uin: %d, pre: %s, cur: %s]", new Object[] { Long.valueOf(paramLong), str1, str2 }));
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  {
+    if (paramBoolean) {
+      a(paramLong);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      if (!(paramObject instanceof ArrayList)) {
+        break label70;
+      }
+    }
+    label70:
+    for (paramObject = (ArrayList)paramObject;; paramObject = null)
+    {
+      if ((paramObject != null) && (paramObject.size() > 0))
+      {
+        paramObject = paramObject.iterator();
+        while (paramObject.hasNext())
+        {
+          Object localObject = paramObject.next();
+          if ((localObject instanceof Long)) {
+            a(((Long)localObject).longValue());
+          }
+        }
+      }
       return;
-      label105:
-      if (paramInt != -1) {
-        if (paramInt != -2) {}
-      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {}
+    try
+    {
+      a(Long.parseLong(paramString));
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

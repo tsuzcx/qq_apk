@@ -1,19 +1,28 @@
-import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.8.1;
+import cooperation.troop_homework.outer.TroopHWRecordBaseActivity;
 
 public class bntj
   implements View.OnClickListener
 {
-  bntj(bnta parambnta) {}
+  public bntj(TroopHWRecordBaseActivity paramTroopHWRecordBaseActivity) {}
   
   public void onClick(View paramView)
   {
-    bnta.b(this.a);
-    new Handler().postDelayed(new AEGIFTextEditFragment.8.1(this), 200L);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (!this.a.a)
+      {
+        this.a.setResult(0);
+        this.a.finish();
+      }
+    }
   }
 }
 

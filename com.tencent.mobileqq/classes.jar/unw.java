@@ -1,14 +1,6 @@
-import NS_KING_INTERFACE.stPostFeedDingReq;
-import NS_KING_INTERFACE.stPostFeedDingRsp;
-
-public class unw
-  extends ujr<stPostFeedDingRsp>
+class unw
 {
-  public unw(String paramString, int paramInt)
-  {
-    super("PostFeedDing");
-    this.a = new stPostFeedDingReq(paramString, null, paramInt);
-  }
+  private static final unu a = new unu(null);
 }
 
 

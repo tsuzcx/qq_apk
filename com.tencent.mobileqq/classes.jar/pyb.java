@@ -1,10 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
 
-public abstract interface pyb
+class pyb
+  implements sdz
 {
-  public abstract void onLoadUserInfoFailed(String paramString1, String paramString2);
+  pyb(pya parampya) {}
   
-  public abstract void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo);
+  public void a()
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.startPlay();
+    this.a.jdField_a_of_type_Pyc.a(true);
+  }
+  
+  public void b()
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.stop();
+    this.a.jdField_a_of_type_Pyc.a(false);
+  }
 }
 
 

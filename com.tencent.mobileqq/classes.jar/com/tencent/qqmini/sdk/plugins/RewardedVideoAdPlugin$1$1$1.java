@@ -7,7 +7,7 @@ class RewardedVideoAdPlugin$1$1$1
   
   public void run()
   {
-    RewardedVideoAdPlugin.access$800(this.this$2.this$1.this$0, this.this$2.this$1.val$req, this.this$2.this$1.val$pos_id, this.val$showCompId);
+    RewardedVideoAdPlugin.access$800(this.this$2.this$1.this$0, this.this$2.this$1.val$req, this.this$2.this$1.val$posId, this.val$showCompId);
   }
 }
 

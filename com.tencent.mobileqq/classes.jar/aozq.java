@@ -1,31 +1,13 @@
-public abstract class aozq
-  extends apae
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class aozq
+  extends aozj
 {
-  private int a = 1;
-  private int b = 1;
-  
-  public aozq(int paramInt1, int paramInt2)
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    this(paramInt1, paramInt2, 5);
+    return super.a(paramQQAppInterface, paramContext, paramString, paramaoxk);
   }
-  
-  public aozq(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public static boolean a(aozq paramaozq)
-  {
-    return (paramaozq != null) && (paramaozq.a());
-  }
-  
-  public int a()
-  {
-    return this.b;
-  }
-  
-  public abstract boolean a();
 }
 
 

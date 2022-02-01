@@ -1,18 +1,27 @@
-import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
-import dov.com.qq.im.aeeditor.manage.AEEditorResourceDownloader.3;
-import java.util.concurrent.CountDownLatch;
+import android.content.Context;
+import java.io.File;
 
-public class bobz
-  implements bocb
+final class bobz
+  implements boaz
 {
-  public bobz(AEEditorResourceDownloader.3 param3, int paramInt, AEEditorDownloadResBean paramAEEditorDownloadResBean, CountDownLatch paramCountDownLatch) {}
+  bobz(String paramString1, String paramString2, bocb parambocb, Context paramContext, File paramFile1, File paramFile2) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean)
+  public void a(String paramString, long paramLong, float paramFloat)
   {
-    bnzb.b(this.jdField_a_of_type_DovComQqImAeeditorManageAEEditorResourceDownloader$3.this$0.c, "preDownloadAllRes---[finish] " + this.jdField_a_of_type_Int + ", id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    if (this.jdField_a_of_type_Bocb != null) {
+      this.jdField_a_of_type_Bocb.a(paramLong, paramFloat);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
+  {
+    if (paramBoolean) {
+      boan.a().a(boby.a(), this.jdField_a_of_type_JavaLangString, "SoHelper", new boca(this));
+    }
+    while (this.jdField_a_of_type_Bocb == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bocb.a(paramString3);
   }
 }
 

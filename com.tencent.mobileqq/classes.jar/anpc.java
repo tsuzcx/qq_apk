@@ -1,66 +1,18 @@
-import android.os.Process;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.MemoryManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.AppRuntime;
+import com.tencent.qphone.base.util.QLog;
 
-public class anpc
-  extends annh
+class anpc
+  extends anph
 {
-  protected void a()
-  {
-    super.a();
-    if (this.c >= annf.a().a(this.a.jdField_a_of_type_Array2dOfLong, this.a.jdField_a_of_type_Int, this.a.b, MemoryManager.a(Process.myPid())) / 12000L) {
-      this.a.a(7, null);
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (this.d != 1L);
-        MemoryManager.a().a("LITE_GUARD");
-        localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      } while (localObject == null);
-      localObject = (beba)((QQAppInterface)localObject).getManager(233);
-    } while (localObject == null);
-    ((beba)localObject).a(true);
-  }
+  anpc(anoz paramanoz) {}
   
-  protected void a(String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    GuardManager localGuardManager = this.a;
-    if ("com.tencent.mobileqq".equals(paramString)) {}
-    for (int i = 2;; i = 3)
-    {
-      localGuardManager.a(i, paramString);
-      return;
-    }
-  }
-  
-  protected void b()
-  {
-    if (this.c > 2L) {
-      this.c -= 2L;
-    }
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    CoreService.startCoreService(annf.a().a);
-    this.a.b();
-    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(3, 0L, 0L);
+    QLog.d("ApolloGameUtil", 2, " onFailure  the http retcode = " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpc
  * JD-Core Version:    0.7.0.1
  */

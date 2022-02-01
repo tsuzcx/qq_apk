@@ -1,30 +1,45 @@
-import android.view.KeyEvent;
-import android.view.Window;
-import android.view.WindowManager;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
+import java.lang.ref.WeakReference;
 
-class bgqc
-  implements asdc
+public class bgqc
+  extends AsyncTask<Boolean, Void, Bitmap>
 {
-  bgqc(bgpw parambgpw) {}
+  private WeakReference<RollangleImageView> a;
   
-  public boolean a(KeyEvent paramKeyEvent)
+  public bgqc(RollangleImageView paramRollangleImageView)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.c))
-    {
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
-      this.a.c = false;
-      paramKeyEvent = this.a.getWindow().getAttributes();
-      paramKeyEvent.y = 0;
-      this.a.getWindow().setAttributes(paramKeyEvent);
-      bgpw.a(this.a);
-      return true;
+    this.a = new WeakReference(paramRollangleImageView);
+  }
+  
+  protected Bitmap a(Boolean... paramVarArgs)
+  {
+    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
+    if (localRollangleImageView != null) {
+      return RollangleImageView.a(localRollangleImageView, paramVarArgs[0].booleanValue());
     }
-    return false;
+    return null;
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
+    if (localRollangleImageView != null)
+    {
+      if (paramBitmap != null) {
+        localRollangleImageView.setImageBitmap(paramBitmap);
+      }
+    }
+    else {
+      return;
+    }
+    localRollangleImageView.setImageResource(aunj.b(localRollangleImageView.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgqc
  * JD-Core Version:    0.7.0.1
  */

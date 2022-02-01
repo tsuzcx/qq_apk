@@ -1,10 +1,15 @@
-public abstract interface avvl
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class avvl
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString, int paramInt);
+  avvl(avvj paramavvj) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.k();
+  }
 }
 
 

@@ -1,38 +1,34 @@
-class bbsg
+import com.tencent.mobileqq.richstatus.ActionUrlActivity;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
+
+public class bbsg
+  extends WebChromeClient
 {
-  boolean jdField_a_of_type_Boolean;
+  private bbsg(ActionUrlActivity paramActionUrlActivity) {}
   
-  public bbsg(bbse parambbse, boolean paramBoolean)
+  @Override
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
+      return true;
+    }
+    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
   }
   
-  public void a(boolean paramBoolean)
+  public void onProgressChanged(WebView paramWebView, int paramInt)
   {
-    try
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
+    super.onProgressChanged(paramWebView, paramInt);
   }
   
-  public boolean a()
+  public void onReceivedTitle(WebView paramWebView, String paramString)
   {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.a.setTitle(paramString);
+    this.a.a();
   }
 }
 

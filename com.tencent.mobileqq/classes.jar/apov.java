@@ -1,8 +1,6 @@
-import com.tencent.mobileqq.ark.ArkHorizontalListView;
-
 public abstract interface apov
 {
-  public abstract void a(ArkHorizontalListView paramArkHorizontalListView);
+  public abstract void a(apox paramapox);
 }
 
 

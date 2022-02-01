@@ -1,16 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-
-public class pmc
-  extends anqd
+class pmc
+  implements sct
 {
-  public pmc(KandianSubscribeManager paramKandianSubscribeManager) {}
+  pmc(pmb parampmb, plz paramplz) {}
   
-  protected void a(boolean paramBoolean)
+  public void a(scv paramscv)
   {
-    super.a(paramBoolean);
-    ThreadManager.executeOnSubThread(new KandianSubscribeManager.2.1(this));
+    if ((this.jdField_a_of_type_Plz != null) && (paramscv != null))
+    {
+      plz localplz = this.jdField_a_of_type_Plz;
+      String str = paramscv.b;
+      paramscv = paramscv.a;
+      localplz.a(new String[] { str }, new String[] { paramscv });
+    }
   }
 }
 

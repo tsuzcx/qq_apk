@@ -9,7 +9,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bkgt;
+import blhw;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -28,21 +28,21 @@ class BaseChatPie$42
       if (this.this$0.i == null)
       {
         BaseChatPie.a(this.this$0, new View(this.this$0.jdField_a_of_type_AndroidContentContext));
-        BaseChatPie.a(this.this$0).setId(2131371396);
-        BaseChatPie.a(this.this$0).setBackgroundColor(this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166425));
+        BaseChatPie.a(this.this$0).setId(2131371503);
+        BaseChatPie.a(this.this$0).setBackgroundColor(this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166429));
         localObject = new RelativeLayout.LayoutParams(-1, 1);
         this.this$0.b.addView(BaseChatPie.a(this.this$0), (ViewGroup.LayoutParams)localObject);
         this.this$0.i = new TextView(this.this$0.jdField_a_of_type_AndroidContentContext);
-        this.this$0.i.setId(2131371393);
+        this.this$0.i.setId(2131371500);
         this.this$0.i.setSingleLine();
-        this.this$0.i.setBackgroundDrawable(this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839121));
+        this.this$0.i.setBackgroundDrawable(this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839129));
         this.this$0.i.setGravity(17);
         this.this$0.i.setTextSize(2, 14.0F);
-        this.this$0.i.setBackgroundResource(2130839121);
-        this.this$0.i.setTextColor(this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131167056));
+        this.this$0.i.setBackgroundResource(2130839129);
+        this.this$0.i.setTextColor(this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131167066));
         this.this$0.i.setPadding((int)(this.this$0.jdField_a_of_type_Float * 10.0F), this.this$0.i.getPaddingTop(), (int)(this.this$0.jdField_a_of_type_Float * 10.0F), this.this$0.i.getPaddingBottom());
-        localObject = new RelativeLayout.LayoutParams(-1, (int)this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297009));
-        ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131371396);
+        localObject = new RelativeLayout.LayoutParams(-1, (int)this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297021));
+        ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131371503);
         this.this$0.b.addView(this.this$0.i, (ViewGroup.LayoutParams)localObject);
         this.this$0.i.setOnClickListener(this.this$0);
       }
@@ -63,7 +63,7 @@ class BaseChatPie$42
         ((Handler)localObject).removeCallbacks(this.this$0.jdField_a_of_type_JavaLangRunnable);
         ((Handler)localObject).postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 10000L);
       }
-      bkgt.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message, this.this$0.i);
+      blhw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$Message, this.this$0.i);
       this.this$0.aO();
       return;
       label567:

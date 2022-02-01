@@ -1,6 +1,15 @@
-public abstract interface qmr
+class qmr
+  implements qoe
 {
-  public abstract void a();
+  qmr(qmq paramqmq) {}
+  
+  public void a()
+  {
+    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
+    if (localsgf != null) {
+      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
+  }
 }
 
 

@@ -1,63 +1,55 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.14.1;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
+import java.util.Calendar;
 
 public class axhv
-  implements axih
+  implements aqxz
 {
-  public axhv(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  private axhv(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public void a(InterestTagInfo paramInterestTagInfo)
+  public int a()
   {
-    ChooseInterestTagActivity.a(this.a, 0);
-    bkft.b(ChooseInterestTagActivity.a(this.a));
-    boolean bool;
-    if (!TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
-    {
-      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
-      ChooseInterestTagActivity localChooseInterestTagActivity = this.a;
-      if (ChooseInterestTagActivity.b(this.a) != -1)
-      {
-        bool = true;
-        ChooseInterestTagActivity.a(localChooseInterestTagActivity, false, bool);
-        ChooseInterestTagActivity.a(this.a).setText("");
-        ChooseInterestTagActivity.a(this.a, "");
-      }
-    }
-    else
-    {
-      if (!ChooseInterestTagActivity.a(this.a, paramInterestTagInfo)) {
-        break label132;
-      }
-      ChooseInterestTagActivity.a(this.a).remove(paramInterestTagInfo);
-      ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
-    }
-    label132:
-    do
-    {
-      return;
-      bool = false;
-      break;
-      if (ChooseInterestTagActivity.a(this.a).size() < 8) {
-        break label198;
-      }
-    } while (ChooseInterestTagActivity.d(this.a));
-    ChooseInterestTagActivity.a(this.a, "最多只能添加8个标签哦");
-    ChooseInterestTagActivity.b(this.a, true);
-    ChooseInterestTagActivity.a(this.a).postDelayed(new ChooseInterestTagActivity.14.1(this), 2800L);
-    return;
-    label198:
-    ChooseInterestTagActivity.a(this.a).add(paramInterestTagInfo);
-    ChooseInterestTagActivity.c(this.a, paramInterestTagInfo);
+    return 3;
   }
   
-  public boolean a(InterestTagInfo paramInterestTagInfo)
+  public int a(int paramInt)
   {
-    return ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 0: 
+      return MsgBackupDateFragment.c(this.a) - MsgBackupDateFragment.d(this.a) + 1;
+    case 1: 
+      return 12;
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    if (MsgBackupDateFragment.b(this.a) == 1)
+    {
+      localCalendar.set(1, MsgBackupDateFragment.e(this.a) + MsgBackupDateFragment.d(this.a));
+      localCalendar.set(2, MsgBackupDateFragment.f(this.a));
+      localCalendar.set(5, 1);
+    }
+    for (;;)
+    {
+      return localCalendar.getActualMaximum(5);
+      localCalendar.set(1, MsgBackupDateFragment.g(this.a) + MsgBackupDateFragment.d(this.a));
+      localCalendar.set(2, MsgBackupDateFragment.h(this.a));
+      localCalendar.set(5, 1);
+    }
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return "";
+    case 0: 
+      return MsgBackupDateFragment.d(this.a) + paramInt2 + anzj.a(2131705814);
+    case 1: 
+      return paramInt2 + 1 + anzj.a(2131705797);
+    }
+    return paramInt2 + 1 + anzj.a(2131705813);
   }
 }
 

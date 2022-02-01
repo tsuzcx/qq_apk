@@ -7,31 +7,31 @@ import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 import java.util.Map;
 import mqq.os.MqqHandler;
-import pjx;
-import pjy;
-import pjz;
+import pcp;
+import pcq;
+import pcr;
 
 public class ReadInJoyDownloader$1
   implements Runnable
 {
-  public ReadInJoyDownloader$1(pjy parampjy, pjz parampjz) {}
+  public ReadInJoyDownloader$1(pcq parampcq, pcr parampcr) {}
   
   public void run()
   {
     DownloadInfo localDownloadInfo = this.a.a();
-    Map localMap = pjz.a(this.a);
+    Map localMap = pcr.a(this.a);
     String str = localDownloadInfo.d;
     QLog.d("ReadInJoyDownloader", 2, "[startDownload] url=" + str);
     try
     {
-      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = pjy.a(this.this$0).getDownloadTaskState(str);
+      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = pcq.a(this.this$0).getDownloadTaskState(str);
       if (localTMAssistantDownloadTaskInfo != null)
       {
         QLog.d("ReadInJoyDownloader", 2, "[startDownload] existingInfo= " + localTMAssistantDownloadTaskInfo.mState);
         if (localTMAssistantDownloadTaskInfo.mState == 4)
         {
           QLog.d("ReadInJoyDownloader", 2, "[startDownload] existingInfo.mState=DownloadSDKTaskState_SUCCEED");
-          pjy.a(this.this$0).onDownloadSDKTaskStateChanged(pjy.a(this.this$0), str, 4, 0, "");
+          pcq.a(this.this$0).onDownloadSDKTaskStateChanged(pcq.a(this.this$0), str, 4, 0, "");
           return;
         }
       }
@@ -54,20 +54,20 @@ public class ReadInJoyDownloader$1
     {
       try
       {
-        i = pjy.a(this.this$0).startDownloadTask(localDownloadInfo.d, "application/vnd.android.package-archive", localMap);
+        i = pcq.a(this.this$0).startDownloadTask(localDownloadInfo.d, "application/vnd.android.package-archive", localMap);
       }
       catch (Exception localException2)
       {
         try
         {
           QLog.d("ReadInJoyDownloader", 2, "[startDownload] task url=" + localDownloadInfo.d + " started result=" + i);
-          int j = pjz.a(this.a);
+          int j = pcr.a(this.a);
           if ((i == 4) || (j <= 0)) {
             break;
           }
           QLog.d("ReadInJoyDownloader", 2, "[startDownload] failed, retry, remain retry: " + j);
-          pjz.a(this.a);
-          ThreadManager.getSubThreadHandler().postDelayed(this, pjz.a());
+          pcr.a(this.a);
+          ThreadManager.getSubThreadHandler().postDelayed(this, pcr.a());
           return;
         }
         catch (Exception localException3)

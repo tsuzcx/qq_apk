@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.forward;
 
-import arup;
-import arve;
-import arze;
-import bgmg;
-import bhhf;
-import bhhh;
+import askd;
+import asks;
+import asos;
+import bhmi;
+import bihu;
+import bihw;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import java.io.File;
 import java.util.ArrayList;
@@ -17,24 +17,24 @@ class ForwardPluginShareStructMsgOption$2
   
   public void run()
   {
-    Object localObject1 = arze.r.replace("[epId]", this.a);
-    boolean bool = bgmg.a((String)localObject1);
-    Object localObject2 = arze.c.replace("[epId]", this.a);
+    Object localObject1 = asos.r.replace("[epId]", this.a);
+    boolean bool = bhmi.a((String)localObject1);
+    Object localObject2 = asos.c.replace("[epId]", this.a);
     localObject1 = new File((String)localObject1);
     if (!bool)
     {
-      localObject2 = new bhhf((String)localObject2, (File)localObject1);
-      ((bhhf)localObject2).j = true;
-      if (bhhh.a((bhhf)localObject2, this.this$0.a) != 0) {
+      localObject2 = new bihu((String)localObject2, (File)localObject1);
+      ((bihu)localObject2).j = true;
+      if (bihw.a((bihu)localObject2, this.this$0.a) != 0) {
         return;
       }
     }
     localObject2 = new EmoticonPackage();
     ((EmoticonPackage)localObject2).epId = this.a;
     ((EmoticonPackage)localObject2).jobType = 4;
-    localObject1 = bgmg.a((File)localObject1);
+    localObject1 = bhmi.a((File)localObject1);
     ArrayList localArrayList = new ArrayList();
-    arve.a(this.this$0.a, (EmoticonPackage)localObject2, arup.c, (byte[])localObject1, localArrayList);
+    asks.a(this.this$0.a, (EmoticonPackage)localObject2, askd.c, (byte[])localObject1, localArrayList);
   }
 }
 

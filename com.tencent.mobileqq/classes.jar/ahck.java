@@ -1,40 +1,22 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-final class ahck
-  implements DialogInterface.OnClickListener
+class ahck
+  implements bliz
 {
-  ahck(Emoticon paramEmoticon, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt) {}
+  ahck(ahcj paramahcj, MessageForDeviceFile paramMessageForDeviceFile, blir paramblir) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4)
+    switch (paramInt)
     {
-      bool = true;
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
-      if (ahch.a != null)
-      {
-        if (7 != this.jdField_a_of_type_Int) {
-          break label80;
-        }
-        ahch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ahch.a.frienduin, "ep_mall", "Clk_pkg_forward", 0);
-      }
     }
-    label80:
-    while (6 != this.jdField_a_of_type_Int)
+    for (;;)
     {
+      this.jdField_a_of_type_Blir.dismiss();
       return;
-      bool = false;
-      break;
+      this.jdField_a_of_type_Ahcj.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
     }
-    ahch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ahch.a.frienduin, "ep_mall", "Clk_collect_more", 0);
   }
 }
 

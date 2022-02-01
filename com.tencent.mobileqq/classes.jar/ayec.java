@@ -1,18 +1,29 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 final class ayec
-  implements View.OnClickListener
+  implements bjig
 {
-  ayec(FragmentActivity paramFragmentActivity, ayeh paramayeh, int paramInt) {}
+  ayec(String paramString, ayeg paramayeg) {}
   
-  public void onClick(View paramView)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    ayen.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_Ayeh.e, this.jdField_a_of_type_Ayeh.b, 60011);
-    ayej.b(this.jdField_a_of_type_Ayeh.f, this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    {
+      WXShareHelper.a().b(this);
+      if (paramBaseResp.errCode != 0) {
+        break label50;
+      }
+      if (this.jdField_a_of_type_Ayeg != null) {
+        this.jdField_a_of_type_Ayeg.a(true);
+      }
+    }
+    label50:
+    while (this.jdField_a_of_type_Ayeg == null) {
+      return;
+    }
+    this.jdField_a_of_type_Ayeg.a(false);
   }
 }
 

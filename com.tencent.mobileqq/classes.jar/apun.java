@@ -1,121 +1,105 @@
 import android.text.TextUtils;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
 
-class apun
-  implements apue
+public class apun
+  implements apum
 {
-  apun(apul paramapul) {}
+  private apun(apuk paramapuk) {}
   
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String arg1, boolean paramBoolean1, boolean paramBoolean2)
+  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.dynamicAvatar", 2, "onDownloadFinish url: " + ??? + " isSuccess: " + paramBoolean1 + " isFileExist: " + paramBoolean2);
-    }
-    if (TextUtils.isEmpty(???)) {
-      return;
-    }
-    int i;
-    synchronized (this.a.c)
+    paramVariantWrapper = null;
+    String str = null;
+    Object localObject = null;
+    long l;
+    if ("AttachEvent".equals(paramString))
     {
-      i = this.a.c.size() - 1;
-      if (i >= 0)
+      if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2) || (!paramArrayOfVariantWrapper[0].IsString()) || (!paramArrayOfVariantWrapper[1].IsFunction())) {
+        return false;
+      }
+      str = paramArrayOfVariantWrapper[0].GetString();
+      l = this.a.a(paramArrayOfVariantWrapper[1].Copy());
+      if ("Motion".equals(str))
       {
-        WeakReference localWeakReference = (WeakReference)this.a.c.get(i);
-        if ((localWeakReference == null) || (localWeakReference.get() == null))
-        {
-          this.a.c.remove(i);
+        if (!apuj.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.SENSORS")) {
+          return false;
         }
-        else if (???.equals(((aobo)((WeakReference)this.a.c.get(i)).get()).jdField_b_of_type_JavaLangString))
+        paramString = new apuo(this, l);
+      }
+      while ((paramString != null) && (!"Position".equals(str)))
+      {
+        this.a.jdField_a_of_type_Apvn.a(paramString, l);
+        return true;
+        if ("Orientation".equals(str))
         {
-          localWeakReference = (WeakReference)this.a.c.remove(i);
-          if (paramBoolean1)
+          if (!apuj.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.SENSORS")) {
+            return false;
+          }
+          paramString = new apup(this, l);
+        }
+        else
+        {
+          if ("Position".equals(str))
           {
-            this.a.b.add(localWeakReference);
+            if (!apuj.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.POSITION")) {
+              return false;
+            }
             if (QLog.isColorLevel()) {
-              QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish add to wait play list.");
+              QLog.i("ArkAppDeviceModule", 2, String.format("Position.app.%s", new Object[] { this.a.jdField_a_of_type_JavaLangString }));
             }
+            paramArrayOfVariantWrapper = apxt.a();
+            paramString = paramVariantWrapper;
+            if (paramArrayOfVariantWrapper != null) {
+              paramString = paramArrayOfVariantWrapper.getCurrentAccountUin();
+            }
+            apvy.a(paramString, this.a.jdField_a_of_type_JavaLangString, "ark_authority_api_location", BaseApplicationImpl.getContext().getString(2131690096), new apuq(this, l));
+            return true;
           }
-        }
-      }
-    }
-    if (!aobo.jdField_b_of_type_Boolean) {
-      synchronized (this.a.d)
-      {
-        i = this.a.d.size() - 1;
-        label257:
-        if (i >= 0) {
-          if ((this.a.d.get(i) != null) && (((WeakReference)this.a.d.get(i)).get() != null))
+          paramString = localObject;
+          if ("ConnectionTypeChange".equals(str))
           {
-            ??? = (WeakReference)this.a.d.get(i);
-            label314:
-            if ((??? != null) && (???.get() != null)) {
-              this.a.a((aobo)???.get(), false, false);
+            if (!apuj.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.CONNECTION_TYPE")) {
+              return false;
             }
+            paramString = new apus(this, l);
           }
         }
       }
+      return false;
     }
-    for (;;)
+    if ("DetachEvent".equals(paramString))
     {
-      synchronized (this.a.a)
-      {
-        i = this.a.a.size() - 1;
-        if (i >= 0)
-        {
-          if (((WeakReference)this.a.a.get(i)).get() == null) {
-            this.a.a.remove(i);
-          }
-          i -= 1;
-          continue;
-          this.a.d.remove(i);
-          i -= 1;
-          break label257;
-          ??? = finally;
-          throw ???;
-        }
-        i = this.a.b.size() - 1;
-        if (i < 0) {
-          break label695;
-        }
-        ??? = (WeakReference)this.a.b.get(i);
-        if ((??? == null) || (((WeakReference)???).get() == null))
-        {
-          this.a.b.remove(i);
-        }
-        else if (this.a.a.size() < apul.a(this.a).a)
-        {
-          this.a.b.remove(i);
-          if (this.a.a.contains(???)) {
-            break label712;
-          }
-          paramBoolean1 = this.a.a((aobo)((WeakReference)???).get());
-          if (paramBoolean1) {
-            this.a.a.add(???);
-          }
-          if (!QLog.isColorLevel()) {
-            break label712;
-          }
-          QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish to play.02 result : " + paramBoolean1 + " playing size: " + this.a.a.size());
-        }
+      if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsString()) || (TextUtils.isEmpty(paramArrayOfVariantWrapper[0].GetString()))) {
+        return false;
       }
-      if (QLog.isColorLevel())
-      {
-        QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish to play.02 beyond maxPlayingCount : " + apul.a(this.a).a);
-        break label712;
-        label695:
-        return;
-        ??? = null;
-        break label314;
-        i -= 1;
-        break;
-      }
-      label712:
-      i -= 1;
+      this.a.jdField_a_of_type_Apvn.a(paramArrayOfVariantWrapper[0].GetString());
+      return true;
     }
+    if ("GetCurrentPosition".equals(paramString))
+    {
+      if (!apuj.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.POSITION")) {
+        return false;
+      }
+      if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsFunction())) {
+        return false;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("ArkAppDeviceModule", 2, String.format("GetCurrentPosition.app.%s", new Object[] { this.a.jdField_a_of_type_JavaLangString }));
+      }
+      l = this.a.a(paramArrayOfVariantWrapper[0].Copy());
+      paramArrayOfVariantWrapper = apxt.a();
+      paramString = str;
+      if (paramArrayOfVariantWrapper != null) {
+        paramString = paramArrayOfVariantWrapper.getCurrentAccountUin();
+      }
+      apvy.a(paramString, this.a.jdField_a_of_type_JavaLangString, "ark_authority_api_location", BaseApplicationImpl.getContext().getString(2131690096), new aput(this, l));
+      return true;
+    }
+    return false;
   }
 }
 

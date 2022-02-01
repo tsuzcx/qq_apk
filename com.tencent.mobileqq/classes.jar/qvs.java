@@ -1,13 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
 
-public class qvs
-  implements View.OnClickListener
+public final class qvs
+  implements Parcelable.Creator<ColumnInfo>
 {
-  public qvs(ComponentContentHotSearch paramComponentContentHotSearch) {}
+  public ColumnInfo a(Parcel paramParcel)
+  {
+    return new ColumnInfo(paramParcel);
+  }
   
-  public void onClick(View paramView) {}
+  public ColumnInfo[] a(int paramInt)
+  {
+    return new ColumnInfo[paramInt];
+  }
 }
 
 

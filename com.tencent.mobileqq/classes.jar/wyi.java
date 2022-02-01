@@ -1,36 +1,47 @@
-import com.tencent.biz.qqstory.database.LikeEntry;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class wyi
+class wyi
+  extends wjd
 {
-  public int a;
-  public String a;
-  public List<LikeEntry> a;
-  public int b;
+  wyi(wyd paramwyd) {}
   
-  public boolean equals(Object paramObject)
+  public void a()
   {
-    if (this == paramObject) {}
+    yuk.b(wyd.b(), "msg: MSG_ON_STORY_MSGTAB_DATA_LOADED");
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      yuk.e(wyd.b(), "[ERROR] onMsgTabStoryDataLoaded() app is null!");
+    }
+    wwg localwwg = (wwg)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(251);
+    if (localwwg.a()) {
+      if (this.a.a()) {
+        this.a.jdField_a_of_type_Wxp.a("exp_story", 3);
+      }
+    }
     do
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      do
+      {
+        return;
+        if (!localwwg.b()) {
+          break;
+        }
+      } while (!this.a.a());
+      this.a.jdField_a_of_type_Wxp.a("exp_story", 2);
+      return;
+      if (!this.a.jdField_a_of_type_Wyn.a()) {
+        break;
       }
-      paramObject = (wyi)paramObject;
-      if (this.a != null) {
-        return this.a.equals(paramObject.a);
-      }
-    } while (paramObject.a == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    if (this.a != null) {
-      return this.a.hashCode();
+    } while (!this.a.a());
+    this.a.jdField_a_of_type_Wxp.a("exp_story", 5);
+    return;
+    if (localwwg.c())
+    {
+      this.a.g();
+      localwwg.a();
+      this.a.jdField_a_of_type_Wxp.a("exp_hide", 0);
+      return;
     }
-    return 0;
+    this.a.jdField_a_of_type_Wxp.a("exp_hide", 0);
   }
 }
 

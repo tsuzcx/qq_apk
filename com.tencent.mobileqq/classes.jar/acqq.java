@@ -1,45 +1,18 @@
-import android.app.Activity;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.ViewGroup;
+import kotlin.Metadata;
 
-class acqq
-  extends acqr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "visibility", "", "onSystemUiVisibilityChange"}, k=3, mv={1, 1, 16})
+final class acqq
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
+  acqq(ViewGroup paramViewGroup) {}
+  
+  public final void onSystemUiVisibilityChange(int paramInt)
   {
-    if (paramacpp != null) {}
-    for (localActivity = paramacpp.a(); (paramacpp == null) || (localActivity == null); localActivity = null)
-    {
-      QLog.i("EndCardWebGdtMvWebGetAdInfoHandler", 1, "webPlugin == null || activity == null");
-      return true;
+    if ((paramInt & 0x4) == 0) {
+      this.a.setSystemUiVisibility(7942);
     }
-    localObject = "";
-    try
-    {
-      String str = new JSONObject(paramVarArgs[0]).optString("traceId");
-      localObject = str;
-    }
-    catch (Throwable localThrowable)
-    {
-      try
-      {
-        paramacpp.callJs(paramString, new String[] { localObject });
-        AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "getAdInfo", paramacpp.a());
-        return true;
-        localThrowable = localThrowable;
-        QLog.i("EndCardWebGdtMvWebGetAdInfoHandler", 1, "json", localThrowable);
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          QLog.i("EndCardWebGdtMvWebGetAdInfoHandler", 1, "callJs", paramString);
-        }
-      }
-    }
-    localObject = String.format("{\"adInfo\":%s}", new Object[] { a((String)localObject) });
-    QLog.i("EndCardWebGdtMvWebGetAdInfoHandler", 1, "args=" + paramVarArgs[0] + ",result=" + (String)localObject);
   }
 }
 

@@ -2,9 +2,9 @@ package cooperation.qqreader;
 
 import android.os.Handler.Callback;
 import android.text.TextUtils;
-import blnf;
-import blng;
-import blpu;
+import bmoi;
+import bmoj;
+import bmqw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -61,7 +61,7 @@ public final class QRBridgeUtil
         break;
       }
       return "";
-      blpu.a("QRBridgeUtil", "mApp null return null skey");
+      bmqw.a("QRBridgeUtil", "mApp null return null skey");
     }
   }
   
@@ -93,7 +93,7 @@ public final class QRBridgeUtil
     if (localAppRuntime != null) {
       return ((TicketManager)localAppRuntime.getManager(2)).getSkey(paramString);
     }
-    blpu.a("QRBridgeUtil", "mApp null return null skey");
+    bmqw.a("QRBridgeUtil", "mApp null return null skey");
     return "";
   }
   
@@ -102,11 +102,11 @@ public final class QRBridgeUtil
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if (localAppRuntime != null)
     {
-      paramString = ((WtloginManager)localAppRuntime.getManager(1)).GetLocalSig(paramString, 16L);
+      paramString = ((WtloginManager)localAppRuntime.getManager(1)).getLocalSig(paramString, 16L);
       if (paramString != null) {
         return new String(WtloginHelper.GetTicketSig(paramString, 524288));
       }
-      blpu.a("QRBridgeUtil", "get sig info null");
+      bmqw.a("QRBridgeUtil", "get sig info null");
     }
     return "";
   }
@@ -115,13 +115,13 @@ public final class QRBridgeUtil
   {
     if (paramAppRuntime == null)
     {
-      blpu.a("QRBridgeUtil", "Unable to get pskey due to null app runtime");
+      bmqw.a("QRBridgeUtil", "Unable to get pskey due to null app runtime");
       return "";
     }
-    blpu.c("QRBridgeUtil", "Try to preload pSkey");
+    bmqw.c("QRBridgeUtil", "Try to preload pSkey");
     paramAppRuntime = (TicketManager)paramAppRuntime.getManager(2);
-    blng localblng = new blng(paramString2);
-    paramAppRuntime.GetPskey(paramString1, 16L, new String[] { paramString2 }, localblng);
+    bmoj localbmoj = new bmoj(paramString2);
+    paramAppRuntime.getPskey(paramString1, 16L, new String[] { paramString2 }, localbmoj);
     return "";
   }
   
@@ -132,8 +132,8 @@ public final class QRBridgeUtil
       return false;
     }
     localObject = (WtloginManager)((AppRuntime)localObject).getManager(1);
-    if (!((WtloginManager)localObject).IsNeedLoginWithPasswd(paramString, 16)) {
-      ((WtloginManager)localObject).GetStWithoutPasswd(paramString, 16L, 16L, new blnf(paramCallback));
+    if (!((WtloginManager)localObject).isNeedLoginWithPasswd(paramString, 16)) {
+      ((WtloginManager)localObject).getStWithoutPasswd(paramString, 16L, 16L, new bmoi(paramCallback));
     }
     for (boolean bool = true;; bool = false) {
       return bool;

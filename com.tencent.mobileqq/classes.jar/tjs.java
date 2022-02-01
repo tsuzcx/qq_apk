@@ -1,21 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelBottomBanner;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class tjs
-  implements tjx
+  implements View.OnClickListener
 {
-  public tjs(ChannelBottomBanner paramChannelBottomBanner) {}
+  public tjs(ViolaLazyFragment paramViolaLazyFragment) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.e();
-      return;
-    }
-    this.a.d();
+    this.a.doOnBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

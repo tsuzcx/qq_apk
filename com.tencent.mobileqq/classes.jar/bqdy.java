@@ -1,16 +1,41 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import android.graphics.PointF;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
 public class bqdy
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bqjd
 {
-  public bqdy(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
+  public bqdy(bqdw parambqdw) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt)
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(this.a.c);
+    QQToast.a(bqdw.a(this.a), "最多可以圈10个好友哦", 0).a();
+  }
+  
+  public void a(bqjc parambqjc)
+  {
+    if (parambqjc.a == 0)
+    {
+      f1 = parambqjc.b.x;
+      f2 = parambqjc.s;
+      f3 = -parambqjc.u;
+      if (f1 + f2 + f3 >= parambqjc.u / 2.0F)
+      {
+        bqdw.a(this.a).a(1, f3 + parambqjc.s);
+        return;
+      }
+      yuk.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "at label can not be reversed because it will be beyond layer.");
+      return;
+    }
+    float f1 = parambqjc.b.x;
+    float f2 = parambqjc.s;
+    float f3 = parambqjc.u;
+    if (f1 + f2 + f3 <= bqdw.a(this.a).getWidth() - parambqjc.u / 2.0F)
+    {
+      bqdw.a(this.a).a(0, f3 + parambqjc.s);
+      return;
+    }
+    yuk.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "at label can not be reversed because it will be beyond layer.");
   }
 }
 

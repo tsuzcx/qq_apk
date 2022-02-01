@@ -1,12 +1,12 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import uvi;
-import uwf;
+import uwt;
+import uxq;
 
 public class PublicAccountImageCollectionMainActivity$3$3
   implements Runnable
 {
-  public PublicAccountImageCollectionMainActivity$3$3(uwf paramuwf) {}
+  public PublicAccountImageCollectionMainActivity$3$3(uxq paramuxq) {}
   
   public void run()
   {

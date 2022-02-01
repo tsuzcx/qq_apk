@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
 
-final class amwa
-  implements EIPCResultCallback
+public abstract interface amwa
+  extends amwx
 {
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (paramEIPCResult.code == 0) {
-      ApolloUtil.b("测试版本tips:预下载动作成功");
-    }
-    for (;;)
-    {
-      QLog.i("CmShow_RenderViewController", 1, "CmShow_ preLoadRes result.code:" + paramEIPCResult.code);
-      return;
-      ApolloUtil.b("测试版本tips:预下载动作失败 ret:" + paramEIPCResult.code);
-    }
-  }
+  public abstract void bulkApolloBarrages(String paramString1, String paramString2, boolean paramBoolean);
+  
+  public abstract int getHeight();
+  
+  public abstract int getInitHeight();
+  
+  public abstract long getLuaState();
+  
+  public abstract amul getRenderImpl();
+  
+  public abstract int getWidth();
+  
+  public abstract ApolloRenderDriver getWorker();
+  
+  public abstract void removeAllApolloBarrages(boolean paramBoolean);
+  
+  public abstract void setBubbleType(int paramInt);
+  
+  public abstract void setVisibility(int paramInt);
 }
 
 

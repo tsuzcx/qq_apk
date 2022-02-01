@@ -1,63 +1,23 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.widget.AdapterView;
 
-public class nkf
-  extends anii
+class nkf
+  implements bljm
 {
-  public nkf(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  nkf(nke paramnke, PoiMapActivity paramPoiMapActivity) {}
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    boolean bool2 = false;
-    if (paramObject == null)
+    this.jdField_a_of_type_Nke.a(paramInt, true);
+    int i = this.jdField_a_of_type_Nke.jdField_a_of_type_ComTencentBizPoiMapActivity.a.length;
+    paramInt = 0;
+    while (paramInt < i)
     {
-      notifyUI(1001, false, null);
-      return;
-    }
-    int i = ((Bundle)paramObject).getInt("result");
-    paramToServiceMsg = (BmqqUserSimpleInfo)((Bundle)paramObject).getParcelable("info");
-    boolean bool1 = bool2;
-    if (i == 0)
-    {
-      bool1 = bool2;
-      if (paramToServiceMsg != null)
-      {
-        ((bjft)this.mApp.getManager(165)).a(paramToServiceMsg);
-        bool1 = true;
+      if (this.jdField_a_of_type_Nke.e != paramInt) {
+        this.jdField_a_of_type_Nke.jdField_a_of_type_ComTencentBizPoiMapActivity.a[paramInt].a(-1, false);
       }
-    }
-    notifyUI(1001, bool1, paramToServiceMsg);
-  }
-  
-  public void a(String paramString)
-  {
-    if (!nki.a(this.app.getApplication(), paramString)) {
-      return;
-    }
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("hrtxformqq.service", this.app.getCurrentAccountUin(), "hrtxformqq.getUsrSimpleInfo");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("uin", Long.valueOf(paramString));
-    localToServiceMsg.setAttributes(localHashMap);
-    send(localToServiceMsg);
-  }
-  
-  protected Class<? extends anil> observerClass()
-  {
-    return nkg.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("hrtxformqq.getUsrSimpleInfo".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      paramInt += 1;
     }
   }
 }

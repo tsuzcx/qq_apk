@@ -1,199 +1,60 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ExpandableListView;
+import java.util.ArrayList;
 
-public abstract class ambm
-  extends bkng
-  implements aobv, bkhe
+class ambm
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private aobu jdField_a_of_type_Aobu;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected ExpandableListView a;
+  int jdField_a_of_type_Int = 3;
+  long jdField_a_of_type_Long = 0L;
+  ambm jdField_a_of_type_Ambm = null;
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+  boolean jdField_a_of_type_Boolean = false;
   
-  public ambm(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView)
+  static ambm a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
-    this.jdField_a_of_type_Aobu = new aobu(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Aobu.a(this);
-    bgmo.a();
+    ambm localambm = new ambm();
+    localambm.a();
+    return localambm;
   }
   
-  protected void a(amcl paramamcl, Bitmap paramBitmap)
+  String a()
   {
-    a(paramamcl, paramBitmap, true);
-  }
-  
-  protected void a(amcl paramamcl, Bitmap paramBitmap, boolean paramBoolean)
-  {
-    if (paramamcl.jdField_c_of_type_AndroidWidgetImageView == null) {
-      return;
-    }
-    if (anhk.z.equals(paramamcl.a))
+    switch (this.jdField_a_of_type_Int)
     {
-      paramamcl.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844220);
-      return;
+    default: 
+      return "LBS_REQ_OK";
+    case 1: 
+      return "LBS_REQ_PENDING";
     }
-    if (anhk.A.equals(paramamcl.a))
-    {
-      paramamcl.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844218);
-      return;
-    }
-    if (anhk.B.equals(paramamcl.a))
-    {
-      paramamcl.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844223);
-      return;
-    }
-    if (anhk.y.equals(paramamcl.a))
-    {
-      paramamcl.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130839564);
-      return;
-    }
-    if (paramBitmap == null) {
-      paramBitmap = this.jdField_a_of_type_Aobu.a(paramamcl.jdField_c_of_type_Int, paramamcl.a);
-    }
-    for (;;)
-    {
-      Bitmap localBitmap = paramBitmap;
-      if (paramBitmap == null)
-      {
-        if (paramBoolean) {
-          paramBitmap = bgmo.a();
-        }
-        localBitmap = paramBitmap;
-        if (!this.jdField_a_of_type_Aobu.a())
-        {
-          this.jdField_a_of_type_Aobu.a(paramamcl.a, paramamcl.jdField_c_of_type_Int, false);
-          localBitmap = paramBitmap;
-        }
-      }
-      if (localBitmap == null) {
-        break;
-      }
-      paramamcl.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
-      return;
+    return "LBS_REQ_PERM_OK";
+  }
+  
+  void a()
+  {
+    if (this.jdField_a_of_type_Ambm == null) {
+      this.jdField_a_of_type_Ambm = new ambm();
     }
   }
   
-  public void a(View paramView, int paramInt) {}
-  
-  protected void a(String paramString, Bitmap paramBitmap)
+  boolean a(String paramString)
   {
-    int j = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildCount();
-    int i = 0;
-    if (i < j)
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildAt(i).getTag();
-      if ((localObject != null) && ((localObject instanceof amcl)))
-      {
-        localObject = (amcl)localObject;
-        if (paramString != null) {
-          break label69;
-        }
-        a((amcl)localObject, null, false);
-      }
-      label69:
-      while (!paramString.equals(((amcl)localObject).a))
-      {
-        i += 1;
-        break;
-      }
-      ((amcl)localObject).jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
-    }
+    ambk.a("startLocation", String.format("filterId=%s , IdList=%s", new Object[] { paramString, this.jdField_a_of_type_JavaUtilArrayList.toString() }), null);
+    return this.jdField_a_of_type_JavaUtilArrayList.contains(paramString);
   }
   
-  public void b()
+  void b()
   {
-    if (this.jdField_a_of_type_Aobu != null) {
-      this.jdField_a_of_type_Aobu.d();
-    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 3;
   }
   
-  public int c_()
+  void c()
   {
-    return 0;
-  }
-  
-  public Object getChild(int paramInt1, int paramInt2)
-  {
-    return null;
-  }
-  
-  public long getChildId(int paramInt1, int paramInt2)
-  {
-    return 0L;
-  }
-  
-  public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
-  {
-    return null;
-  }
-  
-  public int getChildrenCount(int paramInt)
-  {
-    return 0;
-  }
-  
-  public Object getGroup(int paramInt)
-  {
-    return null;
-  }
-  
-  public int getGroupCount()
-  {
-    return 0;
-  }
-  
-  public long getGroupId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getGroupView(int paramInt, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
-  {
-    return null;
-  }
-  
-  public boolean hasStableIds()
-  {
-    return false;
-  }
-  
-  public boolean isChildSelectable(int paramInt1, int paramInt2)
-  {
-    return false;
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if ((!this.jdField_a_of_type_Aobu.a()) && (paramBitmap != null)) {
-      a(paramString, paramBitmap);
-    }
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt != 0)
-    {
-      this.jdField_a_of_type_Aobu.a();
-      this.jdField_a_of_type_Aobu.c();
-    }
-    while (!this.jdField_a_of_type_Aobu.a()) {
-      return;
-    }
-    this.jdField_a_of_type_Aobu.a();
-    this.jdField_a_of_type_Aobu.b();
-    a(null, null);
+    this.jdField_a_of_type_Ambm.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Ambm.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Ambm.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Ambm.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Ambm.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
   }
 }
 

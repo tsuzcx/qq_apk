@@ -1,412 +1,226 @@
-import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Build.VERSION;
+import KQQ.BatchResponse;
+import KQQ.RespBatchProcess;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.util.HashSet;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
-public class bgnf
+class bgnf
+  extends aojs
 {
-  private static bgnf jdField_a_of_type_Bgnf;
-  private ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  bgnf(bgna parambgna) {}
   
-  private bgnf()
+  protected void a(int paramInt1, int paramInt2)
   {
-    String str = a();
-    int i = a();
-    if (!TextUtils.isEmpty(str))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("JumpForwardPkgManager", 2, "LocalConfig: version= " + i);
-      }
-      b(str);
-    }
-  }
-  
-  public static int a()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("jump_pkg_toast_cfg_798", 4).getInt("jump_pkg_toast_cfg_version", 0);
-  }
-  
-  public static bgnf a()
-  {
-    if (jdField_a_of_type_Bgnf == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bgnf == null) {
-        jdField_a_of_type_Bgnf = new bgnf();
-      }
-      return jdField_a_of_type_Bgnf;
-    }
-    finally {}
-  }
-  
-  private static String a()
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("jump_pkg_toast_cfg", 4);
-    if (!TextUtils.isEmpty(((SharedPreferences)localObject).getString("short_video_res_config_key", ""))) {
-      ((SharedPreferences)localObject).edit().putString("short_video_res_config_key", "").commit();
-    }
-    localObject = BaseApplicationImpl.getApplication().getSharedPreferences("jump_pkg_toast_cfg_798", 4).getString("short_video_res_config_key", "");
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-    try
-    {
-      localObject = auyf.b((String)localObject);
-      return localObject;
-    }
-    catch (XorCipherException localXorCipherException) {}
-    return null;
-    return "";
-  }
-  
-  public static String a(Activity paramActivity)
-  {
-    Object localObject;
-    if ((paramActivity == null) || (paramActivity.isFinishing()))
-    {
-      localObject = null;
-      return localObject;
-    }
-    if (Build.VERSION.SDK_INT >= 22) {}
-    for (;;)
-    {
-      for (;;)
-      {
-        try
-        {
-          localObject = Class.forName("android.app.Activity").getDeclaredField("mReferrer");
-          ((Field)localObject).setAccessible(true);
-          localObject = (String)((Field)localObject).get(paramActivity);
-          localObject = a().a((String)localObject);
-          bool = TextUtils.isEmpty((CharSequence)localObject);
-          if (!bool) {
-            break;
-          }
-        }
-        catch (Exception localException2)
-        {
-          boolean bool;
-          String str;
-          continue;
-        }
-        try
-        {
-          localObject = paramActivity.getReferrer();
-          if (localObject != null)
-          {
-            localObject = ((Uri)localObject).getAuthority();
-            localObject = a().a((String)localObject);
-            bool = TextUtils.isEmpty((CharSequence)localObject);
-            if (!bool) {
-              break;
-            }
-          }
-        }
-        catch (Exception localException1) {}
-      }
-      try
-      {
-        str = paramActivity.getCallingPackage();
-        localObject = str;
-        if (TextUtils.isEmpty(str))
-        {
-          paramActivity = paramActivity.getCallingActivity();
-          localObject = str;
-          if (paramActivity != null) {
-            localObject = paramActivity.getPackageName();
-          }
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          paramActivity = a().a((String)localObject);
-          return paramActivity;
-        }
-      }
-      catch (Exception paramActivity) {}
-    }
-    return null;
-  }
-  
-  public static HashSet<String> a(Activity paramActivity)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing())) {
-      return null;
-    }
-    HashSet localHashSet = new HashSet();
-    if (Build.VERSION.SDK_INT >= 22) {}
-    try
-    {
-      Object localObject = Class.forName("android.app.Activity").getDeclaredField("mReferrer");
-      ((Field)localObject).setAccessible(true);
-      localObject = (String)((Field)localObject).get(paramActivity);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localHashSet.add(localObject);
-      }
-      for (;;)
-      {
-        try
-        {
-          label67:
-          localObject = paramActivity.getReferrer();
-          if (localObject != null)
-          {
-            localObject = ((Uri)localObject).getAuthority();
-            if (!TextUtils.isEmpty((CharSequence)localObject)) {
-              localHashSet.add(localObject);
-            }
-          }
-        }
-        catch (Exception localException1)
-        {
-          String str;
-          continue;
-        }
-        try
-        {
-          str = paramActivity.getCallingPackage();
-          localObject = str;
-          if (TextUtils.isEmpty(str))
-          {
-            paramActivity = paramActivity.getCallingActivity();
-            localObject = str;
-            if (paramActivity != null) {
-              localObject = paramActivity.getPackageName();
-            }
-          }
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            localHashSet.add(localObject);
-          }
-        }
-        catch (Exception paramActivity) {}
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("JumpForwardPkgManager", 2, "getCallerReferrerPkg :");
-      }
-      return localHashSet;
-    }
-    catch (Exception localException2)
-    {
-      break label67;
-    }
-  }
-  
-  public static final boolean a(Activity paramActivity)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing())) {}
-    while ((!a().a()) || (TextUtils.isEmpty(a(paramActivity)))) {
-      return false;
-    }
+    boolean bool = true;
     if (QLog.isColorLevel()) {
-      QLog.d("JumpForwardPkgManager", 2, "needHidePreview true");
+      if (bgna.a(this.a) == null) {
+        break label86;
+      }
     }
-    return true;
-  }
-  
-  public static final boolean a(Activity paramActivity, boolean paramBoolean)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing())) {}
     for (;;)
     {
-      return true;
-      try
-      {
-        if (a().a())
-        {
-          String str = a(paramActivity);
-          if (!TextUtils.isEmpty(str))
-          {
-            if (paramBoolean) {
-              QQToast.a(paramActivity, 1, str, 1000).b(paramActivity.getResources().getDimensionPixelSize(2131298998));
-            }
-            paramActivity.moveTaskToBack(true);
-            if (QLog.isColorLevel()) {
-              QLog.d("JumpForwardPkgManager", 2, "checkAllowShare false");
-            }
-            return false;
-          }
-        }
+      QLog.d("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, new Object[] { "onTroopManagerFailed. reqType=", Integer.valueOf(paramInt1), ", result=", Integer.valueOf(paramInt2), ", hasTroopInfoData=", Boolean.valueOf(bool) });
+      if ((bgna.a(this.a) != null) && (bgna.a(this.a) != null)) {
+        break;
       }
-      catch (Throwable paramActivity) {}
+      return;
+      label86:
+      bool = false;
     }
-    return true;
+    bgna.a(this.a).a(paramInt1, paramInt2);
   }
   
-  private static boolean a(String paramString, int paramInt)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("jump_pkg_toast_cfg_798", 4).edit();
-    try
+    String str;
+    if (QLog.isColorLevel())
     {
-      paramString = auyf.a(paramString);
-      localEditor.putString("short_video_res_config_key", paramString);
-      localEditor.putInt("jump_pkg_toast_cfg_version", paramInt);
-      return localEditor.commit();
+      if (!TextUtils.isEmpty(paramString)) {
+        break label111;
+      }
+      str = "";
+      if (bgna.a(this.a) == null) {
+        break label117;
+      }
     }
-    catch (XorCipherException paramString)
+    label111:
+    label117:
+    for (boolean bool = true;; bool = false)
     {
-      paramString.printStackTrace();
+      QLog.d("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, new Object[] { "onTroopManagerSuccess. reqType=", Integer.valueOf(paramInt1), ", result=", Integer.valueOf(paramInt2), ", troopUin=", str, ", hasTroopInfoData=", Boolean.valueOf(bool) });
+      if ((bgna.a(this.a) != null) && (bgna.a(this.a) != null)) {
+        break label123;
+      }
+      return;
+      str = paramString;
+      break;
     }
-    return false;
+    label123:
+    bgna.a(this.a).a(paramInt1, paramInt2, paramString);
   }
   
-  private boolean b(String paramString)
+  protected void a(String paramString)
   {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramString = new JSONArray(paramString);
-        int j = paramString.length();
-        if (j <= 0) {
-          return false;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        i = 0;
-        if (i < j)
-        {
-          Object localObject = paramString.getJSONObject(i);
-          String str = ((JSONObject)localObject).optString("pkgName");
-          localObject = ((JSONObject)localObject).optString("toastWording");
-          if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject);
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("JumpForwardPkgManager", 2, "parseConfigData list size= " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-          }
-          return true;
-        }
-      }
-      catch (Exception paramString)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        if (QLog.isColorLevel()) {
-          QLog.d("JumpForwardPkgManager", 2, "parseConfigData[JSONException]", paramString);
-        }
-        return false;
-      }
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, String.format("onGetAddTroopWebInfo url=%s", new Object[] { paramString }));
     }
+    if (bgna.a(this.a) == null) {
+      return;
+    }
+    bgna.a(this.a).e(paramString);
   }
   
-  public String a(String paramString)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
+    if ((bgna.a(this.a) == null) || (bgna.a(this.a) == null)) {
+      return;
+    }
+    bgna.a(this.a).a(paramBoolean, paramLong, paramTroopInfo);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, RespBatchProcess paramRespBatchProcess, Bundle paramBundle)
+  {
+    if ((paramRespBatchProcess == null) || (paramRespBatchProcess.batch_response_list == null) || (paramRespBatchProcess.batch_response_list.size() == 0) || (bgna.a(this.a) == null)) {}
+    int j;
     do
     {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.d("JumpForwardPkgManager", 2, "getPkgShareToast: ");
+      do
+      {
+        do
+        {
+          return;
+        } while ((!String.valueOf(paramLong).equals(bgna.a(this.a).troopUin)) || (bgna.a(this.a) == null) || (bgna.a(this.a) == null));
+        if (bgna.a(this.a).a != null) {
+          bgna.a(this.a).a.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        }
+      } while (!String.valueOf(paramLong).equals(bgna.a(this.a).troopUin));
+      j = paramRespBatchProcess.batch_response_list.size();
+      int i = 0;
+      if (i < j)
+      {
+        paramBundle = (BatchResponse)paramRespBatchProcess.batch_response_list.get(i);
+        if ((paramBundle == null) || (paramBundle.result != 0)) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (paramBundle.type == 1) {
+            bgna.a(this.a, paramBundle);
+          }
+        }
       }
-    } while ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0));
-    return (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    } while (j <= 0);
+    this.a.c();
   }
   
-  public void a(int paramInt)
+  protected void a(boolean paramBoolean, String paramString, int paramInt, long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("JumpForwardPkgManager", 2, "clearConfig list size= " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+      QLog.d("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "onTroopRankSwitchUpdate. troopUin = " + paramString + ",isSucc = " + paramBoolean + ", tId" + paramInt + ",time = " + paramLong);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    a("", paramInt);
+    if ((bgna.a(this.a) == null) || (TextUtils.isEmpty(bgna.a(this.a).troopUin)) || (TextUtils.isEmpty(paramString)) || (!bgna.a(this.a).troopUin.equals(paramString)) || (paramBoolean)) {
+      return;
+    }
+    bgna.a(this.a).a(paramBoolean, paramString, paramInt, paramLong);
   }
   
-  public void a(Context paramContext, String paramString, int paramInt)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpForwardPkgManager", 2, "updateConfigFromServer|received version: " + paramInt);
-    }
-    if (TextUtils.isEmpty(paramString))
-    {
-      a(paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.d("JumpForwardPkgManager", 2, "updateConfigFromServer| version=" + paramInt + ",config_content is null, clear");
-      }
-    }
+    if ((bgna.a(this.a) == null) || (bgna.a(this.a) == null)) {}
     do
     {
-      boolean bool;
       do
       {
         return;
-        if (!b(paramString)) {
-          break;
-        }
-        bool = a(paramString, paramInt);
-      } while (!QLog.isColorLevel());
-      QLog.d("JumpForwardPkgManager", 2, "updateConfigFromServer| saveContentOK=" + bool);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("JumpForwardPkgManager", 2, "updateConfigFromServer| parseConfigData false");
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0);
-  }
-  
-  public boolean a(String paramString)
-  {
+      } while ((!paramBoolean) || (!bhjx.a(paramString1, bgna.a(this.a).troopUin)));
+      if (paramInt1 == 0)
+      {
+        this.a.a(paramList, true);
+        return;
+      }
+    } while (paramString2 != null);
+    if ((paramInt1 == 1) || (paramInt1 == 2)) {
+      paramString2 = bgna.a(this.a).getString(2131695413);
+    }
     for (;;)
     {
-      boolean bool1;
-      try
-      {
-        String str = Uri.parse(paramString).getHost();
-        if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(str))) {
-          break label129;
-        }
-        if (!a()) {
-          break label112;
-        }
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-          break label133;
-        }
-        if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
-          break label107;
-        }
+      bgna.a(this.a).a(paramString2);
+      return;
+      if (paramInt1 == 19) {
+        paramString2 = bgna.a(this.a).getString(2131695411);
+      } else if (paramInt1 == 65) {
+        paramString2 = bgna.a(this.a).getString(2131695412);
       }
-      catch (Throwable paramString)
-      {
-        QLog.e("JumpForwardPkgManager", 1, paramString, new Object[0]);
-        return false;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
+  {
+    super.b(paramBoolean, paramLong1, paramInt1, paramList, paramLong2, paramInt2, paramString);
+    if (paramInt1 != 2) {}
+    while ((!paramBoolean) || (bgna.a(this.a) == null) || (paramList == null) || (paramList.isEmpty())) {
+      return;
+    }
+    bgna.a(this.a).a(paramLong1, paramList);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
+  {
+    if ((bgna.a(this.a) == null) || (bgna.a(this.a) == null)) {}
+    while (!bhjx.a(paramString1, bgna.a(this.a).troopUin)) {
+      return;
+    }
+    if (paramInt1 == 0)
+    {
+      this.a.a(paramList, true);
+      return;
+    }
+    this.a.a(paramList, true);
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2))
+    {
+      if (paramInt1 != 1) {
+        break label106;
       }
-      boolean bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("JumpForwardPkgManager", 2, new Object[] { "contain :", Boolean.valueOf(bool1) });
-        return bool1;
-        label107:
-        bool1 = false;
-        continue;
-        label112:
-        if (QLog.isColorLevel()) {
-          QLog.d("JumpForwardPkgManager", 2, "needCheckPkg false");
-        }
-        return false;
-        label129:
-        bool2 = false;
+      paramString1 = bgna.a(this.a).getString(2131695413);
+    }
+    for (;;)
+    {
+      bgna.a(this.a).a(paramString1);
+      return;
+      label106:
+      if (paramInt1 == 2) {
+        paramString1 = bgna.a(this.a).getString(2131695411);
+      } else if (paramInt1 == 3) {
+        paramString1 = bgna.a(this.a).getString(2131695424);
+      } else if (paramInt1 == 4) {
+        paramString1 = bgna.a(this.a).getString(2131695425);
+      } else {
+        paramString1 = bgna.a(this.a).getString(2131695422);
       }
-      else
-      {
-        return bool2;
-        label133:
-        bool1 = true;
-      }
+    }
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (bgna.a(this.a) != null)) {
+      bgna.a(this.a).c(paramString);
+    }
+  }
+  
+  protected void c(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if ((paramBoolean) && (bgna.a(this.a) != null) && (paramString.equals(bgna.a(this.a).troopUin))) {
+      this.a.a = paramInt;
     }
   }
 }

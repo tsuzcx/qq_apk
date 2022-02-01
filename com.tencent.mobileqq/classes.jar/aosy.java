@@ -1,12 +1,10 @@
-import java.util.Comparator;
-
-public final class aosy
-  implements Comparator<aosz>
+public class aosy
 {
-  public int a(aosz paramaosz1, aosz paramaosz2)
-  {
-    return paramaosz1.a - paramaosz2.a;
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
 }
 
 

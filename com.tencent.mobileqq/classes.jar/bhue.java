@@ -1,8 +1,10 @@
-import android.view.View;
-
 public abstract interface bhue
 {
-  public abstract void a(View paramView);
+  public abstract void a(int paramInt1, String paramString, int paramInt2);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void b(String paramString, int paramInt1, int paramInt2);
 }
 
 

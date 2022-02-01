@@ -1,80 +1,91 @@
-import android.os.Bundle;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.CharBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CoderResult;
 
-class nor
-  implements bfpo
+public class nor
 {
-  nor(noq paramnoq) {}
+  public static final ThreadLocal<Charset> a;
+  private static final ThreadLocal<CharsetDecoder> b = new nos();
+  private static final ThreadLocal<CharBuffer> c = new ThreadLocal();
+  protected ByteBuffer a;
+  protected int c;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  static
   {
-    noq.a(this.a);
-    String str = "";
-    long l = 0L;
-    Object localObject1 = "";
-    if (paramBundle != null)
-    {
-      l = paramBundle.getLong("time", 0L);
-      str = paramBundle.getString("room_id");
-      localObject1 = paramBundle.getString("friendUin");
+    jdField_a_of_type_JavaLangThreadLocal = new not();
+  }
+  
+  protected int a(int paramInt)
+  {
+    if (a(paramInt, 4)) {
+      return this.jdField_a_of_type_JavaNioByteBuffer.getInt(paramInt) + paramInt;
     }
-    localObject1 = this.a.a((String)localObject1, l);
-    if (paramJSONObject == null)
+    return -1;
+  }
+  
+  protected String a(int paramInt, boolean paramBoolean)
+  {
+    CharsetDecoder localCharsetDecoder = (CharsetDecoder)b.get();
+    localCharsetDecoder.reset();
+    int i = paramInt;
+    if (!paramBoolean)
     {
-      noq.b(this.a);
-      this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), localObject1, paramBundle });
-      return;
+      if (!a(paramInt, 4)) {
+        return null;
+      }
+      i = paramInt + this.jdField_a_of_type_JavaNioByteBuffer.getInt(paramInt);
     }
-    switch (paramInt)
-    {
+    if (!a(i, 4)) {
+      return null;
     }
-    do
+    ByteBuffer localByteBuffer = this.jdField_a_of_type_JavaNioByteBuffer.duplicate().order(ByteOrder.LITTLE_ENDIAN);
+    paramInt = localByteBuffer.getInt(i);
+    if (!a(i, paramInt + 4)) {
+      return null;
+    }
+    localByteBuffer.position(i + 4);
+    localByteBuffer.limit(i + 4 + paramInt);
+    paramInt = (int)(paramInt * localCharsetDecoder.maxCharsPerByte());
+    Object localObject2 = (CharBuffer)c.get();
+    Object localObject1;
+    if (localObject2 != null)
     {
-      do
-      {
-        for (;;)
-        {
-          this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), null, paramBundle });
-          return;
-          Object localObject2 = paramJSONObject.optJSONObject("result");
-          if ((localObject2 != null) && (((JSONObject)localObject2).optInt("retcode") == 0))
-          {
-            paramJSONObject = new ArrayList();
-            localObject2 = ((JSONObject)localObject2).optJSONArray("videoURLList");
-            if (localObject2 != null)
-            {
-              int i = 0;
-              for (;;)
-              {
-                if (i < ((JSONArray)localObject2).length()) {
-                  try
-                  {
-                    paramJSONObject.add(((JSONArray)localObject2).getString(i));
-                    i += 1;
-                  }
-                  catch (JSONException localJSONException)
-                  {
-                    for (;;)
-                    {
-                      localJSONException.printStackTrace();
-                    }
-                  }
-                }
-              }
-              ((nos)localObject1).jdField_a_of_type_JavaUtilList = paramJSONObject;
-              ((nos)localObject1).b = str;
-            }
-            this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
-          }
-        }
-      } while (paramJSONObject.optInt("retcode") != 0);
-      paramJSONObject = paramJSONObject.optJSONObject("result");
-    } while (paramJSONObject == null);
-    ((nos)localObject1).jdField_a_of_type_Int = paramJSONObject.optInt("state");
-    this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
+      localObject1 = localObject2;
+      if (((CharBuffer)localObject2).capacity() >= paramInt) {}
+    }
+    else
+    {
+      localObject1 = CharBuffer.allocate(paramInt);
+      c.set(localObject1);
+    }
+    ((CharBuffer)localObject1).clear();
+    try
+    {
+      localObject2 = localCharsetDecoder.decode(localByteBuffer, (CharBuffer)localObject1, true);
+      if (!((CoderResult)localObject2).isUnderflow()) {
+        ((CoderResult)localObject2).throwException();
+      }
+      return ((CharBuffer)localObject1).flip().toString();
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("FlatBuffersParser", 1, "convertString error", localThrowable);
+    }
+    return null;
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    return (paramInt1 >= 0) && (paramInt1 + paramInt2 <= this.jdField_a_of_type_JavaNioByteBuffer.capacity());
+  }
+  
+  protected String b(int paramInt)
+  {
+    return a(paramInt, false);
   }
 }
 

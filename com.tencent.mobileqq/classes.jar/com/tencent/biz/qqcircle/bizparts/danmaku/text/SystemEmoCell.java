@@ -6,9 +6,9 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import vft;
-import vfw;
-import vhc;
+import vhx;
+import via;
+import vjg;
 
 public class SystemEmoCell
   extends TextCell
@@ -49,7 +49,7 @@ public class SystemEmoCell
   
   public void draw(Canvas paramCanvas, Paint paramPaint, int paramInt1, Rect paramRect, int paramInt2, int paramInt3, Bitmap paramBitmap)
   {
-    if ((!this.useDefaultFont) && ((paramPaint instanceof vft)) && (((vft)paramPaint).a()) && (!((vft)paramPaint).a)) {
+    if ((!this.useDefaultFont) && ((paramPaint instanceof vhx)) && (((vhx)paramPaint).a()) && (!((vhx)paramPaint).a)) {
       return;
     }
     if (this.emoDrawable != null)
@@ -80,9 +80,9 @@ public class SystemEmoCell
     return 1;
   }
   
-  public void reloadDrawable(vhc paramvhc, ImageLoader.ImageLoadListener paramImageLoadListener)
+  public void reloadDrawable(vjg paramvjg, ImageLoader.ImageLoadListener paramImageLoadListener)
   {
-    vfw.a().a(this, paramvhc, paramImageLoadListener);
+    via.a().a(this, paramvjg, paramImageLoadListener);
   }
 }
 

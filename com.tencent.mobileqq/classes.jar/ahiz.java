@@ -1,42 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahiz
-  extends AnimatorListenerAdapter
+class ahiz
+  extends ahkx
 {
-  public ahiz(SixCombolEffectView paramSixCombolEffectView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  ahiz(ahgk paramahgk)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {}
-    do
-    {
-      do
-      {
-        return;
-        SixCombolEffectView.jdField_a_of_type_Int = 4;
-        if (QLog.isColorLevel()) {
-          QLog.w("SixCombolEffectView", 2, "Animation 4 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
-        }
-      } while (SixCombolEffectView.a(this.a) == null);
-      paramAnimator = SixCombolEffectView.a(this.a);
-    } while (paramAnimator == null);
-    SixCombolEffectView.a(this.a).a(paramAnimator);
+    super(paramahgk, null);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    super.onAnimationStart(paramAnimator);
-    if (SixCombolEffectView.a(this.a)) {}
-    do
-    {
-      return;
-      SixCombolEffectView.jdField_a_of_type_Int = 3;
-    } while (!QLog.isColorLevel());
-    QLog.w("SixCombolEffectView", 2, "Animation 3 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+    return new ahqr(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

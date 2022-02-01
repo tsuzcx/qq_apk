@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.activity.Conversation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aeah
-  extends asgf
+final class aeah
+  implements DialogInterface.OnClickListener
 {
-  public aeah(Conversation paramConversation) {}
+  aeah(aeca paramaeca, aebz paramaebz) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
+    if (this.jdField_a_of_type_Aeca.a) {
+      bdll.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
+    }
+    if (this.jdField_a_of_type_Aebz != null) {
+      this.jdField_a_of_type_Aebz.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

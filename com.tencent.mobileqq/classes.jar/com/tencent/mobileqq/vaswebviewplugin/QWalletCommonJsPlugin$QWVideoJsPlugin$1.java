@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aksa;
+import aldl;
 import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class QWalletCommonJsPlugin$QWVideoJsPlugin$1
-  implements aksa
+  implements aldl
 {
   QWalletCommonJsPlugin$QWVideoJsPlugin$1(QWalletCommonJsPlugin.QWVideoJsPlugin paramQWVideoJsPlugin, String paramString) {}
   

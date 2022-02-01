@@ -1,22 +1,7 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.ColorNotePlugin.1;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-
 class bjwe
-  implements bjwg
+  implements bjwc
 {
   bjwe(bjwd parambjwd) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    QLog.d("ColorNotePlugin", 1, "onAddColorSign:" + paramBoolean);
-    if (paramBoolean)
-    {
-      this.a.a.a.ok();
-      return;
-    }
-    this.a.a.a.fail();
-  }
 }
 
 

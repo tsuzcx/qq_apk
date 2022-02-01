@@ -1,21 +1,53 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import android.widget.TableLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class amdb
-  implements View.OnClickListener
+public class amdb
+  extends Handler
 {
-  amdb(amcz paramamcz, String paramString1, String paramString2) {}
+  public amdb(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Amcz.a, QQBrowserActivity.class).putExtra("url", String.format("https://buluo.qq.com/mobile/detail.html?bid=%s&pid=%s&_wv=1027&webview=1&from=reliao", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
-    this.jdField_a_of_type_Amcz.a.startActivity(localIntent);
-    bcst.b(null, "dc00899", "grp_lbs", "", "hot_room", "clk_tribe_post", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramMessage.what == 0)
+    {
+      CreateFaceToFaceDiscussionActivity.a(this.a, 3);
+      paramMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, this.a.jdField_a_of_type_Long);
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (1 != paramMessage.what) {
+          break;
+        }
+      } while (this.a.jdField_c_of_type_Boolean);
+      this.a.jdField_a_of_type_JavaLangStringBuffer.delete(0, this.a.jdField_a_of_type_JavaLangStringBuffer.length());
+      this.a.jdField_b_of_type_AndroidWidgetTableLayout.setContentDescription(this.a.a());
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845246);
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130845246);
+      this.a.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130845246);
+      this.a.d.setImageResource(2130845246);
+      this.a.e.setEnabled(true);
+      this.a.f.setEnabled(true);
+      this.a.g.setEnabled(true);
+      this.a.h.setEnabled(true);
+      this.a.i.setEnabled(true);
+      this.a.j.setEnabled(true);
+      this.a.k.setEnabled(true);
+      this.a.l.setEnabled(true);
+      this.a.m.setEnabled(true);
+      this.a.n.setEnabled(true);
+      this.a.o.setEnabled(true);
+      return;
+    } while (2 != paramMessage.what);
+    QQToast.a(BaseApplicationImpl.getContext(), paramMessage.arg1, paramMessage.arg2, 0).a();
   }
 }
 

@@ -1,48 +1,44 @@
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
-class aihq
-  extends AccountObserver
+public class aihq
+  implements BusinessObserver
 {
-  aihq(aihn paramaihn) {}
+  aihq(aihh paramaihh) {}
   
-  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i;
-    if (QLog.isColorLevel())
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
+    if (paramBoolean)
     {
-      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
-      if (paramString2 == null)
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
+      }
+    }
+    try
+    {
+      localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
+      if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
       {
-        i = 0;
-        QLog.d("C2CMsgRoamProxy", 2, i);
+        paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
+        ThreadManager.getFileThreadHandler().post(new BusinessCmrTmpChatPie.2.1(this, paramBundle));
       }
-    }
-    else
-    {
-      if ((!paramBoolean) || (TextUtils.isEmpty(paramString2))) {
-        break label98;
-      }
-      i = 1;
-      label64:
-      if (i == 0) {
-        break label104;
-      }
-      aihn.a(this.a, true);
-    }
-    for (;;)
-    {
-      aihn.c(this.a).b();
       return;
-      i = paramString2.length();
-      break;
-      label98:
-      i = 0;
-      break label64;
-      label104:
-      aihn.a(this.a, false);
     }
+    catch (InvalidProtocolBufferMicroException paramBundle) {}
   }
 }
 

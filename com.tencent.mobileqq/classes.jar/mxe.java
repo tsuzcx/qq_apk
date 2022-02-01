@@ -1,26 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.avgame.floatwindow.CommonGameFloatWindowLayout;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class mxe
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  mxe(mxb parammxb, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  mxe(mxc parammxc, Activity paramActivity, int paramInt1, String paramString, int paramInt2) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!mxb.b(this.jdField_a_of_type_Mxb))
+    if (paramInt == 1)
     {
-      paramValueAnimator.cancel();
-      mxb.a(this.jdField_a_of_type_Mxb, null);
+      this.jdField_a_of_type_Mxc.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
       return;
     }
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = (int)(this.jdField_a_of_type_Int + (this.b - this.jdField_a_of_type_Int) * f1 + 0.5F);
-    float f2 = this.c;
-    int j = (int)(f1 * (this.d - this.c) + f2 + 0.5F);
-    mxb.a(this.jdField_a_of_type_Mxb).a(i, j);
-    mxb.a(this.jdField_a_of_type_Mxb).d();
+    this.jdField_a_of_type_Mxc.a(this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

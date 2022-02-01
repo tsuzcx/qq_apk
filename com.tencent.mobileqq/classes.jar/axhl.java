@@ -1,30 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 
 public class axhl
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public axhl(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public axhl(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (!this.a.isFinishing()))
-    {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.a.jdField_a_of_type_AndroidAppDialog = null;
-      this.a.d(anni.a(2131705965));
-      if (this.a.jdField_a_of_type_Axeq == null) {
-        this.a.jdField_a_of_type_Axeq = ((axeq)this.a.app.a(60));
-      }
-      this.a.jdField_a_of_type_Axeq.a(NearbyPeopleProfileActivity.c, 5);
-      this.a.e("0X8005909");
+    if (this.a.b == 2) {
+      MsgBackupCompleteFragment.d(this.a.getActivity(), this.a.c, this.a.d);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    while (this.a.b != 3) {
+      return;
+    }
+    MsgBackupCompleteFragment.j(this.a.getActivity(), this.a.c, this.a.d);
   }
 }
 

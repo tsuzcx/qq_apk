@@ -1,19 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aiku
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  aiku(aiks paramaiks) {}
+  aiku(aikq paramaikq) {}
   
-  public void onClick(View paramView)
-  {
-    aiks.b(this.a);
-    bcst.b(null, "dc00898", "", "", "0X800B032", "0X800B032", 0, 0, "", "", aiks.a(this.a).a, "");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

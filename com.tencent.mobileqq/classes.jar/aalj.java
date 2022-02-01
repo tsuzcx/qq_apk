@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aalj
-  implements Parcelable.Creator<CommodityBean>
+public class aalj
+  implements View.OnClickListener
 {
-  public CommodityBean a(Parcel paramParcel)
-  {
-    return new CommodityBean(paramParcel);
-  }
+  public aalj(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, aaks paramaaks) {}
   
-  public CommodityBean[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new CommodityBean[paramInt];
+    aaej.a("https://h5.qzone.qq.com/subscription/syncFeeds/{uin}?_proxy=1&_wv=3".replace("{uin}", this.jdField_a_of_type_Aaks.a.poster.id.get()));
+    abbe.b(this.jdField_a_of_type_Aaks.a.poster.id.get(), "auth_person", "sync_qzone", 0, 0, new String[0]);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

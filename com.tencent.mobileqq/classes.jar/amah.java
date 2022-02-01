@@ -1,7 +1,10 @@
-import kotlin.Metadata;
+import android.graphics.Bitmap;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel$Companion;", "", "()V", "FUNCTION_RECEIVE_ARK_MSG", "", "TAG", "UIN_TYPE_PUBLIC_ACCOUNT", "", "WEATHER_NICK_NAME", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class amah {}
+public class amah
+{
+  public int a;
+  public Bitmap a;
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

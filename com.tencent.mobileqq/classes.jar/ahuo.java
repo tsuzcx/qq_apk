@@ -1,20 +1,36 @@
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.IInterface;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract interface ahuo
-  extends IInterface
+class ahuo
+  implements AdapterView.OnItemClickListener
 {
-  public abstract void a();
+  ahuo(ahum paramahum, List paramList) {}
   
-  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3, Bundle paramBundle);
-  
-  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_Ahum.a, TroopAvatarWallPreviewActivity.class);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("index", paramInt);
+    localBundle.putStringArrayList("seqNum", new ArrayList(this.jdField_a_of_type_JavaUtilList));
+    localBundle.putBoolean("from_photo_wall", false);
+    localBundle.putBoolean("SHOW_MENU", true);
+    localBundle.putBoolean("IS_EDIT", false);
+    localBundle.putBoolean("is_use_path", true);
+    localBundle.putBoolean("is_show_action", true);
+    localBundle.putBoolean("is_not_show_index", true);
+    localIntent.putExtras(localBundle);
+    this.jdField_a_of_type_Ahum.a.startActivity(localIntent);
+    bdll.b(null, "dc00898", "", "", "0X800B1A9", "0X800B1A9", 0, 0, "", "", ahum.a(this.jdField_a_of_type_Ahum), "精选照片");
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+  }
 }
 
 

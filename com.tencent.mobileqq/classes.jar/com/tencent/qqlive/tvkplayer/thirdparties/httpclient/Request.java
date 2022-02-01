@@ -12,6 +12,10 @@ public class Request
   implements Comparable<Request>
 {
   private static final int DEFAULT_TIMEOUT_MILLIS = 8000;
+  public static final int PRIORITY_HIGH = 3;
+  public static final int PRIORITY_IMMEDIATE = 4;
+  public static final int PRIORITY_LOW = 1;
+  public static final int PRIORITY_NORMAL = 2;
   @GuardedBy("mLock")
   private boolean mCanceled = false;
   private final int mDefaultTrafficStatsTag;
@@ -83,12 +87,12 @@ public class Request
   
   public int compareTo(Request paramRequest)
   {
-    Request.Priority localPriority1 = getPriority();
-    Request.Priority localPriority2 = paramRequest.getPriority();
-    if (localPriority1 == localPriority2) {
+    int i = getPriority();
+    int j = paramRequest.getPriority();
+    if (i == j) {
       return this.mSequence.intValue() - paramRequest.mSequence.intValue();
     }
-    return localPriority2.ordinal() - localPriority1.ordinal();
+    return j - i;
   }
   
   public void deliverError(IOException paramIOException)
@@ -137,9 +141,10 @@ public class Request
     return this.mPostBody;
   }
   
-  public Request.Priority getPriority()
+  @Request.Priority
+  public int getPriority()
   {
-    return Request.Priority.NORMAL;
+    return 2;
   }
   
   public final int getSequence()

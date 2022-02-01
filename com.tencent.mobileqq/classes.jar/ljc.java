@@ -1,22 +1,13 @@
-import java.util.Observable;
-
-public class ljc
-  extends Observable
+public abstract interface ljc
+  extends liu
 {
-  public void a(Object[] paramArrayOfObject)
-  {
-    try
-    {
-      super.setChanged();
-      super.notifyObservers(paramArrayOfObject);
-      return;
-    }
-    finally
-    {
-      paramArrayOfObject = finally;
-      throw paramArrayOfObject;
-    }
-  }
+  public abstract void a(float paramFloat1, float paramFloat2, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean);
+  
+  public abstract void setDrawParticle(boolean paramBoolean);
 }
 
 

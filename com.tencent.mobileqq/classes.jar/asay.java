@@ -1,8 +1,14 @@
-import com.tencent.mobileqq.transfile.AlbumThumbDownloader;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class asay
-  extends AlbumThumbDownloader
-{}
+final class asay
+  extends nkp
+{
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    QLog.i("reportMsgBoxMomentRead", 1, " reportMsgBoxMomentRead code:" + paramInt);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

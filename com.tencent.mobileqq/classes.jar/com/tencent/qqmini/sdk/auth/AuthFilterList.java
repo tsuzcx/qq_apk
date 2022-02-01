@@ -135,6 +135,10 @@ public class AuthFilterList
       sEventLocalBlackList.add("queryAppInfo");
       sEventLocalBlackList.add("installApp");
       sEventLocalBlackList.add("startApp");
+      sEventLocalBlackList.add("insertBookshelf");
+      sEventLocalBlackList.add("queryBookshelf");
+      sEventLocalBlackList.add("updateBookshelfReadTime");
+      sEventLocalBlackList.add("navigateToBookshelf");
       return;
     }
   }
@@ -184,12 +188,12 @@ public class AuthFilterList
     }
     if (isEventInSecondaryApiList(paramString1))
     {
-      if ((((HashMap)sEventRemoteSecondaryApiMap.get(paramString1)).containsKey(paramString2)) && (((Integer)((HashMap)sEventRemoteSecondaryApiMap.get(paramString1)).get(paramString2)).intValue() == -1))
+      if ((sEventRemoteSecondaryApiMap.get(paramString1) != null) && (((HashMap)sEventRemoteSecondaryApiMap.get(paramString1)).containsKey(paramString2)) && (((Integer)((HashMap)sEventRemoteSecondaryApiMap.get(paramString1)).get(paramString2)).intValue() == -1))
       {
         QMLog.d("AuthFilterList_isEventNameRight", "false, 二级黑名单 : " + paramString1 + " " + paramString2);
         return false;
       }
-      if ((((HashMap)sEventRemoteSecondaryApiMap.get(paramString1)).containsKey(paramString2)) && (((Integer)((HashMap)sEventRemoteSecondaryApiMap.get(paramString1)).get(paramString2)).intValue() == 1))
+      if ((sEventRemoteSecondaryApiMap.get(paramString1) != null) && (((HashMap)sEventRemoteSecondaryApiMap.get(paramString1)).containsKey(paramString2)) && (((Integer)((HashMap)sEventRemoteSecondaryApiMap.get(paramString1)).get(paramString2)).intValue() == 1))
       {
         QMLog.d("AuthFilterList_isEventNameRight", "true, 二级白名单 : " + paramString1 + " " + paramString2);
         return true;

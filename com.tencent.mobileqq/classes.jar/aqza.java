@@ -1,47 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public class aqza
-  extends aqwr<aqyz>
 {
-  @NonNull
-  public aqyz a()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    gc.a();
-    bgsg.a(localQQAppInterface.getApp(), localQQAppInterface.c(), "vas_font_switch_config", "reset");
-    return new aqyz();
-  }
+  public float a;
+  public int a;
+  public boolean a;
+  public int b;
+  public int c;
   
-  @NonNull
-  public aqyz a(aqlg[] paramArrayOfaqlg)
+  public aqza(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, float paramFloat)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    gc.a(paramArrayOfaqlg[0].a);
-    bgsg.a(localQQAppInterface.getApp(), localQQAppInterface.c(), "vas_font_switch_config", paramArrayOfaqlg[0].a);
-    return new aqyz();
-  }
-  
-  @NonNull
-  public aqyz b()
-  {
-    return new aqyz();
-  }
-  
-  public Class<aqyz> clazz()
-  {
-    return aqyz.class;
-  }
-  
-  public int type()
-  {
-    return 359;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Float = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqza
  * JD-Core Version:    0.7.0.1
  */

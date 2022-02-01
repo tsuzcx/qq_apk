@@ -1,31 +1,30 @@
-import android.view.View;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileOtherHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "profileOtherSettingItem", "Lcom/tencent/mobileqq/widget/FormSwitchItem;", "getProfileOtherSettingItem", "()Lcom/tencent/mobileqq/widget/FormSwitchItem;", "setProfileOtherSettingItem", "(Lcom/tencent/mobileqq/widget/FormSwitchItem;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class azrt
-  extends RecyclerView.ViewHolder
+public class azrt
+  extends azrs
 {
-  @NotNull
-  private FormSwitchItem a;
-  
-  public azrt(@NotNull View paramView)
+  azrt(CompressInfo paramCompressInfo)
   {
-    super(paramView);
-    paramView = paramView.findViewById(2131372914);
-    if (paramView == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSwitchItem");
-    }
-    this.a = ((FormSwitchItem)paramView);
+    super(paramCompressInfo);
   }
   
-  @NotNull
-  public final FormSwitchItem a()
+  protected int a()
   {
-    return this.a;
+    int i = 85;
+    if (this.a.g == 2)
+    {
+      i = 100;
+      return i;
+    }
+    switch (this.a.h)
+    {
+    case 4: 
+    case 2: 
+    case 3: 
+    default: 
+      return 85;
+    }
+    return 90;
   }
 }
 

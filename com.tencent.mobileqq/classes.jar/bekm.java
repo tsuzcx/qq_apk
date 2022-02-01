@@ -1,20 +1,30 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public final class bekm
-  implements QQPermissionCallback
+public abstract interface bekm
 {
-  public bekm(bekr parambekr, BaseActivity paramBaseActivity) {}
+  public abstract int a();
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bglp.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
-  }
+  public abstract bhpc a();
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Bekr.a(bfqu.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, anhk.bg, 1001));
-  }
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, bekj> paramMap, @Nullable Bundle paramBundle);
+  
+  public abstract void a(Context paramContext, SessionInfo paramSessionInfo, int paramInt);
+  
+  public abstract void a(bekj parambekj, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject);
+  
+  public abstract boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, bekj> paramMap, @Nullable Bundle paramBundle);
+  
+  public abstract boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Map<String, bekj> paramMap, @Nullable Bundle paramBundle);
+  
+  public abstract boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, bekj> paramMap, @Nullable Bundle paramBundle);
 }
 
 

@@ -1,14 +1,15 @@
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
+
 class qud
-  implements qvq
+  extends qtl
 {
-  qud(quc paramquc) {}
+  qud(qtw paramqtw, AppInterface paramAppInterface) {}
   
-  public void a()
+  public Drawable a()
   {
-    spb localspb = this.a.jdField_a_of_type_Snh.a();
-    if (localspb != null) {
-      localspb.a(null, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_kandian_selected");
   }
 }
 

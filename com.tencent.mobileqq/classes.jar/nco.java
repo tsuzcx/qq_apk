@@ -1,16 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.RectF;
+import com.tencent.avgame.gamelogic.data.Player;
+import com.tencent.avgame.session.AVGameUserInfo;
+import java.util.List;
 
-class nco
-  implements DialogInterface.OnClickListener
+public abstract interface nco
 {
-  nco(ncl paramncl, long paramLong) {}
+  public abstract RectF a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    QLog.w(this.jdField_a_of_type_Ncl.a, 1, "showPermissionNormalDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
-  }
+  public abstract RectF a(long paramLong);
+  
+  public abstract AVGameUserInfo a(String paramString);
+  
+  public abstract List<ncr> a();
+  
+  public abstract void a();
+  
+  public abstract void a(long paramLong, boolean paramBoolean);
+  
+  public abstract void a(Player paramPlayer);
+  
+  public abstract void a(mze parammze);
+  
+  public abstract void a(nbp paramnbp);
+  
+  public abstract boolean a();
+  
+  public abstract List<nbr> b();
+  
+  public abstract void b();
+  
+  public abstract void b(Player paramPlayer);
+  
+  public abstract void c(Player paramPlayer);
 }
 
 

@@ -1,144 +1,55 @@
-import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.common.config.AppSetting;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
 public class bnyp
 {
-  private static final List<Pair<String, Integer>> a = new LinkedList();
+  private static bnyq a;
+  public static String a;
+  public static String b = "WadlProxyService.";
   
   static
   {
-    a.add(new Pair("AEKIT_CAMERA_FIRST_LAUNCH", Integer.valueOf(0)));
-    a.add(new Pair("CameraModuleSvc.GetCompressedCategoryMaterialMqStoryCamera", Integer.valueOf(4)));
-    a.add(new Pair("CameraModuleSvc.GetCompressedCategoryMaterialMqEmoCamera", Integer.valueOf(4)));
-    a.add(new Pair("CameraModuleSvc.GetPlayShowCatMatTree", Integer.valueOf(4)));
+    jdField_a_of_type_JavaLangString = "WadlProxyServiceUtil";
   }
   
-  private bnyp()
+  public static bnyq a()
   {
-    Object localObject = bnys.a("key_app_version", "");
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || (!AppSetting.a().equals(localObject)))
+    if (jdField_a_of_type_Bnyq == null) {
+      a();
+    }
+    return jdField_a_of_type_Bnyq;
+  }
+  
+  public static void a()
+  {
+    synchronized (jdField_a_of_type_JavaLangString)
     {
-      localObject = a.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Pair localPair = (Pair)((Iterator)localObject).next();
-        if (4 == ((Integer)localPair.second).intValue()) {
-          bnys.a((String)localPair.first);
-        } else {
-          bnyr.a((String)localPair.first);
-        }
+      if (jdField_a_of_type_Bnyq == null) {
+        jdField_a_of_type_Bnyq = new bnyq();
       }
-      bnys.a("key_app_version", AppSetting.a());
-    }
-  }
-  
-  public static bnyp a()
-  {
-    return bnyt.a();
-  }
-  
-  public int a(@NonNull String paramString, int paramInt1, int paramInt2)
-  {
-    if (4 == paramInt2) {
-      return bnys.a(paramString, paramInt1);
-    }
-    return bnyr.a(paramString, paramInt1);
-  }
-  
-  public long a(@NonNull String paramString, long paramLong, int paramInt)
-  {
-    if (4 == paramInt) {
-      return bnys.a(paramString, paramLong);
-    }
-    return bnyr.a(paramString, paramLong);
-  }
-  
-  @NonNull
-  public SharedPreferences a()
-  {
-    return bnyr.a();
-  }
-  
-  @Nullable
-  public String a(@NonNull String paramString1, String paramString2, int paramInt)
-  {
-    if (4 == paramInt) {
-      return bnys.a(paramString1, paramString2);
-    }
-    return bnyr.a(paramString1, paramString2);
-  }
-  
-  public void a(@NonNull String paramString, int paramInt)
-  {
-    if (4 == paramInt)
-    {
-      bnys.a(paramString);
+      jdField_a_of_type_Bnyq.a();
       return;
     }
-    bnyr.a(paramString);
   }
   
-  public void a(@NonNull String paramString, int paramInt1, int paramInt2)
+  public static void a(bnym parambnym)
   {
-    if (4 == paramInt2)
+    if (jdField_a_of_type_Bnyq != null) {
+      jdField_a_of_type_Bnyq.a(parambnym);
+    }
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_Bnyq != null)
     {
-      bnys.a(paramString, paramInt1);
-      return;
+      jdField_a_of_type_Bnyq.d();
+      jdField_a_of_type_Bnyq = null;
     }
-    bnyr.a(paramString, paramInt1);
   }
   
-  public void a(@NonNull String paramString, long paramLong, int paramInt)
+  public static void b(bnym parambnym)
   {
-    if (4 == paramInt)
-    {
-      bnys.a(paramString, paramLong);
-      return;
+    if (jdField_a_of_type_Bnyq != null) {
+      jdField_a_of_type_Bnyq.b(parambnym);
     }
-    bnyr.a(paramString, paramLong);
-  }
-  
-  public void a(@NonNull String paramString1, String paramString2, int paramInt)
-  {
-    if (4 == paramInt)
-    {
-      bnys.a(paramString1, paramString2);
-      return;
-    }
-    bnyr.a(paramString1, paramString2);
-  }
-  
-  public void a(@NonNull String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (4 == paramInt)
-    {
-      bnys.a(paramString, paramBoolean);
-      return;
-    }
-    bnyr.a(paramString, paramBoolean);
-  }
-  
-  public boolean a(@NonNull String paramString, int paramInt)
-  {
-    if (4 == paramInt) {
-      return bnys.a(paramString);
-    }
-    return bnyr.a(paramString);
-  }
-  
-  public boolean a(@NonNull String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (4 == paramInt) {
-      return bnys.a(paramString, paramBoolean);
-    }
-    return bnyr.a(paramString, paramBoolean);
   }
 }
 

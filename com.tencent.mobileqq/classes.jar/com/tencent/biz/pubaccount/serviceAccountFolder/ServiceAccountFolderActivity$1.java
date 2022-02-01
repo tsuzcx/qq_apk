@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
 import mqq.os.MqqHandler;
-import tue;
+import tug;
 
 class ServiceAccountFolderActivity$1
   implements Runnable
@@ -10,8 +10,8 @@ class ServiceAccountFolderActivity$1
   
   public void run()
   {
-    tue localtue = tue.a();
-    ServiceAccountFolderActivity.a(this.this$0, localtue.a());
+    tug localtug = tug.a();
+    ServiceAccountFolderActivity.a(this.this$0, localtug.a());
     ServiceAccountFolderActivity.a(this.this$0).sendEmptyMessage(101);
   }
 }

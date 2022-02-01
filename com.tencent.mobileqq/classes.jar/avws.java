@@ -1,137 +1,100 @@
+import android.content.Context;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.location.qq_lbs_share.PushExtInfo;
-import tencent.im.s2c.msgtype0x210.submsgtype0x125.submsgtype0x125.MsgBody;
+import java.util.Arrays;
+import java.util.List;
 
 public class avws
 {
-  private static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CLocationPushDecoder", 2, new Object[] { "onDecodeC2cLbsUserQuitRoom: invoked. ", " operateUin = [" + paramLong1 + "], sessionUin = [" + paramLong2 + "]" });
-    }
-    if (paramLong1 == paramQQAppInterface.getLongAccountUin()) {
-      avwv.a(paramQQAppInterface).a(new avwp(0, String.valueOf(paramLong2)), false);
-    }
-  }
+  private static volatile avws jdField_a_of_type_Avws;
+  private static final List<String> jdField_a_of_type_JavaUtilList = Arrays.asList(new String[] { "setFaceData", "changeSecureMobile", "deleteFace", "identify" });
+  private static final List<String> b = Arrays.asList(new String[] { "loginVerify" });
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public static void a(QQAppInterface paramQQAppInterface, submsgtype0x125.MsgBody paramMsgBody)
+  public static avws a()
   {
-    paramQQAppInterface = avwv.a(paramQQAppInterface);
-    paramMsgBody = paramMsgBody.bytes_ext_info.get().toByteArray();
-    qq_lbs_share.PushExtInfo localPushExtInfo = new qq_lbs_share.PushExtInfo();
+    if (jdField_a_of_type_Avws == null) {}
     try
     {
-      localPushExtInfo.mergeFrom(paramMsgBody);
-      long l = localPushExtInfo.peer_uin.get();
-      paramQQAppInterface.a.a(0, String.valueOf(l));
+      if (jdField_a_of_type_Avws == null) {
+        jdField_a_of_type_Avws = new avws();
+      }
+      return jdField_a_of_type_Avws;
+    }
+    finally {}
+  }
+  
+  public avxa a()
+  {
+    if ((this.jdField_a_of_type_Int == 11) || (this.jdField_a_of_type_Int == 0)) {
+      return new avxr();
+    }
+    if (this.jdField_a_of_type_Int == 10)
+    {
+      this.jdField_a_of_type_JavaLangString = "根据当地法规，人脸识别功能无法启用";
+      return new avxq(this.jdField_a_of_type_JavaLangString);
+    }
+    QLog.d("FaceContext", 1, new Object[] { "unknown usable state : ", Integer.valueOf(this.jdField_a_of_type_Int) });
+    return null;
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2, ayxn paramayxn)
+  {
+    QLog.d("FaceContext", 1, "start refreshIpStateOnSubProcess");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("method", paramString2);
+    localBundle.putInt("srcAppId", paramInt);
+    localBundle.putString("uin", paramString1);
+    QIPCClientHelper.getInstance().callServer("IdentificationIpcServer_Model", "action_face_usable", localBundle, new avwu(this, paramayxn));
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, ayxn paramayxn)
+  {
+    a(paramQQAppInterface, paramContext, paramInt, paramString, null, paramayxn);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, ayxn paramayxn)
+  {
+    paramContext = new avwt(this, paramayxn);
+    QLog.d("FaceContext", 1, "start refreshIpState");
+    if (jdField_a_of_type_JavaUtilList.contains(paramString1)) {
+      bcvd.a(paramQQAppInterface, paramInt, paramContext);
+    }
+    while (!b.contains(paramString1)) {
       return;
     }
-    catch (Exception paramQQAppInterface)
+    paramString1 = dp.a(false);
+    paramQQAppInterface = new byte[0];
+    if (beus.a(paramString1))
     {
-      QLog.e("C2CLocationPushDecoder", 1, "onPushRoomMemberChanged: failed. ", paramQQAppInterface);
+      paramQQAppInterface = beus.a(paramString1);
+      QLog.d("FaceContext", 1, "v4");
     }
-  }
-  
-  static void a(QQAppInterface paramQQAppInterface, submsgtype0x125.MsgBody paramMsgBody, int paramInt)
-  {
-    paramQQAppInterface = avwv.a(paramQQAppInterface);
-    long l1 = paramMsgBody.uint64_oper_uin.get();
-    paramMsgBody = paramMsgBody.bytes_ext_info.get().toByteArray();
-    qq_lbs_share.PushExtInfo localPushExtInfo = new qq_lbs_share.PushExtInfo();
     for (;;)
     {
+      long l1 = 0L;
       try
       {
-        localPushExtInfo.mergeFrom(paramMsgBody);
-        long l2 = localPushExtInfo.peer_uin.get();
-        paramMsgBody = new avwp(0, String.valueOf(l2));
-        paramQQAppInterface.a.a(0, String.valueOf(l2));
-        switch (paramInt)
+        long l2 = Long.parseLong(paramString2);
+        l1 = l2;
+      }
+      catch (Exception paramString1)
+      {
+        for (;;)
         {
-        case 101: 
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.d("C2CLocationPushDecoder", 2, new Object[] { "[venue] c2c onPushRoomVenueChanged: invoked. roomKey: ", paramMsgBody + " opt: " + paramInt + " optUin: " + l1 });
-          return;
+          QLog.d("FaceContext", 1, new Object[] { "parse uin error, ", paramString1.getMessage() });
         }
       }
-      catch (Exception paramQQAppInterface)
+      bcvd.a(paramInt, paramQQAppInterface, l1, paramContext);
+      return;
+      if (beus.b(paramString1))
       {
-        QLog.e("C2CLocationPushDecoder", 1, "[venue] c2c onPushRoomVenueChanged: failed. opt: " + paramInt + " optUin: " + l1, paramQQAppInterface);
-        return;
+        paramQQAppInterface = beus.b(paramString1);
+        QLog.e("FaceContext", 1, "v6");
       }
-      paramQQAppInterface.a(paramMsgBody, String.valueOf(l1));
-      continue;
-      paramQQAppInterface.a(paramMsgBody);
-      continue;
-      paramQQAppInterface.b(paramMsgBody);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, short paramShort, int paramInt, boolean paramBoolean)
-  {
-    submsgtype0x125.MsgBody localMsgBody = new submsgtype0x125.MsgBody();
-    if (paramArrayOfByte != null) {}
-    for (;;)
-    {
-      long l;
-      try
-      {
-        localMsgBody.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = avwv.a(paramQQAppInterface);
-        byte[] arrayOfByte = localMsgBody.bytes_ext_info.get().toByteArray();
-        qq_lbs_share.PushExtInfo localPushExtInfo = new qq_lbs_share.PushExtInfo();
-        localPushExtInfo.mergeFrom(arrayOfByte);
-        l = localPushExtInfo.peer_uin.get();
-        paramShort = localPushExtInfo.client_type.get();
-        paramInt = localMsgBody.uint32_msg_type.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("C2CLocationPushDecoder", 2, new Object[] { "processC2C: invoked. ", " isOffline: ", Boolean.valueOf(paramBoolean), " optType: ", Integer.valueOf(paramInt) });
-        }
-        if (paramInt != 4) {
-          break label290;
-        }
-        awbh.a(paramQQAppInterface, String.valueOf(l));
-        paramArrayOfByte.notifyUI(5, true, new Object[] { Integer.valueOf(0), String.valueOf(l) });
-        awbi.a(paramQQAppInterface);
-        paramArrayOfByte.notifyUI(4, true, new Object[] { localMsgBody });
-        return;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        label188:
-        QLog.e("C2CLocationPushDecoder", 1, "processC2C: failed. ", paramQQAppInterface);
-        return;
-      }
-      awbi.a(paramQQAppInterface, 0, String.valueOf(l), true);
-      continue;
-      label290:
-      do
-      {
-        if (paramInt == 5)
-        {
-          awbh.a(paramQQAppInterface, String.valueOf(l));
-          paramArrayOfByte.notifyUI(6, true, new Object[] { Integer.valueOf(0), String.valueOf(l), Integer.valueOf(paramShort) });
-          awbi.a(paramQQAppInterface);
-          break;
-        }
-        if (paramInt != 3) {
-          break;
-        }
-        a(paramQQAppInterface, localMsgBody.uint64_oper_uin.get(), l);
-        break;
-        return;
-        if (paramInt == 1) {
-          break label188;
-        }
-      } while (paramInt != 2);
     }
   }
 }

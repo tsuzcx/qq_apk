@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.avgame.gameroom.GameRoomFragment.9;
-
-public class naf
-  implements DialogInterface.OnClickListener
+public abstract interface naf
 {
-  public naf(GameRoomFragment.9 param9) {}
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    if (this.a.a != null) {
-      this.a.a.onClick(paramDialogInterface, paramInt);
-    }
-  }
+  public abstract void a(String paramString, int paramInt, mze parammze);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3);
+  
+  public abstract void a(mze parammze, int paramInt);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2);
+  
+  public abstract void i(mze parammze);
 }
 
 

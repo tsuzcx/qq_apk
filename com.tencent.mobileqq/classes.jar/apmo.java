@@ -2,7 +2,13 @@ import java.util.List;
 
 public abstract interface apmo
 {
-  public abstract void a(List<apnh> paramList);
+  public abstract String a();
+  
+  public abstract List<String> a();
+  
+  public abstract String b();
+  
+  public abstract String c();
 }
 
 

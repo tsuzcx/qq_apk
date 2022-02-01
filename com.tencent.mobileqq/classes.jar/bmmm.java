@@ -1,13 +1,13 @@
-import java.util.HashMap;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
 public class bmmm
+  implements aqvd
 {
-  public String a;
-  public HashMap<String, String> a;
+  public bmmm(LocationDetailActivity paramLocationDetailActivity) {}
   
-  public bmmm(bmml parambmml)
+  public void onColorNoteAnimFinish()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.a.superFinish();
   }
 }
 

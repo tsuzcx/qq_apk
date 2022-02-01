@@ -1,60 +1,12 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-
-public class xid
-  extends BaseAdapter
+public abstract interface xid
 {
-  private xid(VideoCoverListBar paramVideoCoverListBar) {}
+  public abstract void a();
   
-  public String a(int paramInt)
-  {
-    return (String)VideoCoverListBar.a(this.a).get(paramInt);
-  }
+  public abstract void a(int paramInt);
   
-  public int getCount()
-  {
-    return VideoCoverListBar.a(this.a).size();
-  }
+  public abstract void b();
   
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return 0;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(this.a.getContext()).inflate(2131561772, null);
-      paramView = new xie(this, localView);
-      localView.setTag(paramView);
-    }
-    for (;;)
-    {
-      paramView.a(paramInt);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      xie localxie = (xie)paramView.getTag();
-      localView = paramView;
-      paramView = localxie;
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 1;
-  }
+  public abstract void c();
 }
 
 

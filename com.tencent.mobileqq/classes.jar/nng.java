@@ -1,18 +1,40 @@
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class nng
-  implements aaob
 {
-  public nng(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  private static final String a = nng.class.getName();
   
-  public void callback(Bundle paramBundle)
+  public static String a(String paramString)
   {
-    if (paramBundle != null)
+    localStringBuffer = new StringBuffer();
+    try
     {
-      int i = paramBundle.getInt("mode");
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
+      paramString = new BufferedReader(new InputStreamReader(((HttpURLConnection)new URL(paramString).openConnection()).getInputStream()));
+      for (;;)
+      {
+        String str = paramString.readLine();
+        if (str == null) {
+          break;
+        }
+        localStringBuffer.append(str);
+      }
+      return localStringBuffer.toString();
     }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "http error");
+      }
+    }
+  }
+  
+  public static void a(String paramString, nni paramnni)
+  {
+    new nnh(paramnni, paramString).execute(new Void[0]);
   }
 }
 

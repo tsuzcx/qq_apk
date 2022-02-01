@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 
 import java.lang.ref.WeakReference;
-import tdu;
-import tdw;
+import sum;
+import suo;
 
 class RunningJob$6
   implements Runnable
@@ -13,7 +13,7 @@ class RunningJob$6
     while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
       return;
     }
-    ((tdu)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.this$0.a, this.jdField_a_of_type_Int);
+    ((sum)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.this$0.a, this.jdField_a_of_type_Int);
   }
 }
 

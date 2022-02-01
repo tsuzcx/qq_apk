@@ -1,29 +1,9 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
-import java.util.Map;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-class wgn
-  extends Job<Object, Object, Object>
+public abstract interface wgn
 {
-  wgn(wgm paramwgm, String paramString, wgv paramwgv)
-  {
-    super(paramString);
-  }
-  
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
-  {
-    this.jdField_a_of_type_Wgv.jdField_a_of_type_Wgu.a(this.jdField_a_of_type_Wgv);
-    this.jdField_a_of_type_Wgm.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Wgv.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Wgm.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_Wgv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Wgv);
-    return null;
-  }
-  
-  public int getJobType()
-  {
-    return 16;
-  }
+  public abstract void a(ErrorMessage paramErrorMessage, List<String> paramList);
 }
 
 

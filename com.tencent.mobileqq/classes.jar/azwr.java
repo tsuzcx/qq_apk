@@ -1,31 +1,23 @@
-import android.content.Context;
-import android.widget.ImageView;
-import com.tencent.mobileqq.videoplatform.api.IBaseVideoView;
-import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
-import com.tencent.mobileqq.videoplatform.api.VideoViewFactory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
 
-public class azwr
+class azwr
+  implements DialogInterface.OnClickListener
 {
-  static {}
+  azwr(azwo paramazwo, View paramView, PersonalityLabelInfo paramPersonalityLabelInfo) {}
   
-  public static IBaseVideoView a(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return VideoViewFactory.createQQVideoPlayView(paramContext, paramLong, paramVideoPlayParam, paramImageView);
-  }
-  
-  public static IBaseVideoView a(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, boolean paramBoolean)
-  {
-    return VideoViewFactory.createCropBubbleView(paramContext, paramLong, paramVideoPlayParam, paramBoolean);
-  }
-  
-  public static IBaseVideoView b(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView)
-  {
-    return VideoViewFactory.createBaseVideoView(paramContext, paramLong, paramVideoPlayParam, paramImageView);
-  }
-  
-  public static IBaseVideoView c(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView)
-  {
-    return VideoViewFactory.createBaseVideoViewFS(paramContext, paramLong, paramVideoPlayParam, paramImageView);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    paramDialogInterface = (azwn)this.jdField_a_of_type_AndroidViewView.getTag(2131365346);
+    if (paramDialogInterface != null) {
+      this.jdField_a_of_type_Azwo.a.a(paramDialogInterface.e, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
+    }
   }
 }
 

@@ -1,24 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
 
-class sld
-  extends skd
+public class sld
+  extends View.AccessibilityDelegate
 {
-  sld(ske paramske) {}
+  public sld(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    ske.a(this.a, paramInt, paramBaseArticleInfo, paramString);
-  }
-  
-  public int b()
-  {
-    return 2;
-  }
-  
-  public int c()
-  {
-    return 3;
+    if (paramInt != 4096) {
+      super.sendAccessibilityEvent(paramView, paramInt);
+    }
   }
 }
 

@@ -1,138 +1,70 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PrecoverResource;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
+import eipc.EIPCResult;
 
-public class azvc
+class azvc
+  extends QIPCModule
 {
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
+  azvc(azvb paramazvb, String paramString)
   {
-    for (;;)
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverIPCServer", 2, new Object[] { "onCall, action=" + paramString + ", params=" + paramBundle + ", callbackId=", Integer.valueOf(paramInt) });
+    }
+    if (paramBundle == null) {
+      QLog.d("PrecoverIPCServer", 1, new Object[] { "onCall, params is null!!. action=" + paramString + ", callbackId=", Integer.valueOf(paramInt) });
+    }
+    do
     {
-      try
+      Object localObject;
+      do
       {
-        beaw localbeaw = (beaw)paramQQAppInterface.getManager(193);
-        if (localbeaw.a())
+        do
         {
-          int i = 2;
-          String str = "qboss_splash_ad_res_png";
-          if (paramInt == 2)
+          return null;
+          if (azvb.a(this.a) == null)
           {
-            i = 1;
-            str = "qboss_splash_ad_res_video";
-            j = 10082;
-            QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes request adid" + paramString1);
-            HashMap localHashMap = new HashMap();
-            localHashMap.put("qbossSplashresAppid", paramString1);
-            a("qbossSplashrequest", localHashMap);
-            localbeaw.a(j, "vas", paramString2, 0, paramString2, paramString3 + ".splashtemp", i, 0, true, new azvd(paramQQAppInterface, str, paramString1, paramString3, paramInt, paramString4, paramString2));
+            QLog.d("PrecoverIPCServer", 1, new Object[] { "onCall, mManager is null!!. action=" + paramString + ", callbackId=", Integer.valueOf(paramInt) });
+            return null;
           }
-        }
-        else
-        {
-          QLog.i("QSplash@QbossSplashUtil", 1, "ctrl.isEnable() = false");
-          return;
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        return;
-      }
-      int j = 10081;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Collection<azvg> paramCollection)
-  {
-    for (;;)
-    {
-      azvg localazvg;
-      try
-      {
-        paramCollection = paramCollection.iterator();
-        if (!paramCollection.hasNext()) {
-          break label156;
-        }
-        localazvg = (azvg)paramCollection.next();
-        if (!localazvg.b())
-        {
-          QLog.i("QSplash@QbossSplashDownloadManager", 1, "adEntry should not requestRes");
-          continue;
-        }
-        switch (localazvg.a)
-        {
-        }
-      }
-      finally {}
-      a(paramQQAppInterface, localazvg.jdField_b_of_type_JavaLangString, localazvg.e, localazvg.h, 0, localazvg.k);
-      continue;
-      a(paramQQAppInterface, localazvg.jdField_b_of_type_JavaLangString, localazvg.e, localazvg.h, 2, localazvg.k);
-      continue;
-      a(paramQQAppInterface, localazvg.jdField_b_of_type_JavaLangString, localazvg.e, localazvg.h, 1, localazvg.k);
-      continue;
-      label156:
-      return;
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    Object localObject = azvb.a(BaseApplicationImpl.getContext(), paramString1);
-    paramString1 = ((SharedPreferences)localObject).edit();
-    QLog.i("QSplash@QbossSplashDownloadManager", 1, "pic or gif download succ! MD5 checkok");
-    boolean bool = ((SharedPreferences)localObject).getBoolean("qboss_exposure_is_low_device_limit_", false);
-    QLog.i("QSplash@QbossSplashDownloadManager", 1, "isLowerDeviceLimit = " + bool);
-    if (!bool)
-    {
-      paramString1.putBoolean("qboss_splash_ad_is_limited_" + paramString2, true);
-      localObject = azvf.a;
-      if ((localObject != null) && (((HashMap)localObject).containsKey(paramString2))) {
-        ((azvg)((HashMap)localObject).get(paramString2)).jdField_b_of_type_Boolean = true;
-      }
-    }
-    paramString1.apply();
-  }
-  
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    try
-    {
-      if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount())))
-      {
-        bctj.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramString, true, 0L, 0L, paramHashMap, null, false);
-        if (QLog.isColorLevel()) {
-          QLog.i("QSplash@QbossSplashDownloadManager", 2, "reportqbossSplashBeacon, tagName  " + paramString);
-        }
-      }
-      return;
-    }
-    catch (Exception paramString) {}
-  }
-  
-  private static void b(String paramString1, AppInterface paramAppInterface, String paramString2)
-  {
-    if (paramAppInterface == null) {
-      return;
-    }
-    try
-    {
-      paramAppInterface = (beaw)paramAppInterface.getManager(193);
-      if (paramAppInterface.a()) {
-        paramAppInterface.a(paramString1, -1L);
-      }
-      paramString1 = new HashMap();
-      paramString1.put("qbossSplashresAppid", paramString2);
-      a("qbossSplashDownloadFailed", paramString1);
-      return;
-    }
-    catch (Exception paramString1) {}
+          paramBundle.putString("key_action", paramString);
+          if (azva.a.equals(paramString)) {
+            return azvb.a(this.a, paramBundle, paramInt);
+          }
+          if (azva.b.equals(paramString))
+          {
+            paramString = azvb.a(this.a, paramBundle, paramInt);
+            if (paramString.isSuccess())
+            {
+              localObject = (PrecoverResource)paramBundle.getParcelable("resource");
+              if (QLog.isColorLevel()) {
+                QLog.d("PrecoverIPCServer", 2, "onCall, params.getParcelable, res=" + localObject);
+              }
+              if (azvb.a(this.a).a().a((PrecoverResource)localObject, new Object[] { "PrecoverIPCServer_MODEL", Integer.valueOf(paramInt) })) {
+                return EIPCResult.createResult(11, paramBundle);
+              }
+              paramBundle.putInt("errCode", -2);
+              paramBundle.putString("errDesc", "args invalid or file already exist!");
+              azvb.a(this.a).callbackResult(paramInt, EIPCResult.createResult(-2, paramBundle));
+            }
+            return paramString;
+          }
+        } while (!azva.c.equals(paramString));
+        paramString = paramBundle.getString("businessId");
+        localObject = paramBundle.getString("md5");
+      } while ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty((CharSequence)localObject)));
+      paramString = azvb.a(this.a).a().a((String)localObject);
+    } while (paramString == null);
+    paramBundle.putLong("key_total", paramString.a);
+    paramBundle.putLong("key_loaded", paramString.b);
+    return EIPCResult.createSuccessResult(paramBundle);
   }
 }
 

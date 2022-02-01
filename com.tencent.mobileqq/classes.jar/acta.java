@@ -1,13 +1,11 @@
-import com.tencent.ad.tangram.net.AdHttp.Params;
-
 class acta
-  extends AdHttp.Params
+  implements actm
 {
-  public int a = -2147483648;
+  acta(acsz paramacsz) {}
   
-  public boolean isSuccess()
+  public void a(Object... paramVarArgs)
   {
-    return (super.isSuccess()) && (this.responseData != null);
+    acsz.a(this.a);
   }
 }
 

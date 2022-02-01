@@ -1,30 +1,134 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
-class axtj
-  implements View.OnClickListener
+public class axtj
 {
-  axtj(axsd paramaxsd, String paramString) {}
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public long d;
+  public String d;
+  public boolean d;
+  public long e;
+  public long f;
+  public long g;
+  public long h;
+  public long i;
   
-  public void onClick(View paramView)
+  public axtj()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Axsd.a, QQBrowserActivity.class);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
-    Object localObject = this.jdField_a_of_type_Axsd.a;
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Axsd.a.j)) {}
-    for (localObject = "1";; localObject = "2")
-    {
-      localIntent.putExtra("url", (String)localObject);
-      this.jdField_a_of_type_Axsd.a.startActivity(localIntent);
-      bcst.b(this.jdField_a_of_type_Axsd.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_fans", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Axsd.a.l = true;
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    this.jdField_b_of_type_Int = 999;
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+  }
+  
+  public float a()
+  {
+    if (c()) {}
+    while (a()) {
+      return 0.4F;
     }
+    return 1.0F;
+  }
+  
+  public void a(axtk paramaxtk)
+  {
+    this.jdField_a_of_type_Long = paramaxtk.jdField_a_of_type_Long;
+    this.jdField_b_of_type_Long = paramaxtk.jdField_b_of_type_Long;
+    this.jdField_a_of_type_Float = paramaxtk.jdField_a_of_type_Float;
+    this.jdField_c_of_type_Long = paramaxtk.jdField_c_of_type_Long;
+    this.jdField_d_of_type_Long = paramaxtk.jdField_d_of_type_Long;
+    this.e = paramaxtk.e;
+    this.f = paramaxtk.f;
+    this.g = paramaxtk.g;
+    this.h = paramaxtk.h;
+    this.jdField_a_of_type_Boolean = paramaxtk.jdField_b_of_type_Boolean;
+    this.i = paramaxtk.i;
+    this.jdField_c_of_type_JavaLangString = paramaxtk.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramaxtk.jdField_b_of_type_JavaLangString;
+    this.jdField_d_of_type_JavaLangString = paramaxtk.jdField_c_of_type_JavaLangString;
+    this.jdField_d_of_type_Boolean = paramaxtk.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a()
+  {
+    boolean bool = true;
+    if ((this.jdField_a_of_type_Long == 12L) || (this.jdField_a_of_type_Long == 1L) || (this.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_Long == 3L)) {
+      bool = false;
+    }
+    do
+    {
+      return bool;
+      if ((!axsr.c(this.jdField_a_of_type_Long)) && (this.jdField_a_of_type_Long != 7L)) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkForDisplayInfo", 2, "isInTwinkling icon_status:" + this.f + " currentMillis:" + NetConnInfoCenter.getServerTimeMillis() + " icon_status_end_time:" + this.g);
+      }
+    } while ((this.f == 2L) && (NetConnInfoCenter.getServerTimeMillis() < this.g * 1000L));
+    while (!axsr.a(this.jdField_d_of_type_Long * 1000L)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Long == 5L) || (this.jdField_a_of_type_Long == 6L) || (this.jdField_a_of_type_Long == 8L) || (this.jdField_a_of_type_Long == 4L);
+  }
+  
+  public boolean c()
+  {
+    return this.f == 1L;
+  }
+  
+  public boolean d()
+  {
+    if ((this.jdField_c_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {}
+    while ((this.jdField_c_of_type_Int == 0) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MutualMarkForDisplayInfo{");
+    localStringBuilder.append("type=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", level=").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", count=").append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(", continue_days=").append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", last_action_time=").append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(", last_change_time=").append(this.e);
+    localStringBuilder.append(", icon_status=").append(this.f);
+    localStringBuilder.append(", icon_status_end_time=").append(this.g);
+    localStringBuilder.append(", sub_level=").append(this.h);
+    localStringBuilder.append(", hasRemindInContact=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", remindAnimStartTime=").append(this.i);
+    localStringBuilder.append(", sortKeyForNormal=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", isInAIOTitleLeft2=").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(", sortKeyForAIOTitle=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", name='").append(this.jdField_a_of_type_JavaLangString).append("'");
+    localStringBuilder.append(", disableLocalResource=").append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(", iconResId=").append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", iconApngUrl='").append(this.jdField_b_of_type_JavaLangString).append("'");
+    localStringBuilder.append(", icon_static_url='").append(this.jdField_c_of_type_JavaLangString).append("'");
+    localStringBuilder.append(", icon_name='").append(this.jdField_d_of_type_JavaLangString).append("'");
+    localStringBuilder.append(", user_close_flag=").append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

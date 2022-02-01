@@ -1,21 +1,15 @@
-public class rhu
+import com.tencent.mobileqq.data.Friends;
+
+class rhu
 {
   public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
+  public Friends a;
+  
+  public rhu(Friends paramFriends, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

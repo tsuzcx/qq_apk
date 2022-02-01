@@ -1,31 +1,16 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import java.util.Comparator;
-import java.util.Random;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
 public class azex
-  implements Comparator<azet>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  int jdField_a_of_type_Int;
-  Random jdField_a_of_type_JavaUtilRandom;
-  int b;
+  public azex(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public azex(TagCloudView paramTagCloudView, Random paramRandom, int paramInt1, int paramInt2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_JavaUtilRandom = paramRandom;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt1;
-  }
-  
-  public int a(azet paramazet1, azet paramazet2)
-  {
-    if ((paramazet1.b.y > this.jdField_a_of_type_Int) || (paramazet2.b.y > this.jdField_a_of_type_Int)) {
-      return -(paramazet1.b.y - paramazet2.b.y);
-    }
-    if ((paramazet1.b.x > this.b) || (paramazet2.b.x > this.b)) {
-      return -(paramazet1.b.x - paramazet2.b.x);
-    }
-    return this.jdField_a_of_type_JavaUtilRandom.nextInt(3) - 2;
+    this.a.d = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * -1.0F * agej.a(1.5F, this.a.getResources()));
+    this.a.invalidate();
   }
 }
 

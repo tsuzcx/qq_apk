@@ -1,26 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.RecommendAndAdCallback.1;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import com.tencent.widget.AdapterView;
 
 public class sxo
-  implements tbj
+  implements bljm
 {
-  private WeakReference<FastWebActivity> a;
+  public sxo(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
   
-  public sxo(FastWebActivity paramFastWebActivity)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = new WeakReference(paramFastWebActivity);
-  }
-  
-  public void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2)
-  {
-    FastWebActivity localFastWebActivity = (FastWebActivity)this.a.get();
-    if (localFastWebActivity == null) {
-      return;
+    if ((!this.a.a()) && (this.a.isEnabled()) && (ReadInJoyDynamicGridView.a(this.a) != null)) {
+      ReadInJoyDynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
-    localFastWebActivity.runOnUiThread(new FastWebActivity.RecommendAndAdCallback.1(this, paramList1, paramList2, localFastWebActivity, paramBoolean, paramString));
   }
 }
 

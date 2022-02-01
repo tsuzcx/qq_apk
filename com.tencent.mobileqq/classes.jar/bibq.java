@@ -1,76 +1,80 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResultCallback;
+import java.io.File;
+import mqq.app.AppRuntime;
 
 public class bibq
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  
-  public bibq(Bitmap paramBitmap)
+  public static File a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = 0;
+    return bibw.a(paramContext);
   }
   
-  public bibq(Bitmap paramBitmap, int paramInt)
+  public static String a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = (paramInt % 360);
+    paramContext = paramContext.getFilesDir().getAbsolutePath();
+    if (paramContext.endsWith(File.separator)) {
+      return paramContext + "GLDrawableV845.zip";
+    }
+    return paramContext + File.separator + "GLDrawableV845.zip";
   }
   
-  public int a()
+  public static void a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public Matrix a()
-  {
-    Matrix localMatrix = new Matrix();
-    if (this.jdField_a_of_type_Int != 0)
+    try
     {
-      int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
-      int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
-      localMatrix.preTranslate(-i, -j);
-      localMatrix.postRotate(this.jdField_a_of_type_Int);
-      localMatrix.postTranslate(c() / 2, b() / 2);
+      a(false);
+      return;
     }
-    return localMatrix;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int / 90 % 2 != 0;
-  }
-  
-  public int b()
-  {
-    if (a()) {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
   }
   
-  public int c()
+  public static void a(Context paramContext, int paramInt)
   {
-    if (a()) {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    if (paramInt != 0) {}
+    try
+    {
+      QLog.e("GLDrawableDownloadHelper", 1, "error: " + paramInt);
+      return;
     }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
+    }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localObject1 instanceof QQAppInterface)) {
+          ((VasQuickUpdateManager)((AppRuntime)localObject1).getManager(184)).downloadItem(1004L, "GLDrawableV845", "gldrawable");
+        }
+        return;
+      }
+      finally {}
+      Object localObject1 = new bibr();
+      QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gm.k, null, (EIPCResultCallback)localObject1);
+    }
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return new File(a(paramContext)).exists();
   }
 }
 

@@ -1,9 +1,22 @@
-public class befq
-  extends wjp
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+
+class befq
+  implements TextView.OnEditorActionListener
 {
-  public String a;
-  public String b;
-  public String c;
+  befq(befl parambefl) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    {
+      blgx.b(this.a.a);
+      this.a.d();
+      return true;
+    }
+    return false;
+  }
 }
 
 

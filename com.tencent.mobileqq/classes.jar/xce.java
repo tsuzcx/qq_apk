@@ -1,44 +1,73 @@
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeed;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class xce
-  extends xdt
+  extends wpa
 {
-  protected String a;
+  public static final String a;
+  public List<ylw> a;
+  public List<String> b = new ArrayList();
   
-  public void a()
+  static
   {
-    ShareGroupItem localShareGroupItem = ((xzh)wpm.a(7)).a(this.a);
-    xxe localxxe = (xxe)wpm.a(24);
-    xww localxww = localxxe.a(localShareGroupItem.headerUnionIdList);
-    if (localxww == null)
+    jdField_a_of_type_JavaLangString = wnu.a("StorySvc.homepage_batch_feeds_detail_720");
+  }
+  
+  public xce()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public wov a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspStoryFeed localRspStoryFeed = new qqstory_service.RspStoryFeed();
+    try
     {
-      localxxe.a(localShareGroupItem.headerUnionIdList, new xcf(this));
-      return;
+      localRspStoryFeed.mergeFrom(paramArrayOfByte);
+      return new xcf(localRspStoryFeed);
     }
-    a(localxww);
-  }
-  
-  protected void a(Error paramError)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShareGroupAvatarJob", 2, paramError, new Object[0]);
-    }
-    b(false);
-  }
-  
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarJob_sgi"))) {
-      this.a = ((String)a("ShareGroupAvatarJob_sgi"));
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
   }
   
-  protected void a(xww paramxww)
+  protected byte[] a()
   {
-    a("ShareGroupAvatarJob_sga", paramxww.a());
-    b(true);
+    qqstory_service.ReqStoryFeed localReqStoryFeed = new qqstory_service.ReqStoryFeed();
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      ylw localylw = (ylw)localIterator.next();
+      if (localylw != null) {
+        if (TextUtils.isEmpty(localylw.jdField_a_of_type_JavaLangString)) {
+          yuk.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "check your param feedId is null");
+        } else {
+          localArrayList.add(localylw.a());
+        }
+      }
+    }
+    if (localArrayList.size() == 0) {
+      throw new QQStoryCmdHandler.IllegalUinException("feed id seq is null");
+    }
+    localReqStoryFeed.feed_id_list.set(localArrayList);
+    return localReqStoryFeed.toByteArray();
   }
 }
 

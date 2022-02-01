@@ -1,14 +1,44 @@
-class pca
-  extends pcm
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+public class pca
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  pca(pbe parampbe)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super(parampbe, null);
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoSdkConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = pan.a(paramString);
+    Object localObject = paramString.keySet();
+    try
+    {
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str1 = (String)((Iterator)localObject).next();
+        String str2 = (String)paramString.get(str1);
+        if (TextUtils.equals(str1, "readinjoy_video_preplay_download_time_limit")) {
+          bnrf.j(Integer.parseInt(str2));
+        }
+      }
+      return true;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  void a(pcp parampcp)
+  public void onWipeConfig(int paramInt)
   {
-    parampcp.onCommentListLoad(1, true, this.a.c(), pbe.c(this.a), 6, 6);
+    super.onWipeConfig(paramInt);
+    bnrf.j(6);
   }
 }
 

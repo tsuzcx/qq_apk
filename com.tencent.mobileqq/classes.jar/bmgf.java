@@ -1,17 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.share.QZoneShareActivity;
-
 public class bmgf
-  implements View.OnClickListener
 {
-  public bmgf(QZoneShareActivity paramQZoneShareActivity) {}
+  private static final String[] a = { "B", "K", "M", "G" };
   
-  public void onClick(View paramView)
+  public static final String a(long paramLong)
   {
-    QZoneShareActivity.f(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    float f1 = 0.0F;
+    int i = 0;
+    while (paramLong >= 1024L)
+    {
+      paramLong /= 1024L;
+      f1 = (float)(paramLong % 1024L);
+      i += 1;
+    }
+    if (f1 == 0.0F)
+    {
+      f1 = (float)paramLong;
+      return String.valueOf(paramLong) + a[i];
+    }
+    f1 /= 1024.0F;
+    float f2 = (float)paramLong;
+    return String.format("%.2f", new Object[] { Float.valueOf(f1 + f2) }) + a[i];
   }
 }
 

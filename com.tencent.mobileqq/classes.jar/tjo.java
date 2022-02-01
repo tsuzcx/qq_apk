@@ -1,31 +1,32 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.WordNavView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
 public class tjo
-  extends GestureDetector.SimpleOnGestureListener
+  extends Handler
 {
-  private tjo(WordNavView paramWordNavView) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public tjo(ViolaBaseView paramViolaBaseView, Looper paramLooper)
   {
-    float f = paramMotionEvent.getY();
-    Iterator localIterator = WordNavView.a(this.a).entrySet().iterator();
-    while (localIterator.hasNext())
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if ((f >= ((Float)localEntry.getKey()).floatValue() - this.a.getHeight() / WordNavView.a(this.a).size() / 2) && (f <= ((Float)localEntry.getKey()).floatValue() + this.a.getHeight() / WordNavView.a(this.a).size() / 2)) {
-        if (WordNavView.a(this.a) != null) {
-          WordNavView.a(this.a).a((String)localEntry.getValue());
-        }
-      }
+    case 1: 
+    default: 
+      return;
+    case 0: 
+      ViolaBaseView.d(this.a);
+      return;
+    case 3: 
+      ViolaBaseView.a(this.a);
+      return;
     }
-    return super.onSingleTapUp(paramMotionEvent);
+    ViolaBaseView.a(this.a, true);
+    ViolaBaseView.d(this.a);
   }
 }
 

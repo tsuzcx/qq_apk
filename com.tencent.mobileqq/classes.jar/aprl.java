@@ -1,15 +1,42 @@
-import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-class aprl
-  implements anil
+public class aprl
 {
-  aprl(aprj paramaprj, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public static aprj a(aprm paramaprm, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
-      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(paramInt, paramBoolean, paramObject);
+    if (paramaprm == null) {
+      throw new RuntimeException("params can not be null!");
     }
+    Object localObject;
+    switch (paramaprm.jdField_a_of_type_Int)
+    {
+    default: 
+      localObject = new apro(paramInt);
+    }
+    for (;;)
+    {
+      QLog.i("KeyingManager", 1, "getKeying keying: " + localObject + "  params: " + paramaprm.toString());
+      return localObject;
+      localObject = new aprd(paramInt);
+      continue;
+      localObject = new aprq(paramInt);
+      continue;
+      localObject = new aprh(paramInt);
+      continue;
+      localObject = new apri(paramInt);
+      continue;
+      if (TextUtils.isEmpty(paramaprm.jdField_a_of_type_JavaLangString)) {
+        break;
+      }
+      localObject = new apre(paramInt, paramaprm.jdField_a_of_type_JavaLangString);
+    }
+    throw new RuntimeException("fragmentShader can not be empty!");
+  }
+  
+  public static aprm a(int paramInt)
+  {
+    return new aprm(paramInt);
   }
 }
 

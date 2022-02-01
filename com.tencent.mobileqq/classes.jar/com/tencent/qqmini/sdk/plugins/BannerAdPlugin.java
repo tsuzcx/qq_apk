@@ -27,10 +27,12 @@ import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
+import com.tencent.qqmini.sdk.launcher.core.model.MiniAdPosInfo;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.AbsBannerAdView;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IGetAdPosInfo;
 import com.tencent.qqmini.sdk.launcher.core.utils.ApiUtil;
 import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
@@ -49,8 +51,9 @@ import org.json.JSONObject;
 @JsPlugin
 public class BannerAdPlugin
   extends BaseJsPlugin
+  implements IGetAdPosInfo
 {
-  private static final HashMap<Integer, String> AD_ERROR_MSG = MiniSDKConst.AdConst.CodeMsgMap;
+  private static final HashMap<Integer, String> AD_ERROR_MSG = MiniSDKConst.AdConst.CODE_MSG_MAP;
   public static final String API_AD_CREATE_BANNER_AD = "createBannerAd";
   public static final String API_AD_OPERATE_BANNER_AD = "operateBannerAd";
   public static final String API_AD_UPDATE_BANNER_AD_SIZE = "updateBannerAdSize";
@@ -496,6 +499,14 @@ public class BannerAdPlugin
     }
   }
   
+  public MiniAdPosInfo getPosInfo()
+  {
+    if (this.mBannerAdPosInfo == null) {
+      return null;
+    }
+    return new MiniAdPosInfo(gameDpTopx(this.mBannerAdPosInfo.mAdLeft), gameDpTopx(this.mBannerAdPosInfo.mAdTop), gameDpTopx(this.mBannerAdPosInfo.mAdRealWidth), gameDpTopx(this.mBannerAdPosInfo.mAdRealHeight));
+  }
+  
   /* Error */
   public boolean hideBannerAd()
   {
@@ -505,11 +516,11 @@ public class BannerAdPlugin
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: getfield 89	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdView	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBannerAdView;
+    //   5: getfield 91	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdView	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$AbsBannerAdView;
     //   8: ifnonnull +17 -> 25
-    //   11: ldc 27
-    //   13: ldc_w 577
-    //   16: invokestatic 201	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   11: ldc 29
+    //   13: ldc_w 586
+    //   16: invokestatic 203	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   19: iload_2
     //   20: istore_1
     //   21: aload_0
@@ -519,23 +530,23 @@ public class BannerAdPlugin
     //   25: iload_2
     //   26: istore_1
     //   27: aload_0
-    //   28: getfield 132	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
+    //   28: getfield 134	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
     //   31: ifnull -10 -> 21
     //   34: iload_2
     //   35: istore_1
     //   36: aload_0
-    //   37: getfield 132	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
+    //   37: getfield 134	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
     //   40: ifnull -19 -> 21
     //   43: iload_2
     //   44: istore_1
     //   45: aload_0
-    //   46: getfield 132	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
-    //   49: invokevirtual 580	android/widget/FrameLayout:getVisibility	()I
+    //   46: getfield 134	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
+    //   49: invokevirtual 589	android/widget/FrameLayout:getVisibility	()I
     //   52: ifne -31 -> 21
     //   55: aload_0
-    //   56: getfield 132	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
+    //   56: getfield 134	com/tencent/qqmini/sdk/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
     //   59: bipush 8
-    //   61: invokevirtual 281	android/widget/FrameLayout:setVisibility	(I)V
+    //   61: invokevirtual 283	android/widget/FrameLayout:setVisibility	(I)V
     //   64: iconst_1
     //   65: istore_1
     //   66: goto -45 -> 21

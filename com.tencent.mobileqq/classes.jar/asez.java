@@ -1,10 +1,18 @@
-public abstract interface asez
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public final class asez
 {
-  public abstract void b();
-  
-  public abstract void b(float paramFloat);
-  
-  public abstract void c(float paramFloat);
+  public static asek a(QQAppInterface paramQQAppInterface, asfd paramasfd, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return new asfn(paramQQAppInterface, paramasfd);
+    case 0: 
+      return new asfn(paramQQAppInterface, paramasfd);
+    }
+    return new asel(paramQQAppInterface, paramasfd);
+  }
 }
 
 

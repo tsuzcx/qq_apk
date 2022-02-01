@@ -1,18 +1,6 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-
-public class ayrd
-  extends ayre
+public abstract interface ayrd
 {
-  ayrd()
-  {
-    super(1);
-    this.a = "StepEmptySensor";
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent) {}
+  public abstract void a(int paramInt);
 }
 
 

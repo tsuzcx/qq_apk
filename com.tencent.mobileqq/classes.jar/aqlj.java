@@ -1,61 +1,60 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.Iterator;
-import java.util.Set;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
 
-public class aqlj
+class aqlj
+  extends AnimatorListenerAdapter
 {
-  private static SharedPreferences a(long paramLong, BaseApplicationImpl paramBaseApplicationImpl)
-  {
-    return paramBaseApplicationImpl.getSystemSharedPreferences("conf_" + paramLong + "_sharepref", 4);
-  }
+  aqlj(aqli paramaqli) {}
   
-  public static aqrq a(BaseApplicationImpl paramBaseApplicationImpl)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    aqlh.a().a(419, 0L, false);
-    aqrr localaqrr = new aqrr();
-    paramBaseApplicationImpl = a(419, paramBaseApplicationImpl);
-    if (paramBaseApplicationImpl != null) {
-      try
-      {
-        paramBaseApplicationImpl = localaqrr.a(paramBaseApplicationImpl);
-        if (paramBaseApplicationImpl != null) {
-          return paramBaseApplicationImpl;
-        }
-      }
-      catch (Exception paramBaseApplicationImpl) {}
-    }
-    return new aqrq();
-  }
-  
-  private static aqlg[] a(int paramInt, BaseApplicationImpl paramBaseApplicationImpl)
-  {
-    Object localObject1 = a(0L, paramBaseApplicationImpl);
-    paramBaseApplicationImpl = b(0L, paramBaseApplicationImpl);
-    Object localObject2 = ((SharedPreferences)localObject1).getStringSet(paramInt + "_ids", null);
-    if ((localObject2 == null) || (((Set)localObject2).isEmpty())) {
-      return null;
-    }
-    localObject1 = new aqlg[((Set)localObject2).size()];
-    localObject2 = ((Set)localObject2).iterator();
-    int i = 0;
-    while (((Iterator)localObject2).hasNext())
+    this.a.a("animator set end!");
+    if (this.a.c != null)
     {
-      String str = (String)((Iterator)localObject2).next();
-      localObject1[i] = new aqlg(Integer.valueOf(str).intValue(), paramBaseApplicationImpl.getString(paramInt + "_" + str, null));
-      i += 1;
+      aqli.a(this.a).removeView(this.a.c);
+      this.a.c = null;
+      if (this.a.d == null) {
+        break label186;
+      }
+      aqli.b(this.a).removeView(this.a.d);
+      this.a.d = null;
     }
-    return localObject1;
+    for (;;)
+    {
+      if (this.a.e != null)
+      {
+        this.a.e.setVisibility(0);
+        paramAnimator = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
+        paramAnimator.a = -1L;
+        paramAnimator.b();
+      }
+      if (this.a.jdField_b_of_type_AndroidViewView != null) {
+        this.a.jdField_b_of_type_AndroidViewView.invalidate();
+      }
+      this.a.jdField_a_of_type_JavaLangString = "";
+      this.a.jdField_b_of_type_JavaLangString = "";
+      this.a.a(true);
+      return;
+      this.a.a("something wrong, bubble view is null!");
+      break;
+      label186:
+      this.a.a("something wrong, pendview is null!");
+    }
   }
   
-  private static SharedPreferences b(long paramLong, BaseApplicationImpl paramBaseApplicationImpl)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return paramBaseApplicationImpl.getSystemSharedPreferences("conf_" + paramLong + "_content_sharepref", 4);
+    this.a.a("animator set start!");
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqlj
  * JD-Core Version:    0.7.0.1
  */

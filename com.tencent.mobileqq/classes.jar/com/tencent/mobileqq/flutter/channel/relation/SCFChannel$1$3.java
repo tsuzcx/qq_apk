@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.flutter.channel.relation;
 
 import android.os.Bundle;
-import auej;
-import auek;
+import auwe;
+import auwf;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.SpecialCareInfo;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -16,7 +16,7 @@ import mqq.os.MqqHandler;
 public class SCFChannel$1$3
   implements Runnable
 {
-  public SCFChannel$1$3(auek paramauek, String paramString, MethodChannel.Result paramResult) {}
+  public SCFChannel$1$3(auwf paramauwf, String paramString, MethodChannel.Result paramResult) {}
   
   public void run()
   {
@@ -41,7 +41,7 @@ public class SCFChannel$1$3
     for (boolean bool = true;; bool = false)
     {
       if (bool) {
-        VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Auek.a.b(), "Care", "RedShow", "", 1, 0, 0, null, null, null);
+        VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Auwf.a.b(), "Care", "RedShow", "", 1, 0, 0, null, null, null);
       }
       if (QLog.isColorLevel()) {
         QLog.d("flutter.SCFSettingChannel", 2, String.format("getSCFSwitchs, from main process: %s, isVoiceNewFlag: %s", new Object[] { localSpecialCareInfo, Boolean.valueOf(bool) }));

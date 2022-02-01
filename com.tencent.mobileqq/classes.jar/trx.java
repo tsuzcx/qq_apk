@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
 class trx
-  implements View.OnLayoutChangeListener
+  implements Animator.AnimatorListener
 {
-  trx(trw paramtrw) {}
+  trx(trt paramtrt) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramView.removeOnLayoutChangeListener(this);
-    paramView.setTranslationX(trw.a(this.a)[0]);
-    paramView.setTranslationY(trw.a(this.a)[1]);
+    trt.b(this.a);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

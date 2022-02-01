@@ -1,66 +1,99 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.proto.lbsshare.LBSShare.GetShopsByIdsResp;
+import com.tencent.proto.lbsshare.LBSShare.LocationResp;
+import com.tencent.proto.lbsshare.LBSShare.NearByShopsResp;
+import com.tencent.qphone.base.util.QLog;
 
 public class afgx
-  implements Handler.Callback
+  extends BroadcastReceiver
 {
-  public afgx(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public afgx(QQMapActivity paramQQMapActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramMessage.what)
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqmap", 2, "activiy.receiver.onReceive:" + paramContext);
+    }
+    if (paramContext.equals("com.tencent.mobileqq.onGetStreetViewUrl"))
     {
-    default: 
-      return true;
-    case 2: 
-      if ((this.a.mSwiftTitleUI.c != null) && (!this.a.mSwiftTitleUI.c.isEnabled())) {
-        this.a.mSwiftTitleUI.c.setEnabled(true);
-      }
-      Object localObject = (String)paramMessage.obj;
-      if (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a))
-      {
-        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, 1);
-        this.a.getActivity().finish();
-        paramMessage = new Bundle();
-        paramMessage.putString("savedUrl", (String)localObject);
-        localObject = (TeamWorkFileImportInfo)this.a.getIntent().getParcelableExtra("key_team_work_file_import_info");
-        if (((TeamWorkFileImportInfo)localObject).e != 3) {
-          break label226;
-        }
-        paramMessage.putInt("editType", 1);
-      }
-      for (;;)
-      {
-        if (this.a.getIntent().getParcelableExtra("key_team_work_file_import_info") != null) {
-          paramMessage.putParcelable("key_team_work_file_import_info", this.a.getIntent().getParcelableExtra("key_team_work_file_import_info"));
-        }
-        paramMessage = arph.a("ipc_save_team_work", "", -1, paramMessage);
-        arui.a().a(paramMessage);
-        return true;
-        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, 0);
-        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, (String)localObject);
-        break;
-        label226:
-        if (((TeamWorkFileImportInfo)localObject).e == 6) {
-          paramMessage.putInt("editType", 2);
-        }
-      }
+      this.a.j = paramIntent.getStringExtra("streetViewUrl");
+      this.a.n();
     }
-    if ((this.a.mSwiftTitleUI.c != null) && (!this.a.mSwiftTitleUI.c.isEnabled())) {
-      this.a.mSwiftTitleUI.c.setEnabled(true);
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (paramContext.equals("com.tencent.mobileqq.onGetLbsShareSearch"))
+          {
+            byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+            localObject = new LBSShare.LocationResp();
+            paramContext = (Context)localObject;
+            if (arrayOfByte != null) {}
+            try
+            {
+              paramContext = (LBSShare.LocationResp)((LBSShare.LocationResp)localObject).mergeFrom(arrayOfByte);
+              paramIntent = paramIntent.getExtras().getBundle("req");
+              this.a.a(paramContext, paramIntent);
+              return;
+            }
+            catch (InvalidProtocolBufferMicroException paramContext)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  paramContext.printStackTrace();
+                }
+                paramContext = null;
+              }
+            }
+          }
+          if (!paramContext.equals("com.tencent.mobileqq.onGetLbsShareShop")) {
+            break;
+          }
+          paramContext = paramIntent.getByteArrayExtra("data");
+        } while (paramContext == null);
+        Object localObject = new LBSShare.NearByShopsResp();
+        try
+        {
+          paramContext = (LBSShare.NearByShopsResp)((LBSShare.NearByShopsResp)localObject).mergeFrom(paramContext);
+          paramIntent = paramIntent.getExtras().getBundle("req");
+          this.a.a(paramContext, paramIntent);
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException paramContext)
+        {
+          if (QLog.isColorLevel()) {
+            paramContext.printStackTrace();
+          }
+          this.a.a(null, null);
+          return;
+        }
+      } while (!paramContext.equals("com.tencent.mobileqq.onGetShareShopDetail"));
+      paramContext = paramIntent.getByteArrayExtra("data");
+    } while (paramContext == null);
+    paramIntent = new LBSShare.GetShopsByIdsResp();
+    try
+    {
+      paramContext = (LBSShare.GetShopsByIdsResp)paramIntent.mergeFrom(paramContext);
+      this.a.a(paramContext);
+      return;
     }
-    QQToast.a(this.a.getActivity(), anni.a(2131713439), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298998));
-    return true;
+    catch (InvalidProtocolBufferMicroException paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        paramContext.printStackTrace();
+      }
+      this.a.a(null);
+    }
   }
 }
 

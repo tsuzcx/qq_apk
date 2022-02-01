@@ -1,33 +1,32 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class bfmv
-  implements Animation.AnimationListener
+class bfmv
+  implements View.OnTouchListener
 {
-  public bfmv(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  bfmv(bfmu parambfmu) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      return;
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.15F);
+      this.a.c.setAlpha(0.5F);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
     }
-    if (paramAnimation == this.a.b) {
-      VisitorTroopCardFragment.a(this.a, false);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setFocusable(true);
-    this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation)) {
-      VisitorTroopCardFragment.a(this.a, true);
+    for (;;)
+    {
+      return false;
+      if ((i == 3) || (i == 1))
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+        this.a.c.setAlpha(1.0F);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      }
     }
   }
 }

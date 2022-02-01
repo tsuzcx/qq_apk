@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import pmh;
-import pwi;
+import pfa;
+import pou;
 
 class ReadInJoyProteusFamilyListViewGroup$6
   implements Runnable
@@ -10,9 +10,9 @@ class ReadInJoyProteusFamilyListViewGroup$6
   
   public void run()
   {
-    pwi localpwi = pmh.a().a();
-    if (localpwi != null) {
-      localpwi.b(this.this$0.a);
+    pou localpou = pfa.a().a();
+    if (localpou != null) {
+      localpou.b(this.this$0.a);
     }
   }
 }

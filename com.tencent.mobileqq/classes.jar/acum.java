@@ -1,58 +1,85 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import java.io.File;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Options;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
+import org.json.JSONObject;
 
-public class acum
-  extends URLDrawableParams
+class acum
+  implements acun
 {
-  Context a;
-  
-  public acum(Context paramContext, File paramFile)
+  private int a(int paramInt)
   {
-    super(paramContext);
-    this.a = paramContext;
-    bdzx.a = paramFile;
-    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new bdua(paramFile);
-  }
-  
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
-  {
-    boolean bool = true;
-    if (("http".equals(paramString)) || ("https".equals(paramString)))
-    {
-      if (BaseApplicationImpl.sProcessId == 1) {}
-      for (;;)
-      {
-        return new bdvl(bool, paramObject);
-        bool = false;
-      }
+    if (paramInt == 0) {
+      return 1;
     }
-    return null;
+    if (paramInt == 1) {
+      return 0;
+    }
+    if (paramInt == 2) {
+      return 8;
+    }
+    return -2147483648;
   }
   
-  public String doGetLocalFilePath(String paramString)
+  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
   {
-    return null;
-  }
-  
-  public ApngSoLoader getApngSoLoader()
-  {
-    return bgzd.a();
-  }
-  
-  public Drawable getDefaultLoadingDrawable()
-  {
-    return this.a.getResources().getDrawable(2130847826);
-  }
-  
-  public Drawable getDefualtFailedDrawable()
-  {
-    return this.a.getResources().getDrawable(2130847826);
+    Object localObject = null;
+    if (paramacts != null) {}
+    GdtHandler.Options localOptions;
+    for (Activity localActivity = paramacts.a();; localActivity = null)
+    {
+      localOptions = new GdtHandler.Options();
+      boolean bool = GdtHandler.a(localOptions, paramVarArgs[0]);
+      if ((paramacts != null) && (localActivity != null) && (bool)) {
+        break;
+      }
+      acvc.d("GdtInterstitialJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramVarArgs = new JSONObject(paramVarArgs[0]);
+        acvc.b("GdtInterstitialJsCallHandler", paramVarArgs.toString());
+        paramVarArgs = paramVarArgs.getJSONObject("options");
+        int i = paramVarArgs.optInt("style", 0);
+        int j = a(paramVarArgs.optInt("orientation"));
+        paramVarArgs = paramacts.a().getIntent();
+        if (TextUtils.isEmpty(paramVarArgs.getStringExtra("big_brother_ref_source_key")))
+        {
+          paramVarArgs = paramVarArgs.getStringExtra("big_brother_source_key");
+          localOptions.jdField_a_of_type_AndroidOsBundle = new Bundle();
+          localOptions.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramVarArgs);
+          acvc.b("GdtInterstitialJsCallHandler", String.format("handleJsCallRequest Source.KEY_REF_ID:%s", new Object[] { paramVarArgs }));
+          paramVarArgs = new GdtInterstitialParams();
+          paramVarArgs.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = localOptions;
+          paramVarArgs.jdField_a_of_type_Int = i;
+          paramVarArgs.b = j;
+          paramVarArgs.jdField_a_of_type_Boolean = true;
+          i = GdtInterstitialFragment.a(localActivity, paramVarArgs);
+          paramacts.callJs(paramString, null);
+          acvp.a(localActivity, paramVarArgs, i);
+          paramString = localObject;
+          if (paramacts != null) {
+            paramString = paramacts.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, true, "showInterstitial", paramString, localOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+          return true;
+        }
+      }
+      catch (Throwable paramacts)
+      {
+        acvc.d("GdtInterstitialJsCallHandler", "handleJsCallRequest error", paramacts);
+        return true;
+      }
+      paramVarArgs = paramVarArgs.getStringExtra("big_brother_ref_source_key");
+    }
   }
 }
 

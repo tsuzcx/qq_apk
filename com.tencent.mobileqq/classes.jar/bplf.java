@@ -1,17 +1,10 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import android.view.MotionEvent;
 
-public class bplf
-  implements bpir
+public abstract interface bplf
 {
-  public bplf(DoodleLayout paramDoodleLayout) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  public void a(List<bpio> paramList, DoodleView paramDoodleView)
-  {
-    paramList.add(this.a.jdField_a_of_type_Bpik);
-    paramList.add(this.a.jdField_a_of_type_Bphw);
-  }
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

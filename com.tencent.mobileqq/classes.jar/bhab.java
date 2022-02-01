@@ -1,18 +1,31 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class bhab
+  implements View.OnClickListener
 {
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
+  public bhab(TroopInteractGiftAnimationController.1.1 param1) {}
+  
+  public void onClick(View paramView)
   {
-    paramString6 = new StringBuilder();
-    paramString6.append(paramString1).append("|");
-    paramString6.append(paramString2).append("|");
-    paramString6.append(paramString3).append("|");
-    paramString6.append(paramString4).append("|");
-    paramString6.append(paramString5).append("|");
-    paramString6.append(paramString7).append("|");
-    paramString6.append(paramString8).append("|");
-    paramString6.append(paramString9).append("|");
-    paramString6.append(paramString10);
-    bcrt.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_errorcode_report", paramString6.toString(), true);
+    this.a.a.this$0.b();
+    bhaa localbhaa = this.a.a.this$0;
+    localbhaa.jdField_a_of_type_Int += 1;
+    if (this.a.a.this$0.jdField_a_of_type_Boolean)
+    {
+      this.a.a.this$0.jdField_a_of_type_Boolean = false;
+      this.a.a.this$0.a(this.a.a.a, this.a.a.a.frienduin, this.a.a.a.interactId, this.a.a.a.animationPackageId, this.a.a.this$0.jdField_a_of_type_Int, false);
+    }
+    if (this.a.a.this$0.jdField_a_of_type_Int % 5 == 0) {
+      this.a.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a(this.a.a.a.animationPackageId + "");
+    }
+    bdll.b(null, "dc00899", "Grp_flower", "", "inter_gift", "clk_ball", 0, 0, this.a.a.a.frienduin, "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

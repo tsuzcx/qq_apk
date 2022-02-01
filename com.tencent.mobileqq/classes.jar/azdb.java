@@ -1,24 +1,8 @@
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
-
-public class azdb
-  extends RecyclerView.ViewHolder
+public abstract interface azdb
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public abstract void a(String paramString1, String paramString2, Object paramObject, int paramInt, String paramString3);
   
-  public azdb(CustomCoverFragment paramCustomCoverFragment, View paramView)
-  {
-    super(paramView);
-    this.itemView.setTag(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366989));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366980));
-    this.itemView.setBackgroundColor(paramCustomCoverFragment.getResources().getColor(2131167279));
-  }
+  public abstract void a(String paramString1, String paramString2, Object paramObject, long paramLong1, long paramLong2);
 }
 
 

@@ -2,16 +2,16 @@ package com.tencent.biz.pubaccount.weishi_new.comment;
 
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import ufh;
+import ufj;
 
 public class WsCommentInputPopupWindow$8
   implements Runnable
 {
-  public WsCommentInputPopupWindow$8(ufh paramufh, View paramView) {}
+  public WsCommentInputPopupWindow$8(ufj paramufj, View paramView) {}
   
   public void run()
   {
-    ufh.a(this.this$0).showSoftInput(this.a, 1);
+    ufj.a(this.this$0).showSoftInput(this.a, 1);
   }
 }
 

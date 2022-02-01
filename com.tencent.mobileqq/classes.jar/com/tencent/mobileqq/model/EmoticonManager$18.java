@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.model;
 
-import aijp;
-import awmr;
+import aiti;
+import axfj;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonTab;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -14,7 +14,7 @@ import java.util.List;
 public class EmoticonManager$18
   implements Runnable
 {
-  public EmoticonManager$18(awmr paramawmr, String paramString) {}
+  public EmoticonManager$18(axfj paramaxfj, String paramString) {}
   
   public void run()
   {
@@ -30,7 +30,7 @@ public class EmoticonManager$18
         while (localIterator.hasNext())
         {
           str = (String)localIterator.next();
-          awmr.a(this.this$0, str, true, false);
+          axfj.a(this.this$0, str, true, false);
           continue;
           localObject2 = finally;
         }
@@ -44,7 +44,7 @@ public class EmoticonManager$18
     while (((Iterator)localObject5).hasNext())
     {
       str = (String)((Iterator)localObject5).next();
-      awmr.a(this.this$0, str, false, true);
+      axfj.a(this.this$0, str, false, true);
     }
     localObject2.commit();
     localObject2.end();
@@ -61,7 +61,7 @@ public class EmoticonManager$18
         ((HashSet)???).add(((Emoticon)localObject5).name);
       }
     }
-    aijp.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((Collection)???);
+    aiti.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((Collection)???);
     this.this$0.a(this.a);
   }
 }

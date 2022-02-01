@@ -1,66 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class aeff
-  implements bbpl
+  implements DialogInterface.OnClickListener
 {
-  public aeff(ForwardRecentActivity paramForwardRecentActivity) {}
+  public aeff(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void a(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 3000;
-    paramView = (bbmu)paramView.getTag(2131380929);
-    if (paramView == null) {
-      return;
-    }
-    String str1 = paramView.b();
-    String str2 = paramView.a().toString();
-    if ((paramView instanceof bbli)) {
-      paramView = ((bbli)paramView).e();
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onAction, uin = " + str1 + ", displayName = " + str2 + ", troopUin = " + paramView + ", type = " + i);
-      }
-      if ((i != -1) && (ForwardRecentActivity.a(this.a, new ResultRecord(str1, str2, i, paramView, "")))) {
-        ForwardRecentActivity.a(this.a).notifyDataSetChanged();
-      }
-      ForwardRecentActivity.h(this.a);
-      return;
-      if ((paramView instanceof bblg))
-      {
-        paramView = ((bblg)paramView).b();
-      }
-      else if ((paramView instanceof bblo))
-      {
-        paramView = ((bblo)paramView).a;
-        i = 1;
-      }
-      else if ((paramView instanceof bblt))
-      {
-        paramView = ((bblt)paramView).a().troopuin;
-        i = 1;
-      }
-      else if ((paramView instanceof bblj))
-      {
-        i = 0;
-        paramView = "-1";
-      }
-      else
-      {
-        i = -1;
-        paramView = "-1";
-      }
+    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
+      ChatSettingActivity.a(this.a).dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeff
  * JD-Core Version:    0.7.0.1
  */

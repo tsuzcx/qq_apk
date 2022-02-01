@@ -1,21 +1,39 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
-public class xpj
-  implements Animation.AnimationListener
+final class xpj
+  extends AnimatorListenerAdapter
 {
-  public xpj(ExploreAnimalView paramExploreAnimalView) {}
+  xpj(Animator.AnimatorListener paramAnimatorListener, ViewGroup paramViewGroup, ImageView paramImageView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.a.startAnimation(this.a.b);
+    super.onAnimationCancel(paramAnimator);
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    yuk.b("Q.qqstory.playernew.AnimationUtils", "doEnterAnimation, onAnimationEnd");
+    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
+    paramAnimator = ValueAnimator.ofInt(new int[] { 255, 0 });
+    paramAnimator.setStartDelay(400L);
+    paramAnimator.setDuration(400L);
+    paramAnimator.addUpdateListener(new xpk(this));
+    paramAnimator.addListener(new xpl(this));
+    paramAnimator.start();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
+  }
 }
 
 

@@ -1,26 +1,38 @@
-class aiwc
-  implements Comparable<aiwc>
+import android.os.Looper;
+import android.text.TextUtils;
+import androidx.annotation.UiThread;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.tips.StudyRoomTipBarHelper.2.1;
+import mqq.os.MqqHandler;
+
+public class aiwc
+  implements bdvn
 {
-  private Long jdField_a_of_type_JavaLangLong;
-  private String jdField_a_of_type_JavaLangString;
+  aiwc(aiwa paramaiwa) {}
   
-  aiwc(aiwa paramaiwa, String paramString, Long paramLong)
+  @UiThread
+  private void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-  }
-  
-  public int a(aiwc paramaiwc)
-  {
-    if (this.jdField_a_of_type_JavaLangLong.longValue() > paramaiwc.jdField_a_of_type_JavaLangLong.longValue()) {
-      return -1;
+    if (paramInt <= 0)
+    {
+      this.a.c();
+      return;
     }
-    return 1;
+    this.a.b();
   }
   
-  public String a()
+  public void a(String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if (!TextUtils.equals(paramString, aiwa.a(this.a).a.a)) {
+      return;
+    }
+    if (Thread.currentThread() != Looper.getMainLooper().getThread())
+    {
+      aiwa.a(this.a).post(new StudyRoomTipBarHelper.2.1(this, paramInt));
+      return;
+    }
+    a(paramInt);
   }
 }
 

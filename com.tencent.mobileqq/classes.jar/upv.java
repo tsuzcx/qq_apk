@@ -1,38 +1,43 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import UserGrowth.stJumpInfo;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-final class upv
-  implements URLDrawable.URLDrawableListener
+class upv
+  implements ura
 {
-  upv(String paramString1, ImageView paramImageView, String paramString2) {}
+  upv(upu paramupu, WSVerticalPageFragment paramWSVerticalPageFragment, String paramString1, String paramString2, stJumpInfo paramstJumpInfo, int paramInt) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a(String paramString, int paramInt)
   {
-    upe.a("815", "onLoadCanceled - " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841680);
+    uqh.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity(), "biz_src_jc_gzh_weishi", paramString, 1, ugd.a().a(), 0);
+    upu.a(this.jdField_a_of_type_Upu, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_UserGrowthStJumpInfo, 1000003, 1);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void b(String paramString, int paramInt)
   {
-    upe.a("815", "onLoadFialed - " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841680);
+    upu.a(this.jdField_a_of_type_Upu, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_UserGrowthStJumpInfo, 1000004, 2);
+    ueg.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity(), paramString);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  public void c(String paramString, int paramInt)
   {
-    upe.a("815", "onLoadProgressed - " + this.jdField_a_of_type_JavaLangString);
+    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
+    localWSDownloadParams.mScene = 1;
+    localWSDownloadParams.mLinkStrategyType = ugd.a().a();
+    localWSDownloadParams.mEventId = 12;
+    localWSDownloadParams.mTestId = unx.b();
+    localWSDownloadParams.mScheme = paramString;
+    paramString = uno.a();
+    paramString.pagetype = 5;
+    paramString.optype = 115;
+    paramString.upos = (this.jdField_a_of_type_Int + 1);
+    localWSDownloadParams.mStReportItem = paramString;
+    ugz.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity(), localWSDownloadParams, false);
+    uno.a(6, this.jdField_a_of_type_UserGrowthStJumpInfo.id, 5);
+    upu.a(this.jdField_a_of_type_Upu, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_UserGrowthStJumpInfo, 1000002, 0);
   }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    upe.a("815", "onLoadSuccessed - " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "banner")) {
-      uha.b(2, this.b);
-    }
-  }
+  public void d(String paramString, int paramInt) {}
 }
 
 

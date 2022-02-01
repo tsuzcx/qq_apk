@@ -1,24 +1,20 @@
-public abstract interface sat
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.Map;
+import org.json.JSONObject;
+
+final class sat
+  extends sav
 {
-  public abstract void a(sar paramsar);
+  sat(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, Map paramMap, Activity paramActivity)
+  {
+    super(paramBaseArticleInfo, paramInt1, paramInt2, paramMap);
+  }
   
-  public abstract void a(sar paramsar, int paramInt);
-  
-  public abstract void a(sar paramsar, int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(sar paramsar, boolean paramBoolean);
-  
-  public abstract void b(sar paramsar);
-  
-  public abstract void b(sar paramsar, boolean paramBoolean);
-  
-  public abstract void c(sar paramsar);
-  
-  public abstract void d(sar paramsar);
-  
-  public abstract void e(sar paramsar);
-  
-  public abstract void f(sar paramsar);
+  public void a(JSONObject paramJSONObject)
+  {
+    sas.a(this.a, this, paramJSONObject);
+  }
 }
 
 

@@ -1,51 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
 class bnsc
-  implements View.OnClickListener
+  extends RemoteCommand
 {
-  bnsc(bnsb parambnsb, int paramInt) {}
-  
-  public void onClick(View paramView)
+  bnsc(bnrz parambnrz, String paramString)
   {
-    bnsb.a(this.jdField_a_of_type_Bnsb, this.jdField_a_of_type_Int);
-    bnpk localbnpk;
-    if (this.jdField_a_of_type_Int != bnsb.a(this.jdField_a_of_type_Bnsb))
+    super(paramString);
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    if (paramBundle == null) {
+      paramBundle = null;
+    }
+    Bundle localBundle;
+    do
     {
-      int i = bnsb.a(this.jdField_a_of_type_Bnsb);
-      bnsb.a(this.jdField_a_of_type_Bnsb, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bnsb.notifyItemChanged(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bnsb.notifyItemChanged(i);
-      if (bnsb.a(this.jdField_a_of_type_Bnsb) != null)
-      {
-        bnsd localbnsd = bnsb.a(this.jdField_a_of_type_Bnsb);
-        if (this.jdField_a_of_type_Int != 0) {
-          break label136;
-        }
-        localbnpk = null;
-        localbnsd.a(localbnpk);
-        if (this.jdField_a_of_type_Int != 0) {
-          break label161;
-        }
-        bnyl.a().k("none");
-        bnyh.a().ab();
-        bnzb.b("AEGIFStickerAdapter", "【Gif Material Click】: null");
+      return paramBundle;
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      localBundle = this.a.b(paramBundle);
+      if (localBundle != null) {
+        localBundle.setClassLoader(getClass().getClassLoader());
       }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label136:
-      localbnpk = (bnpk)bnsb.a(this.jdField_a_of_type_Bnsb).get(this.jdField_a_of_type_Int - 1);
-      break;
-      label161:
-      bnyl.a().k(((bnpk)bnsb.a(this.jdField_a_of_type_Bnsb).get(this.jdField_a_of_type_Int - 1)).a);
-      bnyh.a().ab();
-      bnzb.b("AEGIFStickerAdapter", "【Gif Material Click】: " + ((bnpk)bnsb.a(this.jdField_a_of_type_Bnsb).get(this.jdField_a_of_type_Int - 1)).a);
-    }
+      paramBundle = localBundle;
+    } while (paramOnInvokeFinishLinstener == null);
+    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
+    return localBundle;
   }
 }
 

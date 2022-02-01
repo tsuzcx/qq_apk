@@ -1,84 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agoi
-  implements View.OnClickListener
+public class agoi
+  extends VasQuickUpdateManager.CallBacker
 {
-  agoi(agoh paramagoh) {}
+  public agoi(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
   
-  public void onClick(View paramView)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    Object localObject;
-    if (agoh.a(this.a) != null)
+    if ((1000L != paramLong) || (!"changeVoice_json".equals(paramString1))) {}
+    do
     {
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      long l1;
-      switch (agoh.a(this.a).jumpType)
-      {
-      default: 
-        if (localObject != null)
-        {
-          localObject = (auov)((QQAppInterface)localObject).a(153);
-          l1 = 0L;
-        }
-        break;
-      }
-      try
-      {
-        long l2 = Long.valueOf(agof.a(this.a.a)).longValue();
-        l1 = l2;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        for (;;)
-        {
-          QLog.e("intimate_relationship", 2, "valueOf string err");
-        }
-      }
-      ((auov)localObject).a(l1, agoh.a(this.a).dateType);
-    }
-    for (;;)
-    {
-      if (agoh.a(this.a) != null) {
-        agoh.a(this.a).a(paramView, agoh.a(this.a));
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((agoh.a(this.a).linkUrl != null) && (this.a.a.a != null))
-      {
-        bcst.b(null, "dc00898", "", "", "0X800A208 ", "0X800A208 ", agoh.a(this.a).dateType, 0, "", "", "", "");
-        QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A208");
-        bgmp localbgmp = bgng.a((QQAppInterface)localObject, this.a.a.a, agoh.a(this.a).linkUrl);
-        if (localbgmp != null) {
-          localbgmp.a();
-        }
-        while (QLog.isColorLevel())
-        {
-          QLog.d("intimate_relationship", 2, "click  scheme: " + agoh.a(this.a).linkUrl);
-          break;
-          if (agoh.a(this.a).linkUrl.toLowerCase().startsWith("mqzone://")) {
-            blsb.c(this.a.a.a, agoh.a(this.a).linkUrl);
-          } else {
-            agof.a(this.a.a.a, agoh.a(this.a).linkUrl);
-          }
-        }
+      if ((QLog.isColorLevel()) || (paramInt1 != 0)) {
+        QLog.d("ListenChangeVoicePanel", 2, "changeVoice jsonLoaded callBacker, errorCode=" + paramInt1);
       }
-      QLog.e("intimate_relationship", 2, "click  scheme: linkUrl or context is null");
-      break;
-      bcst.b(null, "dc00898", "", "", "0X800A208 ", "0X800A208 ", agoh.a(this.a).dateType, 0, "", "", "", "");
-      QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A208");
-      if (agof.a(this.a.a) == null) {
-        break;
+      if (paramInt1 == 0) {
+        this.a.a(true);
       }
-      agof.a(this.a.a).a(agoh.a(this.a));
-      break;
-      QLog.e("intimate_relationship", 2, "click  mInfo is null");
-    }
+    } while (paramVasQuickUpdateManager == null);
+    paramVasQuickUpdateManager.removeCallBacker(this.a.a);
   }
 }
 

@@ -1,45 +1,31 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3;
-import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3.1;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
 
 public class apoq
-  implements ArkAppMgr.IGetAppPathByNameCallback
+  extends apoz
 {
-  public apoq(ArkAppPreDownloadMgr.3.1 param1) {}
+  public long a;
+  public apos a;
+  public apot a;
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public apoq()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",retcode=", Integer.valueOf(paramInt), ",msg=", paramString });
-    }
-    paramString = (QQAppInterface)apop.a(this.a.a.this$0).get();
-    if (paramString != null)
-    {
-      paramString = (beaw)paramString.getManager(193);
-      if (paramString != null)
-      {
-        if ((paramInt != 0) || (paramAppPathInfo == null) || (paramAppPathInfo.path == null)) {
-          break label211;
-        }
-        long l = 0L;
-        paramAppPathInfo = new File(paramAppPathInfo.path);
-        if (paramAppPathInfo.exists()) {
-          l = paramAppPathInfo.length();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",filesize=", Long.valueOf(l) });
-        }
-        paramString.a(this.a.a.a.a, l);
-      }
-    }
-    return;
-    label211:
-    paramString.a(this.a.a.a.a, -1L);
+    this.jdField_a_of_type_Apot = new apot();
+    this.jdField_a_of_type_Apos = new apos();
+    a();
+  }
+  
+  public void a()
+  {
+    QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecogResult.reset");
+    this.b = 4096L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Apot.a();
+    this.jdField_a_of_type_Apos.a();
+  }
+  
+  public String toString()
+  {
+    return "ARLocalGestureCircleRecogResult{recogType = " + this.b + ", frameIdx = " + this.jdField_a_of_type_Long + ", gestureResult = " + this.jdField_a_of_type_Apot + ", circleResult = " + this.jdField_a_of_type_Apos + '}';
   }
 }
 

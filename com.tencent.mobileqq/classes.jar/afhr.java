@@ -1,18 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import MQQ.PayRuleCfg;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.TicketManager;
 
 public class afhr
-  implements ayjd
+  extends Handler
 {
-  public afhr(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
-  
-  public void a(int paramInt, ayje paramayje)
+  public afhr(QQSettingMe paramQQSettingMe, Looper paramLooper)
   {
-    if ((paramayje != null) && (!TextUtils.isEmpty(TextPreviewTranslateActivity.b(this.a))) && (!TextPreviewTranslateActivity.b(this.a).equals(paramayje.b)))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      TextPreviewTranslateActivity.b(this.a, paramayje.b);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+    default: 
+      return;
+    case 0: 
+      this.a.j();
+      return;
+    case 1: 
+      QQSettingMe.a(this.a);
+      return;
+    case 2: 
+      this.a.u();
+      return;
     }
+    int i = ((Bundle)paramMessage.obj).getInt("type");
+    QLog.e("QQSettingRedesign", 1, "VipInfoHandler paySuccess " + i);
+    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).payHide == 1))
+    {
+      QQSettingMe.a(this.a).enable = 0;
+      QLog.e("QQSettingRedesign", 1, "VipInfoHandler paySuccess clear bubble");
+      aokv.a(this.a.a.c(), QQSettingMe.a(this.a));
+      sendEmptyMessage(2);
+    }
+    biik.a(this.a.a, "last_pull_pay_rule", 0L);
+    paramMessage = ((TicketManager)this.a.a.getManager(2)).getSkey(this.a.a.getCurrentAccountUin());
+    ((aokv)this.a.a.a(27)).a(paramMessage, this.a.a.c());
   }
 }
 

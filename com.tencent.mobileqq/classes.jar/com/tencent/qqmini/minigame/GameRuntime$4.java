@@ -1,6 +1,6 @@
 package com.tencent.qqmini.minigame;
 
-import android.os.Process;
+import com.tencent.qqmini.sdk.action.UpdateUIAction;
 
 class GameRuntime$4
   implements Runnable
@@ -9,7 +9,14 @@ class GameRuntime$4
   
   public void run()
   {
-    Process.killProcess(Process.myPid());
+    GameRuntime.access$100(this.this$0).showKingCardTips();
+    UpdateUIAction.updateRedDot(this.this$0);
+    if (this.this$0.isLoadingAdShowing())
+    {
+      this.this$0.pauseEngineOnly();
+      return;
+    }
+    GameRuntime.access$100(this.this$0).checkPayForFriendLogic(GameRuntime.access$300(this.this$0));
   }
 }
 

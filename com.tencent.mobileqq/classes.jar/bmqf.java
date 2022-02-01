@@ -1,120 +1,78 @@
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.manager.Manager;
 
 public class bmqf
-  extends RemoteCommand
+  implements Manager
 {
-  private QQAppInterface a;
-  
-  public void a()
+  @Nullable
+  public RedAppInfo a(String paramString)
   {
-    PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
-    if ((localPluginCommunicationHandler != null) && (localPluginCommunicationHandler.containsCmd("com.tencent.qqreadinjoy.readinjoyremotecommand"))) {
-      localPluginCommunicationHandler.unregister("com.tencent.qqreadinjoy.readinjoyremotecommand");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("path", paramString);
+    paramString = QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "getSingleRedTouchInfo", localBundle);
+    if ((paramString != null) && (paramString.code == 0) && (paramString.data != null))
+    {
+      paramString = paramString.data;
+      paramString.setClassLoader(RedAppInfo.class.getClassLoader());
+      return (RedAppInfo)paramString.getParcelable("redTouchInfo");
     }
+    return null;
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  @Nullable
+  public Map<String, RedAppInfo> a(ArrayList<String> paramArrayList)
   {
-    boolean bool = true;
-    int i = paramBundle.getInt("param_data_type", 0);
-    paramOnInvokeFinishLinstener = new Bundle();
-    switch (i)
+    if (paramArrayList == null) {}
+    do
     {
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
       do
       {
-        do
-        {
-          Object localObject;
-          do
-          {
-            SharedPreferences localSharedPreferences;
-            do
-            {
-              do
-              {
-                return paramOnInvokeFinishLinstener;
-                localObject = paramBundle.getString("param_sp_key");
-                paramBundle = paramBundle.getString("param_sp_value_type");
-                localSharedPreferences = bmqa.a(this.a, 1);
-              } while (localSharedPreferences == null);
-              try
-              {
-                if (paramBundle.equals("long"))
-                {
-                  paramOnInvokeFinishLinstener.putString("result_key", Long.toString(localSharedPreferences.getLong((String)localObject, 0L)));
-                  return paramOnInvokeFinishLinstener;
-                }
-              }
-              catch (ClassCastException paramBundle)
-              {
-                paramBundle.printStackTrace();
-                return paramOnInvokeFinishLinstener;
-              }
-              if (paramBundle.equals("boolean"))
-              {
-                paramOnInvokeFinishLinstener.putString("result_key", Boolean.toString(localSharedPreferences.getBoolean((String)localObject, false)));
-                return paramOnInvokeFinishLinstener;
-              }
-              if (paramBundle.equals("int"))
-              {
-                paramOnInvokeFinishLinstener.putString("result_key", Integer.toString(localSharedPreferences.getInt((String)localObject, 0)));
-                return paramOnInvokeFinishLinstener;
-              }
-            } while (!paramBundle.equals("String"));
-            paramOnInvokeFinishLinstener.putString("result_key", localSharedPreferences.getString((String)localObject, null));
-            return paramOnInvokeFinishLinstener;
-            paramBundle = paramBundle.getString("param_uin");
-            bglf.h(this.a, paramBundle);
-            paramOnInvokeFinishLinstener.putString("result_key", bglf.j(this.a, paramBundle));
-            return paramOnInvokeFinishLinstener;
-            paramBundle = paramBundle.getString("param_uin");
-            paramOnInvokeFinishLinstener.putParcelable("result_key", this.a.a(paramBundle, true));
-            return paramOnInvokeFinishLinstener;
-            paramBundle = paramBundle.getString("param_uin");
-            localObject = (anmw)this.a.getManager(51);
-          } while ((localObject == null) || (TextUtils.isEmpty(paramBundle)));
-          paramBundle = ((anmw)localObject).b(paramBundle);
-        } while (paramBundle == null);
-        paramOnInvokeFinishLinstener.putString("result_key", Short.toString(paramBundle.shGender));
-        return paramOnInvokeFinishLinstener;
-        paramBundle = paramBundle.getString("param_uin");
-      } while (TextUtils.isEmpty(paramBundle));
-      paramOnInvokeFinishLinstener.putString("result_key", Boolean.toString(pmh.a().a(paramBundle)));
-      return paramOnInvokeFinishLinstener;
-    case 6: 
-      paramBundle = bmqa.a(this.a);
-      if ((paramBundle != null) && (paramBundle.a == 0)) {}
-      for (;;)
-      {
-        paramOnInvokeFinishLinstener.putString("result_key", Boolean.toString(bool));
-        return paramOnInvokeFinishLinstener;
-        bool = false;
-      }
-    case 7: 
-      paramOnInvokeFinishLinstener.putString("result_key", pha.d());
-      return paramOnInvokeFinishLinstener;
+        return null;
+        localObject = new Bundle();
+        ((Bundle)localObject).putStringArrayList("pathList", paramArrayList);
+        paramArrayList = QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "getRedTouchInfo", (Bundle)localObject);
+      } while ((paramArrayList == null) || (paramArrayList.code != 0) || (paramArrayList.data == null));
+      paramArrayList = paramArrayList.data;
+      paramArrayList.setClassLoader(RedAppInfo.class.getClassLoader());
+      localObject = paramArrayList.getParcelableArrayList("redTouchInfoList");
+    } while (localObject == null);
+    paramArrayList = new HashMap();
+    Object localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      RedAppInfo localRedAppInfo = (RedAppInfo)((Iterator)localObject).next();
+      paramArrayList.put(localRedAppInfo.b(), localRedAppInfo);
     }
-    paramBundle = paramBundle.getString("param_uin");
-    new obe(this.a, paramBundle, this.a.getApp().getApplicationContext()).a();
-    QLog.e("ReadInJoyRemoteCommand", 2, "handle remote unfollow public account request ! puin : " + paramBundle);
-    paramOnInvokeFinishLinstener.putBoolean("result_key", true);
-    return paramOnInvokeFinishLinstener;
+    return paramArrayList;
   }
+  
+  public void a(String paramString)
+  {
+    if (a(paramString))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("path", paramString);
+      QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "reportRedTouchClick", localBundle);
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    paramString = a(paramString);
+    return (paramString != null) && (paramString.b() == 1);
+  }
+  
+  public void onDestroy() {}
 }
 
 

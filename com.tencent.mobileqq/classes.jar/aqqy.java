@@ -1,62 +1,44 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.chat.autoreply.AutoReplyUtil.1;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.app.AppRuntime.Status;
 
 public class aqqy
 {
-  public int a = -1;
-  
-  public static aqqy a(aqlg[] paramArrayOfaqlg)
+  public static int a(AppRuntime.Status paramStatus)
   {
-    aqqy localaqqy = new aqqy();
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
-    {
-      int j = paramArrayOfaqlg.length;
-      int i = 0;
-      if (i < j)
-      {
-        Object localObject = paramArrayOfaqlg[i];
-        if (localObject == null) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject = ((aqlg)localObject).a;
-          try
-          {
-            a(new JSONObject((String)localObject), localaqqy);
-            if (QLog.isColorLevel()) {
-              QLog.i("PhotoListPanelBean", 2, "parse: " + (String)localObject + " bean:" + localaqqy);
-            }
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
-          }
-        }
-      }
+    if (paramStatus == AppRuntime.Status.away) {
+      return 1;
     }
-    return localaqqy;
+    if (paramStatus == AppRuntime.Status.busy) {
+      return 2;
+    }
+    if (paramStatus == AppRuntime.Status.dnd) {
+      return 3;
+    }
+    return -1;
   }
   
-  private static void a(JSONObject paramJSONObject, aqqy paramaqqy)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    if (paramJSONObject.has("showMode")) {
-      paramaqqy.a = paramJSONObject.optInt("showMode");
+    if (QLog.isColorLevel()) {
+      QLog.d("[AutoReply] AutoReplyUtil", 2, new Object[] { "[report] reportReplyMessageExposed: invoked. ", " uinType: ", Integer.valueOf(paramInt) });
     }
+    if (paramInt != 0) {
+      return;
+    }
+    ThreadManagerV2.executeOnSubThread(new AutoReplyUtil.1(paramQQAppInterface, paramString));
   }
   
-  public String toString()
+  public static boolean a(AppRuntime.Status paramStatus)
   {
-    return "PhotoListPanelBean{showMode=" + this.a + '}';
+    return (paramStatus != AppRuntime.Status.away) && (paramStatus != AppRuntime.Status.dnd) && (paramStatus != AppRuntime.Status.busy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqqy
  * JD-Core Version:    0.7.0.1
  */

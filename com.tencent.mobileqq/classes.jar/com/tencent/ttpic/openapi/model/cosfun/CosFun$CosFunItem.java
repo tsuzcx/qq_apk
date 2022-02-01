@@ -1,10 +1,14 @@
 package com.tencent.ttpic.openapi.model.cosfun;
 
+import com.tencent.ttpic.openapi.filter.CustomFilterItem;
+import java.util.List;
+
 public class CosFun$CosFunItem
 {
   private int backgroundMode1;
   private int backgroundMode2;
   private String crazyFacePath;
+  public List<CustomFilterItem> customFilterItemList;
   private int duration;
   public String externalTriggerWords;
   private int freezeDuration;
@@ -12,6 +16,7 @@ public class CosFun$CosFunItem
   private String id;
   private CosFun.PagIndexList pagIndexList;
   private String pagPath;
+  public List<String> textureMaterialsForGAN;
   private int transDuration;
   private int transReverseDuration;
   private int transReverseStart;
@@ -32,6 +37,11 @@ public class CosFun$CosFunItem
   public String getCrazyFacePath()
   {
     return this.crazyFacePath;
+  }
+  
+  public List<CustomFilterItem> getCustomFilterItemList()
+  {
+    return this.customFilterItemList;
   }
   
   public int getDuration()
@@ -62,6 +72,11 @@ public class CosFun$CosFunItem
   public String getPagPath()
   {
     return this.pagPath;
+  }
+  
+  public List<String> getTextureMaterialsForGAN()
+  {
+    return this.textureMaterialsForGAN;
   }
   
   public int getTransDuration()
@@ -109,6 +124,11 @@ public class CosFun$CosFunItem
     this.crazyFacePath = paramString;
   }
   
+  public void setCustomFilterItemList(List<CustomFilterItem> paramList)
+  {
+    this.customFilterItemList = paramList;
+  }
+  
   public void setDuration(int paramInt)
   {
     this.duration = paramInt;
@@ -142,6 +162,11 @@ public class CosFun$CosFunItem
   public void setPagPath(String paramString)
   {
     this.pagPath = paramString;
+  }
+  
+  public void setTextureMaterialsForGAN(List<String> paramList)
+  {
+    this.textureMaterialsForGAN = paramList;
   }
   
   public void setTransDuration(int paramInt)

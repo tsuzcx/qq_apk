@@ -14,12 +14,12 @@ class AEEditorFilterControlPanel$7
   {
     if (AEEditorFilterControlPanel.a(this.this$0) == null)
     {
-      AEEditorFilterControlPanel.a(this.this$0, new ReportDialog(this.this$0.getContext(), 2131755823));
+      AEEditorFilterControlPanel.a(this.this$0, new ReportDialog(this.this$0.getContext(), 2131755824));
       AEEditorFilterControlPanel.a(this.this$0).setCancelable(false);
       AEEditorFilterControlPanel.a(this.this$0).setCanceledOnTouchOutside(false);
-      AEEditorFilterControlPanel.a(this.this$0).setContentView(2131559567);
+      AEEditorFilterControlPanel.a(this.this$0).setContentView(2131559572);
     }
-    TextView localTextView = (TextView)AEEditorFilterControlPanel.a(this.this$0).findViewById(2131372466);
+    TextView localTextView = (TextView)AEEditorFilterControlPanel.a(this.this$0).findViewById(2131372578);
     if (!TextUtils.isEmpty(this.a)) {
       localTextView.setText(this.a);
     }
@@ -27,7 +27,7 @@ class AEEditorFilterControlPanel$7
     {
       AEEditorFilterControlPanel.a(this.this$0).show();
       return;
-      localTextView.setText(2131694296);
+      localTextView.setText(2131694338);
     }
   }
 }

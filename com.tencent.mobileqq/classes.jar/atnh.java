@@ -1,20 +1,24 @@
-public abstract interface atnh
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
+
+public class atnh
+  implements Cloneable
 {
-  public abstract long a();
+  public int a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public int b;
+  public TextView b;
+  public int c;
   
-  public abstract String a();
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(atds paramatds);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract String b();
-  
-  public abstract String c();
+  public atnh(atnf paramatnf) {}
 }
 
 

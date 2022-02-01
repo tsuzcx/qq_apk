@@ -1,15 +1,23 @@
-import android.util.Log;
-import com.tencent.TMG.sdk.AVRoomMulti.RequestViewListCompleteCallback;
-import com.tencent.TMG.sdk.AVView;
+import com.tencent.widget.AbsListView;
 
 class amql
-  implements AVRoomMulti.RequestViewListCompleteCallback
+  implements blih
 {
-  amql(amqf paramamqf) {}
+  amql(amqh paramamqh) {}
   
-  public void OnComplete(String[] paramArrayOfString, AVView[] paramArrayOfAVView, int paramInt1, int paramInt2, String paramString)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    Log.d("CmGameAvHandler", "RequestViewListCompleteCallback.OnComplete result: " + paramInt2 + paramString);
+    amqh.a(this.a, paramInt);
+    if (paramInt == 0)
+    {
+      amqh.a(this.a, null, null);
+      amqh.a(this.a).b();
+      return;
+    }
+    amqh.a(this.a).c();
+    amqh.a(this.a).a();
   }
 }
 

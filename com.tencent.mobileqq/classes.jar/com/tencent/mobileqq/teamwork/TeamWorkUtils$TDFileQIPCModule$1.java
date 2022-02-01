@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.teamwork;
 
-import bdjg;
-import bdji;
+import becb;
+import becd;
 
 public class TeamWorkUtils$TDFileQIPCModule$1
   implements Runnable
 {
-  public TeamWorkUtils$TDFileQIPCModule$1(bdji parambdji, String paramString) {}
+  public TeamWorkUtils$TDFileQIPCModule$1(becd parambecd, String paramString) {}
   
   public void run()
   {
-    bdjg.a(this.a);
+    becb.a(this.a);
   }
 }
 

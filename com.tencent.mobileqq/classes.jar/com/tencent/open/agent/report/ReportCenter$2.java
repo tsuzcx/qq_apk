@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings.Secure;
-import biip;
-import bipi;
-import bipk;
-import bist;
-import biuf;
-import biug;
+import bjjo;
+import bjqh;
+import bjqj;
+import bjts;
+import bjve;
+import bjvf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.TimeZone;
@@ -20,7 +20,7 @@ import java.util.TimeZone;
 public class ReportCenter$2
   implements Runnable
 {
-  public ReportCenter$2(bipi parambipi, String paramString, Bundle paramBundle, boolean paramBoolean) {}
+  public ReportCenter$2(bjqh parambjqh, String paramString, Bundle paramBundle, boolean paramBoolean) {}
   
   public void run()
   {
@@ -31,21 +31,21 @@ public class ReportCenter$2
       {
         ??? = new Bundle();
         ((Bundle)???).putString("uin", this.jdField_a_of_type_JavaLangString);
-        ((Bundle)???).putString("imei", biuf.c());
-        ((Bundle)???).putString("imsi", biuf.d());
-        ((Bundle)???).putString("android_id", Settings.Secure.getString(biip.a().a().getContentResolver(), "android_id"));
-        ((Bundle)???).putString("mac", biuf.a());
+        ((Bundle)???).putString("imei", bjve.c());
+        ((Bundle)???).putString("imsi", bjve.d());
+        ((Bundle)???).putString("android_id", Settings.Secure.getString(bjjo.a().a().getContentResolver(), "android_id"));
+        ((Bundle)???).putString("mac", bjve.a());
         ((Bundle)???).putString("platform", "4");
         ((Bundle)???).putString("os_ver", Build.VERSION.RELEASE);
-        ((Bundle)???).putString("position", biuf.f());
-        ((Bundle)???).putString("network", bist.a(biip.a().a()));
-        ((Bundle)???).putString("language", biuf.b());
-        ((Bundle)???).putString("resolution", biuf.e());
-        ((Bundle)???).putString("apn", bist.b(biip.a().a()));
+        ((Bundle)???).putString("position", bjve.f());
+        ((Bundle)???).putString("network", bjts.a(bjjo.a().a()));
+        ((Bundle)???).putString("language", bjve.b());
+        ((Bundle)???).putString("resolution", bjve.e());
+        ((Bundle)???).putString("apn", bjts.b(bjjo.a().a()));
         ((Bundle)???).putString("model_name", Build.MODEL);
         ((Bundle)???).putString("timezone", TimeZone.getDefault().getID());
-        ((Bundle)???).putString("qq_ver", biip.a().c());
-        ((Bundle)???).putString("qua", biip.a().f());
+        ((Bundle)???).putString("qq_ver", bjjo.a().c());
+        ((Bundle)???).putString("qua", bjjo.a().f());
         ((Bundle)???).putString("via", "2");
         ((Bundle)???).putString("result", "0");
         if (this.jdField_a_of_type_AndroidOsBundle != null) {
@@ -67,8 +67,8 @@ public class ReportCenter$2
       {
         this.this$0.b.add(localBaseData);
         k = this.this$0.b.size();
-        m = bipk.a().a("report_via");
-        j = biug.a(biip.a().a(), null).a("Agent_ReportTimeInterval");
+        m = bjqj.a().a("report_via");
+        j = bjvf.a(bjjo.a().a(), null).a("Agent_ReportTimeInterval");
         i = j;
         if (j == 0) {
           i = 10000;

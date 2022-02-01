@@ -1,8 +1,25 @@
-public abstract interface aybr
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+
+public class aybr
 {
-  public abstract boolean a();
+  public boolean a;
   
-  public abstract boolean a(int paramInt1, int paramInt2, int paramInt3);
+  protected void a() {}
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 4124: 
+      a();
+      return;
+    }
+    a((BusinessInfoCheckUpdate.AppInfo)paramVarArgs[0]);
+  }
+  
+  public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
 }
 
 

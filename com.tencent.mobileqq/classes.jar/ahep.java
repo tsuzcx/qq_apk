@@ -1,37 +1,40 @@
-import android.os.Bundle;
+import android.app.Activity;
 import android.view.View;
-import android.widget.Toast;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class ahep
-  implements bkhw
+  implements bliz
 {
-  ahep(ahen paramahen, MessageForPtt paramMessageForPtt, bkho parambkho) {}
+  ahep(ahen paramahen, blir paramblir) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    adrm.a(this.jdField_a_of_type_Ahen.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    paramView = adrm.a(this.jdField_a_of_type_Ahen.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahen.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    if (paramView != null) {}
-    try
+    this.jdField_a_of_type_Blir.dismiss();
+    switch (paramInt)
     {
-      ((MessageForPtt)paramView).c2cViaOffline = true;
-      ((MessageForPtt)paramView).isResend = true;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("DiyTextId", paramView.vipBubbleDiyTextId);
-      adrm.a(this.jdField_a_of_type_Ahen.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath(), paramView.uniseq, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength * 1000, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
-      this.jdField_a_of_type_Ahen.b();
-      this.jdField_a_of_type_Bkho.dismiss();
+    default: 
       return;
     }
-    catch (RuntimeException paramView)
+    String str;
+    if (this.jdField_a_of_type_Ahen.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006)
     {
-      for (;;)
-      {
-        paramView.printStackTrace();
-        Toast.makeText(this.jdField_a_of_type_Ahen.jdField_a_of_type_AndroidContentContext, paramView.getMessage(), 0).show();
+      str = this.jdField_a_of_type_Ahen.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      paramView = null;
+    }
+    for (;;)
+    {
+      ChatActivityUtils.a(this.jdField_a_of_type_Ahen.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Ahen.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahen.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Ahen.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, str, true, this.jdField_a_of_type_Ahen.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, true, true, null, "from_internal");
+      str = ChatActivityUtils.a(this.jdField_a_of_type_Ahen.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+      paramView = str;
+      if (str == null) {
+        paramView = "";
       }
+      bdll.b(this.jdField_a_of_type_Ahen.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "13", paramView, "", "");
+      bdll.b(this.jdField_a_of_type_Ahen.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
+      return;
+      paramView = this.jdField_a_of_type_Ahen.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      str = null;
     }
   }
 }

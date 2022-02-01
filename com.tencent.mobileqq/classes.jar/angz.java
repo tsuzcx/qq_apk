@@ -1,44 +1,6 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.widget.AbsListView;
-
-class angz
-  implements bkhe
+public abstract interface angz
 {
-  angz(angy paramangy) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      paramInt = paramAbsListView.getFirstVisiblePosition();
-      if (paramInt > angy.a(this.a)) {
-        paramInt = 0;
-      }
-      break;
-    }
-    while ((paramInt >= 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
-    {
-      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "slideupdown", "", ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), this.a.d, new String[] { String.valueOf(paramInt) });
-      return;
-      if (angy.a(this.a) > paramInt)
-      {
-        paramInt = 1;
-        continue;
-        angy.a(this.a, paramAbsListView.getFirstVisiblePosition());
-      }
-      else
-      {
-        paramInt = -1;
-      }
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

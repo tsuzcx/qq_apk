@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bozw;
+import bqbr;
 
 class EditVideoGuide$GotoLocationPageDelayRunnable
   implements Runnable
@@ -9,9 +9,9 @@ class EditVideoGuide$GotoLocationPageDelayRunnable
   
   public void run()
   {
-    bozw localbozw = (bozw)this.this$0.a(bozw.class);
-    if (localbozw != null) {
-      localbozw.c();
+    bqbr localbqbr = (bqbr)this.this$0.a(bqbr.class);
+    if (localbqbr != null) {
+      localbqbr.c();
     }
   }
 }

@@ -1,36 +1,15 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Map;
-
 public class xbw
-  extends xdt
+  extends wip
 {
-  StoryVideoItem a;
-  public xxm a;
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public xbw(StoryVideoItem paramStoryVideoItem)
+  public String toString()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    return "WatchVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin=" + this.b + ", isLiveVideo=" + this.jdField_a_of_type_Boolean + ", unReadCount=" + this.jdField_a_of_type_Int + '}';
   }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
-    {
-      yqp.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
-      b(false);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout() != null)
-    {
-      this.jdField_a_of_type_Xxm = new xxj();
-      this.jdField_a_of_type_Xxm.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new xbx(this));
-      return;
-    }
-    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
-    b(true);
-  }
-  
-  protected void a(Map<String, Object> paramMap) {}
 }
 
 

@@ -1,20 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.feed.QCircleInsFeedItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class vzt
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  vzt(vzq paramvzq) {}
+  vzt(vzr paramvzr) {}
   
-  public void onClick(View paramView)
-  {
-    if (this.a.a() != null) {
-      this.a.a().a();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

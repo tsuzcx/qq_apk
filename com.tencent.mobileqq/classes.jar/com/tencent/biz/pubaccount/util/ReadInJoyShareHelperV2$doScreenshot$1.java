@@ -2,24 +2,24 @@ package com.tencent.biz.pubaccount.util;
 
 import android.graphics.Bitmap;
 import android.os.Message;
-import bkgm;
+import blhq;
 import kotlin.Metadata;
-import tce;
-import uai;
+import sta;
+import uak;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class ReadInJoyShareHelperV2$doScreenshot$1
   implements Runnable
 {
-  public ReadInJoyShareHelperV2$doScreenshot$1(uai paramuai, Bitmap paramBitmap) {}
+  public ReadInJoyShareHelperV2$doScreenshot$1(uak paramuak, Bitmap paramBitmap) {}
   
   public final void run()
   {
-    String str = tce.a(this.a, "ShotCache_");
+    String str = sta.a(this.a, "ShotCache_");
     Message localMessage = Message.obtain();
     localMessage.what = 101;
     localMessage.obj = str;
-    uai.a(this.this$0).sendMessage(localMessage);
+    uak.a(this.this$0).sendMessage(localMessage);
   }
 }
 

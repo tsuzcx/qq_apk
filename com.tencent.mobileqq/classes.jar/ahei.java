@@ -1,42 +1,22 @@
-import android.graphics.Rect;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-final class ahei
-  implements OnCompositionLoadedListener
+class ahei
+  implements aunx
 {
-  ahei(DiniFlyAnimationView paramDiniFlyAnimationView, aguj paramaguj, String paramString) {}
+  ahei(ahed paramahed) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetDelegate(new ahej(this));
-    if (paramLottieComposition == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(aheh.jdField_a_of_type_JavaLangString, 2, "composition is null ,return");
-      }
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
-    if ((this.jdField_a_of_type_Aguj != null) && ("bubble".equals(this.jdField_a_of_type_JavaLangString)))
-    {
-      paramLottieComposition = this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getCompRect();
-      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams();
-      int i = paramLottieComposition.width() * localLayoutParams.height / paramLottieComposition.height();
-      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams().width = i;
-      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-      this.jdField_a_of_type_Aguj.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-      this.jdField_a_of_type_Aguj.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+    paramView = new Bundle();
+    paramView.putString(bhzu.e, "QQ会员");
+    paramView.putString(bhzu.f, "LTMCLUB");
+    paramView.putString(bhzu.d, "1450000515");
+    paramView.putInt(bhzu.b, 3);
+    paramView.putString(bhzu.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    paramView.putString(bhzu.i, bihn.a().c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    bhzu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramView);
   }
 }
 

@@ -1,130 +1,55 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
-import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tribe.async.async.JobContext;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class zfa
-  extends zez<zem, zem>
+  extends zex
 {
-  public final String a;
-  private boolean a;
+  public List<zfb> a;
+  public boolean a;
   
-  public zfa(String paramString)
+  public zfa(@NonNull String paramString)
   {
-    this(true, paramString);
+    super(paramString);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public zfa(boolean paramBoolean)
+  public String a()
   {
-    this(paramBoolean, null);
+    return "LocationFacePackage";
   }
   
-  public zfa(boolean paramBoolean, String paramString)
+  public String a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return ((zfb)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
+    }
+    throw new IndexOutOfBoundsException("getThumbUri with illegal index : " + paramInt + ", the item size is : " + this.jdField_a_of_type_JavaUtilList.size());
   }
   
-  protected void a(JobContext paramJobContext, zem paramzem)
+  public int b()
   {
-    boolean bool2 = false;
-    int i = 1;
-    String str = this.jdField_a_of_type_JavaLangString;
-    paramJobContext = str;
-    if (str == null) {
-      paramJobContext = zfc.a(paramzem.jdField_a_of_type_Int, paramzem.jdField_b_of_type_JavaLangString, ".jpg");
-    }
-    if ((this.jdField_a_of_type_Boolean) && (paramzem.jdField_a_of_type_Boolean)) {
-      yqp.b("Q.qqstory.publish.edit.MergePicSegment", "merge has doodle");
-    }
-    boolean bool1;
-    for (;;)
-    {
-      try
-      {
-        bool1 = zkh.a(zkh.c(paramzem.jdField_a_of_type_Zeq.jdField_a_of_type_AndroidGraphicsBitmap, paramzem.jdField_a_of_type_Zeq.jdField_b_of_type_AndroidGraphicsBitmap), paramJobContext);
-        i = 0;
-        bool2 = true;
-        banm.d = bool2;
-        if ((i != 0) || (bool1)) {
-          break;
-        }
-        yqp.e("Q.qqstory.publish.edit.MergePicSegment", "save err");
-        super.notifyError(new ErrorMessage(-1, anni.a(2131705337)));
-        return;
-      }
-      catch (Throwable paramJobContext)
-      {
-        yqp.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext);
-        paramJobContext = null;
-        bool1 = false;
-        continue;
-      }
-      if (paramzem.jdField_a_of_type_Zeq.jdField_a_of_type_Int > 0)
-      {
-        yqp.b("Q.qqstory.publish.edit.MergePicSegment", "merge use display");
-        try
-        {
-          bool1 = zkh.a(paramzem.jdField_a_of_type_Zeq.jdField_a_of_type_AndroidGraphicsBitmap, paramJobContext);
-          i = 0;
-          bool2 = true;
-        }
-        catch (Throwable paramJobContext)
-        {
-          for (;;)
-          {
-            yqp.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext);
-            paramJobContext = null;
-            bool1 = false;
-          }
-        }
-      }
-      else
-      {
-        yqp.b("Q.qqstory.publish.edit.MergePicSegment", "merge use origin");
-        paramJobContext = paramzem.jdField_a_of_type_Zeq.jdField_a_of_type_JavaLangString;
-        yqv.b("0X80075C9");
-        paramzem.jdField_a_of_type_Zeq.jdField_b_of_type_Boolean = true;
-        bool1 = false;
-      }
-    }
-    paramzem.jdField_a_of_type_Zeq.jdField_b_of_type_JavaLangString = paramJobContext;
-    paramzem.jdField_a_of_type_Zeq.jdField_a_of_type_Boolean = bool1;
-    if ((paramzem.jdField_a_of_type_Int == 3) && (bool1)) {
-      a(paramzem, paramzem.jdField_a_of_type_Zeq.jdField_a_of_type_JavaLangString, paramJobContext);
-    }
-    super.notifyResult(paramzem);
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public void a(zem paramzem, String paramString1, String paramString2)
+  public String b(int paramInt)
   {
-    double d1;
-    double d2;
-    if (((paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditTakePhotoSource)) && (((EditTakePhotoSource)paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).b != 4.9E-324D) && (((EditTakePhotoSource)paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a != 4.9E-324D))
-    {
-      d1 = ((EditTakePhotoSource)paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).b;
-      d2 = ((EditTakePhotoSource)paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a;
-      if (!TextUtils.isEmpty(paramString1)) {
-        if (!bmin.a(paramString1, paramString2)) {
-          bmin.b(paramString2, d2, d1);
-        }
-      }
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return ((zfb)this.jdField_a_of_type_JavaUtilList.get(paramInt)).b;
     }
-    do
-    {
-      do
-      {
-        return;
-        bmin.b(paramString2, d2, d1);
-        return;
-      } while ((!(paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditLocalPhotoSource)) || (TextUtils.isEmpty(paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a.a())) || (bmin.a(paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a.a(), paramString2)));
-      paramzem = ((EditLocalPhotoSource)paramzem.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a;
-    } while (paramzem == null);
-    bmin.a(paramString2, paramzem.longitude / 1000000.0D, paramzem.latitude / 1000000.0D);
+    throw new IndexOutOfBoundsException("getCategory with illegal index : " + paramInt + ", the item size is : " + this.jdField_a_of_type_JavaUtilList.size());
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("LocationFacePackage{");
+    localStringBuffer.append("id='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append("logoUrl='").append(this.c).append('\'');
+    localStringBuffer.append("logoDrawable='").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).append('\'');
+    localStringBuffer.append("items=").append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append(", isLocating=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

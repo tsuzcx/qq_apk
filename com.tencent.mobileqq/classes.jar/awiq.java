@@ -1,22 +1,23 @@
-import android.widget.ImageButton;
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
 public class awiq
-  implements PopupWindow.OnDismissListener
+  implements Animation.AnimationListener
 {
-  public awiq(MedalGuideView paramMedalGuideView) {}
+  public awiq(UiApiPlugin paramUiApiPlugin, View paramView, int paramInt1, int paramInt2) {}
   
-  public void onDismiss()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onDismiss  endOfAnim: %s", new Object[] { Boolean.valueOf(this.a.d) }));
-    }
-    this.a.d = true;
-    this.a.a.performClick();
+    this.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getRight(), this.b);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

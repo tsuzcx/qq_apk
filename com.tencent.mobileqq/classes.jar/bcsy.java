@@ -1,94 +1,44 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Collections;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
 
 public class bcsy
+  implements bcsi
 {
-  protected int a;
-  protected QQAppInterface a;
-  protected String a;
-  protected List<String> a;
-  protected int b;
-  protected String b;
-  protected int c;
-  protected String c;
-  protected String d = "";
-  protected String e = "";
+  private adbd<Integer, bcsi> a = new adbe();
   
-  public bcsy(QQAppInterface paramQQAppInterface)
+  public bcsy()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    a();
   }
   
-  public bcsy a(int paramInt)
+  protected void a()
   {
-    this.jdField_c_of_type_Int = paramInt;
-    return this;
+    this.a.a(Integer.valueOf(169), bcta.class);
+    this.a.a(Integer.valueOf(241), bcta.class);
+    this.a.a(Integer.valueOf(242), bcta.class);
+    this.a.a(Integer.valueOf(243), bcta.class);
+    this.a.a(Integer.valueOf(175), bcsz.class);
+    this.a.a(Integer.valueOf(11), bcsz.class);
+    this.a.a(Integer.valueOf(129), bctb.class);
+    this.a.a(Integer.valueOf(131), bctb.class);
+    this.a.a(Integer.valueOf(133), bctb.class);
   }
   
-  public bcsy a(String paramString)
+  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public bcsy a(String... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(4);
-    }
-    if (paramVarArgs != null) {
-      Collections.addAll(this.jdField_a_of_type_JavaUtilList, paramVarArgs);
-    }
-    return this;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    if (!((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_cmd.has()) {}
+    bcsi localbcsi;
+    do
     {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.e, this.jdField_c_of_type_JavaLangString, this.d, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, "", "", "", "");
       return;
-    }
-    while (this.jdField_a_of_type_JavaUtilList.size() < 4) {
-      this.jdField_a_of_type_JavaUtilList.add("");
-    }
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.e, this.jdField_c_of_type_JavaLangString, this.d, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, (String)this.jdField_a_of_type_JavaUtilList.get(0), (String)this.jdField_a_of_type_JavaUtilList.get(1), (String)this.jdField_a_of_type_JavaUtilList.get(2), (String)this.jdField_a_of_type_JavaUtilList.get(3));
-  }
-  
-  public bcsy b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bcsy b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public bcsy c(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public bcsy d(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
-  
-  public bcsy e(String paramString)
-  {
-    this.e = paramString;
-    return this;
+      int i = paramMsg.msg_head.c2c_cmd.get();
+      localbcsi = (bcsi)this.a.a(Integer.valueOf(i));
+    } while (localbcsi == null);
+    localbcsi.a(paramMessageHandler, paramMsg, paramList, parambcre);
   }
 }
 

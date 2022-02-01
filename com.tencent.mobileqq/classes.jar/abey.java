@@ -1,58 +1,45 @@
-import android.util.SparseArray;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class abey
+  implements aqxy
 {
-  public int a;
-  public SparseArray<abez> a;
-  public String a;
-  public boolean a;
-  public int b = 4;
+  public abey(NewerGuidePlugin paramNewerGuidePlugin, blir paramblir) {}
   
-  public abey(String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(3);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public abez a(int paramInt)
-  {
-    abez localabez2 = (abez)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    abez localabez1 = localabez2;
-    if (localabez2 == null)
-    {
-      if (paramInt != 1) {
-        break label40;
-      }
-      localabez1 = new abez(85, 5, 0.7F, 0.2F);
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuidePlugin", 2, String.format("onConfirmBtClicked mSelectedIndex=%s", new Object[] { Integer.valueOf(NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin)) }));
     }
-    label40:
-    do
+    if ((this.jdField_a_of_type_Blir != null) && (this.jdField_a_of_type_Blir.isShowing())) {
+      this.jdField_a_of_type_Blir.dismiss();
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      return localabez1;
-      if (paramInt == 2) {
-        return new abez(80, 15, 0.9F, 0.4F);
+      localJSONObject.put("result", 1);
+      localJSONObject.put("index", NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
+      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respSelector", new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("NewerGuidePlugin", 1, "sendSelectorResp fail", localException);
       }
-      localabez1 = localabez2;
-    } while (paramInt != 3);
-    return new abez(75, 30, 1.0F, 0.7F);
+    }
   }
   
-  public String toString()
+  public void a(int paramInt1, int paramInt2)
   {
-    StringBuilder localStringBuilder = new StringBuilder("ClearMemoryConfig{");
-    localStringBuilder.append("DpcConfigId='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", isClearEnable=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", delay=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", clearStep=").append(this.b);
-    localStringBuilder.append(", clearLevels=").append(this.jdField_a_of_type_AndroidUtilSparseArray);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abey
  * JD-Core Version:    0.7.0.1
  */

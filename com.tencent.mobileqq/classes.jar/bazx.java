@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.richstatus.EditActivity;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class bazx
-  implements bbaj
+  implements ViewPager.OnPageChangeListener
 {
-  public bazx(EditActivity paramEditActivity) {}
+  public bazx(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public void a(bhvb parambhvb)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (EditActivity.a(this.a) == parambhvb)
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).setSelectedTab(paramInt, true);
+    if (paramInt == 0)
     {
-      if (EditActivity.a(this.a) != null) {
-        EditActivity.a(this.a).a(null);
-      }
-      EditActivity.a(this.a, null);
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).a(false);
+      return;
     }
-  }
-  
-  public boolean a(bhvb parambhvb)
-  {
-    return parambhvb != EditActivity.a(this.a);
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).a(true);
   }
 }
 

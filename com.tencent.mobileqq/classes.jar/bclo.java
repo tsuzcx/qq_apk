@@ -1,8 +1,18 @@
-class bclo
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
+
+public class bclo
+  extends bcmb
 {
-  public int a = -1;
-  public boolean a;
-  public int b;
+  public bclo(GroupSearchEngine paramGroupSearchEngine, bcmc parambcmc, String paramString, int paramInt)
+  {
+    super(paramGroupSearchEngine, parambcmc, paramString, paramInt);
+  }
+  
+  public bcfq a(List<bcfr> paramList, String paramString)
+  {
+    return new bcdj(paramList, paramString, GroupSearchEngine.a(this.a));
+  }
 }
 
 

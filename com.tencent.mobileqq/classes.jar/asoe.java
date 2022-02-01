@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import kotlin.Metadata;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.3;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"}, k=3, mv={1, 1, 16})
-final class asoe
-  implements DialogInterface.OnCancelListener
+public class asoe
+  implements bimf
 {
-  public static final asoe a = new asoe();
+  public asoe(EmoticonPanelMallHelper.3 param3) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void a(boolean paramBoolean)
   {
-    bcst.b(null, "dc00898", "", "", "0X800B08B", "0X800B08B", 2, 0, "", "", "", "");
+    if (paramBoolean) {
+      this.a.this$0.a.a.a();
+    }
   }
 }
 

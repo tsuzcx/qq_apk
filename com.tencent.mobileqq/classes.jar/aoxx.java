@@ -1,56 +1,29 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aoxx
-  extends IInterface
+public class aoxx
+  extends aoxg
 {
-  public abstract ARCommonConfigInfo a();
+  public aoxx(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    super(paramQQAppInterface, paramContext);
+  }
   
-  public abstract ArConfigInfo a();
-  
-  public abstract ArEffectConfig a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(aoya paramaoya);
-  
-  public abstract void a(aoyg paramaoyg);
-  
-  public abstract void a(aoyj paramaoyj);
-  
-  public abstract void a(aoym paramaoym);
-  
-  public abstract void a(ArConfigInfo paramArConfigInfo);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(aoya paramaoya);
-  
-  public abstract void b(aoyg paramaoyg);
-  
-  public abstract void b(aoyj paramaoyj);
-  
-  public abstract void b(aoym paramaoym);
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract boolean c();
-  
-  public abstract void d();
-  
-  public abstract boolean d();
+  public boolean a()
+  {
+    try
+    {
+      uyx.a(this.jdField_a_of_type_AndroidContentContext, this.c, this.jdField_a_of_type_JavaUtilHashMap);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QCircleAction", 1, "doAction error: " + localException.getMessage());
+      a("QCircleAction");
+    }
+    return false;
+  }
 }
 
 

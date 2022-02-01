@@ -1,18 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.LockedCategory;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListPart.9.1;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListPart.9.2;
+import java.util.concurrent.CountDownLatch;
+import mqq.os.MqqHandler;
 
-public final class bolw
-  implements Parcelable.Creator<LockedCategory>
+public class bolw
+  implements borc
 {
-  public LockedCategory a(Parcel paramParcel)
+  bolw(boll paramboll) {}
+  
+  public void a(boqu paramboqu, int paramInt)
   {
-    return new LockedCategory(paramParcel);
+    if ((paramInt > 1) && (paramInt <= 100)) {
+      ThreadManager.getUIHandler().post(new AEBottomListPart.9.2(this, paramInt));
+    }
   }
   
-  public LockedCategory[] a(int paramInt)
+  public void a(boqu paramboqu, boolean paramBoolean)
   {
-    return new LockedCategory[paramInt];
+    bpam.b("AEBottomListPart", "loadAndHandleData---download finish, isSuccess=" + paramBoolean);
+    if (!paramBoolean)
+    {
+      boll.a(this.a, true);
+      ThreadManager.getUIHandler().post(new AEBottomListPart.9.1(this));
+    }
+    boll.a(this.a).countDown();
   }
 }
 

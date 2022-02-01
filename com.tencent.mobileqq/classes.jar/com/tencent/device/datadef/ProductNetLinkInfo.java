@@ -1,6 +1,6 @@
 package com.tencent.device.datadef;
 
-import abqh;
+import abul;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ProductNetLinkInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ProductNetLinkInfo> CREATOR = new abqh();
+  public static final Parcelable.Creator<ProductNetLinkInfo> CREATOR = new abul();
   public String linkResetVoiceDesc;
   public int productId;
   public String stopSoundWaveDesc1;

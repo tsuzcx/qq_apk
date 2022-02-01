@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.12;
+import android.app.Activity;
+import com.tencent.common.app.AppInterface;
 
-public class bqai
-  implements DialogInterface.OnClickListener
+public abstract interface bqai
 {
-  public bqai(ShortVideoPlayActivity.12 param12) {}
+  public abstract Activity a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.this$0.s();
-  }
+  public abstract AppInterface a();
+  
+  public abstract void a();
 }
 
 

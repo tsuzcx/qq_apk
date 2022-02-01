@@ -1,24 +1,18 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
 
 class wvu
-  extends SimpleJob<Object>
+  implements woy<wxi, wxj>
 {
-  wvu(wvs paramwvs, String paramString)
-  {
-    super(paramString);
-  }
+  wvu(wvs paramwvs) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(@NonNull wxi paramwxi, @Nullable wxj paramwxj, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.a.jdField_a_of_type_Wvv == null) {
-      this.a.jdField_a_of_type_Wvv = new wvv(this.a, this.a.d);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, "requestQQStoryGuide onCmdRespond = " + paramwxj + " ,errorMsg = " + paramErrorMessage);
     }
-    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Wvv.jdField_a_of_type_JavaLangString;
-    wvs.a(this.a);
-    return null;
   }
 }
 

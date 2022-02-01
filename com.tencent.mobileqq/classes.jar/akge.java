@@ -1,80 +1,168 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.MessageHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.history.link.search.TroopAllMessageResultAdapter.1;
+import com.tencent.mobileqq.activity.history.link.search.TroopAllMessageResultAdapter.2;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.OpenID;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.ColorNickTextView;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-final class akge
-  implements adea
+public class akge
+  extends akic
 {
-  akge(QQAppInterface paramQQAppInterface, String paramString1, Activity paramActivity, String paramString2, String paramString3, String paramString4, Intent paramIntent) {}
+  public Object a;
+  private SimpleDateFormat a;
+  public List<akjl> a;
+  public Set<Long> a;
   
-  public void onComplete()
+  public akge(Context paramContext, blha paramblha, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SdkDynamicAvatarSettingHelper", 2, "check api, onComplete");
-    }
+    super(paramContext, paramblha, paramSessionInfo, paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("M月d日");
   }
   
-  public void onFailure(int paramInt, String paramString)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SdkDynamicAvatarSettingHelper", 2, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
-    }
+    this.b.clear();
+    notifyDataSetChanged();
   }
   
-  public void onPermission(int paramInt)
+  public void a(long paramLong, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SdkDynamicAvatarSettingHelper", 2, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
-    }
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFB", "0X8009DFB", 0, 0, this.jdField_a_of_type_JavaLangString, "2", "", "");
-    akgc.a(this.jdField_a_of_type_AndroidAppActivity, anni.a(2131712366), this.b, this.c, this.jdField_a_of_type_JavaLangString);
+    ThreadManager.post(new TroopAllMessageResultAdapter.1(this, paramString, paramInt, paramLong), 8, null, false);
   }
   
-  public void onSuccess(JSONObject paramJSONObject)
+  public void a(List<akjl> paramList, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SdkDynamicAvatarSettingHelper", 2, "check api, onSuccess");
-    }
-    if (akgc.a(this.d))
+    Object localObject;
+    int i;
+    if (QLog.isColorLevel())
     {
-      paramJSONObject = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("open_id");
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramJSONObject)))
+      localObject = new StringBuilder().append("setMessageItems loadType: ").append(paramInt1).append(", searchMode: ").append(paramInt2).append(", cloudGetCompleted: ").append(paramBoolean).append(", messageItems size: ");
+      if (paramList == null)
       {
-        OpenID localOpenID = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString);
-        if (localOpenID == null) {}
-        while (paramJSONObject.equals(localOpenID.openID)) {
-          try
-          {
-            long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-            long l2 = System.currentTimeMillis();
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l1, paramJSONObject, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), new akgf(this, l2));
-            return;
-          }
-          catch (Exception paramJSONObject)
-          {
-            QLog.e("SdkDynamicAvatarSettingHelper", 1, "checkOpenidDiff exception=", paramJSONObject);
-            return;
-          }
-        }
-        akgc.b(this.jdField_a_of_type_AndroidAppActivity);
-        return;
+        i = 0;
+        QLog.d("LinkMessageResultAdapter", 2, i);
       }
-      QLog.e("SdkDynamicAvatarSettingHelper", 1, "checkOpenid, openId null");
+    }
+    else
+    {
+      if ((paramInt1 != 1) || (paramInt2 != 0)) {
+        break label98;
+      }
+      this.b = paramList;
+    }
+    label98:
+    do
+    {
+      do
+      {
+        return;
+        i = paramList.size();
+        break;
+        if ((paramInt1 == 2) && (paramInt2 == 0))
+        {
+          this.b.addAll(paramList);
+          return;
+        }
+      } while ((paramInt1 != 4) || (paramList == null) || (paramList.size() == 0) || (paramInt2 != 1));
+      if ((this.b.size() <= 0) || (paramList.size() <= 0)) {
+        break label237;
+      }
+      localObject = (akjl)paramList.get(0);
+      akjl localakjl = (akjl)this.b.get(this.b.size() - 1);
+      if (((akjl)localObject).a.time <= localakjl.a.time) {
+        break label237;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("LinkMessageResultAdapter", 2, "setMessageItems: error firstItem time > lastItem time");
+    return;
+    label237:
+    this.b.addAll(paramList);
+  }
+  
+  public void a(List<akjl> paramList, String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (QLog.isColorLevel()) {
+      QLog.d("LinkMessageResultAdapter", 2, "displayCloudMessages...");
+    }
+    ThreadManager.post(new TroopAllMessageResultAdapter.2(this, paramString, paramLong, paramList), 8, null, false);
+  }
+  
+  public void a(List<akjl> paramList, boolean paramBoolean)
+  {
+    if ((paramList == null) || (paramList.size() <= 0)) {
       return;
     }
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFB", "0X8009DFB", 0, 0, this.jdField_a_of_type_JavaLangString, "3", "", "");
-    akgc.a(this.jdField_a_of_type_AndroidAppActivity, anni.a(2131712370), this.b, this.c, this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("LinkMessageResultAdapter", 2, "mergeMsgsAtFirstTime: merge cloud and local msgs cloudGetCompleted: " + paramBoolean);
+    }
+    this.b.clear();
+    this.b.addAll(paramList);
   }
   
-  public void onTrigger(JSONObject paramJSONObject)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SdkDynamicAvatarSettingHelper", 2, "check api, onTrigger");
+    akjl localakjl = (akjl)getItem(paramInt);
+    View localView;
+    Object localObject1;
+    Object localObject2;
+    if (paramView == null)
+    {
+      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559344, null);
+      paramView = new akid();
+      paramView.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)localView.findViewById(2131378604));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378606));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368212));
+      paramView.b = ((TextView)localView.findViewById(2131369615));
+      localView.setTag(paramView);
+      localObject1 = localakjl.a;
+      localObject2 = bhlg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, ((MessageRecord)localObject1).isSend(), ((MessageRecord)localObject1).senderuin);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localakjl.a(((MessageRecord)localObject1).msg, -11353092));
+      if (!((MessageRecord)localObject1).isSend()) {
+        break label288;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      label161:
+      if (!nlj.a((MessageRecord)localObject1)) {
+        break label300;
+      }
+      localObject2 = nlj.a((MessageRecord)localObject1);
+      paramView.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696557) + ((nlk)localObject2).jdField_b_of_type_JavaLangString);
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(URLDrawable.getDrawable(nlj.a(((nlk)localObject2).jdField_b_of_type_Int)));
+    }
+    for (;;)
+    {
+      paramView.b.setText(localakjl.a(((MessageRecord)localObject1).time));
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject1 = (akid)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject1;
+      break;
+      label288:
+      String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      break label161;
+      label300:
+      paramView.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText(localakjl.a((String)localObject2, -11353092));
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(aoot.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, ((MessageRecord)localObject1).senderuin));
     }
   }
 }

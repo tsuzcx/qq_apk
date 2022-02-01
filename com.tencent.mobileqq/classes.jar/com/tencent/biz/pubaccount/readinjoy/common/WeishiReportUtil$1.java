@@ -3,9 +3,9 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import phq;
+import pai;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import tzo;
+import tzq;
 
 public final class WeishiReportUtil$1
   implements Runnable
@@ -18,7 +18,7 @@ public final class WeishiReportUtil$1
     oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
     localAttributeList.att_id.set(1);
     localAttributeList.att_name.set("EnterType");
-    localAttributeList.att_value.set(phq.a(this.jdField_a_of_type_Int));
+    localAttributeList.att_value.set(pai.a(this.jdField_a_of_type_Int));
     localArrayList.add(localAttributeList);
     localAttributeList = new oidb_cmd0x80a.AttributeList();
     localAttributeList.att_id.set(2);
@@ -43,7 +43,7 @@ public final class WeishiReportUtil$1
       localAttributeList.att_value.set("" + this.d);
       localArrayList.add(localAttributeList);
     }
-    tzo.a(25, localArrayList);
+    tzq.a(25, localArrayList);
   }
 }
 

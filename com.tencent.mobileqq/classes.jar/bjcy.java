@@ -1,6 +1,8 @@
-public abstract class bjcy
+import com.tencent.mobileqq.widget.ObservableScrollView;
+
+public abstract interface bjcy
 {
-  public abstract void update(int paramInt, Object... paramVarArgs);
+  public abstract void a(ObservableScrollView paramObservableScrollView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

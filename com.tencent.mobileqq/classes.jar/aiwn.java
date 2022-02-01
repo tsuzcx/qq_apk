@@ -1,21 +1,35 @@
-import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aiwn
-  implements QQPermissionCallback
+class aiwn
+  implements View.OnClickListener
 {
-  public aiwn(PublicView paramPublicView, AppActivity paramAppActivity) {}
+  aiwn(aiwm paramaiwm) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicaccountPublicView.denied();
-    bglp.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicaccountPublicView.grant();
+    QQAppInterface localQQAppInterface;
+    String str2;
+    if (this.a.a())
+    {
+      axan.a().a(aiwm.a(this.a), aiwm.a(this.a).a);
+      aiwm.a(this.a).a();
+      localQQAppInterface = aiwm.a(this.a);
+      str2 = aiwm.a(this.a).a;
+      if (aiwm.a(this.a).b(aiwm.a(this.a).a) != 3) {
+        break label121;
+      }
+    }
+    label121:
+    for (String str1 = "1";; str1 = "0")
+    {
+      bdll.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_close", 0, 0, str2, str1, "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

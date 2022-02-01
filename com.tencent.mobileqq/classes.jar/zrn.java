@@ -1,20 +1,21 @@
-import android.animation.Animator;
-import android.view.View;
+import android.media.MediaCodec.BufferInfo;
+import java.nio.ByteBuffer;
 
-public final class zrn
+class zrn
 {
-  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  public int a;
+  public MediaCodec.BufferInfo a;
+  public ByteBuffer a;
+  public int b;
+  
+  private zrn()
   {
-    return a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2, 2);
+    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
   }
   
-  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3)
+  public void a(int paramInt1, int paramInt2)
   {
-    zri localzri = zri.a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2);
-    if (paramInt3 != paramView.getLayerType()) {
-      localzri.addListener(new zrk(paramView, paramInt3));
-    }
-    return localzri;
+    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
   }
 }
 

@@ -25,22 +25,22 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aryb;
-import aryi;
-import arze;
-import asan;
-import asao;
-import asap;
-import asaq;
-import asar;
-import asas;
-import asat;
-import asau;
-import asav;
-import asaw;
-import bclx;
-import bgsp;
-import bgtn;
+import asnp;
+import asnw;
+import asos;
+import asqb;
+import asqc;
+import asqd;
+import asqe;
+import asqf;
+import asqg;
+import asqh;
+import asqi;
+import asqj;
+import asqk;
+import bdep;
+import bhsr;
+import bhtq;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -61,7 +61,7 @@ public class EmotionSearchPanel
   PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  aryi jdField_a_of_type_Aryi;
+  asnw jdField_a_of_type_Asnw;
   public BaseChatPie a;
   public QQAppInterface a;
   public boolean a;
@@ -76,7 +76,7 @@ public class EmotionSearchPanel
   boolean jdField_d_of_type_Boolean = false;
   private int jdField_e_of_type_Int;
   boolean jdField_e_of_type_Boolean = false;
-  private int jdField_f_of_type_Int = bclx.a(60.0F) / 2;
+  private int jdField_f_of_type_Int = bdep.a(60.0F) / 2;
   private boolean jdField_f_of_type_Boolean;
   
   public EmotionSearchPanel(Context paramContext)
@@ -105,7 +105,7 @@ public class EmotionSearchPanel
   
   private int a()
   {
-    return this.jdField_b_of_type_Int / 2 - c() - bclx.a(24.0F);
+    return this.jdField_b_of_type_Int / 2 - c() - bdep.a(24.0F);
   }
   
   private void a(float paramFloat)
@@ -113,17 +113,17 @@ public class EmotionSearchPanel
     if ((paramFloat > 0.99F) && (!this.jdField_e_of_type_Boolean))
     {
       this.jdField_e_of_type_Boolean = true;
-      ((aryi)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(7)).c(0);
+      ((asnw)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(7)).c(0);
     }
   }
   
   private void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Float = bclx.e(getContext());
+    this.jdField_a_of_type_Float = bdep.e(getContext());
     this.jdField_e_of_type_Boolean = false;
     this.jdField_f_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
-    if (!bgsp.a(paramString))
+    if (!bhsr.a(paramString))
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
       this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramString.length());
@@ -138,14 +138,14 @@ public class EmotionSearchPanel
         d(0);
         c(this.jdField_b_of_type_Int);
       }
-      this.jdField_d_of_type_Int = (bclx.a(10.0F) + paramInt1);
+      this.jdField_d_of_type_Int = (bdep.a(10.0F) + paramInt1);
       if (jdField_a_of_type_Int <= 0) {
         break label232;
       }
-      paramString = (aryb)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(1);
+      paramString = (asnp)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(1);
     }
     label232:
-    for (this.jdField_e_of_type_Int = (jdField_a_of_type_Int - paramString.a());; this.jdField_e_of_type_Int = (paramInt3 - bclx.a(12.0F)))
+    for (this.jdField_e_of_type_Int = (jdField_a_of_type_Int - paramString.a());; this.jdField_e_of_type_Int = (paramInt3 - bdep.a(12.0F)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("EmotionSearchPanel", 2, "init initAnimStartParam =" + this.jdField_e_of_type_Int + " exitWidth =" + this.jdField_b_of_type_Int);
@@ -178,19 +178,19 @@ public class EmotionSearchPanel
   
   private void b(int paramInt)
   {
-    if (bgsp.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString()))
+    if (bhsr.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString()))
     {
-      arze.a("0X800AE27", paramInt);
+      asos.a("0X800AE27", paramInt);
       return;
     }
-    arze.a("0X800AE29", paramInt);
+    asos.a("0X800AE29", paramInt);
   }
   
   private int c()
   {
     Object localObject2 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
     Object localObject1 = localObject2;
-    if (bgsp.a((String)localObject2)) {
+    if (bhsr.a((String)localObject2)) {
       localObject1 = this.jdField_a_of_type_AndroidWidgetEditText.getHint().toString();
     }
     localObject2 = new Rect();
@@ -221,24 +221,24 @@ public class EmotionSearchPanel
   
   private void g()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365961));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365960));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365962));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365959));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370535);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366006));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366005));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131366007));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131366004));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370639);
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getContext().getResources().getColor(2131165623));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getContext().getResources().getColor(2131165623));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365948));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369274));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365993));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369364));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131370529));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131370633));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
     this.jdField_b_of_type_AndroidViewView = ((Activity)getContext()).getWindow().getDecorView();
     this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundDrawable(a(18));
     this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(a(18));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new asan(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new asap(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new asqb(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new asqd(this));
   }
   
   private void h()
@@ -248,13 +248,13 @@ public class EmotionSearchPanel
       b();
     }
     l();
-    aryi localaryi = (aryi)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(7);
+    asnw localasnw = (asnw)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(7);
     if (this.jdField_f_of_type_Boolean)
     {
-      localaryi.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
-      localaryi.b(true);
+      localasnw.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+      localasnw.b(true);
     }
-    localaryi.c(4);
+    localasnw.c(4);
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.t(12);
   }
   
@@ -263,7 +263,7 @@ public class EmotionSearchPanel
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     int i = a();
     localValueAnimator.setDuration(200L);
-    localValueAnimator.addUpdateListener(new asaq(this, i));
+    localValueAnimator.addUpdateListener(new asqe(this, i));
     d(i);
     localValueAnimator.start();
   }
@@ -272,12 +272,12 @@ public class EmotionSearchPanel
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     int i = this.jdField_a_of_type_AndroidWidgetEditText.getWidth();
-    int j = bclx.a(27.0F);
+    int j = bdep.a(27.0F);
     int k = this.jdField_b_of_type_Int;
     int m = b();
     localValueAnimator.setDuration(200L);
-    localValueAnimator.addUpdateListener(new asar(this, i, k - i, m - j));
-    localValueAnimator.addListener(new asas(this));
+    localValueAnimator.addUpdateListener(new asqf(this, i, k - i, m - j));
+    localValueAnimator.addListener(new asqg(this));
     localValueAnimator.start();
   }
   
@@ -287,11 +287,11 @@ public class EmotionSearchPanel
       QLog.d("EmotionSearchPanel", 2, "onExitAnimEnd");
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(false, 0, false, null, 0);
-    aryi localaryi = (aryi)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(7);
+    asnw localasnw = (asnw)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(7);
     if (this.jdField_f_of_type_Boolean)
     {
       this.jdField_f_of_type_Boolean = false;
-      localaryi.d(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+      localasnw.d(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
     }
     this.jdField_a_of_type_AndroidWidgetEditText.setText("");
   }
@@ -329,7 +329,7 @@ public class EmotionSearchPanel
   {
     if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {}
     for (String str = "#1C1C1C";; str = "#F5F6FA") {
-      return bgtn.a(Color.parseColor(str), bgtn.a(paramInt));
+      return bhtq.a(Color.parseColor(str), bhtq.a(paramInt));
     }
   }
   
@@ -342,13 +342,13 @@ public class EmotionSearchPanel
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.measure(0, 0);
     }
     int j = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredHeight();
-    Object localObject = (aryb)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(1);
+    Object localObject = (asnp)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(1);
     int i;
-    if (((aryb)localObject).c()) {
-      if ((jdField_a_of_type_Int > 0) && (Math.abs(jdField_a_of_type_Int - ((aryb)localObject).a()) > 1))
+    if (((asnp)localObject).c()) {
+      if ((jdField_a_of_type_Int > 0) && (Math.abs(jdField_a_of_type_Int - ((asnp)localObject).a()) > 1))
       {
         i = 0;
-        i = -((aryb)localObject).a(i) + j;
+        i = -((asnp)localObject).a(i) + j;
       }
     }
     for (;;)
@@ -356,8 +356,8 @@ public class EmotionSearchPanel
       localObject = ValueAnimator.ofInt(new int[] { 0, i });
       ((ValueAnimator)localObject).setDuration(200L);
       ((ValueAnimator)localObject).setInterpolator(new LinearInterpolator());
-      ((ValueAnimator)localObject).addUpdateListener(new asat(this));
-      ((ValueAnimator)localObject).addListener(new asau(this));
+      ((ValueAnimator)localObject).addUpdateListener(new asqh(this));
+      ((ValueAnimator)localObject).addListener(new asqi(this));
       ((ValueAnimator)localObject).start();
       if (a(false)) {
         i();
@@ -368,7 +368,7 @@ public class EmotionSearchPanel
       if (jdField_a_of_type_Int <= 0) {
         i = this.jdField_e_of_type_Int;
       } else {
-        i = bclx.a(3.5F) + j;
+        i = bdep.a(3.5F) + j;
       }
     }
   }
@@ -381,7 +381,7 @@ public class EmotionSearchPanel
     this.jdField_c_of_type_Int = paramInt;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, int paramInt1, boolean paramBoolean, String paramString, int paramInt2, int paramInt3, aryi paramaryi)
+  public void a(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, int paramInt1, boolean paramBoolean, String paramString, int paramInt2, int paramInt3, asnw paramasnw)
   {
     if (QLog.isColorLevel()) {
       QLog.d("EmotionSearchPanel", 2, "init start searchRootStartBottomMargin=" + this.jdField_d_of_type_Int + " upDis=" + paramInt2 + " width=" + paramInt3 + " hasWord=" + this.jdField_c_of_type_Boolean + " keyboardHeight= " + jdField_a_of_type_Int);
@@ -397,20 +397,20 @@ public class EmotionSearchPanel
       this.jdField_a_of_type_AndroidWidgetEditText.setText("");
     }
     a(paramString, paramInt1, paramInt3, paramInt2);
-    this.jdField_a_of_type_Aryi = paramaryi;
+    this.jdField_a_of_type_Asnw = paramasnw;
     a();
   }
   
   public void b()
   {
-    Object localObject = (aryb)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(1);
+    Object localObject = (asnp)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(1);
     int j = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredHeight();
     int i;
     if (this.jdField_f_of_type_Boolean) {
-      if ((jdField_a_of_type_Int > 0) && (Math.abs(jdField_a_of_type_Int - ((aryb)localObject).a()) > 1))
+      if ((jdField_a_of_type_Int > 0) && (Math.abs(jdField_a_of_type_Int - ((asnp)localObject).a()) > 1))
       {
         i = 0;
-        i = ((aryb)localObject).a(i) - j;
+        i = ((asnp)localObject).a(i) - j;
       }
     }
     for (;;)
@@ -421,11 +421,11 @@ public class EmotionSearchPanel
       localObject = ValueAnimator.ofInt(new int[] { 0, i });
       ((ValueAnimator)localObject).setDuration(200L);
       ((ValueAnimator)localObject).setInterpolator(new LinearInterpolator());
-      ((ValueAnimator)localObject).addUpdateListener(new asav(this));
-      ((ValueAnimator)localObject).addListener(new asaw(this));
+      ((ValueAnimator)localObject).addUpdateListener(new asqj(this));
+      ((ValueAnimator)localObject).addListener(new asqk(this));
       ((ValueAnimator)localObject).start();
       if (this.jdField_e_of_type_Int < 0) {
-        ((aryi)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(7)).c(4);
+        ((asnw)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(7)).c(4);
       }
       if (a(true)) {
         j();
@@ -434,16 +434,16 @@ public class EmotionSearchPanel
       i = jdField_a_of_type_Int;
       break;
       if (jdField_a_of_type_Int <= 0) {
-        i = ((aryb)localObject).a() + j;
+        i = ((asnp)localObject).a() + j;
       } else {
-        i = bclx.a(3.5F) + j;
+        i = bdep.a(3.5F) + j;
       }
     }
   }
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new asao(this);
+    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new asqc(this);
     this.jdField_b_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
   }
   

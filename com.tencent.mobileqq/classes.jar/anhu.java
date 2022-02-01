@@ -1,36 +1,22 @@
-public class anhu
-  implements anil
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+final class anhu
+  implements EIPCResultCallback
 {
-  protected void a() {}
-  
-  protected void a(Object paramObject) {}
-  
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
-      a(paramObject);
-      return;
-    case 3: 
-      a();
-      return;
-    case 4: 
-      b(paramBoolean, paramObject);
-      return;
+    if (paramEIPCResult.code == 0) {
+      ApolloUtil.b("测试版本tips:预下载动作成功");
     }
-    a(paramBoolean);
+    for (;;)
+    {
+      QLog.i("CmShow_RenderViewController", 1, "CmShow_ preLoadRes result.code:" + paramEIPCResult.code);
+      return;
+      ApolloUtil.b("测试版本tips:预下载动作失败 ret:" + paramEIPCResult.code);
+    }
   }
 }
 

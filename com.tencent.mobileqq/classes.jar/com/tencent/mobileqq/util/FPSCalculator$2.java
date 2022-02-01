@@ -3,13 +3,13 @@ package com.tencent.mobileqq.util;
 import android.annotation.TargetApi;
 import android.os.Handler;
 import android.view.Choreographer;
-import bggs;
+import bhgt;
 import com.tencent.qphone.base.util.QLog;
 
 public class FPSCalculator$2
   implements Runnable
 {
-  public FPSCalculator$2(bggs parambggs) {}
+  public FPSCalculator$2(bhgt parambhgt) {}
   
   @TargetApi(16)
   public void run()
@@ -18,11 +18,11 @@ public class FPSCalculator$2
     {
       try
       {
-        if (bggs.a(this.this$0) == null) {
+        if (bhgt.a(this.this$0) == null) {
           continue;
         }
-        bggs.a(this.this$0).removeFrameCallback(bggs.a(this.this$0));
-        bggs.a(this.this$0).postFrameCallback(bggs.a(this.this$0));
+        bhgt.a(this.this$0).removeFrameCallback(bhgt.a(this.this$0));
+        bhgt.a(this.this$0).postFrameCallback(bhgt.a(this.this$0));
       }
       catch (Exception localException)
       {
@@ -32,9 +32,9 @@ public class FPSCalculator$2
         QLog.d("FPSCalculator", 2, "Choreographer.getInstance", localException);
         continue;
       }
-      bggs.a(this.this$0).removeCallbacks(bggs.a(this.this$0));
+      bhgt.a(this.this$0).removeCallbacks(bhgt.a(this.this$0));
       return;
-      bggs.a(this.this$0, Choreographer.getInstance());
+      bhgt.a(this.this$0, Choreographer.getInstance());
     }
   }
 }

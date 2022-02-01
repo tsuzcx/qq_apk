@@ -1,24 +1,41 @@
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class nts
+  extends anyu
 {
-  private ViewGroup a;
+  nts(ntc paramntc) {}
   
-  public nts(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, String paramString1, String paramString2)
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    this.a = ((ViewGroup)paramLayoutInflater.inflate(2131558433, paramViewGroup));
-    paramLayoutInflater = (TextView)this.a.findViewById(2131361919);
-    paramViewGroup = (TextView)this.a.findViewById(2131361918);
-    paramLayoutInflater.setText(paramString1);
-    paramViewGroup.setText(paramString2);
-  }
-  
-  public View a()
-  {
-    return this.a;
+    if (this.a.jdField_a_of_type_AndroidViewViewGroup == null) {}
+    label134:
+    for (;;)
+    {
+      return;
+      int j = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildCount();
+      int i = 0;
+      for (;;)
+      {
+        if (i >= j) {
+          break label134;
+        }
+        View localView = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
+        if (((localView.getTag() instanceof String)) && ((localView instanceof ImageView)) && (((String)localView.getTag()).equals(paramString)))
+        {
+          ((ImageView)localView).setImageDrawable(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramString));
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onUpdateTroopHead:" + paramString);
+          return;
+        }
+        i += 1;
+      }
+    }
   }
 }
 

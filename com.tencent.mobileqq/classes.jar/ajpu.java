@@ -1,24 +1,71 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.widget.RedDotTextView;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class ajpu
-  implements DialogInterface.OnCancelListener
+  implements bjdq
 {
-  private final WeakReference<ChatHistoryC2CDateFragment> a;
+  public ajpu(TroopActivity paramTroopActivity) {}
   
-  ajpu(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    this.a = new WeakReference(paramChatHistoryC2CDateFragment);
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    ChatHistoryC2CDateFragment localChatHistoryC2CDateFragment = (ChatHistoryC2CDateFragment)this.a.get();
-    if ((localChatHistoryC2CDateFragment != null) && (localChatHistoryC2CDateFragment.getActivity() != null) && (!localChatHistoryC2CDateFragment.getActivity().isFinishing())) {
-      paramDialogInterface.dismiss();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.b();
+    }
+    if (this.a.b != 2)
+    {
+      switch (paramInt2)
+      {
+      default: 
+        bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
+        bdll.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 0;
+      }
+      for (;;)
+      {
+        this.a.a(this.a.jdField_a_of_type_Int);
+        this.a.jdField_a_of_type_Blha.sendEmptyMessage(1234);
+        TroopActivity.a(this.a, paramInt2);
+        return;
+        bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
+        bdll.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 0;
+        continue;
+        bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "discuss", "contact_discuss_tab", 0, 0, "", "", "", "");
+        bdll.b(this.a.app, "CliOper", "", "", "0X8006621", "0X8006621", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 1;
+      }
+    }
+    switch (paramInt2)
+    {
+    default: 
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {
+        break;
+      }
+    }
+    for (String str = "0";; str = "1")
+    {
+      bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
+      bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
+      this.a.jdField_a_of_type_Int = 1;
+      break;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {}
+      for (str = "0";; str = "1")
+      {
+        bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
+        bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 1;
+        break;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).a()) {}
+      for (str = "0";; str = "1")
+      {
+        bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grprecom", 0, 0, "", str, "", "");
+        bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_recom", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 0;
+        break;
+      }
     }
   }
 }

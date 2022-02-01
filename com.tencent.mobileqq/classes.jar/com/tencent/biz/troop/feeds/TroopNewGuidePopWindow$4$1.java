@@ -1,6 +1,6 @@
 package com.tencent.biz.troop.feeds;
 
-import aaqa;
+import aaud;
 
 class TroopNewGuidePopWindow$4$1
   implements Runnable
@@ -9,7 +9,7 @@ class TroopNewGuidePopWindow$4$1
   
   public void run()
   {
-    aaqa.a(this.a.this$0, this.a.jdField_a_of_type_OrgJsonJSONObject, this.a.jdField_a_of_type_Int);
+    aaud.a(this.a.this$0, this.a.jdField_a_of_type_OrgJsonJSONObject, this.a.jdField_a_of_type_Int);
   }
 }
 

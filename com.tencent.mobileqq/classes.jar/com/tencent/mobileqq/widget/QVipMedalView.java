@@ -1,30 +1,36 @@
 package com.tencent.mobileqq.widget;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.os.Message;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import bdzx;
-import bibk;
+import aokv;
+import bagf;
+import bdll;
+import beyq;
+import bjci;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MedalList;
 import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import zkb;
-import zlx;
+import znw;
+import zps;
 
 public class QVipMedalView
   extends ViewGroup
 {
   protected int a;
-  protected bibk a;
+  protected bjci a;
   protected List<ImageView> a;
   protected int b;
   
@@ -44,69 +50,99 @@ public class QVipMedalView
     a();
   }
   
-  private void a(ImageView paramImageView, int paramInt, String paramString)
+  private void a(ImageView paramImageView, int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
     if (TextUtils.isEmpty(paramString))
     {
       QLog.e("QVipSettingMe.QVipMedalView", 1, "bindData with null value!!");
       return;
     }
-    paramString = VasApngUtil.getApngURLDrawable(paramString, VasApngUtil.VIP_APNG_TAGS, bdzx.a, null, null);
+    paramString = VasApngUtil.getApngURLDrawable(paramString, VasApngUtil.VIP_APNG_TAGS, beyq.a, null, null);
     ProfileActivity.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramImageView);
     paramImageView.setImageDrawable(paramString);
+    paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (paramString != null) {}
+    for (paramInt1 = aokv.a(paramString, paramString.c(), false);; paramInt1 = 98)
+    {
+      if (paramInt2 != 0)
+      {
+        paramString = new bagf();
+        Message localMessage = Message.obtain();
+        localMessage.arg1 = 1;
+        localMessage.obj = paramImageView;
+        localMessage.what = 0;
+        paramImageView = new Bundle();
+        paramImageView.putInt("iTipsTimes", paramInt3);
+        localMessage.setData(paramImageView);
+        paramString.removeMessages(localMessage.what);
+        paramString.sendMessage(localMessage);
+        a("0X800B2B3", paramInt1);
+        return;
+      }
+      a("0X800B2B2", paramInt1);
+      return;
+    }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bibk == null) {}
-    while (this.jdField_a_of_type_Bibk.a() == getChildCount()) {
+    if (this.jdField_a_of_type_Bjci == null) {}
+    while (this.jdField_a_of_type_Bjci.a() == getChildCount()) {
       return;
     }
-    zkb.a("consistency check failed ! adapter count=" + this.jdField_a_of_type_Bibk.a() + " view list size=" + this.jdField_a_of_type_JavaUtilList.size() + " child count=" + getChildCount(), new Object[0]);
-    int j = this.jdField_a_of_type_Bibk.a();
+    znw.a("consistency check failed ! adapter count=" + this.jdField_a_of_type_Bjci.a() + " view list size=" + this.jdField_a_of_type_JavaUtilList.size() + " child count=" + getChildCount(), new Object[0]);
+    int j = this.jdField_a_of_type_Bjci.a();
     removeAllViews();
     int i = 0;
     label97:
     if (i < j)
     {
       if (this.jdField_a_of_type_JavaUtilList.size() <= i) {
-        break label189;
+        break label205;
       }
       ((ImageView)this.jdField_a_of_type_JavaUtilList.get(i)).setImageDrawable(null);
     }
     for (;;)
     {
-      a((ImageView)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_Bibk.a(i), this.jdField_a_of_type_Bibk.a(i));
+      a((ImageView)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_Bjci.a(i), this.jdField_a_of_type_Bjci.a(i), this.jdField_a_of_type_Bjci.b(i), this.jdField_a_of_type_Bjci.c(i));
       addView((View)this.jdField_a_of_type_JavaUtilList.get(i));
       i += 1;
       break label97;
       break;
-      label189:
+      label205:
       this.jdField_a_of_type_JavaUtilList.add(new ImageView(getContext()));
     }
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_Int = zlx.a(getContext(), 4.0F);
+    this.jdField_a_of_type_Int = zps.a(getContext(), 4.0F);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localQQAppInterface != null) {
+      bdll.b(localQQAppInterface, "dc00898", "", localQQAppInterface.c(), paramString, paramString, paramInt, 0, String.valueOf(paramInt), "", "", "");
+    }
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_Bibk == null) {}
-    label163:
+    if (this.jdField_a_of_type_Bjci == null) {}
+    label166:
     for (;;)
     {
       return;
-      int i = this.jdField_a_of_type_Bibk.a();
+      int i = this.jdField_a_of_type_Bjci.a();
       int j = getPaddingTop();
       int k = getPaddingBottom();
       paramInt2 = 0;
       for (;;)
       {
         if (paramInt2 >= i) {
-          break label163;
+          break label166;
         }
         int m = this.b;
         int n = this.jdField_a_of_type_Int;
@@ -134,7 +170,7 @@ public class QVipMedalView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = 0;
-    if (this.jdField_a_of_type_Bibk == null)
+    if (this.jdField_a_of_type_Bjci == null)
     {
       setMeasuredDimension(0, 0);
       return;
@@ -147,35 +183,35 @@ public class QVipMedalView
     {
       this.b = (paramInt1 - getPaddingTop() - getPaddingBottom());
       if (k != 1073741824) {
-        break label162;
+        break label167;
       }
     }
     for (paramInt2 = j;; paramInt2 = (paramInt2 - 1) * this.jdField_a_of_type_Int + j * paramInt2 + getPaddingLeft() + getPaddingRight())
     {
-      j = this.jdField_a_of_type_Bibk.a();
+      j = this.jdField_a_of_type_Bjci.a();
       b();
       while (i < j)
       {
         ((ImageView)this.jdField_a_of_type_JavaUtilList.get(i)).measure(View.MeasureSpec.makeMeasureSpec(this.b, 1073741824), View.MeasureSpec.makeMeasureSpec(this.b, 1073741824));
         i += 1;
       }
-      this.b = zlx.a(getContext(), 20.0F);
+      this.b = zps.a(getContext(), 20.0F);
       paramInt1 = this.b + getPaddingBottom() + getPaddingTop();
       break;
-      label162:
-      paramInt2 = this.jdField_a_of_type_Bibk.a();
+      label167:
+      paramInt2 = this.jdField_a_of_type_Bjci.a();
       j = this.b;
     }
     setMeasuredDimension(paramInt2, paramInt1);
   }
   
-  public void setAdapter(bibk parambibk)
+  public void setAdapter(bjci parambjci)
   {
-    this.jdField_a_of_type_Bibk = parambibk;
+    this.jdField_a_of_type_Bjci = parambjci;
     removeAllViews();
-    if (this.jdField_a_of_type_Bibk != null)
+    if (this.jdField_a_of_type_Bjci != null)
     {
-      int j = this.jdField_a_of_type_Bibk.a();
+      int j = this.jdField_a_of_type_Bjci.a();
       int i = 0;
       if (i < j)
       {
@@ -184,7 +220,7 @@ public class QVipMedalView
         }
         for (;;)
         {
-          a((ImageView)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_Bibk.a(i), this.jdField_a_of_type_Bibk.a(i));
+          a((ImageView)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_Bjci.a(i), this.jdField_a_of_type_Bjci.a(i), this.jdField_a_of_type_Bjci.b(i), this.jdField_a_of_type_Bjci.c(i));
           addView((View)this.jdField_a_of_type_JavaUtilList.get(i));
           i += 1;
           break;
@@ -197,11 +233,11 @@ public class QVipMedalView
   
   public void setData(MedalList paramMedalList)
   {
-    if (this.jdField_a_of_type_Bibk == null) {
-      this.jdField_a_of_type_Bibk = new bibk();
+    if (this.jdField_a_of_type_Bjci == null) {
+      this.jdField_a_of_type_Bjci = new bjci();
     }
-    this.jdField_a_of_type_Bibk.a(paramMedalList);
-    setAdapter(this.jdField_a_of_type_Bibk);
+    this.jdField_a_of_type_Bjci.a(paramMedalList);
+    setAdapter(this.jdField_a_of_type_Bjci);
   }
   
   public void setItemMargin(int paramInt)

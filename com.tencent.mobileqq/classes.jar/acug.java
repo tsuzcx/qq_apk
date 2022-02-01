@@ -1,18 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForMini;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class acug
-  implements View.OnClickListener
+final class acug
+  implements acun
 {
-  public acug(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
-  
-  public void onClick(View paramView)
+  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
   {
-    GdtVideoImaxFragment.a(this.a);
-    GdtVideoImaxFragment.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramacts != null) {}
+    for (paramString = paramacts.a(); (paramacts == null) || (paramString == null); paramString = null)
+    {
+      acvc.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramVarArgs = new JSONObject(paramVarArgs[0]);
+        paramacts = paramVarArgs.optString("process", "com.tencent.mobileqq:mini");
+        if (TextUtils.equals(paramacts, "com.tencent.mobileqq"))
+        {
+          paramacts = PublicFragmentActivity.class;
+          GdtInterstitialFragmentForJS.a(paramString, paramacts, paramVarArgs);
+          return true;
+        }
+      }
+      catch (JSONException paramacts)
+      {
+        acvc.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramacts);
+        return true;
+      }
+      if (TextUtils.equals(paramacts, "com.tencent.mobileqq:tool")) {
+        paramacts = PublicFragmentActivityForTool.class;
+      } else {
+        paramacts = PublicFragmentActivityForMini.class;
+      }
+    }
   }
 }
 

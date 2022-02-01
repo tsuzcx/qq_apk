@@ -1,140 +1,42 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class bcxx
-  extends bcvs
 {
-  public boolean a;
-  public int o;
-  
-  public bcxx()
+  public static bcya a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "hr";
-    this.jdField_a_of_type_Int = 9;
-  }
-  
-  @TargetApi(11)
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    if (!this.jdField_a_of_type_Boolean)
+    String str = paramString;
+    if (bcyy.a())
     {
-      paramBundle = paramView;
-      if (paramView == null) {
-        paramBundle = new View(paramContext);
+      str = paramString;
+      if (!paramString.endsWith("64bit")) {
+        str = paramString + "64bit";
       }
-      if (this.o == 0) {
-        paramBundle.setBackgroundColor(-2170912);
-      }
-      do
-      {
-        do
-        {
-          return paramBundle;
-        } while (this.o != 1);
-        paramBundle.setBackgroundResource(2130847466);
-      } while (Build.VERSION.SDK_INT < 11);
-      paramBundle.setLayerType(1, null);
-      return paramBundle;
     }
-    return null;
+    paramString = new bcya();
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_resource_status_sp", 4);
+    paramString.a = localSharedPreferences.getInt(str + "_version_k", 0);
+    paramString.b = localSharedPreferences.getInt(str + "_status_k", -1);
+    paramString.c = localSharedPreferences.getInt(str + "_last_error_k", -1);
+    return paramString;
   }
   
-  public String a()
+  public static boolean a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    return "Hr";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    if (this.jdField_a_of_type_Int > 4)
+    String str = paramString;
+    if (bcyy.a())
     {
-      String str = paramObjectInput.readUTF();
-      if ((str != null) && (str.toLowerCase().equals("true"))) {
-        this.jdField_a_of_type_Boolean = true;
+      str = paramString;
+      if (!paramString.endsWith("64bit")) {
+        str = paramString + "64bit";
       }
     }
-    if (this.jdField_a_of_type_Int >= 9) {
-      this.o = paramObjectInput.readInt();
-    }
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "true";; str = "false")
-    {
-      paramObjectOutput.writeUTF(str);
-      paramObjectOutput.writeInt(this.o);
-      return;
-    }
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "hr");
-    if (this.jdField_a_of_type_Int > 4) {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label76;
-      }
-    }
-    label76:
-    for (String str = "true";; str = "false")
-    {
-      paramXmlSerializer.attribute(null, "hidden", str);
-      if (this.jdField_a_of_type_Int >= 9) {
-        paramXmlSerializer.attribute(null, "style", String.valueOf(this.o));
-      }
-      paramXmlSerializer.endTag(null, "hr");
-      return;
-    }
-  }
-  
-  public boolean a(bcxj parambcxj)
-  {
-    if (parambcxj == null) {}
-    for (;;)
-    {
-      return true;
-      if (this.jdField_a_of_type_Int > 4)
-      {
-        String str = parambcxj.a("hidden");
-        if ((str != null) && (str.toLowerCase().equals("true"))) {
-          this.jdField_a_of_type_Boolean = true;
-        }
-      }
-      if (this.jdField_a_of_type_Int >= 9)
-      {
-        parambcxj = parambcxj.a("style");
-        if (!TextUtils.isEmpty(parambcxj)) {
-          try
-          {
-            this.o = Integer.parseInt(parambcxj);
-            if (QLog.isColorLevel())
-            {
-              QLog.i("StructMsg", 2, "type=" + this.o);
-              return true;
-            }
-          }
-          catch (NumberFormatException parambcxj)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("StructMsg", 2, "", parambcxj);
-            }
-          }
-        }
-      }
-    }
-    return false;
+    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_resource_status_sp", 4).edit();
+    paramString.putInt(str + "_version_k", paramInt1);
+    paramString.putInt(str + "_status_k", paramInt2);
+    paramString.putInt(str + "_last_error_k", paramInt3);
+    return paramString.commit();
   }
 }
 

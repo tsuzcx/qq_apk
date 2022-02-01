@@ -1,15 +1,18 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.filedownload.ui.ApkFileDownloadButton;
 
-final class bjyx
+public class bjyx
   implements DialogInterface.OnClickListener
 {
-  bjyx(Activity paramActivity) {}
+  public bjyx(ApkFileDownloadButton paramApkFileDownloadButton, DownloadInfo paramDownloadInfo) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    mue.a(this.a);
+    this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.h();
+    ApkFileDownloadButton.a(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    bjto.b(bjtq.a().a("400").k(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.a).j("5").l(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.c).m(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.d).a(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.h).b(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.f).g(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.e));
   }
 }
 

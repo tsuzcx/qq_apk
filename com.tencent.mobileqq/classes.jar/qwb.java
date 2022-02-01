@@ -1,25 +1,59 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class qwb
-  implements View.OnClickListener
+public class qwb
 {
-  qwb(qvz paramqvz, RecommendFollowInfo paramRecommendFollowInfo) {}
+  private Integer jdField_a_of_type_JavaLangInteger;
+  private Long jdField_a_of_type_JavaLangLong;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
   
-  public void onClick(View paramView)
+  public Long a()
   {
-    ComponentContentRecommend localComponentContentRecommend = this.jdField_a_of_type_Qvz.a;
-    RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-    if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localComponentContentRecommend.a(localRecommendFollowInfo, bool);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    return this.jdField_a_of_type_JavaLangLong;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(Integer paramInteger)
+  {
+    this.jdField_a_of_type_JavaLangInteger = paramInteger;
+  }
+  
+  public void a(Long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangLong = paramLong;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public void b(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public String toString()
+  {
+    return "FollowingMember{uin='" + this.jdField_a_of_type_JavaLangLong + '\'' + ", nickname='" + this.jdField_a_of_type_JavaLangString + '\'' + ", headUrl='" + this.b + '\'' + '}';
   }
 }
 

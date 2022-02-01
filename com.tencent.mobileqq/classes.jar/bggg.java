@@ -1,96 +1,80 @@
+import android.text.TextUtils;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.List;
+
 public class bggg
+  extends bggf
 {
-  public static bggg a;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[256];
-  private static char[] jdField_a_of_type_ArrayOfChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
+  private TextView a;
+  private View b;
   
-  protected bggg()
+  protected bggg(View paramView)
   {
-    a();
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380031));
+    this.b = ((ImageView)paramView.findViewById(2131369171));
   }
   
-  public static bggg a()
+  public void a(View paramView, HWReciteItem paramHWReciteItem, bggd parambggd)
   {
-    if (jdField_a_of_type_Bggg == null) {}
-    try
+    boolean bool2 = false;
+    switch (paramView.getId())
     {
-      jdField_a_of_type_Bggg = new bggg();
-      return jdField_a_of_type_Bggg;
-    }
-    finally {}
-  }
-  
-  public String a(String paramString)
-  {
-    return a(paramString.getBytes()).toString();
-  }
-  
-  public StringBuffer a(byte[] paramArrayOfByte)
-  {
-    int k = 0;
-    StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length * 2);
-    int i = 0;
-    int j = 0;
-    char c;
-    while (k < paramArrayOfByte.length)
-    {
-      i = i << 8 | paramArrayOfByte[k] & 0xFF;
-      j += 8;
-      if (j > 5)
+    default: 
+      return;
+    case 2131380031: 
+      paramHWReciteItem = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+      if ((paramHWReciteItem != null) && (paramHWReciteItem.isActive())) {
+        paramHWReciteItem.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+      }
+      paramHWReciteItem = (bgei)parambggd.a;
+      boolean bool1 = bool2;
+      if (paramHWReciteItem.a != null)
       {
-        Object localObject = jdField_a_of_type_ArrayOfChar;
-        j -= 6;
-        c = localObject[(i >> j)];
-        if (c == 'i') {
-          localObject = "ia";
-        }
-        for (;;)
-        {
-          localStringBuffer.append(localObject);
-          i &= (1 << j) - 1;
-          break;
-          if (c == '+') {
-            localObject = "ib";
-          } else if (c == '/') {
-            localObject = "ic";
-          } else {
-            localObject = Character.valueOf(c);
-          }
+        bool1 = bool2;
+        if (!paramHWReciteItem.a.isEmpty()) {
+          bool1 = true;
         }
       }
-      k += 1;
-    }
-    if (j > 0)
-    {
-      c = jdField_a_of_type_ArrayOfChar[(i << 6 - j)];
-      if (c != 'i') {
-        break label185;
+      paramView = blir.d(paramView.getContext());
+      paramView.a(new bggh(this, paramView, bool1, paramHWReciteItem));
+      if (bool1) {
+        paramView.c(anzj.a(2131712129));
       }
-      paramArrayOfByte = "ia";
+      paramView.c(anzj.a(2131712128));
+      paramView.d(anzj.a(2131712126));
+      paramView.show();
+      return;
     }
-    for (;;)
-    {
-      localStringBuffer.append(paramArrayOfByte);
-      return localStringBuffer;
-      label185:
-      if (c == '+') {
-        paramArrayOfByte = "ib";
-      } else if (c == '/') {
-        paramArrayOfByte = "ic";
-      } else {
-        paramArrayOfByte = Character.valueOf(c);
-      }
-    }
+    paramHWReciteItem.a().a(parambggd);
   }
   
-  protected void a()
+  public void a(HWReciteItem paramHWReciteItem, bggd parambggd, bgei parambgei, int paramInt)
   {
-    int i = 0;
-    while (i < jdField_a_of_type_ArrayOfChar.length)
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (TextUtils.isEmpty(parambgei.c))
     {
-      jdField_a_of_type_ArrayOfByte[jdField_a_of_type_ArrayOfChar[i]] = ((byte)i);
-      i += 1;
+      StringBuilder localStringBuilder = new StringBuilder(anzj.a(2131712127)).append(parambgei.b);
+      if ((parambgei.a != null) && (!parambgei.a.isEmpty())) {
+        localStringBuilder.append(bgdm.a(parambgei.a));
+      }
+      parambgei.c = localStringBuilder.toString();
     }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambgei.c);
+    if (paramInt != 1)
+    {
+      paramHWReciteItem.b(this.jdField_a_of_type_AndroidWidgetTextView, parambggd);
+      paramHWReciteItem.b(this.b, parambggd);
+      this.b.setVisibility(0);
+      return;
+    }
+    this.b.setVisibility(8);
   }
 }
 

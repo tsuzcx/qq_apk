@@ -1,35 +1,51 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.annotation.NonNull;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
 
-class ydk
-  implements wnp
+public class ydk
+  extends QQUIEventReceiver<StoryPickerFragment, xqk>
 {
-  ydk(ydh paramydh, CommentEntry paramCommentEntry, boolean paramBoolean) {}
-  
-  public void a(int paramInt, Bundle paramBundle)
+  public ydk(@NonNull StoryPickerFragment paramStoryPickerFragment)
   {
-    a(-1, anni.a(2131713103));
+    super(paramStoryPickerFragment);
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull xqk paramxqk)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    QQToast.a(BaseApplication.getContext(), 1, anni.a(2131713100), 0).a();
-    yqp.e("Q.qqstory.detail.StoryDetailPresenter", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
-  }
-  
-  public void a(MessageMicro paramMessageMicro)
-  {
-    if (!ydh.a(this.jdField_a_of_type_Ydh).get()) {
-      ydh.a(this.jdField_a_of_type_Ydh, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
+    paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.clear();
+    paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.addAll(paramxqk.jdField_a_of_type_JavaUtilArrayList);
+    List localList = paramStoryPickerFragment.jdField_a_of_type_Ydu.a();
+    int i = 0;
+    while (i < localList.size())
+    {
+      Iterator localIterator = ((VideoCollectionItem)localList.get(i)).collectionVideoUIItemList.iterator();
+      while (localIterator.hasNext())
+      {
+        ykj localykj = (ykj)localIterator.next();
+        if (paramxqk.jdField_a_of_type_JavaUtilArrayList.contains(localykj.jdField_a_of_type_JavaLangString)) {
+          localykj.jdField_a_of_type_Boolean = true;
+        } else {
+          localykj.jdField_a_of_type_Boolean = false;
+        }
+      }
+      i += 1;
+    }
+    paramStoryPickerFragment.c();
+    if (paramxqk.jdField_a_of_type_Boolean) {
+      paramStoryPickerFragment.rightViewText.performClick();
     }
   }
   
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  public Class acceptEventClass()
+  {
+    return xqk.class;
+  }
 }
 
 

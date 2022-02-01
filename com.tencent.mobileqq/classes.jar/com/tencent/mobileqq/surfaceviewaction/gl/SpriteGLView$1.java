@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import bdfu;
+import bdyp;
 import java.util.List;
 
 public class SpriteGLView$1
@@ -17,8 +17,8 @@ public class SpriteGLView$1
     while (i < j)
     {
       Object localObject = arrayOfObject[i];
-      if ((localObject instanceof bdfu)) {
-        ((bdfu)localObject).a();
+      if ((localObject instanceof bdyp)) {
+        ((bdyp)localObject).a();
       }
       i += 1;
     }

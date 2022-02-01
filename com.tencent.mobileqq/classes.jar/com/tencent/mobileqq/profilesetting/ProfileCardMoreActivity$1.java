@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profilesetting;
 
-import awzp;
+import axsi;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
 class ProfileCardMoreActivity$1
@@ -11,7 +11,7 @@ class ProfileCardMoreActivity$1
   public void run()
   {
     this.this$0.h();
-    this.this$0.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(awzp.a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, true));
+    this.this$0.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(axsi.a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, true));
   }
 }
 

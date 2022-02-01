@@ -11,7 +11,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
-import bkma;
+import blnd;
 
 @SuppressLint({"AppCompatCustomView"})
 public class LayerImageView
@@ -22,7 +22,7 @@ public class LayerImageView
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private boolean jdField_a_of_type_Boolean;
-  private bkma[] jdField_a_of_type_ArrayOfBkma;
+  private blnd[] jdField_a_of_type_ArrayOfBlnd;
   private boolean b;
   
   public LayerImageView(Context paramContext)
@@ -62,27 +62,27 @@ public class LayerImageView
   public void setBitmaps(Bitmap[] paramArrayOfBitmap, boolean paramBoolean)
   {
     int j = 0;
-    if ((paramBoolean) && (this.jdField_a_of_type_ArrayOfBkma != null))
+    if ((paramBoolean) && (this.jdField_a_of_type_ArrayOfBlnd != null))
     {
-      bkma[] arrayOfbkma = this.jdField_a_of_type_ArrayOfBkma;
-      int k = arrayOfbkma.length;
+      blnd[] arrayOfblnd = this.jdField_a_of_type_ArrayOfBlnd;
+      int k = arrayOfblnd.length;
       i = 0;
       while (i < k)
       {
-        bkma localbkma = arrayOfbkma[i];
-        if (bkma.a(localbkma) != null) {
-          bkma.a(localbkma).recycle();
+        blnd localblnd = arrayOfblnd[i];
+        if (blnd.a(localblnd) != null) {
+          blnd.a(localblnd).recycle();
         }
         i += 1;
       }
     }
-    this.jdField_a_of_type_ArrayOfBkma = new bkma[paramArrayOfBitmap.length];
+    this.jdField_a_of_type_ArrayOfBlnd = new blnd[paramArrayOfBitmap.length];
     int i = j;
     while (i < paramArrayOfBitmap.length)
     {
-      this.jdField_a_of_type_ArrayOfBkma[i] = new bkma(paramArrayOfBitmap[i], this.jdField_a_of_type_Int, null);
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap$Config == null) || ((bkma.a(this.jdField_a_of_type_ArrayOfBkma[i]) != null) && (bkma.a(this.jdField_a_of_type_ArrayOfBkma[i]).ordinal() > this.jdField_a_of_type_AndroidGraphicsBitmap$Config.ordinal()))) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap$Config = bkma.a(this.jdField_a_of_type_ArrayOfBkma[i]);
+      this.jdField_a_of_type_ArrayOfBlnd[i] = new blnd(paramArrayOfBitmap[i], this.jdField_a_of_type_Int, null);
+      if ((this.jdField_a_of_type_AndroidGraphicsBitmap$Config == null) || ((blnd.a(this.jdField_a_of_type_ArrayOfBlnd[i]) != null) && (blnd.a(this.jdField_a_of_type_ArrayOfBlnd[i]).ordinal() > this.jdField_a_of_type_AndroidGraphicsBitmap$Config.ordinal()))) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap$Config = blnd.a(this.jdField_a_of_type_ArrayOfBlnd[i]);
       }
       i += 1;
     }
@@ -98,28 +98,28 @@ public class LayerImageView
   
   public void setLayerBitmap(int paramInt, Bitmap paramBitmap, boolean paramBoolean)
   {
-    bkma localbkma = this.jdField_a_of_type_ArrayOfBkma[paramInt];
-    this.jdField_a_of_type_ArrayOfBkma[paramInt] = new bkma(paramBitmap, this.jdField_a_of_type_Int, null);
-    if ((paramBoolean) && (bkma.a(localbkma) != null)) {
-      bkma.a(localbkma).recycle();
+    blnd localblnd = this.jdField_a_of_type_ArrayOfBlnd[paramInt];
+    this.jdField_a_of_type_ArrayOfBlnd[paramInt] = new blnd(paramBitmap, this.jdField_a_of_type_Int, null);
+    if ((paramBoolean) && (blnd.a(localblnd) != null)) {
+      blnd.a(localblnd).recycle();
     }
   }
   
   public void setLayerPadding(int paramInt, Rect paramRect)
   {
-    bkma.a(this.jdField_a_of_type_ArrayOfBkma[paramInt], paramRect);
+    blnd.a(this.jdField_a_of_type_ArrayOfBlnd[paramInt], paramRect);
     b();
   }
   
   public void setLayerPadding(Rect[] paramArrayOfRect)
   {
-    if (paramArrayOfRect.length != this.jdField_a_of_type_ArrayOfBkma.length) {
+    if (paramArrayOfRect.length != this.jdField_a_of_type_ArrayOfBlnd.length) {
       throw new IllegalArgumentException("padding must have the same size as input bitmaps");
     }
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfBkma.length)
+    while (i < this.jdField_a_of_type_ArrayOfBlnd.length)
     {
-      bkma.a(this.jdField_a_of_type_ArrayOfBkma[i], paramArrayOfRect[i]);
+      blnd.a(this.jdField_a_of_type_ArrayOfBlnd[i], paramArrayOfRect[i]);
       i += 1;
     }
     b();
@@ -127,7 +127,7 @@ public class LayerImageView
   
   public void setLayerVisibility(int paramInt1, int paramInt2)
   {
-    bkma.a(this.jdField_a_of_type_ArrayOfBkma[paramInt1], paramInt2);
+    blnd.a(this.jdField_a_of_type_ArrayOfBlnd[paramInt1], paramInt2);
     b();
   }
   

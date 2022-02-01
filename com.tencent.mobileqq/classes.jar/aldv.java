@@ -1,50 +1,30 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class aldv
-  extends AbsRecentStatus
+class aldv
+  implements EIPCResultCallback
 {
-  private static int a = 8;
+  aldv(aldt paramaldt, aldq paramaldq, DownloadParam paramDownloadParam) {}
   
-  public int[] declareStatus()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return new int[] { 0, 10 };
-  }
-  
-  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
-  {
-    return paramRecentBaseData.getRecentUserType() == 1;
-  }
-  
-  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
-  {
-    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {}
-    for (paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;; paramIMCoreAppRuntime = null)
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
     {
-      if ((paramIMCoreAppRuntime == null) || (paramRecentBaseData == null)) {}
-      String str;
-      do
-      {
-        int i;
-        do
-        {
-          return false;
-          i = paramRecentBaseData.getRecentUserType();
-          str = paramRecentBaseData.getRecentUserUin();
-        } while ((i != 1) || ((paramRecentBaseData.mStatus != 0) && (paramRecentBaseData.mStatus != 10)));
-        paramRecentBaseData.mStatus = 0;
-        paramIMCoreAppRuntime = (mwd)paramIMCoreAppRuntime.getManager(373);
-      } while ((paramIMCoreAppRuntime == null) || (!paramIMCoreAppRuntime.b(str)));
-      paramRecentBaseData.mStatus = 10;
-      return false;
+      i = paramEIPCResult.data.getInt("result_code");
+      paramEIPCResult = (PreloadManager.PathResult)paramEIPCResult.data.getSerializable("path_result");
+      if (this.jdField_a_of_type_Aldq != null) {
+        this.jdField_a_of_type_Aldq.onResult(i, paramEIPCResult);
+      }
     }
-  }
-  
-  public int priority()
-  {
-    return a;
+    while (this.jdField_a_of_type_Aldq == null)
+    {
+      int i;
+      return;
+    }
+    this.jdField_a_of_type_Aldq.onResult(1, PreloadManager.PathResult.getFailRes(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.url));
   }
 }
 

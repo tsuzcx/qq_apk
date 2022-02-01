@@ -1,37 +1,16 @@
-import android.app.Activity;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.1;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.2;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.3;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.4;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class aygh
-  extends bdjl
+class aygh
+  implements aygp
 {
-  public aygh(OCRResultFragmentNew paramOCRResultFragmentNew, Activity paramActivity)
-  {
-    super(paramActivity);
-  }
+  aygh(aygb paramaygb, VideoData paramVideoData) {}
   
-  public void a()
+  public boolean a(aygm paramaygm, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.1(this));
-  }
-  
-  public void a(int paramInt)
-  {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.4(this, paramInt));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.3(this));
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.2(this, paramString));
+    if (this.jdField_a_of_type_Aygb.a != null) {
+      this.jdField_a_of_type_Aygb.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, paramInt1, paramInt2, "use sdk play error");
+    }
+    return true;
   }
 }
 

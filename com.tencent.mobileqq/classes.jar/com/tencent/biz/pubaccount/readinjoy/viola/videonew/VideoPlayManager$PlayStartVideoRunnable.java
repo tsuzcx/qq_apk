@@ -2,24 +2,24 @@ package com.tencent.biz.pubaccount.readinjoy.viola.videonew;
 
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import sfb;
-import slm;
-import trl;
-import trn;
-import trp;
+import rwf;
+import scq;
+import tih;
+import tij;
+import til;
 
 public class VideoPlayManager$PlayStartVideoRunnable
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  private sfb jdField_a_of_type_Sfb;
-  private trp jdField_a_of_type_Trp;
+  private rwf jdField_a_of_type_Rwf;
+  private til jdField_a_of_type_Til;
   
-  public VideoPlayManager$PlayStartVideoRunnable(VideoPlayManager paramVideoPlayManager, trp paramtrp)
+  public VideoPlayManager$PlayStartVideoRunnable(VideoPlayManager paramVideoPlayManager, til paramtil)
   {
-    this.jdField_a_of_type_Trp = paramtrp;
-    this.jdField_a_of_type_Sfb = trp.a(paramtrp);
-    this.jdField_a_of_type_Int = paramtrp.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Til = paramtil;
+    this.jdField_a_of_type_Rwf = til.a(paramtil);
+    this.jdField_a_of_type_Int = paramtil.jdField_a_of_type_Int;
   }
   
   public void run()
@@ -27,7 +27,7 @@ public class VideoPlayManager$PlayStartVideoRunnable
     if (QLog.isColorLevel()) {
       QLog.d("Viola.VideoPlayManager", 2, "VideoFeedsPlayManager innerPlayVideo post thread");
     }
-    if ((this.jdField_a_of_type_Trp == null) || (this.jdField_a_of_type_Sfb == null) || (VideoPlayManager.c(this.this$0))) {}
+    if ((this.jdField_a_of_type_Til == null) || (this.jdField_a_of_type_Rwf == null) || (VideoPlayManager.c(this.this$0))) {}
     do
     {
       do
@@ -38,31 +38,31 @@ public class VideoPlayManager$PlayStartVideoRunnable
           {
             return;
             VideoPlayManager.a(this.this$0, true);
-            if (this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_a_of_type_Int != 0) {
+            if (this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_a_of_type_Int != 0) {
               break;
             }
-          } while (TextUtils.isEmpty(this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_d_of_type_JavaLangString));
-          this.jdField_a_of_type_Sfb.a("", this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_d_of_type_JavaLangString, 101, this.jdField_a_of_type_Int, 0L, this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_d_of_type_Int);
+          } while (TextUtils.isEmpty(this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_d_of_type_JavaLangString));
+          this.jdField_a_of_type_Rwf.a("", this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_d_of_type_JavaLangString, 101, this.jdField_a_of_type_Int, 0L, this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_d_of_type_Int);
           return;
-          if ((this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_a_of_type_Int == 7))
+          if ((this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_a_of_type_Int == 7))
           {
-            this.jdField_a_of_type_Sfb.a(this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_Int);
+            this.jdField_a_of_type_Rwf.a(this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_Int);
             return;
           }
-          if ((this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_a_of_type_Int != 2) && ((this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_a_of_type_Int != 6) || (TextUtils.isEmpty(this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_a_of_type_JavaLangString)))) {
+          if ((this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_a_of_type_Int != 2) && ((this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_a_of_type_Int != 6) || (TextUtils.isEmpty(this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_a_of_type_JavaLangString)))) {
             break;
           }
-        } while (this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_a_of_type_JavaLangString == null);
-        slm.a().a(this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_a_of_type_JavaLangString, new trn(this));
+        } while (this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_a_of_type_JavaLangString == null);
+        scq.a().a(this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_a_of_type_JavaLangString, new tij(this));
         return;
-        if (this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_a_of_type_Int != 5) {
+        if (this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_a_of_type_Int != 5) {
           break;
         }
-      } while (this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_a_of_type_JavaLangString == null);
-      this.jdField_a_of_type_Sfb.a("", this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_a_of_type_JavaLangString, 101, this.jdField_a_of_type_Int, 0L, this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_d_of_type_Int, false);
+      } while (this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_a_of_type_JavaLangString == null);
+      this.jdField_a_of_type_Rwf.a("", this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_a_of_type_JavaLangString, 101, this.jdField_a_of_type_Int, 0L, this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_d_of_type_Int, false);
       return;
-    } while ((this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_a_of_type_Int != 6) || (TextUtils.isEmpty(this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_d_of_type_JavaLangString)));
-    this.jdField_a_of_type_Sfb.a("", this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_d_of_type_JavaLangString, 101, this.jdField_a_of_type_Int, 0L, this.jdField_a_of_type_Trp.jdField_a_of_type_Trl.jdField_d_of_type_Int);
+    } while ((this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_a_of_type_Int != 6) || (TextUtils.isEmpty(this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_d_of_type_JavaLangString)));
+    this.jdField_a_of_type_Rwf.a("", this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_d_of_type_JavaLangString, 101, this.jdField_a_of_type_Int, 0L, this.jdField_a_of_type_Til.jdField_a_of_type_Tih.jdField_d_of_type_Int);
   }
 }
 

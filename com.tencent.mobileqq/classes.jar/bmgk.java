@@ -1,514 +1,296 @@
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Matrix;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
+import android.widget.Toast;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseReq;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
-import com.tencent.mm.opensdk.modelmsg.ShowMessageFromWX.Req;
-import com.tencent.mm.opensdk.modelmsg.WXImageObject;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
-import com.tencent.mm.opensdk.modelmsg.WXMiniProgramObject;
-import com.tencent.mm.opensdk.modelmsg.WXTextObject;
-import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
-import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
+import com.tencent.mobileqq.pluginsdk.PluginProxyService;
+import com.tencent.mobileqq.pluginsdk.RemotePluginManager.Stub;
+import com.tencent.mobileqq.pluginsdk.SplashDialogWrapper;
+import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.share.WXShareFromQZHelper.1;
-import cooperation.qzone.share.WXShareFromQZHelper.2;
-import cooperation.qzone.share.WXShareFromQZHelper.3;
-import cooperation.qzone.share.WXShareFromQZHelper.4;
-import cooperation.qzone.share.WXShareFromQZHelper.5;
-import cooperation.qzone.util.QZLog;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import cooperation.plugin.IPluginManager.6;
+import cooperation.plugin.PluginInfo;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
 
-public class bmgk
-  implements IWXAPIEventHandler
+public abstract class bmgk
+  extends RemotePluginManager.Stub
+  implements Manager
 {
-  private static bmgk jdField_a_of_type_Bmgk;
-  public static String a;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  public static final String b;
-  private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), "wx34b037fdb0f655ee", true);
-  private CopyOnWriteArrayList<bmgl> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference = null;
+  public static long a;
+  private static volatile PluginManagerClient jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient;
+  private static PluginManagerHelper.OnPluginManagerLoadedListener jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener;
+  private static ConcurrentLinkedQueue<bmgu> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   
-  static
+  public static bmgk a(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_JavaLangString = bmgk.class.getSimpleName();
-    b = bhgg.a(anhk.ba + "photo/");
+    return new bmhk(paramQQAppInterface);
   }
   
-  private bmgk()
+  public static void a(Context paramContext, bmgt parambmgt)
   {
-    a();
+    a(paramContext, parambmgt, null);
   }
   
-  public static Uri a(Context paramContext, File paramFile)
+  public static void a(Context paramContext, bmgt parambmgt, bmgq parambmgq)
   {
-    if ((paramFile == null) || (!paramFile.exists())) {
-      return null;
-    }
-    try
+    Object localObject;
+    if (parambmgt.f != null)
     {
-      paramFile = FileProvider.getUriForFile(paramContext, "com.tencent.mobileqq.fileprovider", paramFile);
-      paramContext.grantUriPermission("com.tencent.mm", paramFile, 1);
-      return paramFile;
+      localObject = Toast.makeText(BaseApplicationImpl.getContext(), parambmgt.f, 0);
+      ((Toast)localObject).setGravity(17, 0, 0);
+      ((Toast)localObject).show();
     }
-    catch (Exception paramContext)
-    {
-      QZLog.e(jdField_a_of_type_JavaLangString, "getFileUri exception:", paramContext);
+    parambmgt.jdField_a_of_type_AndroidContentIntent.putExtra("launchTimeStart", System.currentTimeMillis());
+    parambmgq = new bmgl(parambmgq);
+    if (((paramContext instanceof Activity)) && (parambmgt.jdField_a_of_type_AndroidAppDialog != null) && (!((Activity)paramContext).isFinishing())) {
+      new SplashDialogWrapper(paramContext, parambmgt.jdField_a_of_type_AndroidAppDialog, parambmgt.jdField_d_of_type_JavaLangString, parambmgt.jdField_b_of_type_JavaLangString, parambmgt.jdField_b_of_type_Boolean, parambmgt.jdField_c_of_type_Int).show();
     }
-    return null;
-  }
-  
-  public static bmgk a()
-  {
-    if (jdField_a_of_type_Bmgk == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (jdField_a_of_type_Bmgk == null) {
-        jdField_a_of_type_Bmgk = new bmgk();
-      }
-      return jdField_a_of_type_Bmgk;
-    }
-  }
-  
-  public static void a(Activity paramActivity)
-  {
-    if (paramActivity != null)
-    {
-      Intent localIntent = new Intent(BaseApplication.getContext(), QQBrowserDelegationActivity.class);
-      localIntent.putExtra("url", QzoneConfig.getInstance().getConfig("H5Url", "WeiXinDownload", "https://app.qq.com/#id=detail&appid=100733732"));
-      localIntent.putExtra("fromQZone", true);
-      localIntent.addFlags(268435456);
-      paramActivity.startActivity(localIntent);
-    }
-  }
-  
-  public static void a(Activity paramActivity, BaseReq paramBaseReq)
-  {
-    if ((paramActivity != null) && (paramBaseReq != null)) {
-      for (;;)
+    if (parambmgt.jdField_a_of_type_Avsk != null) {
+      if (TextUtils.equals(parambmgt.jdField_a_of_type_Avsk.jdField_a_of_type_JavaLangString, parambmgt.jdField_b_of_type_JavaLangString))
       {
-        Object localObject2;
-        Object localObject1;
-        try
-        {
-          localObject2 = ((ShowMessageFromWX.Req)paramBaseReq).message.messageExt;
-          paramBaseReq = bcbx.b((String)localObject2);
-          if ((paramBaseReq.get("actiontype") != null) && (((String)paramBaseReq.get("actiontype")).equals("schema")) && (paramBaseReq.get("schema") != null))
-          {
-            localObject1 = Uri.decode((String)paramBaseReq.get("schema"));
-            if ((TextUtils.isEmpty((CharSequence)localObject1)) || ((!((String)localObject1).startsWith("mqzone")) && (!((String)localObject1).startsWith("mqqzone")) && (!((String)localObject1).startsWith("mqqapi://qzoneschema")))) {
-              break;
-            }
-            localObject2 = new Intent();
-            ((Intent)localObject2).putExtra("cmd", "Schema");
-            ((Intent)localObject2).putExtra("schema", (String)localObject1);
-            blsb.a(paramActivity, blsi.a(), (Intent)localObject2);
-            paramActivity = (String)paramBaseReq.get("appid");
-            if (paramActivity == null)
-            {
-              i = 0;
-              new LpReportInfo_pf00064(2000, 3000, i).reportImediately();
-              return;
-            }
-            int i = Integer.parseInt(paramActivity);
-            continue;
-          }
-          if ((paramBaseReq.get("appid") == null) || (!((String)paramBaseReq.get("appid")).equals("1000398")) || ((!paramBaseReq.containsKey("albumId")) && (!paramBaseReq.containsKey("aid")))) {
-            break;
-          }
-          localObject1 = new Intent();
-          ((Intent)localObject1).putExtra("cmd", "Schema");
-          if ("1".equals(paramBaseReq.get("pagetype")))
-          {
-            paramBaseReq = ((String)localObject2).replace("aid", "albumid");
-            ((Intent)localObject1).putExtra("schema", "mqzone://arouse/album?" + paramBaseReq + "&source=doNotJumpQzone");
-            blsb.a(paramActivity, blsi.a(), (Intent)localObject1);
-            return;
-          }
-        }
-        catch (Throwable paramActivity)
-        {
-          paramActivity.printStackTrace();
-          return;
-        }
-        if ("0".equals(paramBaseReq.get("pagetype"))) {
-          ((Intent)localObject1).putExtra("schema", "mqzone://arouse/photofromwxapp?" + (String)localObject2 + "&source=doNotJumpQzone");
-        }
-      }
-    }
-  }
-  
-  /* Error */
-  private static void a(File paramFile1, File paramFile2)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: new 290	java/io/FileInputStream
-    //   5: dup
-    //   6: aload_0
-    //   7: invokespecial 293	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   10: invokevirtual 297	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   13: astore_2
-    //   14: new 299	java/io/FileOutputStream
-    //   17: dup
-    //   18: aload_1
-    //   19: invokespecial 300	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   22: invokevirtual 301	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   25: astore_1
-    //   26: aload_1
-    //   27: aload_2
-    //   28: lconst_0
-    //   29: aload_2
-    //   30: invokevirtual 307	java/nio/channels/FileChannel:size	()J
-    //   33: invokevirtual 311	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
-    //   36: pop2
-    //   37: aload_2
-    //   38: invokevirtual 314	java/nio/channels/FileChannel:close	()V
-    //   41: aload_1
-    //   42: invokevirtual 314	java/nio/channels/FileChannel:close	()V
-    //   45: return
-    //   46: astore_0
-    //   47: aconst_null
-    //   48: astore_1
-    //   49: aload_3
-    //   50: astore_2
-    //   51: aload_2
-    //   52: invokevirtual 314	java/nio/channels/FileChannel:close	()V
-    //   55: aload_1
-    //   56: invokevirtual 314	java/nio/channels/FileChannel:close	()V
-    //   59: aload_0
-    //   60: athrow
-    //   61: astore_0
-    //   62: aconst_null
-    //   63: astore_1
-    //   64: goto -13 -> 51
-    //   67: astore_0
-    //   68: goto -17 -> 51
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	71	0	paramFile1	File
-    //   0	71	1	paramFile2	File
-    //   13	39	2	localObject1	Object
-    //   1	49	3	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	46	finally
-    //   14	26	61	finally
-    //   26	37	67	finally
-  }
-  
-  public static byte[] a(Bitmap paramBitmap, int paramInt)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    paramBitmap.compress(Bitmap.CompressFormat.JPEG, paramInt, localByteArrayOutputStream);
-    return localByteArrayOutputStream.toByteArray();
-  }
-  
-  public String a(String paramString)
-  {
-    if (paramString == null) {
-      return String.valueOf(System.currentTimeMillis());
-    }
-    return paramString + System.currentTimeMillis();
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.registerApp("wx34b037fdb0f655ee");
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
-    }
-  }
-  
-  public void a(Activity paramActivity, Intent paramIntent)
-  {
-    if (this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI != null)
-    {
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramActivity);
-      this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.handleIntent(paramIntent, this);
-    }
-  }
-  
-  public void a(Context paramContext, String paramString, byte[] paramArrayOfByte, int paramInt)
-  {
-    String str = paramString;
-    if (!paramString.contains(anhk.ba + "photo/"))
-    {
-      str = System.currentTimeMillis() + ".jpeg";
-      str = b + str;
-    }
-    try
-    {
-      File localFile = new File(b);
-      if (!localFile.exists()) {
-        localFile.mkdirs();
-      }
-      a(new File(paramString), new File(str));
-      paramString = new WXImageObject();
-      if ((a(paramContext)) && (d()))
-      {
-        QZLog.d(jdField_a_of_type_JavaLangString, 1, "shareImage... use getFileUri");
-        paramContext = a(paramContext, new File(str));
-        if (paramContext == null)
-        {
-          QLog.e(jdField_a_of_type_JavaLangString, 1, "uri is invalid");
-          return;
-        }
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      QZLog.e(jdField_a_of_type_JavaLangString, "shareImage exception:", paramContext);
-      return;
-    }
-    for (paramString.imagePath = paramContext.toString();; paramString.imagePath = str)
-    {
-      paramContext = new WXMediaMessage();
-      paramContext.mediaObject = paramString;
-      if (paramInt == 0)
-      {
-        paramContext.thumbData = paramArrayOfByte;
-        if ((paramContext.thumbData == null) || ((paramContext.thumbData != null) && (paramContext.thumbData.length > 32768))) {
-          QLog.e(jdField_a_of_type_JavaLangString, 1, "wxmsg.thumbData is invalid");
-        }
-      }
-      paramString = new SendMessageToWX.Req();
-      paramString.transaction = a("img");
-      paramString.message = paramContext;
-      paramString.scene = paramInt;
-      if (this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(paramString)) {
-        break;
-      }
-      ThreadManager.getUIHandler().post(new WXShareFromQZHelper.2(this));
-      return;
-      QZLog.d(jdField_a_of_type_JavaLangString, 1, "shareImage... use old path");
-    }
-  }
-  
-  public void a(Context paramContext, ArrayList<File> paramArrayList)
-  {
-    Intent localIntent = new Intent();
-    localIntent.setComponent(new ComponentName("com.tencent.mm", "com.tencent.mm.ui.tools.ShareToTimeLineUI"));
-    localIntent.setAction("android.intent.action.SEND_MULTIPLE");
-    localIntent.setFlags(268435456);
-    localIntent.setType("image/*");
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      Uri localUri = a(paramContext, (File)paramArrayList.next());
-      if (localUri != null) {
-        localArrayList.add(localUri);
-      }
-    }
-    localIntent.putParcelableArrayListExtra("android.intent.extra.STREAM", localArrayList);
-    FileProvider7Helper.intentCompatForN(BaseApplicationImpl.getApplication(), localIntent);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public void a(bmgl parambmgl)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      if (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(parambmgl)) {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(parambmgl);
-      }
-      return;
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    Object localObject = new WXTextObject(paramString);
-    paramString = new WXMediaMessage();
-    paramString.mediaObject = ((WXMediaMessage.IMediaObject)localObject);
-    localObject = new SendMessageToWX.Req();
-    ((SendMessageToWX.Req)localObject).transaction = a("text");
-    ((SendMessageToWX.Req)localObject).message = paramString;
-    ((SendMessageToWX.Req)localObject).scene = paramInt;
-    if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq((BaseReq)localObject)) {
-      ThreadManager.getUIHandler().post(new WXShareFromQZHelper.3(this));
-    }
-  }
-  
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2, String paramString3, int paramInt)
-  {
-    paramString3 = new WXMediaMessage(new WXWebpageObject(paramString3));
-    paramString3.description = paramString2;
-    paramString3.title = paramString1;
-    paramString3.thumbData = WXShareHelper.a(paramBitmap, false, true);
-    paramString1 = new SendMessageToWX.Req();
-    paramString1.transaction = a("webpage");
-    paramString1.message = paramString3;
-    paramString1.scene = paramInt;
-    if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(paramString1)) {
-      ThreadManager.getUIHandler().post(new WXShareFromQZHelper.1(this));
-    }
-  }
-  
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt)
-  {
-    WXMiniProgramObject localWXMiniProgramObject = new WXMiniProgramObject();
-    localWXMiniProgramObject.webpageUrl = paramString3;
-    localWXMiniProgramObject.userName = paramString5;
-    if (!TextUtils.isEmpty(paramString6))
-    {
-      localWXMiniProgramObject.path = (paramString4 + "&sk=" + paramString6);
-      paramString3 = new WXMediaMessage(localWXMiniProgramObject);
-      paramString3.title = paramString1;
-      paramString3.description = paramString2;
-      if (paramBitmap == null) {
-        break label431;
-      }
-      try
-      {
-        float f = Math.min(400.0F / paramBitmap.getWidth(), 400.0F / paramBitmap.getHeight());
-        paramString1 = new Matrix();
-        paramString1.postScale(f, f);
-        paramString1 = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), paramString1, true);
-        paramString3.thumbData = a(paramString1, 100);
-        QZLog.e(jdField_a_of_type_JavaLangString, "wxshare thumbData:" + paramString3.thumbData.length);
-        int j = 4;
-        int i = 100;
-        while ((paramString3.thumbData != null) && (paramString3.thumbData.length >= 131072))
-        {
-          j -= 1;
-          if (j > 0)
-          {
-            i -= 10;
-            paramString3.thumbData = a(paramString1, i);
-            QZLog.e(jdField_a_of_type_JavaLangString, "wxshare thumbData -- :" + paramString3.thumbData.length);
-            continue;
-            paramString1 = new SendMessageToWX.Req();
-          }
-        }
-      }
-      catch (Throwable paramString1)
-      {
-        QZLog.e(jdField_a_of_type_JavaLangString, "excetion:" + paramString1.getMessage());
-        ThreadManager.getUIHandler().post(new WXShareFromQZHelper.4(this));
+        parambmgt.jdField_a_of_type_Avsk.b();
+        parambmgt.jdField_a_of_type_Avsk.d();
       }
     }
     for (;;)
     {
-      paramString1.transaction = a("webpage");
-      paramString1.message = paramString3;
-      paramString1.scene = paramInt;
-      boolean bool = this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(paramString1);
-      if (!bool)
+      localObject = BaseApplicationImpl.sApplication.getRuntime();
+      if ((localObject instanceof QQAppInterface)) {
+        break;
+      }
+      c(paramContext, parambmgt, parambmgq);
+      return;
+      avsj.a(parambmgt.jdField_b_of_type_JavaLangString);
+    }
+    ((bmgk)((QQAppInterface)localObject).getManager(27)).a(paramContext, parambmgt, parambmgq);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (paramString1 != null)
+    {
+      paramString1 = paramString1.toLowerCase();
+      if ((paramString1.contains(anzj.a(2131704733))) || (paramString1.contains("space"))) {
+        Toast.makeText(BaseApplicationImpl.getContext(), anzj.a(2131704735) + paramString2 + anzj.a(2131704734), 0).show();
+      }
+    }
+    else
+    {
+      return;
+    }
+    Toast.makeText(BaseApplicationImpl.getContext(), paramString2 + anzj.a(2131704736), 0).show();
+  }
+  
+  static void a(List<RemoteCommand> paramList)
+  {
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
+      int j = paramList.size();
+      int i = 0;
+      while (i < j)
       {
-        QZLog.e(jdField_a_of_type_JavaLangString, "wxshare failed ,ret:" + bool);
-        ThreadManager.getUIHandler().post(new WXShareFromQZHelper.5(this));
-      }
-      return;
-      localWXMiniProgramObject.path = paramString4;
-      break;
-      paramString1.recycle();
-      continue;
-      label431:
-      QZLog.e(jdField_a_of_type_JavaLangString, "wxshare bmp null");
-    }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.isWXAppInstalled();
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "isWXinstalled error ", localThrowable);
-    }
-    return false;
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI() >= 654314752;
-  }
-  
-  public void b(bmgl parambmgl)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(parambmgl)) {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(parambmgl);
-      }
-      return;
-    }
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI() >= 620756993;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI() >= 553779201;
-  }
-  
-  public boolean d()
-  {
-    return Build.VERSION.SDK_INT >= 24;
-  }
-  
-  public void onReq(BaseReq paramBaseReq)
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference != null) {}
-    for (Activity localActivity = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();; localActivity = null)
-    {
-      a(localActivity, paramBaseReq);
-      return;
-    }
-  }
-  
-  public void onResp(BaseResp paramBaseResp)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((bmgl)localIterator.next()).a(paramBaseResp);
+        RemoteCommand localRemoteCommand = (RemoteCommand)paramList.get(i);
+        if ((localRemoteCommand != null) && (!localPluginCommunicationHandler.containsCmd(localRemoteCommand.getCmd()))) {
+          localPluginCommunicationHandler.register((RemoteCommand)paramList.get(i));
+        }
+        i += 1;
       }
     }
   }
+  
+  public static void b(Context paramContext, bmgt parambmgt)
+  {
+    bmgo localbmgo = new bmgo();
+    parambmgt.jdField_a_of_type_AndroidContentIntent.putExtra("launchTimeStart", System.currentTimeMillis());
+    if (parambmgt.jdField_a_of_type_Avsk != null) {
+      parambmgt.jdField_a_of_type_Avsk.a();
+    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if (!(localAppRuntime instanceof QQAppInterface))
+    {
+      c(paramContext, parambmgt, localbmgo);
+      return;
+    }
+    ((bmgk)((QQAppInterface)localAppRuntime).getManager(27)).a(paramContext, parambmgt, localbmgo);
+  }
+  
+  public static void c(Context paramContext, bmgt parambmgt)
+  {
+    bmgp localbmgp = new bmgp();
+    parambmgt.jdField_a_of_type_AndroidContentIntent.putExtra("launchTimeStart", System.currentTimeMillis());
+    if (parambmgt.jdField_a_of_type_Avsk != null) {
+      parambmgt.jdField_a_of_type_Avsk.a();
+    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if (!(localAppRuntime instanceof QQAppInterface))
+    {
+      c(paramContext, parambmgt, localbmgp);
+      return;
+    }
+    ((bmgk)((QQAppInterface)localAppRuntime).getManager(27)).a(paramContext, parambmgt, localbmgp);
+  }
+  
+  private static void c(Context paramContext, bmgt parambmgt, bmgr parambmgr)
+  {
+    if ((jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener != null) && (System.currentTimeMillis() - jdField_a_of_type_Long < 500L))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("plugin_tag", 2, "handleOtherProcessWait");
+      }
+      jdField_a_of_type_Long = System.currentTimeMillis();
+      jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(new bmgu(paramContext, parambmgt, parambmgr));
+      return;
+    }
+    jdField_a_of_type_Long = 0L;
+    if ((jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient == null) || (!jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.useful()))
+    {
+      jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(new bmgu(paramContext, parambmgt, parambmgr));
+      if (jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener == null) {
+        jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener = new bmgm();
+      }
+      PluginManagerHelper.getPluginInterface(paramContext, jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener);
+      return;
+    }
+    d(paramContext, parambmgt, parambmgr);
+  }
+  
+  static void d(Context paramContext, bmgt parambmgt)
+  {
+    if (paramContext == null) {}
+    label222:
+    do
+    {
+      for (;;)
+      {
+        return;
+        a(parambmgt.jdField_a_of_type_JavaUtilList);
+        parambmgt.jdField_a_of_type_AndroidContentIntent.setClass(paramContext, parambmgt.jdField_a_of_type_JavaLangClass);
+        if (TextUtils.isEmpty(parambmgt.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin")))
+        {
+          parambmgt.jdField_a_of_type_AndroidContentIntent.putExtra("uin", parambmgt.jdField_a_of_type_JavaLangString);
+          parambmgt.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", parambmgt.jdField_a_of_type_JavaLangString);
+        }
+        parambmgt.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", parambmgt.jdField_a_of_type_JavaLangString);
+        parambmgt.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", bdle.class.getName());
+        if (QLog.isColorLevel()) {
+          QLog.d("plugin_tag", 2, "doOpenActivityForResult do start activity");
+        }
+        parambmgt.a();
+        if ((paramContext instanceof Activity)) {
+          PluginProxyActivity.openActivityForResult((Activity)paramContext, parambmgt.jdField_d_of_type_JavaLangString, parambmgt.jdField_b_of_type_JavaLangString, parambmgt.jdField_c_of_type_JavaLangString, parambmgt.jdField_e_of_type_JavaLangString, parambmgt.jdField_a_of_type_AndroidContentIntent, parambmgt.jdField_b_of_type_Int);
+        }
+        while ((paramContext instanceof Activity))
+        {
+          if (!parambmgt.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("extra_is_from_p2v_edit", false)) {
+            break label222;
+          }
+          ((Activity)paramContext).overridePendingTransition(2130771997, 2130772001);
+          return;
+          PluginProxyActivity.openActivity(paramContext, parambmgt.jdField_d_of_type_JavaLangString, parambmgt.jdField_b_of_type_JavaLangString, parambmgt.jdField_c_of_type_JavaLangString, parambmgt.jdField_e_of_type_JavaLangString, parambmgt.jdField_a_of_type_AndroidContentIntent);
+        }
+      }
+      if ((parambmgt.jdField_a_of_type_AndroidAppDialog != null) && ((parambmgt.jdField_a_of_type_AndroidAppDialog instanceof bjcj)))
+      {
+        ((Activity)paramContext).overridePendingTransition(2130772100, 2130772100);
+        return;
+      }
+    } while ((parambmgt.jdField_d_of_type_Int <= 0) || (parambmgt.jdField_e_of_type_Int <= 0));
+    ((Activity)paramContext).overridePendingTransition(parambmgt.jdField_d_of_type_Int, parambmgt.jdField_e_of_type_Int);
+  }
+  
+  private static void d(Context paramContext, bmgt parambmgt, bmgr parambmgr)
+  {
+    if (jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient == null) {
+      parambmgr.a(false, paramContext, parambmgt);
+    }
+    PluginBaseInfo localPluginBaseInfo;
+    do
+    {
+      return;
+      localPluginBaseInfo = jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.queryPlugin(parambmgt.jdField_b_of_type_JavaLangString);
+      if ((localPluginBaseInfo == null) || (localPluginBaseInfo.mState != 4)) {
+        break;
+      }
+    } while (parambmgr == null);
+    parambmgt.jdField_c_of_type_JavaLangString = localPluginBaseInfo.mInstalledPath;
+    parambmgt.a(localPluginBaseInfo);
+    parambmgr.a(true, paramContext, parambmgt);
+    return;
+    if (QLog.isDevelopLevel())
+    {
+      QLog.i("plugin_tag", 4, "doHandleOtherProcess: " + jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.useful());
+      QLog.i("plugin_tag", 4, "doHandleOtherProcess isPluginInstalled false");
+    }
+    jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin(parambmgt.jdField_b_of_type_JavaLangString, new bmgn(parambmgr, parambmgt, paramContext));
+  }
+  
+  static void e(Context paramContext, bmgt parambmgt)
+  {
+    a(parambmgt.jdField_a_of_type_JavaUtilList);
+    parambmgt.a();
+    if ((TextUtils.isEmpty(parambmgt.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin"))) && (!TextUtils.isEmpty(parambmgt.jdField_a_of_type_JavaLangString)))
+    {
+      parambmgt.jdField_a_of_type_AndroidContentIntent.putExtra("uin", parambmgt.jdField_a_of_type_JavaLangString);
+      parambmgt.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", parambmgt.jdField_a_of_type_JavaLangString);
+    }
+    parambmgt.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", parambmgt.jdField_a_of_type_JavaLangString);
+    parambmgt.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", bdle.class.getName());
+    PluginProxyBroadcastReceiver.sendBroadcastReceiver(paramContext, parambmgt.jdField_d_of_type_JavaLangString, parambmgt.jdField_b_of_type_JavaLangString, parambmgt.jdField_c_of_type_JavaLangString, parambmgt.jdField_e_of_type_JavaLangString, parambmgt.jdField_a_of_type_AndroidContentIntent);
+  }
+  
+  static void f(Context paramContext, bmgt parambmgt)
+  {
+    a(parambmgt.jdField_a_of_type_JavaUtilList);
+    parambmgt.a();
+    if ((TextUtils.isEmpty(parambmgt.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin"))) && (!TextUtils.isEmpty(parambmgt.jdField_a_of_type_JavaLangString)))
+    {
+      parambmgt.jdField_a_of_type_AndroidContentIntent.putExtra("uin", parambmgt.jdField_a_of_type_JavaLangString);
+      parambmgt.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", parambmgt.jdField_a_of_type_JavaLangString);
+    }
+    parambmgt.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", parambmgt.jdField_a_of_type_JavaLangString);
+    parambmgt.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", bdle.class.getName());
+    if (parambmgt.jdField_a_of_type_AndroidContentServiceConnection != null)
+    {
+      PluginProxyService.bindService(paramContext, parambmgt.jdField_d_of_type_JavaLangString, parambmgt.jdField_b_of_type_JavaLangString, parambmgt.jdField_c_of_type_JavaLangString, parambmgt.jdField_e_of_type_JavaLangString, parambmgt.jdField_a_of_type_AndroidContentIntent, parambmgt.jdField_a_of_type_AndroidContentServiceConnection);
+      return;
+    }
+    ThreadManager.post(new IPluginManager.6(paramContext, parambmgt), 5, null, false);
+  }
+  
+  public abstract PluginInfo a(String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(Context paramContext, bmgt parambmgt, bmgr parambmgr);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, OnPluginInstallListener paramOnPluginInstallListener, boolean paramBoolean);
+  
+  public abstract void a(String paramString, boolean paramBoolean, OnPluginInstallListener paramOnPluginInstallListener);
+  
+  public abstract void cancelInstall(String paramString);
+  
+  public abstract void installPlugin(String paramString, OnPluginInstallListener paramOnPluginInstallListener);
+  
+  public abstract boolean isPlugininstalled(String paramString);
+  
+  public abstract boolean isReady();
 }
 
 

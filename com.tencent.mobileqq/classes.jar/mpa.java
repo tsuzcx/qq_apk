@@ -1,20 +1,35 @@
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
+import com.tencent.qphone.base.util.QLog;
 
-class mpa
-  implements mqe
+public class mpa
+  implements mho
 {
-  mpa(moy parammoy) {}
+  public mpa(ZimuToolbar paramZimuToolbar) {}
   
-  public void a(mqd parammqd)
+  public void a(long paramLong)
   {
-    moy localmoy = this.a;
-    if (parammqd.b == 0) {}
-    for (boolean bool = true;; bool = false)
+    EffectSettingUi.a(ZimuToolbar.access$400(this.a), paramLong);
+  }
+  
+  public void a(long paramLong, mii parammii)
+  {
+    EffectSettingUi.a(ZimuToolbar.access$000(this.a), paramLong);
+    QLog.w("ZimuToolbar", 1, "onEffectClick, 自己点击了字幕, id[" + parammii.a + "], seq[" + paramLong + "]");
+    ZimuToolbar.access$100(this.a, paramLong, parammii.a);
+    if ((!TextUtils.isEmpty(parammii.a)) && (!"0".equalsIgnoreCase(parammii.a)))
     {
-      localmoy.a(bool, parammqd.g, parammqd.c);
-      this.a.a = null;
-      moy.b(this.a).a(new Object[] { Integer.valueOf(8003), Integer.valueOf(7) });
-      return;
+      liy.a("0X80085CD", parammii.a);
+      if (liw.a(parammii.a))
+      {
+        parammii = ZimuToolbar.access$200(this.a).a().a().d;
+        String str = ZimuToolbar.access$300(this.a).getCurrentAccountUin();
+        liy.a("0X8009191", str, parammii);
+        liy.a("0X8009192", str, parammii);
+      }
     }
   }
 }

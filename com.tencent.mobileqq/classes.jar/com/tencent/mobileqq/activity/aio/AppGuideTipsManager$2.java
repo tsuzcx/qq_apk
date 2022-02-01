@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afvq;
-import bgnw;
+import agfi;
+import bhny;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class AppGuideTipsManager$2
   implements Runnable
 {
-  public AppGuideTipsManager$2(afvq paramafvq) {}
+  public AppGuideTipsManager$2(agfi paramagfi) {}
   
   public void run()
   {
-    afvq.b(this.this$0, bgnw.a(afvq.a(this.this$0).getApp(), "com.tencent.tim"));
+    agfi.b(this.this$0, bhny.a(agfi.a(this.this$0).getApp(), "com.tencent.tim"));
   }
 }
 

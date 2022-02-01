@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import anni;
-import bcti;
+import anzj;
+import bdmb;
 import com.dataline.activities.LiteActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
@@ -15,7 +15,7 @@ class qfileJumpActivity$1
   
   public void run()
   {
-    bcti.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_share_my_pc");
+    bdmb.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_share_my_pc");
     Intent localIntent = this.this$0.getIntent();
     Object localObject1 = null;
     try
@@ -35,7 +35,7 @@ class qfileJumpActivity$1
     if (localObject1 == null) {
       localObject2 = new Bundle();
     }
-    ((Bundle)localObject2).putString("leftBackText", anni.a(2131708435));
+    ((Bundle)localObject2).putString("leftBackText", anzj.a(2131708544));
     ((Bundle)localObject2).putBoolean("isBack2Root", true);
     localObject1 = new Intent(this.this$0, LiteActivity.class);
     ((Intent)localObject1).addFlags(268435456);

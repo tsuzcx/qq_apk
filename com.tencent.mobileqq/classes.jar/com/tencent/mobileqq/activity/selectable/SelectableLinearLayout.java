@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.selectable;
 
-import alqr;
-import alqt;
+import amcj;
+import amcl;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,11 +13,11 @@ import com.tencent.qphone.base.util.QLog;
 
 public class SelectableLinearLayout
   extends LinearLayout
-  implements alqr
+  implements amcj
 {
   private int jdField_a_of_type_Int;
-  private alqr jdField_a_of_type_Alqr;
-  private alqt jdField_a_of_type_Alqt;
+  private amcj jdField_a_of_type_Amcj;
+  private amcl jdField_a_of_type_Amcl;
   private boolean jdField_a_of_type_Boolean;
   private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int jdField_b_of_type_Int;
@@ -40,9 +40,9 @@ public class SelectableLinearLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void bind(@Nullable alqt paramalqt)
+  public void bind(@Nullable amcl paramamcl)
   {
-    this.jdField_a_of_type_Alqt = paramalqt;
+    this.jdField_a_of_type_Amcl = paramamcl;
   }
   
   public void clearHighlightContent()
@@ -53,8 +53,8 @@ public class SelectableLinearLayout
     while (i < j)
     {
       View localView = getChildAt(i);
-      if ((localView instanceof alqr)) {
-        ((alqr)localView).clearHighlightContent();
+      if ((localView instanceof amcj)) {
+        ((amcj)localView).clearHighlightContent();
       }
       i += 1;
     }
@@ -69,8 +69,8 @@ public class SelectableLinearLayout
     while (i < j)
     {
       View localView = getChildAt(i);
-      if ((localView instanceof alqr)) {
-        localStringBuilder.append(((alqr)localView).content());
+      if ((localView instanceof amcj)) {
+        localStringBuilder.append(((amcj)localView).content());
       }
       i += 1;
     }
@@ -85,10 +85,10 @@ public class SelectableLinearLayout
     if (j < k)
     {
       View localView = getChildAt(j);
-      if (!(localView instanceof alqr)) {
+      if (!(localView instanceof amcj)) {
         break label51;
       }
-      i = ((alqr)localView).contentLength() + i;
+      i = ((amcj)localView).contentLength() + i;
     }
     label51:
     for (;;)
@@ -100,9 +100,9 @@ public class SelectableLinearLayout
   }
   
   @Nullable
-  public alqt delegate()
+  public amcl delegate()
   {
-    return this.jdField_a_of_type_Alqt;
+    return this.jdField_a_of_type_Amcl;
   }
   
   public void doSelecting(ChatMessage paramChatMessage)
@@ -112,10 +112,10 @@ public class SelectableLinearLayout
         QLog.d("SelectableLinearLayout", 2, "doSelecting msg = null.");
       }
     }
-    while (this.jdField_a_of_type_Alqt == null) {
+    while (this.jdField_a_of_type_Amcl == null) {
       return;
     }
-    this.jdField_a_of_type_Alqt.a(paramChatMessage);
+    this.jdField_a_of_type_Amcl.a(paramChatMessage);
   }
   
   public boolean hasSelected()
@@ -133,7 +133,7 @@ public class SelectableLinearLayout
     while (paramInt1 < j)
     {
       View localView = getChildAt(paramInt1);
-      if ((localView instanceof alqr))
+      if ((localView instanceof amcj))
       {
         if (QLog.isColorLevel()) {
           QLog.d("SelectableLinearLayout", 2, new Object[] { "left=", Integer.valueOf(localView.getLeft()), " right=", Integer.valueOf(localView.getRight()), " top=", Integer.valueOf(localView.getTop()), " bottom=", Integer.valueOf(localView.getBottom()), " relativeX=", Integer.valueOf(i), " relativeY=", Integer.valueOf(paramInt2) });
@@ -166,14 +166,14 @@ public class SelectableLinearLayout
     if (i < j)
     {
       localObject = getChildAt(i);
-      if ((localObject instanceof alqr))
+      if ((localObject instanceof amcj))
       {
-        localObject = (alqr)localObject;
-        if (!((alqr)localObject).hasSelected()) {
+        localObject = (amcj)localObject;
+        if (!((amcj)localObject).hasSelected()) {
           break label74;
         }
-        ((alqr)localObject).highlightBackgroundColor(this.jdField_c_of_type_Int);
-        ((alqr)localObject).highlightContent();
+        ((amcj)localObject).highlightBackgroundColor(this.jdField_c_of_type_Int);
+        ((amcj)localObject).highlightContent();
       }
     }
     for (;;)
@@ -182,7 +182,7 @@ public class SelectableLinearLayout
       break label19;
       break;
       label74:
-      ((alqr)localObject).clearHighlightContent();
+      ((amcj)localObject).clearHighlightContent();
     }
   }
   
@@ -194,11 +194,11 @@ public class SelectableLinearLayout
     if (i < j)
     {
       localObject = getChildAt(i);
-      if (!(localObject instanceof alqr)) {
+      if (!(localObject instanceof amcj)) {
         break label79;
       }
-      localObject = (alqr)localObject;
-      int k = ((alqr)localObject).contentLength();
+      localObject = (amcj)localObject;
+      int k = ((amcj)localObject).contentLength();
       if (paramInt > k) {
         paramInt -= k;
       }
@@ -208,7 +208,7 @@ public class SelectableLinearLayout
     {
       i += 1;
       break;
-      ((alqr)localObject).locationByIndex(paramInt, paramArrayOfInt, paramBoolean);
+      ((amcj)localObject).locationByIndex(paramInt, paramArrayOfInt, paramBoolean);
       return;
     }
   }
@@ -228,7 +228,7 @@ public class SelectableLinearLayout
     int i;
     int k;
     label46:
-    alqr localalqr;
+    amcj localamcj;
     int m;
     int j;
     if ((paramInt1 == -1) || (paramInt2 == -1))
@@ -245,19 +245,19 @@ public class SelectableLinearLayout
         break label257;
       }
       View localView = getChildAt(k);
-      if (!(localView instanceof alqr)) {
+      if (!(localView instanceof amcj)) {
         break label266;
       }
-      localalqr = (alqr)localView;
+      localamcj = (amcj)localView;
       if (paramInt1 != 0) {
         break label237;
       }
-      m = localalqr.contentLength();
+      m = localamcj.contentLength();
       if (paramInt2 < m) {
         break label190;
       }
       i -= m;
-      localalqr.selectContent(-1, -1);
+      localamcj.selectContent(-1, -1);
       j = paramInt2 - m;
       paramInt2 = paramInt1;
       paramInt1 = j;
@@ -293,7 +293,7 @@ public class SelectableLinearLayout
       }
       for (;;)
       {
-        localalqr.selectContent(paramInt2, paramInt1);
+        localamcj.selectContent(paramInt2, paramInt1);
         if (j != 0) {
           break label258;
         }
@@ -305,7 +305,7 @@ public class SelectableLinearLayout
         j = 1;
       }
       label237:
-      localalqr.selectContent(-1, -1);
+      localamcj.selectContent(-1, -1);
       j = paramInt1;
       paramInt1 = paramInt2;
       paramInt2 = j;
@@ -335,16 +335,16 @@ public class SelectableLinearLayout
     if (j < k)
     {
       localObject = getChildAt(j);
-      if (!(localObject instanceof alqr)) {
+      if (!(localObject instanceof amcj)) {
         break label238;
       }
-      alqr localalqr = (alqr)localObject;
+      amcj localamcj = (amcj)localObject;
       if ((m > ((View)localObject).getLeft()) && (m < ((View)localObject).getRight()) && (n > ((View)localObject).getTop()) && (n < ((View)localObject).getBottom()))
       {
-        this.jdField_a_of_type_Alqr = localalqr;
-        return localalqr.touchIndex(paramInt1, paramInt2) + i;
+        this.jdField_a_of_type_Amcj = localamcj;
+        return localamcj.touchIndex(paramInt1, paramInt2) + i;
       }
-      i = localalqr.contentLength() + i;
+      i = localamcj.contentLength() + i;
     }
     label235:
     label238:
@@ -357,14 +357,14 @@ public class SelectableLinearLayout
       if (j < k)
       {
         localObject = getChildAt(j);
-        if (!(localObject instanceof alqr)) {
+        if (!(localObject instanceof amcj)) {
           break label235;
         }
-        localObject = (alqr)localObject;
-        if (this.jdField_a_of_type_Alqr == localObject) {
-          return this.jdField_a_of_type_Alqr.touchIndex(paramInt1, paramInt2) + i;
+        localObject = (amcj)localObject;
+        if (this.jdField_a_of_type_Amcj == localObject) {
+          return this.jdField_a_of_type_Amcj.touchIndex(paramInt1, paramInt2) + i;
         }
-        i = ((alqr)localObject).contentLength() + i;
+        i = ((amcj)localObject).contentLength() + i;
       }
       for (;;)
       {

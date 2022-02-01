@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@drawable/gwz" />
-    <item android:state_checked="false" android:drawable="@drawable/gwy" />
-    <item android:drawable="@drawable/gwy" />
-</selector>
+    <solid android:color="#fff5f6fa" />
+    <corners android:radius="15.0dip" />
+</shape>

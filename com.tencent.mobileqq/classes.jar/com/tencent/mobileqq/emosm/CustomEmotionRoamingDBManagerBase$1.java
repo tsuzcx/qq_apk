@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emosm;
 
-import arpe;
+import ases;
 import java.util.List;
 
 public class CustomEmotionRoamingDBManagerBase$1
   implements Runnable
 {
-  public CustomEmotionRoamingDBManagerBase$1(arpe paramarpe, List paramList, int paramInt) {}
+  public CustomEmotionRoamingDBManagerBase$1(ases paramases, List paramList, int paramInt) {}
   
   /* Error */
   public void run()
@@ -15,13 +15,13 @@ public class CustomEmotionRoamingDBManagerBase$1
     //   0: iconst_0
     //   1: istore_1
     //   2: aload_0
-    //   3: getfield 15	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:this$0	Larpe;
-    //   6: getfield 31	arpe:a	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   3: getfield 15	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:this$0	Lases;
+    //   6: getfield 31	ases:a	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   9: ifnonnull +4 -> 13
     //   12: return
     //   13: aload_0
-    //   14: getfield 15	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:this$0	Larpe;
-    //   17: getfield 31	arpe:a	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   14: getfield 15	com/tencent/mobileqq/emosm/CustomEmotionRoamingDBManagerBase$1:this$0	Lases;
+    //   17: getfield 31	ases:a	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   20: invokevirtual 36	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/data/QQEntityManagerFactory;
     //   23: invokevirtual 42	com/tencent/mobileqq/data/QQEntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   26: astore 7

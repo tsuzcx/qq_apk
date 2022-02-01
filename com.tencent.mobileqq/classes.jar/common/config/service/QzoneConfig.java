@@ -1,17 +1,17 @@
 package common.config.service;
 
-import abff;
+import abjj;
 import android.content.ContentResolver;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
 import android.graphics.Rect;
 import android.os.Looper;
 import android.text.TextUtils;
-import anni;
-import bkyw;
-import bkza;
-import bkzb;
-import bkzc;
+import anzj;
+import blzz;
+import bmad;
+import bmae;
+import bmaf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.provider.QZoneConfigProvider;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
@@ -151,9 +151,9 @@ public class QzoneConfig
   public static final String DEFAULT_MINI_APP_STORE_MY_PAGE = "mqqapi://miniapp/open?_atype=0&_mappid=1108291530&_mvid=&_path=pages%2Fmy%2Fmy.html%3Fmode%3Ddesktop&_vt=3&via=1001_4&_sig=58cc58ba25b0f133887e060a25a47b83e33b09f7b969152a5a1beb2ba08db125";
   public static final int DEFAULT_MINI_APP_TOP_MAX_NUM = 50;
   public static final String DEFAULT_MINI_GAME_BASELIB = "{\"key1\":\"https://d3g.qq.com/sngapp/app/update/20190708174635_6988/lib-1.4.7.zip\",\"key2\":\"\",\"key3\":\"1.4.7\",\"key4\": {\"file_length\": 6336933},\"key5\":2}";
+  public static final int DEFAULT_MINI_GAME_PAY_BY_H5 = 0;
   public static final String DEFAULT_MINI_GAME_PAY_BY_H5_URL = "https://h5.qzone.qq.com/miniapp/act/midasPay?offerId={offerId}&prepayId={prepayId}&starCurrency={starCurrency}&setEnv={setEnv}&appid={appid}&zoneId={zoneId}&buyQuantity={buyQuantity}&isCanChange={isCanChange}&currencyType={currencyType}&platform={platform}&remark={remark}&numberVisible={numberVisible}&other={other}&acctType={acctType}&firstRefer={firstRefer}&firstVia={firstVia}&refer={refer}&via={via}&_proxy=1&_wv=17301504&_wwv=1";
   public static final String DEFAULT_MINI_GAME_PAY_BY_H5_URL_LANDSCAPE = "https://h5.qzone.qq.com/miniapp/act/midasPay?offerId={offerId}&prepayId={prepayId}&starCurrency={starCurrency}&setEnv={setEnv}&appid={appid}&zoneId={zoneId}&buyQuantity={buyQuantity}&isCanChange={isCanChange}&currencyType={currencyType}&platform={platform}&remark={remark}&numberVisible={numberVisible}&other={other}&acctType={acctType}&firstRefer={firstRefer}&firstVia={firstVia}&refer={refer}&via={via}&_proxy=1&_wv=17303552&_wwv=1";
-  public static final int DEFAULT_MINI_GAME_PAY_BY_NATIVE = 0;
   public static final String DEFAULT_ML_SO_DOWNLOAD_URL = "https://d3g.qq.com/sngapp/app/update/20171010175228_9573/libqzonemachinelearn.so";
   public static final String DEFAULT_ML_SO_MD5 = "f11baef39b2049ed2ae1bc2f8881b27a";
   public static final int DEFAULT_ML_WORKFLOW_RETRY_CNT = 4;
@@ -189,6 +189,7 @@ public class QzoneConfig
   public static final String DEFAULT_QQCIRCLE_EEVEE_SYSTEM_OPEN = "1";
   public static final String DEFAULT_QQCIRCLE_PERSONAL_DATA_EDIT_H5_URL = "https://h5.qzone.qq.com/v2/wezone/addtag?_wv=3&_wwv=1&_proxy=1&addfrom=edit";
   public static final String DEFAULT_QQCIRCLE_RECOMMEND_FOLLOW_H5_URL = "https://h5.qzone.qq.com/v2/wezone/recommend/invite/{uid}/{invite_id}?_wv=3&_proxy=1";
+  public static final String DEFAULT_QQCIRCLE_SPLASH_GUIDE_VIDEO_DIR = "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qqcircle/android/splash/v1/";
   public static final int DEFAULT_QQCIRCLE_SWITCH_DANMAKU = 1;
   public static final int DEFAULT_QQCIRCLE_SWITCH_PLAY_VIDEO_IN_WORKS_TAB = 1;
   public static final String DEFAULT_QQCIRCLE_USE_EEVEE_RED_POINT = "1";
@@ -252,7 +253,7 @@ public class QzoneConfig
   public static final String DEFAULT_TENCENT_VIDEO_REQUEST_LEVEL_BLACKLIST_MODELS = "ALE-CL00;GT-N7108;N7108;A31c;ZTE A2019 Pro;Y51;A33";
   public static final int DEFAULT_TENCENT_VIDEO_REQUEST_LEVEL_BLACKLIST_OSVERSION = 20;
   public static final long DEFAULT_TIME_DELAY_TO_GET_GUIDE_QBOSS_ADV = 86400000L;
-  public static String DEFAULT_TISSUE_BASELIB_URL = "{\"key1\":\"https://d3g.qq.com/sngapp/app/update/20200707202452_9745/tissue_lib_6812817_202077202237.zip\",\"key2\":\"\",\"key3\":\"1.8.2.2\",\"key4\": {\"file_length\": 6812817},\"key5\":99}";
+  public static String DEFAULT_TISSUE_BASELIB_URL = "{\"key1\":\"https://down.qq.com/miniapp/tissue_1.8.3.0.zip\",\"key2\":\"\",\"key3\":\"1.8.3.0\",\"key4\": {\"file_length\": 6831540},\"key5\":99}";
   public static final String DEFAULT_TRAVEL_ALBUM_LEFT_BG_URL = "https://qzonestyle.gtimg.cn/aoi/sola/20191104215206_PfBsCode7B.png";
   public static final String DEFAULT_TRAVEL_ALBUM_RIGHT_BG_URL = "https://qzonestyle.gtimg.cn/aoi/sola/20191104215206_8O4HN8FsAI.png";
   public static final int DEFAULT_TROOP_GRAY_TIPS_COOL_DOWN_HOURS = 24;
@@ -269,6 +270,7 @@ public class QzoneConfig
   public static final int DEFAULT_UPLOAD_ENABLE_DOWNLOAD_SO = 0;
   public static final String DEFAULT_UPLOAD_NETWORK_UNAVAILABLE_RETCODE = "113,101,100";
   public static final int DEFAULT_USE_QQ_EMOTICON_COMMENT = 0;
+  public static final String DEFAULT_VALUE_WEBAUDIO_SO_INFO = "{\"url\":\"https://d3g.qq.com/sngapp/app/update/20200723130554_3898/libwebAudio.so\",\"md5\":\"c387d4ac69717660762353321313c6c4\",\"length\":13345220}";
   public static final String DEFAULT_VERTICAL_DOWNLOAD_PROGRESS_BACKGROUND_URL = "https://qzonestyle.gtimg.cn/aoi/sola/20180412205352_WOHxRvJEI2.png";
   public static final String DEFAULT_VERTICAL_DOWNLOAD_PROGRESS_BACKGROUND_URL_FROM_VS = "https://qzonestyle.gtimg.cn/aoi/sola/20190319155945_1kfosfdfO0.png";
   public static final int DEFAULT_VERTICAL_VIDEO_LAYER_DISABLE_UPLOAD_USER_ACTION = 0;
@@ -359,6 +361,7 @@ public class QzoneConfig
   public static final String MAIN_KEY_MINI_VIDEO = "MiniVideo";
   public static final String MAIN_KEY_ML = "machinelearning";
   public static final String MAIN_KEY_NAVIGATOR_BAR = "NavigationBar";
+  public static final String MAIN_KEY_OFFICIAL_ACCOUNT = "OfficialAccount";
   public static final String MAIN_KEY_OFFLINE_CACHE = "QzUrlCache";
   public static final String MAIN_KEY_OSKPLAYER = "OskPlayer";
   public static final String MAIN_KEY_OUTBOX = "OutBox";
@@ -523,6 +526,7 @@ public class QzoneConfig
   public static final String MINI_GAME_PROCESS_RECYCLE_TIME = "mini_game_process_recycle_time";
   public static final String MINI_GAME_PROCESS_REUSE = "mini_game_process_reuse";
   public static final String MINI_GAME_PROCESS_REUSE_BLACKLIST = "mini_game_process_reuse_blacklist";
+  public static final String MINI_GAME_PUBLIC_ACCOUNT_GAME_STORE_BUTTON_URL = "publicAccountGameStoreButtonUrl";
   public static final String MINI_GAME_RETAIN_ALERT_VIEW_SCENE = "qqMiniappRetainAlterViewScene";
   public static final String MINI_GAME_RETAIN_CONFIRM_ANIMATION_IMAGE_URL = "mini_game_retain_confirm_animation_image_url";
   public static final String MINI_GAME_RETAIN_CONFIRM_EXPOSURE_TIMES_THRESHOLD = "retainConfirmTimesLimit";
@@ -554,13 +558,14 @@ public class QzoneConfig
   private static final String PRINTCONFIG_TAG = "CMD_PRINT_WNS_CONFIG";
   public static final String PUBLIC_ACCOUNT_DISCOVER_ENTRY_ENABLE = "publicAcuntDiscoverEntryEnable";
   public static final String PUBLIC_ACCOUNT_DISCOVER_PAGE_SCHEMA = "publicAcuntDiscoverPageSchema";
+  public static final int QCIRCLE_VIDEO_TIMEOUT_MAX_RETRY_COUNT = 1;
   public static final int QCIRCLE_VIDEO_URL_VALID_TIME_DEFAULT_VALUE = 21600000;
   public static final String QUEUE_PAUSEABLE = "queue_pausable";
   public static final String QUEUE_PAUSE_TIMEOUT = "queue_timeout";
   public static final String QZONE_ALBUM_COMMENTS_URL = "QZoneAlbumComments";
   public static final String QZONE_ALBUM_LOAD_MAP_SDK = "LoadMapSdk";
   public static final String QZONE_ALBUM_VISITORS_URL = "QZoneAlbumVisitors";
-  public static final String QZONE_CALL_APP_URL_LIST_DEFAULT = "['https?://intent\\.music\\.163\\.com.+orpheus.*']";
+  public static final String QZONE_CALL_APP_URL_LIST_DEFAULT = "['https?://intent\\.music\\.163\\.com.+orpheus.*','^https?://([^/]+\\.)?thefatherofsalmon\\.com[/:].+','^https?://127\\.0\\.0\\.1[/:].+','^https?://0:0:0:0:0:0:0:1[/:].+','^https?://::1[/:].+']";
   public static final String QZONE_CONFIG_MAIN_KEY_TROOP_GRAY_TIPS = "aio_qzone_troop_gray_tips";
   public static final String QZONE_CONFIG_SECONDARY_KEY_IS_PHOTO_SAVE = "PhotoBrowserEnableSave";
   public static final String QZONE_CONFIG_SECONDARY_KEY_IS_QRCODE_SCAN = "PhotoBrowserEnableScanQRCode";
@@ -1038,7 +1043,7 @@ public class QzoneConfig
   public static final String SECONDARY_HTTP_CONNECT_LIVE_TIME = "httpConnectLiveTime";
   public static final String SECONDARY_HTTP_THREAD_POOL_SIZE = "httpThreadPoolSize";
   public static final String SECONDARY_IGNORE_DOWNLOAD_APK_DOMAINS = "QzoneApkBanDomainList";
-  public static final String SECONDARY_IGNORE_DOWNLOAD_APK_DOMAINS_DEFAULT = "douyin.com,huoshan.com,changba.com,toutiao.com,xiguaapp.cn,xiguashipin.cn,365yg.com,snssdk.com,ixigua.com,toutiaocdn.net,music.163.com";
+  public static final String SECONDARY_IGNORE_DOWNLOAD_APK_DOMAINS_DEFAULT = "douyin.com,huoshan.com,changba.com,toutiao.com,xiguaapp.cn,xiguashipin.cn,365yg.com,snssdk.com,ixigua.com,toutiaocdn.net,music.163.com,weibo.cn,autohome.com.cn";
   public static final String SECONDARY_IGNORE_LOCAL_JUDGE = "IgnoreLocalJudge";
   public static final String SECONDARY_IGNORE_WEBVIEW_SCHEME_URL = "QzoneUrlBanList";
   public static final String SECONDARY_IGNORE_WEBVIEW_SCHEME_URL_DEFAULT = "[{'domains':['^.*\\.douyin\\.com/.*'],'items':['^https?://d\\.douyin\\.com/.+']},{'domains':['^.*\\.huoshan\\.com/.*'],'items':['^https?://d\\.huoshan\\.com/.+']},{'domains':['^.*\\.toutiao\\.com/.*','^.*\\.xiguaapp\\.cn/.*','^.*\\.xiguashipin\\.cn/.*','^.*\\.365yg\\.com/.*','^.*\\.snssdk\\.com/.*','^.*\\.ixigua\\.com/.*','^.*\\.toutiaocdn\\.net/.*'],'items':['^https?://d\\.toutiao\\.com/.+','^https?://d\\.ixigua\\.com/.+']},{'domains':['^http.*'],'items':['^snssdk[0-9]+://.*','^changba://.*','^orpheus://.*']}]";
@@ -1243,6 +1248,9 @@ public class QzoneConfig
   public static final String SECONDARY_KEY_NEW_EVENT_BUBLE_STAY_TIME = "NewEventBubleStayTime";
   public static final String SECONDARY_KEY_NEW_STYLE_SHUOSHUO_NEW_CARD_SWITCH = "shuoshuoNewStyleNewCardSwitch";
   public static final String SECONDARY_KEY_NO_CACHE_IMAGE_EXPIRED_TIME = "NoCacheImageExpiredTime";
+  public static final String SECONDARY_KEY_OFFICIAL_ACCOUNT_REPORT_AIO_LIST_EXPO_ENABLE = "OfficialAccountReportAioListExpoEnable";
+  public static final String SECONDARY_KEY_OFFICIAL_ACCOUNT_REPORT_AIO_LIST_EXPO_INIT_TIME_LIMIT = "OfficialAccountReportAioListExpoInitTimeLimit";
+  public static final String SECONDARY_KEY_OFFICIAL_ACCOUNT_REPORT_TIME_LIMIT = "OfficialAccountReportTimeLimit";
   public static final String SECONDARY_KEY_OFFLINE_CACHE_BUFFER_SIZE = "OfflineCacheBufferSize";
   public static final String SECONDARY_KEY_OFFLINE_CACHE_EXT_LIST = "OfflineCacheExt2MimeType";
   public static final String SECONDARY_KEY_OFFLINE_CACHE_SUPPORT_GZIP = "OfflineCacheSupportGZip";
@@ -1332,6 +1340,7 @@ public class QzoneConfig
   public static final String SECONDARY_KEY_VIDEO_TAB_JUMP_TO_WEISHI = "videoTabJumpToWeishi";
   public static final String SECONDARY_KEY_VIDEO_TAB_PRELOAD_NUMS = "videoTabPreloadNums";
   public static final String SECONDARY_KEY_VOICE_SHUOSHUO = "VoiceShuoshuoH5Url";
+  public static final String SECONDARY_KEY_WEBAUDIO_SO_INFO = "webaudio_so_info";
   public static final String SECONDARY_KEY_WEBVIEW_SECURE = "isNeedSecureVerify";
   public static final String SECONDARY_KEY_WNS_CGI_ENABLE_OPTIMIZATION = "enableWnsCgiOptimization";
   public static final int SECONDARY_KEY_WNS_CGI_ENABLE_OPTIMIZATION_DEFAULT = 1;
@@ -1900,6 +1909,7 @@ public class QzoneConfig
   public static final String SECONDARY_QFLUTTER_URL = "tissue_qflutter_url";
   public static final String SECONDARY_QMUSIC_HLS_MAX_RETRY_TIMES = "QmusicHlsMaxRetryTimes";
   public static final String SECONDARY_QQCIRCLE_COMMENT_MAX_WORDS_LIMIT = "qqcircle_comment_max_words_limit";
+  public static final String SECONDARY_QQCIRCLE_DEFAULT_SHOW_TAB_TYPE = "qqcircle_default_show_tab_type";
   public static final String SECONDARY_QQCIRCLE_EEVEE_SYSTEM_OPEN = "qqcircle_enable_eevee_polling";
   public static final String SECONDARY_QQCIRCLE_ENABLE = "qqcircle_enable";
   public static final String SECONDARY_QQCIRCLE_ENABLE_FOLDER_CACHE = "qqcircle_enable_folder_cache";
@@ -1907,6 +1917,8 @@ public class QzoneConfig
   public static final String SECONDARY_QQCIRCLE_ENABLE_PLAY_NO_WIFI = "qqcircle_should_auto_play_when_wwan";
   public static final String SECONDARY_QQCIRCLE_ENABLE_REUSE_TAB_FRAGMENT = "qqcircle_enable_reuse_tab_fragment";
   public static final String SECONDARY_QQCIRCLE_ENABLE_TRANSITION_CLOSE_ANIM = "qqcircle_enable_transition_close_anim";
+  public static final String SECONDARY_QQCIRCLE_ENTRANCE_ENABLE = "qqcircle_entrance_enable";
+  public static final String SECONDARY_QQCIRCLE_FOLLOW_TAB_REDDOT_SHOW_INTERVAL = "qqcircle_follow_tab_reddot_show_interval";
   public static final String SECONDARY_QQCIRCLE_GENERATE_VIDEO_OVER_TIME_KEY = "qqcircleGenerateOverTime";
   public static final String SECONDARY_QQCIRCLE_GET_FOLLOWUSER_INTERNAL = "qqcircle_getfollowuser_internal";
   public static final String SECONDARY_QQCIRCLE_LABEL_MAX_COUNT = "qqcircle_label_max_count";
@@ -1927,15 +1939,20 @@ public class QzoneConfig
   public static final String SECONDARY_QQCIRCLE_SHOW_ENTRANCE_ON_MESSAGE_TAB = "qqcircle_show_entrance_on_message_tab";
   public static final String SECONDARY_QQCIRCLE_SHOW_ENTRANCE_ON_PROFILE_CARD = "qqcircle_show_entrance_on_profile_card";
   public static final String SECONDARY_QQCIRCLE_SHOW_ENTRANCE_ON_RECOMMEND_TAB = "qqcircle_show_entrance_on_recommend_tab";
+  public static final String SECONDARY_QQCIRCLE_SHOW_ENTRANCE_SWTICH_BUTTON = "qqcircle_show_entrance_switch_button";
   public static final String SECONDARY_QQCIRCLE_SHOW_ENTRANE_ON_DRAWER_TAB = "qqcircle_show_entrance_on_drawer_tab";
   public static final String SECONDARY_QQCIRCLE_SHOW_INVITE_GUIDE_BUBBLE_ON_PROFILE_PAGE = "qqcircle_show_invite_guide_bubble_on_profile_page";
   public static final String SECONDARY_QQCIRCLE_SHOW_MOOD_SYNC = "qqcircle_show_mood_sync_circle";
+  public static final String SECONDARY_QQCIRCLE_SHOW_PUBLISH_SAVE_GRID_SELECTED = "qqcircle_show_publish_save_grid_selected";
   public static final String SECONDARY_QQCIRCLE_SHOW_SHARE_QZONE = "qqcircle_show_share_qzone";
+  public static final String SECONDARY_QQCIRCLE_SPLASH_GUIDE_VIDEO_DIR = "qqcircle_splash_guide_video_dir";
   public static final String SECONDARY_QQCIRCLE_SWITCH_DANMAKU = "qqcircle_switch_danmaku";
   public static final String SECONDARY_QQCIRCLE_SWITCH_PLAY_VIDEO_IN_WORKS_TAB = "qqcircle_switch_play_video_in_works_tab";
   public static final String SECONDARY_QQCIRCLE_TAG_TO_LAYER = "qqcircle_tag_to_layer";
   public static final String SECONDARY_QQCIRCLE_TASK_USE_HIPPY = "qqcircle_task_use_hippy";
+  public static final String SECONDARY_QQCIRCLE_TIMEOUT_MAX_RETRY_COUNT = "qqcircleTimeOutMaxRetryCount";
   public static final String SECONDARY_QQCIRCLE_USE_EEVEE_RED_POINT = "qqcircle_use_eevee_red_point";
+  public static final String SECONDARY_QQCIRCLE_VERIFIED_SWITCH = "qqcircle_verified_switch";
   public static final String SECONDARY_QQREMIND_JUMP_URL = "https://h5.qianbao.qq.com/notice?_wv=1027&_wvx=10&_wwv=4";
   public static final int SECONDARY_QQREMIND_USE_H5 = 1;
   public static final String SECONDARY_QQ_REMIND_ALL_REMIND = "QQRemindAllRemind";
@@ -2570,8 +2587,8 @@ public class QzoneConfig
   private ConcurrentHashMap<String, ConcurrentHashMap<String, String>> configMap = new ConcurrentHashMap();
   private ContentObserver configUpdateObserver;
   private volatile int loadstatus = 0;
-  private ArrayList<WeakReference<bkzc>> mCallback = new ArrayList();
-  private bkyw mStringHelper;
+  private ArrayList<WeakReference<bmaf>> mCallback = new ArrayList();
+  private blzz mStringHelper;
   
   static
   {
@@ -2585,7 +2602,7 @@ public class QzoneConfig
   
   public static String getBecomeNuanFriendToastText()
   {
-    return getInstance().getConfig("QZoneSetting", "becomeNuanFriendToastText", anni.a(2131716524));
+    return getInstance().getConfig("QZoneSetting", "becomeNuanFriendToastText", anzj.a(2131716640));
   }
   
   public static QzoneConfig getInstance()
@@ -2604,6 +2621,11 @@ public class QzoneConfig
   public static int getQQCircleCommentMaxWordsLimit()
   {
     return getInstance().getConfig("qqcircle", "qqcircle_comment_max_words_limit", 100);
+  }
+  
+  public static int getQQCircleDefaultShowTabType()
+  {
+    return getInstance().getConfig("qqcircle", "qqcircle_default_show_tab_type", 6);
   }
   
   public static boolean getQQCircleEnableFolderPageCache()
@@ -2629,6 +2651,11 @@ public class QzoneConfig
   public static int getQQCircleFolderPageCacheLifeCycle()
   {
     return getInstance().getConfig("qqcircle", "qqcircle_enable_folder_cache_life_cycle", 180);
+  }
+  
+  public static int getQQCircleFollowTabUpdateNotificationShowInterval()
+  {
+    return getInstance().getConfig("qqcircle", "qqcircle_follow_tab_reddot_show_interval", 15);
   }
   
   public static long getQQCircleGetFollowUserInternal()
@@ -2754,6 +2781,11 @@ public class QzoneConfig
     return i;
   }
   
+  public static String getQQCircleSplashGuideVideoDir()
+  {
+    return getInstance().getConfig("qqcircle", "qqcircle_splash_guide_video_dir", "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qqcircle/android/splash/v1/");
+  }
+  
   public static boolean getQQCircleTagToLayer()
   {
     return getInstance().getConfig("qqcircle", "qqcircle_tag_to_layer", 1) == 1;
@@ -2764,23 +2796,28 @@ public class QzoneConfig
     return getInstance().getConfig("qqcircle", "qqcircle_task_use_hippy", 1) == 1;
   }
   
+  public static boolean getQQCircleUsePhoneSecurityAuth()
+  {
+    return getInstance().getConfig("qqcircle", "qqcircle_verified_switch", 1) == 1;
+  }
+  
   private void init()
   {
     registObserver();
     registBroadcast();
-    this.mStringHelper = new bkyw();
+    this.mStringHelper = new blzz();
   }
   
   private void initConfigUpdateObserver()
   {
     if (this.configUpdateObserver == null) {
-      this.configUpdateObserver = new bkza(this, null);
+      this.configUpdateObserver = new bmad(this, null);
     }
   }
   
   public static boolean isEeveeSysTemPolling()
   {
-    String str = abff.a("qqcircle", "qqcircle_enable_eevee_polling", "1");
+    String str = abjj.a("qqcircle", "qqcircle_enable_eevee_polling", "1");
     try
     {
       if (QLog.isColorLevel()) {
@@ -2913,14 +2950,29 @@ public class QzoneConfig
     return false;
   }
   
+  public static boolean isQQCircleShowLebaBySwitchButton()
+  {
+    String str = getInstance().getConfig("qqcircle", "qqcircle_entrance_enable", "1");
+    try
+    {
+      QLog.e("QzoneConfig", 1, "isQQCircleShowLebaBySwitchButton:" + str);
+      return str.equals("1");
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
   public static boolean isQQCircleShowLebaEntrance()
   {
     int i = getInstance().getConfig("qqcircle", "qqcircle_show_entrance_on_recommend_tab", 0);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QzoneConfig", 1, "isQQCircleShowLebaEntrance:" + i);
-      }
+      QLog.e("QzoneConfig", 1, "isQQCircleShowLebaEntrance:" + i);
       if (i != 1) {
         return false;
       }
@@ -3001,6 +3053,49 @@ public class QzoneConfig
     return true;
   }
   
+  public static boolean isQQCircleShowPublishSaveGridSelected()
+  {
+    boolean bool = true;
+    int i = getInstance().getConfig("qqcircle", "qqcircle_show_publish_save_grid_selected", 1);
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QzoneConfig", 1, "isQQCircleShowPublishSaveGridSelected:" + i);
+      }
+      if (i != 1) {
+        bool = false;
+      }
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public static boolean isQQCircleShowSwitchButton()
+  {
+    int i = getInstance().getConfig("qqcircle", "qqcircle_show_entrance_switch_button", 1);
+    try
+    {
+      QLog.e("QzoneConfig", 1, "isQQCircleShowLebaEntrance switchbutton:" + i);
+      if (i == 1) {
+        return true;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+    return false;
+  }
+  
   public static boolean isQQCircleShowTroopToolBarEntrance()
   {
     int i = getInstance().getConfig("qqcircle", "qqcircle_show_entrance_on_group_toolbar", 0);
@@ -3025,7 +3120,7 @@ public class QzoneConfig
   
   public static boolean isQQCircleUseEeveeRedPoint()
   {
-    return "1".equals(abff.a("qqcircle", "qqcircle_use_eevee_red_point", "1"));
+    return "1".equals(abjj.a("qqcircle", "qqcircle_use_eevee_red_point", "1"));
   }
   
   private void registBroadcast()
@@ -3038,7 +3133,7 @@ public class QzoneConfig
       localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
       localIntentFilter.addAction("mqq.intent.action.LOGOUT");
       localIntentFilter.addAction("mqq.intent.action.LOGIN");
-      BaseApplicationImpl.getApplication().registerReceiver(new bkzb(this), localIntentFilter);
+      BaseApplicationImpl.getApplication().registerReceiver(new bmae(this), localIntentFilter);
     }
   }
   
@@ -3063,9 +3158,9 @@ public class QzoneConfig
     getInstance().notifyConfigChange();
   }
   
-  public void addListener(bkzc parambkzc)
+  public void addListener(bmaf parambmaf)
   {
-    if (parambkzc == null) {}
+    if (parambmaf == null) {}
     for (;;)
     {
       return;
@@ -3083,19 +3178,19 @@ public class QzoneConfig
             localObject = (WeakReference)localIterator.next();
             if (localObject != null)
             {
-              localObject = (bkzc)((WeakReference)localObject).get();
+              localObject = (bmaf)((WeakReference)localObject).get();
               if (localObject != null) {
                 break;
               }
               localIterator.remove();
             }
           }
-        } while (!parambkzc.equals(localObject));
+        } while (!parambmaf.equals(localObject));
       }
       finally {}
       continue;
       label77:
-      this.mCallback.add(new WeakReference(parambkzc));
+      this.mCallback.add(new WeakReference(parambmaf));
     }
   }
   
@@ -3163,9 +3258,9 @@ public class QzoneConfig
   
   public String getConfig(String paramString1, String paramString2)
   {
+    Object localObject;
     if ((paramString1 != null) && (paramString2 != null))
     {
-      Object localObject;
       if ((this.mStringHelper != null) && (this.mStringHelper.a()))
       {
         paramString1 = this.mStringHelper.a(paramString1);
@@ -3190,7 +3285,18 @@ public class QzoneConfig
           QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new QzoneConfig.1(this));
           QLog.d("QzoneConfig", 4, "key:" + paramString2 + ",secondaryKey:" + paramString1 + ",value:" + (String)localObject + " key: notready");
         }
-        return localObject;
+        try
+        {
+          if ("qqcircle".equals(paramString2)) {
+            QLog.e("QzoneConfig", 1, "key = " + paramString2 + " secondaryKey= " + paramString1 + " value= " + (String)localObject);
+          }
+          return localObject;
+        }
+        catch (Throwable paramString1)
+        {
+          QLog.e("QzoneConfig", 1, paramString1, new Object[0]);
+          return localObject;
+        }
         paramString1 = paramString1.toLowerCase();
         localObject = paramString2.toLowerCase();
         paramString2 = paramString1;
@@ -3295,7 +3401,7 @@ public class QzoneConfig
         String str1 = str2;
         if (TextUtils.isEmpty(str2))
         {
-          paramString2 = abff.b(paramString2, paramString1);
+          paramString2 = abjj.b(paramString2, paramString1);
           str1 = paramString2;
           if (!TextUtils.isEmpty(paramString2))
           {
@@ -3341,7 +3447,7 @@ public class QzoneConfig
       this.loadstatus = 1;
       try
       {
-        if (abff.a(this.configMap))
+        if (abjj.a(this.configMap))
         {
           this.loadstatus = 2;
           return;
@@ -3377,9 +3483,9 @@ public class QzoneConfig
       }
       QLog.e("QzoneConfig", 1, "notifyConfigChange error", localThrowable);
     }
-    bkzc localbkzc = (bkzc)localbkzc.get();
-    if (localbkzc != null) {
-      localbkzc.onConfigChange();
+    bmaf localbmaf = (bmaf)localbmaf.get();
+    if (localbmaf != null) {
+      localbmaf.onConfigChange();
     }
     label74:
     label95:
@@ -3391,8 +3497,8 @@ public class QzoneConfig
         if (i >= j) {
           break label95;
         }
-        localbkzc = localThrowable[i];
-        if (localbkzc != null) {
+        localbmaf = localThrowable[i];
+        if (localbmaf != null) {
           break;
         }
         i += 1;
@@ -3443,7 +3549,7 @@ public class QzoneConfig
   }
   
   /* Error */
-  public void removeListener(bkzc parambkzc)
+  public void removeListener(bmaf parambmaf)
   {
     // Byte code:
     //   0: aload_0
@@ -3454,30 +3560,30 @@ public class QzoneConfig
     //   7: monitorexit
     //   8: return
     //   9: aload_0
-    //   10: getfield 7183	common/config/service/QzoneConfig:mCallback	Ljava/util/ArrayList;
-    //   13: invokevirtual 7437	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   10: getfield 7232	common/config/service/QzoneConfig:mCallback	Ljava/util/ArrayList;
+    //   13: invokevirtual 7499	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   16: astore_2
     //   17: aload_2
-    //   18: invokeinterface 7442 1 0
+    //   18: invokeinterface 7504 1 0
     //   23: ifeq -17 -> 6
     //   26: aload_2
-    //   27: invokeinterface 7446 1 0
-    //   32: checkcast 7448	java/lang/ref/WeakReference
+    //   27: invokeinterface 7508 1 0
+    //   32: checkcast 7510	java/lang/ref/WeakReference
     //   35: astore_3
     //   36: aload_3
     //   37: ifnull -20 -> 17
     //   40: aload_3
-    //   41: invokevirtual 7451	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   44: checkcast 7453	bkzc
+    //   41: invokevirtual 7513	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   44: checkcast 7515	bmaf
     //   47: astore_3
     //   48: aload_3
     //   49: ifnull +11 -> 60
     //   52: aload_1
     //   53: aload_3
-    //   54: invokevirtual 7457	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   54: invokevirtual 7519	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   57: ifeq -40 -> 17
     //   60: aload_2
-    //   61: invokeinterface 7456 1 0
+    //   61: invokeinterface 7518 1 0
     //   66: goto -49 -> 17
     //   69: astore_1
     //   70: aload_0
@@ -3487,7 +3593,7 @@ public class QzoneConfig
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	74	0	this	QzoneConfig
-    //   0	74	1	parambkzc	bkzc
+    //   0	74	1	parambmaf	bmaf
     //   16	45	2	localIterator	Iterator
     //   35	19	3	localObject	Object
     // Exception table:

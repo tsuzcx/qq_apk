@@ -1,61 +1,86 @@
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager.LayoutParams;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData.1;
-import java.util.Timer;
-import java.util.TimerTask;
+import com.tencent.mobileqq.javahook.BadTokenHooker.2;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import mqq.os.MqqHandler;
 
+@TargetApi(14)
 public class awfj
 {
-  public float a;
-  public int a;
-  public awfk a;
-  public awfn a;
-  public String a;
-  TimerTask a;
-  public boolean a;
-  public int b;
-  public String b = "non-ver";
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public boolean e = true;
-  public int f = 50;
-  public String f;
-  public boolean f;
-  public int g = 30;
-  public String g;
-  public boolean g;
-  public int h = 0;
-  public String h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
+  private static awfl a = new awfl(null);
   
-  public awfj()
+  public static void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = "send";
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilTimerTask = new ActionGlobalData.1(this);
+    try
+    {
+      localClass1 = Class.forName("android.view.ViewRootImpl");
+      JavaHookBridge.findAndHookMethod(localClass1, "setView", new Object[] { View.class, WindowManager.LayoutParams.class, View.class, new awfk(localClass1) });
+    }
+    catch (NoSuchMethodException localNoSuchMethodException1)
+    {
+      for (;;)
+      {
+        try
+        {
+          localClass1 = Class.forName("android.view.WindowManagerImpl");
+          if (Build.VERSION.SDK_INT > 16) {
+            break;
+          }
+        }
+        catch (ClassNotFoundException localClassNotFoundException2)
+        {
+          Class localClass1;
+          Class localClass2;
+          bhjx.a(localClassNotFoundException2);
+          return;
+        }
+        try
+        {
+          localClass2 = Class.forName("android.view.CompatibilityInfoHolder");
+          if (localClass2 != null) {
+            JavaHookBridge.findAndHookMethod(localClass1, "addView", new Object[] { View.class, ViewGroup.LayoutParams.class, localClass2, Boolean.class, a });
+          }
+          return;
+        }
+        catch (NoSuchMethodException localNoSuchMethodException2)
+        {
+          bhjx.a(localNoSuchMethodException2);
+          return;
+        }
+        catch (ClassNotFoundException localClassNotFoundException3)
+        {
+          bhjx.a(localClassNotFoundException3);
+          return;
+        }
+        localNoSuchMethodException1 = localNoSuchMethodException1;
+        bhjx.a(localNoSuchMethodException1);
+      }
+    }
+    catch (ClassNotFoundException localClassNotFoundException1)
+    {
+      for (;;)
+      {
+        bhjx.a(localClassNotFoundException1);
+      }
+    }
+    try
+    {
+      JavaHookBridge.findAndHookMethod(localClassNotFoundException3, "addView", new Object[] { View.class, ViewGroup.LayoutParams.class, a });
+      return;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException3)
+    {
+      bhjx.a(localNoSuchMethodException3);
+    }
   }
   
-  public void a()
+  private static void b(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    this.jdField_a_of_type_Float = this.jdField_c_of_type_Int;
-    ThreadManager.getTimer().schedule(this.jdField_a_of_type_JavaUtilTimerTask, 0L, 100L);
-  }
-  
-  public void a(awfk paramawfk)
-  {
-    this.jdField_a_of_type_Awfk = paramawfk;
+    ThreadManager.getSubThreadHandler().postDelayed(new BadTokenHooker.2(paramString1, paramString2, paramInt1), paramInt2);
   }
 }
 

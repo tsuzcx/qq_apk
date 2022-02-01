@@ -1,16 +1,8 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 class ayin
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
+  public int a;
   
-  ayin(ayil paramayil) {}
+  private ayin(ayhj paramayhj) {}
 }
 
 

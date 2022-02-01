@@ -1,15 +1,24 @@
-import android.graphics.drawable.Drawable;
-import android.text.Html.ImageGetter;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
-class aglk
-  implements Html.ImageGetter
+public class aglk
 {
-  aglk(aglj paramaglj) {}
-  
-  public Drawable getDrawable(String paramString)
+  private static String a(agky paramagky)
   {
-    return this.a.a(aglj.a(this.a).a, paramString);
+    if (paramagky.b < bhnm.a(paramagky.jdField_a_of_type_JavaUtilArrayList)) {
+      return (String)paramagky.jdField_a_of_type_JavaUtilArrayList.get(paramagky.b);
+    }
+    return "";
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, agky paramagky)
+  {
+    bdll.b(paramQQAppInterface, "dc00898", "", paramString2, paramString1, paramString1, 0, 0, "", "", a(paramagky), String.valueOf(paramagky.jdField_a_of_type_Int));
+  }
+  
+  public static boolean a(agky paramagky)
+  {
+    return paramagky.jdField_a_of_type_Int == 560;
   }
 }
 

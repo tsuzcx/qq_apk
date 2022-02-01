@@ -1,27 +1,19 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoListLogicBase;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class akhq
-  extends ayev
+class akhq
+  implements DialogInterface.OnClickListener
 {
-  public akhq(NewPhotoListActivity paramNewPhotoListActivity) {}
+  akhq(akha paramakha) {}
   
-  protected void c(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp))) {
-      ((akib)this.a.mPhotoListLogic.mOtherCommonData).a = ((get_albumlist_num_rsp)paramBundle).album_num;
-    }
-    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.a);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhq
  * JD-Core Version:    0.7.0.1
  */

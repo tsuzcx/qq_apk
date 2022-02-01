@@ -1,23 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.DynamicAvatar;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public final class argu
-  implements Parcelable.Creator<DynamicAvatar>
+public class argu
 {
-  public DynamicAvatar a(Parcel paramParcel)
+  private int a;
+  
+  public static argu a(String paramString)
   {
-    return new DynamicAvatar(paramParcel);
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        argu localargu = new argu();
+        localargu.a = new JSONObject(paramString).optInt("pttWithTextSwitch", -1);
+        return localargu;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PttWithTextSwitchBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  public DynamicAvatar[] a(int paramInt)
+  public boolean a()
   {
-    return new DynamicAvatar[paramInt];
+    return this.a == 1;
+  }
+  
+  public String toString()
+  {
+    return "open:" + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argu
  * JD-Core Version:    0.7.0.1
  */

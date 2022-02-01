@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
 import android.os.Bundle;
-import aoor;
+import apch;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 
@@ -14,7 +14,7 @@ class IVCommonInterfaceImpl$1
   {
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
     Bundle[] arrayOfBundle = new Bundle[1];
-    aoor.a(new IVCommonInterfaceImpl.1.1(this, this.val$businessId, arrayOfBundle, localCountDownLatch));
+    apch.a(new IVCommonInterfaceImpl.1.1(this, this.val$businessId, arrayOfBundle, localCountDownLatch));
     localCountDownLatch.await();
     return arrayOfBundle[0];
   }

@@ -1,13 +1,12 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
-
-public class bfzv
-  implements bdfn
+public class bfzv<F, S>
 {
-  public bfzv(TroopGiftToPersonalSurfaceView paramTroopGiftToPersonalSurfaceView, bdfn parambdfn) {}
+  public F a;
+  public S b;
   
-  public void a()
+  bfzv(F paramF, S paramS)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToPersonalSurfaceView.a(0, new bfzw(this));
+    this.a = paramF;
+    this.b = paramS;
   }
 }
 

@@ -1,35 +1,12 @@
-import java.util.Random;
+import java.io.File;
+import java.io.FileFilter;
 
-public class bmhd
-  extends bmhn
+final class bmhd
+  implements FileFilter
 {
-  protected int a;
-  protected Random a;
-  
-  public bmhd(int paramInt)
+  public boolean accept(File paramFile)
   {
-    this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
-    this.jdField_a_of_type_Int = 1;
-    a(paramInt);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt < 1) {
-      i = 1;
-    }
-    this.jdField_a_of_type_Int = i;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_Int) < 1;
+    return paramFile.getName().endsWith(".cfg");
   }
 }
 

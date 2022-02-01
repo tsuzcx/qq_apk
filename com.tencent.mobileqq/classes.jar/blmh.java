@@ -1,15 +1,6 @@
-import android.os.Bundle;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
-
-class blmh
-  extends anxr
+public abstract interface blmh
 {
-  blmh(blmg paramblmg) {}
-  
-  public void a()
-  {
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 2, new Bundle());
-  }
+  public abstract void onScrollStateChanged(int paramInt);
 }
 
 

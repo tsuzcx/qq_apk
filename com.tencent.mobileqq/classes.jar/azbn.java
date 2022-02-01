@@ -1,24 +1,26 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.portal.ImageAlphaSwitchView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import com.tencent.qphone.base.util.QLog;
 
 public class azbn
-  implements bgtg<Float>
+  extends Handler
 {
-  public azbn(ImageAlphaSwitchView paramImageAlphaSwitchView) {}
+  public azbn(ScanOcrView paramScanOcrView) {}
   
-  public void a(bgta<Float> parambgta, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.jdField_a_of_type_Float = paramFloat1.floatValue();
-    if (paramFloat1.floatValue() >= 255.0F)
+    if (QLog.isColorLevel()) {
+      QLog.i("ScanOcrView", 2, "handleMessage, MSG_SCANLINE");
+    }
+    switch (paramMessage.what)
     {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.b;
-      this.a.b = null;
-      this.a.jdField_a_of_type_Float = 0.0F;
-      if (this.a.jdField_a_of_type_Bgta != null)
-      {
-        this.a.jdField_a_of_type_Bgta.cancel();
-        this.a.jdField_a_of_type_Bgta = null;
-      }
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      this.a.a(paramMessage.arg1);
     }
   }
 }

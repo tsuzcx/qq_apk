@@ -1,40 +1,46 @@
-import android.os.Build.VERSION;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StModifyFeedReq;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StModifyFeedRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaly
-  implements RadioGroup.OnCheckedChangeListener
+  extends aamc
 {
-  public aaly(RelativePersonalBottomView paramRelativePersonalBottomView) {}
+  private CertifiedAccountWrite.StModifyFeedReq a = new CertifiedAccountWrite.StModifyFeedReq();
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public aaly(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (RelativePersonalBottomView.a(this.a).getId() == paramInt) {
-      RelativePersonalBottomView.a(this.a).setCurrentItem(0);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
     }
-    while (RelativePersonalBottomView.b(this.a).getId() != paramInt)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
-      return;
+    if (paramStFeed != null) {
+      this.a.feed.set(paramStFeed);
     }
-    if (Build.VERSION.SDK_INT >= 23) {}
-    for (boolean bool = aoqb.a(this.a.getContext());; bool = true)
+    this.a.mBitmap.set(1L);
+  }
+  
+  public static CertifiedAccountWrite.StModifyFeedRsp a(byte[] paramArrayOfByte)
+  {
+    CertifiedAccountWrite.StModifyFeedRsp localStModifyFeedRsp = new CertifiedAccountWrite.StModifyFeedRsp();
+    try
     {
-      if (!bool)
-      {
-        bglp.b((PublicFragmentActivity)this.a.getContext());
-        RelativePersonalBottomView.a(this.a).getChildAt(0).performClick();
-        break;
+      paramArrayOfByte = (CertifiedAccountWrite.StModifyFeedRsp)localStModifyFeedRsp.mergeFrom(paramArrayOfByte);
+      return paramArrayOfByte;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CertifiedAccountModifyFeedRequest", 2, "onResponse fail." + paramArrayOfByte);
       }
-      RelativePersonalBottomView.a(this.a).setCurrentItem(1);
-      break;
     }
+    return null;
+  }
+  
+  public byte[] a()
+  {
+    return this.a.toByteArray();
   }
 }
 

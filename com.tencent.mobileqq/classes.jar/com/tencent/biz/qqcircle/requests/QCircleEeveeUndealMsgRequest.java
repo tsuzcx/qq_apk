@@ -7,7 +7,7 @@ import feedcloud.FeedCloudEeveeBase.ClientInfo;
 import feedcloud.FeedCloudEeveeUndealmsg.FcUndealMsgsReq;
 import feedcloud.FeedCloudEeveeUndealmsg.FcUndealMsgsRsp;
 import feedcloud.FeedCloudEeveeUndealmsg.SignalMsg;
-import uxx;
+import uzg;
 
 public class QCircleEeveeUndealMsgRequest
   extends QCircleBaseRequest
@@ -17,7 +17,7 @@ public class QCircleEeveeUndealMsgRequest
   public QCircleEeveeUndealMsgRequest(FeedCloudEeveeBase.ClientInfo paramClientInfo, int paramInt1, int paramInt2, FeedCloudEeveeUndealmsg.SignalMsg paramSignalMsg)
   {
     this.mReq.appid.set(10000);
-    this.mReq.uid.set(String.valueOf(uxx.a()));
+    this.mReq.uid.set(String.valueOf(uzg.a()));
     this.mReq.clientInfo.set(paramClientInfo);
     this.mReq.visitScene.set(paramInt1);
     this.mReq.visitPage.set(paramInt2);

@@ -1,16 +1,18 @@
-import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
 
-public abstract class apll
-  implements aple
+public final class apll
+  implements Parcelable.Creator<ArConfigInfo>
 {
-  public Bundle a()
+  public ArConfigInfo a(Parcel paramParcel)
   {
-    return new Bundle();
+    return new ArConfigInfo(paramParcel);
   }
   
-  public String a()
+  public ArConfigInfo[] a(int paramInt)
   {
-    return "QQ.GetAudioOutputModeHandler";
+    return new ArConfigInfo[paramInt];
   }
 }
 

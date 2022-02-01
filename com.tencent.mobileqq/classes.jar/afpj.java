@@ -1,37 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.util.Pair;
 
-public class afpj
-  extends anmu
+class afpj
+  implements DialogInterface.OnClickListener
 {
-  public afpj(TroopTransferActivity paramTroopTransferActivity) {}
+  afpj(afpi paramafpi, bdwt parambdwt, Pair paramPair) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a.a(paramString) != null)) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    this.jdField_a_of_type_Bdwt.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
+    if (!bdwt.a(this.jdField_a_of_type_Afpi.a.app))
     {
-      paramString = this.a.a.a(paramString);
-      if (paramString != null) {
-        break label28;
-      }
+      this.jdField_a_of_type_Afpi.a.setTitle("");
+      bdws.a(this.jdField_a_of_type_Afpi.a.app, this.jdField_a_of_type_Afpi.a, null);
     }
-    label28:
-    Friends localFriends;
-    do
-    {
-      return;
-      localFriends = ((anmw)this.a.app.getManager(51)).e(paramString.a);
-    } while (localFriends == null);
-    this.a.a(paramString, localFriends);
+    this.jdField_a_of_type_Afpi.a.finish();
   }
 }
 

@@ -1,6 +1,55 @@
-class bhia
+import android.os.Bundle;
+
+public class bhia
 {
-  private static final bhhz a = new bhhz();
+  Bundle a = new Bundle();
+  
+  public Bundle a()
+  {
+    return this.a;
+  }
+  
+  public bhia a(String paramString)
+  {
+    this.a.putString("text_evidence", paramString);
+    return this;
+  }
+  
+  public bhia b(String paramString)
+  {
+    this.a.putString("img_evidence", paramString);
+    return this;
+  }
+  
+  public bhia c(String paramString)
+  {
+    this.a.putString("url_evidence", paramString);
+    return this;
+  }
+  
+  public bhia d(String paramString)
+  {
+    this.a.putString("video_evidence", paramString);
+    return this;
+  }
+  
+  public bhia e(String paramString)
+  {
+    this.a.putString("file_evidence", paramString);
+    return this;
+  }
+  
+  public bhia f(String paramString)
+  {
+    this.a.putString("audio_evidence", paramString);
+    return this;
+  }
+  
+  public bhia g(String paramString)
+  {
+    this.a.putString("user_input_param", paramString);
+    return this;
+  }
 }
 
 

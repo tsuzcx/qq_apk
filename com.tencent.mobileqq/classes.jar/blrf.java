@@ -1,16 +1,10 @@
-import cooperation.qzone.util.QZLog;
-
-final class blrf
-  implements blrg
+public abstract interface blrf
 {
-  public void a(String paramString, Throwable paramThrowable)
-  {
-    QZLog.e("QZLog", paramString, paramThrowable);
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blrf
  * JD-Core Version:    0.7.0.1
  */

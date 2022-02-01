@@ -1,19 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-
-public class ayfw
-  implements ayjd
+public abstract interface ayfw
 {
-  public ayfw(OCRResultActivity paramOCRResultActivity) {}
+  public abstract void f();
   
-  public void a(int paramInt, ayje paramayje)
-  {
-    if ((paramayje != null) && (!TextUtils.isEmpty(OCRResultActivity.c(this.a))) && (!OCRResultActivity.c(this.a).equals(paramayje.b)))
-    {
-      OCRResultActivity.c(this.a, paramayje.b);
-      OCRResultActivity.a(this.a, false);
-    }
-  }
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
 }
 
 

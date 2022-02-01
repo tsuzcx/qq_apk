@@ -1,10 +1,36 @@
-import java.util.List;
+import android.view.View;
 
-public class aygm
+public abstract interface aygm
 {
-  public List<aygk> a;
-  public boolean a;
-  public List<ayik> b;
+  public abstract int a();
+  
+  public abstract long a();
+  
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(aygn paramaygn);
+  
+  public abstract void a(aygo paramaygo);
+  
+  public abstract void a(aygp paramaygp);
+  
+  public abstract void a(aygq paramaygq);
+  
+  public abstract void a(aygr paramaygr);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

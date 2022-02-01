@@ -1,15 +1,17 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import java.lang.reflect.Field;
 
-public class zor
-  implements Handler.Callback
+public final class zor
 {
-  public zor(SegmentList paramSegmentList) {}
+  public final int a;
+  public final String a;
+  public final Field a;
   
-  public boolean handleMessage(Message paramMessage)
+  public zor(String paramString, int paramInt, Field paramField)
   {
-    return SegmentList.a(this.a, paramMessage);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangReflectField = paramField;
+    paramField.setAccessible(true);
   }
 }
 

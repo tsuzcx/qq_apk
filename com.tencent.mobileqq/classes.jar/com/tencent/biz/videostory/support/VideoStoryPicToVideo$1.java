@@ -1,16 +1,16 @@
 package com.tencent.biz.videostory.support;
 
-import aaxc;
-import aaxe;
+import abbf;
+import abbh;
 
 public class VideoStoryPicToVideo$1
   implements Runnable
 {
-  public VideoStoryPicToVideo$1(aaxc paramaaxc, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, aaxe paramaaxe) {}
+  public VideoStoryPicToVideo$1(abbf paramabbf, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, abbh paramabbh) {}
   
   public void run()
   {
-    aaxc.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_c_of_type_Int, this.jdField_a_of_type_Aaxe);
+    abbf.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_c_of_type_Int, this.jdField_a_of_type_Abbh);
   }
 }
 

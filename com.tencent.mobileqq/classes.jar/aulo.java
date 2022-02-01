@@ -1,36 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.fragment.AppletsSettingFragment;
-import com.tencent.widget.Switch;
+import android.os.Bundle;
 
-public class aulo
-  implements DialogInterface.OnClickListener
+public abstract interface aulo
 {
-  public aulo(AppletsSettingFragment paramAppletsSettingFragment) {}
+  public abstract void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    boolean bool = true;
-    if (paramInt == 1)
-    {
-      paramDialogInterface = this.a;
-      if (!AppletsSettingFragment.a(this.a))
-      {
-        AppletsSettingFragment.a(paramDialogInterface, bool);
-        AppletsSettingFragment.a(this.a, AppletsSettingFragment.a(this.a));
-        this.a.a.cancel();
-      }
-    }
-    while (paramInt != 0) {
-      for (;;)
-      {
-        return;
-        bool = false;
-      }
-    }
-    AppletsSettingFragment.a(this.a).setChecked(AppletsSettingFragment.a(this.a));
-    this.a.a.cancel();
-  }
+  public abstract void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle);
 }
 
 

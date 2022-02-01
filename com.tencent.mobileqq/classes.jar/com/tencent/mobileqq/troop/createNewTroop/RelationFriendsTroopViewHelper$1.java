@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import beow;
-import beoy;
+import bfod;
+import bfof;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class RelationFriendsTroopViewHelper$1
   implements Runnable
 {
-  public RelationFriendsTroopViewHelper$1(beow parambeow) {}
+  public RelationFriendsTroopViewHelper$1(bfod parambfod) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i("RelationFriendsTroopViewHelper", 2, "onSearchResult lastRecord null");
     }
-    beow.a(this.this$0, "");
-    beow.a(this.this$0).clear();
-    beow.b(this.this$0).clear();
-    beow.a(this.this$0).a();
+    bfod.a(this.this$0, "");
+    bfod.a(this.this$0).clear();
+    bfod.b(this.this$0).clear();
+    bfod.a(this.this$0).a();
   }
 }
 

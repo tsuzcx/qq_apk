@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ark.API;
 
-import agpq;
+import agyw;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import apih;
-import apix;
-import appj;
+import apvx;
+import apwn;
+import aqcz;
 import com.tencent.ark.ark;
 import com.tencent.ark.ark.Container;
 import com.tencent.mobileqq.activity.BaseChatPie;
@@ -17,7 +17,7 @@ import java.lang.ref.WeakReference;
 public class ArkAppQQModule$12
   implements Runnable
 {
-  public ArkAppQQModule$12(apix paramapix, long paramLong, String paramString) {}
+  public ArkAppQQModule$12(apwn paramapwn, long paramLong, String paramString) {}
   
   public void run()
   {
@@ -37,7 +37,7 @@ public class ArkAppQQModule$12
               do
               {
                 return;
-                localObject1 = apih.a();
+                localObject1 = apvx.a();
               } while (!(localObject1 instanceof FragmentActivity));
               localObject1 = ((FragmentActivity)localObject1).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
             } while (!(localObject1 instanceof ChatFragment));
@@ -47,21 +47,21 @@ public class ArkAppQQModule$12
             }
             localObject1 = ((BaseChatPie)localObject3).a();
           } while (localObject1 == null);
-          localObject2 = agpq.a((ark.Container)localObject2);
+          localObject2 = agyw.a((ark.Container)localObject2);
         } while (localObject2 == null);
-        localObject2 = (agpq)((WeakReference)localObject2).get();
-        Object localObject3 = ((BaseChatPie)localObject3).a((agpq)localObject2);
+        localObject2 = (agyw)((WeakReference)localObject2).get();
+        Object localObject3 = ((BaseChatPie)localObject3).a((agyw)localObject2);
         if (localObject3 != null)
         {
-          appj.a().a(((MessageForArkApp)localObject3).arkContainer, (SessionInfo)localObject1, (MessageForArkApp)localObject3, this.jdField_a_of_type_JavaLangString, apih.a());
+          aqcz.a().a(((MessageForArkApp)localObject3).arkContainer, (SessionInfo)localObject1, (MessageForArkApp)localObject3, this.jdField_a_of_type_JavaLangString, apvx.a());
           return;
         }
-      } while ((!appj.a().a()) || (localObject2 == null));
-      appj.a().a((agpq)localObject2, (SessionInfo)localObject1, this.jdField_a_of_type_JavaLangString);
+      } while ((!aqcz.a().a()) || (localObject2 == null));
+      aqcz.a().a((agyw)localObject2, (SessionInfo)localObject1, this.jdField_a_of_type_JavaLangString);
       return;
-      localObject1 = agpq.a((ark.Container)localObject2);
+      localObject1 = agyw.a((ark.Container)localObject2);
     } while (localObject1 == null);
-    appj.a().a((agpq)((WeakReference)localObject1).get(), null, this.jdField_a_of_type_JavaLangString);
+    aqcz.a().a((agyw)((WeakReference)localObject1).get(), null, this.jdField_a_of_type_JavaLangString);
   }
 }
 

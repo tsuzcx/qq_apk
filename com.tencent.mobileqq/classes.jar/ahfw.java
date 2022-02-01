@@ -1,34 +1,16 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
 
 public class ahfw
-  extends xfr
+  implements View.OnTouchListener
 {
-  public ahfw(QQStoryItemBuilder paramQQStoryItemBuilder, ahfy paramahfy, long paramLong, boolean paramBoolean) {}
+  public ahfw(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
   
-  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share", 2, "QQStoryItemBuilder requestVideoInfo: errorCode = " + paramInt + ", storyVideoItem = " + paramStoryVideoItem);
-    }
-    if ((paramInt == 0) && (paramStoryVideoItem != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Ahfy, this.jdField_b_of_type_Long, paramStoryVideoItem, this.jdField_b_of_type_Boolean);
-      return;
-    }
-    if (paramInt == 10100)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("QQStoryItemBuilder", 2, "onGetVideo video has deleted");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Ahfy, this.jdField_b_of_type_Long);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.w("QQStoryItemBuilder", 2, "onGetVideo video error");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Ahfy, this.jdField_b_of_type_Long);
+    return true;
   }
 }
 

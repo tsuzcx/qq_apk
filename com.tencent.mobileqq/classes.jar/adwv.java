@@ -1,34 +1,58 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopAppInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import QQService.SvcDevLoginInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Arrays;
+import java.util.List;
 
 public class adwv
-  implements nns
+  implements View.OnClickListener
 {
-  public adwv(ChatSettingForTroop paramChatSettingForTroop) {}
+  public adwv(AuthDevActivity paramAuthDevActivity, List paramList, RelativeLayout paramRelativeLayout, int paramInt, SvcDevLoginInfo paramSvcDevLoginInfo) {}
   
-  public void a() {}
-  
-  public void a(ArrayList<TroopAppInfo> paramArrayList)
+  public void onClick(View paramView)
   {
-    if ((this.a.isFinishing()) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
-    do
+    boolean bool3 = this.jdField_a_of_type_JavaUtilList.equals(AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity));
+    Object localObject1;
+    ArrayList localArrayList;
+    Object localObject2;
+    boolean bool1;
+    String str1;
+    String str2;
+    int i;
+    if (bool3)
     {
-      return;
-      ArrayList localArrayList = new ArrayList();
-      awne localawne = (awne)this.a.app.getManager(37);
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        TroopAppInfo localTroopAppInfo = (TroopAppInfo)paramArrayList.next();
-        localawne.a(Long.valueOf(localTroopAppInfo.appId), localTroopAppInfo);
-        localArrayList.add(Long.valueOf(localTroopAppInfo.appId));
+      localObject1 = "0X800AC55";
+      bdll.b(null, "dc00898", "", "", (String)localObject1, (String)localObject1, 0, 0, "", "", "", "");
+      localObject1 = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
+      localArrayList = new ArrayList();
+      localArrayList.add(((SvcDevLoginInfo)localObject1).stDeviceItemDes);
+      localObject2 = NetConnInfoCenter.GUID;
+      bool1 = false;
+      if (Arrays.equals((byte[])localObject2, ((SvcDevLoginInfo)localObject1).vecGuid)) {
+        bool1 = true;
       }
-      localawne.a(this.a.a.troopUin, localArrayList);
-    } while (this.a.i);
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity;
+      str1 = ((SvcDevLoginInfo)localObject1).strDeviceName;
+      str2 = AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
+      i = this.jdField_a_of_type_Int;
+      if (((SvcDevLoginInfo)localObject1).iLoginPlatform != 3L) {
+        break label198;
+      }
+    }
+    label198:
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      AuthDevActivity.a((AuthDevActivity)localObject2, str1, localArrayList, str2, i, bool2, bool1, ((SvcDevLoginInfo)localObject1).iAppId, ((SvcDevLoginInfo)localObject1).iLoginTime, this.jdField_a_of_type_QQServiceSvcDevLoginInfo.vecGuid, bool3, (SvcDevLoginInfo)localObject1);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject1 = "0X800AC57";
+      break;
+    }
   }
 }
 

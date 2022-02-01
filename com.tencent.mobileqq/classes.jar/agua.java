@@ -1,36 +1,23 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.utils.VipUtils;
 
 class agua
-  implements ahnt
+  implements DialogInterface.OnClickListener
 {
-  agua(agtx paramagtx, aguj paramaguj, MessageForPoke paramMessageForPoke) {}
+  agua(agtz paramagtz, String paramString, int paramInt) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("placeholder", 2, "HIDE_PLACEHOLDER Unlimited 1");
-    }
-    ahed.a().a(20);
-    this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageMatrix(null);
-    this.jdField_a_of_type_Aguj.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Aguj.b == agtx.b()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Agtx.a instanceof ChatHistoryActivity)) && (!agtx.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Aguj.c.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Aguj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-      return;
-      this.jdField_a_of_type_Aguj.c.setVisibility(8);
-    }
+    paramDialogInterface = new Intent(agtz.a(this.jdField_a_of_type_Agtz), QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    agtz.a(this.jdField_a_of_type_Agtz).startActivity(paramDialogInterface);
+    VipUtils.a(agtz.a(this.jdField_a_of_type_Agtz), "cmshow", "Apollo", "activity_alert_view", ApolloUtil.b(agtz.a(this.jdField_a_of_type_Agtz).jdField_a_of_type_Int), 0, new String[] { "" + this.jdField_a_of_type_Int, "1" });
   }
 }
 

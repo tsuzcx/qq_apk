@@ -1,30 +1,30 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import dov.com.qq.im.QIMCameraCaptureUnit.10;
+import mqq.app.AppRuntime;
 
 public class boco
-  implements Animator.AnimatorListener
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public boco(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  public boco(QIMCameraCaptureUnit.10 param10) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    AEEditorAILoadingView.a(this.a, 0);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    AEEditorAILoadingView.a(this.a, 0);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    AEEditorAILoadingView.a(this.a, AEEditorAILoadingView.a(this.a) + 1);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    AEEditorAILoadingView.a(this.a, 1);
+    if (!paramBoolean)
+    {
+      this.a.this$0.a(101);
+      return;
+    }
+    bocn.a(this.a.this$0, false);
+    if (!BaseApplicationImpl.getApplication().getRuntime().isBackgroundPause)
+    {
+      this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, paramLocalMediaInfo);
+      return;
+    }
+    this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
+    this.a.this$0.b = this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult;
+    this.a.this$0.e = true;
   }
 }
 

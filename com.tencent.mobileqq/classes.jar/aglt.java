@@ -1,124 +1,40 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.PatchedButton;
+import java.util.HashMap;
 
-public class aglt
-  extends agni
+class aglt
+  implements OnCompositionLoadedListener
 {
-  public static final String a;
+  aglt(aglq paramaglq) {}
   
-  static
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    jdField_a_of_type_JavaLangString = autn.jdField_a_of_type_JavaLangString + "GameMsgChatHelper";
-  }
-  
-  public aglt(BaseChatPie paramBaseChatPie)
-  {
-    super(paramBaseChatPie);
-  }
-  
-  private autc a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (!(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aias)))
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, " param error.");
-      return null;
-    }
-    return ((aias)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a();
-  }
-  
-  protected void a()
-  {
-    super.a();
-    if (this.jdField_a_of_type_AndroidWidgetImageButton != null) {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton != null)
-    {
-      Object localObject1 = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131367275);
-      Object localObject2 = (LinearLayout.LayoutParams)((LinearLayout)localObject1).getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject2).bottomMargin = 0;
-      ((LinearLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton;
-      ViewGroup.LayoutParams localLayoutParams = ((View)localObject1).getLayoutParams();
-      localObject2 = localLayoutParams;
-      if ((localLayoutParams instanceof FrameLayout.LayoutParams))
-      {
-        localObject1 = (View)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.getParent();
-        localObject2 = ((View)localObject1).getLayoutParams();
+    if (aglq.a(this.a) == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("LottieAnimation", 2, "LottieComposition.Factory.fromInputStream mLottieView is null!");
       }
-      if ((localObject2 instanceof LinearLayout.LayoutParams))
-      {
-        localObject2 = (LinearLayout.LayoutParams)localObject2;
-        ((LinearLayout.LayoutParams)localObject2).width = afur.a(60.0F, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources());
-        ((LinearLayout.LayoutParams)localObject2).height = afur.a(34.0F, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources());
-        ((LinearLayout.LayoutParams)localObject2).gravity = 16;
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(0);
-        ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setBackgroundResource(a());
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setText(2131690671);
-        if (AppSetting.c) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setContentDescription(anni.a(2131712941));
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setEnabled(false);
     }
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  protected void b()
-  {
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_AndroidWidgetImageButton != null) {
-      this.jdField_b_of_type_AndroidWidgetImageButton.setSelected(false);
-    }
-  }
-  
-  public void c()
-  {
-    super.c();
-    LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131367275);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
-    localLayoutParams.bottomMargin = 0;
-    localLinearLayout.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setEnabled(false);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    do
     {
-    }
-    for (;;)
-    {
-      super.onClick(paramView);
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      autc localautc = a();
-      if (localautc != null) {
-        bmxq.a().a(localautc.c, "1", "145", "920", "92005", "206353", "", "", "20", "0");
+      if (paramLottieComposition == null) {
+        break;
       }
+      aglq.a(this.a).setComposition(paramLottieComposition);
+      aglq.a(this.a).loop(false);
+      aglq.a(this.a).setVisibility(0);
+      aglq.a(this.a).playAnimation();
+    } while (!QLog.isColorLevel());
+    QLog.d("LottieAnimation", 2, "playNextAnim fromInputStream succ");
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimation", 2, "playNextAnim fromInputStream composition null");
     }
+    aglq.a(this.a).clear();
+    this.a.c();
   }
 }
 

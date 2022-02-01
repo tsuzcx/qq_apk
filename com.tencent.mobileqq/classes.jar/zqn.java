@@ -1,8 +1,47 @@
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public abstract interface zqn
+class zqn
+  extends BroadcastReceiver
 {
-  public abstract void a(RecyclerView.Adapter paramAdapter);
+  zqn(zqi paramzqi) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.SCREEN_OFF")) {
+      if ((this.a.jdField_a_of_type_Zqp != null) && (!this.a.jdField_a_of_type_Zqp.a()))
+      {
+        this.a.b = true;
+        yuk.d("Q.qqstory.ffmpeg.FFmpegCmd", "屏幕灭屏了，FFmpeg还在执行当中");
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramContext.equals("android.intent.action.SCREEN_ON")) || (!this.a.b));
+      this.a.b = false;
+    } while ((this.a.jdField_a_of_type_Zqo == null) || (this.a.jdField_a_of_type_Int == -9999) || (this.a.jdField_a_of_type_Zqo.a == null));
+    if (this.a.jdField_a_of_type_Int == 1)
+    {
+      paramContext = anzj.a(2131703380);
+      this.a.jdField_a_of_type_Zqo.a.onSuccess(paramContext);
+      this.a.jdField_a_of_type_Zqo.a.onFinish(true);
+      yuk.d("Q.qqstory.ffmpeg.FFmpegCmd", paramContext);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Int = -9999;
+      return;
+      paramContext = anzj.a(2131703379);
+      this.a.jdField_a_of_type_Zqo.a.onFailure(paramContext);
+      this.a.jdField_a_of_type_Zqo.a.onFinish(false);
+      yuk.d("Q.qqstory.ffmpeg.FFmpegCmd", paramContext);
+    }
+  }
 }
 
 

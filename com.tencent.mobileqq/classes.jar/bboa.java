@@ -1,11 +1,40 @@
-public class bboa
+import android.view.View;
+import java.lang.ref.WeakReference;
+
+class bboa
 {
-  public int a;
-  public CharSequence a;
-  public String a;
-  public boolean a;
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<agif> b;
+  WeakReference<bete> c;
   
-  public bboa(bbnx parambbnx) {}
+  public bboa(bbnz parambbnz, View paramView, agif paramagif)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramagif);
+  }
+  
+  public agif a()
+  {
+    return (agif)this.b.get();
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public bete a()
+  {
+    if (this.c == null) {
+      return null;
+    }
+    return (bete)this.c.get();
+  }
+  
+  public void a(bete parambete)
+  {
+    this.c = new WeakReference(parambete);
+  }
 }
 
 

@@ -1,24 +1,15 @@
-import android.os.Handler;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.WebCallHandler;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedWebView;
 
-final class awcj
-  implements bguz
+class awcj
+  implements CustomizedWebView
 {
-  public void a(bgux parambgux1, bgux parambgux2)
-  {
-    awch.a().sendEmptyMessage(10000001);
-  }
+  awcj(awcc paramawcc) {}
   
-  public void a(String paramString) {}
-  
-  public boolean a(bgux parambgux1, bgux parambgux2, int paramInt)
+  public void onJumpWeb(String paramString, Bundle paramBundle, WebCallHandler paramWebCallHandler)
   {
-    return true;
-  }
-  
-  public void b(bgux parambgux1, bgux parambgux2)
-  {
-    awch.a = false;
-    awch.a().sendEmptyMessage(10000001);
+    awde.a().a(paramBundle);
   }
 }
 

@@ -37,7 +37,7 @@ public class RequestWorker
   public static final int REQ_PRIORITY_QUERY = 1;
   private static final AtomicInteger seqFactory = new AtomicInteger(new Random().nextInt(100000));
   HwEngine engine;
-  public volatile int mCurrentRequests;
+  public volatile int mCurrentRequests = 0;
   private HandlerThread mHandlerThread;
   public RequestWorker.RequestHandler mRequestHandler;
   private AtomicBoolean mWorking = new AtomicBoolean(false);

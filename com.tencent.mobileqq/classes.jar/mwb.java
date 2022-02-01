@@ -1,32 +1,17 @@
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaExtractor;
-import java.io.RandomAccessFile;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.av.widget.shimmer.ShimmerTextView;
 
 public class mwb
-  extends mwa
+  extends AccessibilityDelegateCompat
 {
-  public float a;
-  public long a;
-  public MediaCodec.BufferInfo a;
-  public MediaExtractor a;
-  public RandomAccessFile a;
-  public String a;
-  public byte[] a;
-  public int b = 0;
-  public int c = 2147483647;
-  public int d;
-  public int e;
+  public mwb(ShimmerTextView paramShimmerTextView) {}
   
-  public mwb()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    super(null);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Float = 1.0F;
-  }
-  
-  public String toString()
-  {
-    return "FileInfo{filename = " + this.jdField_a_of_type_JavaLangString + ", fileType = " + this.b + ", volumeScale = " + this.jdField_a_of_type_Float + ", mixCnt = " + this.c + ", channelNum = " + this.jdField_a_of_type_Int + "}";
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setVisibleToUser(false);
   }
 }
 

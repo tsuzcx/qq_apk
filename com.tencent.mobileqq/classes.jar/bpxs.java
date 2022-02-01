@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class bpxs
-  implements DialogInterface.OnClickListener
+final class bpxs
+  implements EIPCResultCallback
 {
-  bpxs(bpxo parambpxo) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramDialogInterface.dismiss();
+    if (paramEIPCResult != null)
+    {
+      boolean bool = paramEIPCResult.data.getBoolean("key_result");
+      QLog.d("PeakIpcController", 2, "reSendMessage result:" + bool);
+    }
   }
 }
 

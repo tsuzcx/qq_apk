@@ -1,6 +1,20 @@
-public abstract interface aevw
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class aevw
+  extends anyu
 {
-  public abstract void onBackPressed();
+  public aevw(Leba paramLeba) {}
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    while ((bcvn)this.a.a.getManager(10) == null) {
+      return;
+    }
+    Leba.c(this.a);
+  }
 }
 
 

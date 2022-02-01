@@ -1,23 +1,47 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class aips
-  implements View.OnClickListener
+  extends anyu
 {
-  public aips(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  public aips(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    if (BlessSelectMemberActivity.a() != null) {
-      BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    int i;
+    if (QLog.isColorLevel())
+    {
+      String str = this.a.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder().append("onSetGenralSettingsTroopFilter: isSuc = ").append(paramBoolean).append(", size = ");
+      if (paramMap == null)
+      {
+        i = 0;
+        QLog.d(str, 2, i);
+      }
     }
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
+    else
+    {
+      if ((paramMap != null) && (paramMap.size() != 0)) {
+        break label83;
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    label83:
+    while (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())
+    {
+      return;
+      i = paramMap.size();
+      break;
+    }
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131718984), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131718983), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
   }
 }
 

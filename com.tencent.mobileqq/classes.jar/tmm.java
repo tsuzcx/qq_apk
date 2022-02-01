@@ -1,6 +1,15 @@
-public abstract interface tmm
+import com.tencent.biz.pubaccount.readinjoyAd.ad.game_component.VideoFeedsGameAdComManager.3;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.game_component.VideoFeedsGameAdComManager.3.1;
+
+public class tmm
+  implements trl
 {
-  public abstract void a(int paramInt);
+  public tmm(VideoFeedsGameAdComManager.3.1 param1) {}
+  
+  public void a()
+  {
+    this.a.a.this$0.b(true);
+  }
 }
 
 

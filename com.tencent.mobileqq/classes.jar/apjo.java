@@ -1,22 +1,53 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
 import com.tencent.qphone.base.util.QLog;
 
 class apjo
-  extends apnq
+  implements appt
 {
-  apjo(apjn paramapjn, String paramString1, String paramString2) {}
+  apjo(apjm paramapjm, ARCommonConfigInfo.NativeSoRes paramNativeSoRes) {}
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject)
+  public void a()
   {
-    if (!paramBoolean)
-    {
-      QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler.get packagename failed.");
-      return;
+    appt localappt = apjm.a(this.jdField_a_of_type_Apjm, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localappt != null) {
+      localappt.a();
     }
-    apjn.a((apjn)paramObject, paramString2, this.jdField_a_of_type_JavaLangString, this.b, paramString1);
-    BaseApplication.getContext().getSharedPreferences("arkappid2pkname_entry", 4).edit().putString(paramString2, paramString1).commit();
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    appt localappt = apjm.a(this.jdField_a_of_type_Apjm, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localappt != null) {
+      localappt.a(paramLong1, paramLong2);
+    }
+  }
+  
+  public void a(boolean paramBoolean, appu paramappu)
+  {
+    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a + ", filename = " + paramappu.c + ", url = " + paramappu.a);
+    if (paramBoolean) {
+      if (!apjm.a(this.jdField_a_of_type_Apjm, paramappu.c, paramappu.b))
+      {
+        apjm.a(this.jdField_a_of_type_Apjm, paramappu.c);
+        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
+      }
+    }
+    appt localappt;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Apjm.a(paramappu.d, paramappu.c, paramappu.b) == 0) {}
+      localappt = apjm.a(this.jdField_a_of_type_Apjm, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    } while (localappt == null);
+    localappt.a(paramBoolean, paramappu);
+  }
+  
+  public void b()
+  {
+    appt localappt = apjm.a(this.jdField_a_of_type_Apjm, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localappt != null) {
+      localappt.b();
+    }
   }
 }
 

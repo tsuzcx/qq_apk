@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-
-final class upl
-  implements DialogInterface.OnShowListener
+public class upl
 {
-  upl(uoc paramuoc) {}
+  public String a;
+  public String b;
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public upl() {}
+  
+  public upl(String paramString1, String paramString2)
   {
-    uph.a(this.a);
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

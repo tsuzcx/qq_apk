@@ -1,6 +1,24 @@
-public abstract interface auwe
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodCodec;
+
+public class auwe
+  extends auvz
 {
-  public abstract void c();
+  public auwe(String paramString, BinaryMessenger paramBinaryMessenger)
+  {
+    super(paramString, paramBinaryMessenger);
+  }
+  
+  public MethodChannel.MethodCallHandler a()
+  {
+    return new auwf(this);
+  }
+  
+  public MethodCodec a()
+  {
+    return auwg.a;
+  }
 }
 
 

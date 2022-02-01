@@ -1,21 +1,16 @@
+import java.util.ArrayList;
+
 class bgos
-  implements agpt
 {
-  bgos(bgor parambgor) {}
+  public long a;
+  public ArrayList<bgop> a;
+  public ArrayList<bgop> b;
   
-  public boolean a(agpq paramagpq)
+  public bgos(long paramLong, ArrayList<bgop> paramArrayList1, ArrayList<bgop> paramArrayList2)
   {
-    if (this.a.isShowing())
-    {
-      this.a.dismiss();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(agpq paramagpq, String paramString1, String paramString2)
-  {
-    return false;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList1;
+    this.b = paramArrayList2;
   }
 }
 

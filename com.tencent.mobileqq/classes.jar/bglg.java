@@ -1,12 +1,18 @@
-public class bglg
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
+import tencent.im.oidb.cmd0xea3.oidb_0xea3.BackMsg;
+
+class bglg
+  extends bgku
 {
-  public String a;
-  public boolean a;
-  
-  bglg(String paramString, boolean paramBoolean)
+  bglg(bglf parambglf, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super(paramQQAppInterface);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean, List<oidb_0xea3.BackMsg> paramList, List<Long> paramList1)
+  {
+    bglf.a(this.a, paramLong, paramBoolean, paramList, paramList1);
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.contacts.mayknow;
 
-import ajjp;
+import ajuy;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bcst;
+import bdll;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MayKnowRecommend.MayKnowRecommendLabel;
@@ -53,22 +53,22 @@ public class ContactReportUtils
     }
   }
   
-  public static void a(ajjp paramajjp)
+  public static void a(ajuy paramajuy)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ContactReportUtils", 2, "setReportExposeIntervalConfig: " + paramajjp);
+      QLog.d("ContactReportUtils", 2, "setReportExposeIntervalConfig: " + paramajuy);
     }
-    if (paramajjp != null)
+    if (paramajuy != null)
     {
       Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       if (localObject != null)
       {
         localObject = BaseApplicationImpl.getApplication().getSharedPreferences("com.tencent.mobileqq.ReportExposeInterval_" + ((QQAppInterface)localObject).getCurrentAccountUin(), 0).edit();
-        ((SharedPreferences.Editor)localObject).putBoolean("ReportExposeInterval_enable", paramajjp.jdField_a_of_type_Boolean);
-        ((SharedPreferences.Editor)localObject).putLong("ReportExposeInterval_interval", paramajjp.jdField_a_of_type_Long);
+        ((SharedPreferences.Editor)localObject).putBoolean("ReportExposeInterval_enable", paramajuy.jdField_a_of_type_Boolean);
+        ((SharedPreferences.Editor)localObject).putLong("ReportExposeInterval_interval", paramajuy.jdField_a_of_type_Long);
         ((SharedPreferences.Editor)localObject).apply();
-        a.b(paramajjp.jdField_a_of_type_Boolean);
-        a.a(paramajjp.jdField_a_of_type_Long);
+        a.b(paramajuy.jdField_a_of_type_Boolean);
+        a.a(paramajuy.jdField_a_of_type_Long);
       }
     }
   }
@@ -115,7 +115,7 @@ public class ContactReportUtils
           break label261;
         }
         paramString1 = "";
-        bcst.b(paramQQAppInterface, "dc00898", "", "", "frd_recom", "frd_list_update", paramInt, 0, paramArrayList, paramString1, ((JSONObject)localObject).toString(), "");
+        bdll.b(paramQQAppInterface, "dc00898", "", "", "frd_recom", "frd_list_update", paramInt, 0, paramArrayList, paramString1, ((JSONObject)localObject).toString(), "");
       }
     }
     catch (JSONException paramArrayList)
@@ -186,7 +186,7 @@ public class ContactReportUtils
             paramArrayList1.put("algh_id", localStringBuilder4.toString());
             if (paramBoolean)
             {
-              bcst.a(paramQQAppInterface, "dc00898", "", "", "frd_recom", "frd_list_exp", paramInt1, 0, String.valueOf(paramInt2), paramString, paramArrayList1.toString(), "");
+              bdll.a(paramQQAppInterface, "dc00898", "", "", "frd_recom", "frd_list_exp", paramInt1, 0, String.valueOf(paramInt2), paramString, paramArrayList1.toString(), "");
               return;
             }
           }
@@ -198,7 +198,7 @@ public class ContactReportUtils
                 QLog.i("ContactReportUtils", 2, "reportRecommend error: " + paramArrayList2.getMessage());
               }
             }
-            bcst.b(paramQQAppInterface, "dc00898", "", "", "frd_recom", "frd_list_exp", paramInt1, 0, String.valueOf(paramInt2), paramString, paramArrayList1.toString(), "");
+            bdll.b(paramQQAppInterface, "dc00898", "", "", "frd_recom", "frd_list_exp", paramInt1, 0, String.valueOf(paramInt2), paramString, paramArrayList1.toString(), "");
             return;
           }
         }
@@ -212,17 +212,17 @@ public class ContactReportUtils
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    bcst.b(paramQQAppInterface, "dc00898", "", "", "frd_recom", paramString, 0, 0, String.valueOf(paramInt), "", "", "");
+    bdll.b(paramQQAppInterface, "dc00898", "", "", "frd_recom", paramString, 0, 0, String.valueOf(paramInt), "", "", "");
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
   {
-    bcst.b(paramQQAppInterface, "dc00898", "", "", "frd_recom", paramString, 0, paramInt1, String.valueOf(paramInt2), "", "", "");
+    bdll.b(paramQQAppInterface, "dc00898", "", "", "frd_recom", paramString, 0, paramInt1, String.valueOf(paramInt2), "", "", "");
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    bcst.b(paramQQAppInterface, "dc00898", "", paramString1, "frd_recom", paramString2, 0, 0, "", "", "", "");
+    bdll.b(paramQQAppInterface, "dc00898", "", paramString1, "frd_recom", paramString2, 0, 0, "", "", "", "");
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, byte[] paramArrayOfByte, int paramInt4)
@@ -265,7 +265,7 @@ public class ContactReportUtils
         if (paramString4 == null)
         {
           paramString3 = "";
-          bcst.b(paramQQAppInterface, "dc00898", "", paramString1, "frd_recom", paramString2, paramInt1, paramInt2, String.valueOf(paramInt4), paramString3, localJSONObject.toString(), "");
+          bdll.b(paramQQAppInterface, "dc00898", "", paramString1, "frd_recom", paramString2, paramInt1, paramInt2, String.valueOf(paramInt4), paramString3, localJSONObject.toString(), "");
           return;
         }
       }
@@ -312,7 +312,7 @@ public class ContactReportUtils
         if (paramString5 == null)
         {
           paramString3 = "";
-          bcst.b(paramQQAppInterface, "dc00898", "", paramString1, "frd_recom", paramString2, paramInt1, paramInt2, String.valueOf(paramInt4), paramString3, localJSONObject.toString(), "");
+          bdll.b(paramQQAppInterface, "dc00898", "", paramString1, "frd_recom", paramString2, paramInt1, paramInt2, String.valueOf(paramInt4), paramString3, localJSONObject.toString(), "");
           return;
         }
       }

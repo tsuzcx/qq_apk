@@ -4,9 +4,11 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import anhk;
-import bgzf;
-import bhgg;
+import antf;
+import beyq;
+import bhzk;
+import bhzl;
+import bigv;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
@@ -41,6 +43,7 @@ public class VasApngUtil
   public static final int CAN_PLAY_TAG_PENDANT = 10;
   public static final int CAN_PLAY_TAG_QCIRCLE = 33;
   public static final int CAN_PLAY_TAG_QCIRCLE_PERSONAL_TIP = 34;
+  public static final int CAN_PLAY_TAG_QR = 35;
   public static final int CAN_PLAY_TAG_QZONE_BIRTH_GIFT = 20000;
   public static final int CAN_PLAY_TAG_QZONE_MOOD_SHORTCUT_LIST = 24;
   public static final int CAN_PLAY_TAG_QZONE_MSG_CONTENT_BOX = 10000;
@@ -51,6 +54,9 @@ public class VasApngUtil
   public static final int CAN_PLAY_TAG_QZONE_PLUS_MENU_TFIFTH = 22;
   public static final int CAN_PLAY_TAG_QZONE_PLUS_MENU_THIRD = 20;
   public static final int CAN_PLAY_TAG_RED_PACK = 26;
+  public static final int CAN_PLAY_TAG_SEARCH_FRIEND_LIST = 36;
+  public static final int CAN_PLAY_TAG_SEARCH_FRIEND_MIXT = 37;
+  public static final int CAN_PLAY_TAG_SEARCH_NET = 38;
   public static final int CAN_PLAY_TAG_SEE = 8;
   public static final int CAN_PLAY_TAG_SETTING = 1;
   public static final int CAN_PLAY_TAG_SHORTVIDEO_TRANSITION = 16;
@@ -59,7 +65,7 @@ public class VasApngUtil
   public static final int CAN_PLAY_TAG_WZRY_CARD_LOGO = 7;
   public static final String KEY_PLAY_APNG = "key_play_apng";
   public static final String KEY_USE_CACHE = "key_use_cache";
-  public static final String SO_FILE_NAME = "libAPNG_release_813.so";
+  public static final String SO_FILE_NAME = "libAPNG_release_845.so";
   public static final String SO_ZIP_NAME = "apng.zip";
   private static final String TAG = "VasApngUtil";
   public static final int[] VIP_APNG_TAGS = { 1, 0, 2, 3, 9, 27 };
@@ -171,7 +177,7 @@ public class VasApngUtil
   
   public static URLDrawable getApngURLDrawable(String paramString, int[] paramArrayOfInt, Drawable paramDrawable)
   {
-    return getApngURLDrawable(paramString, paramArrayOfInt, paramDrawable, null, new bgzf(paramArrayOfInt));
+    return getApngURLDrawable(paramString, paramArrayOfInt, paramDrawable, null, new bhzl(paramArrayOfInt));
   }
   
   public static URLDrawable getApngURLDrawable(String paramString, int[] paramArrayOfInt, Drawable paramDrawable, Bundle paramBundle, URLDrawable.URLDrawableListener paramURLDrawableListener)
@@ -207,7 +213,7 @@ public class VasApngUtil
   
   public static String getCacheFilePath(String paramString)
   {
-    return bhgg.a(new StringBuilder().append(anhk.ba).append(".vipicon/").toString()) + paramString.hashCode() + ".png";
+    return bigv.a(new StringBuilder().append(antf.ba).append(".vipicon/").toString()) + paramString.hashCode() + ".png";
   }
   
   public static Drawable getOptimizedApngDrawable(String paramString1, Drawable paramDrawable, int[] paramArrayOfInt, String paramString2)
@@ -218,6 +224,16 @@ public class VasApngUtil
   public static Drawable getOptimizedApngDrawable(String paramString1, String paramString2, Drawable paramDrawable, int[] paramArrayOfInt, String paramString3, Bundle paramBundle)
   {
     return getApngDrawable(paramString1, paramString2, paramDrawable, paramArrayOfInt, paramString3, paramBundle);
+  }
+  
+  public static URLDrawable getRegionUrlDrawable(String paramString, int paramInt)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = beyq.a;
+    localURLDrawableOptions.mFailedDrawable = beyq.a;
+    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+    paramString.setURLDrawableListener(new bhzk(paramInt));
+    return paramString;
   }
   
   public static void loadApngUrlInImageView(ImageView paramImageView, String paramString, int[] paramArrayOfInt, Drawable paramDrawable)

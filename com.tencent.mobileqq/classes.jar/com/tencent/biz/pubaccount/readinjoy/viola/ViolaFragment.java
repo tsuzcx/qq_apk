@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build.VERSION;
@@ -11,78 +12,76 @@ import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
+import aqre;
+import aqvh;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity.SerializableMap;
 import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tlg;
-import tlq;
-import tlr;
-import tls;
-import tlt;
-import tlu;
-import tlv;
-import tlw;
-import tlx;
-import tmk;
-import tmn;
-import tmp;
-import zuc;
+import tbz;
+import tci;
+import tcj;
+import tck;
+import tcl;
+import tcm;
+import tcn;
+import tco;
+import tcp;
+import tcq;
+import tcr;
+import tcs;
+import tct;
+import tcu;
+import tcv;
+import tdi;
+import tdl;
+import tdn;
+import thy;
+import zxx;
 
 public class ViolaFragment
   extends ViolaLazyFragment
 {
-  public static String a;
-  public HippyQQEngine a;
-  private tlx jdField_a_of_type_Tlx;
-  public tmk a;
-  public tmn a;
-  private boolean jdField_a_of_type_Boolean;
+  public static String BUNDLE_PAGE_CONFIG_DATA = "pageConfigParams";
+  public static final int COLOR_NOTE_NO_EXIST = 0;
+  public static final int COLOR_NOTE_NO_SUPPORT = -1;
+  public static final int COLOR_NOTE_STATE_EXIST = 1;
+  protected static final String TAG = "ViolaFragment";
+  private tci colorNote;
+  private aqre colorNoteController;
+  private boolean hasPlayAnimation;
+  public HippyQQEngine mHippyQQEngine;
+  private boolean mIsStatusFontDark;
+  private tcv mViolaGestureLayoutListener;
+  public tdi mViolaInitDelegate = new tdi(this);
+  public tdl mViolaUiDelegate = new tdl(this);
   
-  static
+  private void finishActivity()
   {
-    jdField_a_of_type_JavaLangString = "pageConfigParams";
-  }
-  
-  public ViolaFragment()
-  {
-    this.jdField_a_of_type_Tmk = new tmk(this);
-    this.jdField_a_of_type_Tmn = new tmn(this);
-  }
-  
-  private static ViolaFragment a(Bundle paramBundle)
-  {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
+    if (getActivity() != null) {
+      getActivity().finish();
     }
-    paramBundle = new ViolaFragment();
-    paramBundle.setArguments(localBundle);
-    return paramBundle;
   }
   
-  public static ViolaFragment a(String paramString, ReadInJoyChannelActivity.SerializableMap paramSerializableMap, boolean paramBoolean)
+  private void initBaseUI(ViewGroup paramViewGroup)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", paramString);
-    localBundle.putSerializable(jdField_a_of_type_JavaLangString, paramSerializableMap);
-    if (paramBoolean) {
-      localBundle.putInt(tmn.b, 1);
-    }
-    return a(localBundle);
+    this.mViolaUiDelegate.a(paramViewGroup);
   }
   
-  private void b(Bundle paramBundle)
+  private void initDataFromBundle(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Tmk.a(paramBundle);
+    this.mViolaInitDelegate.a(paramBundle);
   }
   
-  private void b(Bundle paramBundle, ViewGroup paramViewGroup)
+  private void initHippy(Bundle paramBundle, ViewGroup paramViewGroup)
   {
     Object localObject = new JSONObject();
     if ((paramBundle != null) && (paramBundle.containsKey("param"))) {}
@@ -97,17 +96,17 @@ public class ViolaFragment
       {
         continue;
       }
-      this.jdField_a_of_type_Tmn.b(paramViewGroup);
-      if (!this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.isReady()) {
-        this.jdField_a_of_type_Tmn.a();
+      this.mViolaUiDelegate.b(paramViewGroup);
+      if (!this.mHippyQQEngine.isReady()) {
+        this.mViolaUiDelegate.a();
       }
-      this.jdField_a_of_type_Tmn.a(paramViewGroup, new tlq(this, paramBundle, paramViewGroup));
-      this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.initHippy(a(), (JSONObject)localObject, this.jdField_a_of_type_Tmn.b(), new tlr(this, paramBundle, paramViewGroup));
+      this.mViolaUiDelegate.a(paramViewGroup, new tcn(this, paramBundle, paramViewGroup));
+      this.mHippyQQEngine.initHippy(getContentView(), (JSONObject)localObject, this.mViolaUiDelegate.b(), new tco(this, paramBundle, paramViewGroup));
       return;
     }
   }
   
-  private void c(Bundle paramBundle, ViewGroup paramViewGroup)
+  private void initViola(Bundle paramBundle, ViewGroup paramViewGroup)
   {
     JSONObject localJSONObject = new JSONObject();
     if ((paramBundle != null) && (paramBundle.containsKey("param"))) {}
@@ -116,10 +115,10 @@ public class ViolaFragment
       try
       {
         paramBundle = new JSONObject(paramBundle.getString("param"));
-        this.jdField_a_of_type_Tmn.c(paramViewGroup);
-        this.jdField_a_of_type_Tmn.b(paramViewGroup);
-        this.jdField_a_of_type_Tmn.a(paramViewGroup, new tls(this));
-        if (a() == null) {
+        this.mViolaUiDelegate.c(paramViewGroup);
+        this.mViolaUiDelegate.b(paramViewGroup);
+        this.mViolaUiDelegate.a(paramViewGroup, new tcp(this));
+        if (getContentView() == null) {
           return;
         }
       }
@@ -127,48 +126,76 @@ public class ViolaFragment
       {
         paramBundle = localJSONObject;
         continue;
-        this.jdField_a_of_type_Tmk.a(a(), paramBundle, this.jdField_a_of_type_Tmn.b(), new tlt(this));
+        this.mViolaInitDelegate.a(getContentView(), paramBundle, this.mViolaUiDelegate.b(), new tcq(this));
         return;
       }
       paramBundle = localJSONObject;
     }
   }
   
-  private void d(ViewGroup paramViewGroup)
+  private static ViolaFragment newInstance(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Tmn.a(paramViewGroup);
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    paramBundle = new ViolaFragment();
+    paramBundle.setArguments(localBundle);
+    return paramBundle;
   }
   
-  public int a()
+  public static ViolaFragment newInstance(String paramString, ReadInJoyChannelActivity.SerializableMap paramSerializableMap, boolean paramBoolean)
   {
-    return 2131558463;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("url", paramString);
+    localBundle.putSerializable(BUNDLE_PAGE_CONFIG_DATA, paramSerializableMap);
+    if (paramBoolean) {
+      localBundle.putInt(tdl.b, 1);
+    }
+    return newInstance(localBundle);
   }
   
-  public CommonSuspensionGestureLayout a()
+  private void playColorNoteAnimation()
   {
-    return this.jdField_a_of_type_Tmk.a();
+    this.hasPlayAnimation = true;
+    if (this.colorNoteController != null) {
+      this.colorNoteController.d();
+    }
+    if (this.colorNote != null) {
+      this.colorNote.a();
+    }
   }
   
-  public String a()
+  public void addToColorBall()
   {
-    return this.jdField_a_of_type_Tmk.a();
+    if (this.colorNoteController == null) {
+      return;
+    }
+    if (this.colorNoteController.b())
+    {
+      this.colorNoteController.e();
+      QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690746), 5000).a();
+      return;
+    }
+    this.colorNoteController.i();
   }
   
-  public HashMap a()
+  public int colorBallState()
   {
-    return this.jdField_a_of_type_Tmn.a();
+    if ((this.colorNoteController == null) || (!aqvh.a()) || (!this.colorNoteController.a())) {
+      return -1;
+    }
+    if (this.colorNoteController.c()) {
+      return 1;
+    }
+    return 0;
   }
   
-  public tmp a()
+  public void doOnBackPressed()
   {
-    return this.jdField_a_of_type_Tmn.a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Tmk.d();
-    if (this.jdField_a_of_type_Tmn.b()) {
-      this.jdField_a_of_type_Tmk.a(a(), true);
+    this.mViolaInitDelegate.d();
+    if (this.mViolaUiDelegate.b()) {
+      this.mViolaInitDelegate.a(getContentView(), true);
     }
     while (getActivity() == null) {
       return;
@@ -176,17 +203,57 @@ public class ViolaFragment
     getActivity().doOnBackPressed();
   }
   
-  public void a(Bundle paramBundle)
+  public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Tmn.a(paramBundle);
+    if (paramInt == 4)
+    {
+      boolean bool = this.mViolaInitDelegate.a();
+      if (this.mViolaUiDelegate.b())
+      {
+        this.mViolaInitDelegate.a(getContentView(), true);
+        return true;
+      }
+      return bool;
+    }
+    return super.doOnKeyDown(paramInt, paramKeyEvent);
   }
   
-  public void a(Bundle paramBundle, ViewGroup paramViewGroup)
+  public void enableFlingRight(boolean paramBoolean)
   {
-    b(paramBundle);
-    d(paramViewGroup);
+    this.mViolaUiDelegate.b(paramBoolean);
+  }
+  
+  public CommonSuspensionGestureLayout getCommonSuspensionGestureLayout()
+  {
+    return this.mViolaInitDelegate.a();
+  }
+  
+  public int getContentViewId()
+  {
+    return 2131558463;
+  }
+  
+  public HashMap getSusConfigMap()
+  {
+    return this.mViolaUiDelegate.a();
+  }
+  
+  public tdn getTtileChangelistener()
+  {
+    return this.mViolaUiDelegate.a();
+  }
+  
+  public String getUrl()
+  {
+    return this.mViolaInitDelegate.a();
+  }
+  
+  public void initAfterVisible(Bundle paramBundle, ViewGroup paramViewGroup)
+  {
+    initDataFromBundle(paramBundle);
+    initBaseUI(paramViewGroup);
     int j = 0;
-    String str = a();
+    String str = getUrl();
     int i = j;
     if (!TextUtils.isEmpty(str))
     {
@@ -204,112 +271,48 @@ public class ViolaFragment
           i = j;
           if (j == 1)
           {
-            if (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine == null) {
-              this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine = new HippyQQEngine(this, str);
+            if (this.mHippyQQEngine == null) {
+              this.mHippyQQEngine = new HippyQQEngine(this, str);
             }
-            b(paramBundle, paramViewGroup);
+            initHippy(paramBundle, paramViewGroup);
             i = j;
           }
         }
       }
     }
     if (i != 1) {
-      c(paramBundle, paramViewGroup);
+      initViola(paramBundle, paramViewGroup);
     }
-    a(paramViewGroup);
-    b();
+    initSuspension(paramViewGroup);
+    initFPS();
+    tryInitColorNote(paramBundle);
   }
   
-  public void a(ViewGroup paramViewGroup)
+  public void initBeforeVisible(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Tmn.b())
+    this.mViolaUiDelegate.a(paramBundle);
+  }
+  
+  protected void initFPS() {}
+  
+  public void initSuspension(ViewGroup paramViewGroup)
+  {
+    if (this.mViolaUiDelegate.b())
     {
-      this.jdField_a_of_type_Tmk.a(paramViewGroup);
-      this.jdField_a_of_type_Tmk.a(new tlu(this));
-      this.jdField_a_of_type_Tmn.a(new tlv(this, paramViewGroup));
+      this.mViolaInitDelegate.a(paramViewGroup);
+      this.mViolaInitDelegate.a(new tcr(this));
+      this.mViolaUiDelegate.a(new tcs(this, paramViewGroup));
     }
   }
   
-  public void a(HashMap<String, Object> paramHashMap, ViewGroup paramViewGroup)
+  public boolean isSuspension()
   {
-    this.jdField_a_of_type_Tmn.a(paramHashMap, paramViewGroup);
-  }
-  
-  public void a(tlx paramtlx)
-  {
-    this.jdField_a_of_type_Tlx = paramtlx;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Tmn.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Tmn.b();
-  }
-  
-  protected void b() {}
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Tmk.c(paramBoolean);
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaFragment", 2, "reload viola Page");
-    }
-    this.jdField_a_of_type_Tmn.a();
-    this.jdField_a_of_type_Tmk.a(new tlw(this));
-  }
-  
-  public void d()
-  {
-    FrameLayout localFrameLayout;
-    if ((b() != null) && (!TextUtils.isEmpty(a())) && ("1".equals(tlg.a(a(), "support_night"))))
-    {
-      boolean bool = ThemeUtil.isInNightMode(getActivity().app);
-      localFrameLayout = new FrameLayout(a().getContext());
-      ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-      localFrameLayout.setBackgroundColor(Color.parseColor("#77000000"));
-      b().addView(localFrameLayout, localLayoutParams);
-      if (!bool) {
-        break label113;
-      }
-      if (localFrameLayout != null)
-      {
-        localFrameLayout.setVisibility(0);
-        a("#ff888888", true);
-      }
-    }
-    label113:
-    while (localFrameLayout == null) {
-      return;
-    }
-    localFrameLayout.setVisibility(8);
-  }
-  
-  public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4)
-    {
-      boolean bool = this.jdField_a_of_type_Tmk.a();
-      if (this.jdField_a_of_type_Tmn.b())
-      {
-        this.jdField_a_of_type_Tmk.a(a(), true);
-        return true;
-      }
-      return bool;
-    }
-    return super.doOnKeyDown(paramInt, paramKeyEvent);
+    return this.mViolaUiDelegate.b();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Tmk.a(paramInt1, paramInt2, paramIntent);
+    this.mViolaInitDelegate.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onDestroy()
@@ -318,7 +321,7 @@ public class ViolaFragment
     if (Build.VERSION.SDK_INT >= 21)
     {
       if (getActivity() == null) {
-        break label60;
+        break label74;
       }
       getActivity().finishAndRemoveTask();
     }
@@ -326,16 +329,19 @@ public class ViolaFragment
     {
       for (;;)
       {
-        this.jdField_a_of_type_Tmk.c();
-        if (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine != null)
+        this.mViolaInitDelegate.c();
+        if (this.mHippyQQEngine != null)
         {
-          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.onDestroy();
-          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine = null;
+          this.mHippyQQEngine.onDestroy();
+          this.mHippyQQEngine = null;
         }
         label52:
-        zuc.a(getActivity());
+        zxx.a(getActivity());
+        if (this.colorNoteController != null) {
+          this.colorNoteController.c();
+        }
         return;
-        label60:
+        label74:
         BaseActivity.sTopActivity.finishAndRemoveTask();
       }
     }
@@ -348,27 +354,159 @@ public class ViolaFragment
   public void onFinish()
   {
     super.onFinish();
-    if ((!this.jdField_a_of_type_Tmn.b()) && (getActivity() != null)) {
+    if ((!this.mViolaUiDelegate.b()) && (getActivity() != null)) {
       getActivity().overridePendingTransition(0, 2130772012);
     }
   }
   
   public void onPause()
   {
-    this.jdField_a_of_type_Tmk.b();
+    this.mViolaInitDelegate.b();
     super.onPause();
+    if (this.colorNoteController != null) {
+      this.colorNoteController.b();
+    }
   }
   
   public void onResume()
   {
-    this.jdField_a_of_type_Tmk.a();
+    this.mViolaInitDelegate.a();
     super.onResume();
+    if (this.colorNoteController != null) {
+      this.colorNoteController.a();
+    }
+  }
+  
+  public boolean overrideFinish()
+  {
+    if ((this.colorNoteController != null) && (!this.hasPlayAnimation))
+    {
+      playColorNoteAnimation();
+      return true;
+    }
+    return false;
+  }
+  
+  public void reloadHippyInstance()
+  {
+    this.mViolaUiDelegate.a();
+    this.mHippyQQEngine.reload(new tcj(this));
+  }
+  
+  public void reloadPage()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "reload viola Page");
+    }
+    this.mViolaUiDelegate.a();
+    this.mViolaInitDelegate.a(new tct(this));
+  }
+  
+  public void removeColorBall()
+  {
+    if ((this.colorNoteController == null) || (!this.colorNoteController.c())) {
+      return;
+    }
+    this.colorNoteController.f();
+    QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690750), 5000).a();
+  }
+  
+  public void setCanCloseFromBottom(boolean paramBoolean)
+  {
+    this.mViolaInitDelegate.c(paramBoolean);
+  }
+  
+  public void setColorBallData(JSONObject paramJSONObject)
+  {
+    if (this.colorNote == null) {
+      return;
+    }
+    this.colorNote.a(paramJSONObject);
+  }
+  
+  public void setPageData(Object paramObject)
+  {
+    this.mViolaInitDelegate.a(paramObject);
+  }
+  
+  public void setPageData(Object paramObject, String paramString)
+  {
+    this.mViolaInitDelegate.a(paramObject, paramString);
+  }
+  
+  public void setPageUiData(Object paramObject)
+  {
+    this.mViolaUiDelegate.a(paramObject);
+  }
+  
+  public void setTitleConf(HashMap<String, Object> paramHashMap, ViewGroup paramViewGroup)
+  {
+    this.mViolaUiDelegate.a(paramHashMap, paramViewGroup);
   }
   
   public void setUserVisibleHint(boolean paramBoolean)
   {
     super.setUserVisibleHint(paramBoolean);
-    this.jdField_a_of_type_Tmk.a(paramBoolean);
+    this.mViolaInitDelegate.a(paramBoolean);
+  }
+  
+  public void setViolaGestureLayoutListener(tcv paramtcv)
+  {
+    this.mViolaGestureLayoutListener = paramtcv;
+  }
+  
+  public void tryInitColorNote(Bundle paramBundle)
+  {
+    if (!aqvh.a()) {}
+    while (!thy.b(getUrl())) {
+      return;
+    }
+    this.colorNoteController = new aqre(getActivity(), true, false, true, true, 0);
+    this.colorNoteController.a(getActivity());
+    this.colorNoteController.a(new tcu(this, paramBundle));
+    this.colorNoteController.a(new tck(this));
+    this.colorNoteController.a(new tcl(this));
+    this.colorNoteController.a(new tcm(this));
+    this.colorNoteController.j();
+  }
+  
+  public void updateColorBallData(JSONObject paramJSONObject)
+  {
+    if (this.colorNote == null) {
+      return;
+    }
+    this.colorNote.b(paramJSONObject);
+  }
+  
+  public void useNightMode()
+  {
+    FrameLayout localFrameLayout;
+    if ((getTitleRootView() != null) && (!TextUtils.isEmpty(getUrl())) && ("1".equals(tbz.a(getUrl(), "support_night"))))
+    {
+      boolean bool = ThemeUtil.isInNightMode(getActivity().app);
+      localFrameLayout = new FrameLayout(getContentView().getContext());
+      ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+      localFrameLayout.setBackgroundColor(Color.parseColor("#77000000"));
+      getTitleRootView().addView(localFrameLayout, localLayoutParams);
+      if (!bool) {
+        break label113;
+      }
+      if (localFrameLayout != null)
+      {
+        localFrameLayout.setVisibility(0);
+        setStatusBarColor("#ff888888", true);
+      }
+    }
+    label113:
+    while (localFrameLayout == null) {
+      return;
+    }
+    localFrameLayout.setVisibility(8);
+  }
+  
+  public void violaUpdateInstance(String paramString)
+  {
+    this.mViolaInitDelegate.a(paramString);
   }
 }
 

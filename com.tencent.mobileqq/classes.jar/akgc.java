@@ -1,278 +1,132 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.media.MediaMetadataRetriever;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.annotation.NonNull;
+import android.support.annotation.UiThread;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopLinkFragment;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import com.tencent.mobileqq.activity.history.link.TroopLinkHandler.1;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.security.MessageDigest;
-import mqq.app.MobileQQ;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import mqq.app.TicketManagerImpl;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public final class akgc
+public class akgc
+  implements beuq
 {
-  public static void a(Activity paramActivity)
+  private long jdField_a_of_type_Long;
+  @NonNull
+  private akgb jdField_a_of_type_Akgb;
+  private beuo jdField_a_of_type_Beuo;
+  private final ChatHistoryTroopLinkFragment jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopLinkFragment;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public akgc(QQAppInterface paramQQAppInterface, ChatHistoryTroopLinkFragment paramChatHistoryTroopLinkFragment, @NonNull akgb paramakgb)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SdkDynamicAvatarSettingHelper", 2, "[showSettingResultDialog]");
-    }
-    if (paramActivity == null) {
-      return;
-    }
-    Object localObject = paramActivity.getIntent();
-    String str1 = ((Intent)localObject).getStringExtra("pkg_name");
-    String str2 = ((Intent)localObject).getStringExtra("app_name");
-    String str3 = ((Intent)localObject).getStringExtra("share_id");
-    if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str3)))
-    {
-      localObject = new abdx(paramActivity);
-      ((TextView)((abdx)localObject).findViewById(2131378785)).setText(anni.a(2131712368));
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      str2 = localQQAppInterface.getApplication().getString(2131717865) + str2;
-      paramActivity = new akgi(paramActivity, str1, str3, localQQAppInterface);
-      ((abdx)localObject).a(str2, paramActivity);
-      ((abdx)localObject).a(paramActivity);
-      ((abdx)localObject).setCancelable(false);
-      ((abdx)localObject).show();
-      return;
-    }
-    QLog.d("SdkDynamicAvatarSettingHelper", 1, "[showSettingResultDialog] no third app info");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopLinkFragment = paramChatHistoryTroopLinkFragment;
+    this.jdField_a_of_type_Beuo = ((bevk)paramQQAppInterface.getManager(21)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
+    this.jdField_a_of_type_Akgb = paramakgb;
   }
   
-  public static void a(Activity paramActivity, String paramString)
+  private ArrayList<TroopLinkElement> a(JSONObject paramJSONObject)
   {
-    if ((paramActivity == null) || (TextUtils.isEmpty(paramString)))
-    {
-      QLog.e("SdkDynamicAvatarSettingHelper", 1, "check, param null");
-      return;
+    paramJSONObject = paramJSONObject.optJSONArray("url_list");
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONObject == null) {
+      return localArrayList;
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    Intent localIntent = paramActivity.getIntent();
-    String str2 = localIntent.getStringExtra("share_id");
-    Object localObject1 = localIntent.getStringExtra("app_name");
-    String str3 = localQQAppInterface.getApplication().getString(2131717865) + (String)localObject1;
-    String str4 = localIntent.getStringExtra("sdk_version");
-    String str5 = localIntent.getStringExtra("pkg_name");
-    if (!TextUtils.isEmpty(str5)) {}
-    String str1;
-    for (;;)
+    int i = 0;
+    while (i < paramJSONObject.length())
     {
-      try
-      {
-        localObject1 = paramActivity.getPackageManager().getPackageInfo(str5, 64);
-        if (localObject1 == null) {
-          break label328;
-        }
-        localObject1 = ((PackageInfo)localObject1).signatures;
-        if ((localObject1 == null) || (localObject1.length <= 0)) {
-          break label328;
-        }
-        localObject2 = MessageDigest.getInstance("MD5");
-        ((MessageDigest)localObject2).update(localObject1[0].toByteArray());
-        localObject1 = bgmj.a(((MessageDigest)localObject2).digest());
-      }
-      catch (Exception localException)
-      {
-        QLog.e("SdkDynamicAvatarSettingHelper", 1, "check, get signature exception=", localException);
-        str1 = null;
-        continue;
-      }
-      if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str5)) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
-        break;
-      }
-      QLog.e("SdkDynamicAvatarSettingHelper", 1, new Object[] { "check, invalid param, shareAppId=", str2, ", pkgName=", str5, ", signature=", localObject1 });
-      bcst.b(localQQAppInterface, "dc00898", "", "", "0X8009DFB", "0X8009DFB", 0, 0, str2, "1", "", "");
-      try
-      {
-        paramString = bglp.a(paramActivity, 230);
-        paramString.setMessage(anni.a(2131712367));
-        paramString.setNegativeButton(2131690582, new akgd(paramActivity));
-        paramString.setCancelable(false);
-        paramString.show();
-        return;
-      }
-      catch (Exception paramActivity)
-      {
-        QLog.e("SdkDynamicAvatarSettingHelper", 1, "show invalid param dialog, exception=", paramActivity);
-        return;
-      }
-      QLog.e("SdkDynamicAvatarSettingHelper", 1, "check, pkgName null");
-      label328:
-      str1 = null;
+      JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+      localArrayList.add(TroopLinkElement.mergeFromJson(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopLinkFragment.a(), localJSONObject));
+      i += 1;
     }
-    adei.a();
-    Object localObject2 = new Bundle();
-    ((Bundle)localObject2).putString("sdkVersion", str4);
-    ((Bundle)localObject2).putString("pkgName", str5);
-    ((Bundle)localObject2).putString("signature", str1);
-    adei.a(paramActivity, 1, str2, (Bundle)localObject2).a("sdk_dynamic_avatar_edit", null, new akge(localQQAppInterface, str2, paramActivity, str3, str5, paramString, localIntent));
+    return localArrayList;
   }
   
-  public static boolean a(String paramString)
+  private void a(bevm parambevm)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    try
     {
-      return false;
-      MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-      localMediaMetadataRetriever.setDataSource(paramString);
-      paramString = localMediaMetadataRetriever.extractMetadata(9);
-      String str1 = localMediaMetadataRetriever.extractMetadata(18);
-      String str2 = localMediaMetadataRetriever.extractMetadata(19);
-      localMediaMetadataRetriever.release();
+      parambevm = new JSONObject(new String(parambevm.jdField_a_of_type_ArrayOfByte));
       if (QLog.isColorLevel()) {
-        QLog.d("SdkDynamicAvatarSettingHelper", 1, new Object[] { "[isVideoValid] width=", str1, ", height=", str2, ", duration=", paramString });
+        QLog.i("TroopLinkHandler", 2, "resolveResponse: invoked.  json: " + parambevm);
       }
-      long l3 = 0L;
-      long l1 = l3;
-      long l2 = l3;
-      try
-      {
-        if (!TextUtils.isEmpty(paramString))
-        {
-          l2 = l3;
-          l1 = Long.parseLong(paramString);
-        }
-        l2 = l1;
-        if (!TextUtils.isEmpty(str1))
-        {
-          l2 = l1;
-          i = Integer.parseInt(str1);
-          j = i;
-          l2 = l1;
-        }
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          try
-          {
-            if (TextUtils.isEmpty(str2)) {
-              continue;
-            }
-            j = Integer.parseInt(str2);
-            k = i;
-            i = j;
-            if ((l1 <= 500L) || (l1 > 8000L) || (k != i) || (k != 480)) {
-              break;
-            }
-            return true;
-          }
-          catch (Exception paramString)
-          {
-            int j;
-            int k;
-            continue;
-          }
-          paramString = paramString;
-          int i = 0;
-          l1 = l2;
-          QLog.e("SdkDynamicAvatarSettingHelper", 1, "[isVideoValid] parse exception=", paramString);
-          l2 = l1;
-          j = i;
-          i = 0;
-          k = j;
-          l1 = l2;
-          continue;
-          i = 0;
-        }
-      }
+      a(true, a(parambevm));
+      a(parambevm);
+      return;
+    }
+    catch (Exception parambevm)
+    {
+      QLog.e("TroopLinkHandler", 1, "resolveResponse: failed. ", parambevm);
+      a(false, new ArrayList());
     }
   }
   
-  private static void b(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4)
+  private void a(String paramString, long paramLong)
   {
-    if ((paramActivity == null) || (TextUtils.isEmpty(paramString4)) || (TextUtils.isEmpty(paramString3)) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
+    beum localbeum = new beum();
+    localbeum.jdField_a_of_type_JavaLangString = "https://qun.qq.com/cgi-bin/groupchat_url_collect/get_url_collect";
+    localbeum.jdField_a_of_type_Int = 1;
+    localbeum.d = 0;
+    localbeum.jdField_a_of_type_Beuq = this;
+    String str = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+    paramString = String.format("bkn=%s&gc=%s&seq=%s&n=%s&noui=1", new Object[] { Integer.valueOf(bguq.b(str)), paramString, Long.valueOf(paramLong), Integer.valueOf(200) });
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopLinkHandler", 2, "send: invoked.  postData: " + paramString);
     }
-    try
-    {
-      abdx localabdx = new abdx(paramActivity);
-      ((TextView)localabdx.findViewById(2131378785)).setText(paramString1);
-      paramString1 = localabdx.findViewById(2131365470);
-      View localView = localabdx.findViewById(2131363761);
-      paramString1.setVisibility(8);
-      localView.setVisibility(8);
-      localabdx.findViewById(2131378786).setVisibility(8);
-      localabdx.a(paramString2, new akgg(paramActivity, paramString3, paramString4));
-      localabdx.setCancelable(false);
-      localabdx.show();
-      return;
-    }
-    catch (Exception paramActivity)
-    {
-      QLog.e("SdkDynamicAvatarSettingHelper", 1, "[showErrorDialog] exception=", paramActivity);
+    str = "uin=" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + ";skey=" + str;
+    localbeum.jdField_a_of_type_ArrayOfByte = paramString.getBytes();
+    localbeum.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    localbeum.jdField_a_of_type_JavaUtilHashMap.put("Cookie", str);
+    this.jdField_a_of_type_Beuo.a(localbeum);
+  }
+  
+  private void a(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_Long = paramJSONObject.optLong("seq");
+    long l = paramJSONObject.optLong("n_all", -1L);
+    if ((this.jdField_a_of_type_Long == 0L) || (l == 0L)) {
+      this.jdField_a_of_type_Akgb.r();
     }
   }
   
-  private static void b(Activity paramActivity, boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2)
+  @UiThread
+  private void a(boolean paramBoolean, @NonNull List<TroopLinkElement> paramList)
   {
-    if ((paramActivity == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      QLog.e("SdkDynamicAvatarSettingHelper", 1, "[startSdkCallback] param null");
-      return;
-    }
-    for (;;)
-    {
-      Intent localIntent;
-      long l;
-      try
-      {
-        localIntent = new Intent();
-        localIntent.addFlags(268435456);
-        if (paramBoolean2) {
-          localIntent.putExtra("stay_back_stack", true);
-        }
-        l = Long.parseLong(paramString2);
-        if (paramBoolean1)
-        {
-          localIntent.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(l), "sdkSetDynamicAvatar" })));
-          localIntent.setPackage(paramString1);
-          paramActivity.startActivity(localIntent);
-          return;
-        }
-      }
-      catch (Exception paramActivity)
-      {
-        QLog.e("SdkDynamicAvatarSettingHelper", 1, "[startSdkCallback] startActivity failed, exception=", paramActivity);
-        return;
-      }
-      localIntent.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=error", new Object[] { Long.valueOf(l), "sdkSetDynamicAvatar" })));
-    }
+    paramList = new TroopLinkHandler.1(this, paramBoolean, paramList);
+    ThreadManager.getUIHandler().post(paramList);
   }
   
-  private static void c(Activity paramActivity)
+  public void a(String paramString, boolean paramBoolean)
   {
-    if (paramActivity == null) {
+    if (paramBoolean)
+    {
+      a(paramString, this.jdField_a_of_type_Long);
       return;
     }
-    try
-    {
-      Object localObject = paramActivity.getIntent();
-      String str1 = ((Intent)localObject).getStringExtra("pkg_name");
-      String str2 = ((Intent)localObject).getStringExtra("share_id");
-      localObject = bglp.a(paramActivity, 230);
-      ((bgpa)localObject).setMessage(anni.a(2131712369));
-      ((bgpa)localObject).setTitle(2131691916);
-      paramActivity = new akgh(paramActivity, str1, str2);
-      ((bgpa)localObject).setNegativeButton(2131690582, paramActivity);
-      ((bgpa)localObject).setPositiveButton(2131717875, paramActivity);
-      ((bgpa)localObject).setCancelable(false);
-      ((bgpa)localObject).show();
-      return;
-    }
-    catch (Exception paramActivity)
-    {
-      QLog.e("SdkDynamicAvatarSettingHelper", 1, "showDifferentAccountConfirm exception=", paramActivity);
-    }
+    a(paramString, 0L);
   }
+  
+  public void onResp(bevm parambevm)
+  {
+    if (parambevm.c == 200)
+    {
+      a(parambevm);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopLinkHandler", 2, "onResp: invoked.  resp: " + parambevm);
+    }
+    a(false, new ArrayList());
+  }
+  
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

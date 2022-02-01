@@ -1,16 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayfs
   implements View.OnClickListener
 {
-  public ayfs(OCRResultActivity paramOCRResultActivity) {}
+  public ayfs(StuffContainerView paramStuffContainerView) {}
   
   public void onClick(View paramView)
   {
-    this.a.doOnBackPressed();
+    if (this.a.a != null) {
+      this.a.a.a(0);
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

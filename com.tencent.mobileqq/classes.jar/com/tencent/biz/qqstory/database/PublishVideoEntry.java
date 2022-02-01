@@ -10,13 +10,13 @@ import com.tencent.mobileqq.persistence.unique;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import wev;
-import wrb;
-import yqp;
+import wiq;
+import wuw;
+import yuk;
 
 public class PublishVideoEntry
   extends Entity
-  implements wev
+  implements wiq
 {
   public static final String ENTRY_KEY_BACKGROUND_VOLUME = "backgroundVolume";
   public static final String ENTRY_KEY_IS_MIX_ORIGINAL = "isMixOriginal";
@@ -130,7 +130,7 @@ public class PublishVideoEntry
     {
       for (;;)
       {
-        yqp.c("PublishVideoEntry", "getExtraJson error", localJSONException);
+        yuk.c("PublishVideoEntry", "getExtraJson error", localJSONException);
         this.extraJson = new JSONObject();
       }
     }
@@ -241,7 +241,7 @@ public class PublishVideoEntry
   }
   
   @Nullable
-  public wrb getLinkInfo()
+  public wuw getLinkInfo()
   {
     Object localObject = getStringExtra("link", null);
     if (localObject == null) {
@@ -249,19 +249,19 @@ public class PublishVideoEntry
     }
     try
     {
-      localObject = (wrb)JsonORM.a(new JSONObject((String)localObject), wrb.class);
+      localObject = (wuw)JsonORM.a(new JSONObject((String)localObject), wuw.class);
       return localObject;
     }
     catch (JsonORM.JsonParseException localJsonParseException)
     {
-      yqp.c("PublishVideoEntry", "getLinkInfo error", localJsonParseException);
+      yuk.c("PublishVideoEntry", "getLinkInfo error", localJsonParseException);
       return null;
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        yqp.c("PublishVideoEntry", "getLinkInfo error", localJSONException);
+        yuk.c("PublishVideoEntry", "getLinkInfo error", localJSONException);
       }
     }
   }
@@ -301,7 +301,7 @@ public class PublishVideoEntry
     }
     catch (JSONException paramString)
     {
-      yqp.c("PublishVideoEntry", "putStringExtra error", paramString);
+      yuk.c("PublishVideoEntry", "putStringExtra error", paramString);
     }
     return false;
   }
@@ -319,20 +319,20 @@ public class PublishVideoEntry
     }
     catch (JSONException paramString)
     {
-      yqp.c("PublishVideoEntry", "setGameLinkInfo error", paramString);
+      yuk.c("PublishVideoEntry", "setGameLinkInfo error", paramString);
     }
   }
   
-  public void setLinkInfo(@NonNull wrb paramwrb)
+  public void setLinkInfo(@NonNull wuw paramwuw)
   {
     try
     {
-      putExtra("link", JsonORM.a(paramwrb));
+      putExtra("link", JsonORM.a(paramwuw));
       return;
     }
-    catch (JsonORM.JsonParseException paramwrb)
+    catch (JsonORM.JsonParseException paramwuw)
     {
-      yqp.c("PublishVideoEntry", "setLinkInfo error", paramwrb);
+      yuk.c("PublishVideoEntry", "setLinkInfo error", paramwuw);
     }
   }
   

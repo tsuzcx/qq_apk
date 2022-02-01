@@ -1,52 +1,37 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionChecker.OnlineStatusPermissionItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public abstract class ayoo
+class ayoo
+  implements bliz
 {
-  public long a;
-  protected ayop a;
-  protected BaseActivity a;
-  protected QQAppInterface a;
-  public String a;
-  public boolean a;
-  public String b;
-  protected boolean b = true;
-  public String c;
-  public String d = "";
+  ayoo(ayon paramayon, View paramView, PicInfo paramPicInfo, blir paramblir) {}
   
-  public ayoo(long paramLong, ayop paramayop, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Ayop = paramayop;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    int i = paramInt;
+    if (this.jdField_a_of_type_Ayon.jdField_a_of_type_Int == 0) {
+      i = paramInt + 1;
+    }
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.e();
+      return;
+      this.jdField_a_of_type_Ayon.jdField_a_of_type_Aynp.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Ayon.jdField_a_of_type_Aynp.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView, 0);
+      aynp.a(this.jdField_a_of_type_Ayon.jdField_a_of_type_Aynp);
+      aynp.b(this.jdField_a_of_type_Ayon.jdField_a_of_type_Aynp);
+      continue;
+      paramView = abke.a(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Ayon.jdField_a_of_type_Aynp.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(this.jdField_a_of_type_Ayon.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Ayon.jdField_a_of_type_Aynp.jdField_a_of_type_JavaUtilArrayList);
+      continue;
+      aynp.a(this.jdField_a_of_type_Ayon.jdField_a_of_type_Aynp, this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo, this.jdField_a_of_type_AndroidViewView);
+    }
   }
-  
-  protected abstract void a();
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public void a(boolean paramBoolean, long paramLong)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public abstract void a(boolean paramBoolean, OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem);
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public abstract void b();
-  
-  public void c() {}
-  
-  public void d() {}
 }
 
 

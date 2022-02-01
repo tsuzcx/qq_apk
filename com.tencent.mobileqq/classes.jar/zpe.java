@@ -1,16 +1,52 @@
 import android.view.View;
+import android.widget.TextView;
 
-public abstract interface zpe
+public class zpe
+  extends zpg
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  TextView a;
   
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  public zpe(zpi paramzpi, View paramView)
+  {
+    super(paramzpi, paramView);
+    this.a = ((TextView)paramView.findViewById(2131378642));
+    this.a.setMaxLines(1);
+    this.a.setSingleLine();
+  }
   
-  public abstract boolean a();
+  public CharSequence a()
+  {
+    return this.a.getText();
+  }
   
-  public abstract boolean b();
+  public void a(CharSequence paramCharSequence)
+  {
+    paramCharSequence = paramCharSequence.toString();
+    this.a.setText(paramCharSequence);
+    paramCharSequence = zox.a(this.a, 1);
+    this.a.setText(paramCharSequence);
+  }
   
-  public abstract boolean c();
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.setBackgroundResource(2130844606);
+      return;
+    }
+    this.a.setBackgroundResource(0);
+  }
+  
+  public CharSequence b()
+  {
+    return this.a.getHint();
+  }
+  
+  public void b(CharSequence paramCharSequence)
+  {
+    this.a.setHint(paramCharSequence);
+    this.a.setGravity(17);
+  }
 }
 
 

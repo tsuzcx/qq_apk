@@ -1,8 +1,24 @@
-public abstract interface weo
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+
+public class weo
 {
-  public abstract void a();
+  public static void a(View paramView, Runnable paramRunnable)
+  {
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      b(paramView, paramRunnable);
+      return;
+    }
+    paramView.postDelayed(paramRunnable, 16L);
+  }
   
-  public abstract void b();
+  @TargetApi(16)
+  private static void b(View paramView, Runnable paramRunnable)
+  {
+    paramView.postOnAnimation(paramRunnable);
+  }
 }
 
 

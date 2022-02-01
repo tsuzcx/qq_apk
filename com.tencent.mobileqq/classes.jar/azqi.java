@@ -1,123 +1,366 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.preference.PreferenceManager;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class azqi
 {
-  private azfe jdField_a_of_type_Azfe;
-  private bhil jdField_a_of_type_Bhil;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ProfileCardMoreInfoView jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, View> jdField_a_of_type_JavaUtilHashMap;
-  private HashMap<String, View> b;
+  private static SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
+  private static SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
+  public static final String[] a;
+  public static final String[] b = { "XG预下载配额余量", "XG当前消耗流量", "XG流量总消耗", "XG预下载总数", "XG预下载命中数", "XG预下载未命中数", "XG手动看图数", "XG消耗量余量", "WIFI预下载总数", "WIFI预下载命中数", "WIFI预下载未命中数", "WIFI手动看图数", "XG是否超过上限", anzj.a(2131707035) };
+  static String[] c = { "1031637263", "81118728", "354653668", "87587790", "745798311", "362675669", "27801478", "991636135", "249484612", "279242625", "517152365", "349808804", "1053134469", "303137720", "9948938", "165326859", "584781501", "864600712", "410363461", "306392284", "878898475", "34242313", "842714741", "26080655", "1003187685" };
   
-  public <T extends View> T a(String paramString)
+  static
   {
-    if (this.jdField_a_of_type_Bhil == null) {
-      return null;
-    }
-    return (View)this.b.get(paramString);
+    jdField_a_of_type_AndroidContentSharedPreferences$Editor = jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "xgFlowPre", "xgFlowWaste", "accFlowPreTotal", "xgPreDownCount", "xgHitCount", "xgMissCount", "xgManualClickCount", "xgFlowWasteBalance", "wifiPreDownCount", "wifiHitCount", "wifiMissCount", "wifiManualClickCount" };
   }
   
-  public void a()
+  public static int a()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    int j = 3;
+    int k = bhnv.a(BaseApplication.getContext());
+    int i;
+    if (k == 1) {
+      i = 0;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_Bhil = null;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView = null;
-    this.jdField_a_of_type_JavaUtilHashMap = null;
-    this.b = null;
-  }
-  
-  public void a(TextView paramTextView, View paramView1, ImageView paramImageView, View paramView2, View paramView3, View paramView4)
-  {
-    if (this.jdField_a_of_type_Bhil != null) {
-      if (!(this.jdField_a_of_type_Bhil instanceof bhir)) {
-        break label33;
+    do
+    {
+      do
+      {
+        return i;
+        i = j;
+      } while (k == 2);
+      if (k == 3) {
+        return 2;
       }
+      i = j;
+    } while (k != 4);
+    return 1;
+  }
+  
+  static int a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    return paramInt1 * 8 + paramInt2 * 2 + paramInt3;
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    int i;
+    if (paramInt == 1)
+    {
+      i = 1;
+      if ((i == 0) || (paramQQAppInterface == null)) {
+        break label63;
+      }
+    }
+    label63:
+    label69:
+    label75:
+    label80:
+    do
+    {
+      int j;
+      for (;;)
+      {
+        try
+        {
+          bool = axan.a().a(paramQQAppInterface, paramString);
+          if (paramInt != 3000) {
+            break label69;
+          }
+          j = 1;
+          if (paramInt != 0) {
+            break label75;
+          }
+          paramInt = 1;
+          if (!bool) {
+            break label80;
+          }
+          return 1;
+        }
+        catch (Throwable paramQQAppInterface)
+        {
+          QLog.e(".troop", 1, "PicPreDownloadUtils.calcUinType Error", paramQQAppInterface);
+        }
+        i = 0;
+        break;
+        boolean bool = false;
+        continue;
+        j = 0;
+        continue;
+        paramInt = 0;
+      }
+      if (i != 0) {
+        return 0;
+      }
+      if (j != 0) {
+        return 2;
+      }
+    } while (paramInt == 0);
+    return 3;
+  }
+  
+  /* Error */
+  public static long a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  {
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +5 -> 6
+    //   4: lload_2
+    //   5: lreturn
+    //   6: aload_0
+    //   7: getstatic 186	mqq/manager/ServerConfigManager$ConfigType:common	Lmqq/manager/ServerConfigManager$ConfigType;
+    //   10: aload_1
+    //   11: invokevirtual 191	com/tencent/mobileqq/app/QQAppInterface:a	(Lmqq/manager/ServerConfigManager$ConfigType;Ljava/lang/String;)Ljava/lang/String;
+    //   14: astore_0
+    //   15: aload_0
+    //   16: ifnull +70 -> 86
+    //   19: aload_0
+    //   20: invokestatic 197	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   23: astore_0
+    //   24: aload_0
+    //   25: invokevirtual 201	java/lang/Long:longValue	()J
+    //   28: lstore 4
+    //   30: aload_1
+    //   31: aload_0
+    //   32: invokevirtual 201	java/lang/Long:longValue	()J
+    //   35: invokestatic 204	azqi:a	(Ljava/lang/String;J)V
+    //   38: ldc 206
+    //   40: ldc 208
+    //   42: new 210	java/lang/StringBuilder
+    //   45: dup
+    //   46: invokespecial 213	java/lang/StringBuilder:<init>	()V
+    //   49: ldc 215
+    //   51: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: aload_1
+    //   55: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: ldc 221
+    //   60: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: lload 4
+    //   65: invokevirtual 224	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   68: ldc 226
+    //   70: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: lload_2
+    //   74: invokevirtual 224	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   77: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   80: invokestatic 235	azpw:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   83: lload 4
+    //   85: lreturn
+    //   86: aload_1
+    //   87: lload_2
+    //   88: invokestatic 204	azqi:a	(Ljava/lang/String;J)V
+    //   91: lload_2
+    //   92: lstore 4
+    //   94: goto -56 -> 38
+    //   97: astore_0
+    //   98: lload_2
+    //   99: lstore 4
+    //   101: goto -63 -> 38
+    //   104: astore_0
+    //   105: goto -67 -> 38
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	108	0	paramQQAppInterface	QQAppInterface
+    //   0	108	1	paramString	String
+    //   0	108	2	paramLong	long
+    //   28	72	4	l	long
+    // Exception table:
+    //   from	to	target	type
+    //   6	15	97	java/lang/Exception
+    //   19	30	97	java/lang/Exception
+    //   86	91	97	java/lang/Exception
+    //   30	38	104	java/lang/Exception
+  }
+  
+  public static long a(String paramString, long paramLong)
+  {
+    return jdField_a_of_type_AndroidContentSharedPreferences.getLong(paramString, paramLong);
+  }
+  
+  public static Boolean a(String paramString, Boolean paramBoolean)
+  {
+    return Boolean.valueOf(jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(paramString, paramBoolean.booleanValue()));
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    return jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString1, paramString2);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, beyg parambeyg)
+  {
+    if (parambeyg == null) {}
+    while ((!(parambeyg.a instanceof MessageForPic)) || (parambeyg.b == 65537)) {
+      return;
+    }
+    MessageForPic localMessageForPic = (MessageForPic)parambeyg.a;
+    azpw.a("PIC_TAG_PRELOAD", "updateDownState", "Before update, networkType:" + localMessageForPic.preDownNetworkType + ",state:" + localMessageForPic.preDownState + ",uniseq:" + localMessageForPic.uniseq);
+    if (parambeyg.g == 1) {
+      localMessageForPic.preDownState = 1;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhil.a(null, paramTextView, paramView1, paramImageView, paramView3, paramView4);
+      azpw.a("PIC_TAG_PRELOAD", "updateDownState", "After update, networkType:" + localMessageForPic.preDownNetworkType + ",state:" + localMessageForPic.preDownState + ",uniseq:" + localMessageForPic.uniseq);
+      a(paramQQAppInterface, localMessageForPic);
       return;
-      label33:
-      paramView3 = paramView2;
-    }
-  }
-  
-  public void a(BaseActivity paramBaseActivity, azfe paramazfe, Runnable paramRunnable)
-  {
-    if ((paramBaseActivity == null) || (paramazfe == null) || (!azfl.a(paramazfe.jdField_a_of_type_Long)) || (TextUtils.isEmpty(paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard.diyComplicatedInfo)))
-    {
-      if ((this.jdField_a_of_type_Bhil != null) && (paramRunnable != null)) {
-        paramRunnable.run();
+      if (parambeyg.g == 3) {
+        localMessageForPic.preDownState = 4;
+      } else if ((localMessageForPic.preDownState != 1) && (localMessageForPic.preDownState != 4)) {
+        localMessageForPic.preDownState = 0;
       }
-      this.jdField_a_of_type_Bhil = null;
     }
-    while (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard.diyComplicatedInfo)) {
-      return;
-    }
-    this.jdField_a_of_type_Azfe = paramazfe;
-    this.jdField_a_of_type_JavaLangString = paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard.diyComplicatedInfo;
-    try
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageForPic paramMessageForPic)
+  {
+    if ((paramQQAppInterface == null) || (paramMessageForPic == null)) {}
+    Object localObject;
+    label193:
+    do
     {
-      this.jdField_a_of_type_Bhil = bhip.a(paramBaseActivity, paramazfe.jdField_a_of_type_Azph.a(), paramazfe, paramazfe.jdField_a_of_type_Azph.a());
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseActivity.app;
-      this.jdField_a_of_type_Bhil.a(this.b);
-      this.jdField_a_of_type_Bhil.b(this.b);
-      this.jdField_a_of_type_Bhil.a(this.b, paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard);
-      this.jdField_a_of_type_Bhil.a(this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramazfe);
-      this.jdField_a_of_type_Bhil.b(this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramazfe);
-      this.jdField_a_of_type_Bhil.a(this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramazfe, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.c);
-      QLog.i("DiyMoreInfoViewHelper", 1, "initDiyTemplate sucess");
-      return;
-    }
-    catch (Exception paramBaseActivity)
+      do
+      {
+        bdqr localbdqr;
+        do
+        {
+          do
+          {
+            return;
+            azpw.a("PIC_TAG_PRELOAD", "updateMsg", "uniseq:" + paramMessageForPic.uniseq + ",network:" + paramMessageForPic.preDownNetworkType + "state:" + paramMessageForPic.preDownState);
+            paramMessageForPic.serial();
+            localObject = paramQQAppInterface.a().b(paramMessageForPic.frienduin, paramMessageForPic.istroop, paramMessageForPic.uniseq);
+            if (paramMessageForPic.subMsgId != MessageForPic.defaultSuMsgId) {
+              break label193;
+            }
+            if (!(localObject instanceof MessageForStructing)) {
+              break;
+            }
+            localObject = (MessageForStructing)localObject;
+          } while (!(((MessageForStructing)localObject).structingMsg instanceof StructMsgForImageShare));
+          localbdqr = ((StructMsgForImageShare)((MessageForStructing)localObject).structingMsg).getFirstImageElement();
+        } while (localbdqr == null);
+        localbdqr.a = paramMessageForPic;
+        paramQQAppInterface.a().a(paramMessageForPic.frienduin, paramMessageForPic.istroop, paramMessageForPic.uniseq, ((MessageForStructing)localObject).structingMsg.getBytes());
+        return;
+        paramQQAppInterface.a().a(paramMessageForPic.frienduin, paramMessageForPic.istroop, paramMessageForPic.uniseq, paramMessageForPic.msgData);
+        return;
+      } while (!(localObject instanceof MessageForMixedMsg));
+      localObject = ((MessageForMixedMsg)localObject).upateMessageForPic(paramMessageForPic);
+    } while (localObject == null);
+    paramQQAppInterface.a().a(paramMessageForPic.frienduin, paramMessageForPic.istroop, paramMessageForPic.uniseq, (byte[])localObject);
+  }
+  
+  public static void a(String paramString) {}
+  
+  @TargetApi(9)
+  public static void a(String paramString, long paramLong)
+  {
+    a(paramString, paramLong, true);
+  }
+  
+  @TargetApi(9)
+  public static void a(String paramString, long paramLong, boolean paramBoolean)
+  {
+    jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(paramString, paramLong);
+    if (paramBoolean)
     {
-      QLog.e("ProfileCardMoreInfoView", 1, new RuntimeException("diy info is illegal :" + paramBaseActivity), new Object[0]);
-      this.jdField_a_of_type_Bhil = null;
+      if (Build.VERSION.SDK_INT >= 9) {
+        jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
+      }
     }
-  }
-  
-  public void a(ProfileCardMoreInfoView paramProfileCardMoreInfoView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView = paramProfileCardMoreInfoView;
-    this.jdField_a_of_type_JavaUtilHashMap = paramProfileCardMoreInfoView.a();
-    this.b = new HashMap();
-  }
-  
-  public void a(String paramString, TextView paramTextView, View paramView, ImageView paramImageView)
-  {
-    if (this.jdField_a_of_type_Bhil == null) {
+    else {
       return;
     }
-    this.jdField_a_of_type_Bhil.a(paramString, paramTextView, paramView, paramImageView);
+    jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
   }
   
-  public void a(String paramString, HashMap<String, View> paramHashMap)
+  @TargetApi(9)
+  public static void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bhil == null) {
+    jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString(paramString1, paramString2);
+    if (paramBoolean)
+    {
+      if (Build.VERSION.SDK_INT >= 9) {
+        jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
+      }
+    }
+    else {
       return;
     }
-    this.jdField_a_of_type_Bhil.a(this.b, paramString, paramHashMap);
+    jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
   }
   
-  public boolean a(String paramString)
+  @TargetApi(9)
+  public static void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_Bhil == null) {
-      return false;
+    jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean(paramString, paramBoolean1);
+    if (paramBoolean2)
+    {
+      if (Build.VERSION.SDK_INT >= 9) {
+        jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
+      }
     }
-    return this.jdField_a_of_type_Bhil.a(paramString);
+    else {
+      return;
+    }
+    jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+  }
+  
+  public static long[] a()
+  {
+    Object localObject = jdField_a_of_type_AndroidContentSharedPreferences.getString("PeakFlowTimePeriod", "");
+    if ((localObject == null) || (localObject == ""))
+    {
+      localObject = new long[0];
+      return localObject;
+    }
+    String[] arrayOfString = ((String)localObject).split(";");
+    if (arrayOfString == null) {
+      return new long[0];
+    }
+    long[] arrayOfLong = new long[arrayOfString.length * 2];
+    int k = arrayOfString.length;
+    int i = 0;
+    int j = 0;
+    for (;;)
+    {
+      localObject = arrayOfLong;
+      if (i >= k) {
+        break;
+      }
+      localObject = arrayOfString[i].split("-");
+      if ((localObject == null) || (localObject.length != 2)) {
+        return new long[0];
+      }
+      arrayOfLong[j] = Long.valueOf(localObject[0]).longValue();
+      arrayOfLong[(j + 1)] = Long.valueOf(localObject[1]).longValue();
+      j += 2;
+      i += 1;
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, MessageForPic paramMessageForPic)
+  {
+    if ((paramQQAppInterface == null) || (paramMessageForPic == null)) {}
+    while (paramMessageForPic.preDownState != 0) {
+      return;
+    }
+    paramMessageForPic.preDownState = 1;
+    paramMessageForPic.preDownNetworkType = a();
+    azpw.a("PIC_TAG_PRELOAD", "updateDownState4SD", "networkType:" + paramMessageForPic.preDownNetworkType + ",state:" + paramMessageForPic.preDownState + ",uniseq:" + paramMessageForPic.uniseq);
+    a(paramQQAppInterface, paramMessageForPic);
   }
 }
 

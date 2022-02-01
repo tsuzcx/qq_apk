@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import sgc;
-import snh;
+import rxg;
+import sel;
 
 public class ReadInJoyBaseAdapter$43
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$43(snh paramsnh) {}
+  public ReadInJoyBaseAdapter$43(sel paramsel) {}
   
   public void run()
   {
-    sgc.a().b(false);
+    rxg.a().b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.43
  * JD-Core Version:    0.7.0.1
  */

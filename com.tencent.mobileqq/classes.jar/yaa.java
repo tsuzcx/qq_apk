@@ -1,32 +1,59 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import com.tencent.biz.qqstory.settings.QQStoryBasicSettingsActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class yaa
+public class yaa
+  extends wjd
 {
-  public TextView a;
-  public StoryPickerHorizontalListView a;
+  public yaa(QQStoryBasicSettingsActivity paramQQStoryBasicSettingsActivity) {}
   
-  public yaa(xzz paramxzz, View paramView, xzy paramxzy)
+  public void b(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365250));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView = ((StoryPickerHorizontalListView)paramView.findViewById(2131368061));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setSelection(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setOnHorizontalScrollListener(paramxzy);
-    paramView = (xzs)this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.a();
-    paramView.a(paramxzz.jdField_a_of_type_Xzx);
-    paramView.a(paramxzz.jdField_a_of_type_Xzw);
+    QQStoryBasicSettingsActivity.a(this.a);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+    case 1001: 
+      this.a.a(0);
+      return;
+    case 2: 
+      this.a.a(1);
+      return;
+    case 3: 
+      this.a.a(2);
+      return;
+    }
+    QQToast.a(this.a, anzj.a(2131709686), 0).b(this.a.getTitleBarHeight());
   }
   
-  public void a(int paramInt, VideoCollectionItem paramVideoCollectionItem)
+  public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setData(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setTag(Integer.valueOf(paramInt));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(zkk.b(paramVideoCollectionItem.collectionTime));
-    this.jdField_a_of_type_Xzz.jdField_a_of_type_JavaUtilHashMap.put(paramVideoCollectionItem.collectionId, new WeakReference(this));
+    if (this.a.jdField_a_of_type_Bjbv != null) {
+      this.a.jdField_a_of_type_Bjbv.b();
+    }
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_Wjb.a(this.a.b(this.a.jdField_a_of_type_Int));
+      this.a.jdField_a_of_type_Wjb.b(this.a.b(this.a.jdField_a_of_type_Int));
+      if (this.a.jdField_a_of_type_Int == 2) {
+        yup.a("browse_friend_settings", "close", 0, 0, new String[] { "", "", "", "" });
+      }
+      do
+      {
+        return;
+        if (this.a.jdField_a_of_type_Int == 0)
+        {
+          yup.a("browse_friend_settings", "choose_all", 0, 0, new String[] { "", "", "", "" });
+          return;
+        }
+      } while (this.a.jdField_a_of_type_Int != 1);
+      yup.a("browse_friend_settings", "choose_wifi", 0, 0, new String[] { "", "", "", "" });
+      return;
+    }
+    QQToast.a(this.a, 2131694200, 0).b(this.a.getTitleBarHeight());
+    this.a.a(this.a.b);
+    this.a.jdField_a_of_type_Wja.d();
   }
 }
 

@@ -1,11 +1,20 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+
 class pwo
-  implements pml
+  implements qej
 {
-  pwo(pwn parampwn, int paramInt, String paramString) {}
+  pwo(pwn parampwn, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public void a(pmn parampmn)
+  public void a()
   {
-    parampmn.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a != null)
+    {
+      UrlJumpInfo localUrlJumpInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a;
+      rpt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), localUrlJumpInfo);
+      pwn.a(this.jdField_a_of_type_Pwn, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, localUrlJumpInfo.e, "");
+    }
   }
 }
 

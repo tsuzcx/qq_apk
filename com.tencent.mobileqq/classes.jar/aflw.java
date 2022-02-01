@@ -1,25 +1,19 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
 
 public class aflw
-  implements View.OnClickListener
+  implements blpp
 {
-  public aflw(TroopMemberListActivity paramTroopMemberListActivity, int paramInt1, int paramInt2) {}
+  public aflw(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, TroopMemberListActivity.class);
-    localIntent.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b);
-    localIntent.putExtra("param_from", 15);
-    localIntent.putExtra("param_seq_days", TroopMemberListActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
-    localIntent.putExtra("param_seq_name", TroopMemberListActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
-    localIntent.putExtra("TROOP_INFO_MEMBER_NUM", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.startActivityForResult(localIntent, 4);
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "dc00899", "Grp_mber", "", "mber_list", "clk_inacentry", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, "" + this.b, "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    SearchMightKnowFragment.a(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    SearchMightKnowFragment.a(this.a, true);
   }
 }
 

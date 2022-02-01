@@ -2,8 +2,8 @@ package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import anmw;
-import arti;
+import anyw;
+import asiw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
 import java.util.ArrayList;
@@ -13,20 +13,20 @@ import java.util.Iterator;
 public class MessengerService$IncomingHandler$11
   implements Runnable
 {
-  public MessengerService$IncomingHandler$11(arti paramarti, QQAppInterface paramQQAppInterface, ArrayList paramArrayList, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$11(asiw paramasiw, QQAppInterface paramQQAppInterface, ArrayList paramArrayList, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
     Bundle localBundle = new Bundle();
     HashMap localHashMap = new HashMap();
-    anmw localanmw = (anmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    if (localanmw != null)
+    anyw localanyw = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    if (localanyw != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        Friends localFriends = localanmw.e(str);
+        Friends localFriends = localanyw.e(str);
         if (localFriends != null)
         {
           if (!TextUtils.isEmpty(localFriends.remark)) {

@@ -1,26 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-class qdu
-  implements ViewBase.OnClickListener
+public class qdu
+  extends qdl
 {
-  qdu(qdp paramqdp, BaseArticleInfo paramBaseArticleInfo, pxk parampxk) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public qdu(NativeCommentView paramNativeCommentView, int paramInt1, int paramInt2, int paramInt3, ArticleInfo paramArticleInfo)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.isEmpty())) {
-      return;
-    }
-    VideoColumnInfo localVideoColumnInfo = (VideoColumnInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.get(0);
-    if ((localVideoColumnInfo.a != null) && (localVideoColumnInfo.a.a != 3)) {
-      ryx.a(this.jdField_a_of_type_Pxk.a().getContext(), localVideoColumnInfo.a);
-    }
-    pfr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mProteusTemplateBean, paramViewBase);
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void onClick(View paramView)
+  {
+    ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.a.a.a(), 4, false, 7, false);
+    sel.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.a.a.e());
   }
 }
 

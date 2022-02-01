@@ -1,20 +1,42 @@
-import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.Random;
 
-class rsv
-  implements URLDrawable.DownloadListener
+public class rsv
+  extends bcpv
 {
-  rsv(rsn paramrsn) {}
+  VideoFeedsAppInterface jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
+  Random jdField_a_of_type_JavaUtilRandom = new Random();
   
-  public void onFileDownloadFailed(int paramInt)
+  public rsv(VideoFeedsAppInterface paramVideoFeedsAppInterface)
   {
-    rsn.b(this.a);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface = paramVideoFeedsAppInterface;
+    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
   }
   
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  public AppInterface a()
   {
-    rsn.c(this.a);
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
+  }
+  
+  protected void a()
+  {
+    try
+    {
+      super.a();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    super.b(paramToServiceMsg, null, rsw.class);
   }
 }
 

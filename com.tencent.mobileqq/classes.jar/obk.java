@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoAdInfo;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.PublicAccountManager.1;
+import mqq.observer.BusinessObserver;
 
-public final class obk
-  implements Parcelable.Creator<VideoAdInfo>
+public class obk
+  implements BusinessObserver
 {
-  public VideoAdInfo a(Parcel paramParcel)
-  {
-    return new VideoAdInfo(paramParcel);
-  }
+  public obk(PublicAccountManager.1 param1) {}
   
-  public VideoAdInfo[] a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return new VideoAdInfo[paramInt];
+    this.a.a.a();
   }
 }
 

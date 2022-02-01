@@ -1,43 +1,28 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetCommentListRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.subscribe.SubscribeUtils.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
-import java.util.Map;
 
-class aael
-  implements zxa<CertifiedAccountRead.StGetCommentListRsp>
+public class aael
+  implements beuq
 {
-  aael(aaec paramaaec, CertifiedAccountMeta.StFeed paramStFeed, String paramString) {}
+  public aael(SubscribeUtils.1 param1) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetCommentListRsp paramStGetCommentListRsp)
+  public void onResp(bevm parambevm)
   {
-    aaec.a(this.jdField_a_of_type_Aaec, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get(), true);
-    if (paramStGetCommentListRsp == null)
+    QLog.i("DownLoadZipFile", 1, "download  onResp url:  resultcode: " + parambevm.c);
+    try
     {
-      QLog.d(aaec.a(), 1, "getCommentSize: rsp is null");
+      QLog.d("DownLoadZipFile", 4, "start unzip file to folderPath:" + this.a.jdField_a_of_type_JavaLangString);
+      nof.a(this.a.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_JavaLangString);
+      bhmi.a(this.a.jdField_a_of_type_JavaIoFile);
       return;
     }
-    if (aaec.a(this.jdField_a_of_type_Aaec).get(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get()) != null)
+    catch (Exception parambevm)
     {
-      QLog.d(aaec.a(), 2, "getCommentSize:" + paramStGetCommentListRsp.vecComment.size() + ", attachInfo:" + paramStGetCommentListRsp.extInfo.attachInfo.get() + "isFinish：" + paramStGetCommentListRsp.isFinish.get());
-      ((ArrayList)aaec.a(this.jdField_a_of_type_Aaec).get(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get())).addAll(this.jdField_a_of_type_Aaec.a(paramStGetCommentListRsp.vecComment.get(), this.jdField_a_of_type_JavaLangString));
-    }
-    aaec localaaec = this.jdField_a_of_type_Aaec;
-    String str = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get();
-    COMM.StCommonExt localStCommonExt = paramStGetCommentListRsp.extInfo;
-    if (paramStGetCommentListRsp.isFinish.get() == 0) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      aaec.a(localaaec, str, localStCommonExt, paramBoolean, true);
-      wfo.a().dispatch(this.jdField_a_of_type_Aaec.a(new Object[] { Integer.valueOf(9), Long.valueOf(paramLong), paramString, paramStGetCommentListRsp, Integer.valueOf(this.jdField_a_of_type_Aaec.hashCode()), this.jdField_a_of_type_JavaLangString }));
-      return;
+      QLog.i("DownLoadZipFile", 1, "unzip file failed" + parambevm);
     }
   }
+  
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

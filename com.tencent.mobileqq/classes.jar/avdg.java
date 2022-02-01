@@ -1,14 +1,17 @@
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public abstract interface avdg
-  extends View.OnTouchListener
+class avdg
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public abstract void a(View paramView, int paramInt);
+  avdg(avdf paramavdf) {}
   
-  public abstract void b(View paramView, int paramInt);
-  
-  public abstract void c(avbz paramavbz, int paramInt);
+  public int getSpanSize(int paramInt)
+  {
+    if (this.a.getItemViewType(paramInt) == avdb.b) {
+      return 5;
+    }
+    return 1;
+  }
 }
 
 

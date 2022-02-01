@@ -1,31 +1,13 @@
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.QLog;
+import NS_KING_INTERFACE.stPostCommentDingReq;
+import NS_KING_INTERFACE.stPostCommentDingRsp;
 
-class uou
-  extends OnPluginInstallListener.Stub
+public class uou
+  extends ukl<stPostCommentDingRsp>
 {
-  uou(uot paramuot) {}
-  
-  public void onInstallBegin(String paramString)
+  public uou(String paramString1, String paramString2, int paramInt)
   {
-    uot.a = 1;
-    uot.a(this.a);
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallBegin  STATE_PRELOAD_BEGIN sPreloadPluginState = " + uot.a);
-  }
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    uot.a = -1;
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallError  STATE_PRELOAD_ERR sPreloadPluginState = " + uot.a);
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    uot.a = 2;
-    uot.a(this.a);
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallFinish  STATE_PRELOAD_FINISH sPreloadPluginState = " + uot.a);
+    super("PostCommentDing", 10003);
+    this.a = new stPostCommentDingReq(paramString1, paramString2, paramInt);
   }
 }
 

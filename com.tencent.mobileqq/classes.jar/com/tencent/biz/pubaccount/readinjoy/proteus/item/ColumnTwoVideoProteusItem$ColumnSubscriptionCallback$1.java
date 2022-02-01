@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.item;
 
 import android.os.Bundle;
-import qdh;
-import qps;
-import qpt;
+import pvs;
+import qig;
+import qih;
 
 public class ColumnTwoVideoProteusItem$ColumnSubscriptionCallback$1
   implements Runnable
 {
-  public ColumnTwoVideoProteusItem$ColumnSubscriptionCallback$1(qdh paramqdh, Bundle paramBundle, int paramInt) {}
+  public ColumnTwoVideoProteusItem$ColumnSubscriptionCallback$1(pvs parampvs, Bundle paramBundle, int paramInt) {}
   
   public void run()
   {
@@ -17,14 +17,14 @@ public class ColumnTwoVideoProteusItem$ColumnSubscriptionCallback$1
     {
       i = this.jdField_a_of_type_AndroidOsBundle.getInt("columnId", 0);
       str = this.jdField_a_of_type_AndroidOsBundle.getString("columnIconUrl", "");
-      qps.a.a().a(this.jdField_a_of_type_Int, str, String.valueOf(i), 1);
+      qig.a.a().a(this.jdField_a_of_type_Int, str, String.valueOf(i), 1);
     }
     while (i != 2)
     {
       String str;
       return;
     }
-    qps.a.a().a(true, "MATCH_ALL_UIN");
+    qig.a.a().a(true, "MATCH_ALL_UIN");
   }
 }
 

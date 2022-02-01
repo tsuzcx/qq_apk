@@ -1,9 +1,15 @@
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+
 public class pkq
+  implements pks
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
+  public pkq(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void a()
+  {
+    ReadInJoySelfFragment.a(this.a);
+    ocd.a(null, "CliOper", "", "", "0X8007DB4", "0X8007DB4", 0, 0, "", "", "", ozs.e(), false);
+  }
 }
 
 

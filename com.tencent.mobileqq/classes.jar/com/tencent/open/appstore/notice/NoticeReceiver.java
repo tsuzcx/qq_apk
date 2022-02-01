@@ -4,10 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import biqd;
-import bisy;
-import biub;
-import bixh;
+import bjrc;
+import bjtx;
+import bjva;
+import bjyg;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.downloadnew.common.NoticeParam;
 
@@ -20,7 +20,7 @@ public class NoticeReceiver
     if (paramIntent != null)
     {
       str2 = paramIntent.getStringExtra("processName");
-      if ((!TextUtils.isEmpty(str2)) && (str2.equalsIgnoreCase(biqd.r()))) {
+      if ((!TextUtils.isEmpty(str2)) && (str2.equalsIgnoreCase(bjrc.r()))) {
         break label32;
       }
     }
@@ -36,12 +36,12 @@ public class NoticeReceiver
         localObject = (NoticeParam)paramIntent.getParcelableExtra("noticeParam");
       } while (localObject == null);
       paramIntent = str2.replace(":", ".");
-      if ((bixh.e + "." + paramIntent).equals(str1))
+      if ((bjyg.e + "." + paramIntent).equals(str1))
       {
-        biub.a(paramContext, ((NoticeParam)localObject).d);
+        bjva.a(paramContext, ((NoticeParam)localObject).d);
         return;
       }
-      bisy.b("NoticeReceiver", "processName :" + str2 + " | formatStr:" + paramIntent);
+      bjtx.b("NoticeReceiver", "processName :" + str2 + " | formatStr:" + paramIntent);
       str2 = ((NoticeParam)localObject).d;
       localObject = ((NoticeParam)localObject).e;
     } while ((TextUtils.isEmpty(str2)) && (TextUtils.isEmpty((CharSequence)localObject)));

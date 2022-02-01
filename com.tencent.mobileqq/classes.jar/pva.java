@@ -1,26 +1,19 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import eipc.EIPCResult;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class pva
-  implements pyb
+  implements ViewBase.OnClickListener
 {
-  pva(puy parampuy, int paramInt) {}
+  pva(puz parampuz, Container paramContainer, ppu paramppu, int paramInt) {}
   
-  public void onLoadUserInfoFailed(String paramString1, String paramString2)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramString1 = new Bundle();
-    paramString1.putString("action_get_user_info", tym.a(paramString2));
-    paramString1 = EIPCResult.createResult(0, paramString1);
-    this.jdField_a_of_type_Puy.callbackResult(this.jdField_a_of_type_Int, paramString1);
-  }
-  
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
-  {
-    paramString = new Bundle();
-    paramString.putString("action_get_user_info", tym.a(paramReadInJoyUserInfo));
-    paramString = EIPCResult.createResult(0, paramString);
-    this.jdField_a_of_type_Puy.callbackResult(this.jdField_a_of_type_Int, paramString);
+    puz.a(this.jdField_a_of_type_Puz, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Ppu, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("BiuPgcProteusItem", 2, "click gallery summary for jumping to gallery articleinfo = " + this.jdField_a_of_type_Ppu.a() + " position = " + this.jdField_a_of_type_Int);
+    }
   }
 }
 

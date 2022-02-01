@@ -1,25 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.3;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qol
-  extends qon
+  implements View.OnClickListener
 {
-  public qol(PTSJSCLoader.3 param3) {}
+  public qol(ComponentContentNoteCard paramComponentContentNoteCard) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    super.loaded(paramString, paramInt);
-    QLog.i("PTSJSCLoader", 1, "[updatePTSJSC], asyncBack code = " + paramInt + ", param = " + paramString);
-    if ((paramInt == 0) && (paramString == null))
-    {
-      QLog.i("PTSJSCLoader", 1, "[updatePTSJSC], handleDownloadPTSJSC, download succeed.");
-      qok.b(this.a.this$0);
-    }
-  }
-  
-  public void progress(int paramInt)
-  {
-    super.progress(paramInt);
+    ComponentContentNoteCard.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

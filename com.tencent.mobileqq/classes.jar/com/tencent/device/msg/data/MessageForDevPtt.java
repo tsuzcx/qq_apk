@@ -1,8 +1,8 @@
 package com.tencent.device.msg.data;
 
 import android.text.TextUtils;
-import anni;
-import aopw;
+import anzj;
+import apdm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
@@ -24,7 +24,7 @@ public class MessageForDevPtt
       return;
       try
       {
-        MessageForDevPtt.MessageForDevPttSerial localMessageForDevPttSerial = (MessageForDevPtt.MessageForDevPttSerial)aopw.a(this.msgData);
+        MessageForDevPtt.MessageForDevPttSerial localMessageForDevPttSerial = (MessageForDevPtt.MessageForDevPttSerial)apdm.a(this.msgData);
         if (localMessageForDevPttSerial == null) {
           continue;
         }
@@ -78,16 +78,16 @@ public class MessageForDevPtt
         if (isSendFromLocal()) {
           return ((QQAppInterface)localObject).getApp().getString(2131691134);
         }
-        return anni.a(2131705390);
+        return anzj.a(2131705497);
       }
       if (this.fileSize == -1L)
       {
         if (isSendFromLocal()) {
           return ((QQAppInterface)localObject).getApp().getString(2131691134);
         }
-        return anni.a(2131705361);
+        return anzj.a(2131705468);
       }
-      return anni.a(2131705362);
+      return anzj.a(2131705469);
     }
     return null;
   }
@@ -123,7 +123,7 @@ public class MessageForDevPtt
     localMessageForDevPttSerial.strFileKey2 = this.strFileKey2;
     try
     {
-      this.msgData = aopw.a(localMessageForDevPttSerial);
+      this.msgData = apdm.a(localMessageForDevPttSerial);
       return;
     }
     catch (Exception localException)

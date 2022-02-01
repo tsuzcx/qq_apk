@@ -1,87 +1,36 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-class tpc
-  implements BusinessObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdExperimentInitUtil;", "", "()V", "initExperiment", "", "adInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "initVideoGuide", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tpc
 {
-  tpc(tpa paramtpa, Intent paramIntent, Activity paramActivity) {}
+  public static final tpc a = new tpc();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private final void b(AdvertisementInfo paramAdvertisementInfo)
   {
-    tpa.a(this.jdField_a_of_type_Tpa).dismiss();
-    if (paramBoolean) {}
-    for (;;)
+    tmg localtmg = paramAdvertisementInfo.adExperimentData;
+    paramAdvertisementInfo = paramAdvertisementInfo.mAdExtInfo;
+    if (!TextUtils.isEmpty((CharSequence)paramAdvertisementInfo))
     {
-      try
-      {
-        Object localObject = paramBundle.getByteArray("data");
-        if (localObject != null)
-        {
-          paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-          paramBundle.mergeFrom((byte[])localObject);
-          if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
-          {
-            localAndroidInfo = paramBundle.androidInfo;
-            localObject = abcr.a(paramBundle.iconsURL, 16);
-            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.sourceUrl != null) {
-              continue;
-            }
-            paramBundle = "";
-            localIntent.putExtra("struct_share_key_source_url", paramBundle);
-            localIntent = this.jdField_a_of_type_AndroidContentIntent;
-            paramBundle = (Bundle)localObject;
-            if (localObject == null) {
-              paramBundle = "";
-            }
-            localIntent.putExtra("struct_share_key_source_icon", paramBundle);
-            localObject = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.messagetail != null) {
-              continue;
-            }
-            paramBundle = "";
-            ((Intent)localObject).putExtra("struct_share_key_source_name", paramBundle);
-            localObject = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.packName != null) {
-              continue;
-            }
-            paramBundle = "";
-            ((Intent)localObject).putExtra("struct_share_key_source_a_action_data", paramBundle);
-          }
-        }
+      Object localObject = new JSONObject(paramAdvertisementInfo).opt("video_guide");
+      paramAdvertisementInfo = localObject;
+      if (!(localObject instanceof JSONObject)) {
+        paramAdvertisementInfo = null;
       }
-      catch (Exception paramBundle)
-      {
-        GetAppInfoProto.AndroidInfo localAndroidInfo;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d(tpa.a, 2, paramBundle.getMessage());
-        continue;
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
-        this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 21);
+      paramAdvertisementInfo = (JSONObject)paramAdvertisementInfo;
+      if (paramAdvertisementInfo != null) {
+        localtmg.a(new tmi(paramAdvertisementInfo.optInt("second_state_time", -1), paramAdvertisementInfo.optInt("third_state_time", -1)));
       }
-      paramBundle = bcwd.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
-      if (paramBundle != null) {
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(tpa.a, 2, "build struct msg fail");
-      }
-      return;
-      paramBundle = localAndroidInfo.sourceUrl.get();
-      continue;
-      paramBundle = localAndroidInfo.messagetail.get();
-      continue;
-      paramBundle = localAndroidInfo.packName.get();
+    }
+  }
+  
+  public final void a(@Nullable AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (paramAdvertisementInfo != null) {
+      a.b(paramAdvertisementInfo);
     }
   }
 }

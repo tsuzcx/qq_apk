@@ -1,15 +1,15 @@
 package com.tencent.avgame.gameroom.video;
 
-import ncq;
+import ned;
 
 public class AVGameControlUIImpl$3$3
   implements Runnable
 {
-  public AVGameControlUIImpl$3$3(ncq paramncq, long paramLong) {}
+  public AVGameControlUIImpl$3$3(ned paramned, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ncq.a.a(this.jdField_a_of_type_Long, "android.permission.CAMERA");
+    this.jdField_a_of_type_Ned.a.a(this.jdField_a_of_type_Long, "android.permission.CAMERA");
   }
 }
 

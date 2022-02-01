@@ -1,6 +1,21 @@
-class ujf
+import UserGrowth.stSchema;
+
+public class ujf
+  extends uiv
 {
-  private static final ujd a = new ujd(null);
+  public ujf(uix paramuix)
+  {
+    super(paramuix);
+  }
+  
+  public boolean a(uix paramuix)
+  {
+    ueg.a(paramuix.a(), paramuix.a().H5Url);
+    if (paramuix.a() != null) {
+      paramuix.a().c();
+    }
+    return true;
+  }
 }
 
 

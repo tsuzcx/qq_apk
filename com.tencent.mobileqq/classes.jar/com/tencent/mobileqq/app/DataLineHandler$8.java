@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import anjx;
+import anvu;
 
 public class DataLineHandler$8
   implements Runnable
 {
-  public DataLineHandler$8(anjx paramanjx, long paramLong, int paramInt) {}
+  public DataLineHandler$8(anvu paramanvu, long paramLong, int paramInt) {}
   
   public void run()
   {
-    anjx.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    anvu.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
   }
 }
 

@@ -5,13 +5,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import javax.net.ssl.HttpsURLConnection;
 
 public class RequestProxyDefault$RequestTask
   implements Runnable
@@ -50,16 +50,16 @@ public class RequestProxyDefault$RequestTask
       int j;
       try
       {
-        HttpsURLConnection localHttpsURLConnection = (HttpsURLConnection)new URL(this.mUrl).openConnection();
-        localHttpsURLConnection.setConnectTimeout(this.mTimeout * 1000);
-        localHttpsURLConnection.setRequestMethod(this.mMethod);
+        HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.mUrl).openConnection();
+        localHttpURLConnection.setConnectTimeout(this.mTimeout * 1000);
+        localHttpURLConnection.setRequestMethod(this.mMethod);
         if (this.mHeader != null)
         {
           localObject1 = this.mHeader.keySet().iterator();
           if (((Iterator)localObject1).hasNext())
           {
             localObject2 = (String)((Iterator)localObject1).next();
-            localHttpsURLConnection.setRequestProperty((String)localObject2, (String)this.mHeader.get(localObject2));
+            localHttpURLConnection.setRequestProperty((String)localObject2, (String)this.mHeader.get(localObject2));
             continue;
           }
         }
@@ -121,7 +121,7 @@ public class RequestProxyDefault$RequestTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.RequestProxyDefault.RequestTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class alvw
-  implements DialogInterface.OnClickListener
+  implements bdbl
 {
-  public alvw(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public alvw(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    ShortVideoPlayActivity.b(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d(".photo", 2, "shot photo with custom camera focus " + paramBoolean1);
+    }
+    alwe.a(paramBoolean1);
+    NewFlowCameraActivity.b(this.a);
   }
 }
 

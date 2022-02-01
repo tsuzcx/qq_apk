@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand;
 
-import anni;
+import anzj;
 
 class JsErrorGuard$6
   implements Runnable
@@ -10,7 +10,7 @@ class JsErrorGuard$6
   public void run()
   {
     if ((JsErrorGuard.access$1300(this.this$0) != null) && (JsErrorGuard.access$1300(this.this$0).isShowing())) {
-      JsErrorGuard.access$1300(this.this$0).setTitle(anni.a(2131704678) + this.val$progress + "%");
+      JsErrorGuard.access$1300(this.this$0).setTitle(anzj.a(2131704785) + this.val$progress + "%");
     }
   }
 }

@@ -1,20 +1,15 @@
-final class unf
-  extends unc
+import UserGrowth.stNotificationRsp;
+import UserGrowth.stSimpleMetaFeed;
+import java.util.List;
+
+public abstract interface unf
+  extends uml<List<stSimpleMetaFeed>>
 {
-  unf(int paramInt)
-  {
-    super(paramInt);
-  }
+  public abstract void a(stNotificationRsp paramstNotificationRsp, uke paramuke);
   
-  String a()
-  {
-    return "null";
-  }
+  public abstract blsv b();
   
-  String b()
-  {
-    return "null";
-  }
+  public abstract void b(int paramInt, String paramString);
 }
 
 

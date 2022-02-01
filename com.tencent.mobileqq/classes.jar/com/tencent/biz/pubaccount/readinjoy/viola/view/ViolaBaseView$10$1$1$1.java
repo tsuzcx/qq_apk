@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import bggs;
-import tse;
-import tsf;
+import bhgt;
+import tjb;
+import tjc;
 
 public class ViolaBaseView$10$1$1$1
   implements Runnable
 {
-  public ViolaBaseView$10$1$1$1(tsf paramtsf) {}
+  public ViolaBaseView$10$1$1$1(tjc paramtjc) {}
   
   public void run()
   {
-    bggs.a().b(ViolaBaseView.a(this.a.a.a.a));
+    bhgt.a().b(ViolaBaseView.a(this.a.a.a.a));
   }
 }
 

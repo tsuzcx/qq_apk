@@ -1,27 +1,18 @@
-public class agii
-  extends agil
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
+
+public final class agii
+  implements Parcelable.Creator<ForwardUtils.SectionBase>
 {
-  public int a;
-  public int b;
-  
-  public agii(int paramInt1, int paramInt2)
+  public ForwardUtils.SectionBase a(Parcel paramParcel)
   {
-    this.b = paramInt1;
-    this.a = paramInt2;
+    return new ForwardUtils.SectionBase(paramParcel);
   }
   
-  public boolean equals(Object paramObject)
+  public ForwardUtils.SectionBase[] a(int paramInt)
   {
-    if (paramObject == null) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof agii));
-      paramObject = (agii)paramObject;
-    } while ((this.b != paramObject.b) || (this.a != paramObject.a));
-    return true;
+    return new ForwardUtils.SectionBase[paramInt];
   }
 }
 

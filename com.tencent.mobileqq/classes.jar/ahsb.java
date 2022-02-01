@@ -1,16 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-final class ahsb
-  implements DialogInterface.OnClickListener
+public class ahsb
+  implements Animator.AnimatorListener
 {
-  ahsb(Activity paramActivity) {}
+  public ahsb(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.finish();
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

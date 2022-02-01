@@ -40,7 +40,6 @@ public class TissuePageContainer
   implements IAppBrandPageContainer, Preloadable
 {
   private static final String TAG = "TissueRenderer";
-  public static Activity activity;
   private FlutterView flutterView;
   private boolean isV8AfterFlutter = false;
   private ApkgInfo mApkgInfo;
@@ -253,11 +252,12 @@ public class TissuePageContainer
   
   public void onAttachedToActivity(Activity paramActivity)
   {
-    activity = paramActivity;
     QMLog.w("miniapp-start-TISSUE", "flutterView start run" + System.currentTimeMillis());
     MiniAppReportManager2.reportLaunchPiecewise(212, "", this.mMiniAppContext.getMiniAppInfo());
     FlutterMain.setNativeLibDir(TissueGlobal.tissueEnv.getNativeLibDir());
-    if (this.flutterView != null) {
+    if (this.flutterView != null)
+    {
+      this.mNativeView.attachViewAndActivity(this.flutterView, paramActivity);
       return;
     }
     QMLog.w("miniapp-start-TISSUE", "start create flutterView " + System.currentTimeMillis());

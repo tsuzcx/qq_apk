@@ -17,24 +17,24 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.lang.ref.WeakReference;
-import mbe;
-import mbf;
+import mca;
+import mcb;
 
 public class AVLoadingDialogActivity
   extends BaseActivity
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new mbe(this);
-  Handler jdField_a_of_type_AndroidOsHandler = new mbf(this.jdField_a_of_type_JavaLangString);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new mca(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new mcb(this.jdField_a_of_type_JavaLangString);
   final String jdField_a_of_type_JavaLangString = "AVLoadingDialogActivity_" + AudioHelper.b();
   
   Dialog a()
   {
-    ReportDialog localReportDialog = new ReportDialog(this, 2131755823);
-    localReportDialog.setContentView(2131559567);
+    ReportDialog localReportDialog = new ReportDialog(this, 2131755824);
+    localReportDialog.setContentView(2131559572);
     localReportDialog.setCancelable(false);
-    TextView localTextView = (TextView)localReportDialog.findViewById(2131372466);
+    TextView localTextView = (TextView)localReportDialog.findViewById(2131372578);
     if (localTextView != null) {
-      localTextView.setText(2131695234);
+      localTextView.setText(2131695277);
     }
     return localReportDialog;
   }

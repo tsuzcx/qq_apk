@@ -1,22 +1,41 @@
-import android.support.v4.view.OnApplyWindowInsetsListener;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.WindowInsetsCompat;
-import android.view.View;
-import com.tencent.mobileqq.screendetect.ScreenShotFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.util.BinderWarpper;
 
-public class bbei
-  implements OnApplyWindowInsetsListener
+class bbei
+  implements ServiceConnection
 {
-  public bbei(ScreenShotFragment paramScreenShotFragment) {}
+  bbei(bbeh parambbeh) {}
   
-  public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment onApplyWindowInsets current is liuhai style!");
+    bbeg.a("PTV.RichmediaClient", "onServiceConnected");
+    this.a.b = new Messenger(paramIBinder);
+    paramComponentName = Message.obtain(null, 1);
+    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
+    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_Bbed.asBinder());
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
+    paramComponentName.setData(localBundle);
+    try
+    {
+      this.a.b.send(paramComponentName);
+      return;
     }
-    ScreenShotFragment.b(this.a);
-    return ViewCompat.onApplyWindowInsets(paramView, paramWindowInsetsCompat);
+    catch (RemoteException paramComponentName)
+    {
+      bbeg.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    this.a.b = null;
   }
 }
 

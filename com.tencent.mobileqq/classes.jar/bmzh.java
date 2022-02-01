@@ -1,26 +1,30 @@
-import java.util.HashMap;
+import org.json.JSONObject;
 
-final class bmzh
-  implements bdvv
+public class bmzh
 {
-  public void a(bdws parambdws, bdwt parambdwt)
+  public int a = -1;
+  public String a;
+  
+  public static String a(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
   {
-    if ((parambdws == null) || (parambdwt == null)) {}
-    do
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      do
+      localJSONObject.put("iItemId", paramInt1);
+      localJSONObject.put("strTextColor", paramString1);
+      localJSONObject.put("strAndBgUrl", paramString2);
+      localJSONObject.put("strIosBgUrl", paramString3);
+      localJSONObject.put("strFrameZip", paramString4);
+      localJSONObject.put("iFrameRate", paramInt2);
+      return localJSONObject.toString();
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
       {
-        return;
-      } while (!(parambdws instanceof bdvs));
-      parambdws = (bdvs)parambdws;
-      parambdws.jdField_a_of_type_Long += parambdwt.c;
-      parambdwt.c = 0L;
-      parambdwt = "bytes=" + parambdws.jdField_a_of_type_Long + "-";
-      parambdws.jdField_a_of_type_JavaUtilHashMap.put("Range", parambdwt);
-      parambdwt = parambdws.jdField_a_of_type_JavaLangString;
-    } while (!parambdwt.contains("range="));
-    parambdwt = parambdwt.substring(0, parambdwt.lastIndexOf("range="));
-    parambdws.jdField_a_of_type_JavaLangString = (parambdwt + "range=" + parambdws.jdField_a_of_type_Long);
+        paramString1.printStackTrace();
+      }
+    }
   }
 }
 

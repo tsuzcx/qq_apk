@@ -1,46 +1,35 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 class bhnb
-  implements RadioGroup.OnCheckedChangeListener
+  implements xik
 {
-  bhnb(bhmv parambhmv) {}
+  bhnb(bhmr parambhmr) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void a(xdw paramxdw, bjbs parambjbs)
   {
-    if ((this.a.jdField_a_of_type_Bhrl != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_Bhrl.a))) {
-      this.a.jdField_a_of_type_Bhrl.a(paramInt);
+    if ((parambjbs != null) && (parambjbs.isShowing())) {
+      parambjbs.dismiss();
     }
-    for (;;)
+    xii.a(this.a.a);
+    if ((paramxdw != null) && (paramxdw.jdField_a_of_type_Int == 0))
     {
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      xii.a(paramxdw.jdField_a_of_type_JavaLangString, this.a.a);
+      bhmr.a(this.a);
       return;
-      TouchWebView localTouchWebView = this.a.jdField_a_of_type_Bhql.a();
-      if (localTouchWebView != null)
-      {
-        String str2 = localTouchWebView.getUrl();
-        String str1 = str2;
-        if (TextUtils.isEmpty(str2))
-        {
-          str1 = str2;
-          if (this.a.jdField_a_of_type_AndroidContentIntent != null) {
-            str1 = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("url");
-          }
-        }
-        if (!TextUtils.isEmpty(str1)) {
-          localTouchWebView.loadUrl(str1.replaceAll("(?<=[?&])subIndex=[^&]*", "subIndex=" + paramInt));
-        }
-      }
     }
+    if (!bhnv.g(BaseApplicationImpl.getContext()))
+    {
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131693966, 1).a();
+      return;
+    }
+    this.a.c = "open";
+    bhmr.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhnb
  * JD-Core Version:    0.7.0.1
  */

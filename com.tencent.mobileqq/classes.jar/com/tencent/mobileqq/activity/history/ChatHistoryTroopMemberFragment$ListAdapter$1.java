@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.history;
 
-import ajtv;
+import akfe;
 
 public class ChatHistoryTroopMemberFragment$ListAdapter$1
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$ListAdapter$1(ajtv paramajtv) {}
+  public ChatHistoryTroopMemberFragment$ListAdapter$1(akfe paramakfe) {}
   
   public void run()
   {

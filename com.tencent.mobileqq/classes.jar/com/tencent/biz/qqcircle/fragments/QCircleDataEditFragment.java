@@ -1,27 +1,27 @@
 package com.tencent.biz.qqcircle.fragments;
 
+import aabe;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Window;
 import java.util.ArrayList;
 import java.util.List;
-import vax;
-import zxj;
+import vcn;
 
 public class QCircleDataEditFragment
   extends QCircleBaseFragment
 {
   public int a()
   {
-    return 2131560687;
+    return 2131560704;
   }
   
-  public List<zxj> a()
+  public List<aabe> a()
   {
     ArrayList localArrayList = new ArrayList();
-    vax localvax = new vax();
-    localvax.a(a());
-    localArrayList.add(localvax);
+    vcn localvcn = new vcn();
+    localvcn.a(a());
+    localArrayList.add(localvcn);
     return localArrayList;
   }
   
@@ -32,7 +32,7 @@ public class QCircleDataEditFragment
   
   public String c()
   {
-    return "QCirclePersonalDataEdit";
+    return "QCircleDataEditFragment";
   }
   
   public String d()

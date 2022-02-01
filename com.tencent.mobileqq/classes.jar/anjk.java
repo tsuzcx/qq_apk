@@ -1,44 +1,31 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.DownloadTask.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import protocol.KQQConfig.GetResourceRespInfo;
+import android.os.Message;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
 
-public class anjk
-  extends beat
+class anjk
+  implements amwd
 {
-  public File a;
-  public GetResourceRespInfo a;
+  anjk(anji paramanji, DisplayMetrics paramDisplayMetrics, anjm paramanjm) {}
   
-  public anjk(QQAppInterface paramQQAppInterface, String paramString, GetResourceRespInfo paramGetResourceRespInfo, File paramFile)
-  {
-    super(paramQQAppInterface, paramString);
-    this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo = paramGetResourceRespInfo;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-  }
+  public void onNotifyLongTouch(String paramString) {}
   
-  protected void realCancel()
+  public void onNotifyStatusChanged(int paramInt, String paramString) {}
+  
+  public void onSurfaceReady(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "DownloadTask realCancel");
+    this.jdField_a_of_type_Anji.jdField_c_of_type_Boolean = true;
+    float f = this.jdField_a_of_type_AndroidUtilDisplayMetrics.density;
+    this.jdField_a_of_type_Anji.jdField_c_of_type_Float = (paramInt1 / 2 / f);
+    if ((this.jdField_a_of_type_Anji.b != null) && (this.jdField_a_of_type_Anji.a != null) && (anji.a(this.jdField_a_of_type_Anji) != null))
+    {
+      this.jdField_a_of_type_Anji.b.onExecDispose();
+      this.jdField_a_of_type_Anji.a.onExecDispose();
+      Message localMessage = anji.a(this.jdField_a_of_type_Anji).obtainMessage(19, this.jdField_a_of_type_Anjm.c, this.jdField_a_of_type_Anjm.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Anjm.a) {
+        localMessage.obj = Float.valueOf(this.jdField_a_of_type_Anjm.jdField_b_of_type_Float);
+      }
+      anji.a(this.jdField_a_of_type_Anji).sendMessageDelayed(localMessage, 100L);
     }
-  }
-  
-  protected void realStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "DownloadTask realStart");
-    }
-    String str = this.key;
-    QQAppInterface localQQAppInterface = this.app;
-    GetResourceRespInfo localGetResourceRespInfo = this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo;
-    ThreadManagerV2.excute(new ConditionSearchManager.DownloadTask.1(this, str, this.jdField_a_of_type_JavaIoFile, localQQAppInterface, localGetResourceRespInfo), 128, null, true);
-  }
-  
-  public String toString()
-  {
-    return "[DownloadTask] url=" + this.key;
   }
 }
 

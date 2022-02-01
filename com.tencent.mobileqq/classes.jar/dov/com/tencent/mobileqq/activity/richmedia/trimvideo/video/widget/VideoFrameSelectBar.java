@@ -9,24 +9,24 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
-import bgtn;
-import bpzg;
-import bpzh;
-import bpzj;
-import bpzl;
-import bpzm;
-import bpzn;
+import bhtq;
+import brbb;
+import brbc;
+import brbe;
+import brbg;
+import brbh;
+import brbi;
 
 public class VideoFrameSelectBar
   extends View
-  implements bpzg, bpzj, bpzm
+  implements brbb, brbe, brbh
 {
-  private static final int jdField_a_of_type_Int = bgtn.a(13.0F);
+  private static final int jdField_a_of_type_Int = bhtq.a(13.0F);
   private float jdField_a_of_type_Float;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private bpzh jdField_a_of_type_Bpzh;
-  private bpzl jdField_a_of_type_Bpzl;
-  private bpzn jdField_a_of_type_Bpzn;
+  private brbc jdField_a_of_type_Brbc;
+  private brbg jdField_a_of_type_Brbg;
+  private brbi jdField_a_of_type_Brbi;
   private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
@@ -55,12 +55,12 @@ public class VideoFrameSelectBar
   private final void a(MotionEvent paramMotionEvent)
   {
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bpzl.a(paramMotionEvent);
+      this.jdField_a_of_type_Brbg.a(paramMotionEvent);
     }
     while (!this.jdField_b_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Bpzh.a(paramMotionEvent);
+    this.jdField_a_of_type_Brbc.a(paramMotionEvent);
   }
   
   private void c()
@@ -74,8 +74,8 @@ public class VideoFrameSelectBar
   {
     this.jdField_a_of_type_JavaLangString = String.format("%.1f''", new Object[] { Float.valueOf(this.f / 1000.0F) });
     this.g = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Bpzn != null) {
-      this.jdField_a_of_type_Bpzn.a(this.f);
+    if (this.jdField_a_of_type_Brbi != null) {
+      this.jdField_a_of_type_Brbi.a(this.f);
     }
   }
   
@@ -91,14 +91,14 @@ public class VideoFrameSelectBar
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    this.e = a((int)(paramFloat1 - this.jdField_a_of_type_Bpzl.b()));
+    this.e = a((int)(paramFloat1 - this.jdField_a_of_type_Brbg.b()));
     this.f = a(paramFloat2 - paramFloat1);
     d();
-    this.jdField_a_of_type_Bpzh.a((int)paramFloat1);
-    this.jdField_a_of_type_Bpzh.b((int)paramFloat2);
+    this.jdField_a_of_type_Brbc.a((int)paramFloat1);
+    this.jdField_a_of_type_Brbc.b((int)paramFloat2);
     invalidate();
-    if (this.jdField_a_of_type_Bpzn != null) {
-      this.jdField_a_of_type_Bpzn.a((int)a(), (int)b());
+    if (this.jdField_a_of_type_Brbi != null) {
+      this.jdField_a_of_type_Brbi.a((int)a(), (int)b());
     }
   }
   
@@ -106,11 +106,11 @@ public class VideoFrameSelectBar
   {
     this.d = a(paramFloat1);
     d();
-    if (this.jdField_a_of_type_Bpzl != null) {
-      this.jdField_a_of_type_Bpzl.a(paramFloat2, paramFloat3);
+    if (this.jdField_a_of_type_Brbg != null) {
+      this.jdField_a_of_type_Brbg.a(paramFloat2, paramFloat3);
     }
-    if (this.jdField_a_of_type_Bpzn != null) {
-      this.jdField_a_of_type_Bpzn.a((int)a(), (int)b());
+    if (this.jdField_a_of_type_Brbi != null) {
+      this.jdField_a_of_type_Brbi.a((int)a(), (int)b());
     }
   }
   
@@ -131,29 +131,29 @@ public class VideoFrameSelectBar
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_Bpzl == null) || (this.jdField_a_of_type_Bpzh == null)) {
+    if ((this.jdField_a_of_type_Brbg == null) || (this.jdField_a_of_type_Brbc == null)) {
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(40.0F);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
     paramCanvas.translate(0.0F, jdField_a_of_type_Int + 50);
-    if (this.jdField_a_of_type_Bpzh != null) {
-      this.jdField_a_of_type_Bpzh.a(paramCanvas);
+    if (this.jdField_a_of_type_Brbc != null) {
+      this.jdField_a_of_type_Brbc.a(paramCanvas);
     }
-    if (this.jdField_a_of_type_Bpzl != null) {
-      this.jdField_a_of_type_Bpzl.a(paramCanvas);
+    if (this.jdField_a_of_type_Brbg != null) {
+      this.jdField_a_of_type_Brbg.a(paramCanvas);
     }
     paramCanvas.translate(0.0F, -jdField_a_of_type_Int - 50);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Bpzl == null) || (this.jdField_a_of_type_Bpzh == null))
+    if ((this.jdField_a_of_type_Brbg == null) || (this.jdField_a_of_type_Brbc == null))
     {
       setMeasuredDimension(0, 0);
       return;
     }
-    setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), (int)(50.0F + this.jdField_a_of_type_Bpzl.a() + jdField_a_of_type_Int));
+    setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), (int)(50.0F + this.jdField_a_of_type_Brbg.a() + jdField_a_of_type_Int));
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -162,7 +162,7 @@ public class VideoFrameSelectBar
     for (;;)
     {
       return false;
-      if ((this.jdField_a_of_type_Bpzl != null) && (this.jdField_a_of_type_Bpzh != null))
+      if ((this.jdField_a_of_type_Brbg != null) && (this.jdField_a_of_type_Brbc != null))
       {
         switch (paramMotionEvent.getAction() & 0xFF)
         {
@@ -172,7 +172,7 @@ public class VideoFrameSelectBar
           return true;
           this.jdField_a_of_type_Float = paramMotionEvent.getX();
           this.jdField_b_of_type_Float = paramMotionEvent.getY();
-          this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bpzl.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float - 50.0F);
+          this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Brbg.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float - 50.0F);
           this.jdField_b_of_type_Boolean = false;
           if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
             return super.onTouchEvent(paramMotionEvent);
@@ -227,9 +227,9 @@ public class VideoFrameSelectBar
     super.postInvalidate();
   }
   
-  public void setOnFramesClipChangeListener(bpzn parambpzn)
+  public void setOnFramesClipChangeListener(brbi parambrbi)
   {
-    this.jdField_a_of_type_Bpzn = parambpzn;
+    this.jdField_a_of_type_Brbi = parambrbi;
   }
 }
 

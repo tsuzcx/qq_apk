@@ -1,59 +1,60 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.util.SystemDragUtils.TouchHandler.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-public class bgjp
-  extends Handler
+class bgjp
+  implements Comparator<akfc>
 {
-  static int a;
-  public afzq a;
-  public WeakReference<Context> a;
+  private final TroopInfo a;
   
-  static
+  bgjp(TroopInfo paramTroopInfo)
   {
-    jdField_a_of_type_Int = -1;
+    this.a = paramTroopInfo;
   }
   
-  private void a(afzq paramafzq)
+  public int a(akfc paramakfc1, akfc paramakfc2)
   {
-    QLog.d("SystemDragUtils", 1, "dismissBubbleMenu Called");
-    if ((paramafzq instanceof afwz))
+    int j = 5;
+    int i;
+    if (bgjl.b(paramakfc1.jdField_a_of_type_JavaLangString, this.a)) {
+      i = 5;
+    }
+    for (;;)
     {
-      QLog.d("SystemDragUtils", 1, "dismissBubbleMenu listener is BubbleOnlongClickListener");
-      paramafzq = ((afwz)paramafzq).a;
-      if ((paramafzq != null) && (paramafzq.a()))
+      if (bgjl.b(paramakfc2.jdField_a_of_type_JavaLangString, this.a)) {}
+      for (;;)
       {
-        QLog.d("SystemDragUtils", 1, "dismissBubbleMenu menuWrapper dismiss");
-        paramafzq.a();
-        return;
+        if (i != j)
+        {
+          return j - i;
+          if (bgjl.a(paramakfc1.jdField_a_of_type_JavaLangString, this.a))
+          {
+            i = 3;
+            break;
+          }
+          if (!paramakfc1.jdField_a_of_type_Boolean) {
+            break label134;
+          }
+          i = 1;
+          break;
+          if (bgjl.a(paramakfc2.jdField_a_of_type_JavaLangString, this.a))
+          {
+            j = 3;
+            continue;
+          }
+          if (!paramakfc2.jdField_a_of_type_Boolean) {
+            break label128;
+          }
+          j = 1;
+          continue;
+        }
+        return ChnToSpell.a(bgjl.c(paramakfc1), 1).compareToIgnoreCase(ChnToSpell.a(bgjl.c(paramakfc2), 1));
+        label128:
+        j = 0;
       }
-      QLog.d("SystemDragUtils", 1, "dismissBubbleMenu menuWrapper notshow");
-      return;
+      label134:
+      i = 0;
     }
-    QLog.d("SystemDragUtils", 1, "dismissBubbleMenu listener is: " + paramafzq.getClass());
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    if ((paramMessage.what == jdField_a_of_type_Int) && ((paramMessage.obj instanceof View)) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-    {
-      paramMessage = (afwr)afur.a((View)paramMessage.obj);
-      QLog.d("SystemDragUtils", 1, "DRAG TRIGGER: holder is: " + paramMessage.getClass());
-      if (paramMessage.a != null) {
-        ThreadManager.executeOnFileThread(new SystemDragUtils.TouchHandler.1(this, paramMessage));
-      }
-    }
-    else
-    {
-      return;
-    }
-    QLog.e("SystemDragUtils", 1, "DRAG TRIGGER: holder message is null");
   }
 }
 

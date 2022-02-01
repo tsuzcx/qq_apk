@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.app;
 
 import android.os.Bundle;
-import anpk;
+import aobl;
 import com.tencent.qphone.base.util.QLog;
 
 public class MayknowRecommendManager$6
   implements Runnable
 {
-  public MayknowRecommendManager$6(anpk paramanpk, int paramInt, Bundle paramBundle) {}
+  public MayknowRecommendManager$6(aobl paramaobl, int paramInt, Bundle paramBundle) {}
   
   public void run()
   {
     QLog.i("MayknowRecommendManager", 1, String.format("getMayKnowRecommendRemote, real start, entryType = " + this.jdField_a_of_type_Int, new Object[0]));
-    ((FriendListHandler)anpk.a(this.this$0).a(1)).a(null, null, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+    ((FriendListHandler)aobl.a(this.this$0).a(1)).a(null, null, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

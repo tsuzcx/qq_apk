@@ -1,24 +1,22 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.selectmember.TroopListAdapter.1.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.richmedia.FlowActivity;
 
-public class alui
-  extends niv
+public abstract class alui
 {
-  alui(aluh paramaluh) {}
+  FlowActivity a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public alui(FlowActivity paramFlowActivity)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    if ((paramInt != 0) || (paramArrayOfByte == null) || (localQQAppInterface == null)) {
-      return;
-    }
-    ThreadManager.post(new TroopListAdapter.1.1(this, localQQAppInterface, paramArrayOfByte, paramBundle, new Handler(Looper.getMainLooper())), 8, null, true);
+    this.a = paramFlowActivity;
   }
+  
+  public Context a()
+  {
+    return this.a;
+  }
+  
+  public abstract void a(ViewGroup paramViewGroup);
 }
 
 

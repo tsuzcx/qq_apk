@@ -1,44 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
 
-class asxt
-  implements View.OnClickListener
+public class asxt
+  implements bmws
 {
-  asxt(asxs paramasxs, View paramView) {}
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void onClick(View paramView)
+  public asxt(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
+  
+  private boolean a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((localObject instanceof asth))
-    {
-      localObject = (FileManagerEntity)((asth)localObject).a;
-      if (paramView.getId() != 2131365302) {
-        break label121;
-      }
-      bkho localbkho = (bkho)bkif.a(this.jdField_a_of_type_Asxs.a.a, null);
-      localbkho.a(anni.a(2131708391));
-      localbkho.a(anni.a(2131708395), 3);
-      localbkho.d(anni.a(2131708393));
-      localbkho.a(new asxu(this, (FileManagerEntity)localObject, localbkho));
-      localbkho.show();
+    long l = System.nanoTime();
+    if (l - this.jdField_a_of_type_Long < 400000000L) {
+      return true;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Long = l;
+    return false;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Boolean) || (a())) {
       return;
-      localObject = (FileManagerEntity)((asyb)localObject).a;
-      break;
-      label121:
-      if (paramView.getId() == 2131367030) {
-        this.jdField_a_of_type_Asxs.a.c((FileManagerEntity)localObject);
-      } else if (paramView.getId() == 2131377201) {
-        ApolloUtil.a(paramView, (FileManagerEntity)localObject, QfileBaseRecentFileTabView.r(this.jdField_a_of_type_Asxs.a));
-      }
     }
+    ExtendFriendCampusFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendCampusFragment).a();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = System.nanoTime();
+  }
+  
+  public void b()
+  {
+    if ((!this.jdField_a_of_type_Boolean) || (a())) {
+      return;
+    }
+    ExtendFriendCampusFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendCampusFragment).b();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = System.nanoTime();
   }
 }
 

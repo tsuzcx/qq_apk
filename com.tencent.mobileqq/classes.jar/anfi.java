@@ -1,38 +1,45 @@
-import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class anfi
-  implements OnCompositionLoadedListener
+  implements TVK_SDKMgr.OnLogListener
 {
-  public anfi(ApolloLottieAnim paramApolloLottieAnim, DiniFlyAnimationView paramDiniFlyAnimationView, boolean paramBoolean) {}
+  public static String a = "cmgame_process.CmGameVideoLogImpl";
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public int d(String paramString1, String paramString2)
   {
-    if (paramLottieComposition == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloLottieAnim", 2, "composition is null ,return");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, paramString1 + ":" + paramString2);
     }
-    do
-    {
-      return;
-      if (!ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloLottieAnim", 2, "anim is destroy ,return");
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetDelegate(new anfj(this));
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    QLog.e(a, 1, paramString1 + ":" + paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, paramString1 + ":" + paramString2);
     }
-    ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim, true);
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    QLog.w(a, 1, paramString1 + ":" + paramString2);
+    return 0;
   }
 }
 

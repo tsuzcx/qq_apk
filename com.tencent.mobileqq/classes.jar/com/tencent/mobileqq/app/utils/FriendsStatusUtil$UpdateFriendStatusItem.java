@@ -3,14 +3,14 @@ package com.tencent.mobileqq.app.utils;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anqc;
-import aopu;
+import aoci;
+import apdk;
 import java.util.Arrays;
 
 public class FriendsStatusUtil$UpdateFriendStatusItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<UpdateFriendStatusItem> CREATOR = new aopu();
+  public static final Parcelable.Creator<UpdateFriendStatusItem> CREATOR = new apdk();
   public int a;
   public long a;
   public String a;
@@ -55,10 +55,10 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
         return 0L;
       }
       if (this.jdField_a_of_type_ArrayOfByte.length == 4) {
-        return anqc.a(this.jdField_a_of_type_ArrayOfByte);
+        return aoci.a(this.jdField_a_of_type_ArrayOfByte);
       }
     } while (this.jdField_a_of_type_ArrayOfByte.length != 8);
-    return anqc.a(Arrays.copyOfRange(this.jdField_a_of_type_ArrayOfByte, 0, 4));
+    return aoci.a(Arrays.copyOfRange(this.jdField_a_of_type_ArrayOfByte, 0, 4));
   }
   
   public void a(long paramLong)

@@ -1,48 +1,14 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class ajyi
-  implements View.OnClickListener
 {
-  ajyi(ajye paramajye) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  public void onClick(View paramView)
-  {
-    int i = paramView.getId();
-    if (QLog.isColorLevel()) {
-      QLog.i(ajye.jdField_a_of_type_JavaLangString, 2, "onClick, id = " + i);
-    }
-    Object localObject = this.a.jdField_a_of_type_Ajyc;
-    if (this.a.jdField_a_of_type_Ajyc == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      switch (i)
-      {
-      default: 
-        break;
-      case 2131365147: 
-        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(((ajyc)localObject).a.msg);
-        break;
-      case 2131367027: 
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("forward_type", -1);
-        localBundle.putString("forward_text", ((ajyc)localObject).a.msg);
-        localObject = new Intent();
-        ((Intent)localObject).putExtras(localBundle);
-        aufz.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
-      }
-    }
-  }
+  private ajyi(ajyf paramajyf) {}
 }
 
 

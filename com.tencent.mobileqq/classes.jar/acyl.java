@@ -1,27 +1,26 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
 
 public class acyl
-  extends aczg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a()
-  {
-    return 1000;
-  }
+  public acyl(GdtVideoImaxFragment paramGdtVideoImaxFragment, float paramFloat1, float paramFloat2, int paramInt) {}
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    new bbzc().b(paramList, paramList1, paramStringBuilder, paramMsg, paramBoolean2);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (3 == paramElem.common_elem.uint32_service_type.get());
+    float f = paramValueAnimator.getAnimatedFraction();
+    f = this.jdField_a_of_type_Float + f * (this.b - this.jdField_a_of_type_Float);
+    acvc.a("GdtVideoImaxFragment", "onAnimationUpdate() called with: current = [" + f + "]");
+    paramValueAnimator = GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).getLayoutParams();
+    paramValueAnimator.height = ((int)f);
+    GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).setLayoutParams(paramValueAnimator);
+    paramValueAnimator = (ViewGroup.MarginLayoutParams)GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).getLayoutParams();
+    paramValueAnimator.height = Math.abs((int)(this.jdField_a_of_type_Int - f));
+    GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).setLayoutParams(paramValueAnimator);
   }
 }
 

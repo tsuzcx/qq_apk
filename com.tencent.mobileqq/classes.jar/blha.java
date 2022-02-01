@@ -1,54 +1,43 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.SendMsg;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-public abstract class blha
-  extends Binder
-  implements blgz
+public class blha
+  extends MqqHandler
 {
-  public blha()
+  private WeakReference<Handler.Callback> a;
+  
+  public blha(Handler.Callback paramCallback)
   {
-    attachInterface(this, "cooperation.qappcenter.remote.IServiceHandler");
+    this.a = new WeakReference(paramCallback);
   }
   
-  public static blgz a(IBinder paramIBinder)
+  public blha(Looper paramLooper, Handler.Callback paramCallback)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IServiceHandler");
-    if ((localIInterface != null) && ((localIInterface instanceof blgz))) {
-      return (blgz)localIInterface;
-    }
-    return new blhb(paramIBinder);
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
   }
   
-  public IBinder asBinder()
+  public blha(Looper paramLooper, Handler.Callback paramCallback, boolean paramBoolean)
   {
-    return this;
+    super(paramLooper, null, paramBoolean);
+    this.a = new WeakReference(paramCallback);
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qappcenter.remote.IServiceHandler");
-      return true;
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
     }
-    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IServiceHandler");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
-    }
+  }
+  
+  public String toString()
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    return super.toString() + " " + localCallback;
   }
 }
 

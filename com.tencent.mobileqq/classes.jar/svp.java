@@ -1,20 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoySlideAnimLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-
-public class svp
-  implements ValueAnimator.AnimatorUpdateListener
+class svp
 {
-  public svp(SlideActiveAnimController paramSlideActiveAnimController, float paramFloat) {}
+  String a;
+  String b;
+  String c;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public svp(String paramString1, String paramString2, String paramString3)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoySlideAnimLayout.a.setTranslationY(this.jdField_a_of_type_Float - paramValueAnimator.floatValue());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setTranslationY(-paramValueAnimator.floatValue());
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

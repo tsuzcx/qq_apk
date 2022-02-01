@@ -1,11 +1,11 @@
 package dov.com.qq.im.ptv;
 
-import boxy;
+import bpzt;
 
 public class LightWeightSoDownloadUnit$1
   implements Runnable
 {
-  public LightWeightSoDownloadUnit$1(boxy paramboxy) {}
+  public LightWeightSoDownloadUnit$1(bpzt parambpzt) {}
   
   public void run()
   {

@@ -1,44 +1,49 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class qfp
-  implements View.OnAttachStateChangeListener
+public class qfp
+  extends MSFServlet
 {
-  qfp(qfa paramqfa, pxk parampxk, VideoView paramVideoView, qfr paramqfr, BroadcastReceiver paramBroadcastReceiver) {}
-  
-  public void onViewAttachedToWindow(View paramView)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    snh localsnh = this.jdField_a_of_type_Pxk.a();
-    qfq localqfq = new qfq(this);
-    localsnh.b(localqfq);
-    paramView.setTag(2131376047, localqfq);
-    paramView = new IntentFilter();
-    paramView.addAction("android.media.VOLUME_CHANGED_ACTION");
-    BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramView);
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    }
+    for (;;)
+    {
+      txk.a(paramFromServiceMsg);
+      if (getAppRuntime() != null) {
+        qfo.a().a(paramFromServiceMsg.isSuccess(), paramIntent, paramFromServiceMsg, null);
+      }
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
   }
   
-  public void onViewDetachedFromWindow(View paramView)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.jdField_a_of_type_Qfr.a(false);
-    snh localsnh = this.jdField_a_of_type_Pxk.a();
-    paramView = (smv)paramView.getTag(2131376047);
-    if (paramView != null) {
-      localsnh.c(paramView);
-    }
-    try
+    if (paramIntent != null)
     {
-      BaseApplicationImpl.getApplication().getBaseContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      QLog.e("PgcShortContentProteusItem", 2, QLog.getStackTraceString(paramView));
+      ToServiceMsg localToServiceMsg = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      txk.a(localToServiceMsg);
+      if (localToServiceMsg != null)
+      {
+        paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
+        paramPacket.putSendData(localToServiceMsg.getWupBuffer());
+        paramPacket.setTimeout(localToServiceMsg.getTimeout());
+        paramPacket.setAttributes(localToServiceMsg.getAttributes());
+        paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
+        paramPacket.autoResend = localToServiceMsg.isFastResendEnabled();
+        if (!localToServiceMsg.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+      }
     }
   }
 }

@@ -1,39 +1,68 @@
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptMonitor.1;
+import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptMonitor.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.os.MqqHandler;
 
-class pni
+public class pni
 {
-  public long a;
-  public ArrayList<Pair<BaseArticleInfo, Float>> a;
-  public long b;
-  
-  private pni(pmy parampmy)
+  public static void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public ArrayList<Long> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(Long.valueOf(((BaseArticleInfo)((Pair)localIterator.next()).first).mArticleID));
-    }
-    return localArrayList;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("screenInfo : \n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    Object localObject = sun.a().a();
+    if (localObject != null)
     {
-      Pair localPair = (Pair)localIterator.next();
-      localStringBuilder.append("【").append(((BaseArticleInfo)localPair.first).mTitle).append("】");
+      QLog.d("RIJImageOptMonitor", 1, "executing jobs size: " + ((CopyOnWriteArrayList)localObject).size());
+      if (((CopyOnWriteArrayList)localObject).size() > 0)
+      {
+        localObject = ((CopyOnWriteArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          QLog.d("RIJImageOptMonitor", 1, new Object[] { (suo)((Iterator)localObject).next() });
+        }
+      }
     }
-    return localStringBuilder.toString();
+  }
+  
+  public static void a(suo paramsuo)
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(new RIJImageOptMonitor.1(paramsuo), pnh.a.a());
+  }
+  
+  public static String[] a(String paramString)
+  {
+    try
+    {
+      InetAddress[] arrayOfInetAddress = InetAddress.getAllByName(paramString);
+      if ((arrayOfInetAddress != null) && (arrayOfInetAddress.length > 0))
+      {
+        String[] arrayOfString = new String[arrayOfInetAddress.length];
+        int i = 0;
+        for (;;)
+        {
+          paramString = arrayOfString;
+          if (i >= arrayOfInetAddress.length) {
+            break;
+          }
+          arrayOfString[i] = arrayOfInetAddress[i].getHostAddress();
+          i += 1;
+        }
+        return paramString;
+      }
+    }
+    catch (UnknownHostException paramString)
+    {
+      QLog.e("RIJImageOptMonitor", 1, paramString.getMessage());
+      paramString = null;
+    }
+    return null;
+  }
+  
+  public static void b(suo paramsuo)
+  {
+    ThreadManager.post(new RIJImageOptMonitor.2(paramsuo), 2, null, true);
   }
 }
 

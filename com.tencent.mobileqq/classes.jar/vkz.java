@@ -1,44 +1,25 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.widget.pull2refresh.RecyclerViewCompat;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.tmassistantbase.network.INetworkChangedObserver;
+import mqq.app.AppRuntime;
 
 class vkz
-  extends RecyclerView.OnScrollListener
+  implements INetworkChangedObserver
 {
-  vkz(vks paramvks) {}
+  vkz(vkx paramvkx, vla paramvla, AppRuntime paramAppRuntime, beum parambeum) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onNetworkChanged()
   {
-    if ((paramInt == 0) && (vks.a(this.a) != null) && ((vks.a(this.a).getLayoutManager() instanceof LinearLayoutManager))) {
-      vks.a(this.a, ((LinearLayoutManager)vks.a(this.a).getLayoutManager()).findFirstCompletelyVisibleItemPosition());
-    }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if ((vks.a(this.a) != null) && ((vks.a(this.a).getLayoutManager() instanceof LinearLayoutManager)))
+    if (!bhnv.g(BaseApplicationImpl.getContext()))
     {
-      if (paramInt2 > 0)
-      {
-        paramInt1 = ((LinearLayoutManager)vks.a(this.a).getLayoutManager()).findLastVisibleItemPosition();
-        paramInt2 = vks.a(this.a).getLayoutManager().getItemCount();
-        if (paramInt1 >= paramInt2 - 2) {
-          vks.c(this.a);
-        }
-        if ((paramInt1 == paramInt2 - 1) && (vks.a(this.a).a().a())) {
-          vks.d(this.a);
-        }
-        vks.b(this.a, paramInt1);
+      if (vla.a(this.jdField_a_of_type_Vla) != null) {
+        vla.a(this.jdField_a_of_type_Vla).a(false);
       }
-      return;
+      if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+        ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getNetEngine(0).b(this.jdField_a_of_type_Beum);
+      }
+      bhmi.a(this.jdField_a_of_type_Vla.c(), true);
     }
-    paramInt1 = ((LinearLayoutManager)vks.a(this.a).getLayoutManager()).findFirstCompletelyVisibleItemPosition();
-    if (vks.a(this.a) == 0) {
-      vks.d(this.a);
-    }
-    vks.b(this.a, paramInt1);
   }
 }
 

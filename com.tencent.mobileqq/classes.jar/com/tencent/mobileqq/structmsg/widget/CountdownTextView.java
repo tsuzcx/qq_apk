@@ -3,8 +3,8 @@ package com.tencent.mobileqq.structmsg.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bdbl;
-import bdbm;
+import bdue;
+import bduf;
 import com.tencent.mobileqq.activity.photopreview.CountDownTimer;
 import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener;
 
@@ -37,12 +37,12 @@ public class CountdownTextView
     }
   }
   
-  public void a(long paramLong, bdbm parambdbm)
+  public void a(long paramLong, bduf parambduf)
   {
     CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
     if (localCountDownTimer != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener = new bdbl(this, paramLong, parambdbm);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener = new bdue(this, paramLong, parambduf);
       localCountDownTimer.addListener(this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener);
     }
   }

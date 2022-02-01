@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
 import android.os.Bundle;
-import anwd;
-import bgbd;
+import aoip;
+import bhbe;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -14,17 +14,17 @@ import tencent.im.oidb.cmd0xa2a.oidb_0xa2a.ReqBody;
 public class TroopHandler$6
   implements Runnable
 {
-  public TroopHandler$6(anwd paramanwd, String paramString) {}
+  public TroopHandler$6(aoip paramaoip, String paramString) {}
   
   public void run()
   {
-    Object localObject = (bgbd)this.this$0.app.getManager(234);
-    if ((((bgbd)localObject).a(this.a) != 3) && (NetConnInfoCenter.getServerTime() < ((bgbd)localObject).c(this.a)))
+    Object localObject = (bhbe)this.this$0.app.getManager(234);
+    if ((((bhbe)localObject).a(this.a) != 3) && (NetConnInfoCenter.getServerTime() < ((bhbe)localObject).c(this.a)))
     {
       if (QLog.isColorLevel()) {
         QLog.i("TroopHandler", 2, "getAllOnlineMemberList, too frequency");
       }
-      localObject = ((bgbd)localObject).b(this.a);
+      localObject = ((bhbe)localObject).b(this.a);
       this.this$0.notifyUI(101, true, new Object[] { this.a, localObject });
       return;
     }
@@ -32,7 +32,7 @@ public class TroopHandler$6
     {
       try
       {
-        if (((bgbd)localObject).a(this.a) == 3)
+        if (((bhbe)localObject).a(this.a) == 3)
         {
           i = 4;
           localObject = new oidb_0xa2a.ReqBody();

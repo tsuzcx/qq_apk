@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.hippy.QCircleHippyFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudCommon.Entry;
-import java.util.Arrays;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.qqcircle.fragments.main.QCircleFolderFollowTabFragment;
 
 public class voc
-  implements View.OnClickListener
+  extends RecyclerView.OnScrollListener
 {
-  public voc(QCircleHippyFragment paramQCircleHippyFragment) {}
+  public voc(QCircleFolderFollowTabFragment paramQCircleFolderFollowTabFragment) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.a.a.d();
-    QCircleHippyFragment.a(this.a);
-    vrh.a("key_open_hippy_page", Arrays.asList(new FeedCloudCommon.Entry[] { vri.a("ret_code", "-1"), vri.a("attach_info", "network error,module name:" + QCircleHippyFragment.a(this.a)) }), false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
+    {
+      adlb.a().a("qcircle_follow_tab_page", false);
+      return;
+    }
+    adlb.a().a("qcircle_follow_tab_page");
   }
 }
 

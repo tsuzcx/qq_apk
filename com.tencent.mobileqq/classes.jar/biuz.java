@@ -1,23 +1,8 @@
-public class biuz
+import android.view.View;
+
+public abstract interface biuz
 {
-  protected String a;
-  protected String b;
-  
-  public biuz(String paramString1, String paramString2)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
+  public abstract void a(View paramView);
 }
 
 

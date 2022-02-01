@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.item;
 
 import java.util.List;
-import tam;
+import sri;
 
 public class WebPtsLiteViewCreator$1
   implements Runnable
 {
-  public WebPtsLiteViewCreator$1(tam paramtam) {}
+  public WebPtsLiteViewCreator$1(sri paramsri) {}
   
   public void run()
   {
-    tam.a(this.this$0).clear();
+    sri.a(this.this$0).clear();
   }
 }
 

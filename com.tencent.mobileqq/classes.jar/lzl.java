@@ -1,73 +1,41 @@
-import android.content.IntentFilter;
-import com.tencent.av.so.DownloadInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
 
 public class lzl
+  extends OrientationEventListener
 {
-  int jdField_a_of_type_Int = 0;
-  DownloadInfo jdField_a_of_type_ComTencentAvSoDownloadInfo = null;
-  ArrayList<lzh> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private int jdField_a_of_type_Int = -1;
   
-  lzl()
+  public lzl(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, Context paramContext, int paramInt)
   {
-    a(BaseApplicationImpl.getApplication());
-    this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
-    this.jdField_a_of_type_Int = lzn.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo);
-    QLog.d("QavSo", 1, String.format("SoMgr, mStatusSo[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    super(paramContext, paramInt);
   }
   
-  DownloadInfo a()
+  public void onOrientationChanged(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvSoDownloadInfo == null) {
-      this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
+    int i = paramInt;
+    if (paramInt < 0) {
+      i = paramInt + 360;
     }
-    return this.jdField_a_of_type_ComTencentAvSoDownloadInfo;
-  }
-  
-  boolean a()
-  {
-    this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
-    this.jdField_a_of_type_Int = lzn.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavSo", 4, String.format("checkResReady, mStatusSo[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    if ((i > 314) || (i < 45)) {
+      paramInt = 0;
     }
-    return 11 != this.jdField_a_of_type_Int;
-  }
-  
-  boolean a(BaseApplicationImpl paramBaseApplicationImpl)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavSo", 4, String.format("registReceiver[%s]", new Object[] { paramBaseApplicationImpl.getQQProcessName() }));
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("tencent.video.somgr.notify");
-    return paramBaseApplicationImpl.registerReceiver(new lzm(this), localIntentFilter) != null;
-  }
-  
-  boolean b()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  boolean c()
-  {
-    this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = lzn.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo);
-    if (this.jdField_a_of_type_Int == 11)
+    for (;;)
     {
-      this.jdField_a_of_type_Int = 12;
-      BusinessCommonConfig.notifyQQDownload(3, null, 0);
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavSo", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusSo[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
+      if (paramInt != this.jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_Int = paramInt;
+        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a();
       }
-      return bool;
+      return;
+      if (i < 135) {
+        paramInt = 90;
+      } else if (i < 225) {
+        paramInt = 180;
+      } else {
+        paramInt = 270;
+      }
     }
   }
 }

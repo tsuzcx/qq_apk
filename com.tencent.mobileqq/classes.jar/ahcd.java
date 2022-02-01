@@ -1,18 +1,6 @@
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-
-public class ahcd
-  extends afwr
+public abstract interface ahcd
 {
-  public alqf a;
-  protected ViewGroup a;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected ETTextView a;
-  protected TextView b;
-  public ETTextView b;
-  
-  public ahcd(ahbx paramahbx) {}
+  public abstract String a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

@@ -5,7 +5,7 @@ import android.view.OrientationEventListener;
 class OrientationDetector$3
   implements Runnable
 {
-  OrientationDetector$3(OrientationDetector paramOrientationDetector, boolean paramBoolean) {}
+  OrientationDetector$3(OrientationDetector paramOrientationDetector, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -17,23 +17,28 @@ class OrientationDetector$3
     }
     try
     {
-      if (this.val$enable) {
+      if (this.val$enable)
+      {
         if (OrientationDetector.access$700(this.this$0).canDetectOrientation()) {
           OrientationDetector.access$700(this.this$0).enable();
         }
-      }
-      for (;;)
-      {
-        label53:
-        return;
-        localObject2 = finally;
-        throw localObject2;
-        OrientationDetector.access$700(this.this$0).disable();
+        if (!this.val$isDestory) {}
       }
     }
     catch (Throwable localThrowable)
     {
-      break label53;
+      synchronized (OrientationDetector.access$600(this.this$0))
+      {
+        for (;;)
+        {
+          OrientationDetector.access$702(this.this$0, null);
+          return;
+          localObject3 = finally;
+          throw localObject3;
+          OrientationDetector.access$700(this.this$0).disable();
+        }
+        localThrowable = localThrowable;
+      }
     }
   }
 }

@@ -1,23 +1,71 @@
-import android.widget.PopupWindow;
-import com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.4.1;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.arch.lifecycle.MutableLiveData;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
+import com.tencent.biz.richframework.part.demo.DemoBaseWidgetView;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 
 public class aacj
-  implements aabp
+  extends aacq
 {
-  public aacj(DetailBaseBlock.4.1 param1) {}
+  private BaseWidgetView a;
   
-  public void a()
+  public aacj(Bundle paramBundle)
   {
-    QLog.d(aacd.jdField_a_of_type_JavaLangString, 2, "showPraiseTipView");
+    super(paramBundle);
   }
   
-  public void b()
+  private void a()
   {
-    QLog.d(aacd.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow priseTipView");
-    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    this.a.setData(null);
+    setShareData("share_key_subscribe_user", new aabn(new ExtraTypeInfo()));
+    notifyLoadingComplete(true);
+  }
+  
+  protected BaseWidgetView a(ViewGroup paramViewGroup, aabp paramaabp)
+  {
+    this.a = new DemoBaseWidgetView(getContext());
+    return this.a;
+  }
+  
+  protected void handleBlockChange(aabp paramaabp, int paramInt)
+  {
+    super.handleBlockChange(paramaabp, paramInt);
+  }
+  
+  public void handleShareDataChange(String paramString, aabn paramaabn)
+  {
+    super.handleShareDataChange(paramString, paramaabn);
+  }
+  
+  public boolean isEnableRefresh()
+  {
+    return false;
+  }
+  
+  public void loadData(aabu paramaabu)
+  {
+    if ((paramaabu.d()) || (paramaabu.c())) {
+      a();
     }
+  }
+  
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  {
+    super.onActivityCreated(paramActivity, paramBundle);
+  }
+  
+  public boolean onBackEvent()
+  {
+    return super.onBackEvent();
+  }
+  
+  public void onInitBlock(Bundle paramBundle)
+  {
+    if (paramBundle != null) {}
+    ((aacg)getViewModel(aacg.class)).a().observe((QCircleBaseFragment)getParentFragment(), new aack(this));
   }
 }
 

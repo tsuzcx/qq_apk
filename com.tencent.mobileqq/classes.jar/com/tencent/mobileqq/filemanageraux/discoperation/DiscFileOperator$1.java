@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanageraux.discoperation;
 
-import auao;
-import auaq;
+import ausj;
+import ausl;
 
 public class DiscFileOperator$1
   implements Runnable
 {
-  public DiscFileOperator$1(auao paramauao) {}
+  public DiscFileOperator$1(ausj paramausj) {}
   
   public void run()
   {

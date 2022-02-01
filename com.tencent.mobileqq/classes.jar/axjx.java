@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public abstract interface axjx
+class axjx
+  implements DialogInterface.OnClickListener
 {
-  @Deprecated
-  public abstract void a();
+  axjx(axjo paramaxjo) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(VideoData paramVideoData);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (bnzk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, axjo.a(this.a), axjo.a(this.a).a(), this.a.jdField_a_of_type_MqqOsMqqHandler)) {
+      axjo.a(this.a).a(false, null, false);
+    }
+  }
 }
 
 

@@ -10,7 +10,7 @@ class RedPacketKSongFragment$15$1
   public void run()
   {
     if (!this.a.this$0.c()) {
-      this.a.this$0.b(this.a.this$0.getResources().getString(2131694676));
+      this.a.this$0.b(this.a.this$0.getResources().getString(2131694718));
     }
   }
 }

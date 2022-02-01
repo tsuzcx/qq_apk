@@ -4,9 +4,9 @@ import com.tencent.qqlive.tvkplayer.vinfo.TVKVideoInfo;
 
 public abstract interface ITVKVideoInfoResponse
 {
-  public abstract void OnSuccess(int paramInt, TVKVideoInfo paramTVKVideoInfo);
-  
   public abstract void onFailure(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2);
+  
+  public abstract void onSuccess(int paramInt, TVKVideoInfo paramTVKVideoInfo);
 }
 
 

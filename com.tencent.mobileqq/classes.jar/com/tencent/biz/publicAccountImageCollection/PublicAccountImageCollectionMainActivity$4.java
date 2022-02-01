@@ -1,9 +1,9 @@
 package com.tencent.biz.publicAccountImageCollection;
 
 import java.util.ArrayList;
-import nyq;
-import oat;
-import uwr;
+import oal;
+import ocd;
+import uyc;
 
 class PublicAccountImageCollectionMainActivity$4
   implements Runnable
@@ -24,7 +24,7 @@ class PublicAccountImageCollectionMainActivity$4
     if ((PublicAccountImageCollectionMainActivity.a(this.this$0) != null) && (PublicAccountImageCollectionMainActivity.a(this.this$0).a != null)) {}
     for (int i = PublicAccountImageCollectionMainActivity.a(this.this$0).a.size();; i = 0)
     {
-      oat.a(null, this.this$0.a, "0X8007B8A", "0X8007B8A", 0, 0, this.this$0.b, this.this$0.c, "" + PublicAccountImageCollectionMainActivity.b(this.this$0, PublicAccountImageCollectionMainActivity.a(this.this$0)), "" + i, false);
+      ocd.a(null, this.this$0.a, "0X8007B8A", "0X8007B8A", 0, 0, this.this$0.b, this.this$0.c, "" + PublicAccountImageCollectionMainActivity.b(this.this$0, PublicAccountImageCollectionMainActivity.a(this.this$0)), "" + i, false);
       return;
     }
   }

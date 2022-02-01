@@ -1,15 +1,15 @@
 package dov.com.qq.im;
 
-import bncj;
+import bodr;
 
 public class QIMQzoneEffectsCameraCaptureUnit$2
   implements Runnable
 {
-  public QIMQzoneEffectsCameraCaptureUnit$2(bncj parambncj) {}
+  public QIMQzoneEffectsCameraCaptureUnit$2(bodr parambodr) {}
   
   public void run()
   {
-    bncj.a(this.this$0, "正在合成gif...");
+    bodr.a(this.this$0, "正在合成gif...");
   }
 }
 

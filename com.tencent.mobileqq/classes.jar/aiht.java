@@ -1,28 +1,38 @@
-public class aiht
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.qphone.base.util.QLog;
+
+class aiht
+  extends aoeg
 {
-  public double a;
-  public double b;
+  aiht(aihh paramaihh) {}
   
-  public aiht(double paramDouble1, double paramDouble2)
+  public void onDownPublicAccount()
   {
-    this.a = paramDouble1;
-    this.b = paramDouble2;
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "onDownPublicAccount");
+    }
   }
   
-  public aiht(aiht paramaiht)
+  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    a(paramaiht);
+    if (paramInt == 0) {
+      this.a.c(this.a.a.getIntent());
+    }
   }
   
-  public void a(aiht paramaiht)
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    this.a = paramaiht.a;
-    this.b = paramaiht.b;
+    if (paramInt == 0) {
+      this.a.c(this.a.a.getIntent());
+    }
   }
   
-  public String toString()
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
   {
-    return "Acceleration{ax=" + this.a + ", ay=" + this.b + '}';
+    if (paramBoolean) {
+      this.a.c(this.a.a.getIntent());
+    }
   }
 }
 

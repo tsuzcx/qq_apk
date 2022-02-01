@@ -1,73 +1,27 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgListHeadNode;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgListHeadNode;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
 public class wzx
-  extends wlf<xbi>
 {
-  private static final String jdField_a_of_type_JavaLangString = wjz.a("StoryLrSvc.msglist_head_node");
-  private List<Long> jdField_a_of_type_JavaUtilList;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
   private String b;
-  private int c;
   
-  public int a()
+  public wzx(String paramString)
   {
-    return this.c;
+    this.b = paramString;
   }
   
-  public String a()
+  public void a()
   {
-    return jdField_a_of_type_JavaLangString;
+    wzy localwzy = new wzy(this, false);
+    wzz localwzz = new wzz(this, false);
+    wrg.a().a(localwzy, localwzz);
   }
   
-  public wla a(byte[] paramArrayOfByte)
+  public void b()
   {
-    qqstory_service.RspMsgListHeadNode localRspMsgListHeadNode = new qqstory_service.RspMsgListHeadNode();
-    try
-    {
-      localRspMsgListHeadNode.mergeFrom(paramArrayOfByte);
-      return new xbi(localRspMsgListHeadNode);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("RecentTabHaloRequest", 2, "decodeResponse: failed. Message: exception: " + paramArrayOfByte);
-        }
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqMsgListHeadNode localReqMsgListHeadNode = new qqstory_service.ReqMsgListHeadNode();
-    PBBytesField localPBBytesField = localReqMsgListHeadNode.current_seq;
-    if (this.b != null) {}
-    for (String str = this.b;; str = "")
-    {
-      localPBBytesField.set(ByteStringMicro.copyFromUtf8(str));
-      localReqMsgListHeadNode.uin_list.set(this.jdField_a_of_type_JavaUtilList);
-      localReqMsgListHeadNode.source.set(this.c);
-      localReqMsgListHeadNode.setHasFlag(true);
-      return localReqMsgListHeadNode.toByteArray();
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("RecentTabHaloRequest{");
-    localStringBuilder.append("mCurrentSeq='").append(this.b).append('\'');
-    localStringBuilder.append(", mUins=").append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuilder.append(", mWhen=").append(this.c);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    wzy localwzy = new wzy(this, true);
+    wzz localwzz = new wzz(this, true);
+    wrg.a().a(localwzy, localwzz);
   }
 }
 

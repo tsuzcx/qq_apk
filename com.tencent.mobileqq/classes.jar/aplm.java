@@ -1,28 +1,18 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public abstract class aplm
-  implements aple
+public final class aplm
+  implements Parcelable.Creator<ArEffectConfig>
 {
-  private final String a;
-  
-  public aplm(String paramString)
+  public ArEffectConfig a(Parcel paramParcel)
   {
-    this.a = paramString;
+    return new ArEffectConfig(paramParcel);
   }
   
-  public Bundle a()
+  public ArEffectConfig[] a(int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    if (!TextUtils.isEmpty(this.a)) {
-      localBundle.putString("Uin", this.a);
-    }
-    return localBundle;
-  }
-  
-  public String a()
-  {
-    return "QQ.GetNickname";
+    return new ArEffectConfig[paramInt];
   }
 }
 

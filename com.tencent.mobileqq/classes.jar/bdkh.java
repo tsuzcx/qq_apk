@@ -1,53 +1,65 @@
-import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager.1;
+import android.support.annotation.NonNull;
+import android.util.Log;
+import com.tencent.feedback.eup.CrashReport;
+import com.tencent.mobileqq.statistics.CaughtException;
+import com.tencent.mobileqq.statistics.CaughtExceptionReport.1;
+import com.tencent.mobileqq.statistics.CaughtExceptionReport.2;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Set;
 
-public class bdkh
-  implements bdkj
+public final class bdkh
 {
-  public bdkh(AIOMessageSpreadManager.1 param1, String paramString) {}
+  private static final Set<String> a = new CaughtExceptionReport.1(20);
+  private static final Set<Class> b = new CaughtExceptionReport.2(5);
   
-  public void a(List<String> paramList)
+  public static void a(@NonNull Throwable paramThrowable)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      if (QLog.isDebugVersion())
-      {
-        if (paramList != null) {
-          break label34;
-        }
-        paramList = "lst is null";
-        QLog.i("AIOMessageSpreadManager", 1, paramList);
+    a(paramThrowable, "This is CaughtException");
+  }
+  
+  public static void a(@NonNull Throwable paramThrowable, @NonNull String paramString)
+  {
+    if ((paramThrowable == null) || (paramString == null)) {
+      return;
+    }
+    if (!a(paramThrowable))
+    {
+      Log.e("CaughtExceptionReport", "this report is not permitted. ", paramThrowable);
+      return;
+    }
+    Object localObject = paramThrowable;
+    if (!(paramThrowable instanceof CaughtException)) {
+      localObject = new CaughtException("Caught: " + paramThrowable.getMessage(), paramThrowable);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("CaughtExceptionReport-eup", 2, "rqd将上报信息到rdm网站，上报不会导致客户端闪退，仅用作数据统计");
+    }
+    CrashReport.handleCatchException(Thread.currentThread(), (Throwable)localObject, "ExtraMessage: " + paramString, null);
+  }
+  
+  private static boolean a(Throwable paramThrowable)
+  {
+    if (b.contains(paramThrowable.getClass())) {
+      return true;
+    }
+    paramThrowable = paramThrowable.getStackTrace();
+    if ((paramThrowable == null) || (paramThrowable.length < 1)) {
+      return false;
+    }
+    paramThrowable = paramThrowable[0].getClassName();
+    Iterator localIterator = a.iterator();
+    while (localIterator.hasNext()) {
+      if (paramThrowable.startsWith((String)localIterator.next())) {
+        return true;
       }
     }
-    label34:
-    float f1;
-    float f2;
-    do
-    {
-      return;
-      while (!paramList.hasNext())
-      {
-        paramList = "lst.size() = 0";
-        break;
-        f1 = (float)arbr.a().a();
-        paramList = paramList.iterator();
-      }
-      str = (String)paramList.next();
-      f2 = bdkg.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.this$0, this.jdField_a_of_type_JavaLangString, str);
-      if (QLog.isColorLevel()) {
-        QLog.i("AIOMessageSpreadManager", 1, "file[" + this.jdField_a_of_type_JavaLangString + "] and [" + str + "], precentage[" + f2 + "]");
-      }
-    } while (f2 - f1 <= 0.0F);
-    String str = arbr.a().a();
-    paramList = arbr.a().b();
-    str = str + "。" + paramList;
-    bdkg.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.this$0, this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.a, str, paramList, "precent", null);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdkh
  * JD-Core Version:    0.7.0.1
  */

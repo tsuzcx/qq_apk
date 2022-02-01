@@ -1,18 +1,11 @@
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
-import java.util.List;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import java.util.ArrayList;
 
-public class aaam
-  implements aaas
+public abstract interface aaam<T extends SimpleBaseEvent>
 {
-  public aaam(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  public abstract ArrayList<Class<T>> getEventClass();
   
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && ((FollowedRecommendBannerView.a(this.a) == null) || (FollowedRecommendBannerView.a(this.a).a() == null) || (paramInt >= FollowedRecommendBannerView.a(this.a).a().size()))) {
-      return;
-    }
-    aaxb.a(FollowedRecommendBannerView.a(this.a), "auth_person", "reco_follow", 0, 0, new String[0]);
-  }
+  public abstract void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent);
 }
 
 

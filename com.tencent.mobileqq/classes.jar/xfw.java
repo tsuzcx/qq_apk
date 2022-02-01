@@ -1,21 +1,33 @@
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher.1;
+import android.graphics.Bitmap;
 
-public class xfw
-  implements bqgh
+class xfw
+  implements ybi
 {
-  public xfw(FollowCaptureLauncher.1 param1) {}
+  xfw(xfv paramxfv, String paramString) {}
   
-  public void a()
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65541);
+    if (xfv.a(this.jdField_a_of_type_Xfv))
+    {
+      paramString = bhmq.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+      if (paramString == null)
+      {
+        xfv.a(this.jdField_a_of_type_Xfv, false);
+        return;
+      }
+      bool = zoc.a(paramString, xfv.a(this.jdField_a_of_type_Xfv));
+      paramString.recycle();
+      xfv.b(this.jdField_a_of_type_Xfv, bool);
+      return;
+    }
+    boolean bool = zoc.a(paramBitmap, xfv.a(this.jdField_a_of_type_Xfv));
+    xfv.c(this.jdField_a_of_type_Xfv, bool);
   }
   
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void b()
+  public void a(String paramString, Throwable paramThrowable)
   {
-    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65542);
+    yuk.e("DownloadPic2FileJob", "Download url failed url=%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    xfv.d(this.jdField_a_of_type_Xfv, false);
   }
 }
 

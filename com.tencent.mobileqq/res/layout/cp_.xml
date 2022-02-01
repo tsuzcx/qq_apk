@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/auf"
+<merge android:orientation="horizontal" android:id="@id/nec" android:background="@color/ajr" android:layout_width="46.0dip" android:layout_height="46.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:id="@id/mta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/refresh_arrow" android:scaleType="fitCenter" android:contentDescription="@string/image" />
-    <ProgressBar android:layout_gravity="center" android:id="@id/n4r" android:visibility="invisible" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="8.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
-    <TextView android:textColor="@color/skin_over_header" android:id="@id/np1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hqh" android:layout_centerInParent="true" />
-</LinearLayout>
+    <FrameLayout android:layout_gravity="center" android:id="@id/ne5" android:background="@drawable/gnt" android:layout_width="46.0dip" android:layout_height="46.0dip">
+        <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/nem" android:layout_width="19.0dip" android:layout_height="19.0dip" android:scaleType="centerCrop" />
+    </FrameLayout>
+    <ImageView android:layout_gravity="center" android:id="@id/neu" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ggr" />
+</merge>

@@ -1,78 +1,43 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
-import mqq.observer.BusinessObserver;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
 public class bijh
-  implements BusinessObserver
+  implements DownloadParams.DecodeHandler
 {
-  public bijh(AuthorityActivity paramAuthorityActivity, boolean paramBoolean) {}
+  private int a;
+  private int b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public bijh(int paramInt1, int paramInt2)
   {
-    QLog.i("AuthorityActivity", 1, "getAppInfo observer onReceive isSuccess = " + paramBoolean);
-    aukw.a("KEY_GET_APP_INFO_REQUEST", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biyc, paramBoolean);
-    AuthorityActivity.c(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long = (System.currentTimeMillis() - AuthorityActivity.c(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long);
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (!this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biyc.jdField_a_of_type_JavaLangString.equals(localObject)) {
-      QLog.e("AuthorityActivity", 1, "mAccount.uin != ssoAccount");
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
+      return null;
     }
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_JavaLangRunnable);
-    } while (!paramBoolean);
-    GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
-    for (;;)
-    {
-      try
-      {
-        byte[] arrayOfByte = paramBundle.getByteArray("data");
-        localObject = arrayOfByte;
-        if (this.jdField_a_of_type_Boolean) {
-          localObject = biyz.b(arrayOfByte, this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biyc);
-        }
-        if (localObject == null) {
-          break;
-        }
-        localGetAppinfoResponse.mergeFrom((byte[])localObject);
-        if (!localGetAppinfoResponse.has()) {
-          break;
-        }
-        paramInt = localGetAppinfoResponse.ret.get();
-        if (paramInt == 0)
-        {
-          localObject = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-          ((Message)localObject).what = 3;
-          ((Message)localObject).obj = localGetAppinfoResponse;
-          this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject);
-        }
-        localObject = new Bundle();
-        ((Bundle)localObject).putString("report_type", "103");
-        ((Bundle)localObject).putString("act_type", "12");
-        if (paramBundle.getBoolean("isShort", false))
-        {
-          paramBundle = "2";
-          ((Bundle)localObject).putString("intext_3", paramBundle);
-          ((Bundle)localObject).putString("stringext_1", AuthorityActivity.c(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_JavaLangString);
-          ((Bundle)localObject).putString("intext_2", "" + paramInt);
-          ((Bundle)localObject).putString("intext_5", "" + AuthorityActivity.c(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long);
-          bipi.a().a((Bundle)localObject, AuthorityActivity.e, this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_JavaLangString, false);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.e("AuthorityActivity", 1, "getAppInfoResponse deal exception : " + paramBundle.getMessage());
-        paramBundle.printStackTrace();
-        return;
-      }
-      paramBundle = "1";
-    }
+    paramDownloadParams = Bitmap.createBitmap(this.a, this.b, Bitmap.Config.ARGB_8888);
+    Paint localPaint = new Paint();
+    localPaint.setStyle(Paint.Style.STROKE);
+    localPaint.setAntiAlias(true);
+    Canvas localCanvas = new Canvas(paramDownloadParams);
+    localCanvas.drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth() / 5, paramBitmap.getHeight()), new Rect(0, 0, paramBitmap.getWidth() / 5, paramDownloadParams.getHeight()), localPaint);
+    localCanvas.drawBitmap(paramBitmap, new Rect(paramBitmap.getWidth() / 5, 0, paramBitmap.getWidth() - paramBitmap.getWidth() / 5, paramBitmap.getHeight()), new Rect(paramBitmap.getWidth() / 5, 0, paramDownloadParams.getWidth() - paramBitmap.getWidth() / 5, paramDownloadParams.getHeight()), localPaint);
+    localCanvas.drawBitmap(paramBitmap, new Rect(paramBitmap.getWidth() - paramBitmap.getWidth() / 5, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(paramDownloadParams.getWidth() - paramBitmap.getWidth() / 5, 0, paramDownloadParams.getWidth(), paramDownloadParams.getHeight()), localPaint);
+    return paramDownloadParams;
+  }
+  
+  public String toString()
+  {
+    return "TitleDrawableDecoderHandler{reqW=" + this.a + ", reqH=" + this.b + '}';
   }
 }
 

@@ -1,110 +1,98 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.BeancurdMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class bejn
-  implements befs
 {
-  public bejn(TroopBarPublishActivity paramTroopBarPublishActivity) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  private static void a(QQAppInterface paramQQAppInterface, BeancurdMsg paramBeancurdMsg)
   {
-    int m = 1;
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.getText().length();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.getText().length() <= 0) {
-      break label37;
-    }
-    label37:
-    while ((paramInt1 <= 0) && (paramInt2 <= 0)) {
-      return;
-    }
-    int j = this.a.jdField_a_of_type_Befy.b.length();
-    int k = this.a.jdField_a_of_type_Befy.a.length();
-    int n = this.a.jdField_a_of_type_Befy.c.length() + (j + k);
-    if ((paramInt1 < this.a.J.length() + n) && (paramInt2 < this.a.J.length() + n))
+    paramQQAppInterface = paramQQAppInterface.a().a(paramBeancurdMsg.frienduin, 0, null);
+    int i = paramQQAppInterface.size();
+    long l;
+    if (i > 0)
     {
-      if (TroopBarPublishActivity.a(this.a).size() > 1)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.clearFocus();
-        bkft.b(this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText);
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
-      return;
-    }
-    if (paramInt1 < 0) {
-      if (paramInt2 > this.a.J.length() + n)
-      {
-        paramInt1 = paramInt2;
-        label203:
-        if (paramInt1 <= i) {
-          break label439;
-        }
+      paramQQAppInterface = (MessageRecord)paramQQAppInterface.get(i - 1);
+      if (paramQQAppInterface != null) {
+        l = paramQQAppInterface.time - 1L;
       }
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
+      QLog.d("Tofu_TofuHelper", 1, String.format("fixTofuMsgTimeAtTop insertAtTop old.size=%d msgTime=%d", new Object[] { Integer.valueOf(i), Long.valueOf(l) }));
+      paramBeancurdMsg.msgTime = l;
       return;
-      paramInt1 = this.a.J.length() + n;
-      break label203;
-      if (paramInt2 < 0) {
-        if (paramInt1 > this.a.J.length() + n) {
-          label258:
-          if (paramInt1 <= i) {
-            break label434;
-          }
-        }
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
-        return;
-        paramInt1 = this.a.J.length() + n;
-        break label258;
-        if (TextUtils.isEmpty(this.a.jdField_a_of_type_Befy.b)) {
-          break;
-        }
-        k = 0;
-        j = paramInt1;
-        if (paramInt1 < this.a.J.length() + n)
-        {
-          j = n + this.a.J.length();
-          k = 1;
-        }
-        if (paramInt2 < this.a.J.length() + n)
-        {
-          paramInt1 = n + this.a.J.length();
-          k = 1;
-        }
-        for (;;)
-        {
-          paramInt2 = j;
-          if (j > i)
-          {
-            k = 1;
-            paramInt2 = i;
-          }
-          if (paramInt1 > i) {
-            k = m;
-          }
-          while (k != 0)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(paramInt2, i);
-            return;
-            i = paramInt1;
-          }
-          break;
-          paramInt1 = paramInt2;
-        }
-        label434:
-        i = paramInt1;
-      }
-      label439:
-      i = paramInt1;
+      l = -1L;
+      continue;
+      l = -1L;
     }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, BeancurdMsg paramBeancurdMsg, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    boolean bool = ((anyw)paramQQAppInterface.getManager(51)).b(paramBeancurdMsg.frienduin);
+    QLog.d("Tofu_TofuHelper", 1, String.format("insertTofuMsg prefUpdate=%b [%s,%d] isFrd=%b", new Object[] { Boolean.valueOf(paramBoolean1), MobileQQ.getShortUinStr(paramBeancurdMsg.frienduin), Integer.valueOf(paramBeancurdMsg.busiid), Boolean.valueOf(bool) }));
+    if (!bool) {}
+    while ((paramBoolean1) && (a(paramQQAppInterface, paramBeancurdMsg))) {
+      return;
+    }
+    aggr localaggr = (aggr)paramQQAppInterface.getManager(282);
+    if (paramBoolean2) {
+      a(paramQQAppInterface, paramBeancurdMsg);
+    }
+    localaggr.a(paramBeancurdMsg);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Tofu_TofuHelper", 2, "onDelFriend " + paramString);
+    }
+    ((bejo)paramQQAppInterface.getManager(368)).a(paramString);
+    ((aggr)paramQQAppInterface.getManager(282)).b(paramString);
+  }
+  
+  private static boolean a(QQAppInterface paramQQAppInterface, BeancurdMsg paramBeancurdMsg)
+  {
+    boolean bool = false;
+    int i = ((aggr)paramQQAppInterface.getManager(282)).a(paramBeancurdMsg.busiid);
+    Object localObject = paramQQAppInterface.a().a(paramBeancurdMsg.frienduin, 0, new int[] { i });
+    QLog.d("Tofu_TofuHelper", 1, new Object[] { "insertTofuMsg_updateWhenMsgExists old size=", Integer.valueOf(((List)localObject).size()) });
+    if (((List)localObject).size() > 0)
+    {
+      MessageRecord localMessageRecord = (MessageRecord)((List)localObject).get(((List)localObject).size() - 1);
+      if (localMessageRecord != null) {}
+      for (long l = localMessageRecord.time;; l = bcrg.a())
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          localMessageRecord = (MessageRecord)((Iterator)localObject).next();
+          if (localMessageRecord != null)
+          {
+            paramQQAppInterface.a().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.msgtype, localMessageRecord.uniseq);
+            paramQQAppInterface.a().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
+          }
+        }
+      }
+      localObject = "";
+      if ((paramBeancurdMsg.buffer instanceof String)) {
+        localObject = paramBeancurdMsg.buffer;
+      }
+      localMessageRecord = bcry.a(i);
+      localMessageRecord.init(paramQQAppInterface.getAccount(), paramBeancurdMsg.frienduin, paramBeancurdMsg.frienduin, (String)localObject, l, i, 0, l);
+      localMessageRecord.msg = paramBeancurdMsg.buffer;
+      localMessageRecord.isread = true;
+      if (!aoci.a(paramQQAppInterface, localMessageRecord, false)) {
+        paramQQAppInterface.a().a(localMessageRecord, localMessageRecord.selfuin);
+      }
+      bool = true;
+    }
+    return bool;
   }
 }
 

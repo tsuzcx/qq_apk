@@ -1,6 +1,16 @@
-public abstract interface zwi
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+
+public class zwi
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public zwi(QRDisplayActivity paramQRDisplayActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.h = false;
+  }
 }
 
 

@@ -1,52 +1,25 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.TextView;
-import com.tencent.avgame.gameroom.stage.guesssong.GuessSongStageView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnTouchListener;
+import com.tencent.avgame.gameroom.gamelist.GameListView;
 
 public class ncd
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnTouchListener
 {
-  public ncd(GuessSongStageView paramGuessSongStageView, String paramString) {}
+  public ncd(GameListView paramGameListView) {}
   
-  public void onGlobalLayout()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b.getWidth() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b.getPaddingLeft() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b.getPaddingRight();
-    if (QLog.isColorLevel())
+    switch (paramMotionEvent.getAction() & 0xFF)
     {
-      QLog.d("GuessSongStageView", 2, "onShowGameTopicTips tip = " + this.jdField_a_of_type_JavaLangString);
-      QLog.d("GuessSongStageView", 2, "onShowGameTopicTips tipWidth  = " + this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b.getWidth());
-      QLog.d("GuessSongStageView", 2, "onShowGameTopicTips caluWidth  = " + i);
     }
-    ViewGroup.LayoutParams localLayoutParams;
-    if (i > 0)
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      if (ngk.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b) <= 1) {
-        break label282;
-      }
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_Ncc.a().b());
-      localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.getWidth();
-      localLayoutParams.height = (localLayoutParams.width * 130 / 478);
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-      if (QLog.isColorLevel()) {
-        QLog.d("GuessSongStageView", 2, "onShowMosaicImageGameTopicTips 130 w = " + localLayoutParams.width + ", h = " + localLayoutParams.height);
-      }
+      return false;
+      this.a.setCancelPreparePressImage();
+      continue;
+      this.a.setCancelPrepareNorImage();
     }
-    label282:
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_Ncc.a().a());
-      localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.getWidth();
-      localLayoutParams.height = (localLayoutParams.width * 110 / 478);
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    } while (!QLog.isColorLevel());
-    QLog.d("GuessSongStageView", 2, "onShowMosaicImageGameTopicTips 110 w = " + localLayoutParams.width + ", h = " + localLayoutParams.height);
   }
 }
 

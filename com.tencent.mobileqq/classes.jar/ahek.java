@@ -1,38 +1,34 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class ahek
-  implements DialogInterface.OnClickListener
+class ahek
+  implements View.OnClickListener
 {
-  ahek(QQAppInterface paramQQAppInterface, int paramInt1, Activity paramActivity, int paramInt2) {}
+  ahek(ahed paramahed, MessageRecord paramMessageRecord, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (true == aheh.a) {
-      aheh.a = false;
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      QLog.d("vaspoke", 4, "dialogInterfaceOnClick mApp is null.");
-    }
-    while (((2 != this.jdField_a_of_type_Int) && (4 != this.jdField_a_of_type_Int)) || (paramInt != 1)) {
-      return;
-    }
-    if (2 == this.jdField_a_of_type_Int)
+    Object localObject = mvd.a(this.jdField_a_of_type_Ahed.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin);
+    bdll.b(null, "CliOper", "", "", "0X800A8D8", "0X800A8D8", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      bgzo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000515", "LTMCLUB", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694492), "");
-      VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "vip", "", "", "", "", 0, 0, 0, 0);
-      return;
+      localObject = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + (String)localObject));
+      paramView.getContext().startActivity((Intent)localObject);
     }
-    bgzo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131718361), "");
-    VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "svip", "", "", "", "", 0, 0, 0, 0);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QQToast.a(BaseApplicationImpl.getContext(), 2131695099, 0).a();
+    }
   }
 }
 

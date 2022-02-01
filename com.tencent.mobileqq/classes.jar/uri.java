@@ -1,64 +1,53 @@
-import UserGrowth.stGetCollectionRsp;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
-import java.util.List;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
 public class uri
+  extends LinearLayoutManager
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private VideoFeedsRecyclerView a;
   
-  public static uri a()
+  public uri(Context paramContext, VideoFeedsRecyclerView paramVideoFeedsRecyclerView, int paramInt, boolean paramBoolean)
   {
-    return urk.a();
+    super(paramContext, paramInt, paramBoolean);
+    this.a = paramVideoFeedsRecyclerView;
   }
   
-  private void a(uju paramuju, ure paramure)
+  private boolean a(View paramView)
   {
-    if (!paramuju.a())
-    {
-      upe.d("WSCollectionDataManager", "[WSCollectionDataManager.java][onTaskResponse] failed code:" + paramuju.jdField_a_of_type_Int + ", msg:" + paramuju.jdField_a_of_type_JavaLangString);
-      if (paramure != null) {
-        paramure.a(paramuju.jdField_a_of_type_Int, paramuju.jdField_a_of_type_JavaLangString);
-      }
-    }
+    if (paramView == null) {}
+    int i;
+    int j;
     do
     {
-      do
-      {
-        return;
-        if (!(paramuju.jdField_a_of_type_JavaLangObject instanceof stGetCollectionRsp)) {
-          break;
-        }
-        paramuju = (stGetCollectionRsp)paramuju.jdField_a_of_type_JavaLangObject;
-        this.jdField_a_of_type_JavaLangString = paramuju.attachInfo;
-        this.jdField_a_of_type_Boolean = paramuju.isFinished;
-        paramuju = paramuju.feedList;
-        paramuju = WSVerticalDataManager.a().a(paramuju);
-        upe.e("WSCollectionDataManager", "[WSCollectionDataManager.java][onTaskResponse] itemDataList size:" + paramuju.size() + ", mIsFinished:" + this.jdField_a_of_type_Boolean);
-      } while (paramure == null);
-      paramure.a(paramuju, false, false, null);
-      return;
-      upe.d("WSCollectionDataManager", "[WSCollectionDataManager.java][onTaskResponse] task.mResultBean instanceof stSimpleGetFeedListRsp: false!");
-    } while (paramure == null);
-    paramure.a(paramuju.b, paramuju.jdField_a_of_type_JavaLangString);
+      return false;
+      i = this.a.getChildViewHolder(paramView).getLayoutPosition();
+      j = this.a.b();
+    } while ((j < 0) || ((i != j + 1) && (i != j - 1)));
+    return true;
   }
   
-  public void a()
+  public int getExtraLayoutSpace(RecyclerView.State paramState)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
+    return super.getExtraLayoutSpace(paramState) + 200;
   }
   
-  public void a(String paramString, int paramInt, ure paramure)
+  public void removeAndRecycleView(View paramView, RecyclerView.Recycler paramRecycler)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      upe.e("WSCollectionDataManager", "[WSCollectionDataManager.java][onTaskResponse] finished!");
-      return;
+    if (!a(paramView)) {
+      super.removeAndRecycleView(paramView, paramRecycler);
     }
-    paramure = new urj(this, paramure);
-    paramString = new uju(new uob(paramString, this.jdField_a_of_type_JavaLangString, paramInt), null, paramure, 4011);
-    ujn.a().a(paramString);
+  }
+  
+  public void removeAndRecycleViewAt(int paramInt, RecyclerView.Recycler paramRecycler)
+  {
+    if (!a(getChildAt(paramInt))) {
+      super.removeAndRecycleViewAt(paramInt, paramRecycler);
+    }
   }
 }
 

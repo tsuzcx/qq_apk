@@ -1,28 +1,14 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.app.Activity;
 import android.view.View;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.subscribe.network.DoTipOffRequest;
+import com.tencent.biz.subscribe.comment.CommentInputPopupWindow.1.1;
 
-final class aais
-  implements bkhw
+public class aais
+  implements aaip
 {
-  aais(CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, aaiv paramaaiv, aaiu paramaaiu, bkho parambkho) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void a(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      paramView = new DoTipOffRequest(0, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 2);
-      VSNetworkHelper.a().a(paramView, new aait(this));
-      if (this.jdField_a_of_type_Aaiu != null) {
-        this.jdField_a_of_type_Aaiu.a(false);
-      }
+    if (this.a.isShowing()) {
+      aair.a(this.a).runOnUiThread(new CommentInputPopupWindow.1.1(this));
     }
   }
 }

@@ -1,15 +1,22 @@
 package com.tencent.qqmini.sdk.launcher;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qqmini.sdk.launcher.shell.ProcessType;
 
 public class MiniProcessorConfig
 {
-  public Class<?> appPreLoadClass;
-  public Class<?> appUIClass;
-  public Class<?> internalUIClass;
-  public String processName;
-  public ProcessType processType;
-  public int supportRuntimeType;
+  @NonNull
+  public final Class<?> appPreLoadClass;
+  @NonNull
+  public final Class<?> appUIClass;
+  @Nullable
+  public final Class<?> internalUIClass;
+  @NonNull
+  public final String processName;
+  @NonNull
+  public final ProcessType processType;
+  public final int supportRuntimeType;
   
   public MiniProcessorConfig(ProcessType paramProcessType, String paramString, Class paramClass1, Class paramClass2, Class paramClass3, int paramInt)
   {
@@ -28,7 +35,7 @@ public class MiniProcessorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.MiniProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

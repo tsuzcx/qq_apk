@@ -1,29 +1,16 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ntz
-  implements bkhw
+class ntz
+  implements View.OnClickListener
 {
-  public ntz(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  ntz(nty paramnty) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    PublicAccountAdvertisementActivity.a(this.a).dismiss();
-    if (paramView != null)
-    {
-      paramView = PublicAccountAdvertisementActivity.a(this.a).a(paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.i("PublicAccountAdvertisementActivity", 2, "action" + paramView);
-      }
-      if ((!TextUtils.isEmpty(paramView)) && (paramView.equals(this.a.getResources().getString(2131692941))))
-      {
-        avfs.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
-        bcst.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
-      }
-    }
+    this.a.a.a(this.a.a.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

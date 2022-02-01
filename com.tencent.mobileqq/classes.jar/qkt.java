@@ -1,13 +1,55 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qkt
-  implements ViewBase.IBuilder
+  extends qjh
 {
-  public ViewBase build(VafContext paramVafContext)
+  public qkt(Context paramContext, aoof paramaoof, sel paramsel)
   {
-    return new qkq(paramVafContext);
+    super(paramContext, paramaoof, paramsel);
+  }
+  
+  public qjh a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return g().l().n();
+  }
+  
+  public qjh d()
+  {
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if ((this.jdField_a_of_type_Qjg != null) && ((this.jdField_a_of_type_Qjg instanceof ComponentContentHotSearch))) {
+      localLinearLayout.addView((ComponentContentHotSearch)this.jdField_a_of_type_Qjg);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public qjh e()
+  {
+    return this;
+  }
+  
+  public qjh g()
+  {
+    this.jdField_a_of_type_Qjg = new ComponentContentHotSearch(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Sel);
+    return this;
+  }
+  
+  public qjh o()
+  {
+    super.o();
+    return this;
   }
 }
 

@@ -1,18 +1,20 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nvr
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements View.OnClickListener
 {
-  public nvr(VideoCoverView paramVideoCoverView) {}
+  public nvr(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Int = 7;
-    nuv.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString);
-    this.a.g();
-    return false;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

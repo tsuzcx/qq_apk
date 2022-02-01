@@ -1,31 +1,20 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.SystemClock;
-import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
-import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
-import com.tencent.mobileqq.flutter.container.QFlutterContainerFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class aufe
+  extends aufd
 {
-  public static void a(Activity paramActivity, String paramString, Map<String, Object> paramMap)
+  public aufe(auei paramauei)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.router", 2, String.format("openPage: %s", new Object[] { paramString }));
+    super(paramauei);
+  }
+  
+  public boolean a(String paramString)
+  {
+    FileManagerEntity localFileManagerEntity = this.a.a();
+    if (localFileManagerEntity == null) {
+      return false;
     }
-    boolean bool = aval.a("com.tencent.mobileqq:tool");
-    Intent localIntent = new Intent();
-    localIntent.putExtra("url", paramString);
-    localIntent.putExtra("click_millis", SystemClock.elapsedRealtime());
-    localIntent.putExtra("preload_process", bool);
-    if (paramMap != null)
-    {
-      paramString = new BoostFlutterActivity.SerializableMap();
-      paramString.setMap(paramMap);
-      localIntent.putExtra("params", paramString);
-    }
-    PublicFragmentActivityForTool.b(paramActivity, localIntent, QFlutterContainerFragment.class, 1000);
+    return paramString.equals(String.valueOf(localFileManagerEntity.nSessionId));
   }
 }
 

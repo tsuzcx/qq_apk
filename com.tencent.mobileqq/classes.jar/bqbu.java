@@ -1,26 +1,35 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.image.NativeGifImage;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.widget.FastAnimationDrawable;
+import dov.com.tencent.biz.qqstory.takevideo.EditGifImage;
 
 class bqbu
-  implements bdvw
+  implements SeekBar.OnSeekBarChangeListener
 {
-  bqbu(bqbq parambqbq) {}
+  bqbu(bqbt parambqbt) {}
   
-  public void onResp(bdwt parambdwt)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    FilterDesc localFilterDesc = (FilterDesc)parambdwt.jdField_a_of_type_Bdws.a();
-    if (parambdwt.jdField_a_of_type_Int != 0)
+    if (paramBoolean)
     {
-      lbc.c("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + parambdwt.b + ", errorMsg: " + parambdwt.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
-      return;
+      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
+      if (this.a.jdField_a_of_type_Bqgk.a.a != null) {
+        this.a.jdField_a_of_type_Bqgk.a.a.a(NativeGifImage.QZONE_DELAY);
+      }
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.e = NativeGifImage.QZONE_DELAY;
+      this.a.d = paramInt;
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
+      }
     }
-    if ((bqbq.a(this.a).decrementAndGet() == 0) && (bqbq.a(this.a) != null)) {
-      bqbq.a(this.a).a(true);
-    }
-    lbc.c("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.iconurl);
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
 }
 
 

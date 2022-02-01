@@ -1,45 +1,84 @@
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
+import org.json.JSONObject;
 
 public class apxg
-  extends QQLruCache<Integer, apwt>
+  implements apxf
 {
-  public apxg(BubbleManager paramBubbleManager, int paramInt1, int paramInt2, int paramInt3)
+  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
   {
-    super(paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void a()
-  {
-    Map localMap = snapshot();
-    if (localMap != null)
-    {
-      Iterator localIterator = localMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((apwt)localIterator.next()).a();
+    if (paramLong != 0L) {
+      return false;
+    }
+    paramString2 = BaseActivity.sTopActivity;
+    if (paramString2 == null) {
+      return false;
+    }
+    if (paramString1.startsWith("open/")) {
+      try
+      {
+        int j = Integer.parseInt(paramString1.substring("open/".length(), paramString1.indexOf("?")));
+        paramJSONObject = (String)blhn.a(paramString1).get("url");
+        int i = j;
+        if (j != 1007)
+        {
+          i = j;
+          if (j != 1008)
+          {
+            i = j;
+            if (j != 1014)
+            {
+              i = j;
+              if (j != 1036)
+              {
+                i = j;
+                if (j != 2061)
+                {
+                  i = j;
+                  if (j != 2072)
+                  {
+                    i = j;
+                    if (j != 2075)
+                    {
+                      i = j;
+                      if (j != 2085)
+                      {
+                        i = j;
+                        if (j != 2105)
+                        {
+                          i = j;
+                          if (j != 4012)
+                          {
+                            i = j;
+                            if (j != 2114)
+                            {
+                              i = j;
+                              if (j != 2112) {
+                                i = 2059;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        MiniAppLauncher.startMiniApp(paramString2, paramJSONObject, i, apxc.a(), null);
+        return true;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("BubbleManager", 2, "BubbleInfoLruCache cleared, size = " + localMap.size());
+      catch (Exception paramString2)
+      {
+        QLog.e("ArkApp", 1, "parse miniapp scheme failed:" + paramString1, paramString2);
+        return false;
       }
     }
-  }
-  
-  protected void a(boolean paramBoolean, Integer paramInteger, apwt paramapwt1, apwt paramapwt2)
-  {
-    super.entryRemoved(paramBoolean, paramInteger, paramapwt1, paramapwt2);
-    if (QLog.isColorLevel()) {
-      QLog.d("BubbleManager", 2, "entryRemoved key=" + paramInteger);
-    }
-    paramapwt1.a();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return get(Integer.valueOf(paramInt)) != null;
+    return false;
   }
 }
 

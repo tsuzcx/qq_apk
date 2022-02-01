@@ -1,13 +1,35 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public class ahpc
-  implements ahor
+class ahpc
+  implements View.OnTouchListener
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  ahpc(ahpb paramahpb) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramagup.e(paramafzq, paramagwc, paramString);
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      return true;
+    case 0: 
+      ahpb.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      ahpb.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(true);
+      return true;
+    case 3: 
+      ahpb.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      ahpb.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
+      return true;
+    }
+    ahpb.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    ahpb.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
+    paramView.performClick();
+    ahpb.a(this.a, paramView);
+    return true;
   }
 }
 

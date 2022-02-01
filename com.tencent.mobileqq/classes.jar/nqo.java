@@ -1,55 +1,169 @@
+import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagRequset;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.now_proxy.pb_now_proxy.ForwardReq;
+import com.tencent.now_proxy.pb_now_proxy.ForwardRsp;
+import com.tencent.pb.now.ilive_get_record_info_svr.GetRoomStateReq;
+import com.tencent.pb.now.ilive_get_record_info_svr.GetRoomStateRsp;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class nqo
+  extends anud
 {
-  public static void a(QQAppInterface paramQQAppInterface, AccountDetail paramAccountDetail)
+  public static String a;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long = 0L;
+  nqp jdField_a_of_type_Nqp;
+  boolean jdField_a_of_type_Boolean = false;
+  String b;
+  
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseInfoModel", 2, "saveAccountDetailToDBAndCache");
-    }
-    EntityManager localEntityManager = paramQQAppInterface.a().createEntityManager();
-    if ((paramAccountDetail != null) && (paramAccountDetail.getId() != -1L)) {
-      if (!localEntityManager.update(paramAccountDetail)) {
-        localEntityManager.drop(AccountDetail.class);
-      }
-    }
-    for (;;)
+    jdField_a_of_type_JavaLangString = "NowRecordInfo";
+  }
+  
+  public nqo(QQAppInterface paramQQAppInterface)
+  {
+    super(paramQQAppInterface);
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int j = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    int i = j;
+    if (paramFromServiceMsg.isSuccess())
     {
-      localEntityManager.close();
-      paramQQAppInterface = (anrs)paramQQAppInterface.getManager(56);
-      if ((paramQQAppInterface != null) && (paramAccountDetail != null))
-      {
-        paramQQAppInterface.a(paramAccountDetail);
-        if (paramAccountDetail.followType == 1) {
-          paramQQAppInterface.a(PublicAccountInfo.createPublicAccount(paramAccountDetail, 0L));
-        }
+      i = j;
+      if (paramObject != null) {
+        i = 1;
       }
+    }
+    if (i == 0)
+    {
+      this.jdField_a_of_type_Int = paramFromServiceMsg.getBusinessFailCode();
+      this.b = paramFromServiceMsg.getBusinessFailMsg();
+      a(true, "", "", System.currentTimeMillis() - this.jdField_a_of_type_Long, "");
       return;
-      localEntityManager.persist(paramAccountDetail);
+    }
+    paramToServiceMsg = new pb_now_proxy.ForwardRsp();
+    try
+    {
+      paramToServiceMsg.mergeFrom((byte[])paramObject);
+      if ((paramToServiceMsg.busi_error_code.get() != 0) || (paramToServiceMsg.busi_buf.get() == null))
+      {
+        this.jdField_a_of_type_Int = paramToServiceMsg.busi_error_code.get();
+        a(true, "", "", System.currentTimeMillis() - this.jdField_a_of_type_Long, "");
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+    {
+      a(true, "", "", System.currentTimeMillis() - this.jdField_a_of_type_Long, "");
+      return;
+    }
+    a(paramToServiceMsg.busi_error_code.get(), paramToServiceMsg.busi_buf.get().toByteArray());
+  }
+  
+  private void a(byte[] paramArrayOfByte, String paramString)
+  {
+    if (this.app == null) {
+      return;
+    }
+    paramString = new ToServiceMsg("mobileqq.service", paramString, "NowGetRecordInfoSvr.get_record_info");
+    paramString.putWupBuffer(paramArrayOfByte);
+    sendPbReq(paramString);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.b;
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte)
+  {
+    boolean bool = false;
+    QLog.i(jdField_a_of_type_JavaLangString, 0, "拉取录播信息成功");
+    this.jdField_a_of_type_Int = 0;
+    this.b = "";
+    try
+    {
+      Object localObject = new ilive_get_record_info_svr.GetRoomStateRsp();
+      ((ilive_get_record_info_svr.GetRoomStateRsp)localObject).mergeFrom(paramArrayOfByte);
+      paramInt = ((ilive_get_record_info_svr.GetRoomStateRsp)localObject).is_on_live.get();
+      paramArrayOfByte = ((ilive_get_record_info_svr.GetRoomStateRsp)localObject).vid.get();
+      String str = ((ilive_get_record_info_svr.GetRoomStateRsp)localObject).recorded_share_url.get();
+      localObject = ((ilive_get_record_info_svr.GetRoomStateRsp)localObject).another_live_mqq.get();
+      if (paramInt != 0) {
+        bool = true;
+      }
+      a(bool, paramArrayOfByte, str, System.currentTimeMillis() - this.jdField_a_of_type_Long, (String)localObject);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "NowRecordObserver InvalidProtocolBufferMicroException! ");
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, nyl paramnyl, int paramInt)
+  public void a(String paramString1, long paramLong, String paramString2, nqp paramnqp)
   {
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), oaz.class);
-    localNewIntent.putExtra("cmd", "set_function_flag");
-    mobileqq_mp.SetFunctionFlagRequset localSetFunctionFlagRequset = new mobileqq_mp.SetFunctionFlagRequset();
-    localSetFunctionFlagRequset.version.set(1);
-    localSetFunctionFlagRequset.uin.set((int)Long.parseLong(paramString));
-    localSetFunctionFlagRequset.type.set(paramnyl.e);
-    localSetFunctionFlagRequset.value.set(paramInt);
-    localSetFunctionFlagRequset.account_type.set(1);
-    localNewIntent.putExtra("data", localSetFunctionFlagRequset.toByteArray());
-    localNewIntent.setObserver(new nqp(paramQQAppInterface, paramnyl, paramInt, paramString));
-    paramQQAppInterface.startServlet(localNewIntent);
+    this.jdField_a_of_type_Nqp = null;
+    this.jdField_a_of_type_Nqp = paramnqp;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (this.app == null)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "getRecordInfo fail,app is null ");
+      a(true, "", "", 0L, "");
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    paramnqp = new ilive_get_record_info_svr.GetRoomStateReq();
+    paramnqp.source.set(paramString1);
+    paramnqp.roomid.set((int)paramLong);
+    paramString1 = new pb_now_proxy.ForwardReq();
+    paramString1.cmd.set(26182);
+    paramString1.subcmd.set(2);
+    paramString1.uid.set(Long.valueOf(paramString2).longValue());
+    paramString1.platform.set(1);
+    paramString1.codec.set(0);
+    paramString1.busi_buf.set(ByteStringMicro.copyFrom(((ilive_get_record_info_svr.GetRoomStateReq)paramnqp.get()).toByteArray()));
+    paramString1.original_id_type.set(1);
+    paramString1.original_id.set(paramString2);
+    a(paramString1.toByteArray(), paramString2);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3)
+  {
+    if (this.jdField_a_of_type_Nqp != null) {
+      this.jdField_a_of_type_Nqp.a(paramBoolean, paramString2, paramString1, paramLong, paramString3);
+    }
+  }
+  
+  protected Class<? extends anui> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("NowGetRecordInfoSvr.get_record_info".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "onReceive called.");
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 

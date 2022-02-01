@@ -3,9 +3,9 @@ package com.tencent.biz.pubaccount.weishi_new;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 import com.tencent.widget.pull2refresh.XRecyclerView;
-import uif;
-import ukx;
-import upe;
+import uiu;
+import ulv;
+import uqf;
 
 class WSFollowFragment$3
   implements Runnable
@@ -14,10 +14,10 @@ class WSFollowFragment$3
   
   public void run()
   {
-    RecyclerView.ViewHolder localViewHolder = this.this$0.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().findViewHolderForLayoutPosition(((ukx)this.this$0.jdField_a_of_type_Uck).a());
-    upe.e("WSFollowContinuePlayLog", "[WSFollowFragment.java][onActivityResult] from vertical getLastPosition:" + ((ukx)this.this$0.jdField_a_of_type_Uck).a() + ", holder:" + localViewHolder);
-    if ((localViewHolder instanceof uif)) {
-      this.this$0.a((uif)localViewHolder, this.a, this.b);
+    RecyclerView.ViewHolder localViewHolder = this.this$0.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().findViewHolderForLayoutPosition(((ulv)this.this$0.jdField_a_of_type_Ucm).a());
+    uqf.e("WSFollowContinuePlayLog", "[WSFollowFragment.java][onActivityResult] from vertical getLastPosition:" + ((ulv)this.this$0.jdField_a_of_type_Ucm).a() + ", holder:" + localViewHolder);
+    if ((localViewHolder instanceof uiu)) {
+      this.this$0.a((uiu)localViewHolder, this.a, this.b);
     }
     WSFollowFragment.b(this.this$0, false);
   }

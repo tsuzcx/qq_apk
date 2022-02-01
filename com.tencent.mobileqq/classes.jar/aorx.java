@@ -1,28 +1,17 @@
+import java.security.Key;
+
 public class aorx
 {
-  public int a;
-  public int b;
-  public int c;
+  private Key a;
   
-  public aorx(aorw paramaorw, int paramInt1, int paramInt2)
+  public aorx(Key paramKey)
   {
-    this.b = paramInt1;
-    this.c = paramInt2;
+    this.a = paramKey;
   }
   
-  public boolean a()
+  public Key a()
   {
-    return this.c == 1;
-  }
-  
-  public boolean b()
-  {
-    return this.c == 2;
-  }
-  
-  public boolean c()
-  {
-    return this.c == 3;
+    return this.a;
   }
 }
 

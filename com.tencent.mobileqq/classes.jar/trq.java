@@ -1,28 +1,12 @@
-public abstract interface trq
+import android.widget.ImageView;
+import android.widget.TextView;
+
+class trq
 {
-  public abstract void a(trp paramtrp, int paramInt);
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public abstract void a(trp paramtrp, int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(trp paramtrp, long paramLong);
-  
-  public abstract void a(trp paramtrp, boolean paramBoolean);
-  
-  public abstract void b(trp paramtrp);
-  
-  public abstract void b(trp paramtrp, int paramInt);
-  
-  public abstract void c(trp paramtrp);
-  
-  public abstract void d(trp paramtrp);
-  
-  public abstract void e(trp paramtrp);
-  
-  public abstract void f(trp paramtrp);
-  
-  public abstract void g(trp paramtrp);
-  
-  public abstract void h(trp paramtrp);
+  trq(trm paramtrm) {}
 }
 
 

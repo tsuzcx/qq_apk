@@ -1,22 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
-class uet
-  implements View.OnClickListener
+final class uet
+  extends Editable.Factory
 {
-  uet(ueq paramueq) {}
-  
-  public void onClick(View paramView)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    ueq.a(this.a).h();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramCharSequence instanceof begz)) {
+      return (Editable)paramCharSequence;
+    }
+    return new begz(paramCharSequence, 3, 20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uet
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController;
 
-public class bgjh
-  implements DownloadParams.DecodeHandler
+class bgjh
+  implements View.OnTouchListener
 {
-  private DownloadParams.DecodeHandler a;
-  private DownloadParams.DecodeHandler b;
+  bgjh(bgjf parambgjf, View paramView1, View paramView2) {}
   
-  public bgjh(DownloadParams.DecodeHandler paramDecodeHandler1, DownloadParams.DecodeHandler paramDecodeHandler2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = paramDecodeHandler1;
-    this.b = paramDecodeHandler2;
-  }
-  
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    Bitmap localBitmap = this.a.run(paramDownloadParams, paramBitmap);
-    DownloadParams localDownloadParams = null;
-    if (localBitmap != null)
-    {
-      paramDownloadParams = this.b.run(paramDownloadParams, localBitmap);
-      localDownloadParams = paramDownloadParams;
-      if (localBitmap != paramDownloadParams)
-      {
-        localDownloadParams = paramDownloadParams;
-        if (localBitmap != paramBitmap)
-        {
-          localBitmap.recycle();
-          localDownloadParams = paramDownloadParams;
-        }
-      }
+    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {}
+    for (int i = 1; (paramMotionEvent.getAction() == 4) && (AtPanelTouchController.a(this.b, paramMotionEvent)) && ((i == 0) || ((i != 0) && (!AtPanelTouchController.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)))); i = 0) {
+      return true;
     }
-    if (localDownloadParams != null) {
-      paramBitmap = localDownloadParams;
-    }
-    return paramBitmap;
+    return false;
   }
 }
 

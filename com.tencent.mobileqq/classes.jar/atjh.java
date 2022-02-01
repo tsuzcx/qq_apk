@@ -1,72 +1,67 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.7.1;
 import com.tencent.qphone.base.util.QLog;
-import java.io.PrintStream;
+import mqq.os.MqqHandler;
 
 public class atjh
+  implements bliz
 {
-  public static int a(bktt parambktt, long paramLong1, long paramLong2, long paramLong3)
+  public atjh(UniformDownloadActivity paramUniformDownloadActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramLong3 == 0L)
+    if (this.a.jdField_a_of_type_Blir == null) {
+      return;
+    }
+    if (paramView != null)
     {
-      if (paramLong1 < parambktt.a(BaseApplication.getContext(), paramLong1, paramLong3, 1024)) {}
-      for (;;)
+      paramView = this.a.jdField_a_of_type_Blir.a(paramInt);
+      if (!TextUtils.isEmpty(paramView))
       {
-        i = (int)paramLong1;
-        int k = bktw.a(BaseApplication.getContext());
-        int j;
-        if (k != 1)
-        {
-          j = i;
-          if (k != 2) {}
+        if ((!paramView.equals(this.a.getResources().getString(2131691654))) && (!paramView.equals(this.a.getResources().getString(2131691655)))) {
+          break label270;
         }
-        else
-        {
-          j = i;
-          if (i > 16384) {
-            j = 16384;
-          }
+        bdll.b(null, "dc00898", "", "", "0X8008F87", "0X8008F87", 1, 0, "", "", "", "");
+        if (!UniformDownloadActivity.a(this.a)) {
+          break label241;
         }
-        i = Math.min(j, 1048576);
+        if (!bjwj.g()) {
+          break label231;
+        }
+        bjvq.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3007", false);
+        paramView = UniformDownloadActivity.a(this.a);
+        UniformDownloadActivity.a(this.a, paramView);
+        paramView = UniformDownloadActivity.a(this.a, paramView);
         if (QLog.isColorLevel()) {
-          QLog.d("FileHttpUtils<FileAssistant>", 2, "sendFilePakage transferedSize[" + paramLong2 + "], size[" + i + "]");
+          QLog.d(UniformDownloadActivity.jdField_a_of_type_JavaLangString, 2, "tmastUrl=" + paramView);
         }
-        return i;
-        paramLong1 = 1024L;
+        UniformDownloadActivity.a(this.a, paramView);
+        UniformDownloadActivity.b(this.a);
+        this.a.finish();
+        this.a.overridePendingTransition(0, 0);
       }
     }
-    int i = parambktt.a(BaseApplication.getContext(), paramLong1, paramLong2, 131072);
-    if (paramLong1 < i + paramLong2) {}
-    for (paramLong1 -= paramLong2;; paramLong1 = i)
+    for (;;)
     {
-      i = (int)paramLong1;
-      break;
-    }
-  }
-  
-  public static String a(byte[] paramArrayOfByte)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (paramArrayOfByte == null) {
-      return "";
-    }
-    int i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      String str2 = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-      String str1 = str2;
-      if (str2.length() == 1) {
-        str1 = '0' + str2;
+      this.a.jdField_a_of_type_Blir.dismiss();
+      return;
+      label231:
+      UniformDownloadActivity.c(this.a);
+      continue;
+      label241:
+      UniformDownloadActivity.b(this.a).setVisibility(0);
+      ThreadManager.getSubThreadHandler().post(new UniformDownloadActivity.7.1(this));
+      continue;
+      label270:
+      if ((paramView.equals(this.a.getResources().getString(2131691653))) || (paramView.equals(this.a.getResources().getString(2131690059))) || (paramView.equals(this.a.getResources().getString(2131690058)))) {
+        UniformDownloadActivity.c(this.a);
       }
-      System.out.print(str1.toUpperCase() + " ");
-      localStringBuffer.append(str1.toUpperCase() + "");
-      i += 1;
     }
-    return localStringBuffer.toString();
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 9052) || (paramInt == 9050) || (paramInt == 9055) || (paramInt == 9053) || (paramInt == 9054);
   }
 }
 

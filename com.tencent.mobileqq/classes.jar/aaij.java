@@ -1,12 +1,20 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Matrix;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoReplyRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tribe.async.dispatch.Dispatcher;
 
-final class aaij
-  implements TypeEvaluator<Matrix>
+class aaij
+  implements aaav<CertifiedAccountWrite.StDoReplyRsp>
 {
-  public Matrix a(float paramFloat, Matrix paramMatrix1, Matrix paramMatrix2)
+  aaij(aaid paramaaid, CertifiedAccountMeta.StReply paramStReply, CertifiedAccountMeta.StComment paramStComment) {}
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoReplyRsp paramStDoReplyRsp)
   {
-    return null;
+    if ((paramStDoReplyRsp != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply != null)) {
+      paramStDoReplyRsp.reply.id.set(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.id.get());
+    }
+    wjj.a().dispatch(this.jdField_a_of_type_Aaid.a(new Object[] { Integer.valueOf(6), Long.valueOf(paramLong), paramString, paramStDoReplyRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, Integer.valueOf(this.jdField_a_of_type_Aaid.hashCode()) }));
   }
 }
 

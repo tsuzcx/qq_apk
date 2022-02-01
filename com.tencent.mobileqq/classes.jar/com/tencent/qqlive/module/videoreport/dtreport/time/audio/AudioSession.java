@@ -5,6 +5,7 @@ import com.tencent.qqlive.module.videoreport.Configuration;
 import com.tencent.qqlive.module.videoreport.dtreport.audio.AudioEventReporter;
 import com.tencent.qqlive.module.videoreport.dtreport.audio.data.AudioDataManager;
 import com.tencent.qqlive.module.videoreport.dtreport.audio.data.AudioEntity;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.data.IAudioDataManager;
 import com.tencent.qqlive.module.videoreport.dtreport.time.base.HeartBeatProcessor;
 import com.tencent.qqlive.module.videoreport.dtreport.time.base.ITimeProcessor;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;

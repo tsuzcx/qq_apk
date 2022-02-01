@@ -1,14 +1,20 @@
+import android.graphics.Bitmap;
+
 public class beza
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
+  beyz a;
+  
+  protected Bitmap b(Bitmap paramBitmap)
+  {
+    if (this.a == null) {
+      return paramBitmap;
+    }
+    return this.a.a(paramBitmap);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     beza
  * JD-Core Version:    0.7.0.1
  */

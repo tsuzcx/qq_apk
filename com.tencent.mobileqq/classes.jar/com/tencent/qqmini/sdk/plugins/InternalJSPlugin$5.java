@@ -23,7 +23,8 @@ class InternalJSPlugin$5
       InternalJSPlugin.access$600(this.this$0, InternalJSPlugin.access$500(this.this$0).getAttachedActivity(), str3, str2, str1, str4, i, this.val$appParameter, this.val$req);
       return;
     }
-    this.val$req.fail("jump check failed.");
+    paramJSONObject = InternalJSPlugin.access$700(this.this$0, 2);
+    this.val$req.fail(paramJSONObject, "jump check failed.");
     QMLog.w("InternalJSPlugin", String.format("jump native app check failed, appid:%s, packageName:%s", new Object[] { this.val$appConnectId, this.val$packageName }));
   }
 }

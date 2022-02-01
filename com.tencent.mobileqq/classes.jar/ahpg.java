@@ -1,14 +1,13 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
 
 public class ahpg
-  implements ahor
+  implements DialogInterface.OnClickListener
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramagup.a(paramagwc);
-  }
+  public ahpg(QQStoryItemBuilder paramQQStoryItemBuilder) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,24 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.26;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
 
-public class apfj
-  implements View.OnClickListener
+public final class apfj
 {
-  public apfj(ARScanEntryView.26 param26) {}
+  public static String a = "_model.zip";
   
-  public void onClick(View paramView)
+  public static String a()
   {
-    if (this.a.jdField_a_of_type_Aoua != null) {
-      this.a.jdField_a_of_type_Aoua.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
-    }
-    ARScanEntryView.g(this.a.this$0);
-    ARScanEntryView.d(this.a.this$0);
-    this.a.this$0.a.setOnClickListener(this.a.this$0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return appx.a() + "ar_cloud_marker_model/" + 8 + File.separator;
+  }
+  
+  public static String b()
+  {
+    return appx.a() + "ar_cloud_transfer/";
   }
 }
 

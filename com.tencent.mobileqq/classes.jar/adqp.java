@@ -1,161 +1,55 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adqp
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  adqr jdField_a_of_type_Adqr;
-  private IphonePickerView jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
-  private Calendar jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
-  private int jdField_b_of_type_Int;
-  private Calendar jdField_b_of_type_JavaUtilCalendar;
-  private int c;
-  private final int d;
-  private final int e;
-  private final int f;
-  private final int g;
-  private final int h;
-  private final int i;
+  public adqp(AccountManageActivity paramAccountManageActivity) {}
   
-  public adqp(Context paramContext, int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
-    this.d = this.jdField_a_of_type_JavaUtilCalendar.get(1);
-    this.e = (this.jdField_a_of_type_JavaUtilCalendar.get(2) + 1);
-    this.f = this.jdField_a_of_type_JavaUtilCalendar.get(5);
-    this.jdField_b_of_type_JavaUtilCalendar = Calendar.getInstance();
-    this.jdField_b_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
-    this.jdField_b_of_type_JavaUtilCalendar.add(1, -120);
-    this.jdField_b_of_type_JavaUtilCalendar.add(5, 1);
-    this.g = this.jdField_b_of_type_JavaUtilCalendar.get(1);
-    this.h = (this.jdField_b_of_type_JavaUtilCalendar.get(2) + 1);
-    this.i = this.jdField_b_of_type_JavaUtilCalendar.get(5);
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)LayoutInflater.from(paramContext).inflate(2131561215, null));
-    int j = this.d;
-    int k = this.g;
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(new adqs(this, j - k + 1));
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(new adqt(this, null));
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setBackgroundColor(paramContext.getResources().getColor(2131167044));
-    a(paramInt);
-    if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("BirthdayPickHelper", 2, String.format("BirthdayPickHelper date range: %s-%s-%s to %s-%s-%s", new Object[] { Integer.valueOf(this.g), Integer.valueOf(this.h), Integer.valueOf(this.i), Integer.valueOf(this.d), Integer.valueOf(this.e), Integer.valueOf(this.f) }));
-    }
-  }
-  
-  public static int a(int paramInt)
-  {
-    if (paramInt <= 0) {
-      return 0;
-    }
-    return a((0xFFFF0000 & paramInt) >>> 16, (0xFF00 & paramInt) >>> 8, paramInt & 0xFF);
-  }
-  
-  public static int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTimeInMillis(System.currentTimeMillis());
-    int k = localCalendar1.get(1);
-    int j = localCalendar1.get(2);
-    int m = localCalendar1.get(5);
-    k -= paramInt1;
-    localCalendar1 = Calendar.getInstance();
-    localCalendar1.set(1, paramInt2, paramInt3);
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.set(1, j + 1, m);
-    j = k;
-    if (localCalendar1.after(localCalendar2)) {
-      j = k - 1;
-    }
-    k = j;
-    if (j < 0) {
-      k = 0;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("BirthdayPickHelper", 2, String.format("calcuAgeByBirthday year:%d,month:%d,day:%d. age:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(k) }));
-    }
-    return k;
-  }
-  
-  private void a()
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.g + this.jdField_a_of_type_Int);
-    localCalendar.set(2, this.jdField_b_of_type_Int);
-    localCalendar.set(5, this.c + 1);
-    if (localCalendar.before(this.jdField_b_of_type_JavaUtilCalendar))
+    switch (paramView.getId())
     {
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = (this.h - 1);
-      this.c = (this.i - 1);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.c);
     }
-    while (!localCalendar.after(this.jdField_a_of_type_JavaUtilCalendar)) {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      Object localObject = null;
+      if ((paramView.getTag() instanceof String)) {
+        localObject = String.valueOf(paramView.getTag());
+      }
+      if ("0X8004001".equals(localObject))
+      {
+        bdll.b(this.a.app, "CliOper", "", "", "0X8004002", "0X8004002", 0, 0, "", "", "", "");
+        localObject = new Intent(this.a, SubAccountUgActivity.class);
+        ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+        this.a.startActivity((Intent)localObject);
+      }
+      else if ("0X8004456".equals(localObject))
+      {
+        bdll.b(this.a.app, "CliOper", "", "", "0X8004457", "0X8004457", 0, 0, "", "", "", "");
+        localObject = new Intent(this.a, SubAccountBindActivity.class);
+        ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+        this.a.startActivity((Intent)localObject);
+        bhlk.a().a(this.a.app.getCurrentAccountUin(), true);
+        continue;
+        localObject = new Intent();
+        ((Intent)localObject).setClass(paramView.getContext(), AssociatedAccountActivity.class);
+        ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+        paramView.getContext().startActivity((Intent)localObject);
+        bdll.b(this.a.app, "CliOper", "", "", "0X8004039", "0X8004039", 0, 0, "", "", "", "");
+        bdll.b(this.a.app, "dc00898", "", "", "0X800AC39", "0X800AC39", 0, 0, "", "", "", "");
+      }
     }
-    this.jdField_a_of_type_Int = (this.d - this.g);
-    this.jdField_b_of_type_Int = (this.e - 1);
-    this.c = (this.f - 1);
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.c);
-  }
-  
-  private int b(int paramInt)
-  {
-    return this.g + paramInt;
-  }
-  
-  private int c(int paramInt)
-  {
-    return paramInt + 1;
-  }
-  
-  private int d(int paramInt)
-  {
-    return paramInt + 1;
-  }
-  
-  public IphonePickerView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
-  }
-  
-  public void a(int paramInt)
-  {
-    int j;
-    int k;
-    if (paramInt <= 0)
-    {
-      paramInt = this.g;
-      j = 0;
-      k = 2000 - paramInt;
-    }
-    for (paramInt = 0;; paramInt = (paramInt & 0xFF) - 1)
-    {
-      this.jdField_a_of_type_Int = k;
-      this.jdField_b_of_type_Int = j;
-      this.c = paramInt;
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, k);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, j);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, paramInt);
-      return;
-      k = ((0xFFFF0000 & paramInt) >>> 16) - this.g;
-      j = ((0xFF00 & paramInt) >>> 8) - 1;
-    }
-  }
-  
-  public void a(adqr paramadqr)
-  {
-    this.jdField_a_of_type_Adqr = paramadqr;
   }
 }
 

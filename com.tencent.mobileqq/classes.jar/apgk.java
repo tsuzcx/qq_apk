@@ -1,35 +1,36 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import android.content.res.Resources;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class apgk
-  implements MiniAppLauncher.MiniAppLaunchListener
+class apgk
+  extends bhss
 {
-  public apgk(QRScanEntryView paramQRScanEntryView, String paramString, Activity paramActivity) {}
+  PromotionConfigInfo jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
+  final String jdField_a_of_type_JavaLangString;
+  WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  apgk(String paramString1, String paramString2, AppInterface paramAppInterface)
   {
-    if (paramBoolean)
-    {
-      paramBundle = new Intent();
-      paramBundle.putExtra("detectType", 2);
-      paramBundle.putExtra("scannerResult", this.jdField_a_of_type_JavaLangString.trim());
-      this.jdField_a_of_type_AndroidAppActivity.setResult(13, paramBundle);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
-      QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, null);
-      QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, 0L);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("AREngine_QRScanEntryView", 2, "onLaunchResult 1 false " + this.jdField_a_of_type_JavaLangString);
-    }
-    QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, this.jdField_a_of_type_JavaLangString);
-    QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, System.currentTimeMillis());
-    ((apep)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.a).b(false);
+    super(paramString1);
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
+  }
+  
+  public void innerClean()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
+  }
+  
+  public boolean runOnSubThread(Resources paramResources)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = bhui.a(this.jdField_a_of_type_JavaLangString, null);
+    QLog.w(this.TAG, 1, "ReadConfigTask,ConfigInfo[" + this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo + "]");
+    apgb.c();
+    AudioHelper.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    return true;
   }
 }
 

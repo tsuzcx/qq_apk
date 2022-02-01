@@ -1,17 +1,15 @@
-import android.support.annotation.NonNull;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 
-class boqw
-  implements boqp
+public class boqw
 {
-  boqw(boqv paramboqv) {}
+  public int a;
+  public MetaMaterial a;
+  public String a;
+  public int b;
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public String toString()
   {
-    if (paramInt == 0) {
-      return bfsj.b(paramString);
-    }
-    return "";
+    return "AEMaterialWrapper{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", material=" + this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial + ", state=" + this.jdField_a_of_type_Int + ", type=" + this.b + '}';
   }
 }
 

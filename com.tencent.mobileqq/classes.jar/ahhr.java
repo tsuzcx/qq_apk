@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahhr
-  implements bigw
+  extends ahkx
 {
-  ahhr(ahhm paramahhm, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
-  
-  public void a(int paramInt)
+  ahhr(ahgk paramahgk)
   {
-    if (paramInt == 2)
-    {
-      this.jdField_a_of_type_Ahhm.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
-      bcec.jdField_a_of_type_Boolean = true;
-    }
-    while ((paramInt != 3) && (paramInt != 1)) {
-      return;
-    }
-    bcec.jdField_a_of_type_Long = 0L;
+    super(paramahgk, null);
+  }
+  
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return attw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, 65, paramChatMessage);
   }
 }
 

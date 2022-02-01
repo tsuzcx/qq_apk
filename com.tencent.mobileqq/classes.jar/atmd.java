@@ -1,18 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavPicFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class atmd
-  implements MediaPlayer.OnPreparedListener
+  implements View.OnClickListener
 {
-  public atmd(FileViewMusicService.1 param1, MediaPlayer paramMediaPlayer) {}
+  public atmd(QfileFavPicFileTabView paramQfileFavPicFileTabView) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService$1.a.a(i);
+    QfileFavPicFileTabView.a(this.a, paramView, true);
+    paramView.sendAccessibilityEvent(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

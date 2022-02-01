@@ -1,21 +1,20 @@
-import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aflr
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public aflr(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aflr(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
-    this.a.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

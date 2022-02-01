@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:id="@id/iew" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+  xmlns:android="http://schemas.android.com/apk/res/android">
     <include android:id="@id/jof" android:visibility="visible" layout="@layout/is" />
     <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/m78" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical" android:id="@id/b9w" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fqu" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="@dimen/aii" android:paddingTop="6.0dip" android:paddingRight="@dimen/aii" android:paddingBottom="6.0dip" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:minHeight="44.0dip">
-                <TextView android:text="@string/d4p" style="@style/ni" />
-                <LinearLayout android:orientation="horizontal" android:id="@id/fo_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/aii" android:layout_weight="1.0" />
-                <TextView android:textSize="@dimen/ayo" android:textColor="#ffc0bfbf" android:gravity="right" android:id="@id/foa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/aii" android:minWidth="30.0dip" />
-                <ImageView style="@style/nc" />
-            </LinearLayout>
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a39" android:background="@drawable/common_strip_setting_top" android:paddingLeft="@dimen/aii" android:paddingTop="6.0dip" android:paddingRight="@dimen/aii" android:paddingBottom="6.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:minHeight="44.0dip">
+        <LinearLayout android:orientation="vertical" android:id="@id/b9w" android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a39" android:background="@drawable/common_strip_setting_top" android:paddingLeft="@dimen/aii" android:paddingTop="6.0dip" android:paddingRight="@dimen/aii" android:paddingBottom="6.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip">
                 <TextView android:text="@string/b2q" style="@style/ni" />
                 <FrameLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/aii" android:layout_marginRight="@dimen/aii" android:layout_weight="1.0">
                     <ImageView android:layout_gravity="center|right" android:id="@id/a35" android:layout_width="40.0dip" android:layout_height="40.0dip" />
@@ -22,23 +16,17 @@
                 <TextView android:id="@id/ivp" android:layout_width="0.0dip" android:maxLines="2" android:singleLine="false" android:layout_weight="1.0" style="@style/ne" />
                 <ImageView style="@style/nc" />
             </LinearLayout>
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bb3" android:background="@drawable/common_strip_setting_bottom" android:visibility="gone" style="@style/ng">
-                <TextView android:text="@string/bx9" style="@style/ni" />
-                <TextView android:textColor="@color/skin_gray3" android:textColorHint="@color/skin_gray3" android:id="@id/bbb" android:visibility="invisible" android:layout_width="0.0dip" android:text="@string/bx_" android:maxLines="2" android:singleLine="false" android:layout_weight="1.0" style="@style/ne" />
-                <ImageView style="@style/nc" />
-            </LinearLayout>
             <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/jzz" android:background="@drawable/common_strip_setting_top" android:visibility="gone" android:layout_marginTop="20.0dip" style="@style/ng">
                 <TextView android:id="@id/k01" android:text="@string/eqn" style="@style/ni" />
                 <com.tencent.mobileqq.widget.ColorNickTextView android:id="@id/k02" android:layout_width="0.0dip" android:layout_weight="1.0" android:inputType="textNoSuggestions" android:imeOptions="actionDone" style="@style/ne" />
                 <TextView android:id="@id/k00" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r0y" />
                 <ImageView android:id="@id/jzy" android:visibility="invisible" style="@style/nc" />
             </LinearLayout>
-            <com.tencent.widget.TouchEventConsumerLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/f9l" android:background="@drawable/common_strip_setting_top" android:layout_marginTop="20.0dip" style="@style/ng">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/f9l" android:background="@drawable/common_strip_setting_top" android:layout_marginTop="20.0dip" style="@style/ng">
                 <TextView android:id="@id/f9n" android:text="@string/d2_" style="@style/ni" />
-                <EditText android:enabled="false" android:id="@id/f9k" android:layout_width="0.0dip" android:layout_weight="1.0" android:inputType="textNoSuggestions" android:imeOptions="actionDone" style="@style/ne" />
-                <ImageView android:id="@id/f9m" android:visibility="invisible" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/skin_tips_dot" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-                <ImageView style="@style/nc" />
-            </com.tencent.widget.TouchEventConsumerLayout>
+                <EditText android:id="@id/f9k" android:layout_width="0.0dip" android:layout_weight="1.0" android:inputType="textNoSuggestions" android:imeOptions="actionDone" style="@style/ne" />
+                <ImageView android:visibility="invisible" style="@style/nc" />
+            </LinearLayout>
             <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/iqg" android:background="@drawable/common_strip_setting_middle" style="@style/ng">
                 <TextView android:text="@string/d32" style="@style/ni" />
                 <TextView android:id="@id/iqh" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/ne" />

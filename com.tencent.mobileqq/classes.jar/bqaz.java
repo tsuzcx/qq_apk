@@ -1,19 +1,4 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-
-public class bqaz
-  implements DialogInterface.OnClickListener
-{
-  public bqaz(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bqaz

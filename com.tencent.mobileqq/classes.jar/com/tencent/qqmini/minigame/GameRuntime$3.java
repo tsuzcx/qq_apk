@@ -1,22 +1,24 @@
 package com.tencent.qqmini.minigame;
 
-import com.tencent.qqmini.sdk.action.UpdateUIAction;
+import com.tencent.qqmini.minigame.manager.JsApiUpdateManager.IUpdateListener;
+import com.tencent.qqmini.sdk.action.AppStateEvent;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
 class GameRuntime$3
-  implements Runnable
+  implements JsApiUpdateManager.IUpdateListener
 {
   GameRuntime$3(GameRuntime paramGameRuntime) {}
   
-  public void run()
+  public void onCheckResult(boolean paramBoolean)
   {
-    GameRuntime.access$100(this.this$0).showKingCardTips();
-    UpdateUIAction.updateRedDot(this.this$0);
-    if (this.this$0.isLoadingAdShowing())
-    {
-      this.this$0.pauseEngineOnly();
-      return;
-    }
-    GameRuntime.access$100(this.this$0).checkPayForFriendLogic(GameRuntime.access$300(this.this$0));
+    QMLog.i("GameRuntime", "UpdateManager checkResult hasUpdate:" + paramBoolean + ", currentAppInfo:" + GameRuntime.access$300(this.this$0));
+    AppStateEvent.obtain(2054, Boolean.valueOf(paramBoolean)).notifyRuntime(this.this$0);
+  }
+  
+  public void onDownloadResult(boolean paramBoolean)
+  {
+    QMLog.i("GameRuntime", "UpdateManager downloadResult success:" + paramBoolean + ", currentAppInfo:" + GameRuntime.access$300(this.this$0));
+    AppStateEvent.obtain(2055, Boolean.valueOf(paramBoolean)).notifyRuntime(this.this$0);
   }
 }
 

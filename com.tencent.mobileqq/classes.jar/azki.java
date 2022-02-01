@@ -1,26 +1,69 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.lbssearch.httpresponse.AdInfo;
+import com.tencent.lbssearch.httpresponse.Poi;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.Arrays;
 
-public class azki
-  implements Animation.AnimationListener
+abstract class azki
 {
-  public azki(VipTagView paramVipTagView) {}
+  protected static String a = "Loader";
+  protected final String b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  azki(String paramString)
   {
-    if (VipTagView.a(this.a)) {
-      VipTagView.a(this.a).a();
-    }
-    VipTagView.a(this.a, false);
-    this.a.invalidate();
+    this.b = paramString;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  protected void a(String paramString, PoiBean paramPoiBean)
   {
-    VipTagView.a(this.a, 0.0F);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      if ((paramPoiBean != null) && (paramPoiBean.poiArray != null) && (paramPoiBean.poiArray.length > 0)) {
+        break label99;
+      }
+      localObject = a;
+      localStringBuilder = new StringBuilder().append("[status][poiLoader][").append(this.b).append("] from: ").append(paramString).append(" result: ");
+      if ((paramPoiBean != null) && (paramPoiBean.poiArray != null)) {
+        break label93;
+      }
+    }
+    label93:
+    for (paramString = "null";; paramString = "0")
+    {
+      QLog.d((String)localObject, 2, paramString);
+      return;
+    }
+    label99:
+    QLog.d(a, 2, "[status][poiLoader][" + this.b + "] from: " + paramString + " result: " + Arrays.toString(paramPoiBean.poiArray) + " size: " + paramPoiBean.poiArray.length);
+    Object localObject = paramPoiBean.poiArray[0];
+    QLog.d(a, 2, "[status][poiLoader][" + this.b + "] from: " + paramString + " first poi: " + ((Poi)localObject).title + "-" + ((Poi)localObject).category + "-" + ((Poi)localObject)._distance);
+    if (paramPoiBean.poiArray.length >= 2)
+    {
+      localObject = paramPoiBean.poiArray[1];
+      QLog.d(a, 2, "[status][poiLoader][" + this.b + "] from: " + paramString + " second poi: " + ((Poi)localObject).title + "-" + ((Poi)localObject).category + "-" + ((Poi)localObject)._distance);
+    }
+    QLog.d(a, 2, "[status][poiLoader][" + this.b + "] from: " + paramString + " result: " + Arrays.toString(paramPoiBean.poiArray) + " adInfoCity: " + paramPoiBean.adInfo.city + " adInfoDistrict: " + paramPoiBean.adInfo.district);
+  }
+  
+  protected boolean a(LatLng paramLatLng1, LatLng paramLatLng2, int paramInt)
+  {
+    if ((paramLatLng1 == null) || (paramLatLng2 == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "[status][poiLoader][" + this.b + "] accept? fail this.latLng: " + paramLatLng1 + " that.latLng: " + paramLatLng2);
+      }
+    }
+    double d;
+    do
+    {
+      return false;
+      d = azjq.a(paramLatLng1, paramLatLng2);
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "[status][poiLoader][" + this.b + "] accept? this.latLng: " + paramLatLng1 + " that.latLng: " + paramLatLng2 + " distance: " + d + " acceptAccuracy: " + paramInt);
+      }
+    } while (d >= paramInt);
+    return true;
   }
 }
 

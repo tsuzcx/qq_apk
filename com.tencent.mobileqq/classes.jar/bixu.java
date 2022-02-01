@@ -1,33 +1,6 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-
-final class bixu
-  implements URLDrawable.URLDrawableListener
+public abstract interface bixu
 {
-  bixu(ImageView paramImageView) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    QLog.d("CommonUtils_", 1, "onLoadCanceled");
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.d("CommonUtils_", 1, "onLoadFialed urldrawable load failed ");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    QLog.d("CommonUtils_", 1, "onLoadProgressed");
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.a.setImageDrawable(paramURLDrawable);
-    QLog.d("CommonUtils_", 1, "onLoadSuccessed");
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

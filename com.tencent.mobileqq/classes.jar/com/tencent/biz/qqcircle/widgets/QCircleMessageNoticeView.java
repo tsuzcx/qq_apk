@@ -5,15 +5,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
 import com.tencent.biz.qqcircle.report.QCircleReportBean;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
 import java.util.List;
-import uxo;
-import uzl;
-import vhk;
-import vrf;
+import uyx;
+import vbb;
+import vjo;
+import vtq;
 
 public class QCircleMessageNoticeView
   extends QCircleBaseWidgetView
@@ -24,8 +24,8 @@ public class QCircleMessageNoticeView
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AvatarListView jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView;
-  private uzl jdField_a_of_type_Uzl;
+  private QCircleAvatarListView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarListView;
+  private vbb jdField_a_of_type_Vbb;
   private LinearLayout b;
   
   public QCircleMessageNoticeView(Context paramContext)
@@ -36,7 +36,7 @@ public class QCircleMessageNoticeView
   
   public int a()
   {
-    return 2131560731;
+    return 2131560752;
   }
   
   protected String a()
@@ -48,40 +48,40 @@ public class QCircleMessageNoticeView
   {
     if (paramView != null)
     {
-      this.b = ((LinearLayout)paramView.findViewById(2131370102));
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView = ((AvatarListView)paramView.findViewById(2131362651));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379768));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370101));
+      this.b = ((LinearLayout)paramView.findViewById(2131370200));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarListView = ((QCircleAvatarListView)paramView.findViewById(2131362666));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379946));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370199));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
     }
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof uzl))
+    if ((paramObject instanceof vbb))
     {
-      this.jdField_a_of_type_Uzl = ((uzl)paramObject);
-      paramObject = this.jdField_a_of_type_Uzl.a();
+      this.jdField_a_of_type_Vbb = ((vbb)paramObject);
+      paramObject = this.jdField_a_of_type_Vbb.a();
       if ((paramObject == null) || (paramObject.size() <= 0)) {
         break label189;
       }
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarListView.setVisibility(0);
       if (paramObject.size() <= this.jdField_a_of_type_Int) {
         break label178;
       }
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView.setData(paramObject.subList(0, this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarListView.setData(paramObject.subList(0, this.jdField_a_of_type_Int));
     }
     for (;;)
     {
-      QLog.d("QCircleMessage_QCircleMessageNoticeView", 1, "bindData allUnReadCount:" + this.jdField_a_of_type_Uzl.c() + " messageUnReadCount:" + this.jdField_a_of_type_Uzl.a() + " chatUnReadCount:" + this.jdField_a_of_type_Uzl.b());
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getContext().getString(2131697204, new Object[] { vhk.a(this.jdField_a_of_type_Uzl.c()) }));
+      QLog.d("QCircleMessage_QCircleMessageNoticeView", 1, "bindData allUnReadCount:" + this.jdField_a_of_type_Vbb.c() + " messageUnReadCount:" + this.jdField_a_of_type_Vbb.a() + " chatUnReadCount:" + this.jdField_a_of_type_Vbb.b());
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getContext().getString(2131697272, new Object[] { vjo.a(this.jdField_a_of_type_Vbb.c()) }));
       this.b.setVisibility(0);
       return;
       label178:
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView.setData(paramObject);
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarListView.setData(paramObject);
       continue;
       label189:
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView.setVisibility(8);
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarListView.setVisibility(8);
     }
   }
   
@@ -96,29 +96,30 @@ public class QCircleMessageNoticeView
     switch (paramView.getId())
     {
     }
-    HashMap localHashMap;
+    QCircleInitBean localQCircleInitBean;
     do
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      vrf.a("", 18, 2);
-      localHashMap = new HashMap();
-    } while (this.jdField_a_of_type_Uzl == null);
-    if (this.jdField_a_of_type_Uzl.a() > 0)
+      vtq.a("", 18, 2);
+      localQCircleInitBean = new QCircleInitBean();
+    } while (this.jdField_a_of_type_Vbb == null);
+    if (this.jdField_a_of_type_Vbb.a() > 0)
     {
       QLog.d("QCircleMessage_QCircleMessageNoticeView", 1, "jump to messageList page");
-      localHashMap.put("to", String.valueOf(0));
+      localQCircleInitBean.setLaunchTo(0);
     }
     for (;;)
     {
-      uxo.a(localHashMap, d(), a().clone().setElementIdStr("msg"));
+      localQCircleInitBean.setFromReportBean(a().clone().setElementIdStr("msg"));
+      uyx.f(getContext(), localQCircleInitBean);
       if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null) {
         break;
       }
       this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
       break;
       QLog.d("QCircleMessage_QCircleMessageNoticeView", 1, "jump to chatList page");
-      localHashMap.put("to", String.valueOf(1));
+      localQCircleInitBean.setLaunchTo(1);
     }
   }
   

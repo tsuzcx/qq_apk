@@ -1,52 +1,42 @@
-import android.os.Handler;
-import com.tencent.mobileqq.teamworkforgroup.GPadInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MainService;
 
-class bdmz
-  extends bdmb
+public class bdmz
 {
-  bdmz(bdmq parambdmq) {}
+  long a;
+  long b = 0L;
   
-  public void a(boolean paramBoolean1, int paramInt1, String arg3, List<GPadInfo> paramList, int paramInt2, boolean paramBoolean2)
+  public bdmz()
   {
-    ??? = this.a;
-    ???.jdField_a_of_type_Int -= 1;
-    if ((paramBoolean1) && (paramInt1 == 0)) {
-      for (;;)
-      {
-        synchronized (this.a.jdField_a_of_type_JavaLangObject)
-        {
-          if (this.a.jdField_a_of_type_JavaUtilList != null)
-          {
-            this.a.jdField_a_of_type_JavaUtilList.clear();
-            this.a.c = paramInt2;
-            this.a.e = paramBoolean2;
-            if (paramList == null) {
-              break;
-            }
-            this.a.jdField_b_of_type_Int = paramList.size();
-          }
-        }
-        synchronized (this.a.jdField_a_of_type_JavaLangObject)
-        {
-          this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-          ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
-          return;
-          this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
-          continue;
-          paramList = finally;
-          throw paramList;
-        }
-      }
-    }
-    if (this.a.jdField_b_of_type_Boolean) {}
-    for (??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);; ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5))
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
+  public void a()
+  {
+    long l1 = MainService.sReceiverCpuTime;
+    long l2 = apbc.jdField_a_of_type_Long;
+    if (this.jdField_a_of_type_Long == 0L)
     {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
+      QLog.d("BatteryStats.BgCpu", 1, new Object[] { "bgPrintCpuStart msfrecv=", Long.valueOf(l1), "[", Integer.valueOf(MainService.sNativeTidOfReceiver), "], ", "  fts=", Long.valueOf(l2), "[", Integer.valueOf(apbc.jdField_a_of_type_Int), "]" });
+      this.jdField_a_of_type_Long = l1;
+      this.b = l2;
       return;
     }
+    c();
+  }
+  
+  public void b()
+  {
+    c();
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+  }
+  
+  void c()
+  {
+    long l1 = MainService.sReceiverCpuTime;
+    long l2 = apbc.jdField_a_of_type_Long;
+    QLog.d("BatteryStats.BgCpu", 1, new Object[] { "bgPrintCpuCostSofar msfrecv=", Long.valueOf(l1 - this.jdField_a_of_type_Long), "[", Integer.valueOf(MainService.sNativeTidOfReceiver), "], ", "  fts=", Long.valueOf(l2 - this.b), "[", Integer.valueOf(apbc.jdField_a_of_type_Int), "]" });
   }
 }
 

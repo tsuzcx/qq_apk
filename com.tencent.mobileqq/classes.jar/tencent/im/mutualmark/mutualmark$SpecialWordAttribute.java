@@ -13,6 +13,8 @@ public final class mutualmark$SpecialWordAttribute
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_card_color = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_card_id = PBField.initBytes(ByteStringMicro.EMPTY);
+  public mutualmark.SpecialWordCardGetInfo msg_max_special_word_card_get_info = new mutualmark.SpecialWordCardGetInfo();
+  public mutualmark.SpecialWordCardGetInfo msg_min_special_word_card_get_info = new mutualmark.SpecialWordCardGetInfo();
   public final PBUInt64Field uint64_last_off_time = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_last_on_time = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_last_set_time = PBField.initUInt64(0L);
@@ -23,7 +25,7 @@ public final class mutualmark$SpecialWordAttribute
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56 }, new String[] { "bytes_card_id", "bytes_card_color", "uint64_set_uin", "uint64_last_set_time", "uint64_last_on_time", "uint64_last_off_time", "uint64_word_light_up_time" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L) }, SpecialWordAttribute.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 66, 74 }, new String[] { "bytes_card_id", "bytes_card_color", "uint64_set_uin", "uint64_last_set_time", "uint64_last_on_time", "uint64_last_off_time", "uint64_word_light_up_time", "msg_min_special_word_card_get_info", "msg_max_special_word_card_get_info" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), null, null }, SpecialWordAttribute.class);
   }
 }
 

@@ -1,26 +1,11 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 
 public class wor
-  extends weu
 {
-  public long a;
-  public final String a;
-  public final boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
-  
-  public wor(ErrorMessage paramErrorMessage, String paramString, boolean paramBoolean)
+  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "DeleteStoryVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", groupId='" + this.c + '\'' + ", feedId='" + this.d + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", localDelete=" + this.jdField_a_of_type_Boolean + ", isRemoveMember=" + this.jdField_b_of_type_Boolean + '}';
+    return false;
   }
 }
 

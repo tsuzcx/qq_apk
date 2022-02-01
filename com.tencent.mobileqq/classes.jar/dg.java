@@ -12,13 +12,13 @@ import java.util.List;
 
 public class dg
 {
-  anjx jdField_a_of_type_Anjx;
-  private biyk jdField_a_of_type_Biyk = new dh(this);
+  anvu jdField_a_of_type_Anvu;
+  private bjzj jdField_a_of_type_Bjzj = new dh(this);
   
-  public dg(anjx paramanjx)
+  public dg(anvu paramanvu)
   {
-    this.jdField_a_of_type_Anjx = paramanjx;
-    biyj.a().a(this.jdField_a_of_type_Biyk);
+    this.jdField_a_of_type_Anvu = paramanvu;
+    bjzi.a().a(this.jdField_a_of_type_Bjzj);
   }
   
   private long a(String paramString)
@@ -51,8 +51,8 @@ public class dg
   
   public int a(String paramString)
   {
-    dq.j(this.jdField_a_of_type_Anjx.app);
-    int i = biyj.a().a(paramString);
+    dq.j(this.jdField_a_of_type_Anvu.app);
+    int i = bjzi.a().a(paramString);
     if (QLog.isColorLevel()) {
       QLog.d("dataline.MoloHandler", 2, "PCPushProxy open(" + paramString + "):" + i);
     }
@@ -63,41 +63,41 @@ public class dg
   {
     boolean bool2 = true;
     Object localObject = null;
-    biyj.a().a(this.jdField_a_of_type_Biyk);
+    bjzi.a().a(this.jdField_a_of_type_Bjzj);
     for (;;)
     {
       try
       {
-        biyl localbiyl = biyj.a().a(paramArrayOfByte);
+        bjzk localbjzk = bjzi.a().a(paramArrayOfByte);
         paramArrayOfByte = localObject;
-        if (localbiyl != null)
+        if (localbjzk != null)
         {
           if (QLog.isColorLevel()) {
-            QLog.d("dataline.MoloHandler", 2, "dealWith new pkgEntry:" + localbiyl.e);
+            QLog.d("dataline.MoloHandler", 2, "dealWith new pkgEntry:" + localbjzk.e);
           }
-          long l = this.jdField_a_of_type_Anjx.a(0).longValue();
+          long l = this.jdField_a_of_type_Anvu.a(0).longValue();
           paramArrayOfByte = new DataLineMsgRecord();
-          paramArrayOfByte.msg = this.jdField_a_of_type_Anjx.a().getApp().getString(2131693313);
+          paramArrayOfByte.msg = this.jdField_a_of_type_Anvu.a().getApp().getString(2131693325);
           paramArrayOfByte.msgtype = -2335;
           paramArrayOfByte.sessionid = l;
           paramArrayOfByte.isread = false;
           paramArrayOfByte.path = null;
           paramArrayOfByte.thumbPath = null;
-          paramArrayOfByte.filename = localbiyl.e;
-          paramArrayOfByte.filesize = a(localbiyl.h);
+          paramArrayOfByte.filename = localbjzk.e;
+          paramArrayOfByte.filesize = a(localbjzk.h);
           paramArrayOfByte.issuc = false;
-          paramArrayOfByte.vipBubbleID = this.jdField_a_of_type_Anjx.b();
-          paramArrayOfByte.time = bbyp.a();
-          paramArrayOfByte.strMoloKey = localbiyl.a;
-          paramArrayOfByte.strMoloSource = localbiyl.i;
-          paramArrayOfByte.strMoloIconUrl = localbiyl.g;
-          paramArrayOfByte.strMoloSrcIconUrl = localbiyl.j;
-          if (localbiyl.b != 1) {
+          paramArrayOfByte.vipBubbleID = this.jdField_a_of_type_Anvu.b();
+          paramArrayOfByte.time = bcrg.a();
+          paramArrayOfByte.strMoloKey = localbjzk.a;
+          paramArrayOfByte.strMoloSource = localbjzk.i;
+          paramArrayOfByte.strMoloIconUrl = localbjzk.g;
+          paramArrayOfByte.strMoloSrcIconUrl = localbjzk.j;
+          if (localbjzk.b != 1) {
             break label299;
           }
           bool1 = true;
           paramArrayOfByte.bIsApkFile = bool1;
-          if (atvo.a(paramArrayOfByte.filename) != 0) {
+          if (aunj.a(paramArrayOfByte.filename) != 0) {
             break label304;
           }
           bool1 = bool2;
@@ -125,23 +125,23 @@ public class dg
   
   public void a()
   {
-    biyj.a().b(this.jdField_a_of_type_Biyk);
+    bjzi.a().b(this.jdField_a_of_type_Bjzj);
   }
   
   public void a(int paramInt)
   {
-    biyj.a().a(paramInt);
+    bjzi.a().a(paramInt);
   }
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_Anjx == null) || (this.jdField_a_of_type_Anjx.a() == null) || (this.jdField_a_of_type_Anjx.a().a() == null))
+    if ((this.jdField_a_of_type_Anvu == null) || (this.jdField_a_of_type_Anvu.a() == null) || (this.jdField_a_of_type_Anvu.a().a() == null))
     {
       QLog.e("dataline.MoloHandler", 1, "cancelAll app about = null");
       return false;
     }
-    Object localObject2 = this.jdField_a_of_type_Anjx.a().a().a(0).a();
-    Object localObject1 = this.jdField_a_of_type_Anjx.a().a().a(0).a(true);
+    Object localObject2 = this.jdField_a_of_type_Anvu.a().a().a(0).a();
+    Object localObject1 = this.jdField_a_of_type_Anvu.a().a().a(0).a(true);
     localObject2 = ((DataLineMsgSetList)localObject2).iterator();
     Object localObject3;
     while (((Iterator)localObject2).hasNext())
@@ -175,13 +175,13 @@ public class dg
   
   public boolean a(String paramString)
   {
-    boolean bool = biyj.a().a(paramString);
+    boolean bool = bjzi.a().a(paramString);
     if (QLog.isColorLevel()) {
       QLog.d("dataline.MoloHandler", 2, "PCPushProxy start(" + paramString + "):" + bool);
     }
     if (bool)
     {
-      paramString = this.jdField_a_of_type_Anjx.app.a(0).a(paramString);
+      paramString = this.jdField_a_of_type_Anvu.app.a(0).a(paramString);
       if (paramString == null) {
         return bool;
       }
@@ -191,8 +191,8 @@ public class dg
         DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)paramString.next();
         localDataLineMsgRecord.issuc = true;
         localDataLineMsgRecord.fileMsgStatus = 0L;
-        this.jdField_a_of_type_Anjx.app.a().a(0).c(localDataLineMsgRecord.msgId);
-        this.jdField_a_of_type_Anjx.a(6, true, new Object[] { Long.valueOf(0L), Long.valueOf(localDataLineMsgRecord.sessionid), localDataLineMsgRecord.path, Byte.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(true), Long.valueOf(localDataLineMsgRecord.filesize) });
+        this.jdField_a_of_type_Anvu.app.a().a(0).c(localDataLineMsgRecord.msgId);
+        this.jdField_a_of_type_Anvu.a(6, true, new Object[] { Long.valueOf(0L), Long.valueOf(localDataLineMsgRecord.sessionid), localDataLineMsgRecord.path, Byte.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(true), Long.valueOf(localDataLineMsgRecord.filesize) });
       }
     }
     return bool;
@@ -200,18 +200,18 @@ public class dg
   
   public void b(int paramInt)
   {
-    biyj.a().b(paramInt);
+    bjzi.a().b(paramInt);
   }
   
   public boolean b()
   {
-    if ((this.jdField_a_of_type_Anjx == null) || (this.jdField_a_of_type_Anjx.a() == null) || (this.jdField_a_of_type_Anjx.a().a() == null))
+    if ((this.jdField_a_of_type_Anvu == null) || (this.jdField_a_of_type_Anvu.a() == null) || (this.jdField_a_of_type_Anvu.a().a() == null))
     {
       QLog.e("dataline.MoloHandler", 1, "deleteAll app about = null");
       return false;
     }
-    Object localObject2 = this.jdField_a_of_type_Anjx.a().a().a(0).a();
-    Object localObject1 = this.jdField_a_of_type_Anjx.a().a().a(0).a(true);
+    Object localObject2 = this.jdField_a_of_type_Anvu.a().a().a(0).a();
+    Object localObject1 = this.jdField_a_of_type_Anvu.a().a().a(0).a(true);
     localObject2 = ((DataLineMsgSetList)localObject2).iterator();
     Object localObject3;
     while (((Iterator)localObject2).hasNext())
@@ -245,8 +245,8 @@ public class dg
   
   public boolean b(String paramString)
   {
-    dq.h(this.jdField_a_of_type_Anjx.app);
-    biyj.a().b(paramString);
+    dq.h(this.jdField_a_of_type_Anvu.app);
+    bjzi.a().b(paramString);
     if (QLog.isColorLevel()) {
       QLog.d("dataline.MoloHandler", 2, "PCPushProxy install : " + paramString);
     }
@@ -255,7 +255,7 @@ public class dg
   
   public boolean c(String paramString)
   {
-    biyj.a().a(paramString);
+    bjzi.a().a(paramString);
     if (QLog.isColorLevel()) {
       QLog.d("dataline.MoloHandler", 2, "PCPushProxy pause(" + paramString + ")");
     }
@@ -264,7 +264,7 @@ public class dg
   
   public boolean d(String paramString)
   {
-    biyj.a().c(paramString);
+    bjzi.a().c(paramString);
     if (QLog.isColorLevel()) {
       QLog.d("dataline.MoloHandler", 2, "PCPushProxy delete(" + paramString + ")");
     }
@@ -273,7 +273,7 @@ public class dg
   
   public boolean e(String paramString)
   {
-    boolean bool = biyj.a().b(paramString);
+    boolean bool = bjzi.a().b(paramString);
     if (QLog.isColorLevel()) {
       QLog.d("dataline.MoloHandler", 2, "PCPushProxy isInstalled(" + paramString + "):" + bool);
     }

@@ -1,14 +1,23 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnInfoListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class xsk
-  implements MediaPlayer.OnInfoListener
+  implements xth
 {
-  xsk(xsd paramxsd, xrx paramxrx) {}
+  xsk(xsg paramxsg, StoryVideoItem paramStoryVideoItem) {}
   
-  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void a(xtg paramxtg)
   {
-    return this.jdField_a_of_type_Xrx.a_(this.jdField_a_of_type_Xsd, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Xsg.isCanceled()) {}
+    do
+    {
+      return;
+      yuk.a(this.jdField_a_of_type_Xsg.a.jdField_a_of_type_JavaLangString, "onCompletion, [videoView], current state = %s", VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Xsg.a.c]);
+    } while (!VideoViewVideoHolder.b(this.jdField_a_of_type_Xsg.a, 12));
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Xsg.a, 12);
+    this.jdField_a_of_type_Xsg.a.d = 1;
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Xsg.a).a(this.jdField_a_of_type_Xsg.a, paramxtg, VideoViewVideoHolder.b(this.jdField_a_of_type_Xsg.a));
+    yup.c("video_ope", "play_finish", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid, "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
   }
 }
 

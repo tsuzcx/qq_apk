@@ -1,18 +1,16 @@
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bcix
+class bcix
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  public bcij a;
-  public AtomicBoolean a;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  bcij jdField_b_of_type_Bcij;
-  int c;
+  bcix(bciw parambciw) {}
   
-  public bcix()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    bciw.a(this.a).a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

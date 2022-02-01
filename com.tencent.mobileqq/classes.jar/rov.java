@@ -1,25 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.EditColumnFragment;
-import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
 
 public class rov
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public rov(EditColumnFragment paramEditColumnFragment) {}
+  public rov(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    this.a.a(true);
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.a() > 0)
-    {
-      this.a.jdField_a_of_type_Rpa.a(EditColumnFragment.a(this.a).columnID, this.a.a());
-      return;
-    }
-    QQToast.a(this.a.getActivity(), 0, 2131716915, 0).a();
+    VideoFeedsAioGuideView.b(this.a).setStartOffset(360L);
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

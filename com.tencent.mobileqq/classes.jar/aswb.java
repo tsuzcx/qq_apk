@@ -1,89 +1,69 @@
-import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavPicFileTabView;
-import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import java.util.ArrayList;
 
 public class aswb
-  implements atxx
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<asxf> a;
+  public int b;
+  public String b;
+  public ArrayList<asxg> b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j = "";
+  public String k = "";
   
-  public aswb(QfileFavPicFileTabView paramQfileFavPicFileTabView) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public aswb()
   {
-    boolean bool = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -2147483648;
-    this.b = 2147483647;
-    FavFileInfo localFavFileInfo = (FavFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView.a.getChild(paramInt1, paramInt2);
-    if (localFavFileInfo == null) {}
-    do
-    {
-      return;
-      if (!athc.a(localFavFileInfo)) {
-        bool = true;
-      }
-      this.jdField_a_of_type_Boolean = bool;
-    } while (!QfileFavPicFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView, localFavFileInfo, this.jdField_a_of_type_Boolean));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView.r();
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_d_of_type_Int = -1;
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public String toString()
   {
-    if (paramInt1 != paramInt3) {
-      return;
-    }
-    paramInt3 = Math.min(paramInt2, paramInt4);
-    int i = Math.max(paramInt2, paramInt4);
-    if (paramInt4 < paramInt2) {
-      this.b = Math.min(paramInt4, this.b);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{friendUin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{age: ").append(this.jdField_b_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{constellation: ").append(this.jdField_c_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{city: ").append(this.jdField_d_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{school: ").append(this.e).append("}");
+    localStringBuilder.append("{constel:").append(this.jdField_c_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{company:").append(this.f).append("}");
+    localStringBuilder.append("{mGender: ").append(this.jdField_a_of_type_Int).append("}");
+    localStringBuilder.append("{mDeclaration: ").append(this.g).append("}");
+    localStringBuilder.append("{mVoiceUrl: ").append(this.h).append("}");
+    localStringBuilder.append("{mVoiceDuration: ").append(this.jdField_b_of_type_Int).append("}");
+    localStringBuilder.append("{signWords: ").append(this.i).append("}");
+    if (this.jdField_a_of_type_JavaUtilArrayList == null)
+    {
+      localStringBuilder.append("{personalTags: is empty ").append("}");
+      localStringBuilder.append("{popular: ").append(this.jdField_a_of_type_Long).append("}");
+      if (this.jdField_b_of_type_JavaUtilArrayList != null) {
+        break label399;
+      }
+      localStringBuilder.append("{schoolInfo: is empty ").append("}");
     }
     for (;;)
     {
-      paramInt2 = paramInt3;
-      while (paramInt2 <= i)
-      {
-        QfileFavPicFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView, (FavFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView.a.getChild(paramInt1, paramInt2), this.jdField_a_of_type_Boolean);
-        paramInt2 += 1;
-      }
-      this.jdField_a_of_type_Int = Math.max(paramInt4, this.jdField_a_of_type_Int);
+      localStringBuilder.append("{distance: ").append(this.jdField_c_of_type_Int).append("}");
+      localStringBuilder.append("{signalBombMatchPool: ").append(this.jdField_d_of_type_Int).append("}");
+      localStringBuilder.append("{strFromCity: ").append(this.j).append("}");
+      localStringBuilder.append("{strToCity: ").append(this.k).append("}");
+      return localStringBuilder.toString();
+      localStringBuilder.append("{personalTags:size  ").append(this.jdField_a_of_type_JavaUtilArrayList.size()).append("}");
+      break;
+      label399:
+      localStringBuilder.append("{schoolInfo:size  ").append(this.jdField_b_of_type_JavaUtilArrayList.size()).append("}");
     }
-    paramInt2 = this.b;
-    QfileFavPicFileTabView localQfileFavPicFileTabView;
-    FavFileInfo localFavFileInfo;
-    boolean bool;
-    if (paramInt2 < paramInt3)
-    {
-      localQfileFavPicFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView;
-      localFavFileInfo = (FavFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView.a.getChild(paramInt1, paramInt2);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        QfileFavPicFileTabView.a(localQfileFavPicFileTabView, localFavFileInfo, bool);
-        paramInt2 += 1;
-        break;
-      }
-    }
-    paramInt2 = i + 1;
-    if (paramInt2 <= this.jdField_a_of_type_Int)
-    {
-      localQfileFavPicFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView;
-      localFavFileInfo = (FavFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView.a.getChild(paramInt1, paramInt2);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        QfileFavPicFileTabView.a(localQfileFavPicFileTabView, localFavFileInfo, bool);
-        paramInt2 += 1;
-        break;
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView.r();
   }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b(int paramInt1, int paramInt2) {}
 }
 
 

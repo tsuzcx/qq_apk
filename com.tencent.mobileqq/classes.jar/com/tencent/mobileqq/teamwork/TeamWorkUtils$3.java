@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.teamwork;
 
-import bdjg;
+import becb;
 
 public final class TeamWorkUtils$3
   implements Runnable
 {
   public void run()
   {
-    bdjg.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    becb.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

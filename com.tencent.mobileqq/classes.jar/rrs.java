@@ -1,26 +1,31 @@
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.BaseSelectView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectView$onScrollListener$1", "Landroid/widget/AbsListView$OnScrollListener;", "onScroll", "", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rrs
-  implements AbsListView.OnScrollListener
+public class rrs
+  implements ppq
 {
-  public void onScroll(@Nullable AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  public rrs(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment, List paramList) {}
   
-  public void onScrollStateChanged(@Nullable AbsListView paramAbsListView, int paramInt)
+  public void a(int paramInt, Map<Long, qwb> paramMap)
   {
-    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
-    if ((paramAbsListView != null) && (paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (!BaseSelectView.a(this.a))) {}
-    for (paramInt = 1;; paramInt = 0)
+    if (pfa.a().a() != null) {
+      pfa.a().a().b(this);
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      if (paramInt != 0) {
-        BaseSelectView.a(this.a).c();
+      VideoInfo localVideoInfo = (VideoInfo)localIterator.next();
+      if (!TextUtils.isEmpty(localVideoInfo.j))
+      {
+        qwb localqwb = (qwb)paramMap.get(Long.valueOf(Long.parseLong(localVideoInfo.j)));
+        if (localqwb != null) {
+          localVideoInfo.n = localqwb.a();
+        }
       }
-      return;
     }
   }
 }

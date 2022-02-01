@@ -2,24 +2,24 @@ package com.tencent.biz.pubaccount.weishi_new.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import bclx;
+import bdep;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import tjf;
-import upe;
-import uvd;
-import uve;
+import szz;
+import uqf;
+import uwn;
+import uwo;
 
 public class WSTabLayout
   extends TabLayoutCompat
 {
-  public static float c = bclx.a(22.0F);
-  public static float d = bclx.a(15.0F);
-  public static float e = bclx.a(2.0F);
+  public static float c = bdep.a(22.0F);
+  public static float d = bdep.a(15.0F);
+  public static float e = bdep.a(2.0F);
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private uvd jdField_a_of_type_Uvd;
+  private uwn jdField_a_of_type_Uwn;
   
   public WSTabLayout(Context paramContext)
   {
@@ -54,7 +54,7 @@ public class WSTabLayout
       if (QLog.isColorLevel()) {
         QLog.e("WSTabLayout2", 2, "createTab infos: null");
       }
-      upe.a("WSTabLayout2", "initData list: null");
+      uqf.a("WSTabLayout2", "initData list: null");
     }
     label196:
     for (;;)
@@ -88,23 +88,23 @@ public class WSTabLayout
           setTabGravity(1);
           break label76;
         }
-        paramList.a(2131560010);
-        uve localuve = new uve(this, paramList.a());
-        localuve.a(i);
-        paramList.a(localuve);
-        localuve.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+        paramList.a(2131560018);
+        uwo localuwo = new uwo(this, paramList.a());
+        localuwo.a(i);
+        paramList.a(localuwo);
+        localuwo.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(i));
         d(paramList);
         if (paramInt == i) {
-          localuve.a();
+          localuwo.a();
         }
         i += 1;
       }
     }
   }
   
-  public void setTabContentClickListener(uvd paramuvd)
+  public void setTabContentClickListener(uwn paramuwn)
   {
-    this.jdField_a_of_type_Uvd = paramuvd;
+    this.jdField_a_of_type_Uwn = paramuwn;
   }
 }
 

@@ -1,65 +1,51 @@
-import android.content.Context;
-import android.graphics.Rect;
-import android.text.Layout;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class zlc
+class zlc
+  implements bbmo
 {
-  public static int a(Rect[] paramArrayOfRect, int paramInt1, int paramInt2)
+  zlc(zlb paramzlb, zku paramzku) {}
+  
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    int i = 0;
-    if ((paramArrayOfRect == null) || (paramArrayOfRect.length == 0)) {
-      i = -1;
-    }
-    Rect localRect;
-    do
+    synchronized (zlb.a(this.jdField_a_of_type_Zlb))
     {
-      return i;
-      localRect = paramArrayOfRect[0];
-    } while ((paramInt2 >= 0) && (paramInt2 <= localRect.bottom) && (paramInt1 >= 0) && (paramInt1 <= localRect.right));
-    int j = 1;
-    for (;;)
-    {
-      if (j >= paramArrayOfRect.length) {
-        break label110;
+      this.jdField_a_of_type_Zku.c = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoToVideo", 2, "onEncodeFinish, filePath= " + paramString);
       }
-      localRect = paramArrayOfRect[j];
-      if ((paramInt2 >= localRect.top) && (paramInt2 <= localRect.bottom) && (paramInt1 >= localRect.left))
-      {
-        i = j;
-        if (paramInt1 <= localRect.right) {
-          break;
-        }
-      }
-      j += 1;
+      zlb.a(this.jdField_a_of_type_Zlb).notifyAll();
+      return;
     }
-    label110:
-    return -1;
   }
   
-  public static String a(TextView paramTextView, int paramInt)
+  public void a_(int paramInt, Throwable arg2)
   {
-    Layout localLayout = paramTextView.getLayout();
-    String str = paramTextView.getText().toString();
-    paramTextView = str;
-    if (localLayout != null)
+    synchronized (zlb.a(this.jdField_a_of_type_Zlb))
     {
-      paramTextView = str;
-      if (localLayout.getLineCount() > paramInt) {
-        paramTextView = str.substring(0, localLayout.getLineStart(paramInt));
+      this.jdField_a_of_type_Zku.jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoToVideo", 2, "onEncodeError, errorCode= " + paramInt);
+      }
+      zlb.a(this.jdField_a_of_type_Zlb).notifyAll();
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Zku != null) && (!this.jdField_a_of_type_Zku.d) && (!this.jdField_a_of_type_Zku.b))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoToVideo", 2, "cancel mergeVideoTask path : " + this.jdField_a_of_type_Zku.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.b + " currContext id : " + this.jdField_a_of_type_Zku + "  mCanceled : " + this.jdField_a_of_type_Zku.b);
+      }
+      this.jdField_a_of_type_Zlb.b(this.jdField_a_of_type_Zku);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoToVideo", 2, "after cancel : " + this.jdField_a_of_type_Zku.b);
       }
     }
-    return paramTextView;
-  }
-  
-  public static zld a(Context paramContext, int paramInt1, int paramInt2, String paramString)
-  {
-    return new zln(paramContext);
-  }
-  
-  public static float[] a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    return new float[] { (float)(paramFloat1 * Math.cos(paramFloat3 * 3.141592653589793D / 180.0D)) - (float)(paramFloat2 * Math.sin(paramFloat3 * 3.141592653589793D / 180.0D)), (float)(paramFloat1 * Math.sin(paramFloat3 * 3.141592653589793D / 180.0D)) + (float)(paramFloat2 * Math.cos(paramFloat3 * 3.141592653589793D / 180.0D)) };
   }
 }
 

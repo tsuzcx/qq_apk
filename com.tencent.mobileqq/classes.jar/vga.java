@@ -1,39 +1,25 @@
-import common.config.service.QzoneConfig;
-
-public class vga
+class vga
+  implements aabr
 {
-  private static Boolean a;
-  private static Boolean b;
-  private static Boolean c;
+  vga(vfx paramvfx) {}
   
-  public static boolean a()
+  public void a(aabu paramaabu, Object paramObject)
   {
-    return QzoneConfig.getInstance().getConfig("QzCustomFont", "TrueTypeViewCache", 1) != 0;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    int i = QzoneConfig.getInstance().getConfig("QzCustomFont", "DiyFontShow", 0);
-    switch (paramInt)
-    {
+    if (paramaabu.e()) {
+      if (vfx.a(this.a) != null) {
+        vfx.a(this.a).a(vfx.a(this.a), vfx.b(this.a), true, false);
+      }
     }
     do
     {
-      do
+      return;
+      if (paramaabu.d())
       {
-        do
-        {
-          do
-          {
-            return true;
-          } while ((i & 0x1) == 0);
-          return false;
-        } while ((i & 0x2) == 0);
-        return false;
-      } while ((i & 0x4) == 0);
-      return false;
-    } while ((i & 0x8) == 0);
-    return false;
+        vfx.a(this.a, false);
+        return;
+      }
+    } while (!paramaabu.c());
+    vfx.a(this.a, true);
   }
 }
 

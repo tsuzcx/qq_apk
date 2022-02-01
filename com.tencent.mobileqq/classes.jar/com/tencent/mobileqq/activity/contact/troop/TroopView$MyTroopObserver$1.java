@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import ajgf;
+import ajro;
 
 public class TroopView$MyTroopObserver$1
   implements Runnable
 {
-  public TroopView$MyTroopObserver$1(ajgf paramajgf) {}
+  public TroopView$MyTroopObserver$1(ajro paramajro) {}
   
   public void run()
   {

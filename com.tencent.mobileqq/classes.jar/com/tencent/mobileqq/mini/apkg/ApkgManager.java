@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.apkg;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import anni;
+import anzj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -268,7 +268,7 @@ public class ApkgManager
       if (localObject2 == null) {
         break;
       }
-      localObject1 = ((TicketManager)localObject2).GetSkey(((AppRuntime)localObject1).getAccount(), 16L, null);
+      localObject1 = ((TicketManager)localObject2).getSkey(((AppRuntime)localObject1).getAccount(), 16L, null);
       if ((localObject1 == null) || (((Ticket)localObject1)._sig == null)) {
         break;
       }
@@ -328,7 +328,7 @@ public class ApkgManager
       paramOnGetApkgInfoListener.onGetApkgInfo(paramString1, 0, "");
       return;
     }
-    paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, anni.a(2131699095));
+    paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, anzj.a(2131699202));
   }
   
   private void onInitApkgInfo(ApkgManager.OnInitApkgListener paramOnInitApkgListener, int paramInt, ApkgInfo paramApkgInfo, String paramString)

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import bdko;
-import bdkp;
+import bedj;
+import bedk;
 import java.lang.ref.WeakReference;
 
 public class ConfigSetting$LocalWtTicketPromise$1
   implements Runnable
 {
-  public ConfigSetting$LocalWtTicketPromise$1(bdkp parambdkp) {}
+  public ConfigSetting$LocalWtTicketPromise$1(bedk parambedk) {}
   
   public void run()
   {
-    bdko localbdko = (bdko)bdkp.a(this.this$0).get();
-    if (localbdko != null) {
-      bdko.a(localbdko, bdkp.a(this.this$0));
+    bedj localbedj = (bedj)bedk.a(this.this$0).get();
+    if (localbedj != null) {
+      bedj.a(localbedj, bedk.a(this.this$0));
     }
   }
 }

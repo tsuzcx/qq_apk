@@ -1,17 +1,17 @@
 package com.tencent.open.appstore.dl;
 
-import biry;
-import bisa;
+import bjsx;
+import bjsz;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 public class DownloadManagerV2$17
   implements Runnable
 {
-  public DownloadManagerV2$17(bisa parambisa, DownloadInfo paramDownloadInfo, boolean paramBoolean) {}
+  public DownloadManagerV2$17(bjsz parambjsz, DownloadInfo paramDownloadInfo, boolean paramBoolean) {}
   
   public void run()
   {
-    biry.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, this.jdField_a_of_type_Boolean);
+    bjsx.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, this.jdField_a_of_type_Boolean);
   }
 }
 

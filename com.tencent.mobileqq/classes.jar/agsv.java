@@ -1,21 +1,47 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.content.Intent;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.PatchedButton;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
 
-class agsv
-  extends afwr
+public class agsv
+  implements agvc, agvp
 {
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
+  private BaseChatPie a;
+  protected PatchedButton a;
+  public AIOLongCaptureCtrl a;
   
-  agsv(agss paramagss) {}
+  agsv(BaseChatPie paramBaseChatPie)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131380764));
+      this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl = new AIOLongCaptureCtrl(new agsw(this));
+      bpye.a(this.jdField_a_of_type_ComTencentWidgetPatchedButton, this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl);
+      return;
+    }
+    bpye.b(this.jdField_a_of_type_ComTencentWidgetPatchedButton, this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl != null) {
+      this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl.a(paramInt1, paramInt2, paramIntent);
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 0, 8 };
+  }
 }
 
 

@@ -1,20 +1,14 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLazyLoadDelegate;
 
 public class rqr
-  implements AdapterView.OnItemClickListener
+  extends odq
 {
-  public rqr(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
+  public rqr(VideoFeedsLazyLoadDelegate paramVideoFeedsLazyLoadDelegate) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a.remove(paramInt);
-    this.a.e();
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    this.a.a(paramBoolean, paramBundle);
   }
 }
 

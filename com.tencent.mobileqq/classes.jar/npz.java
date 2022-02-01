@@ -1,26 +1,24 @@
+import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 
 public class npz
+  implements View.OnTouchListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  public ImageView a;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  public ImageView b;
-  TextView b;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  ImageView d;
-  ImageView e;
+  int jdField_a_of_type_Int = 0;
+  Handler jdField_a_of_type_AndroidOsHandler = new nqa(this);
   
-  public npz(npm paramnpm) {}
+  public npz(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 1) {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 5L);
+    }
+    return false;
+  }
 }
 
 

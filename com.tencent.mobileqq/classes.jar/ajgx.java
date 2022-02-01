@@ -1,14 +1,31 @@
-import com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.base.HeaderScrollView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajgx
-  extends anqd
+  implements ajti
 {
-  private ajgx(AlphabetFriendFragment paramAlphabetFriendFragment) {}
+  public ajgx(TroopView paramTroopView) {}
   
-  protected void f()
+  public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (AlphabetFriendFragment.b(this.a)) {
-      AlphabetFriendFragment.a(this.a, 1400L, true);
+    if (QLog.isColorLevel()) {
+      QLog.i("addContacts.TroopView", 2, "onRefreshResult. position:" + paramInt + " success:" + paramBoolean);
+    }
+    paramObject = TroopView.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      paramObject = paramObject.obtainMessage(14, paramInt, i);
+      TroopView.a(this.a).sendMessage(paramObject);
+      return;
+    }
+  }
+  
+  public void ao_()
+  {
+    if ((TroopView.a(this.a) != null) && (!TroopView.a(this.a).a())) {
+      TroopView.a(this.a).scrollTo(0, TroopView.a(this.a).a());
     }
   }
 }

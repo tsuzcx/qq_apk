@@ -1,19 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment;
 
 public class ajsh
-  implements View.OnClickListener
+  implements bbst
 {
-  public ajsh(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  private ajsh(AlphabetFriendFragment paramAlphabetFriendFragment) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a.v();
-    new bcsy(this.a.getActivity().app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.c }).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((AlphabetFriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
+      AlphabetFriendFragment.a(this.a, 1400L, false);
+    }
   }
 }
 

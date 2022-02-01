@@ -1,8 +1,27 @@
-import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
+import mqq.app.AppActivity;
 
-public abstract interface zya
+class zya
+  extends zxw
 {
-  public abstract boolean a(RecyclerView paramRecyclerView);
+  zya(zxz paramzxz) {}
+  
+  public void a()
+  {
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.i)
+    {
+      this.a.jdField_a_of_type_Zyf.a();
+      return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e)
+    {
+      this.a.jdField_a_of_type_MqqAppAppActivity.finish();
+      return;
+    }
+    this.a.jdField_a_of_type_Zyf.b();
+  }
 }
 
 

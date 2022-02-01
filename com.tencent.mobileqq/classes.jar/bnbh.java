@@ -1,16 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
-class bnbh
-  extends AnimatorListenerAdapter
+public class bnbh
+  implements View.OnClickListener
 {
-  bnbh(bnbf parambnbf) {}
+  public bnbh(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.h();
-    this.a.g();
+    QzoneWebMusicJsPlugin.access$300(this.a, "buttonclick");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

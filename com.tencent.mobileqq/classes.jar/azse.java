@@ -1,23 +1,9 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
-
-public class azse
-  extends anqd
+public final class azse
+  extends azsa
 {
-  public azse(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
-  
-  protected void a(boolean paramBoolean, String paramString)
+  protected int a()
   {
-    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
-      this.a.a(paramBoolean, false);
-    }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
-      this.a.a(paramBoolean, true);
-    }
+    return 514;
   }
 }
 

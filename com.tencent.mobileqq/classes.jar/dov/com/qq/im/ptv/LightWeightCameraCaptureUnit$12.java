@@ -1,13 +1,13 @@
 package dov.com.qq.im.ptv;
 
-import bows;
-import boym;
+import bpyn;
+import bqah;
 import com.tencent.qphone.base.util.QLog;
 
 public class LightWeightCameraCaptureUnit$12
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$12(bows parambows) {}
+  public LightWeightCameraCaptureUnit$12(bpyn parambpyn) {}
   
   public void run()
   {

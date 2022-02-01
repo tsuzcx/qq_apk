@@ -2,9 +2,9 @@ package com.tencent.mobileqq.activity;
 
 import android.widget.Button;
 import android.widget.TextView;
-import anni;
-import bgfz;
-import bkjh;
+import anzj;
+import bhga;
+import blkk;
 import com.tencent.common.config.AppSetting;
 
 class Leba$35$1
@@ -19,9 +19,9 @@ class Leba$35$1
       if (Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0) != null) {
         Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0).setVisibility(0);
       }
-      bkjh.a(Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0), 9, this.jdField_a_of_type_Int, 0);
+      blkk.a(Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0), 9, this.jdField_a_of_type_Int, 0);
       if (AppSetting.c) {
-        bgfz.a(Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0), anni.a(2131704805), Button.class.getName());
+        bhga.a(Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0), anzj.a(2131704912), Button.class.getName());
       }
     }
     do
@@ -31,7 +31,7 @@ class Leba$35$1
         Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0).setVisibility(8);
       }
     } while (!AppSetting.c);
-    bgfz.a(Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0), anni.a(2131718385), Button.class.getName());
+    bhga.a(Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0), anzj.a(2131718521), Button.class.getName());
   }
 }
 

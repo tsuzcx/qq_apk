@@ -1,68 +1,96 @@
-import android.os.Bundle;
+import android.content.Context;
 import android.os.Handler;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.MessengerService.8.1;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.TipsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Looper;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.copyprompt.LiteCopyPromptHelper.4;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XEditTextEx;
 
 public class artg
-  implements bbad
+  implements View.OnClickListener
 {
-  public artg(MessengerService paramMessengerService) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new arth(this);
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private XEditTextEx jdField_a_of_type_ComTencentWidgetXEditTextEx;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new LiteCopyPromptHelper.4(this);
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
+  public artg(Context paramContext, ViewGroup paramViewGroup, QQAppInterface paramQQAppInterface, XEditTextEx paramXEditTextEx)
   {
-    if (this.a.b != null)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = paramXEditTextEx;
+  }
+  
+  private View a(String paramString)
+  {
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559592, this.jdField_a_of_type_AndroidViewViewGroup, false);
+    ((TextView)localView.findViewById(2131373081)).setText(new begp(paramString, 3, 16));
+    paramString = new RelativeLayout.LayoutParams(-2, -2);
+    paramString.addRule(9);
+    paramString.addRule(2, 2131368726);
+    paramString.leftMargin = agej.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364389)).addView(localView, paramString);
+    return localView;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)
     {
-      this.a.b.putString("cmd", "ipc_signature_setordelete");
-      paramRichStatus = new Bundle();
-      paramRichStatus.putInt("result", paramInt);
-      paramRichStatus.putBoolean("hasTipsInfo", false);
-      if ((paramObject instanceof TipsInfo))
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.a(this);
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_JavaLangRunnable.run();
+    if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+    }
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
+  
+  public void onClick(View paramView)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(320);
+    if ((localObject instanceof artf))
+    {
+      localObject = ((artf)localObject).a();
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        paramObject = (TipsInfo)paramObject;
-        if (paramObject.type > 0)
-        {
-          paramRichStatus.putInt("result", paramObject.ret);
-          paramRichStatus.putBoolean("hasTipsInfo", true);
-          paramRichStatus.putInt("tips_type", paramObject.type);
-          paramRichStatus.putString("tips_titleWording", paramObject.titleWording);
-          paramRichStatus.putString("tips_wording", paramObject.wording);
-          paramRichStatus.putString("tips_rightBtnWording", paramObject.rightBtnWording);
-          paramRichStatus.putString("tips_leftBtnWording", paramObject.leftBtnWording);
-          paramRichStatus.putString("tips_vipType", paramObject.vipType);
-          paramRichStatus.putInt("tips_vipMonth", paramObject.vipMonth);
-          paramRichStatus.putString("tips_url", paramObject.url);
+        c();
+        this.jdField_a_of_type_AndroidViewView = a((String)localObject);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
+        nkr[] arrayOfnkr = new nkr[1];
+        arrayOfnkr[0] = new nkr(this.jdField_a_of_type_AndroidViewViewGroup, new arti(this, arrayOfnkr));
+        if (this.jdField_a_of_type_AndroidViewView != null) {
+          this.jdField_a_of_type_AndroidViewView.setOnClickListener(new artj(this, (String)localObject));
         }
       }
-      this.a.b.putBundle("response", paramRichStatus);
-      this.a.a(this.a.b);
-      this.a.b = null;
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      if (this.a.a != null) {
-        this.a.a.post(new MessengerService.8.1(this));
-      }
-    }
-    while (this.a.c == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SigImg2Zone", 4, "isSync: " + paramBoolean);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSync", paramBoolean);
-    this.a.c.putBundle("response", localBundle);
-    this.a.a(this.a.c);
-    this.a.c = null;
-  }
-  
-  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

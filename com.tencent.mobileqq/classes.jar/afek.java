@@ -1,59 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.SigCommentListActivity;
-import com.tencent.mobileqq.app.SignatureManager.SigComments;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class afek
-  extends anvc
+  implements View.OnTouchListener
 {
-  public afek(SigCommentListActivity paramSigCommentListActivity) {}
+  public afek(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    List localList;
-    if (this.a.isResume())
+    if (paramMotionEvent.getAction() == 1)
     {
-      this.a.stopTitleProgress();
-      if (!paramBoolean) {
-        break label175;
-      }
-      if ((paramObject instanceof Bundle))
-      {
-        paramObject = (SignatureManager.SigComments)((Bundle)paramObject).getSerializable("data");
-        paramBoolean = paramObject.isOver;
-        paramObject = paramObject.mlist;
-        localList = this.a.a.a();
-        if (paramObject.size() <= 0) {
-          break label128;
-        }
-        if (localList == null) {
-          break label113;
-        }
-        localList.addAll(localList.size(), paramObject);
-        this.a.a.a(localList, paramBoolean);
-        this.a.a.notifyDataSetChanged();
-      }
+      this.a.a();
+      ocd.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573C", "0X800573C", 0, 0, "", "", "", "", false);
     }
-    label113:
-    do
-    {
-      return;
-      this.a.a.a(paramObject, paramBoolean);
-      break;
-      if ((localList != null) && (localList.size() > 0)) {
-        this.a.a.a(localList, paramBoolean);
-      }
-      for (;;)
-      {
-        this.a.a.notifyDataSetChanged();
-        return;
-        SigCommentListActivity.a(this.a, 3);
-      }
-      paramObject = this.a.a.a();
-    } while ((paramObject != null) && (paramObject.size() > 0));
-    label128:
-    label175:
-    SigCommentListActivity.a(this.a, 2);
+    return true;
   }
 }
 

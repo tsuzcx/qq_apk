@@ -1,19 +1,11 @@
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import mqq.app.QQPermissionCallback;
-
-public class ayhd
-  implements QQPermissionCallback
+class ayhd
+  implements xvt
 {
-  public ayhd(ScanOcrActivity paramScanOcrActivity) {}
+  ayhd(aygz paramaygz, aygr paramaygr) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a_(xvo paramxvo)
   {
-    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.grant();
+    this.jdField_a_of_type_Aygr.a(this.jdField_a_of_type_Aygz);
   }
 }
 

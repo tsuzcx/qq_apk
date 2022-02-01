@@ -1,21 +1,23 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import mqq.util.WeakReference;
 
-public class askb
-  extends RecyclerView.AdapterDataObserver
+class askb
+  extends VasQuickUpdateManager.CallBacker
 {
-  public askb(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  askb(aska paramaska) {}
   
-  public void onChanged()
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (this.a.jdField_a_of_type_Askg.a() == 0)
-    {
-      this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Askh);
+    paramString2 = (QQAppInterface)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (paramString2 == null) {}
+    while (!"emoji_app_vip_emoji_aio_android_config.json".equals(paramString1)) {
       return;
     }
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Askh);
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(this.a.jdField_a_of_type_Askh);
+    ((VasQuickUpdateManager)paramString2.getManager(184)).removeCallBacker(this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+    paramString1 = VasQuickUpdateManager.getJSONFromLocal(paramString2, "emoji_app_vip_emoji_aio_android_config.json", false, null);
+    this.a.a(paramString1);
   }
 }
 

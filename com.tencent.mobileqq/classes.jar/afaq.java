@@ -1,36 +1,29 @@
-import android.text.Editable;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afaq
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
-  public afaq(RegisterByNicknameAndPwdActivity paramRegisterByNicknameAndPwdActivity) {}
+  public afaq(NotificationActivity paramNotificationActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramView == RegisterByNicknameAndPwdActivity.a(this.a))
+    switch (paramView.getId())
     {
-      if (paramBoolean)
-      {
-        RegisterByNicknameAndPwdActivity.a(this.a).setSelection(RegisterByNicknameAndPwdActivity.a(this.a).getText().length());
-        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
-        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
-        RegisterByNicknameAndPwdActivity.b(this.a).setVisibility(0);
-      }
     }
-    else {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      this.a.finish();
     }
-    RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afaq
  * JD-Core Version:    0.7.0.1
  */

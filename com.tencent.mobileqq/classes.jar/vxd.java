@@ -1,8 +1,33 @@
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.qqcircle.list.bizblocks.QCircleChatBoxHelper;
+import com.tencent.biz.qqcircle.viewmodels.QCircleMessageNoticeViewModel.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract interface vxd
+public class vxd
+  implements vtg
 {
-  public abstract void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser);
+  public vxd(QCircleMessageNoticeViewModel.1 param1) {}
+  
+  public void a(List<String> paramList, int paramInt)
+  {
+    if (this.a.a != null) {
+      QLog.d("QCircleMessageNoticeViewModel", 1, "getChatUnReadInfo currentTime:" + System.currentTimeMillis());
+    }
+    for (Pair localPair = QCircleChatBoxHelper.getInstance().getUnReadInfo();; localPair = null)
+    {
+      if (localPair != null)
+      {
+        QLog.d("QCircleMessageNoticeViewModel", 1, "chatUnReadInfo not null currentTime:" + System.currentTimeMillis());
+        vxc.a(this.a.this$0, paramList, paramInt, (List)localPair.second, ((Integer)localPair.first).intValue());
+        return;
+      }
+      QLog.d("QCircleMessageNoticeViewModel", 1, "chatUnReadInfo is null currentTime:" + System.currentTimeMillis());
+      vxc.a(this.a.this$0, paramList, paramInt, new ArrayList(), 0);
+      return;
+    }
+  }
 }
 
 

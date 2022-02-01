@@ -1,17 +1,20 @@
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnVideoSizeChangedListener;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IMediaPlayer.OnVideoSizeChangedListener;
-
-class bjyd
-  implements IMediaPlayer.OnVideoSizeChangedListener
+public class bjyd
 {
-  bjyd(bjxx parambjxx, ReliableVideoPlayer.OnVideoSizeChangedListener paramOnVideoSizeChangedListener) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void onVideoSizeChanged(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public bjyd(bjyc parambjyc)
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnVideoSizeChangedListener != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnVideoSizeChangedListener.onVideoSizeChanged(this.jdField_a_of_type_Bjxx, paramInt1, paramInt2);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_Int + "," + this.jdField_b_of_type_JavaLangString + "," + this.jdField_b_of_type_Int + "," + this.jdField_a_of_type_JavaLangString;
   }
 }
 

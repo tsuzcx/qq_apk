@@ -1,21 +1,38 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class aufp
-  implements EIPCResultCallback
+  implements aumz
 {
   aufp(aufo paramaufo) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a()
   {
-    if (!paramEIPCResult.isSuccess())
+    int i = this.a.a.i();
+    int j = this.a.a.d();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (i == 6) {
+      if (j == 0) {
+        localQQAppInterface.a().b(this.a.a.d());
+      }
+    }
+    for (;;)
     {
-      QLog.d("QFlutter.launcher", 1, "install IPC fail");
-      aufj.b();
-      aufo.a(this.a, 1, true);
+      if (this.a.a.jdField_a_of_type_Augp != null) {
+        this.a.a.jdField_a_of_type_Augp.d();
+      }
+      return;
+      localQQAppInterface.a().a(this.a.a.d());
+      continue;
+      if (j == 0) {
+        localQQAppInterface.a().a(this.a.a.d());
+      } else {
+        localQQAppInterface.a().b(this.a.a.jdField_a_of_type_Auei.a());
+      }
     }
   }
+  
+  public void b() {}
 }
 
 

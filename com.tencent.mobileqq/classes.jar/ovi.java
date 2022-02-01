@@ -1,6 +1,21 @@
-public abstract interface ovi
+import com.tencent.qphone.base.util.QLog;
+
+final class ovi
+  implements sum
 {
-  public abstract void a(int paramInt);
+  ovi(String paramString) {}
+  
+  public void a(suo paramsuo, int paramInt) {}
+  
+  public void a(suo paramsuo, Throwable paramThrowable)
+  {
+    QLog.e("ReadInJoyCommentPBModule", 2, "preload failed " + this.a);
+  }
+  
+  public void a(suo paramsuo, suk paramsuk)
+  {
+    QLog.d("ReadInJoyCommentPBModule", 2, "preload success " + this.a);
+  }
 }
 
 

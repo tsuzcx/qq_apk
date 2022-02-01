@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import apcf;
-import bctj;
+import appv;
+import bdmc;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARReport$6
   implements Runnable
 {
-  public ARReport$6(apcf paramapcf, long paramLong) {}
+  public ARReport$6(appv paramappv, long paramLong) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("alltime", String.valueOf(this.a));
-    bctj.a(BaseApplication.getContext()).a("", "ARMarkerResourceManagerInt", true, 0L, 0L, localHashMap, "");
+    bdmc.a(BaseApplication.getContext()).a("", "ARMarkerResourceManagerInt", true, 0L, 0L, localHashMap, "");
   }
 }
 

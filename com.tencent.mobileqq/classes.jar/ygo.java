@@ -1,25 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper.3.1;
 
 public class ygo
+  implements View.OnFocusChangeListener
 {
-  public StoryVideoItem a;
-  public String a;
-  public boolean a;
-  public boolean b = true;
+  ygo(ygl paramygl) {}
   
-  public ygo(String paramString, StoryVideoItem paramStoryVideoItem)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject instanceof ygo)) {
-      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((ygo)paramObject).jdField_a_of_type_JavaLangString);
+    if (!paramBoolean) {
+      this.a.b();
     }
-    return false;
+    while (ygl.a(this.a)) {
+      return;
+    }
+    new Handler().postDelayed(new DetailCommentHelper.3.1(this), 200L);
   }
 }
 

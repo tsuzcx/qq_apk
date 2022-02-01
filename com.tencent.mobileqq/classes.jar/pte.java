@@ -1,24 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class pte
-  implements TVK_IMediaPlayer.OnCompletionListener
+class pte
+  implements View.OnClickListener
 {
-  public pte(VideoView paramVideoView) {}
+  pte(psx parampsx, String paramString1, String paramString2) {}
   
-  public void onCompletion(TVK_IMediaPlayer arg1)
+  public void onClick(View paramView)
   {
-    synchronized (this.a)
-    {
-      VideoView.access$000(this.a, 10);
-      this.a.displayCover();
-      if (VideoView.access$2200(this.a) != null) {
-        VideoView.access$2200(this.a).c();
-      }
-      VideoView.access$2300(this.a);
-      return;
-    }
+    psx.a(2, this.jdField_a_of_type_JavaLangString);
+    ozs.a(psx.a(this.jdField_a_of_type_Psx), this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

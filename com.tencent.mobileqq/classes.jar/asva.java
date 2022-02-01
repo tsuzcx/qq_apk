@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelPicTabView.1;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class asva
-  implements Comparator<Long>
+class asva
+  implements DialogInterface.OnClickListener
 {
-  public asva(QfileLocalFileDelPicTabView.1 param1) {}
+  asva(asuz paramasuz) {}
   
-  public int a(Long paramLong1, Long paramLong2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramLong1.equals(paramLong2)) {
-      return 1;
-    }
-    return (int)(paramLong1.longValue() - paramLong2.longValue());
+    paramDialogInterface.dismiss();
   }
 }
 

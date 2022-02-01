@@ -1,15 +1,9 @@
-public class blcx
+import android.util.Pair;
+import java.util.List;
+
+public abstract interface blcx
 {
-  public int a;
-  public String a;
-  public String b;
-  
-  public blcx(int paramInt, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-  }
+  public abstract void a(List<Pair<Integer, Byte>> paramList);
 }
 
 

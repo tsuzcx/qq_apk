@@ -1,6 +1,13 @@
-public abstract interface ayjd
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+
+class ayjd
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(int paramInt, ayje paramayje);
+  public ayjd(View paramView)
+  {
+    super(paramView);
+  }
 }
 
 

@@ -3,9 +3,9 @@ import com.dataline.activities.LiteActivity;
 import com.tencent.widget.XListView;
 
 public class ar
-  implements biao
+  implements bjbm
 {
-  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.findViewById(2131372835);
+  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.findViewById(2131372948);
   
   public ar(LiteActivity paramLiteActivity) {}
   

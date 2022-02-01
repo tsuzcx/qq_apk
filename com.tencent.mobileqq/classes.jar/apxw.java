@@ -1,6 +1,14 @@
-public abstract interface apxw
+import eipc.EIPCResult;
+
+class apxw
+  implements apyv
 {
-  public abstract void a();
+  apxw(apxv paramapxv, int paramInt) {}
+  
+  public void a(EIPCResult paramEIPCResult)
+  {
+    this.jdField_a_of_type_Apxv.callbackResult(this.jdField_a_of_type_Int, paramEIPCResult);
+  }
 }
 
 

@@ -1,435 +1,412 @@
 package com.tencent.mobileqq.triton.game;
 
 import android.os.SystemClock;
-import android.text.TextUtils;
-import androidx.annotation.NonNull;
-import com.tencent.mobileqq.triton.bridge.TTJSBridge;
+import android.util.Log;
+import com.tencent.mobileqq.triton.engine.GameLaunchCallback;
+import com.tencent.mobileqq.triton.engine.GameLaunchParam;
 import com.tencent.mobileqq.triton.engine.TTEngine;
-import com.tencent.mobileqq.triton.engine.TTLog;
-import com.tencent.mobileqq.triton.jni.TTNativeCall;
-import com.tencent.mobileqq.triton.sdk.IQQEnv;
-import com.tencent.mobileqq.triton.sdk.callback.GameLaunchCallback;
-import com.tencent.mobileqq.triton.sdk.game.GamePluginInfo;
-import com.tencent.mobileqq.triton.sdk.game.IGameLauncher;
-import com.tencent.mobileqq.triton.sdk.game.MiniGameInfo;
-import com.tencent.mobileqq.triton.sdk.statics.EngineInitStatistic;
-import com.tencent.mobileqq.triton.sdk.statics.FirstRenderStatistic;
-import com.tencent.mobileqq.triton.sdk.statics.GameLaunchStatistic;
-import com.tencent.mobileqq.triton.sdk.statics.NativeLibraryLoadStatistic;
-import com.tencent.mobileqq.triton.sdk.statics.ScriptLoadResult;
-import com.tencent.mobileqq.triton.sdk.statics.ScriptLoadStatics;
+import com.tencent.mobileqq.triton.exception.ErrorCodes;
+import com.tencent.mobileqq.triton.exception.TritonException;
+import com.tencent.mobileqq.triton.filesystem.GamePackage;
+import com.tencent.mobileqq.triton.filesystem.GamePackage.Environment;
+import com.tencent.mobileqq.triton.filesystem.ScriptPackage;
+import com.tencent.mobileqq.triton.internal.engine.EngineContext;
+import com.tencent.mobileqq.triton.internal.engine.StatisticsManagerImpl;
+import com.tencent.mobileqq.triton.internal.engine.init.ScriptLoader;
+import com.tencent.mobileqq.triton.internal.lifecycle.ValueHolder;
+import com.tencent.mobileqq.triton.internal.script.ScriptRuntime;
+import com.tencent.mobileqq.triton.internal.script.ScriptSystem;
+import com.tencent.mobileqq.triton.internal.utils.Logger;
+import com.tencent.mobileqq.triton.internal.utils.Utils;
+import com.tencent.mobileqq.triton.script.ScriptContextType;
+import com.tencent.mobileqq.triton.script.ScriptFile;
+import com.tencent.mobileqq.triton.script.ScriptFile.Path;
+import com.tencent.mobileqq.triton.statistic.EngineInitStatistic;
+import com.tencent.mobileqq.triton.statistic.FirstFrameStatistic;
+import com.tencent.mobileqq.triton.statistic.GameLaunchStatistic;
+import com.tencent.mobileqq.triton.statistic.NativeLibraryLoadStatistic;
+import com.tencent.mobileqq.triton.statistic.ScriptLoadResult;
+import com.tencent.mobileqq.triton.statistic.ScriptLoadStatistic;
+import com.tencent.mobileqq.triton.statistic.SubpackageLoadStatisticsCallback;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.Executor;
+import kotlin.Metadata;
+import kotlin.ResultKt;
+import kotlin.Unit;
+import kotlin.collections.MapsKt;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.functions.Function2;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-public class GameLauncher
-  implements IGameLauncher
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/triton/game/GameLauncher;", "", "mTritonEngine", "Lcom/tencent/mobileqq/triton/engine/TTEngine;", "(Lcom/tencent/mobileqq/triton/engine/TTEngine;)V", "mEngineInitStatistic", "Lcom/tencent/mobileqq/triton/statistic/EngineInitStatistic;", "mGameLaunchCallback", "Lcom/tencent/mobileqq/triton/engine/GameLaunchCallback;", "mGameScriptLoadStatics", "Ljava/util/ArrayList;", "Lcom/tencent/mobileqq/triton/statistic/ScriptLoadStatistic;", "mLaunchAfterInit", "Ljava/lang/Runnable;", "mLaunchGameEndTime", "", "genConfig", "", "value", "getOptionConfig", "map", "", "injectGameInfo", "", "launchGame", "param", "Lcom/tencent/mobileqq/triton/engine/GameLaunchParam;", "callback", "onLaunchBegin", "Lkotlin/Function0;", "loadSubpackage", "name", "onProgress", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "totalBytes", "currentBytes", "onComplete", "Lkotlin/Function1;", "statistics", "notifyGameLaunched", "launchTimesMs", "gameScriptLoadStatics", "", "failure", "", "onFirstRender", "onInitDone", "error", "Lcom/tencent/mobileqq/triton/exception/ErrorCodes;", "loadSoTimeMs", "loadEngineScriptTimeMs", "createEGLContextTimeMs", "initTimeMs", "statics", "engineScriptInitException", "Lcom/tencent/mobileqq/triton/exception/TritonException;", "nativeLibraryLoadStatistics", "Lcom/tencent/mobileqq/triton/statistic/NativeLibraryLoadStatistic;", "onSubpackageLoaded", "performLaunch", "performLoadSubpackage", "result", "Lkotlin/Result;", "Lcom/tencent/mobileqq/triton/filesystem/ScriptPackage;", "(Ljava/lang/String;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)V", "Companion", "Triton_release"}, k=1, mv={1, 1, 16})
+public final class GameLauncher
 {
-  private static Map<String, String> k = new HashMap();
-  private final Map<String, GamePluginInfo> a = new HashMap();
-  private final ArrayList<ScriptLoadStatics> b = new ArrayList();
-  private TTEngine c;
-  private TTJSBridge d;
-  private MiniGameInfo e;
-  private long f;
-  private volatile EngineInitStatistic g;
-  private GameLaunchCallback h;
-  private Runnable i;
-  private String j;
+  public static final GameLauncher.Companion Companion = new GameLauncher.Companion(null);
+  private static final String ENV_VERSION_PREFIX = "\n__wxConfig.envVersion = ";
+  private static final String GAME_JSON_PREFIX = "\n__wxConfig.gameJson = ";
+  private static final String INIT_JSLIB = "\nif (typeof global.__ttObjdec__.iniJsLib === 'function') {global.__ttObjdec__.iniJsLib()}";
+  private static final String INIT_WXCONFIG = "var __wxConfig = __wxConfig || {};";
+  @NotNull
+  public static final String TAG = "GameLauncher";
+  private static final String WINDOW_UNDEFINED = "\nwindow = undefined";
+  private volatile EngineInitStatistic mEngineInitStatistic;
+  private GameLaunchCallback mGameLaunchCallback;
+  private final ArrayList<ScriptLoadStatistic> mGameScriptLoadStatics;
+  private Runnable mLaunchAfterInit;
+  private long mLaunchGameEndTime;
+  private final TTEngine mTritonEngine;
   
-  public GameLauncher(TTEngine paramTTEngine, TTJSBridge paramTTJSBridge, String paramString)
+  public GameLauncher(@NotNull TTEngine paramTTEngine)
   {
-    this.c = paramTTEngine;
-    this.d = paramTTJSBridge;
-    this.j = paramString;
+    this.mTritonEngine = paramTTEngine;
+    this.mGameScriptLoadStatics = new ArrayList();
   }
   
-  private void a(MiniGameInfo paramMiniGameInfo)
+  private final String genConfig(Object paramObject)
   {
-    if (paramMiniGameInfo == null) {
-      return;
+    if ((paramObject instanceof Map)) {
+      return new JSONObject((Map)paramObject).toString();
     }
-    TTLog.c("GameLauncher", "launch game [" + paramMiniGameInfo.gameId + "] mainContext");
-    String str = paramMiniGameInfo.getGamePath() + File.separator + "game.js";
-    File localFile = new File(str);
-    if (!localFile.exists())
-    {
-      TTLog.b("GameLauncher", "launch game [" + paramMiniGameInfo.gameId + "] fail, missing game.js");
-      return;
+    if ((paramObject instanceof String)) {
+      return '"' + paramObject + '"';
     }
-    this.b.add(this.c.a(1, localFile.getAbsolutePath(), getGameDebugPath(str), localFile.getAbsolutePath() + ".cc"));
+    return String.valueOf(paramObject);
   }
   
-  private static boolean a(List<ScriptLoadStatics> paramList)
+  private final String getOptionConfig(Map<String, ? extends Object> paramMap)
   {
-    if (paramList.isEmpty()) {
-      return false;
+    Iterator localIterator = paramMap.entrySet().iterator();
+    Map.Entry localEntry;
+    for (paramMap = "\n//optional properties\n"; localIterator.hasNext(); paramMap = paramMap + "__wxConfig." + (String)localEntry.getKey() + " = " + genConfig(localEntry.getValue()) + '\n') {
+      localEntry = (Map.Entry)localIterator.next();
     }
-    paramList = paramList.iterator();
-    do
+    return paramMap;
+  }
+  
+  private final void injectGameInfo()
+  {
+    ScriptRuntime localScriptRuntime1 = this.mTritonEngine.getEngineContext().getScriptSystem().getScriptEngine(ScriptContextType.MAIN);
+    ScriptRuntime localScriptRuntime2 = this.mTritonEngine.getEngineContext().getScriptSystem().getScriptEngine(ScriptContextType.OPEN_DATA);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("var __wxConfig = __wxConfig || {};");
+    ((StringBuilder)localObject).append("\n__wxConfig.envVersion = ");
+    ((StringBuilder)localObject).append('\'' + this.mTritonEngine.getEngineContext().getGamePackage().getEnvironment().getEnvironment() + '\'');
+    ((StringBuilder)localObject).append("\n__wxConfig.gameJson = ");
+    ((StringBuilder)localObject).append(this.mTritonEngine.getEngineContext().getGamePackage().getGameConfig());
+    ((StringBuilder)localObject).append(getOptionConfig(this.mTritonEngine.getEngineContext().getGamePackage().getOptionConfig()));
+    ((StringBuilder)localObject).append("\nif (typeof global.__ttObjdec__.iniJsLib === 'function') {global.__ttObjdec__.iniJsLib()}");
+    ((StringBuilder)localObject).append("\nwindow = undefined");
+    localObject = ((StringBuilder)localObject).toString();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "StringBuilder().apply(builderAction).toString()");
+    localScriptRuntime1.evaluateJs((String)localObject);
+    localScriptRuntime2.evaluateJs((String)localObject);
+  }
+  
+  private final void notifyGameLaunched(long paramLong, List<ScriptLoadStatistic> paramList, Throwable paramThrowable)
+  {
+    this.mLaunchGameEndTime = SystemClock.uptimeMillis();
+    Object localObject = this.mEngineInitStatistic;
+    if (localObject == null) {
+      Intrinsics.throwNpe();
+    }
+    boolean bool;
+    label52:
+    ErrorCodes localErrorCodes;
+    if ((((EngineInitStatistic)localObject).getSuccess()) && (paramThrowable == null) && (GameLauncher.Companion.access$isAllSuccess(Companion, paramList)))
     {
-      if (!paramList.hasNext()) {
-        break;
+      bool = true;
+      if (paramThrowable == null) {
+        break label184;
       }
-    } while (((ScriptLoadStatics)paramList.next()).loadResult.isSuccess());
-    for (boolean bool = false;; bool = true) {
-      return bool;
-    }
-  }
-  
-  public static Map<String, String> b()
-  {
-    return k;
-  }
-  
-  private void b(MiniGameInfo paramMiniGameInfo)
-  {
-    if (paramMiniGameInfo == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramMiniGameInfo.openDataPath))
-    {
-      TTLog.c("GameLauncher", "launch game [" + paramMiniGameInfo.gameId + "] openDataContext abort, 游戏未配置开放域");
-      return;
-    }
-    TTLog.c("GameLauncher", "launch game [" + paramMiniGameInfo.gameId + "] openDataContext");
-    String str = paramMiniGameInfo.gameId;
-    Object localObject = paramMiniGameInfo.openDataPath;
-    localObject = new File(paramMiniGameInfo.getGamePath() + File.separator + (String)localObject + File.separator + "index.js");
-    paramMiniGameInfo = new File(paramMiniGameInfo.getGamePath() + File.separator + "subContext.js");
-    if (((File)localObject).exists())
-    {
-      TTLog.c("GameLauncher", "launch  game [" + str + "] openData from openDataContext/index.js");
-      paramMiniGameInfo = (MiniGameInfo)localObject;
+      if (paramThrowable == null) {
+        break label249;
+      }
+      localErrorCodes = ErrorCodes.SCRIPT_LOAD_FAIL;
+      if (!(paramThrowable instanceof TritonException)) {
+        break label211;
+      }
+      paramThrowable = (TritonException)paramThrowable;
     }
     for (;;)
     {
-      paramMiniGameInfo = this.c.a(2, paramMiniGameInfo.getAbsolutePath(), getGameDebugPath(paramMiniGameInfo.getAbsolutePath()), paramMiniGameInfo.getAbsolutePath() + ".cc");
-      this.b.add(paramMiniGameInfo);
-      if (paramMiniGameInfo.loadResult.isSuccess()) {
-        break;
+      localObject = this.mEngineInitStatistic;
+      if (localObject == null) {
+        Intrinsics.throwNpe();
       }
-      TTLog.b("GameLauncher", "launch  game [" + str + "] openData fail, loadResult:" + paramMiniGameInfo.loadResult);
+      paramList = new GameLaunchStatistic(bool, paramThrowable, paramLong, paramList, (EngineInitStatistic)localObject);
+      paramThrowable = this.mGameLaunchCallback;
+      if (paramThrowable == null) {
+        Intrinsics.throwNpe();
+      }
+      paramThrowable.onGameLaunched(null, paramList);
+      this.mEngineInitStatistic = ((EngineInitStatistic)null);
+      if (!paramList.getSuccess()) {
+        Logger.e("GameLauncher", "launchGame failed " + paramList, (Throwable)paramList.getException());
+      }
       return;
-      if (!paramMiniGameInfo.exists()) {
-        break label353;
+      bool = false;
+      break;
+      label184:
+      paramThrowable = this.mEngineInitStatistic;
+      if (paramThrowable == null) {
+        Intrinsics.throwNpe();
       }
-      TTLog.c("GameLauncher", "launch  game [" + str + "] openData from subContext.js");
-    }
-    label353:
-    TTLog.b("GameLauncher", "launch  game [" + str + "] openData fail,  no entry openData js file");
-  }
-  
-  private void c(MiniGameInfo paramMiniGameInfo)
-  {
-    this.e = paramMiniGameInfo;
-    this.a.clear();
-    if (paramMiniGameInfo != null)
-    {
-      paramMiniGameInfo = paramMiniGameInfo.gamePluginInfo;
-      if (paramMiniGameInfo != null)
+      paramThrowable = (Throwable)paramThrowable.getException();
+      break label52;
+      label211:
+      localObject = paramThrowable.getMessage();
+      if (localObject != null) {}
+      for (;;)
       {
-        paramMiniGameInfo = paramMiniGameInfo.iterator();
-        while (paramMiniGameInfo.hasNext())
-        {
-          GamePluginInfo localGamePluginInfo = (GamePluginInfo)paramMiniGameInfo.next();
-          this.a.put(localGamePluginInfo.name, localGamePluginInfo);
-        }
+        paramThrowable = new TritonException((String)localObject, localErrorCodes, paramThrowable);
+        break;
+        localObject = "";
       }
+      label249:
+      paramThrowable = null;
     }
-    k.clear();
   }
   
-  public GamePluginInfo a(String paramString)
+  private final void onSubpackageLoaded(String paramString, Function1<? super ScriptLoadStatistic, Unit> paramFunction1, ScriptLoadStatistic paramScriptLoadStatistic)
   {
-    return (GamePluginInfo)this.a.get(paramString);
+    paramFunction1.invoke(paramScriptLoadStatistic);
+    paramFunction1 = (SubpackageLoadStatisticsCallback)this.mTritonEngine.getEngineContext().getStatisticsManager().getSubpackageLoadStatisticsCallback().getValue();
+    if (paramFunction1 != null) {
+      this.mTritonEngine.getEngineContext().getMainThreadExecutor().execute((Runnable)new GameLauncher.onSubpackageLoaded..inlined.let.lambda.1(paramFunction1, this, paramString, paramScriptLoadStatistic));
+    }
   }
   
-  public void a()
+  private final void performLaunch(GameLaunchCallback paramGameLaunchCallback, GameLaunchParam paramGameLaunchParam, Function0<Unit> paramFunction0)
   {
-    this.h.onFirstRender(new FirstRenderStatistic(SystemClock.uptimeMillis() - this.f, this.c.getCurrentDrawCount()));
+    this.mGameLaunchCallback = paramGameLaunchCallback;
+    paramGameLaunchCallback = this.mEngineInitStatistic;
+    if (paramGameLaunchCallback == null) {
+      Intrinsics.throwNpe();
+    }
+    if (!paramGameLaunchCallback.getSuccess())
+    {
+      paramGameLaunchCallback = this.mGameLaunchCallback;
+      if (paramGameLaunchCallback == null) {
+        Intrinsics.throwNpe();
+      }
+      paramGameLaunchParam = (List)this.mGameScriptLoadStatics;
+      paramFunction0 = this.mEngineInitStatistic;
+      if (paramFunction0 == null) {
+        Intrinsics.throwNpe();
+      }
+      paramGameLaunchCallback.onGameLaunched(null, new GameLaunchStatistic(false, null, 0L, paramGameLaunchParam, paramFunction0));
+      return;
+    }
+    this.mTritonEngine.setInspectorAgent(paramGameLaunchParam.getInspectorAgent());
+    this.mTritonEngine.initGameInfo();
+    this.mTritonEngine.getEngineContext().getScriptSystem().runOnScriptThread((Runnable)new GameLauncher.performLaunch.1(this, paramFunction0));
   }
   
-  public void a(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, ArrayList<ScriptLoadStatics> paramArrayList, ArrayList<NativeLibraryLoadStatistic> paramArrayList1)
+  private final void performLoadSubpackage(String paramString, Object paramObject, Function1<? super ScriptLoadStatistic, Unit> paramFunction1)
   {
+    label290:
     for (;;)
     {
-      boolean bool2;
       try
       {
-        bool2 = a(paramArrayList);
-        boolean bool1;
-        if ((bool2) && (paramInt == 0))
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = Utils.decorateSubPackage((ScriptPackage)paramObject, this.mTritonEngine.getEngineContext().getEnableCodeCache(), paramString);
+        paramObject = (ScriptFile)MapsKt.getValue(ScriptLoader.INSTANCE.getSubPackageScripts(paramObject), ScriptContextType.MAIN);
+        if ((paramObject != null) && (paramObject.getValid()))
         {
-          bool1 = true;
-          break label95;
-          this.g = new EngineInitStatistic(bool1, paramInt, paramLong1, paramLong2, paramLong3, paramLong4, paramArrayList, paramArrayList1);
-          paramArrayList = this.i;
-          if (paramArrayList != null)
-          {
-            paramArrayList.run();
-            this.i = null;
-          }
+          localObject = this.mTritonEngine.getEngineContext().getScriptSystem().getScriptEngine(ScriptContextType.MAIN);
+          ((ScriptRuntime)localObject).runOnScriptThread((Runnable)new GameLauncher.performLoadSubpackage.1(this, (ScriptRuntime)localObject, paramObject, paramString, paramFunction1));
+          return;
         }
-        else
-        {
-          bool1 = false;
+        Object localObject = ScriptLoadResult.SUCCESS_WITHOUT_CACHE;
+        ScriptContextType localScriptContextType = ScriptContextType.MAIN;
+        String str = "subPackage " + paramString;
+        if ((paramObject instanceof ScriptFile.Path)) {
+          break label290;
         }
-      }
-      finally {}
-      paramInt = 1005;
-      continue;
-      label95:
-      if (!bool2) {}
-    }
-  }
-  
-  public void a(long paramLong, @NonNull List<ScriptLoadStatics> paramList)
-  {
-    this.f = SystemClock.uptimeMillis();
-    GameLaunchCallback localGameLaunchCallback = this.h;
-    if ((a(paramList)) && (this.g.success)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localGameLaunchCallback.onGameLaunched(new GameLaunchStatistic(bool, paramLong, paramList, this.g));
-      this.g = null;
-      return;
-    }
-  }
-  
-  @TTNativeCall
-  public String getBaseEnginePath()
-  {
-    return this.j;
-  }
-  
-  public MiniGameInfo getCurrentGame()
-  {
-    return this.e;
-  }
-  
-  @TTNativeCall
-  public String getGameConfig(String paramString)
-  {
-    return this.c.l().getGameConfig(this.c.j(), paramString);
-  }
-  
-  @TTNativeCall
-  public String getGameDebugPath(String paramString)
-  {
-    Object localObject = this.c.j();
-    if (localObject == null) {}
-    for (localObject = null;; localObject = ((MiniGameInfo)localObject).getGamePath())
-    {
-      String str = paramString;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        str = paramString;
-        if (!TextUtils.isEmpty((CharSequence)localObject))
+        paramObject = null;
+        paramObject = (ScriptFile.Path)paramObject;
+        if (paramObject != null)
         {
-          str = paramString;
-          if (paramString.startsWith((String)localObject))
+          paramObject = paramObject.getPath();
+          if (paramObject != null)
           {
-            paramString = paramString.substring(((String)localObject).length());
-            str = "/game" + paramString;
+            paramObject = paramObject.getAbsolutePath();
+            if (paramObject != null)
+            {
+              onSubpackageLoaded(paramString, paramFunction1, new ScriptLoadStatistic((ScriptLoadResult)localObject, localScriptContextType, str, paramObject, 0L, 0L, 0L, 0L, "no script file"));
+              return;
+            }
           }
         }
       }
-      return str;
-    }
-  }
-  
-  @TTNativeCall
-  public String getGamePluginDebugPath(String paramString)
-  {
-    String str = null;
-    if (this.c.getGameLauncher() != null) {}
-    for (paramString = this.c.getGameLauncher().a(paramString);; paramString = null)
-    {
-      if (paramString != null) {
-        str = "/game_plugin/" + paramString.name + "/" + paramString.version + "/plugin.js";
-      }
-      return str;
-    }
-  }
-  
-  @TTNativeCall
-  public String getGamePluginId(String paramString)
-  {
-    String str = null;
-    if (this.c.getGameLauncher() != null) {}
-    for (paramString = this.c.getGameLauncher().a(paramString);; paramString = null)
-    {
-      if (paramString != null) {
-        str = paramString.id;
-      }
-      return str;
-    }
-  }
-  
-  @TTNativeCall
-  public String getGamePluginPath(String paramString)
-  {
-    String str = null;
-    if (this.c.getGameLauncher() != null) {}
-    for (paramString = this.c.getGameLauncher().a(paramString);; paramString = null)
-    {
-      if (paramString != null) {
-        str = paramString.path;
-      }
-      return str;
-    }
-  }
-  
-  @TTNativeCall
-  public String getResPath(String paramString1, String paramString2)
-  {
-    String str = paramString1 + "_" + paramString2;
-    if (!k.containsKey(str))
-    {
-      if (this.c.getGameLauncher() != null) {}
-      for (Object localObject = this.c.getGameLauncher().getCurrentGame();; localObject = null)
+      catch (Throwable paramObject)
       {
-        localObject = this.c.l().getResPath(paramString1, paramString2, (MiniGameInfo)localObject);
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          k.put(str, localObject);
-          TTLog.a("GameLauncher", "getResPath() name:" + paramString1 + ",type:" + paramString2 + ",resPath:" + (String)localObject);
-        }
-        return localObject;
+        onSubpackageLoaded(paramString, paramFunction1, new ScriptLoadStatistic(ScriptLoadResult.FAIL_READ_SCRIPT, ScriptContextType.MAIN, "subPackage " + paramString, "game.js", 0L, 0L, 0L, 0L, paramObject.getClass().getName() + ' ' + paramObject.getMessage() + ' ' + Log.getStackTraceString(paramObject)));
+        return;
       }
+      paramObject = "";
     }
-    return (String)k.get(str);
-  }
-  
-  @TTNativeCall
-  public String getTmpFilePath(String paramString)
-  {
-    if (!k.containsKey(paramString))
-    {
-      String str = this.c.l().getTmpFilePath(this.c.j(), paramString);
-      if (!TextUtils.isEmpty(str))
-      {
-        k.put(paramString, str);
-        TTLog.a("GameRender", "getTmpFilePath() path:" + paramString + ", resPath:" + str);
-      }
-      return str;
-    }
-    return (String)k.get(paramString);
   }
   
   /* Error */
-  public void launchGame(@NonNull com.tencent.mobileqq.triton.sdk.game.GameLaunchParam paramGameLaunchParam)
+  public final void launchGame(@NotNull GameLaunchParam paramGameLaunchParam, @NotNull GameLaunchCallback paramGameLaunchCallback, @NotNull Function0<Unit> paramFunction0)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: new 373	com/tencent/mobileqq/triton/game/GameLauncher$a
-    //   5: dup
-    //   6: aload_0
-    //   7: aload_1
-    //   8: invokespecial 376	com/tencent/mobileqq/triton/game/GameLauncher$a:<init>	(Lcom/tencent/mobileqq/triton/game/GameLauncher;Lcom/tencent/mobileqq/triton/sdk/game/GameLaunchParam;)V
-    //   11: astore_1
-    //   12: aload_0
-    //   13: getfield 198	com/tencent/mobileqq/triton/game/GameLauncher:g	Lcom/tencent/mobileqq/triton/sdk/statics/EngineInitStatistic;
-    //   16: ifnonnull +11 -> 27
-    //   19: aload_0
-    //   20: aload_1
-    //   21: putfield 260	com/tencent/mobileqq/triton/game/GameLauncher:i	Ljava/lang/Runnable;
-    //   24: aload_0
-    //   25: monitorexit
-    //   26: return
-    //   27: aload_1
-    //   28: invokeinterface 265 1 0
-    //   33: goto -9 -> 24
-    //   36: astore_1
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: aload_1
-    //   40: athrow
+    //   0: aload_1
+    //   1: ldc_w 506
+    //   4: invokestatic 118	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   7: aload_2
+    //   8: ldc_w 507
+    //   11: invokestatic 118	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   14: aload_3
+    //   15: ldc_w 508
+    //   18: invokestatic 118	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   21: aload_0
+    //   22: getfield 122	com/tencent/mobileqq/triton/game/GameLauncher:mTritonEngine	Lcom/tencent/mobileqq/triton/engine/TTEngine;
+    //   25: invokevirtual 512	com/tencent/mobileqq/triton/engine/TTEngine:getRenderContext	()Lcom/tencent/mobileqq/triton/render/RenderContext;
+    //   28: aload_1
+    //   29: invokevirtual 516	com/tencent/mobileqq/triton/engine/GameLaunchParam:getGameView	()Lcom/tencent/mobileqq/triton/view/GameView;
+    //   32: invokevirtual 522	com/tencent/mobileqq/triton/render/RenderContext:attachGameView	(Lcom/tencent/mobileqq/triton/view/GameView;)V
+    //   35: aload_0
+    //   36: monitorenter
+    //   37: new 524	com/tencent/mobileqq/triton/game/GameLauncher$launchGame$$inlined$synchronized$lambda$1
+    //   40: dup
+    //   41: aload_0
+    //   42: aload_2
+    //   43: aload_1
+    //   44: aload_3
+    //   45: invokespecial 526	com/tencent/mobileqq/triton/game/GameLauncher$launchGame$$inlined$synchronized$lambda$1:<init>	(Lcom/tencent/mobileqq/triton/game/GameLauncher;Lcom/tencent/mobileqq/triton/engine/GameLaunchCallback;Lcom/tencent/mobileqq/triton/engine/GameLaunchParam;Lkotlin/jvm/functions/Function0;)V
+    //   48: checkcast 383	java/lang/Runnable
+    //   51: astore_1
+    //   52: aload_0
+    //   53: getfield 295	com/tencent/mobileqq/triton/game/GameLauncher:mEngineInitStatistic	Lcom/tencent/mobileqq/triton/statistic/EngineInitStatistic;
+    //   56: ifnonnull +15 -> 71
+    //   59: aload_0
+    //   60: aload_1
+    //   61: putfield 528	com/tencent/mobileqq/triton/game/GameLauncher:mLaunchAfterInit	Ljava/lang/Runnable;
+    //   64: getstatic 533	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   67: astore_1
+    //   68: aload_0
+    //   69: monitorexit
+    //   70: return
+    //   71: aload_1
+    //   72: invokeinterface 536 1 0
+    //   77: goto -13 -> 64
+    //   80: astore_1
+    //   81: aload_0
+    //   82: monitorexit
+    //   83: aload_1
+    //   84: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	41	0	this	GameLauncher
-    //   0	41	1	paramGameLaunchParam	com.tencent.mobileqq.triton.sdk.game.GameLaunchParam
+    //   0	85	0	this	GameLauncher
+    //   0	85	1	paramGameLaunchParam	GameLaunchParam
+    //   0	85	2	paramGameLaunchCallback	GameLaunchCallback
+    //   0	85	3	paramFunction0	Function0<Unit>
     // Exception table:
     //   from	to	target	type
-    //   2	24	36	finally
-    //   27	33	36	finally
+    //   37	64	80	finally
+    //   64	68	80	finally
+    //   71	77	80	finally
   }
   
-  public ScriptLoadResult launchSubpackage(String paramString)
+  public final void loadSubpackage(@NotNull String paramString, @NotNull Function2<? super Long, ? super Long, Unit> paramFunction2, @NotNull Function1<? super ScriptLoadStatistic, Unit> paramFunction1)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return ScriptLoadResult.FAIL_READ_SCRIPT;
+    Intrinsics.checkParameterIsNotNull(paramString, "name");
+    Intrinsics.checkParameterIsNotNull(paramFunction2, "onProgress");
+    Intrinsics.checkParameterIsNotNull(paramFunction1, "onComplete");
+    this.mTritonEngine.getEngineContext().getWorkerExecutor().execute((Runnable)new GameLauncher.loadSubpackage.1(this, paramString, paramFunction2, paramFunction1));
+  }
+  
+  public final void onFirstRender()
+  {
+    GameLaunchCallback localGameLaunchCallback = this.mGameLaunchCallback;
+    if (localGameLaunchCallback == null) {
+      Intrinsics.throwNpe();
     }
-    MiniGameInfo localMiniGameInfo = this.c.j();
-    this.c.l().reportDC04266(1009, null);
-    Object localObject = paramString;
-    String str;
-    if (!paramString.endsWith(".js"))
-    {
-      localObject = new StringBuilder().append(paramString);
-      if (paramString.endsWith(File.separator))
-      {
-        paramString = "";
-        localObject = paramString + "game.js";
-      }
-    }
-    else
-    {
-      TTLog.c("GameLauncher[subpackage]", "try loadSubPackageEnter subPath:" + (String)localObject);
-      str = localMiniGameInfo.getGamePath() + File.separator + (String)localObject;
-      if (!new File(str).exists()) {
-        break label239;
-      }
-      paramString = (String)localObject;
-      localObject = str;
-    }
+    localGameLaunchCallback.onFirstFrame(new FirstFrameStatistic(SystemClock.uptimeMillis() - this.mLaunchGameEndTime, this.mTritonEngine.getCurrentDrawCount()));
+  }
+  
+  public final void onInitDone(@NotNull ErrorCodes paramErrorCodes, long paramLong1, long paramLong2, long paramLong3, long paramLong4, @NotNull ArrayList<ScriptLoadStatistic> paramArrayList, @Nullable TritonException paramTritonException, @NotNull ArrayList<NativeLibraryLoadStatistic> paramArrayList1)
+  {
     for (;;)
     {
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (new File((String)localObject).exists()))
+      int i;
+      try
       {
-        localObject = new File((String)localObject);
-        if (((File)localObject).length() == 0L)
+        Intrinsics.checkParameterIsNotNull(paramErrorCodes, "error");
+        Intrinsics.checkParameterIsNotNull(paramArrayList, "statics");
+        Intrinsics.checkParameterIsNotNull(paramArrayList1, "nativeLibraryLoadStatistics");
+        boolean bool = GameLauncher.Companion.access$isAllSuccess(Companion, (List)paramArrayList);
+        if ((paramTritonException == null) && (!bool))
         {
-          TTLog.c("GameLauncher[subpackage]", "分包入口文件为空文件, entryPath:" + paramString);
-          return ScriptLoadResult.SUCCESS_WITHOUT_CACHE;
-          paramString = File.separator;
-          break;
-          label239:
-          paramString = (String)localObject;
-          if (!str.endsWith("game.js"))
+          Object localObject = new StringBuilder().append("init engine failed to load script ");
+          Iterator localIterator = ((Iterable)paramArrayList).iterator();
+          if (localIterator.hasNext())
           {
-            str = ((String)localObject).substring(0, ((String)localObject).lastIndexOf("/") + 1) + "game.js";
-            localObject = localMiniGameInfo.getGamePath() + File.separator + str;
-            paramString = str;
-            if (new File((String)localObject).exists())
+            paramTritonException = localIterator.next();
+            if (!((ScriptLoadStatistic)paramTritonException).getLoadResult().isSuccess())
             {
-              TTLog.d("GameLauncher[subpackage]", "config entry file not found, switch entryPath to:" + str);
-              paramString = str;
-              continue;
+              i = 1;
+              break label280;
+              paramTritonException = new TritonException((ScriptLoadStatistic)paramTritonException, ErrorCodes.SCRIPT_LOAD_FAIL, null, 4, null);
+              localObject = paramTritonException;
+              if (paramTritonException == null)
+              {
+                localObject = paramTritonException;
+                if (!paramErrorCodes.getSuccess()) {
+                  localObject = new TritonException("failed to Init Engine", paramErrorCodes, null, 4, null);
+                }
+              }
+              if (localObject == null)
+              {
+                bool = true;
+                this.mEngineInitStatistic = new EngineInitStatistic(bool, (TritonException)localObject, paramLong1, paramLong2, paramLong3, paramLong4, (List)paramArrayList, (List)paramArrayList1);
+                if (this.mLaunchAfterInit != null)
+                {
+                  paramErrorCodes = this.mLaunchAfterInit;
+                  if (paramErrorCodes == null) {
+                    Intrinsics.throwNpe();
+                  }
+                  paramErrorCodes.run();
+                  this.mLaunchAfterInit = ((Runnable)null);
+                }
+              }
+            }
+            else
+            {
+              i = 0;
+              break label280;
             }
           }
-          localObject = null;
+          else
+          {
+            paramTritonException = null;
+            continue;
+          }
+          bool = false;
           continue;
         }
-        localObject = this.c.a(1, ((File)localObject).getAbsolutePath(), this.c.getGameLauncher().getGameDebugPath(((File)localObject).getAbsolutePath()), ((File)localObject).getAbsolutePath() + ".cc");
-        this.b.add(localObject);
-        if (((ScriptLoadStatics)localObject).loadResult.isSuccess()) {
-          this.c.l().reportDC04266(1010, null);
-        }
-        for (;;)
+        else
         {
-          return ((ScriptLoadStatics)localObject).loadResult;
-          TTLog.b("GameLauncher[subpackage]", "加载分包的启动js失败, loadResult:" + ((ScriptLoadStatics)localObject).loadResult + ", entryPath:" + paramString);
+          continue;
         }
       }
+      finally {}
+      label280:
+      if (i == 0) {}
     }
-    TTLog.b("GameLauncher[subpackage]", "加载分包的启动js失败, entryPath file not found:" + paramString);
-    return ScriptLoadResult.FAIL_READ_SCRIPT;
   }
 }
 

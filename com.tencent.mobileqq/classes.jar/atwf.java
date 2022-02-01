@@ -1,15 +1,22 @@
-import android.media.MediaScannerConnection.OnScanCompletedListener;
-import android.net.Uri;
-import com.tencent.qphone.base.util.QLog;
+import androidx.annotation.NonNull;
 
-final class atwf
-  implements MediaScannerConnection.OnScanCompletedListener
+class atwf
 {
-  public void onScanCompleted(String paramString, Uri paramUri)
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = "";
+  String b = "";
+  String c = "";
+  String d = "";
+  String e = "";
+  String f = "";
+  String g = "";
+  
+  private atwf(atvy paramatvy) {}
+  
+  @NonNull
+  public String toString()
   {
-    if (QLog.isDebugVersion()) {
-      QLog.i("FilePathUtil<FileAssistant>", 1, "MediaScannerConnection Scanned:\n" + paramString + ":\nuri=" + paramUri);
-    }
+    return "busiType:" + this.jdField_a_of_type_Int + " fileMd5:" + this.f + " fileSha:" + this.g;
   }
 }
 

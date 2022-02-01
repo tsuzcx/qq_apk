@@ -1,68 +1,27 @@
-import UserGrowth.stNewIconStyle;
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import android.view.ViewStub;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class utr
-  extends ueh<uru>
+  extends utt
 {
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private uts jdField_a_of_type_Uts;
-  private utw jdField_a_of_type_Utw;
-  
-  public utr(Context paramContext, utw paramutw)
+  public utr(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Utw = paramutw;
+    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
   }
   
-  private stSimpleMetaFeed a()
+  public utq a(int paramInt)
   {
-    uru localuru = (uru)a();
-    if ((localuru != null) && ((localuru.a() instanceof stSimpleMetaFeed))) {
-      return (stSimpleMetaFeed)localuru.a();
-    }
-    return null;
+    return new uux(a(), this);
   }
   
-  private void b(uru paramuru)
+  public boolean b()
   {
-    if ((a() != null) && (a().new_icon != null) && (a().new_icon.tag_type == 0))
-    {
-      if (this.jdField_a_of_type_Uts == null)
-      {
-        this.jdField_a_of_type_Uts = new uts(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Utw);
-        this.jdField_a_of_type_Uts.a(this.jdField_a_of_type_AndroidViewViewStub);
-      }
-      this.jdField_a_of_type_Uts.a(paramuru);
-    }
+    return false;
   }
   
-  protected void a() {}
-  
-  public void a(uru paramuru)
+  public boolean c()
   {
-    super.a(paramuru);
-    b(paramuru);
-  }
-  
-  protected int b()
-  {
-    return 2131560026;
-  }
-  
-  protected void b() {}
-  
-  protected void c()
-  {
-    if (this.jdField_a_of_type_Uts != null) {
-      this.jdField_a_of_type_Uts.c();
-    }
-  }
-  
-  protected void e()
-  {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131380518));
+    return false;
   }
 }
 

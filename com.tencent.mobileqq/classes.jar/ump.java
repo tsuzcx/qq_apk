@@ -1,10 +1,19 @@
-import UserGrowth.stSimpleMetaPerson;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushGloryKingModel;
 
-public abstract interface ump
+public final class ump
+  implements Parcelable.Creator<WSPushGloryKingModel>
 {
-  public abstract void a(stSimpleMetaPerson paramstSimpleMetaPerson);
+  public WSPushGloryKingModel a(Parcel paramParcel)
+  {
+    return new WSPushGloryKingModel(paramParcel);
+  }
   
-  public abstract void b(stSimpleMetaPerson paramstSimpleMetaPerson);
+  public WSPushGloryKingModel[] a(int paramInt)
+  {
+    return new WSPushGloryKingModel[paramInt];
+  }
 }
 
 

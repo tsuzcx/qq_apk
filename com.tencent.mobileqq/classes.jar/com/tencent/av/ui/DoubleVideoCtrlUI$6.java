@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
 import android.content.SharedPreferences;
-import bgsg;
+import bhsi;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import ley;
+import lff;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,7 +22,7 @@ class DoubleVideoCtrlUI$6
       return;
       if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a() != null))
       {
-        Object localObject = bgsg.c(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).getString("AvWeakNet_video_ConfigContent", "");
+        Object localObject = bhsi.c(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).getString("AvWeakNet_video_ConfigContent", "");
         if (((String)localObject).length() == 0)
         {
           QLog.d(this.this$0.d, 1, "cannot Read AvWeaknetConfig");

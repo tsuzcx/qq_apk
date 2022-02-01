@@ -1,19 +1,12 @@
+import java.io.File;
+import java.io.FilenameFilter;
+
 class bmgz
-  extends bmhc
+  implements FilenameFilter
 {
-  bmgz(bmgy parambmgy, String paramString, boolean paramBoolean)
+  public boolean accept(File paramFile, String paramString)
   {
-    super(paramString, paramBoolean);
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public String b()
-  {
-    return "wspeed.qq.com";
+    return paramString.endsWith(this.a);
   }
 }
 

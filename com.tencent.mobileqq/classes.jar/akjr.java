@@ -1,22 +1,46 @@
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.text.ClipboardManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akjr
-  implements MediaScanner.OnMediaInfoScannerListener
+  implements View.OnClickListener
 {
-  akjr(akjq paramakjq, Intent paramIntent, ArrayList paramArrayList) {}
+  akjr(akjn paramakjn) {}
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    ((NewPhotoListActivity)this.jdField_a_of_type_Akjq.mActivity).cancleProgressDailog();
-    if (bpwu.a(this.jdField_a_of_type_Akjq.mActivity, paramLocalMediaInfo))
+    int i = paramView.getId();
+    if (QLog.isColorLevel()) {
+      QLog.i(akjn.jdField_a_of_type_JavaLangString, 2, "onClick, id = " + i);
+    }
+    Object localObject = this.a.jdField_a_of_type_Akjl;
+    if (this.a.jdField_a_of_type_Akjl == null) {}
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-      PhotoUtils.a(this.jdField_a_of_type_Akjq.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      switch (i)
+      {
+      default: 
+        break;
+      case 2131365191: 
+        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(((akjl)localObject).a.msg);
+        break;
+      case 2131367078: 
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("forward_type", -1);
+        localBundle.putString("forward_text", ((akjl)localObject).a.msg);
+        localObject = new Intent();
+        ((Intent)localObject).putExtras(localBundle);
+        auxu.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
+      }
     }
   }
 }

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.minigame.manager;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.mobileqq.minigame.utils.GameLog;
-import com.tencent.mobileqq.triton.sdk.Version;
+import com.tencent.mobileqq.triton.model.Version;
 import org.json.JSONObject;
 
 class GameEnvManager$1$1

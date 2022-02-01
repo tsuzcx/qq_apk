@@ -6,27 +6,27 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
-import bgjq;
+import bhjr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import uch;
-import uci;
 import ucj;
 import uck;
-import ucv;
+import ucl;
+import ucm;
+import ucx;
 
-public abstract class WSBaseFragment<V extends uch, P extends uck<V>>
+public abstract class WSBaseFragment<V extends ucj, P extends ucm<V>>
   extends PublicBaseFragment
-  implements uch, uci<V, P>
+  implements ucj, uck<V, P>
 {
   private MiniMsgUser jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
-  private ucj<V, P> jdField_a_of_type_Ucj;
+  private ucl<V, P> jdField_a_of_type_Ucl;
   public P a;
-  protected boolean a;
+  public boolean a;
   public boolean b;
   private boolean c;
   
@@ -54,17 +54,17 @@ public abstract class WSBaseFragment<V extends uch, P extends uck<V>>
   }
   
   @NonNull
-  protected ucj<V, P> a()
+  protected ucl<V, P> a()
   {
-    if (this.jdField_a_of_type_Ucj == null) {
-      this.jdField_a_of_type_Ucj = new ucv(this);
+    if (this.jdField_a_of_type_Ucl == null) {
+      this.jdField_a_of_type_Ucl = new ucx(this);
     }
-    return this.jdField_a_of_type_Ucj;
+    return this.jdField_a_of_type_Ucl;
   }
   
   public void a(P paramP)
   {
-    this.jdField_a_of_type_Uck = paramP;
+    this.jdField_a_of_type_Ucm = paramP;
   }
   
   protected boolean a()
@@ -79,7 +79,7 @@ public abstract class WSBaseFragment<V extends uch, P extends uck<V>>
       return false;
     }
     boolean bool;
-    if ((Build.VERSION.SDK_INT >= 23) && (!bgjq.d()) && (!bgjq.b())) {
+    if ((Build.VERSION.SDK_INT >= 23) && (!bhjr.d()) && (!bhjr.b())) {
       if (paramBoolean)
       {
         getActivity().getWindow().getDecorView().setSystemUiVisibility(i);
@@ -98,7 +98,7 @@ public abstract class WSBaseFragment<V extends uch, P extends uck<V>>
         if (Build.VERSION.SDK_INT >= 23)
         {
           bool = paramBoolean;
-          if (bgjq.b())
+          if (bhjr.b())
           {
             if (paramBoolean) {}
             for (;;)
@@ -120,7 +120,7 @@ public abstract class WSBaseFragment<V extends uch, P extends uck<V>>
   
   public P b()
   {
-    return this.jdField_a_of_type_Uck;
+    return this.jdField_a_of_type_Ucm;
   }
   
   protected void b() {}

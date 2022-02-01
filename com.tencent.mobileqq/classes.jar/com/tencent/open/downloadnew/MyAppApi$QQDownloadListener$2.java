@@ -1,16 +1,16 @@
 package com.tencent.open.downloadnew;
 
-import bivr;
-import biwq;
+import bjwq;
+import bjxp;
 
 public class MyAppApi$QQDownloadListener$2
   implements Runnable
 {
-  public MyAppApi$QQDownloadListener$2(biwq parambiwq) {}
+  public MyAppApi$QQDownloadListener$2(bjxp parambjxp) {}
   
   public void run()
   {
-    bivr.a().d();
+    bjwq.a().d();
   }
 }
 

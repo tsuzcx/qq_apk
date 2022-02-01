@@ -1,44 +1,19 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.database.DataSetObserver;
+import com.tencent.widget.AdapterViewPagerAdapter;
 
-final class bljp
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public class bljp
+  extends DataSetObserver
 {
-  bljp(Runnable paramRunnable) {}
+  public bljp(AdapterViewPagerAdapter paramAdapterViewPagerAdapter) {}
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public void onChanged()
   {
-    if (paramPluginManagerClient == null) {}
-    try
-    {
-      ThreadManager.post(this.a, 5, null, false);
-      return;
-    }
-    catch (Exception paramPluginManagerClient) {}
-    if (paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("qqfav", 2, "qqfav.apk already installed.");
-      }
-      bljn.a().set(true);
-      try
-      {
-        ThreadManager.post(this.a, 5, null, false);
-        return;
-      }
-      catch (Exception paramPluginManagerClient)
-      {
-        return;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "installing plugin qqfav.apk");
-    }
-    paramPluginManagerClient.installPlugin("qqfav.apk", new bljq(this));
-    return;
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    super.onInvalidated();
   }
 }
 

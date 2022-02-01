@@ -1,6 +1,6 @@
 package cooperation.hce;
 
-import aoor;
+import apch;
 
 public class HceDataProxy
 {
@@ -11,7 +11,7 @@ public class HceDataProxy
     if (paramGetLocationListener == null) {
       return;
     }
-    aoor.a(new HceDataProxy.1(paramString, paramGetLocationListener));
+    apch.a(new HceDataProxy.1(paramString, paramGetLocationListener));
   }
 }
 

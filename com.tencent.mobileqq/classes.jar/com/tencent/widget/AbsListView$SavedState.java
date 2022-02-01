@@ -5,17 +5,17 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.SparseBooleanArray;
 import android.view.View.BaseSavedState;
-import bkfu;
-import bkhh;
+import blgz;
+import blik;
 
 public class AbsListView$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator<SavedState> CREATOR = new bkhh();
+  public static final Parcelable.Creator<SavedState> CREATOR = new blik();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long = -1L;
   SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray;
-  bkfu<Integer> jdField_a_of_type_Bkfu;
+  blgz<Integer> jdField_a_of_type_Blgz;
   String jdField_a_of_type_JavaLangString;
   boolean jdField_a_of_type_Boolean;
   public int b;
@@ -42,12 +42,12 @@ public class AbsListView$SavedState
       if (j <= 0) {
         break;
       }
-      this.jdField_a_of_type_Bkfu = new bkfu();
+      this.jdField_a_of_type_Blgz = new blgz();
       while (i < j)
       {
         long l = paramParcel.readLong();
         int k = paramParcel.readInt();
-        this.jdField_a_of_type_Bkfu.a(l, Integer.valueOf(k));
+        this.jdField_a_of_type_Blgz.a(l, Integer.valueOf(k));
         i += 1;
       }
     }
@@ -79,18 +79,18 @@ public class AbsListView$SavedState
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeInt(this.d);
       paramParcel.writeSparseBooleanArray(this.jdField_a_of_type_AndroidUtilSparseBooleanArray);
-      if (this.jdField_a_of_type_Bkfu == null) {
+      if (this.jdField_a_of_type_Blgz == null) {
         break label154;
       }
     }
     label154:
-    for (paramInt = this.jdField_a_of_type_Bkfu.a();; paramInt = 0)
+    for (paramInt = this.jdField_a_of_type_Blgz.a();; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
       while (i < paramInt)
       {
-        paramParcel.writeLong(this.jdField_a_of_type_Bkfu.a(i));
-        paramParcel.writeInt(((Integer)this.jdField_a_of_type_Bkfu.a(i)).intValue());
+        paramParcel.writeLong(this.jdField_a_of_type_Blgz.a(i));
+        paramParcel.writeInt(((Integer)this.jdField_a_of_type_Blgz.a(i)).intValue());
         i += 1;
       }
       paramInt = 0;

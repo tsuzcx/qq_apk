@@ -1,34 +1,38 @@
-import com.tencent.av.redpacket.AVRedPacketManager.LocalEmojiInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalFrameSyncInfo;
-import java.util.List;
+import com.tencent.av.random.RandomWebProtocol;
+import org.json.JSONObject;
 
-public abstract interface lti
+public class lti
+  extends ltg
 {
-  public abstract void a();
+  boolean jdField_b_of_type_Boolean;
+  int c;
   
-  public abstract void a(int paramInt);
+  public lti(RandomWebProtocol paramRandomWebProtocol, ltg paramltg, String paramString, boolean paramBoolean, int paramInt)
+  {
+    super(paramRandomWebProtocol, paramltg);
+    this.a = 2;
+    this.c = paramString;
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.c = paramInt;
+    this.d = "[m] RequestMulti";
+  }
   
-  public abstract void a(int paramInt, List<AVRedPacketManager.LocalEmojiInfo> paramList);
-  
-  public abstract void a(int paramInt, ltj paramltj);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void b(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo);
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
+  String a()
+  {
+    this.a = null;
+    try
+    {
+      this.a = new JSONObject().put("session_type", this.c);
+      return super.a();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
 }
 
 

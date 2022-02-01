@@ -1,41 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Hashtable;
 
-public class bgnc
-  extends anmu
+class bgnc
+  implements aoog
 {
-  private final bgmp b;
+  bgnc(bgna parambgna) {}
   
-  public bgnc(bgmp parambgmp1, bgmp parambgmp2)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    this.b = parambgmp2;
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_JavaUtilHashtable == null) || (!this.a.jdField_a_of_type_JavaUtilHashtable.containsKey(paramString))) {}
-    do
+    if ((paramBitmap != null) && (bgna.a(this.a) != null))
     {
-      return;
-      this.a.jdField_a_of_type_JavaUtilHashtable.remove(paramString);
-      if (this.a.jdField_a_of_type_JavaUtilHashtable.size() == 0) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Bgnc);
+      if (QLog.isColorLevel()) {
+        QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, String.format("onDecodeTaskCompleted uin=%s", new Object[] { paramString }));
       }
-      Object localObject = Uri.parse(bgmp.a(this.a) + "&uin=" + paramString);
-      localObject = new Intent((String)this.a.jdField_a_of_type_JavaUtilHashMap.get("callback_name"), (Uri)localObject);
-      this.a.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
-    } while (!QLog.isColorLevel());
-    QLog.i("JumpAction", 2, "download head " + paramString + " success. Send broadcast to " + (String)this.a.jdField_a_of_type_JavaUtilHashMap.get("callback_name"));
+      if (!TextUtils.isEmpty(paramString)) {
+        bgna.a(this.a).b(paramString);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgnc
  * JD-Core Version:    0.7.0.1
  */

@@ -117,7 +117,7 @@ public class BaseLibManager
     if (paramBaseLibInfo == null) {
       return Boolean.valueOf(false);
     }
-    String str = StorageUtil.getPreference().getString("version", "1.17.0.00206");
+    String str = StorageUtil.getPreference().getString("version", "1.18.0.00132");
     return Boolean.valueOf(BaseLibInfo.needUpdateVersion(paramBaseLibInfo.baseLibVersion, str));
   }
   
@@ -227,7 +227,7 @@ public class BaseLibManager
   {
     BaseLibInfo localBaseLibInfo = new BaseLibInfo();
     String str = StorageUtil.getPreference().getString("downloadUrl", null);
-    localBaseLibInfo.baseLibVersion = StorageUtil.getPreference().getString("version", "1.17.0.00206");
+    localBaseLibInfo.baseLibVersion = StorageUtil.getPreference().getString("version", "1.18.0.00132");
     localBaseLibInfo.baseLibUrl = str;
     return localBaseLibInfo;
   }
@@ -246,14 +246,14 @@ public class BaseLibManager
     {
       try
       {
-        String str = g().getBaseLibDir("mini", "1.17.0.00206");
+        String str = g().getBaseLibDir("mini", "1.18.0.00132");
         if (g().isBaseLibDirValid4MiniGame(str))
         {
-          QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] installMiniGameInnerJsLib, inner baseLib already installed, version:1.17.0.00206");
+          QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] installMiniGameInnerJsLib, inner baseLib already installed, version:1.18.0.00132");
           return str;
         }
         int j = WnsConfig.getConfig("qqminiapp", "mini_app_inner_baselib_retry_count", MINI_APP_INNER_BASELIB_RETRY_COUNT_DEFAULT);
-        QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] installMiniGameInnerJsLib, version:1.17.0.00206, totalCount:" + j);
+        QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] installMiniGameInnerJsLib, version:1.18.0.00132, totalCount:" + j);
         int i = 0;
         boolean bool;
         if (i < j)

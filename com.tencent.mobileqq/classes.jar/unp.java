@@ -1,16 +1,18 @@
-import UserGrowth.stSimpleGetFeedDetailReq;
-import UserGrowth.stSimpleGetFeedDetailRsp;
+import UserGrowth.stWeishiReportRsp;
 
-public class unp
-  extends ujr<stSimpleGetFeedDetailRsp>
+final class unp
+  implements ukd
 {
-  public unp(String paramString)
+  unp(String paramString) {}
+  
+  public void a(uko paramuko)
   {
-    super("SimpleGetFeedDetail", 10002);
-    stSimpleGetFeedDetailReq localstSimpleGetFeedDetailReq = new stSimpleGetFeedDetailReq();
-    localstSimpleGetFeedDetailReq.feedid = paramString;
-    this.a = localstSimpleGetFeedDetailReq;
-    upe.b("SimpleGetFeedDetailRequest", "stSimpleGetFeedDetailReq = " + localstSimpleGetFeedDetailReq.toString());
+    uqf.b("weishi-report", "report " + this.a + " start...");
+    if ((paramuko != null) && (paramuko.a != null) && ((paramuko.a instanceof stWeishiReportRsp)))
+    {
+      paramuko = (stWeishiReportRsp)paramuko.a;
+      uqf.b("weishi-report", "report" + this.a + "end: " + paramuko.code + paramuko.msg);
+    }
   }
 }
 

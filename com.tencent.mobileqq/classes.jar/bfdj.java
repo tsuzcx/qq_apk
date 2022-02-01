@@ -1,65 +1,32 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.24.1;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.24.2;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnInfoListener;
 
 public class bfdj
-  extends BaseAdapter
+  implements ISuperPlayer.OnInfoListener
 {
-  public bfdk a;
-  protected List<String> a = new ArrayList();
+  public bfdj(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public String a(int paramInt)
+  public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
-    return (String)this.a.get(paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.add(paramString);
-  }
-  
-  public int getCount()
-  {
-    return this.a.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
+    switch (paramInt)
     {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560630, null, false);
-      paramView = new bfdl(this);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379934));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramView);
-      localView.setTag(paramView);
     }
     for (;;)
     {
-      Object localObject = a(paramInt);
-      paramView.jdField_a_of_type_Int = paramInt;
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (bfdl)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
+      return false;
+      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.24.1(this));
+      continue;
+      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.24.2(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfdj
  * JD-Core Version:    0.7.0.1
  */

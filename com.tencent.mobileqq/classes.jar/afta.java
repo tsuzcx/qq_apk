@@ -1,31 +1,37 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.util.WeakReference;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
 
 public class afta
-  implements View.OnClickListener
+  extends anyu
 {
-  public afta(PositionActivatePage paramPositionActivatePage) {}
+  public afta(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((PositionActivatePage.a(this.a) != null) && (PositionActivatePage.a(this.a).get() != null))
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!bhjx.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin))) {}
+    String str;
+    do
     {
-      Intent localIntent = new Intent((Context)PositionActivatePage.a(this.a).get(), NearbyActivity.class);
-      localIntent.putExtra("ENTER_TIME", System.currentTimeMillis());
-      localIntent.putExtra("FROM_WHERE", 1002);
-      localIntent.putExtra("is_skip_nearby_guide", true);
-      localIntent.setFlags(67108864);
-      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivity(localIntent);
-      bcst.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E07", "0X8004E07", 0, 0, "", "", "", "");
+      return;
+      this.a.c = false;
+      str = bhlg.j(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+      if (!TextUtils.isEmpty(str))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = str;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.troopinfo", 2, "onUpdateFriendInfo|uin = " + paramString + ", tmpNickName = " + str);
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (bhjx.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin))) {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

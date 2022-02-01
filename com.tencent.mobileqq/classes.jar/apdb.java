@@ -1,71 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class apdb
-  implements aowu
+public class apdb
+  extends bcpv
 {
-  private int jdField_a_of_type_Int;
+  BrowserAppInterface a;
   
-  private apdb(apcy paramapcy) {}
-  
-  public void a(int paramInt)
+  public apdb(BrowserAppInterface paramBrowserAppInterface)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.MiniCodeController", 2, String.format("onMiniDownloadSuccess type=%d", new Object[] { Integer.valueOf(paramInt) }));
-      }
-      this.jdField_a_of_type_Apcy.a();
-      return;
-      apcy.c(this.jdField_a_of_type_Apcy, true);
-      continue;
-      apcy.d(this.jdField_a_of_type_Apcy, true);
-      continue;
-      apcy.e(this.jdField_a_of_type_Apcy, true);
-      this.jdField_a_of_type_Int = 100;
-    }
+    this.a = paramBrowserAppInterface;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public AppInterface a()
   {
-    switch (paramInt1)
-    {
-    }
-    while (paramInt1 == 0)
-    {
-      Iterator localIterator = apcy.a(this.jdField_a_of_type_Apcy).iterator();
-      while (localIterator.hasNext())
-      {
-        apdc localapdc = (apdc)((WeakReference)localIterator.next()).get();
-        if (localapdc != null) {
-          localapdc.a(this.jdField_a_of_type_Int);
-        }
-      }
-      this.jdField_a_of_type_Int = paramInt2;
-    }
+    return this.a;
   }
   
-  public void b(int paramInt1, int paramInt2)
+  public void a(ToServiceMsg paramToServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniRecog.MiniCodeController", 2, String.format("onMiniDownloadError type=%d error=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-    }
-    if (paramInt1 == 0)
-    {
-      Iterator localIterator = apcy.a(this.jdField_a_of_type_Apcy).iterator();
-      while (localIterator.hasNext())
-      {
-        apdc localapdc = (apdc)((WeakReference)localIterator.next()).get();
-        if (localapdc != null) {
-          localapdc.b(paramInt2);
-        }
-      }
-    }
+    super.b(paramToServiceMsg, null, awjk.class);
   }
 }
 

@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import cooperation.qzone.video.QzoneLiveVideoGpuProxyActivity;
-import cooperation.qzone.video.QzoneLiveVideoPluginProxyActivity;
-import cooperation.qzone.video.QzoneLiveVideoTransparentActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qqdataline.ipc.MessageRecordParcel;
 
-public class bmkn
+public final class bmkn
+  implements Parcelable.Creator<MessageRecordParcel>
 {
-  public static Class<? extends PluginProxyActivity> a(String paramString)
+  public MessageRecordParcel a(Parcel paramParcel)
   {
-    if (QzoneLiveVideoPluginProxyActivity.a(QzoneLiveVideoPluginProxyActivity.a(), paramString)) {
-      return QzoneLiveVideoTransparentActivity.class;
-    }
-    return QzoneLiveVideoGpuProxyActivity.class;
+    return MessageRecordParcel.a(paramParcel);
+  }
+  
+  public MessageRecordParcel[] a(int paramInt)
+  {
+    return new MessageRecordParcel[paramInt];
   }
 }
 

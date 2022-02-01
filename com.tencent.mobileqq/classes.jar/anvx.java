@@ -1,28 +1,28 @@
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class anvx
-  extends MqqHandler
+class anvx
+  extends BroadcastReceiver
 {
-  public anvx(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  anvx(anvu paramanvu, QQAppInterface paramQQAppInterface) {}
   
-  public void removeCallbacksAndMessages(Object paramObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramObject == null)
+    if (paramIntent != null)
     {
-      QLog.e("ThreadManager", 1, "global fileHandler cannot excute removeCallbacksAndMessages");
-      return;
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")))) {
+        this.jdField_a_of_type_Anvu.a();
+      }
     }
-    super.removeCallbacksAndMessages(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anvx
  * JD-Core Version:    0.7.0.1
  */

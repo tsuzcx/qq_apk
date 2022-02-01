@@ -1,29 +1,34 @@
-import android.view.MotionEvent;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
 
 public class bfno
-  implements View.OnTouchListener
+  implements View.OnFocusChangeListener
 {
-  public bfno(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  public bfno(NewTroopContactView paramNewTroopContactView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    boolean bool1 = this.a.a.canScrollVertically(-1);
-    boolean bool2 = this.a.a.canScrollVertically(1);
-    if ((paramView.isFocused()) && ((bool1) || (bool2))) {
-      paramView.getParent().requestDisallowInterceptTouchEvent(true);
-    }
-    switch (paramMotionEvent.getAction() & 0xFF)
+    if (paramBoolean)
     {
-    default: 
-      return false;
+      paramView = this.a.a();
+      if (paramView != null)
+      {
+        paramView.d(true);
+        paramView.a(NewTroopContactView.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList);
+        FragmentTransaction localFragmentTransaction = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getSupportFragmentManager().beginTransaction();
+        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
+          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
+        }
+        localFragmentTransaction.add(2131376581, paramView);
+        localFragmentTransaction.commitAllowingStateLoss();
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
+      }
     }
-    paramView.getParent().requestDisallowInterceptTouchEvent(false);
-    return false;
   }
 }
 

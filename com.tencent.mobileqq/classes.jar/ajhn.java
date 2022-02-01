@@ -1,13 +1,25 @@
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
 
-class ajhn
-  implements ajlb
+public class ajhn
+  implements nlf
 {
-  ajhn(ajhk paramajhk) {}
+  public ajhn(GroupSearchRecommendView paramGroupSearchRecommendView) {}
   
   public void a()
   {
-    this.a.a.sendEmptyMessageDelayed(7, 100L);
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+      return;
+    }
+    GroupSearchRecommendView.a(this.a).sendEmptyMessage(2);
+  }
+  
+  public void b()
+  {
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+      return;
+    }
+    GroupSearchRecommendView.a(this.a).sendEmptyMessage(3);
   }
 }
 

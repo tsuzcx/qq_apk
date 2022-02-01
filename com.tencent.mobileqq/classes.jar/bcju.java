@@ -1,132 +1,64 @@
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Set;
 
 public class bcju
+  extends bcia
 {
-  public static bcju a;
-  private final int jdField_a_of_type_Int = 20;
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean;
-  private long jdField_d_of_type_Long;
-  private volatile boolean jdField_d_of_type_Boolean;
-  private long e;
-  private long f;
-  private long g;
+  private Set<String> b;
   
-  public static bcju a()
+  public bcju(aoof paramaoof, bcie parambcie, Set<String> paramSet1, Set<String> paramSet2)
   {
-    if (jdField_a_of_type_Bcju == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bcju == null) {
-        jdField_a_of_type_Bcju = new bcju();
-      }
-      return jdField_a_of_type_Bcju;
-    }
-    finally {}
+    super(paramaoof, parambcie, paramSet1);
+    this.b = paramSet2;
   }
   
-  private void f()
+  public void b(bcfr parambcfr, bcnz parambcnz)
   {
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-    this.e = 0L;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_d_of_type_Boolean) {
-      this.f = System.currentTimeMillis();
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = 1;
-    if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int <= 20))
+    super.b(parambcfr, parambcnz);
+    if (parambcnz.c() != null)
     {
-      this.jdField_b_of_type_Int += 1;
-      if (QLog.isColorLevel()) {
-        QLog.i("GestureMonitorManager", 2, "start " + this.jdField_b_of_type_Int + "");
+      localObject = parambcfr.b();
+      if ((this.b != null) && (this.b.contains(localObject))) {
+        parambcnz.c().setText(anzj.a(2131712604));
       }
     }
-    do
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    boolean bool = bgpy.b((QQAppInterface)localObject, parambcfr.b());
+    if ((localObject instanceof QQAppInterface))
     {
-      return;
-      if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int > 20))
-      {
-        e();
-        f();
-        return;
+      if (!(parambcnz instanceof bcnt)) {
+        break label165;
       }
-    } while (this.jdField_d_of_type_Boolean);
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      paramBoolean1 = true;
-      this.jdField_d_of_type_Boolean = paramBoolean1;
-      if (!this.jdField_d_of_type_Boolean) {
-        break label133;
-      }
+      ((bcnt)parambcnz).a(bool);
     }
     for (;;)
     {
-      this.jdField_b_of_type_Int = i;
+      if (parambcnz.a() != null)
+      {
+        if ((!(parambcfr instanceof bcem)) && (!(parambcfr instanceof bcdz)) && (!(parambcfr instanceof bceh))) {
+          break;
+        }
+        if (parambcnz.c() != null) {
+          parambcnz.c().setVisibility(8);
+        }
+        parambcnz.a().setVisibility(0);
+      }
       return;
-      paramBoolean1 = false;
-      break;
-      label133:
-      i = 0;
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_d_of_type_Boolean)
-    {
-      this.f = (System.currentTimeMillis() - this.f);
-      this.jdField_a_of_type_Long += this.f;
-      if (QLog.isColorLevel()) {
-        QLog.i("GestureMonitorManager", 2, "GestureMonitorManager TotalDetetcorConsumer[startPreview] " + this.f + "ms");
+      label165:
+      if ((parambcnz instanceof bcpq)) {
+        ((bcpq)parambcnz).a(bool);
       }
     }
+    if (parambcnz.c() != null) {
+      parambcnz.c().setVisibility(0);
+    }
+    parambcnz.a().setVisibility(8);
   }
   
-  public void c()
-  {
-    if (this.jdField_d_of_type_Boolean) {
-      this.g = System.currentTimeMillis();
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_d_of_type_Boolean)
-    {
-      this.g = (System.currentTimeMillis() - this.g);
-      this.jdField_d_of_type_Long += this.g;
-      if (QLog.isColorLevel()) {
-        QLog.i("GestureMonitorManager", 2, "GestureMonitorManager GestureDrawConsumer[GestureDraw] " + this.g + "ms");
-      }
-    }
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("GestureMonitorManagerdoReport", 2, "GestureMonitorManager check Frame numbers[+20],[StartPreview:" + this.jdField_a_of_type_Long + "ms],[FaceDetector Aysn childThread:" + this.jdField_c_of_type_Long + "ms],ms],[FaceDraw:" + this.jdField_b_of_type_Long + "ms],[GestureDetector Aysn childThread:" + this.e + "ms],ms],[GestureDraw:" + this.jdField_d_of_type_Long + "ms]");
-    }
-  }
+  public void d(bcfr parambcfr, bcnz parambcnz) {}
 }
 
 

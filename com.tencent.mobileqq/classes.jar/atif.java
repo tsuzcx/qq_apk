@@ -1,74 +1,54 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.widget.BubblePopupWindow;
 
 public class atif
-  implements bbvg
+  implements bjdf
 {
-  protected int a;
-  protected View a;
-  protected ImageView a;
-  protected TextView a;
-  protected TextView b;
+  public atif(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public atif() {}
-  
-  public atif(ViewGroup paramViewGroup)
+  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = 2131562849;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
-    a();
+    if (this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
+      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+    }
+    if (!this.a.b())
+    {
+      this.a.jdField_a_of_type_Atzh.a(null);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+      paramView.setPressed(false);
+    }
+    do
+    {
+      return;
+      paramSlideDetectListView = paramView.findViewById(2131377481);
+      paramView = (FileInfo)this.a.jdField_a_of_type_Atzh.getItem(paramInt);
+      this.a.jdField_a_of_type_Atzh.a(paramView);
+    } while (paramSlideDetectListView == null);
+    paramView = (Button)paramSlideDetectListView.findViewById(2131365341);
+    paramView.setTag(Integer.valueOf(paramInt));
+    paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+    ((ShaderAnimLayout)paramSlideDetectListView).a();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaDim(paramSlideDetectListView.getLayoutParams().width, paramSlideDetectListView.getLayoutParams().height);
   }
   
-  public View a()
+  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public View a(String paramString)
-  {
-    return null;
-  }
-  
-  public ImageView a()
-  {
-    return null;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368246));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378776));
-    this.jdField_a_of_type_AndroidWidgetTextView.setEditableFactory(bdod.a);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365369));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131378852).setVisibility(8);
-  }
-  
-  public ImageView b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView b()
-  {
-    return null;
-  }
-  
-  public TextView c()
-  {
-    return this.b;
-  }
-  
-  public TextView d()
-  {
-    return null;
+    paramSlideDetectListView = paramView.findViewById(2131377481);
+    this.a.jdField_a_of_type_Atzh.a(null);
+    if (paramSlideDetectListView != null)
+    {
+      ((ShaderAnimLayout)paramSlideDetectListView).e();
+      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131365341);
+      paramSlideDetectListView.setTag(null);
+      paramSlideDetectListView.setOnClickListener(null);
+    }
+    LocalFileBrowserActivity.a(this.a);
   }
 }
 

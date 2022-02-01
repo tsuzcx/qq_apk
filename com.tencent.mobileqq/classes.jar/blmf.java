@@ -1,8 +1,6 @@
-import android.os.Bundle;
-
 public abstract interface blmf
 {
-  public abstract boolean a(int paramInt, Bundle paramBundle);
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

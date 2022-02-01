@@ -1,26 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.RoamInfoListWrapper;
-import java.util.ArrayList;
-
-public final class anui
-  implements Parcelable.Creator<RoamInfoListWrapper>
+public abstract interface anui
 {
-  public RoamInfoListWrapper a(Parcel paramParcel)
-  {
-    RoamInfoListWrapper localRoamInfoListWrapper = new RoamInfoListWrapper();
-    localRoamInfoListWrapper.a = paramParcel.readArrayList(ArrayList.class.getClassLoader());
-    return localRoamInfoListWrapper;
-  }
-  
-  public RoamInfoListWrapper[] a(int paramInt)
-  {
-    return new RoamInfoListWrapper[paramInt];
-  }
+  public abstract void onUpdate(int paramInt, boolean paramBoolean, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anui
  * JD-Core Version:    0.7.0.1
  */

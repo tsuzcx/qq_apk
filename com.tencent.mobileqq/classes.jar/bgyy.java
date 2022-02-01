@@ -1,70 +1,53 @@
-import com.tencent.mobileqq.persistence.unique;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import pttcenterservice.PttShortVideo.PttShortVideoUploadResp;
 
-public class bgyy
+class bgyy
+  implements ITransactionCallback
 {
-  public int a;
-  public bgza a;
-  @unique
-  public String a;
-  public AtomicBoolean a;
-  public bgyz[] a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n;
-  public String o;
-  public String p;
-  public String q;
-  public String r;
-  public String s;
-  public String t;
-  public String u;
+  bgyy(bgyx parambgyx) {}
   
-  public bgyy()
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "upload onFailed errn:" + paramInt);
+    }
+    this.a.e();
   }
   
-  public bgyy(String paramString)
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramString.equals("0")) {
-      a();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "upload onSuccess");
     }
-    this.jdField_a_of_type_ArrayOfBgyz = new bgyz[5];
-    while (i1 < 5)
+    paramHashMap = new PttShortVideo.PttShortVideoUploadResp();
+    try
     {
-      this.jdField_a_of_type_ArrayOfBgyz[i1] = new bgyz(this);
-      i1 += 1;
+      paramArrayOfByte = (PttShortVideo.PttShortVideoUploadResp)paramHashMap.mergeFrom(paramArrayOfByte);
+      if (paramArrayOfByte.str_fileid.has()) {
+        this.a.c = paramArrayOfByte.str_fileid.get();
+      }
+      this.a.b = true;
+      this.a.b();
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "0";
-    this.jdField_b_of_type_JavaLangString = anni.a(2131712893);
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = -1;
-    this.e = "#FF03081A";
-    this.p = "#FF878B99";
-  }
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart() {}
+  
+  public void onUpdateProgress(int paramInt) {}
 }
 
 

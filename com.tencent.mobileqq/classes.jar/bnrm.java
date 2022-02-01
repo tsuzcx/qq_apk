@@ -1,134 +1,430 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import android.graphics.Typeface;
-import android.text.TextPaint;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URLDecoder;
+import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bnrm
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private String jdField_a_of_type_JavaLangString = "";
-  private int jdField_b_of_type_Int;
-  private TextPaint jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
-  private int c;
-  
-  public bnrm(int paramInt1, int paramInt2)
+  public static int a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-  }
-  
-  private void a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, Paint paramPaint)
-  {
-    paramCanvas.drawText(paramString, paramFloat1, paramFloat2, paramPaint);
-  }
-  
-  private void a(String paramString, Paint paramPaint, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Rect localRect = new Rect();
-    paramPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
-    while ((localRect.width() + paramInt3 > paramInt1 * 0.8F) || (localRect.height() + paramInt3 > paramInt2 * 0.8F))
-    {
-      paramPaint.setTextSize(paramPaint.getTextSize() - 2.0F);
-      paramPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
+    float f = paramFloat1;
+    if (paramFloat1 < 0.0F) {
+      f = 1.0F;
     }
+    return (int)(paramFloat2 / f + 0.5F);
   }
   
-  public Bitmap a()
+  private static int a(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public void a()
-  {
-    Typeface localTypeface = bnqg.a().a("jianqiaohei.ttf");
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString.trim();
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.eraseColor(0);
-    }
-  }
-  
-  public void b()
-  {
-    a();
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_AndroidTextTextPaint.getTextSize());
-    this.jdField_b_of_type_AndroidTextTextPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidTextTextPaint.setStrokeWidth(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.getTextBounds(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
-    float f1 = this.jdField_a_of_type_AndroidGraphicsRect.height();
-    int i = this.jdField_a_of_type_JavaLangString.indexOf("\r\n");
-    float f2;
-    if (i < 0)
+    Object localObject1 = Aladdin.getConfig(265).getString("floating_layer_top_margin", "");
+    try
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        return;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        return -1;
       }
-      a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_AndroidTextTextPaint, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_AndroidTextTextPaint.getTextSize());
-      f2 = f1 / 2.0F + (Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.ascent()) - this.jdField_a_of_type_AndroidTextTextPaint.descent()) / 2.0F;
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_a_of_type_JavaLangString, (this.jdField_b_of_type_Int - this.jdField_b_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString)) / 2.0F, (this.c - f1) / 2.0F + f2, this.jdField_b_of_type_AndroidTextTextPaint);
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_a_of_type_JavaLangString, (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString)) / 2.0F, (this.c - f1) / 2.0F + f2, this.jdField_a_of_type_AndroidTextTextPaint);
+      localObject1 = new JSONObject((String)localObject1).optString("top_margin", "");
+      QLog.d("ReadInjoyFloatingWindowModule", 1, " getFloatingWindowHeight! marginContent=" + (String)localObject1);
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject1 = new JSONArray((String)localObject1);
+        int i = 0;
+        while (i < ((JSONArray)localObject1).length())
+        {
+          Object localObject2 = ((JSONArray)localObject1).optJSONObject(i);
+          if (localObject2 != null)
+          {
+            String str = ((JSONObject)localObject2).optString("type", "");
+            localObject2 = ((JSONObject)localObject2).optString("margin", "");
+            if (!TextUtils.isEmpty(str))
+            {
+              boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
+              if (!bool) {
+                try
+                {
+                  int j = Integer.parseInt(str);
+                  float f = Float.parseFloat((String)localObject2);
+                  if (j == paramInt)
+                  {
+                    j = a(paramInt, f);
+                    return j;
+                  }
+                }
+                catch (Exception localException2)
+                {
+                  QLog.d("ReadInjoyFloatingWindowModule", 1, " getFloatingWindowHeight array error! msg=" + localException2);
+                }
+              }
+            }
+          }
+          i += 1;
+        }
+      }
+      return -1;
+    }
+    catch (Exception localException1)
+    {
+      QLog.d("ReadInjoyFloatingWindowModule", 1, " getFloatingWindowHeight error! msg=" + localException1);
+    }
+  }
+  
+  private static int a(int paramInt, float paramFloat)
+  {
+    int i = (int)paramFloat;
+    float f2 = -1.0F;
+    float f1 = f2;
+    label159:
+    for (;;)
+    {
+      try
+      {
+        DisplayMetrics localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics();
+        f1 = f2;
+        f2 = localDisplayMetrics.density;
+        if ((paramFloat <= 0.0F) || (paramFloat >= 1.0F)) {
+          break label159;
+        }
+        f1 = f2;
+        int j = localDisplayMetrics.heightPixels;
+        j = (int)(j * paramFloat);
+        if (j <= 0) {
+          break label159;
+        }
+        i = j;
+      }
+      catch (Exception localException)
+      {
+        QLog.d("ReadInjoyFloatingWindowModule", 1, " getMarginTop error! msg=" + localException);
+        f2 = f1;
+        continue;
+      }
+      QLog.d("ReadInjoyFloatingWindowModule", 1, " getMarginTop,busiType=" + paramInt + " ,configMarginPx=" + paramFloat + "  ,realMarginPx=" + i);
+      if (f2 > 0.0F) {
+        return a(f2, i);
+      }
+      return -1;
+    }
+  }
+  
+  public static void a(Context paramContext, int paramInt1, int paramInt2, Bundle paramBundle, int paramInt3)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    int i = a(paramInt2);
+    if ((i > 0) && (i < 10000)) {
+      localBundle.putInt("margin_top", i);
+    }
+    localBundle.putInt("floating_window_scene", paramInt1);
+    localBundle.putInt("floating_window_business", paramInt2);
+    if (paramInt1 == 4) {
+      localBundle.putBoolean("float_layer_back_view", true);
+    }
+    switch (paramInt2)
+    {
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidGraphicsCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidTextTextPaint);
+      QLog.d("ReadInjoyFloatingWindowModule", 1, " openFloatingWindow : scene=" + paramInt1 + "  busiType=" + paramInt2 + "\t marginTop=" + i + "\t bundle=" + localBundle);
       return;
-      String str1 = this.jdField_a_of_type_JavaLangString.substring(0, i);
-      String str2 = this.jdField_a_of_type_JavaLangString.substring("\r\n".length() + i);
-      a(str1, this.jdField_b_of_type_AndroidTextTextPaint, this.jdField_b_of_type_Int, this.c / 2, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_AndroidTextTextPaint.getTextSize());
-      f2 = f1 / 2.0F + (Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.ascent()) - this.jdField_a_of_type_AndroidTextTextPaint.descent()) / 2.0F;
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, str1, (this.jdField_b_of_type_Int - this.jdField_b_of_type_AndroidTextTextPaint.measureText(str1)) / 2.0F, this.c * 0.25F - f1 / 2.0F + f2, this.jdField_b_of_type_AndroidTextTextPaint);
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, str1, (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidTextTextPaint.measureText(str1)) / 2.0F, this.c * 0.25F - f1 / 2.0F + f2, this.jdField_a_of_type_AndroidTextTextPaint);
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, str2, (this.jdField_b_of_type_Int - this.jdField_b_of_type_AndroidTextTextPaint.measureText(str2)) / 2.0F, this.c * 0.65F - f1 / 2.0F + f2, this.jdField_b_of_type_AndroidTextTextPaint);
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, str2, (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidTextTextPaint.measureText(str2)) / 2.0F, this.c * 0.65F - f1 / 2.0F + f2, this.jdField_a_of_type_AndroidTextTextPaint);
+      a(paramContext, paramInt1, localBundle, paramInt3);
+      continue;
+      tbz.a(paramContext, paramInt2, localBundle);
     }
   }
   
-  public void b(String paramString)
+  public static void a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor(paramString));
+    a(paramContext, paramInt1, paramInt2, paramString1, paramString2, paramInt3, paramBoolean, null);
   }
   
-  public void c()
+  public static void a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    boolean bool = true;
+    QLog.d("ReadInjoyFloatingWindowModule", 1, "openViolaActivityOnKandianDaily scene: " + paramInt1 + " luanchFrom: " + paramInt2 + " rowKey: " + paramString1 + " topicId: " + paramString2 + " busiType: " + paramInt3 + " needGrayBar: " + paramBoolean);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("floating_window_scene", paramInt1);
+    localBundle.putString("floating_window_rowkey", paramString1);
+    localBundle.putString("float_layer_topic_id", paramString2);
+    localBundle.putBoolean("up_animation", false);
+    localBundle.putBoolean("gray_bar", paramBoolean);
+    localBundle.putInt("floating_window_business", paramInt3);
+    if (Aladdin.getConfig(261).getIntegerFromString("enable_floating_scroll_to_top", 0) == 1) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      localBundle.putBoolean("scroll_to_top", paramBoolean);
+      if (localBundle != null) {
+        localBundle.putBundle("floating_bundle_extra_data", paramBundle);
+      }
+      KandianDailyManager.a(paramContext, false, localBundle, paramInt2);
+      return;
     }
   }
   
-  public void c(String paramString)
+  public static void a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, boolean paramBoolean)
   {
-    this.jdField_b_of_type_AndroidTextTextPaint.setColor(Color.parseColor(paramString));
+    boolean bool = true;
+    QLog.d("ReadInjoyFloatingWindowModule", 1, "openNativeArticleOnKandianDaily scene: " + paramInt1 + " luanchFrom: " + paramInt2 + " rowKey: " + paramString1 + " url: " + paramString2 + " needGrayBar: " + paramBoolean);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("floating_window_scene", paramInt1);
+    localBundle.putString("floating_window_rowkey", paramString1);
+    localBundle.putString("float_layer_article_url", paramString2);
+    localBundle.putBoolean("up_animation", false);
+    localBundle.putBoolean("gray_bar", paramBoolean);
+    localBundle.putInt("floating_window_business", 1);
+    if (Aladdin.getConfig(261).getIntegerFromString("enable_floating_scroll_to_top", 0) == 1) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      localBundle.putBoolean("scroll_to_top", paramBoolean);
+      KandianDailyManager.a(paramContext, false, localBundle, paramInt2);
+      return;
+    }
+  }
+  
+  private static void a(Context paramContext, int paramInt1, Bundle paramBundle, int paramInt2)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    Intent localIntent = new Intent(paramContext, FastWebActivity.class);
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    localBundle.putBoolean("launch_from_floating_window", true);
+    localBundle.putInt("native_article_launch_from", 1003);
+    localIntent.putExtras(localBundle);
+    boolean bool = a(localBundle, localIntent, paramInt2);
+    if (bool) {
+      paramContext.startActivity(localIntent);
+    }
+    QLog.d("ReadInjoyFloatingWindowModule", 1, " openNativeArticle : scene=" + paramInt1 + "  isLegal=" + bool);
+  }
+  
+  public static void a(Context paramContext, HashMap<String, String> paramHashMap)
+  {
+    int n = 0;
+    if (paramHashMap == null) {
+      QLog.d("ReadInjoyFloatingWindowModule", 1, " jump2FloatingWindow error! attrs is null!");
+    }
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = BaseApplicationImpl.getContext();
+    }
+    String str1 = (String)paramHashMap.get("rowkey");
+    String str3 = (String)paramHashMap.get("url");
+    String str2 = (String)paramHashMap.get("topicID");
+    for (;;)
+    {
+      int j;
+      try
+      {
+        j = Integer.parseInt((String)paramHashMap.get("busiType"));
+      }
+      catch (Exception paramContext)
+      {
+        label187:
+        i = 0;
+        j = -1;
+      }
+      for (;;)
+      {
+        try
+        {
+          i = Integer.parseInt((String)paramHashMap.get("scene"));
+        }
+        catch (Exception paramContext)
+        {
+          i = 0;
+          continue;
+        }
+        try
+        {
+          k = Integer.parseInt((String)paramHashMap.get("channelID"));
+          m = i;
+          if (j == -1)
+          {
+            i = n;
+            if (i == 0) {}
+          }
+        }
+        catch (Exception paramContext)
+        {
+          continue;
+        }
+        try
+        {
+          paramContext = new Bundle();
+          paramContext.putString("floating_window_rowkey", str1);
+          if (!TextUtils.isEmpty(str3)) {
+            paramContext.putString("float_layer_article_url", URLDecoder.decode(str3, "utf-8"));
+          }
+          if (!TextUtils.isEmpty(str2)) {
+            paramContext.putString("float_layer_topic_id", str2);
+          }
+          a((Context)localObject, m, j, paramContext, k);
+        }
+        catch (Exception paramContext)
+        {
+          QLog.d("ReadInjoyFloatingWindowModule", 1, "jump2FloatingWindow error! e=" + paramContext);
+          break label187;
+        }
+      }
+      QLog.d("ReadInjoyFloatingWindowModule", 1, "busiType=" + j + " ，rowkey=" + str1 + " ，topicID=" + str2 + " ，scene=" + m + " ，channelID=" + k);
+      return;
+      QLog.d("ReadInjoyFloatingWindowModule", 1, " parseInt error! e=" + paramContext);
+      int k = 0;
+      int m = i;
+      continue;
+      i = n;
+      if (localObject != null) {
+        if (j == 4)
+        {
+          i = n;
+          if (!TextUtils.isEmpty(str2)) {
+            i = 1;
+          }
+        }
+        else
+        {
+          i = n;
+          if (!TextUtils.isEmpty(str1)) {
+            i = 1;
+          }
+        }
+      }
+    }
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    Object localObject = Uri.parse(paramString);
+    QLog.d("ReadInjoyFloatingWindowModule", 1, "openFloatLayer: " + paramString);
+    String str1;
+    String str3;
+    int i;
+    if (localObject != null)
+    {
+      ((Uri)localObject).getQueryParameter("viola_share_url");
+      str1 = ((Uri)localObject).getQueryParameter("rowkey");
+      String str2 = ((Uri)localObject).getQueryParameter("cc_media_type");
+      str3 = ((Uri)localObject).getQueryParameter("viola_media_type");
+      localObject = ((Uri)localObject).getQueryParameter("topic_id");
+      if ("10001".equals(str2))
+      {
+        a(paramContext, 4, 15, str1, paramString, true);
+        return true;
+      }
+      if ("10050".equals(str3)) {
+        i = 3;
+      }
+    }
+    for (;;)
+    {
+      if (i != -1)
+      {
+        a(paramContext, 4, 15, str1, (String)localObject, i, true);
+        return true;
+        if ("10051".equals(str3))
+        {
+          i = 4;
+          continue;
+        }
+        if ("10052".equals(str3)) {
+          i = 2;
+        }
+      }
+      else
+      {
+        return false;
+      }
+      i = -1;
+    }
+  }
+  
+  public static boolean a(Context paramContext, String paramString, Bundle paramBundle)
+  {
+    QLog.d("ReadInjoyFloatingWindowModule", 1, "openFloatLayerVideo: " + paramString);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      a(paramContext, 4, 15, paramString, "", 2, true, paramBundle);
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(Bundle paramBundle)
+  {
+    boolean bool3 = false;
+    if (Build.VERSION.SDK_INT >= 21) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      boolean bool2 = bool3;
+      if (paramBundle != null)
+      {
+        bool2 = bool3;
+        if (bool1)
+        {
+          bool2 = bool3;
+          if (!TextUtils.isEmpty(paramBundle.getString("floating_window_rowkey"))) {
+            bool2 = true;
+          }
+        }
+      }
+      QLog.d("ReadInjoyFloatingWindowModule", 1, "checkParamsLegal outside" + bool1 + " isLegal=" + bool2);
+      return bool2;
+    }
+  }
+  
+  private static boolean a(Bundle paramBundle, Intent paramIntent, int paramInt)
+  {
+    boolean bool3 = false;
+    if (Build.VERSION.SDK_INT >= 21) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      boolean bool2 = bool3;
+      if (paramBundle != null)
+      {
+        bool2 = bool3;
+        if (bool1)
+        {
+          String str = paramBundle.getString("floating_window_rowkey");
+          paramBundle = paramBundle.getString("float_layer_article_url");
+          bool2 = bool3;
+          if (!TextUtils.isEmpty(str))
+          {
+            ArticleInfo localArticleInfo = new ArticleInfo();
+            localArticleInfo.innerUniqueID = str;
+            localArticleInfo.mChannelID = paramInt;
+            if (!TextUtils.isEmpty(paramBundle)) {
+              localArticleInfo.mArticleContentUrl = paramBundle;
+            }
+            paramIntent.putExtra("fast_web_article_info", localArticleInfo);
+            bool2 = true;
+          }
+        }
+      }
+      QLog.d("ReadInjoyFloatingWindowModule", 1, " ocheckOpenNativeVertify isVersionLegal=" + bool1 + " isLegal=" + bool2);
+      return bool2;
+    }
   }
 }
 

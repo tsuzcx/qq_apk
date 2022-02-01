@@ -1,41 +1,17 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.qqshop.qq_ad.QQAdGetRsp;
-
 public class oez
-  implements BusinessObserver
+  implements anui
 {
-  public oez(EcshopNewPageFragment paramEcshopNewPageFragment) {}
+  public void a(Object paramObject) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Ecshop_EcshopNewPageFragment", 2, "isSuccess: " + paramBoolean);
-    }
-    if (paramInt != 1) {}
-    for (;;)
+    switch (paramInt)
     {
+    case 2: 
+    default: 
       return;
-      qq_ad.QQAdGetRsp localQQAdGetRsp = new qq_ad.QQAdGetRsp();
-      try
-      {
-        localQQAdGetRsp.mergeFrom(paramBundle.getByteArray("data"));
-        if (QLog.isColorLevel()) {
-          QLog.i("Ecshop_EcshopNewPageFragment", 2, "redpoint info: " + oer.a(localQQAdGetRsp.red_point.get()));
-        }
-        EcshopNewPageFragment.a(this.a, oer.a(localQQAdGetRsp.red_point.get()));
-        if (localQQAdGetRsp.qgg_prompt.has())
-        {
-          oer.a(localQQAdGetRsp.qgg_prompt.get());
-          return;
-        }
-      }
-      catch (Exception paramBundle) {}
     }
+    a(paramObject);
   }
 }
 

@@ -1,19 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class zpb
-  implements View.OnClickListener
+public abstract interface zpb
 {
-  public zpb(AbsEmptyView paramAbsEmptyView, View.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAbsEmptyView.a(3);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(zpg paramzpg, boolean paramBoolean);
 }
 
 

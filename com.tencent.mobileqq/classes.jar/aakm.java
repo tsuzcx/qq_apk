@@ -1,56 +1,46 @@
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISuperPlayer;
 
-public class aakm
-  implements IVideoInnerStatusListener
+class aakm
+  implements aakg
 {
-  public aakm(VideoPlayerView paramVideoPlayerView) {}
+  aakm(aakh paramaakh) {}
   
-  public void notifyVideoClose(int paramInt)
+  public void a()
   {
-    VideoPlayerView.b(this.a, false);
-    if (VideoPlayerView.a(this.a) != null)
+    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardClosed");
+    if (aakh.a(this.a))
     {
-      VideoPlayerView.a(this.a).b();
-      VideoPlayerView.a(this.a, null);
+      aakh.b(this.a, false);
+      if (aakh.a(this.a) != null) {
+        aakh.a(this.a).setVisibility(0);
+      }
+      if (aakh.a(this.a) != null) {
+        aakh.a(this.a).setVisibility(0);
+      }
     }
-    VideoPlayerView.a(this.a, null);
-    this.a.b();
-  }
-  
-  public void notifyVideoSeek(int paramInt)
-  {
-    QLog.d("VideoPlayerView", 4, "notifyVideoSeek seek " + paramInt);
-    this.a.a(paramInt * this.a.a().getDurationMs() / 100L);
-  }
-  
-  public void notifyVideoStart()
-  {
-    if (this.a.a().getCurrentPositionMs() < this.a.a().getDurationMs())
+    for (;;)
     {
-      this.a.d();
+      aakh.a(this.a, false);
       return;
+      this.a.dismiss();
     }
-    if (VideoPlayerView.b(this.a))
-    {
-      QLog.d("VideoPlayerView", 4, "has more , wait for auto play next");
-      return;
-    }
-    this.a.a().setLoopback(true);
-    this.a.e();
-    if (VideoPlayerView.a(this.a) != null) {
-      VideoPlayerView.a(this.a).onVideoStart((int)this.a.a().getDurationMs());
-    }
-    QLog.d("VideoPlayerView", 4, "no more, player repeat");
   }
   
-  public void notifyVideoStop()
+  public void a(int paramInt)
   {
+    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardOpened");
+    if (aakh.a(this.a) != paramInt)
+    {
+      aakh.a(this.a, paramInt);
+      aakh.a(this.a);
+      aakh.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
+      aakh.a(this.a).commit();
+    }
     this.a.c();
+    aakh.a(this.a, true);
   }
 }
 

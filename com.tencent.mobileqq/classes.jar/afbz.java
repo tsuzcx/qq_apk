@@ -1,20 +1,22 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class afbz
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnKeyListener
 {
-  public afbz(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public afbz(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.a.getActivity() != null)
+    if (paramInt == 4)
     {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
+      SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
+      this.a.finish();
     }
+    return false;
   }
 }
 

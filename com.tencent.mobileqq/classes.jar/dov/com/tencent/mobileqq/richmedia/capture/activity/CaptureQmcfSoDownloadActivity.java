@@ -12,9 +12,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MotionEvent;
 import android.view.Window;
-import bnqb;
-import bnzb;
-import bqca;
+import born;
+import borr;
+import bpam;
+import brdv;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -24,7 +25,7 @@ import mqq.os.MqqHandler;
 
 public class CaptureQmcfSoDownloadActivity
   extends FragmentActivity
-  implements bqca
+  implements brdv
 {
   public static final String a;
   private int jdField_a_of_type_Int;
@@ -54,6 +55,9 @@ public class CaptureQmcfSoDownloadActivity
     localIntent.putExtra("pendingIntentClass", paramString);
     localIntent.putExtra("pendingIntentRequest", paramInt);
     localIntent.putExtra("pendingIntentAllWait", paramBoolean);
+    if (borr.a(paramBundle)) {
+      localIntent.addFlags(603979776);
+    }
     paramActivity.startActivityForResult(localIntent, paramInt);
   }
   
@@ -74,8 +78,8 @@ public class CaptureQmcfSoDownloadActivity
     localIntent.putExtras(paramBundle);
     localIntent.putExtra("pendingIntentClass", paramString);
     localIntent.putExtra("pendingIntentAllWait", paramBoolean);
-    int i = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", bnqb.a.a());
-    if ((i == bnqb.l.a()) || (i == bnqb.k.a())) {
+    int i = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", born.a.a());
+    if ((i == born.l.a()) || (i == born.k.a())) {
       localIntent.setFlags(268435456);
     }
     paramContext.startActivity(localIntent);
@@ -89,7 +93,7 @@ public class CaptureQmcfSoDownloadActivity
       ThreadManager.getUIHandler().postDelayed(new CaptureQmcfSoDownloadActivity.1(this), 5L);
       return;
     }
-    bnzb.d(jdField_a_of_type_JavaLangString, "[onFinish] getBooleanExtra(KEY_JUST_WAIT_DOWNLOAD_RESULT");
+    bpam.d(jdField_a_of_type_JavaLangString, "[onFinish] getBooleanExtra(KEY_JUST_WAIT_DOWNLOAD_RESULT");
     setResult(-1, null);
     finish();
   }
@@ -121,7 +125,7 @@ public class CaptureQmcfSoDownloadActivity
     this.mActNeedImmersive = false;
     this.isClearCoverLayer = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561080);
+    super.setContentView(2131561116);
     this.jdField_a_of_type_AndroidSupportV4AppFragment = new CaptureQmcfSoDownloadFragment();
     this.b = getIntent().getStringExtra("pendingIntentClass");
     if (getIntent().getBooleanExtra("pendingIntentAllWait", false)) {
@@ -135,14 +139,14 @@ public class CaptureQmcfSoDownloadActivity
       this.jdField_a_of_type_Int = getIntent().getIntExtra("pendingIntentRequest", 0);
     }
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
-    bnzb.b(jdField_a_of_type_JavaLangString, "【Activity doOnCreate】");
+    bpam.b(jdField_a_of_type_JavaLangString, "【Activity doOnCreate】");
     return false;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bnzb.b(jdField_a_of_type_JavaLangString, "【Activity doOnDestroy】");
+    bpam.b(jdField_a_of_type_JavaLangString, "【Activity doOnDestroy】");
   }
   
   @Override

@@ -1,68 +1,31 @@
-import android.text.TextUtils.TruncateAt;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class atjg
-  implements bbvg
+  implements View.OnClickListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+  public atjg(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public atjg(ViewGroup paramViewGroup)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560884, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366555));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366566));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365344));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(1);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.a();
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public View a(String paramString)
-  {
-    return null;
-  }
-  
-  public ImageView a()
-  {
-    return null;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
-  }
-  
-  public ImageView b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView b()
-  {
-    return null;
-  }
-  
-  public TextView c()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public TextView d()
-  {
-    return null;
+    if (this.a.a != null)
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
+    if (UniformDownloadActivity.a(this.a)) {
+      bjvq.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3009", false);
+    }
+    for (;;)
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bjvq.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3006", false);
+    }
   }
 }
 

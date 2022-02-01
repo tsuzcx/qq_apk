@@ -1,9 +1,12 @@
-import com.tencent.smtt.sdk.WebView;
-
-class biqy
+public class biqy
 {
-  WebView jdField_a_of_type_ComTencentSmttSdkWebView;
   String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
+  String jdField_c_of_type_JavaLangString;
+  boolean jdField_c_of_type_Boolean;
+  String d;
 }
 
 

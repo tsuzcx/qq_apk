@@ -1,67 +1,96 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arjr
-  extends BaseAdapter
+  extends arac<arjq>
 {
-  public arjr(DataReportSettingFragment paramDataReportSettingFragment) {}
-  
-  public arjk a(int paramInt)
+  public static arjq a()
   {
-    return (arjk)this.a.a.get(paramInt);
+    return (arjq)aran.a().a(635);
   }
   
-  public int getCount()
+  @NonNull
+  public arjq a(int paramInt)
   {
-    return this.a.a.size();
+    return new arjq();
   }
   
-  public long getItemId(int paramInt)
+  @Nullable
+  public arjq a(araj[] paramArrayOfaraj)
   {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    arjv localarjv;
-    arjk localarjk;
-    if (paramView == null)
+    QLog.i("TroopFoldMsgConfProcessor", 1, "[onParsed] config");
+    arjq localarjq2 = null;
+    arjq localarjq1;
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
     {
-      paramView = LayoutInflater.from(this.a.getActivity()).inflate(2131559601, paramViewGroup, false);
-      localarjv = new arjv(this.a);
-      localarjv.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramView.findViewById(2131368897));
-      localarjv.jdField_a_of_type_Arjs = new arjs(this.a);
-      localarjv.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(localarjv.jdField_a_of_type_Arjs);
-      localarjv.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnLongClickListener(localarjv.jdField_a_of_type_Arjs);
-      paramView.setTag(localarjv);
-      localarjk = a(paramInt);
-      localarjv.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(localarjk.jdField_a_of_type_Boolean);
-      if (!(localarjk instanceof arkl)) {
-        break label205;
+      localarjq2 = arjq.a(paramArrayOfaraj[0].a);
+      localarjq1 = localarjq2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
+        localarjq1 = localarjq2;
       }
-      localarjv.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setText(localarjk.jdField_a_of_type_JavaLangString + " - " + ((arkl)localarjk).b);
     }
     for (;;)
     {
-      localarjv.jdField_a_of_type_Arjs.a = localarjk;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localarjv = (arjv)paramView.getTag();
-      break;
-      label205:
-      localarjv.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setText(localarjk.jdField_a_of_type_JavaLangString);
+      paramArrayOfaraj = localarjq1;
+      if (localarjq1 == null) {
+        paramArrayOfaraj = new arjq();
+      }
+      return paramArrayOfaraj;
+      localarjq1 = localarjq2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed is null");
+        localarjq1 = localarjq2;
+      }
     }
+  }
+  
+  public void a(arjq paramarjq)
+  {
+    QLog.i("TroopFoldMsgConfProcessor", 1, "[onUpdate]");
+  }
+  
+  public Class<arjq> clazz()
+  {
+    return arjq.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.i("TroopFoldMsgConfProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 635;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arjr
  * JD-Core Version:    0.7.0.1
  */

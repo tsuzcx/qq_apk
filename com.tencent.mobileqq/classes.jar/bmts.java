@@ -1,26 +1,31 @@
-import android.content.Context;
-import com.tencent.component.network.DownloaderFactory;
-import com.tencent.component.network.downloader.Downloader;
-import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
 
 public class bmts
-  extends ApolloLottieAnim
+  extends bndw
 {
-  private Downloader a;
+  public bmts(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
   
-  public bmts(QQAppInterface paramQQAppInterface, Context paramContext)
+  public void a(String paramString) {}
+  
+  public void a(String paramString, float paramFloat, long paramLong) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    super(paramQQAppInterface, paramContext);
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(paramContext).getCommonDownloader();
+    QLog.w("QZoneLiveVideoDownLoadActivtyV2", 1, "[onInstallError] pluginId=" + paramString + ", errorCode=" + paramInt);
+    paramString = this.a.a.obtainMessage();
+    paramString.what = 1010;
+    if (8 == paramInt) {}
+    for (paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadErrorNoSpace", "内部存储空间不足，下载失败");; paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadError", "插件下载失败"))
+    {
+      this.a.a.sendMessage(paramString);
+      return;
+    }
   }
   
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_Int = 1;
-    paramString3 = new bmtt(this, paramString2, paramString3);
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(paramString1, paramString2, false, paramString3);
-  }
+  public void b(String paramString) {}
 }
 
 

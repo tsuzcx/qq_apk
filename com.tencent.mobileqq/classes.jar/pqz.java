@@ -1,13 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class pqz
-  implements prw
+class pqz
+  extends Handler
 {
-  public pqz(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  pqz(pqx parampqx, Looper paramLooper)
   {
-    ReadInJoySelfFragment.g(this.a);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.f();
   }
 }
 

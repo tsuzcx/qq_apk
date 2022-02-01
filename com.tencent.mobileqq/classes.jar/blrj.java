@@ -1,49 +1,26 @@
-import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_req;
-import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_rsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.Map;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
 public class blrj
-  extends QzoneExternalRequest
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  mobile_get_qzone_public_msg_req a;
+  public blrj(XPanelContainer paramXPanelContainer, int paramInt) {}
   
-  public blrj(long paramLong, Map<String, String> paramMap)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    this.a = new mobile_get_qzone_public_msg_req(paramLong, paramMap);
-  }
-  
-  public static mobile_get_qzone_public_msg_rsp a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
-  {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
-    }
-    do
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a)
     {
-      return paramArrayOfByte;
-      paramArrayOfInt = (mobile_get_qzone_public_msg_rsp)decode(paramArrayOfByte, "getQzonePublicMsg", paramArrayOfInt);
-      paramArrayOfByte = paramArrayOfInt;
-    } while (paramArrayOfInt != null);
-    return null;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService." + uniKey();
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getQzonePublicMsg";
+      if (QLog.isColorLevel()) {
+        QLog.d("XPanelContainer", 2, "openAnim resetPosition");
+      }
+      XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, 0);
+      return;
+    }
+    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
+    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
   }
 }
 

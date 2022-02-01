@@ -1,14 +1,21 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-class altc
+public class altc
   implements DialogInterface.OnClickListener
 {
-  altc(alta paramalta) {}
+  public altc(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    if (EditLocalVideoActivity.a(this.a)) {}
+    for (paramInt = -1;; paramInt = 0)
+    {
+      EditLocalVideoActivity.a(this.a).dismiss();
+      EditLocalVideoActivity.a(this.a, paramInt);
+      return;
+    }
   }
 }
 

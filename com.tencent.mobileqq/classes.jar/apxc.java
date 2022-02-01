@@ -1,27 +1,139 @@
-import android.animation.AnimatorSet;
-import android.graphics.Rect;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.mini.sdk.EntryModel;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class apxc
 {
-  public long a;
-  public AnimatorSet a;
-  public Rect a;
-  public View a;
-  public ImageView a;
-  public MessageRecord a;
-  public HashMap<String, apxp> a;
-  public long b;
-  public Rect b;
-  public MessageRecord b;
+  private static HashMap<String, apxf> a = new HashMap();
   
-  public apxc()
+  static
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+    a.put("qq", new apxh());
+    a.put("tel", new apxj());
+    a.put("app", new apxd());
+    a.put("mqzone", new apxi());
+    a.put("miniapp", new apxg());
+  }
+  
+  public static List<Object> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    if (i < paramJSONArray.length())
+    {
+      Object localObject2 = paramJSONArray.get(i);
+      Object localObject1;
+      if ((localObject2 instanceof JSONArray)) {
+        localObject1 = a((JSONArray)localObject2);
+      }
+      for (;;)
+      {
+        localArrayList.add(localObject1);
+        i += 1;
+        break;
+        localObject1 = localObject2;
+        if ((localObject2 instanceof JSONObject)) {
+          localObject1 = a((JSONObject)localObject2);
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static Map<String, Object> a(JSONObject paramJSONObject)
+  {
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = paramJSONObject.keys();
+    if (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      Object localObject2 = paramJSONObject.get(str);
+      Object localObject1;
+      if ((localObject2 instanceof JSONArray)) {
+        localObject1 = a((JSONArray)localObject2);
+      }
+      for (;;)
+      {
+        localHashMap.put(str, localObject1);
+        break;
+        localObject1 = localObject2;
+        if ((localObject2 instanceof JSONObject)) {
+          localObject1 = a((JSONObject)localObject2);
+        }
+      }
+    }
+    return localHashMap;
+  }
+  
+  public static boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return false;
+    }
+    QLog.e("ArkApp", 2, "navigate url: " + paramString1);
+    Object localObject = paramString1.split(":");
+    if (localObject.length <= 1) {
+      return false;
+    }
+    if (MiniAppLauncher.isMiniAppUrl(paramString1)) {
+      try
+      {
+        i = Integer.parseInt((String)blhn.b(paramString1.substring(paramString1.indexOf("?") + 1)).get("scene"));
+        paramString2 = b();
+        MiniAppLauncher.startMiniApp(BaseActivity.sTopActivity, paramString1, i, paramString2, null);
+        return true;
+      }
+      catch (Exception paramString2)
+      {
+        for (;;)
+        {
+          QLog.e("ArkApp", 1, "Ark parse miniapp scene failed.", paramString2);
+          int i = 2059;
+        }
+      }
+    }
+    localObject = localObject[0];
+    apxf localapxf = (apxf)a.get(localObject);
+    if (localapxf == null) {
+      return false;
+    }
+    localObject = paramString1.substring(((String)localObject).length() + 1);
+    paramString1 = (String)localObject;
+    if (((String)localObject).startsWith("//")) {
+      paramString1 = ((String)localObject).substring(2);
+    }
+    localapxf.a(paramString1, paramString2, paramJSONObject, paramLong, paramString3);
+    return true;
+  }
+  
+  private static EntryModel b()
+  {
+    Object localObject = BaseActivity.sTopActivity;
+    if ((localObject instanceof FragmentActivity))
+    {
+      localObject = (FragmentActivity)localObject;
+      if (((FragmentActivity)localObject).getChatFragment() != null)
+      {
+        localObject = ((FragmentActivity)localObject).getChatFragment().a();
+        if ((localObject instanceof TroopChatPie)) {
+          return ((BaseChatPie)localObject).a();
+        }
+      }
+    }
+    return null;
   }
 }
 

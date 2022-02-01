@@ -1,32 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TopayManager.5.1;
 
-class akzn
-  implements View.OnClickListener
+public class akzn
+  implements DialogInterface.OnClickListener
 {
-  akzn(akyh paramakyh) {}
+  public akzn(TopayManager.5.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    akyh.a(this.a).app.getPreferences();
-    bgdt.a().a();
-    if (bgdt.a().a() == 4)
+    switch (paramInt)
     {
-      bgdt.a().a(akyh.a(this.a));
-      bcst.b(akyh.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, bgds.b(), bgdt.b(), bgdt.a(), "1");
-    }
-    for (;;)
-    {
-      this.a.a(-1, null);
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
       return;
-      UpgradeDetailActivity.a(akyh.a(this.a), bgdt.a().a(), true, true, true);
-      bcst.b(akyh.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, bgds.b(), bgdt.b(), bgdt.a(), "1");
     }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,9 +1,4 @@
-public abstract interface ayiq
-{
-  public abstract void a();
-  
-  public abstract void b();
-}
+public class ayiq {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

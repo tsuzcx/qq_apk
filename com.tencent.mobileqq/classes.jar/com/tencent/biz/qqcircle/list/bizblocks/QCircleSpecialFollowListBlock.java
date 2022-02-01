@@ -1,5 +1,12 @@
 package com.tencent.biz.qqcircle.list.bizblocks;
 
+import aaak;
+import aaam;
+import aabe;
+import aabj;
+import aabu;
+import aacv;
+import aacw;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,7 +14,7 @@ import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.view.ViewGroup;
-import anni;
+import anzj;
 import com.tencent.biz.qqcircle.events.QCircleSpecialFollowListLoadEvent;
 import com.tencent.biz.qqcircle.events.QCircleSpecialFollowUpdateEvent;
 import com.tencent.biz.qqcircle.widgets.QCircleSpecialFollowListStatusView;
@@ -24,28 +31,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import voe;
-import vol;
-import vos;
-import zwp;
-import zwr;
-import zxj;
-import zxo;
-import zxz;
-import zyz;
-import zza;
+import vqm;
+import vqu;
+import vrb;
 
 public class QCircleSpecialFollowListBlock
-  extends voe<FeedCloudMeta.StRelationInfo, vos>
-  implements zwr<SimpleBaseEvent>
+  extends vqm<FeedCloudMeta.StRelationInfo, vrb>
+  implements aaam<SimpleBaseEvent>
 {
   private static final String TAG = "QCircleSpecialFollowLis";
-  private final vol mSpecialFollowMgr = vol.a();
+  private final vqu mSpecialFollowMgr = vqu.a();
   
   public QCircleSpecialFollowListBlock(Bundle paramBundle)
   {
     super(paramBundle);
-    zwp.a().a(this);
+    aaak.a().a(this);
   }
   
   public QCircleStatusView createStatusView()
@@ -58,12 +58,12 @@ public class QCircleSpecialFollowListBlock
     return null;
   }
   
-  public String getAttachInfoFromRsp(vos paramvos)
+  public String getAttachInfoFromRsp(vrb paramvrb)
   {
     return null;
   }
   
-  public List<zxj> getCustomParts()
+  public List<aabe> getCustomParts()
   {
     return null;
   }
@@ -75,7 +75,7 @@ public class QCircleSpecialFollowListBlock
   
   public String getEmptyHint()
   {
-    return anni.a(2131697264);
+    return anzj.a(2131697342);
   }
   
   public ArrayList<Class<SimpleBaseEvent>> getEventClass()
@@ -83,14 +83,14 @@ public class QCircleSpecialFollowListBlock
     return new ArrayList(Arrays.asList(new Class[] { QCircleSpecialFollowUpdateEvent.class, QCircleSpecialFollowListLoadEvent.class }));
   }
   
-  public boolean getIsFinishFromRsp(vos paramvos)
+  public boolean getIsFinishFromRsp(vrb paramvrb)
   {
     StringBuilder localStringBuilder = new StringBuilder().append("getIsFinishFromRsp: ");
-    if (paramvos.jdField_a_of_type_Vor == null) {}
+    if (paramvrb.jdField_a_of_type_Vra == null) {}
     for (boolean bool = true;; bool = false)
     {
       QLog.i("QCircleSpecialFollowLis", 4, bool);
-      if (paramvos.jdField_a_of_type_Vor != null) {
+      if (paramvrb.jdField_a_of_type_Vra != null) {
         break;
       }
       return true;
@@ -98,14 +98,14 @@ public class QCircleSpecialFollowListBlock
     return false;
   }
   
-  public void getListDataAsync(zza<FeedCloudMeta.StRelationInfo> paramzza, String paramString) {}
+  public void getListDataAsync(aacw<FeedCloudMeta.StRelationInfo> paramaacw, String paramString) {}
   
-  public List<FeedCloudMeta.StRelationInfo> getListDataFromRsp(vos paramvos)
+  public List<FeedCloudMeta.StRelationInfo> getListDataFromRsp(vrb paramvrb)
   {
-    if (paramvos.jdField_a_of_type_JavaUtilList == null) {
+    if (paramvrb.jdField_a_of_type_JavaUtilList == null) {
       return Collections.emptyList();
     }
-    return paramvos.jdField_a_of_type_JavaUtilList;
+    return paramvrb.jdField_a_of_type_JavaUtilList;
   }
   
   public String getLogTag()
@@ -130,7 +130,7 @@ public class QCircleSpecialFollowListBlock
   
   public String getTitle()
   {
-    return anni.a(2131697263);
+    return anzj.a(2131697341);
   }
   
   public View getTitleTabView(ViewGroup paramViewGroup)
@@ -145,9 +145,9 @@ public class QCircleSpecialFollowListBlock
   
   public void initTitleBar(View paramView) {}
   
-  public void loadData(zxz paramzxz)
+  public void loadData(aabu paramaabu)
   {
-    if (paramzxz.c())
+    if (paramaabu.c())
     {
       getBlockContainer().a().a("");
       this.mSpecialFollowMgr.b();
@@ -155,12 +155,12 @@ public class QCircleSpecialFollowListBlock
     do
     {
       return;
-      if (paramzxz.d())
+      if (paramaabu.d())
       {
         this.mSpecialFollowMgr.b();
         return;
       }
-    } while (!paramzxz.e());
+    } while (!paramaabu.e());
     this.mSpecialFollowMgr.c();
   }
   
@@ -168,7 +168,7 @@ public class QCircleSpecialFollowListBlock
   {
     super.onActivityDestroyed(paramActivity);
     QLog.d("QCircleSpecialFollowLis", 4, "onActivityDestroyed");
-    zwp.a().b(this);
+    aaak.a().b(this);
   }
   
   public void onActivityPaused(Activity paramActivity)
@@ -185,13 +185,13 @@ public class QCircleSpecialFollowListBlock
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    ((zyz)paramViewHolder).a(this.mDataList.get(paramInt), paramInt, this.mExtraTypeInfo);
+    ((aacv)paramViewHolder).a(this.mDataList.get(paramInt), paramInt, this.mExtraTypeInfo);
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new zyz(new QCircleSpecialFollowUserItemView(getParentFragment().getActivity()));
+    return new aacv(new QCircleSpecialFollowUserItemView(getParentFragment().getActivity()));
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)

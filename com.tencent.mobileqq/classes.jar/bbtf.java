@@ -1,33 +1,51 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bbtf
-  extends bbti
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public bbtf(GroupSearchEngine paramGroupSearchEngine, bbtj parambbtj, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, parambbtj, paramString, paramInt);
-  }
+  public bbtf(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public bbmx a(List<bbmy> paramList, String paramString)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return null;
-  }
-  
-  public List<bbmx> a(bbtx parambbtx)
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = -1;
-    parambbtx.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", 16);
-    parambbtx.a.putInt("SEARCH_REQUEST_EXTRA_PAGE", 0);
-    ArrayList localArrayList = new ArrayList();
-    parambbtx = this.jdField_a_of_type_Bbtj.a(parambbtx);
-    if (parambbtx != null) {
-      localArrayList.addAll(parambbtx);
+    if ((bhnv.d(this.a.getActivity())) && (SignTextEditFragment.a(this.a) != null))
+    {
+      if (AppSetting.c) {
+        this.a.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription(anzj.a(2131706798));
+      }
+      SignTextEditFragment.a(this.a).a(paramBoolean);
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A97B", "0X800A97B", 0, 0, "0", "0", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
     }
-    return localArrayList;
+    Object localObject = this.a.getActivity();
+    int i;
+    label117:
+    CheckBox localCheckBox;
+    if (SignTextEditFragment.a(this.a) != null)
+    {
+      i = 2131694005;
+      QQToast.a((Context)localObject, i, 1).a();
+      localObject = this.a;
+      localCheckBox = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
+      if (paramBoolean) {
+        break label168;
+      }
+    }
+    label168:
+    for (boolean bool = true;; bool = false)
+    {
+      SignTextEditFragment.a((SignTextEditFragment)localObject, localCheckBox, bool);
+      break;
+      i = 2131717966;
+      break label117;
+    }
   }
 }
 

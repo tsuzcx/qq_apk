@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import bdfz;
+import bdyu;
 import com.tencent.qphone.base.util.QLog;
 
 public class Texture$1
   implements Runnable
 {
-  public Texture$1(bdfz parambdfz) {}
+  public Texture$1(bdyu parambdyu) {}
   
   public void run()
   {

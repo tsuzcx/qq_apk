@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import android.widget.ImageButton;
-import anni;
+import anzj;
 
 class SendBirthdayWishesActivity$4
   implements Runnable
@@ -12,12 +12,12 @@ class SendBirthdayWishesActivity$4
   {
     if (this.a == 2)
     {
-      this.this$0.a.setImageResource(2130838073);
-      this.this$0.a.setContentDescription(anni.a(2131712547));
+      this.this$0.a.setImageResource(2130838083);
+      this.this$0.a.setContentDescription(anzj.a(2131712656));
       return;
     }
-    this.this$0.a.setImageResource(2130847887);
-    this.this$0.a.setContentDescription(anni.a(2131712548));
+    this.this$0.a.setImageResource(2130847906);
+    this.this$0.a.setContentDescription(anzj.a(2131712657));
   }
 }
 

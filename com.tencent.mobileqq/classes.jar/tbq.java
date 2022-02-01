@@ -1,16 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebVideoItemUtils.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class tbq
-  implements phh
+public class tbq
+  implements View.OnClickListener
 {
-  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public tbq(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(paramString1, paramString1))) {
-      ThreadManager.getUIHandler().post(new FastWebVideoItemUtils.1.1(this, paramString2, paramInt1, paramInt2));
-    }
+    this.a.a(0, 2);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

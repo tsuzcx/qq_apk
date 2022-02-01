@@ -1,30 +1,14 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bekb
-  extends ClickableSpan
+class bekb
+  implements DialogInterface.OnClickListener
 {
-  public bekb(TroopBarPublishActivity paramTroopBarPublishActivity, int paramInt) {}
+  bekb(bejx parambejx) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, 2002, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.t);
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.getVisibility() == 0)) {}
-    for (int i = 2;; i = 1)
-    {
-      bcst.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_add_topic", i, 0, "", "", "", "");
-      return;
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    paramTextPaint.setUnderlineText(false);
+    paramDialogInterface.dismiss();
   }
 }
 

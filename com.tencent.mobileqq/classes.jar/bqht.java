@@ -1,94 +1,75 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.util.GifCoder;
-import dov.com.tencent.mobileqq.shortvideo.cover.RecordThumbnailUtils;
+import android.content.res.Resources;
+import android.os.Looper;
+import android.os.MessageQueue;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import dov.com.tencent.biz.qqstory.takevideo.linker.VipFrwrdLinkView;
 
 public class bqht
+  extends bqgi
 {
-  private static int a;
-  private static int b;
-  private static int c;
-  private static int d;
-  private static int e;
-  private static int f;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  VipFrwrdLinkView jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView;
+  private wuw jdField_a_of_type_Wuw;
+  private boolean jdField_a_of_type_Boolean;
   
-  public static int a(String paramString1, String paramString2, int paramInt, String paramString3)
+  public void a(int paramInt, @NonNull bqua parambqua)
   {
-    int i = 0;
-    QLog.i("GifProcessor", 1, "generateGifFromVFile vfPath=" + paramString1 + " output=" + paramString3);
-    a();
-    GifCoder localGifCoder = new GifCoder();
-    localGifCoder.c(true);
-    localGifCoder.a(a);
-    boolean bool;
-    int k;
-    int j;
-    VideoSourceHelper localVideoSourceHelper;
-    Bitmap localBitmap;
-    if (b == 1)
-    {
-      bool = true;
-      localGifCoder.a(bool);
-      k = bcjb.z * 1000 / bcjb.y / c;
-      j = k;
-      if (k <= 0) {
-        j = 1;
-      }
-      localVideoSourceHelper = new VideoSourceHelper(paramString1, paramString2);
-      localVideoSourceHelper.initHelperParam();
-      paramString1 = localVideoSourceHelper.getSourceVideoParam();
-      localBitmap = Bitmap.createBitmap(paramString1[0], paramString1[1], Bitmap.Config.RGB_565);
-      k = 0;
-    }
-    for (;;)
-    {
-      if (k < bcjb.z)
-      {
-        i = localVideoSourceHelper.getVideoFrameByIndex(localBitmap, k);
-        if (QLog.isColorLevel()) {
-          QLog.d("GifProcessor", 2, "getVideoFrameByIndex from vffile. index=" + k + " ret=" + i);
-        }
-        if (i == 0) {
-          break label229;
-        }
-      }
-      for (;;)
-      {
-        localGifCoder.b();
-        return i;
-        bool = false;
-        break;
-        label229:
-        paramString2 = localBitmap.copy(Bitmap.Config.ARGB_8888, true);
-        paramString1 = paramString2;
-        if (paramInt != 0)
-        {
-          paramString1 = paramString2;
-          if (!bpzq.a(paramInt)) {
-            paramString1 = RecordThumbnailUtils.a(paramString2, paramInt);
-          }
-        }
-        if (localGifCoder.a(paramString1, paramString3, d, true)) {
-          break label280;
-        }
-        i = -1;
-      }
-      label280:
-      k += j;
+    super.a(paramInt, parambqua);
+    if (this.jdField_a_of_type_Wuw != null) {
+      parambqua.a.setLinkInfo(this.jdField_a_of_type_Wuw);
     }
   }
   
-  private static void a()
+  void d()
   {
-    a = QzoneConfig.getInstance().getConfig("MiniVideo", "VideoToGifSize", 720);
-    b = QzoneConfig.getInstance().getConfig("MiniVideo", "VideoToGifSizeForLongEdge", 0);
-    c = QzoneConfig.getInstance().getConfig("MiniVideo", "VideoToGifFps", 5);
-    d = QzoneConfig.getInstance().getConfig("MiniVideo", "VideoToGifTimePerFrame", 200);
-    e = QzoneConfig.getInstance().getConfig("MiniVideo", "VideoToGifMaxFrame", 10);
-    f = QzoneConfig.getInstance().getConfig("MiniVideo", "VideoToGifFirstNSecond", 10);
+    this.jdField_a_of_type_Bqgk.a().d();
+    RelativeLayout.LayoutParams localLayoutParams;
+    int i;
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView == null)
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131365678));
+      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+      {
+        localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+        localLayoutParams.addRule(12, -1);
+        localLayoutParams.setMargins(0, 0, 0, a().getDimensionPixelSize(2131298016) + agej.a(17.0F, a()));
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      if (i < this.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildCount())
+      {
+        if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(i).getId() == 2131365680)
+        {
+          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView = new VipFrwrdLinkView(a());
+          this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView, i, localLayoutParams);
+        }
+      }
+      else {
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  public void f()
+  {
+    super.f();
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    Looper.myQueue().addIdleHandler(new bqhu(this));
+  }
+  
+  public void g()
+  {
+    super.g();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView = null;
   }
 }
 

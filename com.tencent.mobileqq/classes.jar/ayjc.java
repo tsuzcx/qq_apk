@@ -1,108 +1,98 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.view.LayoutInflater;
+import android.support.v4.util.SparseArrayCompat;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.PopupWindow;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.ocr.view.TranslateLanguageOptionsView.1;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.view.ViewGroup;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
 
 public class ayjc
-  extends PopupWindow
-  implements RadioGroup.OnCheckedChangeListener
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
-  private ayjd jdField_a_of_type_Ayjd;
+  private SparseArrayCompat<View> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
+  private RecyclerView.Adapter jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
+  private SparseArrayCompat<View> b = new SparseArrayCompat();
   
-  private ayjc(Context paramContext, View paramView, int paramInt1, int paramInt2)
+  public ayjc(RecyclerView.Adapter paramAdapter)
   {
-    super(paramView, paramInt1, paramInt2);
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131365031));
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramAdapter;
   }
   
-  public static ayjc a(Activity paramActivity, List<ayje> paramList, int paramInt, ayjd paramayjd)
+  private boolean a(int paramInt)
   {
-    if ((paramActivity == null) || (paramList == null) || (paramList.size() <= 0)) {
-      return null;
+    return paramInt < a();
+  }
+  
+  private boolean b(int paramInt)
+  {
+    return paramInt >= a() + c();
+  }
+  
+  private int c()
+  {
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size();
+  }
+  
+  public RecyclerView.Adapter a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size() + 100000, paramView);
+  }
+  
+  public int b()
+  {
+    return this.b.size();
+  }
+  
+  public void b(View paramView)
+  {
+    this.b.put(this.b.size() + 200000, paramView);
+  }
+  
+  public int getItemCount()
+  {
+    return a() + c() + b();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (a(paramInt)) {
+      return this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(paramInt);
     }
-    Resources localResources = paramActivity.getResources();
-    int m = afur.a(36.0F, localResources);
-    int k = afur.a(150.0F, localResources);
-    View localView = LayoutInflater.from(paramActivity).inflate(2131561345, null);
-    BounceScrollView localBounceScrollView = (BounceScrollView)localView.findViewById(2131363976);
-    RadioGroup localRadioGroup = (RadioGroup)localView.findViewById(2131365031);
-    Object localObject = null;
-    int j = 0;
-    int i = 78;
-    RadioButton localRadioButton;
-    if (j < paramList.size())
-    {
-      ayje localayje = (ayje)paramList.get(j);
-      localRadioButton = (RadioButton)LayoutInflater.from(paramActivity).inflate(2131561344, null);
-      localRadioButton.setText(localayje.a);
-      localRadioButton.setTag(localayje);
-      localRadioButton.setId(j);
-      if (j != paramInt) {
-        break label297;
-      }
-      localRadioButton.setChecked(true);
-      localObject = localRadioButton;
+    if (b(paramInt)) {
+      return this.b.keyAt(paramInt - a() - c());
     }
-    label297:
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemViewType(paramInt - a());
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((a(paramInt)) || (b(paramInt))) {}
     for (;;)
     {
-      localRadioGroup.addView(localRadioButton, j, new LinearLayout.LayoutParams(-1, -2));
-      j += 1;
-      i += m;
-      break;
-      paramInt = i;
-      if (i > afur.a(300.0F, localResources)) {
-        paramInt = afur.a(300.0F, localResources);
-      }
-      if (localObject != null) {
-        localBounceScrollView.post(new TranslateLanguageOptionsView.1(localObject, localBounceScrollView));
-      }
-      paramActivity = new ayjc(paramActivity, localView, k, paramInt);
-      paramActivity.setAnimationStyle(2131755031);
-      paramActivity.setBackgroundDrawable(new ColorDrawable(0));
-      paramActivity.setFocusable(true);
-      paramActivity.setOutsideTouchable(true);
-      paramActivity.a(paramayjd);
-      return paramActivity;
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+      return;
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - a());
     }
   }
   
-  public void a(ayjd paramayjd)
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_Ayjd = paramayjd;
-  }
-  
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
-  {
-    try
-    {
-      ayje localayje = (ayje)((RadioButton)paramRadioGroup.getChildAt(paramInt)).getTag();
-      if (this.jdField_a_of_type_Ayjd != null) {
-        this.jdField_a_of_type_Ayjd.a(paramInt, localayje);
-      }
-      dismiss();
+    if (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt) != null) {
+      return new ayjd((View)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt));
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+    if (this.b.get(paramInt) != null) {
+      return new ayjd((View)this.b.get(paramInt));
     }
-    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
   }
 }
 

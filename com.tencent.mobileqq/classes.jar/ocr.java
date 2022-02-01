@@ -1,81 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.biz.pubaccount.QualityReporter.1;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
 import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoReq;
 
 public class ocr
-  extends aqkz<ocq>
 {
-  @NonNull
-  public ocq a(int paramInt)
+  public static void a(qwv paramqwv)
   {
-    if (paramInt == 0)
-    {
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface))
-      {
-        localObject = (QQAppInterface)localObject;
-        tyg.a((QQAppInterface)localObject, tyg.a((QQAppInterface)localObject));
-        return ocq.a();
-      }
-    }
-    return new ocq();
+    ThreadManager.excute(new QualityReporter.1(paramqwv), 16, null, true);
   }
   
-  @Nullable
-  public ocq a(aqlg[] paramArrayOfaqlg)
+  private static void b(cc_sso_report_svr.ReportInfoReq paramReportInfoReq)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountCenterUrlConfProcessor", 2, "[onParsed]");
-    }
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return ocq.a(paramArrayOfaqlg);
-    }
-    return null;
-  }
-  
-  public void a(ocq paramocq)
-  {
-    paramocq.a();
-    paramocq.b();
-  }
-  
-  public Class<ocq> clazz()
-  {
-    return ocq.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return tyg.b((QQAppInterface)localAppRuntime);
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 70;
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), ocj.class);
+    localNewIntent.putExtra("cmd", "FeedsContentCenter.QualityReport");
+    localNewIntent.putExtra("data", paramReportInfoReq.toByteArray());
+    localNewIntent.setObserver(new ocs(localNewIntent));
+    ozs.a().startServlet(localNewIntent);
   }
 }
 

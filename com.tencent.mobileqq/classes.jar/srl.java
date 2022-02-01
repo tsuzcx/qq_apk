@@ -1,16 +1,56 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.LinkedList;
 
 public class srl
-  extends pue
 {
-  public srl(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private LinkedList<srn> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  
+  public srl(BaseActivity paramBaseActivity)
   {
-    super(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
   }
   
-  public void a(ptx paramptx)
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangObject = paramptx.a();
+    if (this.jdField_a_of_type_JavaUtilLinkedList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilLinkedList.size();
+  }
+  
+  public srn a()
+  {
+    if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
+      return null;
+    }
+    return (srn)this.jdField_a_of_type_JavaUtilLinkedList.pop();
+  }
+  
+  public void a(srm paramsrm)
+  {
+    if (paramsrm == null) {}
+    for (;;)
+    {
+      return;
+      while (!a())
+      {
+        srn localsrn = a();
+        if (localsrn != null) {
+          paramsrm.a(localsrn);
+        }
+      }
+    }
+  }
+  
+  public void a(srn paramsrn)
+  {
+    this.jdField_a_of_type_JavaUtilLinkedList.push(paramsrn);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilLinkedList.isEmpty();
   }
 }
 

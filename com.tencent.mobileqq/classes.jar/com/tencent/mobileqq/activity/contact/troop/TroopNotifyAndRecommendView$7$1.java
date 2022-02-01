@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import ajdv;
-import ajfk;
-import ajfn;
-import ajfo;
-import bdgn;
+import ajpe;
+import ajqt;
+import ajqw;
+import ajqx;
+import bdzi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -14,22 +14,22 @@ import java.util.List;
 public class TroopNotifyAndRecommendView$7$1
   implements Runnable
 {
-  public TroopNotifyAndRecommendView$7$1(ajfk paramajfk) {}
+  public TroopNotifyAndRecommendView$7$1(ajqt paramajqt) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("TroopNotifyAndRecommendView", 2, new Object[] { "Get MessageRecords From DB Real Size =", Integer.valueOf(this.a.a.jdField_a_of_type_JavaUtilList.size()) });
     }
-    Object localObject1 = ajfn.a(this.a.a.jdField_a_of_type_JavaUtilList);
+    Object localObject1 = ajqw.a(this.a.a.jdField_a_of_type_JavaUtilList);
     if (QLog.isColorLevel()) {
       QLog.d("TroopNotifyAndRecommendView", 2, new Object[] { "Get MessageRecords From DB No Seq Size =", Integer.valueOf(((List)localObject1).size()) });
     }
     TroopNotifyAndRecommendView.setAndCheckNotifyFollowSeq((List)localObject1, this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (ajfo.b())
+    if (ajqx.b())
     {
       this.a.a.setType(1);
-      ajfo.b(false);
+      ajqx.b(false);
     }
     Object localObject2 = new ArrayList();
     int i = 0;
@@ -38,10 +38,10 @@ public class TroopNotifyAndRecommendView$7$1
       ((List)localObject2).add(((List)localObject1).get(((List)localObject1).size() - i - 1));
       i += 1;
     }
-    ajfn.a((List)localObject2, bdgn.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-    localObject2 = ajfn.c();
-    List localList2 = ajfn.a();
-    List localList1 = ajfn.b();
+    ajqw.a((List)localObject2, bdzi.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    localObject2 = ajqw.c();
+    List localList2 = ajqw.a();
+    List localList1 = ajqw.b();
     if (this.a.a.c == 1) {
       this.a.a.a(true);
     }
@@ -57,25 +57,25 @@ public class TroopNotifyAndRecommendView$7$1
         QLog.d("TroopNotifyAndRecommendView", 2, "initNotificationListData error");
       }
       this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.y();
-      if (this.a.a.jdField_a_of_type_Ajdv != null)
+      if (this.a.a.jdField_a_of_type_Ajpe != null)
       {
-        this.a.a.jdField_a_of_type_Ajdv.a(null);
-        this.a.a.jdField_a_of_type_Ajdv.notifyDataSetChanged();
+        this.a.a.jdField_a_of_type_Ajpe.a(null);
+        this.a.a.jdField_a_of_type_Ajpe.notifyDataSetChanged();
       }
       return;
     }
-    if (this.a.a.jdField_a_of_type_Ajdv != null)
+    if (this.a.a.jdField_a_of_type_Ajpe != null)
     {
-      this.a.a.jdField_a_of_type_Ajdv.a((List)localObject1);
-      this.a.a.jdField_a_of_type_Ajdv.notifyDataSetChanged();
-      this.a.a.jdField_a_of_type_Ajdv.a(this.a.a.jdField_a_of_type_Antq);
+      this.a.a.jdField_a_of_type_Ajpe.a((List)localObject1);
+      this.a.a.jdField_a_of_type_Ajpe.notifyDataSetChanged();
+      this.a.a.jdField_a_of_type_Ajpe.a(this.a.a.jdField_a_of_type_Aoga);
     }
     this.a.a.c(localList2);
     this.a.a.b(localList1);
-    if (!ajfn.b()) {
+    if (!ajqw.b()) {
       this.a.a.a(false, 2);
     }
-    if (ajfn.a()) {
+    if (ajqw.a()) {
       this.a.a.a(true, 1);
     }
     for (;;)

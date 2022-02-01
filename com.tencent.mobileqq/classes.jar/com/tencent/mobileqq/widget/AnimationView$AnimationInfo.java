@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.widget;
 
-import akww;
+import alil;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import bgmg;
+import bhmi;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -62,13 +62,13 @@ public class AnimationView$AnimationInfo
     }
     String str = paramString + "Folder";
     File localFile = new File(str);
-    if ((!localFile.exists()) && (!akww.a(paramString, str))) {
+    if ((!localFile.exists()) && (!alil.a(paramString, str))) {
       return 3;
     }
     paramString = localFile.listFiles();
     if ((paramString == null) || (paramString.length <= 0))
     {
-      bgmg.a(str, false);
+      bhmi.a(str, false);
       return 4;
     }
     do
@@ -77,7 +77,7 @@ public class AnimationView$AnimationInfo
       if (i >= paramString.length) {
         break;
       }
-    } while ((paramString[i] == null) || (!paramString[i].isFile()) || (!bgmg.e(paramString[i].getAbsolutePath())));
+    } while ((paramString[i] == null) || (!paramString[i].isFile()) || (!bhmi.e(paramString[i].getAbsolutePath())));
     return 1;
     return 5;
   }
@@ -90,7 +90,7 @@ public class AnimationView$AnimationInfo
       return null;
       try
       {
-        paramFile = bgmg.b(paramFile);
+        paramFile = bhmi.b(paramFile);
         if (paramFile == null) {
           break;
         }
@@ -172,7 +172,7 @@ public class AnimationView$AnimationInfo
       {
         if ((localObject == null) || (localArrayList1 == null) || (localArrayList1.size() <= 0))
         {
-          paramString = akww.a(paramString);
+          paramString = alil.a(paramString);
           if ((paramString == null) || (paramString.length <= 0)) {
             return null;
           }
@@ -193,12 +193,12 @@ public class AnimationView$AnimationInfo
           }
           return null;
         }
-        akww.a(paramString);
+        alil.a(paramString);
         ArrayList localArrayList2 = new ArrayList();
         int i = 0;
         while (i < paramString.length)
         {
-          if ((paramString[i] != null) && (paramString[i].isFile()) && (bgmg.e(paramString[i].getAbsolutePath()))) {
+          if ((paramString[i] != null) && (paramString[i].isFile()) && (bhmi.e(paramString[i].getAbsolutePath()))) {
             localArrayList2.add(paramString[i]);
           }
           i += 1;
@@ -227,7 +227,7 @@ public class AnimationView$AnimationInfo
               }
               while (i < localSparseArray.size())
               {
-                akww.a((Drawable)localSparseArray.valueAt(i));
+                alil.a((Drawable)localSparseArray.valueAt(i));
                 i += 1;
               }
             }
@@ -252,7 +252,7 @@ public class AnimationView$AnimationInfo
           i = m;
           while (i < localSparseArray.size())
           {
-            akww.a((Drawable)localSparseArray.valueAt(i));
+            alil.a((Drawable)localSparseArray.valueAt(i));
             i += 1;
           }
           return null;
@@ -367,7 +367,7 @@ public class AnimationView$AnimationInfo
     int i = 0;
     while (i < this.mFrames.size())
     {
-      akww.a((Drawable)this.mFrames.valueAt(i));
+      alil.a((Drawable)this.mFrames.valueAt(i));
       i += 1;
     }
     this.mFrames.clear();

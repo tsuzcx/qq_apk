@@ -1,21 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class yqe
-  implements View.OnClickListener
+public abstract interface yqe
 {
-  yqe(yqd paramyqd) {}
-  
-  public void onClick(View paramView)
-  {
-    yqd.a(this.a, false);
-    this.a.notifyDataSetChanged();
-    if (yqd.a(this.a) != null) {
-      yqd.a(this.a).f();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(ErrorMessage paramErrorMessage);
 }
 
 

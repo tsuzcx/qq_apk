@@ -1,201 +1,348 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.Window;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.AVFunChat.AVFunChatMessage;
+import com.tencent.av.ui.ControlUIObserver.1;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 public class mct
+  implements Observer
 {
-  public View a;
-  public PopupWindow a;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  WeakReference<AVActivity> jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean;
-  private Runnable b;
-  public boolean b;
+  Handler a = null;
   
-  private void a(long paramLong)
+  public static <T extends mcu> T a(Object[] paramArrayOfObject)
   {
-    EffectSettingUi.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramLong);
-    this.jdField_a_of_type_AndroidViewView.postDelayed(this.b, 3000L);
+    return (mcu)paramArrayOfObject[1];
   }
   
-  private void a(TextView paramTextView)
+  protected void a() {}
+  
+  protected void a(int paramInt) {}
+  
+  protected void a(int paramInt1, int paramInt2, String paramString) {}
+  
+  protected void a(int paramInt, long paramLong) {}
+  
+  protected void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(long paramLong) {}
+  
+  protected void a(long paramLong, int paramInt) {}
+  
+  protected void a(long paramLong, int paramInt1, int paramInt2) {}
+  
+  protected void a(long paramLong, ArrayList<lob> paramArrayList) {}
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt) {}
+  
+  protected void a(long paramLong, boolean paramBoolean, String paramString) {}
+  
+  protected void a(long paramLong1, boolean paramBoolean1, boolean paramBoolean2, long paramLong2) {}
+  
+  protected void a(bhon parambhon) {}
+  
+  protected void a(Object paramObject) {}
+  
+  protected void a(String paramString) {}
+  
+  protected void a(String paramString1, int paramInt1, String paramString2, int paramInt2) {}
+  
+  protected void a(String paramString, AVFunChat.AVFunChatMessage paramAVFunChatMessage) {}
+  
+  protected void a(String paramString, Boolean paramBoolean) {}
+  
+  public void a(String paramString1, String paramString2) {}
+  
+  protected void a(ArrayList<lob> paramArrayList) {}
+  
+  protected void a(mcv parammcv) {}
+  
+  protected void a(mcw parammcw) {}
+  
+  public void a(mcx parammcx) {}
+  
+  protected void a(boolean paramBoolean) {}
+  
+  protected void a(boolean paramBoolean, long paramLong) {}
+  
+  protected void b() {}
+  
+  protected void b(int paramInt) {}
+  
+  protected void b(int paramInt, long paramLong) {}
+  
+  protected void b(long paramLong) {}
+  
+  public void b(Object paramObject)
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131380395) != null)
+    paramObject = (Object[])paramObject;
+    int i = ((Integer)paramObject[0]).intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("qav.ControlUIObserver", 2, "OnUpdate，msgType = " + i);
+    }
+    Object localObject;
+    switch (i)
     {
-      paramTextView.setVisibility(0);
+    default: 
+      return;
+    case 101: 
+      a(muk.a(paramObject, 1));
+      return;
+    case 174: 
+      b(muk.a(paramObject, 1));
+      return;
+    case 102: 
+      a();
+      return;
+    case 103: 
+      localObject = (ArrayList)paramObject[1];
+      a(muk.a(paramObject, 2), (ArrayList)localObject);
+      return;
+    case 104: 
+      a((ArrayList)paramObject[1]);
+      return;
+    case 105: 
+      a(((Boolean)paramObject[1]).booleanValue(), muk.a(paramObject, 2));
+      return;
+    case 106: 
+      c(muk.a(paramObject, 1));
+      return;
+    case 107: 
+      d(muk.a(paramObject, 1));
+      return;
+    case 108: 
+      f();
+      return;
+    case 109: 
+      g();
+      return;
+    case 110: 
+      f(muk.a(paramObject, 1));
+      return;
+    case 8001: 
+      b((String)paramObject[1]);
+      return;
+    case 119: 
+      c(((Integer)paramObject[1]).intValue());
+      return;
+    case 111: 
+      a(((Boolean)paramObject[1]).booleanValue());
+      return;
+    case 113: 
+      b();
+      return;
+    case 114: 
+      e();
+      return;
+    case 115: 
+      a((String)paramObject[1], ((Integer)paramObject[2]).intValue(), (String)paramObject[3], ((Integer)paramObject[4]).intValue());
+      return;
+    case 172: 
+      a(((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
+      return;
+    case 117: 
+      i = -1;
+      if (paramObject.length > 1) {
+        i = ((Integer)paramObject[1]).intValue();
+      }
+      a(i);
+      return;
+    case 8002: 
+      h();
+      return;
+    case 123: 
+      if (paramObject.length <= 1) {
+        break;
+      }
+    }
+    for (i = ((Integer)paramObject[1]).intValue();; i = 0)
+    {
+      a(muk.a(paramObject, 2), i);
+      return;
+      b(((Integer)paramObject[1]).intValue());
+      return;
+      a((mcx)paramObject[1]);
+      return;
+      localObject = (String)paramObject[1];
+      paramObject = (String)paramObject[2];
+      lir.a((String)localObject, paramObject);
+      b((String)localObject, paramObject);
+      return;
+      if (paramObject.length < 4) {
+        break;
+      }
+      boolean bool1 = ((Boolean)paramObject[1]).booleanValue();
+      boolean bool2 = ((Boolean)paramObject[2]).booleanValue();
+      long l = ((Long)paramObject[3]).longValue();
+      a(muk.a(paramObject, 4), bool1, bool2, l);
+      return;
+      i();
+      return;
+      a(paramObject[1]);
+      return;
+      e(muk.a(paramObject, 1));
+      return;
+      bool1 = ((Boolean)paramObject[1]).booleanValue();
+      i = ((Integer)paramObject[2]).intValue();
+      a(muk.a(paramObject, 3), bool1, i);
+      return;
+      g(muk.a(paramObject, 1));
+      return;
+      a((String)paramObject[1]);
+      return;
+      l();
+      return;
+      j();
+      return;
+      m();
+      return;
+      n();
+      return;
+      o();
+      return;
+      p();
+      return;
+      f(((Integer)paramObject[1]).intValue());
+      return;
+      c();
+      return;
+      a(((Integer)paramObject[1]).intValue(), muk.a(paramObject, 2));
+      return;
+      k();
+      return;
+      d((String)paramObject[1]);
+      return;
+      a((String)paramObject[1], (Boolean)paramObject[2]);
+      return;
+      e((String)paramObject[1]);
+      return;
+      b((String)paramObject[1], (Boolean)paramObject[2]);
+      return;
+      b((mcx)paramObject[1]);
+      return;
+      a((mcv)paramObject[1]);
+      return;
+      a((mcw)paramObject[1]);
+      return;
+      c((mcx)paramObject[1]);
+      return;
+      d((mcx)paramObject[1]);
+      return;
+      e((mcx)paramObject[1]);
+      return;
+      f((mcx)paramObject[1]);
+      return;
+      a((bhon)paramObject[1]);
+      return;
+      a((String)paramObject[1], (String)paramObject[2]);
+      return;
+      d();
+      return;
+      d(((Integer)paramObject[1]).intValue());
+      return;
+      c((String)paramObject[2]);
+      return;
+      e(((Integer)paramObject[1]).intValue());
+      return;
+      b(((Boolean)paramObject[1]).booleanValue());
+      return;
+      a(muk.a(paramObject, 1), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3]);
+      return;
+      a(muk.a(paramObject, 1), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
+      return;
+      a((String)paramObject[1], (AVFunChat.AVFunChatMessage)paramObject[2]);
+      return;
+      b(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue());
+      return;
+      a(((Integer)paramObject[1]).intValue(), ((Boolean)paramObject[2]).booleanValue());
       return;
     }
-    paramTextView.measure(0, 0);
-    int i = paramTextView.getMeasuredWidth();
-    int j = paramTextView.getMeasuredHeight();
-    Object localObject = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationOnScreen((int[])localObject);
-    int[] arrayOfInt1 = new int[2];
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLocationOnScreen((int[])localObject);
-    int[] arrayOfInt2 = new int[2];
-    localObject[0] -= arrayOfInt1[0];
-    localObject[1] -= arrayOfInt1[1];
-    float f1 = (arrayOfInt2[0] * 2 + this.jdField_a_of_type_AndroidViewView.getWidth() - i) / 2;
-    int k = arrayOfInt2[1];
-    float f2 = afur.a(0, this.jdField_a_of_type_AndroidViewView.getResources()) + (k - j);
-    QLog.d("qav_face_guide", 1, String.format("host(%s, %s), Parent(%s, %s), cur(%s, %s), dest(%s, %s), textview(%s, %s)", new Object[] { Integer.valueOf(localObject[0]), Integer.valueOf(localObject[1]), Integer.valueOf(arrayOfInt1[0]), Integer.valueOf(arrayOfInt1[1]), Integer.valueOf(arrayOfInt2[0]), Integer.valueOf(arrayOfInt2[1]), Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i), Integer.valueOf(j) }));
-    localObject = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject).addRule(5);
-    ((RelativeLayout.LayoutParams)localObject).addRule(6);
-    ((RelativeLayout.LayoutParams)localObject).setMargins((int)f1, (int)f2, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramTextView, (ViewGroup.LayoutParams)localObject);
   }
   
-  private boolean a(boolean paramBoolean)
-  {
-    if (AudioHelper.a(0) == 1) {}
-    do
-    {
-      return true;
-      if (paramBoolean)
-      {
-        if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
-          return false;
-        }
-        if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().av) {
-          return false;
-        }
-        if (!mue.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {
-          return false;
-        }
-      }
-      if (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
-        return false;
-      }
-      if (!this.jdField_a_of_type_AndroidViewView.isEnabled()) {
-        return false;
-      }
-    } while (loz.d());
-    return false;
-  }
+  protected void b(String paramString) {}
   
-  private void b(TextView paramTextView)
-  {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(this.jdField_a_of_type_AndroidViewView.getContext());
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(paramTextView);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131755815);
-    paramTextView.measure(0, 0);
-    int j = paramTextView.getMeasuredWidth();
-    int i = paramTextView.getMeasuredHeight();
-    paramTextView = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramTextView);
-    j = (paramTextView[0] * 2 + this.jdField_a_of_type_AndroidViewView.getWidth() - j) / 2;
-    int k = paramTextView[1];
-    int m = afur.a(0, this.jdField_a_of_type_AndroidViewView.getResources());
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView, 0, j, k - i + m);
-    QLog.d("qav_face_guide", 1, "showUserGuide_PopupWindow");
-  }
+  protected void b(String paramString, Boolean paramBoolean) {}
   
-  private void d()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
-    }
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-    {
-      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131380395);
-      if (localTextView != null)
-      {
-        localTextView.setVisibility(8);
-        localTextView.setOnClickListener(null);
-      }
-    }
-    this.jdField_a_of_type_AndroidViewView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-  }
+  public void b(String paramString1, String paramString2) {}
   
-  private void e()
+  protected void b(mcx parammcx) {}
+  
+  protected void b(boolean paramBoolean) {}
+  
+  protected void c() {}
+  
+  protected void c(int paramInt) {}
+  
+  protected void c(long paramLong) {}
+  
+  public void c(String paramString) {}
+  
+  protected void c(mcx parammcx) {}
+  
+  public void d() {}
+  
+  public void d(int paramInt) {}
+  
+  protected void d(long paramLong) {}
+  
+  protected void d(String paramString) {}
+  
+  protected void d(mcx parammcx) {}
+  
+  protected void e() {}
+  
+  protected void e(int paramInt) {}
+  
+  protected void e(long paramLong) {}
+  
+  protected void e(String paramString) {}
+  
+  protected void e(mcx parammcx) {}
+  
+  protected void f() {}
+  
+  protected void f(int paramInt) {}
+  
+  protected void f(long paramLong) {}
+  
+  protected void f(mcx parammcx) {}
+  
+  protected void g() {}
+  
+  protected void g(long paramLong) {}
+  
+  public void h() {}
+  
+  protected void i() {}
+  
+  protected void j() {}
+  
+  protected void k() {}
+  
+  protected void l() {}
+  
+  protected void m() {}
+  
+  protected void n() {}
+  
+  protected void o() {}
+  
+  protected void p() {}
+  
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if (!a(true)) {}
-    TextView localTextView;
-    do
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
     {
-      do
-      {
-        return;
-        localObject = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while (localObject == null);
-      localTextView = null;
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131380395);
+      if (this.a == null) {
+        this.a = new Handler(paramObservable);
       }
-    } while (localTextView == null);
-    int i = ((AVActivity)localObject).getWindow().getDecorView().getWidth();
-    int j = ((AVActivity)localObject).getWindow().getDecorView().getHeight();
-    localTextView.measure(0, 0);
-    int k = localTextView.getMeasuredWidth();
-    localTextView.getMeasuredHeight();
-    Object localObject = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationInWindow((int[])localObject);
-    int m = localObject[0];
-    int n = localObject[1];
-    localObject = (RelativeLayout)localTextView.getParent();
-    int[] arrayOfInt = new int[2];
-    ((RelativeLayout)localObject).getLocationInWindow(arrayOfInt);
-    int i1 = i - arrayOfInt[0] - ((RelativeLayout)localObject).getWidth();
-    int i2 = j - arrayOfInt[1] - ((RelativeLayout)localObject).getHeight();
-    float f1 = i - m - this.jdField_a_of_type_AndroidViewView.getWidth() / 2 - k / 2 - i1 + afur.a(0.0F, this.jdField_a_of_type_AndroidViewView.getResources());
-    float f2 = j - n - i2 - afur.a(11.0F, this.jdField_a_of_type_AndroidViewView.getResources());
-    localObject = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, (int)f1, (int)f2);
-    localTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    QLog.e("qav_face_guide", 1, "qav_face_guide, location_Host[" + m + n + "], hostTop[" + n + "], hostRight[" + n + "], hostBottom[" + n + "], offsetDP_right[" + 0.0F + "], offsetDP_bottom[" + 11.0F + "], pos_right[" + f1 + "], pos_bottom[" + f2 + "], hostID[" + this.jdField_a_of_type_AndroidViewView.getId() + "], Width[" + this.jdField_a_of_type_AndroidViewView.getWidth() + "], Height[" + this.jdField_a_of_type_AndroidViewView.getHeight() + "], textViewWidth[" + k + "], parentRight[" + i1 + "], parentBottom[" + i2 + "]");
-    localTextView.getViewTreeObserver().addOnPreDrawListener(new mcu(this, localTextView));
-    d();
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      b(localTextView);
-    }
-    for (;;)
-    {
-      localTextView.setOnClickListener(new mcv(this));
+      this.a.post(new ControlUIObserver.1(this, paramObject));
       return;
-      a(localTextView);
     }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().av = true;
-    mue.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    d();
-  }
-  
-  public void b()
-  {
-    d();
-  }
-  
-  public void c()
-  {
-    d();
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-    this.jdField_a_of_type_AndroidViewView.removeCallbacks(this.b);
-    this.jdField_a_of_type_AndroidViewView = null;
+    b(paramObject);
   }
 }
 

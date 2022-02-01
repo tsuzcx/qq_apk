@@ -7,20 +7,20 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
-import bcst;
-import bhql;
-import bhqo;
+import bdll;
+import birg;
+import birj;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
-import nmj;
-import nuk;
-import nun;
+import noe;
+import nwf;
+import nwh;
 
 public class WebpageFragment
   extends WebViewFragment
 {
-  private nuk a;
+  private nwf a;
   
   public static WebpageFragment a(Intent paramIntent)
   {
@@ -31,15 +31,15 @@ public class WebpageFragment
     return localWebpageFragment;
   }
   
-  public void a(nuk paramnuk)
+  public void a(nwf paramnwf)
   {
-    this.a = paramnuk;
+    this.a = paramnwf;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    bcst.a(null, "dc00898", "", this.a.a.a, "0X8008F6B", "0X8008F6B", 0, 0, this.a.a.c, "", "", this.a.a.b);
+    bdll.a(null, "dc00898", "", this.a.a.a, "0X8008F6B", "0X8008F6B", 0, 0, this.a.a.c, "", "", this.a.a.b);
   }
   
   public void onResume()
@@ -55,11 +55,11 @@ public class WebpageFragment
   
   public boolean showPreview()
   {
-    nmj.a("Web_qqbrowser_ShowPreview");
+    noe.a("Web_qqbrowser_ShowPreview");
     long l = System.nanoTime();
     this.mUIStyleHandler.a(this.intent);
     this.mUIStyle.c = 0L;
-    this.contentView.a(this.mUIStyleHandler.jdField_a_of_type_Bhqo.D);
+    this.contentView.a(this.mUIStyleHandler.jdField_a_of_type_Birj.D);
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     setImmersiveStatus();
@@ -71,7 +71,7 @@ public class WebpageFragment
     this.contentView.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
     this.mUIStyleHandler.a(this.mUrl);
     this.mUIStyleHandler.b = false;
-    nmj.b("Web_qqbrowser_ShowPreview");
+    noe.b("Web_qqbrowser_ShowPreview");
     return true;
   }
 }

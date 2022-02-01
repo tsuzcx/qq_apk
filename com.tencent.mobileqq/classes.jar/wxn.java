@@ -1,20 +1,12 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.msgTabNode.view.DotAnimationView;
 
 public class wxn
-  extends weu
 {
-  public final String a;
+  public float a;
+  public float b;
+  public float c;
   
-  public wxn(ErrorMessage paramErrorMessage, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + "} ";
-  }
+  private wxn(DotAnimationView paramDotAnimationView) {}
 }
 
 

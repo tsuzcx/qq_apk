@@ -1,132 +1,39 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class bpnc
-  extends bpnb
+  implements BusinessObserver
 {
-  public static boolean b;
-  public List<bpnf> a = new ArrayList();
-  public Map<String, Map<String, bpnd>> a;
-  public int c;
-  public String f;
-  public String g = "default";
-  public String h;
-  public String i;
+  public void a() {}
   
-  public bpnc(@NonNull String paramString)
-  {
-    super(paramString);
-  }
+  public void a(Bundle paramBundle) {}
   
-  public static List<bpnf> a(JSONArray paramJSONArray)
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ArrayList localArrayList = new ArrayList();
-    int j = 0;
-    while (j < paramJSONArray.length())
+    switch (paramInt)
     {
-      localArrayList.add(new bpnf(paramJSONArray.getJSONObject(j)));
-      j += 1;
+    default: 
+      return;
+    case 967: 
+      b();
+      return;
+    case 968: 
+      a(paramBoolean, paramBundle);
+      return;
+    case 969: 
+      c();
+      return;
+    case 970: 
+      a(paramBundle);
+      return;
     }
-    return localArrayList;
-  }
-  
-  public static Map<String, Map<String, bpnd>> a(JSONArray paramJSONArray)
-  {
-    Object localObject1;
-    if (paramJSONArray != null) {
-      try
-      {
-        if (paramJSONArray.length() > 0)
-        {
-          HashMap localHashMap1 = new HashMap(paramJSONArray.length());
-          int j = 0;
-          for (;;)
-          {
-            localObject1 = localHashMap1;
-            if (j >= paramJSONArray.length()) {
-              break;
-            }
-            Object localObject2 = paramJSONArray.getJSONObject(j);
-            localObject1 = ((JSONObject)localObject2).getString("id");
-            localObject2 = ((JSONObject)localObject2).getJSONArray("res");
-            if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
-            {
-              HashMap localHashMap2 = new HashMap(((JSONArray)localObject2).length());
-              int k = 0;
-              while (k < ((JSONArray)localObject2).length())
-              {
-                JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(k);
-                bpnd localbpnd = new bpnd();
-                localbpnd.a = localJSONObject.getString("resname");
-                localbpnd.b = localJSONObject.getString("resurl");
-                localbpnd.d = localJSONObject.getString("cityname");
-                localbpnd.c = localJSONObject.getString("md5");
-                localHashMap2.put(localbpnd.d, localbpnd);
-                k += 1;
-              }
-              localHashMap1.put(localObject1, localHashMap2);
-            }
-            j += 1;
-          }
-        }
-        localObject1 = null;
-      }
-      catch (JSONException paramJSONArray)
-      {
-        QLog.e("FacePackage", 1, paramJSONArray, new Object[0]);
-      }
-    }
-    return localObject1;
-  }
-  
-  public bpnf a(String paramString)
-  {
-    if ((!bgsp.a(paramString)) && (this.a != null))
-    {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        bpnf localbpnf = (bpnf)localIterator.next();
-        if (paramString.equals(localbpnf.a)) {
-          return localbpnf;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return "InformationFacePackage";
-  }
-  
-  public String a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.a.size())) {
-      return ((bpnf)this.a.get(paramInt)).c;
-    }
-    return null;
-  }
-  
-  public int b()
-  {
-    return this.a.size();
-  }
-  
-  public String b(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.a.size())) {
-      return ((bpnf)this.a.get(paramInt)).d;
-    }
-    return null;
+    a();
   }
 }
 

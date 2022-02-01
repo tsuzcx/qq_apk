@@ -1,24 +1,20 @@
-import java.util.Comparator;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.quickat.ui.AllMemberItemViewWrapper.3.1;
 
-final class bgje
-  implements Comparator
+public class bgje
+  extends aojs
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  bgje(bgjb parambgjb) {}
+  
+  protected void a(boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, boolean paramBoolean3)
   {
-    long l1 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject1)[1]);
-    long l2 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject2)[1]);
-    if (l1 == l2) {
-      return 0;
-    }
-    if (l1 < l2) {
-      return 2;
-    }
-    return -1;
+    ThreadManager.getUIHandlerV2().post(new AllMemberItemViewWrapper.3.1(this, paramBoolean1, paramString1, paramBoolean2, paramString2, paramString3, paramBoolean3));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgje
  * JD-Core Version:    0.7.0.1
  */

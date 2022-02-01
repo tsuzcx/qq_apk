@@ -1,29 +1,16 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class bbrm
-  implements ArkAppMgr.IGetAppPathByNameCallback
+class bbrm
+  implements DialogInterface.OnClickListener
 {
-  protected WeakReference<bbrl> a;
+  bbrm(bbrb parambbrb) {}
   
-  public bbrm(bbrl parambbrl)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(parambbrl);
-  }
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
-  {
-    bbrl localbbrl = (bbrl)this.a.get();
-    if (localbbrl == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkNodeContainer", 1, "onGetAppPathByName.wrapper == null");
-      }
-      return;
-    }
-    localbbrl.onGetAppPathByName(paramInt, paramString, paramAppPathInfo, paramObject);
+    paramDialogInterface.dismiss();
+    this.a.mContext.setResult(8001);
   }
 }
 

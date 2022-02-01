@@ -1,19 +1,29 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
-public class sqd
-  implements View.OnLongClickListener
+class sqd
+  implements Animation.AnimationListener
 {
-  public sqd(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, FastWebActivity paramFastWebActivity, FastWebArticleInfo paramFastWebArticleInfo) {}
+  sqd(sqc paramsqc, FastWebArticleInfo paramFastWebArticleInfo) {}
   
-  public boolean onLongClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
-    return false;
+    ImageView localImageView = sqc.a(this.jdField_a_of_type_Sqc);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.a) {}
+    for (int i = 2130842828;; i = 2130841656)
+    {
+      localImageView.setImageResource(i);
+      paramAnimation.setInterpolator(new AnticipateInterpolator());
+      return;
+    }
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

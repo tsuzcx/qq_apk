@@ -1,19 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
 public class aetl
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public aetl(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public aetl(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "showRecommendDialog cancel clicked!");
+    switch (paramMotionEvent.getAction())
+    {
     }
-    bcst.b(this.a.app, "dc00898", "", "", "0X800A605", "0X800A605", 0, 0, "", "", "", "");
+    return false;
   }
 }
 

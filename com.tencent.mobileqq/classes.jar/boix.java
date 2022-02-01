@@ -1,29 +1,14 @@
-import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
+import android.graphics.Rect;
+import dov.com.qq.im.ae.camera.core.AECameraManager.7;
 
-final class boix
-  implements bocb
+public class boix
+  implements bdbl
 {
-  boix(AEEditorTextBean paramAEEditorTextBean, boiz paramboiz) {}
+  public boix(AECameraManager.7 param7) {}
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_Boiz != null) {
-      this.jdField_a_of_type_Boiz.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, (int)(0.66D * paramInt));
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      boiw.b(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, this.jdField_a_of_type_Boiz);
-      boiw.c(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, this.jdField_a_of_type_Boiz);
-      return;
-    }
-    if (this.jdField_a_of_type_Boiz != null) {
-      this.jdField_a_of_type_Boiz.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, paramBoolean, "ERROR_PAG_ZIP_DOWNLOAD_FAILED");
-    }
-    bnzb.a("AEEditorPagStickerUtil", "[downloadPagZip] download pag zip failed");
+    boiw.a(this.a.this$0).a(this.a.jdField_a_of_type_JavaIoFile, new Rect(0, 0, this.a.jdField_a_of_type_Alxc.jdField_a_of_type_Int, this.a.jdField_a_of_type_Alxc.b), this.a.jdField_a_of_type_Amap, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Boolean, 1, boiw.b(this.a.this$0));
   }
 }
 

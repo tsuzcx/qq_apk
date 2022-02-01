@@ -3,10 +3,10 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import phq;
-import pmy;
+import pai;
+import pfs;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import tzo;
+import tzq;
 
 public final class WeishiReportUtil$2
   implements Runnable
@@ -19,7 +19,7 @@ public final class WeishiReportUtil$2
     oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
     localAttributeList.att_id.set(1);
     localAttributeList.att_name.set("ExitType");
-    localAttributeList.att_value.set(phq.a(this.jdField_a_of_type_Int));
+    localAttributeList.att_value.set(pai.a(this.jdField_a_of_type_Int));
     localArrayList.add(localAttributeList);
     localAttributeList = new oidb_cmd0x80a.AttributeList();
     localAttributeList.att_id.set(2);
@@ -29,7 +29,7 @@ public final class WeishiReportUtil$2
     localAttributeList = new oidb_cmd0x80a.AttributeList();
     localAttributeList.att_id.set(3);
     localAttributeList.att_name.set("Time");
-    localAttributeList.att_value.set(String.valueOf(pmy.a(this.jdField_a_of_type_Long) / 1000L));
+    localAttributeList.att_value.set(String.valueOf(pfs.a(this.jdField_a_of_type_Long) / 1000L));
     localArrayList.add(localAttributeList);
     if (!"1".equals(this.jdField_a_of_type_JavaLangString))
     {
@@ -49,7 +49,7 @@ public final class WeishiReportUtil$2
       localAttributeList.att_value.set("" + this.d);
       localArrayList.add(localAttributeList);
     }
-    tzo.a(26, localArrayList);
+    tzq.a(26, localArrayList);
   }
 }
 

@@ -1,17 +1,28 @@
+import android.os.Bundle;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import java.util.List;
+import mqq.observer.BusinessObserver;
+
 public class zwx
-  extends zwy
+  implements BusinessObserver
 {
-  private final String a = zwx.class.getName();
+  public zwx(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public zwx(String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  protected void a(boolean paramBoolean, List<String> paramList1, List<String> paramList2) {}
   
-  protected String a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    yqp.b(this.a, "Get cache tag[Disk]: cache");
-    return "protocal_cache";
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    if (paramBoolean)
+    {
+      a(paramBoolean, paramBundle.getStringArrayList("nickname_list"), paramBundle.getStringArrayList("uin_list"));
+      return;
+    }
+    this.b.i();
   }
 }
 

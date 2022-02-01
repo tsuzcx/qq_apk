@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alva
-  implements zxw<aacp>
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public alva(ShoppingFragment paramShoppingFragment) {}
+  public alva(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a(zxz paramzxz, aacp paramaacp)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramzxz.e()) {
-      ShoppingFragment.a(this.a, paramaacp);
-    }
-    while ((!paramzxz.d()) && (!paramzxz.c())) {
-      return;
-    }
-    ShoppingFragment.b(this.a, paramaacp);
+    NewFlowCameraActivity.a(this.a, paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

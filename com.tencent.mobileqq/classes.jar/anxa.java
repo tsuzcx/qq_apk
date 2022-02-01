@@ -1,30 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-
 public class anxa
+  implements anui
 {
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", aqxc.c().a(paramString2, paramString1));
-    localIntent.putExtra("hide_operation_bar", true);
-    paramContext.startActivity(localIntent);
-  }
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public static boolean a(int paramInt)
-  {
-    return paramInt != 0;
-  }
+  protected void b(boolean paramBoolean, Object paramObject) {}
   
-  public static boolean b(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return (paramInt & 0x1) != 0;
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    return (paramInt & 0x2) != 0;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    }
+    b(paramBoolean, paramObject);
   }
 }
 

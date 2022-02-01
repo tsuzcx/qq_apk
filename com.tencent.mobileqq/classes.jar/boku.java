@@ -1,6 +1,19 @@
-public abstract interface boku
+public class boku
 {
-  public abstract void a(boolean paramBoolean, Object paramObject);
+  public double a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  
+  public boku()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = anzj.a(2131714609);
+    this.jdField_b_of_type_JavaLangString = anzj.a(2131714611);
+    this.jdField_a_of_type_Double = 0.8D;
+  }
 }
 
 

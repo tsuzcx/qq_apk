@@ -1,43 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import kotlin.Metadata;
 
-public class acqr
-  implements acqj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
+final class acqr
+  implements DialogInterface.OnDismissListener
 {
-  private static acqs a;
+  acqr(acqn paramacqn) {}
   
-  public static void a()
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    a = null;
-  }
-  
-  public static void a(acqs paramacqs)
-  {
-    a = paramacqs;
-  }
-  
-  protected String a(String paramString)
-  {
-    if (a == null)
-    {
-      QLog.i("EndCardWebGdtMvWebJsCallHandler", 1, "onGetAdInfo mAction == null");
-      return "";
-    }
-    return a.a(paramString);
-  }
-  
-  protected void a(String paramString)
-  {
-    if (a == null)
-    {
-      QLog.i("EndCardWebGdtMvWebJsCallHandler", 1, "onHandleRewardVideoClick mAction == null");
-      return;
-    }
-    a.a(paramString);
-  }
-  
-  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
-  {
-    return true;
+    acqn.a(this.a);
   }
 }
 

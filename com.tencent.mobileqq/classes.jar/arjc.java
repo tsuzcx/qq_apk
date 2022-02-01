@@ -1,47 +1,43 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import org.json.JSONObject;
 
-class arjc
-  implements DialogInterface.OnClickListener
+public class arjc
 {
-  arjc(ariy paramariy) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c = 1;
+  public int d = -1;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public arjc()
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + ".db");
-    boolean bool = false;
-    if ((paramDialogInterface.exists()) && ((float)paramDialogInterface.length() * 1.7F > bgmg.a()))
-    {
-      bool = true;
-      ariy.a(this.a);
-      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
-      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
-      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_MemoryAlert").commit();
-    }
-    for (;;)
-    {
-      paramDialogInterface = new HashMap();
-      paramDialogInterface.put("isMemAlert", String.valueOf(bool));
-      bctj.a(BaseApplication.getContext()).a(null, DBFixManager.n, true, -1L, 0L, paramDialogInterface, null, false);
-      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, ariy.c, ariy.c, 0, 0, "", "", "", "");
-      return;
-      ariy.b(this.a);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public static arjc a(JSONObject paramJSONObject)
+  {
+    arjc localarjc = new arjc();
+    localarjc.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("show_c2c_chat_setting", false);
+    localarjc.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("show_group_chat_setting", false);
+    localarjc.jdField_a_of_type_Int = paramJSONObject.optInt("service_type", -1);
+    localarjc.jdField_b_of_type_Int = paramJSONObject.optInt("jumpType", -1);
+    localarjc.c = paramJSONObject.optInt("version", -1);
+    localarjc.d = paramJSONObject.optInt("appid", -1);
+    localarjc.jdField_a_of_type_JavaLangString = paramJSONObject.optString("jumpUrl", "");
+    return localarjc;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showC2CChatSetting=").append(this.jdField_a_of_type_Boolean).append(" showGroupChatSetting=").append(this.jdField_b_of_type_Boolean).append(" serviceType=").append(this.jdField_a_of_type_Int).append(" jumpType=").append(this.jdField_b_of_type_Int).append(" version=").append(this.c).append(" appId=").append(this.d).append(" jumpUrl=").append(this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arjc
  * JD-Core Version:    0.7.0.1
  */

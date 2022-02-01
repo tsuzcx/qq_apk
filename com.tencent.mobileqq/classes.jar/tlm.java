@@ -1,8 +1,14 @@
-public abstract interface tlm
+class tlm
+  implements tld
 {
-  public abstract void a();
+  tlm(tlj paramtlj) {}
   
-  public abstract void a(long paramLong);
+  public void a(tqt paramtqt, int paramInt1, int paramInt2)
+  {
+    if (this.a.a.a(paramtqt)) {
+      this.a.a.a(tlj.a(this.a), tlj.a(this.a), paramInt1, paramInt2);
+    }
+  }
 }
 
 

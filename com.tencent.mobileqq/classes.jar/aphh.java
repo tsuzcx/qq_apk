@@ -1,71 +1,33 @@
 import android.os.Build;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.commonsdk.util.MD5Coding;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import java.io.File;
+import java.text.SimpleDateFormat;
 
 public class aphh
-  implements apgw
 {
-  private aphh(apgu paramapgu) {}
-  
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public static String a()
   {
-    if (!apgt.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.DEVICE_INFORMATION")) {}
-    do
-    {
-      return false;
-      if ("GetModelName".equals(paramString))
-      {
-        paramVariantWrapper.SetString(Build.MODEL);
-        return true;
-      }
-      if ("GetScreenWidth".equals(paramString))
-      {
-        paramString = apoh.a;
-        paramVariantWrapper.SetInt((int)(paramString.widthPixels / paramString.density));
-        return true;
-      }
-      if ("GetScreenHeight".equals(paramString))
-      {
-        paramString = apoh.a;
-        paramVariantWrapper.SetInt((int)(paramString.heightPixels / paramString.density));
-        return true;
-      }
-      if ("GetPixelRatio".equals(paramString))
-      {
-        paramVariantWrapper.SetDouble(apoh.a());
-        return true;
-      }
-    } while (!"GetIdentifier".equals(paramString));
-    paramArrayOfVariantWrapper = bgln.a();
-    paramString = paramArrayOfVariantWrapper;
-    if (TextUtils.isEmpty(paramArrayOfVariantWrapper)) {}
-    try
-    {
-      paramString = bkfy.a("6973c4");
-      paramArrayOfVariantWrapper = paramString;
-      if (paramString == null)
-      {
-        paramArrayOfVariantWrapper = "";
-        QLog.e("ArkAppDeviceModule", 1, "get identifer: null, fix it with empty string");
-      }
-      paramString = paramArrayOfVariantWrapper;
-      if (this.a.jdField_a_of_type_Long != 0L) {
-        paramString = MD5Coding.encodeHexStr(paramArrayOfVariantWrapper);
-      }
-      paramVariantWrapper.SetString(paramString);
-      return true;
+    String str = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath();
+    return str + "/Camera/ARVideoRecord.tmp";
+  }
+  
+  public static boolean a()
+  {
+    return (Build.VERSION.SDK_INT >= 18) && (apky.a().d) && (!Build.MODEL.equalsIgnoreCase("CAM-TL00"));
+  }
+  
+  public static String b()
+  {
+    String str = ShortVideoUtils.d();
+    str = str + new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(Long.valueOf(System.currentTimeMillis()));
+    str = str + mny.a;
+    File localFile = new File(str).getParentFile();
+    if (!localFile.exists()) {
+      localFile.mkdirs();
     }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        QLog.e("ArkAppDeviceModule", 1, "get identifer: exception, catch it");
-        paramString = paramArrayOfVariantWrapper;
-      }
-    }
+    return str;
   }
 }
 

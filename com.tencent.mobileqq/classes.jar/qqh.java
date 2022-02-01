@@ -1,20 +1,24 @@
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function3;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class qqh
-  implements View.OnClickListener
+public class qqh
+  extends ClickableSpan
 {
-  qqh(qqa paramqqa) {}
+  public qqh(ComponentHeaderUgc paramComponentHeaderUgc, ArticleInfo paramArticleInfo) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    qqa.a(this.a).a().invoke(Boolean.valueOf(true), Boolean.valueOf(qqa.a(this.a)), Integer.valueOf(1));
-    this.a.b(true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.a(), 4, false, 7, false);
+    sel.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.e());
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(agej.a(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getResources()));
   }
 }
 

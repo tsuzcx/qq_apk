@@ -1,16 +1,16 @@
 package com.tencent.open.appstore.dl;
 
-import bisa;
-import bise;
+import bjsz;
+import bjtd;
 
 public class DownloadProxy$6
   implements Runnable
 {
-  public DownloadProxy$6(bise parambise, String paramString, boolean paramBoolean) {}
+  public DownloadProxy$6(bjtd parambjtd, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    bisa.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    bjsz.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
   }
 }
 

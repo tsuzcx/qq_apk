@@ -1,25 +1,27 @@
-import android.content.Intent;
-import com.dataline.activities.PrinterActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.qphone.base.util.QLog;
 
-class anrf
-  implements atve
+public class anrf
+  extends biht
 {
-  anrf(anrd paramanrd, BaseActivity paramBaseActivity, String paramString) {}
+  public anrf(ApolloLottieAnim paramApolloLottieAnim, String paramString1, String paramString2, String paramString3) {}
   
-  public void a()
+  public void onDone(bihu parambihu)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, PrinterActivity.class);
-    localIntent.putExtra(bgkb.h, 55);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jdField_a_of_type_JavaLangString);
-    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
-    bcst.b(this.jdField_a_of_type_Anrd.a, "CliOper", "", "", "0X8004059", "0X8004059", 0, 0, "", "", "", "");
+    super.onDone(parambihu);
+    if (3 == parambihu.a()) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloLottieAnim", 2, "downloadZip onDone task.getStatus()->" + parambihu.a());
+      }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a = 2;
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    }
   }
-  
-  public void b() {}
 }
 
 

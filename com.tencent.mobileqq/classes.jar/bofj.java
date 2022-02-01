@@ -1,17 +1,16 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 
-public class bofj
-  extends GestureDetector.SimpleOnGestureListener
+class bofj
+  implements Observer<bowc>
 {
-  public bofj(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
+  bofj(bofh parambofh) {}
   
-  public void onShowPress(MotionEvent paramMotionEvent)
+  public void a(@Nullable bowc parambowc)
   {
-    super.onShowPress(paramMotionEvent);
-    AEEditorVideoEditFragment.a(this.a).toggleAEKit(false);
+    if (parambowc != null) {
+      bofh.a(this.a, parambowc.a, parambowc.b);
+    }
   }
 }
 

@@ -1,337 +1,243 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
-import org.json.JSONObject;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Interpolator;
 
 public class blnu
-  extends RemoteCommand
 {
-  public blnu()
+  public static int a;
+  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
+  private final blnv jdField_a_of_type_Blnv;
+  private final boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private final blnv jdField_b_of_type_Blnv;
+  
+  static
   {
-    super("qqreader_plugin_cmd");
+    jdField_a_of_type_Int = 400;
   }
   
-  private QQAppInterface a()
+  public blnu(Context paramContext)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
+    this(paramContext, null);
   }
   
-  private void a(QQAppInterface paramQQAppInterface, Activity paramActivity, FileManagerEntity paramFileManagerEntity)
+  public blnu(Context paramContext, Interpolator paramInterpolator)
   {
-    if ((paramQQAppInterface == null) || (paramActivity == null)) {}
-    while (paramFileManagerEntity == null) {
-      return;
-    }
-    FileManagerEntity localFileManagerEntity = new FileManagerEntity();
-    localFileManagerEntity.copyFrom(paramFileManagerEntity);
-    localFileManagerEntity.nSessionId = atvo.a().longValue();
-    paramQQAppInterface.a().d(localFileManagerEntity);
-    int i = ForwardFileOption.a(paramFileManagerEntity);
-    paramFileManagerEntity = ForwardFileOption.a(localFileManagerEntity);
-    paramFileManagerEntity.b(i);
-    paramQQAppInterface = new Bundle();
-    paramQQAppInterface.putInt("forward_type", 0);
-    paramQQAppInterface.putParcelable("fileinfo", paramFileManagerEntity);
-    paramQQAppInterface.putBoolean("not_forward", true);
-    paramFileManagerEntity = new Intent();
-    paramFileManagerEntity.putExtras(paramQQAppInterface);
-    paramFileManagerEntity.putExtra("destroy_last_activity", false);
-    paramFileManagerEntity.putExtra("forward_type", 0);
-    paramFileManagerEntity.putExtra("forward_filepath", localFileManagerEntity.getFilePath());
-    paramFileManagerEntity.putExtra("forward_text", anni.a(2131708482) + atvo.d(localFileManagerEntity.fileName) + anni.a(2131708494) + atwl.a(localFileManagerEntity.fileSize) + "。");
-    paramFileManagerEntity.putExtra("k_favorites", atvo.c(localFileManagerEntity));
-    if ((!atwl.b(localFileManagerEntity.getFilePath())) && ((localFileManagerEntity.getCloudType() == 6) || (localFileManagerEntity.getCloudType() == 7)) && (localFileManagerEntity.nFileType == 0)) {
-      paramFileManagerEntity.putExtra("forward_type", 0);
-    }
-    if ((localFileManagerEntity.getCloudType() == 8) && (localFileManagerEntity.nFileType == 0)) {
-      paramFileManagerEntity.putExtra("forward_type", 1);
-    }
-    if (!bgnt.d(BaseApplication.getContext()))
-    {
-      atvf.a(2131692314);
-      return;
-    }
-    if (atul.a(localFileManagerEntity).a(false))
-    {
-      atvb.a(paramActivity, 2131692321, 2131692326, new blnv(this, paramActivity, paramFileManagerEntity));
-      return;
-    }
-    aufz.a(paramActivity, paramFileManagerEntity, 103);
+    this(paramContext, paramInterpolator, true);
   }
   
-  private void a(String paramString)
+  public blnu(Context paramContext, Interpolator paramInterpolator, boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface = a();
-    try
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Blnv = new blnv();
+    this.jdField_b_of_type_Blnv = new blnv();
+    blnv.a(paramContext);
+  }
+  
+  public float a()
+  {
+    return (float)Math.sqrt(blnv.a(this.jdField_a_of_type_Blnv) * blnv.a(this.jdField_a_of_type_Blnv) + blnv.a(this.jdField_b_of_type_Blnv) * blnv.a(this.jdField_b_of_type_Blnv));
+  }
+  
+  public final int a()
+  {
+    return blnv.a(this.jdField_a_of_type_Blnv);
+  }
+  
+  public Interpolator a()
+  {
+    return this.jdField_a_of_type_AndroidViewAnimationInterpolator;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Blnv.a();
+    this.jdField_b_of_type_Blnv.a();
+  }
+  
+  public final void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Blnv.a(paramFloat);
+    this.jdField_b_of_type_Blnv.a(paramFloat);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Blnv.a(paramInt);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_b_of_type_Blnv.b(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    a(paramInt1, paramInt2, paramInt3, paramInt4, 250);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Blnv.a(paramInt1, paramInt3, paramInt5);
+    this.jdField_b_of_type_Blnv.a(paramInt2, paramInt4, paramInt5);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, 0, 0);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
+  {
+    a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10, 1);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (!a()))
     {
-      int i = BaseApplicationImpl.getApplication().appActivities.size();
-      if (i > 0)
+      float f1 = blnv.a(this.jdField_a_of_type_Blnv);
+      float f2 = blnv.a(this.jdField_b_of_type_Blnv);
+      if ((Math.signum(paramInt3) == Math.signum(f1)) && (Math.signum(paramInt4) == Math.signum(f2)))
       {
-        Activity localActivity = (Activity)((WeakReference)BaseApplicationImpl.getApplication().appActivities.get(i - 1)).get();
-        if (localActivity != null)
-        {
-          a(localQQAppInterface, localActivity, atvo.a(new FileInfo(paramString)));
-          return;
-        }
-        blpu.a("QRRemoteCommond", "No Activity to use to forward file");
-        return;
+        paramInt3 = (int)(f1 + paramInt3);
+        paramInt4 = (int)(paramInt4 + f2);
       }
     }
-    catch (FileNotFoundException paramString)
+    for (;;)
     {
-      blpu.a("QRRemoteCommond", "file not found", paramString);
+      this.jdField_b_of_type_Int = paramInt11;
+      this.jdField_a_of_type_Blnv.a(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9);
+      this.jdField_b_of_type_Blnv.a(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10);
+      return;
     }
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
   {
-    paramOnInvokeFinishLinstener = null;
-    Object localObject2 = new Bundle();
-    Object localObject1 = (anrs)a().getManager(56);
-    switch (paramBundle.getInt("CommondType"))
-    {
-    default: 
-    case 13: 
-      for (;;)
-      {
-        return null;
-        a(paramBundle.getString("KEY_FILE_PATH"));
-      }
-    case 1: 
-      if (paramBundle == null) {
-        break;
-      }
+    a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
+    blnv.a(this.jdField_a_of_type_Blnv, paramLong);
+    blnv.a(this.jdField_b_of_type_Blnv, paramLong);
+  }
+  
+  public void a(Interpolator paramInterpolator)
+  {
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    blnv.a(this.jdField_a_of_type_Blnv, blnv.a(this.jdField_b_of_type_Blnv, paramBoolean));
+  }
+  
+  public final boolean a()
+  {
+    return (blnv.a(this.jdField_a_of_type_Blnv)) && (blnv.a(this.jdField_b_of_type_Blnv));
+  }
+  
+  public boolean a(float paramFloat1, float paramFloat2)
+  {
+    int i = blnv.c(this.jdField_a_of_type_Blnv);
+    int j = blnv.b(this.jdField_a_of_type_Blnv);
+    int k = blnv.c(this.jdField_b_of_type_Blnv);
+    int m = blnv.b(this.jdField_b_of_type_Blnv);
+    return (!a()) && (Math.signum(paramFloat1) == Math.signum(i - j)) && (Math.signum(paramFloat2) == Math.signum(k - m));
+  }
+  
+  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    this.jdField_b_of_type_Int = 1;
+    boolean bool1 = this.jdField_a_of_type_Blnv.a(paramInt1, paramInt3, paramInt4);
+    boolean bool2 = this.jdField_b_of_type_Blnv.a(paramInt2, paramInt5, paramInt6);
+    return (bool1) || (bool2);
+  }
+  
+  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
+  {
+    this.jdField_b_of_type_Int = 1;
+    boolean bool1 = this.jdField_a_of_type_Blnv.a(paramInt1, paramInt3, paramInt4, paramInt7);
+    boolean bool2 = this.jdField_b_of_type_Blnv.a(paramInt2, paramInt5, paramInt6, paramInt7);
+    return (bool1) || (bool2);
+  }
+  
+  public float b()
+  {
+    return blnv.a(this.jdField_b_of_type_Blnv);
+  }
+  
+  public final int b()
+  {
+    return blnv.a(this.jdField_b_of_type_Blnv);
+  }
+  
+  public boolean b()
+  {
+    if (a()) {
+      return false;
     }
-    for (paramBundle = paramBundle.getString("uin"); localObject1 != null; paramBundle = null)
+    switch (this.jdField_b_of_type_Int)
     {
-      for (;;)
+    }
+    for (;;)
+    {
+      return true;
+      long l = AnimationUtils.currentAnimationTimeMillis() - blnv.a(this.jdField_a_of_type_Blnv);
+      int i = blnv.d(this.jdField_a_of_type_Blnv);
+      if (l < i)
       {
-        if (((anrs)localObject1).b(paramBundle) != null) {
-          ((Bundle)localObject2).putBoolean("get_publicaccountinfo", true);
-        }
-        for (;;)
+        float f = (float)l / i;
+        if (this.jdField_a_of_type_AndroidViewAnimationInterpolator == null) {}
+        for (f = blgl.a(f);; f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f))
         {
-          return localObject2;
-          ((Bundle)localObject2).putBoolean("get_publicaccountinfo", false);
-        }
-        ((Bundle)localObject2).putInt("qq_vip_level", blnw.a(a(), null));
-        return localObject2;
-        ((Bundle)localObject2).putShort("qq_vip_info", blnw.a(a(), null));
-        return localObject2;
-        if (a() == null) {
-          break;
-        }
-        paramBundle = paramBundle.getString("publicaccount_uin");
-        ((Bundle)localObject2).putBoolean("publicaccount_is_follow", tzo.a(a(), paramBundle));
-        return localObject2;
-        if (a() == null) {
-          break;
-        }
-        localObject1 = paramBundle.getString("publicaccount_uin");
-        Object localObject3 = (anrs)a().getManager(56);
-        paramBundle = paramOnInvokeFinishLinstener;
-        if (localObject3 != null) {
-          paramBundle = ((anrs)localObject3).b((String)localObject1);
-        }
-        if (paramBundle != null)
-        {
-          ((Bundle)localObject2).putBoolean("isFollow", true);
-          ((Bundle)localObject2).putString("paName", paramBundle.name);
-        }
-        for (;;)
-        {
-          return localObject2;
-          ((Bundle)localObject2).putBoolean("isFollow", false);
-        }
-        int i = paramBundle.getInt("sharetype");
-        paramOnInvokeFinishLinstener = paramBundle.getString("url");
-        localObject3 = (Bitmap)paramBundle.getParcelable("cover");
-        Object localObject5 = paramBundle.getString("title");
-        localObject1 = paramBundle.getString("detail");
-        Object localObject4 = paramBundle.getString("imgUrl");
-        switch (i)
-        {
-        default: 
-        case 1: 
-        case 2: 
-          for (;;)
-          {
-            return localObject2;
-            paramBundle = new Bundle();
-            paramBundle.putString("title", (String)localObject5);
-            paramBundle.putString("desc", (String)localObject1);
-            paramBundle.putString("detail_url", paramOnInvokeFinishLinstener);
-            paramOnInvokeFinishLinstener = new ArrayList(1);
-            paramOnInvokeFinishLinstener.add(localObject4);
-            paramBundle.putStringArrayList("image_url", paramOnInvokeFinishLinstener);
-            bltb.a(a(), a().getApplication().getApplicationContext(), paramBundle, null);
-            continue;
-            localObject4 = WXShareHelper.a();
-            l = System.currentTimeMillis();
-            if (TextUtils.isEmpty(paramBundle.getString("detail"))) {
-              localObject1 = paramOnInvokeFinishLinstener;
-            }
-            ((WXShareHelper)localObject4).d(String.valueOf(l), (String)localObject5, (Bitmap)localObject3, (String)localObject1, paramOnInvokeFinishLinstener);
+          if (!blnv.a(this.jdField_a_of_type_Blnv)) {
+            this.jdField_a_of_type_Blnv.b(f);
           }
-        }
-        localObject4 = WXShareHelper.a();
-        long l = System.currentTimeMillis();
-        localObject5 = new StringBuilder().append((String)localObject5).append(":");
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-        for (paramBundle = paramOnInvokeFinishLinstener;; paramBundle = (Bundle)localObject1)
-        {
-          localObject5 = paramBundle;
-          paramBundle = (Bundle)localObject1;
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            paramBundle = paramOnInvokeFinishLinstener;
-          }
-          ((WXShareHelper)localObject4).c(String.valueOf(l), (String)localObject5, (Bitmap)localObject3, paramBundle, paramOnInvokeFinishLinstener);
-          break;
-        }
-        if ((WXShareHelper.a().a()) && (WXShareHelper.a().b())) {
-          ((Bundle)localObject2).putBoolean("is_wx_supported", true);
-        }
-        for (;;)
-        {
-          return localObject2;
-          ((Bundle)localObject2).putBoolean("is_wx_supported", false);
-        }
-        paramBundle = paramBundle.getString("url");
-        paramBundle = new Intent(a().getApplication().getApplicationContext(), QQBrowserActivity.class).putExtra("url", paramBundle);
-        paramBundle.putExtra("uin", a().getCurrentAccountUin());
-        paramBundle.putExtra("vkey", a().a());
-        paramBundle.setFlags(268435456);
-        a().getApplication().getApplicationContext().startActivity(paramBundle);
-        break;
-        paramOnInvokeFinishLinstener = a();
-        if (paramOnInvokeFinishLinstener != null)
-        {
-          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
-          if (paramOnInvokeFinishLinstener == null) {
+          if (blnv.a(this.jdField_b_of_type_Blnv)) {
             break;
           }
-          localObject1 = paramOnInvokeFinishLinstener.obtainMessage(1134027);
-          localObject2 = paramBundle.getString("bookName");
-          l = paramBundle.getLong("bookId");
-          paramBundle = paramBundle.getString("chapterId");
-          paramBundle = (String)localObject2 + "@#" + l + "@#" + paramBundle;
-          if (QLog.isColorLevel()) {
-            QLog.e("QRRemoteCommond", 2, "bookInfo : " + paramBundle);
-          }
-          ((Message)localObject1).obj = paramBundle;
-          paramOnInvokeFinishLinstener.sendMessage((Message)localObject1);
+          this.jdField_b_of_type_Blnv.b(f);
           break;
         }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("QRRemoteCommond", 2, "showReaderBar app = null");
-        break;
-        paramOnInvokeFinishLinstener = a();
-        if (paramOnInvokeFinishLinstener != null)
-        {
-          paramOnInvokeFinishLinstener = (baif)paramOnInvokeFinishLinstener.getManager(36);
-          if (paramOnInvokeFinishLinstener != null)
-          {
-            paramBundle = paramOnInvokeFinishLinstener.a(paramBundle.getString("path"));
-            if (paramBundle != null) {
-              ((Bundle)localObject2).putParcelable("redTouchInfo", baij.a(paramBundle));
-            }
-          }
-        }
-        for (;;)
-        {
-          return localObject2;
-          if (QLog.isColorLevel()) {
-            QLog.e("QRRemoteCommond", 2, "getRedTouch app = null");
-          }
-        }
-        paramOnInvokeFinishLinstener = a();
-        if (paramOnInvokeFinishLinstener == null) {
-          break label1079;
-        }
-        paramOnInvokeFinishLinstener = (baif)paramOnInvokeFinishLinstener.getManager(36);
-        if (paramOnInvokeFinishLinstener == null) {
-          break;
-        }
-        paramBundle = paramBundle.getString("path");
-        paramOnInvokeFinishLinstener.b(paramBundle);
-        try
-        {
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("service_type", 2);
-          ((JSONObject)localObject1).put("act_id", 1002);
-          paramOnInvokeFinishLinstener.c(paramOnInvokeFinishLinstener.a(paramBundle), ((JSONObject)localObject1).toString());
-        }
-        catch (Exception paramBundle)
-        {
-          paramBundle.printStackTrace();
-        }
       }
-      break;
-      label1079:
-      if (!QLog.isColorLevel()) {
-        break;
+      a();
+      continue;
+      if ((!blnv.a(this.jdField_a_of_type_Blnv)) && (!this.jdField_a_of_type_Blnv.c()) && (!this.jdField_a_of_type_Blnv.b())) {
+        this.jdField_a_of_type_Blnv.a();
       }
-      QLog.e("QRRemoteCommond", 2, "clickRedTouch app = null");
-      break;
-      paramOnInvokeFinishLinstener = a();
-      if (paramOnInvokeFinishLinstener == null) {
-        break;
-      }
-      paramOnInvokeFinishLinstener = (baif)paramOnInvokeFinishLinstener.getManager(36);
-      localObject1 = paramBundle.getStringArrayList("pathList");
-      if ((paramOnInvokeFinishLinstener == null) || (localObject1 == null)) {
-        break;
-      }
-      paramBundle = new ArrayList();
-      localObject1 = ((ArrayList)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
+      if ((!blnv.a(this.jdField_b_of_type_Blnv)) && (!this.jdField_b_of_type_Blnv.c()) && (!this.jdField_b_of_type_Blnv.b()))
       {
-        localObject2 = paramOnInvokeFinishLinstener.a((String)((Iterator)localObject1).next());
-        if (localObject2 != null) {
-          paramBundle.add(baij.a((BusinessInfoCheckUpdate.AppInfo)localObject2));
+        this.jdField_b_of_type_Blnv.a();
+        continue;
+        if ((!blnv.a(this.jdField_a_of_type_Blnv)) && (!this.jdField_a_of_type_Blnv.c()) && (!this.jdField_a_of_type_Blnv.a())) {
+          this.jdField_a_of_type_Blnv.a();
+        }
+        if ((!blnv.a(this.jdField_b_of_type_Blnv)) && (!this.jdField_b_of_type_Blnv.c()) && (!this.jdField_b_of_type_Blnv.a())) {
+          this.jdField_b_of_type_Blnv.a();
         }
       }
-      paramOnInvokeFinishLinstener = new Bundle();
-      paramOnInvokeFinishLinstener.putParcelableArrayList("redTouchInfoList", paramBundle);
-      return paramOnInvokeFinishLinstener;
     }
+  }
+  
+  public final int c()
+  {
+    return blnv.b(this.jdField_a_of_type_Blnv);
+  }
+  
+  public final int d()
+  {
+    return blnv.c(this.jdField_a_of_type_Blnv);
+  }
+  
+  public final int e()
+  {
+    return blnv.c(this.jdField_b_of_type_Blnv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blnu
  * JD-Core Version:    0.7.0.1
  */

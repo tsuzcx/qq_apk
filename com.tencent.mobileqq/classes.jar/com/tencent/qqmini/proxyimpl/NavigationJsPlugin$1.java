@@ -1,13 +1,13 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.app.Activity;
-import bjxs;
+import bkyw;
 import com.tencent.qphone.base.util.QLog;
 
 public class NavigationJsPlugin$1
   implements Runnable
 {
-  public NavigationJsPlugin$1(bjxs parambjxs, Activity paramActivity) {}
+  public NavigationJsPlugin$1(bkyw parambkyw, Activity paramActivity) {}
   
   public void run()
   {

@@ -1,6 +1,12 @@
-public abstract interface biqc
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class biqc
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(boolean paramBoolean);
+  biqc(biqa parambiqa) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

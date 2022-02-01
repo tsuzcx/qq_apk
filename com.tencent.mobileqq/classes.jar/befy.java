@@ -1,23 +1,10 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
-
-public class befy
+public abstract interface befy
 {
-  public String a;
-  public String b;
-  public String c;
+  public abstract void a(int paramInt);
   
-  public void a(JSONObject paramJSONObject)
-  {
-    this.a = paramJSONObject.optString("left");
-    this.b = paramJSONObject.optString("text");
-    this.c = paramJSONObject.optString("right");
-  }
+  public abstract void a(String paramString);
   
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
-  }
+  public abstract void b(int paramInt);
 }
 
 

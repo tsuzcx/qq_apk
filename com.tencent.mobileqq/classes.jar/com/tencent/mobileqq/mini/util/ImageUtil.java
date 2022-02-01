@@ -12,7 +12,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
 import android.text.TextUtils;
-import bgsp;
+import bhsr;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -370,7 +370,7 @@ public class ImageUtil
     //   0: aconst_null
     //   1: astore_2
     //   2: aload_0
-    //   3: invokestatic 260	bgsp:a	(Ljava/lang/String;)Z
+    //   3: invokestatic 260	bhsr:a	(Ljava/lang/String;)Z
     //   6: ifeq +7 -> 13
     //   9: aload_2
     //   10: astore_0
@@ -528,7 +528,7 @@ public class ImageUtil
   
   public static Bitmap getLocalCompressedBitmap(String paramString, BitmapFactory.Options paramOptions)
   {
-    if ((bgsp.a(paramString)) || (paramOptions == null)) {
+    if ((bhsr.a(paramString)) || (paramOptions == null)) {
       paramOptions = null;
     }
     Bitmap localBitmap;
@@ -943,7 +943,7 @@ public class ImageUtil
     }
     paramOptions = paramOptions.toLowerCase();
     if (paramOptions.indexOf("jpg") >= 0) {
-      return "jpeg";
+      return "jpg";
     }
     if (paramOptions.indexOf("jpeg") >= 0) {
       return "jpeg";
@@ -953,6 +953,9 @@ public class ImageUtil
     }
     if (paramOptions.indexOf("gif") >= 0) {
       return "gif";
+    }
+    if (paramOptions.indexOf("webp") >= 0) {
+      return "webp";
     }
     return "unknown";
   }

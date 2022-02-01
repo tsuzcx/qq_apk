@@ -1,10 +1,10 @@
-import android.text.SpannableString;
+import com.tencent.image.URLImageView;
 
 class bgxa
 {
-  int jdField_a_of_type_Int;
-  SpannableString jdField_a_of_type_AndroidTextSpannableString;
-  int b;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  
+  bgxa(bgwz parambgwz) {}
 }
 
 

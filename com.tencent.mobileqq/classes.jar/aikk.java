@@ -1,8 +1,15 @@
-public abstract interface aikk
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class aikk
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(aiki paramaiki);
+  aikk(aikg paramaikg, aiko paramaiko) {}
   
-  public abstract boolean a(String paramString);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    aikg.a(this.jdField_a_of_type_Aikg, this.jdField_a_of_type_Aiko);
+  }
 }
 
 

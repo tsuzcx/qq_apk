@@ -1,100 +1,46 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function3;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import tencent.im.oidb.cmd0xe5c.cmd0xe5c.RspBody;
+import tencent.im.oidb.cmd0xe5c.cmd0xe5c.TopicRspBody;
 
-public class qth
-  extends qqt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWriteWatchWordModel$fetchTopicWatchWord$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onResult", "", "errorCode", "", "data", "", "bundle", "Landroid/os/Bundle;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qth
+  extends nkq
 {
-  public qth(Context paramContext, aobu paramaobu, snh paramsnh)
-  {
-    super(paramContext, paramaobu, paramsnh);
-  }
+  qth(Function3 paramFunction3) {}
   
-  public qqt a()
+  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @NotNull Bundle paramBundle)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return e(this.jdField_a_of_type_Snh, this.jdField_a_of_type_Aobu).q().l().n().h().g().j();
-  }
-  
-  public qqt d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout1.setOrientation(1);
-    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderRecommend != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderRecommend);
-    }
-    if ((this.jdField_a_of_type_Qqs != null) && ((this.jdField_a_of_type_Qqs instanceof ComponentContentBig)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null))
+    Intrinsics.checkParameterIsNotNull(paramBundle, "bundle");
+    QLog.i("RIJWriteWatchWordModel", 1, "fetchTopicWatchWord error code = " + paramInt);
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      RelativeLayout localRelativeLayout1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      localRelativeLayout1.setPadding(afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
-      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      localLinearLayout2.setOrientation(1);
-      localLinearLayout2.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-      localLinearLayout2.addView((ComponentContentBig)this.jdField_a_of_type_Qqs);
-      RelativeLayout localRelativeLayout2 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      localRelativeLayout2.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
-      localLinearLayout2.addView(localRelativeLayout2);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(15);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
-      localRelativeLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      localLinearLayout2.setBackgroundResource(2130842837);
-      localLinearLayout2.setOnClickListener(new qti(this));
-      localRelativeLayout1.addView(localLinearLayout2);
-      localLinearLayout1.addView(localRelativeLayout1);
+      paramBundle = new cmd0xe5c.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (cmd0xe5c.TopicRspBody)paramBundle.topic_rsp_body.get();
+      paramBundle = this.a;
+      if (paramBundle != null)
+      {
+        String str1 = paramArrayOfByte.watch_word.get();
+        String str2 = paramArrayOfByte.url.get();
+        Intrinsics.checkExpressionValueIsNotNull(str2, "topicRspBody.url.get()");
+        paramArrayOfByte = (Unit)paramBundle.invoke(str1, str2, Boolean.valueOf(paramArrayOfByte.is_open.get()));
+      }
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout1);
-    return this;
-  }
-  
-  public qqt e()
-  {
-    return null;
-  }
-  
-  public qqt g()
-  {
-    this.jdField_a_of_type_Qqs = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-  
-  public qqt o()
-  {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderRecommend != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderRecommend.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    return this;
+    do
+    {
+      return;
+      paramArrayOfByte = this.a;
+    } while (paramArrayOfByte == null);
+    paramArrayOfByte = (Unit)paramArrayOfByte.invoke(null, "", Boolean.valueOf(false));
   }
 }
 

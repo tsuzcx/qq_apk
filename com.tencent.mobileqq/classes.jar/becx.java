@@ -1,40 +1,22 @@
-public class becx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
+
+class becx
+  implements DialogInterface.OnClickListener
 {
-  public int c = -1;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public int f;
-  public String g;
-  public String h;
+  becx(becw parambecw, TimDocSSOMsg.UinRightInfo paramUinRightInfo) {}
   
-  public becx()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("result:");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(" errCode:");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
-    localStringBuilder.append(" errStr:");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(" reason:");
-    localStringBuilder.append(this.h);
-    localStringBuilder.append(" succCnt:");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
-    localStringBuilder.append(" failCnt");
-    localStringBuilder.append(this.f);
-    localStringBuilder.append(" isSendByQuickHttp");
-    localStringBuilder.append(this.jdField_d_of_type_Boolean);
-    localStringBuilder.append(" isAllowRetry");
-    localStringBuilder.append(this.jdField_e_of_type_Boolean);
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Becw.a.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Becw.a.jdField_a_of_type_Beaf.b(String.valueOf(this.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint64_uin.get()));
+    this.jdField_a_of_type_Becw.a.jdField_a_of_type_Beaf.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Becw.a.b == 1) {
+      bdll.b(TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_Becw.a), "dc00898", "", "", "0x8007CFD", "0x8007CFD", 0, 0, "", "", "", "");
+    }
   }
 }
 

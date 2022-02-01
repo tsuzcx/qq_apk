@@ -1,23 +1,10 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.net.Uri;
 
-public class avqd
-  implements Animation.AnimationListener
+public abstract interface avqd
 {
-  public avqd(UiApiPlugin paramUiApiPlugin, View paramView, int paramInt1, int paramInt2) {}
+  public abstract void a(Uri paramUri);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getRight(), this.b);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(String paramString1, String paramString2, long paramLong);
 }
 
 

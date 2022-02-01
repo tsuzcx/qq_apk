@@ -3,13 +3,15 @@ package com.tencent.biz.subscribe.account_folder.recommend_banner;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import aaaf;
-import aaaz;
-import aabe;
-import aabh;
-import aabj;
-import aabw;
-import aaxb;
+import aaak;
+import aaam;
+import aaek;
+import aafe;
+import aafj;
+import aafm;
+import aafo;
+import aagb;
+import abbe;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,15 +30,13 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.app.AppRuntime;
-import zwp;
-import zwr;
 
 public class RecommendBannerView
   extends LinearLayout
-  implements View.OnClickListener, zwr
+  implements aaam, View.OnClickListener
 {
-  private aabh jdField_a_of_type_Aabh;
-  private aabj jdField_a_of_type_Aabj;
+  private aafm jdField_a_of_type_Aafm;
+  private aafo jdField_a_of_type_Aafo;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -55,11 +55,11 @@ public class RecommendBannerView
   
   private void a(int paramInt)
   {
-    if (paramInt < this.jdField_a_of_type_Aabh.getItemCount())
+    if (paramInt < this.jdField_a_of_type_Aafm.getItemCount())
     {
-      this.jdField_a_of_type_Aabh.a(paramInt);
-      if ((!this.jdField_a_of_type_Aabh.c()) && (!this.jdField_a_of_type_Aabh.b()) && (this.jdField_a_of_type_Aabj != null)) {
-        this.jdField_a_of_type_Aabj.a();
+      this.jdField_a_of_type_Aafm.a(paramInt);
+      if ((!this.jdField_a_of_type_Aafm.c()) && (!this.jdField_a_of_type_Aafm.b()) && (this.jdField_a_of_type_Aafo != null)) {
+        this.jdField_a_of_type_Aafo.a();
       }
       a();
     }
@@ -67,19 +67,19 @@ public class RecommendBannerView
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Aabh.b()) && (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 0))
+    if ((this.jdField_a_of_type_Aafm.b()) && (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 0))
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
   }
   
-  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<aabw> paramList, boolean paramBoolean)
+  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<aagb> paramList, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Aabh != null)
+    if (this.jdField_a_of_type_Aafm != null)
     {
-      this.jdField_a_of_type_Aabh.d(paramBoolean);
-      this.jdField_a_of_type_Aabh.a(paramStEntry, paramList);
+      this.jdField_a_of_type_Aafm.d(paramBoolean);
+      this.jdField_a_of_type_Aafm.a(paramStEntry, paramList);
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollToPosition(0);
     }
   }
@@ -87,18 +87,18 @@ public class RecommendBannerView
   protected void a(Context paramContext)
   {
     setOrientation(1);
-    inflate(paramContext, 2131558793, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131363260));
+    inflate(paramContext, 2131558791, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131363284));
     paramContext = new LinearLayoutManager(paramContext);
     paramContext.setOrientation(0);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new aaaz());
-    this.jdField_a_of_type_Aabh = new aabh(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    this.jdField_a_of_type_Aabh.b(aaaf.a());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aabh);
-    this.jdField_a_of_type_Aabh.a(new aabe(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376168));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376169));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new aafe());
+    this.jdField_a_of_type_Aafm = new aafm(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
+    this.jdField_a_of_type_Aafm.b(aaek.a());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aafm);
+    this.jdField_a_of_type_Aafm.a(new aafj(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376308));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376309));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
   }
@@ -113,7 +113,7 @@ public class RecommendBannerView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    zwp.a().a(this);
+    aaak.a().a(this);
   }
   
   public void onClick(View paramView)
@@ -124,17 +124,17 @@ public class RecommendBannerView
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    if ((this.jdField_a_of_type_Aabh != null) && (this.jdField_a_of_type_Aabj != null))
+    if ((this.jdField_a_of_type_Aafm != null) && (this.jdField_a_of_type_Aafo != null))
     {
-      if ((this.jdField_a_of_type_Aabh.a()) || (this.jdField_a_of_type_Aabh.b())) {
+      if ((this.jdField_a_of_type_Aafm.a()) || (this.jdField_a_of_type_Aafm.b())) {
         break label108;
       }
-      this.jdField_a_of_type_Aabj.a();
+      this.jdField_a_of_type_Aafo.a();
     }
     for (;;)
     {
       a();
-      aaxb.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "auth_page", "clk_change", 0, 0, new String[0]);
+      abbe.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "auth_page", "clk_change", 0, 0, new String[0]);
       break;
       label108:
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollToPosition(0);
@@ -144,20 +144,20 @@ public class RecommendBannerView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    zwp.a().b(this);
+    aaak.a().b(this);
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    if ((!(paramSimpleBaseEvent instanceof RecommendFeedbackEvent)) || (this.jdField_a_of_type_Aabh == null)) {}
+    if ((!(paramSimpleBaseEvent instanceof RecommendFeedbackEvent)) || (this.jdField_a_of_type_Aafm == null)) {}
     label188:
     for (;;)
     {
       return;
       int i = 0;
       int j;
-      if (i < this.jdField_a_of_type_Aabh.a().size()) {
-        if ((((RecommendFeedbackEvent)paramSimpleBaseEvent).type == 1) && (((RecommendFeedbackEvent)paramSimpleBaseEvent).user != null) && (TextUtils.equals(((aabw)this.jdField_a_of_type_Aabh.a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), ((RecommendFeedbackEvent)paramSimpleBaseEvent).user.id.get()))) {
+      if (i < this.jdField_a_of_type_Aafm.a().size()) {
+        if ((((RecommendFeedbackEvent)paramSimpleBaseEvent).type == 1) && (((RecommendFeedbackEvent)paramSimpleBaseEvent).user != null) && (TextUtils.equals(((aagb)this.jdField_a_of_type_Aafm.a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), ((RecommendFeedbackEvent)paramSimpleBaseEvent).user.id.get()))) {
           j = i;
         }
       }
@@ -171,7 +171,7 @@ public class RecommendBannerView
         if ((((RecommendFeedbackEvent)paramSimpleBaseEvent).type == 2) && (((RecommendFeedbackEvent)paramSimpleBaseEvent).feed != null))
         {
           j = i;
-          if (TextUtils.equals(((aabw)this.jdField_a_of_type_Aabh.a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get(), ((RecommendFeedbackEvent)paramSimpleBaseEvent).feed.id.get())) {}
+          if (TextUtils.equals(((aagb)this.jdField_a_of_type_Aafm.a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get(), ((RecommendFeedbackEvent)paramSimpleBaseEvent).feed.id.get())) {}
         }
         else
         {
@@ -183,9 +183,9 @@ public class RecommendBannerView
     }
   }
   
-  public void setPresenter(aabj paramaabj)
+  public void setPresenter(aafo paramaafo)
   {
-    this.jdField_a_of_type_Aabj = paramaabj;
+    this.jdField_a_of_type_Aafo = paramaafo;
   }
 }
 

@@ -1,15 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 
 public class aerr
   implements DialogInterface.OnClickListener
 {
-  public aerr(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  public aerr(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bhpc parambhpc) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    this.jdField_a_of_type_Bhpc.dismiss();
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.getIntent();
+    paramDialogInterface.putExtra("delHead_fileid", FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity));
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.setResult(-1, paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.finish();
   }
 }
 

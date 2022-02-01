@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.activity.richmedia.FlowActivity;
+import cooperation.qwallet.plugin.QWalletHelper;
 
 public class alir
 {
-  public static <T extends aliq> T a(FlowActivity paramFlowActivity, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    return new alis(paramFlowActivity);
-  }
+  public static final String a = ;
+  public static final String b = a + ".tmp/";
+  public static final String c = QWalletHelper.getQWalletInternalPath();
+  public static final String d = c + ".tmp/";
+  public static final String e = d + "topay_recommends";
+  public static final String f = d + "group_available_list_";
 }
 
 

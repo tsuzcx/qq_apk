@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqpim.QQPimBridgeActivity;
+import android.view.View;
 
-public class blmp
-  implements DialogInterface.OnDismissListener
+class blmp
+  implements blmr
 {
-  public blmp(QQPimBridgeActivity paramQQPimBridgeActivity) {}
+  blmp(blmm paramblmm) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(View paramView)
   {
-    this.a.finish();
+    this.a.c(paramView);
+    this.a.c();
+    blmm.a(this.a, paramView.getTag(), false);
   }
 }
 

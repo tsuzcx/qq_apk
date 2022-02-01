@@ -1,26 +1,20 @@
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 
-class awlh
-  extends ClickableSpan
+public class awlh
 {
-  awlh(awlf paramawlf, BaseActivity paramBaseActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    awlf.a(this.jdField_a_of_type_Awlf, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(this.jdField_a_of_type_Awlf.a.getApp().getResources().getColor(2131166994));
-  }
+  public int a;
+  public Context a;
+  public Drawable a;
+  public View.OnClickListener a;
+  public arsh a;
+  public awkl a;
+  public QQAppInterface a;
+  public boolean a;
+  public int b;
+  public boolean b;
 }
 
 

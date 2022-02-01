@@ -1,6 +1,19 @@
-public abstract interface bkgy
+import android.text.ClipboardManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bkgy
+  implements View.OnClickListener
 {
-  public abstract void a(float paramFloat1, float paramFloat2);
+  bkgy(bkgx parambkgx) {}
+  
+  public void onClick(View paramView)
+  {
+    ((ClipboardManager)this.a.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

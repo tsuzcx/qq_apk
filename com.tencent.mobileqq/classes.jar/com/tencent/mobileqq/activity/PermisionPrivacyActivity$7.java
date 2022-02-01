@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import axas;
+import axtm;
 
 class PermisionPrivacyActivity$7
   implements Runnable
@@ -14,7 +14,7 @@ class PermisionPrivacyActivity$7
     do
     {
       return;
-      i = axas.a(this.this$0.app);
+      i = axtm.a(this.this$0.app);
     } while (this.this$0.isFinishing());
     this.this$0.runOnUiThread(new PermisionPrivacyActivity.7.1(this, i));
   }

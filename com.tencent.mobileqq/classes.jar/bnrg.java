@@ -1,12 +1,16 @@
-class bnrg
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import cooperation.readinjoy.ReadInJoyHelper.1;
+
+public class bnrg
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public float a;
-  public int a;
-  public float b;
-  public float c;
-  public float d;
+  public bnrg(ReadInJoyHelper.1 param1) {}
   
-  bnrg(bnrf parambnrf) {}
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  {
+    if (paramInt == 0) {}
+  }
 }
 
 

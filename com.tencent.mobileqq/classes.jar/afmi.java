@@ -1,169 +1,74 @@
-import android.app.Dialog;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 
-public class afmi
-  extends Handler
+class afmi
+  extends atpa
 {
-  public afmi(TroopMemberListActivity paramTroopMemberListActivity) {}
+  afmi(afmg paramafmg) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    if (this.a.isFinishing()) {}
-    boolean bool;
-    do
+    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferProgress");
+    if (this.a.jdField_a_of_type_JavaUtilList != null)
     {
-      do
+      paramInt = 0;
+      if (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
+        break label232;
+      }
+      if (((afmn)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a != paramLong1) {}
+    }
+    for (;;)
+    {
+      if (paramInt != -1) {
+        paramInt = 0;
+      }
+      for (;;)
       {
-        do
+        if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
         {
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopMemberListActivityget_troop_member", 2, "handleMessage,msg.what:" + paramMessage.what);
+          paramString = (FileManagerEntity)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+          if (paramString.uniseq != paramLong1) {
+            break label202;
           }
-          switch (paramMessage.what)
-          {
-          case 3: 
-          case 4: 
-          case 10: 
-          default: 
-            return;
-          case 1: 
-          case 2: 
-            for (;;)
-            {
-              TroopMemberListActivity.a(this.a, paramMessage);
-              return;
-              this.a.k();
-            }
-          case 13: 
-            paramMessage = this.a;
-            paramMessage.jdField_a_of_type_Double += TroopMemberListActivity.jdField_b_of_type_Double;
+          if (this.a.jdField_a_of_type_Bhpc != null) {
+            this.a.jdField_a_of_type_Bhpc.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf((int)(paramString.fProgress * 100.0F)) }));
           }
-        } while ((this.a.jdField_a_of_type_Double <= this.a.jdField_a_of_type_AndroidWidgetProgressBar.getProgress()) || (this.a.jdField_a_of_type_Double >= 90.0D) || (TroopMemberListActivity.a(this.a) <= 0));
-        int i = (int)this.a.jdField_a_of_type_Double;
-        int j = (int)(TroopMemberListActivity.a(this.a) * this.a.jdField_a_of_type_Double / 100.0D);
-        TroopMemberListActivity.a(this.a, j, TroopMemberListActivity.a(this.a), i);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(13), 800L);
-        return;
-        List localList;
-        synchronized (this.a)
-        {
-          TroopMemberListActivity.b(this.a);
-          localList = (List)paramMessage.obj;
-          if ((localList == null) && (this.a.jdField_d_of_type_Int != 14)) {
-            return;
-          }
-        }
-        if (this.a.jdField_d_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
-        {
-          this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
-          double d = Math.min(0.9D + paramMessage.arg1 * 1.0D / TroopMemberListActivity.a(this.a), 1.0D);
-          i = (int)(100.0D * d);
-          if (i > this.a.jdField_a_of_type_AndroidWidgetProgressBar.getProgress())
-          {
-            j = (int)(d * TroopMemberListActivity.a(this.a));
-            TroopMemberListActivity.a(this.a, j, TroopMemberListActivity.a(this.a), i);
-          }
-        }
-        if (localList != null) {
-          this.a.jdField_a_of_type_JavaUtilList.addAll(localList);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopMemberListActivityget_troop_member", 2, "handleMessage, mJobCount left:" + TroopMemberListActivity.c(this.a) + "mATroopMemberList.size():" + this.a.jdField_a_of_type_JavaUtilList.size());
-        }
-        if (TroopMemberListActivity.c(this.a) <= 0) {
-          TroopMemberListActivity.b(this.a, true);
-        }
-        if ((TroopMemberListActivity.b(this.a)) && (TroopMemberListActivity.d(this.a)))
-        {
-          if (this.a.jdField_a_of_type_JavaUtilList.isEmpty()) {
-            return;
-          }
-          this.a.k();
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopMemberListActivityget_troop_member", 2, "handleMessage real totalTime:" + (System.currentTimeMillis() - TroopMemberListActivity.a(this.a)) + "start refreshUI");
-          }
-          if (this.a.app.a() != null) {
-            this.a.app.a().notifyRefreshTroopMember();
-          }
-          paramMessage.obj = this.a.jdField_a_of_type_Afnc.a();
-          TroopMemberListActivity.a(this.a, paramMessage);
         }
         return;
-        this.a.k();
-        return;
-        if (this.a.jdField_a_of_type_Afnc != null)
-        {
-          if (this.a.jdField_a_of_type_Afnc.b != null) {
-            this.a.jdField_a_of_type_Afnc.b.clear();
-          }
-          this.a.jdField_a_of_type_Afnc.a();
-        }
-        if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-          this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-        }
-        QQToast.a(this.a, this.a.getString(2131691315), 0).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
-        TroopMemberListActivity.a(this.a);
-        return;
-        if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-          this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-        }
-        QQToast.a(this.a, this.a.getString(2131691314), 0).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
-        return;
-      } while ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (!this.a.jdField_a_of_type_AndroidAppDialog.isShowing()));
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+        paramInt += 1;
+        break;
+        label202:
+        paramInt += 1;
+      }
+      this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
       return;
-      paramMessage = (Object[])paramMessage.obj;
-      bool = ((Boolean)paramMessage[0]).booleanValue();
-      paramMessage = (ArrayList)paramMessage[1];
-      ChatSettingForTroop.a(this.a, this.a.jdField_b_of_type_JavaLangString, bool, paramMessage);
-      return;
-    } while (this.a.jdField_a_of_type_Afnc == null);
-    this.a.jdField_a_of_type_Afnc.a();
-    return;
-    paramMessage = (TroopInfo)paramMessage.obj;
-    if (paramMessage.troopowneruin != null) {
-      this.a.e = paramMessage.troopowneruin;
+      label232:
+      paramInt = -1;
     }
-    if (paramMessage.Administrator != null) {
-      this.a.f = paramMessage.Administrator;
-    }
-    ??? = this.a;
-    if ((this.a.app.getCurrentAccountUin().equals(paramMessage.troopowneruin)) || ((this.a.f != null) && (this.a.f.contains(this.a.app.getCurrentAccountUin()))))
-    {
-      bool = true;
-      label1083:
-      ???.jdField_a_of_type_Boolean = bool;
-      if ((this.a.e == null) || (!this.a.e.equals(this.a.app.getCurrentAccountUin()))) {
-        break label1160;
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String arg6, int paramInt1, int paramInt2, String paramString2)
+  {
+    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferEnd");
+    if (!this.a.jdField_b_of_type_Boolean) {
+      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+      {
+        this.a.a();
+        return;
       }
     }
-    for (this.a.n = "0"; this.a.jdField_a_of_type_Afnc != null; this.a.n = "1")
-    {
-      label1133:
-      this.a.jdField_a_of_type_Afnc.a();
-      return;
-      bool = false;
-      break label1083;
-      label1160:
-      if ((this.a.f == null) || (!this.a.f.contains(this.a.app.getCurrentAccountUin()))) {
-        break label1133;
-      }
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferStart");
+    if (this.a.jdField_a_of_type_Bhpc != null) {
+      this.a.jdField_a_of_type_Bhpc.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(0) }));
     }
-    this.a.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
   }
 }
 

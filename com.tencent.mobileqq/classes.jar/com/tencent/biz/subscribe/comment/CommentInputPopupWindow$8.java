@@ -1,12 +1,12 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaeq;
+import aair;
 import com.tencent.qphone.base.util.QLog;
 
 public class CommentInputPopupWindow$8
   implements Runnable
 {
-  public CommentInputPopupWindow$8(aaeq paramaaeq, WorkSpaceView paramWorkSpaceView) {}
+  public CommentInputPopupWindow$8(aair paramaair, WorkSpaceView paramWorkSpaceView) {}
   
   public void run()
   {

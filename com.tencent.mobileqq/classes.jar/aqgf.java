@@ -1,15 +1,26 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class aqgf
-  implements aqfx
+class aqgf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aqgf(SwipePostTableLayout paramSwipePostTableLayout) {}
+  aqgf(aqgb paramaqgb, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
   
-  public void onServiceSyncSucc(boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QLog.d("SwipePostTableLayout", 1, "result: " + paramBoolean);
-    this.a.j();
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
+    do
+    {
+      return;
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-this.jdField_a_of_type_Aqgb.a * (1.0F - f));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_Aqgb.e);
+    this.b.setAlpha(f);
   }
 }
 

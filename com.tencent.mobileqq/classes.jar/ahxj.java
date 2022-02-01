@@ -1,29 +1,33 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForVideo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahxj
-  extends ahxe
+class ahxj
+  implements View.OnClickListener
 {
-  public AnimationView.AnimationInfo a;
-  public String b;
+  ahxj(ahxi paramahxi) {}
   
-  public ahxj(String paramString)
+  public void onClick(View paramView)
   {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
+    if (!ahxi.a(this.a)) {}
+    for (;;)
     {
-      this.b = paramRedPacketInfo.background;
-      this.a = paramRedPacketInfo.animInfo;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (llk.c())
+      {
+        Object localObject = (aghd)agej.a(paramView);
+        if (localObject != null)
+        {
+          localObject = (MessageForVideo)((aghd)localObject).a;
+          ahxi.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, (MessageForVideo)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+          if (((MessageForVideo)localObject).istroop == 1044) {
+            bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD93", "0X800AD93", 0, 0, "", "", "", "");
+          }
+        }
+      }
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.b != null) || (this.a != null);
   }
 }
 

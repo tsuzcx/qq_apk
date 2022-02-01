@@ -1,135 +1,111 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.Context;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewStub;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class ytp
-  extends ytw
-  implements View.OnClickListener
+  extends zsv
 {
-  protected ViewStub a;
-  protected TextView a;
-  protected String a;
-  protected zcr a;
+  public static final String KEY = "PlaceholderSegment";
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private yqw jdField_a_of_type_Yqw;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public ytp(@NonNull yty paramyty)
+  public ytp(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    super(paramyty);
+    super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  private void f()
+  public void T_()
   {
-    i();
-    if (this.jdField_a_of_type_Zcr.a() != 0)
+    U_();
+  }
+  
+  protected void U_()
+  {
+    zsv localzsv = a().a(this.jdField_b_of_type_JavaLangString);
+    if ((localzsv == null) || (localzsv.a() == 0))
     {
-      this.jdField_a_of_type_Zcr.a(0);
-      this.jdField_a_of_type_Zcr.a.requestFocus();
-      bkft.a(this.jdField_a_of_type_Zcr.a);
+      e_(true);
+      return;
+    }
+    e_(false);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, yqw paramyqw, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (TextView)paramyqw.a(2131374652);
+    ImageView localImageView = (ImageView)paramyqw.a(2131374653);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      paramViewGroup.setText(anzj.a(2131707068) + win.jdField_a_of_type_JavaLangString + "\n拍摄一段小视频，分享眼前的世界");
+      QQStoryContext.a();
+      if (!ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+        break label104;
+      }
+      localImageView.setImageResource(this.jdField_b_of_type_Int);
+    }
+    for (;;)
+    {
+      return paramyqw.a();
+      paramViewGroup.setText(this.jdField_a_of_type_JavaLangString);
+      break;
+      label104:
+      localImageView.setImageResource(this.jdField_a_of_type_Int);
     }
   }
   
-  private void g()
-  {
-    if ((this.jdField_a_of_type_Zcr != null) && (this.jdField_a_of_type_Zcr.a() == 0))
-    {
-      this.jdField_a_of_type_Zcr.a(4);
-      bkft.b(this.jdField_a_of_type_Zcr.a);
-      this.jdField_a_of_type_Zcr.a.clearFocus();
-    }
-  }
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_Zcr == null)
-    {
-      this.jdField_a_of_type_Zcr = new zcr(this.jdField_a_of_type_AndroidViewViewStub.inflate());
-      this.jdField_a_of_type_Zcr.a(new ytr(this));
-      this.jdField_a_of_type_Zcr.b(new yts(this));
-    }
-  }
-  
-  @Nullable
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return "PlaceholderSegment";
   }
   
-  public void a()
+  public yqw a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131362174));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(new ytq(this));
+    this.jdField_a_of_type_Yqw = new yqw(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561716, paramViewGroup, false));
+    return this.jdField_a_of_type_Yqw;
   }
   
-  public void a(int paramInt, Object paramObject)
+  protected void c()
   {
-    switch (paramInt)
+    U_();
+  }
+  
+  public void e()
+  {
+    super.e();
+    if (this.jdField_a_of_type_Yqw == null) {}
+    ImageView localImageView;
+    do
     {
-    default: 
-      g();
       return;
-    case 0: 
-      g();
+      localImageView = (ImageView)this.jdField_a_of_type_Yqw.a(2131374653);
+    } while (localImageView == null);
+    QQStoryContext.a();
+    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
+    {
+      localImageView.setImageResource(this.jdField_b_of_type_Int);
       return;
     }
-    f();
-  }
-  
-  public void a(int paramInt, @NonNull zem paramzem)
-  {
-    super.a(paramInt, paramzem);
-    paramzem.a.videoLabel = a();
-    yty localyty;
-    String str;
-    if (!TextUtils.isEmpty(a()))
-    {
-      paramInt = 1;
-      if (paramInt != 0)
-      {
-        localyty = this.jdField_a_of_type_Yty;
-        str = a();
-        if (!this.jdField_a_of_type_Yty.a()) {
-          break label89;
-        }
-      }
-    }
-    label89:
-    for (paramzem = "2";; paramzem = "1")
-    {
-      localyty.a("pub_tag", 0, 0, new String[] { "1", str, paramzem });
-      return;
-      paramInt = 0;
-      break;
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Zcr != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Zcr.a() == 0)
-      {
-        this.jdField_a_of_type_Yty.a(0);
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public void d() {}
-  
-  public void onClick(View paramView)
-  {
-    paramView.getId();
-    EventCollector.getInstance().onViewClicked(paramView);
+    localImageView.setImageResource(this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,32 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
+import java.io.File;
+import java.util.Comparator;
 
 public class atez
-  extends BroadcastReceiver
+  implements Comparator<File>
 {
-  public atez(OnlineFileSessionCenter.1 param1) {}
+  public atez(SignalBombAnimationView paramSignalBombAnimationView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a(File paramFile1, File paramFile2)
   {
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getAction();
-      if ((paramContext != null) && (paramContext.equals("com.tencent.mobileqq.intent.logout")))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("OnlineFileSessionCenter<FileAssistant>", 2, "OLfilesession[] logout.....!");
-        }
-        this.a.this$0.a();
-      }
-    }
+    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atez
  * JD-Core Version:    0.7.0.1
  */

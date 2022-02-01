@@ -1,15 +1,15 @@
 package cooperation.qqreader.helper;
 
-import bloh;
+import bmpj;
 
 public class LoadingAnimationManager$3
   implements Runnable
 {
-  public LoadingAnimationManager$3(bloh parambloh) {}
+  public LoadingAnimationManager$3(bmpj parambmpj) {}
   
   public void run()
   {
-    bloh.a(this.this$0);
+    bmpj.a(this.this$0);
   }
 }
 

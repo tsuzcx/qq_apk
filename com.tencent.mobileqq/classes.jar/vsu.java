@@ -1,14 +1,23 @@
-import android.graphics.RectF;
-import com.tencent.biz.qqcircle.transition.QCircleTransitionImageView;
+import com.tencent.biz.qqcircle.requests.QCircleGetTaskCenterListRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 public class vsu
-  implements vst
+  extends aadf
 {
-  public vsu(QCircleTransitionImageView paramQCircleTransitionImageView) {}
+  private String a = "QCircleFuelInfoPreLoaderTask";
   
-  public float a()
+  public void a() {}
+  
+  public void a(aadl paramaadl)
   {
-    return QCircleTransitionImageView.b(this.a).bottom;
+    if ((vqo.a().b()) || (!vqo.a().a()))
+    {
+      paramaadl = new QCircleGetTaskCenterListRequest(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      paramaadl.setEnableCache(true);
+      VSNetworkHelper.a().a(paramaadl, new vsv(this));
+    }
   }
 }
 

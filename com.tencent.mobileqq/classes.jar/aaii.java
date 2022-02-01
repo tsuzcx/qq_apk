@@ -1,33 +1,17 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Matrix;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoReplyRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tribe.async.dispatch.Dispatcher;
 
 class aaii
-  implements TypeEvaluator<Matrix>
+  implements aaav<CertifiedAccountWrite.StDoReplyRsp>
 {
-  public static TypeEvaluator<Matrix> a;
-  Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  float[] jdField_a_of_type_ArrayOfFloat = new float[9];
-  float[] b = new float[9];
+  aaii(aaid paramaaid, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  static
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoReplyRsp paramStDoReplyRsp)
   {
-    jdField_a_of_type_AndroidAnimationTypeEvaluator = new aaij();
-  }
-  
-  public Matrix a(float paramFloat, Matrix paramMatrix1, Matrix paramMatrix2)
-  {
-    paramMatrix1.getValues(this.jdField_a_of_type_ArrayOfFloat);
-    paramMatrix2.getValues(this.b);
-    int i = 0;
-    while (i < 9)
-    {
-      float f1 = this.b[i];
-      float f2 = this.jdField_a_of_type_ArrayOfFloat[i];
-      this.b[i] = ((f1 - f2) * paramFloat + this.jdField_a_of_type_ArrayOfFloat[i]);
-      i += 1;
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setValues(this.b);
-    return this.jdField_a_of_type_AndroidGraphicsMatrix;
+    wjj.a().dispatch(this.jdField_a_of_type_Aaid.a(new Object[] { Integer.valueOf(4), Long.valueOf(paramLong), paramString, paramStDoReplyRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.id.get(), Integer.valueOf(this.jdField_a_of_type_Aaid.hashCode()) }));
   }
 }
 

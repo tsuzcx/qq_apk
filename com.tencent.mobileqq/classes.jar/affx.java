@@ -1,23 +1,18 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class affx
-  extends MqqHandler
+  extends aocj
 {
-  public affx(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public affx(QQLSActivity paramQQLSActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1981: 
-      this.a.finish();
-      return;
+    super.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
     }
-    this.a.f();
+    QQLSActivity.a(this.a);
   }
 }
 

@@ -1,51 +1,94 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mfsdk.config.APMModuleConfig;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import com.tencent.qapmsdk.base.meta.LooperMeta;
+import com.tencent.qapmsdk.looper.ILooperListener;
+import com.tencent.qapmsdk.looper.LooperMonitor;
 import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import java.util.HashMap;
+import java.util.Iterator;
+import org.json.JSONObject;
 
 public class adlp
-  implements agra
+  extends adle
+  implements ILooperListener
 {
-  public adlp(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
-  
-  public void a()
+  protected void a(APMModuleConfig paramAPMModuleConfig)
   {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkFullScreenAppActivity", 2, "arkview loadSucc: " + ArkFullScreenAppActivity.a(this.a));
-    }
-    Object localObject;
-    boolean bool;
-    if (ArkFullScreenAppActivity.a(this.a) != null)
+    String str2;
+    String str1;
+    if (BaseApplicationImpl.sProcessId == 2)
     {
-      localObject = ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Agpq;
-      if (localObject != null)
-      {
-        if ((!((agpq)localObject).checkShare()) || (!ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Boolean)) {
-          break label135;
-        }
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.i("ArkFullScreenAppActivity", 2, "supportShare: " + bool);
-        }
-        localObject = this.a.rightViewImg;
-        if (!bool) {
-          break label140;
-        }
+      paramAPMModuleConfig.threshold = QzoneConfig.getInstance().getConfig("QzoneHomepage", "DropFrame_Stack_Threshold", paramAPMModuleConfig.threshold);
+      str2 = QzoneConfig.getInstance().getConfig("QzoneHomepage", "DropFrame_Stack_UserSampleRatio");
+      str1 = QzoneConfig.getInstance().getConfig("QzoneHomepage", "Dropframe_Stack_EventSampleRatio");
+      if (TextUtils.isEmpty(str2)) {}
+    }
+    try
+    {
+      f = Float.valueOf(str2).floatValue();
+      if (f >= 0.0F) {
+        paramAPMModuleConfig.userRatio = f;
       }
     }
-    for (;;)
+    catch (Exception localException)
     {
-      ((ImageView)localObject).setVisibility(i);
-      return;
-      label135:
-      bool = false;
-      break;
-      label140:
-      i = 4;
+      for (;;)
+      {
+        try
+        {
+          float f = Float.valueOf(str1).floatValue();
+          if (f >= 0.0F) {
+            paramAPMModuleConfig.evenRatio = f;
+          }
+          return;
+        }
+        catch (Exception paramAPMModuleConfig)
+        {
+          paramAPMModuleConfig.printStackTrace();
+        }
+        localException = localException;
+        localException.printStackTrace();
+      }
     }
+    if (!TextUtils.isEmpty(str1)) {}
   }
   
-  public void b() {}
+  protected void b()
+  {
+    LooperMonitor.setLooperListener(this);
+  }
+  
+  public String c()
+  {
+    return "looper";
+  }
+  
+  public void onMetaGet(LooperMeta paramLooperMeta)
+  {
+    HashMap localHashMap = new HashMap();
+    paramLooperMeta = paramLooperMeta.getLooperParams();
+    try
+    {
+      Iterator localIterator = paramLooperMeta.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localHashMap.put(str, paramLooperMeta.getString(str));
+      }
+      i = adlf.a();
+    }
+    catch (Exception paramLooperMeta)
+    {
+      QLog.e("MagnifierSDK.QAPM", 1, "onMetaGet looper", paramLooperMeta);
+      return;
+    }
+    int i;
+    int j = paramLooperMeta.getInt("cost_time");
+    UnifiedMonitor.a().addEvent(i, "LooperSingle", j, 0, localHashMap);
+  }
 }
 
 

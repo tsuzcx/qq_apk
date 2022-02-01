@@ -1,6 +1,15 @@
-public abstract interface bpqw<ERROR_TYPE, DATA_TYPE>
+import com.tencent.mobileqq.app.soso.SosoInterface;
+
+class bpqw
+  implements bbgo
 {
-  public abstract Void a(ERROR_TYPE paramERROR_TYPE, DATA_TYPE paramDATA_TYPE);
+  bpqw(bpqv parambpqv, boolean paramBoolean) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bpqv.a = new bpqx(this, "NewStoryTakeVideoActivity");
+    SosoInterface.a(this.jdField_a_of_type_Bpqv.a);
+  }
 }
 
 

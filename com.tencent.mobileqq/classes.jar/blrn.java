@@ -1,27 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GeoInfo;
-import cooperation.qzone.LbsDataV2.GetGeoInfoRsp;
-import cooperation.qzone.LbsDataV2.GpsInfo;
+import android.view.View;
 
-public final class blrn
-  implements Parcelable.Creator<LbsDataV2.GetGeoInfoRsp>
+public abstract interface blrn
 {
-  public LbsDataV2.GetGeoInfoRsp a(Parcel paramParcel)
-  {
-    LbsDataV2.GetGeoInfoRsp localGetGeoInfoRsp = new LbsDataV2.GetGeoInfoRsp();
-    if (paramParcel != null)
-    {
-      localGetGeoInfoRsp.stGps = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
-      localGetGeoInfoRsp.stGeoInfo = ((LbsDataV2.GeoInfo)paramParcel.readParcelable(LbsDataV2.GeoInfo.class.getClassLoader()));
-    }
-    return localGetGeoInfoRsp;
-  }
+  public abstract View a(int paramInt);
   
-  public LbsDataV2.GetGeoInfoRsp[] a(int paramInt)
-  {
-    return null;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract void s();
 }
 
 

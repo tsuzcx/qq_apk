@@ -1,33 +1,15 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import java.util.List;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class afhs
-  implements PopupWindow.OnDismissListener
+  implements behr
 {
-  public afhs(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public afhs(QQSettingMe paramQQSettingMe) {}
   
-  public void onDismiss()
+  public void onCancel() {}
+  
+  public void onConfirm()
   {
-    this.a.a = null;
-    Object localObject;
-    if ((TextPreviewTranslateActivity.b(this.a) != null) && (TextPreviewTranslateActivity.b(this.a).size() > 1))
-    {
-      localObject = this.a.getResources();
-      if (!TextPreviewTranslateActivity.a(this.a)) {
-        break label76;
-      }
-    }
-    label76:
-    for (int i = 2130845625;; i = 2130846156)
-    {
-      localObject = ((Resources)localObject).getDrawable(i);
-      TextPreviewTranslateActivity.b(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
-      return;
-    }
+    QQSettingMe.d(this.a);
   }
 }
 

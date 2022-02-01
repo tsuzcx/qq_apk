@@ -1,31 +1,55 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.MobileQQ;
 
 public class afao
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public afao(RegisterBaseActivity paramRegisterBaseActivity) {}
+  public afao(NotificationActivity paramNotificationActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    this.a.finish();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("password", null);
+    localBundle.putBoolean("is_from_account_another_login_exit", true);
+    if (!azoz.a().a(this.a.app, this.a.app.getCurrentAccountUin()))
     {
-    default: 
+      this.a.app.updateSubAccountLogin(this.a.app.getCurrentAccountUin(), false);
+      this.a.app.getApplication().refreAccountList();
+    }
+    paramDialogInterface = (bdxc)this.a.app.getManager(61);
+    if (paramDialogInterface != null) {}
+    for (paramDialogInterface = paramDialogInterface.a();; paramDialogInterface = null)
+    {
+      if ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
+      {
+        paramDialogInterface = paramDialogInterface.iterator();
+        while (paramDialogInterface.hasNext())
+        {
+          String str = (String)paramDialogInterface.next();
+          if (!azoz.a().a(this.a.app, str))
+          {
+            this.a.app.updateSubAccountLogin(str, false);
+            this.a.app.getApplication().refreAccountList();
+          }
+        }
+      }
+      this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(localBundle).addFlags(67108864));
       return;
     }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131718943);
-    }
-    this.a.a(paramMessage, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afao
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aicj
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  aicj(aibv paramaibv, String paramString) {}
+  aicj(aibr paramaibr) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    HotChatInfo localHotChatInfo = ((HotChatManager)this.jdField_a_of_type_Aibv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60)).a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Aibv.jdField_a_of_type_Anoc.a(localHotChatInfo);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((this.a.a != null) && (!this.a.a.c())) {
+      this.a.a.f();
+    }
   }
 }
 

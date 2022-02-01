@@ -1,20 +1,20 @@
 package com.tencent.biz.qqcircle.utils;
 
 import java.util.List;
-import vtj;
+import vwh;
 
 public class QCircleDoubleFollowUserHepler$2
   implements Runnable
 {
-  public QCircleDoubleFollowUserHepler$2(vtj paramvtj, List paramList) {}
+  public QCircleDoubleFollowUserHepler$2(vwh paramvwh, List paramList) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 14	com/tencent/biz/qqcircle/utils/QCircleDoubleFollowUserHepler$2:this$0	Lvtj;
-    //   4: invokestatic 28	vtj:a	(Lvtj;)Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   1: getfield 14	com/tencent/biz/qqcircle/utils/QCircleDoubleFollowUserHepler$2:this$0	Lvwh;
+    //   4: invokestatic 28	vwh:a	(Lvwh;)Lcom/tencent/mobileqq/persistence/EntityManager;
     //   7: ldc 30
     //   9: invokevirtual 36	java/lang/Class:getSimpleName	()Ljava/lang/String;
     //   12: aconst_null
@@ -35,8 +35,8 @@ public class QCircleDoubleFollowUserHepler$2
     //   43: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   46: invokestatic 69	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   49: aload_0
-    //   50: getfield 14	com/tencent/biz/qqcircle/utils/QCircleDoubleFollowUserHepler$2:this$0	Lvtj;
-    //   53: invokestatic 28	vtj:a	(Lvtj;)Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   50: getfield 14	com/tencent/biz/qqcircle/utils/QCircleDoubleFollowUserHepler$2:this$0	Lvwh;
+    //   53: invokestatic 28	vwh:a	(Lvwh;)Lcom/tencent/mobileqq/persistence/EntityManager;
     //   56: invokevirtual 73	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   59: astore_2
     //   60: aload_2
@@ -53,8 +53,8 @@ public class QCircleDoubleFollowUserHepler$2
     //   89: checkcast 30	com/tencent/biz/qqcircle/beans/Friend
     //   92: astore 4
     //   94: aload_0
-    //   95: getfield 14	com/tencent/biz/qqcircle/utils/QCircleDoubleFollowUserHepler$2:this$0	Lvtj;
-    //   98: invokestatic 28	vtj:a	(Lvtj;)Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   95: getfield 14	com/tencent/biz/qqcircle/utils/QCircleDoubleFollowUserHepler$2:this$0	Lvwh;
+    //   98: invokestatic 28	vwh:a	(Lvwh;)Lcom/tencent/mobileqq/persistence/EntityManager;
     //   101: aload 4
     //   103: invokevirtual 97	com/tencent/mobileqq/persistence/EntityManager:persist	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   106: goto -32 -> 74

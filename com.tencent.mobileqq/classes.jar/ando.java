@@ -1,6 +1,20 @@
-public abstract interface ando
+import java.util.Comparator;
+
+class ando
+  implements Comparator<andq>
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  ando(andn paramandn) {}
+  
+  public int a(andq paramandq1, andq paramandq2)
+  {
+    if (paramandq1.a == paramandq2.a) {
+      return 0;
+    }
+    if (paramandq1.a > paramandq2.a) {
+      return 1;
+    }
+    return -1;
+  }
 }
 
 

@@ -1,10 +1,30 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.qphone.base.util.QLog;
+
 public class aowy
+  extends aoxg
 {
-  public int a;
-  long jdField_a_of_type_Long;
-  public int b;
+  public aowy(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    super(paramQQAppInterface, paramContext);
+  }
   
-  public aowy(aowx paramaowx) {}
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 2016, null);
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("HttpOpenMiniAppAndAdAction", 1, "doAction error: " + localException.getMessage());
+      a("HttpOpenMiniAppAndAdAction");
+    }
+    return false;
+  }
 }
 
 

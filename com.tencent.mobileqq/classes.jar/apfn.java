@@ -1,17 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-
 public class apfn
-  implements DialogInterface.OnDismissListener
 {
-  public apfn(ARScanEntryView paramARScanEntryView) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public apfn(apfm paramapfm, int paramInt1, int paramInt2)
   {
-    ARScanEntryView.a(this.a, null);
-    ARScanEntryView.a(this.a).g();
-    ARScanEntryView.a(this.a, true);
+    this.b = paramInt1;
+    this.c = paramInt2;
+  }
+  
+  public boolean a()
+  {
+    return this.c == 1;
+  }
+  
+  public boolean b()
+  {
+    return this.c == 2;
+  }
+  
+  public boolean c()
+  {
+    return this.c == 3;
   }
 }
 

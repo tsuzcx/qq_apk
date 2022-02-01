@@ -10,7 +10,7 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import bgtn;
+import bhtq;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
@@ -26,6 +26,8 @@ public class MiniAioInterfaceImpl
   private Activity jdField_a_of_type_AndroidAppActivity;
   private MiniMsgUser jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
   private int b;
+  private int c = -1;
+  private int d = -1;
   
   Intent a()
   {
@@ -64,20 +66,32 @@ public class MiniAioInterfaceImpl
   
   protected MiniMsgUserParam a()
   {
-    int i = this.jdField_a_of_type_AndroidAppActivity.getApplication().getResources().getDisplayMetrics().widthPixels;
-    int j = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
-    int k = this.jdField_a_of_type_AndroidAppActivity.getApplication().getResources().getDimensionPixelSize(2131297268);
-    int m = bgtn.b(47.0F);
-    int n = bgtn.a(7.0F);
+    int j = this.jdField_a_of_type_AndroidAppActivity.getApplication().getResources().getDisplayMetrics().widthPixels;
+    int k = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
+    int m = this.jdField_a_of_type_AndroidAppActivity.getApplication().getResources().getDimensionPixelSize(2131297280);
+    int i = j - m * 4 - bhtq.b(47.0F);
+    if (this.c != -1) {
+      i = j - m * 4 - this.c;
+    }
+    j = bhtq.a(7.0F) + k;
+    if (this.d != -1) {
+      j = this.d + k;
+    }
     MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
     localMiniMsgUserParam.businessName = 11;
     localMiniMsgUserParam.accessType = 0;
     localMiniMsgUserParam.entryType = 1;
-    localMiniMsgUserParam.positionX = (i - k * 4 - m);
-    localMiniMsgUserParam.positionY = (j + n);
-    localMiniMsgUserParam.colorType = 1;
+    localMiniMsgUserParam.positionX = i;
+    localMiniMsgUserParam.positionY = j;
     localMiniMsgUserParam.filterMsgType = 1;
     localMiniMsgUserParam.backConversationIntent = a();
+    if (this.b == 10026)
+    {
+      localMiniMsgUserParam.contentIconResId = 2130850810;
+      localMiniMsgUserParam.colorType = 2;
+      return localMiniMsgUserParam;
+    }
+    localMiniMsgUserParam.colorType = 1;
     return localMiniMsgUserParam;
   }
   
@@ -92,6 +106,8 @@ public class MiniAioInterfaceImpl
     this.jdField_a_of_type_Long = paramBundle.getLong("roomid");
     this.jdField_a_of_type_Int = paramBundle.getInt("roomType");
     this.b = paramBundle.getInt("fromid", 10001);
+    this.c = paramBundle.getInt("offsetX", -1);
+    this.d = paramBundle.getInt("offsetY", -1);
     this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser = new MiniMsgUser(this.jdField_a_of_type_AndroidAppActivity, a());
     this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.showEntry();
   }

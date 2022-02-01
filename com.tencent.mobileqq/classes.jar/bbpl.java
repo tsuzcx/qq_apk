@@ -1,12 +1,25 @@
-import android.view.View;
+import android.content.Context;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
 
-public abstract interface bbpl
+class bbpl
+  implements aumz
 {
-  public abstract void a(View paramView);
+  bbpl(bbpk parambbpk, Context paramContext, AIOFileVideoData paramAIOFileVideoData, bbqw parambbqw) {}
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData != null) && (this.jdField_a_of_type_Bbqw != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.g = true;
+      this.jdField_a_of_type_Bbqw.i();
+    }
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbpl
  * JD-Core Version:    0.7.0.1
  */

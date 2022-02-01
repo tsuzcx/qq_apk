@@ -1,61 +1,33 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import mqq.app.AppRuntime;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.widget.ReboundLayout;
 
 public class blpe
+  extends Animation
 {
-  private static int a = -1;
+  private float jdField_a_of_type_Float;
+  private float b = 1.0F;
   
-  public static void a(Context paramContext)
+  private blpe(ReboundLayout paramReboundLayout)
   {
-    blpg.a().enter(paramContext, 1002L, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "", new Bundle(), null);
+    ReboundLayout.a(paramReboundLayout, true);
   }
   
-  public static void a(Context paramContext, Intent paramIntent, String paramString)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    a(paramContext, paramIntent, paramString, null);
-  }
-  
-  public static void a(Context paramContext, Intent paramIntent, String paramString, EnterCallback paramEnterCallback)
-  {
-    Bundle localBundle = paramIntent.getExtras();
-    paramIntent = localBundle;
-    if (localBundle == null) {
-      paramIntent = new Bundle();
-    }
-    paramIntent.putString("com.tencent.reader.plugin.KEY_ACTIVITY_CLASSNAME", paramString);
-    paramIntent.putLong("start_plugin_act_begin_time", System.currentTimeMillis());
-    blpg.a().enter(paramContext, 1003L, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "", paramIntent, paramEnterCallback);
-  }
-  
-  public static void a(Context paramContext, boolean paramBoolean)
-  {
-    if (blnn.a().a())
-    {
-      blpu.c("ReaderPluginHelper", "[loadPluginRuntime] sIsPluginReady = true ! mGrayState = " + a);
-      return;
-    }
-    blpu.c("ReaderPluginHelper", "[loadPluginRuntime] sIsPluginReady = false, mGrayState = " + a + " isShadowOnly = " + paramBoolean);
-    if (a()) {
-      a(paramContext);
-    }
-    for (;;)
-    {
-      blpx.a(paramContext, String.valueOf(a));
-      return;
-      if (paramBoolean) {
-        break;
-      }
-      BaseApplicationImpl.getApplication().waitAppRuntime(null).getAppRuntime("qqreaderplugin.apk");
+    paramFloat = (this.b - this.jdField_a_of_type_Float) * paramFloat + this.jdField_a_of_type_Float;
+    this.jdField_a_of_type_ComTencentWidgetReboundLayout.scrollBy((int)((400 - this.jdField_a_of_type_ComTencentWidgetReboundLayout.getScrollX()) * paramFloat), 0);
+    if (paramFloat == 1.0F) {
+      ReboundLayout.a(this.jdField_a_of_type_ComTencentWidgetReboundLayout, false);
     }
   }
   
-  public static boolean a()
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return false;
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    setDuration(260L);
+    setInterpolator(new AccelerateInterpolator());
   }
 }
 

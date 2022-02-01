@@ -1,35 +1,57 @@
 import android.app.Activity;
-import android.content.res.Resources;
-import android.view.MotionEvent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 class tvu
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  tvu(tvr paramtvr, tvq paramtvq, boolean paramBoolean) {}
+  tvu(tvt paramtvt, tvs paramtvs) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    switch (paramMotionEvent.getAction())
+    bdll.b(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005732", "0X8005732", 0, 0, "", "", "", "");
+    bdll.b(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642F", "0X800642F", 0, 0, String.valueOf(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvr.jdField_a_of_type_Long), "", "", "");
+    String str;
+    if (this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvr != null)
     {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      this.jdField_a_of_type_Tvr.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.a.getResources().getColor(2131166073));
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Tvr.c.setBackgroundResource(2130843164);
-        return false;
+      str = String.valueOf(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvr.jdField_a_of_type_Long);
+      if (!TextUtils.isEmpty(str)) {
+        break label116;
       }
-      this.jdField_a_of_type_Tvr.c.setBackgroundResource(2130843165);
-      return false;
     }
-    this.jdField_a_of_type_Tvr.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.a.getResources().getColor(2131166072));
-    this.jdField_a_of_type_Tvr.c.setBackgroundResource(2130843173);
-    return false;
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label116:
+      if (this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvr.jdField_a_of_type_Int == 0)
+      {
+        if (!bhnv.d(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))
+        {
+          QQToast.a(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity, 2131693965, 0).b(((BaseActivity)this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight());
+        }
+        else
+        {
+          this.jdField_a_of_type_Tvt.a(2);
+          this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvr.jdField_a_of_type_Int = 2;
+          MqqHandler localMqqHandler = this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
+          if ((localMqqHandler != null) && (this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity != null) && ((this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity instanceof SubscriptFeedsActivity))) {
+            localMqqHandler.sendEmptyMessage(1007);
+          }
+          tzq.a(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity, str, new tvy(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs, this.jdField_a_of_type_Tvt));
+        }
+      }
+      else {
+        tvt.a(this.jdField_a_of_type_Tvt);
+      }
+    }
   }
 }
 

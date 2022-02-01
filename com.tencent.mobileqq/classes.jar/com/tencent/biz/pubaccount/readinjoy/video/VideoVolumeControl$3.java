@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.TimerTask;
-import sgc;
+import rxg;
 
 public class VideoVolumeControl$3
   extends TimerTask
 {
-  public VideoVolumeControl$3(sgc paramsgc) {}
+  public VideoVolumeControl$3(rxg paramrxg) {}
   
   public void run()
   {
-    sgc.a(this.this$0, true);
+    rxg.a(this.this$0, true);
   }
 }
 

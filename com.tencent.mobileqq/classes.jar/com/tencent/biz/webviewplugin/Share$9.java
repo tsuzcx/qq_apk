@@ -1,12 +1,12 @@
 package com.tencent.biz.webviewplugin;
 
-import abcr;
+import abgu;
 import com.tencent.biz.pubaccount.CustomWebView;
 
 public class Share$9
   implements Runnable
 {
-  public Share$9(abcr paramabcr, String paramString) {}
+  public Share$9(abgu paramabgu, String paramString) {}
   
   public void run()
   {

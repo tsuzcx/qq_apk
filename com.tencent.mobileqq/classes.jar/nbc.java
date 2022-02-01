@@ -1,15 +1,23 @@
-import android.graphics.RectF;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.avgame.gameroom.GameRoomFragment;
 
-public abstract interface nbc
+public class nbc
+  implements DialogInterface.OnClickListener
 {
-  public abstract RectF a(long paramLong);
+  public nbc(GameRoomFragment paramGameRoomFragment) {}
   
-  public abstract List<nan> a();
-  
-  public abstract void a(long paramLong, boolean paramBoolean);
-  
-  public abstract void a(myc parammyc);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.cancel();
+    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
+    while (paramInt != 1) {
+      return;
+    }
+    this.a.a.a(false, 1);
+    this.a.e();
+  }
 }
 
 

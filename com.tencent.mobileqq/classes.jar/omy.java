@@ -1,57 +1,42 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class omy
 {
-  private static int jdField_a_of_type_Int;
-  private static final String jdField_a_of_type_JavaLangString = omy.class.getSimpleName();
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String b;
+  public int a;
+  public long a;
+  public ArticleInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c = "";
+  public String d = "";
+  public String e;
   
-  public omy(QQAppInterface paramQQAppInterface)
+  public omy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.b = pha.a();
-    jdField_a_of_type_Int = 0;
-  }
-  
-  private int c()
-  {
-    int i = 0;
-    boolean bool = bmqa.F(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (!bool) {
-      bmqa.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0));
-    }
-    if (bool) {
-      i = ((Integer)bmqa.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0))).intValue();
-    }
-    return i;
-  }
-  
-  public int a()
-  {
-    return jdField_a_of_type_Int;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
   }
   
   public void a()
   {
-    try
-    {
-      int i = c();
-      jdField_a_of_type_Int += 1;
-      bmqa.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(i + 1));
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "解析引流条出现的条件出错: " + localException.getMessage());
-    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = null;
+    this.jdField_a_of_type_Int = -1;
+    this.e = "";
+    this.d = "";
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public int b()
+  public String toString()
   {
-    return c();
+    return "BiuInfo{isFromRecommendFeeds=" + this.jdField_a_of_type_Boolean + ", feedsID=" + this.jdField_a_of_type_Long + ", biuComment='" + this.jdField_a_of_type_JavaLangString + '\'' + ", biuMediaUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", articleInfo=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo + ", contentSrc=" + this.jdField_a_of_type_Int + ", commentBtnJumpUrl='" + this.c + '\'' + ", commentShareUrl='" + this.d + '\'' + ", cardJumpUrl='" + this.e + '\'' + ", isCardAvailable=" + this.jdField_b_of_type_Int + '}';
   }
 }
 

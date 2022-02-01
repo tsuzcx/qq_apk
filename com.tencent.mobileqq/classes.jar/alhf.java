@@ -1,66 +1,31 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import android.os.Build;
-import android.text.TextUtils;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-
 public class alhf
-  implements MediaPlayer.OnErrorListener
 {
-  public alhf(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  private static volatile alhf jdField_a_of_type_Alhf;
+  private boolean jdField_a_of_type_Boolean;
   
-  private String[] a()
+  public static alhf a()
   {
-    String str = QzoneConfig.getInstance().getConfig("VideoEdit", "VideoLoadErrorReturnCode");
-    if (str == null) {
-      return null;
+    if (jdField_a_of_type_Alhf == null) {}
+    try
+    {
+      if (jdField_a_of_type_Alhf == null) {
+        jdField_a_of_type_Alhf = new alhf();
+      }
+      return jdField_a_of_type_Alhf;
     }
-    return str.split(",");
+    finally {}
   }
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void a(alhh paramalhh)
   {
-    QLog.e("EditLocalVideoActivity", 2, "VideoView onError, what:" + paramInt1 + ", extra:" + paramInt2);
-    for (;;)
+    if (this.jdField_a_of_type_Boolean)
     {
-      try
-      {
-        Toast.makeText(this.a.getApplicationContext(), anni.a(2131702436), 1).show();
-        paramMediaPlayer = a();
-        if (paramMediaPlayer == null)
-        {
-          EditLocalVideoActivity.a(this.a, "play_local_video", "play_local_video_success", "4", "what: " + paramInt1 + ",   extra: " + paramInt2 + ",   " + Build.MODEL);
-          this.a.setResult(0);
-          return true;
-        }
-        int k = paramMediaPlayer.length;
-        int i = 0;
-        int j = 1;
-        if (i < k)
-        {
-          if (TextUtils.equals(paramMediaPlayer[i], paramInt1 + "-" + paramInt2)) {
-            j = 0;
-          }
-        }
-        else
-        {
-          if (j == 0) {
-            continue;
-          }
-          EditLocalVideoActivity.a(this.a, "play_local_video", "play_local_video_success", "4", "what: " + paramInt1 + ",   extra: " + paramInt2 + ",   " + Build.MODEL);
-          continue;
-        }
-        i += 1;
+      if (paramalhh != null) {
+        paramalhh.a(true);
       }
-      catch (Exception paramMediaPlayer)
-      {
-        QLog.e("EditLocalVideoActivity", 2, "VideoView onError", paramMediaPlayer);
-        return true;
-      }
+      return;
     }
+    bdgx.a().a("tensorflowlite_jni", new alhg(this, paramalhh));
   }
 }
 

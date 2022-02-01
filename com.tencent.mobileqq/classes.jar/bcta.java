@@ -1,141 +1,176 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager.ISpLogCallback;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
+import localpb.richMsg.RichMsg.PicRec;
+import localpb.richMsg.RichMsg.PttRec;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.msg.im_msg_body.MsgBody;
+import tencent.im.msg.im_msg_body.NotOnlineFile;
+import tencent.im.msg.im_msg_body.RichText;
 
-public final class bcta
-  implements SharedPreferencesProxyManager.ISpLogCallback
+public class bcta
+  implements bcsi
 {
-  private static String jdField_a_of_type_JavaLangString;
-  public static final boolean a;
-  private List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private Map<String, String[]> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private Map<String, String[]> b = new ConcurrentHashMap();
-  
-  static
+  private void a(MessageHandler paramMessageHandler, List<MessageRecord> paramList, int paramInt1, msg_comm.Msg paramMsg, long paramLong1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, long paramLong2, boolean paramBoolean4, int paramInt2)
   {
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  private static int a(String paramString1, String paramString2, String paramString3)
-  {
-    return (paramString1 + paramString2 + paramString3).hashCode();
-  }
-  
-  public static bcta a()
-  {
-    return bctc.a;
-  }
-  
-  private static bctd a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      paramString = paramString.split("\\|");
-    } while (paramString.length != 3);
-    return new bctd(paramString[0], paramString[1], paramString[2]);
-  }
-  
-  private boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((paramString.contains("com.oppo.embryo")) || (!paramString.contains("."))) {
-      return true;
+    StringBuilder localStringBuilder = new StringBuilder("<---decodeC2CMsgPkg_OfflineFile : ");
+    localStringBuilder.append(" c2cCmd:").append(paramInt1).append(";friendUin:").append(paramLong1).append(";isReaded:").append(paramBoolean1).append(";isPullRoam:").append(paramBoolean2).append(";isSelfSender:").append(paramBoolean3).append(";\n");
+    long l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
+    long l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
+    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has())) {
+      if (QLog.isColorLevel()) {
+        QLog.e("OfflineFileDecoder", 2, "<---decodeC2CMsgPkg_OfflineFile return null:hasBody:" + paramMsg.msg_body.has() + "hasRichT:" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has());
+      }
     }
-    return false;
-  }
-  
-  public void onIllegalModify(String paramString1, String paramString2, Object paramObject)
-  {
-    String str = null;
-    int i = 1;
-    if ((!jdField_a_of_type_Boolean) || (BaseApplicationImpl.sProcessId != 1)) {}
-    label388:
-    label392:
+    label1086:
     for (;;)
     {
       return;
-      if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-        jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getPackageName();
-      }
-      if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && ((paramObject instanceof String)) && (!TextUtils.isEmpty((String)paramObject)))
+      Object localObject1 = (im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get();
+      Object localObject2 = (im_msg_body.NotOnlineFile)((im_msg_body.RichText)localObject1).not_online_file.get();
+      if (!((im_msg_body.RichText)localObject1).not_online_file.has())
       {
-        boolean bool = jdField_a_of_type_JavaLangString.equals(paramString2);
-        paramObject = (String)paramObject;
-        if (bool)
+        localStringBuilder.append("hasNotOnlineFile:").append(((im_msg_body.RichText)localObject1).not_online_file.has()).append(";hasUUID:").append(((im_msg_body.NotOnlineFile)localObject2).bytes_file_uuid.has());
+        if (QLog.isColorLevel()) {
+          QLog.d("OfflineFileDecoder", 2, localStringBuilder.toString());
+        }
+      }
+      else if ((paramInt1 == 169) || (paramInt1 == 243))
+      {
+        if (!paramBoolean4)
         {
-          this.jdField_a_of_type_JavaUtilMap.put(paramString1, new String[] { paramString2, null });
-          label111:
-          if (!bool) {
-            break label353;
+          if (QLog.isColorLevel()) {
+            QLog.d("OfflineFileDecoder", 2, "<FileAssistant>offlineFile come: c2cCmd[" + paramInt1 + "]");
           }
-          paramString2 = (String[])this.b.get(paramString1);
-          if (paramString2 == null) {
-            break label345;
-          }
-          paramObject = paramString2[0];
-          paramString2 = paramString2[1];
-          label142:
-          if (TextUtils.isEmpty(paramObject)) {
-            break label388;
+          paramMessageHandler.app.a().a(paramMessageHandler, paramList, paramMsg, (im_msg_body.NotOnlineFile)localObject2, String.valueOf(paramLong1), paramBoolean1, paramBoolean2, paramLong2, paramInt2, null);
+        }
+      }
+      else
+      {
+        paramMsg = null;
+        String str = ((im_msg_body.NotOnlineFile)localObject2).bytes_file_uuid.get().toStringUtf8() + l1;
+        localObject1 = ((im_msg_body.NotOnlineFile)localObject2).bytes_file_uuid.get().toStringUtf8();
+        localStringBuilder.append("     NotOnLineFile info : serverPath:").append((String)localObject1).append(";fileKey :").append(str).append(";");
+        if (!paramMessageHandler.a().a(str))
+        {
+          str = ((im_msg_body.NotOnlineFile)localObject2).bytes_file_name.get().toStringUtf8();
+          localStringBuilder.append("strFileName:").append(str).append(";");
+          paramLong1 = ((im_msg_body.NotOnlineFile)localObject2).uint64_file_size.get();
+          if ((paramInt1 == 241) || (bcsa.a(str, paramInt1)))
+          {
+            paramMessageHandler = new RichMsg.PicRec();
+            paramMessageHandler.localPath.set((String)localObject1);
+            paramMessageHandler.size.set(paramLong1);
+            paramMessageHandler.type.set(1);
+            paramMessageHandler.isRead.set(false);
+            paramMessageHandler.uuid.set((String)localObject1);
+            paramMessageHandler.serverStorageSource.set("ftn");
+            paramMessageHandler.version.set(5);
+            paramMessageHandler.isReport.set(0);
+            paramMsg = (MessageForPic)bcry.a(-2000);
+            paramMsg.msgtype = -2000;
+            paramMsg.msgData = paramMessageHandler.toByteArray();
+            paramMsg.parse();
+            paramList.add(paramMsg);
+            paramMsg = null;
+            localStringBuilder.append("protocolStr:").append(paramMsg).append(";");
           }
         }
         for (;;)
         {
-          if (i == 0) {
-            break label392;
+          if (!QLog.isColorLevel()) {
+            break label1086;
           }
-          Object localObject = a(paramString2);
-          if (localObject == null) {
-            break;
-          }
-          paramString2 = ((bctd)localObject).c;
-          str = ((bctd)localObject).jdField_a_of_type_JavaLangString;
-          localObject = ((bctd)localObject).b;
-          if ((a(str)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty((CharSequence)localObject)) || (this.jdField_a_of_type_JavaUtilList.contains(paramString2))) {
-            break;
-          }
-          this.jdField_a_of_type_JavaUtilList.add(paramString2);
-          SharedPreferences.Editor localEditor = SharedPreferencesProxyManager.getInstance().getProxy("sp_dm_report", 0).edit();
-          localEditor.putString(String.valueOf(a(str, (String)localObject, paramObject)), paramString1 + '|' + str + '|' + paramObject + '|' + paramString2);
-          localEditor.commit();
+          QLog.d("OfflineFileDecoder", 2, localStringBuilder.toString());
           return;
-          this.b.put(paramString1, new String[] { paramString2, paramObject });
-          break label111;
-          label345:
-          paramString2 = null;
-          paramObject = str;
-          break label142;
-          label353:
-          if ((String[])this.jdField_a_of_type_JavaUtilMap.get(paramString1) != null)
-          {
-            str = paramString2;
-            paramString2 = paramObject;
-            paramObject = str;
-            break label142;
+          if ((paramInt1 != 242) && (!bcsa.b(str, paramInt1))) {
+            break;
           }
-          paramString2 = null;
-          paramObject = str;
-          break label142;
-          i = 0;
+          if (!str.equals(""))
+          {
+            if (!str.contains("_")) {}
+            for (paramMsg = str.substring(0, str.length() - 4);; paramMsg = str.substring(str.lastIndexOf("_") + 1, str.length() - 4))
+            {
+              paramMsg = l2 + paramMsg;
+              localStringBuilder.append("c2cCmd:0xf2;key:").append(paramMsg).append(";");
+              if (paramBoolean4) {
+                break label872;
+              }
+              if (!bdoc.e(paramMsg)) {
+                break;
+              }
+              localStringBuilder.append("DuplicateKey:").append(paramMsg).append(";");
+              if (QLog.isColorLevel()) {
+                QLog.d("OfflineFileDecoder", 2, localStringBuilder.toString());
+              }
+              bdoc.d(paramMsg);
+              return;
+            }
+            bdoc.c(paramMsg);
+          }
+          for (;;)
+          {
+            label872:
+            paramMsg = beyo.a((String)localObject1, paramLong1, 2, false, (String)localObject1, null, "ftn");
+            localObject2 = new RichMsg.PttRec();
+            ((RichMsg.PttRec)localObject2).localPath.set((String)localObject1);
+            ((RichMsg.PttRec)localObject2).size.set(paramLong1);
+            ((RichMsg.PttRec)localObject2).type.set(2);
+            ((RichMsg.PttRec)localObject2).uuid.set((String)localObject1);
+            ((RichMsg.PttRec)localObject2).isRead.set(false);
+            ((RichMsg.PttRec)localObject2).serverStorageSource.set("ftn");
+            ((RichMsg.PttRec)localObject2).isReport.set(0);
+            ((RichMsg.PttRec)localObject2).version.set(5);
+            paramLong1 = System.currentTimeMillis() / 1000L;
+            ((RichMsg.PttRec)localObject2).msgRecTime.set(paramLong1);
+            ((RichMsg.PttRec)localObject2).msgTime.set(l1);
+            localObject1 = (MessageForPtt)bcry.a(-2002);
+            ((MessageForPtt)localObject1).msgtype = -2002;
+            ((MessageForPtt)localObject1).msgData = ((RichMsg.PttRec)localObject2).toByteArray();
+            ((MessageForPtt)localObject1).parse();
+            paramList.add(localObject1);
+            bewa.a(paramMessageHandler.app, 1, false, 4);
+            break;
+            if (QLog.isColorLevel()) {
+              QLog.d("OfflineFileDecoder", 2, "offline ptt no filename");
+            }
+          }
+          localStringBuilder.append("rcv a repeated offline file push msg");
         }
       }
     }
   }
   
-  public void printLog(boolean paramBoolean, String paramString1, String paramString2, Exception paramException) {}
+  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre)
+  {
+    long l1 = paramMsg.msg_head.from_uin.get();
+    int i = paramMsg.msg_head.c2c_cmd.get();
+    long l2 = parambcre.e;
+    boolean bool2 = parambcre.jdField_a_of_type_Boolean;
+    boolean bool3 = parambcre.b;
+    if (l1 == parambcre.jdField_a_of_type_Long) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      a(paramMessageHandler, paramList, i, paramMsg, l2, bool2, bool3, bool1, parambcre.jdField_d_of_type_Long, parambcre.jdField_d_of_type_Boolean, parambcre.jdField_a_of_type_Int);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcta
  * JD-Core Version:    0.7.0.1
  */

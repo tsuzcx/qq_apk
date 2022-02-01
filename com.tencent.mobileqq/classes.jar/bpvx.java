@@ -1,19 +1,36 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
 
 public class bpvx
-  implements AdapterView.OnItemSelectedListener
+  extends AnimatorListenerAdapter
 {
-  public bpvx(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public bpvx(QIMCircleProgress paramQIMCircleProgress) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
+    this.a.b = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator cancel");
+    }
   }
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.b = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.b = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator start");
+    }
+  }
 }
 
 

@@ -1,19 +1,20 @@
 package com.tencent.qqmini.flutter.core;
 
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
+import java.util.HashMap;
 
 class NativeAppBrandRuntime$2
-  implements MethodChannel.MethodCallHandler
+  extends HashMap<String, NativeAppBrandRuntime.TissueEventHandler>
 {
-  NativeAppBrandRuntime$2(NativeAppBrandRuntime paramNativeAppBrandRuntime) {}
-  
-  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
+  NativeAppBrandRuntime$2(NativeAppBrandRuntime paramNativeAppBrandRuntime)
   {
-    paramResult.success(null);
-    QMLog.d("miniapp-start-TISSUE-flutter_method_channel", paramMethodCall.method);
+    put("getAbsolutePath", new NativeAppBrandRuntime.2.1(this));
+    put("getWebConfiguration", new NativeAppBrandRuntime.2.2(this));
+    put("timeCostReport", new NativeAppBrandRuntime.2.3(this));
+    put("invokeHandler", new NativeAppBrandRuntime.2.4(this));
+    put("viewDidAppear", new NativeAppBrandRuntime.2.5(this));
+    put("onAppRouteDone", new NativeAppBrandRuntime.2.6(this));
+    put("onAppRoute", new NativeAppBrandRuntime.2.7(this));
+    put("publishHandler", new NativeAppBrandRuntime.2.8(this));
   }
 }
 

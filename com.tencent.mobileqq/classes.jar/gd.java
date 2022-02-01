@@ -1,11 +1,11 @@
 class gd
-  implements awnd<Void, Void>
+  implements axfv<Void, Void>
 {
-  gd(gc paramgc, anmw paramanmw, String paramString) {}
+  gd(gc paramgc, anyw paramanyw, String paramString) {}
   
   public Void a(Void paramVoid)
   {
-    this.jdField_a_of_type_Anmw.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Anyw.a(this.jdField_a_of_type_JavaLangString);
     return null;
   }
 }

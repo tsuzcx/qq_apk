@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="horizontal" android:id="@id/n_u" android:background="@color/ajr" android:layout_width="48.0dip" android:layout_height="48.0dip"
+<LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/bat" android:paddingTop="@dimen/bav" android:paddingRight="@dimen/bau" android:paddingBottom="@dimen/bas" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:id="@id/na3" android:padding="10.0dip" android:layout_width="45.0dip" android:layout_height="45.0dip" android:src="@drawable/gj2" android:scaleType="centerCrop" />
-</FrameLayout>
+    <include layout="@layout/cor" />
+    <include layout="@layout/cos" />
+    <ViewStub android:id="@id/ngh" android:layout="@layout/cot" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

@@ -1,32 +1,24 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.teamwork.PadInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bdmu
-  implements View.OnClickListener
+public class bdmu
+  extends bdmt
 {
-  bdmu(bdmq parambdmq) {}
+  public long c = 0L;
+  boolean e = false;
+  public int j = 80;
+  public int k = 70;
+  public int l = 5;
+  public int m;
   
-  public void onClick(View paramView)
+  public bdmu(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    PadInfo localPadInfo = (PadInfo)((bdlc)paramView.getTag()).a;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", nko.a(localPadInfo.pad_url, "_bid=2517"));
-    localBundle.putInt("key_team_work_edit_type", localPadInfo.type);
-    localBundle.putString("key_team_work_title", localPadInfo.title);
-    localBundle.putString("key_team_work_rul", localPadInfo.pad_url);
-    localBundle.putInt("key_team_work_pad_list_type", localPadInfo.type_list);
-    localBundle.putString("tdsourcetag", "s_qq_grpfile");
-    TeamWorkDocEditBrowserActivity.a(this.a.a, localBundle, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramFloat1, paramInt1, paramInt2, paramFloat2, paramInt3, paramInt4, paramInt5, paramInt6, false);
+    this.l = (paramInt1 % 1000);
+    this.k = (paramInt1 / 1000 % 1000);
+    this.j = (paramInt1 / 1000 / 1000 % 1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdmu
  * JD-Core Version:    0.7.0.1
  */

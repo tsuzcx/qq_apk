@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.inputstatus;
 
-import avgi;
+import avyl;
 
 public class InputStatusHelper$2
   implements Runnable
 {
-  public InputStatusHelper$2(avgi paramavgi) {}
+  public InputStatusHelper$2(avyl paramavyl) {}
   
   public void run()
   {
-    avgi.a(this.this$0, 3);
+    avyl.a(this.this$0, 3);
   }
 }
 

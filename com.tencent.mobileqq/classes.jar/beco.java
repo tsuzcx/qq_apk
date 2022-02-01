@@ -1,13 +1,27 @@
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-public class beco
-  extends becx
+class beco
+  extends becq
 {
-  public int a;
-  public String a;
-  public ArrayList<bdyf> a = new ArrayList();
-  public boolean a;
-  public String b;
+  beco(becl parambecl)
+  {
+    super(parambecl);
+  }
+  
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  {
+    return a(paramWebView, paramString);
+  }
 }
 
 

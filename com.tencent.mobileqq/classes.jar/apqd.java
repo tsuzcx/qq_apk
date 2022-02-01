@@ -1,34 +1,98 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class apqd
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public apqd(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  private appy jdField_a_of_type_Appy;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  long b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public apqd(AppInterface paramAppInterface)
   {
-    if (paramBoolean)
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Appy = new appy(paramAppInterface);
+  }
+  
+  private int a(long paramLong, int paramInt)
+  {
+    this.jdField_a_of_type_Long = Math.max(paramLong, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Int = Math.max(paramInt, this.jdField_a_of_type_Int);
+    if (this.b == 0L) {
+      return this.jdField_a_of_type_Int;
+    }
+    return Math.max((int)(100L * paramLong / this.b), this.jdField_a_of_type_Int);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Appy != null) {
+      this.jdField_a_of_type_Appy.a();
+    }
+  }
+  
+  public void a(ArrayList<apqc> paramArrayList, apqg paramapqg)
+  {
+    QLog.i("AREngine_ARResourceManagerTools", 1, "startDowdLoad");
+    this.b = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
+    if (paramArrayList.size() < 1) {
+      return;
+    }
+    Object localObject = paramArrayList.iterator();
+    apqc localapqc;
+    while (((Iterator)localObject).hasNext())
     {
-      AboutActivity.a(5);
-      if (!this.a.b().equals("close")) {
-        this.a.b();
+      localapqc = (apqc)((Iterator)localObject).next();
+      this.b = Math.max(this.b, localapqc.jdField_a_of_type_Long);
+    }
+    if (paramapqg != null) {
+      paramapqg.a();
+    }
+    localObject = (ArrayList)paramArrayList.clone();
+    QLog.i("AREngine_ARResourceManagerTools", 1, "startDowdLoad size is " + ((ArrayList)localObject).size());
+    int i = 0;
+    label129:
+    if (i < paramArrayList.size())
+    {
+      if (((apqc)paramArrayList.get(i)).jdField_a_of_type_Int == 4) {
+        break label187;
       }
-      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is opened and IDE debug is also open ,state=%s", new Object[] { AboutActivity.b() }));
-      ArkAppCenter.a(true);
+      this.jdField_a_of_type_Appy.a((apqc)paramArrayList.get(i), new apqe(this, paramapqg, paramArrayList, (ArrayList)localObject));
     }
     for (;;)
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      i += 1;
+      break label129;
+      break;
+      label187:
+      if (((apqc)paramArrayList.get(i)).jdField_a_of_type_Int == 4)
+      {
+        nmj.a();
+        localapqc = (apqc)paramArrayList.get(i);
+        nmj.a(((apqc)paramArrayList.get(i)).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new apqf(this, paramapqg, (ArrayList)localObject, localapqc), true, 0, true);
+      }
+    }
+  }
+  
+  public void b()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      a();
       return;
-      AboutActivity.a(0);
-      this.a.c();
-      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is closed and IDE debug is also closed,state=%s", new Object[] { AboutActivity.b() }));
-      ArkAppCenter.a(false);
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Appy != null) {
+      this.jdField_a_of_type_Appy.b();
     }
   }
 }

@@ -1,9 +1,7 @@
 package com.tencent.mtt.abtestsdk.ABTest;
 
 import android.app.Activity;
-import android.app.Application;
 import android.app.Application.ActivityLifecycleCallbacks;
-import android.content.Context;
 import android.os.Bundle;
 import com.tencent.mtt.abtestsdk.utils.ABTestLog;
 import java.util.Stack;
@@ -12,7 +10,7 @@ public class ActivityManager
   implements Application.ActivityLifecycleCallbacks
 {
   private static final String TAG = "ActivityManager";
-  private static ActivityManager activityManager;
+  private static volatile ActivityManager activityManager;
   private Stack<Activity> activities = new Stack();
   
   public static ActivityManager getInstance()
@@ -69,15 +67,8 @@ public class ActivityManager
   public void onActivityDestroyed(Activity paramActivity)
   {
     removeActivity(paramActivity);
-    if (this.activities.size() == 0)
-    {
+    if (this.activities.size() == 0) {
       ABTestManager.getInstance().saveConfigInfo();
-      paramActivity = ABTestManager.getInstance().getContext();
-      if (paramActivity != null)
-      {
-        ABTestManager.getInstance().stopUpdateTimer();
-        ((Application)paramActivity.getApplicationContext()).unregisterActivityLifecycleCallbacks(this);
-      }
     }
   }
   

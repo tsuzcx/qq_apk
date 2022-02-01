@@ -1,32 +1,36 @@
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
-class bmhv
-  implements InvocationHandler
+public class bmhv
+  extends RemoteCommand
 {
-  bmhv(bmht parambmht) {}
+  private QQAppInterface a;
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public bmhv(QQAppInterface paramQQAppInterface)
   {
-    paramObject = paramMethod.getName();
-    boolean bool;
-    if ("onLoad".equals(paramObject)) {
-      if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 2))
-      {
-        int i = ((Integer)paramArrayOfObject[0]).intValue();
-        bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
-        bmht.a(this.a, i, bool);
-      }
-    }
-    for (;;)
+    super("common.get_qq_app_interface_data");
+    this.a = paramQQAppInterface;
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    int i = paramBundle.getInt("param_data_type", 0);
+    paramOnInvokeFinishLinstener = new Bundle();
+    switch (i)
     {
-      return null;
-      if (("onLoadFinish".equals(paramObject)) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 1))
-      {
-        bool = ((Boolean)paramArrayOfObject[0]).booleanValue();
-        bmht.a(this.a, bool);
-      }
+    default: 
+      return paramOnInvokeFinishLinstener;
+    case 1: 
+      paramBundle = paramBundle.getString("param_uin");
+      paramOnInvokeFinishLinstener.putString("result_key", bhlg.h(this.a, paramBundle));
+      return paramOnInvokeFinishLinstener;
     }
+    String str = paramBundle.getString("param_uin");
+    boolean bool = paramBundle.getBoolean("param_fetch_if_not_exist", false);
+    paramOnInvokeFinishLinstener.putString("result_key", bhlg.b(this.a, str, bool));
+    return paramOnInvokeFinishLinstener;
   }
 }
 

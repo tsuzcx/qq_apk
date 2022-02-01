@@ -1,26 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.agent.datamodel.Friend;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-public final class bioz
-  implements Parcelable.Creator<Friend>
+public abstract interface bioz
 {
-  public Friend a(Parcel paramParcel)
-  {
-    Friend localFriend = new Friend();
-    localFriend.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localFriend.b = paramParcel.readString();
-    localFriend.c = paramParcel.readString();
-    localFriend.d = paramParcel.readString();
-    localFriend.jdField_a_of_type_Int = paramParcel.readInt();
-    localFriend.e = paramParcel.readString();
-    return localFriend;
-  }
+  public abstract int pluginStartActivityForResult(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte);
   
-  public Friend[] a(int paramInt)
-  {
-    return new Friend[paramInt];
-  }
+  public abstract int switchRequestCode(WebViewPlugin paramWebViewPlugin, byte paramByte);
 }
 
 

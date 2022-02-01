@@ -1,14 +1,16 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.Emoticon;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-class awmx
-  implements awnd<Pair<String, String>, Emoticon>
+public class awmx
+  implements DialogInterface.OnClickListener
 {
-  awmx(awmr paramawmr) {}
+  public awmx(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
   
-  public Emoticon a(Pair<String, String> paramPair)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.a((String)paramPair.first, (String)paramPair.second);
+    ListenTogetherOverlayFragment.a(this.a).finish();
   }
 }
 

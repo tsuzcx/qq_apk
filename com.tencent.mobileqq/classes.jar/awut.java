@@ -1,9 +1,17 @@
-import com.tencent.mobileqq.data.IntimateInfo;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface awut
+class awut
+  implements View.OnClickListener
 {
-  public abstract void a(HashMap<Long, IntimateInfo> paramHashMap);
+  awut(awuo paramawuo, awud paramawud) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Awud.b();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

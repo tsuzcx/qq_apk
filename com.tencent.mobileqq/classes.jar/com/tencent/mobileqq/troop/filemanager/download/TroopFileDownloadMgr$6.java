@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
 import android.os.Bundle;
-import bewr;
+import bfwl;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
 public class TroopFileDownloadMgr$6
   implements Runnable
 {
-  public TroopFileDownloadMgr$6(bewr parambewr, long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle) {}
+  public TroopFileDownloadMgr$6(bfwl parambfwl, long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle) {}
   
   public void run()
   {
-    bewr.b(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_AndroidOsBundle);
+    bfwl.b(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

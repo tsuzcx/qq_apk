@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import anmw;
-import aypa;
+import anyw;
+import azht;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class OnLineStatusPresenter$1
   implements Runnable
 {
-  public OnLineStatusPresenter$1(aypa paramaypa, anmw paramanmw, QQAppInterface paramQQAppInterface) {}
+  public OnLineStatusPresenter$1(azht paramazht, anyw paramanyw, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Anmw.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+    this.jdField_a_of_type_Anyw.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
     this.this$0.a("FriendsEntityNotLoad", true);
   }
 }

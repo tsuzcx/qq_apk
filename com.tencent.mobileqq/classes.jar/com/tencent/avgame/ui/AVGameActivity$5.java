@@ -1,9 +1,9 @@
 package com.tencent.avgame.ui;
 
-import bglp;
-import bgpa;
+import bhlq;
+import bhpc;
 import com.tencent.qphone.base.util.QLog;
-import neo;
+import ngh;
 
 public class AVGameActivity$5
   implements Runnable
@@ -15,9 +15,9 @@ public class AVGameActivity$5
     if (this.this$0.isFinishing()) {
       return;
     }
-    String str = this.this$0.getString(2131690218);
+    String str = this.this$0.getString(2131690227);
     QLog.d("AVGameActivity", 2, "showDialogTip content:" + this.a);
-    bglp.a(this.this$0, 230, null, this.a, str, str, new neo(this), null).show();
+    bhlq.a(this.this$0, 230, null, this.a, str, str, new ngh(this), null).show();
   }
 }
 

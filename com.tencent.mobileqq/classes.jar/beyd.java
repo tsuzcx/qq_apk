@@ -1,12 +1,17 @@
-import java.util.UUID;
-
-public abstract interface beyd
+public class beyd
 {
-  public abstract void a(UUID paramUUID, boolean paramBoolean, int paramInt, beyc parambeyc);
+  public int a;
+  public String a;
+  
+  public beyd()
+  {
+    this.jdField_a_of_type_Int = -99999;
+    this.jdField_a_of_type_JavaLangString = "unkown error";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     beyd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,10 @@
-import android.text.TextUtils;
-import androidx.annotation.Nullable;
-
-public class bhci
+public abstract interface bhci
 {
-  String a;
-  String b;
-  String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
+  public abstract void a();
   
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if ((paramObject instanceof bhci))
-    {
-      paramObject = (bhci)paramObject;
-      return (TextUtils.equals(paramObject.a, this.a)) && (TextUtils.equals(paramObject.b, this.b)) && (TextUtils.equals(paramObject.c, this.c));
-    }
-    return super.equals(paramObject);
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

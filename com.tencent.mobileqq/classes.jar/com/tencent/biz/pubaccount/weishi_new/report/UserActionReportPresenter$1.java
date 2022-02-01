@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.weishi_new.report;
 
 import UserGrowth.stReportItem;
-import umq;
+import uno;
 
 public final class UserActionReportPresenter$1
   implements Runnable
 {
   public void run()
   {
-    stReportItem localstReportItem = umq.a();
+    stReportItem localstReportItem = uno.a();
     localstReportItem.pagetype = 1;
     localstReportItem.optype = 121;
-    umq.a(localstReportItem);
+    uno.a(localstReportItem);
   }
 }
 

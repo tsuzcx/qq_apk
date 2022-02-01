@@ -1,31 +1,27 @@
-import android.graphics.PointF;
+import android.content.Context;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class liv
 {
-  long jdField_a_of_type_Long;
-  PointF jdField_a_of_type_AndroidGraphicsPointF = null;
-  boolean jdField_a_of_type_Boolean = false;
-  
-  public void a()
+  public static lir a(long paramLong, VideoAppInterface paramVideoAppInterface, Context paramContext, String paramString)
   {
-    QLog.w("ARZimuTask_SpitZimuTask", 1, "MouthLoactionInfo.clear");
-    this.jdField_a_of_type_AndroidGraphicsPointF = null;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(PointF paramPointF)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPointF = paramPointF;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    while (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 1500L) {
-      return true;
+    VideoAppInterface localVideoAppInterface = null;
+    if (AudioHelper.f()) {
+      QLog.w("ARZimuTaskFactory", 1, "create, id[" + paramString + "], seq[" + paramLong + "]");
     }
-    return false;
+    if ("spit".equals(paramString))
+    {
+      paramVideoAppInterface = new lja(paramLong, paramVideoAppInterface);
+      localVideoAppInterface = paramVideoAppInterface;
+      if ((paramContext instanceof ljb))
+      {
+        ((lja)paramVideoAppInterface).a((ljb)paramContext);
+        localVideoAppInterface = paramVideoAppInterface;
+      }
+    }
+    return localVideoAppInterface;
   }
 }
 

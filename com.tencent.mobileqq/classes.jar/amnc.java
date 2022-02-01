@@ -1,30 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.vas.avatar.VasAvatar;
 
 public class amnc
-  implements EIPCResultCallback
 {
-  public amnc(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public VasAvatar a;
+  public ImageView b;
   
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameInterfaceProxy", 2, "get_open_key_back");
-      }
-      paramEIPCResult = paramEIPCResult.data.getString("respData");
-      ApolloGameInterfaceProxy.a(this.a, "cs.on_get_open_key.local", paramEIPCResult);
-      return;
-    }
-    catch (Throwable paramEIPCResult)
-    {
-      QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
-    }
-  }
+  public amnc(amnb paramamnb) {}
 }
 
 

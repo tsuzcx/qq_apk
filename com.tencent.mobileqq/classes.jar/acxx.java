@@ -1,17 +1,8 @@
-public class acxx
-  implements acxw
+public abstract interface acxx
 {
-  private acww<Integer, acxv> a = new acwx();
+  public abstract void a();
   
-  public acxv a(Integer paramInteger)
-  {
-    return (acxv)this.a.a(paramInteger);
-  }
-  
-  public void a(Integer paramInteger, Class<? extends acxv> paramClass)
-  {
-    this.a.a(paramInteger, paramClass);
-  }
+  public abstract void b();
 }
 
 

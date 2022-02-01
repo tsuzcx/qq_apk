@@ -1,36 +1,15 @@
-import android.text.TextUtils;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-public class aqby
+final class aqby
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  int a = -1;
-  
-  public static aqby a(String paramString)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      try
-      {
-        aqby localaqby = new aqby();
-        localaqby.a = new JSONObject(paramString).getInt("maxcount");
-        aqcv.a = localaqby.a;
-        if (QLog.isColorLevel()) {
-          QLog.e("ColorNoteConfigProcessor", 2, "ColorNoteConfigProcessor onParsed maxcount " + localaqby.a);
-        }
-        return localaqby;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("ColorNoteConfigProcessor", 2, "ColorNoteConfigProcessor onParsed erro " + paramString.toString());
-    return null;
-  }
-  
-  public int a()
-  {
-    return this.a;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp.ArkAppCenterUtil", 2, new Object[] { "preDownloadArkApp download complete,retCode: ", Integer.valueOf(paramInt), ";msg: ", paramString });
+    }
   }
 }
 

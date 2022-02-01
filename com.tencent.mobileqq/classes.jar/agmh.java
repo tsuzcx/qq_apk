@@ -1,26 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.qphone.base.util.QLog;
 
-class agmh
-  implements DialogInterface.OnClickListener
+public class agmh
+  extends AsyncTask<String, Void, Bitmap>
 {
-  agmh(agmg paramagmg, List paramList, BaseChatPie paramBaseChatPie) {}
+  public agmh(VoicePrintUtils.VoicePrintView paramVoicePrintView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected Bitmap a(String... paramVarArgs)
   {
-    switch (paramInt)
+    paramVarArgs = paramVarArgs[0];
+    if (BaseApplicationImpl.sImageCache.get(paramVarArgs) == null)
     {
+      Bitmap localBitmap = BubbleManager.a(paramVarArgs, this.a.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("VoicePrintUtils.DecodePngTask", 2, "decode " + paramVarArgs + "in background.");
+      }
+      BaseApplicationImpl.sImageCache.put(paramVarArgs, localBitmap);
     }
-    do
-    {
-      return;
-      paramDialogInterface = awwt.a(agmg.a(this.jdField_a_of_type_Agmg), (ArrayList)this.jdField_a_of_type_JavaUtilList);
-    } while ((paramDialogInterface == null) || (paramDialogInterface.size() == 0));
-    agmg.a(this.jdField_a_of_type_Agmg, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(false, null, false);
+    return null;
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    VoicePrintUtils.VoicePrintView.a(this.a);
+    this.a.setImageDrawable(VoicePrintUtils.VoicePrintView.a(this.a));
+    this.a.invalidate();
   }
 }
 

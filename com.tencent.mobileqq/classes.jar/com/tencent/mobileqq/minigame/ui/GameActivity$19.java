@@ -7,7 +7,7 @@ class GameActivity$19
   
   public void run()
   {
-    if (GameActivity.access$1100(this.this$0) == null) {
+    if (GameActivity.access$1200(this.this$0) == null) {
       this.this$0.tryStartGameWhenReady();
     }
   }

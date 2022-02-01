@@ -1,37 +1,105 @@
+import GROUP.MessageRemindRsp;
+import MQQ.GetRoamToastRsp;
+import QC.BubbleRecommendRsp;
+import QC.FaceRsp;
+import QC.FontRecommendRsp;
+import QC.SetFontBubbleRsp;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
-import com.tencent.robolectric.ShadowParcel;
-import java.util.Arrays;
 
-class aogx
-  implements PermissionMonitor.Listener
+public class aogx
+  implements anui
 {
-  static
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(Bundle paramBundle) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean, MessageRemindRsp paramMessageRemindRsp) {}
+  
+  public void a(boolean paramBoolean, GetRoamToastRsp paramGetRoamToastRsp) {}
+  
+  public void a(boolean paramBoolean, BubbleRecommendRsp paramBubbleRecommendRsp) {}
+  
+  public void a(boolean paramBoolean, FaceRsp paramFaceRsp) {}
+  
+  public void a(boolean paramBoolean, FontRecommendRsp paramFontRecommendRsp) {}
+  
+  public void a(boolean paramBoolean, SetFontBubbleRsp paramSetFontBubbleRsp, int paramInt) {}
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void c(boolean paramBoolean, Object paramObject) {}
+  
+  public void d(boolean paramBoolean, Object paramObject) {}
+  
+  public void e(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (!aogs.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    switch (paramInt)
     {
-      jdField_a_of_type_Boolean = bool;
+    default: 
+    case 101: 
+      do
+      {
+        return;
+        if ((paramObject instanceof Integer))
+        {
+          a(((Integer)paramObject).intValue());
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("SVIPObserver", 2, "NOTIFY_TYPE_SVIP_BUBBLE_CHANGE param error");
+      return;
+    case 100: 
+      a();
+      return;
+    case 102: 
+      b(paramBoolean, paramObject);
+      return;
+    case 103: 
+      c(paramBoolean, paramObject);
+      return;
+    case 104: 
+      d(paramBoolean, paramObject);
+      return;
+    case 105: 
+      a(paramBoolean, paramObject);
+      return;
+    case 106: 
+      e(paramBoolean, paramObject);
+      return;
+    case 113: 
+      a(paramBoolean, (MessageRemindRsp)paramObject);
+      return;
+    case 107: 
+      a(paramBoolean, (FontRecommendRsp)paramObject);
+      return;
+    case 108: 
+      a(paramBoolean, (BubbleRecommendRsp)paramObject);
+      return;
+    case 109: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, (SetFontBubbleRsp)paramObject[0], ((Integer)paramObject[1]).intValue());
+      return;
+    case 110: 
+      a((Bundle)paramObject);
+      return;
+    case 111: 
+      a(paramBoolean, (GetRoamToastRsp)paramObject);
+      return;
+    case 112: 
+      a(paramBoolean, (FaceRsp)paramObject);
       return;
     }
-  }
-  
-  aogx(aogs paramaogs) {}
-  
-  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
-  {
-    if (aogs.a(this.jdField_a_of_type_Aogs) != Thread.currentThread()) {}
-    while ((!aogs.a(this.jdField_a_of_type_Aogs)) || (paramArrayOfObject.length != 2)) {
-      return;
-    }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aogs.a(this.jdField_a_of_type_Aogs))) {
-      throw new AssertionError();
-    }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[1].getClass() != Integer.class)) {
-      throw new AssertionError();
-    }
-    ShadowParcel.b((int)aogs.a(this.jdField_a_of_type_Aogs), ((Integer)paramArrayOfObject[1]).intValue());
-    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
+    paramObject = (Object[])paramObject;
+    a((String)paramObject[0], ((Integer)paramObject[1]).intValue());
   }
 }
 

@@ -1,6 +1,6 @@
 package com.etrump.mixlayout;
 
-import bgtl;
+import bhto;
 import com.tencent.qphone.base.util.QLog;
 import gc;
 import java.util.concurrent.ConcurrentHashMap;
@@ -21,7 +21,7 @@ public class FontManager$10
           QLog.d("VasFont", 2, "updateDiyConfig uin = " + this.jdField_a_of_type_JavaLangString + " fontId = " + this.jdField_a_of_type_Int);
         }
         localConcurrentHashMap.remove(Integer.valueOf(this.jdField_a_of_type_Int));
-        bgtl.a(this.this$0.a);
+        bhto.a(this.this$0.a);
       }
     }
   }

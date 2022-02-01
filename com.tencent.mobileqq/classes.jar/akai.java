@@ -1,46 +1,50 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
 
 public class akai
-  implements agma
+  extends auoz
 {
-  private akaj jdField_a_of_type_Akaj;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public boolean a;
+  public akai(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
   
-  public akai(akaj paramakaj)
+  public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramakaj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramakaj.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_Akaj = paramakaj;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramakaj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.i("MiniMultiForwardHelper", 2, "RESUME onMoveToState：=" + paramInt);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 5: 
-      this.jdField_a_of_type_Boolean = BaseChatItemLayout.jdField_a_of_type_Boolean;
-      BaseChatItemLayout.jdField_a_of_type_Boolean = false;
-      QLog.i("MiniMultiForwardHelper", 2, "RESUME mPreCheckBoxVisibleStat：=" + this.jdField_a_of_type_Boolean + "  BaseChatItemLayout.CheckBoxVisible :" + BaseChatItemLayout.jdField_a_of_type_Boolean);
+    if (paramView.getId() == 2131366151) {
+      ChatHistoryBaseTenDocFragment.a(this.a);
+    }
+    while ((paramView.getTag() instanceof String)) {
       return;
     }
-    BaseChatItemLayout.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    QLog.i("MiniMultiForwardHelper", 2, "RESUME mPreCheckBoxVisibleStat：=" + this.jdField_a_of_type_Boolean + "  BaseChatItemLayout.CheckBoxVisible :" + BaseChatItemLayout.jdField_a_of_type_Boolean);
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 3, 5, 9, 13 };
+    TencentDocItem localTencentDocItem = ((akaf)paramView.getTag()).a;
+    if (this.a.c)
+    {
+      this.a.jdField_a_of_type_Akfq.a(localTencentDocItem);
+      ChatHistoryBaseTenDocFragment.a(this.a).notifyDataSetChanged();
+      return;
+    }
+    paramView = "unknown";
+    if (atyu.b(localTencentDocItem.mUrl)) {
+      paramView = "doc";
+    }
+    for (;;)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("url", localTencentDocItem.mUrl);
+      localBundle.putString("tdsourcetag", "s_qq_history_tab");
+      localBundle.putString("tdsourcetype", paramView + ChatHistoryBaseTenDocFragment.a(this.a));
+      TeamWorkDocEditBrowserActivity.a(ChatHistoryBaseTenDocFragment.a(this.a), localBundle, false);
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A16B", "0X800A16B", ChatHistoryBaseTenDocFragment.a(this.a), 0, "", "", "s_qq_history_tab", paramView);
+      return;
+      if (atyu.e(localTencentDocItem.mUrl)) {
+        paramView = "form";
+      } else if (atyu.d(localTencentDocItem.mUrl)) {
+        paramView = "ppt";
+      } else if (atyu.c(localTencentDocItem.mUrl)) {
+        paramView = "sheet";
+      }
+    }
   }
 }
 

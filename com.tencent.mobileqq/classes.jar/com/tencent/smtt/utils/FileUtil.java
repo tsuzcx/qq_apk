@@ -816,11 +816,11 @@ public class FileUtil
     //   205: aload_1
     //   206: invokespecial 412	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   209: invokevirtual 174	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   212: astore_0
+    //   212: astore_3
     //   213: aload_2
     //   214: invokevirtual 463	java/nio/channels/FileChannel:size	()J
     //   217: lstore 5
-    //   219: aload_0
+    //   219: aload_3
     //   220: aload_2
     //   221: lconst_0
     //   222: lload 5
@@ -834,9 +834,9 @@ public class FileUtil
     //   238: ifnull +7 -> 245
     //   241: aload_2
     //   242: invokevirtual 468	java/nio/channels/FileChannel:close	()V
-    //   245: aload_0
+    //   245: aload_3
     //   246: ifnull +7 -> 253
-    //   249: aload_0
+    //   249: aload_3
     //   250: invokevirtual 468	java/nio/channels/FileChannel:close	()V
     //   253: iconst_0
     //   254: ireturn
@@ -844,9 +844,9 @@ public class FileUtil
     //   256: ifnull +7 -> 263
     //   259: aload_2
     //   260: invokevirtual 468	java/nio/channels/FileChannel:close	()V
-    //   263: aload_0
+    //   263: aload_3
     //   264: ifnull +7 -> 271
-    //   267: aload_0
+    //   267: aload_3
     //   268: invokevirtual 468	java/nio/channels/FileChannel:close	()V
     //   271: iconst_1
     //   272: ireturn
@@ -869,18 +869,16 @@ public class FileUtil
     //   298: aconst_null
     //   299: astore_1
     //   300: goto -21 -> 279
-    //   303: astore_3
-    //   304: aload_0
+    //   303: astore_0
+    //   304: aload_3
     //   305: astore_1
-    //   306: aload_3
-    //   307: astore_0
-    //   308: goto -29 -> 279
+    //   306: goto -27 -> 279
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	311	0	paramFile1	File
-    //   0	311	1	paramFile2	File
-    //   0	311	2	paramFileFilter	FileFilter
-    //   0	311	3	parama	FileUtil.a
+    //   0	309	0	paramFile1	File
+    //   0	309	1	paramFile2	File
+    //   0	309	2	paramFileFilter	FileFilter
+    //   0	309	3	parama	FileUtil.a
     //   40	119	4	bool	boolean
     //   217	11	5	l	long
     //   1	276	7	localObject	Object

@@ -1,14 +1,19 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.viola.lottie.KdLottieView;
-import com.tencent.viola.ui.view.lottie.IVLottieViewProxy;
-import com.tencent.viola.ui.view.lottie.IVlottieViewCreater;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class tms
-  implements IVlottieViewCreater
+class tms
+  implements svw
 {
-  public IVLottieViewProxy createLottieView(Context paramContext)
+  tms(tmr paramtmr, sel paramsel) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    return new KdLottieView(paramContext);
+    if (sel.a() != null)
+    {
+      tnt localtnt = (tnt)sel.a().getManager(307);
+      if (localtnt != null) {
+        localtnt.a(this.jdField_a_of_type_Sel, this.jdField_a_of_type_Sel.a(), true, paramInt1);
+      }
+    }
   }
 }
 

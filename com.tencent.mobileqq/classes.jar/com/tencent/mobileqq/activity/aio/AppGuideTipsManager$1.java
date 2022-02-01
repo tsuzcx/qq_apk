@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afvq;
+import agfi;
 import android.text.TextUtils;
 import com.tencent.mobileqq.data.AppGuideTipsConfig;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -11,14 +11,14 @@ import java.util.Map;
 public class AppGuideTipsManager$1
   implements Runnable
 {
-  public AppGuideTipsManager$1(afvq paramafvq) {}
+  public AppGuideTipsManager$1(agfi paramagfi) {}
   
   public void run()
   {
-    afvq.a(this.this$0);
+    agfi.a(this.this$0);
     this.this$0.c();
-    afvq.a(this.this$0).clear();
-    ArrayList localArrayList = (ArrayList)afvq.a(this.this$0).query(AppGuideTipsConfig.class, AppGuideTipsConfig.class.getSimpleName(), false, null, null, null, null, null, null);
+    agfi.a(this.this$0).clear();
+    ArrayList localArrayList = (ArrayList)agfi.a(this.this$0).query(AppGuideTipsConfig.class, AppGuideTipsConfig.class.getSimpleName(), false, null, null, null, null, null, null);
     if ((localArrayList == null) || (localArrayList.size() <= 0)) {}
     for (;;)
     {
@@ -51,15 +51,15 @@ public class AppGuideTipsManager$1
         label174:
         j += 1;
         break label137;
-        afvq.a(this.this$0).put(localAppGuideTipsConfig.tipsType, localAppGuideTipsConfig);
+        agfi.a(this.this$0).put(localAppGuideTipsConfig.tipsType, localAppGuideTipsConfig);
         i += 1;
         break label71;
-        afvq.a(this.this$0, true);
+        agfi.a(this.this$0, true);
         this.this$0.b();
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d(afvq.a, 2, "loadConfig, mTipsMap size=" + afvq.a(this.this$0).size());
+        QLog.d(agfi.a, 2, "loadConfig, mTipsMap size=" + agfi.a(this.this$0).size());
         return;
       }
       catch (Exception localException)

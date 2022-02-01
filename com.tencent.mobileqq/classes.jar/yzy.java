@@ -1,24 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.graphics.Bitmap;
 
 public class yzy
-  implements Animation.AnimationListener
 {
-  public yzy(DoodleLayout paramDoodleLayout) {}
+  public final int c;
+  public final Bitmap c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public yzy(int paramInt, Bitmap paramBitmap)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.jdField_a_of_type_Yzz != null) {
-      this.a.jdField_a_of_type_Yzz.a(null);
-    }
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String toString()
+  {
+    return "VideoFragmentInfo{blockIndex=" + this.jdField_c_of_type_Int + '}';
+  }
 }
 
 

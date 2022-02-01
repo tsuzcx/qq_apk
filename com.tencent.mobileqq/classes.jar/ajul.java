@@ -1,8 +1,26 @@
-public abstract interface ajul
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
+
+class ajul
+  implements View.OnClickListener
 {
-  public abstract void a();
+  private WeakReference<ajuh> a;
   
-  public abstract void b();
+  public ajul(ajuh paramajuh)
+  {
+    this.a = new WeakReference(paramajuh);
+  }
+  
+  public void onClick(View paramView)
+  {
+    ajuh localajuh = (ajuh)this.a.get();
+    if (localajuh != null) {
+      localajuh.onClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

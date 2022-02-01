@@ -1,47 +1,70 @@
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class aneo
-  implements View.OnClickListener
+public class aneo
+  extends MSFServlet
 {
-  aneo(anem paramanem) {}
-  
-  public void onClick(View paramView)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    Object localObject;
-    if ((!TextUtils.isEmpty(anem.a(this.a))) && (!anem.a(this.a).equals("0")))
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameServlet", 2, "[onReceive]");
+    }
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
     {
-      QQAppInterface localQQAppInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-      int i = this.a.a.jdField_a_of_type_Int;
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData != null)
-      {
-        localObject = Integer.toString(this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameId);
-        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "clk_fuwuhao", i, 0, new String[] { localObject });
-        localObject = new Intent(this.a.a.getActivity(), AccountDetailActivity.class);
-        ((Intent)localObject).putExtra("uin", anem.a(this.a));
-        ((Intent)localObject).putExtra("uintype", 1008);
-        this.a.a.getActivity().startActivity((Intent)localObject);
-      }
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bhvd.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      Object localObject = anbd.a();
+      if (localObject == null) {
+        QLog.e("cmgame_process.CmGameServlet", 1, "app is null.");
+      }
+      do
+      {
+        return;
+        localObject = (anen)((AppInterface)localObject).getBusinessHandler(0);
+      } while (localObject == null);
+      ((anen)localObject).a(paramIntent, paramFromServiceMsg, arrayOfByte);
       return;
-      localObject = "";
-      break;
-      QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setPubAccountInfo] uin is null or = 0");
+      arrayOfByte = null;
     }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameServlet", 2, "[onSend]");
+    }
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if (!TextUtils.isEmpty(str))
+    {
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      if (arrayOfByte != null)
+      {
+        paramIntent = new byte[arrayOfByte.length + 4];
+        bhvd.a(paramIntent, 0, arrayOfByte.length + 4);
+        bhvd.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+        paramPacket.putSendData(paramIntent);
+      }
+    }
+    else
+    {
+      return;
+    }
+    paramIntent = new byte[4];
+    bhvd.a(paramIntent, 0, 4L);
+    paramPacket.putSendData(paramIntent);
   }
 }
 

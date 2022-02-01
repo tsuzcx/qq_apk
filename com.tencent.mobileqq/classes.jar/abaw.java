@@ -1,60 +1,60 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import cooperation.qzone.util.QZLog;
+import java.io.File;
 
-public class abaw
-  implements aqiv
+class abaw
+  extends biht
 {
-  public abaw(NewerGuidePlugin paramNewerGuidePlugin, IphonePickerView paramIphonePickerView, bkho parambkho) {}
+  abaw(abav paramabav, Downloader.DownloadListener paramDownloadListener, String paramString1, abax paramabax, String paramString2, String paramString3) {}
   
-  public void a()
+  public void onCancel(bihu parambihu)
   {
-    int i = NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1897;
-    int j = NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1;
-    int k = NewerGuidePlugin.d(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("onDismissOperations year=%s month=%s day=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) }));
+    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadCanceled(this.jdField_a_of_type_JavaLangString);
     }
-    if ((this.jdField_a_of_type_Bkho != null) && (this.jdField_a_of_type_Bkho.isShowing())) {
-      this.jdField_a_of_type_Bkho.dismiss();
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("result", 1);
-      localJSONObject.put("year", i);
-      localJSONObject.put("month", j);
-      localJSONObject.put("date", k);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respDatePicker", new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("NewerGuidePlugin", 1, "sendDatePickerResp fail", localException);
-      }
-    }
+    abax.a(this.jdField_a_of_type_Abax, 3);
+    QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "onDownloadCanceled" });
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onDone(bihu parambihu)
   {
-    switch (paramInt1)
+    if (parambihu.a == 0)
     {
-    }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+      boolean bool;
+      if (new File(abav.jdField_a_of_type_JavaLangString).exists())
+      {
+        bool = bnjl.b(new File(this.jdField_a_of_type_JavaLangString), new File(abav.jdField_a_of_type_JavaLangString + "/" + this.b));
+        if (!bool) {
+          break label158;
+        }
+        if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+          this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadSucceed(this.jdField_a_of_type_JavaLangString, new DownloadResult(this.c));
+        }
+        new File(this.jdField_a_of_type_JavaLangString).delete();
+        abax.a(this.jdField_a_of_type_Abax, 0);
       }
-      return;
-      NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
-      continue;
-      NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
-      continue;
-      NewerGuidePlugin.d(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
+      for (;;)
+      {
+        QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByIdsuccess:" + bool);
+        return;
+        label158:
+        abax.a(this.jdField_a_of_type_Abax, 2);
+      }
     }
+    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadFailed(this.jdField_a_of_type_JavaLangString, new DownloadResult(this.c));
+    }
+    abax.a(this.jdField_a_of_type_Abax, 2);
+    QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByIdonDownloadFailed:" });
+  }
+  
+  public void onProgress(bihu parambihu)
+  {
+    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, 0L, 0.0F);
+    }
+    abax.a(this.jdField_a_of_type_Abax, 1);
   }
 }
 

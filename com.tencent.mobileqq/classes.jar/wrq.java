@@ -1,19 +1,19 @@
-public class wrq
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class wrq
+  implements View.OnClickListener
 {
-  public final long a;
-  public final wro a;
-  public final long b;
+  wrq(wrp paramwrp, wro paramwro) {}
   
-  public wrq(wro paramwro, long paramLong1, long paramLong2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Wro = paramwro;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-  }
-  
-  public String toString()
-  {
-    return "Progress{intput=" + this.jdField_a_of_type_Wro + ", downloadBytes=" + this.jdField_a_of_type_Long + ", totalBytes=" + this.b + '}';
+    int i = this.jdField_a_of_type_Wro.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Wrp.a.a(this.jdField_a_of_type_Wro.itemView, i);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

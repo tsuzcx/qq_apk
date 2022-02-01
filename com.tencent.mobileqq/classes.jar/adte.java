@@ -1,36 +1,17 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class adte
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adte(ChatHistory paramChatHistory) {}
+  public adte(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.d < this.a.c)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839095);
-      ChatHistory localChatHistory = this.a;
-      localChatHistory.d += 1;
-      if (this.a.d >= this.a.c)
-      {
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130849587);
-      }
-      this.a.e = ((this.a.d - 1) * 8);
-      this.a.jdField_a_of_type_Aduc.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-      this.a.t();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    bhzu.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, "mvip.n.a.gnew_apply", this.jdField_a_of_type_JavaLangString, 3, false, false, "", "", true, true);
+    bdll.b(null, "dc00898", "", "", "qq_vip", "0X800A4FB", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 

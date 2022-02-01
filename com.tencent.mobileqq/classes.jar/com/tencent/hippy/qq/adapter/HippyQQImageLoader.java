@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import bgnt;
+import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
@@ -83,8 +83,8 @@ public class HippyQQImageLoader
   private URLDrawable.URLDrawableOptions obtainURLDrawableOptions(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130850664);
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130850664);
+    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130850680);
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130850680);
     localURLDrawableOptions.mRequestWidth = paramInt1;
     localURLDrawableOptions.mRequestHeight = paramInt2;
     if (paramBoolean) {
@@ -103,7 +103,7 @@ public class HippyQQImageLoader
   
   private void tryReDownload(URLDrawable paramURLDrawable, Throwable paramThrowable, HippyImageLoader.Callback paramCallback)
   {
-    if ((paramURLDrawable == null) || (!bgnt.g(null))) {}
+    if ((paramURLDrawable == null) || (!bhnv.g(null))) {}
     do
     {
       return;

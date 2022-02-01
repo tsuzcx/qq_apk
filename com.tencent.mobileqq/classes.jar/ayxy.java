@@ -1,12 +1,27 @@
+import android.view.View;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
+
 public class ayxy
+  implements bliz
 {
-  public int a = -2;
-  public ayxt a;
-  public ayxx a;
-  public Object a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  public ayxy(OCRPerformFragment paramOCRPerformFragment) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      ayyb.a(OCRPerformFragment.a(this.a), String.valueOf(OCRPerformFragment.a(this.a)));
+      ayyb.a("0X800AAE9", 0);
+    }
+    if (paramInt == 1)
+    {
+      bbxg.a(OCRPerformFragment.a(this.a), OCRPerformFragment.a(this.a));
+      ayyb.a("0X800AAEA", 0);
+    }
+    if ((OCRPerformFragment.a(this.a) != null) && (OCRPerformFragment.a(this.a).isShowing())) {
+      OCRPerformFragment.a(this.a).dismiss();
+    }
+  }
 }
 
 

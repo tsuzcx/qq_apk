@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bfql;
+import bgqm;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.Iterator;
 public class TroopAppMgr$5
   implements Runnable
 {
-  public TroopAppMgr$5(bfql parambfql, ArrayList paramArrayList, EntityManager paramEntityManager) {}
+  public TroopAppMgr$5(bgqm parambgqm, ArrayList paramArrayList, EntityManager paramEntityManager) {}
   
   public void run()
   {

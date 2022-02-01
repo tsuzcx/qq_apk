@@ -1,20 +1,21 @@
 package com.tencent.biz.subscribe.account_folder.recommend_banner;
 
 import NS_COMM.COMM.StCommonExt;
-import aaae;
-import aaaj;
-import aaal;
-import aaam;
-import aaan;
-import aaao;
-import aaap;
-import aaaq;
-import aaar;
-import aaat;
-import aaaz;
-import aabh;
-import aabw;
-import aaxb;
+import aaed;
+import aaej;
+import aaeo;
+import aaeq;
+import aaer;
+import aaes;
+import aaet;
+import aaeu;
+import aaev;
+import aaew;
+import aaey;
+import aafe;
+import aafm;
+import aagb;
+import abbe;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -33,14 +34,13 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
 import mqq.app.AppRuntime;
-import zzy;
 
 public class FollowedRecommendBannerView
   extends LinearLayout
-  implements aaal
+  implements aaeq
 {
-  private aaaj jdField_a_of_type_Aaaj;
-  private aaat jdField_a_of_type_Aaat;
+  private aaeo jdField_a_of_type_Aaeo;
+  private aaey jdField_a_of_type_Aaey;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -60,23 +60,23 @@ public class FollowedRecommendBannerView
   
   private COMM.StCommonExt a()
   {
-    if (this.jdField_a_of_type_Aaaj != null) {
-      return this.jdField_a_of_type_Aaaj.a();
+    if (this.jdField_a_of_type_Aaeo != null) {
+      return this.jdField_a_of_type_Aaeo.a();
     }
     return null;
   }
   
   private void b()
   {
-    StringBuilder localStringBuilder = new StringBuilder(zzy.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
+    StringBuilder localStringBuilder = new StringBuilder(aaed.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
     if (a() != null) {}
     for (;;)
     {
       try
       {
         localStringBuilder.append(URLEncoder.encode(a().attachInfo.get(), "UTF-8"));
-        aaxb.b(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_more", 0, 0, new String[0]);
-        aaae.a(localStringBuilder.toString());
+        abbe.b(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_more", 0, 0, new String[0]);
+        aaej.a(localStringBuilder.toString());
         return;
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -96,10 +96,10 @@ public class FollowedRecommendBannerView
       measure(View.MeasureSpec.makeMeasureSpec(((View)localObject).getMeasuredWidth(), -2147483648), View.MeasureSpec.makeMeasureSpec(0, 0));
     }
     localObject = ValueAnimator.ofInt(new int[] { 0, getMeasuredHeight() });
-    ((ValueAnimator)localObject).addUpdateListener(new aaar(this, this, null));
-    ((ValueAnimator)localObject).addListener(new aaap(this));
+    ((ValueAnimator)localObject).addUpdateListener(new aaew(this, this, null));
+    ((ValueAnimator)localObject).addListener(new aaeu(this));
     ((ValueAnimator)localObject).start();
-    aaxb.a(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_exp", 0, 0, new String[0]);
+    abbe.a(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_exp", 0, 0, new String[0]);
   }
   
   public void a()
@@ -114,49 +114,49 @@ public class FollowedRecommendBannerView
       measure(View.MeasureSpec.makeMeasureSpec(((View)localObject).getMeasuredWidth(), -2147483648), View.MeasureSpec.makeMeasureSpec(0, 0));
     }
     localObject = ValueAnimator.ofInt(new int[] { getMeasuredHeight(), 0 });
-    ((ValueAnimator)localObject).addUpdateListener(new aaar(this, this, null));
-    ((ValueAnimator)localObject).addListener(new aaaq(this));
+    ((ValueAnimator)localObject).addUpdateListener(new aaew(this, this, null));
+    ((ValueAnimator)localObject).addListener(new aaev(this));
     ((ValueAnimator)localObject).start();
-    aaxb.a(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_pack_up", 0, 0, new String[0]);
+    abbe.a(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_pack_up", 0, 0, new String[0]);
   }
   
   protected void a(Context paramContext)
   {
     setOrientation(1);
-    inflate(paramContext, 2131558776, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131363260));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371316));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369318));
+    inflate(paramContext, 2131558774, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131363284));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371423));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369407));
     paramContext = new LinearLayoutManager(paramContext);
     paramContext.setOrientation(0);
-    this.jdField_a_of_type_Aaaj = new aaaj();
-    this.jdField_a_of_type_Aaaj.a(this);
+    this.jdField_a_of_type_Aaeo = new aaeo();
+    this.jdField_a_of_type_Aaeo.a(this);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new aaaz());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new aafe());
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemAnimator(new DefaultItemAnimator());
-    this.jdField_a_of_type_Aaat = new aabh(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    this.jdField_a_of_type_Aaat.a(true);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aaat);
-    this.jdField_a_of_type_Aaat.a(new aaam(this));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aaan(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aaao(this));
+    this.jdField_a_of_type_Aaey = new aafm(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
+    this.jdField_a_of_type_Aaey.a(true);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aaey);
+    this.jdField_a_of_type_Aaey.a(new aaer(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aaes(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aaet(this));
   }
   
   public void a(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_Aaaj != null) {
-      this.jdField_a_of_type_Aaaj.a(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Aaeo != null) {
+      this.jdField_a_of_type_Aaeo.a(this.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void a(List<aabw> paramList, boolean paramBoolean)
+  public void a(List<aagb> paramList, boolean paramBoolean)
   {
     if ((paramList == null) || (paramList.size() == 0)) {
       return;
     }
-    if (this.jdField_a_of_type_Aaat != null) {
-      this.jdField_a_of_type_Aaat.a(null, paramList);
+    if (this.jdField_a_of_type_Aaey != null) {
+      this.jdField_a_of_type_Aaey.a(null, paramList);
     }
     c();
   }

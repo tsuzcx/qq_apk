@@ -1,143 +1,163 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.util.AttributeSet;
-import android.view.LayoutInflater.Factory2;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
-import com.tencent.widget.AlphaClickableButton;
-import com.tencent.widget.AlphaClickableTextView;
+import android.os.SystemClock;
+import android.util.Printer;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadSetting;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
-public class aoih
-  implements LayoutInflater.Factory2
+class aoih
+  implements Printer
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16843087, 16843088, 16844078, 2131034593, 2131034919, 2131035063, 2131035061 };
-  private Activity jdField_a_of_type_AndroidAppActivity;
+  public static int a;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private int jdField_c_of_type_Int = 0;
+  private long jdField_c_of_type_Long;
   
-  public aoih(Activity paramActivity)
+  static
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    jdField_a_of_type_Int = 200;
   }
   
-  private View a(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  aoih(int paramInt, String paramString)
   {
-    TextView localTextView = null;
-    if (paramString.equals("TextView")) {
-      localTextView = new TextView(paramContext, paramAttributeSet);
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  private static String a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0) || (!paramString.startsWith(">>>"))) {
+      return null;
     }
-    do
+    int i = paramString.indexOf('(');
+    if (i == -1) {
+      return null;
+    }
+    int j = paramString.indexOf(')', i);
+    if (j == -1) {
+      return null;
+    }
+    String str1 = paramString.substring(i + 1, j);
+    int k = paramString.indexOf("} ", j);
+    if (k == -1) {
+      return null;
+    }
+    j = paramString.indexOf('@', k + 2);
+    i = j;
+    if (j == -1)
     {
-      return localTextView;
-      if (paramString.equals("Button")) {
-        return new Button(paramContext, paramAttributeSet);
-      }
-      if (paramString.endsWith("DragTextView")) {
-        return new DragTextView(paramContext, paramAttributeSet);
-      }
-      if (paramString.equals("com.tencent.mobileqq.widget.FormSwitchItem")) {
-        return new FormSwitchItem(paramContext, paramAttributeSet);
-      }
-      if (paramString.equals("com.tencent.mobileqq.widget.FormSimpleItem")) {
-        return new FormSimpleItem(paramContext, paramAttributeSet);
-      }
-      if (paramString.equals("com.tencent.mobileqq.widget.FormSwitchSimpleItem")) {
-        return new FormSwitchSimpleItem(paramContext, paramAttributeSet);
-      }
-      if (paramString.equals("com.tencent.mobileqq.widget.FormMultiLineSwitchItem")) {
-        return new FormMultiLineSwitchItem(paramContext, paramAttributeSet);
-      }
-      if (paramString.equals("com.tencent.widget.AlphaClickableTextView")) {
-        return new AlphaClickableTextView(paramContext, paramAttributeSet);
-      }
-    } while (!paramString.equals("com.tencent.widget.AlphaClickableButton"));
-    return new AlphaClickableButton(paramContext, paramAttributeSet);
-  }
-  
-  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
-  {
-    paramView = a(paramString, paramContext, paramAttributeSet);
-    if (paramView != null)
-    {
-      paramString = paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt);
-      int i = 0;
-      if (i < jdField_a_of_type_ArrayOfInt.length)
+      j = paramString.indexOf(':', k + 2);
+      i = j;
+      if (j == -1)
       {
-        int j = paramString.getResourceId(i, 0);
-        if (j == 0) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          paramAttributeSet = paramContext.getString(j);
-          switch (jdField_a_of_type_ArrayOfInt[i])
-          {
-          default: 
-            break;
-          case 16843087: 
-            if ((paramView instanceof TextView)) {
-              ((TextView)paramView).setText(paramAttributeSet);
-            } else if ((paramView instanceof Button)) {
-              ((Button)paramView).setText(paramAttributeSet);
-            } else if ((paramView instanceof FormSwitchItem)) {
-              ((FormSwitchItem)paramView).setText(paramAttributeSet);
-            }
-            break;
-          case 16843088: 
-            if ((paramView instanceof TextView)) {
-              ((TextView)paramView).setHint(paramAttributeSet);
-            } else if ((paramView instanceof Button)) {
-              ((Button)paramView).setHint(paramAttributeSet);
-            }
-            break;
-          case 16844078: 
-            if ((paramView instanceof TextView)) {
-              ((TextView)paramView).setContentDescription(paramAttributeSet);
-            } else if ((paramView instanceof Button)) {
-              ((Button)paramView).setContentDescription(paramAttributeSet);
-            }
-            break;
-          case 2131034593: 
-            if ((paramView instanceof FormSimpleItem)) {
-              ((FormSimpleItem)paramView).setLeftText(paramAttributeSet);
-            }
-            break;
-          case 2131034919: 
-            if ((paramView instanceof FormSimpleItem)) {
-              ((FormSimpleItem)paramView).setRightText(paramAttributeSet);
-            }
-            break;
-          case 2131035063: 
-            if ((paramView instanceof FormSwitchItem)) {
-              ((FormSwitchItem)paramView).setText(paramAttributeSet);
-            }
-            break;
-          case 2131035061: 
-            if ((paramView instanceof FormMultiLineSwitchItem)) {
-              ((FormMultiLineSwitchItem)paramView).setSecendLineText(paramAttributeSet);
-            }
-            break;
-          }
+        i = paramString.indexOf(' ', k + 2);
+        if (i == -1) {
+          break label150;
         }
       }
-      paramString.recycle();
     }
-    return paramView;
+    String str2 = paramString.substring(k + 2, i);
+    i = paramString.indexOf(": ", i);
+    if (i == -1)
+    {
+      return null;
+      label150:
+      return null;
+    }
+    return String.format("%s|%s|%s", new Object[] { str1, str2, paramString.substring(i + 2) });
   }
   
-  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  void a(int paramInt, boolean paramBoolean)
   {
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("TM.global.LooperPrinter", 2, "setting threshold, threshold=" + paramInt);
+    }
+    jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void println(String paramString)
+  {
+    if (paramString.startsWith(">>"))
+    {
+      this.jdField_c_of_type_Long = SystemClock.uptimeMillis();
+      this.jdField_a_of_type_JavaLangString = paramString;
+      if (UnifiedMonitor.a().whetherStackEnabled(this.jdField_c_of_type_Int)) {
+        UnifiedMonitor.a().reportStackIfTimeout(this.jdField_c_of_type_Int);
+      }
+    }
+    while ((this.jdField_c_of_type_Long == 0L) || (!paramString.startsWith("<<"))) {
+      return;
+    }
+    this.jdField_a_of_type_Long += 1L;
+    long l = SystemClock.uptimeMillis() - this.jdField_c_of_type_Long;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_b_of_type_Long += l;
+    Object localObject = null;
+    paramString = (String)localObject;
+    if (QLog.isColorLevel())
+    {
+      if (!ThreadSetting.logcatBgTaskMonitor) {
+        break label192;
+      }
+      paramString = a(this.jdField_a_of_type_JavaLangString);
+      QLog.d("AutoMonitor", 2, this.jdField_b_of_type_JavaLangString + ", cost=" + l + ", " + paramString);
+    }
+    while (l > jdField_a_of_type_Int) {
+      if (!UnifiedMonitor.a().whetherReportThisTime(this.jdField_c_of_type_Int))
+      {
+        this.jdField_b_of_type_Int = 0;
+        return;
+        label192:
+        paramString = (String)localObject;
+        if (l >= 200L)
+        {
+          paramString = a(this.jdField_a_of_type_JavaLangString);
+          QLog.e("AutoMonitor", 2, this.jdField_b_of_type_JavaLangString + " OOT cost=" + l + ", " + paramString);
+        }
+      }
+      else
+      {
+        HashMap localHashMap;
+        if (paramString == null)
+        {
+          paramString = a(this.jdField_a_of_type_JavaLangString);
+          localHashMap = new HashMap(8);
+          localObject = BaseActivity.sTopActivity;
+          if (localObject == null) {
+            break label338;
+          }
+        }
+        label338:
+        for (localObject = localObject.getClass().getName();; localObject = "")
+        {
+          localHashMap.put("act", localObject);
+          UnifiedMonitor.a().addEvent(this.jdField_c_of_type_Int, paramString, (int)l, this.jdField_b_of_type_Int, localHashMap);
+          this.jdField_b_of_type_Int = 0;
+          return;
+          break;
+        }
+      }
+    }
+    if (UnifiedMonitor.a().whetherStackEnabled(this.jdField_c_of_type_Int)) {
+      UnifiedMonitor.a().notifyNotTimeout(this.jdField_c_of_type_Int);
+    }
+    this.jdField_b_of_type_Int += 1;
+  }
+  
+  public String toString()
+  {
+    return super.toString() + "(msgCount = " + this.jdField_a_of_type_Long + ", totalCost = " + this.jdField_b_of_type_Long + ")";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoih
  * JD-Core Version:    0.7.0.1
  */

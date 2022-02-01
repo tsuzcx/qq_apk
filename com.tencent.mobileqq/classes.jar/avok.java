@@ -1,23 +1,31 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
-public class avok
-  extends WebViewPlugin
+class avok
+  extends Handler
 {
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  avok(avoj paramavoj, Looper paramLooper)
   {
-    if (("nvPopToRoot".equals(paramString3)) && (paramVarArgs.length > 0))
-    {
-      paramJsBridgeListener = this.mRuntime.a();
-      paramString1 = new Intent(paramJsBridgeListener, SplashActivity.class);
-      paramString1.setFlags(67108864);
-      paramJsBridgeListener.startActivity(paramString1);
-      return false;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)avoj.a(this.a).get();
+    if (localQQAppInterface == null) {
+      return;
     }
-    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = "https://openmobile.qq.com/gameteam/get_team_context?uin=" + localQQAppInterface.getCurrentAccountUin();
+    this.a.a(paramMessage, null);
+    this.a.b();
   }
 }
 

@@ -1,28 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.troop_homework.outer.TroopHWRecordBaseActivity;
+import QzoneCombine.ClientOnlineNotfiyReq;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class bmse
-  implements View.OnClickListener
+  extends QzoneExternalRequest
 {
-  public bmse(TroopHWRecordBaseActivity paramTroopHWRecordBaseActivity) {}
+  ClientOnlineNotfiyReq a;
   
-  public void onClick(View paramView)
+  public bmse(long paramLong, byte[] paramArrayOfByte)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (!this.a.a)
-      {
-        this.a.setResult(0);
-        this.a.finish();
-      }
-    }
+    this.needCompress = false;
+    this.a = new ClientOnlineNotfiyReq(paramArrayOfByte, paramLong);
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService." + uniKey();
+  }
+  
+  public byte[] getEncodedUniParameter()
+  {
+    return bmah.a(this.a);
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "MqqOnlineNtf";
   }
 }
 

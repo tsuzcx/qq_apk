@@ -1,72 +1,83 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Conversation.43.1;
-import com.tencent.mobileqq.activity.Conversation.43.2;
-import com.tencent.mobileqq.activity.Conversation.43.3;
-import com.tencent.mobileqq.activity.Conversation.43.4;
-import com.tencent.mobileqq.activity.Conversation.43.5;
-import com.tencent.mobileqq.activity.Conversation.43.6;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class adzo
-  extends lmo
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public adzo(Conversation paramConversation) {}
+  public adzo(BaseChatPie paramBaseChatPie) {}
   
-  protected void a(int paramInt, long paramLong)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    paramInt = mue.c(paramInt);
-    this.a.a(8, Long.toString(paramLong), paramInt);
+    this.a.a(paramMotionEvent);
+    return super.onDoubleTap(paramMotionEvent);
   }
   
-  protected void a(int paramInt, long paramLong1, long paramLong2)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    paramInt = mue.c(paramInt);
-    this.a.a(8, Long.toString(paramLong1), paramInt);
-    this.a.b(paramLong1);
-    this.a.a(new Conversation.43.1(this, paramLong1));
+    return super.onDown(paramMotionEvent);
   }
   
-  protected void a(int paramInt, String paramString1, String paramString2)
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    this.a.a(8, paramString1, paramInt);
-    this.a.a(new Conversation.43.4(this));
+    super.onLongPress(paramMotionEvent);
+    ((agvn)this.a.a(26)).a();
   }
   
-  protected void a(String paramString)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    super.a(paramString);
-    this.a.a(new Conversation.43.6(this));
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    super.a(paramString1, paramString2);
-    if (!this.a.f) {
-      return;
+    if ((BaseChatPie.i() == 1) && (!BaseChatPie.a(this.a).booleanValue())) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() != 0) {}
     }
-    this.a.a(new Conversation.43.5(this));
+    do
+    {
+      return false;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() >= this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() - 1))
+      {
+        paramMotionEvent1 = new int[2];
+        this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() - 1).getLocationOnScreen(paramMotionEvent1);
+        int i = paramMotionEvent1[1];
+        if (BaseChatPie.g(this.a) == i)
+        {
+          this.a.w(1);
+          BaseChatPie.a(this.a, Boolean.valueOf(true));
+          BaseChatPie.e(this.a, -1);
+        }
+        BaseChatPie.e(this.a, i);
+      }
+      if (BaseChatPie.a(this.a)) {
+        this.a.i(true);
+      }
+    } while (paramFloat2 >= 0.0F);
+    this.a.G = false;
+    return false;
   }
   
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  protected void b(int paramInt, long paramLong)
+  public void onShowPress(MotionEvent paramMotionEvent)
   {
-    paramInt = mue.c(paramInt);
-    this.a.a(8, Long.toString(paramLong), paramInt);
-  }
-  
-  protected void b(int paramInt, long paramLong1, long paramLong2)
-  {
-    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
-      this.a.a(new Conversation.43.2(this, paramLong1));
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onShowPress");
     }
+    this.a.j(false);
+    this.a.i(true);
+    super.onShowPress(paramMotionEvent);
   }
   
-  protected void c(int paramInt, long paramLong1, long paramLong2)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
-      this.a.a(new Conversation.43.3(this, paramLong1));
+    paramMotionEvent = (aqmb)this.a.a(50);
+    if (paramMotionEvent != null) {
+      paramMotionEvent.a(true);
     }
+    this.a.j(false);
+    this.a.i(true);
+    if (paramMotionEvent != null) {
+      paramMotionEvent.a(false);
+    }
+    return false;
   }
 }
 

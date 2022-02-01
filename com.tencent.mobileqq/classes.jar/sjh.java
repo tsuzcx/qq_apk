@@ -1,433 +1,137 @@
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCaptureImageListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
-import com.tencent.superplayer.api.SuperPlayerOption;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/tvk/TVKPlayer;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayer;", "Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer$OnVideoPreparedListener;", "Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer$OnCompletionListener;", "Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer$OnErrorListener;", "Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer$OnInfoListener;", "Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer$OnCaptureImageListener;", "Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer$OnSeekCompleteListener;", "Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer$OnDownloadCallbackListener;", "videoPlayer", "Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer;", "(Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer;)V", "currentPositionMs", "", "getCurrentPositionMs", "()J", "durationMs", "getDurationMs", "hasCallFirstFrameRendered", "", "isBuffering", "()Z", "isCoverFrame", "value", "isLoopBack", "setLoopBack", "(Z)V", "isLoopback", "isPauseing", "isPlaying", "isPrepared", "isPrepareing", "listener", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IEventListener;", "outputMute", "getOutputMute", "setOutputMute", "speedRatio", "", "getSpeedRatio", "()F", "setSpeedRatio", "(F)V", "videoHeight", "", "getVideoHeight", "()I", "videoWidth", "getVideoWidth", "OnDownloadCallback", "", "info", "", "getStreamDumpInfo", "getToken", "getVideoView", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IVideoView;", "onCaptureImageFailed", "p0", "id", "errorCode", "onCaptureImageSucceed", "width", "height", "bitmap", "Landroid/graphics/Bitmap;", "onCompletion", "onError", "tvkPlayer", "model", "what", "extra", "detailInfo", "Info", "", "onInfo", "onSeekComplete", "onVideoPrepared", "openMediaPlayer", "context", "Landroid/content/Context;", "videoInfo", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerVideoInfo;", "startPositionMilsec", "playerOption", "Lcom/tencent/superplayer/api/SuperPlayerOption;", "pause", "pauseDownload", "prePlayViewShow", "release", "resumeDownload", "seekTo", "positionMilsec", "mode", "setEventListener", "setHttpBufferRange", "emergencyTime", "safePlayTime", "preloadDuration", "setLoopback", "setXYaxis", "type", "start", "stop", "updatePlayerVideoView", "videoView", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sjh
-  implements TVK_IMediaPlayer.OnCaptureImageListener, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnSeekCompleteListener, TVK_IMediaPlayer.OnVideoPreparedListener, sip
+public class sjh
+  extends sel
 {
-  public static final sji a;
-  private float jdField_a_of_type_Float;
-  private final TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-  private sio jdField_a_of_type_Sio;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private static qai jdField_b_of_type_Qai = new qai();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SparseArray<pmk> jdField_a_of_type_AndroidUtilSparseArray;
+  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qfg();
+  private Activity jdField_b_of_type_AndroidAppActivity;
   
-  static
+  public sjh(Activity paramActivity, LayoutInflater paramLayoutInflater, int paramInt, ListView paramListView, SparseArray<pmk> paramSparseArray, Context paramContext)
   {
-    jdField_a_of_type_Sji = new sji(null);
+    super(paramActivity, paramLayoutInflater, paramInt, paramListView, paramSparseArray);
+    this.jdField_b_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidUtilSparseArray = paramSparseArray;
+    a(this.jdField_a_of_type_AndroidUtilSparseArray);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramActivity);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(paramActivity);
+    oyj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "default_feeds");
+    jdField_b_of_type_Qai.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext);
   }
   
-  public sjh(@Nullable TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  private void a(SparseArray<pmk> paramSparseArray)
   {
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = paramTVK_IMediaPlayer;
-    this.jdField_a_of_type_Float = 1.0F;
-  }
-  
-  public void OnDownloadCallback(@Nullable String paramString)
-  {
-    sio localsio = this.jdField_a_of_type_Sio;
-    if (localsio != null) {
-      localsio.a(paramString);
+    this.jdField_a_of_type_AndroidUtilSparseArray = paramSparseArray;
+    int i = 0;
+    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    {
+      ((pmk)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).a(this);
+      i += 1;
     }
   }
   
-  public int a()
+  public int a(int paramInt)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      return localTVK_IMediaPlayer.getVideoWidth();
-    }
-    return 0;
+    return sel.c((ArticleInfo)getItem(paramInt));
   }
   
-  public long a()
+  public Activity a()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      return localTVK_IMediaPlayer.getDuration();
-    }
-    return 0L;
+    return this.jdField_b_of_type_AndroidAppActivity;
   }
   
-  @Nullable
-  public String a()
+  public BaseArticleInfo a(int paramInt)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      return localTVK_IMediaPlayer.getStreamDumpInfo();
-    }
     return null;
   }
   
-  @Nullable
-  public six a()
+  public BaseArticleInfo a(int paramInt, long paramLong)
   {
-    QLog.e("TVKPlayer", 0, "tvkPlayer don't support getVideoView.");
     return null;
   }
   
-  public void a()
-  {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      localTVK_IMediaPlayer.start();
-    }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      onInfo(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer, 105, null);
-    }
-  }
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, ArrayList<DislikeInfo> paramArrayList) {}
   
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
+  public void a(int paramInt, ArrayList<BaseArticleInfo> paramArrayList, ArrayList<DislikeInfo> paramArrayList1) {}
   
-  public void a(int paramInt)
+  public void a(List<BaseArticleInfo> paramList)
   {
-    int j = 0;
-    int i = j;
-    switch (paramInt)
-    {
-    default: 
-      i = j;
+    if ((this.jdField_b_of_type_JavaUtilList != null) && (paramList != null)) {
+      this.jdField_b_of_type_JavaUtilList.addAll(paramList);
     }
-    for (;;)
-    {
-      TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-      if (localTVK_IMediaPlayer != null) {
-        localTVK_IMediaPlayer.setXYaxis(i);
-      }
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 6;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      localTVK_IMediaPlayer.seekTo(paramInt1);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      localTVK_IMediaPlayer.setHttpBufferRange(paramInt2, paramInt1);
-    }
-  }
-  
-  public void a(@NotNull Context paramContext, @NotNull sja paramsja, long paramLong, @NotNull SuperPlayerOption paramSuperPlayerOption)
-  {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    Intrinsics.checkParameterIsNotNull(paramsja, "videoInfo");
-    Intrinsics.checkParameterIsNotNull(paramSuperPlayerOption, "playerOption");
-    this.b = paramsja.c();
-    this.jdField_a_of_type_Boolean = false;
-    paramSuperPlayerOption = sjb.a(paramsja);
-    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = sjb.a(paramsja);
-    Object localObject = paramsja.a();
-    int i;
-    if (localObject != null) {
-      if (localObject.length == 0)
-      {
-        i = 1;
-        if (i != 0) {
-          break label121;
-        }
-        i = 1;
-        label72:
-        if (i != 1) {
-          break label127;
-        }
-        localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-        if (localObject != null) {
-          ((TVK_IMediaPlayer)localObject).openMediaPlayerByUrl(paramContext.getApplicationContext(), paramsja.a(), paramLong, 0L, localTVK_PlayerVideoInfo, paramSuperPlayerOption, paramsja.c());
-        }
-      }
-    }
-    label121:
-    label127:
-    do
-    {
-      return;
-      i = 0;
-      break;
-      i = 0;
-      break label72;
-      paramsja = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    } while (paramsja == null);
-    paramsja.openMediaPlayer(paramContext.getApplicationContext(), paramSuperPlayerOption, localTVK_PlayerVideoInfo, "", paramLong, 0L);
-  }
-  
-  public void a(@Nullable sio paramsio)
-  {
-    this.jdField_a_of_type_Sio = paramsio;
-    paramsio = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (paramsio != null) {
-      paramsio.setOnVideoPreparedListener((TVK_IMediaPlayer.OnVideoPreparedListener)this);
-    }
-    paramsio = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (paramsio != null) {
-      paramsio.setOnCompletionListener((TVK_IMediaPlayer.OnCompletionListener)this);
-    }
-    paramsio = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (paramsio != null) {
-      paramsio.setOnErrorListener((TVK_IMediaPlayer.OnErrorListener)this);
-    }
-    paramsio = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (paramsio != null) {
-      paramsio.setOnInfoListener((TVK_IMediaPlayer.OnInfoListener)this);
-    }
-    paramsio = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (paramsio != null) {
-      paramsio.setOnCaptureImageListener((TVK_IMediaPlayer.OnCaptureImageListener)this);
-    }
-    paramsio = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (paramsio != null) {
-      paramsio.setOnSeekCompleteListener((TVK_IMediaPlayer.OnSeekCompleteListener)this);
-    }
-    paramsio = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (paramsio != null) {
-      paramsio.setOnDownloadCallback((TVK_IMediaPlayer.OnDownloadCallbackListener)this);
-    }
-  }
-  
-  public void a(@Nullable six paramsix)
-  {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      if (paramsix == null) {
-        break label42;
-      }
-    }
-    label42:
-    for (paramsix = paramsix.a();; paramsix = null)
-    {
-      six localsix = paramsix;
-      if (!(paramsix instanceof IVideoViewBase)) {
-        localsix = null;
-      }
-      localTVK_IMediaPlayer.updatePlayerVideoView((IVideoViewBase)localsix);
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      localTVK_IMediaPlayer.setOutputMute(paramBoolean);
-    }
+    pmq.a(this.jdField_a_of_type_AndroidUtilSparseArray, new sji(this, "onSetData", paramList));
+    notifyDataSetChanged();
   }
   
   public boolean a()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    return (localTVK_IMediaPlayer != null) && (localTVK_IMediaPlayer.getOutputMute() == true);
+    return false;
   }
   
-  public int b()
+  public boolean a(int paramInt, long paramLong)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      return localTVK_IMediaPlayer.getVideoHeight();
+    return false;
+  }
+  
+  public boolean b(int paramInt, long paramLong)
+  {
+    return false;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_b_of_type_JavaUtilList != null) {
+      return this.jdField_b_of_type_JavaUtilList.size();
     }
     return 0;
   }
   
-  public long b()
+  public Object getItem(int paramInt)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      return localTVK_IMediaPlayer.getCurrentPostion();
+    if ((this.jdField_b_of_type_JavaUtilList != null) && (paramInt < this.jdField_b_of_type_JavaUtilList.size())) {
+      return (BaseArticleInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt);
     }
-    return 0L;
+    return null;
   }
   
-  @NotNull
-  public String b()
+  public long getItemId(int paramInt)
   {
-    QLog.e("TVKPlayer", 0, "tvkPlayer don't support getToken.");
-    return "";
+    return paramInt;
   }
   
-  public void b()
+  public int getItemViewType(int paramInt)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      localTVK_IMediaPlayer.pause();
-    }
+    return a(paramInt);
   }
   
-  public void b(boolean paramBoolean)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      localTVK_IMediaPlayer.setLoopback(paramBoolean);
-    }
-  }
-  
-  public boolean b()
-  {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    return (localTVK_IMediaPlayer != null) && (localTVK_IMediaPlayer.isPlaying() == true);
-  }
-  
-  public void c()
-  {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      localTVK_IMediaPlayer.stop();
-    }
-  }
-  
-  public boolean c()
-  {
-    return false;
-  }
-  
-  public void d()
-  {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      localTVK_IMediaPlayer.release();
-    }
-  }
-  
-  public boolean d()
-  {
-    return false;
-  }
-  
-  public void e()
-  {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      localTVK_IMediaPlayer.pauseDownload();
-    }
-  }
-  
-  public boolean e()
-  {
-    return false;
-  }
-  
-  public void f()
-  {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      localTVK_IMediaPlayer.resumeDownload();
-    }
-  }
-  
-  public boolean f()
-  {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    return (localTVK_IMediaPlayer != null) && (localTVK_IMediaPlayer.isPauseing() == true);
-  }
-  
-  public void g() {}
-  
-  public void onCaptureImageFailed(@Nullable TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2)
-  {
-    paramTVK_IMediaPlayer = this.jdField_a_of_type_Sio;
-    if (paramTVK_IMediaPlayer != null) {
-      paramTVK_IMediaPlayer.a((sip)this, paramInt1, paramInt2);
-    }
-  }
-  
-  public void onCaptureImageSucceed(@Nullable TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, @Nullable Bitmap paramBitmap)
-  {
-    paramTVK_IMediaPlayer = this.jdField_a_of_type_Sio;
-    if (paramTVK_IMediaPlayer != null) {
-      paramTVK_IMediaPlayer.a((sip)this, paramInt1, paramInt2, paramInt3, paramBitmap);
-    }
-  }
-  
-  public void onCompletion(@Nullable TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    paramTVK_IMediaPlayer = this.jdField_a_of_type_Sio;
-    if (paramTVK_IMediaPlayer != null) {
-      paramTVK_IMediaPlayer.b((sip)this);
-    }
-  }
-  
-  public boolean onError(@Nullable TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, @Nullable String paramString, @Nullable Object paramObject)
-  {
-    boolean bool2 = false;
-    paramTVK_IMediaPlayer = this.jdField_a_of_type_Sio;
-    boolean bool1 = bool2;
-    if (paramTVK_IMediaPlayer != null)
+    if ((this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.size() == 0)) {}
+    int i;
+    for (Object localObject = null;; localObject = (View)pmq.a(this.jdField_a_of_type_AndroidUtilSparseArray, new sjj(this, "onAdapterGetView", i, (BaseArticleInfo)localObject, paramInt, paramViewGroup)))
     {
-      bool1 = bool2;
-      if (paramTVK_IMediaPlayer.a((sip)this, 0, paramInt1, paramInt2, paramString) == true) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean onInfo(@Nullable TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, @Nullable Object paramObject)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      paramTVK_IMediaPlayer = this.jdField_a_of_type_Sio;
-      if ((paramTVK_IMediaPlayer == null) || (paramTVK_IMediaPlayer.a((sip)this, paramInt, paramObject) != true)) {
-        break;
-      }
-      return true;
-      paramInt = 112;
-      continue;
-      paramInt = 113;
-    }
-    return false;
-  }
-  
-  public void onSeekComplete(@Nullable TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    paramTVK_IMediaPlayer = this.jdField_a_of_type_Sio;
-    if (paramTVK_IMediaPlayer != null) {
-      paramTVK_IMediaPlayer.c((sip)this);
-    }
-  }
-  
-  public void onVideoPrepared(@Nullable TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    sio localsio = this.jdField_a_of_type_Sio;
-    if (localsio != null) {
-      localsio.a((sip)this);
-    }
-    if ((!this.jdField_a_of_type_Boolean) && (this.b))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      onInfo(paramTVK_IMediaPlayer, 105, null);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+      localObject = b(paramInt);
+      i = getItemViewType(paramInt);
+      QLog.d("ReadInJoyProteusFamilyAdapter", 2, "getView | position : " + paramInt + " type : " + i + " article_title = " + ((BaseArticleInfo)localObject).mTitle);
     }
   }
 }

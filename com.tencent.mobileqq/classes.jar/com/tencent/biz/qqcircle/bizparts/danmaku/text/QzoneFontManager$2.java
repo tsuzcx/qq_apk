@@ -5,37 +5,37 @@ import com.tencent.component.media.utils.LruCache;
 import cooperation.qzone.util.MultiHashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import vgc;
-import vge;
+import vig;
+import vii;
 
 public class QzoneFontManager$2
   implements Runnable
 {
-  public QzoneFontManager$2(vgc paramvgc, String paramString, int paramInt) {}
+  public QzoneFontManager$2(vig paramvig, String paramString, int paramInt) {}
   
   public void run()
   {
-    vgc.a(this.this$0, null);
+    vig.a(this.this$0, null);
     try
     {
       Typeface localTypeface = Typeface.createFromFile(this.jdField_a_of_type_JavaLangString);
-      vgc.a(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), localTypeface);
-      synchronized (vgc.a())
+      vig.a(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), localTypeface);
+      synchronized (vig.a())
       {
-        Object localObject3 = (HashSet)vgc.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
+        Object localObject3 = (HashSet)vig.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
         if ((localObject3 == null) || (((HashSet)localObject3).isEmpty())) {
           return;
         }
         localObject3 = ((HashSet)localObject3).iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          vge localvge = (vge)((Iterator)localObject3).next();
-          if (localvge != null) {
-            localvge.a(localTypeface);
+          vii localvii = (vii)((Iterator)localObject3).next();
+          if (localvii != null) {
+            localvii.a(localTypeface);
           }
         }
       }
-      vgc.a(this.this$0).remove(Integer.valueOf(this.jdField_a_of_type_Int));
+      vig.a(this.this$0).remove(Integer.valueOf(this.jdField_a_of_type_Int));
     }
     catch (Exception localException)
     {

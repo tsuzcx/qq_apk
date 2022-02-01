@@ -1,26 +1,17 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ond
-  implements DialogInterface.OnClickListener
+public class ond
+  implements View.OnClickListener
 {
-  ond(omz paramomz, boolean paramBoolean) {}
+  public ond(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      if (!omz.a(this.jdField_a_of_type_Omz)) {}
-    }
-    while (!(omz.a(this.jdField_a_of_type_Omz) instanceof Activity))
-    {
-      return;
-      this.jdField_a_of_type_Omz.b();
-      return;
-    }
-    oqj.b(omz.a(this.jdField_a_of_type_Omz));
-    opz.a(omz.a(this.jdField_a_of_type_Omz), omz.a(this.jdField_a_of_type_Omz).p, omz.a(this.jdField_a_of_type_Omz).q, "");
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

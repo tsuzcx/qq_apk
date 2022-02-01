@@ -4,9 +4,10 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StIconInfo;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import aaaf;
-import aabx;
-import aako;
+import aaee;
+import aaek;
+import aagc;
+import aaop;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
@@ -15,13 +16,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.widget.SquareImageView;
 import java.util.ArrayList;
-import zzz;
 
 public class SubScribePersonalSharedCardView
   extends AbsSubscribeShareCardView
@@ -51,7 +51,7 @@ public class SubScribePersonalSharedCardView
   
   public int a()
   {
-    return 2131558804;
+    return 2131558802;
   }
   
   protected URLImageView a()
@@ -59,42 +59,42 @@ public class SubScribePersonalSharedCardView
     return this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
   }
   
-  public void a(aabx paramaabx, Bitmap paramBitmap, aako paramaako)
+  public void a(aagc paramaagc, Bitmap paramBitmap, aaop paramaaop)
   {
-    super.a(paramaabx, paramBitmap, paramaako);
+    super.a(paramaagc, paramBitmap, paramaaop);
     CertifiedAccountMeta.StUser localStUser;
-    if ((paramaabx != null) && (paramaabx.a() != null) && (paramaabx.a().poster != null))
+    if ((paramaagc != null) && (paramaagc.a() != null) && (paramaagc.a().poster != null))
     {
-      localStUser = paramaabx.a().poster;
+      localStUser = paramaagc.a().poster;
       if (!TextUtils.isEmpty(localStUser.iconInfo.iconUrl.get())) {
         break label251;
       }
     }
     label251:
-    for (paramaabx = localStUser.icon.get();; paramaabx = localStUser.iconInfo.iconUrl.get())
+    for (paramaagc = localStUser.icon.get();; paramaagc = localStUser.iconInfo.iconUrl.get())
     {
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
-      localArrayList1.add(paramaabx);
+      localArrayList1.add(paramaagc);
       localArrayList2.add(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
-      a(localArrayList1, localArrayList2, paramaako);
+      a(localArrayList1, localArrayList2, paramaaop);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(localStUser.nick.get());
-      paramaako = localStUser.desc.get();
-      if ((!TextUtils.isEmpty(paramaako)) && (!paramaako.equals(anni.a(2131718325))))
+      paramaaop = localStUser.desc.get();
+      if ((!TextUtils.isEmpty(paramaaop)) && (!paramaaop.equals(anzj.a(2131718461))))
       {
-        paramaabx = paramaako;
-        if (!TextUtils.isEmpty(paramaako.trim())) {}
+        paramaagc = paramaaop;
+        if (!TextUtils.isEmpty(paramaaop.trim())) {}
       }
       else
       {
-        paramaabx = anni.a(2131718324);
+        paramaagc = anzj.a(2131718460);
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramaabx);
-      paramaabx = zzz.a();
-      if (paramaabx != null)
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramaagc);
+      paramaagc = aaee.a();
+      if (paramaagc != null)
       {
-        this.d.setText(aaaf.a(paramaabx.fansCount.get()));
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(aaaf.a(paramaabx.feedCount.get()));
+        this.d.setText(aaek.a(paramaagc.fansCount.get()));
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(aaek.a(paramaagc.feedCount.get()));
         measure(jdField_c_of_type_Int, e);
         layout(0, 0, getMeasuredWidth(), getMeasuredHeight());
       }
@@ -105,14 +105,14 @@ public class SubScribePersonalSharedCardView
   
   public void a(View paramView)
   {
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131377392);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131377387));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377394));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377388));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377395));
-    this.d = ((TextView)paramView.findViewById(2131377390));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377385));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377386));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131377545);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131377540));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377547));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377541));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377548));
+    this.d = ((TextView)paramView.findViewById(2131377543));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377538));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377539));
   }
 }
 

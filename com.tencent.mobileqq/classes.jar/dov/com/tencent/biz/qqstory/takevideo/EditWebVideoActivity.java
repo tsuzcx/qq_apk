@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import Override;
-import alvk;
+import amhc;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -11,16 +11,16 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import anni;
-import banm;
-import bcig;
-import bdxk;
-import bdxm;
-import bgmg;
-import bgsp;
-import bkfv;
-import bpgf;
-import bpgg;
+import anzj;
+import bbgf;
+import bday;
+import bewd;
+import bewf;
+import bhmi;
+import bhsr;
+import blha;
+import bqia;
+import bqib;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -29,12 +29,12 @@ import java.io.File;
 
 public class EditWebVideoActivity
   extends EditVideoActivity
-  implements Handler.Callback, bdxm
+  implements Handler.Callback, bewf
 {
   private int jdField_a_of_type_Int;
-  private alvk jdField_a_of_type_Alvk = new bpgf(this);
+  private amhc jdField_a_of_type_Amhc = new bqia(this);
   private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  private bkfv jdField_a_of_type_Bkfv;
+  private blha jdField_a_of_type_Blha;
   private String jdField_a_of_type_JavaLangString;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private int jdField_b_of_type_Int;
@@ -67,16 +67,16 @@ public class EditWebVideoActivity
       sendBroadcast(localIntent);
       return;
     }
-    QQToast.a(this, anni.a(2131702754), 0).a();
+    QQToast.a(this, anzj.a(2131702861), 0).a();
     finish();
   }
   
   protected void a()
   {
-    if (this.jdField_a_of_type_Bpep == null) {
-      this.jdField_a_of_type_Bpep = new bpgg();
+    if (this.jdField_a_of_type_Bqgk == null) {
+      this.jdField_a_of_type_Bqgk = new bqib();
     }
-    ((bpgg)this.jdField_a_of_type_Bpep).a(this.jdField_a_of_type_Alvk);
+    ((bqib)this.jdField_a_of_type_Bqgk).a(this.jdField_a_of_type_Amhc);
   }
   
   public void a(int paramInt, String paramString)
@@ -84,10 +84,10 @@ public class EditWebVideoActivity
     if (QLog.isColorLevel()) {
       QLog.d("EditWebVideoActivity", 2, "OnUploadVideoListener onUploadFail!");
     }
-    if (this.jdField_a_of_type_Bkfv.hasMessages(1003)) {
-      this.jdField_a_of_type_Bkfv.removeMessages(1003);
+    if (this.jdField_a_of_type_Blha.hasMessages(1003)) {
+      this.jdField_a_of_type_Blha.removeMessages(1003);
     }
-    this.jdField_a_of_type_Bkfv.sendEmptyMessage(1003);
+    this.jdField_a_of_type_Blha.sendEmptyMessage(1003);
   }
   
   public void a(String paramString)
@@ -96,10 +96,10 @@ public class EditWebVideoActivity
     if (QLog.isColorLevel()) {
       QLog.i("EditWebVideoActivity", 2, "OnUploadVideoListener onUploadSuccess! " + this.d);
     }
-    if (this.jdField_a_of_type_Bkfv.hasMessages(1003)) {
-      this.jdField_a_of_type_Bkfv.removeMessages(1003);
+    if (this.jdField_a_of_type_Blha.hasMessages(1003)) {
+      this.jdField_a_of_type_Blha.removeMessages(1003);
     }
-    this.jdField_a_of_type_Bkfv.sendEmptyMessage(1001);
+    this.jdField_a_of_type_Blha.sendEmptyMessage(1001);
   }
   
   public void d(String paramString)
@@ -115,11 +115,11 @@ public class EditWebVideoActivity
           continue;
         }
         f();
-        localTextView = (TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131372466);
-        if (!bgsp.a(paramString)) {
+        localTextView = (TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131372578);
+        if (!bhsr.a(paramString)) {
           continue;
         }
-        localTextView.setText(2131715809);
+        localTextView.setText(2131715918);
       }
       catch (Throwable paramString)
       {
@@ -137,10 +137,10 @@ public class EditWebVideoActivity
       }
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
       return;
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(this, 2131755823);
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(this, 2131755824);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559567);
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559572);
     }
   }
   
@@ -155,7 +155,7 @@ public class EditWebVideoActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Bkfv = new bkfv(this);
+    this.jdField_a_of_type_Blha = new blha(this);
     this.f = getIntent().getStringExtra("edit_video_call_back");
     return true;
   }
@@ -164,7 +164,7 @@ public class EditWebVideoActivity
   {
     super.doOnDestroy();
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      bgmg.d(this.jdField_b_of_type_JavaLangString);
+      bhmi.d(this.jdField_b_of_type_JavaLangString);
     }
   }
   
@@ -173,14 +173,14 @@ public class EditWebVideoActivity
     if (QLog.isColorLevel()) {
       QLog.e("EditWebVideoActivity", 2, "onShareClick " + this.jdField_b_of_type_JavaLangString + " mthumbPath" + this.jdField_a_of_type_JavaLangString);
     }
-    if ((bgsp.a(this.jdField_b_of_type_JavaLangString)) || (bgsp.a(this.jdField_a_of_type_JavaLangString)))
+    if ((bhsr.a(this.jdField_b_of_type_JavaLangString)) || (bhsr.a(this.jdField_a_of_type_JavaLangString)))
     {
       finish();
       return;
     }
     if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_b_of_type_JavaLangString == null))
     {
-      QQToast.a(this, 2131692223, 0).a();
+      QQToast.a(this, 2131692228, 0).a();
       f();
       return;
     }
@@ -188,23 +188,23 @@ public class EditWebVideoActivity
     File localFile2 = new File(this.jdField_b_of_type_JavaLangString);
     if ((!localFile1.exists()) || (!localFile2.exists()))
     {
-      QQToast.a(this, 2131692223, 0).a();
+      QQToast.a(this, 2131692228, 0).a();
       f();
       return;
     }
     if ((!localFile1.isFile()) || (!localFile2.isFile()))
     {
-      QQToast.a(this, 2131692225, 0).a();
+      QQToast.a(this, 2131692230, 0).a();
       f();
       return;
     }
-    if (new bdxk(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_ArrayOfByte, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Int).a())
+    if (new bewd(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_ArrayOfByte, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Int).a())
     {
-      this.jdField_a_of_type_Bkfv.sendEmptyMessageDelayed(1003, 60000L);
+      this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1003, 60000L);
       return;
     }
     f();
-    QQToast.a(this, 1, 2131718008, 0).a();
+    QQToast.a(this, 1, 2131718140, 0).a();
   }
   
   void f()
@@ -233,16 +233,16 @@ public class EditWebVideoActivity
       return false;
     case 1003: 
       f();
-      QQToast.a(this, 1, 2131718007, 0).a();
+      QQToast.a(this, 1, 2131718139, 0).a();
       finish();
       return true;
     case 1001: 
-      banm.b(bcig.a().jdField_a_of_type_Int, "");
+      bbgf.b(bday.a().jdField_a_of_type_Int, "");
       g();
       return true;
     }
     f();
-    d(anni.a(2131702763));
+    d(anzj.a(2131702870));
     e();
     return true;
   }

@@ -1,15 +1,15 @@
 package com.tencent.av.app;
 
-import lem;
+import let;
 
 public class InviteMemberObserver$1
   implements Runnable
 {
-  public InviteMemberObserver$1(lem paramlem, Object paramObject) {}
+  public InviteMemberObserver$1(let paramlet, Object paramObject) {}
   
   public void run()
   {
-    lem.a(this.this$0, this.a);
+    let.a(this.this$0, this.a);
   }
 }
 

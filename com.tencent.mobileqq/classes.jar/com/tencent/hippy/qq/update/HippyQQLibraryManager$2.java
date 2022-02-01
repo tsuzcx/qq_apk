@@ -1,24 +1,17 @@
 package com.tencent.hippy.qq.update;
 
-import java.util.Iterator;
-import java.util.List;
+import bdgt;
+import com.tencent.hippy.qq.app.HippyQQEngine;
+import com.tencent.mobileqq.soload.LoadExtResult;
 
 class HippyQQLibraryManager$2
-  implements Runnable
+  implements bdgt
 {
-  HippyQQLibraryManager$2(HippyQQLibraryManager paramHippyQQLibraryManager, int paramInt) {}
+  HippyQQLibraryManager$2(HippyQQLibraryManager paramHippyQQLibraryManager) {}
   
-  public void run()
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    if (HippyQQLibraryManager.access$400(this.this$0) != null)
-    {
-      Iterator localIterator = HippyQQLibraryManager.access$400(this.this$0).iterator();
-      while (localIterator.hasNext()) {
-        ((HippyQQLibraryManager.LibraryLoadListener)localIterator.next()).onLoadFail(this.val$resultCode, "");
-      }
-    }
-    HippyQQLibraryManager.access$002(this.this$0, 0);
-    HippyQQLibraryManager.access$400(this.this$0).clear();
+    HippyQQEngine.runTaskInUIThread(new HippyQQLibraryManager.2.1(this, paramInt, paramLoadExtResult));
   }
 }
 

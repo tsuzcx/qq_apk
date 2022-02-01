@@ -1,28 +1,14 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.Nullable;
+import java.util.ArrayList;
 
-public class prs
-  implements View.OnClickListener
+class prs
+  implements prv<BEAN, COOKIE>
 {
-  public prs(ReadInJoySelfFragment paramReadInJoySelfFragment, String paramString1, int paramInt, String paramString2) {}
+  prs(prq paramprq, boolean paramBoolean, prk paramprk) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, ArrayList<BEAN> paramArrayList, @Nullable COOKIE paramCOOKIE, int paramInt2, String paramString)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.getActivity(), QQBrowserActivity.class);
-      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.getActivity().startActivity(localIntent);
-      oat.a(null, "CliOper", "", "", "0X80092FF", "0X80092FF", 0, 0, ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment, this.jdField_a_of_type_Int) + "", this.jdField_a_of_type_Int + "", "", pha.b(this.b), false);
-      ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment, this.jdField_a_of_type_Int);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    prq.a(this.jdField_a_of_type_Prq, this.jdField_a_of_type_Boolean, paramBoolean1, paramBoolean2, paramInt1, paramArrayList, paramCOOKIE, paramInt2, paramString, this.jdField_a_of_type_Prk);
   }
 }
 

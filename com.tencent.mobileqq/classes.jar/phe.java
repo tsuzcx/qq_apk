@@ -1,7 +1,15 @@
-final class phe
-  implements bknn
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdPopSheetBrowserFragment;
+
+public class phe
+  implements tsr
 {
-  public void a() {}
+  public phe(ReadInJoyAdPopSheetBrowserFragment paramReadInJoyAdPopSheetBrowserFragment) {}
+  
+  public void a()
+  {
+    this.a.getActivity().finish();
+  }
 }
 
 

@@ -7,7 +7,7 @@ class ReadInJoyBaseDeliverActivity$15
   
   public void run()
   {
-    this.this$0.l();
+    this.this$0.k();
   }
 }
 

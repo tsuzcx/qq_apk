@@ -1,42 +1,70 @@
-import com.tencent.mobileqq.activity.contacts.phone.PhoneContactFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendManager.3.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class ajkd
-  extends aywi
+  extends anyu
 {
-  private ajkd(PhoneContactFragment paramPhoneContactFragment) {}
+  ajkd(ajka paramajka) {}
   
-  private void g(boolean paramBoolean)
+  protected void onAddFriend(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, String.format("refreshResult [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (this.a.c)
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      if (PhoneContactFragment.a(this.a) != null) {
-        PhoneContactFragment.b(this.a).a(this.a.b(), paramBoolean, null);
+      return;
+      localObject = this.a.b();
+    } while (((ArrayList)localObject).isEmpty());
+    Object localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      ajmf localajmf = (ajmf)((Iterator)localObject).next();
+      if ((localajmf instanceof ajma))
+      {
+        int i = ((ajma)localajmf).a.structMsg.msg.sub_type.get();
+        String str = ((ajma)localajmf).a.senderuin;
+        if ((i == 13) && (paramString.equals(str)))
+        {
+          ((Iterator)localObject).remove();
+          ajka.a(this.a).a().b(antf.M, 0, ((ajma)localajmf).a.uniseq, false);
+        }
       }
-      if (paramBoolean) {
-        this.a.c();
-      }
-      this.a.c = false;
+    }
+    ajka.a(this.a).sendEmptyMessage(2);
+  }
+  
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (ajka.a(this.a) != null)) {
+      ajka.a(this.a).sendEmptyMessage(2);
     }
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onGetPushRecommend(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, String.format("onQueryBindState [%s, %s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) }));
+    if ((paramBoolean) && (ajka.a(this.a) != null)) {
+      ajka.a(this.a).sendEmptyMessage(2);
     }
-    g(paramBoolean1);
   }
   
-  protected void b(boolean paramBoolean)
+  protected void onMayknowStateChanged(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, String.format("onHideContact [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
+    ajka.a(this.a).runOnUiThread(new NewFriendManager.3.1(this, paramBoolean));
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (ajka.a(this.a) != null)) {
+      ajka.a(this.a).sendEmptyMessage(2);
     }
-    this.a.c();
   }
 }
 

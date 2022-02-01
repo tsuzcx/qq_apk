@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search.fragment;
 
 import android.os.Handler;
-import bbop;
-import bbtj;
+import bchi;
+import bcmc;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class GroupSearchFragment$2
@@ -14,14 +14,14 @@ class GroupSearchFragment$2
   {
     if (!this.this$0.d)
     {
-      this.this$0.jdField_a_of_type_Bbtj.a();
+      this.this$0.jdField_a_of_type_Bcmc.a();
       this.this$0.d = true;
     }
     if (!GroupSearchFragment.a(this.this$0))
     {
-      bbop localbbop = (bbop)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(318);
-      if (localbbop != null) {
-        localbbop.a();
+      bchi localbchi = (bchi)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(318);
+      if (localbchi != null) {
+        localbchi.a();
       }
       GroupSearchFragment.a(this.this$0, true);
     }

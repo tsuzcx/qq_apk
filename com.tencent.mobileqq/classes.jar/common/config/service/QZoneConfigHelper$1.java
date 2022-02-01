@@ -1,11 +1,11 @@
 package common.config.service;
 
-import bkyy;
+import bmab;
 
 public final class QZoneConfigHelper$1
   implements Runnable
 {
-  public QZoneConfigHelper$1(bkyy parambkyy) {}
+  public QZoneConfigHelper$1(bmab parambmab) {}
   
   public void run()
   {

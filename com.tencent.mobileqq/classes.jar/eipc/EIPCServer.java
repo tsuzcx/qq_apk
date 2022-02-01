@@ -16,7 +16,7 @@ import mqq.app.MobileQQ;
 public class EIPCServer
   extends EIPCModuleManager
 {
-  static volatile EIPCServer sServer;
+  static volatile EIPCServer sServer = null;
   SparseArray<EIPCChannel> channelSparseArr = new SparseArray();
   ArrayList<EIPCConnection> clients = new ArrayList();
   AtomicInteger instanceCount = new AtomicInteger(1);
@@ -109,27 +109,33 @@ public class EIPCServer
   
   public void callbackResult(int paramInt, EIPCResult paramEIPCResult)
   {
-    synchronized (this.channelSparseArr)
+    for (;;)
     {
       try
       {
-        int i = paramInt / 1000000;
+        i = paramInt / 1000000;
         paramInt %= 1000000;
         if (QLog.isColorLevel()) {
           QLog.i("EIPCConst", 2, "callbackResult " + i + ", " + paramInt);
         }
-        ((EIPCChannel)this.channelSparseArr.get(i)).callback(paramInt, paramEIPCResult);
       }
       catch (Exception paramEIPCResult)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("EIPCConst", 2, "callbackResult error", paramEIPCResult);
-          }
+        int i;
+        EIPCChannel localEIPCChannel;
+        if (!QLog.isColorLevel()) {
+          continue;
         }
+        QLog.w("EIPCConst", 2, "callbackResult error", paramEIPCResult);
       }
-      return;
+      synchronized (this.channelSparseArr)
+      {
+        localEIPCChannel = (EIPCChannel)this.channelSparseArr.get(i);
+        if (localEIPCChannel != null) {
+          localEIPCChannel.callback(paramInt, paramEIPCResult);
+        }
+        return;
+      }
     }
   }
   
@@ -220,130 +226,130 @@ public class EIPCServer
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 32	eipc/EIPCServer:clients	Ljava/util/ArrayList;
+    //   1: getfield 36	eipc/EIPCServer:clients	Ljava/util/ArrayList;
     //   4: astore 5
     //   6: aload 5
     //   8: monitorenter
     //   9: aload_3
     //   10: ifnonnull +102 -> 112
     //   13: aload_0
-    //   14: getfield 32	eipc/EIPCServer:clients	Ljava/util/ArrayList;
-    //   17: invokevirtual 209	java/util/ArrayList:size	()I
+    //   14: getfield 36	eipc/EIPCServer:clients	Ljava/util/ArrayList;
+    //   17: invokevirtual 210	java/util/ArrayList:size	()I
     //   20: iconst_1
     //   21: isub
     //   22: istore_2
     //   23: iload_2
     //   24: iflt +258 -> 282
     //   27: aload_0
-    //   28: getfield 32	eipc/EIPCServer:clients	Ljava/util/ArrayList;
+    //   28: getfield 36	eipc/EIPCServer:clients	Ljava/util/ArrayList;
     //   31: iload_2
-    //   32: invokevirtual 210	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   35: checkcast 81	eipc/EIPCConnection
+    //   32: invokevirtual 211	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   35: checkcast 82	eipc/EIPCConnection
     //   38: astore_3
     //   39: aload_3
-    //   40: getfield 211	eipc/EIPCConnection:channel	Leipc/EIPCChannel;
-    //   43: invokeinterface 215 1 0
+    //   40: getfield 212	eipc/EIPCConnection:channel	Leipc/EIPCChannel;
+    //   43: invokeinterface 216 1 0
     //   48: astore 6
     //   50: aload 6
-    //   52: invokeinterface 218 1 0
+    //   52: invokeinterface 219 1 0
     //   57: ifne +13 -> 70
     //   60: aload 6
-    //   62: invokeinterface 221 1 0
+    //   62: invokeinterface 222 1 0
     //   67: ifeq +23 -> 90
     //   70: aload_1
     //   71: aload_3
-    //   72: getfield 174	eipc/EIPCConnection:procName	Ljava/lang/String;
-    //   75: invokestatic 180	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   72: getfield 175	eipc/EIPCConnection:procName	Ljava/lang/String;
+    //   75: invokestatic 181	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   78: ifeq +197 -> 275
     //   81: iload 4
     //   83: aload_3
-    //   84: getfield 184	eipc/EIPCConnection:clientId	I
+    //   84: getfield 185	eipc/EIPCConnection:clientId	I
     //   87: if_icmpne +188 -> 275
     //   90: aload_0
-    //   91: getfield 32	eipc/EIPCServer:clients	Ljava/util/ArrayList;
+    //   91: getfield 36	eipc/EIPCServer:clients	Ljava/util/ArrayList;
     //   94: iload_2
-    //   95: invokevirtual 224	java/util/ArrayList:remove	(I)Ljava/lang/Object;
+    //   95: invokevirtual 225	java/util/ArrayList:remove	(I)Ljava/lang/Object;
     //   98: pop
     //   99: aload_0
     //   100: aload_3
-    //   101: invokevirtual 228	eipc/EIPCServer:notifyUnbind	(Leipc/EIPCConnection;)V
+    //   101: invokevirtual 229	eipc/EIPCServer:notifyUnbind	(Leipc/EIPCConnection;)V
     //   104: goto +171 -> 275
     //   107: aload 5
     //   109: monitorexit
     //   110: iload_2
     //   111: ireturn
-    //   112: new 81	eipc/EIPCConnection
+    //   112: new 82	eipc/EIPCConnection
     //   115: dup
     //   116: aload_3
     //   117: aload_1
-    //   118: invokespecial 240	eipc/EIPCConnection:<init>	(Leipc/EIPCChannel;Ljava/lang/String;)V
+    //   118: invokespecial 241	eipc/EIPCConnection:<init>	(Leipc/EIPCChannel;Ljava/lang/String;)V
     //   121: astore_1
     //   122: aload_1
     //   123: aload_0
-    //   124: putfield 244	eipc/EIPCConnection:callbackManager	Leipc/EIPCModuleManager;
+    //   124: putfield 245	eipc/EIPCConnection:callbackManager	Leipc/EIPCModuleManager;
     //   127: aload_1
     //   128: iload 4
-    //   130: putfield 184	eipc/EIPCConnection:clientId	I
+    //   130: putfield 185	eipc/EIPCConnection:clientId	I
     //   133: aload_1
-    //   134: ldc 246
-    //   136: putfield 249	eipc/EIPCConnection:logMark	Ljava/lang/String;
-    //   139: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   134: ldc 247
+    //   136: putfield 250	eipc/EIPCConnection:logMark	Ljava/lang/String;
+    //   139: invokestatic 119	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   142: ifeq +28 -> 170
-    //   145: ldc 120
+    //   145: ldc 121
     //   147: iconst_2
-    //   148: new 122	java/lang/StringBuilder
+    //   148: new 123	java/lang/StringBuilder
     //   151: dup
-    //   152: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   155: ldc 251
-    //   157: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   152: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   155: ldc 252
+    //   157: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   160: aload_1
-    //   161: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   164: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   167: invokestatic 142	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   161: invokevirtual 255	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   164: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   167: invokestatic 143	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   170: aload_0
-    //   171: getfield 32	eipc/EIPCServer:clients	Ljava/util/ArrayList;
+    //   171: getfield 36	eipc/EIPCServer:clients	Ljava/util/ArrayList;
     //   174: aload_1
-    //   175: invokevirtual 258	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   175: invokevirtual 259	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   178: pop
     //   179: aload_0
     //   180: aload_1
-    //   181: invokevirtual 261	eipc/EIPCServer:notifyBind	(Leipc/EIPCConnection;)V
+    //   181: invokevirtual 262	eipc/EIPCServer:notifyBind	(Leipc/EIPCConnection;)V
     //   184: aload_0
-    //   185: getfield 25	eipc/EIPCServer:instanceCount	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   185: getfield 30	eipc/EIPCServer:instanceCount	Ljava/util/concurrent/atomic/AtomicInteger;
     //   188: iconst_1
-    //   189: invokevirtual 265	java/util/concurrent/atomic/AtomicInteger:addAndGet	(I)I
+    //   189: invokevirtual 266	java/util/concurrent/atomic/AtomicInteger:addAndGet	(I)I
     //   192: istore_2
     //   193: aload_0
-    //   194: getfield 37	eipc/EIPCServer:channelSparseArr	Landroid/util/SparseArray;
+    //   194: getfield 41	eipc/EIPCServer:channelSparseArr	Landroid/util/SparseArray;
     //   197: astore 6
     //   199: aload 6
     //   201: monitorenter
     //   202: aload_0
-    //   203: getfield 37	eipc/EIPCServer:channelSparseArr	Landroid/util/SparseArray;
+    //   203: getfield 41	eipc/EIPCServer:channelSparseArr	Landroid/util/SparseArray;
     //   206: iload_2
     //   207: aload_3
-    //   208: invokevirtual 269	android/util/SparseArray:put	(ILjava/lang/Object;)V
+    //   208: invokevirtual 270	android/util/SparseArray:put	(ILjava/lang/Object;)V
     //   211: aload 6
     //   213: monitorexit
-    //   214: new 271	eipc/EIPCServer$ServerRecipient
+    //   214: new 272	eipc/EIPCServer$ServerRecipient
     //   217: dup
-    //   218: invokespecial 272	eipc/EIPCServer$ServerRecipient:<init>	()V
+    //   218: invokespecial 273	eipc/EIPCServer$ServerRecipient:<init>	()V
     //   221: astore 6
     //   223: aload 6
     //   225: aload_0
-    //   226: putfield 275	eipc/EIPCServer$ServerRecipient:eipcServer	Leipc/EIPCServer;
+    //   226: putfield 276	eipc/EIPCServer$ServerRecipient:eipcServer	Leipc/EIPCServer;
     //   229: aload 6
     //   231: aload_1
-    //   232: putfield 279	eipc/EIPCServer$ServerRecipient:connection	Leipc/EIPCConnection;
+    //   232: putfield 280	eipc/EIPCServer$ServerRecipient:connection	Leipc/EIPCConnection;
     //   235: aload 6
     //   237: aload_3
-    //   238: invokeinterface 215 1 0
-    //   243: putfield 283	eipc/EIPCServer$ServerRecipient:binder	Landroid/os/IBinder;
+    //   238: invokeinterface 216 1 0
+    //   243: putfield 284	eipc/EIPCServer$ServerRecipient:binder	Landroid/os/IBinder;
     //   246: aload_3
-    //   247: invokeinterface 215 1 0
+    //   247: invokeinterface 216 1 0
     //   252: aload 6
     //   254: iconst_0
-    //   255: invokeinterface 287 3 0
+    //   255: invokeinterface 288 3 0
     //   260: goto -153 -> 107
     //   263: astore_1
     //   264: aload 5

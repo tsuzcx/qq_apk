@@ -1,33 +1,23 @@
-import android.os.PowerManager;
-import android.os.PowerManager.WakeLock;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import com.tencent.qapmsdk.battery.BatteryMonitor;
-import com.tencent.qapmsdk.battery.monitor.HookMethodCallback;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
-class adco
-  extends adcl
+public class adco
+  implements adci
 {
-  public HookMethodCallback a()
+  private static MessageRecord a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    return BatteryMonitor.getInstance().getWakeLockHook();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x108");
+    }
+    return asbk.a(paramQQAppInterface, paramMsgType0x210.vProtobuf, paramMsgInfo);
   }
   
-  public void a()
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    try
-    {
-      JavaHookBridge.findAndHookMethod(PowerManager.class, "newWakeLock", new Object[] { Integer.TYPE, String.class, this });
-      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "acquire", new Object[] { this });
-      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "acquire", new Object[] { Long.TYPE, this });
-      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "release", new Object[] { Integer.TYPE, this });
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MagnifierSDK.QAPM.QAPMBatteryWrapper", 2, "", localThrowable);
-    }
+    return a(paramadan.a(), paramMsgInfo, paramMsgType0x210);
   }
 }
 

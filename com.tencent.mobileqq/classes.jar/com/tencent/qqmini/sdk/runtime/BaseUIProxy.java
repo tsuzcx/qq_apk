@@ -2,6 +2,7 @@ package com.tencent.qqmini.sdk.runtime;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -38,7 +39,9 @@ public abstract class BaseUIProxy
   protected boolean hasCompletedLoading = false;
   protected long loadCompleteTimeForLoadingAdReport;
   public Activity mActivity;
+  private final Binder mClientBinder = new Binder();
   protected BaseRuntimeLoader mCurrRuntimeLoader;
+  private boolean mIsDestroyed;
   protected Handler mMainHandler = new Handler(Looper.getMainLooper());
   protected PageGestureProxy mPageGestureProxy;
   public ViewGroup mRootLayout;
@@ -78,6 +81,11 @@ public abstract class BaseUIProxy
   protected abstract AppRuntimeEventCenter.RuntimeStateObserver getRuntimeStateObserver();
   
   protected abstract void hideLoading();
+  
+  public boolean isDestroyed()
+  {
+    return this.mIsDestroyed;
+  }
   
   public void onActivityResult(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -121,8 +129,12 @@ public abstract class BaseUIProxy
       QMLog.e("minisdk-start_UIProxy", "onDetachActivity. activity is mismatch. mActivity=" + this.mActivity + " activity=" + paramActivity);
       return;
     }
-    if (this.mCurrRuntimeLoader != null) {
+    if (this.mCurrRuntimeLoader != null)
+    {
       this.mCurrRuntimeLoader.onDetachActivity(paramActivity);
+      if (this.mCurrRuntimeLoader.getMiniAppInfo() != null) {
+        AppLoaderFactory.g().getAppBrandProxy().onAppDestroy(this.mCurrRuntimeLoader.getMiniAppInfo(), null);
+      }
     }
     this.mCurrRuntimeLoader = null;
     if (this.mPageGestureProxy != null) {
@@ -130,6 +142,7 @@ public abstract class BaseUIProxy
     }
     this.mActivity = null;
     this.mRootLayout = null;
+    this.mIsDestroyed = true;
   }
   
   public void onIntentUpdate(Intent paramIntent)

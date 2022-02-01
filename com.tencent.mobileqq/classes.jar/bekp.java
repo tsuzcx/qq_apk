@@ -1,61 +1,32 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import android.support.v4.util.SparseArrayCompat;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.tencent.util.Pair;
+import java.lang.reflect.Type;
 
-public final class bekp
-  implements DialogInterface.OnClickListener
+final class bekp
+  implements JsonSerializer<beko>
 {
-  public bekp(Bundle paramBundle, int paramInt1, int paramInt2, Activity paramActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public JsonElement a(beko parambeko, Type paramType, JsonSerializationContext paramJsonSerializationContext)
   {
-    TroopBarPublishUtils.a().a();
-    switch (paramInt)
+    paramType = new JsonObject();
+    paramJsonSerializationContext = new JsonObject();
+    int i = 0;
+    while (i < parambeko.jdField_a_of_type_Int)
     {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface.dismiss();
-      String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("bid", "0");
-      String str1;
-      if ("interestcircle".endsWith(this.jdField_a_of_type_AndroidOsBundle.getString("from")))
-      {
-        paramDialogInterface = "pub_page_new";
-        if (this.jdField_a_of_type_Int != 3) {
-          break label144;
-        }
-        str1 = "Clk_cancel";
-        label79:
-        if (this.jdField_a_of_type_Int != 3) {
-          break label155;
-        }
-        if (!"0".endsWith(str2)) {
-          break label150;
-        }
-        paramInt = 2;
-      }
-      for (;;)
-      {
-        bcst.b(null, "dc00899", "Grp_tribe", "", paramDialogInterface, str1, paramInt, 0, str2, "", "", "");
-        return;
-        if ("0".endsWith(str2)) {}
-        for (paramDialogInterface = "pub_page_new";; paramDialogInterface = "reply_page_new") {
-          break;
-        }
-        label144:
-        str1 = "Clk_cancelup";
-        break label79;
-        label150:
-        paramInt = 1;
-        continue;
-        label155:
-        paramInt = 0;
-      }
+      Pair localPair = (Pair)parambeko.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i);
+      JsonArray localJsonArray = new JsonArray();
+      localJsonArray.add((String)localPair.first);
+      localJsonArray.add((String)localPair.second);
+      paramJsonSerializationContext.add(i + "", localJsonArray);
+      i += 1;
     }
-    paramDialogInterface.dismiss();
-    TroopBarPublishUtils.a(this.b, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle);
+    paramType.add("numToAttrib", paramJsonSerializationContext);
+    paramType.addProperty("nextNum", Integer.valueOf(parambeko.jdField_a_of_type_Int));
+    return paramType;
   }
 }
 

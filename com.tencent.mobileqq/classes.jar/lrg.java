@@ -1,207 +1,164 @@
-import android.graphics.Bitmap;
-import android.opengl.GLES20;
-import android.opengl.GLUtils;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.model.SizeI;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
+import org.libpag.PAGComposition;
+import org.libpag.PAGFile;
+import org.libpag.PAGImage;
+import org.libpag.PAGLayer;
+import org.libpag.PAGRenderer;
+import org.libpag.PAGSurface;
 
-public abstract class lrg
-  extends lra
+public class lrg
+  extends lrh
 {
-  private static int k;
-  boolean a;
-  protected Bitmap b;
-  private boolean b;
-  private boolean c = true;
-  private boolean d;
+  private int jdField_a_of_type_Int = 720;
+  private long jdField_a_of_type_Long;
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+  private final String jdField_a_of_type_JavaLangString = "PAGFilter-" + Integer.toHexString(hashCode());
+  private PAGFile jdField_a_of_type_OrgLibpagPAGFile;
+  private PAGRenderer jdField_a_of_type_OrgLibpagPAGRenderer;
+  private PAGSurface jdField_a_of_type_OrgLibpagPAGSurface;
+  private int jdField_b_of_type_Int = 1280;
+  private long jdField_b_of_type_Long;
   
-  protected lrg()
+  public lrg(int paramInt1, int paramInt2)
   {
-    super(null, 0);
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = false;
+    super(1);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  private Bitmap b()
+  private void d()
   {
-    if (this.jdField_b_of_type_AndroidGraphicsBitmap == null)
+    if (this.jdField_a_of_type_OrgLibpagPAGFile != null)
     {
-      this.jdField_b_of_type_AndroidGraphicsBitmap = a();
-      if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
+      if (this.jdField_a_of_type_OrgLibpagPAGSurface != null)
       {
-        int i = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth();
-        int j = this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight();
-        if (this.e == -1) {
-          a(i, j);
-        }
+        this.jdField_a_of_type_OrgLibpagPAGSurface.release();
+        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyPag: surface#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGSurface.hashCode()) + " released");
+        this.jdField_a_of_type_OrgLibpagPAGSurface = null;
+      }
+      if (this.jdField_a_of_type_OrgLibpagPAGRenderer == null) {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "applyPag: not inited yet");
       }
     }
-    return this.jdField_b_of_type_AndroidGraphicsBitmap;
-  }
-  
-  private void c(lpx paramlpx)
-  {
-    Bitmap localBitmap = b();
-    if (localBitmap != null) {
-      try
-      {
-        int i = localBitmap.getWidth();
-        int j = localBitmap.getHeight();
-        int m = e();
-        int n = f();
-        if (this.jdField_a_of_type_ArrayOfInt == null) {
-          this.jdField_a_of_type_ArrayOfInt = new int[1];
-        }
-        this.jdField_a_of_type_ArrayOfInt[0] = paramlpx.a().a();
-        paramlpx.a(this);
-        if ((i == m) && (j == n)) {
-          paramlpx.a(this, localBitmap);
-        }
-        for (;;)
-        {
-          e();
-          a(paramlpx);
-          this.jdField_b_of_type_Int = 1;
-          this.jdField_b_of_type_Boolean = true;
-          return;
-          i = GLUtils.getInternalFormat(localBitmap);
-          j = GLUtils.getType(localBitmap);
-          paramlpx.a(this, i, j);
-          paramlpx.a(this, 0, 0, localBitmap, i, j);
-        }
-        this.jdField_b_of_type_Int = -1;
-      }
-      finally
-      {
-        e();
-      }
-    }
-    throw new RuntimeException("Texture load fail, no bitmap");
-  }
-  
-  private void e()
-  {
-    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
+    else
     {
-      a(this.jdField_b_of_type_AndroidGraphicsBitmap);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = null;
+      return;
     }
+    this.jdField_a_of_type_OrgLibpagPAGRenderer.setFile(this.jdField_a_of_type_OrgLibpagPAGFile);
+    this.jdField_a_of_type_OrgLibpagPAGSurface = PAGSurface.FromTexture(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, true);
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyPag: create surface#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGSurface.hashCode()));
+    this.jdField_a_of_type_OrgLibpagPAGRenderer.setSurface(this.jdField_a_of_type_OrgLibpagPAGSurface);
+    this.jdField_a_of_type_Long = (this.jdField_a_of_type_OrgLibpagPAGFile.duration() / 1000L);
   }
   
-  public static boolean e()
+  @NotNull
+  protected Frame a(List<lrl> paramList, long paramLong)
   {
-    return k > 100;
-  }
-  
-  public static void g()
-  {
-    k = 0;
-  }
-  
-  protected abstract Bitmap a();
-  
-  public void a()
-  {
-    super.a();
-    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
-      e();
+    if ((this.jdField_b_of_type_Long == 0L) || (this.jdField_b_of_type_Long > paramLong)) {
+      this.jdField_b_of_type_Long = paramLong;
     }
-  }
-  
-  protected abstract void a(Bitmap paramBitmap);
-  
-  public void a(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-  }
-  
-  public boolean a(lpx paramlpx)
-  {
-    b(paramlpx);
-    return true;
-  }
-  
-  public lqy[] a(lpx paramlpx)
-  {
-    if (this.jdField_a_of_type_Boolean)
+    int j = Math.min(this.jdField_a_of_type_OrgLibpagPAGFile.numImages(), paramList.size());
+    int i = 0;
+    while (i < j)
     {
-      GLES20.glEnable(3042);
-      GLES20.glBlendFunc(770, 771);
+      Object localObject = ((lrl)paramList.get(i)).jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+      localObject = PAGImage.FromTexture(((Frame)localObject).getTextureId(), 3553, ((Frame)localObject).width, ((Frame)localObject).height, true);
+      if (localObject != null)
+      {
+        ((PAGImage)localObject).setScaleMode(3);
+        this.jdField_a_of_type_OrgLibpagPAGRenderer.replaceImage(i, (PAGImage)localObject);
+      }
+      i += 1;
     }
-    return super.a(paramlpx);
+    double d = (paramLong - this.jdField_b_of_type_Long) % this.jdField_a_of_type_Long / this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_OrgLibpagPAGRenderer.setProgress(d);
+    this.jdField_a_of_type_OrgLibpagPAGRenderer.flush();
+    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
   }
   
-  public void b(lpx paramlpx)
+  public SizeI a()
   {
-    if (!c()) {
-      if (this.d)
-      {
-        int i = k + 1;
-        k = i;
-        if (i <= 100) {}
-      }
-    }
-    do
+    return new SizeI(this.jdField_a_of_type_OrgLibpagPAGFile.width(), this.jdField_a_of_type_OrgLibpagPAGFile.height());
+  }
+  
+  public List<Pair<RectF, Matrix>> a()
+  {
+    int k = 0;
+    PAGComposition localPAGComposition = this.jdField_a_of_type_OrgLibpagPAGRenderer.getRootComposition();
+    int n = this.jdField_a_of_type_OrgLibpagPAGFile.numImages();
+    int m = localPAGComposition.numLayers();
+    ArrayList localArrayList = new ArrayList(n);
+    int i = 0;
+    int j;
+    for (;;)
     {
-      for (;;)
-      {
-        return;
-        c(paramlpx);
-        return;
-        if (!this.jdField_b_of_type_Boolean)
-        {
-          Bitmap localBitmap = b();
-          if (localBitmap != null) {
-            try
-            {
-              if (!localBitmap.isRecycled())
-              {
-                paramlpx.a(this, 0, 0, localBitmap, GLUtils.getInternalFormat(localBitmap), GLUtils.getType(localBitmap));
-                e();
-                this.jdField_b_of_type_Boolean = true;
-                return;
-              }
-            }
-            catch (IllegalArgumentException paramlpx) {}
-          }
-        }
+      j = k;
+      if (i >= n) {
+        break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("UploadedTexture", 2, "WL_DEBUG updateContent e = " + paramlpx);
-  }
-  
-  public boolean b()
-  {
-    return this.c;
-  }
-  
-  public int c()
-  {
-    if (this.e == -1) {
-      b();
+      localArrayList.add(null);
+      i += 1;
     }
-    return this.e;
-  }
-  
-  public int d()
-  {
-    if (this.e == -1) {
-      b();
+    while (j < m)
+    {
+      PAGLayer localPAGLayer = localPAGComposition.getLayerAt(j);
+      if (localPAGLayer.layerType() == 5) {
+        localArrayList.set(localPAGLayer.editableIndex(), new Pair(localPAGLayer.getBounds(), localPAGLayer.getTotalMatrix()));
+      }
+      j += 1;
     }
-    return this.f;
+    return localArrayList;
   }
   
-  protected void f()
+  protected void a()
   {
-    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
-      e();
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit");
+    if (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame == null)
+    {
+      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(-1, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0.0D);
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create frame#" + Integer.toHexString(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.hashCode()));
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.e = -1;
-    this.f = -1;
+    this.jdField_a_of_type_OrgLibpagPAGRenderer = new PAGRenderer();
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create render#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGRenderer.hashCode()));
+    d();
   }
   
-  public int g()
+  public void a(String paramString)
   {
-    return 3553;
+    this.jdField_a_of_type_OrgLibpagPAGFile = PAGFile.Load(paramString);
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: " + paramString + " loaded, width=" + this.jdField_a_of_type_OrgLibpagPAGFile.width() + ", height=" + this.jdField_a_of_type_OrgLibpagPAGFile.height());
+    d();
+  }
+  
+  protected void b()
+  {
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy");
+    if (this.jdField_a_of_type_OrgLibpagPAGRenderer != null)
+    {
+      this.jdField_a_of_type_OrgLibpagPAGRenderer.setSurface(null);
+      this.jdField_a_of_type_OrgLibpagPAGRenderer = null;
+    }
+    if (this.jdField_a_of_type_OrgLibpagPAGSurface != null)
+    {
+      this.jdField_a_of_type_OrgLibpagPAGSurface.release();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: surface#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGSurface.hashCode()) + " released");
+      this.jdField_a_of_type_OrgLibpagPAGSurface = null;
+    }
+    if (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame != null)
+    {
+      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: frame#" + Integer.toHexString(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.hashCode()) + " cleared");
+      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = null;
+    }
   }
 }
 

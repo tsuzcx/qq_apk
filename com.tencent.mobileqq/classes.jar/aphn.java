@@ -1,16 +1,18 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.3.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import cooperation.wadl.ipc.WadlResult;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARRelationShipAIOMsg;
 
-public class aphn
-  implements aphu
+public final class aphn
+  implements Parcelable.Creator<ARRelationShipAIOMsg>
 {
-  aphn(aphi paramaphi) {}
-  
-  public void a(WadlResult paramWadlResult)
+  public ARRelationShipAIOMsg a(Parcel paramParcel)
   {
-    ArkAppCenter.a().post(this.a.a, new ArkAppDownloadModule.3.1(this, paramWadlResult));
+    return new ARRelationShipAIOMsg(paramParcel);
+  }
+  
+  public ARRelationShipAIOMsg[] a(int paramInt)
+  {
+    return new ARRelationShipAIOMsg[paramInt];
   }
 }
 

@@ -1,54 +1,94 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-class ataz
-  implements aszc
+public class ataz
+  extends arac<atbh>
 {
-  ataz(atay paramatay, String paramString, atbj paramatbj) {}
-  
-  public void a(int paramInt, String paramString)
+  public static atbh a()
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2BuddyTaskExcuter onFaild：");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
+    return (atbh)aran.a().a(532);
+  }
+  
+  @NonNull
+  public atbh a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("LimitChatOnPlusConfProcessor", 2, "migrateOldOrDefaultContent ");
     }
-    for (;;)
+    return new atbh();
+  }
+  
+  @Nullable
+  public atbh a(araj[] paramArrayOfaraj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatOnPlusConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
     {
       if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atay.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild:" + paramInt);
+        QLog.d("LimitChatOnPlusConfProcessor", 2, "onParsed " + paramArrayOfaraj.length);
       }
-      this.jdField_a_of_type_Atbj.a(atan.a(this.jdField_a_of_type_Atay.jdField_a_of_type_Long, bool2), bool1);
+      return atbh.a(paramArrayOfaraj[0]);
+    }
+    return null;
+  }
+  
+  public void a(atbh paramatbh)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramatbh == null) {
+        break label73;
+      }
+    }
+    label73:
+    for (paramatbh = paramatbh.toString();; paramatbh = " empty")
+    {
+      QLog.d("LimitChatOnPlusConfProcessor", 2, paramatbh);
+      paramatbh = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramatbh instanceof QQAppInterface)) {
+        ((asvi)((QQAppInterface)paramatbh).getManager(264)).c();
+      }
       return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-      }
     }
   }
   
-  public void a(String paramString1, String paramString2)
+  public Class<atbh> clazz()
   {
-    paramString2 = new Bundle();
-    paramString2.putString("_m_ForwardFileType", "1");
-    paramString2.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    paramString2.putString("_m_ForwardFileName", this.jdField_a_of_type_Atay.jdField_a_of_type_JavaLangString);
-    paramString2.putString("_m_ForwardSize", this.jdField_a_of_type_Atay.jdField_a_of_type_Long + "");
-    paramString2.putString("_m_ForwardMd5", this.jdField_a_of_type_Atay.c);
-    paramString2.putString("_m_ForwardDeadTime", "0");
-    paramString2.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Atay.e);
-    paramString2.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Atay.f);
-    paramString2.putString("_m_ForwardUuid", paramString1);
+    return atbh.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
     if (QLog.isColorLevel()) {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atay.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send success");
+      QLog.e("LimitChatOnPlusConfProcessor", 2, "onReqFailed " + paramInt);
     }
-    this.jdField_a_of_type_Atbj.a(paramString1, paramString2);
+  }
+  
+  public int type()
+  {
+    return 532;
   }
 }
 

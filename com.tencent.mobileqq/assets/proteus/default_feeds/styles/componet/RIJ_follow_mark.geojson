@@ -4,11 +4,11 @@
   "margin_left":"6",
   "align_parent_center_vertical": "YES",
   "height":{
-    "type": "relative",
+    "type": "absolutely",
     "value": "17"
   },
   "width":{
-    "type": "relative",
+    "type": "absolutely",
     "value": "52"
   },
   "attributes":{

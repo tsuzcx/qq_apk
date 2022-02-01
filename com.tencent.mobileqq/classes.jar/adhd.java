@@ -1,34 +1,26 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.DeliverGiftMsg;
+import tencent.im.msg.im_msg_body.Elem;
 
-class adhd
-  implements View.OnClickListener
+public class adhd
+  extends adic
 {
-  adhd(adhc paramadhc, View.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (!bgnt.d(adhc.a(this.jdField_a_of_type_Adhc))) {
-      QQToast.a(adhc.a(this.jdField_a_of_type_Adhc), adhc.a(this.jdField_a_of_type_Adhc).getString(2131693946), 0).a();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null)
-      {
-        QLog.e("SdkAuthDialog", 1, "positiveListener is null");
-      }
-      else
-      {
-        this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-        bcst.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "0", "", "", "");
-      }
-    }
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  {
+    new bcrt().a(paramList, paramList1, paramStringBuilder, paramMsg);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return paramElem.deliver_gift_msg.has();
   }
 }
 

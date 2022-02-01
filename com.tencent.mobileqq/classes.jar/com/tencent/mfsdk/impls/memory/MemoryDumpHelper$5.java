@@ -1,18 +1,19 @@
 package com.tencent.mfsdk.impls.memory;
 
-import adby;
-import adbz;
-import adcw;
-import adcz;
-import adda;
-import addc;
+import adkw;
+import adkx;
+import adlu;
+import adlx;
+import adly;
+import adma;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Handler;
-import bctj;
+import bdmc;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qapmsdk.base.meta.DumpResult;
+import com.tencent.qapmsdk.common.util.InspectUUID;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -22,7 +23,7 @@ import mqq.os.MqqHandler;
 public class MemoryDumpHelper$5
   implements Runnable
 {
-  public MemoryDumpHelper$5(adcw paramadcw, boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2) {}
+  public MemoryDumpHelper$5(adlu paramadlu, boolean paramBoolean1, InspectUUID paramInspectUUID, String paramString, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -31,13 +32,13 @@ public class MemoryDumpHelper$5
     Object localObject2;
     if (this.jdField_a_of_type_Boolean)
     {
-      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject1 = "" + this.jdField_a_of_type_ComTencentQapmsdkCommonUtilInspectUUID;
       if (!this.jdField_a_of_type_Boolean) {
-        break label353;
+        break label371;
       }
-      localDumpResult = MagnifierSDK.a().a().a((String)localObject1, new adcz(this));
+      localDumpResult = MagnifierSDK.a().a().a((String)localObject1, new adlx(this));
       localObject2 = new MemoryDumpHelper.5.2(this, localDumpResult);
-      adcw.a().postDelayed((Runnable)localObject2, 0L);
+      adlu.a().postDelayed((Runnable)localObject2, 0L);
     }
     for (;;)
     {
@@ -58,14 +59,14 @@ public class MemoryDumpHelper$5
         ((HashMap)localObject1).put("threhold", String.valueOf(l));
         ((HashMap)localObject1).put("dumpFileSize", String.valueOf(localDumpResult.hprofFileSize));
         ((HashMap)localObject1).put("zipFileSize", String.valueOf(((File)localObject2).length()));
-        bctj.a(BaseApplication.getContext()).a("", "MemoryPeakDump", true, 0L, 0L, (HashMap)localObject1, "");
-        addc.a().b();
+        bdmc.a(BaseApplication.getContext()).a("", "MemoryPeakDump", true, 0L, 0L, (HashMap)localObject1, "");
+        adma.a().b();
       }
       return;
-      localObject1 = this.jdField_b_of_type_JavaLangString;
+      localObject1 = this.jdField_a_of_type_JavaLangString;
       break;
-      label353:
-      localDumpResult = MagnifierSDK.a().a().a((String)localObject1, new adda(this));
+      label371:
+      localDumpResult = MagnifierSDK.a().a().a((String)localObject1, new adly(this));
       MagnifierSDK.a().a().a(localDumpResult);
     }
   }

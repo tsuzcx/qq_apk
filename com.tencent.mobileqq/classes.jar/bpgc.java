@@ -1,14 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment;
 
-class bpgc
+public class bpgc
   implements DialogInterface.OnClickListener
 {
-  bpgc(bpga parambpga) {}
+  public bpgc(AEEditorCommonEditFragment paramAEEditorCommonEditFragment) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.a.a().a(this.a.getActivity());
   }
 }
 

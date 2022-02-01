@@ -1,26 +1,19 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
 public class aepf
-  extends aepn
+  implements aepa
 {
-  public aepf(MainFragment paramMainFragment)
+  public aepf(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  
+  public void a(View paramView)
   {
-    super(null);
+    ForwardTroopListFragment.a(this.a, paramView);
   }
   
-  public void onClick(View paramView)
+  public boolean a(String paramString, int paramInt)
   {
-    anlv localanlv = this.a.b();
-    if ((localanlv instanceof ReadinjoyTabFrame)) {
-      ((ReadinjoyTabFrame)localanlv).l();
-    }
-    pmh.a().l();
-    MainFragment.a(MainFragment.a(this.a), MainFragment.a(this.a));
-    super.onClick(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return ForwardTroopListFragment.a(this.a, paramString, paramInt);
   }
 }
 

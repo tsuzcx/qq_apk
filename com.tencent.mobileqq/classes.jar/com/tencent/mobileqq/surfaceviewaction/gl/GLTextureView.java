@@ -7,7 +7,7 @@ import android.opengl.GLUtils;
 import android.util.AttributeSet;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
-import bdfp;
+import bdyk;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class GLTextureView
   private GLSurfaceView.Renderer jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer;
   private GLTextureView.RenderThreadRunnable jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlGLTextureView$RenderThreadRunnable;
   private Object jdField_a_of_type_JavaLangObject = new Object();
-  private List<bdfp> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  private List<bdyk> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
   private EGLConfig jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig;
   private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
@@ -208,9 +208,9 @@ public class GLTextureView
     ThreadManager.post(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlGLTextureView$RenderThreadRunnable, 10, null, true);
   }
   
-  public void a(bdfp parambdfp)
+  public void a(bdyk parambdyk)
   {
-    this.jdField_a_of_type_JavaUtilList.add(parambdfp);
+    this.jdField_a_of_type_JavaUtilList.add(parambdyk);
   }
   
   public void a(Runnable paramRunnable)
@@ -222,9 +222,9 @@ public class GLTextureView
     }
   }
   
-  public void b(bdfp parambdfp)
+  public void b(bdyk parambdyk)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(parambdfp);
+    this.jdField_a_of_type_JavaUtilList.remove(parambdyk);
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)

@@ -1,65 +1,26 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.biz.widgets.TabLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.ecshopassit.view.MinusViewBotomView;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ogn
-  implements ViewPager.OnPageChangeListener
+public class ogn
+  implements View.OnClickListener
 {
-  ogn(ogh paramogh) {}
+  public ogn(MinusViewBotomView paramMinusViewBotomView, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("ReadInJoyChannelViewPagerController", 2, "on page scroll state: " + paramInt);
-    ogh.b(this.a, paramInt);
-    if (paramInt == 0)
-    {
-      QLog.d("ReadInJoyChannelViewPagerController", 2, "page scroll state changed notify");
-      ogh.b(this.a);
-      ogh.a(this.a).a();
+    oga.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewMinusViewBotomView.getContext(), "jumpPreview", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, "fypbtn");
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewMinusViewBotomView.getContext() instanceof ChatActivity)) {
+      ((ChatActivity)this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewMinusViewBotomView.getContext()).finish();
     }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (!ogh.a(this.a)) {
-      ogh.a(this.a, paramInt1, paramFloat, paramInt2);
-    }
-    TabChannelCoverInfo localTabChannelCoverInfo = this.a.a();
-    if ((paramInt1 >= ogh.jdField_a_of_type_Int) && (localTabChannelCoverInfo != null)) {
-      ogh.b(this.a, localTabChannelCoverInfo);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    QLog.d("ReadInJoyChannelViewPagerController", 1, new Object[] { "onPageSelected position = ", Integer.valueOf(paramInt) });
-    TabChannelCoverInfo localTabChannelCoverInfo = this.a.a();
-    ogh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo = localTabChannelCoverInfo;
-    if (localTabChannelCoverInfo != null) {
-      ogh.a(localTabChannelCoverInfo.mChannelCoverId);
-    }
-    if (ogh.a(this.a) == 0) {
-      ogh.a(this.a, paramInt);
-    }
-    ogh.b(this.a, paramInt);
-    ogh.a(this.a, paramInt);
-    QLog.d("ReadInJoyChannelViewPagerController", 2, "page selected notify");
-    if (ogh.a(this.a) == 0) {
-      ogh.b(this.a);
-    }
-    if ((localTabChannelCoverInfo != null) && (localTabChannelCoverInfo.mChannelCoverId == 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ogh.a(bool);
-      ogh.c(this.a);
-      ogh.a(this.a, ogh.c());
-      if (this.a.jdField_a_of_type_Svd != null) {
-        this.a.jdField_a_of_type_Svd.a(6, paramInt);
-      }
-      QLog.d("ReadInJoyChannelViewPagerController", 1, new Object[] { "selected channel cover info =", ogh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo });
-      return;
-    }
+    ogd.a(null, "gouwu_fypbtn_click", "", NetConnInfoCenter.getServerTimeMillis() + "", "");
+    ogd.b(null, "gouwu_fypbtn_click", "", NetConnInfoCenter.getServerTimeMillis() + "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.util;
 
-import anip;
-import bgmg;
-import bgmo;
+import anum;
+import bhmi;
+import bhmq;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public final class ProfileCardUtil$1
@@ -10,12 +10,12 @@ public final class ProfileCardUtil$1
 {
   public void run()
   {
-    String str1 = anip.a(this.a, anip.b(BaseApplication.getContext()));
-    int i = anip.c(BaseApplication.getContext());
-    String str2 = anip.a(this.a, i);
-    bgmo.a(this.b, str1);
-    bgmo.a(this.b, str2, i, i);
-    bgmg.a(this.b, true);
+    String str1 = anum.a(this.a, anum.b(BaseApplication.getContext()));
+    int i = anum.c(BaseApplication.getContext());
+    String str2 = anum.a(this.a, i);
+    bhmq.a(this.b, str1);
+    bhmq.a(this.b, str2, i, i);
+    bhmi.a(this.b, true);
   }
 }
 

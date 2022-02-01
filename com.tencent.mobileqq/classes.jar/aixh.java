@@ -1,72 +1,51 @@
-import android.support.annotation.Nullable;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class aixh
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
+  private int jdField_a_of_type_Int = 1;
+  private aixi jdField_a_of_type_Aixi;
   
-  public static aixh a(aixh paramaixh)
+  public aixh() {}
+  
+  public aixh(aixi paramaixi)
   {
-    aixh localaixh = new aixh();
-    if (paramaixh != null)
+    this.jdField_a_of_type_Aixi = paramaixi;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Int == 1) {
+      if (this.jdField_a_of_type_Aixi != null)
+      {
+        this.jdField_a_of_type_Aixi.a(1);
+        this.jdField_a_of_type_Int = 2;
+      }
+    }
+    while ((this.jdField_a_of_type_Int != 2) || (this.jdField_a_of_type_Aixi == null)) {
+      return;
+    }
+    this.jdField_a_of_type_Aixi.a(2);
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Aixi != null))
     {
-      localaixh.jdField_a_of_type_Int = paramaixh.jdField_a_of_type_Int;
-      localaixh.jdField_a_of_type_JavaLangString = paramaixh.jdField_a_of_type_JavaLangString;
-      localaixh.jdField_b_of_type_Int = paramaixh.jdField_b_of_type_Int;
-      localaixh.jdField_b_of_type_JavaLangString = paramaixh.jdField_b_of_type_JavaLangString;
-      localaixh.c = paramaixh.c;
+      this.jdField_a_of_type_Aixi.a();
+      this.jdField_a_of_type_Int = 3;
     }
-    return localaixh;
   }
   
-  public static aixh a(JSONObject paramJSONObject)
+  public void c()
   {
-    aixh localaixh = new aixh();
-    if (paramJSONObject != null)
+    if ((this.jdField_a_of_type_Int == 3) && (this.jdField_a_of_type_Aixi != null))
     {
-      localaixh.jdField_a_of_type_Int = paramJSONObject.optInt("tab_id", -1);
-      localaixh.jdField_b_of_type_Int = paramJSONObject.optInt("recommend_count", 0);
-      localaixh.jdField_a_of_type_JavaLangString = paramJSONObject.optString("tab_name");
-      localaixh.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon_url_select");
-      localaixh.c = paramJSONObject.optString("icon_url_unselect");
+      this.jdField_a_of_type_Aixi.b();
+      this.jdField_a_of_type_Int = 1;
     }
-    return localaixh;
-  }
-  
-  public static JSONObject a(aixh paramaixh)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramaixh != null) {}
-    try
-    {
-      localJSONObject.put("tab_id", paramaixh.jdField_a_of_type_Int);
-      localJSONObject.put("recommend_count", paramaixh.jdField_b_of_type_Int);
-      localJSONObject.put("tab_name", paramaixh.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("icon_url_select", paramaixh.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("icon_url_unselect", paramaixh.c);
-      return localJSONObject;
-    }
-    catch (JSONException paramaixh) {}
-    return localJSONObject;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if ((paramObject instanceof aixh)) {
-      return this.jdField_a_of_type_Int == ((aixh)paramObject).jdField_a_of_type_Int;
-    }
-    return super.equals(paramObject);
-  }
-  
-  public String toString()
-  {
-    return "tab_id=" + this.jdField_a_of_type_Int + " recommend_count=" + this.jdField_b_of_type_Int + " tab_name=" + this.jdField_a_of_type_JavaLangString + " icon_url_select=" + this.jdField_b_of_type_JavaLangString + " icon_url_unselect=" + this.c;
   }
 }
 

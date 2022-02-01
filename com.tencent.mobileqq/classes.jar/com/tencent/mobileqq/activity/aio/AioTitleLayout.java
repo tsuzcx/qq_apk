@@ -45,7 +45,7 @@ public class AioTitleLayout
   private TextView a()
   {
     if (this.a == null) {
-      this.a = ((TextView)findViewById(2131365560));
+      this.a = ((TextView)findViewById(2131365602));
     }
     return this.a;
   }
@@ -98,7 +98,7 @@ public class AioTitleLayout
   private TextView b()
   {
     if (this.b == null) {
-      this.b = ((TextView)findViewById(2131378776));
+      this.b = ((TextView)findViewById(2131378936));
     }
     return this.b;
   }
@@ -199,7 +199,7 @@ public class AioTitleLayout
         {
           paramInt2 = j;
           paramInt1 = i;
-          if (((View)localObject1).getId() != 2131378776)
+          if (((View)localObject1).getId() != 2131378936)
           {
             localObject2 = (LinearLayout.LayoutParams)((View)localObject1).getLayoutParams();
             paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0);

@@ -1,39 +1,34 @@
-import android.content.res.Resources;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import mqq.app.QQPermissionCallback;
 
-public class ajgn
-  extends MqqHandler
+class ajgn
+  implements QQPermissionCallback
 {
-  public ajgn(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
+  ajgn(ajgm paramajgm) {}
   
-  public void handleMessage(Message paramMessage)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    switch (paramMessage.what)
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "requestLBSPermissionOnClickListener deny");
+    }
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener grant");
+    }
+    this.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    if (apch.a("recommend_troop") == null)
     {
-    case 1013: 
-    case 1015: 
-    case 1017: 
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (TroopWithCommonFriendsFragment.a(this.a) == null);
-      TroopWithCommonFriendsFragment.a(this.a).notifyDataSetChanged();
-      return;
-    case 1014: 
-      paramMessage = this.a.a.getResources().getString(2131718381);
-      QQToast.a(this.a.a, 1, paramMessage, 0).b(this.a.a());
-      return;
-    case 1016: 
-      QQToast.a(this.a.a, this.a.getString(2131717757), 0).b(this.a.a());
+      apch.a(new ajgo(this, "recommend_troop"));
       return;
     }
-    QQToast.a(this.a.a, this.a.getString(2131717746), 0).b(this.a.a());
+    this.a.a.jdField_a_of_type_Ajgd.b(false);
   }
 }
 

@@ -1,17 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.ConvertIFramesRunnable;
 
-final class yzk
-  implements ValueAnimator.AnimatorUpdateListener
+public class yzk
+  implements bbmh
 {
-  yzk(yzm paramyzm) {}
+  public yzk(HWEditLocalVideoPlayer.ConvertIFramesRunnable paramConvertIFramesRunnable) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if (this.a != null) {
-      this.a.a(paramValueAnimator);
-    }
-  }
+  public void a() {}
 }
 
 

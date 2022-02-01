@@ -1,20 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.ResultReceiver;
-import com.tencent.av.utils.PopupDialogQQSide;
-
-public class msk
-  implements DialogInterface.OnClickListener
+public abstract interface msk
 {
-  public msk(PopupDialogQQSide paramPopupDialogQQSide, ResultReceiver paramResultReceiver) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_ComTencentAvUtilsPopupDialogQQSide.getArguments());
-    }
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(int paramInt);
 }
 
 

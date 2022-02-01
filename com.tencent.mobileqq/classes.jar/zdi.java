@@ -1,43 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import java.io.File;
+import android.animation.ValueAnimator;
 
-class zdi
-  implements bhkl
+public class zdi
+  implements zdh
 {
-  private String jdField_a_of_type_JavaLangString;
-  private zdw jdField_a_of_type_Zdw;
+  public void a(ValueAnimator paramValueAnimator) {}
   
-  zdi(zdw paramzdw, String paramString)
-  {
-    this.jdField_a_of_type_Zdw = paramzdw;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public void b(ValueAnimator paramValueAnimator) {}
   
-  public void a() {}
+  public void c(ValueAnimator paramValueAnimator) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void ai_()
-  {
-    Object localObject = new File(this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_a_of_type_JavaLangString.lastIndexOf(".af")).concat("_").concat(String.valueOf(this.jdField_a_of_type_Zdw.c)).concat(".pcm"));
-    if (((File)localObject).exists())
-    {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-      bgmg.a((File)localObject, new File(this.jdField_a_of_type_JavaLangString));
-      if (zdg.a() != null)
-      {
-        localObject = zdg.a().obtainMessage(10);
-        ((Message)localObject).obj = this.jdField_a_of_type_Zdw;
-        zdg.a().sendMessage((Message)localObject);
-      }
-    }
-  }
-  
-  public void aj_() {}
+  public void d(ValueAnimator paramValueAnimator) {}
 }
 
 

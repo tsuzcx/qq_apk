@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import aeau;
+import aejy;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
-import vqu;
+import vtf;
 
 public class ConversationQbossBannerTitleEntranceCtrl$2
   implements Runnable
 {
-  public ConversationQbossBannerTitleEntranceCtrl$2(aeau paramaeau) {}
+  public ConversationQbossBannerTitleEntranceCtrl$2(aejy paramaejy) {}
   
   public void run()
   {
-    ((vqu)BaseApplicationImpl.getApplication().getRuntime().getManager(376)).a("circle_entrance", null);
+    ((vtf)BaseApplicationImpl.getApplication().getRuntime().getManager(376)).a("circle_entrance", null);
   }
 }
 

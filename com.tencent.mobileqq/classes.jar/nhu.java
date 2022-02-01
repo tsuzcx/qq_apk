@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.animation.Transformation;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
-
 public class nhu
-  implements bgtg<Integer>
 {
-  public nhu(PoiMapActivity paramPoiMapActivity) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void a(bgta<Integer> parambgta, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public nhu(int paramInt1, int paramInt2, int paramInt3)
   {
-    parambgta = (FrameLayout.LayoutParams)PoiMapActivity.c(this.a).getLayoutParams();
-    parambgta.bottomMargin = (this.a.q + this.a.t);
-    PoiMapActivity.c(this.a).setLayoutParams(parambgta);
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
 }
 

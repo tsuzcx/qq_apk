@@ -10,11 +10,11 @@ import android.os.Build.VERSION;
 import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import awmz;
-import azwm;
-import bcdi;
-import bcst;
-import bgsg;
+import axfr;
+import bapc;
+import bcwa;
+import bdll;
+import bhsi;
 import com.tencent.av.VideoConstants;
 import com.tencent.av.app.QuaReportInfo;
 import com.tencent.av.service.QQServiceForAV;
@@ -41,23 +41,23 @@ import java.util.Observable;
 import java.util.Set;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
-import lkw;
-import lmf;
-import lmg;
-import lmh;
-import lmi;
-import lmj;
-import lmk;
-import lml;
-import lmm;
-import lmn;
-import mqo;
+import llk;
+import lmt;
+import lmu;
+import lmv;
+import lmw;
+import lmx;
+import lmy;
+import lmz;
+import lna;
+import lnb;
 import mqq.app.NewIntent;
 import mqq.os.MqqHandler;
-import msb;
-import msm;
-import mue;
-import mwd;
+import mrl;
+import msz;
+import mtk;
+import mvd;
+import mxc;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.im.s2c.msgtype0x210.submsgtype0x126.submsgtype0x126.MsgBody;
@@ -71,13 +71,13 @@ public class AVNotifyCenter
   public QQAppInterface a;
   Runnable jdField_a_of_type_JavaLangRunnable = new AVNotifyCenter.2(this);
   String jdField_a_of_type_JavaLangString = null;
-  private ArrayList<lmk> jdField_a_of_type_JavaUtilArrayList;
-  HashMap<String, lmj> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private ArrayList<lmy> jdField_a_of_type_JavaUtilArrayList;
+  HashMap<String, lmx> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   Map jdField_a_of_type_JavaUtilMap = new HashMap();
-  ConcurrentHashMap<Long, lmf> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private final lmg jdField_a_of_type_Lmg = new lmg(this, "default", 0L);
+  ConcurrentHashMap<Long, lmt> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private final lmu jdField_a_of_type_Lmu = new lmu(this, "default", 0L);
   MqqHandler jdField_a_of_type_MqqOsMqqHandler = null;
-  private msb jdField_a_of_type_Msb;
+  private msz jdField_a_of_type_Msz;
   boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int = 0;
   private long jdField_b_of_type_Long;
@@ -85,24 +85,24 @@ public class AVNotifyCenter
   private String jdField_b_of_type_JavaLangString;
   private HashMap<Long, AVPhoneUserInfo> jdField_b_of_type_JavaUtilHashMap = new HashMap();
   Map jdField_b_of_type_JavaUtilMap = new HashMap();
-  private ConcurrentHashMap<Long, lmi> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private lmg jdField_b_of_type_Lmg = this.jdField_a_of_type_Lmg;
+  private ConcurrentHashMap<Long, lmw> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private lmu jdField_b_of_type_Lmu = this.jdField_a_of_type_Lmu;
   boolean jdField_b_of_type_Boolean = true;
   private int jdField_c_of_type_Int;
   private long jdField_c_of_type_Long;
   private String jdField_c_of_type_JavaLangString;
-  private HashMap<String, lmg> jdField_c_of_type_JavaUtilHashMap = new HashMap();
+  private HashMap<String, lmu> jdField_c_of_type_JavaUtilHashMap = new HashMap();
   public Map<String, String> c;
-  private ConcurrentHashMap<Long, lmi> jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<Long, lmw> jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private boolean jdField_c_of_type_Boolean;
   private int jdField_d_of_type_Int;
   public Map<String, Integer> d;
   private boolean jdField_d_of_type_Boolean;
   private int jdField_e_of_type_Int;
-  private Map<String, lmm> jdField_e_of_type_JavaUtilMap = new HashMap();
-  private Map<String, lmn> jdField_f_of_type_JavaUtilMap = new HashMap();
+  private Map<String, lna> jdField_e_of_type_JavaUtilMap = new HashMap();
+  private Map<String, lnb> jdField_f_of_type_JavaUtilMap = new HashMap();
   private boolean jdField_f_of_type_Boolean;
-  private Map<String, lmn> jdField_g_of_type_JavaUtilMap = new HashMap();
+  private Map<String, lnb> jdField_g_of_type_JavaUtilMap = new HashMap();
   private boolean jdField_g_of_type_Boolean;
   
   public AVNotifyCenter(QQAppInterface paramQQAppInterface)
@@ -114,7 +114,7 @@ public class AVNotifyCenter
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
       this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-      this.jdField_a_of_type_MqqOsMqqHandler = new lmh(Looper.getMainLooper(), this);
+      this.jdField_a_of_type_MqqOsMqqHandler = new lmv(Looper.getMainLooper(), this);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new AVNotifyCenter.1(this));
       c();
@@ -129,18 +129,18 @@ public class AVNotifyCenter
     if (paramInt3 == 0) {
       c(paramString);
     }
-    lmg locallmg;
+    lmu locallmu;
     do
     {
       return;
-      locallmg = a(paramString, true);
-    } while (locallmg == null);
-    locallmg.jdField_a_of_type_Boolean = paramBoolean;
-    locallmg.jdField_a_of_type_Int = paramInt3;
+      locallmu = a(paramString, true);
+    } while (locallmu == null);
+    locallmu.jdField_a_of_type_Boolean = paramBoolean;
+    locallmu.jdField_a_of_type_Int = paramInt3;
     try
     {
-      locallmg.jdField_a_of_type_Long = Long.parseLong(paramString);
-      locallmg.jdField_c_of_type_Int = paramInt2;
+      locallmu.jdField_a_of_type_Long = Long.parseLong(paramString);
+      locallmu.jdField_c_of_type_Int = paramInt2;
       return;
     }
     catch (Exception localException)
@@ -152,72 +152,72 @@ public class AVNotifyCenter
     }
   }
   
-  private void a(String paramString, lmg paramlmg)
+  private void a(String paramString, lmu paramlmu)
   {
-    lmg locallmg = this.jdField_b_of_type_Lmg;
+    lmu locallmu = this.jdField_b_of_type_Lmu;
     Object localObject;
     if (this.jdField_c_of_type_JavaUtilHashMap.size() == 1)
     {
-      paramlmg = null;
+      paramlmu = null;
       localObject = this.jdField_c_of_type_JavaUtilHashMap.keySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
-        paramlmg = (String)((Iterator)localObject).next();
-        paramlmg = (lmg)this.jdField_c_of_type_JavaUtilHashMap.get(paramlmg);
+        paramlmu = (String)((Iterator)localObject).next();
+        paramlmu = (lmu)this.jdField_c_of_type_JavaUtilHashMap.get(paramlmu);
       }
-      if (paramlmg != null)
+      if (paramlmu != null)
       {
-        this.jdField_b_of_type_Lmg = paramlmg;
-        localObject = paramlmg;
+        this.jdField_b_of_type_Lmu = paramlmu;
+        localObject = paramlmu;
       }
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("AVNotifyCenter", 2, "checkAndUpdateActive, from[" + paramString + "], data[" + localObject + "], last[" + locallmg + "], active[" + this.jdField_b_of_type_Lmg + "]");
+        QLog.i("AVNotifyCenter", 2, "checkAndUpdateActive, from[" + paramString + "], data[" + localObject + "], last[" + locallmu + "], active[" + this.jdField_b_of_type_Lmu + "]");
       }
       return;
-      this.jdField_b_of_type_Lmg = this.jdField_a_of_type_Lmg;
+      this.jdField_b_of_type_Lmu = this.jdField_a_of_type_Lmu;
       break;
       if (this.jdField_c_of_type_JavaUtilHashMap.size() == 0)
       {
-        this.jdField_b_of_type_Lmg = this.jdField_a_of_type_Lmg;
-        localObject = paramlmg;
+        this.jdField_b_of_type_Lmu = this.jdField_a_of_type_Lmu;
+        localObject = paramlmu;
       }
-      else if (paramlmg == null)
+      else if (paramlmu == null)
       {
         localObject = this.jdField_c_of_type_JavaUtilHashMap.keySet().iterator();
         while (((Iterator)localObject).hasNext())
         {
-          paramlmg = (String)((Iterator)localObject).next();
-          paramlmg = (lmg)this.jdField_c_of_type_JavaUtilHashMap.get(paramlmg);
+          paramlmu = (String)((Iterator)localObject).next();
+          paramlmu = (lmu)this.jdField_c_of_type_JavaUtilHashMap.get(paramlmu);
         }
-        if (paramlmg != null)
+        if (paramlmu != null)
         {
-          this.jdField_b_of_type_Lmg = paramlmg;
-          localObject = paramlmg;
+          this.jdField_b_of_type_Lmu = paramlmu;
+          localObject = paramlmu;
         }
         else
         {
-          this.jdField_b_of_type_Lmg = this.jdField_a_of_type_Lmg;
-          localObject = paramlmg;
+          this.jdField_b_of_type_Lmu = this.jdField_a_of_type_Lmu;
+          localObject = paramlmu;
         }
       }
-      else if ((paramlmg.jdField_d_of_type_Boolean) && (!this.jdField_b_of_type_Lmg.jdField_d_of_type_Boolean))
+      else if ((paramlmu.jdField_d_of_type_Boolean) && (!this.jdField_b_of_type_Lmu.jdField_d_of_type_Boolean))
       {
-        this.jdField_b_of_type_Lmg = paramlmg;
-        localObject = paramlmg;
+        this.jdField_b_of_type_Lmu = paramlmu;
+        localObject = paramlmu;
       }
       else
       {
-        localObject = paramlmg;
-        if (this.jdField_b_of_type_Lmg.jdField_a_of_type_Long == 0L)
+        localObject = paramlmu;
+        if (this.jdField_b_of_type_Lmu.jdField_a_of_type_Long == 0L)
         {
-          localObject = paramlmg;
-          if (TextUtils.isEmpty(this.jdField_b_of_type_Lmg.jdField_b_of_type_JavaLangString))
+          localObject = paramlmu;
+          if (TextUtils.isEmpty(this.jdField_b_of_type_Lmu.jdField_b_of_type_JavaLangString))
           {
-            this.jdField_b_of_type_Lmg = paramlmg;
-            localObject = paramlmg;
+            this.jdField_b_of_type_Lmu = paramlmu;
+            localObject = paramlmu;
           }
         }
       }
@@ -239,13 +239,13 @@ public class AVNotifyCenter
   
   public int a()
   {
-    return this.jdField_b_of_type_Lmg.jdField_c_of_type_Int;
+    return this.jdField_b_of_type_Lmu.jdField_c_of_type_Int;
   }
   
   public int a(long paramLong)
   {
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
-      return ((lmf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Int;
+      return ((lmt)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Int;
     }
     return 3999;
   }
@@ -273,7 +273,7 @@ public class AVNotifyCenter
     {
       localObject1 = localObject2;
       if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
-        localObject1 = (lmi)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+        localObject1 = (lmw)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
       }
     }
     for (;;)
@@ -284,13 +284,13 @@ public class AVNotifyCenter
       if (localObject1 == null) {
         break;
       }
-      return ((lmi)localObject1).jdField_a_of_type_Long;
+      return ((lmw)localObject1).jdField_a_of_type_Long;
       localObject1 = localObject2;
       if (paramInt == 1)
       {
         localObject1 = localObject2;
         if (this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
-          localObject1 = (lmi)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+          localObject1 = (lmw)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
         }
       }
     }
@@ -303,9 +303,9 @@ public class AVNotifyCenter
     {
       if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
       {
-        lmj locallmj = (lmj)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        QLog.d("AVNotifyCenter", 1, "getOtherTerminalAvChattingRoomId roomInfo.mRoomId=" + locallmj.jdField_a_of_type_Long + ", peerUin=" + paramString);
-        long l = locallmj.jdField_a_of_type_Long;
+        lmx locallmx = (lmx)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        QLog.d("AVNotifyCenter", 1, "getOtherTerminalAvChattingRoomId roomInfo.mRoomId=" + locallmx.jdField_a_of_type_Long + ", peerUin=" + paramString);
+        long l = locallmx.jdField_a_of_type_Long;
         return l;
       }
       return 0L;
@@ -326,7 +326,7 @@ public class AVNotifyCenter
       if (str2 != null) {
         return str2;
       }
-      return msm.a(str1, 4);
+      return mtk.a(str1, 4);
     }
     return null;
   }
@@ -338,9 +338,9 @@ public class AVNotifyCenter
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        lmk locallmk = (lmk)localIterator.next();
-        if (paramString.equals(locallmk.jdField_a_of_type_JavaLangString)) {
-          return locallmk.jdField_b_of_type_JavaLangString;
+        lmy locallmy = (lmy)localIterator.next();
+        if (paramString.equals(locallmy.jdField_a_of_type_JavaLangString)) {
+          return locallmy.jdField_b_of_type_JavaLangString;
         }
       }
     }
@@ -352,11 +352,11 @@ public class AVNotifyCenter
     return this.jdField_a_of_type_JavaUtilMap;
   }
   
-  public Vector<lml> a(int paramInt, long paramLong)
+  public Vector<lmz> a(int paramInt, long paramLong)
   {
     if ((paramInt == 2) && (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))))
     {
-      Vector localVector = ((lmi)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong))).jdField_a_of_type_JavaUtilVector;
+      Vector localVector = ((lmw)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong))).jdField_a_of_type_JavaUtilVector;
       if ((localVector != null) && (localVector.size() > 0)) {
         return localVector;
       }
@@ -364,14 +364,14 @@ public class AVNotifyCenter
     return null;
   }
   
-  public Vector<lml> a(long paramLong)
+  public Vector<lmz> a(long paramLong)
   {
     if ((this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))))
     {
-      Object localObject = (lmi)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+      Object localObject = (lmw)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
       if (localObject != null)
       {
-        localObject = ((lmi)localObject).jdField_a_of_type_JavaUtilVector;
+        localObject = ((lmw)localObject).jdField_a_of_type_JavaUtilVector;
         if (localObject != null) {
           return localObject;
         }
@@ -380,7 +380,7 @@ public class AVNotifyCenter
     return null;
   }
   
-  public lmg a(String paramString, boolean paramBoolean)
+  public lmu a(String paramString, boolean paramBoolean)
   {
     Object localObject2 = null;
     for (;;)
@@ -396,16 +396,16 @@ public class AVNotifyCenter
         }
         if (this.jdField_c_of_type_JavaUtilHashMap.containsKey(paramString))
         {
-          localObject1 = (lmg)this.jdField_c_of_type_JavaUtilHashMap.get(paramString);
+          localObject1 = (lmu)this.jdField_c_of_type_JavaUtilHashMap.get(paramString);
           continue;
         }
         if (paramBoolean)
         {
           long l = AudioHelper.b();
-          localObject1 = new lmg(this, "normal", l);
+          localObject1 = new lmu(this, "normal", l);
           this.jdField_c_of_type_JavaUtilHashMap.put(paramString, localObject1);
-          a("getChatSession", (lmg)localObject1);
-          QLog.w("AVNotifyCenter", 1, "getChatSession, create sessionId[" + paramString + "], mAvChatDataMap[" + this.jdField_c_of_type_JavaUtilHashMap.size() + "], data[" + localObject1 + "], mActiveChatData[" + this.jdField_b_of_type_Lmg + "], seq[" + l + "]");
+          a("getChatSession", (lmu)localObject1);
+          QLog.w("AVNotifyCenter", 1, "getChatSession, create sessionId[" + paramString + "], mAvChatDataMap[" + this.jdField_c_of_type_JavaUtilHashMap.size() + "], data[" + localObject1 + "], mActiveChatData[" + this.jdField_b_of_type_Lmu + "], seq[" + l + "]");
           continue;
         }
         localObject1 = localObject2;
@@ -419,26 +419,26 @@ public class AVNotifyCenter
     }
   }
   
-  public lml a(int paramInt, long paramLong)
+  public lmz a(int paramInt, long paramLong)
   {
     if ((paramInt == 2) && (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))))
     {
-      Vector localVector = ((lmi)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong))).jdField_a_of_type_JavaUtilVector;
+      Vector localVector = ((lmw)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong))).jdField_a_of_type_JavaUtilVector;
       if ((localVector != null) && (localVector.size() > 0)) {
-        return (lml)localVector.get(0);
+        return (lmz)localVector.get(0);
       }
     }
     return null;
   }
   
-  public lmm a(long paramLong)
+  public lna a(long paramLong)
   {
     Object localObject2 = String.valueOf(paramLong) + String.valueOf(2);
     Object localObject1 = String.valueOf(paramLong) + String.valueOf(10);
-    localObject2 = (lmm)this.jdField_e_of_type_JavaUtilMap.get(localObject2);
-    lmm locallmm = (lmm)this.jdField_e_of_type_JavaUtilMap.get(localObject1);
+    localObject2 = (lna)this.jdField_e_of_type_JavaUtilMap.get(localObject2);
+    lna locallna = (lna)this.jdField_e_of_type_JavaUtilMap.get(localObject1);
     localObject1 = String.valueOf(paramLong) + String.valueOf(12);
-    localObject1 = (lmm)this.jdField_e_of_type_JavaUtilMap.get(localObject1);
+    localObject1 = (lna)this.jdField_e_of_type_JavaUtilMap.get(localObject1);
     int i = b(paramLong);
     if ((i != 0) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(1, paramLong))) {
       if (i != 12) {
@@ -452,27 +452,27 @@ public class AVNotifyCenter
       {
         if (i == 10)
         {
-          localObject2 = locallmm;
+          localObject2 = locallna;
           if (AudioHelper.f()) {
             QLog.w("AVNotifyCenter", 1, "getChoosedRoom, groupid[" + paramLong + "], avtype[" + i + "], VideoRoomInfo[" + localObject2 + "]");
           }
           return localObject2;
-          if ((localObject1 == null) || (((lmm)localObject1).jdField_a_of_type_Int <= 0)) {
+          if ((localObject1 == null) || (((lna)localObject1).jdField_a_of_type_Int <= 0)) {
             break label296;
           }
         }
         for (;;)
         {
-          if ((localObject2 != null) && (((lmm)localObject2).jdField_a_of_type_Int > 0)) {
+          if ((localObject2 != null) && (((lna)localObject2).jdField_a_of_type_Int > 0)) {
             localObject1 = localObject2;
           }
           for (;;)
           {
             localObject2 = localObject1;
-            if (locallmm != null)
+            if (locallna != null)
             {
-              localObject2 = locallmm;
-              if (locallmm.jdField_a_of_type_Int > 0) {
+              localObject2 = locallna;
+              if (locallna.jdField_a_of_type_Int > 0) {
                 break;
               }
               localObject2 = localObject1;
@@ -489,37 +489,37 @@ public class AVNotifyCenter
     }
   }
   
-  public lmm a(long paramLong, int paramInt)
+  public lna a(long paramLong, int paramInt)
   {
     String str = String.valueOf(paramLong) + String.valueOf(paramInt);
-    return (lmm)this.jdField_e_of_type_JavaUtilMap.get(str);
+    return (lna)this.jdField_e_of_type_JavaUtilMap.get(str);
   }
   
-  public lmn a(long paramLong, int paramInt)
+  public lnb a(long paramLong, int paramInt)
   {
     String str = String.valueOf(paramLong);
-    lmn locallmn = null;
+    lnb locallnb = null;
     if (paramInt == 2) {
-      locallmn = (lmn)this.jdField_f_of_type_JavaUtilMap.get(str);
+      locallnb = (lnb)this.jdField_f_of_type_JavaUtilMap.get(str);
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.w("AVNotifyCenter", 1, "getTipsRoomInfo, relationId[" + paramLong + "], relationType[" + paramInt + "], infos[" + locallmn + "]");
+        QLog.w("AVNotifyCenter", 1, "getTipsRoomInfo, relationId[" + paramLong + "], relationType[" + paramInt + "], infos[" + locallnb + "]");
       }
-      return locallmn;
+      return locallnb;
       if (paramInt == 1) {
-        locallmn = (lmn)this.jdField_g_of_type_JavaUtilMap.get(str);
+        locallnb = (lnb)this.jdField_g_of_type_JavaUtilMap.get(str);
       }
     }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Msb != null)
+    if (this.jdField_a_of_type_Msz != null)
     {
-      this.jdField_a_of_type_Msb.b();
-      this.jdField_a_of_type_Msb = null;
+      this.jdField_a_of_type_Msz.b();
+      this.jdField_a_of_type_Msz = null;
     }
   }
   
@@ -612,12 +612,12 @@ public class AVNotifyCenter
         paramInt1 = i;
         while (paramInt1 < paramInt2)
         {
-          localObject2 = new lml(this);
-          ((lml)localObject2).jdField_a_of_type_Long = paramArrayOfLong[paramInt1];
+          localObject2 = new lmz(this);
+          ((lmz)localObject2).jdField_a_of_type_Long = paramArrayOfLong[paramInt1];
           ((Vector)localObject1).add(localObject2);
           paramInt1 += 1;
         }
-        paramArrayOfLong = new lmi(this);
+        paramArrayOfLong = new lmw(this);
         paramArrayOfLong.jdField_a_of_type_Long = paramLong2;
         paramArrayOfLong.jdField_a_of_type_JavaUtilVector = ((Vector)localObject1);
         this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), paramArrayOfLong);
@@ -627,21 +627,21 @@ public class AVNotifyCenter
         this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong1));
       }
     } while (paramLong2 == 0L);
-    Object localObject1 = new lmi(this);
-    ((lmi)localObject1).jdField_a_of_type_Long = paramLong2;
-    ((lmi)localObject1).jdField_a_of_type_JavaUtilVector = null;
+    Object localObject1 = new lmw(this);
+    ((lmw)localObject1).jdField_a_of_type_Long = paramLong2;
+    ((lmw)localObject1).jdField_a_of_type_JavaUtilVector = null;
     if (paramArrayOfLong != null)
     {
       localObject2 = new Vector();
       paramInt1 = j;
       while (paramInt1 < paramArrayOfLong.length)
       {
-        lml locallml = new lml(this);
-        locallml.jdField_a_of_type_Long = paramArrayOfLong[paramInt1];
-        ((Vector)localObject2).add(locallml);
+        lmz locallmz = new lmz(this);
+        locallmz.jdField_a_of_type_Long = paramArrayOfLong[paramInt1];
+        ((Vector)localObject2).add(locallmz);
         paramInt1 += 1;
       }
-      ((lmi)localObject1).jdField_a_of_type_JavaUtilVector = ((Vector)localObject2);
+      ((lmw)localObject1).jdField_a_of_type_JavaUtilVector = ((Vector)localObject2);
     }
     this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), localObject1);
   }
@@ -676,14 +676,14 @@ public class AVNotifyCenter
     {
       localObject1 = this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
       l = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue();
-      localObject2 = (lmi)((ConcurrentHashMap)localObject1).get(Long.valueOf(paramLong));
+      localObject2 = (lmw)((ConcurrentHashMap)localObject1).get(Long.valueOf(paramLong));
       if (localObject2 == null) {
         break label362;
       }
       localObject1 = (String)localObject3 + "], containsKey[true";
       boolean bool3 = false;
       boolean bool1 = false;
-      localObject3 = ((lmi)localObject2).jdField_a_of_type_JavaUtilVector;
+      localObject3 = ((lmw)localObject2).jdField_a_of_type_JavaUtilVector;
       bool2 = bool3;
       if (localObject3 == null) {
         break label202;
@@ -699,7 +699,7 @@ public class AVNotifyCenter
       if (paramInt >= i) {
         break label202;
       }
-      if (l != ((lml)((Vector)localObject3).elementAt(paramInt)).jdField_a_of_type_Long) {
+      if (l != ((lmz)((Vector)localObject3).elementAt(paramInt)).jdField_a_of_type_Long) {
         break label492;
       }
       bool1 = true;
@@ -720,10 +720,10 @@ public class AVNotifyCenter
       Object localObject4;
       if ((localObject3 != null) && (!bool2))
       {
-        localObject4 = new lml(this);
-        ((lml)localObject4).jdField_a_of_type_Long = l;
+        localObject4 = new lmz(this);
+        ((lmz)localObject4).jdField_a_of_type_Long = l;
         ((Vector)localObject3).add(localObject4);
-        ((lmi)localObject2).jdField_a_of_type_Long += 1L;
+        ((lmw)localObject2).jdField_a_of_type_Long += 1L;
         localObject1 = (String)localObject1 + "], cur[" + localObject2;
       }
       for (;;)
@@ -733,12 +733,12 @@ public class AVNotifyCenter
         return;
         localObject2 = (String)localObject3 + "], containsKey[false";
         localObject3 = new Vector();
-        localObject4 = new lml(this);
-        ((lml)localObject4).jdField_a_of_type_Long = l;
+        localObject4 = new lmz(this);
+        ((lmz)localObject4).jdField_a_of_type_Long = l;
         ((Vector)localObject3).add(localObject4);
-        localObject4 = new lmi(this);
-        ((lmi)localObject4).jdField_a_of_type_Long = 1L;
-        ((lmi)localObject4).jdField_a_of_type_JavaUtilVector = ((Vector)localObject3);
+        localObject4 = new lmw(this);
+        ((lmw)localObject4).jdField_a_of_type_Long = 1L;
+        ((lmw)localObject4).jdField_a_of_type_JavaUtilVector = ((Vector)localObject3);
         localObject2 = (String)localObject2 + "], cur[" + localObject4;
         ((ConcurrentHashMap)localObject1).put(Long.valueOf(paramLong), localObject4);
         localObject1 = localObject2;
@@ -769,11 +769,11 @@ public class AVNotifyCenter
         break label445;
       }
       str2 = (String)localObject2 + "], containsKey[true";
-      localObject2 = (lmi)((ConcurrentHashMap)localObject1).get(Long.valueOf(paramLong));
+      localObject2 = (lmw)((ConcurrentHashMap)localObject1).get(Long.valueOf(paramLong));
       str2 = str2 + "], last[" + localObject2;
-      localVector = ((lmi)localObject2).jdField_a_of_type_JavaUtilVector;
-      ((lmi)localObject2).jdField_a_of_type_Long -= 1L;
-      if (((lmi)localObject2).jdField_a_of_type_Long != 0L) {
+      localVector = ((lmw)localObject2).jdField_a_of_type_JavaUtilVector;
+      ((lmw)localObject2).jdField_a_of_type_Long -= 1L;
+      if (((lmw)localObject2).jdField_a_of_type_Long != 0L) {
         break label354;
       }
       ((ConcurrentHashMap)localObject1).remove(Long.valueOf(paramLong));
@@ -808,7 +808,7 @@ public class AVNotifyCenter
       {
         if (paramInt1 < paramInt2)
         {
-          if (l == ((lml)localVector.elementAt(paramInt1)).jdField_a_of_type_Long) {
+          if (l == ((lmz)localVector.elementAt(paramInt1)).jdField_a_of_type_Long) {
             localVector.remove(paramInt1);
           }
         }
@@ -838,25 +838,25 @@ public class AVNotifyCenter
         QLog.d("AVNotifyCenter", 2, "setVideoRoomInfo, but group is exited, groupid: " + paramLong);
       }
     }
-    lmm locallmm1;
-    lmm locallmm2;
+    lna locallna1;
+    lna locallna2;
     do
     {
       return;
-      locallmm1 = new lmm(this);
-      locallmm1.jdField_b_of_type_Long = paramLong;
-      locallmm1.jdField_b_of_type_Int = paramInt2;
-      locallmm1.f = paramInt6;
-      locallmm1.jdField_d_of_type_Int = paramInt3;
-      locallmm1.jdField_e_of_type_Int = paramInt4;
-      locallmm1.jdField_c_of_type_Int = paramInt5;
-      locallmm1.jdField_a_of_type_Int = paramInt7;
-      locallmm1.jdField_c_of_type_Long = System.currentTimeMillis();
+      locallna1 = new lna(this);
+      locallna1.jdField_b_of_type_Long = paramLong;
+      locallna1.jdField_b_of_type_Int = paramInt2;
+      locallna1.f = paramInt6;
+      locallna1.jdField_d_of_type_Int = paramInt3;
+      locallna1.jdField_e_of_type_Int = paramInt4;
+      locallna1.jdField_c_of_type_Int = paramInt5;
+      locallna1.jdField_a_of_type_Int = paramInt7;
+      locallna1.jdField_c_of_type_Long = System.currentTimeMillis();
       String str = String.valueOf(paramLong) + String.valueOf(paramInt2);
-      locallmm2 = (lmm)this.jdField_e_of_type_JavaUtilMap.get(str);
-      this.jdField_e_of_type_JavaUtilMap.put(str, locallmm1);
+      locallna2 = (lna)this.jdField_e_of_type_JavaUtilMap.get(str);
+      this.jdField_e_of_type_JavaUtilMap.put(str, locallna1);
     } while (!AudioHelper.f());
-    QLog.w("AVNotifyCenter", 1, "setVideoRoomInfo[" + paramInt1 + "], \nOld[" + locallmm2 + "], \nNew[" + locallmm1 + "]");
+    QLog.w("AVNotifyCenter", 1, "setVideoRoomInfo[" + paramInt1 + "], \nOld[" + locallna2 + "], \nNew[" + locallna1 + "]");
   }
   
   public void a(int paramInt, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
@@ -884,9 +884,9 @@ public class AVNotifyCenter
       paramInt = j;
       while (paramInt < k)
       {
-        lml locallml = new lml(this);
-        locallml.jdField_a_of_type_Long = paramArrayOfLong[paramInt];
-        localVector.add(locallml);
+        lmz locallmz = new lmz(this);
+        locallmz.jdField_a_of_type_Long = paramArrayOfLong[paramInt];
+        localVector.add(locallmz);
         i += 1;
         paramInt += 1;
       }
@@ -894,7 +894,7 @@ public class AVNotifyCenter
         return;
       }
     }
-    paramArrayOfLong = new lmi(this);
+    paramArrayOfLong = new lmw(this);
     paramArrayOfLong.jdField_a_of_type_Long = i;
     paramArrayOfLong.jdField_a_of_type_JavaUtilVector = localVector;
     localConcurrentHashMap.put(Long.valueOf(paramLong), paramArrayOfLong);
@@ -941,22 +941,22 @@ public class AVNotifyCenter
         paramInt = 0;
         if (paramInt < i)
         {
-          lml locallml = new lml(this);
-          locallml.jdField_a_of_type_Long = paramArrayOfLong[paramInt];
+          lmz locallmz = new lmz(this);
+          locallmz.jdField_a_of_type_Long = paramArrayOfLong[paramInt];
           if (paramArrayOfInt[paramInt] == 1) {}
           for (bool = true;; bool = false)
           {
-            locallml.jdField_a_of_type_Boolean = bool;
-            if ((locallml.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_JavaUtilHashMap.containsKey(Long.valueOf(locallml.jdField_a_of_type_Long)))) {
-              ((ArrayList)localObject2).add(Long.valueOf(locallml.jdField_a_of_type_Long));
+            locallmz.jdField_a_of_type_Boolean = bool;
+            if ((locallmz.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_JavaUtilHashMap.containsKey(Long.valueOf(locallmz.jdField_a_of_type_Long)))) {
+              ((ArrayList)localObject2).add(Long.valueOf(locallmz.jdField_a_of_type_Long));
             }
-            ((Vector)localObject1).add(locallml);
+            ((Vector)localObject1).add(locallmz);
             paramInt += 1;
             break;
           }
         }
         a((ArrayList)localObject2);
-        paramArrayOfLong = new lmi(this);
+        paramArrayOfLong = new lmw(this);
         paramArrayOfLong.jdField_a_of_type_Long = paramLong2;
         paramArrayOfLong.jdField_a_of_type_JavaUtilVector = ((Vector)localObject1);
         this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), paramArrayOfLong);
@@ -973,19 +973,19 @@ public class AVNotifyCenter
       paramInt = 0;
       if (paramInt < i)
       {
-        localObject2 = new lml(this);
-        ((lml)localObject2).jdField_a_of_type_Long = paramArrayOfLong[paramInt];
+        localObject2 = new lmz(this);
+        ((lmz)localObject2).jdField_a_of_type_Long = paramArrayOfLong[paramInt];
         if (paramArrayOfInt[paramInt] == 1) {}
         for (bool = true;; bool = false)
         {
-          ((lml)localObject2).jdField_a_of_type_Boolean = bool;
+          ((lmz)localObject2).jdField_a_of_type_Boolean = bool;
           ((Vector)localObject1).add(localObject2);
           paramInt += 1;
           break;
         }
       }
     }
-    paramArrayOfLong = new lmi(this);
+    paramArrayOfLong = new lmw(this);
     paramArrayOfLong.jdField_a_of_type_Long = paramLong2;
     paramArrayOfLong.jdField_a_of_type_JavaUtilVector = ((Vector)localObject1);
     this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), paramArrayOfLong);
@@ -994,35 +994,35 @@ public class AVNotifyCenter
   public void a(int paramInt, Long paramLong, boolean paramBoolean)
   {
     if (AudioHelper.f()) {
-      QLog.w("AVNotifyCenter", 1, "setChating, relationType[" + paramInt + "], relationId[" + paramLong + "], isChating[" + paramBoolean + "], mActiveChatData[" + this.jdField_b_of_type_Lmg + "]");
+      QLog.w("AVNotifyCenter", 1, "setChating, relationType[" + paramInt + "], relationId[" + paramLong + "], isChating[" + paramBoolean + "], mActiveChatData[" + this.jdField_b_of_type_Lmu + "]");
     }
     Object localObject = String.valueOf(paramLong);
     if (paramBoolean)
     {
       localObject = a((String)localObject, true);
-      ((lmg)localObject).jdField_a_of_type_Boolean = false;
-      ((lmg)localObject).jdField_a_of_type_Long = paramLong.longValue();
-      ((lmg)localObject).jdField_c_of_type_Int = paramInt;
-      if (((lmg)localObject).jdField_c_of_type_Int != 1) {
+      ((lmu)localObject).jdField_a_of_type_Boolean = false;
+      ((lmu)localObject).jdField_a_of_type_Long = paramLong.longValue();
+      ((lmu)localObject).jdField_c_of_type_Int = paramInt;
+      if (((lmu)localObject).jdField_c_of_type_Int != 1) {
         break label208;
       }
-      ((lmg)localObject).jdField_b_of_type_Int = 1;
+      ((lmu)localObject).jdField_b_of_type_Int = 1;
     }
     for (;;)
     {
-      ((lmg)localObject).jdField_d_of_type_Boolean = paramBoolean;
-      if ((((lmg)localObject).jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Lmg != localObject)) {
-        a("setChating.1", (lmg)localObject);
+      ((lmu)localObject).jdField_d_of_type_Boolean = paramBoolean;
+      if ((((lmu)localObject).jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Lmu != localObject)) {
+        a("setChating.1", (lmu)localObject);
       }
       if (AudioHelper.f()) {
-        QLog.w("AVNotifyCenter", 1, "setChating, end, data[" + localObject + "], mActiveChatData[" + this.jdField_b_of_type_Lmg + "]");
+        QLog.w("AVNotifyCenter", 1, "setChating, end, data[" + localObject + "], mActiveChatData[" + this.jdField_b_of_type_Lmu + "]");
       }
       return;
       label208:
-      if (((lmg)localObject).jdField_c_of_type_Int == 2) {
-        ((lmg)localObject).jdField_b_of_type_Int = 3000;
-      } else if (((lmg)localObject).jdField_c_of_type_Int == 3) {
-        ((lmg)localObject).jdField_b_of_type_Int = 0;
+      if (((lmu)localObject).jdField_c_of_type_Int == 2) {
+        ((lmu)localObject).jdField_b_of_type_Int = 3000;
+      } else if (((lmu)localObject).jdField_c_of_type_Int == 3) {
+        ((lmu)localObject).jdField_b_of_type_Int = 0;
       }
     }
   }
@@ -1034,47 +1034,47 @@ public class AVNotifyCenter
   
   public void a(int paramInt, String paramString1, String paramString2, boolean paramBoolean)
   {
-    lmg locallmg = a(paramString1, false);
-    if (locallmg != null)
+    lmu locallmu = a(paramString1, false);
+    if (locallmu != null)
     {
-      locallmg.jdField_a_of_type_Boolean = true;
-      locallmg.jdField_b_of_type_Int = paramInt;
-      locallmg.jdField_b_of_type_JavaLangString = paramString1;
-      locallmg.jdField_c_of_type_JavaLangString = paramString2;
-      locallmg.jdField_b_of_type_Boolean = paramBoolean;
-      locallmg.jdField_c_of_type_Int = 0;
-      locallmg.jdField_a_of_type_Long = mqo.a(paramString1);
+      locallmu.jdField_a_of_type_Boolean = true;
+      locallmu.jdField_b_of_type_Int = paramInt;
+      locallmu.jdField_b_of_type_JavaLangString = paramString1;
+      locallmu.jdField_c_of_type_JavaLangString = paramString2;
+      locallmu.jdField_b_of_type_Boolean = paramBoolean;
+      locallmu.jdField_c_of_type_Int = 0;
+      locallmu.jdField_a_of_type_Long = mrl.a(paramString1);
     }
-    QLog.w("AVNotifyCenter", 1, "setChating, uinType[" + paramInt + "], peerUin[" + paramString1 + "], extraUin[" + paramString2 + "], isReceiver[" + paramBoolean + "], AvChatData[" + locallmg + "], mActiveChatData[" + this.jdField_b_of_type_Lmg + "]");
+    QLog.w("AVNotifyCenter", 1, "setChating, uinType[" + paramInt + "], peerUin[" + paramString1 + "], extraUin[" + paramString2 + "], isReceiver[" + paramBoolean + "], AvChatData[" + locallmu + "], mActiveChatData[" + this.jdField_b_of_type_Lmu + "]");
   }
   
   public void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    lmg locallmg = a(paramString, false);
-    QLog.w("AVNotifyCenter", 1, "setWaittingState, sessionId[" + paramString + "], relationType[" + paramInt + "], IsWaitting[" + paramBoolean1 + "], isReceiver[" + paramBoolean2 + "], AvChatData[" + locallmg + "]");
-    if (locallmg != null)
+    lmu locallmu = a(paramString, false);
+    QLog.w("AVNotifyCenter", 1, "setWaittingState, sessionId[" + paramString + "], relationType[" + paramInt + "], IsWaitting[" + paramBoolean1 + "], isReceiver[" + paramBoolean2 + "], AvChatData[" + locallmu + "]");
+    if (locallmu != null)
     {
-      locallmg.jdField_c_of_type_Boolean = paramBoolean1;
+      locallmu.jdField_c_of_type_Boolean = paramBoolean1;
       if (!paramBoolean1) {
         break label175;
       }
       if (!paramBoolean2) {
         break label166;
       }
-      locallmg.jdField_d_of_type_Boolean = false;
+      locallmu.jdField_d_of_type_Boolean = false;
     }
     for (;;)
     {
-      if ((locallmg.jdField_d_of_type_Boolean) && (locallmg != this.jdField_b_of_type_Lmg)) {
-        a("setWaittingState", locallmg);
+      if ((locallmu.jdField_d_of_type_Boolean) && (locallmu != this.jdField_b_of_type_Lmu)) {
+        a("setWaittingState", locallmu);
       }
-      QLog.w("AVNotifyCenter", 1, "setWaittingState, end, AvChatData[" + locallmg + "]");
+      QLog.w("AVNotifyCenter", 1, "setWaittingState, end, AvChatData[" + locallmu + "]");
       return;
       label166:
-      locallmg.jdField_d_of_type_Boolean = true;
+      locallmu.jdField_d_of_type_Boolean = true;
       continue;
       label175:
-      locallmg.jdField_d_of_type_Boolean = true;
+      locallmu.jdField_d_of_type_Boolean = true;
     }
   }
   
@@ -1117,10 +1117,10 @@ public class AVNotifyCenter
         if (localObject2 == null) {
           break label227;
         }
-        if (((lmm)localObject2).jdField_a_of_type_Int <= 0) {
+        if (((lna)localObject2).jdField_a_of_type_Int <= 0) {
           break label219;
         }
-        localObject1 = "1;" + (((lmm)localObject2).jdField_a_of_type_Int + paramInt2);
+        localObject1 = "1;" + (((lna)localObject2).jdField_a_of_type_Int + paramInt2);
       }
     }
     for (;;)
@@ -1152,20 +1152,20 @@ public class AVNotifyCenter
   public void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     Object localObject1 = null;
-    lmn locallmn = null;
+    lnb locallnb = null;
     Object localObject2 = null;
     if (paramInt1 == 2)
     {
       localObject1 = localObject2;
       if (this.jdField_f_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
-        localObject1 = (lmn)this.jdField_f_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+        localObject1 = (lnb)this.jdField_f_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
       }
-      locallmn = new lmn(this);
-      locallmn.jdField_a_of_type_Long = paramLong;
-      locallmn.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_f_of_type_JavaUtilMap.put(String.valueOf(paramLong), locallmn);
+      locallnb = new lnb(this);
+      locallnb.jdField_a_of_type_Long = paramLong;
+      locallnb.jdField_a_of_type_Boolean = paramBoolean;
+      this.jdField_f_of_type_JavaUtilMap.put(String.valueOf(paramLong), locallnb);
       localObject2 = localObject1;
-      localObject1 = locallmn;
+      localObject1 = locallnb;
     }
     for (;;)
     {
@@ -1177,17 +1177,17 @@ public class AVNotifyCenter
       return;
       if (paramInt1 == 1)
       {
-        localObject1 = locallmn;
+        localObject1 = locallnb;
         if (this.jdField_g_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
-          localObject1 = (lmn)this.jdField_g_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+          localObject1 = (lnb)this.jdField_g_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
         }
-        locallmn = new lmn(this);
-        locallmn.jdField_a_of_type_Long = paramLong;
-        locallmn.jdField_a_of_type_Boolean = paramBoolean;
-        locallmn.jdField_a_of_type_Int = paramInt2;
-        this.jdField_g_of_type_JavaUtilMap.put(String.valueOf(paramLong), locallmn);
+        locallnb = new lnb(this);
+        locallnb.jdField_a_of_type_Long = paramLong;
+        locallnb.jdField_a_of_type_Boolean = paramBoolean;
+        locallnb.jdField_a_of_type_Int = paramInt2;
+        this.jdField_g_of_type_JavaUtilMap.put(String.valueOf(paramLong), locallnb);
         localObject2 = localObject1;
-        localObject1 = locallmn;
+        localObject1 = locallnb;
       }
       else
       {
@@ -1235,16 +1235,16 @@ public class AVNotifyCenter
       localSharedPreferences.edit().putStringSet(str2, (Set)localObject).commit();
       return;
     }
-    Object localObject = new lmf();
-    ((lmf)localObject).jdField_a_of_type_Int = paramInt;
-    ((lmf)localObject).jdField_a_of_type_Long = paramLong;
+    Object localObject = new lmt();
+    ((lmt)localObject).jdField_a_of_type_Int = paramInt;
+    ((lmt)localObject).jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong), localObject);
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
     boolean bool = false;
-    bgsg.b(paramQQAppInterface.getApplication(), paramInt, paramQQAppInterface.getAccount());
+    bhsi.b(paramQQAppInterface.getApplication(), paramInt, paramQQAppInterface.getAccount());
     SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit();
     localEditor.putString("group_video_push_cfg_txt." + paramQQAppInterface.getAccount(), paramString).commit();
     try
@@ -1301,7 +1301,7 @@ public class AVNotifyCenter
     synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
       QLog.d("AVNotifyCenter", 1, "addOtherTerminalAvChating peerUin = " + paramString + ",roomid = " + paramLong + ",sessionType = " + paramInt);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new lmj(this, paramLong, paramInt));
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new lmx(this, paramLong, paramInt));
       return;
     }
   }
@@ -1311,7 +1311,7 @@ public class AVNotifyCenter
     if (this.jdField_a_of_type_JavaUtilArrayList == null) {
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new lmk(paramString1, paramString2, paramString3));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new lmy(paramString1, paramString2, paramString3));
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -1327,7 +1327,7 @@ public class AVNotifyCenter
   
   void a(ArrayList<Long> paramArrayList)
   {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), bcdi.class);
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), bcwa.class);
     localNewIntent.putExtra("reqType", 15);
     localNewIntent.putExtra("tinyid_list", paramArrayList);
     try
@@ -1418,8 +1418,8 @@ public class AVNotifyCenter
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Msb != null) {
-      return this.jdField_a_of_type_Msb.a();
+    if (this.jdField_a_of_type_Msz != null) {
+      return this.jdField_a_of_type_Msz.a();
     }
     return false;
   }
@@ -1436,7 +1436,7 @@ public class AVNotifyCenter
     if (paramInt1 == 2) {
       bool1 = a(paramInt1, paramLong);
     }
-    lmg locallmg;
+    lmu locallmu;
     do
     {
       do
@@ -1447,12 +1447,12 @@ public class AVNotifyCenter
           paramInt1 = b(paramLong);
           bool1 = bool2;
         } while (paramInt1 < 0);
-        locallmg = a(String.valueOf(paramLong), false);
+        locallmu = a(String.valueOf(paramLong), false);
         bool1 = bool2;
-      } while (locallmg == null);
+      } while (locallmu == null);
       bool1 = bool2;
     } while (paramInt2 != paramInt1);
-    return locallmg.jdField_d_of_type_Boolean;
+    return locallmu.jdField_d_of_type_Boolean;
   }
   
   @TargetApi(11)
@@ -1480,12 +1480,12 @@ public class AVNotifyCenter
   public boolean a(long paramLong, String paramString)
   {
     boolean bool = false;
-    lmg locallmg = a(paramString, false);
+    lmu locallmu = a(paramString, false);
     if (AudioHelper.f()) {
-      QLog.w("AVNotifyCenter", 1, "isChating, discussId[" + paramString + "], AvChatData[" + locallmg + "], seq[" + paramLong + "]");
+      QLog.w("AVNotifyCenter", 1, "isChating, discussId[" + paramString + "], AvChatData[" + locallmu + "], seq[" + paramLong + "]");
     }
-    if (locallmg != null) {
-      bool = locallmg.jdField_d_of_type_Boolean;
+    if (locallmu != null) {
+      bool = locallmu.jdField_d_of_type_Boolean;
     }
     return bool;
   }
@@ -1506,21 +1506,21 @@ public class AVNotifyCenter
     label247:
     for (;;)
     {
-      mwd localmwd;
+      mxc localmxc;
       if (!bool1)
       {
-        localmwd = null;
+        localmxc = null;
         if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(373)) {
-          localmwd = (mwd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(373);
+          localmxc = (mxc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(373);
         }
-        if (localmwd == null) {}
+        if (localmxc == null) {}
       }
-      for (boolean bool2 = localmwd.a();; bool2 = false)
+      for (boolean bool2 = localmxc.a();; bool2 = false)
       {
         if (bool2)
         {
-          int i = paramContext.getResources().getDimensionPixelSize(2131298998);
-          QQToast.a(paramContext, 2131690255, 1).b(i);
+          int i = paramContext.getResources().getDimensionPixelSize(2131299011);
+          QQToast.a(paramContext, 2131690263, 1).b(i);
         }
         bool3 = bool2;
         if (!QLog.isColorLevel()) {
@@ -1548,7 +1548,7 @@ public class AVNotifyCenter
     if (paramContext == null) {
       return false;
     }
-    int j = mue.b(paramInt);
+    int j = mvd.b(paramInt);
     long l = Long.parseLong(paramString);
     int i = -1;
     if (a(j, l)) {
@@ -1567,9 +1567,9 @@ public class AVNotifyCenter
     i = paramInt;
     if (paramInt < 0)
     {
-      lmm locallmm = a(l, 2);
-      paramString = locallmm;
-      if (locallmm == null) {
+      lna locallna = a(l, 2);
+      paramString = locallna;
+      if (locallna == null) {
         paramString = a(l, 12);
       }
       i = paramInt;
@@ -1599,13 +1599,13 @@ public class AVNotifyCenter
         }
         paramInt = 4;
         label210:
-        bcst.b(paramString, "CliOper", "", "", "0X800AB81", "0X800AB81", paramInt, 0, "", "", "", "");
-        paramInt = 2131695236;
+        bdll.b(paramString, "CliOper", "", "", "0X800AB81", "0X800AB81", paramInt, 0, "", "", "", "");
+        paramInt = 2131695279;
       }
     }
     for (;;)
     {
-      QQToast.a(paramContext, paramInt, 1).b(paramContext.getResources().getDimensionPixelSize(2131298998));
+      QQToast.a(paramContext, paramInt, 1).b(paramContext.getResources().getDimensionPixelSize(2131299011));
       return bool;
       bool = false;
       break;
@@ -1619,12 +1619,12 @@ public class AVNotifyCenter
         if (paramBoolean) {}
         for (paramInt = 4;; paramInt = 3)
         {
-          bcst.b(paramString, "CliOper", "", "", "0X800AB83", "0X800AB83", paramInt, 0, "", "", "", "");
-          paramInt = 2131695238;
+          bdll.b(paramString, "CliOper", "", "", "0X800AB83", "0X800AB83", paramInt, 0, "", "", "", "");
+          paramInt = 2131695281;
           break;
         }
       }
-      paramInt = 2131695236;
+      paramInt = 2131695279;
     }
   }
   
@@ -1636,7 +1636,7 @@ public class AVNotifyCenter
     int i = -1;
     long l = 0L;
     if (!TextUtils.isEmpty(paramString)) {
-      l = azwm.b(paramString);
+      l = bapc.b(paramString);
     }
     if ((b()) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.d())) {
       i = 1;
@@ -1644,12 +1644,12 @@ public class AVNotifyCenter
     Object localObject;
     if ((i < 0) && (l != 0L))
     {
-      lmm locallmm = a(l, 2);
-      localObject = locallmm;
-      if (locallmm == null) {
+      lna locallna = a(l, 2);
+      localObject = locallna;
+      if (locallna == null) {
         localObject = a(l, 12);
       }
-      if ((localObject != null) && (((lmm)localObject).jdField_a_of_type_Int > 0)) {
+      if ((localObject != null) && (((lna)localObject).jdField_a_of_type_Int > 0)) {
         i = 0;
       }
     }
@@ -1659,8 +1659,8 @@ public class AVNotifyCenter
     {
       if (i == 1)
       {
-        QQToast.a(paramContext, 2131695235, 1).b(paramContext.getResources().getDimensionPixelSize(2131298998));
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800AB80", "0X800AB80", 0, 0, "", "", "", "");
+        QQToast.a(paramContext, 2131695278, 1).b(paramContext.getResources().getDimensionPixelSize(2131299011));
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800AB80", "0X800AB80", 0, 0, "", "", "", "");
       }
       for (;;)
       {
@@ -1672,28 +1672,28 @@ public class AVNotifyCenter
         }
         return true;
         localObject = a(l, 10);
-        if ((localObject != null) && (((lmm)localObject).jdField_a_of_type_Int > 0))
+        if ((localObject != null) && (((lna)localObject).jdField_a_of_type_Int > 0))
         {
           i = 2;
           break;
         }
         localObject = null;
         if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(373)) {
-          localObject = (mwd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(373);
+          localObject = (mxc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(373);
         }
-        if ((localObject == null) || (!((mwd)localObject).b(paramString))) {
+        if ((localObject == null) || (!((mxc)localObject).b(paramString))) {
           break label389;
         }
         i = 3;
         break;
         if (i == 2)
         {
-          QQToast.a(paramContext, 2131695237, 1).b(paramContext.getResources().getDimensionPixelSize(2131298998));
-          bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800AB82", "0X800AB82", 0, 0, "", "", "", "");
+          QQToast.a(paramContext, 2131695280, 1).b(paramContext.getResources().getDimensionPixelSize(2131299011));
+          bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800AB82", "0X800AB82", 0, 0, "", "", "", "");
         }
         else if (i == 3)
         {
-          QQToast.a(paramContext, 2131690320, 1).b(paramContext.getResources().getDimensionPixelSize(2131298998));
+          QQToast.a(paramContext, 2131690325, 1).b(paramContext.getResources().getDimensionPixelSize(2131299011));
         }
       }
       return false;
@@ -1728,7 +1728,7 @@ public class AVNotifyCenter
       if (paramString2.startsWith("+")) {
         str1 = paramString2.substring(1);
       }
-      if ((this.jdField_c_of_type_JavaUtilHashMap.containsKey(str1)) && (!TextUtils.isEmpty(((lmg)this.jdField_c_of_type_JavaUtilHashMap.get(str1)).jdField_b_of_type_JavaLangString)) && (((lmg)this.jdField_c_of_type_JavaUtilHashMap.get(str1)).jdField_b_of_type_JavaLangString.equals(str1)) && (b()))
+      if ((this.jdField_c_of_type_JavaUtilHashMap.containsKey(str1)) && (!TextUtils.isEmpty(((lmu)this.jdField_c_of_type_JavaUtilHashMap.get(str1)).jdField_b_of_type_JavaLangString)) && (((lmu)this.jdField_c_of_type_JavaUtilHashMap.get(str1)).jdField_b_of_type_JavaLangString.equals(str1)) && (b()))
       {
         if (!QLog.isColorLevel()) {
           break label473;
@@ -1799,9 +1799,9 @@ public class AVNotifyCenter
     {
       if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
       {
-        lmj locallmj = (lmj)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        QLog.d("AVNotifyCenter", 1, "getOtherTermianlAvChatingType roomInfo.mSessionType=" + locallmj.jdField_a_of_type_Int + ", peerUin=" + paramString);
-        int i = locallmj.jdField_a_of_type_Int;
+        lmx locallmx = (lmx)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        QLog.d("AVNotifyCenter", 1, "getOtherTermianlAvChatingType roomInfo.mSessionType=" + locallmx.jdField_a_of_type_Int + ", peerUin=" + paramString);
+        int i = locallmx.jdField_a_of_type_Int;
         return i;
       }
       return 0;
@@ -1810,7 +1810,7 @@ public class AVNotifyCenter
   
   public long b()
   {
-    return this.jdField_b_of_type_Lmg.jdField_a_of_type_Long;
+    return this.jdField_b_of_type_Lmu.jdField_a_of_type_Long;
   }
   
   public String b()
@@ -1826,7 +1826,7 @@ public class AVNotifyCenter
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        if (((lmj)this.jdField_a_of_type_JavaUtilHashMap.get(str)).jdField_a_of_type_Long == paramLong)
+        if (((lmx)this.jdField_a_of_type_JavaUtilHashMap.get(str)).jdField_a_of_type_Long == paramLong)
         {
           QLog.d("AVNotifyCenter", 1, "getOtherTerminalPeerUin true, roomId=" + paramLong + ", key=" + str);
           return str;
@@ -1843,9 +1843,9 @@ public class AVNotifyCenter
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        lmk locallmk = (lmk)localIterator.next();
-        if (paramString.equals(locallmk.jdField_a_of_type_JavaLangString)) {
-          return locallmk.jdField_c_of_type_JavaLangString;
+        lmy locallmy = (lmy)localIterator.next();
+        if (paramString.equals(locallmy.jdField_a_of_type_JavaLangString)) {
+          return locallmy.jdField_c_of_type_JavaLangString;
         }
       }
     }
@@ -1854,12 +1854,12 @@ public class AVNotifyCenter
   
   public void b()
   {
-    QLog.d("AVNotifyCenter", 1, "clearMultiRoomInfos, AvChatData[" + this.jdField_b_of_type_Lmg + "]");
-    this.jdField_b_of_type_Lmg.jdField_c_of_type_Int = 0;
-    this.jdField_b_of_type_Lmg.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Lmg.jdField_d_of_type_Boolean = false;
+    QLog.d("AVNotifyCenter", 1, "clearMultiRoomInfos, AvChatData[" + this.jdField_b_of_type_Lmu + "]");
+    this.jdField_b_of_type_Lmu.jdField_c_of_type_Int = 0;
+    this.jdField_b_of_type_Lmu.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Lmu.jdField_d_of_type_Boolean = false;
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_b_of_type_Lmg = this.jdField_a_of_type_Lmg;
+    this.jdField_b_of_type_Lmu = this.jdField_a_of_type_Lmu;
   }
   
   public void b(int paramInt)
@@ -1931,7 +1931,7 @@ public class AVNotifyCenter
     }
     if (paramBoolean)
     {
-      if (!this.jdField_b_of_type_Lmg.jdField_d_of_type_Boolean) {
+      if (!this.jdField_b_of_type_Lmu.jdField_d_of_type_Boolean) {
         this.jdField_a_of_type_Long = 0L;
       }
       if (this.jdField_a_of_type_MqqOsMqqHandler != null)
@@ -1957,7 +1957,7 @@ public class AVNotifyCenter
   
   public boolean b()
   {
-    return (this.jdField_b_of_type_Lmg.jdField_a_of_type_Int != 0) && (this.jdField_b_of_type_Lmg.jdField_d_of_type_Boolean);
+    return (this.jdField_b_of_type_Lmu.jdField_a_of_type_Int != 0) && (this.jdField_b_of_type_Lmu.jdField_d_of_type_Boolean);
   }
   
   public boolean b(int paramInt, long paramLong)
@@ -2002,7 +2002,7 @@ public class AVNotifyCenter
     if (paramContext == null) {
       return false;
     }
-    int i = mue.b(1);
+    int i = mvd.b(1);
     long l = Long.parseLong(paramString);
     paramString = a(l, 2);
     paramContext = paramString;
@@ -2023,10 +2023,10 @@ public class AVNotifyCenter
   public boolean b(String paramString)
   {
     boolean bool2 = false;
-    lmg locallmg = a(paramString, false);
+    lmu locallmu = a(paramString, false);
     boolean bool1;
-    if (locallmg != null) {
-      bool1 = locallmg.jdField_e_of_type_Boolean;
+    if (locallmu != null) {
+      bool1 = locallmu.jdField_e_of_type_Boolean;
     }
     for (;;)
     {
@@ -2064,20 +2064,20 @@ public class AVNotifyCenter
   
   public String c()
   {
-    return this.jdField_b_of_type_Lmg.jdField_b_of_type_JavaLangString;
+    return this.jdField_b_of_type_Lmu.jdField_b_of_type_JavaLangString;
   }
   
   String c(String paramString)
   {
-    awmz localawmz = (awmz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
-    if (localawmz == null)
+    axfr localaxfr = (axfr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
+    if (localaxfr == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("AVNotifyCenter", 2, "getPhoneNameByPhoneNum --> can not get PhoneContactManager");
       }
       return null;
     }
-    paramString = localawmz.b(paramString);
+    paramString = localaxfr.b(paramString);
     if ((paramString == null) || (paramString.name == null))
     {
       if (QLog.isColorLevel()) {
@@ -2144,15 +2144,15 @@ public class AVNotifyCenter
     if (i == 2) {}
     while (bool)
     {
-      lmm locallmm = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong, 10);
-      if ((locallmm == null) || (locallmm.jdField_a_of_type_Int <= 0)) {
+      lna locallna = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong, 10);
+      if ((locallna == null) || (locallna.jdField_a_of_type_Int <= 0)) {
         break;
       }
       return false;
       if (i == 0)
       {
-        locallmm = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong, 2);
-        if ((locallmm != null) && (locallmm.jdField_a_of_type_Int > 0)) {}
+        locallna = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong, 2);
+        if ((locallna != null) && (locallna.jdField_a_of_type_Int > 0)) {}
       }
       else
       {
@@ -2214,12 +2214,12 @@ public class AVNotifyCenter
     //   94: invokevirtual 1200	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   97: pop
     //   98: aload_0
-    //   99: getfield 82	com/tencent/av/gaudio/AVNotifyCenter:jdField_b_of_type_Lmg	Llmg;
+    //   99: getfield 82	com/tencent/av/gaudio/AVNotifyCenter:jdField_b_of_type_Lmu	Llmu;
     //   102: astore 5
     //   104: aload_0
     //   105: ldc_w 1208
     //   108: aconst_null
-    //   109: invokespecial 403	com/tencent/av/gaudio/AVNotifyCenter:a	(Ljava/lang/String;Llmg;)V
+    //   109: invokespecial 403	com/tencent/av/gaudio/AVNotifyCenter:a	(Ljava/lang/String;Llmu;)V
     //   112: aload_0
     //   113: getfield 71	com/tencent/av/gaudio/AVNotifyCenter:jdField_c_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   116: invokevirtual 1210	java/util/HashMap:isEmpty	()Z
@@ -2268,7 +2268,7 @@ public class AVNotifyCenter
     //   218: ldc_w 409
     //   221: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   224: aload_0
-    //   225: getfield 82	com/tencent/av/gaudio/AVNotifyCenter:jdField_b_of_type_Lmg	Llmg;
+    //   225: getfield 82	com/tencent/av/gaudio/AVNotifyCenter:jdField_b_of_type_Lmu	Llmu;
     //   228: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   231: ldc 183
     //   233: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -2289,7 +2289,7 @@ public class AVNotifyCenter
     //   84	160	2	bool1	boolean
     //   1	242	3	bool2	boolean
     //   12	175	4	bool3	boolean
-    //   102	112	5	locallmg	lmg
+    //   102	112	5	locallmu	lmu
     // Exception table:
     //   from	to	target	type
     //   4	78	247	finally
@@ -2309,7 +2309,7 @@ public class AVNotifyCenter
   
   public String d()
   {
-    return this.jdField_b_of_type_Lmg.jdField_c_of_type_JavaLangString;
+    return this.jdField_b_of_type_Lmu.jdField_c_of_type_JavaLangString;
   }
   
   public void d(String paramString)
@@ -2350,12 +2350,12 @@ public class AVNotifyCenter
   
   public int e()
   {
-    return this.jdField_b_of_type_Lmg.jdField_a_of_type_Int;
+    return this.jdField_b_of_type_Lmu.jdField_a_of_type_Int;
   }
   
   public String e()
   {
-    return mue.a(this.jdField_a_of_type_Long);
+    return mvd.a(this.jdField_a_of_type_Long);
   }
   
   public void e(boolean paramBoolean)
@@ -2370,7 +2370,7 @@ public class AVNotifyCenter
   
   public int f()
   {
-    int j = this.jdField_b_of_type_Lmg.jdField_b_of_type_Int;
+    int j = this.jdField_b_of_type_Lmu.jdField_b_of_type_Int;
     int i = j;
     if (j == 21) {
       i = 1011;
@@ -2380,7 +2380,7 @@ public class AVNotifyCenter
   
   public boolean f()
   {
-    return this.jdField_b_of_type_Lmg.jdField_c_of_type_Boolean;
+    return this.jdField_b_of_type_Lmu.jdField_c_of_type_Boolean;
   }
   
   public int g()
@@ -2390,7 +2390,7 @@ public class AVNotifyCenter
   
   public boolean g()
   {
-    return this.jdField_b_of_type_Lmg.jdField_b_of_type_Boolean;
+    return this.jdField_b_of_type_Lmu.jdField_b_of_type_Boolean;
   }
   
   public boolean h()
@@ -2400,7 +2400,7 @@ public class AVNotifyCenter
   
   public boolean i()
   {
-    if (!lkw.c())
+    if (!llk.c())
     {
       if (QLog.isColorLevel()) {
         QLog.d("AVNotifyCenter", 2, "device not surpport Sharp audio");

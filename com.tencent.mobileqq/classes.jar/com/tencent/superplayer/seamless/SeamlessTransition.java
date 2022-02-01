@@ -11,7 +11,7 @@ import com.tencent.superplayer.utils.LogUtil;
 public class SeamlessTransition
 {
   private static final int ANIM_DURATION = 300;
-  private static final String TAG = "MediaPlayerMgr.SeamlessTransition";
+  private static final String TAG = "SeamlessTransition";
   public int duration = 300;
   public int endHeight;
   public int endWidth;
@@ -44,7 +44,7 @@ public class SeamlessTransition
   
   public void doAnimation(View paramView, Animation.AnimationListener paramAnimationListener)
   {
-    LogUtil.d("MediaPlayerMgr.SeamlessTransition", "doAnimation startX:" + this.startX + " startY:" + this.startY + " endX:" + this.endX + " endY:" + this.endY + " y:" + paramView.getY());
+    LogUtil.d("SeamlessTransition", "doAnimation startX:" + this.startX + " startY:" + this.startY + " endX:" + this.endX + " endY:" + this.endY + " y:" + paramView.getY());
     float f1 = this.startWidth / this.endWidth;
     float f2 = this.startHeight / this.endHeight;
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(this.startX, this.endX, this.startY, this.endY);

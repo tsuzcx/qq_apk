@@ -1,30 +1,23 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.intervideo.nowproxy.proxyinner.channel.FromService;
 
-public class adjt
-  implements URLDrawable.URLDrawableListener
+public final class adjt
+  implements Parcelable.Creator<FromService>
 {
-  public adjt(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public FromService a(Parcel paramParcel)
   {
-    if (paramURLDrawable != null)
-    {
-      paramURLDrawable = bgmo.a(paramURLDrawable);
-      QQAppInterface localQQAppInterface = this.a.app;
-      paramURLDrawable = QQAppInterface.a(paramURLDrawable, 50, 50);
-      this.a.a.setImageDrawable(new BitmapDrawable(paramURLDrawable));
-    }
+    FromService localFromService = new FromService();
+    localFromService.jdField_a_of_type_Int = paramParcel.readInt();
+    localFromService.b = paramParcel.readInt();
+    localFromService.c = paramParcel.readInt();
+    localFromService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
+    return localFromService;
+  }
+  
+  public FromService[] a(int paramInt)
+  {
+    return new FromService[paramInt];
   }
 }
 

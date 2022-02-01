@@ -1,11 +1,11 @@
 package com.tencent.mfsdk.reporter;
 
-import adbp;
-import adbq;
-import addl;
+import adkn;
+import adko;
+import admj;
 import android.content.SharedPreferences.Editor;
 import android.util.SparseArray;
-import bdwu;
+import bevn;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 import com.tencent.mfsdk.config.Config;
@@ -27,23 +27,23 @@ class ReporterMachine$ReportRunnable
   public void run()
   {
     int i = 0;
-    if (adbp.jdField_a_of_type_Int > Config.MAX_REPORT_NUM)
+    if (adkn.jdField_a_of_type_Int > Config.MAX_REPORT_NUM)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("Magnifier_ReporterMachine", 2, "[YunYingReport]:End, reported " + adbp.jdField_a_of_type_Int + " max_report_num " + Config.MAX_REPORT_NUM);
+        QLog.i("Magnifier_ReporterMachine", 2, "[YunYingReport]:End, reported " + adkn.jdField_a_of_type_Int + " max_report_num " + Config.MAX_REPORT_NUM);
       }
-      if (MagnifierSDK.jdField_a_of_type_Addl != null) {
-        MagnifierSDK.jdField_a_of_type_Addl.a();
+      if (MagnifierSDK.jdField_a_of_type_Admj != null) {
+        MagnifierSDK.jdField_a_of_type_Admj.a();
       }
       if (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor != null) {
-        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_today_reported", adbp.jdField_a_of_type_Int).apply();
+        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_today_reported", adkn.jdField_a_of_type_Int).apply();
       }
     }
     int j;
     do
     {
       return;
-      if ((MagnifierSDK.jdField_a_of_type_Addl == null) || (1 != bdwu.a().a()))
+      if ((MagnifierSDK.jdField_a_of_type_Admj == null) || (1 != bevn.a().a()))
       {
         if (QLog.isColorLevel()) {
           QLog.i("Magnifier_ReporterMachine", 2, "[YunYingReport]:Next try, because MagnifierSDK.dbHandler == null || NetType.WIFI != NetworkCenter.getInstance().getNetType()");
@@ -72,7 +72,7 @@ class ReporterMachine$ReportRunnable
             QLog.e("Magnifier_ReporterMachine", 2, localException1, new Object[0]);
           }
         }
-        MagnifierSDK.jdField_a_of_type_Addl.a("result_objects", true);
+        MagnifierSDK.jdField_a_of_type_Admj.a("result_objects", true);
         if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
         {
           if (QLog.isColorLevel()) {
@@ -85,16 +85,16 @@ class ReporterMachine$ReportRunnable
         }
         this.jdField_a_of_type_Int = 0;
         ReporterMachine.a().postDelayed(this, 1800000L);
-        j = adbp.jdField_a_of_type_AndroidUtilSparseArray.size();
+        j = adkn.jdField_a_of_type_AndroidUtilSparseArray.size();
       }
     } while (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor == null);
     Object localObject1;
     if (i < j)
     {
-      int k = adbp.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
+      int k = adkn.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
       if (k > 100)
       {
-        localObject1 = (adbq)adbp.jdField_a_of_type_AndroidUtilSparseArray.get(k);
+        localObject1 = (adko)adkn.jdField_a_of_type_AndroidUtilSparseArray.get(k);
         if (localObject1 != null) {
           break label372;
         }
@@ -104,7 +104,7 @@ class ReporterMachine$ReportRunnable
         i += 1;
         break;
         label372:
-        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_plugin_" + String.valueOf(k), ((adbq)localObject1).jdField_a_of_type_Int);
+        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_plugin_" + String.valueOf(k), ((adko)localObject1).jdField_a_of_type_Int);
       }
     }
     if (QLog.isColorLevel()) {
@@ -112,7 +112,7 @@ class ReporterMachine$ReportRunnable
     }
     MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
     return;
-    this.jdField_a_of_type_JavaUtilList = MagnifierSDK.jdField_a_of_type_Addl.a(true);
+    this.jdField_a_of_type_JavaUtilList = MagnifierSDK.jdField_a_of_type_Admj.a(true);
     if ((ReporterMachine.a() != null) && (!ReporterMachine.a().isEmpty())) {}
     try
     {

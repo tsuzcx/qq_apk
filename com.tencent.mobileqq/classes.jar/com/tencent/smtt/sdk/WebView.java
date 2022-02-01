@@ -437,14 +437,14 @@ public class WebView
     //   1: iconst_1
     //   2: ldc_w 654
     //   5: invokestatic 659	com/tencent/smtt/utils/FileUtil:b	(Landroid/content/Context;ZLjava/lang/String;)Ljava/io/FileOutputStream;
-    //   8: astore 6
-    //   10: aload 6
+    //   8: astore 7
+    //   10: aload 7
     //   12: ifnull +16 -> 28
     //   15: aload_1
-    //   16: aload 6
+    //   16: aload 7
     //   18: invokestatic 662	com/tencent/smtt/utils/FileUtil:a	(Landroid/content/Context;Ljava/io/FileOutputStream;)Ljava/nio/channels/FileLock;
-    //   21: astore 7
-    //   23: aload 7
+    //   21: astore 6
+    //   23: aload 6
     //   25: ifnonnull +5 -> 30
     //   28: iconst_m1
     //   29: ireturn
@@ -486,8 +486,8 @@ public class WebView
     //   110: athrow
     //   111: getstatic 82	com/tencent/smtt/sdk/WebView:c	Ljava/util/concurrent/locks/Lock;
     //   114: invokeinterface 691 1 0
-    //   119: aload 7
-    //   121: aload 6
+    //   119: aload 6
+    //   121: aload 7
     //   123: invokestatic 694	com/tencent/smtt/utils/FileUtil:a	(Ljava/nio/channels/FileLock;Ljava/io/FileOutputStream;)V
     //   126: iconst_m1
     //   127: ireturn
@@ -536,8 +536,8 @@ public class WebView
     //   223: invokevirtual 714	java/io/FileInputStream:close	()V
     //   226: getstatic 82	com/tencent/smtt/sdk/WebView:c	Ljava/util/concurrent/locks/Lock;
     //   229: invokeinterface 691 1 0
-    //   234: aload 7
-    //   236: aload 6
+    //   234: aload 6
+    //   236: aload 7
     //   238: invokestatic 694	com/tencent/smtt/utils/FileUtil:a	(Ljava/nio/channels/FileLock;Ljava/io/FileOutputStream;)V
     //   241: iconst_m1
     //   242: ireturn
@@ -565,8 +565,8 @@ public class WebView
     //   292: invokevirtual 714	java/io/FileInputStream:close	()V
     //   295: getstatic 82	com/tencent/smtt/sdk/WebView:c	Ljava/util/concurrent/locks/Lock;
     //   298: invokeinterface 691 1 0
-    //   303: aload 7
-    //   305: aload 6
+    //   303: aload 6
+    //   305: aload 7
     //   307: invokestatic 694	com/tencent/smtt/utils/FileUtil:a	(Ljava/nio/channels/FileLock;Ljava/io/FileOutputStream;)V
     //   310: iload_2
     //   311: ireturn
@@ -605,8 +605,8 @@ public class WebView
     //   390: invokevirtual 714	java/io/FileInputStream:close	()V
     //   393: getstatic 82	com/tencent/smtt/sdk/WebView:c	Ljava/util/concurrent/locks/Lock;
     //   396: invokeinterface 691 1 0
-    //   401: aload 7
-    //   403: aload 6
+    //   401: aload 6
+    //   403: aload 7
     //   405: invokestatic 694	com/tencent/smtt/utils/FileUtil:a	(Ljava/nio/channels/FileLock;Ljava/io/FileOutputStream;)V
     //   408: iconst_m1
     //   409: ireturn
@@ -632,8 +632,8 @@ public class WebView
     //   455: invokevirtual 714	java/io/FileInputStream:close	()V
     //   458: getstatic 82	com/tencent/smtt/sdk/WebView:c	Ljava/util/concurrent/locks/Lock;
     //   461: invokeinterface 691 1 0
-    //   466: aload 7
-    //   468: aload 6
+    //   466: aload 6
+    //   468: aload 7
     //   470: invokestatic 694	com/tencent/smtt/utils/FileUtil:a	(Ljava/nio/channels/FileLock;Ljava/io/FileOutputStream;)V
     //   473: aload_1
     //   474: athrow
@@ -650,8 +650,8 @@ public class WebView
     //   501: invokevirtual 512	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   504: invokestatic 641	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   507: goto -49 -> 458
-    //   510: aload 7
-    //   512: aload 6
+    //   510: aload 6
+    //   512: aload 7
     //   514: invokestatic 694	com/tencent/smtt/utils/FileUtil:a	(Ljava/nio/channels/FileLock;Ljava/io/FileOutputStream;)V
     //   517: iconst_m1
     //   518: ireturn
@@ -676,8 +676,8 @@ public class WebView
     //   345	100	5	localException1	Exception
     //   519	6	5	localObject2	Object
     //   530	1	5	localException2	Exception
-    //   8	505	6	localFileOutputStream	java.io.FileOutputStream
-    //   21	490	7	localFileLock	java.nio.channels.FileLock
+    //   21	490	6	localFileLock	java.nio.channels.FileLock
+    //   8	505	7	localFileOutputStream	java.io.FileOutputStream
     //   168	34	8	localProperties	java.util.Properties
     // Exception table:
     //   from	to	target	type

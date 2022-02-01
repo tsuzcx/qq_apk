@@ -1,11 +1,24 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 
-public abstract interface bopd
+class bopd
+  implements Observer<Boolean>
 {
-  public abstract void a(int paramInt, String... paramVarArgs);
+  bopd(boow paramboow) {}
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, ArrayList<TroopBarPOI> paramArrayList, TroopBarPOI paramTroopBarPOI);
+  public void a(@Nullable Boolean paramBoolean)
+  {
+    if (paramBoolean == null) {
+      return;
+    }
+    boow localboow = this.a;
+    if (!paramBoolean.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      boow.a(localboow, bool);
+      return;
+    }
+  }
 }
 
 

@@ -1,12 +1,24 @@
-public abstract interface smb
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class smb
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public smb(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void onClick(View paramView)
+  {
+    ReadinjoyTabFrame.a(this.a, this.a.a(), (ViewGroup)ReadinjoyTabFrame.a(this.a));
+    if (BaseApplicationImpl.sProcessId != 9) {
+      bodt.a(BaseApplicationImpl.getContext());
+    }
+    ozs.e("1");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

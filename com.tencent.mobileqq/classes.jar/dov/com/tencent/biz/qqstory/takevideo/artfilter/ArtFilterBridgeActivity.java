@@ -6,7 +6,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MotionEvent;
-import anni;
+import anzj;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -52,7 +52,7 @@ public class ArtFilterBridgeActivity
         localBundle.putInt("pic_entrance_type", localIntent.getIntExtra("pic_entrance_type", 0));
         boolean bool2 = localIntent.getBooleanExtra("go_publish_activity", false);
         if (bool2) {
-          localBundle.putString("extra_publish_text", anni.a(2131699560));
+          localBundle.putString("extra_publish_text", anzj.a(2131699667));
         }
         if (localIntent.hasExtra("troop_uin")) {
           localBundle.putString("troop_uin", localIntent.getStringExtra("troop_uin"));

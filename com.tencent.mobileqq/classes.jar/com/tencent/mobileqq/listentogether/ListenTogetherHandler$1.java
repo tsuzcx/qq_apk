@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.listentogether;
 
-import avsy;
-import bctj;
+import awlt;
+import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 
 public class ListenTogetherHandler$1
   implements Runnable
 {
-  public ListenTogetherHandler$1(avsy paramavsy, long paramLong1, long paramLong2, int paramInt, long paramLong3) {}
+  public ListenTogetherHandler$1(awlt paramawlt, long paramLong1, long paramLong2, int paramInt, long paramLong3) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ListenTogetherHandler$1
     localHashMap.put("requestInterval", String.valueOf(this.b));
     localHashMap.put("reportType", String.valueOf(this.jdField_a_of_type_Int));
     localHashMap.put("interval", String.valueOf(this.c));
-    bctj.a(BaseApplicationImpl.getContext()).a("", "listen_together_seek_adjust", true, 0L, 0L, localHashMap, "", false);
+    bdmc.a(BaseApplicationImpl.getContext()).a("", "listen_together_seek_adjust", true, 0L, 0L, localHashMap, "", false);
   }
 }
 

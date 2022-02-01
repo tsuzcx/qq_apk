@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import afke;
-import bfuo;
+import afti;
+import bgup;
 
 public class TroopInfoActivity$30$1
   implements Runnable
 {
-  public TroopInfoActivity$30$1(afke paramafke, bfuo parambfuo) {}
+  public TroopInfoActivity$30$1(afti paramafti, bgup parambgup) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bfuo.d == 0)
+    if (this.jdField_a_of_type_Bgup.d == 0)
     {
-      TroopInfoActivity.b(this.jdField_a_of_type_Afke.a);
+      TroopInfoActivity.b(this.jdField_a_of_type_Afti.a);
       return;
     }
-    TroopInfoActivity.i(this.jdField_a_of_type_Afke.a);
+    TroopInfoActivity.i(this.jdField_a_of_type_Afti.a);
   }
 }
 

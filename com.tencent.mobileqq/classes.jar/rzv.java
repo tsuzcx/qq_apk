@@ -1,21 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionCenterView;
+import android.content.Context;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class rzv
-  extends AnimatorListenerAdapter
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerFactory;", "", "createMediaPlayer", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayer;", "videoView", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IVideoView;", "createPlayerVideoView", "context", "Landroid/content/Context;", "isUseTextureView", "", "createPreloader", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader;", "obtainMediaPlayer", "token", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface rzv
 {
-  public rzv(VideoFeedsLikeAnimate.LikeExplosionCenterView paramLikeExplosionCenterView) {}
+  @Nullable
+  public abstract rzt a(@NotNull String paramString);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    VideoFeedsLikeAnimate.LikeExplosionCenterView.a(this.a);
-  }
+  @NotNull
+  public abstract rzt a(@Nullable sab paramsab);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    VideoFeedsLikeAnimate.LikeExplosionCenterView.a(this.a);
-  }
+  @NotNull
+  public abstract rzw a();
+  
+  @NotNull
+  public abstract sab a(@NotNull Context paramContext, boolean paramBoolean);
 }
 
 

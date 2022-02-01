@@ -1,59 +1,102 @@
-import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.open.agent.AgentActivity;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.vip.diy.TemplateLikeView;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class biis
-  implements biyy
+public class biis
+  extends bnvn
 {
-  biis(biir parambiir) {}
+  private String a;
   
-  public void a()
+  public biis(String paramString1, View paramView, String paramString2)
   {
-    QLog.d("SDK_LOGIN.AgentActivity", 1, "preAuthWithRetry onSuccess");
-    AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity);
-    AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b, true);
+    super(paramString1, paramView);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    ((TemplateLikeView)paramView).a(1);
   }
   
-  public void a(int paramInt, String paramString)
+  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
   {
-    QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "preAuthWithRetry onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
-    AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity);
-    if ((paramInt == 110530) || (paramInt == 1002))
-    {
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b, false);
-      return;
+    this.jdField_a_of_type_Int = -2;
+    this.b = a(paramJSONObject.optString("height"));
+    paramLayoutParams.width = -2;
+    paramLayoutParams.height = -2;
+    int i = zps.a(this.jdField_a_of_type_AndroidViewView.getContext(), paramJSONObject.optInt("lpd", 2) / 2);
+    int j = zps.a(this.jdField_a_of_type_AndroidViewView.getContext(), paramJSONObject.optInt("rpd", 2) / 2);
+    ((TemplateLikeView)this.jdField_a_of_type_AndroidViewView).setContainerLayoutParams(this.jdField_a_of_type_Int, this.b, i, j);
+    return paramLayoutParams;
+  }
+  
+  protected URLDrawable a(String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    if (paramInt == 110509)
+    String str = paramString;
+    if (!paramString.startsWith("http"))
     {
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b);
-      return;
-    }
-    if (paramInt == 110513)
-    {
-      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, 0, "", "");
-      return;
-    }
-    String str;
-    if (paramInt == -1) {
-      str = this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131694142);
-    }
-    for (;;)
-    {
-      ForwardUtils.a(str, this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, new biit(this, paramInt, paramString));
-      return;
-      if (TextUtils.isEmpty(paramString)) {
-        str = String.format(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131694131), new Object[] { Integer.valueOf(paramInt) });
-      } else {
-        str = String.format(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131695788), new Object[] { paramString, Integer.valueOf(paramInt) });
+      str = paramString;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        if (!this.jdField_a_of_type_JavaLangString.startsWith("http")) {
+          break label114;
+        }
       }
     }
+    for (str = this.jdField_a_of_type_JavaLangString + paramString;; str = paramString)
+    {
+      paramString = URLDrawable.URLDrawableOptions.obtain();
+      paramString.mLoadingDrawable = beyq.a;
+      paramString.mFailedDrawable = beyq.a;
+      paramString.mPlayGifImage = false;
+      if (paramDecodeHandler != null) {
+        paramString.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
+      }
+      paramString = URLDrawable.getDrawable(str, paramString);
+      paramString.setDecodeHandler(paramDecodeHandler);
+      return paramString;
+      label114:
+      QLog.e("JsonInflateViewModel", 1, "it have the illegal url prefix=" + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if ("bg".equals(paramString1)) {
+      if ((this.jdField_a_of_type_AndroidViewView instanceof TemplateLikeView)) {
+        ((TemplateLikeView)this.jdField_a_of_type_AndroidViewView).setVoteContainerBackground(a(paramString2, null));
+      }
+    }
+    do
+    {
+      return;
+      if (!"style".equals(paramString1)) {
+        break;
+      }
+    } while (!(this.jdField_a_of_type_AndroidViewView instanceof TemplateLikeView));
+    paramString1 = (TemplateLikeView)this.jdField_a_of_type_AndroidViewView;
+    if ("1".equals(paramString2)) {}
+    for (int i = 0;; i = 1)
+    {
+      paramString1.a(i);
+      return;
+    }
+    super.a(paramString1, paramString2);
+  }
+  
+  public void c()
+  {
+    super.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biis
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,57 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class aemz
-  implements bdci
+  extends anwy
 {
-  public aemz(Leba paramLeba) {}
+  public aemz(EmosmActivity paramEmosmActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    QLog.i("Q.lebatab.leba", 1, "StudyModeChange onChange " + paramBoolean);
-    if (this.a.a.a() != null) {
-      this.a.a.a().c();
+    if (paramInt == 1) {
+      if (paramBoolean)
+      {
+        paramObject = (EmoticonResp)paramObject;
+        this.a.a(paramObject.delEpId);
+        this.a.b();
+        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.e();
+      }
     }
+    label119:
+    do
+    {
+      do
+      {
+        return;
+        this.a.a();
+        EmosmActivity.a(this.a, (EmoticonResp)paramObject);
+        break;
+        if (paramInt != 2) {
+          break label119;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("EmosmActivity", 2, "emoticon fetch:" + paramBoolean);
+        }
+      } while (!paramBoolean);
+      this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
+      return;
+    } while (paramInt != 17);
+    if (paramBoolean)
+    {
+      paramObject = ((EmoticonResp)paramObject).ids.iterator();
+      while (paramObject.hasNext())
+      {
+        Integer localInteger = (Integer)paramObject.next();
+        this.a.a(localInteger.intValue());
+      }
+    }
+    this.a.a();
+    EmosmActivity.a(this.a, (EmoticonResp)paramObject);
+    this.a.b();
   }
 }
 

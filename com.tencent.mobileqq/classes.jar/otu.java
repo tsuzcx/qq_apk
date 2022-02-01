@@ -1,35 +1,72 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
 
-public class otu
+class otu
+  extends ImageSpan
 {
-  private View a;
+  private int jdField_a_of_type_Int = 2;
+  private int b;
+  private int c;
   
-  public otu(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo)
+  public otu(otp paramotp, Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (pha.a() != null)
+    super(paramContext, paramInt1, paramInt2);
+    this.c = paramInt4;
+    this.b = paramInt3;
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  {
+    paramCharSequence = getDrawable();
+    if ((this.b > 0) && (this.c > 0))
     {
-      paramArkAppMessage = pha.a().getApplication();
-      if (paramArkAppMessage != null) {}
+      Rect localRect = new Rect();
+      localRect.left = 0;
+      localRect.right = this.b;
+      localRect.top = 0;
+      localRect.bottom = this.c;
+      paramCharSequence.setBounds(localRect);
     }
-    else
+    paramCanvas.save();
+    paramPaint = paramPaint.getFontMetricsInt();
+    paramInt1 = paramInt5 - paramCharSequence.getBounds().bottom;
+    if (this.mVerticalAlignment == 1) {
+      paramInt1 -= paramPaint.descent;
+    }
+    for (;;)
     {
+      paramCanvas.translate(paramFloat, paramInt1);
+      paramCharSequence.draw(paramCanvas);
+      paramCanvas.restore();
       return;
+      if (this.mVerticalAlignment == this.jdField_a_of_type_Int) {
+        paramInt1 = (paramPaint.descent + paramInt4 + (paramPaint.ascent + paramInt4)) / 2 - paramCharSequence.getBounds().bottom / 2;
+      }
     }
-    this.a = new View(paramArkAppMessage);
-    this.a.setVisibility(8);
   }
   
-  public View a()
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
-    return this.a;
+    paramCharSequence = getDrawable().getBounds();
+    if (paramFontMetricsInt != null)
+    {
+      paramPaint = paramPaint.getFontMetricsInt();
+      paramInt2 = paramPaint.bottom - paramPaint.top;
+      int i = paramCharSequence.bottom - paramCharSequence.top;
+      paramInt1 = i / 2 - paramInt2 / 4;
+      paramInt2 = i / 2 + paramInt2 / 4;
+      paramFontMetricsInt.ascent = (-paramInt2);
+      paramFontMetricsInt.top = (-paramInt2);
+      paramFontMetricsInt.bottom = paramInt1;
+      paramFontMetricsInt.descent = paramInt1;
+    }
+    return this.b;
   }
-  
-  public void a() {}
-  
-  public void a(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo) {}
 }
 
 

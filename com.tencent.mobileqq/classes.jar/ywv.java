@@ -1,41 +1,75 @@
-import android.app.Activity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.io.File;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import android.util.SparseIntArray;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilter.FilterPagerAdapter;
 
 public class ywv
-  extends yws
+  implements ViewPager.OnPageChangeListener
 {
-  private yty a;
+  private ywv(EditVideoFilter paramEditVideoFilter) {}
   
-  public void a()
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    super.a();
-    if (jdField_b_of_type_Int != 2)
+    paramInt2 = 0;
+    int i = paramInt1 % this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a();
+    Object localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(i);
+    if (localObject != null) {}
+    for (paramInt1 = ((zfy)localObject).jdField_a_of_type_Int;; paramInt1 = 0)
     {
-      String str = new File(this.jdField_b_of_type_JavaLangString).getParent();
-      if (str != null) {
-        bgmg.a(str);
+      localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a((i + 1) % this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a());
+      if (localObject != null) {
+        paramInt2 = ((zfy)localObject).jdField_a_of_type_Int;
       }
+      localObject = (yyf)this.a.a(yyf.class);
+      if (localObject != null) {
+        ((yyf)localObject).a(paramInt1, paramInt2, paramFloat);
+      }
+      return;
     }
   }
   
-  public void a(Activity paramActivity, String paramString1, String paramString2, AppInterface paramAppInterface, yty paramyty)
+  public void onPageSelected(int paramInt)
   {
-    super.a(paramActivity, paramString1, paramString2, paramAppInterface);
-    this.a = paramyty;
-  }
-  
-  protected boolean a(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    if (paramActionSheetItem.action == 2)
+    Object localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt);
+    if (localObject != null) {}
+    for (int i = ((zfy)localObject).jdField_a_of_type_Int;; i = 0)
     {
-      if (this.a != null) {
-        this.a.a();
+      this.a.jdField_a_of_type_AndroidUtilSparseArray.put(this.a.jdField_a_of_type_Yxt.a(), localObject);
+      if ((i == 2) || (i == 1) || (i == 3))
+      {
+        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt);
+        if ((localObject != null) && (TextUtils.isEmpty(((zfz)localObject).jdField_a_of_type_Zfy.b))) {
+          EditVideoFilter.a((zfz)localObject);
+        }
       }
-      return true;
+      localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt - 1);
+      zfz localzfz = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt + 1);
+      if (localObject != null) {
+        ((zfz)localObject).jdField_a_of_type_AndroidViewView.clearAnimation();
+      }
+      if (localzfz != null) {
+        localzfz.jdField_a_of_type_AndroidViewView.clearAnimation();
+      }
+      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.a.jdField_a_of_type_Int = i;
+      EditVideoFilter.a(this.a).put(this.a.jdField_a_of_type_Yxt.a(), paramInt);
+      localObject = (yyf)this.a.a(yyf.class);
+      if (localObject != null) {
+        ((yyf)localObject).b(i);
+      }
+      if (i != 0)
+      {
+        this.a.jdField_a_of_type_Yxt.a("608", "9", "0", true);
+        yuq.a("0X80076DE");
+      }
+      yuk.a("Q.qqstory.publish.edit.EditVideoFilter", "LastSelectVideoFilterTime : %s , LastSelectVideoPlayMode : %s .", Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(this.a.jdField_a_of_type_Int));
+      return;
     }
-    return super.a(paramActionSheetItem);
   }
 }
 

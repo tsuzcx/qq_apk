@@ -1,22 +1,51 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.mobileqq.portal.PortalManager.5.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
+import android.graphics.Rect;
 
 public class azbt
-  extends anmu
 {
-  public azbt(PortalManager paramPortalManager) {}
+  public int a;
+  public Rect a;
+  public int b;
+  public Rect b = new Rect();
+  public int c;
+  public Rect c;
+  public int d;
+  public int e;
+  public int f;
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public azbt()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PortalManagerhead", 2, "onUpdateCustomHead isSuccess = " + paramBoolean + ", mobileNumber = " + paramString);
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = localStringBuilder1.append("currAlpha = ").append(this.e).append("\n").append("currRect = ");
+    if (this.jdField_c_of_type_AndroidGraphicsRect != null)
+    {
+      str = this.jdField_c_of_type_AndroidGraphicsRect.toShortString();
+      localStringBuilder2 = localStringBuilder2.append(str).append("\n").append("radomAreaIndex = ").append(this.f).append("\n").append("radomRect = ");
+      if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
+        break label182;
+      }
+      str = this.jdField_a_of_type_AndroidGraphicsRect.toShortString();
+      label95:
+      localStringBuilder2 = localStringBuilder2.append(str).append("\n").append("gapDuration = ").append(this.jdField_c_of_type_Int).append("\n").append("startRect = ");
+      if (this.b == null) {
+        break label188;
+      }
     }
-    if (this.a.a.containsKey(paramString)) {
-      ThreadManager.getSubThreadHandler().post(new PortalManager.5.1(this, paramString, paramBoolean));
+    label182:
+    label188:
+    for (String str = this.b.toShortString();; str = "")
+    {
+      localStringBuilder2.append(str).append("\n").append("edageWidth = ").append(this.jdField_a_of_type_Int).append("\n");
+      return localStringBuilder1.toString();
+      str = "";
+      break;
+      str = "";
+      break label95;
     }
   }
 }

@@ -1,36 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.internal.Intrinsics;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class asnh
-  implements View.OnClickListener
+class asnh
+  extends anul
 {
   asnh(asnf paramasnf) {}
   
-  public final void onClick(View paramView)
+  protected void a()
   {
-    Intrinsics.checkExpressionValueIsNotNull(paramView, "v");
-    Object localObject = paramView.getTag();
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
-    }
-    int i = ((Integer)localObject).intValue();
-    localObject = asnf.a(this.a);
-    if (localObject == null) {
-      Intrinsics.throwNpe();
-    }
-    localObject = (askj)((List)localObject).get(i);
     if (QLog.isColorLevel()) {
-      QLog.d("CompletePersonalDataDialog", 2, "onClick position = " + i);
+      QLog.d("EmoticonPanelCameraHelper", 2, "CameraEmo, onCameraEmoInsert");
     }
-    asnf.a(this.a, (askj)localObject);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.c();
+    if ((this.a.a.a != null) && (((asgf)this.a.a.a.getManager(333)).a() > 0)) {
+      this.a.b();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonPanelCameraHelper", 2, "CameraEmo, doOnGetEmoListResult");
+    }
+    if (paramInt == 0)
+    {
+      if ((this.a.a.a != null) && (((asgf)this.a.a.a.getManager(333)).a() > 0)) {
+        this.a.b();
+      }
+      this.a.c();
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonPanelCameraHelper", 2, "CameraEmo, onCameraEmoSend");
+    }
+    this.a.c();
+    asnf.a(this.a, paramInt);
+  }
+  
+  protected void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonPanelCameraHelper", 2, "CameraEmo, doOnDeleteEmoResult");
+    }
+    if (paramInt == 0) {
+      this.a.c();
+    }
   }
 }
 

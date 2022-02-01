@@ -1,21 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.statistics.UEC.UECItem;
+import java.util.ArrayList;
 
-class bdmr
-  implements View.OnClickListener
+public abstract interface bdmr
 {
-  bdmr(bdmq parambdmq) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(ArrayList<UEC.UECItem> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdmr
  * JD-Core Version:    0.7.0.1
  */

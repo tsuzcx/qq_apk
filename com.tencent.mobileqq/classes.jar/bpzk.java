@@ -1,6 +1,20 @@
-public abstract interface bpzk
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+
+public class bpzk
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public bpzk(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a.d = 5;
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation  190ms all end");
+    }
+  }
 }
 
 

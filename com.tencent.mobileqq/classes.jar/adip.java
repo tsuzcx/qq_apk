@@ -1,22 +1,55 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.BusinessWPATmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adip
-  implements View.OnClickListener
+  implements adbw
 {
-  public adip(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    Intent localIntent = new Intent();
-    PublicFragmentActivity.a(this.a, localIntent, AccountOnlineStateActivity.class, 0);
-    aype.a(this.a.app);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return 1024;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    byte[] arrayOfByte = paramQQAppInterface.a().d(paramMessageRecord.frienduin);
+    msg_svc.BusinessWPATmp localBusinessWPATmp = new msg_svc.BusinessWPATmp();
+    localBusinessWPATmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    if (arrayOfByte != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BusinessCRMRoutingType", 2, "conversation------>sig:" + bhml.a(arrayOfByte) + ",length:" + arrayOfByte.length);
+      }
+      localBusinessWPATmp.sig.set(ByteStringMicro.copyFrom(arrayOfByte));
+    }
+    for (;;)
+    {
+      paramRoutingHead.business_wpa_tmp.set(localBusinessWPATmp);
+      return true;
+      paramMessageRecord = paramQQAppInterface.a().e(paramMessageRecord.frienduin);
+      if (paramMessageRecord != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BusinessCRMRoutingType", 2, "conversation------>sigt:" + bhml.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+        }
+        localBusinessWPATmp.sigt.set(ByteStringMicro.copyFrom(paramMessageRecord));
+      }
+    }
+  }
+  
+  public int b()
+  {
+    return 8010;
   }
 }
 

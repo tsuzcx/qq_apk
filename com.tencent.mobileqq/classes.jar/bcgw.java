@@ -1,75 +1,19 @@
-import android.annotation.TargetApi;
-import android.hardware.camera2.CameraCaptureSession;
-import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
-import android.hardware.camera2.CaptureRequest;
-import android.hardware.camera2.CaptureResult;
-import android.hardware.camera2.TotalCaptureResult;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import android.text.TextUtils;
 
-@TargetApi(21)
 public class bcgw
-  extends CameraCaptureSession.CaptureCallback
 {
-  private int jdField_a_of_type_Int = 0;
-  private Camera2Control jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control;
+  public String a;
+  public String b;
   
-  public bcgw(Camera2Control paramCamera2Control)
+  public bcgw(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control = paramCamera2Control;
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
-  private void a(CaptureResult paramCaptureResult)
+  public boolean a()
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    do
-    {
-      do
-      {
-        Integer localInteger;
-        do
-        {
-          do
-          {
-            return;
-            localInteger = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
-            bcgu.a(1, "[Camera2]process afState:" + localInteger);
-            if (localInteger != null) {
-              break;
-            }
-          } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-          this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
-          return;
-        } while ((4 != localInteger.intValue()) && (5 != localInteger.intValue()) && (localInteger.intValue() != 0) && (1 != localInteger.intValue()) && (2 != localInteger.intValue()));
-        paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AE_STATE);
-        if ((paramCaptureResult != null) && (paramCaptureResult.intValue() != 2)) {
-          break;
-        }
-        this.jdField_a_of_type_Int = 4;
-        bcgu.a(1, "[Camera2]process aeState:" + paramCaptureResult);
-      } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
-      return;
-      bcgu.a(1, "[Camera2]process preCapture aeState:" + paramCaptureResult);
-    } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
-  {
-    a(paramTotalCaptureResult);
-  }
-  
-  public void onCaptureProgressed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureResult paramCaptureResult)
-  {
-    a(paramCaptureResult);
+    return !TextUtils.isEmpty(this.a);
   }
 }
 

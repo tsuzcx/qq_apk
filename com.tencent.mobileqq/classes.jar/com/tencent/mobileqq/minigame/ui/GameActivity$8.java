@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
+import com.tencent.mobileqq.triton.TritonEngine;
 
 class GameActivity$8
   implements Runnable
@@ -10,10 +10,14 @@ class GameActivity$8
   
   public void run()
   {
-    if ((this.this$0.isResume()) && (GameActivity.access$1300(this.this$0)) && (!GameActivity.access$1400(this.this$0)))
+    if ((this.this$0.isResume()) && (GameActivity.access$1400(this.this$0)) && (!GameActivity.access$1500(this.this$0)))
     {
-      GameActivity.access$1402(this.this$0, true);
-      GameActivity.access$1500(this.this$0).getGameEngine().onResume();
+      TritonEngine localTritonEngine = GameActivity.access$000(this.this$0).getGameEngine();
+      if (localTritonEngine != null)
+      {
+        GameActivity.access$1502(this.this$0, true);
+        localTritonEngine.start();
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqcircle.comment;
 
-import aaga;
+import aakb;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
@@ -11,18 +11,18 @@ import com.tencent.biz.qqcircle.widgets.QCircleBaseWidgetView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import feedcloud.FeedCloudMeta.StComment;
 import feedcloud.FeedCloudMeta.StFeed;
-import uzm;
+import vbc;
 
 public class QCircleMoreReplyItemView
-  extends QCircleBaseWidgetView<uzm>
+  extends QCircleBaseWidgetView<vbc>
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
-  private aaga jdField_a_of_type_Aaga;
+  private aakb jdField_a_of_type_Aakb;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private FeedCloudMeta.StComment jdField_a_of_type_FeedcloudFeedCloudMeta$StComment;
   private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
-  private uzm jdField_a_of_type_Uzm;
+  private vbc jdField_a_of_type_Vbc;
   private int jdField_b_of_type_Int;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   
@@ -33,7 +33,7 @@ public class QCircleMoreReplyItemView
   
   public int a()
   {
-    return 2131560680;
+    return 2131560697;
   }
   
   public String a()
@@ -43,30 +43,30 @@ public class QCircleMoreReplyItemView
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379773));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379744));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379952));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379922));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
   }
   
-  protected void a(uzm paramuzm) {}
+  protected void a(vbc paramvbc) {}
   
-  public void a(uzm paramuzm, int paramInt)
+  public void a(vbc paramvbc, int paramInt)
   {
-    if ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed == null) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment == null) || (paramuzm == null)) {}
+    if ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed == null) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment == null) || (paramvbc == null)) {}
     do
     {
       return;
-      this.jdField_a_of_type_Uzm = paramuzm;
+      this.jdField_a_of_type_Vbc = paramvbc;
       this.jdField_b_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_Uzm.jdField_a_of_type_Int == 2)
+      if (this.jdField_a_of_type_Vbc.jdField_a_of_type_Int == 2)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getContext().getResources().getString(2131697129, new Object[] { Integer.valueOf(this.jdField_a_of_type_Uzm.jdField_b_of_type_Int) }));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getContext().getResources().getString(2131697190, new Object[] { Integer.valueOf(this.jdField_a_of_type_Vbc.jdField_b_of_type_Int) }));
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
         return;
       }
-    } while (this.jdField_a_of_type_Uzm.jdField_a_of_type_Int != 3);
+    } while (this.jdField_a_of_type_Vbc.jdField_a_of_type_Int != 3);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
   }
@@ -80,25 +80,25 @@ public class QCircleMoreReplyItemView
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_Aaga != null)
+      if (this.jdField_a_of_type_Aakb != null)
       {
         FeedCloudMeta.StComment localStComment = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment;
         int i = this.jdField_b_of_type_Int;
-        this.jdField_a_of_type_Aaga.a(paramView, 10, this.jdField_a_of_type_Int, new Object[] { localStComment, Integer.valueOf(i) });
+        this.jdField_a_of_type_Aakb.a(paramView, 10, this.jdField_a_of_type_Int, new Object[] { localStComment, Integer.valueOf(i) });
         continue;
-        if (this.jdField_a_of_type_Aaga != null)
+        if (this.jdField_a_of_type_Aakb != null)
         {
           localStComment = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment;
           i = this.jdField_b_of_type_Int;
-          this.jdField_a_of_type_Aaga.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localStComment, Integer.valueOf(i) });
+          this.jdField_a_of_type_Aakb.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localStComment, Integer.valueOf(i) });
         }
       }
     }
   }
   
-  public void setOnCommentElementClickListener(aaga paramaaga)
+  public void setOnCommentElementClickListener(aakb paramaakb)
   {
-    this.jdField_a_of_type_Aaga = paramaaga;
+    this.jdField_a_of_type_Aakb = paramaakb;
   }
   
   public void setPreData(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, int paramInt)

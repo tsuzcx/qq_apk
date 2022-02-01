@@ -1,26 +1,35 @@
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.widget.XListView;
 
 public class akda
-  implements Animation.AnimationListener
+  extends Handler
 {
-  public akda(CountryActivity paramCountryActivity) {}
+  public akda(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    if (!this.a.isFinishing())
+    if ((paramMessage.what != 1) || (ChatHistoryTroopFileFragment.a(this.a) == null)) {}
+    for (;;)
     {
-      this.a.jdField_a_of_type_Akdg.show();
-      this.a.b.setAnimation(null);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      return;
+      int i = ChatHistoryTroopFileFragment.a(this.a).getFirstVisiblePosition();
+      while (i <= ChatHistoryTroopFileFragment.a(this.a).getLastVisiblePosition())
+      {
+        paramMessage = ChatHistoryTroopFileFragment.a(this.a).getChildAt(i);
+        if (paramMessage != null)
+        {
+          paramMessage = paramMessage.getTag();
+          if ((paramMessage != null) && ((paramMessage instanceof bfvu))) {
+            ((bfvu)paramMessage).a(this.a.a, ChatHistoryTroopFileFragment.a(this.a));
+          }
+        }
+        i += 1;
+      }
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

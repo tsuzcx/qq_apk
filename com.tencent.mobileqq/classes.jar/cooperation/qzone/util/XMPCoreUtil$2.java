@@ -1,7 +1,7 @@
 package cooperation.qzone.util;
 
-import bmkc;
-import bmke;
+import bnlf;
+import bnlh;
 import cooperation.qzone.networkedmodule.QzoneModuleManager;
 
 public class XMPCoreUtil$2
@@ -9,11 +9,11 @@ public class XMPCoreUtil$2
 {
   public void run()
   {
-    if ((bmkc.b(this.this$0)) || (!bmkc.c(this.this$0))) {}
+    if ((bnlf.b(this.this$0)) || (!bnlf.c(this.this$0))) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        QzoneModuleManager.getInstance().downloadModule("xmpcore.jar", new bmke(this));
+        QzoneModuleManager.getInstance().downloadModule("xmpcore.jar", new bnlh(this));
       }
       return;
     }

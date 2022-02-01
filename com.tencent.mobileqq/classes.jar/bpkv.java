@@ -1,14 +1,43 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.Comparator;
+import android.graphics.Color;
+import com.microrapid.opencv.ImageMainColorData;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class bpkv
-  implements Comparator<bpio>
+public final class bpkv
 {
-  public bpkv(DoodleLayout paramDoodleLayout) {}
-  
-  public int a(bpio parambpio1, bpio parambpio2)
+  public static int a(ImageMainColorData paramImageMainColorData)
   {
-    return parambpio2.k_() - parambpio1.k_();
+    return Color.argb(255, (int)paramImageMainColorData.r, (int)paramImageMainColorData.g, (int)paramImageMainColorData.b);
+  }
+  
+  public static List<String> a(List<ImageMainColorData> paramList, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i;
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      i = 0;
+    }
+    for (;;)
+    {
+      if (paramList.hasNext())
+      {
+        String str = String.format("#%06X", new Object[] { Integer.valueOf(a((ImageMainColorData)paramList.next()) & 0xFFFFFF) });
+        if (!localArrayList.contains(str))
+        {
+          localArrayList.add(str);
+          int j = i + 1;
+          i = j;
+          if (j < paramInt) {}
+        }
+      }
+      else
+      {
+        return localArrayList;
+      }
+    }
   }
 }
 

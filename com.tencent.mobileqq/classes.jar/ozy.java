@@ -1,18 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentTopGestureLayout;
-
-public class ozy
-  implements ValueAnimator.AnimatorUpdateListener
+final class ozy
+  implements pff
 {
-  public ozy(ReadInJoyCommentTopGestureLayout paramReadInJoyCommentTopGestureLayout, ViewGroup.LayoutParams paramLayoutParams, View paramView) {}
+  ozy(String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(pfh parampfh)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
+    parampfh.c(this.a);
   }
 }
 

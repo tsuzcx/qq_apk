@@ -1,18 +1,19 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
+import android.app.Activity;
+import mqq.app.QQPermissionCallback;
 
-class bnjt
-  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
+final class bnjt
+  implements QQPermissionCallback
 {
-  bnjt(bnjl parambnjl) {}
+  bnjt(String paramString1, String paramString2, Activity paramActivity) {}
   
-  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramRatio == null) {
-      return;
-    }
-    bnjl.a(this.a, paramRatio);
+    bhlq.b(bnjs.a(this.jdField_a_of_type_AndroidAppActivity));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bnjs.a(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

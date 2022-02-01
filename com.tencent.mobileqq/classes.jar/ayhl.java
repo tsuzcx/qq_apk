@@ -1,21 +1,21 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.10.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayhl
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  ayhl(ayhj paramayhj) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",session_id:").append(this.c).append(",content:").append(this.d).append(",language").append(this.e).append(",ocr_language_list").append(this.jdField_a_of_type_JavaUtilArrayList);
-    return localStringBuilder.toString();
+    this.a.f(paramView);
+    new ayek().h("video").i("playpage_fw_click").a().a(this.a.a);
+    ThreadManagerV2.excute(new PlayOperationViewModel.10.1(this, (axup)this.a.a.getManager(106)), 16, null, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

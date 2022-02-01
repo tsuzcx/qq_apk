@@ -1,12 +1,17 @@
-class apdl
+import com.tencent.qphone.base.util.QLog;
+
+public class apdl
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  int b;
-  int c;
-  int d;
-  int e;
-  int f;
+  public static boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LinkStarDebugProcessor.", 2, "handleLinkStarNotifyPush. linkStarMsgType=" + paramInt + " reservedData=" + paramArrayOfByte1 + " data=" + paramArrayOfByte2);
+    }
+    switch (paramInt)
+    {
+    }
+    return true;
+  }
 }
 
 

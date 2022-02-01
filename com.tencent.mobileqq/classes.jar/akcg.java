@@ -1,26 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
 
 public class akcg
-  extends aywi
+  implements DialogInterface.OnClickListener
 {
-  public akcg(BindNumberActivity paramBindNumberActivity) {}
+  public akcg(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, aeef paramaeef) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramBoolean);
-    if (paramBoolean) {
-      BindNumberActivity.a(this.a).sendEmptyMessage(3);
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(this.a.b);
-      this.a.b = null;
-      return;
-      this.a.b();
-      this.a.a(2131717326);
-    }
+    this.jdField_a_of_type_Aeef.a(true);
   }
 }
 

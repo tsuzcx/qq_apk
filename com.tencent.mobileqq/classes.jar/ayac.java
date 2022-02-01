@@ -1,8 +1,32 @@
+import android.content.res.Resources;
+import com.tencent.mobileqq.nearby.gift.TroopGiftPanelForNearby;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+
 public class ayac
+  extends bgst
 {
-  public static boolean a(int paramInt)
+  public ayac(TroopGiftPanelForNearby paramTroopGiftPanelForNearby) {}
+  
+  public void a(int paramInt)
   {
-    return (paramInt == 10019) || (paramInt == 10020) || (paramInt == 10021) || (paramInt == 10022) || (paramInt == 10023) || (paramInt == 10024) || (paramInt == 10025) || (paramInt == 10026) || (paramInt == 10027);
+    aocz.a("gift_store", "suc_one", this.a.a(), TroopGiftPanelForNearby.a(this.a) + "", "", "");
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
+    }
+    if (paramInt == 20007) {
+      QQToast.a(TroopGiftPanelForNearby.a(this.a), anzj.a(2131714207), 0).b(this.a.getResources().getDimensionPixelSize(2131299011));
+    }
+    for (;;)
+    {
+      aocz.a("gift_store", "fail_one", this.a.a(), TroopGiftPanelForNearby.b(this.a) + "", "", "");
+      return;
+      QQToast.a(TroopGiftPanelForNearby.b(this.a), anzj.a(2131714204), 0).b(this.a.getResources().getDimensionPixelSize(2131299011));
+    }
   }
 }
 

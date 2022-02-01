@@ -1,56 +1,37 @@
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
 
-public abstract class ymd
-  implements ymk
+public class ymd
+  extends SimpleObserver<T>
 {
-  private Object jdField_a_of_type_JavaLangObject;
-  private yml jdField_a_of_type_Yml;
-  private ymm jdField_a_of_type_Ymm;
+  public ymd(yly paramyly) {}
   
-  public Object a()
+  public void a(T paramT)
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    super.onNext(paramT);
+    this.a.b();
+    yuk.b("Q.qqstory.home.data.FeedListPageLoaderBase", "refresh data finish %s", paramT);
+    paramT.d = this.a.jdField_a_of_type_Boolean;
+    this.a.a(paramT.a, paramT.c);
+    this.a.jdField_a_of_type_Yma.b();
+    this.a.jdField_a_of_type_Ymc.a(paramT);
+    this.a.a("Q.qqstory.home.data.FeedListPageLoaderBase");
   }
   
-  public void a(Object paramObject)
+  public void onCancel()
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    super.onCancel();
+    yuk.d("Q.qqstory.home.data.FeedListPageLoaderBase", "refresh data cancel");
   }
   
-  public void a(yml paramyml)
+  public void onError(@NonNull Error paramError)
   {
-    this.jdField_a_of_type_Yml = paramyml;
-  }
-  
-  public void a(ymm paramymm)
-  {
-    this.jdField_a_of_type_Ymm = paramymm;
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  protected void b(ErrorMessage paramErrorMessage)
-  {
-    paramErrorMessage.extraMsg = a();
-    if (this.jdField_a_of_type_Yml != null)
-    {
-      this.jdField_a_of_type_Yml.a(paramErrorMessage);
-      return;
-    }
-    yqp.d("SimpleStep", a() + " errorCallBack is null.");
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Ymm != null)
-    {
-      this.jdField_a_of_type_Ymm.a(a());
-      return;
-    }
-    yqp.d("SimpleStep", a() + " finishCallBack is null.");
+    super.onError(paramError);
+    paramError = (ErrorMessage)paramError;
+    paramError = this.a.a(paramError);
+    paramError.d = this.a.jdField_a_of_type_Boolean;
+    this.a.jdField_a_of_type_Ymc.a(paramError);
   }
 }
 

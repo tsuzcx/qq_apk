@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import atcv;
-import bljl;
+import atup;
+import bmko;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -29,7 +29,7 @@ public class FilePicQFavActivity
       if ((localFileManagerEntity != null) && (-1L != localFileManagerEntity.uniseq))
       {
         this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((ChatMessage)this.app.a().b(localFileManagerEntity.peerUin, localFileManagerEntity.peerType, localFileManagerEntity.uniseq));
-        new bljl(3).a(this.app, this, localFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+        new bmko(3).a(this.app, this, localFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
       }
     }
     finish();

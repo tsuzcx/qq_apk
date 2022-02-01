@@ -1,65 +1,82 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.PublishVideoHelper.1.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.articlesummary.articlesummary.AggregatedList;
-import tencent.im.oidb.articlesummary.articlesummary.ArticleSummary;
-import tencent.im.oidb.articlesummary.articlesummary.FeedsInfo;
-import tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfo;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.AddVideoRsp;
+import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.RspBody;
 
-public class rfd
+public final class rfd
+  extends nkq
 {
-  public ArrayList<rfe> a;
-  articlesummary.AggregatedList a;
+  rfd(rfg paramrfg) {}
   
-  public static rfd a(articlesummary.AggregatedList paramAggregatedList)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramAggregatedList != null) && (paramAggregatedList.rpt_article_summary.has()))
+    paramBundle = new ArrayList();
+    QLog.i("RIJUGC.PublishVideoHelper", 1, "publishVideo, errorCode=" + paramInt);
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      rfd localrfd = new rfd();
-      Object localObject = paramAggregatedList.rpt_article_summary.get();
-      localrfd.jdField_a_of_type_JavaUtilArrayList = new ArrayList(((List)localObject).size());
-      localrfd.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$AggregatedList = paramAggregatedList;
-      paramAggregatedList = ((List)localObject).iterator();
-      while (paramAggregatedList.hasNext())
+      Object localObject = new oidb_0xe2a.RspBody();
+      try
       {
-        localObject = (articlesummary.ArticleSummary)paramAggregatedList.next();
-        articlesummary.FeedsInfo localFeedsInfo = (articlesummary.FeedsInfo)((articlesummary.ArticleSummary)localObject).msg_feeds_info.get();
-        rfe localrfe = new rfe();
-        localrfe.jdField_a_of_type_Long = ((articlesummary.ArticleSummary)localObject).msg_feeds_info.msg_social_feeds_info.uint64_feeds_id.get();
-        localrfe.jdField_b_of_type_Long = ((articlesummary.ArticleSummary)localObject).uint64_algorithm_id.get();
-        if (localFeedsInfo.feeds_type.has()) {
-          localrfe.jdField_a_of_type_Int = localFeedsInfo.feeds_type.get();
+        ((oidb_0xe2a.RspBody)localObject).mergeFrom(paramArrayOfByte);
+        if ((!((oidb_0xe2a.RspBody)localObject).msg_add_video_rsp.has()) || (!((oidb_0xe2a.RspBody)localObject).msg_add_video_rsp.rpt_rowkey_list.has())) {
+          break label267;
         }
-        if (((articlesummary.ArticleSummary)localObject).uint32_strategy_id.has()) {
-          localrfe.jdField_b_of_type_Int = ((articlesummary.ArticleSummary)localObject).uint32_strategy_id.get();
+        paramArrayOfByte = ((oidb_0xe2a.RspBody)localObject).msg_add_video_rsp.rpt_rowkey_list.get().iterator();
+        while (paramArrayOfByte.hasNext())
+        {
+          localObject = (ByteStringMicro)paramArrayOfByte.next();
+          if (((ByteStringMicro)localObject).toStringUtf8().isEmpty()) {
+            break label256;
+          }
+          paramBundle.add(((ByteStringMicro)localObject).toStringUtf8());
         }
-        if (((articlesummary.ArticleSummary)localObject).uint64_recommend_seq.has()) {
-          localrfe.c = ((articlesummary.ArticleSummary)localObject).uint64_recommend_seq.get();
-        }
-        localrfd.jdField_a_of_type_JavaUtilArrayList.add(localrfe);
+        ThreadManager.getUIHandler().post(new PublishVideoHelper.1.1(this, paramInt));
       }
-      return localrfd;
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RIJUGC.PublishVideoHelper", 2, "publishVideo" + paramArrayOfByte.toString());
+        }
+      }
     }
-    return null;
-  }
-  
-  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return (paramBaseArticleInfo.mExtraBiuBriefInfo != null) && (!paramBaseArticleInfo.isExtraBiuExpanded) && (paramBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList != null) && (!paramBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList.isEmpty());
-  }
-  
-  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return (paramBaseArticleInfo.mExtraBiuBriefInfo != null) && (paramBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList != null) && (!paramBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList.isEmpty());
-  }
-  
-  public byte[] a()
-  {
-    return ((articlesummary.AggregatedList)this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$AggregatedList.get()).toByteArray();
+    else
+    {
+      label180:
+      paramArrayOfByte = ozs.a();
+      if ((paramArrayOfByte != null) && (bnrf.l(paramArrayOfByte)))
+      {
+        if ((paramInt != 0) || (paramBundle.size() <= 0)) {
+          break label278;
+        }
+        QQToast.a(BaseApplicationImpl.getContext(), 0, "视频发表成功", 0).a();
+      }
+    }
+    for (;;)
+    {
+      if (this.a != null) {
+        this.a.a(paramBundle);
+      }
+      return;
+      label256:
+      QLog.i("RIJUGC.PublishVideoHelper", 1, "publishVideo, rowKey isEmpty");
+      break;
+      label267:
+      QLog.i("RIJUGC.PublishVideoHelper", 1, "publishVideo, not has rpt_rowkey_list");
+      break label180;
+      label278:
+      QQToast.a(BaseApplicationImpl.getContext(), 0, "视频发表失败，errorCode=" + paramInt, 0).a();
+    }
   }
 }
 

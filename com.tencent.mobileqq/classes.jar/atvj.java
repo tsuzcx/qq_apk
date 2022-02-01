@@ -1,13 +1,8 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
-
-final class atvj
-  implements Comparator<FileInfo>
+public abstract interface atvj
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
-  {
-    return (int)(paramFileInfo2.b() / 1000L - paramFileInfo1.b() / 1000L);
-  }
+  public abstract int a(long paramLong1, long paramLong2);
+  
+  public abstract void a();
 }
 
 

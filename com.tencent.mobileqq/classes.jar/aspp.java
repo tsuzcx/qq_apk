@@ -1,96 +1,96 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceTroopDetailView;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class aspp
-  implements asqo
+  extends asou
 {
-  public aspp(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
-  
-  public QQAppInterface a()
+  public static int a(QQAppInterface paramQQAppInterface, aspt paramaspt)
   {
-    return this.a.app;
-  }
-  
-  public void a()
-  {
-    this.a.h();
-  }
-  
-  public void a(asqt paramasqt)
-  {
-    if (this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == this.a.d.size())
-    {
-      this.a.a(paramasqt);
-      return;
+    if (paramaspt == null) {
+      return -1;
     }
-    Face2FaceAddFriendActivity.a(this.a).obtainMessage().obj = paramasqt;
-    Face2FaceAddFriendActivity.a(this.a).sendEmptyMessageDelayed(12, 5000L);
-  }
-  
-  public boolean a(asqt paramasqt, int paramInt)
-  {
-    if (!bgnt.d(this.a))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString, 2, "joinTroop, NetworkUtil.isNetSupport==false");
-      }
-      QQToast.a(this.a.app.getApplication(), 2131693948, 0).b(this.a.getTitleBarHeight());
-    }
-    do
-    {
-      anqp localanqp;
-      do
-      {
-        return false;
-        localanqp = (anqp)this.a.app.a(57);
-      } while (localanqp == null);
-      this.a.jdField_a_of_type_Biau = new biau(this.a);
-      this.a.jdField_a_of_type_Biau.a(anni.a(2131703078));
-      this.a.jdField_a_of_type_Biau.setCancelable(false);
-      this.a.jdField_a_of_type_Biau.show();
-      try
-      {
-        long l1 = Long.valueOf(paramasqt.e).longValue();
-        long l2 = Long.valueOf(paramasqt.jdField_b_of_type_JavaLangString).longValue();
-        if (QLog.isColorLevel()) {
-          QLog.d(Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString, 2, "joinTroop, troopCode=" + l1 + ", ownerUin=" + l2 + ", distance=" + paramasqt.d);
-        }
-        localanqp.a(l1, l2, paramasqt.d, paramInt);
-        return true;
-      }
-      catch (Exception paramasqt) {}
-    } while (!QLog.isColorLevel());
-    QLog.d(Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString, 2, "joinTroop:" + paramasqt.toString());
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.a.a(paramString);
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    if (this.a.jdField_b_of_type_Int == 1) {
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceTroopDetailView.a);
-    }
-  }
-  
-  public void d()
-  {
-    this.a.g();
+    int i = paramaspt.jdField_a_of_type_Int;
     if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "afterDetailViewHide 详情页返回");
+      QLog.d("EmotionPanelConstans", 2, "getPanelType type = " + i);
     }
-    this.a.g = "";
-    Face2FaceAddFriendActivity.a(this.a).sendEmptyMessageDelayed(13, this.a.a());
+    switch (i)
+    {
+    case 5: 
+    default: 
+      return -1;
+    case 4: 
+      return 4;
+    case 7: 
+      return 1;
+    case 9: 
+      return 5;
+    case 8: 
+      return 3;
+    case 6: 
+      return a(paramQQAppInterface, paramaspt, false);
+    case 10: 
+      return a(paramQQAppInterface, paramaspt, true);
+    case 11: 
+      return 13;
+    }
+    return 14;
+  }
+  
+  private static int a(QQAppInterface paramQQAppInterface, aspt paramaspt, boolean paramBoolean)
+  {
+    if ((paramQQAppInterface == null) || (paramaspt == null))
+    {
+      QLog.e("EmotionPanelConstans", 1, "getEmotionPanelType app or panelinfo is null");
+      return -1;
+    }
+    EmoticonPackage localEmoticonPackage = paramaspt.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
+    if (localEmoticonPackage == null)
+    {
+      QLog.e("EmotionPanelConstans", 1, "getEmotionPanelType emotionPkg is null; type = " + paramaspt.jdField_a_of_type_Int);
+      return -1;
+    }
+    boolean bool = asos.a(localEmoticonPackage);
+    int i = localEmoticonPackage.status;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionPanelConstans", 2, "getEmotionPanelType epid = " + localEmoticonPackage.epId + "status = " + i + ";shouldUpdate = " + bool);
+    }
+    if ((!localEmoticonPackage.valid) || (i == 3) || (!a(paramQQAppInterface, localEmoticonPackage)))
+    {
+      if (i == 2) {
+        return 12;
+      }
+      return 7;
+    }
+    if (bool)
+    {
+      if (paramBoolean) {
+        return 9;
+      }
+      return 8;
+    }
+    if (i != 2) {
+      return 7;
+    }
+    if (paramBoolean) {
+      return 2;
+    }
+    return 6;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, EmoticonPackage paramEmoticonPackage)
+  {
+    if ((paramEmoticonPackage == null) || (paramQQAppInterface == null)) {
+      return false;
+    }
+    int i = ((aogu)paramQQAppInterface.a(13)).g();
+    if (paramEmoticonPackage.mobileFeetype == 4) {
+      return (i == 1) || (i == 3);
+    }
+    if (paramEmoticonPackage.mobileFeetype == 5) {
+      return i == 3;
+    }
+    return true;
   }
 }
 

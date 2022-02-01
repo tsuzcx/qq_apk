@@ -1,16 +1,32 @@
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import android.widget.ImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.qphone.base.util.QLog;
 
-final class agxu
-  implements ahbm
+class agxu
+  implements aoog
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  agxu(agxr paramagxr) {}
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (akwv.a((MessageForQQWalletMsg)paramChatMessage)) {
-      return 32;
+    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
+    for (;;)
+    {
+      return;
+      if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
+        agxr.b(this.a).setImageBitmap(paramBitmap);
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("intimate_relationship", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
+        return;
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+          agxr.a(this.a).setImageBitmap(paramBitmap);
+        }
+      }
     }
-    return 90;
   }
 }
 

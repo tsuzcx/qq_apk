@@ -1,18 +1,76 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.ad.tangram.canvas.resource.AdResourceAdapter;
 
-class acoa
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class acoa
+  implements AdResourceAdapter
 {
-  acoa(acnw paramacnw, ViewGroup paramViewGroup, View paramView) {}
-  
-  public void onGlobalLayout()
+  public int getAppDescViewId()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    acqy.a("GdtMotiveVideoDialog", "onGlobalLayout: l=" + this.jdField_a_of_type_AndroidViewViewGroup.getLeft() + ",t=" + this.jdField_a_of_type_AndroidViewViewGroup.getTop() + ",r=" + this.jdField_a_of_type_AndroidViewViewGroup.getRight() + ",b=" + this.jdField_a_of_type_AndroidViewViewGroup.getBottom());
-    acqy.a("GdtMotiveVideoDialog", "onGlobalLayout: " + this.jdField_a_of_type_AndroidViewView);
+    return 2131362820;
+  }
+  
+  public int getAppDownloadButtonViewId()
+  {
+    return 2131365710;
+  }
+  
+  public int getAppLogoViewId()
+  {
+    return 2131362833;
+  }
+  
+  public int getAppNameViewId()
+  {
+    return 2131362834;
+  }
+  
+  public int getAppSizeViewId()
+  {
+    return 2131362840;
+  }
+  
+  public int getArkWindowLayoutId()
+  {
+    return 2131559219;
+  }
+  
+  public int getBottomFixedButtonId()
+  {
+    return 2131367436;
+  }
+  
+  public int getCanvasContentId()
+  {
+    return 2131364176;
+  }
+  
+  public int getCanvasFixedButtonLayoutId()
+  {
+    return 2131559220;
+  }
+  
+  public int getCanvasLayoutId()
+  {
+    return 2131559221;
+  }
+  
+  public int getCloseViewId()
+  {
+    return 2131364584;
+  }
+  
+  public int getCommonFixedButtonContainerId()
+  {
+    return 2131367435;
+  }
+  
+  public int getFloatingProgressBarId()
+  {
+    return 2131366813;
+  }
+  
+  public int getTopFixedButtonId()
+  {
+    return 2131367453;
   }
 }
 

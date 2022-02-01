@@ -1,10 +1,19 @@
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
 
 public class ajad
-  extends aiyk
+  extends BroadcastReceiver
 {
-  public long a;
-  public structmsg.StructMsg a;
+  public ajad(BlessActivity paramBlessActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) {
+      BlessActivity.a(this.a, true);
+    }
+  }
 }
 
 

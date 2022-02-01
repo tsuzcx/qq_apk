@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import advq;
-import ahtj;
-import ahua;
+import aees;
+import aicx;
+import aido;
 import android.os.SystemClock;
 import android.view.View;
 import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
@@ -29,24 +29,24 @@ class ChatHistoryImageView$2
     else
     {
       l = SystemClock.uptimeMillis();
-      if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (!this.this$0.jdField_a_of_type_Ahtj.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_Int))) {
-        this.this$0.jdField_a_of_type_Ahtj.b();
+      if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (!this.this$0.jdField_a_of_type_Aicx.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_Int))) {
+        this.this$0.jdField_a_of_type_Aicx.b();
       }
-      if (this.this$0.jdField_a_of_type_Ahtj.a() != 0) {
+      if (this.this$0.jdField_a_of_type_Aicx.a() != 0) {
         break label231;
       }
       this.this$0.b.setVisibility(0);
     }
     for (;;)
     {
-      if (!this.this$0.jdField_a_of_type_Ahua.a(false)) {
-        this.this$0.jdField_a_of_type_Ahua.notifyDataSetChanged();
+      if (!this.this$0.jdField_a_of_type_Aido.a(false)) {
+        this.this$0.jdField_a_of_type_Aido.notifyDataSetChanged();
       }
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) {
         this.this$0.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, false);
       }
-      if (this.this$0.jdField_a_of_type_Advq != null) {
-        this.this$0.jdField_a_of_type_Advq.a();
+      if (this.this$0.jdField_a_of_type_Aees != null) {
+        this.this$0.jdField_a_of_type_Aees.a();
       }
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistoryImageView", 2, "[onImageListLoad] cost: " + (SystemClock.uptimeMillis() - l));

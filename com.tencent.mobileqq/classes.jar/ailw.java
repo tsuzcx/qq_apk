@@ -1,26 +1,16 @@
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.widget.QQBlurView;
-
 class ailw
-  implements View.OnAttachStateChangeListener
+  implements aaxw
 {
-  ailw(ailv paramailv) {}
+  ailw(ailn paramailn) {}
   
-  public void onViewAttachedToWindow(View paramView) {}
-  
-  public void onViewDetachedFromWindow(View paramView)
+  public void a()
   {
-    if (ailv.a(this.a) != null) {
-      ailv.a(this.a).d();
-    }
-    if (ailv.a(this.a) != null)
-    {
-      ailv.a(this.a).c();
-      ailv.a(this.a, null);
-    }
-    ailv.a(this.a).removeOnAttachStateChangeListener(this);
+    this.a.a.a(false, false, 4);
+  }
+  
+  public void b()
+  {
+    this.a.a.a();
   }
 }
 

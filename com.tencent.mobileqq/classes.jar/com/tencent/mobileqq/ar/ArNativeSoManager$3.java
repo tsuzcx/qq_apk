@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar;
 
-import aovw;
+import apjm;
 import java.util.ArrayList;
 
 public class ArNativeSoManager$3
   implements Runnable
 {
-  public ArNativeSoManager$3(aovw paramaovw, ArrayList paramArrayList1, ArrayList paramArrayList2, String paramString) {}
+  public ArNativeSoManager$3(apjm paramapjm, ArrayList paramArrayList1, ArrayList paramArrayList2, String paramString) {}
   
   public void run()
   {
-    aovw.a(this.this$0, this.jdField_a_of_type_JavaUtilArrayList, this.b, this.jdField_a_of_type_JavaLangString);
+    apjm.a(this.this$0, this.jdField_a_of_type_JavaUtilArrayList, this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

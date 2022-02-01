@@ -1,36 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.PublicPlat;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adjm
-  implements DialogInterface.OnClickListener
+  implements adbw
 {
-  public adjm(AddFriendLogicActivity paramAddFriendLogicActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    if (paramInt == 1)
+    return 1008;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.a().a(paramMessageRecord.frienduin);
+    msg_svc.PublicPlat localPublicPlat = new msg_svc.PublicPlat();
+    localPublicPlat.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    if (paramQQAppInterface != null)
     {
-      paramDialogInterface = new Intent(this.a, LoginActivity.class);
-      paramDialogInterface.putExtra("is_change_account", true);
-      paramDialogInterface.putExtra("if_check_account_same", true);
-      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
-      paramDialogInterface.putExtra("appid", AddFriendLogicActivity.c(this.a));
-      paramDialogInterface.putExtra("openid", AddFriendLogicActivity.jdField_a_of_type_JavaLangString);
-      paramDialogInterface.putExtra("key_action", AddFriendLogicActivity.class.getSimpleName());
-      paramDialogInterface.addFlags(268435456);
-      paramDialogInterface.addFlags(67108864);
-      this.a.jdField_a_of_type_Bgpa.cancel();
-      this.a.startActivity(paramDialogInterface);
-      this.a.finish();
+      paramMessageRecord = new byte[paramQQAppInterface.length - 2];
+      bhvd.a(paramMessageRecord, 0, paramQQAppInterface, 2, paramQQAppInterface.length - 2);
+      localPublicPlat.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
-    while (paramInt != 0) {
-      return;
-    }
-    this.a.setResult(0);
-    this.a.finish();
+    paramRoutingHead.public_plat.set(localPublicPlat);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 7001;
   }
 }
 

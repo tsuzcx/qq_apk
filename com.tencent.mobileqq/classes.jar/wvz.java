@@ -1,21 +1,16 @@
 import java.util.ArrayList;
 
-public class wvz
-  extends weu
+public abstract interface wvz
 {
-  public final int a;
-  public ArrayList<wvy> a;
+  public abstract void a();
   
-  public wvz(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void a(ArrayList<wvn> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
   
-  public String toString()
-  {
-    return "UpdateMemoriesEvent{dateList=" + this.jdField_a_of_type_JavaUtilArrayList + ", source=" + this.jdField_a_of_type_Int + '}';
-  }
+  public abstract void a(wvn paramwvn, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

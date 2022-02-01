@@ -1,204 +1,471 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Matrix;
+import android.graphics.PointF;
+import android.util.Log;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.FaceRects;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.SmartFilterReqItem;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.YoutuResultItem;
+import com.tencent.tavcut.bean.CropConfig;
+import com.tencent.tavcut.util.BitmapUtil;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.filter.aifilter.AIImageFilterResult;
+import com.tencent.ttpic.filter.aifilter.NewEnhanceCategories;
+import com.tencent.ttpic.filter.aifilter.PhotoAIFilter;
+import com.tencent.ttpic.openapi.PTFaceAttr;
+import dov.com.qq.im.aeeditor.module.aifilter.AIFilterProxyBase.3;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.CountDownLatch;
+import mqq.util.WeakReference;
 
-class bpeu
-  extends SimpleObserver<bpsf>
+public abstract class bpeu
 {
-  bpeu(bpep parambpep, long paramLong) {}
+  private static final String jdField_a_of_type_JavaLangString = bpeu.class.getSimpleName();
+  public int a;
+  private PhotoAIFilter jdField_a_of_type_ComTencentTtpicFilterAifilterPhotoAIFilter = new PhotoAIFilter();
+  public List<Bitmap> a;
+  private WeakReference<bpdz> jdField_a_of_type_MqqUtilWeakReference;
+  public List<Bitmap> b = new ArrayList();
   
-  public void a(bpsf parambpsf)
+  public bpeu()
   {
-    boolean bool = true;
-    super.onNext(parambpsf);
-    this.jdField_a_of_type_Bpep.p();
-    this.jdField_a_of_type_Bpep.jdField_b_of_type_Boolean = false;
-    yqp.e("Q.qqstory.publish.edit.EditVideoPartManager", "PUBLISH onNext");
-    Object localObject1 = this.jdField_a_of_type_Bpep.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      ((bpen)((Iterator)localObject1).next()).b(parambpsf);
-    }
-    int i;
-    if ((parambpsf.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditRecordVideoSource)) {
-      i = 1;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  private SmartFilterReqItem a(Context paramContext, Bitmap paramBitmap, ArrayList<FaceRects> paramArrayList)
+  {
+    int i = 0;
+    if (paramBitmap == null) {
+      paramBitmap = null;
     }
     for (;;)
     {
-      yqu.b("edit_video", "publish_cost", 0, 0, new String[] { String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long), String.valueOf(i) });
-      yqu.b("publish_story", "publish_saveToEntry", 0, 0, new String[] { "", String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) });
-      if (bpep.a(this.jdField_a_of_type_Bpep, parambpsf)) {
-        bpep.a(this.jdField_a_of_type_Bpep);
+      return paramBitmap;
+      double d = Math.sqrt(25600.0F / this.jdField_a_of_type_Int);
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+      if (paramBitmap.getWidth() <= d)
+      {
+        paramContext = paramBitmap;
+        if (paramBitmap.getHeight() <= d) {}
       }
-      if (this.jdField_a_of_type_Bpep.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet() <= 0) {
-        break;
+      else
+      {
+        paramContext = new Matrix();
+        d = Math.max(d / paramBitmap.getWidth(), d / paramBitmap.getHeight());
+        paramContext.postScale((float)d, (float)d);
+        paramContext = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), paramContext, true);
+        i = 1;
       }
-      yqp.d("Q.qqstory.publish.edit.EditVideoPartManager", "waiting for another observer finish");
-      return;
-      if ((parambpsf.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource)) {
-        i = 2;
-      } else if ((parambpsf.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakePhotoSource)) {
-        i = 3;
-      } else if ((parambpsf.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalPhotoSource)) {
-        i = 4;
-      } else if ((parambpsf.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource)) {
-        i = 5;
-      } else {
-        i = 0;
+      paramContext.compress(Bitmap.CompressFormat.JPEG, 100, localByteArrayOutputStream);
+      paramArrayList = new SmartFilterReqItem(localByteArrayOutputStream.toByteArray(), paramArrayList);
+      try
+      {
+        localByteArrayOutputStream.close();
+        paramBitmap = paramArrayList;
+        if (i == 0) {
+          continue;
+        }
+        paramBitmap = paramArrayList;
+        if (paramContext == null) {
+          continue;
+        }
+        BitmapUtils.recycle(paramContext);
+        return paramArrayList;
       }
-    }
-    if ((bpep.a(this.jdField_a_of_type_Bpep.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Long, 262144)) && (bpep.b(this.jdField_a_of_type_Bpep) > 0))
-    {
-      i = bpep.b(this.jdField_a_of_type_Bpep);
-      if (!this.jdField_a_of_type_Bpep.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.d()) {
-        break label475;
-      }
-    }
-    Object localObject2;
-    label475:
-    for (localObject1 = "0";; localObject1 = "1")
-    {
-      yqu.a("video_edit", "pub_edit_one", 0, 0, new String[] { String.valueOf(i), localObject1 });
-      this.jdField_a_of_type_Bpep.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfx.b();
-      if (!this.jdField_a_of_type_Bpep.jdField_b_of_type_JavaUtilList.isEmpty()) {
-        break label1126;
-      }
-      localObject1 = this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfx.getActivity();
-      if (localObject1 == null) {
-        break;
-      }
-      if (!(this.jdField_a_of_type_Bpep.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalGifSource)) {
-        break label506;
-      }
-      parambpsf = this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfx.a(parambpsf);
-      localObject2 = parambpsf.getStringExtra("PhotoConst.PLUGIN_APK");
-      bool = parambpsf.getBooleanExtra("DirectBackToQzone", false);
-      if ((!"qzone_plugin.apk".equals(localObject2)) || (!bool)) {
-        break label482;
-      }
-      blsb.a((Activity)localObject1, "", parambpsf, -1);
-      this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfx.a(-1, null, 2130772029, 0);
-      return;
-    }
-    label482:
-    ((Activity)localObject1).startActivity(parambpsf);
-    this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfx.a(-1, null, 2130772029, 0);
-    return;
-    label506:
-    if (this.jdField_a_of_type_Bpep.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a() == 1) {
-      this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfx.a().sendBroadcast(new Intent("action_fire_create_story"));
-    }
-    do
-    {
-      do
+      catch (IOException paramBitmap)
       {
         for (;;)
         {
-          localObject1 = parambpsf.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam;
-          yqp.b("Q.qqstory.publish.edit.EditVideoPartManager", "publishParam = " + localObject1);
-          localObject2 = this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfx.a(parambpsf);
-          this.jdField_a_of_type_Bpep.a((Intent)localObject2, this.jdField_a_of_type_Bpep.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a(), (PublishParam)localObject1, parambpsf.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams);
-          return;
-          if (this.jdField_a_of_type_Bpep.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a() == 14)
-          {
-            yqp.b("Q.qqstory.publish.edit.EditVideoPartManager", "Q.videostory.publish.upload[peak process]  sendBroadcast notify publish start(to read info from db)");
-            localObject2 = this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfx.getActivity().getIntent();
-            if ((!bnqb.a((Intent)localObject2)) || (bnqb.e((Intent)localObject2)) || (bnqb.d((Intent)localObject2))) {
-              break;
-            }
-            this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfx.a().sendBroadcast(new Intent("action_fire_create_video_story"));
-          }
+          paramBitmap.printStackTrace();
         }
-      } while (this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfn == null);
-      this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfn.a(anni.a(2131702539), false, 0);
-      this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfn.a(2);
-      this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfn.a(5);
-      localObject1 = parambpsf.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam;
-      yqp.b("Q.qqstory.publish.edit.EditVideoPartManager", "publishParam = " + localObject1);
-    } while (this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfx.getActivity() == null);
-    parambpsf = this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfx.getActivity().getIntent();
-    int j;
-    if (parambpsf != null)
-    {
-      j = parambpsf.getIntExtra("sv_total_frame_count", 0);
-      i = parambpsf.getIntExtra("sv_total_record_time", 0);
+      }
     }
+  }
+  
+  protected static String a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    String str = paramString.split("\\.")[0];
+    paramString = bphr.a().c(str);
+    bpam.b(jdField_a_of_type_JavaLangString, "parseLutBySceneLabel--select lut=" + str + ", path=" + paramString);
+    if ((paramString != null) && (new File(paramString).exists())) {}
     for (;;)
     {
-      Intent localIntent = SaveVideoActivity.a(this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfx.a(), ((PublishParam)localObject1).b, i, j, this.jdField_a_of_type_Bpep.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a());
-      this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfn.a(((PublishParam)localObject1).b);
-      i = ((Intent)localObject2).getIntExtra("VIDEO_STORY_FROM_TYPE", bnqb.a.a());
-      localIntent.putExtra("mediacodec_encode_enable", true);
-      if (((PublishParam)localObject1).e != 0)
+      return paramString;
+      bpam.b(jdField_a_of_type_JavaLangString, "parseLutBySceneLabel--used lut not exists, id=" + str);
+      CountDownLatch localCountDownLatch = new CountDownLatch(1);
+      boolean[] arrayOfBoolean = new boolean[1];
+      bphr.a().a(str, new bpev(arrayOfBoolean, localCountDownLatch));
+      try
       {
-        localIntent.putExtra("video_edit_flag", bool);
-        localIntent.putExtra("thumbfile_send_path", ((PublishParam)localObject1).c);
-        localIntent.putExtra("VIDEO_STORY_FROM_TYPE", i);
-        if (parambpsf != null)
+        localCountDownLatch.await();
+        if (arrayOfBoolean[0] != 0) {
+          bpam.b(jdField_a_of_type_JavaLangString, "parseLutBySceneLabel--download SUCCESS");
+        }
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
         {
-          localIntent.putExtra("widgetinfo", parambpsf.getStringExtra("widgetinfo"));
-          localObject2 = parambpsf.getStringExtra("key_camera_material_name");
-          bnzb.b("Q.qqstory.publish.edit.EditVideoPartManager", "start SaveVideoActivity---takeSameName=" + (String)localObject2);
-          localIntent.putExtra("key_camera_material_name", (String)localObject2);
-          localIntent.putExtra("qqstory_slide_show_scene", parambpsf.getIntExtra("qqstory_slide_show_scene", -1));
+          localInterruptedException.printStackTrace();
         }
-        if ((!bnqb.l.a(i)) && (!bnqb.k.a(i))) {
-          break label1103;
-        }
-        this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfx.getActivity().startActivityForResult(localIntent, 21);
+        bpam.b(jdField_a_of_type_JavaLangString, "parseLutBySceneLabel--download FAIL");
+        paramString = null;
+      }
+    }
+  }
+  
+  protected static String a(List<bpey> paramList)
+  {
+    bpam.b(jdField_a_of_type_JavaLangString, "voteLable");
+    Object localObject1 = new HashMap();
+    int i = 0;
+    if (i < paramList.size())
+    {
+      if (((Map)localObject1).containsKey(paramList.get(i))) {
+        ((Map)localObject1).put(((bpey)paramList.get(i)).jdField_a_of_type_JavaLangString, Integer.valueOf(((Integer)((Map)localObject1).get(paramList.get(i))).intValue() + 1));
       }
       for (;;)
       {
-        this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfn.a(5, ((PublishParam)localObject1).jdField_a_of_type_Long);
-        return;
-        bool = false;
+        i += 1;
         break;
-        label1103:
-        this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfx.getActivity().startActivityForResult(localIntent, 211);
+        ((Map)localObject1).put(((bpey)paramList.get(i)).jdField_a_of_type_JavaLangString, Integer.valueOf(0));
       }
-      label1126:
-      parambpsf = this.jdField_a_of_type_Bpep.jdField_b_of_type_JavaUtilList.iterator();
-      while (parambpsf.hasNext()) {
-        yqp.c("Q.qqstory.publish.edit.EditVideoPartManager", "publish error %s", (Error)parambpsf.next());
+    }
+    Iterator localIterator = ((Map)localObject1).entrySet().iterator();
+    localObject1 = (Map.Entry)localIterator.next();
+    paramList = (String)((Map.Entry)localObject1).getKey();
+    localObject1 = (Integer)((Map.Entry)localObject1).getValue();
+    if (localIterator.hasNext())
+    {
+      Object localObject2 = (Map.Entry)localIterator.next();
+      String str = (String)((Map.Entry)localObject2).getKey();
+      localObject2 = (Integer)((Map.Entry)localObject2).getValue();
+      if (((Integer)localObject1).intValue() >= ((Integer)localObject2).intValue()) {
+        break label233;
       }
-      QQToast.a(this.jdField_a_of_type_Bpep.jdField_a_of_type_Bpfx.a(), this.jdField_a_of_type_Bpep.jdField_b_of_type_JavaUtilList.size() + anni.a(2131702655), 0).a();
-      parambpsf = (bpez)this.jdField_a_of_type_Bpep.a(bpez.class);
-      if (parambpsf == null) {
-        break;
-      }
-      parambpsf.l();
-      return;
-      i = 0;
-      j = 0;
+      paramList = str;
+      localObject1 = localObject2;
+    }
+    label233:
+    for (;;)
+    {
+      break;
+      return paramList;
     }
   }
   
-  public void onCancel()
+  private ArrayList<SmartFilterReqItem> a(Context paramContext, List<Bitmap> paramList, List<PTFaceAttr> paramList1)
   {
-    super.onCancel();
+    ArrayList localArrayList = new ArrayList();
+    if (paramList == null) {
+      return localArrayList;
+    }
+    int i = 0;
+    while (i < paramList.size())
+    {
+      Bitmap localBitmap = (Bitmap)paramList.get(i);
+      Object localObject2 = null;
+      Object localObject1 = localObject2;
+      if (paramList1 != null)
+      {
+        localObject1 = localObject2;
+        if (paramList1.size() > i) {
+          localObject1 = a((PTFaceAttr)paramList1.get(i));
+        }
+      }
+      localArrayList.add(a(paramContext, localBitmap, (ArrayList)localObject1));
+      i += 1;
+    }
+    return localArrayList;
   }
   
-  public void onError(@NonNull Error paramError)
+  public static ArrayList<FaceRects> a(PTFaceAttr paramPTFaceAttr)
   {
-    super.onError(paramError);
-    yqu.b("publish_story", "publish_saveToEntry", 0, -1, new String[] { paramError.getMessage() + "", String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) });
-    this.jdField_a_of_type_Bpep.a(paramError);
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramPTFaceAttr.getAllFacePoints().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (List)localIterator.next();
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        localObject = ((List)localObject).iterator();
+        float f4 = 0.0F;
+        float f1 = 1.4E-45F;
+        float f6 = 1.4E-45F;
+        float f8 = 3.4028235E+38F;
+        float f5 = 0.0F;
+        float f3 = 0.0F;
+        float f2 = 3.4028235E+38F;
+        float f7 = 0.0F;
+        while (((Iterator)localObject).hasNext())
+        {
+          PointF localPointF = (PointF)((Iterator)localObject).next();
+          f8 = Math.min(f8, localPointF.x);
+          f6 = Math.max(f6, localPointF.x);
+          f2 = Math.min(f2, localPointF.y);
+          f1 = Math.max(f1, localPointF.y);
+          f5 = f8 / paramPTFaceAttr.getFaceDetWidth();
+          f3 = f2 / paramPTFaceAttr.getFaceDetHeight();
+          f7 = (f6 - f8) / paramPTFaceAttr.getFaceDetWidth();
+          f4 = (f1 - f2) / paramPTFaceAttr.getFaceDetHeight();
+        }
+        localArrayList.add(new FaceRects(f5, f3, f7, f4));
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static List<Bitmap> a(List<String> paramList, List<bpbu> paramList1)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramList != null)
+    {
+      int j = 0;
+      while ((j < paramList.size()) && (j < paramList1.size()))
+      {
+        Object localObject = (String)paramList.get(j);
+        CropConfig localCropConfig = ((bpbu)paramList1.get(j)).jdField_a_of_type_ComTencentTavcutBeanCropConfig;
+        int m = Math.max(((bpbu)paramList1.get(j)).jdField_a_of_type_Int, ((bpbu)paramList1.get(j)).b);
+        if (m > 400)
+        {
+          int i = 1;
+          for (;;)
+          {
+            k = i;
+            if (m / i <= 400) {
+              break;
+            }
+            i *= 2;
+          }
+        }
+        int k = 1;
+        bpam.a(jdField_a_of_type_JavaLangString, "decodeBitmap: start ");
+        localObject = BitmapUtil.cropBitmap((String)localObject, localCropConfig, k);
+        bpam.a(jdField_a_of_type_JavaLangString, "decodeBitmap: end ");
+        localArrayList.add(localObject);
+        j += 1;
+      }
+    }
+    return localArrayList;
+  }
+  
+  protected static String b(String paramString)
+  {
+    Object localObject1 = NewEnhanceCategories.COMMON;
+    Object localObject3 = NewEnhanceCategories.newEnhanceTypes.iterator();
+    Object localObject2;
+    if (((Iterator)localObject3).hasNext())
+    {
+      localObject2 = (NewEnhanceCategories)((Iterator)localObject3).next();
+      if (!((NewEnhanceCategories)localObject2).serverLabel.equals(paramString)) {
+        break label214;
+      }
+      localObject1 = localObject2;
+    }
+    label214:
+    for (;;)
+    {
+      break;
+      localObject2 = localObject1.fileName.split("\\.")[0];
+      paramString = bphr.a().c((String)localObject2);
+      bpam.b(jdField_a_of_type_JavaLangString, "parseLutBySceneLabel--select lut=" + (String)localObject2 + ", path=" + paramString);
+      if ((paramString != null) && (new File(paramString).exists())) {
+        return paramString;
+      }
+      bpam.b(jdField_a_of_type_JavaLangString, "parseLutBySceneLabel--used lut not exists, id=" + (String)localObject2);
+      localObject3 = new CountDownLatch(1);
+      localObject1 = new boolean[1];
+      bphr.a().a((String)localObject2, new bpew((boolean[])localObject1, (CountDownLatch)localObject3));
+      try
+      {
+        ((CountDownLatch)localObject3).await();
+        if (localObject1[0] != 0)
+        {
+          bpam.b(jdField_a_of_type_JavaLangString, "parseLutBySceneLabel--download SUCCESS");
+          return paramString;
+        }
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          localInterruptedException.printStackTrace();
+        }
+        bpam.b(jdField_a_of_type_JavaLangString, "parseLutBySceneLabel--download FAIL");
+        return null;
+      }
+    }
+  }
+  
+  private void b(Context paramContext, List<Bitmap> paramList, bpex parambpex)
+  {
+    bpam.b(jdField_a_of_type_JavaLangString, "doFaceDetect");
+    if ((paramList == null) && (parambpex != null)) {
+      parambpex.a(-2);
+    }
+    do
+    {
+      return;
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        Bitmap localBitmap = (Bitmap)localIterator.next();
+        bpam.a(jdField_a_of_type_JavaLangString, "doFaceDetect start");
+        int i = Math.max(localBitmap.getHeight(), localBitmap.getWidth());
+        float f = 1.0F;
+        if (i > 240.0F) {
+          f = 240.0F / i;
+        }
+        localArrayList.add(this.jdField_a_of_type_ComTencentTtpicFilterAifilterPhotoAIFilter.doFaceDetect(localBitmap, f));
+        bpam.a(jdField_a_of_type_JavaLangString, "doFaceDetect end");
+      }
+      paramContext = a(paramContext, paramList, localArrayList);
+      if ((paramContext != null) && (paramContext.size() != 0)) {
+        break;
+      }
+    } while (parambpex == null);
+    parambpex.a(-3);
+    return;
+    parambpex.a(paramContext);
+  }
+  
+  public bpdz a()
+  {
+    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {
+      return null;
+    }
+    return (bpdz)this.jdField_a_of_type_MqqUtilWeakReference.get();
+  }
+  
+  protected bpez a()
+  {
+    return a(null);
+  }
+  
+  protected abstract bpez a(List<bpey> paramList);
+  
+  protected bpfe a(bpey parambpey)
+  {
+    bpfe localbpfe = new bpfe();
+    if (a(this.jdField_a_of_type_JavaUtilList)) {}
+    try
+    {
+      localbpfe.jdField_a_of_type_ComMicrorapidOpencvImageStatisticsData = PhotoAIFilter.preprocessImages(this.jdField_a_of_type_JavaUtilList);
+      localbpfe.jdField_a_of_type_ArrayOfFloat = bpdx.a(localbpfe.jdField_a_of_type_ComMicrorapidOpencvImageStatisticsData);
+      Object localObject = new ArrayList();
+      if (parambpey == null)
+      {
+        String str1 = NewEnhanceCategories.COMMON.serverLabel;
+        localbpfe.jdField_a_of_type_Boolean = true;
+        bpam.b(jdField_a_of_type_JavaLangString, "result is exception");
+        parambpey = (bpey)localObject;
+        bpam.b(jdField_a_of_type_JavaLangString, "sceneLabel: " + str1);
+        localObject = parambpey.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          YoutuResultItem localYoutuResultItem = (YoutuResultItem)((Iterator)localObject).next();
+          bpam.b(jdField_a_of_type_JavaLangString, "label: " + localYoutuResultItem.Label + ", confidence: " + localYoutuResultItem.Confidence);
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      String str2;
+      for (;;)
+      {
+        bpam.d(jdField_a_of_type_JavaLangString, Log.getStackTraceString(localException));
+        continue;
+        str2 = parambpey.jdField_a_of_type_JavaLangString;
+        parambpey = parambpey.jdField_a_of_type_JavaUtilList;
+      }
+      localbpfe.jdField_a_of_type_JavaLangString = str2;
+      localbpfe.jdField_a_of_type_JavaUtilList = parambpey;
+      PhotoAIFilter.setAIImageJsonPath(bphr.a().a());
+      PhotoAIFilter.setLutImagePath("");
+      parambpey = PhotoAIFilter.parseAIImageParamsBySceneLabel(localbpfe.jdField_a_of_type_JavaLangString);
+      localbpfe.jdField_b_of_type_JavaLangString = a(parambpey.lutPath);
+      localbpfe.jdField_a_of_type_Float = parambpey.lutStrengt;
+      localbpfe.jdField_a_of_type_JavaUtilHashMap = parambpey.adjustParam;
+      localbpfe.c = parambpey.smoothLevel;
+      localbpfe.jdField_b_of_type_Float = parambpey.glowStrength;
+    }
+    return localbpfe;
+  }
+  
+  public void a()
+  {
+    bpam.b(jdField_a_of_type_JavaLangString, "removeObserver");
+    this.jdField_a_of_type_MqqUtilWeakReference = null;
+  }
+  
+  protected abstract void a(Context paramContext, bpex parambpex);
+  
+  public void a(Context paramContext, List<Bitmap> paramList, bpex parambpex)
+  {
+    bpam.b(jdField_a_of_type_JavaLangString, "faceDetect");
+    if ((paramList == null) || (!a(paramList)))
+    {
+      if (parambpex != null) {
+        parambpex.a(-2);
+      }
+      return;
+    }
+    boyv.a(new AIFilterProxyBase.3(this, paramContext, paramList, parambpex), false, "");
+  }
+  
+  public void a(bpdz parambpdz)
+  {
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parambpdz);
+  }
+  
+  public abstract boolean a();
+  
+  protected boolean a(List<Bitmap> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      if (!BitmapUtils.isLegal((Bitmap)paramList.next())) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public void b()
+  {
+    bpam.b(jdField_a_of_type_JavaLangString, "clear");
+    Iterator localIterator;
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        BitmapUtils.recycle((Bitmap)localIterator.next());
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+    if ((this.b != null) && (this.b.size() > 0))
+    {
+      localIterator = this.b.iterator();
+      while (localIterator.hasNext()) {
+        BitmapUtils.recycle((Bitmap)localIterator.next());
+      }
+      this.b.clear();
+    }
   }
 }
 

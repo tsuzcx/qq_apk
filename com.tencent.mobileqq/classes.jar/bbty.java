@@ -1,30 +1,16 @@
-import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
 public class bbty
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
+  public bbty(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public bbty(String paramString, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return this.jdField_a_of_type_JavaLangString.equals(paramString);
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("keyword:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" status:").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    return SignatureHistoryFragment.a(this.a, paramView, false);
   }
 }
 

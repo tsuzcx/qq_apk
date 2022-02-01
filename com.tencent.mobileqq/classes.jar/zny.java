@@ -1,19 +1,36 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
+import android.content.Context;
+import android.os.Handler;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
-public class zny
-  implements ValueAnimator.AnimatorUpdateListener
+public final class zny
 {
-  public zny(NeoVideoRecordButton paramNeoVideoRecordButton) {}
+  private final znz a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public zny(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
   {
-    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
-    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
-    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
-    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
-    NeoVideoRecordButton.a(this.a);
+    this(paramContext, paramOnGestureListener, null);
+  }
+  
+  public zny(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
+  {
+    this.a = new zoa(paramContext, paramOnGestureListener, paramHandler);
+  }
+  
+  public void a(int paramInt)
+  {
+    zoa.a(paramInt);
+  }
+  
+  public void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)
+  {
+    this.a.a(paramOnDoubleTapListener);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return this.a.a(paramMotionEvent);
   }
 }
 

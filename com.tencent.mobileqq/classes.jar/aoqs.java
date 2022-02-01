@@ -1,54 +1,96 @@
-import android.support.annotation.NonNull;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class aoqs
+  extends aoqf
 {
-  private static int a(int paramInt)
+  public aoqs(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
   {
-    if (paramInt == 0) {
-      return 1;
-    }
-    if (paramInt == 1) {
-      return 0;
-    }
-    return 2;
+    super(paramQQAppInterface, paramFriendListHandler);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  private int a(ToServiceMsg paramToServiceMsg)
   {
-    paramInt = a(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("PublicAccountStateReporter", 2, "onPublicAccountReceiveState state : " + paramInt + ", name: " + paramString2 + ", pUin: " + paramString1);
-    }
-    paramQQAppInterface = (aoql)paramQQAppInterface.a(148);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.a(paramString1, paramString2, paramInt);
-    }
-  }
-  
-  private static void a(@NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean, int paramInt1, long paramLong1, long paramLong2, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountStateReporter", 2, new Object[] { "doPublicAccountFollowState { isFollow=", Boolean.valueOf(paramBoolean), " appType=", Integer.valueOf(paramInt1), " appid=", Long.valueOf(paramLong1), " puin=", Long.valueOf(paramLong2), " source=", Integer.valueOf(paramInt2), " }" });
-    }
-    paramQQAppInterface = (aoql)paramQQAppInterface.a(148);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.a(paramBoolean, paramInt1, paramLong1, paramLong2, paramInt2);
-    }
-  }
-  
-  public static void a(@NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString, int paramInt)
-  {
+    int i = 0;
     try
     {
-      a(paramQQAppInterface, paramBoolean, -1, -1L, Long.parseLong(paramString), paramInt);
-      return;
+      Object localObject = ByteBuffer.wrap(paramToServiceMsg.getWupBuffer());
+      paramToServiceMsg = new byte[((ByteBuffer)localObject).getInt() - 4];
+      ((ByteBuffer)localObject).get(paramToServiceMsg);
+      localObject = new oidb_sso.OIDBSSOPkg();
+      ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom(paramToServiceMsg);
+      int j = ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.get();
+      i = j;
     }
-    catch (NumberFormatException paramQQAppInterface)
+    catch (Exception paramToServiceMsg)
     {
-      QLog.d("PublicAccountStateReporter", 1, new Object[] { "NumberFormatException, puin=", paramString });
+      while (!QLog.isColorLevel()) {}
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "getServiceTypeFromToServiceMsg error:" + paramToServiceMsg.getMessage());
     }
+    return i;
+    return 0;
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i = a(paramToServiceMsg);
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("uin", paramToServiceMsg.extraData.getLong("uin"));
+    if (i == 147) {}
+    for (i = 72;; i = 71)
+    {
+      if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
+      {
+        a(i, false, localBundle);
+        return;
+      }
+      try
+      {
+        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        if ((paramToServiceMsg.uint32_result.has()) && (paramToServiceMsg.uint32_result.get() == 0))
+        {
+          paramToServiceMsg = ByteBuffer.wrap(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+          long l = paramToServiceMsg.getInt();
+          paramToServiceMsg.getShort();
+          paramFromServiceMsg = new byte[4];
+          paramToServiceMsg.get(paramFromServiceMsg);
+          l = bhjx.a(paramFromServiceMsg, 0);
+          int j = paramToServiceMsg.get();
+          localBundle.putLong("uin", l);
+          localBundle.putInt("safety_flag", j & 0x1F);
+          a(i, true, localBundle);
+          return;
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handle_oidb_0x476 error:" + paramToServiceMsg.getMessage());
+        }
+        a(i, false, localBundle);
+        return;
+      }
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return ("OidbSvc.0x476_146".equals(paramString)) || ("OidbSvc.0x476_147".equals(paramString));
+  }
+  
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    c(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

@@ -1,26 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity.11.1;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract class ajax
+public class ajax
+  implements amhc
 {
-  public long a;
-  public String a;
-  public boolean b;
+  public ajax(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public String a()
+  public void a(int paramInt)
   {
-    return "";
+    this.a.runOnUiThread(new BlessSelectMemberActivity.11.1(this));
+    if (BlessSelectMemberActivity.a() != null) {
+      BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    }
+    synchronized (BlessSelectMemberActivity.a())
+    {
+      BlessSelectMemberActivity.a().set(true);
+      BlessSelectMemberActivity.a().notifyAll();
+      this.a.finish();
+      return;
+    }
   }
   
-  public String a(QQAppInterface paramQQAppInterface)
+  public void a(String arg1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
   {
-    return this.a;
-  }
-  
-  public abstract boolean a();
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return false;
+    BlessSelectMemberActivity.a = ???;
+    synchronized (BlessSelectMemberActivity.a())
+    {
+      BlessSelectMemberActivity.a().set(true);
+      BlessSelectMemberActivity.a().notifyAll();
+      return;
+    }
   }
 }
 

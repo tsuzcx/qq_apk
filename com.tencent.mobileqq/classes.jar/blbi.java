@@ -1,18 +1,32 @@
-import cooperation.comic.ui.QQComicFragment;
+import android.os.Bundle;
+import com.tencent.ims.SafeReport.RspBody;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.common.QSecRptControllerImpl;
 
 public class blbi
-  implements bhow
+  extends nkq
 {
-  public blbi(QQComicFragment paramQQComicFragment) {}
+  public blbi(QSecRptControllerImpl paramQSecRptControllerImpl) {}
   
-  public Object a(int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new SafeReport.RspBody();
     }
-    return new blbj(this.a);
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if ((paramBundle.uint32_result.has()) && (QLog.isColorLevel())) {
+        QLog.d("QSRPT", 2, String.format("report result: %d", new Object[] { Integer.valueOf(paramBundle.uint32_result.get()) }));
+      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
 }
 

@@ -2,12 +2,12 @@ package com.tencent.mobileqq.vas;
 
 import android.media.MediaPlayer;
 import android.os.Handler;
-import bgxg;
+import bhxk;
 
 public class ColorRingPlayer$3
   implements Runnable
 {
-  public ColorRingPlayer$3(bgxg parambgxg) {}
+  public ColorRingPlayer$3(bhxk parambhxk) {}
   
   public void run()
   {

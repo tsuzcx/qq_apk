@@ -1,8 +1,16 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import msf.msgsvc.msg_svc.RoutingHead;
+
 public abstract interface adbw
 {
-  public abstract void a(int paramInt, abez paramabez);
+  public abstract int a();
   
-  public abstract void a(long paramLong);
+  public abstract boolean a();
+  
+  public abstract boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface);
+  
+  public abstract int b();
 }
 
 

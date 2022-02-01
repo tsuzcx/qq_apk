@@ -1,73 +1,45 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aqpd
-  extends aqkz<aqpc>
+  implements anui
 {
-  @NonNull
-  public aqpc a(int paramInt)
-  {
-    return new aqpc();
-  }
+  protected void a(boolean paramBoolean, long paramLong) {}
   
-  @Nullable
-  public aqpc a(aqlg[] paramArrayOfaqlg)
+  protected void a(boolean paramBoolean, long paramLong, List<aqon> paramList) {}
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
+    if (paramInt == 1)
     {
-      aqpc localaqpc = aqpc.a(paramArrayOfaqlg[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("GlobalSearchConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, ((Long)paramObject[0]).longValue(), (ArrayList)paramObject[1]);
+    }
+    do
+    {
+      return;
+      if (paramInt == 2)
+      {
+        paramObject = (Object[])paramObject;
+        a(paramBoolean, (String)paramObject[0], ((Boolean)paramObject[1]).booleanValue());
+        return;
       }
-      return localaqpc;
-    }
-    return null;
-  }
-  
-  public void a(aqpc paramaqpc)
-  {
-    com.tencent.mobileqq.search.util.SearchConfigManager.needSeparate = paramaqpc.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("GlobalSearchConfProcessor", 2, "onUpdate " + paramaqpc.toString());
-    }
-  }
-  
-  public Class<aqpc> clazz()
-  {
-    return aqpc.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 414;
+      if (paramInt == 3)
+      {
+        a(paramBoolean, ((Boolean)paramObject).booleanValue());
+        return;
+      }
+    } while (paramInt != 6);
+    a(paramBoolean, ((Long)((Object[])(Object[])paramObject)[0]).longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqpd
  * JD-Core Version:    0.7.0.1
  */

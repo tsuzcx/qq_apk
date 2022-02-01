@@ -1,24 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import org.json.JSONObject;
 
-class aawp
-  implements Animation.AnimationListener
+public class aawp
 {
-  aawp(aawn paramaawn) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aawp(JSONObject paramJSONObject)
   {
-    if (aawn.a(this.a) != null)
-    {
-      aawn.a(this.a).clearAnimation();
-      aawn.a(this.a).startAnimation(aawn.a(this.a));
-    }
+    this.a = paramJSONObject.optString("icon");
+    this.b = paramJSONObject.optString("iconGrid");
+    this.c = paramJSONObject.optString("jumpUrl");
+    this.d = paramJSONObject.optString("iconLoveGrid");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

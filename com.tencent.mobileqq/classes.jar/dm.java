@@ -2,7 +2,7 @@ import com.tencent.device.datadef.DeviceInfo;
 import java.util.ArrayList;
 
 class dm
-  extends abqm
+  extends abuq
 {
   dm(dk paramdk) {}
   

@@ -8,7 +8,7 @@ import android.graphics.Path.FillType;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import upe;
+import uqf;
 
 public class RoundCornerImageView
   extends KandianUrlImageView
@@ -76,7 +76,7 @@ public class RoundCornerImageView
         Path localPath;
         RectF localRectF;
         Path.Direction localDirection;
-        upe.d("RoundCornerImageView", paramCanvas.getMessage());
+        uqf.d("RoundCornerImageView", paramCanvas.getMessage());
       }
       i /= 30;
       break;

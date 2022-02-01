@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import apdd;
-import apde;
+import apqt;
+import apqu;
 import java.util.List;
 
 public class MiniRecog$1
   implements Runnable
 {
-  public MiniRecog$1(apdd paramapdd, List paramList, long paramLong) {}
+  public MiniRecog$1(apqt paramapqt, List paramList, long paramLong) {}
   
   public void run()
   {

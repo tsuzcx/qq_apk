@@ -1,79 +1,57 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import org.json.JSONObject;
+import android.os.Build.VERSION;
+import java.util.AbstractCollection;
+import java.util.ArrayDeque;
+import java.util.concurrent.ArrayBlockingQueue;
 
-public class aqml
+public class aqml<T>
 {
-  private Map<String, String> a = new HashMap();
+  final AbstractCollection<T> a;
   
-  public static aqml a(aqlg[] paramArrayOfaqlg)
+  public aqml(int paramInt)
   {
-    Object localObject;
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0))
+    if (Build.VERSION.SDK_INT >= 9)
     {
-      localObject = null;
-      return localObject;
+      this.a = new ArrayDeque();
+      return;
     }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        aqml localaqml = new aqml();
-        i = 0;
-        localObject = localaqml;
-        if (i >= paramArrayOfaqlg.length) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloConfig_GrayProcessor", 2, new Object[] { "parse conf taskId:", Integer.valueOf(paramArrayOfaqlg[i].jdField_a_of_type_Int) });
-        }
-        localObject = new JSONObject(paramArrayOfaqlg[i].jdField_a_of_type_JavaLangString);
-        if (((JSONObject)localObject).has("grayUrlConfig")) {
-          localaqml.a.put("apolloGrayUrlWhite", paramArrayOfaqlg[i].jdField_a_of_type_JavaLangString);
-        } else if (((JSONObject)localObject).has("traceConfig")) {
-          localaqml.a.put("apolloTraceConfig", paramArrayOfaqlg[i].jdField_a_of_type_JavaLangString);
-        }
-      }
-      catch (Exception paramArrayOfaqlg)
-      {
-        QLog.e("ApolloConfig_GrayProcessor", 1, paramArrayOfaqlg, new Object[0]);
-        return null;
-      }
-      i += 1;
-    }
+    this.a = new ArrayBlockingQueue(30);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, aqml paramaqml)
+  public T a()
   {
-    if ((paramQQAppInterface == null) || (paramaqml == null)) {}
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 9)
     {
-      return;
-      Iterator localIterator = paramaqml.a.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str1 = (String)localIterator.next();
-        String str2 = (String)paramaqml.a.get(str1);
-        if ((paramBoolean) && (QLog.isColorLevel())) {
-          QLog.d("ApolloConfig_GlobalProcessor", 2, new Object[] { "parseApolloGrayConfBean content:", str2 });
-        }
-        if ("apolloGrayUrlWhite".equals(str1)) {
-          anca.a(paramQQAppInterface, str2, paramBoolean);
-        } else if ("apolloTraceConfig".equals(str1)) {
-          anca.a(paramQQAppInterface, str2);
-        }
+      if ((this.a instanceof ArrayDeque)) {
+        return ((ArrayDeque)this.a).poll();
       }
     }
+    else if ((this.a instanceof ArrayBlockingQueue)) {
+      return ((ArrayBlockingQueue)this.a).poll();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(T paramT)
+  {
+    if (Build.VERSION.SDK_INT >= 9) {
+      if ((this.a instanceof ArrayDeque)) {
+        ((ArrayDeque)this.a).offer(paramT);
+      }
+    }
+    while (!(this.a instanceof ArrayBlockingQueue)) {
+      return;
+    }
+    ((ArrayBlockingQueue)this.a).offer(paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqml
  * JD-Core Version:    0.7.0.1
  */

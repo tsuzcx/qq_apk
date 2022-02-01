@@ -1,44 +1,28 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.GridView;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.widget.ListView;
+import android.os.Handler;
+import com.tencent.image.ApngDrawable.OnPlayRepeatListener;
+import com.tencent.image.ApngImage;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.vas.ApngQueuePlayer.RepeatListener.1;
 
 public class bhwg
-  implements Animation.AnimationListener
+  implements ApngDrawable.OnPlayRepeatListener
 {
-  private bhwg(DraggableGridView paramDraggableGridView) {}
+  private int a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  bhwg(bhwc parambhwc) {}
+  
+  public void a(ApngImage paramApngImage)
   {
-    int i = 0;
-    while (i < DraggableGridView.a(this.a).getChildCount())
-    {
-      paramAnimation = DraggableGridView.a(this.a).getChildAt(i);
-      if ((paramAnimation instanceof GridView))
-      {
-        paramAnimation = (GridView)paramAnimation;
-        int j = 0;
-        while (j < paramAnimation.getChildCount())
-        {
-          paramAnimation.getChildAt(j).clearAnimation();
-          paramAnimation.getChildAt(j).setPressed(false);
-          paramAnimation.getChildAt(j).setVisibility(0);
-          j += 1;
-        }
-      }
-      i += 1;
-    }
-    this.a.a();
-    DraggableGridView.b(this.a, false);
-    DraggableGridView.c(this.a, false);
-    DraggableGridView.a(this.a).notifyDataSetChanged();
+    this.jdField_a_of_type_Int = paramApngImage.apngLoop;
+    paramApngImage.setOnPlayRepeatListener(this);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onPlayRepeat(int paramInt)
+  {
+    if (paramInt == this.jdField_a_of_type_Int) {
+      ThreadManagerV2.getUIHandlerV2().post(new ApngQueuePlayer.RepeatListener.1(this));
+    }
+  }
 }
 
 

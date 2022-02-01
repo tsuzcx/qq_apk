@@ -1,14 +1,6 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-
-class amwc
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface amwc
 {
-  amwc(amwb paramamwb) {}
-  
-  public void onGlobalLayout()
-  {
-    amwb.a(this.a);
-  }
+  public abstract void onRender();
 }
 
 

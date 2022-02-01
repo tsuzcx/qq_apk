@@ -1,23 +1,104 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStorySubmitPollData;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStorySubmitPollData;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
 
 public class xbj
-  extends wla
+  implements woy<xcg<qqstory_service.ReqStorySubmitPollData>, xee>
 {
-  public wfw a = new wfw();
+  public static final String a;
+  public int a;
+  public String b;
+  public String c;
   
-  public xbj(qqstory_service.RspAuthKey paramRspAuthKey)
+  static
   {
-    super(paramRspAuthKey.result);
-    this.a.jdField_a_of_type_JavaLangString = paramRspAuthKey.user_ip.get().toStringUtf8();
-    this.a.b = paramRspAuthKey.server_ip1.get().toStringUtf8();
-    this.a.c = paramRspAuthKey.server_ip2.get().toStringUtf8();
-    this.a.d = paramRspAuthKey.backup_server_ip1.get().toStringUtf8();
-    this.a.e = paramRspAuthKey.backup_server_ip2.get().toStringUtf8();
-    this.a.jdField_a_of_type_ArrayOfByte = paramRspAuthKey.auth_key.get().toByteArray();
-    this.a.jdField_a_of_type_Long = (paramRspAuthKey.expire_time.get() * 1000L);
+    jdField_a_of_type_JavaLangString = wnu.a("StorySvc.submit_poll_data");
+  }
+  
+  xbj(String paramString1, String paramString2, int paramInt)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.c = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private void a()
+  {
+    yuk.a("Q.qqstory.pollData.SendVidPollDataHandler", "sendRequest() feed=%s, poll=%s, index=%d", this.jdField_b_of_type_JavaLangString, this.c, Integer.valueOf(this.jdField_a_of_type_Int));
+    Object localObject = new qqstory_service.ReqStorySubmitPollData();
+    ((qqstory_service.ReqStorySubmitPollData)localObject).vid.set(ByteStringMicro.copyFromUtf8(this.c));
+    ((qqstory_service.ReqStorySubmitPollData)localObject).poll_data.set(this.jdField_a_of_type_Int);
+    localObject = new xcg(jdField_a_of_type_JavaLangString, (MessageMicro)localObject, null);
+    wow.a().a((wpa)localObject, this);
+  }
+  
+  public static void a(@Nullable String paramString1, String paramString2, int paramInt)
+  {
+    new xbj(paramString1, paramString2, paramInt).a();
+  }
+  
+  public void a(@NonNull xcg<qqstory_service.ReqStorySubmitPollData> paramxcg, @Nullable xee paramxee, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if ((paramErrorMessage.isFail()) || (paramxee == null))
+    {
+      yuk.c("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond Request Error:%s", paramErrorMessage);
+      return;
+    }
+    paramxcg = new qqstory_service.RspStorySubmitPollData();
+    StoryVideoItem localStoryVideoItem;
+    try
+    {
+      paramxcg.mergeFrom(paramxee.a);
+      paramxee = new xbk();
+      paramxee.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(paramxcg.result.error_code.get(), paramxcg.result.error_desc.get().toStringUtf8());
+      paramxee.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      paramxee.jdField_b_of_type_JavaLangString = this.c;
+      paramxee.jdField_a_of_type_Int = paramxcg.comment_id.get();
+      paramxee.jdField_a_of_type_Long = paramxcg.fake_id.get();
+      paramxee.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+      paramxee.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramxcg.video_poll_result.get());
+      int j = paramxee.jdField_a_of_type_JavaUtilArrayList.size();
+      paramErrorMessage = (wte)wth.a(5);
+      localStoryVideoItem = paramErrorMessage.a(this.c);
+      yuk.a("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond() feed=%s, vid=%s, index=%d", this.jdField_b_of_type_JavaLangString, this.c, Integer.valueOf(paramxee.jdField_b_of_type_Int));
+      if ((localStoryVideoItem == null) || (j <= 0)) {
+        break label302;
+      }
+      if ((localStoryVideoItem.mPollNumbers == null) || (localStoryVideoItem.mPollNumbers.length != j)) {
+        localStoryVideoItem.mPollNumbers = new int[j];
+      }
+      int i = 0;
+      while (i < j)
+      {
+        localStoryVideoItem.mPollNumbers[i] = ((Integer)paramxcg.video_poll_result.get(i)).intValue();
+        i += 1;
+      }
+      localStoryVideoItem.mPollResult = this.jdField_a_of_type_Int;
+    }
+    catch (InvalidProtocolBufferMicroException paramxcg)
+    {
+      paramxcg.printStackTrace();
+      yuk.c("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond Request parse Error:%s", paramxcg);
+      return;
+    }
+    paramErrorMessage.a(localStoryVideoItem);
+    label302:
+    wjj.a().dispatch(paramxee);
+    zpl.a(QQStoryContext.a());
   }
 }
 

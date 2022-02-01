@@ -1,12 +1,45 @@
-public abstract interface anam
+import android.util.SparseArray;
+import com.tencent.mobileqq.data.ApolloGameData;
+import java.util.Comparator;
+
+class anam
+  implements Comparator<ApolloGameData>
 {
-  public abstract void a();
+  SparseArray<Long> a;
   
-  public abstract void a(int paramInt, String paramString);
+  anam(SparseArray paramSparseArray)
+  {
+    this.a = paramSparseArray;
+  }
   
-  public abstract void a(int paramInt, String[] paramArrayOfString);
-  
-  public abstract void a(String[] paramArrayOfString);
+  public int a(ApolloGameData paramApolloGameData1, ApolloGameData paramApolloGameData2)
+  {
+    long l2 = 0L;
+    long l1;
+    if (this.a.get(paramApolloGameData1.gameId) == null)
+    {
+      l1 = 0L;
+      if (this.a.get(paramApolloGameData2.gameId) != null) {
+        break label63;
+      }
+    }
+    for (;;)
+    {
+      if (l1 <= l2) {
+        break label85;
+      }
+      return -1;
+      l1 = ((Long)this.a.get(paramApolloGameData1.gameId)).longValue();
+      break;
+      label63:
+      l2 = ((Long)this.a.get(paramApolloGameData2.gameId)).longValue();
+    }
+    label85:
+    if (l1 < l2) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 

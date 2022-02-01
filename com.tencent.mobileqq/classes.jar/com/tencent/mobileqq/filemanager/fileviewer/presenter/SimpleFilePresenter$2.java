@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import atoo;
-import atri;
-import bdiq;
+import augj;
+import aujd;
+import bebl;
 import java.util.List;
 
 public class SimpleFilePresenter$2
   implements Runnable
 {
-  public SimpleFilePresenter$2(atri paramatri, String paramString, boolean paramBoolean, int paramInt, List paramList) {}
+  public SimpleFilePresenter$2(aujd paramaujd, String paramString, boolean paramBoolean, int paramInt, List paramList) {}
   
   public void run()
   {
@@ -39,7 +39,7 @@ public class SimpleFilePresenter$2
       if (this.jdField_a_of_type_Int == 3000) {
         localList2 = this.jdField_a_of_type_JavaUtilList;
       }
-      bdiq.a(str1, str2, str3, false, bool, 1, (List)localObject, localList1, localList2);
+      bebl.a(str1, str2, str3, false, bool, 1, (List)localObject, localList1, localList2);
       return;
       localObject = null;
       break;

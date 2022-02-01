@@ -1,39 +1,27 @@
-import android.content.Context;
-import android.net.Uri;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class xrs
-  implements xrq
+  extends xrz<StoryVideoItem>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Uri jdField_a_of_type_AndroidNetUri;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap;
-  private Uri jdField_b_of_type_AndroidNetUri;
-  private Map<String, String> jdField_b_of_type_JavaUtilMap;
-  
-  public xrs(Context paramContext, Uri paramUri, Map<String, String> paramMap)
+  public xrs(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidNetUri = paramUri;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    super(paramVideoViewVideoHolder, null);
   }
   
-  public xrl a()
+  public void a(StoryVideoItem paramStoryVideoItem)
   {
-    xrl localxrl = new xrl();
-    localxrl.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaUtilMap);
-    return localxrl;
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
   }
   
-  public xrl b()
+  public void onError(@NonNull Error paramError)
   {
-    if (this.jdField_b_of_type_AndroidNetUri != null)
-    {
-      xrl localxrl = new xrl();
-      localxrl.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidNetUri, this.jdField_b_of_type_JavaUtilMap);
-      return localxrl;
-    }
-    return null;
+    super.onError(paramError);
+    yuk.d(this.a.a, "VideoFileSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 

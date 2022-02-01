@@ -1,218 +1,325 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build.VERSION;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.widgets.ElasticHorScrView;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.utils.ShareWithPictureActionSheetBuilder.2;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.9.1;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskScan;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import java.util.UUID;
 
 public class bgse
-  extends ShareActionSheetBuilder
+  extends aavm
 {
-  protected Bitmap a;
+  public bgse(TroopFileTransferManager paramTroopFileTransferManager) {}
   
-  public bgse(Context paramContext)
+  /* Error */
+  private final void a(TroopFileTransferManager.Item paramItem, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, long paramLong)
   {
-    super(paramContext, false);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: invokestatic 21	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   5: ifeq +37 -> 42
+    //   8: ldc 23
+    //   10: iconst_4
+    //   11: ldc 25
+    //   13: iconst_3
+    //   14: anewarray 27	java/lang/Object
+    //   17: dup
+    //   18: iconst_0
+    //   19: aload_1
+    //   20: getfield 33	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
+    //   23: aastore
+    //   24: dup
+    //   25: iconst_1
+    //   26: iload_2
+    //   27: invokestatic 39	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   30: aastore
+    //   31: dup
+    //   32: iconst_2
+    //   33: aload 5
+    //   35: aastore
+    //   36: invokestatic 45	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   39: invokestatic 49	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   42: iload_2
+    //   43: ifeq +44 -> 87
+    //   46: aload_1
+    //   47: getfield 53	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:mForwardCallback	Lauok;
+    //   50: ifnull +34 -> 84
+    //   53: aload_1
+    //   54: getfield 53	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:mForwardCallback	Lauok;
+    //   57: iconst_0
+    //   58: lload 7
+    //   60: iload_2
+    //   61: aload 6
+    //   63: aload_1
+    //   64: getfield 57	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Id	Ljava/util/UUID;
+    //   67: invokevirtual 63	java/util/UUID:toString	()Ljava/lang/String;
+    //   70: aload_1
+    //   71: getfield 67	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ForwardTroopuin	J
+    //   74: invokestatic 70	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   77: ldc 72
+    //   79: invokeinterface 77 9 0
+    //   84: aload_0
+    //   85: monitorexit
+    //   86: return
+    //   87: aload_1
+    //   88: getfield 53	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:mForwardCallback	Lauok;
+    //   91: ifnull -7 -> 84
+    //   94: aload_1
+    //   95: getfield 53	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:mForwardCallback	Lauok;
+    //   98: iconst_1
+    //   99: lload 7
+    //   101: iload_2
+    //   102: ldc 72
+    //   104: aload_1
+    //   105: getfield 57	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Id	Ljava/util/UUID;
+    //   108: invokevirtual 63	java/util/UUID:toString	()Ljava/lang/String;
+    //   111: aload_1
+    //   112: getfield 67	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ForwardTroopuin	J
+    //   115: invokestatic 70	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   118: aload 4
+    //   120: invokeinterface 77 9 0
+    //   125: goto -41 -> 84
+    //   128: astore_1
+    //   129: aload_0
+    //   130: monitorexit
+    //   131: aload_1
+    //   132: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	133	0	this	bgse
+    //   0	133	1	paramItem	TroopFileTransferManager.Item
+    //   0	133	2	paramInt1	int
+    //   0	133	3	paramInt2	int
+    //   0	133	4	paramString1	String
+    //   0	133	5	paramString2	String
+    //   0	133	6	paramString3	String
+    //   0	133	7	paramLong	long
+    // Exception table:
+    //   from	to	target	type
+    //   2	42	128	finally
+    //   46	84	128	finally
+    //   87	125	128	finally
   }
   
-  public View a()
+  public final void a(TroopFileTransferManager.Item paramItem, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
-    View localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131562885, null);
-    this.jdField_a_of_type_Bgsb.a((RelativeLayout)localView.findViewById(2131362205));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131361975));
-    Object localObject2;
-    Object localObject1;
-    if (this.jdField_b_of_type_Boolean)
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (this.jdField_a_of_type_JavaLangCharSequence != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-      }
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131376981));
-      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131376982));
-      localObject2 = a();
-      if (localObject2.length <= 0) {
-        break label390;
-      }
-      localObject1 = localObject2[0];
-      label122:
-      if (!((List)localObject1).isEmpty()) {
-        break label1200;
-      }
-    }
-    label147:
-    label1183:
-    label1189:
-    label1192:
-    label1195:
-    label1200:
-    for (int j = 0;; j = 1)
-    {
-      if (localObject2.length > 1)
+      try
       {
-        localObject2 = localObject2[1];
-        if (!((List)localObject2).isEmpty()) {
-          break label1195;
+        if (!QLog.isDevelopLevel()) {
+          break label444;
         }
+        QLog.e("TroopFileTransferManager", 4, String.format("onRspCopyToGroup - retCode: %d", new Object[] { Integer.valueOf(paramInt1) }));
       }
-      for (int k = 0;; k = 1)
+      finally {}
+      paramString1 = new bgrk(paramItem.FileName, paramItem.ForwardTroopuin, 5, paramInt1, paramString1);
+      this.a.a(paramItem, 5, paramString1);
+      paramItem = ((QQAppInterface)this.b.get()).a().a(paramItem.entrySessionID);
+      if (paramItem != null)
       {
-        Object localObject3 = new TextPaint();
-        ((TextPaint)localObject3).setTextSize(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298926));
-        Object localObject4 = new StaticLayout(a((TextPaint)localObject3, this.e, a((List)localObject1), 5), (TextPaint)localObject3, this.e, Layout.Alignment.ALIGN_CENTER, 1.0F, this.g, true);
-        StaticLayout localStaticLayout = new StaticLayout(a((TextPaint)localObject3, this.e, a((List)localObject2), 5), (TextPaint)localObject3, this.e, Layout.Alignment.ALIGN_CENTER, 1.0F, this.g, true);
-        localObject3 = localStaticLayout;
-        if (((StaticLayout)localObject4).getHeight() >= localStaticLayout.getHeight()) {
-          localObject3 = localObject4;
-        }
-        int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelOffset(2131296727);
-        int i;
-        if (j != 0)
+        long l = paramItem.structMsgSeq;
+        ((QQAppInterface)this.b.get()).a().b("" + this.a.e, 1, l);
+      }
+      return;
+      paramInt1 = 202;
+      paramString1 = paramString3;
+      continue;
+      paramInt1 = 600;
+      paramString1 = paramString3;
+      continue;
+      paramInt1 = 701;
+      paramString1 = paramString3;
+      continue;
+      paramInt1 = 706;
+      paramString1 = anzj.a(2131714108);
+      continue;
+      if (paramItem.BusId == 102)
+      {
+        paramItem.BusId = 104;
+        aauw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, this.a.e, paramItem, this.a.e, 0L, TroopFileTransferManager.a(this.a));
+      }
+      else
+      {
+        paramInt1 = 204;
+        paramString1 = paramString3;
+        continue;
+        paramInt1 = -139;
+        paramString1 = paramString3;
+        continue;
+        if ((!TextUtils.isEmpty(paramItem.LocalFile)) && (new File(paramItem.LocalFile).exists()))
         {
-          this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)localView.findViewById(2131367614));
-          if (Build.VERSION.SDK_INT >= 9) {
-            this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
-          }
-          localObject4 = ((List)localObject1).iterator();
-          i = 0;
-          label350:
-          if (((Iterator)localObject4).hasNext())
+          this.a.a(paramItem, 0);
+          paramItem.BusId = 102;
+          this.a.jdField_a_of_type_ArrayOfBgsh[0].a(new TroopFileTransferManager.TaskScan(this.a, paramItem));
+          continue;
+          label444:
+          while (paramInt1 >= 0)
           {
-            if (((ShareActionSheetBuilder.ActionSheetItem)((Iterator)localObject4).next()).visibility != 0) {
-              break label1192;
+            new Handler(Looper.getMainLooper()).post(new TroopFileTransferManager.9.1(this));
+            paramItem.FilePath = paramString1;
+            paramString2 = paramItem.getInfo(this.a.e);
+            if (paramString2 != null) {
+              paramString2.e = paramString1;
             }
-            i += 1;
-          }
-        }
-        for (;;)
-        {
-          break label350;
-          hideTitle();
-          break;
-          localObject1 = new ArrayList(0);
-          break label122;
-          localObject2 = new ArrayList(0);
-          break label147;
-          int n = this.d + getIconWidth() + this.d;
-          this.jdField_a_of_type_AndroidWidgetGridView.setColumnWidth(n);
-          this.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(i);
-          localObject4 = this.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams();
-          this.jdField_a_of_type_AndroidWidgetGridView.setPadding(this.h, this.jdField_a_of_type_AndroidWidgetGridView.getPaddingTop(), this.h, this.jdField_a_of_type_AndroidWidgetGridView.getPaddingBottom());
-          ((ViewGroup.LayoutParams)localObject4).width = (n * i + this.h + this.h);
-          this.jdField_a_of_type_Int = ((ViewGroup.LayoutParams)localObject4).width;
-          ((ViewGroup.LayoutParams)localObject4).height = (this.c + this.f + ((StaticLayout)localObject3).getHeight() + m);
-          this.jdField_a_of_type_AndroidWidgetGridView.setLayoutParams((ViewGroup.LayoutParams)localObject4);
-          this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(new bgry(this.jdField_a_of_type_AndroidContentContext, (List)localObject1));
-          this.jdField_a_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
-          this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
-          if (k != 0)
-          {
-            this.jdField_b_of_type_AndroidWidgetGridView = ((GridView)localView.findViewById(2131367615));
-            if (Build.VERSION.SDK_INT >= 9) {
-              this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
+            paramString2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramItem.entrySessionID);
+            if (paramString2 != null) {
+              paramString2.strTroopFilePath = paramString1;
             }
-            this.jdField_b_of_type_AndroidWidgetGridView.setSmoothScrollbarEnabled(false);
-            localObject1 = ((List)localObject2).iterator();
-            i = 0;
-            if (((Iterator)localObject1).hasNext())
-            {
-              if (((ShareActionSheetBuilder.ActionSheetItem)((Iterator)localObject1).next()).visibility != 0) {
-                break label1189;
-              }
-              i += 1;
-            }
-          }
-          for (;;)
-          {
+            this.a.a(paramItem, 7, 0);
+            this.a.c(paramItem);
             break;
-            n = this.d + getIconWidth() + this.d;
-            this.jdField_b_of_type_AndroidWidgetGridView.setColumnWidth(n);
-            this.jdField_b_of_type_AndroidWidgetGridView.setNumColumns(i);
-            localObject1 = this.jdField_b_of_type_AndroidWidgetGridView.getLayoutParams();
-            this.jdField_b_of_type_AndroidWidgetGridView.setPadding(this.h, this.jdField_b_of_type_AndroidWidgetGridView.getPaddingTop(), this.h, this.jdField_b_of_type_AndroidWidgetGridView.getPaddingBottom());
-            ((ViewGroup.LayoutParams)localObject1).width = (n * i + this.h + this.h);
-            this.jdField_b_of_type_Int = ((ViewGroup.LayoutParams)localObject1).width;
-            ((ViewGroup.LayoutParams)localObject1).height = (this.c + this.f + ((StaticLayout)localObject3).getHeight() + m);
-            this.jdField_b_of_type_AndroidWidgetGridView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-            this.jdField_b_of_type_AndroidWidgetGridView.setNumColumns(i);
-            this.jdField_b_of_type_AndroidWidgetGridView.setAdapter(new bgry(this.jdField_a_of_type_AndroidContentContext, (List)localObject2));
-            this.jdField_b_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
-            this.jdField_b_of_type_AndroidWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
-            localObject1 = (TextView)localView.findViewById(2131361967);
-            ((TextView)localObject1).setText(2131690582);
-            ((TextView)localObject1).setOnClickListener(new bgsf(this));
-            if (j == 0) {
-              this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setVisibility(8);
-            }
-            if (k == 0) {
-              this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setVisibility(8);
-            }
-            localView.post(new ShareWithPictureActionSheetBuilder.2(this));
-            j = bgtn.a(90.0F);
-            i = j;
-            if (this.jdField_a_of_type_AndroidWidgetGridView != null) {
-              i = j + this.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().height;
-            }
-            if (this.jdField_b_of_type_AndroidWidgetGridView != null) {
-              i += this.jdField_b_of_type_AndroidWidgetGridView.getLayoutParams().height;
-            }
-            for (;;)
-            {
-              k = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
-              j = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
-              localObject1 = (RelativeLayout)localView.findViewById(2131377367);
-              localObject2 = ((RelativeLayout)localObject1).getLayoutParams();
-              ((ViewGroup.LayoutParams)localObject2).height = (j - i);
-              ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-              if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-              {
-                m = bgtn.a(20.0F);
-                j = j - i - bgtn.a(30.0F) * 2;
-                i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * j / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-                if (i <= k - m * 2) {
-                  break label1183;
-                }
-                i = k - m * 2;
-                j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * i / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-              }
-              for (;;)
-              {
-                localObject1 = (ImageView)localView.findViewById(2131377366);
-                localObject2 = (RelativeLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
-                ((RelativeLayout.LayoutParams)localObject2).height = j;
-                ((RelativeLayout.LayoutParams)localObject2).width = i;
-                ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-                ((ImageView)localObject1).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-                return localView;
-              }
-            }
+          }
+          paramInt2 = 207;
+        }
+        else
+        {
+          switch (paramInt1)
+          {
+          case -3: 
+          case -4: 
+          case -25: 
+          case -22: 
+          case -36: 
+          case -20001: 
+          case -20000: 
+          case -403: 
+          case -139: 
+          case -138: 
+          case -6101: 
+          default: 
+            paramString1 = paramString3;
+            paramInt1 = paramInt2;
+            continue;
+            paramInt1 = 603;
+            paramString1 = paramString3;
+            break;
+          case -30: 
+            paramInt1 = 705;
+            paramString1 = paramString3;
           }
         }
       }
     }
   }
   
-  public void a(Bitmap paramBitmap)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Boolean = true;
+    long l = paramBundle.getLong("troopUin");
+    TroopFileTransferManager localTroopFileTransferManager;
+    Object localObject;
+    try
+    {
+      localTroopFileTransferManager = (TroopFileTransferManager)TroopFileTransferManager.a().get(Long.valueOf(l));
+      if (localTroopFileTransferManager == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("TroopFileTransferManager", 4, "bad troopUin" + l);
+        }
+        return;
+      }
+      String str = paramBundle.getString("itemKey");
+      if (str == null) {
+        return;
+      }
+      localObject = UUID.fromString(str);
+      try
+      {
+        localObject = (TroopFileTransferManager.Item)localTroopFileTransferManager.jdField_a_of_type_JavaUtilMap.get(localObject);
+        if (localObject == null)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.i("TroopFileTransferManager", 4, "bad item key" + str);
+          }
+          return;
+        }
+      }
+      finally {}
+    }
+    finally {}
+    if (QLog.isDevelopLevel()) {
+      QLog.e("TroopFileTransferManager", 4, String.format("onCopyToResult - retCode: %d", new Object[] { Integer.valueOf(paramInt1) }));
+    }
+    if (((TroopFileTransferManager.Item)localObject).BusId == 25)
+    {
+      b((TroopFileTransferManager.Item)localObject, paramInt1, paramInt2, paramString1, paramString2, paramString3);
+      return;
+    }
+    if ((((TroopFileTransferManager.Item)localObject).BusId == 102) || (((TroopFileTransferManager.Item)localObject).BusId == 104))
+    {
+      a((TroopFileTransferManager.Item)localObject, paramInt1, paramInt2, paramString1, paramString2, paramString3);
+      return;
+    }
+    if ((((TroopFileTransferManager.Item)localObject).BusId == 3) || (((TroopFileTransferManager.Item)localObject).BusId == 106) || (((TroopFileTransferManager.Item)localObject).BusId == 38)) {
+      a((TroopFileTransferManager.Item)localObject, paramInt1, paramInt2, paramString1, paramString2, paramString3, paramBundle.getLong("sessionId"));
+    }
+  }
+  
+  public final void b(TroopFileTransferManager.Item paramItem, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.e("TroopFileTransferManager", 4, String.format("onRspCopyToWeiyun - retCode: %d", new Object[] { Integer.valueOf(paramInt1) }));
+        }
+        bnyz.a(paramInt1);
+        if (paramInt1 == 0) {
+          break label290;
+        }
+        paramInt2 = 601;
+        switch (paramInt1)
+        {
+        case -3: 
+          paramString1 = new bgrk(paramItem.FileName, this.a.e, 5, paramInt1, paramString3);
+          this.a.a(paramItem, 5, paramString1);
+          return;
+        }
+      }
+      finally {}
+      paramInt1 = 202;
+      continue;
+      if (paramItem.BusId == 102)
+      {
+        paramItem.BusId = 104;
+        aauw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, this.a.e, paramItem, this.a.e, 0L, TroopFileTransferManager.a(this.a));
+      }
+      else
+      {
+        paramInt1 = 702;
+        continue;
+        paramInt1 = 703;
+        continue;
+        paramInt1 = 702;
+        continue;
+        paramInt1 = 701;
+        continue;
+        paramInt1 = 705;
+        continue;
+        paramInt1 = paramInt2;
+        if (!TextUtils.isEmpty(paramString3))
+        {
+          paramInt1 = 704;
+          continue;
+          label290:
+          paramString1 = new bgrk(paramItem.FileName, this.a.e, 5, 602);
+          this.a.a(paramItem, 5, paramString1);
+          continue;
+          paramInt1 = paramInt2;
+        }
+      }
+    }
   }
 }
 

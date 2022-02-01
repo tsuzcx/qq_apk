@@ -1,34 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qphone.base.util.QLog;
-
-class arvu
-  extends arvd
+public class arvu
 {
-  arvu(arvt paramarvt) {}
+  private long a;
+  private long b;
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  public arvu(long paramLong)
   {
-    super.a(paramEmoticonPackage, paramInt, paramBundle);
-    if ((paramEmoticonPackage != null) && (paramInt == 0))
-    {
-      paramBundle = paramBundle.getBundle("jsonReqParams");
-      if (paramBundle != null)
-      {
-        paramInt = paramBundle.getInt(arvt.jdField_a_of_type_JavaLangString);
-        paramBundle = paramBundle.getString(arvt.b);
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack begins, taskId:" + paramInt + ",packId:" + paramEmoticonPackage.epId);
-        }
-        boolean bool = this.a.jdField_a_of_type_Arvy.a(paramInt);
-        if (bool) {
-          this.a.a(paramEmoticonPackage.epId, paramBundle, false);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack ends, isTaskExist:" + bool);
-        }
-      }
-    }
+    this.b = paramLong;
+    this.a = this.b;
+  }
+  
+  public long a()
+  {
+    return this.b;
+  }
+  
+  public arvu a()
+  {
+    return new arvu(this.b);
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.b = (((float)this.b * paramFloat));
   }
 }
 

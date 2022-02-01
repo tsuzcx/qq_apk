@@ -7,59 +7,41 @@ import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime.OnLoadServiceWebvieJsListener;
 import com.tencent.mobileqq.mini.appbrand.page.AppBrandServiceEventInterface;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
-import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
+import com.tencent.mobileqq.minigame.utils.PluginLogger;
+import com.tencent.mobileqq.triton.script.Argument;
+import com.tencent.mobileqq.triton.script.ScriptContextType;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.ValueCallback;
 
 public class GameJsRuntime
   implements JsRuntime
 {
-  private final String TAG;
-  private int mContextType;
-  private volatile boolean mIsDestroyed;
-  public ITTEngine mTTEngine;
+  private Argument arguments;
+  private PluginLogger logger;
   
-  public GameJsRuntime(ITTEngine paramITTEngine, int paramInt)
+  public GameJsRuntime(@NonNull Argument paramArgument, @NonNull PluginLogger paramPluginLogger)
   {
-    this.TAG = ("[minigame] " + this + "[" + paramInt + "]");
-    this.mTTEngine = paramITTEngine;
-    this.mContextType = paramInt;
-    this.mIsDestroyed = false;
+    this.arguments = paramArgument;
+    this.logger = paramPluginLogger;
   }
   
-  public void clearUp()
+  public void clearUp() {}
+  
+  public int createNativeBuffer(byte[] paramArrayOfByte, long paramLong1, long paramLong2)
   {
-    this.mIsDestroyed = true;
+    return this.arguments.createBuffer(paramArrayOfByte, paramLong1, paramLong2);
   }
   
   public void evaluateCallbackJs(int paramInt, @Nullable String paramString)
   {
-    if (isDestroyed()) {
-      return;
-    }
-    ITTJSRuntime localITTJSRuntime = getRealRuntime();
-    if (localITTJSRuntime != null)
-    {
-      localITTJSRuntime.evaluateCallbackJs(paramInt, paramString);
-      return;
-    }
-    QLog.e(this.TAG, 1, "evaluateCallbackJs on null realJsRuntime");
+    this.logger.printEndLog(paramInt, paramString);
+    this.arguments.callback(paramString);
   }
   
   public void evaluateSubcribeJS(@NonNull String paramString1, @Nullable String paramString2, int paramInt)
   {
-    if (isDestroyed()) {
-      return;
-    }
-    ITTJSRuntime localITTJSRuntime = getRealRuntime();
-    if (localITTJSRuntime != null)
-    {
-      localITTJSRuntime.evaluateSubscribeJs(paramString1, paramString2);
-      return;
-    }
-    QLog.e(this.TAG, 1, "evaluateSubcribeJS on null realJsRuntime");
+    this.logger.printEndLog(paramString1, paramString2);
+    this.arguments.subscribe(paramString1, paramString2);
   }
   
   public ApkgInfo getApkgInfo()
@@ -72,22 +54,19 @@ public class GameJsRuntime
     return BaseApplication.getContext().getApplicationContext();
   }
   
+  public byte[] getNativeBuffer(int paramInt)
+  {
+    return this.arguments.getBuffer(paramInt);
+  }
+  
   public int getPageWebViewId()
   {
     return 0;
   }
   
-  public ITTJSRuntime getRealRuntime()
+  public ScriptContextType getTargetContextType()
   {
-    if (this.mTTEngine != null) {
-      return this.mTTEngine.getJsRuntime(this.mContextType);
-    }
-    return null;
-  }
-  
-  public int getTargetContextType()
-  {
-    return this.mContextType;
+    return this.arguments.getContextType();
   }
   
   public void initService(ApkgInfo paramApkgInfo, AppBrandRuntime.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener) {}
@@ -98,7 +77,7 @@ public class GameJsRuntime
   
   public boolean isDestroyed()
   {
-    return this.mIsDestroyed;
+    return false;
   }
   
   public void loadAppServiceJs(String paramString) {}

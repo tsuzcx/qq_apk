@@ -1,19 +1,46 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.util.Pair;
+import mqq.util.WeakReference;
 
-public class bmon
+class bmon
+  extends OnPluginInstallListener.Stub
 {
-  public static void a(bhod parambhod, String... paramVarArgs)
+  private int jdField_a_of_type_Int;
+  
+  bmon(bmom parambmom) {}
+  
+  public void onInstallBegin(String paramString)
   {
-    paramVarArgs = new Intent("action_js2qzone");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("cmd", "CleanZebraNum");
-    paramVarArgs.putExtras(localBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneZebraAlbumJsHandleLogicQZonePersonalizePlugin", 2, "actionString: " + paramVarArgs.getAction());
+    bmqw.d("QRPluginManager", "launchPlugin onInstallBegin: pluginId = " + paramString);
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int == 0) || (paramInt1 - this.jdField_a_of_type_Int > paramInt2 / 101))
+    {
+      bmqw.e("QRPluginManager", "launchPlugin onInstallDownloadProgress: pluginId = " + paramString + ", offset = " + paramInt1 + ", total = " + paramInt2);
+      this.jdField_a_of_type_Int = paramInt1;
     }
-    blsb.a(parambhod.a(), blsi.a(), paramVarArgs);
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    bmqw.a("QRPluginManager", "launchPlugin onInstallError, pluginId = " + paramString + ", errorCode = " + paramInt);
+    bmom.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramInt);
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    bmqw.c("QRPluginManager", "launchPlugin onInstallFinish, pluginId = " + paramString);
+    bmom.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 0);
+    if ((bmom.a(this.jdField_a_of_type_Bmom) != null) && (((WeakReference)bmom.a(this.jdField_a_of_type_Bmom).first).get() != null))
+    {
+      bmom.a(this.jdField_a_of_type_Bmom, (Context)((WeakReference)bmom.a(this.jdField_a_of_type_Bmom).first).get(), ((Integer)bmom.a(this.jdField_a_of_type_Bmom).second).intValue());
+      bmom.a(this.jdField_a_of_type_Bmom, null);
+    }
   }
 }
 

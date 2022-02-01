@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aenj;
+import aewm;
 import android.widget.TextView;
-import anni;
-import bgfz;
+import anzj;
+import bhga;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -30,7 +30,7 @@ class Leba$35$3
         Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0).a(localArrayList);
       }
       if (Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0) != null) {
-        bgfz.a(Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0), anni.a(2131704803));
+        bhga.a(Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0), anzj.a(2131704910));
       }
       return;
     }

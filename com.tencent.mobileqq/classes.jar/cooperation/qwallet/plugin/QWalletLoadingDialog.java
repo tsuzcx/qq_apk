@@ -1,6 +1,6 @@
 package cooperation.qwallet.plugin;
 
-import akws;
+import alih;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -38,7 +38,7 @@ public class QWalletLoadingDialog
   
   public QWalletLoadingDialog(Context paramContext, boolean paramBoolean)
   {
-    this(paramContext, 2131755826, paramBoolean);
+    this(paramContext, 2131755827, paramBoolean);
   }
   
   public void dismiss()
@@ -73,7 +73,7 @@ public class QWalletLoadingDialog
         localObject = getWindow();
         if ((localObject != null) && (ImmersiveUtils.isSupporImmersive() == 1))
         {
-          if ((Build.VERSION.SDK_INT >= 21) && (!akws.d()))
+          if ((Build.VERSION.SDK_INT >= 21) && (!alih.d()))
           {
             if (Build.VERSION.SDK_INT >= 28)
             {
@@ -91,7 +91,7 @@ public class QWalletLoadingDialog
           }
         }
         else {
-          paramContext = LayoutInflater.from(paramContext).inflate(2131562104, null);
+          paramContext = LayoutInflater.from(paramContext).inflate(2131562144, null);
         }
       }
       catch (Throwable paramContext)
@@ -102,26 +102,26 @@ public class QWalletLoadingDialog
       try
       {
         setContentView(paramContext);
-        paramContext.findViewById(2131377811).getLayoutParams().height = ImmersiveUtils.getStatusBarHeight(this.mContext);
+        paramContext.findViewById(2131377964).getLayoutParams().height = ImmersiveUtils.getStatusBarHeight(this.mContext);
         paramContext.setFitsSystemWindows(false);
         localLayoutParams = ((Window)localObject).getAttributes();
         localLayoutParams.width = -1;
         localLayoutParams.height = -1;
         ((Window)localObject).setAttributes(localLayoutParams);
         setCanceledOnTouchOutside(false);
-        this.mCenterView = ((TextView)paramContext.findViewById(2131368994));
+        this.mCenterView = ((TextView)paramContext.findViewById(2131369088));
         if (this.mCenterView != null)
         {
           this.mCenterView.setVisibility(0);
-          this.mCenterView.setText(2131716015);
+          this.mCenterView.setText(2131716124);
         }
-        paramContext = (TextView)paramContext.findViewById(2131368955);
+        paramContext = (TextView)paramContext.findViewById(2131369050);
         if (paramContext != null)
         {
           paramContext.setVisibility(0);
-          paramContext.setText(2131716014);
+          paramContext.setText(2131716123);
         }
-        paramContext = (ImageView)super.findViewById(2131373596);
+        paramContext = (ImageView)super.findViewById(2131373715);
         localObject = new TranslateAnimation(1, -1.0F, 2, 1.0F, 1, 0.0F, 1, 0.0F);
         ((TranslateAnimation)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
         ((TranslateAnimation)localObject).setDuration(800L);
@@ -141,7 +141,7 @@ public class QWalletLoadingDialog
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    this.mAnimatedDrawale = ((Animatable)this.mContext.getResources().getDrawable(2130839406));
+    this.mAnimatedDrawale = ((Animatable)this.mContext.getResources().getDrawable(2130839414));
     if ((this.mAnimatedDrawale != null) && (this.mCenterView != null))
     {
       this.mCenterView.setCompoundDrawablePadding(10);

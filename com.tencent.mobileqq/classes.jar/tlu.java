@@ -1,15 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import org.json.JSONObject;
 
 public class tlu
-  implements tmm
 {
-  public tlu(ViolaFragment paramViolaFragment) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a(int paramInt)
+  public tlu(JSONObject paramJSONObject)
   {
-    if (ViolaFragment.a(this.a) != null) {
-      ViolaFragment.a(this.a).a(paramInt);
+    if (paramJSONObject != null)
+    {
+      this.a = paramJSONObject.optString("dest_url");
+      this.b = paramJSONObject.optString("rl");
+      this.c = paramJSONObject.optString("button_txt");
+      this.d = paramJSONObject.optString("button_bg");
     }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("AdPKImageData{");
+    localStringBuilder.append("destUrl=").append(this.a);
+    localStringBuilder.append(",rl=").append(this.b);
+    localStringBuilder.append(",buttonTxt=").append(this.c);
+    localStringBuilder.append(",buttonBg=").append(this.d);
+    localStringBuilder.append("}");
+    return super.toString();
   }
 }
 

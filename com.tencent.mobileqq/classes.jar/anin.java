@@ -1,10 +1,23 @@
-public class anin
+import com.tencent.qphone.base.util.QLog;
+
+class anin
+  implements anje
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  anin(anil paramanil) {}
+  
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsPresenter", 2, "res download sucess roleId=" + paramInt1 + "dressIds=" + paramArrayOfInt);
+      }
+      if (anil.a(this.a) != null) {
+        anil.a(this.a).e();
+      }
+      this.a.c();
+    }
+  }
 }
 
 

@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae;
 
-import bndy;
-import bnii;
+import bofh;
+import bojq;
 
 public class AEPituCameraUnit$7
   implements Runnable
 {
-  public AEPituCameraUnit$7(bndy parambndy) {}
+  public AEPituCameraUnit$7(bofh parambofh) {}
   
   public void run()
   {
-    bndy.a(this.this$0).d();
+    bofh.a(this.this$0).d();
   }
 }
 

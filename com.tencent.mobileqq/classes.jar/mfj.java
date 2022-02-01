@@ -1,21 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.av.ui.MultiMembersAudioIndicator;
 
-class mfj
-  implements View.OnClickListener
+public class mfj
+  extends RadioButton
 {
-  mfj(mfi parammfi) {}
-  
-  public void onClick(View paramView)
+  public mfj(MultiMembersAudioIndicator paramMultiMembersAudioIndicator, Context paramContext)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.j();
-    }
-    bcst.b(null, "CliOper", "", "", "0X8005DF1", "0X8005DF1", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    return true;
   }
 }
 

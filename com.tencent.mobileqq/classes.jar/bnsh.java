@@ -1,27 +1,31 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import dov.com.qq.im.ae.gif.giftext.AEGIFTextColorSelectionView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.troop.TroopPluginManager.InstallRunable;
 
-class bnsh
-  extends RecyclerView.ViewHolder
+public class bnsh
+  extends Handler
 {
-  AEGIFTextColorSelectionView a;
-  
-  public bnsh(@NonNull View paramView)
+  public bnsh(TroopPluginManager.InstallRunable paramInstallRunable, Looper paramLooper)
   {
-    super(paramView);
-    this.a = ((AEGIFTextColorSelectionView)paramView.findViewById(2131364052));
+    super(paramLooper);
   }
   
-  public void a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.setColor(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.a(Boolean.valueOf(paramBoolean));
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.a == null);
+      this.a.a.a(0);
+      return;
+    } while (this.a.a == null);
+    this.a.a.a(2);
   }
 }
 

@@ -1,14 +1,17 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.data.Emoticon;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-class arzs
+public class arzs
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  Emoticon jdField_a_of_type_ComTencentMobileqqDataEmoticon;
+  public arzs(DataReportViewer paramDataReportViewer) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
+  }
 }
 
 

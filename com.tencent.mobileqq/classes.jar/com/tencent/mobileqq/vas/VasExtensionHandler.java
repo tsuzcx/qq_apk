@@ -1,17 +1,12 @@
 package com.tencent.mobileqq.vas;
 
-import amgz;
-import amhd;
-import amhw;
-import amls;
-import amoc;
-import amod;
-import ampj;
-import amuh;
-import amul;
-import amuo;
-import amxb;
-import ancd;
+import amst;
+import amsx;
+import amtq;
+import amxm;
+import amzw;
+import amzx;
+import anbd;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -21,33 +16,39 @@ import android.os.Bundle;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import anii;
-import anil;
-import anmw;
-import anni;
-import anuk;
-import aurw;
-import auxc;
-import auxd;
-import auzk;
-import awzn;
-import azho;
-import bbyp;
-import bccg;
-import bctj;
-import beum;
-import bevb;
-import bgln;
-import bgnt;
-import bgsg;
-import bgzi;
-import bgzj;
-import bgzk;
-import bgzm;
-import bgzn;
-import bhba;
-import bhvd;
-import bjsj;
+import angb;
+import angf;
+import angi;
+import aniv;
+import annx;
+import anud;
+import anui;
+import anyw;
+import anzj;
+import aogu;
+import aqpe;
+import avjy;
+import avpd;
+import avpe;
+import avrl;
+import axsg;
+import baaa;
+import bcrg;
+import bcuy;
+import bdmc;
+import bftt;
+import bfui;
+import bhlo;
+import bhnv;
+import bhsi;
+import bhzo;
+import bhzp;
+import bhzq;
+import bhzs;
+import bhzt;
+import bibg;
+import biwb;
+import bktj;
 import com.hiboom.protocol.DiyEmotionPb.Filter_Req;
 import com.hiboom.protocol.DiyEmotionPb.Filter_Req_Comm;
 import com.hiboom.protocol.DiyEmotionPb.Filter_Rsp;
@@ -181,7 +182,7 @@ import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
-import oda;
+import oek;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import tencent.im.apollo_game_status.STGameStateMsgList;
@@ -211,7 +212,7 @@ import tencent.qun.group_effect.group_effect_commu.TGetMyEffectReq0x2;
 import tencent.qun.group_effect.group_effect_commu.TGetMyEffectRsp0x2;
 
 public class VasExtensionHandler
-  extends anii
+  extends anud
 {
   public static String a;
   private static long b;
@@ -225,10 +226,10 @@ public class VasExtensionHandler
   public int a;
   long jdField_a_of_type_Long = 0L;
   public Bundle a;
-  public azho a;
-  private WeakReference<bgzi> jdField_a_of_type_JavaLangRefWeakReference;
-  private HashMap<String, anil> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<bgzj> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public baaa a;
+  private WeakReference<bhzo> jdField_a_of_type_JavaLangRefWeakReference;
+  private HashMap<String, anui> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private List<bhzp> jdField_a_of_type_JavaUtilList = new ArrayList();
   private Vector<Long> jdField_a_of_type_JavaUtilVector = new Vector();
   public int b;
   
@@ -272,7 +273,7 @@ public class VasExtensionHandler
             paramIntent.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
             paramFromServiceMsg = new ArrayList(paramIntent.rpt_msg_uin_data.size());
             paramArrayOfByte = new ArrayList(paramIntent.rpt_msg_uin_data.size());
-            localObject1 = (amhd)this.app.getManager(153);
+            localObject1 = (amsx)this.app.getManager(153);
             i = 0;
           }
           for (;;)
@@ -281,7 +282,7 @@ public class VasExtensionHandler
             {
               ??? = (oidb_0x5eb.UdcUinData)paramIntent.rpt_msg_uin_data.get(i);
               localObject2 = ((oidb_0x5eb.UdcUinData)???).uint64_uin.get() + "";
-              ApolloBaseInfo localApolloBaseInfo = ((amhd)localObject1).b((String)localObject2);
+              ApolloBaseInfo localApolloBaseInfo = ((amsx)localObject1).b((String)localObject2);
               if (((oidb_0x5eb.UdcUinData)???).uint32_apollo_vip_flag.has()) {
                 localApolloBaseInfo.apolloVipFlag = ((oidb_0x5eb.UdcUinData)???).uint32_apollo_vip_flag.get();
               }
@@ -316,15 +317,15 @@ public class VasExtensionHandler
                 {
                   localArrayList = new ArrayList();
                   Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-                  bgzj localbgzj;
+                  bhzp localbhzp;
                   do
                   {
                     if (!localIterator.hasNext()) {
                       break;
                     }
-                    localbgzj = (bgzj)localIterator.next();
-                  } while (!localbgzj.a((String)localObject2, localApolloBaseInfo));
-                  localArrayList.add(localbgzj);
+                    localbhzp = (bhzp)localIterator.next();
+                  } while (!localbhzp.a((String)localObject2, localApolloBaseInfo));
+                  localArrayList.add(localbhzp);
                 }
                 return;
               }
@@ -342,7 +343,7 @@ public class VasExtensionHandler
       {
         this.jdField_a_of_type_JavaUtilList.removeAll(localArrayList);
         break;
-        ((amhd)localObject1).b(paramArrayOfByte);
+        ((amsx)localObject1).b(paramArrayOfByte);
         a(paramFromServiceMsg, "AIO");
         return;
         paramIntent = paramIntent.getStringArrayExtra("uins");
@@ -353,7 +354,7 @@ public class VasExtensionHandler
       while (i < j)
       {
         paramArrayOfByte = paramIntent[i];
-        localObject1 = ((amhd)this.app.getManager(153)).b(paramArrayOfByte);
+        localObject1 = ((amsx)this.app.getManager(153)).b(paramArrayOfByte);
         if ((localObject1 != null) && (((ApolloBaseInfo)localObject1).apolloLocalTS != ((ApolloBaseInfo)localObject1).apolloServerTS)) {
           paramFromServiceMsg.add(Long.valueOf(Long.parseLong(paramArrayOfByte)));
         }
@@ -426,7 +427,7 @@ public class VasExtensionHandler
           break label528;
         }
         i = ((Integer)localHashMap.get(Integer.valueOf(16))).intValue();
-        paramIntent = (amhd)this.app.getManager(153);
+        paramIntent = (amsx)this.app.getManager(153);
         paramFromServiceMsg = paramIntent.b(this.app.getCurrentAccountUin());
         if ((paramFromServiceMsg == null) || ((paramFromServiceMsg.apolloAISwitch & 0x10) == i << 4)) {
           break label528;
@@ -495,7 +496,7 @@ public class VasExtensionHandler
       catch (Exception paramIntent)
       {
         localBundle.putInt("result", -254);
-        localBundle.putString("msg", anni.a(2131714713));
+        localBundle.putString("msg", anzj.a(2131714822));
         if (!QLog.isColorLevel()) {
           continue;
         }
@@ -505,7 +506,7 @@ public class VasExtensionHandler
       notifyUI(23, false, localBundle);
       return;
       localBundle.putInt("result", -255);
-      localBundle.putString("msg", anni.a(2131714714));
+      localBundle.putString("msg", anzj.a(2131714823));
       if (QLog.isColorLevel()) {
         QLog.e(jdField_a_of_type_JavaLangString, 2, "handlePokeAuthResp fail ret: " + paramFromServiceMsg.getResultCode());
       }
@@ -571,7 +572,7 @@ public class VasExtensionHandler
           if (paramFromServiceMsg.ret.get() != 0) {
             break label357;
           }
-          paramIntent = (bevb)this.app.getManager(231);
+          paramIntent = (bfui)this.app.getManager(231);
           if (l == 8192L)
           {
             paramFromServiceMsg = (group_effect_commu.TEntryNotifyRsp0x2000)paramFromServiceMsg.st_entry_notify.get();
@@ -604,11 +605,11 @@ public class VasExtensionHandler
       if (QLog.isColorLevel()) {
         QLog.d("TroopEnterEffect", 2, "handleTroopEnterEffectCMD getMyEffect success");
       }
-      paramArrayOfByte = new beum();
+      paramArrayOfByte = new bftt();
       paramArrayOfByte.a(paramFromServiceMsg);
       paramIntent.a(paramArrayOfByte);
       paramIntent.a(paramFromServiceMsg);
-      bgsg.f(this.app.getApplication(), this.app.getCurrentAccountUin(), System.currentTimeMillis());
+      bhsi.f(this.app.getApplication(), this.app.getCurrentAccountUin(), System.currentTimeMillis());
       notifyUI(26, true, null);
       return;
     }
@@ -633,7 +634,7 @@ public class VasExtensionHandler
         {
           if (this.app != null)
           {
-            ((amgz)this.app.getManager(211)).a(paramIntent.ret.get(), paramIntent.pbRsqData.get().toByteArray());
+            ((amst)this.app.getManager(211)).a(paramIntent.ret.get(), paramIntent.pbRsqData.get().toByteArray());
             return;
           }
           QLog.e(jdField_a_of_type_JavaLangString, 1, "[handleApolloGameLoginReq] app is null");
@@ -666,7 +667,7 @@ public class VasExtensionHandler
         {
           if (this.app != null)
           {
-            ((amgz)this.app.getManager(211)).a(paramFromServiceMsg.ret.get(), paramFromServiceMsg.pbRsqData.get().toByteArray(), paramIntent.getBundleExtra("extras"));
+            ((amst)this.app.getManager(211)).a(paramFromServiceMsg.ret.get(), paramFromServiceMsg.pbRsqData.get().toByteArray(), paramIntent.getBundleExtra("extras"));
             return;
           }
           QLog.e(jdField_a_of_type_JavaLangString, 1, "[handleGameConfigListReq] app is null");
@@ -762,11 +763,11 @@ public class VasExtensionHandler
             paramIntent.putBoolean("timeout", bool2);
             paramIntent.putBoolean("legalSuccess", bool1);
             long l = SystemClock.uptimeMillis() - jdField_c_of_type_Long;
-            bctj.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "RichTextIllegalWordTime", bool1, l, 0L, null, "");
+            bdmc.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "RichTextIllegalWordTime", bool1, l, 0L, null, "");
             if (QLog.isColorLevel()) {
               QLog.d(jdField_a_of_type_JavaLangString, 2, "costTime:" + l + " isTimeOut:" + bool2 + " legalSuccess:" + bool1);
             }
-            ((auzk)this.app.getManager(219)).b(bool1);
+            ((avrl)this.app.getManager(219)).b(bool1);
           }
         }
         else
@@ -810,7 +811,7 @@ public class VasExtensionHandler
         paramFromServiceMsg = new CmGameMsgTunnel.AddrDistribueRsp();
         paramFromServiceMsg.mergeFrom(paramIntent.pbRsqData.get().toByteArray());
         int i = paramFromServiceMsg.port.get();
-        paramIntent = new amod(paramFromServiceMsg.ip_list.get(), i, paramFromServiceMsg.aes_key.get(), paramFromServiceMsg.distribute_ts.get(), paramFromServiceMsg.sign.get());
+        paramIntent = new amzx(paramFromServiceMsg.ip_list.get(), i, paramFromServiceMsg.aes_key.get(), paramFromServiceMsg.distribute_ts.get(), paramFromServiceMsg.sign.get());
       }
       catch (Exception paramIntent)
       {
@@ -820,7 +821,7 @@ public class VasExtensionHandler
         paramFromServiceMsg.b();
         return;
       }
-      paramFromServiceMsg = ((amhd)this.mApp.getManager(153)).a();
+      paramFromServiceMsg = ((amsx)this.mApp.getManager(153)).a();
       if (paramIntent != null)
       {
         paramFromServiceMsg.a(paramIntent);
@@ -874,7 +875,7 @@ public class VasExtensionHandler
           int i = paramIntent.getIntExtra("model", 2);
           if (paramFromServiceMsg.ret.get() == 0L)
           {
-            paramIntent = (amhd)this.app.getManager(153);
+            paramIntent = (amsx)this.app.getManager(153);
             if (paramIntent != null)
             {
               paramArrayOfByte = paramIntent.b(this.app.c());
@@ -886,7 +887,7 @@ public class VasExtensionHandler
                 paramIntent.c(j, paramArrayOfByte.cmshow3dFlag);
                 paramIntent = new ArrayList();
                 paramIntent.add(this.app.c());
-                paramArrayOfByte = amuo.a(this.app);
+                paramArrayOfByte = angi.a(this.app);
                 if (paramArrayOfByte != null) {
                   paramArrayOfByte.a(3, paramIntent);
                 }
@@ -895,7 +896,7 @@ public class VasExtensionHandler
           }
           if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
           {
-            paramIntent = (bgzi)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+            paramIntent = (bhzo)this.jdField_a_of_type_JavaLangRefWeakReference.get();
             if (paramFromServiceMsg.ret.get() == 0L)
             {
               bool = true;
@@ -940,7 +941,7 @@ public class VasExtensionHandler
           paramFromServiceMsg = paramIntent.optJSONObject("12818");
           if ((paramFromServiceMsg != null) && (paramFromServiceMsg.optInt("ret", 1) == 0))
           {
-            paramIntent = (bccg)this.app.getManager(12);
+            paramIntent = (bcuy)this.app.getManager(12);
             paramFromServiceMsg = paramFromServiceMsg.optJSONObject("data");
             if (paramFromServiceMsg != null)
             {
@@ -1014,13 +1015,13 @@ public class VasExtensionHandler
               int i = paramFromServiceMsg.optInt("ret", 1);
               if (i == 0)
               {
-                paramIntent = (bccg)this.app.getManager(12);
+                paramIntent = (bcuy)this.app.getManager(12);
                 paramFromServiceMsg = paramFromServiceMsg.optJSONObject("data");
                 if (paramFromServiceMsg != null)
                 {
                   paramFromServiceMsg = paramFromServiceMsg.optJSONObject("rsp");
                   if (paramFromServiceMsg != null) {
-                    paramIntent.a().a(paramFromServiceMsg);
+                    paramIntent.a().parseGameRegisterInfo(paramFromServiceMsg);
                   }
                 }
               }
@@ -1048,8 +1049,8 @@ public class VasExtensionHandler
     HashSet localHashSet = new HashSet(n);
     ArrayList localArrayList1 = new ArrayList(n);
     ArrayList localArrayList2 = new ArrayList();
-    anmw localanmw = (anmw)this.app.getManager(51);
-    VasFaceManager localVasFaceManager = ((bgzk)this.app.getManager(235)).a;
+    anyw localanyw = (anyw)this.app.getManager(51);
+    VasFaceManager localVasFaceManager = ((bhzq)this.app.getManager(235)).a;
     int i = 0;
     int j = 0;
     int m = 0;
@@ -1062,7 +1063,7 @@ public class VasExtensionHandler
       localUdcUinData = (oidb_0x5eb.UdcUinData)localRspBody.rpt_msg_uin_data.get(m);
       bool = false;
       str = String.valueOf(localUdcUinData.uint64_uin.get());
-      ExtensionInfo localExtensionInfo = localanmw.a(str);
+      ExtensionInfo localExtensionInfo = localanyw.a(str);
       paramOIDBSSOPkg = localExtensionInfo;
       if (localExtensionInfo == null)
       {
@@ -1072,7 +1073,7 @@ public class VasExtensionHandler
       }
       k = i;
       if (!localUdcUinData.uint32_vas_font_id.has()) {
-        break label711;
+        break label790;
       }
       long l = localUdcUinData.uint32_vas_font_id.get();
       if (str.equals(this.app.getCurrentAccountUin()))
@@ -1090,7 +1091,7 @@ public class VasExtensionHandler
       {
         k = i;
         if (gc.b(l) == paramOIDBSSOPkg.vipFontType) {
-          break label711;
+          break label790;
         }
       }
       paramOIDBSSOPkg.uVipFont = gc.a(l);
@@ -1100,17 +1101,24 @@ public class VasExtensionHandler
     }
     for (;;)
     {
-      if ((localUdcUinData.uint32_vas_diy_font_timestamp.has()) && (str.equals(this.app.getCurrentAccountUin()))) {
-        j = localUdcUinData.uint32_vas_diy_font_timestamp.get();
-      }
-      for (;;)
+      try
       {
+        if (localUdcUinData.uint32_bubble_id.has())
+        {
+          k = localUdcUinData.uint32_bubble_id.get();
+          ((aogu)this.app.a(13)).a(k);
+        }
+        if ((!localUdcUinData.uint32_vas_diy_font_timestamp.has()) || (!str.equals(this.app.getCurrentAccountUin()))) {
+          break label787;
+        }
+        j = localUdcUinData.uint32_vas_diy_font_timestamp.get();
         bool = a(localUdcUinData, a(localUdcUinData, a(localArrayList2, localUdcUinData, bool, str, paramOIDBSSOPkg), str, paramOIDBSSOPkg), paramOIDBSSOPkg);
+        a(localUdcUinData);
         c(localUdcUinData, str);
         b(localUdcUinData, str);
-        b(localUdcUinData);
+        c(localUdcUinData);
         a(localUdcUinData, str);
-        a(localUdcUinData);
+        b(localUdcUinData);
         if ((localUdcUinData.uint64_game_appid.has()) && (localUdcUinData.uint64_game_last_login_time.has()) && (localUdcUinData.uint32_plate_of_king_dan.has()) && (localUdcUinData.uint32_plate_of_king_dan_display_switch.has())) {
           a(str, localUdcUinData.uint64_game_appid.get(), localUdcUinData.uint64_game_last_login_time.get(), localUdcUinData.uint32_plate_of_king_dan.get(), localUdcUinData.uint32_plate_of_king_dan_display_switch.get());
         }
@@ -1127,26 +1135,32 @@ public class VasExtensionHandler
           localArrayList1.add(paramOIDBSSOPkg);
         }
         m += 1;
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.d("VasFont", 2, "0x5eb self has diy timestamp fontid = " + i + " timestamp = " + j);
-        }
-        paramIntent = localanmw.a(this.app.getCurrentAccountUin());
-        gc.a(this.app, this.app.getCurrentAccountUin(), paramIntent, i, j);
-        localanmw.b(localArrayList1);
-        localVasFaceManager.b(localArrayList2);
-        localVasFaceManager.a(localArrayList1);
-        notifyUI(66, true, localHashSet);
-        return;
       }
-      label711:
+      catch (Exception localException)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "" + localException.getMessage());
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("VasFont", 2, "0x5eb self has diy timestamp fontid = " + i + " timestamp = " + j);
+      }
+      paramIntent = localanyw.a(this.app.getCurrentAccountUin());
+      gc.a(this.app, this.app.getCurrentAccountUin(), paramIntent, i, j);
+      localanyw.b(localArrayList1);
+      localVasFaceManager.b(localArrayList2);
+      localVasFaceManager.a(localArrayList1);
+      notifyUI(66, true, localHashSet);
+      return;
+      label787:
+      continue;
+      label790:
       i = k;
     }
   }
   
-  private void a(FromServiceMsg paramFromServiceMsg, anil paramanil, Object paramObject)
+  private void a(FromServiceMsg paramFromServiceMsg, anui paramanui, Object paramObject)
   {
-    ThreadManager.getSubThreadHandler().post(new VasExtensionHandler.UpdateRunnable(paramanil, paramFromServiceMsg.isSuccess(), paramObject));
+    ThreadManager.getSubThreadHandler().post(new VasExtensionHandler.UpdateRunnable(paramanui, paramFromServiceMsg.isSuccess(), paramObject));
   }
   
   private void a(String paramString, JSONArray paramJSONArray, List<FeedsItemData> paramList)
@@ -1233,7 +1247,7 @@ public class VasExtensionHandler
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetUserApolloDress rootData: " + paramJSONObject);
     }
-    amhd localamhd = (amhd)this.app.getManager(153);
+    amsx localamsx = (amsx)this.app.getManager(153);
     ArrayList localArrayList = new ArrayList();
     JSONArray localJSONArray = paramJSONObject.getJSONArray("data");
     HashMap localHashMap = new HashMap();
@@ -1247,7 +1261,7 @@ public class VasExtensionHandler
       {
         localObject1 = (JSONObject)localJSONArray.opt(i);
         l1 = ((JSONObject)localObject1).optLong("uin");
-        ApolloBaseInfo localApolloBaseInfo = localamhd.b(l1 + "");
+        ApolloBaseInfo localApolloBaseInfo = localamsx.b(l1 + "");
         long l2 = ((JSONObject)localObject1).optLong("ts");
         localObject2 = ((JSONObject)localObject1).toString();
         localObject1 = localApolloBaseInfo.getApolloDress();
@@ -1262,13 +1276,13 @@ public class VasExtensionHandler
           }
         }
         label330:
-        for (localObject2 = "";; localObject2 = ((amls)localObject2).a())
+        for (localObject2 = "";; localObject2 = ((amxm)localObject2).a())
         {
           if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.equals((CharSequence)localObject1, (CharSequence)localObject2)))
           {
             localApolloBaseInfo.apolloHistoryDress = ((String)localObject1);
             localApolloBaseInfo.appearAction = null;
-            amuh.a(String.valueOf(l1));
+            angb.a(String.valueOf(l1));
             if (QLog.isColorLevel()) {
               QLog.d(jdField_a_of_type_JavaLangString, 2, "save history uin:" + l1 + ", dress: " + (String)localObject1 + ", new dres: " + (String)localObject2);
             }
@@ -1277,7 +1291,7 @@ public class VasExtensionHandler
           localArrayList.add(localApolloBaseInfo);
           i += 1;
           break;
-          localObject1 = ((amls)localObject1).a();
+          localObject1 = ((amxm)localObject1).a();
           break label188;
         }
       }
@@ -1302,7 +1316,7 @@ public class VasExtensionHandler
         if (paramJSONObject != null) {
           break label723;
         }
-        paramJSONObject = localamhd.b(l1 + "");
+        paramJSONObject = localamsx.b(l1 + "");
       }
     }
     label723:
@@ -1314,7 +1328,7 @@ public class VasExtensionHandler
       }
       paramJSONObject = paramJSONObject.getApolloDress3D();
       if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramJSONObject.jdField_a_of_type_JavaLangString))) {
-        amxb.a(this.app, paramJSONObject.jdField_a_of_type_JavaLangString, null);
+        aniv.a(this.app, paramJSONObject.jdField_a_of_type_JavaLangString, null);
       }
       i += 1;
       break;
@@ -1336,8 +1350,8 @@ public class VasExtensionHandler
             }
           }
         }
-        localamhd.b(localArrayList);
-        ((amhd)this.app.getManager(153)).a(localArrayList);
+        localamsx.b(localArrayList);
+        ((amsx)this.app.getManager(153)).a(localArrayList);
       }
       for (;;)
       {
@@ -1352,18 +1366,18 @@ public class VasExtensionHandler
     }
   }
   
-  private void a(JSONObject paramJSONObject, amhd paramamhd, ApolloBaseInfo paramApolloBaseInfo, boolean paramBoolean)
+  private void a(JSONObject paramJSONObject, amsx paramamsx, ApolloBaseInfo paramApolloBaseInfo, boolean paramBoolean)
   {
     int i;
     if (paramJSONObject.has("CurrencyInfo"))
     {
       i = paramJSONObject.getJSONObject("CurrencyInfo").optInt("balance");
-      amhw localamhw = paramamhd.a();
-      if (localamhw != null)
+      amtq localamtq = paramamsx.a();
+      if (localamtq != null)
       {
-        localamhw.jdField_a_of_type_Int = i;
-        if (localamhw.jdField_a_of_type_Boolean) {
-          localamhw.b();
+        localamtq.jdField_a_of_type_Int = i;
+        if (localamtq.jdField_a_of_type_Boolean) {
+          localamtq.b();
         }
       }
       if (QLog.isColorLevel()) {
@@ -1382,14 +1396,24 @@ public class VasExtensionHandler
       ApolloGameUtil.a(this.app, i);
     }
     if (paramBoolean) {
-      paramamhd.a(paramApolloBaseInfo);
+      paramamsx.a(paramApolloBaseInfo);
     }
   }
   
   private void a(oidb_0x5eb.UdcUinData paramUdcUinData)
   {
-    if (paramUdcUinData.uint32_rsp_theme_font_id.has()) {
-      bhba.b(paramUdcUinData.uint32_rsp_theme_font_id.get());
+    boolean bool = true;
+    if (paramUdcUinData.uint32_c2c_aio_shortcut_switch.has()) {
+      if (paramUdcUinData.uint32_c2c_aio_shortcut_switch.get() != 1) {
+        break label32;
+      }
+    }
+    for (;;)
+    {
+      aqpe.a(this.app, bool);
+      return;
+      label32:
+      bool = false;
     }
   }
   
@@ -1398,7 +1422,7 @@ public class VasExtensionHandler
     if (paramUdcUinData.uint32_rsp_qq_level_icon_type.has())
     {
       int i = paramUdcUinData.uint32_rsp_qq_level_icon_type.get();
-      paramUdcUinData = (anmw)this.app.getManager(51);
+      paramUdcUinData = (anyw)this.app.getManager(51);
       paramString = paramUdcUinData.b(paramString + "");
       if ((paramString != null) && (paramString.mQQLevelType != i))
       {
@@ -1416,7 +1440,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       if (TextUtils.isEmpty(paramString)) {}
@@ -1440,16 +1464,16 @@ public class VasExtensionHandler
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("producer", Build.PRODUCT);
       localJSONObject.put("model", Build.MODEL);
-      localJSONObject.put("cpuCount", bgln.b());
-      localJSONObject.put("cpuFrequency", bgln.a());
-      localJSONObject.put("systemTotalMemory", bgln.d());
+      localJSONObject.put("cpuCount", bhlo.b());
+      localJSONObject.put("cpuFrequency", bhlo.a());
+      localJSONObject.put("systemTotalMemory", bhlo.d());
       ((JSONObject)localObject).put("deviceInfo", localJSONObject);
       ((JSONObject)localObject).put("uins", paramString);
       ((JSONObject)localObject).put("3dUins", localJSONArray);
       ((JSONObject)localObject).put("detail", 1);
       ((JSONObject)localObject).put("cmd", "apollo_core.get_avatar");
       localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      paramString = new NewIntent(this.app.getApp(), bgzn.class);
+      paramString = new NewIntent(this.app.getApp(), bhzt.class);
       paramString.putExtra("cmd", "apollo_core.get_avatar");
       paramString.putExtra("data", localUniSsoServerReq.toByteArray());
       paramString.putExtra("uinArr", paramArrayOfLong);
@@ -1466,12 +1490,12 @@ public class VasExtensionHandler
     }
   }
   
-  private boolean a(amhd paramamhd1, HashMap<Integer, Bundle> paramHashMap, JSONArray paramJSONArray, amhd paramamhd2, ancd paramancd)
+  private boolean a(amsx paramamsx1, HashMap<Integer, Bundle> paramHashMap, JSONArray paramJSONArray, amsx paramamsx2, annx paramannx)
   {
     boolean bool = false;
-    paramancd.a(paramJSONArray);
-    List localList = paramancd.a(1);
-    paramJSONArray = paramancd.b();
+    paramannx.a(paramJSONArray);
+    List localList = paramannx.a(1);
+    paramJSONArray = paramannx.b();
     int i;
     if (localList != null)
     {
@@ -1483,8 +1507,8 @@ public class VasExtensionHandler
         if (paramHashMap.containsKey(Integer.valueOf(localApolloActionData.actionId)))
         {
           Bundle localBundle = (Bundle)paramHashMap.get(Integer.valueOf(localApolloActionData.actionId));
-          if (paramamhd2 != null) {
-            paramamhd2.a(localApolloActionData, localBundle);
+          if (paramamsx2 != null) {
+            paramamsx2.a(localApolloActionData, localBundle);
           }
           if (QLog.isColorLevel()) {
             QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetUserApolloInfo update actlist id: " + localApolloActionData.actionId);
@@ -1493,8 +1517,8 @@ public class VasExtensionHandler
         }
         j += 1;
       }
-      if ((this.mApp != null) && (paramancd != null) && (i != 0)) {
-        paramancd.b(localList);
+      if ((this.mApp != null) && (paramannx != null) && (i != 0)) {
+        paramannx.b(localList);
       }
     }
     for (int j = i;; j = 0)
@@ -1505,12 +1529,12 @@ public class VasExtensionHandler
         i = 0;
         while (k < paramJSONArray.size())
         {
-          paramamhd2 = (ApolloActionData)paramJSONArray.get(k);
-          if (paramHashMap.containsKey(Integer.valueOf(paramamhd2.actionId)))
+          paramamsx2 = (ApolloActionData)paramJSONArray.get(k);
+          if (paramHashMap.containsKey(Integer.valueOf(paramamsx2.actionId)))
           {
-            paramamhd2.isShow = 1;
+            paramamsx2.isShow = 1;
             if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[handleGetUserApolloInfo] set user action ", Integer.valueOf(paramamhd2.actionId), " visible" });
+              QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[handleGetUserApolloInfo] set user action ", Integer.valueOf(paramamsx2.actionId), " visible" });
             }
             i = 1;
           }
@@ -1520,11 +1544,11 @@ public class VasExtensionHandler
         if (this.mApp != null)
         {
           k = i;
-          if (paramancd != null)
+          if (paramannx != null)
           {
             k = i;
             if (i != 0) {
-              paramancd.b(paramJSONArray);
+              paramannx.b(paramJSONArray);
             }
           }
         }
@@ -1538,8 +1562,8 @@ public class VasExtensionHandler
         {
           paramHashMap = paramHashMap.keySet().iterator();
           while (paramHashMap.hasNext()) {
-            if (paramancd.a(((Integer)paramHashMap.next()).intValue()) == null) {
-              paramamhd1.d();
+            if (paramannx.a(((Integer)paramHashMap.next()).intValue()) == null) {
+              paramamsx1.d();
             }
           }
           notifyUI(9, false, null);
@@ -1555,22 +1579,22 @@ public class VasExtensionHandler
     if ((TextUtils.isEmpty(str)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))) {
       return false;
     }
-    anil localanil = (anil)this.jdField_a_of_type_JavaUtilHashMap.get(str);
-    if (localanil == null) {
+    anui localanui = (anui)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+    if (localanui == null) {
       return false;
     }
     this.jdField_a_of_type_JavaUtilHashMap.remove(str);
     paramIntent = (Class)paramIntent.getSerializableExtra("__rspClass__");
     if (paramIntent == null)
     {
-      a(paramFromServiceMsg, localanil, paramArrayOfByte);
+      a(paramFromServiceMsg, localanui, paramArrayOfByte);
       return true;
     }
     try
     {
       paramIntent = (MessageMicro)paramIntent.newInstance();
       paramIntent.mergeFrom(paramArrayOfByte);
-      a(paramFromServiceMsg, localanil, paramIntent);
+      a(paramFromServiceMsg, localanui, paramIntent);
       return true;
     }
     catch (Exception paramIntent)
@@ -1658,7 +1682,7 @@ public class VasExtensionHandler
   private boolean a(String paramString, WebSSOAgent.UniSsoServerRsp paramUniSsoServerRsp, int paramInt)
   {
     paramUniSsoServerRsp = new JSONObject(paramUniSsoServerRsp.rspdata.get()).getJSONObject("data");
-    amhd localamhd;
+    amsx localamsx;
     boolean bool2;
     int i;
     if ((paramUniSsoServerRsp != null) && (this.app != null))
@@ -1666,10 +1690,10 @@ public class VasExtensionHandler
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetUserApolloInfo apollo data: " + paramUniSsoServerRsp.toString());
       }
-      localamhd = (amhd)this.app.getManager(153);
-      if (localamhd != null)
+      localamsx = (amsx)this.app.getManager(153);
+      if (localamsx != null)
       {
-        paramString = localamhd.b(paramString);
+        paramString = localamsx.b(paramString);
         bool2 = false;
         bool1 = bool2;
         if (paramUniSsoServerRsp.has("vip"))
@@ -1743,15 +1767,15 @@ public class VasExtensionHandler
           if (this.mApp == null) {
             return true;
           }
-          localObject1 = (amhd)this.mApp.getManager(153);
+          localObject1 = (amsx)this.mApp.getManager(153);
           if (localObject1 != null) {
-            ((amhd)localObject1).jdField_a_of_type_JavaUtilHashMap = localHashMap;
+            ((amsx)localObject1).jdField_a_of_type_JavaUtilHashMap = localHashMap;
           }
-          localObject2 = (ancd)this.mApp.getManager(155);
+          localObject2 = (annx)this.mApp.getManager(155);
           if (localObject2 == null) {
             return true;
           }
-          a(localamhd, localHashMap, localJSONArray, (amhd)localObject1, (ancd)localObject2);
+          a(localamsx, localHashMap, localJSONArray, (amsx)localObject1, (annx)localObject2);
         }
         if (1073741824 != (0x40000000 & paramInt)) {
           break label609;
@@ -1764,7 +1788,7 @@ public class VasExtensionHandler
           QLog.d(jdField_a_of_type_JavaLangString, 1, "[handleGetUserApolloInfo] send NOTIFY_TYPE_REFRESH_ACTION");
           notifyUI(9, true, null);
         }
-        a(paramUniSsoServerRsp, localamhd, paramString, bool1);
+        a(paramUniSsoServerRsp, localamsx, paramString, bool1);
         return false;
         notifyUI(9, false, null);
         break;
@@ -1813,7 +1837,7 @@ public class VasExtensionHandler
       i = paramUdcUinData.uint32_vas_voicebubble_id.get();
       if ((i > 0) && (String.valueOf(paramString).equals(this.app.getCurrentAccountUin())))
       {
-        ((anuk)this.app.a(13)).b(i);
+        ((aogu)this.app.a(13)).b(i);
         if (QLog.isColorLevel()) {
           QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetStrangerVasInfo uin= " + paramString + "voice print bubble id = " + i);
         }
@@ -1848,7 +1872,7 @@ public class VasExtensionHandler
         paramExtensionInfo.pendantDiyId = i;
         paramExtensionInfo.lastUpdateTime = NetConnInfoCenter.getServerTime();
         if (paramString.equals(this.app.getCurrentAccountUin())) {
-          ((anuk)this.app.a(13)).b(i, false);
+          ((aogu)this.app.a(13)).b(i, false);
         }
         if (QLog.isColorLevel()) {
           QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetStrangerVasInfo, uin=" + paramString + ", pendant=" + paramExtensionInfo.pendantId + ",font=" + paramExtensionInfo.uVipFont + ", fontType = " + paramExtensionInfo.vipFontType + ", magicFont = " + paramExtensionInfo.magicFont + ", colorRing = " + paramExtensionInfo.colorRingId + ", pendantDiyId = " + paramExtensionInfo.pendantDiyId);
@@ -1857,6 +1881,39 @@ public class VasExtensionHandler
       }
     }
     return bool;
+  }
+  
+  private boolean a(JSONArray paramJSONArray, boolean paramBoolean, int paramInt, long paramLong)
+  {
+    boolean bool = paramBoolean;
+    int j;
+    int i;
+    if (paramJSONArray != null)
+    {
+      j = paramJSONArray.length();
+      i = 0;
+    }
+    for (;;)
+    {
+      bool = paramBoolean;
+      if (i < j)
+      {
+        int k = paramJSONArray.getJSONObject(i).getInt("id");
+        long l = paramJSONArray.getJSONObject(i).getLong("updateTs");
+        if (k != paramInt) {
+          break label87;
+        }
+        bool = paramBoolean;
+        if (paramLong != l)
+        {
+          QLog.i(jdField_a_of_type_JavaLangString, 1, "handleApolloStandAction version update res.");
+          bool = true;
+        }
+      }
+      return bool;
+      label87:
+      i += 1;
+    }
   }
   
   private boolean a(JSONObject paramJSONObject)
@@ -1917,7 +1974,7 @@ public class VasExtensionHandler
       break;
       if (this.mApp != null)
       {
-        paramJSONObject = (ancd)this.mApp.getManager(155);
+        paramJSONObject = (annx)this.mApp.getManager(155);
         if (paramJSONObject != null)
         {
           localObject1 = paramJSONObject.g();
@@ -2224,25 +2281,8 @@ public class VasExtensionHandler
   
   private void b(oidb_0x5eb.UdcUinData paramUdcUinData)
   {
-    int i;
-    if (paramUdcUinData.uint32_bubble_unread_switch.has())
-    {
-      i = paramUdcUinData.uint32_bubble_unread_switch.get();
-      paramUdcUinData = (BubbleManager)this.app.getManager(44);
-      if (paramUdcUinData != null) {
-        if (i != 0) {
-          break label80;
-        }
-      }
-    }
-    label80:
-    for (boolean bool = true;; bool = false)
-    {
-      paramUdcUinData.a(bool);
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "uint32_bubble_unread_switch : " + i);
-      }
-      return;
+    if (paramUdcUinData.uint32_rsp_theme_font_id.has()) {
+      bibg.b(paramUdcUinData.uint32_rsp_theme_font_id.get());
     }
   }
   
@@ -2252,7 +2292,7 @@ public class VasExtensionHandler
     {
       int i = paramUdcUinData.uint32_suspend_effect_id.get();
       if ((i >= 0) && (String.valueOf(paramString).equals(this.app.getCurrentAccountUin()))) {
-        ((anuk)this.app.a(13)).a(paramString, i);
+        ((aogu)this.app.a(13)).a(paramString, i);
       }
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "uint32_suspend_effect_id = " + i);
@@ -2405,6 +2445,30 @@ public class VasExtensionHandler
     }
   }
   
+  private void c(oidb_0x5eb.UdcUinData paramUdcUinData)
+  {
+    int i;
+    if (paramUdcUinData.uint32_bubble_unread_switch.has())
+    {
+      i = paramUdcUinData.uint32_bubble_unread_switch.get();
+      paramUdcUinData = (BubbleManager)this.app.getManager(44);
+      if (paramUdcUinData != null) {
+        if (i != 0) {
+          break label80;
+        }
+      }
+    }
+    label80:
+    for (boolean bool = true;; bool = false)
+    {
+      paramUdcUinData.a(bool);
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 1, "uint32_bubble_unread_switch : " + i);
+      }
+      return;
+    }
+  }
+  
   private void c(oidb_0x5eb.UdcUinData paramUdcUinData, String paramString)
   {
     Dialogue localDialogue;
@@ -2415,7 +2479,7 @@ public class VasExtensionHandler
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "vip_card_extension id by refresh=" + localDialogue.short_nameplate_itemid);
       }
-      paramUdcUinData = (anmw)this.app.getManager(51);
+      paramUdcUinData = (anyw)this.app.getManager(51);
       paramString = paramUdcUinData.e(paramString);
       if (paramString != null) {
         if (!localDialogue.short_nameplate_itemid.has()) {
@@ -2578,7 +2642,7 @@ public class VasExtensionHandler
     int n = localSTMsgInfo.action_id.get();
     int i1 = localSTMsgInfo.bubble_id.get();
     paramFromServiceMsg = localSTMsgInfo.scheme.get();
-    int i2 = amhd.a(this.app, this.app.c());
+    int i2 = amsx.a(this.app, this.app.c());
     paramIntent = paramFromServiceMsg;
     if (2 == i2) {
       paramIntent = "3d_" + paramFromServiceMsg;
@@ -2726,7 +2790,7 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new STGameLogin.STGameLoginReq();
@@ -2734,14 +2798,14 @@ public class VasExtensionHandler
         ((STGameLogin.STGameLoginReq)localObject).local_ts.set((int)l);
         ((STGameLogin.STGameLoginReq)localObject).from.set("android");
         localUniSsoServerReq.pbReqData.set(ByteStringMicro.copyFrom(((STGameLogin.STGameLoginReq)localObject).toByteArray()));
-        boolean bool = ((amhd)this.app.getManager(153)).c(this.app.c());
+        boolean bool = ((amsx)this.app.getManager(153)).c(this.app.c());
         if (bool)
         {
           localObject = "apollo_aio_game.get_user_game_list_info";
           if (QLog.isColorLevel()) {
             QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "getApolloGameLoginReq isGameWhiteUser:", Boolean.valueOf(bool), " ts:", Long.valueOf(l) });
           }
-          NewIntent localNewIntent = new NewIntent(this.app.getApp(), bgzn.class);
+          NewIntent localNewIntent = new NewIntent(this.app.getApp(), bhzt.class);
           localNewIntent.putExtra("cmd", (String)localObject);
           localNewIntent.putExtra("data", localUniSsoServerReq.toByteArray());
           this.app.startServlet(localNewIntent);
@@ -2766,14 +2830,14 @@ public class VasExtensionHandler
     Object localObject = new IndividPub.Platform_Comm_Req();
     ((IndividPub.Platform_Comm_Req)localObject).platForm.set(109L);
     ((IndividPub.Platform_Comm_Req)localObject).osver.set(Build.VERSION.RELEASE);
-    ((IndividPub.Platform_Comm_Req)localObject).mqqver.set("8.4.1.4680");
+    ((IndividPub.Platform_Comm_Req)localObject).mqqver.set("8.4.5.4745");
     localexpTips_Req.comm.set((MessageMicro)localObject);
     localexpTips_Req.cmd.set(1);
     localexpTips_Req.setHasFlag(true);
     localObject = new IndividPub.expTips_Pull_Req();
     ((IndividPub.expTips_Pull_Req)localObject).from.set(paramInt);
     localexpTips_Req.reqcmd_0x01.set((MessageMicro)localObject);
-    localObject = new NewIntent(this.app.getApp(), bgzn.class);
+    localObject = new NewIntent(this.app.getApp(), bhzt.class);
     ((NewIntent)localObject).putExtra("cmd", jdField_c_of_type_JavaLangString);
     ((NewIntent)localObject).putExtra("data", localexpTips_Req.toByteArray());
     ((NewIntent)localObject).putExtra("from", paramInt);
@@ -2788,7 +2852,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1.4680");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5.4745");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -2799,11 +2863,11 @@ public class VasExtensionHandler
       localJSONObject2.put("redpoint", paramInt1);
       localJSONObject2.put("last_time", paramLong);
       localJSONObject2.put("qq_plat", 1);
-      localJSONObject2.put("qq_version", "8.4.1.4680");
+      localJSONObject2.put("qq_version", "8.4.5.4745");
       localJSONObject1.put("req", localJSONObject2);
       ((JSONObject)localObject).put("12818", localJSONObject1);
       localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      localObject = new NewIntent(this.app.getApp(), bgzn.class);
+      localObject = new NewIntent(this.app.getApp(), bhzt.class);
       ((NewIntent)localObject).putExtra("cmd", "QQVacCommSvc.get_padface_add");
       ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
       this.app.startServlet((NewIntent)localObject);
@@ -2820,7 +2884,7 @@ public class VasExtensionHandler
     int j = 0;
     try
     {
-      i = bgnt.a(this.app.getApp().getApplicationContext());
+      i = bhnv.a(this.app.getApp().getApplicationContext());
     }
     catch (Exception paramString)
     {
@@ -2843,13 +2907,13 @@ public class VasExtensionHandler
     }
     paramString = new qqshop_act.SQQSHPActReq();
     localObject = new qqshop_act.SQQSHPUsrInfo();
-    ((qqshop_act.SQQSHPUsrInfo)localObject).carriertype.set(oda.b());
+    ((qqshop_act.SQQSHPUsrInfo)localObject).carriertype.set(oek.b());
     ((qqshop_act.SQQSHPUsrInfo)localObject).net_type.set(i);
-    ((qqshop_act.SQQSHPUsrInfo)localObject).src.set(oda.a(paramInt2));
+    ((qqshop_act.SQQSHPUsrInfo)localObject).src.set(oek.a(paramInt2));
     ((qqshop_act.SQQSHPUsrInfo)localObject).src_idx.set(j);
     paramString.act_id.set(paramInt1);
     paramString.usr_info.set((MessageMicro)localObject);
-    localObject = new NewIntent(this.app.getApp(), bgzn.class);
+    localObject = new NewIntent(this.app.getApp(), bhzt.class);
     ((NewIntent)localObject).putExtra("cmd", "SQQShopAct.ReqAct");
     ((NewIntent)localObject).putExtra("data", paramString.toByteArray());
     ((NewIntent)localObject).putExtra("timeout", 3000L);
@@ -2859,7 +2923,7 @@ public class VasExtensionHandler
     }
   }
   
-  public void a(int paramInt, Bundle paramBundle, azho paramazho)
+  public void a(int paramInt, Bundle paramBundle, baaa parambaaa)
   {
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "requestPraiseAuth, praiseId=" + paramInt);
@@ -2869,13 +2933,13 @@ public class VasExtensionHandler
     praise_sso.TPraiseSsoReq localTPraiseSsoReq = new praise_sso.TPraiseSsoReq();
     localTPraiseSsoReq.i32_cmd.set(1);
     localTPraiseSsoReq.i32_implat.set(109);
-    localTPraiseSsoReq.str_qq_ver.set("8.4.1.4680");
+    localTPraiseSsoReq.str_qq_ver.set("8.4.5.4745");
     localTPraiseSsoReq.st_cmd0x1_req.set((MessageMicro)localObject);
-    localObject = new NewIntent(this.app.getApp(), bgzn.class);
+    localObject = new NewIntent(this.app.getApp(), bhzt.class);
     ((NewIntent)localObject).putExtra("cmd", "Praise.sso");
     ((NewIntent)localObject).putExtra("data", localTPraiseSsoReq.toByteArray());
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_Azho = paramazho;
+    this.jdField_a_of_type_Baaa = parambaaa;
     this.app.startServlet((NewIntent)localObject);
   }
   
@@ -2891,7 +2955,7 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
@@ -2903,7 +2967,7 @@ public class VasExtensionHandler
         ((JSONObject)localObject).put("from", paramString);
         ((JSONObject)localObject).put("status", paramInt);
         localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-        paramString = new NewIntent(this.app.getApp(), bgzn.class);
+        paramString = new NewIntent(this.app.getApp(), bhzt.class);
         paramString.putExtra("cmd", "apollo_core.set_status");
         paramString.putExtra("data", localUniSsoServerReq.toByteArray());
         paramString.putExtra("apollo_status", paramInt);
@@ -2928,13 +2992,13 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
       ((JSONObject)localObject).put("id", paramInt1);
       localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      localObject = new NewIntent(this.app.getApp(), bgzn.class);
+      localObject = new NewIntent(this.app.getApp(), bhzt.class);
       ((NewIntent)localObject).putExtra("cmd", "vaspoke.check");
       ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
       ((NewIntent)localObject).putExtra("timeout", 20000);
@@ -2961,7 +3025,7 @@ public class VasExtensionHandler
     Object localObject = new WebSSOAgent.UniSsoServerReqComm();
     ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
     ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-    ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+    ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
     WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
     localUniSsoServerReq.comm.set((MessageMicro)localObject);
     localObject = new MonitReport.MonitReportReq();
@@ -2976,7 +3040,7 @@ public class VasExtensionHandler
       localPublicAccountReq.ts.set(NetConnInfoCenter.getServerTimeMillis());
       ((MonitReport.MonitReportReq)localObject).public_acct_req.add(localPublicAccountReq);
       localUniSsoServerReq.pbReqData.set(ByteStringMicro.copyFrom(((MonitReport.MonitReportReq)localObject).toByteArray()));
-      paramString1 = new NewIntent(this.app.getApp(), bgzn.class);
+      paramString1 = new NewIntent(this.app.getApp(), bhzt.class);
       paramString1.putExtra("cmd", "gc_monitor_report.report_public_acct_info");
       paramString1.putExtra("data", localUniSsoServerReq.toByteArray());
       this.app.startServlet(paramString1);
@@ -2991,7 +3055,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       JSONObject localJSONObject = new JSONObject();
@@ -3002,7 +3066,7 @@ public class VasExtensionHandler
         localJSONObject.put("from", localObject);
         localJSONObject.put("actid", paramInt1);
         localUniSsoServerReq.reqdata.set(localJSONObject.toString());
-        localObject = new NewIntent(this.app.getApp(), bgzn.class);
+        localObject = new NewIntent(this.app.getApp(), bhzt.class);
         ((NewIntent)localObject).putExtra("cmd", "apollo_core.check_act");
         ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
         ((NewIntent)localObject).putExtra("actionId", paramInt1);
@@ -3041,7 +3105,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -3051,7 +3115,7 @@ public class VasExtensionHandler
       ((JSONObject)localObject).put("opType", paramInt2);
       ((JSONObject)localObject).put("theme", paramString2);
       localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      paramString1 = new NewIntent(this.app.getApp(), bgzn.class);
+      paramString1 = new NewIntent(this.app.getApp(), bhzt.class);
       paramString1.putExtra("cmd", "apollo_aio_game.get_playing_usernum");
       paramString1.putExtra("data", localUniSsoServerReq.toByteArray());
       paramString1.putExtra("tipsBarAnimation", paramBoolean);
@@ -3072,7 +3136,7 @@ public class VasExtensionHandler
     Object localObject = new WebSSOAgent.UniSsoServerReqComm();
     ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
     ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-    ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+    ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
     WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
     localUniSsoServerReq.comm.set((MessageMicro)localObject);
     localObject = new MonitReport.MonitReportReq();
@@ -3098,7 +3162,7 @@ public class VasExtensionHandler
       ((MonitReport.MonitReportReq)localObject).public_acct_req.add(localPublicAccountReq);
       break;
       localUniSsoServerReq.pbReqData.set(ByteStringMicro.copyFrom(((MonitReport.MonitReportReq)localObject).toByteArray()));
-      paramList = new NewIntent(this.app.getApp(), bgzn.class);
+      paramList = new NewIntent(this.app.getApp(), bhzt.class);
       paramList.putExtra("cmd", "gc_monitor_report.report_public_acct_info");
       paramList.putExtra("data", localUniSsoServerReq.toByteArray());
       this.app.startServlet(paramList);
@@ -3108,7 +3172,7 @@ public class VasExtensionHandler
   
   public void a(long paramLong, int paramInt1, int paramInt2)
   {
-    NewIntent localNewIntent = new NewIntent(this.app.getApp(), bgzn.class);
+    NewIntent localNewIntent = new NewIntent(this.app.getApp(), bhzt.class);
     localNewIntent.putExtra("cmd", jdField_b_of_type_JavaLangString);
     localNewIntent.putExtra("pendantId", paramLong);
     localNewIntent.putExtra("seriesId", paramInt1);
@@ -3117,7 +3181,7 @@ public class VasExtensionHandler
     localSetAddonReq.cmd.set(2);
     localSetAddonReq.int_platform.set(2);
     localSetAddonReq.long_addon_id.set(paramLong);
-    localSetAddonReq.str_qq_version.set("8.4.1");
+    localSetAddonReq.str_qq_version.set("8.4.5");
     if (paramInt2 != -1) {
       localSetAddonReq.int_from_type.set(paramInt2);
     }
@@ -3132,7 +3196,7 @@ public class VasExtensionHandler
     localReqBody.u64_cmd.set(paramLong1);
     localReqBody.u64_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
     localReqBody.i32_implat.set(109);
-    localReqBody.str_version.set(bgln.c());
+    localReqBody.str_version.set(bhlo.c());
     Object localObject;
     if (paramLong1 == 8192L)
     {
@@ -3145,7 +3209,7 @@ public class VasExtensionHandler
     }
     for (;;)
     {
-      localObject = new NewIntent(this.mApp.getApp(), bgzn.class);
+      localObject = new NewIntent(this.mApp.getApp(), bhzt.class);
       ((NewIntent)localObject).putExtra("cmd", "Groupeffect.commop");
       ((NewIntent)localObject).putExtra("data", localReqBody.toByteArray());
       ((NewIntent)localObject).putExtra("usrdata", paramLong1);
@@ -3186,12 +3250,12 @@ public class VasExtensionHandler
         if (i == 0)
         {
           PraiseManager.a(this.app, j);
-          if ((this.jdField_a_of_type_AndroidOsBundle == null) || (this.jdField_a_of_type_Azho == null)) {
+          if ((this.jdField_a_of_type_AndroidOsBundle == null) || (this.jdField_a_of_type_Baaa == null)) {
             break;
           }
-          this.jdField_a_of_type_Azho.a(i, j, paramIntent, this.jdField_a_of_type_AndroidOsBundle);
+          this.jdField_a_of_type_Baaa.a(i, j, paramIntent, this.jdField_a_of_type_AndroidOsBundle);
           this.jdField_a_of_type_AndroidOsBundle = null;
-          this.jdField_a_of_type_Azho = null;
+          this.jdField_a_of_type_Baaa = null;
           return;
         }
       }
@@ -3263,20 +3327,20 @@ public class VasExtensionHandler
           localObject1 = ((PendantMarket.TipsInfo)localObject2).title_wording.get();
           paramIntent = (Intent)localObject1;
           if (((String)localObject1).equals("")) {
-            paramIntent = anni.a(2131714711);
+            paramIntent = anzj.a(2131714820);
           }
           ((PendantTipsInfo)localObject3).titleWording = paramIntent;
           ((PendantTipsInfo)localObject3).wording = ((PendantMarket.TipsInfo)localObject2).wording.get();
           localObject1 = ((PendantMarket.TipsInfo)localObject2).right_btn_wording.get();
           paramIntent = (Intent)localObject1;
           if (((String)localObject1).equals("")) {
-            paramIntent = anni.a(2131714712);
+            paramIntent = anzj.a(2131714821);
           }
           ((PendantTipsInfo)localObject3).rightBtnWording = paramIntent;
           localObject1 = ((PendantMarket.TipsInfo)localObject2).left_btn_wording.get();
           paramIntent = (Intent)localObject1;
           if (((String)localObject1).equals("")) {
-            paramIntent = anni.a(2131714710);
+            paramIntent = anzj.a(2131714819);
           }
           ((PendantTipsInfo)localObject3).leftBtnWording = paramIntent;
           ((PendantTipsInfo)localObject3).vipType = ((PendantMarket.TipsInfo)localObject2).vip_type.get();
@@ -3331,9 +3395,9 @@ public class VasExtensionHandler
       if (this.app == null) {
         break label677;
       }
-      localObject2 = (anmw)this.app.getManager(51);
+      localObject2 = (anyw)this.app.getManager(51);
       Object localObject3 = paramIntent.getStringExtra("uin");
-      localObject1 = ((anmw)localObject2).a((String)localObject3);
+      localObject1 = ((anyw)localObject2).a((String)localObject3);
       paramArrayOfByte = (byte[])localObject1;
       if (localObject1 != null) {
         break label638;
@@ -3344,7 +3408,7 @@ public class VasExtensionHandler
       paramArrayOfByte.pendantId = paramIntent.getLongExtra("pendantId", -1L);
       paramArrayOfByte.pendantDiyId = paramIntent.getIntExtra("pendantDiyId", 0);
       paramArrayOfByte.timestamp = System.currentTimeMillis();
-      ((anmw)localObject2).a(paramArrayOfByte);
+      ((anyw)localObject2).a(paramArrayOfByte);
       label677:
       notifyUI(1, true, localBundle);
     }
@@ -3353,21 +3417,21 @@ public class VasExtensionHandler
     }
   }
   
-  public void a(bgzi parambgzi)
+  public void a(bhzo parambhzo)
   {
-    if (parambgzi == null)
+    if (parambhzo == null)
     {
       this.jdField_a_of_type_JavaLangRefWeakReference = null;
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambgzi);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambhzo);
   }
   
-  public void a(bgzj parambgzj)
+  public void a(bhzp parambhzp)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      this.jdField_a_of_type_JavaUtilList.add(parambgzj);
+      this.jdField_a_of_type_JavaUtilList.add(parambhzp);
       return;
     }
   }
@@ -3380,13 +3444,13 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1.4680");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5.4745");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
       JSONObject localJSONObject1 = new JSONObject();
       JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("qq_version", "8.4.1.4680");
+      localJSONObject2.put("qq_version", "8.4.5.4745");
       Field[] arrayOfField = paramReportChannlInfo.getClass().getDeclaredFields();
       int j = arrayOfField.length;
       int i = 0;
@@ -3399,7 +3463,7 @@ public class VasExtensionHandler
       localJSONObject1.put("req", localJSONObject2);
       ((JSONObject)localObject).put("12886", localJSONObject1);
       localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      paramReportChannlInfo = new NewIntent(this.app.getApp(), bgzn.class);
+      paramReportChannlInfo = new NewIntent(this.app.getApp(), bhzt.class);
       paramReportChannlInfo.putExtra("cmd", "QQVacCommSvc.report_channel");
       paramReportChannlInfo.putExtra("data", localUniSsoServerReq.toByteArray());
       this.app.startServlet(paramReportChannlInfo);
@@ -3423,7 +3487,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -3441,7 +3505,7 @@ public class VasExtensionHandler
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "[doSaveGameList] " + ((JSONObject)localObject).toString());
       }
-      paramArrayOfInt = new NewIntent(paramQQAppInterface.getApp(), bgzn.class);
+      paramArrayOfInt = new NewIntent(paramQQAppInterface.getApp(), bhzt.class);
       paramArrayOfInt.putExtra("cmd", "apollo_aio_game.save_user_gamepanel_gamelist");
       paramArrayOfInt.putExtra("data", localUniSsoServerReq.toByteArray());
       paramQQAppInterface.startServlet(paramArrayOfInt);
@@ -3471,7 +3535,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1.4680");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5.4745");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -3483,7 +3547,7 @@ public class VasExtensionHandler
       localJSONObject1.put("req", localJSONObject2);
       ((JSONObject)localObject).put("12825", localJSONObject1);
       localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      paramString = new NewIntent(this.app.getApp(), bgzn.class);
+      paramString = new NewIntent(this.app.getApp(), bhzt.class);
       paramString.putExtra("cmd", "QQVacCommSvc.get_friends");
       paramString.putExtra("data", localUniSsoServerReq.toByteArray());
       this.app.startServlet(paramString);
@@ -3505,7 +3569,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       JSONObject localJSONObject = new JSONObject();
@@ -3528,7 +3592,7 @@ public class VasExtensionHandler
       }
       localJSONObject.put("Cookie", paramString);
       localUniSsoServerReq.reqdata.set(localJSONObject.toString());
-      paramString = new NewIntent(this.app.getApp(), bgzn.class);
+      paramString = new NewIntent(this.app.getApp(), bhzt.class);
       paramString.putExtra("cmd", "apollo_currency.buy_item_by_curre");
       paramString.putExtra("data", localUniSsoServerReq.toByteArray());
       paramString.putExtra("id", paramInt1);
@@ -3561,7 +3625,7 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         JSONObject localJSONObject = new JSONObject();
@@ -3581,7 +3645,7 @@ public class VasExtensionHandler
         }
         localJSONObject.put("Cookie", paramString2);
         localUniSsoServerReq.reqdata.set(localJSONObject.toString());
-        paramString2 = new NewIntent(this.app.getApp(), bgzn.class);
+        paramString2 = new NewIntent(this.app.getApp(), bhzt.class);
         paramString2.putExtra("cmd", "apollo_core.get_user_info");
         paramString2.putExtra("data", localUniSsoServerReq.toByteArray());
         paramString2.putExtra("touin", paramString1);
@@ -3606,9 +3670,9 @@ public class VasExtensionHandler
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "handleNamePlateOfKingInfo : uin = " + paramString + ", gameId = " + paramLong1 + ", gameLoginTime = " + paramLong2 + ", dan = " + paramInt1 + ", dansSwitch = " + paramInt2);
     }
-    Object localObject = (anmw)this.app.getManager(51);
-    Card localCard = ((anmw)localObject).b(paramString);
-    localObject = ((anmw)localObject).e(paramString);
+    Object localObject = (anyw)this.app.getManager(51);
+    Card localCard = ((anyw)localObject).b(paramString);
+    localObject = ((anyw)localObject).e(paramString);
     if ((!TextUtils.isEmpty(paramString)) && (this.app.c().equals(paramString)))
     {
       SharedPreferences.Editor localEditor = this.app.getApp().getSharedPreferences("sp_plate_of_king", 0).edit();
@@ -3663,7 +3727,7 @@ public class VasExtensionHandler
       localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1.4680");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5.4745");
       localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -3692,12 +3756,12 @@ public class VasExtensionHandler
     for (int i = 0;; i = 1)
     {
       localJSONObject2.put("get_top_card", i);
-      localJSONObject2.put("qq_version", "8.4.1");
+      localJSONObject2.put("qq_version", "8.4.5");
       localJSONObject2.put("skey", ((TicketManager)this.app.getManager(2)).getSkey(this.app.getCurrentAccountUin()));
       localJSONObject1.put("req", localJSONObject2);
       ((JSONObject)localObject).put("12787", localJSONObject1);
       localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      paramList = new NewIntent(this.app.getApp(), bgzn.class);
+      paramList = new NewIntent(this.app.getApp(), bhzt.class);
       paramList.putExtra("cmd", "QQVacCommSvc.get_feeds");
       paramList.putExtra("data", localUniSsoServerReq.toByteArray());
       paramList.putExtra("msgId", paramString1);
@@ -3717,7 +3781,7 @@ public class VasExtensionHandler
     {
       l = paramIntent.getLongExtra("usrdata", 0L);
       if ((paramArrayOfByte == null) || (!paramFromServiceMsg.isSuccess())) {
-        bjsj.a().a(l, false, null);
+        bktj.a().a(l, false, null);
       }
     }
     for (;;)
@@ -3730,7 +3794,7 @@ public class VasExtensionHandler
         paramString.mergeFrom(paramArrayOfByte);
         paramIntent.mergeFrom(paramString.pbRsqData.get().toByteArray());
         paramString = ((qqavopensdkSsoTunnel.RspBody)((qqavopensdkSsoTunnel.STAudioVideoRsp)paramIntent.get()).rspbody.get()).bytes_rspbody.get().toByteArray();
-        bjsj.a().a(l, true, paramString);
+        bktj.a().a(l, true, paramString);
         return;
       }
       catch (Exception paramString)
@@ -3743,7 +3807,7 @@ public class VasExtensionHandler
         l = paramIntent.getLongExtra("usrdata", 0L);
         if ((paramArrayOfByte == null) || (!paramFromServiceMsg.isSuccess()))
         {
-          bjsj.a().a(l, false, null);
+          bktj.a().a(l, false, null);
           return;
         }
         paramString = new WebSSOAgent.UniSsoServerRsp();
@@ -3753,7 +3817,7 @@ public class VasExtensionHandler
           paramString.mergeFrom(paramArrayOfByte);
           paramIntent.mergeFrom(paramString.pbRsqData.get().toByteArray());
           paramString = ((qqavopensdkSsoTunnel.STAVCtrlParamRsp)paramIntent.get()).ctrlParam.get().toByteArray();
-          bjsj.a().a(l, true, paramString);
+          bktj.a().a(l, true, paramString);
           return;
         }
         catch (Exception paramString)
@@ -3804,19 +3868,19 @@ public class VasExtensionHandler
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        bgzj localbgzj = (bgzj)localIterator.next();
-        if (localbgzj.b(paramString, paramApolloBaseInfo)) {
-          localArrayList.add(localbgzj);
+        bhzp localbhzp = (bhzp)localIterator.next();
+        if (localbhzp.b(paramString, paramApolloBaseInfo)) {
+          localArrayList.add(localbhzp);
         }
       }
     }
     this.jdField_a_of_type_JavaUtilList.removeAll(localArrayList);
   }
   
-  public void a(String paramString, MessageMicro paramMessageMicro, Class paramClass, anil paramanil)
+  public void a(String paramString, MessageMicro paramMessageMicro, Class paramClass, anui paramanui)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApp(), bgzn.class);
+    NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApp(), bhzt.class);
     Object localObject = new StringBuilder().append(paramString).append("_");
     long l = jdField_b_of_type_Long + 1L;
     jdField_b_of_type_Long = l;
@@ -3826,7 +3890,7 @@ public class VasExtensionHandler
     localNewIntent.putExtra("timeout", 30000);
     localNewIntent.putExtra("__cmd_seq__", (String)localObject);
     localNewIntent.putExtra("__rspClass__", paramClass);
-    this.jdField_a_of_type_JavaUtilHashMap.put(localObject, paramanil);
+    this.jdField_a_of_type_JavaUtilHashMap.put(localObject, paramanui);
     localQQAppInterface.startServlet(localNewIntent);
   }
   
@@ -3842,7 +3906,7 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
@@ -3854,7 +3918,7 @@ public class VasExtensionHandler
         ((JSONObject)localObject).put("from", paramString2);
         ((JSONObject)localObject).put("touin", Long.parseLong(paramString1));
         localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-        paramString1 = new NewIntent(this.app.getApp(), bgzn.class);
+        paramString1 = new NewIntent(this.app.getApp(), bhzt.class);
         paramString1.putExtra("cmd", "apollo_extend.zan");
         paramString1.putExtra("data", localUniSsoServerReq.toByteArray());
         this.app.startServlet(paramString1);
@@ -3879,7 +3943,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1.4680");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5.4745");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -3893,7 +3957,7 @@ public class VasExtensionHandler
       localJSONObject1.put("req", localJSONObject2);
       ((JSONObject)localObject).put("13077", localJSONObject1);
       localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      paramString2 = new NewIntent(this.app.getApp(), bgzn.class);
+      paramString2 = new NewIntent(this.app.getApp(), bhzt.class);
       paramString2.putExtra("cmd", "GameCenterWebSvc.13077");
       paramString2.putExtra("data", localUniSsoServerReq.toByteArray());
       paramString2.putExtra("appid", paramString1);
@@ -3913,7 +3977,7 @@ public class VasExtensionHandler
       Object localObject2 = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.4.1");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.4.5");
       Object localObject1 = new WebSSOAgent.UniSsoServerReq();
       ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
       if ((paramString1 == null) && (paramString2 == null))
@@ -3934,7 +3998,7 @@ public class VasExtensionHandler
       localSTServiceMonitItem.src.set(1);
       ((WebSsoBody.STServiceMonitReq)localObject2).list.add(localSTServiceMonitItem);
       ((WebSSOAgent.UniSsoServerReq)localObject1).pbReqData.set(ByteStringMicro.copyFrom(((WebSsoBody.STServiceMonitReq)localObject2).toByteArray()));
-      localObject2 = new NewIntent(this.app.getApp(), bgzn.class);
+      localObject2 = new NewIntent(this.app.getApp(), bhzt.class);
       ((NewIntent)localObject2).putExtra("cmd", "apollo_dc_report.service_monit");
       ((NewIntent)localObject2).putExtra("data", ((WebSSOAgent.UniSsoServerReq)localObject1).toByteArray());
       this.app.startServlet((NewIntent)localObject2);
@@ -3969,7 +4033,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1.4680");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5.4745");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       if ("apollo_aio_game.report_user_track".equals(paramString1))
@@ -3986,7 +4050,7 @@ public class VasExtensionHandler
       }
       for (;;)
       {
-        localObject = new NewIntent(this.app.getApp(), bgzn.class);
+        localObject = new NewIntent(this.app.getApp(), bhzt.class);
         ((NewIntent)localObject).putExtra("usrdata", paramLong);
         ((NewIntent)localObject).putExtra("cmd", paramString1);
         ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
@@ -4007,11 +4071,11 @@ public class VasExtensionHandler
     }
   }
   
-  public void a(String paramString1, String paramString2, anil paramanil)
+  public void a(String paramString1, String paramString2, anui paramanui)
   {
     try
     {
-      a(paramString1, paramString2.getBytes("ISO8859_1"), paramanil);
+      a(paramString1, paramString2.getBytes("ISO8859_1"), paramanui);
       return;
     }
     catch (UnsupportedEncodingException paramString1)
@@ -4030,11 +4094,11 @@ public class VasExtensionHandler
       WebSSOAgent.UniSsoServerReqComm localUniSsoServerReqComm = new WebSSOAgent.UniSsoServerReqComm();
       localUniSsoServerReqComm.platform.set(109L);
       localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
-      localUniSsoServerReqComm.mqqver.set("8.4.1.4680");
+      localUniSsoServerReqComm.mqqver.set("8.4.5.4745");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
       localUniSsoServerReq.reqdata.set(paramString2);
-      paramString2 = new NewIntent(this.app.getApp(), bgzn.class);
+      paramString2 = new NewIntent(this.app.getApp(), bhzt.class);
       paramString2.putExtra("usrdata", paramString3);
       paramString2.putExtra("cmd", paramString1);
       paramString2.putExtra("data", localUniSsoServerReq.toByteArray());
@@ -4048,7 +4112,7 @@ public class VasExtensionHandler
     }
   }
   
-  public void a(String paramString, ArrayList<bhvd> paramArrayList)
+  public void a(String paramString, ArrayList<biwb> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
@@ -4069,22 +4133,22 @@ public class VasExtensionHandler
     Iterator localIterator = paramArrayList.iterator();
     if (localIterator.hasNext())
     {
-      bhvd localbhvd = (bhvd)localIterator.next();
+      biwb localbiwb = (biwb)localIterator.next();
       Oidb_0x8fc.RichCardNameElem localRichCardNameElem = new Oidb_0x8fc.RichCardNameElem();
-      switch (localbhvd.c)
+      switch (localbiwb.c)
       {
       }
       for (;;)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("ColorNick", 2, "modifyTroopMemberCardInfoWithColorNick type = " + localbhvd.c + " text = " + localbhvd.jdField_a_of_type_JavaLangString);
+          QLog.d("ColorNick", 2, "modifyTroopMemberCardInfoWithColorNick type = " + localbiwb.c + " text = " + localbiwb.jdField_a_of_type_JavaLangString);
         }
         localArrayList2.add(localRichCardNameElem);
         break;
-        localRichCardNameElem.bytes_text.set(ByteStringMicro.copyFrom(localbhvd.jdField_a_of_type_JavaLangString.getBytes()));
-        localStringBuilder.append(localbhvd.jdField_a_of_type_JavaLangString);
+        localRichCardNameElem.bytes_text.set(ByteStringMicro.copyFrom(localbiwb.jdField_a_of_type_JavaLangString.getBytes()));
+        localStringBuilder.append(localbiwb.jdField_a_of_type_JavaLangString);
         continue;
-        paramArrayList = localbhvd.jdField_a_of_type_JavaLangString;
+        paramArrayList = localbiwb.jdField_a_of_type_JavaLangString;
         paramString = paramArrayList;
         if (paramArrayList.substring(0, 1).equals("<")) {
           paramString = paramArrayList.substring(1);
@@ -4104,13 +4168,13 @@ public class VasExtensionHandler
     localReqBody.rpt_mem_level_info.set(localArrayList1);
     paramString = new Oidb_0x8fc.ClientInfo();
     paramString.uint32_implat.set(109);
-    paramString.string_clientver.set(bgln.c());
+    paramString.string_clientver.set(bhlo.c());
     localReqBody.msg_client_info.set(paramString);
     paramString = new oidb_sso.OIDBSSOPkg();
     paramString.uint32_command.set(2300);
     paramString.uint32_service_type.set(3);
     paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-    paramArrayList = new NewIntent(this.app.getApp(), bgzn.class);
+    paramArrayList = new NewIntent(this.app.getApp(), bhzt.class);
     paramArrayList.putExtra("cmd", "OidbSvc.0x8fc_3");
     paramArrayList.putExtra("data", paramString.toByteArray());
     this.app.startServlet(paramArrayList);
@@ -4132,7 +4196,7 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
@@ -4148,7 +4212,7 @@ public class VasExtensionHandler
         if (QLog.isColorLevel()) {
           QLog.i(jdField_a_of_type_JavaLangString, 2, "requestGameRank request:" + localObject);
         }
-        paramString1 = new NewIntent(this.app.getApp(), bgzn.class);
+        paramString1 = new NewIntent(this.app.getApp(), bhzt.class);
         paramString1.putExtra("cmd", "apollo_router_game.game_relation_linkcmd_get_rank_chg");
         paramString1.putExtra("data", localUniSsoServerReq.toByteArray());
         this.app.startServlet(paramString1);
@@ -4186,10 +4250,10 @@ public class VasExtensionHandler
     }
   }
   
-  public void a(String paramString, byte[] paramArrayOfByte, anil paramanil)
+  public void a(String paramString, byte[] paramArrayOfByte, anui paramanui)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApp(), bgzn.class);
+    NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApp(), bhzt.class);
     Object localObject = new StringBuilder().append(paramString).append("_");
     long l = jdField_b_of_type_Long + 1L;
     jdField_b_of_type_Long = l;
@@ -4198,7 +4262,7 @@ public class VasExtensionHandler
     localNewIntent.putExtra("data", paramArrayOfByte);
     localNewIntent.putExtra("timeout", 30000L);
     localNewIntent.putExtra("__cmd_seq__", (String)localObject);
-    this.jdField_a_of_type_JavaUtilHashMap.put(localObject, paramanil);
+    this.jdField_a_of_type_JavaUtilHashMap.put(localObject, paramanui);
     localQQAppInterface.startServlet(localNewIntent);
   }
   
@@ -4248,7 +4312,7 @@ public class VasExtensionHandler
       localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1.4680");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5.4745");
       localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -4269,7 +4333,7 @@ public class VasExtensionHandler
     localJSONObject1.put("req", localJSONObject2);
     ((JSONObject)localObject).put("12815", localJSONObject1);
     localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-    paramList = new NewIntent(this.app.getApp(), bgzn.class);
+    paramList = new NewIntent(this.app.getApp(), bhzt.class);
     paramList.putExtra("cmd", "QQVacCommSvc.dislike");
     paramList.putExtra("data", localUniSsoServerReq.toByteArray());
     this.app.startServlet(paramList);
@@ -4289,21 +4353,21 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new STGameLogin.STGetGameConfReq();
         ((STGameLogin.STGetGameConfReq)localObject).game_id_list.set(paramList);
         ((STGameLogin.STGetGameConfReq)localObject).from.set("android");
         localUniSsoServerReq.pbReqData.set(ByteStringMicro.copyFrom(((STGameLogin.STGetGameConfReq)localObject).toByteArray()));
-        boolean bool = ((amhd)this.app.getManager(153)).c(this.app.c());
+        boolean bool = ((amsx)this.app.getManager(153)).c(this.app.c());
         if (bool)
         {
           paramList = "apollo_aio_game.get_game_conf_info";
           if (QLog.isColorLevel()) {
             QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "getGameConfigListReq isGameWhiteUser:", Boolean.valueOf(bool) });
           }
-          localObject = new NewIntent(this.app.getApp(), bgzn.class);
+          localObject = new NewIntent(this.app.getApp(), bhzt.class);
           ((NewIntent)localObject).putExtra("extras", paramBundle);
           ((NewIntent)localObject).putExtra("cmd", paramList);
           ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
@@ -4334,7 +4398,7 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
@@ -4349,7 +4413,7 @@ public class VasExtensionHandler
         }
         ((JSONObject)localObject).put("touins", localJSONArray);
         localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-        paramVarArgs = new NewIntent(this.app.getApp(), bgzn.class);
+        paramVarArgs = new NewIntent(this.app.getApp(), bhzt.class);
         paramVarArgs.putExtra("cmd", "apollo_terminal_info.get_user_appear_info");
         paramVarArgs.putExtra("data", localUniSsoServerReq.toByteArray());
         this.app.startServlet(paramVarArgs);
@@ -4395,7 +4459,7 @@ public class VasExtensionHandler
     localOIDBSSOPkg.uint32_command.set(1515);
     localOIDBSSOPkg.uint32_service_type.set(15);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x5eb.ReqBody)localObject).toByteArray()));
-    localObject = new NewIntent(this.app.getApp(), bgzn.class);
+    localObject = new NewIntent(this.app.getApp(), bhzt.class);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0x5eb_15");
     ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
     ((NewIntent)localObject).putExtra("uins", paramArrayOfString);
@@ -4506,6 +4570,8 @@ public class VasExtensionHandler
         continue;
         ((oidb_0x5eb.ReqBody)localObject1).uint32_req_listen_together_player_id.set(1);
         bool2 = true;
+        continue;
+        ((oidb_0x5eb.ReqBody)localObject1).uint32_c2c_aio_shortcut_switch.set(1);
       }
     }
     QLog.d(jdField_a_of_type_JavaLangString, 2, "batchGetStrangerVasInfo, uins: " + Arrays.toString(paramArrayOfString) + " fields: " + Arrays.toString(paramArrayOfInt));
@@ -4513,7 +4579,7 @@ public class VasExtensionHandler
     paramArrayOfInt.uint32_command.set(1515);
     paramArrayOfInt.uint32_service_type.set(paramInt);
     paramArrayOfInt.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x5eb.ReqBody)localObject1).toByteArray()));
-    localObject1 = new NewIntent(this.app.getApp(), bgzn.class);
+    localObject1 = new NewIntent(this.app.getApp(), bhzt.class);
     ((NewIntent)localObject1).putExtra("cmd", "OidbSvc.0x5eb_99");
     ((NewIntent)localObject1).putExtra("data", paramArrayOfInt.toByteArray());
     ((NewIntent)localObject1).putExtra("req_roam_type", bool1);
@@ -4524,7 +4590,7 @@ public class VasExtensionHandler
   
   public boolean a(int paramInt)
   {
-    Object localObject = oda.a();
+    Object localObject = oek.a();
     if (localObject != null) {
       this.jdField_a_of_type_Long = ((SharedPreferences)localObject).getLong("last_jd_req", 0L);
     }
@@ -4537,7 +4603,7 @@ public class VasExtensionHandler
     }
     localObject = new qqshop_act.SQQSHPActReadReq();
     ((qqshop_act.SQQSHPActReadReq)localObject).act_id.set(paramInt);
-    NewIntent localNewIntent = new NewIntent(this.app.getApp(), bgzn.class);
+    NewIntent localNewIntent = new NewIntent(this.app.getApp(), bhzt.class);
     localNewIntent.putExtra("cmd", "SQQShopActRead.GetActStatus");
     localNewIntent.putExtra("data", ((qqshop_act.SQQSHPActReadReq)localObject).toByteArray());
     localNewIntent.putExtra("timeout", 3000L);
@@ -4554,9 +4620,9 @@ public class VasExtensionHandler
     {
       SCUpdatePB.SCUpdateReq localSCUpdateReq = new SCUpdatePB.SCUpdateReq();
       localSCUpdateReq.comm.plat.set(109);
-      localSCUpdateReq.comm.qver.set(ByteStringMicro.copyFrom("8.4.1.4680".getBytes()));
+      localSCUpdateReq.comm.qver.set(ByteStringMicro.copyFrom("8.4.5.4745".getBytes()));
       localSCUpdateReq.comm.osrelease.set(ByteStringMicro.copyFrom(String.valueOf(Build.VERSION.SDK_INT).getBytes()));
-      localSCUpdateReq.comm.network.set(bgnt.b(this.app.getApplication()));
+      localSCUpdateReq.comm.network.set(bhnv.b(this.app.getApplication()));
       localSCUpdateReq.comm.setHasFlag(true);
       paramString2 = new JSONObject(paramString2);
       if (paramString2.has("cookie")) {
@@ -4624,7 +4690,7 @@ public class VasExtensionHandler
         for (;;)
         {
           localSCUpdateReq.setHasFlag(true);
-          paramString1 = new NewIntent(this.app.getApp(), bgzn.class);
+          paramString1 = new NewIntent(this.app.getApp(), bhzt.class);
           paramString1.putExtra("cmd", "scupdate.handle");
           paramString1.putExtra("data", localSCUpdateReq.toByteArray());
           this.app.startServlet(paramString1);
@@ -4677,7 +4743,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -4687,7 +4753,7 @@ public class VasExtensionHandler
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "[getApolloGameDevList] " + ((JSONObject)localObject).toString());
       }
-      localObject = new NewIntent(this.app.getApp(), bgzn.class);
+      localObject = new NewIntent(this.app.getApp(), bhzt.class);
       ((NewIntent)localObject).putExtra("cmd", "apollo_aio_game.get_user_dev_gamelist");
       ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
       this.app.startServlet((NewIntent)localObject);
@@ -4710,7 +4776,7 @@ public class VasExtensionHandler
     {
       return;
       str = "cmshowar_message_plat.get_msg";
-      if (amhd.a(this.app, this.app.c()) != 2) {
+      if (amsx.a(this.app, this.app.c()) != 2) {
         str = "apollo_interact.get_msg";
       }
       l = NetConnInfoCenter.getServerTime();
@@ -4732,7 +4798,7 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new STExploreInfo.STGetMsgReq();
@@ -4742,7 +4808,7 @@ public class VasExtensionHandler
         localSTEntryIdInfo.entry_id.set(paramInt);
         ((STExploreInfo.STGetMsgReq)localObject).eid_list.add(localSTEntryIdInfo);
         localUniSsoServerReq.pbReqData.set(ByteStringMicro.copyFrom(((STExploreInfo.STGetMsgReq)localObject).toByteArray()));
-        localObject = new NewIntent(this.app.getApp(), bgzn.class);
+        localObject = new NewIntent(this.app.getApp(), bhzt.class);
         ((NewIntent)localObject).putExtra("cmd", str);
         ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
         this.app.startServlet((NewIntent)localObject);
@@ -4823,28 +4889,37 @@ public class VasExtensionHandler
   
   public void b(String paramString, int paramInt)
   {
-    Object localObject = this.app.getCurrentAccountUin();
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(paramString))) {
+    try
+    {
+      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
+      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
+      localUniSsoServerReq.comm.set((MessageMicro)localObject);
+      if (TextUtils.isEmpty(paramString)) {}
+      for (paramString = "android";; paramString = "android." + paramString)
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("cmd", "apollo_core.set_model");
+        ((JSONObject)localObject).put("from", paramString);
+        ((JSONObject)localObject).put("model", paramInt);
+        localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
+        paramString = new NewIntent(this.app.getApp(), bhzt.class);
+        paramString.putExtra("cmd", "apollo_core.set_model");
+        paramString.putExtra("data", localUniSsoServerReq.toByteArray());
+        paramString.putExtra("model", paramInt);
+        this.app.startServlet(paramString);
+        return;
+      }
       return;
     }
-    paramString = "special_care_tip_show_" + (String)localObject + "_" + paramString;
-    localObject = this.app.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
-    ((SharedPreferences.Editor)localObject).putInt(paramString, paramInt);
-    ((SharedPreferences.Editor)localObject).commit();
-  }
-  
-  public void b(String paramString1, int paramInt, String paramString2)
-  {
-    String str = this.app.getCurrentAccountUin();
-    if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramString1))) {
-      return;
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, paramString.getMessage());
+      }
     }
-    SharedPreferences.Editor localEditor = this.app.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
-    localEditor.putInt("hot_friend_new_boat_graytip_sp" + str + "_" + paramString1, paramInt);
-    if (!TextUtils.isEmpty(paramString2)) {
-      localEditor.putString("hot_friend_new_boat_graytip_sp" + str + "_" + paramString1 + "_tips", paramString2);
-    }
-    localEditor.commit();
   }
   
   public void b(String paramString1, String paramString2)
@@ -4859,7 +4934,7 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
@@ -4873,7 +4948,7 @@ public class VasExtensionHandler
         paramString2.put(Long.parseLong(paramString1));
         ((JSONObject)localObject).put("uins", paramString2);
         localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-        paramString2 = new NewIntent(this.app.getApp(), bgzn.class);
+        paramString2 = new NewIntent(this.app.getApp(), bhzt.class);
         paramString2.putExtra("cmd", "apollo_motto.get_user_motto");
         paramString2.putExtra("data", localUniSsoServerReq.toByteArray());
         this.app.startServlet(paramString2);
@@ -4906,7 +4981,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -4914,7 +4989,7 @@ public class VasExtensionHandler
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "[getUsedAppList] " + ((JSONObject)localObject).toString());
       }
-      localObject = new NewIntent(this.app.getApp(), bgzn.class);
+      localObject = new NewIntent(this.app.getApp(), bhzt.class);
       ((NewIntent)localObject).putExtra("cmd", "apollo_router_game.apl_plus_d_linkcmd_get");
       ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
       this.app.startServlet((NewIntent)localObject);
@@ -4934,7 +5009,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1.4680");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5.4745");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -4943,11 +5018,11 @@ public class VasExtensionHandler
       localJSONObject2.put("uin", Long.parseLong(this.app.getCurrentAccountUin()));
       localJSONObject2.put("id", paramInt);
       localJSONObject2.put("qq_plat", 1);
-      localJSONObject2.put("qq_version", "8.4.1.4680");
+      localJSONObject2.put("qq_version", "8.4.5.4745");
       localJSONObject1.put("req", localJSONObject2);
       ((JSONObject)localObject).put("12827", localJSONObject1);
       localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      localObject = new NewIntent(this.app.getApp(), bgzn.class);
+      localObject = new NewIntent(this.app.getApp(), bhzt.class);
       ((NewIntent)localObject).putExtra("cmd", "QQVacCommSvc.report_padface_shown");
       ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
       this.app.startServlet((NewIntent)localObject);
@@ -5040,46 +5115,11 @@ public class VasExtensionHandler
       str = "";
     }
     localPBStringField.set(str);
-    paramString = new NewIntent(this.app.getApp(), bgzn.class);
+    paramString = new NewIntent(this.app.getApp(), bhzt.class);
     paramString.putExtra("cmd", "SQQShopAuthCodeSvc.AuthCode");
     paramString.putExtra("data", localSReq.toByteArray());
     paramString.putExtra("timeout", 3000L);
     this.app.startServlet(paramString);
-  }
-  
-  public void c(String paramString, int paramInt)
-  {
-    try
-    {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      if (TextUtils.isEmpty(paramString)) {}
-      for (paramString = "android";; paramString = "android." + paramString)
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("cmd", "apollo_core.set_model");
-        ((JSONObject)localObject).put("from", paramString);
-        ((JSONObject)localObject).put("model", paramInt);
-        localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-        paramString = new NewIntent(this.app.getApp(), bgzn.class);
-        paramString.putExtra("cmd", "apollo_core.set_model");
-        paramString.putExtra("data", localUniSsoServerReq.toByteArray());
-        paramString.putExtra("model", paramInt);
-        this.app.startServlet(paramString);
-        return;
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, paramString.getMessage());
-      }
-    }
   }
   
   public void d()
@@ -5094,7 +5134,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -5104,7 +5144,7 @@ public class VasExtensionHandler
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "[requestApolloWhiteList] " + ((JSONObject)localObject).toString());
       }
-      localObject = new NewIntent(this.app.getApp(), bgzn.class);
+      localObject = new NewIntent(this.app.getApp(), bhzt.class);
       ((NewIntent)localObject).putExtra("cmd", "apollo_router_game.apl_sq_wl_linkcmd_get_all");
       ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
       this.app.startServlet((NewIntent)localObject);
@@ -5126,14 +5166,14 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1.4680");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5.4745");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
       ((JSONObject)localObject).put("actId", 1);
       ((JSONObject)localObject).put("sourceId", paramInt);
       localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      localObject = new NewIntent(this.app.getApp(), bgzn.class);
+      localObject = new NewIntent(this.app.getApp(), bhzt.class);
       ((NewIntent)localObject).putExtra("cmd", "cmshowar_activity_template.report_user_source");
       ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
       this.app.startServlet((NewIntent)localObject);
@@ -5163,7 +5203,7 @@ public class VasExtensionHandler
         }
         if (i != 0)
         {
-          paramFromServiceMsg = (amhd)this.app.getManager(153);
+          paramFromServiceMsg = (amsx)this.app.getManager(153);
           paramArrayOfByte = paramFromServiceMsg.b(this.app.c());
           if (paramArrayOfByte != null)
           {
@@ -5213,13 +5253,13 @@ public class VasExtensionHandler
       QLog.e(jdField_a_of_type_JavaLangString, 1, "showIfHadSpecialCareTip have error type " + i);
       return;
     case 1: 
-      localObject1 = this.app.getApp().getString(2131692785);
+      localObject1 = this.app.getApp().getString(2131692793);
     }
     for (;;)
     {
-      paramString = new auxc(paramString, paramString, (String)localObject1, 0, -5020, 2097156, bbyp.a());
+      paramString = new avpd(paramString, paramString, (String)localObject1, 0, -5020, 2097156, bcrg.a());
       localObject2 = new Bundle();
-      String str = anni.a(2131714715);
+      String str = anzj.a(2131714824);
       if (!TextUtils.isEmpty(str))
       {
         ((Bundle)localObject2).putInt("key_action", 21);
@@ -5237,17 +5277,17 @@ public class VasExtensionHandler
       ((MessageForUniteGrayTip)localObject1).hasRead = 0;
       ((MessageForUniteGrayTip)localObject1).subType = 0;
       ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(this.app, paramString);
-      auxd.a(this.app, (MessageForUniteGrayTip)localObject1);
+      avpe.a(this.app, (MessageForUniteGrayTip)localObject1);
       return;
-      localObject1 = this.app.getApp().getString(2131692788);
+      localObject1 = this.app.getApp().getString(2131692796);
       continue;
-      localObject1 = this.app.getApp().getString(2131692787);
+      localObject1 = this.app.getApp().getString(2131692795);
       continue;
-      localObject1 = this.app.getApp().getString(2131692784);
+      localObject1 = this.app.getApp().getString(2131692792);
       continue;
-      localObject1 = this.app.getApp().getString(2131692786);
+      localObject1 = this.app.getApp().getString(2131692794);
       continue;
-      localObject1 = this.app.getApp().getString(2131692783);
+      localObject1 = this.app.getApp().getString(2131692791);
     }
   }
   
@@ -5264,14 +5304,14 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
       CmGameMsgTunnel.AddrDistribueReq localAddrDistribueReq = new CmGameMsgTunnel.AddrDistribueReq();
       localAddrDistribueReq.appid.set(2);
-      localAddrDistribueReq.net_type.set(ampj.d());
+      localAddrDistribueReq.net_type.set(anbd.d());
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localUniSsoServerReq.pbReqData.set(ByteStringMicro.copyFrom(localAddrDistribueReq.toByteArray()));
-      localObject = new NewIntent(this.app.getApp(), bgzn.class);
+      localObject = new NewIntent(this.app.getApp(), bhzt.class);
       ((NewIntent)localObject).putExtra("cmd", "ltgame_addr_distribute.get_iplist");
       ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
       ((NewIntent)localObject).putExtra("timeout", 15000L);
@@ -5354,11 +5394,11 @@ public class VasExtensionHandler
       }
       for (;;)
       {
-        paramString = new auxc(paramString, paramString, (String)localObject1, 0, -5020, 2097156, bbyp.a());
+        paramString = new avpd(paramString, paramString, (String)localObject1, 0, -5020, 2097156, bcrg.a());
         if (!TextUtils.isEmpty(str1))
         {
-          str1 = awzn.a(this.app, 12L, 1L);
-          str2 = awzn.a(this.app, 12L, 2L);
+          str1 = axsg.a(this.app, 12L, 1L);
+          str2 = axsg.a(this.app, 12L, 2L);
           i = ((String)localObject1).lastIndexOf(str1);
           int j = ((String)localObject1).lastIndexOf(str2);
           localObject1 = new Bundle();
@@ -5384,7 +5424,7 @@ public class VasExtensionHandler
         ((MessageForUniteGrayTip)localObject1).hasRead = 0;
         ((MessageForUniteGrayTip)localObject1).subType = 0;
         ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(this.app, paramString);
-        auxd.a(this.app, (MessageForUniteGrayTip)localObject1);
+        avpe.a(this.app, (MessageForUniteGrayTip)localObject1);
         return;
       }
     }
@@ -5468,7 +5508,7 @@ public class VasExtensionHandler
     paramString.cmd.set(1);
     DiyEmotionPb.Filter_Req_Comm localFilter_Req_Comm = new DiyEmotionPb.Filter_Req_Comm();
     localFilter_Req_Comm.platform.set(1L);
-    localFilter_Req_Comm.mqqver.set("8.4.1");
+    localFilter_Req_Comm.mqqver.set("8.4.5");
     localFilter_Req_Comm.osver.set(Build.VERSION.RELEASE);
     DiyEmotionPb.Filter_Text_Req localFilter_Text_Req = new DiyEmotionPb.Filter_Text_Req();
     ArrayList localArrayList = new ArrayList();
@@ -5478,7 +5518,7 @@ public class VasExtensionHandler
     paramString.reqcmd_0x01.set(localFilter_Text_Req);
     if (this.app != null)
     {
-      localObject = new NewIntent(this.app.getApp(), bgzn.class);
+      localObject = new NewIntent(this.app.getApp(), bhzt.class);
       ((NewIntent)localObject).putExtra("cmd", "gxzbpublic.filter");
       ((NewIntent)localObject).putExtra("data", paramString.toByteArray());
       ((NewIntent)localObject).putExtra("timeout", 30000L);
@@ -5528,7 +5568,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.1.4680");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5.4745");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -5536,11 +5576,11 @@ public class VasExtensionHandler
       JSONObject localJSONObject2 = new JSONObject();
       localJSONObject2.put("game_appid", paramString);
       localJSONObject2.put("qq_plat", 1);
-      localJSONObject2.put("qq_version", "8.4.1.4680");
+      localJSONObject2.put("qq_version", "8.4.5.4745");
       localJSONObject1.put("req", localJSONObject2);
       ((JSONObject)localObject).put("12855", localJSONObject1);
       localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      paramString = new NewIntent(this.app.getApp(), bgzn.class);
+      paramString = new NewIntent(this.app.getApp(), bhzt.class);
       paramString.putExtra("cmd", "QQVacCommSvc.get_game_register_info");
       paramString.putExtra("data", localUniSsoServerReq.toByteArray());
       this.app.startServlet(paramString);
@@ -5656,7 +5696,7 @@ public class VasExtensionHandler
           paramFromServiceMsg = new JSONObject(paramIntent.rspdata.get()).optJSONArray("data").optJSONObject(0);
           paramIntent = paramFromServiceMsg.optString("motto_content");
           paramFromServiceMsg = paramFromServiceMsg.optLong("uin") + "";
-          paramArrayOfByte = (amhd)this.app.getManager(153);
+          paramArrayOfByte = (amsx)this.app.getManager(153);
           if (paramArrayOfByte != null)
           {
             ApolloBaseInfo localApolloBaseInfo = paramArrayOfByte.b(paramFromServiceMsg);
@@ -5725,7 +5765,7 @@ public class VasExtensionHandler
   
   void k(Intent paramIntent, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
   {
-    paramIntent = oda.a();
+    paramIntent = oek.a();
     if ((paramArrayOfByte != null) && (paramFromServiceMsg.isSuccess()))
     {
       paramFromServiceMsg = new qqshop_act.SQQSHPActReadRsp();
@@ -5815,7 +5855,7 @@ public class VasExtensionHandler
         paramArrayOfByte = new apollo_game_status.STGameStateMsgList();
         paramArrayOfByte.mergeFrom(paramFromServiceMsg.pbRsqData.get().toByteArray());
         paramIntent = paramIntent.getStringExtra("usrdata");
-        ((amgz)this.app.getManager(211)).a((int)paramFromServiceMsg.ret.get(), paramArrayOfByte.rpt_msg_list.get(), paramIntent);
+        ((amst)this.app.getManager(211)).a((int)paramFromServiceMsg.ret.get(), paramArrayOfByte.rpt_msg_list.get(), paramIntent);
         return;
       }
       QLog.e(jdField_a_of_type_JavaLangString, 1, "handleGameStatusResp resp data is err.");
@@ -5883,10 +5923,10 @@ public class VasExtensionHandler
           long l = paramIntent.getLongExtra("usrdata", 0L);
           paramArrayOfByte = paramIntent.getStringExtra("cmd");
           int i = paramIntent.getIntExtra("callFrom", 0);
-          localObject = (amgz)this.app.getManager(211);
+          localObject = (amst)this.app.getManager(211);
           if (("apollo_aio_game.add_games_to_user_gamepanel".equals(paramArrayOfByte)) || ("apollo_aio_game.del_games_from_user_gamepanel".equals(paramArrayOfByte)))
           {
-            ((amgz)localObject).a(localUniSsoServerRsp.ret.get(), paramArrayOfByte, paramFromServiceMsg, paramIntent.getStringExtra("reqData"));
+            ((amst)localObject).a(localUniSsoServerRsp.ret.get(), paramArrayOfByte, paramFromServiceMsg, paramIntent.getStringExtra("reqData"));
             if (!QLog.isColorLevel()) {
               return;
             }
@@ -5910,9 +5950,9 @@ public class VasExtensionHandler
         label312:
         if ("apollo_terminal_info.get_user_slaves_v2".equals(paramArrayOfByte))
         {
-          localObject = ((amhd)this.app.getManager(153)).a();
+          localObject = ((amsx)this.app.getManager(153)).a();
           if (localObject != null) {
-            ((amhw)localObject).a(localUniSsoServerRsp.ret.get(), paramFromServiceMsg, paramIntent.getStringExtra("reqData"));
+            ((amtq)localObject).a(localUniSsoServerRsp.ret.get(), paramFromServiceMsg, paramIntent.getStringExtra("reqData"));
           }
         }
       }
@@ -5925,9 +5965,9 @@ public class VasExtensionHandler
     }
   }
   
-  public Class<? extends anil> observerClass()
+  public Class<? extends anui> observerClass()
   {
-    return bgzm.class;
+    return bhzs.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
@@ -6050,14 +6090,13 @@ public class VasExtensionHandler
     for (;;)
     {
       ArrayList localArrayList1;
-      amhd localamhd;
+      amsx localamsx;
       ArrayList localArrayList2;
-      int j;
+      int i;
       JSONArray localJSONArray;
       JSONObject localJSONObject;
-      int k;
-      int i;
-      int m;
+      int j;
+      boolean bool;
       try
       {
         paramIntent = new WebSSOAgent.UniSsoServerRsp();
@@ -6069,65 +6108,43 @@ public class VasExtensionHandler
         if (QLog.isColorLevel()) {
           QLog.i(jdField_a_of_type_JavaLangString, 2, "handleApolloStandAction response:" + paramArrayOfByte);
         }
-        paramIntent = amhd.a();
+        paramIntent = amsx.a();
         paramFromServiceMsg = paramIntent.edit();
         paramArrayOfByte = new JSONObject(paramArrayOfByte).getJSONArray("data");
-        int i1 = paramArrayOfByte.length();
+        int m = paramArrayOfByte.length();
         localArrayList1 = new ArrayList();
-        localamhd = (amhd)this.app.getManager(153);
+        localamsx = (amsx)this.app.getManager(153);
         localArrayList2 = new ArrayList();
-        j = 0;
-        if (j >= i1) {
-          break label832;
+        i = 0;
+        if (i >= m) {
+          break label746;
         }
-        localObject2 = paramArrayOfByte.getJSONObject(j);
+        localObject2 = paramArrayOfByte.getJSONObject(i);
         localJSONArray = new JSONArray();
         localObject1 = ((JSONObject)localObject2).getString("uin");
         localJSONObject = new JSONObject(paramIntent.getString((String)localObject1, "{}"));
         localObject2 = ((JSONObject)localObject2).getJSONArray("action");
         localObject3 = localJSONObject.optJSONArray("action");
-        int i2 = ((JSONArray)localObject2).length();
+        int n = ((JSONArray)localObject2).length();
         localArrayList1.clear();
-        k = 0;
-        if (k >= i2) {
-          break label653;
+        j = 0;
+        if (j >= n) {
+          break label567;
         }
-        int n = 0;
-        int i3 = ((JSONArray)localObject2).getJSONObject(k).getInt("id");
-        long l1 = ((JSONArray)localObject2).getJSONObject(k).getLong("updateTs");
-        i = n;
-        if (localObject3 != null)
-        {
-          int i4 = ((JSONArray)localObject3).length();
-          m = 0;
-          i = n;
-          if (m < i4)
-          {
-            i = ((JSONArray)localObject3).getJSONObject(m).getInt("id");
-            long l2 = ((JSONArray)localObject3).getJSONObject(m).getLong("updateTs");
-            if (i != i3) {
-              break label853;
-            }
-            i = n;
-            if (l1 != l2)
-            {
-              QLog.i(jdField_a_of_type_JavaLangString, 1, "handleApolloStandAction version update res.");
-              i = 1;
-            }
-          }
-        }
-        if (!ApolloUtil.a(i3, 0))
+        int k = ((JSONArray)localObject2).getJSONObject(j).getInt("id");
+        bool = a((JSONArray)localObject3, false, k, ((JSONArray)localObject2).getJSONObject(j).getLong("updateTs"));
+        if (!ApolloUtil.a(k, 0))
         {
           if (!QLog.isColorLevel()) {
-            break label847;
+            break label761;
           }
           QLog.i(jdField_a_of_type_JavaLangString, 2, "handleApolloStandAction download res first time.");
-          break label847;
+          break label761;
         }
-        if (i != 0)
+        if (bool)
         {
           Object localObject4 = new ApolloActionData();
-          ((ApolloActionData)localObject4).actionId = i3;
+          ((ApolloActionData)localObject4).actionId = k;
           String str = ApolloUtil.a((ApolloActionData)localObject4, 5);
           localObject4 = ApolloUtil.a((ApolloActionData)localObject4, 4);
           Object localObject5 = new File((String)localObject4).getParentFile();
@@ -6136,26 +6153,26 @@ public class VasExtensionHandler
             localObject5 = ((File)localObject5).listFiles();
             if ((localObject5 != null) && (localObject5.length > 0))
             {
-              m = localObject5.length;
-              i = 0;
-              if (i < m)
+              int i1 = localObject5.length;
+              k = 0;
+              if (k < i1)
               {
-                localObject5[i].delete();
-                i += 1;
+                localObject5[k].delete();
+                k += 1;
                 continue;
               }
             }
           }
-          amxb.a(this.app, (String)localObject4, str);
+          aniv.a(this.app, (String)localObject4, str);
         }
-        if (!((JSONArray)localObject2).getJSONObject(k).has("actPlace")) {
-          break label622;
+        if (!((JSONArray)localObject2).getJSONObject(j).has("actPlace")) {
+          break label536;
         }
-        i = ((JSONArray)localObject2).getJSONObject(k).getInt("actPlace");
-        if (i == 1) {
-          localArrayList1.add(((JSONArray)localObject2).getJSONObject(k));
-        } else if (i == 2) {
-          localJSONArray.put(((JSONArray)localObject2).getJSONObject(k));
+        k = ((JSONArray)localObject2).getJSONObject(j).getInt("actPlace");
+        if (k == 1) {
+          localArrayList1.add(((JSONArray)localObject2).getJSONObject(j));
+        } else if (k == 2) {
+          localJSONArray.put(((JSONArray)localObject2).getJSONObject(j));
         }
       }
       catch (Exception paramIntent) {}
@@ -6164,11 +6181,11 @@ public class VasExtensionHandler
       }
       QLog.e(jdField_a_of_type_JavaLangString, 2, "handleApolloStandAction ", paramIntent);
       return;
-      label622:
-      localArrayList1.add(((JSONArray)localObject2).getJSONObject(k));
-      localJSONArray.put(((JSONArray)localObject2).getJSONObject(k));
-      break label862;
-      label653:
+      label536:
+      localArrayList1.add(((JSONArray)localObject2).getJSONObject(j));
+      localJSONArray.put(((JSONArray)localObject2).getJSONObject(j));
+      break label767;
+      label567:
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "uin:", localObject1, ",sort result:" + localArrayList1 });
       }
@@ -6179,30 +6196,27 @@ public class VasExtensionHandler
       }
       localJSONObject.put("action", localObject2);
       paramFromServiceMsg.putString((String)localObject1, localJSONObject.toString());
-      Object localObject1 = localamhd.b((String)localObject1);
+      Object localObject1 = localamsx.b((String)localObject1);
       if (localObject1 != null)
       {
         localJSONObject = new JSONObject();
         localJSONObject.put("action", localJSONArray);
         ((ApolloBaseInfo)localObject1).appearAction = localJSONObject.toString();
         localArrayList2.add(localObject1);
-        break label871;
-        label832:
+        break label776;
+        label746:
         paramFromServiceMsg.commit();
-        localamhd.b(localArrayList2);
+        localamsx.b(localArrayList2);
         return;
-        label847:
-        i = 1;
+        label761:
+        bool = true;
         continue;
-        label853:
-        m += 1;
-        continue;
-        label862:
-        k += 1;
+        label767:
+        j += 1;
         continue;
       }
-      label871:
-      j += 1;
+      label776:
+      i += 1;
     }
   }
   
@@ -6244,7 +6258,7 @@ public class VasExtensionHandler
             ApolloGameUtil.jdField_a_of_type_Int = i;
           }
           localObject1 = paramArrayOfByte.optJSONArray("chgList");
-          paramIntent = (ancd)this.app.getManager(155);
+          paramIntent = (annx)this.app.getManager(155);
           paramFromServiceMsg = this.app.a().createEntityManager();
           if ((paramIntent == null) || (paramFromServiceMsg == null)) {
             break label716;
@@ -6359,14 +6373,14 @@ public class VasExtensionHandler
         }
         int k = paramIntent.optInt("isSuccBuy");
         int m = paramIntent.optInt("balance");
-        paramIntent = ((amhd)this.app.getManager(153)).a();
+        paramIntent = ((amsx)this.app.getManager(153)).a();
         if (paramIntent != null) {
           paramIntent.jdField_a_of_type_Int = m;
         }
         if (k != 1) {
           break label397;
         }
-        paramIntent = (ancd)this.app.getManager(155);
+        paramIntent = (annx)this.app.getManager(155);
         paramFromServiceMsg = new ApolloObtainedActionData();
         paramFromServiceMsg.id = i;
         paramFromServiceMsg.beginTs = NetConnInfoCenter.getServerTime();
@@ -6379,7 +6393,7 @@ public class VasExtensionHandler
         notifyUI(9, true, paramIntent);
         paramIntent = new HashMap();
         paramIntent.put("APOLLO_POP_TYPE", "toast");
-        paramIntent.put("tips", this.app.getApp().getString(2131690007));
+        paramIntent.put("tips", this.app.getApp().getString(2131690015));
         paramFromServiceMsg = this.app.getHandler(ChatActivity.class);
         if (paramFromServiceMsg == null) {
           break label403;
@@ -6394,7 +6408,7 @@ public class VasExtensionHandler
         return;
       }
       if (i == 0) {
-        ApolloItemBuilder.a(anni.a(2131714716), 1, BaseApplicationImpl.getContext());
+        ApolloItemBuilder.a(anzj.a(2131714825), 1, BaseApplicationImpl.getContext());
       }
       return;
       label397:

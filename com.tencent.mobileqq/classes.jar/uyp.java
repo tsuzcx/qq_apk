@@ -1,58 +1,34 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.QCircleInitBean;
-import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBottomView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
+import qqcircle.QQCircleFeedBase.StBusiInfoData;
 
-public class uyp
-  extends uzx
+final class uyp
+  implements aaav<FeedCloudRead.StGetBusiInfoRsp>
 {
-  private QCircleInitBean jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean;
-  private QCirclePersonalBottomView jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView;
-  private vuf jdField_a_of_type_Vuf;
-  
-  public uyp(Bundle paramBundle)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
   {
-    super(paramBundle);
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Vuf = ((vuf)getViewModel(vuf.class));
-    this.jdField_a_of_type_Vuf.a().observe((QCircleBaseFragment)getParentFragment(), new uyq(this));
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView != null) {
-      return this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView.b();
+    QLog.i("QCircleGlobalInfo", 1, "updateCircleInfo onReceive: isSuccess=" + paramBoolean + " retCode=" + paramLong);
+    if ((paramBoolean) && (paramLong == 0L))
+    {
+      paramString = paramStGetBusiInfoRsp.busiRspData.get();
+      if (paramString != null) {
+        paramStGetBusiInfoRsp = new QQCircleFeedBase.StBusiInfoData();
+      }
     }
-    return -1;
+    try
+    {
+      paramStGetBusiInfoRsp.mergeFrom(paramString.toByteArray());
+      uyn.a(paramStGetBusiInfoRsp.schoolInfos.get(), paramStGetBusiInfoRsp.companyInfos.get());
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("QCircleGlobalInfo", 1, "updateCircleInfo error", paramString);
+    }
   }
-  
-  protected BaseWidgetView a(ViewGroup paramViewGroup, zxu paramzxu)
-  {
-    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView = new QCirclePersonalBottomView(paramViewGroup.getContext(), paramzxu);
-    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView.setReportBean(a());
-    a();
-    return this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView;
-  }
-  
-  protected String a()
-  {
-    return "QCirclePersonalBottomBlock";
-  }
-  
-  public void a(QCircleInitBean paramQCircleInitBean)
-  {
-    this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean = paramQCircleInitBean;
-  }
-  
-  public void loadData(zxz paramzxz) {}
-  
-  public void onInitBlock(Bundle paramBundle) {}
 }
 
 

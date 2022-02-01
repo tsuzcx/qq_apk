@@ -6,7 +6,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import java.io.IOException;
-import nlw;
+import nnr;
 
 public final class WeishiShareUtil$1
   implements Runnable
@@ -18,7 +18,7 @@ public final class WeishiShareUtil$1
     int i = 0;
     try
     {
-      Object localObject1 = nlw.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      Object localObject1 = nnr.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
       Object localObject2;
       String str1;
       String str2;

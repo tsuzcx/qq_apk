@@ -1,25 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.superplayer.api.SuperPlayerVideoInfo;
+import java.util.ArrayList;
 
-class aidj
-  extends axdw
+public class aidj
+  implements atvt
 {
-  aidj(aidf paramaidf) {}
+  public aidj(AIOImageProviderService paramAIOImageProviderService, aufc paramaufc, long paramLong, int paramInt1, int paramInt2) {}
   
-  public void a(String paramString1, String paramString2, Object paramObject)
+  public void a(int paramInt, String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.a.jdField_a_of_type_JavaLangString, 4, "onAutoInput, [" + paramString1 + "," + paramString2 + "," + paramObject + "," + System.currentTimeMillis() + "]");
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E", new String[] { String.valueOf(paramInt), paramString }, null, null, -1, null);
     }
-    if (!"tag_nearby_chat".equals(paramString1)) {}
-    while ((TextUtils.isEmpty(paramString2)) || (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx == null)) {
-      return;
+  }
+  
+  public void a(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null)
+    {
+      ArrayList localArrayList = paramSuperPlayerVideoInfo.getCookie();
+      Bundle localBundle = new Bundle();
+      localBundle.putString("savepath", paramSuperPlayerVideoInfo.getLocalSavePath());
+      localBundle.putStringArrayList("cookies", localArrayList);
+      localBundle.putString("contextid", this.jdField_a_of_type_Aufc.a());
+      localBundle.putString("fileid", paramSuperPlayerVideoInfo.getFileId());
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Aufc.b(), paramSuperPlayerVideoInfo.getPlayUrls(), null, null, -1, localBundle);
     }
-    this.a.aB();
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(paramString2);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.selectAll();
-    this.a.g = paramString2;
   }
 }
 

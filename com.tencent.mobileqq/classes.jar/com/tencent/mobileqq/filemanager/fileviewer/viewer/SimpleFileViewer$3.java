@@ -5,9 +5,9 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import atsq;
-import aucd;
-import bcst;
+import aukl;
+import auty;
+import bdll;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
@@ -33,13 +33,13 @@ public class SimpleFileViewer$3
       localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
       localObject = (LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater");
     } while (localObject == null);
-    SimpleFileViewer.a(this.this$0, ((LayoutInflater)localObject).inflate(2131560888, SimpleFileViewer.a(this.this$0), false));
-    Object localObject = new RelativeLayout.LayoutParams(-1, aucd.a(localQQAppInterface));
+    SimpleFileViewer.a(this.this$0, ((LayoutInflater)localObject).inflate(2131560919, SimpleFileViewer.a(this.this$0), false));
+    Object localObject = new RelativeLayout.LayoutParams(-1, auty.a(localQQAppInterface));
     ((RelativeLayout.LayoutParams)localObject).addRule(12);
     SimpleFileViewer.a(this.this$0).setLayoutParams((ViewGroup.LayoutParams)localObject);
     SimpleFileViewer.a(this.this$0).addView(SimpleFileViewer.a(this.this$0));
-    bcst.b(localQQAppInterface, "dc00898", "", "", "0X8009064", "0X8009064", 0, 0, "", "", "", "");
-    aucd.a(localQQAppInterface, this.this$0.a, SimpleFileViewer.a(this.this$0), this.a, new atsq(this, localQQAppInterface));
+    bdll.b(localQQAppInterface, "dc00898", "", "", "0X8009064", "0X8009064", 0, 0, "", "", "", "");
+    auty.a(localQQAppInterface, this.this$0.a, SimpleFileViewer.a(this.this$0), this.a, new aukl(this, localQQAppInterface));
   }
 }
 

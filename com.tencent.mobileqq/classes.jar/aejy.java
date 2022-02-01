@@ -1,55 +1,149 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.launchbean.QCircleFolderBean;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.ConversationQbossBannerTitleEntranceCtrl.1;
+import com.tencent.mobileqq.activity.ConversationQbossBannerTitleEntranceCtrl.2;
+import com.tencent.mobileqq.activity.ConversationQbossBannerTitleEntranceCtrl.3;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import common.config.service.QzoneConfig;
 
 public class aejy
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener, bmaf
 {
-  public aejy(GroupManagerActivity paramGroupManagerActivity) {}
+  private static long jdField_a_of_type_Long;
+  private int jdField_a_of_type_Int = 0;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private Conversation jdField_a_of_type_ComTencentMobileqqActivityConversation;
+  private boolean jdField_a_of_type_Boolean;
+  private View b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aejy(Conversation paramConversation)
   {
-    paramDialogInterface = GroupManagerActivity.a(this.a).getInputValue();
-    if (paramDialogInterface.equals("")) {
-      paramDialogInterface = this.a.getResources().getString(2131692790);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation = paramConversation;
+    this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    QzoneConfig.getInstance().addListener(this);
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_Int == 1) {
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+    }
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      }
+    } while (this.jdField_a_of_type_AndroidWidgetTextView == null);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  private void d()
+  {
+    QLog.d("ConversationQbossBannerTitleEntranceCtrl", 1, "hideAllEntrances");
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+  }
+  
+  public void a()
+  {
+    d();
+  }
+  
+  public void a(View paramView)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    if (paramView != null)
+    {
+      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365118);
+      this.b = paramView.findViewById(2131374487);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365119));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    }
+    a(true);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QLog.d("ConversationQbossBannerTitleEntranceCtrl", 1, "updateQQCircle " + paramBoolean);
+    if (QzoneConfig.isQQCircleShowMessageEntrance()) {}
+    for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0)
+    {
+      c();
+      b(paramBoolean);
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int = 0;
+    QzoneConfig.getInstance().removeListener(this);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Int != 1) {
+      return;
+    }
+    if (paramBoolean) {}
+    for (int i = 2;; i = 5)
+    {
+      ThreadManager.post(new ConversationQbossBannerTitleEntranceCtrl.1(this), i, null, false);
+      return;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    long l = System.currentTimeMillis();
+    if (l - jdField_a_of_type_Long < 500L) {
+      jdField_a_of_type_Long = l;
     }
     for (;;)
     {
-      if (GroupManagerActivity.a(this.a) == 0) {
-        if (this.a.a.size() > 0)
-        {
-          b = (byte)(((Groups)this.a.a.get(this.a.a.size() - 1)).seqid + 1);
-          GroupManagerActivity.a(this.a, this.a.a(b, paramDialogInterface));
-          if (QLog.isColorLevel()) {
-            QLog.d("GroupManagerActivity", 2, "AddFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
-          }
-          if (GroupManagerActivity.a(this.a)) {
-            this.a.a(2131692824);
-          }
-          bcst.b(this.a.app, "CliOper", "", "", "category", "Add_category", 0, 0, "", "", "", "");
-        }
-      }
-      while (1 != GroupManagerActivity.a(this.a)) {
-        for (;;)
-        {
-          return;
-          byte b = 1;
-        }
-      }
-      GroupManagerActivity.a(this.a, this.a.b((byte)GroupManagerActivity.a(this.a).group_id, paramDialogInterface));
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupManagerActivity", 2, "EditeFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
-      }
-      if (GroupManagerActivity.a(this.a)) {
-        this.a.a(2131692827);
-      }
-      bcst.b(this.a.app, "CliOper", "", "", "category", "Name_category", 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      jdField_a_of_type_Long = l;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("ConversationQbossBannerTitleEntranceCtrl", 4, "userClick time=" + System.currentTimeMillis());
+      }
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        QCircleFolderBean localQCircleFolderBean = new QCircleFolderBean();
+        localQCircleFolderBean.setEnableSplash(true);
+        localQCircleFolderBean.setLaunchFrom("4");
+        uyx.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), localQCircleFolderBean);
+        ThreadManager.post(new ConversationQbossBannerTitleEntranceCtrl.2(this), 5, null, false);
+      }
     }
+  }
+  
+  public void onConfigChange()
+  {
+    QLog.d("ConversationQbossBannerTitleEntranceCtrl", 1, "onConfigChange");
+    this.jdField_a_of_type_AndroidOsHandler.post(new ConversationQbossBannerTitleEntranceCtrl.3(this));
   }
 }
 

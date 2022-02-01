@@ -1,42 +1,109 @@
-import android.support.v7.widget.LinearLayoutManager;
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel.2.1;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel.2.2;
-import mqq.os.MqqHandler;
+import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.widget.RelativeLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.capture.mode.CaptureModeController;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 
 public class bpok
-  implements boqn
+  extends bpny
 {
-  public bpok(EditTextPanel paramEditTextPanel) {}
+  private Animator a;
+  public bpxc a;
+  public QIMMusicConfigManager a;
+  private Animator b;
   
-  public void a(float paramFloat, String paramString, int paramInt)
+  public bpok(CaptureModeController paramCaptureModeController)
   {
-    this.a.post(new EditTextPanel.2.1(this, paramString, paramInt));
+    super(paramCaptureModeController);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 4;
+    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = ((QIMMusicConfigManager)bplq.a(2));
   }
   
-  public void a(boolean paramBoolean, String paramString)
+  private void a()
   {
-    if ((this.a.a == null) || (this.a.a.a == null)) {}
+    if (this.jdField_a_of_type_AndroidAnimationAnimator == null) {
+      this.jdField_a_of_type_AndroidAnimationAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_Bpxc.a(), "alpha", new float[] { 0.0F, 1.0F }).setDuration(600L);
+    }
+    if ((this.b != null) && (this.b.isRunning())) {
+      this.b.cancel();
+    }
+    this.jdField_a_of_type_Bpxc.a().setVisibility(0);
+    this.jdField_a_of_type_Bpxc.a().bringToFront();
+    if (this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a != null) {
+      this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a.bringToFront();
+    }
+    this.jdField_a_of_type_AndroidAnimationAnimator.start();
+    boolean bool = zqd.a(this.jdField_a_of_type_Bocn.a());
+    this.jdField_a_of_type_Bpxc.a(bool);
+    if (bool) {}
+    for (int i = 0;; i = 1)
+    {
+      yup.a("weishi_share", "clk_ws_entry", 0, 0, new String[] { String.valueOf(i) });
+      return;
+    }
+  }
+  
+  private void b()
+  {
+    if (this.b == null)
+    {
+      this.b = ObjectAnimator.ofFloat(this.jdField_a_of_type_Bpxc.a(), "alpha", new float[] { 1.0F, 0.0F }).setDuration(600L);
+      this.b.addListener(new bpom(this));
+    }
+    if ((this.jdField_a_of_type_AndroidAnimationAnimator != null) && (this.jdField_a_of_type_AndroidAnimationAnimator.isRunning())) {
+      this.jdField_a_of_type_AndroidAnimationAnimator.cancel();
+    }
+    if (this.jdField_a_of_type_Bpxc.a().getVisibility() != 8) {
+      this.b.start();
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      g();
+      a();
+    }
+    while (this.jdField_a_of_type_Bpxc == null) {
+      return;
+    }
+    b();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.b();
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_Bpxc == null)
+    {
+      ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381347)).inflate();
+      this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.e();
+      this.jdField_a_of_type_Bpxc = new bpxc(this.jdField_a_of_type_AndroidViewView, "biz_src_jc_hyws");
+      this.jdField_a_of_type_Bpxc.a(this);
+      this.jdField_a_of_type_Bpxc.a(this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.b);
+      this.jdField_a_of_type_Bpxc.a().setOnTouchListener(new bpol(this));
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
     for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      int j = this.a.a.a.getChildCount();
-      DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)bojv.a(7);
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = this.a.a.a.getChildAt(i);
-        localObject = (bpoj)this.a.a.getChildViewHolder((View)localObject);
-        if (((bpoj)localObject).a.isContainsResUrl(paramString)) {
-          ThreadManager.getUIHandler().post(new EditTextPanel.2.2(this, paramBoolean, (bpoj)localObject, localDynamicTextConfigManager));
-        }
-        i += 1;
-      }
+      this.jdField_a_of_type_Bocn.x();
     }
   }
 }

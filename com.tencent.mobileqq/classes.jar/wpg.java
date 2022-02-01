@@ -1,20 +1,30 @@
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.Map;
 
-class wpg
-  implements wld<wyo, xam>
+public class wpg
+  extends SimpleJob<Void>
 {
-  wpg(wpf paramwpf, long paramLong) {}
-  
-  public void a(@NonNull wyo paramwyo, @Nullable xam paramxam, @NonNull ErrorMessage paramErrorMessage)
+  public wpg(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    if (paramxam != null)
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("storySeq");
+    paramJobContext = (wpa)QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).remove(Integer.valueOf(i));
+    if (paramJobContext == null)
     {
-      this.jdField_a_of_type_Wpf.b("qqstory_black_status", Integer.valueOf(paramxam.b));
-      this.jdField_a_of_type_Wpf.b("qqstory_black_status_update_interval", Integer.valueOf(paramxam.c));
-      this.jdField_a_of_type_Wpf.b("qqstory_black_status_last_update_time", Integer.valueOf((int)this.jdField_a_of_type_Long));
+      yuk.d("Q.qqstory.net:QQStoryCmdHandler", "can't find request");
+      return null;
     }
+    QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler, paramJobContext, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_AndroidOsBundle);
+    return null;
   }
 }
 

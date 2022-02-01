@@ -1,52 +1,98 @@
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.FavEmoSingleSend;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-public class asqp
-  implements Animation.AnimationListener
+class asqp
+  implements asob
 {
-  public asqp(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
+  asqp(asqo paramasqo) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean a(View paramView, asmu paramasmu)
   {
-    Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (Face2FaceFriendBubbleView.a(this.a) == 1)
-    {
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+    if ((paramasmu == null) || (paramView == null)) {
+      return false;
     }
-    for (;;)
+    if (TextUtils.isEmpty(paramasmu.i))
     {
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(4);
-      return;
-      if (Face2FaceFriendBubbleView.a(this.a) == 2)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130840081);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      Object localObject1 = asqo.a(this.a, paramasmu);
+      int i = asqo.a(this.a, paramasmu);
+      if ((((String)localObject1).equals("needUpload")) || (((String)localObject1).equals("needDel"))) {
+        return true;
       }
-      else if (Face2FaceFriendBubbleView.a(this.a) == 3)
+      Object localObject2;
+      if (((String)localObject1).equals("failed"))
       {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130840082);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+        paramView = ((ashc)this.a.a.getManager(149)).a().iterator();
+        while (paramView.hasNext())
+        {
+          localObject1 = (CustomEmotionData)paramView.next();
+          if (((CustomEmotionData)localObject1).emoId == i)
+          {
+            QLog.d("FavoriteEmotionAdapter", 1, new Object[] { "resend, emoId:", Integer.valueOf(((CustomEmotionData)localObject1).emoId) });
+            localObject2 = (anxd)this.a.a.a(72);
+            if ((((CustomEmotionData)localObject1).emoOriginalPath != null) && (!ashb.a(((CustomEmotionData)localObject1).emoOriginalPath)))
+            {
+              ((anxd)localObject2).notifyUI(2, true, Integer.valueOf(1));
+            }
+            else
+            {
+              ((CustomEmotionData)localObject1).RomaingType = "needUpload";
+              asqo.a(this.a, paramasmu, "needUpload");
+              ((anxd)localObject2).notifyUI(2, true, null);
+              com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend.b = false;
+              ThreadManager.excute(new FavEmoSingleSend((CustomEmotionData)localObject1, true), 64, null, false);
+            }
+          }
+        }
+        return true;
       }
-      else if (Face2FaceFriendBubbleView.a(this.a) == 4)
+      localObject1 = (URLImageView)paramView.findViewById(2131365947);
+      paramView = (URLImageView)paramView.findViewById(2131365948);
+      if ((((URLImageView)localObject1).getDrawable() instanceof URLDrawable))
       {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130840083);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+        localObject2 = (URLDrawable)((URLImageView)localObject1).getDrawable();
+        if ((((URLDrawable)localObject2).getStatus() == 3) || (((URLDrawable)localObject2).getStatus() == 2))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("FavoriteEmotionAdapter", 2, "now  favorite EmoticonInfo loading failed, restart download " + paramasmu.toString());
+          }
+          ((URLImageView)localObject1).setVisibility(8);
+          paramView.setVisibility(0);
+          ((URLDrawable)localObject2).restartDownload();
+          if (!(paramView.getDrawable() instanceof Animatable))
+          {
+            paramasmu = (Animatable)BaseApplication.getContext().getResources().getDrawable(2130839410);
+            paramView.setImageDrawable((Drawable)paramasmu);
+            paramasmu.start();
+          }
+          for (;;)
+          {
+            return true;
+            ((Animatable)paramView.getDrawable()).start();
+          }
+        }
+        if (((URLDrawable)localObject2).getStatus() == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("FavoriteEmotionAdapter", 2, "now  favorite EmoticonInfo loading " + paramasmu.toString());
+          }
+          return true;
+        }
       }
     }
+    return false;
   }
 }
 

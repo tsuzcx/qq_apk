@@ -1,122 +1,90 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.common.app.AppInterface;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.automator.AsyncSteps.1;
+import com.tencent.biz.pubaccount.readinjoy.automator.AsyncSteps.2;
+import org.jetbrains.annotations.NotNull;
 
-public class omn
+public final class omn
+  extends omp
+  implements oms
 {
   private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private VideoAdInfo jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo;
-  private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private JSONObject jdField_b_of_type_OrgJsonJSONObject;
-  private int jdField_c_of_type_Int;
-  private JSONObject jdField_c_of_type_OrgJsonJSONObject;
-  private int jdField_d_of_type_Int;
-  private JSONObject jdField_d_of_type_OrgJsonJSONObject;
-  private JSONObject e;
-  private JSONObject f;
+  private final omp[] jdField_a_of_type_ArrayOfOmp;
   
-  public int a()
+  public omn(@NotNull omo paramomo, @NotNull omp[] paramArrayOfomp)
   {
-    return this.jdField_a_of_type_Int;
+    super(paramomo, false, "AsyncSteps");
+    this.jdField_a_of_type_ArrayOfOmp = paramArrayOfomp;
+    paramomo = this.jdField_a_of_type_ArrayOfOmp;
+    int j = paramomo.length;
+    while (i < j)
+    {
+      paramomo[i].a(this);
+      i += 1;
+    }
   }
   
-  public long a()
+  public void a()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public Bundle a()
-  {
-    return this.jdField_a_of_type_AndroidOsBundle;
-  }
-  
-  public VideoAdInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo;
-  }
-  
-  public AdvertisementInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-  }
-  
-  public AppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public JSONObject a()
-  {
-    return this.jdField_a_of_type_OrgJsonJSONObject;
+    super.a();
+    omp[] arrayOfomp = this.jdField_a_of_type_ArrayOfOmp;
+    int j = arrayOfomp.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfomp[i].a();
+      i += 1;
+    }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    super.a();
+    this.jdField_a_of_type_Int = 0;
+    return true;
   }
   
-  public int b()
+  public final void b()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public JSONObject b()
-  {
-    return this.jdField_b_of_type_OrgJsonJSONObject;
-  }
-  
-  public int c()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public JSONObject c()
-  {
-    return this.jdField_c_of_type_OrgJsonJSONObject;
-  }
-  
-  public int d()
-  {
-    if ((this.jdField_c_of_type_Int <= 0) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.clickPos > 0)) {
-      this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.clickPos;
+    this.jdField_a_of_type_Int += 1;
+    a("AsyncSteps onEnd: mFinishCount = " + this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfOmp.length) {
+      d();
     }
-    return this.jdField_c_of_type_Int;
   }
   
-  public JSONObject d()
+  public boolean b()
   {
-    return this.jdField_d_of_type_OrgJsonJSONObject;
-  }
-  
-  public JSONObject e()
-  {
-    return this.f;
-  }
-  
-  public JSONObject f()
-  {
-    return this.e;
+    omp[] arrayOfomp = this.jdField_a_of_type_ArrayOfOmp;
+    int j = arrayOfomp.length;
+    int i = 0;
+    if (i < j)
+    {
+      Object localObject = arrayOfomp[i];
+      AsyncSteps.1 local1;
+      if (((omp)localObject).a())
+      {
+        local1 = new AsyncSteps.1(this, (omp)localObject);
+        if (((omp)localObject).c()) {
+          local1.run();
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localObject = a().a();
+        if (localObject != null)
+        {
+          ((omr)localObject).a(local1);
+        }
+        else
+        {
+          new Thread(local1).start();
+          continue;
+          a().b(new AsyncSteps.2(this, (omp)localObject));
+        }
+      }
+    }
+    return false;
   }
 }
 

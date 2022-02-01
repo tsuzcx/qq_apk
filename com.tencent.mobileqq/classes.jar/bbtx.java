@@ -1,33 +1,18 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
 
 public class bbtx
+  implements DialogInterface.OnClickListener
 {
-  public Bundle a;
-  public String a;
-  public byte[] a;
+  public bbtx(SignatureEditFragment paramSignatureEditFragment) {}
   
-  public bbtx(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public bbtx(String paramString, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public bbtx(String paramString, byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public bbtx(String paramString, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    paramDialogInterface.dismiss();
+    bbux.a().a(bbux.a().b);
+    this.a.getActivity().finish();
   }
 }
 

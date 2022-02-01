@@ -1,128 +1,95 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.NetworkState;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bnmi
-  extends RecyclerView.Adapter<bnml>
+class bnmi
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bnmk jdField_a_of_type_Bnmk;
-  List<QIMFilterCategoryItem> jdField_a_of_type_JavaUtilList = new ArrayList();
+  bnmi(bnmh parambnmh, JSONObject paramJSONObject, String paramString, boolean paramBoolean) {}
   
-  public bnmi(Context paramContext, int paramInt)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private boolean a()
-  {
-    bnid localbnid = bnic.a();
-    if (localbnid == null) {
-      return true;
-    }
-    return localbnid.a;
-  }
-  
-  public bnml a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new bnml(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558482, paramViewGroup, false));
-  }
-  
-  public void a(bnmk parambnmk)
-  {
-    this.jdField_a_of_type_Bnmk = parambnmk;
-  }
-  
-  public void a(bnml parambnml, int paramInt)
-  {
-    Object localObject1 = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    QIMFilterCategoryItem localQIMFilterCategoryItem;
-    Object localObject2;
-    if (localObject1 != null)
+    boolean bool = false;
+    if (paramPluginManagerClient == null) {}
+    try
     {
-      localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      localObject2 = bpye.a().c(this.jdField_a_of_type_Int);
-      if (localObject2 == null) {
-        break label282;
+      if (QLog.isColorLevel()) {
+        QLog.i("QZoneLiveJsPlugin", 2, "context 为空，返回：" + this.jdField_a_of_type_OrgJsonJSONObject);
       }
+      this.jdField_a_of_type_OrgJsonJSONObject.put("isInstalled", false);
+      if (QLog.isColorLevel()) {
+        QLog.i("QZoneLiveJsPlugin", 2, "pluginManagerClient 为空，返回：" + this.jdField_a_of_type_OrgJsonJSONObject);
+      }
+      this.jdField_a_of_type_Bnmh.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+      return;
     }
-    label260:
-    label272:
-    label282:
-    for (boolean bool1 = TextUtils.equals(((QIMFilterCategoryItem)localObject2).a, localQIMFilterCategoryItem.a);; bool1 = false)
+    catch (JSONException paramPluginManagerClient)
     {
-      boolean bool2 = bool1;
-      if (!bool1)
-      {
-        if (((localObject2 == null) || (((QIMFilterCategoryItem)localObject2).d())) && (localQIMFilterCategoryItem.d())) {
-          bool2 = true;
-        }
-      }
-      else
-      {
-        if ((!bool2) || (!a())) {
-          break label260;
-        }
-        bnml.a(parambnml).setVisibility(0);
-        label117:
-        localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844546);
-        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844546);
-        if (paramInt != 0) {
-          break label272;
-        }
-      }
-      for (localObject1 = "https://qd.myapp.com/myapp/qqteam/QIM/fliters-QIM/other/none2.png";; localObject1 = ((QIMFilterCategoryItem)localObject1).d)
-      {
-        localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
-        if (((URLDrawable)localObject1).getStatus() == 2) {
-          ((URLDrawable)localObject1).restartDownload();
-        }
-        bnml.b(parambnml).setImageDrawable((Drawable)localObject1);
-        bnml.a(parambnml).setText(localQIMFilterCategoryItem.b);
-        if (this.jdField_a_of_type_Bnmk != null) {
-          parambnml.itemView.setOnClickListener(new bnmj(this, parambnml));
-        }
-        parambnml.itemView.setTag(localQIMFilterCategoryItem);
-        EventCollector.getInstance().onRecyclerBindViewHolder(parambnml, paramInt, getItemId(paramInt));
+      if (!QLog.isColorLevel()) {
         return;
-        bool2 = false;
-        break;
-        bnml.a(parambnml).setVisibility(8);
-        break label117;
       }
+      QLog.e("QZoneLiveJsPlugin", 2, "", paramPluginManagerClient);
+      return;
+      if (((PluginBaseInfo)localObject).mState != 4) {
+        break label301;
+      }
+      this.jdField_a_of_type_OrgJsonJSONObject.put("isInstalled", true);
+      if (!QLog.isColorLevel()) {
+        break label272;
+      }
+      QLog.i("QZoneLiveJsPlugin", 2, "插件已安装，返回：" + this.jdField_a_of_type_OrgJsonJSONObject);
+      label272:
+      this.jdField_a_of_type_Bnmh.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+      return;
+      label301:
+      this.jdField_a_of_type_OrgJsonJSONObject.put("isInstalled", false);
+      if (!QLog.isColorLevel()) {
+        break label371;
+      }
+      QLog.i("QZoneLiveJsPlugin", 2, "插件未安装,state=" + ((PluginBaseInfo)localObject).mState + "needInstall：" + this.jdField_a_of_type_Boolean + "返回：" + this.jdField_a_of_type_OrgJsonJSONObject);
+      label371:
+      if (!this.jdField_a_of_type_Boolean) {
+        break label449;
+      }
+      int i = NetworkState.getNetworkType();
+      if (!QLog.isColorLevel()) {
+        break label424;
+      }
+      Object localObject = new StringBuilder().append("NetworkState.NET_TYPE_WIFI == type:");
+      if (1 != i) {
+        break label409;
+      }
+      bool = true;
+      label409:
+      QLog.i("QZoneLiveJsPlugin", 2, bool);
+      label424:
+      if (1 != i) {
+        break label449;
+      }
+      if (!QLog.isColorLevel()) {
+        break label443;
+      }
+      QLog.i("QZoneLiveJsPlugin", 2, "开始下载");
+      label443:
+      paramPluginManagerClient.installPlugin("qzone_live_video_plugin.apk");
+      label449:
+      this.jdField_a_of_type_Bnmh.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
     }
-  }
-  
-  public void a(List<QIMFilterCategoryItem> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
+    localObject = paramPluginManagerClient.queryPlugin("qzone_live_video_plugin.apk");
+    if (localObject == null)
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("isInstalled", false);
+      if (QLog.isColorLevel()) {
+        QLog.i("QZoneLiveJsPlugin", 2, "pluginInfo 为空，返回：" + this.jdField_a_of_type_OrgJsonJSONObject);
+      }
+      this.jdField_a_of_type_Bnmh.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+      return;
+    }
   }
 }
 

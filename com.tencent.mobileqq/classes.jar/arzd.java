@@ -1,14 +1,31 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class arzd
+class arzd
+  implements DialogInterface.OnClickListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public URLImageView a;
+  arzd(arzc paramarzc) {}
   
-  public arzd(arzb paramarzb) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    EditText localEditText = (EditText)((bhpc)paramDialogInterface).findViewById(2131371654);
+    paramDialogInterface = (EditText)((bhpc)paramDialogInterface).findViewById(2131361952);
+    if ((TextUtils.isEmpty(localEditText.getText().toString())) || (TextUtils.isEmpty(paramDialogInterface.getText().toString())))
+    {
+      QQToast.a(this.a.a.getActivity(), 1, anzj.a(2131701675), 0).a();
+      return;
+    }
+    asaa localasaa = new asaa();
+    localasaa.a = localEditText.getText().toString();
+    localasaa.jdField_b_of_type_JavaLangString = paramDialogInterface.getText().toString();
+    localasaa.jdField_b_of_type_Boolean = true;
+    arzx.a().a(localasaa);
+    this.a.a.a.notifyDataSetChanged();
+  }
 }
 
 

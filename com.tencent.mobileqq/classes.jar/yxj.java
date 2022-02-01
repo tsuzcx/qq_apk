@@ -1,10 +1,21 @@
-import android.graphics.Bitmap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
-public abstract interface yxj
+public class yxj
+  implements Animation.AnimationListener
 {
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  public yxj(EditVideoGuide paramEditVideoGuide) {}
   
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.g();
+    this.a.a.a(0);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

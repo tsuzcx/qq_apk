@@ -1,106 +1,46 @@
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arcs
+  implements arae<String>
 {
-  public byte a;
-  public int a;
-  public long a;
-  public LebaPluginInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
+  public boolean a = true;
+  public boolean b = true;
   
-  public arcs()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 2147483647;
-  }
-  
-  public static String a(List<arcs> paramList)
-  {
-    if (paramList == null) {
-      return " print lebaData == null";
-    }
-    if (paramList.isEmpty()) {
-      return " print lebaData.isEmpty()";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(" print lebaData size = ").append(paramList.size());
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    try
     {
-      arcs localarcs = (arcs)paramList.next();
-      if (localarcs == null)
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("ark_app_manage_panel_disable", 1) != 0)
       {
-        localStringBuilder.append("|item = null");
-      }
-      else
-      {
-        localStringBuilder.append("|item = ").append(localarcs.jdField_a_of_type_Long).append("|").append(localarcs.jdField_a_of_type_JavaLangString).append("|").append(localarcs.jdField_b_of_type_JavaLangString).append("|").append(localarcs.jdField_a_of_type_Int).append("|").append(localarcs.jdField_a_of_type_Byte).append("|").append(localarcs.jdField_b_of_type_Long).append("|").append(localarcs.jdField_a_of_type_Boolean).append("|");
-        if (localarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) {
-          localStringBuilder.append("info=null");
-        } else {
-          localStringBuilder.append(localarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.toString());
+        bool = true;
+        this.a = bool;
+        apzu.a = this.a;
+        if (paramString.optInt("ark_download_by_yyb_disable", 1) == 0) {
+          break label115;
         }
       }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Byte = 0;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Byte == 0;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Byte = 1;
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.cCanChangeState != 0);
-  }
-  
-  public boolean c()
-  {
-    return (!b()) || (this.jdField_b_of_type_Int == 2147483647);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramObject == null) || (this.jdField_a_of_type_Long == 0L)) {
-      bool1 = false;
-    }
-    do
-    {
-      do
+      label115:
+      for (boolean bool = true;; bool = false)
       {
-        return bool1;
-        bool1 = bool2;
-      } while (this == paramObject);
-      if (!(paramObject instanceof arcs)) {
+        this.b = bool;
+        apzu.f = this.b;
+        QLog.i("ArkMsgAIDisableConfig", 1, "onParse " + ", ark_app_manage_panel_disable=" + this.a + ", ark_download_by_yyb_disable =" + this.b);
+        return;
+        bool = false;
         break;
       }
-      paramObject = (arcs)paramObject;
-      bool1 = bool2;
-    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return Long.valueOf(this.jdField_a_of_type_Long).hashCode();
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("ArkMsgAIDisableConfig", 1, "handleArkMsgAIDisableConfig parse config_content exception=" + paramString);
+    }
   }
 }
 

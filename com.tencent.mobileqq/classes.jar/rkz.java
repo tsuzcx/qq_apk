@@ -1,18 +1,33 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import java.lang.ref.WeakReference;
 
-public class rkz
-  implements View.OnClickListener
+class rkz
+  implements MediaPlayer.OnPreparedListener
 {
-  public rkz(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  rkz(rky paramrky) {}
   
-  public void onClick(View paramView)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    try
+    {
+      paramMediaPlayer.start();
+      rky.a(this.a).a = true;
+      paramMediaPlayer = (rlb)rky.a(this.a).get();
+      if (paramMediaPlayer != null)
+      {
+        paramMediaPlayer.a(rky.a(this.a));
+        this.a.a(true, "ugc voice play");
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      for (;;)
+      {
+        paramMediaPlayer.printStackTrace();
+      }
+    }
   }
 }
 

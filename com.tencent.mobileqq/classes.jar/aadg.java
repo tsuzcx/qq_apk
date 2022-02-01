@@ -1,21 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-
-class aadg
-  implements aaji
+public class aadg
 {
-  aadg(aadf paramaadf) {}
-  
-  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
+  public static <T> String a(String paramString, aadf<T> paramaadf)
   {
-    if (paramBoolean)
-    {
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof ArrayList))) {
-        this.a.setDatas((ArrayList)paramVarArgs[0]);
-      }
-      return;
-    }
-    QLog.d(aadf.a, 4, "get drafts failed");
+    return aadh.a().a(paramString, paramaadf);
+  }
+  
+  public static void a(String paramString)
+  {
+    aadh.a().a(paramString);
+  }
+  
+  public static <T> void a(String paramString, aadm<T> paramaadm)
+  {
+    aadh.a().a(paramString, paramaadm);
+  }
+  
+  public static void a(Throwable paramThrowable)
+  {
+    yuk.a("PreLoader", "", paramThrowable);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return aadh.a().a(paramString);
+  }
+  
+  public static void b(String paramString)
+  {
+    yuk.b("PreLoader", paramString);
   }
 }
 

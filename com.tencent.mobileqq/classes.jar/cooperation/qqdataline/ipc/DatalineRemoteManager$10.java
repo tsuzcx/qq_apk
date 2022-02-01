@@ -1,15 +1,15 @@
 package cooperation.qqdataline.ipc;
 
 import android.os.Bundle;
-import blja;
-import bljh;
+import bmkd;
+import bmkk;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class DatalineRemoteManager$10
   implements Runnable
 {
-  public DatalineRemoteManager$10(blja paramblja) {}
+  public DatalineRemoteManager$10(bmkd parambmkd) {}
   
   public void run()
   {
@@ -32,7 +32,7 @@ public class DatalineRemoteManager$10
         if (QLog.isColorLevel()) {
           QLog.d("DatalineRemoteManager", 2, "doPostCachedMsg send success strNotifyCmd:" + str);
         }
-        this.this$0.jdField_a_of_type_Bljh.a("com.qqdataline.action.notify", localBundle);
+        this.this$0.jdField_a_of_type_Bmkk.a("com.qqdataline.action.notify", localBundle);
       }
       catch (Exception localException)
       {

@@ -1,36 +1,34 @@
-public abstract interface ujv
+import android.view.View;
+
+class ujv
+  extends ujw
 {
-  public abstract void a(ukb paramukb);
+  ujv(uju paramuju) {}
   
-  public abstract void a(ukb paramukb, int paramInt1, int paramInt2, String paramString);
+  public void hide()
+  {
+    super.hide();
+    if (uju.a(this.a) != null)
+    {
+      uju.a(this.a).setVisibility(4);
+      uju.a(this.a, 0);
+    }
+  }
   
-  public abstract void a(ukb paramukb, int paramInt, boolean paramBoolean);
-  
-  public abstract void a(ukb paramukb, long paramLong1, long paramLong2);
-  
-  public abstract void a(ukb paramukb, boolean paramBoolean);
-  
-  public abstract void a(ukb paramukb, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract boolean a(ukb paramukb);
-  
-  public abstract void b(ukb paramukb);
-  
-  public abstract void c(ukb paramukb);
-  
-  public abstract void d(ukb paramukb);
-  
-  public abstract void e(ukb paramukb);
-  
-  public abstract void f(ukb paramukb);
-  
-  public abstract void g(ukb paramukb);
-  
-  public abstract void h(ukb paramukb);
-  
-  public abstract void i(ukb paramukb);
-  
-  public abstract void j(ukb paramukb);
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  {
+    super.updateUnreadCount(paramInt, paramBoolean);
+    if (paramInt == 0) {
+      uju.a(this.a, 0);
+    }
+    while ((paramInt <= uju.a(this.a)) || (uju.a(this.a) == null)) {
+      return;
+    }
+    if (uju.a(this.a)) {
+      uju.a(this.a).setVisibility(0);
+    }
+    uju.a(this.a, paramInt);
+  }
 }
 
 

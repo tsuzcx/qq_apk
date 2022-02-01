@@ -1,29 +1,26 @@
-public class biua
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+
+class biua
+  implements biug<oidb_0x8ed.RspBody>
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
+  biua(bitz parambitz, biug parambiug, HotChatInfo paramHotChatInfo) {}
   
-  public biua()
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_Long = 259200L;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    paramObject = (biua)paramObject;
-    if (paramObject != null) {
-      return paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Biug != null) {
+      this.jdField_a_of_type_Biug.a(paramInt, paramRspBody);
     }
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_JavaLangString.hashCode();
+    paramRspBody = (HotChatManager)this.jdField_a_of_type_Bitz.app.getManager(60);
+    List localList = paramRspBody.a();
+    if (localList != null) {
+      localList.remove(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo);
+    }
+    paramRspBody.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_IS_DISBANDED);
   }
 }
 

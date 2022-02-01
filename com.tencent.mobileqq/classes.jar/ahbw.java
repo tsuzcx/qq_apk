@@ -1,12 +1,6 @@
-import android.widget.TextView;
-
-class ahbw
-  extends afwr
-{
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  ahbw(ahbv paramahbv) {}
-}
+public final class ahbw
+  extends agen
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

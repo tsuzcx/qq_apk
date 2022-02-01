@@ -1,21 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
 
-class bnsx
-  implements EIPCResultCallback
+public class bnsx
+  extends Handler
 {
-  bnsx(bnss parambnss) {}
+  public bnsx(TroopHWJsPlugin paramTroopHWJsPlugin) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void handleMessage(Message paramMessage)
   {
-    QLog.d("AEGIFSinglePreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD onCallback");
-    if (paramEIPCResult.code == 0)
+    switch (paramMessage.what)
     {
-      QLog.d("AEGIFSinglePreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code == 0");
+    case 2: 
+    default: 
+      return;
+    case 0: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131696758, 0).a();
+      return;
+    case 1: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131696776, 0).a();
+      return;
+    case 3: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131696756, 0).a();
       return;
     }
-    QLog.d("AEGIFSinglePreviewFragment", 4, new Object[] { "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code != 0, eipcResult.code == ", Integer.valueOf(paramEIPCResult.code), ", msg = ", paramEIPCResult.e.getMessage() });
+    QQToast.a(BaseApplicationImpl.getContext(), 2131696757, 0).a();
   }
 }
 

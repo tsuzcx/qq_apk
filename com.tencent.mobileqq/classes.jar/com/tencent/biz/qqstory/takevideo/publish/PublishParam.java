@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import zfd;
+import ziy;
 
 public class PublishParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<PublishParam> CREATOR = new zfd();
+  public static final Parcelable.Creator<PublishParam> CREATOR = new ziy();
   public static final String a;
   public final int a;
   public final long a;

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.contacts.alphabet;
 
-import ajgp;
+import ajry;
 import com.tencent.qphone.base.util.QLog;
 
 public class AlphabetFriendAdapter$3
   implements Runnable
 {
-  public AlphabetFriendAdapter$3(ajgp paramajgp) {}
+  public AlphabetFriendAdapter$3(ajry paramajry) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class AlphabetFriendAdapter$3
     }
     this.this$0.c();
     this.this$0.d();
-    ajgp.a(this.this$0);
+    ajry.a(this.this$0);
   }
 }
 

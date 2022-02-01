@@ -1,112 +1,68 @@
-import android.graphics.Color;
-import android.text.SpannableString;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.20.1;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.20.2;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
 public class ayhu
+  implements aydt
 {
-  public List<String> a;
+  ayhu(ayhj paramayhj) {}
   
-  public ayhu(List<String> paramList, String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = new ArrayList();
-    }
-    if ((paramString != null) && (!((List)localObject).contains(paramString))) {
-      ((List)localObject).add(paramString);
-    }
-    Collections.sort((List)localObject, new ayhv(this));
-    this.a = ((List)localObject);
-  }
-  
-  public static String a(String paramString)
-  {
-    return Pattern.compile("[\\s|\\t|\\r|\\n]+").matcher(paramString).replaceAll("");
-  }
-  
-  public int a(String paramString1, String paramString2, int paramInt)
-  {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return -1;
-    }
-    return paramString1.toLowerCase().indexOf(paramString2.toLowerCase(), paramInt);
-  }
-  
-  public SpannableString a(String paramString)
-  {
-    return a(paramString, false);
-  }
-  
-  public SpannableString a(String paramString, boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(paramString))
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      localObject = null;
-      return localObject;
-    }
-    Object localObject = new SpannableString(paramString);
-    if ((this.a == null) || (this.a.size() <= 0)) {
-      return localObject;
-    }
-    Object[] arrayOfObject = this.a.toArray();
-    int k = 0;
-    int i = 0;
-    int j = 0;
-    String str1 = paramString;
-    paramString = (String)localObject;
-    String str2;
-    int m;
-    for (;;)
-    {
-      localObject = paramString;
-      if (k >= arrayOfObject.length) {
-        break;
-      }
-      str2 = (String)arrayOfObject[k];
-      if (str2.length() <= 1)
+      paramBundle = new oidb_0xada.RspBody();
+      try
       {
-        localObject = paramString;
-        if (i != 0) {
-          break;
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (QLog.isColorLevel()) {
+          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + ayhj.c(this.a));
+        }
+        if (paramBundle.busi_buf.has())
+        {
+          paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
+          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+          if (QLog.isColorLevel()) {
+            QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + ayhj.c(this.a));
+          }
+          if (paramArrayOfByte.ret.get() == 0)
+          {
+            ayhj.c(this.a, true);
+            if (ayhj.d(this.a))
+            {
+              ThreadManager.getUIHandler().post(new PlayOperationViewModel.20.1(this));
+              ayhj.d(this.a, false);
+            }
+            this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a = true;
+            new ayek().h("video").i("playpage_focus").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            ThreadManagerV2.excute(new PlayOperationViewModel.20.2(this, (axup)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
+            return;
+          }
+          if (!TextUtils.isEmpty(paramArrayOfByte.msg.get()))
+          {
+            QQToast.a(BaseApplication.getContext(), 1, paramArrayOfByte.msg.get(), 0).a();
+            return;
+          }
         }
       }
-      m = 0;
-      m = a(str1, str2, m);
-      if (m != -1) {
-        break label137;
-      }
-      k += 1;
-    }
-    label137:
-    if ((m > 10) && (j == 0) && (!paramBoolean))
-    {
-      str1 = "…" + str1.substring(m - 6);
-      paramString = new SpannableString(str1);
-      m = 7;
-      j = 1;
-    }
-    for (;;)
-    {
-      if (str2.length() > 1) {
-        j = 1;
-      }
-      int n;
-      for (i = 1;; i = n)
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        paramString.setSpan(new ForegroundColorSpan(Color.parseColor("#12b7f5")), m, str2.length() + m, 34);
-        n = i;
-        m += 1;
-        i = j;
-        j = n;
-        break;
-        n = j;
-        j = i;
+        paramArrayOfByte.printStackTrace();
       }
     }
   }

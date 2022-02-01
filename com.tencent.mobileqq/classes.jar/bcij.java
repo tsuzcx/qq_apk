@@ -1,35 +1,53 @@
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import java.util.List;
+
 public class bcij
+  extends bcjf
 {
-  private double a;
-  public int a;
-  public int b;
-  
-  public bcij() {}
-  
-  public bcij(int paramInt1, int paramInt2)
+  public bcij(aoof paramaoof)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Double = (paramInt1 / paramInt2);
+    super(paramaoof, 268435456);
   }
   
-  public boolean equals(Object paramObject)
+  public void a(bcfp parambcfp, bcny parambcny)
   {
-    if (this == paramObject) {}
-    do
+    Object localObject1 = (bcfq)parambcfp;
+    parambcfp = ((bcnw)parambcny).a();
+    if (parambcfp != null)
     {
-      return true;
-      if (!(paramObject instanceof bcij)) {
-        return false;
+      List localList = ((bcfq)localObject1).a();
+      if (localList != null)
+      {
+        parambcfp.removeAllViews();
+        int j = Math.min(localList.size(), ((bcfq)localObject1).a());
+        int i = 0;
+        while (i < j)
+        {
+          localObject1 = new bcph(((bcnw)parambcny).a(), 268435456);
+          Object localObject2 = ((bcph)localObject1).a();
+          bcfr localbcfr = (bcfr)localList.get(i);
+          ((View)localObject2).setTag(2131381109, localbcfr);
+          ((View)localObject2).setTag(2131381115, localObject1);
+          ((View)localObject2).setTag(2131381110, Integer.valueOf(i));
+          ((View)localObject2).setTag(2131381108, Integer.valueOf(localList.size()));
+          ((View)localObject2).setTag(2131381111, this.a);
+          if ((localbcfr instanceof bcep)) {
+            bcnl.a((bcep)localbcfr, j, i);
+          }
+          localObject2 = new LinearLayout.LayoutParams(-1, -2);
+          parambcfp.addView(((bcph)localObject1).a(), (ViewGroup.LayoutParams)localObject2);
+          this.a.a(localbcfr, (bcoa)localObject1);
+          i += 1;
+        }
       }
-      paramObject = (bcij)paramObject;
-    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b));
-    return false;
-  }
-  
-  public String toString()
-  {
-    return "CustomSize[width=" + this.jdField_a_of_type_Int + ", height=" + this.b + ", scaleWH='" + this.jdField_a_of_type_Double + ']';
+    }
+    if (parambcny.b() != null) {
+      parambcny.b().setVisibility(8);
+    }
   }
 }
 

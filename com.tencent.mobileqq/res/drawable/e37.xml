@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:left="5.0dip" android:top="1.0dip" android:right="5.0dip" android:bottom="1.0dip">
-        <shape android:shape="rectangle" android:useLevel="false"
-          xmlns:android="http://schemas.android.com/apk/res/android">
-            <corners android:radius="3.0dip" />
-            <stroke android:width="4.0dip" android:color="#ff66d99e" />
-        </shape>
-    </item>
-</layer-list>
+    <solid android:color="#ff478dff" />
+    <corners android:topLeftRadius="15.0dip" android:topRightRadius="15.0dip" android:bottomLeftRadius="15.0dip" android:bottomRightRadius="15.0dip" />
+</shape>

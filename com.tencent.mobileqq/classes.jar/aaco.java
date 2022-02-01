@@ -1,14 +1,12 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 
-class aaco
-  implements aacv
+public class aaco
+  extends RecyclerView.ViewHolder
 {
-  aaco(aacn paramaacn) {}
-  
-  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
+  public aaco(View paramView)
   {
-    this.a.d(paramStFeed);
+    super(paramView);
   }
 }
 

@@ -1,40 +1,40 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import aldk;
-import anrs;
+import alpb;
+import aody;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
-import nzz;
-import tty;
-import ttz;
+import obj;
+import tua;
+import tub;
 
 public class ServiceAccountFolderFeedAdapter$8
   implements Runnable
 {
-  public ServiceAccountFolderFeedAdapter$8(ttz paramttz, String paramString, tty paramtty) {}
+  public ServiceAccountFolderFeedAdapter$8(tub paramtub, String paramString, tua paramtua) {}
   
   public void run()
   {
-    nzz.a().a(ttz.a(this.this$0), this.jdField_a_of_type_JavaLangString);
-    Object localObject = (anrs)ttz.a(this.this$0).getManager(56);
+    obj.a().a(tub.a(this.this$0), this.jdField_a_of_type_JavaLangString);
+    Object localObject = (aody)tub.a(this.this$0).getManager(56);
     if (localObject != null)
     {
-      ((anrs)localObject).c(this.jdField_a_of_type_JavaLangString);
-      ((anrs)localObject).b(this.jdField_a_of_type_JavaLangString);
-      AccountDetail localAccountDetail = ((anrs)localObject).a(this.jdField_a_of_type_JavaLangString);
+      ((aody)localObject).c(this.jdField_a_of_type_JavaLangString);
+      ((aody)localObject).b(this.jdField_a_of_type_JavaLangString);
+      AccountDetail localAccountDetail = ((aody)localObject).a(this.jdField_a_of_type_JavaLangString);
       if (localAccountDetail != null)
       {
-        ((anrs)localObject).a(this.jdField_a_of_type_JavaLangString);
-        localObject = ttz.a(this.this$0).a().createEntityManager();
+        ((aody)localObject).a(this.jdField_a_of_type_JavaLangString);
+        localObject = tub.a(this.this$0).a().createEntityManager();
         ((EntityManager)localObject).remove(localAccountDetail);
         ((EntityManager)localObject).close();
       }
     }
-    ttz.a(this.this$0).a().a(this.jdField_a_of_type_Tty.jdField_a_of_type_JavaLangString, 1008);
-    aldk.b(ttz.a(this.this$0), this.jdField_a_of_type_JavaLangString, 1008);
+    tub.a(this.this$0).a().a(this.jdField_a_of_type_Tua.jdField_a_of_type_JavaLangString, 1008);
+    alpb.b(tub.a(this.this$0), this.jdField_a_of_type_JavaLangString, 1008);
   }
 }
 

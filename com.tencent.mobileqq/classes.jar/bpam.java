@@ -1,15 +1,35 @@
-public abstract interface bpam
-  extends bpeo
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+
+public class bpam
 {
-  public abstract void a(long paramLong);
+  public static void a(@NonNull String paramString1, @NonNull String paramString2) {}
   
-  public abstract void a(bpft parambpft);
+  public static void a(@NonNull String paramString1, @NonNull String paramString2, @Nullable Throwable paramThrowable)
+  {
+    QLog.e("MODULE_GY_AECAMERA :" + paramString1, 1, paramString2, paramThrowable);
+  }
   
-  public abstract void ab_();
+  public static void a(@NonNull String paramString, @Nullable Throwable paramThrowable)
+  {
+    QLog.e("MODULE_GY_AECAMERA :" + paramString, 1, paramThrowable, new Object[0]);
+  }
   
-  public abstract void b();
+  public static void b(@NonNull String paramString1, @NonNull String paramString2)
+  {
+    QLog.i("MODULE_GY_AECAMERA :" + paramString1, 1, paramString2);
+  }
   
-  public abstract void d();
+  public static void c(@NonNull String paramString1, @NonNull String paramString2)
+  {
+    QLog.w("MODULE_GY_AECAMERA :" + paramString1, 1, paramString2);
+  }
+  
+  public static void d(@NonNull String paramString1, @NonNull String paramString2)
+  {
+    QLog.e("MODULE_GY_AECAMERA :" + paramString1, 1, paramString2);
+  }
 }
 
 

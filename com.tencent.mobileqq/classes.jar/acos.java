@@ -1,15 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.gdtad.api.GdtAd;
 
-class acos
-  implements ValueCallback<String>
+public abstract interface acos
 {
-  acos(acor paramacor) {}
+  public abstract void onAdClicked(GdtAd paramGdtAd);
   
-  public void a(String paramString)
-  {
-    QLog.i("GdtMvElementsHelper", 1, "callJs onReceiveValue " + paramString);
-  }
+  public abstract void onAdClosed(GdtAd paramGdtAd);
+  
+  public abstract void onAdFailedToLoad(GdtAd paramGdtAd, acor paramacor);
+  
+  public abstract void onAdImpression(GdtAd paramGdtAd);
+  
+  public abstract void onAdLoaded(GdtAd paramGdtAd);
 }
 
 

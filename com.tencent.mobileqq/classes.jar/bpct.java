@@ -1,22 +1,41 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDTextFace.1;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class bpct
-  implements View.OnTouchListener
 {
-  public bpct(EditVideoDTextFace.1 param1) {}
+  private List<bpcu> a = Collections.synchronizedList(new ArrayList());
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  void a(long paramLong)
   {
-    if (1 == paramMotionEvent.getAction())
-    {
-      bpcs.a(this.a.this$0);
-      yqu.a("video_edit_text", "clk_textWording", 0, 0, new String[] { this.a.this$0.a, "", "", "" });
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bpcu)localIterator.next()).a(paramLong);
     }
-    this.a.this$0.d();
-    return false;
+  }
+  
+  void a(long paramLong, int paramInt)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bpcu)localIterator.next()).a(paramLong, paramInt);
+    }
+  }
+  
+  public void a(bpcu parambpcu)
+  {
+    if (parambpcu == null)
+    {
+      bpam.c("LyricScrollHelper", "registerListener() lyricScrollListener == null.");
+      return;
+    }
+    if (this.a == null)
+    {
+      bpam.c("LyricScrollHelper", "registerListener() mScrollListener == null.");
+      return;
+    }
+    this.a.add(parambpcu);
   }
 }
 

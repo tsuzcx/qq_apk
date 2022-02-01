@@ -4,10 +4,10 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
-import pmy;
-import pnc;
+import pfs;
+import pfw;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import tzo;
+import tzq;
 
 public final class ReadinjoySPEventReport$3
   implements Runnable
@@ -16,7 +16,7 @@ public final class ReadinjoySPEventReport$3
   
   public void run()
   {
-    if ((!this.a) && (!pmy.c())) {}
+    if ((!this.a) && (!pfs.c())) {}
     label285:
     label293:
     label299:
@@ -26,12 +26,12 @@ public final class ReadinjoySPEventReport$3
       return;
       if (this.a)
       {
-        pmy.c(System.currentTimeMillis());
-        pmy.a(true);
+        pfs.c(System.currentTimeMillis());
+        pfs.a(true);
       }
-      pmy.b(this.a);
+      pfs.b(this.a);
       Object localObject;
-      if (pmy.b(9))
+      if (pfs.b(9))
       {
         ArrayList localArrayList = new ArrayList();
         oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
@@ -46,7 +46,7 @@ public final class ReadinjoySPEventReport$3
         localArrayList.add(localAttributeList);
         if (!this.a)
         {
-          long l = pmy.e();
+          long l = pfs.e();
           l = (System.currentTimeMillis() - l) / 1000L;
           localObject = new oidb_cmd0x80a.AttributeList();
           ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(2);
@@ -57,7 +57,7 @@ public final class ReadinjoySPEventReport$3
           localAttributeList.att_id.set(3);
           localAttributeList.att_name.set("isScreenTime");
           localPBStringField = localAttributeList.att_value;
-          if (!pmy.d()) {
+          if (!pfs.d()) {
             break label293;
           }
           localObject = "1";
@@ -65,25 +65,25 @@ public final class ReadinjoySPEventReport$3
           localPBStringField.set((String)localObject);
           localArrayList.add(localAttributeList);
         }
-        tzo.a(9, localArrayList);
+        tzq.a(9, localArrayList);
         if (!this.a) {
           break label299;
         }
-        pmy.d(System.currentTimeMillis());
-        pmy.c(0);
+        pfs.d(System.currentTimeMillis());
+        pfs.c(0);
       }
       for (;;)
       {
-        if (pnc.a != 1) {
+        if (pfw.a != 1) {
           break label304;
         }
-        pmy.d(false);
+        pfs.d(false);
         return;
         localObject = String.valueOf(0);
         break;
         localObject = "0";
         break label231;
-        pmy.a();
+        pfs.a();
       }
     }
   }

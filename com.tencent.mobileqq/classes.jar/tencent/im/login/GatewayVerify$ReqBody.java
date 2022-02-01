@@ -6,9 +6,10 @@ import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 public final class GatewayVerify$ReqBody
   extends MessageMicro<ReqBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 82, 162, 242, 322 }, new String[] { "msg_req_third_login", "msg_req_self_phone", "msg_req_connect_login", "msg_req_bind_phone_login" }, new Object[] { null, null, null, null }, ReqBody.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 82, 162, 242, 322, 402 }, new String[] { "msg_req_third_login", "msg_req_self_phone", "msg_req_connect_login", "msg_req_bind_phone_login", "msg_req_mask_qq_login" }, new Object[] { null, null, null, null, null }, ReqBody.class);
   public GatewayVerify.ReqBindPhoneLogin msg_req_bind_phone_login = new GatewayVerify.ReqBindPhoneLogin();
   public GatewayVerify.ReqConnectLogin msg_req_connect_login = new GatewayVerify.ReqConnectLogin();
+  public GatewayVerify.ReqMaskQQLogin msg_req_mask_qq_login = new GatewayVerify.ReqMaskQQLogin();
   public GatewayVerify.ReqBodySelfPhone msg_req_self_phone = new GatewayVerify.ReqBodySelfPhone();
   public GatewayVerify.ReqBodyThirdLogin msg_req_third_login = new GatewayVerify.ReqBodyThirdLogin();
 }

@@ -1,35 +1,14 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment;
 
 public class ajsg
-  implements View.OnClickListener
+  extends aocj
 {
-  public ajsg(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  private ajsg(AlphabetFriendFragment paramAlphabetFriendFragment) {}
   
-  public void onClick(View paramView)
+  protected void f()
   {
-    if ((this.a.d == 15) && (ChatHistoryTroopMemberFragment.a(this.a).size() > 0))
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("param_deleted_uins", ChatHistoryTroopMemberFragment.a(this.a));
-      this.a.getActivity().setResult(-1, localIntent);
-      if ((this.a.f == null) || (!this.a.f.equals(this.a.getActivity().app.getCurrentAccountUin()))) {
-        break label178;
-      }
-    }
-    label178:
-    for (int i = 0;; i = 1)
-    {
-      bcst.b(this.a.getActivity().app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.c, "" + i, "1", ChatHistoryTroopMemberFragment.a(this.a).toString());
-      this.a.getActivity().finish();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (AlphabetFriendFragment.b(this.a)) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
     }
   }
 }

@@ -1,16 +1,19 @@
-import android.database.DataSetObserver;
-import android.support.v4.view.ViewPager;
-import com.tencent.mobileqq.now.widget.SimpleCircleIndicator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class ayeq
-  extends DataSetObserver
+class ayeq
+  implements View.OnClickListener
 {
-  public ayeq(SimpleCircleIndicator paramSimpleCircleIndicator, ViewPager paramViewPager) {}
+  ayeq(ayeo paramayeo) {}
   
-  public void onChanged()
+  public void onClick(View paramView)
   {
-    super.onChanged();
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator.setCurrentItem(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem());
+    ayeo.a(this.a).a.clear();
+    ayeo.a(this.a).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

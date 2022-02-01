@@ -1,34 +1,31 @@
-import android.view.ScaleGestureDetector;
-import com.tencent.mobileqq.activity.PortraitImageview;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aeui
-  extends aeuk
+class aeui
+  implements bdhy
 {
-  public aeui(PortraitImageview paramPortraitImageview) {}
+  aeui(aeuh paramaeuh) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void a()
   {
-    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
-      try
-      {
-        float f1 = this.a.a();
-        float f2 = paramScaleGestureDetector.getScaleFactor();
-        f1 = Math.min(this.a.b(), Math.max(f1 * f2, 0.1F));
-        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
-        this.a.invalidate();
-        return true;
-      }
-      catch (IllegalArgumentException paramScaleGestureDetector)
-      {
-        paramScaleGestureDetector.printStackTrace();
-      }
-    }
-    return false;
+    QLog.i("JumpAction", 1, "system share.doShare show self dialog grant");
+    HashMap localHashMap = new HashMap();
+    bdmc.a(BaseApplication.getContext()).a("", "noSDPermissionShareSelftGrant", true, 0L, 0L, localHashMap, "");
+  }
+  
+  public void b()
+  {
+    QLog.i("JumpAction", 1, "system share.doShare show self dialog denied");
+    HashMap localHashMap = new HashMap();
+    bdmc.a(BaseApplication.getContext()).a("", "noSDPermissionShareSelftDeny", true, 0L, 0L, localHashMap, "");
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeui
  * JD-Core Version:    0.7.0.1
  */

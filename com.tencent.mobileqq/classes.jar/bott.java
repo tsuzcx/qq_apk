@@ -1,52 +1,95 @@
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.RecyclerView.SmoothScroller;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.NestedScrollingParentLayout;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import javax.annotation.Nonnull;
 
 public class bott
-  extends RecyclerView.OnScrollListener
+  extends RecyclerView.Adapter<botv>
 {
-  private boolean jdField_a_of_type_Boolean;
+  private static List<bosz> jdField_a_of_type_JavaUtilList;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public bott(NestedScrollingParentLayout paramNestedScrollingParentLayout) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public bott(Context paramContext, RecyclerView paramRecyclerView)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout) != NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramInt != 0) || (!this.jdField_a_of_type_Boolean));
-      this.jdField_a_of_type_Boolean = false;
-      paramRecyclerView = NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).getLayoutManager();
-      paramRecyclerView = NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).a(paramRecyclerView);
-      NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout, NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).getChildAdapterPosition(paramRecyclerView));
-    } while (NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout) < 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("NestedScrollingParentLayout", 2, "mVideoItemListener onScrollStateChanged onScrolled dx " + paramInt);
-    }
-    paramRecyclerView = NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).a(NestedScrollingParentLayout.c(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).getLayoutManager());
-    paramRecyclerView.setTargetPosition(NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout));
-    NestedScrollingParentLayout.c(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).getLayoutManager().startSmoothScroll(paramRecyclerView);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    a();
+    this.jdField_a_of_type_JavaLangString = ((bosz)jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).jdField_a_of_type_JavaLangString;
+    this.b = ((bosz)jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).b;
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  private void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NestedScrollingParentLayout", 2, "mVideoItemListener onScrolled dx +=" + paramInt1);
+    jdField_a_of_type_JavaUtilList = bosy.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @NonNull
+  public botv a(@NonNull ViewGroup paramViewGroup, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      this.jdField_a_of_type_AndroidContentContext = paramViewGroup.getContext();
     }
-    if (NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout) != NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout)) {}
-    while ((NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout) >= 0) || ((paramInt1 == 0) && (paramInt2 == 0))) {
+    return new botv(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558577, paramViewGroup, false));
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = ((bosz)jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
+    this.b = ((bosz)jdField_a_of_type_JavaUtilList.get(paramInt)).b;
+  }
+  
+  public void a(TextView paramTextView)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+  }
+  
+  public void a(@NonNull botv parambotv, int paramInt)
+  {
+    parambotv.a(((bosz)jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString);
+    if (paramInt == this.jdField_a_of_type_Int) {
+      parambotv.a(true);
+    }
+    for (;;)
+    {
+      parambotv.itemView.setOnClickListener(new botu(this, paramInt, parambotv));
+      EventCollector.getInstance().onRecyclerBindViewHolder(parambotv, paramInt, getItemId(paramInt));
       return;
+      parambotv.a(false);
     }
-    paramInt1 = (int)(paramInt1 / NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout));
-    NestedScrollingParentLayout.c(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).scrollBy(paramInt1, paramInt2);
-    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  @Nonnull
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public int getItemCount()
+  {
+    return jdField_a_of_type_JavaUtilList.size();
   }
 }
 

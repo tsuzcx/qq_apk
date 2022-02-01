@@ -1,28 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qmc
-  implements psr
+  implements View.OnClickListener
 {
   qmc(qmb paramqmb) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.d("RvPolymericContainer", 2, "stopScroll as videoplayer start");
-    qly.b(this.a.a);
-  }
-  
-  public void b()
-  {
-    QLog.d("RvPolymericContainer", 2, "startScroll as videoplayer stop");
-    if (qly.a(this.a.a) != null) {
-      qly.a(this.a.a, qly.a(this.a.a).a());
+    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
+    if (localsgf != null) {
+      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-  }
-  
-  public void c()
-  {
-    QLog.d("RvPolymericContainer", 2, "startScroll as videoplayer complete");
-    qly.a(this.a.a, 1000L);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

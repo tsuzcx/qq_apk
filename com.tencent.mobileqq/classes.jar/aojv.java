@@ -1,61 +1,69 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
-public class aojv
+class aojv
+  extends Handler
 {
-  public static aojt a(aojw paramaojw, ArrayList<aoju> paramArrayList)
+  aojv(aoju paramaoju, Looper paramLooper, QQAppInterface paramQQAppInterface)
   {
-    if ((paramaojw != null) && (paramArrayList != null)) {}
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      int i;
-      try
-      {
-        if (paramaojw.d() != null) {
-          break label134;
-        }
-        QLog.e("JumpParserFactory", 1, "createJumpParser error: param is null");
-        return null;
+    default: 
+      return;
+    case 1001: 
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadPhoto", 2, "Get Message Progress. clientKey= " + paramMessage.arg1 + " progress=" + paramMessage.arg2);
       }
-      catch (Exception paramaojw)
-      {
-        aoju localaoju;
-        QLog.e("JumpParserFactory", 1, "createJumpParser error: " + paramaojw.getMessage());
-        return null;
+      i = paramMessage.arg1;
+      this.jdField_a_of_type_Aoju.a(paramMessage.what, i, paramMessage.arg2);
+      return;
+    case 1000: 
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadPhoto", 2, "Get Message Finished. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
       }
-      if (i < paramArrayList.size())
-      {
-        localaoju = (aoju)paramArrayList.get(i);
-        if (!paramaojw.d().startsWith(localaoju.a())) {
-          break label141;
-        }
-        paramaojw = localaoju.a();
-        if (paramaojw != null)
-        {
-          paramaojw = paramaojw.newInstance();
-          if ((paramaojw instanceof aojt)) {
-            paramaojw = (aojt)paramaojw;
-          } else {
-            QLog.e("JumpParserFactory", 1, "createJumpParser error: not extends JumpParserBase");
-          }
-        }
-        else
-        {
-          paramaojw = null;
-        }
+      i = paramMessage.arg1;
+      this.jdField_a_of_type_Aoju.a(paramMessage.what, i, paramMessage.arg2);
+      return;
+    case 1003: 
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadPhoto", 2, "Get Message failed. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
       }
-      else
-      {
-        paramaojw = null;
-        continue;
-        label134:
-        i = 0;
-        continue;
+      i = paramMessage.arg1;
+      this.jdField_a_of_type_Aoju.a(paramMessage.what, i, paramMessage.arg2);
+      return;
+    case 1005: 
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadPhoto", 2, "Get Message task removed. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
       }
-      return paramaojw;
-      label141:
-      i += 1;
+      i = paramMessage.arg1;
+      this.jdField_a_of_type_Aoju.a(paramMessage.what, i, paramMessage.arg2);
+      this.jdField_a_of_type_Aoju.a.remove(i);
+      return;
+    case 1004: 
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadPhoto", 2, "Get Message no task. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
+      }
+      this.jdField_a_of_type_Aoju.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2);
+      this.jdField_a_of_type_Aoju.a.clear();
+      return;
     }
+    paramMessage = (Object[])paramMessage.obj;
+    int i = ((Integer)paramMessage[0]).intValue();
+    aojz localaojz = (aojz)paramMessage[1];
+    int j = ((Integer)paramMessage[2]).intValue();
+    int k = ((Integer)paramMessage[3]).intValue();
+    this.jdField_a_of_type_Aoju.a(localaojz.jdField_a_of_type_Long, j, k);
+    this.jdField_a_of_type_Aoju.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, localaojz.jdField_a_of_type_JavaLangString, localaojz.jdField_a_of_type_Long, j, k);
   }
 }
 

@@ -2,11 +2,11 @@ package com.tencent.mobileqq.search.util;
 
 import android.content.Context;
 import android.os.SystemClock;
-import anni;
-import bbuw;
-import bglp;
-import bgpa;
-import bgrn;
+import anzj;
+import bcnp;
+import bhlq;
+import bhpc;
+import bhrp;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -23,7 +23,7 @@ public class VADHelper
   
   static
   {
-    jdField_a_of_type_Int = bgrn.b;
+    jdField_a_of_type_Int = bhrp.b;
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
     jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap());
     jdField_a_of_type_Boolean = false;
@@ -118,7 +118,7 @@ public class VADHelper
     QLog.i(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
     if ((jdField_b_of_type_Boolean) && (!c))
     {
-      bglp.a(paramContext, 230, anni.a(2131714705), localStringBuilder.toString(), "", "ok", new bbuw(), null).show();
+      bhlq.a(paramContext, 230, anzj.a(2131714814), localStringBuilder.toString(), "", "ok", new bcnp(), null).show();
       c = true;
     }
     a();

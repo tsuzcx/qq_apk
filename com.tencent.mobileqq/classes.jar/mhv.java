@@ -1,37 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.av.ui.QavPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
 
-public class mhv
-  implements ValueAnimator.AnimatorUpdateListener
+class mhv
+  implements DialogInterface.OnClickListener
 {
-  public mhv(QavPanel paramQavPanel, int[] paramArrayOfInt) {}
+  mhv(mht parammht) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if ((i >= 0) && (i <= this.jdField_a_of_type_ArrayOfInt[0]))
-    {
-      j = this.jdField_a_of_type_ArrayOfInt[0];
-      i = (int)(i * 255 * 1.0F / j);
-      QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).setAlpha(i);
-      QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).a(true);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    do
+    this.a.a.c();
+    mhr.a(this.a.a, false);
+    if (paramInt == 1)
     {
+      bdll.b(null, "CliOper", "", "", "0X800A565", "0X800A565", 0, 0, "", "", "", "");
+      mhr.a(this.a.a);
+    }
+    while (paramInt != 0) {
       return;
-      if ((i > this.jdField_a_of_type_ArrayOfInt[0]) && (i <= this.jdField_a_of_type_ArrayOfInt[1]))
-      {
-        QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).a(true);
-        QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).setAlpha(255);
-        return;
-      }
-    } while ((i <= this.jdField_a_of_type_ArrayOfInt[1]) || (i > this.jdField_a_of_type_ArrayOfInt[2]));
-    int j = this.jdField_a_of_type_ArrayOfInt[2];
-    int k = this.jdField_a_of_type_ArrayOfInt[1];
-    i = (int)((this.jdField_a_of_type_ArrayOfInt[2] - i) * 255 * 1.0F / (j - k));
-    QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).setAlpha(i);
-    QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).a(true);
+    }
+    mhr.a(this.a.a, mhr.a(this.a.a).a().w);
   }
 }
 

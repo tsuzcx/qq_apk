@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Random;
@@ -108,7 +108,7 @@ public class RollNumberView
       init(0);
     }
     localTextView.setText(".");
-    localTextView.setContentDescription(anni.a(2131712266));
+    localTextView.setContentDescription(anzj.a(2131712375));
     addView(localTextView, 0);
     i = init(i);
     if (i > this.max) {}

@@ -1,15 +1,27 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.Collections;
+import java.util.List;
 
-public class wxg
-  implements wld<wzz, xbk>
+class wxg
+  extends SimpleObserver<List<xiw>>
 {
-  public void a(@NonNull wzz paramwzz, @Nullable xbk paramxbk, @NonNull ErrorMessage paramErrorMessage)
+  wxg(wxd paramwxd, wxh paramwxh, wvn paramwvn) {}
+  
+  public void a(List<xiw> paramList)
   {
-    paramwzz = new wxh(this, paramErrorMessage, paramwzz.b, paramwzz.jdField_c_of_type_JavaLangString, paramwzz.jdField_c_of_type_Int);
-    wfo.a().dispatch(paramwzz);
+    super.onNext(paramList);
+    if (this.jdField_a_of_type_Wxh != null) {
+      this.jdField_a_of_type_Wxh.a(this.jdField_a_of_type_Wvn, Collections.emptyList());
+    }
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    if (this.jdField_a_of_type_Wxh != null) {
+      this.jdField_a_of_type_Wxh.a(this.jdField_a_of_type_Wvn, paramError);
+    }
   }
 }
 

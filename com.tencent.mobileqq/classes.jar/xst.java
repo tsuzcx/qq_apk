@@ -1,12 +1,10 @@
-import android.content.Intent;
-
-public abstract interface xst
+public class xst
 {
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public float a;
+  public int a;
+  public Object a;
+  public boolean a;
+  public float b;
 }
 
 

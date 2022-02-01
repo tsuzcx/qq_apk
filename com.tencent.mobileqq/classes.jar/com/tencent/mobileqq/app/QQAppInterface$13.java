@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import bgkl;
+import bhkm;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinEngine;
 import java.io.File;
@@ -28,7 +28,7 @@ class QQAppInterface$13
           QLog.d("playThemeVoice", 2, "Uri:" + ((StringBuilder)localObject).toString());
         }
         if (localFile.exists()) {
-          bgkl.a(Uri.fromFile(localFile), false, false);
+          bhkm.a(Uri.fromFile(localFile), false, false);
         }
       }
     }

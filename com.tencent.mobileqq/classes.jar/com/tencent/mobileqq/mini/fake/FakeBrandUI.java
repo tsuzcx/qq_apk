@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.fake;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import aqcb;
+import aqre;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.app.AppLoaderFactory;
 import com.tencent.mobileqq.mini.app.AppUIProxy;
@@ -91,7 +91,7 @@ public class FakeBrandUI
     return this.mAppUIProxy;
   }
   
-  public aqcb getColorNoteController()
+  public aqre getColorNoteController()
   {
     IAppUIProxy localIAppUIProxy = getAppUIProxy();
     if ((localIAppUIProxy instanceof AppUIProxy)) {

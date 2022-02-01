@@ -1,21 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.im.oidb.articlesummary.articlesummary.PackJumpInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.articlesummary.feeds_info.LocationInfo;
 
 public class qxy
-  implements View.OnClickListener
+  implements Cloneable
 {
-  public qxy(ComponentJump paramComponentJump, articlesummary.PackJumpInfo paramPackJumpInfo) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void onClick(View paramView)
+  private static qxy b(feeds_info.LocationInfo paramLocationInfo)
   {
-    String str = this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_url.get();
-    pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), str);
-    qam.a(2, this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_wording.get());
-    EventCollector.getInstance().onViewClicked(paramView);
+    qxy localqxy = new qxy();
+    String str;
+    if (paramLocationInfo.bytes_name.has())
+    {
+      str = paramLocationInfo.bytes_name.get().toStringUtf8();
+      localqxy.jdField_a_of_type_JavaLangString = str;
+      localqxy.jdField_a_of_type_Int = paramLocationInfo.uint32_longitude.get();
+      localqxy.jdField_b_of_type_Int = paramLocationInfo.uint32_latitude.get();
+      if (!paramLocationInfo.bytes_icon_url.has()) {
+        break label90;
+      }
+    }
+    label90:
+    for (paramLocationInfo = paramLocationInfo.bytes_icon_url.get().toStringUtf8();; paramLocationInfo = "")
+    {
+      localqxy.jdField_b_of_type_JavaLangString = paramLocationInfo;
+      return localqxy;
+      str = "";
+      break;
+    }
+  }
+  
+  public qxy a()
+  {
+    try
+    {
+      qxy localqxy = (qxy)super.clone();
+      return localqxy;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    return null;
   }
 }
 

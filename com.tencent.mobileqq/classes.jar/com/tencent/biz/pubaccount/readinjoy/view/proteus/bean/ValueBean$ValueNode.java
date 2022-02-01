@@ -28,9 +28,28 @@ class ValueBean$ValueNode
     return null;
   }
   
+  private String getDynamicValue(String paramString)
+  {
+    return "${" + paramString + "}";
+  }
+  
+  private boolean isDynamicInString(String paramString1, String paramString2)
+  {
+    boolean bool = false;
+    if (paramString2.contains(getDynamicValue(paramString1))) {
+      bool = true;
+    }
+    return bool;
+  }
+  
   private boolean isDynamicValue(String paramString1, String paramString2)
   {
     return (paramString1.equals(paramString2)) || (("$" + paramString1).equals(paramString2));
+  }
+  
+  private String replace$Value(String paramString1, String paramString2, Object paramObject)
+  {
+    return paramString1.replace(getDynamicValue(paramString2), String.valueOf(paramObject));
   }
   
   private boolean setTrueValue(Object paramObject1, Object paramObject2, String paramString, Object paramObject3)
@@ -52,10 +71,17 @@ class ValueBean$ValueNode
         try
         {
           localObject3 = ((JSONArray)localObject1).get(i);
-          if ((localObject3 instanceof String)) {
+          if ((localObject3 instanceof String))
+          {
+            paramObject1 = (String)localObject3;
             if (isDynamicValue(paramString, (String)localObject3))
             {
               ((JSONArray)localObject2).put(i, paramObject3);
+              bool2 = true;
+            }
+            else if (isDynamicInString(paramString, paramObject1))
+            {
+              ((JSONArray)localObject2).put(i, replace$Value(paramObject1, paramString, paramObject3));
               bool2 = true;
             }
             else
@@ -72,7 +98,7 @@ class ValueBean$ValueNode
         catch (JSONException paramObject1)
         {
           LogUtil.QLog.e("ValueBean", 2, "setTrueValue: ", paramObject1);
-          break label400;
+          break label469;
         }
         paramObject1 = null;
         if (i < ((JSONArray)localObject2).length()) {
@@ -85,21 +111,23 @@ class ValueBean$ValueNode
         ((JSONArray)localObject2).put(i, paramObject2);
         bool2 = setTrueValue(localObject3, paramObject2, paramString, paramObject3);
         bool2 = bool1 | bool2;
-        break label396;
+        break label465;
       }
     }
-    else if ((paramObject1 instanceof JSONObject))
+    else
     {
+      if (!(paramObject1 instanceof JSONObject)) {
+        break label463;
+      }
       localObject1 = (JSONObject)paramObject1;
       localObject2 = (JSONObject)paramObject2;
       localObject3 = ((JSONObject)localObject1).keys();
     }
-    label396:
-    label400:
-    label413:
-    for (boolean bool1 = false;; bool1 = bool2)
-    {
-      bool2 = bool1;
+    label463:
+    label465:
+    label469:
+    label482:
+    for (boolean bool1 = false;; bool1 = bool2) {
       if (((Iterator)localObject3).hasNext())
       {
         String str = (String)((Iterator)localObject3).next();
@@ -107,10 +135,17 @@ class ValueBean$ValueNode
         try
         {
           localObject4 = ((JSONObject)localObject1).get(str);
-          if ((localObject4 instanceof String)) {
-            if (isDynamicValue(paramString, (String)localObject4))
+          if ((localObject4 instanceof String))
+          {
+            paramObject1 = (String)localObject4;
+            if (isDynamicValue(paramString, paramObject1))
             {
               ((JSONObject)localObject2).put(str, paramObject3);
+              bool2 = true;
+            }
+            else if (isDynamicInString(paramString, paramObject1))
+            {
+              ((JSONObject)localObject2).put(str, replace$Value(paramObject1, paramString, paramObject3));
               bool2 = true;
             }
             else
@@ -127,7 +162,7 @@ class ValueBean$ValueNode
         catch (JSONException paramObject1)
         {
           LogUtil.QLog.e("ValueBean", 2, "setTrueValue: ", paramObject1);
-          break label413;
+          break label482;
         }
         paramObject2 = ((JSONObject)localObject2).opt(str);
         paramObject1 = paramObject2;
@@ -138,12 +173,12 @@ class ValueBean$ValueNode
         }
         bool2 = setTrueValue(localObject4, paramObject1, paramString, paramObject3);
         bool2 = bool1 | bool2;
-        continue;
-        bool2 = false;
       }
       else
       {
+        bool2 = bool1;
         return bool2;
+        return false;
         bool1 = bool2;
         i += 1;
         break;

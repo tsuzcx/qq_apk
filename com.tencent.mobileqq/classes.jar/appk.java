@@ -1,24 +1,79 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 
 class appk
-  extends anqd
+  implements apqg
 {
-  appk(appj paramappj) {}
+  appk(appj paramappj, appn paramappn, ArCloudConfigInfo paramArCloudConfigInfo, apne paramapne) {}
   
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  public void a()
   {
-    if ((appj.a(this.a) != null) && (paramList != null))
+    if (this.jdField_a_of_type_Appn != null) {
+      this.jdField_a_of_type_Appn.d();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Appn != null) {
+      this.jdField_a_of_type_Appn.a(paramInt);
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    int j = 0;
+    int i = 0;
+    if (this.jdField_a_of_type_Appn != null) {
+      this.jdField_a_of_type_Appn.a(paramBoolean, paramInt, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    }
+    if (paramInt == 2)
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      this.jdField_a_of_type_Appj.jdField_d_of_type_Long = (System.currentTimeMillis() - this.jdField_a_of_type_Appj.jdField_a_of_type_Long);
+      localappj = this.jdField_a_of_type_Appj;
+      if (paramBoolean)
       {
-        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-        if ((localMessageRecord != null) && (localMessageRecord.uniseq == appj.a(this.a).b)) {
-          this.a.a(localMessageRecord.uniseq);
-        }
+        paramInt = i;
+        localappj.jdField_a_of_type_Int = paramInt;
       }
+    }
+    while (paramInt != 3) {
+      for (;;)
+      {
+        return;
+        paramInt = 1;
+      }
+    }
+    this.jdField_a_of_type_Appj.g = (System.currentTimeMillis() - this.jdField_a_of_type_Appj.jdField_a_of_type_Long);
+    appj localappj = this.jdField_a_of_type_Appj;
+    if (paramBoolean) {}
+    for (paramInt = j;; paramInt = 1)
+    {
+      localappj.jdField_b_of_type_Int = paramInt;
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Appn != null) {
+      this.jdField_a_of_type_Appn.a(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    }
+    this.jdField_a_of_type_Appj.jdField_b_of_type_Long = System.currentTimeMillis();
+    appj localappj = this.jdField_a_of_type_Appj;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
+    {
+      localappj.jdField_d_of_type_Int = i;
+      this.jdField_a_of_type_Appj.e();
+      if (paramBoolean)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_b_of_type_Int != 1) {
+          appj.a(this.jdField_a_of_type_Appj, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.a.a, this.jdField_a_of_type_Apne);
+        }
+        appj.a(this.jdField_a_of_type_Appj, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+      }
+      return;
     }
   }
 }

@@ -1,39 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Build.VERSION;
 
 public class xvk
-  extends BroadcastReceiver
 {
-  public xvk(StoryPlayerWebFragment paramStoryPlayerWebFragment) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static boolean a(int paramInt)
   {
-    yqp.a("StoryPlayerWebFragment", "onReceive() Action: %s", paramIntent.getAction());
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    switch (paramInt)
     {
-      paramContext = paramIntent.getStringExtra("event");
-      yqp.a("StoryPlayerWebFragment", "onReceive() Event: %s", paramContext);
-      if (!"closeMeEvent".equals(paramContext)) {
-        break label70;
-      }
-      if (this.a.a != null) {
-        this.a.a.a();
-      }
+    default: 
+      bool1 = false;
+    case 3: 
+    case 1: 
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (Build.VERSION.SDK_INT >= 21);
+      return false;
     }
-    label70:
-    do
-    {
-      return;
-      if (!"readyEvent".equals(paramContext)) {
-        break;
-      }
-    } while (this.a.a == null);
-    this.a.a.b();
-    return;
-    QQToast.a(this.a.getActivity(), 1, "unknown event: " + paramContext, 1).a();
+    return false;
   }
 }
 

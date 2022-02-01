@@ -1,60 +1,25 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
-class bfjo
-  implements Comparator<ajtt>
+public final class bfjo
+  implements DialogInterface.OnClickListener
 {
-  private final TroopInfo a;
+  public bfjo(Activity paramActivity) {}
   
-  bfjo(TroopInfo paramTroopInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramTroopInfo;
-  }
-  
-  public int a(ajtt paramajtt1, ajtt paramajtt2)
-  {
-    int j = 5;
-    int i;
-    if (bfjk.b(paramajtt1.jdField_a_of_type_JavaLangString, this.a)) {
-      i = 5;
-    }
-    for (;;)
+    switch (paramInt)
     {
-      if (bfjk.b(paramajtt2.jdField_a_of_type_JavaLangString, this.a)) {}
-      for (;;)
-      {
-        if (i != j)
-        {
-          return j - i;
-          if (bfjk.a(paramajtt1.jdField_a_of_type_JavaLangString, this.a))
-          {
-            i = 3;
-            break;
-          }
-          if (!paramajtt1.jdField_a_of_type_Boolean) {
-            break label134;
-          }
-          i = 1;
-          break;
-          if (bfjk.a(paramajtt2.jdField_a_of_type_JavaLangString, this.a))
-          {
-            j = 3;
-            continue;
-          }
-          if (!paramajtt2.jdField_a_of_type_Boolean) {
-            break label128;
-          }
-          j = 1;
-          continue;
-        }
-        return ChnToSpell.a(bfjk.c(paramajtt1), 1).compareToIgnoreCase(ChnToSpell.a(bfjk.c(paramajtt2), 1));
-        label128:
-        j = 0;
-      }
-      label134:
-      i = 0;
+    default: 
+      return;
+    case 0: 
+      paramDialogInterface.dismiss();
+      return;
     }
+    TroopBarPublishUtils.c(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

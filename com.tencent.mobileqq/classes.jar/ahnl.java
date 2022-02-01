@@ -1,16 +1,24 @@
-import android.view.MotionEvent;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-class ahnl
-  implements View.OnTouchListener
+public class ahnl
+  extends RecyclerView.ViewHolder
 {
-  ahnl(ahnj paramahnj, afzq paramafzq) {}
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public ImageView b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ahnl(View paramView)
   {
-    this.jdField_a_of_type_Afzq.onTouch(paramView, paramMotionEvent);
-    return false;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372821));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372820));
+    this.b = ((ImageView)paramView.findViewById(2131372818));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131372822));
   }
 }
 

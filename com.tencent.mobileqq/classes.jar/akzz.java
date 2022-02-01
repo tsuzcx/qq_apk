@@ -1,24 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
-class akzz
-  implements View.OnClickListener
+public class akzz
+  extends RecyclerView.OnScrollListener
 {
-  akzz(akyh paramakyh) {}
+  public akzz(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (akyh.a(this.a) != null) {}
-    for (QQAppInterface localQQAppInterface = akyh.a(this.a).app;; localQQAppInterface = null)
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (localQQAppInterface != null) {
-        appj.a().a(akyh.a(this.a), localQQAppInterface);
-      }
-      appj.a().a();
-      EventCollector.getInstance().onViewClicked(paramView);
+      aigk.a(bool);
       return;
     }
   }

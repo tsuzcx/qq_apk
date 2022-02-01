@@ -1,12 +1,16 @@
-public abstract interface alaf
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+
+class alaf
+  extends RecyclerView.ViewHolder
 {
-  public abstract boolean isNeedAutoCloseWhenAccountChange();
+  alag jdField_a_of_type_Alag;
   
-  public abstract void onClose();
-  
-  public abstract void onEnter();
-  
-  public abstract void onOverride();
+  alaf(alae paramalae, View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_Alag = ((alag)paramView);
+  }
 }
 
 

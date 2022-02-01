@@ -1,49 +1,72 @@
-import android.app.PendingIntent;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.settings.QQStoryShieldActivity;
+import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.Switch;
 
 public class yah
-  implements DialogInterface.OnClickListener
+  extends wjd
 {
-  public yah(QQStoryMainActivity paramQQStoryMainActivity, Intent paramIntent) {}
+  public yah(QQStoryShieldActivity paramQQStoryShieldActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, QQStoryUserInfo paramQQStoryUserInfo)
   {
-    switch (paramInt)
+    boolean bool = true;
+    QQStoryShieldActivity.a(this.a);
+    Switch localSwitch;
+    if ((paramBoolean) && (paramQQStoryUserInfo != null))
     {
+      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
+      this.a.b.setOnCheckedChangeListener(null);
+      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
+      if (paramQQStoryUserInfo.isAllowed != 1) {
+        break label119;
+      }
+      paramBoolean = true;
+      localSwitch.setChecked(paramBoolean);
+      localSwitch = this.a.b;
+      if (paramQQStoryUserInfo.isInterested != 1) {
+        break label124;
+      }
     }
-    do
+    label119:
+    label124:
+    for (paramBoolean = bool;; paramBoolean = false)
     {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog back");
-        }
-        nmj.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity, 0, "", "");
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.finish();
-        try
-        {
-          paramDialogInterface = (PendingIntent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("activity_finish_run_pendingIntent");
-          if ((paramDialogInterface != null) && ((paramDialogInterface instanceof PendingIntent)))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->finish--send callback using PendingIntent");
-            }
-            paramDialogInterface.send();
-          }
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.moveTaskToBack(true);
-          return;
-        }
-        catch (Throwable paramDialogInterface) {}
-      } while (!QLog.isColorLevel());
-      QLog.e("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog ", paramDialogInterface);
+      localSwitch.setChecked(paramBoolean);
+      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
+      this.a.b.setOnCheckedChangeListener(this.a);
       return;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->qbShowShareResultDialog--stay");
+      paramBoolean = false;
+      break;
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    boolean bool = true;
+    paramBoolean2 = true;
+    this.a.jdField_a_of_type_Bjbv.b();
+    if (paramBoolean1) {
+      return;
+    }
+    QQToast.a(this.a, 2131694200, 0).b(this.a.getTitleBarHeight());
+    if (paramBoolean3)
+    {
+      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
+      if (!this.a.jdField_a_of_type_ComTencentWidgetSwitch.isChecked()) {}
+      for (paramBoolean1 = paramBoolean2;; paramBoolean1 = false)
+      {
+        localSwitch.setChecked(paramBoolean1);
+        return;
+      }
+    }
+    Switch localSwitch = this.a.b;
+    if (!this.a.b.isChecked()) {}
+    for (paramBoolean1 = bool;; paramBoolean1 = false)
+    {
+      localSwitch.setChecked(paramBoolean1);
+      return;
+    }
   }
 }
 

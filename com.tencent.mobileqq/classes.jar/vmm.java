@@ -1,30 +1,40 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.QCircleInitBean;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import com.tencent.biz.qqcircle.launchbean.QCirclePolymerizationBean;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import common.config.service.QzoneConfig;
+import feedcloud.FeedCloudCommon.Entry;
+import java.util.ArrayList;
+import java.util.Arrays;
+import qqcircle.QQCircleFeedBase.StImageBusiData;
+import qqcircle.QQCircleFeedBase.StSimulateData;
 
-class vmm
+public class vmm
   implements View.OnClickListener
 {
-  vmm(vmk paramvmk) {}
+  public vmm(QCircleContentOperationView paramQCircleContentOperationView, QQCircleFeedBase.StImageBusiData paramStImageBusiData) {}
   
   public void onClick(View paramView)
   {
-    boolean bool = false;
-    QCircleInitBean localQCircleInitBean = vmk.a(this.a, false);
-    if (localQCircleInitBean != null)
+    Object localObject1 = new QQCircleFeedBase.StSimulateData();
+    ((QQCircleFeedBase.StSimulateData)localObject1).material_id.set(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StImageBusiData.simulate_date.material_id.get());
+    ((QQCircleFeedBase.StSimulateData)localObject1).simulate_name.set(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StImageBusiData.simulate_date.simulate_name.get());
+    ((QQCircleFeedBase.StSimulateData)localObject1).simulate_schema.set(brdx.a(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StImageBusiData.simulate_date.material_id.get(), ""));
+    Object localObject2 = new QCirclePolymerizationBean();
+    ((QCirclePolymerizationBean)localObject2).setSimulateData((QQCircleFeedBase.StSimulateData)localObject1);
+    ((QCirclePolymerizationBean)localObject2).setPolymerizationType(20);
+    ((QCirclePolymerizationBean)localObject2).setExt1From(2);
+    uyx.a(paramView.getContext(), (QCirclePolymerizationBean)localObject2);
+    localObject2 = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.a();
+    if (QCircleContentOperationView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView)) {}
+    for (localObject1 = "1";; localObject1 = "2")
     {
-      vrf.a("", 17, 3);
-      localQCircleInitBean.mFromReportBean = this.a.a().clone().setElementIdStr("portraitlist");
-      if (QzoneConfig.getInstance().getConfig("qqcircle", "qqcircle_push_feeddetail_recom", 0) == 0) {
-        bool = true;
-      }
-      localQCircleInitBean.isSingleFeed = bool;
-      uxo.a(localQCircleInitBean);
+      vtr.a(83, 2, (ExtraTypeInfo)localObject2, new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("ext1", (String)localObject1) })), QCircleContentOperationView.g(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView));
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,6 +1,5 @@
 package com.tencent.qqlive.tvkplayer.tools.utils;
 
-import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
@@ -9,8 +8,10 @@ import com.tencent.qqlive.tvkplayer.playerwrapper.player.tools.TVKCodecUtils;
 import com.tencent.qqlive.tvkplayer.tools.config.TVKConfigField;
 import com.tencent.qqlive.tvkplayer.tools.config.TVKMediaPlayerConfig.PlayerConfig;
 import com.tencent.qqlive.tvkplayer.vinfo.TVKPlayerVideoInfo;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -18,6 +19,7 @@ import java.util.Set;
 public class TVKPlayerUtils
 {
   public static final String TAG = "MediaPlayerMgr[TVKPlayerUtils.java]";
+  private static final List<String> oppoHevcBlackArrayList = Arrays.asList(new String[] { "OPPO A79", "OPPO A73", "OPPO A83", "OPPO A73t", "OPPO A79t", "OPPO A79k", "OPPO A79kt" });
   
   public static void addProxyExtraMapCdnPlay(TVKPlayerVideoInfo paramTVKPlayerVideoInfo)
   {
@@ -33,27 +35,6 @@ public class TVKPlayerUtils
     if ((!((Boolean)TVKMediaPlayerConfig.PlayerConfig.is_use_p2p_parse_xml.getValue()).booleanValue()) && (!paramTVKPlayerVideoInfo.getExtraRequestParamsMap().containsKey("xmlparse"))) {
       paramTVKPlayerVideoInfo.addProxyExtraMap("xmlparse", String.valueOf(1));
     }
-  }
-  
-  private static void dealHdrEnhanceParams(TVKPlayerVideoInfo paramTVKPlayerVideoInfo)
-  {
-    if ((((Boolean)TVKMediaPlayerConfig.PlayerConfig.hdr_enable.getValue()).booleanValue()) && (((Boolean)TVKMediaPlayerConfig.PlayerConfig.hdr_enhance_decode_enable.getValue()).booleanValue()))
-    {
-      if ((TVKCodecUtils.isBlackListForHdr10Enhance()) || (TVKCodecUtils.isBlackListForVidHdr10Enhance(paramTVKPlayerVideoInfo.getVid())) || (Build.VERSION.SDK_INT < 23))
-      {
-        i = TVKUtils.optInt(paramTVKPlayerVideoInfo.getExtraRequestParamValue("spvideo", String.valueOf(0)), 0) & 0x7F;
-        paramTVKPlayerVideoInfo.getExtraRequestParamsMap().remove("spvideo");
-        paramTVKPlayerVideoInfo.getExtraRequestParamsMap().put("spvideo", String.valueOf(i));
-        TVKLogUtil.i("MediaPlayerMgr[TVKPlayerUtils.java]", "dealHdrEnhanceParams not support: spvideo=" + i);
-      }
-    }
-    else {
-      return;
-    }
-    int i = TVKUtils.optInt(paramTVKPlayerVideoInfo.getExtraRequestParamValue("spvideo", String.valueOf(0)), 0) | 0x80;
-    paramTVKPlayerVideoInfo.getExtraRequestParamsMap().remove("spvideo");
-    paramTVKPlayerVideoInfo.getExtraRequestParamsMap().put("spvideo", String.valueOf(i));
-    TVKLogUtil.i("MediaPlayerMgr[TVKPlayerUtils.java]", "dealHdrEnhanceParams: spvideo=" + i);
   }
   
   public static int dealHevcLv(TVKPlayerVideoInfo paramTVKPlayerVideoInfo, String paramString, boolean paramBoolean)
@@ -307,54 +288,54 @@ public class TVKPlayerUtils
     // Byte code:
     //   0: iconst_0
     //   1: istore_3
-    //   2: invokestatic 346	com/tencent/qqlive/tvkplayer/TVideoMgr:getApplicationContext	()Landroid/content/Context;
-    //   5: invokestatic 352	com/tencent/qqlive/tvkplayer/playerwrapper/player/TVKPlayerStrategy:isSelfPlayerAvailable	(Landroid/content/Context;)Z
+    //   2: invokestatic 344	com/tencent/qqlive/tvkplayer/TVideoMgr:getApplicationContext	()Landroid/content/Context;
+    //   5: invokestatic 350	com/tencent/qqlive/tvkplayer/playerwrapper/player/TVKPlayerStrategy:isSelfPlayerAvailable	(Landroid/content/Context;)Z
     //   8: ifne +5 -> 13
     //   11: iload_0
     //   12: ireturn
-    //   13: invokestatic 346	com/tencent/qqlive/tvkplayer/TVideoMgr:getApplicationContext	()Landroid/content/Context;
-    //   16: invokestatic 355	com/tencent/qqlive/tvkplayer/playerwrapper/player/TVKPlayerStrategy:isEnabledHWDec	(Landroid/content/Context;)Z
+    //   13: invokestatic 344	com/tencent/qqlive/tvkplayer/TVideoMgr:getApplicationContext	()Landroid/content/Context;
+    //   16: invokestatic 353	com/tencent/qqlive/tvkplayer/playerwrapper/player/TVKPlayerStrategy:isEnabledHWDec	(Landroid/content/Context;)Z
     //   19: ifeq +99 -> 118
-    //   22: getstatic 358	com/tencent/qqlive/tvkplayer/tools/config/TVKMediaPlayerConfig$PlayerConfig:is_use_mediacodec	Lcom/tencent/qqlive/tvkplayer/tools/config/TVKConfigField;
-    //   25: invokevirtual 36	com/tencent/qqlive/tvkplayer/tools/config/TVKConfigField:getValue	()Ljava/lang/Object;
-    //   28: checkcast 51	java/lang/Boolean
-    //   31: invokevirtual 55	java/lang/Boolean:booleanValue	()Z
+    //   22: getstatic 356	com/tencent/qqlive/tvkplayer/tools/config/TVKMediaPlayerConfig$PlayerConfig:is_use_mediacodec	Lcom/tencent/qqlive/tvkplayer/tools/config/TVKConfigField;
+    //   25: invokevirtual 64	com/tencent/qqlive/tvkplayer/tools/config/TVKConfigField:getValue	()Ljava/lang/Object;
+    //   28: checkcast 79	java/lang/Boolean
+    //   31: invokevirtual 83	java/lang/Boolean:booleanValue	()Z
     //   34: ifeq +84 -> 118
-    //   37: invokestatic 361	com/tencent/qqlive/tvkplayer/playerwrapper/player/tools/TVKCodecUtils:getHevcHWDecLevel	()I
+    //   37: invokestatic 359	com/tencent/qqlive/tvkplayer/playerwrapper/player/tools/TVKCodecUtils:getHevcHWDecLevel	()I
     //   40: istore_1
-    //   41: invokestatic 364	com/tencent/qqlive/tvkplayer/playerwrapper/player/tools/TVKCodecUtils:getSoftCodecHevcLevel	()I
+    //   41: invokestatic 362	com/tencent/qqlive/tvkplayer/playerwrapper/player/tools/TVKCodecUtils:getSoftCodecHevcLevel	()I
     //   44: istore_2
-    //   45: ldc_w 366
-    //   48: getstatic 369	com/tencent/qqlive/tvkplayer/tools/config/TVKMediaPlayerConfig$PlayerConfig:hevc_player	Lcom/tencent/qqlive/tvkplayer/tools/config/TVKConfigField;
-    //   51: invokevirtual 36	com/tencent/qqlive/tvkplayer/tools/config/TVKConfigField:getValue	()Ljava/lang/Object;
-    //   54: invokevirtual 372	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   45: ldc_w 364
+    //   48: getstatic 367	com/tencent/qqlive/tvkplayer/tools/config/TVKMediaPlayerConfig$PlayerConfig:hevc_player	Lcom/tencent/qqlive/tvkplayer/tools/config/TVKConfigField;
+    //   51: invokevirtual 64	com/tencent/qqlive/tvkplayer/tools/config/TVKConfigField:getValue	()Ljava/lang/Object;
+    //   54: invokevirtual 370	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   57: istore 4
     //   59: iload 4
     //   61: ifeq +5 -> 66
     //   64: iconst_0
     //   65: istore_1
     //   66: ldc 8
-    //   68: new 17	java/lang/StringBuilder
+    //   68: new 45	java/lang/StringBuilder
     //   71: dup
-    //   72: invokespecial 18	java/lang/StringBuilder:<init>	()V
-    //   75: ldc_w 374
-    //   78: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   75: ldc_w 372
+    //   78: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   81: iload_2
-    //   82: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   85: ldc_w 376
-    //   88: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   85: ldc_w 374
+    //   88: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   91: iload_1
-    //   92: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   95: ldc_w 378
-    //   98: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   92: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   95: ldc_w 376
+    //   98: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   101: iload_0
-    //   102: invokevirtual 136	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   105: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   108: invokestatic 49	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   102: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   105: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   108: invokestatic 77	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   111: iload_2
     //   112: iload_1
     //   113: iload_0
-    //   114: invokestatic 382	com/tencent/qqlive/tvkplayer/tools/utils/TVKPlayerUtils:maxDevLevel	(III)I
+    //   114: invokestatic 380	com/tencent/qqlive/tvkplayer/tools/utils/TVKPlayerUtils:maxDevLevel	(III)I
     //   117: ireturn
     //   118: iconst_0
     //   119: istore_1
@@ -365,16 +346,16 @@ public class TVKPlayerUtils
     //   127: iload_3
     //   128: istore_2
     //   129: ldc 8
-    //   131: new 17	java/lang/StringBuilder
+    //   131: new 45	java/lang/StringBuilder
     //   134: dup
-    //   135: invokespecial 18	java/lang/StringBuilder:<init>	()V
-    //   138: ldc_w 384
-    //   141: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   138: ldc_w 382
+    //   141: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   144: aload 5
-    //   146: invokevirtual 385	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   149: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   152: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   155: invokestatic 49	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   146: invokevirtual 383	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   149: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   152: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   155: invokestatic 77	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   158: goto -92 -> 66
     //   161: astore 5
     //   163: iload_3
@@ -434,46 +415,25 @@ public class TVKPlayerUtils
         return true;
       }
       if (((Build.MODEL.equals("MI PAD")) && (Build.MANUFACTURER.equals("Xiaomi")) && (Build.VERSION.RELEASE.equals("4.4.4"))) || ((Build.MODEL.equals("VPad-A107")) && (Build.MANUFACTURER.equals("KTE")))) {
-        break label322;
+        break label256;
       }
       if (Build.MANUFACTURER.equals("OPPO"))
       {
-        if ((Build.MODEL.equals("OPPO A79")) || (Build.MODEL.equals("OPPO A73")) || (Build.MODEL.equals("OPPO A83")) || (Build.MODEL.equals("OPPO A73t")) || (Build.MODEL.equals("OPPO A79t")) || (Build.MODEL.equals("OPPO A79k"))) {
-          break label322;
-        }
-        boolean bool = Build.MODEL.equals("OPPO A79kt");
+        boolean bool = oppoHevcBlackArrayList.contains(Build.MODEL);
         if (bool) {
-          break label322;
+          break label256;
         }
       }
     }
     catch (Exception localException)
     {
-      label316:
-      break label316;
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
     }
     return false;
-    label322:
-    return true;
-  }
-  
-  public static boolean isValidForInParam(Context paramContext, TVKPlayerVideoInfo paramTVKPlayerVideoInfo)
-  {
-    if (paramTVKPlayerVideoInfo == null)
-    {
-      TVKLogUtil.e("MediaPlayerMgr[TVKPlayerUtils.java]", "isValidForInParam ,videoInfo is null");
-      return false;
-    }
-    if (paramContext == null)
-    {
-      TVKLogUtil.e("MediaPlayerMgr[TVKPlayerUtils.java]", "isValidForInParam ,context is null");
-      return false;
-    }
-    if (((TextUtils.isEmpty(paramTVKPlayerVideoInfo.getVid())) && (TextUtils.isEmpty(paramTVKPlayerVideoInfo.getConfigMapValue("vinfo_key_previd", "")))) || (paramTVKPlayerVideoInfo.getPlayType() < 1) || (paramTVKPlayerVideoInfo.getPlayType() > 8))
-    {
-      TVKLogUtil.e("MediaPlayerMgr[TVKPlayerUtils.java]", "isValidForInParam , vid is empty or type wrong,vid: " + paramTVKPlayerVideoInfo.getVid() + ", previd: " + paramTVKPlayerVideoInfo.getConfigMapValue("vinfo_key_previd", "") + ",type: " + paramTVKPlayerVideoInfo.getPlayType());
-      return false;
-    }
+    label256:
     return true;
   }
   

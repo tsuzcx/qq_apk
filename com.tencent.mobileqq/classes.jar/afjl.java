@@ -1,43 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class afjl
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public afjl(TroopInfoActivity paramTroopInfoActivity) {}
+  public afjl(RegisterActivity paramRegisterActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!"changeGroupTribe".equals(paramIntent.getStringExtra("event")));
-      paramContext = paramIntent.getStringExtra("data");
-    } while (paramContext == null);
-    try
-    {
-      paramContext = new JSONObject(paramContext);
-      this.a.a.tribeId = paramContext.optInt("bid");
-      this.a.a.tribeName = paramContext.optString("bname");
-      this.a.e = true;
-      paramContext = new ArrayList();
-      if (!TextUtils.isEmpty(this.a.a.tribeName)) {
-        paramContext.add(this.a.a.tribeName);
-      }
-      this.a.a(9, paramContext, true, 1, true);
-      return;
-    }
-    catch (JSONException paramContext) {}
+    this.a.a = 0;
+    this.a.finish();
   }
 }
 

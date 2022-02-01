@@ -1,41 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.MsgTabWorkThreadHandler.1;
-import java.util.ArrayList;
-import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class wsd
-  extends Handler
+  implements wsp
 {
-  public wsd(wrx paramwrx, Looper paramLooper)
+  protected AtomicBoolean c = new AtomicBoolean(false);
+  
+  public void a() {}
+  
+  public void b()
   {
-    super(paramLooper);
+    this.c.set(true);
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean b()
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        removeMessages(1);
-        yqp.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_LOAD_USER_ITEM_FROM_UI");
-        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilSet);
-        this.a.jdField_a_of_type_JavaUtilSet.clear();
-      } while (!wrx.a(this.a, paramMessage, false));
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.MsgTabWorkThreadHandler.1(this));
-      return;
-      yqp.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_SCHEDULE_REQUIRE_USER_ITEM");
-      paramMessage = (String)paramMessage.obj;
-    } while (this.a.jdField_a_of_type_JavaUtilSet.contains(paramMessage));
-    this.a.jdField_a_of_type_JavaUtilSet.add(paramMessage);
-    sendEmptyMessageDelayed(1, 2500L);
+    return this.c.get();
   }
 }
 

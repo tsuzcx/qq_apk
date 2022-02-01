@@ -1,28 +1,57 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class pba
-  extends ClickableSpan
+public class pba
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  pba(pay parampay, SubCommentData paramSubCommentData) {}
+  public static String a = "CommentFamilyConfigHandler";
   
-  public void onClick(View paramView)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    paa.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin, BaseActivity.sTopActivity);
-    paramView = new oyn(this.jdField_a_of_type_Pay).a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin).a();
-    oat.a(null, paa.a(this.jdField_a_of_type_Pay.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Pay.a.mArticleID), String.valueOf(this.jdField_a_of_type_Pay.a.mAlgorithmID), this.jdField_a_of_type_Pay.a.innerUniqueID, paramView, false);
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = pan.a(paramString);
+    Object localObject = paramString.keySet();
+    for (;;)
+    {
+      String str1;
+      String str2;
+      try
+      {
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          str1 = (String)((Iterator)localObject).next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.equals(str1, "rij_comment_family_entrance_switch")) {
+            bnrf.m(Integer.parseInt(str2));
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
+      if (TextUtils.equals(str1, "rij_small_zhitiao_entrance_switch")) {
+        bnrf.a("readinjjoy_notes_config", Integer.valueOf(Integer.parseInt(str2)));
+      }
+    }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onWipeConfig(int paramInt)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#737373"));
-    paramTextPaint.setUnderlineText(false);
+    super.onWipeConfig(paramInt);
+    bnrf.m(0);
   }
 }
 

@@ -1,6 +1,33 @@
-public abstract interface bogc
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.album.AEAlbumLinearLayout;
+
+public class bogc
+  implements Animator.AnimatorListener
 {
-  public abstract boolean a(int paramInt1, int paramInt2);
+  public bogc(AEAlbumLinearLayout paramAEAlbumLinearLayout) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    AEAlbumLinearLayout.a(this.a, 0);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (AEAlbumLinearLayout.a(this.a) != null) {
+      AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.b(this.a), AEAlbumLinearLayout.a(this.a, AEAlbumLinearLayout.b(this.a)));
+    }
+    AEAlbumLinearLayout.a(this.a, 0);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (AEAlbumLinearLayout.a(this.a) != null) {
+      AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.b(this.a));
+    }
+  }
 }
 
 

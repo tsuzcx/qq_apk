@@ -1,49 +1,37 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class avcc
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener, View.OnLongClickListener
+  implements DialogInterface.OnClickListener
 {
-  avdg a;
-  public ImageView d;
+  public avcc(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public avcc(HotPicPageView paramHotPicPageView, View paramView, avdg paramavdg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
-    if (paramavdg != null)
+    if (paramInt == 1)
     {
-      this.a = paramavdg;
-      this.d = ((ImageView)paramView.findViewById(2131368097));
-      this.d.setTag("HotPicControlTag");
-      this.itemView.setOnClickListener(this);
-      this.itemView.setOnLongClickListener(this);
-      this.itemView.setOnTouchListener(paramavdg);
+      if (ForwardSdkShareOption.a(this.a))
+      {
+        this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", auxr.e.intValue());
+        this.a.m();
+      }
+      bdmc.a(BaseApplication.getContext()).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_next", 0, 1, 0);
     }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.a != null) {
-      this.a.a(paramView, getPosition());
+    while (paramInt != 0) {
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    boolean bool = false;
-    if (this.a != null)
-    {
-      this.a.b(paramView, getPosition());
-      bool = true;
-    }
-    return bool;
+    paramDialogInterface = this.a.jdField_a_of_type_AndroidAppActivity;
+    Activity localActivity = this.a.jdField_a_of_type_AndroidAppActivity;
+    paramDialogInterface.setResult(0);
+    bdmc.a(BaseApplication.getContext()).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_cancel", 0, 1, 0);
+    this.a.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 

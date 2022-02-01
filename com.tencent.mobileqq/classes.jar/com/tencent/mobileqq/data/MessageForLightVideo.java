@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import afzo;
+import agji;
 import android.text.TextUtils;
-import anni;
-import bbyw;
-import bgmg;
+import anzj;
+import bcrn;
+import bhmi;
 import com.tencent.image.QQLiveDrawable;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
 public class MessageForLightVideo
   extends MessageForShortVideo
-  implements afzo
+  implements agji
 {
   public static final int LIGHT_VIDEO_STATUS_MUTE_PLAY = 3;
   public static final int LIGHT_VIDEO_STATUS_PAUSE = 2;
@@ -29,7 +29,7 @@ public class MessageForLightVideo
   public void doParse()
   {
     super.doParse();
-    if ("1".equals(getExtInfoFromExtStr(bbyw.u)))
+    if ("1".equals(getExtInfoFromExtStr(bcrn.u)))
     {
       this.isLightVideoRead = true;
       return;
@@ -40,14 +40,14 @@ public class MessageForLightVideo
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return anni.a(2131705359);
+      return anzj.a(2131705466);
     }
     return this.msg;
   }
   
   public boolean isAllReady()
   {
-    return (bgmg.b(ShortVideoUtils.a(this, "mp4"))) && ((!isSendFromLocal()) || (isStatusReady()));
+    return (bhmi.b(ShortVideoUtils.a(this, "mp4"))) && ((!isSendFromLocal()) || (isStatusReady()));
   }
   
   public boolean isStatusReady()

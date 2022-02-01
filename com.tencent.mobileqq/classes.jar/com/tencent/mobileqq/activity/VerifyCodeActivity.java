@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import afqj;
-import afqk;
-import afql;
-import afqm;
-import afqn;
+import afzn;
+import afzo;
+import afzp;
+import afzq;
+import afzr;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -16,20 +16,21 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bggl;
+import bhgm;
+import bktz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.manager.VerifyCodeManager;
 import mqq.observer.ServerNotifyObserver;
-import mqq.os.MqqHandler;
 
 public class VerifyCodeActivity
   extends IphoneTitleBarActivity
 {
   final int jdField_a_of_type_Int = 4;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new afqn(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new afzr(this);
   private View jdField_a_of_type_AndroidViewView;
   public ImageView a;
   public TextView a;
@@ -44,7 +45,7 @@ public class VerifyCodeActivity
   public VerifyCodeActivity()
   {
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqObserverServerNotifyObserver = new afqj(this);
+    this.jdField_a_of_type_MqqObserverServerNotifyObserver = new afzn(this);
   }
   
   private void a(Intent paramIntent)
@@ -98,15 +99,15 @@ public class VerifyCodeActivity
             localObject2 = "";
           }
           if (arrayOfByte != null) {
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bggl.a(arrayOfByte, 0, arrayOfByte.length));
+            this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bhgm.a(arrayOfByte, 0, arrayOfByte.length));
           }
           this.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(i);
           this.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey((String)localObject2);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131368679));
+          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131368753));
           this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setClearButtonStyle(1);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(new afqm(this));
-          this.jdField_a_of_type_AndroidViewView = findViewById(2131381078);
-          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376305));
+          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(new afzq(this));
+          this.jdField_a_of_type_AndroidViewView = findViewById(2131381260);
+          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376437));
           this.jdField_a_of_type_MqqManagerVerifyCodeManager = ((VerifyCodeManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(6));
           this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
           this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -132,9 +133,9 @@ public class VerifyCodeActivity
   
   private void c()
   {
-    setTitle(2131718993);
-    setLeftButton(2131690582, new afqk(this));
-    setRightHighlightButton(2131692257, new afql(this));
+    setTitle(2131719162);
+    setLeftButton(2131690580, new afzo(this));
+    setRightHighlightButton(2131692262, new afzp(this));
   }
   
   public void a()
@@ -149,6 +150,7 @@ public class VerifyCodeActivity
   
   public void a(String paramString)
   {
+    QLog.d("VerifyCodeActivity", 1, "sendVerifyCode");
     this.jdField_a_of_type_Boolean = true;
     a(true);
     if (this.jdField_a_of_type_MqqManagerVerifyCodeManager != null) {
@@ -158,6 +160,7 @@ public class VerifyCodeActivity
   
   public void a(boolean paramBoolean)
   {
+    QLog.d("VerifyCodeActivity", 1, new Object[] { "showWaitting isShow=", Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -170,6 +173,7 @@ public class VerifyCodeActivity
   
   public void b()
   {
+    QLog.d("VerifyCodeActivity", 1, "cancelVerifyDialog");
     if (this.jdField_a_of_type_MqqManagerVerifyCodeManager != null) {
       this.jdField_a_of_type_MqqManagerVerifyCodeManager.cancelVerifyCode(this.jdField_a_of_type_MqqObserverServerNotifyObserver);
     }
@@ -197,23 +201,12 @@ public class VerifyCodeActivity
       super.finish();
       return false;
     }
-    super.setContentView(2131563046);
-    setContentBackgroundResource(2130838758);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131380447));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371831));
+    super.setContentView(2131563081);
+    setContentBackgroundResource(2130838778);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131380633));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371938));
     a(paramBundle);
-    paramBundle = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHandler(LoginActivity.class);
-    if (paramBundle != null) {
-      paramBundle.sendEmptyMessage(20140107);
-    }
-    paramBundle = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHandler(SubLoginActivity.class);
-    if (paramBundle != null) {
-      paramBundle.sendEmptyMessage(20140107);
-    }
-    paramBundle = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHandler(AddAccountActivity.class);
-    if (paramBundle != null) {
-      paramBundle.sendEmptyMessage(20140107);
-    }
+    bktz.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
     return true;
   }
   

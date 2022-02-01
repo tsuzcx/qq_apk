@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import akww;
+import alil;
 import android.content.Context;
 import android.graphics.PointF;
 import android.text.TextUtils;
@@ -8,7 +8,7 @@ import com.tencent.ttpic.openapi.util.YoutuPointsUtil;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import lsz;
+import ltv;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -73,7 +73,7 @@ public class FaceDetector
   {
     try
     {
-      paramContext = akww.b(paramString1);
+      paramContext = alil.b(paramString1);
       if (!TextUtils.isEmpty(paramContext))
       {
         paramContext = (JSONObject)new JSONTokener(paramContext).nextValue();
@@ -99,7 +99,7 @@ public class FaceDetector
         try
         {
           int i;
-          lsz locallsz;
+          ltv localltv;
           int j;
           for (;;)
           {
@@ -107,21 +107,21 @@ public class FaceDetector
               break label464;
             }
             paramString1 = new QWalletFaceTracker.ExpressionInfo();
-            locallsz = new lsz();
-            paramString1.expressionItem = locallsz;
+            localltv = new ltv();
+            paramString1.expressionItem = localltv;
             localObject = paramString2.getJSONObject(i);
             paramString1.coolValue = ((JSONObject)localObject).optDouble("coolValue");
             paramString1.perfectValue = ((JSONObject)localObject).optInt("perfectValue");
-            locallsz.expressionID = ((JSONObject)localObject).optString("expressionID");
+            localltv.expressionID = ((JSONObject)localObject).optString("expressionID");
             localJSONArray = ((JSONObject)localObject).optJSONArray("expressionFeat");
             if (localJSONArray == null) {
               break;
             }
-            locallsz.expressionFeat = new ArrayList();
+            localltv.expressionFeat = new ArrayList();
             j = 0;
             while (j < localJSONArray.length() / 2)
             {
-              locallsz.expressionFeat.add(new PointF(localJSONArray.optInt(j * 2), localJSONArray.optInt(j * 2 + 1)));
+              localltv.expressionFeat.add(new PointF(localJSONArray.optInt(j * 2), localJSONArray.optInt(j * 2 + 1)));
               j += 1;
             }
             paramContext = paramContext;
@@ -130,28 +130,28 @@ public class FaceDetector
           }
           JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("expressionAngle");
           if ((localJSONArray != null) && (localJSONArray.length() == 3)) {
-            locallsz.expressionAngle = convertJsonAngle2NormalAngle(new float[] { (float)localJSONArray.optDouble(0), (float)localJSONArray.optDouble(1), (float)localJSONArray.optDouble(2) });
+            localltv.expressionAngle = convertJsonAngle2NormalAngle(new float[] { (float)localJSONArray.optDouble(0), (float)localJSONArray.optDouble(1), (float)localJSONArray.optDouble(2) });
           }
           localJSONArray = ((JSONObject)localObject).optJSONArray("expressionWeight");
           if ((localJSONArray != null) && (localJSONArray.length() == 7))
           {
-            locallsz.expressionWeight = new double[7];
+            localltv.expressionWeight = new double[7];
             j = 0;
           }
           while (j < 7)
           {
-            locallsz.expressionWeight[j] = localJSONArray.optDouble(j);
+            localltv.expressionWeight[j] = localJSONArray.optDouble(j);
             j += 1;
             continue;
-            locallsz.expressionWeight = WEIGHT;
+            localltv.expressionWeight = WEIGHT;
           }
           Object localObject = ((JSONObject)localObject).optJSONArray("expressionMaxNeedRefine");
           if ((localObject != null) && (((JSONArray)localObject).length() == 3))
           {
-            locallsz.a = new int[3];
-            locallsz.a[0] = ((JSONArray)localObject).optInt(0);
-            locallsz.a[1] = ((JSONArray)localObject).optInt(1);
-            locallsz.a[2] = ((JSONArray)localObject).optInt(2);
+            localltv.a = new int[3];
+            localltv.a[0] = ((JSONArray)localObject).optInt(0);
+            localltv.a[1] = ((JSONArray)localObject).optInt(1);
+            localltv.a[2] = ((JSONArray)localObject).optInt(2);
           }
           paramContext.add(paramString1);
           i += 1;

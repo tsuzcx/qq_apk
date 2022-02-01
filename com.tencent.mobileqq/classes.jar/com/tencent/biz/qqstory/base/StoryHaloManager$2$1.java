@@ -5,23 +5,23 @@ import android.view.View;
 import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
 import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
 import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
-import wrs;
-import xho;
-import yqu;
+import wvn;
+import xlj;
+import yup;
 
 class StoryHaloManager$2$1
   implements Runnable
 {
-  StoryHaloManager$2$1(StoryHaloManager.2 param2, wrs paramwrs) {}
+  StoryHaloManager$2$1(StoryHaloManager.2 param2, wvn paramwvn) {}
   
   public void run()
   {
-    OpenPlayerBuilder localOpenPlayerBuilder = new OpenPlayerBuilder(new MsgTabPlayInfo(this.jdField_a_of_type_Wrs.a, 1, this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.getRecentUserUin(), "", ""), 111);
-    xho.a((Activity)this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_AndroidViewView.getContext(), localOpenPlayerBuilder.a(), null);
+    OpenPlayerBuilder localOpenPlayerBuilder = new OpenPlayerBuilder(new MsgTabPlayInfo(this.jdField_a_of_type_Wvn.a, 1, this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.getRecentUserUin(), "", ""), 111);
+    xlj.a((Activity)this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_AndroidViewView.getContext(), localOpenPlayerBuilder.a(), null);
     if (this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.haloState == -1) {}
     for (int i = 1;; i = 0)
     {
-      yqu.a("msg_tab", "circle_clk", 0, i, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.getRecentUserUin() });
+      yup.a("msg_tab", "circle_clk", 0, i, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.getRecentUserUin() });
       return;
     }
   }

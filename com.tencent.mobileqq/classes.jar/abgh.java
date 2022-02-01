@@ -1,70 +1,37 @@
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.Handler;
-import android.view.KeyEvent;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class abgh
+public class abgh
+  extends WebViewPlugin
 {
-  protected abgc a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  
-  public ViewGroup a()
+  public abgh()
   {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
+    this.mPluginNameSpace = "qztodayinhistory";
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  void a(abgc paramabgc)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    this.jdField_a_of_type_Abgc = paramabgc;
-  }
-  
-  public void a(Configuration paramConfiguration) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
-  {
-    return false;
-  }
-  
-  public void b(ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-  }
-  
-  public void b(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void c() {}
-  
-  public void e() {}
-  
-  public boolean e()
-  {
-    return false;
-  }
-  
-  public void h_() {}
-  
-  public void j() {}
-  
-  public void m() {}
-  
-  public void n() {}
-  
-  public void t()
-  {
-    if (this.jdField_a_of_type_Abgc != null) {
-      this.jdField_a_of_type_Abgc.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneTihSettingWebPlugin", 2, "handleJsRequest url: " + paramString1 + "pkgName:" + paramString2 + "method:" + paramString3);
     }
+    if (!paramString2.equals("qztodayinhistory")) {}
+    while (!paramString3.equals("settihnome")) {
+      return false;
+    }
+    paramJsBridgeListener = new Intent("aciton_switch_tih_setting");
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneTihSettingWebPlugin", 2, "actionString: " + paramJsBridgeListener.getAction());
+    }
+    BaseApplication.getContext().sendBroadcast(paramJsBridgeListener);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abgh
  * JD-Core Version:    0.7.0.1
  */

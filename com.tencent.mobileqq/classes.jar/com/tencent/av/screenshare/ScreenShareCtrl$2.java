@@ -10,7 +10,7 @@ class ScreenShareCtrl$2
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), 0, 2131695196, 1).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), 0, 2131695239, 1).a();
   }
 }
 

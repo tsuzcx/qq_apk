@@ -8,23 +8,23 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.views.RoundBorderImageView;
 import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
-import wsm;
-import wsq;
-import yqp;
-import zlx;
+import wwh;
+import wwl;
+import yuk;
+import zps;
 
 public class MsgNodeShotView
   extends StoryMsgNodeFrameLayout
 {
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private wsq jdField_a_of_type_Wsq;
+  private wwl jdField_a_of_type_Wwl;
   
   public MsgNodeShotView(@NonNull Context paramContext)
   {
@@ -43,17 +43,17 @@ public class MsgNodeShotView
     return this.jdField_b_of_type_AndroidWidgetTextView.getText().toString();
   }
   
-  public wsq a()
+  public wwl a()
   {
-    return this.jdField_a_of_type_Wsq;
+    return this.jdField_a_of_type_Wwl;
   }
   
   protected void a(String paramString)
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130846639);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130846656);
     }
-    zlx.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView, paramString, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, "msg_tab_thumb");
+    zps.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView, paramString, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, "msg_tab_thumb");
   }
   
   public void c()
@@ -63,30 +63,30 @@ public class MsgNodeShotView
   
   public void d()
   {
-    Object localObject = ((wsm)QQStoryContext.a().getManager(252)).a();
-    if ((localObject != null) && (((wsq)localObject).a()))
+    Object localObject = ((wwh)QQStoryContext.a().getManager(252)).a();
+    if ((localObject != null) && (((wwl)localObject).a()))
     {
-      this.jdField_a_of_type_Wsq = new wsq();
-      this.jdField_a_of_type_Wsq.a((wsq)localObject);
-      yqp.c("Q.qqstory.config.takevideo", "bindData config=" + ((wsq)localObject).b + " id=" + ((wsq)localObject).d);
-      setNodeName(this.jdField_a_of_type_Wsq.b, false);
+      this.jdField_a_of_type_Wwl = new wwl();
+      this.jdField_a_of_type_Wwl.a((wwl)localObject);
+      yuk.c("Q.qqstory.config.takevideo", "bindData config=" + ((wwl)localObject).b + " id=" + ((wwl)localObject).d);
+      setNodeName(this.jdField_a_of_type_Wwl.b, false);
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130846639);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130846656);
       }
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      if (this.jdField_a_of_type_Wsq.a.endsWith(".gif"))
+      if (this.jdField_a_of_type_Wwl.a.endsWith(".gif"))
       {
         ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "msg_tab_thumb";
         ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-        ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = zlx.a(getContext(), 3.0F);
+        ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = zps.a(getContext(), 3.0F);
         ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.jdField_a_of_type_Int;
         ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_b_of_type_Int;
         ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        localObject = URLDrawable.getDrawable(this.jdField_a_of_type_Wsq.a, (URLDrawable.URLDrawableOptions)localObject);
+        localObject = URLDrawable.getDrawable(this.jdField_a_of_type_Wwl.a, (URLDrawable.URLDrawableOptions)localObject);
         if ((((URLDrawable)localObject).getStatus() == 1) && (((URLDrawable)localObject).getCurrDrawable() != null))
         {
-          yqp.a("Q.qqstory.msgTab.MsgNodeShotView", "setImageByURLDrawable() %s, %s, not start download!", this.jdField_a_of_type_Wsq.a, localObject);
+          yuk.a("Q.qqstory.msgTab.MsgNodeShotView", "setImageByURLDrawable() %s, %s, not start download!", this.jdField_a_of_type_Wwl.a, localObject);
           this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageDrawable((Drawable)localObject);
         }
       }
@@ -103,12 +103,12 @@ public class MsgNodeShotView
       }
       ((URLDrawable)localObject).startDownload();
       break;
-      a(this.jdField_a_of_type_Wsq.a);
+      a(this.jdField_a_of_type_Wwl.a);
       continue;
-      yqp.b("Q.qqstory.msgTab.MsgNodeShotView", "normal info");
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageResource(2130846639);
-      setNodeName(anni.a(2131705730), false);
-      this.jdField_a_of_type_Wsq = null;
+      yuk.b("Q.qqstory.msgTab.MsgNodeShotView", "normal info");
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageResource(2130846656);
+      setNodeName(anzj.a(2131705837), false);
+      this.jdField_a_of_type_Wwl = null;
     }
   }
 }

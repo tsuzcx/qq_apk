@@ -1,25 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class okn
-  implements qzb
+  implements nmg
 {
-  public okn(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  public okn(ReadInJoyNewFeedsActivity.2 param2) {}
   
-  public void a(boolean paramBoolean)
+  public void loaded(String paramString, int paramInt)
   {
-    if (paramBoolean)
-    {
-      ReadInJoyVideoSubChannelActivity.a(this.a).setVisibility(0);
-      if (ReadInJoyVideoSubChannelActivity.a(this.a).a() != null) {}
-      for (String str = ReadInJoyVideoSubChannelActivity.a(this.a).a().a();; str = null)
-      {
-        ReadInJoyVideoSubChannelActivity.a(this.a).a(4, ReadInJoyVideoSubChannelActivity.a(this.a).a(), str);
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2378 html web resource finish");
     }
-    ReadInJoyVideoSubChannelActivity.a(this.a).setVisibility(8);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

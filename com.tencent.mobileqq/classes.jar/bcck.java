@@ -1,38 +1,25 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bcck
-  extends MSFServlet
+  implements View.OnTouchListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    paramIntent = (QQAppInterface)getAppRuntime();
-    if ("ConfigPushSvc.GetIpDirect".equals(paramFromServiceMsg.getServiceCmd()))
-    {
-      InnerDns.getInstance().onReceivePush(paramFromServiceMsg);
-      if (QLog.isColorLevel()) {
-        QLog.i("IPDomainGet", 2, "onReceive response resultCode:" + paramFromServiceMsg.getResultCode() + " log:" + paramFromServiceMsg.getStringForLog());
-      }
-    }
-  }
+  public bcck(ContactSearchFragment paramContactSearchFragment) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("IPDomainGet", 2, "IPDomainGet onSend() ");
-    }
-    paramPacket.setSSOCommand("ConfigPushSvc.GetIpDirect");
-    paramPacket.setTimeout(15000L);
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcck
  * JD-Core Version:    0.7.0.1
  */

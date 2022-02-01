@@ -1,41 +1,108 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.1;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.2;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.3;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.4;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.5;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
 import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahrs
-  extends ahup
+  implements VideoPlayerCallback
 {
-  ahrs(ahrr paramahrr) {}
+  public ahrs(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
   
-  public void a()
+  public void onCapFrame(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap) {}
+  
+  public void onDownloadComplete(long paramLong) {}
+  
+  public void onDownloadProgress(long paramLong1, long paramLong2) {}
+  
+  public void onFirstFrameRendered(long paramLong) {}
+  
+  public void onLoopBack(long paramLong1, long paramLong2)
   {
-    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.4(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoRealItemBuilder", 2, "playShortVideoByPath, onLoopBack, id = " + paramLong1);
+    }
+    MessageForShortVideo localMessageForShortVideo = bhjz.a().a(Long.valueOf(paramLong1));
+    this.a.a(localMessageForShortVideo, paramLong2);
   }
   
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
-  {
-    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.2(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean));
-  }
+  public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
   
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
-  {
-    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.1(this, paramBoolean, paramLong, paramInt1, paramInt2, paramInt3, paramString));
-  }
+  public void onPlayProgress(long paramLong1, long paramLong2) {}
   
-  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3, Bundle paramBundle)
+  public void onStateChange(long paramLong, int paramInt)
   {
-    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.5(this, paramLong, paramInt1, paramInt2, paramString1, paramArrayOfString, paramString2, paramMessageForShortVideo, paramInt3));
-  }
-  
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
-  {
-    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.3(this, paramArrayOfAIORichMediaData, paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoRealItemBuilder", 2, "onStateChange , state =  " + paramInt + ", msgUniseq = " + paramLong);
+    }
+    if (paramInt == 4)
+    {
+      localObject = bhjz.a().a(Long.valueOf(paramLong));
+      if ((localObject != null) && (!bhjz.a().a(Long.valueOf(paramLong))))
+      {
+        ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8008E51", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject, this.a.jdField_a_of_type_AndroidContentContext);
+        if (!bhjz.a().b(Long.valueOf(((MessageForShortVideo)localObject).uniseq)))
+        {
+          bhjz.a().a(Long.valueOf(((MessageForShortVideo)localObject).uniseq));
+          ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8008E50", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject, this.a.jdField_a_of_type_AndroidContentContext);
+        }
+        bhjz.a().a(Long.valueOf(paramLong), true);
+      }
+    }
+    Object localObject = this.a.a(paramLong);
+    if (localObject == null) {
+      if (QLog.isColorLevel()) {
+        QLog.w("ShortVideoRealItemBuilder", 2, "holder == null, msgUniseq = " + paramLong);
+      }
+    }
+    label219:
+    MessageForShortVideo localMessageForShortVideo;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              break label219;
+              break label219;
+              break label219;
+              do
+              {
+                return;
+              } while (paramInt == 5);
+              if ((paramInt != 7) && (paramInt != 8)) {
+                break;
+              }
+              ShortVideoRealItemBuilder.a(this.a).removeCallbacksAndMessages(null);
+              ((ahrx)localObject).a.setVisibility(0);
+              this.a.a((ahrx)localObject);
+            } while (paramInt != 8);
+            localObject = bhjz.a().a(Long.valueOf(paramLong));
+          } while (localObject == null);
+          this.a.a((MessageForShortVideo)localObject, ((MessageForShortVideo)localObject).videoFileTime * 1000);
+          return;
+          if (paramInt != 4) {
+            break;
+          }
+          ShortVideoRealItemBuilder.a(this.a).removeCallbacksAndMessages(null);
+          this.a.b((ahrx)localObject);
+          localObject = bhjz.a().a(Long.valueOf(paramLong));
+        } while (localObject == null);
+        this.a.a((MessageForShortVideo)localObject, 0L);
+        return;
+      } while (paramInt != 1);
+      localMessageForShortVideo = bhjz.a().a(Long.valueOf(paramLong));
+    } while (localMessageForShortVideo == null);
+    ((ahrx)localObject).a.setVisibility(0);
+    this.a.c(localMessageForShortVideo, (ahrx)localObject);
   }
 }
 

@@ -6,12 +6,12 @@ import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import lxg;
+import lyc;
 
 public class RecvGVideoLevelInfo
   implements Parcelable, Cloneable, Comparable<RecvGVideoLevelInfo>
 {
-  public static final Parcelable.Creator<RecvGVideoLevelInfo> CREATOR = new lxg();
+  public static final Parcelable.Creator<RecvGVideoLevelInfo> CREATOR = new lyc();
   static String a;
   public int a;
   public long a;

@@ -1,22 +1,20 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusInnerData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
 
 public class omg
 {
-  public static omf a(Context paramContext, AdData paramAdData)
-  {
-    if ((paramContext == null) || (paramAdData == null)) {
-      return null;
-    }
-    if (((paramAdData instanceof ProteusInnerData)) && (((ProteusInnerData)paramAdData).f())) {
-      return new olx(paramContext, 2);
-    }
-    if (((paramAdData instanceof ProteusInnerData)) && (((ProteusInnerData)paramAdData).e())) {
-      return new omb(paramContext, 1);
-    }
-    return null;
-  }
+  private View jdField_a_of_type_AndroidViewView;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
+  private View b;
+  private View c;
+  
+  private omg(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
 }
 
 

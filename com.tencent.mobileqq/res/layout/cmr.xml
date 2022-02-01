@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n9" android:layout_marginBottom="@dimen/n9"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cmq" />
-    <FrameLayout android:layout_gravity="center|left|top" android:id="@id/nab" android:background="@drawable/dn4" android:visibility="gone" android:layout_width="42.0dip" android:layout_height="26.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip">
-        <TextView android:textSize="@dimen/ayk" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/nac" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:shadowColor="#33000000" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="1.0" />
-    </FrameLayout>
-    <com.tencent.biz.qqcircle.widgets.QCircleRocketView android:layout_gravity="bottom|center|right" android:id="@id/nb6" android:layout_width="115.0dip" android:layout_height="210.0dip" android:layout_marginRight="11.0dip" android:layout_marginBottom="79.0dip" />
-    <com.tencent.biz.qqcircle.widgets.QCircleDoublePraiseView android:id="@id/n8m" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</merge>
+    <TextView android:textSize="@dimen/aym" android:textColor="@color/bp" android:gravity="center" android:id="@id/o3e" android:paddingLeft="@dimen/mp" android:paddingRight="@dimen/mp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:maxLength="14" android:layout_centerInParent="true" />
+    <View android:background="@color/k8" android:layout_width="55.0dip" android:layout_height="0.30000007dip" android:layout_toLeftOf="@id/o3e" android:layout_centerVertical="true" />
+    <View android:background="@color/k8" android:layout_width="55.0dip" android:layout_height="0.30000007dip" android:layout_toRightOf="@id/o3e" android:layout_centerVertical="true" />
+</RelativeLayout>

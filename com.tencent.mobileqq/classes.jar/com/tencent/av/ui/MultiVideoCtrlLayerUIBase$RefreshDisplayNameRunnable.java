@@ -13,13 +13,18 @@ class MultiVideoCtrlLayerUIBase$RefreshDisplayNameRunnable
   public void run()
   {
     Object localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.this$0.d, String.valueOf(this.this$0.jdField_a_of_type_Long), null);
-    this.this$0.jdField_b_of_type_JavaLangString = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131694720);
-    if (this.this$0.e == 2) {
+    this.this$0.jdField_b_of_type_JavaLangString = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131694762);
+    if (this.this$0.e == 2)
+    {
       this.this$0.jdField_b_of_type_JavaLangString = this.this$0.a((String)localObject, this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.this$0.e, String.valueOf(this.this$0.jdField_a_of_type_Long)), this.this$0.jdField_a_of_type_AndroidWidgetTextView);
+      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(this.this$0.jdField_b_of_type_JavaLangString);
+      if (this.this$0.j != 2131694898) {
+        break label258;
+      }
+      this.this$0.A();
     }
     for (;;)
     {
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(this.this$0.jdField_b_of_type_JavaLangString);
       this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(this.this$0.jdField_b_of_type_JavaLangString);
       this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(null);
       localObject = this.this$0;
@@ -27,15 +32,21 @@ class MultiVideoCtrlLayerUIBase$RefreshDisplayNameRunnable
       if (this.this$0.f != null)
       {
         if (this.this$0.h >= 3) {
-          break;
+          break label295;
         }
         this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.this$0.f, 1000L);
       }
       return;
-      if (this.this$0.e == 1) {
-        this.this$0.jdField_b_of_type_JavaLangString = ((String)localObject);
+      if (this.this$0.e != 1) {
+        break;
       }
+      this.this$0.jdField_b_of_type_JavaLangString = ((String)localObject);
+      break;
+      label258:
+      this.this$0.e(-1L, this.this$0.i);
+      this.this$0.f(-1L, this.this$0.i);
     }
+    label295:
     this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.this$0.f);
   }
 }

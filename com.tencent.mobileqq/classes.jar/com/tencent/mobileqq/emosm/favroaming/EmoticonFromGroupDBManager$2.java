@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import arrc;
+import asgq;
 import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class EmoticonFromGroupDBManager$2
   implements Runnable
 {
-  public EmoticonFromGroupDBManager$2(arrc paramarrc, int paramInt, EmoticonFromGroupEntity paramEmoticonFromGroupEntity) {}
+  public EmoticonFromGroupDBManager$2(asgq paramasgq, int paramInt, EmoticonFromGroupEntity paramEmoticonFromGroupEntity) {}
   
   public void run()
   {

@@ -1,32 +1,8 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import android.view.View;
 
-class blok
-  extends blpb
+public abstract interface blok
 {
-  blok(bloi parambloi) {}
-  
-  public void a(blpa paramblpa)
-  {
-    paramblpa = paramblpa.a();
-    if (paramblpa == null) {
-      blpu.a("ReaderTabConfigDataHelper", "Response json is null");
-    }
-    do
-    {
-      return;
-      if (paramblpa.length() == 0)
-      {
-        blpu.a("ReaderTabConfigDataHelper", "后台数据异常");
-        return;
-      }
-    } while (!bloi.a(this.a, paramblpa, false));
-    bloi.a(this.a).getSharedPreferences("CGI_RESPONSE", 0).edit().putString("SP_TAB_CONFIG_DATA" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramblpa.toString()).apply();
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

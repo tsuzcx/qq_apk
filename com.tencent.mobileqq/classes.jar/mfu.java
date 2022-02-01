@@ -1,13 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+
 public class mfu
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
+  public mfu(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion, long paramLong) {}
   
-  public mfu(String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.l(this.jdField_a_of_type_Long);
   }
 }
 

@@ -1,25 +1,29 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import common.config.service.QzoneConfig;
 
-public class bnmx
-  implements Animator.AnimatorListener
+final class bnmx
+  implements DialogInterface.OnClickListener
 {
-  public bnmx(AEProviderContainerView paramAEProviderContainerView) {}
+  bnmx(Context paramContext) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEProviderContainerView", 2, "panel opened");
+    try
+    {
+      if (bmsw.a().indexOf("GM") < 0) {
+        bnmv.a(QzoneConfig.getInstance().getConfig("H5Url", "DownloadQzoneClient", "https://m.qzone.com/client/fwd?bid=update&_wv=7"), this.a);
+      }
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("showQzoneAppDownloadDialog", 2, "simpleBrowserJump exception", paramDialogInterface);
     }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

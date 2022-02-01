@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import arpd;
+import aser;
 
 class VasWebviewJsPlugin$1
-  extends arpd
+  extends aser
 {
   VasWebviewJsPlugin$1(VasWebviewJsPlugin paramVasWebviewJsPlugin) {}
   

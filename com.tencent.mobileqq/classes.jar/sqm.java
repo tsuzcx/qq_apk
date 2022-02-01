@@ -1,18 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class sqm
-  extends pue
+class sqm
+  implements ViewBase.OnClickListener
 {
-  public sqm(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Set paramSet, Map paramMap)
-  {
-    super(paramString);
-  }
+  sqm(sql paramsql) {}
   
-  public void a(ptx paramptx)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramptx.a(this.jdField_a_of_type_JavaUtilSet, this.jdField_a_of_type_JavaUtilMap);
+    sqi.a(true);
+    ssy.a(this.a.a.a, "0X800974B");
+    ozs.a(sqk.a(this.a.a).getContext(), paramViewBase.getEventAttachedData());
   }
 }
 

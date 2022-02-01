@@ -1,41 +1,20 @@
-import android.widget.EditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class akrk
-  extends akqs
+class akrk
+  implements DialogInterface.OnKeyListener
 {
-  private int a;
+  akrk(akrf paramakrf) {}
   
-  public akrk(EditText paramEditText)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    super(paramEditText);
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    CharSequence localCharSequence = paramCharSequence;
-    if (paramCharSequence.toString().contains("."))
+    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      localCharSequence = paramCharSequence;
-      if (paramCharSequence.length() - 1 - paramCharSequence.toString().indexOf(".") > this.jdField_a_of_type_Int)
-      {
-        localCharSequence = paramCharSequence.toString().subSequence(0, paramCharSequence.toString().indexOf(".") + this.jdField_a_of_type_Int + 1);
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(localCharSequence);
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(localCharSequence.length());
-      }
+      this.a.a.dismiss();
+      akrf.a(this.a, akrf.a(this.a), true, Long.valueOf(akrf.b(this.a)).longValue(), true);
     }
-    paramCharSequence = localCharSequence;
-    if (localCharSequence.toString().trim().substring(0).equals("."))
-    {
-      paramCharSequence = "0" + localCharSequence;
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(2);
-    }
-    if ((paramCharSequence.toString().startsWith("0")) && (paramCharSequence.toString().trim().length() > 1) && (!paramCharSequence.toString().substring(1, 2).equals(".")))
-    {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, 1));
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(1);
-    }
+    return false;
   }
 }
 

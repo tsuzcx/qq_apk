@@ -1,33 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.statistics.UEC.UECItem;
+import com.tencent.mobileqq.data.MessageForTofuNicePics;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public final class bctz
-  implements Parcelable.Creator<UEC.UECItem>
+public class bctz
+  implements adbf
 {
-  public UEC.UECItem a(Parcel paramParcel)
+  public MessageRecord a(int paramInt)
   {
-    UEC.UECItem localUECItem = new UEC.UECItem();
-    localUECItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localUECItem.jdField_a_of_type_Int = paramParcel.readInt();
-    localUECItem.jdField_a_of_type_Long = paramParcel.readLong();
-    localUECItem.jdField_b_of_type_Int = paramParcel.readInt();
-    localUECItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localUECItem.c = paramParcel.readString();
-    localUECItem.d = paramParcel.readString();
-    localUECItem.e = paramParcel.readString();
-    localUECItem.f = paramParcel.readString();
-    return localUECItem;
-  }
-  
-  public UEC.UECItem[] a(int paramInt)
-  {
-    return new UEC.UECItem[paramInt];
+    if (paramInt == -7011) {
+      return new MessageForTofuNicePics();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bctz
  * JD-Core Version:    0.7.0.1
  */

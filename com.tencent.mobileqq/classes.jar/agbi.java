@@ -1,27 +1,22 @@
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
 
 public class agbi
+  extends ClickableSpan
 {
-  public float a;
-  public int a;
-  public long a;
-  public agbh a;
-  public View a;
-  public boolean a;
-  public float b;
-  public int b;
-  public boolean b;
-  public float c = 0.0F;
-  public float d = 1.0F;
-  public float e = 1.0F;
-  public float f = 1.0F;
+  public agbi(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public agbi()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    this.a.b();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(0, 165, 224));
   }
 }
 

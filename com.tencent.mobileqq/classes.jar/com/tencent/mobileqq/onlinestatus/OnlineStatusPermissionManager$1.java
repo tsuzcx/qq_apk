@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import aypo;
-import bgmg;
+import azih;
+import bhmi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class OnlineStatusPermissionManager$1
   implements Runnable
 {
-  public OnlineStatusPermissionManager$1(aypo paramaypo, QQAppInterface paramQQAppInterface) {}
+  public OnlineStatusPermissionManager$1(azih paramazih, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     boolean bool2 = false;
     String str = "online_status_file_" + this.a.getCurrentAccountUin();
-    if (aypo.a(this.this$0) == null)
+    if (azih.a(this.this$0) == null)
     {
-      aypo.a(this.this$0, (OnlineStatusFriendsPermissionItem)bgmg.a(str));
+      azih.a(this.this$0, (OnlineStatusFriendsPermissionItem)bhmi.a(str));
       if (QLog.isColorLevel()) {
-        if (aypo.a(this.this$0) != null) {
+        if (azih.a(this.this$0) != null) {
           break label190;
         }
       }
@@ -30,16 +30,16 @@ public class OnlineStatusPermissionManager$1
       if (QLog.isColorLevel())
       {
         bool1 = bool2;
-        if (aypo.a(this.this$0) == null) {
+        if (azih.a(this.this$0) == null) {
           bool1 = true;
         }
         QLog.d("OnlineStatusPermissionManager", 2, new Object[] { "initFriendPermissionFromFile init mLocalPermission", Boolean.valueOf(bool1) });
       }
-      if (aypo.a(this.this$0) == null) {
-        aypo.a(this.this$0, new OnlineStatusFriendsPermissionItem(true, null));
+      if (azih.a(this.this$0) == null) {
+        azih.a(this.this$0, new OnlineStatusFriendsPermissionItem(true, null));
       }
-      aypo.a(this.this$0, 1);
-      aypo.a(this.this$0).runOnUiThread(new OnlineStatusPermissionManager.1.1(this));
+      azih.a(this.this$0, 1);
+      azih.a(this.this$0).runOnUiThread(new OnlineStatusPermissionManager.1.1(this));
       return;
     }
   }

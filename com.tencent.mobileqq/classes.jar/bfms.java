@@ -1,85 +1,85 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
-import java.util.List;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfms
-  implements bkhe
+  extends VasWebviewJsPlugin
 {
-  int jdField_a_of_type_Int = 0;
+  public static String a;
+  protected Context a;
+  protected AppInterface a;
   
-  public bfms(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
-  
-  private int a(AbsListView paramAbsListView)
+  static
   {
-    int i = 0;
-    View localView = paramAbsListView.getChildAt(0);
-    if (localView == null) {
-      return 0;
-    }
-    int j = paramAbsListView.getFirstVisiblePosition();
-    int k = localView.getTop();
-    if (j >= 1) {
-      i = paramAbsListView.getHeight();
-    }
-    k = -k;
-    return i + (localView.getHeight() * j + k);
+    jdField_a_of_type_JavaLangString = "TroopUpgradePlugin";
   }
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public bfms()
   {
-    if ((VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment) == null) || (VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).a().size() == 0)) {
-      return;
+    this.mPluginNameSpace = "Troop";
+  }
+  
+  public long getPluginBusiness()
+  {
+    return 2147614720L;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
     }
-    paramInt1 = a(paramAbsListView);
-    VisitorTroopCardFragment localVisitorTroopCardFragment = null;
-    if ((paramInt1 > this.jdField_a_of_type_Int) && (paramInt1 >= this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.getVisibility() != 0))
+    if ("Troop".equals(paramString2)) {}
+    try
     {
-      paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
-      if ((paramAbsListView != null) && (paramAbsListView != this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_AndroidWidgetRelativeLayout.getAnimation()))
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+      if (paramJsBridgeListener == null) {
+        return false;
+      }
+    }
+    catch (JSONException paramJsBridgeListener)
+    {
+      for (;;)
       {
-        paramAbsListView.reset();
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(paramAbsListView);
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.startAnimation(paramAbsListView);
-        localVisitorTroopCardFragment = this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment;
-        if (paramAbsListView != this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_AndroidViewAnimationAlphaAnimation) {
-          break label215;
-        }
+        paramJsBridgeListener.printStackTrace();
+        paramJsBridgeListener = null;
       }
     }
-    label215:
-    for (boolean bool = true;; bool = false)
+    catch (Exception paramJsBridgeListener)
     {
-      VisitorTroopCardFragment.a(localVisitorTroopCardFragment, bool);
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
-      this.jdField_a_of_type_Int = paramInt1;
-      return;
-      paramAbsListView = localVisitorTroopCardFragment;
-      if (paramInt1 >= this.jdField_a_of_type_Int) {
-        break;
-      }
-      paramAbsListView = localVisitorTroopCardFragment;
-      if (paramInt1 > this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_Int) {
-        break;
-      }
-      paramAbsListView = localVisitorTroopCardFragment;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.getVisibility() != 0) {
-        break;
-      }
-      paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.b;
-      break;
+      int i;
+      do
+      {
+        for (;;)
+        {
+          paramJsBridgeListener.printStackTrace();
+          paramJsBridgeListener = null;
+        }
+        if (!"updateMaxMemberNum".equals(paramString3)) {
+          break;
+        }
+        paramString1 = paramJsBridgeListener.optString("groupId", "");
+        i = paramJsBridgeListener.optInt("type", 0);
+      } while ((TextUtils.isEmpty(paramString1)) || (i == 0));
+      paramJsBridgeListener = new Bundle();
+      paramJsBridgeListener.putString("groupId", paramString1);
+      paramJsBridgeListener.putInt("type", i);
+      sendRemoteReq(asev.a("notifyTroopUpgradeSuccess", "", this.mOnRemoteResp.key, paramJsBridgeListener), true, false);
     }
+    return true;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onCreate()
   {
-    if ((paramInt == 0) && (VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment) != null) && (VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).c)) {
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment, paramAbsListView);
-    }
+    super.onCreate();
+    this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
   }
 }
 

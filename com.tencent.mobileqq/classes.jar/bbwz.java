@@ -1,53 +1,18 @@
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.screendetect.ScreenShotFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbwz
-  extends bbva
+  implements bbws
 {
-  private View a;
-  public Button a;
+  public bbwz(ScreenShotFragment paramScreenShotFragment) {}
   
-  public bbwz(ViewGroup paramViewGroup, int paramInt)
+  public void a(View paramView, int paramInt)
   {
-    super(paramViewGroup, paramInt);
-  }
-  
-  public Button a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetButton;
-  }
-  
-  protected void a()
-  {
-    this.h = ((TextView)this.b.findViewById(2131371720));
-    this.e = ((ImageView)this.b.findViewById(2131361795));
-    this.i = ((TextView)this.b.findViewById(2131376456));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.b.findViewById(2131376443));
-    this.jdField_a_of_type_AndroidWidgetButton.setText(anni.a(2131689550));
-    this.k = ((TextView)this.b.findViewById(2131377713));
-    this.j = ((TextView)this.b.findViewById(2131376453));
-    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131379878);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    View localView;
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      localView = this.jdField_a_of_type_AndroidViewView;
-      if (!paramBoolean) {
-        break label24;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotFragment", 2, "ScreenShotInnerAdapter OnItemClickListener : position = " + paramInt + ", view = " + paramView);
     }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
-    }
+    ScreenShotFragment.a(this.a, paramInt);
   }
 }
 

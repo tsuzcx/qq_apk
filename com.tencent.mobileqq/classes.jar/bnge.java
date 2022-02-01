@@ -1,30 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.widget.NumberCheckBox;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.remote.SendMsg;
 
-class bnge
-  implements View.OnTouchListener
+public final class bnge
+  implements Parcelable.Creator<SendMsg>
 {
-  bnge(bngd parambngd, bnfk parambnfk, int paramInt) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public SendMsg a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_Bnfk.a.isChecked())
-    {
-      paramView = (LocalMediaInfo)bngd.a(this.jdField_a_of_type_Bngd).get(this.jdField_a_of_type_Int);
-      bngd.a(this.jdField_a_of_type_Bngd, paramView, this.jdField_a_of_type_Bnfk);
-      bngd.a(this.jdField_a_of_type_Bngd, this.jdField_a_of_type_Bnfk);
-      bngd.a(this.jdField_a_of_type_Bngd);
-      if (bngd.b(this.jdField_a_of_type_Bngd).isEmpty()) {
-        ((bnff)this.jdField_a_of_type_Bngd.a.get()).a.notifyDataSetChanged();
-      }
-      return true;
-    }
-    return false;
+    return new SendMsg(paramParcel);
+  }
+  
+  public SendMsg[] a(int paramInt)
+  {
+    return new SendMsg[paramInt];
   }
 }
 

@@ -1,16 +1,11 @@
-import com.tencent.widget.AbsListView;
-
 class sqj
-  extends pue
+  extends pph
 {
-  sqj(sqh paramsqh, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramString);
-  }
+  sqj(sqi paramsqi) {}
   
-  public void a(ptx paramptx)
+  public void a(String paramString)
   {
-    paramptx.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
+    pfd.a().b();
   }
 }
 

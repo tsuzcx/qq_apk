@@ -1,223 +1,186 @@
-import android.os.Environment;
-import android.text.TextUtils;
-import com.tencent.component.network.DownloaderFactory;
-import com.tencent.component.network.downloader.Downloader;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qqreader.QRPluginManagerClient.1;
+import cooperation.qqreader.QRPluginManagerClient.2;
+import cooperation.qqreader.proxy.ReaderInterfacePluginBuilder;
+import cooperation.qqreader.proxy.ReaderInterfacePluginProxy;
+import cooperation.qqreader.proxy.ReaderJsCallback;
+import cooperation.qqreader.proxy.ReaderJsPluginBuilder;
+import cooperation.qqreader.proxy.ReaderJsPluginProxy;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
 public class bmop
-  extends bmmk
 {
-  private bmoo jdField_a_of_type_Bmoo = new bmoo();
-  private String jdField_a_of_type_JavaLangString = "";
-  private bmoo jdField_b_of_type_Bmoo = new bmoo();
-  private String jdField_b_of_type_JavaLangString = "";
+  private static bmop jdField_a_of_type_Bmop;
+  private long jdField_a_of_type_Long;
+  private ReaderInterfacePluginBuilder jdField_a_of_type_CooperationQqreaderProxyReaderInterfacePluginBuilder;
+  private ReaderJsPluginBuilder jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginBuilder;
+  private List<WeakReference<bmoq>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  private String a()
+  public static bmop a()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      if (!Environment.getExternalStorageState().equals("mounted"))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("QzoneSoundPlugin", 2, "no sdcard");
-        }
-        return "";
-      }
-      Object localObject = blwp.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_JavaLangString = ((String)localObject + "tencent/Qzone/tinyprogram/");
-      localObject = new File(this.jdField_a_of_type_JavaLangString);
-      if (!((File)localObject).exists())
-      {
-        if (!((File)localObject).mkdirs())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("QzoneSoundPlugin", 2, "make dir fail");
-          }
-          return "";
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("QzoneSoundPlugin", 2, "make dir suc");
-        }
-      }
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_JavaLangString;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("QzoneSoundPlugin", 2, "dir is exists");
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.i("QzoneSoundPlugin", 2, "cache root found use : " + this.jdField_a_of_type_JavaLangString);
-        }
-      }
-    }
-  }
-  
-  private void a(String... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_Bmoo != null) {
-      this.jdField_a_of_type_Bmoo.b();
-    }
-  }
-  
-  private void b(String... paramVarArgs)
-  {
-    if (this.jdField_b_of_type_Bmoo != null) {
-      this.jdField_b_of_type_Bmoo.b();
-    }
-  }
-  
-  private void c(String... paramVarArgs)
-  {
+    
+    if (jdField_a_of_type_Bmop == null) {}
     try
     {
-      paramVarArgs = bita.d(new JSONObject(paramVarArgs[0]).optString("url"));
-      paramVarArgs = a() + paramVarArgs + ".mp3";
-      QLog.d("QzoneSoundPlugin", 2, "playLocalSound : " + paramVarArgs);
-      if (new File(paramVarArgs).exists())
-      {
-        this.jdField_b_of_type_Bmoo.a(paramVarArgs);
-        this.jdField_b_of_type_Bmoo.a();
+      if (jdField_a_of_type_Bmop == null) {
+        jdField_a_of_type_Bmop = new bmop();
       }
-      return;
+      return jdField_a_of_type_Bmop;
     }
-    catch (Exception paramVarArgs) {}
+    finally {}
   }
   
-  private void d(String... paramVarArgs)
+  private void b()
   {
+    bmqw.c("QRPluginManagerClient", "dispatchPluginReadyEvent");
+    ArrayList localArrayList = new ArrayList();
     try
     {
-      paramVarArgs = bita.d(new JSONObject(paramVarArgs[0]).optString("url"));
-      paramVarArgs = a() + paramVarArgs + ".mp3";
-      QLog.d("QzoneSoundPlugin", 2, "playLocalBackSound : " + paramVarArgs);
-      if (new File(paramVarArgs).exists())
+      Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator2.hasNext())
       {
-        this.jdField_a_of_type_Bmoo.a(paramVarArgs);
-        this.jdField_a_of_type_Bmoo.a();
+        bmoq localbmoq = (bmoq)((WeakReference)localIterator2.next()).get();
+        if (localbmoq != null) {
+          localArrayList.add(localbmoq);
+        }
       }
-      return;
+      this.jdField_a_of_type_JavaUtilList.clear();
     }
-    catch (Exception paramVarArgs) {}
+    finally {}
+    Iterator localIterator1 = localObject.iterator();
+    while (localIterator1.hasNext()) {
+      c((bmoq)localIterator1.next());
+    }
   }
   
-  private void e(String... paramVarArgs)
+  private void b(bmoq parambmoq)
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-      try
-      {
-        Object localObject2 = new JSONObject(paramVarArgs[0]);
-        paramVarArgs = ((JSONObject)localObject2).optString("callback");
-        Object localObject1 = ((JSONObject)localObject2).optString("url");
-        localObject2 = bita.d(((JSONObject)localObject2).optString("url"));
-        QLog.d("QzoneSoundPlugin", 2, "downloadMusicUrl : " + (String)localObject1);
-        QLog.d("QzoneSoundPlugin", 2, "downloadMusicMD5 : " + (String)localObject2);
-        this.jdField_b_of_type_JavaLangString = (a() + (String)localObject2 + ".mp3");
-        QLog.d("QzoneSoundPlugin", 2, "mDownloadMusicFinalCachePath : " + this.jdField_b_of_type_JavaLangString);
-        if (!new File(this.jdField_b_of_type_JavaLangString).exists())
-        {
-          DownloaderFactory.getInstance(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a()).getCommonDownloader().download((String)localObject1, this.jdField_b_of_type_JavaLangString, new bmoq(this, paramVarArgs));
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QzoneSoundPlugin", 2, "The Music File is Exist");
-        }
-        try
-        {
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("code", 0);
-          ((JSONObject)localObject1).put("message", "success");
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramVarArgs, new String[] { ((JSONObject)localObject1).toString() });
-          return;
-        }
-        catch (Exception paramVarArgs)
-        {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-        }
-        QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadSucceed : " + paramVarArgs.getMessage());
-        return;
-      }
-      catch (JSONException paramVarArgs)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QzoneSoundPlugin", 2, "METHOD_DOWNLOAD_SUPER_LIKE_MUSIC: ", paramVarArgs);
-        }
-      }
+    if (parambmoq == null) {
+      return;
     }
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      bmoq localbmoq;
+      do
+      {
+        for (;;)
+        {
+          if (!localIterator.hasNext()) {
+            break label68;
+          }
+          localbmoq = (bmoq)((WeakReference)localIterator.next()).get();
+          if (localbmoq != null) {
+            break;
+          }
+          localIterator.remove();
+        }
+      } while (localbmoq != parambmoq);
+    }
+    finally {}
+    return;
+    label68:
+    this.jdField_a_of_type_JavaUtilList.add(new WeakReference(parambmoq));
+  }
+  
+  private static void c()
+  {
+    if (BaseApplicationImpl.sProcessId != 7) {
+      bmqw.a("QRPluginManagerClient", "checkToolProcess: QRPluginManagerClient的逻辑必须在Tool进程调用");
+    }
+  }
+  
+  private void c(bmoq parambmoq)
+  {
+    if (parambmoq == null) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new QRPluginManagerClient.2(this, parambmoq));
+  }
+  
+  @Nullable
+  public ReaderInterfacePluginProxy a()
+  {
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderInterfacePluginBuilder == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_CooperationQqreaderProxyReaderInterfacePluginBuilder.create();
+  }
+  
+  @Nullable
+  public ReaderJsPluginProxy a(ReaderJsCallback paramReaderJsCallback)
+  {
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginBuilder == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginBuilder.create(paramReaderJsCallback);
   }
   
   public void a()
   {
-    super.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneSoundPlugin", 2, "onDestroy");
-    }
-    if (this.jdField_a_of_type_Bmoo != null)
+    a(null);
+  }
+  
+  public void a(Context paramContext, Intent paramIntent, String paramString)
+  {
+    if (!a())
     {
-      this.jdField_a_of_type_Bmoo.a();
-      this.jdField_a_of_type_Bmoo = null;
+      bmqw.a("QRPluginManagerClient", "startPluginActivityWhenReady: plugin is not ready");
+      return;
     }
-    if (this.jdField_b_of_type_Bmoo != null)
+    if (bmqg.a())
     {
-      this.jdField_b_of_type_Bmoo.a();
-      this.jdField_b_of_type_Bmoo = null;
+      bmqg.a(paramContext, paramIntent, paramString);
+      return;
+    }
+    bmok.a(paramContext, paramIntent, paramString);
+  }
+  
+  public void a(bmoq parambmoq)
+  {
+    if (a()) {
+      c(parambmoq);
+    }
+    do
+    {
+      return;
+      b(parambmoq);
+    } while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 3000L);
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (bmqg.a())
+    {
+      bmqg.a(BaseApplicationImpl.getApplication());
+      return;
+    }
+    ThreadManager.getSubThreadHandler().post(new QRPluginManagerClient.1(this));
+  }
+  
+  public void a(ReaderJsPluginBuilder paramReaderJsPluginBuilder, ReaderInterfacePluginBuilder paramReaderInterfacePluginBuilder)
+  {
+    this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginBuilder = paramReaderJsPluginBuilder;
+    this.jdField_a_of_type_CooperationQqreaderProxyReaderInterfacePluginBuilder = paramReaderInterfacePluginBuilder;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Boolean) {
+      b();
     }
   }
   
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean a()
   {
-    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
-      return false;
-    }
-    if (paramString3.equalsIgnoreCase("playLocalSound"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneSoundPlugin", 2, "playLocalSound");
-      }
-      c(paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("playLocalBackSound"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneSoundPlugin", 2, "playLocalBackSound");
-      }
-      d(paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("preloadSound"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneSoundPlugin", 2, "preloadSound");
-      }
-      e(paramVarArgs);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("stopLocalSound"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneSoundPlugin", 2, "stopLocalSound");
-      }
-      b(new String[0]);
-      return true;
-    }
-    if (paramString3.equalsIgnoreCase("stopLocalBackSound"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneSoundPlugin", 2, "stopLocalBackSound");
-      }
-      a(new String[0]);
-      return true;
-    }
-    return false;
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

@@ -1,9 +1,13 @@
-import com.tencent.mobileqq.profile.stickynote.publish.StickyNotePublishConstant.1;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.widget.TextView;
 
-public class azhu
+public abstract interface azhu
 {
-  public static final List<azia> a = new StickyNotePublishConstant.1();
+  public abstract TextView a();
+  
+  public abstract void a(Drawable paramDrawable, String paramString);
+  
+  public abstract void a(String paramString, Drawable paramDrawable);
 }
 
 

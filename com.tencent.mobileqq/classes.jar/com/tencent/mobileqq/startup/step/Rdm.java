@@ -2,9 +2,9 @@ package com.tencent.mobileqq.startup.step;
 
 import android.os.Looper;
 import android.os.SystemClock;
-import awch;
-import bcsi;
-import bctj;
+import awuz;
+import bdla;
+import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -25,12 +25,12 @@ public class Rdm
       return;
     }
     long l = SystemClock.uptimeMillis();
-    bcsi localbcsi = bcsi.a(BaseApplicationImpl.sApplication);
-    localbcsi.a(false);
-    localbcsi.initMtaConfig(AppSetting.c(), "AGU36HSC29K4");
-    localbcsi.b("MTA_" + paramString1.replace(':', '_'));
+    bdla localbdla = bdla.a(BaseApplicationImpl.sApplication);
+    localbdla.a(false);
+    localbdla.initMtaConfig(AppSetting.c(), "AGU36HSC29K4");
+    localbdla.b("MTA_" + paramString1.replace(':', '_'));
     if (!paramString1.endsWith(":openSdk")) {
-      localbcsi.a(paramString2);
+      localbdla.a(paramString2);
     }
     QLog.d("AutoMonitor", 1, "MTA, cost=" + (SystemClock.uptimeMillis() - l) + " results: true");
   }
@@ -66,12 +66,12 @@ public class Rdm
       {
         if ((BaseApplicationImpl.sProcessId == 1) || (BaseApplicationImpl.sProcessId == 7))
         {
-          Thread.setDefaultUncaughtExceptionHandler(new awch());
-          bctj.a(BaseApplicationImpl.sApplication).c((String)localObject1);
+          Thread.setDefaultUncaughtExceptionHandler(new awuz());
+          bdmc.a(BaseApplicationImpl.sApplication).c((String)localObject1);
           Object localObject2 = localObject1;
           if (!str.endsWith(":openSdk"))
           {
-            bctj.a(BaseApplicationImpl.sApplication).a((String)localObject1);
+            bdmc.a(BaseApplicationImpl.sApplication).a((String)localObject1);
             localObject2 = localObject1;
           }
           localObject1 = new Rdm.1(this, str);

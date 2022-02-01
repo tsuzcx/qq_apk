@@ -1,63 +1,22 @@
 import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aevd
-  implements bkij
+  extends aeuk
 {
-  public aevd(PublicAccountListActivity paramPublicAccountListActivity) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public aevd(JumpActivity paramJumpActivity)
   {
-    paramAdapterView = null;
-    paramView = paramView.getTag();
-    if ((paramView instanceof aevo)) {}
-    String str;
-    do
-    {
-      paramAdapterView = ((aevo)paramView).a;
-      while (paramAdapterView == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("PublicAccountListActivity", 2, "onItemClick - info = null[position = " + paramInt + "]");
-        }
-        return;
-        if ((paramView instanceof aevs)) {
-          paramAdapterView = ((aevs)paramView).a;
-        }
-      }
-      paramView = new Intent(this.a, ChatActivity.class);
-      str = paramAdapterView.a.getUin();
-      paramInt = 1008;
-      if (paramAdapterView.a.extendType == 2)
-      {
-        paramView.putExtra("chat_subType", 1);
-        paramInt = 0;
-      }
-      if (!TextUtils.isEmpty(str)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w("PublicAccountListActivity", 2, "onItemClick - uin = null");
-    return;
-    paramView.putExtra("uin", str);
-    paramView.putExtra("uintype", paramInt);
-    paramView.putExtra("uinname", paramAdapterView.a.name);
-    paramView.putExtra("selfSet_leftViewText", this.a.getString(2131694576));
-    paramView.putExtra("jump_from", 3);
-    this.a.startActivity(paramView);
-    oat.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", str, "mp_msg_sys_4", "contacts_aio", 0, 0, str, "", "", "", false);
-    oat.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573B", "0X800573B", 0, 0, str, "", "", "", false);
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.c(paramInt1, paramInt2, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aevd
  * JD-Core Version:    0.7.0.1
  */

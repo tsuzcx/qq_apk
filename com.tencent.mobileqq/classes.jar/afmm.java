@@ -1,40 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.os.Handler;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper.6.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
 public class afmm
-  implements View.OnClickListener
+  implements INetEventHandler
 {
-  public afmm(TroopMemberListActivity paramTroopMemberListActivity, List paramList, CheckBox paramCheckBox, boolean paramBoolean, Dialog paramDialog) {}
+  afmm(afmg paramafmg) {}
   
-  public void onClick(View paramView)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    Object localObject = (anwd)this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app.a(20);
-    String str;
-    if (localObject != null)
+    if (!paramBoolean)
     {
-      ((anwd)localObject).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b), this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked(), this.jdField_a_of_type_Boolean);
-      str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.n;
-      if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break label152;
-      }
-    }
-    label152:
-    for (localObject = "0";; localObject = "1")
-    {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "P_CliOper", "Grp_manage", "", "del_mber", "Clk_del", 1, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, str, (String)localObject, "");
-      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.i();
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidAppDialog.show();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131693973), 1).show();
+      SendMultiPictureHelper.6.1 local1 = new SendMultiPictureHelper.6.1(this);
+      new Handler().postDelayed(local1, 3000L);
     }
   }
 }

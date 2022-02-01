@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.playmode.util;
 
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import wpj;
-import wpm;
-import xfs;
+import wte;
+import wth;
+import xjn;
 
 public class SendVideoToFriendHelper$2
   implements Runnable
 {
-  public SendVideoToFriendHelper$2(xfs paramxfs, StoryVideoItem paramStoryVideoItem) {}
+  public SendVideoToFriendHelper$2(xjn paramxjn, StoryVideoItem paramStoryVideoItem) {}
   
   public void run()
   {
-    ((wpj)wpm.a(5)).a(this.a);
+    ((wte)wth.a(5)).a(this.a);
   }
 }
 

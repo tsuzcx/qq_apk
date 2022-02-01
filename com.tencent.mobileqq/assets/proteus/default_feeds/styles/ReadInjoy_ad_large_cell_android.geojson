@@ -19,14 +19,29 @@
         "margin_top": "8",
         "margin_left": "6",
         "height": {
-          "type": "relative",
-          "value": "203"
+          "type": "wrap_content"
         },
         "width": {
           "type": "relative",
           "value": "363"
         },
         "subviews": [
+          {
+             "view_type": "ReadInJoyBlurImageView",
+             "view_id": "id_blur_img",
+             "height": {
+               "type": "relative",
+               "value": "172.5"
+             },
+             "width": {
+               "type": "relative",
+               "value": "363"
+             },
+             "event_type": "cmd_large_img_click",
+             "attributes": {
+               "setFeedsModel:": "$article_model"
+             }
+          },
           {
             "view_type": "ReadInjoyDoubleImageView",
             "view_id": "id_article_double_image",
@@ -309,6 +324,9 @@
       },
       {
         "$includeComponet": "componet/android/ad_article_main_body.geojson"
+      },
+      {
+        "$includeComponet": "componet/ad_tag_list.geojson"
       },
       {
       	"$includeComponet": "componet/android/ad_info_bar.geojson"

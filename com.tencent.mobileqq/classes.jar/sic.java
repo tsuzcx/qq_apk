@@ -1,8 +1,16 @@
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+
 public class sic
+  extends pmr
 {
-  public static boolean a(int paramInt)
+  public sic(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    return (paramInt == 1) || (paramInt == 3) || (paramInt == 7);
+    super(paramString);
+  }
+  
+  public void a(pmk parampmk)
+  {
+    parampmk.a(ReadInJoyListViewGroup.a(this.a), this.a.a);
   }
 }
 

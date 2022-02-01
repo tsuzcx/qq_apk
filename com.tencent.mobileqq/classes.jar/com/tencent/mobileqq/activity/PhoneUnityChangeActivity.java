@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity;
 
 import Override;
 import SecurityAccountServer.RespondQueryQQBindingStat;
-import aeua;
-import ajby;
+import afde;
+import ajng;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -14,15 +14,15 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anni;
-import awmz;
-import aywi;
-import bcst;
-import bglf;
-import bgnt;
-import bgpa;
-import bkho;
-import bkif;
+import anzj;
+import axfr;
+import azov;
+import bdll;
+import bhlg;
+import bhnv;
+import bhpc;
+import blir;
+import blji;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
@@ -37,34 +37,34 @@ public class PhoneUnityChangeActivity
 {
   private int a;
   public Button a;
-  public awmz a;
-  public aywi a;
-  public bgpa a;
-  public bkho a;
+  public axfr a;
+  public azov a;
+  public bhpc a;
+  public blir a;
   public String a;
-  public aywi b;
+  public azov b;
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bkho == null)
+    if (this.jdField_a_of_type_Blir == null)
     {
-      this.jdField_a_of_type_Bkho = ((bkho)bkif.a(this, null));
-      this.jdField_a_of_type_Bkho.setCanceledOnTouchOutside(true);
-      this.jdField_a_of_type_Bkho.a(anni.a(2131706795), 3);
-      this.jdField_a_of_type_Bkho.c(2131690582);
-      this.jdField_a_of_type_Bkho.a(new aeua(this));
-      this.jdField_a_of_type_Bkho.c(2131690582);
+      this.jdField_a_of_type_Blir = ((blir)blji.a(this, null));
+      this.jdField_a_of_type_Blir.setCanceledOnTouchOutside(true);
+      this.jdField_a_of_type_Blir.a(anzj.a(2131706904), 3);
+      this.jdField_a_of_type_Blir.c(2131690580);
+      this.jdField_a_of_type_Blir.a(new afde(this));
+      this.jdField_a_of_type_Blir.c(2131690580);
     }
-    if ((this.jdField_a_of_type_Bkho != null) && (!this.jdField_a_of_type_Bkho.isShowing()) && (!isFinishing())) {
-      this.jdField_a_of_type_Bkho.show();
+    if ((this.jdField_a_of_type_Blir != null) && (!this.jdField_a_of_type_Blir.isShowing()) && (!isFinishing())) {
+      this.jdField_a_of_type_Blir.show();
     }
   }
   
   public boolean a()
   {
-    Object localObject1 = (awmz)this.app.getManager(11);
-    int i = ((awmz)localObject1).d();
-    localObject1 = ((awmz)localObject1).a();
+    Object localObject1 = (axfr)this.app.getManager(11);
+    int i = ((axfr)localObject1).d();
+    localObject1 = ((axfr)localObject1).a();
     if ((1 != i) && (5 != i)) {}
     try
     {
@@ -83,19 +83,19 @@ public class PhoneUnityChangeActivity
           QLog.d("PhoneUnityChangeActivity", 2, "" + i, localException);
         }
       }
-      super.setTitle(anni.a(2131706806));
-      Object localObject2 = "更换手机号码#name#，\n将更新以下功能。".replace("#name#", ajby.a(this.jdField_a_of_type_JavaLangString));
-      ((TextView)findViewById(2131379559)).setText((CharSequence)localObject2);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363727));
+      super.setTitle(anzj.a(2131706915));
+      Object localObject2 = "更换手机号码#name#，\n将更新以下功能。".replace("#name#", ajng.a(this.jdField_a_of_type_JavaLangString));
+      ((TextView)findViewById(2131379731)).setText((CharSequence)localObject2);
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363753));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      localObject2 = (ImageView)findViewById(2131368961);
+      localObject2 = (ImageView)findViewById(2131369056);
       ((ImageView)localObject2).setVisibility(0);
       if (AppSetting.c) {
-        ((ImageView)localObject2).setContentDescription(getString(2131694221));
+        ((ImageView)localObject2).setContentDescription(getString(2131694246));
       }
-      i = 2130843652;
+      i = 2130843670;
       if (!ThemeUtil.isNowThemeIsNight(this.app, false, null)) {
-        i = 2130840281;
+        i = 2130840291;
       }
       ((ImageView)localObject2).setImageResource(i);
       ((ImageView)localObject2).setOnClickListener(this);
@@ -132,8 +132,8 @@ public class PhoneUnityChangeActivity
     do
     {
       return true;
-      super.setContentView(2131559556);
-      this.jdField_a_of_type_Awmz = ((awmz)this.app.getManager(11));
+      super.setContentView(2131559561);
+      this.jdField_a_of_type_Axfr = ((axfr)this.app.getManager(11));
       this.jdField_a_of_type_Int = getIntent().getIntExtra("kSrouce", -1);
     } while (a());
     super.finish();
@@ -142,25 +142,25 @@ public class PhoneUnityChangeActivity
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Aywi != null)
+    if (this.jdField_a_of_type_Azov != null)
     {
-      this.app.unRegistObserver(this.jdField_a_of_type_Aywi);
-      this.jdField_a_of_type_Aywi = null;
+      this.app.unRegistObserver(this.jdField_a_of_type_Azov);
+      this.jdField_a_of_type_Azov = null;
     }
     if (this.b != null)
     {
       this.app.unRegistObserver(this.b);
       this.b = null;
     }
-    if (this.jdField_a_of_type_Bgpa != null)
+    if (this.jdField_a_of_type_Bhpc != null)
     {
-      this.jdField_a_of_type_Bgpa.dismiss();
-      this.jdField_a_of_type_Bgpa = null;
+      this.jdField_a_of_type_Bhpc.dismiss();
+      this.jdField_a_of_type_Bhpc = null;
     }
-    if (this.jdField_a_of_type_Bkho != null)
+    if (this.jdField_a_of_type_Blir != null)
     {
-      this.jdField_a_of_type_Bkho.dismiss();
-      this.jdField_a_of_type_Bkho = null;
+      this.jdField_a_of_type_Blir.dismiss();
+      this.jdField_a_of_type_Blir = null;
     }
     this.app.removeHandler(PhoneUnityChangeActivity.class);
     super.doOnDestroy();
@@ -177,10 +177,10 @@ public class PhoneUnityChangeActivity
       return;
       a();
       continue;
-      if (bgnt.d(this)) {
+      if (bhnv.d(this)) {
         break;
       }
-      a(2131693991);
+      a(2131694008);
     }
     Intent localIntent = new Intent(this, BindNumberActivity.class);
     localIntent.putExtra("kNeedUnbind", true);
@@ -192,8 +192,8 @@ public class PhoneUnityChangeActivity
       localIntent.putExtra("kSrouce", i);
       localIntent.putExtra("kFPhoneChange", true);
       startActivityForResult(localIntent, 1001);
-      bcst.b(this.app, "CliOper", "", "", "0X8005B80", "0X8005B80", 0, 0, "", "", "", "");
-      bglf.a(1);
+      bdll.b(this.app, "CliOper", "", "", "0X8005B80", "0X8005B80", 0, 0, "", "", "", "");
+      bhlg.a(1);
       break;
     }
   }

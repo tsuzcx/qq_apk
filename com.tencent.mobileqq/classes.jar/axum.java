@@ -1,293 +1,510 @@
-class axum
-  extends niv
+import android.content.Intent;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBFixed32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.Cryptor;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.OutputStream;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import org.json.JSONObject;
+import tencent.im.cs.cmd0x6ff.subcmd0x501.ReqBody;
+import tencent.im.cs.cmd0x6ff.subcmd0x501.RspBody;
+import tencent.im.cs.cmd0x6ff.subcmd0x501.SubCmd0x501ReqBody;
+import tencent.im.cs.cmd0x6ff.subcmd0x501.SubCmd0x501Rspbody;
+import tencent.im.cs.cmd0x6ff.subcmd0x501.SubCmd0x501Rspbody.IpAddr;
+import tencent.im.cs.cmd0x6ff.subcmd0x501.SubCmd0x501Rspbody.SrvAddrs;
+import tencent.im.msg.im_msg_head.Head;
+import tencent.im.msg.im_msg_head.HttpConnHead;
+import tencent.im.msg.im_msg_head.LoginSig;
+import tencent.im.msg.im_msg_head.TransOidbHead;
+import tencent.im.oidb.cmd0x6b2.oidb_cmd0x6b2.ReqBody;
+import tencent.im.oidb.cmd0x6b2.oidb_cmd0x6b2.RspBody;
+
+public class axum
+  extends MSFServlet
 {
-  axum(axtp paramaxtp) {}
+  private static int jdField_a_of_type_Int;
+  static final Object jdField_a_of_type_JavaLangObject = new Object();
+  static HashMap<String, Object> jdField_a_of_type_JavaUtilHashMap;
   
-  /* Error */
-  public void a(int paramInt, byte[] paramArrayOfByte, android.os.Bundle paramBundle)
+  private static int a()
   {
-    // Byte code:
-    //   0: iload_1
-    //   1: ifne +510 -> 511
-    //   4: new 19	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   7: dup
-    //   8: invokespecial 20	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   11: astore_3
-    //   12: aload_3
-    //   13: aload_2
-    //   14: checkcast 22	[B
-    //   17: invokevirtual 26	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   20: checkcast 19	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   23: astore_2
-    //   24: aload_2
-    //   25: ifnull +42 -> 67
-    //   28: aload_2
-    //   29: getfield 30	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   32: invokevirtual 36	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   35: istore_1
-    //   36: invokestatic 42	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   39: ifeq +28 -> 67
-    //   42: ldc 44
-    //   44: iconst_2
-    //   45: new 46	java/lang/StringBuilder
-    //   48: dup
-    //   49: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   52: ldc 49
-    //   54: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: iload_1
-    //   58: invokevirtual 56	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   61: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   64: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   67: new 66	tencent/im/oidb/cmd0x66b/Oidb_0x66b$RspBody
-    //   70: dup
-    //   71: invokespecial 67	tencent/im/oidb/cmd0x66b/Oidb_0x66b$RspBody:<init>	()V
-    //   74: astore_3
-    //   75: aload_3
-    //   76: aload_2
-    //   77: getfield 71	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   80: invokevirtual 76	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   83: invokevirtual 82	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   86: invokevirtual 83	tencent/im/oidb/cmd0x66b/Oidb_0x66b$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   89: pop
-    //   90: new 85	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody
-    //   93: dup
-    //   94: invokespecial 86	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:<init>	()V
-    //   97: astore 4
-    //   99: new 88	com/tencent/mobileqq/nearpeople/mytab/NearbyMyTabCard
-    //   102: dup
-    //   103: invokespecial 89	com/tencent/mobileqq/nearpeople/mytab/NearbyMyTabCard:<init>	()V
-    //   106: astore_2
-    //   107: aload_3
-    //   108: getfield 92	tencent/im/oidb/cmd0x66b/Oidb_0x66b$RspBody:bytes_rspbody_5eb	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   111: invokevirtual 95	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   114: ifeq +142 -> 256
-    //   117: aload_3
-    //   118: getfield 92	tencent/im/oidb/cmd0x66b/Oidb_0x66b$RspBody:bytes_rspbody_5eb	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   121: invokevirtual 76	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   124: invokevirtual 82	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   127: astore 5
-    //   129: aload 4
-    //   131: aload 5
-    //   133: invokevirtual 96	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   136: pop
-    //   137: aload 4
-    //   139: getfield 100	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:rpt_msg_uin_data	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   142: invokevirtual 103	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
-    //   145: ifeq +111 -> 256
-    //   148: aload 4
-    //   150: getfield 100	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:rpt_msg_uin_data	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   153: invokevirtual 106	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
-    //   156: ifle +100 -> 256
-    //   159: aload 4
-    //   161: getfield 100	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:rpt_msg_uin_data	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   164: invokevirtual 109	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   167: iconst_0
-    //   168: invokeinterface 114 2 0
-    //   173: checkcast 116	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData
-    //   176: astore 4
-    //   178: aload_2
-    //   179: aload 4
-    //   181: getfield 120	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData:uint64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   184: invokevirtual 125	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   187: invokestatic 131	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   190: putfield 135	com/tencent/mobileqq/nearpeople/mytab/NearbyMyTabCard:uin	Ljava/lang/Long;
-    //   193: aload_2
-    //   194: aload 4
-    //   196: getfield 138	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData:bytes_stranger_nick	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   199: invokevirtual 76	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   202: invokevirtual 141	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   205: putfield 145	com/tencent/mobileqq/nearpeople/mytab/NearbyMyTabCard:nickName	Ljava/lang/String;
-    //   208: aload_2
-    //   209: aload 4
-    //   211: getfield 148	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData:uint32_profession	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   214: invokevirtual 36	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   217: putfield 152	com/tencent/mobileqq/nearpeople/mytab/NearbyMyTabCard:carrier	I
-    //   220: aload_2
-    //   221: aload 4
-    //   223: getfield 155	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData:uint32_gender	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   226: invokevirtual 36	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   229: putfield 158	com/tencent/mobileqq/nearpeople/mytab/NearbyMyTabCard:gender	I
-    //   232: aload_2
-    //   233: aload 4
-    //   235: getfield 161	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData:uint32_age	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   238: invokevirtual 36	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   241: putfield 164	com/tencent/mobileqq/nearpeople/mytab/NearbyMyTabCard:age	I
-    //   244: aload_2
-    //   245: aload 4
-    //   247: getfield 167	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData:uint32_god_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   250: invokevirtual 36	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   253: putfield 170	com/tencent/mobileqq/nearpeople/mytab/NearbyMyTabCard:godFlag	I
-    //   256: aload_3
-    //   257: getfield 173	tencent/im/oidb/cmd0x66b/Oidb_0x66b$RspBody:bytes_rspbody_gift	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   260: invokevirtual 95	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   263: ifeq +89 -> 352
-    //   266: aload_3
-    //   267: getfield 173	tencent/im/oidb/cmd0x66b/Oidb_0x66b$RspBody:bytes_rspbody_gift	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   270: invokevirtual 76	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   273: invokevirtual 82	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   276: astore 5
-    //   278: new 175	tencent/sso/accretion/flower_info$SFlowerInfoRsp
-    //   281: dup
-    //   282: invokespecial 176	tencent/sso/accretion/flower_info$SFlowerInfoRsp:<init>	()V
-    //   285: astore 4
-    //   287: aload 4
-    //   289: aload 5
-    //   291: invokevirtual 177	tencent/sso/accretion/flower_info$SFlowerInfoRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   294: pop
-    //   295: aload_2
-    //   296: aload 4
-    //   298: getfield 180	tencent/sso/accretion/flower_info$SFlowerInfoRsp:num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   301: invokevirtual 36	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   304: putfield 183	com/tencent/mobileqq/nearpeople/mytab/NearbyMyTabCard:giftNum	I
-    //   307: aload_0
-    //   308: getfield 10	axum:a	Laxtp;
-    //   311: aload 4
-    //   313: getfield 187	tencent/sso/accretion/flower_info$SFlowerInfoRsp:rpt_flower_url	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   316: invokevirtual 190	com/tencent/mobileqq/pb/PBRepeatField:get	()Ljava/util/List;
-    //   319: putfield 195	axtp:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   322: aload_0
-    //   323: getfield 10	axum:a	Laxtp;
-    //   326: aload 4
-    //   328: getfield 199	tencent/sso/accretion/flower_info$SFlowerInfoRsp:flower_msg_tips	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   331: invokevirtual 203	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   334: putfield 205	axtp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   337: aload_0
-    //   338: getfield 10	axum:a	Laxtp;
-    //   341: aload 4
-    //   343: getfield 208	tencent/sso/accretion/flower_info$SFlowerInfoRsp:flower_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   346: invokevirtual 36	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   349: putfield 210	axtp:d	I
-    //   352: aload_3
-    //   353: getfield 213	tencent/im/oidb/cmd0x66b/Oidb_0x66b$RspBody:rpt_msg_vistor_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   356: invokevirtual 103	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
-    //   359: ifeq +251 -> 610
-    //   362: aload_2
-    //   363: getfield 216	com/tencent/mobileqq/nearpeople/mytab/NearbyMyTabCard:visitors	Ljava/util/List;
-    //   366: invokeinterface 219 1 0
-    //   371: aload_3
-    //   372: getfield 213	tencent/im/oidb/cmd0x66b/Oidb_0x66b$RspBody:rpt_msg_vistor_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   375: invokevirtual 109	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   378: invokeinterface 223 1 0
-    //   383: astore_3
-    //   384: aload_3
-    //   385: invokeinterface 228 1 0
-    //   390: ifeq +170 -> 560
-    //   393: aload_3
-    //   394: invokeinterface 232 1 0
-    //   399: checkcast 234	appoint/define/appoint_define$PublisherInfo
-    //   402: astore 4
-    //   404: aload 4
-    //   406: ifnull -22 -> 384
-    //   409: aload 4
-    //   411: invokestatic 240	com/tencent/mobileqq/data/StrangerInfo:convertFrom	(Lappoint/define/appoint_define$PublisherInfo;)Lcom/tencent/mobileqq/data/StrangerInfo;
-    //   414: astore 4
-    //   416: aload 4
-    //   418: ifnull -34 -> 384
-    //   421: aload_2
-    //   422: getfield 216	com/tencent/mobileqq/nearpeople/mytab/NearbyMyTabCard:visitors	Ljava/util/List;
-    //   425: aload 4
-    //   427: invokeinterface 244 2 0
-    //   432: pop
-    //   433: goto -49 -> 384
-    //   436: astore_2
-    //   437: invokestatic 42	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   440: ifeq +31 -> 471
-    //   443: ldc 44
-    //   445: iconst_2
-    //   446: new 46	java/lang/StringBuilder
-    //   449: dup
-    //   450: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   453: ldc 246
-    //   455: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   458: aload_2
-    //   459: invokevirtual 247	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:toString	()Ljava/lang/String;
-    //   462: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   465: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   468: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   471: aload_3
-    //   472: astore_2
-    //   473: goto -449 -> 24
-    //   476: astore_2
-    //   477: invokestatic 42	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   480: ifeq +31 -> 511
-    //   483: ldc 44
-    //   485: iconst_2
-    //   486: new 46	java/lang/StringBuilder
-    //   489: dup
-    //   490: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   493: ldc 246
-    //   495: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   498: aload_2
-    //   499: invokevirtual 247	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:toString	()Ljava/lang/String;
-    //   502: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   505: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   508: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   511: return
-    //   512: astore 4
-    //   514: invokestatic 42	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   517: ifeq -261 -> 256
-    //   520: ldc 249
-    //   522: iconst_2
-    //   523: ldc 251
-    //   525: aload 4
-    //   527: invokestatic 255	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   530: goto -274 -> 256
-    //   533: astore 5
-    //   535: aload_2
-    //   536: iconst_0
-    //   537: putfield 183	com/tencent/mobileqq/nearpeople/mytab/NearbyMyTabCard:giftNum	I
-    //   540: invokestatic 42	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   543: ifeq -248 -> 295
-    //   546: ldc 249
-    //   548: iconst_2
-    //   549: ldc_w 257
-    //   552: aload 5
-    //   554: invokestatic 255	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   557: goto -262 -> 295
-    //   560: invokestatic 42	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   563: ifeq +35 -> 598
-    //   566: ldc 44
-    //   568: iconst_2
-    //   569: new 46	java/lang/StringBuilder
-    //   572: dup
-    //   573: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   576: ldc_w 259
-    //   579: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   582: aload_2
-    //   583: getfield 216	com/tencent/mobileqq/nearpeople/mytab/NearbyMyTabCard:visitors	Ljava/util/List;
-    //   586: invokevirtual 262	java/lang/Object:toString	()Ljava/lang/String;
-    //   589: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   592: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   595: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   598: aload_0
-    //   599: getfield 10	axum:a	Laxtp;
-    //   602: aload_2
-    //   603: getfield 216	com/tencent/mobileqq/nearpeople/mytab/NearbyMyTabCard:visitors	Ljava/util/List;
-    //   606: invokestatic 268	axtp:a	(Laxtp;Ljava/util/List;)V
-    //   609: return
-    //   610: invokestatic 42	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   613: ifeq -15 -> 598
-    //   616: ldc 44
-    //   618: iconst_2
-    //   619: ldc_w 270
-    //   622: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   625: goto -27 -> 598
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	628	0	this	axum
-    //   0	628	1	paramInt	int
-    //   0	628	2	paramArrayOfByte	byte[]
-    //   0	628	3	paramBundle	android.os.Bundle
-    //   97	329	4	localObject	java.lang.Object
-    //   512	14	4	localInvalidProtocolBufferMicroException1	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   127	163	5	arrayOfByte	byte[]
-    //   533	20	5	localInvalidProtocolBufferMicroException2	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    // Exception table:
-    //   from	to	target	type
-    //   12	24	436	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   75	90	476	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   129	256	512	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   287	295	533	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    int i = jdField_a_of_type_Int;
+    jdField_a_of_type_Int = i + 1;
+    return i;
+  }
+  
+  public static String a(int paramInt1, int paramInt2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1 & 0xFF).append(".");
+    localStringBuilder.append(paramInt1 >> 8 & 0xFF).append(".");
+    localStringBuilder.append(paramInt1 >> 16 & 0xFF).append(".");
+    localStringBuilder.append(paramInt1 >> 24 & 0xFF);
+    return a(localStringBuilder.toString(), paramInt2);
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    StringBuffer localStringBuffer = new StringBuffer(200);
+    localStringBuffer.append("http://").append(paramString);
+    if (paramInt != 80) {
+      localStringBuffer.append(":").append(paramInt);
+    }
+    localStringBuffer.append("/");
+    return localStringBuffer.toString();
+  }
+  
+  private void a(Intent paramIntent, int paramInt, byte[] paramArrayOfByte1, byte[] arg4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAlumniServlet", 2, "respGetNearbyAlumni, errorCode = " + paramInt);
+    }
+    paramIntent.getStringExtra("param_req_json_string");
+    String str2 = paramIntent.getStringExtra("param_callback_key");
+    String str1 = paramIntent.getStringExtra("param_callback_id");
+    Object localObject1 = null;
+    paramIntent = localObject1;
+    int i = paramInt;
+    int k;
+    if (paramInt == 0) {
+      try
+      {
+        k = paramArrayOfByte1.length;
+        if ((paramArrayOfByte1[0] != 40) || (paramArrayOfByte1[(k - 1)] != 41))
+        {
+          paramIntent = "unexpected body data, len=" + k + ", data=";
+          paramArrayOfByte1 = paramArrayOfByte1.toString();
+          ??? = new StringBuilder().append(paramIntent);
+          paramIntent = paramArrayOfByte1;
+          if (paramArrayOfByte1.length() > 20) {
+            paramIntent = paramArrayOfByte1.substring(0, 20);
+          }
+          throw new RuntimeException(paramIntent);
+        }
+      }
+      catch (Exception paramArrayOfByte1)
+      {
+        paramInt = -10;
+        paramIntent = localObject1;
+        i = paramInt;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("NearbyAlumniServlet", 2, "respGetNearbyAlumni | Exception:" + paramArrayOfByte1.getMessage());
+          i = paramInt;
+          paramIntent = localObject1;
+        }
+      }
+    }
+    for (;;)
+    {
+      paramArrayOfByte1 = null;
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (jdField_a_of_type_JavaUtilHashMap != null) {
+          paramArrayOfByte1 = jdField_a_of_type_JavaUtilHashMap.remove(str2);
+        }
+        if (axxb.b()) {
+          axxb.a("NearbyAlumniServlet", new Object[] { "respGetNearbyAlumni", Integer.valueOf(i), paramArrayOfByte1 });
+        }
+        if ((paramArrayOfByte1 instanceof abef)) {
+          paramArrayOfByte1 = (abef)paramArrayOfByte1;
+        }
+      }
+      try
+      {
+        ??? = new JSONObject();
+        ???.put("resultCode", i);
+        ???.put("data", paramIntent);
+        paramIntent = ???.toString();
+        paramArrayOfByte1.callJs(str1, new String[] { paramIntent });
+        return;
+        paramIntent = new DataInputStream(new ByteArrayInputStream(paramArrayOfByte1));
+        paramIntent.readByte();
+        i = paramIntent.readInt();
+        int j = paramIntent.readInt();
+        if ((i > k) || (j > k)) {
+          throw new RuntimeException("unexpected length, headLen=" + i + ", bodyLen=" + j);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("NearbyAlumniServlet", 2, "respGetNearbyAlumni | headLen=" + i + " | bodyLen=" + j);
+        }
+        if (i > 0)
+        {
+          paramArrayOfByte1 = new byte[i];
+          paramIntent.read(paramArrayOfByte1);
+          Object localObject2 = new im_msg_head.Head();
+          ((im_msg_head.Head)localObject2).mergeFrom(paramArrayOfByte1);
+          localObject2 = (im_msg_head.HttpConnHead)((im_msg_head.Head)localObject2).msg_httpconn_head.get();
+          i = ((im_msg_head.HttpConnHead)localObject2).uint32_error_code.get();
+          paramInt = i;
+          if (QLog.isDevelopLevel())
+          {
+            paramArrayOfByte1 = new StringBuilder();
+            paramArrayOfByte1.append("uint64_uin=").append(((im_msg_head.HttpConnHead)localObject2).uint64_uin.get()).append(", uint32_command=").append(((im_msg_head.HttpConnHead)localObject2).uint32_command.get()).append(", uint32_sub_command=").append(((im_msg_head.HttpConnHead)localObject2).uint32_sub_command.get()).append(", uint32_seq=").append(((im_msg_head.HttpConnHead)localObject2).uint32_seq.get()).append(", uint32_version=").append(((im_msg_head.HttpConnHead)localObject2).uint32_version.get()).append(", uint32_retry_times=").append(((im_msg_head.HttpConnHead)localObject2).uint32_retry_times.get()).append(", uint32_client_type=").append(((im_msg_head.HttpConnHead)localObject2).uint32_client_type.get()).append(", uint32_pub_no=").append(((im_msg_head.HttpConnHead)localObject2).uint32_pub_no.get()).append(", uint32_local_id=").append(((im_msg_head.HttpConnHead)localObject2).uint32_local_id.get()).append(", uint32_time_zone=").append(((im_msg_head.HttpConnHead)localObject2).uint32_time_zone.get()).append(", uint32_client_ip=").append(((im_msg_head.HttpConnHead)localObject2).uint32_client_ip.get()).append(", uint32_client_port=").append(((im_msg_head.HttpConnHead)localObject2).uint32_client_port.get()).append(", uint32_qzhttp_ip=").append(((im_msg_head.HttpConnHead)localObject2).uint32_qzhttp_ip.get()).append(", uint32_qzhttp_port=").append(((im_msg_head.HttpConnHead)localObject2).uint32_qzhttp_port.get()).append(", uint32_spp_ip=").append(((im_msg_head.HttpConnHead)localObject2).uint32_spp_ip.get()).append(", uint32_spp_port=").append(((im_msg_head.HttpConnHead)localObject2).uint32_spp_port.get()).append(", uint32_flag=").append(((im_msg_head.HttpConnHead)localObject2).uint32_flag.get()).append(", bytes_key=").append(((im_msg_head.HttpConnHead)localObject2).bytes_key.get()).append(", uint32_compress_type=").append(((im_msg_head.HttpConnHead)localObject2).uint32_compress_type.get()).append(", uint32_origin_size=").append(((im_msg_head.HttpConnHead)localObject2).uint32_origin_size.get()).append(", uint32_error_code=").append(((im_msg_head.HttpConnHead)localObject2).uint32_error_code.get()).append(", uint32_command_id=").append(((im_msg_head.HttpConnHead)localObject2).uint32_command_id.get()).append(", uint32_service_cmdid=").append(((im_msg_head.HttpConnHead)localObject2).uint32_service_cmdid.get());
+            localObject2 = (im_msg_head.TransOidbHead)((im_msg_head.HttpConnHead)localObject2).msg_oidbhead.get();
+            if (localObject2 != null) {
+              paramArrayOfByte1.append(", TransOidbHead=[").append("uint32_command=").append(((im_msg_head.TransOidbHead)localObject2).uint32_command.get()).append("|uint32_service_type=").append(((im_msg_head.TransOidbHead)localObject2).uint32_service_type.get()).append("|uint32_result=").append(((im_msg_head.TransOidbHead)localObject2).uint32_result.get()).append("|str_error_msg=").append(((im_msg_head.TransOidbHead)localObject2).str_error_msg.get()).append("]");
+            }
+            QLog.i("NearbyAlumniServlet", 4, "HttpConnHead=" + paramArrayOfByte1.toString());
+            paramInt = i;
+          }
+        }
+        if ((j > 0) && (paramInt == 0))
+        {
+          paramArrayOfByte1 = new byte[j];
+          paramIntent.read(paramArrayOfByte1);
+          paramIntent = new Cryptor().decrypt(paramArrayOfByte1, ???);
+          paramArrayOfByte1 = new oidb_cmd0x6b2.RspBody();
+          paramArrayOfByte1.mergeFrom(paramIntent);
+          paramIntent = paramArrayOfByte1.bytes_body.get().toStringUtf8();
+          i = paramInt;
+          continue;
+          paramIntent = finally;
+          throw paramIntent;
+        }
+      }
+      catch (Exception paramIntent)
+      {
+        for (;;)
+        {
+          paramIntent.printStackTrace();
+          paramIntent = "";
+          continue;
+          paramIntent = null;
+        }
+      }
+    }
+  }
+  
+  private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramFromServiceMsg.isSuccess()) {
+      localObject1 = new subcmd0x501.RspBody();
+    }
+    try
+    {
+      paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+      localObject2 = new byte[paramFromServiceMsg.getInt() - 4];
+      paramFromServiceMsg.get((byte[])localObject2);
+      ((subcmd0x501.RspBody)localObject1).mergeFrom((byte[])localObject2);
+      localObject2 = (subcmd0x501.SubCmd0x501Rspbody)((subcmd0x501.RspBody)localObject1).msg_subcmd_0x501_rsp_body.get();
+      paramFromServiceMsg = ((subcmd0x501.SubCmd0x501Rspbody)localObject2).bytes_session_key.get();
+      if ((paramFromServiceMsg == null) || (paramFromServiceMsg.toByteArray().length <= 0)) {
+        break label341;
+      }
+      paramFromServiceMsg = paramFromServiceMsg.toByteArray();
+    }
+    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+    {
+      for (;;)
+      {
+        Object localObject2;
+        Object localObject3;
+        int i;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("NearbyAlumniServlet", 2, paramFromServiceMsg.getMessage());
+          continue;
+          localObject2 = null;
+          continue;
+          localObject1 = null;
+          continue;
+          paramFromServiceMsg = null;
+        }
+      }
+    }
+    localObject1 = ((subcmd0x501.SubCmd0x501Rspbody)localObject2).bytes_httpconn_sig_session.get();
+    if ((localObject1 != null) && (((ByteStringMicro)localObject1).toByteArray().length > 0))
+    {
+      localObject1 = ((ByteStringMicro)localObject1).toByteArray();
+      localObject2 = ((subcmd0x501.SubCmd0x501Rspbody)localObject2).rpt_msg_httpconn_addrs.get();
+      if ((localObject2 != null) && (((List)localObject2).size() != 0))
+      {
+        localObject2 = ((List)localObject2).iterator();
+        do
+        {
+          if (!((Iterator)localObject2).hasNext()) {
+            break;
+          }
+          localObject3 = (subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)((Iterator)localObject2).next();
+        } while (((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject3).uint32_service_type.get() != 5);
+        localObject3 = ((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject3).rpt_msg_addrs.get();
+        if ((localObject3 != null) && (((List)localObject3).size() != 0))
+        {
+          localObject2 = new String[((List)localObject3).size()];
+          i = 0;
+          while (i < ((List)localObject3).size())
+          {
+            subcmd0x501.SubCmd0x501Rspbody.IpAddr localIpAddr = (subcmd0x501.SubCmd0x501Rspbody.IpAddr)((List)localObject3).get(i);
+            localObject2[i] = a(localIpAddr.uint32_ip.get(), localIpAddr.uint32_port.get());
+            i += 1;
+          }
+          localObject3 = a();
+          if (localObject3 != null) {
+            ((axxf)localObject3).a(paramFromServiceMsg, (byte[])localObject1, (String[])localObject2);
+          }
+          a(paramIntent, null, true);
+          return;
+        }
+      }
+    }
+  }
+  
+  public static void a(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString1, Object paramObject, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      throw new IllegalArgumentException("reqJsonStr can not be null!");
+    }
+    String str = String.valueOf(SystemClock.elapsedRealtime()) + "_" + paramString1;
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_JavaUtilHashMap == null) {
+        jdField_a_of_type_JavaUtilHashMap = new HashMap(1);
+      }
+      jdField_a_of_type_JavaUtilHashMap.put(str, paramObject);
+      paramObject = new NewIntent(paramAppInterface.getApplication(), axum.class);
+      paramObject.putExtra("param_cmd", paramInt1);
+      paramObject.putExtra("param_subcmd", paramInt2);
+      paramObject.putExtra("param_uin", Long.parseLong(paramAppInterface.getCurrentAccountUin()));
+      paramObject.putExtra("param_req_json_string", paramString1);
+      paramObject.putExtra("param_callback_key", str);
+      paramObject.putExtra("param_callback_id", paramString2);
+      paramAppInterface.startServlet(paramObject);
+      return;
+    }
+  }
+  
+  private boolean a(Intent paramIntent, Packet paramPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAlumniServlet", 2, "request get ip list");
+    }
+    long l = paramIntent.getLongExtra("param_uin", 0L);
+    if (l == 0L) {
+      return false;
+    }
+    paramIntent = new subcmd0x501.SubCmd0x501ReqBody();
+    paramIntent.uint64_uin.set(l);
+    paramIntent.uint32_idc_id.set(0);
+    paramIntent.uint32_appid.set(16);
+    paramIntent.uint32_login_sig_type.set(1);
+    paramIntent.uint32_request_flag.set(3);
+    Object localObject = new ArrayList();
+    ((List)localObject).add(Integer.valueOf(5));
+    paramIntent.rpt_uint32_service_types.set((List)localObject);
+    localObject = new subcmd0x501.ReqBody();
+    ((subcmd0x501.ReqBody)localObject).msg_subcmd_0x501_req_body.set(paramIntent);
+    paramPacket.setSSOCommand("HttpConn.0x6ff_501");
+    paramIntent = ((subcmd0x501.ReqBody)localObject).toByteArray();
+    localObject = ByteBuffer.allocate(paramIntent.length + 4);
+    ((ByteBuffer)localObject).putInt(paramIntent.length + 4);
+    ((ByteBuffer)localObject).put(paramIntent);
+    paramPacket.putSendData(((ByteBuffer)localObject).array());
+    return true;
+  }
+  
+  protected axxf a()
+  {
+    AppRuntime localAppRuntime = getAppRuntime();
+    if ((localAppRuntime instanceof NearbyAppInterface)) {
+      return (axxf)localAppRuntime.getManager(217);
+    }
+    if ((localAppRuntime instanceof BrowserAppInterface)) {
+      return ((BrowserAppInterface)localAppRuntime).a();
+    }
+    return null;
+  }
+  
+  protected void a(Intent paramIntent, Packet paramPacket, boolean paramBoolean)
+  {
+    long l = paramIntent.getLongExtra("param_uin", 0L);
+    int i = paramIntent.getIntExtra("param_subcmd", 0);
+    if (axxb.b()) {
+      axxb.a("NearbyAlumniServlet", new Object[] { "reqBigData", Integer.valueOf(i), Long.valueOf(l) });
+    }
+    Object localObject2 = paramIntent.getStringExtra("param_req_json_string");
+    if ((l == 0L) || (TextUtils.isEmpty((CharSequence)localObject2))) {}
+    Object localObject1;
+    label567:
+    do
+    {
+      do
+      {
+        return;
+        Object localObject3 = a();
+        if (localObject3 == null) {
+          localObject1 = null;
+        }
+        while (localObject1 == null) {
+          if (paramBoolean)
+          {
+            a(null, -1, null, null);
+            return;
+            localObject1 = ((axxf)localObject3).a();
+          }
+          else
+          {
+            a(paramIntent, paramPacket);
+            return;
+          }
+        }
+        Object localObject4 = new oidb_cmd0x6b2.ReqBody();
+        ((oidb_cmd0x6b2.ReqBody)localObject4).bytes_body.set(ByteStringMicro.copyFromUtf8((String)localObject2));
+        localObject4 = new Cryptor().encrypt(((oidb_cmd0x6b2.ReqBody)localObject4).toByteArray(), (byte[])localObject1);
+        Object localObject5 = new im_msg_head.Head();
+        ((im_msg_head.Head)localObject5).uint32_head_type.set(4);
+        Object localObject6 = new im_msg_head.LoginSig();
+        ((im_msg_head.LoginSig)localObject6).uint32_type.set(22);
+        if (localObject3 == null) {
+          localObject2 = null;
+        }
+        for (;;)
+        {
+          if (localObject2 != null)
+          {
+            ((im_msg_head.LoginSig)localObject6).bytes_sig.set(ByteStringMicro.copyFrom((byte[])localObject2));
+            ((im_msg_head.Head)localObject5).msg_login_sig.set((MessageMicro)localObject6);
+            localObject2 = new im_msg_head.HttpConnHead();
+            ((im_msg_head.HttpConnHead)localObject2).uint64_uin.set(l);
+            ((im_msg_head.HttpConnHead)localObject2).uint32_command.set(1791);
+            ((im_msg_head.HttpConnHead)localObject2).uint32_sub_command.set(3088);
+            ((im_msg_head.HttpConnHead)localObject2).uint32_seq.set(a());
+            ((im_msg_head.HttpConnHead)localObject2).uint32_version.set(4643);
+            ((im_msg_head.HttpConnHead)localObject2).uint32_flag.set(1);
+            ((im_msg_head.HttpConnHead)localObject2).uint32_compress_type.set(0);
+            ((im_msg_head.HttpConnHead)localObject2).uint32_error_code.set(0);
+            localObject6 = new im_msg_head.TransOidbHead();
+            ((im_msg_head.TransOidbHead)localObject6).uint32_command.set(1714);
+            ((im_msg_head.TransOidbHead)localObject6).uint32_service_type.set(i);
+            ((im_msg_head.HttpConnHead)localObject2).msg_oidbhead.set((MessageMicro)localObject6);
+            ((im_msg_head.Head)localObject5).msg_httpconn_head.set((MessageMicro)localObject2);
+            localObject2 = ((im_msg_head.Head)localObject5).toByteArray();
+            localObject5 = new ByteArrayOutputStream();
+          }
+          try
+          {
+            localObject6 = new DataOutputStream((OutputStream)localObject5);
+            ((DataOutputStream)localObject6).write(40);
+            ((DataOutputStream)localObject6).writeInt(localObject2.length);
+            ((DataOutputStream)localObject6).writeInt(localObject4.length);
+            ((DataOutputStream)localObject6).write((byte[])localObject2);
+            ((DataOutputStream)localObject6).write((byte[])localObject4);
+            ((DataOutputStream)localObject6).write(41);
+            ((DataOutputStream)localObject6).flush();
+            if (localObject3 == null)
+            {
+              localObject2 = null;
+              if ((localObject2 != null) && (((String)localObject2).length() != 0)) {
+                break;
+              }
+              if (!paramBoolean) {
+                break label567;
+              }
+              a(null, -1, null, null);
+              return;
+              localObject2 = ((axxf)localObject3).b();
+              continue;
+              if (paramBoolean)
+              {
+                a(null, -1, null, null);
+                return;
+              }
+              a(paramIntent, paramPacket);
+            }
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.i("NearbyAlumniServlet", 2, localException.getMessage());
+              }
+              a(paramIntent, -10, null, null);
+              continue;
+              str = ((axxf)localObject3).a();
+            }
+            a(paramIntent, paramPacket);
+            return;
+          }
+        }
+        String str = str + "cgi-bin/httpconn";
+        localObject3 = ((ByteArrayOutputStream)localObject5).toByteArray();
+        paramPacket = new beum();
+        paramPacket.jdField_a_of_type_ArrayOfByte = ((byte[])localObject3);
+        paramPacket.jdField_a_of_type_Beuq = new axun(this, paramIntent, (byte[])localObject1);
+        paramPacket.jdField_a_of_type_JavaLangString = str;
+        paramPacket.jdField_a_of_type_Int = 1;
+        paramPacket.e = 131080;
+        paramPacket.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
+        paramPacket.b = 2;
+        paramPacket.c = 15000L;
+        paramIntent = getAppRuntime();
+      } while (!(paramIntent instanceof AppInterface));
+      paramIntent = (AppInterface)paramIntent;
+      localObject1 = paramIntent.getNetEngine(0);
+      ((beuo)localObject1).a(paramPacket);
+    } while (!axxb.b());
+    axxb.a("NearbyAlumniServlet", new Object[] { "getBigData", localObject1, paramIntent });
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    String str2 = paramFromServiceMsg.getServiceCmd();
+    if (str2 == null) {
+      return;
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      boolean bool = paramFromServiceMsg.isSuccess();
+      localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
+      if (!bool) {
+        break label98;
+      }
+    }
+    label98:
+    for (String str1 = "";; str1 = "not")
+    {
+      QLog.i("NearbyAlumniServlet", 2, str1 + " success");
+      if (!str2.equals("HttpConn.0x6ff_501")) {
+        break;
+      }
+      a(paramIntent, paramFromServiceMsg);
+      return;
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if ((paramIntent != null) && (paramIntent.getIntExtra("param_cmd", 0) == 1714)) {
+      a(paramIntent, paramPacket, false);
+    }
   }
 }
 

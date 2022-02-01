@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import bgnt;
-import com.tencent.qphone.base.util.BaseApplication;
+import alok;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 class Conversation$2
   implements Runnable
 {
-  Conversation$2(Conversation paramConversation, int paramInt, boolean paramBoolean) {}
+  Conversation$2(Conversation paramConversation, QQAppInterface paramQQAppInterface, List paramList) {}
   
   public void run()
   {
-    boolean bool = bgnt.e(BaseApplication.getContext());
-    this.this$0.a(new Conversation.2.1(this, bool));
+    alok.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, 15);
   }
 }
 

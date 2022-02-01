@@ -1,103 +1,166 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfoz
-  extends bhhe
 {
-  bfoz(bfos parambfos) {}
+  public int a;
+  public long a;
+  public long b;
   
-  public void onDone(bhhf parambhhf)
+  public bfoz()
   {
-    bfpe localbfpe = new bfpe();
-    Bundle localBundle = parambhhf.a();
-    String str1 = localBundle.getString("GiftAnimationId");
-    String str2 = localBundle.getString("TroopUin");
-    int i = localBundle.getInt("GiftAnimationType");
-    boolean bool = localBundle.getBoolean("GiftIsInteract");
-    localbfpe.jdField_a_of_type_Boolean = true;
-    localbfpe.jdField_a_of_type_JavaLangString = str1;
-    bfpf.a().setChanged();
-    bfpf.a().notifyObservers(localbfpe);
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAnimationControlManager", 2, "onDone Id=" + str1 + " task:" + parambhhf);
-    }
-    bcst.b(null, "P_CliOper", "P_CliOper", "", "troop_gift_animation", "download", 0, parambhhf.a, str1, "", "", "");
-    if (parambhhf.a == 0)
+    a();
+  }
+  
+  public bfoz(bfoz parambfoz)
+  {
+    a(parambfoz);
+  }
+  
+  public static boolean a(int paramInt1, long paramLong1, int paramInt2, long paramLong2)
+  {
+    return (paramLong2 != -1L) && ((paramLong1 == -1L) || ((paramInt1 == paramInt2) && (paramLong1 > paramLong2)) || ((paramInt1 != paramInt2) && (bfoy.a(paramInt2, paramInt1))));
+  }
+  
+  public String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      parambhhf = new File(bftg.a(str1, i, bool));
-      if (parambhhf.exists()) {}
-      try
+      localJSONObject.put("biz_type", this.jdField_a_of_type_Int);
+      localJSONObject.put("shmsgseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("uniseq", this.b);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        bgmg.a(parambhhf.getAbsolutePath(), anhk.cx, false);
-        parambhhf.delete();
-        this.a.jdField_a_of_type_JavaUtilHashMap.put(str1, Integer.valueOf(3));
-        bcst.b(null, "P_CliOper", "Grp_flower", "", "grp_aio", "anime_suc", 1, 0, str2, "", "", "");
-        if (((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) || (this.a.jdField_a_of_type_AndroidAppActivity != null)) && (!bfos.jdField_a_of_type_JavaLangString.equals(this.a.b))) {}
-        return;
+        localJSONException.printStackTrace();
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        parambhhf.delete();
-      }
-    }
-    this.a.jdField_a_of_type_JavaUtilHashMap.put(localObject, Integer.valueOf(4));
-    i = bgnt.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication());
-    if (i == 1) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if ((!(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aidf)) && (!(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aibv))) {
-        break label428;
-      }
-      anqt.a("gift_aio", "fail_cartoon", str2, "", "", "");
-      break;
-      if (i == 2) {
-        i = 3;
-      } else if (i == 3) {
-        i = 2;
-      } else if (i == 4) {
-        i = 1;
-      } else {
-        i = 4;
-      }
-    }
-    label428:
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
-    {
-      parambhhf = "0";
-      label441:
-      if (!njo.a().a(str2)) {
-        break label521;
-      }
-    }
-    label521:
-    for (int j = 2;; j = 1)
-    {
-      bcst.b(null, "P_CliOper", "Grp_flower", "", "grp_aio", "anime_fail", j, 0, str2, localObject + "", parambhhf, i + "");
-      break;
-      parambhhf = "1";
-      break label441;
     }
   }
   
-  public boolean onStart(bhhf parambhhf)
+  public void a()
   {
-    String str = parambhhf.a().getString("GiftAnimationId");
-    bfpe localbfpe = new bfpe();
-    localbfpe.jdField_a_of_type_Boolean = false;
-    localbfpe.jdField_a_of_type_JavaLangString = str;
-    bfpf.a().setChanged();
-    bfpf.a().notifyObservers(localbfpe);
-    return super.onStart(parambhhf);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = -1L;
+    this.b = -1L;
+  }
+  
+  public void a(int paramInt, long paramLong)
+  {
+    if ((this.jdField_a_of_type_Int == paramInt) && (this.jdField_a_of_type_Long != -1L))
+    {
+      this.b = paramLong;
+      if (QLog.isColorLevel()) {
+        QLog.d("Navigate.MessageNavInfo", 2, "updateMsgSeq, preBizType = " + this.jdField_a_of_type_Int + ", newBizType = " + paramInt + ", msgSeq = " + paramLong);
+      }
+    }
+  }
+  
+  public void a(bfoz parambfoz)
+  {
+    if (parambfoz != null)
+    {
+      this.jdField_a_of_type_Int = parambfoz.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Long = parambfoz.jdField_a_of_type_Long;
+      this.b = parambfoz.b;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Int = paramString.optInt("biz_type");
+      this.jdField_a_of_type_Long = paramString.getLong("shmsgseq");
+      this.b = paramString.getLong("uniseq");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Long != -1L;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return this.jdField_a_of_type_Int == paramInt;
+  }
+  
+  public boolean a(int paramInt, long paramLong)
+  {
+    return a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, paramInt, paramLong);
+  }
+  
+  public boolean a(int paramInt, long paramLong1, long paramLong2)
+  {
+    boolean bool = a(paramInt, paramLong1);
+    if (QLog.isColorLevel()) {
+      QLog.d("Navigate.MessageNavInfo", 2, "update, preBizType = " + this.jdField_a_of_type_Int + ", newBizType = " + paramInt + ", needUpdate = " + bool + ", shmsgseq = " + paramLong1 + ", uniseq = " + paramLong2);
+    }
+    if (bool)
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_Long = paramLong1;
+      this.b = paramLong2;
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(bfoz parambfoz)
+  {
+    if (parambfoz == null) {
+      return false;
+    }
+    return a(parambfoz.jdField_a_of_type_Int, parambfoz.jdField_a_of_type_Long, parambfoz.b);
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString, long paramLong1, long paramLong2)
+  {
+    int j = 27;
+    int i = j;
+    if (paramQQAppInterface != null)
+    {
+      i = j;
+      if (paramBoolean)
+      {
+        paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(52)).c(paramString);
+        i = j;
+        if (paramQQAppInterface != null)
+        {
+          i = j;
+          if (paramQQAppInterface.hasOrgs()) {
+            i = 14;
+          }
+        }
+      }
+    }
+    return a(i, paramLong1, paramLong2);
+  }
+  
+  public void b(int paramInt, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Navigate.MessageNavInfo", 2, "updateShMsgSeq, preBizType = " + this.jdField_a_of_type_Int + ", newBizType = " + paramInt + ", newShMsgSeq = " + paramLong);
+    }
+    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != paramInt)) {
+      return;
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

@@ -1,18 +1,21 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 
-class npx
+public class npx
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  boolean jdField_a_of_type_Boolean;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
+  public npx(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  npx(npm paramnpm) {}
+  public void onGlobalLayout()
+  {
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int i = this.a.getWindow().getDecorView().getBottom();
+    int j = this.a.getWindow().getDecorView().getTop();
+    LebaSearchPluginManagerActivity.a(this.a, i - j);
+  }
 }
 
 

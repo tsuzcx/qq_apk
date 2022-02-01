@@ -1,90 +1,76 @@
-import android.accounts.AbstractAccountAuthenticator;
-import android.accounts.Account;
-import android.accounts.AccountAuthenticatorResponse;
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import java.util.ArrayList;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class ardi
-  extends AbstractAccountAuthenticator
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/config/business/BrowserOpenBean;", "", "()V", "topBrowsers", "", "Lcom/tencent/mobileqq/browser/BrowserItem;", "blackListApps", "", "(Ljava/util/List;Ljava/util/List;)V", "getBlackListApps", "()Ljava/util/List;", "getTopBrowsers", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ardi
 {
-  private Context a;
+  @NotNull
+  private final List<aqkg> a;
+  @NotNull
+  private final List<String> b;
   
-  public ardi(Context paramContext)
+  public ardi()
   {
-    super(paramContext);
-    this.a = paramContext;
+    this((List)new ArrayList(), null, 2, null);
   }
   
-  public Bundle addAccount(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, String paramString1, String paramString2, String[] paramArrayOfString, Bundle paramBundle)
+  public ardi(@NotNull List<aqkg> paramList, @NotNull List<String> paramList1)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "addAccount");
-    }
-    paramAccountAuthenticatorResponse = new Bundle();
-    paramAccountAuthenticatorResponse.putInt("errorCode", 6);
-    paramAccountAuthenticatorResponse.putString("errorMessage", "Manually add account is unsupported");
-    return paramAccountAuthenticatorResponse;
+    this.a = paramList;
+    this.b = paramList1;
   }
   
-  public Bundle confirmCredentials(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, Bundle paramBundle)
+  @NotNull
+  public final List<aqkg> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "onfirmCredentials");
-    }
-    return null;
+    return this.a;
   }
   
-  public Bundle editProperties(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, String paramString)
+  @NotNull
+  public final List<String> b()
   {
-    return null;
+    return this.b;
   }
   
-  public Bundle getAccountRemovalAllowed(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount)
+  public boolean equals(@Nullable Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "getAccountRemovalAllowed");
+    if (this != paramObject)
+    {
+      if ((paramObject instanceof ardi))
+      {
+        paramObject = (ardi)paramObject;
+        if ((!Intrinsics.areEqual(this.a, paramObject.a)) || (!Intrinsics.areEqual(this.b, paramObject.b))) {}
+      }
     }
-    if ("Success".equals(BaseApplicationImpl.sInjectResult)) {
-      ContactSyncManager.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), paramAccount);
+    else {
+      return true;
     }
-    return super.getAccountRemovalAllowed(paramAccountAuthenticatorResponse, paramAccount);
+    return false;
   }
   
-  public Bundle getAuthToken(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String paramString, Bundle paramBundle)
+  public int hashCode()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "getAuthToken");
+    int j = 0;
+    List localList = this.a;
+    if (localList != null) {}
+    for (int i = localList.hashCode();; i = 0)
+    {
+      localList = this.b;
+      if (localList != null) {
+        j = localList.hashCode();
+      }
+      return i * 31 + j;
     }
-    return null;
   }
   
-  public String getAuthTokenLabel(String paramString)
+  @NotNull
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "getAuthTokenLabel");
-    }
-    return "QQ通讯录同步@Authenticator";
-  }
-  
-  public Bundle hasFeatures(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String[] paramArrayOfString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "hasFeatures");
-    }
-    return null;
-  }
-  
-  public Bundle updateCredentials(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String paramString, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Authenticator", 2, "getAuthToken");
-    }
-    return null;
+    return "BrowserOpenBean(topBrowsers=" + this.a + ", blackListApps=" + this.b + ")";
   }
 }
 

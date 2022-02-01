@@ -81,15 +81,16 @@ public class QLog
   static String sBuildNumber;
   private static ThreadLocal sBuilderLocal;
   private static boolean sHasStoragePermission = false;
-  private static QLog.b sHead;
+  private static QLog.c sHead;
   public static long sInitLogTime = 0L;
   private static QLog.ILogCallback sLogCallback;
   public static boolean sLogcatHooked = false;
+  private static QLog.b sOnPrintlnCallback;
   private static RecyclablePool sPool;
-  private static QLog.b sTail;
+  private static QLog.c sTail;
   static Field sValueField;
   private static char[] sValues;
-  static QLog.c sWriteHandler;
+  static QLog.d sWriteHandler;
   private static final String tag = "MSF.D.QLog";
   static SimpleDateFormat timeFormatter;
   private static boolean useNewLog = false;
@@ -136,33 +137,33 @@ public class QLog
       colorLogTime = 0L;
       colorTags.clear();
     }
-    QLog.b localb = (QLog.b)sPool.obtain(QLog.b.class);
-    if (localb == null)
+    QLog.c localc = (QLog.c)sPool.obtain(QLog.c.class);
+    if (localc == null)
     {
       Log.e("QLog", "addLogItem obtain return null");
       return;
     }
-    localb.a = l;
-    localb.b = Process.myTid();
-    localb.c = paramInt1;
-    localb.d = ???;
-    localb.f = paramString2;
-    localb.h = paramArrayOfByte;
-    localb.e = paramInt2;
-    localb.g = paramThrowable;
+    localc.a = l;
+    localc.b = Process.myTid();
+    localc.c = paramInt1;
+    localc.d = ???;
+    localc.f = paramString2;
+    localc.h = paramArrayOfByte;
+    localc.e = paramInt2;
+    localc.g = paramThrowable;
     for (;;)
     {
       synchronized (processName)
       {
         if (sHead == null)
         {
-          sHead = localb;
-          sTail = localb;
+          sHead = localc;
+          sTail = localc;
           return;
         }
       }
-      sTail.changeNext(localb, true);
-      sTail = localb;
+      sTail.changeNext(localc, true);
+      sTail = localc;
     }
   }
   
@@ -220,10 +221,12 @@ public class QLog
         }
         if (i != 0)
         {
+          paramString2 = getTag(paramString1);
           if (paramThrowable != null) {
-            break label87;
+            break label96;
           }
-          Log.d(getTag(paramString1), str);
+          Log.d(paramString2, str);
+          onPrintln(3, paramString2, str);
         }
       }
     }
@@ -233,8 +236,9 @@ public class QLog
       return;
       i = 0;
       break;
-      label87:
-      Log.d(getTag(paramString1), str, paramThrowable);
+      label96:
+      Log.d(paramString2, str, paramThrowable);
+      onPrintln(3, paramString2, str);
     }
   }
   
@@ -264,6 +268,7 @@ public class QLog
     int j;
     label42:
     byte[] arrayOfByte;
+    String str;
     if ((UIN_REPORTLOG_LEVEL >= paramInt) || (colorTags.contains(paramString)))
     {
       i = 1;
@@ -271,7 +276,7 @@ public class QLog
       if (i == 0)
       {
         if (!useNewLog) {
-          break label103;
+          break label116;
         }
         j = k;
       }
@@ -283,10 +288,13 @@ public class QLog
         }
         if (i != 0)
         {
+          paramArrayOfByte = getTag(paramString);
+          str = new String(arrayOfByte, logCharset);
           if (paramThrowable != null) {
-            break label109;
+            break label122;
           }
-          Log.d(getTag(paramString), new String(arrayOfByte, logCharset));
+          Log.d(paramArrayOfByte, str);
+          onPrintln(3, paramArrayOfByte, str);
         }
       }
     }
@@ -296,11 +304,12 @@ public class QLog
       return;
       i = 0;
       break;
-      label103:
+      label116:
       j = 0;
       break label42;
-      label109:
-      Log.d(getTag(paramString), new String(arrayOfByte, logCharset), paramThrowable);
+      label122:
+      Log.d(paramArrayOfByte, str, paramThrowable);
+      onPrintln(3, paramArrayOfByte, str, paramThrowable);
     }
   }
   
@@ -679,7 +688,7 @@ public class QLog
       sBuildNumber = paramString3;
       paramString1 = new HandlerThread("logWriteThread");
       paramString1.start();
-      sWriteHandler = new QLog.c(paramString1.getLooper());
+      sWriteHandler = new QLog.d(paramString1.getLooper());
       sWriteHandler.sendEmptyMessageDelayed(1, paramLong);
       if (!isDevelopLevel()) {
         break label83;
@@ -688,7 +697,7 @@ public class QLog
     }
     for (;;)
     {
-      sPool = new RecyclablePool(QLog.b.class, i);
+      sPool = new RecyclablePool(QLog.c.class, i);
       return;
       label83:
       if (isColorLevel()) {
@@ -888,6 +897,22 @@ public class QLog
     return sHasStoragePermission;
   }
   
+  private static void onPrintln(int paramInt, String paramString1, String paramString2)
+  {
+    QLog.b localb = sOnPrintlnCallback;
+    if (localb != null) {
+      localb.a(paramInt, paramString1, paramString2);
+    }
+  }
+  
+  private static void onPrintln(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.b localb = sOnPrintlnCallback;
+    if (localb != null) {
+      localb.a(paramInt, paramString1, paramString2, paramThrowable);
+    }
+  }
+  
   public static void p(String paramString1, String paramString2)
   {
     Log.d(getTag(paramString1), "[s]" + paramString2);
@@ -907,37 +932,42 @@ public class QLog
     }
   }
   
+  public static void setOnPrintlnCallback(QLog.b paramb)
+  {
+    sOnPrintlnCallback = paramb;
+  }
+  
   /* Error */
   public static void setUIN_REPORTLOG_LEVEL(int paramInt)
   {
     // Byte code:
-    //   0: invokestatic 852	com/tencent/qphone/base/util/QLog:isExistSDCard	()Z
+    //   0: invokestatic 871	com/tencent/qphone/base/util/QLog:isExistSDCard	()Z
     //   3: ifeq +141 -> 144
-    //   6: new 349	java/io/File
+    //   6: new 351	java/io/File
     //   9: dup
-    //   10: getstatic 194	com/tencent/qphone/base/util/QLog:manualLogLevelPath	Ljava/lang/String;
-    //   13: invokespecial 350	java/io/File:<init>	(Ljava/lang/String;)V
+    //   10: getstatic 196	com/tencent/qphone/base/util/QLog:manualLogLevelPath	Ljava/lang/String;
+    //   13: invokespecial 352	java/io/File:<init>	(Ljava/lang/String;)V
     //   16: astore_2
     //   17: aload_2
-    //   18: invokevirtual 353	java/io/File:exists	()Z
+    //   18: invokevirtual 355	java/io/File:exists	()Z
     //   21: ifeq +113 -> 134
     //   24: aload_2
-    //   25: invokevirtual 855	java/io/File:isFile	()Z
+    //   25: invokevirtual 874	java/io/File:isFile	()Z
     //   28: ifeq +106 -> 134
-    //   31: new 857	java/io/BufferedReader
+    //   31: new 876	java/io/BufferedReader
     //   34: dup
-    //   35: new 859	java/io/FileReader
+    //   35: new 878	java/io/FileReader
     //   38: dup
-    //   39: getstatic 194	com/tencent/qphone/base/util/QLog:manualLogLevelPath	Ljava/lang/String;
-    //   42: invokespecial 860	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   45: invokespecial 863	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   39: getstatic 196	com/tencent/qphone/base/util/QLog:manualLogLevelPath	Ljava/lang/String;
+    //   42: invokespecial 879	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   45: invokespecial 882	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   48: astore_3
     //   49: aload_3
     //   50: astore_2
     //   51: aload_3
-    //   52: invokevirtual 866	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   55: invokestatic 871	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   58: invokevirtual 874	java/lang/Integer:intValue	()I
+    //   52: invokevirtual 885	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   55: invokestatic 890	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   58: invokevirtual 893	java/lang/Integer:intValue	()I
     //   61: istore_1
     //   62: aload_3
     //   63: astore_2
@@ -952,70 +982,70 @@ public class QLog
     //   76: aload_3
     //   77: astore_2
     //   78: iload_1
-    //   79: putstatic 150	com/tencent/qphone/base/util/QLog:UIN_REPORTLOG_LEVEL	I
+    //   79: putstatic 152	com/tencent/qphone/base/util/QLog:UIN_REPORTLOG_LEVEL	I
     //   82: aload_3
     //   83: astore_2
-    //   84: ldc 103
+    //   84: ldc 105
     //   86: iconst_1
-    //   87: new 172	java/lang/StringBuilder
+    //   87: new 174	java/lang/StringBuilder
     //   90: dup
-    //   91: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   94: invokestatic 838	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   97: invokevirtual 839	java/lang/Thread:getName	()Ljava/lang/String;
-    //   100: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   103: ldc_w 841
-    //   106: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   91: invokespecial 175	java/lang/StringBuilder:<init>	()V
+    //   94: invokestatic 855	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   97: invokevirtual 856	java/lang/Thread:getName	()Ljava/lang/String;
+    //   100: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: ldc_w 858
+    //   106: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   109: iload_1
-    //   110: invokevirtual 844	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   113: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   116: invokestatic 876	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   110: invokevirtual 861	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   113: invokevirtual 194	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   116: invokestatic 895	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   119: aload_3
     //   120: ifnull +7 -> 127
     //   123: aload_3
-    //   124: invokevirtual 877	java/io/BufferedReader:close	()V
+    //   124: invokevirtual 896	java/io/BufferedReader:close	()V
     //   127: return
     //   128: astore_2
     //   129: aload_2
-    //   130: invokevirtual 878	java/io/IOException:printStackTrace	()V
+    //   130: invokevirtual 897	java/io/IOException:printStackTrace	()V
     //   133: return
     //   134: aconst_null
     //   135: astore_2
     //   136: aload_2
     //   137: ifnull +7 -> 144
     //   140: aload_2
-    //   141: invokevirtual 877	java/io/BufferedReader:close	()V
+    //   141: invokevirtual 896	java/io/BufferedReader:close	()V
     //   144: iload_0
     //   145: iconst_1
     //   146: if_icmplt -19 -> 127
     //   149: iload_0
     //   150: iconst_4
     //   151: if_icmpgt -24 -> 127
-    //   154: getstatic 150	com/tencent/qphone/base/util/QLog:UIN_REPORTLOG_LEVEL	I
+    //   154: getstatic 152	com/tencent/qphone/base/util/QLog:UIN_REPORTLOG_LEVEL	I
     //   157: iload_0
     //   158: if_icmpeq -31 -> 127
     //   161: iload_0
-    //   162: putstatic 150	com/tencent/qphone/base/util/QLog:UIN_REPORTLOG_LEVEL	I
-    //   165: ldc 103
+    //   162: putstatic 152	com/tencent/qphone/base/util/QLog:UIN_REPORTLOG_LEVEL	I
+    //   165: ldc 105
     //   167: iconst_1
-    //   168: new 172	java/lang/StringBuilder
+    //   168: new 174	java/lang/StringBuilder
     //   171: dup
-    //   172: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   175: invokestatic 838	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   178: invokevirtual 839	java/lang/Thread:getName	()Ljava/lang/String;
-    //   181: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   184: ldc_w 880
-    //   187: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   172: invokespecial 175	java/lang/StringBuilder:<init>	()V
+    //   175: invokestatic 855	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   178: invokevirtual 856	java/lang/Thread:getName	()Ljava/lang/String;
+    //   181: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   184: ldc_w 899
+    //   187: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   190: iload_0
-    //   191: invokevirtual 844	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   194: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   197: new 846	java/lang/RuntimeException
+    //   191: invokevirtual 861	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   194: invokevirtual 194	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   197: new 863	java/lang/RuntimeException
     //   200: dup
-    //   201: invokespecial 847	java/lang/RuntimeException:<init>	()V
-    //   204: invokestatic 380	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   201: invokespecial 864	java/lang/RuntimeException:<init>	()V
+    //   204: invokestatic 382	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   207: return
     //   208: astore_2
     //   209: aload_2
-    //   210: invokevirtual 878	java/io/IOException:printStackTrace	()V
+    //   210: invokevirtual 897	java/io/IOException:printStackTrace	()V
     //   213: goto -69 -> 144
     //   216: astore 4
     //   218: aconst_null
@@ -1023,22 +1053,22 @@ public class QLog
     //   220: aload_3
     //   221: astore_2
     //   222: aload 4
-    //   224: invokevirtual 727	java/lang/Throwable:printStackTrace	()V
+    //   224: invokevirtual 736	java/lang/Throwable:printStackTrace	()V
     //   227: aload_3
     //   228: astore_2
-    //   229: ldc 103
+    //   229: ldc 105
     //   231: iconst_1
-    //   232: ldc_w 882
+    //   232: ldc_w 901
     //   235: aload 4
-    //   237: invokestatic 461	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   237: invokestatic 470	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   240: aload_3
     //   241: ifnull -97 -> 144
     //   244: aload_3
-    //   245: invokevirtual 877	java/io/BufferedReader:close	()V
+    //   245: invokevirtual 896	java/io/BufferedReader:close	()V
     //   248: goto -104 -> 144
     //   251: astore_2
     //   252: aload_2
-    //   253: invokevirtual 878	java/io/IOException:printStackTrace	()V
+    //   253: invokevirtual 897	java/io/IOException:printStackTrace	()V
     //   256: goto -112 -> 144
     //   259: astore_3
     //   260: aconst_null
@@ -1046,12 +1076,12 @@ public class QLog
     //   262: aload_2
     //   263: ifnull +7 -> 270
     //   266: aload_2
-    //   267: invokevirtual 877	java/io/BufferedReader:close	()V
+    //   267: invokevirtual 896	java/io/BufferedReader:close	()V
     //   270: aload_3
     //   271: athrow
     //   272: astore_2
     //   273: aload_2
-    //   274: invokevirtual 878	java/io/IOException:printStackTrace	()V
+    //   274: invokevirtual 897	java/io/IOException:printStackTrace	()V
     //   277: goto -7 -> 270
     //   280: astore_3
     //   281: goto -19 -> 262
@@ -1219,7 +1249,7 @@ public class QLog
   private static boolean writeLogToFile()
   {
     boolean bool1 = false;
-    QLog.b localb;
+    QLog.c localc;
     try
     {
       if ((wrapBytes == null) || (wrapBytes.length == 0)) {
@@ -1244,7 +1274,7 @@ public class QLog
       }
       synchronized (processName)
       {
-        localb = sTail;
+        localc = sTail;
         localObject1 = sHead;
         sTail = null;
         sHead = null;
@@ -1312,9 +1342,9 @@ public class QLog
           writer.write(Log.getStackTraceString(localThrowable.g));
           writer.write(10);
         }
-        ??? = (QLog.b)localThrowable.getNext();
+        ??? = (QLog.c)localThrowable.getNext();
         sPool.recycle(localThrowable);
-        if (localThrowable != localb) {
+        if (localThrowable != localc) {
           break label890;
         }
         writer.flush();

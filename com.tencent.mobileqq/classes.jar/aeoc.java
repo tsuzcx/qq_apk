@@ -1,22 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeoc
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public aeoc(LoginInfoActivity paramLoginInfoActivity) {}
+  public aeoc(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    LoginInfoActivity.a(this.a).setVisibility(4);
-    LoginInfoActivity.a(this.a).clearAnimation();
+    if (!this.a.isFinishing()) {
+      ForwardFriendListActivity.a(this.a).dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

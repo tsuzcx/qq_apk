@@ -1,14 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class ajwj
-  implements DialogInterface.OnClickListener
+  implements bduz
 {
-  ajwj(ajvr paramajvr) {}
+  ajwj(ajwi paramajwi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    paramBoolean = this.a.a();
+    this.a.d(paramBoolean);
   }
 }
 

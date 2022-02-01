@@ -1,57 +1,35 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppExposureData;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
-public class ashq
-  extends RecyclerView.Adapter<ashp>
+class ashq
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private List<MiniAppRecommInfo.MiniApp> jdField_a_of_type_JavaUtilList = new ArrayList();
+  ashq(ashp paramashp) {}
   
-  public ashq(asho paramasho) {}
-  
-  public ashp a(ViewGroup paramViewGroup, int paramInt)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    paramViewGroup = LayoutInflater.from(asho.a(this.jdField_a_of_type_Asho)).inflate(2131559479, null, false);
-    return new ashp(asho.a(this.jdField_a_of_type_Asho), paramViewGroup);
-  }
-  
-  public void a(ashp paramashp, int paramInt)
-  {
-    MiniAppRecommInfo.MiniApp localMiniApp = (MiniAppRecommInfo.MiniApp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramashp.a(localMiniApp);
-    paramashp.a(paramInt);
-    if ((localMiniApp != null) && (localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo != null))
-    {
-      MiniAppConfig localMiniAppConfig = new MiniAppConfig(localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo);
-      localMiniAppConfig.launchParam.scene = 2065;
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(new MiniAppExposureManager.MiniAppExposureData(localMiniAppConfig, paramInt));
-      MiniProgramLpReportDC04239.reportPageView(localArrayList, "expo");
-      asho.a(101, paramInt, localMiniApp.jdField_a_of_type_Int);
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) && (this.a.d != -1)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setTapPos(this.a.d);
     }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramashp, paramInt, getItemId(paramInt));
+    return false;
   }
   
-  public void a(List<MiniAppRecommInfo.MiniApp> paramList)
+  public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (paramList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyDataSetChanged();
+    return false;
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) || (Math.abs(paramFloat1) <= Math.abs(paramFloat2)) || (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c()) || (this.a.c) || (Math.abs(paramFloat1) <= this.a.jdField_a_of_type_Float) || ((paramFloat1 < 0.0F) && (this.a.jdField_a_of_type_Int == 2))) {}
+    while ((paramFloat1 > 0.0F) && (this.a.jdField_a_of_type_Int == 1)) {
+      return false;
     }
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    int i = this.a.d;
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setSrcPos(i);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c();
+    return false;
   }
 }
 

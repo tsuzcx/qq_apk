@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import afga;
-import afgb;
+import afpe;
+import afpf;
 import android.content.Intent;
 import com.tencent.qphone.base.remote.SimpleAccount;
 
 public class SubAccountBindActivity$3$1$1
   implements Runnable
 {
-  public SubAccountBindActivity$3$1$1(afgb paramafgb) {}
+  public SubAccountBindActivity$3$1$1(afpf paramafpf) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Afga.a.e();
-    this.a.jdField_a_of_type_Afga.a.b(this.a.jdField_a_of_type_Afga.a.getString(2131718313));
-    Intent localIntent = new Intent(this.a.jdField_a_of_type_Afga.a, SubLoginActivity.class);
+    this.a.jdField_a_of_type_Afpe.a.e();
+    this.a.jdField_a_of_type_Afpe.a.b(this.a.jdField_a_of_type_Afpe.a.getString(2131718449));
+    Intent localIntent = new Intent(this.a.jdField_a_of_type_Afpe.a, SubLoginActivity.class);
     localIntent.putExtra("subuin", this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin());
-    localIntent.putExtra("fromWhere", this.a.jdField_a_of_type_Afga.a.b);
-    this.a.jdField_a_of_type_Afga.a.startActivity(localIntent);
+    localIntent.putExtra("fromWhere", this.a.jdField_a_of_type_Afpe.a.b);
+    this.a.jdField_a_of_type_Afpe.a.startActivity(localIntent);
   }
 }
 

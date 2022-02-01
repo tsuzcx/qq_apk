@@ -1,22 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-
-public class ajto
-  implements View.OnTouchListener
+public abstract interface ajto
 {
-  public ajto(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.a.a.dismiss();
-      return true;
-    }
-    return false;
-  }
+  public abstract void a(int paramInt);
 }
 
 

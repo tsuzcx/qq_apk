@@ -1,10 +1,9 @@
-public class bbxu
+import android.view.View;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
+
+public abstract interface bbxu
 {
-  public Object a;
-  public boolean a;
-  public Object b;
-  
-  public bbxu(bbxt parambbxt) {}
+  public abstract void a(View paramView, int paramInt1, ScribbleResMgr.ResInfo paramResInfo, int paramInt2);
 }
 
 

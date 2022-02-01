@@ -3,7 +3,7 @@ package dov.com.qq.im.ae.play;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import bour;
+import bpwm;
 import dov.com.qq.im.capture.view.QIMSlidingTabView;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public class AEPlayShowTabView
   extends QIMSlidingTabView
 {
   private int jdField_a_of_type_Int;
-  private ArrayList<bour> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<bpwm> jdField_a_of_type_JavaUtilArrayList;
   
   public AEPlayShowTabView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,7 +24,7 @@ public class AEPlayShowTabView
     return this.jdField_a_of_type_Int;
   }
   
-  public ArrayList<bour> a()
+  public ArrayList<bpwm> a()
   {
     return this.jdField_a_of_type_JavaUtilArrayList;
   }
@@ -60,7 +60,7 @@ public class AEPlayShowTabView
     }
   }
   
-  public void a(ArrayList<bour> paramArrayList)
+  public void a(ArrayList<bpwm> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
     super.a(paramArrayList);

@@ -1,143 +1,316 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.FriendInfo;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.ListView;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class auuw
-  extends bkho
-  implements bkij
+  extends auuv
+  implements auum
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private aobu jdField_a_of_type_Aobu = new aobu(this.jdField_a_of_type_AndroidContentContext, ampj.a());
-  private auuy jdField_a_of_type_Auuy;
-  private bgzm jdField_a_of_type_Bgzm = new auux(this);
-  private String jdField_a_of_type_JavaLangString;
-  private List<FeedsItemData.FriendInfo> jdField_a_of_type_JavaUtilList;
+  public static String a;
+  long jdField_a_of_type_Long = 0L;
+  private auun jdField_a_of_type_Auun;
+  private auuz jdField_a_of_type_Auuz;
+  private Object d = new Object();
   
-  protected auuw(Context paramContext)
+  static
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    jdField_a_of_type_JavaLangString = "UniformDownloaderGen<FileAssistant>";
   }
   
-  public auuw(Context paramContext, String paramString, int paramInt)
+  public auuw(long paramLong)
   {
-    this(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    f();
-    ampj.a().addObserver(this.jdField_a_of_type_Bgzm);
-    ((VasExtensionHandler)ampj.a().getBusinessHandler(71)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    super(paramLong);
   }
   
-  private String a(long paramLong)
+  private auuz a()
   {
-    paramLong = System.currentTimeMillis() / 1000L - paramLong;
-    if (paramLong < 60L) {
-      return paramLong / 60L + anni.a(2131709057);
-    }
-    if ((paramLong >= 60L) && (paramLong < 3600L)) {
-      return paramLong / 60L + anni.a(2131709060);
-    }
-    if ((paramLong >= 3600L) && (paramLong < paramLong / 86400L)) {
-      return paramLong / 3600L + anni.a(2131709058);
-    }
-    int i = (int)(paramLong / 86400L);
-    if (i >= 30) {
-      return i / 30 + anni.a(2131709063);
-    }
-    if (i >= 7) {
-      return i / 7 + anni.a(2131709061);
-    }
-    return i + anni.a(2131709062);
-  }
-  
-  private void f()
-  {
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, afur.a(500.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    Object localObject2 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((ImageView)localObject2).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_popView_card@2x.png"));
-    ((ImageView)localObject2).setScaleType(ImageView.ScaleType.FIT_XY);
-    ((ImageView)localObject2).setId(2131367311);
-    Object localObject1 = new RelativeLayout.LayoutParams(-1, (int)(bgln.k() / 750L * 36L));
-    ((RelativeLayout.LayoutParams)localObject1).addRule(10);
-    localRelativeLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
-    localObject1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
-    ((RelativeLayout)localObject1).setBackgroundColor(-1);
-    localLayoutParams1.addRule(3, ((ImageView)localObject2).getId());
-    localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    ((TextView)localObject2).setText(anni.a(2131709059));
-    Object localObject3 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject3).addRule(9);
-    ((RelativeLayout.LayoutParams)localObject3).setMargins(afur.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), afur.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, 0);
-    ((TextView)localObject2).setTextSize(18.0F);
-    ((TextView)localObject2).setTextColor(-16777216);
-    ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-    ((TextView)localObject2).setId(2131367313);
-    localObject3 = new ListView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Auuy = new auuy(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilList);
-    ((ListView)localObject3).setAdapter(this.jdField_a_of_type_Auuy);
-    ((ListView)localObject3).setOnItemClickListener(this);
-    ((ListView)localObject3).setBackgroundColor(-1);
-    RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams2.addRule(3, ((TextView)localObject2).getId());
-    ((RelativeLayout)localObject1).addView((View)localObject3, localLayoutParams2);
-    localRelativeLayout.addView((View)localObject1, localLayoutParams1);
-    ((ListView)localObject3).setDividerHeight(0);
-    ((ListView)localObject3).setSelector(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850664));
-    a(localRelativeLayout, localLayoutParams);
-  }
-  
-  public void dismiss()
-  {
-    super.dismiss();
-    ampj.a().removeObserver(this.jdField_a_of_type_Bgzm);
-  }
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramAdapterView = (anmw)ampj.a().getManager(51);
-    paramView = (FeedsItemData.FriendInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (TextUtils.isEmpty(paramView.jumpUrl))
+    synchronized (this.d)
     {
-      if (paramAdapterView.b(paramView.uin)) {
-        paramAdapterView = new ProfileActivity.AllInOne(paramView.uin, 1);
+      auuz localauuz = this.jdField_a_of_type_Auuz;
+      return localauuz;
+    }
+  }
+  
+  private void a()
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] killWoker. ");
+    auuz localauuz = a();
+    if (localauuz != null)
+    {
+      localauuz.a();
+      a(null);
+      return;
+    }
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] killWoker. not worker");
+  }
+  
+  private void a(auuz paramauuz)
+  {
+    synchronized (this.d)
+    {
+      this.jdField_a_of_type_Auuz = paramauuz;
+      return;
+    }
+  }
+  
+  private boolean a(long paramLong)
+  {
+    auuz localauuz = a();
+    if (localauuz != null)
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] runWorker. before worker be stoped");
+      localauuz.a();
+    }
+    localauuz = new auuz(this.jdField_c_of_type_Long, aure.a().a(), this.jdField_c_of_type_JavaLangString, this.b, this.g, new auux(this));
+    a(localauuz);
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] runWorker. start ,mTempStrFilePath=" + this.f);
+    return localauuz.a(this.f, paramLong);
+  }
+  
+  private void b()
+  {
+    String str = auuk.a(1);
+    QQAppInterface localQQAppInterface = aure.a().a();
+    if (localQQAppInterface != null)
+    {
+      aunj.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfGenDownload", this.jdField_a_of_type_Long, "", "", "", "", 1, str, 0L, h() * this.b, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+      aunj.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 1, str, 0L, h() * this.b, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+      bdmb.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-1");
+      return;
+    }
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].report failed - 9");
+  }
+  
+  public int a()
+  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    QQAppInterface localQQAppInterface = aure.a().a();
+    if (localQQAppInterface != null) {
+      bdmb.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Start_download_2-3_3-1");
+    }
+    if (!a())
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start. not inited");
+      b();
+      if (this.jdField_a_of_type_Auun != null) {
+        this.jdField_a_of_type_Auun.a(1, auuk.a(1), null);
       }
-      for (paramAdapterView.jdField_h_of_type_JavaLangString = paramView.name;; paramAdapterView.jdField_h_of_type_JavaLangString = paramView.name)
+      return -1;
+    }
+    String str;
+    if (!bhnv.d(BaseApplication.getContext()))
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start. but net is broken. failed drictly");
+      a();
+      c(5);
+      str = auuk.a(2);
+      if (localQQAppInterface != null)
       {
-        paramAdapterView.f = paramView.uin;
-        paramAdapterView.e = 3000;
-        paramAdapterView.g = 2;
-        paramAdapterView.jdField_h_of_type_Int = 106;
-        ProfileActivity.b(getContext(), paramAdapterView);
-        return;
-        paramAdapterView = new ProfileActivity.AllInOne(paramView.uin, 19);
+        aunj.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfGenDownload", this.jdField_a_of_type_Long, "", "", "", "", 2, str, 0L, h() * this.b, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+        aunj.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 2, str, 0L, h() * this.b, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+        bdmb.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-1");
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Auun != null) {
+          this.jdField_a_of_type_Auun.a(2, "net broken", null);
+        }
+        return -2;
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].report failed - 11");
       }
     }
-    paramAdapterView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramAdapterView.putExtra("url", paramView.jumpUrl);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramAdapterView);
+    int i = e();
+    if (2 == i)
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start. is runing");
+      return 0;
+    }
+    if ((1 != i) && (6 != i) && (8 != i))
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start. before status is error:" + i);
+      return -1;
+    }
+    long l2 = aunj.a(this.f);
+    if (l2 > this.b)
+    {
+      a(0);
+      long l1 = 0L;
+      if (bhjr.a()) {
+        l1 = bhjr.a() * 1024L;
+      }
+      if (l1 >= this.b - l2) {
+        break label777;
+      }
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start. sd card space is no enough:[" + this.b + " " + l2 + " " + l1 + "]");
+      a();
+      c(5);
+      if (localQQAppInterface == null) {
+        break label740;
+      }
+      str = auuk.a(9);
+      aunj.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfGenDownload", this.jdField_a_of_type_Long, "", "", "", "", 9, str, 0L, l2, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+      aunj.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 9, str, 0L, l2, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+      bdmb.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-1");
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Auun != null) {
+        this.jdField_a_of_type_Auun.a(9, "no space", null);
+      }
+      return -2;
+      a((int)(l2 / this.b));
+      break;
+      label740:
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].report failed - 5");
+    }
+    for (;;)
+    {
+      try
+      {
+        label777:
+        a(l2);
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start. ST:" + i + " PGR:" + h());
+        if (1 == i)
+        {
+          i = 1;
+          c(2);
+          if ((i != 0) && (this.jdField_a_of_type_Auun != null)) {
+            this.jdField_a_of_type_Auun.a(h(), null);
+          }
+          return 0;
+        }
+      }
+      finally {}
+      i = 0;
+    }
+  }
+  
+  public int a(auun paramauun)
+  {
+    this.jdField_a_of_type_Auun = paramauun;
+    return 0;
+  }
+  
+  public int a(String paramString, Bundle paramBundle)
+  {
+    super.a(paramString, paramBundle);
+    paramBundle = auuc.a().a(paramString);
+    if (paramBundle != null)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] >>>init. HAPPY.have a BreakpointTransInfo,tempPath:" + paramBundle.b);
+      if (aunj.b(paramBundle.b)) {
+        this.f = paramBundle.b;
+      }
+    }
+    for (;;)
+    {
+      return 0;
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] >>>init. no exsit");
+      continue;
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] >>>init. NO HAPPY. Not BreakpointTransInfo,add it:");
+      auuc.a().a(paramString, null, this.b, this.f, this.e);
+    }
+  }
+  
+  public int b()
+  {
+    if (!a())
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] stop. not inited");
+      return -1;
+    }
+    try
+    {
+      a();
+      int i = e();
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] stop. ST:" + i + " PGR:" + h());
+      b(0);
+      c(7);
+      return 0;
+    }
+    finally {}
+  }
+  
+  public int c()
+  {
+    int i = 0;
+    if (!a())
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] pause. not inited");
+      b();
+      if (this.jdField_a_of_type_Auun != null) {
+        this.jdField_a_of_type_Auun.a(1, auuk.a(1), null);
+      }
+      i = -1;
+    }
+    for (;;)
+    {
+      return i;
+      int j = e();
+      if ((3 == j) || (7 == j))
+      {
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] pause. had be paused");
+        return 0;
+      }
+      try
+      {
+        a();
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] pause. ST:" + j + " PGR:" + h());
+        c(3);
+        if (this.jdField_a_of_type_Auun == null) {
+          continue;
+        }
+        this.jdField_a_of_type_Auun.c(h(), null);
+        return 0;
+      }
+      finally {}
+    }
+  }
+  
+  public int d()
+  {
+    int i = 0;
+    if (!a())
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] resume. not inited");
+      b();
+      if (this.jdField_a_of_type_Auun != null) {
+        this.jdField_a_of_type_Auun.a(1, auuk.a(1), null);
+      }
+      i = -1;
+    }
+    do
+    {
+      return i;
+      int j = e();
+      if ((6 == j) || (2 == j) || (4 == j))
+      {
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] resume. had be resumed");
+        return 0;
+      }
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] resume. ST:" + j + " PGR:" + h());
+      c(6);
+    } while (this.jdField_a_of_type_Auun == null);
+    this.jdField_a_of_type_Auun.d(h(), null);
+    return 0;
+  }
+  
+  public int e()
+  {
+    return super.e();
+  }
+  
+  public int f()
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] resume. ST:" + e() + " PGR:" + h());
+    c(8);
+    auuz localauuz = a();
+    if (localauuz != null) {
+      localauuz.b();
+    }
+    return 0;
   }
 }
 

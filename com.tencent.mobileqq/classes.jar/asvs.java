@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
-import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+import android.text.TextUtils;
 
 public class asvs
-  implements bkkl
 {
-  public asvs(QfileFavFileTabView paramQfileFavFileTabView) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void a(int paramInt)
+  public asvs(asvi paramasvi) {}
+  
+  public boolean a()
   {
-    if ((paramInt == this.a.jdField_a_of_type_Asti.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null))
-    {
-      if (!this.a.b()) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
-      }
-    }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
   }
 }
 

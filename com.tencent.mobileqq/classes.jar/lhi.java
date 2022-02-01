@@ -1,113 +1,187 @@
-import android.app.Activity;
-import android.hardware.Sensor;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.shortvideo.panoramicvideo.Sensor.SensorEventHandler.CameraChangedCallBack;
-import com.tencent.mobileqq.shortvideo.util.CameraInterFace;
-import java.lang.ref.WeakReference;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.text.TextUtils;
+import com.tencent.av.business.manager.magicface.MagicfaceDataAudioJason;
+import com.tencent.av.business.manager.magicface.MagicfaceDataPendantJason;
+import com.tencent.av.business.manager.magicface.MagicfaceDataVideoJason;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class lhi
-  implements CameraInterFace
+public abstract class lhi
 {
-  private static volatile lhi jdField_a_of_type_Lhi;
-  private volatile int jdField_a_of_type_Int = -1;
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private WeakReference<SensorEventHandler.CameraChangedCallBack> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
+  protected MagicfaceDataAudioJason a;
+  protected MagicfaceDataVideoJason a;
+  protected String a;
+  protected Map<String, MagicfaceDataPendantJason> a;
+  protected Rect b;
+  protected String b;
+  protected int c;
+  protected int d;
   
-  public static lhi a()
+  public lhi(String paramString1, String paramString2, String paramString3)
   {
-    if (jdField_a_of_type_Lhi == null) {}
+    lbj.c("AVMagicfaceData", "init|config=" + paramString2 + "|" + paramString3 + "|" + paramString1);
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_JavaLangString = paramString3;
     try
     {
-      if (jdField_a_of_type_Lhi == null) {
-        jdField_a_of_type_Lhi = new lhi();
+      paramString1 = new JSONObject(paramString1);
+      paramString2 = paramString1.getJSONObject("video");
+      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason = ((MagicfaceDataVideoJason)bhhq.a(paramString2, MagicfaceDataVideoJason.class));
+      int i;
+      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason != null)
+      {
+        if (!"voicesticker".equals(paramString3))
+        {
+          if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.location_x > 0)
+          {
+            paramString3 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason;
+            paramString3.location_x *= 2;
+          }
+          if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.location_y > 0)
+          {
+            paramString3 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason;
+            paramString3.location_y *= 2;
+          }
+          if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.width > 0)
+          {
+            paramString3 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason;
+            paramString3.width *= 2;
+          }
+          if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.height > 0)
+          {
+            paramString3 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason;
+            paramString3.height *= 2;
+          }
+        }
+        paramString2 = paramString2.optJSONArray("locations");
+        if (paramString2 != null)
+        {
+          i = 0;
+          while (i < paramString2.length())
+          {
+            paramString3 = (JSONObject)paramString2.get(i);
+            this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.pointArrayList.add(new Point(paramString3.optInt("x"), paramString3.optInt("y")));
+            i += 1;
+          }
+        }
+        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.pointArrayList.add(new Point(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.location_x, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.location_y));
       }
-      return jdField_a_of_type_Lhi;
-    }
-    finally {}
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    if (paramActivity == null) {
-      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
-    }
-    while (this.jdField_a_of_type_AndroidHardwareSensorManager != null) {
+      if (paramString1.has("audio")) {
+        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason = ((MagicfaceDataAudioJason)bhhq.a(paramString1.getJSONObject("audio"), MagicfaceDataAudioJason.class));
+      }
+      this.jdField_a_of_type_JavaUtilMap = new HashMap();
+      if (paramString1.has("pendant"))
+      {
+        paramString1 = paramString1.getJSONArray("pendant");
+        i = j;
+        while (i < paramString1.length())
+        {
+          paramString2 = (MagicfaceDataPendantJason)bhhq.a((JSONObject)paramString1.get(i), MagicfaceDataPendantJason.class);
+          if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2.name)))
+          {
+            lbj.e("AVMagicfaceData", "Pendant: " + paramString2.toString());
+            paramString2.duration *= 1000;
+            this.jdField_a_of_type_JavaUtilMap.put(paramString2.name, paramString2);
+          }
+          i += 1;
+        }
+      }
       return;
     }
-    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramActivity.getSystemService("sensor"));
-  }
-  
-  public void a(SensorEventListener paramSensorEventListener)
-  {
-    if ((this.jdField_a_of_type_AndroidHardwareSensorManager == null) || (paramSensorEventListener == null)) {}
-    Sensor localSensor;
-    do
+    catch (JSONException paramString1)
     {
-      return;
-      localSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(11);
-    } while (localSensor == null);
-    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(paramSensorEventListener, localSensor, 1);
-  }
-  
-  public void a(SensorEventHandler.CameraChangedCallBack paramCameraChangedCallBack)
-  {
-    if (paramCameraChangedCallBack == null) {
-      return;
+      paramString1.printStackTrace();
+      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason == null)
+      {
+        lbj.e("AVMagicfaceData", "MagicfaceData error!");
+        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason = new MagicfaceDataVideoJason();
+      }
+      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason == null) {
+        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason = new MagicfaceDataAudioJason();
+      }
+      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.persistent)
+      {
+        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.repeat_count = 50000;
+        if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.frame_count == 0) {
+          this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.frame_count = 3;
+        }
+        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason.is_repeat = true;
+      }
+      lbj.e("AVMagicfaceData", "MagicfaceData:: " + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.toString());
+      this.c = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.frame_count;
+      paramString1 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.getLocation(-1);
+      this.jdField_b_of_type_AndroidGraphicsRect = new Rect(paramString1.x, paramString1.y, paramString1.x + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.width, paramString1.y + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.height);
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramCameraChangedCallBack);
   }
   
-  public void a(boolean paramBoolean)
+  protected abstract int a();
+  
+  int a(int paramInt)
   {
-    b(paramBoolean);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    SensorEventHandler.CameraChangedCallBack localCameraChangedCallBack;
-    do
+    if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason == null) {
+      return paramInt;
+    }
+    Point localPoint = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.getLocation(paramInt);
+    this.jdField_b_of_type_AndroidGraphicsRect = new Rect(localPoint.x, localPoint.y, localPoint.x + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.width, localPoint.y + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.height);
+    return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.lastLocationIndex;
+  }
+  
+  protected abstract String a(int paramInt);
+  
+  protected abstract void a();
+  
+  protected abstract void a(int paramInt1, int paramInt2);
+  
+  public boolean a(lhi paramlhi)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramlhi != null)
     {
-      return;
-      localCameraChangedCallBack = (SensorEventHandler.CameraChangedCallBack)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localCameraChangedCallBack == null);
-    localCameraChangedCallBack.onCameraChanged(paramBoolean);
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        if ((!TextUtils.isEmpty(paramlhi.jdField_b_of_type_JavaLangString)) && (!paramlhi.jdField_b_of_type_JavaLangString.equalsIgnoreCase("face")))
+        {
+          bool1 = bool2;
+          if (!paramlhi.jdField_b_of_type_JavaLangString.equalsIgnoreCase("voicesticker")) {}
+        }
+        else
+        {
+          bool1 = bool2;
+          if (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("pendant")) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
-  public boolean a()
+  public String b()
   {
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {}
-    while (this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(11) == null) {
-      return false;
-    }
-    return true;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void b(SensorEventListener paramSensorEventListener)
-  {
-    if ((this.jdField_a_of_type_AndroidHardwareSensorManager == null) || (paramSensorEventListener == null)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(paramSensorEventListener);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
-    }
-  }
+  public abstract void b();
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("face")) || (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("voicesticker"));
   }
   
-  public int getCameraID()
+  public boolean c()
   {
-    return this.jdField_a_of_type_Int;
+    return this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("pendant");
+  }
+  
+  public String toString()
+  {
+    return "Id[" + this.jdField_a_of_type_JavaLangString + "], type[" + this.jdField_b_of_type_JavaLangString + "]";
   }
 }
 

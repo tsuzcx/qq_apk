@@ -1,17 +1,16 @@
-import java.util.Comparator;
-
 public class wru
-  implements Comparator<wrs>
 {
-  public int a(wrs paramwrs1, wrs paramwrs2)
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  
+  public wru(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    if (paramwrs1.c < paramwrs2.c) {
-      return 1;
-    }
-    if (paramwrs1.c > paramwrs2.c) {
-      return -1;
-    }
-    return 0;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

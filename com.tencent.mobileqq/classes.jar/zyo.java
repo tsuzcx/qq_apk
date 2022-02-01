@@ -1,17 +1,18 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class zyo
-  implements Observer<Object>
+  implements View.OnClickListener
 {
-  zyo(zyn paramzyn) {}
+  zyo(zyl paramzyl, zyr paramzyr) {}
   
-  public void onChanged(@Nullable Object paramObject)
+  public void onClick(View paramView)
   {
-    if (zyn.a(this.a) != null) {
-      zyn.a(this.a).setData(paramObject);
+    if (zyl.a(this.jdField_a_of_type_Zyl) != null) {
+      zyl.a(this.jdField_a_of_type_Zyl).c(this.jdField_a_of_type_Zyr);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

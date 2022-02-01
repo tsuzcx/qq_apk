@@ -1,13 +1,9 @@
-import android.view.View;
-
 class sca
-  implements snc
+  extends sbz
 {
-  sca(sby paramsby) {}
-  
-  public void a(View paramView)
+  sca(sbi paramsbi)
   {
-    paramView.setTag(new rxx(paramView));
+    super(paramsbi);
   }
 }
 

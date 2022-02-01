@@ -1,20 +1,58 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qlink.QlinkBridgeActivity;
+import com.tencent.commonsdk.util.notification.NotificationLimiter;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class blhu
-  implements DialogInterface.OnDismissListener
+  implements NotificationLimiter
 {
-  public blhu(QlinkBridgeActivity paramQlinkBridgeActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  private boolean a(int paramInt)
   {
-    this.a.finish();
+    return (paramInt == 241) || (paramInt == 244) || (paramInt == 242) || (paramInt == 243);
+  }
+  
+  private boolean b(int paramInt)
+  {
+    return (paramInt >= 528) && (paramInt <= 3000528);
+  }
+  
+  private boolean c(int paramInt)
+  {
+    return paramInt == 3000530;
+  }
+  
+  public boolean shouldNotify(int paramInt)
+  {
+    if (a(paramInt)) {}
+    while ((b(paramInt)) || (c(paramInt))) {
+      return true;
+    }
+    if (MiniChatActivity.a()) {
+      if (QLog.isColorLevel()) {
+        QLog.i("NotificationLimiterImpl", 2, "MiniMsgActForeGround");
+      }
+    }
+    for (boolean bool1 = false;; bool1 = true)
+    {
+      boolean bool2 = bool1;
+      if (bool1) {
+        if (bduy.a(paramInt)) {
+          break label93;
+        }
+      }
+      label93:
+      for (bool2 = true;; bool2 = false)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NotificationLimiterImpl", 2, String.format("studymode_fightNotificationLimiterImpl ,shouldNotify1 = %b,", new Object[] { Boolean.valueOf(bool2) }));
+        }
+        return bool2;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blhu
  * JD-Core Version:    0.7.0.1
  */

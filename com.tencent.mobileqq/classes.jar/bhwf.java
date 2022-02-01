@@ -1,22 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.widget.ListView;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.vas.VasApngUtil;
 
 public class bhwf
-  extends Handler
+  implements bhwe
 {
-  public bhwf(DraggableGridView paramDraggableGridView, Looper paramLooper)
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public bhwf(String paramString, int paramInt)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void handleMessage(Message paramMessage)
+  public URLDrawable a(Drawable paramDrawable)
   {
-    DraggableGridView.c(this.a, paramMessage.arg1);
-    DraggableGridView.a(this.a).smoothScrollBy(DraggableGridView.d(this.a), 0);
-    DraggableGridView.a(this.a, (int)DraggableGridView.a(this.a), (int)DraggableGridView.b(this.a));
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_loop", this.jdField_a_of_type_Int);
+    localBundle.putBoolean("key_use_cache", false);
+    return VasApngUtil.getApngDrawable(this.jdField_a_of_type_JavaLangString, "dontCacheMe", paramDrawable, null, this.jdField_a_of_type_JavaLangString, localBundle);
   }
 }
 

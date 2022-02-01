@@ -30,6 +30,7 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.ui.MiniBaseFragment;
 import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 import com.tencent.qqmini.sdk.manager.LoginManager;
 import com.tencent.qqmini.sdk.monitor.service.TaskMonitorManager;

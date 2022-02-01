@@ -1,32 +1,135 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.GifAnimationDrawable;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.widget.ARMapHongBaoListView;
+import cooperation.vip.pb.TianShuAccess.AdItem;
+import cooperation.vip.pb.TianShuAccess.AdPlacementInfo;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import cooperation.vip.pb.TianShuAccess.RspEntry;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class bntn
-  extends GifAnimationDrawable
 {
-  public bntn(Context paramContext, ArrayList<String> paramArrayList, long paramLong)
+  private bntq jdField_a_of_type_Bntq;
+  private bntv jdField_a_of_type_Bntv;
+  private bntw jdField_a_of_type_Bntw;
+  private bnwp jdField_a_of_type_Bnwp = new bnto(this);
+  private Conversation jdField_a_of_type_ComTencentMobileqqActivityConversation;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ARMapHongBaoListView jdField_a_of_type_ComTencentWidgetARMapHongBaoListView;
+  
+  public bntn(QQAppInterface paramQQAppInterface, Conversation paramConversation, ARMapHongBaoListView paramARMapHongBaoListView)
   {
-    super(paramContext, paramArrayList, paramLong);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation = paramConversation;
+    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView = paramARMapHongBaoListView;
   }
   
-  public void start()
+  private void a(TianShuAccess.AdItem paramAdItem)
   {
-    if (!this.a)
+    if (this.jdField_a_of_type_Bntq == null) {
+      this.jdField_a_of_type_Bntq = new bntq(this.jdField_a_of_type_ComTencentMobileqqActivityConversation);
+    }
+    bnwq.a().a(paramAdItem);
+    this.jdField_a_of_type_Bntq.a(paramAdItem);
+  }
+  
+  private void a(TianShuAccess.GetAdsRsp paramGetAdsRsp)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityConversation == null)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("zswp20pro", 2, "start");
+      HashMap localHashMap;
+      do
+      {
+        for (;;)
+        {
+          return;
+          if (paramGetAdsRsp.mapAds.has()) {}
+          for (paramGetAdsRsp = paramGetAdsRsp.mapAds.get(); paramGetAdsRsp != null; paramGetAdsRsp = null)
+          {
+            localHashMap = new HashMap();
+            paramGetAdsRsp = paramGetAdsRsp.iterator();
+            while (paramGetAdsRsp.hasNext())
+            {
+              TianShuAccess.RspEntry localRspEntry = (TianShuAccess.RspEntry)paramGetAdsRsp.next();
+              if ((localRspEntry != null) && (localRspEntry.key.has())) {
+                localHashMap.put(Integer.valueOf(localRspEntry.key.get()), localRspEntry);
+              }
+            }
+          }
+        }
+        paramGetAdsRsp = (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(340));
+        if ((paramGetAdsRsp != null) && (paramGetAdsRsp.value != null) && (paramGetAdsRsp.value.lst.size() != 0) && (paramGetAdsRsp.value.lst.get(0) != null)) {
+          a((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0));
+        }
+        paramGetAdsRsp = (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(341));
+        if ((paramGetAdsRsp != null) && (paramGetAdsRsp.value != null) && (paramGetAdsRsp.value.lst.size() != 0) && (paramGetAdsRsp.value.lst.get(0) != null)) {
+          b((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0));
+        }
+      } while ((this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView == null) || (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.a != null));
+      paramGetAdsRsp = (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(339));
+    } while ((paramGetAdsRsp == null) || (paramGetAdsRsp.value == null) || (paramGetAdsRsp.value.lst.size() == 0) || (paramGetAdsRsp.value.lst.get(0) == null));
+    c((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0));
+  }
+  
+  private void b(TianShuAccess.AdItem paramAdItem)
+  {
+    if (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView != null)
+    {
+      if (this.jdField_a_of_type_Bntw == null)
+      {
+        this.jdField_a_of_type_Bntw = new bntw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView);
+        this.jdField_a_of_type_Bntw.a();
       }
-      this.a = true;
-      this.b = true;
-      this.d = false;
-      a();
+      bnwq.a().a(paramAdItem);
+      this.jdField_a_of_type_Bntw.a(paramAdItem);
+      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setPendantHolder(this.jdField_a_of_type_Bntw);
+      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setOnPendentClickListener(this.jdField_a_of_type_Bntw);
     }
-    while (!QLog.isColorLevel()) {
-      return;
+  }
+  
+  private void c(TianShuAccess.AdItem paramAdItem)
+  {
+    if (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView != null)
+    {
+      if (this.jdField_a_of_type_Bntv == null)
+      {
+        this.jdField_a_of_type_Bntv = new bntv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView);
+        this.jdField_a_of_type_Bntv.a();
+      }
+      bnwq.a().a(paramAdItem);
+      this.jdField_a_of_type_Bntv.a(paramAdItem);
+      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.a(this.jdField_a_of_type_Bntv);
     }
-    QLog.d("zswp20pro", 2, "start but isRunning");
+  }
+  
+  public void a()
+  {
+    bnwq.a().a(bntp.a(), this.jdField_a_of_type_Bnwp);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView != null)
+    {
+      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setPendantHolder(null);
+      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.c();
+      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setOnPendentClickListener(null);
+    }
+    this.jdField_a_of_type_Bntv = null;
+    this.jdField_a_of_type_Bntw = null;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation = null;
   }
 }
 

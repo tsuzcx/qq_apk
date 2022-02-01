@@ -1,21 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class agsb
-  implements DialogInterface.OnClickListener
+public class agsb
+  extends arac<agsc>
 {
-  agsb(agrz paramagrz, ApolloGameData paramApolloGameData) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @NonNull
+  public agsc a(int paramInt)
   {
-    paramDialogInterface = String.format("https://m.gamecenter.qq.com/directout/detail/%s?_wv=2147484679&_wwv=4&ADTAG=limixiuteam&autodownload=1&pf=invite&appid=%s&notShowPub=1&asyncMode=3&appType=1&_nav_bgclr=ffffff&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_anim=true&_nav_alpha=0", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid });
-    Intent localIntent = new Intent(this.jdField_a_of_type_Agrz.a, QQBrowserActivity.class);
-    localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
-    VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_Agrz.a, paramDialogInterface, -1L, localIntent, false, -1);
+    return new agsc();
+  }
+  
+  @Nullable
+  public agsc a(araj[] paramArrayOfaraj)
+  {
+    agsc localagsc = new agsc();
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null)) {
+      agsc.a(localagsc, paramArrayOfaraj[0].a);
+    }
+    return localagsc;
+  }
+  
+  public void a(agsc paramagsc) {}
+  
+  public Class<agsc> clazz()
+  {
+    return agsc.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 592;
   }
 }
 

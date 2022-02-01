@@ -1,54 +1,48 @@
 import android.app.Activity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Gallery;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import mqq.app.NewIntent;
 
-final class ahtc
-  implements URLDrawable.URLDrawableListener
+public class ahtc
+  implements blop
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  public ahtc(StructingMsgItemBuilder paramStructingMsgItemBuilder, ChatMessage paramChatMessage, Activity paramActivity, AbsStructMsg paramAbsStructMsg) {}
   
-  ahtc(ahsd paramahsd) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a(bloo parambloo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadCanceled URL():" + paramURLDrawable.getURL());
+    if (StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
+      return;
     }
-    this.a.a(false);
-    this.a.jdField_a_of_type_Ahtc = null;
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadFialed URL():" + paramURLDrawable.getURL());
+    String str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("msg_template_id");
+    int i = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_AndroidAppActivity, ocj.class);
+    localNewIntent.putExtra("cmd", "PubAccountFollowSvc.subscribe");
+    mobileqq_mp.SubscribeRequest localSubscribeRequest = new mobileqq_mp.SubscribeRequest();
+    localSubscribeRequest.msg_id.set(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId);
+    localSubscribeRequest.index.set(parambloo.a);
+    long l1 = 0L;
+    try
+    {
+      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin);
+      l1 = l2;
     }
-    QQToast.a(ahsd.b(this.a), ahsd.c(this.a).getString(2131694413), 0).a();
-    this.a.c(true);
-    this.a.a(false);
-    this.a.jdField_a_of_type_Ahtc = null;
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadSuccessed URL():" + paramURLDrawable.getURL());
+    catch (Exception parambloo)
+    {
+      label108:
+      break label108;
     }
-    this.a.c(false);
-    this.a.a(false);
-    this.a.jdField_a_of_type_Ahtj.b.b = paramURLDrawable.getExifOrientation();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(paramURLDrawable, ahsd.c(this.a).getSelectedItemPosition());
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.notifyDataSetChanged();
-    ahsd.d(this.a).e();
-    this.a.jdField_a_of_type_Ahtc = null;
+    localSubscribeRequest.template_id.set(str);
+    localSubscribeRequest.puin.set(l1);
+    localNewIntent.setObserver(new ahtd(this, str));
+    localNewIntent.putExtra("data", localSubscribeRequest.toByteArray());
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a.startServlet(localNewIntent);
+    StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
   }
 }
 

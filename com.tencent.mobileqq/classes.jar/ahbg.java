@@ -1,18 +1,14 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
 
 class ahbg
-  extends ahbl
+  implements beye
 {
-  ahbg(agwz paramagwz)
-  {
-    super(paramagwz, null);
-  }
+  ahbg(ahbe paramahbe) {}
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(ArrayList<MessageRecord> paramArrayList)
   {
-    return new ahmy(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, (TroopChatPie)agwz.a(this.a));
+    this.a.b();
   }
 }
 

@@ -1,61 +1,107 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListReq;
-import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListRsp;
-import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.mini.servlet.ProtoBufRequest;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.biz.qrcode.activity.QRJumpActivity;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
 public class zxb
-  extends ProtoBufRequest
+  implements BusinessObserver
 {
-  private final CLIENT.StGetStoryFeedListReq a = new CLIENT.StGetStoryFeedListReq();
+  public zxb(QRJumpActivity paramQRJumpActivity, String paramString1, String paramString2, Activity paramActivity, String paramString3) {}
   
-  public zxb(int paramInt, CLIENT.StUinTime paramStUinTime)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.listType.set(paramInt);
-    this.a.uinTime.set(paramStUinTime);
-    this.a.listNum.set(10);
-  }
-  
-  @Nullable
-  public static CLIENT.StGetStoryFeedListRsp a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null)
-    {
-      a("data is null");
-      return null;
+    Object localObject1 = null;
+    int i = 0;
+    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRJumpActivity.isFinishing()) {
+      return;
     }
-    paramArrayOfByte = decode(paramArrayOfByte);
-    if (paramArrayOfByte == null)
-    {
-      a("storyData is null");
-      return null;
-    }
-    CLIENT.StGetStoryFeedListRsp localStGetStoryFeedListRsp = new CLIENT.StGetStoryFeedListRsp();
-    try
-    {
-      localStGetStoryFeedListRsp.mergeFrom(paramArrayOfByte);
-      return localStGetStoryFeedListRsp;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      a("onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  private static void a(String paramString)
-  {
     if (QLog.isColorLevel()) {
-      QLog.e("GetMineStoryFeedListRequest", 2, paramString);
+      QLog.i("QRJumpActivity", 2, String.format("JumpUrl onReceive suc=%b ", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-  }
-  
-  public byte[] getBusiBuf()
-  {
-    return this.a.toByteArray();
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBundle = paramBundle.getString("result");
+      QLog.i("QRJumpActivity", 2, String.format("JumpUrl onReceive result=%s", new Object[] { paramBundle }));
+    }
+    for (;;)
+    {
+      try
+      {
+        Object localObject2 = new JSONObject(paramBundle);
+        zvn localzvn;
+        if (((JSONObject)localObject2).getInt("r") == 0) {
+          localzvn = new zvn(((JSONObject)localObject2).getString("d"));
+        }
+        boolean bool;
+        Bundle localBundle;
+        paramBundle = null;
+      }
+      catch (Exception paramBundle)
+      {
+        try
+        {
+          if (((JSONObject)localObject2).has("wpa"))
+          {
+            paramBoolean = "1".equals(((JSONObject)localObject2).getString("wpa"));
+            bool = ((JSONObject)localObject2).has("extvalue");
+            paramInt = i;
+            if (((JSONObject)localObject2).has("exttype"))
+            {
+              if ("2".equals(((JSONObject)localObject2).getString("exttype"))) {
+                break label353;
+              }
+              paramInt = i;
+              if ("1".equals(((JSONObject)localObject2).getString("exttype"))) {
+                break label353;
+              }
+            }
+            paramBundle = new Bundle();
+            if (paramBoolean) {}
+            try
+            {
+              paramBundle.putBoolean("issupportwpa", paramBoolean);
+              if ((paramInt != 0) && (bool))
+              {
+                localObject1 = ((JSONObject)localObject2).getString("exttype");
+                localObject2 = ((JSONObject)localObject2).getString("extvalue");
+                paramBundle.putString("exttype", (String)localObject1);
+                paramBundle.putString("extvalue", (String)localObject2);
+              }
+              paramBundle.putString("authKey", this.jdField_a_of_type_JavaLangString);
+              paramBundle.putString("authSig", this.b);
+              localObject1 = paramBundle;
+              paramBundle = localzvn;
+            }
+            catch (Exception localException)
+            {
+              localBundle = paramBundle;
+              paramBundle = localzvn;
+              continue;
+            }
+            if (localObject1 != null) {
+              zvr.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRJumpActivity.app, this.jdField_a_of_type_AndroidAppActivity, paramBundle, this.c, (Bundle)localObject1);
+            }
+            this.jdField_a_of_type_AndroidAppActivity.finish();
+            return;
+            paramBundle = paramBundle;
+            paramBundle = null;
+            continue;
+          }
+        }
+        catch (Exception paramBundle)
+        {
+          paramBundle = localzvn;
+          continue;
+          paramBoolean = false;
+          continue;
+        }
+      }
+      continue;
+      label353:
+      paramInt = 1;
+    }
   }
 }
 

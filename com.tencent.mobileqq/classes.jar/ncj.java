@@ -1,53 +1,28 @@
+import android.graphics.Bitmap;
+import android.graphics.RectF;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.TextView;
-import com.tencent.avgame.gameroom.stage.guesstext.GuessTextStageView;
-import com.tencent.qphone.base.util.QLog;
 
-public class ncj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface ncj
 {
-  public ncj(GuessTextStageView paramGuessTextStageView, String paramString) {}
+  public abstract int a();
   
-  public void onGlobalLayout()
-  {
-    int i = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.b.getWidth() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.b.getPaddingLeft() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.b.getPaddingRight();
-    if (QLog.isColorLevel())
-    {
-      QLog.d("GuessTextStageView", 2, "onShowGameTopicTips tip = " + this.jdField_a_of_type_JavaLangString);
-      QLog.d("GuessTextStageView", 2, "onShowGameTopicTips tipWidth  = " + this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.b.getWidth());
-      QLog.d("GuessTextStageView", 2, "onShowGameTopicTips caluWidth  = " + i);
-    }
-    ViewGroup.LayoutParams localLayoutParams;
-    if (i > 0)
-    {
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      if (ngk.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.b) <= 1) {
-        break label282;
-      }
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_Nci.a().b());
-      localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_AndroidViewView.getWidth();
-      localLayoutParams.height = (localLayoutParams.width * 130 / 478);
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-      if (QLog.isColorLevel()) {
-        QLog.d("GuessTextStageView", 2, "onShowMosaicImageGameTopicTips 130 w = " + localLayoutParams.width + ", h = " + localLayoutParams.height);
-      }
-    }
-    label282:
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_Nci.a().a());
-      localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_AndroidViewView.getWidth();
-      localLayoutParams.height = (localLayoutParams.width * 110 / 478);
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    } while (!QLog.isColorLevel());
-    QLog.d("GuessTextStageView", 2, "onShowMosaicImageGameTopicTips 110 w = " + localLayoutParams.width + ", h = " + localLayoutParams.height);
-  }
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract void a(RectF paramRectF);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString1, Bitmap paramBitmap1, String paramString2, long paramLong1, long paramLong2, long paramLong3, Bitmap paramBitmap2, long paramLong4, boolean paramBoolean);
+  
+  public abstract void a(String paramString, RectF paramRectF, int paramInt);
+  
+  public abstract void b(RectF paramRectF);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void b(String paramString, RectF paramRectF, int paramInt);
 }
 
 

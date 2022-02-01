@@ -1,30 +1,34 @@
-import android.os.Bundle;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.Utils.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/handler/CreateSubCommentHandler$send0xd1eRequest$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pdl
-  extends niv
+public class pdl
 {
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
+  public static void a()
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    if (a())
     {
-      pdk.a(this.a, paramArrayOfByte);
-      return;
+      QLog.d("DynamicChannelUtils", 1, "dynamicChannelSwitch is on, prepare it.");
+      ThreadManager.getSubThreadHandler().postDelayed(new Utils.1(), 3000L);
     }
-    this.a.a(paramInt, "Empty error message.");
   }
   
-  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
+  public static boolean a()
   {
-    paramBundle = this.a;
-    if (paramString != null) {}
-    for (;;)
+    Object localObject = Aladdin.getConfig(144);
+    if (localObject != null)
     {
-      paramBundle.a(paramInt, paramString);
-      return true;
-      paramString = "Empty error message.";
+      localObject = ((AladdinConfig)localObject).getString("dc_switch", "0");
+      QLog.d("DynamicChannelUtils", 1, new Object[] { "dcSwitch = ", localObject });
+    }
+    for (boolean bool = TextUtils.equals((CharSequence)localObject, "1");; bool = false)
+    {
+      QLog.d("DynamicChannelUtils", 1, new Object[] { "isDynamicChannelSwitchOn = ", Boolean.valueOf(bool) });
+      return bool;
     }
   }
 }

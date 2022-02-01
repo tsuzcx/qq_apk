@@ -8,6 +8,7 @@ final class NetworkJsPlugin$1
   NetworkJsPlugin$1()
   {
     add("getNetworkType");
+    add("onNetworkStatusChange");
   }
 }
 

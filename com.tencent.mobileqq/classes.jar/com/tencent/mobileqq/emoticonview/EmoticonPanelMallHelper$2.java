@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emoticonview;
 
-import aryo;
+import asoc;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmoticonPanelMallHelper$2
   implements Runnable
 {
-  public EmoticonPanelMallHelper$2(aryo paramaryo) {}
+  public EmoticonPanelMallHelper$2(asoc paramasoc) {}
   
   public void run()
   {

@@ -1,49 +1,34 @@
-import android.widget.BaseAdapter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
 
-public abstract class tia
-  extends BaseAdapter
-  implements tid
+public abstract interface tia
+  extends tim
 {
-  private int jdField_a_of_type_Int;
-  private HashMap<Object, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public abstract ViewGroup a();
   
-  protected void a(Object paramObject)
-  {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    localHashMap.put(paramObject, Integer.valueOf(i));
-  }
+  public abstract void a();
   
-  protected void a(List<?> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      a(paramList.next());
-    }
-  }
+  public abstract void a(int paramInt);
   
-  protected void b(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.remove(paramObject);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
   
-  public final long getItemId(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilHashMap.size())) {
-      return -1L;
-    }
-    Object localObject = getItem(paramInt);
-    return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
-  }
+  public abstract void a(VideoPlayManager paramVideoPlayManager);
   
-  public final boolean hasStableIds()
-  {
-    return true;
-  }
+  public abstract void a(til paramtil);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void setControlType(int paramInt);
+  
+  public abstract void setEndWithLastFrame(boolean paramBoolean);
+  
+  public abstract void setEventListener(tib paramtib);
+  
+  public abstract void setFullScreenDisable(boolean paramBoolean);
 }
 
 

@@ -25,7 +25,7 @@ public class PreCacheJsPlugin
   @JsEvent({"getBackgroundFetchData"})
   public void getBackgroundFetchData(RequestEvent paramRequestEvent)
   {
-    QMLog.d("PreCacheJsPlugin", "call getBackgroundFetchData callbackId:" + paramRequestEvent.callbackId + " PackageToolVersion:" + this.mApkgInfo.mAppConfigInfo.PackageToolVersion);
+    QMLog.d("PreCacheJsPlugin", "call getBackgroundFetchData callbackId:" + paramRequestEvent.callbackId + " PackageToolVersion:" + this.mApkgInfo.mAppConfigInfo.packageToolVersion);
     try
     {
       Object localObject = new JSONObject(paramRequestEvent.jsonParams).optString("fetchType");

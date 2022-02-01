@@ -1,254 +1,40 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.TextUtils.TruncateAt;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.qwallet.QQWalletTransferBubbleView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFee;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
-public class ahlw
-  extends BaseBubbleBuilder
+final class ahlw
+  implements DialogInterface.OnClickListener
 {
-  private View.OnClickListener a;
-  protected final int c = 2131379225;
-  protected final int d = 2131379221;
-  protected final int e = 2131379224;
-  protected final int f = 2131379223;
-  protected final int g = 2131379220;
-  protected final int h = 2131379222;
-  protected int i;
-  protected int j;
-  protected int k;
-  protected int l;
-  protected int m;
-  protected int n;
-  protected int o;
-  protected int p;
-  protected int q;
-  protected int r;
-  protected int s;
-  protected int t;
-  protected int u;
-  protected int v;
-  protected int w;
-  protected int x;
+  ahlw(Emoticon paramEmoticon, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public ahlw(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ahlx(this);
-    float f1 = paramContext.getResources().getDisplayMetrics().density;
-    this.j = ((int)(42.0F * f1 + 0.5F));
-    this.k = ((int)(21.0F * f1 + 0.5F));
-    this.l = ((int)(15.0F * f1 + 0.5F));
-    this.m = ((int)(10.0F * f1 + 0.5F));
-    this.n = ((int)(9.0F * f1 + 0.5F));
-    this.o = ((int)(6.0F * f1 + 0.5F));
-    this.p = ((int)(4.0F * f1 + 0.5F));
-    this.q = ((int)(1.0F * f1 + 0.5F));
-    this.i = (this.m * 23);
-    this.r = ((int)(157.0F * f1 + 0.5F));
-    this.s = ((int)(65.0F * f1 + 0.5F));
-    this.t = ((int)(7.0F * f1 + 0.5F));
-    this.u = ((int)(152.0F * f1 + 0.5F));
-    this.v = ((int)(5.0F * f1 + 0.5F));
-    this.w = ((int)(61.0F * f1 + 0.5F));
-    this.x = ((int)(f1 * 19.0F + 0.5F));
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 0;
-  }
-  
-  public afwr a()
-  {
-    return new ahly(this, null);
-  }
-  
-  public View a(ChatMessage paramChatMessage, afwr paramafwr, View paramView, BaseChatItemLayout paramBaseChatItemLayout, afzq paramafzq)
-  {
-    paramafwr = (ahly)paramafwr;
-    paramBaseChatItemLayout = (MessageForTroopFee)paramChatMessage;
-    if ((paramafwr.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramafwr.jdField_a_of_type_Long == paramChatMessage.uniseq)) {
-      return paramafwr.jdField_a_of_type_AndroidWidgetRelativeLayout;
-    }
-    QQWalletTransferBubbleView localQQWalletTransferBubbleView;
-    float f1;
-    label210:
-    int i1;
-    if ((paramView != null) && ((paramView instanceof RelativeLayout)))
+    boolean bool;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4)
     {
-      paramafwr.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
-      paramafwr.b = paramChatMessage.frienduin;
-      paramafwr.jdField_a_of_type_Long = paramChatMessage.uniseq;
-      paramView = (TextView)paramafwr.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379224);
-      TextView localTextView1 = (TextView)paramafwr.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379223);
-      ImageView localImageView = (ImageView)paramafwr.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379221);
-      TextView localTextView2 = (TextView)paramafwr.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379222);
-      localQQWalletTransferBubbleView = (QQWalletTransferBubbleView)paramafwr.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379225);
-      if (paramBaseChatItemLayout.title != null)
+      bool = true;
+      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
+      if (ahlt.a != null)
       {
-        paramView.setTextSize(24.0F);
-        TextPaint localTextPaint = paramView.getPaint();
-        if (localTextPaint != null)
-        {
-          f1 = localTextPaint.measureText(paramBaseChatItemLayout.title);
-          if (this.i <= BaseChatItemLayout.e) {
-            break label378;
-          }
-          if (f1 > BaseChatItemLayout.e - this.m * 9) {
-            paramView.setTextSize(14.0F);
-          }
+        if (7 != this.jdField_a_of_type_Int) {
+          break label80;
         }
-      }
-      paramView.setText(paramBaseChatItemLayout.title);
-      paramView.setTextColor(-1);
-      localTextView1.setText(paramBaseChatItemLayout.summary);
-      localTextView1.setTextColor(-1);
-      localTextView2.setText(paramBaseChatItemLayout.source);
-      localImageView.setImageResource(2130847233);
-      i1 = Color.parseColor(paramBaseChatItemLayout.backgroundColor);
-      if (paramChatMessage.isSend()) {
-        break label401;
+        ahlt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ahlt.a.frienduin, "ep_mall", "Clk_pkg_forward", 0);
       }
     }
-    label401:
-    for (boolean bool = true;; bool = false)
+    label80:
+    while (6 != this.jdField_a_of_type_Int)
     {
-      localQQWalletTransferBubbleView.setBubbleBackground(2130847231, i1, bool);
-      paramafwr.jdField_a_of_type_AndroidWidgetRelativeLayout.setContentDescription(paramBaseChatItemLayout.title + paramBaseChatItemLayout.summary + paramBaseChatItemLayout.source);
-      paramafwr.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramafwr.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(paramafzq);
-      paramafwr.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(paramafzq);
-      return paramafwr.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      paramafwr.jdField_a_of_type_AndroidWidgetRelativeLayout = a(this.jdField_a_of_type_AndroidContentContext);
+      return;
+      bool = false;
       break;
-      label378:
-      if (f1 <= this.m * 14) {
-        break label210;
-      }
-      paramView.setTextSize(14.0F);
-      break label210;
     }
-  }
-  
-  protected RelativeLayout a(Context paramContext)
-  {
-    RelativeLayout localRelativeLayout = new RelativeLayout(paramContext);
-    localRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-    Object localObject1 = new QQWalletTransferBubbleView(paramContext);
-    ((QQWalletTransferBubbleView)localObject1).setLayoutParams(new RelativeLayout.LayoutParams(this.i, this.l * 5));
-    ((QQWalletTransferBubbleView)localObject1).setId(2131379225);
-    Object localObject2 = new ImageView(paramContext);
-    Object localObject3 = new RelativeLayout.LayoutParams(this.j, this.j);
-    ((RelativeLayout.LayoutParams)localObject3).rightMargin = this.k;
-    ((RelativeLayout.LayoutParams)localObject3).addRule(15);
-    ((RelativeLayout.LayoutParams)localObject3).addRule(11);
-    ((ImageView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
-    ((ImageView)localObject2).setScaleType(ImageView.ScaleType.FIT_CENTER);
-    ((ImageView)localObject2).setId(2131379221);
-    ((QQWalletTransferBubbleView)localObject1).addView((View)localObject2);
-    localObject2 = new LinearLayout(paramContext);
-    localObject3 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject3).addRule(0, 2131379221);
-    ((RelativeLayout.LayoutParams)localObject3).addRule(9);
-    ((RelativeLayout.LayoutParams)localObject3).leftMargin = this.k;
-    ((RelativeLayout.LayoutParams)localObject3).rightMargin = this.o;
-    ((RelativeLayout.LayoutParams)localObject3).addRule(15);
-    ((LinearLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
-    ((LinearLayout)localObject2).setOrientation(1);
-    localObject3 = new TextView(paramContext);
-    ((TextView)localObject3).setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-    ((TextView)localObject3).setSingleLine();
-    ((TextView)localObject3).setEllipsize(TextUtils.TruncateAt.END);
-    ((TextView)localObject3).setTextSize(24.0F);
-    ((TextView)localObject3).setId(2131379224);
-    ((LinearLayout)localObject2).addView((View)localObject3);
-    localObject3 = new TextView(paramContext);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.topMargin = this.q;
-    ((TextView)localObject3).setLayoutParams(localLayoutParams);
-    ((TextView)localObject3).setSingleLine();
-    ((TextView)localObject3).setEllipsize(TextUtils.TruncateAt.END);
-    ((TextView)localObject3).setTextSize(13.0F);
-    ((TextView)localObject3).setId(2131379223);
-    ((LinearLayout)localObject2).addView((View)localObject3);
-    ((QQWalletTransferBubbleView)localObject1).addView((View)localObject2);
-    localRelativeLayout.addView((View)localObject1);
-    localObject1 = new RelativeLayout(paramContext);
-    localObject2 = new RelativeLayout.LayoutParams(this.i, -2);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131379225);
-    ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    ((RelativeLayout)localObject1).setBackgroundResource(2130847232);
-    ((RelativeLayout)localObject1).setId(2131379220);
-    paramContext = new TextView(paramContext);
-    localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject2).leftMargin = this.k;
-    ((RelativeLayout.LayoutParams)localObject2).rightMargin = this.k;
-    ((RelativeLayout.LayoutParams)localObject2).topMargin = this.l;
-    ((RelativeLayout.LayoutParams)localObject2).bottomMargin = this.l;
-    ((RelativeLayout.LayoutParams)localObject2).addRule(15);
-    paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    paramContext.setSingleLine();
-    paramContext.setEllipsize(TextUtils.TruncateAt.END);
-    paramContext.setTextColor(-7500403);
-    paramContext.setTextSize(12.0F);
-    paramContext.setIncludeFontPadding(false);
-    paramContext.setId(2131379222);
-    ((RelativeLayout)localObject1).addView(paramContext);
-    localRelativeLayout.addView((View)localObject1);
-    return localRelativeLayout;
-  }
-  
-  public String a(ChatMessage paramChatMessage)
-  {
-    paramChatMessage = (MessageForTroopFee)paramChatMessage;
-    return paramChatMessage.title + paramChatMessage.summary + paramChatMessage.source;
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
-  {
-    switch (paramInt)
-    {
-    default: 
-      super.a(paramInt, paramContext, paramChatMessage);
-      return;
-    case 2131365308: 
-      adrm.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-      return;
-    }
-    super.d(paramChatMessage);
-  }
-  
-  public bguj[] a(View paramView)
-  {
-    bguh localbguh = new bguh();
-    paramView = afur.a(paramView);
-    a(paramView, localbguh);
-    adrm.a(localbguh, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    b(paramView, localbguh);
-    super.c(localbguh, this.jdField_a_of_type_AndroidContentContext);
-    super.e(localbguh, this.jdField_a_of_type_AndroidContentContext);
-    return localbguh.a();
+    ahlt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ahlt.a.frienduin, "ep_mall", "Clk_collect_more", 0);
   }
 }
 

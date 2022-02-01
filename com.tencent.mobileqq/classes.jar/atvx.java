@@ -1,24 +1,10 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-
-final class atvx
-  extends ClickableSpan
+public abstract interface atvx
 {
-  atvx(atwb paramatwb) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if (this.a != null) {
-      this.a.onClick(paramView);
-    }
-  }
+  public abstract void a(atvw paramatvw);
   
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
-    paramTextPaint.setUnderlineText(false);
-  }
+  public abstract boolean a(String paramString, long paramLong, byte[] paramArrayOfByte);
 }
 
 

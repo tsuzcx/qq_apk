@@ -1,12 +1,40 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.View;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.MessageForPLNews;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahne
-  extends ahmv
+class ahne
+  implements View.OnClickListener
 {
-  public TroopSignVideoView a;
-  public View e;
-  public View f;
+  ahne(ahnd paramahnd, MessageForPLNews paramMessageForPLNews, String paramString) {}
+  
+  public void onClick(View paramView)
+  {
+    Object localObject = (ahnf)paramView.getTag();
+    if (localObject == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject = new ProfileActivity.AllInOne(((ahnf)localObject).jdField_a_of_type_JavaLangString, 1);
+      Intent localIntent = new Intent(this.jdField_a_of_type_Ahnd.jdField_a_of_type_AndroidContentContext, PersonalityLabelGalleryActivity.class);
+      localIntent.putExtra("personality_label_allinone", (Parcelable)localObject);
+      localIntent.putExtra("fromType", 2);
+      localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPLNews.frienduin);
+      localIntent.putExtra("nickname", this.jdField_a_of_type_JavaLangString);
+      if (!(this.jdField_a_of_type_Ahnd.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+        localIntent.addFlags(268435456);
+      }
+      this.jdField_a_of_type_Ahnd.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      bdll.b(this.jdField_a_of_type_Ahnd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "3", "", "");
+    }
+  }
 }
 
 

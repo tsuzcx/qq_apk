@@ -1,72 +1,164 @@
-import android.annotation.TargetApi;
-import android.media.MediaMetadataRetriever;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-@TargetApi(18)
 public class bclj
+  implements bcmc<bcfn>
 {
-  public static int a(String paramString, bclk parambclk)
+  int jdField_a_of_type_Int;
+  bclc jdField_a_of_type_Bclc;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
+  
+  public bclj(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    label226:
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bclc = new bclc(paramQQAppInterface, 10002, 5, null);
+  }
+  
+  public List<bcfn> a(bcmq parambcmq)
+  {
+    long l1 = System.currentTimeMillis();
+    this.jdField_a_of_type_Boolean = false;
+    if ((parambcmq == null) || (TextUtils.isEmpty(parambcmq.a))) {
+      return null;
+    }
+    Object localObject2 = parambcmq.a.split("\\s+");
+    if (localObject2.length < 2) {
+      return null;
+    }
+    if (!this.c)
     {
-      String str1;
-      String str2;
-      String str3;
-      try
-      {
-        localMediaMetadataRetriever.setDataSource(paramString);
-        str1 = localMediaMetadataRetriever.extractMetadata(18);
-        str2 = localMediaMetadataRetriever.extractMetadata(19);
-        paramString = localMediaMetadataRetriever.extractMetadata(24);
-        str3 = localMediaMetadataRetriever.extractMetadata(9);
-        localMediaMetadataRetriever.release();
-        if ((paramString != null) && (!"".equals(paramString)) && (!"null".equals(paramString))) {
-          break label226;
-        }
-        paramString = "0";
-        if ((str1 == null) || (str2 == null))
-        {
-          QLog.e("MediaMetadataUtils", 1, "[@] extractMetadata:width=" + str1 + " height=" + str2);
-          return -2;
-        }
+      this.jdField_a_of_type_Bclc.a();
+      this.c = true;
+    }
+    Object localObject1 = new ArrayList();
+    int j = localObject2.length;
+    int i = 0;
+    while (i < j)
+    {
+      localObject3 = localObject2[i];
+      if (this.jdField_a_of_type_Boolean) {
+        return null;
       }
-      catch (RuntimeException paramString)
-      {
-        QLog.e("MediaMetadataUtils", 1, "[@] setDataSource", paramString);
-        return -1;
+      localObject3 = new bcmq((String)localObject3);
+      localObject3 = this.jdField_a_of_type_Bclc.a((bcmq)localObject3);
+      if ((localObject3 != null) && (!((List)localObject3).isEmpty())) {
+        ((List)localObject1).add(localObject3);
       }
-      for (;;)
+      i += 1;
+    }
+    if (((List)localObject1).size() < 2) {
+      return null;
+    }
+    int m = ((List)localObject1).size();
+    Object localObject3 = new ArrayList();
+    Object localObject4 = ((List)localObject1).iterator();
+    while (((Iterator)localObject4).hasNext())
+    {
+      localObject2 = (List)((Iterator)localObject4).next();
+      localObject1 = localObject2;
+      if (((List)localObject2).size() > m) {
+        localObject1 = ((List)localObject2).subList(0, m);
+      }
+      ((List)localObject3).add(localObject1);
+    }
+    localObject2 = new HashMap();
+    localObject1 = new HashMap();
+    localObject4 = ((List)localObject3).iterator();
+    i = 0;
+    Object localObject5;
+    Object localObject6;
+    while (((Iterator)localObject4).hasNext())
+    {
+      localObject5 = ((List)((Iterator)localObject4).next()).iterator();
+      while (((Iterator)localObject5).hasNext())
       {
-        try
+        localObject6 = (bcfn)((Iterator)localObject5).next();
+        if (!((Map)localObject2).containsKey(((bcfn)localObject6).b()))
         {
-          parambclk.a[0] = Integer.parseInt(str1);
-          parambclk.a[1] = Integer.parseInt(str2);
-          parambclk.a[3] = Integer.parseInt(str3);
-          i = 0;
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          QLog.e("MediaMetadataUtils", 1, "[@] parseInt", localNumberFormatException);
-          int i = -3;
-          continue;
-        }
-        try
-        {
-          parambclk.a[2] = Integer.parseInt(paramString);
-          parambclk.a[4] = 0;
-          return i;
-        }
-        catch (NumberFormatException paramString)
-        {
-          QLog.e("MediaMetadataUtils", 1, "[@] parseInt", paramString);
-          parambclk.a[2] = 0;
-          return i;
+          ((Map)localObject2).put(((bcfn)localObject6).b(), Integer.valueOf(i));
+          ((Map)localObject1).put(Integer.valueOf(i), ((bcfn)localObject6).b());
+          i += 1;
         }
       }
     }
+    localObject4 = (long[][])Array.newInstance(Long.TYPE, new int[] { m, i });
+    j = 0;
+    while (j < ((List)localObject3).size())
+    {
+      int k = 0;
+      while (k < ((List)((List)localObject3).get(j)).size())
+      {
+        localObject5 = (Integer)((Map)localObject2).get(((bcfn)((List)((List)localObject3).get(j)).get(k)).b());
+        if (localObject5 != null) {
+          localObject4[j][localObject5.intValue()] = ((bcfn)((List)((List)localObject3).get(j)).get(k)).b();
+        }
+        k += 1;
+      }
+      j += 1;
+    }
+    localObject2 = bcmz.a((long[][])localObject4, m, i);
+    localObject4 = new ArrayList();
+    i = localObject2.length - 1;
+    while (i >= 0)
+    {
+      if (localObject2[i] != -1)
+      {
+        localObject6 = (List)((List)localObject3).get(i);
+        localObject5 = (String)((Map)localObject1).get(Integer.valueOf(localObject2[i]));
+        localObject6 = ((List)localObject6).iterator();
+        while (((Iterator)localObject6).hasNext())
+        {
+          bcfn localbcfn = (bcfn)((Iterator)localObject6).next();
+          if ((localObject5 != null) && (((String)localObject5).equals(localbcfn.b()))) {
+            ((List)localObject4).add(localbcfn);
+          }
+        }
+      }
+      i -= 1;
+    }
+    if (((List)localObject4).size() < 2) {
+      return null;
+    }
+    parambcmq = new bcdy(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, parambcmq.a, (List)localObject4);
+    localObject1 = new ArrayList();
+    ((List)localObject1).add(parambcmq);
+    long l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("CreateDiscussionSearchEngine", 2, "Create discussion search cost time = " + (l2 - l1));
+    }
+    if (!this.b)
+    {
+      this.b = true;
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800635E", "0X800635E", 0, 0, "", "", "", "");
+    }
+    return localObject1;
   }
+  
+  public void a() {}
+  
+  public void a(bcmq parambcmq, bcmd<bcfn> parambcmd) {}
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bclc.b();
+  }
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 

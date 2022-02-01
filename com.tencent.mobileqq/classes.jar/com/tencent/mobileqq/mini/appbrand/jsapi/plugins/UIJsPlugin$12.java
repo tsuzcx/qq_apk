@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import bgpa;
+import bhpc;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.util.ColorUtils;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
@@ -15,11 +15,11 @@ class UIJsPlugin$12
   
   public void run()
   {
-    bgpa localbgpa;
+    bhpc localbhpc;
     if ((this.this$0.jsPluginEngine.getActivityContext() != null) && (this.this$0.jsPluginEngine.getActivityContext().getActivity() != null) && (!this.this$0.jsPluginEngine.getActivityContext().getActivity().isFinishing()))
     {
-      localbgpa = new bgpa(this.this$0.jsPluginEngine.getActivityContext(), 2131755823);
-      localbgpa.setContentView(2131559383);
+      localbhpc = new bhpc(this.this$0.jsPluginEngine.getActivityContext(), 2131755824);
+      localbhpc.setContentView(2131559383);
       if (!TextUtils.isEmpty(this.val$title)) {
         break label216;
       }
@@ -27,14 +27,14 @@ class UIJsPlugin$12
     label216:
     for (String str = null;; str = this.val$title)
     {
-      localbgpa.setTitle(str).setMessage(this.val$content);
-      localbgpa.setOwnerActivity(this.this$0.jsPluginEngine.getActivityContext());
-      localbgpa.setPositiveButton(this.val$confirmText, ColorUtils.parseColor(this.val$confirmColor), new UIJsPlugin.12.1(this));
+      localbhpc.setTitle(str).setMessage(this.val$content);
+      localbhpc.setOwnerActivity(this.this$0.jsPluginEngine.getActivityContext());
+      localbhpc.setPositiveButton(this.val$confirmText, ColorUtils.parseColor(this.val$confirmColor), new UIJsPlugin.12.1(this));
       if (this.val$showCancel) {
-        localbgpa.setNegativeButton(this.val$cancelText, ColorUtils.parseColor(this.val$cancelColor), new UIJsPlugin.12.2(this));
+        localbhpc.setNegativeButton(this.val$cancelText, ColorUtils.parseColor(this.val$cancelColor), new UIJsPlugin.12.2(this));
       }
-      localbgpa.setCanceledOnTouchOutside(false);
-      localbgpa.show();
+      localbhpc.setCanceledOnTouchOutside(false);
+      localbhpc.show();
       if ((this.this$0.jsPluginEngine.getActivityContext().getActivity() instanceof GameActivity)) {
         ((GameActivity)this.this$0.jsPluginEngine.getActivityContext().getActivity()).hideKeyBoard();
       }

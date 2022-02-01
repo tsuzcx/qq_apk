@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
 import android.graphics.SurfaceTexture;
-import aouy;
+import apio;
 
 public class OnlineVideoARRenderable$2
   implements Runnable
 {
-  public OnlineVideoARRenderable$2(aouy paramaouy) {}
+  public OnlineVideoARRenderable$2(apio paramapio) {}
   
   public void run()
   {
-    if (aouy.a(this.this$0)) {}
+    if (apio.a(this.this$0)) {}
     try
     {
-      aouy.a(this.this$0).updateTexImage();
-      aouy.a(this.this$0).getTransformMatrix(aouy.a(this.this$0));
+      apio.a(this.this$0).updateTexImage();
+      apio.a(this.this$0).getTransformMatrix(apio.a(this.this$0));
       return;
     }
     catch (Exception localException)

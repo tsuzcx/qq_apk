@@ -1,47 +1,23 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
 public class aoly
-  extends aojs
+  implements Comparator<File>
 {
-  public aoly(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  public aoly(CleanCache paramCleanCache) {}
   
-  private boolean C()
+  public int a(File paramFile1, File paramFile2)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      blsi localblsi = blsi.a();
-      localblsi.a = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      localblsi.b = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
-      blsb.a((Activity)this.jdField_a_of_type_AndroidContentContext, localblsi, -1);
-      return true;
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
     }
-    return false;
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = C();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QzonePublishQueueAction", 1, "doAction error: " + localException.getMessage());
-      a("QzonePublishQueueAction");
-    }
-    return false;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoly
  * JD-Core Version:    0.7.0.1
  */

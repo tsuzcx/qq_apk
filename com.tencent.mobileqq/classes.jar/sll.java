@@ -1,36 +1,18 @@
-import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
 
-class sll
-  implements slp
+public abstract interface sll
 {
-  sll(slk paramslk) {}
+  public abstract View a();
   
-  public void a(slr paramslr)
-  {
-    slk.a(this.a, 2);
-    slk localslk = this.a;
-    String str;
-    if (paramslr.jdField_a_of_type_JavaLangString == null)
-    {
-      str = "";
-      slk.a(localslk, str);
-      if (paramslr.jdField_a_of_type_Int != 1) {
-        break label78;
-      }
-      slk.b(this.a, 1);
-    }
-    for (;;)
-    {
-      if (slk.a(this.a) != null) {
-        slk.a(this.a).onPrepared();
-      }
-      return;
-      str = paramslr.jdField_a_of_type_JavaLangString;
-      break;
-      label78:
-      slk.b(this.a, 0);
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(View.OnClickListener paramOnClickListener);
+  
+  public abstract void a(KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo);
+  
+  public abstract void b();
 }
 
 

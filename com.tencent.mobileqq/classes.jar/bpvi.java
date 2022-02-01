@@ -1,17 +1,48 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class bpvi
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bpou
 {
-  public bpvi(PickerContainer paramPickerContainer) {}
+  public bpvi(MusicProviderView paramMusicProviderView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    this.a.setAlpha(PickerContainer.b(this.a).floatValue());
-    this.a.invalidate();
+    this.a.jdField_a_of_type_Blhq.sendEmptyMessage(2);
   }
+  
+  public void a(int paramInt, MusicItemInfo paramMusicItemInfo) {}
+  
+  public void a(MusicItemInfo paramMusicItemInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MusicProviderView", 2, "requestMusicSuccess mListener= " + this.a.jdField_a_of_type_Bpvt);
+    }
+    if (this.a.jdField_a_of_type_Bpvt != null)
+    {
+      if (paramMusicItemInfo.mType == 2) {
+        this.a.jdField_a_of_type_Bpvt.a(true);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.jdField_a_of_type_Bpvt.a(false);
+  }
+  
+  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
+  {
+    if ((paramInt != -1) && (MusicProviderView.a(this.a) != null)) {
+      MusicProviderView.a(this.a).f();
+    }
+  }
+  
+  public void b(MusicItemInfo paramMusicItemInfo) {}
+  
+  public void c(int paramInt, MusicItemInfo paramMusicItemInfo) {}
+  
+  public void d(int paramInt, MusicItemInfo paramMusicItemInfo) {}
 }
 
 

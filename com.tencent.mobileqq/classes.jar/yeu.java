@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
-public final class yeu
-  implements Parcelable.Creator<CardItem.CardVideoInfo>
+class yeu
+  extends ayxm
 {
-  public CardItem.CardVideoInfo a(Parcel paramParcel)
-  {
-    return new CardItem.CardVideoInfo(paramParcel);
-  }
+  yeu(yet paramyet) {}
   
-  public CardItem.CardVideoInfo[] a(int paramInt)
+  protected void a(Object paramObject)
   {
-    return new CardItem.CardVideoInfo[paramInt];
+    if ((paramObject != null) && ((paramObject instanceof oidb_0x791.RedDotInfo)))
+    {
+      paramObject = (oidb_0x791.RedDotInfo)paramObject;
+      if (paramObject.uint32_appid.get() == 21)
+      {
+        int i = paramObject.uint32_number.get();
+        int j = paramObject.uint32_last_time.get();
+        this.a.a.a(i, j);
+      }
+    }
   }
 }
 

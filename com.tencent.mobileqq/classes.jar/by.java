@@ -18,7 +18,7 @@ public class by
   {
     LiteActivity.a(this.a).setPadding(0, 0, 0, 0);
     ((FrameLayout.LayoutParams)this.a.a.getLayoutParams()).setMargins(0, 0, 0, 0);
-    this.a.a.setPadding(afur.a(24.0F, this.a.app.getApplication().getResources()), afur.a(10.0F, this.a.app.getApplication().getResources()), afur.a(24.0F, this.a.app.getApplication().getResources()), 0);
+    this.a.a.setPadding(agej.a(24.0F, this.a.app.getApplication().getResources()), agej.a(10.0F, this.a.app.getApplication().getResources()), agej.a(24.0F, this.a.app.getApplication().getResources()), 0);
     LiteActivity.a(this.a).getLayoutParams().height = -1;
   }
   
@@ -28,7 +28,7 @@ public class by
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     by
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
 import NS_COMM.COMM.StCommonExt;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StInteractiveTemplate;
 import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
@@ -39,12 +40,17 @@ import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.model.PluginInfo;
 import com.tencent.qqmini.sdk.launcher.model.RealTimeLogItem;
+import com.tencent.qqmini.sdk.launcher.model.TouchInfo;
 import com.tencent.qqmini.sdk.launcher.ui.MiniFragmentLauncher;
 import com.tencent.qqmini.sdk.launcher.ui.MiniFragmentLauncher.FragmentType;
 import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
 import com.tencent.qqmini.sdk.request.AddPhoneNumberRequest;
 import com.tencent.qqmini.sdk.request.BatchGetContactRequest;
 import com.tencent.qqmini.sdk.request.BatchGetUserInfoRequest;
+import com.tencent.qqmini.sdk.request.BookShelfInsertRequest;
+import com.tencent.qqmini.sdk.request.BookShelfQueryRequest;
+import com.tencent.qqmini.sdk.request.BookShelfUpdateRequest;
+import com.tencent.qqmini.sdk.request.CheckBindingStateRequest;
 import com.tencent.qqmini.sdk.request.CheckNavigateRightRequest;
 import com.tencent.qqmini.sdk.request.CheckOfferIdRequest;
 import com.tencent.qqmini.sdk.request.CheckSessionRequest;
@@ -102,6 +108,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 @ProxyService(proxy=ChannelProxy.class)
@@ -166,7 +173,7 @@ public class ChannelProxyDefault
       QMLog.w("ChannelProxyDefault", "sendData " + paramProtoBufRequest);
       if (this.useHttpDirectly)
       {
-        HttpServer.sendData(arrayOfByte, new ChannelProxyDefault.4(this, paramProtoBufRequest, paramAsyncResult));
+        HttpServer.sendData(arrayOfByte, new ChannelProxyDefault.5(this, paramProtoBufRequest, paramAsyncResult));
         return;
       }
     }
@@ -185,7 +192,7 @@ public class ChannelProxyDefault
       label100:
       paramAsyncResult.onReceiveResult(false, paramProtoBufRequest);
       return;
-      localMiniAppProxy.sendData(arrayOfByte, new ChannelProxyDefault.5(this, paramProtoBufRequest, paramAsyncResult));
+      localMiniAppProxy.sendData(arrayOfByte, new ChannelProxyDefault.6(this, paramProtoBufRequest, paramAsyncResult));
       return;
     }
     catch (Throwable localThrowable)
@@ -261,6 +268,11 @@ public class ChannelProxyDefault
     handleRequest(new BatchGetContactRequest(paramArrayList), paramAsyncResult);
   }
   
+  public void checkBindingState(String paramString1, String paramString2, int paramInt, AsyncResult paramAsyncResult)
+  {
+    handleRequest(new CheckBindingStateRequest(paramString1, paramString2, paramInt), paramAsyncResult);
+  }
+  
   public void checkNavigateRight(String paramString1, String paramString2, AsyncResult paramAsyncResult)
   {
     handleRequest(new CheckNavigateRightRequest(paramString1, paramString2), paramAsyncResult);
@@ -322,6 +334,16 @@ public class ChannelProxyDefault
     handleRequest(paramString, new ChannelProxyDefault.1(this, paramAuthListResult));
   }
   
+  public void getAuthListForSubscribe(String paramString, AsyncResult paramAsyncResult)
+  {
+    handleRequest(new GetAuthListsRequest(null, paramString), new ChannelProxyDefault.2(this, paramAsyncResult));
+  }
+  
+  public JSONArray getChooseMessageTempFilesArray(Intent paramIntent)
+  {
+    return null;
+  }
+  
   public void getContentAccelerate(String paramString1, String paramString2, int paramInt, Map<String, String> paramMap, AsyncResult paramAsyncResult)
   {
     handleRequest(new ContentAccelerateRequest(null, paramString1, paramString2, paramInt, paramMap), paramAsyncResult);
@@ -376,7 +398,7 @@ public class ChannelProxyDefault
   
   public IMediaPlayerUtil getMediaPlayerUtil()
   {
-    return new ChannelProxyDefault.6(this);
+    return new ChannelProxyDefault.7(this);
   }
   
   public void getMidasConsumeResult(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString3, String paramString4, AsyncResult paramAsyncResult)
@@ -479,6 +501,11 @@ public class ChannelProxyDefault
     handleRequest(new GetUserSettingRequest(paramString1, paramString2, paramString3), paramAsyncResult);
   }
   
+  public String getUserTheme()
+  {
+    return null;
+  }
+  
   public AbsVideoPlayer getVideoPlayer()
   {
     return new VideoPlayerDefault();
@@ -501,7 +528,12 @@ public class ChannelProxyDefault
       }
       i += 1;
     }
-    ((RequestProxy)ProxyManager.get(RequestProxy.class)).request("https://q.qq.com/report/dc/" + str, localStringBuilder.toString().getBytes(), null, "POST", 60, new ChannelProxyDefault.2(this));
+    ((RequestProxy)ProxyManager.get(RequestProxy.class)).request("https://q.qq.com/report/dc/" + str, localStringBuilder.toString().getBytes(), null, "POST", 60, new ChannelProxyDefault.3(this));
+  }
+  
+  public void insertBookShelf(String paramString1, String paramString2, ArrayList<String> paramArrayList, AsyncResult paramAsyncResult)
+  {
+    handleRequest(new BookShelfInsertRequest(paramString1, paramString2, paramArrayList), paramAsyncResult);
   }
   
   public boolean isGooglePlayVersion()
@@ -534,9 +566,9 @@ public class ChannelProxyDefault
     handleRequest(new GetLoginCodeRequest(paramString), paramAsyncResult);
   }
   
-  public void modifyFriendInteractiveStorage(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, HashMap<String, String> paramHashMap, AsyncResult paramAsyncResult)
+  public void modifyFriendInteractiveStorage(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, HashMap<String, String> paramHashMap, boolean paramBoolean, CloudStorage.StInteractiveTemplate paramStInteractiveTemplate, AsyncResult paramAsyncResult)
   {
-    handleRequest(new ModifyFriendInteractiveStorageRequest(paramStCommonExt, paramString1, paramString2, paramString3, paramInt, paramString4, paramHashMap), paramAsyncResult);
+    handleRequest(new ModifyFriendInteractiveStorageRequest(paramStCommonExt, paramString1, paramString2, paramString3, paramInt, paramString4, paramHashMap, paramBoolean, paramStInteractiveTemplate), paramAsyncResult);
   }
   
   public boolean openGroup(Context paramContext, String paramString, AsyncResult paramAsyncResult)
@@ -562,6 +594,11 @@ public class ChannelProxyDefault
   public boolean openRobotProfileCard(Context paramContext, String paramString1, String paramString2)
   {
     return false;
+  }
+  
+  public void queryBookShelf(String paramString, ArrayList<String> paramArrayList, AsyncResult paramAsyncResult)
+  {
+    handleRequest(new BookShelfQueryRequest(paramString, paramArrayList), paramAsyncResult);
   }
   
   public void queryCurrency(String paramString1, String paramString2, int paramInt1, int paramInt2, AsyncResult paramAsyncResult)
@@ -646,6 +683,11 @@ public class ChannelProxyDefault
     return false;
   }
   
+  public boolean startChooseMessageFileActivityForResult(Activity paramActivity, int paramInt1, String paramString, int paramInt2)
+  {
+    return false;
+  }
+  
   public boolean startTransparentBrowserActivityForResult(Activity paramActivity, String paramString, Bundle paramBundle, int paramInt)
   {
     Intent localIntent = new Intent();
@@ -689,10 +731,17 @@ public class ChannelProxyDefault
     return true;
   }
   
+  public void updateBookshelfReadtime(String paramString1, String paramString2, String paramString3, AsyncResult paramAsyncResult)
+  {
+    handleRequest(new BookShelfUpdateRequest(paramString1, paramString2, paramString3), paramAsyncResult);
+  }
+  
   public boolean updateEntryList(String paramString)
   {
     return false;
   }
+  
+  public void updateTouchInfoList(ArrayList<TouchInfo> paramArrayList) {}
   
   public void updateUserSetting(String paramString, INTERFACE.StUserSettingInfo paramStUserSettingInfo, AsyncResult paramAsyncResult) {}
   
@@ -741,7 +790,7 @@ public class ChannelProxyDefault
           if (str1 != null)
           {
             paramJSONObject = str1.getBytes();
-            localRequestProxy.request(str2, paramJSONObject, localMap, str3, 60000, new ChannelProxyDefault.3(this, paramAsyncResult, bool1, bool2));
+            localRequestProxy.request(str2, paramJSONObject, localMap, str3, 60000, new ChannelProxyDefault.4(this, paramAsyncResult, bool1, bool2));
             return true;
           }
           paramJSONObject = null;
@@ -760,7 +809,7 @@ public class ChannelProxyDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault
  * JD-Core Version:    0.7.0.1
  */

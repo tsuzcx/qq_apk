@@ -1,6 +1,13 @@
+import android.app.Activity;
+import android.os.Bundle;
+
 public abstract interface auwn
 {
-  public abstract void a(String paramString);
+  public abstract Activity a();
+  
+  public abstract Bundle a();
+  
+  public abstract Object a();
 }
 
 

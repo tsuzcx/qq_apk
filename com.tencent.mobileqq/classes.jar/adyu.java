@@ -1,21 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.upgrade.UpgradeTIMManager;
-import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class adyu
-  implements DialogInterface.OnClickListener
+  extends bhzs
 {
-  public adyu(Conversation paramConversation, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  public adyu(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onAuthResponse(boolean paramBoolean, Object paramObject)
   {
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
-    ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(256)).a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper.c);
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X800815D", "0X800815D", 0, 0, "", "", "", "");
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X8008657", "0X8008657", 0, 0, "", "", "", "");
+    ((agtz)this.a.a.a(8)).a(paramBoolean, paramObject);
   }
 }
 

@@ -1,152 +1,57 @@
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor.1;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor.2;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor.3;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor.4;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor.5;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTranslateToken;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTranslateToken;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
 public class xdv
-  implements xdu
+  extends wpa
 {
-  private List<xdt> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  Executor jdField_a_of_type_JavaUtilConcurrentExecutor = Executors.newSingleThreadExecutor();
-  private xdw jdField_a_of_type_Xdw;
-  public volatile boolean a;
+  public static final String a = wnu.a("StorySvc.translate_share_parameters_to_token");
+  public String b;
+  public int c;
+  public String c;
   
-  private void a(@NonNull ConcurrentHashMap<String, Object> paramConcurrentHashMap)
+  public String a()
   {
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-      return;
-    }
-    a(new JobExecutor.1(this, (xdt)this.jdField_a_of_type_JavaUtilList.get(0), paramConcurrentHashMap));
+    return a;
   }
   
-  private void a(@NonNull xdt paramxdt, @NonNull ConcurrentHashMap<String, Object> paramConcurrentHashMap)
+  public wov a(byte[] paramArrayOfByte)
   {
-    paramxdt.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = paramConcurrentHashMap;
-    paramxdt.a(paramConcurrentHashMap);
-    if (!paramxdt.a())
+    qqstory_service.RspTranslateToken localRspTranslateToken = new qqstory_service.RspTranslateToken();
+    try
     {
-      if (this.jdField_a_of_type_Xdw != null) {
-        this.jdField_a_of_type_Xdw.b();
-      }
-      a();
-      return;
+      localRspTranslateToken.mergeFrom(paramArrayOfByte);
+      return new xdw(localRspTranslateToken);
     }
-    if (paramxdt.jdField_a_of_type_Boolean)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      paramxdt.a();
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new JobExecutor.2(this, paramxdt));
-  }
-  
-  public xdv a(@NonNull xdt paramxdt)
-  {
-    paramxdt.jdField_a_of_type_Xdu = this;
-    this.jdField_a_of_type_JavaUtilList.add(paramxdt);
-    return this;
-  }
-  
-  protected void a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.clear();
-    }
-    this.jdField_a_of_type_Xdw = null;
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      paramRunnable.run();
-      return;
-    }
-    ThreadManager.getUIHandler().post(paramRunnable);
-  }
-  
-  public void a(@NonNull xdw paramxdw)
-  {
-    this.jdField_a_of_type_Xdw = paramxdw;
-    a(new ConcurrentHashMap());
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_Xdw != null) {
-        this.jdField_a_of_type_Xdw.c();
-      }
-      a();
-      return;
-    }
-    xdt localxdt = (xdt)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (paramBoolean)
-    {
-      if (localxdt.b)
+      for (;;)
       {
-        if (Looper.myLooper() == Looper.getMainLooper())
-        {
-          localxdt.a(localxdt.b());
-          return;
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.qqstory.share.trans.req", 2, "decode failed", paramArrayOfByte);
         }
-        ThreadManager.getUIHandler().post(new JobExecutor.3(this, localxdt));
-        return;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new JobExecutor.4(this, localxdt));
-      return;
     }
-    if (this.jdField_a_of_type_Xdw != null) {
-      this.jdField_a_of_type_Xdw.b();
-    }
-    localxdt.a(paramBoolean);
-    a();
   }
   
-  public void b(boolean paramBoolean)
+  protected byte[] a()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_Xdw != null) {
-        this.jdField_a_of_type_Xdw.c();
-      }
-      a();
+    qqstory_service.ReqTranslateToken localReqTranslateToken = new qqstory_service.ReqTranslateToken();
+    localReqTranslateToken.src_buffer.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqTranslateToken.type.set(this.jdField_c_of_type_Int);
+    if ((this.jdField_c_of_type_Int == 1) && (this.jdField_c_of_type_JavaLangString != null)) {
+      localReqTranslateToken.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
     }
-    xdt localxdt;
-    do
-    {
-      return;
-      if (!paramBoolean) {
-        break label108;
-      }
-      localxdt = (xdt)this.jdField_a_of_type_JavaUtilList.remove(0);
-      if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-        break;
-      }
-      if (this.jdField_a_of_type_Xdw != null) {
-        this.jdField_a_of_type_Xdw.a();
-      }
-    } while (!this.jdField_a_of_type_JavaUtilList.isEmpty());
-    a();
-    return;
-    ThreadManager.getUIHandler().post(new JobExecutor.5(this, localxdt));
-    return;
-    label108:
-    if (this.jdField_a_of_type_Xdw != null) {
-      this.jdField_a_of_type_Xdw.b();
-    }
-    a();
+    return localReqTranslateToken.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "StoryShareTranslateTokenRequest{feedId='" + this.jdField_c_of_type_JavaLangString + '\'' + ", srcBuffer='" + this.b + '\'' + ", type=" + this.jdField_c_of_type_Int + '}';
   }
 }
 

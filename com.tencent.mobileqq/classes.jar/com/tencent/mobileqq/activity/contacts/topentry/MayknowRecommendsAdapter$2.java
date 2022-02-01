@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import ajlr;
+import ajxa;
 
 public class MayknowRecommendsAdapter$2
   implements Runnable
 {
-  public MayknowRecommendsAdapter$2(ajlr paramajlr) {}
+  public MayknowRecommendsAdapter$2(ajxa paramajxa) {}
   
   public void run()
   {

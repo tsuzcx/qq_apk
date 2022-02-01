@@ -1,11 +1,6 @@
 class bhkh
-  implements nkl
 {
-  bhkh(bhkg parambhkg) {}
-  
-  public void loaded(String paramString, int paramInt) {}
-  
-  public void progress(int paramInt) {}
+  static bhkf a = new bhkf(null);
 }
 
 

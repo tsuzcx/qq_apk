@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
 
 public class npe
-  implements View.OnClickListener
+  implements SoundPool.OnLoadCompleteListener
 {
-  public npe(EqqAccountDetailActivity paramEqqAccountDetailActivity, nyl paramnyl) {}
+  public npe(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a = this.jdField_a_of_type_Nyl.d;
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Nyl, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

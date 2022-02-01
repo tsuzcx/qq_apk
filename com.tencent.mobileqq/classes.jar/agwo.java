@@ -1,22 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class agwo
-  extends AnimatorListenerAdapter
+class agwo
+  implements aspl
 {
-  public agwo(HeartCombolEffectView paramHeartCombolEffectView) {}
+  agwo(agwn paramagwn) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.setVisibility(8);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.a.setVisibility(8);
+    if (paramInt == 8) {
+      agwn.a(this.a).b();
+    }
+    while ((paramInt != 0) || (agwn.a(this.a) == 0L)) {
+      return;
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = agwn.a(this.a);
+    bdmc.a(BaseApplication.getContext()).a(null, "StickerRecShowCost", true, l1 - l2, 0L, null, "");
+    agwn.a(this.a, 0L);
   }
 }
 

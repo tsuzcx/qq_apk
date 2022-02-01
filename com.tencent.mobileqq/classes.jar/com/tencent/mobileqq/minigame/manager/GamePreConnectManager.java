@@ -19,7 +19,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request.Builder;

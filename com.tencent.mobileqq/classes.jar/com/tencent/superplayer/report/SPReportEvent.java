@@ -2,6 +2,9 @@ package com.tencent.superplayer.report;
 
 import android.content.Context;
 import com.tencent.superplayer.api.SuperPlayerSDKMgr;
+import com.tencent.tmediacodec.TCodecManager;
+import com.tencent.tmediacodec.reuse.ReusePolicy;
+import com.tencent.tmediacodec.reuse.ReusePolicy.EraseType;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -111,6 +114,7 @@ public class SPReportEvent
       localLinkedHashMap.put("param_secondBufferDuration", String.valueOf(this.secondBufferDuration));
       localLinkedHashMap.put("param_secondBufferCount", String.valueOf(this.secondBufferCount));
       localLinkedHashMap.put("param_videoFrameCheckCode", String.valueOf(this.videoFrameCheckCode));
+      localLinkedHashMap.put("param_codecErasePolicy", String.valueOf(TCodecManager.getInstance().getReusePolicy().eraseType.ordinal()));
       return localLinkedHashMap;
     }
   }

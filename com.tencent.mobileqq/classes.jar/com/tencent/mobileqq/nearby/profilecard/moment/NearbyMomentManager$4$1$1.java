@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import axyp;
-import axyr;
+import ayrj;
+import ayrl;
 import java.util.List;
 
 class NearbyMomentManager$4$1$1
@@ -11,8 +11,8 @@ class NearbyMomentManager$4$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.jdField_a_of_type_Axyp.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.jdField_a_of_type_Axyp.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.b, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.jdField_a_of_type_Ayrj.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.jdField_a_of_type_Ayrj.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.b, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4$1.jdField_a_of_type_Int);
     }
   }
 }

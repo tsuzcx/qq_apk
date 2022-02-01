@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.dating;
 
-import arlc;
+import asas;
 
 public class MsgBoxListActivity$1$3
   implements Runnable
 {
-  public MsgBoxListActivity$1$3(arlc paramarlc) {}
+  public MsgBoxListActivity$1$3(asas paramasas) {}
   
   public void run()
   {

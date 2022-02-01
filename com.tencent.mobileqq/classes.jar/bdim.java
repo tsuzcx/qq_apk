@@ -1,21 +1,11 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.TimeFormatterUtils.Proxy;
 
-public class bdim
-  extends bdid
+public final class bdim
+  implements RecentRoute.TimeFormatterUtils.Proxy
 {
-  public bdim(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  public String getRecentMessageDateTime(StringBuffer paramStringBuffer, long paramLong, boolean paramBoolean, String paramString)
   {
-    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
-    {
-      this.jdField_a_of_type_Bdia.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_Bdia.h(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-    }
+    return bhsw.a(paramStringBuffer, paramLong, paramBoolean, paramString);
   }
 }
 

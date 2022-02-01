@@ -1,25 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonCornerLayout;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.image.ApngImage;
+import dov.com.qq.im.ae.play.AEPlayShowPageView;
 
 public class bowz
-  extends AnimatorListenerAdapter
+  extends RecyclerView.OnScrollListener
 {
-  public bowz(LightWeightCaptureButtonCornerLayout paramLightWeightCaptureButtonCornerLayout) {}
+  public bowz(AEPlayShowPageView paramAEPlayShowPageView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner deleteView 190ms all end ScaleX:" + this.a.b.getScaleX() + " ScaleY:" + this.a.b.getScaleY());
+    if (paramInt == 0) {
+      ApngImage.resumeAll();
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner deleteView begin");
+    for (;;)
+    {
+      super.onScrollStateChanged(paramRecyclerView, paramInt);
+      return;
+      ApngImage.pauseAll();
     }
   }
 }

@@ -6,9 +6,9 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import aypi;
-import aypm;
-import aypt;
+import azib;
+import azif;
+import azim;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +20,12 @@ public class OnlineStatusPagerAdapter
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  private aypm jdField_a_of_type_Aypm;
-  private aypt jdField_a_of_type_Aypt = new aypt();
-  public ArrayList<aypi> a;
+  private azif jdField_a_of_type_Azif;
+  private azim jdField_a_of_type_Azim = new azim();
+  public ArrayList<azib> a;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private ArrayList<aypi> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<azib> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   private int c;
   
   OnlineStatusPagerAdapter(Context paramContext, int paramInt1, int paramInt2, boolean paramBoolean, ViewPager paramViewPager)
@@ -38,7 +38,7 @@ public class OnlineStatusPagerAdapter
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
   }
   
-  private List<aypi> a(int paramInt)
+  private List<azib> a(int paramInt)
   {
     paramInt = this.jdField_a_of_type_Int * paramInt;
     int i = Math.min(this.jdField_b_of_type_JavaUtilArrayList.size(), this.jdField_a_of_type_Int + paramInt);
@@ -52,11 +52,11 @@ public class OnlineStatusPagerAdapter
       return 0;
     }
     int j = k;
-    aypi localaypi;
+    azib localazib;
     int i;
     if (this.jdField_a_of_type_JavaUtilArrayList.size() == 1)
     {
-      localaypi = (aypi)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      localazib = (azib)this.jdField_a_of_type_JavaUtilArrayList.get(0);
       i = 0;
     }
     for (;;)
@@ -64,7 +64,7 @@ public class OnlineStatusPagerAdapter
       j = k;
       if (i < this.jdField_b_of_type_JavaUtilArrayList.size())
       {
-        if (((aypi)this.jdField_b_of_type_JavaUtilArrayList.get(i)).a == localaypi.a) {
+        if (((azib)this.jdField_b_of_type_JavaUtilArrayList.get(i)).a == localazib.a) {
           j = i;
         }
       }
@@ -75,36 +75,37 @@ public class OnlineStatusPagerAdapter
     }
   }
   
-  public ArrayList<aypi> a()
+  public ArrayList<azib> a()
   {
     return this.jdField_b_of_type_JavaUtilArrayList;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager == null) {}
-    while (getCount() > this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getChildCount()) {
+    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager == null) {
       return;
     }
+    int j = getCount();
+    int k = this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getChildCount();
     int i = 0;
-    label24:
+    label23:
     OnlineStatusListLayout localOnlineStatusListLayout;
-    if (i < getCount())
+    if (i < k)
     {
       localOnlineStatusListLayout = (OnlineStatusListLayout)this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getChildAt(i);
       if (localOnlineStatusListLayout != null) {
-        break label55;
+        break label53;
       }
     }
     for (;;)
     {
       i += 1;
-      break label24;
+      break label23;
       break;
-      label55:
-      List localList = a(i);
-      if (localList != null) {
-        localOnlineStatusListLayout.a(localList, this.jdField_a_of_type_JavaUtilArrayList);
+      label53:
+      int m = localOnlineStatusListLayout.a();
+      if ((m >= 0) && (m < j)) {
+        localOnlineStatusListLayout.a(a(m), this.jdField_a_of_type_JavaUtilArrayList);
       }
     }
   }
@@ -114,18 +115,18 @@ public class OnlineStatusPagerAdapter
     this.c = paramInt;
   }
   
-  public void a(aypi paramaypi, View paramView)
+  public void a(azib paramazib, View paramView)
   {
-    aypi localaypi = null;
+    azib localazib = null;
     if (!this.jdField_a_of_type_Boolean)
     {
       if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        localaypi = (aypi)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        localazib = (azib)this.jdField_a_of_type_JavaUtilArrayList.get(0);
       }
       this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramaypi);
-      if (this.jdField_a_of_type_Aypm != null) {
-        this.jdField_a_of_type_Aypm.a(localaypi, paramaypi, paramView);
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramazib);
+      if (this.jdField_a_of_type_Azif != null) {
+        this.jdField_a_of_type_Azif.a(localazib, paramazib, paramView);
       }
     }
     do
@@ -133,24 +134,24 @@ public class OnlineStatusPagerAdapter
       do
       {
         return;
-        if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramaypi)) {
+        if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramazib)) {
           break;
         }
-        this.jdField_a_of_type_JavaUtilArrayList.remove(paramaypi);
-      } while (this.jdField_a_of_type_Aypm == null);
-      this.jdField_a_of_type_Aypm.a(paramaypi, null, paramView);
+        this.jdField_a_of_type_JavaUtilArrayList.remove(paramazib);
+      } while (this.jdField_a_of_type_Azif == null);
+      this.jdField_a_of_type_Azif.a(paramazib, null, paramView);
       return;
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramaypi);
-    } while (this.jdField_a_of_type_Aypm == null);
-    this.jdField_a_of_type_Aypm.a(null, paramaypi, paramView);
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramazib);
+    } while (this.jdField_a_of_type_Azif == null);
+    this.jdField_a_of_type_Azif.a(null, paramazib, paramView);
   }
   
-  public void a(aypm paramaypm)
+  public void a(azif paramazif)
   {
-    this.jdField_a_of_type_Aypm = paramaypm;
+    this.jdField_a_of_type_Azif = paramazif;
   }
   
-  public void a(ArrayList<aypi> paramArrayList)
+  public void a(ArrayList<azib> paramArrayList)
   {
     this.jdField_b_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -159,8 +160,10 @@ public class OnlineStatusPagerAdapter
   {
     if ((paramObject instanceof OnlineStatusListLayout))
     {
-      paramViewGroup.removeView((OnlineStatusListLayout)paramObject);
-      this.jdField_a_of_type_Aypt.a(paramInt, (View)paramObject);
+      OnlineStatusListLayout localOnlineStatusListLayout = (OnlineStatusListLayout)paramObject;
+      localOnlineStatusListLayout.setPageIndex(-1);
+      paramViewGroup.removeView(localOnlineStatusListLayout);
+      this.jdField_a_of_type_Azim.a(paramInt, (View)paramObject);
     }
   }
   
@@ -183,7 +186,7 @@ public class OnlineStatusPagerAdapter
   {
     boolean bool2 = true;
     List localList = a(paramInt);
-    OnlineStatusListLayout localOnlineStatusListLayout2 = (OnlineStatusListLayout)this.jdField_a_of_type_Aypt.a(paramInt);
+    OnlineStatusListLayout localOnlineStatusListLayout2 = (OnlineStatusListLayout)this.jdField_a_of_type_Azim.a(paramInt);
     OnlineStatusListLayout localOnlineStatusListLayout1 = localOnlineStatusListLayout2;
     if (localOnlineStatusListLayout2 == null)
     {
@@ -191,16 +194,16 @@ public class OnlineStatusPagerAdapter
       localOnlineStatusListLayout1.setItemWidth(this.c);
       localOnlineStatusListLayout1.setItemMargin(OnlineStatusPanel.a(this.jdField_b_of_type_Int, localOnlineStatusListLayout1.getResources()));
       if (this.jdField_b_of_type_Int != 1) {
-        break label166;
+        break label172;
       }
       bool1 = true;
       localOnlineStatusListLayout1.setUseWhiteBg(bool1);
       if (this.jdField_b_of_type_Int != 3) {
-        break label171;
+        break label177;
       }
     }
-    label166:
-    label171:
+    label172:
+    label177:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       localOnlineStatusListLayout1.setUseLightNightBg(bool1);
@@ -208,6 +211,7 @@ public class OnlineStatusPagerAdapter
       localOnlineStatusListLayout1.setOnClickListener(this);
       localOnlineStatusListLayout1.a(this.jdField_a_of_type_Int, this);
       localOnlineStatusListLayout1.a(localList, this.jdField_a_of_type_JavaUtilArrayList);
+      localOnlineStatusListLayout1.setPageIndex(paramInt);
       if ((localOnlineStatusListLayout1.getParent() != paramViewGroup) && (paramInt < getCount())) {
         paramViewGroup.addView(localOnlineStatusListLayout1);
       }
@@ -226,17 +230,17 @@ public class OnlineStatusPagerAdapter
   {
     Object localObject = paramView.getTag();
     if ((paramView instanceof OnlineStatusListLayout)) {
-      if ((((OnlineStatusListLayout)paramView).a()) && (this.jdField_a_of_type_Aypm != null)) {
-        this.jdField_a_of_type_Aypm.a(paramView);
+      if ((((OnlineStatusListLayout)paramView).a()) && (this.jdField_a_of_type_Azif != null)) {
+        this.jdField_a_of_type_Azif.a(paramView);
       }
     }
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((localObject instanceof aypi))
+      if ((localObject instanceof azib))
       {
-        a((aypi)localObject, paramView);
+        a((azib)localObject, paramView);
         a();
       }
     }

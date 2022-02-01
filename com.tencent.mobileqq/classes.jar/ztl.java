@@ -1,18 +1,7 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class ztl
-  implements View.OnClickListener
+public abstract class ztl
+  implements ztk
 {
-  public ztl(QRLoginBaseActivity paramQRLoginBaseActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void a() {}
 }
 
 

@@ -1,14 +1,80 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class avwl
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  avwl(avwk paramavwk, bgpa parambgpa) {}
+  private final String jdField_a_of_type_JavaLangString = "reason";
+  private final String b = "homekey";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  avwl(avwj paramavwj) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Bgpa.dismiss();
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoItemEventManager", 2, "onReceive ===>" + paramContext);
+    }
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    {
+      paramContext = avwj.a(this.jdField_a_of_type_Avwj).iterator();
+      while (paramContext.hasNext()) {
+        ((avwm)paramContext.next()).b(false);
+      }
+    }
+    if ("android.intent.action.SCREEN_ON".equals(paramContext))
+    {
+      paramContext = avwj.a(this.jdField_a_of_type_Avwj).iterator();
+      while (paramContext.hasNext()) {
+        ((avwm)paramContext.next()).b(true);
+      }
+    }
+    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
+    {
+      paramContext = avwj.a(this.jdField_a_of_type_Avwj).iterator();
+      while (paramContext.hasNext()) {
+        ((avwm)paramContext.next()).c(true);
+      }
+    }
+    if ("tencent.av.v2q.StopVideoChat".equals(paramContext))
+    {
+      paramContext = avwj.a(this.jdField_a_of_type_Avwj).iterator();
+      while (paramContext.hasNext()) {
+        ((avwm)paramContext.next()).c(false);
+      }
+    }
+    if ("VolumeBtnDown".equals(paramIntent.getAction()))
+    {
+      paramContext = avwj.a(this.jdField_a_of_type_Avwj).iterator();
+      while (paramContext.hasNext()) {
+        ((avwm)paramContext.next()).i();
+      }
+    }
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    {
+      paramContext = paramIntent.getStringExtra("reason");
+      if (paramContext != null) {
+        break label294;
+      }
+    }
+    for (;;)
+    {
+      return;
+      label294:
+      if (paramContext.equals("homekey"))
+      {
+        paramContext = avwj.a(this.jdField_a_of_type_Avwj).iterator();
+        while (paramContext.hasNext())
+        {
+          ((avwm)paramContext.next()).h();
+          QLog.d("VideoItemEventManager", 2, "onReceive ===>homekey press");
+        }
+      }
+    }
   }
 }
 

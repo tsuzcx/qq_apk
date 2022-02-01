@@ -8,8 +8,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import bhql;
-import bhqo;
+import birg;
+import birj;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.biz.ui.TouchWebView;
@@ -17,7 +17,7 @@ import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import zvc;
+import zyx;
 
 public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
   extends WebViewFragment
@@ -64,7 +64,7 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
       setRightButton(true);
       super.getWebView().setVisibility(4);
       return;
-      super.getActivity().getWindow().setBackgroundDrawableResource(2131167224);
+      super.getActivity().getWindow().setBackgroundDrawableResource(2131167247);
       break;
       label195:
       this.webView.setBackgroundColor(0);
@@ -129,7 +129,7 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-    zvc.a(1, 2131694612);
+    zyx.a(1, 2131694654);
     super.getActivity().finish();
   }
 }

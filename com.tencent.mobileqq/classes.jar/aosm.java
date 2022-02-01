@@ -1,260 +1,165 @@
-import android.os.Process;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
-import com.tencent.mobileqq.utils.confighandler.DefaultConfigInfo;
+import com.tencent.mobileqq.data.ConversationInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.TreeMap;
-import mqq.manager.Manager;
+import java.util.Map;
 
 public class aosm
-  implements Manager
+  extends aczn
 {
-  aosg jdField_a_of_type_Aosg = null;
-  aosq jdField_a_of_type_Aosq = null;
-  private aosu jdField_a_of_type_Aosu;
-  PromotionConfigInfo jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
-  final String jdField_a_of_type_JavaLangString;
-  String b;
-  
-  public aosm(AppInterface paramAppInterface)
+  public aosm(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, adah paramadah)
   {
-    long l = AudioHelper.b();
-    this.jdField_a_of_type_JavaLangString = ("ARPromotion_" + l);
-    this.b = paramAppInterface.getAccount();
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "PromotionMgr, mUin[" + this.b + "]");
-    this.jdField_a_of_type_Aosq = new aosq(l);
+    super(paramQQAppInterface, paramQQMessageFacade, paramadah);
   }
   
-  public PromotionConfigInfo a()
+  public int a(int paramInt, ConversationInfo paramConversationInfo)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo == null) && (AudioHelper.e())) {
-      QLog.w(aost.jdField_a_of_type_JavaLangString, 1, "getConfigInfo, AR配置还未初始化", new Throwable("打印调用栈"));
+    if (adab.a(paramConversationInfo) > 0) {
+      return 0;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
+    return super.a(paramInt, paramConversationInfo);
   }
   
-  public void a(aoss paramaoss)
+  protected String a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Aosq != null) {
-      this.jdField_a_of_type_Aosq.a(paramaoss);
-    }
-  }
-  
-  public void a(AppInterface paramAppInterface)
-  {
-    if (a("doOnReconnect", paramAppInterface, null)) {
-      return;
-    }
-    b(paramAppInterface);
-  }
-  
-  public void a(AppInterface paramAppInterface, String paramString)
-  {
-    if (this.jdField_a_of_type_Aosq != null) {
-      if (a())
-      {
-        PromotionConfigInfo localPromotionConfigInfo = a();
-        this.jdField_a_of_type_Aosq.a(localPromotionConfigInfo);
-        this.jdField_a_of_type_Aosq.a(paramAppInterface, false, paramString, 0);
-      }
-    }
-    do
+    if (this.a.getCurrentAccountUin().equals(paramString1)) {}
+    String str;
+    for (paramString2 = anzj.a(2131704338);; paramString2 = bhlg.h(this.a, paramString2, paramString1))
     {
-      return;
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestDownload, 配置还未初始化");
-      return;
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestDownload, 下载器为空");
-    } while (!AudioHelper.e());
-    throw new IllegalArgumentException(anni.a(2131707284));
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString, PromotionConfigInfo paramPromotionConfigInfo)
-  {
-    String str = this.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetEntryConfig, from server, configInfo[");
-    if (paramPromotionConfigInfo != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.w(str, 1, bool + "]");
-      if (paramPromotionConfigInfo != null)
+      if ((paramString2 != null) && (paramString2.length() != 0))
       {
-        a(paramPromotionConfigInfo);
-        if (this.jdField_a_of_type_Aosu != null)
-        {
-          this.jdField_a_of_type_Aosu.clean();
-          this.jdField_a_of_type_Aosu = null;
-        }
+        str = paramString2;
+        if (!paramString2.equals(paramString1)) {}
       }
-      if (!a("onGetConfig", paramQQAppInterface, null)) {
+      else
+      {
+        str = this.a.a(true).a(true).a(paramString1);
+      }
+      if (str != null) {
         break;
       }
+      return paramString1;
+    }
+    return str;
+  }
+  
+  public void a(MessageRecord paramMessageRecord, EntityManager paramEntityManager, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, aczl paramaczl)
+  {
+    if (paramMessageRecord == null) {
       return;
     }
-    a(paramString);
-    b(paramQQAppInterface);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString, DefaultConfigInfo paramDefaultConfigInfo)
-  {
-    if (!a()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onGetResConfig, 365还没加载");
+    Map localMap2 = paramaczl.jdField_a_of_type_JavaUtilMap;
+    Map localMap1 = paramaczl.d;
+    Object localObject = paramaczl.jdField_a_of_type_Apaw;
+    String str1 = paramMessageRecord.frienduin;
+    long l = paramMessageRecord.time;
+    if (paramMessageRecord.time == 0L) {
+      paramMessageRecord.time = bcrg.a();
     }
-    int i;
-    do
-    {
-      return;
-      paramDefaultConfigInfo = a();
-      if (paramDefaultConfigInfo == null)
-      {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onGetResConfig, 365为null");
-        return;
-      }
-      i = bguf.a(this.b);
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onGetResConfig, 365已经加载了, [" + paramDefaultConfigInfo.config364Version + "], ver[" + i + "]");
-      if (TextUtils.equals(paramString, "test")) {
-        i = -1;
-      }
-    } while (i == paramDefaultConfigInfo.config364Version);
-    a(null);
-    a(paramQQAppInterface, null, null);
-  }
-  
-  void a(PromotionConfigInfo paramPromotionConfigInfo)
-  {
-    if (paramPromotionConfigInfo == null) {}
+    if (paramMessageRecord.msgseq == 0L) {
+      paramMessageRecord.msgseq = ((int)paramMessageRecord.time);
+    }
+    localObject = (RecentUser)((apaw)localObject).findRecentUserByUin(str1, 1);
+    if (localMap2.containsKey(adak.a(((RecentUser)localObject).uin, ((RecentUser)localObject).getType()))) {
+      localObject = (RecentUser)localMap2.get(adak.a(((RecentUser)localObject).uin, ((RecentUser)localObject).getType()));
+    }
     for (;;)
     {
-      try
+      int i;
+      String str2;
+      if (!adak.h(paramMessageRecord.msgtype))
       {
-        if (AudioHelper.e())
+        i = 1;
+        int j = i;
+        if (paramMessageRecord.isLongMsg())
         {
-          localThrowable = new Throwable("打印调用栈");
-          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setConfigInfo, old[" + this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo + "], new[" + paramPromotionConfigInfo + "]", localThrowable);
-          this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
-          this.jdField_a_of_type_Aosu = null;
-          return;
+          j = i;
+          if (this.a.a().a(paramMessageRecord))
+          {
+            i = 0;
+            j = i;
+            if (QLog.isColorLevel())
+            {
+              QLog.i("Q.msg.BaseMessageManager", 2, "addMessageRecord, long msg uncompleted");
+              j = i;
+            }
+          }
+        }
+        if (j != 0)
+        {
+          str2 = adak.a(str1, 1);
+          ((RecentUser)localObject).uin = str1;
+          ((RecentUser)localObject).setType(1);
+          boolean bool = true;
+          if ((paramMessageRecord instanceof MessageForUniteGrayTip)) {
+            bool = ((MessageForUniteGrayTip)paramMessageRecord).tipParam.d;
+          }
+          if ((l > ((RecentUser)localObject).lastmsgtime) && (bool)) {
+            ((RecentUser)localObject).lastmsgtime = l;
+          }
+          localMap2.put(str2, localObject);
+          localObject = (MessageRecord)localMap1.get(str2);
+          if ((localObject != null) && (!paramMessageRecord.isSendFromLocal())) {
+            break label361;
+          }
+          localMap1.put(str2, paramMessageRecord);
         }
       }
-      finally {}
-      Throwable localThrowable = null;
-    }
-  }
-  
-  void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Aosq != null) {
-      this.jdField_a_of_type_Aosq.b();
-    }
-    BusinessCommonConfig.sendConfigUpdateNotify(2, paramString);
-  }
-  
-  public boolean a()
-  {
-    for (;;)
-    {
-      try
+      for (;;)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo != null)
+        if (paramMessageRecord.isSendFromLocal())
         {
-          bool = true;
-          return bool;
+          paramMessageRecord.extraflag = 32772;
+          paramMessageRecord.sendFailCode = 0;
+        }
+        super.a(paramMessageRecord, paramEntityManager, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramaczl);
+        return;
+        i = 0;
+        break;
+        label361:
+        if (a(paramMessageRecord) >= a((MessageRecord)localObject)) {
+          localMap1.put(str2, paramMessageRecord);
         }
       }
-      finally {}
-      boolean bool = false;
     }
   }
   
-  boolean a(String paramString, AppInterface paramAppInterface, aoso paramaoso)
+  protected String b(String paramString1, String paramString2)
   {
-    if ((a()) && (aosl.a != -1)) {
-      return false;
-    }
-    Object localObject2 = this.jdField_a_of_type_Aosu;
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      if ((TextUtils.isEmpty(this.b)) && (paramAppInterface != null)) {
-        this.b = paramAppInterface.getCurrentAccountUin();
-      }
-      localObject1 = new aosu(this.jdField_a_of_type_JavaLangString, this.b, paramAppInterface);
-      this.jdField_a_of_type_Aosu = ((aosu)localObject1);
-    }
-    if (((aosu)localObject1).isNeedRunTask())
-    {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "异步加载config[" + paramString + "]");
-      localObject2 = new ArrayList();
-      ((ArrayList)localObject2).add(localObject1);
-      bgsq.requestSyncTask(null, (ArrayList)localObject2, new aosn(this, paramAppInterface, paramString, paramaoso));
-    }
-    for (;;)
-    {
-      return true;
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "异步加载config[" + paramString + "], 已经在加载中");
-    }
+    return a(paramString1, paramString2);
   }
   
-  public void b(aoss paramaoss)
+  public void b(QQMessageFacade.Message paramMessage)
   {
-    if (this.jdField_a_of_type_Aosq != null) {
-      this.jdField_a_of_type_Aosq.b(paramaoss);
+    paramMessage.nickName = a(paramMessage.senderuin, paramMessage.frienduin);
+    Object localObject;
+    if ((paramMessage.nickName == null) || (paramMessage.nickName.equals(paramMessage.senderuin))) {
+      localObject = paramMessage.nickName;
     }
-  }
-  
-  void b(AppInterface paramAppInterface)
-  {
-    PromotionConfigInfo localPromotionConfigInfo1 = a();
-    if (AudioHelper.f()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, PromotionConfigInfo[" + localPromotionConfigInfo1 + "], isDevicesSupport[" + aosl.a() + "]");
-    }
-    if (!aosl.a()) {}
-    PromotionConfigInfo localPromotionConfigInfo2;
-    do
+    try
     {
-      do
+      String str = paramMessage.getExtInfoFromExtStr("hotchat_nick");
+      localObject = str;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        return;
-      } while ((localPromotionConfigInfo1 == null) || (!localPromotionConfigInfo1.mainswitch) || (localPromotionConfigInfo1.operationInfos.size() == 0));
-      c(paramAppInterface);
-      localPromotionConfigInfo2 = a();
-    } while ((localPromotionConfigInfo2 == null) || (this.jdField_a_of_type_Aosq == null));
-    this.jdField_a_of_type_Aosq.a(localPromotionConfigInfo2);
-    this.jdField_a_of_type_Aosq.a(paramAppInterface, true, localPromotionConfigInfo1.activityid, 0);
-  }
-  
-  void c(AppInterface paramAppInterface)
-  {
-    bcjv.b();
-    if (this.jdField_a_of_type_Aosg == null) {
-      this.jdField_a_of_type_Aosg = new aosg();
+        localException.printStackTrace();
+      }
     }
-    this.jdField_a_of_type_Aosg.a(paramAppInterface);
-  }
-  
-  public void onDestroy()
-  {
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onDestroy, ThreadID[" + Thread.currentThread().getId() + "], Tid[" + Process.myTid() + "]");
-    if (this.jdField_a_of_type_Aosu != null)
-    {
-      this.jdField_a_of_type_Aosu.clean();
-      this.jdField_a_of_type_Aosu = null;
+    if ((localObject != null) && (((String)localObject).length() > 0)) {
+      paramMessage.nickName = ((String)localObject);
     }
-    if (this.jdField_a_of_type_Aosq != null)
-    {
-      this.jdField_a_of_type_Aosq.a();
-      this.jdField_a_of_type_Aosq = null;
+    if (QLog.isDevelopLevel()) {
+      axxb.a("PttShow", "processNickName", new Object[] { paramMessage.senderuin, paramMessage.nickName });
     }
-    if (this.jdField_a_of_type_Aosg != null)
-    {
-      this.jdField_a_of_type_Aosg.a();
-      this.jdField_a_of_type_Aosg = null;
-    }
-    a(null);
   }
 }
 

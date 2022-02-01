@@ -1,71 +1,305 @@
-import java.lang.ref.WeakReference;
-import mqq.manager.VerifyDevLockManager.NotifyType;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBSInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeRequest;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListRequest;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
+import com.tencent.qconn.protofile.appType.AuthItem;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.manager.TicketManager;
+import org.json.JSONObject;
 
 public class adom
-  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  private WeakReference<VerifyDevLockManager.VerifyDevLockObserver> a;
+  public static final String a;
+  int jdField_a_of_type_Int = 0;
+  protected admy a;
+  final adnb jdField_a_of_type_Adnb;
+  final adoi jdField_a_of_type_Adoi;
+  protected List<bjlv> a;
   
-  public adom(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
+  static
   {
-    this.a = new WeakReference(paramVerifyDevLockObserver);
+    jdField_a_of_type_JavaLangString = "DoraemonOpenAPI." + adom.class.getSimpleName();
   }
   
-  public void a()
+  public adom(adnb paramadnb, adoi paramadoi)
   {
-    this.a.clear();
-    this.a = null;
+    this.jdField_a_of_type_Adnb = paramadnb;
+    this.jdField_a_of_type_Adoi = paramadoi;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public int getSeq()
+  private String a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3)
   {
-    if (this.a != null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    localLinkedHashMap.put("app_id", this.jdField_a_of_type_Adnb.jdField_a_of_type_JavaLangString);
+    localLinkedHashMap.put("uin", paramAppRuntime.getAccount());
+    localLinkedHashMap.put("sdkp", "a");
+    localLinkedHashMap.put("response_type", "token");
+    axeh localaxeh = this.jdField_a_of_type_Adnb.a();
+    if (localaxeh == null)
     {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        return localVerifyDevLockObserver.getSeq();
+      paramAppRuntime = "";
+      localLinkedHashMap.put("app_name", paramAppRuntime);
+      localLinkedHashMap.put("kSSOLoginTypeKey", "1");
+      localLinkedHashMap.put("scope", "get_user_info,get_simple_userinfo,add_share,get_info,server_side");
+      if (localaxeh != null) {
+        break label265;
       }
     }
-    return super.getSeq();
-  }
-  
-  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
-  {
-    if (this.a != null)
+    label265:
+    for (paramAppRuntime = "";; paramAppRuntime = localaxeh.i)
     {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        localVerifyDevLockObserver.onRecvNotice(paramNotifyType, paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
-      }
-    }
-  }
-  
-  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        localVerifyDevLockObserver.onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
-      }
-    }
-  }
-  
-  public void setSeq(int paramInt)
-  {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null)
+      localLinkedHashMap.put("bundleid", paramAppRuntime);
+      localLinkedHashMap.put("skey", paramString1);
+      localLinkedHashMap.put("state", paramString3);
+      localLinkedHashMap.put("redirect_uri", paramString2);
+      paramString2 = localLinkedHashMap.entrySet().iterator();
+      while (paramString2.hasNext())
       {
-        localVerifyDevLockObserver.setSeq(paramInt);
-        return;
+        paramString3 = (Map.Entry)paramString2.next();
+        paramString1 = (String)paramString3.getValue();
+        paramAppRuntime = paramString1;
+        if (paramString1 == null) {
+          paramAppRuntime = "";
+        }
+        localStringBuilder.append((String)paramString3.getKey() + "=" + URLEncoder.encode(paramAppRuntime) + "&");
+      }
+      paramAppRuntime = localaxeh.jdField_b_of_type_JavaLangString;
+      break;
+    }
+    int i = localStringBuilder.length();
+    if (i > 0) {
+      localStringBuilder.delete(i - 1, i);
+    }
+    return localStringBuilder.toString();
+  }
+  
+  private void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "doAuthorize");
+    }
+    long l = Long.parseLong(this.jdField_a_of_type_Adnb.jdField_a_of_type_JavaLangString);
+    SdkAuthorize.AuthorizeRequest localAuthorizeRequest = new SdkAuthorize.AuthorizeRequest();
+    localAuthorizeRequest.client_id.set(l);
+    localAuthorizeRequest.need_pay.set(1);
+    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (bjlv)((Iterator)localObject1).next();
+      if (((bjlv)localObject2).jdField_a_of_type_Int > 0) {
+        localAuthorizeRequest.openapi.add(Integer.valueOf(((bjlv)localObject2).jdField_b_of_type_Int));
       }
     }
-    super.setSeq(paramInt);
+    localAuthorizeRequest.os.set(Build.VERSION.RELEASE + "|android os|" + Build.MODEL);
+    localAuthorizeRequest.qqv.set(bjjo.a().d());
+    localAuthorizeRequest.pf.set("openmobile_android");
+    localAuthorizeRequest.sdkp.set(adqf.a(this.jdField_a_of_type_Adnb.jdField_a_of_type_Int));
+    localAuthorizeRequest.sdkv.set("1.5.9");
+    localAuthorizeRequest.response_type.set("token");
+    if ((this.jdField_a_of_type_Adnb instanceof adni))
+    {
+      localObject1 = ((adni)this.jdField_a_of_type_Adnb).a();
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        localAuthorizeRequest.appUniqueIdentifier.set((String)localObject1);
+      }
+    }
+    localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject2 = ((AppRuntime)localObject1).getAccount();
+    Object localObject3 = ((TicketManager)((AppRuntime)localObject1).getManager(2)).getSkey((String)localObject2);
+    if (localObject3 != null) {
+      localAuthorizeRequest.skey.set((String)localObject3);
+    }
+    if ((this.jdField_a_of_type_Adnb instanceof adpb))
+    {
+      adpb localadpb = (adpb)this.jdField_a_of_type_Adnb;
+      if (localadpb.b)
+      {
+        localObject3 = a((AppRuntime)localObject1, (String)localObject3, localadpb.e, localadpb.d);
+        localAuthorizeRequest.passData.set((String)localObject3);
+      }
+    }
+    localObject3 = new NewIntent(BaseApplicationImpl.getApplication(), bjre.class);
+    ((NewIntent)localObject3).setWithouLogin(true);
+    ((NewIntent)localObject3).putExtra("uin", (String)localObject2);
+    ((NewIntent)localObject3).putExtra("data", localAuthorizeRequest.toByteArray());
+    ((NewIntent)localObject3).putExtra("cmd", "ConnAuthSvr.sdk_auth_api");
+    ((NewIntent)localObject3).setObserver(new ador(this, (String)localObject2));
+    ((AppRuntime)localObject1).startServlet((NewIntent)localObject3);
+  }
+  
+  private void a(String paramString)
+  {
+    String str = null;
+    axeh localaxeh = this.jdField_a_of_type_Adnb.a();
+    Object localObject;
+    if (localaxeh == null)
+    {
+      localObject = null;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        break label144;
+      }
+      localObject = BaseApplicationImpl.getApplication().getString(2131694173);
+    }
+    label144:
+    for (;;)
+    {
+      if (TextUtils.isEmpty(paramString))
+      {
+        a();
+        return;
+        localObject = localaxeh.jdField_b_of_type_JavaLangString;
+        break;
+      }
+      adnb localadnb = this.jdField_a_of_type_Adnb;
+      if (localaxeh == null) {}
+      for (;;)
+      {
+        localadnb.a((String)localObject, str, BaseApplicationImpl.getApplication().getString(2131694172, new Object[] { localObject }), paramString, BaseApplicationImpl.getApplication().getString(2131719323), new adoo(this), BaseApplicationImpl.getApplication().getString(2131719333), new adop(this), new adoq(this));
+        return;
+        str = localaxeh.c;
+      }
+    }
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "-->queryAuthority");
+    }
+    SdkAuthorize.GetAuthApiListRequest localGetAuthApiListRequest = new SdkAuthorize.GetAuthApiListRequest();
+    long l1 = 0L;
+    try
+    {
+      long l2 = Long.parseLong(this.jdField_a_of_type_Adnb.jdField_a_of_type_JavaLangString);
+      l1 = l2;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        String str2;
+        Object localObject2;
+        Object localObject1;
+        String str3;
+        PBStringField localPBStringField;
+        continue;
+        String str1 = "all";
+      }
+    }
+    localGetAuthApiListRequest.client_id.set(l1);
+    localGetAuthApiListRequest.os.set(Build.VERSION.RELEASE + "|android os|" + Build.MODEL);
+    str2 = bjjo.a().d();
+    localObject2 = localGetAuthApiListRequest.qqv;
+    localObject1 = str2;
+    if (str2 == null) {
+      localObject1 = "";
+    }
+    ((PBStringField)localObject2).set((String)localObject1);
+    localGetAuthApiListRequest.pf.set("openmobile_android");
+    if (((this.jdField_a_of_type_Adnb instanceof adpb)) && (((adpb)this.jdField_a_of_type_Adnb).b))
+    {
+      localObject1 = "all" + ",server_side";
+      localGetAuthApiListRequest.scope.set((String)localObject1);
+      localGetAuthApiListRequest.sdkp.set(adqf.a(this.jdField_a_of_type_Adnb.jdField_a_of_type_Int));
+      localGetAuthApiListRequest.sdkv.set("1.5.9");
+      localGetAuthApiListRequest.need_pay.set(1);
+      if ((this.jdField_a_of_type_Adnb instanceof adni))
+      {
+        localObject1 = ((adni)this.jdField_a_of_type_Adnb).a();
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          localGetAuthApiListRequest.appUniqueIdentifier.set((String)localObject1);
+        }
+      }
+      localObject2 = BaseApplicationImpl.getApplication().getRuntime();
+      str3 = ((AppRuntime)localObject2).getAccount();
+      str2 = ((TicketManager)((AppRuntime)localObject2).getManager(2)).getSkey(str3);
+      localPBStringField = localGetAuthApiListRequest.skey;
+      localObject1 = str2;
+      if (str2 == null) {
+        localObject1 = "";
+      }
+      localPBStringField.set((String)localObject1);
+      localObject1 = new NewIntent(BaseApplicationImpl.getApplication(), bjre.class);
+      ((NewIntent)localObject1).setWithouLogin(true);
+      ((NewIntent)localObject1).putExtra("uin", str3);
+      ((NewIntent)localObject1).putExtra("data", localGetAuthApiListRequest.toByteArray());
+      ((NewIntent)localObject1).putExtra("cmd", "ConnAuthSvr.get_auth_api_list");
+      ((NewIntent)localObject1).setObserver(new adon(this, str3, paramBoolean));
+      ((AppRuntime)localObject2).startServlet((NewIntent)localObject1);
+      return;
+    }
+  }
+  
+  private boolean a(SdkAuthorize.GetAuthApiListResponse paramGetAuthApiListResponse)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    paramGetAuthApiListResponse = paramGetAuthApiListResponse.authorized_form_list.get().iterator();
+    while (paramGetAuthApiListResponse.hasNext())
+    {
+      appType.AuthItem localAuthItem = (appType.AuthItem)paramGetAuthApiListResponse.next();
+      if (localAuthItem.is_new.get() != 0)
+      {
+        bjlv localbjlv = new bjlv();
+        localbjlv.jdField_b_of_type_JavaLangString = localAuthItem.api_list.get();
+        localbjlv.jdField_a_of_type_Int = localAuthItem.default_flag.get();
+        localbjlv.jdField_b_of_type_Int = localAuthItem.id.get();
+        if (localAuthItem.is_new.get() != 0) {}
+        for (boolean bool = true;; bool = false)
+        {
+          localbjlv.jdField_a_of_type_Boolean = bool;
+          localbjlv.jdField_a_of_type_JavaLangString = localAuthItem.title.get();
+          this.jdField_a_of_type_JavaUtilList.add(localbjlv);
+          break;
+        }
+      }
+    }
+    return this.jdField_a_of_type_JavaUtilList.isEmpty();
+  }
+  
+  private void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "openBrowserForRedirect: invoked.  url: " + paramString);
+    }
+    Object localObject = this.jdField_a_of_type_Adnb.a();
+    if ((localObject != null) && ((this.jdField_a_of_type_Adnb instanceof adpb)) && ((localObject instanceof binz)))
+    {
+      localObject = ((binz)localObject).a();
+      if (localObject != null) {
+        ((WebViewFragment)localObject).webView.loadUrl(paramString);
+      }
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject, admy paramadmy, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Admy = paramadmy;
+    if (this.jdField_a_of_type_Int != 0) {
+      return;
+    }
+    a(paramBoolean);
   }
 }
 

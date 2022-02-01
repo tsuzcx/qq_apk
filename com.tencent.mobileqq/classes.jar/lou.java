@@ -1,40 +1,42 @@
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-class lou
-  implements bdvw
+public abstract interface lou
 {
-  public void onResp(bdwt parambdwt)
-  {
-    Object localObject = (lov)parambdwt.jdField_a_of_type_Bdws.a();
-    lbc.c("EffectBeautyTools", "download file call back. file = " + ((lov)localObject).a);
-    if (parambdwt.jdField_a_of_type_Int != 0)
-    {
-      lbc.c("EffectBeautyTools", "download file faild. errcode = " + parambdwt.b);
-      return;
-    }
-    if (!((lov)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(parambdwt.jdField_a_of_type_Bdws.c)))
-    {
-      lbc.c("EffectBeautyTools", "download file faild : md5 is not match.");
-      bgmg.d(parambdwt.jdField_a_of_type_Bdws.c);
-      return;
-    }
-    lbc.c("EffectBeautyTools", "download file successed.");
-    try
-    {
-      localObject = lbf.h();
-      bgmg.a(parambdwt.jdField_a_of_type_Bdws.c, (String)localObject, false);
-      bgmg.d(parambdwt.jdField_a_of_type_Bdws.c);
-      return;
-    }
-    catch (IOException parambdwt)
-    {
-      parambdwt.printStackTrace();
-      lbc.c("EffectBeautyTools", "unzip file faild.");
-    }
-  }
+  public abstract int a(int paramInt, boolean paramBoolean1, lpp paramlpp, boolean paramBoolean2);
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(PendantItem paramPendantItem, VideoMaterial paramVideoMaterial);
+  
+  public abstract void a(FilterDesc paramFilterDesc);
+  
+  public abstract void a(lpj paramlpj, lpp paramlpp);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(lpa paramlpa);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt1, int paramInt2);
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
 }
 
 

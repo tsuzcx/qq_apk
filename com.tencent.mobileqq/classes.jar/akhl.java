@@ -1,34 +1,25 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
-
 class akhl
-  extends ayev
+  extends anuw
 {
-  akhl(akhj paramakhj) {}
+  akhl(akha paramakha) {}
   
-  protected void c(boolean paramBoolean, Bundle paramBundle)
+  protected void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp)))
-    {
-      long l = ((get_albumlist_num_rsp)paramBundle).album_num;
-      ((akib)this.a.mOtherCommonData).jdField_a_of_type_Long = l;
-      paramBundle = this.a.a();
-      if (paramBundle != null)
-      {
-        paramBundle.a(((akib)this.a.mOtherCommonData).jdField_a_of_type_Long);
-        paramBundle.postData();
-      }
+    if (paramBoolean1) {
+      this.a.e();
     }
-    ((akib)this.a.mOtherCommonData).jdField_a_of_type_Boolean = false;
-    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.a.a);
+  }
+  
+  protected void onGetSignInInfo(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhl
  * JD-Core Version:    0.7.0.1
  */

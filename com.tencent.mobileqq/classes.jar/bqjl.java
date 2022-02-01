@@ -1,221 +1,274 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import android.os.Environment;
-import android.os.StatFs;
-import android.text.TextUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.animation.ValueAnimator;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.PointF;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.view.animation.LinearInterpolator;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
 public class bqjl
+  extends bqrk
 {
-  public static long a;
-  static bqjl jdField_a_of_type_Bqjl;
-  static final Object jdField_a_of_type_JavaLangObject = new Object();
-  public static long b;
-  final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bqjm(this);
-  bqjn jdField_a_of_type_Bqjn;
-  public String a;
-  HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  boolean jdField_a_of_type_Boolean;
-  public String b;
-  long c = 0L;
+  public long a;
+  public Bitmap a;
+  public RectF a;
+  public Drawable a;
+  public TroopBarPOI a;
+  public boolean b;
+  public boolean c;
+  public final String d;
+  public int e;
+  public final String e;
+  public int f;
+  public final String f;
+  public int g;
+  public String g;
+  public int h;
   
-  static
+  public bqjl(bqjh parambqjh, @NonNull Drawable paramDrawable, @NonNull bqjp parambqjp, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    jdField_a_of_type_Long = 57671680L;
-    jdField_b_of_type_Long = 209715200L;
+    super(parambqjp.jdField_a_of_type_AndroidGraphicsPointF, parambqjp.jdField_a_of_type_Float, parambqjp.jdField_b_of_type_Float, parambqjp.c, parambqjp.d, parambqjp.jdField_a_of_type_Int, parambqjp.jdField_b_of_type_Int, true);
+    this.jdField_e_of_type_Int = 1;
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_d_of_type_JavaLangString = paramString1;
+    this.jdField_e_of_type_JavaLangString = paramString2;
+    this.jdField_f_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramDrawable.getBounds());
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_h_of_type_Int = paramInt;
   }
   
-  bqjl()
+  public bqjl(bqjh parambqjh, @NonNull Drawable paramDrawable, @NonNull bqjp parambqjp, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    b();
-    a();
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.intent.action.MEDIA_BAD_REMOVAL");
-    localIntentFilter.addAction("android.intent.action.MEDIA_EJECT");
-    localIntentFilter.addAction("android.intent.action.MEDIA_MOUNTED");
-    localIntentFilter.addAction("android.intent.action.MEDIA_REMOVED");
-    localIntentFilter.addAction("android.intent.action.MEDIA_UNMOUNTED");
-    localIntentFilter.addDataScheme("file");
-    VideoEnvironment.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    this.jdField_a_of_type_Boolean = true;
+    this(parambqjh, paramDrawable, parambqjp, paramString1, paramString2, paramString3, paramInt1);
+    this.jdField_f_of_type_Int = paramInt2;
   }
   
-  public static long a(String paramString)
+  private void b(Canvas paramCanvas)
   {
-    try
+    paramCanvas.save();
+    int i;
+    label35:
+    int k;
+    label47:
+    int j;
+    if (this.jdField_k_of_type_Int == 0)
     {
-      paramString = new StatFs(paramString);
-      long l = paramString.getAvailableBlocks();
-      int i = paramString.getBlockSize();
-      return i * l;
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("StorageManager", 2, "getFreeSpace throw an Exception!", paramString);
+      i = 2130844640;
+      if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isDataLocked())
+      {
+        if (this.jdField_k_of_type_Int != 0) {
+          break label114;
+        }
+        i = 2130844648;
       }
-    }
-    return 0L;
-  }
-  
-  public static bqjl a()
-  {
-    if (jdField_a_of_type_Bqjl == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Bqjl == null) {
-        jdField_a_of_type_Bqjl = new bqjl();
+      if (this.jdField_k_of_type_Int != 1) {
+        break label120;
       }
-      return jdField_a_of_type_Bqjl;
+      k = 2130844638;
+      if (this.jdField_k_of_type_Int != 2) {
+        break label127;
+      }
+      j = 2130844645;
+      label58:
+      if (this.n) {
+        i = -1;
+      }
+      if (!bqjh.d(this.jdField_b_of_type_Bqjh).a.e()) {
+        break label133;
+      }
+      j = -1;
+      i = -1;
     }
-  }
-  
-  /* Error */
-  static boolean a(String paramString)
-  {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_1
-    //   2: invokestatic 132	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   5: invokevirtual 136	java/lang/Thread:getId	()J
-    //   8: lstore_2
-    //   9: new 138	java/io/File
-    //   12: dup
-    //   13: new 140	java/lang/StringBuilder
-    //   16: dup
-    //   17: invokespecial 141	java/lang/StringBuilder:<init>	()V
-    //   20: aload_0
-    //   21: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: ldc 147
-    //   26: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: lload_2
-    //   30: invokevirtual 150	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   33: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   36: invokespecial 155	java/io/File:<init>	(Ljava/lang/String;)V
-    //   39: astore_0
-    //   40: aload_0
-    //   41: invokevirtual 158	java/io/File:exists	()Z
-    //   44: ifeq +22 -> 66
-    //   47: aload_0
-    //   48: invokevirtual 161	java/io/File:delete	()Z
-    //   51: ifeq +8 -> 59
-    //   54: aload_0
-    //   55: invokevirtual 164	java/io/File:createNewFile	()Z
-    //   58: istore_1
-    //   59: aload_0
-    //   60: invokevirtual 161	java/io/File:delete	()Z
-    //   63: pop
-    //   64: iload_1
-    //   65: ireturn
-    //   66: aload_0
-    //   67: invokevirtual 164	java/io/File:createNewFile	()Z
-    //   70: istore_1
-    //   71: goto -12 -> 59
-    //   74: astore 4
-    //   76: aload 4
-    //   78: invokevirtual 167	java/lang/Throwable:printStackTrace	()V
-    //   81: aload_0
-    //   82: invokevirtual 161	java/io/File:delete	()Z
-    //   85: pop
-    //   86: iconst_0
-    //   87: ireturn
-    //   88: astore 4
-    //   90: aload_0
-    //   91: invokevirtual 161	java/io/File:delete	()Z
-    //   94: pop
-    //   95: aload 4
-    //   97: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	98	0	paramString	String
-    //   1	70	1	bool	boolean
-    //   8	22	2	l	long
-    //   74	3	4	localThrowable	Throwable
-    //   88	8	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   40	47	74	java/lang/Throwable
-    //   47	59	74	java/lang/Throwable
-    //   66	71	74	java/lang/Throwable
-    //   40	47	88	finally
-    //   47	59	88	finally
-    //   66	71	88	finally
-    //   76	81	88	finally
-  }
-  
-  void a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    label133:
     for (;;)
     {
+      bqrh.a(paramCanvas, this.jdField_b_of_type_Bqjh.jdField_a_of_type_Bqrj, this, i, k, j);
+      paramCanvas.restore();
       return;
-      this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "/Android/data/com.tencent.mobileqq/qq/video");
-      if (QLog.isColorLevel())
-      {
-        QLog.e("TAG", 2, "updateStorePath:storeVideoPath=" + this.jdField_b_of_type_JavaLangString);
-        QLog.e("TAG", 2, "updateStorePath:maxAvailableSizePath=" + this.jdField_a_of_type_JavaLangString);
-      }
-      try
-      {
-        File localFile = new File(this.jdField_b_of_type_JavaLangString);
-        if (!localFile.exists())
-        {
-          localFile.mkdirs();
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        this.jdField_a_of_type_JavaLangString = null;
-      }
+      i = 2130844639;
+      break;
+      label114:
+      i = 2130844646;
+      break label35;
+      label120:
+      k = 2130844637;
+      break label47;
+      label127:
+      j = 2130844644;
+      break label58;
     }
   }
   
-  void b()
+  public String a()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI.a();
+    }
+    return "";
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    if ((!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isInSegment(bqjh.c(this.jdField_b_of_type_Bqjh).a())) && (!this.jdField_k_of_type_Boolean)) {}
+    do
     {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_a_of_type_JavaLangString = "";
-      this.c = 0L;
-      Object localObject1 = Environment.getExternalStorageDirectory().getAbsolutePath();
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsValue(localObject1)) {
-        this.jdField_a_of_type_JavaUtilHashMap.put("external_card", localObject1);
+      return;
+      float f2 = this.u;
+      float f1 = this.v;
+      if (f2 * this.q < 200.0F) {
+        f2 = 200.0F / this.q;
       }
-      localObject1 = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      for (;;)
+      if (this.q * f1 < 200.0F) {
+        f1 = 200.0F / this.q;
+      }
+      if ((this.jdField_d_of_type_Boolean) && (this.jdField_k_of_type_Boolean))
       {
-        if (((Iterator)localObject1).hasNext())
+        if ((this.jdField_g_of_type_Boolean) && (this.jdField_h_of_type_Boolean))
         {
-          String str = (String)((Iterator)localObject1).next();
-          try
-          {
-            Object localObject3 = new File(str);
-            if ((((File)localObject3).exists()) && (((File)localObject3).canWrite()) && (a(str)))
-            {
-              localObject3 = new StatFs(str);
-              long l = ((StatFs)localObject3).getAvailableBlocks() * ((StatFs)localObject3).getBlockSize();
-              if ((l > 0L) && (this.c < l))
-              {
-                this.c = l;
-                this.jdField_a_of_type_JavaLangString = str;
-              }
-            }
-          }
-          catch (Throwable localThrowable)
-          {
-            localThrowable.printStackTrace();
-          }
+          f1 = this.l;
+          f2 = this.jdField_j_of_type_Float;
+          float f3 = this.m;
+          float f4 = this.jdField_k_of_type_Float;
+          float f5 = this.jdField_b_of_type_AndroidGraphicsPointF.x;
+          float f6 = this.s;
+          float f7 = this.jdField_b_of_type_AndroidGraphicsPointF.y;
+          paramCanvas.drawLine(f2 + f1, f4 + f3, f6 + f5, this.t + f7, this.jdField_b_of_type_Bqjh.e);
+          paramCanvas.save();
+          paramCanvas.concat(this.jdField_b_of_type_Bqjh.jdField_a_of_type_Bqrj.b(this));
+          int i = (int)(this.u * this.q * this.w) + this.jdField_j_of_type_Int * 2;
+          int j = (int)(this.v * this.q * this.w) + this.jdField_j_of_type_Int * 2;
+          paramCanvas.drawRect(new RectF(-i / 2, -j / 2, i / 2, j / 2), this.jdField_b_of_type_Bqjh.f);
+          paramCanvas.restore();
+        }
+        if (this.jdField_g_of_type_Boolean) {
+          paramCanvas.drawColor(Color.parseColor("#66000000"));
         }
       }
+      paramCanvas.save();
+      paramCanvas.concat(this.jdField_b_of_type_Bqjh.jdField_a_of_type_Bqrj.a(this));
+      paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      paramCanvas.restore();
+      this.jdField_b_of_type_Bqjh.jdField_a_of_type_Bqrj.b(this);
+    } while (!this.jdField_k_of_type_Boolean);
+    b(paramCanvas);
+  }
+  
+  public void a(Canvas paramCanvas, boolean paramBoolean)
+  {
+    if ((!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isInSegment(bqjh.e(this.jdField_b_of_type_Bqjh).a())) && (!this.jdField_k_of_type_Boolean)) {
+      return;
+    }
+    float f2 = this.u;
+    float f1 = this.v;
+    if (f2 * this.q < 200.0F) {
+      f2 = 200.0F / this.q;
+    }
+    if (this.q * f1 < 200.0F) {
+      f1 = 200.0F / this.q;
+    }
+    if (this.jdField_f_of_type_Boolean) {
+      paramCanvas.drawColor(Color.parseColor("#66000000"));
+    }
+    paramCanvas.save();
+    paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
+    this.jdField_b_of_type_Bqjh.jdField_a_of_type_Bqrj.b(this);
+    if ((this.jdField_f_of_type_Boolean) && (this.jdField_h_of_type_Int == 0))
+    {
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap = bqjh.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      }
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap.extractAlpha(this.jdField_b_of_type_Bqjh.g, null), null, new Rect((int)-this.p, (int)-this.p, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + (int)this.p, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() + (int)this.p), this.jdField_b_of_type_Bqjh.g);
+    }
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public void a(TroopBarPOI paramTroopBarPOI)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI = paramTroopBarPOI;
+    if (paramTroopBarPOI != null)
+    {
+      a(paramTroopBarPOI.a());
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      return;
+    }
+    a(null);
+    this.jdField_a_of_type_Long = -1L;
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    {
+      if (!(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof bqqu)) {
+        break label68;
+      }
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bqpb.a((bqqu)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_b_of_type_Bqjh.jdField_a_of_type_AndroidContentContext, paramString);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+        this.jdField_g_of_type_JavaLangString = ((bqqu)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).c();
+      }
+    }
+    while (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
+    {
+      return;
+      label68:
+      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof BitmapDrawable)) {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bqpb.a(this.jdField_g_of_type_JavaLangString, this.jdField_b_of_type_Bqjh.jdField_a_of_type_AndroidContentContext, paramString);
+      }
+    }
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
+    float f1 = this.jdField_b_of_type_AndroidGraphicsPointF.x - this.q * this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth() / 2.0F + this.s;
+    if (f1 < brkm.a(23.0F)) {
+      this.jdField_b_of_type_AndroidGraphicsPointF.x = (this.jdField_b_of_type_AndroidGraphicsPointF.x - f1 + brkm.a(23.0F));
+    }
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(bqjh.f(this.jdField_b_of_type_Bqjh));
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds());
+    this.u = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+    this.v = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+    ((bpqh)bplq.a(4)).a(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_c_of_type_AndroidAnimationValueAnimator == null)
+    {
+      this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.85F, 1.0F });
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(200L);
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bqjm(this));
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new bqjn(this));
+    }
+    if (!this.jdField_j_of_type_Boolean) {
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.start();
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_c_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_j_of_type_Boolean)) {
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.cancel();
     }
   }
 }

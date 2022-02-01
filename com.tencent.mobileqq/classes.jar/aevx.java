@@ -1,22 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.34.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aevx
-  extends Handler
+  extends axuu
 {
-  public aevx(QQBroadcastActivity paramQQBroadcastActivity) {}
+  public aevx(Leba paramLeba) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.redpoint", 2, "NearbyEnterUpdateObserver onReceive");
     }
-    do
-    {
+    if (Leba.a(this.a) == null) {
       return;
-    } while (this.a.a == null);
-    this.a.a.changeCursor(this.a.a());
+    }
+    this.a.a.post(new Leba.34.1(this));
   }
 }
 

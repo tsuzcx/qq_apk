@@ -1,35 +1,28 @@
-import android.graphics.Matrix;
-import android.graphics.Path;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class zaz
-  extends zan
+class zaz
+  extends AnimatorListenerAdapter
 {
-  public Path a;
-  public int b;
-  public int c;
+  zaz(zax paramzax) {}
   
-  public zaz(Path paramPath, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    yuk.b("FaceLayer", "scaleAnimator cancel!");
   }
   
-  public zaz(zan paramzan, float paramFloat)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramzan.jdField_a_of_type_Int);
-    if ((paramzan instanceof zaz))
-    {
-      paramzan = (zaz)paramzan;
-      Matrix localMatrix = new Matrix();
-      localMatrix.postScale(paramFloat, paramFloat);
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramzan.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
-      this.jdField_a_of_type_Int = paramzan.jdField_a_of_type_Int;
-      this.b = paramzan.b;
-      this.c = ((int)(paramzan.c * paramFloat));
-    }
+    yuk.b("FaceLayer", "scaleAnimator end!");
+    this.a.p = 1.0F;
+    this.a.c = false;
+    this.a.b.g();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    yuk.b("FaceLayer", "scaleAnimator start!");
+    this.a.c = true;
   }
 }
 

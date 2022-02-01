@@ -1,126 +1,41 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.ttpic.baseutils.log.LogUtils;
-import java.util.List;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qidian.proto.mobileqq_qidian.GroupItem;
 
 public class bkif
 {
-  public static Dialog a(Context paramContext, View paramView)
+  public int a;
+  public long a;
+  public String a;
+  
+  public bkif() {}
+  
+  public bkif(mobileqq_qidian.GroupItem paramGroupItem)
   {
-    return a(paramContext, paramView, -1, null);
+    a(paramGroupItem);
   }
   
-  public static Dialog a(Context paramContext, View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
+  public mobileqq_qidian.GroupItem a()
   {
-    paramContext = bkho.a(paramContext, paramInt, paramLayoutParams);
-    paramContext.a(paramView, null);
-    return paramContext;
+    mobileqq_qidian.GroupItem localGroupItem = new mobileqq_qidian.GroupItem();
+    localGroupItem.uint64_groupid.set(this.jdField_a_of_type_Long);
+    localGroupItem.uint32_group_level.set(this.jdField_a_of_type_Int);
+    localGroupItem.str_group_name.set(this.jdField_a_of_type_JavaLangString);
+    return localGroupItem;
   }
   
-  public static bkho a(Context paramContext, bkho parambkho, List<bkhn> paramList, bkhw parambkhw)
+  public void a(mobileqq_qidian.GroupItem paramGroupItem)
   {
-    if ((paramContext == null) || (paramList == null) || (paramList.size() <= 0)) {
-      return null;
+    if (paramGroupItem.uint64_groupid.has()) {
+      this.jdField_a_of_type_Long = paramGroupItem.uint64_groupid.get();
     }
-    int i;
-    if (parambkho == null)
-    {
-      parambkho = (bkho)a(paramContext, null);
-      i = 0;
-      label35:
-      if (i >= paramList.size()) {
-        break label116;
-      }
-      paramContext = (bkhn)paramList.get(i);
-      if (paramContext.d == 0)
-      {
-        if (paramContext.a != 1) {
-          break label99;
-        }
-        parambkho.a(paramContext, 1);
-      }
+    if (paramGroupItem.uint32_group_level.has()) {
+      this.jdField_a_of_type_Int = paramGroupItem.uint32_group_level.get();
     }
-    for (;;)
-    {
-      i += 1;
-      break label35;
-      parambkho.c();
-      parambkho.a();
-      break;
-      label99:
-      if (paramContext.a == 2) {
-        parambkho.a(paramContext, 3);
-      }
+    if (paramGroupItem.str_group_name.has()) {
+      this.jdField_a_of_type_JavaLangString = paramGroupItem.str_group_name.get();
     }
-    label116:
-    parambkho.a(parambkhw);
-    return parambkho;
-  }
-  
-  public static bkho a(Context paramContext, List<bkhn> paramList, bkhw parambkhw)
-  {
-    return a(paramContext, null, paramList, parambkhw);
-  }
-  
-  public static String a(Context paramContext, int paramInt)
-  {
-    if (paramContext == null) {
-      return null;
-    }
-    return paramContext.getString(paramInt);
-  }
-  
-  public static void a(Activity paramActivity, bkho parambkho)
-  {
-    if ((paramActivity == null) || (parambkho == null)) {
-      return;
-    }
-    try
-    {
-      if (!paramActivity.isFinishing())
-      {
-        parambkho.show();
-        return;
-      }
-    }
-    catch (Exception paramActivity)
-    {
-      paramActivity.printStackTrace();
-      return;
-    }
-    LogUtils.e("ActionSheetHelper", "showActionSheet when activity(" + paramActivity + ") is finish!");
-  }
-  
-  public static Dialog b(Context paramContext, View paramView)
-  {
-    paramContext = bkho.b(paramContext);
-    paramContext.a(paramView, new LinearLayout.LayoutParams(-1, -1));
-    return paramContext;
-  }
-  
-  public static void b(Activity paramActivity, bkho parambkho)
-  {
-    if ((paramActivity == null) || (parambkho == null)) {
-      return;
-    }
-    try
-    {
-      if (!paramActivity.isFinishing())
-      {
-        parambkho.dismiss();
-        return;
-      }
-    }
-    catch (Exception paramActivity)
-    {
-      paramActivity.printStackTrace();
-      return;
-    }
-    LogUtils.e("ActionSheetHelper", "dismissActionSheet when activity(" + paramActivity + ") is finish!");
   }
 }
 

@@ -1,41 +1,53 @@
-import android.app.Activity;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0x87a.RspBody;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class avet
-  extends ayeu
+public class avet
+  implements View.OnClickListener
 {
-  avet(Activity paramActivity, String paramString, Runnable paramRunnable) {}
+  public avet(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void onClick(View paramView)
   {
-    QLog.e("FaceLoginHelper", 1, new Object[] { "cmd : ", paramString1, " code : ", Integer.valueOf(paramInt), " message : ", paramString2 });
-    if (paramInt == 89) {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131698000), 0).a();
+    Object localObject2 = (String)axws.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin(), "nearby_mine_page_url", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.NearbyHybridFragment", 2, "onClick, server mine url=" + (String)localObject2);
+    }
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = "https://nearby.qq.com/nearby-index/mine.html?_bid=3027&_wv=16777218";
+    }
+    localObject2 = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, QQBrowserActivity.class);
+    ((Intent)localObject2).putExtra("url", (String)localObject1);
+    this.a.getActivity().startActivity((Intent)localObject2);
+    axxb.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "my_click", 0);
+    boolean bool;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch == null) {
+      bool = false;
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_JavaLangRunnable.run();
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a().a(42);
+      try
+      {
+        bdll.b(null, "dc00899", "grp_lbs", "", "entry", "nearby_frag_mine_click_tmp", 0, 0, bool + "", "", "", "");
+        label188:
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        bool = this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.b();
       }
-      return;
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, 0).a();
-    }
-  }
-  
-  public void a(oidb_0x87a.RspBody paramRspBody)
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, AuthDevVerifyCodeActivity.class);
-    localIntent.putExtra("k_from", "f_SetFaceData");
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (paramRspBody = "";; paramRspBody = this.jdField_a_of_type_JavaLangString)
-    {
-      localIntent.putExtra("phone_num", paramRspBody);
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 11);
-      return;
+      catch (Exception localException)
+      {
+        break label188;
+      }
     }
   }
 }

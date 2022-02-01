@@ -1,80 +1,58 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import com.tencent.mobileqq.resourcesgrab.ResourceGrabFragment;
+import com.tencent.mobileqq.resourcesgrab.ResourceGrabView;
 import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
 public class bbdt
+  implements Application.ActivityLifecycleCallbacks
 {
-  public static final String a;
+  public bbdt(ResourceGrabView paramResourceGrabView) {}
   
-  static
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    jdField_a_of_type_JavaLangString = anni.a(2131713717);
-  }
-  
-  private static void a(BaseChatPie paramBaseChatPie, long paramLong, String paramString)
-  {
-    MessageForText localMessageForText = new MessageForText();
-    localMessageForText.selfuin = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localMessageForText.frienduin = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    localMessageForText.istroop = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-    localMessageForText.senderuin = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if (paramLong != 0L) {}
-    for (;;)
-    {
-      localMessageForText.time = paramLong;
-      localMessageForText.msg = paramString;
-      localMessageForText.uniseq = 0L;
-      localMessageForText.msgUid = -1L;
-      localMessageForText.shmsgseq = 1L;
-      localMessageForText.sb = paramString;
-      paramBaseChatPie.d(localMessageForText);
-      return;
-      paramLong = NetConnInfoCenter.getServerTime();
-    }
-  }
-  
-  public static final boolean a(BaseChatPie paramBaseChatPie, Intent paramIntent)
-  {
-    paramIntent.getStringExtra("key_aio_reply_time");
-    String str = paramIntent.getStringExtra("key_aio_reply_content");
-    paramIntent.getIntExtra("key_aio_reply_type", 0);
-    return (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString));
-  }
-  
-  public static final boolean b(BaseChatPie paramBaseChatPie, Intent paramIntent)
-  {
-    String str2 = paramIntent.getStringExtra("key_aio_reply_time");
-    String str1 = paramIntent.getStringExtra("key_aio_reply_content");
-    int i = paramIntent.getIntExtra("key_aio_reply_type", 0);
-    if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
-      return false;
-    }
-    long l1 = 0L;
-    try
-    {
-      long l2 = Long.valueOf(str2).longValue();
-      l1 = l2;
-    }
-    catch (Exception paramIntent)
-    {
-      label62:
-      break label62;
-    }
     if (QLog.isColorLevel()) {
-      QLog.i("TopicReplyUtil", 2, String.format("checkAIOReplyNInsert [%s, %d, %s]", new Object[] { paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, Long.valueOf(l1), str1 }));
+      QLog.d("ResourceGrabView", 2, "onActivityCreated activity: " + paramActivity);
     }
-    paramIntent = str1;
-    if (i == 0) {
-      paramIntent = jdField_a_of_type_JavaLangString + str1;
-    }
-    a(paramBaseChatPie, l1, paramIntent);
-    return true;
+    ResourceGrabView.a(this.a, new WeakReference(paramActivity));
   }
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ResourceGrabView", 2, "onActivityDestroyed activity: " + paramActivity);
+    }
+    if ((paramActivity instanceof FragmentActivity))
+    {
+      paramActivity = ((FragmentActivity)paramActivity).getSupportFragmentManager().findFragmentByTag("ResourceGrabFragment");
+      if ((paramActivity instanceof ResourceGrabFragment)) {
+        ((ResourceGrabFragment)paramActivity).d();
+      }
+    }
+    ResourceGrabView.a(this.a, null);
+  }
+  
+  public void onActivityPaused(Activity paramActivity) {}
+  
+  public void onActivityResumed(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ResourceGrabView", 2, "onActivityResumed activity: " + paramActivity);
+    }
+    ResourceGrabView.a(this.a, new WeakReference(paramActivity));
+    this.a.a(ResourceGrabView.a(this.a));
+    ResourceGrabView.a(this.a);
+  }
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity) {}
+  
+  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

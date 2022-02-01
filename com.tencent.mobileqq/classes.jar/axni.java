@@ -1,17 +1,42 @@
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardFragment.ReportRunnable;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
-final class axni
-  implements TVK_ICacheMgr.IPreloadCallback
+public class axni
+  implements axmk
 {
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i("VideoPlayerView", 2, "onPreLoadFailed() called with: s = [" + paramString1 + "], i = [" + paramInt + "], s1 = [" + paramString2 + "]");
-  }
+  public axni(MultiCardFragment paramMultiCardFragment) {}
   
-  public void onPreLoadSucess(String paramString1, String paramString2)
+  public void a(int paramInt)
   {
-    QLog.i("VideoPlayerView", 2, "onPreLoadSucess() called with: s = [" + paramString1 + "], s1 = [" + paramString2 + "]");
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "Indicator onPageScrollStateChanged() called with: state = [" + paramInt + "]");
+    }
+    switch (paramInt)
+    {
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return;
+          MultiCardFragment.a(this.a);
+          MultiCardFragment.a(this.a, true);
+        } while ((MultiCardFragment.a(this.a) == null) || (MultiCardFragment.a(this.a).a() <= MultiCardFragment.a(this.a).a()));
+        MultiCardFragment.a(this.a).b(MultiCardFragment.a(this.a).a());
+        MultiCardFragment.a(this.a).a();
+        return;
+        MultiCardFragment.b(this.a, true);
+        MultiCardFragment.a(this.a, false);
+      } while (MultiCardFragment.a(this.a) == null);
+      MultiCardFragment.a(this.a, MultiCardFragment.a(this.a).a());
+      return;
+    }
+    MultiCardFragment.b(this.a, true);
+    MultiCardFragment.a(this.a, false);
   }
 }
 

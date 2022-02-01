@@ -1,72 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.abtest.ABTestController;
-import com.tencent.mobileqq.abtest.ABTestController.EvtType;
-import com.tencent.mtt.abtestsdk.ABTestApi;
-import com.tencent.mtt.abtestsdk.entity.RomaExpEntity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CustomFace;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class adhi
+  extends adic
 {
-  public RomaExpEntity a;
-  public String a;
-  public String b = "";
-  
-  public adhi(String paramString)
+  public int a()
   {
-    this(paramString, "");
+    return 1000;
   }
   
-  private adhi(String paramString1, String paramString2)
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity = ABTestApi.syncGetExpByName(paramString1);
-    if (this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity != null) {
-      ABTestController.a("ExperimentInfo", "abtest api, load exp success:" + paramString1 + ", ass:" + this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getAssignment());
-    }
-    for (;;)
-    {
-      ABTestController.a("ExperimentInfo", "abtest api, load cost:" + (System.currentTimeMillis() - l));
-      return;
-      ABTestController.a("ExperimentInfo", "abtest api, load exp failure:" + paramString1);
-    }
+    new bcrt().a(paramList, paramList1, paramStringBuilder, paramMsg, paramBoolean2);
+    return true;
   }
   
-  public void a(ABTestController.EvtType paramEvtType, String paramString)
+  public boolean a(im_msg_body.Elem paramElem)
   {
-    if (a()) {
-      ABTestController.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getGrayId(), paramEvtType, paramString);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (a())
-    {
-      ABTestApi.reportExpExpose(this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity);
-      a(ABTestController.EvtType.EXPOSE, paramString);
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getAssignment()));
-  }
-  
-  public boolean b()
-  {
-    if (a()) {
-      return "treatment".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getAssignment());
-    }
-    return false;
-  }
-  
-  public boolean c()
-  {
-    if (a()) {
-      return "control".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMttAbtestsdkEntityRomaExpEntity.getAssignment());
-    }
-    return false;
+    return paramElem.hc_flash_pic.has();
   }
 }
 

@@ -1,279 +1,119 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ListView;
+import java.net.URL;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class puf
-  extends ptx
 {
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private pup jdField_a_of_type_Pup;
-  private boolean b;
-  
-  private BaseArticleInfo a(int paramInt)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    return a().b(paramInt);
-  }
-  
-  public static void a(Context paramContext, ImageView paramImageView, sey paramsey)
-  {
-    if (paramImageView == null) {
-      return;
-    }
-    ViewGroup.LayoutParams localLayoutParams = paramImageView.getLayoutParams();
-    localLayoutParams.width = ((int)pgk.a(paramContext, paramsey));
-    paramImageView.setLayoutParams(localLayoutParams);
-  }
-  
-  public static void a(View paramView)
-  {
-    if (paramView == null) {}
-    View localView2;
-    do
+    Object localObject3 = null;
+    JSONObject localJSONObject = new JSONObject();
+    puo.a(paramBaseArticleInfo, localJSONObject, true);
+    tqa.b(paramBaseArticleInfo, localJSONObject);
+    tqa.a(paramBaseArticleInfo, localJSONObject);
+    tqa.c(paramBaseArticleInfo, localJSONObject);
+    puo.l(paramBaseArticleInfo, localJSONObject);
+    puo.e(paramBaseArticleInfo, localJSONObject);
+    puo.g(paramBaseArticleInfo, localJSONObject);
+    puo.Z(paramBaseArticleInfo, localJSONObject);
+    localJSONObject.put("style_ID", "ReadInjoy_ad_triple_img_cell");
+    puo.a(localJSONObject, paramBaseArticleInfo);
+    Object localObject1;
+    Object localObject2;
+    label146:
+    Object localObject4;
+    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
     {
-      return;
-      View localView1 = null;
-      if ((paramView.getTag() instanceof puq)) {
-        localView1 = ((puq)paramView.getTag()).f;
+      localObject3 = sel.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
+      if ((localObject3 == null) || (((JSONArray)localObject3).length() < 3)) {
+        return localJSONObject;
       }
-      localView2 = localView1;
-      if (localView1 == null)
+      localObject1 = ((JSONArray)localObject3).optJSONObject(0);
+      if (localObject1 == null)
       {
-        localView2 = localView1;
-        if ((paramView.getTag(2131376086) instanceof puq)) {
-          localView2 = ((puq)paramView.getTag(2131376086)).f;
+        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
+        localObject2 = ((JSONArray)localObject3).optJSONObject(1);
+        if (localObject2 != null) {
+          break label285;
+        }
+        localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;
+        localObject3 = ((JSONArray)localObject3).optJSONObject(2);
+        if (localObject3 != null) {
+          break label295;
         }
       }
-    } while (localView2 == null);
-    EventCollector.getInstance().onViewClicked(localView2);
-  }
-  
-  private static BaseArticleInfo b(puf parampuf, View paramView)
-  {
-    if ((parampuf == null) || (paramView == null) || (!(paramView.getTag() instanceof puj))) {
-      return null;
-    }
-    paramView = (puj)paramView.getTag();
-    if (paramView != null) {
-      return parampuf.a(paramView.a());
-    }
-    return null;
-  }
-  
-  private static puj b(View paramView)
-  {
-    if ((paramView == null) || (!(paramView.getTag() instanceof puj))) {
-      return null;
-    }
-    return (puj)paramView.getTag();
-  }
-  
-  public static void b(View paramView)
-  {
-    if (paramView == null) {
-      return;
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
-  
-  private static void b(puf parampuf, BaseArticleInfo paramBaseArticleInfo, VideoColumnInfo paramVideoColumnInfo, int paramInt, String paramString)
-  {
-    int k = parampuf.a().a();
-    String str = pha.d(paramBaseArticleInfo);
-    int i;
-    if (((ArticleInfo)paramBaseArticleInfo).hasChannelInfo())
-    {
-      i = paramBaseArticleInfo.mChannelInfoId;
-      if (!TextUtils.isEmpty(paramBaseArticleInfo.mArticleFriendLikeText)) {
-        break label217;
+      label285:
+      label295:
+      for (paramBaseArticleInfo = paramBaseArticleInfo.mFirstPagePicUrl;; paramBaseArticleInfo = ((JSONObject)localObject3).optString("picture"))
+      {
+        localObject3 = localObject2;
+        localObject4 = localObject1;
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("multi_img_url1", localObject4);
+        localJSONObject.put("id_multi_img_1", localObject1);
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("multi_img_url2", localObject3);
+        localJSONObject.put("id_multi_img_2", localObject1);
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("multi_img_url3", paramBaseArticleInfo);
+        localJSONObject.put("id_multi_img_3", localObject1);
+        localJSONObject.put("id_info_operate_parent", new JSONObject());
+        localJSONObject.put("id_ad_triple_container", new JSONObject());
+        return localJSONObject;
+        localObject1 = ((JSONObject)localObject1).optString("picture");
+        break;
+        localObject2 = ((JSONObject)localObject2).optString("picture");
+        break label146;
       }
     }
-    label217:
-    for (int j = 0;; j = 1)
+    if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
     {
-      parampuf = new skc(pha.a(paramBaseArticleInfo.mAlgorithmID, pha.a(paramBaseArticleInfo), 0, i, j, bgnt.h(parampuf.a()), str, paramBaseArticleInfo.mStrCircleId, paramBaseArticleInfo.innerUniqueID, pha.f(paramBaseArticleInfo), 409409, (ArticleInfo)paramBaseArticleInfo));
-      parampuf.h(paramBaseArticleInfo.innerUniqueID).a(k).d(paramBaseArticleInfo.mStrategyId).g(och.a).h(409409).j(paramBaseArticleInfo.mVideoAdsJumpType).k(paramBaseArticleInfo.mVideoAdsSource).a(Boolean.valueOf(pha.w(paramBaseArticleInfo))).a(paramBaseArticleInfo.videoReportInfo).R(paramInt).o(paramString).f(paramBaseArticleInfo);
-      if (paramVideoColumnInfo != null) {
-        parampuf.Y(paramVideoColumnInfo.a);
+      localObject1 = paramBaseArticleInfo.mSinglePicture;
+      label328:
+      if (localObject1 == null) {
+        break label429;
       }
-      oat.a(null, "", "0X8007625", "0X8007625", 0, 0, "2", "", "", parampuf.a().a(), false);
-      return;
-      i = 0;
-      break;
+      localObject1 = ((URL)localObject1).getFile();
+      label337:
+      if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
+        break label434;
+      }
+      localObject2 = paramBaseArticleInfo.mSinglePicture;
+      label360:
+      if (localObject2 == null) {
+        break label444;
+      }
+      localObject2 = ((URL)localObject2).getFile();
+      label369:
+      if ((paramBaseArticleInfo.mPictures.length >= 3) && (paramBaseArticleInfo.mPictures[2] != null)) {
+        break label449;
+      }
     }
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = a(paramInt).intValue();
-    Object localObject;
-    stc localstc;
-    if ((paramView == null) || (!(paramView.getTag() instanceof puq)))
+    label429:
+    label434:
+    label444:
+    label449:
+    for (URL localURL = paramBaseArticleInfo.mSinglePicture;; localURL = paramBaseArticleInfo.mPictures[2])
     {
-      localObject = a(paramInt, paramView, paramViewGroup, i);
-      paramView = ((puq)localObject).a(paramInt, paramViewGroup);
-      ((puq)localObject).f = paramView;
-      ((puq)localObject).a = paramInt;
-      paramView.setTag(localObject);
-      paramView.setTag(2131369412, a());
-      paramViewGroup = new qaz(a(), a().a(), a(), a(), a().a(), a().a());
-      paramView.setTag(2131380931, paramViewGroup);
-      localstc = new stc(paramView);
-      paramView.setTag(2131380935, localstc);
-    }
-    BaseArticleInfo localBaseArticleInfo;
-    for (;;)
-    {
-      localBaseArticleInfo = a(paramInt);
-      ((puq)localObject).a(a());
-      if (localBaseArticleInfo != null) {
+      localObject4 = localObject1;
+      paramBaseArticleInfo = (BaseArticleInfo)localObject3;
+      localObject3 = localObject2;
+      if (localURL == null) {
         break;
       }
-      QLog.w("ReadInJoyBaseAdapter", 2, "article is null, return");
-      return localstc.a();
-      localObject = (puq)paramView.getTag();
-      ((puq)localObject).a = paramInt;
-      paramViewGroup = (qal)paramView.getTag(2131380931);
-      localstc = (stc)paramView.getTag(2131380935);
-    }
-    long l;
-    if (i == 46)
-    {
-      l = System.currentTimeMillis();
-      a().a((pul)localObject, localBaseArticleInfo);
-      ttf.a("ReadInJoyBaseAdapter", String.valueOf(i), "getProteusNormalView.configTwoItemVideo", System.currentTimeMillis() - l);
-    }
-    for (;;)
-    {
-      localObject = null;
-      if (paramInt < d() - 1) {
-        localObject = (ArticleInfo)a(paramInt + 1);
-      }
-      localObject = new pya(a(), (ArticleInfo)localBaseArticleInfo, i, b(), c(), paramInt, a(), d(), (ArticleInfo)localObject, a());
-      paramView.setTag(2131380929, localObject);
-      paramViewGroup.a(localstc, (pxk)localObject, i);
-      return localstc.a();
-      if (i == 4)
-      {
-        l = System.currentTimeMillis();
-        a().a((pum)localObject, localBaseArticleInfo, paramInt);
-        ttf.a("ReadInJoyBaseAdapter", String.valueOf(i), "getProteusNormalView.configVideoItemUI", System.currentTimeMillis() - l);
-        if ((a() != null) && (a().a() != null) && (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo)))
-        {
-          localObject = (AdvertisementInfo)localBaseArticleInfo;
-          a().a().a((AdvertisementInfo)localObject, a().a());
-        }
-      }
-      else if (i == 70)
-      {
-        l = System.currentTimeMillis();
-        a().a((pur)localObject, localBaseArticleInfo, paramInt);
-        ttf.a("ReadInJoyBaseAdapter", String.valueOf(i), "getProteusNormalView.configWeishiGridTwoItemUI", System.currentTimeMillis() - l);
-      }
-      else if (i == 118)
-      {
-        a().a((puk)localObject, localBaseArticleInfo, paramInt);
-      }
-      else if (i == 119)
-      {
-        a().a((pum)localObject, localBaseArticleInfo, paramInt);
-        localObject = (pun)localObject;
-        ((pun)localObject).a(localBaseArticleInfo.mVideoColumnInfo);
-        ((pun)localObject).a(localBaseArticleInfo);
-        pun.a((pun)localObject).setTag(localObject);
-        pun.a((pun)localObject).setTag(localObject);
-      }
-      else if (i == 6)
-      {
-        a().a((pui)localObject, localBaseArticleInfo, paramInt);
-      }
-      else if (i == 128)
-      {
-        a().a((puh)localObject, localBaseArticleInfo, paramInt);
-      }
-    }
-  }
-  
-  public Boolean a()
-  {
-    if ((a().a() != null) && (a().a().a() != null) && (a().a().a().a()))
-    {
-      a().a().a().j();
-      return Boolean.valueOf(true);
-    }
-    return super.a();
-  }
-  
-  public puq a(int paramInt1, View paramView, ViewGroup paramViewGroup, int paramInt2)
-  {
-    paramView = a();
-    switch (paramInt2)
-    {
-    default: 
-      return new pum(paramView, this);
-    case 4: 
-      return new pum(paramView, this);
-    case 46: 
-      return new pul(paramView, this);
-    case 70: 
-      return new pur(paramView, this);
-    case 118: 
-      return new puk(paramView, this);
-    case 119: 
-      return new pun(paramView, this);
-    case 6: 
-      return new pui(paramView, this);
-    }
-    return new puh(paramView, this);
-  }
-  
-  public void a(View paramView, ListView paramListView)
-  {
-    this.jdField_a_of_type_Pup = new pup(this, null);
-    this.b = bmqa.e();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return (paramInt == 4) || (paramInt == 46) || (paramInt == 70) || (paramInt == 118) || (paramInt == 119) || (paramInt == 6) || (paramInt == 128);
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    return (pha.a(a(paramInt1))) && (b() == 56) && (this.b) && (paramInt2 == 4);
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Pup != null) {
-      this.jdField_a_of_type_Pup.removeCallbacksAndMessages(null);
-    }
-  }
-  
-  public void g()
-  {
-    super.g();
-    QQAppInterface localQQAppInterface = pha.a();
-    if ((localQQAppInterface != null) && (!jdField_a_of_type_Boolean))
-    {
-      jdField_a_of_type_Boolean = true;
-      ((avju)localQQAppInterface.getManager(306)).a();
+      paramBaseArticleInfo = localURL.getFile();
+      localObject4 = localObject1;
+      localObject3 = localObject2;
+      break;
+      localObject1 = paramBaseArticleInfo.mPictures[0];
+      break label328;
+      localObject1 = null;
+      break label337;
+      localObject2 = paramBaseArticleInfo.mPictures[1];
+      break label360;
+      localObject2 = null;
+      break label369;
     }
   }
 }

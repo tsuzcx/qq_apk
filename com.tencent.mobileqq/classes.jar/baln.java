@@ -1,20 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ptt.LSRecordPanel;
 
 public class baln
+  implements View.OnClickListener
 {
-  public static int a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, "##" + paramString2);
-    }
-    return 0;
-  }
+  public baln(LSRecordPanel paramLSRecordPanel) {}
   
-  public static int b(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 2, "##" + paramString2);
-    return 0;
-  }
+  public void onClick(View paramView) {}
 }
 
 

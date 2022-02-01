@@ -1,60 +1,61 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.widgets.QCircleMessageNoticeView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.view.ViewConfiguration;
+import com.tencent.biz.qqcircle.fragments.main.QCircleFolderFollowTabFragment;
+import com.tencent.biz.qqcircle.fragments.main.QCircleFolderRcmdTabFragment;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.io.File;
+import java.util.HashMap;
 
 public class uym
-  extends uzx
 {
-  private QCircleMessageNoticeView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView;
-  private uzl jdField_a_of_type_Uzl;
+  public static int a;
+  public static final String a;
+  public static final HashMap<String, String> a;
+  public static boolean a;
+  public static final String[] a;
+  public static int b;
+  public static final String b;
+  public static final HashMap<String, String> b;
+  public static final int c;
+  public static final String c;
+  public static final HashMap<String, String> c;
+  public static final String d;
+  public static final String e;
+  public static final String f;
+  public static final String g;
+  public static final String h;
+  public static final String i;
+  private static final String j;
+  private static final String k;
+  private static final String l;
   
-  public uym(Bundle paramBundle)
+  static
   {
-    super(paramBundle);
+    jdField_a_of_type_JavaLangString = QCircleFolderFollowTabFragment.e;
+    jdField_b_of_type_JavaLangString = QCircleFolderRcmdTabFragment.e;
+    jdField_a_of_type_Int = 300;
+    jdField_b_of_type_Int = ViewConfiguration.getLongPressTimeout();
+    j = bigv.a("cache/");
+    k = bigv.a("file/");
+    l = bigv.a("qcircle/");
+    jdField_c_of_type_JavaLangString = l + "file/";
+    d = l + "cache/";
+    e = jdField_c_of_type_JavaLangString + "download/";
+    f = e + "base/";
+    g = j + "qqcircle_video/";
+    h = jdField_c_of_type_JavaLangString + "animation/";
+    i = f + "qcircle_download_pics/";
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    jdField_c_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilHashMap.put("rockey1", "https://downv6.qq.com/video_story/qcircle/animation/rocket1.zip");
+    jdField_a_of_type_JavaUtilHashMap.put("rockey2", "https://downv6.qq.com/video_story/qcircle/animation/rocket2.zip");
+    jdField_a_of_type_JavaUtilHashMap.put("rockey3", "https://downv6.qq.com/video_story/qcircle/animation/rocket3.zip");
+    jdField_b_of_type_JavaUtilHashMap.put("rockey1", h + "rockey1" + File.separator);
+    jdField_b_of_type_JavaUtilHashMap.put("rockey2", h + "rockey2" + File.separator);
+    jdField_b_of_type_JavaUtilHashMap.put("rockey3", h + "rockey3" + File.separator);
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "rockey1", "rockey2", "rockey3" };
+    jdField_c_of_type_Int = ImmersiveUtils.a(80.0F);
   }
-  
-  protected BaseWidgetView a(ViewGroup paramViewGroup, zxu paramzxu)
-  {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView = new QCircleMessageNoticeView(getContext());
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView.setReportBean(a());
-    return this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView;
-  }
-  
-  protected String a()
-  {
-    return "QCircleMessage_QCircleMessageNoticeBubbleBlock";
-  }
-  
-  public void loadData(zxz paramzxz) {}
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    QLog.d("QCircleMessage_QCircleMessageNoticeBubbleBlock", 1, "onBindViewHolder");
-    if ((this.mDataList != null) && (this.mDataList.size() > 0))
-    {
-      this.jdField_a_of_type_Uzl = ((uzl)this.mDataList.get(paramInt));
-      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView == null) {
-        break label80;
-      }
-      QLog.d("QCircleMessage_QCircleMessageNoticeBubbleBlock", 1, "mMessageNoticeView not null");
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView.setData(this.jdField_a_of_type_Uzl);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
-      label80:
-      QLog.d("QCircleMessage_QCircleMessageNoticeBubbleBlock", 1, "mMessageNoticeView is null");
-    }
-  }
-  
-  public void onInitBlock(Bundle paramBundle) {}
 }
 
 

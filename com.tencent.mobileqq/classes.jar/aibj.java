@@ -1,49 +1,12 @@
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
 
-class aibj
-  implements bkhw
+public class aibj
+  implements aasd
 {
-  aibj(aiay paramaiay, boolean paramBoolean, bkho parambkho) {}
+  public aibj(AIOGalleryAdapter paramAIOGalleryAdapter) {}
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_Bkho.dismiss();
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Aiay.bA();
-      }
-      else
-      {
-        this.jdField_a_of_type_Aiay.by();
-        continue;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_Aiay.by();
-        }
-        else
-        {
-          this.jdField_a_of_type_Aiay.bx();
-          continue;
-          if (this.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_Aiay.bx();
-          }
-        }
-      }
-    }
-  }
+  public void callback(Bundle paramBundle) {}
 }
 
 

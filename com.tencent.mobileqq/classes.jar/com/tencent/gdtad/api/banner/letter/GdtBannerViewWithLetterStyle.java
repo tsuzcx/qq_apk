@@ -1,10 +1,10 @@
 package com.tencent.gdtad.api.banner.letter;
 
-import ackj;
-import acli;
-import aclp;
-import aclq;
-import acqy;
+import acon;
+import acpm;
+import acpr;
+import acps;
+import acvc;
 import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -14,23 +14,23 @@ import com.tencent.gdtad.aditem.GdtAd;
 
 public final class GdtBannerViewWithLetterStyle
   extends FrameLayout
-  implements acli
+  implements acpm
 {
-  acli a;
+  acpm a;
   
   public GdtBannerViewWithLetterStyle(Context paramContext, GdtAd paramGdtAd)
   {
     super(paramContext);
     if ((paramContext == null) || (paramGdtAd == null) || (!paramGdtAd.isValid()))
     {
-      acqy.d("GdtBannerViewWithLetterStyle", "constructor");
+      acvc.d("GdtBannerViewWithLetterStyle", "constructor");
       return;
     }
-    setBackgroundResource(2130840197);
+    setBackgroundResource(2130840206);
     if ((paramGdtAd.getImageData() == null) || (!paramGdtAd.getImageData().a()))
     {
       paramContext = new ImageView(getContext());
-      paramContext.setImageResource(2130840198);
+      paramContext.setImageResource(2130840207);
       addView(paramContext, -1, -1);
       return;
     }
@@ -44,11 +44,11 @@ public final class GdtBannerViewWithLetterStyle
     {
       if ((i <= 0) || (j <= 0))
       {
-        acqy.d("GdtBannerViewWithLetterStyle", "createBannerViewWithLetterStyle error, image width or image height is zero");
+        acvc.d("GdtBannerViewWithLetterStyle", "createBannerViewWithLetterStyle error, image width or image height is zero");
         break;
       }
       if ((paramGdtAd.getCreativeSize() == 65) || (paramGdtAd.getCreativeSize() == 184)) {}
-      for (this.a = new aclp(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText());; this.a = new aclq(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText(), paramGdtAd.getDescription()))
+      for (this.a = new acpr(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText());; this.a = new acps(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText(), paramGdtAd.getDescription()))
       {
         addView(this.a.a());
         break;
@@ -57,7 +57,7 @@ public final class GdtBannerViewWithLetterStyle
         }
       }
       label228:
-      acqy.d("GdtBannerViewWithLetterStyle", String.format("createBannerView error, creative size is %d", new Object[] { Integer.valueOf(paramGdtAd.getCreativeSize()) }));
+      acvc.d("GdtBannerViewWithLetterStyle", String.format("createBannerView error, creative size is %d", new Object[] { Integer.valueOf(paramGdtAd.getCreativeSize()) }));
       break;
       i = -2147483648;
     }
@@ -101,7 +101,7 @@ public final class GdtBannerViewWithLetterStyle
   {
     if ((this.a == null) || (this.a.a() == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
     {
-      acqy.d("GdtBannerViewWithLetterStyle", "setSize error");
+      acvc.d("GdtBannerViewWithLetterStyle", "setSize error");
       return;
     }
     int i = Double.valueOf(0.7076023391812866D * paramInt1).intValue();

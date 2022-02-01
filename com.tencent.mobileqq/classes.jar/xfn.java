@@ -1,19 +1,10 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-
-public final class xfn
-  extends weu
+public abstract interface xfn
 {
-  public int a;
-  public StoryVideoItem a;
-  public String a;
-  public String b;
+  public abstract void a(xhu paramxhu);
   
-  public xfn(String paramString, int paramInt, StoryVideoItem paramStoryVideoItem)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-  }
+  public abstract void b(xhu paramxhu);
+  
+  public abstract void c(xhu paramxhu);
 }
 
 

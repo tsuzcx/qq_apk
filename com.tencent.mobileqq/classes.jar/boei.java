@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment.8;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment.8.1.1;
+import android.view.MotionEvent;
 
-public class boei
-  implements beav
+class boei
+  implements bpbb
 {
-  public boei(AEEditorCommonEditFragment.8 param8) {}
+  boei(boeg paramboeg) {}
   
-  public void a(beau parambeau) {}
-  
-  public void onResp(bdwt parambdwt)
+  public void a(MotionEvent paramMotionEvent)
   {
-    ThreadManager.excute(new AEEditorCommonEditFragment.8.1.1(this, parambdwt), 64, null, true);
+    if ((boeg.a(this.a) instanceof bofh)) {
+      ((bofh)boeg.a(this.a)).a(paramMotionEvent);
+    }
   }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

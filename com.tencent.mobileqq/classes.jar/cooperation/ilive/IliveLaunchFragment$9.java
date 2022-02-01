@@ -1,18 +1,28 @@
 package cooperation.ilive;
 
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 class IliveLaunchFragment$9
   implements Runnable
 {
-  IliveLaunchFragment$9(IliveLaunchFragment paramIliveLaunchFragment) {}
+  IliveLaunchFragment$9(IliveLaunchFragment paramIliveLaunchFragment, float paramFloat) {}
   
   public void run()
   {
-    IliveLaunchFragment.access$300(this.this$0);
-    if (IliveLaunchFragment.access$600(this.this$0) != null) {
-      IliveLaunchFragment.access$600(this.this$0).setText("直播加载中...");
+    if (IliveLaunchFragment.access$700(this.this$0) != null) {
+      IliveLaunchFragment.access$700(this.this$0).setProgress((int)this.a);
     }
+    if (IliveLaunchFragment.access$600(this.this$0) != null)
+    {
+      if (this.a == 100.0F) {
+        IliveLaunchFragment.access$600(this.this$0).setText("直播加载中...");
+      }
+    }
+    else {
+      return;
+    }
+    IliveLaunchFragment.access$600(this.this$0).setText("直播加载中：" + (int)this.a + "%");
   }
 }
 

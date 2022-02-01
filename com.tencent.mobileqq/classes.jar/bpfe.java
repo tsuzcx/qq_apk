@@ -1,37 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.YoutuResultItem;
+import com.microrapid.opencv.ImageStatisticsData;
+import java.util.HashMap;
+import java.util.List;
 
-class bpfe
-  implements View.OnClickListener
+public class bpfe
+  extends bpez
 {
-  bpfe(bpfd parambpfd) {}
+  public float a;
+  public ImageStatisticsData a;
+  public String a;
+  public HashMap<String, String> a;
+  public List<YoutuResultItem> a;
+  public float[] a;
+  public float b;
+  public String b;
+  public float c;
   
-  public void onClick(View paramView)
+  public float a()
   {
-    if (bpfd.a(this.a) != null)
-    {
-      if ((bpfd.a(this.a).b() != 1) || (bpfd.a(this.a) != 1)) {
-        break label71;
-      }
-      bpfd.a(this.a);
-      bpfd.a(this.a).setImageResource(2130847675);
-      bpfd.a(this.a, 2);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label71:
-      if ((bpfd.a(this.a).b() == 2) && (bpfd.a(this.a) == 2))
-      {
-        bpfd.b(this.a);
-        bpfd.a(this.a).setImageResource(2130847676);
-        bpfd.a(this.a, 1);
-      }
-    }
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public HashMap<String, String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  public float b()
+  {
+    return this.c;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public float c()
+  {
+    return this.jdField_b_of_type_Float;
   }
 }
 

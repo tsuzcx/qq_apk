@@ -1,46 +1,49 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.util.Pair;
 
 public class bhuv
-  implements View.OnTouchListener
 {
-  public bhuv(ClearableEditText paramClearableEditText) {}
+  public int a;
+  public Pair<CharSequence, CharSequence> a;
+  public String a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bhuv(String paramString, int paramInt, Pair<CharSequence, CharSequence> paramPair)
   {
-    int i = 1;
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    label107:
-    for (;;)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidUtilPair = paramPair;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder().append("MsgSearchContactInfo{uin='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", uinType=").append(this.jdField_a_of_type_Int).append(", matchTitle=[");
+    if (this.jdField_a_of_type_AndroidUtilPair == null)
     {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
-        for (;;)
-        {
-          if (i == 0) {
-            break label107;
-          }
-          this.a.setText("");
-          this.a.setClearButtonVisible(false);
-          if (this.a.jdField_a_of_type_Bhuy == null) {
-            break;
-          }
-          this.a.jdField_a_of_type_Bhuy.m();
-          return false;
-          i = 0;
-        }
+      localObject = "null";
+      return (String)localObject + "]" + '}';
+    }
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    if (this.jdField_a_of_type_AndroidUtilPair.first == null)
+    {
+      localObject = "null";
+      label92:
+      localStringBuilder2 = localStringBuilder2.append(localObject).append(", ");
+      if (this.jdField_a_of_type_AndroidUtilPair.second != null) {
+        break label142;
       }
+    }
+    label142:
+    for (Object localObject = "null";; localObject = (CharSequence)this.jdField_a_of_type_AndroidUtilPair.second)
+    {
+      localObject = localObject;
+      break;
+      localObject = (CharSequence)this.jdField_a_of_type_AndroidUtilPair.first;
+      break label92;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhuv
  * JD-Core Version:    0.7.0.1
  */

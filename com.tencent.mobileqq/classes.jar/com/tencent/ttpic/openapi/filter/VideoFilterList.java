@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.PointF;
 import android.opengl.GLES20;
 import android.text.TextUtils;
-import android.util.Log;
 import com.tencent.aekit.openrender.internal.AEChainI;
 import com.tencent.aekit.openrender.internal.AEFilterI;
 import com.tencent.aekit.openrender.internal.Frame;
@@ -21,6 +20,7 @@ import com.tencent.ttpic.ar.filter.ARParticleFilter;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.fps.BenchUtil;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.face.Face;
 import com.tencent.ttpic.facedetect.FaceStatus;
 import com.tencent.ttpic.facedetect.GenderType;
@@ -149,9 +149,6 @@ import java.util.Set;
 
 public class VideoFilterList
 {
-  private static final int ALWAYS_TRIGGERED_RANDOM_INDEX = 0;
-  public static final String FABBY_LOG = "[FABBY]";
-  private static final int HAND_RANDOM_INDEX = 0;
   public static final int MAX_FACE_COUNT = 99;
   private static final String MULTIVIEW_PREFIX = "$preservedTexture_multiViewer_";
   private static final String MVPARTS_PREFIX = "$preservedTexture_mvPart";
@@ -166,7 +163,9 @@ public class VideoFilterList
   private List<RenderItem> bodyRenderItems = new ArrayList();
   private List<RenderItem> catRenderItems = new ArrayList();
   private Frame[] copyFrame = new Frame[2];
+  private boolean cosFunEnableGAN = false;
   private CosFunFilterGroup cosFunFilterGroup;
+  private StyleCustomFilterGroup cosFunInnerStyleCustomFilterGroup;
   private CrazyFaceFilters crazyFaceFilters;
   private LinkedList<FaceInfo> currentFaceInfo;
   public int detecFaceCount = 0;
@@ -2875,6 +2874,9 @@ public class VideoFilterList
     if (this.styleCustomFilterGroup != null) {
       this.styleCustomFilterGroup.apply();
     }
+    if (this.cosFunInnerStyleCustomFilterGroup != null) {
+      this.cosFunInnerStyleCustomFilterGroup.apply();
+    }
     if (this.mComicEffectRenderItems != null)
     {
       localObject1 = this.mComicEffectRenderItems.iterator();
@@ -2930,16 +2932,16 @@ public class VideoFilterList
     {
       this.fabbyExtractFilter = new FabbyExtractFilter();
       if ((this.material == null) || ((this.material.getSegmentBorderType() != VideoMaterialUtil.SEGMENT_BORDER_TYPE.BORDER_FLOW_LINES.type) && (this.material.getSegmentBorderType() != VideoMaterialUtil.SEGMENT_BORDER_TYPE.BORDER_TRIGGER.type))) {
-        break label1865;
+        break label1879;
       }
       if (this.material.getSegmentStrokeItem() == null) {
-        break label1776;
+        break label1790;
       }
       localObject1 = new TriggerCtrlItem(this.material.getSegmentStrokeItem());
       this.triggerManager.addTriggers((AETriggerI)localObject1);
       this.fabbyStrokeRenderItem = new RenderItem(new FabbyStrokeFilter(this.material.getSegmentStrokeItem()), (TriggerCtrlItem)localObject1);
     }
-    label1865:
+    label1879:
     for (;;)
     {
       this.fastBlurFilter = new FastBlurFilter();
@@ -2975,7 +2977,7 @@ public class VideoFilterList
           ((EffectTriggerFilter)((RenderItem)localObject2).filter).ApplyGLSLFilter();
         }
       }
-      label1776:
+      label1790:
       if (this.material.getSegmentStrokeTriggerItems() != null)
       {
         localObject1 = new FabbyStrokeFilterExt(this.material.getSegmentStrokeTriggerItems());
@@ -3543,6 +3545,9 @@ public class VideoFilterList
     if (this.styleCustomFilterGroup != null) {
       this.styleCustomFilterGroup.destroy();
     }
+    if (this.cosFunInnerStyleCustomFilterGroup != null) {
+      this.cosFunInnerStyleCustomFilterGroup.destroy();
+    }
     if (this.mComicEffectRenderItems != null)
     {
       localObject1 = this.mComicEffectRenderItems.iterator();
@@ -3992,6 +3997,9 @@ public class VideoFilterList
     if (this.cosFunFilterGroup != null) {
       this.cosFunFilterGroup.reset();
     }
+    if (this.mBlurMaskFilter != null) {
+      this.mBlurMaskFilter.reset();
+    }
     this.triggerManager.reset();
   }
   
@@ -4006,6 +4014,11 @@ public class VideoFilterList
   public AIAttr getAiAttr()
   {
     return this.aiAttr;
+  }
+  
+  public StyleCustomFilterGroup getCosFunInnerStyleCustomFilterGroup()
+  {
+    return this.cosFunInnerStyleCustomFilterGroup;
   }
   
   public double getCosFunProgress()
@@ -4330,6 +4343,11 @@ public class VideoFilterList
       }
     }
     return hasFreezeSetting();
+  }
+  
+  public boolean isCosFunEnableGAN()
+  {
+    return this.cosFunEnableGAN;
   }
   
   public boolean isDualPeople()
@@ -4735,6 +4753,15 @@ public class VideoFilterList
     }
   }
   
+  public Frame renderCosFunCustomGroup(Frame paramFrame)
+  {
+    Frame localFrame = paramFrame;
+    if (this.cosFunInnerStyleCustomFilterGroup != null) {
+      localFrame = this.cosFunInnerStyleCustomFilterGroup.render(paramFrame);
+    }
+    return localFrame;
+  }
+  
   public Frame renderCustomEffectFilter(Frame paramFrame, int paramInt)
   {
     Frame localFrame = paramFrame;
@@ -5072,9 +5099,19 @@ public class VideoFilterList
     this.mComicEffectRenderItems = paramList;
   }
   
+  public void setCosFunEnableGAN(boolean paramBoolean)
+  {
+    this.cosFunEnableGAN = paramBoolean;
+  }
+  
   public void setCosFunFilterGroup(CosFunFilterGroup paramCosFunFilterGroup)
   {
     this.cosFunFilterGroup = paramCosFunFilterGroup;
+  }
+  
+  public void setCosFunInnerStyleCustomFilterGroup(StyleCustomFilterGroup paramStyleCustomFilterGroup)
+  {
+    this.cosFunInnerStyleCustomFilterGroup = paramStyleCustomFilterGroup;
   }
   
   public void setCrazyFaceFilters(CrazyFaceFilters paramCrazyFaceFilters)
@@ -7186,34 +7223,35 @@ public class VideoFilterList
         break;
       }
     } while ((((RenderItem)localObject1).triggerCtrlItem != null) && (!((RenderItem)localObject1).triggerCtrlItem.isTriggered()));
-    Object localObject2;
-    label186:
     boolean bool1;
     if (((localObject1 == null) || (((RenderItem)localObject1).filter == null) || ((((RenderItem)localObject1).triggerCtrlItem != null) && (((RenderItem)localObject1).triggerCtrlItem.isTriggered()))) && ((((RenderItem)localObject1).triggerCtrlItem instanceof StyleChildTriggerCtrlItem)))
     {
       localObject1 = (StyleChildTriggerCtrlItem)((RenderItem)localObject1).triggerCtrlItem;
-      localObject2 = ((StyleChildTriggerCtrlItem)localObject1).getTriggeredPhoto();
-      if ((localObject2 == null) || (!((String)localObject2).equals(this.preImagePath))) {
-        break label451;
+      Object localObject2 = ((StyleChildTriggerCtrlItem)localObject1).getTriggeredPhoto();
+      if ((localObject2 != null) && (!((String)localObject2).equals(this.preImagePath)))
+      {
+        LogUtils.d(TAG, "updateAndRenderStyleChild: photo:" + (String)localObject2);
+        localStyleChildFilter.updateTextureBitmapList((String)localObject2);
+        this.preImagePath = ((String)localObject2);
       }
       if ((((StyleChildTriggerCtrlItem)localObject1).getTriggeredCosFun() != null) && (!TextUtils.isEmpty(((StyleChildTriggerCtrlItem)localObject1).getTriggeredCosFun())))
       {
-        Log.d(TAG, "updateAndRenderStyleChild: crazyFace:" + ((StyleChildTriggerCtrlItem)localObject1).getTriggeredCosFun());
+        LogUtils.d(TAG, "updateAndRenderStyleChild: crazyFace:" + ((StyleChildTriggerCtrlItem)localObject1).getTriggeredCosFun());
         bool2 = getIsPositiveFace(paramPTFaceAttr, paramFrame);
         if (this.preFaceCounts == paramPTFaceAttr.getAllFacePoints().size()) {
-          break label505;
+          break label490;
         }
         bool1 = true;
-        label262:
+        label301:
         if (bool2) {
           this.postiveFaceCounts += 1;
         }
         localObject2 = this.material;
         if (this.postiveFaceCounts < 3) {
-          break label510;
+          break label495;
         }
         bool2 = true;
-        label294:
+        label333:
         localStyleChildFilter.initCosFunTransitionFilter((VideoMaterial)localObject2, bool1, bool2, paramPTFaceAttr, paramFrame, ((StyleChildTriggerCtrlItem)localObject1).getTriggeredCosFun(), ((StyleChildTriggerCtrlItem)localObject1).getTriggeredStickerItem());
         this.preFaceCounts = paramPTFaceAttr.getAllFacePoints().size();
       }
@@ -7222,20 +7260,22 @@ public class VideoFilterList
     {
       bool2 = getIsPositiveFace(paramPTFaceAttr, paramFrame);
       if (this.preFaceCounts == paramPTFaceAttr.getAllFacePoints().size()) {
-        break label516;
+        break label501;
       }
       bool1 = true;
-      label368:
+      label407:
       if (bool2) {
         this.postiveFaceCounts += 1;
       }
       localObject1 = this.material;
       if (this.postiveFaceCounts < 3) {
-        break label521;
+        break label506;
       }
     }
-    label516:
-    label521:
+    label490:
+    label495:
+    label501:
+    label506:
     for (boolean bool2 = true;; bool2 = false)
     {
       localStyleChildFilter.initCosFunTransitionFilter((VideoMaterial)localObject1, bool1, bool2, paramPTFaceAttr, paramFrame, null);
@@ -7244,22 +7284,12 @@ public class VideoFilterList
         break;
       }
       return localStyleChildFilter.render(localStyleChildFilter.updateAndRender(paramFrame, paramPTFaceAttr, this.mFaceDetScale));
-      label451:
-      if ((localObject2 == null) || (localObject2 == null)) {
-        break label186;
-      }
-      Log.d(TAG, "updateAndRenderStyleChild: photo:" + (String)localObject2);
-      localStyleChildFilter.updateTextureBitmapList((String)localObject2);
-      this.preImagePath = ((String)localObject2);
-      break label186;
-      label505:
       bool1 = false;
-      break label262;
-      label510:
+      break label301;
       bool2 = false;
-      break label294;
+      break label333;
       bool1 = false;
-      break label368;
+      break label407;
     }
     localStyleChildFilter.resetNeedCalFaceMoveDownParam();
     this.preFaceCounts = paramPTFaceAttr.getAllFacePoints().size();

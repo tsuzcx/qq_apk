@@ -1,82 +1,27 @@
-public final class alph
-  implements alpj
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+
+@Deprecated
+public class alph
+  extends alnt
 {
-  private boolean a(char paramChar)
+  public View a(int paramInt, Object paramObject, alno paramalno, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, alpv paramalpv)
   {
-    Character.UnicodeBlock localUnicodeBlock = Character.UnicodeBlock.of(paramChar);
-    return (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) || (localUnicodeBlock == Character.UnicodeBlock.GENERAL_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS);
-  }
-  
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    int i;
-    if (paramInt1 <= paramInt2)
-    {
-      i = paramInt1;
-      if (paramInt1 > paramInt2) {
-        break label75;
-      }
+    paramObject = paramView;
+    if (paramView == null) {
+      paramObject = View.inflate(paramContext, 2131563022, null);
     }
-    int j;
-    for (;;)
-    {
-      j = 0;
-      paramInt1 = i;
-      while ((paramInt1 < paramInt2) && (paramInt1 < paramCharSequence.length()))
-      {
-        int k = j;
-        if (a(paramCharSequence.charAt(paramInt1))) {
-          k = j + 1;
-        }
-        paramInt1 += 1;
-        j = k;
-      }
-      i = paramInt2;
-      break;
-      label75:
-      paramInt2 = paramInt1;
-    }
-    return j + (paramInt2 - i);
-  }
-  
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    int m = 0;
-    int i;
-    if (paramInt1 <= paramInt2)
-    {
-      i = paramInt1;
-      if (paramInt1 > paramInt2) {
-        break label83;
-      }
-      label16:
-      paramInt1 = i;
-    }
-    int k;
-    for (int j = 0;; j = k)
-    {
-      k = m;
-      if (paramInt1 < paramCharSequence.length())
-      {
-        k = j;
-        if (a(paramCharSequence.charAt(paramInt1))) {
-          k = j + 1;
-        }
-        if (paramInt1 + k >= paramInt2) {
-          k = paramInt1 - i;
-        }
-      }
-      else
-      {
-        return k;
-        i = paramInt2;
-        break;
-        label83:
-        paramInt2 = paramInt1;
-        break label16;
-      }
-      paramInt1 += 1;
-    }
+    paramalno = paramObject.findViewById(2131379356);
+    paramalno.setTag(-1, Integer.valueOf(paramInt));
+    paramalno.setOnClickListener(paramOnClickListener);
+    paramalno = paramObject.findViewById(2131379355);
+    paramalno.setTag(-1, Integer.valueOf(paramInt));
+    paramalno.setOnClickListener(paramOnClickListener);
+    paramObject.setTag(-1, Integer.valueOf(paramInt));
+    return paramObject;
   }
 }
 

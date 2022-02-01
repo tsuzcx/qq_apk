@@ -1,30 +1,45 @@
 package com.tencent.mobileqq.activity;
 
-import biau;
+import bjbs;
 
 class LoginInfoActivity$9
   implements Runnable
 {
-  LoginInfoActivity$9(LoginInfoActivity paramLoginInfoActivity) {}
+  LoginInfoActivity$9(LoginInfoActivity paramLoginInfoActivity, int paramInt) {}
   
   public void run()
   {
-    try
+    for (;;)
     {
-      if ((LoginInfoActivity.a(this.this$0) != null) && (LoginInfoActivity.a(this.this$0).isShowing()))
+      try
       {
-        LoginInfoActivity.a(this.this$0).dismiss();
-        LoginInfoActivity.a(this.this$0).cancel();
+        if (!this.this$0.isFinishing())
+        {
+          if ((LoginInfoActivity.a(this.this$0) != null) && (LoginInfoActivity.a(this.this$0).isShowing()))
+          {
+            LoginInfoActivity.a(this.this$0).dismiss();
+            LoginInfoActivity.a(this.this$0).cancel();
+            LoginInfoActivity.a(this.this$0, null);
+          }
+          LoginInfoActivity.a(this.this$0, new bjbs(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+          int i = this.a;
+          switch (i)
+          {
+          }
+        }
       }
-      LoginInfoActivity.a(this.this$0, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      catch (Throwable localThrowable)
       {
         localThrowable.printStackTrace();
+        continue;
+        LoginInfoActivity.a(this.this$0).c(2131694176);
+        continue;
       }
+      if ((LoginInfoActivity.a(this.this$0) != null) && (!LoginInfoActivity.a(this.this$0).isShowing())) {
+        LoginInfoActivity.a(this.this$0).show();
+      }
+      return;
+      LoginInfoActivity.a(this.this$0).c(2131717414);
     }
   }
 }

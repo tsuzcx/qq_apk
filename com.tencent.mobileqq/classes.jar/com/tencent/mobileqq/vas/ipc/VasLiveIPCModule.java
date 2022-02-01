@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vas.ipc;
 
 import android.os.Bundle;
-import bglf;
-import bleo;
+import bhlg;
+import bmfr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -10,12 +10,16 @@ import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import mqq.app.AppRuntime;
+import tzq;
 
 public class VasLiveIPCModule
   extends QIPCModule
 {
   public static final String ACTION_CANCEL_PRE_DOWNLOAD = "action_cancel_pre_load";
+  public static final String ACTION_FOLLOW_ACCOUNT = "followAccount";
   public static final String ACTION_GET_ACCOUNT_NICK_NAME = "action_get_nick_name";
+  public static final String KEY_ANCHOR_UIN = "anchorUin";
+  public static final String KEY_FOLLOW_TYPE = "followType";
   public static final String KEY_GET_ACCOUNT_NICK_NAME = "accountName";
   public static final String NAME = "VasLiveIPCModule";
   private static final String TAG = "VasLiveIPCModule";
@@ -37,7 +41,7 @@ public class VasLiveIPCModule
     try
     {
       Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localObject = bglf.h((QQAppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin());
+      localObject = bhlg.h((QQAppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin());
       return localObject;
     }
     catch (Throwable localThrowable)
@@ -62,6 +66,32 @@ public class VasLiveIPCModule
     finally {}
   }
   
+  private void handleFollowAccountAction(int paramInt, Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return;
+    }
+    String str;
+    try
+    {
+      str = paramBundle.getString("anchorUin");
+      int i = paramBundle.getInt("followType");
+      paramBundle = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (i == 1)
+      {
+        tzq.a(paramBundle, BaseApplicationImpl.getContext(), str, new VasLiveIPCModule.1(this, paramInt), false, 0, true);
+        return;
+      }
+    }
+    catch (Throwable paramBundle)
+    {
+      paramBundle.printStackTrace();
+      QLog.e("VasLiveIPCModule", 1, "handleFollowAccountAction exception = " + paramBundle.getMessage());
+      return;
+    }
+    tzq.a(paramBundle, BaseApplicationImpl.getContext(), str, false, new VasLiveIPCModule.2(this, paramInt), true);
+  }
+  
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
     if (QLog.isColorLevel()) {
@@ -76,7 +106,12 @@ public class VasLiveIPCModule
     }
     if ("action_cancel_pre_load".equals(paramString))
     {
-      bleo.a().a();
+      bmfr.a().a();
+      return null;
+    }
+    if ("followAccount".equals(paramString))
+    {
+      handleFollowAccountAction(paramInt, paramBundle);
       return null;
     }
     new EIPCResult().data = paramBundle;

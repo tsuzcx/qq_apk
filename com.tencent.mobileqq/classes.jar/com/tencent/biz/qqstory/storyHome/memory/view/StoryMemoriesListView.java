@@ -14,21 +14,21 @@ import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import com.tencent.biz.qqstory.view.segment.SegmentList;
 import java.util.Iterator;
 import java.util.List;
-import wmf;
-import wqq;
-import ygj;
-import ygv;
-import ync;
-import yog;
-import yqp;
-import yqu;
-import zpa;
+import wqa;
+import wul;
+import yke;
+import ykq;
+import yqx;
+import ysb;
+import yuk;
+import yup;
+import zsv;
 
 public class StoryMemoriesListView
   extends SegmentList
-  implements View.OnTouchListener, yog
+  implements View.OnTouchListener, ysb
 {
-  private ygj a;
+  private yke a;
   
   public StoryMemoriesListView(Context paramContext)
   {
@@ -49,14 +49,14 @@ public class StoryMemoriesListView
   {
     Iterator localIterator = this.a.a().iterator();
     while (localIterator.hasNext()) {
-      a((zpa)localIterator.next());
+      a((zsv)localIterator.next());
     }
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
     super.setHorizontalScrollBarEnabled(false);
     super.setOnTouchListener(this);
-    if (this.a.jdField_a_of_type_Ync != null) {
-      this.a.jdField_a_of_type_Ync.a().setInputViewHideListener(this);
+    if (this.a.jdField_a_of_type_Yqx != null) {
+      this.a.jdField_a_of_type_Yqx.a().setInputViewHideListener(this);
     }
   }
   
@@ -64,15 +64,15 @@ public class StoryMemoriesListView
   
   public void b()
   {
-    if (this.a.jdField_a_of_type_Ync != null) {
-      this.a.jdField_a_of_type_Ync.g();
+    if (this.a.jdField_a_of_type_Yqx != null) {
+      this.a.jdField_a_of_type_Yqx.g();
     }
   }
   
   public void c()
   {
-    if (this.a.jdField_a_of_type_Ync != null) {
-      this.a.jdField_a_of_type_Ync.h();
+    if (this.a.jdField_a_of_type_Yqx != null) {
+      this.a.jdField_a_of_type_Yqx.h();
     }
   }
   
@@ -89,16 +89,16 @@ public class StoryMemoriesListView
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      yqp.e("SwipListView", "error:%s", new Object[] { localIllegalStateException.toString() });
+      yuk.e("SwipListView", "error:%s", new Object[] { localIllegalStateException.toString() });
     }
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.jdField_a_of_type_Ync == null) {
+    if (this.a.jdField_a_of_type_Yqx == null) {
       return false;
     }
-    paramView = this.a.jdField_a_of_type_Ync.a();
+    paramView = this.a.jdField_a_of_type_Yqx.a();
     if (paramView.getVisibility() == 0)
     {
       ((InputMethodManager)this.a.jdField_a_of_type_AndroidAppActivity.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
@@ -106,31 +106,31 @@ public class StoryMemoriesListView
       paramView.setVisibility(8);
       b();
       paramView = paramView.a.a;
-      int i = yqu.a(paramView.getOwner());
+      int i = yup.a(paramView.getOwner());
       if (paramView.getOwner().isMe()) {}
       for (paramView = "1";; paramView = "2")
       {
-        yqu.a("home_page", "cancel_reply", i, 0, new String[] { paramView, "3", "", "" });
+        yup.a("home_page", "cancel_reply", i, 0, new String[] { paramView, "3", "", "" });
         return true;
       }
     }
     return false;
   }
   
-  public void setConfig(@NonNull ygj paramygj)
+  public void setConfig(@NonNull yke paramyke)
   {
-    this.a = paramygj;
+    this.a = paramyke;
   }
   
   public boolean trackMotionScroll(int paramInt1, int paramInt2)
   {
-    ygv localygv = (ygv)a("FeedSegment");
-    if ((localygv == null) || (localygv.a() == 0) || (!localygv.c())) {
+    ykq localykq = (ykq)a("FeedSegment");
+    if ((localykq == null) || (localykq.a() == 0) || (!localykq.c())) {
       return super.trackMotionScroll(paramInt1, paramInt2);
     }
-    localygv.c(1);
+    localykq.c(1);
     boolean bool = super.trackMotionScroll(paramInt1, paramInt2);
-    localygv.c(0);
+    localykq.c(0);
     return bool;
   }
 }

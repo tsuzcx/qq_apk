@@ -1,65 +1,36 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ImageData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
-public class syz
-  implements syk
+class syz
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public static String a(String paramString, ImageData paramImageData)
+  private final int jdField_a_of_type_Int;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final int b;
+  
+  syz(syy paramsyy, View paramView, int paramInt1, int paramInt2)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!paramImageData.a)) {}
-    while (!((Boolean)bmqa.a("sp_native_web_sharpp_pic_switch", Boolean.valueOf(false))).booleanValue()) {
-      return paramString;
-    }
-    if (paramString.contains("fmt=gif"))
-    {
-      paramImageData.a = false;
-      return paramString;
-    }
-    paramImageData = bkgj.a(paramString);
-    if (paramImageData.containsKey("tp"))
-    {
-      paramImageData = (String)paramImageData.get("tp");
-      paramString = paramString.replace("tp=" + paramImageData, "tp=sharp");
-    }
-    for (;;)
-    {
-      QLog.d(pwt.a, 2, "sharpSupport, url : " + paramString);
-      return paramString;
-      if (paramImageData.size() > 0) {
-        paramString = paramString + "&tp=sharp";
-      } else {
-        paramString = paramString + "?tp=sharp";
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public static boolean a(String paramString)
+  public boolean onPreDraw()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    this.jdField_a_of_type_Syy.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Syy.a, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Syy.a) + syy.a(this.jdField_a_of_type_Syy));
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Syy.a, ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Syy.a) + syy.b(this.jdField_a_of_type_Syy));
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-    return paramString.contains("tp=sharp");
-  }
-  
-  public int a(BaseData paramBaseData)
-  {
-    return 1;
-  }
-  
-  public syj a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    return new sza(LayoutInflater.from(paramContext).inflate(2131560165, null), paramBaseData);
-  }
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.t == 3;
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Syy.a, this.jdField_a_of_type_Syy.a.a(ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Syy.a)));
+    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Syy.a) != null) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Syy.a).setVisibility(4);
+    }
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Syy.a, this.jdField_a_of_type_Int, this.b);
+    return true;
   }
 }
 

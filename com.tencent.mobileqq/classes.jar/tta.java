@@ -1,8 +1,24 @@
-public abstract interface tta
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
+class tta
+  extends Handler
 {
-  public abstract void a();
+  tta(tsz paramtsz, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void b();
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    tsz.a(this.a);
+  }
 }
 
 

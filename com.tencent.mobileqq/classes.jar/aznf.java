@@ -1,22 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.qphone.base.util.QLog;
-
-class aznf
-  extends aniz
+public final class aznf
 {
-  aznf(azne paramazne) {}
+  public int a;
+  public String a;
+  public int b;
   
-  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public aznf(int paramInt1, int paramInt2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileAccountLevelComponent", 2, String.format("onGetAllowSeeLoginDays isSuccess=%s isAllow=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
-    }
-    if ((paramBoolean1) && (TextUtils.equals(paramString, ((azfe)azne.a(this.a)).a.a)))
-    {
-      azne.a(this.a, paramBoolean2);
-      this.a.a();
-    }
+    this.jdField_a_of_type_Int = 100;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public aznf(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = 100;
+    this.b = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

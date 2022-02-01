@@ -1,26 +1,36 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class bfqp
-  extends niv
+class bfqp
+  extends aojs
 {
-  public bfqp()
-  {
-    super(false);
-  }
+  bfqp(bfqm parambfqm) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(int paramInt1, int paramInt2)
   {
-    QLog.i(".troop.troop_app", 2, "clickReport errorCode = " + paramInt);
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
+    QLog.e("TroopCreateLogic", 1, "onTroopManagerFailed, result = " + paramInt2);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Aojs);
+    if (this.a.jdField_a_of_type_Bfqv != null)
     {
-      a(bool);
-      return;
+      if (paramInt1 == 8) {
+        this.a.jdField_a_of_type_Bfqv.b(paramInt2, "");
+      }
+      this.a.jdField_a_of_type_Bfqv = null;
     }
   }
   
-  protected abstract void a(boolean paramBoolean);
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Aojs);
+    if (paramInt1 == 8)
+    {
+      if (this.a.jdField_a_of_type_Bfqv != null) {
+        this.a.jdField_a_of_type_Bfqv.b(0, paramString);
+      }
+      this.a.a(paramString, true, "");
+      ((aoip)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).b(Long.parseLong(paramString));
+    }
+  }
 }
 
 

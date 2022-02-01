@@ -1,19 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
+import rx.functions.Func1;
 
 public class uwb
-  implements View.OnClickListener
+  implements Func1<Bitmap, Bitmap>
 {
-  public uwb(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public uwb(RoundImageView paramRoundImageView, Drawable paramDrawable) {}
   
-  public void onClick(View paramView)
+  public Bitmap a(Bitmap paramBitmap)
   {
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    Canvas localCanvas = new Canvas(paramBitmap);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(localCanvas);
+    return paramBitmap;
   }
 }
 

@@ -1,28 +1,37 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import android.annotation.TargetApi;
+import android.content.ClipData;
+import android.content.ClipData.Item;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnLongClickListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
-public class ayoh
-  implements View.OnClickListener
+class ayoh
+  implements View.OnLongClickListener
 {
-  public ayoh(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  ayoh(aynp paramaynp) {}
   
-  public void onClick(View paramView)
+  @TargetApi(11)
+  public boolean onLongClick(View paramView)
   {
-    aype.a(AutoReplyEditActivity.a(this.a), true);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("AutoReplyEditActivity:new_text", AutoReplyEditActivity.b(this.a));
-    if (AutoReplyEditActivity.a(this.a) != null) {
-      localIntent.putExtra("AutoReplyEditActivity:text", new AutoReplyText(AutoReplyText.trimRawString(String.valueOf(AutoReplyEditActivity.a(this.a).getText()), false), AutoReplyEditActivity.a(this.a).getTextId()));
+    if (this.a.a.getChildCount() <= 1) {
+      return true;
     }
-    this.a.getActivity().setResult(325, localIntent);
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    Object localObject = new ClipData.Item("");
+    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new ayos(this.a, paramView), paramView, 0);
+    localObject = aynp.a(this.a, (PicInfo)paramView.getTag(), null);
+    ((RelativeLayout)localObject).setVisibility(4);
+    aynp.a(this.a, (RelativeLayout)localObject);
+    int i = this.a.a.indexOfChild(paramView);
+    if (i != -1)
+    {
+      this.a.a.removeView(paramView);
+      this.a.a.addView(aynp.a(this.a), i);
+      return true;
+    }
+    paramView.setVisibility(4);
+    return true;
   }
 }
 

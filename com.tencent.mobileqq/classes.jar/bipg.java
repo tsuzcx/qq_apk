@@ -1,8 +1,27 @@
 import android.graphics.Bitmap;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-public abstract interface bipg
+class bipg
+  extends bipi
 {
-  public abstract void a(String paramString1, Bitmap paramBitmap, String paramString2);
+  bipg(bipd parambipd)
+  {
+    super(parambipd);
+  }
+  
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  {
+    return a(paramWebView, paramString);
+  }
 }
 
 

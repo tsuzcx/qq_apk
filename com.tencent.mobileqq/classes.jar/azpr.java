@@ -1,168 +1,260 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PointF;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profile.diy.DiyTextView;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
+import java.util.HashMap;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/component/background/VasProfileSimpleBackgroundComponent;", "Lcom/tencent/mobileqq/profilecard/vas/component/background/VasProfileBackgroundComponent;", "componentCenter", "Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;", "cardInfo", "Lcom/tencent/mobileqq/profile/ProfileCardInfo;", "(Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;Lcom/tencent/mobileqq/profile/ProfileCardInfo;)V", "mDiyTextLayout", "Lcom/tencent/mobileqq/profile/view/SingleTouchLayout;", "mDiyTextMask", "Landroid/view/View;", "mDiyTextView", "Lcom/tencent/mobileqq/profile/diy/DiyTextView;", "getDiyTextCenterPoint", "Landroid/graphics/PointF;", "onCreate", "", "activity", "Lcom/tencent/mobileqq/app/BaseActivity;", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onVasDataUpdate", "", "data", "Lcom/tencent/mobileqq/profilecard/vas/VasProfileData;", "updateDiyText", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class azpr
-  extends azpn
+public class azpr
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private DiyTextView jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView;
-  private SingleTouchLayout jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout;
+  public long a;
+  private boolean a;
+  public long b;
+  private boolean b;
+  private long jdField_c_of_type_Long = -1L;
+  private boolean jdField_c_of_type_Boolean;
+  private long jdField_d_of_type_Long = -1L;
+  private boolean jdField_d_of_type_Boolean;
+  private long e = -1L;
   
-  public azpr(@Nullable azlw paramazlw, @Nullable azfe paramazfe)
+  public azpr()
   {
-    super(paramazlw, paramazfe);
+    a();
   }
   
-  private final void a(azpj paramazpj)
+  private void a()
   {
-    int j = -77;
-    azpi localazpi = paramazpj.a();
-    Object localObject = (CharSequence)localazpi.a();
-    int i;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0))
-    {
-      i = 1;
-      if ((i != 0) || (paramazpj.a() != azfl.g)) {
-        break label379;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView == null)
-      {
-        paramazpj = new DiyTextView(a().getContext());
-        paramazpj.setOnMeasuredListener((afrc)new azps(this));
-        this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView = paramazpj;
-      }
-      paramazpj = this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView;
-      if (paramazpj == null) {
-        Intrinsics.throwNpe();
-      }
-      paramazpj.setMaxSize(a().getWidth() * 2 / 3);
-      paramazpj.setVisibility(0);
-      paramazpj.setHiBoom(localazpi.a(), 1, auzk.b);
-      paramazpj.setText((CharSequence)localazpi.a());
-      paramazpj = this.jdField_a_of_type_AndroidViewView;
-      if (paramazpj == null) {
-        Intrinsics.throwNpe();
-      }
-      i = (int)(localazpi.e() * 'ÿ');
-      if (i >= -77) {
-        break label359;
-      }
-      i = j;
+    this.jdField_a_of_type_Long = (azqi.a("gifWifiPreDownloadLimit", 1000L) * 1024L * 1024L);
+    this.jdField_b_of_type_Long = (azqi.a("gifXgPreDownloadLimit", 32L) * 1024L * 1024L);
+    if (QLog.isColorLevel()) {
+      QLog.d("GIFPreDownloadLimit", 2, new Object[] { "initConfig, gifWifiPreDownloadLimit=", Long.valueOf(this.jdField_a_of_type_Long), " gifXgPreDownloadLimit=", Long.valueOf(this.jdField_b_of_type_Long) });
     }
-    label418:
+  }
+  
+  private void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  {
+    int i = -1;
+    int j;
+    if (paramBoolean1)
+    {
+      if (!this.jdField_c_of_type_Boolean)
+      {
+        this.jdField_c_of_type_Boolean = true;
+        i = 4;
+      }
+      j = i;
+      if (!paramBoolean2) {
+        break label277;
+      }
+      j = i;
+      if (this.jdField_a_of_type_Boolean) {
+        break label277;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      j = 2;
+    }
     for (;;)
     {
-      label189:
-      if (i > 0) {}
-      for (j = -16777216;; j = -1)
+      label62:
+      label106:
+      HashMap localHashMap;
+      if (i > 0)
       {
-        paramazpj.setBackgroundColor(j);
-        paramazpj = paramazpj.getBackground();
-        Intrinsics.checkExpressionValueIsNotNull(paramazpj, "background");
-        paramazpj.setAlpha(Math.abs(i));
-        paramazpj = this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout;
-        if (paramazpj == null) {
-          Intrinsics.throwNpe();
+        if (paramBoolean1)
+        {
+          str = "gifWifiFirstFlag";
+          azqi.a(str, 1L);
+          bdll.b(null, "dc00898", "", "", "0X800B3BA", "0X800B3BA", i, 0, "", "", "", "");
         }
-        paramazpj.setVisibility(0);
-        paramazpj.a((View)this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView);
-        paramazpj.setImageDegree(localazpi.c());
-        paramazpj.setImageScale(localazpi.d());
-        localObject = a().getContext();
-        Intrinsics.checkExpressionValueIsNotNull(localObject, "containerView.context");
-        localObject = ((Context)localObject).getResources();
-        Intrinsics.checkExpressionValueIsNotNull(localObject, "containerView.context.resources");
-        localObject = ((Resources)localObject).getDisplayMetrics();
-        float f1 = localazpi.a();
-        float f2 = ((DisplayMetrics)localObject).widthPixels;
-        float f3 = localazpi.b();
-        paramazpj.setCenterPoint(f1 * f2, ((DisplayMetrics)localObject).heightPixels * f3);
-        paramazpj.a();
-        paramazpj.invalidate();
+      }
+      else
+      {
+        if (j > 0)
+        {
+          if (!paramBoolean1) {
+            break label256;
+          }
+          str = "gifWifiOverFlag";
+          azqi.a(str, 1L);
+          bdll.b(null, "dc00898", "", "", "0X800B3BA", "0X800B3BA", j, 0, "", "", "", "");
+        }
+        localHashMap = new HashMap();
+        if (!paramBoolean1) {
+          break label263;
+        }
+        str = "Wifi";
+        label154:
+        localHashMap.put("NetworkType", str);
+        if (!paramBoolean2) {
+          break label270;
+        }
+      }
+      label256:
+      label263:
+      label270:
+      for (String str = "1";; str = "0")
+      {
+        localHashMap.put("OverLimit", str);
+        bdmc.a(BaseApplicationImpl.getContext()).a("", "AioGifPreDownload", true, -1L, paramLong, localHashMap, null);
         return;
-        i = 0;
-        break;
-        label359:
-        if (i <= 77) {
-          break label418;
+        if (!this.jdField_d_of_type_Boolean)
+        {
+          this.jdField_d_of_type_Boolean = true;
+          i = 3;
         }
-        i = 77;
-        break label189;
+        j = i;
+        if (!paramBoolean2) {
+          break label277;
+        }
+        j = i;
+        if (this.jdField_b_of_type_Boolean) {
+          break label277;
+        }
+        this.jdField_b_of_type_Boolean = true;
+        j = 1;
+        break;
+        str = "gifXgFirstFlag";
+        break label62;
+        str = "gifXgOverFlag";
+        break label106;
+        str = "XG";
+        break label154;
       }
-      label379:
-      paramazpj = this.jdField_a_of_type_AndroidViewView;
-      if (paramazpj != null) {
-        paramazpj.setVisibility(8);
-      }
-      paramazpj = this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout;
-      if (paramazpj != null) {
-        paramazpj.setVisibility(8);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView = ((DiyTextView)null);
-      return;
+      label277:
+      int k = -1;
+      i = j;
+      j = k;
     }
   }
   
-  @NotNull
-  public final PointF a()
+  public static boolean a(long paramLong1, long paramLong2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout;
-    if (localObject != null)
-    {
-      localObject = ((SingleTouchLayout)localObject).a();
-      if (localObject != null) {
-        return localObject;
-      }
+    Calendar localCalendar1 = Calendar.getInstance();
+    localCalendar1.setTimeInMillis(paramLong1);
+    Calendar localCalendar2 = Calendar.getInstance();
+    localCalendar2.setTimeInMillis(paramLong2);
+    return (localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) == localCalendar2.get(6));
+  }
+  
+  public static boolean a(MessageForPic paramMessageForPic)
+  {
+    if (paramMessageForPic == null) {}
+    while ((paramMessageForPic.mNotPredownloadReason != -11) && (paramMessageForPic.mNotPredownloadReason != 2)) {
+      return false;
     }
-    return new PointF();
-  }
-  
-  public void a(@NotNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
-  {
-    Intrinsics.checkParameterIsNotNull(paramBaseActivity, "activity");
-    super.a(paramBaseActivity, paramBundle);
-    paramBundle = new View((Context)paramBaseActivity);
-    paramBundle.setBackgroundColor(-16777216);
-    paramBundle.setVisibility(8);
-    paramBundle.setContentDescription((CharSequence)"qqvip_diy_text_mask");
-    a().addView(paramBundle);
-    this.jdField_a_of_type_AndroidViewView = paramBundle;
-    paramBaseActivity = new SingleTouchLayout((Context)paramBaseActivity);
-    paramBaseActivity.setVisibility(8);
-    paramBaseActivity.setEditable(false);
-    paramBaseActivity.setMovable(false);
-    paramBaseActivity.setContentDescription((CharSequence)"qqvip_diy_text");
-    a().addView((View)paramBaseActivity);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout = paramBaseActivity;
-  }
-  
-  public boolean a(@NotNull azpj paramazpj)
-  {
-    Intrinsics.checkParameterIsNotNull(paramazpj, "data");
-    super.a(paramazpj);
-    a(paramazpj);
     return true;
   }
   
-  public void f()
+  public static boolean a(MessageForPic paramMessageForPic, boolean paramBoolean, int paramInt)
   {
-    super.f();
-    a().removeView(this.jdField_a_of_type_AndroidViewView);
-    a().removeView((View)this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout);
+    if (paramMessageForPic == null) {
+      if ((!paramBoolean) || (paramInt != 5)) {}
+    }
+    while ((bmgb.a(paramMessageForPic.imageType)) && (paramInt == 5))
+    {
+      return true;
+      return false;
+    }
+    return false;
+  }
+  
+  public void a(boolean paramBoolean, long paramLong)
+  {
+    if (paramBoolean) {
+      this.jdField_c_of_type_Long += paramLong;
+    }
+    for (;;)
+    {
+      azqi.a("gifWifiPreDownloadFlow", this.jdField_c_of_type_Long);
+      azqi.a("gifXgPreDownloadFlow", this.jdField_d_of_type_Long);
+      azqi.a("gifPreDownloadTimestamp", this.e);
+      return;
+      this.jdField_d_of_type_Long += paramLong;
+    }
+  }
+  
+  public boolean a(boolean paramBoolean, long paramLong)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((this.jdField_c_of_type_Long < 0L) || (this.jdField_d_of_type_Long < 0L) || (this.e < 0L))
+    {
+      this.jdField_c_of_type_Long = azqi.a("gifWifiPreDownloadFlow", 0L);
+      this.jdField_d_of_type_Long = azqi.a("gifXgPreDownloadFlow", 0L);
+      this.e = azqi.a("gifPreDownloadTimestamp", 0L);
+      if (this.e == 0L) {
+        this.e = System.currentTimeMillis();
+      }
+      if (azqi.a("gifWifiOverFlag", 0L) == 1L)
+      {
+        bool1 = true;
+        this.jdField_a_of_type_Boolean = bool1;
+        if (azqi.a("gifXgOverFlag", 0L) != 1L) {
+          break label254;
+        }
+        bool1 = true;
+        label110:
+        this.jdField_b_of_type_Boolean = bool1;
+        if (azqi.a("gifWifiFirstFlag", 0L) != 1L) {
+          break label260;
+        }
+        bool1 = true;
+        label130:
+        this.jdField_c_of_type_Boolean = bool1;
+        if (azqi.a("gifXgFirstFlag", 0L) != 1L) {
+          break label266;
+        }
+        bool1 = true;
+        label150:
+        this.jdField_d_of_type_Boolean = bool1;
+      }
+    }
+    else
+    {
+      if (!a(this.e, System.currentTimeMillis()))
+      {
+        this.jdField_c_of_type_Long = 0L;
+        this.jdField_d_of_type_Long = 0L;
+        this.e = System.currentTimeMillis();
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_b_of_type_Boolean = false;
+        this.jdField_c_of_type_Boolean = false;
+        this.jdField_d_of_type_Boolean = false;
+      }
+      if (!paramBoolean) {
+        break label278;
+      }
+      if (this.jdField_c_of_type_Long <= this.jdField_a_of_type_Long) {
+        break label272;
+      }
+      bool1 = bool2;
+    }
+    for (;;)
+    {
+      if (!bool1) {
+        a(paramBoolean, paramLong);
+      }
+      a(paramBoolean, bool1, paramLong);
+      return bool1;
+      bool1 = false;
+      break;
+      label254:
+      bool1 = false;
+      break label110;
+      label260:
+      bool1 = false;
+      break label130;
+      label266:
+      bool1 = false;
+      break label150;
+      label272:
+      bool1 = false;
+      continue;
+      label278:
+      bool1 = bool2;
+      if (this.jdField_d_of_type_Long <= this.jdField_b_of_type_Long) {
+        bool1 = false;
+      }
+    }
   }
 }
 

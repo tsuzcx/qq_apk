@@ -1,21 +1,58 @@
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.TMG.utils.QLog;
+import java.util.Calendar;
+import java.util.Date;
 
 class aixm
-  extends aniz
+  implements aqyh
 {
   aixm(aixj paramaixj) {}
   
-  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  public int a()
   {
-    if (paramBoolean)
+    return 4;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      QQToast.a(aixj.a(this.a), 2131698107, 3000).a();
-      if (aixj.a(this.a) != 23) {
-        this.a.a(true);
-      }
-      return;
+    default: 
+      return 1;
+    case 0: 
+      return 2;
+    case 1: 
+      return aixb.a(aixj.b(this.a));
+    case 2: 
+      return 24;
     }
-    QQToast.a(aixj.a(this.a), 2131698106, 0).a();
+    return 60;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return "";
+    case 0: 
+      return "" + (aixj.c(this.a) + paramInt2) + "年";
+    case 1: 
+      Calendar localCalendar = Calendar.getInstance();
+      localCalendar.clear();
+      localCalendar.setFirstDayOfWeek(1);
+      localCalendar.set(1, aixj.b(this.a));
+      localCalendar.add(5, paramInt2);
+      String str = "" + (localCalendar.get(2) + 1);
+      str = str + "月";
+      str = str + localCalendar.get(5);
+      str = str + "日 ";
+      str = str + aixb.a(localCalendar.get(7));
+      QLog.d("UpComingMsgLogic.UpcomingTimeSelector", 3, str + " day_of_week " + localCalendar.get(7) + "\n" + localCalendar.getTime().toString());
+      return str;
+    case 2: 
+      return "" + (aixj.d(this.a) + paramInt2);
+    }
+    return "" + (aixj.e(this.a) + paramInt2);
   }
 }
 

@@ -1,16 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import mqq.app.AppActivity;
 
 public class afkh
   implements DialogInterface.OnClickListener
 {
-  public afkh(TroopInfoActivity paramTroopInfoActivity) {}
+  public afkh(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, AppActivity paramAppActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    this.a.j();
+    if (paramInt == 1)
+    {
+      RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, true);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.a.a(this.jdField_a_of_type_MqqAppAppActivity, false)) {
+        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).b();
+      }
+    }
   }
 }
 

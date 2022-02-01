@@ -9,13 +9,13 @@ import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import oat;
-import uaa;
+import ocd;
+import uac;
 
 public class PublicAccountUtil$9$1
   implements Runnable
 {
-  public PublicAccountUtil$9$1(uaa paramuaa, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse) {}
+  public PublicAccountUtil$9$1(uac paramuac, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse) {}
   
   public void run()
   {
@@ -40,7 +40,7 @@ public class PublicAccountUtil$9$1
     }
     for (;;)
     {
-      oat.a((QQAppInterface)localObject1, this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int);
+      ocd.a((QQAppInterface)localObject1, this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int);
       return;
       label139:
       localObject1 = BaseApplicationImpl.getApplication().peekAppRuntime();

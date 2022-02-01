@@ -1,12 +1,16 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.ProgressDialog;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
 
-public abstract interface afxl
+public class afxl
+  implements anvi
 {
-  public abstract void a(int paramInt, Context paramContext, ChatMessage paramChatMessage);
+  public afxl(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
   
-  public abstract bguj[] a(View paramView);
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    TroopRobotPickerActivity.a(this.a);
+    this.a.a.dismiss();
+  }
 }
 
 

@@ -1,82 +1,26 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import feedcloud.FeedCloudCommon.Entry;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 public class uxn
+  implements URLDrawable.URLDrawableListener
 {
-  public static final String a;
-  public static final HashSet<String> a;
+  public uxn(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity, URLDrawable paramURLDrawable) {}
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = QzoneConfig.getQQCircleSearchPageUrl();
-    jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    jdField_a_of_type_JavaUtilHashSet.add("_wwv");
-    jdField_a_of_type_JavaUtilHashSet.add("_proxy");
-    jdField_a_of_type_JavaUtilHashSet.add("_wv");
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public static String a(List<FeedCloudCommon.Entry> paramList, String paramString)
-  {
-    return uxx.a(paramList, paramString, "");
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public static HashMap<String, String> a(String paramString)
-  {
-    HashMap localHashMap;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = Uri.parse(paramString);
-        if (paramString != null)
-        {
-          localHashMap = new HashMap();
-          Iterator localIterator = paramString.getQueryParameterNames().iterator();
-          while (localIterator.hasNext())
-          {
-            String str = (String)localIterator.next();
-            localHashMap.put(str, paramString.getQueryParameter(str));
-          }
-        }
-      }
-      return new HashMap();
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localHashMap;
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public static boolean a(String paramString)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    try
+    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) && ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable)))
     {
-      String str = new URL(paramString).getHost();
-      QLog.d("QCircleJsUrlConfig", 1, "url:" + paramString + " domain:" + str);
-      if (!TextUtils.isEmpty(str))
-      {
-        boolean bool = str.endsWith(".qq.com");
-        if (bool) {
-          return true;
-        }
-      }
-      return false;
+      paramURLDrawable = (RegionDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
+      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionMainActivity.a = paramURLDrawable.getBitmap();
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return false;
   }
 }
 

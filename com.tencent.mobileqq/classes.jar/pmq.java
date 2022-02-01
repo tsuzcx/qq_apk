@@ -1,35 +1,103 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.SystemClock;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
 public class pmq
-  implements ThreadFactory
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+  public static final int[] a = { 0, 1, 2, 3, 4 };
   
-  public pmq()
+  public static SparseArray<pmk> a(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup)
   {
-    Object localObject = System.getSecurityManager();
-    if (localObject != null) {}
-    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
+    SparseArray localSparseArray = new SparseArray();
+    int i = 0;
+    if (i < a.length)
     {
-      this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
-      this.jdField_a_of_type_JavaLangString = "readinjoy-common-";
-      return;
+      int j = a[i];
+      pmk localpmk = a(j);
+      if (localpmk == null) {
+        QLog.d("HandlerFactory", 2, new Object[] { "create handler fail, id : ", Integer.valueOf(j) });
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localpmk.a(paramReadInJoyBaseListViewGroup);
+        localSparseArray.put(j, localpmk);
+      }
+    }
+    return localSparseArray;
+  }
+  
+  public static Object a(SparseArray<pmk> paramSparseArray, pmr parampmr)
+  {
+    if (parampmr == null) {
+      return null;
+    }
+    int i = -1;
+    int j = 0;
+    Object localObject = null;
+    long l1;
+    if (j < paramSparseArray.size())
+    {
+      l1 = SystemClock.currentThreadTimeMillis();
+      parampmr.a((pmk)paramSparseArray.valueAt(j));
+      if (parampmr.a == null) {
+        break label189;
+      }
+      if (localObject == null)
+      {
+        localObject = parampmr.a;
+        i = ((pmk)paramSparseArray.valueAt(j)).a();
+        parampmr.a = null;
+      }
+    }
+    label189:
+    for (;;)
+    {
+      long l2 = SystemClock.currentThreadTimeMillis();
+      QLog.d("HandlerFactory", 2, new Object[] { "execute with return value handler job , id : ", Integer.valueOf(paramSparseArray.keyAt(j)), ", jobName : ", parampmr.a(), ", cost : ", Long.valueOf(l2 - l1) });
+      j += 1;
+      break;
+      throw new RuntimeException("has more than one handler return value. preHandlerID : " + i + ", now : " + ((pmk)paramSparseArray.valueAt(j)).a());
+      return localObject;
     }
   }
   
-  public Thread newThread(Runnable paramRunnable)
+  public static pmk a(int paramInt)
   {
-    paramRunnable = new Thread(this.jdField_a_of_type_JavaLangThreadGroup, paramRunnable, this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement(), 0L);
-    if (paramRunnable.isDaemon()) {
-      paramRunnable.setDaemon(false);
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 1: 
+      return new tmr();
+    case 2: 
+      return new pmm();
+    case 0: 
+      return new pms();
+    case 3: 
+      return new pml();
     }
-    if (paramRunnable.getPriority() != 5) {
-      paramRunnable.setPriority(5);
+    return new pnf();
+  }
+  
+  public static void a(SparseArray<pmk> paramSparseArray, pmr parampmr)
+  {
+    if (parampmr == null) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < paramSparseArray.size())
+      {
+        long l1 = SystemClock.currentThreadTimeMillis();
+        parampmr.a((pmk)paramSparseArray.valueAt(i));
+        long l2 = SystemClock.currentThreadTimeMillis();
+        QLog.d("HandlerFactory", 2, new Object[] { "execute handler job , id : ", Integer.valueOf(paramSparseArray.keyAt(i)), ", jobName : ", parampmr.a(), ", cost : ", Long.valueOf(l2 - l1) });
+        i += 1;
+      }
     }
-    return paramRunnable;
   }
 }
 

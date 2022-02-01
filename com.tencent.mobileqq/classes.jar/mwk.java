@@ -1,37 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.widget.stageview.StageEffectView;
+import com.tencent.av.widget.stageview.StageMemberView;
+import java.util.Comparator;
 
-class mwk
-  extends anjq
+public class mwk
+  implements Comparator<StageMemberView>
 {
-  mwk(mwj parammwj) {}
+  public mwk(StageEffectView paramStageEffectView) {}
   
-  protected void a(boolean paramBoolean)
+  public int a(StageMemberView paramStageMemberView1, StageMemberView paramStageMemberView2)
   {
-    if (paramBoolean)
-    {
-      bcst.b(null, "dc00898", "", "", "0X800B079", "0X800B079", 0, 0, "", "", "", "");
-      if (!this.a.jdField_a_of_type_JavaLangString.isEmpty()) {
-        break label153;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("AvGameManager", 2, "onGetRealNameStatusForAV createAvGameRoom");
-      }
-      this.a.jdField_a_of_type_Mwd.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_b_of_type_Int);
+    if ((paramStageMemberView1 == null) && (paramStageMemberView2 == null)) {
+      return 0;
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("RealName", 2, "onGetRealNameStatusForAV authed: " + paramBoolean + ". Remove observer.");
-      }
-      mwd.a(this.a.jdField_a_of_type_Mwd).removeObserver(mwd.a(this.a.jdField_a_of_type_Mwd));
-      return;
-      label153:
-      if (QLog.isColorLevel()) {
-        QLog.i("AvGameManager", 2, "onGetRealNameStatusForAV joinAvGameRoom. roomId: " + this.a.jdField_a_of_type_JavaLangString);
-      }
-      this.a.jdField_a_of_type_Mwd.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString);
+    if (paramStageMemberView2 == null) {
+      return -1;
     }
+    if (paramStageMemberView1 == null) {
+      return 1;
+    }
+    paramStageMemberView1 = (mwq)paramStageMemberView1.getTag();
+    paramStageMemberView2 = (mwq)paramStageMemberView2.getTag();
+    if (paramStageMemberView1.a == paramStageMemberView2.a) {
+      return 0;
+    }
+    if (mwf.a(paramStageMemberView1.a - 10000, 20000) < mwf.a(paramStageMemberView2.a - 10000, 20000)) {
+      return -1;
+    }
+    return 1;
   }
 }
 

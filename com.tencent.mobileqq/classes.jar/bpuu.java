@@ -1,26 +1,21 @@
-import android.util.Property;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import java.util.List;
 
-class bpuu
-  extends Property<bput, Float>
+public class bpuu
+  implements View.OnClickListener
 {
-  bpuu(bput parambput, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public bpuu(AdvancedProviderView paramAdvancedProviderView) {}
   
-  public Float a(bput parambput)
+  public void onClick(View paramView)
   {
-    if (parambput != null) {
-      return Float.valueOf(bput.a(parambput));
+    List localList = brhm.a().a();
+    if (localList.size() > 1) {
+      zqd.a(this.a.a, localList.get(1));
     }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(bput parambput, Float paramFloat)
-  {
-    if (parambput != null) {
-      bput.a(parambput, paramFloat.floatValue());
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

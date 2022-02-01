@@ -3,15 +3,15 @@ package com.tencent.biz.pubaccount.readinjoy.handlers;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import oat;
+import ocd;
 import org.json.JSONObject;
-import pty;
-import rev;
+import pml;
+import qvp;
 
 public class DailyHandler$1
   implements Runnable
 {
-  public DailyHandler$1(pty parampty, ArrayList paramArrayList) {}
+  public DailyHandler$1(pml parampml, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -27,12 +27,12 @@ public class DailyHandler$1
           j = this.a.size() - 1;
           if (j >= i)
           {
-            localObject2 = (rev)this.a.get(j);
-            if ((localObject2 == null) || (((rev)localObject2).a == null)) {
+            localObject2 = (qvp)this.a.get(j);
+            if ((localObject2 == null) || (((qvp)localObject2).a == null)) {
               break label220;
             }
-            ((StringBuilder)localObject1).append(((rev)localObject2).a.mArticleID + "_");
-            ((StringBuilder)localObject1).append(((rev)localObject2).a.mJumpType);
+            ((StringBuilder)localObject1).append(((qvp)localObject2).a.mArticleID + "_");
+            ((StringBuilder)localObject1).append(((qvp)localObject2).a.mJumpType);
             if (j == i) {
               break label220;
             }
@@ -42,7 +42,7 @@ public class DailyHandler$1
           localObject1 = ((StringBuilder)localObject1).toString();
           Object localObject2 = new JSONObject();
           ((JSONObject)localObject2).put("epList", localObject1);
-          oat.a(null, null, "0X8009CCA", "0X8009CCA", 0, 0, "", "", "", ((JSONObject)localObject2).toString(), false);
+          ocd.a(null, null, "0X8009CCA", "0X8009CCA", 0, 0, "", "", "", ((JSONObject)localObject2).toString(), false);
           this.a.clear();
           return;
         }

@@ -1,8 +1,16 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.support.annotation.NonNull;
 
-public abstract interface yml
+public class yml
+  extends wip
 {
-  public abstract void a(ErrorMessage paramErrorMessage);
+  public int a;
+  public String a;
+  
+  public yml(@NonNull String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

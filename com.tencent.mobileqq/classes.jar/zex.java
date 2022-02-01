@@ -1,73 +1,103 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
-public class zex
-  extends zez<zem, zem>
+public abstract class zex
 {
-  private final int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private final WeakReference<yuk> jdField_a_of_type_JavaLangRefWeakReference;
+  private float jdField_a_of_type_Float = 0.1F;
+  private int jdField_a_of_type_Int = 5;
+  public Drawable a;
+  public final String a;
+  public String b;
+  public String c;
+  public String d;
+  private String e;
   
-  public zex(String paramString, yuk paramyuk, int paramInt)
+  public zex(@NonNull String paramString)
   {
+    if (TextUtils.isEmpty(paramString)) {
+      throw new IllegalStateException("FacePackage'id can not be null.");
+    }
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramyuk);
-    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected void a(JobContext paramJobContext, zem paramzem)
+  public float a()
   {
-    yqp.a("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "start generate thumb ... mVideoIndex = %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    zes localzes = paramzem.jdField_a_of_type_Zes;
-    int i = localzes.c;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      paramJobContext = (yuk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    while (paramJobContext != null)
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public abstract String a();
+  
+  public void a(String paramString)
+  {
+    int i;
+    if (TextUtils.isEmpty(paramString))
     {
-      Bitmap localBitmap = paramJobContext.a(this.jdField_a_of_type_Int);
-      if (localBitmap != null)
+      yuk.e("FacePackage", "config json is empty.");
+      i = 0;
+      if (i == 0)
       {
+        yuk.e("FacePackage", "config json is illegal, use default value, type : %s", new Object[] { a() });
+        if (!"NormalFacePackage".equals(a())) {
+          break label237;
+        }
+        if (!"1".equals(this.jdField_a_of_type_JavaLangString)) {
+          break label223;
+        }
+        this.jdField_a_of_type_Int = 5;
+        this.jdField_a_of_type_Float = 0.1F;
+      }
+    }
+    for (;;)
+    {
+      for (;;)
+      {
+        this.e = null;
+        return;
         try
         {
-          String str2 = this.jdField_a_of_type_JavaLangString;
-          String str1 = str2;
-          if (str2 == null) {
-            str1 = zfc.a(paramzem.jdField_a_of_type_Int, paramzem.b, ".jpg");
+          JSONObject localJSONObject = new JSONObject(paramString);
+          this.jdField_a_of_type_Int = localJSONObject.getInt("amount");
+          this.jdField_a_of_type_Float = Float.valueOf(localJSONObject.getString("spacing")).floatValue();
+          if ((this.jdField_a_of_type_Int < 1) || (this.jdField_a_of_type_Float < 0.0F) || (this.jdField_a_of_type_Float >= 0.5D))
+          {
+            yuk.e("FacePackage", "config json is illegal : %s", new Object[] { paramString });
+            i = 0;
+            break;
           }
-          i = new zeu(localBitmap, str1, localzes.jdField_a_of_type_Int, localzes.jdField_b_of_type_Int, i, localzes.jdField_a_of_type_Float, localzes.jdField_a_of_type_Double, localzes.jdField_b_of_type_Double, paramzem.jdField_a_of_type_Int).a(new Void[0]).intValue();
-          paramJobContext.a(localBitmap);
-          if (i != 0) {
-            break label217;
-          }
-          paramzem.jdField_a_of_type_JavaLangString = str1;
-          paramzem.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = str1;
-          yqp.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb success ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-          super.notifyResult(paramzem);
-          return;
+          this.e = paramString;
+          yuk.a("FacePackage", "parse config json success : %s", paramString);
+          i = 1;
         }
-        finally
+        catch (Exception localException)
         {
-          paramJobContext.a(localBitmap);
+          yuk.e("FacePackage", "parse config json error : " + paramString + ", exception : " + localException.toString());
+          i = 0;
         }
-        paramJobContext = null;
-        continue;
-        label217:
-        yqp.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-        super.notifyError(new ErrorMessage(-1, anni.a(2131704472) + this.jdField_a_of_type_Int));
       }
-      else
-      {
-        yqp.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... EditVideoPlayerExport generateVideoFrameBitmap return null", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-        super.notifyError(new ErrorMessage(-1, anni.a(2131704477) + this.jdField_a_of_type_Int));
-        return;
+      break;
+      label223:
+      this.jdField_a_of_type_Int = 3;
+      this.jdField_a_of_type_Float = 0.05F;
+      continue;
+      label237:
+      if (!"LocationFacePackage".equals(a())) {
+        break label263;
       }
+      this.jdField_a_of_type_Int = 2;
+      this.jdField_a_of_type_Float = 0.1F;
     }
-    yqp.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... can not find EditVideoPlayerExport", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    super.notifyError(new ErrorMessage(-1, anni.a(2131704473) + this.jdField_a_of_type_Int));
+    label263:
+    throw new IllegalStateException("unknown face package, type:" + a());
   }
+  
+  public abstract int b();
 }
 
 

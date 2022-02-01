@@ -17,18 +17,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import azde;
-import azfe;
-import azfl;
-import azgp;
-import azgq;
-import azgr;
-import azgs;
-import azra;
-import azrb;
-import bggq;
-import bghy;
-import bkfv;
+import azvr;
+import azxr;
+import azxy;
+import azzb;
+import azzc;
+import azzd;
+import azze;
+import bajq;
+import bajr;
+import bhgr;
+import bhhz;
+import blha;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -46,7 +46,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import nlw;
+import nnr;
 
 public class VasProfileWZRYView
   extends AbsProfileHeaderView
@@ -61,83 +61,83 @@ public class VasProfileWZRYView
   private ImageView c;
   private float d;
   
-  public VasProfileWZRYView(BaseActivity paramBaseActivity, azfe paramazfe)
+  public VasProfileWZRYView(BaseActivity paramBaseActivity, azxr paramazxr)
   {
-    super(paramBaseActivity, paramazfe);
+    super(paramBaseActivity, paramazxr);
   }
   
   private View a()
   {
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getContext());
-    return this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562082, this, true);
+    return this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562122, this, true);
   }
   
-  private void a(azfe paramazfe, View paramView)
+  private void a(azxr paramazxr, View paramView)
   {
-    AvatarLayout localAvatarLayout = (AvatarLayout)paramView.findViewById(2131381341);
+    AvatarLayout localAvatarLayout = (AvatarLayout)paramView.findViewById(2131381530);
     localAvatarLayout.setVisibility(0);
-    azde localazde = new azde(1, null);
-    localAvatarLayout.setTag(localazde);
+    azvr localazvr = new azvr(1, null);
+    localAvatarLayout.setTag(localazvr);
     localAvatarLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {}
+    if (paramazxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {}
     for (String str = getContext().getString(2131691044);; str = getContext().getString(2131691043))
     {
       localAvatarLayout.setContentDescription(str);
-      localAvatarLayout.a(0, localAvatarLayout.findViewById(2131363303), false);
+      localAvatarLayout.a(0, localAvatarLayout.findViewById(2131363327), false);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_face", localAvatarLayout);
-      super.a(paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-      paramView = (ImageView)paramView.findViewById(2131381339);
+      super.a(paramazxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
+      paramView = (ImageView)paramView.findViewById(2131381528);
       paramView.setVisibility(4);
       paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramView.setTag(localazde);
+      paramView.setTag(localazvr);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_avatar_pendant", paramView);
-      super.b(paramazfe, true);
+      super.b(paramazxr, true);
       return;
     }
   }
   
-  private void b(azfe paramazfe, View paramView)
+  private void b(azxr paramazxr, View paramView)
   {
-    paramView = (ProfileNameView)paramView.findViewById(2131381343);
+    paramView = (ProfileNameView)paramView.findViewById(2131381532);
     paramView.setVisibility(0);
     paramView.setClickable(true);
     paramView.setClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_nick_name", paramView);
-    super.c(paramazfe);
+    super.c(paramazxr);
   }
   
-  private void c(azfe paramazfe, View paramView)
+  private void c(azxr paramazxr, View paramView)
   {
-    paramView = (TextView)paramView.findViewById(2131381345);
+    paramView = (TextView)paramView.findViewById(2131381534);
     this.jdField_a_of_type_JavaUtilHashMap.put("map_key_sex_age_area", paramView);
-    super.d(paramazfe);
+    super.d(paramazxr);
   }
   
-  private void d(azfe paramazfe, View paramView)
+  private void d(azxr paramazxr, View paramView)
   {
-    HeartLayout localHeartLayout = (HeartLayout)paramView.findViewById(2131381337);
+    HeartLayout localHeartLayout = (HeartLayout)paramView.findViewById(2131381526);
     localHeartLayout.setEnabled(false);
-    paramView = (VoteView)paramView.findViewById(2131381352);
+    paramView = (VoteView)paramView.findViewById(2131381541);
     paramView.setHeartLayout(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localHeartLayout);
     this.jdField_a_of_type_JavaUtilHashMap.put("map_key_like", paramView);
-    super.g(paramazfe);
+    super.g(paramazxr);
   }
   
-  private void e(azfe paramazfe, View paramView)
+  private void e(azxr paramazxr, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131381346));
-    azfl.a(this.jdField_a_of_type_AndroidWidgetImageView, "apngDrawable", paramazfe.jdField_a_of_type_Azfl, "wzryLogo");
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131381535));
+    azxy.a(this.jdField_a_of_type_AndroidWidgetImageView, "apngDrawable", paramazxr.jdField_a_of_type_Azxy, "wzryLogo");
     ApngImage.playByTag(7);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131381347));
-    azfl.a(this.jdField_b_of_type_AndroidWidgetImageView, "background", paramazfe.jdField_a_of_type_Azfl, "wzryLogoBg");
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131381536));
+    azxy.a(this.jdField_b_of_type_AndroidWidgetImageView, "background", paramazxr.jdField_a_of_type_Azxy, "wzryLogoBg");
   }
   
   private void f()
   {
-    int i = getResources().getDimensionPixelSize(2131297009);
-    int j = bghy.a(getResources());
+    int i = getResources().getDimensionPixelSize(2131297021);
+    int j = bhhz.a(getResources());
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = ((int)this.jdField_c_of_type_Float - bghy.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 160) - i - j);
+    localLayoutParams.height = ((int)this.jdField_c_of_type_Float - bhhz.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 160) - i - j);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       localLayoutParams.height += ImmersiveUtils.getStatusBarHeight(getContext());
     }
@@ -267,11 +267,11 @@ public class VasProfileWZRYView
       }
       for (;;)
       {
-        if (azfl.b != null) {
-          localSpannableStringBuilder.setSpan(new VasProfileWZRYView.CustomTypefaceSpan("", azfl.b), k, j, 17);
+        if (azxy.b != null) {
+          localSpannableStringBuilder.setSpan(new VasProfileWZRYView.CustomTypefaceSpan("", azxy.b), k, j, 17);
         }
         localSpannableStringBuilder.setSpan(new TextAppearanceSpan(null, 3, paramInt, paramColorStateList, null), k, j, 17);
-        localSpannableStringBuilder.setSpan(new azrb(paramInt, -2.0F), k, j, 17);
+        localSpannableStringBuilder.setSpan(new bajr(paramInt, -2.0F), k, j, 17);
         i += 1;
         break label73;
         str = paramString;
@@ -294,40 +294,40 @@ public class VasProfileWZRYView
     return localSpannableStringBuilder;
   }
   
-  public void a(azfe paramazfe)
+  public void a(azxr paramazxr)
   {
     this.d = this.jdField_c_of_type_Float;
     Object localObject = a();
-    e(paramazfe, (View)localObject);
-    this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131381340);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout = ((ShimmerLinearLayout)((View)localObject).findViewById(2131381335));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131381334));
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)((View)localObject).findViewById(2131381336));
-    azfl.a(this.jdField_a_of_type_AndroidWidgetHorizontalScrollView, "background", paramazfe.jdField_a_of_type_Azfl, "wzryGameInfoBackground");
+    e(paramazxr, (View)localObject);
+    this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131381529);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout = ((ShimmerLinearLayout)((View)localObject).findViewById(2131381524));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131381523));
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)((View)localObject).findViewById(2131381525));
+    azxy.a(this.jdField_a_of_type_AndroidWidgetHorizontalScrollView, "background", paramazxr.jdField_a_of_type_Azxy, "wzryGameInfoBackground");
     f();
-    a(paramazfe, (View)localObject);
-    b(paramazfe, (View)localObject);
-    c(paramazfe, (View)localObject);
-    d(paramazfe, (View)localObject);
-    j(paramazfe);
-    super.a(paramazfe);
-    super.b(paramazfe);
+    a(paramazxr, (View)localObject);
+    b(paramazxr, (View)localObject);
+    c(paramazxr, (View)localObject);
+    d(paramazxr, (View)localObject);
+    j(paramazxr);
+    super.a(paramazxr);
+    super.b(paramazxr);
     e();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) {}
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramazxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) {}
     for (localObject = "PV_owner";; localObject = "PV_visitor")
     {
-      VasWebviewUtil.reportCommercialDrainage("", "card_gameking", (String)localObject, "0", 1, 0, 0, nlw.a(), String.valueOf(paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId), String.valueOf(paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId));
+      VasWebviewUtil.reportCommercialDrainage("", "card_gameking", (String)localObject, "0", 1, 0, 0, nnr.a(), String.valueOf(paramazxr.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId), String.valueOf(paramazxr.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId));
       return;
     }
   }
   
-  public void a(azfe paramazfe, boolean paramBoolean)
+  public void a(azxr paramazxr, boolean paramBoolean)
   {
-    super.g(paramazfe);
-    super.c(paramazfe);
-    super.d(paramazfe);
-    super.b(paramazfe, false);
-    j(paramazfe);
+    super.g(paramazxr);
+    super.c(paramazxr);
+    super.d(paramazxr);
+    super.b(paramazxr, false);
+    j(paramazxr);
   }
   
   public void b()
@@ -353,31 +353,31 @@ public class VasProfileWZRYView
   
   void e()
   {
-    this.jdField_a_of_type_Bkfv.postDelayed(new VasProfileWZRYView.2(this), 1000L);
+    this.jdField_a_of_type_Blha.postDelayed(new VasProfileWZRYView.2(this), 1000L);
   }
   
-  public void j(azfe paramazfe)
+  public void j(azxr paramazxr)
   {
     this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout.b();
     this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout.removeAllViews();
-    Object localObject1 = paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard.getWzryHonorInfo();
+    Object localObject1 = paramazxr.jdField_a_of_type_ComTencentMobileqqDataCard.getWzryHonorInfo();
     Object localObject2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
     if (((List)localObject1).isEmpty())
     {
       this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setVisibility(8);
-      ((RelativeLayout.LayoutParams)localObject2).height = (this.jdField_b_of_type_Int - bghy.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 67));
+      ((RelativeLayout.LayoutParams)localObject2).height = (this.jdField_b_of_type_Int - bhhz.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 67));
       return;
     }
     this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setVisibility(0);
-    ((RelativeLayout.LayoutParams)localObject2).height = (this.jdField_b_of_type_Int - bghy.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 132));
+    ((RelativeLayout.LayoutParams)localObject2).height = (this.jdField_b_of_type_Int - bhhz.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 132));
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, 0, bggq.a(getContext(), 5.0F), 0);
-    azgp localazgp = azgp.jdField_a_of_type_Azgp;
-    int j = getResources().getDimensionPixelSize(2131299107);
-    int k = getResources().getDimensionPixelSize(2131299109);
-    ColorStateList localColorStateList1 = getResources().getColorStateList(2131167300);
-    ColorStateList localColorStateList2 = getResources().getColorStateList(2131167302);
-    if (localazgp != null)
+    localLayoutParams.setMargins(0, 0, bhgr.a(getContext(), 5.0F), 0);
+    azzb localazzb = azzb.jdField_a_of_type_Azzb;
+    int j = getResources().getDimensionPixelSize(2131299153);
+    int k = getResources().getDimensionPixelSize(2131299155);
+    ColorStateList localColorStateList1 = getResources().getColorStateList(2131167346);
+    ColorStateList localColorStateList2 = getResources().getColorStateList(2131167348);
+    if (localazzb != null)
     {
       Iterator localIterator = ((List)localObject1).iterator();
       while (localIterator.hasNext())
@@ -390,37 +390,37 @@ public class VasProfileWZRYView
         if (!TextUtils.isEmpty(((summaryCardWzryInfo)localObject2).strRecord)) {
           localObject1 = ((summaryCardWzryInfo)localObject2).strRecord.split("_");
         }
-        azgq localazgq = (azgq)localazgp.jdField_a_of_type_AndroidUtilSparseArray.get(((summaryCardWzryInfo)localObject2).honorId);
-        if (localazgq != null)
+        azzc localazzc = (azzc)localazzb.jdField_a_of_type_AndroidUtilSparseArray.get(((summaryCardWzryInfo)localObject2).honorId);
+        if (localazzc != null)
         {
-          View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562083, null);
-          ImageView localImageView = (ImageView)localView.findViewById(2131381348);
-          TextView localTextView1 = (TextView)localView.findViewById(2131381350);
-          TextView localTextView2 = (TextView)localView.findViewById(2131381349);
-          if (azfl.a != null)
+          View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562123, null);
+          ImageView localImageView = (ImageView)localView.findViewById(2131381537);
+          TextView localTextView1 = (TextView)localView.findViewById(2131381539);
+          TextView localTextView2 = (TextView)localView.findViewById(2131381538);
+          if (azxy.a != null)
           {
-            localTextView1.setTypeface(azfl.a);
-            localTextView2.setTypeface(azfl.a);
+            localTextView1.setTypeface(azxy.a);
+            localTextView2.setTypeface(azxy.a);
           }
           int i;
           label407:
           label418:
           String str;
-          if (localazgq.jdField_b_of_type_Int == 2)
+          if (localazzc.jdField_b_of_type_Int == 2)
           {
             i = 1;
             if (i == 0) {
               break label532;
             }
-            localObject2 = localazgq.jdField_b_of_type_JavaLangString;
+            localObject2 = localazzc.jdField_b_of_type_JavaLangString;
             if (i == 0) {
               break label542;
             }
-            str = localazgq.jdField_a_of_type_JavaLangString;
+            str = localazzc.jdField_a_of_type_JavaLangString;
             label429:
             localTextView1.setText(a((String)localObject2, (String[])localObject1, a(localTextView1, k, (String)localObject2, (String[])localObject1), 0.0F, localColorStateList2));
             localTextView2.setText(a(str, (String[])localObject1, j, localTextView2.getTextSize(), localColorStateList1));
-            if ((localazgq.jdField_a_of_type_Azgr != null) && (!TextUtils.isEmpty(localazgq.jdField_a_of_type_Azgr.jdField_a_of_type_JavaLangString))) {
+            if ((localazzc.jdField_a_of_type_Azzd != null) && (!TextUtils.isEmpty(localazzc.jdField_a_of_type_Azzd.jdField_a_of_type_JavaLangString))) {
               break label552;
             }
             localImageView.setVisibility(8);
@@ -433,35 +433,35 @@ public class VasProfileWZRYView
             i = 0;
             break label407;
             label532:
-            localObject2 = localazgq.jdField_a_of_type_JavaLangString;
+            localObject2 = localazzc.jdField_a_of_type_JavaLangString;
             break label418;
             label542:
-            str = localazgq.jdField_b_of_type_JavaLangString;
+            str = localazzc.jdField_b_of_type_JavaLangString;
             break label429;
             label552:
             localImageView.setVisibility(0);
             localTextView1.setVisibility(8);
-            localObject2 = localazgq.jdField_a_of_type_Azgr.jdField_a_of_type_JavaLangString;
+            localObject2 = localazzc.jdField_a_of_type_Azzd.jdField_a_of_type_JavaLangString;
             localObject1 = localObject2;
             if (((String)localObject2).contains("/")) {
               localObject1 = ((String)localObject2).substring(((String)localObject2).lastIndexOf("/"));
             }
-            localObject1 = azgs.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()) + (String)localObject1;
-            if (paramazfe.jdField_a_of_type_Azfl != null) {
-              localImageView.setImageDrawable(paramazfe.jdField_a_of_type_Azfl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject1, true, true));
+            localObject1 = azze.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()) + (String)localObject1;
+            if (paramazxr.jdField_a_of_type_Azxy != null) {
+              localImageView.setImageDrawable(paramazxr.jdField_a_of_type_Azxy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject1, true, true));
             }
           }
         }
       }
     }
-    if ((paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) || (paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))
+    if ((paramazxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) || (paramazxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))
     {
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      azfl.a(this.jdField_c_of_type_AndroidWidgetImageView, "background", paramazfe.jdField_a_of_type_Azfl, "addIcon");
-      this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new azra(this, paramazfe));
+      azxy.a(this.jdField_c_of_type_AndroidWidgetImageView, "background", paramazxr.jdField_a_of_type_Azxy, "addIcon");
+      this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new bajq(this, paramazxr));
     }
     if (this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout.a == null) {
-      azfl.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout, "shimmer_mask", paramazfe.jdField_a_of_type_Azfl, "wzryShimmer");
+      azxy.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout, "shimmer_mask", paramazxr.jdField_a_of_type_Azxy, "wzryShimmer");
     }
     this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout.a();
   }

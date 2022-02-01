@@ -3,12 +3,12 @@ package cooperation.qzone.statistic.serverip;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bmhs;
+import bniu;
 
 public class WebAppIpRecord
   implements Parcelable
 {
-  public static final Parcelable.Creator<WebAppIpRecord> CREATOR = new bmhs();
+  public static final Parcelable.Creator<WebAppIpRecord> CREATOR = new bniu();
   public long a;
   public WebAppIpRecord.FixedSizeLinkedHashMap<Integer, Long> a;
   

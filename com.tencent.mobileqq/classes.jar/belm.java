@@ -1,24 +1,39 @@
-import android.graphics.Bitmap;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class belm
-  implements URLDrawable.DownloadListener
 {
-  public belm(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, beln parambeln) {}
+  char jdField_a_of_type_Char;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString = "";
+  int b;
   
-  public void onFileDownloadFailed(int paramInt)
+  void a()
   {
-    this.jdField_a_of_type_Beln.a(null);
+    this.jdField_a_of_type_Char = '\000';
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  public boolean equals(@Nullable Object paramObject)
   {
-    Bitmap localBitmap = bisw.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
-    this.jdField_a_of_type_Beln.a(localBitmap);
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if (!(paramObject instanceof belm)) {
+        return false;
+      }
+      paramObject = (belm)paramObject;
+    } while ((this.jdField_a_of_type_Char == paramObject.jdField_a_of_type_Char) && (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b) && ((this.jdField_a_of_type_JavaLangString == paramObject.jdField_a_of_type_JavaLangString) || ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)))));
+    return false;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "[opcode=" + this.jdField_a_of_type_Char + ", chars=" + this.jdField_a_of_type_Int + ",lines=" + this.b + ", attribs=" + this.jdField_a_of_type_JavaLangString + "]";
   }
 }
 

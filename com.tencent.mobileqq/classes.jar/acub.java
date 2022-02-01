@@ -1,27 +1,49 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingView;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class acub
-  implements ValueAnimator.AnimatorUpdateListener
+class acub
+  implements acun
 {
-  public acub(GdtVideoCeilingView paramGdtVideoCeilingView, RelativeLayout.LayoutParams paramLayoutParams, int paramInt1, int paramInt2, GdtVideoCeilingLandView paramGdtVideoCeilingLandView, boolean paramBoolean) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    paramValueAnimator = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-    int i = this.jdField_a_of_type_Int;
-    paramValueAnimator.topMargin = ((int)(f * this.b) + i);
-    if (((this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin < 1) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin >= GdtVideoCeilingView.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView))) && (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.jdField_a_of_type_Boolean)) {
-      GdtVideoCeilingView.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams, this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView, this.jdField_a_of_type_Boolean);
+    Object localObject = null;
+    if (paramacts != null) {}
+    for (paramVarArgs = paramacts.a(); (paramacts == null) || (paramVarArgs == null); paramVarArgs = null)
+    {
+      acvc.d("GdtDeviceJsCallHandler", "handleJsCallRequest error");
+      return true;
     }
-    while (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView == null) {
-      return;
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("deviceId", acwe.a(paramVarArgs));
     }
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    catch (JSONException localJSONException)
+    {
+      try
+      {
+        for (;;)
+        {
+          paramacts.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramacts != null) {
+            paramString = paramacts.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getDeviceId", paramString);
+          return true;
+          localJSONException = localJSONException;
+          acvc.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", localJSONException);
+        }
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          acvc.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", paramString);
+        }
+      }
+    }
   }
 }
 

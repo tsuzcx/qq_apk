@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal" android:id="@id/nam" android:layout_width="fill_parent" android:layout_height="71.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.biz.qqcircle.widgets.QCircleAvatarView android:id="@id/nak" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_centerVertical="true" app:authIconEnable="false" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/bp" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/nan" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxWidth="140.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/nak" android:layout_alignTop="@id/nak" />
-    <FrameLayout android:id="@id/naj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/nan" android:layout_alignLeft="@id/nan">
-        <ImageView android:id="@id/nah" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gnm" />
-        <TextView android:textSize="12.0dip" android:textStyle="bold|italic" android:textColor="@color/bp" android:id="@id/nai" android:layout_width="24.0dip" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="7.0dip" android:text="8" android:includeFontPadding="false" />
-    </FrameLayout>
-    <com.tencent.biz.qqcircle.widgets.QCircleFollowView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nal" android:layout_width="80.0dip" android:layout_height="47.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:qcircle_un_follow_res="@drawable/g9c" app:qcircle_un_follow_text_color="@color/aga" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n1a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="84.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="0.5dip" android:src="@drawable/gju" android:scaleType="fitCenter" />
+        <TextView android:textSize="24.0dip" android:textStyle="bold" android:textColor="#ff000000" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/kbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="10.0dip" android:maxLines="1" android:includeFontPadding="false" />
+    </LinearLayout>
+    <TextView android:textSize="13.0dip" android:textColor="#ff000000" android:id="@id/nuo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="6.0dip" android:layout_marginBottom="29.0dip" android:layout_below="@id/n1a" />
 </RelativeLayout>

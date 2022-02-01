@@ -1,234 +1,97 @@
-import android.app.Activity;
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.presseffect.PressEffectTextView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.Iterator;
-import java.util.List;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.net.Uri;
+import java.nio.ByteBuffer;
 import java.util.Map;
 
 public class xvg
-  extends AbsVideoInfoWidget
-  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private PressEffectTextView jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView;
-  private xvh jdField_a_of_type_Xvh;
-  private String c;
+  private MediaExtractor a;
   
-  public xvg(View paramView)
+  public xvg()
   {
-    super(paramView);
+    a();
   }
   
-  private void a(boolean paramBoolean)
+  public final int a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView;
-    int i;
-    label42:
-    Context localContext;
-    if (paramBoolean)
-    {
-      i = 0;
-      ((PressEffectTextView)localObject).setVisibility(i);
-      localObject = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      if (!(localObject instanceof LinearLayout.LayoutParams)) {
-        break label85;
-      }
-      localObject = (LinearLayout.LayoutParams)localObject;
-      localContext = this.jdField_a_of_type_AndroidViewView.getContext();
-      if (!paramBoolean) {
-        break label101;
-      }
+    return this.a.getTrackCount();
+  }
+  
+  public int a(ByteBuffer paramByteBuffer, int paramInt)
+  {
+    return this.a.readSampleData(paramByteBuffer, paramInt);
+  }
+  
+  public long a()
+  {
+    return this.a.getSampleTime();
+  }
+  
+  @TargetApi(16)
+  public MediaFormat a(int paramInt)
+  {
+    MediaFormat localMediaFormat = this.a.getTrackFormat(paramInt);
+    if (localMediaFormat.getString("mime").startsWith("video/")) {
+      localMediaFormat.setFloat("mpx-dar", localMediaFormat.getInteger("width") / localMediaFormat.getInteger("height"));
     }
-    label85:
-    label101:
-    for (float f = 10.0F;; f = 30.0F)
-    {
-      ((LinearLayout.LayoutParams)localObject).bottomMargin = zlx.a(localContext, f);
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      return;
-      i = 8;
-      break;
-      localObject = new LinearLayout.LayoutParams(-2, -2);
-      break label42;
+    return localMediaFormat;
+  }
+  
+  @TargetApi(16)
+  protected void a()
+  {
+    if (this.a != null) {
+      this.a.release();
     }
+    this.a = new MediaExtractor();
   }
   
-  public String a()
+  public void a(int paramInt)
   {
-    return "NewGuideNodeWidget";
+    this.a.selectTrack(paramInt);
   }
   
-  public void a(View paramView)
+  public void a(long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView = new PressEffectTextView(this.jdField_a_of_type_AndroidViewView.getContext(), null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView.setId(1001);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView.setTextSize(1, 14.0F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView.setTextColor(-1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView.setPadding(zlx.a(this.jdField_a_of_type_AndroidViewView.getContext(), 82.5F), zlx.a(this.jdField_a_of_type_AndroidViewView.getContext(), 9.0F), zlx.a(this.jdField_a_of_type_AndroidViewView.getContext(), 82.5F), zlx.a(this.jdField_a_of_type_AndroidViewView.getContext(), 9.0F));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView.setOnClickListener(this);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, zlx.a(this.jdField_a_of_type_AndroidViewView.getContext(), 38.0F));
-    localLayoutParams.bottomMargin = zlx.a(this.jdField_a_of_type_AndroidViewView.getContext(), 4.0F);
-    localLayoutParams.addRule(12, -1);
-    localLayoutParams.addRule(14, -1);
-    ((RelativeLayout)paramView).addView(this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetButton = new Button(this.jdField_a_of_type_AndroidViewView.getContext());
-    this.jdField_a_of_type_AndroidWidgetButton.setId(1000);
-    this.jdField_a_of_type_AndroidWidgetButton.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetButton.setTextSize(1, 17.0F);
-    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839296);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    localLayoutParams = new RelativeLayout.LayoutParams(zlx.a(this.jdField_a_of_type_AndroidViewView.getContext(), 220.0F), zlx.a(this.jdField_a_of_type_AndroidViewView.getContext(), 40.0F));
-    localLayoutParams.addRule(14, -1);
-    localLayoutParams.addRule(2, 1001);
-    localLayoutParams.bottomMargin = zlx.a(this.jdField_a_of_type_AndroidViewView.getContext(), 10.0F);
-    ((RelativeLayout)paramView).addView(this.jdField_a_of_type_AndroidWidgetButton, localLayoutParams);
-    a(true);
+    this.a.seekTo(paramLong, paramInt);
   }
   
-  public void a(@NonNull Map<Subscriber, String> paramMap)
+  public final void a(Context paramContext, Uri paramUri, Map<String, String> paramMap)
   {
-    this.jdField_a_of_type_Xvh = new xvh(this);
-    a(this.jdField_a_of_type_Xvh);
+    this.a.setDataSource(paramContext, paramUri, paramMap);
   }
   
-  public void a(@NonNull xne paramxne, @NonNull StoryVideoItem paramStoryVideoItem)
+  public boolean a()
   {
-    Object localObject1 = null;
-    if ((paramxne.a == null) || (paramxne.a.jdField_a_of_type_JavaUtilList == null) || (paramxne.a.jdField_a_of_type_JavaUtilList.isEmpty()))
-    {
-      this.c = paramStoryVideoItem.mVid;
-      k();
-      return;
-    }
-    paramxne = paramxne.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramxne.hasNext())
-    {
-      wsk localwsk = (wsk)paramxne.next();
-      if (TextUtils.equals(paramStoryVideoItem.mVid, localwsk.jdField_a_of_type_JavaLangString))
-      {
-        Object localObject2 = this.jdField_a_of_type_AndroidWidgetButton;
-        int i;
-        if (localwsk.jdField_a_of_type_Int != 0)
-        {
-          paramxne = localwsk.c;
-          ((Button)localObject2).setText(paramxne);
-          this.jdField_a_of_type_AndroidWidgetButton.setTag(localwsk.d);
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView;
-          paramxne = localObject1;
-          if (localwsk.b != 0) {
-            paramxne = localwsk.e;
-          }
-          ((PressEffectTextView)localObject2).setText(paramxne);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectTextView.setTag(localwsk.f);
-          if ((localwsk.b == 0) || (TextUtils.isEmpty(localwsk.e))) {
-            break label273;
-          }
-          i = 1;
-          label196:
-          if ((i != 0) && (!TextUtils.equals(this.c, paramStoryVideoItem.mVid)))
-          {
-            yqu.a("play_video", "exp_all_tips", 0, 0, new String[0]);
-            this.c = paramStoryVideoItem.mVid;
-          }
-          if ((localwsk.b == 0) || (TextUtils.isEmpty(localwsk.e))) {
-            break label278;
-          }
-        }
-        label273:
-        label278:
-        for (boolean bool = true;; bool = false)
-        {
-          a(bool);
-          j();
-          return;
-          paramxne = null;
-          break;
-          i = 0;
-          break label196;
-        }
-      }
-    }
-    this.c = paramStoryVideoItem.mVid;
-    k();
-  }
-  
-  public boolean a(@NonNull xne paramxne, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return (paramxne.a != null) && (paramxne.a.jdField_a_of_type_Int == 13);
+    return this.a.advance();
   }
   
   public int b()
   {
-    return -1;
+    return this.a.getSampleTrackIndex();
   }
   
-  public void f() {}
-  
-  public void g()
+  public long b()
   {
-    if (this.jdField_a_of_type_Xvh != null) {
-      b(this.jdField_a_of_type_Xvh);
-    }
+    return this.a.getCachedDuration();
   }
   
-  public void onClick(View paramView)
+  public void b()
   {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d(a(), 2, new Object[] { "onClick ", Integer.valueOf(paramView.getId()), ", url=", paramView.getTag() });
-      }
-      Object localObject = paramView.getTag();
-      if ((localObject instanceof String))
-      {
-        localObject = (String)localObject;
-        switch (paramView.getId())
-        {
-        }
-        for (;;)
-        {
-          if (!((String)localObject).startsWith("mqqapi:")) {
-            break label234;
-          }
-          localObject = bgng.a(QQStoryContext.a(), b(), (String)localObject);
-          if (localObject == null) {
-            break;
-          }
-          ((bgmp)localObject).a();
-          break;
-          yqu.a("play_video", "clk_try", 0, 0, new String[] { localObject, "", "", this.c });
-          continue;
-          yqu.a("play_video", "clk_all_tips", 0, 0, new String[] { localObject, "", "", this.c });
-        }
-        label234:
-        Intent localIntent = new Intent(b(), QQBrowserActivity.class);
-        localIntent.putExtra("url", (String)localObject);
-        b().startActivity(localIntent);
-      }
-    }
+    this.a.release();
+  }
+  
+  public boolean b()
+  {
+    return this.a.hasCacheReachedEndOfStream();
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

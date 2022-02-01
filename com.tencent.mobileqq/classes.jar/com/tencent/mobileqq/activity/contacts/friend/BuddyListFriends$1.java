@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.contacts.friend;
 
-import ajjf;
-import anmw;
+import ajuo;
+import anyw;
 import com.tencent.mobileqq.data.Friends;
 
 public class BuddyListFriends$1
   implements Runnable
 {
-  public BuddyListFriends$1(ajjf paramajjf) {}
+  public BuddyListFriends$1(ajuo paramajuo) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Anmw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataFriends.uin);
+    this.this$0.jdField_a_of_type_Anyw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataFriends.uin);
   }
 }
 

@@ -32,6 +32,8 @@
     <item android:id="@id/s" android:title="@string/g38" />
     <item android:id="@id/i7f" android:title="@string/etr" />
     <item android:id="@id/m5p" android:title="@string/iwv" />
+    <item android:id="@id/mmc" android:title="@string/xbv" />
+    <item android:id="@id/mmd" android:title="@string/xbw" />
     <item android:id="@id/bf8" android:title="@string/b5u" />
     <item android:id="@id/ig1" android:title="@string/b6v" />
     <item android:id="@id/ck5" android:title="@string/b64" />
@@ -69,5 +71,6 @@
     <item android:id="@id/ini" android:title="StructMsg" />
     <item android:id="@id/b0w" android:title="厘米秀" />
     <item android:id="@id/j5q" android:title="@string/fos" />
-    <item android:id="@id/nqz" android:title="@string/wgy" />
+    <item android:id="@id/nxa" android:title="@string/wgy" />
+    <item android:id="@id/o3o" android:title="@string/xex" />
 </menu>

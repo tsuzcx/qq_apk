@@ -1,30 +1,38 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserSelfInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserSelfInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
 public class yps
-  extends QQUIEventReceiver<ypb, wwx>
+  extends wpa<ypt>
 {
-  public yps(@NonNull ypb paramypb)
+  public static final String a = wnu.a("StorySvc.get_user_base_info");
+  
+  public String a()
   {
-    super(paramypb);
+    return a;
   }
   
-  public void a(@NonNull ypb paramypb, @NonNull wwx paramwwx)
+  public ypt a(byte[] paramArrayOfByte)
   {
-    if ((paramwwx == null) || (paramwwx.a == null) || (TextUtils.isEmpty(paramwwx.a.headUrl))) {
-      yqp.c(this.TAG, "GetUserInfoHandler return headUrl is null!", new IllegalStateException());
+    qqstory_service.RspGetUserSelfInfo localRspGetUserSelfInfo = new qqstory_service.RspGetUserSelfInfo();
+    try
+    {
+      localRspGetUserSelfInfo.mergeFrom(paramArrayOfByte);
+      return new ypt(localRspGetUserSelfInfo);
     }
-    while (!paramwwx.a.isMe()) {
-      return;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        yuk.c("Q.qqstory.home.GetUserSelfInfoStep", "decodeResponse error=%s", paramArrayOfByte);
+      }
     }
-    ypb.b(paramypb);
   }
   
-  public Class acceptEventClass()
+  protected byte[] a()
   {
-    return wwx.class;
+    return new qqstory_service.ReqGetUserSelfInfo().toByteArray();
   }
 }
 

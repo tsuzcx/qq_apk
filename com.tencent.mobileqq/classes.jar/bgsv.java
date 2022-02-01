@@ -1,162 +1,88 @@
-import android.os.SystemClock;
-import android.text.TextUtils;
-import android.util.Log;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import tencent.im.oidb.cmd0x6b6.oidb_0x6b6.RspBody;
+import tencent.im.oidb.cmd0x6b6.oidb_0x6b6.SendFlowerRsp;
+import tencent.im.oidb.cmd0x6b6.oidb_0x6b6.ThrowFlowerRsp;
 
-public class bgsv
+class bgsv
+  extends nkp
 {
-  private long a;
-  public String a;
-  public ConcurrentHashMap<String, String> a;
+  bgsv(bgsu parambgsu, bgst parambgst) {}
   
-  public bgsv()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_JavaLangString = "TimeTraceUtil";
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  public bgsv(String paramString)
-  {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_JavaLangString = "TimeTraceUtil";
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_JavaLangString = paramString;
-    }
-  }
-  
-  private long a(String paramString, long paramLong)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)))
+    if ((paramInt != 0) || (paramArrayOfByte == null) || (this.jdField_a_of_type_Bgst == null))
     {
-      paramString = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (!TextUtils.isEmpty(paramString))
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "send_oidb_0x6b6. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Bgst);
+      }
+      if (this.jdField_a_of_type_Bgst != null)
       {
-        paramString = paramString.split(",");
-        if ((paramString.length >= 2) && (TextUtils.isDigitsOnly(paramString[1]))) {
-          return paramLong - Long.parseLong(paramString[1]);
+        if (paramArrayOfByte != null) {
+          paramBundle = new oidb_0x6b6.RspBody();
         }
       }
-    }
-    else if ("~~startTime".equals(paramString))
-    {
-      return paramLong - this.jdField_a_of_type_Long;
-    }
-    return 0L;
-  }
-  
-  public HashMap<String, String> a()
-  {
-    for (;;)
-    {
-      long l2;
-      synchronized (new HashMap())
-      {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+      else {
+        try
         {
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-          l1 = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-          if (localIterator.hasNext())
-          {
-            Object localObject2 = (Map.Entry)localIterator.next();
-            String str1 = (String)((Map.Entry)localObject2).getKey();
-            localObject2 = ((String)((Map.Entry)localObject2).getValue()).split(",");
-            l2 = l1;
-            if (localObject2 == null) {
-              break label190;
-            }
-            l2 = l1;
-            if (localObject2.length < 3) {
-              break label190;
-            }
-            String str2 = localObject2[0];
-            CharSequence localCharSequence = localObject2[1];
-            if (Boolean.parseBoolean(localObject2[2])) {
-              continue;
-            }
-            l2 = l1;
-            if (!TextUtils.isDigitsOnly(localCharSequence)) {
-              break label190;
-            }
-            l2 = a(str2, Long.parseLong(localCharSequence));
-            break label190;
-            ???.put(str1, String.valueOf(l1));
+          paramBundle.mergeFrom(paramArrayOfByte);
+          paramArrayOfByte = paramBundle.bytes_error_notify.get().toStringUtf8();
+          this.jdField_a_of_type_Bgst.b(paramInt, paramArrayOfByte);
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i(".troop.send_gift", 2, "send_oidb_0x6b6. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
           }
+          this.jdField_a_of_type_Bgst.a(-1, "InvalidProtocolBufferMicroException");
+          return;
         }
       }
-      label190:
-      do
-      {
-        l1 = 0L;
-        break;
-        return ???;
-      } while (l2 < 0L);
-      long l1 = l2;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    long l;
-    ConcurrentHashMap localConcurrentHashMap;
-    StringBuilder localStringBuilder;
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
-    {
-      l = SystemClock.elapsedRealtime();
-      localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-      localStringBuilder = new StringBuilder().append(paramString2).append(",").append(String.valueOf(l)).append(",");
-      if (!paramBoolean) {
-        break label135;
-      }
-    }
-    label135:
-    for (String str = "true";; str = "false")
-    {
-      localConcurrentHashMap.put(paramString1, str);
-      paramString1 = String.format("TimerOutput: %s to %s cost=%d", new Object[] { paramString2, paramString1, Long.valueOf(a(paramString2, l)) });
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, paramString1);
+      this.jdField_a_of_type_Bgst.a(paramInt, "sso request error or callback is null.");
       return;
     }
-    Log.i(this.jdField_a_of_type_JavaLangString, paramString1);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    a(paramString, "~~startTime", paramBoolean);
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    HashMap localHashMap = a();
-    if (localHashMap != null) {
-      try
-      {
-        Iterator localIterator = localHashMap.entrySet().iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject2 = (Map.Entry)localIterator.next();
-          String str2 = (String)((Map.Entry)localObject2).getKey();
-          localObject2 = (String)((Map.Entry)localObject2).getValue();
-          if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
-            localStringBuilder.append(str2 + ":" + (String)localObject2 + "ms,");
-          }
-        }
-        str1 = localObject1.toString();
+    oidb_0x6b6.RspBody localRspBody;
+    try
+    {
+      localRspBody = new oidb_0x6b6.RspBody();
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramInt = localRspBody.int32_ret.get();
+      if ((paramInt != 0) || (paramBundle == null)) {
+        break label354;
       }
-      finally {}
+      paramInt = paramBundle.getInt("subCmd");
+      if (localRspBody.msg_send_flower.has())
+      {
+        paramArrayOfByte = (oidb_0x6b6.SendFlowerRsp)localRspBody.msg_send_flower.get();
+        this.jdField_a_of_type_Bgst.a(paramArrayOfByte.uint32_product_id.get());
+        return;
+      }
     }
-    String str1;
-    return str1;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "send_oidb_0x6b6. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
+      }
+      this.jdField_a_of_type_Bgst.a(-1, "InvalidProtocolBufferMicroException");
+      return;
+    }
+    if (localRspBody.msg_throw_flower.has())
+    {
+      paramArrayOfByte = (oidb_0x6b6.ThrowFlowerRsp)localRspBody.msg_throw_flower.get();
+      this.jdField_a_of_type_Bgst.b(paramArrayOfByte.uint32_product_id.get());
+      return;
+    }
+    this.jdField_a_of_type_Bgst.a(-1, "Invalid RspData. subCmd:" + paramInt);
+    return;
+    label354:
+    paramArrayOfByte = localRspBody.bytes_error_notify.get().toStringUtf8();
+    this.jdField_a_of_type_Bgst.b(paramInt, paramArrayOfByte);
   }
 }
 

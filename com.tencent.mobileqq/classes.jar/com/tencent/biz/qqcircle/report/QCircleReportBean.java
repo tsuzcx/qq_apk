@@ -71,6 +71,7 @@ public class QCircleReportBean
   
   public void assembleFromReportData(QCircleReportBean paramQCircleReportBean)
   {
+    this.mFromPageId = paramQCircleReportBean.mPageId;
     this.mFromPageIdStr = paramQCircleReportBean.mPageIdStr;
     this.mFromModuleIdStr = paramQCircleReportBean.mModuleIdStr;
     this.mFromElementIdStr = paramQCircleReportBean.mElementIdStr;

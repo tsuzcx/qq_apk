@@ -1,65 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
-public class ajzv
-  extends aqkz
+class ajzv
+  extends BroadcastReceiver
 {
-  public static ajzu a()
-  {
-    return (ajzu)aqlk.a().a(470);
-  }
+  ajzv(ajzu paramajzu) {}
   
-  @NonNull
-  public ajzu a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new ajzu();
-  }
-  
-  @Nullable
-  public ajzu a(aqlg[] paramArrayOfaqlg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfaqlg[0].a);
+    if (paramIntent.getBooleanExtra("recording_time_out", false))
+    {
+      QQToast.a(this.a.mRuntime.a(), 2131698105, 0).a();
+      QLog.e("FaceUnblockCameraJsApiPlugin", 1, "FaceUnlock record timeout!");
+      return;
     }
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return ajzu.a(paramArrayOfaqlg);
-    }
-    return null;
-  }
-  
-  public Class<ajzu> clazz()
-  {
-    return ajzu.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public void onUpdate(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 0, "onUpdate " + paramObject);
-    }
-  }
-  
-  public int type()
-  {
-    return 470;
+    paramContext = paramIntent.getStringExtra("target_media_url");
+    ajzu.a(this.a, paramContext);
   }
 }
 

@@ -39,7 +39,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class l
-  extends aa
+  extends ab
   implements IMsfProxy
 {
   private static boolean A = false;
@@ -794,7 +794,7 @@ public class l
             {
               paramToServiceMsg.addAttribute("appTimeoutReq", Integer.valueOf(this.m.incrementAndGet()));
               f.put(Integer.valueOf(paramToServiceMsg.getAppSeq()), paramToServiceMsg);
-              ??? = new aa.b(this, paramToServiceMsg);
+              ??? = new ab.b(this, paramToServiceMsg);
               if (("LongConn.OffPicUp".equalsIgnoreCase(paramToServiceMsg.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(paramToServiceMsg.getServiceCmd())))
               {
                 this.v.postDelayed((Runnable)???, paramToServiceMsg.getTimeout() + 20000L);

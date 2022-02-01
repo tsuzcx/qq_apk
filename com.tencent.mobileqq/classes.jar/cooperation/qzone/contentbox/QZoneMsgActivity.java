@@ -16,15 +16,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import anni;
-import aony;
-import biea;
-import bkyx;
-import blvt;
-import blvu;
-import bmfd;
-import bmfg;
-import bmfh;
+import anzj;
+import apbo;
+import bjey;
+import bmaa;
+import bmwv;
+import bmww;
+import bngf;
+import bngi;
+import bngj;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
@@ -36,14 +36,14 @@ import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.provider.LocalPhotoGroupData;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.util.QZLog;
-import tzo;
+import tzq;
 
 public class QZoneMsgActivity
   extends IphoneTitleBarActivity
-  implements biea, bmfh
+  implements bjey, bngj
 {
   private Fragment jdField_a_of_type_AndroidSupportV4AppFragment;
-  aony jdField_a_of_type_Aony;
+  apbo jdField_a_of_type_Apbo;
   PlusMenuContainer jdField_a_of_type_CooperationQzoneContentboxPlusMenuContainer;
   
   public static void a(long paramLong, Context paramContext)
@@ -58,9 +58,9 @@ public class QZoneMsgActivity
   
   public static boolean a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    if (bkyx.a(paramQQAppInterface))
+    if (bmaa.a(paramQQAppInterface))
     {
-      long l = bkyx.a();
+      long l = bmaa.a();
       if (l != 0L) {
         a(l, paramContext);
       }
@@ -132,9 +132,9 @@ public class QZoneMsgActivity
     {
       if ((this.jdField_a_of_type_AndroidSupportV4AppFragment instanceof QZoneMsgFragment))
       {
-        blvt localblvt = ((QZoneMsgFragment)this.jdField_a_of_type_AndroidSupportV4AppFragment).a();
-        if (localblvt != null) {
-          localblvt.a(paramInt1, paramInt2, paramIntent);
+        bmwv localbmwv = ((QZoneMsgFragment)this.jdField_a_of_type_AndroidSupportV4AppFragment).a();
+        if (localbmwv != null) {
+          localbmwv.a(paramInt1, paramInt2, paramIntent);
         }
       }
       return;
@@ -155,39 +155,39 @@ public class QZoneMsgActivity
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    int i = 2130850127;
+    int i = 2130850139;
     super.doOnCreate(paramBundle);
-    setContentView(2131562429);
-    setTitle(blvu.a(this));
-    NavBarCommon localNavBarCommon = (NavBarCommon)findViewById(2131376599);
+    setContentView(2131562470);
+    setTitle(bmww.a(this));
+    NavBarCommon localNavBarCommon = (NavBarCommon)findViewById(2131376731);
     if (Build.VERSION.SDK_INT >= 21)
     {
       if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-        i = 2130850128;
+        i = 2130850140;
       }
       paramBundle = getDrawable(i);
       localNavBarCommon.setRightImage(paramBundle);
-      localNavBarCommon.setRightImageDesc(getString(2131695720));
+      localNavBarCommon.setRightImageDesc(getString(2131695763));
       localNavBarCommon.setOnItemSelectListener(this);
       this.jdField_a_of_type_AndroidSupportV4AppFragment = getSupportFragmentManager().findFragmentByTag("QZoneMsgFragment");
       if (this.jdField_a_of_type_AndroidSupportV4AppFragment != null) {
         break label233;
       }
       this.jdField_a_of_type_AndroidSupportV4AppFragment = new QZoneMsgFragment();
-      getSupportFragmentManager().beginTransaction().add(2131367067, this.jdField_a_of_type_AndroidSupportV4AppFragment, "QZoneMsgFragment").commit();
+      getSupportFragmentManager().beginTransaction().add(2131367118, this.jdField_a_of_type_AndroidSupportV4AppFragment, "QZoneMsgFragment").commit();
     }
     for (;;)
     {
-      bmfd.a().a(this);
+      bngf.a().a(this);
       long l = LocalMultiProcConfig.getLong("SP_LAST_UPDATE_TIME_READ", 0L);
       QLog.d("[PhotoAlbum]QZoneMsgActivity", 1, new Object[] { "getTravelGroup SP_LAST_UPDATE_TIME_READ lastUpdateTime:", Long.valueOf(l) });
-      bmfd.a().a().a(l);
-      this.jdField_a_of_type_Aony = new aony();
+      bngf.a().a().a(l);
+      this.jdField_a_of_type_Apbo = new apbo();
       getWindow().setFlags(16777216, 16777216);
       return true;
       paramBundle = getResources();
       if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-        i = 2130850128;
+        i = 2130850140;
       }
       paramBundle = paramBundle.getDrawable(i);
       break;
@@ -201,20 +201,20 @@ public class QZoneMsgActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bmfd.a().b(this);
-    this.jdField_a_of_type_Aony.a();
+    bngf.a().b(this);
+    this.jdField_a_of_type_Apbo.a();
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    this.jdField_a_of_type_Aony.b();
+    this.jdField_a_of_type_Apbo.b();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_Aony.c();
+    this.jdField_a_of_type_Apbo.c();
   }
   
   @Override
@@ -236,9 +236,9 @@ public class QZoneMsgActivity
       paramView = new Intent();
       paramView.putExtra("need_finish", true);
       paramView.putExtra("uin", "2290230341");
-      paramView.putExtra("uinname", anni.a(2131718385));
+      paramView.putExtra("uinname", anzj.a(2131718521));
       paramView.putExtra("uintype", 1008);
-      tzo.a(paramView, this.app, this, "2290230341", -1, 2000, 1, false);
+      tzq.a(paramView, this.app, this, "2290230341", -1, 2000, 1, false);
       return;
     case 4: 
       a();

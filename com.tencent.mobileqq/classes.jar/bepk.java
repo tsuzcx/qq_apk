@@ -1,0 +1,27 @@
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
+
+class bepk
+  extends bepm<UserState>
+{
+  bepk(beoy parambeoy, UserState paramUserState, List paramList)
+  {
+    super(paramUserState, paramList);
+  }
+  
+  public void a(UserState paramUserState)
+  {
+    beoy.a(this.a).a();
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     bepk
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,10 +1,20 @@
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface sbx
+class sbx
+  implements DialogInterface.OnShowListener
 {
-  public abstract void b(VideoInfo paramVideoInfo);
+  sbx(sbt paramsbt) {}
   
-  public abstract void c(VideoInfo paramVideoInfo);
+  public void onShow(DialogInterface paramDialogInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "mDisLikeActionSheet onShow() on VideoChannel");
+    }
+    sbi.a(this.a.a).getWindow().clearFlags(8);
+  }
 }
 
 

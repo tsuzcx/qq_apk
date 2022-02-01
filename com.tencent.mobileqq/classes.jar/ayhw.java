@@ -1,38 +1,23 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
-import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ayhw
-  extends ayfc
+class ayhw
+  implements DialogInterface.OnClickListener
 {
-  public ayhw(OCRTextSearchActivity paramOCRTextSearchActivity) {}
+  ayhw(ayhv paramayhv) {}
   
-  public void a(int paramInt, String paramString, aygm paramaygm)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, errorCode=" + paramInt + ", sessionID=" + paramString + ", mSessionId=" + this.a.c);
-    }
-    if ((paramString == null) || (this.a.c == null) || (!this.a.c.equals(paramString)))
+    if (!bhnv.g(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, session error");
-      }
+      QQToast.a(this.a.a.jdField_a_of_type_AndroidViewView.getContext(), 1, anzj.a(2131707134), 0).a();
       return;
     }
-    this.a.a(false);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment == null) {
-      this.a.b(1);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), paramInt, paramaygm);
-    this.a.a(1);
-    if ((paramInt == 0) && (paramaygm.a != null) && (paramaygm.a.size() > 0))
-    {
-      bcst.b(null, "dc00898", "", "", "0X80082E8", "0X80082E8", 0, 0, "", "", "", "");
-      return;
-    }
-    bcst.b(null, "dc00898", "", "", "0X80082E7", "0X80082E7", 0, 0, "", "", "", "");
+    ((ayrf)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).a(this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.e, this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.j, new ayhx(this));
   }
 }
 

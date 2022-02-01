@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aorl;
-import aoua;
-import aoun;
+import apfb;
+import aphq;
+import apid;
 
 public class GeneralAR3DRenderable$1
   implements Runnable
 {
-  public GeneralAR3DRenderable$1(aoun paramaoun) {}
+  public GeneralAR3DRenderable$1(apid paramapid) {}
   
   public void run()
   {
-    if (aoun.a(this.this$0) != 9) {}
+    if (apid.a(this.this$0) != 9) {}
     do
     {
       return;
-      if (aoun.a(this.this$0) != null) {
-        aoun.a(this.this$0).b(0, 1);
+      if (apid.a(this.this$0) != null) {
+        apid.a(this.this$0).b(0, 1);
       }
-    } while (aoun.a(this.this$0) == null);
-    aoun.a(this.this$0).a();
+    } while (apid.a(this.this$0) == null);
+    apid.a(this.this$0).a();
   }
 }
 

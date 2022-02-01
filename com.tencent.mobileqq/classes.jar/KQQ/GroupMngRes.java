@@ -7,8 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class GroupMngRes
   extends JceStruct
 {
-  static int cache_reqtype;
-  static byte[] cache_vecBody;
+  static int cache_reqtype = 0;
+  static byte[] cache_vecBody = (byte[])new byte[1];
+  static byte[] cache_vecJoinPrompt;
   public String ErrorString = "";
   public byte cIsInGroup;
   public byte cIsMemInvite;
@@ -21,14 +22,22 @@ public final class GroupMngRes
   public String sJoinAnswer = "";
   public String sJoinQuestion = "";
   public byte[] vecBody;
+  public byte[] vecJoinPrompt;
+  
+  static
+  {
+    ((byte[])cache_vecBody)[0] = 0;
+    cache_vecJoinPrompt = (byte[])new byte[1];
+    ((byte[])cache_vecJoinPrompt)[0] = 0;
+  }
   
   public GroupMngRes() {}
   
-  public GroupMngRes(int paramInt, byte paramByte1, byte[] paramArrayOfByte, String paramString1, short paramShort, byte paramByte2, String paramString2, byte paramByte3, String paramString3, String paramString4, String paramString5, long paramLong)
+  public GroupMngRes(int paramInt, byte paramByte1, byte[] paramArrayOfByte1, String paramString1, short paramShort, byte paramByte2, String paramString2, byte paramByte3, String paramString3, String paramString4, String paramString5, long paramLong, byte[] paramArrayOfByte2)
   {
     this.reqtype = paramInt;
     this.result = paramByte1;
-    this.vecBody = paramArrayOfByte;
+    this.vecBody = paramArrayOfByte1;
     this.ErrorString = paramString1;
     this.errorCode = paramShort;
     this.cIsInGroup = paramByte2;
@@ -38,17 +47,13 @@ public final class GroupMngRes
     this.sJoinQuestion = paramString4;
     this.sJoinAnswer = paramString5;
     this.dwDis2GrpLimitType = paramLong;
+    this.vecJoinPrompt = paramArrayOfByte2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.reqtype = paramJceInputStream.read(this.reqtype, 0, true);
     this.result = paramJceInputStream.read(this.result, 1, true);
-    if (cache_vecBody == null)
-    {
-      cache_vecBody = (byte[])new byte[1];
-      ((byte[])cache_vecBody)[0] = 0;
-    }
     this.vecBody = ((byte[])paramJceInputStream.read(cache_vecBody, 2, true));
     this.ErrorString = paramJceInputStream.readString(3, true);
     this.errorCode = paramJceInputStream.read(this.errorCode, 4, false);
@@ -59,6 +64,7 @@ public final class GroupMngRes
     this.sJoinQuestion = paramJceInputStream.readString(9, false);
     this.sJoinAnswer = paramJceInputStream.readString(10, false);
     this.dwDis2GrpLimitType = paramJceInputStream.read(this.dwDis2GrpLimitType, 11, false);
+    this.vecJoinPrompt = ((byte[])paramJceInputStream.read(cache_vecJoinPrompt, 12, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -83,6 +89,9 @@ public final class GroupMngRes
       paramJceOutputStream.write(this.sJoinAnswer, 10);
     }
     paramJceOutputStream.write(this.dwDis2GrpLimitType, 11);
+    if (this.vecJoinPrompt != null) {
+      paramJceOutputStream.write(this.vecJoinPrompt, 12);
+    }
   }
 }
 

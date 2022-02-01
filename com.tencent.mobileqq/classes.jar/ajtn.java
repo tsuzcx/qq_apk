@@ -1,16 +1,35 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator;
 
 public class ajtn
-  implements View.OnTouchListener
+  implements Handler.Callback
 {
-  public ajtn(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public ajtn(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean handleMessage(Message paramMessage)
   {
-    return true;
+    if (paramMessage.what == SimpleCheckableSlidingIndicator.d)
+    {
+      if (this.a.getScrollX() == SimpleCheckableSlidingIndicator.a(this.a))
+      {
+        SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.a);
+        if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
+          SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
+        }
+        SimpleCheckableSlidingIndicator.a(this.a).removeMessages(SimpleCheckableSlidingIndicator.d);
+      }
+    }
+    else {
+      return false;
+    }
+    SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.c);
+    if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
+      SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
+    }
+    SimpleCheckableSlidingIndicator.b(this.a, this.a.getScrollX());
+    SimpleCheckableSlidingIndicator.a(this.a).sendEmptyMessageDelayed(SimpleCheckableSlidingIndicator.d, 50L);
+    return false;
   }
 }
 

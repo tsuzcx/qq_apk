@@ -1,43 +1,21 @@
-import android.graphics.PointF;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.os.IInterface;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "measuredWidth", "", "measuredHeight", "onMeasured", "com/tencent/mobileqq/profilecard/vas/component/background/VasProfileSimpleBackgroundComponent$updateDiyText$1$1"}, k=3, mv={1, 1, 16})
-final class azps
-  implements afrc
+public abstract interface azps
+  extends IInterface
 {
-  azps(azpr paramazpr) {}
+  public abstract int a();
   
-  public final void a(int paramInt1, int paramInt2)
-  {
-    Object localObject = azpr.a(this.a);
-    if (localObject == null) {
-      Intrinsics.throwNpe();
-    }
-    ((SingleTouchLayout)localObject).setActualViewSize(paramInt1, paramInt2);
-    localObject = azpr.a(this.a);
-    if (localObject == null) {
-      Intrinsics.throwNpe();
-    }
-    ((SingleTouchLayout)localObject).invalidate();
-    if (QLog.isColorLevel())
-    {
-      localObject = this.a.b();
-      StringBuilder localStringBuilder = new StringBuilder().append("updateDiyText: x=");
-      SingleTouchLayout localSingleTouchLayout = azpr.a(this.a);
-      if (localSingleTouchLayout == null) {
-        Intrinsics.throwNpe();
-      }
-      localStringBuilder = localStringBuilder.append(localSingleTouchLayout.a().x).append(',').append("y=");
-      localSingleTouchLayout = azpr.a(this.a);
-      if (localSingleTouchLayout == null) {
-        Intrinsics.throwNpe();
-      }
-      QLog.d((String)localObject, 2, localSingleTouchLayout.a().y + ',' + "width=" + paramInt1 + ',' + "height=" + paramInt2);
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2);
+  
+  public abstract int[] a();
+  
+  public abstract boolean[] a();
 }
 
 

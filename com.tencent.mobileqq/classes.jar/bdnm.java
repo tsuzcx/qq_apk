@@ -1,22 +1,22 @@
-import android.graphics.Paint;
-import android.support.annotation.NonNull;
-
 class bdnm
-  extends bdns
 {
-  bdnm(@NonNull String paramString)
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  
+  bdnm(bdnk parambdnk, String paramString)
   {
-    super(1, paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  float a(@NonNull Paint paramPaint)
+  public String a()
   {
-    return paramPaint.measureText(a());
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdnm
  * JD-Core Version:    0.7.0.1
  */

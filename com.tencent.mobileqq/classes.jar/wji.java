@@ -1,64 +1,29 @@
-import android.annotation.TargetApi;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import java.util.concurrent.atomic.AtomicInteger;
 
-@TargetApi(14)
-public class wji
-  extends wjk
+class wji
+  implements ThreadExcutor.IThreadListener
 {
-  public String a;
-  public wio a;
-  public String b;
+  wji(wjh paramwjh, Runnable paramRunnable) {}
   
-  public wji(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_Wio = new wio();
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-  }
+  public void onAdded() {}
   
-  private void c()
+  public void onPostRun()
   {
-    bdzn localbdzn = new bdzn();
-    localbdzn.jdField_a_of_type_Ayyt = new wjj(this);
-    localbdzn.i = this.jdField_b_of_type_JavaLangString;
-    localbdzn.jdField_a_of_type_Boolean = true;
-    localbdzn.jdField_b_of_type_Int = 196609;
-    QQStoryContext.a();
-    localbdzn.jdField_b_of_type_JavaLangString = QQStoryContext.a().c();
-    localbdzn.c = "";
-    localbdzn.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    QQStoryContext.a();
-    QQStoryContext.a().a().a(localbdzn);
-  }
-  
-  protected void a()
-  {
-    if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (!zkr.c(this.jdField_b_of_type_JavaLangString)))
-    {
-      Object localObject = ((wix)wpm.a(14)).a(this.jdField_a_of_type_JavaLangString);
-      if (((wja)localObject).a.isSuccess())
-      {
-        this.jdField_b_of_type_JavaLangString = ((wja)localObject).jdField_b_of_type_JavaLangString;
-        if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (!zkr.c(this.jdField_b_of_type_JavaLangString)))
-        {
-          yqp.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "end composite success but file not exist:%s", new Object[] { this.jdField_b_of_type_JavaLangString });
-          localObject = new ErrorMessage(940006, String.format("end composite success but file not exist:%s", new Object[] { this.jdField_b_of_type_JavaLangString }));
-          ((ErrorMessage)localObject).extraMsg = "composite";
-          super.notifyResult(localObject);
-        }
-      }
-      else
-      {
-        ((wja)localObject).a.extraMsg = "composite";
-        super.notifyResult(((wja)localObject).a);
-        return;
-      }
+    wjh.a(this.jdField_a_of_type_Wjh).decrementAndGet();
+    yuk.b(wjh.a(this.jdField_a_of_type_Wjh), "threshold after running current task is " + wjh.a(this.jdField_a_of_type_Wjh).get());
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      yuk.b(wjh.a(this.jdField_a_of_type_Wjh), "threshold after running current task is:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
     }
-    wik.a().b(this.jdField_a_of_type_JavaLangString);
-    c();
+  }
+  
+  public void onPreRun()
+  {
+    wjh.a(this.jdField_a_of_type_Wjh).incrementAndGet();
+    yuk.a(wjh.a(this.jdField_a_of_type_Wjh), "execute %s", this.jdField_a_of_type_JavaLangRunnable);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      yuk.b(wjh.a(this.jdField_a_of_type_Wjh), "execute hashcode:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
+    }
   }
 }
 

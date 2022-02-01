@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.avgame.ui.AVGameOverlayFragment;
-
-public class nev
-  implements DialogInterface.OnClickListener
+public abstract interface nev
 {
-  public nev(AVGameOverlayFragment paramAVGameOverlayFragment) {}
+  public abstract void a(String paramString);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    AVGameOverlayFragment.a(this.a).finish();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

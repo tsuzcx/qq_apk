@@ -1,37 +1,32 @@
-import android.os.Bundle;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class apfd
+class apfd
+  implements MediaPlayer.OnPreparedListener
 {
-  private Bundle a;
+  apfd(apfb paramapfb) {}
   
-  public apfd(Bundle paramBundle)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    this.a = paramBundle;
-  }
-  
-  public Bundle a()
-  {
-    return this.a;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.a.putLong("downloadItems", paramLong);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.putBoolean("NoLimitParams", paramBoolean);
-  }
-  
-  public void b(long paramLong)
-  {
-    this.a.putLong("recognitionMask", paramLong);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.a.putBoolean("arTransferPromotion", paramBoolean);
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + apfb.b(this.a));
+      }
+      this.a.a.seekTo(0);
+      apfb.b(this.a, true);
+      if (apfb.b(this.a))
+      {
+        this.a.a.start();
+        apfb.c(this.a, false);
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      paramMediaPlayer.printStackTrace();
+    }
   }
 }
 

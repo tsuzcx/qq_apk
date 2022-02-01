@@ -16,9 +16,9 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bnxq;
-import bnyh;
-import bnzd;
+import boza;
+import bozr;
+import bpao;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.ttpic.videoshelf.ImagePositonManager;
 import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
@@ -36,7 +36,7 @@ public class FaceImageViewer
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
-  private bnxq jdField_a_of_type_Bnxq;
+  private boza jdField_a_of_type_Boza;
   private NodeItem jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem = new NodeItem();
   private boolean jdField_a_of_type_Boolean;
   private float[] jdField_a_of_type_ArrayOfFloat = new float[9];
@@ -78,8 +78,8 @@ public class FaceImageViewer
     this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
     setOnClickListener(this);
     c();
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)getResources().getDrawable(2130837658));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131368325);
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)getResources().getDrawable(2130837659));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131368398);
   }
   
   private float a(MotionEvent paramMotionEvent)
@@ -169,8 +169,8 @@ public class FaceImageViewer
       this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.cropBitmap = Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight());
       localBitmap.recycle();
     }
-    if (this.jdField_a_of_type_Bnxq != null) {
-      this.jdField_a_of_type_Bnxq.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+    if (this.jdField_a_of_type_Boza != null) {
+      this.jdField_a_of_type_Boza.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
     }
   }
   
@@ -263,8 +263,8 @@ public class FaceImageViewer
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       b();
-      bnyh.a().h();
-      bnzd.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeID);
+      bozr.a().h();
+      bpao.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeID);
     }
   }
   
@@ -348,10 +348,10 @@ public class FaceImageViewer
         if ((Math.abs(this.jdField_g_of_type_Float - this.jdField_e_of_type_Float) <= 10.0F) && (Math.abs(this.jdField_f_of_type_Float - this.jdField_h_of_type_Float) <= 10.0F)) {
           break label406;
         }
-        if (this.jdField_a_of_type_Bnxq == null) {
+        if (this.jdField_a_of_type_Boza == null) {
           break;
         }
-        this.jdField_a_of_type_Bnxq.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+        this.jdField_a_of_type_Boza.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
         return true;
         if (l1 <= this.jdField_b_of_type_Long) {
           this.jdField_e_of_type_Boolean = false;
@@ -402,8 +402,8 @@ public class FaceImageViewer
   {
     this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap = paramBitmap;
     this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.once = true;
-    if (this.jdField_a_of_type_Bnxq != null) {
-      this.jdField_a_of_type_Bnxq.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+    if (this.jdField_a_of_type_Boza != null) {
+      this.jdField_a_of_type_Boza.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
     }
   }
   
@@ -418,9 +418,9 @@ public class FaceImageViewer
     this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.zIndex = paramNodeItem.zIndex;
   }
   
-  public void setOnSaveScrollInfoListener(bnxq parambnxq)
+  public void setOnSaveScrollInfoListener(boza paramboza)
   {
-    this.jdField_a_of_type_Bnxq = parambnxq;
+    this.jdField_a_of_type_Boza = paramboza;
   }
 }
 

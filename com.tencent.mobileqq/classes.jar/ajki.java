@@ -1,16 +1,8 @@
-import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
+import android.widget.TextView;
 
 public class ajki
-  extends anmu
 {
-  public ajki(PublicAccountFragment paramPublicAccountFragment) {}
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean) {
-      this.a.i();
-    }
-  }
+  public TextView a;
 }
 
 

@@ -1,22 +1,14 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import androidx.annotation.RequiresApi;
-
-public class ayri
-  extends ayre
+class ayri
+  implements ayru
 {
-  @RequiresApi(api=19)
-  ayri()
-  {
-    super(18);
-    this.a = "StepSensorDetector";
-  }
+  ayri(ayrf paramayrf, ayrk paramayrk) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void a(boolean paramBoolean, String paramString)
   {
-    a();
+    this.jdField_a_of_type_Ayrf.c(paramString);
+    if (this.jdField_a_of_type_Ayrk != null) {
+      this.jdField_a_of_type_Ayrk.a(paramBoolean, paramString);
+    }
   }
 }
 

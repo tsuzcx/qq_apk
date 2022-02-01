@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils.confighandler;
 
-import aosm;
-import aost;
+import apgc;
+import apgj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ARPromotionConfigHandler$ARPromotionResHandler
@@ -9,12 +9,12 @@ public class ARPromotionConfigHandler$ARPromotionResHandler
 {
   public ARPromotionConfigHandler$ARPromotionResHandler(String paramString)
   {
-    super(aost.a + 364, paramString, "res_qq.android.ar_", "config", "ver");
+    super(apgj.a + 364, paramString, "res_qq.android.ar_", "config", "ver");
   }
   
   public void onGetConfigFinish(QQAppInterface paramQQAppInterface, String paramString, DefaultConfigInfo paramDefaultConfigInfo)
   {
-    aost.a(paramQQAppInterface).a(paramQQAppInterface, paramString, paramDefaultConfigInfo);
+    apgj.a(paramQQAppInterface).a(paramQQAppInterface, paramString, paramDefaultConfigInfo);
   }
 }
 

@@ -1,20 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFollowActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFollowActivity.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class oiz
-  implements View.OnClickListener
+  implements aasd
 {
-  public oiz(ReadInJoyFollowActivity paramReadInJoyFollowActivity) {}
+  public oiz(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
   
-  public void onClick(View paramView)
+  public void callback(Bundle paramBundle)
   {
-    this.a.a.a(true);
-    ThreadManager.executeOnSubThread(new ReadInJoyFollowActivity.1.1(this));
-    EventCollector.getInstance().onViewClicked(paramView);
+    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    {
+      ReadInJoyArticleDetailActivity.a(this.a, paramBundle.getByteArray("decryptResult"));
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyArticleDetail", 2, "请求返回时间" + System.currentTimeMillis());
+      }
+      if (ReadInJoyArticleDetailActivity.a(this.a) == null) {
+        this.a.jdField_a_of_type_JavaLangString = null;
+      }
+      this.a.jdField_a_of_type_JavaLangObject.notifyAll();
+      return;
+    }
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.text.TextUtils;
-import anmw;
-import anwd;
-import anxg;
-import bftn;
-import bfto;
+import anyw;
+import aoip;
+import aojs;
+import bgto;
+import bgtp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -18,9 +18,9 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TroopNameHelper
 {
-  anmw jdField_a_of_type_Anmw = (anmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-  anwd jdField_a_of_type_Anwd = (anwd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-  anxg jdField_a_of_type_Anxg = new bftn(this);
+  anyw jdField_a_of_type_Anyw = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+  aoip jdField_a_of_type_Aoip = (aoip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+  aojs jdField_a_of_type_Aojs = new bgto(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
   public TroopManager a;
   TroopNameHelper.Task jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopNameHelper$Task;
@@ -32,7 +32,7 @@ public class TroopNameHelper
   {
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anxg);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aojs);
   }
   
   public static String a(ArrayList<String> paramArrayList)
@@ -142,14 +142,14 @@ public class TroopNameHelper
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anxg);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aojs);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
     this.b.clear();
   }
   
-  public void a(String paramString, bfto parambfto)
+  public void a(String paramString, bgtp parambgtp)
   {
-    a(new TroopNameHelper.GenTroopNameTask(this, paramString, parambfto));
+    a(new TroopNameHelper.GenTroopNameTask(this, paramString, parambgtp));
   }
   
   public boolean a(String paramString)

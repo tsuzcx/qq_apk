@@ -1,33 +1,10 @@
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipDiyView;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class azqa
-  extends azpu
+abstract interface azqa
 {
-  public azqa(azlw paramazlw, azfe paramazfe)
-  {
-    super(paramazlw, paramazfe);
-  }
+  public abstract MessageRecord a(azqf paramazqf);
   
-  public String a()
-  {
-    return "VasProfileHeaderDiyComponent";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
-    {
-      VasProfileQVipDiyView localVasProfileQVipDiyView = new VasProfileQVipDiyView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azfe)this.b);
-      localVasProfileQVipDiyView.setProfileArgs(this.jdField_a_of_type_AndroidViewViewGroup);
-      localVasProfileQVipDiyView.setClickListener(this);
-      localVasProfileQVipDiyView.a();
-      localVasProfileQVipDiyView.e();
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileQVipDiyView;
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
-    }
-  }
+  public abstract MessageRecord a(azqt paramazqt);
 }
 
 

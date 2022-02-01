@@ -1,25 +1,68 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SubCommentCreateData;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.widget.pull2refresh.XRecyclerView;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SubCommentCreateData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SubCommentCreateData;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SubCommentCreateData;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pdw
-  implements Parcelable.Creator<SubCommentCreateData>
+public class pdw
+  extends pfh
 {
-  @NotNull
-  public SubCommentCreateData a(@NotNull Parcel paramParcel)
+  public pdw(ReadInJoyDynamicChannelFragment paramReadInJoyDynamicChannelFragment) {}
+  
+  public void a(int paramInt, List<Long> paramList)
   {
-    Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
-    return new SubCommentCreateData(paramParcel);
+    if (paramInt != ReadInJoyDynamicChannelFragment.a(this.a)) {
+      return;
+    }
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ReadInJoyDynamicChannelFragment.a(this.a).a(pfa.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.b(this.a)), paramList));
+      ReadInJoyDynamicChannelFragment.a(this.a).a(true, true);
+    }
+    for (;;)
+    {
+      paramList = pfa.a().a();
+      if (paramList == null) {
+        break;
+      }
+      ReadInJoyDynamicChannelFragment.a(this.a, paramList.a(ReadInJoyDynamicChannelFragment.c(this.a)));
+      return;
+      ReadInJoyDynamicChannelFragment.b(this.a).b();
+    }
   }
   
-  @NotNull
-  public SubCommentCreateData[] a(int paramInt)
+  public void a(TopBannerInfo paramTopBannerInfo)
   {
-    return new SubCommentCreateData[paramInt];
+    ReadInJoyDynamicChannelFragment.a(this.a, paramTopBannerInfo);
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if (paramInt != ReadInJoyDynamicChannelFragment.d(this.a)) {
+      return;
+    }
+    paramInt = pfa.a().a(Integer.valueOf(paramInt));
+    if ((paramBoolean1) && (paramInt > 0)) {}
+    for (String str = String.format(this.a.getResources().getString(2131717000), new Object[] { Integer.valueOf(paramInt) });; str = this.a.getResources().getString(2131716999))
+    {
+      ReadInJoyDynamicChannelFragment.c(this.a).a(paramBoolean1, str);
+      if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
+        ReadInJoyDynamicChannelFragment.a(this.a).a(pfa.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.e(this.a)), paramList));
+      }
+      ReadInJoyDynamicChannelFragment.d(this.a).a(true, true);
+      return;
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if (paramInt != ReadInJoyDynamicChannelFragment.f(this.a)) {
+      return;
+    }
+    if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
+      ReadInJoyDynamicChannelFragment.a(this.a).a(pfa.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.g(this.a)), paramList));
+    }
+    ReadInJoyDynamicChannelFragment.e(this.a).a(paramBoolean1, true);
   }
 }
 

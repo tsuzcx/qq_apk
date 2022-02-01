@@ -1,10 +1,15 @@
-public abstract interface apes
+import com.tencent.mobileqq.ar.ARGlobalConfigService;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+
+public class apes
+  extends aplu
 {
-  public abstract void a();
+  public apes(ARGlobalConfigService paramARGlobalConfigService) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public ARScanStarFaceConfigInfo a()
+  {
+    return this.a.a.a();
+  }
 }
 
 

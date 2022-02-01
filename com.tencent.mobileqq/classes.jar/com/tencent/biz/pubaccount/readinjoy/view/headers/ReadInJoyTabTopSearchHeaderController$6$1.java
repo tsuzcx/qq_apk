@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.headers;
 
-import anxu;
-import tdi;
+import aokg;
+import sua;
 
 class ReadInJoyTabTopSearchHeaderController$6$1
   implements Runnable
@@ -14,7 +14,7 @@ class ReadInJoyTabTopSearchHeaderController$6$1
       return;
     }
     this.a.this$0.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_Int, this.a.b);
-    new anxu(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 10);
+    new aokg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 10);
   }
 }
 

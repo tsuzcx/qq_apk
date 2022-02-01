@@ -1,52 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.observer.BusinessObserver;
 
-class avfd
-  implements BusinessObserver
+public class avfd
+  extends apcq
 {
-  avfd(avfb paramavfb, FaceDetectForThirdPartyManager paramFaceDetectForThirdPartyManager, int paramInt, QQAppInterface paramQQAppInterface) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public avfd(NowLiveFragment paramNowLiveFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if ((paramInt == 17) && (paramBoolean) && (paramBundle != null))
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt != 0)
     {
-      paramInt = paramBundle.getInt("app_id", 0);
-      QLog.d("qqidentification_server", 1, "onReceive appid = " + paramInt);
-      if (paramInt == 0) {
-        return;
-      }
-      FaceDetectForThirdPartyManager.AppConf localAppConf = (FaceDetectForThirdPartyManager.AppConf)paramBundle.getSerializable("FaceRecognition.AppConf");
-      if (this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager.a(paramInt, localAppConf);
-      }
-      this.jdField_a_of_type_Avfb.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
-      return;
+      QQToast.a(this.a.a, 1, anzj.a(2131706547), 1).a();
+      this.a.f();
     }
-    if (paramInt != 15)
-    {
-      this.jdField_a_of_type_Avfb.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, null));
-      if (paramInt != 17) {
-        break label186;
-      }
-      if (paramBundle != null) {
-        break label180;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("NowLiveFragment", 2, "startLocation finish" + System.currentTimeMillis());
     }
-    label180:
-    for (paramBundle = "1";; paramBundle = "2")
-    {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009D63", "0X8009D63", 0, 0, paramBundle, "", "", "");
-      return;
-      this.jdField_a_of_type_Avfb.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(15, null));
-      break;
-    }
-    label186:
-    QLog.e("qqidentification_server", 1, "requestThirdPartyInfo unexpected error");
+    this.a.a(paramSosoLbsInfo);
   }
 }
 

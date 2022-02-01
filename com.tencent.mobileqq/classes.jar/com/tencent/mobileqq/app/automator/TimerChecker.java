@@ -2,30 +2,30 @@ package com.tencent.mobileqq.app.automator;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anze;
+import aolo;
 
 public class TimerChecker
   extends LinearGroup
 {
-  public void c()
+  public void b()
   {
     long l = System.currentTimeMillis();
-    Object localObject = anze.jdField_a_of_type_ArrayOfInt;
+    Object localObject = aolo.jdField_a_of_type_ArrayOfInt;
     StringBuilder localStringBuilder = new StringBuilder("{");
     int j = localObject.length;
     int i = 0;
     while (i < j)
     {
-      if ((Math.abs(l - this.a.a.getLong("LAST_UPDATE_TIME_PRE_" + localObject[i], 0L)) >= localObject[i] * 60 * 60 * 1000) && (anze.jdField_a_of_type_ArrayOfJavaLangString[i].length() > 2))
+      if ((Math.abs(l - this.a.a.getLong("LAST_UPDATE_TIME_PRE_" + localObject[i], 0L)) >= localObject[i] * 60 * 60 * 1000) && (aolo.jdField_a_of_type_ArrayOfJavaLangString[i].length() > 2))
       {
-        localStringBuilder.append(anze.jdField_a_of_type_ArrayOfJavaLangString[i]).append(',');
+        localStringBuilder.append(aolo.jdField_a_of_type_ArrayOfJavaLangString[i]).append(',');
         this.a.a.edit().putLong("LAST_UPDATE_TIME_PRE_" + localObject[i], l).commit();
       }
       i += 1;
     }
     localObject = localStringBuilder.toString();
     this.b = (((String)localObject).substring(0, ((String)localObject).length() - 1) + "}");
-    super.c();
+    super.b();
   }
 }
 

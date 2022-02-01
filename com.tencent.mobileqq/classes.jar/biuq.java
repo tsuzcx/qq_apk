@@ -1,36 +1,26 @@
-import android.text.TextUtils;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class biuq
+class biuq
+  extends Handler
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  
-  public String a()
+  biuq(biup parambiup, Looper paramLooper)
   {
-    if (TextUtils.isEmpty(this.f)) {
-      return bist.a(biip.a().a());
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.arg1;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    return this.f;
-  }
-  
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g)) && (!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.b));
-  }
-  
-  public String toString()
-  {
-    return this.d + "_" + this.a + "_" + this.b + "_" + this.c + "_" + this.f + "_" + this.g;
+    ((bitz)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(107)).notifyUI(3, true, Integer.valueOf(i));
   }
 }
 

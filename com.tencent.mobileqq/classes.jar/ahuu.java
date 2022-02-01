@@ -1,47 +1,23 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MessageForTofuIntimateAnniversary;
 
-public class ahuu
+class ahuu
+  extends agen
 {
-  private static int a;
-  public ConcurrentHashMap<Long, ahux> a;
+  public long a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  MessageForTofuIntimateAnniversary jdField_a_of_type_ComTencentMobileqqDataMessageForTofuIntimateAnniversary;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  TextView d;
   
-  static
-  {
-    jdField_a_of_type_Int = 900000;
-  }
-  
-  private ahuu()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  public static final ahuu a()
-  {
-    return ahuw.a();
-  }
-  
-  public ahux a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
-      return (ahux)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(" LongVideoUrlCacheManager", 2, "LongVideoUrlCacheManager,clearCache");
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-  }
-  
-  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new ahux(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
-  }
+  ahuu(ahut paramahut) {}
 }
 
 

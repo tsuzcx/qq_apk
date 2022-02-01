@@ -1,15 +1,13 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class qaw
-  implements bkln
+public class qaw
+  implements ViewBase.IBuilder
 {
-  qaw(qav paramqav) {}
-  
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public ViewBase build(VafContext paramVafContext)
   {
-    qau.a(this.a.jdField_a_of_type_Qau, this.a.jdField_a_of_type_Stc, this.a.jdField_a_of_type_Pxk, paramInt, paramArrayList, paramObject);
+    return new qav(paramVafContext);
   }
 }
 

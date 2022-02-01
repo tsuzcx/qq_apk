@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/nv_" android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:id="@id/nv2" android:layout_width="244.0dip" android:layout_height="338.0dip" />
-        <com.tencent.mobileqq.widget.presseffect.PressEffectImageView android:id="@id/nv5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:src="@drawable/gzn" android:layout_below="@id/nv2" android:layout_centerHorizontal="true" />
-        <com.tencent.mobileqq.widget.presseffect.PressEffectTextView android:textSize="17.0dip" android:textColor="#ff613610" android:gravity="center" android:id="@id/nv9" android:paddingBottom="15.0dip" android:layout_width="207.0dip" android:layout_height="74.0dip" android:text="@string/x6b" android:layout_alignBottom="@id/nv2" android:layout_centerHorizontal="true" />
-        <LinearLayout android:id="@id/nv3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="160.0dip" android:layout_centerHorizontal="true">
-            <TextView android:textSize="50.0dip" android:textStyle="bold" android:textColor="#ffffecc6" android:id="@id/nv4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0.68" />
-            <TextView android:textSize="16.0dip" android:textColor="#ffffecc6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/x69" />
-        </LinearLayout>
-        <com.tencent.mobileqq.widget.presseffect.PressEffectTextView android:textSize="14.0dip" android:textColor="#ffffecc6" android:id="@id/nv6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/x6f" android:layout_below="@id/nv3" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</RelativeLayout>
+<com.tencent.mobileqq.leba.widget.LebaRoundLayout android:id="@id/ifh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.image.URLImageView android:id="@id/msi" android:layout_width="@dimen/aif" android:layout_height="@dimen/aif" android:scaleType="centerCrop" />
+    <View android:id="@id/msh" android:background="@color/j_" android:visibility="gone" android:layout_width="@dimen/aif" android:layout_height="@dimen/aif" />
+    <View android:id="@id/msk" android:background="@drawable/ghm" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:scaleType="centerInside" android:layout_centerInParent="true" />
+    <com.tencent.mobileqq.widget.UnderlineTextView android:textSize="13.0dip" android:textColor="#ff34394c" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center" android:id="@id/msc" android:background="#fffdfdf3" android:paddingLeft="4.0dip" android:paddingTop="3.0dip" android:paddingBottom="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lineSpacingExtra="8.0dip" app:underedlineColor="#ffececec" app:underedlineWidth="1.0px" />
+    <View android:layout_gravity="bottom|center|right" android:id="@id/msj" android:background="@drawable/ghk" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="12.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="4.0dip" android:scaleType="centerInside" />
+    <TextView android:textSize="@dimen/aiu" android:textColor="@color/skin_color_white" android:layout_gravity="center" android:id="@id/msd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</com.tencent.mobileqq.leba.widget.LebaRoundLayout>

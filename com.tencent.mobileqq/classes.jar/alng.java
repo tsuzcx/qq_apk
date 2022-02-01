@@ -1,9 +1,25 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
 class alng
+  implements View.OnTouchListener
 {
-  long jdField_a_of_type_Long;
-  alni jdField_a_of_type_Alni;
-  long jdField_b_of_type_Long;
-  alni jdField_b_of_type_Alni;
+  alng(alnf paramalnf) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0) {
+      paramView.setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+        paramView.setAlpha(1.0F);
+      }
+    }
+  }
 }
 
 

@@ -1,18 +1,18 @@
-import android.os.Handler;
-import cooperation.qzone.zipanimate.ZipAnimationDrawable.ZipAnimationState.1.1;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qqreader.js.JsCallParams;
 
-public class bmpq
-  implements bmpy
+public final class bmpq
+  implements Parcelable.Creator<JsCallParams>
 {
-  bmpq(bmpp parambmpp) {}
-  
-  public void onZipLoaded(boolean paramBoolean)
+  public JsCallParams a(Parcel paramParcel)
   {
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_Boolean = paramBoolean;
-      this.a.jdField_a_of_type_Bmpl.a.post(new ZipAnimationDrawable.ZipAnimationState.1.1(this));
-    }
+    return new JsCallParams(paramParcel, null);
+  }
+  
+  public JsCallParams[] a(int paramInt)
+  {
+    return new JsCallParams[paramInt];
   }
 }
 

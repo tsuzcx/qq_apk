@@ -1,37 +1,44 @@
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.SimpleTextView;
 
-public class amqe
-  implements amqs
+class amqe
+  extends blpy
 {
-  private int a;
-  
-  public amqe()
+  amqe(amqb paramamqb, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    int i = amqr.a;
-    amqr.a = i + 1;
-    this.a = i;
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public String a()
+  public View a(int paramInt, Object paramObject, blpx paramblpx, View.OnClickListener paramOnClickListener)
   {
-    return null;
+    paramblpx = super.a(paramInt, paramObject, paramblpx, paramOnClickListener);
+    if ((paramblpx instanceof SimpleTextView)) {
+      paramblpx.setTag(paramObject);
+    }
+    return paramblpx;
   }
   
-  public JSONObject a(amqr paramamqr, JSONObject paramJSONObject)
+  public void a(int paramInt, Object paramObject, blpx[] paramArrayOfblpx)
   {
-    if ("cs.audio_create.local".equals(paramJSONObject.optString("N_R_CMD")))
+    paramInt = 0;
+    if ((paramArrayOfblpx == null) || (paramArrayOfblpx.length <= 0)) {}
+    for (;;)
     {
-      paramJSONObject = new ampr(paramJSONObject.optInt("N_R_OBJ"), paramJSONObject.optInt("id"), paramJSONObject.optString("type"));
-      if (paramamqr != null) {
-        paramamqr.a(paramJSONObject);
+      return;
+      if (paramArrayOfblpx.length < 0)
+      {
+        paramArrayOfblpx[0].b = 0;
+        paramArrayOfblpx[0].a = 0;
+        paramInt = 1;
+      }
+      while (paramInt < paramArrayOfblpx.length)
+      {
+        paramArrayOfblpx[paramInt].b = -1;
+        paramArrayOfblpx[paramInt].a = -1;
+        paramInt += 1;
       }
     }
-    return null;
-  }
-  
-  public int c()
-  {
-    return this.a;
   }
 }
 

@@ -1,15 +1,53 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.mobileqq.soload.LoadParam;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-public abstract interface bcnv
+public class bcnv
+  extends bcpp
 {
-  public abstract LoadExtResult a(LoadParam paramLoadParam);
+  private TextView a;
+  private TextView b;
+  private TextView c;
+  private TextView d;
   
-  public abstract void a(LoadParam paramLoadParam, bcob parambcob);
+  public bcnv(View paramView)
+  {
+    super(paramView);
+  }
   
-  public abstract void a(String paramString);
+  public bcnv(ViewGroup paramViewGroup, int paramInt)
+  {
+    super(paramViewGroup, paramInt);
+  }
   
-  public abstract boolean a(String paramString);
+  protected void a()
+  {
+    super.a();
+    this.a = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377358));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377357));
+    this.c = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377356));
+    this.d = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377234));
+  }
+  
+  public TextView e()
+  {
+    return this.a;
+  }
+  
+  public TextView f()
+  {
+    return this.jdField_b_of_type_AndroidWidgetTextView;
+  }
+  
+  public TextView g()
+  {
+    return this.c;
+  }
+  
+  public TextView h()
+  {
+    return this.d;
+  }
 }
 
 

@@ -1,83 +1,35 @@
 import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.RspDelOneMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class yhf
-  extends nit
+class yhf
+  implements wrk
 {
-  public yhf(StoryMessageListActivity paramStoryMessageListActivity) {}
+  yhf(yhc paramyhc, CommentEntry paramCommentEntry, boolean paramBoolean) {}
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    int j = -1;
-    paramBundle = new qqstory_struct.ErrorInfo();
-    qqstory_710_del_message.RspDelOneMessage localRspDelOneMessage;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      localRspDelOneMessage = new qqstory_710_del_message.RspDelOneMessage();
-    }
-    for (;;)
-    {
-      int m;
-      int k;
-      try
-      {
-        localRspDelOneMessage.mergeFrom(paramArrayOfByte);
-        if (!localRspDelOneMessage.errinfo.error_code.has()) {
-          break label239;
-        }
-        i = localRspDelOneMessage.errinfo.error_code.get();
-        j = i;
-        if (j == 0) {
-          i = 1;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        m = 0;
-        k = j;
-      }
-      try
-      {
-        paramBundle.error_code.set(localRspDelOneMessage.errinfo.error_code.get());
-        paramBundle.error_desc.set(localRspDelOneMessage.errinfo.error_desc.get());
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqstory.msgList", 2, "receive delete one msg, code=" + paramInt + " bizCode=" + j);
-        }
-        if (i == 0) {
-          QQToast.a(this.a.getApplicationContext(), 1, anni.a(2131713223), 0).a();
-        }
-        return paramBundle;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          k = j;
-          m = i;
-        }
-      }
-      int i = 0;
-      continue;
-      j = k;
-      i = m;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("Q.qqstory.msgList", 2, "error parse RspDelOneMessage", paramArrayOfByte);
-        j = k;
-        i = m;
-        continue;
-        label239:
-        i = 0;
-      }
+    a(-1, anzj.a(2131713212));
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
+    QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131713209), 0).a();
+    yuk.e("Q.qqstory.detail.StoryDetailPresenter", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
+  }
+  
+  public void a(MessageMicro paramMessageMicro)
+  {
+    if (!yhc.a(this.jdField_a_of_type_Yhc).get()) {
+      yhc.a(this.jdField_a_of_type_Yhc, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
     }
   }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

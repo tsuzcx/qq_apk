@@ -1,6 +1,6 @@
 package com.tencent.gdtad.statistics;
 
-import acqy;
+import acvc;
 import com.tencent.ad.tangram.net.AdHttp;
 import com.tencent.ad.tangram.net.AdHttp.Params;
 
@@ -18,11 +18,11 @@ public final class GdtReportForAntiSpam$1
     localParams.requestData = this.a;
     if (!localParams.canSend())
     {
-      acqy.d("GdtReportForAntiSpam", "reportAntiSpamForClick error");
+      acvc.d("GdtReportForAntiSpam", "reportAntiSpamForClick error");
       return;
     }
     AdHttp.send(localParams);
-    acqy.b("GdtReportForAntiSpam", String.format("reportAntiSpamForClick responseCode:%d durationMillis:%d", new Object[] { Integer.valueOf(localParams.responseCode), Long.valueOf(localParams.durationMillis) }));
+    acvc.b("GdtReportForAntiSpam", String.format("reportAntiSpamForClick responseCode:%d durationMillis:%d", new Object[] { Integer.valueOf(localParams.responseCode), Long.valueOf(localParams.durationMillis) }));
   }
 }
 

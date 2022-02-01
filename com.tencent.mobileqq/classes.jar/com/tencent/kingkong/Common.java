@@ -1,10 +1,10 @@
 package com.tencent.kingkong;
 
-import adax;
-import aday;
-import adaz;
-import adbk;
-import adbl;
+import adjv;
+import adjw;
+import adjx;
+import adki;
+import adkj;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class Common
 {
-  public static adbl a;
+  public static adkj a;
   public static Context a;
   public static SharedPreferences.Editor a;
   public static SharedPreferences a;
@@ -41,13 +41,13 @@ public class Common
   
   public static void EvilReportFromNative(int paramInt, String paramString1, String paramString2)
   {
-    adax.a("KingKongCommon", "Evil Report " + paramString1 + ", " + paramString2);
+    adjv.a("KingKongCommon", "Evil Report " + paramString1 + ", " + paramString2);
     ReportUtil.a(paramInt, 0, 0, "&str1=" + paramString1 + "&str2=" + paramString2);
   }
   
   public static void NotificationFromNative(int paramInt1, int paramInt2, int paramInt3)
   {
-    adax.a("KingKongCommon", "Notification From Native " + paramInt1 + ", " + paramInt2 + ", " + paramInt3);
+    adjv.a("KingKongCommon", "Notification From Native " + paramInt1 + ", " + paramInt2 + ", " + paramInt3);
     ReportUtil.a(paramInt1, paramInt2, paramInt3, "");
   }
   
@@ -96,7 +96,7 @@ public class Common
     if ((paramContext != null) && (jdField_a_of_type_AndroidContentContext == null))
     {
       jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-      adaz.a(jdField_a_of_type_AndroidContentContext);
+      adjx.a(jdField_a_of_type_AndroidContentContext);
     }
   }
   
@@ -109,7 +109,7 @@ public class Common
   
   public static void SetQQUni(String paramString)
   {
-    adaz.a(paramString);
+    adjx.a(paramString);
   }
   
   /* Error */
@@ -171,7 +171,7 @@ public class Common
     int j = jdField_a_of_type_AndroidContentSharedPreferences.getInt(a("FINGERPRINT_LIB_COUNT", paramString), -1);
     if ((j == -1) || (j != paramArrayList.size()))
     {
-      adax.a("KingKongCommon", "Library count mismatch " + j + ", " + paramArrayList.size());
+      adjv.a("KingKongCommon", "Library count mismatch " + j + ", " + paramArrayList.size());
       return -1;
     }
     int i = 0;
@@ -180,19 +180,19 @@ public class Common
       String str1 = jdField_a_of_type_AndroidContentSharedPreferences.getString(a("FINGERPRINT_LIB", paramString, i), "");
       if (!((String)paramArrayList.get(i)).equals(str1))
       {
-        adax.a("KingKongCommon", "Library name mismatch " + str1 + ", " + (String)paramArrayList.get(i));
+        adjv.a("KingKongCommon", "Library name mismatch " + str1 + ", " + (String)paramArrayList.get(i));
         return -1;
       }
-      String str2 = adbk.b(str1);
+      String str2 = adki.b(str1);
       if (TextUtils.isEmpty(str2))
       {
-        adax.a("KingKongCommon", "Unable to get file SHA1 " + str1);
+        adjv.a("KingKongCommon", "Unable to get file SHA1 " + str1);
         return -1;
       }
       String str3 = jdField_a_of_type_AndroidContentSharedPreferences.getString(a("FINGERPRINT_LIB_SHA1", paramString, i), "");
       if (!str3.equals(str2))
       {
-        adax.a("KingKongCommon", "Library SHA1 mismatch " + str1 + ", " + str3 + ", " + str2);
+        adjv.a("KingKongCommon", "Library SHA1 mismatch " + str1 + ", " + str3 + ", " + str2);
         return -1;
       }
       i += 1;
@@ -261,7 +261,7 @@ public class Common
   
   public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    adax.a("KingKongCommon", "Do patch " + paramInt + ", " + paramString1 + ", " + paramString2 + ", " + paramString3 + ", " + paramString4);
+    adjv.a("KingKongCommon", "Do patch " + paramInt + ", " + paramString1 + ", " + paramString2 + ", " + paramString3 + ", " + paramString4);
     String str = a("DO_PATCH", paramString1, paramInt);
     if (!jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(str, false)) {}
     try
@@ -290,7 +290,7 @@ public class Common
         break label90;
       }
       String str1 = (String)paramArrayList.get(i);
-      String str2 = adbk.b(str1);
+      String str2 = adki.b(str1);
       if (TextUtils.isEmpty(str2)) {
         break;
       }
@@ -308,7 +308,7 @@ public class Common
   {
     if ((paramArrayOfInt1.length != paramArrayOfInt2.length) || (paramArrayOfInt1.length > 15) || (paramArrayOfInt1.length != paramInt))
     {
-      adax.a("KingKongCommon", "Params count mismatch : " + paramArrayOfInt1.length + ", " + paramArrayOfInt2.length + ", " + paramInt);
+      adjv.a("KingKongCommon", "Params count mismatch : " + paramArrayOfInt1.length + ", " + paramArrayOfInt2.length + ", " + paramInt);
       return;
     }
     int i = 0;
@@ -325,9 +325,9 @@ public class Common
   public static void a(boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (aday.a += 1;; aday.a = 0)
+    for (adjw.a += 1;; adjw.a = 0)
     {
-      d(aday.a);
+      d(adjw.a);
       return;
     }
   }
@@ -486,11 +486,11 @@ public class Common
     //   193: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   196: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   199: putstatic 37	com/tencent/kingkong/Common:f	Ljava/lang/String;
-    //   202: new 344	adbl
+    //   202: new 344	adkj
     //   205: dup
     //   206: getstatic 35	com/tencent/kingkong/Common:e	Ljava/lang/String;
-    //   209: invokespecial 346	adbl:<init>	(Ljava/lang/String;)V
-    //   212: putstatic 348	com/tencent/kingkong/Common:jdField_a_of_type_Adbl	Ladbl;
+    //   209: invokespecial 346	adkj:<init>	(Ljava/lang/String;)V
+    //   212: putstatic 348	com/tencent/kingkong/Common:jdField_a_of_type_Adkj	Ladkj;
     //   215: goto -204 -> 11
     //   218: astore_1
     //   219: ldc 2

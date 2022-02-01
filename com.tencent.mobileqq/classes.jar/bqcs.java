@@ -1,51 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import android.widget.ImageView;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
 
-public class bqcs
-  extends AnimatorListenerAdapter
+class bqcs
+  implements bjbj
 {
-  public bqcs(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  bqcs(bqcp parambqcp) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(bjbh parambjbh)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
+      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambjbh);
     }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.a.get() + ", mActionUpAnimator:" + this.a.b.get());
-    }
-    if (!this.a.b.get())
-    {
-      this.a.a.set(true);
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(2);
-      CameraCaptureButtonLayout.a(this.a, System.currentTimeMillis());
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(5);
-    }
-    for (;;)
-    {
-      this.a.b.set(false);
-      return;
-      CameraCaptureButtonLayout.a(this.a).setVisibility(8);
-      CameraCaptureButtonLayout.a(this.a);
-      CameraCaptureButtonLayout.a(this.a, 1.0F);
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
-    }
-  }
+  public void a(bjbh parambjbh, int paramInt1, int paramInt2) {}
 }
 
 

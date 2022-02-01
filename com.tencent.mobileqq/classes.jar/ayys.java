@@ -1,15 +1,30 @@
-public abstract class ayys
-  implements ayyq
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.ocr.OCRResultActivity.9.1;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
+import java.util.HashMap;
+
+public class ayys
+  extends ayxv
 {
-  public final void a(int paramInt, ayxy paramayxy) {}
+  public ayys(OCRResultActivity paramOCRResultActivity) {}
   
-  public final void a_(int paramInt, boolean paramBoolean) {}
-  
-  public final void b(int paramInt, ayxy paramayxy) {}
-  
-  public final void c(int paramInt, ayxy paramayxy) {}
-  
-  public final void d(int paramInt, ayxy paramayxy) {}
+  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
+  {
+    if (OCRResultActivity.a(this.a)) {
+      return;
+    }
+    this.a.runOnUiThread(new OCRResultActivity.9.1(this, paramBoolean, paramInt, paramTranslateResult));
+    HashMap localHashMap = new HashMap();
+    if (paramTranslateResult != null) {}
+    for (int i = paramTranslateResult.b;; i = 2000)
+    {
+      localHashMap.put("errCode", String.valueOf(i));
+      localHashMap.put("type", String.valueOf(paramInt));
+      bdmc.a(BaseApplicationImpl.getContext()).a("", "SCAN_TRANSLATE_RESULT", paramBoolean, 0L, 0L, localHashMap, "", false);
+      return;
+    }
+  }
 }
 
 

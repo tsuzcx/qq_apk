@@ -1,76 +1,51 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract class yjy<T extends FeedItem>
+public class yjy
+  implements IEventReceiver
 {
-  protected T a;
-  public boolean b;
+  public int a;
+  public QQUserUIItem a;
+  private StoryMemoriesFragment jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment;
+  public String a;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  protected wjd a;
+  private yka jdField_a_of_type_Yka;
+  private ykb jdField_a_of_type_Ykb;
   
-  public yjy(@NonNull T paramT)
+  public yjy(int paramInt, String paramString, StoryMemoriesFragment paramStoryMemoriesFragment)
   {
-    zkb.a(paramT);
-    this.a = paramT;
+    this.jdField_a_of_type_Wjd = new yjz(this);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment = paramStoryMemoriesFragment;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static yjy a(int paramInt)
+  public void a()
   {
-    FeedItem localFeedItem = FeedItem.createFeedItemByType(paramInt);
-    if (localFeedItem == null) {
-      return null;
-    }
-    return localFeedItem.generateHomeFeed();
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((wtt)wth.a(2)).b(this.jdField_a_of_type_JavaLangString);
+    xiz.a().addObserver(this.jdField_a_of_type_Wjd);
+    this.jdField_a_of_type_Yka = new yka(this);
+    wjj.a().registerSubscriber(this.jdField_a_of_type_Yka);
+    this.jdField_a_of_type_Ykb = new ykb(this);
+    wjj.a().registerSubscriber(this.jdField_a_of_type_Ykb);
   }
   
-  public T a()
+  public void b()
   {
-    return this.a;
+    xiz.a().removeObserver(this.jdField_a_of_type_Wjd);
+    wjj.a().unRegisterSubscriber(this.jdField_a_of_type_Yka);
+    wjj.a().unRegisterSubscriber(this.jdField_a_of_type_Ykb);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt, wyk paramwyk, wye paramwye, wyh paramwyh);
-  
-  public abstract boolean a(qqstory_struct.StoryFeed paramStoryFeed);
-  
-  public abstract void b();
-  
-  public List<StoryVideoItem> d()
+  public boolean isValidate()
   {
-    return new ArrayList(0);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (yjy)paramObject;
-      if (this.a != null) {
-        return this.a.equals(paramObject.a);
-      }
-    } while (paramObject.a == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    if (this.a != null) {
-      return this.a.hashCode();
-    }
-    return 0;
-  }
-  
-  public String toString()
-  {
-    return this.a.toString();
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 

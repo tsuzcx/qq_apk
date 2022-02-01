@@ -1,17 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.Map;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 public class sqn
-  extends pue
+  implements spj
 {
-  public sqn(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Map paramMap, boolean paramBoolean)
+  public int a(BaseData paramBaseData)
   {
-    super(paramString);
+    return 5;
   }
   
-  public void a(ptx paramptx)
+  public spi a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    paramptx.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
+    return new sqo(LayoutInflater.from(paramContext).inflate(2131560185, null), paramBaseData);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return paramBaseData.r == 5;
   }
 }
 

@@ -1,20 +1,52 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 class abdl
-  implements View.OnClickListener
+  implements nmg
 {
-  abdl(abdk paramabdk, DialogInterface.OnClickListener paramOnClickListener) {}
+  abdl(abdj paramabdj, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void loaded(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Abdk, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("ViewPluginLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt == 0)
+    {
+      String str;
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
+        str = paramString.optString("url");
+        paramInt = paramString.optInt("filesize");
+        if ((str != null) && (str.endsWith("patch")))
+        {
+          bhmi.a(nmp.a(this.jdField_a_of_type_Abdj.a) + this.jdField_a_of_type_Abdj.a);
+          this.jdField_a_of_type_Abdj.b();
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        this.jdField_a_of_type_Abdj.a();
+        return;
+      }
+      if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
+      {
+        this.jdField_a_of_type_Abdj.a(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        return;
+      }
+      this.jdField_a_of_type_Abdj.a();
+      return;
+    }
+    this.jdField_a_of_type_Abdj.a();
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

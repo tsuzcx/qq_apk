@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import akwm;
-import amhd;
-import ampj;
+import alib;
+import amsx;
+import anbd;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -130,11 +130,11 @@ public class UsedAppListManager
         paramAppInfo.updateTimeStamp();
         localUsedAppListManager.insertAppInfo(paramAppInfo);
       } while (paramAppInfo.type != 2);
-      paramAppInfo = (amhd)((QQAppInterface)localObject).getManager(153);
+      paramAppInfo = (amsx)((QQAppInterface)localObject).getManager(153);
     } while ((paramAppInfo.l) && (paramAppInfo.j()));
-    ampj.b(4);
+    anbd.b(4);
     return;
-    akwm.a(paramAppInfo);
+    alib.a(paramAppInfo);
   }
   
   private void saveToDB(Entity paramEntity)

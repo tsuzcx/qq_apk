@@ -1,18 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
 
 public class ajts
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ajts(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public ajts(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.invalidate();
   }
 }
 

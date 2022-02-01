@@ -1,330 +1,442 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.floatscr.ColorScreenManager.1;
-import com.tencent.mobileqq.pluginsdk.IOUtil;
-import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class auec
-  extends bgzp<aueb>
 {
-  public static boolean a;
-  protected Context a;
-  protected AppInterface a;
+  private int jdField_a_of_type_Int;
+  private auei jdField_a_of_type_Auei;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+  private String jdField_a_of_type_JavaLangString;
+  private List<auei> jdField_a_of_type_JavaUtilList;
+  private int b = 0;
   
-  static
+  public auec(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public auec(AppInterface paramAppInterface)
+  private FileManagerEntity a(WeiYunFileInfo paramWeiYunFileInfo)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramAppInterface.getApp().getApplicationContext();
+    FileManagerEntity localFileManagerEntity = new FileManagerEntity();
+    localFileManagerEntity.WeiYunDirKey = paramWeiYunFileInfo.jdField_b_of_type_JavaLangString;
+    localFileManagerEntity.WeiYunFileId = paramWeiYunFileInfo.jdField_a_of_type_JavaLangString;
+    localFileManagerEntity.fileName = paramWeiYunFileInfo.c;
+    localFileManagerEntity.strLargeThumPath = paramWeiYunFileInfo.e;
+    localFileManagerEntity.strFileSHA = paramWeiYunFileInfo.j;
+    localFileManagerEntity.strFileMd5 = paramWeiYunFileInfo.i;
+    localFileManagerEntity.lastTime = paramWeiYunFileInfo.jdField_b_of_type_Long;
+    localFileManagerEntity.srvTime = paramWeiYunFileInfo.jdField_b_of_type_Long;
+    localFileManagerEntity.fileSize = paramWeiYunFileInfo.jdField_a_of_type_Long;
+    localFileManagerEntity.nFileType = 0;
+    localFileManagerEntity.cloudType = 2;
+    return localFileManagerEntity;
   }
   
-  public int a(String paramString)
+  private boolean a()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty(paramString))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b();
+    if ((localObject == null) || (((List)localObject).size() == 0)) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    localObject = ((List)localObject).iterator();
+    int i = 0;
+    while (((Iterator)localObject).hasNext())
     {
-      String[] arrayOfString = paramString.split("\\.");
-      localObject1 = localObject2;
-      if (arrayOfString.length >= 3) {
-        try
-        {
-          int i = Integer.parseInt(arrayOfString[2]);
-          return i;
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)((Iterator)localObject).next();
+      if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.trim().length() == 0) || (this.jdField_a_of_type_JavaLangString.equals(localFileManagerEntity.peerUin)))
+      {
+        if (localFileManagerEntity.nSessionId == this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) {
+          this.jdField_a_of_type_Int = i;
         }
-        catch (NumberFormatException localNumberFormatException) {}
+        while (a(localFileManagerEntity.nFileType, localFileManagerEntity.getCloudType()))
+        {
+          i += 1;
+          this.jdField_a_of_type_JavaUtilList.add(aueb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity));
+          break;
+        }
       }
     }
-    QLog.e("ColorScreenManager", 1, "getColorScreenId failed from " + paramString, localNumberFormatException);
-    return 0;
+    return true;
   }
   
-  public aueb a(int paramInt)
+  private static boolean a(int paramInt1, int paramInt2)
   {
-    for (;;)
+    if (paramInt1 != 0) {}
+    while (paramInt2 == 0) {
+      return false;
+    }
+    return true;
+  }
+  
+  private boolean a(Intent paramIntent, ForwardFileInfo paramForwardFileInfo)
+  {
+    boolean bool;
+    if (paramIntent.getBooleanExtra("is_in_zip", false))
     {
-      File localFile3;
-      File localFile2;
-      try
-      {
-        File localFile1 = new File(a(paramInt), "unzip");
-        if (!localFile1.exists())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ColorScreenManager", 1, "getLocalConfig unzipDir not exist");
-          }
-          localFile1 = null;
-          return localFile1;
-        }
-        localFile3 = new File(localFile1, "config.json");
-        localFile2 = new File(localFile1, "fullscreen.json");
-        if (!localFile3.exists())
-        {
-          QLog.e("ColorScreenManager", 1, "configFile do not exists.");
-          bgzu.a(BaseApplicationImpl.getApplication().getRuntime(), "individual_v2_colorscreen_parse_fail", "1", "", Integer.toString(paramInt), null, null, 0.0F, 0.0F);
-          bgzt.a("individual_v2_colorscreen_parse_fail", "errCode:1, id:" + paramInt);
-          a("colorScreen.android." + paramInt);
-          localFile1 = null;
-          continue;
-        }
-        if (!localFile2.exists())
-        {
-          QLog.e("ColorScreenManager", 1, "animFile do not exists.");
-          continue;
-        }
-        localaueb = new aueb();
+      bool = a(paramForwardFileInfo);
+      this.b = 1;
+      if (bool) {
+        break label247;
       }
-      finally {}
-      aueb localaueb;
-      localaueb.jdField_a_of_type_JavaLangString = localFile2.getAbsolutePath();
-      localaueb.jdField_b_of_type_JavaLangString = (localObject1.getAbsolutePath() + File.separator + "images");
-      try
+      QLog.e("FileViewerParamParser", 1, "parseImageGallery type[" + paramForwardFileInfo.b() + "] return false");
+    }
+    label247:
+    while (this.jdField_a_of_type_JavaUtilList.size() != 0)
+    {
+      return bool;
+      switch (paramForwardFileInfo.b())
       {
-        Object localObject2 = new JSONObject(bgmg.a(localFile3));
-        localaueb.jdField_a_of_type_Int = (((JSONObject)localObject2).optInt("repeatCount", localaueb.jdField_a_of_type_Int) - 1);
-        localaueb.jdField_a_of_type_Long = ((JSONObject)localObject2).optLong("eastInTime", localaueb.jdField_a_of_type_Long);
-        localaueb.jdField_b_of_type_Long = ((JSONObject)localObject2).optLong("eastOutTime", localaueb.jdField_b_of_type_Long);
-        localObject2 = localaueb;
-        if (QLog.isColorLevel())
-        {
-          long l = IOUtil.getCRC32Value(localFile2);
-          QLog.d("ColorScreenManager", 1, "getLocalConfig crc32: " + Long.toHexString(l));
-          localObject2 = localaueb;
+      case 10005: 
+      case 10008: 
+      default: 
+        if (QLog.isDevelopLevel()) {
+          QLog.w("FileViewerParamParser", 4, "parseImageGallery: type[" + paramForwardFileInfo.b() + "] is not implemented");
         }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("ColorScreenManager", 1, "failed read config of " + paramInt, localException);
+      case 10000: 
+      case 10006: 
+      case 10002: 
+        do
+        {
+          bool = false;
+          break;
+          bool = b(paramIntent);
+          break;
+        } while (!QLog.isDevelopLevel());
+        QLog.w("FileViewerParamParser", 4, "parseImageGallery: not support OfflineFile type");
+        bool = false;
+        break;
+      case 10003: 
+        bool = c(paramIntent);
+        break;
+      case 10001: 
+        bool = a();
+        break;
+      case 10004: 
+        bool = d(paramIntent);
+        break;
+      case 10009: 
+        bool = e(paramIntent);
+        break;
+      case 10007: 
+        bool = b();
+        break;
+      case 10010: 
+        bool = c();
+        break;
       }
     }
+    QLog.e("FileViewerParamParser", 1, "parseImageGallery type[" + paramForwardFileInfo.b() + "] list is empty");
+    return false;
   }
   
-  public File a()
+  private boolean a(ForwardFileInfo paramForwardFileInfo)
   {
-    File localFile = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), "color_screen");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    paramForwardFileInfo = paramForwardFileInfo.a();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramForwardFileInfo = paramForwardFileInfo.iterator();
+    int i = 0;
+    while (paramForwardFileInfo.hasNext())
+    {
+      Object localObject = (Long)paramForwardFileInfo.next();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(((Long)localObject).longValue());
+      if (localObject != null)
+      {
+        if (auog.b(((FileManagerEntity)localObject).getFilePath())) {
+          ((FileManagerEntity)localObject).status = 1;
+        }
+        if (((FileManagerEntity)localObject).nSessionId == this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) {
+          this.jdField_a_of_type_Int = i;
+        }
+        while (a(((FileManagerEntity)localObject).nFileType, ((FileManagerEntity)localObject).getCloudType()))
+        {
+          this.jdField_a_of_type_JavaUtilList.add(aueb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject));
+          i += 1;
+          break;
+        }
+      }
     }
-    return localFile;
+    return true;
   }
   
-  public File a(int paramInt)
+  private boolean b()
   {
-    File localFile = new File(a(), Integer.toString(paramInt));
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    Object localObject3 = atyw.b();
+    Object localObject2 = atyw.a();
+    Object localObject1 = atyw.d();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if ((localObject3 != null) && (((ArrayList)localObject3).size() > 0))
+    {
+      localObject3 = ((ArrayList)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        FileManagerEntity localFileManagerEntity = (FileManagerEntity)((Iterator)localObject3).next();
+        if (localFileManagerEntity.nFileType == 0) {
+          this.jdField_a_of_type_JavaUtilList.add(aueb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity));
+        }
+      }
     }
-    return localFile;
-  }
-  
-  public void a(int paramInt)
-  {
-    String str = "colorScreen.android." + paramInt;
-    VasQuickUpdateManager localVasQuickUpdateManager = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(184);
-    if (localVasQuickUpdateManager != null) {
-      localVasQuickUpdateManager.downloadItem(22L, str, "ColorScreenManager");
+    if ((localObject2 != null) && (((Set)localObject2).size() > 0))
+    {
+      localObject2 = ((Set)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (FileInfo)((Iterator)localObject2).next();
+        if (((FileInfo)localObject3).a() == 0) {
+          this.jdField_a_of_type_JavaUtilList.add(aueb.a((FileInfo)localObject3));
+        }
+      }
     }
+    if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
+    {
+      localObject1 = ((ArrayList)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (WeiYunFileInfo)((Iterator)localObject1).next();
+        if (aunj.a(((WeiYunFileInfo)localObject2).c) == 0) {
+          this.jdField_a_of_type_JavaUtilList.add(aueb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (WeiYunFileInfo)localObject2));
+        }
+      }
+    }
+    return this.jdField_a_of_type_JavaUtilList.size() > 0;
   }
   
-  public void a(int paramInt, bgzq<aueb> parambgzq)
+  private boolean b(Intent paramIntent)
   {
-    ThreadManager.post(new ColorScreenManager.1(this, paramInt, parambgzq), 5, null, false);
+    Object localObject = atyw.a();
+    if ((localObject == null) || (((ArrayList)localObject).size() == 0)) {
+      return false;
+    }
+    int k = paramIntent.getIntExtra("clicked_file_hashcode", 0);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramIntent = ((ArrayList)localObject).iterator();
+    int i = 0;
+    int j = 0;
+    if (paramIntent.hasNext())
+    {
+      localObject = (FileInfo)paramIntent.next();
+      if ((i == 0) && (((FileInfo)localObject).hashCode() == k))
+      {
+        this.jdField_a_of_type_Int = j;
+        this.jdField_a_of_type_JavaUtilList.add(aueb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity));
+        i = 1;
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        this.jdField_a_of_type_JavaUtilList.add(aueb.a((FileInfo)localObject));
+      }
+    }
+    atyw.a();
+    return true;
+  }
+  
+  private boolean c()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b();
+    if ((localObject == null) || (((List)localObject).size() == 0)) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    localObject = ((List)localObject).iterator();
+    int i = 0;
+    while (((Iterator)localObject).hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)((Iterator)localObject).next();
+      if ((5 == localFileManagerEntity.getCloudType()) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOlSenderProgress == localFileManagerEntity.nOlSenderProgress) && ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.trim().length() == 0) || (this.jdField_a_of_type_JavaLangString.equals(localFileManagerEntity.peerUin))))
+      {
+        if (localFileManagerEntity.nSessionId == this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) {
+          this.jdField_a_of_type_Int = i;
+        }
+        while (a(localFileManagerEntity.nFileType, localFileManagerEntity.getCloudType()))
+        {
+          i += 1;
+          this.jdField_a_of_type_JavaUtilList.add(aueb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity));
+          break;
+        }
+      }
+    }
+    return true;
+  }
+  
+  private boolean c(Intent paramIntent)
+  {
+    paramIntent = paramIntent.getParcelableArrayListExtra("local_weiyun_list");
+    if ((paramIntent == null) || (paramIntent.size() == 0)) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramIntent = paramIntent.iterator();
+    int i = 0;
+    while (paramIntent.hasNext())
+    {
+      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)paramIntent.next();
+      if ((localWeiYunFileInfo.jdField_a_of_type_JavaLangString != null) && (localWeiYunFileInfo.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId))) {
+        this.jdField_a_of_type_Int = i;
+      }
+      do
+      {
+        do
+        {
+          i += 1;
+          this.jdField_a_of_type_JavaUtilList.add(aueb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localWeiYunFileInfo));
+          break;
+        } while (aunj.a(localWeiYunFileInfo.c) == 0);
+        if (!localWeiYunFileInfo.jdField_a_of_type_Boolean) {
+          break;
+        }
+      } while (localWeiYunFileInfo.c.toLowerCase().endsWith("heic"));
+    }
+    return true;
+  }
+  
+  private boolean d(Intent paramIntent)
+  {
+    paramIntent = paramIntent.getStringArrayListExtra("Aio_Uinseq_ImageList");
+    if (paramIntent == null) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramIntent = paramIntent.iterator();
+    int i = 0;
+    while (paramIntent.hasNext())
+    {
+      long l = Long.parseLong((String)paramIntent.next());
+      FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, -1L);
+      if (localFileManagerEntity != null)
+      {
+        if (localFileManagerEntity.nSessionId == this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) {
+          this.jdField_a_of_type_Int = i;
+        }
+        while (a(localFileManagerEntity.nFileType, localFileManagerEntity.getCloudType()))
+        {
+          this.jdField_a_of_type_JavaUtilList.add(aueb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity));
+          i += 1;
+          break;
+        }
+      }
+    }
+    return true;
+  }
+  
+  private boolean e(Intent paramIntent)
+  {
+    paramIntent = paramIntent.getStringArrayListExtra("Aio_SessionId_ImageList");
+    if (paramIntent == null) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramIntent = paramIntent.iterator();
+    int i = 0;
+    while (paramIntent.hasNext())
+    {
+      long l = Long.parseLong((String)paramIntent.next());
+      FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(0L, "", 0, l);
+      if (localFileManagerEntity != null)
+      {
+        if (localFileManagerEntity.nSessionId == this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) {
+          this.jdField_a_of_type_Int = i;
+        }
+        while (a(localFileManagerEntity.nFileType, localFileManagerEntity.getCloudType()))
+        {
+          this.jdField_a_of_type_JavaUtilList.add(aueb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity));
+          i += 1;
+          break;
+        }
+      }
+    }
+    return true;
+  }
+  
+  public int a()
+  {
+    return this.b;
+  }
+  
+  public aucq a(BaseActivity paramBaseActivity)
+  {
+    return new aued(this, paramBaseActivity);
+  }
+  
+  public auei a()
+  {
+    return this.jdField_a_of_type_Auei;
+  }
+  
+  public List<auei> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a(String paramString)
   {
-    VasQuickUpdateEngine.safeDeleteFile(new File(a(), Integer.toString(a(paramString))));
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  /* Error */
-  public void a(String paramString, int paramInt)
+  public boolean a(Intent paramIntent)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aload_0
-    //   4: monitorenter
-    //   5: aload_0
-    //   6: aload_1
-    //   7: invokevirtual 258	auec:a	(Ljava/lang/String;)I
-    //   10: istore_3
-    //   11: iload_3
-    //   12: ifle +65 -> 77
-    //   15: iload_2
-    //   16: ifeq +64 -> 80
-    //   19: ldc_w 271
-    //   22: astore 4
-    //   24: aload_0
-    //   25: iload_3
-    //   26: invokevirtual 273	auec:a	(I)Laueb;
-    //   29: astore 5
-    //   31: aload_0
-    //   32: aload_1
-    //   33: aload 5
-    //   35: invokevirtual 276	auec:a	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   38: aload 5
-    //   40: ifnonnull +37 -> 77
-    //   43: aload_0
-    //   44: getfield 20	auec:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   47: ldc_w 278
-    //   50: iload_2
-    //   51: invokestatic 281	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   54: aload 4
-    //   56: iload_3
-    //   57: invokestatic 130	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   60: aconst_null
-    //   61: aconst_null
-    //   62: fconst_0
-    //   63: fconst_0
-    //   64: invokestatic 135	bgzu:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;FF)V
-    //   67: ldc_w 278
-    //   70: iload_2
-    //   71: invokestatic 281	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   74: invokestatic 145	bgzt:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   77: aload_0
-    //   78: monitorexit
-    //   79: return
-    //   80: aload_0
-    //   81: iload_3
-    //   82: invokevirtual 85	auec:a	(I)Ljava/io/File;
-    //   85: astore 6
-    //   87: new 82	java/io/File
-    //   90: dup
-    //   91: aload 6
-    //   93: ldc_w 283
-    //   96: invokespecial 90	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   99: astore 5
-    //   101: aload 5
-    //   103: invokevirtual 94	java/io/File:exists	()Z
-    //   106: ifne +32 -> 138
-    //   109: new 60	java/lang/StringBuilder
-    //   112: dup
-    //   113: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   116: ldc_w 285
-    //   119: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: aload 5
-    //   124: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   127: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   130: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   133: astore 4
-    //   135: goto -111 -> 24
-    //   138: new 60	java/lang/StringBuilder
-    //   141: dup
-    //   142: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   145: aload 6
-    //   147: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   150: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   153: getstatic 164	java/io/File:separator	Ljava/lang/String;
-    //   156: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: ldc 87
-    //   161: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   167: astore 6
-    //   169: aload 5
-    //   171: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   174: aload 6
-    //   176: iconst_0
-    //   177: invokestatic 288	bgmg:a	(Ljava/lang/String;Ljava/lang/String;Z)V
-    //   180: goto -156 -> 24
-    //   183: astore 6
-    //   185: new 60	java/lang/StringBuilder
-    //   188: dup
-    //   189: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   192: ldc_w 290
-    //   195: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: aload 5
-    //   200: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   203: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   206: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   209: astore 4
-    //   211: ldc 58
-    //   213: iconst_1
-    //   214: new 60	java/lang/StringBuilder
-    //   217: dup
-    //   218: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   221: ldc_w 292
-    //   224: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   227: aload 5
-    //   229: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   232: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   235: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   238: aload 6
-    //   240: invokestatic 77	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   243: goto -219 -> 24
-    //   246: astore_1
-    //   247: aload_0
-    //   248: monitorexit
-    //   249: aload_1
-    //   250: athrow
-    //   251: astore 6
-    //   253: new 60	java/lang/StringBuilder
-    //   256: dup
-    //   257: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   260: ldc_w 294
-    //   263: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   266: aload 5
-    //   268: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   271: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   274: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   277: astore 4
-    //   279: ldc 58
-    //   281: iconst_1
-    //   282: new 60	java/lang/StringBuilder
-    //   285: dup
-    //   286: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   289: ldc_w 292
-    //   292: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   295: aload 5
-    //   297: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   300: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   303: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   306: aload 6
-    //   308: invokestatic 77	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   311: goto -287 -> 24
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	314	0	this	auec
-    //   0	314	1	paramString	String
-    //   0	314	2	paramInt	int
-    //   10	72	3	i	int
-    //   1	277	4	str	String
-    //   29	267	5	localObject1	Object
-    //   85	90	6	localObject2	Object
-    //   183	56	6	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   251	56	6	localThrowable	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   169	180	183	java/lang/OutOfMemoryError
-    //   5	11	246	finally
-    //   24	38	246	finally
-    //   43	77	246	finally
-    //   80	135	246	finally
-    //   138	169	246	finally
-    //   169	180	246	finally
-    //   185	243	246	finally
-    //   253	311	246	finally
-    //   169	180	251	java/lang/Throwable
-  }
-  
-  public boolean a(String paramString)
-  {
-    int i = a(paramString);
-    if (i > 0) {
-      return new File(a(i), "config.zip").exists();
+    ForwardFileInfo localForwardFileInfo = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
+    if (localForwardFileInfo == null) {
+      return false;
     }
-    return false;
+    long l = localForwardFileInfo.b();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      if (localForwardFileInfo.d() != 9) {
+        break label104;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = beap.a(localForwardFileInfo);
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("FileViewerParamParser", 1, "FileViewerParamParsernot found, bug. sessionid:" + String.valueOf(l));
+      return false;
+      label104:
+      WeiYunFileInfo localWeiYunFileInfo = localForwardFileInfo.a();
+      if (localWeiYunFileInfo != null) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = a(localWeiYunFileInfo);
+      }
+    }
+    if (5 != this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType) {
+      aunj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    }
+    boolean bool;
+    if (a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType()))
+    {
+      bool = a(paramIntent, localForwardFileInfo);
+      if ((!bool) && ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) && (localForwardFileInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null))
+      {
+        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+        this.jdField_a_of_type_Int = 0;
+        this.jdField_a_of_type_JavaUtilList.add(aueb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity));
+        return true;
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Auei = aueb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.b = 3;
+      return true;
+    }
+    return bool;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

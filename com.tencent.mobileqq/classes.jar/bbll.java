@@ -1,8 +1,21 @@
-class bbll
+import android.annotation.TargetApi;
+import android.os.Looper;
+import android.support.annotation.NonNull;
+
+@TargetApi(18)
+public class bbll
+  extends bbmq
 {
-  long jdField_a_of_type_Long;
-  bblm jdField_a_of_type_Bblm;
-  String jdField_a_of_type_JavaLangString;
+  @NonNull
+  protected bbms a(Looper paramLooper)
+  {
+    return new bbms(this, paramLooper, this);
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.a.post(paramRunnable);
+  }
 }
 
 

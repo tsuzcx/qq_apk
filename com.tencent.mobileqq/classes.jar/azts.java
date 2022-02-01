@@ -1,12 +1,26 @@
-public abstract interface azts
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.portal.FormalView;
+import com.tencent.mobileqq.portal.StrokeTextView;
+
+public class azts
+  extends blgm
 {
-  public abstract void a();
+  public azts(FormalView paramFormalView, View paramView) {}
   
-  public abstract void a(int paramInt);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.c();
+    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a = true;
+  }
   
-  public abstract void a(aztr paramaztr, int paramInt1, int paramInt2);
-  
-  public abstract void f();
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView) != null) {
+      FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView).setVisibility(0);
+    }
+  }
 }
 
 

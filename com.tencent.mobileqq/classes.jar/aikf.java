@@ -1,72 +1,126 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aikf
-  extends aiiq
+  extends aipm
 {
-  public aikf(QQAppInterface paramQQAppInterface)
+  public aikf(QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, FragmentActivity paramFragmentActivity, Context paramContext)
   {
-    super(paramQQAppInterface);
+    super(paramQQAppInterface, paramViewGroup, paramFragmentActivity, paramContext);
   }
   
-  private static boolean a(List<String> paramList, String paramString)
+  public void W()
   {
-    if ((paramList != null) && (paramList.size() > 0) && (!TextUtils.isEmpty(paramString)))
+    super.W();
+    c(true);
+    if ((this.f != null) && (this.jdField_a_of_type_AndroidContentContext != null))
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        if (((String)paramList.next()).equals(paramString)) {
-          return true;
-        }
+      String str = avlf.d;
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+        str = ((avld)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(358)).a();
+      }
+      this.f.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131697837) + str);
+    }
+  }
+  
+  public void a(Object paramObject)
+  {
+    super.a(paramObject);
+    int i = ((Integer)paramObject).intValue();
+    paramObject = "";
+    if (i == 2) {
+      paramObject = "206997";
+    }
+    for (;;)
+    {
+      avlf.a("0", "1", "176", "969", "96902", paramObject, "", "0", "20", "0");
+      return;
+      if (i == 3) {
+        paramObject = "206996";
+      } else if (i == 24) {
+        paramObject = "207004";
+      } else if (i == 4) {
+        paramObject = "207000";
+      } else if (i == 5) {
+        paramObject = "207005";
       }
     }
-    return false;
   }
   
-  public List<aike> a(String paramString, aijx paramaijx, SessionInfo paramSessionInfo)
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    if ((paramaijx == null) || (!paramaijx.jdField_a_of_type_Boolean)) {}
-    do
+    for (;;)
     {
-      return null;
-      localObject1 = paramaijx.jdField_a_of_type_JavaUtilList;
-    } while ((localObject1 == null) || (((List)localObject1).size() == 0));
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      Object localObject2 = (aikd)((Iterator)localObject1).next();
-      if (a(((aikd)localObject2).jdField_a_of_type_JavaUtilList, paramString))
+      try
       {
-        new aikc().a(this.a, paramSessionInfo, paramString);
-        if ((((aikd)localObject2).b != null) && (((aikd)localObject2).b.size() > 0))
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 10009) {
+          break;
+        }
+        localObject = (ChatMessage)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong);
+        paramString = "2";
+        if ((localObject instanceof MessageForText))
         {
-          localObject2 = ((aikd)localObject2).b.iterator();
-          while (((Iterator)localObject2).hasNext()) {
-            localArrayList.add(new aike((aikb)((Iterator)localObject2).next(), paramSessionInfo, paramString));
-          }
+          paramString = "2";
+          break label138;
+          avlf.a("0", "1", "176", "969", "96902", "206999", paramString, "0", "20", (String)localObject);
+        }
+        else if ((localObject instanceof MessageForPic))
+        {
+          paramString = "0";
+        }
+        else if ((localObject instanceof MessageForPtt))
+        {
+          paramString = "1";
         }
       }
+      catch (Throwable paramString)
+      {
+        QLog.e("GameBuddyChatPie", 1, paramString, new Object[0]);
+        return;
+      }
+      Object localObject = "1";
+      continue;
+      label138:
+      if (paramBoolean) {
+        localObject = "0";
+      }
     }
-    if (paramaijx.jdField_a_of_type_Int == 1) {
-      Collections.shuffle(localArrayList);
-    }
-    return localArrayList;
   }
   
-  public List<aike> a(String paramString, SessionInfo paramSessionInfo)
-  {
-    return a(paramString, aijy.a(this.a.getApp(), this.a.c()), paramSessionInfo);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  public boolean e()
   {
     return true;
+  }
+  
+  public void o(int paramInt)
+  {
+    super.o(paramInt);
+    avlf.a("0", "1", "176", "969", "96901", "206994", "", "0", "7", "0");
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      super.onClick(paramView);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      avlf.a("0", "1", "176", "969", "96902", "206998", "", "0", "20", "0");
+    }
   }
 }
 

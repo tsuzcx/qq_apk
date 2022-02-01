@@ -1,30 +1,30 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
 import java.util.ArrayList;
-import oqg;
-import tbf;
-import tbk;
+import ssb;
+import ssg;
+import tpw;
 
 public final class FastWebRequestUtil$4
   implements Runnable
 {
-  public FastWebRequestUtil$4(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, boolean paramBoolean, int paramInt1, long paramLong, String paramString7, int paramInt2, tbk paramtbk) {}
+  public FastWebRequestUtil$4(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, boolean paramBoolean, int paramInt1, long paramLong, String paramString7, int paramInt2, ssg paramssg) {}
   
   public void run()
   {
     boolean bool2 = false;
     ArrayList localArrayList = new ArrayList();
-    String str = tbf.a(tbf.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.d, this.e, this.f, this.jdField_a_of_type_Boolean, 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long), tbf.a(this.g, this.jdField_b_of_type_Int));
+    String str = ssb.a(ssb.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.d, this.e, this.f, this.jdField_a_of_type_Boolean, 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long), ssb.a(this.g, this.jdField_b_of_type_Int));
     boolean bool1 = bool2;
     if (str != null)
     {
       bool1 = bool2;
-      if (tbf.a(str, this.jdField_b_of_type_JavaLangString, localArrayList, oqg.a(this.jdField_a_of_type_JavaLangString, this.d, this.g))) {
+      if (ssb.a(str, this.jdField_b_of_type_JavaLangString, localArrayList, tpw.a(this.jdField_a_of_type_JavaLangString, this.d, this.g))) {
         bool1 = true;
       }
     }
-    if (this.jdField_a_of_type_Tbk != null) {
-      this.jdField_a_of_type_Tbk.a(bool1, localArrayList);
+    if (this.jdField_a_of_type_Ssg != null) {
+      this.jdField_a_of_type_Ssg.a(bool1, localArrayList);
     }
   }
 }

@@ -1,37 +1,24 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.qphone.base.util.QLog;
 
-public class bagz
-  implements ayxc
+class bagz
+  extends azwy
 {
-  private WeakReference<ReceiptMessageDetailFragment> a;
+  bagz(bagy parambagy) {}
   
-  public bagz(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt)
   {
-    this.a = new WeakReference(paramReceiptMessageDetailFragment);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(ayxd paramayxd)
-  {
-    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a.get();
-    if (localReceiptMessageDetailFragment == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfilePersonalityLabelComponent", 2, String.format("onGetPersonalityLabel isSuccess=%s uin=%s flag=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
     }
-    switch (paramayxd.a)
+    if ((((azxr)bagy.a(this.a)).jdField_a_of_type_ComTencentMobileqqDataCard != null) && (TextUtils.equals(paramString, ((azxr)bagy.b(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)) && (paramInt == 0))
     {
-    default: 
-      return;
-    case -1: 
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(7);
-      return;
+      ((azxr)bagy.c(this.a)).jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel = paramPersonalityLabel;
+      ((azxr)bagy.d(this.a)).jdField_a_of_type_ComTencentMobileqqDataCard.vPersonalityLabelV2 = paramArrayOfByte;
+      bagy.a(this.a, ((azxr)bagy.e(this.a)).jdField_a_of_type_ComTencentMobileqqDataCard, true);
     }
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(6);
   }
 }
 

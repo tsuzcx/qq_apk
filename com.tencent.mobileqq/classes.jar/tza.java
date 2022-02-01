@@ -1,20 +1,21 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class tza
-  implements aaob
+  implements View.OnClickListener
 {
-  tza(tym paramtym) {}
+  tza(tyo paramtyo) {}
   
-  public void callback(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.k();
-    }
+    this.a.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tza
  * JD-Core Version:    0.7.0.1
  */

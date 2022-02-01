@@ -1,12 +1,14 @@
-class bpfq
-  implements zpt
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
+
+public class bpfq
+  implements bpfw
 {
-  bpfq(bpfp parambpfp) {}
+  public bpfq(AEEditorVideoClipFragment paramAEEditorVideoClipFragment, bpfu parambpfu) {}
   
-  public void a()
+  public void a(float paramFloat)
   {
-    bpft localbpft = bpfp.a(this.a);
-    bpfp.a(this.a, bpfp.a(this.a)).a(localbpft);
+    AEEditorVideoClipFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorVideoClipFragment).setTimeLineViewSpeed(paramFloat, new bpfr(this, paramFloat));
   }
 }
 

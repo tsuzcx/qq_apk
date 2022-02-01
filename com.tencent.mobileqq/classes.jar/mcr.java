@@ -1,21 +1,134 @@
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI.4;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.av.config.ConfigInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class mcr
-  implements mhj
+  implements View.OnClickListener
 {
-  public mcr(DoubleVideoMeetingCtrlUI.4 param4) {}
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new mcs(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private boolean jdField_a_of_type_Boolean;
+  private long[] jdField_a_of_type_ArrayOfLong;
+  private boolean b;
+  
+  public mcr(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ArrayOfLong = new long[6];
+  }
+  
+  private void a(View paramView)
+  {
+    Object localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
+    ((Activity)localObject).findViewById(2131373354).setVisibility(0);
+    paramView = (TextView)((Activity)localObject).findViewById(2131373356);
+    localObject = (TextView)((Activity)localObject).findViewById(2131373355);
+    int i = ConfigInfo.getSharpConfigVersionFromFile(this.jdField_a_of_type_AndroidContentContext);
+    String str2 = a(ConfigInfo.getSharpConfigPayloadFromFile(this.jdField_a_of_type_AndroidContentContext));
+    String str1 = lkw.a(this.jdField_a_of_type_AndroidContentContext);
+    str2 = str2 + "\n----------\n";
+    str1 = str2 + a(str1);
+    paramView.setText(i + "|" + lwd.a().a("load"));
+    ((TextView)localObject).setText(str1);
+  }
+  
+  private void c() {}
+  
+  String a(String paramString)
+  {
+    String[] arrayOfString = paramString.split("\n");
+    paramString = new String();
+    int n = arrayOfString.length;
+    int k = 0;
+    int i = 0;
+    String str;
+    int j;
+    if (k < n)
+    {
+      str = arrayOfString[k];
+      j = str.length();
+      if (j < 2) {
+        break label172;
+      }
+    }
+    label172:
+    for (int m = str.charAt(j - 2);; m = 0)
+    {
+      j = i;
+      if (m == 125) {
+        j = i - 1;
+      }
+      i = 0;
+      while (i < j)
+      {
+        paramString = paramString + "\t";
+        i += 1;
+      }
+      paramString = paramString + str;
+      paramString = paramString + "\n";
+      i = j;
+      if (m == 123) {
+        i = j + 1;
+      }
+      k += 1;
+      break;
+      return paramString;
+    }
+  }
   
   public void a()
   {
-    this.a.this$0.j = true;
-    this.a.this$0.L();
+    Object localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
+    View localView = ((Activity)localObject).findViewById(2131373353);
+    if (localView != null)
+    {
+      localView.setOnClickListener(this);
+      localView.setVisibility(0);
+    }
+    localView = ((Activity)localObject).findViewById(2131373355);
+    if (localView != null) {
+      localView.setOnClickListener(this);
+    }
+    localObject = ((Activity)localObject).findViewById(2131373354);
+    if (localObject != null) {
+      ((View)localObject).setOnClickListener(this);
+    }
+    localObject = new IntentFilter();
+    ((IntentFilter)localObject).addAction("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE");
+    ((IntentFilter)localObject).addAction("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD");
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
   }
   
   public void b()
   {
-    this.a.this$0.d(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Int);
-    this.a.this$0.j = false;
+    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      System.arraycopy(this.jdField_a_of_type_ArrayOfLong, 1, this.jdField_a_of_type_ArrayOfLong, 0, this.jdField_a_of_type_ArrayOfLong.length - 1);
+      this.jdField_a_of_type_ArrayOfLong[(this.jdField_a_of_type_ArrayOfLong.length - 1)] = SystemClock.uptimeMillis();
+      if (this.jdField_a_of_type_ArrayOfLong[0] >= SystemClock.uptimeMillis() - 2000L)
+      {
+        a(paramView);
+        continue;
+        ((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131373354).setVisibility(8);
+      }
+    }
   }
 }
 

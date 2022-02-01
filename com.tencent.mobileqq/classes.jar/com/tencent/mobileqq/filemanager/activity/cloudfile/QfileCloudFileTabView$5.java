@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.cloudfile;
 
-import atxd;
+import auoy;
 import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -11,7 +11,7 @@ class QfileCloudFileTabView$5
 {
   public void run()
   {
-    Object localObject = atxd.a(this.a.b);
+    Object localObject = auoy.a(this.a.b);
     if (!this.this$0.a.containsKey(localObject)) {
       this.this$0.a.put(localObject, new ArrayList());
     }

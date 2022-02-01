@@ -3,19 +3,19 @@ package com.tencent.mobileqq.ark.API;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import apih;
-import apix;
+import apvx;
+import apwn;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 import java.util.ArrayList;
 
 public class ArkAppQQModule$17
   implements Runnable
 {
-  public ArkAppQQModule$17(apix paramapix, int paramInt, ArrayList paramArrayList) {}
+  public ArkAppQQModule$17(apwn paramapwn, int paramInt, ArrayList paramArrayList) {}
   
   public void run()
   {
-    Activity localActivity = apih.a();
+    Activity localActivity = apvx.a();
     Intent localIntent = new Intent(localActivity, TroopAvatarWallPreviewActivity.class);
     Bundle localBundle = new Bundle();
     localBundle.putInt("index", this.jdField_a_of_type_Int);

@@ -1,10 +1,22 @@
-import com.google.gson.reflect.TypeToken;
-import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerConfig;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.ae.album.AEAlbumLinearLayout;
 
-class bogb
-  extends TypeToken<AEEditorPagStickerConfig>
+public class bogb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bogb(bofw parambofw) {}
+  public bogb(AEAlbumLinearLayout paramAEAlbumLinearLayout) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if ((paramValueAnimator.getAnimatedValue() instanceof Integer))
+    {
+      if (AEAlbumLinearLayout.a(this.a) != null) {
+        AEAlbumLinearLayout.a(this.a).a(((Integer)paramValueAnimator.getAnimatedValue()).intValue() / (AEAlbumLinearLayout.a(this.a) * 1.0F));
+      }
+      this.a.scrollTo(0, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    }
+  }
 }
 
 

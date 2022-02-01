@@ -1,56 +1,20 @@
-import android.os.Handler;
+import android.os.Bundle;
 import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
 
 public class axrw
-  extends Handler
+  implements axrh
 {
-  public axrw(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public axrw(MusicPlayerActivity paramMusicPlayerActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString, int paramInt1, int paramInt2, Object paramObject)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 101: 
-    case 100: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a();
-          bkfx localbkfx = bkfx.a;
-          if ((localbkfx != null) && (localbkfx.a())) {
-            localbkfx.b(5);
-          }
-        } while (paramMessage.obj == null);
-        paramMessage = (NearbyPeopleCard)paramMessage.obj;
-        this.a.b = true;
-        this.a.a(paramMessage, true, false);
-        return;
-      } while (NearbyPeopleProfileActivity.a(this.a) == null);
-      NearbyPeopleProfileActivity.a(this.a).b();
-      return;
-    case 102: 
-      NearbyPeopleProfileActivity.a(this.a).a(paramMessage.arg1, paramMessage.arg2);
-      return;
-    case 202: 
-      NearbyPeopleProfileActivity.a(this.a).a(true);
-      this.a.a.sendEmptyMessageDelayed(203, 1500L);
-      return;
-    case 203: 
-      NearbyPeopleProfileActivity.a(this.a).a(false);
-      return;
-    case 204: 
-      this.a.a(this.a.getString(2131693933));
-      return;
-    case 207: 
-      this.a.a(anni.a(2131706024));
-      return;
-    }
-    this.a.a();
+    paramString = Message.obtain(MusicPlayerActivity.a(this.a), 49);
+    Bundle localBundle = new Bundle();
+    localBundle.putIntArray("KEY_COLOR_LIST", new int[] { paramInt1, paramInt2 });
+    localBundle.putBoolean("KEY_MATCH_SONG", ((Boolean)paramObject).booleanValue());
+    paramString.setData(localBundle);
+    paramString.sendToTarget();
   }
 }
 

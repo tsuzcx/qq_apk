@@ -1,19 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.richframework.part.block.base.RefreshHeaderView;
+import org.json.JSONObject;
 
-public class zyf
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface zyf
 {
-  public zyf(RefreshHeaderView paramRefreshHeaderView, int paramInt) {}
+  public abstract JSONObject a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseRefreshHeaderView.setVisibleHeight(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    if ((this.jdField_a_of_type_Int == 0) && (((Integer)paramValueAnimator.getAnimatedValue()).intValue() == 0)) {
-      this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseRefreshHeaderView.setState(0);
-    }
-  }
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

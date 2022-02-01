@@ -1,37 +1,37 @@
 package com.tencent.mobileqq.transfile;
 
-import ayxc;
-import ayxd;
-import azth;
-import azti;
-import aztu;
-import bcst;
-import bctj;
-import bdbq;
-import bdsr;
-import bdsz;
-import bdud;
-import bduk;
-import bdum;
-import bdvs;
-import bdvu;
-import bdvv;
-import bdvx;
-import bdws;
-import bdwt;
-import bdxh;
-import bdxr;
-import bdxz;
-import bdyf;
-import bdzi;
-import bdzn;
-import bdzs;
-import bebv;
-import bebz;
-import beck;
-import becq;
-import bedb;
-import bgmg;
+import azpp;
+import azpq;
+import balx;
+import baly;
+import bamk;
+import bdll;
+import bdmc;
+import bduh;
+import berj;
+import berr;
+import besx;
+import bete;
+import betg;
+import beum;
+import beuo;
+import beup;
+import beur;
+import bevl;
+import bevm;
+import bewa;
+import bewk;
+import bews;
+import bewy;
+import beyb;
+import beyg;
+import beyl;
+import bfau;
+import bfay;
+import bfbj;
+import bfbp;
+import bfca;
+import bhmi;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -48,11 +48,11 @@ import mqq.manager.ProxyIpManager;
 import mqq.os.MqqHandler;
 
 public class GroupPttDownloadProcessor
-  extends bdsr
-  implements bdvv, bdvx, Runnable
+  extends berj
+  implements beup, beur, Runnable
 {
-  protected bdbq a;
-  private bdzs jdField_a_of_type_Bdzs;
+  protected bduh a;
+  private beyl jdField_a_of_type_Beyl;
   private MessageForPtt jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
   byte[] jdField_a_of_type_ArrayOfByte;
   long c;
@@ -64,18 +64,18 @@ public class GroupPttDownloadProcessor
   private boolean g;
   private String l;
   
-  public GroupPttDownloadProcessor(bdzi parambdzi, bdzn parambdzn)
+  public GroupPttDownloadProcessor(beyb parambeyb, beyg parambeyg)
   {
-    super(parambdzi, parambdzn);
+    super(parambeyb, parambeyg);
     this.jdField_a_of_type_JavaUtilList = ((ProxyIpManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(3)).getProxyIp(4);
-    this.jdField_a_of_type_Bdbq = ((bdbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(17));
+    this.jdField_a_of_type_Bduh = ((bduh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(17));
   }
   
   private boolean a()
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.jdField_j_of_type_Int == -9527)
+    if (this.jdField_k_of_type_Int == -9527)
     {
       bool1 = bool2;
       if (this.jdField_j_of_type_JavaLangString != null) {
@@ -99,16 +99,16 @@ public class GroupPttDownloadProcessor
     String str = "DiscussPTTDirectUrl";
     try
     {
-      if (this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int == 1) {
+      if (this.jdField_a_of_type_Beyg.jdField_a_of_type_Int == 1) {
         str = "GroupPTTDirectUrl";
       }
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_FailCode", String.valueOf(paramInt));
-      bctj localbctj = bctj.a(BaseApplication.getContext());
+      bdmc localbdmc = bdmc.a(BaseApplication.getContext());
       if (paramInt == 0) {}
       for (;;)
       {
-        localbctj.a(null, str, bool, 0L, 0L, localHashMap, null);
+        localbdmc.a(null, str, bool, 0L, 0L, localHashMap, null);
         return;
         bool = false;
       }
@@ -134,7 +134,7 @@ public class GroupPttDownloadProcessor
               if (!this.g) {
                 continue;
               }
-              bdud.a().a().a(0);
+              besx.a().a().a(0);
             }
             this.jdField_l_of_type_JavaLangString = null;
             if (!paramBoolean) {
@@ -156,12 +156,12 @@ public class GroupPttDownloadProcessor
         {
           return;
         }
-        if (this.jdField_j_of_type_Int == 9366) {
+        if (this.jdField_k_of_type_Int == 9366) {
           continue;
         }
         i = 1;
         continue;
-        bdud.a().a(16, this.jdField_l_of_type_JavaLangString);
+        besx.a().a(16, this.jdField_l_of_type_JavaLangString);
         continue;
         f(3);
       }
@@ -176,57 +176,57 @@ public class GroupPttDownloadProcessor
   public QQMessageFacade.Message a(MessageForPtt paramMessageForPtt)
   {
     paramMessageForPtt.serial();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bdzn.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int, paramMessageForPtt.uniseq, paramMessageForPtt.msgData);
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bdzn.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Beyg.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Beyg.jdField_a_of_type_Int, paramMessageForPtt.uniseq, paramMessageForPtt.msgData);
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Beyg.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Beyg.jdField_a_of_type_Int);
   }
   
-  public void a(bdws parambdws, bdwt parambdwt)
+  public void a(bevl parambevl, bevm parambevm)
   {
-    if ((parambdws == null) || (parambdwt == null)) {}
+    if ((parambevl == null) || (parambevm == null)) {}
     do
     {
       do
       {
         return;
-      } while (!(parambdws instanceof bdvs));
-      parambdws = (bdvs)parambdws;
-      parambdws.jdField_a_of_type_Long += parambdwt.jdField_c_of_type_Long;
-    } while (0L != parambdws.jdField_b_of_type_Long);
-    parambdwt.jdField_c_of_type_Long = 0L;
-    parambdwt = "bytes=" + parambdws.jdField_a_of_type_Long + "-";
-    parambdws.jdField_a_of_type_JavaUtilHashMap.put("Range", parambdwt);
+      } while (!(parambevl instanceof beum));
+      parambevl = (beum)parambevl;
+      parambevl.jdField_a_of_type_Long += parambevm.jdField_c_of_type_Long;
+    } while (0L != parambevl.jdField_b_of_type_Long);
+    parambevm.jdField_c_of_type_Long = 0L;
+    parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
+    parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
   }
   
-  public void a(bebv parambebv, beck parambeck)
+  public void a(bfau parambfau, bfbj parambfbj)
   {
-    this.jdField_a_of_type_Bebv = null;
-    if (parambeck != null)
+    this.jdField_a_of_type_Bfau = null;
+    if (parambfbj != null)
     {
       int i = 0;
-      while (i < parambeck.jdField_a_of_type_JavaUtilList.size())
+      while (i < parambfbj.jdField_a_of_type_JavaUtilList.size())
       {
-        parambebv = (becq)parambeck.jdField_a_of_type_JavaUtilList.get(i);
+        parambfau = (bfbp)parambfbj.jdField_a_of_type_JavaUtilList.get(i);
         if (QLog.isColorLevel()) {
-          b("procUrl", parambebv.toString());
+          b("procUrl", parambfau.toString());
         }
-        this.jdField_k_of_type_Boolean = parambebv.jdField_d_of_type_Boolean;
+        this.jdField_k_of_type_Boolean = parambfau.jdField_d_of_type_Boolean;
         if (QLog.isColorLevel()) {
           QLog.e("http_sideway", 2, "GroupPttDownProcessor.onBusiProtoResp:isSendByQuickHttp=" + this.jdField_k_of_type_Boolean);
         }
-        a(this.jdField_a_of_type_Bdsz, parambebv);
-        if (parambebv.c == 0)
+        a(this.jdField_a_of_type_Berr, parambfau);
+        if (parambfau.c == 0)
         {
-          this.jdField_b_of_type_JavaLangString = parambebv.jdField_b_of_type_JavaLangString;
-          this.jdField_a_of_type_JavaLangString = parambebv.jdField_a_of_type_JavaLangString;
-          this.jdField_a_of_type_JavaUtilArrayList = a(parambebv.jdField_b_of_type_JavaUtilArrayList, parambebv.jdField_a_of_type_JavaUtilArrayList);
+          this.jdField_b_of_type_JavaLangString = parambfau.jdField_b_of_type_JavaLangString;
+          this.jdField_a_of_type_JavaLangString = parambfau.jdField_a_of_type_JavaLangString;
+          this.jdField_a_of_type_JavaUtilArrayList = a(parambfau.jdField_b_of_type_JavaUtilArrayList, parambfau.jdField_a_of_type_JavaUtilArrayList);
           if (this.jdField_b_of_type_JavaLangString != null)
           {
-            bdyf localbdyf = new bdyf();
-            localbdyf.b = true;
-            localbdyf.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-            this.jdField_a_of_type_JavaUtilArrayList.add(localbdyf);
+            bewy localbewy = new bewy();
+            localbewy.b = true;
+            localbewy.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+            this.jdField_a_of_type_JavaUtilArrayList.add(localbewy);
           }
-          b(parambebv.jdField_a_of_type_Boolean);
+          b(parambfau.jdField_a_of_type_Boolean);
           i += 1;
         }
         else
@@ -239,14 +239,14 @@ public class GroupPttDownloadProcessor
   
   public void a(boolean paramBoolean)
   {
-    if ((!paramBoolean) && (bdxr.a(this.jdField_j_of_type_Int))) {
+    if ((!paramBoolean) && (bewk.a(this.jdField_k_of_type_Int))) {
       break label14;
     }
     label14:
-    while ((this.jdField_j_of_type_Boolean) || ((paramBoolean) && ((this.m & 0x2) > 0)) || ((!paramBoolean) && ((this.m & 0x1) > 0))) {
+    while ((this.jdField_j_of_type_Boolean) || ((paramBoolean) && ((this.n & 0x2) > 0)) || ((!paramBoolean) && ((this.n & 0x1) > 0))) {
       return;
     }
-    int j = this.m;
+    int j = this.n;
     label59:
     long l1;
     HashMap localHashMap;
@@ -255,21 +255,21 @@ public class GroupPttDownloadProcessor
     if (paramBoolean)
     {
       i = 2;
-      this.m = (i | j);
+      this.n = (i | j);
       l1 = (System.nanoTime() - this.jdField_k_of_type_Long) / 1000000L;
-      localObject = this.jdField_d_of_type_Bdsz.a(1) + ";" + this.jdField_a_of_type_Bdsz.a(2) + ";" + this.jdField_b_of_type_Bdsz.a(3) + ";" + this.jdField_c_of_type_Bdsz.a(4);
+      localObject = this.jdField_d_of_type_Berr.a(1) + ";" + this.jdField_a_of_type_Berr.a(2) + ";" + this.jdField_b_of_type_Berr.a(3) + ";" + this.jdField_c_of_type_Berr.a(4);
       this.jdField_a_of_type_JavaUtilHashMap.put("param_step", localObject);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_grpUin", this.jdField_a_of_type_Bdzn.jdField_c_of_type_JavaLangString);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_uuid", this.jdField_a_of_type_Bdzn.jdField_e_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_grpUin", this.jdField_a_of_type_Beyg.jdField_c_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_uuid", this.jdField_a_of_type_Beyg.jdField_e_of_type_JavaLangString);
       this.jdField_a_of_type_JavaUtilHashMap.put("param_quickHttp", String.valueOf(this.jdField_k_of_type_Boolean));
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_pttOpt", String.valueOf(azti.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.g)));
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_pttOpt", String.valueOf(baly.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.g)));
       localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
       if (!this.jdField_e_of_type_Boolean) {
         break label443;
       }
       localObject = "1";
       localHashMap.put("param_isHttps", localObject);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_trans_consume", String.valueOf(this.jdField_b_of_type_Bdsz.a()));
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_trans_consume", String.valueOf(this.jdField_b_of_type_Berr.a()));
       if (QLog.isDevelopLevel())
       {
         localObject = new StringBuilder().append("GroupPttDownload success: ").append(paramBoolean).append(", cost: ").append(l1).append(" directDownloadIfCan: ");
@@ -284,7 +284,7 @@ public class GroupPttDownloadProcessor
         break label457;
       }
       b(true, l1);
-      bctj.a(BaseApplication.getContext()).a(null, c(), true, l1, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "");
+      bdmc.a(BaseApplication.getContext()).a(null, c(), true, l1, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "");
     }
     label443:
     label451:
@@ -295,7 +295,7 @@ public class GroupPttDownloadProcessor
       if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt == null) {
         break;
       }
-      aztu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramBoolean, this.jdField_j_of_type_Int, this.jdField_a_of_type_Bdzs, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+      bamk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramBoolean, this.jdField_k_of_type_Int, this.jdField_a_of_type_Beyl, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
       return;
       i = 1;
       break label59;
@@ -303,21 +303,21 @@ public class GroupPttDownloadProcessor
       break label264;
       bool = false;
       break label348;
-      if (this.jdField_j_of_type_Int != -9527) {
+      if (this.jdField_k_of_type_Int != -9527) {
         this.jdField_a_of_type_JavaUtilHashMap.remove("param_rspHeader");
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", String.valueOf(this.jdField_j_of_type_Int));
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", String.valueOf(this.jdField_k_of_type_Int));
       this.jdField_a_of_type_JavaUtilHashMap.put("param_errorDesc", this.jdField_j_of_type_JavaLangString);
-      if ((this.jdField_a_of_type_Bdws instanceof bdvs))
+      if ((this.jdField_a_of_type_Bevl instanceof beum))
       {
-        localObject = bdxz.a(((bdvs)this.jdField_a_of_type_Bdws).jdField_a_of_type_JavaLangString);
+        localObject = bews.a(((beum)this.jdField_a_of_type_Bevl).jdField_a_of_type_JavaLangString);
         if (localObject != null) {
-          this.jdField_a_of_type_JavaUtilHashMap.put("param_reqIp", ((bdyf)localObject).jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_JavaUtilHashMap.put("param_reqIp", ((bewy)localObject).jdField_a_of_type_JavaLangString);
         }
       }
       b(false, l1);
-      bctj.a(BaseApplication.getContext()).a(null, c(), false, l1, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
-    } while ((this.jdField_j_of_type_Int != -9527) || (this.jdField_j_of_type_JavaLangString == null));
+      bdmc.a(BaseApplication.getContext()).a(null, c(), false, l1, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
+    } while ((this.jdField_k_of_type_Int != -9527) || (this.jdField_j_of_type_JavaLangString == null));
     int i = 0;
     if (this.jdField_j_of_type_JavaLangString.equals("T_203"))
     {
@@ -345,12 +345,12 @@ public class GroupPttDownloadProcessor
       localHashMap.put("PttOff", String.valueOf(l3));
       localHashMap.put("OutOfTimeReason", String.valueOf(i));
       localHashMap.put("param_FailCode", String.valueOf(l2));
-      bctj.a(BaseApplication.getContext()).a(null, (String)localObject, false, 0L, 0L, localHashMap, null);
-      if (this.jdField_a_of_type_Bdzn.jdField_a_of_type_JavaLangObject == null) {
+      bdmc.a(BaseApplication.getContext()).a(null, (String)localObject, false, 0L, 0L, localHashMap, null);
+      if (this.jdField_a_of_type_Beyg.jdField_a_of_type_JavaLangObject == null) {
         break;
       }
-      localObject = (bdzs)this.jdField_a_of_type_Bdzn.jdField_a_of_type_JavaLangObject;
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80059B3", "0X80059B3", bdxh.a(((bdzs)localObject).jdField_a_of_type_Int, ((bdzs)localObject).jdField_b_of_type_Int), 0, "", "", "", "8.4.1");
+      localObject = (beyl)this.jdField_a_of_type_Beyg.jdField_a_of_type_JavaLangObject;
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80059B3", "0X80059B3", bewa.a(((beyl)localObject).jdField_a_of_type_Int, ((beyl)localObject).jdField_b_of_type_Int), 0, "", "", "", "8.4.5");
       break;
       if (!this.jdField_j_of_type_JavaLangString.equals("H_400_-5103017")) {
         break label621;
@@ -366,7 +366,7 @@ public class GroupPttDownloadProcessor
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.extFlag == -1L) {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.extFlag = 0L;
     }
-    if (this.jdField_a_of_type_Bdzs.jdField_a_of_type_Int == 6)
+    if (this.jdField_a_of_type_Beyl.jdField_a_of_type_Int == 6)
     {
       localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
       ((MessageForPtt)localObject).extFlag |= 1L;
@@ -374,13 +374,13 @@ public class GroupPttDownloadProcessor
     super.aN_();
     d(2001);
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int == 1) {}
+    if (this.jdField_a_of_type_Beyg.jdField_a_of_type_Int == 1) {}
     for (int i = 3;; i = 2)
     {
-      bdxh.a((QQAppInterface)localObject, i, false, 2);
-      if (!this.jdField_a_of_type_Bdzn.h.equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath))
+      bewa.a((QQAppInterface)localObject, i, false, 2);
+      if (!this.jdField_a_of_type_Beyg.h.equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath))
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath = this.jdField_a_of_type_Bdzn.h;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath = this.jdField_a_of_type_Beyg.h;
         a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
       }
       f();
@@ -396,30 +396,30 @@ public class GroupPttDownloadProcessor
       localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
       localObject = paramString + "&voice_codec=" + ((MessageForPtt)localObject).voiceType;
     }
-    bdvs localbdvs = new bdvs();
-    localbdvs.jdField_a_of_type_Bdvw = this;
-    localbdvs.jdField_a_of_type_Bdvx = this;
-    localbdvs.jdField_a_of_type_JavaLangString = ((String)localObject);
-    localbdvs.jdField_f_of_type_Boolean = paramBoolean;
-    localbdvs.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localbdvs.jdField_a_of_type_Int = 0;
-    localbdvs.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilArrayList;
-    localbdvs.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bdzn.h;
-    localbdvs.jdField_a_of_type_Bdvv = this;
-    localbdvs.jdField_d_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
-    localbdvs.jdField_e_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Bdzn.jdField_a_of_type_Long);
-    localbdvs.jdField_f_of_type_Int = this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int;
-    localbdvs.jdField_e_of_type_Int = this.jdField_a_of_type_Bdzn.jdField_b_of_type_Int;
-    localbdvs.jdField_a_of_type_Long = 0L;
-    localbdvs.jdField_l_of_type_Boolean = true;
-    localbdvs.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
+    beum localbeum = new beum();
+    localbeum.jdField_a_of_type_Beuq = this;
+    localbeum.jdField_a_of_type_Beur = this;
+    localbeum.jdField_a_of_type_JavaLangString = ((String)localObject);
+    localbeum.jdField_f_of_type_Boolean = paramBoolean;
+    localbeum.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localbeum.jdField_a_of_type_Int = 0;
+    localbeum.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilArrayList;
+    localbeum.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Beyg.h;
+    localbeum.jdField_a_of_type_Beup = this;
+    localbeum.jdField_d_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
+    localbeum.jdField_e_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Beyg.jdField_a_of_type_Long);
+    localbeum.jdField_f_of_type_Int = this.jdField_a_of_type_Beyg.jdField_a_of_type_Int;
+    localbeum.jdField_e_of_type_Int = this.jdField_a_of_type_Beyg.jdField_b_of_type_Int;
+    localbeum.jdField_a_of_type_Long = 0L;
+    localbeum.jdField_l_of_type_Boolean = true;
+    localbeum.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
     if (this.jdField_l_of_type_JavaLangString != null)
     {
-      localbdvs.jdField_c_of_type_Long = 60000L;
-      localbdvs.jdField_b_of_type_Int = 0;
+      localbeum.jdField_c_of_type_Long = 60000L;
+      localbeum.jdField_b_of_type_Int = 0;
     }
-    localbdvs.m = true;
-    localbdvs.jdField_d_of_type_Boolean = true;
+    localbeum.m = true;
+    localbeum.jdField_d_of_type_Boolean = true;
     localObject = null;
     paramString = (String)localObject;
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
@@ -429,23 +429,23 @@ public class GroupPttDownloadProcessor
         paramString = Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray());
       }
     }
-    b("httpDown", "directMsgUrlDown:" + this.jdField_a_of_type_Boolean + " ipList:" + paramString + " uuid:" + this.jdField_a_of_type_Bdzn.jdField_e_of_type_JavaLangString + " FileID:" + this.jdField_a_of_type_Bdzn.jdField_c_of_type_Long + " downOffset:" + localbdvs.jdField_a_of_type_Long);
+    b("httpDown", "directMsgUrlDown:" + this.jdField_a_of_type_Boolean + " ipList:" + paramString + " uuid:" + this.jdField_a_of_type_Beyg.jdField_e_of_type_JavaLangString + " FileID:" + this.jdField_a_of_type_Beyg.jdField_c_of_type_Long + " downOffset:" + localbeum.jdField_a_of_type_Long);
     if (!f()) {
       return;
     }
-    this.jdField_a_of_type_Bdws = localbdvs;
+    this.jdField_a_of_type_Bevl = localbeum;
     o();
-    this.jdField_a_of_type_Bdvu.a(localbdvs);
+    this.jdField_a_of_type_Beuo.a(localbeum);
   }
   
   void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Bdsz.a();
+    this.jdField_b_of_type_Berr.a();
     this.jdField_e_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Bedj.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Bfci.jdField_a_of_type_Boolean = paramBoolean;
     String str2;
     Object localObject;
-    bdyf localbdyf;
+    bewy localbewy;
     String str1;
     if (paramBoolean)
     {
@@ -459,15 +459,15 @@ public class GroupPttDownloadProcessor
       if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
         break label249;
       }
-      localbdyf = (bdyf)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      if ((!localbdyf.jdField_a_of_type_Boolean) || (localbdyf.jdField_a_of_type_JavaLangString.startsWith("["))) {
+      localbewy = (bewy)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      if ((!localbewy.jdField_a_of_type_Boolean) || (localbewy.jdField_a_of_type_JavaLangString.startsWith("["))) {
         break label240;
       }
-      str1 = "[" + localbdyf.jdField_a_of_type_JavaLangString + "]";
+      str1 = "[" + localbewy.jdField_a_of_type_JavaLangString + "]";
       label135:
       localObject = str1;
-      if (localbdyf.jdField_a_of_type_Int != 80) {
-        localObject = str1 + ":" + localbdyf.jdField_a_of_type_Int;
+      if (localbewy.jdField_a_of_type_Int != 80) {
+        localObject = str1 + ":" + localbewy.jdField_a_of_type_Int;
       }
       this.jdField_a_of_type_JavaUtilArrayList.remove(0);
     }
@@ -479,7 +479,7 @@ public class GroupPttDownloadProcessor
       str2 = "http://";
       break;
       label240:
-      str1 = localbdyf.jdField_a_of_type_JavaLangString;
+      str1 = localbewy.jdField_a_of_type_JavaLangString;
       break label135;
       label249:
       if (this.jdField_b_of_type_JavaLangString != null) {
@@ -491,31 +491,31 @@ public class GroupPttDownloadProcessor
   public int c()
   {
     int i = 0;
-    b("uiParam", this.jdField_a_of_type_Bdzn.toString());
-    String str = this.jdField_a_of_type_Bdzn.jdField_e_of_type_JavaLangString;
-    if ((str == null) || (str.equals("")) || (str.equals("null")) || (bgmg.c(str)) || (str.startsWith("http://")))
+    b("uiParam", this.jdField_a_of_type_Beyg.toString());
+    String str = this.jdField_a_of_type_Beyg.jdField_e_of_type_JavaLangString;
+    if ((str == null) || (str.equals("")) || (str.equals("null")) || (bhmi.c(str)) || (str.startsWith("http://")))
     {
       b(9302, a(new Exception("uuid illegal " + str)));
       d();
       i = -1;
       return i;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt = ((MessageForPtt)this.jdField_a_of_type_Bdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    this.jdField_a_of_type_Bdzs = ((bdzs)this.jdField_a_of_type_Bdzn.jdField_a_of_type_JavaLangObject);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt = ((MessageForPtt)this.jdField_a_of_type_Beyg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    this.jdField_a_of_type_Beyl = ((beyl)this.jdField_a_of_type_Beyg.jdField_a_of_type_JavaLangObject);
     this.jdField_d_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.msgTime;
     this.jdField_e_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.msgRecTime;
     int j = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType;
-    if ((this.jdField_a_of_type_Bdzn.h == null) || (!bgmg.c(this.jdField_a_of_type_Bdzn.i)))
+    if ((this.jdField_a_of_type_Beyg.h == null) || (!bhmi.c(this.jdField_a_of_type_Beyg.i)))
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath.equals("")))
       {
-        this.jdField_a_of_type_Bdzn.h = a("group", str, j);
+        this.jdField_a_of_type_Beyg.h = a("group", str, j);
         label241:
-        this.jdField_e_of_type_JavaLangString = (this.jdField_a_of_type_Bdzn.h + "~tmp");
+        this.jdField_e_of_type_JavaLangString = (this.jdField_a_of_type_Beyg.h + "~tmp");
       }
     }
     else {
-      if (1 != this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int) {
+      if (1 != this.jdField_a_of_type_Beyg.jdField_a_of_type_Int) {
         break label422;
       }
     }
@@ -523,42 +523,42 @@ public class GroupPttDownloadProcessor
     for (boolean bool = true;; bool = false)
     {
       this.jdField_f_of_type_Boolean = bool;
-      this.jdField_a_of_type_ArrayOfByte = a(this.jdField_a_of_type_Bdzn.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_Bdzn.jdField_e_of_type_JavaLangString);
-      this.jdField_c_of_type_Long = this.jdField_a_of_type_Bdzn.jdField_c_of_type_Long;
-      this.jdField_f_of_type_JavaLangString = this.jdField_a_of_type_Bdzn.jdField_g_of_type_JavaLangString;
+      this.jdField_a_of_type_ArrayOfByte = a(this.jdField_a_of_type_Beyg.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_Beyg.jdField_e_of_type_JavaLangString);
+      this.jdField_c_of_type_Long = this.jdField_a_of_type_Beyg.jdField_c_of_type_Long;
+      this.jdField_f_of_type_JavaLangString = this.jdField_a_of_type_Beyg.jdField_g_of_type_JavaLangString;
       if (this.jdField_a_of_type_ArrayOfByte != null) {
         break;
       }
-      b(9302, a(new Exception("convert md5 error,md5:" + this.jdField_a_of_type_Bdzn.jdField_f_of_type_JavaLangString + "  uuid:" + this.jdField_a_of_type_Bdzn.jdField_e_of_type_JavaLangString)));
+      b(9302, a(new Exception("convert md5 error,md5:" + this.jdField_a_of_type_Beyg.jdField_f_of_type_JavaLangString + "  uuid:" + this.jdField_a_of_type_Beyg.jdField_e_of_type_JavaLangString)));
       d();
       return -1;
-      this.jdField_a_of_type_Bdzn.h = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath;
+      this.jdField_a_of_type_Beyg.h = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath;
       break label241;
     }
   }
   
   public String c()
   {
-    if (this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int == 1) {
+    if (this.jdField_a_of_type_Beyg.jdField_a_of_type_Int == 1) {
       return "actGrpPttDown";
     }
     return "actDisscusPttDown";
   }
   
-  public void c(bdwt parambdwt)
+  public void c(bevm parambevm)
   {
-    this.jdField_a_of_type_Bedj.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-    a(parambdwt, false, "actRichMediaNetMonitor_pttDown", this.jdField_a_of_type_Bdzn.jdField_e_of_type_JavaLangString);
+    this.jdField_a_of_type_Bfci.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+    a(parambevm, false, "actRichMediaNetMonitor_pttDown", this.jdField_a_of_type_Beyg.jdField_e_of_type_JavaLangString);
   }
   
   public void d()
   {
     super.d();
-    if (this.jdField_a_of_type_Bdzn.jdField_a_of_type_Ayxc != null)
+    if (this.jdField_a_of_type_Beyg.jdField_a_of_type_Azpp != null)
     {
-      ayxd localayxd = new ayxd();
-      localayxd.jdField_a_of_type_Int = -1;
-      this.jdField_a_of_type_Bdzn.jdField_a_of_type_Ayxc.a(localayxd);
+      azpq localazpq = new azpq();
+      localazpq.jdField_a_of_type_Int = -1;
+      this.jdField_a_of_type_Beyg.jdField_a_of_type_Azpp.a(localazpq);
       return;
     }
     d(2005);
@@ -566,19 +566,19 @@ public class GroupPttDownloadProcessor
   
   public void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url = MessageForPtt.getMsgFilePath(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, this.jdField_a_of_type_Bdzn.h);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url = MessageForPtt.getMsgFilePath(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, this.jdField_a_of_type_Beyg.h);
     this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fileSize = this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.urlAtServer = this.jdField_a_of_type_Bdzn.jdField_e_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.urlAtServer = this.jdField_a_of_type_Beyg.jdField_e_of_type_JavaLangString;
     super.e();
     Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    if ((localObject != null) && (((QQMessageFacade.Message)localObject).pttUrl != null) && (((QQMessageFacade.Message)localObject).pttUrl.equals(this.jdField_a_of_type_Bdzn.jdField_e_of_type_JavaLangString))) {
-      ((QQMessageFacade.Message)localObject).pttUrl = this.jdField_a_of_type_Bdzn.h;
+    if ((localObject != null) && (((QQMessageFacade.Message)localObject).pttUrl != null) && (((QQMessageFacade.Message)localObject).pttUrl.equals(this.jdField_a_of_type_Beyg.jdField_e_of_type_JavaLangString))) {
+      ((QQMessageFacade.Message)localObject).pttUrl = this.jdField_a_of_type_Beyg.h;
     }
-    if (this.jdField_a_of_type_Bdzn.jdField_a_of_type_Ayxc != null)
+    if (this.jdField_a_of_type_Beyg.jdField_a_of_type_Azpp != null)
     {
-      localObject = new ayxd();
-      ((ayxd)localObject).jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Bdzn.jdField_a_of_type_Ayxc.a((ayxd)localObject);
+      localObject = new azpq();
+      ((azpq)localObject).jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Beyg.jdField_a_of_type_Azpp.a((azpq)localObject);
       return;
     }
     d(2003);
@@ -592,101 +592,101 @@ public class GroupPttDownloadProcessor
   
   void g()
   {
-    this.jdField_a_of_type_Bdsz.a();
-    bebv localbebv = new bebv();
-    bebz localbebz = new bebz();
-    localbebz.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bdzn.jdField_b_of_type_JavaLangString;
-    localbebz.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Bdzn.jdField_c_of_type_JavaLangString;
-    localbebz.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_Bdzn.jdField_d_of_type_JavaLangString;
-    localbebz.jdField_f_of_type_Int = this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int;
-    localbebz.jdField_a_of_type_Long = this.jdField_c_of_type_Long;
+    this.jdField_a_of_type_Berr.a();
+    bfau localbfau = new bfau();
+    bfay localbfay = new bfay();
+    localbfay.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Beyg.jdField_b_of_type_JavaLangString;
+    localbfay.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Beyg.jdField_c_of_type_JavaLangString;
+    localbfay.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_Beyg.jdField_d_of_type_JavaLangString;
+    localbfay.jdField_f_of_type_Int = this.jdField_a_of_type_Beyg.jdField_a_of_type_Int;
+    localbfay.jdField_a_of_type_Long = this.jdField_c_of_type_Long;
     b("SendRequest", " SendRequest GrpFileKey:" + this.jdField_f_of_type_JavaLangString);
-    localbebz.jdField_a_of_type_JavaLangString = this.jdField_f_of_type_JavaLangString;
-    localbebz.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    localbebz.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType;
-    localbebz.jdField_b_of_type_Int = this.jdField_a_of_type_Bdzn.jdField_g_of_type_Int;
-    localbebv.jdField_a_of_type_Bedc = this;
-    localbebv.jdField_a_of_type_JavaLangString = "grp_ptt_dw";
-    localbebv.jdField_a_of_type_JavaUtilList.add(localbebz);
-    localbebv.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager();
+    localbfay.jdField_a_of_type_JavaLangString = this.jdField_f_of_type_JavaLangString;
+    localbfay.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    localbfay.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType;
+    localbfay.jdField_b_of_type_Int = this.jdField_a_of_type_Beyg.jdField_g_of_type_Int;
+    localbfau.jdField_a_of_type_Bfcb = this;
+    localbfau.jdField_a_of_type_JavaLangString = "grp_ptt_dw";
+    localbfau.jdField_a_of_type_JavaUtilList.add(localbfay);
+    localbfau.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager();
     if (!e())
     {
-      a(9366, "illegal app", null, this.jdField_a_of_type_Bdsz);
+      a(9366, "illegal app", null, this.jdField_a_of_type_Berr);
       d();
     }
     do
     {
       return;
       if (QLog.isColorLevel()) {
-        b("requestStart", localbebv.toString());
+        b("requestStart", localbfau.toString());
       }
     } while (!f());
-    this.jdField_a_of_type_Bebv = localbebv;
-    bedb.a(localbebv);
+    this.jdField_a_of_type_Bfau = localbfau;
+    bfca.a(localbfau);
   }
   
   public void o()
   {
-    if ((this.jdField_a_of_type_Bdws != null) && ((this.jdField_a_of_type_Bdws instanceof bdvs)))
+    if ((this.jdField_a_of_type_Bevl != null) && ((this.jdField_a_of_type_Bevl instanceof beum)))
     {
       if (this.jdField_f_of_type_Boolean) {
-        ((bdvs)this.jdField_a_of_type_Bdws).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype("pttGd", ((bdvs)this.jdField_a_of_type_Bdws).jdField_a_of_type_JavaLangString);
+        ((beum)this.jdField_a_of_type_Bevl).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype("pttGd", ((beum)this.jdField_a_of_type_Bevl).jdField_a_of_type_JavaLangString);
       }
     }
     else {
       return;
     }
-    ((bdvs)this.jdField_a_of_type_Bdws).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype("pttDd", ((bdvs)this.jdField_a_of_type_Bdws).jdField_a_of_type_JavaLangString);
+    ((beum)this.jdField_a_of_type_Bevl).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype("pttDd", ((beum)this.jdField_a_of_type_Bevl).jdField_a_of_type_JavaLangString);
   }
   
-  public void onResp(bdwt parambdwt)
+  public void onResp(bevm parambevm)
   {
     Object localObject;
-    bdum localbdum;
+    betg localbetg;
     boolean bool;
     if (this.jdField_l_of_type_JavaLangString != null)
     {
-      localObject = this.jdField_d_of_type_Bdsz;
-      localbdum = this.jdField_a_of_type_Bduk.b;
+      localObject = this.jdField_d_of_type_Berr;
+      localbetg = this.jdField_a_of_type_Bete.b;
       ThreadManager.getSubThreadHandler().removeCallbacks(this);
-      if (parambdwt.jdField_a_of_type_Int != 0) {
+      if (parambevm.jdField_a_of_type_Int != 0) {
         break label234;
       }
       bool = true;
       label37:
-      a((bdsz)localObject, parambdwt, bool);
+      a((berr)localObject, parambevm, bool);
       localObject = new StringBuilder().append(" result:");
-      if (parambdwt.jdField_a_of_type_Int != 0) {
+      if (parambevm.jdField_a_of_type_Int != 0) {
         break label239;
       }
       bool = true;
       label67:
       b("onHttpResp", bool);
-      this.jdField_a_of_type_Long = parambdwt.jdField_a_of_type_Long;
-      if (this.jdField_a_of_type_Bdws != null) {
-        this.jdField_a_of_type_Bdws.jdField_a_of_type_Bdvw = null;
+      this.jdField_a_of_type_Long = parambevm.jdField_a_of_type_Long;
+      if (this.jdField_a_of_type_Bevl != null) {
+        this.jdField_a_of_type_Bevl.jdField_a_of_type_Beuq = null;
       }
       if (this.jdField_a_of_type_Long <= 0L) {
-        this.jdField_a_of_type_Long = (parambdwt.jdField_b_of_type_Long + parambdwt.jdField_a_of_type_Bdws.jdField_a_of_type_Long);
+        this.jdField_a_of_type_Long = (parambevm.jdField_b_of_type_Long + parambevm.jdField_a_of_type_Bevl.jdField_a_of_type_Long);
       }
-      this.jdField_b_of_type_Long += parambdwt.jdField_c_of_type_Long;
-      localbdum.jdField_d_of_type_JavaLangString = ((String)parambdwt.jdField_a_of_type_JavaUtilHashMap.get("param_rspHeader"));
-      if (parambdwt.jdField_a_of_type_Int != 0) {
+      this.jdField_b_of_type_Long += parambevm.jdField_c_of_type_Long;
+      localbetg.jdField_d_of_type_JavaLangString = ((String)parambevm.jdField_a_of_type_JavaUtilHashMap.get("param_rspHeader"));
+      if (parambevm.jdField_a_of_type_Int != 0) {
         break label244;
       }
       e();
-      this.jdField_a_of_type_Bedj.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-      a(parambdwt, true, "actRichMediaNetMonitor_pttDown", this.jdField_a_of_type_Bdzn.jdField_e_of_type_JavaLangString);
+      this.jdField_a_of_type_Bfci.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+      a(parambevm, true, "actRichMediaNetMonitor_pttDown", this.jdField_a_of_type_Beyg.jdField_e_of_type_JavaLangString);
       if (this.jdField_l_of_type_JavaLangString != null) {
         f(0);
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bdws = null;
+      this.jdField_a_of_type_Bevl = null;
       return;
-      localObject = this.jdField_b_of_type_Bdsz;
-      localbdum = this.jdField_a_of_type_Bduk.a;
+      localObject = this.jdField_b_of_type_Berr;
+      localbetg = this.jdField_a_of_type_Bete.a;
       break;
       label234:
       bool = false;
@@ -701,11 +701,11 @@ public class GroupPttDownloadProcessor
       }
       else
       {
-        if ((parambdwt.jdField_b_of_type_Int == 9364) && (this.jdField_l_of_type_Int < 3))
+        if ((parambevm.jdField_b_of_type_Int == 9364) && (this.m < 3))
         {
           b("[netChg]", "failed.but net change detect.so retry");
-          this.jdField_a_of_type_Bdws = null;
-          this.jdField_l_of_type_Int += 1;
+          this.jdField_a_of_type_Bevl = null;
+          this.m += 1;
           n();
           f();
           return;
@@ -717,13 +717,13 @@ public class GroupPttDownloadProcessor
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bdws != null)
+    if (this.jdField_a_of_type_Bevl != null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("SPD", 2, "Direct download failed overtime = " + this.jdField_l_of_type_JavaLangString);
       }
-      this.jdField_a_of_type_Bdvu.b(this.jdField_a_of_type_Bdws);
-      this.jdField_a_of_type_Bdws = null;
+      this.jdField_a_of_type_Beuo.b(this.jdField_a_of_type_Bevl);
+      this.jdField_a_of_type_Bevl = null;
     }
     f(true);
   }

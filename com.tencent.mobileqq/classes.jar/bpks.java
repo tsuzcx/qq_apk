@@ -1,23 +1,29 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
 
-public class bpks
-  extends AnimatorListenerAdapter
+final class bpks
+  implements bpdw
 {
-  public bpks(DoodleEditView paramDoodleEditView, bppp parambppp) {}
+  bpks(AEEditorTextBean paramAEEditorTextBean, bpku parambpku) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    yqp.b("DoodleEditView", "onAnimationEnd");
-    this.jdField_a_of_type_Bppp.n = 1.0F;
+    if (this.jdField_a_of_type_Bpku != null) {
+      this.jdField_a_of_type_Bpku.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, (int)(0.66D * paramInt));
+    }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(boolean paramBoolean)
   {
-    yqp.b("DoodleEditView", "onAnimationStart");
+    if (paramBoolean)
+    {
+      bpkr.b(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, this.jdField_a_of_type_Bpku);
+      bpkr.c(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, this.jdField_a_of_type_Bpku);
+      return;
+    }
+    if (this.jdField_a_of_type_Bpku != null) {
+      this.jdField_a_of_type_Bpku.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, paramBoolean, "ERROR_PAG_ZIP_DOWNLOAD_FAILED");
+    }
+    bpam.a("AEEditorPagStickerUtil", "[downloadPagZip] download pag zip failed");
   }
 }
 

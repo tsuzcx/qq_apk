@@ -1,34 +1,59 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileBaseFavFileTabView;
 
-final class atlh
-  implements View.OnClickListener
+public class atlh
 {
-  atlh(FileManagerEntity paramFileManagerEntity, atmk paramatmk) {}
+  public int a;
+  public boolean a;
+  public int b = 0;
+  int c = 0;
+  int d = 0;
+  int e = 0;
+  int f = 0;
   
-  public void onClick(View paramView)
+  public atlh(QfileBaseFavFileTabView paramQfileBaseFavFileTabView)
   {
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      localQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin);
-      atvf.d(BaseActivity.sTopActivity.getString(2131692439));
-      if ((this.jdField_a_of_type_Atmk != null) && (this.jdField_a_of_type_Atmk.c())) {
-        atvo.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      }
-      label70:
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public String a()
+  {
+    return " startCount:" + this.jdField_a_of_type_Int + " targetCount:" + this.b + " ReqSeq:" + this.c + " continueCount:" + this.d + " mNoNewDataCount:" + this.e + " mLastRecordSize:" + this.f;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+    this.d = 0;
+    this.e = 0;
+    this.f = 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.d += 1;
+    if (paramInt == this.f) {
+      this.e += 1;
     }
-    catch (Exception localException)
-    {
-      break label70;
-    }
+    this.f = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c += 1;
+    this.d = 0;
+    this.e = 0;
+    this.f = paramInt1;
+  }
+  
+  public boolean a()
+  {
+    return (this.e < 5) || (this.d > 10);
   }
 }
 

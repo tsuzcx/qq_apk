@@ -1,16 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class axot
-  implements View.OnClickListener
+public class axot
+  implements axov
 {
-  axot(axop paramaxop) {}
+  QQAppInterface a;
   
-  public void onClick(View paramView)
+  public axot(QQAppInterface paramQQAppInterface)
   {
-    this.a.b(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a(axpl paramaxpl, HashMap<String, ArrayList<MessageRecord>> paramHashMap, axow paramaxow) {}
+  
+  public boolean a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    return true;
   }
 }
 

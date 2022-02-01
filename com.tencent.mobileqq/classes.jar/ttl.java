@@ -1,16 +1,28 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyCutImageView;
 
-public class ttl
-  implements TextView.OnEditorActionListener
+class ttl
+  implements tqq
 {
-  public ttl(LimitWordCountEditText paramLimitWordCountEditText, boolean paramBoolean) {}
+  ttl(tti paramtti) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a()
   {
-    return (this.jdField_a_of_type_Boolean) && (paramKeyEvent.getKeyCode() == 66);
+    if (tti.a(this.a).booleanValue())
+    {
+      if ((tti.a(this.a).isShown()) && (tti.a(this.a).getWindowVisibility() == 0))
+      {
+        tti.a(this.a, tti.a(this.a));
+        tti.a(this.a).removeCallbacks(tti.a(this.a));
+        tti.a(this.a).postDelayed(tti.a(this.a), tti.a(this.a).mAdvertisementExtInfo.p);
+      }
+    }
+    else {
+      return;
+    }
+    tti.a(this.a, Boolean.valueOf(false));
+    tti.a(this.a, tti.a(this.a));
   }
 }
 

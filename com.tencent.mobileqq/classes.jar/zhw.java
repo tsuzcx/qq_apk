@@ -1,19 +1,8 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-
-public class zhw
-  implements AdapterView.OnItemSelectedListener
+class zhw
 {
-  public zhw(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
-  
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
-  }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  int jdField_a_of_type_Int;
+  zhu jdField_a_of_type_Zhu;
+  zhv jdField_a_of_type_Zhv;
 }
 
 

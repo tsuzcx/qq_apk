@@ -1,26 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.vip.pb.TianShuAccess.AdItem;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.GeoInfo;
+import cooperation.qzone.LbsDataV2.GpsInfo;
 
-class bmso
-  implements View.OnClickListener
+public final class bmso
+  implements Parcelable.Creator<LbsDataV2.GeoInfo>
 {
-  bmso(bmsl parambmsl, String paramString) {}
-  
-  public void onClick(View paramView)
+  public LbsDataV2.GeoInfo a(Parcel paramParcel)
   {
-    bmsl.a(this.jdField_a_of_type_Bmsl);
-    if ((bmsl.a(this.jdField_a_of_type_Bmsl) != null) && (bmsl.a(this.jdField_a_of_type_Bmsl).a() != null) && (bmsl.a(this.jdField_a_of_type_Bmsl).a().app != null) && (bmsl.a(this.jdField_a_of_type_Bmsl) != null))
+    LbsDataV2.GeoInfo localGeoInfo = new LbsDataV2.GeoInfo();
+    if (paramParcel != null)
     {
-      bmsk.a(bmsl.a(this.jdField_a_of_type_Bmsl).a().app, bmsl.a(this.jdField_a_of_type_Bmsl).a(), this.jdField_a_of_type_JavaLangString, 4005);
-      bmsk.a(bmsl.a(this.jdField_a_of_type_Bmsl).a().app, 102, String.valueOf(bmsl.a(this.jdField_a_of_type_Bmsl).iAdId.get()), bmsl.a(this.jdField_a_of_type_Bmsl).traceinfo.get());
+      localGeoInfo.address = paramParcel.readString();
+      localGeoInfo.iDistrictCode = paramParcel.readInt();
+      localGeoInfo.iRange = paramParcel.readInt();
+      localGeoInfo.strCountry = paramParcel.readString();
+      localGeoInfo.strProvince = paramParcel.readString();
+      localGeoInfo.strCity = paramParcel.readString();
+      localGeoInfo.strDistrict = paramParcel.readString();
+      localGeoInfo.strTown = paramParcel.readString();
+      localGeoInfo.strVillage = paramParcel.readString();
+      localGeoInfo.strRoad = paramParcel.readString();
+      localGeoInfo.strDefaultName = paramParcel.readString();
+      localGeoInfo.gpsInfo = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return localGeoInfo;
+  }
+  
+  public LbsDataV2.GeoInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahrx;
-import ahrz;
+import aibl;
+import aibn;
 
 public class AIOGalleryAdapter$VideoListener$1
   implements Runnable
 {
-  public AIOGalleryAdapter$VideoListener$1(ahrz paramahrz) {}
+  public AIOGalleryAdapter$VideoListener$1(aibn paramaibn) {}
   
   public void run()
   {

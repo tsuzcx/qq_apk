@@ -1,5 +1,11 @@
 package com.tencent.biz.richframework.part.list.base;
 
+import aabd;
+import aabe;
+import aabj;
+import aabp;
+import aacr;
+import aadc;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -12,43 +18,37 @@ import com.tencent.biz.richframework.part.block.BlockContainer;
 import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
 import java.util.ArrayList;
 import java.util.List;
-import zxi;
-import zxj;
-import zxo;
-import zxu;
-import zyv;
-import zzg;
 
 public class PublicListInnerFragment
   extends BasePartFragment
 {
-  protected zxi a;
-  public zyv a;
+  protected aabd a;
+  public aacr a;
   
   public int a()
   {
-    if ((this.jdField_a_of_type_Zyv != null) && (this.jdField_a_of_type_Zyv.getContentLayoutId() != 0)) {
-      return this.jdField_a_of_type_Zyv.getContentLayoutId();
+    if ((this.jdField_a_of_type_Aacr != null) && (this.jdField_a_of_type_Aacr.getContentLayoutId() != 0)) {
+      return this.jdField_a_of_type_Aacr.getContentLayoutId();
     }
-    return 2131560759;
+    return 2131560784;
   }
   
   public BlockContainer a()
   {
-    if (this.jdField_a_of_type_Zxi != null) {
-      return this.jdField_a_of_type_Zxi.a();
+    if (this.jdField_a_of_type_Aabd != null) {
+      return this.jdField_a_of_type_Aabd.a();
     }
     return null;
   }
   
-  public List<zxj> a()
+  public List<aabe> a()
   {
     ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_Zxi = new zxi(2131365145, b(), 3, 1);
-    localArrayList.add(this.jdField_a_of_type_Zxi);
-    if (this.jdField_a_of_type_Zyv != null)
+    this.jdField_a_of_type_Aabd = new aabd(2131365189, b(), 3, 1);
+    localArrayList.add(this.jdField_a_of_type_Aabd);
+    if (this.jdField_a_of_type_Aacr != null)
     {
-      List localList = this.jdField_a_of_type_Zyv.getCustomParts();
+      List localList = this.jdField_a_of_type_Aacr.getCustomParts();
       if ((localList != null) && (localList.size() > 0)) {
         localArrayList.addAll(localList);
       }
@@ -58,23 +58,23 @@ public class PublicListInnerFragment
   
   protected void a()
   {
-    this.jdField_a_of_type_Zxi.a().setEnableRefresh(true);
-    this.jdField_a_of_type_Zxi.a().setEnableLoadMore(true);
-    this.jdField_a_of_type_Zxi.a().setParentFragment(this);
-    this.jdField_a_of_type_Zxi.a().a().a(3);
-    this.jdField_a_of_type_Zxi.a().a().setBackgroundColor(getResources().getColor(2131166233));
-    this.jdField_a_of_type_Zxi.a().a().addOnScrollListener(new zzg(this));
+    this.jdField_a_of_type_Aabd.a().setEnableRefresh(true);
+    this.jdField_a_of_type_Aabd.a().setEnableLoadMore(true);
+    this.jdField_a_of_type_Aabd.a().setParentFragment(this);
+    this.jdField_a_of_type_Aabd.a().a().a(3);
+    this.jdField_a_of_type_Aabd.a().a().setBackgroundColor(getResources().getColor(2131166234));
+    this.jdField_a_of_type_Aabd.a().a().addOnScrollListener(new aadc(this));
+  }
+  
+  protected void a(aacr paramaacr)
+  {
+    this.jdField_a_of_type_Aacr = paramaacr;
   }
   
   public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
     a();
-  }
-  
-  protected void a(zyv paramzyv)
-  {
-    this.jdField_a_of_type_Zyv = paramzyv;
   }
   
   public boolean a()
@@ -84,20 +84,25 @@ public class PublicListInnerFragment
   
   public int b()
   {
-    if (this.jdField_a_of_type_Zyv != null) {
-      return this.jdField_a_of_type_Zyv.getStatusBarColor();
+    if (this.jdField_a_of_type_Aacr != null) {
+      return this.jdField_a_of_type_Aacr.getStatusBarColor();
     }
     return 0;
   }
   
-  protected List<zxu> b()
+  protected List<aabp> b()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jdField_a_of_type_Zyv);
+    localArrayList.add(this.jdField_a_of_type_Aacr);
     return localArrayList;
   }
   
-  public boolean c()
+  public String c()
+  {
+    return "PublicListInnerFragment";
+  }
+  
+  public boolean f_()
   {
     return false;
   }

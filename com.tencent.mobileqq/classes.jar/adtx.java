@@ -1,23 +1,25 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class adtx
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public adtx(ChatHistory paramChatHistory, View paramView1, View paramView2) {}
+  public adtx(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.show();
-    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
-    this.b.setVisibility(8);
+    boolean bool = true;
+    paramDialogInterface = this.a;
+    if (paramInt == 1) {}
+    for (;;)
+    {
+      AddRequestActivity.b(paramDialogInterface, bool);
+      bdll.b(this.a.app, "dc00898", "", "", "0X800B084", "0X800B084", 0, 0, "", "", "", "");
+      return;
+      bool = false;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

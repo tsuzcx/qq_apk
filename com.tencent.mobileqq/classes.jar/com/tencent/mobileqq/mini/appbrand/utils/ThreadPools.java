@@ -1,7 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
+import android.os.Handler;
+import android.os.Looper;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -10,15 +13,19 @@ import kotlin.Metadata;
 import kotlin.ranges.RangesKt;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/mini/appbrand/utils/ThreadPools;", "", "()V", "IO_POOL_MIN_COUNT", "", "computationThreadPool", "Ljava/util/concurrent/Executor;", "computationThreadPool$annotations", "getComputationThreadPool", "()Ljava/util/concurrent/Executor;", "diskIOThreadPool", "diskIOThreadPool$annotations", "getDiskIOThreadPool", "networkIOThreadPool", "networkIOThreadPool$annotations", "getNetworkIOThreadPool", "TF", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/mini/appbrand/utils/ThreadPools;", "", "()V", "IO_POOL_MIN_COUNT", "", "computationThreadPool", "Ljava/util/concurrent/ExecutorService;", "computationThreadPool$annotations", "getComputationThreadPool", "()Ljava/util/concurrent/ExecutorService;", "diskIOThreadPool", "Ljava/util/concurrent/Executor;", "diskIOThreadPool$annotations", "getDiskIOThreadPool", "()Ljava/util/concurrent/Executor;", "mainThreadExecutor", "mainThreadExecutor$annotations", "getMainThreadExecutor", "mainThreadHandler", "Landroid/os/Handler;", "mainThreadHandler$annotations", "getMainThreadHandler", "()Landroid/os/Handler;", "networkIOThreadPool", "networkIOThreadPool$annotations", "getNetworkIOThreadPool", "TF", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class ThreadPools
 {
   public static final ThreadPools INSTANCE = new ThreadPools();
   private static final int IO_POOL_MIN_COUNT = 4;
   @NotNull
-  private static final Executor computationThreadPool;
+  private static final ExecutorService computationThreadPool;
   @NotNull
   private static final Executor diskIOThreadPool;
+  @NotNull
+  private static final Executor mainThreadExecutor = (Executor)new ThreadPools.mainThreadExecutor.1();
+  @NotNull
+  private static final Handler mainThreadHandler = new Handler(Looper.getMainLooper());
   @NotNull
   private static final Executor networkIOThreadPool;
   
@@ -35,11 +42,11 @@ public final class ThreadPools
     networkIOThreadPool = (Executor)localThreadPoolExecutor;
     localThreadPoolExecutor = new ThreadPoolExecutor(i, i, 1L, TimeUnit.MINUTES, (BlockingQueue)new LinkedBlockingQueue(), (ThreadFactory)new ThreadPools.TF("Computation", 9));
     localThreadPoolExecutor.allowCoreThreadTimeOut(true);
-    computationThreadPool = (Executor)localThreadPoolExecutor;
+    computationThreadPool = (ExecutorService)localThreadPoolExecutor;
   }
   
   @NotNull
-  public static final Executor getComputationThreadPool()
+  public static final ExecutorService getComputationThreadPool()
   {
     return computationThreadPool;
   }
@@ -48,6 +55,18 @@ public final class ThreadPools
   public static final Executor getDiskIOThreadPool()
   {
     return diskIOThreadPool;
+  }
+  
+  @NotNull
+  public static final Executor getMainThreadExecutor()
+  {
+    return mainThreadExecutor;
+  }
+  
+  @NotNull
+  public static final Handler getMainThreadHandler()
+  {
+    return mainThreadHandler;
   }
   
   @NotNull

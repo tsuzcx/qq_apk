@@ -1,84 +1,89 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class tyh
+  implements URLDrawableHandler
 {
-  int jdField_a_of_type_Int = 0;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-  String jdField_a_of_type_JavaLangString = "";
-  String b = "";
-  String c = "";
+  private URLDrawableHandler jdField_a_of_type_ComTencentImageURLDrawableHandler;
+  private tyg b;
   
-  public tyh(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  public tyh(tyg paramtyg1, URLDrawableHandler paramURLDrawableHandler, tyg paramtyg2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(paramInt2);
-    this.b = "";
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(paramInt3);
-      label66:
-      this.c = a(paramInt1);
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      break label66;
-    }
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler = paramURLDrawableHandler;
+    this.b = paramtyg2;
   }
   
-  public tyh(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2)
+  public tyg a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = a(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = tyg.a(paramContext, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder mId: " + this.jdField_a_of_type_Int + " | mName: " + this.jdField_a_of_type_JavaLangString + " | mIconUrl: " + this.b + " | mUin : " + this.c);
-    }
-    if ((!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)))
+    return this.b;
+  }
+  
+  protected void a()
+  {
+    QLog.d(tyg.b(this.jdField_a_of_type_Tyg), 1, "image download start: " + tyg.c(this.jdField_a_of_type_Tyg) + " supportInnerIp: " + tye.a(this.jdField_a_of_type_Tyg.a));
+    if (tye.b(this.jdField_a_of_type_Tyg.a))
     {
-      paramString1 = aend.b(paramContext, paramString2);
-      if (paramString1 != null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString1;
+      Object localObject1 = InnerDns.getHostFromUrl(tyg.c(this.jdField_a_of_type_Tyg));
+      Object localObject2 = InnerDns.getInstance().reqSerAddrList((String)localObject1, 1002);
+      if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
+      {
+        localObject1 = new StringBuilder();
+        localObject2 = ((ArrayList)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext()) {
+          ((StringBuilder)localObject1).append(((bewy)((Iterator)localObject2).next()).toString()).append(" ");
+        }
+        QLog.d(tyg.b(this.jdField_a_of_type_Tyg), 1, "InnerIp address " + localObject1);
       }
     }
-    while (!QLog.isColorLevel())
+    else
     {
       return;
-      aend.a(paramQQAppInterface, paramContext, paramString2, new aene(paramContext, new tyi(this, paramQQAppInterface, this.c), new Object[0]));
-      return;
     }
-    QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder mIconUrl is empty");
+    QLog.d(tyg.b(this.jdField_a_of_type_Tyg), 1, "InnerIp address empty");
   }
   
-  private String a(int paramInt)
+  public void a(String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 1: 
-      return String.valueOf(7210);
-    case 2: 
-      return String.valueOf(anhk.az);
+    if ((this.jdField_a_of_type_ComTencentImageURLDrawableHandler instanceof suu)) {
+      ((suu)this.jdField_a_of_type_ComTencentImageURLDrawableHandler).a(paramString);
     }
-    return String.valueOf(anhk.aA);
   }
   
-  public Drawable a()
+  public void doCancel()
   {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.doCancel();
   }
   
-  public String a()
+  public boolean isCancelled()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.jdField_a_of_type_ComTencentImageURLDrawableHandler.isCancelled();
+  }
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    this.b.a(false, paramInt);
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(paramInt);
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    this.b.b();
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadStarted();
+    a();
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    this.b.a(true, 0);
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(paramLong);
+  }
+  
+  public void publishProgress(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.publishProgress(paramInt);
   }
 }
 

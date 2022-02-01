@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.game;
 
-import ammx;
+import amyr;
 import android.content.Intent;
 import android.text.TextUtils;
 
@@ -30,7 +30,7 @@ class WebGameFakeView$2
       this.this$0.a();
       this.a.putExtra("Director", localDirector);
     }
-    ammx.a().a(this.a, ApolloWebViewFragment.class);
+    amyr.a().a(this.a, ApolloWebViewFragment.class);
   }
 }
 

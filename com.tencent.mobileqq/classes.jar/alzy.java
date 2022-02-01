@@ -1,114 +1,90 @@
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.util.Log;
+import com.tencent.maxvideo.trim.TrimNative;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WaterfallArk;", "", "appName", "", "appMeta", "appVersion", "appView", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getAppMeta", "()Ljava/lang/String;", "setAppMeta", "(Ljava/lang/String;)V", "getAppName", "getAppVersion", "getAppView", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class alzy
+public class alzy
 {
-  @NotNull
-  private final String a;
-  @NotNull
-  private String b;
-  @NotNull
-  private final String c;
-  @NotNull
-  private final String d;
+  private static int a;
+  private static int b;
+  private static int c;
+  private static int d;
   
-  public alzy(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4)
+  public static int a(String paramString, int paramInt1, int paramInt2)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
+    return a(paramString, paramInt1, paramInt2, true);
   }
   
-  @NotNull
-  public final String a()
+  public static int a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    return this.a;
-  }
-  
-  public final void a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.b = paramString;
-  }
-  
-  @NotNull
-  public final String b()
-  {
-    return this.b;
-  }
-  
-  @NotNull
-  public final String c()
-  {
-    return this.c;
-  }
-  
-  @NotNull
-  public final String d()
-  {
-    return this.d;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (this != paramObject)
+    a = paramInt5;
+    b = paramInt6;
+    try
     {
-      if ((paramObject instanceof alzy))
-      {
-        paramObject = (alzy)paramObject;
-        if ((!Intrinsics.areEqual(this.a, paramObject.a)) || (!Intrinsics.areEqual(this.b, paramObject.b)) || (!Intrinsics.areEqual(this.c, paramObject.c)) || (!Intrinsics.areEqual(this.d, paramObject.d))) {}
-      }
+      paramInt1 = TrimNative.prepare(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
+      return paramInt1;
     }
-    else {
-      return true;
+    catch (Throwable paramString)
+    {
+      QLog.e("ThumbnailUtils", 1, "init failed:" + Log.getStackTraceString(paramString));
     }
-    return false;
+    return -444;
   }
   
-  public int hashCode()
+  public static int a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int m = 0;
-    String str = this.a;
-    int i;
-    int j;
-    if (str != null)
+    c = paramInt1;
+    d = paramInt2;
+    if (paramBoolean)
     {
-      i = str.hashCode();
-      str = this.b;
-      if (str == null) {
-        break label95;
+      if (c <= d) {
+        break label55;
       }
-      j = str.hashCode();
-      label37:
-      str = this.c;
-      if (str == null) {
-        break label100;
-      }
+      c = 480;
+      d = (int)(d / (paramInt1 * 1.0D / 480.0D));
     }
-    label95:
-    label100:
-    for (int k = str.hashCode();; k = 0)
+    for (;;)
     {
-      str = this.d;
-      if (str != null) {
-        m = str.hashCode();
-      }
-      return (k + (j + i * 31) * 31) * 31 + m;
-      i = 0;
-      break;
-      j = 0;
-      break label37;
+      return TrimNative.initGetFrame(paramString, c, d);
+      label55:
+      d = 480;
+      c = (int)(c / (paramInt2 * 1.0D / 480.0D));
     }
   }
   
-  @NotNull
-  public String toString()
+  public static Bitmap a(long paramLong1, long paramLong2)
   {
-    return "WaterfallArk(appName=" + this.a + ", appMeta=" + this.b + ", appVersion=" + this.c + ", appView=" + this.d + ")";
+    if ((c <= 0) || (d <= 0)) {}
+    Bitmap localBitmap;
+    do
+    {
+      return null;
+      localBitmap = Bitmap.createBitmap(c, d, Bitmap.Config.ARGB_8888);
+      if (TrimNative.getFrame(paramLong1, paramLong2, localBitmap) == 0) {
+        break;
+      }
+    } while ((localBitmap == null) || (localBitmap.isRecycled()));
+    localBitmap.recycle();
+    return null;
+    return localBitmap;
+  }
+  
+  public static Bitmap b(long paramLong1, long paramLong2)
+  {
+    if ((a <= 0) || (b <= 0)) {}
+    Bitmap localBitmap;
+    do
+    {
+      return null;
+      localBitmap = Bitmap.createBitmap(a, b, Bitmap.Config.ARGB_8888);
+      if (TrimNative.getThumbnail(paramLong1, paramLong2, localBitmap) == 0) {
+        break;
+      }
+    } while ((localBitmap == null) || (localBitmap.isRecycled()));
+    localBitmap.recycle();
+    return null;
+    return localBitmap;
   }
 }
 

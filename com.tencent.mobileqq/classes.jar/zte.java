@@ -1,43 +1,31 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.List;
 
-public class zte
-  implements zru
+public abstract class zte<T>
 {
-  public int a;
-  public String a;
-  public WeakReference<QRDisplayActivity> a;
+  private int jdField_a_of_type_Int;
+  private List<T> jdField_a_of_type_JavaUtilList;
   
-  public void a(boolean paramBoolean, String paramString)
+  public zte(int paramInt, List<T> paramList)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    QRDisplayActivity localQRDisplayActivity;
-    do
-    {
-      do
-      {
-        return;
-        localQRDisplayActivity = (QRDisplayActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while (localQRDisplayActivity == null);
-      if (QLog.isColorLevel()) {
-        QLog.d("QRDisplayActivity", 2, String.format("onReceive qrcode url:%s suc:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
-      }
-    } while ((localQRDisplayActivity.b) || (localQRDisplayActivity.isFinishing()));
-    if (!paramBoolean)
-    {
-      localQRDisplayActivity.i();
-      return;
-    }
-    localQRDisplayActivity.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramString);
-    paramString = zvc.a(paramString, -1);
-    if (paramString != null)
-    {
-      localQRDisplayActivity.a = paramString;
-      localQRDisplayActivity.h();
-      return;
-    }
-    localQRDisplayActivity.i();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public List<T> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public abstract void a(int paramInt, T paramT, yqw paramyqw);
+  
+  public void a(int paramInt, yqw paramyqw)
+  {
+    a(paramInt, this.jdField_a_of_type_JavaUtilList.get(paramInt), paramyqw);
   }
 }
 

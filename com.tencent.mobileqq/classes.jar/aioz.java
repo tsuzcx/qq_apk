@@ -1,20 +1,22 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aioz
-  implements MediaPlayer.OnErrorListener
+class aioz
+  implements View.OnClickListener
 {
-  public aioz(BlessActivity paramBlessActivity) {}
+  aioz(ainh paramainh) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onError what=" + paramInt1 + ", extra=" + paramInt2);
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "mQidianClickListener ... mQidianKefu = " + this.a.ao);
     }
-    BlessActivity.a(this.a, true);
-    return true;
+    this.a.z(2131694705);
+    this.a.jdField_a_of_type_Obj.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.k, this.a.l, this.a.m, new aipa(this));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

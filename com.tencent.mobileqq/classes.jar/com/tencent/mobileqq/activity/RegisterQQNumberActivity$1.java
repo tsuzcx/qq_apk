@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import awmz;
+import axfr;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class RegisterQQNumberActivity$1
@@ -10,7 +10,7 @@ class RegisterQQNumberActivity$1
   
   public void run()
   {
-    ((awmz)this.this$0.app.getManager(11)).c();
+    ((axfr)this.this$0.app.getManager(11)).c();
   }
 }
 

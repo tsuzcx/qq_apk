@@ -1,8 +1,16 @@
-import com.tencent.mobileqq.data.ApolloActionPush;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
-public abstract interface amia
+public class amia
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, ApolloActionPush paramApolloActionPush);
+  public amia(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a();
+  }
 }
 
 

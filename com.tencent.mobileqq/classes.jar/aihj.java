@@ -1,63 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
 
 class aihj
-  extends anmu
+  implements aaym
 {
-  aihj(aihe paramaihe) {}
+  aihj(aihh paramaihh) {}
   
-  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    aihe.a(this.a).removeMessages(24);
-    HashMap localHashMap;
-    int i;
-    if ((this.a.c == null) || (!this.a.c.isShowing()))
-    {
-      localHashMap = new HashMap();
-      if ((!paramBoolean) && ((paramObject instanceof Integer))) {
-        i = ((Integer)paramObject).intValue();
-      }
-    }
-    for (;;)
-    {
-      localHashMap.put("result", i + "");
-      localHashMap.put("netType", bgnt.a(BaseApplication.getContext()) + "");
-      bctj.a(BaseApplication.getContext()).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "multiMsgNickTimeoutR", false, 30000L, 0L, localHashMap, "");
-      for (;;)
-      {
-        return;
-        if (paramBoolean) {
-          break label328;
-        }
-        i = 1;
-        break;
-        if (awwm.a().jdField_a_of_type_Int != 2) {
-          this.a.c.dismiss();
-        }
-        awwm.a().b.clear();
-        if ((paramBoolean) && (paramObject != null)) {
-          awwm.a().b.putAll((Map)paramObject);
-        }
-        if (awwm.a().b.size() == 0) {
-          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131697671, 0).b(this.a.a());
-        }
-        while (QLog.isDevelopLevel())
-        {
-          QLog.d(this.a.jdField_a_of_type_JavaLangString, 4, "onGetFriendNickBatch = " + paramObject);
-          return;
-          if (paramObject != null) {
-            ((agmj)aihe.a(this.a).a(1)).a((Map)paramObject, awwm.a().jdField_a_of_type_JavaUtilArrayList, awwm.a().jdField_a_of_type_Int);
-          }
-        }
-      }
-      label328:
-      i = 0;
-    }
+    agej.n = true;
+    this.a.o.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 10000L);
+    StructMsg.ButtonInfo localButtonInfo = this.a.a(paramInt1);
+    asuw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramString, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), localButtonInfo);
+    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Bqq_Crm", "", "Aio_menu", "Clk_menu", 0, 0, this.a.a(), paramInt1 + "", "", "");
   }
 }
 

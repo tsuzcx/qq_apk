@@ -15,9 +15,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Scroller;
-import boax;
-import bobd;
-import bobj;
+import bpcs;
+import bpcy;
+import bpde;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.LyricCharacter;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.Sentence;
@@ -28,7 +28,7 @@ import java.util.Iterator;
 
 public abstract class LyricViewInternalBase
   extends View
-  implements boax
+  implements bpcs
 {
   protected int A;
   protected int B = -1;
@@ -102,7 +102,7 @@ public abstract class LyricViewInternalBase
     this.jdField_e_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_f_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_l_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsHandler = new bobj(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new bpde(this, Looper.getMainLooper());
     this.jdField_d_of_type_Boolean = true;
     this.jdField_k_of_type_Boolean = true;
     this.jdField_g_of_type_AndroidGraphicsPaint = new Paint();
@@ -222,25 +222,25 @@ public abstract class LyricViewInternalBase
     }
   }
   
-  public void a(bobd parambobd)
+  public void a(bpcy parambpcy)
   {
     this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric = new Lyric(2, 0, null);
     this.jdField_b_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric = new Lyric(2, 0, null);
-    this.jdField_f_of_type_Int = parambobd.jdField_i_of_type_Int;
-    this.jdField_d_of_type_Int = parambobd.jdField_c_of_type_Int;
-    this.jdField_e_of_type_Int = parambobd.jdField_h_of_type_Int;
-    this.jdField_h_of_type_Int = parambobd.jdField_d_of_type_Int;
-    this.jdField_i_of_type_Int = parambobd.jdField_e_of_type_Int;
-    this.jdField_j_of_type_Int = parambobd.jdField_f_of_type_Int;
-    this.jdField_g_of_type_Int = parambobd.jdField_g_of_type_Int;
-    this.jdField_c_of_type_Int = parambobd.jdField_b_of_type_Int;
-    this.jdField_b_of_type_Int = parambobd.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Boolean = parambobd.jdField_a_of_type_Boolean;
-    this.jdField_h_of_type_Boolean = parambobd.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Int = parambobd.jdField_k_of_type_Int;
-    this.jdField_a_of_type_Boolean = parambobd.jdField_c_of_type_Boolean;
-    this.jdField_j_of_type_Boolean = parambobd.jdField_d_of_type_Boolean;
-    this.B = parambobd.jdField_j_of_type_Int;
+    this.jdField_f_of_type_Int = parambpcy.jdField_i_of_type_Int;
+    this.jdField_d_of_type_Int = parambpcy.jdField_c_of_type_Int;
+    this.jdField_e_of_type_Int = parambpcy.jdField_h_of_type_Int;
+    this.jdField_h_of_type_Int = parambpcy.jdField_d_of_type_Int;
+    this.jdField_i_of_type_Int = parambpcy.jdField_e_of_type_Int;
+    this.jdField_j_of_type_Int = parambpcy.jdField_f_of_type_Int;
+    this.jdField_g_of_type_Int = parambpcy.jdField_g_of_type_Int;
+    this.jdField_c_of_type_Int = parambpcy.jdField_b_of_type_Int;
+    this.jdField_b_of_type_Int = parambpcy.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Boolean = parambpcy.jdField_a_of_type_Boolean;
+    this.jdField_h_of_type_Boolean = parambpcy.jdField_b_of_type_Boolean;
+    this.jdField_a_of_type_Int = parambpcy.jdField_k_of_type_Int;
+    this.jdField_a_of_type_Boolean = parambpcy.jdField_c_of_type_Boolean;
+    this.jdField_j_of_type_Boolean = parambpcy.jdField_d_of_type_Boolean;
+    this.B = parambpcy.jdField_j_of_type_Int;
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_c_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_h_of_type_Int);
     this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.jdField_j_of_type_Int);
@@ -268,12 +268,12 @@ public abstract class LyricViewInternalBase
     this.jdField_f_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
     this.jdField_f_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_f_of_type_AndroidGraphicsPaint.setAlpha(19);
-    this.jdField_g_of_type_AndroidGraphicsPaint.setColor(parambobd.n);
+    this.jdField_g_of_type_AndroidGraphicsPaint.setColor(parambpcy.n);
     this.jdField_g_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_h_of_type_AndroidGraphicsPaint.setColor(parambobd.jdField_l_of_type_Int);
-    this.jdField_h_of_type_AndroidGraphicsPaint.setTextSize(parambobd.m);
-    this.jdField_g_of_type_AndroidGraphicsPaint.setColor(parambobd.n);
-    this.jdField_k_of_type_Int = parambobd.o;
+    this.jdField_h_of_type_AndroidGraphicsPaint.setColor(parambpcy.jdField_l_of_type_Int);
+    this.jdField_h_of_type_AndroidGraphicsPaint.setTextSize(parambpcy.m);
+    this.jdField_g_of_type_AndroidGraphicsPaint.setColor(parambpcy.n);
+    this.jdField_k_of_type_Int = parambpcy.o;
   }
   
   protected void a(Lyric paramLyric1, Lyric paramLyric2)

@@ -1,18 +1,46 @@
+import android.os.Bundle;
 import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.7;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class tzi
-  implements biaw
+  implements rqk
 {
-  public tzi(PublicAccountH5AbilityPlugin.7 param7, rzn paramrzn) {}
+  public tzi(PublicAccountH5AbilityPlugin.7 param7, bjbs parambjbs, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8) {}
   
-  public void a()
+  public void a(String paramString, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$7.this$0.a.b(this.jdField_a_of_type_Rzn);
+    int i;
+    if ("CMD_CAMERA_CAPTURE_SO_DOWNLOAD".equals(paramString))
+    {
+      this.jdField_a_of_type_Bjbs.dismiss();
+      i = paramBundle.getInt("VALUE_CAMERA_CAPTURE_SO_DOWNLOAD_STATUS");
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.pubaccount.video.cameracapture", 2, "showUGCVideoRecordPage VideoFeedsIPCClient.callback downloadResult=" + i);
+      }
+    }
+    switch (i)
+    {
+    default: 
+      return;
+    case 3: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131717505, 0).a();
+      return;
+    case 1: 
+      boolean bool = this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$7.this$0.jdField_a_of_type_Rqi.a("CMD_CAMERA_CAPTURE_CHECK_SO_READY", null).getBoolean("VALUE_CAMERA_CAPTURE_IS_SO_READY");
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.pubaccount.video.cameracapture", 2, "showUGCVideoRecordPage() isSoReady:" + bool);
+      }
+      tyo.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$7.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.e, this.f, this.g, this.h);
+      return;
+    }
+    bhlq.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$7.this$0.jdField_a_of_type_AndroidAppActivity, 230).setMessage(anzj.a(2131707664)).setNegativeButton(2131690580, new bhme()).setPositiveButton(2131694098, new tzj(this)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tzi
  * JD-Core Version:    0.7.0.1
  */

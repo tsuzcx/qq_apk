@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.album.fragment;
 
-import bnff;
+import bogn;
 
 public class AEAbstractPhotoListFragment$3
   implements Runnable
 {
-  public AEAbstractPhotoListFragment$3(bnff parambnff) {}
+  public AEAbstractPhotoListFragment$3(bogn parambogn) {}
   
   public void run()
   {
-    this.this$0.e();
+    this.this$0.d();
   }
 }
 

@@ -1,56 +1,25 @@
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.ttpic.videoshelf.ui.VideoShelfPlayView;
+import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
+
 public class boyf
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public int a;
-  private boyg jdField_a_of_type_Boyg;
-  private boyj jdField_a_of_type_Boyj;
-  public int b = 100;
-  public int c = 2;
-  private int d;
+  public boyf(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
   
-  public boyf(int paramInt1, int paramInt2, int paramInt3)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_Int = 10000;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public boyg a()
-  {
-    return this.jdField_a_of_type_Boyg;
-  }
-  
-  public boyj a()
-  {
-    return this.jdField_a_of_type_Boyj;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.d = paramInt;
-  }
-  
-  public void a(boyg paramboyg)
-  {
-    this.jdField_a_of_type_Boyg = paramboyg;
-    if (paramboyg.a() != null) {
-      this.b = paramboyg.b();
+    if (Build.VERSION.SDK_INT >= 16) {
+      AEVideoShelfPreviewFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
-  }
-  
-  public void a(boyj paramboyj)
-  {
-    this.jdField_a_of_type_Boyj = paramboyj;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    for (;;)
+    {
+      AEVideoShelfPreviewFragment.a(this.a).updateVideoSize(AEVideoShelfPreviewFragment.a(this.a).getVideoWidth(), AEVideoShelfPreviewFragment.a(this.a).getVideoHeight());
+      return;
+      AEVideoShelfPreviewFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
   }
 }
 

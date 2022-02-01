@@ -1,18 +1,26 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import mqq.os.MqqHandler;
 
 public class afpr
-  implements View.OnClickListener
+  extends MqqHandler
 {
-  public afpr(TroopTransferActivity paramTroopTransferActivity) {}
+  public afpr(SubLoginActivity paramSubLoginActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      this.a.finish();
+      return;
+      this.a.e();
+      return;
+    } while (this.a.isFinishing());
+    SubLoginActivity.a(this.a, true);
   }
 }
 

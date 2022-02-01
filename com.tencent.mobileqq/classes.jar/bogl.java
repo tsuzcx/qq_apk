@@ -1,33 +1,29 @@
+import android.app.Activity;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.AdapterView;
 
 class bogl
-  implements View.OnClickListener
+  implements bljm
 {
-  bogl(bogk parambogk, int paramInt) {}
+  private bogl(bogi parambogi) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_Int >= 1)
-    {
-      String str = (String)bogk.a(this.jdField_a_of_type_Bogk).get(this.jdField_a_of_type_Int - 1);
-      if (bogk.a(this.jdField_a_of_type_Bogk) != null) {
-        bogk.a(this.jdField_a_of_type_Bogk).a(str);
-      }
-      bogk.a(this.jdField_a_of_type_Bogk, str);
+    paramAdapterView = this.a.jdField_a_of_type_Bogf.a(paramInt);
+    paramView = this.a.getActivity().getIntent();
+    if ((paramAdapterView == null) || (paramAdapterView.mMediaFileCount <= 0) || (TextUtils.isEmpty(paramAdapterView.name))) {
+      QQToast.a(this.a.getActivity(), 2131689970, 0).a();
     }
-    for (;;)
+    boolean bool;
+    do
     {
-      this.jdField_a_of_type_Bogk.notifyDataSetChanged();
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (bogk.a(this.jdField_a_of_type_Bogk) != null) {
-        bogk.a(this.jdField_a_of_type_Bogk).a();
-      }
-      bogk.a(this.jdField_a_of_type_Bogk, null);
-    }
+      bool = this.a.jdField_a_of_type_Bogy.a(paramAdapterView, paramInt, paramView);
+    } while (this.a.jdField_a_of_type_Bogm == null);
+    this.a.jdField_a_of_type_Bogm.a(paramAdapterView, paramInt, bool);
   }
 }
 

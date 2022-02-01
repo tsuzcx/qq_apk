@@ -1,27 +1,31 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
 
 class akjo
-  implements bmkf
+  implements TextWatcher
 {
-  akjo(akjm paramakjm, LocalMediaInfo paramLocalMediaInfo) {}
+  akjo(akjn paramakjn) {}
   
-  public void a(boolean paramBoolean)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramBoolean)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation == 90) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight))
-      {
-        int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth = i;
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.setPanoramaType();
-      }
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (this.a.b) {
+      this.a.jdField_a_of_type_Akjx.a(paramEditable);
     }
-    else {
+    this.a.b = true;
+    if (paramEditable.length() == 0)
+    {
+      this.a.findViewById(2131368209).setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.setPanoramaType();
+    this.a.findViewById(2131368209).setVisibility(0);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

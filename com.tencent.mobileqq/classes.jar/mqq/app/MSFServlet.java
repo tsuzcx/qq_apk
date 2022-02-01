@@ -10,8 +10,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public abstract class MSFServlet
   extends Servlet
 {
-  public static final AtomicInteger appSeqFactory = new AtomicInteger();
-  public static final String tag = "MSFServlet";
+  public static final AtomicInteger APP_SEQ_FACTORY = new AtomicInteger();
+  public static final String TAG = "MSFServlet";
   private Map<Integer, Intent> mIntents = new ConcurrentHashMap();
   
   protected <T> T decodePacket(byte[] paramArrayOfByte, String paramString, T paramT)
@@ -47,7 +47,7 @@ public abstract class MSFServlet
   
   protected void sendToMSF(Intent paramIntent, ToServiceMsg paramToServiceMsg)
   {
-    paramToServiceMsg.setAppSeq(appSeqFactory.incrementAndGet());
+    paramToServiceMsg.setAppSeq(APP_SEQ_FACTORY.incrementAndGet());
     if ((paramToServiceMsg.isNeedCallback()) && (paramIntent != null)) {
       this.mIntents.put(Integer.valueOf(paramToServiceMsg.getAppSeq()), paramIntent);
     }

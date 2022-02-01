@@ -3,15 +3,15 @@ package com.tencent.biz.pubaccount.readinjoy.viewmodels;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import qky;
-import tkt;
+import qdk;
+import tbm;
 
 public class ArticleViewModel$1
   implements Runnable
 {
   public void run()
   {
-    CharSequence localCharSequence = qky.a((ArticleInfo)tkt.a(this.this$0));
+    CharSequence localCharSequence = qdk.a((ArticleInfo)tbm.a(this.this$0));
     ThreadManager.getUIHandler().post(new ArticleViewModel.1.1(this, localCharSequence));
   }
 }

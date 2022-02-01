@@ -1,34 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qqfav.widget.QfavJumpActivity;
-import java.io.IOException;
-import java.io.InputStream;
+import android.view.View;
+import com.tencent.widget.ExpandableListView;
 
-public class bllm
-  implements DialogInterface.OnClickListener
+public abstract interface bllm
 {
-  public bllm(QfavJumpActivity paramQfavJumpActivity, InputStream paramInputStream) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaIoInputStream.close();
-      this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.finish();
-      return;
-    }
-    catch (IOException paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
-    }
-  }
+  public abstract boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bllm
  * JD-Core Version:    0.7.0.1
  */

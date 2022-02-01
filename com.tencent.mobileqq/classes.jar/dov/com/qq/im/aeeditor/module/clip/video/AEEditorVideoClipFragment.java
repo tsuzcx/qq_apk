@@ -11,23 +11,23 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import anni;
-import bglp;
-import bgpa;
-import bnzb;
-import bnzc;
-import bnzp;
-import bodr;
-import bods;
-import bodt;
-import bodu;
-import bodv;
-import bodx;
-import body;
-import bodz;
-import bohn;
-import bohp;
-import bppm;
+import anzj;
+import bhlq;
+import bhpc;
+import bpam;
+import bpan;
+import bpbk;
+import bpfm;
+import bpfn;
+import bpfo;
+import bpfp;
+import bpfq;
+import bpfs;
+import bpft;
+import bpfu;
+import bpji;
+import bpjk;
+import bqrh;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.tav.core.composition.VideoComposition.RenderLayoutMode;
 import com.tencent.tav.coremedia.CMTime;
@@ -52,7 +52,7 @@ public class AEEditorVideoClipFragment
   private static final String jdField_b_of_type_JavaLangString = AEEditorVideoClipFragment.class.getSimpleName();
   public float a;
   private Context jdField_a_of_type_AndroidContentContext;
-  private bohp jdField_a_of_type_Bohp = bohn.a();
+  private bpjk jdField_a_of_type_Bpjk = bpji.a();
   private CMTimeRange jdField_a_of_type_ComTencentTavCoremediaCMTimeRange;
   private MoviePlayer jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer;
   private TAVCutVideoSession jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession;
@@ -151,16 +151,16 @@ public class AEEditorVideoClipFragment
     this.jdField_c_of_type_JavaLangString = d();
     this.jdField_a_of_type_ComTencentTavCoremediaCMTimeRange = a();
     this.jdField_b_of_type_ComTencentTavCoremediaCMTimeRange = this.jdField_a_of_type_ComTencentTavCoremediaCMTimeRange;
-    this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378304));
+    this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378461));
     this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer = new MoviePlayer();
     this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.setLoopPlay(true);
     this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.setBackColor(getResources().getColor(2131165216));
-    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.addPlayerListener(new bodr(this));
+    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.addPlayerListener(new bpfm(this));
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession = new TAVCutVideoSession();
     paramView = new SessionConfig();
     paramView.setContentMode(TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
     paramView.setRenderLayoutMode(VideoComposition.RenderLayoutMode.aspectFit);
-    paramView.setMaxIntermediateRenderSize(this.jdField_a_of_type_Bohp.a());
+    paramView.setMaxIntermediateRenderSize(this.jdField_a_of_type_Bpjk.a());
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setSessionConfig(paramView);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.setVideoPath(this.jdField_c_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.addPlayer(this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer);
@@ -171,11 +171,11 @@ public class AEEditorVideoClipFragment
   
   private void b(View paramView)
   {
-    this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu = ((AEEditorMvClipMenu)paramView.findViewById(2131371493));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu = ((AEEditorMvClipMenu)paramView.findViewById(2131371601));
     i();
     c();
-    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar = ((AEEditorTopBar)paramView.findViewById(2131378990));
-    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setTopBarClickListener(new bodt(this));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar = ((AEEditorTopBar)paramView.findViewById(2131379154));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setTopBarClickListener(new bpfo(this));
   }
   
   private boolean b()
@@ -185,7 +185,7 @@ public class AEEditorVideoClipFragment
   
   private void c()
   {
-    this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu.setMvClipMenuListener(new bodu(this));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu.setMvClipMenuListener(new bpfp(this));
   }
   
   private boolean c()
@@ -203,23 +203,23 @@ public class AEEditorVideoClipFragment
     while (localArrayList.size() > 0)
     {
       return (String)localArrayList.get(0);
-      bnzb.d(jdField_b_of_type_JavaLangString, "no video paths");
+      bpam.d(jdField_b_of_type_JavaLangString, "no video paths");
     }
     return null;
   }
   
   private void d()
   {
-    bodz localbodz = new bodz(getActivity(), 2131755188);
+    bpfu localbpfu = new bpfu(getActivity(), 2131755189);
     if (this.jdField_a_of_type_JavaLangFloat == null) {}
     for (float f = this.jdField_a_of_type_Float;; f = this.jdField_a_of_type_JavaLangFloat.floatValue())
     {
-      localbodz.a(f);
-      localbodz.c(85);
-      localbodz.b(bppm.b(getActivity(), 20.0F));
-      localbodz.a(bppm.b(getActivity(), 212.0F));
-      localbodz.a(new bodv(this, localbodz));
-      localbodz.show();
+      localbpfu.a(f);
+      localbpfu.c(85);
+      localbpfu.b(bqrh.b(getActivity(), 20.0F));
+      localbpfu.a(bqrh.b(getActivity(), 212.0F));
+      localbpfu.a(new bpfq(this, localbpfu));
+      localbpfu.show();
       return;
     }
   }
@@ -401,13 +401,13 @@ public class AEEditorVideoClipFragment
     {
       return true;
       Object localObject = getActivity();
-      localObject = bglp.a((Context)localObject, 230).setTitle(anni.a(2131689703)).setMessage(((Context)localObject).getString(2131689704)).setPositiveButton(((Context)localObject).getString(2131689703), new body(this)).setNegativeButton(((Context)localObject).getString(2131689684), new bodx(this));
+      localObject = bhlq.a((Context)localObject, 230).setTitle(anzj.a(2131689708)).setMessage(((Context)localObject).getString(2131689709)).setPositiveButton(((Context)localObject).getString(2131689708), new bpft(this)).setNegativeButton(((Context)localObject).getString(2131689689), new bpfs(this));
       if (localObject != null) {
         try
         {
-          if (!((bgpa)localObject).isShowing())
+          if (!((bhpc)localObject).isShowing())
           {
-            ((bgpa)localObject).show();
+            ((bhpc)localObject).show();
             return true;
           }
         }
@@ -419,7 +419,7 @@ public class AEEditorVideoClipFragment
   
   public void onCreate(Bundle paramBundle)
   {
-    bnzb.b(jdField_b_of_type_JavaLangString, "onCreate");
+    bpam.b(jdField_b_of_type_JavaLangString, "onCreate");
     super.onCreate(paramBundle);
     this.jdField_a_of_type_AndroidContentContext = getActivity();
     this.jdField_b_of_type_Boolean = true;
@@ -428,9 +428,9 @@ public class AEEditorVideoClipFragment
   @Nullable
   public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
-    bnzb.b(jdField_b_of_type_JavaLangString, "onCreateView");
-    this.jdField_c_of_type_Boolean = bnzc.a();
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558563, paramViewGroup, false);
+    bpam.b(jdField_b_of_type_JavaLangString, "onCreateView");
+    this.jdField_c_of_type_Boolean = bpan.a();
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558565, paramViewGroup, false);
     a(paramLayoutInflater);
     b(paramLayoutInflater);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
@@ -440,7 +440,7 @@ public class AEEditorVideoClipFragment
   public void onDestroy()
   {
     super.onDestroy();
-    bnzb.b(jdField_b_of_type_JavaLangString, "onDestroy");
+    bpam.b(jdField_b_of_type_JavaLangString, "onDestroy");
     l();
     this.jdField_b_of_type_Boolean = false;
   }
@@ -461,7 +461,7 @@ public class AEEditorVideoClipFragment
       this.jdField_a_of_type_ComTencentTavCoremediaCMTimeRange = a();
       this.jdField_a_of_type_Float = a();
       this.jdField_b_of_type_ComTencentTavCoremediaCMTimeRange = this.jdField_a_of_type_ComTencentTavCoremediaCMTimeRange;
-      this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu.setTimeLineViewSpeed(this.jdField_a_of_type_Float, new bods(this));
+      this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu.setTimeLineViewSpeed(this.jdField_a_of_type_Float, new bpfn(this));
       e();
       f();
       if (this.jdField_b_of_type_Boolean) {
@@ -478,13 +478,13 @@ public class AEEditorVideoClipFragment
   public void onPause()
   {
     super.onPause();
-    bnzb.b(jdField_b_of_type_JavaLangString, "onPause");
+    bpam.b(jdField_b_of_type_JavaLangString, "onPause");
     h();
     if ((this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) && (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.isPlaying())) {}
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;
-      bnzb.a(jdField_b_of_type_JavaLangString, "onPause: mPreviousPlaying is " + this.jdField_a_of_type_Boolean);
+      bpam.a(jdField_b_of_type_JavaLangString, "onPause: mPreviousPlaying is " + this.jdField_a_of_type_Boolean);
       k();
       return;
     }
@@ -493,9 +493,9 @@ public class AEEditorVideoClipFragment
   public void onResume()
   {
     super.onResume();
-    bnzb.b(jdField_b_of_type_JavaLangString, "onResume");
+    bpam.b(jdField_b_of_type_JavaLangString, "onResume");
     g();
-    bnzb.a(jdField_b_of_type_JavaLangString, "onResume: mPreviousPlaying is " + this.jdField_a_of_type_Boolean);
+    bpam.a(jdField_b_of_type_JavaLangString, "onResume: mPreviousPlaying is " + this.jdField_a_of_type_Boolean);
     if (this.jdField_a_of_type_Boolean) {
       j();
     }

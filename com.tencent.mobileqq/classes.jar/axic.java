@@ -1,15 +1,13 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.9.1;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
 
 public class axic
-  implements bhyh
+  implements axgb
 {
-  public axic(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public axic(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a()
   {
-    ChooseInterestTagActivity.a(this.a).post(new ChooseInterestTagActivity.9.1(this, paramInt1));
+    this.a.a(this.a.a, this.a.getString(2131690469));
   }
 }
 

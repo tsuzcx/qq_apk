@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import sfb;
-import sip;
+import rwf;
+import rzt;
 
 public class VideoPlayerWrapper$3
   implements Runnable
 {
-  public VideoPlayerWrapper$3(sfb paramsfb, sip paramsip) {}
+  public VideoPlayerWrapper$3(rwf paramrwf, rzt paramrzt) {}
   
   public void run()
   {

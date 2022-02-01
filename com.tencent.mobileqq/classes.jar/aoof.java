@@ -1,109 +1,142 @@
-import com.tencent.TMG.utils.QLog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.InOutQQ;
-import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.ReqBody;
-import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.RspBody;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.face.FaceDecoder.1;
+import com.tencent.mobileqq.app.face.FaceInfo;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
 public class aoof
-  extends anii
 {
-  private List<aoog> a = new ArrayList();
+  aooh a;
   
-  public aoof(QQAppInterface paramQQAppInterface)
+  public aoof(Context paramContext, AppInterface paramAppInterface)
   {
-    super(paramQQAppInterface);
+    this(paramAppInterface);
   }
   
-  /* Error */
-  public void a(aoog paramaoog)
+  public aoof(AppInterface paramAppInterface)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +18 -> 21
-    //   6: aload_0
-    //   7: getfield 18	aoof:a	Ljava/util/List;
-    //   10: aload_1
-    //   11: invokeinterface 26 2 0
-    //   16: istore_2
-    //   17: iload_2
-    //   18: ifeq +6 -> 24
-    //   21: aload_0
-    //   22: monitorexit
-    //   23: return
-    //   24: aload_0
-    //   25: getfield 18	aoof:a	Ljava/util/List;
-    //   28: aload_1
-    //   29: invokeinterface 29 2 0
-    //   34: pop
-    //   35: goto -14 -> 21
-    //   38: astore_1
-    //   39: aload_0
-    //   40: monitorexit
-    //   41: aload_1
-    //   42: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	43	0	this	aoof
-    //   0	43	1	paramaoog	aoog
-    //   16	2	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   6	17	38	finally
-    //   24	35	38	finally
-  }
-  
-  public void a(List<oidb_cmd0xe27.InOutQQ> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
+    if ((paramAppInterface instanceof QQAppInterface)) {
+      this.a = new aooj((QQAppInterface)paramAppInterface);
     }
-    int i = paramList.size();
-    if (i > 20) {
-      paramList.subList(i - 20, i);
-    }
-    oidb_cmd0xe27.ReqBody localReqBody = new oidb_cmd0xe27.ReqBody();
-    localReqBody.rpt_msg_in_out_qq.set(paramList);
-    sendPbReq(makeOIDBPkg("OidbSvc.0xe27", 3623, 1, localReqBody.toByteArray()));
-  }
-  
-  public void b(aoog paramaoog)
-  {
-    if ((paramaoog == null) || (!this.a.contains(paramaoog))) {
-      return;
-    }
-    this.a.remove(paramaoog);
-  }
-  
-  protected Class<? extends anil> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQDailyHandler", 0, "receive from front back report: " + paramFromServiceMsg.isSuccess());
-    }
-    oidb_cmd0xe27.RspBody localRspBody = new oidb_cmd0xe27.RspBody();
-    if (parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody) == 0)
+    while (this.a == null)
     {
-      paramObject = this.a.iterator();
-      while (paramObject.hasNext())
-      {
-        aoog localaoog = (aoog)paramObject.next();
-        if (localaoog != null) {
-          localaoog.a(paramToServiceMsg, paramFromServiceMsg, localRspBody);
-        }
+      throw new NullPointerException("can not Instantiation FaceDecoder");
+      if ((paramAppInterface instanceof NearbyAppInterface)) {
+        this.a = new aopp((NearbyAppInterface)paramAppInterface);
       }
     }
+  }
+  
+  private byte a(int paramInt)
+  {
+    byte b = 3;
+    if (paramInt == 115) {
+      b = 4;
+    }
+    return b;
+  }
+  
+  protected static void a(QQAppInterface paramQQAppInterface, FaceInfo paramFaceInfo)
+  {
+    if ((paramQQAppInterface == null) || (paramFaceInfo == null)) {
+      return;
+    }
+    ThreadManager.post(new FaceDecoder.1(paramFaceInfo, paramQQAppInterface), 10, null, true);
+  }
+  
+  public Bitmap a(int paramInt, String paramString)
+  {
+    if (paramInt == 32) {
+      return null;
+    }
+    byte b = a(paramInt);
+    if ((paramInt == 101) || (paramInt == 1001)) {
+      b = 3;
+    }
+    return this.a.a(paramInt, paramString, 0, b);
+  }
+  
+  public Bitmap a(int paramInt1, String paramString, int paramInt2)
+  {
+    return a(paramInt1, paramString, paramInt2, (byte)3);
+  }
+  
+  public Bitmap a(int paramInt1, String paramString, int paramInt2, byte paramByte)
+  {
+    return this.a.a(paramInt1, paramString, paramInt2, paramByte);
+  }
+  
+  public void a()
+  {
+    this.a.c();
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2, long paramLong)
+  {
+    this.a.a(paramInt1, paramString, paramInt2, paramLong);
+  }
+  
+  public void a(aoog paramaoog)
+  {
+    this.a.a(paramaoog);
+  }
+  
+  public void a(AppInterface paramAppInterface)
+  {
+    this.a.a(paramAppInterface);
+  }
+  
+  public boolean a()
+  {
+    return this.a.a();
+  }
+  
+  public boolean a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    return this.a.a(paramString, 200, false, paramInt, paramBoolean, (byte)0, a(paramInt));
+  }
+  
+  public boolean a(String paramString, int paramInt, boolean paramBoolean, byte paramByte)
+  {
+    return this.a.a(paramString, 200, false, paramInt, paramBoolean, paramByte, a(paramInt));
+  }
+  
+  public boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3)
+  {
+    return this.a.a(paramString, paramInt1, paramBoolean1, paramInt2, paramBoolean2, paramByte, paramInt3);
+  }
+  
+  public boolean a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    return this.a.a(paramString, paramInt, paramBoolean1, 32, paramBoolean2, (byte)1, 3);
+  }
+  
+  public Bitmap b(int paramInt1, String paramString, int paramInt2)
+  {
+    return a(paramInt1, paramString);
+  }
+  
+  public void b()
+  {
+    this.a.b();
+  }
+  
+  public boolean b(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    return this.a.a(paramString, paramInt, paramBoolean1, 16, paramBoolean2, (byte)1, 3);
+  }
+  
+  public void c()
+  {
+    this.a.a();
+  }
+  
+  public void d()
+  {
+    this.a.d();
   }
 }
 

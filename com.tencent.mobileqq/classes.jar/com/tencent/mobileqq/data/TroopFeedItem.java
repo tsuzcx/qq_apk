@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import bgsp;
+import bhsr;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
@@ -46,8 +46,8 @@ public class TroopFeedItem
   
   public boolean isVaild()
   {
-    if ((bgsp.a(this.tag)) || (bgsp.a(this.title))) {}
-    while (((this.type == 0) || (this.type == 131)) && (bgsp.a(this.content))) {
+    if ((bhsr.a(this.tag)) || (bhsr.a(this.title))) {}
+    while (((this.type == 0) || (this.type == 131)) && (bhsr.a(this.content))) {
       return false;
     }
     return true;

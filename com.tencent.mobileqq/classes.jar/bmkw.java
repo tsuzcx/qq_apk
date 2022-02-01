@@ -1,42 +1,35 @@
-import android.app.Activity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.ContentValues;
 
-public class bmkw
-  extends bmmk
+public final class bmkw
 {
-  private boolean a(String paramString)
+  public long a;
+  public Object a;
+  public String a;
+  public long b = -1L;
+  
+  public bmkw(long paramLong1, long paramLong2, ContentValues paramContentValues)
   {
+    this.jdField_a_of_type_Long = 1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = paramLong1;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangObject = paramContentValues;
     try
     {
-      paramString = new JSONObject(paramString);
-      int i = paramString.optInt("categoryType");
-      paramString = paramString.optString("categoryId");
-      Activity localActivity = this.a.mRuntime.a();
-      if (localActivity != null)
-      {
-        blsb.a(localActivity, this.a.mRuntime.a().getCurrentAccountUin(), i, paramString, -1);
-        return true;
-      }
+      this.jdField_a_of_type_JavaLangString = paramContentValues.getAsString("entityNickName");
+      return;
     }
-    catch (Exception paramString)
-    {
-      QLog.e("QZoneCategoryAlbumPlugin", 1, paramString.getMessage());
-      return false;
-    }
-    return false;
+    catch (Exception paramContentValues) {}
   }
   
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public bmkw(long paramLong1, long paramLong2, Object paramObject, String paramString)
   {
-    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
-    while ((!paramString3.equalsIgnoreCase("jumpCategoryAlbum")) || (paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      return false;
-    }
-    return a(paramVarArgs[0]);
+    this.jdField_a_of_type_Long = 1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = paramLong1;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

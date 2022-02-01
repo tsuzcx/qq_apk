@@ -1,223 +1,54 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.database.VideoCollectionEntry;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class xyv
-  extends xyo
-  implements wjy
+  extends xqm
 {
-  public ShareGroupItem a;
-  public HashMap<String, WeakReference<xyx>> a;
-  public List<HotSortVideoEntry> a;
-  xzf a;
-  protected boolean a;
-  protected boolean b;
+  public xyv(xyd paramxyd) {}
   
-  public xyv(Context paramContext, boolean paramBoolean)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    super(paramContext);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  private void a(List<HotSortVideoEntry> paramList)
-  {
-    if (paramList.isEmpty()) {}
-    do
-    {
-      int i;
-      int k;
-      do
-      {
-        return;
-        if (this.b)
-        {
-          localVideoCollectionItem = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-          if (localVideoCollectionItem.collectionType == 7)
-          {
-            localVideoCollectionItem.hotSortVideoLIst.set(1, paramList.get(0));
-            paramList.remove(0);
-            this.b = false;
-            if (QLog.isColorLevel()) {
-              QLog.i("Q.qqstory.shareGroup.ShareGroupsListAdapter", 2, "[hotlist]填了一个坑");
-            }
-          }
-        }
-        int m = paramList.size() / 2;
-        if (paramList.size() % 2 == 1) {}
-        for (i = 1;; i = 0)
-        {
-          int j = 0;
-          k = 0;
-          while (j < m)
-          {
-            localVideoCollectionItem = new VideoCollectionItem();
-            localVideoCollectionItem.collectionType = 7;
-            localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, String.valueOf(j), "0_xx");
-            localVideoCollectionItem.hotSortVideoLIst.add(paramList.get(k));
-            localVideoCollectionItem.hotSortVideoLIst.add(paramList.get(k + 1));
-            k += 2;
-            this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
-            this.b = false;
-            j += 1;
-          }
-        }
-      } while ((paramList.size() <= 0) || (i == 0));
-      VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
-      localVideoCollectionItem.collectionType = 7;
-      localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, String.valueOf(k), "0_xx");
-      localVideoCollectionItem.hotSortVideoLIst.add(paramList.get(k));
-      localVideoCollectionItem.hotSortVideoLIst.add(null);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
-      this.b = true;
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.qqstory.shareGroup.ShareGroupsListAdapter", 2, "[hotlist]又挖了一个坑");
-  }
-  
-  private static void b(ImageView paramImageView, int paramInt, String paramString)
-  {
-    if (paramImageView == null) {
-      yqp.e("Q.qqstory.shareGroup.ShareGroupsListAdapter", "update imageView error. imageView is null.");
-    }
+    Object localObject = this.a.a();
+    if ((localObject == null) || (!this.a.jdField_a_of_type_Xms.equals(localObject))) {}
     do
     {
       return;
-      paramImageView.setVisibility(paramInt);
-    } while (paramInt != 0);
-    zlx.b(paramImageView, zlu.a(paramString), 80, 80, null, "StoryDiscoverHeadImage");
-  }
-  
-  protected View a(int paramInt, ViewGroup paramViewGroup)
-  {
-    LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    paramInt = getItemViewType(paramInt);
-    View localView = null;
-    if (paramInt == 1)
-    {
-      localView = localLayoutInflater.inflate(2131561803, paramViewGroup, false);
-      localView.setTag(new xyx(localView, this));
-    }
-    do
-    {
-      return localView;
-      if (paramInt == 0)
+      if (paramInt1 == this.a.hashCode())
       {
-        paramViewGroup = localLayoutInflater.inflate(2131561738, paramViewGroup, false);
-        paramViewGroup.setTag(new xzc(paramViewGroup, this));
-        return paramViewGroup;
-      }
-      if (paramInt == 2)
-      {
-        paramViewGroup = localLayoutInflater.inflate(2131561802, paramViewGroup, false);
-        paramViewGroup.setTag(new xzb(paramViewGroup, this));
-        return paramViewGroup;
-      }
-    } while (paramInt != 7);
-    paramViewGroup = localLayoutInflater.inflate(2131561799, paramViewGroup, false);
-    paramViewGroup.setTag(new xza(paramViewGroup, this));
-    return paramViewGroup;
-  }
-  
-  public void a(HotSortVideoEntry paramHotSortVideoEntry)
-  {
-    int i = 0;
-    for (;;)
-    {
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        if (((HotSortVideoEntry)this.jdField_a_of_type_JavaUtilList.get(i)).storyId.equals(paramHotSortVideoEntry.storyId)) {
-          this.jdField_a_of_type_JavaUtilList.set(i, paramHotSortVideoEntry);
+        yuk.b(this.a.b, "onActivityResult, onChooseFriendResult");
+        localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
+        if (localObject != null) {
+          ((VideoViewVideoHolder)localObject).c(false);
+        }
+        if (paramInt2 == -1) {
+          xjn.a().a(paramIntent.getExtras());
         }
       }
-      else {
-        return;
+      if ((paramInt1 == 10002) && (paramInt2 == -1))
+      {
+        wlt.b(this.a.b + " onActivityResult");
+        QQToast.a(this.a.b(), this.a.b().getString(2131718165), 1).a();
       }
-      i += 1;
-    }
-  }
-  
-  public void a(ShareGroupItem paramShareGroupItem)
-  {
-    if (paramShareGroupItem != null)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = paramShareGroupItem;
-      super.notifyDataSetChanged();
-    }
-  }
-  
-  public void a(String paramString, List<ygo> paramList)
-  {
-    paramList = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if ((paramList != null) && (paramList.get() != null))
-    {
-      VideoCollectionItem localVideoCollectionItem = ((woz)wpm.a(19)).a(paramString);
-      if (localVideoCollectionItem == null) {
-        break label55;
+      if ((paramInt1 == 467) && (paramInt2 == -1) && (xyd.a(this.a) != null)) {
+        xyd.a(this.a).a();
       }
-      ((xyx)paramList.get()).a.setData(localVideoCollectionItem);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.b, 2, new Object[] { "MoreVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
+      }
+    } while (this.a.jdField_a_of_type_Xfj == null);
+    this.a.jdField_a_of_type_Xfj.a(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public void g()
+  {
+    super.g();
+    if (xyd.a(this.a) != null) {
+      xyd.a(this.a).a();
     }
-    label55:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("Q.qqstory.shareGroup.ShareGroupsListAdapter", 2, "updateCollectionData: videoCollectionItem is null, collectionId:" + paramString);
-  }
-  
-  public void a(List<VideoCollectionItem> paramList, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    super.a(paramList, paramBoolean);
-  }
-  
-  public void a(xzf paramxzf)
-  {
-    super.a(paramxzf, paramxzf);
-    this.jdField_a_of_type_Xzf = paramxzf;
-  }
-  
-  protected boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    return false;
-  }
-  
-  public void e(List<HotSortVideoEntry> paramList, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    b();
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = false;
-    a(VideoCollectionItem.getProfilePlaceholderItem("hotsort"));
-    a(VideoCollectionItem.getCurrentYearFakeItem("hotsort"));
-    a(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public void f(List<HotSortVideoEntry> paramList, boolean paramBoolean)
-  {
-    if (paramList.isEmpty()) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    a(paramList);
-    notifyDataSetChanged();
   }
 }
 

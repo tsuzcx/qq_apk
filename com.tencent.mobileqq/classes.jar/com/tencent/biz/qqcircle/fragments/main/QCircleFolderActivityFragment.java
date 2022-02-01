@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.fragments.main;
 
+import aabe;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,98 +10,80 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
 import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
+import com.tencent.biz.qqcircle.launchbean.QCircleFolderBean;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.List;
-import uxc;
-import vab;
-import vbf;
-import vbk;
-import vbt;
-import vcw;
+import uyn;
+import vbr;
+import vcv;
 import vda;
-import vdb;
-import vec;
-import veh;
-import vja;
-import zxj;
+import vdj;
+import vfa;
+import vfe;
+import vff;
+import vgg;
+import vgl;
 
 public class QCircleFolderActivityFragment
   extends QCircleBaseFragment
 {
   private QCircleFolderFragmentsPart jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart;
-  private List<zxj> jdField_a_of_type_JavaUtilList;
-  private vbk jdField_a_of_type_Vbk;
-  private vcw jdField_a_of_type_Vcw;
+  private List<aabe> jdField_a_of_type_JavaUtilList;
+  private vda jdField_a_of_type_Vda;
+  private vfa jdField_a_of_type_Vfa;
   
   private void b()
   {
-    Intent localIntent = getActivity().getIntent();
-    boolean bool = localIntent.getBooleanExtra("key_enable_splash", true);
-    if (this.jdField_a_of_type_Vbk != null) {
-      this.jdField_a_of_type_Vbk.a(bool);
-    }
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart != null) {
-      i = -1;
-    }
-    try
+    if ((getActivity() != null) && (getActivity().getIntent() != null))
     {
-      int j = Integer.parseInt(localIntent.getStringExtra("key_first_show_tab"));
-      i = j;
-    }
-    catch (Exception localException)
-    {
-      label55:
-      break label55;
-    }
-    this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart.a(i);
-    if (!localIntent.getBooleanExtra("key_enable_page_memory_cache", true))
-    {
-      vja.a().a(1);
-      if (this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart != null) {
-        this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart.a(1);
+      QCircleFolderBean localQCircleFolderBean = (QCircleFolderBean)getActivity().getIntent().getSerializableExtra("key_bundle_common_init_bean");
+      if (this.jdField_a_of_type_Vda != null) {
+        this.jdField_a_of_type_Vda.a(localQCircleFolderBean.isEnableSplash());
+      }
+      if ((localQCircleFolderBean.getAssignShowTabType() != -1) && (this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart != null)) {
+        this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart.a(localQCircleFolderBean.getAssignShowTabType());
       }
     }
   }
   
   public int a()
   {
-    return 2131560711;
+    return 2131560728;
   }
   
-  public List<zxj> a()
+  public List<aabe> a()
   {
     if (this.jdField_a_of_type_JavaUtilList == null)
     {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      Object localObject1 = new vbf();
-      ((vbf)localObject1).a(this);
+      Object localObject1 = new vcv();
+      ((vcv)localObject1).a(this);
       this.jdField_a_of_type_JavaUtilList.add(localObject1);
-      this.jdField_a_of_type_JavaUtilList.add(new vda(uxc.a()));
-      this.jdField_a_of_type_Vcw = new vcw(uxc.a());
-      this.jdField_a_of_type_Vcw.a(this);
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Vcw);
-      localObject1 = new vbt();
-      ((vbt)localObject1).a(this);
+      this.jdField_a_of_type_JavaUtilList.add(new vfe(uyn.a()));
+      this.jdField_a_of_type_Vfa = new vfa(uyn.a());
+      this.jdField_a_of_type_Vfa.a(this);
+      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Vfa);
+      localObject1 = new vdj();
+      ((vdj)localObject1).a(this);
       this.jdField_a_of_type_JavaUtilList.add(localObject1);
-      localObject1 = new vab();
-      ((vab)localObject1).a(this);
+      localObject1 = new vbr();
+      ((vbr)localObject1).a(this);
       this.jdField_a_of_type_JavaUtilList.add(localObject1);
       localObject1 = this.jdField_a_of_type_JavaUtilList;
       Object localObject2 = new QCircleFolderFragmentsPart();
       this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart = ((QCircleFolderFragmentsPart)localObject2);
       ((List)localObject1).add(localObject2);
       localObject1 = this.jdField_a_of_type_JavaUtilList;
-      localObject2 = new vbk();
-      this.jdField_a_of_type_Vbk = ((vbk)localObject2);
+      localObject2 = new vda();
+      this.jdField_a_of_type_Vda = ((vda)localObject2);
       ((List)localObject1).add(localObject2);
-      localObject1 = new vec();
-      ((vec)localObject1).a(this);
+      localObject1 = new vgg();
+      ((vgg)localObject1).a(this);
       this.jdField_a_of_type_JavaUtilList.add(localObject1);
-      this.jdField_a_of_type_JavaUtilList.add(new veh());
-      this.jdField_a_of_type_JavaUtilList.add(new vdb());
+      this.jdField_a_of_type_JavaUtilList.add(new vgl());
+      this.jdField_a_of_type_JavaUtilList.add(new vff());
     }
     b();
     return this.jdField_a_of_type_JavaUtilList;
@@ -109,14 +92,14 @@ public class QCircleFolderActivityFragment
   public void a()
   {
     StringBuilder localStringBuilder = new StringBuilder().append("onWriteClick?");
-    if (this.jdField_a_of_type_Vcw != null) {}
+    if (this.jdField_a_of_type_Vfa != null) {}
     for (boolean bool = true;; bool = false)
     {
       QLog.d("QCircleFolderActivityFragment", 4, bool);
-      if (this.jdField_a_of_type_Vcw != null)
+      if (this.jdField_a_of_type_Vfa != null)
       {
-        this.jdField_a_of_type_Vcw.a();
-        this.jdField_a_of_type_Vcw.a(1);
+        this.jdField_a_of_type_Vfa.a();
+        this.jdField_a_of_type_Vfa.a(1);
       }
       return;
     }
@@ -180,21 +163,13 @@ public class QCircleFolderActivityFragment
   
   public void onNewIntent(Intent paramIntent)
   {
-    int i = 1;
     QLog.d("QCircleFolderActivityFragment", 1, "QCircleFolderActivityFragment->onNewIntent");
     super.onNewIntent(paramIntent);
-    if (this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart != null) {}
-    try
+    if (this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart != null)
     {
-      int j = Integer.parseInt(paramIntent.getStringExtra("key_first_show_tab"));
-      i = j;
+      paramIntent = (QCircleFolderBean)getActivity().getIntent().getSerializableExtra("key_bundle_common_init_bean");
+      this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart.a(paramIntent.getAssignShowTabType(), false, false);
     }
-    catch (Exception paramIntent)
-    {
-      label34:
-      break label34;
-    }
-    this.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart.a(i, false, false);
   }
   
   public void onResume()

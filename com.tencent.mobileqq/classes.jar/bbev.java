@@ -1,108 +1,165 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForScribble;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
-class bbev
-  extends AsyncTask<Void, Void, Integer>
+public class bbev
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private bbeu jdField_a_of_type_Bbeu;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString = "";
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString = "";
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString = "";
-  private String d = "";
-  private String e = "SendAfterCombinePicAndDataTask";
+  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public bbev(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, Bitmap paramBitmap, int paramInt2, bbeu parambbeu)
+  public bbev(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bbeu = parambbeu;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  int a()
-  {
-    String str1 = bbet.a() + "temp/" + System.currentTimeMillis();
-    String str2 = bbet.a() + "temp/" + System.currentTimeMillis() + "_data";
-    boolean bool = false;
-    if (this.jdField_a_of_type_Bbeu != null) {
-      bool = this.jdField_a_of_type_Bbeu.a(str2);
-    }
-    if (!bool) {
-      return bbet.g;
-    }
-    if (!atwl.a(str2)) {
-      return bbet.h;
-    }
-    Object localObject = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_c_of_type_Int = localObject.length;
-    if (!bbfc.a((byte[])localObject, str2, str1)) {
-      return bbet.e;
-    }
-    localObject = bbfc.a(str1);
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return bbet.f;
-    }
-    this.jdField_b_of_type_JavaLangString = ((String)localObject);
-    this.jdField_c_of_type_JavaLangString = bbet.a(this.jdField_b_of_type_JavaLangString);
-    this.d = bbet.b(this.jdField_b_of_type_JavaLangString);
-    if (!bbfc.a(str1, this.jdField_c_of_type_JavaLangString).booleanValue()) {
-      return bbet.e;
-    }
-    if (!bbfc.a(str2, this.d).booleanValue()) {
-      return bbet.e;
-    }
-    atwl.c(str1);
-    atwl.c(str2);
-    return bbet.d;
-  }
-  
-  protected Integer a(Void... paramVarArgs)
-  {
-    return Integer.valueOf(a());
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    super.onPostExecute(paramInteger);
-    QLog.i(this.e, 2, "doBeforeSendScribble result = " + paramInteger);
-    if (paramInteger.intValue() == bbet.d)
+    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + File.separator + "audio_data_cache" + File.separator);
+    paramString = new File(this.jdField_a_of_type_JavaLangString);
+    boolean bool1 = paramString.mkdirs();
+    boolean bool2 = paramString.isDirectory();
+    if ((!bool1) && (!bool2))
     {
-      bbep localbbep = new bbep(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      MessageForScribble localMessageForScribble = localbbep.a(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      localMessageForScribble.mExistInfo.mCombineFileExist = true;
-      localMessageForScribble.mExistInfo.mDataFileExist = true;
-      localMessageForScribble.mExistInfo.mLocalPathExist = true;
-      localMessageForScribble.mExistInfo.mInit = true;
-      localbbep.a(localMessageForScribble);
-    }
-    if (this.jdField_a_of_type_Bbeu != null) {
-      this.jdField_a_of_type_Bbeu.a(paramInteger.intValue());
+      paramString = new RuntimeException("AudioDataCache: mkd=" + bool1 + " isdir=" + bool2);
+      QLog.e("AudioDataCache", 2, paramString, new Object[0]);
+      bbnk.a(paramString);
     }
   }
   
-  public byte[] a(Bitmap paramBitmap)
+  private static void a(String paramString, Throwable paramThrowable)
   {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
-    return localByteArrayOutputStream.toByteArray();
+    if (QLog.isColorLevel())
+    {
+      if (paramThrowable != null) {
+        QLog.d("AudioDataCache", 2, "[@] " + paramString, paramThrowable);
+      }
+    }
+    else {
+      return;
+    }
+    QLog.d("AudioDataCache", 2, "[@] " + paramString);
   }
   
-  protected void onPreExecute()
+  /* Error */
+  public String a()
   {
-    super.onPreExecute();
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: new 17	java/lang/StringBuilder
+    //   5: dup
+    //   6: invokespecial 18	java/lang/StringBuilder:<init>	()V
+    //   9: ldc 83
+    //   11: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: aload_0
+    //   15: getfield 85	bbev:b	Ljava/lang/String;
+    //   18: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   24: aconst_null
+    //   25: invokestatic 87	bbev:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   28: new 17	java/lang/StringBuilder
+    //   31: dup
+    //   32: invokespecial 18	java/lang/StringBuilder:<init>	()V
+    //   35: aload_0
+    //   36: getfield 15	bbev:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   39: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: aload_0
+    //   43: getfield 85	bbev:b	Ljava/lang/String;
+    //   46: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   52: astore_1
+    //   53: aload_0
+    //   54: getfield 89	bbev:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
+    //   57: astore_2
+    //   58: aload_2
+    //   59: ifnull +10 -> 69
+    //   62: aload_0
+    //   63: getfield 89	bbev:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
+    //   66: invokevirtual 94	java/io/FileOutputStream:close	()V
+    //   69: aload_0
+    //   70: monitorexit
+    //   71: aload_1
+    //   72: areturn
+    //   73: astore_1
+    //   74: aload_0
+    //   75: monitorexit
+    //   76: aload_1
+    //   77: athrow
+    //   78: astore_2
+    //   79: goto -10 -> 69
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	82	0	this	bbev
+    //   52	20	1	str	String
+    //   73	4	1	localObject	Object
+    //   57	2	2	localFileOutputStream	FileOutputStream
+    //   78	1	2	localIOException	IOException
+    // Exception table:
+    //   from	to	target	type
+    //   2	58	73	finally
+    //   62	69	73	finally
+    //   62	69	78	java/io/IOException
+  }
+  
+  public void a()
+  {
+    File localFile;
+    try
+    {
+      a("initCache: oldpath=" + this.b + " mOutStream=" + this.jdField_a_of_type_JavaIoFileOutputStream, null);
+      this.b = bdfc.a();
+      String str = this.jdField_a_of_type_JavaLangString + this.b;
+      localFile = new File(str);
+      if (localFile.exists()) {
+        throw new RuntimeException("AudioDataCache: file exists| " + str);
+      }
+    }
+    finally {}
+    try
+    {
+      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
+      a("initCache: newPath=" + this.b, null);
+      return;
+    }
+    catch (FileNotFoundException localFileNotFoundException)
+    {
+      for (;;)
+      {
+        this.jdField_a_of_type_JavaIoFileOutputStream = null;
+      }
+    }
+  }
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    try
+    {
+      FileOutputStream localFileOutputStream = this.jdField_a_of_type_JavaIoFileOutputStream;
+      bool1 = bool2;
+      if (localFileOutputStream != null) {}
+      try
+      {
+        this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
+        bool1 = true;
+      }
+      catch (IOException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramArrayOfByte.printStackTrace();
+          a("writeData: exp=", paramArrayOfByte);
+          bool1 = bool2;
+        }
+      }
+      return bool1;
+    }
+    finally {}
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString + this.b;
   }
 }
 

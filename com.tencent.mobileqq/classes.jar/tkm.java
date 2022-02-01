@@ -1,230 +1,177 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.text.TextUtils;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.NativeAd.view.NativeAdDownloadView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
 
-class tkm
+public class tkm
 {
-  private char jdField_a_of_type_Char = '\000';
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private final tko jdField_a_of_type_Tko;
-  private char[] jdField_a_of_type_ArrayOfChar;
-  private final tkk[] jdField_a_of_type_ArrayOfTkk;
-  private char jdField_b_of_type_Char = '\000';
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private float e;
-  private float f;
-  private float g;
-  private float h;
-  
-  tkm(tkk[] paramArrayOftkk, tko paramtko)
+  public static void a(Context paramContext, tse paramtse, tla paramtla, TextView paramTextView, NativeAdDownloadView paramNativeAdDownloadView)
   {
-    this.jdField_a_of_type_ArrayOfTkk = paramArrayOftkk;
-    this.jdField_a_of_type_Tko = paramtko;
-  }
-  
-  private void a(int paramInt, boolean paramBoolean)
-  {
-    String str2 = null;
-    this.jdField_a_of_type_ArrayOfChar = null;
-    char c2 = this.jdField_b_of_type_Char;
-    char c1 = c2;
-    if (paramBoolean)
-    {
-      c1 = c2;
-      if (c2 == 0) {
-        c1 = '0';
-      }
+    int n = Color.parseColor("#40A0FF");
+    if (!TextUtils.isEmpty(paramtla.jdField_a_of_type_JavaLangString)) {
+      n = nzv.a(paramtla.jdField_a_of_type_JavaLangString, "#FFFFFF");
     }
-    int i = 0;
-    Object localObject;
-    while (i < this.jdField_a_of_type_ArrayOfTkk.length)
+    for (;;)
     {
-      localObject = this.jdField_a_of_type_ArrayOfTkk[i].a(this.jdField_a_of_type_Char, c1, this.jdField_a_of_type_Tko.a());
-      if (localObject != null)
-      {
-        this.jdField_a_of_type_ArrayOfChar = this.jdField_a_of_type_ArrayOfTkk[i].a();
-        this.jdField_a_of_type_Int = ((tkl)localObject).jdField_a_of_type_Int;
-        this.jdField_b_of_type_Int = ((tkl)localObject).jdField_b_of_type_Int;
-        str2 = this.jdField_a_of_type_ArrayOfTkk[i].a();
+      int i2 = (int)paramtla.g;
+      float f2 = paramtla.jdField_a_of_type_Int;
+      int i = 0;
+      int j = 0;
+      float f1 = f2;
+      if (f2 < 10.0F) {
+        f1 = 10.0F;
       }
-      i += 1;
-    }
-    if ((this.jdField_a_of_type_ArrayOfChar != null) && (paramInt > 1) && (!TextUtils.isEmpty(str2)))
-    {
-      i = Math.min(paramInt - 1, 5);
-      String str1 = new String(this.jdField_a_of_type_ArrayOfChar);
-      if (this.jdField_a_of_type_Tko.a() == 1)
+      if (f1 > 16.0F) {}
+      for (float f4 = 16.0F;; f4 = f1)
       {
-        paramInt = 0;
+        Object localObject = paramtla.b;
+        f2 = paramtla.jdField_c_of_type_Float;
+        String str = paramtla.jdField_c_of_type_JavaLangString;
+        float f3 = paramtla.d;
+        GradientDrawable localGradientDrawable = new GradientDrawable();
+        if (!TextUtils.isEmpty(str)) {
+          localGradientDrawable.setColor(nzv.a(str, "#40A0FF"));
+        }
+        f1 = f2;
+        if (f2 > 0.0F)
+        {
+          f1 = f2;
+          if (f2 > 2.0F) {
+            f1 = 2.0F;
+          }
+          localGradientDrawable.setStroke(agej.a(f1, paramContext.getResources()), nzv.a((String)localObject, "#40A0FF"));
+        }
+        if (f3 < 0.0F) {
+          f2 = 0.0F;
+        }
         for (;;)
         {
-          localObject = str1;
-          if (paramInt >= i) {
-            break;
+          localGradientDrawable.setCornerRadius(agej.a(f2, paramContext.getResources()));
+          oxr.a(paramTextView, localGradientDrawable);
+          f3 = paramtla.e;
+          float f5 = paramtla.f;
+          label228:
+          label238:
+          int k;
+          int m;
+          if (f3 < 0.0F)
+          {
+            f2 = 0.0F;
+            if (f5 >= 0.0F) {
+              break label562;
+            }
+            f3 = 0.0F;
+            if (f2 > 0.0F)
+            {
+              j = agej.a(f2, paramContext.getResources());
+              i = j;
+            }
+            if (f3 <= 0.0F) {
+              break label655;
+            }
+            k = agej.a(f3, paramContext.getResources());
+            m = k;
           }
-          str1 = str1 + str2;
-          this.jdField_a_of_type_Int += str2.length();
-          paramInt += 1;
-        }
-      }
-      localObject = str1;
-      if (this.jdField_a_of_type_Tko.a() == 2)
-      {
-        paramInt = 0;
-        for (;;)
-        {
-          localObject = str1;
-          if (paramInt >= i) {
-            break;
+          for (;;)
+          {
+            f2 = paramtla.i;
+            if (f2 == 3.0F)
+            {
+              localObject = (FrameLayout.LayoutParams)paramTextView.getLayoutParams();
+              ((FrameLayout.LayoutParams)localObject).gravity = 21;
+              paramTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+              localObject = (FrameLayout.LayoutParams)paramNativeAdDownloadView.getLayoutParams();
+              ((FrameLayout.LayoutParams)localObject).gravity = 21;
+              paramNativeAdDownloadView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+              label342:
+              f2 = paramtla.k;
+              f3 = paramtla.l;
+              if ((f2 <= 0.0F) || (f3 <= 0.0F)) {
+                break label640;
+              }
+              paramNativeAdDownloadView = (FrameLayout.LayoutParams)paramTextView.getLayoutParams();
+              paramNativeAdDownloadView.height = agej.a(f3, paramContext.getResources());
+              paramNativeAdDownloadView.width = agej.a(f2, paramContext.getResources());
+              paramTextView.setLayoutParams(paramNativeAdDownloadView);
+              paramTextView.setGravity(17);
+              j = 0;
+              i = 0;
+              k = 0;
+              m = 0;
+            }
+            for (;;)
+            {
+              f2 = paramtla.j;
+              if (f2 > 0.0F)
+              {
+                if (f1 <= 2.0F) {
+                  break label637;
+                }
+                f1 = 2.0F;
+              }
+              label562:
+              label637:
+              for (;;)
+              {
+                paramNativeAdDownloadView = paramtse.getComLayoutParams();
+                paramtla = paramNativeAdDownloadView;
+                if (paramNativeAdDownloadView == null) {
+                  paramtla = new Layout.Params();
+                }
+                paramtla.mLayoutWidth = agej.a(f1 * 2.0F + f2, paramContext.getResources());
+                paramtse.setComLayoutParams(paramtla);
+                paramTextView.setCompoundDrawablePadding(i2);
+                paramTextView.setTextColor(n);
+                paramTextView.setTextSize(f4);
+                paramTextView.setPadding(j, k, i, m);
+                return;
+                if (f3 <= 20.0F) {
+                  break label664;
+                }
+                f2 = 20.0F;
+                break;
+                f2 = f3;
+                if (f3 <= 12.0F) {
+                  break label228;
+                }
+                f2 = 12.0F;
+                break label228;
+                f3 = f5;
+                if (f5 <= 12.0F) {
+                  break label238;
+                }
+                f3 = 12.0F;
+                break label238;
+                if (f2 != 1.0F) {
+                  break label342;
+                }
+                localObject = (FrameLayout.LayoutParams)paramTextView.getLayoutParams();
+                ((FrameLayout.LayoutParams)localObject).gravity = 19;
+                paramTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+                localObject = (FrameLayout.LayoutParams)paramNativeAdDownloadView.getLayoutParams();
+                ((FrameLayout.LayoutParams)localObject).gravity = 19;
+                paramNativeAdDownloadView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+                break label342;
+              }
+              label640:
+              int i1 = j;
+              j = i;
+              i = i1;
+            }
+            label655:
+            m = 0;
+            k = 0;
           }
-          str1 = str1 + str2;
-          this.jdField_b_of_type_Int += str2.length();
-          paramInt += 1;
+          label664:
+          f2 = f3;
         }
       }
-      this.jdField_a_of_type_ArrayOfChar = ((String)localObject).toCharArray();
     }
-    if (this.jdField_a_of_type_ArrayOfChar == null)
-    {
-      if (this.jdField_a_of_type_Char == this.jdField_b_of_type_Char)
-      {
-        this.jdField_a_of_type_ArrayOfChar = new char[] { this.jdField_a_of_type_Char };
-        this.jdField_b_of_type_Int = 0;
-        this.jdField_a_of_type_Int = 0;
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ArrayOfChar = new char[] { this.jdField_a_of_type_Char, this.jdField_b_of_type_Char };
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 1;
-  }
-  
-  private boolean a(Canvas paramCanvas, Paint paramPaint, char[] paramArrayOfChar, int paramInt, float paramFloat)
-  {
-    if ((paramInt >= 0) && (paramInt < paramArrayOfChar.length))
-    {
-      paramCanvas.drawText(paramArrayOfChar, paramInt, 1, 0.0F, paramFloat, paramPaint);
-      return true;
-    }
-    return false;
-  }
-  
-  private void b()
-  {
-    float f1 = this.jdField_a_of_type_Tko.a(this.jdField_b_of_type_Char);
-    if ((this.jdField_d_of_type_Float == this.e) && (this.e != f1))
-    {
-      this.e = f1;
-      this.jdField_d_of_type_Float = f1;
-      this.f = f1;
-    }
-  }
-  
-  char a()
-  {
-    return this.jdField_a_of_type_Char;
-  }
-  
-  float a()
-  {
-    b();
-    return this.jdField_d_of_type_Float;
-  }
-  
-  void a()
-  {
-    b();
-    this.f = this.jdField_d_of_type_Float;
-  }
-  
-  void a(float paramFloat, boolean paramBoolean)
-  {
-    if (paramFloat == 1.0F)
-    {
-      this.jdField_a_of_type_Char = this.jdField_b_of_type_Char;
-      this.g = 0.0F;
-      this.h = 0.0F;
-    }
-    float f1 = this.jdField_a_of_type_Tko.a();
-    float f2 = Math.abs(this.jdField_b_of_type_Int - this.jdField_a_of_type_Int) * f1 * paramFloat / f1;
-    float f3 = (int)f2;
-    float f4 = this.h;
-    this.jdField_a_of_type_Float = ((f2 - f3) * f1 * this.jdField_d_of_type_Int + f4 * (1.0F - paramFloat));
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_c_of_type_Int = ((int)f2 * this.jdField_d_of_type_Int + i);
-    this.jdField_b_of_type_Float = f1;
-    if (paramBoolean)
-    {
-      this.jdField_d_of_type_Float = Math.max(this.e, this.jdField_c_of_type_Float);
-      if (paramFloat > 0.999F)
-      {
-        this.jdField_d_of_type_Float = this.e;
-        if (this.jdField_b_of_type_Char == 0) {
-          this.jdField_c_of_type_Int = 0;
-        }
-      }
-      return;
-    }
-    this.jdField_d_of_type_Float = (this.jdField_c_of_type_Float + (this.e - this.jdField_c_of_type_Float) * paramFloat);
-  }
-  
-  void a(int paramInt, char paramChar, boolean paramBoolean)
-  {
-    int i = 1;
-    this.jdField_b_of_type_Char = paramChar;
-    this.jdField_c_of_type_Float = this.jdField_d_of_type_Float;
-    this.e = this.jdField_a_of_type_Tko.a(paramChar);
-    this.f = Math.max(this.jdField_c_of_type_Float, this.e);
-    a(paramInt, paramBoolean);
-    if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Int)
-    {
-      paramInt = 1;
-      if (paramInt == 0) {
-        break label93;
-      }
-    }
-    label93:
-    for (paramInt = i;; paramInt = -1)
-    {
-      this.jdField_d_of_type_Int = paramInt;
-      this.h = this.g;
-      this.g = 0.0F;
-      return;
-      paramInt = 0;
-      break;
-    }
-  }
-  
-  void a(Canvas paramCanvas, Paint paramPaint)
-  {
-    if (a(paramCanvas, paramPaint, this.jdField_a_of_type_ArrayOfChar, this.jdField_c_of_type_Int, this.jdField_a_of_type_Float))
-    {
-      if (this.jdField_c_of_type_Int >= 0) {
-        this.jdField_a_of_type_Char = this.jdField_a_of_type_ArrayOfChar[this.jdField_c_of_type_Int];
-      }
-      this.g = this.jdField_a_of_type_Float;
-    }
-    a(paramCanvas, paramPaint, this.jdField_a_of_type_ArrayOfChar, this.jdField_c_of_type_Int + 1, this.jdField_a_of_type_Float - this.jdField_b_of_type_Float);
-    a(paramCanvas, paramPaint, this.jdField_a_of_type_ArrayOfChar, this.jdField_c_of_type_Int - 1, this.jdField_a_of_type_Float + this.jdField_b_of_type_Float);
-  }
-  
-  char b()
-  {
-    return this.jdField_b_of_type_Char;
-  }
-  
-  float b()
-  {
-    b();
-    return this.f;
   }
 }
 

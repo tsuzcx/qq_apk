@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vas.watchword;
 import QC.GetWatchWordShareRsp;
 import android.content.Context;
 import android.os.Bundle;
-import bhek;
+import biev;
 import com.tencent.mobileqq.app.BaseActivity;
 import eipc.EIPCResult;
 import kotlin.Metadata;
@@ -31,34 +31,34 @@ public final class VasWatchWord$addObserver$1$checkWatchWord$1$1
     default: 
       return;
     case -2600001: 
-      localbhek = bhek.a;
+      localbiev = biev.a;
       localObject2 = BaseActivity.sTopActivity;
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseActivity.sTopActivity");
       localObject2 = (Context)localObject2;
       localObject1 = ((GetWatchWordShareRsp)localObject1).errmsg;
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "rsp.errmsg");
-      localbhek.c((Context)localObject2, (String)localObject1);
+      localbiev.c((Context)localObject2, (String)localObject1);
       return;
     case 0: 
-      bhek.a.a((GetWatchWordShareRsp)localObject1);
+      biev.a.a((GetWatchWordShareRsp)localObject1);
       return;
     case 2600003: 
-      localbhek = bhek.a;
+      localbiev = biev.a;
       localObject2 = BaseActivity.sTopActivity;
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseActivity.sTopActivity");
       localObject2 = (Context)localObject2;
       localObject1 = ((GetWatchWordShareRsp)localObject1).errmsg;
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "rsp.errmsg");
-      localbhek.c((Context)localObject2, (String)localObject1);
+      localbiev.c((Context)localObject2, (String)localObject1);
       return;
     }
-    bhek localbhek = bhek.a;
+    biev localbiev = biev.a;
     Object localObject2 = BaseActivity.sTopActivity;
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseActivity.sTopActivity");
     localObject2 = (Context)localObject2;
     localObject1 = ((GetWatchWordShareRsp)localObject1).errmsg;
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "rsp.errmsg");
-    localbhek.c((Context)localObject2, (String)localObject1);
+    localbiev.c((Context)localObject2, (String)localObject1);
   }
 }
 

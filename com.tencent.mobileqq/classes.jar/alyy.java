@@ -1,26 +1,9 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler.1;
-
-public class alyy
-  extends Handler
+class alyy
 {
-  public alyy(VipSpecialCareHandler.1 param1, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    alyx.a(this.a.this$0, "-->request timeout");
-    alyx.a(this.a.this$0, -2);
-  }
+  long jdField_a_of_type_Long;
+  alza jdField_a_of_type_Alza;
+  long jdField_b_of_type_Long;
+  alza jdField_b_of_type_Alza;
 }
 
 

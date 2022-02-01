@@ -1,46 +1,46 @@
 package com.tencent.mobileqq.gallery.picocr;
 
 import android.text.TextUtils;
-import auqk;
-import auqn;
-import auqo;
-import auqr;
-import auqs;
+import avik;
+import avin;
+import avio;
+import avir;
+import avis;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class PicOcrManager$3
   implements Runnable
 {
-  public PicOcrManager$3(auqk paramauqk, auqn paramauqn, auqo paramauqo) {}
+  public PicOcrManager$3(avik paramavik, avin paramavin, avio paramavio) {}
   
   public void run()
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_Auqn.d)) || (this.jdField_a_of_type_Auqn.a))
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_Avin.d)) || (this.jdField_a_of_type_Avin.a))
     {
-      this.jdField_a_of_type_Auqn.d = auqs.a(this.jdField_a_of_type_Auqn.b);
-      this.jdField_a_of_type_Auqn.a = false;
+      this.jdField_a_of_type_Avin.d = avis.a(this.jdField_a_of_type_Avin.b);
+      this.jdField_a_of_type_Avin.a = false;
     }
-    if (!auqk.a(this.this$0).isEmpty())
+    if (!avik.a(this.this$0).isEmpty())
     {
-      auqr localauqr = this.this$0.a(this.jdField_a_of_type_Auqn.d);
-      if (localauqr != null)
+      avir localavir = this.this$0.a(this.jdField_a_of_type_Avin.d);
+      if (localavir != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("PicOcrManager", 2, "requestOcr cacheRsp:" + localauqr.toString());
+          QLog.e("PicOcrManager", 2, "requestOcr cacheRsp:" + localavir.toString());
         }
-        this.jdField_a_of_type_Auqo.a(localauqr);
+        this.jdField_a_of_type_Avio.a(localavir);
         return;
       }
     }
-    auqk.a(this.this$0, this.jdField_a_of_type_Auqo, this.jdField_a_of_type_Auqn);
-    if (this.jdField_a_of_type_Auqn.a())
+    avik.a(this.this$0, this.jdField_a_of_type_Avio, this.jdField_a_of_type_Avin);
+    if (this.jdField_a_of_type_Avin.a())
     {
-      this.this$0.a(this.jdField_a_of_type_Auqo, this.jdField_a_of_type_Auqn);
-      this.jdField_a_of_type_Auqo.a();
+      this.this$0.a(this.jdField_a_of_type_Avio, this.jdField_a_of_type_Avin);
+      this.jdField_a_of_type_Avio.a();
       return;
     }
-    this.jdField_a_of_type_Auqo.onUpdate(100, false, new auqr());
+    this.jdField_a_of_type_Avio.onUpdate(100, false, new avir());
   }
 }
 

@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aumx
-  implements bkhy
+final class aumx
+  implements DialogInterface.OnClickListener
 {
-  public aumx(NearbyHybridFragment paramNearbyHybridFragment) {}
+  aumx(aumz paramaumz) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = null;
-    this.a.o();
+    this.a.a();
   }
 }
 

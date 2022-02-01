@@ -1,57 +1,78 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bcez
-  implements bcfe
+public class bcez
+  extends bcgz
 {
-  bcew jdField_a_of_type_Bcew;
-  private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = true;
-  boolean b = true;
-  boolean c = true;
-  boolean d = true;
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c = "xiaoweiba";
   
-  public bcez(String paramString, bcew parambcew)
+  public bcez(String paramString1, String paramString2, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bcew = parambcew;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void B_()
+  public void a(boolean paramBoolean)
   {
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onNetWorkNone...", null);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a()
+  public void b(View paramView)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.b) && (this.d)) {
-      bcew.a(this.jdField_a_of_type_Bcew);
-    }
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onDownloadFinish| name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-    if (paramString1.startsWith("new_qq_android_native_short_video_")) {
-      this.jdField_a_of_type_Boolean = true;
+    QQAppInterface localQQAppInterface;
+    Object localObject;
+    if (!TextUtils.isEmpty(this.b))
+    {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      localObject = bhni.a(localQQAppInterface, paramView.getContext(), this.b);
+      if (localObject == null) {
+        break label173;
+      }
+      ((bhmr)localObject).a();
     }
     for (;;)
     {
-      a();
-      return;
-      if (paramString1.startsWith("new_qq_android_native_art_filter_")) {
-        this.b = true;
-      } else if (paramString1.startsWith("new_qq_android_native_portrait_filter_")) {
-        this.c = true;
-      } else if (paramString1.startsWith("new_qq_android_native_object_tracking_")) {
-        this.d = true;
+      paramView = new JSONObject();
+      try
+      {
+        paramView.put("project", bcjy.a());
+        paramView.put("event_src", "client");
+        paramView.put("get_src", "web");
+        bcjy.a(null, new ReportModelDC02528().module("all_result").action("clk_tail").obj1(this.jdField_a_of_type_Long + "").ver1(UniteSearchActivity.b).ver2(bcjy.a(UniteSearchActivity.d)).ver7(paramView.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + bbzx.jdField_a_of_type_Long));
+        return;
+        label173:
+        if ((!this.b.startsWith("http://")) && (!this.b.startsWith("https://"))) {
+          continue;
+        }
+        paramView = paramView.getContext();
+        localObject = new Intent(paramView, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", this.b);
+        paramView.startActivity((Intent)localObject);
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          QLog.e("Q.uniteSearch.SearchResultGroupModelImpl", 2, "e = " + localJSONException);
+        }
       }
     }
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "name=" + paramString + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i, null);
   }
 }
 

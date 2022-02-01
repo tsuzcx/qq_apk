@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio;
 
-import bgmg;
+import bhmi;
 
 public final class PlusPanelUtils$5
   implements Runnable
 {
   public void run()
   {
-    bgmg.c(this.a + ".nomedia");
+    bhmi.c(this.a + ".nomedia");
   }
 }
 

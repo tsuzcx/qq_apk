@@ -1,27 +1,27 @@
-import com.tencent.biz.qqcircle.widgets.feed.QCircleInsFeedItemView;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqcircle.widgets.QCircleGuideBubbleView;
 
 public class waq
-  extends aniz
+  extends Handler
 {
-  public waq(QCircleInsFeedItemView paramQCircleInsFeedItemView) {}
-  
-  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
+  private waq(QCircleGuideBubbleView paramQCircleGuideBubbleView)
   {
-    if (paramBoolean)
+    super(Looper.getMainLooper());
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      String str = paramCard.strNick;
-      if (QCircleInsFeedItemView.a(this.a) != null) {
-        QCircleInsFeedItemView.a(this.a).a(paramCard.strNick, paramCard.uin);
-      }
-      if (uxx.a(paramCard.uin))
-      {
-        uxc.a().nick.set(str);
-        uxc.a(str);
-      }
+    default: 
+      return;
+    case 1: 
+      this.a.a();
+      return;
     }
+    this.a.c();
   }
 }
 

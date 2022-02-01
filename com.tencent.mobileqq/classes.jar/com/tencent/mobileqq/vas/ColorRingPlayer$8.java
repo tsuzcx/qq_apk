@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.vas;
 
 import android.os.Bundle;
-import arpd;
-import arph;
-import bgxg;
+import aser;
+import asev;
+import bhxk;
 
 public class ColorRingPlayer$8
   implements Runnable
 {
-  public ColorRingPlayer$8(bgxg parambgxg, String paramString1, String paramString2, long paramLong, int paramInt) {}
+  public ColorRingPlayer$8(bhxk parambhxk, String paramString1, String paramString2, long paramLong, int paramInt) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ColorRingPlayer$8
     localBundle.putString("actionName", this.b);
     localBundle.putLong("id", this.jdField_a_of_type_Long);
     localBundle.putInt("result", this.jdField_a_of_type_Int);
-    localBundle = arph.a("reportColorRing", "", this.this$0.a.key, localBundle);
+    localBundle = asev.a("reportColorRing", "", this.this$0.a.key, localBundle);
     this.this$0.a(localBundle);
   }
 }

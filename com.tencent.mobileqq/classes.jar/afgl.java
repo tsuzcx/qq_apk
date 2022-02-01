@@ -1,28 +1,62 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class afgl
-  implements TextWatcher
+  extends BroadcastReceiver
 {
-  public afgl(SubLoginActivity paramSubLoginActivity) {}
+  private String jdField_a_of_type_JavaLangString;
   
-  public void afterTextChanged(Editable paramEditable) {}
+  private afgl(QQLSActivity paramQQLSActivity) {}
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramCharSequence.length() > 0) {
-      if (SubLoginActivity.a(this.a) != null) {
-        SubLoginActivity.a(this.a).setVisibility(0);
-      }
-    }
-    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
+    if (QQLSActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity)) {}
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          return;
+          if (paramIntent != null) {}
+          try
+          {
+            this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
+            if ("android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString))
+            {
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON");
+            }
+          }
+          catch (Exception paramContext)
+          {
+            QLog.e("QQLSActivity", 1, paramContext, new Object[0]);
+            return;
+          }
+        }
+        if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF");
       return;
+    } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder().append("ScreenBroadcastReceiver ACTION_USER_PRESENTmanager.isEnterAio");
+      paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
+      QLog.d("QQLSActivity", 2, axac.f);
     }
-    SubLoginActivity.a(this.a).setVisibility(8);
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
+    if (!axac.f) {
+      QQLSActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.finish();
   }
 }
 

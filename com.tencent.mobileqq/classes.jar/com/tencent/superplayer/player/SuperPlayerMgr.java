@@ -14,12 +14,12 @@ import com.tencent.superplayer.api.ISuperPlayer.OnDefinitionInfoListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnErrorListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnInfoListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnSubtitleDataListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnTVideoNetInfoListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnVideoFrameOutputListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnVideoPreparedListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnVideoSizeChangedListener;
 import com.tencent.superplayer.api.ISuperPlayerPool;
-import com.tencent.superplayer.api.SuperPlayerAudioInfo;
 import com.tencent.superplayer.api.SuperPlayerOption;
 import com.tencent.superplayer.api.SuperPlayerSDKMgr;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
@@ -27,13 +27,20 @@ import com.tencent.superplayer.framecheck.EmptyVideoFrameCheckHelper;
 import com.tencent.superplayer.framecheck.FrameComparePipeLine.OnVideoFrameCheckListener;
 import com.tencent.superplayer.framecheck.IVideoFrameCheckHelper;
 import com.tencent.superplayer.framecheck.VideoFrameCheckHelper;
+import com.tencent.superplayer.preload.PreloadPlayerInfo;
+import com.tencent.superplayer.preload.PreloadPlayerMgr;
 import com.tencent.superplayer.report.ISPReporter;
 import com.tencent.superplayer.report.SPReportHelper;
 import com.tencent.superplayer.utils.LogUtil;
+import com.tencent.superplayer.utils.ThreadUtil;
+import com.tencent.superplayer.utils.Utils;
 import com.tencent.superplayer.view.ISPlayerVideoView;
 import com.tencent.superplayer.view.ISPlayerVideoView.IVideoViewCallBack;
+import com.tencent.superplayer.view.SPlayerVideoView;
+import com.tencent.superplayer.view.SPlayerVideoView.SurfaceObject;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPDownLoadProgressInfo;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPMediaCodecInfo;
+import com.tencent.thumbplayer.api.TPTrackInfo;
 
 public class SuperPlayerMgr
   implements ISuperPlayer, FrameComparePipeLine.OnVideoFrameCheckListener, SuperPlayerMgrInternal.SPlayerManagerInternalListener, ISPlayerVideoView.IVideoViewCallBack
@@ -41,52 +48,46 @@ public class SuperPlayerMgr
   private static final String API_CALL_LOG_PREFIX = "api call : ";
   private static final String API_HANDLE_LOG_PREFIX = "api handle : ";
   private static final String FILENAME = "SuperPlayerMgr.java";
-  private static volatile int MGR_ID_BASE = 1000;
-  private String TAG;
   private Context mContext;
+  private int mEmergencyTime = 0;
+  private int mEmergencyTimeForPrePlay = 0;
   private IVideoFrameCheckHelper mFrameCheckHelper = EmptyVideoFrameCheckHelper.getInstance();
   private HandlerThread mHandlerThread;
+  private boolean mIsLoopback = false;
+  private boolean mIsOutputMute = false;
   private boolean mIsSeeking = false;
   private SuperPlayerListenerMgr mListenerMgr;
   private Looper mLooper;
-  private int mMgrId;
-  private SuperPlayerMgr.MgrListenerAdapter mMgrListenerAdpater;
-  private SuperPlayerMgrCallBack mPlayerMgrCallBack;
+  private SuperPlayerState mPlayState;
   private SuperPlayerMgrInternal mPlayerMgrInternal;
+  private String mPlayerTag;
   private SuperPlayerWrapper mPlayerWrapper;
   private ISPReporter mReporter = new SPReportHelper();
-  private String mTagPrefix;
+  private int mSafePlayTime = 0;
+  private int mSafePlayTimeForPrePlay = 0;
+  private int mSceneId;
+  private SPlayerVideoView.SurfaceObject mSurfaceObjectForChange;
+  private String mTAG;
   private String mToken;
   private ISPlayerVideoView mVideoView;
+  private int mXYaxis = 0;
   
   public SuperPlayerMgr(Context paramContext, int paramInt, ISPlayerVideoView paramISPlayerVideoView)
   {
-    int i = MGR_ID_BASE + 1;
-    MGR_ID_BASE = i;
-    this.mMgrId = i;
-    this.mTagPrefix = ("MediaPlayerMgr-" + this.mMgrId);
-    this.TAG = (this.mTagPrefix + "_" + "SuperPlayerMgr.java");
-    initLooper();
+    this.mSceneId = paramInt;
     this.mContext = paramContext.getApplicationContext();
     this.mVideoView = paramISPlayerVideoView;
-    this.mListenerMgr = new SuperPlayerListenerMgr(this.mTagPrefix);
-    this.mPlayerMgrInternal = new SuperPlayerMgrInternal(this.TAG, this.mLooper, this);
-    this.mPlayerMgrCallBack = new SuperPlayerMgrCallBack(this, this.mListenerMgr, this.mLooper);
-    this.mMgrListenerAdpater = new SuperPlayerMgr.MgrListenerAdapter(this.mPlayerMgrCallBack);
-    this.mPlayerWrapper = new SuperPlayerWrapper(this.mContext, paramInt, this.mTagPrefix, this.mLooper);
-    if ((paramISPlayerVideoView != null) && (paramISPlayerVideoView.isSurfaceReady()))
-    {
-      this.mPlayerWrapper.updatePlayerVideoView(paramISPlayerVideoView);
-      this.mFrameCheckHelper.updatePlayerVideoView(paramISPlayerVideoView);
-    }
-    initListener();
-    initToken();
-    SuperPlayerSDKMgr.getPlayerPool().put(this);
-    this.mReporter.init(this, paramInt);
+    init();
+  }
+  
+  private void handleOnCompletion()
+  {
+    this.mPlayState.changeStateAndNotify(7);
   }
   
   private void handleOnError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
+    this.mPlayState.changeStateAndNotify(9);
     this.mReporter.onError(paramInt1 + ":" + paramInt3, paramInt1 + ":" + paramInt3 + ":" + paramInt2 + ":" + paramString);
   }
   
@@ -140,45 +141,60 @@ public class SuperPlayerMgr
   
   private void handleOnVideoPrepared()
   {
-    LogUtil.i(this.TAG, "handleOnVideoPrepared():");
-    if ((this.mVideoView != null) && (this.mPlayerWrapper != null)) {
-      this.mVideoView.setFixedSize(this.mPlayerWrapper.getVideoWidth(), this.mPlayerWrapper.getVideoHeight());
+    LogUtil.i(this.mTAG, "handleOnVideoPrepared():");
+    this.mPlayState.changeStateAndNotify(4);
+    if (this.mVideoView != null) {
+      this.mVideoView.setFixedSize(getVideoWidth(), getVideoHeight());
     }
     this.mReporter.onPrepared();
   }
   
-  private void initListener()
+  private void init()
   {
-    this.mPlayerWrapper.setOnVideoPreparedListener(this.mMgrListenerAdpater);
-    this.mPlayerWrapper.setOnCompletionListener(this.mMgrListenerAdpater);
-    this.mPlayerWrapper.setOnInfoListener(this.mMgrListenerAdpater);
-    this.mPlayerWrapper.setOnErrorListener(this.mMgrListenerAdpater);
-    this.mPlayerWrapper.setOnSeekCompleteListener(this.mMgrListenerAdpater);
-    this.mPlayerWrapper.setOnVideoSizeChangedListener(this.mMgrListenerAdpater);
-    this.mPlayerWrapper.setOnCaptureImageListener(this.mMgrListenerAdpater);
-    this.mPlayerWrapper.setOnDefinitionInfoListener(this.mMgrListenerAdpater);
-    this.mPlayerWrapper.setOnTVideoNetInfoUpdateListener(this.mMgrListenerAdpater);
-    this.mPlayerWrapper.setOnAudioFrameOutputListener(this.mMgrListenerAdpater);
-    this.mPlayerWrapper.setOnVideoFrameOutputListener(this.mMgrListenerAdpater);
-    if (this.mVideoView != null) {
-      this.mVideoView.addViewCallBack(this);
-    }
-  }
-  
-  private void initLooper()
-  {
-    this.mHandlerThread = new HandlerThread("SuperPlayerMgr-" + this.mMgrId);
+    initTagAndToken();
+    this.mPlayState = new SuperPlayerState(this.mPlayerTag);
+    this.mHandlerThread = new HandlerThread("SuperPlayer-" + this.mPlayerTag);
     this.mHandlerThread.start();
     this.mLooper = this.mHandlerThread.getLooper();
+    this.mPlayerMgrInternal = new SuperPlayerMgrInternal(this.mTAG, this.mLooper, this);
+    this.mPlayerMgrInternal.setIsNeedBlockMessage(true);
+    this.mListenerMgr = new SuperPlayerListenerMgr(this.mPlayerTag);
+    if (this.mVideoView != null)
+    {
+      LogUtil.i(this.mTAG, "updatePlayerVideoView when init, mVideoView = " + this.mVideoView);
+      LogUtil.d(this.mTAG, "日志过滤(View): 【" + this.mVideoView.getLogTag() + "】, updatePlayerVideoView when init");
+      this.mVideoView.addViewCallBack(this);
+    }
+    this.mReporter.init(this, this.mSceneId);
+    SuperPlayerSDKMgr.getPlayerPool().put(this);
   }
   
-  private void initToken()
+  private void initListenerForWrapper()
   {
+    SuperPlayerMgr.WrapperListenerAdapter localWrapperListenerAdapter = new SuperPlayerMgr.WrapperListenerAdapter(new SuperPlayerListenerCallBack(this, this.mListenerMgr, this.mLooper));
+    this.mPlayerWrapper.setOnVideoPreparedListener(localWrapperListenerAdapter);
+    this.mPlayerWrapper.setOnCompletionListener(localWrapperListenerAdapter);
+    this.mPlayerWrapper.setOnInfoListener(localWrapperListenerAdapter);
+    this.mPlayerWrapper.setOnErrorListener(localWrapperListenerAdapter);
+    this.mPlayerWrapper.setOnSeekCompleteListener(localWrapperListenerAdapter);
+    this.mPlayerWrapper.setOnVideoSizeChangedListener(localWrapperListenerAdapter);
+    this.mPlayerWrapper.setOnCaptureImageListener(localWrapperListenerAdapter);
+    this.mPlayerWrapper.setOnDefinitionInfoListener(localWrapperListenerAdapter);
+    this.mPlayerWrapper.setOnTVideoNetInfoUpdateListener(localWrapperListenerAdapter);
+    this.mPlayerWrapper.setOnAudioFrameOutputListener(localWrapperListenerAdapter);
+    this.mPlayerWrapper.setOnVideoFrameOutputListener(localWrapperListenerAdapter);
+    this.mPlayerWrapper.setOnSubtitleDataListener(localWrapperListenerAdapter);
+  }
+  
+  private void initTagAndToken()
+  {
+    this.mPlayerTag = Utils.createPlayerTag();
+    this.mTAG = (this.mPlayerTag + "-" + "SuperPlayerMgr.java");
     this.mToken = TVKUtils.getMd5(SystemClock.uptimeMillis() + "-" + Math.random());
     if ((this.mToken != null) && (this.mToken.length() > 24)) {
       this.mToken = this.mToken.substring(8, 24);
     }
-    LogUtil.d(this.TAG, "initToken:" + this.mToken);
+    LogUtil.d(this.mTAG, "initToken:" + this.mToken);
   }
   
   private void onPlayerOpen(SuperPlayerOption paramSuperPlayerOption)
@@ -193,7 +209,7 @@ public class SuperPlayerMgr
       this.mFrameCheckHelper.setOnVideoFrameCheckListener(this);
       if ((this.mVideoView != null) && (this.mVideoView.isSurfaceReady()))
       {
-        this.mPlayerWrapper.updatePlayerVideoView(this.mVideoView);
+        this.mPlayerWrapper.setSurface(this.mVideoView.getSurface());
         this.mFrameCheckHelper.updatePlayerVideoView(this.mVideoView);
       }
       return;
@@ -203,16 +219,26 @@ public class SuperPlayerMgr
     }
   }
   
+  public void addSubtitleSource(String paramString1, String paramString2, String paramString3)
+  {
+    this.mPlayerMgrInternal.addSubtitleSource(paramString1, paramString2, paramString3);
+  }
+  
   public int captureImageInTime(long paramLong, int paramInt1, int paramInt2)
   {
-    LogUtil.i(this.TAG, "api call : captureImageInTime, positionMs:" + paramLong + ", width:" + paramInt1 + ", height:" + paramInt2);
+    LogUtil.i(this.mTAG, "api call : captureImageInTime, positionMs:" + paramLong + ", width:" + paramInt1 + ", height:" + paramInt2);
     return this.mPlayerMgrInternal.captureImageInTime(paramLong, paramInt1, paramInt2);
   }
   
   public int captureImageInTime(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    LogUtil.i(this.TAG, "api call : captureImageInTime, positionMs:" + paramLong + ", width:" + paramInt1 + ", height:" + paramInt2 + ", requestedTimeMsToleranceBefore:" + paramInt3 + ", requestedTimeMsToleranceAfter:" + paramInt4 + ", requestedTimeLimit:" + paramInt5);
+    LogUtil.i(this.mTAG, "api call : captureImageInTime, positionMs:" + paramLong + ", width:" + paramInt1 + ", height:" + paramInt2 + ", requestedTimeMsToleranceBefore:" + paramInt3 + ", requestedTimeMsToleranceAfter:" + paramInt4 + ", requestedTimeLimit:" + paramInt5);
     return this.mPlayerMgrInternal.captureImageInTime(paramLong, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+  }
+  
+  public void deselectTrack(int paramInt, long paramLong)
+  {
+    this.mPlayerMgrInternal.deselectTrack(paramInt, paramLong);
   }
   
   public int getBufferPercent()
@@ -222,7 +248,10 @@ public class SuperPlayerMgr
   
   public int getCurrentPlayerState()
   {
-    return this.mPlayerWrapper.getCurrentPlayerState();
+    if (this.mPlayerWrapper != null) {
+      return this.mPlayerWrapper.getCurrentPlayerState();
+    }
+    return 0;
   }
   
   public long getCurrentPositionMs()
@@ -235,9 +264,17 @@ public class SuperPlayerMgr
     return this.mPlayerMgrInternal.getDurationMs();
   }
   
+  public long getFileSizeBytes()
+  {
+    return this.mPlayerMgrInternal.getFileSizeBytes();
+  }
+  
   public String getFlowId()
   {
-    return this.mPlayerWrapper.getFlowId();
+    if (this.mPlayerWrapper != null) {
+      return this.mPlayerWrapper.getFlowId();
+    }
+    return null;
   }
   
   public MediaInfo getMediaInfo()
@@ -245,20 +282,20 @@ public class SuperPlayerMgr
     return this.mPlayerMgrInternal.getMediaInfo();
   }
   
-  public long getPlayedTime()
-  {
-    return this.mPlayerMgrInternal.getPlayedTime();
-  }
-  
   public String getStreamDumpInfo()
   {
-    LogUtil.i(this.TAG, "api call : getStreamDumpInfo");
+    LogUtil.i(this.mTAG, "api call : getStreamDumpInfo");
     return this.mPlayerMgrInternal.getStreamDumpInfo();
   }
   
   public String getToken()
   {
     return this.mToken;
+  }
+  
+  public TPTrackInfo[] getTrackInfo()
+  {
+    return this.mPlayerMgrInternal.getTrackInfo();
   }
   
   public int getVideoHeight()
@@ -281,243 +318,346 @@ public class SuperPlayerMgr
     return this.mPlayerMgrInternal.getVideoWidth();
   }
   
+  public void handleAddSubtitleSource(String paramString1, String paramString2, String paramString3)
+  {
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.addSubtitleSource(paramString1, paramString2, paramString3);
+    }
+  }
+  
   public int handleCaptureImageInTime(long paramLong, int paramInt1, int paramInt2)
   {
-    LogUtil.i(this.TAG, "api handle : handleCaptureImageInTime, positionMs:" + paramLong + ", width:" + paramInt1 + ", height:" + paramInt2);
-    return this.mPlayerWrapper.captureImageInTime(paramLong, paramInt1, paramInt2);
+    LogUtil.i(this.mTAG, "api handle : handleCaptureImageInTime, positionMs:" + paramLong + ", width:" + paramInt1 + ", height:" + paramInt2);
+    if (this.mPlayerWrapper != null) {
+      return this.mPlayerWrapper.captureImageInTime(paramLong, paramInt1, paramInt2);
+    }
+    return -1;
   }
   
   public int handleCaptureImageInTime(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    LogUtil.i(this.TAG, "api handle : handleCaptureImageInTime, positionMs:" + paramLong + ", width:" + paramInt1 + ", height:" + paramInt2 + ", requestedTimeMsToleranceBefore:" + paramInt3 + ", requestedTimeMsToleranceAfter:" + paramInt4 + ", requestedTimeLimit:" + paramInt5);
-    return this.mPlayerWrapper.captureImageInTime(paramLong, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+    LogUtil.i(this.mTAG, "api handle : handleCaptureImageInTime, positionMs:" + paramLong + ", width:" + paramInt1 + ", height:" + paramInt2 + ", requestedTimeMsToleranceBefore:" + paramInt3 + ", requestedTimeMsToleranceAfter:" + paramInt4 + ", requestedTimeLimit:" + paramInt5);
+    if (this.mPlayerWrapper != null) {
+      return this.mPlayerWrapper.captureImageInTime(paramLong, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+    }
+    return -1;
+  }
+  
+  public void handleDeselectTrack(int paramInt, long paramLong)
+  {
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.deselectTrack(paramInt, paramLong);
+    }
   }
   
   public int handleGetBufferPercent()
   {
-    return this.mPlayerWrapper.getBufferPercent();
+    if (this.mPlayerWrapper != null) {
+      return this.mPlayerWrapper.getBufferPercent();
+    }
+    return 0;
   }
   
   public long handleGetCurrentPosition()
   {
-    return this.mPlayerWrapper.getCurrentPositionMs();
+    if (this.mPlayerWrapper != null) {
+      return this.mPlayerWrapper.getCurrentPositionMs();
+    }
+    return 0L;
   }
   
   public long handleGetDuration()
   {
-    return this.mPlayerWrapper.getDurationMs();
+    if (this.mPlayerWrapper != null) {
+      return this.mPlayerWrapper.getDurationMs();
+    }
+    return 0L;
+  }
+  
+  public long handleGetFileSizeBytes()
+  {
+    if (this.mPlayerWrapper != null) {
+      return this.mPlayerWrapper.getFileSizeBytes();
+    }
+    return 0L;
   }
   
   public MediaInfo handleGetMediaInfo()
   {
-    return this.mPlayerWrapper.getMediaInfo();
-  }
-  
-  public boolean handleGetOutputMute()
-  {
-    return this.mPlayerWrapper.isOutputMute();
-  }
-  
-  public long handleGetPlayedTime()
-  {
-    return 0L;
+    if (this.mPlayerWrapper != null) {
+      return this.mPlayerWrapper.getMediaInfo();
+    }
+    return null;
   }
   
   public String handleGetStreamDumpInfo()
   {
-    return this.mPlayerWrapper.getStreamDumpInfo();
+    if (this.mPlayerWrapper != null) {
+      return this.mPlayerWrapper.getStreamDumpInfo();
+    }
+    return null;
+  }
+  
+  public TPTrackInfo[] handleGetTrackInfo()
+  {
+    if (this.mPlayerWrapper != null) {
+      return this.mPlayerWrapper.getTrackInfo();
+    }
+    return null;
   }
   
   public int handleGetVideoHeight()
   {
-    return this.mPlayerWrapper.getVideoHeight();
+    if (this.mPlayerWrapper != null) {
+      return this.mPlayerWrapper.getVideoHeight();
+    }
+    return 0;
   }
   
   public int handleGetVideoRotation()
   {
-    return this.mPlayerWrapper.getVideoRotation();
+    if (this.mPlayerWrapper != null) {
+      return this.mPlayerWrapper.getVideoRotation();
+    }
+    return 0;
   }
   
   public int handleGetVideoWidth()
   {
-    return this.mPlayerWrapper.getVideoWidth();
+    if (this.mPlayerWrapper != null) {
+      return this.mPlayerWrapper.getVideoWidth();
+    }
+    return 0;
   }
   
   public boolean handleIsBuffering()
   {
-    return this.mPlayerWrapper.isBuffering();
-  }
-  
-  public boolean handleIsLoopback()
-  {
-    return this.mPlayerWrapper.isLoopBack();
-  }
-  
-  public boolean handleIsPausing()
-  {
-    return this.mPlayerWrapper.isPausing();
-  }
-  
-  public boolean handleIsPlaying()
-  {
-    return this.mPlayerWrapper.isPlaying();
+    return (this.mPlayerWrapper != null) && (this.mPlayerWrapper.isBuffering());
   }
   
   public void handleOpenMediaPlayer(Context paramContext, SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong, SuperPlayerOption paramSuperPlayerOption)
   {
-    LogUtil.i(this.TAG, "api handle : handleOpenMediaPlayer, playerVideoInfo:" + paramSuperPlayerVideoInfo + ", startPostionMilsec:" + paramLong);
-    onPlayerOpen(paramSuperPlayerOption);
-    this.mPlayerWrapper.openMediaPlayer(paramContext, paramSuperPlayerVideoInfo, paramLong, paramSuperPlayerOption);
+    LogUtil.i(this.mTAG, "api handle : handleOpenMediaPlayer, playerVideoInfo:" + paramSuperPlayerVideoInfo + ", startPostionMilsec:" + paramLong);
+    if (paramSuperPlayerOption == null) {
+      paramSuperPlayerOption = SuperPlayerOption.obtain();
+    }
+    for (;;)
+    {
+      int i = 1;
+      PreloadPlayerInfo localPreloadPlayerInfo = PreloadPlayerMgr.getInstance().getPlayerFromPool(this.mSceneId, paramSuperPlayerVideoInfo);
+      if (localPreloadPlayerInfo != null)
+      {
+        LogUtil.i(this.mTAG, "复用预加载播放器, PlayerTag = 【" + localPreloadPlayerInfo.player.getPlayerTag() + "】");
+        this.mPlayerWrapper = localPreloadPlayerInfo.player;
+        this.mPlayerWrapper.updatePlayerTag(this.mPlayerTag);
+        if (this.mVideoView != null) {
+          this.mVideoView.changeSurfaceObject(localPreloadPlayerInfo.videoView.getStoredSurfaceObject());
+        }
+      }
+      for (;;)
+      {
+        initListenerForWrapper();
+        this.mPlayerMgrInternal.setIsNeedBlockMessage(false);
+        this.mPlayerWrapper.updateIsPreloadingStatus(false);
+        this.mPlayerWrapper.setBusinessDownloadStrategy(this.mEmergencyTime, this.mSafePlayTime, this.mEmergencyTimeForPrePlay, this.mSafePlayTimeForPrePlay);
+        if (i == 0)
+        {
+          onPlayerOpen(paramSuperPlayerOption);
+          this.mPlayerWrapper.openMediaPlayer(paramContext, paramSuperPlayerVideoInfo, paramLong, paramSuperPlayerOption);
+        }
+        return;
+        this.mSurfaceObjectForChange = localPreloadPlayerInfo.videoView.getStoredSurfaceObject();
+        continue;
+        LogUtil.i(this.mTAG, "不复用预加载播放器");
+        if (this.mPlayerWrapper == null) {
+          this.mPlayerWrapper = new SuperPlayerWrapper(this.mContext, this.mSceneId, this.mPlayerTag, this.mLooper);
+        }
+        if ((this.mVideoView != null) && (this.mVideoView.isSurfaceReady()))
+        {
+          this.mPlayerWrapper.setSurface(this.mVideoView.getSurface());
+          this.mFrameCheckHelper.updatePlayerVideoView(this.mVideoView);
+        }
+        i = 0;
+      }
+    }
   }
   
   public void handlePause()
   {
-    LogUtil.i(this.TAG, "api handle : handlePause:");
-    this.mPlayerWrapper.pause();
+    LogUtil.i(this.mTAG, "api handle : handlePause:");
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.pause();
+    }
   }
   
   public void handlePauseDownload()
   {
-    this.mPlayerWrapper.pauseDownload();
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.pauseDownload();
+    }
   }
   
   public void handleRelease()
   {
-    LogUtil.i(this.TAG, "api handle : handleRelease:");
+    LogUtil.i(this.mTAG, "api handle : handleRelease:");
     this.mContext = null;
-    this.mVideoView = null;
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.release();
+    if (this.mFrameCheckHelper != null) {
+      this.mFrameCheckHelper.onPlayerRelease();
     }
-    if (this.mHandlerThread != null)
-    {
-      this.mHandlerThread.quit();
-      this.mHandlerThread = null;
+    if (this.mListenerMgr != null) {
+      this.mListenerMgr.release();
     }
-    this.mFrameCheckHelper.onPlayerRelease();
+    if (this.mVideoView != null) {
+      this.mVideoView.removeViewCallBack(null);
+    }
+    ThreadUtil.runOnThreadPool(new SuperPlayerMgr.1(this));
   }
   
   public void handleReset()
   {
-    LogUtil.i(this.TAG, "api handle : handleReset:");
-    this.mPlayerWrapper.reset();
-    this.mFrameCheckHelper.onPlayerReset();
+    LogUtil.i(this.mTAG, "api handle : handleReset:");
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.reset();
+    }
+    if (this.mFrameCheckHelper != null) {
+      this.mFrameCheckHelper.onPlayerReset();
+    }
   }
   
   public void handleResumeDownload()
   {
-    this.mPlayerWrapper.resumeDownload();
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.resumeDownload();
+    }
   }
   
   public void handleSeekTo(int paramInt)
   {
-    LogUtil.i(this.TAG, "api handle : handleSeekTo, positionMilsec:" + paramInt);
-    this.mPlayerWrapper.seekTo(paramInt);
+    LogUtil.i(this.mTAG, "api handle : handleSeekTo, positionMilsec:" + paramInt);
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.seekTo(paramInt);
+    }
   }
   
   public void handleSeekTo(int paramInt1, int paramInt2)
   {
-    LogUtil.i(this.TAG, "api handle : handleSeekToAccuratePos, positionMilsec:" + paramInt1 + ", mode:" + paramInt2);
-    this.mPlayerWrapper.seekTo(paramInt1, paramInt2);
+    LogUtil.i(this.mTAG, "api handle : handleSeekToAccuratePos, positionMilsec:" + paramInt1 + ", mode:" + paramInt2);
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.seekTo(paramInt1, paramInt2);
+    }
   }
   
-  public void handleSetAudioGainRatio(float paramFloat)
+  public void handleSelectTrack(int paramInt, long paramLong)
   {
-    LogUtil.i(this.TAG, "api handle : handleSetAudioGainRatio, gainRatio:" + paramFloat);
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.selectTrack(paramInt, paramLong);
+    }
   }
   
   public void handleSetBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    if (this.mPlayerWrapper != null) {}
     try
     {
-      this.mPlayerWrapper.setBusinessDownloadStrategy(paramInt1, paramInt2, paramInt3, paramInt4);
+      if (this.mPlayerWrapper != null) {
+        this.mPlayerWrapper.setBusinessDownloadStrategy(paramInt1, paramInt2, paramInt3, paramInt4);
+      }
       return;
     }
     catch (Throwable localThrowable)
     {
-      LogUtil.e(this.TAG, localThrowable);
+      LogUtil.e(this.mTAG, localThrowable);
     }
   }
   
   public void handleSetLoopback(boolean paramBoolean)
   {
-    LogUtil.i(this.TAG, "api handle : handleSetLoopback, isLoopback:" + paramBoolean);
-    this.mPlayerWrapper.setLoopback(paramBoolean);
+    LogUtil.i(this.mTAG, "api handle : handleSetLoopback, isLoopback:" + paramBoolean);
+    this.mIsLoopback = paramBoolean;
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.setLoopback(paramBoolean);
+    }
   }
   
   public void handleSetLoopback(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    LogUtil.i(this.TAG, "api handle : handleSetLoopback, isLoopback:" + paramBoolean + ", loopStartPositionMs:" + paramLong1 + ", loopEndPositionMs:" + paramLong2);
-    this.mPlayerWrapper.setLoopback(paramBoolean, paramLong1, paramLong2);
+    LogUtil.i(this.mTAG, "api handle : handleSetLoopback, isLoopback:" + paramBoolean + ", loopStartPositionMs:" + paramLong1 + ", loopEndPositionMs:" + paramLong2);
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.setLoopback(paramBoolean, paramLong1, paramLong2);
+    }
   }
   
   public boolean handleSetOutputMute(boolean paramBoolean)
   {
-    LogUtil.i(this.TAG, "api handle : handleSetOutputMute, isMute:" + paramBoolean);
-    this.mPlayerWrapper.setOutputMute(paramBoolean);
+    LogUtil.i(this.mTAG, "api handle : handleSetOutputMute, isMute:" + paramBoolean);
+    this.mIsOutputMute = paramBoolean;
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.setOutputMute(paramBoolean);
+    }
     return true;
   }
   
   public void handleSetPlaySpeedRatio(float paramFloat)
   {
-    LogUtil.i(this.TAG, "api handle : handleSetPlaySpeedRatio, speedRatio:" + paramFloat);
-    this.mPlayerWrapper.setPlaySpeedRatio(paramFloat);
+    LogUtil.i(this.mTAG, "api handle : handleSetPlaySpeedRatio, speedRatio:" + paramFloat);
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.setPlaySpeedRatio(paramFloat);
+    }
   }
   
   public void handleSetSurface(Surface paramSurface)
   {
-    LogUtil.i(this.TAG, "api handle : handleSetSurface");
+    LogUtil.i(this.mTAG, "api handle : handleSetSurface");
     if (this.mPlayerWrapper != null) {
       this.mPlayerWrapper.setSurface(paramSurface);
     }
   }
   
-  public void handleSetXYaxis(int paramInt)
-  {
-    LogUtil.i(this.TAG, "api handle : handleSetXYaxis");
-    this.mPlayerWrapper.setXYaxis(paramInt);
-  }
-  
   public void handleStart()
   {
-    LogUtil.i(this.TAG, "api handle : handleStart:");
-    this.mPlayerWrapper.start();
-    this.mFrameCheckHelper.onPlayerStart();
+    LogUtil.i(this.mTAG, "api handle : handleStart:");
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.start();
+    }
+    if (this.mFrameCheckHelper != null) {
+      this.mFrameCheckHelper.onPlayerStart();
+    }
   }
   
   public void handleStop()
   {
-    LogUtil.i(this.TAG, "api handle : handleStop:");
-    this.mPlayerWrapper.stop();
-    this.mFrameCheckHelper.onPlayerStop();
+    LogUtil.i(this.mTAG, "api handle : handleStop:");
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.stop();
+    }
+    if (this.mFrameCheckHelper != null) {
+      this.mFrameCheckHelper.onPlayerStop();
+    }
   }
   
   public void handleSwitchDefinition(String paramString)
   {
-    this.mPlayerWrapper.switchDefinition(paramString);
+    if (this.mPlayerWrapper != null) {
+      this.mPlayerWrapper.switchDefinition(paramString);
+    }
   }
   
   public void handleUpdatePlayerVideoView(ISPlayerVideoView paramISPlayerVideoView)
   {
-    LogUtil.i(this.TAG, "api handle : handleUpdatePlayerVideoView");
+    LogUtil.i(this.mTAG, "api handle : handleUpdatePlayerVideoView");
     if (this.mPlayerWrapper != null)
     {
       if ((this.mVideoView != null) && (this.mVideoView.isSurfaceReady()))
       {
-        this.mPlayerWrapper.updatePlayerVideoView(this.mVideoView);
+        this.mPlayerWrapper.setSurface(this.mVideoView.getSurface());
         this.mFrameCheckHelper.updatePlayerVideoView(paramISPlayerVideoView);
       }
     }
     else {
       return;
     }
-    this.mPlayerWrapper.updatePlayerVideoView(null);
+    this.mPlayerWrapper.setSurface(null);
     this.mFrameCheckHelper.updatePlayerVideoView(null);
-  }
-  
-  public void handlerSetAudioPostFrameOptionInfo(SuperPlayerAudioInfo paramSuperPlayerAudioInfo)
-  {
-    this.mPlayerWrapper.setAudioPostFrameOptionInfo(paramSuperPlayerAudioInfo);
   }
   
   public boolean isBuffering()
@@ -527,22 +667,22 @@ public class SuperPlayerMgr
   
   public boolean isLoopBack()
   {
-    return this.mPlayerMgrInternal.isLoopBack();
+    return this.mIsLoopback;
   }
   
   public boolean isOutputMute()
   {
-    return this.mPlayerMgrInternal.isOutputMute();
+    return this.mIsOutputMute;
   }
   
   public boolean isPausing()
   {
-    return this.mPlayerMgrInternal.isPausing();
+    return this.mPlayState.getCurState() == 6;
   }
   
   public boolean isPlaying()
   {
-    return this.mPlayerMgrInternal.isPlaying();
+    return this.mPlayState.getCurState() == 5;
   }
   
   public void onPrePlayViewShow()
@@ -554,121 +694,131 @@ public class SuperPlayerMgr
   
   public void onSurfaceCreated(Object paramObject)
   {
+    LogUtil.i(this.mTAG, "api handle : onSurfaceCreated");
     if ((this.mVideoView != null) && (this.mVideoView.getSurface() != null) && (this.mPlayerWrapper != null))
     {
-      this.mPlayerWrapper.updatePlayerVideoView(this.mVideoView);
+      this.mPlayerWrapper.setSurface(this.mVideoView.getSurface());
       this.mFrameCheckHelper.updatePlayerVideoView(this.mVideoView);
-      LogUtil.i(this.TAG, "onSurfaceCreated view created. mediaPlayer.setSurface:");
+      LogUtil.i(this.mTAG, "onSurfaceCreated view created. mediaPlayer.setSurface:");
       return;
     }
-    LogUtil.e(this.TAG, "onSurfaceCreated view created. mVideoView.getViewSurface() = null");
+    LogUtil.e(this.mTAG, "onSurfaceCreated view created. mVideoView.getViewSurface() = null");
   }
   
   public void onSurfaceDestroy(Object paramObject) {}
   
   public void onVideoFrameCheckResult(int paramInt)
   {
-    this.mMgrListenerAdpater.onInfo(this, 209, paramInt, 0L, null);
+    this.mListenerMgr.onInfo(this, 209, paramInt, 0L, null);
   }
   
   public void openMediaPlayer(Context paramContext, SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong)
   {
-    LogUtil.i(this.TAG, "api call : openMediaPlayer, videoInfo:" + paramSuperPlayerVideoInfo + ", startPositionMilsec:" + paramLong);
-    openMediaPlayer(paramContext, paramSuperPlayerVideoInfo, paramLong, SuperPlayerOption.obtain());
+    LogUtil.i(this.mTAG, "api call : openMediaPlayer, videoInfo:" + paramSuperPlayerVideoInfo + ", startPositionMilsec:" + paramLong);
+    this.mPlayState.changeStateAndNotify(3);
+    this.mReporter.onOpenMediaPlayer(paramSuperPlayerVideoInfo, paramLong, null);
+    this.mPlayerMgrInternal.openMediaPlayer(paramContext, paramSuperPlayerVideoInfo, paramLong, SuperPlayerOption.obtain());
   }
   
   public void openMediaPlayer(Context paramContext, SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong, SuperPlayerOption paramSuperPlayerOption)
   {
-    LogUtil.i(this.TAG, "api call : openMediaPlayer, videoInfo:" + paramSuperPlayerVideoInfo + ", startPositionMilsec:" + paramLong + ", playerOption:" + paramSuperPlayerOption);
-    if (paramSuperPlayerOption == null) {
-      paramSuperPlayerOption = SuperPlayerOption.obtain();
-    }
-    for (;;)
-    {
-      this.mReporter.onOpenMediaPlayer(paramSuperPlayerVideoInfo, paramLong, paramSuperPlayerOption);
-      this.mPlayerMgrInternal.openMediaPlayer(paramContext, paramSuperPlayerVideoInfo, paramLong, paramSuperPlayerOption);
-      return;
-    }
+    LogUtil.i(this.mTAG, "api call : openMediaPlayer, videoInfo:" + paramSuperPlayerVideoInfo + ", startPositionMilsec:" + paramLong + ", playerOption:" + paramSuperPlayerOption);
+    this.mPlayState.changeStateAndNotify(3);
+    this.mReporter.onOpenMediaPlayer(paramSuperPlayerVideoInfo, paramLong, paramSuperPlayerOption);
+    this.mPlayerMgrInternal.openMediaPlayer(paramContext, paramSuperPlayerVideoInfo, paramLong, paramSuperPlayerOption);
   }
   
   public void pause()
   {
-    LogUtil.i(this.TAG, "api call : pause");
+    LogUtil.i(this.mTAG, "api call : pause");
+    this.mPlayState.changeStateAndNotify(6);
     this.mPlayerMgrInternal.pause();
   }
   
   public void pauseDownload()
   {
-    LogUtil.i(this.TAG, "api call : pauseDownload");
+    LogUtil.i(this.mTAG, "api call : pauseDownload");
     this.mPlayerMgrInternal.pauseDownload();
   }
   
   public void release()
   {
-    LogUtil.i(this.TAG, "api call : release");
+    LogUtil.i(this.mTAG, "api call : release");
+    if (this.mPlayState.getCurState() == 10)
+    {
+      LogUtil.e(this.mTAG, "api call : release, failed, mPlayState.getCurState() == " + this.mPlayState.getCurState());
+      return;
+    }
+    this.mPlayState.changeStateAndNotify(10);
     SuperPlayerSDKMgr.getPlayerPool().remove(this);
     this.mPlayerMgrInternal.release();
   }
   
   public void reset()
   {
-    LogUtil.i(this.TAG, "api call : reset");
-    this.mPlayerMgrInternal.reset();
+    LogUtil.i(this.mTAG, "api call : reset");
+    if (this.mPlayState.getCurState() == 0)
+    {
+      LogUtil.e(this.mTAG, "api call : stop, failed, mPlayState.getCurState() == ISuperPlayerState.STOPPED");
+      return;
+    }
+    this.mPlayState.changeStateAndNotify(0);
+    this.mVideoView = null;
     this.mReporter.reset();
+    this.mSurfaceObjectForChange = null;
+    this.mPlayerMgrInternal.reset();
+    this.mPlayerMgrInternal.setIsNeedBlockMessage(true);
   }
   
   public void resumeDownload()
   {
-    LogUtil.i(this.TAG, "api call : resumeDownload");
+    LogUtil.i(this.mTAG, "api call : resumeDownload");
     this.mPlayerMgrInternal.resumeDownload();
   }
   
   public void seekTo(int paramInt)
   {
-    LogUtil.i(this.TAG, "api call : seekTo, positionMilsec:" + paramInt);
+    LogUtil.i(this.mTAG, "api call : seekTo, positionMilsec:" + paramInt);
     this.mIsSeeking = true;
     this.mPlayerMgrInternal.seekTo(paramInt);
   }
   
   public void seekTo(int paramInt1, int paramInt2)
   {
-    LogUtil.i(this.TAG, "api call : seekTo, positionMs:" + paramInt1 + ", mode:" + paramInt2);
+    LogUtil.i(this.mTAG, "api call : seekTo, positionMs:" + paramInt1 + ", mode:" + paramInt2);
     this.mIsSeeking = true;
     this.mPlayerMgrInternal.seekTo(paramInt1, paramInt2);
   }
   
-  public void setAudioPostFrameOptionInfo(SuperPlayerAudioInfo paramSuperPlayerAudioInfo)
+  public void selectTrack(int paramInt, long paramLong)
   {
-    this.mPlayerMgrInternal.setAudioPostFrameOptionInfo(paramSuperPlayerAudioInfo);
+    this.mPlayerMgrInternal.selectTrack(paramInt, paramLong);
   }
   
   public void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    this.mEmergencyTime = paramInt1;
+    this.mSafePlayTime = paramInt2;
+    this.mEmergencyTimeForPrePlay = paramInt3;
+    this.mSafePlayTimeForPrePlay = paramInt4;
     this.mPlayerMgrInternal.setBusinessDownloadStrategy(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void setLoopback(boolean paramBoolean)
   {
-    LogUtil.i(this.TAG, "api call : setLoopback, isLoopback:" + paramBoolean);
+    LogUtil.i(this.mTAG, "api call : setLoopback, isLoopback:" + paramBoolean);
     this.mPlayerMgrInternal.setLoopback(paramBoolean);
   }
   
   public void setLoopback(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    LogUtil.i(this.TAG, "api call : setLoopback, isLoopback:" + paramBoolean + ", loopStartPositionMs:" + paramLong1 + ", loopEndPositionMs:" + paramLong2);
+    LogUtil.i(this.mTAG, "api call : setLoopback, isLoopback:" + paramBoolean + ", loopStartPositionMs:" + paramLong1 + ", loopEndPositionMs:" + paramLong2);
     this.mPlayerMgrInternal.setLoopback(paramBoolean, paramLong1, paramLong2);
   }
   
   public void setOnAudioFrameOutputListener(ISuperPlayer.OnAudioFrameOutputListener paramOnAudioFrameOutputListener)
   {
-    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
-    if (paramOnAudioFrameOutputListener != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localSuperPlayerWrapper.setEnableAudioFrameOutput(bool);
-      this.mListenerMgr.setOnAudioFrameOutputListener(paramOnAudioFrameOutputListener);
-      return;
-    }
+    this.mListenerMgr.setOnAudioFrameOutputListener(paramOnAudioFrameOutputListener);
   }
   
   public void setOnCaptureImageListener(ISuperPlayer.OnCaptureImageListener paramOnCaptureImageListener)
@@ -701,6 +851,11 @@ public class SuperPlayerMgr
     this.mListenerMgr.setOnSeekCompleteListener(paramOnSeekCompleteListener);
   }
   
+  public void setOnSubtitleDataListener(ISuperPlayer.OnSubtitleDataListener paramOnSubtitleDataListener)
+  {
+    this.mListenerMgr.setOnSubtitleDataListener(paramOnSubtitleDataListener);
+  }
+  
   public void setOnTVideoNetInfoUpdateListener(ISuperPlayer.OnTVideoNetInfoListener paramOnTVideoNetInfoListener)
   {
     this.mListenerMgr.setOnTVideoNetVideoInfoListener(paramOnTVideoNetInfoListener);
@@ -708,14 +863,7 @@ public class SuperPlayerMgr
   
   public void setOnVideoFrameOutputListener(ISuperPlayer.OnVideoFrameOutputListener paramOnVideoFrameOutputListener)
   {
-    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
-    if (paramOnVideoFrameOutputListener != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localSuperPlayerWrapper.setEnableVideoFrameOutput(bool);
-      this.mListenerMgr.setOnVideoOutputFrameListener(paramOnVideoFrameOutputListener);
-      return;
-    }
+    this.mListenerMgr.setOnVideoOutputFrameListener(paramOnVideoFrameOutputListener);
   }
   
   public void setOnVideoPreparedListener(ISuperPlayer.OnVideoPreparedListener paramOnVideoPreparedListener)
@@ -730,58 +878,68 @@ public class SuperPlayerMgr
   
   public void setOutputMute(boolean paramBoolean)
   {
-    LogUtil.i(this.TAG, "api call : setOutputMute:" + paramBoolean);
+    LogUtil.i(this.mTAG, "api call : setOutputMute:" + paramBoolean);
     this.mPlayerMgrInternal.setOutputMute(paramBoolean);
   }
   
   public void setPlaySpeedRatio(float paramFloat)
   {
-    LogUtil.i(this.TAG, "api call : setPlaySpeedRatio");
+    LogUtil.i(this.mTAG, "api call : setPlaySpeedRatio");
     this.mPlayerMgrInternal.setPlaySpeedRatio(paramFloat);
   }
   
   public void setSurface(Surface paramSurface)
   {
-    LogUtil.i(this.TAG, "api call : setSurface");
+    LogUtil.i(this.mTAG, "api call : setSurface");
     this.mPlayerMgrInternal.setSurface(paramSurface);
   }
   
   public void setXYaxis(int paramInt)
   {
-    LogUtil.i(this.TAG, "api call : setXYaxis, type=" + paramInt);
+    LogUtil.i(this.mTAG, "api call : setXYaxis, type=" + paramInt);
+    this.mXYaxis = paramInt;
     if (this.mVideoView != null) {
       this.mVideoView.setXYaxis(paramInt);
     }
-    this.mPlayerMgrInternal.setXYaxis(paramInt);
   }
   
   public void start()
   {
-    LogUtil.i(this.TAG, "api call : start");
+    LogUtil.i(this.mTAG, "api call : start");
+    this.mPlayState.changeStateAndNotify(5);
     this.mPlayerMgrInternal.start();
   }
   
   public void stop()
   {
-    LogUtil.i(this.TAG, "api call : stop");
+    LogUtil.i(this.mTAG, "api call : stop");
+    if ((this.mPlayState.getCurState() == 8) || (this.mPlayState.getCurState() == 0) || (this.mPlayState.getCurState() == 10))
+    {
+      LogUtil.e(this.mTAG, "api call : stop, failed, mPlayState.getCurState() == " + this.mPlayState.getCurState());
+      return;
+    }
+    this.mPlayState.changeStateAndNotify(8);
     this.mReporter.onStop();
     this.mPlayerMgrInternal.stop();
   }
   
   public void switchDefinition(String paramString)
   {
-    LogUtil.i(this.TAG, "api call : switchDefinition, definition:" + paramString);
+    LogUtil.i(this.mTAG, "api call : switchDefinition, definition:" + paramString);
     this.mPlayerMgrInternal.switchDefinition(paramString);
   }
   
   public void updatePlayerVideoView(ISPlayerVideoView paramISPlayerVideoView)
   {
-    String str = this.TAG;
+    String str = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder().append("api call : updatePlayerVideoView, mVideoView == videoView is ");
     if (this.mVideoView == paramISPlayerVideoView) {}
     for (boolean bool = true;; bool = false)
     {
       LogUtil.i(str, bool + ", videoView=" + paramISPlayerVideoView);
+      if (paramISPlayerVideoView != null) {
+        LogUtil.d(this.mTAG, "日志过滤(View): 【" + paramISPlayerVideoView.getLogTag() + "】, updatePlayerVideoView");
+      }
       if (this.mVideoView != paramISPlayerVideoView) {
         break;
       }
@@ -791,8 +949,18 @@ public class SuperPlayerMgr
       this.mVideoView.removeViewCallBack(null);
     }
     this.mVideoView = paramISPlayerVideoView;
-    if (this.mVideoView != null) {
+    if (this.mVideoView != null)
+    {
       this.mVideoView.addViewCallBack(this);
+      this.mVideoView.setXYaxis(this.mXYaxis);
+    }
+    if (this.mSurfaceObjectForChange != null)
+    {
+      if (this.mVideoView != null) {
+        this.mVideoView.changeSurfaceObject(this.mSurfaceObjectForChange);
+      }
+      this.mSurfaceObjectForChange = null;
+      return;
     }
     this.mPlayerMgrInternal.updatePlayerVideoView(paramISPlayerVideoView);
   }

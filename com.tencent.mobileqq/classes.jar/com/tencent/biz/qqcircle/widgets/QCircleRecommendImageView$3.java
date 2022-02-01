@@ -17,7 +17,6 @@ class QCircleRecommendImageView$3
       QCircleRecommendImageView.a(this.this$0).onAnimationEnd(null);
     }
     this.this$0.a();
-    QCircleRecommendImageView.b(this.this$0);
   }
 }
 

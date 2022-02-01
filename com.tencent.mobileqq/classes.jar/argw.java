@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-
-public abstract interface argw
+public class argw
 {
-  public abstract boolean getHasPulledSourceMsg();
+  int a;
   
-  public abstract MessageForReplyText.SourceMsgInfo getSourceMsgInfo();
+  public argw()
+  {
+    this.a = 0;
+  }
   
-  public abstract void setPulledSourceMsg();
+  public argw(int paramInt)
+  {
+    this.a = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argw
  * JD-Core Version:    0.7.0.1
  */

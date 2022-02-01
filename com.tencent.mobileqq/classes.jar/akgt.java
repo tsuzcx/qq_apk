@@ -1,42 +1,112 @@
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.observer.AccountObserver;
+import android.app.Fragment;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.leba.QzoneFrame;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class akgt
-  extends AccountObserver
+public class akgt
+  extends akgu
 {
-  akgt(akgq paramakgq) {}
-  
-  public void onUpdateSKey(String paramString1, String paramString2)
+  public akgt(QzoneFrame paramQzoneFrame)
   {
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    if (paramString1 == null)
-    {
-      for (;;)
-      {
-        int j = i - 1;
-        if (i <= 0) {
-          break;
-        }
-        paramString1 = akgq.a(this.a, ((TroopClipPic)this.a.jdField_a_of_type_JavaUtilArrayList.get(j)).ts);
-        if (paramString1 == null)
-        {
-          i = j;
-        }
-        else
-        {
-          this.a.jdField_a_of_type_JavaUtilList.remove(paramString1);
-          this.a.b(paramString1);
-          i = j;
-        }
-      }
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+    super(paramQzoneFrame);
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("QzoneFrame", 1, "onSwitch: " + paramInt);
+    Fragment localFragment = QzoneFrame.b(this.a);
+    if ((QzoneFrame.b(this.a) == QzoneFrame.a(this.a)) && (paramInt == 1)) {
       return;
     }
-    this.a.a(this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    String str;
+    Drawable localDrawable;
+    if (QzoneFrame.c(this.a) == null)
+    {
+      QzoneFrame.a(this.a, bmww.a(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "com.qzone.feed.ui.activity.QQLebaExtendFeedFragment"));
+      if (QzoneFrame.a(this.a) == null) {
+        QzoneFrame.a(this.a, (TextView)QzoneFrame.a(this.a).findViewById(2131369088));
+      }
+      if (QzoneFrame.b(this.a) != QzoneFrame.c(this.a)) {
+        break label490;
+      }
+      QzoneFrame.b(this.a, QzoneFrame.a(this.a));
+      ((bmxd)QzoneFrame.a(this.a)).setTitleAlphaAndGetLastValue(QzoneFrame.a(this.a));
+      str = "动态";
+      localDrawable = null;
+      if (QzoneFrame.b(this.a) != null)
+      {
+        QzoneFrame.b(this.a).onAttach(this.a.a());
+        QzoneFrame.b(this.a).onCreate(null);
+        if (QzoneFrame.b(this.a).getView() == null)
+        {
+          QzoneFrame.b(this.a).onCreateView(LayoutInflater.from(this.a.a()), null, null);
+          QzoneFrame.b(this.a).onActivityCreated(null);
+        }
+      }
+      if ((QzoneFrame.b(this.a) == QzoneFrame.c(this.a)) && ((QzoneFrame.c(this.a) instanceof bmxd)))
+      {
+        if (!QzoneFrame.a(this.a)) {
+          break label607;
+        }
+        QzoneFrame.a(this.a, false);
+      }
+      label321:
+      localFragment.onPause();
+      localFragment.onStop();
+      QzoneFrame.b(this.a).onStart();
+      ((bmxd)QzoneFrame.b(this.a)).resetReportFlag();
+      QzoneFrame.b(this.a).onResume();
+      QzoneFrame.b(this.a).removeView(localFragment.getView());
+      QzoneFrame.b(this.a).addView(QzoneFrame.b(this.a).getView());
+      if (Build.VERSION.SDK_INT <= 15) {
+        break label625;
+      }
+      QzoneFrame.b(this.a).setBackground(localDrawable);
+    }
+    for (;;)
+    {
+      QzoneFrame.a(this.a).setText(str);
+      if (QzoneFrame.b(this.a) != QzoneFrame.a(this.a)) {
+        break label639;
+      }
+      ((bmxd)QzoneFrame.a(this.a)).setRightButtonType(QzoneFrame.jdField_a_of_type_Int);
+      return;
+      if ((QzoneFrame.b(this.a) != QzoneFrame.c(this.a)) || (paramInt != 2)) {
+        break;
+      }
+      return;
+      label490:
+      QzoneFrame.b(this.a, QzoneFrame.c(this.a));
+      if (QzoneFrame.a(this.a) == null)
+      {
+        if (Build.VERSION.SDK_INT <= 20) {
+          break label581;
+        }
+        QzoneFrame.a(this.a, this.a.a().getDrawable(2130845103));
+      }
+      for (;;)
+      {
+        QzoneFrame.a(this.a, ((bmxd)QzoneFrame.a(this.a)).setTitleAlphaAndGetLastValue(0));
+        localDrawable = QzoneFrame.a(this.a);
+        str = "暖说说";
+        break;
+        label581:
+        QzoneFrame.a(this.a, this.a.a().getResources().getDrawable(2130845103));
+      }
+      label607:
+      ((bmxd)QzoneFrame.c(this.a)).forceRefresh();
+      break label321;
+      label625:
+      QzoneFrame.b(this.a).setBackgroundDrawable(localDrawable);
+    }
+    label639:
+    ((bmxd)QzoneFrame.a(this.a)).setRightButtonType(QzoneFrame.b);
   }
 }
 

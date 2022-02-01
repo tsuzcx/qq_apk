@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.profilecard.bussiness.qzone;
 
-import azow;
+import bahm;
 
 public class ProfileQZoneComponent$7
   implements Runnable
 {
-  public ProfileQZoneComponent$7(azow paramazow) {}
+  public ProfileQZoneComponent$7(bahm parambahm) {}
   
   public void run()
   {

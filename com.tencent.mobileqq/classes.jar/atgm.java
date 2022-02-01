@@ -1,15 +1,21 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+
 class atgm
-  extends atfq
+  implements Animation.AnimationListener
 {
-  public atgm(atfe paramatfe)
+  atgm(atgi paramatgi) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramatfe);
+    ((Face2FaceAddFriendActivity)this.a.jdField_a_of_type_AndroidContentContext).i();
+    this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation = null;
   }
   
-  protected String a()
-  {
-    return "StateUploadoneWhenPause";
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

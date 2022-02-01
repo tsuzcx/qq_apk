@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import aeyf;
+import afhk;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import bcrg;
+import bdjy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 import com.tencent.mobileqq.startup.step.Step;
@@ -20,7 +20,7 @@ public class QQMapActivity$MapRuntime
   
   public QQMapActivity$MapRuntime()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aeyf(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new afhk(this);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -34,7 +34,7 @@ public class QQMapActivity$MapRuntime
     paramBundle.addAction("mqq.intent.action.LOGOUT");
     paramBundle.addAction("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName());
     MobileQQ.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-    bcrg.b(12, BaseApplicationImpl.sDirector, null).step();
+    bdjy.b(12, BaseApplicationImpl.sDirector, null).step();
   }
   
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)

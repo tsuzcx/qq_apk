@@ -1,6 +1,21 @@
-public abstract interface arya
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.Setting;
+
+public final class arya
+  implements Parcelable.Creator<Setting>
 {
-  public abstract void a();
+  public Setting a(Parcel paramParcel)
+  {
+    Setting localSetting = new Setting();
+    localSetting.readFromParcel(paramParcel);
+    return localSetting;
+  }
+  
+  public Setting[] a(int paramInt)
+  {
+    return new Setting[paramInt];
+  }
 }
 
 

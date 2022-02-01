@@ -1,25 +1,10 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.DeleteFaceFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class ault
-  implements View.OnClickListener
+public abstract interface ault
 {
-  public ault(DeleteFaceFragment paramDeleteFaceFragment) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeleteFaceFragment", 2, "user cancel delete");
-    }
-    if ((DeleteFaceFragment.a(this.a) != null) && (DeleteFaceFragment.a(this.a).isShowing())) {
-      DeleteFaceFragment.a(this.a).dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

@@ -1,37 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class ayog
-  implements View.OnClickListener
+class ayog
+  extends beyf
 {
-  public ayog(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  ayog(aynp paramaynp) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    aype.a(AutoReplyEditActivity.a(this.a), false);
-    String str2 = String.valueOf(AutoReplyEditActivity.a(this.a).getText());
-    String str1;
-    if (AutoReplyEditActivity.a(this.a) != null)
+    bete localbete = (bete)paramMessage.obj;
+    switch (paramMessage.what)
     {
-      str1 = AutoReplyEditActivity.a(this.a).getRawText();
-      if (str2.equals(str1)) {
-        break label75;
-      }
-      AutoReplyEditActivity.a(this.a);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    case 1004: 
+    default: 
+    case 1003: 
+      do
+      {
+        do
+        {
+          return;
+        } while (localbete.b != 8);
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + bevi.a);
+        }
+      } while (aynp.a(this.a) == null);
+      aynp.a(this.a).a = bevi.a;
+      aynp.d(this.a);
       return;
-      str1 = "";
-      break;
-      label75:
-      AutoReplyEditActivity.a(this.a);
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
+    }
+    this.a.a.a();
+    this.a.a.b(anzj.a(2131706189));
   }
 }
 

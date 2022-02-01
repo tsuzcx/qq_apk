@@ -1,14 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.QLog;
 
-class aeub
-  implements DialogInterface.OnClickListener
+public class aeub
+  extends anyu
 {
-  aeub(aeua paramaeua) {}
+  public aeub(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    if (paramBoolean)
+    {
+      paramString = ((anyw)this.a.app.getManager(51)).e(this.a.a + "");
+      if (paramString != null)
+      {
+        this.a.e = paramString.name;
+        JoinDiscussionActivity.a(this.a);
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
   }
 }
 

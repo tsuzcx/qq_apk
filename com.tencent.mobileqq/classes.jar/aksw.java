@@ -1,24 +1,29 @@
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
 import android.os.Bundle;
-import android.os.ResultReceiver;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 class aksw
-  implements anjl
+  extends ayxo
 {
-  aksw(akss paramakss, Bundle paramBundle, int paramInt, ResultReceiver paramResultReceiver, anjh paramanjh) {}
+  aksw(aksu paramaksu) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("updateResult", this.jdField_a_of_type_Int);
-    if (paramBoolean) {
-      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", 1);
-    }
-    for (;;)
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp)))
     {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_Anjh.d(this);
-      return;
-      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", -1);
+      long l = ((get_albumlist_num_rsp)paramBundle).album_num;
+      ((aktm)this.a.mOtherCommonData).jdField_a_of_type_Long = l;
+      paramBundle = this.a.a();
+      if (paramBundle != null)
+      {
+        paramBundle.a(((aktm)this.a.mOtherCommonData).jdField_a_of_type_Long);
+        paramBundle.postData();
+      }
     }
+    ((aktm)this.a.mOtherCommonData).jdField_a_of_type_Boolean = false;
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.a.a);
   }
 }
 

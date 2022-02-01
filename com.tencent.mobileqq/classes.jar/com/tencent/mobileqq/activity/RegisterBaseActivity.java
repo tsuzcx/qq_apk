@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import afao;
+import afjv;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -9,7 +9,7 @@ import android.content.res.Configuration;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
-import bibh;
+import bjcf;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -27,7 +27,7 @@ public class RegisterBaseActivity
   public RegisterBaseActivity()
   {
     this.jdField_b_of_type_JavaLangString = "86";
-    this.jdField_b_of_type_AndroidOsHandler = new afao(this);
+    this.jdField_b_of_type_AndroidOsHandler = new afjv(this);
   }
   
   protected void a(int paramInt)
@@ -45,7 +45,7 @@ public class RegisterBaseActivity
   
   public void a(int paramInt1, int paramInt2)
   {
-    new bibh(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
+    new bjcf(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
   }
   
   public void a(String paramString, int paramInt)
@@ -57,7 +57,7 @@ public class RegisterBaseActivity
     if (paramString.endsWith("\n")) {
       str = paramString.substring(0, paramString.length() - 1);
     }
-    new bibh(this).a(str, getTitleBarHeight(), 0, paramInt);
+    new bjcf(this).a(str, getTitleBarHeight(), 0, paramInt);
   }
   
   public void a(String paramString1, String paramString2)

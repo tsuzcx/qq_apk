@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.API;
 
-import apiq;
-import apir;
+import apwg;
+import apwh;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,16 +9,16 @@ import java.util.Iterator;
 public class ArkAppMusicModule$GlobalMusicCallback$1
   implements Runnable
 {
-  public ArkAppMusicModule$GlobalMusicCallback$1(apir paramapir, int paramInt) {}
+  public ArkAppMusicModule$GlobalMusicCallback$1(apwh paramapwh, int paramInt) {}
   
   public void run()
   {
-    Iterator localIterator = apiq.a.iterator();
+    Iterator localIterator = apwg.a.iterator();
     while (localIterator.hasNext())
     {
-      apiq localapiq = (apiq)((WeakReference)localIterator.next()).get();
-      if (localapiq != null) {
-        localapiq.a(this.a);
+      apwg localapwg = (apwg)((WeakReference)localIterator.next()).get();
+      if (localapwg != null) {
+        localapwg.a(this.a);
       }
     }
   }

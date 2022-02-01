@@ -1,21 +1,60 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.Map;
 
-public final class aegj
-  implements DialogInterface.OnClickListener
+public class aegj
+  extends anyu
 {
-  public aegj(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, azfe paramazfe) {}
+  public aegj(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    FriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Azfe);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    super.onSetGenralSettingsTroopFilter(paramBoolean, paramMap);
+    if ((paramMap == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null)) {
+      return;
+    }
+    if (!paramBoolean) {
+      if (paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin) != null) {
+        QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131718983), 0).b(this.a.getTitleBarHeight());
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(17);
+      return;
+      paramMap = (Integer)paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
+      if (paramMap != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopmask = paramMap.intValue();
+      }
     }
   }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {}
+    try
+    {
+      l = Long.valueOf(paramString).longValue();
+      if (l != 0L) {
+        this.a.a(l);
+      }
+      return;
+    }
+    catch (NumberFormatException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        long l = 0L;
+      }
+    }
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString) {}
 }
 
 

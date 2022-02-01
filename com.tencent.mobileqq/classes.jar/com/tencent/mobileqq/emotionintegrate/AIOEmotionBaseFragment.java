@@ -7,10 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anni;
-import asea;
-import aseb;
-import bcst;
+import anzj;
+import asto;
+import astp;
+import bdll;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
@@ -45,22 +45,22 @@ public abstract class AIOEmotionBaseFragment
   protected void a(View paramView)
   {
     paramView.setFitsSystemWindows(true);
-    TextView localTextView = (TextView)paramView.findViewById(2131368947);
-    localTextView.setText(anni.a(2131698833));
-    localTextView.setOnClickListener(new asea(this));
+    TextView localTextView = (TextView)paramView.findViewById(2131369042);
+    localTextView.setText(anzj.a(2131698940));
+    localTextView.setOnClickListener(new asto(this));
     if (a())
     {
-      paramView = (ImageView)paramView.findViewById(2131368961);
-      paramView.setImageResource(2130838030);
+      paramView = (ImageView)paramView.findViewById(2131369056);
+      paramView.setImageResource(2130838040);
       paramView.setVisibility(0);
-      paramView.setContentDescription(anni.a(2131698832));
-      paramView.setOnClickListener(new aseb(this));
+      paramView.setContentDescription(anzj.a(2131698939));
+      paramView.setOnClickListener(new astp(this));
     }
   }
   
   public void a(String paramString)
   {
-    bcst.b(null, "dc00898", "", "", paramString, paramString, this.jdField_a_of_type_Int, 0, "", "", "", "");
+    bdll.b(null, "dc00898", "", "", paramString, paramString, this.jdField_a_of_type_Int, 0, "", "", "", "");
   }
   
   public boolean a()

@@ -1,7 +1,10 @@
-public abstract interface apic
-  extends apie
+class apic
 {
-  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
+  float jdField_a_of_type_Float;
+  boolean jdField_a_of_type_Boolean = true;
+  float b;
+  
+  apic(apib paramapib) {}
 }
 
 

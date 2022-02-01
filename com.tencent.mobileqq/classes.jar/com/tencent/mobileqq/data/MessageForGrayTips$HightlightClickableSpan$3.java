@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.content.Context;
-import aoht;
+import aovh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
@@ -13,10 +13,10 @@ class MessageForGrayTips$HightlightClickableSpan$3
   
   public void run()
   {
-    aoht.a((QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.this$0).get());
+    aovh.a((QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.this$0).get());
     try
     {
-      MessageForGrayTips.HightlightClickableSpan.access$100(this.this$0).startActivity(aoht.a);
+      MessageForGrayTips.HightlightClickableSpan.access$100(this.this$0).startActivity(aovh.a);
       return;
     }
     catch (Exception localException)

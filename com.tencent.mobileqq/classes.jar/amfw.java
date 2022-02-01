@@ -1,10 +1,29 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
+import java.util.Map;
 
 public class amfw
+  extends anyu
 {
-  public TextView a;
+  public amfw(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  protected amfw(amfu paramamfu) {}
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      this.a.c();
+    }
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    this.a.c();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
+  }
 }
 
 

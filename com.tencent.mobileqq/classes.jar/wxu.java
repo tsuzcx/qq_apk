@@ -1,92 +1,37 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.handler.VidToBasicInfoHandler.1;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wxu
-  extends wvq
-  implements wld<wzt, xbe>
+  extends QQUIEventReceiver<wxp, xac>
 {
-  private static ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  public List<String> a;
-  private final boolean jdField_a_of_type_Boolean;
-  
-  public wxu(List<String> paramList)
+  public wxu(@NonNull wxp paramwxp)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    a(paramList);
-    this.jdField_a_of_type_Boolean = false;
+    super(paramwxp);
   }
   
-  public wxu(List<String> paramList, boolean paramBoolean)
+  public void a(@NonNull wxp paramwxp, @NonNull xac paramxac)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    a(paramList);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  private void a(List<String> paramList)
-  {
-    if (paramList != null)
+    if (paramxac.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        String str = (String)paramList.next();
-        if (!StoryVideoItem.isFakeVid(str)) {
-          this.jdField_a_of_type_JavaUtilList.add(str);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("zivonchen", 2, "MsgTabStoryNodeDelegate#GetGroupInfoEventReceiver isSuccess sharegroupInfo: " + paramxac.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      }
+      if (paramxac.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null) {
+        paramwxp.a(paramwxp.a.a(8, paramxac.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.shareGroupId));
       }
     }
-  }
-  
-  public void a()
-  {
-    Bosses.get().postLightWeightJob(new VidToBasicInfoHandler.1(this), 0);
-  }
-  
-  public void a(@NonNull wzt paramwzt, @Nullable xbe paramxbe, @NonNull ErrorMessage paramErrorMessage)
-  {
-    wxv localwxv = new wxv();
-    if ((paramxbe == null) || (paramErrorMessage.isFail()))
-    {
-      c();
-      localwxv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-      wfo.a().dispatch(localwxv);
-      paramwzt = paramwzt.jdField_a_of_type_JavaUtilList.iterator();
+    while (!QLog.isColorLevel()) {
+      return;
     }
-    while (paramwzt.hasNext())
-    {
-      paramxbe = (String)paramwzt.next();
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramxbe);
-      continue;
-      paramwzt = (wpj)wpm.a(5);
-      if (paramxbe.jdField_a_of_type_JavaUtilList != null)
-      {
-        paramErrorMessage = paramxbe.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramErrorMessage.hasNext()) {
-          ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
-        }
-      }
-      paramxbe.jdField_a_of_type_JavaUtilList = paramwzt.a(paramxbe.jdField_a_of_type_JavaUtilList);
-      localwxv.jdField_a_of_type_JavaUtilList = paramxbe.jdField_a_of_type_JavaUtilList;
-      ((wfy)wpm.a(28)).a(paramxbe.b);
-      wfo.a().dispatch(localwxv);
-      b();
-    }
+    QLog.i("zivonchen", 2, "MsgTabStoryNodeDelegate#GetGroupInfoEventReceiver errorInfo: " + paramxac.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", sharegroupInfo = " + paramxac.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
   }
   
-  public String toString()
+  public Class acceptEventClass()
   {
-    return "VidToBasicInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    return xac.class;
   }
 }
 

@@ -1,17 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparingListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aved
-  implements TVK_IMediaPlayer.OnVideoPreparingListener
+public class aved
+  implements View.OnClickListener
 {
-  aved(avdv paramavdv) {}
+  public aved(LangSettingFragment paramLangSettingFragment) {}
   
-  public void onVideoPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onVideoPreparing mCacheProgress=");
-    }
+    LangSettingFragment.a(this.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

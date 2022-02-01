@@ -1,28 +1,44 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class alks
-  implements bkle
+  implements View.OnClickListener
 {
-  alks(alko paramalko) {}
+  alks(aljw paramaljw) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state: " + paramInt);
-    }
-    if (paramInt == 4097)
+    Object localObject = QQPlayerService.a();
+    int i;
+    if (localObject != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state is idle.");
+      aljw.a(this.a).startActivity((Intent)localObject);
+      localObject = ((Intent)localObject).getComponent().getClassName();
+      if (!((String)localObject).equals(MusicPlayerActivity.class.getName())) {
+        break label132;
       }
-      this.a.b = this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 400L);
+      i = 0;
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
+    for (;;)
+    {
+      bdll.a(aljw.a(this.a).app, "dc00898", "", "", "0X8009EE4", "0X8009EE4", 1, 0, "", "", "", "");
+      bdll.b(aljw.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label132:
+      if (((String)localObject).equals(MusicGeneQQBrowserActivity.class.getName())) {
+        i = 1;
+      } else {
+        i = -1;
+      }
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
 import android.widget.TextView;
-import atvo;
+import aunj;
 
 public class SimpleFileViewer$1
   implements Runnable
@@ -10,7 +10,7 @@ public class SimpleFileViewer$1
   
   public void run()
   {
-    SimpleFileViewer.a(this.this$0).setText(atvo.a(this.a, false, SimpleFileViewer.a(this.this$0).getMeasuredWidth(), SimpleFileViewer.a(this.this$0).getPaint(), 2));
+    SimpleFileViewer.a(this.this$0).setText(aunj.a(this.a, false, SimpleFileViewer.a(this.this$0).getMeasuredWidth(), SimpleFileViewer.a(this.this$0).getPaint(), 2));
   }
 }
 

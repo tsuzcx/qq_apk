@@ -1,17 +1,16 @@
-public class agey
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+
+final class agey
+  implements agfh
 {
-  public String a;
-  public boolean a;
-  
-  public agey(String paramString, boolean paramBoolean)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "ResultBean{rtext='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isFinish=" + this.jdField_a_of_type_Boolean + '}';
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramSessionInfo.a, 117);
+    paramQQAppInterface.h = paramSessionInfo.d;
+    return paramQQAppInterface;
   }
 }
 

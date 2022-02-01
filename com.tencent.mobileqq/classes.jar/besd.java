@@ -1,35 +1,21 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class besd
-  extends berz
+class besd
+  extends aocj
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  besd(besa parambesa) {}
+  
+  public void a(boolean paramBoolean, long paramLong, aock paramaock)
   {
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {
-      return null;
-    }
-    localTroopFeedItem.type = 10;
-    try
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramaock);
+    if (paramBoolean)
     {
-      paramJSONObject = paramJSONObject.getJSONArray("content");
-      if (paramJSONObject.length() > 0)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(0);
-        localTroopFeedItem.linkUrl = paramJSONObject.getString("videourl");
-        localTroopFeedItem.title = paramJSONObject.getString("videointro");
-        localTroopFeedItem.picPath = paramJSONObject.getString("videoid");
-      }
-      return localTroopFeedItem;
+      this.a.e();
+      return;
     }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
+    if (paramaock != null) {
+      this.a.v = paramaock.d;
     }
-    return null;
+    this.a.d();
   }
 }
 

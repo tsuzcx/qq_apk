@@ -21,7 +21,7 @@ public class SPReportHelper
   implements ISPReporter
 {
   public static final String SEPARATOR = ";";
-  private static final String TAG = "MediaPlayerMgr.SPReportHelper";
+  private static final String TAG = "SPReportHelper";
   private Map<String, Object> mConfigMap = new HashMap();
   private SPReportEvent mEvent;
   private boolean mHasReported = false;
@@ -44,7 +44,7 @@ public class SPReportHelper
   private void checkAndWarning()
   {
     if ((this.mIsPrePlay) && (!this.mPrePlayViewShowCalled)) {
-      LogUtil.w("MediaPlayerMgr.SPReportHelper", "Player is prePlay, but prePlayViewShow not called.");
+      LogUtil.w("SPReportHelper", "Player is prePlay, but prePlayViewShow not called.");
     }
   }
   
@@ -74,7 +74,7 @@ public class SPReportHelper
         this.mEvent.prepareDuration = (this.mEvent.realPrepareDuration - l);
         this.mEvent.renderDuration = (this.mEvent.realRenderDuration - l);
         if (l < 0L) {
-          LogUtil.e("MediaPlayerMgr.SPReportHelper", "doBeforeReport prePlayOffsetDuration error, for prePlayOffsetDuration < 0");
+          LogUtil.e("SPReportHelper", "doBeforeReport prePlayOffsetDuration error, for prePlayOffsetDuration < 0");
         }
       }
       else if (this.mEvent.prePlay == 1)
@@ -131,12 +131,12 @@ public class SPReportHelper
         }
         catch (Throwable paramTPMediaCodecInfo)
         {
-          LogUtil.e("MediaPlayerMgr.SPReportHelper", "onCodecReuseInfo error:" + paramTPMediaCodecInfo.getMessage());
+          LogUtil.e("SPReportHelper", "onCodecReuseInfo error:" + paramTPMediaCodecInfo.getMessage());
           return;
         }
       }
     } while (paramTPMediaCodecInfo.infoType != TPPlayerMsg.TPMediaCodecInfo.TP_INFO_MEDIA_CODEC_EXCEPTION);
-    LogUtil.e("MediaPlayerMgr.SPReportHelper", "codec error:" + paramTPMediaCodecInfo.msg);
+    LogUtil.e("SPReportHelper", "codec error:" + paramTPMediaCodecInfo.msg);
     try
     {
       String str = new JSONObject(paramTPMediaCodecInfo.msg).optString("errorCode");
@@ -146,7 +146,7 @@ public class SPReportHelper
     }
     catch (Throwable localThrowable)
     {
-      LogUtils.e("MediaPlayerMgr.SPReportHelper", "onCodecReuseInfo error for jsonObject:" + paramTPMediaCodecInfo.msg);
+      LogUtils.e("SPReportHelper", "onCodecReuseInfo error for jsonObject:" + paramTPMediaCodecInfo.msg);
     }
   }
   
@@ -254,14 +254,14 @@ public class SPReportHelper
   {
     if (this.mHasReported)
     {
-      LogUtil.d("MediaPlayerMgr.SPReportHelper", "report ignore for has reported.");
+      LogUtil.d("SPReportHelper", "report ignore for has reported.");
       return;
     }
     this.mHasReported = true;
     doBeforeReport();
     Map localMap = this.mEvent.getDataMap();
     SPBeaconReporter.report(this.mEvent.getEventName(), localMap);
-    LogUtil.d("MediaPlayerMgr.SPReportHelper", "report dataMap:" + localMap);
+    LogUtil.d("SPReportHelper", "report dataMap:" + localMap);
   }
   
   public void reset()

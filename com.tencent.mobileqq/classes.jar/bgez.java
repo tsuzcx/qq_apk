@@ -1,33 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-final class bgez
-  implements DownloadParams.DecodeHandler
+class bgez
+  extends BroadcastReceiver
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  bgez(bgex parambgex) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
+    paramContext = paramIntent.getAction();
+    if ("com.tencent.mobileqq.activity.ai.audiopanel.startrecord_action".equals(paramContext)) {
+      this.a.b(bgex.a(this.a));
     }
-    if (paramBitmap == null) {
-      return null;
+    while (!"com.tencent.mobileqq.troop.homework.xmediaeditor.ui.action_play_video".equals(paramContext)) {
+      return;
     }
-    paramDownloadParams = paramDownloadParams.tag;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
-    {
-      paramDownloadParams = (int[])paramDownloadParams;
-      float f2 = bgln.a();
-      float f1 = f2;
-      if (f2 < 0.01F) {
-        f1 = 1.0F;
-      }
-      paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
-      paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
-      return bgmo.c(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
-    }
-    return bgmo.c(paramBitmap, 50, 50);
+    this.a.b(bgex.a(this.a));
   }
 }
 

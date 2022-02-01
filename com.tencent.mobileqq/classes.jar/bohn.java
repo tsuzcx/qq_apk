@@ -1,13 +1,18 @@
-public class bohn
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bohn
+  implements View.OnClickListener
 {
-  public static bohm a()
-  {
-    return new bohk();
-  }
+  bohn(bohl parambohl, int paramInt, bogs parambogs) {}
   
-  public static bohp a()
+  public void onClick(View paramView)
   {
-    return new bohl();
+    if (!this.jdField_a_of_type_Bohl.c()) {
+      bohl.a(this.jdField_a_of_type_Bohl, this.jdField_a_of_type_Int, this.jdField_a_of_type_Bogs);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,41 +1,93 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
 
-public class aqme
+final class aqme
+  extends ahgk
 {
-  private boolean a;
-  
-  public static aqme a(String paramString)
+  private aqme(QQAppInterface paramQQAppInterface)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
-      return null;
-      try
-      {
-        aqme localaqme = new aqme();
-        if (new JSONObject(paramString).optInt("showTakeSameEntrance", 0) == 1) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localaqme.a = bool;
-          return localaqme;
-        }
-        if (!QLog.isColorLevel()) {}
-      }
-      catch (Exception paramString) {}
-    }
-    QLog.e("PttAutoChangeProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+    super(null, paramQQAppInterface, null, null, null);
   }
   
-  public boolean a()
+  private boolean a(ChatMessage paramChatMessage)
   {
-    return this.a;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramChatMessage != null)
+    {
+      int i = a(this.a, paramChatMessage);
+      if ((i != 81) && (i != 66) && (i != 42) && (i != 47))
+      {
+        bool1 = bool2;
+        if (i != 89) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  private boolean b(ChatMessage paramChatMessage)
+  {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    int i;
+    MessageForArkApp localMessageForArkApp;
+    if (paramChatMessage != null)
+    {
+      i = a(this.a, paramChatMessage);
+      if (i != 81) {
+        break label152;
+      }
+      if (!(paramChatMessage instanceof MessageForArkApp)) {
+        break label150;
+      }
+      localMessageForArkApp = (MessageForArkApp)paramChatMessage;
+      if ((localMessageForArkApp.isMultiMsg) || (localMessageForArkApp.istroop != 0)) {
+        break label150;
+      }
+      if ((paramChatMessage.senderuin.equals(this.a.c())) || (!paramChatMessage.isSupportReply())) {
+        break label95;
+      }
+      if (localMessageForArkApp.msg == null) {
+        break label90;
+      }
+      bool1 = true;
+    }
+    label90:
+    label95:
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          return bool1;
+          bool1 = false;
+        }
+        if ((!paramChatMessage.isSend()) || (!paramChatMessage.isSupportReply()) || (paramChatMessage.extraflag == 32772) || (paramChatMessage.extraflag == 32768) || (paramChatMessage.istroop == 3000)) {
+          break;
+        }
+        bool1 = bool2;
+      } while (localMessageForArkApp.msg != null);
+      return false;
+      return false;
+      if ((i == 66) || (i == 42) || (i == 47)) {
+        break;
+      }
+      bool1 = bool2;
+    } while (i != 89);
+    label150:
+    label152:
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqme
  * JD-Core Version:    0.7.0.1
  */

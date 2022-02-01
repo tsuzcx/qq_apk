@@ -2,9 +2,9 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
-import sed;
+import ruy;
 
-public class VideoFeedsPlayActivity$1
+class VideoFeedsPlayActivity$1
   implements Runnable
 {
   VideoFeedsPlayActivity$1(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
@@ -12,7 +12,7 @@ public class VideoFeedsPlayActivity$1
   public void run()
   {
     if (VideoFeedsPlayActivity.a(this.this$0) != null) {
-      sed.a(VideoFeedsPlayActivity.a(this.this$0).getApplication().getApplicationContext());
+      ruy.a(VideoFeedsPlayActivity.a(this.this$0).getApplication().getApplicationContext());
     }
   }
 }

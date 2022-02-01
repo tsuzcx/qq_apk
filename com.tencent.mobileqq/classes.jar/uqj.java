@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-class uqj
-  implements ukm
+final class uqj
+  implements DialogInterface.OnDismissListener
 {
-  uqj(uqi paramuqi) {}
+  uqj(upd paramupd) {}
   
-  public List<ukn> a(int paramInt, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return urc.a(this.a.a(), paramInt, paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return AppNetConnInfo.isWifiConn();
+    uqi.b(this.a);
   }
 }
 

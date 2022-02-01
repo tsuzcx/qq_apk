@@ -18,7 +18,7 @@ class MiniAppDesktopAdapter$DesktopModuleListViewHolder$1
       this.this$1.mRecycleView.scrollToPosition(0);
     }
     ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(336)).onDataDirtyFromAdapter(this.this$1.mModuleInfo.mModuleType, this.this$1.mAdapter.getData());
-    MiniAppDesktopAdapter.DesktopModuleListViewHolder.access$3300(this.this$1);
+    MiniAppDesktopAdapter.DesktopModuleListViewHolder.access$3400(this.this$1);
   }
   
   public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
@@ -27,13 +27,13 @@ class MiniAppDesktopAdapter$DesktopModuleListViewHolder$1
       this.this$1.mRecycleView.scrollToPosition(0);
     }
     ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(336)).onDataDirtyFromAdapter(this.this$1.mModuleInfo.mModuleType, this.this$1.mAdapter.getData());
-    MiniAppDesktopAdapter.DesktopModuleListViewHolder.access$3300(this.this$1);
+    MiniAppDesktopAdapter.DesktopModuleListViewHolder.access$3400(this.this$1);
   }
   
   public void onItemRangeRemoved(int paramInt1, int paramInt2)
   {
     ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(336)).onDataDirtyFromAdapter(this.this$1.mModuleInfo.mModuleType, this.this$1.mAdapter.getData());
-    MiniAppDesktopAdapter.DesktopModuleListViewHolder.access$3300(this.this$1);
+    MiniAppDesktopAdapter.DesktopModuleListViewHolder.access$3400(this.this$1);
   }
 }
 

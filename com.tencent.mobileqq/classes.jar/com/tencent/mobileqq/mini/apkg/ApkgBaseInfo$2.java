@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.apkg;
 
 import android.widget.Toast;
-import anni;
+import anzj;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class ApkgBaseInfo$2
@@ -11,7 +11,7 @@ class ApkgBaseInfo$2
   
   public void run()
   {
-    Toast.makeText(BaseApplicationImpl.getContext(), ApkgBaseInfo.access$000()[this.val$domainType] + anni.a(2131699092) + this.val$requestDomainConfig, 1).show();
+    Toast.makeText(BaseApplicationImpl.getContext(), ApkgBaseInfo.access$000()[this.val$domainType] + anzj.a(2131699199) + this.val$requestDomainConfig, 1).show();
   }
 }
 

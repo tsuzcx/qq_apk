@@ -1,33 +1,18 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgSuspiciousFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajkk
+  implements View.OnClickListener
 {
-  public PublicAccountInfo a;
-  public String a;
-  public String b = "";
+  public ajkk(NewFriendMoreSysMsgSuspiciousFragment paramNewFriendMoreSysMsgSuspiciousFragment) {}
   
-  public ajkk(PublicAccountInfo paramPublicAccountInfo)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.jdField_a_of_type_JavaLangString = str;
-  }
-  
-  public void b(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.b = str;
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

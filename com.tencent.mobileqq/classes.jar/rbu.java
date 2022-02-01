@@ -1,17 +1,18 @@
-import kotlin.Metadata;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "isFinish", "", "wording", "", "kotlin.jvm.PlatformType", "onRedPacketTaskFinish"}, k=3, mv={1, 1, 16})
-final class rbu
-  implements qza
+public class rbu
+  implements View.OnClickListener
 {
-  rbu(rbi paramrbi) {}
+  public rbu(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public final void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    rbi localrbi = this.a;
-    if (localrbi != null) {
-      localrbi.a(paramBoolean, paramString);
-    }
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

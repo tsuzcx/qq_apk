@@ -1,18 +1,20 @@
-import java.util.Comparator;
-
-class mba
-  implements Comparator<lnn>
+public abstract interface mba
 {
-  mba(may parammay) {}
+  public abstract void a();
   
-  public int a(lnn paramlnn1, lnn paramlnn2)
-  {
-    if (paramlnn1.a) {}
-    while (paramlnn2.a) {
-      return -1;
-    }
-    return 0;
-  }
+  public abstract boolean a();
+  
+  public abstract boolean a(mbd parammbd);
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean b(mbd parammbd);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

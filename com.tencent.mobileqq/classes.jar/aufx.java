@@ -1,18 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.forward.ForwardArkH5StructOption;
-import com.tencent.qphone.base.util.QLog;
-
-public class aufx
-  implements apip
+class aufx
+  implements auey
 {
-  public aufx(ForwardArkH5StructOption paramForwardArkH5StructOption) {}
+  aufx(auft paramauft) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 1, new Object[] { "ShareArkFromH5 checkUrlFromNormal CheckShareUrl = ", Boolean.valueOf(paramBoolean) });
-    if (paramBoolean) {
-      this.a.a.putBoolean("forward_ark_from_h5_success", true);
-    }
+    this.a.a(false, aumg.a(this.a.a.a()), this.a.c(), new aufy(this));
+  }
+  
+  public void b()
+  {
+    auft.b(this.a);
   }
 }
 

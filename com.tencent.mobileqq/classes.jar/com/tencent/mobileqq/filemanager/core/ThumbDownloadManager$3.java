@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atgs;
-import atgu;
+import atym;
+import atyo;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 public class ThumbDownloadManager$3
   implements Runnable
 {
-  public ThumbDownloadManager$3(atgs paramatgs) {}
+  public ThumbDownloadManager$3(atym paramatym) {}
   
   public void run()
   {
-    if (atgs.a(this.this$0).size() >= 8) {}
-    while (atgs.a(this.this$0).size() == 0) {
+    if (atym.a(this.this$0).size() >= 8) {}
+    while (atym.a(this.this$0).size() == 0) {
       return;
     }
-    atgu localatgu = (atgu)atgs.a(this.this$0).get(0);
-    if (localatgu == null)
+    atyo localatyo = (atyo)atym.a(this.this$0).get(0);
+    if (localatyo == null)
     {
-      atgs.a(this.this$0).remove(0);
-      atgs.a(this.this$0);
+      atym.a(this.this$0).remove(0);
+      atym.a(this.this$0);
       return;
     }
-    atgs.a(this.this$0).remove(localatgu);
-    atgs.a(this.this$0, localatgu);
-    atgs.b(this.this$0, localatgu);
+    atym.a(this.this$0).remove(localatyo);
+    atym.a(this.this$0, localatyo);
+    atym.b(this.this$0, localatyo);
   }
 }
 

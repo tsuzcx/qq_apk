@@ -1,17 +1,13 @@
-import com.tencent.ttpic.openapi.initializer.PtuToolsInitializer;
-import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
-import com.tencent.ttpic.util.Coffee;
-import com.tencent.ttpic.util.DecryptListener;
+import cooperation.qzone.panorama.widget.PanoramaView;
 
-final class bndg
-  implements DecryptListener
+public class bndg
+  implements bncn
 {
-  public byte[] decrypt(byte[] paramArrayOfByte)
+  public bndg(PanoramaView paramPanoramaView) {}
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (!FeatureManager.Features.PTU_TOOLS.isFunctionReady()) {
-      return paramArrayOfByte;
-    }
-    return Coffee.drink(paramArrayOfByte, Coffee.getDefaultSign());
+    this.a.a(paramFloat1, paramFloat2);
   }
 }
 

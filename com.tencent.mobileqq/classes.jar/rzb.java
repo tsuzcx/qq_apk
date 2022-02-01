@@ -1,17 +1,9 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout;
 
-final class rzb
-  implements pyu
+public abstract interface rzb
 {
-  rzb(String paramString, boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsHelper", 2, "followPubAccount() onFollowPublicAccount uin=" + this.jdField_a_of_type_JavaLangString + ", isSuccess=" + paramBoolean + ", isUGC=" + this.jdField_a_of_type_Boolean + ", data=" + paramInt);
-    }
-    ryx.a(paramBoolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-  }
+  public abstract void a(float paramFloat, View paramView, HorizontalRefreshLayout paramHorizontalRefreshLayout);
 }
 
 

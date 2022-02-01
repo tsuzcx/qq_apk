@@ -1,20 +1,40 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bfmo
-  implements View.OnClickListener
+class bfmo
+  implements aasd
 {
-  public bfmo(VisitorTroopCardFragment paramVisitorTroopCardFragment, Dialog paramDialog) {}
+  bfmo(bfmn parambfmn, String paramString) {}
   
-  public void onClick(View paramView)
+  public void callback(Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    long l = paramBundle.getLong("lastMsgTime");
+    paramBundle = paramBundle.getString("lastMsgContent");
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("lastMsgTime", l);
+      localJSONObject.put("lastMsgContent", paramBundle);
+      if (!TextUtils.isEmpty(paramBundle))
+      {
+        localJSONObject.put("ret", 0);
+        localJSONObject.put("errorMsg", "");
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Bfmn.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+        localJSONObject.put("ret", -1);
+        localJSONObject.put("errorMsg", "lastSpeakMsg is empty");
+      }
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (JSONException paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
   }
 }
 

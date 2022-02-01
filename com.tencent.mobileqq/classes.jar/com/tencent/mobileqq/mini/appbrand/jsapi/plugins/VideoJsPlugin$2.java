@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import anni;
-import bglp;
-import bgpa;
+import anzj;
+import bhlq;
+import bhpc;
 
 class VideoJsPlugin$2
   implements Runnable
@@ -11,7 +11,7 @@ class VideoJsPlugin$2
   
   public void run()
   {
-    bglp.a(this.this$0.jsPluginEngine.getActivityContext(), 230, anni.a(2131714968), anni.a(2131714969), anni.a(2131714972), anni.a(2131714970), new VideoJsPlugin.2.1(this), new VideoJsPlugin.2.2(this)).show();
+    bhlq.a(this.this$0.jsPluginEngine.getActivityContext(), 230, anzj.a(2131715077), anzj.a(2131715078), anzj.a(2131715081), anzj.a(2131715079), new VideoJsPlugin.2.1(this), new VideoJsPlugin.2.2(this)).show();
   }
 }
 

@@ -1,30 +1,15 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
+import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
 
-class ykk
-  extends LruCache<ykm, Drawable>
+public class ykk
+  implements blmh
 {
-  ykk(ykj paramykj, int paramInt)
-  {
-    super(paramInt);
-  }
+  public ykk(MemoriesInnerListView paramMemoriesInnerListView) {}
   
-  protected int a(ykm paramykm, Drawable paramDrawable)
+  public void onScrollStateChanged(int paramInt)
   {
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
-      {
-        int i = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * i;
-        ykv.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramykm, " size=", Integer.valueOf(i) });
-        return i;
-      }
+    if ((paramInt == 4097) && (this.a.a != null)) {
+      this.a.a.a(MemoriesInnerListView.a(this.a).a);
     }
-    return 524288;
   }
 }
 

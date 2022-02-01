@@ -1,6 +1,19 @@
-class afuq
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class afuq
+  implements View.OnClickListener
 {
-  private static afuo a = new afuo("aio_client_module", null);
+  public afuq(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.g();
+    new bdlq(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.b }).a();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

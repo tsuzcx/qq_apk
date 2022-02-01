@@ -1,27 +1,27 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatSettingFragment;
 import com.tencent.qphone.base.util.QLog;
 
-class aore
-  implements ServiceConnection
+public class aore
+  extends anuw
 {
-  aore(aord paramaord) {}
+  public aore(HiddenChatSettingFragment paramHiddenChatSettingFragment) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  protected void onSetHiddenSession(boolean paramBoolean, int paramInt)
   {
-    aord.a(this.a, aoye.a(paramIBinder));
+    super.onSetHiddenSession(paramBoolean, paramInt);
     if (QLog.isColorLevel()) {
-      QLog.d("ARGlobalRemoteManager", 2, "onServiceConnected ARGlobalRemoteManager=" + aord.a(this.a));
+      QLog.d("HiddenChatSetting", 2, "onSetHiddenSession " + paramBoolean + " type=" + paramInt);
     }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    aord.a(this.a, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("ARGlobalRemoteManager", 2, "onServiceDisconnected ARGlobalRemoteManager=" + aord.a(this.a));
+    if (paramInt == 42318) {
+      if (!paramBoolean) {
+        HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.a(this.a), aorf.a(HiddenChatSettingFragment.a(this.a).c(), this.a.getActivity()));
+      }
     }
+    while ((paramInt != 42319) || (paramBoolean)) {
+      return;
+    }
+    HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.b(this.a), aorf.b(HiddenChatSettingFragment.a(this.a).c(), this.a.getActivity()));
   }
 }
 

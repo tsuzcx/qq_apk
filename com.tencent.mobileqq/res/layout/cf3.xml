@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:gravity="center" android:layout_gravity="center" android:id="@id/fie" android:background="@drawable/tips_popup_win_bg" android:layout_width="160.0dip" android:layout_height="170.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.tavcut.view.TAVCutVideoView android:id="@id/nk3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <RelativeLayout android:id="@id/nga" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/dum" android:padding="5.0dip" android:layout_width="31.0dip" android:layout_height="31.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="45.0dip" android:src="@drawable/f_z" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-        <ImageView android:id="@id/mt1" android:padding="5.0dip" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginTop="45.0dip" android:layout_marginRight="13.0dip" android:src="@drawable/aus" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        <ImageView android:id="@id/mtz" android:padding="5.0dip" android:layout_width="70.0dip" android:layout_height="70.0dip" android:src="@drawable/dhl" android:layout_centerInParent="true" />
-        <TextView android:textSize="@dimen/aw3" android:textColor="@color/al3" android:id="@id/nn5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginBottom="100.0dip" android:text="00:00" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-        <TextView android:textSize="@dimen/aw3" android:textColor="@color/al3" android:id="@id/nq5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_marginBottom="100.0dip" android:text="00:00" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-        <SeekBar android:id="@id/nhe" android:paddingLeft="9.0dip" android:paddingRight="9.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="103.0dip" android:maxHeight="1.0dip" android:max="100" android:progress="0" android:minHeight="1.0dip" android:thumbOffset="0.0dip" android:layout_toLeftOf="@id/nq5" android:layout_toRightOf="@id/nn5" android:layout_alignParentBottom="true" style="@style/zo" />
-    </RelativeLayout>
-</FrameLayout>
+    <ImageView android:id="@id/mvt" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/al3" android:id="@id/photo_prievew_progress_dialog_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:text="@string/xdj" android:layout_below="@id/mvt" android:layout_centerHorizontal="true" />
+    <Button android:textColor="@color/al3" android:gravity="center" android:id="@id/afr" android:background="@drawable/bku" android:paddingLeft="16.0dip" android:paddingTop="6.0dip" android:paddingRight="16.0dip" android:paddingBottom="6.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="取消" android:layout_below="@id/photo_prievew_progress_dialog_text" android:layout_centerHorizontal="true" />
+</RelativeLayout>

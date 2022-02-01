@@ -1,16 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.text.SpannableString;
 
 class bhxe
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  bhxe(bhxb parambhxb) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    bhxb.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidateSelf();
-  }
+  int jdField_a_of_type_Int;
+  SpannableString jdField_a_of_type_AndroidTextSpannableString;
+  int b;
 }
 
 

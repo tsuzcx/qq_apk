@@ -1,37 +1,68 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsDebugView;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils.TruncateAt;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 
-public final class auba
-  implements Handler.Callback
+public class auba
+  implements bcnz
 {
-  private final WeakReference<TdsDebugView> a;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
   
-  private auba(TdsDebugView paramTdsDebugView)
+  public auba(ViewGroup paramViewGroup)
   {
-    this.a = new WeakReference(paramTdsDebugView);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560915, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366604));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366615));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365388));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(1);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.a();
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public View a()
   {
-    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
-    if (localTdsDebugView == null) {
-      return true;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    case 1: 
-      TdsDebugView.a(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-      return true;
-    case 2: 
-      TdsDebugView.b(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-      return true;
-    }
-    TdsDebugView.c(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-    return true;
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public View a(String paramString)
+  {
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return null;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+  }
+  
+  public ImageView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public TextView c()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public TextView d()
+  {
+    return null;
   }
 }
 

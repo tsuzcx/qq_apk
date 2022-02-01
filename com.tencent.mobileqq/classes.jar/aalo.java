@@ -1,26 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.event.UserStateUpdateEvent;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
 
-class aalo
-  implements View.OnClickListener
+public class aalo
+  extends BroadcastReceiver
 {
-  aalo(aaln paramaaln, int paramInt) {}
+  private aalo(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Int < aaln.a(this.jdField_a_of_type_Aaln).size())
+    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_reload_get_main_page")))
     {
-      aaln.b(this.jdField_a_of_type_Aaln).remove(this.jdField_a_of_type_Int);
-      ((ArrayList)this.jdField_a_of_type_Aaln.a.a()).remove(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Aaln.notifyDataSetChanged();
-      if (CommodityListView.a(this.jdField_a_of_type_Aaln.a) != null) {
-        CommodityListView.a(this.jdField_a_of_type_Aaln.a).a(aaln.c(this.jdField_a_of_type_Aaln).size());
-      }
+      SubscribePersonalDetailFragment.b(this.a, false);
+      aaak.a().a(new UserStateUpdateEvent());
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

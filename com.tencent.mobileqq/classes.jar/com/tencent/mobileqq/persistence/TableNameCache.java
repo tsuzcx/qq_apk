@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class TableNameCache
 {
-  public boolean isInit;
+  public boolean isInit = false;
   private ConcurrentHashMap<String, Boolean> tbnCache = new ConcurrentHashMap();
   
   public void addToTableNameCache(String paramString)

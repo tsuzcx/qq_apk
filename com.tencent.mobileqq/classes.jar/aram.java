@@ -1,78 +1,56 @@
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.Iterator;
+import java.util.Set;
 
 public class aram
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString = "";
-  private String c = "";
-  private String d = "";
-  private String e = "";
-  private String f = "";
-  
-  public static aram a(JSONObject paramJSONObject)
+  private static SharedPreferences a(long paramLong, BaseApplicationImpl paramBaseApplicationImpl)
   {
-    if (paramJSONObject == null) {
+    return paramBaseApplicationImpl.getSystemSharedPreferences("conf_" + paramLong + "_sharepref", 4);
+  }
+  
+  public static arha a(BaseApplicationImpl paramBaseApplicationImpl)
+  {
+    arak.a().a(419, 0L, false);
+    arhb localarhb = new arhb();
+    paramBaseApplicationImpl = a(419, paramBaseApplicationImpl);
+    if (paramBaseApplicationImpl != null) {
+      try
+      {
+        paramBaseApplicationImpl = localarhb.a(paramBaseApplicationImpl);
+        if (paramBaseApplicationImpl != null) {
+          return paramBaseApplicationImpl;
+        }
+      }
+      catch (Exception paramBaseApplicationImpl) {}
+    }
+    return new arha();
+  }
+  
+  private static araj[] a(int paramInt, BaseApplicationImpl paramBaseApplicationImpl)
+  {
+    Object localObject1 = a(0L, paramBaseApplicationImpl);
+    paramBaseApplicationImpl = b(0L, paramBaseApplicationImpl);
+    Object localObject2 = ((SharedPreferences)localObject1).getStringSet(paramInt + "_ids", null);
+    if ((localObject2 == null) || (((Set)localObject2).isEmpty())) {
       return null;
     }
-    aram localaram = new aram();
-    localaram.jdField_a_of_type_Int = paramJSONObject.getInt("type");
-    localaram.jdField_a_of_type_JavaLangString = paramJSONObject.getString("color");
-    localaram.jdField_a_of_type_Float = ((float)paramJSONObject.getDouble("alpha"));
-    localaram.jdField_b_of_type_JavaLangString = paramJSONObject.getString("text");
-    localaram.c = paramJSONObject.getString("tcolor");
-    localaram.d = paramJSONObject.getString("icon");
-    localaram.f = paramJSONObject.getString("tshow");
-    localaram.e = paramJSONObject.getString("tpress");
-    localaram.jdField_b_of_type_Int = paramJSONObject.getInt("click");
-    return localaram;
+    localObject1 = new araj[((Set)localObject2).size()];
+    localObject2 = ((Set)localObject2).iterator();
+    int i = 0;
+    while (((Iterator)localObject2).hasNext())
+    {
+      String str = (String)((Iterator)localObject2).next();
+      localObject1[i] = new araj(Integer.valueOf(str).intValue(), paramBaseApplicationImpl.getString(paramInt + "_" + str, null));
+      i += 1;
+    }
+    return localObject1;
   }
   
-  public float a()
+  private static SharedPreferences b(long paramLong, BaseApplicationImpl paramBaseApplicationImpl)
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String d()
-  {
-    return this.d;
-  }
-  
-  public String e()
-  {
-    return this.e;
-  }
-  
-  public String f()
-  {
-    return this.f;
+    return paramBaseApplicationImpl.getSystemSharedPreferences("conf_" + paramLong + "_content_sharepref", 4);
   }
 }
 

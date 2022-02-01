@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/n8t" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/n8u" android:background="#80000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+<FrameLayout android:id="@id/idg" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:background="@color/ag4" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/na7" android:layout_width="fill_parent" android:layout_height="52.0dip">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/n_w" android:background="@drawable/gnv" android:padding="14.0dip" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="8.0dip" android:src="@drawable/gmt" android:scaleType="fitCenter" />
+            <TextView android:textSize="18.0dip" android:textColor="@color/bp" android:id="@id/ntd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wsm" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <com.tencent.biz.qqcircle.fragments.QCircleBlockContainer android:id="@id/mfp" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cn_" />
+    <include android:id="@id/ndk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/coh" />
+    <com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView android:id="@id/neb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </FrameLayout>

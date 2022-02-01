@@ -1,217 +1,66 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Process;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class aobd
+  extends anzi
 {
-  private static volatile aobd jdField_a_of_type_Aobd;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static aobd a()
+  protected void a()
   {
-    if (jdField_a_of_type_Aobd == null) {}
-    try
-    {
-      if (jdField_a_of_type_Aobd == null) {
-        jdField_a_of_type_Aobd = new aobd();
-      }
-      return jdField_a_of_type_Aobd;
+    super.a();
+    if (this.c >= anzg.a().a(this.a.jdField_a_of_type_Array2dOfLong, this.a.jdField_a_of_type_Int, this.a.b, MemoryManager.a(Process.myPid())) / 12000L) {
+      this.a.a(7, null);
     }
-    finally {}
-  }
-  
-  private boolean a(BroadcastReceiver paramBroadcastReceiver, Context paramContext)
-  {
-    return (paramBroadcastReceiver == null) || (paramContext == null);
-  }
-  
-  public Intent a(Context paramContext)
-  {
-    if (paramContext == null)
+    Object localObject;
+    do
     {
-      QLog.e("AVGameShareUtil", 1, "getBackFlowIntent error: context is null");
-      return null;
-    }
-    paramContext = new Intent(paramContext, SplashActivity.class);
-    paramContext.putExtra("thridparty_prepare_av_game", true);
-    paramContext.addFlags(67108864);
-    paramContext.addFlags(268435456);
-    paramContext.putExtra("fragment_id", 1);
-    return paramContext;
+      do
+      {
+        do
+        {
+          return;
+        } while (this.d != 1L);
+        MemoryManager.a().a("LITE_GUARD");
+        localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      } while (localObject == null);
+      localObject = (bezz)((QQAppInterface)localObject).getManager(233);
+    } while (localObject == null);
+    ((bezz)localObject).a(true);
   }
   
-  public String a(String paramString)
+  protected void a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null)
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
     {
-      QLog.e("AVGameShareUtil", 1, "getCoverUrl error: map is null");
-      return null;
-    }
-    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    QLog.d("AVGameShareUtil", 1, "getCoverUrl gameId: " + paramString + " coverUrl: " + str);
-    return str;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null)
-    {
-      QLog.e("AVGameShareUtil", 1, "clearCoverMap invalid: map is null");
+      localGuardManager.a(i, paramString);
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
   }
   
-  public void a(Activity paramActivity, String paramString, int paramInt)
+  protected void b()
   {
-    new aobb(paramActivity, paramString, paramInt).c();
-  }
-  
-  public void a(BroadcastReceiver paramBroadcastReceiver, Context paramContext)
-  {
-    try
-    {
-      if (a(paramBroadcastReceiver, paramContext))
-      {
-        QLog.e("AVGameShareUtil", 2, "unregisterShareReceiver error: iLegalReceiver");
-        return;
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        QLog.e("AVGameShareUtil", 2, "unregisterShareReceiver error: is registered");
-        return;
-      }
-    }
-    catch (Exception paramBroadcastReceiver)
-    {
-      QLog.e("AVGameShareUtil", 2, "registerShareReceiver error: " + paramBroadcastReceiver.getMessage());
-      return;
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.mobileqq.app.avgameshare.avgameshareutil");
-    paramContext.registerReceiver(paramBroadcastReceiver, localIntentFilter);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(Context paramContext, boolean paramBoolean)
-  {
-    if (paramContext == null) {}
-    try
-    {
-      QLog.e("AVGameShareUtil", 1, "notifyFromForward error: context is null");
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      Intent localIntent;
-      QLog.e("AVGameShareUtil", 1, "notifyFromForward error: " + paramContext.getMessage());
-    }
-    localIntent = new Intent();
-    localIntent.setAction("com.tencent.mobileqq.app.avgameshare.avgameshareutil");
-    localIntent.putExtra("avgame_share_result_success", paramBoolean);
-    localIntent.setPackage(paramContext.getPackageName());
-    paramContext.sendBroadcast(localIntent);
-    return;
-  }
-  
-  public void a(AVGameAppInterface paramAVGameAppInterface, long paramLong1, long paramLong2, String paramString1, int paramInt1, String paramString2, int paramInt2, aobj paramaobj)
-  {
-    QLog.d("AVGameShareUtil", 1, "requestGetShareLink roomId: " + paramLong1 + " shareUin: " + paramLong2 + " shareName: " + paramString1 + " shareType: " + paramInt1 + " gameId: " + paramString2 + " gameType: " + paramInt2);
-    long l = System.currentTimeMillis();
-    HashMap localHashMap = new HashMap();
-    paramaobj = new aobg(this, l, localHashMap, paramAVGameAppInterface, paramaobj);
-    localHashMap.put(Long.valueOf(l), paramaobj);
-    paramAVGameAppInterface.addObserver(paramaobj);
-    mxl.a().a(paramLong1, paramLong2, paramString1, paramInt1, paramString2, paramInt2, l);
-  }
-  
-  public void a(AVGameAppInterface paramAVGameAppInterface, Activity paramActivity, long paramLong1, long paramLong2, String paramString1, String paramString2, int paramInt)
-  {
-    QLog.d("AVGameShareUtil", 1, "shareAVGameResultLink currentUin: " + paramLong2 + " roomId: " + paramLong1 + " shareUin: " + paramLong2 + " shareName: " + paramString1 + " roundId: " + paramString2 + " gameType: " + paramInt);
-    a(paramAVGameAppInterface, paramLong1, paramLong2, paramString1, 2, paramString2, paramInt, new aobf(this, paramActivity, paramLong2, paramLong1, paramInt, paramString1, paramString2));
-  }
-  
-  public void a(AVGameAppInterface paramAVGameAppInterface, BaseActivity paramBaseActivity, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    QLog.d("AVGameShareUtil", 1, "sinviteCallbackhareAVGameEntry currentUin: " + paramLong2 + " roomId: " + paramLong1 + " shareUin: " + paramLong2 + " shareName: " + paramString + " gameSerType:" + paramInt);
-    a(paramAVGameAppInterface, paramLong1, paramLong2, paramString, 1, "", paramInt, new aobe(this, paramBaseActivity, paramLong2, paramLong1, paramString));
-  }
-  
-  public void a(AppInterface paramAppInterface, String paramString, aobj paramaobj)
-  {
-    QLog.d("AVGameShareUtil", 1, "requestGetInviteBackflowInfo key: " + paramString);
-    mwd localmwd = (mwd)paramAppInterface.getManager(373);
-    long l = System.currentTimeMillis();
-    HashMap localHashMap = new HashMap();
-    paramaobj = new aobh(this, l, localHashMap, paramAppInterface, paramaobj);
-    localHashMap.put(Long.valueOf(l), paramaobj);
-    paramAppInterface.addObserver(paramaobj);
-    if (localmwd != null) {
-      localmwd.a(paramString, l);
+    if (this.c > 2L) {
+      this.c -= 2L;
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt2, String paramString3, int paramInt3)
+  protected void b(String paramString)
   {
-    QLog.d("AVGameShareUtil", 1, "requestShareUrlAndSendMsg roomId: " + paramLong1 + " curType: " + paramInt1 + " friendUin: " + paramString1 + " shareUin: " + paramLong2 + " shareName: " + paramString2 + " shareType: " + paramInt2 + " gameId: " + paramString3 + " gameType: " + paramInt3);
-    mwd localmwd = (mwd)paramQQAppInterface.getManager(373);
-    long l = System.currentTimeMillis();
-    HashMap localHashMap = new HashMap();
-    paramString1 = new aobi(this, l, localHashMap, paramQQAppInterface, paramInt1, paramString1, paramString2, paramLong2, paramLong1);
-    localHashMap.put(Long.valueOf(l), paramString1);
-    paramQQAppInterface.addObserver(paramString1);
-    if (localmwd != null) {
-      localmwd.a(paramLong1, paramLong2, paramString2, paramInt2, paramString3, paramInt3, l);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-    QLog.d("AVGameShareUtil", 1, "addCoverUrl gameId: " + paramString1 + " coverUrl: " + paramString2);
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
-  }
-  
-  public void b(BroadcastReceiver paramBroadcastReceiver, Context paramContext)
-  {
-    try
-    {
-      if (a(paramBroadcastReceiver, paramContext))
-      {
-        QLog.e("AVGameShareUtil", 2, "unregisterShareReceiver error: iLegalReceiver");
-        return;
-      }
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        QLog.e("AVGameShareUtil", 2, "unregisterShareReceiver error: is not registered");
-        return;
-      }
-    }
-    catch (Exception paramBroadcastReceiver)
-    {
-      QLog.e("AVGameShareUtil", 2, "unregisterShareReceiver error: " + paramBroadcastReceiver.getMessage());
-      return;
-    }
-    paramContext.unregisterReceiver(paramBroadcastReceiver);
-    this.jdField_a_of_type_Boolean = false;
+    super.b(paramString);
+    CoreService.startCoreService(anzg.a().a);
+    this.a.b();
+    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(3, 0L, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aobd
  * JD-Core Version:    0.7.0.1
  */

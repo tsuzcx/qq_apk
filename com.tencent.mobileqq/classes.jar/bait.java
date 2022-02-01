@@ -1,154 +1,96 @@
 import android.content.Intent;
+import android.graphics.PointF;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import mqq.observer.AccountObserver;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileSimpleView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bait
-  extends AccountObserver
+public class bait
+  extends baik
 {
-  bait(bais parambais) {}
-  
-  public void onGetQuickRegisterAccount(boolean paramBoolean, int paramInt, String paramString1, String paramString2, byte[] paramArrayOfByte)
+  public bait(baei parambaei, azxr paramazxr)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterWithNickAndPwd", 2, "onGetQuickRegisterAccount code = " + paramInt + ";uin = " + paramString1 + ";phoneNum=" + paramString2 + ";mIsfromLH=" + this.a.d);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.isFinishing()) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.c();
-    if (!paramBoolean) {
-      try
-      {
-        paramString1 = new String(paramArrayOfByte, "utf-8");
-        paramString2 = paramString1;
-        if (TextUtils.isEmpty(paramString1)) {
-          paramString2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getString(2131715770);
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(paramString2, 1);
-        return;
-      }
-      catch (UnsupportedEncodingException paramString1)
-      {
-        for (;;)
-        {
-          paramString1.printStackTrace();
-          paramString1 = null;
-        }
-      }
-    }
-    if (paramInt == 0)
-    {
-      bais.a(this.a, paramString1);
-      bais.b(this.a, paramString2);
-      if ((TextUtils.isEmpty(bais.a(this.a))) || (TextUtils.isEmpty(bais.b(this.a))))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131715770, 1);
-        return;
-      }
-      paramString1 = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, RegisterQQNumberActivity.class);
-      paramString1.putExtra("key_register_secret_phone", paramString2);
-      paramString1.putExtra("uin", bais.a(this.a));
-      paramString1.putExtra("key_register_password", bais.c(this.a));
-      paramString1.putExtra("key_register_unbind", true);
-      paramString1.putExtra("key_register_from_quick_register", this.a.jdField_a_of_type_Boolean);
-      paramString1.putExtra("key_register_is_phone_num_registered", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.b);
-      paramString1.putExtra("key_register_has_pwd", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.c);
-      paramString1.putExtra("key_register_from_send_sms", this.a.b);
-      paramString1.putExtra("key_register_chose_bind_phone", false);
-      if ((this.a.c) && (!this.a.d))
-      {
-        bais.a(this.a, paramString1, false);
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivity(paramString1);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.finish();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131715770, 1);
+    super(parambaei, paramazxr);
   }
   
-  public void onRegisterCommitPassResp(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
+  private void a(azvr paramazvr)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterWithNickAndPwd", 2, "RegisterByNicknameAndPwdActivity onRegisterCommitPassResp ");
+    if ((paramazvr.jdField_a_of_type_JavaLangObject instanceof View)) {
+      ((View)paramazvr.jdField_a_of_type_JavaLangObject).setVisibility(8);
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.isFinishing()) {
-      return;
-    }
-    try
+    j();
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X8008119", "", 1, 0, 0, nnr.a(), "", "");
+  }
+  
+  public String a()
+  {
+    return "VasProfileHeaderSimpleComponent";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
     {
-      paramArrayOfByte2 = new String(paramArrayOfByte2, "utf-8");
-      QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (paramBoolean)
-      {
-        str = Integer.toString(paramInt);
-        if (paramArrayOfByte2 != null) {
-          break label172;
-        }
-        localObject = "";
-        bcst.a(localQQAppInterface, "new_reg", "setting_page_yes", "result", "", 1, "", str, "", (String)localObject, "", "", "", "", "");
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.c();
-        if (paramBoolean) {
-          break label179;
-        }
-        paramString = paramArrayOfByte2;
-        if (TextUtils.isEmpty(paramArrayOfByte2)) {
-          paramString = this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getString(2131715770);
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(paramString, 1);
-      }
+      VasProfileSimpleView localVasProfileSimpleView = new VasProfileSimpleView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azxr)this.b);
+      localVasProfileSimpleView.setClickListener(this);
+      localVasProfileSimpleView.a();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileSimpleView;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
     }
-    catch (UnsupportedEncodingException paramArrayOfByte2)
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  void j()
+  {
+    Object localObject2 = new PointF();
+    baeh localbaeh = this.jdField_a_of_type_Baei.a(1003);
+    Object localObject1 = localObject2;
+    if (localbaeh != null)
     {
-      for (;;)
-      {
-        paramArrayOfByte2.printStackTrace();
-        paramArrayOfByte2 = null;
-        continue;
-        String str = "-1001";
-        continue;
-        label172:
-        Object localObject = paramArrayOfByte2;
+      localObject1 = localObject2;
+      if ((localbaeh instanceof baih)) {
+        localObject1 = ((baih)localbaeh).a();
       }
-      label179:
-      if (QLog.isColorLevel())
-      {
-        paramArrayOfByte2 = new StringBuilder().append("RegisterByNicknameAndPwdActivity onRegisterCommitPassResp code = ").append(paramInt).append(";uin = ").append(paramString).append(";contactsig = ");
-        if (paramArrayOfByte1 != null) {
-          break label299;
-        }
-      }
-      label299:
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        QLog.d("RegisterWithNickAndPwd", 2, paramBoolean);
-        if (paramInt != 0) {
-          break label347;
-        }
-        bais.a(this.a, paramString);
-        bais.a(this.a, paramArrayOfByte1);
-        bais.b(this.a, paramArrayOfByte3);
-        if (!TextUtils.isEmpty(bais.a(this.a))) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131715770, 1);
-        return;
-      }
-      if ((bais.a(this.a) == null) || (bais.a(this.a).length == 0))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131715770, 1);
-        return;
-      }
-      this.a.e();
-      return;
-      label347:
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131715770, 1);
     }
+    localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, VipProfileCardDiyActivity.class);
+    ((Intent)localObject2).putExtra("extra_from", 1);
+    ((Intent)localObject2).putExtra("extra_card_id", ((azxr)this.b).a.lCurrentBgId);
+    ((Intent)localObject2).putExtra("extra_card_url", ((azxr)this.b).a.backgroundUrl);
+    ((Intent)localObject2).putExtra("extra_card_default_text", ((azxr)this.b).a.diyDefaultText);
+    if ((!TextUtils.isEmpty(((azxr)this.b).a.diyText)) && (((azxr)this.b).a.diyTextFontId > 0))
+    {
+      ((Intent)localObject2).putExtra("extra_card_text", ((azxr)this.b).a.diyText);
+      ((Intent)localObject2).putExtra("extra_card_font", ((azxr)this.b).a.diyTextFontId);
+      ((Intent)localObject2).putExtra("extra_card_x", ((PointF)localObject1).x);
+      ((Intent)localObject2).putExtra("extra_card_y", ((PointF)localObject1).y);
+      ((Intent)localObject2).putExtra("extra_card_scale", ((azxr)this.b).a.diyTextScale);
+      ((Intent)localObject2).putExtra("extra_card_rotation", ((azxr)this.b).a.diyTextDegree);
+      ((Intent)localObject2).putExtra("extra_card_transparency", ((azxr)this.b).a.diyTextTransparency);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivityForResult((Intent)localObject2, 600001);
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    if ((paramView.getTag() instanceof azvr))
+    {
+      azvr localazvr = (azvr)paramView.getTag();
+      if (localazvr.jdField_a_of_type_Int == 73) {
+        a(localazvr);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

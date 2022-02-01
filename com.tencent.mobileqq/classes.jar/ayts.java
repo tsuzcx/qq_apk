@@ -1,69 +1,27 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.Pair;
-import kotlin.TypeCastException;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
+import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
+import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollViewPager;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"CONSTELLATION_CARD_HEIGHT_DEFAULT", "", "TAG", "", "applyActivityResult", "Lkotlin/Pair;", "", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "intent", "Landroid/content/Intent;", "currentConstellation", "sendBirthDayChangedRequest", "", "birthday", "age", "constellation", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class ayts
+public class ayts
+  extends Handler
 {
-  @NotNull
-  public static final Pair<Integer, String> a(@NotNull QQAppInterface paramQQAppInterface, @Nullable Intent paramIntent, @Nullable String paramString)
+  public ayts(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
   {
-    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
-    Pair localPair = new Pair(Integer.valueOf(0), "");
-    int k;
-    if (paramIntent != null)
-    {
-      k = paramIntent.getShortExtra("param_year", (short)1990);
-      int m = paramIntent.getByteExtra("param_month", (byte)1);
-      int n = paramIntent.getByteExtra("param_day", (byte)1);
-      int i = paramIntent.getIntExtra("param_age", 0);
-      int j = paramIntent.getIntExtra("param_constellation_id", aysf.b);
-      k = k << 16 | m << 8 | n;
-      paramIntent = bght.c(j);
-      if (QLog.isColorLevel()) {
-        QLog.d("ConstellationView", 2, new Object[] { "applyActivityResult: called. ", "constellationStr: " + paramIntent });
-      }
-      if (!(Intrinsics.areEqual(paramIntent, paramString) ^ true)) {
-        break label227;
-      }
-      a(paramQQAppInterface, k, i, j);
-      ayph.a(paramQQAppInterface, paramIntent);
-      if (QLog.isColorLevel()) {
-        QLog.d("ConstellationView", 2, new Object[] { "applyActivityResult: called. ", "constellation: " + paramIntent });
-      }
-    }
-    for (;;)
-    {
-      localPair = new Pair(Integer.valueOf(k), paramIntent);
-      return localPair;
-      label227:
-      if (QLog.isColorLevel()) {
-        QLog.d("ConstellationView", 2, new Object[] { "applyActivityResult: called. ", "not changed, birthdayValue: " + paramString });
-      }
-    }
+    super(paramLooper);
   }
   
-  public static final void a(@NotNull QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, int paramInt3)
+  public void handleMessage(Message paramMessage)
   {
-    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "$this$sendBirthDayChangedRequest");
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("birthday", paramInt1);
-    localBundle.putInt("age", paramInt2);
-    localBundle.putInt("key_constellation", paramInt3);
-    paramQQAppInterface = paramQQAppInterface.a(2);
-    if (paramQQAppInterface == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.CardHandler");
-    }
-    ((anip)paramQQAppInterface).a(localBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("ConstellationView", 2, new Object[] { "sendBirthDayChangedRequest: called. ", "constellation: " + paramInt3 });
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a() > 1)
+    {
+      paramMessage = this.a;
+      paramMessage.f += 1;
+      this.a.f %= this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a();
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.f, true);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), this.a.e);
     }
   }
 }

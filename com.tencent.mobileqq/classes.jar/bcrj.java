@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.startup.step.UpdateSecureFileStrategy;
-import java.io.File;
-import java.io.FileFilter;
-import mqq.app.SecurityFileFrameworkManagerImpl;
+import com.tencent.mobileqq.app.MessageHandler;
 
 public class bcrj
-  implements FileFilter
 {
-  public bcrj(UpdateSecureFileStrategy paramUpdateSecureFileStrategy) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
   
-  public boolean accept(File paramFile)
+  public bcrj(bcrg parambcrg, String paramString, int paramInt, long paramLong1, long paramLong2)
   {
-    if ((paramFile.isDirectory()) && (paramFile.getName().startsWith("NoRename#")))
-    {
-      paramFile = paramFile.getName().replaceAll("NoRename#", "");
-      return (paramFile.length() == 9) && (paramFile.charAt(0) == SecurityFileFrameworkManagerImpl.generateVerifyChar(paramFile.substring(1)));
-    }
-    return false;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_Int = MessageHandler.e;
   }
 }
 

@@ -1,118 +1,78 @@
-import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.search.rich.RichNodeRootLayout;
+import com.tencent.mobileqq.richstatus.ActionListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public abstract class bbsd
-  implements bbrt
+public class bbsd
+  extends BaseAdapter
 {
-  private View jdField_a_of_type_AndroidViewView;
-  public bbrr a;
-  private RichNodeRootLayout jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout;
-  private View b;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
   
-  public bbsd(bbrr parambbrr, Context paramContext)
+  public bbsd(ArrayList<Integer> paramArrayList)
   {
-    this.jdField_a_of_type_Bbrr = parambbrr;
-    a(paramContext);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilArrayList = localObject;
   }
   
-  public final View a()
+  public int getCount()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout;
-  }
-  
-  public abstract View a(Context paramContext);
-  
-  public View a(String paramString)
-  {
-    return null;
-  }
-  
-  public ImageView a()
-  {
-    return null;
-  }
-  
-  public TextView a()
-  {
-    return null;
-  }
-  
-  public bbrr a()
-  {
-    return this.jdField_a_of_type_Bbrr;
-  }
-  
-  public String a()
-  {
-    bbrr localbbrr = a();
-    if (localbbrr != null) {
-      return localbbrr.a();
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
     }
-    return null;
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public void a(Context paramContext)
+  public Object getItem(int paramInt)
   {
-    View localView = LayoutInflater.from(paramContext).inflate(2131561494, null, false);
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout = ((RichNodeRootLayout)localView.findViewById(2131376798));
-    this.b = localView.findViewById(2131365590);
-    this.jdField_a_of_type_AndroidViewView = a(paramContext);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout.addView(this.jdField_a_of_type_AndroidViewView);
-    }
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
   }
   
-  public void a(boolean paramBoolean)
+  public long getItemId(int paramInt)
   {
-    if (this.b != null)
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    bbsc localbbsc;
+    if (paramView == null)
     {
-      if (paramBoolean) {
-        this.b.setVisibility(0);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getLayoutInflater().inflate(2131562953, paramViewGroup, false);
+      localbbsc = new bbsc(null);
+      localbbsc.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378146));
+      localbbsc.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378147));
+      paramView.setTag(localbbsc);
+    }
+    for (;;)
+    {
+      localbbsc = (bbsc)paramView.getTag();
+      bbsa localbbsa = ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue());
+      if ((localbbsa != null) && (localbbsc.jdField_a_of_type_Int != localbbsa.jdField_a_of_type_Int))
+      {
+        localbbsc.jdField_a_of_type_Int = localbbsa.jdField_a_of_type_Int;
+        localbbsc.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new bjdm(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources(), ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(localbbsa.jdField_a_of_type_Int, 201), false, false));
+        localbbsc.jdField_a_of_type_AndroidWidgetTextView.setText(localbbsa.c);
+        if (localbbsa.b != 1) {
+          break label226;
+        }
+        localbbsc.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+      }
+      for (;;)
+      {
+        paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity);
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        label226:
+        localbbsc.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources().getDrawable(2130839281), null);
+        localbbsc.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
       }
     }
-    else {
-      return;
-    }
-    this.b.setVisibility(8);
-  }
-  
-  public ImageView b()
-  {
-    return null;
-  }
-  
-  public TextView b()
-  {
-    return null;
-  }
-  
-  public void b(boolean paramBoolean) {}
-  
-  public TextView c()
-  {
-    return null;
-  }
-  
-  public TextView d()
-  {
-    return null;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Bbrr = null;
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout = null;
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.b = null;
-  }
-  
-  public void f()
-  {
-    d();
   }
 }
 

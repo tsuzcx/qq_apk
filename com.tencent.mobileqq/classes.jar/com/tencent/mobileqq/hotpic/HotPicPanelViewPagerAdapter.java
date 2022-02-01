@@ -6,13 +6,13 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import avbe;
-import avbk;
-import avbw;
-import avby;
-import avcd;
-import avce;
-import avdf;
+import avtg;
+import avtm;
+import avty;
+import avua;
+import avuf;
+import avug;
+import avvh;
 import com.tencent.widget.OneViewPagerAdapter;
 import java.util.List;
 
@@ -21,9 +21,9 @@ public class HotPicPanelViewPagerAdapter
 {
   Context jdField_a_of_type_AndroidContentContext;
   SparseArray<HotPicPageView> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  avbe jdField_a_of_type_Avbe;
-  protected avcd a;
-  protected avce a;
+  avtg jdField_a_of_type_Avtg;
+  protected avuf a;
+  protected avug a;
   HotPicMainPanel jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel;
   
   public HotPicPanelViewPagerAdapter(HotPicMainPanel paramHotPicMainPanel, ViewPager paramViewPager)
@@ -31,15 +31,15 @@ public class HotPicPanelViewPagerAdapter
     super(paramViewPager);
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel = paramHotPicMainPanel;
     this.jdField_a_of_type_AndroidContentContext = paramHotPicMainPanel.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_Avbe = paramHotPicMainPanel.jdField_a_of_type_Avbe;
-    this.jdField_a_of_type_Avce = paramHotPicMainPanel;
+    this.jdField_a_of_type_Avtg = paramHotPicMainPanel.jdField_a_of_type_Avtg;
+    this.jdField_a_of_type_Avug = paramHotPicMainPanel;
   }
   
   public View a(int paramInt)
   {
-    HotPicTagInfo localHotPicTagInfo = this.jdField_a_of_type_Avbe.b(paramInt);
-    HotPicPageView localHotPicPageView = (HotPicPageView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558613, null);
-    localHotPicPageView.setOnHotPicItemClickListener(this.jdField_a_of_type_Avcd);
+    HotPicTagInfo localHotPicTagInfo = this.jdField_a_of_type_Avtg.b(paramInt);
+    HotPicPageView localHotPicPageView = (HotPicPageView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558615, null);
+    localHotPicPageView.setOnHotPicItemClickListener(this.jdField_a_of_type_Avuf);
     if (localHotPicTagInfo != null)
     {
       localHotPicPageView.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel, localHotPicTagInfo);
@@ -60,7 +60,7 @@ public class HotPicPanelViewPagerAdapter
     if (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
     {
       localHotPicPageView = (HotPicPageView)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-      if (localHotPicPageView.jdField_a_of_type_Avdf != null) {}
+      if (localHotPicPageView.jdField_a_of_type_Avvh != null) {}
     }
     else
     {
@@ -68,24 +68,24 @@ public class HotPicPanelViewPagerAdapter
     }
     if (localHotPicPageView.b == paramInt)
     {
-      localHotPicPageView.jdField_a_of_type_Avdf.b(true);
+      localHotPicPageView.jdField_a_of_type_Avvh.b(true);
       localHotPicPageView.o();
     }
     for (;;)
     {
       i += 1;
       break;
-      localHotPicPageView.jdField_a_of_type_Avdf.b(false);
+      localHotPicPageView.jdField_a_of_type_Avvh.b(false);
       localHotPicPageView.j();
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    Object localObject2 = avbk.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Object localObject2 = avtm.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     HotPicPageView localHotPicPageView = (HotPicPageView)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
     if ((localHotPicPageView != null) && (localHotPicPageView.c)) {
-      localHotPicPageView.jdField_a_of_type_Avby.a(false);
+      localHotPicPageView.jdField_a_of_type_Avua.a(false);
     }
     switch (paramInt2)
     {
@@ -101,37 +101,37 @@ public class HotPicPanelViewPagerAdapter
       try
       {
         localHotPicPageView.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager.mClearSpanOnItemsChanged = false;
-        paramInt2 = localHotPicPageView.jdField_a_of_type_Avbw.a.size();
-        localObject2 = ((avbk)localObject2).a(paramInt1);
-        localHotPicPageView.jdField_a_of_type_Avbw.a((List)localObject2);
+        paramInt2 = localHotPicPageView.jdField_a_of_type_Avty.a.size();
+        localObject2 = ((avtm)localObject2).a(paramInt1);
+        localHotPicPageView.jdField_a_of_type_Avty.a((List)localObject2);
         int i = ((List)localObject2).size();
         paramInt1 = paramInt2;
         while (paramInt1 < i - paramInt2)
         {
-          localHotPicPageView.jdField_a_of_type_Avbw.notifyItemInserted(paramInt1);
+          localHotPicPageView.jdField_a_of_type_Avty.notifyItemInserted(paramInt1);
           paramInt1 += 1;
         }
-        localHotPicPageView.jdField_a_of_type_Avbw.notifyItemRangeChanged(paramInt2, ((List)localObject2).size());
+        localHotPicPageView.jdField_a_of_type_Avty.notifyItemRangeChanged(paramInt2, ((List)localObject2).size());
         localHotPicPageView.m();
         return;
       }
       finally {}
     case 6: 
-      if (((avbk)localObject2).c(paramInt1)) {}
+      if (((avtm)localObject2).c(paramInt1)) {}
       for (paramInt1 = 2;; paramInt1 = 1)
       {
-        localObject1.jdField_a_of_type_Avby.a(paramInt1);
-        localObject1.jdField_a_of_type_Avby.a(false);
-        localObject1.jdField_a_of_type_Avbw.notifyItemChanged(localObject1.jdField_a_of_type_Avbw.getItemCount());
+        localObject1.jdField_a_of_type_Avua.a(paramInt1);
+        localObject1.jdField_a_of_type_Avua.a(false);
+        localObject1.jdField_a_of_type_Avty.notifyItemChanged(localObject1.jdField_a_of_type_Avty.getItemCount());
         return;
       }
     }
     localObject1.k();
   }
   
-  public void a(avcd paramavcd)
+  public void a(avuf paramavuf)
   {
-    this.jdField_a_of_type_Avcd = paramavcd;
+    this.jdField_a_of_type_Avuf = paramavuf;
   }
   
   public void a(Object paramObject, int paramInt)
@@ -167,14 +167,14 @@ public class HotPicPanelViewPagerAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_Avbe.a();
+    return this.jdField_a_of_type_Avtg.a();
   }
   
   public void onPageSelected(int paramInt)
   {
     super.onPageSelected(paramInt);
-    if (this.jdField_a_of_type_Avce != null) {
-      this.jdField_a_of_type_Avce.a(paramInt);
+    if (this.jdField_a_of_type_Avug != null) {
+      this.jdField_a_of_type_Avug.a(paramInt);
     }
   }
 }

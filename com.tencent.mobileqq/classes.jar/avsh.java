@@ -1,25 +1,67 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.MotionEvent;
+import com.tencent.image.AbstractGifImage;
 
 public class avsh
-  extends GridLayoutManager.SpanSizeLookup
+  extends RecyclerView.OnScrollListener
+  implements avvw
 {
-  avsa a;
+  private int jdField_a_of_type_Int = 0;
+  private aspu jdField_a_of_type_Aspu;
+  private avvv jdField_a_of_type_Avvv = new avvv(200, this);
   
-  public avsh(avsa paramavsa)
+  public avsh(aspu paramaspu)
   {
-    this.a = paramavsa;
+    this.jdField_a_of_type_Aspu = paramaspu;
   }
   
-  public int getSpanSize(int paramInt)
+  public boolean a(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    if (this.a == null) {
-      QLog.i("leba_sort_LebaTableMgrFragment", 1, "MyLoopUp getSpanSize mAdapter == null");
+    int i = paramMotionEvent.getAction();
+    if (i == 0) {
+      this.jdField_a_of_type_Avvv.a(true);
     }
-    while (this.a.getItemViewType(paramInt) != 1) {
-      return 1;
+    for (;;)
+    {
+      return false;
+      if ((i == 1) && (((GridLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition() == 0) && (this.jdField_a_of_type_Aspu != null)) {
+        this.jdField_a_of_type_Aspu.n();
+      }
     }
-    return 3;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.jdField_a_of_type_Aspu != null))
+    {
+      this.jdField_a_of_type_Aspu.m();
+      this.jdField_a_of_type_Avvv.a(false);
+    }
+  }
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    if (paramInt == 0) {
+      AbstractGifImage.resumeAll();
+    }
+    for (;;)
+    {
+      if ((paramInt == 0) && (this.jdField_a_of_type_Int == 2) && (((GridLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition() == 0) && (this.jdField_a_of_type_Aspu != null)) {
+        this.jdField_a_of_type_Aspu.n();
+      }
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+      AbstractGifImage.pauseAll();
+    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 > 0) {
+      this.jdField_a_of_type_Avvv.a(paramInt2);
+    }
   }
 }
 

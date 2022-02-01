@@ -5,10 +5,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import pmy;
-import pnn;
+import pfs;
+import pgh;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import tzo;
+import tzq;
 
 public final class ReadinjoySPEventReport$20
   implements Runnable
@@ -56,16 +56,16 @@ public final class ReadinjoySPEventReport$20
       ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("operation_bitmap");
       ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(this.b + "");
       localArrayList.add(localObject);
-      localObject = pmy.a().b;
+      localObject = pfs.a().b;
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(7);
       localAttributeList.att_name.set("staticDurationAfterEnter");
-      if (((pnn)localObject).a <= 0L) {
+      if (((pgh)localObject).a <= 0L) {
         break label743;
       }
     }
     label743:
-    for (long l1 = ((pnn)localObject).a - ((pnn)localObject).d;; l1 = 0L)
+    for (long l1 = ((pgh)localObject).a - ((pgh)localObject).d;; l1 = 0L)
     {
       localAttributeList.att_value.set(l1 + "");
       localArrayList.add(localAttributeList);
@@ -73,27 +73,27 @@ public final class ReadinjoySPEventReport$20
       localAttributeList.att_id.set(8);
       localAttributeList.att_name.set("staticDurationBeforeExit");
       l1 = l2;
-      if (((pnn)localObject).c > 0L) {
-        l1 = ((pnn)localObject).e - ((pnn)localObject).c;
+      if (((pgh)localObject).c > 0L) {
+        l1 = ((pgh)localObject).e - ((pgh)localObject).c;
       }
       localAttributeList.att_value.set(l1 + "");
       localArrayList.add(localAttributeList);
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(9);
       localAttributeList.att_name.set("articleInfoList");
-      localAttributeList.att_value.set(((pnn)localObject).a());
+      localAttributeList.att_value.set(((pgh)localObject).a());
       localArrayList.add(localAttributeList);
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(10);
       localAttributeList.att_name.set("scrollInfoList");
-      localAttributeList.att_value.set(((pnn)localObject).b());
+      localAttributeList.att_value.set(((pgh)localObject).b());
       localArrayList.add(localAttributeList);
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(11);
       localAttributeList.att_name.set("stayDuration");
-      localAttributeList.att_value.set(((pnn)localObject).e - ((pnn)localObject).d + "");
+      localAttributeList.att_value.set(((pgh)localObject).e - ((pgh)localObject).d + "");
       localArrayList.add(localAttributeList);
-      tzo.a(90, localArrayList);
+      tzq.a(90, localArrayList);
       return;
       ((oidb_cmd0x80a.AttributeList)localObject).att_value.set("1");
       break;
@@ -103,12 +103,12 @@ public final class ReadinjoySPEventReport$20
     ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(6);
     ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("durationBeforeEnter");
     l2 = System.currentTimeMillis();
-    if (pmy.f() <= 0L) {}
-    for (l1 = pmy.a;; l1 = pmy.f())
+    if (pfs.f() <= 0L) {}
+    for (l1 = pfs.a;; l1 = pfs.f())
     {
       ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(l2 - l1 + "");
       localArrayList.add(localObject);
-      pmy.n();
+      pfs.n();
       break;
     }
   }

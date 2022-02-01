@@ -1,44 +1,8 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
-import com.tencent.mobileqq.widget.QQToast;
-
-final class xhp
-  extends xfr
+public abstract interface xhp
 {
-  xhp(String paramString1, String paramString2, int paramInt, Context paramContext) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
-  {
-    if ((paramInt == 0) && (paramStoryVideoItem != null))
-    {
-      paramString = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString, this.b), this.jdField_a_of_type_Int).a();
-      OpenPlayerBuilder.UIStyle localUIStyle = paramString.mUIStyle;
-      if (paramStoryVideoItem.mInteractStatus == 1) {}
-      for (paramInt = 1;; paramInt = 2)
-      {
-        localUIStyle.bottomWidgetShowFlag = paramInt;
-        paramString.mUIStyle.mPlayerRepeatMode = 1;
-        xho.a(this.jdField_a_of_type_AndroidContentContext, paramString, null);
-        return;
-      }
-    }
-    if (paramInt == 10100)
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, anni.a(2131713239), 0).a();
-      return;
-    }
-    if (!TextUtils.isEmpty(paramString))
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, paramString, 0).a();
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, anni.a(2131713240) + paramInt, 0).a();
-  }
+  public abstract void b(boolean paramBoolean);
 }
 
 

@@ -1,22 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class nug
-  implements Animation.AnimationListener
+class nug
+  implements View.OnClickListener
 {
-  public nug(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  nug(ntc paramntc, String paramString, oag paramoag) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.setResult(-1);
-    PublicAccountAdvertisementActivity.g(this.a);
-    PublicAccountAdvertisementActivity.a(this.a, 0, 0);
+    ntc.c(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_JavaLangString);
+    ntc.a(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_Oag.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

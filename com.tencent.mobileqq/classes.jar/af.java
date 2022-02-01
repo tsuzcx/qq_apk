@@ -30,7 +30,7 @@ public class af
     } while ((((DLFileInfo)localObject3).a != 0) && (((DLFileInfo)localObject3).a != 3));
     for (int i = 1;; i = 0)
     {
-      anjx localanjx = (anjx)this.a.app.a(8);
+      anvu localanvu = (anvu)this.a.app.a(8);
       if (i != 0)
       {
         if ((!DLFilesViewerActivity.a(this.a).isReportPause) && (DLFilesViewerActivity.a(this.a).getGroupType() == -2335))
@@ -41,7 +41,7 @@ public class af
         DLFilesViewerActivity.a(this.a).setPaused(true);
         if ((!DLFilesViewerActivity.a(this.a).isSingle()) && (DLFilesViewerActivity.a(this.a).getGroupType() != -2335))
         {
-          localanjx.a(DLFilesViewerActivity.a(this.a).getGroupId(), 0L, false);
+          localanvu.a(DLFilesViewerActivity.a(this.a).getGroupId(), 0L, false);
           DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
         }
       }
@@ -56,22 +56,22 @@ public class af
           localObject2 = (DataLineMsgRecord)((Iterator)localObject1).next();
           localObject3 = dr.a((DataLineMsgRecord)localObject2);
           if ((((DLFileInfo)localObject3).a == 0) || (((DLFileInfo)localObject3).a == 3)) {
-            localanjx.a(((DataLineMsgRecord)localObject2).groupId, ((DataLineMsgRecord)localObject2).sessionid, false);
+            localanvu.a(((DataLineMsgRecord)localObject2).groupId, ((DataLineMsgRecord)localObject2).sessionid, false);
           }
         }
         break;
-        if (bgnt.d(this.a))
+        if (bhnv.d(this.a))
         {
-          if ((atvo.a()) && (DLFilesViewerActivity.a(this.a).getFileTotalSize() > 3145728L))
+          if ((aunj.a()) && (DLFilesViewerActivity.a(this.a).getFileTotalSize() > 3145728L))
           {
             localObject1 = DLFilesViewerActivity.a(this.a).getFirstItem();
-            atvo.a(((DataLineMsgRecord)localObject1).isSendFromLocal(), this.a, new ag(this, (DataLineMsgRecord)localObject1, localanjx));
+            aunj.a(((DataLineMsgRecord)localObject1).isSendFromLocal(), this.a, new ag(this, (DataLineMsgRecord)localObject1, localanvu));
           }
           else
           {
             localObject1 = DLFilesViewerActivity.a(this.a).getFirstItem();
             if ((localObject1 != null) && (!((DataLineMsgRecord)localObject1).isSendFromLocal()) && (((DataLineMsgRecord)localObject1).strMoloKey != null)) {
-              localanjx.b(112);
+              localanvu.b(112);
             }
             DLFilesViewerActivity.a(this.a).setPaused(false);
             Iterator localIterator = DLFilesViewerActivity.a(this.a).values().iterator();
@@ -115,16 +115,16 @@ public class af
               }
             }
             if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0)) {
-              localanjx.a((ArrayList)localObject2, true);
+              localanvu.a((ArrayList)localObject2, true);
             }
             if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
-              localanjx.a((List)localObject1);
+              localanvu.a((List)localObject1);
             }
             DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
           }
         }
         else {
-          atvf.a(2131693991);
+          auna.a(2131694008);
         }
       }
     }

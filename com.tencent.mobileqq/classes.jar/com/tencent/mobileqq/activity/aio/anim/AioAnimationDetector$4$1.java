@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import agbd;
-import agbe;
-import agnq;
+import agkx;
+import agky;
 
 public class AioAnimationDetector$4$1
   implements Runnable
 {
-  public AioAnimationDetector$4$1(agbd paramagbd, agnq paramagnq, String paramString) {}
+  public AioAnimationDetector$4$1(agkx paramagkx, String paramString, LottieAnimationInfo paramLottieAnimationInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Agnq.a(new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Agbd.a.a) });
+    this.jdField_a_of_type_Agkx.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(7, 400, new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Agkx.jdField_a_of_type_Agky.a), this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimationInfo });
   }
 }
 

@@ -1,33 +1,21 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.activity.Leba;
 
 public class aevm
+  implements ViewSwitcher.ViewFactory
 {
-  public PublicAccountInfo a;
-  public String a;
-  public String b = "";
+  public aevm(Leba paramLeba) {}
   
-  public aevm(PublicAccountInfo paramPublicAccountInfo)
+  public View makeView()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.jdField_a_of_type_JavaLangString = str;
-  }
-  
-  public void b(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.b = str;
+    ImageView localImageView = new ImageView(this.a.a());
+    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    return localImageView;
   }
 }
 

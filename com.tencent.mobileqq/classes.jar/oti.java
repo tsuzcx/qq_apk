@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class oti
-  implements ViewBase.IBuilder
+class oti
+  implements DialogInterface.OnClickListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  oti(otg paramotg) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new oth(paramVafContext);
+    paramDialogInterface.dismiss();
   }
 }
 

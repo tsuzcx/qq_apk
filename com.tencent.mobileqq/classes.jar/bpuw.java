@@ -1,15 +1,9 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.capture.view.ComboProviderView;
 
-class bpuw
-  implements ValueAnimator.AnimatorUpdateListener
+public class bpuw
+  extends bpnc
 {
-  bpuw(bput parambput) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.invalidateSelf();
-  }
+  public bpuw(ComboProviderView paramComboProviderView) {}
 }
 
 

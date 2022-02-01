@@ -1,76 +1,90 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.TagEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-public abstract class zll
+public class zll
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new zlm(this);
-  View jdField_a_of_type_AndroidViewView;
-  zlg jdField_a_of_type_Zlg;
-  zlh jdField_a_of_type_Zlh;
-  zln jdField_a_of_type_Zln;
-  boolean b = false;
+  public final int a;
+  public final long a;
+  public final String a;
+  public volatile long b;
+  public final String b;
   
-  public zll(zln paramzln, View paramView)
+  public zll(long paramLong, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_Zln = paramzln;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public Rect a()
+  public zll(TagEntry paramTagEntry)
   {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getHitRect(localRect);
-    return localRect;
+    this.jdField_a_of_type_Long = paramTagEntry.id;
+    this.jdField_a_of_type_JavaLangString = paramTagEntry.name;
+    this.jdField_b_of_type_JavaLangString = paramTagEntry.desc;
+    this.jdField_a_of_type_Int = paramTagEntry.type;
   }
   
-  public abstract CharSequence a();
-  
-  public void a(float paramFloat) {}
-  
-  public void a(CharSequence paramCharSequence) {}
-  
-  void a(zlg paramzlg)
+  public zll(qqstory_struct.TagInfoBase paramTagInfoBase)
   {
-    this.jdField_a_of_type_Zlg = paramzlg;
+    this.jdField_a_of_type_Long = paramTagInfoBase.tag_id.get();
+    this.jdField_a_of_type_JavaLangString = paramTagInfoBase.tag_name.get();
+    this.jdField_b_of_type_JavaLangString = paramTagInfoBase.tag_desc.get();
+    this.jdField_a_of_type_Int = paramTagInfoBase.tag_type.get();
   }
   
-  public void a(zlh paramzlh)
+  public static boolean a(zll paramzll)
   {
-    this.jdField_a_of_type_Zlh = paramzlh;
-    if (this.jdField_a_of_type_Zlh != null)
-    {
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      return;
+    return (paramzll != null) && (Math.abs(System.currentTimeMillis() - paramzll.jdField_b_of_type_Long) < 60000L);
+  }
+  
+  public TagEntry a()
+  {
+    return new TagEntry();
+  }
+  
+  public qqstory_struct.TagInfoBase a()
+  {
+    qqstory_struct.TagInfoBase localTagInfoBase = new qqstory_struct.TagInfoBase();
+    localTagInfoBase.tag_id.set(this.jdField_a_of_type_Long);
+    localTagInfoBase.tag_name.set(this.jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localTagInfoBase.tag_desc.set(this.jdField_b_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
-    this.jdField_a_of_type_AndroidViewView.setClickable(false);
+    localTagInfoBase.tag_type.set(this.jdField_a_of_type_Int);
+    return localTagInfoBase;
   }
   
-  public abstract void a(boolean paramBoolean);
-  
-  public boolean a()
+  public boolean equals(Object paramObject)
   {
-    return this.b;
-  }
-  
-  public abstract CharSequence b();
-  
-  public void b(CharSequence paramCharSequence) {}
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.b != paramBoolean)
+    if (this == paramObject) {}
+    do
     {
-      this.b = paramBoolean;
-      zlg localzlg = this.jdField_a_of_type_Zlg;
-      if (localzlg != null) {
-        localzlg.a(this, paramBoolean);
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-    }
+      paramObject = (zll)paramObject;
+      if (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) {
+        return false;
+      }
+    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
+    return false;
   }
   
-  public void e(boolean paramBoolean) {}
+  public int hashCode()
+  {
+    return (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32) * 31 + this.jdField_a_of_type_Int;
+  }
+  
+  public String toString()
+  {
+    return "TagInfoBase{id=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", desc='" + this.jdField_b_of_type_JavaLangString + '\'' + ", type=" + this.jdField_a_of_type_Int + '}';
+  }
 }
 
 

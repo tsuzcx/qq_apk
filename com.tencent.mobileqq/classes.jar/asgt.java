@@ -1,9 +1,32 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract interface asgt
+class asgt
+  implements Handler.Callback
 {
-  public abstract Drawable a(String paramString1, String paramString2, ImageView paramImageView);
+  asgt(asgs paramasgs) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    case 1: 
+      QQToast.a(asgs.a(this.a), 2131692445, 0).b(2131299011);
+      return true;
+    }
+    if (paramMessage.obj != null)
+    {
+      paramMessage = (EmoticonFromGroupEntity)paramMessage.obj;
+      this.a.a(paramMessage);
+      return true;
+    }
+    QQToast.a(asgs.a(this.a), 1, 2131689608, 0).b(2131299011);
+    return true;
+  }
 }
 
 

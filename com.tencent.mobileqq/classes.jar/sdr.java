@@ -1,17 +1,20 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.animation.Interpolator;
+import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
 
-class sdr
-  implements sna
+public class sdr
+  implements Interpolator
 {
-  sdr(sdq paramsdq, rxy paramrxy) {}
+  public sdr(DailyTitleBarSwitcher paramDailyTitleBarSwitcher) {}
   
-  public void a(@NonNull View paramView, int paramInt)
+  public float getInterpolation(float paramFloat)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Rxy.x.getVisibility() == 0)) {
-      sdq.a(this.jdField_a_of_type_Sdq).resumeAnimation();
+    if (paramFloat < 0.2F) {
+      return 0.0F;
     }
+    if (paramFloat < 0.5F) {
+      return (paramFloat - 0.2F) / 0.3F;
+    }
+    return 1.0F;
   }
 }
 

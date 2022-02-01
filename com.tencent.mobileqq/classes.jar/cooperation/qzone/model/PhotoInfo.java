@@ -1,24 +1,24 @@
 package cooperation.qzone.model;
 
 import NS_FASHION_FEEDS_TAG_PROTO.TagInfo;
-import abgb;
+import abkf;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blzj;
-import bmiw;
+import bnal;
+import bnjz;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.util.WeakReference;
 
 public class PhotoInfo
-  extends abgb
+  extends abkf
   implements Parcelable
 {
-  public static final Parcelable.Creator<PhotoInfo> CREATOR = new blzj();
+  public static final Parcelable.Creator<PhotoInfo> CREATOR = new bnal();
   public static int l;
   public static int m;
   public static int n;
@@ -180,7 +180,7 @@ public class PhotoInfo
   
   public boolean b()
   {
-    if (!bmiw.a().b()) {}
+    if (!bnjz.a().b()) {}
     while ((this.jdField_i_of_type_Int != 32) && (this.jdField_i_of_type_Int != 16)) {
       return false;
     }

@@ -1,32 +1,30 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-
-class xvj
-  extends xmr
+public class xvj
 {
-  xvj(xvi paramxvi) {}
+  private int a = 0;
   
-  public void d()
+  xvj(int paramInt)
   {
-    super.d();
-    if (bqcd.b(this.a.b()))
-    {
-      LinearLayout localLinearLayout = (LinearLayout)this.a.a().a.findViewById(2131363601);
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
-      localLayoutParams.height = xvi.a(this.a);
-      if (!bclx.a(this.a.a.getContext())) {
-        localLinearLayout.setBackgroundColor(Color.parseColor("#181818"));
-      }
-      localLinearLayout.setLayoutParams(localLayoutParams);
-    }
+    this.a = paramInt;
   }
   
-  public void g()
+  public static xvj a(int paramInt)
   {
-    super.g();
-    xvi.a(this.a).a();
+    return new xvj(paramInt);
+  }
+  
+  public int a()
+  {
+    switch (this.a)
+    {
+    default: 
+      return this.a;
+    }
+    return 0;
+  }
+  
+  public int b()
+  {
+    return this.a;
   }
 }
 

@@ -1,67 +1,12 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
-
 public class annj
 {
-  private static annj jdField_a_of_type_Annj;
-  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.headDpcCfg.name();
-  private int jdField_a_of_type_Int = 1;
-  private ankk jdField_a_of_type_Ankk = new annk(this);
+  public int a;
+  public int b;
   
-  private annj()
+  public annj(int paramInt1, int paramInt2)
   {
-    DeviceProfileManager.a(this.jdField_a_of_type_Ankk);
-    a();
-  }
-  
-  public static annj a()
-  {
-    if (jdField_a_of_type_Annj == null) {}
-    try
-    {
-      if (jdField_a_of_type_Annj == null) {
-        jdField_a_of_type_Annj = new annj();
-      }
-      return jdField_a_of_type_Annj;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
-    String[] arrayOfString;
-    if (!TextUtils.isEmpty(str))
-    {
-      arrayOfString = str.split("\\|");
-      if (arrayOfString.length < 1) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
-        if (QLog.isColorLevel()) {
-          QLog.d("HeadDpcCfg", 2, String.format("loadConfig, mDualStackPrefIpv6: %s, dpc=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), str }));
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        QLog.d("HeadDpcCfg", 1, "loadConfig exception :" + localException.getMessage());
-        this.jdField_a_of_type_Int = 1;
-        continue;
-      }
-      this.jdField_a_of_type_Int = 1;
-    }
-  }
-  
-  public boolean a()
-  {
-    QLog.d("HeadDpcCfg", 1, String.format("preferIpv6 mDualStackPrefIpv6=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-    return this.jdField_a_of_type_Int != 0;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

@@ -1,13 +1,21 @@
-import tv.danmaku.ijk.media.player.IMediaPlayer;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadLogInfo;
+import com.tencent.tmdownloader.ITMAssistantDownloadLogListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 class bjwv
-  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnLoopStartListener
+  implements ITMAssistantDownloadLogListener
 {
-  bjwv(bjwn parambjwn, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnLoopStartListener paramOnLoopStartListener) {}
+  SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
   
-  public void onLoopStart(IMediaPlayer paramIMediaPlayer)
+  bjwv(bjwq parambjwq) {}
+  
+  public void onLog(ArrayList<TMAssistantDownloadLogInfo> paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnLoopStartListener.onLoopStart(this.jdField_a_of_type_Bjwn);
+    if ((paramArrayList == null) && (QLog.isColorLevel())) {
+      QLog.i("DownloadManager_", 2, "logList is null");
+    }
   }
 }
 

@@ -1,126 +1,103 @@
-import Wallet.DownloadReportReq;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.Map;
 
-public class aksl
-  extends bhhe
+class aksl
+  extends Handler
 {
-  private boolean jdField_a_of_type_Boolean;
+  private aksl(aksk paramaksk) {}
   
-  public aksl(PreloadResource paramPreloadResource, int paramInt, WeakReference paramWeakReference, bhhe parambhhe, long paramLong) {}
-  
-  public void onDoneFile(bhhf parambhhf)
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (PreloadManager.a((PreloadManager)localObject)) {
-      ((PreloadManager)localObject).c();
-    }
-    if (this.jdField_a_of_type_Bhhe != null) {
-      this.jdField_a_of_type_Bhhe.onDoneFile(parambhhf);
-    }
-    localObject = new DownloadReportReq();
-    int i;
-    File localFile;
-    long l;
-    if (parambhhf.jdField_a_of_type_Int == 0)
+    switch (paramMessage.what)
     {
-      ((DownloadReportReq)localObject).iType = 1;
-      int j = -1;
-      i = j;
-      if (parambhhf.jdField_a_of_type_JavaUtilMap != null)
-      {
-        i = j;
-        if (!TextUtils.isEmpty(parambhhf.jdField_a_of_type_JavaLangString))
-        {
-          localFile = (File)parambhhf.jdField_a_of_type_JavaUtilMap.get(parambhhf.jdField_a_of_type_JavaLangString);
-          if (localFile != null) {
-            break label242;
-          }
-          l = -2L;
-          label113:
-          i = (int)l;
-        }
-      }
     }
-    for (;;)
-    {
-      for (;;)
-      {
-        ((DownloadReportReq)localObject).vecResInfo = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.getMyResInfos(i);
-        ((DownloadReportReq)localObject).iUin = this.jdField_a_of_type_Long;
-        ((DownloadReportReq)localObject).sPhoneType = bgln.i();
-        ((DownloadReportReq)localObject).sOsVersion = bgln.e();
-        ((DownloadReportReq)localObject).sQQVersion = bgln.c();
-        ((DownloadReportReq)localObject).iScene = parambhhf.a().getInt("scene");
-        akmf.a((JceStruct)localObject, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " flow down result:" + parambhhf.jdField_a_of_type_Int + localObject);
-        }
-        return;
-        ((DownloadReportReq)localObject).iType = 2;
-        break;
-        try
-        {
-          label242:
-          if (localFile.exists())
-          {
-            l = localFile.length();
-            break label113;
-          }
-          l = -3L;
-        }
-        catch (Throwable localThrowable)
-        {
-          i = -4;
-          localThrowable.printStackTrace();
-        }
-      }
-    }
-  }
-  
-  public void onProgress(bhhf parambhhf)
-  {
-    double d;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      long l1 = System.currentTimeMillis();
-      long l2 = parambhhf.g;
-      d = parambhhf.f / (l1 - l2);
-      if (d >= 1.0D) {
-        break label43;
-      }
-    }
-    label43:
     do
     {
-      return;
-      parambhhf = new DownloadReportReq();
-      parambhhf.sSpeed = (d + "");
-      parambhhf.vecResInfo = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.getMyResInfos();
-      parambhhf.iType = 0;
-      parambhhf.iUin = this.jdField_a_of_type_Long;
-      akmf.a(parambhhf, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " flow down speed:" + d);
-  }
-  
-  public boolean onStart(bhhf parambhhf)
-  {
-    int i = 3;
-    parambhhf.f = 1048576L;
-    if (this.jdField_a_of_type_Int > 3) {
-      i = this.jdField_a_of_type_Int;
-    }
-    parambhhf.b = i;
-    return super.onStart(parambhhf);
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    return;
+                    if (QLog.isColorLevel()) {
+                      QLog.d("carverW VideoPlayController", 2, "MEDIA_PREPAREING ");
+                    }
+                    aksk.a(this.a, 2);
+                    return;
+                    if (QLog.isColorLevel()) {
+                      QLog.d("carverW VideoPlayController", 2, "onPrepared  getAutoPlayFlag=" + this.a.a());
+                    }
+                    if (this.a.jdField_a_of_type_Aksm != null) {
+                      this.a.jdField_a_of_type_Aksm.a(this.a.jdField_a_of_type_Akss, this.a.b());
+                    }
+                    if (this.a.a())
+                    {
+                      this.a.l();
+                      this.a.a(false);
+                      return;
+                    }
+                    aksk.a(this.a, 3);
+                    return;
+                    if (QLog.isColorLevel()) {
+                      QLog.d("carverW VideoPlayController", 2, "onSeekComplete");
+                    }
+                  } while (this.a.jdField_a_of_type_Aksm == null);
+                  this.a.jdField_a_of_type_Aksm.v();
+                  return;
+                  if (QLog.isColorLevel()) {
+                    QLog.d("carverW VideoPlayController", 2, "onPlaybackComplete");
+                  }
+                  aksk.a(this.a, true);
+                  this.a.a(0);
+                  this.a.b(0);
+                  if (this.a.jdField_a_of_type_Aksm != null) {
+                    this.a.jdField_a_of_type_Aksm.c(this.a.jdField_a_of_type_Akss);
+                  }
+                  aksk.a(this.a, 0);
+                  return;
+                } while (!QLog.isColorLevel());
+                QLog.d("carverW VideoPlayController", 2, "onVideoSizeChanged");
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d("carverW VideoPlayController", 2, "MEDIA_INSTALL_SUCCESS");
+                }
+              } while ((this.a.jdField_a_of_type_Akqg == null) || (this.a.jdField_a_of_type_AndroidAppActivity == null));
+              this.a.jdField_a_of_type_AndroidViewView = this.a.jdField_a_of_type_Akqg.a(this.a.jdField_a_of_type_AndroidAppActivity);
+            } while ((this.a.jdField_a_of_type_AndroidViewView == null) || (this.a.jdField_a_of_type_AndroidAppActivity == null));
+            aksk.a(this.a, this.a.jdField_a_of_type_AndroidAppActivity);
+            return;
+            if (QLog.isColorLevel()) {
+              QLog.d("carverW VideoPlayController", 2, "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
+            }
+            this.a.a(paramMessage.arg1, paramMessage.arg2);
+            return;
+          } while (this.a.jdField_a_of_type_Aksm == null);
+          if (paramMessage.arg1 == 929)
+          {
+            this.a.jdField_a_of_type_Aksm.d(this.a.jdField_a_of_type_Akss);
+            this.a.b(8);
+            return;
+          }
+        } while (paramMessage.arg1 != 92);
+        this.a.jdField_a_of_type_Aksm.a(this.a.jdField_a_of_type_Akss, paramMessage.arg2);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("carverW VideoPlayController", 2, "onDownloading isClickToStart=" + aksk.a(this.a));
+        }
+      } while ((this.a.jdField_a_of_type_Aksm == null) || (!aksk.a(this.a)));
+      this.a.jdField_a_of_type_Aksm.b(this.a.jdField_a_of_type_Akss, paramMessage.arg1);
+    } while (aksk.a(this.a) == 4);
+    this.a.b(8);
   }
 }
 

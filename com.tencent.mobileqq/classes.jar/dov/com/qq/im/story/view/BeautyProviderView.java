@@ -3,36 +3,36 @@ package dov.com.qq.im.story.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import bnvb;
-import bojo;
-import zlx;
+import bown;
+import bplj;
+import zps;
 
 public class BeautyProviderView
   extends FrameLayout
 {
   private float jdField_a_of_type_Float = 1.0F;
   public int a;
-  private bnvb jdField_a_of_type_Bnvb;
-  private bojo jdField_a_of_type_Bojo;
+  private bown jdField_a_of_type_Bown;
+  private bplj jdField_a_of_type_Bplj;
   private int b = 500;
   private final int c = 300;
   
   public BeautyProviderView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = zlx.a(getContext(), 242.0F);
+    this.jdField_a_of_type_Int = zps.a(getContext(), 242.0F);
   }
   
   public BeautyProviderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = zlx.a(getContext(), 242.0F);
+    this.jdField_a_of_type_Int = zps.a(getContext(), 242.0F);
   }
   
-  public void setControllerAndManager(bojo parambojo, bnvb parambnvb)
+  public void setControllerAndManager(bplj parambplj, bown parambown)
   {
-    this.jdField_a_of_type_Bojo = parambojo;
-    this.jdField_a_of_type_Bnvb = parambnvb;
+    this.jdField_a_of_type_Bplj = parambplj;
+    this.jdField_a_of_type_Bown = parambown;
   }
 }
 

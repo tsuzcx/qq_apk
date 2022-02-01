@@ -1,20 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Vector;
 
-public class yms
-  implements View.OnClickListener
+class yms
+  implements woy<xcq, xen>
 {
-  public yms(StoryListPresenter.4.1 param1) {}
+  yms(ymo paramymo, JobContext paramJobContext, ymb paramymb) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull xcq paramxcq, @Nullable xen paramxen, @NonNull ErrorMessage arg3)
   {
-    yqu.a("home_page", "clk_up_shoot", 0, 0, new String[0]);
-    this.a.a.this$0.jdField_a_of_type_Ync.a(false, true, 13, null);
-    this.a.a.this$0.jdField_a_of_type_Ypv.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      yuk.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "segment cancel on net respond");
+      return;
+    }
+    if ((paramxen == null) || (???.isFail())) {
+      yuk.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feature request, %s", new Object[] { ???.toString() });
+    }
+    synchronized (this.jdField_a_of_type_Ymo)
+    {
+      ymo.a(this.jdField_a_of_type_Ymo, paramxen);
+      ymo.a(this.jdField_a_of_type_Ymo).remove(paramxcq);
+      ymo.a(this.jdField_a_of_type_Ymo, this.jdField_a_of_type_Ymb);
+      return;
+    }
   }
 }
 

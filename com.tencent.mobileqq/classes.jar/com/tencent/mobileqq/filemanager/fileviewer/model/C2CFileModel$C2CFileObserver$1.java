@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import atns;
-import atnx;
-import atou;
+import aufn;
+import aufs;
+import augp;
 
 public class C2CFileModel$C2CFileObserver$1
   implements Runnable
 {
-  public C2CFileModel$C2CFileObserver$1(atnx paramatnx) {}
+  public C2CFileModel$C2CFileObserver$1(aufs paramaufs) {}
   
   public void run()
   {

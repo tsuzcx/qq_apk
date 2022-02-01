@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
-import bggq;
+import bhgr;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 
 public class TopEdgeGestureLayout
@@ -33,7 +33,7 @@ public class TopEdgeGestureLayout
   
   private void a()
   {
-    this.jdField_a_of_type_Int = bggq.a(getContext(), 25.0F);
+    this.jdField_a_of_type_Int = bhgr.a(getContext(), 25.0F);
     this.jdField_b_of_type_Int = ViewConfiguration.getTouchSlop();
   }
   

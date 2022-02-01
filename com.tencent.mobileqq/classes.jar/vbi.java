@@ -1,17 +1,17 @@
 import android.arch.lifecycle.Observer;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
+import com.tencent.biz.qqcircle.bizparts.QCircleAggregationFragmentsPart;
 import java.util.List;
 import qqcircle.QQCircleFeedBase.StTabInfo;
 
 public class vbi
-  implements Observer<vup<List<QQCircleFeedBase.StTabInfo>>>
+  implements Observer<vxq<List<QQCircleFeedBase.StTabInfo>>>
 {
-  public vbi(QCircleFolderFragmentsPart paramQCircleFolderFragmentsPart) {}
+  public vbi(QCircleAggregationFragmentsPart paramQCircleAggregationFragmentsPart) {}
   
-  public void a(@Nullable vup<List<QQCircleFeedBase.StTabInfo>> paramvup)
+  public void a(@Nullable vxq<List<QQCircleFeedBase.StTabInfo>> paramvxq)
   {
-    QCircleFolderFragmentsPart.a(this.a, paramvup);
+    QCircleAggregationFragmentsPart.a(this.a, paramvxq);
   }
 }
 

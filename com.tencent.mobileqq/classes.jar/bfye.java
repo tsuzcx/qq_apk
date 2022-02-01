@@ -1,15 +1,37 @@
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class bfye
-  implements bdgd
+class bfye
 {
-  public bfye(TroopSignVideoView paramTroopSignVideoView) {}
+  private bluw jdField_a_of_type_Bluw = new bluw();
+  
+  public bfye(bfyd parambfyd)
+  {
+    this.jdField_a_of_type_Bluw.a();
+  }
+  
+  public int a(long paramLong1, long paramLong2)
+  {
+    int j = this.jdField_a_of_type_Bluw.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
+    int k = bluz.a(BaseApplication.getContext());
+    int i;
+    if (k != 1)
+    {
+      i = j;
+      if (k != 2) {}
+    }
+    else
+    {
+      i = j;
+      if (j > 16384) {
+        i = 16384;
+      }
+    }
+    return i;
+  }
   
   public void a()
   {
-    if (TroopSignVideoView.a(this.a) != null) {
-      TroopSignVideoView.a(this.a).a();
-    }
+    this.jdField_a_of_type_Bluw.b();
   }
 }
 

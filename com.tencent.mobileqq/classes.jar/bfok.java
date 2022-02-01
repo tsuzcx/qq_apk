@@ -1,31 +1,37 @@
-import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class bfok
-  implements bkhe
+class bfok
+  extends AnimatorListenerAdapter
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  bfok(bfoi parambfoi, boolean paramBoolean, View paramView, int paramInt) {}
   
-  public bfok(TroopAppShortcutContainer paramTroopAppShortcutContainer) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
-    this.b = paramInt3;
-    TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer, this.jdField_a_of_type_Int);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt != 0) || (this.jdField_a_of_type_Int != this.b - 1) || (!TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer).a())) {
+    boolean bool = false;
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      paramAnimator = new int[2];
+      this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramAnimator);
+      i = zps.d(this.jdField_a_of_type_Bfoi.jdField_a_of_type_AndroidContentContext) - paramAnimator[1];
+      if (i >= this.jdField_a_of_type_Int) {}
+    }
+    for (int i = this.jdField_a_of_type_Int - i;; i = 0)
+    {
+      if (this.jdField_a_of_type_Bfoi.jdField_a_of_type_Bfom != null)
+      {
+        paramAnimator = this.jdField_a_of_type_Bfoi.jdField_a_of_type_Bfom;
+        if (!this.jdField_a_of_type_Boolean) {
+          bool = true;
+        }
+        paramAnimator.a(bool, i);
+      }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopAppShortcutContainer", 2, "needLoad mCurPage:" + TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer).a());
-    }
-    TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer, TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer).a() + 1, 30, 2);
   }
 }
 

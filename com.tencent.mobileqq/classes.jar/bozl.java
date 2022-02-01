@@ -1,21 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
+import com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout;
 
-class bozl
-  implements DialogInterface.OnCancelListener
+public class bozl
+  extends RecyclerView.ViewHolder
 {
-  bozl(boza paramboza) {}
+  public FrameLayout a;
+  public ImageView a;
+  public TextView a;
+  public RoundCorneredFrameLayout a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public bozl(bozi parambozi, View paramView)
   {
-    boza.b(this.a).R();
-    boza.a(this.a).setVisibility(0);
-    if (boza.a(this.a) != null) {
-      boza.a(this.a).startAnimation(boza.a(this.a));
-    }
-    boza.c(this.a);
-    boza.a(this.a, true);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131380884));
+    this.jdField_a_of_type_ComTencentMobileqqArmapMapRoundCorneredFrameLayout = ((RoundCorneredFrameLayout)paramView.findViewById(2131368865));
+    this.c = ((ImageView)paramView.findViewById(2131368915));
+    this.c.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368191));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368918));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368192));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368919));
   }
 }
 

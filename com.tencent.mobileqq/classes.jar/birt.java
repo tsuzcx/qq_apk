@@ -1,19 +1,61 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.appstore.component.CommonTitleBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
+import com.tencent.qphone.base.util.QLog;
 
 public class birt
-  implements View.OnClickListener
+  extends birs
 {
-  public birt(CommonTitleBar paramCommonTitleBar) {}
-  
-  public void onClick(View paramView)
+  public birt(int paramInt)
   {
-    if (CommonTitleBar.a(this.a) != null) {
-      CommonTitleBar.a(this.a).b();
+    super(paramInt);
+  }
+  
+  public int a()
+  {
+    if (WebAccelerateHelper.preloadBrowserView == null)
+    {
+      WebAccelerateHelper.preInflaterBrowserView();
+      if (QLog.isColorLevel()) {
+        QLog.d("SwiftBrowserIdleTaskHelper", 2, "preloadBrowserView on idle.");
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    do
+    {
+      return 2;
+      if (SwiftReuseTouchWebView.c != 0) {
+        break;
+      }
+      SwiftReuseTouchWebView.a(BaseApplicationImpl.sApplication).a(true);
+    } while (!QLog.isColorLevel());
+    QLog.d("SwiftBrowserIdleTaskHelper", 2, "preload Webview on idle.");
+    return 2;
+    long l;
+    if (birp.a() < 5)
+    {
+      l = System.currentTimeMillis();
+      if (System.currentTimeMillis() > birp.a() + 10000L)
+      {
+        birp.a();
+        birp.b();
+        birp.a(l);
+        if (QLog.isColorLevel()) {
+          QLog.d("SwiftBrowserIdleTaskHelper", 2, "downloadX5KernelIfNeeded on idle.");
+        }
+      }
+    }
+    for (;;)
+    {
+      return 1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("SwiftBrowserIdleTaskHelper", 2, "not need check because time limit:" + l + " - " + birp.a() + " < 10s.");
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("SwiftBrowserIdleTaskHelper", 2, "not need check because count limit:" + birp.a() + ">=" + 5 + ".");
+        }
+      }
+    }
   }
 }
 

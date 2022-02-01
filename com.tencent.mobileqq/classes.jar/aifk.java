@@ -1,22 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
 
 class aifk
-  extends BroadcastReceiver
+  implements View.OnTouchListener
 {
-  private aifk(aidp paramaidp) {}
+  aifk(aifj paramaifj, aife paramaife) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
-      aidp.a(this.a, 1);
+    paramView = paramView.getParent();
+    if (paramView != null) {
+      paramView.requestDisallowInterceptTouchEvent(true);
     }
-    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
-      return;
-    }
-    aidp.a(this.a, 1);
+    return false;
   }
 }
 

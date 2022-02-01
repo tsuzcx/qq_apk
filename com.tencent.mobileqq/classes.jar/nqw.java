@@ -1,27 +1,31 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.3.1;
+import android.os.SystemClock;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.beacon.upload.TunnelInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import java.util.HashMap;
+import java.util.HashSet;
+import kotlin.Metadata;
 
-public class nqw
-  implements TVK_IMediaPlayer.OnErrorListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/officialaccount/OfficialAccountReporter;", "", "()V", "Reporter", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class nqw
 {
-  nqw(nqt paramnqt) {}
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  private static final HashMap<Integer, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static final HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  public static final nqx a;
+  private static int jdField_b_of_type_Int;
+  private static long jdField_b_of_type_Long;
+  private static long c;
+  private static long d;
+  private static long e;
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  static
   {
-    if (QLog.isColorLevel())
-    {
-      paramTVK_IMediaPlayer = new StringBuilder();
-      paramTVK_IMediaPlayer.append("video player error model=" + paramInt1);
-      paramTVK_IMediaPlayer.append(",what=" + paramInt2);
-      paramTVK_IMediaPlayer.append(",extra=" + paramInt3);
-      paramTVK_IMediaPlayer.append(",detailInfo=" + paramString);
-      QLog.e("AccountDetailVideoManager", 2, paramTVK_IMediaPlayer.toString());
-    }
-    this.a.a.runOnUiThread(new AccountDetailVideoManager.3.1(this));
-    return false;
+    jdField_a_of_type_Nqx = new nqx(null);
+    QLog.e("OfficialAccountReporter", 2, "OfficialAccountReporter.init: false");
+    UserAction.registerTunnel(new TunnelInfo("00000KCQ7Y3ITP3Z"));
+    c = SystemClock.elapsedRealtime();
   }
 }
 

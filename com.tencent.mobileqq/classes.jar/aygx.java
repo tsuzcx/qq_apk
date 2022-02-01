@@ -1,71 +1,75 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ocr.TranslateController;
-import com.tencent.mobileqq.ocr.TranslateController.ImageTranslateTask;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aygx
-  implements aoys
+class aygx
+  implements TVK_IMediaPlayer.OnDownloadCallbackListener
 {
-  public aygx(TranslateController.ImageTranslateTask paramImageTranslateTask, apai paramapai) {}
+  aygx(aygs paramaygs, String paramString1, String paramString2, String paramString3) {}
   
-  public void a(int paramInt, String paramString, apad paramapad)
+  public void OnDownloadCallback(String paramString)
   {
-    Object localObject;
-    label82:
-    boolean bool;
-    if (QLog.isColorLevel())
+    if (this.jdField_a_of_type_Aygs.a != null) {}
+    for (;;)
     {
-      if (paramapad != null)
+      try
       {
-        localObject = paramapad.a;
-        QLog.d("TranslateController", 2, "imageTranslate, retCode:" + paramInt + ",sessionId:" + paramString + ",result: " + localObject);
+        paramString = new JSONObject(paramString);
+        i = paramString.getInt("callBackType");
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback callBackType=" + i);
+        }
+        if (i != 7) {
+          break label313;
+        }
+        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          break label312;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback success , vid = " + this.b);
+        }
+        this.jdField_a_of_type_Aygs.a.a(this.b, this.c, new File(this.jdField_a_of_type_JavaLangString));
+        return;
       }
-    }
-    else
-    {
-      int i = 0;
-      if ((paramapad == null) || (paramapad.a == null)) {
-        break label241;
+      catch (JSONException paramString)
+      {
+        if (!QLog.isColorLevel()) {
+          break label312;
+        }
       }
-      paramString = paramapad.a;
-      i = 1;
-      paramapad = this.jdField_a_of_type_Apai.a.b;
-      localObject = this.jdField_a_of_type_Apai.a.a;
-      paramString.c = paramapad;
-      if ((atwl.a((String)localObject)) && (!((String)localObject).equals(paramapad))) {
-        atwl.c((String)localObject);
+      int i = paramString.getInt("errorCode");
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback errorCode=" + i);
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateController$ImageTranslateTask.this$0;
-      if (paramInt != 0) {
-        break label260;
-      }
-      bool = true;
-      label149:
-      TranslateController.a((TranslateController)localObject, bool, paramapad, paramString);
-      paramapad = new HashMap();
-      paramapad.put("costTime", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Apai.c));
-      paramapad.put("retCode", String.valueOf(paramInt));
-      if (i == 0) {
-        break label266;
-      }
-    }
-    label260:
-    label266:
-    for (paramString = "1";; paramString = "0")
-    {
-      paramapad.put("hasResult", paramString);
-      bctj.a(BaseApplicationImpl.getContext()).a("", "SCAN_IMAGE_TRANSLATE_COST", true, 0L, 0L, paramapad, "", false);
+      this.jdField_a_of_type_Aygs.a.a(this.b, this.c, i);
       return;
-      localObject = null;
-      break;
-      label241:
-      paramString = new TranslateResult(2);
-      paramString.b = 1002;
-      break label82;
-      bool = false;
-      break label149;
+      QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback JSONException=" + paramString.getMessage());
+      return;
+      label312:
+      label313:
+      do
+      {
+        long l1;
+        if (i == 2)
+        {
+          l1 = paramString.getLong("fileSize");
+          long l2 = paramString.getLong("offset");
+          this.jdField_a_of_type_Aygs.a.a(this.b, this.c, l1, l2);
+          return;
+        }
+        if (i == 1)
+        {
+          l1 = paramString.getLong("fileSize");
+          this.jdField_a_of_type_Aygs.a.a(this.b, this.c, l1);
+        }
+        return;
+        if (i == 4) {
+          break;
+        }
+      } while (i != 5);
     }
   }
 }

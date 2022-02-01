@@ -1,217 +1,42 @@
-import android.content.Context;
-import android.os.Environment;
-import com.tencent.apkupdate.ApkUpdateListener;
-import com.tencent.apkupdate.ApkUpdateParam;
-import com.tencent.apkupdate.ApkUpdateSDK;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.UpdateManager.1;
-import com.tencent.open.downloadnew.UpdateManager.2;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import mqq.os.MqqHandler;
+import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.CustomedTabWidget;
+import java.lang.ref.WeakReference;
 
 public class biwx
-  implements ApkUpdateListener
+  extends Handler
 {
-  protected static biwx a;
-  public static final String a;
-  protected ConcurrentLinkedQueue<biwy> a;
+  private WeakReference<CustomedTabWidget> a;
   
-  static
+  public biwx(CustomedTabWidget paramCustomedTabWidget)
   {
-    jdField_a_of_type_JavaLangString = biwx.class.getName();
+    this.a = new WeakReference(paramCustomedTabWidget);
   }
   
-  protected biwx()
+  public void handleMessage(Message arg1)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    ApkUpdateSDK.getInstance().init(biip.a().a());
-    ApkUpdateSDK.getInstance().addListener(this);
-  }
-  
-  public static biwx a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Biwx == null) {
-        jdField_a_of_type_Biwx = new biwx();
-      }
-      biwx localbiwx = jdField_a_of_type_Biwx;
-      return localbiwx;
+    CustomedTabWidget localCustomedTabWidget = (CustomedTabWidget)this.a.get();
+    if (localCustomedTabWidget == null) {
+      return;
     }
-    finally {}
-  }
-  
-  /* Error */
-  public static boolean a()
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 55	biwx:jdField_a_of_type_Biwx	Lbiwx;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: ifnull +10 -> 18
-    //   11: iconst_1
-    //   12: istore_0
-    //   13: ldc 2
-    //   15: monitorexit
-    //   16: iload_0
-    //   17: ireturn
-    //   18: iconst_0
-    //   19: istore_0
-    //   20: goto -7 -> 13
-    //   23: astore_1
-    //   24: ldc 2
-    //   26: monitorexit
-    //   27: aload_1
-    //   28: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   12	8	0	bool	boolean
-    //   6	2	1	localbiwx	biwx
-    //   23	5	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	7	23	finally
-  }
-  
-  public void a()
-  {
-    try
-    {
-      ApkUpdateSDK.getInstance().removeListener(this);
-      ApkUpdateSDK.getInstance().destory();
+    if (localCustomedTabWidget.jdField_a_of_type_Float < 0.0F) {
+      localCustomedTabWidget.invalidate((int)(localCustomedTabWidget.b.left + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.top, localCustomedTabWidget.b.right, localCustomedTabWidget.b.bottom);
     }
-    catch (Exception localException)
+    synchronized (localCustomedTabWidget.jdField_a_of_type_Biwx)
     {
-      for (;;)
+      Rect localRect = localCustomedTabWidget.b;
+      localRect.left = ((int)(localRect.left + localCustomedTabWidget.jdField_a_of_type_Float));
+      localRect = localCustomedTabWidget.b;
+      localRect.right = ((int)(localRect.right + localCustomedTabWidget.jdField_a_of_type_Float));
+      if ((localCustomedTabWidget.jdField_a_of_type_AndroidGraphicsRect.left - localCustomedTabWidget.b.left) / localCustomedTabWidget.jdField_a_of_type_Float >= 1.0F)
       {
-        localException = localException;
-        bisy.a(jdField_a_of_type_JavaLangString, "onDestroy>>>", localException);
+        sendEmptyMessage(0);
+        return;
+        localCustomedTabWidget.invalidate(localCustomedTabWidget.b.left, localCustomedTabWidget.b.top, (int)(localCustomedTabWidget.b.right + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.bottom);
       }
     }
-    finally {}
-  }
-  
-  public void a(biwy parambiwy)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(parambiwy);
-      return;
-    }
-    finally
-    {
-      parambiwy = finally;
-      throw parambiwy;
-    }
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo)
-  {
-    String str2 = paramDownloadInfo.e;
-    String str3 = paramDownloadInfo.l;
-    if ("mounted".equals(Environment.getExternalStorageState())) {}
-    int i;
-    for (String str1 = Environment.getExternalStorageDirectory().getAbsolutePath() + bivr.jdField_a_of_type_JavaLangString + "newApkDir";; str1 = biip.a().a().getFilesDir().getAbsolutePath())
-    {
-      File localFile = new File(str1);
-      if (!localFile.exists()) {
-        localFile.mkdirs();
-      }
-      str1 = str1 + "/" + str2 + ".newGen.apk";
-      bisy.b(jdField_a_of_type_JavaLangString, "patchNewApk>>>>>packageName=" + str2 + ", patchPath=" + str3 + ", newApkPath=" + str1);
-      i = ApkUpdateSDK.getInstance().patchNewApk(str2, str3, str1);
-      if (i != 0) {
-        break label421;
-      }
-      bisy.b(jdField_a_of_type_JavaLangString, anni.a(2131714579));
-      paramDownloadInfo.l = str1;
-      if (("com.tencent.mobileqq".equals(paramDownloadInfo.e)) && (anjo.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))) {
-        paramDownloadInfo.a = false;
-      }
-      if ((!"com.tencent.mobileqq".equals(paramDownloadInfo.e)) || (!bivr.a().b())) {
-        break label403;
-      }
-      paramDownloadInfo.j = bivr.a().a(paramDownloadInfo);
-      if (paramDownloadInfo.j == 0) {
-        break;
-      }
-      bisy.d(jdField_a_of_type_JavaLangString, "updateManager patchNewApk write code fail......");
-      paramDownloadInfo.a(-2);
-      bivr.a().e(paramDownloadInfo);
-      bivr.a().a(paramDownloadInfo, paramDownloadInfo.j, null);
-      return;
-    }
-    paramDownloadInfo.a(4);
-    bivr.a().e(paramDownloadInfo);
-    bisy.c(jdField_a_of_type_JavaLangString, "info.path = " + paramDownloadInfo.l);
-    bivr.a().a(4, paramDownloadInfo);
-    if (paramDownloadInfo.a) {
-      bivr.a().c(paramDownloadInfo);
-    }
-    biuh.a("300", paramDownloadInfo.h, paramDownloadInfo.c, paramDownloadInfo.o);
-    ThreadManager.getSubThreadHandler().post(new UpdateManager.1(this, str1, paramDownloadInfo));
-    return;
-    label403:
-    ThreadManager.getSubThreadHandler().post(new UpdateManager.2(this, str1, paramDownloadInfo));
-    return;
-    label421:
-    bisy.e(jdField_a_of_type_JavaLangString, anni.a(2131714580) + i);
-    bivr.a().a(-24, paramDownloadInfo);
-  }
-  
-  public void a(List<String> paramList)
-  {
-    bisy.b(jdField_a_of_type_JavaLangString, "checkUpdate>>> list size:" + paramList.size());
-    ApkUpdateSDK.getInstance().checkUpdate(paramList);
-  }
-  
-  public void b(biwy parambiwy)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(parambiwy);
-      return;
-    }
-    finally
-    {
-      parambiwy = finally;
-      throw parambiwy;
-    }
-  }
-  
-  public void b(List<ApkUpdateParam> paramList)
-  {
-    bisy.b(jdField_a_of_type_JavaLangString, "checkUpdate>>> list size:" + paramList.size());
-    ApkUpdateSDK.getInstance().checkUpdateList(paramList);
-  }
-  
-  public void onCheckUpdateFailed(String paramString)
-  {
-    bisy.c(jdField_a_of_type_JavaLangString, "onCheckUpdateFailed>>>errMsg=" + paramString);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-    while (localIterator.hasNext()) {
-      ((biwy)localIterator.next()).a(paramString);
-    }
-  }
-  
-  public void onCheckUpdateSucceed(ArrayList paramArrayList)
-  {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-      while (localIterator.hasNext()) {
-        ((biwy)localIterator.next()).a(paramArrayList);
-      }
-    }
+    localObject.b.set(localObject.jdField_a_of_type_AndroidGraphicsRect.left, localObject.jdField_a_of_type_AndroidGraphicsRect.top, localObject.jdField_a_of_type_AndroidGraphicsRect.right, localObject.jdField_a_of_type_AndroidGraphicsRect.bottom);
   }
 }
 

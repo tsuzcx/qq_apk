@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.quickat.ui;
 
-import ajtt;
+import akfc;
 import android.os.Handler;
 import android.os.Message;
-import bfjk;
-import bfjw;
-import bfjx;
+import bgjl;
+import bgjx;
+import bgjy;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.TroopMemberInfo;
@@ -38,14 +38,14 @@ public class AIOAtSearchManager$AtSearchRunnable
     this.b = paramBoolean2;
   }
   
-  private ArrayList<ajtt> a(List<TroopMemberInfo> paramList)
+  private ArrayList<akfc> a(List<TroopMemberInfo> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)paramList.next();
-      localArrayList.add(bfjk.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localTroopMemberInfo));
+      localArrayList.add(bgjl.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localTroopMemberInfo));
     }
     return localArrayList;
   }
@@ -58,18 +58,18 @@ public class AIOAtSearchManager$AtSearchRunnable
     if (this.jdField_a_of_type_Boolean) {}
     do
     {
-      bfjx localbfjx;
+      bgjy localbgjy;
       do
       {
         do
         {
           return;
         } while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
-        localbfjx = new bfjw(a(this.jdField_a_of_type_JavaUtilList)).a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.b);
+        localbgjy = new bgjx(a(this.jdField_a_of_type_JavaUtilList)).a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.b);
       } while (this.jdField_a_of_type_Boolean);
       Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
       localMessage.what = 1;
-      localMessage.obj = localbfjx;
+      localMessage.obj = localbgjy;
       this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
     } while (!QLog.isColorLevel());
     QLog.e("AIOAtSearchManager", 2, "taa AtSearchRunnable end: " + System.currentTimeMillis());

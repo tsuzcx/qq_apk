@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import afur;
-import aggc;
-import aggd;
-import agge;
-import aggx;
+import agej;
+import agpd;
+import agpe;
+import agpf;
+import agpy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -19,9 +19,9 @@ import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bbfb;
-import bggl;
-import bhzg;
+import bbxu;
+import bhgm;
+import bjae;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
 import com.tencent.mobileqq.widget.QQToast;
@@ -30,10 +30,10 @@ import com.tencent.qphone.base.util.QLog;
 
 public class DoodleLayout
   extends RelativeLayout
-  implements bbfb
+  implements bbxu
 {
   private int jdField_a_of_type_Int;
-  private agge jdField_a_of_type_Agge;
+  private agpf jdField_a_of_type_Agpf;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private DoodleView jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView;
   private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
@@ -53,9 +53,9 @@ public class DoodleLayout
   
   private Drawable a(int paramInt1, int paramInt2)
   {
-    bhzg localbhzg = new bhzg(b(), 0, false);
-    localbhzg.setBounds(new Rect(0, 0, paramInt1, paramInt2));
-    return localbhzg;
+    bjae localbjae = new bjae(b(), 0, false);
+    localbjae.setBounds(new Rect(0, 0, paramInt1, paramInt2));
+    return localbjae;
   }
   
   private boolean a(boolean paramBoolean)
@@ -67,8 +67,8 @@ public class DoodleLayout
       }
       return false;
     }
-    int i = afur.a(50.0F, getResources());
-    int j = afur.a(37.0F, getResources());
+    int i = agej.a(50.0F, getResources());
+    int j = agej.a(37.0F, getResources());
     if (this.b == null)
     {
       this.b = new ImageView(getContext());
@@ -99,9 +99,9 @@ public class DoodleLayout
       this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView = new DoodleView(getContext(), null);
       localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.setBackgroundColor(getResources().getColor(2131167224));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.setBackgroundColor(getResources().getColor(2131167247));
       addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.a(new aggd(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.a(new agpe(this));
     }
     setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
     setBackgroundColor(-1);
@@ -144,7 +144,7 @@ public class DoodleLayout
     }
   }
   
-  public aggc a()
+  public agpd a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView == null) {
       return null;
@@ -173,7 +173,7 @@ public class DoodleLayout
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.a();
     }
-    this.jdField_a_of_type_Agge = null;
+    this.jdField_a_of_type_Agpf = null;
     this.jdField_a_of_type_AndroidWidgetImageView = null;
     this.jdField_a_of_type_Int = 0;
   }
@@ -197,7 +197,7 @@ public class DoodleLayout
         }
         a(false);
         if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast == null) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getContext(), getResources().getString(2131689837), 0);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getContext(), getResources().getString(2131689842), 0);
         }
       } while (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.c());
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
@@ -226,7 +226,7 @@ public class DoodleLayout
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = bggl.a(BaseApplicationImpl.getContext().getResources(), 2130839407);
+      localBitmap1 = bhgm.a(BaseApplicationImpl.getContext().getResources(), 2130839415);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -270,9 +270,9 @@ public class DoodleLayout
     }
   }
   
-  public void setDoodleLayoutListener(agge paramagge)
+  public void setDoodleLayoutListener(agpf paramagpf)
   {
-    this.jdField_a_of_type_Agge = paramagge;
+    this.jdField_a_of_type_Agpf = paramagpf;
   }
   
   public void setTemplateID(int paramInt)
@@ -291,7 +291,7 @@ public class DoodleLayout
         if (this.jdField_a_of_type_Int <= 0) {
           break;
         }
-        localObject = aggx.a().a(3, this.jdField_a_of_type_Int);
+        localObject = agpy.a().a(3, this.jdField_a_of_type_Int);
         if ((localObject != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null))
         {
           this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
@@ -302,20 +302,20 @@ public class DoodleLayout
         if (QLog.isColorLevel()) {
           QLog.d("DoodleLayout", 2, "load bitmap failed:" + this.jdField_a_of_type_Int);
         }
-        if (!aggx.a().b(3, this.jdField_a_of_type_Int))
+        if (!agpy.a().b(3, this.jdField_a_of_type_Int))
         {
           if (QLog.isColorLevel()) {
             QLog.d("DoodleLayout", 2, "file not exist, start download:" + this.jdField_a_of_type_Int);
           }
           a(true);
           setTemplateVisible(Boolean.valueOf(false));
-          aggx.a().b(1, paramInt, this, this);
+          agpy.a().b(1, paramInt, this, this);
           return;
         }
         if (QLog.isColorLevel()) {
           QLog.d("DoodleLayout", 2, "try use drawable:" + this.jdField_a_of_type_Int);
         }
-        localObject = aggx.a().a(3, this.jdField_a_of_type_Int, false);
+        localObject = agpy.a().a(3, this.jdField_a_of_type_Int, false);
       } while ((localObject == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null));
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
       setTemplateVisible(Boolean.valueOf(true));

@@ -1,33 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.arch.lifecycle.MutableLiveData;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.statistic.serverip.WebAppIpRecord;
 
-class bniu
-  implements Animator.AnimatorListener
+public final class bniu
+  implements Parcelable.Creator<WebAppIpRecord>
 {
-  bniu(bniq parambniq) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public WebAppIpRecord a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoStoryPiecesPart", 2, "ptv panel down");
-    }
-    if (bniq.a(this.a) != null)
-    {
-      bniq.a(this.a).setAlpha(1.0F);
-      bniq.a(this.a).setVisibility(4);
-      bniq.a(this.a).b().postValue(Boolean.valueOf(false));
-    }
-    bniq.d(this.a);
+    return new WebAppIpRecord(paramParcel);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public WebAppIpRecord[] a(int paramInt)
+  {
+    return new WebAppIpRecord[paramInt];
+  }
 }
 
 

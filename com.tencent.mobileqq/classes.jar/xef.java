@@ -1,46 +1,30 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class xef
-  implements AdapterView.OnItemClickListener
+public class xef
+  extends wov
 {
-  xef(xee paramxee) {}
+  public List<QQUserUIItem> a = new ArrayList();
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public xef(qqstory_service.RspConvertUinAndUnionId paramRspConvertUinAndUnionId)
   {
-    if (xee.a(this.a).getActionSheet().isShowing()) {
-      xee.a(this.a).getActionSheet().dismiss();
-    }
-    int j = ((bgsa)paramView.getTag()).a.action;
-    int i;
-    if ((j == 9) || (j == 10)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131719199;
-      }
-    }
-    for (;;)
+    super(paramRspConvertUinAndUnionId.result);
+    paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.user_list.get();
+    if (paramRspConvertUinAndUnionId != null)
     {
-      if (i != -1) {
-        zvc.a(1, i);
-      }
-      for (;;)
+      paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.iterator();
+      while (paramRspConvertUinAndUnionId.hasNext())
       {
-        EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-        return;
-        if (WXShareHelper.a().b()) {
-          break label123;
-        }
-        i = 2131719200;
-        break;
-        this.a.a(j);
+        qqstory_struct.UserInfo localUserInfo = (qqstory_struct.UserInfo)paramRspConvertUinAndUnionId.next();
+        QQUserUIItem localQQUserUIItem = new QQUserUIItem();
+        localQQUserUIItem.convertFrom(localUserInfo);
+        this.a.add(localQQUserUIItem);
       }
-      label123:
-      i = -1;
     }
   }
 }

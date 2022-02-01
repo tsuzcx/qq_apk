@@ -1,21 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
-import java.util.List;
-
 public class bosz
-  implements View.OnClickListener
 {
-  public bosz(AdvancedProviderView paramAdvancedProviderView) {}
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  public bosz(String paramString1, String paramString2)
   {
-    List localList = bqgb.a().a();
-    if (localList.size() > 1) {
-      zmi.a(this.a.a, localList.get(1));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

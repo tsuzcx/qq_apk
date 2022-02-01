@@ -1,19 +1,17 @@
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class befm
-  implements QQPermissionCallback
+class befm
+  implements View.OnClickListener
 {
-  befm(AppActivity paramAppActivity) {}
+  befm(befl parambefl) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    if (!this.a.isFinishing()) {
-      bglp.b(this.a);
-    }
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

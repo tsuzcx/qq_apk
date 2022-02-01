@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import almq;
+import alyi;
 import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
 import java.lang.ref.WeakReference;
 
@@ -11,9 +11,9 @@ public class AudioTranslator$4
   {
     synchronized (this.this$0)
     {
-      if (almq.a(this.this$0) != null)
+      if (alyi.a(this.this$0) != null)
       {
-        AudioCapture localAudioCapture = (AudioCapture)almq.a(this.this$0).get();
+        AudioCapture localAudioCapture = (AudioCapture)alyi.a(this.this$0).get();
         if (localAudioCapture != null)
         {
           localAudioCapture.b(false);

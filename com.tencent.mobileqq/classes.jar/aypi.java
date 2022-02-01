@@ -1,61 +1,40 @@
-import androidx.annotation.NonNull;
-import mqq.app.AppRuntime.Status;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
-public class aypi
+class aypi
+  implements aqxy
 {
-  public int a;
-  public long a;
-  public String a;
-  public AppRuntime.Status a;
-  public int b;
-  public String b;
-  public String c;
+  aypi(ayot paramayot, IphonePickerView paramIphonePickerView, blir paramblir) {}
   
-  public aypi()
+  public void a()
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
+    if ((this.jdField_a_of_type_Blir != null) && (this.jdField_a_of_type_Blir.isShowing()))
+    {
+      ayot.a(this.jdField_a_of_type_Ayot, this.jdField_a_of_type_Ayot.c, false);
+      this.jdField_a_of_type_Blir.dismiss();
+    }
   }
   
-  public aypi(long paramLong, String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-  }
-  
-  public aypi(AppRuntime.Status paramStatus)
-  {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = paramStatus;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = aypc.a(paramStatus);
-    this.jdField_a_of_type_JavaLangString = aypc.a(paramStatus);
-  }
-  
-  public static String a(AppRuntime.Status paramStatus, long paramLong)
-  {
-    return paramStatus.getValue() + "" + paramLong + "";
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return paramLong == 1000L;
-  }
-  
-  public static boolean a(AppRuntime.Status paramStatus, long paramLong)
-  {
-    return (paramStatus == AppRuntime.Status.online) && (paramLong > 40000L);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "id=" + this.jdField_a_of_type_Long + " title=" + this.jdField_a_of_type_JavaLangString;
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
+      {
+        if ((paramInt1 == 0) || (paramInt1 == 1)) {
+          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+        }
+        this.jdField_a_of_type_Ayot.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2));
+      }
+      return;
+      this.jdField_a_of_type_Ayot.e = paramInt2;
+      continue;
+      this.jdField_a_of_type_Ayot.f = paramInt2;
+      continue;
+      this.jdField_a_of_type_Ayot.g = paramInt2;
+    }
   }
 }
 

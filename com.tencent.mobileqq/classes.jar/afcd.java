@@ -1,85 +1,32 @@
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.RecyclerView;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class afcd
-  implements mvb
+  extends avyo
 {
-  public afcd(ScoreQAVFragment paramScoreQAVFragment) {}
+  public afcd(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void a(Object paramObject, int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScoreActivity", 2, "ratingScore : " + paramInt);
-    }
-    this.a.e = paramInt;
-    if (paramInt <= 3) {}
-    for (;;)
+    int i = 1;
+    if (!paramBoolean1)
     {
-      try
-      {
-        if (mrs.a("qav_score_bad.jpg")) {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), mrs.b() + "qav_score_bad.jpg"));
-        }
-        ScoreQAVFragment.a(this.a).setVisibility(0);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.b.setText(2131695191);
-        if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
-        {
-          ScoreQAVFragment.a(this.a).setAdapter(ScoreQAVFragment.a(this.a));
-          if (paramInt <= 0) {
-            break label398;
-          }
-          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-          this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFF"));
-          this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-          return;
-        }
-      }
-      catch (OutOfMemoryError paramObject)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ScoreActivity", 2, "mDatas is invalid!");
-        continue;
-      }
-      if (paramInt > 3)
-      {
-        ScoreQAVFragment.a(this.a).setVisibility(8);
-        try
-        {
-          if (mrs.a("qav_score_good.jpg")) {
-            this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), mrs.b() + "qav_score_good.jpg"));
-          }
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-          this.a.b.setText(2131695191);
-        }
-        catch (OutOfMemoryError paramObject)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
-            }
-          }
-        }
-        label398:
-        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
-      }
+      this.a.a(2131717966, 1);
+      return;
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean2) {
+      i = 2;
+    }
+    bdll.b(localQQAppInterface, "dc00898", "", "", "0X8009D11", "0X8009D11", 0, 0, String.valueOf(i), "", "", "");
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
     }
   }
 }

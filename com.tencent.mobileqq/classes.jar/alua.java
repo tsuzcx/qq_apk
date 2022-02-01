@@ -1,17 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.MessageQueue.IdleHandler;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import com.tencent.qphone.base.util.QLog;
 
-class alua
-  implements View.OnClickListener
+public class alua
+  implements MessageQueue.IdleHandler
 {
-  alua(altz paramaltz) {}
+  public alua(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void onClick(View paramView)
+  public boolean queueIdle()
   {
-    Object localObject = paramView.getTag();
-    altz.a(this.a, (ajjb)localObject);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (bdax.d(bdax.b)) {
+      this.a.b(true);
+    }
+    for (;;)
+    {
+      if ((this.a.f) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+      this.a.c.setEnabled(false);
+      if (QLog.isColorLevel()) {
+        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
+      }
+      return false;
+      this.a.i();
+    }
   }
 }
 

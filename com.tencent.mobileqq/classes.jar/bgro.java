@@ -1,64 +1,55 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import java.lang.reflect.Field;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.List;
 
-public class bgro
+class bgro
+  extends Handler
 {
-  public static SharedPreferences a(Context paramContext, String paramString)
+  bgro(bgrn parambgrn, Looper paramLooper)
   {
-    if ((paramContext == null) || (paramString == null) || (paramString.length() <= 0)) {
-      return null;
-    }
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    Object[] arrayOfObject = (Object[])paramMessage.obj;
+    switch (paramMessage.what)
     {
-      Class localClass = Class.forName("android.content.Context");
-      i = ((Integer)localClass.getField("MODE_MULTI_PROCESS").get(localClass)).intValue();
-      int j = i;
-      if (i == -1) {
-        j = 0;
-      }
-      return paramContext.getSharedPreferences(paramString, j);
+    default: 
+      return;
+    case 1: 
+      paramMessage = (List)arrayOfObject[0];
+      boolean bool = ((Boolean)arrayOfObject[1]).booleanValue();
+      String str = (String)arrayOfObject[2];
+      long l = ((Long)arrayOfObject[3]).longValue();
+      this.a.a(paramMessage, bool, str, l);
+      return;
+    case 2: 
+      paramMessage = (bfrs)arrayOfObject[0];
+      this.a.f(paramMessage);
+      return;
+    case 3: 
+      paramMessage = (bfrs)arrayOfObject[0];
+      this.a.g(paramMessage);
+      return;
+    case 4: 
+      paramMessage = (bfrs)arrayOfObject[0];
+      this.a.h(paramMessage);
+      return;
+    case 5: 
+      int i = paramMessage.arg1;
+      this.a.a(i);
+      return;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
-      {
-        i = -1;
-      }
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
-      {
-        i = -1;
-      }
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      for (;;)
-      {
-        i = -1;
-      }
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        i = -1;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int i = -1;
-      }
-    }
+    paramMessage = (bfrs)arrayOfObject[0];
+    this.a.j(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgro
  * JD-Core Version:    0.7.0.1
  */

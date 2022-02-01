@@ -1,66 +1,496 @@
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
 import android.text.TextUtils;
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.ModuleCallbackWrapper;
-import com.tencent.ark.ark.ModuleRegister;
+import android.view.Surface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ar.ARRenderModel.OnlineVideoARRenderable.2;
+import com.tencent.mobileqq.ar.ARRenderModel.OnlineVideoARRenderable.5;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnDefinitionInfoListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnErrorListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnInfoListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnVideoPreparedListener;
+import com.tencent.superplayer.api.SuperPlayerFactory;
+import com.tencent.superplayer.api.SuperPlayerOption;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.IntBuffer;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.HashMap;
 
+@TargetApi(11)
 public class apio
+  implements SurfaceTexture.OnFrameAvailableListener, apho, ISuperPlayer.OnCompletionListener, ISuperPlayer.OnDefinitionInfoListener, ISuperPlayer.OnErrorListener, ISuperPlayer.OnInfoListener, ISuperPlayer.OnSeekCompleteListener, ISuperPlayer.OnVideoPreparedListener
 {
-  public static long a(String paramString)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = -1L;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private Surface jdField_a_of_type_AndroidViewSurface;
+  private aphq jdField_a_of_type_Aphq;
+  private apiq jdField_a_of_type_Apiq;
+  private aprj jdField_a_of_type_Aprj;
+  private aprk jdField_a_of_type_Aprk = new apip(this);
+  private aprm jdField_a_of_type_Aprm;
+  private volatile ISuperPlayer jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new OnlineVideoARRenderable.2(this);
+  private String jdField_a_of_type_JavaLangString;
+  private final boolean jdField_a_of_type_Boolean = false;
+  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  private int[] jdField_a_of_type_ArrayOfInt = new int[3];
+  private ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer = new ByteBuffer[3];
+  private IntBuffer[] jdField_a_of_type_ArrayOfJavaNioIntBuffer = new IntBuffer[3];
+  private int jdField_b_of_type_Int;
+  private aprj jdField_b_of_type_Aprj;
+  private boolean jdField_b_of_type_Boolean;
+  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
+  private int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
+  private int jdField_d_of_type_Int = 0;
+  private boolean jdField_d_of_type_Boolean;
+  private int jdField_e_of_type_Int = 1;
+  private boolean jdField_e_of_type_Boolean;
+  private int jdField_f_of_type_Int = 0;
+  private boolean jdField_f_of_type_Boolean;
+  private int jdField_g_of_type_Int = -1;
+  private boolean jdField_g_of_type_Boolean;
+  private int jdField_h_of_type_Int = -1;
+  private boolean jdField_h_of_type_Boolean;
+  private int jdField_i_of_type_Int = -1;
+  private boolean jdField_i_of_type_Boolean;
+  private boolean j;
+  private boolean k;
+  private boolean l = true;
+  
+  public apio(aphq paramaphq, apiq paramapiq)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (paramString.indexOf("com.tencent.", 0) == -1) {
-      return 1L;
+    this.jdField_a_of_type_Aphq = paramaphq;
+    this.jdField_a_of_type_Apiq = paramapiq;
+    this.jdField_e_of_type_Int = paramapiq.jdField_e_of_type_Int;
+    this.jdField_d_of_type_Int = paramapiq.jdField_d_of_type_Int;
+    this.jdField_a_of_type_Aprm = paramapiq.jdField_a_of_type_Aprm;
+    this.jdField_a_of_type_JavaLangString = paramapiq.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_Long = paramapiq.jdField_b_of_type_Long;
+    boolean bool = apiw.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_OnlineVideoARRenderable", 2, "Construction mSoftwarePlayConfig:false  isRubbishDevice:" + bool + "  isSoftPlay:" + this.jdField_a_of_type_Apiq.jdField_a_of_type_Boolean);
     }
-    return 0L;
   }
   
-  private static QQAppInterface a()
+  private int a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
   {
-    return apkd.a();
-  }
-  
-  public static void a(ark.ModuleRegister paramModuleRegister, ark.Application paramApplication)
-  {
-    Object localObject1 = paramApplication.GetSpecific("appName");
-    if ((localObject1 != null) && (((String)localObject1).indexOf("com.tencent.", 0) == -1)) {}
-    for (long l = 1L;; l = 0L)
+    paramInt1 -= 1;
+    if (this.jdField_a_of_type_ArrayOfJavaNioIntBuffer[0] == null)
     {
-      Object localObject2 = a();
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (localObject2 != null))
+      this.jdField_a_of_type_ArrayOfJavaNioIntBuffer[0] = IntBuffer.allocate(1);
+      this.jdField_a_of_type_ArrayOfJavaNioIntBuffer[1] = IntBuffer.allocate(1);
+      this.jdField_a_of_type_ArrayOfJavaNioIntBuffer[2] = IntBuffer.allocate(1);
+    }
+    this.jdField_a_of_type_ArrayOfJavaNioIntBuffer[paramInt1].clear();
+    GLES20.glGenTextures(1, this.jdField_a_of_type_ArrayOfJavaNioIntBuffer[paramInt1]);
+    int m = this.jdField_a_of_type_ArrayOfJavaNioIntBuffer[paramInt1].get();
+    GLES20.glBindTexture(3553, m);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameterf(3553, 10242, 33071.0F);
+    GLES20.glTexParameterf(3553, 10243, 33071.0F);
+    if ((this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1] == null) || (this.jdField_a_of_type_ArrayOfInt[paramInt1] != paramArrayOfByte.length)) {}
+    try
+    {
+      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1] = ByteBuffer.allocateDirect(paramArrayOfByte.length);
+      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1].order(ByteOrder.nativeOrder());
+      this.jdField_a_of_type_ArrayOfInt[paramInt1] = paramArrayOfByte.length;
+      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1].put(paramArrayOfByte);
+      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1].position(0);
+      GLES20.glTexImage2D(3553, 0, 6409, paramInt2, paramInt3, 0, 6409, 5121, this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1]);
+      return m;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
       {
-        localObject1 = (ArkAppCenter)((QQAppInterface)localObject2).getManager(121);
-        if (localObject1 == null) {}
+        if (QLog.isColorLevel())
+        {
+          QLog.d("AREngine_OnlineVideoARRenderable", 2, "textureYUV, exception=" + localThrowable.getMessage());
+          localThrowable.printStackTrace();
+        }
       }
-      for (localObject1 = ((ArkAppCenter)localObject1).a();; localObject1 = null)
+    }
+  }
+  
+  private void a()
+  {
+    QLog.d("AREngine_OnlineVideoARRenderable", 1, "initGl");
+    Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenTextures(1, arrayOfInt, 0);
+    this.jdField_a_of_type_Int = arrayOfInt[0];
+    QLog.d("AREngine_OnlineVideoARRenderable", 1, "initGl, mTextureID=" + this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Int == 0) {
+      return;
+    }
+    a(false);
+  }
+  
+  private void a(String paramString)
+  {
+    paramString = SuperPlayerFactory.createVideoInfoForUrl(paramString, 101, bjtz.d(paramString));
+    SuperPlayerOption localSuperPlayerOption = SuperPlayerOption.obtain();
+    localSuperPlayerOption.enableCodecReuse = false;
+    localSuperPlayerOption.isPrePlay = false;
+    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.openMediaPlayer(BaseApplicationImpl.getContext(), paramString, 0L, localSuperPlayerOption);
+  }
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(aphw paramaphw)
+  {
+    a((float[])paramaphw.a("TARGET_SIZE"), (float[])paramaphw.a("POSE"), (float[])paramaphw.a("CAMERA_MATRIX"), (float[])paramaphw.a("CAMERA_POSITION"));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      if (this.jdField_b_of_type_Aprj == null)
       {
-        localObject2 = new ArrayList();
-        ((List)localObject2).add(new apix(paramApplication, l));
-        ((List)localObject2).add(new apgu(paramApplication, l));
-        if (1 == BaseApplicationImpl.sProcessId)
-        {
-          ((List)localObject2).add(new aphi(paramApplication, l));
-          ((List)localObject2).add(new apjw(paramApplication, l));
+        this.jdField_b_of_type_Aprj = aprl.a(this.jdField_a_of_type_Aprm, 3);
+        this.jdField_b_of_type_Aprj.a(apiw.jdField_b_of_type_ArrayOfFloat, apiw.jdField_a_of_type_ArrayOfShort);
+        this.jdField_b_of_type_Aprj.a("uniform int uDisplayType;\n", null, "    if(uDisplayType == 1){\n        // 需要渲染成圆形\n        float x = vTextureCoord.x;\n        float y = vTextureCoord.y;\n        // 圆心(0.5, 0.5), 0.25=0.5*0.5\n        if(pow(abs(x-0.5), 2.0) + pow(abs(y-0.5), 2.0) >= 0.25) {\n            gl_FragColor[3] = 0.0;\n        }\n    }\n", this.jdField_a_of_type_Aprk);
+        this.jdField_b_of_type_Aprj.a(this.jdField_a_of_type_Apiq.jdField_c_of_type_Int, this.jdField_a_of_type_Apiq.jdField_a_of_type_Float, this.jdField_a_of_type_Apiq.jdField_b_of_type_Float, this.jdField_a_of_type_Apiq.jdField_c_of_type_Float);
+      }
+    }
+    while (this.jdField_a_of_type_Aprj != null) {
+      return;
+    }
+    this.jdField_a_of_type_Aprj = aprl.a(this.jdField_a_of_type_Aprm, 1);
+    this.jdField_a_of_type_Aprj.a(apiw.jdField_a_of_type_ArrayOfFloat, apiw.jdField_a_of_type_ArrayOfShort);
+    this.jdField_a_of_type_Aprj.a("uniform int uDisplayType;\n", null, "    if(uDisplayType == 1){\n        // 需要渲染成圆形\n        float x = vTextureCoord.x;\n        float y = vTextureCoord.y;\n        // 圆心(0.5, 0.5), 0.25=0.5*0.5\n        if(pow(abs(x-0.5), 2.0) + pow(abs(y-0.5), 2.0) >= 0.25) {\n            gl_FragColor[3] = 0.0;\n        }\n    }\n", this.jdField_a_of_type_Aprk);
+    this.jdField_a_of_type_Aprj.a(this.jdField_a_of_type_Apiq.jdField_c_of_type_Int, this.jdField_a_of_type_Apiq.jdField_a_of_type_Float, this.jdField_a_of_type_Apiq.jdField_b_of_type_Float, this.jdField_a_of_type_Apiq.jdField_c_of_type_Float);
+  }
+  
+  public void a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3, float[] paramArrayOfFloat4)
+  {
+    if ((!this.jdField_e_of_type_Boolean) || (paramArrayOfFloat2 == null) || (this.jdField_a_of_type_Apiq == null)) {
+      return;
+    }
+    GLES20.glBlendFunc(770, 771);
+    GLES20.glEnable(3042);
+    label54:
+    int m;
+    if (this.jdField_a_of_type_Apiq.jdField_b_of_type_Int == 1)
+    {
+      paramArrayOfFloat1 = a(paramArrayOfFloat1, paramArrayOfFloat3, paramArrayOfFloat4);
+      if (this.jdField_i_of_type_Boolean) {
+        break label167;
+      }
+      if (this.jdField_a_of_type_Aprj == null) {
+        a(this.jdField_i_of_type_Boolean);
+      }
+      if (this.jdField_a_of_type_Aprj != null)
+      {
+        paramArrayOfFloat2 = this.jdField_a_of_type_Aprj;
+        m = this.jdField_a_of_type_Int;
+        paramArrayOfFloat3 = this.jdField_a_of_type_Aprm;
+        paramArrayOfFloat4 = this.jdField_b_of_type_ArrayOfFloat;
+        paramArrayOfFloat2.a(new int[] { m }, paramArrayOfFloat3, paramArrayOfFloat1, paramArrayOfFloat4);
+      }
+    }
+    for (;;)
+    {
+      GLES20.glDisable(3042);
+      GLES20.glBindTexture(3553, 0);
+      GLES20.glBindTexture(36197, 0);
+      if (!this.l) {
+        break;
+      }
+      this.l = false;
+      return;
+      paramArrayOfFloat1 = a(paramArrayOfFloat1, paramArrayOfFloat2, paramArrayOfFloat4);
+      break label54;
+      label167:
+      if (this.jdField_b_of_type_Aprj == null) {
+        a(this.jdField_i_of_type_Boolean);
+      }
+      Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
+      if (this.jdField_b_of_type_Aprj != null)
+      {
+        paramArrayOfFloat2 = this.jdField_b_of_type_Aprj;
+        m = this.jdField_g_of_type_Int;
+        int n = this.jdField_h_of_type_Int;
+        int i1 = this.jdField_i_of_type_Int;
+        paramArrayOfFloat3 = this.jdField_a_of_type_Aprm;
+        paramArrayOfFloat4 = this.jdField_b_of_type_ArrayOfFloat;
+        paramArrayOfFloat2.a(new int[] { m, n, i1 }, paramArrayOfFloat3, paramArrayOfFloat1, paramArrayOfFloat4);
+      }
+    }
+  }
+  
+  public float[] a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3)
+  {
+    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
+    if (c() == 2) {
+      if (this.jdField_a_of_type_Apiq.jdField_a_of_type_Aplk != null)
+      {
+        Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_Apiq.jdField_a_of_type_Aplk.jdField_a_of_type_Float * paramArrayOfFloat1[0], this.jdField_a_of_type_Apiq.jdField_a_of_type_Aplk.jdField_b_of_type_Float * paramArrayOfFloat1[1], 1.0F);
+        Matrix.translateM(this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_Apiq.jdField_a_of_type_Aplk.jdField_c_of_type_Float, this.jdField_a_of_type_Apiq.jdField_a_of_type_Aplk.d, this.jdField_a_of_type_Apiq.jdField_a_of_type_Aplk.e);
+      }
+    }
+    for (;;)
+    {
+      return this.jdField_a_of_type_ArrayOfFloat;
+      if ((paramArrayOfFloat2 != null) && (paramArrayOfFloat3 != null)) {
+        break;
+      }
+      this.jdField_a_of_type_ArrayOfFloat = new float[16];
+    }
+    if (this.jdField_a_of_type_Apiq.jdField_c_of_type_Int == 1) {}
+    for (;;)
+    {
+      Matrix.multiplyMM(this.jdField_a_of_type_ArrayOfFloat, 0, paramArrayOfFloat2, 0, this.jdField_a_of_type_ArrayOfFloat, 0);
+      Matrix.multiplyMM(this.jdField_a_of_type_ArrayOfFloat, 0, paramArrayOfFloat3, 0, this.jdField_a_of_type_ArrayOfFloat, 0);
+      break;
+      Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, paramArrayOfFloat1[0], paramArrayOfFloat1[1], 1.0F);
+    }
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_Apiq != null) {
+      return this.jdField_a_of_type_Apiq.jdField_a_of_type_Int;
+    }
+    return 4;
+  }
+  
+  public int c()
+  {
+    if (this.jdField_a_of_type_Apiq != null) {
+      return this.jdField_a_of_type_Apiq.jdField_b_of_type_Int;
+    }
+    return 0;
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_Apiq.jdField_a_of_type_JavaLangString;
+  }
+  
+  @TargetApi(11)
+  public void c()
+  {
+    QLog.d("AREngine_OnlineVideoARRenderable", 1, "init, mHasSDKInit=" + this.jdField_b_of_type_Boolean);
+    if (this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    a();
+    QLog.d("AREngine_OnlineVideoARRenderable", 1, "initSDK");
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 108, null);
+    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setSurface(this.jdField_a_of_type_AndroidViewSurface);
+    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnVideoPreparedListener(this);
+    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnInfoListener(this);
+    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnErrorListener(this);
+    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnDefinitionInfoListener(this);
+    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnCompletionListener(this);
+    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnSeekCompleteListener(this);
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_OnlineVideoARRenderable", 2, "start, arResourceInfo=" + this.jdField_a_of_type_Apiq);
+    }
+    if ((this.j) || (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer == null) || (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying())) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_OnlineVideoARRenderable", 2, "start, mMediaPlayer == null || mMediaPlayer.isPlaying()");
+      }
+    }
+    do
+    {
+      return;
+      if ((this.jdField_a_of_type_Long >= 0L) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AREngine_OnlineVideoARRenderable", 2, "start, mVideoSize < 0 || TextUtils.isEmpty(mVideoUrl)");
+    return;
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      QLog.d("AREngine_OnlineVideoARRenderable", 1, "init failed");
+      return;
+    }
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_f_of_type_Boolean = false;
+    this.jdField_g_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = 1;
+    this.jdField_f_of_type_Int = 0;
+    this.k = false;
+    this.jdField_d_of_type_Boolean = true;
+    this.j = true;
+    String str = apsn.a(this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_OnlineVideoARRenderable", 2, "start, video dir=" + str + ", mSoftwarePlayConfig=" + false);
+    }
+    a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean d()
+  {
+    return (this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && ((this.jdField_f_of_type_Boolean) || (this.jdField_g_of_type_Boolean) || (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying()));
+  }
+  
+  public void e() {}
+  
+  public boolean e()
+  {
+    return this.jdField_e_of_type_Boolean;
+  }
+  
+  public void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_OnlineVideoARRenderable", 2, "onDestroy");
+    }
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_f_of_type_Boolean = false;
+    this.jdField_g_of_type_Boolean = false;
+    this.jdField_i_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = 1;
+    this.j = false;
+    this.jdField_h_of_type_Boolean = false;
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.stop();
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.release();
+      if (this.jdField_a_of_type_Aprj != null)
+      {
+        this.jdField_a_of_type_Aprj.b();
+        this.jdField_a_of_type_Aprj = null;
+      }
+      if (this.jdField_b_of_type_Aprj != null)
+      {
+        this.jdField_b_of_type_Aprj.b();
+        this.jdField_b_of_type_Aprj = null;
+      }
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("decode_type", String.valueOf(this.jdField_f_of_type_Int));
+      bdmc.a(BaseApplicationImpl.getContext()).a("", "immersed_ar_decode_type", true, 0L, 0L, localHashMap, "", false);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.d("AREngine_OnlineVideoARRenderable", 1, "onDestroy exception, msg=" + localException.getMessage());
+        if (QLog.isColorLevel()) {
+          localException.printStackTrace();
         }
-        if (l == 0L) {
-          ((List)localObject2).add(new apiq(paramApplication, l));
+        if (this.jdField_a_of_type_Aphq != null) {
+          this.jdField_a_of_type_Aphq.a(this.jdField_a_of_type_Apiq.jdField_a_of_type_JavaLangString);
         }
-        paramApplication = ((List)localObject2).iterator();
-        while (paramApplication.hasNext())
-        {
-          localObject2 = (apih)paramApplication.next();
-          if (localObject1 != null) {
-            ((apih)localObject2).a((List)apme.a.get(((apih)localObject2).GetTypeName()));
-          }
-          paramModuleRegister.RegCallbackWrapper((ark.ModuleCallbackWrapper)localObject2);
-        }
+      }
+    }
+  }
+  
+  public void onCompletion(ISuperPlayer paramISuperPlayer)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_OnlineVideoARRenderable", 2, "onCompletion");
+    }
+    if (this.jdField_a_of_type_Aphq != null) {
+      this.jdField_a_of_type_Aphq.b(2, this.jdField_e_of_type_Int - this.jdField_c_of_type_Int);
+    }
+    if (this.jdField_c_of_type_Int >= this.jdField_e_of_type_Int)
+    {
+      this.jdField_f_of_type_Boolean = true;
+      this.jdField_g_of_type_Boolean = false;
+    }
+    do
+    {
+      return;
+      paramISuperPlayer = new OnlineVideoARRenderable.5(this);
+    } while (this.jdField_a_of_type_Aphq == null);
+    this.jdField_a_of_type_Aphq.a(paramISuperPlayer);
+  }
+  
+  public void onDefinitionInfoUpdate(ISuperPlayer paramISuperPlayer, String paramString, ArrayList<String> paramArrayList) {}
+  
+  public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    if (this.jdField_a_of_type_Aphq != null) {
+      this.jdField_a_of_type_Aphq.a(this.jdField_a_of_type_Apiq.jdField_a_of_type_JavaLangString);
+    }
+    f();
+    return false;
+  }
+  
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  {
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_a_of_type_Aphq.a(this.jdField_a_of_type_JavaLangRunnable);
+    if (!this.k)
+    {
+      this.k = true;
+      this.jdField_f_of_type_Int = 1;
+    }
+  }
+  
+  public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
+  {
+    return false;
+  }
+  
+  public void onSeekComplete(ISuperPlayer paramISuperPlayer)
+  {
+    QLog.d("AREngine_OnlineVideoARRenderable", 1, "onSeekComplete");
+    paramISuperPlayer.start();
+  }
+  
+  public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_OnlineVideoARRenderable", 2, "onVideoPrepared. mCanPlay=" + this.jdField_d_of_type_Boolean);
+    }
+    if (!this.jdField_d_of_type_Boolean) {}
+    for (;;)
+    {
+      return;
+      if (this.jdField_h_of_type_Boolean)
+      {
+        this.jdField_h_of_type_Boolean = false;
+        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.start();
         return;
+      }
+      this.jdField_c_of_type_Boolean = true;
+      try
+      {
+        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.start();
+        this.jdField_g_of_type_Boolean = true;
+        if (this.jdField_a_of_type_Aphq != null)
+        {
+          this.jdField_a_of_type_Aphq.b(0, this.jdField_e_of_type_Int);
+          return;
+        }
+      }
+      catch (Exception paramISuperPlayer)
+      {
+        QLog.d("AREngine_OnlineVideoARRenderable", 1, "onVideoPrepared, exception=" + paramISuperPlayer.getMessage());
+        if (QLog.isColorLevel()) {
+          paramISuperPlayer.printStackTrace();
+        }
+        f();
       }
     }
   }

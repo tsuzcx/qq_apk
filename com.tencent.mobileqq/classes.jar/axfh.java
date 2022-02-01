@@ -1,17 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class axfh
-  implements View.OnClickListener
+  extends Handler
 {
-  public axfh(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public axfh() {}
   
-  public void onClick(View paramView)
+  public axfh(Looper paramLooper)
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.what;
+    Object localObject = (Object[])paramMessage.obj;
+    if (i == 1)
+    {
+      if (ChatBackgroundManager.c < 3)
+      {
+        paramMessage = (String)localObject[0];
+        localObject = (QQAppInterface)localObject[1];
+        ChatBackgroundManager.a((QQAppInterface)localObject, paramMessage, bdmc.a(BaseApplication.getContext()));
+        ChatBackgroundManager.c += 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeDownloadTrace", 2, "reportTimes is:" + ChatBackgroundManager.c);
+        }
+        Message localMessage = ChatBackgroundManager.a.obtainMessage();
+        localMessage.what = 1;
+        localMessage.obj = new Object[] { paramMessage, localObject };
+        ChatBackgroundManager.a.sendMessageDelayed(localMessage, 120000L);
+      }
+    }
+    else {
+      return;
+    }
+    ChatBackgroundManager.c = 0;
   }
 }
 

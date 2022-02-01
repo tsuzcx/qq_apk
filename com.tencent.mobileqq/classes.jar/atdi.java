@@ -1,140 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.weiyun.transmission.upload.UploadFile;
-import com.tencent.weiyun.transmission.upload.UploadJobContext;
-import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class atdi
-  implements UploadManager.IUploadStatusListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog$SpacesItemDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "space", "", "firstItemTopSpace", "(II)V", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class atdi
+  extends RecyclerView.ItemDecoration
 {
-  atdi(atdb paramatdb) {}
+  private final int a;
+  private final int b;
   
-  public void onUploadJobAdded(String paramString, long paramLong) {}
-  
-  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
+  public atdi(int paramInt1, int paramInt2)
   {
-    if (this.a.jdField_a_of_type_Auam == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (!paramBoolean) {
-          break;
-        }
-        if (paramStatusInfo.state == 3)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun upload is onStarted[" + this.a.c + "]");
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.b, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 16, null, 0, null);
-          return;
-        }
-        if (paramStatusInfo.state == 6)
-        {
-          if (paramStatusInfo.errorCode == 1810002)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun upload is canceled[" + this.a.c + "],set trafficData size[" + this.a.jdField_a_of_type_Long + "]");
-            }
-            if (bgnt.b(BaseApplication.getContext()) == 1)
-            {
-              paramString = new String[3];
-              paramString[0] = "param_WIFIFileFlow";
-              paramString[1] = "param_WIFIFlow";
-              paramString[2] = "param_Flow";
-            }
-            for (;;)
-            {
-              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
-              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.b, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 3, null, 0, null);
-              return;
-              paramString = new String[3];
-              paramString[0] = "param_XGFileFlow";
-              paramString[1] = "param_XGFlow";
-              paramString[2] = "param_Flow";
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun upload is onFailed[" + this.a.c + "],set trafficData size[" + this.a.jdField_a_of_type_Long + "]");
-          }
-          if (bgnt.b(BaseApplication.getContext()) == 1)
-          {
-            paramString = new String[3];
-            paramString[0] = "param_WIFIFileFlow";
-            paramString[1] = "param_WIFIFlow";
-            paramString[2] = "param_Flow";
-          }
-          for (;;)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
-            this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-            this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.b, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 38, null, paramStatusInfo.errorCode, paramStatusInfo.errorMsg);
-            return;
-            paramString = new String[3];
-            paramString[0] = "param_XGFileFlow";
-            paramString[1] = "param_XGFlow";
-            paramString[2] = "param_Flow";
-          }
-        }
-      } while (paramStatusInfo.state != 5);
-      this.a.jdField_a_of_type_Auam.a(paramStatusInfo.fileId);
-      if (QLog.isColorLevel()) {
-        QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun upload is onSucceed[" + this.a.c + "],set trafficData size[" + this.a.d + "]");
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId = paramStatusInfo.fileId;
-      if (paramStatusInfo.jobContext != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunDirKey = paramStatusInfo.jobContext.file().pDirKey;
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA = paramStatusInfo.jobContext.file().sha;
-        if (!TextUtils.isEmpty(paramStatusInfo.jobContext.file().thumbUrl)) {
-          this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = paramStatusInfo.jobContext.file().thumbUrl;
-        }
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 1.0F;
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setCloudType(2);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
-      this.a.h = System.currentTimeMillis();
-      if (bgnt.b(BaseApplication.getContext()) == 1)
-      {
-        paramString = new String[3];
-        paramString[0] = "param_WIFIFileFlow";
-        paramString[1] = "param_WIFIFlow";
-        paramString[2] = "param_Flow";
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.b, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 37, null, 0, null);
-        paramString = new atvn();
-        paramString.b = "send_file_suc";
-        paramString.jdField_a_of_type_Int = 1;
-        atvm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
-        return;
-        paramString = new String[3];
-        paramString[0] = "param_XGFileFlow";
-        paramString[1] = "param_XGFlow";
-        paramString[2] = "param_Flow";
-      }
-      paramLong = System.currentTimeMillis();
-      this.a.jdField_a_of_type_Long = paramStatusInfo.currSize;
-      this.a.d = paramStatusInfo.totalSize;
-    } while (paramLong - this.a.f < 1000L);
-    this.a.f = paramLong;
-    if (QLog.isColorLevel()) {
-      QLog.i("FileManagerRSWorker<FileAssistant>", 2, "Id[" + this.a.c + "]WeiYun upload is onProgressChange mtransferedSize[" + this.a.jdField_a_of_type_Long + "/" + this.a.d + "]");
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void getItemOffsets(@NotNull Rect paramRect, @NotNull View paramView, @NotNull RecyclerView paramRecyclerView, @NotNull RecyclerView.State paramState)
+  {
+    Intrinsics.checkParameterIsNotNull(paramRect, "outRect");
+    Intrinsics.checkParameterIsNotNull(paramView, "view");
+    Intrinsics.checkParameterIsNotNull(paramRecyclerView, "parent");
+    Intrinsics.checkParameterIsNotNull(paramState, "state");
+    paramRect.bottom = this.a;
+    if (paramRecyclerView.getChildPosition(paramView) == 0) {
+      paramRect.top = this.b;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = ((float)this.a.jdField_a_of_type_Long / (float)this.a.d);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.b, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 16, null, 0, null);
   }
 }
 

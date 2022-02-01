@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
-import bcnj;
+import bdgb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import java.util.List;
@@ -40,18 +40,18 @@ public class TabBarView2
   public TabBarView2(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = afur.a(56.0F, getResources());
+    this.jdField_b_of_type_Int = agej.a(56.0F, getResources());
     this.m = 16;
     boolean bool1 = ThemeUtil.isNowThemeIsDefaultCache(BaseApplicationImpl.getApplication().getRuntime(), true);
     int k = this.s;
     boolean bool2 = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
     int i;
     int j;
-    if (bcnj.a()) {
+    if (bdgb.a()) {
       if (bool2)
       {
-        i = 2131166448;
-        k = 2131167064;
+        i = 2131166452;
+        k = 2131167074;
         int n = 255;
         j = i;
         i = k;
@@ -76,14 +76,14 @@ public class TabBarView2
       this.t = paramContext.getDimensionPixelSize(4, this.t);
       this.u = paramContext.getDimensionPixelSize(3, this.u);
       paramContext.recycle();
-      if (("1103".equals(ThemeUtil.curThemeId)) || (bcnj.a()))
+      if (("1103".equals(ThemeUtil.curThemeId)) || (bdgb.a()))
       {
         this.r = getResources().getColor(j);
         this.s = k;
       }
       b();
       return;
-      i = 2131166447;
+      i = 2131166451;
       break;
       if (bool2)
       {
@@ -94,13 +94,13 @@ public class TabBarView2
       }
       else if (!bool1)
       {
-        i = 2131167064;
-        j = 2131166993;
+        i = 2131167074;
+        j = 2131166997;
       }
       else
       {
         m = 2131165581;
-        i = 2131167064;
+        i = 2131167074;
         j = 2131165581;
       }
     }

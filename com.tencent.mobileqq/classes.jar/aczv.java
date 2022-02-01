@@ -1,36 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
-
 public class aczv
-  implements acxp
 {
-  public int a()
-  {
-    return 1036;
-  }
+  public long a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public boolean c;
   
-  public boolean a()
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = new msg_svc.CommTmp();
-    paramQQAppInterface.c2c_type.set(1);
-    paramQQAppInterface.svr_type.set(160);
-    paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramRoutingHead.comm_tmp.set(paramQQAppInterface);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.c = paramBoolean;
   }
 }
 

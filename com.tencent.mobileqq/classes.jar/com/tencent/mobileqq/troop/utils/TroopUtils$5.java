@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.content.Context;
-import anwd;
-import bcst;
-import bfup;
+import aoip;
+import bdll;
+import bguq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
@@ -43,8 +43,8 @@ public final class TroopUtils$5
         try
         {
           l = Long.parseLong(arrayOfString[2]);
-          bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD4F", "0X800AD4F", (int)l, 0, String.valueOf(i), "", "", "");
-          ((anwd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).c(this.jdField_a_of_type_JavaLangString, 2, j);
+          bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD4F", "0X800AD4F", (int)l, 0, String.valueOf(i), "", "", "");
+          ((aoip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).c(this.jdField_a_of_type_JavaLangString, 2, j);
           j = i;
           if (localTroopMemberInfo == null) {
             break;
@@ -53,7 +53,7 @@ public final class TroopUtils$5
             QLog.i("TroopUtils", 2, "checkAndOpenMemberProfileForRecommendTipsClick open card " + this.b + " " + this.c);
           }
           if (this.jdField_a_of_type_AndroidContentContext != null) {
-            bfup.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.b, j, this.jdField_a_of_type_JavaLangString);
+            bguq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.b, j, this.jdField_a_of_type_JavaLangString);
           }
           return;
         }

@@ -1,222 +1,295 @@
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothProfile;
+import android.bluetooth.BluetoothProfile.ServiceListener;
 import android.content.Context;
-import android.text.TextUtils;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.PluginInfo;
-import java.util.HashMap;
+import com.tencent.sharp.jni.AudioDeviceInterface;
+import com.tencent.sharp.jni.TraeAudioManager;
+import com.tencent.sharp.jni.TraeAudioManager.BluetoohHeadsetCheck.1;
+import java.util.List;
 
 public class blfb
+  extends blfe
+  implements BluetoothProfile.ServiceListener
 {
-  private static volatile blfb jdField_a_of_type_Blfb;
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "qzone_plugin.apk", "qwallet_plugin.apk", "qqfav.apk", "qqwadl.apk" };
-  private Context jdField_a_of_type_AndroidContentContext;
-  private HashMap<String, PluginInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  BluetoothAdapter jdField_a_of_type_AndroidBluetoothBluetoothAdapter = null;
+  public BluetoothProfile a;
+  Context jdField_a_of_type_AndroidContentContext = null;
+  public blff a;
+  final String jdField_a_of_type_JavaLangString = "BluetoohHeadsetCheck";
   
-  private blfb(Context paramContext)
+  public blfb(TraeAudioManager paramTraeAudioManager)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
+    super(paramTraeAudioManager);
+    this.jdField_a_of_type_Blff = null;
+    this.jdField_a_of_type_AndroidBluetoothBluetoothProfile = null;
   }
   
-  public static final blfb a(Context paramContext)
+  public String a()
   {
-    if (jdField_a_of_type_Blfb == null) {}
-    try
-    {
-      if (jdField_a_of_type_Blfb == null) {
-        jdField_a_of_type_Blfb = new blfb(paramContext);
-      }
-      return jdField_a_of_type_Blfb;
-    }
-    finally {}
-  }
-  
-  public static boolean b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return false;
-      int i = 0;
-      while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
-      {
-        if (paramString.equals(jdField_a_of_type_ArrayOfJavaLangString[i])) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public PluginInfo a(String paramString)
-  {
-    return (PluginInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    return "BluetoohHeadsetCheck";
   }
   
   public void a()
   {
-    b();
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "init. built in plugin size:" + this.jdField_a_of_type_JavaUtilHashMap.size());
+    AudioDeviceInterface.LogTraceEntry("_profile:" + this.jdField_a_of_type_AndroidBluetoothBluetoothProfile);
+    try
+    {
+      if (this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter != null)
+      {
+        if (this.jdField_a_of_type_AndroidBluetoothBluetoothProfile != null) {
+          this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.closeProfileProxy(1, this.jdField_a_of_type_AndroidBluetoothBluetoothProfile);
+        }
+        this.jdField_a_of_type_AndroidBluetoothBluetoothProfile = null;
+      }
+      AudioDeviceInterface.LogTraceExit();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("BluetoohHeadsetCheck", 2, " closeProfileProxy:e:" + localException.getMessage());
+        }
+      }
     }
   }
   
-  public boolean a(String paramString)
+  void a(Context paramContext, Intent paramIntent)
   {
-    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+    long l = muk.a(paramIntent);
+    int i;
+    if ("android.bluetooth.headset.profile.action.AUDIO_STATE_CHANGED".equals(paramIntent.getAction()))
+    {
+      i = paramIntent.getIntExtra("android.bluetooth.profile.extra.STATE", 10);
+      if (QLog.isColorLevel()) {
+        QLog.w("BluetoohHeadsetCheck", 1, "_onReceive.ACTION_AUDIO_STATE_CHANGED, state[" + i + "], bluetoothState[" + TraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager) + "], seq[" + l + "]");
+      }
+      if (i == 12) {
+        if (TraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager) == 6) {
+          QLog.w("TRAE", 2, "bluetoothHeadsetSwitchThread ACTION_AUDIO_STATE_CHANGED +++ Bluetooth audio SCO is now connected, SCO_CONNECTED");
+        }
+      }
+    }
+    label124:
+    int j;
+    label460:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            TraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager, 7);
+            break label124;
+            break label124;
+            do
+            {
+              do
+              {
+                return;
+              } while ((i == 11) || (i != 10));
+              QLog.w("TRAE", 2, "ACTION_AUDIO_STATE_CHANGED +++ Bluetooth audio SCO is STATE_AUDIO_DISCONNECTED");
+              return;
+              if (!"android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED".equals(paramIntent.getAction())) {
+                break;
+              }
+              switch (paramIntent.getIntExtra("android.bluetooth.profile.extra.STATE", -1))
+              {
+              case 1: 
+              default: 
+                return;
+              case 0: 
+                TraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager, 3);
+                this.jdField_a_of_type_Blff.a("DEVICE_BLUETOOTHHEADSET", false);
+              }
+            } while (!QLog.isColorLevel());
+            QLog.w("TRAE", 2, "jeringtest BluetoothHeadset ACTION_CONNECTION_STATE_CHANGED BluetoothProfile.STATE_DISCONNECTED");
+            return;
+            TraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager, 4);
+            this.jdField_a_of_type_Blff.a("DEVICE_BLUETOOTHHEADSET", true);
+          } while (!QLog.isColorLevel());
+          QLog.w("TRAE", 2, "jeringtest  BluetoothHeadset ACTION_CONNECTION_STATE_CHANGED BluetoothProfile.STATE_CONNECTED");
+          return;
+          if (!"android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED".equals(paramIntent.getAction())) {
+            break;
+          }
+          i = paramIntent.getIntExtra("android.bluetooth.adapter.extra.CONNECTION_STATE", -1);
+          j = paramIntent.getIntExtra("android.bluetooth.adapter.extra.PREVIOUS_CONNECTION_STATE", -1);
+          paramIntent = (BluetoothDevice)paramIntent.getParcelableExtra("android.bluetooth.device.extra.DEVICE");
+          if (QLog.isColorLevel()) {
+            QLog.w("BluetoohHeadsetCheck", 2, "BT ACTION_CONNECTION_STATE_CHANGED|   EXTRA_CONNECTION_STATE " + c(i));
+          }
+          if (QLog.isColorLevel()) {
+            QLog.w("BluetoohHeadsetCheck", 2, "    EXTRA_PREVIOUS_CONNECTION_STATE " + c(j));
+          }
+          Object localObject;
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder().append("    EXTRA_DEVICE ").append(paramIntent).append(" ");
+            if (paramIntent != null)
+            {
+              paramContext = paramIntent.getName();
+              QLog.w("BluetoohHeadsetCheck", 2, paramContext);
+            }
+          }
+          else
+          {
+            if (i != 2) {
+              continue;
+            }
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder().append("   dev:");
+              if (paramIntent == null) {
+                break label519;
+              }
+              paramContext = paramIntent.getName();
+              QLog.w("BluetoohHeadsetCheck", 2, paramContext + " connected,start sco...");
+            }
+            this.jdField_a_of_type_Blff.a("DEVICE_BLUETOOTHHEADSET", true);
+            localObject = this.jdField_a_of_type_Blff;
+            if (paramIntent == null) {
+              break label525;
+            }
+          }
+          for (paramContext = paramIntent.getName();; paramContext = "unkown")
+          {
+            ((blff)localObject).a(paramContext);
+            return;
+            paramContext = " ";
+            break;
+            paramContext = "null";
+            break label460;
+          }
+        } while (i != 0);
+        this.jdField_a_of_type_Blff.a("DEVICE_BLUETOOTHHEADSET", false);
+        return;
+      } while (!"android.media.ACTION_SCO_AUDIO_STATE_UPDATED".equals(paramIntent.getAction()));
+      i = paramIntent.getIntExtra("android.media.extra.SCO_AUDIO_STATE", -1);
+      j = paramIntent.getIntExtra("android.media.extra.SCO_AUDIO_PREVIOUS_STATE", -1);
+      paramContext = (BluetoothDevice)paramIntent.getParcelableExtra("android.bluetooth.device.extra.DEVICE");
+      if (QLog.isColorLevel()) {
+        QLog.w("BluetoohHeadsetCheck", 2, "BT ACTION_SCO_AUDIO_STATE_UPDATED|   EXTRA_CONNECTION_STATE  dev:" + paramContext);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("BluetoohHeadsetCheck", 2, "   EXTRA_SCO_AUDIO_STATE " + b(i) + "  Bluetooth visible:" + this.jdField_a_of_type_Blff.b("DEVICE_BLUETOOTHHEADSET"));
+      }
+    } while (!QLog.isColorLevel());
+    label519:
+    label525:
+    QLog.w("BluetoohHeadsetCheck", 2, "   EXTRA_SCO_AUDIO_PREVIOUS_STATE " + b(j));
   }
   
-  /* Error */
-  void b()
+  void a(IntentFilter paramIntentFilter)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: new 105	java/io/BufferedReader
-    //   5: dup
-    //   6: new 107	java/io/InputStreamReader
-    //   9: dup
-    //   10: aload_0
-    //   11: getfield 36	blfb:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   14: invokevirtual 113	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   17: ldc 115
-    //   19: invokevirtual 121	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   22: invokespecial 124	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   25: invokespecial 127	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   28: astore_1
-    //   29: aload_1
-    //   30: invokevirtual 130	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   33: astore_2
-    //   34: aload_2
-    //   35: ifnull +139 -> 174
-    //   38: aload_2
-    //   39: invokevirtual 133	java/lang/String:trim	()Ljava/lang/String;
-    //   42: ldc 135
-    //   44: invokevirtual 139	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   47: astore 4
-    //   49: aload 4
-    //   51: iconst_0
-    //   52: aaload
-    //   53: astore_3
-    //   54: ldc 141
-    //   56: astore_2
-    //   57: aload 4
-    //   59: arraylength
-    //   60: iconst_1
-    //   61: if_icmple +8 -> 69
-    //   64: aload 4
-    //   66: iconst_1
-    //   67: aaload
-    //   68: astore_2
-    //   69: new 62	cooperation/plugin/PluginInfo
-    //   72: dup
-    //   73: invokespecial 142	cooperation/plugin/PluginInfo:<init>	()V
-    //   76: astore 4
-    //   78: aload 4
-    //   80: aload_3
-    //   81: putfield 146	cooperation/plugin/PluginInfo:mID	Ljava/lang/String;
-    //   84: aload 4
-    //   86: aload_2
-    //   87: putfield 149	cooperation/plugin/PluginInfo:mMD5	Ljava/lang/String;
-    //   90: aload 4
-    //   92: iconst_1
-    //   93: putfield 153	cooperation/plugin/PluginInfo:mUpdateType	I
-    //   96: aload 4
-    //   98: iconst_0
-    //   99: putfield 156	cooperation/plugin/PluginInfo:mInstallType	I
-    //   102: invokestatic 70	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   105: ifeq +45 -> 150
-    //   108: ldc 72
-    //   110: iconst_2
-    //   111: new 74	java/lang/StringBuilder
-    //   114: dup
-    //   115: invokespecial 75	java/lang/StringBuilder:<init>	()V
-    //   118: ldc 158
-    //   120: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: aload 4
-    //   125: getfield 146	cooperation/plugin/PluginInfo:mID	Ljava/lang/String;
-    //   128: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   131: ldc 160
-    //   133: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   136: aload 4
-    //   138: getfield 149	cooperation/plugin/PluginInfo:mMD5	Ljava/lang/String;
-    //   141: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   144: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   147: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   150: aload_0
-    //   151: getfield 34	blfb:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   154: aload_3
-    //   155: aload 4
-    //   157: invokevirtual 164	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   160: pop
-    //   161: goto -132 -> 29
-    //   164: astore_2
-    //   165: aload_1
-    //   166: ifnull +7 -> 173
-    //   169: aload_1
-    //   170: invokevirtual 167	java/io/BufferedReader:close	()V
-    //   173: return
-    //   174: aload_1
-    //   175: ifnull -2 -> 173
-    //   178: aload_1
-    //   179: invokevirtual 167	java/io/BufferedReader:close	()V
-    //   182: return
-    //   183: astore_1
-    //   184: return
-    //   185: astore_1
-    //   186: aload_2
-    //   187: ifnull +7 -> 194
-    //   190: aload_2
-    //   191: invokevirtual 167	java/io/BufferedReader:close	()V
-    //   194: aload_1
-    //   195: athrow
-    //   196: astore_1
-    //   197: return
-    //   198: astore_2
-    //   199: goto -5 -> 194
-    //   202: astore_3
-    //   203: aload_1
-    //   204: astore_2
-    //   205: aload_3
-    //   206: astore_1
-    //   207: goto -21 -> 186
-    //   210: astore_1
-    //   211: aconst_null
-    //   212: astore_1
-    //   213: goto -48 -> 165
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	216	0	this	blfb
-    //   28	151	1	localBufferedReader	java.io.BufferedReader
-    //   183	1	1	localException1	java.lang.Exception
-    //   185	10	1	localObject1	Object
-    //   196	8	1	localException2	java.lang.Exception
-    //   206	1	1	localObject2	Object
-    //   210	1	1	localIOException1	java.io.IOException
-    //   212	1	1	localObject3	Object
-    //   1	86	2	str	String
-    //   164	27	2	localIOException2	java.io.IOException
-    //   198	1	2	localException3	java.lang.Exception
-    //   204	1	2	localObject4	Object
-    //   53	102	3	localObject5	Object
-    //   202	4	3	localObject6	Object
-    //   47	109	4	localObject7	Object
-    // Exception table:
-    //   from	to	target	type
-    //   29	34	164	java/io/IOException
-    //   38	49	164	java/io/IOException
-    //   57	64	164	java/io/IOException
-    //   69	150	164	java/io/IOException
-    //   150	161	164	java/io/IOException
-    //   178	182	183	java/lang/Exception
-    //   2	29	185	finally
-    //   169	173	196	java/lang/Exception
-    //   190	194	198	java/lang/Exception
-    //   29	34	202	finally
-    //   38	49	202	finally
-    //   57	64	202	finally
-    //   69	150	202	finally
-    //   150	161	202	finally
-    //   2	29	210	java/io/IOException
+    if (QLog.isColorLevel()) {
+      QLog.w("BluetoohHeadsetCheck", 2, " " + a() + " _addAction");
+    }
+    paramIntentFilter.addAction("android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED");
+    paramIntentFilter.addAction("android.media.ACTION_SCO_AUDIO_STATE_UPDATED");
+    paramIntentFilter.addAction("android.bluetooth.headset.profile.action.AUDIO_STATE_CHANGED");
+    paramIntentFilter.addAction("android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED");
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_AndroidBluetoothBluetoothProfile != null) {
+      try
+      {
+        List localList = this.jdField_a_of_type_AndroidBluetoothBluetoothProfile.getConnectedDevices();
+        if (localList == null) {
+          return false;
+        }
+        int i = localList.size();
+        if (i > 0) {
+          return true;
+        }
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("BluetoohHeadsetCheck", 2, " isConnected e = " + localException);
+        }
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(Context paramContext, blff paramblff)
+  {
+    AudioDeviceInterface.LogTraceEntry("");
+    if ((paramContext == null) || (paramblff == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.e("BluetoohHeadsetCheck", 2, " err ctx==null||_devCfg==null");
+      }
+    }
+    do
+    {
+      do
+      {
+        return false;
+        this.jdField_a_of_type_AndroidContentContext = paramContext;
+        this.jdField_a_of_type_Blff = paramblff;
+        this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("BluetoohHeadsetCheck", 2, " err getDefaultAdapter fail!");
+      return false;
+      if ((!this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.isEnabled()) || (this.jdField_a_of_type_AndroidBluetoothBluetoothProfile != null) || (this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.getProfileProxy(this.jdField_a_of_type_AndroidContentContext, this, 1))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("BluetoohHeadsetCheck", 2, "BluetoohHeadsetCheck: getProfileProxy HEADSET fail!");
+    return false;
+    AudioDeviceInterface.LogTraceExit();
+    return true;
+  }
+  
+  public void onServiceConnected(int paramInt, BluetoothProfile paramBluetoothProfile)
+  {
+    if (paramInt == 1)
+    {
+      if ((this.jdField_a_of_type_AndroidBluetoothBluetoothProfile != null) && (this.jdField_a_of_type_AndroidBluetoothBluetoothProfile != paramBluetoothProfile))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("BluetoohHeadsetCheck", 2, "BluetoohHeadsetCheck: HEADSET Connected proxy:" + paramBluetoothProfile + " _profile:" + this.jdField_a_of_type_AndroidBluetoothBluetoothProfile);
+        }
+        this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.closeProfileProxy(1, this.jdField_a_of_type_AndroidBluetoothBluetoothProfile);
+        this.jdField_a_of_type_AndroidBluetoothBluetoothProfile = null;
+      }
+      this.jdField_a_of_type_AndroidBluetoothBluetoothProfile = paramBluetoothProfile;
+      ThreadManager.post(new TraeAudioManager.BluetoohHeadsetCheck.1(this), 5, null, false);
+    }
+    AudioDeviceInterface.LogTraceExit();
+  }
+  
+  public void onServiceDisconnected(int paramInt)
+  {
+    AudioDeviceInterface.LogTraceEntry("_profile:" + this.jdField_a_of_type_AndroidBluetoothBluetoothProfile + " profile:" + paramInt);
+    if (paramInt == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("BluetoohHeadsetCheck", 2, "TRAEBluetoohProxy: HEADSET Disconnected");
+      }
+      if (a()) {
+        this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a("DEVICE_BLUETOOTHHEADSET", false);
+      }
+      if (this.jdField_a_of_type_AndroidBluetoothBluetoothProfile != null)
+      {
+        this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.closeProfileProxy(1, this.jdField_a_of_type_AndroidBluetoothBluetoothProfile);
+        this.jdField_a_of_type_AndroidBluetoothBluetoothProfile = null;
+      }
+    }
+    AudioDeviceInterface.LogTraceExit();
   }
 }
 

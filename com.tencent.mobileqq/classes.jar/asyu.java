@@ -1,111 +1,68 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.XEditTextEx;
 
 public class asyu
-  extends asyr
+  implements TextWatcher
 {
-  public asyu(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString;
   
-  protected ImageView a(afwr paramafwr)
+  public asyu(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramafwr == null) {}
-    while (!(paramafwr instanceof ahfe)) {
-      return null;
+    int i = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLineCount();
+    if (i > 30)
+    {
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        break label136;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(this.jdField_a_of_type_Int);
     }
-    return ((ahfe)paramafwr).a;
+    for (;;)
+    {
+      if (ExtendFriendProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment) == null) {
+        ExtendFriendProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment, QQToast.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.getActivity(), "输入文字不要超过30行", 0));
+      }
+      if (!ExtendFriendProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).c()) {
+        ExtendFriendProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).a();
+      }
+      if (i != ExtendFriendProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment))
+      {
+        ExtendFriendProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment, i);
+        this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_Boolean = true;
+      }
+      return;
+      label136:
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
+    }
   }
   
-  protected void a(afwr paramafwr, ImageView paramImageView)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramafwr == null) {}
-    while (!(paramafwr instanceof ahfe)) {
+    if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLineCount() <= 30)
+    {
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
+    }
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_JavaLangString = "";
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.jdField_a_of_type_JavaLangString.equals(paramCharSequence.toString())) && (!ExtendFriendProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment)))
+    {
+      ExtendFriendProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
       return;
     }
-    ((ahfe)paramafwr).a = paramImageView;
-  }
-  
-  protected void a(View paramView, afwr paramafwr, ChatMessage paramChatMessage, int paramInt)
-  {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              QLog.i("TroopFileBubblePauseHandler", 1, "handlePauseClick: type[" + paramInt + "]");
-            } while (paramInt == -1);
-            paramafwr = (MessageForTroopFile)paramChatMessage;
-            paramView = TroopFileTransferManager.a(this.a, Long.parseLong(paramChatMessage.frienduin));
-          } while (paramView == null);
-          paramafwr = bfsj.a(this.a, paramafwr);
-        } while (paramafwr == null);
-        if (paramInt != 0) {
-          break;
-        }
-      } while ((paramafwr.b != 0) && (paramafwr.b != 1));
-      bcst.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", 2, 0, "", "", "", "");
-      paramView.a(paramafwr.a);
-      return;
-    } while ((paramInt != 1) || (paramafwr.b != 2));
-    bcst.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", 2, 0, "", "", "", "");
-    a(new asyv(this, paramChatMessage.frienduin, paramafwr));
-  }
-  
-  protected boolean a(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while (!(paramChatMessage instanceof MessageForTroopFile));
-        paramChatMessage = (MessageForTroopFile)paramChatMessage;
-        paramChatMessage = bfsj.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileBubblePauseHandler", 1, "needShowPauseIcon: current file status[" + paramChatMessage.b + "]");
-      }
-    } while ((paramChatMessage.b != 0) && (paramChatMessage.b != 1));
-    return true;
-  }
-  
-  protected boolean b(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while (!(paramChatMessage instanceof MessageForTroopFile));
-        paramChatMessage = (MessageForTroopFile)paramChatMessage;
-        paramChatMessage = bfsj.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileBubblePauseHandler", 1, "needShowResumeIcon: current file status[" + paramChatMessage.b + "]");
-      }
-    } while ((paramChatMessage.b != 3) && (paramChatMessage.b != 2));
-    return true;
+    ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
   }
 }
 

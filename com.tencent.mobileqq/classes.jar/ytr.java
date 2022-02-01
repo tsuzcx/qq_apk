@@ -5,11 +5,11 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class ytr
   implements View.OnClickListener
 {
-  ytr(ytp paramytp) {}
+  ytr(ytq paramytq) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.a(0);
+    this.a.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

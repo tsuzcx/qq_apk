@@ -1,20 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class aeqj
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public aeqj(NotificationActivity paramNotificationActivity) {}
+  public aeqj(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.finish();
+    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqj
  * JD-Core Version:    0.7.0.1
  */

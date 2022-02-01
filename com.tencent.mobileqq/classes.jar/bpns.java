@@ -1,8 +1,19 @@
-public abstract interface bpns
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.QIMBeautyItem;
+
+public final class bpns
+  implements Parcelable.Creator<QIMBeautyItem>
 {
-  public abstract int a();
+  public QIMBeautyItem a(Parcel paramParcel)
+  {
+    return new QIMBeautyItem(paramParcel);
+  }
   
-  public abstract bpnb a(int paramInt);
+  public QIMBeautyItem[] a(int paramInt)
+  {
+    return new QIMBeautyItem[paramInt];
+  }
 }
 
 

@@ -1,44 +1,22 @@
-import android.os.RemoteException;
-import com.tencent.av.service.LBSInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.av.service.RecvMsg;
 
-public class lwx
-  extends anot
+public abstract interface lwx
+  extends IInterface
 {
-  private List<lwh> a = new ArrayList();
+  public abstract Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle);
   
-  public int a()
-  {
-    return this.a.size();
-  }
+  public abstract void a(RecvMsg paramRecvMsg);
   
-  public void a(lwh paramlwh)
-  {
-    if (paramlwh != null) {
-      this.a.add(paramlwh);
-    }
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
   
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      lwh locallwh = (lwh)localIterator.next();
-      try
-      {
-        locallwh.a(paramBoolean, paramLBSInfo);
-      }
-      catch (RemoteException localRemoteException) {}
-      if (QLog.isColorLevel()) {
-        QLog.e("QQServiceForAV", 2, "Call onGetUserLocation fail", localRemoteException);
-      }
-    }
-    this.a.clear();
-  }
+  public abstract void a(String paramString, int paramInt, byte[] paramArrayOfByte);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3);
+  
+  public abstract void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo);
 }
 
 

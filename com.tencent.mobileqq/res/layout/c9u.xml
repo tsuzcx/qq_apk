@@ -8,11 +8,11 @@
             <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:layout_gravity="center_vertical" android:id="@id/m8a" android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1条新评论" />
             <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hjl" />
         </LinearLayout>
-        <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="#ff989eb4" android:id="@id/m87" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="12.0dip" android:text="@string/x8c" android:includeFontPadding="false" />
-        <RelativeLayout android:id="@id/mkl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageView android:id="@id/mkk" android:layout_width="176.0dip" android:layout_height="95.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="50.0dip" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:id="@id/mkm" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="8.0dip" android:text="当前无关注的直播" android:layout_below="@id/mkk" android:layout_centerHorizontal="true" />
-            <Button android:textSize="14.0sp" android:textColor="#ffffffff" android:id="@id/mkj" android:background="@drawable/b9" android:layout_width="116.0dip" android:layout_height="29.0dip" android:layout_marginTop="24.0dip" android:text="去发现页逛逛" android:layout_below="@id/mkm" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="#ff989eb4" android:id="@id/m87" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="12.0dip" android:text="@string/xb2" android:includeFontPadding="false" />
+        <RelativeLayout android:id="@id/mm7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/mm6" android:layout_width="176.0dip" android:layout_height="95.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="50.0dip" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:id="@id/mm8" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="8.0dip" android:text="当前无关注的直播" android:layout_below="@id/mm6" android:layout_centerHorizontal="true" />
+            <Button android:textSize="14.0sp" android:textColor="#ffffffff" android:id="@id/mm5" android:background="@drawable/b9" android:layout_width="116.0dip" android:layout_height="29.0dip" android:layout_marginTop="24.0dip" android:text="去发现页逛逛" android:layout_below="@id/mm8" android:layout_centerHorizontal="true" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

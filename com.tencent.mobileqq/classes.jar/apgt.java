@@ -1,28 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.ark.ark.Application;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.1;
 
 public class apgt
+  implements DialogInterface.OnClickListener
 {
-  public static boolean a(String paramString1, long paramLong, ark.Application paramApplication, String paramString2)
-  {
-    boolean bool;
-    if (paramLong == 0L) {
-      bool = true;
-    }
-    for (;;)
-    {
-      if (!bool) {
-        QLog.i("ArkApp.ArkAPIPermission", 1, String.format("ModuleCheckPermission.denied:Name:%s,Permission:%s.", new Object[] { paramString1, paramString2 }));
-      }
-      return bool;
-      if ((paramApplication != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-        bool = paramApplication.CheckPermissions(paramString2);
-      } else {
-        bool = false;
-      }
-    }
-  }
+  public apgt(ARRecordUtils.1 param1) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

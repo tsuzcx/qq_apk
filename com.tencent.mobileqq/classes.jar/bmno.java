@@ -1,106 +1,128 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.QZLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.RemoteException;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.1;
+import java.lang.ref.WeakReference;
+import java.util.HashSet;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import mqq.app.AppRuntime;
 
 public class bmno
-  extends bmmk
 {
-  public static String a;
+  private ServiceConnection a;
+  protected bmne a;
+  public final String a;
+  protected WeakReference<AppRuntime> a;
+  protected HashSet<String> a;
+  public ConcurrentLinkedQueue<bmnq> a;
+  protected boolean a;
+  public final String b = "com.qqindividuality.ipc.QQIndividualityRemoteProxyService";
   
-  static
+  public bmno(AppRuntime paramAppRuntime)
   {
-    jdField_a_of_type_JavaLangString = "Qzone";
+    this.jdField_a_of_type_JavaLangString = "QQIndividualityRemoteProxy";
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    this.jdField_a_of_type_AndroidContentServiceConnection = new bmnp(this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppRuntime);
+    a("qqindividuality_signature");
   }
   
-  private void a(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
+  private boolean a()
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    Activity localActivity;
-    do
+    if ((this.jdField_a_of_type_Bmne == null) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
     {
-      return;
-      localActivity = paramWebViewPlugin.mRuntime.a();
-    } while ((localActivity == null) || (localActivity.isFinishing()));
-    paramWebViewPlugin = "";
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]).optString("text", "");
-      paramWebViewPlugin = paramArrayOfString;
-    }
-    catch (JSONException paramArrayOfString)
-    {
-      for (;;)
+      AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localAppRuntime != null)
       {
-        QZLog.e("QzoneUserHomePageJsPlugin", "handleSetMessageBoardGate: parse json data error", paramArrayOfString);
-      }
-    }
-    paramArrayOfString = new Intent("QzoneUserHome.ACTION_openKapuHostMsg");
-    paramArrayOfString.putExtra("text", paramWebViewPlugin);
-    localActivity.sendBroadcast(paramArrayOfString);
-    QZLog.i("QzoneUserHomePageJsPlugin", 2, "handleSetKapuHostMessage: sendBroadcast,text:" + paramWebViewPlugin);
-  }
-  
-  private boolean a(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
-  {
-    boolean bool = false;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {
-      return false;
-    }
-    Activity localActivity = paramWebViewPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      return false;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramWebViewPlugin = new JSONObject(paramArrayOfString[0]);
-        i = paramWebViewPlugin.optInt("open_msg_board", 0);
-        if (i == 0) {
-          bool = false;
-        }
-      }
-      catch (JSONException paramWebViewPlugin) {}
-      try
-      {
-        i = paramWebViewPlugin.optInt("update_msg_board", 1);
-        paramWebViewPlugin = new Intent("QzoneUserHome.ACTION_openMsgBoard");
-        paramWebViewPlugin.putExtra("openMsgBoard", bool);
-        paramWebViewPlugin.putExtra("updateMsgBoard", i);
-        localActivity.sendBroadcast(paramWebViewPlugin);
-        QZLog.i("QzoneUserHomePageJsPlugin", 2, "handleSetMessageBoardGate: sendBroadcast,isOpenMsgBoard:" + bool + " ,updateType：" + i);
+        QQIndividualityPluginProxyService.a(localAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection, "com.qqindividuality.ipc.QQIndividualityRemoteProxyService");
+        this.jdField_a_of_type_Boolean = true;
         return true;
       }
-      catch (JSONException paramWebViewPlugin)
-      {
-        break label149;
-      }
-      bool = true;
-      continue;
-      label149:
-      QZLog.e("QzoneUserHomePageJsPlugin", "handleSetMessageBoardGate: parse json data error", paramWebViewPlugin);
-      int i = 1;
     }
+    return false;
   }
   
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  private boolean a(bmnq parambmnq)
   {
-    if ((!paramString2.equals(jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
-      return false;
-    }
-    if (bmld.g.equalsIgnoreCase(paramString3))
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(parambmnq);
+  }
+  
+  private boolean b()
+  {
+    if ((this.jdField_a_of_type_Bmne != null) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
     {
-      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
+      AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localAppRuntime != null)
+      {
+        QQIndividualityPluginProxyService.a(localAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection);
+        this.jdField_a_of_type_Bmne = null;
+        this.jdField_a_of_type_Boolean = false;
+      }
+    }
+    return true;
+  }
+  
+  public void a(bmnq parambmnq)
+  {
+    if ((this.jdField_a_of_type_Bmne != null) && (parambmnq != null))
+    {
+      Looper localLooper = Looper.getMainLooper();
+      if (Thread.currentThread() != localLooper.getThread()) {
+        new Handler(localLooper).post(new QQIndividualityRemoteProxy.1(this, parambmnq));
+      }
+    }
+    else
+    {
+      return;
+    }
+    try
+    {
+      this.jdField_a_of_type_Bmne.a(parambmnq.jdField_a_of_type_Int, parambmnq.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    catch (RemoteException parambmnq) {}
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
+    {
+      this.jdField_a_of_type_JavaUtilHashSet.add(paramString);
       return true;
     }
-    if (bmld.h.equalsIgnoreCase(paramString3))
+    return false;
+  }
+  
+  public boolean a(String paramString, int paramInt, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
     {
-      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
-      return true;
+      paramString = new bmnq(this, paramInt, paramBundle);
+      if (this.jdField_a_of_type_Bmne != null) {
+        a(paramString);
+      }
+      for (;;)
+      {
+        return true;
+        a(paramString);
+        a();
+      }
+    }
+    return false;
+  }
+  
+  public boolean b(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
+    {
+      this.jdField_a_of_type_JavaUtilHashSet.remove(paramString);
+      if (this.jdField_a_of_type_JavaUtilHashSet.isEmpty()) {
+        b();
+      }
     }
     return false;
   }

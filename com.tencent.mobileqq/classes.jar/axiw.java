@@ -1,83 +1,71 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Message;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import tencent.im.msg.im_msg_body.RichText;
 
-public abstract class axiw
-  extends Binder
-  implements axiv
+public class axiw
+  extends axiy<MessageForPtt>
 {
-  public axiw()
+  public axiw(MessageForPtt paramMessageForPtt)
   {
-    attachInterface(this, "com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+    super(paramMessageForPtt);
   }
   
-  public static axiv a(IBinder paramIBinder)
+  protected int a()
   {
-    if (paramIBinder == null) {
+    return 3;
+  }
+  
+  public List<MsgBackupResEntity> a()
+  {
+    MsgBackupResEntity localMsgBackupResEntity = a();
+    localMsgBackupResEntity.msgSubType = 15;
+    localMsgBackupResEntity.filePath = ((MessageForPtt)this.a).getLocalFilePath();
+    if (!a(localMsgBackupResEntity.filePath)) {
       return null;
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-    if ((localIInterface != null) && ((localIInterface instanceof axiv))) {
-      return (axiv)localIInterface;
-    }
-    return new axix(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-      if (paramParcel1.readInt() != 0) {
-        localObject1 = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(paramParcel1);
-      }
-      paramParcel1 = a((BasicTypeDataParcel)localObject1);
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
-      }
-    }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-    localObject1 = localObject2;
-    if (paramParcel1.readInt() != 0) {
-      localObject1 = (Message)Message.CREATOR.createFromParcel(paramParcel1);
-    }
-    paramParcel1 = a((Message)localObject1);
-    paramParcel2.writeNoException();
-    if (paramParcel1 != null)
-    {
-      paramParcel2.writeInt(1);
-      paramParcel1.writeToParcel(paramParcel2, 1);
+    a(localMsgBackupResEntity.filePath, localMsgBackupResEntity);
+    Object localObject = a(15);
+    ((HashMap)localObject).put("selfuin", ((MessageForPtt)this.a).selfuin);
+    ((HashMap)localObject).put("uuid", ((MessageForPtt)this.a).urlAtServer);
+    ((HashMap)localObject).put("md5", ((MessageForPtt)this.a).md5);
+    ((HashMap)localObject).put("selfuin", ((MessageForPtt)this.a).selfuin);
+    if (((MessageForPtt)this.a).istroop == 1) {
+      ((HashMap)localObject).put("chatType", "1");
     }
     for (;;)
     {
-      return true;
-      paramParcel2.writeInt(0);
+      localMsgBackupResEntity.extraDataStr = a((Map)localObject);
+      localObject = new ArrayList();
+      ((List)localObject).add(localMsgBackupResEntity);
+      return localObject;
+      if (((MessageForPtt)this.a).istroop == 3000) {
+        ((HashMap)localObject).put("chatType", "2");
+      } else {
+        ((HashMap)localObject).put("chatType", "3");
+      }
     }
+  }
+  
+  public void a()
+  {
+    Object localObject = (MessageForPtt)this.a;
+    a("packMsg uinType:" + ((MessageForPtt)localObject).istroop);
+    localObject = ((MessageForPtt)this.a).getRichText();
+    ((MessageForPtt)this.a).richText = ((im_msg_body.RichText)localObject);
+  }
+  
+  public void b()
+  {
+    ((MessageForPtt)this.a).url = axix.a(((MessageForPtt)this.a).md5, ((MessageForPtt)this.a).selfuin);
+    if (((MessageForPtt)this.a).isSendFromLocal()) {
+      ((MessageForPtt)this.a).issend = 2;
+    }
+    ((MessageForPtt)this.a).isReadPtt = true;
+    ((MessageForPtt)this.a).serial();
   }
 }
 

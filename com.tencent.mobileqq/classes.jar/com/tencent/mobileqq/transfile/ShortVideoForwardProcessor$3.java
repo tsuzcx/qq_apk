@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import bdyk;
+import bexd;
 
 public class ShortVideoForwardProcessor$3
   implements Runnable
 {
-  public ShortVideoForwardProcessor$3(bdyk parambdyk, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public ShortVideoForwardProcessor$3(bexd parambexd, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {

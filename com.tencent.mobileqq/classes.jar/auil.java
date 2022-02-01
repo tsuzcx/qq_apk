@@ -1,16 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardPluginShareStructMsgOption;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class auil
+class auil
   implements View.OnClickListener
 {
-  public auil(ForwardPluginShareStructMsgOption paramForwardPluginShareStructMsgOption) {}
+  auil(auik paramauik) {}
   
   public void onClick(View paramView)
   {
-    ForwardPluginShareStructMsgOption.a(this.a);
+    this.a.m();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

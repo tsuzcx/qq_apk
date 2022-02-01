@@ -1,18 +1,15 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class mem
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public mem(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, long paramLong, Intent paramIntent, ley paramley) {}
+  public mem(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_Ley);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.b();
   }
 }
 

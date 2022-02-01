@@ -1,23 +1,72 @@
+import android.content.res.Resources;
+import android.graphics.Paint;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-class ayal
-  implements Callback
+public class ayal
+  implements View.OnClickListener
 {
-  ayal(ayak paramayak) {}
+  public ayal(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void onFailure(Call paramCall, IOException paramIOException)
+  public void onClick(View paramView)
   {
-    QLog.e("TurtleReportCenter", 4, paramIOException, new Object[0]);
-  }
-  
-  public void onResponse(Call paramCall, Response paramResponse)
-  {
-    if ((paramResponse != null) && (paramResponse.code() == 200)) {
-      QLog.i("TurtleReportCenter", 4, "data report success.");
+    Object localObject1;
+    if ((ChooseInterestTagActivity.a(this.a) == 3) || (ChooseInterestTagActivity.a(this.a) == 2) || (ChooseInterestTagActivity.a(this.a) == 1) || (ChooseInterestTagActivity.a(this.a) == 4))
+    {
+      localObject1 = (InterestTagInfo)paramView.getTag();
+      if (localObject1 != null)
+      {
+        ChooseInterestTagActivity.a(this.a).remove(localObject1);
+        ChooseInterestTagActivity.a(this.a, (InterestTagInfo)localObject1);
+        ChooseInterestTagActivity.b(this.a, (InterestTagInfo)localObject1);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      try
+      {
+        int[] arrayOfInt = new int[2];
+        paramView.getLocationInWindow(arrayOfInt);
+        if (arrayOfInt[0] <= 0) {
+          continue;
+        }
+        InterestTagInfo localInterestTagInfo = (InterestTagInfo)paramView.getTag();
+        if (localInterestTagInfo == null) {
+          continue;
+        }
+        Paint localPaint = new Paint();
+        localPaint.setTextSize((float)(ChooseInterestTagActivity.a(this.a) * 14.0F + 0.5D));
+        localPaint.setColor(this.a.getResources().getColor(2131167050));
+        localPaint.setFakeBoldText(false);
+        localPaint.setAntiAlias(true);
+        Object localObject2 = localInterestTagInfo.tagName;
+        localObject1 = localObject2;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          localObject1 = " ";
+        }
+        localObject2 = localObject1;
+        if (((String)localObject1).length() > 8) {
+          localObject2 = ((String)localObject1).substring(0, 8) + "...";
+        }
+        float f = localPaint.measureText((String)localObject2);
+        int i = (int)(ChooseInterestTagActivity.a(this.a) * 64.0F + 0.5D + f);
+        localObject1 = new aybb(this.a, arrayOfInt[0], i);
+        ((aybb)localObject1).a(ChooseInterestTagActivity.a(this.a));
+        ((aybb)localObject1).a(localInterestTagInfo);
+        ((aybb)localObject1).showAsDropDown(paramView, -(int)((i - 40.0F * ChooseInterestTagActivity.a(this.a)) / 2.0F), 10);
+      }
+      catch (Exception localException) {}
+      if (QLog.isDevelopLevel()) {
+        QLog.i("choose_interest_tag", 4, localException.getMessage());
+      }
     }
   }
 }

@@ -1,30 +1,27 @@
 package com.tencent.biz.pubaccount;
 
-import bgjb;
+import bhjc;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import obj;
+import oct;
 
 public class SoftAdExpoStatManager$1
   implements Runnable
 {
-  public SoftAdExpoStatManager$1(obj paramobj) {}
+  public SoftAdExpoStatManager$1(oct paramoct, Map paramMap) {}
   
   public void run()
   {
-    if (obj.a(this.this$0).size() == 0) {
-      return;
-    }
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = obj.a(this.this$0).entrySet().iterator();
+    Iterator localIterator = this.a.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       localStringBuilder.append((String)localEntry.getKey()).append("&&").append(localEntry.getValue()).append(",,");
     }
-    bgjb.a(obj.a(this.this$0), obj.a(this.this$0) + "expo_stat_key_timewindow", localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length()).toString());
+    bhjc.a(oct.a(this.this$0), oct.a(this.this$0) + "expo_stat_key_timewindow", localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length()).toString());
   }
 }
 

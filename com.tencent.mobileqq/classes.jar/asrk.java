@@ -1,25 +1,64 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.content.Context;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class asrk
-  extends bdin
+final class asrk
+  implements axfu<EmoticonPackage>
 {
-  public asrk(FilePreviewActivity paramFilePreviewActivity) {}
+  asrk(Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, askd paramaskd, SessionInfo paramSessionInfo) {}
   
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    super.a(paramTeamWorkFileImportInfo);
-    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
-      FilePreviewActivity.a(this.a).dismiss();
+    boolean bool;
+    if ((paramEmoticonPackage != null) && ((2 != paramEmoticonPackage.status) || (!paramEmoticonPackage.valid))) {
+      if (paramEmoticonPackage.jobType == 4)
+      {
+        bool = true;
+        EmojiHomeUiPlugin.openEmojiDetailPage(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005C13", 0, 0, "", "", "", "");
+      }
     }
-  }
-  
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
-  {
-    super.a(paramString, paramTeamWorkFileImportInfo);
-    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
-      FilePreviewActivity.a(this.a).dismiss();
-    }
+    label194:
+    do
+    {
+      do
+      {
+        return;
+        bool = false;
+        break;
+        if (!this.jdField_a_of_type_Askd.c()) {
+          break label237;
+        }
+        if (!this.jdField_a_of_type_Askd.b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, true, true)) {
+          break label194;
+        }
+        if (this.jdField_a_of_type_Askd.b())
+        {
+          asre.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+          bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "MbFasong", "MbZidongBofang", 0, 0, "", "", "", "");
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("PicEmoticonInfo", 2, "not support h5magic ");
+      return;
+      ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131689916, 0);
+      paramEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+    } while (paramEmoticonPackage == null);
+    paramEmoticonPackage.obtainMessage(10).sendToTarget();
+    paramEmoticonPackage.obtainMessage(21).sendToTarget();
+    return;
+    label237:
+    ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131689932);
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005C16", 0, 0, "", "", "", "");
   }
 }
 

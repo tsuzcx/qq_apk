@@ -1,17 +1,16 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialog;
 
-public class msi
+class msi
+  implements DialogInterface.OnClickListener
 {
-  public static PopupDialog a;
-  public int a;
-  public DialogInterface.OnClickListener a;
-  public String a;
-  public boolean a = false;
-  public int b;
-  public DialogInterface.OnClickListener b;
-  public String b;
-  public int c;
+  msi(msg parammsg) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    msg.a(this.a, this.a.a);
+  }
 }
 
 

@@ -1,15 +1,15 @@
 package com.tencent.biz.videostory.video;
 
-import aaxi;
+import abbl;
 
 public class MediaCodecGLFrameFetcher$1
   implements Runnable
 {
-  public MediaCodecGLFrameFetcher$1(aaxi paramaaxi) {}
+  public MediaCodecGLFrameFetcher$1(abbl paramabbl) {}
   
   public void run()
   {
-    aaxi.a(this.this$0);
+    abbl.a(this.this$0);
   }
 }
 

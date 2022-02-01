@@ -1,29 +1,29 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
 
 public class ajgl
-  extends aupb
+  implements View.OnTouchListener
 {
-  public ajgl(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
+  float jdField_a_of_type_Float = 0.0F;
   
-  protected void a(boolean paramBoolean, int paramInt, ArrayList<ajep> paramArrayList)
+  public ajgl(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (TroopWithCommonFriendsFragment.a(this.a) != null) {
-      TroopWithCommonFriendsFragment.a(this.a).dismiss();
-    }
-    if (!paramBoolean)
+    if (paramMotionEvent.getAction() == 0)
     {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1014);
-      return;
+      this.jdField_a_of_type_Float = paramView.getAlpha();
+      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
     }
-    ajgo.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, paramArrayList);
-    ajgo.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, paramInt);
-    this.a.b = paramInt;
-    this.a.jdField_a_of_type_JavaUtilList = ajgo.a(paramArrayList, TroopWithCommonFriendsFragment.a(this.a));
-    TroopWithCommonFriendsFragment.a(this.a).a();
-    TroopWithCommonFriendsFragment.a(this.a).a(this.a.jdField_a_of_type_JavaUtilList);
-    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1012);
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+        paramView.setAlpha(this.jdField_a_of_type_Float);
+      }
+    }
   }
 }
 

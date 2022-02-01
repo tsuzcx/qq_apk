@@ -1,13 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.appcommon.js.BaseJsCallBack;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class biqm
-  implements DialogInterface.OnClickListener
+class biqm
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public biqm(BaseJsCallBack paramBaseJsCallBack) {}
+  biqm(biql parambiql, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onGlobalLayout()
+  {
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - localRect.height();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SwiftBrowserScreenShotHandler", 2, "heightDiff:" + i);
+    }
+    if (i > 150)
+    {
+      this.jdField_a_of_type_Biql.c = true;
+      this.jdField_a_of_type_Biql.a(false, 0);
+    }
+    while (!this.jdField_a_of_type_Biql.c) {
+      return;
+    }
+    this.jdField_a_of_type_Biql.c = false;
+  }
 }
 
 

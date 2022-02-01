@@ -1,43 +1,29 @@
-import android.content.Context;
-import android.content.IntentFilter;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment.ViewHolder.1.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class onl
+  implements pql
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private onm jdField_a_of_type_Onm;
-  private onn jdField_a_of_type_Onn;
+  onl(onk paramonk) {}
   
-  public onl(Context paramContext)
+  public void onLoadUserInfoFailed(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentIntentFilter = new IntentFilter("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+    QLog.d("ReadInjoyFriendsBiuComponentFragment", 1, "setComments infoFailed. uin:" + paramString1 + " errMsg:" + paramString2);
   }
   
-  public void a()
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    if ((this.jdField_a_of_type_Onm != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))) {
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Onm, this.jdField_a_of_type_AndroidContentIntentFilter);
+    if ((paramReadInJoyUserInfo != null) && (this.a.a != null)) {
+      ThreadManager.getUIHandler().post(new ReadInjoyFriendsBiuComponentFragment.ViewHolder.1.1(this));
     }
-  }
-  
-  public void a(onn paramonn)
-  {
-    this.jdField_a_of_type_Onn = paramonn;
-    this.jdField_a_of_type_Onm = new onm(this);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Onm != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))) {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Onm);
+    if (paramReadInJoyUserInfo != null) {}
+    for (paramReadInJoyUserInfo = paramReadInJoyUserInfo.nick;; paramReadInJoyUserInfo = "null")
+    {
+      QLog.d("ReadInjoyFriendsBiuComponentFragment", 1, new Object[] { "setComments infoSuccess nick = ", paramReadInJoyUserInfo, "  uin:" + paramString, " mContents:" + this.a.a });
+      return;
     }
   }
 }

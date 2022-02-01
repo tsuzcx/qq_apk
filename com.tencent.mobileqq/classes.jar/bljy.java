@@ -1,83 +1,60 @@
-import ConfigPush.DomainIpChannel;
-import ConfigPush.DomainIpInfo;
-import ConfigPush.DomainIpList;
-import ConfigPush.FileStoragePushFSSvcList;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.widget.AutoVerticalScrollTextView;
 
 public class bljy
+  extends Animation
 {
-  protected String a;
-  protected String b;
-  protected String c;
+  private float jdField_a_of_type_Float;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private final boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private final boolean jdField_b_of_type_Boolean;
   
-  public void a(FileStoragePushFSSvcList paramFileStoragePushFSSvcList)
+  public bljy(AutoVerticalScrollTextView paramAutoVerticalScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject = BaseApplicationImpl.getApplication();
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.jdField_b_of_type_Float;
+    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
     int i;
-    if (Build.VERSION.SDK_INT > 10)
+    if (this.jdField_b_of_type_Boolean)
     {
-      i = 4;
-      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("QfavSrvAddrList", i);
-      if (localObject != null) {
-        break label32;
+      i = 1;
+      paramTransformation = paramTransformation.getMatrix();
+      localCamera.save();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label99;
       }
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
     }
-    label32:
-    while ((paramFileStoragePushFSSvcList == null) || (paramFileStoragePushFSSvcList.domainIpChannel == null) || (paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists == null))
+    for (;;)
     {
+      localCamera.getMatrix(paramTransformation);
+      localCamera.restore();
+      paramTransformation.preTranslate(-f1, -f2);
+      paramTransformation.postTranslate(f1, f2);
       return;
-      i = 0;
+      i = -1;
       break;
+      label99:
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
     }
-    paramFileStoragePushFSSvcList = paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists.iterator();
-    while (paramFileStoragePushFSSvcList.hasNext())
-    {
-      DomainIpList localDomainIpList = (DomainIpList)paramFileStoragePushFSSvcList.next();
-      StringBuilder localStringBuilder = new StringBuilder();
-      if ((localDomainIpList.uDomain_type == 4) || (localDomainIpList.uDomain_type == 5) || (localDomainIpList.uDomain_type == 6))
-      {
-        if ((localDomainIpList.vIplist != null) && (localDomainIpList.vIplist.size() != 0))
-        {
-          i = 0;
-          while (i < localDomainIpList.vIplist.size())
-          {
-            DomainIpInfo localDomainIpInfo = (DomainIpInfo)localDomainIpList.vIplist.get(i);
-            localStringBuilder.append(bgnt.a(localDomainIpInfo.uIp)).append(":").append(localDomainIpInfo.uPort);
-            if (i < localDomainIpList.vIplist.size() - 1) {
-              localStringBuilder.append("|");
-            }
-            i += 1;
-          }
-        }
-      }
-      else {
-        switch (localDomainIpList.uDomain_type)
-        {
-        default: 
-          break;
-        case 4: 
-          this.a = localStringBuilder.toString();
-          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_FavIp", this.a).commit();
-          break;
-        case 5: 
-          this.c = localStringBuilder.toString();
-          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_UploadPicIp", this.c).commit();
-          break;
-        case 6: 
-          this.b = localStringBuilder.toString();
-          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_PicPlatformIp", this.b).commit();
-        }
-      }
-    }
-    paramFileStoragePushFSSvcList = new Intent("com.tencent.receiver.qfav.srvaddr");
-    paramFileStoragePushFSSvcList.putExtra("com.tencent.receiver.qfav.srvaddr.type", 0);
-    BaseApplicationImpl.getApplication().sendBroadcast(paramFileStoragePushFSSvcList);
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.getHeight();
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.getWidth();
   }
 }
 

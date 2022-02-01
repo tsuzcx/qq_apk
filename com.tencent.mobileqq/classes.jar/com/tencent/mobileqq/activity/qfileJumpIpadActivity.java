@@ -4,7 +4,7 @@ import Override;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import anhk;
+import antf;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qfileJumpIpadActivity
@@ -21,7 +21,7 @@ public class qfileJumpIpadActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.a = anhk.A;
+    this.a = antf.A;
     return true;
   }
   

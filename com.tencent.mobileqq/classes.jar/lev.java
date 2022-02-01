@@ -1,150 +1,130 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.RemoteException;
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
 
-class lev
-  implements ServiceConnection
+public class lev
+  implements INetInfoHandler
 {
-  lev(let paramlet) {}
+  private lew a;
   
-  /* Error */
-  public void onServiceConnected(ComponentName paramComponentName, android.os.IBinder paramIBinder)
+  public lev(lew paramlew)
   {
-    // Byte code:
-    //   0: ldc 24
-    //   2: iconst_1
-    //   3: new 26	java/lang/StringBuilder
-    //   6: dup
-    //   7: invokespecial 27	java/lang/StringBuilder:<init>	()V
-    //   10: ldc 29
-    //   12: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: aload_1
-    //   16: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   19: ldc 38
-    //   21: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   27: invokestatic 48	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   30: aload_0
-    //   31: getfield 12	lev:a	Llet;
-    //   34: iconst_0
-    //   35: putfield 53	let:jdField_a_of_type_Boolean	Z
-    //   38: aload_0
-    //   39: getfield 12	lev:a	Llet;
-    //   42: aload_2
-    //   43: invokestatic 58	lwf:a	(Landroid/os/IBinder;)Llwe;
-    //   46: putfield 61	let:jdField_a_of_type_Lwe	Llwe;
-    //   49: aload_0
-    //   50: getfield 12	lev:a	Llet;
-    //   53: getfield 61	let:jdField_a_of_type_Lwe	Llwe;
-    //   56: aload_0
-    //   57: getfield 12	lev:a	Llet;
-    //   60: getfield 64	let:jdField_a_of_type_Lwc	Llwc;
-    //   63: ldc 66
-    //   65: invokeinterface 71 3 0
-    //   70: aload_0
-    //   71: getfield 12	lev:a	Llet;
-    //   74: getfield 74	let:b	Z
-    //   77: ifeq +10 -> 87
-    //   80: aload_0
-    //   81: getfield 12	lev:a	Llet;
-    //   84: invokevirtual 77	let:e	()V
-    //   87: aload_0
-    //   88: getfield 12	lev:a	Llet;
-    //   91: getfield 80	let:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
-    //   94: iconst_1
-    //   95: anewarray 4	java/lang/Object
-    //   98: dup
-    //   99: iconst_0
-    //   100: bipush 10
-    //   102: invokestatic 86	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   105: aastore
-    //   106: invokevirtual 91	com/tencent/av/app/VideoAppInterface:a	([Ljava/lang/Object;)V
-    //   109: aload_0
-    //   110: getfield 12	lev:a	Llet;
-    //   113: getfield 61	let:jdField_a_of_type_Lwe	Llwe;
-    //   116: invokeinterface 95 1 0
-    //   121: new 97	lew
-    //   124: dup
-    //   125: aload_0
-    //   126: invokespecial 100	lew:<init>	(Llev;)V
-    //   129: iconst_0
-    //   130: invokeinterface 106 3 0
-    //   135: aload_0
-    //   136: getfield 12	lev:a	Llet;
-    //   139: getfield 80	let:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
-    //   142: ifnull +29 -> 171
-    //   145: aload_0
-    //   146: getfield 12	lev:a	Llet;
-    //   149: getfield 80	let:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
-    //   152: getfield 109	com/tencent/av/app/VideoAppInterface:a	Lcom/tencent/av/VideoController;
-    //   155: ifnull +16 -> 171
-    //   158: aload_0
-    //   159: getfield 12	lev:a	Llet;
-    //   162: getfield 80	let:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
-    //   165: invokevirtual 112	com/tencent/av/app/VideoAppInterface:a	()Lcom/tencent/av/VideoController;
-    //   168: invokevirtual 117	com/tencent/av/VideoController:I	()V
-    //   171: return
-    //   172: astore_1
-    //   173: ldc 24
-    //   175: new 26	java/lang/StringBuilder
-    //   178: dup
-    //   179: invokespecial 27	java/lang/StringBuilder:<init>	()V
-    //   182: ldc 119
-    //   184: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: aload_1
-    //   188: invokevirtual 122	android/os/RemoteException:getMessage	()Ljava/lang/String;
-    //   191: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   194: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   197: invokestatic 127	lbc:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   200: goto -91 -> 109
-    //   203: astore_1
-    //   204: ldc 24
-    //   206: new 26	java/lang/StringBuilder
-    //   209: dup
-    //   210: invokespecial 27	java/lang/StringBuilder:<init>	()V
-    //   213: ldc 119
-    //   215: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   218: aload_1
-    //   219: invokevirtual 128	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   222: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   225: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   228: invokestatic 127	lbc:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   231: goto -96 -> 135
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	234	0	this	lev
-    //   0	234	1	paramComponentName	ComponentName
-    //   0	234	2	paramIBinder	android.os.IBinder
-    // Exception table:
-    //   from	to	target	type
-    //   49	87	172	android/os/RemoteException
-    //   87	109	172	android/os/RemoteException
-    //   109	135	203	java/lang/Exception
+    this.a = paramlew;
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public static int a()
+  {
+    int j = 1;
+    int i;
+    if (AppNetConnInfo.isWifiConn()) {
+      i = 1;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MSFNetInfoMonitor", 2, "getApn: " + i + " mobileType:" + j);
+      }
+      return i;
+      if (AppNetConnInfo.isMobileConn())
+      {
+        j = AppNetConnInfo.getMobileInfo();
+        switch (j)
+        {
+        default: 
+          i = 100;
+          break;
+        case 1: 
+          i = 3;
+          break;
+        case 2: 
+          i = 9;
+          break;
+        case 3: 
+          i = 11;
+          break;
+        case 4: 
+          i = 14;
+          break;
+        }
+      }
+      else
+      {
+        j = -1;
+        i = 0;
+      }
+    }
+  }
+  
+  public static int b()
+  {
+    int i = -1;
+    if (AppNetConnInfo.isWifiConn()) {
+      i = 1;
+    }
+    while (!AppNetConnInfo.isMobileConn()) {
+      return i;
+    }
+    return AppNetConnInfo.getMobileInfo();
+  }
+  
+  public void onNetMobile2None()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQServiceProxy", 2, "QQServiceForAV onServiceDisconnected");
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2None");
     }
-    try
-    {
-      if (this.a.jdField_a_of_type_Lwe != null) {
-        this.a.jdField_a_of_type_Lwe.a(this.a.jdField_a_of_type_Lwc);
-      }
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(11) });
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().deleteObservers();
+    if (this.a != null) {
+      this.a.a(0);
     }
-    catch (RemoteException paramComponentName)
-    {
-      for (;;)
-      {
-        QLog.e("QQServiceProxy", 2, "QQServiceForAV onServiceDisconnected RemoteException", paramComponentName);
-      }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2Wifi");
     }
-    this.a.jdField_a_of_type_Lwe = null;
+    if (this.a != null) {
+      this.a.a(1);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Mobile");
+    }
+    if (this.a != null) {
+      this.a.a(2);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Wifi");
+    }
+    if (this.a != null) {
+      this.a.a(1);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2Mobile");
+    }
+    if (this.a != null) {
+      this.a.a(2);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2None");
+    }
+    if (this.a != null) {
+      this.a.a(0);
+    }
   }
 }
 

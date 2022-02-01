@@ -1,19 +1,7 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
 class bdrt
-  implements Animation.AnimationListener
+  implements bgkg
 {
-  bdrt(bdrs parambdrs) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.e();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  bdrt(bdrs parambdrs, String paramString1, String paramString2, bdru parambdru) {}
 }
 
 

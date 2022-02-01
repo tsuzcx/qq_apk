@@ -1,23 +1,23 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bpam;
-import bpgi;
+import bqch;
+import bqid;
 
 public class HWEditImportVideoPlayer$4
   implements Runnable
 {
-  public HWEditImportVideoPlayer$4(bpgi parambpgi) {}
+  public HWEditImportVideoPlayer$4(bqid parambqid) {}
   
   public void run()
   {
     if (this.this$0.j) {}
-    bpam localbpam;
+    bqch localbqch;
     do
     {
       return;
-      localbpam = (bpam)this.this$0.a(bpam.class);
-    } while (localbpam == null);
-    localbpam.b();
+      localbqch = (bqch)this.this$0.a(bqch.class);
+    } while (localbqch == null);
+    localbqch.b();
   }
 }
 

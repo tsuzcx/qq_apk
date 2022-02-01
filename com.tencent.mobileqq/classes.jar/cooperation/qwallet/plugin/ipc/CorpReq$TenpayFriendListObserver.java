@@ -2,14 +2,14 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import anmu;
-import bglf;
+import anyu;
+import bhlg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import cooperation.qwallet.plugin.QWalletHelper;
 import java.util.HashMap;
 
 class CorpReq$TenpayFriendListObserver
-  extends anmu
+  extends anyu
 {
   private static TenpayFriendListObserver _self;
   private HashMap<String, ResultReceiver> mRecieverMap = new HashMap();
@@ -42,7 +42,7 @@ class CorpReq$TenpayFriendListObserver
       return;
       CorpResp localCorpResp = new CorpResp();
       localCorpResp.corpReqType = CorpReq.corpReqType;
-      localCorpResp.userNick = bglf.c((QQAppInterface)localObject, paramString, false);
+      localCorpResp.userNick = bhlg.c((QQAppInterface)localObject, paramString, false);
       localObject = new Bundle();
       localCorpResp.toBundle((Bundle)localObject);
       paramString = (ResultReceiver)this.mRecieverMap.remove(paramString);

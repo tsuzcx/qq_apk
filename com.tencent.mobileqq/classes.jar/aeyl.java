@@ -1,25 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.qphone.base.util.QLog;
+import android.util.Pair;
+import android.view.View;
+import com.tencent.mobileqq.activity.MainFragment;
+import java.util.List;
 
 public class aeyl
-  extends BroadcastReceiver
+  implements bliz
 {
-  public aeyl(QQSettingMe paramQQSettingMe) {}
+  public aeyl(MainFragment paramMainFragment, List paramList, blir paramblir) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: intent=" + paramIntent.toString());
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.e();
+    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return;
     }
-    if ((paramIntent != null) && (paramIntent.getBooleanExtra("key_pay_action_result", false)))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: need update ");
-      }
-      this.a.x();
+      MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (aeys)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      paramView.printStackTrace();
     }
   }
 }

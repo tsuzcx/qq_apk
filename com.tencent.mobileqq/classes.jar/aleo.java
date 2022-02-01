@@ -1,35 +1,18 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import eipc.EIPCResult;
 
-public class aleo
-  extends aleq
+class aleo
+  implements aldq
 {
-  public aleo(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = anni.a(2131696524);
-    this.b = this.jdField_a_of_type_JavaLangString;
-  }
+  aleo(alee paramalee, int paramInt) {}
   
-  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if ((paramObject instanceof aleo))
-    {
-      paramObject = (aleo)paramObject;
-      paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
-    }
-    for (parambepr = paramObject;; parambepr = paramObject)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(bepr.class.getSimpleName() + ".troop.special_msg.at_all_msg", 2, "updateMsgInfo");
-      }
-      return parambepr;
-      paramObject = new aleo(BaseApplication.getContext());
-      paramObject.a(paramMessageRecord.senderuin);
-      paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result_code", paramInt);
+    localBundle.putSerializable("path_result", paramPathResult);
+    this.jdField_a_of_type_Alee.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

@@ -1,12 +1,28 @@
-import android.graphics.Bitmap;
-import android.graphics.Color;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Set;
 
-public class awdx
+class awdx
+  extends anyu
 {
-  public int a = 1;
-  public Bitmap a;
-  public int b = Color.parseColor("#FFFF0000");
-  public int c;
+  awdx(awdv paramawdv) {}
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    QLog.i("FetchOpenIdManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    if ((paramBoolean) && (paramObject != null))
+    {
+      long l = ((Long)paramObject).longValue();
+      paramObject = awdv.a(this.a).keySet().toArray();
+      int i = paramObject.length - 1;
+      while (i >= 0)
+      {
+        Long localLong = (Long)paramObject[i];
+        this.a.a(localLong.longValue(), l);
+        i -= 1;
+      }
+    }
+  }
 }
 
 

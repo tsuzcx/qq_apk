@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.takevideo.localmedia.demos;
 
-import zcw;
-import zcz;
-import zda;
-import zdb;
-import zdd;
+import zgr;
+import zgu;
+import zgv;
+import zgw;
+import zgy;
 
 public class MediaCodecThumbnailGenerator$CodecHandler$2
   implements Runnable
 {
-  public MediaCodecThumbnailGenerator$CodecHandler$2(zcz paramzcz, zdd paramzdd, zdb paramzdb) {}
+  public MediaCodecThumbnailGenerator$CodecHandler$2(zgu paramzgu, zgy paramzgy, zgw paramzgw) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Zdd.a.a != null) {
-      this.jdField_a_of_type_Zdd.a.a.a(Boolean.valueOf(true), this.jdField_a_of_type_Zdb);
+    if (this.jdField_a_of_type_Zgy.a.a != null) {
+      this.jdField_a_of_type_Zgy.a.a.a(Boolean.valueOf(true), this.jdField_a_of_type_Zgw);
     }
   }
 }

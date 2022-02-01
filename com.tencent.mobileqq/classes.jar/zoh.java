@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
-class zoh
-  implements View.OnClickListener
+final class zoh
+  extends ThreadLocal<DateFormat>
 {
-  zoh(zod paramzod) {}
-  
-  public void onClick(View paramView)
+  protected DateFormat a()
   {
-    yqu.a("home_page", "guide_close", 0, 0, new String[0]);
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
   }
 }
 

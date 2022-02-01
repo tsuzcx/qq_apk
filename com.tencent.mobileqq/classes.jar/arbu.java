@@ -1,58 +1,56 @@
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class arbu
 {
-  private String a = "";
-  private String b = "";
+  protected String a = "";
   
-  public static arbu a(aqlg[] paramArrayOfaqlg)
+  public arbu() {}
+  
+  public arbu(String paramString)
   {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
-      paramArrayOfaqlg = null;
+    if (paramString != null) {
+      this.a = paramString;
     }
-    arbu localarbu;
-    for (;;)
-    {
-      return paramArrayOfaqlg;
-      localarbu = new arbu();
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaqlg[0].a);
-        if (localJSONObject.has("AndroidDrawerJumpURL"))
-        {
-          localarbu.a = localJSONObject.getString("AndroidDrawerJumpURL");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTencentDocUserConfigCmd AndroidDrawerJumpURL = " + localarbu.a);
-          }
-        }
-        paramArrayOfaqlg = localarbu;
-        if (localJSONObject.has("AndroidAioJumpURL"))
-        {
-          localarbu.b = localJSONObject.getString("AndroidAioJumpURL");
-          paramArrayOfaqlg = localarbu;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTencentDocUserConfigCmd AndroidAioJumpURL = " + localarbu.b);
-            return localarbu;
-          }
-        }
-      }
-      catch (JSONException paramArrayOfaqlg)
-      {
-        paramArrayOfaqlg.printStackTrace();
-      }
+  }
+  
+  public arbv a()
+  {
+    if ((this instanceof arbv)) {
+      return (arbv)this;
     }
-    return localarbu;
+    QLog.e("ArkConfBean", 1, "this object is not a ArkAIDictConfBean object");
+    return null;
+  }
+  
+  public arbw a()
+  {
+    if ((this instanceof arbw)) {
+      return (arbw)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordConfBean object");
+    return null;
+  }
+  
+  public arby a()
+  {
+    if ((this instanceof arby)) {
+      return (arby)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkMsgAIDisableConfBean object");
+    return null;
+  }
+  
+  public arbz a()
+  {
+    if ((this instanceof arbz)) {
+      return (arbz)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkPlatformConfigBean object");
+    return null;
   }
   
   public String a()
   {
-    if (TextUtils.isEmpty(this.a)) {
-      return null;
-    }
     return this.a;
   }
 }

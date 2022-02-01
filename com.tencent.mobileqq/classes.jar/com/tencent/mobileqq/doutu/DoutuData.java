@@ -3,7 +3,7 @@ package com.tencent.mobileqq.doutu;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import armn;
+import ascd;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 
@@ -11,7 +11,7 @@ public class DoutuData
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<DoutuData> CREATOR = new armn();
+  public static final Parcelable.Creator<DoutuData> CREATOR = new ascd();
   public String pic_down_url;
   public int pic_height;
   public String pic_md5;

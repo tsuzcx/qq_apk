@@ -1,15 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class ajvo
-  implements alaq
+  implements View.OnClickListener
 {
-  public void a(int paramInt) {}
+  public ajvo(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void a(int paramInt, float paramFloat) {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt1, int paramInt2) {}
+  public void onClick(View paramView)
+  {
+    afex.a(PublicAccountFragment.a(this.a), null);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

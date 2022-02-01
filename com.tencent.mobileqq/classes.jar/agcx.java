@@ -1,34 +1,14 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.5.1;
 
-class agcx
-  implements ImageAssetDelegate
+public class agcx
+  implements agdp
 {
-  agcx(agcu paramagcu) {}
+  public agcx(ReminderListFragment.5.1 param1) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void a()
   {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inScaled = true;
-    localOptions.inDensity = 320;
-    try
-    {
-      paramLottieImageAsset = bgmo.a(agcu.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
-      return paramLottieImageAsset;
-    }
-    catch (Exception paramLottieImageAsset)
-    {
-      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap error");
-      return null;
-    }
-    catch (OutOfMemoryError paramLottieImageAsset)
-    {
-      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap OOM");
-    }
-    return null;
+    ReminderListFragment.a(this.a.a.a, anzj.a(2131712265));
   }
 }
 

@@ -1,20 +1,26 @@
-import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter.1;
 
-class atuq
-  implements bigw
+public class atuq
+  extends BroadcastReceiver
 {
-  atuq(atul paramatul, Activity paramActivity, int paramInt) {}
+  public atuq(FileManagerDataCenter.1 param1) {}
   
-  public void a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 2) {
-      atul.a(this.jdField_a_of_type_Atul, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    paramContext = paramIntent.getAction();
+    if ((paramContext != null) && (paramContext.equalsIgnoreCase("com.opensdk.downloadmanager.renameFilename")))
+    {
+      paramContext = paramIntent.getBundleExtra("extraBundle");
+      atup.a(this.a.this$0, paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atuq
  * JD-Core Version:    0.7.0.1
  */

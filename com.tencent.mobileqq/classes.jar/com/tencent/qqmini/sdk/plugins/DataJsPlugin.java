@@ -261,6 +261,47 @@ public class DataJsPlugin
     }
   }
   
+  private void webapiGetnavigateWxaappinfo(RequestEvent paramRequestEvent, JSONObject paramJSONObject)
+  {
+    paramJSONObject = paramJSONObject.optJSONObject("reqData").optString("target_appid");
+    if ("1108291530".equals(this.mApkgInfo.appId))
+    {
+      QMLog.d("DataJsPlugin", "MINI_APP_STORE skip checkNavigateRight");
+      paramJSONObject = new JSONObject();
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("data", "{\"action_code\":1,\"skip_local_check\":1,\"wording\":\"\"}");
+        paramJSONObject.put("respData", localJSONObject);
+        paramRequestEvent.ok(paramJSONObject);
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+    }
+    this.mChannelProxy.checkNavigateRight(this.mApkgInfo.appId, paramJSONObject, new DataJsPlugin.10(this, paramRequestEvent));
+  }
+  
+  private void webapiPluginGetUserInfo(RequestEvent paramRequestEvent, JSONObject paramJSONObject)
+  {
+    Object localObject = paramJSONObject.optJSONObject("data");
+    paramJSONObject = ((JSONObject)localObject).optString("miniprogram_appid");
+    boolean bool = ((JSONObject)localObject).optBoolean("withCredentials");
+    localObject = ((JSONObject)localObject).optString("lang");
+    if (!TextUtils.isEmpty(paramJSONObject))
+    {
+      this.mChannelProxy.getUserInfo(paramJSONObject, bool, (String)localObject, new DataJsPlugin.11(this, paramRequestEvent));
+      return;
+    }
+    paramRequestEvent.fail();
+    AuthState.setAllowPluginScopeName(null);
+  }
+  
   @JsEvent({"batchGetContact"})
   public void batchGetContact(RequestEvent paramRequestEvent)
   {
@@ -509,19 +550,18 @@ public class DataJsPlugin
   @JsEvent({"operateWXData"})
   public void operateWXData(RequestEvent paramRequestEvent)
   {
-    Object localObject3;
+    Object localObject2;
     String str2;
-    boolean bool;
     try
     {
-      localObject3 = new JSONObject(paramRequestEvent.jsonParams);
-      Object localObject1 = ((JSONObject)localObject3).optJSONObject("data");
+      localObject2 = new JSONObject(paramRequestEvent.jsonParams);
+      Object localObject1 = ((JSONObject)localObject2).optJSONObject("data");
       str2 = ((JSONObject)localObject1).optString("api_name");
       QMLog.d("DataJsPlugin", "operateWXData apiName: " + str2);
       if (("webapi_getuserinfo".equals(str2)) || ("webapi_getuserinfo_opendata".equals(str2)))
       {
-        bool = ((JSONObject)localObject1).optBoolean("with_credentials");
-        localObject3 = ((JSONObject)localObject1).optString("lang", null);
+        boolean bool = ((JSONObject)localObject1).optBoolean("with_credentials");
+        localObject2 = ((JSONObject)localObject1).optString("lang", null);
         localObject1 = ((JSONObject)localObject1).optJSONObject("data");
         if (localObject1 != null) {
           localObject1 = ((JSONObject)localObject1).optString("lang", "en");
@@ -530,8 +570,8 @@ public class DataJsPlugin
         {
           getUserInfo(paramRequestEvent, str2, bool, (String)localObject1);
           return;
-          localObject1 = localObject3;
-          if (TextUtils.isEmpty((CharSequence)localObject3)) {
+          localObject1 = localObject2;
+          if (TextUtils.isEmpty((CharSequence)localObject2)) {
             localObject1 = "en";
           }
         }
@@ -542,24 +582,24 @@ public class DataJsPlugin
         return;
       }
     }
-    catch (JSONException localJSONException1)
+    catch (JSONException localJSONException)
     {
       paramRequestEvent.fail("json exception");
       return;
     }
-    Object localObject2;
+    String str1;
     if ("webapi_plugin_setauth".equals(str2))
     {
-      localObject3 = localJSONException1.optJSONObject("data");
-      if (localObject3 != null)
+      localObject2 = localJSONException.optJSONObject("data");
+      if (localObject2 != null)
       {
-        localObject3 = ((JSONObject)localObject3).optString("miniprogram_appid");
-        if (!TextUtils.isEmpty((CharSequence)localObject3))
+        localObject2 = ((JSONObject)localObject2).optString("miniprogram_appid");
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           str2 = LoginManager.getInstance().getAccount();
-          localObject2 = BaseJsPluginEngine.getScopePluginSetauthName((String)localObject3, localJSONException1.optString("plugin_appid"));
-          AuthState.setAllowPluginScopeName((String)localObject2);
-          new AuthState(this.mContext, (String)localObject3, str2).grantPermission((String)localObject2);
+          str1 = BaseJsPluginEngine.getScopePluginSetauthName((String)localObject2, localJSONException.optString("plugin_appid"));
+          AuthState.setAllowPluginScopeName(str1);
+          new AuthState(this.mContext, (String)localObject2, str2).grantPermission(str1);
           paramRequestEvent.ok();
           return;
         }
@@ -571,10 +611,10 @@ public class DataJsPlugin
     }
     if ("webapi_plugin_login".equals(str2))
     {
-      localObject2 = ((JSONObject)localObject2).optJSONObject("data").optString("miniprogram_appid");
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      str1 = str1.optJSONObject("data").optString("miniprogram_appid");
+      if (!TextUtils.isEmpty(str1))
       {
-        this.mChannelProxy.login((String)localObject2, new DataJsPlugin.8(this, paramRequestEvent));
+        this.mChannelProxy.login(str1, new DataJsPlugin.8(this, paramRequestEvent));
         return;
       }
       paramRequestEvent.fail();
@@ -582,48 +622,17 @@ public class DataJsPlugin
     }
     if ("webapi_plugin_getuserinfo".equals(str2))
     {
-      localObject3 = ((JSONObject)localObject2).optJSONObject("data");
-      localObject2 = ((JSONObject)localObject3).optString("miniprogram_appid");
-      bool = ((JSONObject)localObject3).optBoolean("withCredentials");
-      localObject3 = ((JSONObject)localObject3).optString("lang");
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        this.mChannelProxy.getUserInfo((String)localObject2, bool, (String)localObject3, new DataJsPlugin.9(this, paramRequestEvent));
-        return;
-      }
-      paramRequestEvent.fail();
-      AuthState.setAllowPluginScopeName(null);
+      webapiPluginGetUserInfo(paramRequestEvent, str1);
       return;
     }
     if ("webapi_getnavigatewxaappinfo".equals(str2))
     {
-      localObject2 = ((JSONObject)localObject3).optJSONObject("reqData").optString("target_appid");
-      if ("1108291530".equals(this.mApkgInfo.appId))
-      {
-        QMLog.d("DataJsPlugin", "MINI_APP_STORE skip checkNavigateRight");
-        localObject2 = new JSONObject();
-        localObject3 = new JSONObject();
-        try
-        {
-          ((JSONObject)localObject3).put("data", "{\"action_code\":1,\"skip_local_check\":1,\"wording\":\"\"}");
-          ((JSONObject)localObject2).put("respData", localObject3);
-          paramRequestEvent.ok((JSONObject)localObject2);
-          return;
-        }
-        catch (JSONException localJSONException2)
-        {
-          for (;;)
-          {
-            localJSONException2.printStackTrace();
-          }
-        }
-      }
-      this.mChannelProxy.checkNavigateRight(this.mApkgInfo.appId, (String)localObject2, new DataJsPlugin.10(this, paramRequestEvent));
+      webapiGetnavigateWxaappinfo(paramRequestEvent, (JSONObject)localObject2);
       return;
     }
     if ("webapi_getadvert".equals(str2))
     {
-      webapiGetadvert(paramRequestEvent, (JSONObject)localObject2, 2);
+      webapiGetadvert(paramRequestEvent, str1, 2);
       return;
     }
     if ("advert_tap".equals(str2))
@@ -638,24 +647,24 @@ public class DataJsPlugin
     }
     if ("getBlockAd".equals(str2))
     {
-      webapiGetadvert(paramRequestEvent, (JSONObject)localObject2, 12);
+      webapiGetadvert(paramRequestEvent, str1, 12);
       return;
     }
     if ("webapi_getshareinfo".equals(str2))
     {
-      String str1 = ((JSONObject)localObject2).optJSONObject("data").optString("shareTicket");
-      int j = ((JSONObject)localObject2).optJSONObject("data").optInt("timeout", 0);
+      localObject2 = str1.optJSONObject("data").optString("shareTicket");
+      int j = str1.optJSONObject("data").optInt("timeout", 0);
       int i = j;
       if (j <= 0) {
         i = 30000;
       }
-      operateGetShareInfo(str1, i, paramRequestEvent);
+      operateGetShareInfo((String)localObject2, i, paramRequestEvent);
       return;
     }
     if ("webapi_getwerunstep_history".equals(str2))
     {
-      localObject2 = this.mApkgInfo.appId;
-      this.mChannelProxy.getUserHealthData((String)localObject2, new DataJsPlugin.11(this, paramRequestEvent));
+      str1 = this.mApkgInfo.appId;
+      this.mChannelProxy.getUserHealthData(str1, new DataJsPlugin.9(this, paramRequestEvent));
     }
   }
   
@@ -737,50 +746,50 @@ public class DataJsPlugin
     // Byte code:
     //   0: aload_2
     //   1: ldc 79
-    //   3: invokevirtual 619	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   3: invokevirtual 384	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   6: ldc 102
     //   8: invokevirtual 188	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   11: astore 12
     //   13: aload_2
     //   14: ldc 79
-    //   16: invokevirtual 619	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   19: ldc_w 773
+    //   16: invokevirtual 384	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   19: ldc_w 780
     //   22: invokevirtual 346	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   25: ifeq +377 -> 402
     //   28: aload_2
     //   29: ldc 79
-    //   31: invokevirtual 619	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   34: ldc_w 773
-    //   37: invokevirtual 775	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   31: invokevirtual 384	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   34: ldc_w 780
+    //   37: invokevirtual 782	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   40: istore_3
     //   41: iconst_1
     //   42: istore 4
     //   44: aload_2
     //   45: ldc 79
-    //   47: invokevirtual 619	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   50: ldc_w 777
+    //   47: invokevirtual 384	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   50: ldc_w 784
     //   53: invokevirtual 346	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   56: ifeq +17 -> 73
     //   59: aload_2
     //   60: ldc 79
-    //   62: invokevirtual 619	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   65: ldc_w 777
-    //   68: invokevirtual 775	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   62: invokevirtual 384	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   65: ldc_w 784
+    //   68: invokevirtual 782	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   71: istore 4
     //   73: invokestatic 305	com/tencent/qqmini/sdk/manager/LoginManager:getInstance	()Lcom/tencent/qqmini/sdk/manager/LoginManager;
     //   76: invokevirtual 308	com/tencent/qqmini/sdk/manager/LoginManager:getAccount	()Ljava/lang/String;
-    //   79: invokestatic 782	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   82: invokevirtual 786	java/lang/Long:longValue	()J
+    //   79: invokestatic 789	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   82: invokevirtual 793	java/lang/Long:longValue	()J
     //   85: lstore 5
     //   87: aload_0
-    //   88: getfield 429	com/tencent/qqmini/sdk/plugins/DataJsPlugin:mMiniAppInfo	Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;
-    //   91: getfield 501	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:appId	Ljava/lang/String;
+    //   88: getfield 473	com/tencent/qqmini/sdk/plugins/DataJsPlugin:mMiniAppInfo	Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;
+    //   91: getfield 541	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:appId	Ljava/lang/String;
     //   94: astore 13
     //   96: ldc 12
     //   98: new 119	java/lang/StringBuilder
     //   101: dup
     //   102: invokespecial 120	java/lang/StringBuilder:<init>	()V
-    //   105: ldc_w 788
+    //   105: ldc_w 795
     //   108: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   111: aload 13
     //   113: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -790,10 +799,10 @@ public class DataJsPlugin
     //   124: invokestatic 222	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   127: ifne +212 -> 339
     //   130: iload_3
-    //   131: invokestatic 792	com/tencent/qqmini/sdk/utils/AdUtil:getSpAdGdtCookie	(I)Ljava/lang/String;
+    //   131: invokestatic 799	com/tencent/qqmini/sdk/utils/AdUtil:getSpAdGdtCookie	(I)Ljava/lang/String;
     //   134: astore 14
     //   136: aload_0
-    //   137: getfield 429	com/tencent/qqmini/sdk/plugins/DataJsPlugin:mMiniAppInfo	Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;
+    //   137: getfield 473	com/tencent/qqmini/sdk/plugins/DataJsPlugin:mMiniAppInfo	Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;
     //   140: astore 15
     //   142: ldc 146
     //   144: astore 9
@@ -816,35 +825,35 @@ public class DataJsPlugin
     //   177: aload 11
     //   179: astore 8
     //   181: aload 15
-    //   183: getfield 435	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:launchParam	Lcom/tencent/qqmini/sdk/launcher/model/LaunchParam;
+    //   183: getfield 479	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:launchParam	Lcom/tencent/qqmini/sdk/launcher/model/LaunchParam;
     //   186: ifnull +54 -> 240
     //   189: aload 15
-    //   191: getfield 435	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:launchParam	Lcom/tencent/qqmini/sdk/launcher/model/LaunchParam;
-    //   194: getfield 795	com/tencent/qqmini/sdk/launcher/model/LaunchParam:entryPath	Ljava/lang/String;
+    //   191: getfield 479	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:launchParam	Lcom/tencent/qqmini/sdk/launcher/model/LaunchParam;
+    //   194: getfield 802	com/tencent/qqmini/sdk/launcher/model/LaunchParam:entryPath	Ljava/lang/String;
     //   197: ifnull +143 -> 340
     //   200: aload 15
-    //   202: getfield 435	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:launchParam	Lcom/tencent/qqmini/sdk/launcher/model/LaunchParam;
-    //   205: getfield 795	com/tencent/qqmini/sdk/launcher/model/LaunchParam:entryPath	Ljava/lang/String;
+    //   202: getfield 479	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:launchParam	Lcom/tencent/qqmini/sdk/launcher/model/LaunchParam;
+    //   205: getfield 802	com/tencent/qqmini/sdk/launcher/model/LaunchParam:entryPath	Ljava/lang/String;
     //   208: astore_2
     //   209: aload 15
-    //   211: getfield 435	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:launchParam	Lcom/tencent/qqmini/sdk/launcher/model/LaunchParam;
+    //   211: getfield 479	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:launchParam	Lcom/tencent/qqmini/sdk/launcher/model/LaunchParam;
     //   214: ifnull +191 -> 405
     //   217: aload 15
-    //   219: getfield 435	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:launchParam	Lcom/tencent/qqmini/sdk/launcher/model/LaunchParam;
-    //   222: getfield 798	com/tencent/qqmini/sdk/launcher/model/LaunchParam:reportData	Ljava/lang/String;
+    //   219: getfield 479	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:launchParam	Lcom/tencent/qqmini/sdk/launcher/model/LaunchParam;
+    //   222: getfield 805	com/tencent/qqmini/sdk/launcher/model/LaunchParam:reportData	Ljava/lang/String;
     //   225: astore 7
     //   227: aload 15
-    //   229: getfield 435	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:launchParam	Lcom/tencent/qqmini/sdk/launcher/model/LaunchParam;
-    //   232: getfield 801	com/tencent/qqmini/sdk/launcher/model/LaunchParam:scene	I
-    //   235: invokestatic 803	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   229: getfield 479	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:launchParam	Lcom/tencent/qqmini/sdk/launcher/model/LaunchParam;
+    //   232: getfield 808	com/tencent/qqmini/sdk/launcher/model/LaunchParam:scene	I
+    //   235: invokestatic 810	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   238: astore 8
     //   240: aload 15
     //   242: ifnull +104 -> 346
     //   245: aload 15
-    //   247: getfield 806	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:via	Ljava/lang/String;
+    //   247: getfield 813	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:via	Ljava/lang/String;
     //   250: ifnull +96 -> 346
     //   253: aload 15
-    //   255: getfield 806	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:via	Ljava/lang/String;
+    //   255: getfield 813	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:via	Ljava/lang/String;
     //   258: astore 9
     //   260: ldc 104
     //   262: invokestatic 34	com/tencent/qqmini/sdk/core/proxy/ProxyManager:get	(Ljava/lang/Class;)Ljava/lang/Object;
@@ -863,7 +872,7 @@ public class DataJsPlugin
     //   298: aload 11
     //   300: aload 10
     //   302: lload 5
-    //   304: invokestatic 474	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   304: invokestatic 514	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   307: aload 12
     //   309: aload 13
     //   311: bipush 53
@@ -875,13 +884,13 @@ public class DataJsPlugin
     //   320: aload 8
     //   322: aload 9
     //   324: iload 4
-    //   326: new 808	com/tencent/qqmini/sdk/plugins/DataJsPlugin$13
+    //   326: new 815	com/tencent/qqmini/sdk/plugins/DataJsPlugin$13
     //   329: dup
     //   330: aload_0
     //   331: aload_1
     //   332: iload_3
-    //   333: invokespecial 811	com/tencent/qqmini/sdk/plugins/DataJsPlugin$13:<init>	(Lcom/tencent/qqmini/sdk/plugins/DataJsPlugin;Lcom/tencent/qqmini/sdk/launcher/core/model/RequestEvent;I)V
-    //   336: invokevirtual 815	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy:requestAdInfo	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;)V
+    //   333: invokespecial 818	com/tencent/qqmini/sdk/plugins/DataJsPlugin$13:<init>	(Lcom/tencent/qqmini/sdk/plugins/DataJsPlugin;Lcom/tencent/qqmini/sdk/launcher/core/model/RequestEvent;I)V
+    //   336: invokevirtual 822	com/tencent/qqmini/sdk/launcher/core/proxy/AdProxy:requestAdInfo	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;)V
     //   339: return
     //   340: ldc 146
     //   342: astore_2
@@ -889,8 +898,8 @@ public class DataJsPlugin
     //   346: ldc 146
     //   348: astore 9
     //   350: goto -90 -> 260
-    //   353: invokestatic 496	com/tencent/qqmini/sdk/core/MiniAppEnv:g	()Lcom/tencent/qqmini/sdk/core/MiniAppEnv;
-    //   356: invokevirtual 819	com/tencent/qqmini/sdk/core/MiniAppEnv:getContext	()Landroid/content/Context;
+    //   353: invokestatic 536	com/tencent/qqmini/sdk/core/MiniAppEnv:g	()Lcom/tencent/qqmini/sdk/core/MiniAppEnv;
+    //   356: invokevirtual 826	com/tencent/qqmini/sdk/core/MiniAppEnv:getContext	()Landroid/content/Context;
     //   359: astore 10
     //   361: goto -63 -> 298
     //   364: astore_2
@@ -898,18 +907,18 @@ public class DataJsPlugin
     //   366: invokevirtual 138	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	()Ljava/lang/String;
     //   369: pop
     //   370: ldc 12
-    //   372: ldc_w 821
+    //   372: ldc_w 828
     //   375: aload_2
-    //   376: invokestatic 423	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   376: invokestatic 468	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   379: return
     //   380: astore_2
     //   381: aload_1
     //   382: invokevirtual 138	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	()Ljava/lang/String;
     //   385: pop
     //   386: ldc 12
-    //   388: ldc_w 823
+    //   388: ldc_w 830
     //   391: aload_2
-    //   392: invokestatic 423	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   392: invokestatic 468	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   395: return
     //   396: aload_1
     //   397: invokevirtual 138	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	()Ljava/lang/String;

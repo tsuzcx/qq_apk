@@ -1,388 +1,206 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.compat.AVCallCompactHelper.1;
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import android.hardware.Camera.Parameters;
+import android.os.SystemClock;
+import com.tencent.av.core.VcControllerImpl;
+import com.tencent.av.gaudio.QQGAudioCtrl;
+import com.tencent.av.opengl.GraphicRenderMgr;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.BaseActivity;
+import java.util.List;
 
 public class ljv
+  extends lje
+  implements lon
 {
-  private static final String jdField_a_of_type_JavaLangString = VideoInviteActivity.class.getName();
-  private static final String b = GaInviteLockActivity.class.getName();
-  private static final String c = MultiIncomingCallsActivity.class.getName();
-  private final ConcurrentHashMap<String, Intent> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(3);
+  private Camera.AutoFocusCallback a;
   
-  private Intent a(String paramString)
+  public ljv(Context paramContext)
   {
-    Iterator localIterator = null;
-    Object localObject3 = null;
-    Object localObject1 = null;
-    Object localObject2 = localIterator;
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0)
-        {
-          localObject2 = localIterator;
-          localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-          localObject2 = localObject1;
-          localObject3 = localObject1;
-          if (localIterator.hasNext())
-          {
-            localObject2 = localObject1;
-            localObject3 = (String)localIterator.next();
-            localObject2 = localObject1;
-            if (lbu.a().c((String)localObject3) == null)
-            {
-              localObject2 = localObject1;
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject3);
-              localObject2 = localObject1;
-            }
-            else
-            {
-              localObject2 = localObject1;
-              localObject3 = (Intent)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject3);
-              if (localObject3 != null)
-              {
-                localObject2 = localObject1;
-                if (((Intent)localObject3).getComponent() != null)
-                {
-                  localObject2 = localObject1;
-                  boolean bool = ((Intent)localObject3).getComponent().getClassName().equals(paramString);
-                  localObject2 = localObject3;
-                  if (bool) {
-                    break label184;
-                  }
-                }
-              }
-              localObject2 = localObject1;
-            }
-          }
-        }
-      }
-      catch (Throwable paramString)
-      {
-        QLog.i("CompatModeTag", 1, "getIntentByComponentClassName", paramString);
-        localObject3 = localObject2;
-      }
-      return localObject3;
-      label184:
-      localObject1 = localObject2;
-    }
+    super(paramContext);
+    this.jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback = new ljw(this);
   }
   
-  public static String a(String paramString, Intent paramIntent)
+  @TargetApi(9)
+  private void a(Camera.Parameters paramParameters, boolean paramBoolean)
   {
-    int i = 100;
-    Object localObject1 = null;
-    StringBuilder localStringBuilder = null;
-    Object localObject2 = localStringBuilder;
-    if (!TextUtils.isEmpty(paramString))
+    if (paramParameters == null)
     {
-      if (paramIntent == null) {
-        localObject2 = localStringBuilder;
+      lbj.c("AndroidCamera", "parameters null, do nothing about focus config");
+      return;
+    }
+    List localList = paramParameters.getSupportedFocusModes();
+    if (localList == null)
+    {
+      lbj.c("AndroidCamera", "getSupportedFocusModes empty");
+      return;
+    }
+    lor locallor = lor.a();
+    if ((locallor != null) && (locallor.g())) {}
+    for (boolean bool = true;; bool = false)
+    {
+      lbj.c("AndroidCamera", String.format("enableAutoFocus, isUserSelfFocusDev[%s], enable[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) }));
+      if (!bool) {
+        break;
+      }
+      a(paramBoolean, localList);
+      return;
+    }
+    a(paramBoolean, localList, paramParameters);
+  }
+  
+  private void a(boolean paramBoolean, List<String> paramList)
+  {
+    if (!paramList.contains("auto")) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      GraphicRenderMgr.getInstance().setFocusDetectCallback(this);
+      GraphicRenderMgr.getInstance().setFocusConfig(true, SystemClock.elapsedRealtime(), 111, 3000);
+      return;
+    }
+    GraphicRenderMgr.getInstance().setFocusDetectCallback(null);
+    GraphicRenderMgr.getInstance().setFocusConfig(false, SystemClock.elapsedRealtime(), 111, 3000);
+  }
+  
+  private void a(boolean paramBoolean, List<String> paramList, Camera.Parameters paramParameters)
+  {
+    if ((paramBoolean) && (this.h >= 9) && (paramList.contains("continuous-video"))) {
+      paramParameters.setFocusMode("continuous-video");
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidHardwareCamera.setParameters(paramParameters);
+      return;
+    }
+    catch (Exception paramList) {}
+  }
+  
+  protected void a(long paramLong, int paramInt1, int paramInt2)
+  {
+    super.a(paramLong, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_AndroidHardwareCamera != null)
+    {
+      Object localObject1 = null;
+      try
+      {
+        localObject2 = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
+        localObject1 = localObject2;
+      }
+      catch (Exception localException)
+      {
+        do
+        {
+          for (;;)
+          {
+            Object localObject2;
+            QLog.d("AndroidCamera", 2, "setCameraPara exception", localException);
+            continue;
+            boolean bool = false;
+          }
+        } while (!QLog.isDevelopLevel());
+        QLog.w("AndroidCamera", 1, "setCameraPara, parameters[null]");
+        return;
+      }
+      if (localObject1 != null)
+      {
+        bool = VcControllerImpl.setCameraParameters(localObject1.flatten());
+        localObject2 = localObject1.flatten();
+        if (!bool)
+        {
+          bool = true;
+          QQGAudioCtrl.setCameraParameters((String)localObject2, bool);
+          a(localObject1, true);
+        }
+      }
+    }
+    while (!QLog.isDevelopLevel()) {
+      return;
+    }
+    QLog.w("AndroidCamera", 1, "setCameraPara, camera[false]");
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_AndroidHardwareCamera == null) {
+        lbj.c("AndroidCamera", "camera null, return");
       }
     }
     else {
-      return localObject2;
-    }
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder(200);
-      localStringBuilder.append("getSessionIdFromIntent").append(", class[").append(paramString).append("]").append(", intent[").append(paramIntent).append("]");
-    }
-    for (;;)
-    {
-      long l;
-      if (c.equals(paramString))
-      {
-        localObject1 = paramIntent.getStringExtra("peerUin");
-        bool = paramIntent.getBooleanExtra("isDoubleVideoMeeting", false);
-        int j = paramIntent.getIntExtra("uinType", 0);
-        if ((j == 1) || (j == 3000))
-        {
-          l = paramIntent.getLongExtra("discussId", 0L);
-          i = paramIntent.getIntExtra("relationType", 3);
-          paramString = String.valueOf(l);
-          label155:
-          paramIntent = lbu.a(i, paramString, new int[0]);
-          if (localStringBuilder != null) {
-            localStringBuilder.append(", uinType[").append(j).append("]").append(", relationType[").append(i).append("]").append(", relationId[").append(paramString).append("]").append(", isDoubleVideoMeeting[").append(bool).append("]").append(", peerUin[").append((String)localObject1).append("]").append(", session[").append(paramIntent).append("]");
-          }
-          localObject1 = paramIntent;
-        }
-      }
-      label416:
-      do
-      {
-        for (;;)
-        {
-          localObject2 = localObject1;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          localObject2 = localObject1;
-          if (localStringBuilder == null) {
-            break;
-          }
-          QLog.i("CompatModeTag", 2, localStringBuilder.toString());
-          return localObject1;
-          if (bool)
-          {
-            i = 100;
-            paramString = (String)localObject1;
-            break label155;
-          }
-          i = 3;
-          paramString = (String)localObject1;
-          break label155;
-          if (!b.equals(paramString)) {
-            break label416;
-          }
-          l = paramIntent.getLongExtra("discussId", 0L);
-          i = paramIntent.getIntExtra("relationType", 0);
-          paramString = lbu.a(i, String.valueOf(l), new int[0]);
-          localObject1 = paramString;
-          if (localStringBuilder != null)
-          {
-            localStringBuilder.append(", relationType[").append(i).append("]").append(", groupId[").append(l).append("]").append(", session[").append(paramString).append("]");
-            localObject1 = paramString;
-          }
-        }
-      } while (!jdField_a_of_type_JavaLangString.equals(paramString));
-      localObject2 = paramIntent.getStringExtra("peerUin");
-      boolean bool = paramIntent.getBooleanExtra("isDoubleVideoMeeting", false);
-      if (bool) {}
-      for (;;)
-      {
-        paramString = lbu.a(i, (String)localObject2, new int[0]);
-        localObject1 = paramString;
-        if (localStringBuilder == null) {
-          break;
-        }
-        localStringBuilder.append(", peerUin[").append((String)localObject2).append("]").append(", isDoubleVideoMeeting[").append(bool).append("]").append(", relationType[").append(i).append("]").append(", session[").append(paramString).append("]");
-        localObject1 = paramString;
-        break;
-        i = 3;
-      }
-      localStringBuilder = null;
-    }
-  }
-  
-  private void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.i("CompatModeTag", 1, "clearIntents", localThrowable);
-    }
+    GraphicRenderMgr.getInstance().setIsFocusing(true);
+    this.jdField_a_of_type_AndroidHardwareCamera.autoFocus(this.jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback);
   }
   
-  private Intent b(String paramString)
+  /* Error */
+  public boolean c(long paramLong)
   {
-    try
-    {
-      paramString = (Intent)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.i("CompatModeTag", 1, "getIntentByKey", paramString);
-    }
-    return null;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: getstatic 183	ljv:jdField_a_of_type_Boolean	Z
+    //   5: istore_3
+    //   6: iload_3
+    //   7: ifeq +19 -> 26
+    //   10: aload_0
+    //   11: getfield 119	ljv:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
+    //   14: invokevirtual 133	android/hardware/Camera:getParameters	()Landroid/hardware/Camera$Parameters;
+    //   17: astore 4
+    //   19: aload_0
+    //   20: aload 4
+    //   22: iconst_0
+    //   23: invokespecial 150	ljv:a	(Landroid/hardware/Camera$Parameters;Z)V
+    //   26: aload_0
+    //   27: lload_1
+    //   28: invokespecial 185	lje:c	(J)Z
+    //   31: istore_3
+    //   32: aload_0
+    //   33: monitorexit
+    //   34: iload_3
+    //   35: ireturn
+    //   36: astore 4
+    //   38: invokestatic 188	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   41: ifeq +13 -> 54
+    //   44: ldc 26
+    //   46: iconst_2
+    //   47: ldc 190
+    //   49: aload 4
+    //   51: invokestatic 193	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   54: aconst_null
+    //   55: astore 4
+    //   57: goto -38 -> 19
+    //   60: astore 4
+    //   62: aload_0
+    //   63: monitorexit
+    //   64: aload 4
+    //   66: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	67	0	this	ljv
+    //   0	67	1	paramLong	long
+    //   5	30	3	bool	boolean
+    //   17	4	4	localParameters	Camera.Parameters
+    //   36	14	4	localException	Exception
+    //   55	1	4	localObject1	Object
+    //   60	5	4	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   10	19	36	java/lang/Exception
+    //   2	6	60	finally
+    //   10	19	60	finally
+    //   19	26	60	finally
+    //   26	32	60	finally
+    //   38	54	60	finally
   }
   
-  private void b(String paramString, Intent paramIntent)
+  public int i()
   {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramIntent);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.i("CompatModeTag", 1, "addIntent", paramString);
-    }
-  }
-  
-  private Intent c(String paramString)
-  {
-    try
-    {
-      paramString = (Intent)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.i("CompatModeTag", 1, "removeIntent", paramString);
-    }
-    return null;
-  }
-  
-  public Runnable a(BaseActivity paramBaseActivity, VideoAppInterface paramVideoAppInterface)
-  {
-    Object localObject2 = null;
-    Object localObject1 = lbu.a().a();
-    if (localObject1 != null) {
-      c(((ley)localObject1).c);
-    }
-    Intent localIntent = a(c);
-    localObject1 = localObject2;
-    if (localIntent != null)
-    {
-      localObject1 = localObject2;
-      if (paramBaseActivity != null)
-      {
-        localObject1 = localObject2;
-        if (paramVideoAppInterface != null)
-        {
-          localObject1 = new AVCallCompactHelper.1(this, paramBaseActivity);
-          paramVideoAppInterface.a().postDelayed((Runnable)localObject1, 1000L);
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("CompatModeTag", 2, "checkThirdCallIntent , activity[" + paramBaseActivity + "], app[" + paramVideoAppInterface + "], multiCallIntent[" + localIntent + "]");
-    }
-    return localObject1;
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    String str2 = null;
-    String str1 = str2;
-    if (paramIntent != null)
-    {
-      str1 = str2;
-      if (paramIntent.getComponent() != null) {
-        str1 = paramIntent.getComponent().getClassName();
-      }
-    }
-    if ((jdField_a_of_type_JavaLangString.equals(str1)) || (b.equals(str1))) {
-      a();
-    }
-    str2 = a(str1, paramIntent);
-    if (!TextUtils.isEmpty(str2)) {
-      b(str2, paramIntent);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("CompatModeTag", 2, "saveCallIntent , class[" + str1 + "], session[" + str2 + "], intent[" + paramIntent + "]");
-    }
-  }
-  
-  public void a(Runnable paramRunnable, VideoAppInterface paramVideoAppInterface)
-  {
-    if ((paramRunnable != null) && (paramVideoAppInterface != null)) {
-      paramVideoAppInterface.a().removeCallbacks(paramRunnable);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("CompatModeTag", 2, "clearCallIntent");
-    }
-  }
-  
-  public void a(String paramString, Intent paramIntent)
-  {
-    Object localObject = null;
-    String str2 = a(paramString, paramIntent);
-    String str1;
-    if (!TextUtils.isEmpty(str2))
-    {
-      paramIntent = c(str2);
-      str1 = str2;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("CompatModeTag", 2, "clearCallIntent , class[" + paramString + "], session[" + str1 + ", intent[" + paramIntent + "]");
-      }
-      return;
-      str1 = str2;
-      paramIntent = localObject;
-      if (jdField_a_of_type_JavaLangString.equals(paramString))
-      {
-        ley localley = lbu.a().a();
-        str1 = str2;
-        paramIntent = localObject;
-        if (localley != null)
-        {
-          str1 = localley.c;
-          paramIntent = c(str1);
-        }
-      }
-    }
-  }
-  
-  public boolean a(BaseActivity paramBaseActivity)
-  {
-    Object localObject2 = null;
-    Object localObject3 = null;
-    boolean bool2;
-    if (paramBaseActivity == null)
-    {
-      bool2 = false;
-      return bool2;
-    }
-    ley localley = lbu.a().a();
-    if (localley != null) {}
-    for (Object localObject1 = localley.c;; localObject1 = null)
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-      for (Intent localIntent = b(localley.c);; localIntent = null)
-      {
-        label74:
-        boolean bool1;
-        if (localIntent != null)
-        {
-          localObject1 = localIntent.getComponent();
-          if (localObject1 == null)
-          {
-            localObject1 = localObject3;
-            if ((!jdField_a_of_type_JavaLangString.equals(localObject1)) && (!b.equals(localObject1))) {
-              break label185;
-            }
-            bool1 = true;
-          }
-        }
-        for (;;)
-        {
-          if (bool1)
-          {
-            paramBaseActivity.startActivity(localIntent);
-            paramBaseActivity.finish();
-          }
-          bool2 = bool1;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("CompatModeTag", 2, "checkMainCallIntent, hasMainCallIntent[" + bool1 + "], mainCallIntent[" + localIntent + "], class[" + (String)localObject1 + "]");
-          return bool1;
-          localObject1 = ((ComponentName)localObject1).getClassName();
-          break label74;
-          label185:
-          localObject2 = localObject1;
-          if (c.equals(localObject1))
-          {
-            c(localley.c);
-            localObject2 = localObject1;
-          }
-          bool1 = false;
-          localObject1 = localObject2;
-        }
-      }
-    }
+    return a(this.i, this.jdField_a_of_type_AndroidHardwareCamera).c;
   }
 }
 

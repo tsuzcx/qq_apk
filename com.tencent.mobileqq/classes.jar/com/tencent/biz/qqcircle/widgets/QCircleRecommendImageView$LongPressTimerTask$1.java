@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.widgets;
 
+import aaak;
 import android.content.Context;
 import android.os.Vibrator;
 import android.text.TextUtils;
@@ -9,8 +10,8 @@ import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StUser;
 import mqq.util.WeakReference;
-import uxx;
-import zwp;
+import uyk;
+import uzg;
 
 class QCircleRecommendImageView$LongPressTimerTask$1
   implements Runnable
@@ -22,31 +23,40 @@ class QCircleRecommendImageView$LongPressTimerTask$1
     try
     {
       QCircleRecommendImageView localQCircleRecommendImageView = (QCircleRecommendImageView)QCircleRecommendImageView.LongPressTimerTask.a(this.this$0).get();
-      if (localQCircleRecommendImageView != null)
+      if (localQCircleRecommendImageView == null) {
+        return;
+      }
+      if ((QCircleRecommendImageView.a(localQCircleRecommendImageView) != null) && (uzg.a((FeedCloudMeta.StUser)QCircleRecommendImageView.a(localQCircleRecommendImageView).poster.get())))
       {
-        if ((QCircleRecommendImageView.a(localQCircleRecommendImageView) != null) && (uxx.a((FeedCloudMeta.StUser)QCircleRecommendImageView.a(localQCircleRecommendImageView).poster.get())))
-        {
-          QCircleRecommendImageView.g(localQCircleRecommendImageView);
-          return;
-        }
-        if (QCircleRecommendImageView.b(localQCircleRecommendImageView) < QCircleRecommendImageView.a())
-        {
-          QCircleRecommendImageView.c(localQCircleRecommendImageView);
-          QCircleRecommendImageView.d(localQCircleRecommendImageView);
-          QCircleRecommendImageView.b(localQCircleRecommendImageView, true);
-          FeedCloudMeta.StFeed localStFeed = localQCircleRecommendImageView.a();
-          if ((localStFeed != null) && (!TextUtils.isEmpty(localStFeed.id.get()))) {
-            zwp.a().a(new QCirclePushAnimationEvent(localStFeed.id.get(), QCircleRecommendImageView.e(localQCircleRecommendImageView), 3, QCircleRecommendImageView.f(localQCircleRecommendImageView)));
-          }
-          ((Vibrator)localQCircleRecommendImageView.getContext().getSystemService("vibrator")).vibrate(50L);
-          return;
-        }
+        QCircleRecommendImageView.d(localQCircleRecommendImageView);
+        return;
+      }
+      if (uyk.a().a() <= 0)
+      {
+        QCircleRecommendImageView.a(localQCircleRecommendImageView, 0, 0);
+        QCircleRecommendImageView.e(localQCircleRecommendImageView);
+        return;
       }
     }
     catch (Exception localException)
     {
       QLog.e("QCircleRecommend_", 1, localException.getMessage());
       localException.printStackTrace();
+      return;
+    }
+    if (QCircleRecommendImageView.b(localException) < QCircleRecommendImageView.a())
+    {
+      QCircleRecommendImageView.c(localException);
+      QCircleRecommendImageView.d(localException);
+      QCircleRecommendImageView.b(localException, true);
+      FeedCloudMeta.StFeed localStFeed = localException.a();
+      if ((localStFeed != null) && (!TextUtils.isEmpty(localStFeed.id.get())))
+      {
+        aaak.a().a(new QCirclePushAnimationEvent(localStFeed.id.get(), QCircleRecommendImageView.e(localException), 3, QCircleRecommendImageView.f(localException)));
+        QCircleRecommendImageView.f(localException);
+      }
+      ((Vibrator)localException.getContext().getSystemService("vibrator")).vibrate(50L);
+      uyk.a().a(uyk.a().a() - 1);
     }
   }
 }

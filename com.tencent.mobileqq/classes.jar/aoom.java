@@ -1,70 +1,32 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-public class aoom
-  extends anii
+class aoom
+  extends anyu
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  bmqf jdField_a_of_type_Bmqf = null;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
+  private aoom(aooj paramaooj) {}
   
-  public aoom(QQAppInterface paramQQAppInterface)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    super(paramQQAppInterface);
+    this.a.a(paramBoolean, 1, paramString, 0);
   }
   
-  public void a()
+  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_Bmqf != null)
-    {
-      this.jdField_a_of_type_Bmqf.a();
-      this.jdField_a_of_type_Bmqf = null;
-    }
+    this.a.a(paramBoolean, 11, paramString, 0);
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ReadInJoyHandler", 2, "readInJoyFeedsMsgNotify, isSuccess=" + paramBoolean1 + ",isNewMsgCome=" + paramBoolean2 + ",reason=" + paramInt);
-    }
-    notifyUI(1, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt) });
+    this.a.a(paramBoolean1, 16, paramString, paramInt);
   }
   
-  public void a(byte[] paramArrayOfByte)
+  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyHandler", 2, "handleOnlinePushReadInJoyFeedsMsg");
-    }
+    this.a.a(paramBoolean1, 32, paramString, paramInt);
   }
   
-  protected boolean msgCmdFilter(String paramString)
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    if (this.allowCmdSet == null) {
-      this.allowCmdSet = new HashSet();
-    }
-    return !this.allowCmdSet.contains(paramString);
+    this.a.a(paramBoolean, 4, paramString, 0);
   }
-  
-  protected Class<? extends anil> observerClass()
-  {
-    return aooo.class;
-  }
-  
-  public void onDestroy()
-  {
-    a();
-    super.onDestroy();
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

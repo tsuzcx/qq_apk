@@ -1,18 +1,52 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.TroopAssistantHomeFeedPlayInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class xnv
-  extends xoe<String>
+  extends xmg<TroopAssistantHomeFeedPlayInfo>
 {
-  public xnv(VideoViewVideoHolder paramVideoViewVideoHolder)
+  public xnv(TroopAssistantHomeFeedPlayInfo paramTroopAssistantHomeFeedPlayInfo)
   {
-    super(paramVideoViewVideoHolder, null);
+    super(paramTroopAssistantHomeFeedPlayInfo);
+    paramTroopAssistantHomeFeedPlayInfo = (yme)wth.a(11);
+    if (paramTroopAssistantHomeFeedPlayInfo.b != null) {
+      this.a = paramTroopAssistantHomeFeedPlayInfo.b;
+    }
   }
   
-  public void a(String paramString)
+  public ylw a(String paramString)
   {
-    super.onNext(paramString);
-    VideoViewVideoHolder.a(this.a);
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      ylw localylw = (ylw)localIterator.next();
+      if (localylw.a.equals(paramString)) {
+        return localylw;
+      }
+    }
+    return null;
   }
+  
+  public void a() {}
+  
+  public void a(boolean paramBoolean, int paramInt, xmy paramxmy)
+  {
+    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
+    if ((paramBoolean) && (((List)localObject).size() > 0))
+    {
+      List localList = b((List)localObject);
+      paramxmy.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
+      yuk.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
+      return;
+    }
+    localObject = new xdm();
+    ((xdm)localObject).a = this.a.a();
+    yuk.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((xdm)localObject).a);
+    wow.a().a((wpa)localObject, new xnw(this, paramxmy));
+  }
+  
+  public void b() {}
 }
 
 

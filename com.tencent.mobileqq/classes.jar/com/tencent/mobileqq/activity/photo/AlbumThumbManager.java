@@ -8,9 +8,9 @@ import android.graphics.BitmapFactory.Options;
 import android.os.Build;
 import android.os.Environment;
 import android.os.SystemClock;
-import beai;
-import bkzf;
-import bkzg;
+import bezb;
+import bmai;
+import bmaj;
 import com.tencent.component.network.utils.BytesBufferPool;
 import com.tencent.component.network.utils.BytesBufferPool.BytesBuffer;
 import com.tencent.image.DownloadParams;
@@ -44,7 +44,7 @@ public class AlbumThumbManager
   private static AlbumThumbManager.TempBuffer tempBuffer;
   private static ByteBuffer tempByteBuffer;
   private boolean isThumbKeyUseSize = false;
-  bkzf mBlobCache;
+  bmai mBlobCache;
   private final Object mBlobLock = new Object();
   Context mContext;
   
@@ -69,7 +69,7 @@ public class AlbumThumbManager
   private boolean getCacheData(byte[] paramArrayOfByte, long paramLong, BytesBufferPool.BytesBuffer paramBytesBuffer)
   {
     if (paramArrayOfByte == null) {}
-    bkzg localbkzg;
+    bmaj localbmaj;
     do
     {
       do
@@ -82,12 +82,12 @@ public class AlbumThumbManager
       } while (this.mBlobCache == null);
       try
       {
-        localbkzg = new bkzg();
-        localbkzg.jdField_a_of_type_Long = paramLong;
-        localbkzg.jdField_a_of_type_ArrayOfByte = paramBytesBuffer.data;
+        localbmaj = new bmaj();
+        localbmaj.jdField_a_of_type_Long = paramLong;
+        localbmaj.jdField_a_of_type_ArrayOfByte = paramBytesBuffer.data;
         synchronized (this.mBlobLock)
         {
-          if (!this.mBlobCache.a(localbkzg)) {
+          if (!this.mBlobCache.a(localbmaj)) {
             return false;
           }
         }
@@ -97,17 +97,17 @@ public class AlbumThumbManager
         QLog.e("AlbumThumbManager", 2, "getCacheData ioexception", paramArrayOfByte);
         return false;
       }
-    } while (!isSameKey(paramArrayOfByte, localbkzg.jdField_a_of_type_ArrayOfByte));
-    paramBytesBuffer.data = localbkzg.jdField_a_of_type_ArrayOfByte;
+    } while (!isSameKey(paramArrayOfByte, localbmaj.jdField_a_of_type_ArrayOfByte));
+    paramBytesBuffer.data = localbmaj.jdField_a_of_type_ArrayOfByte;
     paramBytesBuffer.offset = paramArrayOfByte.length;
-    paramBytesBuffer.length = (localbkzg.jdField_a_of_type_Int - paramBytesBuffer.offset);
+    paramBytesBuffer.length = (localbmaj.jdField_a_of_type_Int - paramBytesBuffer.offset);
     return true;
   }
   
   private boolean getCacheData(byte[] paramArrayOfByte, long paramLong, AlbumThumbManager.TempBuffer paramTempBuffer)
   {
     if (paramArrayOfByte == null) {}
-    bkzg localbkzg;
+    bmaj localbmaj;
     do
     {
       do
@@ -120,12 +120,12 @@ public class AlbumThumbManager
       } while (this.mBlobCache == null);
       try
       {
-        localbkzg = new bkzg();
-        localbkzg.jdField_a_of_type_Long = paramLong;
-        localbkzg.jdField_a_of_type_ArrayOfByte = paramTempBuffer.data;
+        localbmaj = new bmaj();
+        localbmaj.jdField_a_of_type_Long = paramLong;
+        localbmaj.jdField_a_of_type_ArrayOfByte = paramTempBuffer.data;
         synchronized (this.mBlobLock)
         {
-          if (!this.mBlobCache.a(localbkzg)) {
+          if (!this.mBlobCache.a(localbmaj)) {
             return false;
           }
         }
@@ -135,10 +135,10 @@ public class AlbumThumbManager
         QLog.e("AlbumThumbManager", 2, "getCacheData ioexception", paramArrayOfByte);
         return false;
       }
-    } while (!isSameKey(paramArrayOfByte, localbkzg.jdField_a_of_type_ArrayOfByte, localbkzg.jdField_a_of_type_Int - 16, 16));
-    paramTempBuffer.data = localbkzg.jdField_a_of_type_ArrayOfByte;
+    } while (!isSameKey(paramArrayOfByte, localbmaj.jdField_a_of_type_ArrayOfByte, localbmaj.jdField_a_of_type_Int - 16, 16));
+    paramTempBuffer.data = localbmaj.jdField_a_of_type_ArrayOfByte;
     paramTempBuffer.offset = 0;
-    paramTempBuffer.length = (localbkzg.jdField_a_of_type_Int - 16);
+    paramTempBuffer.length = (localbmaj.jdField_a_of_type_Int - 16);
     return true;
   }
   
@@ -211,7 +211,7 @@ public class AlbumThumbManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 135	com/tencent/mobileqq/activity/photo/AlbumThumbManager:mBlobCache	Lbkzf;
+    //   3: getfield 135	com/tencent/mobileqq/activity/photo/AlbumThumbManager:mBlobCache	Lbmai;
     //   6: astore_1
     //   7: aload_1
     //   8: ifnull +6 -> 14
@@ -248,15 +248,15 @@ public class AlbumThumbManager
     //   78: invokevirtual 217	java/io/File:mkdirs	()Z
     //   81: pop
     //   82: aload_0
-    //   83: new 152	bkzf
+    //   83: new 152	bmai
     //   86: dup
     //   87: aload_1
     //   88: sipush 2500
     //   91: ldc 7
     //   93: iconst_0
     //   94: iconst_1
-    //   95: invokespecial 220	bkzf:<init>	(Ljava/lang/String;IIZI)V
-    //   98: putfield 135	com/tencent/mobileqq/activity/photo/AlbumThumbManager:mBlobCache	Lbkzf;
+    //   95: invokespecial 220	bmai:<init>	(Ljava/lang/String;IIZI)V
+    //   98: putfield 135	com/tencent/mobileqq/activity/photo/AlbumThumbManager:mBlobCache	Lbmai;
     //   101: goto -90 -> 11
     //   104: astore_1
     //   105: ldc 30
@@ -314,12 +314,12 @@ public class AlbumThumbManager
     return arrayOfByte;
   }
   
-  public Bitmap getThumb(URL paramURL, beai parambeai)
+  public Bitmap getThumb(URL paramURL, bezb parambezb)
   {
-    return getThumb(paramURL, parambeai, null);
+    return getThumb(paramURL, parambezb, null);
   }
   
-  public Bitmap getThumb(URL paramURL, beai parambeai, DownloadParams paramDownloadParams)
+  public Bitmap getThumb(URL paramURL, bezb parambezb, DownloadParams paramDownloadParams)
   {
     Object localObject1;
     if (this.isThumbKeyUseSize) {
@@ -348,11 +348,11 @@ public class AlbumThumbManager
       {
         if (!getCacheData((byte[])???, l2, (BytesBufferPool.BytesBuffer)localObject1))
         {
-          parambeai = parambeai.getBitmap(paramURL);
-          if (parambeai == null) {
+          parambezb = parambezb.getBitmap(paramURL);
+          if (parambezb == null) {
             break label718;
           }
-          paramDownloadParams = compressToJPEG(parambeai, 70);
+          paramDownloadParams = compressToJPEG(parambezb, 70);
           ByteBuffer localByteBuffer = ByteBuffer.allocate(???.length + paramDownloadParams.length);
           localByteBuffer.put((byte[])???);
           localByteBuffer.put(paramDownloadParams);
@@ -362,9 +362,9 @@ public class AlbumThumbManager
             {
               this.mBlobCache.a(l2, localByteBuffer.array());
               if ((QLog.isColorLevel()) && (paramURL.getProtocol().equals("albumthumb"))) {
-                QLog.d("AlbumThumbManager", 2, "getThumb bitmap from cache,url:" + paramURL + " cost:" + (SystemClock.uptimeMillis() - l1) + " sizeDisk:" + paramDownloadParams.length + " sizeMemory:" + parambeai.getByteCount());
+                QLog.d("AlbumThumbManager", 2, "getThumb bitmap from cache,url:" + paramURL + " cost:" + (SystemClock.uptimeMillis() - l1) + " sizeDisk:" + paramDownloadParams.length + " sizeMemory:" + parambezb.getByteCount());
               }
-              return parambeai;
+              return parambezb;
             }
             catch (IOException localIOException)
             {
@@ -378,33 +378,33 @@ public class AlbumThumbManager
         label718:
         localObject1 = "";
       }
-      catch (OutOfMemoryError parambeai)
+      catch (OutOfMemoryError parambezb)
       {
-        QLog.e("AlbumThumbManager", 2, "decode thumb", parambeai);
+        QLog.e("AlbumThumbManager", 2, "decode thumb", parambezb);
         if ((QLog.isColorLevel()) && (paramURL.getProtocol().equals("albumthumb"))) {
           QLog.d("AlbumThumbManager", 2, "getThumb bitmap OutOfMemoryError,url:" + paramURL + " cost:" + (SystemClock.uptimeMillis() - l1));
         }
         return null;
-        parambeai = new BitmapFactory.Options();
-        parambeai.inPreferredConfig = Bitmap.Config.RGB_565;
+        parambezb = new BitmapFactory.Options();
+        parambezb.inPreferredConfig = Bitmap.Config.RGB_565;
         if (paramDownloadParams == null) {}
-        for (parambeai.inSampleSize = 1;; parambeai.inSampleSize = URLState.calculateInSampleSize(parambeai, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight))
+        for (parambezb.inSampleSize = 1;; parambezb.inSampleSize = URLState.calculateInSampleSize(parambezb, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight))
         {
-          parambeai = SafeBitmapFactory.decodeByteArray(((BytesBufferPool.BytesBuffer)localObject1).data, ((BytesBufferPool.BytesBuffer)localObject1).offset, ((BytesBufferPool.BytesBuffer)localObject1).length, parambeai);
+          parambezb = SafeBitmapFactory.decodeByteArray(((BytesBufferPool.BytesBuffer)localObject1).data, ((BytesBufferPool.BytesBuffer)localObject1).offset, ((BytesBufferPool.BytesBuffer)localObject1).length, parambezb);
           if ((QLog.isColorLevel()) && (paramURL.getProtocol().equals("albumthumb"))) {
-            QLog.d("AlbumThumbManager", 2, "getThumb bitmap from decode,url:" + paramURL + " cost:" + (SystemClock.uptimeMillis() - l1) + " sizeDisk:" + ((BytesBufferPool.BytesBuffer)localObject1).length + " sizeMemory:" + parambeai.getByteCount());
+            QLog.d("AlbumThumbManager", 2, "getThumb bitmap from decode,url:" + paramURL + " cost:" + (SystemClock.uptimeMillis() - l1) + " sizeDisk:" + ((BytesBufferPool.BytesBuffer)localObject1).length + " sizeMemory:" + parambezb.getByteCount());
           }
-          return parambeai;
-          parambeai.inJustDecodeBounds = true;
-          SafeBitmapFactory.decodeByteArray(((BytesBufferPool.BytesBuffer)localObject1).data, ((BytesBufferPool.BytesBuffer)localObject1).offset, ((BytesBufferPool.BytesBuffer)localObject1).length, parambeai);
-          parambeai.inJustDecodeBounds = false;
+          return parambezb;
+          parambezb.inJustDecodeBounds = true;
+          SafeBitmapFactory.decodeByteArray(((BytesBufferPool.BytesBuffer)localObject1).data, ((BytesBufferPool.BytesBuffer)localObject1).offset, ((BytesBufferPool.BytesBuffer)localObject1).length, parambezb);
+          parambezb.inJustDecodeBounds = false;
         }
       }
-      catch (Throwable parambeai)
+      catch (Throwable parambezb)
       {
         for (;;)
         {
-          QLog.e("AlbumThumbManager", 2, "decode thumb", parambeai);
+          QLog.e("AlbumThumbManager", 2, "decode thumb", parambezb);
           if ((QLog.isColorLevel()) && (paramURL.getProtocol().equals("albumthumb"))) {
             QLog.d("AlbumThumbManager", 2, "getThumb bitmap Throwable,url:" + paramURL + " cost:" + (SystemClock.uptimeMillis() - l1));
           }
@@ -421,7 +421,7 @@ public class AlbumThumbManager
     }
   }
   
-  public Bitmap getThumbNew(URL arg1, beai parambeai)
+  public Bitmap getThumbNew(URL arg1, bezb parambezb)
   {
     try
     {
@@ -445,19 +445,19 @@ public class AlbumThumbManager
             if (getCacheData(arrayOfByte, l, tempBuffer)) {
               continue;
             }
-            parambeai = parambeai.getBitmap(???);
-            if (parambeai == null) {
+            parambezb = parambezb.getBitmap(???);
+            if (parambezb == null) {
               continue;
             }
-            ??? = parambeai;
-            if (parambeai.getConfig() == Bitmap.Config.RGB_565)
+            ??? = parambezb;
+            if (parambezb.getConfig() == Bitmap.Config.RGB_565)
             {
-              ??? = parambeai;
-              if (tempByteBuffer.remaining() >= parambeai.getHeight() * parambeai.getRowBytes() + 16 + 8)
+              ??? = parambezb;
+              if (tempByteBuffer.remaining() >= parambezb.getHeight() * parambezb.getRowBytes() + 16 + 8)
               {
-                parambeai.copyPixelsToBuffer(tempByteBuffer);
-                tempByteBuffer.putInt(parambeai.getWidth());
-                tempByteBuffer.putInt(parambeai.getHeight());
+                parambezb.copyPixelsToBuffer(tempByteBuffer);
+                tempByteBuffer.putInt(parambezb.getWidth());
+                tempByteBuffer.putInt(parambezb.getHeight());
                 tempByteBuffer.put(arrayOfByte, 0, 16);
               }
             }
@@ -487,10 +487,10 @@ public class AlbumThumbManager
           {
             try
             {
-              i = parambeai.getRowBytes();
-              j = parambeai.getHeight();
+              i = parambezb.getRowBytes();
+              j = parambezb.getHeight();
               this.mBlobCache.a(l, tempByteBuffer.array(), i * j + 24);
-              ??? = parambeai;
+              ??? = parambezb;
               return ???;
             }
             catch (IOException localIOException)

@@ -1,13 +1,6 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-
 public abstract interface plz
 {
-  public abstract void a(MessageRecord paramMessageRecord);
-  
-  public abstract void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle);
-  
-  public abstract void b(MessageRecord paramMessageRecord);
+  public abstract void a(String[] paramArrayOfString1, String[] paramArrayOfString2);
 }
 
 

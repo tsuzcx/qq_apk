@@ -1,27 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.image.ApngImage;
+import dov.com.qq.im.ae.play.AEPlayShowTabView;
 
-public class boxd
-  extends AnimatorListenerAdapter
+class boxd
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public boxd(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  boxd(boxb paramboxb) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteLoosenAnim mProgressView 100ms back end");
+    if (paramInt == 0)
+    {
+      ApngImage.resumeAll();
+      return;
     }
-    this.a.j();
-    avsp.b();
+    ApngImage.pauseAll();
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onPageSelected(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteLoosenAnim mProgressView begin");
-    }
+    boxb.a(this.a).a(paramInt);
   }
 }
 

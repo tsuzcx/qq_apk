@@ -1,27 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
-import com.tencent.widget.XListView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class ajee
-  extends Handler
+class ajee
 {
-  public ajee(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
+  public int a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.a.springBackOverScrollHeaderView();
-      continue;
-      this.a.a.springBackOverScrollHeaderView();
-    }
-  }
+  ajee(ajec paramajec) {}
 }
 
 

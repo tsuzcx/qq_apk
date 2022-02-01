@@ -1,28 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 class bpig
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  bpig(bpif parambpif) {}
+  bpig(bpif parambpif, int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    if (this.a.a.b == null) {
+    if (this.jdField_a_of_type_Int >= 1)
+    {
+      String str = (String)bpif.a(this.jdField_a_of_type_Bpif).get(this.jdField_a_of_type_Int - 1);
+      if (bpif.a(this.jdField_a_of_type_Bpif) != null) {
+        bpif.a(this.jdField_a_of_type_Bpif).a(str);
+      }
+      bpif.a(this.jdField_a_of_type_Bpif, str);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bpif.notifyDataSetChanged();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (bpif.a(this.jdField_a_of_type_Bpif) != null) {
+        bpif.a(this.jdField_a_of_type_Bpif).a();
+      }
+      bpif.a(this.jdField_a_of_type_Bpif, null);
     }
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.s = (this.a.d + this.a.f * f);
-    this.a.t = (this.a.e + this.a.g * f);
-    this.a.q = (this.a.b + this.a.h * f);
-    this.a.r = (this.a.c + this.a.i * f);
-    if (this.a.a.a != null) {
-      this.a.a.a.a(f);
-    }
-    if (f == 1.0F) {
-      this.a.a.b(5);
-    }
-    bpic.a(this.a.a);
   }
 }
 

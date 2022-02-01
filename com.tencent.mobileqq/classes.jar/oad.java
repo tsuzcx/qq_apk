@@ -1,33 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
 
-class oad
-  extends BroadcastReceiver
+public abstract interface oad
 {
-  oad(nzz paramnzz) {}
+  public abstract void a(View paramView);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (this.a.a == 2)
-    {
-      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
-      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
-      this.a.a(null, 0, 14, i, paramIntent);
-    }
-    try
-    {
-      paramContext.unregisterReceiver(this.a.b);
-      label50:
-      this.a.b = null;
-      this.a.a = 0;
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      break label50;
-    }
-  }
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

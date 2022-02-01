@@ -1,15 +1,52 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.miniapp.MiniAppOptions;
+import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
+import com.tencent.qphone.base.util.QLog;
 
-final class axel
-  implements aybj
+public class axel
 {
-  axel(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
-  
-  public void onClick(View paramView)
+  private boolean a(axee paramaxee, MiniAppOptions paramMiniAppOptions)
   {
-    axek.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher", 2, new Object[] { "checkMemory. cacheKey=", paramaxee.a.h });
+    }
+    return true;
+  }
+  
+  axee a(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher", 2, new Object[] { "createApp type=", Integer.valueOf(paramInt) });
+    }
+    switch (paramInt)
+    {
+    default: 
+      QLog.e("MiniAppLauncher", 1, "createApp error. unknown appType");
+    case 0: 
+    case 1: 
+    case 2: 
+    case 4: 
+    case 5: 
+      return null;
+    }
+    return new bkgb(paramMiniAppActivity, paramString, paramInt);
+  }
+  
+  void a(axee paramaxee, MiniAppOptions paramMiniAppOptions)
+  {
+    if (!a(paramaxee, paramMiniAppOptions)) {
+      return;
+    }
+    bhlo.a();
+    paramaxee.a();
+  }
+  
+  void a(axeh paramaxeh, @NonNull axef paramaxef)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher", 2, new Object[] { "downloadApp. cacheKey=", paramaxeh.h });
+    }
+    paramaxef.a(paramaxeh.f, "MiniAppLauncher", paramaxeh.h);
   }
 }
 

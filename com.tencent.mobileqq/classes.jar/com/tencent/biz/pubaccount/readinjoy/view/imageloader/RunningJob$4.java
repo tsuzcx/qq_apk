@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 
 import java.lang.ref.WeakReference;
-import puw;
-import tdu;
-import tdw;
+import pnj;
+import sum;
+import suo;
 
 class RunningJob$4
   implements Runnable
@@ -14,13 +14,13 @@ class RunningJob$4
   {
     if (this.this$0.a.a)
     {
-      puw.a(6, this.this$0.a);
-      puw.a(this.this$0.a, false, "cancelled");
+      pnj.a(6, this.this$0.a);
+      pnj.a(this.this$0.a, false, "cancelled");
     }
     while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
       return;
     }
-    ((tdu)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.this$0.a, this.jdField_a_of_type_JavaLangThrowable);
+    ((sum)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.this$0.a, this.jdField_a_of_type_JavaLangThrowable);
   }
 }
 

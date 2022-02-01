@@ -1,9 +1,24 @@
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class tcb
+  implements tcf
 {
-  public int a;
-  public JSONObject a;
+  public tcb(ViolaAccessHelper.2 param2) {}
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaAccessHelper", 2, "preInit viola sdk error");
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaAccessHelper", 2, "preInit viola sdk succ");
+    }
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.os.Bundle;
-import bgmg;
+import bhmi;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
@@ -103,7 +103,7 @@ public class GroupCheckInUploadPlugin
         break label158;
       }
       str = MiniAppFileManager.getInstance().getAbsolutePath(paramJSONObject.optString("cover"));
-      if ((bgmg.a(paramJSContext)) && (bgmg.a(str))) {
+      if ((bhmi.a(paramJSContext)) && (bhmi.a(str))) {
         break;
       }
       return;
@@ -120,7 +120,7 @@ public class GroupCheckInUploadPlugin
       QIPCClientHelper.getInstance().callServer("Module_CheckInServer", "ACTION_UPLOAD_VIDEO", localBundle, this);
       return;
       label158:
-      if (!bgmg.a(paramJSContext)) {
+      if (!bhmi.a(paramJSContext)) {
         break;
       }
       localBundle.putString("BUNDLE_NAME_FILEPATH", paramJSContext);

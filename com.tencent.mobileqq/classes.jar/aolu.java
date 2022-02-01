@@ -1,38 +1,31 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo;
 
 public class aolu
-  extends aojt
+  extends anyu
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  private aolu(CheckFriendsLastLoginInfo paramCheckFriendsLastLoginInfo) {}
+  
+  protected void onUpdateLastLoginInfo(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramQQAppInterface = new aolt(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "qzone";
-    paramQQAppInterface.c = "open_homepage";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
+    int i = 0;
+    if (!paramBoolean1) {
+      this.a.a(6);
     }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
+    for (;;)
     {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
+      if (i != 0) {
+        this.a.a(7);
+      }
+      return;
+      if (paramBoolean2) {
+        i = 1;
       }
     }
-    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aolu
  * JD-Core Version:    0.7.0.1
  */

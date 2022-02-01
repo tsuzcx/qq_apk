@@ -1,27 +1,31 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bglr
-  implements DialogInterface.OnClickListener
+class bglr
+  implements View.OnClickListener
 {
-  bglr(Activity paramActivity) {}
+  bglr(bglm parambglm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
+    if ((paramView == null) || (bglm.a(this.a) == null) || (bglm.a(this.a).a == null) || (bglm.a(this.a) == null)) {}
+    for (;;)
     {
-      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
-      this.a.startActivity(paramDialogInterface);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((paramView.getTag() instanceof bgkm))
+      {
+        bglm.a(this.a).a(paramView);
+        bglm.a(this.a).b(paramView, 1);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bglr
  * JD-Core Version:    0.7.0.1
  */

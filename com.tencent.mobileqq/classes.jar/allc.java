@@ -1,37 +1,31 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment.4.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class allc
-  implements zgn
+class allc
+  implements View.OnClickListener
 {
-  public allc(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
+  allc(aljw paramaljw) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.d(QzoneSlideShowPreparingFragment.a(), 2, "createSlideShowNew AblumListener - endMerge.");
-    QzoneSlideShowPreparingFragment.a(this.a).removeCallbacks(QzoneSlideShowPreparingFragment.a(this.a));
-    ThreadManager.getUIHandler().post(new QzoneSlideShowPreparingFragment.4.1(this));
-    if (QzoneSlideShowPreparingFragment.a(this.a) == 18) {
-      LpReportInfo_pf00064.allReport(585, 15, 8);
-    }
-    if (QzoneSlideShowPreparingFragment.a(this.a) != null)
+    aljw.a(this.a).app.getPreferences();
+    bhdu.a().a();
+    if (bhdu.a().a() == 4)
     {
-      Object localObject = (BitmapDrawable)QzoneSlideShowPreparingFragment.a(this.a).getDrawable();
-      if (localObject != null)
-      {
-        localObject = ((BitmapDrawable)localObject).getBitmap();
-        if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-          ((Bitmap)localObject).recycle();
-        }
-      }
+      bhdu.a().a(aljw.a(this.a));
+      bdll.b(aljw.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, bhdt.b(), bhdu.b(), bhdu.a(), "1");
+    }
+    for (;;)
+    {
+      this.a.a(-1, null);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      UpgradeDetailActivity.a(aljw.a(this.a), bhdu.a().a(), true, true, true);
+      bdll.b(aljw.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, bhdt.b(), bhdu.b(), bhdu.a(), "1");
     }
   }
 }

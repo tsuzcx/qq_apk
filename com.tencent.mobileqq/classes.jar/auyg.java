@@ -1,80 +1,27 @@
-public class auyg
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class auyg
+  implements DialogInterface.OnClickListener
 {
-  public final auyi a = new auyi();
+  auyg(auxu paramauxu) {}
   
-  public static auyg a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return auyj.a();
-  }
-  
-  public String a()
-  {
-    return this.a.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.a.d.a();
-  }
-  
-  public String b()
-  {
-    return this.a.jdField_b_of_type_JavaLangString;
-  }
-  
-  public boolean b()
-  {
-    return this.a.c.a();
-  }
-  
-  public boolean c()
-  {
-    return this.a.jdField_a_of_type_Auyk.a();
-  }
-  
-  public boolean d()
-  {
-    return this.a.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean e()
-  {
-    return this.a.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean f()
-  {
-    return this.a.e.a();
-  }
-  
-  public boolean g()
-  {
-    return this.a.g.a();
-  }
-  
-  public boolean h()
-  {
-    return this.a.f.a();
-  }
-  
-  public boolean i()
-  {
-    return this.a.h.a();
-  }
-  
-  public boolean j()
-  {
-    return this.a.i.a();
-  }
-  
-  public boolean k()
-  {
-    return this.a.j.a();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case -2: 
+      this.a.o();
+      return;
+    }
+    this.a.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     auyg
  * JD-Core Version:    0.7.0.1
  */

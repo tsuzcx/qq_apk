@@ -1,26 +1,15 @@
-import android.util.Log;
+import android.graphics.Bitmap;
+import android.view.View;
 
-public class bhbs
+public abstract interface bhbs
 {
-  final void a(Exception paramException)
-  {
-    a("e:", paramException);
-  }
+  public abstract View a();
   
-  public void a(String paramString)
-  {
-    Log.i("GLDrawable", paramString);
-  }
+  public abstract void a();
   
-  public void a(String paramString, Exception paramException)
-  {
-    Log.i("GLDrawable", paramString, paramException);
-  }
+  public abstract void b();
   
-  public void a(String paramString1, String paramString2, String paramString3, long paramLong)
-  {
-    Log.i("GLDrawable", "event=" + paramString1 + " statusCode=" + paramString2 + " statusMsg=" + paramString3);
-  }
+  public abstract void setBitmap(Bitmap paramBitmap);
 }
 
 

@@ -1,40 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewImplement;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.search.rich.ArkAppView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bckh
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
   bckh(bckg parambckg) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (paramIntent == null) {}
+    ArkViewModel localArkViewModel = null;
+    if (bckg.a(this.a) != null) {
+      localArkViewModel = bckg.a(this.a).mViewImpl.getViewModel();
+    }
+    if (localArkViewModel == null) {}
     for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      paramContext = paramIntent.getStringExtra("event");
-      if (paramContext != null)
-      {
-        paramIntent = paramIntent.getStringExtra("data");
-        if ((paramIntent != null) && (paramContext.equals("ShortVideoHongbaoInfoUpdate"))) {
-          try
-          {
-            paramContext = new JSONObject(paramIntent);
-            paramIntent = paramContext.optString("shortVideoId");
-            boolean bool = paramContext.optBoolean("isPaid");
-            if ((bckg.a(this.a) != null) && (bckg.a(this.a).h != 1) && (bool) && (bckg.a(this.a).c.equals(paramIntent)))
-            {
-              new bckp(this.a).execute(new String[0]);
-              return;
-            }
-          }
-          catch (JSONException paramContext) {}
-        }
-      }
+      localArkViewModel.reinitArkContainer();
     }
   }
 }

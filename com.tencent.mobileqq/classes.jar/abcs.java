@@ -1,239 +1,356 @@
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.Share.1;
-import com.tencent.biz.webviewplugin.Share.1.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.io.File;
-import java.lang.ref.SoftReference;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.PointF;
+import android.support.v7.widget.LinearSmoothScroller;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.SmoothScroller;
+import android.support.v7.widget.RecyclerView.State;
+import android.util.Log;
+import android.util.SparseArray;
+import android.util.SparseBooleanArray;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class abcs
-  implements bhpk
+  extends RecyclerView.LayoutManager
 {
-  public abcs(Share.1.1 param1) {}
+  private static float jdField_a_of_type_Float = 45.0F;
+  private static int jdField_a_of_type_Int = 1;
+  private static float jdField_b_of_type_Float = 20.0F;
+  private static int jdField_b_of_type_Int = 2;
+  private SparseArray<Float> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray = new SparseBooleanArray();
+  private boolean jdField_a_of_type_Boolean = true;
+  private float jdField_c_of_type_Float = 1.4F;
+  private int jdField_c_of_type_Int;
+  private float jdField_d_of_type_Float = 225.0F;
+  private int jdField_d_of_type_Int;
+  private float jdField_e_of_type_Float;
+  private int jdField_e_of_type_Int;
+  private float jdField_f_of_type_Float;
+  private int jdField_f_of_type_Int;
+  private int g;
+  private int h;
+  private int i;
+  private int j;
   
-  public void a(String paramString)
+  public abcs(Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("shareWebPage", 2, "WebView screenshot CALLBACK. imgUrl=" + paramString);
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_e_of_type_Float = 0.0F;
+    this.jdField_f_of_type_Float = jdField_a_of_type_Float;
+    this.g = 180;
+    this.h = 270;
+    this.jdField_f_of_type_Int = this.g;
+  }
+  
+  private float a(float paramFloat)
+  {
+    if ((Math.abs(paramFloat) < this.g) || (Math.abs(paramFloat) > this.h)) {
+      return 1.0F;
     }
-    if (!TextUtils.isEmpty(paramString)) {}
+    return 1.0F + (1.0F - Math.abs(paramFloat - this.jdField_d_of_type_Float) / 45.0F) * (this.jdField_c_of_type_Float - 1.0F);
+  }
+  
+  private int a(float paramFloat)
+  {
+    return (int)(this.jdField_c_of_type_Int * Math.cos(Math.toRadians(90.0F - paramFloat)));
+  }
+  
+  private void a()
+  {
+    if (this.jdField_e_of_type_Float < 0.0F) {
+      this.jdField_e_of_type_Float = 0.0F;
+    }
+    if (this.jdField_e_of_type_Float > b()) {
+      this.jdField_e_of_type_Float = b();
+    }
+  }
+  
+  private void a(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    a(paramRecycler, paramState, jdField_b_of_type_Int);
+  }
+  
+  private void a(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState, int paramInt)
+  {
+    if (paramState.isPreLayout()) {
+      return;
+    }
+    int k = 0;
+    while (k < getChildCount())
+    {
+      paramState = getChildAt(k);
+      m = getPosition(paramState);
+      if ((((Float)this.jdField_a_of_type_AndroidUtilSparseArray.get(m)).floatValue() - this.jdField_e_of_type_Float > this.h) || (((Float)this.jdField_a_of_type_AndroidUtilSparseArray.get(m)).floatValue() - this.jdField_e_of_type_Float < this.g))
+      {
+        this.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(m, false);
+        removeAndRecycleView(paramState, paramRecycler);
+      }
+      k += 1;
+    }
+    int m = getItemCount();
+    k = 0;
+    label126:
+    View localView;
+    label260:
+    float f1;
+    if (k < m) {
+      if ((this.jdField_a_of_type_AndroidUtilSparseArray.get(k) != null) && (((Float)this.jdField_a_of_type_AndroidUtilSparseArray.get(k)).floatValue() - this.jdField_e_of_type_Float <= this.h + jdField_a_of_type_Float) && (((Float)this.jdField_a_of_type_AndroidUtilSparseArray.get(k)).floatValue() - this.jdField_e_of_type_Float >= this.g - jdField_a_of_type_Float) && (!this.jdField_a_of_type_AndroidUtilSparseBooleanArray.get(k)))
+      {
+        paramState = (ViewGroup)paramRecycler.getViewForPosition(k);
+        localView = paramState.getChildAt(0);
+        measureChildWithMargins(paramState, 0, 0);
+        if (paramInt != jdField_a_of_type_Int) {
+          break label420;
+        }
+        addView(paramState, 0);
+        f1 = ((Float)this.jdField_a_of_type_AndroidUtilSparseArray.get(k)).floatValue();
+        if (m <= 90.0F / jdField_a_of_type_Float + 1.0F) {
+          break label428;
+        }
+        f1 -= this.jdField_e_of_type_Float;
+      }
+    }
+    label420:
+    label428:
+    for (;;)
+    {
+      int n = a(f1);
+      int i1 = b(f1);
+      paramState.setRotation(f1);
+      int i2 = this.jdField_d_of_type_Int;
+      int i3 = this.jdField_e_of_type_Int;
+      int i4 = this.jdField_d_of_type_Int;
+      int i5 = this.i;
+      int i6 = this.jdField_e_of_type_Int;
+      layoutDecorated(paramState, i2 + n, i3 + i1, i5 + (n + i4), this.j + (i6 + i1));
+      localView.setRotation(-f1);
+      this.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(k, true);
+      a(paramState, f1);
+      k += 1;
+      break label126;
+      break;
+      addView(paramState);
+      break label260;
+    }
+  }
+  
+  private void a(ViewGroup paramViewGroup, float paramFloat)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramFloat = a(paramFloat);
+      paramViewGroup.setScaleX(paramFloat);
+      paramViewGroup.setScaleY(paramFloat);
+    }
+  }
+  
+  private float b()
+  {
+    return (getItemCount() - 1) * this.jdField_f_of_type_Float - 90.0F;
+  }
+  
+  private int b()
+  {
+    return getWidth() - getPaddingRight() - getPaddingLeft();
+  }
+  
+  private int b(float paramFloat)
+  {
+    return (int)(this.jdField_c_of_type_Int * Math.sin(Math.toRadians(90.0F - paramFloat)));
+  }
+  
+  private int c()
+  {
+    return getHeight() - getPaddingBottom() - getPaddingTop();
+  }
+  
+  public float a()
+  {
+    return this.jdField_c_of_type_Float;
+  }
+  
+  public int a()
+  {
+    return Math.round(this.jdField_e_of_type_Float / this.jdField_f_of_type_Float);
+  }
+  
+  public int a(int paramInt)
+  {
+    return (int)((paramInt * this.jdField_f_of_type_Float - this.jdField_e_of_type_Float) * jdField_b_of_type_Float);
+  }
+  
+  public PointF a(int paramInt)
+  {
+    if (getChildCount() == 0) {
+      return null;
+    }
+    if (paramInt < getPosition(getChildAt(0))) {}
+    for (paramInt = -1;; paramInt = 1) {
+      return new PointF(paramInt, 0.0F);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean canScrollHorizontally()
+  {
+    return true;
+  }
+  
+  public boolean canScrollVertically()
+  {
+    return true;
+  }
+  
+  public RecyclerView.LayoutParams generateDefaultLayoutParams()
+  {
+    return new RecyclerView.LayoutParams(-2, -2);
+  }
+  
+  public void onAdapterChanged(RecyclerView.Adapter paramAdapter1, RecyclerView.Adapter paramAdapter2)
+  {
+    removeAllViews();
+    this.jdField_e_of_type_Float = 0.0F;
+  }
+  
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    int k = 0;
     try
     {
-      Object localObject1 = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject1).inSampleSize = 1;
-      localObject1 = BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject1);
-      this.a.a.this$0.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(localObject1);
-      localObject3 = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
-      str2 = this.a.a.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
-      str3 = ((TicketManager)localObject3).getSkey(str2);
-      l2 = System.currentTimeMillis();
-      localObject2 = null;
-      localObject1 = new File(paramString);
-      if (((File)localObject1).exists())
+      if ((paramState.getItemCount() <= 0) || (paramState.isPreLayout()))
       {
-        l1 = ((File)localObject1).length();
-        Object localObject4 = bgmg.c(paramString);
-        localObject1 = localObject2;
-        if (l1 > 0L)
+        this.jdField_e_of_type_Float = 0.0F;
+        if (paramState.getItemCount() == 0) {
+          removeAndRecycleAllViews(paramRecycler);
+        }
+      }
+      else
+      {
+        View localView = paramRecycler.getViewForPosition(0);
+        addView(localView);
+        measureChildWithMargins(localView, 0, 0);
+        this.i = getDecoratedMeasuredWidth(localView);
+        this.j = getDecoratedMeasuredHeight(localView);
+        this.jdField_d_of_type_Int = (b() - this.i);
+        this.jdField_e_of_type_Int = (c() - this.j);
+        float f1 = this.jdField_f_of_type_Int;
+        while (k < getItemCount())
         {
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-            localObject1 = nlw.a(nmd.a(String.format(Locale.getDefault(), "https://cgi.connect.qq.com/qqconnectopen/query_share_image?key=%s&size=%d&short_url=0", new Object[] { localObject4, Long.valueOf(l1) }), 1007), str2, str3);
-          }
+          this.jdField_a_of_type_AndroidUtilSparseArray.put(k, Float.valueOf(f1));
+          this.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(k, false);
+          f1 += this.jdField_f_of_type_Float;
+          k += 1;
         }
-        l1 = System.currentTimeMillis() - l2;
-        if (localObject1 != null) {
-          break label1627;
-        }
-        localObject1 = new Pair(Integer.valueOf(-1), "");
-        if (QLog.isColorLevel()) {
-          QLog.d(abcr.jdField_a_of_type_JavaLangString, 2, "queryImage, ret=" + ((Pair)localObject1).first + ",cost=" + l1 + ",url=" + (String)((Pair)localObject1).second);
-        }
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putString("report_type", "102");
-        ((Bundle)localObject2).putString("act_type", "16");
-        ((Bundle)localObject2).putString("intext_1", "" + ((Pair)localObject1).first);
-        localObject4 = new StringBuilder().append("");
-        if (((Integer)((Pair)localObject1).first).intValue() != -1) {
-          break label988;
-        }
-        i = 0;
-        ((Bundle)localObject2).putString("intext_2", i);
-        ((Bundle)localObject2).putString("intext_5", "" + l1);
-        bipi.a().a((Bundle)localObject2, "", str2, false);
-        m = 1;
-        if (TextUtils.isEmpty((CharSequence)((Pair)localObject1).second)) {
-          break label1003;
-        }
-        this.a.a.this$0.i = ((String)((Pair)localObject1).second);
-        this.a.a.this$0.jdField_e_of_type_Boolean = false;
-        this.a.a.this$0.b = 0;
-        if (QLog.isColorLevel()) {
-          QLog.e("shareWebPage", 2, "Share info after WebView screenshot: title=" + this.a.a.this$0.jdField_e_of_type_JavaLangString + ", summary=" + this.a.a.this$0.h + ", thumb=" + this.a.a.this$0.i + ", shareURL=" + this.a.a.jdField_a_of_type_JavaLangString);
-        }
-        paramString = new Bundle();
-        j = 0;
-        if (TextUtils.isEmpty(this.a.a.this$0.i)) {
-          j = 1;
-        }
-        i = j;
-        if (TextUtils.isEmpty(this.a.a.this$0.h)) {
-          i = j | 0x2;
-        }
-        j = i;
-        if (TextUtils.isEmpty(this.a.a.this$0.jdField_e_of_type_JavaLangString)) {
-          j = i | 0x4;
-        }
-        paramString.putString("report_type", "102");
-        paramString.putString("act_type", "93");
-        localObject1 = new StringBuilder().append("");
-        if (j != 0) {
-          break label1604;
-        }
-        i = 0;
-        label753:
-        paramString.putString("intext_1", i);
-        paramString.putString("intext_3", "" + bipo.b(this.a.a.jdField_a_of_type_Int));
-        paramString.putString("intext_2", "" + j);
-        paramString.putString("stringext_1", this.a.a.jdField_a_of_type_JavaLangString);
-        bipi.a().a(paramString, "", this.a.a.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), false);
-        if (QLog.isColorLevel()) {
-          QLog.e("shareWebPage", 2, "WebView screenshot END. thumb=" + this.a.a.this$0.i);
-        }
-        abcr.a(this.a.a.this$0, this.a.a.jdField_a_of_type_JavaLangString, this.a.a.jdField_a_of_type_Int, this.a.a.jdField_a_of_type_Boolean);
+        detachAndScrapAttachedViews(paramRecycler);
+        a();
+        a(paramRecycler, paramState);
+        return;
       }
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    catch (IndexOutOfBoundsException paramRecycler)
     {
-      label1572:
-      label1604:
-      label1613:
-      label1627:
+      paramRecycler.printStackTrace();
+    }
+  }
+  
+  public int scrollHorizontallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    if (90.0F / jdField_a_of_type_Float + 1.0F >= getItemCount()) {
+      return 0;
+    }
+    int k = -paramInt;
+    float f1 = -paramInt / jdField_b_of_type_Float + this.jdField_e_of_type_Float;
+    if (f1 < 0.0F) {
+      k = (int)(-this.jdField_e_of_type_Float * jdField_b_of_type_Float);
+    }
+    label286:
+    for (;;)
+    {
+      f1 = k / jdField_b_of_type_Float;
+      this.jdField_e_of_type_Float += f1;
+      int m = 0;
       for (;;)
       {
-        Object localObject3;
-        String str2;
-        String str3;
-        long l2;
-        Object localObject2;
-        long l1;
-        int i;
-        int m;
-        int j;
-        if (QLog.isColorLevel())
+        if (m < getChildCount())
         {
-          QLog.e("shareWebPage", 2, "WebView screenshot OutOfMemoryError.");
+          ViewGroup localViewGroup = (ViewGroup)getChildAt(m);
+          View localView = localViewGroup.getChildAt(0);
+          float f2 = localViewGroup.getRotation() - f1;
+          int n = a(f2);
+          int i1 = b(f2);
+          localViewGroup.setRotation(f2);
+          int i2 = this.jdField_d_of_type_Int;
+          int i3 = this.jdField_e_of_type_Int;
+          int i4 = this.jdField_d_of_type_Int;
+          int i5 = this.i;
+          int i6 = this.jdField_e_of_type_Int;
+          layoutDecorated(localViewGroup, i2 + n, i3 + i1, i5 + (n + i4), this.j + (i6 + i1));
+          localView.setRotation(-f2);
+          a(localViewGroup, f2);
+          m += 1;
           continue;
-          l1 = 0L;
-          continue;
-          label988:
-          i = ((Integer)localOutOfMemoryError.first).intValue();
-          continue;
-          label1003:
-          if (QLog.isColorLevel()) {
-            QLog.e("shareWebPage", 2, "WebView screenshot UPLOAD. length=" + new File(paramString).length());
+          if (f1 <= b()) {
+            break label286;
           }
-          localObject2 = new HashMap();
-          ((Map)localObject2).put("Connection", "keep-alive");
-          ((Map)localObject2).put("Referer", "https://www.qq.com");
-          ((Map)localObject2).put("Host", "cgi.connect.qq.com");
-          String str1 = ((TicketManager)localObject3).getPskey(str2, "cgi.connect.qq.com");
-          if (!TextUtils.isEmpty(str1)) {
-            ((Map)localObject2).put("Cookie", "p_uin=" + str2 + ";p_skey=" + str1);
-          }
-          localObject3 = new HashMap();
-          ((Map)localObject3).put("share_image", paramString);
-          paramString = new Bundle();
-          paramString.putString("report_type", "102");
-          paramString.putString("act_type", "51");
-          paramString.putString("intext_3", "1");
-          paramString.putString("stringext_1", this.a.a.jdField_a_of_type_JavaLangString);
-          bipi.a().a(paramString, "", str2, false);
-          l1 = System.currentTimeMillis();
-          str1 = nlw.a(nmd.a("https://cgi.connect.qq.com/qqconnectopen/upload_share_image", 1007), "cgi.connect.qq.com", str2, str3, null, (Map)localObject3, (Map)localObject2, false);
-          paramString = str1;
-          if (str1 == null) {
-            paramString = nlw.a("https://cgi.connect.qq.com/qqconnectopen/upload_share_image", "cgi.connect.qq.com", str2, str3, null, (Map)localObject3, (Map)localObject2, true);
-          }
-          if (paramString != null) {}
-          for (;;)
-          {
-            try
-            {
-              paramString = new JSONObject(paramString);
-              j = paramString.getInt("retcode");
-              if (j != 0) {
-                break label1613;
-              }
-            }
-            catch (JSONException paramString)
-            {
-              try
-              {
-                if (!paramString.has("result")) {
-                  break label1613;
-                }
-                paramString = paramString.getJSONObject("result").getString("url");
-                if (TextUtils.isEmpty(paramString)) {
-                  break label1613;
-                }
-                this.a.a.this$0.i = paramString;
-                this.a.a.this$0.jdField_e_of_type_Boolean = false;
-                this.a.a.this$0.b = 0;
-                i = 0;
-                k = i;
-                i = j;
-                l2 = System.currentTimeMillis();
-                paramString = new Bundle();
-                paramString.putString("report_type", "102");
-                paramString.putString("act_type", "11");
-                paramString.putString("intext_1", "" + k);
-                paramString.putString("intext_2", "" + i);
-                paramString.putString("intext_3", "1");
-                paramString.putString("intext_5", "" + (l2 - l1));
-                if (k == 1) {
-                  paramString.putString("stringext_1", this.a.a.jdField_a_of_type_JavaLangString);
-                }
-                bipi.a().a(paramString, "", str2, false);
-              }
-              catch (JSONException paramString)
-              {
-                break label1572;
-              }
-              paramString = paramString;
-              j = 0;
-            }
-            i = j;
-            int k = m;
-            if (QLog.isColorLevel())
-            {
-              QLog.d(abcr.jdField_a_of_type_JavaLangString, 2, paramString.getMessage());
-              i = j;
-              k = m;
-              continue;
-              i = 1;
-              break label753;
-              i = 1;
-              continue;
-              i = 0;
-              k = m;
-            }
-          }
+          k = (int)((b() - this.jdField_e_of_type_Float) * jdField_b_of_type_Float);
+          break;
         }
       }
+      if (paramInt > 0) {
+        a(paramRecycler, paramState, jdField_a_of_type_Int);
+      }
+      for (;;)
+      {
+        return k;
+        a(paramRecycler, paramState, jdField_b_of_type_Int);
+      }
     }
+  }
+  
+  public void scrollToPosition(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt > getItemCount() - 1)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerViewScrollToPosition(this);
+      return;
+      float f1 = paramInt * this.jdField_f_of_type_Float;
+      if (f1 != this.jdField_e_of_type_Float)
+      {
+        this.jdField_e_of_type_Float = f1;
+        a();
+        requestLayout();
+        Log.i("EditVideoSmartMusicPart", "scrollToPosition pos:" + paramInt);
+      }
+    }
+  }
+  
+  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    return scrollHorizontallyBy(-paramInt, paramRecycler, paramState);
+  }
+  
+  public void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.State paramState, int paramInt)
+  {
+    paramRecyclerView = new abct(this, paramRecyclerView.getContext());
+    paramRecyclerView.setTargetPosition(paramInt);
+    Log.i("EditVideoSmartMusicPart", "smoothScrollToPosition pos:" + paramInt);
+    startSmoothScroll(paramRecyclerView);
+  }
+  
+  public void startSmoothScroll(RecyclerView.SmoothScroller paramSmoothScroller)
+  {
+    super.startSmoothScroll(paramSmoothScroller);
   }
 }
 

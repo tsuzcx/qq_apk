@@ -1,45 +1,89 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.util.Comparator;
 
 public class afwh
-  implements aruz
+  implements Comparator<afwe>
 {
-  public afwh(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  int jdField_a_of_type_Int = -1;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void a(View paramView)
+  public afwh(int paramInt, boolean paramBoolean)
   {
-    String str = bgyg.a("aioEmojiStickerDetail");
-    ViewParent localViewParent = paramView.getParent();
-    if ((localViewParent instanceof ChatXListView)) {
-      EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int a(afwe paramafwe1, afwe paramafwe2)
+  {
+    int i = -1;
+    int k = 1;
+    int j = 1;
+    if (this.jdField_a_of_type_Int == 0) {
+      i = paramafwe1.c.compareToIgnoreCase(paramafwe2.c);
     }
-    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
-    paramView.setFlags(268435456);
-    paramView.putExtra("vasUsePreWebview", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
-    int i;
-    if (EmojiStickerManager.a().a == 0) {
-      i = 1;
-    }
-    for (;;)
+    label89:
+    do
     {
-      VasWebviewUtil.reportCommercialDrainage(this.a.a.c(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-      return;
-      if (EmojiStickerManager.a().a == 1) {
-        i = 2;
-      } else if (EmojiStickerManager.a().a == 3000) {
-        i = 3;
-      } else {
-        i = -1;
+      do
+      {
+        do
+        {
+          do
+          {
+            return i;
+            if (this.jdField_a_of_type_Int != 2) {
+              break label89;
+            }
+            if (paramafwe1.jdField_b_of_type_Long == paramafwe2.jdField_b_of_type_Long) {
+              return 0;
+            }
+            if (paramafwe1.jdField_b_of_type_Long <= paramafwe2.jdField_b_of_type_Long) {
+              break;
+            }
+          } while (this.jdField_a_of_type_Boolean);
+          return 1;
+          if (this.jdField_a_of_type_Boolean) {}
+          for (i = j;; i = -1) {
+            return i;
+          }
+          if (this.jdField_a_of_type_Int != 3) {
+            break label149;
+          }
+          if (paramafwe1.a == paramafwe2.a) {
+            return 0;
+          }
+          if (paramafwe1.a <= paramafwe2.a) {
+            break;
+          }
+        } while (this.jdField_a_of_type_Boolean);
+        return 1;
+        if (this.jdField_a_of_type_Boolean) {}
+        for (i = k;; i = -1) {
+          return i;
+        }
+        if (this.jdField_a_of_type_Int != 1) {
+          break label208;
+        }
+        if (paramafwe1.e != paramafwe2.e) {
+          break;
+        }
+        j = paramafwe1.jdField_b_of_type_JavaLangString.compareToIgnoreCase(paramafwe2.jdField_b_of_type_JavaLangString);
+        if (j == 0) {
+          return 0;
+        }
+      } while (j <= 0);
+      return 1;
+    } while (paramafwe1.e >= paramafwe2.e);
+    label149:
+    return 1;
+    label208:
+    if (this.jdField_a_of_type_Int == 8)
+    {
+      if (paramafwe1.m == paramafwe2.m) {
+        return paramafwe1.c.compareToIgnoreCase(paramafwe2.c);
       }
+      return paramafwe2.m - paramafwe1.m;
     }
+    return 0;
   }
 }
 

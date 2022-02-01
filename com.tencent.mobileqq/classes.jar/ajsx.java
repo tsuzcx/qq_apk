@@ -1,31 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
+import com.tencent.qphone.base.util.QLog;
 
 class ajsx
-  implements View.OnClickListener
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  ajsx(ajsw paramajsw) {}
+  ajsx(ajst paramajst) {}
   
-  public void onClick(View paramView)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.a.a.g = false;
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.a.a.jdField_d_of_type_Int != 22) {
-      this.a.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (paramInt == 1) {
+      ajst.a(this.a, ajst.a(this.a).getCurrentItem());
     }
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131368947));
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_b_of_type_AndroidViewView$OnClickListener);
-    if (this.a.a.jdField_a_of_type_Ajtv != null) {
-      this.a.a.jdField_a_of_type_Ajtv.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("ContactsViewController", 2, "mViewPager onPageScrollStateChanged mOccurSwitchAccountChangeTab:" + ajst.b(this.a) + "  mPageChangedByIndicator:" + ajst.a(this.a));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (ajst.a(this.a)) {
+      ajst.b(this.a, false);
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    ajst.a(this.a, paramInt);
+    if (!ajst.a(this.a)) {
+      bdll.b(this.a.a, "dc00898", "", "", "0X8008059", "0X8008059", 0, 0, "", "", "", "");
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ContactsViewController", 2, "mViewPager onPageSelected mOccurSwitchAccountChangeTab:" + ajst.b(this.a) + " mPageChangedByIndicator:" + ajst.a(this.a));
+    }
+    ajst.a(this.a, false);
   }
 }
 

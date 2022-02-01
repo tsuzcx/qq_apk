@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import ogh;
-import ogj;
+import ohp;
+import ohr;
 
 public class ReadInJoyChannelViewPagerController$10$1$1
   implements Runnable
 {
-  public ReadInJoyChannelViewPagerController$10$1$1(ogj paramogj) {}
+  public ReadInJoyChannelViewPagerController$10$1$1(ohr paramohr) {}
   
   public void run()
   {
-    ogh.b(this.a.a.this$0);
+    ohp.b(this.a.a.this$0);
   }
 }
 

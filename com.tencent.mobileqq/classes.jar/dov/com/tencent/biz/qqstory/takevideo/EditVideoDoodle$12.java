@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import anni;
-import bpcv;
+import anzj;
+import bqeq;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class EditVideoDoodle$12
   implements Runnable
 {
-  public EditVideoDoodle$12(bpcv parambpcv) {}
+  public EditVideoDoodle$12(bqeq parambqeq) {}
   
   public void run()
   {
-    QQToast.a(this.this$0.a(), anni.a(2131702689), 0).a();
+    QQToast.a(this.this$0.a(), anzj.a(2131702796), 0).a();
   }
 }
 

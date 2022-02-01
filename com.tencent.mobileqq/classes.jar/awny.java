@@ -1,18 +1,12 @@
-public class awny
+class awny
+  implements bljb
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  awny(awnq paramawnq) {}
+  
+  public void onDismiss()
+  {
+    this.a.b(false);
+  }
 }
 
 

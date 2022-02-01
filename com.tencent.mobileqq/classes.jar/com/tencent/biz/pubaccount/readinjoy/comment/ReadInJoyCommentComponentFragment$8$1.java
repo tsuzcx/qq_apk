@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import ains;
+import aiyz;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import oyz;
+import orn;
 
 public class ReadInJoyCommentComponentFragment$8$1
   implements Runnable
 {
-  public ReadInJoyCommentComponentFragment$8$1(oyz paramoyz) {}
+  public ReadInJoyCommentComponentFragment$8$1(orn paramorn) {}
   
   public void run()
   {
-    ains localains = ReadInJoyCommentComponentFragment.a(this.a.a);
-    if ((localains != null) && (ReadInJoyCommentComponentFragment.a(this.a.a)))
+    aiyz localaiyz = ReadInJoyCommentComponentFragment.a(this.a.a);
+    if ((localaiyz != null) && (ReadInJoyCommentComponentFragment.a(this.a.a)))
     {
-      localains.c();
+      localaiyz.c();
       ReadInJoyCommentComponentFragment.a(this.a.a, false);
       this.a.a.f.setSelected(false);
     }
@@ -25,7 +25,7 @@ public class ReadInJoyCommentComponentFragment$8$1
     ReadInJoyCommentComponentFragment.a(this.a.a);
     if (this.a.a.jdField_a_of_type_Boolean)
     {
-      this.a.a.g.setImageResource(2130842787);
+      this.a.a.g.setImageResource(2130842801);
       ReadInJoyCommentComponentFragment.b(this.a.a, true);
     }
   }

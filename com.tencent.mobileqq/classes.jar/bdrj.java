@@ -1,87 +1,87 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bdrj
+  extends bdom
 {
-  static int jdField_a_of_type_Int = 2131698383;
-  static int[] jdField_a_of_type_ArrayOfInt = { 1001, 1002, 1003, 1004 };
-  static int[] b;
-  static int[] c;
-  static int[] d;
-  static int[] e;
-  public String a;
-  public ArrayList<String> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public int e;
-  public int f;
-  
-  static
+  private LinearLayout a(Context paramContext)
   {
-    jdField_b_of_type_ArrayOfInt = new int[] { -8293377, -42646, -35897, -16725252 };
-    jdField_c_of_type_ArrayOfInt = new int[] { 2131693250, 2131719116, 2131718146, 2131698380 };
-    jdField_d_of_type_ArrayOfInt = new int[] { 2130846164, 2130846167, 2130846166, 2130846165 };
-    jdField_e_of_type_ArrayOfInt = new int[] { 2131698379, 2131698388, 2131698382, 2131698381 };
+    LinearLayout localLinearLayout = new LinearLayout(paramContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    int i = agej.a(12.0F, paramContext.getResources());
+    localLinearLayout.setPadding(i, i, i, i);
+    localLinearLayout.setLayoutParams(localLayoutParams);
+    return localLinearLayout;
   }
   
-  public static Drawable a(Context paramContext, bdrj parambdrj)
+  protected int b()
   {
-    switch (parambdrj.jdField_b_of_type_Int)
+    return 22;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    Iterator localIterator;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
-    default: 
-      return null;
-    case 1001: 
-      return paramContext.getResources().getDrawable(2130846164);
-    case 1004: 
-      return paramContext.getResources().getDrawable(2130846165);
-    case 1003: 
-      return paramContext.getResources().getDrawable(2130846166);
+      paramView = (LinearLayout)paramView;
+      paramView.removeAllViews();
+      localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     }
-    return paramContext.getResources().getDrawable(2130846167);
-  }
-  
-  public static ArrayList<bdrj> a()
-  {
-    ArrayList localArrayList = new ArrayList(4);
-    int i = 0;
-    while (i < 4)
+    for (;;)
     {
-      bdrj localbdrj = new bdrj();
-      localbdrj.jdField_b_of_type_Int = jdField_a_of_type_ArrayOfInt[i];
-      localbdrj.jdField_c_of_type_Int = i;
-      localbdrj.jdField_d_of_type_Int = jdField_b_of_type_ArrayOfInt[i];
-      localbdrj.jdField_a_of_type_JavaLangString = anni.a(jdField_c_of_type_ArrayOfInt[i]);
-      localbdrj.jdField_e_of_type_Int = jdField_d_of_type_ArrayOfInt[i];
-      localbdrj.jdField_b_of_type_JavaLangString = anni.a(jdField_e_of_type_ArrayOfInt[i]);
-      localArrayList.add(localbdrj);
-      i += 1;
+      if (!localIterator.hasNext()) {
+        return paramView;
+      }
+      Object localObject1 = (bdol)localIterator.next();
+      Object localObject2 = ((bdol)localObject1).jdField_a_of_type_JavaLangString;
+      ((bdol)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if ("title".equals(localObject2))
+      {
+        localObject2 = (StructMsgItemTitle)localObject1;
+        ((StructMsgItemTitle)localObject2).a(a(), this.p);
+        localObject1 = (TextView)((bdol)localObject1).a(paramContext, null, paramBundle);
+        ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
+        ((TextView)localObject1).setMaxLines(2);
+        if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).c())) {
+          ((TextView)localObject1).setTextSize(18.0F);
+        }
+        if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).d())) {
+          ((TextView)localObject1).setTextColor(Color.parseColor("#000000"));
+        }
+        localObject2 = new LinearLayout.LayoutParams(-1, -2);
+        ((LinearLayout.LayoutParams)localObject2).gravity = 16;
+        ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
+        ((LinearLayout.LayoutParams)localObject2).rightMargin = agej.a(12.0F, paramContext.getResources());
+        paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        continue;
+        paramView = a(paramContext);
+        break;
+      }
+      if ("picture".equals(localObject2))
+      {
+        localObject1 = ((bdol)localObject1).a(paramContext, null, paramBundle);
+        int i = agej.a(50.0F, paramContext.getResources());
+        paramView.addView((View)localObject1, new LinearLayout.LayoutParams(i, i));
+      }
     }
-    return localArrayList;
+    return paramView;
   }
   
-  public String a()
+  public String b()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return this.f + anni.a(jdField_a_of_type_Int) + this.jdField_a_of_type_JavaLangString;
-    }
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a(@Nullable bdrj parambdrj)
-  {
-    if (parambdrj == null) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = parambdrj.jdField_a_of_type_Boolean;
-    this.f = parambdrj.f;
-    this.jdField_a_of_type_JavaUtilArrayList = parambdrj.jdField_a_of_type_JavaUtilArrayList;
+    return "layout22";
   }
 }
 

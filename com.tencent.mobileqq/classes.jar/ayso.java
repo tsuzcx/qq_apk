@@ -1,9 +1,6 @@
-public abstract interface ayso
-{
-  public abstract void a(int paramInt);
-  
-  public abstract void a(aysk paramaysk, Double paramDouble, boolean paramBoolean);
-}
+public class ayso
+  extends aysk
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

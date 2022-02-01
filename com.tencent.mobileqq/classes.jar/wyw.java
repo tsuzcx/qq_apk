@@ -1,49 +1,23 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.msgTabNode.view.viewholder.MsgNodeViewHolder.1.1;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class wyw
-  extends wlf<wyy>
+  implements URLDrawable.URLDrawableListener
 {
-  public List<String> a = new ArrayList();
+  wyw(wyv paramwyv) {}
   
-  public String a()
-  {
-    return "StorySvc.homepage_batch_feeds_label";
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public wla a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspStoryFeedTagInfo localRspStoryFeedTagInfo = new qqstory_service.RspStoryFeedTagInfo();
-    try
-    {
-      localRspStoryFeedTagInfo.mergeFrom(paramArrayOfByte);
-      return new wyy(localRspStoryFeedTagInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  protected byte[] a()
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    qqstory_service.ReqStoryFeedTagInfo localReqStoryFeedTagInfo = new qqstory_service.ReqStoryFeedTagInfo();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqStoryFeedTagInfo.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
-    }
-    return localReqStoryFeedTagInfo.toByteArray();
+    ThreadManager.getUIHandler().postDelayed(new MsgNodeViewHolder.1.1(this), 1000L);
   }
 }
 

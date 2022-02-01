@@ -1,16 +1,6 @@
-class aifd
-  implements bkqc
+public abstract interface aifd
 {
-  aifd(aidp paramaidp) {}
-  
-  public void a()
-  {
-    if ((!this.a.ak) && (this.a.al))
-    {
-      this.a.ak = true;
-      uac.a("SUBSCRIPT_AIO_COST", null);
-    }
-  }
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.utils;
 
-import aoqc;
+import apds;
 
 public class PokeBigResHandler$NetEngine$1
   implements Runnable
 {
-  public PokeBigResHandler$NetEngine$1(aoqc paramaoqc, String paramString) {}
+  public PokeBigResHandler$NetEngine$1(apds paramapds, String paramString) {}
   
   public void run()
   {

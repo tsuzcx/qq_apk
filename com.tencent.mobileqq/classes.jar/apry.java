@@ -1,8 +1,19 @@
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
-public abstract interface apry
+public final class apry
+  implements Parcelable.Creator<ArVideoResourceInfo>
 {
-  public abstract void a(boolean paramBoolean, JSONObject paramJSONObject, Object paramObject);
+  public ArVideoResourceInfo a(Parcel paramParcel)
+  {
+    return new ArVideoResourceInfo(paramParcel);
+  }
+  
+  public ArVideoResourceInfo[] a(int paramInt)
+  {
+    return new ArVideoResourceInfo[paramInt];
+  }
 }
 
 

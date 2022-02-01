@@ -1,46 +1,18 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class uqk
-  extends ueh<Object>
+final class uqk
+  implements bjig
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  
-  public uqk(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    super(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
-  }
-  
-  protected void a()
-  {
-    if ((a() != null) && ((a() instanceof stSimpleMetaFeed))) {
-      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)a());
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      bjuh.a().a(2131718139);
     }
-  }
-  
-  protected int b()
-  {
-    return 2131559994;
-  }
-  
-  protected void b() {}
-  
-  protected void c() {}
-  
-  protected void e()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment == null) {
-      return;
-    }
-    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131380514);
-    urc.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity(), localRelativeLayout);
-    a(2131380515).setOnClickListener(new uql(this));
-    a(2131380516).setOnClickListener(new uqm(this));
+    WXShareHelper.a().b(this);
   }
 }
 

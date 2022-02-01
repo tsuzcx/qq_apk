@@ -1,35 +1,64 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.profile.view.ShimmerLinearLayout;
-import java.lang.ref.WeakReference;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import androidx.annotation.RequiresApi;
+import com.tencent.qphone.base.util.QLog;
 
 public class azka
-  implements ValueAnimator.AnimatorUpdateListener
+  extends azjx
 {
-  final int jdField_a_of_type_Int;
-  private WeakReference<ShimmerLinearLayout> jdField_a_of_type_JavaLangRefWeakReference;
-  final int b;
-  final int c;
-  final int d;
+  private boolean a;
+  private long c;
+  private int d;
+  private int e;
+  private int f;
   
-  private azka(ShimmerLinearLayout paramShimmerLinearLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  @RequiresApi(api=19)
+  azka()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramShimmerLinearLayout);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    super(19);
+    this.jdField_a_of_type_JavaLangString = "StepSensorCounter";
   }
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    float f1 = Math.max(0.0F, Math.min(1.0F, ((Float)paramValueAnimator.getAnimatedValue()).floatValue()));
-    paramValueAnimator = (ShimmerLinearLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramValueAnimator != null)
+    int i = (int)paramSensorEvent.values[0];
+    if (!this.jdField_a_of_type_Boolean)
     {
-      int i = (int)(this.jdField_a_of_type_Int * (1.0F - f1) + this.c * f1);
-      float f2 = this.b;
-      paramValueAnimator.a(i, (int)(f1 * this.d + f2 * (1.0F - f1)));
+      this.jdField_a_of_type_Boolean = true;
+      this.d = i;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] initRecord hasStepCount:", Integer.valueOf(this.d) });
+      }
+      return;
+    }
+    i -= this.d;
+    int j = i - this.e;
+    if (this.f == 0) {
+      this.c = System.currentTimeMillis();
+    }
+    for (this.f = 1;; this.f += j)
+    {
+      a(j);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] thisStepCount:", Integer.valueOf(i), " thisStep:", Integer.valueOf(j), " sampleStepCount:", Integer.valueOf(this.f) });
+      }
+      this.e = i;
+      if (this.f >= azjb.B)
+      {
+        long l = System.currentTimeMillis() - this.c;
+        if ((l > 0L) && (this.f > 0)) {
+          a(l / this.f);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] duration:", Long.valueOf(l), " sampleStepStartTime:", Long.valueOf(this.c) });
+        }
+        this.f = 0;
+        this.c = 0L;
+      }
+      this.jdField_a_of_type_Double = System.currentTimeMillis();
+      return;
     }
   }
 }

@@ -1,55 +1,19 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface atmn
+public class atmn
+  extends ayxl
 {
-  public abstract int a();
+  public atmn(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public abstract long a();
-  
-  public abstract FileManagerEntity a();
-  
-  public abstract WeiYunFileInfo a();
-  
-  public abstract String a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  public abstract String b();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract int c();
-  
-  public abstract long c();
-  
-  public abstract String c();
-  
-  public abstract int d();
-  
-  public abstract String d();
-  
-  public abstract int e();
-  
-  public abstract String e();
-  
-  public abstract String f();
-  
-  public abstract String g();
-  
-  public abstract String h();
-  
-  public abstract String i();
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    QLog.i("FileAssistantActivity", 1, " fileRedTouch get push GameCenterObserver ");
+    paramBundle = this.a.a.obtainMessage(1);
+    this.a.a.sendMessage(paramBundle);
+  }
 }
 
 

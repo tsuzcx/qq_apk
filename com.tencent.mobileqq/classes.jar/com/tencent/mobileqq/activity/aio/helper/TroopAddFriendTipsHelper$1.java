@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import anwd;
-import bfup;
+import aoip;
+import bguq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
@@ -14,14 +14,14 @@ class TroopAddFriendTipsHelper$1
   
   public void run()
   {
-    anwd localanwd = (anwd)TroopAddFriendTipsHelper.a(this.this$0).a(20);
-    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = localanwd.a();
+    aoip localaoip = (aoip)TroopAddFriendTipsHelper.a(this.this$0).a(20);
+    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = localaoip.a();
     localTroopBatchAddFriendMgr.a(this.a, 0);
     localTroopBatchAddFriendMgr.a(this.a, null, 1);
     localTroopBatchAddFriendMgr.e(this.a);
-    long l1 = bfup.a(TroopAddFriendTipsHelper.a(this.this$0), this.a);
+    long l1 = bguq.a(TroopAddFriendTipsHelper.a(this.this$0), this.a);
     if (l1 <= 0L) {
-      bfup.a(TroopAddFriendTipsHelper.a(this.this$0), this.a, 5L);
+      bguq.a(TroopAddFriendTipsHelper.a(this.this$0), this.a, 5L);
     }
     long l2;
     do
@@ -29,7 +29,7 @@ class TroopAddFriendTipsHelper$1
       return;
       l2 = NetConnInfoCenter.getServerTime() - l1;
       if (l2 > 0L) {
-        localanwd.c(this.a, 1, 0);
+        localaoip.c(this.a, 1, 0);
       }
     } while (!QLog.isColorLevel());
     QLog.i("TroopAddFriendTipsHelper", 2, "check recommend gray time " + l2 + " " + l1);

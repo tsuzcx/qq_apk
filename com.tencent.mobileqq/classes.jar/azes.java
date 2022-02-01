@@ -1,6 +1,8 @@
+import android.net.Uri;
+
 public abstract interface azes
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(Uri paramUri);
 }
 
 

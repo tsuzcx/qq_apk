@@ -1,34 +1,43 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspAddGroupVideo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class xah
-  extends wla
+  extends wzl
+  implements woy<xaj, xak>
 {
-  private final qqstory_group.RspAddGroupVideo a;
+  public List<String> a = new ArrayList();
   
-  public xah(qqstory_group.RspAddGroupVideo paramRspAddGroupVideo)
+  public xah(String paramString)
   {
-    super(paramRspAddGroupVideo.result);
-    this.a = paramRspAddGroupVideo;
+    this.a.add(paramString);
   }
   
-  public List<xai> a()
+  public void a()
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.a.group_feed_list.get().iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(new xai((qqstory_group.GroupFeed)localIterator.next()));
+    xaj localxaj = new xaj();
+    localxaj.c = 1;
+    localxaj.a = this.a;
+    wow.a().a(localxaj, this);
+  }
+  
+  public void a(@NonNull xaj paramxaj, @Nullable xak paramxak, @NonNull ErrorMessage paramErrorMessage)
+  {
+    paramxaj = new xai(paramErrorMessage);
+    if ((paramErrorMessage.isSuccess()) && (paramxak != null) && (paramxak.a != null))
+    {
+      paramxaj.a = paramxak.a;
+      b();
     }
-    return localArrayList;
-  }
-  
-  public String toString()
-  {
-    return "AddGroupVideoResponse{mRspAddGroupVideo=" + a() + '}';
+    for (;;)
+    {
+      wjj.a().dispatch(paramxaj);
+      return;
+      c();
+    }
   }
 }
 

@@ -1,17 +1,23 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
 public class aomc
-  extends aolv
+  implements Comparator<File>
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  public aomc(CleanCache paramCleanCache) {}
+  
+  public int a(File paramFile1, File paramFile2)
   {
-    return super.a(paramQQAppInterface, paramContext, paramString, paramaojw);
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,89 +1,44 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Point;
+import android.os.Bundle;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class aqrh
-  extends aqkz<aqrg>
 {
-  @NonNull
-  public aqrg a(int paramInt)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "[migrateOldOrDefaultContent]");
-    }
-    return new aqrg();
-  }
-  
-  @Nullable
-  public aqrg a(aqlg[] paramArrayOfaqlg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "[onParsed]");
-    }
-    aqrg localaqrg = new aqrg();
-    localaqrg.a = paramArrayOfaqlg;
-    return localaqrg;
-  }
-  
-  public void a(aqrg paramaqrg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "[onUpdate]");
-    }
-    PreloadManager localPreloadManager = (PreloadManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(151);
-    localPreloadManager.a(paramaqrg);
-    localPreloadManager.b();
-    localPreloadManager.b(true);
-  }
-  
-  public Class<aqrg> clazz()
-  {
-    return aqrg.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "[get migrateOldVersion]");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "[onReqNoReceive] failCode=" + paramInt);
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("param_service_type");
+      String str = paramBundle.getString("param_sub_type");
+      if (paramBundle.getInt("param_extra", 1) != 2) {
+        aqsf.a().a(i, str, paramBoolean);
+      }
+      aqsf.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
     }
   }
   
-  public void onReqNoReceive()
+  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "onReqNoReceive: type=" + type());
-    }
+    aqsf.a().a(paramInt, paramString, paramBoolean);
   }
   
-  public int type()
+  public void onUpdateColorNote(ColorNote paramColorNote, boolean paramBoolean) {}
+  
+  public void onUpdateColorNoteState(int paramInt, String paramString, Bundle paramBundle)
   {
-    return 68;
+    if (paramBundle != null)
+    {
+      aqsf.a().a(paramInt, paramString, paramBundle.getBoolean("extra_is_colornote_exists"));
+      aqsf.a().c(paramBundle.getBoolean("extra_can_add_colornote"));
+      aqsf.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
+      boolean bool = paramBundle.getBoolean("extra_after_sync_msg");
+      aqsf.a().b(bool);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqrh
  * JD-Core Version:    0.7.0.1
  */

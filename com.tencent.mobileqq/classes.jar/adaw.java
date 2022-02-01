@@ -1,26 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.intervideo.nowproxy.proxyinner.channel.ToService;
+import com.tencent.imcore.message.BaseMessageManager;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public final class adaw
-  implements Parcelable.Creator<ToService>
+public class adaw
+  implements atyv
 {
-  public ToService a(Parcel paramParcel)
+  public adaw(QQMessageFacade paramQQMessageFacade, MessageForFile paramMessageForFile, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void a()
   {
-    ToService localToService = new ToService();
-    localToService.jdField_a_of_type_Int = paramParcel.readInt();
-    localToService.b = paramParcel.readInt();
-    localToService.c = paramParcel.readInt();
-    localToService.d = paramParcel.readInt();
-    localToService.jdField_a_of_type_Long = paramParcel.readLong();
-    localToService.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localToService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
-    return localToService;
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop).c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
   }
   
-  public ToService[] a(int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    return new ToService[paramInt];
+    if ((paramInt == -6101) || (paramInt == -7003))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
+      QQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    }
+    QQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade).a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop, aotu.e, 0);
   }
 }
 

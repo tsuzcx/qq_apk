@@ -1,12 +1,21 @@
-public class anbp
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import org.json.JSONObject;
+
+class anbp
+  implements MediaPlayer.OnPreparedListener
 {
-  public int a;
-  public int b;
+  anbp(anbl paramanbl, JSONObject paramJSONObject, ancl paramancl) {}
   
-  public anbp(int paramInt1, int paramInt2)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.jdField_a_of_type_Anbl.a(3);
+    if (anbl.a(this.jdField_a_of_type_Anbl)) {
+      this.jdField_a_of_type_Anbl.b(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Ancl);
+    }
+    if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
+      anbl.a(this.jdField_a_of_type_Anbl, this.jdField_a_of_type_Ancl, this.jdField_a_of_type_OrgJsonJSONObject);
+    }
   }
 }
 

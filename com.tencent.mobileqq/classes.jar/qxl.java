@@ -1,17 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderSubscribe;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.im.oidb.articlesummary.feeds_info.LocationInfo;
 
-public class qxl
-  implements View.OnClickListener
+public final class qxl
+  implements pno<feeds_info.LocationInfo, qxy>
 {
-  public qxl(ComponentHeaderSubscribe paramComponentHeaderSubscribe) {}
-  
-  public void onClick(View paramView)
+  public qxy a(feeds_info.LocationInfo paramLocationInfo)
   {
-    ComponentHeaderSubscribe.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return qxy.a(paramLocationInfo);
   }
 }
 

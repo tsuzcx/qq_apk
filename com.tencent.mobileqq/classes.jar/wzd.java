@@ -1,43 +1,56 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.graphics.Color;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
+import java.util.List;
 
 public class wzd
-  extends wlf
+  extends wro<wvn>
 {
-  public String a;
-  public String b;
+  protected ImageView a;
+  protected TextView a;
+  protected RotateCircleImageView a;
+  protected ImageView b;
+  protected TextView b;
+  protected ImageView c = (ImageView)a(2131376367);
   
-  public String a()
+  public wzd(ViewGroup paramViewGroup, int paramInt)
   {
-    return wjz.a("StorySvc.get_profile_feed_id_list");
+    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView = ((RotateCircleImageView)a(2131364534));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131367903));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131378306));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131378936));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131376368));
   }
   
-  public wla a(byte[] paramArrayOfByte)
+  protected void a(int paramInt1, int paramInt2)
   {
-    qqstory_service.RspProfileStoryFeedIdList localRspProfileStoryFeedIdList = new qqstory_service.RspProfileStoryFeedIdList();
-    try
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderStyle(RotateCircleImageView.BorderStyle.STILL);
+    int[] arrayOfInt = new int[paramInt1];
+    int i = 0;
+    if (i < paramInt1)
     {
-      localRspProfileStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new wze(localRspProfileStoryFeedIdList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
+      if (i < paramInt1 - paramInt2) {
+        arrayOfInt[i] = Color.parseColor("#DEDFE0");
+      }
       for (;;)
       {
-        paramArrayOfByte.printStackTrace();
+        i += 1;
+        break;
+        arrayOfInt[i] = Color.parseColor("#19D7FD");
       }
     }
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderColors(arrayOfInt);
   }
   
-  protected byte[] a()
+  public void a(wvn paramwvn)
   {
-    qqstory_service.ReqProfileStoryFeedIdList localReqProfileStoryFeedIdList = new qqstory_service.ReqProfileStoryFeedIdList();
-    localReqProfileStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    localReqProfileStoryFeedIdList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localReqProfileStoryFeedIdList.toByteArray();
+    if ((paramwvn.a != null) && (!paramwvn.a.isEmpty())) {
+      a(paramwvn.a.size(), paramwvn.b);
+    }
   }
 }
 

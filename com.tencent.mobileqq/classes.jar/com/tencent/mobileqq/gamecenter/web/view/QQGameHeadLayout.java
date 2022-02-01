@@ -24,7 +24,7 @@ public class QQGameHeadLayout
   
   protected int getLayoutId()
   {
-    return 2131559209;
+    return 2131559208;
   }
   
   public boolean isPined()

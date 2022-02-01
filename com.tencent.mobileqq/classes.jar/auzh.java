@@ -1,9 +1,28 @@
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.forward.ForwardFileOption;
+
 public class auzh
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
-  public int[] a;
-  public int[] b;
+  public auzh(ForwardFileOption paramForwardFileOption, View paramView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption);
+    if (paramMotionEvent.getAction() == 0) {
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(25, 0, 0, 0));
+      }
+    }
+    while ((paramMotionEvent.getAction() != 1) || (this.jdField_a_of_type_AndroidViewView == null)) {
+      return false;
+    }
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(0, 0, 0, 0));
+    return false;
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import anrs;
+import aody;
 
 class PublicAccountListActivity$2
   implements Runnable

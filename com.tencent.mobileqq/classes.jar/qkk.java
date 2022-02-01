@@ -1,13 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qkk
-  implements ViewBase.IBuilder
+class qkk
+  implements View.OnClickListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  qkk(qkj paramqkj) {}
+  
+  public void onClick(View paramView)
   {
-    return new qkj(paramVafContext);
+    if (this.a.jdField_a_of_type_Sel == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ArticleInfo localArticleInfo = ((ppu)this.a.jdField_a_of_type_JavaLangObject).a();
+      if (localArticleInfo != null)
+      {
+        int i = ComponentContentGalleryBiu.a(localArticleInfo, this.a.jdField_a_of_type_Sel);
+        sgc localsgc = this.a.jdField_a_of_type_Sel.a();
+        if (localsgc != null) {
+          localsgc.a(this.a.jdField_a_of_type_AndroidContentContext, localArticleInfo, 0, localArticleInfo.innerUniqueID, i, this.a.jdField_a_of_type_Int, 0);
+        }
+      }
+    }
   }
 }
 

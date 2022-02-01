@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.emoticon;
 
-import arvk;
-import arvn;
+import asky;
+import aslb;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQSysAndEmojiResReloader$1
   implements Runnable
 {
-  public QQSysAndEmojiResReloader$1(arvn paramarvn) {}
+  public QQSysAndEmojiResReloader$1(aslb paramaslb) {}
   
   public void run()
   {
-    if (arvk.a() != null)
+    if (asky.a() != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQSysAndEmojiResReloader", 2, "trigger downloadEmoticonRes");
       }
-      arvk.a().a();
+      asky.a().a();
     }
   }
 }

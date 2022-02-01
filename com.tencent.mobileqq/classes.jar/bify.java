@@ -1,21 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class bify
-  implements DialogInterface.OnDismissListener
+  extends Handler
 {
-  public bify(ShareActionSheetV2 paramShareActionSheetV2) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public bify(PathTraceManager paramPathTraceManager, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareActionSheetV2", 2, "onDismiss() called with: dialog = [" + paramDialogInterface + "] #this = " + Integer.toHexString(System.identityHashCode(this)));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    ShareActionSheetV2.b(this.a);
-    if (ShareActionSheetV2.a(this.a) != null) {
-      ShareActionSheetV2.a(this.a).onDismiss(paramDialogInterface);
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramMessage = (JSONObject)paramMessage.obj;
+        String str = paramMessage.getString("callback");
+        if (this.a.a != null)
+        {
+          bifo localbifo = (bifo)this.a.a.get();
+          if (localbifo != null)
+          {
+            localbifo.callJs(str, new String[] { paramMessage.toString() });
+            return;
+          }
+        }
+      }
+      catch (Exception paramMessage) {}
     }
   }
 }

@@ -3,15 +3,15 @@ package com.tencent.avgame.qav;
 import android.text.TextUtils;
 import com.tencent.avgame.session.AVGameSession;
 import com.tencent.qphone.base.util.QLog;
-import ndt;
+import nfm;
 
 class SecurityPolicyChecker$CheckCameraTask
   implements Runnable
 {
   public void run()
   {
-    ndt localndt = ndt.b();
-    if (localndt == null) {}
+    nfm localnfm = nfm.b();
+    if (localnfm == null) {}
     AVGameSession localAVGameSession;
     SecurityPolicyChecker localSecurityPolicyChecker;
     do
@@ -19,14 +19,14 @@ class SecurityPolicyChecker$CheckCameraTask
       do
       {
         return;
-        localAVGameSession = localndt.a();
+        localAVGameSession = localnfm.a();
       } while (localAVGameSession == null);
       localSecurityPolicyChecker = SecurityPolicyChecker.a();
       if (QLog.isColorLevel()) {
         QLog.i("SecurityPolicyChecker", 2, "CheckCameraTask, player[" + SecurityPolicyChecker.a(localSecurityPolicyChecker) + "], self[" + localAVGameSession.b + "], auto[" + localAVGameSession.g + "], hasLocalVideo[" + localAVGameSession.a(1) + "]");
       }
     } while ((!localAVGameSession.g) || (!localAVGameSession.a(1)) || (TextUtils.equals(SecurityPolicyChecker.a(localSecurityPolicyChecker), String.valueOf(localAVGameSession.b))));
-    localndt.f();
+    localnfm.f();
   }
 }
 

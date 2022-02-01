@@ -1,69 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
 public class nxm
-  extends nxe
+  implements aumz
 {
-  public long a;
-  public nxn a;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
+  public nxm(VideoCoverView paramVideoCoverView) {}
   
-  public static nxm a(JSONObject paramJSONObject)
+  public void a()
   {
-    if (paramJSONObject == null) {}
-    nxm localnxm;
-    Object localObject;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = true;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
+    if (this.a.jdField_a_of_type_Int == 5) {
+      this.a.d();
+    }
     for (;;)
     {
-      return null;
-      localnxm = new nxm();
-      try
-      {
-        localObject = paramJSONObject.optJSONObject("video");
-        if (localObject != null)
-        {
-          localnxm.e = ((JSONObject)localObject).optString("coverUrl");
-          localnxm.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("videoUrl");
-          if (TextUtils.isEmpty(localnxm.jdField_d_of_type_JavaLangString))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("AdModuleVideo", 2, "video url is null");
-            return null;
-          }
-        }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return null;
-      }
+      nwp.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, true);
+      return;
+      this.a.b(VideoCoverView.a(this.a));
     }
-    localnxm.jdField_a_of_type_Long = paramJSONObject.optLong("duration");
-    localnxm.jdField_d_of_type_Int = paramJSONObject.optInt("mixType");
-    localnxm.f = paramJSONObject.optString("linkUrl");
-    paramJSONObject = paramJSONObject.optString("appInfo");
-    if (!TextUtils.isEmpty(paramJSONObject))
-    {
-      paramJSONObject = new JSONObject(paramJSONObject);
-      localObject = new nxn();
-      ((nxn)localObject).a = paramJSONObject.optString("appid");
-      ((nxn)localObject).b = paramJSONObject.optString("scheme");
-      ((nxn)localObject).c = paramJSONObject.optString("packageName");
-      ((nxn)localObject).jdField_d_of_type_JavaLangString = paramJSONObject.optString("androidDownloadUrl");
-      ((nxn)localObject).e = paramJSONObject.optString("appName");
-      localnxm.jdField_a_of_type_Nxn = ((nxn)localObject);
-    }
-    return localnxm;
   }
   
-  public void b() {}
+  public void b()
+  {
+    this.a.jdField_a_of_type_Int = 6;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = false;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
+    this.a.g();
+    nwp.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, false);
+  }
 }
 
 

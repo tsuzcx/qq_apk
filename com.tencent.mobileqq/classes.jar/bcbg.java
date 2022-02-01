@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.data.MessageForTofuBaseProfile;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bcbg
-  implements acwy
+  implements View.OnClickListener
 {
-  public MessageRecord a(int paramInt)
+  public bcbg(UniteSearchActivity paramUniteSearchActivity) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramInt == -7010) {
-      return new MessageForTofuBaseProfile();
-    }
-    return null;
+    Intent localIntent = this.a.getIntent();
+    localIntent.putExtra("keyword", this.a.f);
+    this.a.setResult(2, localIntent);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

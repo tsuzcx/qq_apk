@@ -1,107 +1,81 @@
-import android.os.Bundle;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent;
+import android.text.TextUtils;
 
 public class azli
-  extends azkq<FrameLayout>
 {
-  private aznp jdField_a_of_type_Aznp;
-  private azod jdField_a_of_type_Azod;
-  private ProfileColorScreenComponent jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent;
+  public double a;
+  public int a;
+  public long a;
+  public String a;
+  public double b;
+  public String b;
+  public double c;
+  public String c;
   
-  public azli(azlw paramazlw, azfe paramazfe)
+  public azli(double paramDouble1, double paramDouble2, String paramString1, String paramString2)
   {
-    super(paramazlw, paramazfe);
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent == null)
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Double = paramDouble1;
+    this.jdField_b_of_type_Double = paramDouble2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_c_of_type_JavaLangString = paramString2;
+    if (a(this.jdField_a_of_type_Double, this.jdField_b_of_type_Double, paramString2))
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent = ((ProfileColorScreenComponent)azlu.a(1004, this.jdField_a_of_type_Azlw, (azfe)this.b));
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent.a(this.jdField_a_of_type_JavaLangObject);
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent.g();
-      a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent);
+      this.jdField_a_of_type_Int = 0;
+      return;
     }
+    this.jdField_a_of_type_Int = 1;
   }
   
-  private void i()
+  public static boolean a(double paramDouble1, double paramDouble2, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent != null)
+    return (Math.abs(paramDouble1) > 0.0001D) && (Math.abs(paramDouble2) > 0.0001D) && (!TextUtils.isEmpty(paramString));
+  }
+  
+  public static boolean a(azli paramazli, double paramDouble1, double paramDouble2, String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramazli == null) {
+      bool1 = true;
+    }
+    do
     {
-      b(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent);
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent.h();
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent = null;
-    }
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool1;
+            bool1 = bool2;
+          } while (paramString == null);
+          if (!paramString.equals(paramazli.jdField_c_of_type_JavaLangString)) {
+            return true;
+          }
+          bool1 = bool2;
+        } while (Math.abs(paramDouble1) < 0.0001D);
+        bool1 = bool2;
+      } while (Math.abs(paramDouble2) < 0.0001D);
+      if (Math.abs(paramazli.jdField_a_of_type_Double - paramDouble1) > 0.001D) {
+        break;
+      }
+      bool1 = bool2;
+    } while (Math.abs(paramazli.jdField_b_of_type_Double - paramDouble2) <= 0.001D);
+    return true;
   }
   
-  private void j()
+  public String toString()
   {
-    if (this.jdField_a_of_type_Aznp == null)
-    {
-      this.jdField_a_of_type_Aznp = ((aznp)azlu.a(1020, this.jdField_a_of_type_Azlw, (azfe)this.b));
-      this.jdField_a_of_type_Aznp.a(this.jdField_a_of_type_JavaLangObject);
-      this.jdField_a_of_type_Aznp.g();
-      a(this.jdField_a_of_type_Aznp);
-    }
-  }
-  
-  private void k()
-  {
-    if (this.jdField_a_of_type_Aznp != null)
-    {
-      b(this.jdField_a_of_type_Aznp);
-      this.jdField_a_of_type_Aznp.h();
-      this.jdField_a_of_type_Aznp = null;
-    }
-  }
-  
-  private void l()
-  {
-    if (this.jdField_a_of_type_Azod == null)
-    {
-      this.jdField_a_of_type_Azod = ((azod)azlu.a(1025, this.jdField_a_of_type_Azlw, (azfe)this.b));
-      this.jdField_a_of_type_Azod.a(this.jdField_a_of_type_JavaLangObject);
-      this.jdField_a_of_type_Azod.g();
-      a(this.jdField_a_of_type_Azod);
-    }
-  }
-  
-  private void m()
-  {
-    if (this.jdField_a_of_type_Azod != null)
-    {
-      b(this.jdField_a_of_type_Azod);
-      this.jdField_a_of_type_Azod.h();
-      this.jdField_a_of_type_Azod = null;
-    }
-  }
-  
-  public int a()
-  {
-    return 105;
-  }
-  
-  public String a()
-  {
-    return "ProfileFgContainer";
-  }
-  
-  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
-  {
-    super.a(paramBaseActivity, paramBundle);
-    a();
-    j();
-    l();
-  }
-  
-  public void f()
-  {
-    i();
-    k();
-    m();
-    super.f();
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("mLatitude:").append(this.jdField_a_of_type_Double);
+    localStringBuilder.append(" mLongitude:").append(this.jdField_b_of_type_Double);
+    localStringBuilder.append(" mDirection:").append(this.jdField_c_of_type_Double);
+    localStringBuilder.append(" mPoiName:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" mPoiAddr:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" adCode:").append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(" mUpdateTime:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" mValidFlag:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,53 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.22.1;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.22.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.face.QQHeadDownloadHandler;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class akbm
-  extends anmu
+  implements bliz
 {
-  public akbm(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public akbm(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment, blir paramblir) {}
   
-  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramSetting == null) || (this.a.a == null) || (!this.a.a.a.equals(paramSetting.uin)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantActivity", 2, "onGetHeadInfo， fail");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarPendantActivity", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
-    }
-    AvatarPendantActivity.d(this.a);
-    if (!this.a.isResume()) {
-      AvatarPendantActivity.a(this.a, true);
-    }
-    String str2 = QQHeadDownloadHandler.a(paramSetting.url, paramSetting.bFaceFlags);
-    String str1 = str2;
-    if (!TextUtils.isEmpty(str2)) {
-      str1 = MsfSdkUtils.insertMtype("QQHeadIcon", str2);
-    }
-    this.a.d = paramSetting.headImgTimestamp;
-    ThreadManager.getUIHandler().post(new AvatarPendantActivity.22.2(this, str1));
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    AvatarPendantActivity.d(this.a);
-    if (!this.a.isResume()) {
-      AvatarPendantActivity.a(this.a, true);
-    }
-    if (paramBoolean) {
-      ThreadManager.excute(new AvatarPendantActivity.22.1(this), 32, null, false);
+    paramView = new ArrayList();
+    paramView.addAll(ChatHistoryC2CFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment));
+    ChatHistoryC2CFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment).a(paramView, 3, new akbn(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment.h();
+    ChatHistoryC2CFileFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment, false);
+    ChatHistoryC2CFileFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment);
+    if (this.jdField_a_of_type_Blir.isShowing()) {
+      this.jdField_a_of_type_Blir.dismiss();
     }
   }
 }

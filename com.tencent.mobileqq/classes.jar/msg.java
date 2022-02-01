@@ -1,19 +1,62 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class msg
-  implements DialogInterface.OnClickListener
+final class msg
+  implements msj
 {
-  public msg(PopupDialog paramPopupDialog) {}
+  msg(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private void a(Context paramContext)
   {
-    if (PopupDialog.a.a != null) {
-      PopupDialog.a.a.onClick(paramDialogInterface, paramInt);
+    if ((paramContext instanceof JumpActivity)) {
+      ((Activity)paramContext).finish();
     }
-    paramDialogInterface.dismiss();
-    PopupDialog.a();
+  }
+  
+  public void a(int paramInt1, msl parammsl, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      a(this.jdField_a_of_type_AndroidContentContext);
+    }
+    do
+    {
+      do
+      {
+        return;
+        bmem.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent, 1);
+        return;
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", parammsl.jdField_a_of_type_JavaLangString);
+        if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+          localIntent.addFlags(268435456);
+        }
+        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+        a(this.jdField_a_of_type_AndroidContentContext);
+        return;
+        ((awaa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(236)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, "4", "openRoom");
+        return;
+        if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+        {
+          msd.a(this.jdField_a_of_type_AndroidContentContext, parammsl.b, parammsl.c, new msh(this));
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "context is not Activity");
+      return;
+      if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+      {
+        msd.a(this.jdField_a_of_type_AndroidContentContext, parammsl.b, parammsl.c, new msi(this));
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "context is not Activity");
   }
 }
 

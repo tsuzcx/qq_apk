@@ -1,162 +1,99 @@
-import android.text.TextUtils;
-import androidx.annotation.NonNull;
+import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateEngine.TagItemInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.business.BaseUpdateBusiness;
-import com.tencent.vas.update.entity.BusinessItemInfo;
-import com.tencent.vas.update.entity.BusinessUpdateParams;
-import com.tencent.vas.update.entity.UpdateListenerParams;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class bhdj
-  extends BaseUpdateBusiness
+  implements bjwi
 {
-  private QQAppInterface a()
+  private bhdk jdField_a_of_type_Bhdk;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public bhdj(String paramString, bhdk parambhdk)
   {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject != null) {}
-    for (localObject = ((BaseApplicationImpl)localObject).getRuntime();; localObject = null) {
-      return (QQAppInterface)localObject;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bhdk = parambhdk;
   }
   
-  private void a(@NonNull UpdateListenerParams paramUpdateListenerParams)
+  public int a(String paramString1, int paramInt, String paramString2, Bundle paramBundle)
   {
-    Object localObject = paramUpdateListenerParams.mBusinessUpdateParams;
-    if (localObject == null) {}
-    long l;
-    String str;
-    int i;
-    int j;
-    do
+    int i = -20;
+    if (paramString1.equals(BaseApplicationImpl.sApplication.getPackageName()))
     {
-      return;
-      l = ((BusinessUpdateParams)localObject).mBid;
-      str = ((BusinessUpdateParams)localObject).mScid;
-      localObject = ((BusinessUpdateParams)localObject).mFrom;
-      i = paramUpdateListenerParams.mErrorCode;
-      j = paramUpdateListenerParams.mHttpCode;
-      paramUpdateListenerParams = paramUpdateListenerParams.mErrorMessage;
-      QLog.d("VasUpdate_NativeUpdateBusiness", 1, "onCompleted bid = " + l + " scid = " + str + " from = " + (String)localObject + " message = " + paramUpdateListenerParams + " errorCode = " + i + " httpCode = " + j);
-      paramUpdateListenerParams = bhcg.a(l);
-    } while (paramUpdateListenerParams == null);
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      QLog.e("VasUpdate_NativeUpdateBusiness", 1, "onCompleted: get null app " + str);
-    }
-    paramUpdateListenerParams.onCompleted(localQQAppInterface, l, str, "", (String)localObject, i, j);
-  }
-  
-  public void deleteFile(@NonNull BusinessUpdateParams paramBusinessUpdateParams, BusinessItemInfo paramBusinessItemInfo)
-  {
-    long l = paramBusinessUpdateParams.mBid;
-    paramBusinessUpdateParams = paramBusinessUpdateParams.mScid;
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_NativeUpdateBusiness", 2, "deleteFiles bid = " + l + " scid = " + paramBusinessUpdateParams);
-    }
-    paramBusinessItemInfo = bhcg.a(l);
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      QLog.e("VasUpdate_NativeUpdateBusiness", 1, "deleteFiles: get null app " + paramBusinessUpdateParams);
-    }
-    if (paramBusinessItemInfo != null) {
-      paramBusinessItemInfo.deleteFiles(localQQAppInterface, l, paramBusinessUpdateParams);
-    }
-  }
-  
-  public long getBid()
-  {
-    return 0L;
-  }
-  
-  public BusinessItemInfo getBusinessItemInfo(long paramLong, String paramString)
-  {
-    Object localObject = bhcg.a(paramLong);
-    if (localObject == null) {
-      return null;
-    }
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      QLog.e("VasUpdate_NativeUpdateBusiness", 1, "canUpdate: get null app " + paramString);
-    }
-    BusinessItemInfo localBusinessItemInfo = new BusinessItemInfo();
-    localBusinessItemInfo.mIsCanUpdate = ((bgyr)localObject).canUpdate(localQQAppInterface, paramLong, paramString, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_NativeUpdateBusiness", 2, "canUpdate bid = " + paramLong + " scid = " + paramString + " mIsCanUpdate = " + localBusinessItemInfo.mIsCanUpdate);
-    }
-    localObject = ((bgyr)localObject).getItemInfo(localQQAppInterface, paramLong, paramString);
-    if (localObject != null)
-    {
-      localBusinessItemInfo.mSavePath = ((VasQuickUpdateEngine.TagItemInfo)localObject).strSavePath;
-      localBusinessItemInfo.mSaveInDir = ((VasQuickUpdateEngine.TagItemInfo)localObject).bSaveInDir;
-      if (TextUtils.isEmpty(localBusinessItemInfo.mSavePath))
+      if (this.jdField_a_of_type_JavaLangString == null)
       {
-        QLog.e("VasUpdate_NativeUpdateBusiness", 1, "getBusinessItemInfo doesn't set savePath , bid = " + paramLong + " , scid = " + paramString);
-        return null;
+        paramString1 = null;
+        paramInt = -1;
       }
-      return localBusinessItemInfo;
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Bhdk != null) {
+          this.jdField_a_of_type_Bhdk.a(paramInt);
+        }
+        QLog.d("UpgradeController", 1, "writeCodeToApk:" + this.jdField_a_of_type_JavaLangString + ", forFile:" + paramString2 + " result: " + paramInt, paramString1);
+        return paramInt;
+        if (this.jdField_a_of_type_JavaLangString.length() == 0)
+        {
+          paramString1 = null;
+          paramInt = 0;
+        }
+        else
+        {
+          try
+          {
+            paramString1 = new File(paramString2);
+            paramBundle = new File(paramString2 + "~tmp");
+            if (paramBundle.exists()) {
+              paramBundle.delete();
+            }
+            paramString1.renameTo(paramBundle);
+            bler.a(paramBundle, this.jdField_a_of_type_JavaLangString);
+            paramBundle.renameTo(paramString1);
+            paramString1 = null;
+            paramInt = 0;
+          }
+          catch (FileNotFoundException paramString1)
+          {
+            paramInt = -30;
+          }
+          catch (IOException paramString1)
+          {
+            paramInt = i;
+            if (paramString1 != null)
+            {
+              paramInt = i;
+              if (paramString1.getMessage() != null)
+              {
+                paramInt = i;
+                if (paramString1.getMessage().contains("space")) {
+                  paramInt = -10;
+                }
+              }
+            }
+          }
+          catch (Exception paramString1)
+          {
+            paramInt = -20;
+          }
+        }
+      }
     }
-    return null;
+    return -1;
   }
   
-  public String getFrom()
+  public void a(String paramString, int paramInt, Bundle paramBundle)
   {
-    return "NativeUpdateBusiness";
-  }
-  
-  public boolean isFileExist(@NonNull BusinessUpdateParams paramBusinessUpdateParams, BusinessItemInfo paramBusinessItemInfo)
-  {
-    long l = paramBusinessUpdateParams.mBid;
-    paramBusinessUpdateParams = paramBusinessUpdateParams.mScid;
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_NativeUpdateBusiness", 2, "isFileExists bid = " + l + " scid = " + paramBusinessUpdateParams);
-    }
-    paramBusinessItemInfo = bhcg.a(l);
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      QLog.e("VasUpdate_NativeUpdateBusiness", 1, "isFileExists: get null app " + paramBusinessUpdateParams);
-    }
-    return (paramBusinessItemInfo != null) && (paramBusinessItemInfo.isFileExists(localQQAppInterface, l, paramBusinessUpdateParams));
-  }
-  
-  public void onLoadFail(@NonNull UpdateListenerParams paramUpdateListenerParams)
-  {
-    super.onLoadFail(paramUpdateListenerParams);
-    a(paramUpdateListenerParams);
-  }
-  
-  public void onLoadSuccess(@NonNull UpdateListenerParams paramUpdateListenerParams)
-  {
-    super.onLoadSuccess(paramUpdateListenerParams);
-    a(paramUpdateListenerParams);
-  }
-  
-  public void onProgress(@NonNull UpdateListenerParams paramUpdateListenerParams)
-  {
-    super.onProgress(paramUpdateListenerParams);
-    Object localObject = paramUpdateListenerParams.mBusinessUpdateParams;
-    if (localObject == null) {}
-    long l1;
-    long l2;
-    long l3;
-    do
+    if (BaseApplicationImpl.sApplication.getPackageName().equals(paramString))
     {
-      return;
-      l1 = ((BusinessUpdateParams)localObject).mBid;
-      localObject = ((BusinessUpdateParams)localObject).mScid;
-      l2 = paramUpdateListenerParams.mProgress;
-      l3 = paramUpdateListenerParams.mProgressMax;
-      if (QLog.isColorLevel()) {
-        QLog.d("VasUpdate_NativeUpdateBusiness", 2, "onProgress bid = " + l1 + " scid = " + (String)localObject + " dwProgress = " + l2 + " dwProgressMax = " + l3);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("UpgradeController", 4, "syncVersionCodeToTool:" + paramString + ", versionCode:" + paramInt);
       }
-      paramUpdateListenerParams = bhcg.a(l1);
-    } while (paramUpdateListenerParams == null);
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      QLog.e("VasUpdate_NativeUpdateBusiness", 1, "onProgress: get null app " + (String)localObject);
+      if ((this.jdField_a_of_type_Bhdk != null) && (!this.jdField_a_of_type_Bhdk.a(paramInt))) {
+        this.jdField_a_of_type_JavaLangString = null;
+      }
     }
-    paramUpdateListenerParams.onProgress(localQQAppInterface, l1, (String)localObject, "", l2, l3);
   }
 }
 

@@ -1,26 +1,19 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class asxs
-  implements View.OnLongClickListener
+  extends asvt
 {
-  public asxs(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public asxs(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
   
-  public boolean onLongClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendCampusFragment", 2, String.format("onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
     }
-    paramView.setSelected(true);
-    bguh localbguh = new bguh();
-    localbguh.a(2131367030, paramView.getContext().getString(2131692395));
-    localbguh.a(2131365302, paramView.getContext().getString(2131691320));
-    ApolloUtil.a(paramView, QfileBaseRecentFileTabView.n(this.a), localbguh);
-    this.a.a = bgkw.a(paramView, localbguh, new asxt(this, paramView), new asxv(this, paramView));
-    return true;
+    if ((paramBoolean) && (ExtendFriendCampusFragment.a(this.a) != null)) {
+      ExtendFriendCampusFragment.a(this.a);
+    }
   }
 }
 

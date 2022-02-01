@@ -1,20 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aeqh
-  implements DialogInterface.OnClickListener
+class aeqh
+  implements akot
 {
-  public aeqh(NotificationActivity paramNotificationActivity) {}
+  aeqh(aeqc paramaeqc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    this.a.finish();
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.a.getApplicationContext(), 1, anzj.a(2131703788), 0).a();
+      return;
+    }
+    paramContext = new Intent(this.a.a, GuideBindPhoneActivity.class);
+    paramContext.putExtra("fromKeyForContactBind", 5);
+    paramContext.putExtra("key_contact_name", this.a.a.a.a.k);
+    paramContext.putExtra("key_contact_phone", this.a.a.a.a.a);
+    this.a.a.startActivity(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqh
  * JD-Core Version:    0.7.0.1
  */

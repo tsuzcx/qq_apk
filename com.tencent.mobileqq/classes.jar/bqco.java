@@ -1,66 +1,71 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import com.tencent.image.Utils;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import java.io.File;
 import mqq.app.AppRuntime;
 
-public class bqco
-  implements SeekBar.OnSeekBarChangeListener
+class bqco
+  implements bliz
 {
-  public bqco(BeautyBar paramBeautyBar) {}
+  bqco(bqcl parambqcl, blir paramblir, Intent paramIntent, String paramString, Activity paramActivity) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    BeautyBar.a(this.a, paramInt);
-    if (paramBoolean) {
-      BeautyBar.a(this.a, BeautyBar.a(this.a), false);
-    }
-    if (BeautyBar.a(this.a) != BeautyBar.b(this.a))
+    if (paramView == null)
     {
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).b(BeautyBar.a(this.a));
-      }
-      BeautyBar.b(this.a, BeautyBar.a(this.a));
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
     }
-    if (paramBoolean) {
-      BeautyBar.a(this.a).setContentDescription(anni.a(2131699888) + BeautyBar.a(this.a) + "%");
-    }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    BeautyBar.a(this.a).removeMessages(1011);
-    if (BeautyBar.a(this.a) != null) {
-      BeautyBar.a(this.a).setVisibility(0);
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (BeautyBar.b(this.a) >= 0)
+    Object localObject = this.jdField_a_of_type_Blir.a(paramInt);
+    if (localObject == null)
     {
-      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0);
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      localSharedPreferences.edit().putFloat("beauty_radius" + str, BeautyBar.b(this.a));
-      localSharedPreferences.edit().putFloat("beauty_whitenmag" + str, BeautyBar.b(this.a));
-      localSharedPreferences.edit().putInt("beauty_level" + str, paramSeekBar.getProgress());
-      localSharedPreferences.edit().commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("beauty", 2, "onStopTrackingTouch mBeautyValue" + BeautyBar.b(this.a) + " mBeautyProcess=" + paramSeekBar.getProgress());
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+    }
+    if (((String)localObject).equals(paramView.getResources().getString(2131692962)))
+    {
+      int i = 1;
+      paramInt = i;
+      if (this.jdField_a_of_type_Bqcl.a.c() == 130)
+      {
+        paramInt = i;
+        if (!this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("extra_is_edited_pic", false)) {
+          paramInt = 0;
+        }
       }
-      BeautyBar.a(this.a).removeMessages(1011);
-      BeautyBar.a(this.a).sendEmptyMessageDelayed(1011, BeautyBar.a);
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).setVisibility(4);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_type", paramInt);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_filepath", this.jdField_a_of_type_JavaLangString);
+      auxu.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 19003);
+      bdll.b(null, "dc00898", "", "", "0X800A184", "0X800A184", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      if (((String)localObject).equals(paramView.getResources().getString(2131692968)))
+      {
+        localObject = new File(this.jdField_a_of_type_JavaLangString);
+        String str = ((File)localObject).getAbsolutePath();
+        bbqb.a((Activity)paramView.getContext(), (File)localObject, Utils.Crc64String(str), this.jdField_a_of_type_Bqcl);
+        bdll.b(null, "dc00898", "", "", "0X800A185", "0X800A185", 0, 0, "", "", "", "");
+      }
+      else if (((String)localObject).equals(paramView.getResources().getString(2131692960)))
+      {
+        paramView = BaseApplicationImpl.getApplication();
+        bmko.b(this.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_AndroidAppActivity, paramView.getRuntime().getAccount(), 2131694349, this.jdField_a_of_type_Bqcl);
+        bdll.b(null, "dc00898", "", "", "0X800A186", "0X800A186", 0, 0, "", "", "", "");
       }
     }
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

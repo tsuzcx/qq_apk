@@ -1,26 +1,37 @@
+import android.widget.FrameLayout;
+import com.tencent.superplayer.api.ISuperPlayer;
+import java.util.Timer;
+
 public class aarr
 {
-  public static int a;
-  public static int b;
-  String a;
-  public boolean a;
-  String b;
-  public int c;
-  String c;
-  public int d;
-  
-  static
-  {
-    jdField_b_of_type_Int = 1;
-  }
-  
-  public aarr(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_c_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-  }
+  private double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private aarp jdField_a_of_type_Aarp;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private ISuperPlayer jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+  private String jdField_a_of_type_JavaLangString;
+  private Timer jdField_a_of_type_JavaUtilTimer;
+  private boolean jdField_a_of_type_Boolean;
+  private double jdField_b_of_type_Double;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private double jdField_c_of_type_Double;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  private double jdField_d_of_type_Double;
+  private int jdField_d_of_type_Int;
+  private boolean jdField_d_of_type_Boolean;
+  private double jdField_e_of_type_Double;
+  private int jdField_e_of_type_Int;
+  private boolean jdField_e_of_type_Boolean;
+  private double jdField_f_of_type_Double;
+  private int jdField_f_of_type_Int;
+  private int g;
+  private int h;
 }
 
 

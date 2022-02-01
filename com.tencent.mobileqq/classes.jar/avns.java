@@ -1,53 +1,31 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.Map;
 
 public class avns
-  extends WebViewPlugin
+  implements View.OnClickListener
 {
-  aanz a;
+  public avns(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public avns()
+  public void onClick(View paramView)
   {
-    this.mPluginNameSpace = "connect";
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool = false;
-    if (("connect".equals(paramString2)) && ("exchangeID".equals(paramString3)) && (paramVarArgs.length > 0)) {}
-    try
-    {
-      paramString3 = new JSONObject(paramVarArgs[0]);
-      paramJsBridgeListener = paramString3.optString("appid");
-      paramString1 = paramString3.optString("openid");
-      paramString2 = paramString3.optString("troopuin");
-      paramString3 = paramString3.optString("callback");
-      if (this.a == null)
-      {
-        this.a = aanz.a();
-        this.a.a();
-      }
-      this.a.b(paramJsBridgeListener, paramString1, paramString2, new avnt(this, paramString3));
-      bool = true;
+    QQGameFeedWebFragment.a(this.a).setVisibility(8);
+    if (QQGameFeedWebFragment.a(this.a) != null) {
+      QQGameFeedWebFragment.a(this.a).setCurrentItem(0);
     }
-    catch (JSONException paramJsBridgeListener)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ConnectApiPlugin", 2, "handleJsRequest JSONException:" + paramJsBridgeListener);
-    }
-    return bool;
-    return false;
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    if (this.a != null) {
-      this.a.b();
-    }
+    String str = (String)QQGameFeedWebFragment.a(this.a).getTag();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(Integer.valueOf(2), str);
+    localHashMap.put(Integer.valueOf(4), "20");
+    localHashMap.put(Integer.valueOf(24), "1");
+    acik.a(anbd.a(), "769", "205031", "", "76901", "1", "160", localHashMap);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

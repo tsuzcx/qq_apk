@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.fragment;
 
-import aglw;
+import aguy;
 import android.support.v4.app.FragmentActivity;
-import anpe;
+import aobf;
 import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 class LangSettingFragment$4
@@ -12,9 +12,9 @@ class LangSettingFragment$4
   
   public void run()
   {
-    anpe.c(this.this$0.getActivity());
+    aobf.c(this.this$0.getActivity());
     this.this$0.getActivity().finish();
-    aglw.b(this.this$0.getActivity(), GeneralSettingActivity.class);
+    aguy.b(this.this$0.getActivity(), GeneralSettingActivity.class);
   }
 }
 

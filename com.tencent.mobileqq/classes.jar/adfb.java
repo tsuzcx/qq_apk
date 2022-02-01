@@ -1,142 +1,266 @@
-import android.support.annotation.NonNull;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0xb85.Oidb_0xb85.GetRankListReqBody;
-import tencent.im.oidb.cmd0xb85.Oidb_0xb85.ReportScoreReqBody;
-import tencent.im.oidb.cmd0xb85.Oidb_0xb85.ReqBody;
-import tencent.im.oidb.ranklist_comm.ranklist_comm.ExtraParam;
-import tencent.im.oidb.ranklist_comm.ranklist_comm.ReportItem;
+import mqq.os.MqqHandler;
+import tencent.im.s2c.msgtype0x210.submsgtype0x94.Submsgtype0x94.MsgBody;
 
 public class adfb
-  extends adee
+  implements adci
 {
-  public static final String a;
-  private final String b = "OidbSvc.0xb85";
-  
-  static
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    jdField_a_of_type_JavaLangString = "DoraemonOpenAPI." + adfb.class.getSimpleName();
-  }
-  
-  private void a(JSONObject paramJSONObject, adea paramadea)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString + ".getRankingList", 2, "params = " + paramJSONObject);
-    }
-    int i = paramJSONObject.optInt("rankingID", 0);
-    int j = paramJSONObject.optInt("topCount", 10);
-    String str = paramJSONObject.optString("rankKey", "");
-    int k = paramJSONObject.optInt("rankValueType", 0);
-    int m = paramJSONObject.optInt("rankOrderType", 0);
-    if (i <= 0)
-    {
-      adhh.a(paramadea, -100, "rankingID must be bigger than 0");
-      return;
-    }
-    Object localObject = (adfk)this.jdField_a_of_type_Aded.a(adfk.class, false);
-    if (localObject == null)
-    {
-      adhh.a(paramadea, -10, "internal error, try again.");
-      return;
-    }
-    Oidb_0xb85.ReqBody localReqBody = new Oidb_0xb85.ReqBody();
-    localObject = ((adfk)localObject).a();
-    localReqBody.appid.set(Integer.valueOf(this.jdField_a_of_type_Aded.jdField_a_of_type_JavaLangString).intValue());
-    localReqBody.service_id.set(this.jdField_a_of_type_Aded.jdField_a_of_type_Int);
-    localReqBody.openid.set(((adfn)localObject).jdField_a_of_type_JavaLangString);
-    localReqBody.openkey.set(((adfn)localObject).b);
-    Oidb_0xb85.GetRankListReqBody localGetRankListReqBody = new Oidb_0xb85.GetRankListReqBody();
-    localGetRankListReqBody.ranklist_id.set(i);
-    localGetRankListReqBody.top_count.set(j);
-    if (!TextUtils.isEmpty(str)) {
-      localGetRankListReqBody.rank_key.set(str);
-    }
-    localGetRankListReqBody.rank_value_type.set(k);
-    localGetRankListReqBody.rank_order_type.set(m);
-    localReqBody.get_ranklist_req.set(localGetRankListReqBody);
-    nir.a(BaseApplicationImpl.getApplication().getRuntime(), new adfc(this, (adfn)localObject, paramJSONObject, paramadea), localReqBody.toByteArray(), "OidbSvc.0xb85", 2949, 2, null, 0L);
-  }
-  
-  private void b(JSONObject paramJSONObject, adea paramadea)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString + ".reportScore", 2, "params = " + paramJSONObject);
-    }
-    int i = paramJSONObject.optInt("rankingID", 0);
-    JSONArray localJSONArray = paramJSONObject.optJSONArray("scoreList");
-    if (i <= 0)
-    {
-      adhh.a(paramadea, -100, "rankingID 没有传或者值小于等于0");
-      return;
-    }
-    Object localObject1 = (adfk)this.jdField_a_of_type_Aded.a(adfk.class, false);
-    Oidb_0xb85.ReqBody localReqBody = new Oidb_0xb85.ReqBody();
-    localObject1 = ((adfk)localObject1).a();
-    localReqBody.appid.set(Integer.valueOf(this.jdField_a_of_type_Aded.jdField_a_of_type_JavaLangString).intValue());
-    localReqBody.service_id.set(this.jdField_a_of_type_Aded.jdField_a_of_type_Int);
-    localReqBody.openid.set(((adfn)localObject1).jdField_a_of_type_JavaLangString);
-    localReqBody.openkey.set(((adfn)localObject1).b);
-    Oidb_0xb85.ReportScoreReqBody localReportScoreReqBody = new Oidb_0xb85.ReportScoreReqBody();
-    localReportScoreReqBody.ranklist_id.set(i);
+    Object localObject1 = new Submsgtype0x94.MsgBody();
     try
     {
-      int k = localJSONArray.length();
-      i = 0;
-      while (i < k)
+      ((Submsgtype0x94.MsgBody)localObject1).mergeFrom(paramMsgType0x210.vProtobuf);
+      label88:
+      boolean bool5;
+      if (((Submsgtype0x94.MsgBody)localObject1).str_folder_msg.has())
       {
-        Object localObject2 = localJSONArray.getJSONObject(i);
-        ranklist_comm.ReportItem localReportItem = new ranklist_comm.ReportItem();
-        localReportItem.openid.set(((JSONObject)localObject2).getString("openid"));
-        localReportItem.score.set(((JSONObject)localObject2).getInt("score"));
-        localObject2 = ((JSONObject)localObject2).optJSONArray("extraList");
-        if (localObject2 != null)
+        paramMsgType0x210 = ((Submsgtype0x94.MsgBody)localObject1).str_folder_msg.get().trim();
+        if (QLog.isColorLevel()) {
+          QLog.i("EcShopAssistantActivity", 2, "diy string:" + paramMsgType0x210);
+        }
+        if (((Submsgtype0x94.MsgBody)localObject1).uint32_discover_reddot_flag.get() != 1) {
+          break label419;
+        }
+        bool4 = true;
+        if (((Submsgtype0x94.MsgBody)localObject1).uint32_folder_reddot_flag.get() != 1) {
+          break label425;
+        }
+        bool5 = true;
+        label103:
+        if (((Submsgtype0x94.MsgBody)localObject1).uint32_discount_reddot_flag.get() != 1) {
+          break label431;
+        }
+        bool2 = true;
+        label118:
+        if (((Submsgtype0x94.MsgBody)localObject1).uint32_nearby_reddot_flag.get() != 1) {
+          break label437;
+        }
+        bool1 = true;
+        label133:
+        if (((Submsgtype0x94.MsgBody)localObject1).uint32_mine_reddot_flag.get() != 1) {
+          break label443;
+        }
+      }
+      int k;
+      int m;
+      int n;
+      int j;
+      int i1;
+      String str2;
+      String str3;
+      String str4;
+      String str1;
+      int i2;
+      label419:
+      label425:
+      label431:
+      label437:
+      label443:
+      for (bool3 = true;; bool3 = false)
+      {
+        k = ((Submsgtype0x94.MsgBody)localObject1).uint32_start_ts.get();
+        m = ((Submsgtype0x94.MsgBody)localObject1).uint32_end_ts.get();
+        n = (int)(System.currentTimeMillis() / 1000L);
+        j = ((Submsgtype0x94.MsgBody)localObject1).uint32_period_of_validity.get();
+        i1 = ((Submsgtype0x94.MsgBody)localObject1).uint32_task_type.get();
+        str2 = ((Submsgtype0x94.MsgBody)localObject1).str_task_info.get();
+        str3 = ((Submsgtype0x94.MsgBody)localObject1).str_type_name.get();
+        str4 = ((Submsgtype0x94.MsgBody)localObject1).str_type_color.get();
+        str1 = ((Submsgtype0x94.MsgBody)localObject1).str_jump_url.get();
+        i2 = ((Submsgtype0x94.MsgBody)localObject1).uint32_task_id.get();
+        if (QLog.isColorLevel()) {
+          QLog.i("EcShopAssistantActivity", 2, "reddot start=" + k + ",end=" + m + ",showtime=" + j + "flags:" + bool5 + "," + bool4 + "," + bool2 + "," + bool1 + "," + bool3 + ",type:" + i1 + ",taskInfo:" + str2 + ",typeName:" + str3 + ",typeColor:" + str4 + ",jumpUrl:" + str1);
+        }
+        if ((n >= k) && (n <= m)) {
+          break label449;
+        }
+        return;
+        paramMsgType0x210 = "";
+        break;
+        bool4 = false;
+        break label88;
+        bool5 = false;
+        break label103;
+        bool2 = false;
+        break label118;
+        bool1 = false;
+        break label133;
+      }
+      label449:
+      int i = j;
+      if (j > 172800000) {
+        i = 172800000;
+      }
+      if ((bool4) || (bool2) || (bool1) || (bool3))
+      {
+        bool5 = true;
+        if (!bool5)
         {
-          int j = 0;
-          int m = ((JSONArray)localObject2).length();
-          while (j < m)
+          if ((bool4) || (((Submsgtype0x94.MsgBody)localObject1).uint32_only_discover_reddot_flag.get() == 1))
           {
-            JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(j);
-            ranklist_comm.ExtraParam localExtraParam = new ranklist_comm.ExtraParam();
-            localExtraParam.param_key.set(localJSONObject.getString("key"));
-            localExtraParam.param_value.set(localJSONObject.getInt("value"));
-            localExtraParam.param_type.set(localJSONObject.getInt("type"));
-            localReportItem.rpt_extra_param.add(localExtraParam);
-            j += 1;
+            bool4 = true;
+            if ((!bool2) && (((Submsgtype0x94.MsgBody)localObject1).uint32_only_discount_reddot_flag.get() != 1)) {
+              break label1266;
+            }
+            bool2 = true;
+            label528:
+            if ((!bool1) && (((Submsgtype0x94.MsgBody)localObject1).uint32_only_nearby_reddot_flag.get() != 1)) {
+              break label1272;
+            }
+            bool1 = true;
+            label548:
+            if ((!bool3) && (((Submsgtype0x94.MsgBody)localObject1).uint32_only_mine_reddot_flag.get() != 1)) {
+              break label1278;
+            }
+            bool3 = true;
+            label568:
+            bool6 = bool3;
+            bool7 = bool4;
+            bool8 = bool2;
+            bool9 = bool1;
+            if (QLog.isColorLevel())
+            {
+              QLog.i("EcShopAssistantActivity", 2, "new flag:" + bool4 + "," + bool2 + "," + bool1 + "," + bool3);
+              bool9 = bool1;
+              bool8 = bool2;
+              bool7 = bool4;
+              bool6 = bool3;
+            }
+            Object localObject2 = paramQQAppInterface.getCurrentAccountUin();
+            localObject1 = localObject2;
+            if (TextUtils.isEmpty((CharSequence)localObject2)) {
+              localObject1 = "noLogin";
+            }
+            localObject2 = paramQQAppInterface.getApp().getSharedPreferences("ecshop_sp" + (String)localObject1, 0);
+            localObject1 = ((SharedPreferences)localObject2).edit();
+            if ((((SharedPreferences)localObject2).getBoolean("disc_reddot", false)) || (((SharedPreferences)localObject2).getBoolean("welfare_reddot", false)) || (((SharedPreferences)localObject2).getBoolean("nearby_reddot", false)) || (((SharedPreferences)localObject2).getBoolean("mine_reddot", false)) || (((SharedPreferences)localObject2).getBoolean("folder_reddot", false)))
+            {
+              j = ((SharedPreferences)localObject2).getInt("last_show_time1", 0);
+              int i3 = ((SharedPreferences)localObject2).getInt("reddot_start", 0);
+              int i4 = ((SharedPreferences)localObject2).getInt("reddot_end", 0);
+              int i5 = ((SharedPreferences)localObject2).getInt("max_reddot_time", 0);
+              int i6 = (int)(System.currentTimeMillis() / 1000L);
+              if ((i6 != 0) && (i3 != 0) && (i4 != 0) && (i5 != 0) && ((i6 < i3) || (i6 > i4) || (i6 - j >= i5)))
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.i("EcShopAssistantActivity", 2, "online push found reddot out of date!");
+                }
+                ((SharedPreferences.Editor)localObject1).putBoolean("disc_reddot", false);
+                ((SharedPreferences.Editor)localObject1).putBoolean("welfare_reddot", false);
+                ((SharedPreferences.Editor)localObject1).putBoolean("nearby_reddot", false);
+                ((SharedPreferences.Editor)localObject1).putBoolean("mine_reddot", false);
+                ((SharedPreferences.Editor)localObject1).putBoolean("folder_reddot", false);
+              }
+            }
+            ((SharedPreferences.Editor)localObject1).putInt("reddot_start", k);
+            ((SharedPreferences.Editor)localObject1).putInt("reddot_end", m);
+            ((SharedPreferences.Editor)localObject1).putInt("max_reddot_time", i);
+            ((SharedPreferences.Editor)localObject1).putString("str_ecshop_diy", paramMsgType0x210);
+            ((SharedPreferences.Editor)localObject1).putInt("last_show_time1", n);
+            ((SharedPreferences.Editor)localObject1).putInt("PUSH_TASK_TYPE", i1);
+            ((SharedPreferences.Editor)localObject1).putString("PUSH_TASK_INFO", str2);
+            ((SharedPreferences.Editor)localObject1).putString("PUSH_TYPE_NAME", str3);
+            ((SharedPreferences.Editor)localObject1).putString("PUSH_TYPE_COLOR", str4);
+            ((SharedPreferences.Editor)localObject1).putLong("PUSH_RECEIVE_TIME", NetConnInfoCenter.getServerTime());
+            ((SharedPreferences.Editor)localObject1).putInt("PUSH_TASK_ID", i2);
+            if (str1 != null) {
+              break label1284;
+            }
+            paramMsgType0x210 = "";
+            label1097:
+            ((SharedPreferences.Editor)localObject1).putString("PUSH_JUMP_URL", paramMsgType0x210);
+            ((SharedPreferences.Editor)localObject1).putInt("FOLDER_MSG_TYPE", 1);
+            ((SharedPreferences.Editor)localObject1).putBoolean("folder_reddot", bool5);
+            ((SharedPreferences.Editor)localObject1).putBoolean("disc_reddot", bool7);
+            ((SharedPreferences.Editor)localObject1).putBoolean("welfare_reddot", bool8);
+            ((SharedPreferences.Editor)localObject1).putBoolean("nearby_reddot", bool9);
+            ((SharedPreferences.Editor)localObject1).putBoolean("mine_reddot", bool6);
+            ((SharedPreferences.Editor)localObject1).commit();
+            if (!bool5) {
+              break label1290;
+            }
+            ((oek)paramQQAppInterface.getManager(88)).a(NetConnInfoCenter.getServerTime(), bool5);
+            label1211:
+            ((oeo)paramQQAppInterface.a(68)).a();
+            paramMsgType0x210 = null;
+            if (!bool7) {
+              break label1313;
+            }
+            paramMsgType0x210 = "Arrived_shopdiscover_dot";
+          }
+          for (;;)
+          {
+            bdll.b(paramQQAppInterface, "dc00898", "", "", "Shop_folder", paramMsgType0x210, 0, 0, "", "", "", "");
+            return;
+            bool4 = false;
+            break;
+            label1266:
+            bool2 = false;
+            break label528;
+            label1272:
+            bool1 = false;
+            break label548;
+            label1278:
+            bool3 = false;
+            break label568;
+            label1284:
+            paramMsgType0x210 = str1;
+            break label1097;
+            label1290:
+            paramMsgType0x210 = paramQQAppInterface.getHandler(Conversation.class);
+            if (paramMsgType0x210 == null) {
+              break label1211;
+            }
+            paramMsgType0x210.sendEmptyMessage(1009);
+            break label1211;
+            label1313:
+            if (bool8) {
+              paramMsgType0x210 = "Arrived_shoppreferential_dot";
+            } else if (bool9) {
+              paramMsgType0x210 = "Arrived_shopnearbynot_dot";
+            } else if (bool6) {
+              paramMsgType0x210 = "Arrived_shopmynot_dot";
+            } else if (bool5) {
+              paramMsgType0x210 = "Arrived_folder_dot";
+            }
           }
         }
-        localReportScoreReqBody.rpt_report_item.add(localReportItem);
-        i += 1;
       }
-      localReqBody.report_score_req.set(localReportScoreReqBody);
     }
-    catch (Exception paramJSONObject)
+    catch (Throwable paramMsgType0x210)
     {
-      adhh.a(paramadea, -101, "参数处理错误, 是否是类型不对? 查看一下文档吧. \nerrorMsg: " + paramJSONObject.getMessage());
-      return;
+      for (;;)
+      {
+        boolean bool4;
+        boolean bool2;
+        boolean bool1;
+        boolean bool3;
+        continue;
+        boolean bool6 = bool3;
+        boolean bool7 = bool4;
+        boolean bool8 = bool2;
+        boolean bool9 = bool1;
+      }
     }
-    nir.a(BaseApplicationImpl.getApplication().getRuntime(), new adfd(this, (adfn)localObject1, paramJSONObject, paramadea), localReqBody.toByteArray(), "OidbSvc.0xb85", 2949, 1, null, 0L);
   }
   
-  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull adea paramadea)
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 8: 
-      a(paramJSONObject, paramadea);
-    }
-    for (;;)
-    {
-      return true;
-      b(paramJSONObject, paramadea);
-    }
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

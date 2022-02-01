@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import axyl;
-import axys;
+import ayrf;
+import ayrm;
 import java.util.Iterator;
 import java.util.List;
 
 public class NearbyMomentManager$5
   implements Runnable
 {
-  public NearbyMomentManager$5(axyl paramaxyl, String paramString) {}
+  public NearbyMomentManager$5(ayrf paramayrf, String paramString) {}
   
   public void run()
   {
-    Iterator localIterator = axyl.a(this.this$0).iterator();
+    Iterator localIterator = ayrf.a(this.this$0).iterator();
     while (localIterator.hasNext())
     {
-      ((axys)localIterator.next()).a(this.a);
-      axyl.a(this.this$0, null);
+      ((ayrm)localIterator.next()).a(this.a);
+      ayrf.a(this.this$0, null);
     }
   }
 }

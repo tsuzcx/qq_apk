@@ -1,7 +1,7 @@
 package cooperation.qzone.music;
 
-import bmfd;
-import bmfg;
+import bngf;
+import bngi;
 import java.util.ArrayList;
 
 class QzoneWebMusicJsPlugin$9
@@ -11,7 +11,7 @@ class QzoneWebMusicJsPlugin$9
   
   public void run()
   {
-    bmfd.a().a().a(QzoneWebMusicJsPlugin.access$200(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilArrayList, 102);
+    bngf.a().a().a(QzoneWebMusicJsPlugin.access$200(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilArrayList, 102);
   }
 }
 

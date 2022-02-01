@@ -1,23 +1,32 @@
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qidian.proto.mobileqq_qidian.ConfigCorpSimpleInfo;
 
 public class bkih
-  implements ContextMenu.ContextMenuInfo
 {
-  public int a;
-  public long a;
-  public View a;
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
   
-  public bkih(View paramView, int paramInt, long paramLong)
+  public bkih(mobileqq_qidian.ConfigCorpSimpleInfo paramConfigCorpSimpleInfo)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    if (paramConfigCorpSimpleInfo.str_corp_name.has()) {
+      this.a = paramConfigCorpSimpleInfo.str_corp_name.get();
+    }
+    if (paramConfigCorpSimpleInfo.str_short_name.has()) {
+      this.b = paramConfigCorpSimpleInfo.str_short_name.get();
+    }
+    if (paramConfigCorpSimpleInfo.str_detail_desc.has()) {
+      this.c = paramConfigCorpSimpleInfo.str_detail_desc.get();
+    }
+    if (paramConfigCorpSimpleInfo.str_click_url.has()) {
+      this.d = paramConfigCorpSimpleInfo.str_click_url.get();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkih
  * JD-Core Version:    0.7.0.1
  */

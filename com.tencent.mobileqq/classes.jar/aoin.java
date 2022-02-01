@@ -1,37 +1,32 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aoin
-  extends aojt
+  extends MqqHandler
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  public aoin(ThreadRegulator paramThreadRegulator, Looper paramLooper)
   {
-    paramQQAppInterface = new aoil(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "avgame";
-    paramQQAppInterface.c = "join_room";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    int i = 0;
-    while (i < paramContext.length)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    paramMessage = (aoio)paramMessage.obj;
+    if (paramMessage != null)
     {
-      paramString = paramContext[i];
-      if (paramString.split("=").length == 2)
-      {
-        int j = paramString.indexOf("=");
-        paramQQAppInterface.a(paramString.substring(0, j), paramString.substring(j + 1));
+      if (QLog.isColorLevel()) {
+        QLog.d("ThreadManager.Regulaotr", 2, paramMessage.jdField_a_of_type_Int + " cost " + (paramMessage.b - paramMessage.jdField_a_of_type_Long) + ", paused " + paramMessage.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
       }
-      i += 1;
+      paramMessage.recycle();
     }
-    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoin
  * JD-Core Version:    0.7.0.1
  */

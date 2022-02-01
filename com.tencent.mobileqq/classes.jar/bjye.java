@@ -1,16 +1,119 @@
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnErrorListener;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IMediaPlayer.OnErrorListener;
+import android.app.Notification;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.RemoteViews;
+import android.widget.TextView;
 
-class bjye
-  implements IMediaPlayer.OnErrorListener
+public class bjye
 {
-  bjye(bjxx parambjxx, ReliableVideoPlayer.OnErrorListener paramOnErrorListener) {}
+  protected float a;
+  protected DisplayMetrics a;
+  protected Integer a;
+  protected final String a;
+  protected float b;
+  protected Integer b;
+  protected final String b;
   
-  public boolean onError(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  bjye(bjyc parambjyc, Context paramContext)
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnErrorListener != null) {
-      return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnErrorListener.onError(this.jdField_a_of_type_Bjxx, paramInt1, paramInt2);
+    this.jdField_a_of_type_Float = 14.0F;
+    this.jdField_b_of_type_Float = 16.0F;
+    this.jdField_a_of_type_JavaLangString = "SearchForText";
+    this.jdField_b_of_type_JavaLangString = "SearchForTitle";
+    this.jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
+    ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
+    a(paramContext);
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public Integer a()
+  {
+    return this.jdField_a_of_type_JavaLangInteger;
+  }
+  
+  protected void a(Context paramContext)
+  {
+    if ((this.jdField_a_of_type_JavaLangInteger != null) && (this.jdField_b_of_type_JavaLangInteger != null)) {
+      return;
+    }
+    try
+    {
+      Notification localNotification = new Notification();
+      localNotification.setLatestEventInfo(paramContext, "SearchForTitle", "SearchForText", null);
+      paramContext = (ViewGroup)localNotification.contentView.apply(paramContext, null);
+      a(paramContext);
+      b(paramContext);
+      return;
+    }
+    catch (Exception paramContext) {}
+  }
+  
+  protected boolean a(ViewGroup paramViewGroup)
+  {
+    int j = paramViewGroup.getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      if ((paramViewGroup.getChildAt(i) instanceof TextView))
+      {
+        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
+        if ("SearchForTitle".equals(localTextView.getText().toString()))
+        {
+          this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
+          this.jdField_b_of_type_Float = localTextView.getTextSize();
+          this.jdField_b_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
+          return true;
+        }
+      }
+      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (a((ViewGroup)paramViewGroup.getChildAt(i))))
+      {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public float b()
+  {
+    return this.jdField_b_of_type_Float;
+  }
+  
+  public Integer b()
+  {
+    return this.jdField_b_of_type_JavaLangInteger;
+  }
+  
+  protected boolean b(ViewGroup paramViewGroup)
+  {
+    int j = paramViewGroup.getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      if ((paramViewGroup.getChildAt(i) instanceof TextView))
+      {
+        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
+        if ("SearchForText".equals(localTextView.getText().toString()))
+        {
+          this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
+          this.jdField_a_of_type_Float = localTextView.getTextSize();
+          this.jdField_a_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
+          return true;
+        }
+      }
+      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (b((ViewGroup)paramViewGroup.getChildAt(i))))
+      {
+        return true;
+      }
+      i += 1;
     }
     return false;
   }

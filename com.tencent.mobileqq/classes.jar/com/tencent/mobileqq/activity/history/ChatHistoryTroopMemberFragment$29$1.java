@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.history;
 
-import ajsw;
+import akef;
 
 public class ChatHistoryTroopMemberFragment$29$1
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$29$1(ajsw paramajsw) {}
+  public ChatHistoryTroopMemberFragment$29$1(akef paramakef) {}
   
   public void run()
   {

@@ -1,20 +1,16 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 class scr
-  extends skd
+  implements BusinessObserver
 {
-  scr(sce paramsce) {}
+  scr(scq paramscq, NewIntent paramNewIntent, String paramString1, String paramString2, sct paramsct, long paramLong) {}
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramVideoInfo != null)
-    {
-      rjh.b(sce.a(this.a), paramVideoInfo.g, 1);
-      return;
-    }
-    QLog.e("VideoFeedsShareController", 1, "add to topic failed, mPlayingVideoInfo = null");
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    scq.a(this.jdField_a_of_type_Scq, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Sct, this.jdField_a_of_type_Long, paramBoolean, paramBundle);
   }
 }
 

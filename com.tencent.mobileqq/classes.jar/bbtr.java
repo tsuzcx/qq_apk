@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
 
 public class bbtr
-  extends bbsj
+  implements DialogInterface.OnClickListener
 {
-  private Comparator<bbmu> a = new bbts(this);
+  public bbtr(SignatureEditFragment paramSignatureEditFragment) {}
   
-  public bbtr(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
-  }
-  
-  public Comparator<bbmu> a()
-  {
-    return this.a;
+    paramDialogInterface.dismiss();
+    this.a.a.locationText = "";
+    this.a.a(0, 0, 0, 0, null, 1);
+    SignatureEditFragment.a(this.a);
   }
 }
 

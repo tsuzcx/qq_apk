@@ -1,56 +1,73 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
-import com.tencent.gdtad.views.videoimax.GdtImaxData;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.1.1;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.jsbridge.GdtBaseHalfScreenFragmentForJs;
+import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
+import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
+import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-public class acuf
-  implements actu
+class acuf
+  implements acun
 {
-  public acuf(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
+  private GdtDwellTimeStatisticsAfterClick a;
   
-  public void a(View paramView)
+  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
   {
-    if (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() == 1)
+    Object localObject = null;
+    if (paramacts != null) {}
+    GdtHandler.Params localParams;
+    for (Activity localActivity = paramacts.a();; localActivity = null)
     {
-      GdtVideoImaxFragment.a(this.a);
-      GdtVideoImaxFragment.b(this.a);
+      localParams = new GdtHandler.Params();
+      boolean bool = GdtHandler.a(localParams, paramVarArgs[0]);
+      if ((paramacts != null) && (localActivity != null) && (bool)) {
+        break;
+      }
+      acvc.d("GdtHandleAdJsCallHandler", "handleJsCallRequest error");
+      return true;
     }
-    while (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() != 0) {
-      return;
-    }
-    GdtVideoImaxFragment.a(this.a).g();
-    paramView = acsj.a(this.a.getActivity());
-    GdtVideoImaxFragment.a(this.a, paramView[1], GdtVideoImaxFragment.a(this.a).getLayoutParams().height, paramView[1]);
-  }
-  
-  public void a(GdtVideoCommonView paramGdtVideoCommonView)
-  {
-    acqy.a("GdtVideoImaxFragment", "onPrepared() called with: v = [" + paramGdtVideoCommonView + "]");
-  }
-  
-  public void b(GdtVideoCommonView paramGdtVideoCommonView)
-  {
-    acqy.a("GdtVideoImaxFragment", "onStart() called with: ");
-    if (GdtVideoImaxFragment.a(this.a))
+    for (;;)
     {
-      GdtVideoImaxFragment.a(this.a).removeCallbacks(GdtVideoImaxFragment.a(this.a));
-      GdtVideoImaxFragment.a(this.a).postDelayed(new GdtVideoImaxFragment.1.1(this), 75L);
-      GdtVideoImaxFragment.a(this.a, false);
+      try
+      {
+        acvc.b("GdtHandleAdJsCallHandler", new JSONObject(paramVarArgs[0]).toString());
+        localParams.jdField_c_of_type_Int = 7;
+        localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localActivity);
+        localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramacts.a());
+        localParams.jdField_a_of_type_JavaLangClass = GdtVideoCeilingFragmentForJS.class;
+        localParams.jdField_b_of_type_JavaLangClass = GdtCanvasFragmentForJS.class;
+        localParams.jdField_c_of_type_JavaLangClass = GdtBaseHalfScreenFragmentForJs.class;
+        paramVarArgs = paramacts.a().getIntent();
+        if (TextUtils.isEmpty(paramVarArgs.getStringExtra("big_brother_ref_source_key")))
+        {
+          paramVarArgs = paramVarArgs.getStringExtra("big_brother_source_key");
+          localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
+          localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramVarArgs);
+          this.a = new GdtDwellTimeStatisticsAfterClick(localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd, new WeakReference(paramacts.mRuntime.a()));
+          this.a.a();
+          GdtHandler.a(localParams);
+          paramacts.callJs(paramString, null);
+          paramString = localObject;
+          if (paramacts != null) {
+            paramString = paramacts.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "handleClick", paramString, localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+          return true;
+        }
+      }
+      catch (Throwable paramacts)
+      {
+        acvc.d("GdtHandleAdJsCallHandler", "handleJsCallRequest error", paramacts);
+        return true;
+      }
+      paramVarArgs = paramVarArgs.getStringExtra("big_brother_ref_source_key");
     }
-  }
-  
-  public void c(GdtVideoCommonView paramGdtVideoCommonView)
-  {
-    acqy.a("GdtVideoImaxFragment", "onStop() called with: v = [" + paramGdtVideoCommonView + "]");
-  }
-  
-  public void d(GdtVideoCommonView paramGdtVideoCommonView)
-  {
-    acqy.a("GdtVideoImaxFragment", "onComplete() called with: v = [" + paramGdtVideoCommonView + "]");
   }
 }
 

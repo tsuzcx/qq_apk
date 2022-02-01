@@ -1,12 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.ArrayList;
 
-class ascq
-  implements DialogInterface.OnClickListener
+public class ascq
 {
-  ascq(asco paramasco) {}
+  public String a;
+  public ArrayList<String> a;
+  public String b;
+  public ArrayList<String> b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public ascq(ascp paramascp) {}
 }
 
 

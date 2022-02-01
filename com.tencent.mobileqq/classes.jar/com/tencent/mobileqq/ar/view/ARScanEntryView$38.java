@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar.view;
 
-import anni;
-import aoqx;
-import aper;
-import apgl;
-import aylq;
-import bcst;
+import anzj;
+import apen;
+import apsh;
+import apub;
+import azej;
+import bdll;
 import com.tencent.qphone.base.util.QLog;
 
 class ARScanEntryView$38
@@ -15,12 +15,12 @@ class ARScanEntryView$38
   
   public void run()
   {
-    boolean bool2 = aoqx.a().a();
-    boolean bool3 = aoqx.a().b();
-    boolean bool4 = this.this$0.jdField_a_of_type_Apgl.a().a();
-    aylq localaylq = this.this$0.jdField_a_of_type_Apgl.a();
-    if ((ARScanEntryView.c(this.this$0)) && (localaylq != null)) {}
-    for (boolean bool1 = localaylq.a(this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);; bool1 = true)
+    boolean bool2 = apen.a().a();
+    boolean bool3 = apen.a().b();
+    boolean bool4 = this.this$0.jdField_a_of_type_Apub.a().a();
+    azej localazej = this.this$0.jdField_a_of_type_Apub.a();
+    if ((ARScanEntryView.c(this.this$0)) && (localazej != null)) {}
+    for (boolean bool1 = localazej.a(this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);; bool1 = true)
     {
       QLog.d("AREngine_ARScanEntryView", 1, "excute mTimeoutChecker runnable isAREnable:=" + bool2 + ",isSupportAr:=" + bool3 + ",isBaseSoReady:=" + bool4 + ",isPromotionResReady:=" + bool1);
       if ((bool2) && (bool3))
@@ -32,7 +32,7 @@ class ARScanEntryView$38
           break label225;
         }
         QLog.d("AREngine_ARScanEntryView", 1, "ARLoadFailed. mIsArSoReady = " + bool4 + "mARStartFail = " + ARScanEntryView.f(this.this$0) + ",isPromotionResReady =" + bool1);
-        this.this$0.d_(anni.a(2131699557));
+        this.this$0.d_(anzj.a(2131699664));
       }
       label274:
       for (;;)
@@ -42,8 +42,8 @@ class ARScanEntryView$38
         label225:
         if (!ARScanEntryView.c(this.this$0))
         {
-          this.this$0.d_(anni.a(2131699552));
-          bcst.b(null, "dc00898", "", "", "0X80085B3", "0X80085B3", 0, 0, "", "", "", "");
+          this.this$0.d_(anzj.a(2131699659));
+          bdll.b(null, "dc00898", "", "", "0X80085B3", "0X80085B3", 0, 0, "", "", "", "");
           continue;
           ARScanEntryView.d(this.this$0, true);
           this.this$0.k();

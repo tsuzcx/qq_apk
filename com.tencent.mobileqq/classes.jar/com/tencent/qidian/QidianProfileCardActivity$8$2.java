@@ -1,22 +1,22 @@
 package com.tencent.qidian;
 
-import bjgr;
-import bjhg;
+import bkhr;
+import bkig;
 import com.tencent.image.URLImageView;
 import java.util.concurrent.ConcurrentHashMap;
 
 class QidianProfileCardActivity$8$2
   implements Runnable
 {
-  QidianProfileCardActivity$8$2(QidianProfileCardActivity.8 param8, bjhg parambjhg, URLImageView paramURLImageView) {}
+  QidianProfileCardActivity$8$2(QidianProfileCardActivity.8 param8, bkig parambkig, URLImageView paramURLImageView) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bjhg.jdField_a_of_type_Int == 1) {}
-    for (String str = this.jdField_a_of_type_Bjhg.c;; str = this.jdField_a_of_type_Bjhg.jdField_a_of_type_JavaLangString)
+    if (this.jdField_a_of_type_Bkig.jdField_a_of_type_Int == 1) {}
+    for (String str = this.jdField_a_of_type_Bkig.c;; str = this.jdField_a_of_type_Bkig.jdField_a_of_type_JavaLangString)
     {
-      this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$8.this$0.a.put(this.jdField_a_of_type_Bjhg.jdField_a_of_type_JavaLangString, new bjgr(this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_Bjhg.jdField_a_of_type_Int, str));
-      this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$8.this$0.a(this.jdField_a_of_type_Bjhg.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImageURLImageView, str, false);
+      this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$8.this$0.a.put(this.jdField_a_of_type_Bkig.jdField_a_of_type_JavaLangString, new bkhr(this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_Bkig.jdField_a_of_type_Int, str));
+      this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$8.this$0.a(this.jdField_a_of_type_Bkig.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImageURLImageView, str, false);
       return;
     }
   }

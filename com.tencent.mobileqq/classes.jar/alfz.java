@@ -1,17 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
 
 public class alfz
-  implements DialogInterface.OnDismissListener
+  implements algc
 {
-  public alfz(LoginView paramLoginView) {}
+  public alfz(DoodleLayout paramDoodleLayout) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    LoginView.g(this.a, false);
-    LoginView.h(this.a, false);
-    bcst.a(this.a.a, "new_reg_805", "log_page", "can_clk", "", 1, "");
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
+    }
+  }
+  
+  public void b()
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(this.a.a(true, false));
+    }
   }
 }
 

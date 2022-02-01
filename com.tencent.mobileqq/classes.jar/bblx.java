@@ -1,67 +1,24 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import java.util.List;
+import java.util.Comparator;
 
-public class bblx
-  implements bbmx
+class bblx
+  implements Comparator<bbku>
 {
-  private aitt jdField_a_of_type_Aitt;
-  private String jdField_a_of_type_JavaLangString;
-  private List<bbmy> jdField_a_of_type_JavaUtilList;
-  private String b;
+  bblx(bblv parambblv) {}
   
-  public bblx(aitt paramaitt, List<bbmy> paramList, String paramString1, String paramString2)
+  public int a(bbku parambbku1, bbku parambbku2)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Aitt = paramaitt;
-    this.b = paramString2;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public String a()
-  {
-    return anni.a(2131704143);
-  }
-  
-  public List<bbmy> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    bbup.a(this.jdField_a_of_type_JavaLangString, 110, 0, paramView);
-    bbly localbbly = (bbly)this.jdField_a_of_type_JavaUtilList.get(0);
-    if ((localbbly != null) && (!TextUtils.isEmpty(this.b)))
+    if (parambbku2.b() > parambbku1.b()) {}
+    do
     {
-      Object localObject = new Intent(paramView.getContext(), PublicAccountBrowser.class);
-      ((Intent)localObject).putExtra("url", this.b);
-      paramView.getContext().startActivity((Intent)localObject);
-      if (localbbly.a() != null)
-      {
-        localObject = localbbly.a().hotword.get();
-        int i = localbbly.a().hotword_type.get();
-        oat.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F28", "0X8006F28", 0, 0, localbbly.a(), (String)localObject, String.valueOf(i), "2");
+      return -1;
+      if (parambbku2.b() < parambbku1.b()) {
+        return 1;
       }
+    } while (parambbku2.a() > parambbku1.a());
+    if (parambbku2.a() == parambbku1.a()) {
+      return 0;
     }
-    paramView.getContext();
-    oat.a(null, "CliOper", "", "", "0X8006536", "0X8006536", 0, 0, "", "0", this.jdField_a_of_type_JavaLangString, "0");
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return 1;
   }
 }
 

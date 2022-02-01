@@ -1,190 +1,62 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
-public class airc
-  extends VasWebviewJsPlugin
+class airc
+  extends anyu
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  airc(aiqx paramaiqx) {}
   
-  public airc()
+  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
   {
-    this.mPluginNameSpace = "addContact_SecCheck";
-  }
-  
-  private int a(Activity paramActivity, int paramInt)
-  {
-    WebViewFragment localWebViewFragment = this.mRuntime.a();
+    aiqx.a(this.a).removeMessages(24);
+    HashMap localHashMap;
     int i;
-    if ((paramActivity instanceof bhoe)) {
-      i = ((bhoe)paramActivity).switchRequestCode(this, (byte)paramInt);
-    }
-    do
+    if ((this.a.c == null) || (!this.a.c.isShowing()))
     {
-      return i;
-      i = paramInt;
-    } while (localWebViewFragment == null);
-    return localWebViewFragment.switchRequestCode(this, (byte)paramInt);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactSecCheckWebPlugin", 2, "openSecCheckWeb, requestCode=" + paramInt + ", url=" + paramString1);
-    }
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    paramString2 = new Intent(paramContext, QQBrowserActivity.class);
-    paramString2.putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
-    paramString2.putExtra("url", paramString1);
-    try
-    {
-      ((Activity)paramContext).startActivityForResult(paramString2, paramInt);
-      return;
-    }
-    catch (SecurityException paramQQAppInterface) {}
-  }
-  
-  protected void a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString).optString("ticket");
-      if (this.mRuntime.a() == null) {
-        return;
+      localHashMap = new HashMap();
+      if ((!paramBoolean) && ((paramObject instanceof Integer))) {
+        i = ((Integer)paramObject).intValue();
       }
-      if (this.mRuntime.a() != null)
+    }
+    for (;;)
+    {
+      localHashMap.put("result", i + "");
+      localHashMap.put("netType", bhnv.a(BaseApplication.getContext()) + "");
+      bdmc.a(BaseApplication.getContext()).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "multiMsgNickTimeoutR", false, 30000L, 0L, localHashMap, "");
+      for (;;)
       {
-        Object localObject = this.mRuntime.a();
-        if (localObject != null)
+        return;
+        if (paramBoolean) {
+          break label328;
+        }
+        i = 1;
+        break;
+        if (axpf.a().jdField_a_of_type_Int != 2) {
+          this.a.c.dismiss();
+        }
+        axpf.a().b.clear();
+        if ((paramBoolean) && (paramObject != null)) {
+          axpf.a().b.putAll((Map)paramObject);
+        }
+        if (axpf.a().b.size() == 0) {
+          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131697755, 0).b(this.a.a());
+        }
+        while (QLog.isDevelopLevel())
         {
-          Intent localIntent = new Intent();
-          localIntent.putExtra("ticket", paramString);
-          ((Activity)localObject).setResult(-1, localIntent);
-          if (!((Activity)localObject).isFinishing()) {
-            ((Activity)localObject).finish();
-          }
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder().append("setTicket, ticket_len = ");
-            if (TextUtils.isEmpty(paramString)) {}
-            for (int i = 0;; i = paramString.length())
-            {
-              QLog.d("AddContactSecCheckWebPlugin", 2, i);
-              return;
-            }
+          QLog.d(this.a.jdField_a_of_type_JavaLangString, 4, "onGetFriendNickBatch = " + paramObject);
+          return;
+          if (paramObject != null) {
+            ((agvl)aiqx.a(this.a).a(1)).a((Map)paramObject, axpf.a().jdField_a_of_type_JavaUtilArrayList, axpf.a().jdField_a_of_type_Int);
           }
         }
       }
-      return;
-    }
-    catch (JSONException paramString) {}
-  }
-  
-  protected void b(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Int = paramString.optInt("targetAct", 0);
-      this.jdField_a_of_type_JavaLangString = paramString.optString("callBackName", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("AddContactSecCheckWebPlugin", 2, "launchAct, mTargetAct=" + this.jdField_a_of_type_Int + ", mCallBackName=" + this.jdField_a_of_type_JavaLangString);
-      }
-      if ((this.jdField_a_of_type_Int <= 0) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-      {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("AddContactSecCheckWebPlugin", 2, "launchAct, param is illeagal");
-        return;
-      }
-      if ((this.mRuntime == null) || (this.mRuntime.a() == null))
-      {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("AddContactSecCheckWebPlugin", 2, "launchAct, runtime is null");
-        return;
-      }
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("AddContactSecCheckWebPlugin", 2, "launchAct,", paramString);
-      return;
-    }
-    paramString = this.mRuntime.a();
-    Intent localIntent;
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      localIntent = new Intent(paramString, BindNumberActivity.class);
-      localIntent.putExtra("kSrouce", 21);
-      localIntent.putExtra("cmd_param_is_from_uni", true);
-      paramString.startActivityForResult(localIntent, a(paramString, 1));
-      return;
-    }
-    if (this.jdField_a_of_type_Int == 2)
-    {
-      localIntent = new Intent(paramString, PhoneUnityBindInfoActivity.class);
-      localIntent.putExtra("kSrouce", 21);
-      localIntent.putExtra("kIsWeb", true);
-      paramString.startActivityForResult(localIntent, a(paramString, 2));
-    }
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ("addContact_SecCheck".equals(paramString2))
-    {
-      if ((!"setTicket".equals(paramString3)) || (paramVarArgs.length != 1)) {
-        break label36;
-      }
-      a(paramVarArgs[0]);
-    }
-    label36:
-    while ((!"launchAct".equals(paramString3)) || (paramVarArgs.length != 1)) {
-      return false;
-    }
-    b(paramVarArgs[0]);
-    return false;
-  }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactSecCheckWebPlugin", 2, "doOnActivityResult requestCode = " + paramByte + " resultCode = " + paramInt);
-    }
-    if (this.mRuntime.a() == null) {
-      return;
-    }
-    if (paramInt == -1) {
-      i = 1;
-    }
-    paramIntent = new JSONObject();
-    try
-    {
-      paramIntent.put("targetAct", paramByte);
-      paramIntent.put("status", i);
-      callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramIntent.toString() });
-      return;
-    }
-    catch (Exception paramIntent)
-    {
-      QLog.e("AddContactSecCheckWebPlugin", 1, "doOnActivityResult exception:", paramIntent);
+      label328:
+      i = 0;
     }
   }
 }

@@ -1,30 +1,28 @@
+import android.text.Editable;
 import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.view.inputmethod.InputMethodManager;
+import android.text.TextWatcher;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
 
 public class ttq
-  implements View.OnKeyListener
+  implements TextWatcher
 {
-  private ttq(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  public ttq(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void afterTextChanged(Editable paramEditable)
   {
-    paramView = ReadInJoyNewSearchActivity.a(this.a).getText().toString().trim();
-    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0) && (!TextUtils.isEmpty(paramView)))
+    if (TextUtils.isEmpty(ReadInJoyNewSearchActivity.a(this.a).getText().toString()))
     {
-      paramKeyEvent = (InputMethodManager)this.a.getSystemService("input_method");
-      if (paramKeyEvent != null) {
-        paramKeyEvent.hideSoftInputFromWindow(ReadInJoyNewSearchActivity.a(this.a).getWindowToken(), 2);
-      }
-      ReadInJoyNewSearchActivity.a(this.a, paramView);
-      this.a.a(paramView);
+      ReadInJoyNewSearchActivity.a(this.a).setVisibility(8);
+      return;
     }
-    return false;
+    ReadInJoyNewSearchActivity.a(this.a).setVisibility(0);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

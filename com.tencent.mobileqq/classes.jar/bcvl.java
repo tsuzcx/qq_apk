@@ -1,20 +1,50 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bcvl
+  extends MSFServlet
 {
-  private static HashMap<String, bcvk> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public static HashMap<String, bcvk> a()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    return jdField_a_of_type_JavaUtilHashMap;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    {
+      paramIntent = bmtb.a(paramFromServiceMsg.getWupBuffer());
+      if (paramIntent != null)
+      {
+        paramFromServiceMsg = new Bundle();
+        paramFromServiceMsg.putSerializable("data", paramIntent);
+        notifyObserver(null, 1002, true, paramFromServiceMsg, ayxo.class);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneAlbumListNumServlet", 2, "inform QZoneAlbumListNumServlet isSuccess false");
+      }
+      notifyObserver(null, 1002, false, new Bundle(), ayxo.class);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneAlbumListNumServlet", 2, "inform QZoneAlbumListNumServlet resultcode fail.");
+    }
+    notifyObserver(null, 1002, false, new Bundle(), ayxo.class);
   }
   
-  public static List<String> a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return jdField_a_of_type_JavaUtilList;
+    if (paramIntent == null) {
+      return;
+    }
+    byte[] arrayOfByte = new bmtb(paramIntent.getLongExtra("selfuin", 0L), paramIntent.getStringExtra("refer")).encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null) {
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + "getAlbumListNum");
+    paramPacket.putSendData(paramIntent);
   }
 }
 

@@ -1,17 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.customviews.MessageProgressTextView;
 
-class ahtm
-  implements DialogInterface.OnClickListener
+public class ahtm
+  extends aggl
 {
-  ahtm(ahtl paramahtl) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    ahtk.h(this.a.a).setResult(8001);
-  }
+  public RelativeLayout a;
+  public SessionInfo a;
+  public MessageProgressTextView a;
+  public boolean a;
+  public RelativeLayout b;
+  public View c;
+  public RelativeLayout c;
 }
 
 

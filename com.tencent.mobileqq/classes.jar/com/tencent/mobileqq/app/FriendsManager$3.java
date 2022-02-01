@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
-import anmw;
+import anyw;
 
 public class FriendsManager$3
   implements Runnable
 {
-  public FriendsManager$3(anmw paramanmw) {}
+  public FriendsManager$3(anyw paramanyw) {}
   
   public void run()
   {
     this.this$0.a();
-    anmw.a(this.this$0, "buildGroupList2");
-    ((FriendListHandler)anmw.a(this.this$0).a(1)).notifyUI(103, true, null);
+    anyw.a(this.this$0, "buildGroupList2");
+    ((FriendListHandler)anyw.a(this.this$0).a(1)).notifyUI(103, true, null);
   }
 }
 

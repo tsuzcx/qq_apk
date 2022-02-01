@@ -1,35 +1,21 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
-
 class auxx
-  implements DialogInterface.OnClickListener
+  implements auyi
 {
-  auxx(auxw paramauxw, InputStream paramInputStream) {}
+  auxx(auxu paramauxu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    try
-    {
-      this.jdField_a_of_type_JavaIoInputStream.close();
-      auxw.a(this.jdField_a_of_type_Auxw).finish();
-      return;
-    }
-    catch (IOException paramDialogInterface)
-    {
-      for (;;)
-      {
-        QLog.e("UriParserPathHelper", 1, "system share.exception.e=", paramDialogInterface);
-      }
-    }
+    this.a.a.setProgressBarVisibility(0);
+  }
+  
+  public void b()
+  {
+    this.a.a.setProgressBarVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     auxx
  * JD-Core Version:    0.7.0.1
  */

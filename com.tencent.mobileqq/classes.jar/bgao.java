@@ -1,50 +1,17 @@
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
 
 public class bgao
+  implements bgea
 {
-  public int a;
-  public bgao a;
-  public String a;
-  public ArrayList<bgao> a;
-  public String b;
+  public bgao(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  private bgao() {}
-  
-  public bgao(int paramInt, String paramString1, String paramString2)
+  public void a(View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-  }
-  
-  public String a()
-  {
-    String str = this.jdField_a_of_type_JavaLangString;
-    bgao localbgao = this;
-    while (localbgao.jdField_a_of_type_Bgao != null)
-    {
-      localbgao = localbgao.jdField_a_of_type_Bgao;
-      str = localbgao.jdField_a_of_type_JavaLangString + "-" + str;
+    if (paramBoolean) {
+      this.a.a(this.a.a.a());
     }
-    return str;
-  }
-  
-  public void a(bgao parambgao)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambgao);
-  }
-  
-  public boolean a(bgao parambgao)
-  {
-    if ((parambgao != null) && (parambgao.jdField_a_of_type_Int + 1 == this.jdField_a_of_type_Int))
-    {
-      this.jdField_a_of_type_Bgao = parambgao;
-      return true;
-    }
-    return false;
   }
 }
 

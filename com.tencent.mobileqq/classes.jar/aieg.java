@@ -1,59 +1,56 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-class aieg
-  implements BusinessObserver
+public abstract class aieg
+  extends Binder
+  implements aief
 {
-  aieg(aidp paramaidp, String paramString) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aieg()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_Aidp.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
+    attachInterface(this, "com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+  }
+  
+  public static aief a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Aidp.A(2131694617);
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+    if ((localIInterface != null) && ((localIInterface instanceof aief))) {
+      return (aief)localIInterface;
     }
-    for (;;)
+    return new aieh(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      aidp.c(this.jdField_a_of_type_Aidp);
-      if (aidp.d(this.jdField_a_of_type_Aidp) == 0) {
-        this.jdField_a_of_type_Aidp.bp();
-      }
-      return;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
-          localUnFollowResponse.mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() == 0)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(this.jdField_a_of_type_Aidp.jdField_a_of_type_JavaLangString, 2, "unfollow success");
-            }
-            aidp.a(this.jdField_a_of_type_Aidp, aidp.a(this.jdField_a_of_type_Aidp));
-            oat.a(this.jdField_a_of_type_Aidp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
-            StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_Aidp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-            ((bfrd)this.jdField_a_of_type_Aidp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_Aidp.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-            aidp.b(this.jdField_a_of_type_Aidp, false);
-          }
-          else
-          {
-            this.jdField_a_of_type_Aidp.A(2131694617);
-          }
-        }
-      }
-      catch (Exception paramBundle) {}
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      a((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      b((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+      return true;
     }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+    c((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+    return true;
   }
 }
 

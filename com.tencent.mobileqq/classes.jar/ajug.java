@@ -1,10 +1,27 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
+import java.util.ArrayList;
 
-public abstract interface ajug
+public class ajug
+  extends abuq
 {
-  public abstract boolean a(FileManagerEntity paramFileManagerEntity);
+  public ajug(DeviceFragment paramDeviceFragment) {}
   
-  public abstract void b(FileManagerEntity paramFileManagerEntity);
+  protected void a(ArrayList<DeviceInfo> paramArrayList)
+  {
+    if (this.a.e)
+    {
+      this.a.e = false;
+      if (DeviceFragment.a(this.a) != null) {
+        DeviceFragment.b(this.a).a(this.a.b(), true, null);
+      }
+    }
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.a = ((ArrayList)paramArrayList.clone());
+    this.a.a.notifyDataSetChanged();
+  }
 }
 
 

@@ -1,11 +1,15 @@
-public abstract class zzj<T>
+import android.support.v4.view.ViewPropertyAnimatorCompat;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+
+public abstract interface zzj
 {
-  public long a;
-  public boolean a = true;
+  public abstract ViewPropertyAnimatorCompat a(RecyclerView.ViewHolder paramViewHolder);
   
-  public abstract void a();
+  public abstract ViewPropertyAnimatorCompat a(zzs paramzzs, long paramLong, boolean paramBoolean);
   
-  public abstract void a(zzp<T> paramzzp);
+  public abstract ViewPropertyAnimatorCompat a(zzt paramzzt, long paramLong);
+  
+  public abstract boolean a(zzs paramzzs);
 }
 
 

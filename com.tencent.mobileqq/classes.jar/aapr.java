@@ -1,24 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class aapr
-  extends zmm
+public class aapr
+  implements aarb
 {
-  aapr(aapl paramaapl, aapv paramaapv) {}
+  public aapr(BlankRecommendItemView paramBlankRecommendItemView, CertifiedAccountMeta.StUser paramStUser) {}
   
-  public void onFailure(String paramString)
+  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    QLog.w(".troop.VideoCombineHelper", 1, "concatMediaByTs change ts onSuccess: " + paramString);
-    this.jdField_a_of_type_Aapv.onFailure(paramString);
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (QLog.isColorLevel())
+    String str = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get();
+    if (paramBoolean) {}
+    for (paramStFeed = "blank_content_follow";; paramStFeed = "blank_content_unfollow")
     {
-      QLog.w(".troop.trace_video_combine", 2, "concatMediaByTs change ts onSuccess: " + paramString);
-      QLog.d(".troop.trace_video_combine", 2, "convertToTsTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Aapl.a.a));
+      abbe.b(str, "auth_follow", paramStFeed, 0, 0, new String[] { "", BlankRecommendItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoBlankRecommendItemView) + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.get(), "" });
+      return;
     }
-    this.jdField_a_of_type_Aapl.a.a = System.currentTimeMillis();
   }
 }
 

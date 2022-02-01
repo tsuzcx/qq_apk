@@ -1,109 +1,21 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.CardEntry;
-import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry;
-import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.SharedPreferences;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
 public class wos
-  implements wou
 {
-  private String a;
-  
-  public wos()
+  public static String a(QQUserUIItem paramQQUserUIItem)
   {
-    this.jdField_a_of_type_JavaLangString = "Q.qqstory:DiscoverManager";
+    paramQQUserUIItem = xiz.a();
+    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("key_story_qim_online_icon_url", null);
   }
   
-  private QQStoryContext a()
+  public static String b(QQUserUIItem paramQQUserUIItem)
   {
-    return QQStoryContext.a();
+    paramQQUserUIItem = xiz.a();
+    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("profile_card_qim_online_url", null);
   }
-  
-  public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
-  }
-  
-  private void a(CardItem paramCardItem)
-  {
-    EntityManager localEntityManager = a().a().createEntityManager();
-    localEntityManager.getTransaction().begin();
-    try
-    {
-      CardEntry localCardEntry1 = paramCardItem.toCardEntry();
-      paramCardItem = a(localEntityManager, CardEntry.class, CardEntry.class.getSimpleName(), CardEntry.getCardIdSelection(), new String[] { paramCardItem.cardId });
-      if (paramCardItem == null) {
-        return;
-      }
-      paramCardItem = paramCardItem.iterator();
-      while (paramCardItem.hasNext())
-      {
-        CardEntry localCardEntry2 = (CardEntry)paramCardItem.next();
-        localCardEntry2.PBData = localCardEntry1.PBData;
-        localEntityManager.update(localCardEntry2);
-        yqp.a(this.jdField_a_of_type_JavaLangString, "update db cardId=%s id=%d", localCardEntry2.cardId, Long.valueOf(localCardEntry2.getId()));
-      }
-    }
-    finally
-    {
-      localEntityManager.getTransaction().end();
-    }
-    localEntityManager.getTransaction().end();
-  }
-  
-  public DiscoverBannerVideoEntry a(String paramString)
-  {
-    paramString = a(QQStoryContext.a().a().createEntityManager(), DiscoverBannerVideoEntry.class, DiscoverBannerVideoEntry.class.getSimpleName(), "bannerId=?", new String[] { paramString });
-    if ((paramString != null) && (paramString.size() > 0)) {
-      return (DiscoverBannerVideoEntry)paramString.get(0);
-    }
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(String paramString, xap paramxap)
-  {
-    EntityManager localEntityManager = a().a().createEntityManager();
-    localEntityManager.getTransaction().begin();
-    try
-    {
-      if (paramxap.jdField_b_of_type_JavaUtilList.size() == paramxap.jdField_a_of_type_JavaUtilList.size())
-      {
-        DiscoverBannerVideoEntry localDiscoverBannerVideoEntry = new DiscoverBannerVideoEntry();
-        localDiscoverBannerVideoEntry.bannerId = paramString;
-        localDiscoverBannerVideoEntry.totalCount = paramxap.jdField_b_of_type_Int;
-        paramString = new ArrayList(paramxap.jdField_b_of_type_JavaUtilList.size());
-        int i = 0;
-        while (i < paramxap.jdField_b_of_type_JavaUtilList.size())
-        {
-          DiscoverBannerVideoEntry.BannerInfo localBannerInfo = new DiscoverBannerVideoEntry.BannerInfo();
-          localBannerInfo.b = ((String)paramxap.jdField_b_of_type_JavaUtilList.get(i));
-          localBannerInfo.jdField_a_of_type_JavaLangString = ((String)paramxap.jdField_a_of_type_JavaUtilList.get(i));
-          paramString.add(localBannerInfo);
-          i += 1;
-        }
-        localDiscoverBannerVideoEntry.bannerInfoList = paramString;
-        localDiscoverBannerVideoEntry.nextCookie = paramxap.jdField_a_of_type_JavaLangString;
-        localEntityManager.persistOrReplace(localDiscoverBannerVideoEntry);
-      }
-      localEntityManager.getTransaction().commit();
-      return;
-    }
-    finally
-    {
-      localEntityManager.getTransaction().end();
-    }
-  }
-  
-  public void b() {}
 }
 
 

@@ -1,60 +1,22 @@
-import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import tencent.im.troop.studyroom.self_study_room_troop.StudyRoomMenberInfoRsp;
 
-final class bdvm
-  implements bdvw
+class bdvm
+  extends bdvp
 {
-  long jdField_a_of_type_Long = 0L;
+  bdvm(bdvj parambdvj) {}
   
-  bdvm(URLDrawableHandler paramURLDrawableHandler, String paramString, bdvo parambdvo) {}
-  
-  public void onResp(bdwt parambdwt)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("HttpDownloader", 2, " structMsgCover download onResp result fileSize = " + this.jdField_a_of_type_Long + " file.path = " + parambdwt.jdField_a_of_type_Bdws.c + " resp.result = " + parambdwt.jdField_a_of_type_Int);
-    }
-    if (parambdwt.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    boolean bool1;
-    if (parambdwt.jdField_a_of_type_Int == 0)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null)
-      {
-        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(this.jdField_a_of_type_Long);
-        bool1 = bool2;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        bdvl.a(bool1, new URL(this.jdField_a_of_type_JavaLangString), true, parambdwt.c, parambdwt.e, null, this.jdField_a_of_type_Bdvo);
-        return;
-      }
-      catch (Exception parambdwt)
-      {
-        return;
-      }
-      bool2 = false;
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null)
-      {
-        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(parambdwt.jdField_a_of_type_Int);
-        bool1 = bool2;
-      }
-    }
+    QLog.w("studyroom.proto.StudyRoomObserver", 2, "onGetStudyRoomMemberCount error. troop:" + paramString1 + " rsp:" + paramInt + " msg:" + paramString2);
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2)
+  public void a(String paramString, self_study_room_troop.StudyRoomMenberInfoRsp paramStudyRoomMenberInfoRsp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HttpDownloader", 2, " structMsgCover onUpdateProgeress totalLen = " + paramLong2 + " curOffset = " + paramLong1);
-    }
-    this.jdField_a_of_type_Long = paramLong2;
+    int i = Math.max(paramStudyRoomMenberInfoRsp.member_count.get(), 0);
+    bdvj.a(this.a, paramString, i);
+    QLog.d("studyroom.proto.StudyRoomObserver", 2, "onGetStudyRoomMemberCountSucc troop:" + paramString + " member_count:" + paramStudyRoomMenberInfoRsp.member_count.get());
   }
 }
 

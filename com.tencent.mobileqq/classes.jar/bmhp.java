@@ -1,55 +1,55 @@
-import cooperation.qzone.statistic.access.concept.Statistic;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.content.Context;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class bmhp
+  implements INetEventHandler
 {
-  protected volatile ConcurrentLinkedQueue<Statistic> a = new ConcurrentLinkedQueue();
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication();
+  private boolean jdField_a_of_type_Boolean;
   
-  public int a()
-  {
-    return this.a.size();
-  }
+  public bmhp(bmhk parambmhk) {}
   
-  public Statistic a()
+  public void a()
   {
-    return (Statistic)this.a.poll();
-  }
-  
-  public List<Statistic> a()
-  {
-    return a(a());
-  }
-  
-  public List<Statistic> a(int paramInt)
-  {
-    Object localObject;
-    if (paramInt < 1)
+    if (this.jdField_a_of_type_Boolean) {}
+    do
     {
-      localObject = null;
-      return localObject;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = Math.min(paramInt, a());
-    paramInt = 0;
-    for (;;)
-    {
-      localObject = localArrayList;
-      if (paramInt >= i) {
-        break;
+      return;
+      this.jdField_a_of_type_Boolean = true;
+      try
+      {
+        AppNetConnInfo.registerNetChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this);
+        return;
       }
-      localObject = a();
-      if (localObject != null) {
-        localArrayList.add(localObject);
-      }
-      paramInt += 1;
-    }
+      catch (Exception localException) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("plugin_tag", 2, localException, new Object[0]);
   }
   
-  public void a(Statistic paramStatistic)
+  public void b()
   {
-    this.a.add(paramStatistic);
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = false;
+      try
+      {
+        AppNetConnInfo.unregisterNetEventHandler(this);
+        return;
+      }
+      catch (Exception localException) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("plugin_tag", 2, localException, new Object[0]);
+  }
+  
+  public void onNetChangeEvent(boolean paramBoolean)
+  {
+    bmhk.a(this.jdField_a_of_type_Bmhk).sendEmptyMessage(66304);
   }
 }
 

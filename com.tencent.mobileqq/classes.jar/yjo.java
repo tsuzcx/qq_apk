@@ -1,44 +1,36 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
 
-public class yjo
-  extends wfr<yjc, yjw>
+class yjo
+  extends SimpleJob<Object>
 {
-  public yjo(yjc paramyjc)
+  yjo(yjl paramyjl, String paramString1, String paramString2)
   {
-    super(paramyjc);
+    super(paramString1);
   }
   
-  public void a(@NonNull yjc paramyjc, @NonNull yjw paramyjw)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    Object localObject = paramyjw.a;
-    paramyjw = paramyjc.a(((yjy)localObject).a.feedId);
-    if (paramyjw == null)
+    paramJobContext = (wsu)wth.a(19);
+    paramVarArgs = paramJobContext.a(wzn.a(this.jdField_a_of_type_Yjl.b));
+    yjq localyjq = new yjq(this.jdField_a_of_type_Yjl.c);
+    ArrayList localArrayList = new ArrayList();
+    localyjq.jdField_a_of_type_JavaUtilList = paramJobContext.a(this.jdField_a_of_type_JavaLangString, localArrayList);
+    localyjq.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1)) {}
+    for (boolean bool = true;; bool = false)
     {
-      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { ((yjy)localObject).a.feedId });
-      return;
+      localyjq.jdField_a_of_type_Boolean = bool;
+      wjj.a().dispatch(localyjq);
+      yuk.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localyjq.jdField_a_of_type_JavaUtilList);
+      return null;
     }
-    if ((!(localObject instanceof yka)) || (!(paramyjw instanceof yka)))
-    {
-      yqp.e("Q.qqstory.home.data.HomeFeedPresenter", "SingleFeedInfoEvent error!!");
-      return;
-    }
-    localObject = (yka)localObject;
-    paramyjw = (yka)paramyjw;
-    paramyjw.a = ((yka)localObject).a;
-    paramyjw.a(((yka)localObject).b(), false);
-    paramyjw.b(((yka)localObject).c(), false);
-    paramyjw.c(((yka)localObject).a(), false);
-    yjc.a(paramyjc).b(paramyjw.a.feedId);
-    yqp.a("Q.qqstory.home.data.HomeFeedPresenter", "single feed update from server %s", paramyjw);
   }
-  
-  public Class acceptEventClass()
-  {
-    return yjw.class;
-  }
-  
-  public void b(@NonNull yjc paramyjc, @NonNull yjw paramyjw) {}
 }
 
 

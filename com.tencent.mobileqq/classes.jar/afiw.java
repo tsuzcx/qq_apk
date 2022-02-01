@@ -1,98 +1,68 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ims.QQProtectRisks.QQProtectRisksResponse;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity.8.1;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class afiw
-  extends BaseAdapter
+  extends nkq
 {
-  public afiw(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
+  public afiw(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public int getCount()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {}
-    for (View localView = this.a.getLayoutInflater().inflate(2131562991, null);; localView = paramView)
+    int i = 0;
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    for (paramInt = 0;; paramInt = 1)
     {
-      TextView localTextView1 = (TextView)localView.findViewById(2131379199);
-      TextView localTextView2 = (TextView)localView.findViewById(2131379198);
-      ImageView localImageView = (ImageView)localView.findViewById(2131371965);
-      bgao localbgao2 = (bgao)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      int j = 0;
-      Object localObject;
-      if ((this.a.jdField_a_of_type_Bgao != null) && (localbgao2.jdField_a_of_type_Int < this.a.jdField_a_of_type_Bgao.jdField_a_of_type_Int))
+      if (paramInt != 0) {}
+      try
       {
-        localObject = this.a.jdField_a_of_type_Bgao;
-        paramView = ((bgao)localObject).jdField_a_of_type_Bgao;
-        int i = j;
-        if (paramView != null)
+        QQProtectRisks.QQProtectRisksResponse localQQProtectRisksResponse = new QQProtectRisks.QQProtectRisksResponse();
+        localQQProtectRisksResponse.mergeFrom(paramArrayOfByte);
+        paramInt = i;
+        if (localQQProtectRisksResponse.uint32_sec_cmd.has()) {
+          paramInt = localQQProtectRisksResponse.uint32_sec_cmd.get();
+        }
+        if (paramInt == 1)
         {
-          i = j;
-          if (paramView.jdField_a_of_type_Int >= localbgao2.jdField_a_of_type_Int)
+          long l = 3600L;
+          paramArrayOfByte = "";
+          if (localQQProtectRisksResponse.uint32_cache_time.has()) {
+            l = localQQProtectRisksResponse.uint32_cache_time.get();
+          }
+          if (localQQProtectRisksResponse.str_risk_exist.has()) {
+            paramArrayOfByte = localQQProtectRisksResponse.str_risk_exist.get();
+          }
+          paramBundle = paramArrayOfByte;
+          if (TextUtils.isEmpty(paramArrayOfByte))
           {
-            if (!localbgao2.b.equals(paramView.b)) {
-              break label243;
+            paramBundle = paramArrayOfByte;
+            if (localQQProtectRisksResponse.risk_info_list.has())
+            {
+              paramBundle = paramArrayOfByte;
+              if (!localQQProtectRisksResponse.risk_info_list.isEmpty()) {
+                paramBundle = this.a.getString(2131698335);
+              }
             }
-            i = 1;
           }
+          QQSettingSettingActivity.a(this.a, l, paramBundle);
+          this.a.runOnUiThread(new QQSettingSettingActivity.8.1(this, paramBundle));
         }
-        if (i != 0)
-        {
-          localTextView2.setVisibility(0);
-          localTextView2.setText(((bgao)localObject).jdField_a_of_type_JavaLangString);
-          localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130850679, 0);
-          label190:
-          localTextView1.setText(localbgao2.jdField_a_of_type_JavaLangString);
-          if ((localbgao2.jdField_a_of_type_JavaUtilArrayList == null) || (localbgao2.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
-            break label333;
-          }
-          localImageView.setVisibility(0);
-        }
+        return;
       }
-      for (;;)
+      catch (Throwable paramArrayOfByte)
       {
-        EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-        return localView;
-        label243:
-        bgao localbgao1 = paramView.jdField_a_of_type_Bgao;
-        localObject = paramView;
-        paramView = localbgao1;
-        break;
-        localTextView2.setVisibility(4);
-        break label190;
-        if ((this.a.jdField_a_of_type_Bgao != null) && (localbgao2.b.equals(this.a.jdField_a_of_type_Bgao.b)))
-        {
-          localTextView2.setVisibility(0);
-          localTextView2.setText("");
-          localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130850679, 0);
-          break label190;
-        }
-        localTextView2.setVisibility(4);
-        break label190;
-        label333:
-        localImageView.setVisibility(4);
+        paramArrayOfByte.printStackTrace();
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        return;
       }
     }
   }

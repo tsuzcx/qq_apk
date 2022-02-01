@@ -2,10 +2,10 @@ package com.tencent.mobileqq.nearby;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anmw;
-import axdm;
-import axdz;
-import aybu;
+import anyw;
+import axwf;
+import axws;
+import ayuo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
@@ -22,12 +22,12 @@ public final class NearbyProxy$9
   
   public void run()
   {
-    Object localObject2 = (anmw)this.a.getManager(51);
-    Object localObject1 = ((anmw)localObject2).c(this.a.getCurrentAccountUin());
+    Object localObject2 = (anyw)this.a.getManager(51);
+    Object localObject1 = ((anyw)localObject2).c(this.a.getCurrentAccountUin());
     if ((localObject1 != null) && (((Card)localObject1).iVoteIncrement > 0))
     {
       ((Card)localObject1).iVoteIncrement = 0;
-      ((anmw)localObject2).a((Card)localObject1);
+      ((anyw)localObject2).a((Card)localObject1);
     }
     localObject2 = this.a.a().createEntityManager();
     NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)((EntityManager)localObject2).find(NearbyPeopleCard.class, "uin=?", new String[] { this.a.getCurrentAccountUin() });
@@ -42,12 +42,12 @@ public final class NearbyProxy$9
     if (localObject1 == null)
     {
       l = 0L;
-      axdz.a((String)localObject2, l, 0);
+      axws.a((String)localObject2, l, 0);
       this.a.getApp().getSharedPreferences(this.a.getCurrentAccountUin(), 0).edit().putInt("profilecard_host_last_newvote_animation_num", 0).commit();
       if (!ConnectNearbyProcService.a()) {
         break label211;
       }
-      axdm.a(this.a.a(), 4117);
+      axwf.a(this.a.a(), 4117);
     }
     label211:
     do
@@ -55,10 +55,10 @@ public final class NearbyProxy$9
       return;
       l = ((Card)localObject1).lVoteCount;
       break;
-      localObject1 = aybu.a(this.a);
+      localObject1 = ayuo.a(this.a);
     } while (localObject1 == null);
     ((NearbyMyTabCard)localObject1).newLikeNum = 0;
-    aybu.a(this.a, (NearbyMyTabCard)localObject1);
+    ayuo.a(this.a, (NearbyMyTabCard)localObject1);
   }
 }
 

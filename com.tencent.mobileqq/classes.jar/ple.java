@@ -1,37 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.XRecyclerView;
 
 public class ple
-  implements bksw
+  implements URLDrawable.URLDrawableListener
 {
-  public ple(ReadInJoyDynamicChannelFragment paramReadInJoyDynamicChannelFragment) {}
+  public ple(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, int paramInt1, int paramInt2) {}
   
-  public void a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    QLog.d("ReadInJoyDynamicChannelFragment", 2, "endRefresh.");
-  }
-  
-  public void a(XRecyclerView paramXRecyclerView, int paramInt)
-  {
-    QLog.d("ReadInJoyDynamicChannelFragment", 2, "startLoadMore.");
-    if (ReadInJoyDynamicChannelFragment.h(this.a) == 40830) {}
-    for (paramInt = ReadInJoyDynamicChannelFragment.i(this.a);; paramInt = 1)
-    {
-      pmh.a().a(ReadInJoyDynamicChannelFragment.j(this.a), ReadInJoyDynamicChannelFragment.k(this.a), 2, 0, paramInt);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadCanceled");
     }
   }
   
-  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    QLog.d("ReadInJoyDynamicChannelFragment", 2, "startTopRefresh.");
-    if (paramBoolean) {}
-    for (int i = 1;; i = 3)
-    {
-      this.a.b(i);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadFialed");
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadProgressed =" + paramInt);
+    }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (ReadInjoyIMAXAdFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment)) {
       return;
     }
+    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment, this.jdField_a_of_type_Int, this.b);
   }
 }
 

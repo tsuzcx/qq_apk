@@ -1,16 +1,8 @@
-import com.tencent.mobileqq.data.MessageForFoldMsg;
-import java.util.LinkedHashSet;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
-class acvj
+public abstract interface acvj
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 9223372036854775807L;
-  MessageForFoldMsg jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
-  LinkedHashSet<String> jdField_a_of_type_JavaUtilLinkedHashSet = new LinkedHashSet();
-  boolean jdField_a_of_type_Boolean = false;
-  long jdField_b_of_type_Long = 0L;
-  MessageForFoldMsg jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
-  boolean jdField_b_of_type_Boolean = true;
+  public abstract void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo);
 }
 
 

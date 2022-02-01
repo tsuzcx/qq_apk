@@ -1,51 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqnn
-  implements aqlb<String>
+  implements View.OnClickListener
 {
-  public boolean a = true;
-  public boolean b = true;
+  public aqnn(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("ark_app_manage_panel_disable", 1) != 0)
-      {
-        bool = true;
-        this.a = bool;
-        apme.a = this.a;
-        if (paramString.optInt("ark_download_by_yyb_disable", 1) == 0) {
-          break label115;
-        }
-      }
-      label115:
-      for (boolean bool = true;; bool = false)
-      {
-        this.b = bool;
-        apme.f = this.b;
-        QLog.i("ArkMsgAIDisableConfig", 1, "onParse " + ", ark_app_manage_panel_disable=" + this.a + ", ark_download_by_yyb_disable =" + this.b);
-        return;
-        bool = false;
-        break;
-      }
-      return;
+    String str = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(str)) {
+      this.a.a(str);
     }
-    catch (JSONException paramString)
-    {
-      QLog.e("ArkMsgAIDisableConfig", 1, "handleArkMsgAIDisableConfig parse config_content exception=" + paramString);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqnn
  * JD-Core Version:    0.7.0.1
  */

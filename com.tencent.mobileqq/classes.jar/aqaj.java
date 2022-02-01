@@ -1,106 +1,54 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
-import com.tencent.mobileqq.businessCard.utilities.BusinessCardUtils.2;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1.1.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.lang.ref.WeakReference;
 
 public class aqaj
+  implements aqau
 {
-  public static BusinessCard a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = (apyx)paramQQAppInterface.getManager(112);
-    if (paramQQAppInterface != null) {}
-    for (paramQQAppInterface = paramQQAppInterface.a();; paramQQAppInterface = null)
-    {
-      Object localObject = paramQQAppInterface;
-      if (paramQQAppInterface == null) {
-        localObject = new BusinessCard();
-      }
-      return localObject;
-    }
-  }
+  public aqaj(ArkAiDictUpdateMgr.1 param1, arcy paramarcy, aqaw paramaqaw, arcm paramarcm) {}
   
-  public static BusinessCard a(QQAppInterface paramQQAppInterface, azfe paramazfe)
+  public void a(boolean paramBoolean)
   {
-    apyx localapyx = (apyx)paramQQAppInterface.getManager(112);
-    if (paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
-      paramQQAppInterface = localapyx.a();
+    if (!paramBoolean)
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, one task failed, dict-id=%s", new Object[] { aqai.a(this.jdField_a_of_type_Arcy) }));
+      this.jdField_a_of_type_Aqaw.jdField_a_of_type_Boolean = false;
     }
     for (;;)
     {
-      paramazfe = paramQQAppInterface;
-      if (paramQQAppInterface == null) {
-        paramazfe = new BusinessCard();
-      }
-      return paramazfe;
-      if (paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard != null)
+      synchronized (this.jdField_a_of_type_Aqaw)
       {
-        paramQQAppInterface = paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard.getCardInfo();
-        if ((paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard.hasCardInfo()) && (!TextUtils.isEmpty(paramQQAppInterface.cardId))) {
-          localapyx.a(paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, paramQQAppInterface);
-        } else {
-          paramQQAppInterface = localapyx.b(paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+        aqaw localaqaw2 = this.jdField_a_of_type_Aqaw;
+        int i = localaqaw2.jdField_a_of_type_Int - 1;
+        localaqaw2.jdField_a_of_type_Int = i;
+        if (i != 0) {
+          return;
+        }
+        if (this.jdField_a_of_type_Aqaw.jdField_a_of_type_Boolean)
+        {
+          ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, all success");
+          aqai.a(this.jdField_a_of_type_Arcm);
+          aqai.b(this.jdField_a_of_type_Arcm);
+          aqaf.b((AppInterface)aqai.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0).get());
+          try
+          {
+            aqai.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0, false);
+            if (aqai.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0))
+            {
+              aqai.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0, false);
+              ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, pending update task exists, wait 5 second and update");
+              ArkAppCenter.a().postToMainThreadDelayed(new ArkAiDictUpdateMgr.1.1.1(this), 5000L);
+            }
+            return;
+          }
+          finally {}
         }
       }
-      else
-      {
-        paramQQAppInterface = null;
-      }
+      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, one or more tasks failed.");
     }
-  }
-  
-  public static void a(String paramString)
-  {
-    try
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = 1000;
-      localURLDrawableOptions.mRequestHeight = 600;
-      ThreadManager.post(new BusinessCardUtils.2(URLDrawable.getDrawable(paramString, localURLDrawableOptions)), 8, null, true);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("errorCode", String.valueOf(paramInt));
-    bctj.a(BaseApplicationImpl.getContext()).a(paramString, "ocr_user_edit_action_report", true, 0L, 0L, localHashMap, null);
-  }
-  
-  public static void a(String paramString, URLImageView paramURLImageView, int paramInt1, int paramInt2)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramURLImageView == null)) {}
-    do
-    {
-      return;
-      try
-      {
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = paramInt1;
-        localURLDrawableOptions.mRequestHeight = paramInt2;
-        localURLDrawableOptions.mLoadingDrawable = paramURLImageView.getContext().getResources().getDrawable(2130844938);
-        paramURLImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
-        paramURLImageView.setURLDrawableDownListener(new aqak(paramURLImageView));
-        return;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("BusinessCard", 2, "error " + paramString.toString());
   }
 }
 

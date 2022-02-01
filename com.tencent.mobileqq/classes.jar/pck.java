@@ -1,16 +1,24 @@
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.qphone.base.util.QLog;
 
-class pck
-  extends pcm
+public class pck
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  pck(pbe parampbe, List paramList)
-  {
-    super(parampbe, null);
-  }
+  public pck(DailyTipsFoldUtils.1 param1, View paramView, int paramInt) {}
   
-  void a(pcp parampcp)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    parampcp.onCommentListLoad(1, true, this.jdField_a_of_type_JavaUtilList, pbe.b(this.jdField_a_of_type_Pbe), 3, 3);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
+    int i = (int)(this.jdField_a_of_type_Int * f);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.smoothScrollToPositionFromTop(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.getHeaderViewsCount(), -i, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("DailyTipsFoldUtils", 2, "percent = " + f + ", scrollHeight = " + i);
+    }
   }
 }
 

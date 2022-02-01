@@ -1,50 +1,70 @@
-import android.content.IntentFilter;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import java.io.File;
 
 public class lds
 {
-  public static String a;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  ldt jdField_a_of_type_Ldt;
-  boolean jdField_a_of_type_Boolean = false;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  static
+  public int a()
   {
-    jdField_a_of_type_JavaLangString = "AccountReceiver";
+    if (this.a == 1) {
+      return 2;
+    }
+    if (this.a == 4) {
+      return 1;
+    }
+    if (this.a == 2) {
+      return 4;
+    }
+    if (this.a == 8) {
+      return 3;
+    }
+    return 0;
   }
   
-  public lds(VideoAppInterface paramVideoAppInterface)
+  public String a()
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_Ldt = new ldt(paramVideoAppInterface);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
+    lom locallom = new lom('=', ';');
+    locallom.a("s_path", this.jdField_b_of_type_JavaLangString);
+    if (a())
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Ldt);
-      this.jdField_a_of_type_Boolean = false;
+      locallom.a("i_fps", this.jdField_b_of_type_Int);
+      locallom.a("i_bitrate", this.jdField_c_of_type_Int);
+      locallom.a("s_outpath", this.d);
+      File localFile = new File(this.d);
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+    }
+    for (;;)
+    {
+      return locallom.a();
+      locallom.a("s_expMd5", this.jdField_c_of_type_JavaLangString);
     }
   }
   
-  public void b()
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQ Account Receiver, Declare permissions");
+    boolean bool2 = false;
+    boolean bool1;
+    if ((this.a == 2) || (this.a == 8)) {
+      bool1 = true;
     }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
-    localIntentFilter.addAction("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName());
-    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
-    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
-    localIntentFilter.addAction("tencent.video.q2v.membersChange");
-    localIntentFilter.addAction("mqq.intent.action.LOGOUT");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Ldt, localIntentFilter, "com.tencent.msg.permission.pushnotify", null) != null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (this.a == 1);
+      bool1 = bool2;
+    } while (this.a != 4);
+    return false;
   }
 }
 

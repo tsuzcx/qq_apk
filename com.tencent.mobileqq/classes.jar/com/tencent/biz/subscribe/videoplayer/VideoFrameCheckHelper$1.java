@@ -1,7 +1,7 @@
 package com.tencent.biz.subscribe.videoplayer;
 
-import aajw;
-import aajx;
+import aanx;
+import aany;
 import android.os.Handler;
 import android.view.TextureView;
 import com.tencent.qphone.base.util.QLog;
@@ -10,25 +10,25 @@ import mqq.util.WeakReference;
 public class VideoFrameCheckHelper$1
   implements Runnable
 {
-  public VideoFrameCheckHelper$1(aajw paramaajw, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
+  public VideoFrameCheckHelper$1(aanx paramaanx, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
   
   public void run()
   {
     QLog.d("VideoFrameCheckHelper", 1, "doCheckCurrentFrame");
-    if (System.currentTimeMillis() - aajw.a(this.this$0) >= 4000L) {}
+    if (System.currentTimeMillis() - aanx.a(this.this$0) >= 4000L) {}
     for (boolean bool = true; (this.a.get() == null) || (this.b.get() == null); bool = false)
     {
       QLog.d("VideoFrameCheckHelper", 1, "reference recycled");
       return;
     }
-    if ((aajw.a(this.this$0, (TextureView)this.b.get())) && (!bool))
+    if ((aanx.a(this.this$0, (TextureView)this.b.get())) && (!bool))
     {
-      aajw.a(this.this$0, (TextureView)this.b.get(), (aajx)this.a.get());
+      aanx.a(this.this$0, (TextureView)this.b.get(), (aany)this.a.get());
       QLog.d("VideoFrameCheckHelper", 1, "doCheckCurrentFrame again");
       return;
     }
-    aajw.a(this.this$0).post(new VideoFrameCheckHelper.1.1(this, bool));
-    aajw.b(this.this$0).removeCallbacksAndMessages(null);
+    aanx.a(this.this$0).post(new VideoFrameCheckHelper.1.1(this, bool));
+    aanx.b(this.this$0).removeCallbacksAndMessages(null);
     QLog.d("VideoFrameCheckHelper", 1, "doCheckCurrentFrame stop isReachMaxTime:" + bool);
   }
 }

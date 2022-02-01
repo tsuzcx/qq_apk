@@ -1,10 +1,25 @@
-import android.view.MotionEvent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import java.util.ArrayList;
 
-public abstract interface apxx
+final class apxx
+  extends apzi
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  apxx(String paramString, ArrayList paramArrayList)
+  {
+    super(paramString);
+  }
   
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBoolean)
+    {
+      paramBundle = paramBundle.getString("userInfo", null);
+      if (!TextUtils.isEmpty(paramBundle)) {
+        this.a.add(paramBundle);
+      }
+    }
+  }
 }
 
 

@@ -1,156 +1,174 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.av.opengl.effects.AEFilterSupport;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
-public final class msy
-  extends Drawable
+public class msy
 {
-  private final int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private HashMap<Integer, ArrayList<Bitmap>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+  private final HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
   private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int;
-  private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private int c = -1;
-  private int d;
+  private final long[] jdField_a_of_type_ArrayOfLong = new long[20];
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private final HashMap<String, Long> jdField_b_of_type_JavaUtilHashMap = new HashMap(10);
+  private int jdField_c_of_type_Int;
+  private long jdField_c_of_type_Long;
+  private final long d;
   
-  public msy(int paramInt1, int paramInt2)
+  public msy()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-  }
-  
-  private ArrayList<Bitmap> a()
-  {
-    return (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.c));
-  }
-  
-  private void a(Canvas paramCanvas) {}
-  
-  private boolean a()
-  {
-    return (this.c == 1) || (this.c == 3);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.c == paramInt) {
-      return;
-    }
-    int i = this.c;
-    this.c = paramInt;
-    invalidateSelf();
-  }
-  
-  public void a(int paramInt, Bitmap paramBitmap)
-  {
-    ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    if (localArrayList != null)
+    if (AudioHelper.a(34) == 1) {}
+    for (;;)
     {
-      localArrayList.add(paramBitmap);
-      return;
-    }
-    localArrayList = new ArrayList();
-    localArrayList.add(paramBitmap);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localArrayList);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.d = paramInt;
-    invalidateSelf();
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    a(paramCanvas);
-    Object localObject = a();
-    if (a())
-    {
-      localBitmap = (Bitmap)((ArrayList)localObject).get(0);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    do
-    {
-      return;
-      if (this.c == 0)
+      this.jdField_a_of_type_Boolean = bool;
+      while (i < this.jdField_a_of_type_ArrayOfLong.length)
       {
-        localBitmap = (Bitmap)((ArrayList)localObject).get(0);
-        localObject = (Bitmap)((ArrayList)localObject).get(1);
-        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-        paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-        paramCanvas.save();
-        int i = (int)(this.jdField_b_of_type_Int * (10000 - this.d) / 10000.0F);
-        if (QLog.isColorLevel()) {
-          QLog.d("huanxxiao", 1, "doUpdateAudioVolumeChange nexValue:=" + this.d);
-        }
-        this.jdField_b_of_type_AndroidGraphicsRect.set(0, i, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        paramCanvas.clipRect(this.jdField_b_of_type_AndroidGraphicsRect);
-        paramCanvas.drawBitmap((Bitmap)localObject, null, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-        paramCanvas.restore();
-        return;
+        this.jdField_a_of_type_ArrayOfLong[i] = 0L;
+        i += 1;
       }
-    } while (this.c != 2);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (Bitmap localBitmap = (Bitmap)((ArrayList)localObject).get(1);; localBitmap = (Bitmap)((ArrayList)localObject).get(0))
+      bool = false;
+    }
+    i = AEFilterSupport.a();
+    if (i >= 7) {
+      this.d = 30L;
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      if (QLog.isColorLevel()) {
+        QLog.i("PerfRecorder", 2, "logPerfData[" + this.jdField_a_of_type_Boolean + "], machineLevel[" + i + "], frameCostLine[" + this.d + "]");
+      }
       return;
+      if (i >= 4) {
+        this.d = 48L;
+      } else {
+        this.d = 66L;
+      }
     }
   }
   
-  public int getIntrinsicHeight()
+  public void a()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  protected void onBoundsChange(Rect paramRect)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() == paramInt) {
-      return;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      Object localObject = localStringBuilder.append("endOfOneChat, frameAvgCost[").append(this.jdField_c_of_type_Long).append("], frameCount[").append(this.jdField_a_of_type_Int).append("], frameTotalCost[").append(this.jdField_b_of_type_Long).append("], frameAvgCost2[");
+      long l;
+      if (this.jdField_a_of_type_Int > 0)
+      {
+        l = this.jdField_b_of_type_Long / this.jdField_a_of_type_Int;
+        localObject = ((StringBuilder)localObject).append(l).append("], frameCostLine[").append(this.d).append("], frameCostOverLineCnt[").append(this.jdField_b_of_type_Int).append("], frameCostOverLine[");
+        if (this.jdField_a_of_type_Int <= 0) {
+          break label193;
+        }
+      }
+      label193:
+      for (float f = this.jdField_b_of_type_Int / this.jdField_a_of_type_Int;; f = 0.0F)
+      {
+        ((StringBuilder)localObject).append(f).append("], {");
+        localObject = this.jdField_a_of_type_ArrayOfLong;
+        int j = localObject.length;
+        i = 0;
+        while (i < j)
+        {
+          localStringBuilder.append(localObject[i]).append(",");
+          i += 1;
+        }
+        l = 0L;
+        break;
+      }
+      localStringBuilder.append("}");
+      QLog.i("PerfRecorder", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-    invalidateSelf();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfLong.length)
+    {
+      this.jdField_a_of_type_ArrayOfLong[i] = 0L;
+      i += 1;
+    }
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public void setColorFilter(ColorFilter paramColorFilter)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    long l3 = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_Int += 1;
+    this.jdField_b_of_type_Long += l3;
+    if (this.jdField_c_of_type_Long == 0L) {}
+    for (this.jdField_c_of_type_Long = l3;; this.jdField_c_of_type_Long = ((this.jdField_c_of_type_Long + l3) / 2L))
+    {
+      if (l3 > this.jdField_a_of_type_ArrayOfLong[this.jdField_c_of_type_Int]) {
+        this.jdField_a_of_type_ArrayOfLong[this.jdField_c_of_type_Int] = l3;
+      }
+      long l1 = this.jdField_a_of_type_ArrayOfLong[this.jdField_c_of_type_Int];
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfLong.length)
+      {
+        long l2 = l1;
+        if (this.jdField_a_of_type_ArrayOfLong[i] < l1)
+        {
+          l2 = this.jdField_a_of_type_ArrayOfLong[i];
+          this.jdField_c_of_type_Int = i;
+        }
+        i += 1;
+        l1 = l2;
+      }
+    }
+    if (l3 > this.d) {
+      this.jdField_b_of_type_Int += 1;
+    }
+    this.jdField_b_of_type_JavaUtilHashMap.clear();
+    if ((this.jdField_a_of_type_Boolean) && (QLog.isColorLevel()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder(500);
+      localStringBuilder.append("frameEnd, frameIndex: ").append(paramLong).append(", curFrameCost: ").append(l3).append(", frameCount: ").append(this.jdField_a_of_type_Int).append(", frameTotalCost: ").append(this.jdField_b_of_type_Long).append(", stepCost{");
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        Long localLong = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+        localStringBuilder.append(str).append(" : ").append(localLong).append(", ");
+      }
+      localStringBuilder.append("}, ");
+      QLog.i("PerfRecorder", 2, localStringBuilder.toString());
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(SystemClock.elapsedRealtime()));
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  }
+  
+  public void b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      Long localLong = (Long)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
+      if (localLong != null) {
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(SystemClock.elapsedRealtime() - localLong.longValue()));
+      }
+    }
   }
 }
 

@@ -1,40 +1,15 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.os.Process;
-import com.tencent.av.core.SDKConfigInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-
-public class lkr
+class lkr
 {
-  private final SDKConfigInfo a = new SDKConfigInfo(null);
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
+  int c = 0;
+  int d = 0;
+  int e = 0;
+  int f = 0;
+  int g = 0;
+  int h = 0;
   
-  public lkr()
-  {
-    int i = Process.myPid();
-    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses().iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-      if (localRunningAppProcessInfo.pid == i) {
-        SDKConfigInfo.access$102(this.a, localRunningAppProcessInfo.processName);
-      }
-    }
-    if (SDKConfigInfo.access$100(this.a).endsWith("avgame"))
-    {
-      localObject = this.a;
-      SDKConfigInfo.access$202((SDKConfigInfo)localObject, SDKConfigInfo.access$200((SDKConfigInfo)localObject) + "_avgame");
-    }
-    QLog.i("SDKConfigInfo", 1, "SDKConfigInfo, info[" + this.a.toString() + "]");
-  }
-  
-  public SDKConfigInfo a()
-  {
-    return this.a;
-  }
+  lkr(lkn paramlkn) {}
 }
 
 

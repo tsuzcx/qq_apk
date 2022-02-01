@@ -1,17 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnItemTouchListener;
+import android.view.MotionEvent;
 
-public class aahp
-  implements View.OnClickListener
+class aahp
+  implements RecyclerView.OnItemTouchListener
 {
-  public aahp(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
+  aahp(aahk paramaahk) {}
   
-  public void onClick(View paramView)
+  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return aahk.a(this.a, paramMotionEvent);
+  }
+  
+  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
+  
+  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  {
+    if (aahk.a(this.a) != null) {
+      aahk.a(this.a).a(paramMotionEvent);
+    }
   }
 }
 

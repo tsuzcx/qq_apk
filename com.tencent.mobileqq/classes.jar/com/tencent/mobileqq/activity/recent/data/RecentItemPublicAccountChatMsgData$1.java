@@ -1,15 +1,18 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import com.tencent.imcore.message.QQMessageFacade;
+import aivu;
+import aivv;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.RecentUser;
 
 class RecentItemPublicAccountChatMsgData$1
   implements Runnable
 {
+  RecentItemPublicAccountChatMsgData$1(RecentItemPublicAccountChatMsgData paramRecentItemPublicAccountChatMsgData, QQAppInterface paramQQAppInterface, aivv paramaivv) {}
+  
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq, "extLong", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.extLong));
+    aivu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.mUser.uin, this.jdField_a_of_type_Aivv, null);
   }
 }
 

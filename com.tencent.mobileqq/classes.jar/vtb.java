@@ -1,10 +1,19 @@
-public abstract interface vtb
+import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetFeedListRsp;
+
+class vtb
+  implements aaav<FeedCloudRead.StGetFeedListRsp>
 {
-  public abstract void a();
+  vtb(vta paramvta, QCircleGetFeedListRequest paramQCircleGetFeedListRequest, aadl paramaadl) {}
   
-  public abstract void a(float paramFloat1, float paramFloat2);
-  
-  public abstract void b();
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
+  {
+    QLog.d("QCircleTagPreLoaderTask", 1, "QCircleTagPreLoaderTask->onReceive: dispatch Success:" + paramBoolean + " |CmdName:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCmdName() + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
+    if (this.jdField_a_of_type_Aadl != null) {
+      this.jdField_a_of_type_Aadl.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetFeedListRsp });
+    }
+  }
 }
 
 

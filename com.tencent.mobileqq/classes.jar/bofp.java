@@ -1,63 +1,37 @@
-import com.tencent.tav.core.AssetExportSession;
-import com.tencent.tavcut.exporter.MovieExporter.ExportListener;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import dov.com.qq.im.aeeditor.module.export.AEEditorGenerateRunnable;
+import android.graphics.SurfaceTexture;
 
-public class bofp
-  implements MovieExporter.ExportListener
+class bofp
+  implements boiv
 {
-  private long jdField_a_of_type_Long;
-  private long b;
+  bofp(bofh parambofh) {}
   
-  public bofp(AEEditorGenerateRunnable paramAEEditorGenerateRunnable, TAVCutVideoSession paramTAVCutVideoSession) {}
-  
-  public void onExportCancel()
+  public void a()
   {
-    bnzb.b("AEEditorGenerateRunnable", "onExportCancel:" + AEEditorGenerateRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorModuleExportAEEditorGenerateRunnable));
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.release();
+    bpam.b("AEPituCameraUnit", "onPreviewSurfaceTextureRelease---" + bofh.a(this.a));
+    bofh.a(this.a, null);
   }
   
-  public void onExportCompleted(String paramString)
+  public void a(int paramInt)
   {
-    this.b = System.currentTimeMillis();
-    bnzb.b("AEEditorGenerateRunnable", "perf: video export cost = " + (this.b - this.jdField_a_of_type_Long) + "ms");
-    bnzb.b("AEEditorGenerateRunnable", "onExportCompleted mMissionID: " + AEEditorGenerateRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorModuleExportAEEditorGenerateRunnable));
-    bnzb.b("AEEditorGenerateRunnable", "onExportCompleted exportPath: " + paramString);
-    if (AEEditorGenerateRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorModuleExportAEEditorGenerateRunnable) != null) {
-      AEEditorGenerateRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorModuleExportAEEditorGenerateRunnable).a(AEEditorGenerateRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorModuleExportAEEditorGenerateRunnable), paramString);
-    }
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.release();
+    bofh.a(this.a).a(paramInt, new bofq(this));
   }
   
-  public void onExportError(AssetExportSession paramAssetExportSession)
+  public void a(SurfaceTexture paramSurfaceTexture)
   {
-    int i = -1;
-    if (paramAssetExportSession != null)
-    {
-      i = paramAssetExportSession.getErrCode();
-      bnzb.d("AEEditorGenerateRunnable", "[onExportError] errorcode " + i);
-    }
-    bnzb.b("AEEditorGenerateRunnable", "onExportError:" + AEEditorGenerateRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorModuleExportAEEditorGenerateRunnable));
-    if (AEEditorGenerateRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorModuleExportAEEditorGenerateRunnable) != null) {
-      AEEditorGenerateRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorModuleExportAEEditorGenerateRunnable).a(AEEditorGenerateRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorModuleExportAEEditorGenerateRunnable), i);
-    }
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.release();
+    bofh.a(this.a, paramSurfaceTexture);
+    bpam.b("AEPituCameraUnit", "onPreviewSurfaceTextureCreate---" + bofh.a(this.a));
+    bofh.f(this.a);
   }
   
-  public void onExportStart()
+  public void b()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    bnzb.b("AEEditorGenerateRunnable", "onExportStart :" + AEEditorGenerateRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorModuleExportAEEditorGenerateRunnable));
-    if (AEEditorGenerateRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorModuleExportAEEditorGenerateRunnable) != null) {
-      AEEditorGenerateRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorModuleExportAEEditorGenerateRunnable).d(AEEditorGenerateRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorModuleExportAEEditorGenerateRunnable));
-    }
+    bowp.a().a("onFirstFrameDone");
+    bofh.h(this.a);
   }
   
-  public void onExporting(float paramFloat)
+  public void c()
   {
-    if (AEEditorGenerateRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorModuleExportAEEditorGenerateRunnable) != null) {
-      AEEditorGenerateRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorModuleExportAEEditorGenerateRunnable).a(AEEditorGenerateRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorModuleExportAEEditorGenerateRunnable), paramFloat);
-    }
+    bofh.a(this.a).b(new bofr(this));
   }
 }
 

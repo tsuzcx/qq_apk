@@ -1,16 +1,8 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
 
-class bozg
-  extends AnimatorListenerAdapter
+public abstract interface bozg
 {
-  bozg(boza paramboza) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    boza.a(this.a).setVisibility(8);
-  }
+  public abstract void a(NodeItem paramNodeItem);
 }
 
 

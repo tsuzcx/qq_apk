@@ -1,33 +1,41 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.List;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.Spannable.Factory;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-class yhx
-  extends SimpleObserver<ybk>
+public class yhx
+  implements View.OnTouchListener
 {
-  yhx(yhw paramyhw) {}
-  
-  public void a(ybk paramybk)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.onNext(paramybk);
-    if (paramybk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
     {
-      woj localwoj = (woj)wpm.a(17);
-      localwoj.a(paramybk.jdField_a_of_type_JavaUtilList, paramybk.jdField_a_of_type_JavaLangString, false, false);
-      paramybk.jdField_a_of_type_JavaUtilList.addAll(localwoj.b(paramybk.jdField_a_of_type_JavaLangString, false));
+      Object localObject = ((TextView)paramView).getText();
+      localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
+      paramView = (TextView)paramView;
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramView.getTotalPaddingLeft();
+      int n = paramView.getTotalPaddingTop();
+      int i1 = paramView.getScrollX();
+      int i2 = paramView.getScrollY();
+      paramMotionEvent = paramView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      paramMotionEvent = (ClickableSpan[])((Spannable)localObject).getSpans(j, j, ClickableSpan.class);
+      if (paramMotionEvent.length != 0)
+      {
+        if (i == 1) {
+          paramMotionEvent[0].onClick(paramView);
+        }
+        return true;
+      }
     }
-    wfo.a().dispatch(paramybk);
-    this.a.b();
-    yqp.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull next");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    this.a.b();
-    yqp.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull error", paramError);
+    return false;
   }
 }
 

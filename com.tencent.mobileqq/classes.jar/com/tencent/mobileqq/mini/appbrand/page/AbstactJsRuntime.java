@@ -29,6 +29,11 @@ public abstract class AbstactJsRuntime
     this.mThreadHandler = new Handler(this.mHandlerThread.getLooper());
   }
   
+  public int createNativeBuffer(byte[] paramArrayOfByte, long paramLong1, long paramLong2)
+  {
+    return 0;
+  }
+  
   public ApkgInfo getApkgInfo()
   {
     return this.apkgInfo;
@@ -37,6 +42,11 @@ public abstract class AbstactJsRuntime
   public Context getContextEx()
   {
     return this.mContext;
+  }
+  
+  public byte[] getNativeBuffer(int paramInt)
+  {
+    return new byte[0];
   }
   
   public void setApkgInfo(ApkgInfo paramApkgInfo)

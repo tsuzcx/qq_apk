@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.activity;
 
 import android.app.Activity;
 import android.os.Handler;
-import anni;
+import anzj;
 import com.tencent.mobileqq.widget.QQToast;
 
 class LoadingFragment$6$3
@@ -12,7 +12,7 @@ class LoadingFragment$6$3
   
   public void run()
   {
-    QQToast.a(this.this$1.this$0.getActivity().getApplicationContext(), anni.a(2131705041), 0).a();
+    QQToast.a(this.this$1.this$0.getActivity().getApplicationContext(), anzj.a(2131705148), 0).a();
     this.this$1.this$0.uiHandler.postDelayed(new LoadingFragment.6.3.1(this), 1000L);
   }
 }

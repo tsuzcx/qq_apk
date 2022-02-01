@@ -1,22 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.util.Pair;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
-class afgf
-  implements DialogInterface.OnClickListener
+public class afgf
+  implements Comparator<ChatMessage>
 {
-  afgf(afge paramafge, bddy parambddy, Pair paramPair) {}
+  public afgf(QQLSActivity paramQQLSActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    this.jdField_a_of_type_Bddy.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!bddy.a(this.jdField_a_of_type_Afge.a.app))
-    {
-      this.jdField_a_of_type_Afge.a.setTitle("");
-      bddx.a(this.jdField_a_of_type_Afge.a.app, this.jdField_a_of_type_Afge.a, null);
+    if (paramChatMessage1.time == paramChatMessage2.time) {
+      return 0;
     }
-    this.jdField_a_of_type_Afge.a.finish();
+    if (paramChatMessage1.time > paramChatMessage2.time) {
+      return 1;
+    }
+    return -1;
   }
 }
 

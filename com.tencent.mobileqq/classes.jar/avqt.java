@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class avqt
-  implements bfxy
+class avqt
+  implements DialogInterface.OnClickListener
 {
-  public avqt(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  avqt(avqr paramavqr) {}
   
-  public void a(long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(paramLong) });
+    avqr.a(this.a, null);
+    avqr.b(this.a, null);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,20 +1,28 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class aafi
-  implements View.OnClickListener
+public class aafi
+  implements aarb
 {
-  aafi(aafd paramaafd, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  public aafi(RecommendBannerItemView paramRecommendBannerItemView) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    aaet.b(this.jdField_a_of_type_Aafd.a, aaet.a(this.jdField_a_of_type_Aafd.a).a(aaet.a(this.jdField_a_of_type_Aafd.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply));
-    aaet.c(this.jdField_a_of_type_Aafd.a, true);
-    aaet.a(this.jdField_a_of_type_Aafd.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (RecommendBannerItemView.a(this.a))
+    {
+      if (RecommendBannerItemView.a(this.a) != null) {
+        abbe.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_follow_clk", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
+      }
+      return;
+    }
+    if (paramBoolean)
+    {
+      RecommendBannerItemView.a(this.a, "auth_page", "recom_follow", RecommendBannerItemView.a(this.a).id.get(), "", "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get());
+      return;
+    }
+    RecommendBannerItemView.a(this.a, "auth_page", "recom_unfollow", RecommendBannerItemView.a(this.a).id.get(), "", "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get());
   }
 }
 

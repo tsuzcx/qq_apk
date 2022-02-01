@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.AppInfo;
+import android.graphics.drawable.Drawable;
 
-public final class biyd
-  implements Parcelable.Creator<AppInfo>
+public abstract interface biyd
 {
-  public AppInfo a(Parcel paramParcel)
-  {
-    return new AppInfo(paramParcel);
-  }
+  public abstract void a(int paramInt);
   
-  public AppInfo[] a(int paramInt)
-  {
-    return new AppInfo[paramInt];
-  }
+  public abstract void a(Drawable paramDrawable);
+  
+  public abstract void b(Drawable paramDrawable);
 }
 
 

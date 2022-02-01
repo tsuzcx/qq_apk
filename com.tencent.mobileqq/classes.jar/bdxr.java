@@ -1,146 +1,54 @@
-import com.tencent.qphone.base.util.QLog;
-
 public class bdxr
+  extends bdxn
 {
-  private static int a;
-  public static bdxu a;
-  private static int b;
-  public static bdxu b;
-  private static int c;
-  public static bdxu c;
+  private float d;
+  private float e;
+  private float f;
+  private float g;
   
-  static
+  public bdxr(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    jdField_a_of_type_Int = 18;
-    jdField_b_of_type_Int = 6;
-    jdField_c_of_type_Int = 600000;
-    jdField_a_of_type_Bdxu = new bdxs();
-    jdField_b_of_type_Bdxu = new bdxt();
-    jdField_c_of_type_Bdxu = new bdxy();
+    super(paramInt, 1, 0);
+    this.d = paramFloat1;
+    this.e = paramFloat2;
+    this.f = paramFloat3;
+    this.g = paramFloat4;
   }
   
-  public static int a()
+  protected void a(int paramInt, float paramFloat)
   {
-    try
+    this.a = (this.d + (this.f - this.d) * paramFloat);
+    this.b = (this.e + (this.g - this.e) * paramFloat);
+    if (this.f - this.d > 0.0F)
     {
-      int i = jdField_a_of_type_Int;
-      return i;
+      if (this.a >= this.f) {
+        this.a = this.f;
+      }
+      if (this.g - this.e <= 0.0F) {
+        break label162;
+      }
+      if (this.b >= this.g) {
+        this.b = this.g;
+      }
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static bdxu a(int paramInt)
-  {
-    bdxu localbdxu = jdField_a_of_type_Bdxu;
-    switch (paramInt)
-    {
-    case 0: 
-    case 2: 
-    default: 
-      return localbdxu;
-    case 1: 
-    case 4: 
-    case 5: 
-      return jdField_c_of_type_Bdxu;
-    }
-    return jdField_b_of_type_Bdxu;
-  }
-  
-  public static void a(String paramString)
-  {
-    int i = 0;
-    if (paramString != null) {}
     for (;;)
     {
-      try
+      if (paramInt >= this.c)
       {
-        if (paramString.length() > 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("RichMediaStrategy", 2, "updataFromDpc: dpcString = " + paramString);
-          }
-          paramString = paramString.split("\\|");
-          int j;
-          if (paramString != null)
-          {
-            j = paramString.length;
-            if (j == 3) {
-              if (i >= 3) {
-                continue;
-              }
-            }
-          }
-          try
-          {
-            j = Integer.valueOf(paramString[i]).intValue();
-            if (j > 0) {
-              continue;
-            }
-          }
-          catch (NumberFormatException paramString)
-          {
-            QLog.e("RichMediaStrategy", 2, "updataFromDpc Erro", paramString);
-            continue;
-          }
-          return;
-          i += 1;
-          continue;
-          jdField_a_of_type_Int = Integer.valueOf(paramString[0]).intValue();
-          jdField_b_of_type_Int = Integer.valueOf(paramString[1]).intValue();
-          jdField_c_of_type_Int = Integer.valueOf(paramString[2]).intValue() * 1000;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("RichMediaStrategy", 2, "updataFromDpc: TryCount_dpc = " + jdField_a_of_type_Int + " FixSchedulTryCount_dpc = " + jdField_b_of_type_Int + " TryTime_dpc = " + jdField_c_of_type_Int);
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
+        this.a = this.f;
+        this.b = this.g;
       }
-      finally {}
-      QLog.d("RichMediaStrategy", 2, "updataFromDpc: dpcString is null !");
-    }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    boolean bool = false;
-    if ((paramInt == 9361) || (paramInt == 9037)) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public static int b()
-  {
-    try
-    {
-      int i = jdField_b_of_type_Int;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static int c()
-  {
-    try
-    {
-      int i = jdField_c_of_type_Int;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+      super.a(paramInt, paramFloat);
+      return;
+      if (this.a > this.f) {
+        break;
+      }
+      this.a = this.f;
+      break;
+      label162:
+      if (this.b <= this.g) {
+        this.b = this.g;
+      }
     }
   }
 }

@@ -1,50 +1,17 @@
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportReq;
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportRsp;
-import NS_MOBILE_QBOSS_PROTO.tMobileQbossFeedBackInfo;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public class bmew
-  extends QzoneExternalRequest
+class bmew
+  implements Callable<File>
 {
-  private JceStruct a;
+  bmew(bmev parambmev) {}
   
-  public bmew(ArrayList<tMobileQbossFeedBackInfo> paramArrayList)
+  public File a()
   {
-    MobileQbossReportReq localMobileQbossReportReq = new MobileQbossReportReq();
-    localMobileQbossReportReq.vecMobileQbossFeedBackInfo = paramArrayList;
-    this.a = localMobileQbossReportReq;
-  }
-  
-  public static MobileQbossReportRsp a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+    if (bmev.a(this.a).exists()) {
+      return bmev.a(this.a);
     }
-    MobileQbossReportRsp localMobileQbossReportRsp;
-    do
-    {
-      return paramArrayOfByte;
-      localMobileQbossReportRsp = (MobileQbossReportRsp)decode(paramArrayOfByte, "report");
-      paramArrayOfByte = localMobileQbossReportRsp;
-    } while (localMobileQbossReportRsp != null);
     return null;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.mobileqboss.report";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "report";
   }
 }
 

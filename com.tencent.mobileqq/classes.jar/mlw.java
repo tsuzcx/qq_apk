@@ -1,63 +1,44 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.av.ui.beauty.BeautyBaseView;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class mlw
-  extends PagerAdapter
+  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  final List<BeautyBaseView> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public mlw(VideoLayerUI paramVideoLayerUI) {}
   
-  public mlw(List<BeautyBaseView> paramList)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    Collection localCollection;
-    if (localCollection != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(localCollection);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onScale");
     }
-  }
-  
-  public BeautyBaseView a(int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt >= 0)
-    {
-      localObject1 = localObject2;
-      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-        localObject1 = (BeautyBaseView)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      }
+    if (VideoLayerUI.c(this.a) < 0) {
+      VideoLayerUI.a(this.a, (int)paramScaleGestureDetector.getFocusX());
     }
-    return localObject1;
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    if ((paramViewGroup != null) && ((paramObject instanceof BeautyBaseView))) {
-      paramViewGroup.removeView((BeautyBaseView)paramObject);
+    if (VideoLayerUI.d(this.a) < 0) {
+      VideoLayerUI.b(this.a, (int)paramScaleGestureDetector.getFocusY());
     }
+    float f = paramScaleGestureDetector.getScaleFactor();
+    this.a.jdField_a_of_type_ArrayOfMep[0].a(f, VideoLayerUI.c(this.a), VideoLayerUI.d(this.a));
+    return true;
   }
   
-  public int getCount()
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    BeautyBaseView localBeautyBaseView = a(paramInt);
-    if ((paramViewGroup != null) && (localBeautyBaseView != null)) {
-      paramViewGroup.addView(localBeautyBaseView);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onScaleEnd");
     }
-    return localBeautyBaseView;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    float f1 = this.a.jdField_a_of_type_ArrayOfMep[0].c();
+    float f2 = this.a.jdField_a_of_type_ArrayOfMep[0].a();
+    float f3 = this.a.jdField_a_of_type_ArrayOfMep[0].b();
+    if (f1 < f2) {
+      VideoLayerUI.a(this.a, this.a.jdField_a_of_type_ArrayOfMep[0], f2 / f1, 60L);
+    }
+    while (f1 <= f3) {
+      return;
+    }
+    VideoLayerUI.a(this.a, this.a.jdField_a_of_type_ArrayOfMep[0], f3 / f1, 60L);
   }
 }
 

@@ -1,22 +1,54 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqIconPostfix;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class xam
-  extends wla
+  extends wri
 {
-  public int b;
-  public int c;
+  private ArrayList<String> a;
   
-  public xam(qqstory_service.RspGetBlackList paramRspGetBlackList)
+  public xam(ArrayList<String> paramArrayList)
   {
-    super(paramRspGetBlackList.result);
-    this.b = paramRspGetBlackList.black_status.get();
-    this.c = paramRspGetBlackList.update_interval.get();
+    this.a = paramArrayList;
   }
   
-  public String toString()
+  public String a()
   {
-    return "GetBlackListStatusResponse{blackStatus=" + this.b + ", updateInterval=" + this.c + '}';
+    return wnu.a("StorySvc.batch_get_user_icon_info");
+  }
+  
+  public wrj a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspIconPostfix localRspIconPostfix = new qqstory_service.RspIconPostfix();
+    try
+    {
+      localRspIconPostfix.mergeFrom(paramArrayOfByte);
+      return new xan(localRspIconPostfix);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yuk.d("GetUserIconHandler", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqIconPostfix localReqIconPostfix = new qqstory_service.ReqIconPostfix();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (!TextUtils.isEmpty(str)) {
+        localReqIconPostfix.union_id_list.add(ByteStringMicro.copyFromUtf8(str));
+      }
+    }
+    return localReqIconPostfix.toByteArray();
   }
 }
 

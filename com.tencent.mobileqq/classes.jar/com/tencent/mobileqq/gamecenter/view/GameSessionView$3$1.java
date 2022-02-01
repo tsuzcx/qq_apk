@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import auuk;
+import avmk;
 import java.util.List;
 
 public class GameSessionView$3$1
   implements Runnable
 {
-  public GameSessionView$3$1(auuk paramauuk, List paramList) {}
+  public GameSessionView$3$1(avmk paramavmk, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Auuk.a.setData(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Avmk.a.setData(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

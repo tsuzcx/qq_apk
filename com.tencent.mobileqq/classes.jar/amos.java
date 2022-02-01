@@ -1,44 +1,54 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.data.ApolloGameData;
-import java.util.Comparator;
+import android.content.Context;
+import android.support.v4.view.ViewCompat;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.VersionUtils;
+import java.util.List;
 
-class amos
-  implements Comparator<ApolloGameData>
+public class amos<T>
+  extends ashn<T>
+  implements View.OnClickListener
 {
-  SparseArray<Long> a;
+  private DragSortListView a;
   
-  amos(SparseArray paramSparseArray)
+  public amos(Context paramContext, List<T> paramList, DragSortListView paramDragSortListView)
   {
-    this.a = paramSparseArray;
+    super(paramContext, paramList);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView = paramDragSortListView;
   }
   
-  public int a(ApolloGameData paramApolloGameData1, ApolloGameData paramApolloGameData2)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    long l2 = 0L;
-    long l1;
-    if (this.a.get(paramApolloGameData1.gameId) == null)
+    if (paramView == null) {}
+    for (View localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131561232, null);; localView = paramView)
     {
-      l1 = 0L;
-      if (this.a.get(paramApolloGameData2.gameId) != null) {
-        break label63;
+      localView.setVisibility(0);
+      localView.findViewById(2131377481).setVisibility(8);
+      TextView localTextView = (TextView)localView.findViewById(2131367719);
+      Groups localGroups = (Groups)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      localTextView.setText(localGroups.group_name);
+      ViewCompat.setImportantForAccessibility(localView.findViewById(2131367723), 1);
+      localView.setContentDescription(localGroups.group_name + anzj.a(2131704241));
+      if ((VersionUtils.isOreo()) && (AppSetting.c)) {
+        localView.setOnClickListener(this);
       }
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localView;
     }
-    for (;;)
-    {
-      if (l1 <= l2) {
-        break label85;
-      }
-      return -1;
-      l1 = ((Long)this.a.get(paramApolloGameData1.gameId)).longValue();
-      break;
-      label63:
-      l2 = ((Long)this.a.get(paramApolloGameData2.gameId)).longValue();
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (AppSetting.c) {
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.f();
     }
-    label85:
-    if (l1 < l2) {
-      return 1;
-    }
-    return 0;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

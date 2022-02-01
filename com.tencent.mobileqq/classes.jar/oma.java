@@ -1,12 +1,30 @@
-class oma
-  implements olv
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import java.util.Comparator;
+
+public class oma
+  implements Comparator<omf>
 {
-  oma(olx paramolx) {}
+  public oma(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
   
-  public void a(orb paramorb, int paramInt1, int paramInt2)
+  public int a(omf paramomf1, omf paramomf2)
   {
-    if (this.a.a.a(paramorb)) {
-      this.a.a.a(olx.a(this.a), olx.a(this.a), paramInt1, paramInt2);
+    int j = 2147483647;
+    int i;
+    if (TextUtils.isEmpty(omf.a(paramomf1)))
+    {
+      i = 2147483647;
+      if (!TextUtils.isEmpty(omf.a(paramomf2))) {
+        break label44;
+      }
+    }
+    for (;;)
+    {
+      return i - j;
+      i = omf.a(paramomf1).codePointAt(0);
+      break;
+      label44:
+      j = omf.a(paramomf2).codePointAt(0);
     }
   }
 }

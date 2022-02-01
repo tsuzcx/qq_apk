@@ -1,23 +1,51 @@
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface rpa
-  extends pyy<rpb>
+class rpa
+  implements ost
 {
-  public abstract int a();
+  rpa(roy paramroy) {}
   
-  public abstract void a(int paramInt, @NotNull rop paramrop);
+  public void a()
+  {
+    if (roy.a(this.a) != null) {
+      roy.a(this.a).a();
+    }
+  }
   
-  public abstract void a(@NotNull rop paramrop);
+  public void a(int paramInt)
+  {
+    if (paramInt < 0) {
+      return;
+    }
+    roy.a(this.a).e = paramInt;
+    roy.a(this.a).b(roy.a(this.a));
+  }
   
-  public abstract void a(@NotNull rtc paramrtc, @NotNull String paramString);
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    this.a.f();
+  }
   
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(@NotNull rop paramrop);
-  
-  public abstract void c();
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      roy.a(this.a).e();
+      this.a.f();
+    }
+  }
 }
 
 

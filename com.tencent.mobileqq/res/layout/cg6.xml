@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/loz" android:layout_width="fill_parent" android:layout_height="38.0dip" android:minHeight="38.0dip"
+<FrameLayout android:id="@id/lrw" android:padding="8.0dip" android:focusable="true" android:clickable="true" android:layout_width="156.0dip" android:layout_height="156.0dip" android:minHeight="156.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="#fffeffff" android:ellipsize="end" android:id="@id/ln6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/lnp" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/lqt" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="35.0dip" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="16.0dip" android:textColor="#ff00cafc" android:ellipsize="end" android:id="@id/lp2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignBaseline="@id/ln6" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="16.0dip" android:textColor="#fffeffff" android:ellipsize="end" android:id="@id/lqh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="78.0dip" android:layout_marginRight="3.0dip" android:singleLine="true" android:layout_toLeftOf="@id/lp2" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <ImageView android:gravity="center" android:id="@id/lp2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/lq8" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/lqh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="24.0dip" />
+</FrameLayout>

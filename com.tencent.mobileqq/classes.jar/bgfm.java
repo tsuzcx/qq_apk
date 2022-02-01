@@ -1,39 +1,41 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.LinearGradient;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import android.graphics.Shader.TileMode;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-final class bgfm
-  implements DownloadParams.DecodeHandler
+public class bgfm
+  extends bgff<bgeg>
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public View a;
+  public ImageView a;
+  public RoundCornerImageView a;
+  public URLDrawable a;
+  public MessageProgressView a;
+  public ImageView b;
+  public ImageView c;
+  
+  public bgfm(View paramView)
   {
-    if (paramBitmap == null) {
-      return null;
-    }
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    paramDownloadParams = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-    RectF localRectF = new RectF(0.0F, 0.0F, i, j);
-    Canvas localCanvas = new Canvas(paramDownloadParams);
-    BitmapShader localBitmapShader = new BitmapShader(paramBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-    Paint localPaint = new Paint();
-    localPaint.setStyle(Paint.Style.FILL);
-    localPaint.setAntiAlias(true);
-    localPaint.setShader(localBitmapShader);
-    localCanvas.drawRoundRect(localRectF, 12.0F, 12.0F, localPaint);
-    localPaint.setShader(new LinearGradient(0.0F, 0.0F, 0.0F, j / 2, Color.parseColor("#80000000"), Color.parseColor("#00000000"), Shader.TileMode.CLAMP));
-    localCanvas.drawRoundRect(localRectF, 12.0F, 12.0F, localPaint);
-    paramBitmap.recycle();
-    return paramDownloadParams;
+    super(paramView);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368090);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131368092));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.a = 1;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(10);
+    this.b = ((ImageView)paramView.findViewById(2131368095));
+    this.c = ((ImageView)paramView.findViewById(2131368093));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368091));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = ((MessageProgressView)paramView.findViewById(2131368094));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(10.0F, false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDisplayInTextView(agej.a(17.0F, paramView.getResources()), -1);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(new bgfn(this));
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(4);
+    this.b.setVisibility(4);
   }
 }
 

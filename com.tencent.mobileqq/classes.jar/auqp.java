@@ -1,79 +1,18 @@
-import java.util.ArrayList;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auqp
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public String a;
-  public ArrayList<auqq> a;
-  private boolean a;
-  public int b = -1;
-  public int c;
-  public int d;
+  public auqp(QFileDebugSettingFragment paramQFileDebugSettingFragment, QQAppInterface paramQQAppInterface) {}
   
-  private int a(auqq paramauqq1, auqq paramauqq2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i = Math.abs(paramauqq2.jdField_a_of_type_Int - paramauqq1.jdField_a_of_type_Int);
-    int j = Math.abs(paramauqq2.b - paramauqq1.b);
-    return (int)Math.ceil(Math.sqrt(i * i + j * j));
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
-      return 0;
-    }
-    auqq localauqq1 = (auqq)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-    auqq localauqq2 = (auqq)this.jdField_a_of_type_JavaUtilArrayList.get(1);
-    int i = localauqq2.jdField_a_of_type_Int - localauqq1.jdField_a_of_type_Int;
-    int j = localauqq2.b - localauqq1.b;
-    double d1 = Math.sqrt(i * i + j * j);
-    float f = (float)(Math.asin(j / d1) / 3.141592653589793D * 180.0D);
-    if (localauqq2.jdField_a_of_type_Int < localauqq1.jdField_a_of_type_Int) {
-      if (f > 0.0F) {
-        f = 180.0F - f;
-      }
-    }
-    for (;;)
-    {
-      return Math.round(f);
-      f = -(180.0F + f);
-    }
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        ((auqq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int = ((int)(((auqq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int * paramFloat));
-        ((auqq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b = ((int)(((auqq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b * paramFloat));
-        i += 1;
-      }
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public int b()
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 4)) {
-      return 0;
-    }
-    return a((auqq)this.jdField_a_of_type_JavaUtilArrayList.get(0), (auqq)this.jdField_a_of_type_JavaUtilArrayList.get(2));
-  }
-  
-  public int c()
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 4)) {
-      return 0;
-    }
-    return a((auqq)this.jdField_a_of_type_JavaUtilArrayList.get(0), (auqq)this.jdField_a_of_type_JavaUtilArrayList.get(3));
-  }
-  
-  public String toString()
-  {
-    return "PicOcrResult{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", confidence=" + this.jdField_a_of_type_Int + ", coorPoints=" + this.jdField_a_of_type_JavaUtilArrayList + ", arc=" + a() + '}';
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

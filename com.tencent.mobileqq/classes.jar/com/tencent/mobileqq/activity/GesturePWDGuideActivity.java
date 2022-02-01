@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aejj;
+import aesm;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -17,9 +17,9 @@ public class GesturePWDGuideActivity
   
   private void a()
   {
-    setTitle(2131692639);
-    this.a = ((Button)findViewById(2131367438));
-    this.a.setOnClickListener(new aejj(this));
+    setTitle(2131692647);
+    this.a = ((Button)findViewById(2131367500));
+    this.a.setOnClickListener(new aesm(this));
   }
   
   @Override

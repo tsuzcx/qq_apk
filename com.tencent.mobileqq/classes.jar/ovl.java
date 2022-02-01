@@ -1,49 +1,20 @@
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class ovl
-  extends bpcg
 {
-  public ovl(@NonNull bpep parambpep, long paramLong)
+  public int a;
+  public long a;
+  public String a;
+  public ovj a;
+  public boolean a;
+  public long b;
+  
+  public ovl()
   {
-    super(parambpep, paramLong);
+    this.jdField_a_of_type_Int = -1;
   }
   
-  private void j()
+  public String toString()
   {
-    a(2131379018).setVisibility(8);
-    ((TextView)a(2131365060)).setText(anni.a(2131711631));
-  }
-  
-  public void a()
-  {
-    super.a();
-    j();
-  }
-  
-  public void onClick(View paramView)
-  {
-    super.onClick(paramView);
-    int i = paramView.getId();
-    Long localLong = (Long)this.a.get(i);
-    if (localLong != null) {
-      switch ((int)localLong.longValue())
-      {
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      oat.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "3", "", "", "", false);
-      continue;
-      oat.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "1", "", "", "", false);
-      continue;
-      oat.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "2", "", "", "", false);
-    }
+    return "ResponseExtraInfo{commentCnt=" + this.jdField_a_of_type_Long + ", hideCommentCnt=" + this.b + ", showMaskPageNo=" + this.jdField_a_of_type_Int + ", jumpSchema='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isPgcAuthor=" + this.jdField_a_of_type_Boolean + ", label=" + this.jdField_a_of_type_Ovj.toString() + '}';
   }
 }
 

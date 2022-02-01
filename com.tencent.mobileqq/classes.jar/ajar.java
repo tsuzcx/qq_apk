@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.data.ContactMatch;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import mqq.app.AppRuntime;
 
-public class ajar
-  extends ajax
+class ajar
+  implements DialogInterface.OnClickListener
 {
-  public ContactMatch a;
+  ajar(ajaq paramajaq) {}
   
-  public ajar(ContactMatch paramContactMatch)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataContactMatch = paramContactMatch;
-    this.jdField_a_of_type_Long = paramContactMatch.timestamp;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataContactMatch.isReaded;
+    if (this.a.a.getActivity() != null)
+    {
+      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
+      this.a.a.getActivity().startActivity(localIntent);
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

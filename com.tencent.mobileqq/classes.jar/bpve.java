@@ -1,12 +1,77 @@
-public abstract interface bpve
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import dov.com.qq.im.capture.view.MusicFragmentProviderView;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class bpve
+  implements bpou
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public bpve(MusicFragmentProviderView paramMusicFragmentProviderView) {}
   
-  public abstract void d(int paramInt);
+  public void a()
+  {
+    this.a.i();
+  }
   
-  public abstract void e(int paramInt);
+  public void a(int paramInt, MusicItemInfo paramMusicItemInfo)
+  {
+    if (paramInt != -1)
+    {
+      this.a.a(paramInt);
+      MusicFragmentProviderView.a(this.a).set(-1);
+      this.a.j();
+      return;
+    }
+    this.a.i();
+  }
   
-  public abstract void f(int paramInt);
+  public void a(MusicItemInfo paramMusicItemInfo)
+  {
+    if (this.a.a != null)
+    {
+      if (paramMusicItemInfo.mType == 2) {
+        this.a.a.a(true);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.a.a(false);
+  }
+  
+  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
+  {
+    this.a.a(paramInt);
+    if (paramInt != -1)
+    {
+      MusicFragmentProviderView.a(this.a).set(-1);
+      this.a.j();
+    }
+    for (;;)
+    {
+      if (MusicFragmentProviderView.a(this.a) != null) {
+        MusicFragmentProviderView.a(this.a).f();
+      }
+      return;
+      this.a.i();
+    }
+  }
+  
+  public void b(MusicItemInfo paramMusicItemInfo) {}
+  
+  public void c(int paramInt, MusicItemInfo paramMusicItemInfo)
+  {
+    if (paramInt != -1)
+    {
+      this.a.j();
+      return;
+    }
+    this.a.i();
+  }
+  
+  public void d(int paramInt, MusicItemInfo paramMusicItemInfo)
+  {
+    this.a.i();
+  }
 }
 
 

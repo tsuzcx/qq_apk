@@ -1,48 +1,135 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.4.1;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskHttpUpload;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import java.util.UUID;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody;
 
 public class bgrz
+  extends aavr
 {
-  protected Drawable a;
-  protected Drawable b;
+  public bgrz(TroopFileTransferManager paramTroopFileTransferManager) {}
   
-  protected bgrz(Context paramContext)
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.UploadFileRspBody paramUploadFileRspBody, Bundle paramBundle)
   {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837561);
-    this.b = paramContext.getDrawable(2130837565);
-  }
-  
-  private Drawable a(Drawable paramDrawable)
-  {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
-  }
-  
-  private Drawable b(Drawable paramDrawable)
-  {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
-  }
-  
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
-  }
-  
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    long l = paramBundle.getLong("troopUin");
+    TroopFileTransferManager localTroopFileTransferManager;
+    try
+    {
+      localTroopFileTransferManager = (TroopFileTransferManager)TroopFileTransferManager.a().get(Long.valueOf(l));
+      if (localTroopFileTransferManager == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("TroopFileTransferManager", 4, "bad troopUin" + l);
+        }
+        return;
+      }
+      String str = paramBundle.getString("itemKey");
+      if (str == null) {
+        return;
+      }
+      paramBundle = UUID.fromString(str);
+      try
+      {
+        paramBundle = (TroopFileTransferManager.Item)localTroopFileTransferManager.jdField_a_of_type_JavaUtilMap.get(paramBundle);
+        if (paramBundle == null)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.i("TroopFileTransferManager", 4, "bad item key" + str);
+          }
+          bguj.a(bguk.b, bguk.r);
+          return;
+        }
+      }
+      finally {}
+    }
+    finally {}
+    if (!paramBoolean)
+    {
+      bdll.b((QQAppInterface)this.b.get(), "P_CliOper", "Grp_files", "", "file", "fail_upload", 0, 0, l + "", "", "", "");
+      paramUploadFileRspBody = new bgrk(paramBundle.FileName, this.a.e, 3, 207);
+      this.a.a(paramBundle, 3, paramUploadFileRspBody);
+      if (QLog.isDevelopLevel()) {
+        QLog.w("TroopFileTransferManager", 2, "onReqResendFileResult,errCode=" + paramInt);
+      }
+      bguj.a(bguk.b, bguk.A);
+      return;
+    }
+    int i = paramUploadFileRspBody.int32_ret_code.get();
+    if (QLog.isDevelopLevel()) {
+      QLog.e("TroopFileTransferManager", 4, String.format("onRspUpload - retCode: %d", new Object[] { Integer.valueOf(i) }));
+    }
+    if (i < 0)
+    {
+      paramInt = 207;
+      switch (i)
+      {
+      default: 
+      case -134: 
+      case -1: 
+      case -107: 
+      case -102: 
+      case -2: 
+      case -36: 
+      case -20001: 
+      case -20000: 
+      case -403: 
+      case -25126: 
+      case -312: 
+      case -136: 
+      case -139: 
+      case -138: 
+        for (;;)
+        {
+          paramUploadFileRspBody = new bgrk(paramBundle.FileName, this.a.e, 3, paramInt);
+          this.a.a(paramBundle, 3, paramUploadFileRspBody);
+          bguj.a(bguk.c, i);
+          return;
+          paramInt = 202;
+          continue;
+          paramInt = 208;
+          continue;
+          new Handler(Looper.getMainLooper()).postDelayed(new TroopFileTransferManager.4.1(this, paramBundle), 1000L);
+          return;
+          if (paramBundle.BusId != 104)
+          {
+            paramBundle.BusId = 104;
+            this.a.e(paramBundle);
+            return;
+          }
+          paramInt = 204;
+          continue;
+          paramInt = 209;
+          continue;
+          paramInt = -136;
+          continue;
+          paramInt = -138;
+        }
+      }
+      paramUploadFileRspBody = paramUploadFileRspBody.str_client_wording.get();
+      paramUploadFileRspBody = new bgrk(paramBundle.FileName, this.a.e, 3, 704, paramUploadFileRspBody);
+      this.a.a(paramBundle, 3, paramUploadFileRspBody);
+      return;
+    }
+    paramBundle.FilePath = paramUploadFileRspBody.str_file_id.get();
+    paramBundle.UploadIp = paramUploadFileRspBody.str_upload_ip.get();
+    paramBundle.CheckKey = paramUploadFileRspBody.bytes_check_key.get().toByteArray();
+    paramBundle.BusId = paramUploadFileRspBody.uint32_bus_id.get();
+    if (!this.a.b(paramBundle)) {
+      this.a.jdField_a_of_type_ArrayOfBgsh[2].a(new TroopFileTransferManager.TaskHttpUpload(this.a, paramBundle));
+    }
   }
 }
 

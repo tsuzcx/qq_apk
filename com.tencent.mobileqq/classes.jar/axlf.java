@@ -1,31 +1,33 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import com.tencent.qphone.base.util.QLog;
 
-final class axlf
-  implements URLDrawable.URLDrawableListener
+public class axlf
 {
-  axlf(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, axlm paramaxlm) {}
+  public static int a = 12;
+  public static boolean a;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public static int a(Context paramContext)
   {
-    yqp.c("ShortVideoShareUtil", "onLoadCanceled --");
+    paramContext = paramContext.getResources();
+    return paramContext.getDisplayMetrics().widthPixels - agej.a(42.0F, paramContext) * 2;
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public static int a(Context paramContext, int paramInt)
   {
-    axla.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, null, this.jdField_a_of_type_Axlm);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    yqp.c("ShortVideoShareUtil", "onLoadProgressed --" + paramInt);
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = axla.a(paramURLDrawable);
-    axla.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, paramURLDrawable, this.jdField_a_of_type_Axlm);
+    paramInt /= 5;
+    int i = a(paramContext);
+    paramContext = paramContext.getResources().getDisplayMetrics();
+    float f = paramContext.heightPixels * 1.0F / paramContext.widthPixels;
+    if (QLog.isColorLevel()) {
+      QLog.d("VelocityUtil", 2, "getInitVelocity() displayMetrics.widthPixels = " + paramContext.widthPixels + ", displayMetrics.heightPixels = " + paramContext.heightPixels + ", ratio = " + f + ", 16.F/9.F = " + 1.777778F + ",viewPagerClientWidth = " + i);
+    }
+    if ((f > 1.777778F) && (QLog.isColorLevel())) {
+      QLog.d("VelocityUtil", 2, "getInitVelocity() ratio > 16.F/9.F");
+    }
+    QLog.d("VelocityUtil", 1, "getInitVelocity: pendingVelocity = " + paramInt + ", viewPagerClientWidth = " + i);
+    return paramInt;
   }
 }
 

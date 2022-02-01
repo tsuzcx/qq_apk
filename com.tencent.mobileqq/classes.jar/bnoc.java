@@ -1,20 +1,14 @@
-import com.tencent.common.app.AppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bnoc
-  extends bnoz
+  implements DialogInterface.OnClickListener
 {
-  bnoc(bnoa parambnoa, AppInterface paramAppInterface) {}
+  bnoc(bnnx parambnnx) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
-    if (paramBoolean) {
-      synchronized (bnoa.a(this.jdField_a_of_type_Bnoa))
-      {
-        bnoa.a(this.jdField_a_of_type_Bnoa, paramInt);
-        return;
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

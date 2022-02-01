@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import anni;
+import anzj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ class PreloadingFragment$11
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131707169), 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anzj.a(2131707278), 1).a();
   }
 }
 

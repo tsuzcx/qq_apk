@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.plugins;
 
 import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import org.json.JSONObject;
 
 public class RequestJsPlugin$WebsocketRequestTask
 {
-  public Map<String, String> mHeaders;
+  public Map<String, String> mHeaders = new HashMap();
   public String mMethod;
   public String mOriginUrl;
   public int mTaskId = WebSocketProxy.getWebSocketRequestId();
@@ -22,29 +22,23 @@ public class RequestJsPlugin$WebsocketRequestTask
       if (paramJSONObject.has("url")) {
         this.mUrl = paramJSONObject.optString("url");
       }
-      if (paramJSONObject.has("origin_url")) {}
-      for (this.mOriginUrl = paramJSONObject.optString("origin_url");; this.mOriginUrl = this.mUrl)
-      {
-        if (paramJSONObject.has("method")) {
-          this.mMethod = paramJSONObject.optString("method");
-        }
-        if (!paramJSONObject.has("header")) {
-          break;
-        }
-        paramRequestJsPlugin = paramJSONObject.optJSONObject("header");
-        Iterator localIterator = paramRequestJsPlugin.keys();
-        if (this.mHeaders == null) {
-          this.mHeaders = new HashMap();
-        }
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          this.mHeaders.put(str, paramRequestJsPlugin.optString(str));
-        }
+      if (!paramJSONObject.has("origin_url")) {
+        break label147;
       }
+    }
+    label147:
+    for (this.mOriginUrl = paramJSONObject.optString("origin_url");; this.mOriginUrl = this.mUrl)
+    {
+      if (paramJSONObject.has("method")) {
+        this.mMethod = paramJSONObject.optString("method");
+      }
+      RequestJsPlugin.access$2100(this.mHeaders, paramJSONObject);
       if (paramJSONObject.has("timeout")) {
         this.mTimeout = paramJSONObject.optInt("timeout");
       }
+      this.mHeaders.put("Referer", RequestJsPlugin.access$2200(paramRequestJsPlugin));
+      this.mHeaders.put("User-Agent", QUAUtil.getRequestUA());
+      return;
     }
   }
 }

@@ -1,33 +1,12 @@
-import android.text.TextUtils;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
 
-class sgn
-  implements TVK_ICacheMgr.IPreloadCallback
+public abstract interface sgn
 {
-  sgn(sgl paramsgl) {}
+  public abstract void a(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt);
   
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
-  {
-    if (sgl.a(this.a) != null)
-    {
-      paramString2 = (String)sgl.a(this.a).get(paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        sgl.a(this.a).a(paramString1, paramInt, paramString2);
-      }
-    }
-  }
+  public abstract void b();
   
-  public void onPreLoadSucess(String paramString1, String paramString2)
-  {
-    if (sgl.a(this.a) != null)
-    {
-      paramString2 = (String)sgl.a(this.a).get(paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        sgl.a(this.a).a(paramString1, 1, paramString2);
-      }
-    }
-  }
+  public abstract void b(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt);
 }
 
 

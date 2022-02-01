@@ -1,12 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipDiyView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bajb
-  implements DialogInterface.OnClickListener
+public class bajb
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bajb(VasProfileQVipDiyView paramVasProfileQVipDiyView) {}
+  
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      VasProfileQVipDiyView.a(this.a, VasProfileQVipDiyView.a(this.a));
+      bhrn.a(VasProfileQVipDiyView.a(this.a).a, VasProfileQVipDiyView.e(this.a), VasProfileQVipDiyView.a(this.a));
+      bdll.b(VasProfileQVipDiyView.f(this.a), "dc00898", "", "", "qvip", "0X8009E7B", 0, 0, "", "", "", "");
+      continue;
+      VasProfileQVipDiyView.a(this.a, VasProfileQVipDiyView.a(this.a));
+      bhhz.b(VasProfileQVipDiyView.g(this.a));
+      bdll.b(VasProfileQVipDiyView.h(this.a), "dc00898", "", "", "qvip", "0X8009E7C", 0, 0, "", "", "", "");
+    }
   }
 }
 

@@ -1,14 +1,13 @@
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
+
 public class bdeu
-  extends bdes
+  implements FileFilter
 {
-  public bdeu(int paramInt)
+  public boolean accept(File paramFile)
   {
-    super(paramInt, 0, 0);
-  }
-  
-  protected void a(int paramInt, float paramFloat)
-  {
-    super.a(paramInt, paramFloat);
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
   }
 }
 

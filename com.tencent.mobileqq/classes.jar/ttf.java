@@ -1,42 +1,16 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class ttf
+public abstract interface ttf
 {
-  private static final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  public abstract void a(rwc paramrwc, int paramInt);
   
-  public static void a()
-  {
-    if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() <= 0)) {}
-  }
+  public abstract void a(rwc paramrwc, int paramInt1, int paramInt2);
   
-  public static void a(String paramString1, String paramString2, double paramDouble)
-  {
-    if (!a(paramDouble)) {}
-  }
+  public abstract void b(rwc paramrwc, int paramInt);
   
-  public static void a(String paramString1, String paramString2, String paramString3, double paramDouble)
-  {
-    if (!a(paramDouble)) {}
-  }
+  public abstract void b(rwc paramrwc, int paramInt1, int paramInt2);
   
-  private static boolean a(double paramDouble)
-  {
-    return false;
-  }
+  public abstract void c(rwc paramrwc, int paramInt);
   
-  public static void b()
-  {
-    if (jdField_a_of_type_JavaUtilList != null) {
-      jdField_a_of_type_JavaUtilList.clear();
-    }
-  }
-  
-  private static void b(String paramString)
-  {
-    oat.a(pha.a(), "", "0X800A064", "0X800A064", 0, 0, "", "", "", paramString, false);
-  }
+  public abstract void d(rwc paramrwc, int paramInt);
 }
 
 

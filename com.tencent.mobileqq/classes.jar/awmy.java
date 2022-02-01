@@ -1,14 +1,26 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.view.View;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-class awmy
-  implements awnd<Pair<String, Integer>, EmoticonPackage>
+public class awmy
+  implements bliz
 {
-  awmy(awmr paramawmr) {}
+  public awmy(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager) {}
   
-  public EmoticonPackage a(Pair<String, Integer> paramPair)
+  public void OnClick(View paramView, int paramInt)
   {
-    return this.a.a((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.a(false);
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
+      return;
+    }
+    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment);
+    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
+    ListenTogetherOverlayFragment.b(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment, true);
   }
 }
 

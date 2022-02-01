@@ -1,28 +1,45 @@
-import android.os.SystemClock;
 import android.view.View;
-import com.tencent.mobileqq.data.MessageForPokeEmo;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aheb
-  implements bkhw
+public class aheb
+  implements View.OnClickListener
 {
-  aheb(ahea paramahea, MessageForPokeEmo paramMessageForPokeEmo, bkho parambkho) {}
+  public aheb(ahdk paramahdk) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    MessageForPoke localMessageForPoke = (MessageForPoke)((ahdx)agej.a(paramView)).a;
+    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8008913", "0X8008913", 0, 0, "", "", "", "");
+    switch (localMessageForPoke.interactType)
     {
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bkho.dismiss();
-      long l;
-      do
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      aean.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 1, "", "");
+      continue;
+      aean.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 2, "", "");
+      continue;
+      aean.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 3, "", "");
+      continue;
+      aean.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 4, "", "");
+      continue;
+      aean.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 1, "", "");
+      continue;
+      aean.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 6, "", "");
+      continue;
+      aean.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 5, "", "");
+      continue;
+      if (!ahnt.a)
       {
-        return;
-        l = SystemClock.uptimeMillis();
-      } while (l - this.jdField_a_of_type_Ahea.c < 500L);
-      this.jdField_a_of_type_Ahea.c = l;
-      adrm.b(this.jdField_a_of_type_Ahea.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahea.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahea.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPokeEmo.uniseq);
+        ahnt.a = true;
+        ahnt.a(this.a.b, localMessageForPoke.subId, localMessageForPoke.name, -1, localMessageForPoke.minVersion, 1);
+      }
     }
   }
 }

@@ -12,10 +12,11 @@ public class QCircleSetUnCareRequest
 {
   private QQCircleRight.SetCircleUnCareReq mRequest = new QQCircleRight.SetCircleUnCareReq();
   
-  public QCircleSetUnCareRequest(String paramString, int paramInt, FeedCloudCommon.StCommonExt paramStCommonExt)
+  public QCircleSetUnCareRequest(String paramString, int paramInt1, int paramInt2, FeedCloudCommon.StCommonExt paramStCommonExt)
   {
     this.mRequest.strUid.set(paramString);
-    this.mRequest.operType.set(paramInt);
+    this.mRequest.operType.set(paramInt1);
+    this.mRequest.rightType.set(paramInt2);
     if (paramStCommonExt != null) {
       this.mRequest.extInfo.set(paramStCommonExt);
     }

@@ -1,26 +1,36 @@
-import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
 public class alsz
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public alsz(SelectMemberActivity paramSelectMemberActivity) {}
+  public alsz(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.d == 27)
+    if (paramMotionEvent.getAction() == 0)
     {
-      this.a.a.putParcelableArrayListExtra("result_set", this.a.e);
-      ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindow().peekDecorView().getWindowToken(), 0);
-      this.a.setResult(-1, this.a.a);
+      if (EditLocalVideoActivity.a(this.a).isPlaying()) {
+        if (EditLocalVideoActivity.b(this.a))
+        {
+          EditLocalVideoActivity.b(this.a, false);
+          EditLocalVideoActivity.a(this.a).pause();
+          EditLocalVideoActivity.a(this.a).setVisibility(0);
+        }
+      }
+      while (!EditLocalVideoActivity.b(this.a)) {
+        return true;
+      }
+      EditLocalVideoActivity.a(this.a).start();
+      EditLocalVideoActivity.b(this.a, true);
+      EditLocalVideoActivity.a(this.a).setVisibility(4);
+      return true;
     }
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return false;
   }
 }
 

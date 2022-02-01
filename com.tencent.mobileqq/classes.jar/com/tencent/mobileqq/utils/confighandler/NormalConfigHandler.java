@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.utils.confighandler;
 
 import android.content.SharedPreferences;
-import anni;
-import bgsq;
-import bgud;
-import bgug;
+import anzj;
+import bhss;
+import bhug;
+import bhuj;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -33,7 +33,7 @@ public abstract class NormalConfigHandler<T extends ConfigInfo>
     if ((AudioHelper.e()) && (this.mSPName == null)) {
       throw new IllegalArgumentException(this.TAG + "mSPName为空");
     }
-    return bgug.a(this.TAG, this.mUin, this.mSPName);
+    return bhuj.a(this.TAG, this.mUin, this.mSPName);
   }
   
   public T getConfig()
@@ -41,7 +41,7 @@ public abstract class NormalConfigHandler<T extends ConfigInfo>
     if ((this.mConfig == null) && (AudioHelper.e()))
     {
       QLog.w(this.TAG, 1, "getConfig, 配置还未初始化", new Throwable("打印调用栈"));
-      throw new IllegalArgumentException(anni.a(2131706365));
+      throw new IllegalArgumentException(anzj.a(2131706472));
     }
     return this.mConfig;
   }
@@ -123,7 +123,7 @@ public abstract class NormalConfigHandler<T extends ConfigInfo>
       QLog.w(this.TAG, 1, "异步加载config[" + ((ReadConfigTask)localObject1).TAG + "]");
       localObject2 = new ArrayList();
       ((ArrayList)localObject2).add(localObject1);
-      bgsq.requestSyncTask(null, (ArrayList)localObject2, new bgud(this, paramGetConfigListen, paramAppInterface));
+      bhss.requestSyncTask(null, (ArrayList)localObject2, new bhug(this, paramGetConfigListen, paramAppInterface));
       return localObject1;
     }
     QLog.w(this.TAG, 1, "异步加载config[" + ((ReadConfigTask)localObject1).TAG + "], 已经在加载中");

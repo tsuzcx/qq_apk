@@ -1,27 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.PointF;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-class bpxf
-  implements View.OnClickListener
+public class bpxf
+  extends lqs
 {
-  bpxf(bpxe parambpxe) {}
+  public bpxf(CropVideoActivity paramCropVideoActivity) {}
   
-  public void onClick(View paramView)
+  public boolean a(lqq paramlqq)
   {
-    yqu.a("video_edit_new", "clk_cutdown", 0, 0, new String[0]);
-    if (!this.a.a().g()) {
-      bpxe.a(this.a);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a().f(false);
-      bpxe.a(this.a).setSelected(false);
-      this.a.a().c(3003);
-    }
+    float f1 = paramlqq.a().x;
+    float f2 = paramlqq.a().y;
+    CropVideoActivity.a(this.a).a(f1, f2, 0.0F);
+    return true;
   }
 }
 

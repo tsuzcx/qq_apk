@@ -1,430 +1,223 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 public class bmqh
 {
-  public static int a(float paramFloat1, float paramFloat2)
+  /* Error */
+  public static boolean a(@org.jetbrains.annotations.NotNull android.content.Context paramContext, @org.jetbrains.annotations.NotNull java.io.File paramFile)
   {
-    float f = paramFloat1;
-    if (paramFloat1 < 0.0F) {
-      f = 1.0F;
-    }
-    return (int)(paramFloat2 / f + 0.5F);
-  }
-  
-  private static int a(int paramInt)
-  {
-    Object localObject1 = Aladdin.getConfig(265).getString("floating_layer_top_margin", "");
-    try
-    {
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        return -1;
-      }
-      localObject1 = new JSONObject((String)localObject1).optString("top_margin", "");
-      QLog.d("ReadInjoyFloatingWindowModule", 1, " getFloatingWindowHeight! marginContent=" + (String)localObject1);
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        localObject1 = new JSONArray((String)localObject1);
-        int i = 0;
-        while (i < ((JSONArray)localObject1).length())
-        {
-          Object localObject2 = ((JSONArray)localObject1).optJSONObject(i);
-          if (localObject2 != null)
-          {
-            String str = ((JSONObject)localObject2).optString("type", "");
-            localObject2 = ((JSONObject)localObject2).optString("margin", "");
-            if (!TextUtils.isEmpty(str))
-            {
-              boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
-              if (!bool) {
-                try
-                {
-                  int j = Integer.parseInt(str);
-                  float f = Float.parseFloat((String)localObject2);
-                  if (j == paramInt)
-                  {
-                    j = a(paramInt, f);
-                    return j;
-                  }
-                }
-                catch (Exception localException2)
-                {
-                  QLog.d("ReadInjoyFloatingWindowModule", 1, " getFloatingWindowHeight array error! msg=" + localException2);
-                }
-              }
-            }
-          }
-          i += 1;
-        }
-      }
-      return -1;
-    }
-    catch (Exception localException1)
-    {
-      QLog.d("ReadInjoyFloatingWindowModule", 1, " getFloatingWindowHeight error! msg=" + localException1);
-    }
-  }
-  
-  private static int a(int paramInt, float paramFloat)
-  {
-    int i = (int)paramFloat;
-    float f2 = -1.0F;
-    float f1 = f2;
-    label159:
-    for (;;)
-    {
-      try
-      {
-        DisplayMetrics localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics();
-        f1 = f2;
-        f2 = localDisplayMetrics.density;
-        if ((paramFloat <= 0.0F) || (paramFloat >= 1.0F)) {
-          break label159;
-        }
-        f1 = f2;
-        int j = localDisplayMetrics.heightPixels;
-        j = (int)(j * paramFloat);
-        if (j <= 0) {
-          break label159;
-        }
-        i = j;
-      }
-      catch (Exception localException)
-      {
-        QLog.d("ReadInjoyFloatingWindowModule", 1, " getMarginTop error! msg=" + localException);
-        f2 = f1;
-        continue;
-      }
-      QLog.d("ReadInjoyFloatingWindowModule", 1, " getMarginTop,busiType=" + paramInt + " ,configMarginPx=" + paramFloat + "  ,realMarginPx=" + i);
-      if (f2 > 0.0F) {
-        return a(f2, i);
-      }
-      return -1;
-    }
-  }
-  
-  public static void a(Context paramContext, int paramInt1, int paramInt2, Bundle paramBundle, int paramInt3)
-  {
-    if (paramContext == null) {
-      return;
-    }
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    int i = a(paramInt2);
-    if ((i > 0) && (i < 10000)) {
-      localBundle.putInt("margin_top", i);
-    }
-    localBundle.putInt("floating_window_scene", paramInt1);
-    localBundle.putInt("floating_window_business", paramInt2);
-    if (paramInt1 == 4) {
-      localBundle.putBoolean("float_layer_back_view", true);
-    }
-    switch (paramInt2)
-    {
-    }
-    for (;;)
-    {
-      QLog.d("ReadInjoyFloatingWindowModule", 1, " openFloatingWindow : scene=" + paramInt1 + "  busiType=" + paramInt2 + "\t marginTop=" + i + "\t bundle=" + localBundle);
-      return;
-      a(paramContext, paramInt1, localBundle, paramInt3);
-      continue;
-      tlg.a(paramContext, paramInt2, localBundle);
-    }
-  }
-  
-  public static void a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3, boolean paramBoolean)
-  {
-    a(paramContext, paramInt1, paramInt2, paramString1, paramString2, paramInt3, paramBoolean, null);
-  }
-  
-  public static void a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3, boolean paramBoolean, Bundle paramBundle)
-  {
-    boolean bool = true;
-    QLog.d("ReadInjoyFloatingWindowModule", 1, "openViolaActivityOnKandianDaily scene: " + paramInt1 + " luanchFrom: " + paramInt2 + " rowKey: " + paramString1 + " topicId: " + paramString2 + " busiType: " + paramInt3 + " needGrayBar: " + paramBoolean);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("floating_window_scene", paramInt1);
-    localBundle.putString("floating_window_rowkey", paramString1);
-    localBundle.putString("float_layer_topic_id", paramString2);
-    localBundle.putBoolean("up_animation", false);
-    localBundle.putBoolean("gray_bar", paramBoolean);
-    localBundle.putInt("floating_window_business", paramInt3);
-    if (Aladdin.getConfig(261).getIntegerFromString("enable_floating_scroll_to_top", 0) == 1) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localBundle.putBoolean("scroll_to_top", paramBoolean);
-      if (localBundle != null) {
-        localBundle.putBundle("floating_bundle_extra_data", paramBundle);
-      }
-      KandianDailyManager.a(paramContext, false, localBundle, paramInt2);
-      return;
-    }
-  }
-  
-  public static void a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    boolean bool = true;
-    QLog.d("ReadInjoyFloatingWindowModule", 1, "openNativeArticleOnKandianDaily scene: " + paramInt1 + " luanchFrom: " + paramInt2 + " rowKey: " + paramString1 + " url: " + paramString2 + " needGrayBar: " + paramBoolean);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("floating_window_scene", paramInt1);
-    localBundle.putString("floating_window_rowkey", paramString1);
-    localBundle.putString("float_layer_article_url", paramString2);
-    localBundle.putBoolean("up_animation", false);
-    localBundle.putBoolean("gray_bar", paramBoolean);
-    localBundle.putInt("floating_window_business", 1);
-    if (Aladdin.getConfig(261).getIntegerFromString("enable_floating_scroll_to_top", 0) == 1) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localBundle.putBoolean("scroll_to_top", paramBoolean);
-      KandianDailyManager.a(paramContext, false, localBundle, paramInt2);
-      return;
-    }
-  }
-  
-  private static void a(Context paramContext, int paramInt1, Bundle paramBundle, int paramInt2)
-  {
-    if (paramContext == null) {
-      return;
-    }
-    Intent localIntent = new Intent(paramContext, FastWebActivity.class);
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putBoolean("launch_from_floating_window", true);
-    localBundle.putInt("native_article_launch_from", 1003);
-    localIntent.putExtras(localBundle);
-    boolean bool = a(localBundle, localIntent, paramInt2);
-    if (bool) {
-      paramContext.startActivity(localIntent);
-    }
-    QLog.d("ReadInjoyFloatingWindowModule", 1, " openNativeArticle : scene=" + paramInt1 + "  isLegal=" + bool);
-  }
-  
-  public static void a(Context paramContext, HashMap<String, String> paramHashMap)
-  {
-    int n = 0;
-    if (paramHashMap == null) {
-      QLog.d("ReadInjoyFloatingWindowModule", 1, " jump2FloatingWindow error! attrs is null!");
-    }
-    Object localObject = paramContext;
-    if (paramContext == null) {
-      localObject = BaseApplicationImpl.getContext();
-    }
-    String str1 = (String)paramHashMap.get("rowkey");
-    String str3 = (String)paramHashMap.get("url");
-    String str2 = (String)paramHashMap.get("topicID");
-    for (;;)
-    {
-      int j;
-      try
-      {
-        j = Integer.parseInt((String)paramHashMap.get("busiType"));
-      }
-      catch (Exception paramContext)
-      {
-        label187:
-        i = 0;
-        j = -1;
-      }
-      for (;;)
-      {
-        try
-        {
-          i = Integer.parseInt((String)paramHashMap.get("scene"));
-        }
-        catch (Exception paramContext)
-        {
-          i = 0;
-          continue;
-        }
-        try
-        {
-          k = Integer.parseInt((String)paramHashMap.get("channelID"));
-          m = i;
-          if (j == -1)
-          {
-            i = n;
-            if (i == 0) {}
-          }
-        }
-        catch (Exception paramContext)
-        {
-          continue;
-        }
-        try
-        {
-          paramContext = new Bundle();
-          paramContext.putString("floating_window_rowkey", str1);
-          if (!TextUtils.isEmpty(str3)) {
-            paramContext.putString("float_layer_article_url", URLDecoder.decode(str3, "utf-8"));
-          }
-          if (!TextUtils.isEmpty(str2)) {
-            paramContext.putString("float_layer_topic_id", str2);
-          }
-          a((Context)localObject, m, j, paramContext, k);
-        }
-        catch (Exception paramContext)
-        {
-          QLog.d("ReadInjoyFloatingWindowModule", 1, "jump2FloatingWindow error! e=" + paramContext);
-          break label187;
-        }
-      }
-      QLog.d("ReadInjoyFloatingWindowModule", 1, "busiType=" + j + " ，rowkey=" + str1 + " ，topicID=" + str2 + " ，scene=" + m + " ，channelID=" + k);
-      return;
-      QLog.d("ReadInjoyFloatingWindowModule", 1, " parseInt error! e=" + paramContext);
-      int k = 0;
-      int m = i;
-      continue;
-      i = n;
-      if (localObject != null) {
-        if (j == 4)
-        {
-          i = n;
-          if (!TextUtils.isEmpty(str2)) {
-            i = 1;
-          }
-        }
-        else
-        {
-          i = n;
-          if (!TextUtils.isEmpty(str1)) {
-            i = 1;
-          }
-        }
-      }
-    }
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
-  {
-    Object localObject = Uri.parse(paramString);
-    QLog.d("ReadInjoyFloatingWindowModule", 1, "openFloatLayer: " + paramString);
-    String str1;
-    String str3;
-    int i;
-    if (localObject != null)
-    {
-      ((Uri)localObject).getQueryParameter("viola_share_url");
-      str1 = ((Uri)localObject).getQueryParameter("rowkey");
-      String str2 = ((Uri)localObject).getQueryParameter("cc_media_type");
-      str3 = ((Uri)localObject).getQueryParameter("viola_media_type");
-      localObject = ((Uri)localObject).getQueryParameter("topic_id");
-      if ("10001".equals(str2))
-      {
-        a(paramContext, 4, 15, str1, paramString, true);
-        return true;
-      }
-      if ("10050".equals(str3)) {
-        i = 3;
-      }
-    }
-    for (;;)
-    {
-      if (i != -1)
-      {
-        a(paramContext, 4, 15, str1, (String)localObject, i, true);
-        return true;
-        if ("10051".equals(str3))
-        {
-          i = 4;
-          continue;
-        }
-        if ("10052".equals(str3)) {
-          i = 2;
-        }
-      }
-      else
-      {
-        return false;
-      }
-      i = -1;
-    }
-  }
-  
-  public static boolean a(Context paramContext, String paramString, Bundle paramBundle)
-  {
-    QLog.d("ReadInjoyFloatingWindowModule", 1, "openFloatLayerVideo: " + paramString);
-    if (!TextUtils.isEmpty(paramString))
-    {
-      a(paramContext, 4, 15, paramString, "", 2, true, paramBundle);
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean a(Bundle paramBundle)
-  {
-    boolean bool3 = false;
-    if (Build.VERSION.SDK_INT >= 21) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2 = bool3;
-      if (paramBundle != null)
-      {
-        bool2 = bool3;
-        if (bool1)
-        {
-          bool2 = bool3;
-          if (!TextUtils.isEmpty(paramBundle.getString("floating_window_rowkey"))) {
-            bool2 = true;
-          }
-        }
-      }
-      QLog.d("ReadInjoyFloatingWindowModule", 1, "checkParamsLegal outside" + bool1 + " isLegal=" + bool2);
-      return bool2;
-    }
-  }
-  
-  private static boolean a(Bundle paramBundle, Intent paramIntent, int paramInt)
-  {
-    boolean bool3 = false;
-    if (Build.VERSION.SDK_INT >= 21) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2 = bool3;
-      if (paramBundle != null)
-      {
-        bool2 = bool3;
-        if (bool1)
-        {
-          String str = paramBundle.getString("floating_window_rowkey");
-          paramBundle = paramBundle.getString("float_layer_article_url");
-          bool2 = bool3;
-          if (!TextUtils.isEmpty(str))
-          {
-            ArticleInfo localArticleInfo = new ArticleInfo();
-            localArticleInfo.innerUniqueID = str;
-            localArticleInfo.mChannelID = paramInt;
-            if (!TextUtils.isEmpty(paramBundle)) {
-              localArticleInfo.mArticleContentUrl = paramBundle;
-            }
-            paramIntent.putExtra("fast_web_article_info", localArticleInfo);
-            bool2 = true;
-          }
-        }
-      }
-      QLog.d("ReadInjoyFloatingWindowModule", 1, " ocheckOpenNativeVertify isVersionLegal=" + bool1 + " isLegal=" + bool2);
-      return bool2;
-    }
+    // Byte code:
+    //   0: invokestatic 17	java/lang/System:currentTimeMillis	()J
+    //   3: lstore_2
+    //   4: aload_0
+    //   5: invokevirtual 23	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
+    //   8: astore 5
+    //   10: aconst_null
+    //   11: astore 4
+    //   13: aload 5
+    //   15: aload_1
+    //   16: invokevirtual 29	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   19: sipush 128
+    //   22: invokevirtual 35	android/content/pm/PackageManager:getPackageArchiveInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    //   25: astore 5
+    //   27: aload 5
+    //   29: astore 4
+    //   31: aload 5
+    //   33: astore 6
+    //   35: ldc 37
+    //   37: new 39	java/lang/StringBuilder
+    //   40: dup
+    //   41: invokespecial 43	java/lang/StringBuilder:<init>	()V
+    //   44: ldc 45
+    //   46: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: invokestatic 17	java/lang/System:currentTimeMillis	()J
+    //   52: lload_2
+    //   53: lsub
+    //   54: invokevirtual 52	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   57: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   60: invokestatic 61	bmqw:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   63: aload 5
+    //   65: astore 6
+    //   67: aload 5
+    //   69: ifnonnull +88 -> 157
+    //   72: ldc 63
+    //   74: astore 4
+    //   76: aload_1
+    //   77: invokestatic 68	bleb:a	(Ljava/io/File;)Ljava/lang/String;
+    //   80: astore 6
+    //   82: aload 6
+    //   84: astore 4
+    //   86: new 39	java/lang/StringBuilder
+    //   89: dup
+    //   90: invokespecial 43	java/lang/StringBuilder:<init>	()V
+    //   93: ldc 70
+    //   95: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: aload_1
+    //   99: invokevirtual 29	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   102: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: ldc 72
+    //   107: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   110: aload 4
+    //   112: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   118: astore_1
+    //   119: ldc 37
+    //   121: new 39	java/lang/StringBuilder
+    //   124: dup
+    //   125: invokespecial 43	java/lang/StringBuilder:<init>	()V
+    //   128: ldc 74
+    //   130: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   133: aload_1
+    //   134: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   140: invokestatic 77	bmqw:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   143: aload_0
+    //   144: sipush -1002
+    //   147: ldc 79
+    //   149: aload_1
+    //   150: invokestatic 84	bmqz:a	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;)V
+    //   153: aload 5
+    //   155: astore 6
+    //   157: aload 6
+    //   159: ifnull +229 -> 388
+    //   162: iconst_1
+    //   163: ireturn
+    //   164: astore 5
+    //   166: aload 4
+    //   168: astore 6
+    //   170: ldc 37
+    //   172: ldc 86
+    //   174: aload 5
+    //   176: invokestatic 89	bmqw:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   179: aload 4
+    //   181: astore 6
+    //   183: aload_0
+    //   184: sipush -1001
+    //   187: ldc 91
+    //   189: aload 5
+    //   191: invokevirtual 94	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   194: invokestatic 84	bmqz:a	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;)V
+    //   197: aload 4
+    //   199: astore 6
+    //   201: aload 4
+    //   203: ifnonnull -46 -> 157
+    //   206: ldc 63
+    //   208: astore 5
+    //   210: aload_1
+    //   211: invokestatic 68	bleb:a	(Ljava/io/File;)Ljava/lang/String;
+    //   214: astore 6
+    //   216: aload 6
+    //   218: astore 5
+    //   220: new 39	java/lang/StringBuilder
+    //   223: dup
+    //   224: invokespecial 43	java/lang/StringBuilder:<init>	()V
+    //   227: ldc 70
+    //   229: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   232: aload_1
+    //   233: invokevirtual 29	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   236: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   239: ldc 72
+    //   241: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   244: aload 5
+    //   246: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   249: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   252: astore_1
+    //   253: ldc 37
+    //   255: new 39	java/lang/StringBuilder
+    //   258: dup
+    //   259: invokespecial 43	java/lang/StringBuilder:<init>	()V
+    //   262: ldc 74
+    //   264: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   267: aload_1
+    //   268: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   271: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   274: invokestatic 77	bmqw:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   277: aload_0
+    //   278: sipush -1002
+    //   281: ldc 79
+    //   283: aload_1
+    //   284: invokestatic 84	bmqz:a	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;)V
+    //   287: aload 4
+    //   289: astore 6
+    //   291: goto -134 -> 157
+    //   294: astore 4
+    //   296: aconst_null
+    //   297: astore 5
+    //   299: aload 5
+    //   301: ifnonnull +84 -> 385
+    //   304: ldc 63
+    //   306: astore 5
+    //   308: aload_1
+    //   309: invokestatic 68	bleb:a	(Ljava/io/File;)Ljava/lang/String;
+    //   312: astore 6
+    //   314: aload 6
+    //   316: astore 5
+    //   318: new 39	java/lang/StringBuilder
+    //   321: dup
+    //   322: invokespecial 43	java/lang/StringBuilder:<init>	()V
+    //   325: ldc 70
+    //   327: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   330: aload_1
+    //   331: invokevirtual 29	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   334: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   337: ldc 72
+    //   339: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   342: aload 5
+    //   344: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   347: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   350: astore_1
+    //   351: ldc 37
+    //   353: new 39	java/lang/StringBuilder
+    //   356: dup
+    //   357: invokespecial 43	java/lang/StringBuilder:<init>	()V
+    //   360: ldc 74
+    //   362: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   365: aload_1
+    //   366: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   369: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   372: invokestatic 77	bmqw:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   375: aload_0
+    //   376: sipush -1002
+    //   379: ldc 79
+    //   381: aload_1
+    //   382: invokestatic 84	bmqz:a	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;)V
+    //   385: aload 4
+    //   387: athrow
+    //   388: iconst_0
+    //   389: ireturn
+    //   390: astore 6
+    //   392: goto -306 -> 86
+    //   395: astore 6
+    //   397: goto -177 -> 220
+    //   400: astore 6
+    //   402: goto -84 -> 318
+    //   405: astore 4
+    //   407: aload 6
+    //   409: astore 5
+    //   411: goto -112 -> 299
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	414	0	paramContext	android.content.Context
+    //   0	414	1	paramFile	java.io.File
+    //   3	50	2	l	long
+    //   11	277	4	localObject1	Object
+    //   294	92	4	localObject2	Object
+    //   405	1	4	localObject3	Object
+    //   8	146	5	localObject4	Object
+    //   164	26	5	localException	java.lang.Exception
+    //   208	202	5	localObject5	Object
+    //   33	282	6	localObject6	Object
+    //   390	1	6	localIOException1	java.io.IOException
+    //   395	1	6	localIOException2	java.io.IOException
+    //   400	8	6	localIOException3	java.io.IOException
+    // Exception table:
+    //   from	to	target	type
+    //   13	27	164	java/lang/Exception
+    //   35	63	164	java/lang/Exception
+    //   13	27	294	finally
+    //   76	82	390	java/io/IOException
+    //   210	216	395	java/io/IOException
+    //   308	314	400	java/io/IOException
+    //   35	63	405	finally
+    //   170	179	405	finally
+    //   183	197	405	finally
   }
 }
 

@@ -1,33 +1,18 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper.OnConvertListener;
+import eipc.EIPCResult;
 
-public abstract class alej
-  implements alel
+class alej
+  implements EmojiGifHelper.OnConvertListener
 {
-  public int a;
-  public long a;
-  public beps a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c;
+  alej(alee paramalee, int paramInt) {}
   
-  public alej()
+  public void onConvertResult(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_b_of_type_Int = -35072;
-    this.jdField_a_of_type_Beps = new beps();
-  }
-  
-  @Nullable
-  public abstract Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface);
-  
-  public boolean a()
-  {
-    return true;
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("res", paramBoolean);
+    localBundle.putString("path", paramString);
+    this.jdField_a_of_type_Alee.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

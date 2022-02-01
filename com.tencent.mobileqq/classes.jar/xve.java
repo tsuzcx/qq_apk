@@ -1,6 +1,6 @@
 public abstract interface xve
 {
-  public abstract void a();
+  public abstract void a(xvc paramxvc);
 }
 
 

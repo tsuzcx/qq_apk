@@ -1,10 +1,6 @@
 public abstract interface ayjp
 {
-  public abstract void a(ayjo paramayjo);
-  
-  public abstract boolean a(ayjo paramayjo);
-  
-  public abstract boolean b(ayjo paramayjo);
+  public abstract void a(ayjq paramayjq, int paramInt);
 }
 
 

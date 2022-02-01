@@ -1,49 +1,24 @@
-import Wallet.PfaFriendRsp;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
 
-final class akoa
-  extends Handler
+public class akoa
+  implements akot
 {
-  akoa(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public akoa(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    boolean bool2 = true;
-    switch (paramMessage.what)
+    if (paramBoolean) {}
+    for (paramContext = "permission_denied_by_user";; paramContext = "permission_denied")
     {
-    default: 
+      Intent localIntent = new Intent();
+      localIntent.putExtra("bind_mobile", this.a.a());
+      localIntent.putExtra("check_permission_result", paramContext);
+      localIntent.putExtra("kSrouce", BindVerifyActivity.a(this.a));
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
       return;
-    }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramMessage.obj != null)
-    {
-      localObject1 = localObject2;
-      if ((paramMessage.obj instanceof PfaFriendRsp)) {
-        localObject1 = (PfaFriendRsp)paramMessage.obj;
-      }
-    }
-    boolean bool1;
-    if (paramMessage.arg1 == 1)
-    {
-      bool1 = true;
-      if (paramMessage.arg2 != 1) {
-        break label93;
-      }
-    }
-    for (;;)
-    {
-      aknz.a(bool1, (PfaFriendRsp)localObject1, bool2);
-      return;
-      bool1 = false;
-      break;
-      label93:
-      bool2 = false;
     }
   }
 }

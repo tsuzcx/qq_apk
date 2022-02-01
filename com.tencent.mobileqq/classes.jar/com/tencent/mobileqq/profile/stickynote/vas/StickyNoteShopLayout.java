@@ -14,12 +14,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import azio;
-import azip;
-import aziq;
-import azir;
-import bclx;
-import bhhm;
+import baba;
+import babb;
+import babc;
+import babd;
+import bdep;
+import biib;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -33,9 +33,9 @@ public class StickyNoteShopLayout
 {
   public static final String a;
   public int a;
-  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new azip(this);
+  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new babb(this);
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private azir jdField_a_of_type_Azir;
+  private babd jdField_a_of_type_Babd;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString = "";
@@ -91,23 +91,23 @@ public class StickyNoteShopLayout
   
   private void c()
   {
-    View.inflate(getContext(), 2131561453, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131377871));
+    View.inflate(getContext(), 2131561494, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131378024));
     StaggeredGridLayoutManager localStaggeredGridLayoutManager = new StaggeredGridLayoutManager(3, 1);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localStaggeredGridLayoutManager);
-    this.jdField_a_of_type_Azir = new azir(getContext(), null);
-    this.jdField_a_of_type_Azir.a(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Azir);
+    this.jdField_a_of_type_Babd = new babd(getContext(), null);
+    this.jdField_a_of_type_Babd.a(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Babd);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setBackgroundColor(-1);
-    findViewById(2131379631).setOnClickListener(this);
-    findViewById(2131368322).setOnClickListener(this);
+    findViewById(2131379806).setOnClickListener(this);
+    findViewById(2131368396).setOnClickListener(this);
     a();
   }
   
   public int a(int paramInt)
   {
-    if (paramInt > bclx.jdField_b_of_type_Int / 4) {}
+    if (paramInt > bdep.jdField_b_of_type_Int / 4) {}
     for (;;)
     {
       ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
@@ -115,31 +115,31 @@ public class StickyNoteShopLayout
       setMinimumHeight(localLayoutParams.height);
       setLayoutParams(localLayoutParams);
       return paramInt;
-      paramInt = bclx.jdField_b_of_type_Int / 3;
+      paramInt = bdep.jdField_b_of_type_Int / 3;
     }
   }
   
-  public azir a()
+  public babd a()
   {
-    return this.jdField_a_of_type_Azir;
+    return this.jdField_a_of_type_Babd;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Azir);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Babd);
   }
   
   public void a(int paramInt)
   {
     setVisibility(paramInt);
-    if (this.jdField_a_of_type_Azir.getItemCount() == 0) {
+    if (this.jdField_a_of_type_Babd.getItemCount() == 0) {
       a(false);
     }
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Azir.a();
+    this.jdField_a_of_type_Babd.a();
   }
   
   public void a(boolean paramBoolean)
@@ -149,15 +149,15 @@ public class StickyNoteShopLayout
       break label68;
     }
     label68:
-    while ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Azir.a() >= 30) && (paramBoolean)) {
+    while ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Babd.a() >= 30) && (paramBoolean)) {
       return;
     }
-    bhhm localbhhm = new bhhm("QC.HomepageLogicServer.HomepageLogicObj", "QcHomePageLogic.GetSuixintieSigFontReq");
-    GetSuixintieSigFontReq localGetSuixintieSigFontReq = new GetSuixintieSigFontReq(bhhm.a(), this.jdField_b_of_type_Int, this.c, "", this.jdField_b_of_type_JavaLangString);
+    biib localbiib = new biib("QC.HomepageLogicServer.HomepageLogicObj", "QcHomePageLogic.GetSuixintieSigFontReq");
+    GetSuixintieSigFontReq localGetSuixintieSigFontReq = new GetSuixintieSigFontReq(biib.a(), this.jdField_b_of_type_Int, this.c, "", this.jdField_b_of_type_JavaLangString);
     if (this.jdField_a_of_type_Int == 1) {}
     for (String str = "getSuixintieSigFont";; str = "getExtendFriendSigFont")
     {
-      localbhhm.a(str, localGetSuixintieSigFontReq, new GetSuixintieSigFontRsp(), new azio(this, paramBoolean), false);
+      localbiib.a(str, localGetSuixintieSigFontReq, new GetSuixintieSigFontRsp(), new baba(this, paramBoolean), false);
       if (paramBoolean) {
         break;
       }
@@ -190,19 +190,19 @@ public class StickyNoteShopLayout
   public void setAppId(int paramInt)
   {
     this.jdField_b_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Azir != null) {
-      this.jdField_a_of_type_Azir.a(paramInt);
+    if (this.jdField_a_of_type_Babd != null) {
+      this.jdField_a_of_type_Babd.a(paramInt);
     }
   }
   
   public void setItemId(int paramInt)
   {
-    this.jdField_a_of_type_Azir.c(paramInt);
+    this.jdField_a_of_type_Babd.c(paramInt);
   }
   
-  public void setShopCallback(aziq paramaziq)
+  public void setShopCallback(babc parambabc)
   {
-    this.jdField_a_of_type_Azir.a(paramaziq);
+    this.jdField_a_of_type_Babd.a(parambabc);
   }
   
   public void setUseId(int paramInt)

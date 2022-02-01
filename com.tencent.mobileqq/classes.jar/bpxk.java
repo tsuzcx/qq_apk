@@ -1,23 +1,48 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-class bpxk
-  implements afwa
+public class bpxk
+  implements zqq
 {
-  bpxk(bpxi parambpxi) {}
+  public bpxk(CropVideoActivity paramCropVideoActivity) {}
   
-  public void a(AudioPlayerBase paramAudioPlayerBase)
+  public void onFailure(String paramString)
   {
-    bpxi.b(this.a);
-    bpxi.a(this.a, bpxi.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onFailure: " + paramString);
+    }
+    this.a.a.sendEmptyMessage(4);
   }
   
-  public void a(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  public void onFinish(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onFinish: " + paramBoolean);
+    }
+    this.a.a.sendEmptyMessage(3);
+  }
   
-  public void b(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  public void onProgress(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onProgress: " + paramString);
+    }
+  }
   
-  public void c(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  public void onStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onStart");
+    }
+  }
   
-  public void d(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  public void onSuccess(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onSuccess: " + paramString);
+    }
+  }
 }
 
 

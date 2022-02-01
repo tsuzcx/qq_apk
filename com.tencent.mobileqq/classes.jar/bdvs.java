@@ -1,21 +1,72 @@
+import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.hlyyb.downloader.DownloaderTaskListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.studyroom.download.DownloadTaskListenerBridge.1;
+import mqq.os.MqqHandler;
+
 public class bdvs
-  extends bdws
+  implements DownloaderTaskListener
 {
-  public int a = 0;
-  public bdvt a;
-  public bdxx a;
-  public String a;
-  public boolean a;
-  public String[] a;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
-  public boolean i;
+  private bdvu a;
+  
+  public bdvs(bdvu parambdvu)
+  {
+    this.a = parambdvu;
+  }
+  
+  public void onTaskCompletedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.a(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskCompletedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskDetectedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.b(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskDetectedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskFailedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    ThreadManager.getSubThreadHandler().post(new DownloadTaskListenerBridge.1(this, paramDownloaderTask));
+  }
+  
+  public void onTaskFailedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPausedMainloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPausedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPendingMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.d(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskReceivedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.f(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskReceivedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskStartedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.e(paramDownloaderTask);
+    }
+  }
+  
+  public void onTaskStartedSubloop(DownloaderTask paramDownloaderTask) {}
 }
 
 

@@ -1,81 +1,39 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.util.MQLruCache;
-import android.util.Pair;
-import com.tencent.commonsdk.cache.Sizeable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class bcpk
-  extends MQLruCache<String, Object>
+  extends bcpo
 {
-  public bcpk(Integer paramInteger)
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public LinearLayout b;
+  public TextView b;
+  
+  public bcpk() {}
+  
+  public bcpk(ViewGroup paramViewGroup)
   {
-    super(paramInteger.intValue());
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562869, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131371405);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369569));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368320));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365413));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131370112));
   }
   
-  protected int a(String paramString, Object paramObject)
+  public LinearLayout a()
   {
-    if ((paramObject instanceof Pair)) {
-      return ((Integer)((Pair)paramObject).second).intValue();
-    }
-    if ((paramObject instanceof Bitmap))
-    {
-      paramString = (Bitmap)paramObject;
-      return paramString.getRowBytes() * paramString.getHeight();
-    }
-    if ((paramObject instanceof BitmapDrawable))
-    {
-      paramObject = ((BitmapDrawable)paramObject).getBitmap();
-      if (paramObject != null)
-      {
-        int i = paramObject.getRowBytes();
-        return paramObject.getHeight() * i;
-      }
-    }
-    else if ((paramObject instanceof tds))
-    {
-      paramObject = ((tds)paramObject).a();
-      if (paramObject != null) {
-        return ted.a(paramObject);
-      }
-    }
-    else if ((paramObject instanceof Sizeable))
-    {
-      return ((Sizeable)paramObject).getByteSize();
-    }
-    abfc.a(paramString, abfc.m);
-    return 204800;
-  }
-  
-  public Object a(String paramString, Object paramObject)
-  {
-    Object localObject = paramObject;
-    if ((paramObject instanceof tds)) {
-      localObject = ((tds)paramObject).a();
-    }
-    return super.put(paramString, localObject);
-  }
-  
-  public Object a(String paramString, Object paramObject, byte paramByte)
-  {
-    Object localObject = paramObject;
-    if ((paramObject instanceof tds)) {
-      localObject = ((tds)paramObject).a();
-    }
-    return super.put(paramString, localObject, paramByte);
-  }
-  
-  public void a(String paramString, int paramInt) {}
-  
-  protected void a(boolean paramBoolean, String paramString, Object paramObject1, Object paramObject2)
-  {
-    if ((paramObject1 instanceof tds)) {
-      ((tds)paramObject1).a();
-    }
+    return this.jdField_b_of_type_AndroidWidgetLinearLayout;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcpk
  * JD-Core Version:    0.7.0.1
  */

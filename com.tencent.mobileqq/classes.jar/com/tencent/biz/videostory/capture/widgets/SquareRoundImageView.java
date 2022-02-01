@@ -1,6 +1,6 @@
 package com.tencent.biz.videostory.capture.widgets;
 
-import aavx;
+import abaa;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -25,15 +25,15 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bclx;
+import bdep;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 
 public class SquareRoundImageView
   extends ImageView
 {
-  private static int jdField_a_of_type_Int = bclx.a(2.0F);
-  private aavx jdField_a_of_type_Aavx;
+  private static int jdField_a_of_type_Int = bdep.a(2.0F);
+  private abaa jdField_a_of_type_Abaa;
   private BitmapShader jdField_a_of_type_AndroidGraphicsBitmapShader;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
@@ -121,11 +121,11 @@ public class SquareRoundImageView
   
   private void b()
   {
-    if (this.jdField_a_of_type_Aavx == null) {
+    if (this.jdField_a_of_type_Abaa == null) {
       try
       {
-        if (this.jdField_a_of_type_Aavx == null) {
-          this.jdField_a_of_type_Aavx = new aavx(Looper.getMainLooper(), this, null);
+        if (this.jdField_a_of_type_Abaa == null) {
+          this.jdField_a_of_type_Abaa = new abaa(Looper.getMainLooper(), this, null);
         }
         return;
       }
@@ -210,8 +210,8 @@ public class SquareRoundImageView
   public void a()
   {
     b();
-    if (!this.jdField_a_of_type_Aavx.hasMessages(1)) {
-      this.jdField_a_of_type_Aavx.sendEmptyMessage(1);
+    if (!this.jdField_a_of_type_Abaa.hasMessages(1)) {
+      this.jdField_a_of_type_Abaa.sendEmptyMessage(1);
     }
   }
   
@@ -299,8 +299,8 @@ public class SquareRoundImageView
     if (paramDrawable == null)
     {
       b();
-      if (this.jdField_a_of_type_Aavx.hasMessages(1)) {
-        this.jdField_a_of_type_Aavx.removeMessages(1);
+      if (this.jdField_a_of_type_Abaa.hasMessages(1)) {
+        this.jdField_a_of_type_Abaa.removeMessages(1);
       }
       this.jdField_a_of_type_AndroidGraphicsBitmapShader = null;
       this.d = 0;

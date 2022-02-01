@@ -1,11 +1,11 @@
 package com.tencent.gdtad.api.adbox;
 
-import ackt;
+import acox;
 
 public class GdtAdBoxDialog$3
   implements Runnable
 {
-  public GdtAdBoxDialog$3(ackt paramackt) {}
+  public GdtAdBoxDialog$3(acox paramacox) {}
   
   public void run()
   {

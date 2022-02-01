@@ -1,25 +1,15 @@
-import android.view.View;
-import android.view.animation.OvershootInterpolator;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
-import com.tencent.mobileqq.portal.SanHuaView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aekn
-  extends OvershootInterpolator
+  implements DialogInterface.OnDismissListener
 {
-  private boolean jdField_a_of_type_Boolean;
+  public aekn(DialogActivity paramDialogActivity) {}
   
-  public aekn(HongbaoShowerActivity paramHongbaoShowerActivity) {}
-  
-  public float getInterpolation(float paramFloat)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (paramFloat > 0.7D))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-      HongbaoShowerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity).a();
-    }
-    return (float)(1.0D - Math.pow(2.718281828459045D, 5.0F * -paramFloat) * Math.cos(8.0F * paramFloat));
+    this.a.finish();
   }
 }
 

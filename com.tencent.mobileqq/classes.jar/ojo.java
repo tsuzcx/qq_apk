@@ -1,14 +1,18 @@
-import android.view.View;
-import android.view.animation.Animation;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
-class ojo
-  extends bkfi
+public class ojo
+  extends Editable.Factory
 {
-  ojo(ojm paramojm, View paramView) {}
+  public ojo(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if ((paramCharSequence instanceof omv)) {
+      return (Editable)paramCharSequence;
+    }
+    return new omv(paramCharSequence, 3, 20);
   }
 }
 

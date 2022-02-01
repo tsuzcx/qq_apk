@@ -1,55 +1,9 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.widget.BubblePopupWindow;
+import com.tencent.image.URLImageView;
 
 public class assb
-  implements bich
+  extends asoz
 {
-  public assb(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
-  
-  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
-  {
-    if (this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-    }
-    if (!this.a.b())
-    {
-      this.a.jdField_a_of_type_Athn.a(null);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-      paramView.setPressed(false);
-    }
-    do
-    {
-      return;
-      paramSlideDetectListView = paramView.findViewById(2131377341);
-      paramView = (FileInfo)this.a.jdField_a_of_type_Athn.getItem(paramInt);
-      this.a.jdField_a_of_type_Athn.a(paramView);
-    } while (paramSlideDetectListView == null);
-    paramView = (Button)paramSlideDetectListView.findViewById(2131365297);
-    paramView.setTag(Integer.valueOf(paramInt));
-    paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-    ((ShaderAnimLayout)paramSlideDetectListView).a();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaDim(paramSlideDetectListView.getLayoutParams().width, paramSlideDetectListView.getLayoutParams().height);
-  }
-  
-  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
-  {
-    paramSlideDetectListView = paramView.findViewById(2131377341);
-    this.a.jdField_a_of_type_Athn.a(null);
-    if (paramSlideDetectListView != null)
-    {
-      ((ShaderAnimLayout)paramSlideDetectListView).e();
-      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131365297);
-      paramSlideDetectListView.setTag(null);
-      paramSlideDetectListView.setOnClickListener(null);
-    }
-    LocalFileBrowserActivity.a(this.a);
-  }
+  public URLImageView[] a;
 }
 
 

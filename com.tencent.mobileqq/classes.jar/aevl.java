@@ -1,18 +1,21 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.activity.Leba;
 
 public class aevl
-  implements View.OnClickListener
+  implements ViewSwitcher.ViewFactory
 {
-  public aevl(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public aevl(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  public View makeView()
   {
-    this.a.a.setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
+    ImageView localImageView = new ImageView(this.a.a());
+    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    return localImageView;
   }
 }
 

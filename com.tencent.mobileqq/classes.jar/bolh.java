@@ -1,39 +1,16 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.1.1;
+import mqq.os.MqqHandler;
 
 public class bolh
-  implements BusinessObserver
+  implements INetEventHandler
 {
-  public void a() {}
+  bolh(bolg parambolg) {}
   
-  public void a(Bundle paramBundle) {}
-  
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 967: 
-      b();
-      return;
-    case 968: 
-      a(paramBoolean, paramBundle);
-      return;
-    case 969: 
-      c();
-      return;
-    case 970: 
-      a(paramBundle);
-      return;
-    }
-    a();
+    ThreadManager.getUIHandler().post(new AEBottomListAdapter.1.1(this));
   }
 }
 

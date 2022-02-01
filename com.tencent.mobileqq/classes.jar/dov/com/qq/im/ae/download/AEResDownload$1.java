@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.download;
 
-import bcfe;
-import bnpr;
-import bnpt;
+import bcxw;
+import bord;
+import borf;
 import java.util.List;
 
 public final class AEResDownload$1
   implements Runnable
 {
-  public AEResDownload$1(bnpt parambnpt, List paramList, bcfe parambcfe) {}
+  public AEResDownload$1(borf paramborf, List paramList, bcxw parambcxw) {}
   
   public void run()
   {
-    bnpr.b(this.jdField_a_of_type_Bnpt, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bcfe);
+    bord.b(this.jdField_a_of_type_Borf, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bcxw);
   }
 }
 

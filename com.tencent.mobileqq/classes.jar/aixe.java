@@ -1,25 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationClidFragment;
-import com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationFragment;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public class aixe
-  implements bkom
+class aixe
+  implements Handler.Callback
 {
-  public aixe(ConnectionsExplorationClidFragment paramConnectionsExplorationClidFragment) {}
+  aixe(aixd paramaixd) {}
   
-  public void a(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramView = this.a.getParentFragment();
-    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
-      ((ConnectionsExplorationFragment)paramView).a(false);
+    switch (paramMessage.what)
+    {
     }
-  }
-  
-  public void b(View paramView)
-  {
-    paramView = this.a.getParentFragment();
-    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
-      ((ConnectionsExplorationFragment)paramView).a(true);
+    for (;;)
+    {
+      return true;
+      if ((paramMessage.obj instanceof ColorNote))
+      {
+        paramMessage = (ColorNote)paramMessage.obj;
+        aixd.a(this.a, paramMessage);
+        aixd.b(this.a, paramMessage);
+      }
     }
   }
 }

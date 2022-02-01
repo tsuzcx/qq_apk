@@ -1,38 +1,49 @@
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.LinearLayout.LayoutParams;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.HashMap;
 
 public class bcwy
-  extends Animation
 {
-  int jdField_a_of_type_Int;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  
-  public bcwy(ViewGroup paramViewGroup)
+  public static void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    int i = View.MeasureSpec.makeMeasureSpec(0, 0);
-    int j = View.MeasureSpec.makeMeasureSpec(0, 0);
-    this.jdField_a_of_type_AndroidViewViewGroup.measure(i, j);
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getMeasuredHeight();
-    paramViewGroup = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramViewGroup.height = 0;
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramViewGroup);
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("waite", "" + paramInt);
+    bdmc.a(VideoEnvironment.a()).a(null, "sv_waite_record_count", true, 0L, 0L, localHashMap, "");
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public static void a(int paramInt1, int paramInt2)
   {
-    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+    a("sv_resource_download_base", paramInt1, paramInt2);
   }
   
-  public boolean willChangeBounds()
+  private static void a(String paramString, int paramInt1, int paramInt2)
   {
-    return true;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("type", "" + paramInt1);
+    localHashMap.put("error", "" + paramInt2);
+    bdmc.a(VideoEnvironment.a()).a(null, paramString, true, 0L, 0L, localHashMap, "");
+  }
+  
+  public static void a(String paramString, long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("cost", "" + paramLong);
+    bdmc.a(VideoEnvironment.a()).a(null, paramString, true, 0L, 0L, localHashMap, "");
+  }
+  
+  public static void b(int paramInt1, int paramInt2)
+  {
+    a("sv_resource_download_qzone", paramInt1, paramInt2);
   }
 }
 

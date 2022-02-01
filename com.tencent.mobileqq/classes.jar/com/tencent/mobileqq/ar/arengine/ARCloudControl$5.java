@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aozd;
-import aozj;
+import apmt;
+import apmz;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARCloudControl$5
   implements Runnable
 {
-  public ARCloudControl$5(aozd paramaozd) {}
+  public ARCloudControl$5(apmt paramapmt) {}
   
   public void run()
   {
-    if ((aozd.a(this.this$0) != null) && (aozd.b(this.this$0)))
+    if ((apmt.a(this.this$0) != null) && (apmt.b(this.this$0)))
     {
       QLog.i("AREngine_ARCloudControl", 1, "onARCloudUploadImgComplete .isTimeOut= ");
-      if (!aozd.a(this.this$0)) {}
+      if (!apmt.a(this.this$0)) {}
     }
     else
     {
       return;
     }
-    aozd.a(this.this$0, true);
-    aozd.a(this.this$0).a(1, null);
+    apmt.a(this.this$0, true);
+    apmt.a(this.this$0).a(1, null);
     this.this$0.b = System.currentTimeMillis();
   }
 }

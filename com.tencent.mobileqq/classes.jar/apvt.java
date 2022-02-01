@@ -1,6 +1,7 @@
 public abstract interface apvt
+  extends apvu
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 

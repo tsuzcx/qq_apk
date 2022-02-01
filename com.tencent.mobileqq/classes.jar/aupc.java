@@ -1,32 +1,26 @@
-import NS_MINI_APP_MISC.MISC.StGetFriendPlayListV2Rsp;
-import android.text.TextUtils;
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.mobileqq.filemanager.widget.NoFileRelativeLayout;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aupc
   implements View.OnClickListener
 {
-  public aupc(IntimatePlayTogetherMiniGameCardView paramIntimatePlayTogetherMiniGameCardView, MISC.StGetFriendPlayListV2Rsp paramStGetFriendPlayListV2Rsp) {}
+  public aupc(NoFileRelativeLayout paramNoFileRelativeLayout) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.total.get() <= 1) {
-      QLog.d("IntimatePlayTogetherMin", 1, new Object[] { "onClick", "will not jump because total count less than 2" });
-    }
+    becb.a((Activity)this.a.getContext(), "s_qq_myfile_yindao", -1);
+    if ((this.a.getContext() instanceof FMActivity)) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.moreJumpLink.get())) {
-        QLog.e("IntimatePlayTogetherMin", 1, new Object[] { "onClick", "Could not launch with empty jump url" });
-      } else {
-        MiniAppLauncher.startMiniApp(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimatePlayTogetherMiniGameCardView.getContext(), this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.moreJumpLink.get(), 2064, new aupd(this));
+      if ((this.a.getContext() instanceof FileAssistantActivity)) {
+        bdll.b(((FileAssistantActivity)this.a.getContext()).app, "dc00898", "", "", "0X800A226", "0X800A226", 0, 0, "", "", "", "");
       }
     }
   }

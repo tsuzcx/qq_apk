@@ -1,23 +1,15 @@
-import android.app.Activity;
-import com.tencent.mobileqq.forward.ForwardVoiceCallOption;
+import java.util.List;
 
-public class aulj
-  implements adsx
+class aulj
+  implements bjhv
 {
-  public aulj(ForwardVoiceCallOption paramForwardVoiceCallOption) {}
+  aulj(aulf paramaulf, List paramList) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    if (paramInt == 2) {
+      bgsk.a(aulf.a(this.jdField_a_of_type_Aulf), aulf.a(this.jdField_a_of_type_Aulf), this.jdField_a_of_type_JavaUtilList);
+    }
   }
 }
 

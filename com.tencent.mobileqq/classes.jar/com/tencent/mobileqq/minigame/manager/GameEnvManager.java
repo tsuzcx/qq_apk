@@ -3,8 +3,9 @@ package com.tencent.mobileqq.minigame.manager;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import atwl;
-import bkcx;
+import auog;
+import bleb;
+import bmsw;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -19,14 +20,15 @@ import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.mobileqq.mini.util.StorageUtil;
+import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
+import com.tencent.mobileqq.minigame.api.QQMiniEnginePackage;
 import com.tencent.mobileqq.minigame.utils.GameLog;
-import com.tencent.mobileqq.minigame.utils.LogFilterUtil;
-import com.tencent.mobileqq.triton.sdk.EnvConfig;
-import com.tencent.mobileqq.triton.sdk.Version;
+import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
+import com.tencent.mobileqq.triton.model.Version;
 import com.tencent.qphone.base.util.MD5;
 import java.io.File;
 import java.io.IOException;
-import nmk;
+import nof;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -64,7 +66,7 @@ public class GameEnvManager
         }
         try
         {
-          String str4 = bkcx.a((File)localObject);
+          String str4 = bleb.a((File)localObject);
           localObject = str4;
           if (str4 == null) {
             localObject = "";
@@ -131,24 +133,19 @@ public class GameEnvManager
     MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 4, "1");
   }
   
-  public static EnvConfig getEnvConfig()
+  private static boolean enableLoadEngineFromDex()
   {
-    try
-    {
-      EnvConfig localEnvConfig = new EnvConfig();
-      localEnvConfig.setTritonPath(getTritonPath());
-      localEnvConfig.setTritonVersion(getTritonVersion());
-      String str = getJsPath();
-      localEnvConfig.setJSPath(str);
-      localEnvConfig.setJSVersion(getJsVersionByPath(str));
-      localEnvConfig.setLogConfig(LogFilterUtil.getLogWhiteList(), LogFilterUtil.getLogBlackList());
-      return localEnvConfig;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return GameWnsUtils.gameEnableDexLoader();
+  }
+  
+  public static QQMiniEnginePackage getEnginePackage()
+  {
+    return new QQMiniEnginePackage(new File(getJsPath()), getTritonVersion(), getJsVersionByPath(getJsPath()), new File(getTritonPath()), getTritonDexPath(getTritonPath()), getGlobalConfig());
+  }
+  
+  private static String getGlobalConfig()
+  {
+    return "self = GameGlobal = __TT__GLOBAL__ = global = window = this;\nself.__ttObjdec__ = {};\nself.wx = self.wx || {};\nself.WeixinNativeBuffer = Triton.WeixinNativeBuffer;\nvar __wxConfig = __wxConfig || {};\n__wxConfig.env = {};\n__wxConfig.env.USER_DATA_PATH = '" + MiniAppGlobal.STR_WXFILE + "usr';\n__wxConfig.platform = 'android';\n__wxConfig.QUA = '" + bmsw.a() + "';\nwx.env = __wxConfig.env;\nvar __qqConfig = __wxConfig || {};\n";
   }
   
   private static String getInnerJsPath()
@@ -168,7 +165,7 @@ public class GameEnvManager
   private static String getJsPath()
   {
     String str1 = StorageUtil.getPreference().getString("downloadUrl", "mini");
-    String str2 = StorageUtil.getPreference().getString("version", "1.17.0.00206");
+    String str2 = StorageUtil.getPreference().getString("version", "1.18.0.00132");
     str1 = BaseLibManager.g().getBaseLibDir(str1, str2);
     str2 = getInnerJsPath();
     return getNewestBaseLib(getTritonPath(), getNewestBaseLib(str1, str2));
@@ -177,33 +174,21 @@ public class GameEnvManager
   private static Version getJsVersionByPath(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
+      return new Version("", 0L);
     }
-    Version localVersion;
-    Object localObject;
-    do
+    paramString = new File(paramString);
+    if (paramString.exists())
     {
-      do
+      paramString = paramString.getName();
+      if (!TextUtils.isEmpty(paramString))
       {
-        do
-        {
-          do
-          {
-            return paramString;
-            localVersion = new Version();
-            localObject = new File(paramString);
-            paramString = localVersion;
-          } while (!((File)localObject).exists());
-          localObject = ((File)localObject).getName();
-          paramString = localVersion;
-        } while (TextUtils.isEmpty((CharSequence)localObject));
-        localObject = ((String)localObject).split("_");
-        paramString = localVersion;
-      } while (localObject == null);
-      paramString = localVersion;
-    } while (localObject.length <= 1);
-    localVersion.setVersion(localObject[1]);
-    return localVersion;
+        paramString = paramString.split("_");
+        if (paramString.length > 1) {
+          return new Version(paramString[1], 0L);
+        }
+      }
+    }
+    return new Version("", 0L);
   }
   
   private static String getLocalTritonPath()
@@ -213,7 +198,7 @@ public class GameEnvManager
   
   private static Version getLocalTritonVersion()
   {
-    Version localVersion = getTritonVersionFromJSONStr("{\n    \"triton_info\": {\n        \"version\": \"1.5.1.47.23024d6\",\n        \"timestamp\": 1594302534582\n    }\n}");
+    Version localVersion = getTritonVersionFromJSONStr("{\n    \"triton_info\": {\n        \"version\": \"1.7.0.60.6dade66\",\n        \"timestamp\": 1596807861057\n    }\n}");
     GameLog.getInstance().i("GameEnvManager[MiniEng]", "getLocalTritonVersion:" + localVersion);
     return localVersion;
   }
@@ -268,11 +253,22 @@ public class GameEnvManager
   
   private static Version getOnlineTritonVersion()
   {
-    Version localVersion = new Version();
-    localVersion.setVersion(StorageUtil.getPreference().getString("TritonVersion", ""));
-    localVersion.setTimeStamp(StorageUtil.getPreference().getLong("TritonTimeStamp", -1L));
+    Version localVersion = new Version(StorageUtil.getPreference().getString("TritonVersion", ""), StorageUtil.getPreference().getLong("TritonTimeStamp", -1L));
     GameLog.getInstance().i("GameEnvManager[MiniEng]", "getOnlineTritonVersion:" + localVersion);
     return localVersion;
+  }
+  
+  private static File getTritonDexPath(String paramString)
+  {
+    if (!enableLoadEngineFromDex()) {}
+    while (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder().append(paramString);
+    if (paramString.endsWith(File.separator)) {}
+    for (paramString = "";; paramString = File.separator) {
+      return new File(paramString + "triton.jar");
+    }
   }
   
   /* Error */
@@ -281,35 +277,35 @@ public class GameEnvManager
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 422	com/tencent/mobileqq/minigame/manager/GameEnvManager:currentTritonPath	Ljava/lang/String;
-    //   6: invokestatic 358	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3: getstatic 428	com/tencent/mobileqq/minigame/manager/GameEnvManager:currentTritonPath	Ljava/lang/String;
+    //   6: invokestatic 362	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   9: ifne +12 -> 21
-    //   12: getstatic 422	com/tencent/mobileqq/minigame/manager/GameEnvManager:currentTritonPath	Ljava/lang/String;
+    //   12: getstatic 428	com/tencent/mobileqq/minigame/manager/GameEnvManager:currentTritonPath	Ljava/lang/String;
     //   15: astore_0
     //   16: ldc 2
     //   18: monitorexit
     //   19: aload_0
     //   20: areturn
-    //   21: invokestatic 89	com/tencent/mobileqq/minigame/manager/GameEnvManager:getLocalTritonVersion	()Lcom/tencent/mobileqq/triton/sdk/Version;
+    //   21: invokestatic 89	com/tencent/mobileqq/minigame/manager/GameEnvManager:getLocalTritonVersion	()Lcom/tencent/mobileqq/triton/model/Version;
     //   24: astore_0
-    //   25: invokestatic 163	com/tencent/mobileqq/minigame/manager/GameEnvManager:getOnlineTritonVersion	()Lcom/tencent/mobileqq/triton/sdk/Version;
+    //   25: invokestatic 163	com/tencent/mobileqq/minigame/manager/GameEnvManager:getOnlineTritonVersion	()Lcom/tencent/mobileqq/triton/model/Version;
     //   28: astore_1
     //   29: aload_0
     //   30: aload_1
-    //   31: invokevirtual 169	com/tencent/mobileqq/triton/sdk/Version:compareTo	(Lcom/tencent/mobileqq/triton/sdk/Version;)I
+    //   31: invokevirtual 169	com/tencent/mobileqq/triton/model/Version:compareTo	(Lcom/tencent/mobileqq/triton/model/Version;)I
     //   34: iflt +23 -> 57
-    //   37: invokestatic 424	com/tencent/mobileqq/minigame/manager/GameEnvManager:getLocalTritonPath	()Ljava/lang/String;
-    //   40: putstatic 422	com/tencent/mobileqq/minigame/manager/GameEnvManager:currentTritonPath	Ljava/lang/String;
+    //   37: invokestatic 430	com/tencent/mobileqq/minigame/manager/GameEnvManager:getLocalTritonPath	()Ljava/lang/String;
+    //   40: putstatic 428	com/tencent/mobileqq/minigame/manager/GameEnvManager:currentTritonPath	Ljava/lang/String;
     //   43: aload_0
-    //   44: putstatic 426	com/tencent/mobileqq/minigame/manager/GameEnvManager:currentTritonVersion	Lcom/tencent/mobileqq/triton/sdk/Version;
-    //   47: invokestatic 428	com/tencent/mobileqq/minigame/manager/GameEnvManager:checkTritonUpdateOnMainProcess	()V
-    //   50: getstatic 422	com/tencent/mobileqq/minigame/manager/GameEnvManager:currentTritonPath	Ljava/lang/String;
+    //   44: putstatic 432	com/tencent/mobileqq/minigame/manager/GameEnvManager:currentTritonVersion	Lcom/tencent/mobileqq/triton/model/Version;
+    //   47: invokestatic 434	com/tencent/mobileqq/minigame/manager/GameEnvManager:checkTritonUpdateOnMainProcess	()V
+    //   50: getstatic 428	com/tencent/mobileqq/minigame/manager/GameEnvManager:currentTritonPath	Ljava/lang/String;
     //   53: astore_0
     //   54: goto -38 -> 16
-    //   57: invokestatic 430	com/tencent/mobileqq/minigame/manager/GameEnvManager:getOnlineTritonPath	()Ljava/lang/String;
-    //   60: putstatic 422	com/tencent/mobileqq/minigame/manager/GameEnvManager:currentTritonPath	Ljava/lang/String;
+    //   57: invokestatic 436	com/tencent/mobileqq/minigame/manager/GameEnvManager:getOnlineTritonPath	()Ljava/lang/String;
+    //   60: putstatic 428	com/tencent/mobileqq/minigame/manager/GameEnvManager:currentTritonPath	Ljava/lang/String;
     //   63: aload_1
-    //   64: putstatic 426	com/tencent/mobileqq/minigame/manager/GameEnvManager:currentTritonVersion	Lcom/tencent/mobileqq/triton/sdk/Version;
+    //   64: putstatic 432	com/tencent/mobileqq/minigame/manager/GameEnvManager:currentTritonVersion	Lcom/tencent/mobileqq/triton/model/Version;
     //   67: goto -20 -> 47
     //   70: astore_0
     //   71: ldc 2
@@ -354,35 +350,25 @@ public class GameEnvManager
   
   private static Version getTritonVersionByFileInfo(FileInfo paramFileInfo)
   {
-    Object localObject;
     if ((paramFileInfo == null) || (TextUtils.isEmpty(paramFileInfo.d()))) {
-      localObject = null;
+      return null;
     }
-    for (;;)
+    try
     {
-      return localObject;
-      Version localVersion = new Version();
-      try
+      Object localObject = paramFileInfo.d().split("_");
+      if (localObject.length == 2)
       {
-        String[] arrayOfString = paramFileInfo.d().split("_");
-        localObject = localVersion;
-        if (arrayOfString != null)
-        {
-          localObject = localVersion;
-          if (arrayOfString.length == 2)
-          {
-            localVersion.setVersion(arrayOfString[0]);
-            localVersion.setTimeStamp(Long.parseLong(arrayOfString[1]));
-            return localVersion;
-          }
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        GameLog.getInstance().e("GameEnvManager[MiniEng]", "getTritonVersionByFileInfo error." + paramFileInfo.c(), localThrowable);
+        localObject = new Version(localObject[0], Long.parseLong(localObject[1]));
+        return localObject;
       }
     }
-    return new Version();
+    catch (Throwable localThrowable)
+    {
+      GameLog.getInstance().e("GameEnvManager[MiniEng]", "getTritonVersionByFileInfo error." + paramFileInfo.c(), localThrowable);
+      return new Version("", 0L);
+    }
+    Version localVersion = new Version("", 0L);
+    return localVersion;
   }
   
   private static Version getTritonVersionFromJSONStr(String paramString)
@@ -392,26 +378,24 @@ public class GameEnvManager
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramString).optJSONObject("triton_info");
-      Version localVersion2 = new Version();
-      localVersion1 = localVersion2;
-      if (localJSONObject != null)
+      Object localObject = new JSONObject(paramString).optJSONObject("triton_info");
+      if (localObject != null)
       {
-        localVersion2.setVersion(localJSONObject.optString("version"));
-        localVersion2.setTimeStamp(localJSONObject.optLong("timestamp"));
-        localVersion1 = localVersion2;
+        localObject = new Version(((JSONObject)localObject).optString("version"), ((JSONObject)localObject).optLong("timestamp"));
+        paramString = (String)localObject;
+      }
+      else
+      {
+        localObject = new Version("", 0L);
+        paramString = (String)localObject;
       }
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        Version localVersion1;
-        GameLog.getInstance().e("GameEnvManager[MiniEng]", "getTritonVersionByBaseLib content:" + paramString, localThrowable);
-        Object localObject = null;
-      }
+      GameLog.getInstance().e("GameEnvManager[MiniEng]", "getTritonVersionByBaseLib content:" + paramString, localThrowable);
+      paramString = null;
     }
-    return localVersion1;
+    return paramString;
   }
   
   private static void onDownloadLatestTritonEngineSuccess(Version paramVersion, String paramString, GameEnvManager.IDownloadListener paramIDownloadListener)
@@ -423,7 +407,7 @@ public class GameEnvManager
         String str1 = getOnlineTritonPathByVersion(paramVersion);
         String str2 = str1 + "_" + System.nanoTime();
         MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 6, "1");
-        int j = nmk.a(paramString, str2);
+        int j = nof.a(paramString, str2);
         boolean bool2 = verifyEngine(str2);
         Object localObject = GameLog.getInstance();
         StringBuilder localStringBuilder = new StringBuilder().append("download ").append(paramVersion).append(", unzip:");
@@ -453,8 +437,8 @@ public class GameEnvManager
             if (paramIDownloadListener != null) {
               paramIDownloadListener.onDownloadResult(0, "安装成功");
             }
-            atwl.c(paramString);
-            atwl.c(str2);
+            auog.c(paramString);
+            auog.c(str2);
           }
         }
         else
@@ -464,7 +448,7 @@ public class GameEnvManager
         }
         int i = 1;
         continue;
-        atwl.c(str1);
+        auog.c(str1);
         GameLog.getInstance().i("GameEnvManager[MiniEng]", "[安装小游戏新版本so] 安装失败, rename fail. " + paramVersion + " from " + str2 + " to " + str1);
         if (paramIDownloadListener == null) {
           continue;

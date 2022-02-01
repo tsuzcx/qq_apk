@@ -1,20 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aemd
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public aemd(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
+  public aemd(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (!LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.a();
-      return;
-    }
-    LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity, this.jdField_a_of_type_JavaLangRunnable);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847906);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anzj.a(2131702525));
+    this.a.jdField_a_of_type_Boolean = false;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

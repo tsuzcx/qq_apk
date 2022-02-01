@@ -1,15 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class asfm
-  implements DialogInterface.OnClickListener
+public abstract interface asfm
 {
-  asfm(asfl paramasfl) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void b(boolean paramBoolean);
 }
 
 

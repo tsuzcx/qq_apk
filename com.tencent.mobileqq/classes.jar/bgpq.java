@@ -1,85 +1,79 @@
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bgpq
-  extends BaseAdapter
+public class bgpq
+  extends bgpo
 {
-  bgpq(bgpp parambgpp) {}
-  
-  public int getCount()
+  public bgpq(String paramString1, String paramString2, bgpp parambgpp, int paramInt, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
+    super(paramString1, paramString2, parambgpp, paramInt, paramBundle);
+  }
+  
+  protected JSONObject a(HashMap<String, Object>... paramVarArgs)
+  {
+    if (isCancelled()) {
+      return null;
     }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
-    }
-    bgpv localbgpv;
-    if (paramView == null)
+    Object localObject = paramVarArgs[0];
+    if (((((HashMap)localObject).get("CONTEXT") instanceof Context)) && ((((HashMap)localObject).get("BUNDLE") instanceof Bundle)))
     {
-      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558997, null);
-      localbgpv = new bgpv(this.a, null);
-      localbgpv.a = ((TextView)paramView.findViewById(2131368898));
-      paramView.setTag(localbgpv);
+      paramVarArgs = (Context)((HashMap)localObject).get("CONTEXT");
+      localObject = (Bundle)((HashMap)localObject).get("BUNDLE");
     }
     for (;;)
     {
-      localbgpv = (bgpv)paramView.getTag();
-      int i;
-      int j;
-      int k;
-      int m;
-      if (localbgpv.a != null)
+      try
       {
-        localbgpv.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-        localbgpv.a.setOnClickListener(new bgpu(this.a, paramInt));
-        i = localbgpv.a.getPaddingTop();
-        j = localbgpv.a.getPaddingLeft();
-        k = localbgpv.a.getPaddingRight();
-        m = localbgpv.a.getPaddingBottom();
-        if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
-          break label232;
+        Bundle localBundle = new Bundle();
+        String str1 = ((Bundle)localObject).getString("Cookie");
+        String str2 = ((Bundle)localObject).getString("Referer");
+        String str3 = ((Bundle)localObject).getString("Origin");
+        if (str1 != null)
+        {
+          localBundle.putString("Cookie", str1);
+          ((Bundle)localObject).remove("Cookie");
         }
-        localbgpv.a.setBackgroundResource(2130839539);
+        if (str2 != null)
+        {
+          localBundle.putString("Referer", str2);
+          ((Bundle)localObject).remove("Referer");
+        }
+        if (str3 != null)
+        {
+          localBundle.putString("Origin", str3);
+          ((Bundle)localObject).remove("Origin");
+        }
+        paramVarArgs = new JSONObject(nnr.a(paramVarArgs, this.a, this.b, (Bundle)localObject, localBundle));
       }
-      for (;;)
+      catch (IOException paramVarArgs)
       {
-        localbgpv.a.setPadding(j, i, k, m);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        label232:
-        if (paramInt == 0) {
-          localbgpv.a.setBackgroundResource(2130839540);
-        } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
-          localbgpv.a.setBackgroundResource(2130839538);
-        }
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        paramVarArgs = null;
+        continue;
       }
+      catch (JSONException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        paramVarArgs = null;
+        continue;
+      }
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+      }
+      return paramVarArgs;
+      paramVarArgs = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgpq
  * JD-Core Version:    0.7.0.1
  */

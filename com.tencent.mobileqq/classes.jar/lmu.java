@@ -1,20 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.gaudio.GaInviteActivity;
+import com.tencent.av.gaudio.AVNotifyCenter;
 
-class lmu
-  implements DialogInterface.OnClickListener
+public class lmu
 {
-  lmu(lmt paramlmt) {}
+  public int a;
+  public long a;
+  final String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public boolean d = false;
+  public boolean e = false;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public lmu(AVNotifyCenter paramAVNotifyCenter, String paramString, long paramLong)
   {
-    this.a.a.a(-1040L, 11);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = ("AvChatData_" + paramString + "_" + paramLong);
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangString + ", mRelationId[" + this.jdField_a_of_type_Long + "], mRelationType[" + this.jdField_c_of_type_Int + "], mUinType[" + this.jdField_b_of_type_Int + "], mPeerUin[" + this.jdField_b_of_type_JavaLangString + "], mIsChating[" + this.d + "], mIsWaitting[" + this.jdField_c_of_type_Boolean + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lmu
  * JD-Core Version:    0.7.0.1
  */

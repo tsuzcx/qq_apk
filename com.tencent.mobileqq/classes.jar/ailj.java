@@ -1,31 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
 class ailj
-  implements View.OnClickListener
+  implements biug<oidb_0x8ed.RspBody>
 {
-  ailj(aili paramaili) {}
+  ailj(aikq paramaikq) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    bcst.b(aili.a(this.a), "CliOper", "", "", "Free_call", "Clk_free_call_tips", 0, 0, "", "", "", "");
-    aili.c(aili.a(this.a), aili.a(this.a).jdField_a_of_type_JavaLangString);
-    aili.a(this.a).a();
-    String str1 = null;
-    String str2 = null;
-    if (aili.a(this.a).jdField_a_of_type_Int == 1006) {
-      str2 = aili.a(this.a).jdField_a_of_type_JavaLangString;
-    }
-    for (;;)
+    if ((paramInt == 0) && (this.a.ab))
     {
-      ChatActivityUtils.a(aili.a(this.a), aili.a(this.a), aili.a(this.a).jdField_a_of_type_Int, str1, aili.a(this.a).d, str2, true, aili.a(this.a).b, true, true, null, "from_internal");
-      bcst.b(aili.a(this.a), "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "8", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      str1 = aili.a(this.a).jdField_a_of_type_JavaLangString;
+      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, anzj.a(2131704014), 0).a();
+      bhsi.f(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+      this.a.jdField_a_of_type_Axxr.a(this.a.jdField_a_of_type_AndroidContentContext);
     }
   }
 }

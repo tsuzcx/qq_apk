@@ -1,116 +1,136 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class ayqo
-  implements Handler.Callback, ayso
+  extends ayqg
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private final int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManagerV2.getSubThreadLooper(), this);
-  private ayqp jdField_a_of_type_Ayqp;
-  private aysl jdField_a_of_type_Aysl = new aysl();
-  private int b;
-  private int c = ayqi.H;
-  
-  public ayqo(ayqp paramayqp, int paramInt)
+  public ayqo(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Ayqp = paramayqp;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramContext, paramQQAppInterface);
   }
   
-  private void c()
+  public int a(ayqn paramayqn)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLocationInterface", 2, "[status][locInterface] startLocationImpl.");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_Aysl.a(this);
-    this.jdField_a_of_type_Aysl.a(2000L, false, false);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 10000L);
+    return 3;
   }
   
-  private void d()
+  public View a(ViewGroup paramViewGroup, ayqn paramayqn)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLocationInterface", 2, "[status][locInterface] stopLocationImpl.");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    this.jdField_a_of_type_Aysl.b(this);
-    this.jdField_a_of_type_Aysl.a();
+    paramayqn = (ayqp)paramayqn;
+    paramViewGroup = LayoutInflater.from(this.a).inflate(2131561345, paramViewGroup, false);
+    paramayqn.g = ((TextView)paramViewGroup.findViewById(2131380126));
+    paramayqn.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131369184));
+    paramayqn.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131369314));
+    paramayqn.jdField_e_of_type_AndroidViewView = paramViewGroup.findViewById(2131366483);
+    paramayqn.jdField_f_of_type_AndroidViewView = paramViewGroup.findViewById(2131366484);
+    return paramViewGroup;
   }
   
-  public void a()
+  public ayqn a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    return new ayqp(this);
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(aysk paramaysk, Double paramDouble, boolean paramBoolean)
+  public String b(ayqn paramayqn)
   {
-    if (paramaysk.jdField_a_of_type_Float > this.jdField_a_of_type_Int + this.jdField_a_of_type_Float)
+    return ((aysh)((ayqp)paramayqn).a).jdField_a_of_type_JavaLangString;
+  }
+  
+  public void f(ayqn paramayqn)
+  {
+    paramayqn = (ayqp)paramayqn;
+    Object localObject1 = (aysh)paramayqn.a;
+    label69:
+    int j;
+    if (((aysh)localObject1).c > 1)
     {
-      this.b += 1;
-      if (this.b > 8L)
+      paramayqn.jdField_e_of_type_AndroidViewView.setVisibility(0);
+      paramayqn.jdField_f_of_type_AndroidViewView.setVisibility(0);
+      paramayqn.g.setMovementMethod(LinkMovementMethod.getInstance());
+      if (!TextUtils.isEmpty(((aysh)localObject1).n)) {
+        break label307;
+      }
+      paramayqn.g.setVisibility(8);
+      j = zps.a(this.a, 200.0F);
+      if ((((aysh)localObject1).jdField_a_of_type_Int <= 0) || (((aysh)localObject1).jdField_b_of_type_Int <= 0)) {
+        break label414;
+      }
+    }
+    label414:
+    for (int i = ((aysh)localObject1).jdField_b_of_type_Int * j / ((aysh)localObject1).jdField_a_of_type_Int;; i = j)
+    {
+      if (i * 3 > j * 4) {
+        i = j * 4 / 3;
+      }
+      for (;;)
       {
-        this.jdField_a_of_type_Float = ((float)(this.jdField_a_of_type_Float + 10.0D));
-        this.b = 0;
+        for (;;)
+        {
+          Object localObject2;
+          if (!TextUtils.equals((String)paramayqn.jdField_e_of_type_AndroidWidgetImageView.getTag(2131378440), ((aysh)localObject1).jdField_b_of_type_JavaLangString))
+          {
+            paramayqn.jdField_e_of_type_AndroidWidgetImageView.setTag(2131378440, ((aysh)localObject1).jdField_b_of_type_JavaLangString);
+            localObject2 = (FrameLayout.LayoutParams)paramayqn.jdField_e_of_type_AndroidWidgetImageView.getLayoutParams();
+            if (localObject2 != null) {
+              break label330;
+            }
+            localObject2 = new FrameLayout.LayoutParams(j, i);
+            paramayqn.jdField_e_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+          }
+          try
+          {
+            for (;;)
+            {
+              localObject2 = URLDrawable.URLDrawableOptions.obtain();
+              ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.a.getResources().getDrawable(2130845496);
+              ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.a.getResources().getDrawable(2130845496);
+              localObject1 = URLDrawable.getDrawable(((aysh)localObject1).jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2);
+              ((URLDrawable)localObject1).setTag(bhez.b(j, i, bhgr.a(this.a, 3.0F)));
+              ((URLDrawable)localObject1).setDecodeHandler(bhez.e);
+              paramayqn.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+              return;
+              paramayqn.jdField_e_of_type_AndroidViewView.setVisibility(8);
+              paramayqn.jdField_f_of_type_AndroidViewView.setVisibility(8);
+              break;
+              label307:
+              paramayqn.g.setVisibility(0);
+              paramayqn.g.setText(((aysh)localObject1).n);
+              break label69;
+              label330:
+              if ((((FrameLayout.LayoutParams)localObject2).width != j) || (((FrameLayout.LayoutParams)localObject2).height != i))
+              {
+                ((FrameLayout.LayoutParams)localObject2).width = j;
+                ((FrameLayout.LayoutParams)localObject2).height = i;
+                paramayqn.jdField_e_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+              }
+            }
+          }
+          catch (Exception localException)
+          {
+            do
+            {
+              paramayqn.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable(this.a.getResources().getDrawable(2130845496));
+            } while (!QLog.isColorLevel());
+            QLog.i("BaseMomentItemBuilder", 1, localException.toString());
+            return;
+          }
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoLocationInterface", 2, new Object[] { "[status][locInterface] ignore location: ", paramaysk, " time:", Integer.valueOf(this.b), " adjust:", Float.valueOf(this.jdField_a_of_type_Float) });
-      }
-      return;
     }
-    this.b = 0;
-    if ((paramBoolean) && (this.jdField_a_of_type_Ayqp != null)) {
-      this.jdField_a_of_type_Ayqp.a(paramaysk);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((paramInt <= 0) || (paramInt > ayqi.H * 2)) {}
-    for (this.c = ayqi.H;; this.c = paramInt)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoLocationInterface", 2, new Object[] { "[status][distance] setDistanceReqTime ", Integer.valueOf(this.c) });
-      }
-      return;
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoLocationInterface", 2, new Object[] { "unKnow msg:", Integer.valueOf(paramMessage.what) });
-      }
-      return false;
-    case 1: 
-      c();
-      return false;
-    case 2: 
-      d();
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, ayqi.H);
-      return false;
-    }
-    d();
-    return false;
   }
 }
 

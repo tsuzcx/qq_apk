@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
 import java.util.ArrayList;
-import wjc;
-import wje;
+import wmx;
+import wmz;
 
 public class VideoSaveToAlbumHelper$1
   extends ArrayList<Object>
 {
-  public VideoSaveToAlbumHelper$1(wjc paramwjc, wje paramwje, String paramString)
+  public VideoSaveToAlbumHelper$1(wmx paramwmx, wmz paramwmz, String paramString)
   {
     add(this.val$taskInfo.b);
     add(this.val$hflipPath);

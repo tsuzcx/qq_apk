@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
-public class aejt
-  implements DialogInterface.OnDismissListener
+class aejt
+  implements View.OnLongClickListener
 {
-  public aejt(GroupManagerActivity paramGroupManagerActivity) {}
+  aejt(aejr paramaejr) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onLongClick(View paramView)
   {
-    GroupManagerActivity.b(this.a, null);
+    return this.a.a.a.b.performLongClick();
   }
 }
 

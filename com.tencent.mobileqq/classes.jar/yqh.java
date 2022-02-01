@@ -1,12 +1,6 @@
 public abstract interface yqh
 {
-  public abstract void Q_();
-  
-  public abstract void a(zhq paramzhq);
-  
-  public abstract void f();
-  
-  public abstract void h();
+  public abstract void a(String paramString);
 }
 
 

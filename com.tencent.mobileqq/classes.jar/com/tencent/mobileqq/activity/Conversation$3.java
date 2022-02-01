@@ -1,17 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import alcu;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import bdep;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
 
 class Conversation$3
   implements Runnable
 {
-  Conversation$3(Conversation paramConversation, QQAppInterface paramQQAppInterface, List paramList) {}
+  Conversation$3(Conversation paramConversation) {}
   
   public void run()
   {
-    alcu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, 15);
+    if (Conversation.a(this.this$0) != null) {
+      Conversation.a(this.this$0).scrollTo(0, -bdep.a(50.0F));
+    }
+    if (this.this$0.a != null)
+    {
+      this.this$0.a.a(0L);
+      this.this$0.a(0, this.this$0.a, Conversation.a(this.this$0));
+    }
   }
 }
 

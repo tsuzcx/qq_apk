@@ -7,12 +7,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import odq;
+import ofa;
 
 public class EcshopCacheTool$1
   implements Runnable
 {
-  public EcshopCacheTool$1(odq paramodq) {}
+  public EcshopCacheTool$1(ofa paramofa) {}
   
   public void run()
   {

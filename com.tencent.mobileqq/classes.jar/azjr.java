@@ -1,59 +1,55 @@
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.Intent;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import mqq.util.WeakReference;
 
 public class azjr
+  extends apcq
 {
-  private Map<ProfileLabelInfo, ToggleButton> a = new HashMap();
+  private static azkn jdField_a_of_type_Azkn = new azkn("weather", 1000, 3, 1);
+  private int jdField_a_of_type_Int;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private WeakReference<azjt> jdField_a_of_type_MqqUtilWeakReference;
   
-  public ToggleButton a(ProfileLabelInfo paramProfileLabelInfo)
+  public azjr(int paramInt, Intent paramIntent, azjt paramazjt)
   {
-    return (ToggleButton)this.a.get(paramProfileLabelInfo);
+    super(0, true, true, 60000L, false, false, "official_location");
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramazjt);
   }
   
-  public Map<ProfileLabelInfo, ToggleButton> a()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
-  {
-    if (!a(paramProfileLabelInfo)) {
-      this.a.put(paramProfileLabelInfo, paramToggleButton);
-    }
-  }
-  
-  public boolean a(ProfileLabelInfo paramProfileLabelInfo)
-  {
-    return this.a.get(paramProfileLabelInfo) != null;
-  }
-  
-  public void b(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
-  {
-    if (a(paramProfileLabelInfo)) {
-      this.a.remove(paramProfileLabelInfo);
-    }
-  }
-  
-  public void c(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
-  {
-    if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_NORMAL) {
-      a(paramProfileLabelInfo, paramToggleButton);
-    }
-    for (;;)
+    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)
     {
-      paramProfileLabelInfo.toggleStatus();
-      paramToggleButton.toggle();
-      return;
-      if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
-        b(paramProfileLabelInfo, paramToggleButton);
+      if (QLog.isColorLevel()) {
+        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] onLocationFinish error. mCallback is null ");
       }
+      return;
+    }
+    if ((paramSosoLbsInfo == null) || (paramInt != 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] onLocationFinish error. errCode : " + paramInt);
+      }
+      ((azjt)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramInt, 0.0D, 0.0D, "", "", this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentIntent);
+      return;
+    }
+    paramSosoLbsInfo = new LatLng(paramSosoLbsInfo.a.a, paramSosoLbsInfo.a.b);
+    if (QLog.isColorLevel()) {
+      QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] onLocationFinish invoked. latLng : " + paramSosoLbsInfo + " errCode : " + paramInt);
+    }
+    try
+    {
+      jdField_a_of_type_Azkn.a(paramSosoLbsInfo, new azjs(this, paramSosoLbsInfo, paramInt));
+      return;
+    }
+    catch (Throwable paramSosoLbsInfo)
+    {
+      QLog.e("OnlineStatusWeatherLocationListener", 1, "getPoiWithLatLngError", paramSosoLbsInfo);
     }
   }
 }

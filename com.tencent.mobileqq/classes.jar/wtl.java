@@ -1,27 +1,44 @@
 import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.Collections;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 class wtl
-  extends SimpleObserver<List<xfb>>
+  implements woy<xcr, xct>
 {
-  wtl(wti paramwti, wtm paramwtm, wrs paramwrs) {}
+  wtl(wtk paramwtk) {}
   
-  public void a(List<xfb> paramList)
+  public void a(@NonNull xcr paramxcr, @Nullable xct paramxct, @NonNull ErrorMessage paramErrorMessage)
   {
-    super.onNext(paramList);
-    if (this.jdField_a_of_type_Wtm != null) {
-      this.jdField_a_of_type_Wtm.a(this.jdField_a_of_type_Wrs, Collections.emptyList());
+    paramxcr = paramxcr.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramxcr.hasNext())
+    {
+      localObject = (String)paramxcr.next();
+      wtk.a(this.a).remove(localObject);
     }
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    if (this.jdField_a_of_type_Wtm != null) {
-      this.jdField_a_of_type_Wtm.a(this.jdField_a_of_type_Wrs, paramError);
+    paramxcr = new wtm();
+    paramxcr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    if ((paramErrorMessage.isFail()) || (paramxct == null))
+    {
+      yuk.d("Q.qqstory:TagManager", "request fail for get tag request");
+      wjj.a().dispatch(paramxcr);
+      return;
     }
+    paramErrorMessage = paramxcr.jdField_a_of_type_JavaUtilMap;
+    Object localObject = (wtk)wth.a(27);
+    paramxct = paramxct.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramxct.hasNext())
+    {
+      xcs localxcs = (xcs)paramxct.next();
+      ((wtk)localObject).a(localxcs.jdField_a_of_type_JavaLangString, localxcs.jdField_a_of_type_JavaUtilList);
+      paramErrorMessage.put(localxcs.jdField_a_of_type_JavaLangString, localxcs);
+      yuk.a("Q.qqstory:TagManager", "save feedId :%s , %s", localxcs.jdField_a_of_type_JavaLangString, localxcs.jdField_a_of_type_JavaUtilList);
+    }
+    wjj.a().dispatch(paramxcr);
   }
 }
 

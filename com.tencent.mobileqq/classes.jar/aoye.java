@@ -1,56 +1,31 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract class aoye
-  extends Binder
-  implements aoyd
+public class aoye
+  extends aoxh
 {
-  public aoye()
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
-  }
-  
-  public static aoyd a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
+    paramQQAppInterface = new aoyd(paramQQAppInterface, paramContext);
+    paramQQAppInterface.b = "qqreg";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
-    if ((localIInterface != null) && ((localIInterface instanceof aoyd))) {
-      return (aoyd)localIInterface;
-    }
-    return new aoyf(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
-      return true;
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
-    paramParcel1 = a();
-    paramParcel2.writeNoException();
-    if (paramParcel1 != null)
-    {
-      paramParcel2.writeInt(1);
-      paramParcel1.writeToParcel(paramParcel2, 1);
-      return true;
-    }
-    paramParcel2.writeInt(0);
-    return true;
+    return paramQQAppInterface;
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import atqu;
-import atsl;
+import auip;
+import aukg;
 
 public class MusicFilePresenter$3
   implements Runnable
 {
-  public MusicFilePresenter$3(atqu paramatqu, String paramString, int paramInt) {}
+  public MusicFilePresenter$3(auip paramauip, String paramString, int paramInt) {}
   
   public void run()
   {

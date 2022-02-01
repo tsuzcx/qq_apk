@@ -1,14 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
 public class tcs
+  implements TopGestureLayout.OnGestureListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public TextView a;
-  public SquareImageView a;
-  tcu jdField_a_of_type_Tcu;
-  TextView b;
+  public tcs(ViolaFragment paramViolaFragment, ViewGroup paramViewGroup) {}
+  
+  public void flingLToR()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.mViolaInitDelegate.a(this.jdField_a_of_type_AndroidViewViewGroup, true);
+  }
+  
+  public void flingRToL() {}
 }
 
 

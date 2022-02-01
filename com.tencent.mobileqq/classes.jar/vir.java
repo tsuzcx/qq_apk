@@ -1,14 +1,19 @@
-import com.tencent.biz.qqcircle.comment.QCircleReplyItemView;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class vir
-  implements vuw
+class vir
+  implements Animation.AnimationListener
 {
-  public vir(QCircleReplyItemView paramQCircleReplyItemView) {}
+  vir(vip paramvip) {}
   
-  public void a(String paramString)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    uxo.a(paramString, this.a.a().clone().setElementIdStr("portrait"));
+    vip.a(this.a, true);
+    vip.a(this.a, 0L);
   }
 }
 

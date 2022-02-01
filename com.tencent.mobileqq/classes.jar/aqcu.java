@@ -1,49 +1,80 @@
-import com.tencent.TMG.utils.QLog;
+import android.text.TextUtils;
+import com.tencent.ark.ArkAppPanelList.AppDetail;
+import com.tencent.ark.ArkAppPanelList.RespBody;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.1;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aqcu
-  implements anil
+  implements anui
 {
+  public aqcu(ArkMessageServerLogic.1 param1) {}
+  
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if ((paramBoolean) && (paramObject != null))
     {
-    default: 
-      return;
-    case 1: 
-      paramObject = (Object[])paramObject;
-      if ((paramObject != null) && (paramObject.length == 1))
+      localObject1 = new ArkAppPanelList.RespBody();
+      try
       {
-        aqcy localaqcy = aqcz.a();
-        if ((localaqcy == null) || (!localaqcy.a())) {
-          break label135;
+        ((ArkAppPanelList.RespBody)localObject1).mergeFrom((byte[])paramObject);
+        localArrayList = new ArrayList();
+        if (((ArkAppPanelList.RespBody)localObject1).apps.has())
+        {
+          paramObject = ((ArkAppPanelList.RespBody)localObject1).apps.get();
+          if ((paramObject == null) || (paramObject.size() <= 0)) {
+            break label234;
+          }
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            localObject2 = (ArkAppPanelList.AppDetail)paramObject.next();
+            if (localObject2 != null)
+            {
+              localObject1 = ((ArkAppPanelList.AppDetail)localObject2).appName.get();
+              str = ((ArkAppPanelList.AppDetail)localObject2).cnName.get();
+              localObject2 = ((ArkAppPanelList.AppDetail)localObject2).iconUrl.get();
+              if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+              {
+                localArrayList.add(new aqce((String)localObject1, str, (String)localObject2));
+                continue;
+                return;
+              }
+            }
+          }
         }
       }
-      break;
-    }
-    label135:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if ((paramInt != 0) && (!((Boolean)paramObject[0]).booleanValue())) {}
-      for (paramBoolean = true;; paramBoolean = false)
+      catch (InvalidProtocolBufferMicroException paramObject)
       {
-        aqcb.c(paramBoolean);
-        if (!QLog.isColorLevel()) {
-          break;
+        ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList mergeFrom exception=" + paramObject);
+        if (this.a.a != null) {
+          this.a.a.b(null);
         }
-        QLog.d("ColorNoteObserver", 0, "onUpdate: TYPE_REQ_GET_COLOR_NOTE_RECENT_SWITCH");
-        return;
       }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ColorNoteObserver", 0, "onUpdate: params == null || params.length != 1");
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ColorNoteObserver", 0, "onUpdate: TYPE_REQ_SET_COLOR_NOTE_RECENT_SWITCH");
+    }
+    label234:
+    while (this.a.a == null)
+    {
+      ArrayList localArrayList;
+      do
+      {
+        for (;;)
+        {
+          Object localObject1;
+          Object localObject2;
+          String str;
+          paramObject = null;
+        }
+      } while (this.a.a == null);
+      this.a.a.b(localArrayList);
       return;
     }
+    this.a.a.b(null);
   }
 }
 

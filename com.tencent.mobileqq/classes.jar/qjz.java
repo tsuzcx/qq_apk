@@ -1,16 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qjz
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
   qjz(qjt paramqjt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    qjt.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    qjt.a(this.a).requestLayout();
+    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
+    if (localsgf != null) {
+      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

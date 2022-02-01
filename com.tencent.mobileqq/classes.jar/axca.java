@@ -1,10 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-final class axca
-  implements DialogInterface.OnClickListener
+class axca
+  extends Handler
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  axca(axbz paramaxbz, Looper paramLooper, axby paramaxby)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    synchronized (axby.a(this.jdField_a_of_type_Axbz.jdField_a_of_type_Axby))
+    {
+      axcc localaxcc = axby.a(this.jdField_a_of_type_Axbz.jdField_a_of_type_Axby, (String)paramMessage.obj);
+      if (localaxcc != null) {
+        localaxcc.a(paramMessage.what);
+      }
+      return;
+    }
+  }
 }
 
 

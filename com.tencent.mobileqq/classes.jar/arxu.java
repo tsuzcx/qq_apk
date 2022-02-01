@@ -1,22 +1,18 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.PrecoverResource;
 
-class arxu
-  implements DialogInterface.OnClickListener
+public final class arxu
+  implements Parcelable.Creator<PrecoverResource>
 {
-  arxu(arxr paramarxr, Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public PrecoverResource a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, FavEmosmManageActivity.class);
-    paramDialogInterface.putExtra("camera_emo_mode", 1);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
-    bcst.b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, "dc00898", "", "", "0X800A36F", "0X800A36F", 0, 0, "", "", "", "");
+    return new PrecoverResource(paramParcel);
+  }
+  
+  public PrecoverResource[] a(int paramInt)
+  {
+    return new PrecoverResource[paramInt];
   }
 }
 

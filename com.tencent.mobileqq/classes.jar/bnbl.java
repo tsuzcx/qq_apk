@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
-class bnbl
-  implements MediaScanner.OnMediaInfoScannerListener
+public class bnbl
+  implements DialogInterface.OnCancelListener
 {
-  bnbl(bnbf parambnbf) {}
+  public bnbl(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (!paramBoolean)
-    {
-      this.a.a(101);
-      return;
-    }
-    this.a.a(this.a.a, paramLocalMediaInfo);
+    this.a.getPlayMode();
   }
 }
 

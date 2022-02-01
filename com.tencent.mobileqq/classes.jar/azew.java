@@ -1,23 +1,16 @@
-import android.graphics.Point;
-import android.graphics.Rect;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
 public class azew
-  implements Comparator<Rect>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  Point jdField_a_of_type_AndroidGraphicsPoint;
+  public azew(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public azew(TagCloudView paramTagCloudView, Point paramPoint)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-  }
-  
-  public int a(Rect paramRect1, Rect paramRect2)
-  {
-    paramRect1 = new Point((int)(paramRect1.width() * 0.5F + paramRect1.left), (int)(paramRect1.height() * 0.5F + paramRect1.top));
-    paramRect2 = new Point((int)(paramRect2.width() * 0.5F + paramRect2.left), (int)(paramRect2.height() * 0.5F + paramRect2.top));
-    return TagCloudView.a(paramRect1, this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramRect2, this.jdField_a_of_type_AndroidGraphicsPoint);
+    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

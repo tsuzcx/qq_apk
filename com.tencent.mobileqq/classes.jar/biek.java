@@ -1,7 +1,4 @@
-public abstract interface biek
-{
-  public abstract void a();
-}
+public class biek {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

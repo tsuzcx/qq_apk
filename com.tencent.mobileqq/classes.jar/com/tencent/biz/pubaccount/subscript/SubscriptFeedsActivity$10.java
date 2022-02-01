@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.subscript;
 
 import java.util.Iterator;
 import java.util.List;
-import twg;
+import twi;
 
 class SubscriptFeedsActivity$10
   implements Runnable
@@ -12,9 +12,9 @@ class SubscriptFeedsActivity$10
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
-      twg localtwg = (twg)localIterator.next();
-      if (localtwg.b > 0) {
-        localtwg.a();
+      twi localtwi = (twi)localIterator.next();
+      if (localtwi.b > 0) {
+        localtwi.a();
       }
     }
   }

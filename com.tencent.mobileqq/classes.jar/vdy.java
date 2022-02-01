@@ -1,14 +1,32 @@
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
 
 class vdy
-  implements zzq<Object>
+  implements Observer<vxq<FeedCloudRead.StGetMainPageRsp>>
 {
-  vdy(vdt paramvdt) {}
+  vdy(vdr paramvdr) {}
   
-  public void a(Object... paramVarArgs)
+  public void a(@Nullable vxq<FeedCloudRead.StGetMainPageRsp> paramvxq)
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
-      vdt.a(this.a).a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetFeedListRsp)paramVarArgs[3], false);
+    if (paramvxq != null) {}
+    try
+    {
+      if ((paramvxq.a() == 2) || (paramvxq.a() == 3))
+      {
+        vdr.a(this.a, (FeedCloudRead.StGetMainPageRsp)paramvxq.a());
+        vdr.a(this.a, (FeedCloudMeta.StUser)vdr.a(this.a).user.get());
+        vdr.a(this.a);
+        vdr.b(this.a);
+        vdr.c(this.a);
+      }
+      return;
+    }
+    catch (Exception paramvxq)
+    {
+      QLog.e("QCirclePersonalTitleBar", 1, "getShareInfo error");
     }
   }
 }

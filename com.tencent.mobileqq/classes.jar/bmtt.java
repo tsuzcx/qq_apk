@@ -1,31 +1,49 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import PUSHAPI.PushRsp;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
-class bmtt
-  implements Downloader.DownloadListener
+public class bmtt
+  extends QzoneExternalRequest
 {
-  bmtt(bmts parambmts, String paramString1, String paramString2) {}
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private long b;
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public bmtt(long paramLong1, long paramLong2, String paramString1, long paramLong3, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LottieLoader", 0, "diy data download fail url = " + paramString);
-    }
-    bmts.a(this.jdField_a_of_type_Bmts, 2);
-    bmts.a(this.jdField_a_of_type_Bmts, false, paramString, this.jdField_a_of_type_JavaLangString, this.b);
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong1);
+    super.setRefer(paramString1);
+    this.jdField_a_of_type_Long = paramLong2;
+    this.b = paramLong3;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.needCompress = false;
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public String getCmdString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LottieLoader", 0, "diy data download success url = " + paramString);
-    }
-    bmts.b(this.jdField_a_of_type_Bmts, true, paramString, this.jdField_a_of_type_JavaLangString, this.b);
+    return "wns.pushrsp";
+  }
+  
+  public byte[] getEncodedUniParameter()
+  {
+    PushRsp localPushRsp = new PushRsp();
+    localPushRsp.ptime = this.jdField_a_of_type_Long;
+    localPushRsp.is_bgd = 0;
+    localPushRsp.sUID = "<JIEHEBAN>";
+    localPushRsp.flag = this.b;
+    localPushRsp.Mark = this.jdField_a_of_type_JavaLangString;
+    return bmah.a(localPushRsp);
+  }
+  
+  public JceStruct getReq()
+  {
+    return null;
+  }
+  
+  public String uniKey()
+  {
+    return "wns.pushrsp";
   }
 }
 

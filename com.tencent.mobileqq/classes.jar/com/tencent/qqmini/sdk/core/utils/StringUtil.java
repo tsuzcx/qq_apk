@@ -22,27 +22,6 @@ public class StringUtil
   public static final int ERR_UIN_TOO_SHORT = 0;
   public static final int RES_VALID_UIN = -1;
   
-  public static String ToDBC(String paramString)
-  {
-    paramString = paramString.toCharArray();
-    int i = 0;
-    if (i < paramString.length)
-    {
-      if (paramString[i] == '　') {
-        paramString[i] = 32;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
-          paramString[i] = ((char)(paramString[i] - 65248));
-        }
-      }
-    }
-    return new String(paramString);
-  }
-  
   public static String byte2HexString(byte[] paramArrayOfByte)
   {
     StringBuffer localStringBuffer = new StringBuffer();
@@ -565,6 +544,27 @@ public class StringUtil
     return localStringBuilder.toString();
   }
   
+  public static String toDBC(String paramString)
+  {
+    paramString = paramString.toCharArray();
+    int i = 0;
+    if (i < paramString.length)
+    {
+      if (paramString[i] == '　') {
+        paramString[i] = 32;
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
+          paramString[i] = ((char)(paramString[i] - 65248));
+        }
+      }
+    }
+    return new String(paramString);
+  }
+  
   public static String toHexString(String paramString)
   {
     if ((paramString == null) || ("".equals(paramString))) {
@@ -748,7 +748,7 @@ public class StringUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.StringUtil
  * JD-Core Version:    0.7.0.1
  */

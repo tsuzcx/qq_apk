@@ -1,23 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
-import com.tencent.widget.AbsListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet.ConfigResult;
 
-public class pal
-  implements bkhe
+public final class pal
+  implements Parcelable.Creator<AladdinConfigServlet.ConfigResult>
 {
-  public pal(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public AladdinConfigServlet.ConfigResult a(Parcel paramParcel)
   {
-    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    return new AladdinConfigServlet.ConfigResult(paramParcel);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public AladdinConfigServlet.ConfigResult[] a(int paramInt)
   {
-    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt);
-    if ((ReadInJoySecondCommentListFragment.a(this.a) != null) && (ReadInJoySecondCommentListFragment.a(this.a).a() != null)) {
-      ReadInJoySecondCommentListFragment.a(this.a).a().a(ReadInJoySecondCommentListFragment.a(this.a).getFirstVisiblePosition(), ReadInJoySecondCommentListFragment.a(this.a).getLastVisiblePosition());
-    }
+    return new AladdinConfigServlet.ConfigResult[paramInt];
   }
 }
 

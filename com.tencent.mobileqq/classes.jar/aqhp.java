@@ -1,51 +1,97 @@
-import com.tencent.av.service.LBSInfo;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.armap.sensor.rotation.Matrix4;
 
-public class aqhp
-  extends anot
+public final class aqhp
 {
-  public aqhp(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  private static aqhp a;
+  private static aqhp b;
+  private static aqhp c;
+  public float a;
+  public float b;
+  public float c;
+  public float d;
   
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  static
   {
-    Object localObject = null;
-    if (paramBoolean) {
-      localObject = paramLBSInfo.a();
-    }
-    if (localObject != null)
+    jdField_a_of_type_Aqhp = new aqhp();
+    jdField_b_of_type_Aqhp = new aqhp();
+    jdField_c_of_type_Aqhp = new aqhp();
+  }
+  
+  public aqhp a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = paramFloat3;
+    this.d = paramFloat4;
+    return this;
+  }
+  
+  public aqhp a(Matrix4 paramMatrix4)
+  {
+    paramMatrix4 = paramMatrix4.val;
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = paramMatrix4[0];
+    float f3 = this.jdField_b_of_type_Float;
+    float f4 = paramMatrix4[4];
+    float f5 = this.jdField_c_of_type_Float;
+    float f6 = paramMatrix4[8];
+    float f7 = this.d;
+    float f8 = paramMatrix4[12];
+    float f9 = this.jdField_a_of_type_Float;
+    float f10 = paramMatrix4[1];
+    float f11 = this.jdField_b_of_type_Float;
+    float f12 = paramMatrix4[5];
+    float f13 = this.jdField_c_of_type_Float;
+    float f14 = paramMatrix4[9];
+    float f15 = this.d;
+    float f16 = paramMatrix4[13];
+    float f17 = this.jdField_a_of_type_Float;
+    float f18 = paramMatrix4[2];
+    float f19 = this.jdField_b_of_type_Float;
+    float f20 = paramMatrix4[6];
+    float f21 = this.jdField_c_of_type_Float;
+    float f22 = paramMatrix4[10];
+    float f23 = this.d;
+    float f24 = paramMatrix4[14];
+    float f25 = this.jdField_a_of_type_Float;
+    float f26 = paramMatrix4[3];
+    float f27 = this.jdField_b_of_type_Float;
+    float f28 = paramMatrix4[7];
+    float f29 = this.jdField_c_of_type_Float;
+    float f30 = paramMatrix4[11];
+    float f31 = this.d;
+    return a(f1 * f2 + f3 * f4 + f5 * f6 + f7 * f8, f9 * f10 + f11 * f12 + f13 * f14 + f15 * f16, f17 * f18 + f19 * f20 + f21 * f22 + f23 * f24, paramMatrix4[15] * f31 + (f25 * f26 + f27 * f28 + f29 * f30));
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      paramLBSInfo = (LBSInfo)localObject;
-      if (localObject.length == 4) {}
-    }
-    else
-    {
-      paramLBSInfo = new String[4];
-      paramLBSInfo[0] = "-1";
-      paramLBSInfo[1] = "-1";
-      paramLBSInfo[2] = "-1";
-      paramLBSInfo[3] = "-1";
-    }
-    if (!"-1".equals(paramLBSInfo[0]))
-    {
-      paramLBSInfo[3] = "0";
-      this.a.a.a(paramLBSInfo);
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        localObject = this.a.a.b(paramLBSInfo);
-        this.a.a.a(0, (String)localObject);
-        this.a.a.b(paramLBSInfo);
-        this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(this.a.a.c((String)localObject));
+      return true;
+      if (paramObject == null) {
+        return false;
       }
-      ConditionSearchFriendActivity.a(this.a, 1);
-      ConditionSearchFriendActivity.b(this.a);
-      this.a.c = true;
-      this.a.d = false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearchFriendActivity", 2, "onGetUserLocation|isSuccess : " + paramBoolean + ", mIsFirstReqLocation : " + this.a.jdField_b_of_type_Boolean + ", locationCodes[0] : " + paramLBSInfo[0]);
-    }
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      paramObject = (aqhp)paramObject;
+      if (Float.floatToIntBits(this.jdField_a_of_type_Float) != Float.floatToIntBits(paramObject.jdField_a_of_type_Float)) {
+        return false;
+      }
+      if (Float.floatToIntBits(this.jdField_b_of_type_Float) != Float.floatToIntBits(paramObject.jdField_b_of_type_Float)) {
+        return false;
+      }
+      if (Float.floatToIntBits(this.jdField_c_of_type_Float) != Float.floatToIntBits(paramObject.jdField_c_of_type_Float)) {
+        return false;
+      }
+    } while (Float.floatToIntBits(this.d) == Float.floatToIntBits(paramObject.d));
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return (((Float.floatToIntBits(this.jdField_a_of_type_Float) + 31) * 31 + Float.floatToIntBits(this.jdField_b_of_type_Float)) * 31 + Float.floatToIntBits(this.jdField_c_of_type_Float)) * 31 + Float.floatToIntBits(this.d);
   }
 }
 

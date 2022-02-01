@@ -1,80 +1,63 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.1;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.2;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.3;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class asug
-  extends asyw
+public abstract class asug
 {
-  public asug(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
-  
-  protected void a(athr paramathr)
+  public static asug a(Bundle paramBundle)
   {
-    if (paramathr == null) {}
-    do
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    int i;
+    if (paramBundle != null)
     {
-      FileManagerEntity localFileManagerEntity;
-      do
+      localObject1 = localObject2;
+      if (paramBundle.containsKey("cur_data_source_type"))
       {
-        return;
-        if (!(paramathr.a instanceof FileManagerEntity)) {
-          break;
+        QLog.d("EmoticonPreviewData", 1, "restoreSaveInstanceState execute");
+        i = paramBundle.getInt("cur_data_source_type");
+        if (i != 0) {
+          break label53;
         }
-        localFileManagerEntity = (FileManagerEntity)paramathr.a;
-      } while ((paramathr.b == null) || (paramathr.b.length() <= 0));
-      localFileManagerEntity.strThumbPath = paramathr.b;
-      QfileBaseCloudFileTabView.k(this.a).a().c(localFileManagerEntity);
-      this.a.i();
-      return;
-    } while (!(paramathr.a instanceof WeiYunFileInfo));
-    this.a.i();
-  }
-  
-  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
-  {
-    athc.a(paramString1);
-    atvo.a(paramInteger.intValue(), paramString2);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(false);
-  }
-  
-  protected void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    paramString2 = athc.a(paramString1);
-    if ((!this.a.b(paramString2)) && (this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      paramString2 = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramString2.hasNext())
-      {
-        WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)paramString2.next();
-        if (localWeiYunFileInfo.a.equalsIgnoreCase(paramString1) == true) {
-          this.a.b(localWeiYunFileInfo);
-        }
+        localObject1 = new asur(null).b(paramBundle);
       }
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(false);
+    label53:
+    do
+    {
+      return localObject1;
+      localObject1 = localObject2;
+    } while (i != 1);
+    return new asup(null).b(paramBundle);
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public abstract int a(List<asug> paramList);
+  
+  public abstract long a();
+  
+  public abstract Drawable a(Context paramContext);
+  
+  public abstract asmu a();
+  
+  public abstract CustomEmotionData a();
+  
+  public void a(Bundle paramBundle, int paramInt)
   {
-    QfileBaseCloudFileTabView.a(this.a, new QfileBaseCloudFileTabView.13.1(this));
+    paramBundle.putInt("cur_data_source_type", paramInt);
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    QfileBaseCloudFileTabView.b(this.a, new QfileBaseCloudFileTabView.13.2(this, paramLong2));
-  }
+  public abstract boolean a();
   
-  protected void b()
-  {
-    super.b();
-    QfileBaseCloudFileTabView.c(this.a, new QfileBaseCloudFileTabView.13.3(this));
-  }
+  public abstract boolean a(asug paramasug);
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
 }
 
 

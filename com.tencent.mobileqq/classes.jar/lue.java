@@ -1,53 +1,34 @@
-public class lue
-  extends ltv
+import com.tencent.av.redpacket.AVRedPacketManager.LocalEmojiInfo;
+import com.tencent.av.redpacket.AVRedPacketManager.LocalFrameSyncInfo;
+import java.util.List;
+
+public abstract interface lue
 {
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  public abstract void a();
   
-  public lue()
-  {
-    a(255);
-  }
+  public abstract void a(int paramInt);
   
-  public void a(long paramLong)
-  {
-    int i = (int)((paramLong - this.a) % 4000L * this.h / 2000L - this.c);
-    a(this.g, i, this.g + this.b, this.c + i);
-  }
+  public abstract void a(int paramInt, List<AVRedPacketManager.LocalEmojiInfo> paramList);
   
-  public void b(int paramInt)
-  {
-    if (this.e != paramInt)
-    {
-      this.e = paramInt;
-      c();
-    }
-  }
+  public abstract void a(int paramInt, luf paramluf);
   
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.b = (paramInt1 * 70 / 160);
-    this.c = (paramInt1 * 70 / 160);
-    this.d = (paramInt1 * 5 / 160);
-    this.f = paramInt1;
-    this.h = (this.c + paramInt2);
-    c();
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
   
-  public void c()
-  {
-    if (this.e == 0) {}
-    for (int i = this.d;; i = this.f - this.d - this.b)
-    {
-      this.g = i;
-      return;
-    }
-  }
+  public abstract void a(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void b(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

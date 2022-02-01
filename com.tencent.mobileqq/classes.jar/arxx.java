@@ -1,19 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import android.content.Intent;
+import com.tencent.mobileqq.data.QzoneCommonIntent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import cooperation.qzone.QzoneExternalRequest;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class arxx
-  implements awnd<String, Integer>
+  extends MSFServlet
 {
-  public arxx(EmoticonPanelController paramEmoticonPanelController, int paramInt) {}
-  
-  public Integer a(String paramString)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.d(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.k);
-    int i = this.jdField_a_of_type_Int;
-    if (!TextUtils.isEmpty(paramString)) {
-      i = EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController, paramString);
+    if (paramIntent == null) {}
+    while (!(paramIntent instanceof QzoneCommonIntent)) {
+      return;
     }
-    return Integer.valueOf(i);
+    paramIntent = (QzoneCommonIntent)paramIntent;
+    paramIntent.getProcessor().a(this, paramIntent, paramFromServiceMsg);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if ((paramIntent instanceof QzoneCommonIntent))
+    {
+      bmsy localbmsy = ((QzoneCommonIntent)paramIntent).getRequest();
+      byte[] arrayOfByte = localbmsy.encode();
+      paramIntent = arrayOfByte;
+      if (arrayOfByte == null) {
+        paramIntent = new byte[4];
+      }
+      paramPacket.setTimeout(30000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + localbmsy.uniKey());
+      paramPacket.putSendData(paramIntent);
+    }
   }
 }
 

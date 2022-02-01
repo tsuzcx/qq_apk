@@ -1,10 +1,16 @@
-import android.view.View;
+import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
 
-public abstract interface aqfb
+class aqfb
+  implements anui
 {
-  public abstract String a();
+  aqfb(aqez paramaqez, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
   
-  public abstract void a(View paramView, int paramInt);
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(paramInt, paramBoolean, paramObject);
+    }
+  }
 }
 
 

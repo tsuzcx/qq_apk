@@ -1,19 +1,17 @@
-import java.util.List;
-import kotlin.Metadata;
-import kotlin.collections.CollectionsKt;
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/util/PTSConstantUtil;", "", "()V", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qpa
+public class qpa
+  implements View.OnClickListener
 {
-  @NotNull
-  private static List<String> a;
-  public static final qpb a;
+  public qpa(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_Qpb = new qpb(null);
-    jdField_a_of_type_JavaUtilList = CollectionsKt.listOf(new String[] { "eventType", "jumpUrl", "clickReportName", "pts:pageName", "r5" });
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

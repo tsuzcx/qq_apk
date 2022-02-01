@@ -1,101 +1,18 @@
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.biz.qqstory.view.PressDarkImageButton;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import android.content.Intent;
 
-@TargetApi(18)
-public class bomh
-  extends bomd
+class bomh
+  implements bolj
 {
-  protected ImageView a;
-  protected LinearLayout a;
-  protected bgpa a;
-  private boolean b;
-  
-  public bomh(CaptureModeController paramCaptureModeController)
-  {
-    super(paramCaptureModeController);
-    this.jdField_a_of_type_Int = 1;
-  }
+  bomh(bomg parambomg) {}
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bgpa == null) {
-      this.jdField_a_of_type_Bgpa = bglp.a(this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a(), 230).setMessage(this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().getString(2131697525)).setPositiveButton(this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().getString(2131694081), new bomj(this)).setNegativeButton(this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().getString(2131717696), new bomi(this));
-    }
-    try
-    {
-      if ((this.jdField_a_of_type_Bgpa != null) && (!this.jdField_a_of_type_Bgpa.isShowing())) {
-        this.jdField_a_of_type_Bgpa.show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("SegmentMode", 2, "segment back dialog error:" + localThrowable);
-    }
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364152));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131364151));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SegmentMode", 2, new Object[] { "handleSelectMode", Boolean.valueOf(paramBoolean) });
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bomk(this));
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-    if (paramBoolean)
-    {
-      ((PressDarkImageButton)this.jdField_a_of_type_AndroidWidgetImageView).setEnableDark(true);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(255);
-      this.jdField_a_of_type_AndroidWidgetImageView.postInvalidate();
-      return;
-    }
-    ((PressDarkImageButton)this.jdField_a_of_type_AndroidWidgetImageView).setEnableDark(false);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(127);
-    this.jdField_a_of_type_AndroidWidgetImageView.postInvalidate();
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_Bnbf.c())
-      {
-        this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Bnbf.y();
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.e("SegmentMode", 2, "segment video error: jump to edit with no videos");
-        continue;
-        this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Bnbf.A();
-      }
-    }
+    Intent localIntent = new Intent();
+    localIntent.setAction("ae_editor_bottom_tab_show_hide");
+    localIntent.putExtra("is_show", false);
+    this.a.a.a().sendBroadcast(localIntent);
+    bomg.a(this.a).a(131076, new Object[0]);
   }
 }
 

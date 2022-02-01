@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aidf;
-import aidi;
+import aimx;
+import aina;
 
 public class NearbyChatPie$12$1
   implements Runnable
 {
-  public NearbyChatPie$12$1(aidi paramaidi) {}
+  public NearbyChatPie$12$1(aina paramaina) {}
   
   public void run()
   {

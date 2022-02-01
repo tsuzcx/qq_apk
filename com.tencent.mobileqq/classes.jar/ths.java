@@ -1,23 +1,7 @@
-import android.view.View;
+import kotlin.Metadata;
 
-class ths
-  implements bkhw
-{
-  ths(thn paramthn, bkho parambkho) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_Bkho.dismiss();
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while ((!thn.b(this.jdField_a_of_type_Thn)) || (!thn.a(this.jdField_a_of_type_Thn, "deleteFeeds")));
-    tbf.a(thn.a(this.jdField_a_of_type_Thn), thn.a(this.jdField_a_of_type_Thn));
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/SensorBridgeInvokeHandler$Companion;", "", "()V", "GET_LOCATION", "", "NS_SENSOR", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ths {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

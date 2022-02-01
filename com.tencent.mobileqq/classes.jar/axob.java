@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.3.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
-import mqq.os.MqqHandler;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
 
 public class axob
-  implements TVK_IMediaPlayer.OnInfoListener
+  extends RecyclerView.ItemDecoration
 {
-  axob(axny paramaxny) {}
+  private final int jdField_a_of_type_Int = agej.a(12.0F, this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment.getResources());
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  private axob(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoViewTVKImpl", 2, "onInfo what=" + paramInt + "  ex:" + paramObject);
-    }
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.3.1(this, paramInt, paramObject));
-    return false;
+    paramRect.top = this.jdField_a_of_type_Int;
   }
 }
 

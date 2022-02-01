@@ -1,18 +1,35 @@
-public abstract interface bqho
+public class bqho
 {
-  public abstract void a();
+  public int a;
+  public long a;
+  public boolean a;
   
-  public abstract void a(int paramInt);
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (bqho)paramObject;
+      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+        return false;
+      }
+    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
+    return false;
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int * 31 + (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32);
+  }
   
-  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
-  
-  public abstract void a(String paramString, int paramInt, long paramLong);
-  
-  public abstract void b();
+  public String toString()
+  {
+    return "EditBehavior{hasMusic=" + this.jdField_a_of_type_Boolean + ", musicType=" + this.jdField_a_of_type_Int + ", musicId=" + this.jdField_a_of_type_Long + '}';
+  }
 }
 
 

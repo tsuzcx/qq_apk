@@ -1,69 +1,73 @@
-public abstract class xds
-  extends xcu
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgListHeadNode;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgListHeadNode;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+
+public class xds
+  extends wpa<xfd>
 {
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
+  private static final String jdField_a_of_type_JavaLangString = wnu.a("StoryLrSvc.msglist_head_node");
+  private List<Long> jdField_a_of_type_JavaUtilList;
+  private String b;
+  private int c;
   
-  protected String a(int paramInt)
+  public int a()
   {
-    return null;
+    return this.c;
   }
   
-  public void a(xdy paramxdy)
+  public String a()
   {
-    super.a(paramxdy);
-    paramxdy.a = this.jdField_c_of_type_JavaLangString;
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public void a(xea paramxea)
+  public wov a(byte[] paramArrayOfByte)
   {
-    super.a(paramxea);
-    paramxea.b = 2;
-    paramxea.d = ("[" + wes.a + "] " + this.a);
-    paramxea.a = this.d;
-    paramxea.k = this.a;
-    paramxea.l = this.b;
-    paramxea.h = this.jdField_c_of_type_JavaLangString;
+    qqstory_service.RspMsgListHeadNode localRspMsgListHeadNode = new qqstory_service.RspMsgListHeadNode();
+    try
+    {
+      localRspMsgListHeadNode.mergeFrom(paramArrayOfByte);
+      return new xfd(localRspMsgListHeadNode);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("RecentTabHaloRequest", 2, "decodeResponse: failed. Message: exception: " + paramArrayOfByte);
+        }
+      }
+    }
   }
   
-  public void a(xeb paramxeb)
+  protected byte[] a()
   {
-    super.a(paramxeb);
-    paramxeb.jdField_c_of_type_JavaLangString = this.a;
-    paramxeb.d = this.b;
-    paramxeb.a = this.d;
-    paramxeb.e = this.jdField_c_of_type_JavaLangString;
+    qqstory_service.ReqMsgListHeadNode localReqMsgListHeadNode = new qqstory_service.ReqMsgListHeadNode();
+    PBBytesField localPBBytesField = localReqMsgListHeadNode.current_seq;
+    if (this.b != null) {}
+    for (String str = this.b;; str = "")
+    {
+      localPBBytesField.set(ByteStringMicro.copyFromUtf8(str));
+      localReqMsgListHeadNode.uin_list.set(this.jdField_a_of_type_JavaUtilList);
+      localReqMsgListHeadNode.source.set(this.c);
+      localReqMsgListHeadNode.setHasFlag(true);
+      return localReqMsgListHeadNode.toByteArray();
+    }
   }
   
-  public void a(xec paramxec)
+  public String toString()
   {
-    super.a(paramxec);
-    paramxec.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    paramxec.e = this.d;
-    paramxec.a = this.a;
-    paramxec.d = xek.a(this.d);
-  }
-  
-  public void a(xed paramxed)
-  {
-    super.a(paramxed);
-    paramxed.jdField_c_of_type_JavaLangString = this.b;
-    paramxed.a = this.a;
-    paramxed.d = this.jdField_c_of_type_JavaLangString;
-    paramxed.e = this.d;
-    paramxed.jdField_c_of_type_Boolean = true;
-  }
-  
-  public void b(xed paramxed)
-  {
-    super.b(paramxed);
-    paramxed.jdField_c_of_type_JavaLangString = this.b;
-    paramxed.a = this.a;
-    paramxed.d = this.jdField_c_of_type_JavaLangString;
-    paramxed.e = this.d;
-    paramxed.jdField_c_of_type_Boolean = true;
+    StringBuilder localStringBuilder = new StringBuilder("RecentTabHaloRequest{");
+    localStringBuilder.append("mCurrentSeq='").append(this.b).append('\'');
+    localStringBuilder.append(", mUins=").append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(", mWhen=").append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

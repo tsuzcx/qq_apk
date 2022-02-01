@@ -1,8 +1,15 @@
-import org.jetbrains.annotations.NotNull;
-
-public abstract interface oue
+class oue
+  extends ovd
 {
-  public abstract void a(@NotNull Runnable paramRunnable);
+  oue(otv paramotv)
+  {
+    super(paramotv, null);
+  }
+  
+  void a(ovg paramovg)
+  {
+    paramovg.onCommentStateError(1001);
+  }
 }
 
 

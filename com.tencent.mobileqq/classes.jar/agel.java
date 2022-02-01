@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import mqq.app.QQPermissionCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class agel
-  implements QQPermissionCallback
+final class agel
+  implements bimf
 {
-  public agel(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(boolean paramBoolean)
   {
-    bglp.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebAccelerator", 2, "preStart QWeb Process");
+      }
+      agdz.a();
+    }
   }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

@@ -1,604 +1,258 @@
-import android.graphics.BitmapFactory.Options;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.ProtocolDownloader.Adapter;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.image.URLState;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.AbsDownloader.1;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import com.tencent.mobileqq.widget.PAImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Locale;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public abstract class bdsh
-  extends ProtocolDownloader.Adapter
+public class bdsh
 {
-  public static final String a = anhk.ba + "chatpic" + File.separator;
+  private int jdField_a_of_type_Int = -1;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bdom jdField_a_of_type_Bdom;
+  private int b;
   
-  public static final File a(String paramString)
+  public bdsh(bdom parambdom, Context paramContext, int paramInt)
   {
-    if (paramString != null)
+    this.jdField_a_of_type_Bdom = parambdom;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296396);
+  }
+  
+  private TextView a(String paramString, View paramView, boolean paramBoolean)
+  {
+    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+    TextView localTextView;
+    if (paramView == null)
     {
-      paramString = new File(d(paramString));
-      if (paramString.exists()) {
-        return paramString;
+      localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+      localTextView.setMaxLines(2);
+      localTextView.setTextColor(-1);
+      localTextView.setTextSize(2, 19.0F);
+      localTextView.setMaxLines(2);
+      localTextView.setLineSpacing(agej.a(2.5F, localResources), 1.0F);
+      localTextView.setGravity(80);
+      localTextView.setEllipsize(TextUtils.TruncateAt.END);
+      if (paramBoolean) {
+        localTextView.setBackgroundResource(2130841629);
       }
-      return null;
-    }
-    return null;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    String str = paramString2.substring(paramString2.length() - 3);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(a);
-    localStringBuffer.append(paramString1);
-    localStringBuffer.append(File.separator);
-    localStringBuffer.append(str);
-    localStringBuffer.append(File.separator);
-    localStringBuffer.append(paramString2);
-    return bedk.a(localStringBuffer.toString());
-  }
-  
-  private void a(bdub parambdub, File paramFile)
-  {
-    ThreadManager.getFileThreadHandler().post(new AbsDownloader.1(this, parambdub));
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    int i = bgmg.a(paramString2, paramString3);
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatImageMigrate", 2, "migrate:" + paramString1 + " from:" + paramString2 + " to:" + paramString3 + " status:" + i);
-    }
-  }
-  
-  public static final File b(String paramString)
-  {
-    if (paramString != null)
-    {
-      paramString = new File(d(paramString) + "_fp");
-      if (paramString.exists()) {
-        return paramString;
-      }
-      return null;
-    }
-    return null;
-  }
-  
-  public static String b(String paramString)
-  {
-    String str = paramString;
-    if (paramString != null) {
-      str = paramString;
-    }
-    try
-    {
-      if (paramString.substring(0, "aiothumb".length()).equalsIgnoreCase("aiothumb"))
+      int i = agej.a(12.5F, localResources);
+      int j = agej.a(12.0F, localResources);
+      localTextView.setPadding(j, 0, j, i);
+      localTextView.setId(2131378208);
+      paramView = localTextView;
+      if (!TextUtils.isEmpty(paramString))
       {
-        str = "chatthumb" + paramString.substring("aiothumb".length());
-        if (QLog.isColorLevel()) {
-          QLog.d("AbsDownloader", 2, "getUrlStringForDisk newUrl = " + str);
-        }
+        localTextView.setText(paramString);
+        paramView = localTextView;
       }
-      return str;
     }
-    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+    do
     {
       do
       {
-        str = paramString;
-      } while (!QLog.isColorLevel());
-      QLog.d("AbsDownloader", 2, "getUrlStringForDisk IndexOutOfBoundsException" + localIndexOutOfBoundsException);
-    }
-    return paramString;
-  }
-  
-  public static final boolean b(String paramString)
-  {
-    Object localObject3 = null;
-    Object localObject2 = null;
-    Object localObject1;
-    if (paramString != null) {
-      if (paramString.startsWith("regionalthumb")) {
-        localObject1 = localObject2;
-      }
-    }
-    try
-    {
-      if (paramString.substring(0, "regionalthumb:".length()).equalsIgnoreCase("regionalthumb:")) {
-        localObject1 = paramString.substring("regionalthumb:".length());
-      }
-      if (localObject1 != null)
-      {
-        paramString = ((String)localObject1).split("\\|");
-        if (paramString != null)
-        {
-          return new File(paramString[0]).exists();
-          if (paramString.toLowerCase(Locale.US).startsWith("file")) {
-            localObject1 = localObject3;
-          }
+        return paramView;
+        localTextView = (TextView)paramView;
+        if (!TextUtils.isEmpty(paramString)) {
+          localTextView.setText(paramString);
         }
-      }
-      try
-      {
-        if (paramString.substring(0, "file:".length()).equalsIgnoreCase("file:")) {
-          localObject1 = paramString.substring("file:".length());
-        }
-        if (localObject1 != null)
-        {
-          return new File((String)localObject1).exists();
-          paramString = b(paramString);
-          if (paramString != null) {
-            return a(paramString) != null;
-          }
-        }
-        return false;
-      }
-      catch (IndexOutOfBoundsException paramString)
-      {
-        for (;;)
-        {
-          localObject1 = localObject3;
-        }
-      }
-    }
-    catch (IndexOutOfBoundsException paramString)
-    {
-      for (;;)
-      {
-        localObject1 = localObject2;
-      }
-    }
+        paramView = localTextView;
+      } while (!paramBoolean);
+      paramView = localTextView;
+    } while (localTextView.getBackground() != null);
+    localTextView.setBackgroundResource(2130841629);
+    return localTextView;
   }
   
-  public static final String c(String paramString)
+  public static boolean a(bdom parambdom, int paramInt)
   {
-    String str = paramString;
-    if (paramString != null)
-    {
-      str = paramString;
-      if (paramString.startsWith("pubaccountimage")) {
-        str = paramString.replace("pubaccountimage:", "");
-      }
-    }
-    return "Cache_" + Utils.Crc64String(str);
-  }
-  
-  public static final String d(String paramString)
-  {
-    Object localObject4 = null;
-    Object localObject2 = null;
-    if (paramString == null) {}
-    for (;;)
-    {
-      return localObject2;
-      String str = c(paramString);
-      Object localObject1 = bdzx.a + File.separator + str;
-      try
-      {
-        localObject2 = new URL(paramString);
-        if (localObject2 != null) {
-          localObject4 = ((URL)localObject2).getProtocol();
-        }
-        if ("chatthumb".equals(localObject4))
-        {
-          localObject2 = a((String)localObject4, str);
-          if (new File((String)localObject2 + "_hd").exists())
-          {
-            localObject2 = (String)localObject2 + "_hd";
-            i = 0;
-            localObject4 = localObject1;
-            localObject1 = localObject2;
-            localObject2 = localObject1;
-            if (i == 0) {
-              continue;
-            }
-            a(paramString, (String)localObject4, (String)localObject1);
-            return localObject1;
-          }
-        }
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        for (;;)
-        {
-          int i;
-          localMalformedURLException.printStackTrace();
-          Object localObject3 = null;
-          continue;
-          if (new File((String)localObject1 + "_hd").exists())
-          {
-            localObject4 = (String)localObject1 + "_hd";
-            localObject1 = (String)localObject3 + "_hd";
-            i = 1;
-          }
-          else
-          {
-            if (new File((String)localObject1).exists())
-            {
-              localObject4 = localObject1;
-              i = 1;
-              localObject1 = localObject3;
-              continue;
-              if ("chatimg".equals(localObject4))
-              {
-                localObject4 = a((String)localObject4, str);
-                localObject3 = localObject4;
-                if (!new File((String)localObject1).exists()) {
-                  break;
-                }
-                a(paramString, (String)localObject1, (String)localObject4);
-                return localObject4;
-              }
-              if ("chatraw".equals(localObject4))
-              {
-                localObject4 = a((String)localObject4, str);
-                localObject3 = localObject4;
-                if (!new File((String)localObject1).exists()) {
-                  break;
-                }
-                a(paramString, (String)localObject1, (String)localObject4);
-                return localObject4;
-              }
-              return localObject1;
-            }
-            localObject4 = localObject1;
-            i = 0;
-            localObject1 = localObject3;
-          }
-        }
-      }
-    }
-  }
-  
-  public static String e(String paramString)
-  {
-    return d(paramString) + "_dp";
-  }
-  
-  protected int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
-  {
-    return URLState.calculateInSampleSize(paramOptions, paramInt1, paramInt2);
-  }
-  
-  public abstract File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler);
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(DownloadParams paramDownloadParams)
-  {
-    return false;
-  }
-  
-  protected boolean a(File paramFile)
-  {
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public final boolean hasDiskFile(DownloadParams paramDownloadParams)
-  {
-    if (!a()) {
+    if (paramInt != 0) {
       return false;
     }
-    return b(paramDownloadParams.urlStr);
+    parambdom = parambdom.a.iterator();
+    label14:
+    String str;
+    if (parambdom.hasNext())
+    {
+      str = ((bdol)parambdom.next()).a;
+      if (!"picture".equals(str)) {}
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      return bool;
+      if (!"title".equals(str)) {
+        break;
+      }
+      break label14;
+    }
   }
   
-  /* Error */
-  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: aconst_null
-    //   3: astore 9
-    //   5: aconst_null
-    //   6: astore 8
-    //   8: aload_0
-    //   9: invokevirtual 237	bdsh:a	()Z
-    //   12: ifeq +437 -> 449
-    //   15: aload_1
-    //   16: getfield 242	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   19: astore 7
-    //   21: aload 7
-    //   23: invokestatic 172	bdsh:a	(Ljava/lang/String;)Ljava/io/File;
-    //   26: astore 6
-    //   28: aload 6
-    //   30: ifnull +53 -> 83
-    //   33: ldc 134
-    //   35: ldc 251
-    //   37: new 10	java/lang/StringBuilder
-    //   40: dup
-    //   41: invokespecial 13	java/lang/StringBuilder:<init>	()V
-    //   44: ldc 253
-    //   46: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: aload 6
-    //   51: invokevirtual 256	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   54: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   60: invokestatic 261	ayxi:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
-    //   63: aload_2
-    //   64: ifnull +14 -> 78
-    //   67: aload_2
-    //   68: aload 6
-    //   70: invokevirtual 264	java/io/File:length	()J
-    //   73: invokeinterface 270 3 0
-    //   78: aload 6
-    //   80: astore_1
-    //   81: aload_1
-    //   82: areturn
-    //   83: aload_1
-    //   84: getfield 274	com/tencent/image/DownloadParams:mHttpDownloaderParams	Ljava/lang/Object;
-    //   87: ifnull +14 -> 101
-    //   90: aload_0
-    //   91: aconst_null
-    //   92: aload_1
-    //   93: aload_2
-    //   94: invokevirtual 276	bdsh:a	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
-    //   97: pop
-    //   98: aload 6
-    //   100: areturn
-    //   101: aload 7
-    //   103: invokestatic 194	bdsh:c	(Ljava/lang/String;)Ljava/lang/String;
-    //   106: astore 10
-    //   108: getstatic 281	com/tencent/mobileqq/startup/step/InitUrlDrawable:a	Lbdua;
-    //   111: aload 10
-    //   113: invokevirtual 286	bdua:a	(Ljava/lang/String;)Lbdub;
-    //   116: astore 11
-    //   118: aload_0
-    //   119: invokevirtual 288	bdsh:b	()Z
-    //   122: istore 4
-    //   124: iload 4
-    //   126: ifeq +396 -> 522
-    //   129: aload_1
-    //   130: aload 11
-    //   132: getfield 291	bdub:a	Ljava/io/File;
-    //   135: invokevirtual 264	java/io/File:length	()J
-    //   138: putfield 295	com/tencent/image/DownloadParams:downloaded	J
-    //   141: aload_0
-    //   142: aload_1
-    //   143: invokevirtual 297	bdsh:a	(Lcom/tencent/image/DownloadParams;)Z
-    //   146: istore 5
-    //   148: iload 5
-    //   150: ifne +5 -> 155
-    //   153: iconst_1
-    //   154: istore_3
-    //   155: iload 4
-    //   157: iload_3
-    //   158: iand
-    //   159: istore 4
-    //   161: new 299	java/io/FileOutputStream
-    //   164: dup
-    //   165: aload 11
-    //   167: getfield 291	bdub:a	Ljava/io/File;
-    //   170: iload 4
-    //   172: invokespecial 302	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   175: astore 6
-    //   177: aload_0
-    //   178: aload 6
-    //   180: aload_1
-    //   181: aload_2
-    //   182: invokevirtual 276	bdsh:a	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
-    //   185: astore_2
-    //   186: aload 7
-    //   188: ldc_w 304
-    //   191: invokevirtual 307	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   194: ifeq +322 -> 516
-    //   197: aload 7
-    //   199: iconst_0
-    //   200: aload 7
-    //   202: ldc_w 304
-    //   205: invokevirtual 311	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   208: invokevirtual 126	java/lang/String:substring	(II)Ljava/lang/String;
-    //   211: astore_1
-    //   212: aload_1
-    //   213: invokestatic 172	bdsh:a	(Ljava/lang/String;)Ljava/io/File;
-    //   216: astore 7
-    //   218: aload 7
-    //   220: ifnull +73 -> 293
-    //   223: ldc 134
-    //   225: ldc 251
-    //   227: new 10	java/lang/StringBuilder
-    //   230: dup
-    //   231: invokespecial 13	java/lang/StringBuilder:<init>	()V
-    //   234: ldc_w 313
-    //   237: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   240: aload 7
-    //   242: invokevirtual 256	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   245: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   248: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   251: invokestatic 261	ayxi:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
-    //   254: aload 11
-    //   256: getfield 291	bdub:a	Ljava/io/File;
-    //   259: invokevirtual 316	java/io/File:delete	()Z
-    //   262: pop
-    //   263: aload 7
-    //   265: astore_1
-    //   266: aload 6
-    //   268: ifnull -187 -> 81
-    //   271: aload 7
-    //   273: astore_1
-    //   274: aload_2
-    //   275: instanceof 318
-    //   278: ifne -197 -> 81
-    //   281: aload 6
-    //   283: invokevirtual 323	java/io/OutputStream:close	()V
-    //   286: aload 7
-    //   288: areturn
-    //   289: astore_1
-    //   290: aload 7
-    //   292: areturn
-    //   293: aload_0
-    //   294: aload_2
-    //   295: invokevirtual 325	bdsh:a	(Ljava/io/File;)Z
-    //   298: ifeq +29 -> 327
-    //   301: aload_0
-    //   302: aload 11
-    //   304: aload_2
-    //   305: invokespecial 327	bdsh:a	(Lbdub;Ljava/io/File;)V
-    //   308: aload 6
-    //   310: ifnull +15 -> 325
-    //   313: aload_2
-    //   314: instanceof 318
-    //   317: ifne +8 -> 325
-    //   320: aload 6
-    //   322: invokevirtual 323	java/io/OutputStream:close	()V
-    //   325: aload_2
-    //   326: areturn
-    //   327: aload 11
-    //   329: invokevirtual 330	bdub:a	()Ljava/io/File;
-    //   332: astore 7
-    //   334: aload 7
-    //   336: astore_1
-    //   337: aload 6
-    //   339: ifnull -258 -> 81
-    //   342: aload 7
-    //   344: astore_1
-    //   345: aload_2
-    //   346: instanceof 318
-    //   349: ifne -268 -> 81
-    //   352: aload 6
-    //   354: invokevirtual 323	java/io/OutputStream:close	()V
-    //   357: aload 7
-    //   359: areturn
-    //   360: astore_1
-    //   361: aload 7
-    //   363: areturn
-    //   364: astore_1
-    //   365: aconst_null
-    //   366: astore_2
-    //   367: aload 8
-    //   369: astore 6
-    //   371: aload 11
-    //   373: ifnull +10 -> 383
-    //   376: aload 11
-    //   378: iload 4
-    //   380: invokevirtual 333	bdub:a	(Z)V
-    //   383: ldc_w 335
-    //   386: ldc 251
-    //   388: new 10	java/lang/StringBuilder
-    //   391: dup
-    //   392: invokespecial 13	java/lang/StringBuilder:<init>	()V
-    //   395: ldc_w 337
-    //   398: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   401: aload 10
-    //   403: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   406: ldc_w 339
-    //   409: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   412: aload 7
-    //   414: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   417: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   420: invokestatic 341	ayxi:b	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
-    //   423: aload_1
-    //   424: invokevirtual 342	java/lang/Exception:printStackTrace	()V
-    //   427: aload_1
-    //   428: athrow
-    //   429: astore_1
-    //   430: aload 6
-    //   432: ifnull +15 -> 447
-    //   435: aload_2
-    //   436: instanceof 318
-    //   439: ifne +8 -> 447
-    //   442: aload 6
-    //   444: invokevirtual 323	java/io/OutputStream:close	()V
-    //   447: aload_1
-    //   448: athrow
-    //   449: aload_0
-    //   450: aconst_null
-    //   451: aload_1
-    //   452: aload_2
-    //   453: invokevirtual 276	bdsh:a	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
-    //   456: areturn
-    //   457: astore_2
-    //   458: goto -11 -> 447
-    //   461: astore_1
-    //   462: aconst_null
-    //   463: astore_2
-    //   464: aload 9
-    //   466: astore 6
-    //   468: goto -38 -> 430
-    //   471: astore_1
-    //   472: aconst_null
-    //   473: astore_2
-    //   474: goto -44 -> 430
-    //   477: astore_1
-    //   478: goto -48 -> 430
-    //   481: astore_1
-    //   482: aconst_null
-    //   483: astore_2
-    //   484: aload 8
-    //   486: astore 6
-    //   488: goto -117 -> 371
-    //   491: astore_1
-    //   492: aconst_null
-    //   493: astore_2
-    //   494: goto -123 -> 371
-    //   497: astore_1
-    //   498: goto -127 -> 371
-    //   501: astore 8
-    //   503: aload_1
-    //   504: astore 7
-    //   506: aload 8
-    //   508: astore_1
-    //   509: goto -138 -> 371
-    //   512: astore_1
-    //   513: goto -188 -> 325
-    //   516: aload 7
-    //   518: astore_1
-    //   519: goto -307 -> 212
-    //   522: goto -361 -> 161
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	525	0	this	bdsh
-    //   0	525	1	paramDownloadParams	DownloadParams
-    //   0	525	2	paramURLDrawableHandler	URLDrawableHandler
-    //   1	158	3	bool1	boolean
-    //   122	257	4	bool2	boolean
-    //   146	3	5	bool3	boolean
-    //   26	461	6	localObject1	Object
-    //   19	498	7	localObject2	Object
-    //   6	479	8	localObject3	Object
-    //   501	6	8	localException	java.lang.Exception
-    //   3	462	9	localObject4	Object
-    //   106	296	10	str	String
-    //   116	261	11	localbdub	bdub
-    // Exception table:
-    //   from	to	target	type
-    //   274	286	289	java/io/IOException
-    //   345	357	360	java/io/IOException
-    //   129	148	364	java/lang/Exception
-    //   376	383	429	finally
-    //   383	429	429	finally
-    //   435	447	457	java/io/IOException
-    //   129	148	461	finally
-    //   161	177	461	finally
-    //   177	186	471	finally
-    //   186	212	477	finally
-    //   212	218	477	finally
-    //   223	263	477	finally
-    //   293	308	477	finally
-    //   327	334	477	finally
-    //   161	177	481	java/lang/Exception
-    //   177	186	491	java/lang/Exception
-    //   186	212	497	java/lang/Exception
-    //   212	218	501	java/lang/Exception
-    //   223	263	501	java/lang/Exception
-    //   293	308	501	java/lang/Exception
-    //   327	334	501	java/lang/Exception
-    //   313	325	512	java/io/IOException
+    if (!a(this.jdField_a_of_type_Bdom, this.jdField_a_of_type_Int)) {
+      paramContext = this.jdField_a_of_type_Bdom.a(paramContext, paramView, paramBundle);
+    }
+    LinearLayout localLinearLayout;
+    Object localObject1;
+    Object localObject2;
+    do
+    {
+      return paramContext;
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsgItemLayout5Adapter", 2, "layout5 use new style");
+      }
+      if ((paramView == null) || (!(paramView instanceof LinearLayout))) {
+        break label598;
+      }
+      localLinearLayout = (LinearLayout)paramView;
+      localObject1 = (FrameLayout)localLinearLayout.findViewById(2131378190);
+      if (localObject1 == null) {
+        break label381;
+      }
+      localObject2 = this.jdField_a_of_type_Bdom.a.iterator();
+      paramView = null;
+      if (((Iterator)localObject2).hasNext())
+      {
+        bdol localbdol = (bdol)((Iterator)localObject2).next();
+        String str = localbdol.a;
+        if ("title".equals(str)) {
+          paramView = ((StructMsgItemTitle)localbdol).b();
+        }
+        for (;;)
+        {
+          break;
+          if ("picture".equals(str)) {
+            this.jdField_a_of_type_AndroidViewView = a(localbdol, (View)localObject1, paramBundle);
+          }
+        }
+      }
+      if (this.jdField_a_of_type_AndroidViewView == null) {
+        break;
+      }
+      paramBundle = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378205);
+      if (!TextUtils.isEmpty(paramView))
+      {
+        if (paramBundle != null)
+        {
+          a(paramView, paramBundle, true);
+          return localLinearLayout;
+        }
+        paramContext = a(paramView, null, true);
+        paramView = new ViewGroup.LayoutParams(-1, this.b);
+        paramContext.setId(2131378205);
+        ((ViewGroup)this.jdField_a_of_type_AndroidViewView).addView(paramContext, paramView);
+        return localLinearLayout;
+      }
+      paramContext = localLinearLayout;
+    } while (paramBundle == null);
+    ((ViewGroup)this.jdField_a_of_type_AndroidViewView).removeView(paramBundle);
+    return localLinearLayout;
+    localLinearLayout.removeAllViews();
+    for (;;)
+    {
+      if (localLinearLayout == null)
+      {
+        localLinearLayout = new LinearLayout(paramContext);
+        localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+        localLinearLayout.setOrientation(1);
+        localLinearLayout.setId(2131378206);
+      }
+      for (;;)
+      {
+        localObject1 = this.jdField_a_of_type_Bdom.a.iterator();
+        label331:
+        if (((Iterator)localObject1).hasNext())
+        {
+          paramContext = (bdol)((Iterator)localObject1).next();
+          localObject2 = paramContext.a;
+          if ("title".equals(localObject2)) {}
+          for (paramContext = ((StructMsgItemTitle)paramContext).b();; paramContext = paramView)
+          {
+            paramView = paramContext;
+            break label331;
+            label381:
+            localLinearLayout.removeAllViews();
+            paramView = null;
+            break;
+            if ("picture".equals(localObject2)) {
+              this.jdField_a_of_type_AndroidViewView = a(paramContext, null, paramBundle);
+            }
+          }
+        }
+        if (this.jdField_a_of_type_AndroidViewView != null)
+        {
+          if (!TextUtils.isEmpty(paramView))
+          {
+            paramContext = new ViewGroup.LayoutParams(-1, this.b);
+            paramView = a(paramView.trim(), null, true);
+            paramView.setId(2131378205);
+            ((ViewGroup)this.jdField_a_of_type_AndroidViewView).addView(paramView, paramContext);
+          }
+          localLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
+        }
+        for (;;)
+        {
+          return localLinearLayout;
+          if ((!TextUtils.isEmpty(paramView)) && (paramView.trim().length() > 0))
+          {
+            this.jdField_a_of_type_AndroidWidgetTextView = a(paramView.trim(), null, false);
+            paramContext = new ViewGroup.LayoutParams(-2, -2);
+            this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramContext);
+            int i = agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+            this.jdField_a_of_type_AndroidWidgetTextView.setPadding(i, i, i, i);
+            this.jdField_a_of_type_AndroidWidgetTextView.setId(2131378208);
+            this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
+            localLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
+          }
+        }
+      }
+      label598:
+      paramView = null;
+      localLinearLayout = null;
+    }
+  }
+  
+  public View a(bdol parambdol, View paramView, Bundle paramBundle)
+  {
+    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+    if ((paramView != null) && ((paramView instanceof FrameLayout)))
+    {
+      paramView = (FrameLayout)paramView;
+      parambdol.a(this.jdField_a_of_type_AndroidContentContext, paramView.findViewById(2131368493), paramBundle);
+      return paramView;
+    }
+    paramView = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
+    paramView.setLayoutParams(new FrameLayout.LayoutParams(-1, -2));
+    paramView.setId(2131378190);
+    if (paramBundle != null) {
+      paramBundle.putBoolean("pa_should_change", true);
+    }
+    parambdol = (ImageView)parambdol.a(this.jdField_a_of_type_AndroidContentContext, null, paramBundle).findViewById(2131368493);
+    paramBundle = new FrameLayout.LayoutParams(-1, this.b);
+    if ((parambdol != null) && ((parambdol instanceof PAImageView)))
+    {
+      PAImageView localPAImageView = (PAImageView)parambdol;
+      localPAImageView.setUseRadiusRound(true, localResources.getDimensionPixelSize(2131296395));
+      localPAImageView.setTag(2131373149, Integer.valueOf(1));
+    }
+    paramView.addView(parambdol, paramBundle);
+    return paramView;
   }
 }
 

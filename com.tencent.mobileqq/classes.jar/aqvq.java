@@ -1,50 +1,150 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aqvq
-  implements aqlb<String>
 {
-  public String a;
-  public boolean a;
-  public String b = "";
-  public String c = "{}";
+  int jdField_a_of_type_Int = 0;
+  aqvo jdField_a_of_type_Aqvo;
+  aqvu jdField_a_of_type_Aqvu;
+  List<Long> jdField_a_of_type_JavaUtilList;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 30;
+  List<Long> jdField_b_of_type_JavaUtilList = new ArrayList();
+  int jdField_c_of_type_Int = 0;
+  List<DanmuItemBean> jdField_c_of_type_JavaUtilList;
+  int jdField_d_of_type_Int = 0;
+  List<DanmuItemBean> jdField_d_of_type_JavaUtilList = new ArrayList();
+  int e = 0;
+  int f = 60;
   
-  public aqvq()
+  public aqvq(aqvp paramaqvp) {}
+  
+  public aqvq a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    aqvp.a().a(aqvp.a().a(this.jdField_a_of_type_Aqvo.b, this.jdField_a_of_type_Aqvo.jdField_a_of_type_Long), this);
+    return this;
   }
   
-  public void a(String paramString)
+  public aqvq a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("QFileAppStorePromoteConfigBean<QFile>", 1, "onParse: but configContent is null!");
-    }
-    this.c = paramString;
-    try
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public aqvq a(aqvo paramaqvo)
+  {
+    this.jdField_a_of_type_Aqvo = paramaqvo;
+    return this;
+  }
+  
+  public aqvq a(aqvu paramaqvu)
+  {
+    this.jdField_a_of_type_Aqvu = paramaqvu;
+    return this;
+  }
+  
+  public aqvq a(List<DanmuItemBean> paramList)
+  {
+    this.jdField_c_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public aqvq a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public String a()
+  {
+    return String.format("CacheHolder - topicUin:%s, groupUin:%s, msgType:%s, peakCached:%s, videoStartTime:%s, videoEndTime:%s, nextStartIdx:%s, count:%s", new Object[] { Long.valueOf(this.jdField_a_of_type_Aqvo.jdField_a_of_type_Long), Long.valueOf(this.jdField_a_of_type_Aqvo.b), Integer.valueOf(this.jdField_a_of_type_Aqvo.jdField_a_of_type_Int), Boolean.valueOf(this.jdField_a_of_type_Aqvo.jdField_a_of_type_Boolean), Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.jdField_d_of_type_Int), Integer.valueOf(this.e), Integer.valueOf(this.f) });
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
+    DanmuItemBean localDanmuItemBean;
+    while (localIterator.hasNext())
     {
-      paramString = new JSONObject(paramString);
-      if (paramString.has("actionSwitch")) {
-        this.jdField_a_of_type_Boolean = paramString.getBoolean("actionSwitch");
+      localDanmuItemBean = (DanmuItemBean)localIterator.next();
+      if (this.jdField_a_of_type_JavaUtilList.contains(Long.valueOf(localDanmuItemBean.b))) {
+        localIterator.remove();
       }
-      if (paramString.has("actionHint")) {
-        this.jdField_a_of_type_JavaLangString = paramString.getString("actionHint");
-      }
-      if (paramString.has("actionYYBDownloadUrl")) {
-        this.b = paramString.getString("actionYYBDownloadUrl");
-      }
-      return;
     }
-    catch (JSONException paramString)
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
-      QLog.e("QFileAppStorePromoteConfigBean<QFile>", 1, QLog.getStackTraceString(paramString));
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        long l = ((Long)localIterator.next()).longValue();
+        if (!this.jdField_b_of_type_JavaUtilList.contains(Long.valueOf(l))) {
+          this.jdField_b_of_type_JavaUtilList.add(Long.valueOf(l));
+        }
+      }
     }
+    if ((this.jdField_c_of_type_JavaUtilList != null) && (!this.jdField_c_of_type_JavaUtilList.isEmpty()))
+    {
+      localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localDanmuItemBean = (DanmuItemBean)localIterator.next();
+        if (!a(localDanmuItemBean.jdField_a_of_type_Long, localDanmuItemBean.b)) {
+          this.jdField_d_of_type_JavaUtilList.add(localDanmuItemBean);
+        }
+      }
+    }
+  }
+  
+  public boolean a(long paramLong1, long paramLong2)
+  {
+    Iterator localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      DanmuItemBean localDanmuItemBean = (DanmuItemBean)localIterator.next();
+      if ((localDanmuItemBean.jdField_a_of_type_Long == paramLong1) && (localDanmuItemBean.b == paramLong2)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public aqvq b(int paramInt)
+  {
+    if (paramInt > 0) {
+      this.jdField_b_of_type_Int = paramInt;
+    }
+    return this;
+  }
+  
+  public aqvq b(List<Long> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public aqvq c(int paramInt)
+  {
+    this.e = paramInt;
+    return this;
+  }
+  
+  public aqvq d(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public aqvq e(int paramInt)
+  {
+    this.jdField_d_of_type_Int = paramInt;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqvq
  * JD-Core Version:    0.7.0.1
  */

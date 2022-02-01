@@ -1,20 +1,13 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
 
-final class bpha
-  implements Animation.AnimationListener
+public class bpha
+  implements DialogInterface.OnClickListener
 {
-  bpha(View paramView) {}
+  public bpha(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.setAnimation(null);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

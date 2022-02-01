@@ -6,16 +6,16 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
-import anhk;
-import arcj;
-import avnn;
-import bbew;
-import bbex;
-import bbfa;
-import bbfb;
-import beaw;
-import beax;
-import bgsg;
+import antf;
+import arry;
+import awfy;
+import bbxp;
+import bbxq;
+import bbxt;
+import bbxu;
+import bezv;
+import bezw;
+import bhsi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -41,10 +41,10 @@ public class ScribbleResMgr
   public static final String d;
   public static final String e;
   protected Handler a;
-  private final ArrayList<bbfa> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private final ArrayList<bbxt> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
   public boolean a;
-  private final Handler jdField_b_of_type_AndroidOsHandler = new bbew(this, Looper.getMainLooper());
+  private final Handler jdField_b_of_type_AndroidOsHandler = new bbxp(this, Looper.getMainLooper());
   private ArrayList<ScribbleResMgr.ResInfo> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_b_of_type_Boolean;
   private ArrayList<ScribbleResMgr.ResInfo> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
@@ -58,11 +58,11 @@ public class ScribbleResMgr
   
   static
   {
-    jdField_a_of_type_JavaLangString = anhk.cp + "Config/";
-    jdField_b_of_type_JavaLangString = anhk.cp + "Config/paint/";
-    jdField_c_of_type_JavaLangString = anhk.cp + "Config/gif/";
-    jdField_d_of_type_JavaLangString = anhk.cp + "Config/line_icon/";
-    jdField_e_of_type_JavaLangString = anhk.cp + "Config/gif_icon/";
+    jdField_a_of_type_JavaLangString = antf.cp + "Config/";
+    jdField_b_of_type_JavaLangString = antf.cp + "Config/paint/";
+    jdField_c_of_type_JavaLangString = antf.cp + "Config/gif/";
+    jdField_d_of_type_JavaLangString = antf.cp + "Config/line_icon/";
+    jdField_e_of_type_JavaLangString = antf.cp + "Config/gif_icon/";
     jdField_a_of_type_JavaLangLong = Long.valueOf(30000L);
   }
   
@@ -92,7 +92,7 @@ public class ScribbleResMgr
   
   private String a()
   {
-    return anhk.cp + "paint_icon";
+    return antf.cp + "paint_icon";
   }
   
   public static String a(int paramInt1, int paramInt2)
@@ -146,7 +146,7 @@ public class ScribbleResMgr
       int j = 0;
       while (j < k)
       {
-        ScribbleResMgr.ResInfo localResInfo = (ScribbleResMgr.ResInfo)avnn.a(paramJSONArray.getJSONObject(j), ScribbleResMgr.ResInfo.class);
+        ScribbleResMgr.ResInfo localResInfo = (ScribbleResMgr.ResInfo)awfy.a(paramJSONArray.getJSONObject(j), ScribbleResMgr.ResInfo.class);
         if (localResInfo != null)
         {
           localResInfo.resType = paramInt;
@@ -168,7 +168,7 @@ public class ScribbleResMgr
   }
   
   /* Error */
-  private void a(int paramInt1, int paramInt2, View paramView, bbfb parambbfb)
+  private void a(int paramInt1, int paramInt2, View paramView, bbxu parambbxu)
   {
     // Byte code:
     //   0: aload_0
@@ -182,10 +182,10 @@ public class ScribbleResMgr
     //   18: ifeq +41 -> 59
     //   21: aload 5
     //   23: invokeinterface 175 1 0
-    //   28: checkcast 237	bbfa
+    //   28: checkcast 237	bbxt
     //   31: astore 6
     //   33: aload 6
-    //   35: invokevirtual 240	bbfa:a	()Landroid/view/View;
+    //   35: invokevirtual 240	bbxt:a	()Landroid/view/View;
     //   38: aload_3
     //   39: if_acmpne -28 -> 11
     //   42: aload 6
@@ -193,20 +193,20 @@ public class ScribbleResMgr
     //   47: dup
     //   48: aload 4
     //   50: invokespecial 245	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   53: putfield 248	bbfa:b	Ljava/lang/ref/WeakReference;
+    //   53: putfield 248	bbxt:b	Ljava/lang/ref/WeakReference;
     //   56: aload_0
     //   57: monitorexit
     //   58: return
     //   59: aload_0
     //   60: getfield 107	com/tencent/mobileqq/scribble/ScribbleResMgr:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   63: new 237	bbfa
+    //   63: new 237	bbxt
     //   66: dup
     //   67: aload_0
     //   68: iload_1
     //   69: iload_2
     //   70: aload_3
     //   71: aload 4
-    //   73: invokespecial 251	bbfa:<init>	(Lcom/tencent/mobileqq/scribble/ScribbleResMgr;IILandroid/view/View;Lbbfb;)V
+    //   73: invokespecial 251	bbxt:<init>	(Lcom/tencent/mobileqq/scribble/ScribbleResMgr;IILandroid/view/View;Lbbxu;)V
     //   76: invokevirtual 185	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   79: pop
     //   80: goto -24 -> 56
@@ -221,9 +221,9 @@ public class ScribbleResMgr
     //   0	88	1	paramInt1	int
     //   0	88	2	paramInt2	int
     //   0	88	3	paramView	View
-    //   0	88	4	parambbfb	bbfb
+    //   0	88	4	parambbxu	bbxu
     //   9	13	5	localIterator	Iterator
-    //   31	12	6	localbbfa	bbfa
+    //   31	12	6	localbbxt	bbxt
     // Exception table:
     //   from	to	target	type
     //   2	11	83	finally
@@ -268,7 +268,7 @@ public class ScribbleResMgr
   public static void a(Context paramContext, String paramString)
   {
     QLog.d("ScribbleResMgr", 2, "setScribbleRedShowed false");
-    bgsg.a(paramContext, Boolean.valueOf(false), paramString);
+    bhsi.a(paramContext, Boolean.valueOf(false), paramString);
   }
   
   private void a(QQAppInterface paramQQAppInterface)
@@ -277,8 +277,8 @@ public class ScribbleResMgr
     {
       long l1 = System.currentTimeMillis();
       QLog.i("ScribbleResMgr", 2, "init=======================timenow:" + l1);
-      String str = bgsg.o(paramQQAppInterface.getApp().getApplicationContext());
-      paramQQAppInterface = bgsg.n(paramQQAppInterface.getApp().getApplicationContext());
+      String str = bhsi.o(paramQQAppInterface.getApp().getApplicationContext());
+      paramQQAppInterface = bhsi.n(paramQQAppInterface.getApp().getApplicationContext());
       if (!TextUtils.isEmpty(str)) {
         a(str);
       }
@@ -333,7 +333,7 @@ public class ScribbleResMgr
       if ((k != 0) && (!this.jdField_d_of_type_Boolean))
       {
         this.jdField_d_of_type_Boolean = true;
-        arcj.g(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin());
+        arry.g(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin());
       }
       return;
       if (!this.jdField_c_of_type_Boolean) {
@@ -440,12 +440,12 @@ public class ScribbleResMgr
       return;
     }
     ScribbleResMgr.4 local4 = new ScribbleResMgr.4(this, paramResInfo);
-    beaw localbeaw;
+    bezv localbezv;
     String str;
     if (paramBoolean)
     {
-      localbeaw = (beaw)paramQQAppInterface.getManager(193);
-      if (localbeaw.a())
+      localbezv = (bezv)paramQQAppInterface.getManager(193);
+      if (localbezv.a())
       {
         str = null;
         if (paramResInfo.resType == 1) {
@@ -463,10 +463,10 @@ public class ScribbleResMgr
       if (QLog.isColorLevel()) {
         QLog.d("ScribbleResMgr", 2, "download res, predownload enable:" + paramResInfo.sourceId + " " + paramResInfo.resType + " outpath:" + str + " url:" + paramResInfo.sourceUrl);
       }
-      paramQQAppInterface = new beax(paramQQAppInterface, "doodle_msg_res", local4, 4000L);
-      localbeaw.a(10068, "prd", String.valueOf(paramResInfo.sourceId), 0, paramResInfo.sourceUrl, str, 2, 0, true, paramQQAppInterface);
+      paramQQAppInterface = new bezw(paramQQAppInterface, "doodle_msg_res", local4, 4000L);
+      localbezv.a(10068, "prd", String.valueOf(paramResInfo.sourceId), 0, paramResInfo.sourceUrl, str, 2, 0, true, paramQQAppInterface);
       return;
-      paramQQAppInterface = (beaw)paramQQAppInterface.getManager(193);
+      paramQQAppInterface = (bezv)paramQQAppInterface.getManager(193);
       if (paramQQAppInterface.a())
       {
         paramQQAppInterface.a(paramResInfo.sourceUrl);
@@ -523,12 +523,12 @@ public class ScribbleResMgr
     if ((paramArrayList == null) || (paramArrayList.size() < 2)) {
       return;
     }
-    Collections.sort(paramArrayList, new bbex(this));
+    Collections.sort(paramArrayList, new bbxq(this));
   }
   
   public static boolean a(Context paramContext, String paramString)
   {
-    boolean bool = bgsg.p(paramContext, paramString);
+    boolean bool = bhsi.o(paramContext, paramString);
     QLog.d("ScribbleResMgr", 2, "getNeedScribbleRedShow" + bool);
     return bool;
   }
@@ -536,7 +536,7 @@ public class ScribbleResMgr
   private boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
     Object localObject2 = null;
-    String str = bgsg.m(paramQQAppInterface.getApp().getBaseContext());
+    String str = bhsi.m(paramQQAppInterface.getApp().getBaseContext());
     for (;;)
     {
       try
@@ -570,8 +570,8 @@ public class ScribbleResMgr
             continue;
           }
           QLog.i("ScribbleResMgr", 2, "RESOURCE_CONFIG_TASK_ID_PAINT newVersion = " + (String)localObject1);
-          bgsg.w(paramQQAppInterface.getApp().getBaseContext(), (String)localObject1);
-          bgsg.y(paramQQAppInterface.getApp().getBaseContext(), paramString);
+          bhsi.w(paramQQAppInterface.getApp().getBaseContext(), (String)localObject1);
+          bhsi.y(paramQQAppInterface.getApp().getBaseContext(), paramString);
           a(paramQQAppInterface, 3, jdField_a_of_type_JavaLangLong.longValue());
           if ((localObject2 == null) || (((ArrayList)localObject2).isEmpty())) {
             break label394;
@@ -648,20 +648,20 @@ public class ScribbleResMgr
     //   1: istore 10
     //   3: iconst_0
     //   4: istore 11
-    //   6: new 524	org/json/JSONObject
+    //   6: new 523	org/json/JSONObject
     //   9: dup
     //   10: aload_0
-    //   11: invokespecial 525	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   11: invokespecial 524	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   14: astore 12
     //   16: aload 12
-    //   18: ldc_w 578
-    //   21: invokevirtual 530	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   18: ldc_w 577
+    //   21: invokevirtual 529	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   24: ifeq +625 -> 649
     //   27: aload 12
-    //   29: ldc_w 578
-    //   32: invokevirtual 534	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   35: invokestatic 583	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   38: invokevirtual 586	java/lang/Integer:intValue	()I
+    //   29: ldc_w 577
+    //   32: invokevirtual 533	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   35: invokestatic 582	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   38: invokevirtual 585	java/lang/Integer:intValue	()I
     //   41: istore 6
     //   43: iload 6
     //   45: iconst_1
@@ -669,24 +669,24 @@ public class ScribbleResMgr
     //   49: iconst_1
     //   50: istore 7
     //   52: aload 12
-    //   54: ldc_w 588
-    //   57: invokevirtual 530	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   54: ldc_w 587
+    //   57: invokevirtual 529	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   60: ifeq +584 -> 644
     //   63: aload 12
-    //   65: ldc_w 588
-    //   68: invokevirtual 534	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   71: invokestatic 593	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
-    //   74: invokevirtual 597	java/lang/Float:floatValue	()F
+    //   65: ldc_w 587
+    //   68: invokevirtual 533	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   71: invokestatic 592	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   74: invokevirtual 596	java/lang/Float:floatValue	()F
     //   77: fstore_3
     //   78: aload 12
-    //   80: ldc_w 599
-    //   83: invokevirtual 530	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   80: ldc_w 598
+    //   83: invokevirtual 529	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   86: ifeq +552 -> 638
     //   89: aload 12
-    //   91: ldc_w 599
-    //   94: invokevirtual 534	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   97: invokestatic 583	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   100: invokevirtual 586	java/lang/Integer:intValue	()I
+    //   91: ldc_w 598
+    //   94: invokevirtual 533	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   97: invokestatic 582	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   100: invokevirtual 585	java/lang/Integer:intValue	()I
     //   103: istore 6
     //   105: iload 6
     //   107: iconst_1
@@ -694,26 +694,26 @@ public class ScribbleResMgr
     //   111: iconst_1
     //   112: istore 8
     //   114: aload 12
-    //   116: ldc_w 601
-    //   119: invokevirtual 530	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   116: ldc_w 600
+    //   119: invokevirtual 529	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   122: ifeq +510 -> 632
     //   125: aload 12
-    //   127: ldc_w 601
-    //   130: invokevirtual 534	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   133: invokestatic 593	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
-    //   136: invokevirtual 597	java/lang/Float:floatValue	()F
+    //   127: ldc_w 600
+    //   130: invokevirtual 533	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   133: invokestatic 592	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   136: invokevirtual 596	java/lang/Float:floatValue	()F
     //   139: fstore 4
     //   141: iload 11
     //   143: istore 9
     //   145: aload 12
-    //   147: ldc_w 603
-    //   150: invokevirtual 530	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   147: ldc_w 602
+    //   150: invokevirtual 529	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   153: ifeq +32 -> 185
     //   156: aload 12
-    //   158: ldc_w 603
-    //   161: invokevirtual 534	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   164: invokestatic 583	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   167: invokevirtual 586	java/lang/Integer:intValue	()I
+    //   158: ldc_w 602
+    //   161: invokevirtual 533	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   164: invokestatic 582	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   167: invokevirtual 585	java/lang/Integer:intValue	()I
     //   170: istore 6
     //   172: iload 11
     //   174: istore 9
@@ -735,13 +735,13 @@ public class ScribbleResMgr
     //   202: aload_1
     //   203: iload 10
     //   205: aload_2
-    //   206: invokestatic 606	bgsg:b	(Landroid/content/Context;ZLjava/lang/String;)V
+    //   206: invokestatic 605	bhsi:b	(Landroid/content/Context;ZLjava/lang/String;)V
     //   209: iload 7
     //   211: ifeq +257 -> 468
     //   214: aload_1
     //   215: aload_2
-    //   216: invokestatic 609	bgsg:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/Float;
-    //   219: invokevirtual 597	java/lang/Float:floatValue	()F
+    //   216: invokestatic 608	bhsi:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/Float;
+    //   219: invokevirtual 596	java/lang/Float:floatValue	()F
     //   222: fstore 4
     //   224: fload 5
     //   226: fload 4
@@ -751,33 +751,33 @@ public class ScribbleResMgr
     //   233: iload 7
     //   235: invokestatic 272	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   238: aload_2
-    //   239: invokestatic 277	bgsg:a	(Landroid/content/Context;Ljava/lang/Boolean;Ljava/lang/String;)V
+    //   239: invokestatic 277	bhsi:a	(Landroid/content/Context;Ljava/lang/Boolean;Ljava/lang/String;)V
     //   242: aload_1
     //   243: fload 5
-    //   245: invokestatic 612	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   245: invokestatic 611	java/lang/Float:valueOf	(F)Ljava/lang/Float;
     //   248: aload_2
-    //   249: invokestatic 615	bgsg:a	(Landroid/content/Context;Ljava/lang/Float;Ljava/lang/String;)V
+    //   249: invokestatic 614	bhsi:a	(Landroid/content/Context;Ljava/lang/Float;Ljava/lang/String;)V
     //   252: ldc 225
     //   254: iconst_2
     //   255: new 27	java/lang/StringBuilder
     //   258: dup
     //   259: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   262: ldc_w 617
+    //   262: ldc_w 616
     //   265: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   268: fload 4
-    //   270: invokevirtual 620	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   273: ldc_w 622
+    //   270: invokevirtual 619	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   273: ldc_w 621
     //   276: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   279: fload 5
-    //   281: invokevirtual 620	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   281: invokevirtual 619	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
     //   284: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   287: invokestatic 293	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   290: iload 9
     //   292: ifeq +216 -> 508
     //   295: aload_1
     //   296: aload_2
-    //   297: invokestatic 624	bgsg:b	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/Float;
-    //   300: invokevirtual 597	java/lang/Float:floatValue	()F
+    //   297: invokestatic 623	bhsi:b	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/Float;
+    //   300: invokevirtual 596	java/lang/Float:floatValue	()F
     //   303: fstore 4
     //   305: fload_3
     //   306: fload 4
@@ -785,26 +785,26 @@ public class ScribbleResMgr
     //   309: ifle +56 -> 365
     //   312: aload_1
     //   313: fload_3
-    //   314: invokestatic 612	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   314: invokestatic 611	java/lang/Float:valueOf	(F)Ljava/lang/Float;
     //   317: aload_2
-    //   318: invokestatic 626	bgsg:b	(Landroid/content/Context;Ljava/lang/Float;Ljava/lang/String;)V
+    //   318: invokestatic 625	bhsi:b	(Landroid/content/Context;Ljava/lang/Float;Ljava/lang/String;)V
     //   321: aload_1
     //   322: iload 9
     //   324: aload_2
-    //   325: invokestatic 628	bgsg:c	(Landroid/content/Context;ZLjava/lang/String;)V
+    //   325: invokestatic 627	bhsi:c	(Landroid/content/Context;ZLjava/lang/String;)V
     //   328: ldc 225
     //   330: iconst_2
     //   331: new 27	java/lang/StringBuilder
     //   334: dup
     //   335: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   338: ldc_w 630
+    //   338: ldc_w 629
     //   341: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   344: fload 4
-    //   346: invokevirtual 620	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   349: ldc_w 632
+    //   346: invokevirtual 619	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   349: ldc_w 631
     //   352: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   355: fload_3
-    //   356: invokevirtual 620	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   356: invokevirtual 619	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
     //   359: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   362: invokestatic 293	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   365: invokestatic 401	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -814,11 +814,11 @@ public class ScribbleResMgr
     //   374: new 27	java/lang/StringBuilder
     //   377: dup
     //   378: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   381: ldc_w 634
+    //   381: ldc_w 633
     //   384: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   387: iload 10
-    //   389: invokevirtual 515	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   392: ldc_w 636
+    //   389: invokevirtual 514	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   392: ldc_w 635
     //   395: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   398: aload_0
     //   399: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -845,7 +845,7 @@ public class ScribbleResMgr
     //   438: invokevirtual 223	org/json/JSONException:printStackTrace	()V
     //   441: ldc 225
     //   443: iconst_2
-    //   444: ldc_w 638
+    //   444: ldc_w 637
     //   447: invokestatic 233	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   450: iconst_0
     //   451: istore 11
@@ -861,33 +861,33 @@ public class ScribbleResMgr
     //   471: new 27	java/lang/StringBuilder
     //   474: dup
     //   475: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   478: ldc_w 640
+    //   478: ldc_w 639
     //   481: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   484: iload 7
-    //   486: invokevirtual 515	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   486: invokevirtual 514	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   489: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   492: invokestatic 293	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   495: aload_1
     //   496: iload 7
     //   498: invokestatic 272	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   501: aload_2
-    //   502: invokestatic 277	bgsg:a	(Landroid/content/Context;Ljava/lang/Boolean;Ljava/lang/String;)V
+    //   502: invokestatic 277	bhsi:a	(Landroid/content/Context;Ljava/lang/Boolean;Ljava/lang/String;)V
     //   505: goto -215 -> 290
     //   508: ldc 225
     //   510: iconst_2
     //   511: new 27	java/lang/StringBuilder
     //   514: dup
     //   515: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   518: ldc_w 642
+    //   518: ldc_w 641
     //   521: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   524: iload 9
-    //   526: invokevirtual 515	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   526: invokevirtual 514	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   529: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   532: invokestatic 293	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   535: aload_1
     //   536: iload 9
     //   538: aload_2
-    //   539: invokestatic 628	bgsg:c	(Landroid/content/Context;ZLjava/lang/String;)V
+    //   539: invokestatic 627	bhsi:c	(Landroid/content/Context;ZLjava/lang/String;)V
     //   542: goto -177 -> 365
     //   545: astore 12
     //   547: fconst_0
@@ -980,7 +980,7 @@ public class ScribbleResMgr
   
   private String b()
   {
-    return anhk.cp + "gif_icon";
+    return antf.cp + "gif_icon";
   }
   
   public static String b(int paramInt1, int paramInt2)
@@ -1035,7 +1035,7 @@ public class ScribbleResMgr
   
   public static void b(Context paramContext, String paramString)
   {
-    bgsg.c(paramContext, false, paramString);
+    bhsi.c(paramContext, false, paramString);
     QLog.d("ScribbleResMgr", 2, "setScribblePlusRedShowed false");
   }
   
@@ -1060,7 +1060,7 @@ public class ScribbleResMgr
   public static boolean b(Context paramContext, String paramString)
   {
     boolean bool1 = c(paramContext, paramString);
-    boolean bool2 = bgsg.q(paramContext, paramString);
+    boolean bool2 = bhsi.p(paramContext, paramString);
     QLog.d("ScribbleResMgr", 2, "getNeedScribblePlusRedShow" + bool2);
     return (bool2) && (bool1);
   }
@@ -1068,7 +1068,7 @@ public class ScribbleResMgr
   private boolean b(QQAppInterface paramQQAppInterface, String paramString)
   {
     Object localObject2 = null;
-    String str = bgsg.l(paramQQAppInterface.getApp().getBaseContext());
+    String str = bhsi.l(paramQQAppInterface.getApp().getBaseContext());
     for (;;)
     {
       try
@@ -1102,8 +1102,8 @@ public class ScribbleResMgr
             continue;
           }
           QLog.i("ScribbleResMgr", 2, "RESOURCE_CONFIG_TASK_ID_GIF newVersion = " + (String)localObject1);
-          bgsg.v(paramQQAppInterface.getApp().getBaseContext(), (String)localObject1);
-          bgsg.x(paramQQAppInterface.getApp().getBaseContext(), paramString);
+          bhsi.v(paramQQAppInterface.getApp().getBaseContext(), (String)localObject1);
+          bhsi.x(paramQQAppInterface.getApp().getBaseContext(), paramString);
           a(paramQQAppInterface, 4, jdField_a_of_type_JavaLangLong.longValue());
           if ((localObject2 == null) || (((ArrayList)localObject2).isEmpty())) {
             break label398;
@@ -1206,7 +1206,7 @@ public class ScribbleResMgr
   
   public static boolean c(Context paramContext, String paramString)
   {
-    boolean bool = bgsg.o(paramContext, paramString);
+    boolean bool = bhsi.n(paramContext, paramString);
     QLog.d("ScribbleResMgr", 2, "canShowEnter" + bool);
     return bool;
   }
@@ -1253,9 +1253,9 @@ public class ScribbleResMgr
     QLog.d("ScribbleResMgr", 2, "setGetConfigFinished");
   }
   
-  public void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, View paramView, bbfb parambbfb)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, View paramView, bbxu parambbxu)
   {
-    a(paramInt1, paramInt2, paramView, parambbfb);
+    a(paramInt1, paramInt2, paramView, parambbxu);
     paramQQAppInterface = new ScribbleResMgr.2(this, paramQQAppInterface, paramInt1, paramInt2);
     this.jdField_a_of_type_AndroidOsHandler.post(paramQQAppInterface);
   }

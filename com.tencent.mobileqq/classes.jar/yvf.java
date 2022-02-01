@@ -1,25 +1,18 @@
-import com.tencent.widget.AbsListView;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
 
-class yvf
-  implements bkhe
+public final class yvf
+  implements Parcelable.Creator<EditLocalGifSource>
 {
-  int jdField_a_of_type_Int = 0;
-  
-  yvf(yvd paramyvd) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public EditLocalGifSource a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+    return new EditLocalGifSource(paramParcel);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public EditLocalGifSource[] a(int paramInt)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Int == yvd.a(this.jdField_a_of_type_Yvd, yvd.a(this.jdField_a_of_type_Yvd)).a().size()) && (!yvd.a(this.jdField_a_of_type_Yvd, yvd.a(this.jdField_a_of_type_Yvd)).a()))
-    {
-      paramAbsListView = yvd.a(this.jdField_a_of_type_Yvd);
-      yvd.a(this.jdField_a_of_type_Yvd, yvd.a(this.jdField_a_of_type_Yvd)).b(paramAbsListView);
-    }
+    return new EditLocalGifSource[paramInt];
   }
 }
 

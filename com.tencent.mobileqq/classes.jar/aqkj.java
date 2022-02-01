@@ -1,22 +1,20 @@
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.confess.data.TroopConfessMsg;
-import com.tencent.mobileqq.data.MessageForTroopConfess;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.view.View.OnKeyListener;
 
-class aqkj
-  implements View.OnClickListener
+final class aqkj
+  implements View.OnKeyListener
 {
-  aqkj(aqki paramaqki, MessageForTroopConfess paramMessageForTroopConfess) {}
+  aqkj(aqki paramaqki) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items.isEmpty())) {
-      aqkl.a(this.jdField_a_of_type_Aqki.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aqki.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_Aqki.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessTopicId(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.confessorUin), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessToUin()));
+    if (paramInt == 4)
+    {
+      this.a.dismiss();
+      return true;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return false;
   }
 }
 

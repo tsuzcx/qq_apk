@@ -1,19 +1,8 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.biz.troopgift.RadioButtonIndicator;
+import android.os.Bundle;
 
-public class aasd
-  extends RadioButton
+public abstract interface aasd
 {
-  public aasd(RadioButtonIndicator paramRadioButtonIndicator, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public boolean performClick()
-  {
-    return true;
-  }
+  public abstract void callback(Bundle paramBundle);
 }
 
 

@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.play;
 
-import bnvr;
+import boxb;
 
 public class AEPlayShowPart$5
   implements Runnable
 {
-  public AEPlayShowPart$5(bnvr parambnvr) {}
+  public AEPlayShowPart$5(boxb paramboxb) {}
   
   public void run()
   {
-    bnvr.a(this.this$0);
-    bnvr.b(this.this$0);
+    boxb.a(this.this$0);
+    boxb.b(this.this$0);
   }
 }
 

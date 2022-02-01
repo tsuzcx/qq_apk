@@ -1,54 +1,35 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MessageForFuDai;
+import com.tencent.mobileqq.widget.FilterRelativeLayout;
 
-class avih
-  extends BroadcastReceiver
+public class avih
+  extends aggl
 {
-  avih(avig paramavig) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private FilterRelativeLayout jdField_a_of_type_ComTencentMobileqqWidgetFilterRelativeLayout;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private ImageView c;
+  private ImageView d;
+  private int e;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private void a(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    int j = paramIntent.getIntExtra("key_state", -1);
-    if (avig.a(this.a)) {
-      avig.a(this.a, j);
-    }
-    if (paramContext.equals(avip.a(avig.a(this.a))))
-    {
-      paramContext = (avii)avig.a(this.a).get();
-      if (paramContext != null) {
-        paramContext.a(j, paramIntent.getExtras());
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GroupVideoManager.IVPluginLoader", 2, "state:" + j);
-        }
-        paramContext = avig.jdField_a_of_type_ArrayOfInt;
-        int k = paramContext.length;
-        int i = 0;
-        while (i < k)
-        {
-          if ((j == paramContext[i]) && (avig.b(this.a)))
-          {
-            avig.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
-            avig.a(this.a, false);
-          }
-          i += 1;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("GroupVideoManager.IVPluginLoader", 2, "loadListener null");
-        }
-      }
-      if ((avig.c(this.a)) && (j == 4))
-      {
-        avig.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        avig.a(this.a, false);
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFilterRelativeLayout = ((FilterRelativeLayout)paramView.findViewById(2131367304));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367298));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367302));
+    this.c = ((ImageView)paramView.findViewById(2131367303));
+    this.d = ((ImageView)paramView.findViewById(2131367299));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367305));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367306));
+  }
+  
+  private void a(MessageForFuDai paramMessageForFuDai)
+  {
+    this.e = paramMessageForFuDai.themeId;
   }
 }
 

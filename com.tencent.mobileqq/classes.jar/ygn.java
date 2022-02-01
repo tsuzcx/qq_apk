@@ -1,23 +1,36 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import java.util.Comparator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
-public class ygn
-  implements Comparator<VideoCollectionItem>
+class ygn
+  implements View.OnTouchListener
 {
-  public int a(VideoCollectionItem paramVideoCollectionItem1, VideoCollectionItem paramVideoCollectionItem2)
+  ygn(ygl paramygl) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramVideoCollectionItem1.collectionType != paramVideoCollectionItem2.collectionType) && (zkk.a(paramVideoCollectionItem1.collectionTime, paramVideoCollectionItem2.collectionTime))) {
-      if (VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem1.collectionType] >= VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem2.collectionType]) {}
-    }
-    do
+    if (paramMotionEvent.getAction() == 0)
     {
-      return -1;
-      return 1;
-      if (paramVideoCollectionItem1.collectionTime < paramVideoCollectionItem2.collectionTime) {
-        return 1;
+      if (ygl.a(this.a)) {
+        break label105;
       }
-    } while (paramVideoCollectionItem1.collectionTime > paramVideoCollectionItem2.collectionTime);
-    return 0;
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(ygl.a(this.a), ygl.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, ygl.a(this.a).jdField_a_of_type_Boolean);
+      ygl.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
+      paramView = this.a;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
+        break label100;
+      }
+    }
+    label100:
+    for (boolean bool = true;; bool = false)
+    {
+      ygl.a(paramView, bool);
+      return false;
+    }
+    label105:
+    this.a.b();
+    return false;
   }
 }
 

@@ -1,16 +1,12 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-
-public class xqh
-  implements xrx
+class xqh
+  implements bimf
 {
-  public xqh(TextureVideoView paramTextureVideoView) {}
+  xqh(xqg paramxqg) {}
   
-  public boolean a_(xrt paramxrt, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      this.a.a.a_(paramxrt, paramInt1, paramInt2);
-    }
-    return true;
+    yuk.a("PromoteWidgetController", "preloadSonicSession() doStartProcess=%b", Boolean.valueOf(paramBoolean));
+    this.a.a = true;
   }
 }
 

@@ -1,19 +1,35 @@
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
+
 public class bdyx
+  implements MediaPlayer.OnErrorListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public int e;
+  private WeakReference<VideoSprite> a;
   
-  public String toString()
+  private bdyx(VideoSprite paramVideoSprite)
   {
-    return "PttSliceInfoBean{encodeType=" + this.jdField_a_of_type_Int + ", isfirst=" + this.jdField_a_of_type_Boolean + ", isLast=" + this.jdField_b_of_type_Boolean + ", voiceId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", offset=" + this.jdField_b_of_type_Int + ", vegPos='" + this.d + '\'' + ", md5='" + this.c + '\'' + ", chatType='" + this.e + '\'' + '}';
+    this.a = new WeakReference(paramVideoSprite);
+  }
+  
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  {
+    paramMediaPlayer = (VideoSprite)this.a.get();
+    if (paramMediaPlayer == null) {}
+    do
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.e("VideoSprite", 2, "onError: " + paramInt1);
+      }
+    } while (paramInt1 != 1);
+    if (paramMediaPlayer.a != null) {
+      paramMediaPlayer.a.a();
+    }
+    paramMediaPlayer.j();
+    return true;
   }
 }
 

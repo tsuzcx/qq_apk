@@ -1,22 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$onBindViewHolder$1$1"}, k=3, mv={1, 1, 16})
-final class azrw
-  implements View.OnClickListener
+public abstract class azrw
+  extends arac<azry>
 {
-  azrw(azrq paramazrq, azrp paramazrp, azrr paramazrr, int paramInt) {}
+  abstract int a();
   
-  public final void onClick(View paramView)
+  @NonNull
+  public azry a(int paramInt)
   {
-    azrq localazrq = this.jdField_a_of_type_Azrq;
-    Intrinsics.checkExpressionValueIsNotNull(paramView, "view");
-    localazrq.a(paramView, (azsj)azrp.a(this.jdField_a_of_type_Azrp).get(this.jdField_a_of_type_Int));
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new azry();
+  }
+  
+  @Nullable
+  public azry a(araj[] paramArrayOfaraj)
+  {
+    azry localazry = new azry();
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null)) {
+      azry.a(localazry, paramArrayOfaraj[0].a);
+    }
+    return localazry;
+  }
+  
+  public void a(azry paramazry) {}
+  
+  public Class<azry> clazz()
+  {
+    return azry.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return a();
   }
 }
 

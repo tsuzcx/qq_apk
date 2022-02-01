@@ -1,13 +1,13 @@
 package com.tencent.gamecenter.http.utils;
 
-import acfb;
+import acjc;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import nmj;
+import noe;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -89,7 +89,7 @@ public class AsyncHttpConnection
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
-    acfb.a().a(this);
+    acjc.a().a(this);
   }
   
   public void a(String paramString1, String paramString2)
@@ -119,7 +119,7 @@ public class AsyncHttpConnection
         if (QLog.isColorLevel())
         {
           i = j;
-          QLog.d("GameCenter", 2, "Http url= " + nmj.b(this.jdField_a_of_type_JavaLangString, new String[0]));
+          QLog.d("GameCenter", 2, "Http url= " + noe.b(this.jdField_a_of_type_JavaLangString, new String[0]));
         }
         i = j;
         switch (this.jdField_a_of_type_Int)

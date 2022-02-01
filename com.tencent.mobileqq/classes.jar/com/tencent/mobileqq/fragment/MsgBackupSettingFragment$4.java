@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import adrm;
+import aean;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
@@ -16,7 +16,7 @@ class MsgBackupSettingFragment$4
     {
       if (i < this.jdField_a_of_type_Int)
       {
-        adrm.b(this.this$0.getActivity().app, this.this$0.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, String.valueOf(i));
+        aean.b(this.this$0.getActivity().app, this.this$0.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, String.valueOf(i));
         try
         {
           Thread.sleep(20L);

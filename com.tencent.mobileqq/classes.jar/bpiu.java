@@ -1,20 +1,8 @@
-public class bpiu
+import android.support.annotation.Nullable;
+
+public abstract interface bpiu
 {
-  public int a;
-  public bpir a;
-  public int b;
-  
-  private bpiu(bpiw parambpiw)
-  {
-    this.jdField_a_of_type_Bpir = bpiw.a(parambpiw);
-    this.jdField_a_of_type_Int = bpiw.a(parambpiw);
-    this.b = bpiw.b(parambpiw);
-  }
-  
-  public String toString()
-  {
-    return "DoodleConfig{doodleStrategy=" + this.jdField_a_of_type_Bpir + ", maxBitmapWidth=" + this.jdField_a_of_type_Int + ", maxBitmapHeight=" + this.b + '}';
-  }
+  public abstract void a(@Nullable bpis parambpis, int paramInt1, boolean paramBoolean, int paramInt2);
 }
 
 

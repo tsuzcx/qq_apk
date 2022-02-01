@@ -1,24 +1,6 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
-
-public class xmz
-  implements xpd
+public abstract interface xmz
 {
-  public xmz(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
-  
-  public void a(@NonNull View paramView, int paramInt)
-  {
-    if (bqcd.a)
-    {
-      paramInt = StoryPlayerGroupHolder.a(this.a);
-      paramView = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
-      paramView.bottomMargin = paramInt;
-      this.a.a.setLayoutParams(paramView);
-    }
-  }
+  public abstract void a(xna paramxna);
 }
 
 

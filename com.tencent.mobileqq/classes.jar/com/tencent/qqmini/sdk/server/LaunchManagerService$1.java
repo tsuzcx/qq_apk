@@ -1,29 +1,17 @@
 package com.tencent.qqmini.sdk.server;
 
-import android.text.TextUtils;
-import java.util.List;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import org.json.JSONObject;
 
 class LaunchManagerService$1
-  implements Runnable
+  implements AsyncResult
 {
-  LaunchManagerService$1(LaunchManagerService paramLaunchManagerService, LaunchManagerService.MiniAppSubProcessorInfo paramMiniAppSubProcessorInfo) {}
+  LaunchManagerService$1(LaunchManagerService paramLaunchManagerService) {}
   
-  public void run()
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    LaunchManagerService localLaunchManagerService;
-    if ((this.val$preloadProcess != null) && (!this.val$preloadProcess.allMiniAppInfo.isEmpty()))
-    {
-      localLaunchManagerService = this.this$0;
-      if (TextUtils.equals(this.val$preloadProcess.preloadType, "preload_game")) {
-        break label50;
-      }
-    }
-    label50:
-    for (boolean bool = true;; bool = false)
-    {
-      localLaunchManagerService.preloadExtraMiniApp(bool);
-      return;
-    }
+    QMLog.i("minisdk-start_LaunchManagerService", "---startApp---- useUserApp isSuccess = " + paramBoolean);
   }
 }
 

@@ -1,29 +1,82 @@
-import android.hardware.camera2.CameraCaptureSession;
-import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
-import android.hardware.camera2.CaptureFailure;
-import android.hardware.camera2.CaptureRequest;
-import android.hardware.camera2.TotalCaptureResult;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bcgm
-  extends CameraCaptureSession.CaptureCallback
+  extends bcga
 {
-  public bcgm(Camera2Control paramCamera2Control) {}
+  public static final String a;
+  public List<bcds> a;
+  public String b;
+  public String j;
+  public String k;
   
-  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
+  static
   {
-    bcgu.a(1, "[Camera2]captureStillPicture completed!");
-    Camera2Control.a(this.a, 0L);
-    Camera2Control.e(this.a, false);
-    Camera2Control.a(this.a).a(0);
-    Camera2Control.b(this.a);
+    jdField_a_of_type_JavaLangString = bcgm.class.getSimpleName();
   }
   
-  public void onCaptureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureFailure paramCaptureFailure)
+  public bcgm(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    bcgu.a(1, "[Camera2]captureStillPicture failed!");
-    Camera2Control.a(this.a, 0L);
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public bcgm(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.b = paramString.optString("askIcon");
+      this.j = paramString.optString("headLine");
+      this.k = paramString.optString("answerNumText");
+      paramString = paramString.optJSONArray("answers");
+      if (paramString != null)
+      {
+        this.jdField_a_of_type_JavaUtilList = new ArrayList(paramString.length());
+        int i = 0;
+        while (i < paramString.length())
+        {
+          Object localObject2 = paramString.optJSONObject(i);
+          Object localObject1 = ((JSONObject)localObject2).optString("leftIcon");
+          String str1 = ((JSONObject)localObject2).optString("userNameText");
+          String str2 = ((JSONObject)localObject2).optString("praiseText");
+          String str3 = ((JSONObject)localObject2).optString("answerText");
+          int n = ((JSONObject)localObject2).optInt("imageTotalCount");
+          localObject2 = ((JSONObject)localObject2).optJSONArray("imageList");
+          ArrayList localArrayList = new ArrayList();
+          if (localObject2 != null)
+          {
+            int m = 0;
+            while (m < ((JSONArray)localObject2).length())
+            {
+              JSONObject localJSONObject = ((JSONArray)localObject2).optJSONObject(m);
+              localArrayList.add(new bcft(localJSONObject.optString("url"), localJSONObject.optInt("type")));
+              m += 1;
+            }
+          }
+          localObject1 = new bcds((String)localObject1, str1, str2, str3, n, localArrayList);
+          this.jdField_a_of_type_JavaUtilList.add(localObject1);
+          i += 1;
+        }
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+      }
+    }
   }
 }
 

@@ -1,29 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.MotionEvent;
 
-class agkm
-  implements bkhw
+public abstract interface agkm
 {
-  agkm(agki paramagki, ChatMessage paramChatMessage, bkho parambkho) {}
+  public abstract int a(int paramInt);
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 3000) {
-        break label41;
-      }
-      atvm.a("0X8005E4F");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Agki.e(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      label41:
-      atvm.a("0X8005E4D");
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract int b(int paramInt);
+  
+  public abstract boolean onTouchEvent(MotionEvent paramMotionEvent);
 }
 
 

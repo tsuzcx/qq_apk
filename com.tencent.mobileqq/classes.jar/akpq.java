@@ -1,20 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class akpq
-  implements View.OnClickListener
+class akpq
+  extends azov
 {
-  public akpq(LingHbFragment paramLingHbFragment) {}
+  akpq(akpp paramakpp) {}
   
-  public void onClick(View paramView)
+  protected void d(boolean paramBoolean)
   {
-    this.a.c.clearFocus();
-    LingHbFragment.a(this.a).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.i("SettingActivity2", 2, "onDisableMobileMatch suc[" + paramBoolean + "]");
+    }
+    this.a.a.a.b();
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
+    {
+      this.a.a.a.a();
+      this.a.a.a.setResult(-1);
+      return;
+    }
+    this.a.a.a.a(1, anzj.a(2131712731));
   }
 }
 

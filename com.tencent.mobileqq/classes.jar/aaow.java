@@ -1,45 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aaow
-  implements bcfg
+public class aaow
+  implements View.OnClickListener
 {
-  aaow(aaor paramaaor, AppRuntime paramAppRuntime, Bundle paramBundle) {}
+  public aaow(SubscribeQRCodeShareHelper.3 param3) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    VideoEnvironment.a("TroopMemberApiService", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
-    {
-      if (paramInt2 != 0)
-      {
-        VideoEnvironment.a("TroopMemberApiService", anni.a(2131714277) + paramInt2 + "]", null);
-        ShortVideoResourceManager.a(anni.a(2131714247));
-        bceg.a(1, paramInt2);
-        this.jdField_a_of_type_Aaor.a.b = false;
-        return;
-      }
-      ArrayList localArrayList = new ArrayList(1);
-      paramInt1 = ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList);
-      if (paramInt1 == 0)
-      {
-        VideoEnvironment.a("TroopMemberApiService", anni.a(2131714238), null);
-        ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList, new aaox(this));
-        return;
-      }
-      VideoEnvironment.a("TroopMemberApiService", anni.a(2131714239) + paramInt1 + "]", null);
-      ShortVideoResourceManager.a(anni.a(2131714276));
-      bceg.a(1, paramInt1);
-      return;
-    }
-    VideoEnvironment.a("TroopMemberApiService", anni.a(2131714327) + paramInt2 + "]", null);
-    ShortVideoResourceManager.a(anni.a(2131714284));
-    bceg.a(1, paramInt2);
-    this.jdField_a_of_type_Aaor.a.b = false;
+    aaou.a(this.a.this$0).dismiss();
+    aaou.a(this.a.this$0, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

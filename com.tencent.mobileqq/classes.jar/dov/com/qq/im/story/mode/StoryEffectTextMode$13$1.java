@@ -1,20 +1,20 @@
 package dov.com.qq.im.story.mode;
 
-import boza;
-import boze;
+import bqav;
+import bqaz;
 
 public class StoryEffectTextMode$13$1
   implements Runnable
 {
-  public StoryEffectTextMode$13$1(boze paramboze) {}
+  public StoryEffectTextMode$13$1(bqaz parambqaz) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_Boza.c) {}
+    if (this.a.jdField_a_of_type_Bqav.c) {}
     while (!this.a.jdField_a_of_type_Boolean) {
       return;
     }
-    boza.b(this.a.jdField_a_of_type_Boza, this.a.jdField_a_of_type_Woa);
+    bqav.b(this.a.jdField_a_of_type_Bqav, this.a.jdField_a_of_type_Wrv);
   }
 }
 

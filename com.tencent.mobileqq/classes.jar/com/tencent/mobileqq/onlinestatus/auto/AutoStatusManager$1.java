@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.onlinestatus.auto;
 
-import ayqb;
+import aziu;
 
 public class AutoStatusManager$1
   implements Runnable
 {
-  public AutoStatusManager$1(ayqb paramayqb) {}
+  public AutoStatusManager$1(aziu paramaziu) {}
   
   public void run()
   {
-    ayqb.a(ayqb.a(this.this$0));
-    ayqb.c();
+    aziu.a(aziu.a(this.this$0));
+    aziu.c();
   }
 }
 

@@ -1,27 +1,9 @@
-public class bpnh
-  extends bpnb
+import dov.com.qq.im.capture.data.TemplateData;
+import java.util.List;
+
+public abstract interface bpnh
 {
-  public static final String f = anni.a(2131704590);
-  
-  public bpnh()
-  {
-    super("-1000");
-  }
-  
-  public String a()
-  {
-    return "InteractFacePackage";
-  }
-  
-  public String a(int paramInt)
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
+  public abstract void a(List<TemplateData> paramList);
 }
 
 

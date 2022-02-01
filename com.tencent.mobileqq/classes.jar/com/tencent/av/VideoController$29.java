@@ -4,8 +4,8 @@ import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import lco;
-import lnh;
+import lcv;
+import lnv;
 
 class VideoController$29
   implements Runnable
@@ -18,15 +18,15 @@ class VideoController$29
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      lnh locallnh = (lnh)localIterator.next();
-      lco locallco = new lco();
-      locallco.jdField_d_of_type_Int = 0;
-      locallco.jdField_a_of_type_Long = locallnh.jdField_a_of_type_Long;
-      locallco.h = false;
-      locallco.jdField_d_of_type_Long = locallnh.b;
-      VideoController.a(this.this$0).add(locallco);
+      lnv locallnv = (lnv)localIterator.next();
+      lcv locallcv = new lcv();
+      locallcv.jdField_d_of_type_Int = 0;
+      locallcv.jdField_a_of_type_Long = locallnv.jdField_a_of_type_Long;
+      locallcv.h = false;
+      locallcv.jdField_d_of_type_Long = locallnv.b;
+      VideoController.a(this.this$0).add(locallcv);
       if (QLog.isColorLevel()) {
-        QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "InviteMemberList saveInviteMembers add: member uin:=" + locallco.jdField_a_of_type_Long);
+        QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "InviteMemberList saveInviteMembers add: member uin:=" + locallcv.jdField_a_of_type_Long);
       }
     }
     this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(708), Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.b), VideoController.a(this.this$0) });

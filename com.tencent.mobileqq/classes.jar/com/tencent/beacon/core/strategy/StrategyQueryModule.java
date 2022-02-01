@@ -232,6 +232,7 @@ public class StrategyQueryModule
   {
     super.onSDKInit(paramContext);
     com.tencent.beacon.core.e.d.a("[module] strategy module > TRUE", new Object[0]);
+    this.strategyQueryRunner.d();
     startQuery();
     com.tencent.beacon.core.a.g.a().a(paramContext, new h(this, paramContext));
   }
@@ -338,10 +339,7 @@ public class StrategyQueryModule
   {
     try
     {
-      i locali = this.strategyQueryRunner;
-      if (!locali.c)
-      {
-        locali.d();
+      if (!this.strategyQueryRunner.c) {
         com.tencent.beacon.core.a.d.a().a(this.strategyQueryRunner);
       }
       return;

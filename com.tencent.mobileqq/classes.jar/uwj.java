@@ -1,27 +1,18 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
 
-public class uwj
-  extends nyr
+class uwj
+  extends View.AccessibilityDelegate
 {
-  public uwj(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, long paramLong) {}
+  uwj(uwh paramuwh) {}
   
-  public void a(boolean paramBoolean, uwr paramuwr, byte[] paramArrayOfByte, String paramString)
+  @TargetApi(14)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(true, this.jdField_a_of_type_Long);
-      if (paramuwr != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond isSuccess=" + paramBoolean + " ;articleID = " + paramuwr.a);
-        }
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(paramuwr, paramArrayOfByte);
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.b(paramuwr);
-      }
-      return;
+    if (paramInt != 32) {
+      super.sendAccessibilityEvent(paramView, paramInt);
     }
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(false, this.jdField_a_of_type_Long);
   }
 }
 

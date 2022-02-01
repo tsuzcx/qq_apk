@@ -1,132 +1,29 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.8.1;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.8.2;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.8.3;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class akdf
-  extends BaseAdapter
+  extends aavf
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private ArrayList<bgod> jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_JavaUtilArrayList;
+  public akdf(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  private akdf(CountryActivity paramCountryActivity) {}
-  
-  private int a(bgod parambgod)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (parambgod.a) {
-      return 0;
+    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
+    while (!paramBoolean1) {
+      return;
     }
-    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.equals(""))) {
-      return 0;
-    }
-    String str2 = parambgod.c;
-    String str3 = parambgod.b;
-    String str1 = parambgod.d;
-    parambgod = str1;
-    if (str1 != null) {
-      parambgod = str1.toLowerCase();
-    }
-    str1 = ChnToSpell.a(str3, 1);
-    String str4 = ChnToSpell.a(str3, 2);
-    if ((str2.equals(this.jdField_a_of_type_JavaLangString)) || (str3.equals(this.jdField_a_of_type_JavaLangString)) || (str1.equals(this.jdField_a_of_type_JavaLangString)) || (str4.equals(this.jdField_a_of_type_JavaLangString)) || ((parambgod != null) && (parambgod.equals(this.jdField_a_of_type_JavaLangString)))) {
-      return 3;
-    }
-    if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str3.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str1.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str4.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || ((parambgod != null) && (parambgod.indexOf(this.jdField_a_of_type_JavaLangString) == 0))) {
-      return 2;
-    }
-    if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str3.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str1.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str4.indexOf(this.jdField_a_of_type_JavaLangString) > 0)) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public void a(String paramString)
-  {
-    int j = 0;
-    Object localObject = paramString.toLowerCase();
-    paramString = (String)localObject;
-    if (((String)localObject).equals("hk")) {
-      paramString = "xianggang";
-    }
-    localObject = paramString;
-    if (paramString.equals("uk")) {
-      localObject = "united kingdom";
-    }
-    int i;
-    label81:
-    bgod localbgod;
-    int k;
-    if (((String)localObject).startsWith(this.jdField_a_of_type_JavaLangString))
+    ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryTroopFileFragment.8.1(this, paramInt1));
+    if (paramBoolean2)
     {
-      paramString = this.jdField_a_of_type_JavaUtilArrayList;
-      this.jdField_a_of_type_JavaLangString = ((String)localObject);
-      localObject = new ArrayList(8);
-      paramString = paramString.iterator();
-      i = 0;
-      if (!paramString.hasNext()) {
-        break label181;
-      }
-      localbgod = (bgod)paramString.next();
-      k = a(localbgod);
-      if (k != 3) {
-        break label141;
-      }
-      ((ArrayList)localObject).add(j, localbgod);
-      j += 1;
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new ChatHistoryTroopFileFragment.8.2(this), 1000L);
+      return;
     }
-    for (;;)
-    {
-      break label81;
-      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_JavaUtilArrayList;
-      break;
-      label141:
-      if (k == 2)
-      {
-        ((ArrayList)localObject).add(i + j, localbgod);
-        i += 1;
-      }
-      else if (k == 1)
-      {
-        ((ArrayList)localObject).add(localbgod);
-      }
-    }
-    label181:
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = CountryActivity.a(paramViewGroup, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.getLayoutInflater(), true);
-      paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity);
-    }
-    for (;;)
-    {
-      CountryActivity.a(paramView, (bgod)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-    }
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new ChatHistoryTroopFileFragment.8.3(this), 1000L);
   }
 }
 

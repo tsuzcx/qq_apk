@@ -1,27 +1,42 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
+import java.util.ArrayList;
 
 public class aekq
-  implements TextWatcher
+  extends BroadcastReceiver
 {
-  public aekq(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  public aekq(DirectForwardActivity paramDirectForwardActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramEditable = paramEditable.toString();
-    if ((paramEditable != null) && (paramEditable.trim().length() > 0))
+    paramIntent = paramIntent.getExtras();
+    if (paramIntent != null)
     {
-      this.a.b.setEnabled(true);
-      return;
+      paramContext = paramIntent.getStringArrayList("procNameList");
+      paramIntent = paramIntent.getString("verify");
+      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.a != null) && (bhgp.a(paramIntent, paramContext))) {
+        break label53;
+      }
     }
-    this.a.b.setEnabled(false);
+    for (;;)
+    {
+      return;
+      label53:
+      int i = 0;
+      while (i < paramContext.size())
+      {
+        if (this.a.a.equals(paramContext.get(i)))
+        {
+          this.a.finish();
+          return;
+        }
+        i += 1;
+      }
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

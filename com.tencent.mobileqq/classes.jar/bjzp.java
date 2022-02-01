@@ -1,98 +1,74 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.open.model.CreateVirtualResult;
+import com.tencent.open.virtual.OpenSdkVirtualManager.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
-import java.io.File;
-import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bjzp
-  implements zmv
+public class bjzp
+  extends bkaa
 {
-  bjzp(bjzk parambjzk, long paramLong1, String paramString1, LocalMediaInfo paramLocalMediaInfo, int paramInt, String paramString2, long paramLong2) {}
+  public bjzp(OpenSdkVirtualManager.1 param1) {}
   
-  public void onFailure(String paramString)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    paramString = paramString.split("\n");
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = paramString[i];
-      QLog.w("VideoJsPlugin", 1, "onFailure: " + str);
-      i += 1;
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.createVirtual.result:", bjzy.a(paramString1, this.a.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString) });
+    avcw.a("KEY_CREATE_VIRTUAL_D17", this.a.jdField_a_of_type_Bjzb, paramBoolean);
+    paramString2 = new CreateVirtualResult();
+    int i;
+    if (paramBoolean) {
+      i = paramInt;
     }
-    if (this.jdField_a_of_type_JavaLangString.contains("-vf"))
-    {
-      bjzk.a(this.jdField_a_of_type_Bjzk, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, false);
-      return;
-    }
-    paramString = ((IMiniAppFileManager)bjzk.a(this.jdField_a_of_type_Bjzk).getManager(IMiniAppFileManager.class)).getWxFilePath(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path);
-    bjzk.a(this.jdField_a_of_type_Bjzk, paramString, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.fileSize, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoJsPlugin", 2, "compress finish " + paramBoolean + " " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-  }
-  
-  public void onProgress(String paramString)
-  {
-    if ((paramString.length() < 90) || (paramString.length() > 150)) {}
     for (;;)
     {
-      return;
-      paramString = new Scanner(paramString).findWithinHorizon(bjzk.a(), 0);
-      if (paramString != null)
+      try
       {
-        paramString = paramString.split(":");
-        if (paramString.length > 2) {
-          try
-          {
-            int i = Integer.parseInt(paramString[0]);
-            int j = Integer.parseInt(paramString[1]);
-            double d = Double.parseDouble(paramString[2]);
-            i = (int)((float)(TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(j) + (1000.0D * d)) * 100.0F / (float)this.jdField_b_of_type_Long);
-            if (i < 100)
-            {
-              bjzk.a(this.jdField_a_of_type_Bjzk, anni.a(2131714971) + i + "%");
-              return;
-            }
-          }
-          catch (NumberFormatException paramString) {}
+        paramString1 = new JSONObject(paramString1);
+        i = paramInt;
+        paramInt = paramString1.optInt("ErrorCode");
+        if (paramInt == 0)
+        {
+          i = paramInt;
+          paramString2.jdField_a_of_type_Long = paramString1.optLong("uint64_vuid");
+          i = paramInt;
+          paramString2.jdField_a_of_type_JavaLangString = paramString1.optString("str_head_url");
         }
       }
+      catch (JSONException paramString1)
+      {
+        int j = 0;
+        paramInt = i;
+        i = j;
+      }
+      try
+      {
+        QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.createResult=", bjzy.a(paramString2.toString(), this.a.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString) });
+        if (this.a.jdField_a_of_type_Bjpq != null) {
+          this.a.jdField_a_of_type_Bjpq.a(true, paramString2, paramInt);
+        }
+        return;
+      }
+      catch (JSONException paramString1)
+      {
+        for (;;)
+        {
+          i = 1;
+        }
+      }
+      i = 0;
+      if ((i == 0) && (this.a.jdField_a_of_type_Bjpq != null))
+      {
+        this.a.jdField_a_of_type_Bjpq.a(false, null, paramInt);
+        return;
+        QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "OpenVirtual.createVirtual.e:", paramString1);
+        continue;
+        i = 0;
+      }
     }
-  }
-  
-  public void onStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoJsPlugin", 2, "compress start");
-    }
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoJsPlugin", 2, "compress success " + paramString + " " + this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_JavaLangString.contains("-vf"))
-    {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
-      paramString.mediaWidth /= this.jdField_a_of_type_Int;
-      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
-      paramString.mediaHeight /= this.jdField_a_of_type_Int;
-    }
-    paramString = ((IMiniAppFileManager)bjzk.a(this.jdField_a_of_type_Bjzk).getManager(IMiniAppFileManager.class)).getWxFilePath(this.jdField_b_of_type_JavaLangString);
-    bjzk.a(this.jdField_a_of_type_Bjzk, paramString, new File(this.jdField_b_of_type_JavaLangString).length(), this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjzp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,15 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class xks
-  extends JobSegment<ycb, ycb>
+class xks
+  extends AnimatorListenerAdapter
 {
-  public xks(xko paramxko) {}
+  xks(xkr paramxkr) {}
   
-  protected void a(JobContext paramJobContext, ycb paramycb)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramycb.a(xko.a(this.a).a(paramycb.a.feedId, true), true, true);
-    if (paramycb.a()) {
-      paramycb.a(xko.a(this.a).a(xko.a(this.a), false), true, false);
-    }
-    yqp.a("Q.qqstory.player.CommentFloatDialogController", "load feed data from cache: %s.", xko.a(this.a).toString());
-    notifyResult(paramycb);
+    super.onAnimationEnd(paramAnimator);
+    this.a.a.a = false;
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app.message;
 
-import aofa;
+import aosf;
 import com.tencent.mobileqq.data.DataLineMsgSet;
 
 public class DatalineMessageManager$2
   implements Runnable
 {
-  public DatalineMessageManager$2(aofa paramaofa, DataLineMsgSet paramDataLineMsgSet) {}
+  public DatalineMessageManager$2(aosf paramaosf, DataLineMsgSet paramDataLineMsgSet) {}
   
   public void run()
   {

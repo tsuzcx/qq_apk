@@ -305,10 +305,7 @@ public class PageSwitchObserver
     if (VideoReportInner.getInstance().isDebugMode()) {
       Log.d("PageSwitchObserver", "onFragmentPause: fragment=" + paramFragmentCompat);
     }
-    paramFragmentCompat = paramFragmentCompat.getActivity();
-    if (this.mResumedActivities.contains(paramFragmentCompat)) {
-      postAppearDetectionTask(paramFragmentCompat);
-    }
+    postAppearDetectionTask(paramFragmentCompat.getActivity());
   }
   
   public void onFragmentResume(FragmentCompat paramFragmentCompat)
@@ -374,13 +371,20 @@ public class PageSwitchObserver
     if (VideoReportInner.getInstance().isDebugMode()) {
       Log.d("PageSwitchObserver", "postAppearDetectionTask: activity = " + paramActivity);
     }
-    if ((paramActivity == null) || (!DetectionPolicy.isAbleToDetect(paramActivity)))
-    {
+    if ((paramActivity == null) || (!DetectionPolicy.isAbleToDetect(paramActivity))) {
       if (VideoReportInner.getInstance().isDebugMode()) {
         Log.d("PageSwitchObserver", "postAppearDetectionTask: unable to detect activity");
       }
-      return;
     }
+    do
+    {
+      return;
+      if (this.mResumedActivities.contains(paramActivity)) {
+        break;
+      }
+    } while (!VideoReportInner.getInstance().isDebugMode());
+    Log.d("PageSwitchObserver", "postAppearDetectionTask: activity is not resumed, skip detection");
+    return;
     Looper.myQueue().removeIdleHandler(this.mDetectionIdleHandler);
     this.mDetectionIdleHandler.setActivity(paramActivity);
     Looper.myQueue().addIdleHandler(this.mDetectionIdleHandler);

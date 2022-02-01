@@ -1,20 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
+import android.net.ConnectivityManager.NetworkCallback;
+import android.net.Network;
+import android.os.Handler;
+import android.support.annotation.RequiresApi;
+import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.1;
+import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.2;
+import org.jetbrains.annotations.Nullable;
 
-public class rya
-  implements Animation.AnimationListener
+@RequiresApi(21)
+public final class rya
+  extends ConnectivityManager.NetworkCallback
 {
-  public rya(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
+  private rya(rxy paramrxy) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void onAvailable(@Nullable Network paramNetwork)
   {
-    VideoFeedsAioGuideView.b(this.a).setStartOffset(360L);
+    rxy.a(this.a).post(new BandwidthPredictor.NetworkCallbackImpl.1(this));
   }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onLost(@Nullable Network paramNetwork)
+  {
+    rxy.a(this.a).post(new BandwidthPredictor.NetworkCallbackImpl.2(this));
+  }
 }
 
 

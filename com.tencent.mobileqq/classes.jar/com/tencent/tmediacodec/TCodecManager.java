@@ -103,6 +103,7 @@ public final class TCodecManager
     label232:
     Object localObject = FormatWrapper.create(paramMediaFormat);
     paramSurface = obtainCodecWrapper(bool5, (FormatWrapper)localObject);
+    FormatWrapper.dumpCsdArray(((FormatWrapper)localObject).initializationData);
     if (paramSurface != null)
     {
       localObject = paramSurface.setCanReuseType((FormatWrapper)localObject);

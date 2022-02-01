@@ -1,16 +1,65 @@
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class pbx
-  extends pcm
+public class pbx
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  pbx(pbe parampbe, boolean paramBoolean, List paramList)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super(parampbe, null);
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoColumnHandler", 1, "[onReceiveConfig] " + paramString);
+    for (;;)
+    {
+      String str1;
+      String str2;
+      try
+      {
+        paramString = pan.a(paramString);
+        Iterator localIterator = paramString.keySet().iterator();
+        if (localIterator.hasNext())
+        {
+          str1 = (String)localIterator.next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.isEmpty(str2)) {
+            break label209;
+          }
+          QLog.d("VideoColumnHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+          if (TextUtils.equals(str1, "video_channel_feeds_type")) {
+            bnrf.a(Integer.parseInt(str2));
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoColumnHandler", 2, "error in parse video_feeds_Type config: " + paramString.getMessage());
+        }
+      }
+      if (TextUtils.equals(str1, "multi_video_feeds_type"))
+      {
+        bnrf.b(Integer.parseInt(str2));
+        continue;
+        label209:
+        QLog.d("VideoColumnHandler", 2, "key: " + str1 + " of value is null");
+      }
+    }
   }
   
-  void a(pcp parampcp)
+  public void onWipeConfig(int paramInt)
   {
-    parampcp.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, pbe.c(this.jdField_a_of_type_Pbe), 6, 6);
+    super.onWipeConfig(paramInt);
+    bnrf.a(1);
+    bnrf.b(1);
   }
 }
 

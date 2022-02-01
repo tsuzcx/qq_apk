@@ -1,12 +1,18 @@
+import com.tencent.qphone.base.util.QLog;
+
 class aich
-  implements nkm
+  implements bjbj
 {
-  aich(aibv paramaibv) {}
+  aich(aibr paramaibr) {}
   
-  public void loaded(int paramInt, String paramString)
+  public void a(bjbh parambjbh)
   {
-    aibv.a(this.a, 0, 10);
+    if (QLog.isColorLevel()) {
+      QLog.i("AIOGalleryScene", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambjbh);
+    }
   }
+  
+  public void a(bjbh parambjbh, int paramInt1, int paramInt2) {}
 }
 
 

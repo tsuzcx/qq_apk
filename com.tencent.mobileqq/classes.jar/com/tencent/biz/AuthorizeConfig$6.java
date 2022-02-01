@@ -1,12 +1,12 @@
 package com.tencent.biz;
 
 import java.util.concurrent.atomic.AtomicBoolean;
-import nhe;
+import niz;
 
 public class AuthorizeConfig$6
   implements Runnable
 {
-  public AuthorizeConfig$6(nhe paramnhe) {}
+  public AuthorizeConfig$6(niz paramniz) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class AuthorizeConfig$6
     if (this.this$0.h == null) {
       this.this$0.f();
     }
-    if (nhe.a.compareAndSet(false, true)) {
+    if (niz.a.compareAndSet(false, true)) {
       this.this$0.c();
     }
   }

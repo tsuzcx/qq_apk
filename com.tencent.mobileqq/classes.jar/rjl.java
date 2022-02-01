@@ -1,6 +1,12 @@
-public abstract interface rjl
+class rjl
+  implements rjd<qzp>
 {
-  public abstract void a(boolean paramBoolean);
+  rjl(rjj paramrjj) {}
+  
+  public boolean a(qzp paramqzp)
+  {
+    return paramqzp.d >= 5000L;
+  }
 }
 
 

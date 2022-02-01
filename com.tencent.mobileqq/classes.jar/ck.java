@@ -35,7 +35,7 @@ public class ck
     //   24: aaload
     //   25: checkcast 24	android/net/Uri
     //   28: astore 12
-    //   30: getstatic 30	anhk:bv	Ljava/lang/String;
+    //   30: getstatic 30	antf:bv	Ljava/lang/String;
     //   33: astore 10
     //   35: aload 11
     //   37: invokevirtual 34	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
@@ -63,7 +63,7 @@ public class ck
     //   80: aload_1
     //   81: invokeinterface 57 1 0
     //   86: aload 10
-    //   88: invokestatic 62	bgmg:a	(Ljava/lang/String;)Z
+    //   88: invokestatic 62	bhmi:a	(Ljava/lang/String;)Z
     //   91: ifne +16 -> 107
     //   94: new 64	com/tencent/mm/vfs/VFSFile
     //   97: dup
@@ -329,7 +329,7 @@ public class ck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ck
  * JD-Core Version:    0.7.0.1
  */

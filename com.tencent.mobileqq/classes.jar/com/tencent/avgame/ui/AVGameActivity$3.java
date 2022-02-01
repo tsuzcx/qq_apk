@@ -5,7 +5,7 @@ import com.tencent.avgame.session.AVGameSession;
 import com.tencent.avgame.session.AVGameSession.SessionStatus;
 import com.tencent.avgame.util.AVGameNodeReportUtil;
 import com.tencent.qphone.base.util.QLog;
-import ndt;
+import nfm;
 
 class AVGameActivity$3
   implements Runnable
@@ -17,7 +17,7 @@ class AVGameActivity$3
     int i = 0;
     QLog.i("AVGameActivity", 1, "mEnterAvRoomRunnable begin isFinishing:" + this.this$0.isFinishing() + " mRoomId:" + AVGameActivity.a(this.this$0));
     String str = AVGameSession.a(11, Long.valueOf(AVGameActivity.a(this.this$0)).longValue());
-    AVGameSession localAVGameSession = ndt.b().a();
+    AVGameSession localAVGameSession = nfm.b().a();
     if ((localAVGameSession != null) && (localAVGameSession.a.equalsIgnoreCase(str))) {
       if (localAVGameSession.a() == AVGameSession.SessionStatus.ENTERED) {
         this.this$0.a(5);
@@ -36,7 +36,7 @@ class AVGameActivity$3
       {
         if (localAVGameSession != null)
         {
-          ndt.b().e();
+          nfm.b().e();
           if (QLog.isColorLevel()) {
             QLog.d("AVGameActivity", 2, "mEnterAvRoomRunnable exit old session");
           }
@@ -53,7 +53,7 @@ class AVGameActivity$3
           return;
         }
         AVGameNodeReportUtil.b();
-        i = ndt.b().a(AVGameActivity.a(this.this$0), AVGameActivity.a(this.this$0), 1, this.this$0);
+        i = nfm.b().a(AVGameActivity.a(this.this$0), AVGameActivity.a(this.this$0), 1, this.this$0);
         if (QLog.isColorLevel()) {
           QLog.d("AVGameActivity", 2, "mEnterAvRoomRunnable enterRoom coast " + (System.currentTimeMillis() - l) + " retCode=" + i);
         }
@@ -62,7 +62,7 @@ class AVGameActivity$3
           AVGameActivity.a(this.this$0, 2, i);
           return;
         }
-        if (ndt.b().a() == null)
+        if (nfm.b().a() == null)
         {
           AVGameActivity.a(this.this$0, 3, 1);
           return;

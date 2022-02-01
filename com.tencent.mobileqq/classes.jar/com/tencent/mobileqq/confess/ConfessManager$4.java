@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.confess;
 
 import android.text.TextUtils;
-import aqjm;
-import aqjo;
-import bbyp;
-import bglf;
+import aqyp;
+import aqyr;
+import bcrg;
+import bhlg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -16,23 +16,23 @@ import java.util.Random;
 public class ConfessManager$4
   implements Runnable
 {
-  public ConfessManager$4(aqjm paramaqjm, String paramString, aqjo paramaqjo) {}
+  public ConfessManager$4(aqyp paramaqyp, String paramString, aqyr paramaqyr) {}
   
   public void run()
   {
-    aqjo localaqjo = this.this$0.jdField_a_of_type_Aqjo;
-    if ((localaqjo == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
+    aqyr localaqyr = this.this$0.jdField_a_of_type_Aqyr;
+    if ((localaqyr == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
     do
     {
       return;
-      if (TextUtils.isEmpty(localaqjo.c)) {
-        localaqjo.c = bglf.h(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqjo.d);
+      if (TextUtils.isEmpty(localaqyr.c)) {
+        localaqyr.c = bhlg.h(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqyr.d);
       }
-      if (localaqjo.jdField_e_of_type_Int == 0) {
-        localaqjo.jdField_e_of_type_Int = this.this$0.a(this.jdField_a_of_type_JavaLangString, localaqjo.d, localaqjo.b, localaqjo.jdField_e_of_type_JavaLangString, localaqjo.jdField_a_of_type_Int);
+      if (localaqyr.jdField_e_of_type_Int == 0) {
+        localaqyr.jdField_e_of_type_Int = this.this$0.a(this.jdField_a_of_type_JavaLangString, localaqyr.d, localaqyr.b, localaqyr.jdField_e_of_type_JavaLangString, localaqyr.jdField_a_of_type_Int);
       }
-    } while (localaqjo.jdField_e_of_type_Int != 1);
-    long l2 = bbyp.a();
+    } while (localaqyr.jdField_e_of_type_Int != 1);
+    long l2 = bcrg.a();
     List localList = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, 1);
     long l1;
     if ((localList != null) && (!localList.isEmpty())) {
@@ -41,12 +41,12 @@ public class ConfessManager$4
     for (;;)
     {
       if (QLog.isDevelopLevel()) {
-        QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "enterGroupRecConfessChat shmsgseq: %s isRandomShmsgseq:%s", new Object[] { Long.valueOf(l1), Boolean.valueOf(localaqjo.jdField_a_of_type_Boolean) }));
+        QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "enterGroupRecConfessChat shmsgseq: %s isRandomShmsgseq:%s", new Object[] { Long.valueOf(l1), Boolean.valueOf(localaqyr.jdField_a_of_type_Boolean) }));
       }
-      this.this$0.a(this.jdField_a_of_type_JavaLangString, localaqjo, l2, l2, l1);
+      this.this$0.a(this.jdField_a_of_type_JavaLangString, localaqyr, l2, l2, l1);
       return;
       l1 = Math.abs(new Random().nextInt());
-      localaqjo.jdField_a_of_type_Boolean = true;
+      localaqyr.jdField_a_of_type_Boolean = true;
     }
   }
 }

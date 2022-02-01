@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.dating;
 
-import arlc;
-import aybs;
+import asas;
+import ayum;
 import java.util.List;
 
 public class MsgBoxListActivity$1$1
   implements Runnable
 {
-  public MsgBoxListActivity$1$1(arlc paramarlc, List paramList) {}
+  public MsgBoxListActivity$1$1(asas paramasas, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Arlc.a.a.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Asas.a.a.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -1,24 +1,14 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
-import com.tencent.mobileqq.widget.AutoFitTextView;
+import java.util.ArrayDeque;
+import java.util.LinkedHashMap;
 
 public class pot
-  implements bhul
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
-  AutoFitTextView jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView;
-  ImageView b;
+  private ArrayDeque<String> jdField_a_of_type_JavaUtilArrayDeque = new ArrayDeque();
+  private LinkedHashMap<String, Object> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   
-  public pot(por parampor) {}
-  
-  public int a()
+  public String toString()
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth();
+    return "AtlasStackInfo{stackGalleryMap=" + this.jdField_a_of_type_JavaUtilLinkedHashMap + "mScanStack=" + this.jdField_a_of_type_JavaUtilArrayDeque.toString() + '}';
   }
 }
 

@@ -1,21 +1,23 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class aqnm
+  implements View.OnClickListener
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
+  public aqnm(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public aqnm(String paramString1, String paramString2, long paramLong1, long paramLong2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    aqno localaqno = (aqno)paramView.getTag();
+    this.a.a(localaqno.jdField_a_of_type_JavaLangString, localaqno.b, localaqno.jdField_a_of_type_Boolean);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqnm
  * JD-Core Version:    0.7.0.1
  */

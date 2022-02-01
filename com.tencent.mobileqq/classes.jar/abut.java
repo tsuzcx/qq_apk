@@ -1,14 +1,53 @@
-public class abut
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+
+class abut
+  extends beyf
 {
-  public int a;
-  public long a;
-  public String a;
-  
-  public abut(abur paramabur, String paramString, int paramInt, long paramLong)
+  abut(abur paramabur, Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Object localObject = (bete)paramMessage.obj;
+    if ((localObject == null) || (((bete)localObject).jdField_b_of_type_Int != 24)) {}
+    while (((bete)localObject).c != 7) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    case 1001: 
+    case 1002: 
+    case 1004: 
+    default: 
+      return;
+    case 1003: 
+      paramMessage = new Intent();
+      paramMessage.setAction("onFaceTransferComplete");
+      localBundle = new Bundle();
+      localBundle.putLong("uniseq", ((bete)localObject).jdField_b_of_type_Long);
+      localBundle.putString("fileUrl", ((bete)localObject).i);
+      localObject = ((bete)localObject).i;
+      if (localObject != null)
+      {
+        localObject = ((String)localObject).split("/");
+        localBundle.putString("uuId", localObject[(localObject.length - 2)]);
+      }
+      paramMessage.putExtras(localBundle);
+      BaseApplicationImpl.getApplication().sendBroadcast(paramMessage, "com.tencent.smartdevice.permission.broadcast");
+      return;
+    }
+    paramMessage = new Intent();
+    paramMessage.setAction("onFaceTransferError");
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("uniseq", ((bete)localObject).jdField_b_of_type_Long);
+    paramMessage.putExtras(localBundle);
+    BaseApplicationImpl.getApplication().sendBroadcast(paramMessage, "com.tencent.smartdevice.permission.broadcast");
   }
 }
 

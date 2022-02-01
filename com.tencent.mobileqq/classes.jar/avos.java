@@ -1,24 +1,14 @@
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
-import org.json.JSONObject;
+import java.util.List;
 
-public class avos
-  implements QQPermissionCallback
+public abstract interface avos
 {
-  public avos(MediaApiPlugin paramMediaApiPlugin, JSONObject paramJSONObject, boolean paramBoolean, BaseActivity paramBaseActivity) {}
+  public abstract void a();
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.d(MediaApiPlugin.a, 1, "User requestPermissions WRITE_EXTERNAL_STORAGE denied");
-    bglp.a(this.jdField_a_of_type_MqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
-  }
+  public abstract void a(List<avor> paramList);
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Boolean);
-  }
+  public abstract void b();
+  
+  public abstract void b(List<avor> paramList);
 }
 
 

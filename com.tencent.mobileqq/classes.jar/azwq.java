@@ -1,53 +1,26 @@
-import android.app.Application;
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
-import com.tencent.mobileqq.videoplatform.VideoPlaySDKManager;
-import com.tencent.mobileqq.videoplatform.util.LoadSoUtil;
-import com.tencent.mobileqq.videoplatform.util.LogUtil;
-import com.tencent.mobileqq.videoplatform.util.RegisterTVideoUtil;
-import com.tencent.mobileqq.videoplatform.util.ReportUtil;
-import com.tencent.mobileqq.videoplatform.util.ThreadUtil;
+import android.view.View;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
 
-public class azwq
+class azwq
+  implements bliz
 {
-  private static volatile boolean a;
+  azwq(azwo paramazwo, PersonalityLabelInfo paramPersonalityLabelInfo, blir paramblir) {}
   
-  static {}
-  
-  public static void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      if (!a)
-      {
-        LogUtil.setLogImp(new azww());
-        ThreadUtil.setThreadImp(new azwz());
-        LoadSoUtil.setLoadSoImp(new azwu());
-        ReportUtil.setReportImp(new azwy());
-        RegisterTVideoUtil.setRegisterTVideoImp(new azwx());
-        a = true;
-      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.e();
       return;
+      azwo.a(this.jdField_a_of_type_Azwo, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
+      continue;
+      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Azwo.a, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
+      this.jdField_a_of_type_Azwo.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void a(Application paramApplication, SDKInitListener paramSDKInitListener)
-  {
-    VideoPlaySDKManager.getInstance().initSDKAsync(paramApplication, paramSDKInitListener);
-  }
-  
-  public static boolean a()
-  {
-    return VideoPlaySDKManager.getInstance().isSDKReady();
-  }
-  
-  public static boolean b()
-  {
-    return VideoPlaySDKManager.getInstance().isSoLoadSuc();
   }
 }
 

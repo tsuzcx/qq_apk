@@ -1,24 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqcircle.bizparts.danmaku.text.CellTextView;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
+import com.tencent.biz.qqcircle.requests.QCircleDoRecommendRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudWrite.StDoPushRsp;
 
-public class vfn
-  extends Handler
+class vfn
+  implements aaav<FeedCloudWrite.StDoPushRsp>
 {
-  public vfn(CellTextView paramCellTextView, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  vfn(vfm paramvfm, QCircleDoRecommendRequest paramQCircleDoRecommendRequest) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoPushRsp paramStDoPushRsp)
   {
-    this.a.b = true;
-    this.a.a(6, paramMessage.arg1, paramMessage.arg2, 0);
-    paramMessage = this.a.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextTextCell;
-    this.a.a();
-    this.a.jdField_a_of_type_Vgl.g();
-    this.a.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextTextCell = paramMessage;
+    QLog.d("QCircleSharePart", 3, this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleDoRecommendRequest.getTraceId() + " " + paramLong);
+    if ((paramBoolean) && (paramLong == 0L))
+    {
+      paramString = new QCircleFeedEvent(vfi.a(this.jdField_a_of_type_Vfm.a).a.id.get(), 3);
+      paramString.setTargetPage(9);
+      aaak.a().a(paramString);
+      QQToast.a(this.jdField_a_of_type_Vfm.a.a(), 2, 2131697198, 1).a();
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_Vfm.a.a(), 1, 2131697197, 1).a();
   }
 }
 

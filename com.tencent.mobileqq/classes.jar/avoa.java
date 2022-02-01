@@ -1,27 +1,11 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-
-class avoa
-  implements armd
+public class avoa
 {
-  avoa(avnz paramavnz) {}
+  private avob jdField_a_of_type_Avob;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(armc paramarmc)
+  public avoa(avny paramavny, String paramString)
   {
-    try
-    {
-      paramarmc.dismiss();
-      this.a.mRuntime.a().finish();
-      bcst.b(null, "CliOper", "", "", "0X80094EB", "0X80094EB", 0, 0, "", "", "", "");
-      return;
-    }
-    catch (Throwable paramarmc)
-    {
-      for (;;)
-      {
-        QLog.e("DocxApiPlugin", 1, "handleEvent", paramarmc);
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

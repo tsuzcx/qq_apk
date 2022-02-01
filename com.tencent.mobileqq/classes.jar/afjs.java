@@ -1,17 +1,21 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class afjs
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnKeyListener
 {
-  public afjs(TroopInfoActivity paramTroopInfoActivity) {}
+  public afjs(RegisterActivity paramRegisterActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
+    {
+      RegisterActivity.b(this.a);
+      return true;
     }
+    return false;
   }
 }
 

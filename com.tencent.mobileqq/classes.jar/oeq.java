@@ -1,131 +1,68 @@
-import android.net.Uri;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import org.json.JSONObject;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class oeq
+  extends MSFServlet
 {
-  public static String a(QQAppInterface paramQQAppInterface, String paramString)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (bgsp.a(paramString)) {
-      paramQQAppInterface = "";
+    if (QLog.isColorLevel()) {
+      QLog.d("EcShopServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
+    }
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bhvd.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
     for (;;)
     {
-      return paramQQAppInterface;
-      paramQQAppInterface = a(paramQQAppInterface);
-      if (paramQQAppInterface == null) {
-        return "";
+      new Bundle().putByteArray("data", arrayOfByte);
+      oeo localoeo = (oeo)((QQAppInterface)super.getAppRuntime()).a(68);
+      if (localoeo != null) {
+        localoeo.a(paramIntent, paramFromServiceMsg, arrayOfByte);
       }
-      paramString = paramQQAppInterface.optString(paramString);
-      if (bgsp.a(paramString)) {
-        return "";
-      }
-      paramQQAppInterface = paramString;
-      try
-      {
-        if (!"qqshop".equals(Uri.parse(paramString).getScheme())) {
-          return "";
-        }
-      }
-      catch (Throwable paramQQAppInterface)
-      {
-        QLog.e("QQShopFakeUrlHelper", 1, paramQQAppInterface, new Object[0]);
-      }
+      QLog.d("EcShopServlet", 2, "onReceive exit");
+      return;
+      arrayOfByte = null;
     }
-    return paramString;
   }
   
-  public static String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {
-      return "";
-    }
-    try
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if (!TextUtils.isEmpty(str))
     {
-      Iterator localIterator = paramQQAppInterface.keys();
-      while (localIterator.hasNext())
-      {
-        Uri localUri = Uri.parse(paramQQAppInterface.optString((String)localIterator.next()));
-        if ((localUri != null) && (localUri.getHost() != null) && (localUri.getHost().equals(paramString1)))
-        {
-          paramQQAppInterface = localUri.getQueryParameter(paramString2);
-          return paramQQAppInterface;
-        }
+      paramPacket.setSSOCommand("SQQShopFolderSvc." + str);
+      paramPacket.setTimeout(l);
+      if (arrayOfByte == null) {
+        break label135;
       }
+      paramIntent = new byte[arrayOfByte.length + 4];
+      bhvd.a(paramIntent, 0, arrayOfByte.length + 4);
+      bhvd.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
     }
-    catch (Throwable paramQQAppInterface)
-    {
-      QLog.e("QQShopFakeUrlHelper", 1, paramQQAppInterface, new Object[0]);
-    }
-    return "";
-  }
-  
-  public static String a(String paramString)
-  {
-    if (bgsp.a(paramString)) {
-      return "";
-    }
-    try
-    {
-      paramString = Uri.parse(paramString).getHost();
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("QQShopFakeUrlHelper", 1, paramString, new Object[0]);
-    }
-    return "";
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    if (bgsp.a(paramString1)) {
-      return "";
-    }
-    try
-    {
-      paramString1 = Uri.parse(paramString1).getQueryParameter(paramString2);
-      return paramString1;
-    }
-    catch (Throwable paramString1)
-    {
-      QLog.e("QQShopFakeUrlHelper", 1, paramString1, new Object[0]);
-    }
-    return "";
-  }
-  
-  private static JSONObject a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = (akpd)paramQQAppInterface.getManager(245);
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.a("qqshop") != null))
+    for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("QQShopFakeUrlHelper", 2, " getQQShopConfig: " + paramQQAppInterface.a("qqshop"));
+        QLog.d("EcShopServlet", 2, "onSend exit cmd=" + str);
       }
-      return paramQQAppInterface.a("qqshop");
+      return;
+      label135:
+      paramIntent = new byte[4];
+      bhvd.a(paramIntent, 0, 4L);
+      paramPacket.putSendData(paramIntent);
     }
-    return null;
-  }
-  
-  public static String b(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface = a(paramQQAppInterface, paramString);
-    if (bgsp.a(paramQQAppInterface)) {
-      return "";
-    }
-    try
-    {
-      paramQQAppInterface = Uri.parse(paramQQAppInterface).getHost();
-      return paramQQAppInterface;
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      QLog.e("QQShopFakeUrlHelper", 1, paramQQAppInterface, new Object[0]);
-    }
-    return "";
   }
 }
 

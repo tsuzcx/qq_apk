@@ -1,14 +1,13 @@
+import com.tencent.mobileqq.videoplatform.api.IReport;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
+
 public class bapo
+  implements IReport
 {
-  public int a;
-  public boolean a;
-  public boolean b = true;
-  
-  public void a()
+  public void report(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_Int = 0;
+    bdmc.a(BaseApplication.getContext()).a(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3);
   }
 }
 

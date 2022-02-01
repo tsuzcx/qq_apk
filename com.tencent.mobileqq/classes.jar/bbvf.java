@@ -1,14 +1,44 @@
-import android.widget.TextView;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public abstract interface bbvf
-  extends bbvh
+class bbvf
+  extends anvn
 {
-  public abstract TextView a();
+  bbvf(bbvd parambbvd) {}
   
-  public abstract List<bbvg> a();
-  
-  public abstract TextView b();
+  protected void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "onUpdateStatusActions " + paramBoolean + ", " + paramInt);
+    }
+    bbvd.a(this.a, 0L);
+    if (paramBoolean)
+    {
+      if (paramInt == 100)
+      {
+        bbvd.b(this.a, System.currentTimeMillis());
+        bbvd.a(this.a).edit().putLong("k_update_time", bbvd.a(this.a)).commit();
+      }
+      this.a.a(true);
+    }
+    if (bbvd.a(this.a) != null)
+    {
+      Iterator localIterator = bbvd.a(this.a).iterator();
+      if (localIterator.hasNext())
+      {
+        bbsr localbbsr = (bbsr)localIterator.next();
+        if (paramBoolean) {}
+        for (int i = 300;; i = 301)
+        {
+          localbbsr.a(paramInt, i);
+          break;
+        }
+      }
+    }
+  }
 }
 
 

@@ -1,59 +1,38 @@
-import android.content.Context;
-import android.os.Looper;
-import android.view.LayoutInflater;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class aose
+  extends aosf
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private volatile boolean jdField_a_of_type_Boolean;
-  
-  public aose(Context paramContext)
+  public aose(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
+    super(paramQQAppInterface, paramQQMessageFacade);
+    this.jdField_a_of_type_JavaLangString = antf.A;
+    this.jdField_a_of_type_Int = 6003;
   }
   
-  private void a()
+  public long a(DataLineMsgRecord paramDataLineMsgRecord, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561039, null));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131381276));
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout)
-  {
-    QLog.d("ARTransferPromotionUIContainer", 2, "attachToRootViewGroup");
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    if (paramDataLineMsgRecord != null)
+    {
+      paramDataLineMsgRecord.selfuin = this.jdField_a_of_type_JavaLangString;
+      paramDataLineMsgRecord.frienduin = paramDataLineMsgRecord.selfuin;
+      paramDataLineMsgRecord.senderuin = paramDataLineMsgRecord.selfuin;
+      paramDataLineMsgRecord.istroop = this.jdField_a_of_type_Int;
+      paramDataLineMsgRecord.dataline_type = 1;
     }
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.addRule(12);
-    localLayoutParams.bottomMargin = afur.a(57.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    paramRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, localLayoutParams);
-    this.jdField_a_of_type_Boolean = true;
+    return super.a(paramDataLineMsgRecord, paramBoolean);
   }
   
-  public void a(String paramString)
+  protected apas a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
   }
   
-  public void b(RelativeLayout paramRelativeLayout)
+  protected void a()
   {
-    QLog.d("ARTransferPromotionUIContainer", 2, "disattachFromRootViewGroup");
-    if (!this.jdField_a_of_type_Boolean) {}
-    while (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-      return;
-    }
-    paramRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    this.jdField_a_of_type_Boolean = false;
+    ((anvu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).b(false);
   }
 }
 

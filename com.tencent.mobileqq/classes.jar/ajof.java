@@ -1,19 +1,21 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class ajof
-  implements View.OnClickListener
+  implements ajog<T>
 {
-  ajof(ajod paramajod, DialogInterface.OnClickListener paramOnClickListener) {}
+  ajof(ajoe paramajoe, int paramInt) {}
   
-  public void onClick(View paramView)
+  public int a()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ajod, 1);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(ajoo paramajoo, T paramT, int paramInt)
+  {
+    this.jdField_a_of_type_Ajoe.a(paramajoo, paramT, paramInt);
+  }
+  
+  public boolean a(T paramT, int paramInt)
+  {
+    return true;
   }
 }
 

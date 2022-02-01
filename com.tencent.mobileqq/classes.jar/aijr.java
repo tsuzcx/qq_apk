@@ -1,102 +1,65 @@
-import android.os.SystemClock;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.stickerrecommended.BloomFilter;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
 class aijr
-  implements bdvw
+  extends anyu
 {
-  aijr(aijp paramaijp, String paramString1, boolean paramBoolean, String paramString2) {}
+  aijr(aijm paramaijm) {}
   
-  public void onResp(bdwt parambdwt)
+  protected void onAddFriend(String paramString)
   {
+    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) {
+      return;
+    }
     if (QLog.isColorLevel()) {
-      QLog.i("StickerRecManager", 2, "onResp resultcode: " + parambdwt.c + " threadid=" + Thread.currentThread().getId());
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddFriend");
     }
-    long l1;
-    if ((parambdwt.c == 200) && (aijp.a(this.jdField_a_of_type_Aijp, aijp.a(this.jdField_a_of_type_Aijp), aijp.b(this.jdField_a_of_type_Aijp), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean)))
-    {
-      if (!aijp.b(this.jdField_a_of_type_Aijp).exists()) {
-        break label423;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecManager", 2, "pull words success");
-      }
-      l1 = 0L;
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        long l2 = SystemClock.elapsedRealtime();
-        l1 = l2;
-        Object localObject = new JSONObject(bgmg.b(aijp.b(this.jdField_a_of_type_Aijp)));
-        l1 = l2;
-        parambdwt = ((JSONObject)localObject).optString("version", null);
-        l1 = l2;
-        localObject = ((JSONObject)localObject).optJSONArray("words");
-        l1 = l2;
-        BloomFilter localBloomFilter = new BloomFilter();
-        l1 = l2;
-        localBloomFilter.version = parambdwt;
-        i = 0;
-        l1 = l2;
-        if (i < ((JSONArray)localObject).length())
-        {
-          l1 = l2;
-          parambdwt = ((JSONArray)localObject).optString(i);
-          l1 = l2;
-          if (TextUtils.isEmpty(parambdwt)) {
-            break label438;
-          }
-          l1 = l2;
-          localBloomFilter.add(parambdwt);
-          break label438;
-        }
-        l1 = l2;
-        bgmg.d(aijp.c(this.jdField_a_of_type_Aijp).getAbsolutePath());
-        l1 = l2;
-        aijp.a(this.jdField_a_of_type_Aijp, aijp.c(this.jdField_a_of_type_Aijp).getAbsolutePath(), localBloomFilter);
-        l1 = l2;
-        bgmg.d(aijp.b(this.jdField_a_of_type_Aijp).getAbsolutePath());
-        l1 = l2;
-        bgsg.d(aijp.a(this.jdField_a_of_type_Aijp).getApp(), "words_version_key805_gray_one", aijp.a(this.jdField_a_of_type_Aijp).c(), this.b);
-        l1 = l2;
-        this.jdField_a_of_type_Aijp.b();
-        l1 = l2;
-        if (QLog.isColorLevel())
-        {
-          l1 = l2;
-          QLog.d("StickerRecManager", 2, "generate encode table time cost : " + (SystemClock.elapsedRealtime() - l2));
-        }
-        return;
-      }
-      catch (Exception parambdwt)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("StickerRecManager", 2, "generate encode table time error cost : " + (SystemClock.elapsedRealtime() - l1));
-        QLog.d("StickerRecManager", 2, "build EncodeTable error !");
-        return;
-      }
-      label423:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("StickerRecManager", 2, "updateWords fail: words file is not exist.");
-        return;
-        label438:
-        i += 1;
-      }
+    aijm.a(this.a, false);
+  }
+  
+  protected void onReqRecheckInHotReactive(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
+  {
+    this.a.jdField_a_of_type_Axts.a(paramBoolean, paramString1, paramString2, paramInt);
+  }
+  
+  protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
+  {
+    if (!paramBoolean) {
+      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131717928), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
     }
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList) {}
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    super.onUpdateFriendInfo(paramString, paramBoolean);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (paramString.contains(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateHotFriendLevel");
+      }
+      this.a.F();
+    }
+  }
+  
+  protected void onUpdateHotFriendLevel(boolean paramBoolean, ArrayList<String> paramArrayList)
+  {
+    super.onUpdateHotFriendLevel(paramBoolean, paramArrayList);
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.contains(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateHotFriendLevel");
+      }
+      this.a.F();
+    }
+  }
 }
 
 

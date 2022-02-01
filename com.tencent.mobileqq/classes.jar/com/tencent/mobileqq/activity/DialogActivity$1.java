@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.app.Dialog;
-import bcst;
+import bdll;
 
 class DialogActivity$1
   implements Runnable
@@ -12,7 +12,7 @@ class DialogActivity$1
   {
     DialogActivity.a(this.this$0, this.a);
     if (DialogActivity.a(this.this$0) == DialogActivity.c) {
-      bcst.b(null, "dc00898", "", "", "0X8009AC7", "0X8009AC7", 0, 0, "", "", "", "");
+      bdll.b(null, "dc00898", "", "", "0X8009AC7", "0X8009AC7", 0, 0, "", "", "", "");
     }
   }
 }

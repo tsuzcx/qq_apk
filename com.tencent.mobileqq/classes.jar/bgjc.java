@@ -1,38 +1,21 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.theme.SkinnableBitmapDrawable;
-import com.tencent.theme.SkinnableNinePatchDrawable;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bgjc
+class bgjc
+  implements View.OnClickListener
 {
-  public static int a(Drawable paramDrawable)
-  {
-    if (paramDrawable == null) {}
-    do
-    {
-      return -1;
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return bgjw.a(((BitmapDrawable)paramDrawable).getBitmap());
-      }
-      if ((paramDrawable instanceof SkinnableBitmapDrawable)) {
-        return bgjw.a(((SkinnableBitmapDrawable)paramDrawable).getBitmap());
-      }
-    } while (!(paramDrawable instanceof SkinnableNinePatchDrawable));
-    return bgjw.a(((SkinnableNinePatchDrawable)paramDrawable).getBitmap());
-  }
+  bgjc(bgjb parambgjb) {}
   
-  public static final Bitmap a(Drawable paramDrawable)
+  public void onClick(View paramView)
   {
-    if (paramDrawable == null) {}
-    do
-    {
-      return null;
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return ((BitmapDrawable)paramDrawable).getBitmap();
-      }
-    } while (!(paramDrawable instanceof SkinnableBitmapDrawable));
-    return ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
+    Intent localIntent = new Intent(bgjb.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    bgjb.a(this.a).startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

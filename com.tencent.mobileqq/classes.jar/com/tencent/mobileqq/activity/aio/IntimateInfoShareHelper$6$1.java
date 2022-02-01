@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afys;
+import agim;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
@@ -17,11 +17,11 @@ class IntimateInfoShareHelper$6$1
     {
       Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
       localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
-      afys.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0).sendBroadcast(localIntent);
-      QQToast.a(afys.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0), 2, afys.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0).getString(2131694329), 1).b(afys.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0).getTitleBarHeight());
+      agim.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0).sendBroadcast(localIntent);
+      QQToast.a(agim.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0), 2, agim.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0).getString(2131694371), 1).b(agim.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0).getTitleBarHeight());
       return;
     }
-    QQToast.a(afys.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0), 1, afys.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0).getString(2131694328), 1).b(afys.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0).getTitleBarHeight());
+    QQToast.a(agim.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0), 1, agim.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0).getString(2131694370), 1).b(agim.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$6.this$0).getTitleBarHeight());
   }
 }
 

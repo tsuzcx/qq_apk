@@ -1,46 +1,24 @@
-import android.content.Context;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
 
 public class aomk
-  extends aojt
+  extends anyu
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  private aomk(GetGeneralSettings paramGetGeneralSettings) {}
+  
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramQQAppInterface = new aomj(paramQQAppInterface, paramContext);
-    paramContext = paramString.split("\\?");
-    if (paramContext.length < 1) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[0].substring("mqqapi://".length()).split("/");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = paramContext[0];
-    paramQQAppInterface.c = paramContext[1];
-    paramContext = Uri.parse(paramString);
-    paramString = paramContext.getQueryParameterNames().iterator();
-    while (paramString.hasNext())
+    if ((paramBoolean1) && (paramBoolean2))
     {
-      paramaojw = (String)paramString.next();
-      if (!TextUtils.isEmpty(paramaojw))
-      {
-        String str = paramContext.getQueryParameter(paramaojw);
-        if (!TextUtils.isEmpty(str)) {
-          paramQQAppInterface.a(paramaojw.toLowerCase(), str);
-        }
-      }
+      this.a.a.a = 3;
+      this.a.a(7);
+      return;
     }
-    return paramQQAppInterface;
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomk
  * JD-Core Version:    0.7.0.1
  */

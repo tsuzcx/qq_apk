@@ -1,6 +1,8 @@
 package com.tencent.biz.qqcircle.hippy;
 
-import aaaf;
+import aaak;
+import aaam;
+import aaek;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -28,23 +30,32 @@ import java.util.HashMap;
 import mqq.manager.TicketManager;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tmn;
-import uxo;
-import voc;
-import vod;
-import vrh;
-import vri;
-import zwp;
-import zwr;
+import tdl;
+import uyx;
+import vqk;
+import vql;
+import vts;
+import vtt;
 
 public class QCircleHippyFragment
   extends ViolaFragment
-  implements zwr
+  implements aaam
 {
   private long jdField_a_of_type_Long;
   private QCircleHippyBean jdField_a_of_type_ComTencentBizQqcircleQCircleHippyBean;
+  private String jdField_a_of_type_JavaLangString;
   private String b;
-  private String c;
+  
+  private HashMap<String, Object> a()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(tdl.b, Integer.valueOf(1));
+    localHashMap.put(tdl.h, Boolean.valueOf(true));
+    localHashMap.put(tdl.i, Boolean.valueOf(false));
+    localHashMap.put(tdl.v, Boolean.valueOf(false));
+    localHashMap.put(tdl.j, Boolean.valueOf(true));
+    return localHashMap;
+  }
   
   private JSONObject a()
   {
@@ -75,18 +86,15 @@ public class QCircleHippyFragment
     return null;
   }
   
-  private HashMap<String, Object> b()
+  private void a()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(tmn.b, Integer.valueOf(1));
-    localHashMap.put(tmn.h, Boolean.valueOf(true));
-    localHashMap.put(tmn.i, Boolean.valueOf(false));
-    localHashMap.put(tmn.v, Boolean.valueOf(false));
-    localHashMap.put(tmn.j, Boolean.valueOf(true));
-    return localHashMap;
+    View localView = new View(getActivity());
+    localView.setBackgroundColor(1711276032);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+    ((ViewGroup)getActivity().getWindow().getDecorView()).addView(localView, localLayoutParams);
   }
   
-  private void b(Bundle paramBundle, ViewGroup paramViewGroup)
+  private void a(Bundle paramBundle, ViewGroup paramViewGroup)
   {
     JSONObject localJSONObject = new JSONObject();
     if ((paramBundle != null) && (paramBundle.containsKey("param"))) {}
@@ -95,8 +103,8 @@ public class QCircleHippyFragment
       try
       {
         paramBundle = new JSONObject(paramBundle.getString("param"));
-        this.jdField_a_of_type_Tmn.a(paramViewGroup, new voc(this));
-        this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.initHippy(a(), paramBundle, this.jdField_a_of_type_Tmn.b(), new vod(this));
+        this.mViolaUiDelegate.a(paramViewGroup, new vqk(this));
+        this.mHippyQQEngine.initHippy(getContentView(), paramBundle, this.mViolaUiDelegate.b(), new vql(this));
         return;
       }
       catch (JSONException paramBundle)
@@ -108,50 +116,11 @@ public class QCircleHippyFragment
     }
   }
   
-  private void w()
+  private void b()
   {
-    View localView = new View(getActivity());
-    localView.setBackgroundColor(1711276032);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    ((ViewGroup)getActivity().getWindow().getDecorView()).addView(localView, localLayoutParams);
-  }
-  
-  private void x()
-  {
-    uxo.a(getActivity(), this.c);
+    uyx.a(getActivity(), this.b, null, -1);
     if (getActivity() != null) {
       getActivity().finish();
-    }
-  }
-  
-  public void a(Bundle paramBundle, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_ComTencentBizQqcircleQCircleHippyBean = ((QCircleHippyBean)paramBundle.getSerializable("key_hippy_bean"));
-    if (this.jdField_a_of_type_ComTencentBizQqcircleQCircleHippyBean != null)
-    {
-      this.b = this.jdField_a_of_type_ComTencentBizQqcircleQCircleHippyBean.getModuleName();
-      this.c = this.jdField_a_of_type_ComTencentBizQqcircleQCircleHippyBean.getDefaultUrl();
-      this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentBizQqcircleQCircleHippyBean.getStartTime();
-      if (TextUtils.isEmpty(this.b)) {
-        break label154;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QCircleHippyFragment", 2, "Hippy: moduleName=" + this.b);
-      }
-      if (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine == null) {
-        this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine = new HippyQQEngine(this, this.b);
-      }
-      this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.setInitData(a());
-      b(paramBundle, paramViewGroup);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Tmn.a(b(), paramViewGroup);
-      b();
-      return;
-      label154:
-      x();
-      vrh.a("key_open_hippy_page", Arrays.asList(new FeedCloudCommon.Entry[] { vri.a("ret_code", "-2"), vri.a("attach_info", "request module name is null!") }), false);
     }
   }
   
@@ -162,19 +131,50 @@ public class QCircleHippyFragment
     return localArrayList;
   }
   
+  public void initAfterVisible(Bundle paramBundle, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_ComTencentBizQqcircleQCircleHippyBean = ((QCircleHippyBean)paramBundle.getSerializable("key_hippy_bean"));
+    if (this.jdField_a_of_type_ComTencentBizQqcircleQCircleHippyBean != null)
+    {
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqcircleQCircleHippyBean.getModuleName();
+      this.b = this.jdField_a_of_type_ComTencentBizQqcircleQCircleHippyBean.getDefaultUrl();
+      this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentBizQqcircleQCircleHippyBean.getStartTime();
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        break label155;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QCircleHippyFragment", 2, "Hippy: moduleName=" + this.jdField_a_of_type_JavaLangString);
+      }
+      if (this.mHippyQQEngine == null) {
+        this.mHippyQQEngine = new HippyQQEngine(this, this.jdField_a_of_type_JavaLangString);
+      }
+      this.mHippyQQEngine.setInitData(a());
+      a(paramBundle, paramViewGroup);
+    }
+    for (;;)
+    {
+      this.mViolaUiDelegate.a(a(), paramViewGroup);
+      initFPS();
+      return;
+      label155:
+      b();
+      vts.a("key_open_hippy_page", Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("ret_code", "-2"), vtt.a("attach_info", "request module name is null!") }), false);
+    }
+  }
+  
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    if (aaaf.a()) {
-      w();
+    if (aaek.a()) {
+      a();
     }
-    zwp.a().a(this);
+    aaak.a().a(this);
   }
   
   public void onDetach()
   {
     super.onDetach();
-    zwp.a().b(this);
+    aaak.a().b(this);
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
@@ -182,19 +182,19 @@ public class QCircleHippyFragment
     if ((paramSimpleBaseEvent instanceof QCircleRefreshHippyPageEvent))
     {
       paramSimpleBaseEvent = (QCircleRefreshHippyPageEvent)paramSimpleBaseEvent;
-      if ((!this.b.equals(paramSimpleBaseEvent.mModule)) || (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine == null) || (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.getHippyEngine() == null)) {}
+      if ((!this.jdField_a_of_type_JavaLangString.equals(paramSimpleBaseEvent.mModule)) || (this.mHippyQQEngine == null) || (this.mHippyQQEngine.getHippyEngine() == null)) {}
     }
     try
     {
       paramSimpleBaseEvent = new HippyMap();
       paramSimpleBaseEvent.pushString("result", "call refresh hippy from native");
-      ((EventDispatcher)this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.getHippyEngine().getEngineContext().getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveNativeEvent("refreshData", paramSimpleBaseEvent);
-      QLog.d("QCircleHippyFragment", 1, "notify hippy refresh page data success,module:" + this.b);
+      ((EventDispatcher)this.mHippyQQEngine.getHippyEngine().getEngineContext().getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveNativeEvent("refreshData", paramSimpleBaseEvent);
+      QLog.d("QCircleHippyFragment", 1, "notify hippy refresh page data success,module:" + this.jdField_a_of_type_JavaLangString);
       return;
     }
     catch (Exception paramSimpleBaseEvent)
     {
-      QLog.e("QCircleHippyFragment", 1, "refresh hippy page fail!exception: " + paramSimpleBaseEvent.getMessage() + ",module:" + this.b);
+      QLog.e("QCircleHippyFragment", 1, "refresh hippy page fail!exception: " + paramSimpleBaseEvent.getMessage() + ",module:" + this.jdField_a_of_type_JavaLangString);
     }
   }
 }

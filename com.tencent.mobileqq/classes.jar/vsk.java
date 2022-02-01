@@ -1,51 +1,18 @@
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.method.BaseMovementMethod;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import feedcloud.FeedCloudMeta.StFeed;
+import qqcircle.QQCircleFeedBase.StPolyLike;
 
-public class vsk
-  extends BaseMovementMethod
+class vsk
+  implements aazo
 {
-  private static vsk a;
+  vsk(vsj paramvsj, FeedCloudMeta.StFeed paramStFeed, int paramInt, QQCircleFeedBase.StPolyLike paramStPolyLike1, QQCircleFeedBase.StPolyLike paramStPolyLike2) {}
   
-  public static vsk a()
+  public void a()
   {
-    if (a == null) {}
-    try
+    if ((!vsj.a(this.jdField_a_of_type_Vsj)) && (!vsj.b(this.jdField_a_of_type_Vsj)) && (nny.a(vsj.a(this.jdField_a_of_type_Vsj))))
     {
-      if (a == null) {
-        a = new vsk();
-      }
-      return a;
+      this.jdField_a_of_type_Vsj.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Int, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike, this.b);
+      vsj.a(this.jdField_a_of_type_Vsj, true);
     }
-    finally {}
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if ((i == 1) || (i == 0))
-    {
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramTextView.getTotalPaddingLeft();
-      int n = paramTextView.getTotalPaddingTop();
-      int i1 = paramTextView.getScrollX();
-      int i2 = paramTextView.getScrollY();
-      paramMotionEvent = paramTextView.getLayout();
-      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
-      paramSpannable = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
-      if (paramSpannable.length != 0)
-      {
-        paramSpannable = paramSpannable[0];
-        if (i == 1) {
-          paramSpannable.onClick(paramTextView);
-        }
-      }
-    }
-    return true;
   }
 }
 

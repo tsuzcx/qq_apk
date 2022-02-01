@@ -1,33 +1,28 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.gdtad.api.GdtAd;
+import android.widget.TextView;
+import com.tencent.gdtad.api.banner.rectangle.GdtBannerViewWithRectangleStyle;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class acpt
+public class acpt
   implements View.OnClickListener
 {
-  acpt(acps paramacps) {}
+  public acpt(GdtBannerViewWithRectangleStyle paramGdtBannerViewWithRectangleStyle) {}
   
   public void onClick(View paramView)
   {
-    boolean bool;
-    if (this.a.a() != null)
-    {
-      bool = this.a.a().load(this.a.getActivity());
-      if (!bool) {
-        break label66;
-      }
+    int i = 8;
+    if (!GdtBannerViewWithRectangleStyle.a(this.a)) {
+      acvc.d("GdtBannerContainerView", "optionsContainerOnClickListener.OnClickListener error");
     }
-    label66:
-    for (String str = "loading ad data";; str = "load ad data error")
+    for (;;)
     {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), str, 0).show();
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bool = false;
-      break;
+      if (GdtBannerViewWithRectangleStyle.a(this.a).getVisibility() == 8) {
+        i = 0;
+      }
+      GdtBannerViewWithRectangleStyle.a(this.a).setVisibility(i);
     }
   }
 }

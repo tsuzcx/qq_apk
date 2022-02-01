@@ -1,21 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class aito
-  implements aiwj
+  extends MSFServlet
 {
-  public aito(SearchContactsFragment paramSearchContactsFragment) {}
-  
-  public void a(String paramString)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = 80000001;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_label", 0, 0, "", "", paramString, "");
-      this.a.d = false;
-      this.a.a(paramString, false);
+    AppRuntime localAppRuntime = getAppRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface))) {
+      aiti.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
     }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null)
+    {
+      QLog.e("StickerRecServlet", 1, "onSend : req is null");
+      return;
+    }
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
+    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
+    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
   }
 }
 

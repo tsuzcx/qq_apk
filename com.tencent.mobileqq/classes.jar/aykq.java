@@ -1,22 +1,56 @@
 import android.os.Handler;
 import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-class aykq
-  implements View.OnClickListener
+public class aykq
+  extends Handler
 {
-  aykq(ayko paramayko, ayld paramayld) {}
+  public aykq(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    ayko.a(this.jdField_a_of_type_Ayko).removeMessages(101);
-    ayko.a(this.jdField_a_of_type_Ayko).obtainMessage(101).sendToTarget();
-    if (this.jdField_a_of_type_Ayld.a != null) {
-      this.jdField_a_of_type_Ayld.a.a();
+    switch (paramMessage.what)
+    {
+    default: 
+    case 101: 
+    case 100: 
+      do
+      {
+        do
+        {
+          return;
+          this.a.a();
+          blhb localblhb = blhb.a;
+          if ((localblhb != null) && (localblhb.a())) {
+            localblhb.b(5);
+          }
+        } while (paramMessage.obj == null);
+        paramMessage = (NearbyPeopleCard)paramMessage.obj;
+        this.a.b = true;
+        this.a.a(paramMessage, true, false);
+        return;
+      } while (NearbyPeopleProfileActivity.a(this.a) == null);
+      NearbyPeopleProfileActivity.a(this.a).b();
+      return;
+    case 102: 
+      NearbyPeopleProfileActivity.a(this.a).a(paramMessage.arg1, paramMessage.arg2);
+      return;
+    case 202: 
+      NearbyPeopleProfileActivity.a(this.a).a(true);
+      this.a.a.sendEmptyMessageDelayed(203, 1500L);
+      return;
+    case 203: 
+      NearbyPeopleProfileActivity.a(this.a).a(false);
+      return;
+    case 204: 
+      this.a.a(this.a.getString(2131693950));
+      return;
+    case 207: 
+      this.a.a(anzj.a(2131706131));
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a();
   }
 }
 

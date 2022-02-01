@@ -1,10 +1,15 @@
-import com.tencent.av.VideoController;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class mqx
+class mqx
+  implements View.OnTouchListener
 {
-  public static void a()
+  mqx(mqt parammqt) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    mqw.a("0X800A3D8", VideoController.a().a().d);
+    return true;
   }
 }
 

@@ -1,37 +1,30 @@
-import android.support.v4.app.Fragment;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.viola.core.ViolaInstance;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.mini.util.SoftKeyboardStateHelper.SoftKeyboardStateListener;
 
-public class tsp
-  implements View.OnLayoutChangeListener
+class tsp
+  implements SoftKeyboardStateHelper.SoftKeyboardStateListener
 {
-  public tsp(ViolaBaseView paramViolaBaseView) {}
+  tsp(tsl paramtsl, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onSoftKeyboardClosed()
   {
-    if (ViolaBaseView.a(this.a) != null) {
-      ViolaBaseView.a(this.a).setSize(paramView.getWidth(), paramView.getHeight());
-    }
-    if ((ViolaBaseView.a(this.a) != null) && (ViolaBaseView.a(this.a).getActivity() != null) && (this.a.a.contains("v_check_nav=1"))) {
-      paramView = new JSONObject();
-    }
-    try
+    if (System.currentTimeMillis() - tsl.a(this.jdField_a_of_type_Tsl) > 500L)
     {
-      paramView.put("navigationBarHeight", bgtn.c(CommonSuspensionGestureLayout.a(ViolaBaseView.a(this.a).getActivity())));
-      ViolaBaseView.a(this.a).updateInstance(paramView.toString());
-      return;
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = agej.a(140.5F, tsl.a(this.jdField_a_of_type_Tsl).getResources());
+      tsl.a(this.jdField_a_of_type_Tsl).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+      tsl.b(this.jdField_a_of_type_Tsl, System.currentTimeMillis());
     }
-    catch (JSONException localJSONException)
+  }
+  
+  public void onSoftKeyboardOpened(int paramInt)
+  {
+    if (System.currentTimeMillis() - tsl.a(this.jdField_a_of_type_Tsl) > 500L)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = agej.a(40.0F, tsl.a(this.jdField_a_of_type_Tsl).getResources());
+      tsl.a(this.jdField_a_of_type_Tsl).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+      tsl.b(this.jdField_a_of_type_Tsl, System.currentTimeMillis());
     }
   }
 }

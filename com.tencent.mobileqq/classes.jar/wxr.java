@@ -1,13 +1,21 @@
-public final class wxr
-  extends weu
+class wxr
+  implements wxc
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
+  private long jdField_a_of_type_Long;
+  
+  wxr(wxp paramwxp) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Long != 0L) {
+      yup.b("msgtab", "preload_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
+    }
+  }
 }
 
 

@@ -1,10 +1,11 @@
-public final class azac
-  extends ayzn
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+
+public class azac
 {
-  protected int a()
-  {
-    return 504;
-  }
+  public int a;
+  public long a;
+  public OcrRecogResult a;
+  public String a;
 }
 
 

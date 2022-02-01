@@ -1,39 +1,147 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.NetworkState;
 
 public class bhnv
-  implements View.OnLongClickListener
 {
-  public bhnv(WebViewFragment paramWebViewFragment) {}
-  
-  public boolean onLongClick(View paramView)
+  public static int a(int paramInt)
   {
-    if (!this.a.mSetting.a("web_view_long_click", true))
+    switch (paramInt)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
-      }
-      return true;
+    case 2: 
+    default: 
+      return 2;
+    case 1: 
+    case 4: 
+    case 5: 
+      return 4;
     }
-    if (!this.a.mSetting.a("image_long_click", false))
+    return 3;
+  }
+  
+  public static int a(Context paramContext)
+  {
+    int j = nnr.a();
+    int i = j;
+    if (j == -1) {
+      i = 2;
+    }
+    return i;
+  }
+  
+  public static String a(int paramInt)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramInt & 0xFF).append(".").append(paramInt >> 8 & 0xFF).append(".").append(paramInt >> 16 & 0xFF).append(".").append(paramInt >> 24 & 0xFF);
+    return localStringBuffer.toString();
+  }
+  
+  public static String a(Context paramContext)
+  {
+    return NetworkState.getAPN();
+  }
+  
+  public static boolean a()
+  {
+    return AppNetConnInfo.isNetSupport();
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return AppNetConnInfo.isWifiConn();
+  }
+  
+  public static boolean a(NetworkInfo paramNetworkInfo)
+  {
+    return HwNetworkUtil.isMobileNetworkInfo(paramNetworkInfo);
+  }
+  
+  public static int b(Context paramContext)
+  {
+    int j = -1;
+    int i = j;
+    if (AppNetConnInfo.isNetSupport())
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
+      paramContext = AppNetConnInfo.getRecentNetworkInfo();
+      i = j;
+      if (paramContext != null) {
+        i = paramContext.getType();
       }
-      return false;
     }
-    bhpf localbhpf = (bhpf)this.a.mComponentsProvider.a(8);
-    if ((localbhpf != null) && (localbhpf.a(paramView))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    return i;
+  }
+  
+  public static String b(Context paramContext)
+  {
+    try
+    {
+      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      if ((paramContext != null) && (paramContext.getSSID() != null))
+      {
+        paramContext = paramContext.getSSID().replaceAll("\"", "");
+        boolean bool = paramContext.equals("<unknown ssid>");
+        if (!bool) {
+          return paramContext;
+        }
+        return null;
+      }
     }
+    catch (Throwable paramContext)
+    {
+      QLog.e("NetworkUtil", 1, "fail to get active network info", paramContext);
+      return null;
+    }
+    paramContext = null;
+    return paramContext;
+  }
+  
+  public static boolean b(Context paramContext)
+  {
+    return AppNetConnInfo.isMobileConn();
+  }
+  
+  public static boolean c(Context paramContext)
+  {
+    int i = bjjh.a(paramContext);
+    return (i == 4) || (i == 3);
+  }
+  
+  public static boolean d(Context paramContext)
+  {
+    return AppNetConnInfo.isNetSupport();
+  }
+  
+  public static boolean e(Context paramContext)
+  {
+    return HwNetworkUtil.isNetSupport(paramContext);
+  }
+  
+  @TargetApi(13)
+  public static boolean f(Context paramContext)
+  {
+    return (Build.VERSION.SDK_INT >= 13) && (b(paramContext) == 7);
+  }
+  
+  public static boolean g(Context paramContext)
+  {
+    return AppNetConnInfo.isNetSupport();
+  }
+  
+  public static boolean h(Context paramContext)
+  {
+    return NetworkState.isWifiConn();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhnv
  * JD-Core Version:    0.7.0.1
  */

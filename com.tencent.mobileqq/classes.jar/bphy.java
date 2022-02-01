@@ -1,285 +1,210 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.view.MotionEvent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSmoothScroller;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.view.AEDownLoadingView;
+import dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean.AEEditorEffectItem;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean.FilterID;
+import dov.com.qq.im.aeeditor.module.filter.FiltersAdapter.1;
+import java.io.File;
+import java.util.List;
 
 public class bphy
-  extends bpio
+  extends RecyclerView.Adapter<bpic>
 {
-  public static String a;
-  public int a;
-  public bply a;
+  private int jdField_a_of_type_Int;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private bpib jdField_a_of_type_Bpib;
+  private List<AEEditorFilterBean> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g;
   
-  static
+  public bphy(List<AEEditorFilterBean> paramList, int paramInt, bpib parambpib)
   {
-    jdField_a_of_type_JavaLangString = "LineLayer";
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.g = paramInt;
+    this.jdField_a_of_type_Bpib = parambpib;
+    this.jdField_a_of_type_Boolean = bpan.a();
   }
   
-  public bphy(DoodleView paramDoodleView)
+  public static void a(RecyclerView paramRecyclerView, int paramInt, boolean paramBoolean)
   {
-    super(paramDoodleView);
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Bply = new bply();
-  }
-  
-  private void b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    bpmq localbpmq;
+    if (paramRecyclerView == null) {}
+    LinearLayoutManager localLinearLayoutManager;
     do
     {
-      do
-      {
-        return;
-        this.jdField_a_of_type_Int = 1;
-        return;
-        this.jdField_a_of_type_Int = 2;
-        return;
-        this.jdField_a_of_type_Int = 3;
-        return;
-        this.jdField_a_of_type_Int = 4;
-        localbpmq = (bpmq)this.jdField_a_of_type_Bply.a(103);
-      } while (localbpmq == null);
-      localbpmq.a(104);
-      localbpmq.b();
       return;
-      this.jdField_a_of_type_Int = 6;
-      localbpmq = (bpmq)this.jdField_a_of_type_Bply.a(103);
-    } while (localbpmq == null);
-    localbpmq.a(105);
-    localbpmq.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.c, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.d);
+      localLinearLayoutManager = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
+    } while (localLinearLayoutManager == null);
+    paramRecyclerView = new bpia(paramRecyclerView.getContext(), localLinearLayoutManager, paramBoolean);
+    paramRecyclerView.setTargetPosition(paramInt);
+    localLinearLayoutManager.startSmoothScroll(paramRecyclerView);
   }
   
-  private void h()
+  public int a()
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      this.jdField_a_of_type_Bply.d(101);
-    }
-    while ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int != 4)) {
-      return;
-    }
-    this.jdField_a_of_type_Bply.d(104);
+    return this.g;
   }
   
-  public Bitmap a()
+  @NonNull
+  public bpic a(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    return ((bpmq)this.jdField_a_of_type_Bply.a(103)).b;
+    return new bpic(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558552, paramViewGroup, false));
   }
   
-  public bpma a(int paramInt)
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_Bply.a(paramInt);
-  }
-  
-  public String a()
-  {
-    return "LineLayer";
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bply.i();
-    yqp.b("LineLayer", "clear over.");
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    super.a(paramInt1, paramInt2);
-    bpmq localbpmq = (bpmq)this.jdField_a_of_type_Bply.a(103);
-    if (localbpmq != null) {
-      localbpmq.c(paramInt1, paramInt2);
+    this.g = paramInt;
+    notifyDataSetChanged();
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) {
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.post(new FiltersAdapter.1(this, paramInt));
     }
   }
   
-  protected void a(Canvas paramCanvas)
+  public void a(@NonNull bpic parambpic, int paramInt)
   {
-    this.jdField_a_of_type_Bply.a(paramCanvas, this.jdField_a_of_type_Float);
-    h();
-  }
-  
-  public void a(Canvas paramCanvas, float paramFloat)
-  {
-    this.jdField_a_of_type_Bply.b(paramCanvas, paramFloat);
-    if (this.jdField_a_of_type_Bply.a())
+    AEEditorFilterBean localAEEditorFilterBean = (AEEditorFilterBean)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    int i;
+    if (paramInt == this.g)
     {
-      Bitmap localBitmap = this.jdField_a_of_type_Bply.a;
-      if (localBitmap == null) {
-        break label94;
+      i = 1;
+      if (i == 0) {
+        break label248;
       }
-      PorterDuffXfermode localPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER);
-      Paint localPaint = new Paint(1);
-      localPaint.setXfermode(localPorterDuffXfermode);
-      paramCanvas.save();
-      paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, localPaint);
-      paramCanvas.restore();
-      this.jdField_a_of_type_Bply.j();
+      parambpic.b.setVisibility(0);
+      parambpic.b.setBackgroundColor(this.jdField_a_of_type_Int);
+      parambpic.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.e);
+      parambpic.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_Int);
+      parambpic.c.setVisibility(8);
+      parambpic.d.setVisibility(8);
+      parambpic.e.setVisibility(8);
+      parambpic.f.setVisibility(8);
+      parambpic.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
+      label115:
+      if (localAEEditorFilterBean.type != AEEditorFilterBean.FilterID.NON) {
+        break label537;
+      }
+      parambpic.jdField_a_of_type_AndroidWidgetTextView.setText(2131692255);
+      if (i != 0) {
+        parambpic.b.setImageResource(2130837714);
+      }
+      parambpic.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837715);
+      parambpic.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130837741);
+      parambpic.c.setVisibility(8);
+      parambpic.d.setVisibility(8);
+      parambpic.e.setVisibility(8);
+      parambpic.f.setVisibility(8);
+      parambpic.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bply.c();
+      parambpic.itemView.setOnClickListener(new bphz(this, localAEEditorFilterBean, paramInt));
+      EventCollector.getInstance().onRecyclerBindViewHolder(parambpic, paramInt, getItemId(paramInt));
       return;
-      label94:
-      if (QLog.isColorLevel()) {
-        QLog.d("LineLayer", 2, "imgDoodle is null");
+      i = 0;
+      break;
+      label248:
+      parambpic.b.setVisibility(8);
+      parambpic.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.f);
+      parambpic.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.d);
+      String str = bphr.a().b(localAEEditorFilterBean);
+      if ((localAEEditorFilterBean.getEditorEffectItem().getPreDownload() != 0) || (localAEEditorFilterBean.type == AEEditorFilterBean.FilterID.NETWORK))
+      {
+        parambpic.c.setVisibility(8);
+        parambpic.d.setVisibility(8);
+        parambpic.e.setVisibility(8);
+        parambpic.f.setVisibility(8);
+        parambpic.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
+        break label115;
       }
+      if (((!TextUtils.isEmpty(str)) && (new File(str).exists())) || (localAEEditorFilterBean.getProgress() == 100))
+      {
+        parambpic.c.setVisibility(8);
+        parambpic.d.setVisibility(8);
+        parambpic.e.setVisibility(8);
+        parambpic.f.setVisibility(8);
+        parambpic.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
+        break label115;
+      }
+      if (localAEEditorFilterBean.getProgress() >= 0)
+      {
+        parambpic.c.setVisibility(8);
+        parambpic.d.setVisibility(8);
+        parambpic.e.setVisibility(0);
+        parambpic.f.setVisibility(0);
+        parambpic.a(localAEEditorFilterBean);
+        break label115;
+      }
+      parambpic.c.setVisibility(0);
+      parambpic.d.setVisibility(0);
+      parambpic.e.setVisibility(8);
+      parambpic.f.setVisibility(8);
+      parambpic.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
+      break label115;
+      label537:
+      if (localAEEditorFilterBean.type != AEEditorFilterBean.FilterID.AIFilter) {
+        break label630;
+      }
+      parambpic.jdField_a_of_type_AndroidWidgetTextView.setText(2131692253);
+      if (i != 0) {
+        parambpic.b.setImageResource(2130837708);
+      }
+      parambpic.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837711);
+      parambpic.c.setVisibility(8);
+      parambpic.d.setVisibility(8);
+      parambpic.e.setVisibility(8);
+      parambpic.f.setVisibility(8);
+      parambpic.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
     }
-  }
-  
-  public void a(bphz parambphz)
-  {
-    Bitmap localBitmap = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b();
-    bpmq localbpmq = (bpmq)this.jdField_a_of_type_Bply.a(103);
-    if (localbpmq != null) {
-      localbpmq.a(parambphz, this.jdField_a_of_type_Float, localBitmap, this.jdField_a_of_type_AndroidGraphicsRect);
-    }
-  }
-  
-  public void a(AppInterface paramAppInterface, int paramInt1, int paramInt2)
-  {
-    yqp.b("LineLayer", "switchImageMode.");
-    this.jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_Bply.a(paramAppInterface, paramInt2);
-  }
-  
-  public void a(DoodleTextureView paramDoodleTextureView)
-  {
-    if (paramDoodleTextureView.getVisibility() == 0) {
-      paramDoodleTextureView.setOpController(this.jdField_a_of_type_Bply);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Bply.d();
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return true;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
+    label630:
+    parambpic.jdField_a_of_type_AndroidWidgetTextView.setText(localAEEditorFilterBean.getName());
+    if (i != 0)
     {
+      if (localAEEditorFilterBean.getEditorEffectItem().getHideAlphaBar() == 1) {
+        break label720;
+      }
+      parambpic.b.setImageResource(2130837721);
     }
-    while (this.jdField_a_of_type_Int == 5)
+    for (;;)
     {
-      return this.jdField_a_of_type_Bply.a(102, paramMotionEvent);
-      yqv.a("0X80076BE");
-      yqv.b("0X80075CB");
-    }
-    if (this.jdField_a_of_type_Int == 1) {
-      return this.jdField_a_of_type_Bply.a(101, paramMotionEvent);
-    }
-    if (this.jdField_a_of_type_Int == 3) {
-      return this.jdField_a_of_type_Bply.a(103, paramMotionEvent);
-    }
-    if (this.jdField_a_of_type_Int == 4) {
-      return this.jdField_a_of_type_Bply.a(104, paramMotionEvent);
-    }
-    if (this.jdField_a_of_type_Int == 6) {
-      return this.jdField_a_of_type_Bply.a(105, paramMotionEvent);
-    }
-    return false;
-  }
-  
-  public boolean a(JSONObject paramJSONObject)
-  {
-    return this.jdField_a_of_type_Bply.a(paramJSONObject);
-  }
-  
-  public byte[] a()
-  {
-    return ((bpmq)this.jdField_a_of_type_Bply.a(103)).a;
-  }
-  
-  public int b()
-  {
-    int[] arrayOfInt = this.jdField_a_of_type_Bply.a();
-    int i = arrayOfInt[0];
-    return arrayOfInt[1] + i;
-  }
-  
-  public void b()
-  {
-    super.b();
-    if (this.jdField_a_of_type_Bply != null) {
-      this.jdField_a_of_type_Bply.b();
+      parambpic.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130837741);
+      zps.a(parambpic.jdField_a_of_type_AndroidWidgetImageView, localAEEditorFilterBean.getPicUrl(), zps.a(parambpic.jdField_a_of_type_AndroidWidgetImageView.getContext(), 67.0F), zps.a(parambpic.jdField_a_of_type_AndroidWidgetImageView.getContext(), 67.0F), null, null);
+      break;
+      label720:
+      parambpic.b.setImageResource(2130837708);
     }
   }
   
-  public void b(Canvas paramCanvas)
+  public int getItemCount()
   {
-    a(paramCanvas, this.jdField_a_of_type_Float);
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public boolean b()
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
   {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void c()
-  {
-    ((bpmq)this.jdField_a_of_type_Bply.a(103)).c();
-  }
-  
-  public void c(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_Bply.c(paramCanvas, this.jdField_a_of_type_Float);
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 6);
-  }
-  
-  public void d()
-  {
-    bpmq localbpmq = (bpmq)this.jdField_a_of_type_Bply.a(103);
-    if (localbpmq != null) {
-      localbpmq.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout);
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Bply.c()) {
-      super.k();
-    }
-  }
-  
-  public void f()
-  {
-    yqp.b("LineLayer", "switchMosaicMode.");
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a())
-    {
-      b(4);
-      return;
-    }
-    b(6);
-  }
-  
-  public void g()
-  {
-    yqp.b("LineLayer", "switchNormalMode.");
-    b(1);
+    super.onAttachedToRecyclerView(paramRecyclerView);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.jdField_a_of_type_Int = paramRecyclerView.getResources().getColor(2131165262);
+    this.b = paramRecyclerView.getResources().getColor(2131165267);
+    this.c = paramRecyclerView.getResources().getColor(2131165268);
+    this.d = paramRecyclerView.getResources().getColor(2131165264);
+    this.e = paramRecyclerView.getResources().getColor(2131165265);
+    this.f = paramRecyclerView.getResources().getColor(2131165266);
   }
 }
 

@@ -1,33 +1,104 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 public class bpty
-  implements Animator.AnimatorListener
 {
-  public bpty(SlideBottomPanel paramSlideBottomPanel) {}
+  public static bptz a;
+  public static String a;
+  public static boolean a;
+  public static bptz b;
+  public static String b;
+  public static boolean b;
+  public static bptz c;
+  public static boolean c;
+  public static bptz d;
+  public static bptz e = new bptz();
+  public static bptz f = new bptz(3);
+  public static bptz g = new bptz(5);
+  public static bptz h = new bptz();
   
-  public void onAnimationCancel(Animator paramAnimator)
+  static
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.jdField_a_of_type_Bpti != null) {
-      this.a.jdField_a_of_type_Bpti.displayPanelFinish();
+    jdField_a_of_type_JavaLangString = "AutoMonitor_Camera";
+    jdField_a_of_type_Boolean = a();
+    jdField_b_of_type_JavaLangString = "FreqMonitorSwitch";
+    jdField_a_of_type_Bptz = new bptz();
+    jdField_b_of_type_Bptz = new bptz();
+    jdField_c_of_type_Bptz = new bptz();
+    d = new bptz();
+    jdField_c_of_type_Boolean = true;
+  }
+  
+  public static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  {
+    if ((paramInt2 == 0) || (paramArrayOfInt == null) || (paramInt2 > paramArrayOfInt.length)) {}
+    long l;
+    do
+    {
+      return 0;
+      l = 0L;
+      int i = paramInt1;
+      while (i < paramInt2)
+      {
+        l += paramArrayOfInt[i];
+        i += 1;
+      }
+    } while (paramInt2 - paramInt1 == 0);
+    return (int)(l / (paramInt2 - paramInt1));
+  }
+  
+  public static String a(int[] paramArrayOfInt, int paramInt)
+  {
+    if ((paramInt == 0) || (paramArrayOfInt == null) || (paramInt > paramArrayOfInt.length)) {
+      return "";
+    }
+    int i = paramInt - 1;
+    if (i == -1) {
+      return "[]";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append('[');
+    paramInt = 0;
+    for (;;)
+    {
+      localStringBuilder.append(paramArrayOfInt[paramInt]);
+      if (paramInt == i) {
+        return ']';
+      }
+      localStringBuilder.append(", ");
+      paramInt += 1;
     }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public static void a()
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.jdField_a_of_type_Bpti != null) {
-      this.a.jdField_a_of_type_Bpti.displayPanelFinish();
+    if (jdField_a_of_type_Bptz.a())
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, String.format("CameraStartCost, activityCost=%d, refreshCost=%d, cameraCost=%d, cost=%d", new Object[] { Long.valueOf(jdField_a_of_type_Bptz.jdField_a_of_type_ArrayOfLong[1] - jdField_a_of_type_Bptz.jdField_a_of_type_ArrayOfLong[0]), Long.valueOf(jdField_a_of_type_Bptz.jdField_a_of_type_ArrayOfLong[2] - jdField_a_of_type_Bptz.jdField_a_of_type_ArrayOfLong[1]), Long.valueOf(jdField_a_of_type_Bptz.jdField_a_of_type_ArrayOfLong[3] - jdField_a_of_type_Bptz.jdField_a_of_type_ArrayOfLong[2]), Long.valueOf(jdField_a_of_type_Bptz.jdField_a_of_type_ArrayOfLong[3] - jdField_a_of_type_Bptz.jdField_a_of_type_ArrayOfLong[0]) }));
+      jdField_a_of_type_Bptz.c();
     }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public static boolean a()
   {
-    this.a.jdField_a_of_type_Boolean = true;
+    if (!PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication()).getBoolean(jdField_b_of_type_JavaLangString, false)) {
+      return bhmi.a(alwf.jdField_a_of_type_JavaLangString + "/Tencent/AutoTestFlag_03");
+    }
+    return true;
+  }
+  
+  public static void b()
+  {
+    if (d.a())
+    {
+      d.jdField_b_of_type_Long = System.currentTimeMillis();
+      long l = d.jdField_b_of_type_Long - d.jdField_a_of_type_Long;
+      QLog.d(jdField_a_of_type_JavaLangString, 1, String.format("CameraEditStatistic, avgRenderCost=%d, cost=%d, frameCount=%d, frameFreq=%d", new Object[] { Integer.valueOf(a(d.jdField_a_of_type_ArrayOfInt, 0, d.jdField_b_of_type_Int)), Long.valueOf(l), Integer.valueOf(d.jdField_b_of_type_Int), Long.valueOf(d.jdField_b_of_type_Int * 1000 / l) }));
+      QLog.d(jdField_a_of_type_JavaLangString, 1, String.format("CameraEditStatistic, render cost: %s", new Object[] { a(d.jdField_a_of_type_ArrayOfInt, d.jdField_b_of_type_Int) }));
+      d.c();
+    }
   }
 }
 

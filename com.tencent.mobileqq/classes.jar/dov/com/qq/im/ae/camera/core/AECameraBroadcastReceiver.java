@@ -5,25 +5,25 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bndy;
-import bnpt;
+import bofh;
+import borf;
 
 public class AECameraBroadcastReceiver
   extends BroadcastReceiver
 {
-  private bndy a;
+  private bofh a;
   
-  public AECameraBroadcastReceiver(bndy parambndy)
+  public AECameraBroadcastReceiver(bofh parambofh)
   {
-    this.a = parambndy;
+    this.a = parambofh;
   }
   
   private IntentFilter a()
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
-    localIntentFilter.addAction(bnpt.jdField_b_of_type_Bnpt.jdField_b_of_type_JavaLangString);
-    localIntentFilter.addAction(bnpt.c.jdField_b_of_type_JavaLangString);
+    localIntentFilter.addAction(borf.jdField_b_of_type_Borf.jdField_b_of_type_JavaLangString);
+    localIntentFilter.addAction(borf.c.jdField_b_of_type_JavaLangString);
     return localIntentFilter;
   }
   
@@ -45,8 +45,8 @@ public class AECameraBroadcastReceiver
     {
       return;
       paramContext = paramIntent.getAction();
-    } while (!bnpt.c.jdField_b_of_type_JavaLangString.equals(paramContext));
-    bqft.a = true;
+    } while (!borf.c.jdField_b_of_type_JavaLangString.equals(paramContext));
+    brhe.a = true;
     this.a.q();
   }
 }

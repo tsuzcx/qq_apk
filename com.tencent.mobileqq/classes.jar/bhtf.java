@@ -1,26 +1,10 @@
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import java.util.List;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
-
-class bhtf
-  implements bhtl<oidb_0x8ed.RspBody>
+final class bhtf
+  implements bhtk<Number>
 {
-  bhtf(bhte parambhte, bhtl parambhtl, HotChatInfo paramHotChatInfo) {}
-  
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
+  public Float a(float paramFloat, Number paramNumber1, Number paramNumber2)
   {
-    if (this.jdField_a_of_type_Bhtl != null) {
-      this.jdField_a_of_type_Bhtl.a(paramInt, paramRspBody);
-    }
-    paramRspBody = (HotChatManager)this.jdField_a_of_type_Bhte.app.getManager(60);
-    List localList = paramRspBody.a();
-    if (localList != null) {
-      localList.remove(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo);
-    }
-    paramRspBody.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_IS_DISBANDED);
+    float f = paramNumber1.floatValue();
+    return Float.valueOf(f + (paramNumber2.floatValue() - f) * paramFloat);
   }
 }
 

@@ -1,29 +1,27 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import android.os.Message;
+import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
+import mqq.os.MqqHandler;
 
-public class auvs
-  implements biea
+class auvs
+  implements ahag
 {
-  public auvs(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  auvs(auvq paramauvq, auvt paramauvt, int paramInt) {}
   
-  public void onItemSelect(View paramView, int paramInt)
+  public void a()
   {
-    if (paramInt == 5)
+    FlashChatTextEffectView.a(this.jdField_a_of_type_Auvt);
+    Message localMessage = Message.obtain();
+    localMessage.obj = this.jdField_a_of_type_Auvt;
+    localMessage.what = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Int < FlashChatTextEffectView.a().length)
     {
-      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-      paramView.putExtra("uin", "2747277822");
-      paramView.putExtra("fromQGamePub", true);
-      this.a.startActivity(paramView);
-    }
-    while (paramInt != 1) {
+      auvq.a(this.jdField_a_of_type_Auvq).sendMessageDelayed(localMessage, FlashChatTextEffectView.a()[this.jdField_a_of_type_Int]);
       return;
     }
-    QQGameFeedWebFragment.a(this.a, this.a.a);
-    this.a.getActivity().finish();
+    auvq.a(this.jdField_a_of_type_Auvq).sendMessageDelayed(localMessage, 7000L);
   }
+  
+  public void b() {}
 }
 
 

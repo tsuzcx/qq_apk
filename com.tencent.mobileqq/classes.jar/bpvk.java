@@ -1,10 +1,16 @@
-public abstract interface bpvk
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.capture.view.MusicProviderView;
+
+public class bpvk
+  implements DialogInterface.OnClickListener
 {
-  public abstract void b(int paramInt, String paramString);
+  public bpvk(MusicProviderView paramMusicProviderView) {}
   
-  public abstract void c(int paramInt, String paramString);
-  
-  public abstract void d(int paramInt, String paramString);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

@@ -1,37 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CustomMethodsRegister.CustomMethodInterface;
 
 class qar
-  implements View.OnClickListener
+  implements CustomMethodsRegister.CustomMethodInterface
 {
-  qar(qam paramqam, ArticleInfo paramArticleInfo) {}
-  
-  public void onClick(View paramView)
+  public Object invoke(String paramString, Object... paramVarArgs)
   {
-    int i = 0;
-    ohp.a(qam.a(this.jdField_a_of_type_Qam), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
-      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
-    }
-    try
+    String str = "";
+    paramString = str;
+    if (paramVarArgs != null)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("feeds_channel_entrance", i);
-      oat.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", localJSONObject.toString(), false);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
+      paramString = str;
+      if (paramVarArgs.length >= 1) {
+        paramString = bcsa.b(String.valueOf(paramVarArgs[0]));
       }
     }
+    return new begp(paramString, 3, 16);
   }
 }
 

@@ -50,7 +50,7 @@ public class GetShareState
   
   private static boolean shouldHideQzoneChannel()
   {
-    return QUAUtil.isQQSpeedApp();
+    return (QUAUtil.isQQSpeedApp()) || (QUAUtil.isTimApp());
   }
   
   private static boolean shouldHideWechatChannels()

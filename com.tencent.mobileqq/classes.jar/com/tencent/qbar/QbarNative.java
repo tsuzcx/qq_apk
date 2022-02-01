@@ -1,8 +1,8 @@
 package com.tencent.qbar;
 
 import android.graphics.Bitmap;
-import aoxj;
-import bjdd;
+import apkz;
+import bkec;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.qphone.base.util.QLog;
@@ -50,7 +50,7 @@ public class QbarNative
               System.loadLibrary("QBarMod");
               jdField_a_of_type_Boolean = true;
               if (BaseApplicationImpl.getContext() != null) {
-                aoxj.a().a(jdField_a_of_type_Boolean);
+                apkz.a().a(jdField_a_of_type_Boolean);
               }
               return;
               localThrowable1 = localThrowable1;
@@ -184,8 +184,8 @@ public class QbarNative
     List localList = a(3);
     if ((localList != null) && (localList.size() > 0))
     {
-      paramStringBuilder1.append(((bjdd)localList.get(0)).jdField_a_of_type_JavaLangString);
-      paramStringBuilder2.append(((bjdd)localList.get(0)).b);
+      paramStringBuilder1.append(((bkec)localList.get(0)).jdField_a_of_type_JavaLangString);
+      paramStringBuilder2.append(((bkec)localList.get(0)).b);
       return 1;
     }
     return 0;
@@ -231,7 +231,7 @@ public class QbarNative
   }
   
   /* Error */
-  public List<bjdd> a(int paramInt)
+  public List<bkec> a(int paramInt)
   {
     // Byte code:
     //   0: iconst_0
@@ -345,28 +345,28 @@ public class QbarNative
     //   203: getfield 224	com/tencent/qbar/QbarNative$QBarResultJNI:typeName	Ljava/lang/String;
     //   206: invokevirtual 232	java/lang/String:isEmpty	()Z
     //   209: ifne +125 -> 334
-    //   212: new 191	bjdd
+    //   212: new 191	bkec
     //   215: dup
-    //   216: invokespecial 233	bjdd:<init>	()V
+    //   216: invokespecial 233	bkec:<init>	()V
     //   219: astore 7
     //   221: aload 7
     //   223: aload 4
     //   225: getfield 217	com/tencent/qbar/QbarNative$QBarResultJNI:charset	Ljava/lang/String;
-    //   228: putfield 236	bjdd:c	Ljava/lang/String;
+    //   228: putfield 236	bkec:c	Ljava/lang/String;
     //   231: aload 7
     //   233: aload 4
     //   235: getfield 239	com/tencent/qbar/QbarNative$QBarResultJNI:typeID	I
-    //   238: putfield 240	bjdd:jdField_a_of_type_Int	I
+    //   238: putfield 240	bkec:jdField_a_of_type_Int	I
     //   241: aload 7
     //   243: aload 4
     //   245: getfield 224	com/tencent/qbar/QbarNative$QBarResultJNI:typeName	Ljava/lang/String;
-    //   248: putfield 193	bjdd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   248: putfield 193	bkec:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   251: aload 7
     //   253: aload 4
     //   255: getfield 221	com/tencent/qbar/QbarNative$QBarResultJNI:data	[B
-    //   258: putfield 242	bjdd:jdField_a_of_type_ArrayOfByte	[B
+    //   258: putfield 242	bkec:jdField_a_of_type_ArrayOfByte	[B
     //   261: aload 7
-    //   263: getfield 236	bjdd:c	Ljava/lang/String;
+    //   263: getfield 236	bkec:c	Ljava/lang/String;
     //   266: ldc 244
     //   268: invokevirtual 248	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   271: ifeq +77 -> 348
@@ -377,9 +377,9 @@ public class QbarNative
     //   282: getfield 221	com/tencent/qbar/QbarNative$QBarResultJNI:data	[B
     //   285: ldc 250
     //   287: invokespecial 253	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   290: putfield 195	bjdd:b	Ljava/lang/String;
+    //   290: putfield 195	bkec:b	Ljava/lang/String;
     //   293: aload 7
-    //   295: getfield 195	bjdd:b	Ljava/lang/String;
+    //   295: getfield 195	bkec:b	Ljava/lang/String;
     //   298: invokestatic 258	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   301: ifeq +23 -> 324
     //   304: aload 7
@@ -389,7 +389,7 @@ public class QbarNative
     //   312: getfield 221	com/tencent/qbar/QbarNative$QBarResultJNI:data	[B
     //   315: ldc_w 260
     //   318: invokespecial 253	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   321: putfield 195	bjdd:b	Ljava/lang/String;
+    //   321: putfield 195	bkec:b	Ljava/lang/String;
     //   324: aload 5
     //   326: aload 7
     //   328: invokeinterface 263 2 0
@@ -410,9 +410,9 @@ public class QbarNative
     //   354: aload 4
     //   356: getfield 221	com/tencent/qbar/QbarNative$QBarResultJNI:data	[B
     //   359: aload 7
-    //   361: getfield 236	bjdd:c	Ljava/lang/String;
+    //   361: getfield 236	bkec:c	Ljava/lang/String;
     //   364: invokespecial 253	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   367: putfield 195	bjdd:b	Ljava/lang/String;
+    //   367: putfield 195	bkec:b	Ljava/lang/String;
     //   370: goto -46 -> 324
     //   373: astore 4
     //   375: ldc 30
@@ -440,7 +440,7 @@ public class QbarNative
     //   373	19	4	localUnsupportedEncodingException	java.io.UnsupportedEncodingException
     //   170	236	5	localArrayList	java.util.ArrayList
     //   68	120	6	arrayOfQBarResultJNI	QbarNative.QBarResultJNI[]
-    //   219	141	7	localbjdd	bjdd
+    //   219	141	7	localbkec	bkec
     // Exception table:
     //   from	to	target	type
     //   139	148	341	finally

@@ -1,19 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class qrx
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/service/RIJAidlClient$RIJServiceConnection;", "Landroid/content/ServiceConnection;", "()V", "onServiceConnected", "", "name", "Landroid/content/ComponentName;", "service", "Landroid/os/IBinder;", "onServiceDisconnected", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+final class qrx
+  implements ServiceConnection
 {
-  qrx(qrv paramqrv) {}
-  
-  public void onClick(View paramView)
+  public void onServiceConnected(@NotNull ComponentName paramComponentName, @NotNull IBinder paramIBinder)
   {
-    spb localspb = this.a.jdField_a_of_type_Snh.a();
-    if (localspb != null) {
-      localspb.a(null, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    Intrinsics.checkParameterIsNotNull(paramComponentName, "name");
+    Intrinsics.checkParameterIsNotNull(paramIBinder, "service");
+    qrw.a(qrw.a, qru.a(paramIBinder));
+    QLog.d("RIJAidlClient", 1, "onServiceConnected: " + paramComponentName);
+  }
+  
+  public void onServiceDisconnected(@NotNull ComponentName paramComponentName)
+  {
+    Intrinsics.checkParameterIsNotNull(paramComponentName, "name");
+    qrw.a(qrw.a, (qrt)null);
+    QLog.d("RIJAidlClient", 1, "onServiceDisconnected: " + paramComponentName);
   }
 }
 

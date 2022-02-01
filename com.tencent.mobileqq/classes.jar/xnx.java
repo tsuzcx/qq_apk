@@ -1,28 +1,56 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class xnx
-  extends xoe<StoryVideoItem>
+  implements xmp
 {
-  public xnx(VideoViewVideoHolder paramVideoViewVideoHolder)
+  public final String a;
+  public final List<String> a;
+  private xmq jdField_a_of_type_Xmq;
+  private xmt jdField_a_of_type_Xmt;
+  private xmv jdField_a_of_type_Xmv;
+  
+  public xnx(String paramString)
   {
-    super(paramVideoViewVideoHolder, null);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Xmq = new xmq();
+    this.jdField_a_of_type_Xmq.b = true;
+    this.jdField_a_of_type_Xmq.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Xmq.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Xmt = new xmt(new xms("TROOP_GROUD_ID"));
+    this.jdField_a_of_type_Xmt.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Xmt.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Xmt.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_JavaLangString, "TROOP_FEED_ID");
+    this.jdField_a_of_type_Xmq.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Xmt);
+    this.jdField_a_of_type_Xmv = new xmv(new xms("TROOP_GROUD_ID"), this.jdField_a_of_type_JavaLangString, "TROOP_FEED_ID");
+    this.jdField_a_of_type_Xmv.jdField_a_of_type_Xmt = this.jdField_a_of_type_Xmt;
   }
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public xmq a(@Nullable xms paramxms, int paramInt)
   {
-    super.onNext(paramStoryVideoItem);
-    VideoViewVideoHolder.a(this.a);
+    return this.jdField_a_of_type_Xmq;
   }
   
-  public void onError(@NonNull Error paramError)
+  public xmv a()
   {
-    super.onError(paramError);
-    yqp.d(this.a.a, "VideoFileSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
-    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+    return this.jdField_a_of_type_Xmv;
   }
+  
+  public void a() {}
+  
+  public void a(@Nullable xms paramxms, int paramInt1, int paramInt2, String paramString) {}
+  
+  public void a(@Nullable xms paramxms, String paramString) {}
+  
+  public void a(xmu paramxmu) {}
+  
+  public void b() {}
+  
+  public void b(xmu paramxmu) {}
 }
 
 

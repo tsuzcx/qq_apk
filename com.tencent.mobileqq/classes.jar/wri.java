@@ -1,6 +1,10 @@
-public abstract interface wri
+public abstract class wri
 {
-  public abstract void a(boolean paramBoolean, wre paramwre);
+  public abstract String a();
+  
+  public abstract wrj a(byte[] paramArrayOfByte);
+  
+  protected abstract byte[] a();
 }
 
 

@@ -1,23 +1,23 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.RoundImageView;
 
 class aqwn
-  implements aqvn
+  extends arvn
 {
-  aqwn(aqwl paramaqwl) {}
+  public ETTextView a;
+  public RoundImageView a;
   
-  public void a(Context paramContext)
+  public aqwn(aqwk paramaqwk, View paramView)
   {
-    paramContext = bgng.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramContext, aqwl.a(this.a));
-    if (paramContext != null) {
-      paramContext.a();
-    }
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView.findViewById(2131368212));
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)paramView.findViewById(2131364772));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqwn
  * JD-Core Version:    0.7.0.1
  */

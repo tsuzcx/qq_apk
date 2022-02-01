@@ -1,11 +1,19 @@
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.List;
 
-public abstract class pvp
-  implements pvo
+class pvp
+  implements ViewBase.OnClickListener
 {
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2) {}
+  pvp(pvl parampvl, Context paramContext, qwn paramqwn, ArticleInfo paramArticleInfo) {}
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList) {}
+  public void onClick(ViewBase paramViewBase)
+  {
+    rpt.a(this.jdField_a_of_type_AndroidContentContext, ((qyq)this.jdField_a_of_type_Qwn.a.get(0)).a);
+    pvl.a(this.jdField_a_of_type_Pvl, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+  }
 }
 
 

@@ -1,9 +1,24 @@
-public class uva
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+
+class uva
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
+  uva(uuz paramuuz) {}
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    uqf.b("WSVerticalVideoItemView", "itemView onDoubleTap");
+    uuz.a(this.a, paramMotionEvent);
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    uqf.b("WSVerticalVideoItemView", "itemView onSingleTapConfirmed");
+    uuz.a(this.a);
+    return super.onSingleTapConfirmed(paramMotionEvent);
+  }
 }
 
 

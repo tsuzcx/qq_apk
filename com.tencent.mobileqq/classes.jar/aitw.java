@@ -1,12 +1,14 @@
+import java.util.List;
+
 public class aitw
 {
-  public int a;
-  public int b;
+  public List<String> a;
+  public List<aitu> b;
   
-  public aitw(int paramInt1, int paramInt2)
+  public aitw(List<String> paramList, List<aitu> paramList1)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.a = paramList;
+    this.b = paramList1;
   }
 }
 

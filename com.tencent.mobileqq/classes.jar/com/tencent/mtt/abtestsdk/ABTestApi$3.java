@@ -17,7 +17,6 @@ final class ABTestApi$3
   {
     ABTestLog.warn("ABTestApi", new Object[] { "get all the data unsuccessfully from network" });
     this.val$listener.getExperimentFailed(paramInt, paramString);
-    this.val$listener.getExperimentSucceed(this.val$expEntities);
   }
   
   public void updateExperimentsSucceed(JSONObject paramJSONObject)
@@ -43,7 +42,6 @@ final class ABTestApi$3
     {
       ABTestLog.error(paramJSONObject.getMessage(), new Object[0]);
       this.val$listener.getExperimentFailed(1007, "get res error");
-      this.val$listener.getExperimentSucceed(this.val$expEntities);
       return;
     }
   }

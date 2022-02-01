@@ -1,30 +1,29 @@
-import android.util.Log;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class amjx
-  implements amka
+  implements Animation.AnimationListener
 {
-  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
+  public amjx(SpecailCareListActivity paramSpecailCareListActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, null);
-      return paramEGL10;
-    }
-    catch (Throwable paramEGL10)
-    {
-      Log.e("GLTextureView", "eglCreateWindowSurface", paramEGL10);
-    }
-    return null;
+    this.a.leftView.clearAnimation();
+    this.a.a.clearAnimation();
+    this.a.leftView.setVisibility(4);
+    this.a.a.setVisibility(8);
+    this.a.rightViewText.setClickable(true);
+    this.a.rightViewText.setText(SpecailCareListActivity.b);
+    this.a.rightViewText.setContentDescription(anzj.a(2131713110));
+    this.a.c = true;
   }
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
-  {
-    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

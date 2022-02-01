@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
 import android.widget.Toast;
-import anni;
-import bnjl;
+import anzj;
+import bokv;
 
 public class VideoStoryAIScenePart$16
   implements Runnable
 {
-  public VideoStoryAIScenePart$16(bnjl parambnjl) {}
+  public VideoStoryAIScenePart$16(bokv parambokv) {}
   
   public void run()
   {
-    Toast.makeText(bnjl.e(this.this$0), anni.a(2131715080), 0).show();
+    Toast.makeText(bokv.e(this.this$0), anzj.a(2131715189), 0).show();
   }
 }
 

@@ -1,42 +1,106 @@
-import android.os.Bundle;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.pubaccount.readinjoy.push.RIJPushNotifyModule.Companion.instance.2;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.protofile.oidb_0xe9d.oidb_0xe9d.ReqBody;
-import kotlin.Lazy;
-import kotlin.LazyKt;
-import kotlin.LazyThreadSafetyMode;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function0;
-import kotlin.jvm.functions.Function1;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.os.Looper;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule;", "", "()V", "requestUpdatePushStatus", "", "isOpenPushNotify", "", "isDefaultOpen", "uin", "", "type", "", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "errorCode", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qpv
+public class qpv
+  extends pfh
 {
-  @NotNull
-  private static final Lazy a;
-  public static final qpw a;
+  public qpv(ComponentHeaderPolymeric paramComponentHeaderPolymeric) {}
   
-  static
+  public void a(long paramLong, boolean paramBoolean)
   {
-    jdField_a_of_type_Qpw = new qpw(null);
-    jdField_a_of_type_KotlinLazy = LazyKt.lazy(LazyThreadSafetyMode.SYNCHRONIZED, (Function0)RIJPushNotifyModule.Companion.instance.2.INSTANCE);
+    int i;
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      i = 1;
+      if (i != 0) {
+        break label32;
+      }
+      QLog.e("ComponentHeaderPolymeric", 2, "Please call this method in main thread!!!");
+    }
+    label32:
+    ArticleInfo localArticleInfo;
+    do
+    {
+      return;
+      i = 0;
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.d("ComponentHeaderPolymeric", 2, "onUpdateAfterSmallVideoTopicFollow topicId = " + paramLong + " isFollow = " + paramBoolean);
+      }
+      localArticleInfo = (ArticleInfo)this.a.a.a.a().mGroupSubArticleList.get(0);
+    } while ((localArticleInfo == null) || (localArticleInfo.mPolymericInfo == null) || (localArticleInfo.mPolymericInfo.f != paramLong));
+    ComponentHeaderPolymeric.a(this.a).setVisibility(0);
+    if (paramBoolean)
+    {
+      ComponentHeaderPolymeric.a(this.a, true);
+      if ((localArticleInfo.mTopicRecommendFeedsInfo != null) && (localArticleInfo.mTopicRecommendFeedsInfo.a != null)) {
+        ((qzd)localArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).c = 1;
+      }
+      if (localArticleInfo.mPolymericInfo != null)
+      {
+        localArticleInfo.mPolymericInfo.e = 2;
+        return;
+      }
+      QLog.e("ComponentHeaderPolymeric", 2, "articleInfo mPolymericInfo == null articleInfo.mArticleID = " + localArticleInfo.mArticleID);
+      return;
+    }
+    ComponentHeaderPolymeric.a(this.a, false);
+    if ((localArticleInfo.mTopicRecommendFeedsInfo != null) && (localArticleInfo.mTopicRecommendFeedsInfo.a != null)) {
+      ((qzd)localArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).c = 0;
+    }
+    if (localArticleInfo.mPolymericInfo != null)
+    {
+      localArticleInfo.mPolymericInfo.e = 1;
+      return;
+    }
+    QLog.e("ComponentHeaderPolymeric", 2, "articleInfo mPolymericInfo == null articleInfo.mArticleID = " + localArticleInfo.mArticleID);
   }
   
-  public final void a(boolean paramBoolean1, boolean paramBoolean2, @NotNull String paramString, int paramInt, @NotNull Function1<? super Integer, Unit> paramFunction1)
+  public void b(long paramLong, boolean paramBoolean)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "uin");
-    Intrinsics.checkParameterIsNotNull(paramFunction1, "callback");
-    QLog.i("RIJPushNotifyModule", 1, "requestUpdatePushStatus " + "isOpenPushNotify: " + paramBoolean1 + ", isDefaultOpen: " + paramBoolean2 + ", " + "uin: " + paramString + ", type: " + paramInt);
-    oidb_0xe9d.ReqBody localReqBody = new oidb_0xe9d.ReqBody();
-    localReqBody.bool_default_on.set(paramBoolean2);
-    localReqBody.string_request_param.set("{\"type\":" + paramInt + ",\"unique_id\":[\"" + paramString + "\"]}");
-    localReqBody.bool_special_follow.set(paramBoolean1);
-    nir.a(pha.a(), (niv)new qpx(paramFunction1), localReqBody.toByteArray(), "OidbSvc.0xe9d", 3741, 1, new Bundle(), 5000L);
+    int i;
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      i = 1;
+      if (i != 0) {
+        break label32;
+      }
+      QLog.e("ComponentHeaderPolymeric", 2, "Please call this method in main thread!!!");
+    }
+    label32:
+    ArticleInfo localArticleInfo;
+    do
+    {
+      return;
+      i = 0;
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.d("ComponentHeaderPolymeric", 2, "onUpdateAfterAccountFollow uin = " + paramLong + " isFollow = " + paramBoolean);
+      }
+      localArticleInfo = (ArticleInfo)this.a.a.a.a().mGroupSubArticleList.get(0);
+    } while ((localArticleInfo == null) || (localArticleInfo.mPolymericInfo == null) || (localArticleInfo.mPolymericInfo.b != paramLong));
+    SocializeFeedsInfo localSocializeFeedsInfo = localArticleInfo.mSocialFeedInfo;
+    ComponentHeaderPolymeric.a(this.a).setVisibility(0);
+    if (paramBoolean)
+    {
+      ComponentHeaderPolymeric.a(this.a, true);
+      if (localSocializeFeedsInfo != null) {
+        localSocializeFeedsInfo.h = 2;
+      }
+      localArticleInfo.mPolymericInfo.e = 2;
+      return;
+    }
+    ComponentHeaderPolymeric.a(this.a, false);
+    if (localSocializeFeedsInfo != null) {
+      localSocializeFeedsInfo.h = 1;
+    }
+    localArticleInfo.mPolymericInfo.e = 1;
   }
 }
 

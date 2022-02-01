@@ -1,155 +1,77 @@
 import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralRecommendFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.biz.qqstory.storyHome.tag.TagFlowLayout;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import java.io.File;
 
+@Deprecated
 public class yem
-  extends zpa<ycb>
-  implements yqh
 {
-  public static final String KEY = "DetailTagListSegment";
-  private ycb jdField_a_of_type_Ycb;
-  private ynb jdField_a_of_type_Ynb;
-  private yqd jdField_a_of_type_Yqd;
-  private boolean b = true;
+  @NonNull
+  private final QQAppInterface a;
   
-  public yem(Context paramContext)
+  public yem(@NonNull QQAppInterface paramQQAppInterface)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Yqd = new yqd(paramContext);
+    this.a = paramQQAppInterface;
   }
   
-  public void Q_()
+  public Intent a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    xfv.a(this.jdField_a_of_type_AndroidContentContext, "com.tencent.qim");
-    yqu.a("home_page", "clk_tag", 0, 0, new String[] { "2", "3", "", this.jdField_a_of_type_Ycb.a.feedId });
+    return a(paramContext, paramBoolean1, paramBoolean2, new Intent());
   }
   
-  public void T_()
+  public Intent a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, Intent paramIntent)
   {
-    if (((StoryDetailListView)a()).a())
+    boolean bool1 = false;
+    paramIntent.putExtra("videoIsUsable", paramBoolean2);
+    Object localObject1 = (bbav)this.a.getManager(36);
+    Object localObject2 = ((bbav)localObject1).a("103100.103500.103501");
+    if (localObject2 != null) {
+      if (((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.get() == 1) {
+        paramBoolean1 = true;
+      }
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ycb != null) && (this.jdField_a_of_type_Ycb.d())) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View a(int paramInt, ynb paramynb, ViewGroup paramViewGroup)
-  {
-    TagFlowLayout localTagFlowLayout = (TagFlowLayout)paramynb.a(2131378261);
-    String str = null;
-    if ((this.jdField_a_of_type_Ycb.a instanceof VideoListFeedItem)) {
-      str = ((VideoListFeedItem)this.jdField_a_of_type_Ycb.a).mQimSyncWording;
-    }
-    paramViewGroup = this.jdField_a_of_type_Ycb.a();
-    if (paramViewGroup != null) {}
-    for (boolean bool2 = paramViewGroup.getOwner().isVipButNoFriend();; bool2 = false)
-    {
-      paramViewGroup = "";
-      boolean bool1;
-      if (this.jdField_a_of_type_Ycb.a.feedSourceTagType == 1)
+      localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("flow_filter_reddot_sp", 4);
+      if (((SharedPreferences)localObject2).getBoolean("flow_filter_reddot_key", false))
       {
-        paramViewGroup = zme.b(this.jdField_a_of_type_Ycb.a.feedSourceTagType);
-        if ((TextUtils.isEmpty(paramViewGroup)) && (this.jdField_a_of_type_Ycb.a.feedSourceTagType == 1))
-        {
-          paramViewGroup = "来自微视APP";
-          bool1 = true;
-        }
+        ((bbav)localObject1).b("103100.103500.103501");
+        ((SharedPreferences)localObject2).edit().putBoolean("flow_filter_reddot_key", false).commit();
+        paramBoolean1 = false;
       }
       for (;;)
       {
-        this.jdField_a_of_type_Yqd.a(this.jdField_a_of_type_Ycb.b(), str, this.b, bool1, paramViewGroup);
-        this.jdField_a_of_type_Yqd.a(this);
-        if (bool2) {
-          yqu.a("weishi_share", "tag_exp", 0, 0, new String[] { "2", this.jdField_a_of_type_Ycb.a.getOwner().getUnionId(), "weishi", this.jdField_a_of_type_Ycb.a.feedId });
+        if (!BaseApplicationImpl.getApplication().getSharedPreferences("flow_filter_reddot_pkg_sp" + this.a.getCurrentAccountUin(), 4).getBoolean("flow_filter_reddot_key", false)) {
+          bool1 = true;
         }
-        localTagFlowLayout.setAdapter(this.jdField_a_of_type_Yqd);
-        return paramynb.a();
-        bool1 = true;
-        continue;
-        bool1 = false;
+        boolean bool2 = bdek.a(this.a, BaseApplicationImpl.getContext());
+        localObject1 = agju.a(win.e);
+        localObject2 = new File(antf.bn);
+        if (!((File)localObject2).exists()) {
+          ((File)localObject2).mkdirs();
+        }
+        return wnw.a(paramContext, paramBoolean2, paramIntent, paramBoolean1, bool1, bool2, (String)localObject1, this.a.getAccount());
+        paramBoolean1 = false;
+        break;
       }
+      paramBoolean1 = false;
     }
   }
   
-  public String a()
+  public void a(@NonNull Intent paramIntent)
   {
-    return "DetailTagListSegment";
-  }
-  
-  public ynb a(int paramInt, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_Ynb = new ynb(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561664, paramViewGroup, false));
-    return this.jdField_a_of_type_Ynb;
-  }
-  
-  public void a(ycb paramycb)
-  {
-    this.jdField_a_of_type_Ycb = paramycb;
-  }
-  
-  public void a(zhq paramzhq)
-  {
-    xfv.a(this.jdField_a_of_type_AndroidContentContext, paramzhq);
-    if (paramzhq.jdField_a_of_type_Int == 0) {}
-    for (String str = "1";; str = "2")
-    {
-      yqu.a("home_page", "clk_tag", 0, 0, new String[] { "2", str, String.valueOf(paramzhq.jdField_a_of_type_Long), this.jdField_a_of_type_Ycb.a.feedId });
-      return;
-    }
-  }
-  
-  public void f()
-  {
-    if (!this.b) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.b = bool;
-      yqu.a("home_page", "clk_tag_more", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_Ycb.a.feedId });
-      return;
-    }
-  }
-  
-  public void h()
-  {
-    String str;
-    if (this.jdField_a_of_type_Ycb.a.feedSourceTagType == 1)
-    {
-      if (this.jdField_a_of_type_Ycb.a.type != 1) {
-        break label149;
-      }
-      str = ((GeneralFeedItem)this.jdField_a_of_type_Ycb.a).wsSchemaForMemories;
-      zol.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ycb.a.getOwner().getUnionId(), "2", this.jdField_a_of_type_Ycb.a.feedId, 1, str);
-      if (!zmi.a(this.jdField_a_of_type_AndroidContentContext)) {
-        break label169;
-      }
-    }
-    label149:
-    label169:
-    for (int i = 2;; i = 1)
-    {
-      yqu.a("weishi_share", "tag_clk", 0, i, new String[] { "2", this.jdField_a_of_type_Ycb.a.getOwner().getUnionId(), "weishi", this.jdField_a_of_type_Ycb.a.feedId });
-      return;
-      str = ((GeneralRecommendFeedItem)this.jdField_a_of_type_Ycb.a).wsSchemaForMemories;
-      break;
-    }
+    paramIntent.putExtra("short_video_refer", "qqstory");
+    paramIntent.putExtra("set_user_callback", QQStoryFlowCallback.class.getCanonicalName());
+    paramIntent.putExtra("enable_local_video", true);
+    paramIntent.putExtra("ignore_dpc_duration", true);
+    paramIntent.putExtra("video_duration", 10);
   }
 }
 

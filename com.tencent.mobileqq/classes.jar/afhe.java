@@ -1,34 +1,18 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afhe
-  implements View.OnLongClickListener
+  implements View.OnClickListener
 {
-  public afhe(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public afhe(QQMapActivity paramQQMapActivity) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (!TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a("web_view_long_click", true))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
-      }
-      return true;
-    }
-    if (!TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.b(this.a).a("image_long_click", false))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
-      }
-      return false;
-    }
-    bhpf localbhpf = (bhpf)this.a.mComponentsProvider.a(8);
-    if ((localbhpf != null) && (localbhpf.a(paramView))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    this.a.u();
+    bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "sdk_locate", "click_send", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

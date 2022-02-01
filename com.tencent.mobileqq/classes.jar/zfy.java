@@ -1,6 +1,32 @@
-public class zfy
-  extends zgl
-{}
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+
+public abstract class zfy
+{
+  public final int a;
+  public final String a;
+  public final int b;
+  public String b;
+  
+  public zfy(int paramInt1, String paramString, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+  }
+  
+  @NonNull
+  public abstract Class<? extends zfz> a();
+  
+  @NonNull
+  public abstract zfz a(@NonNull Context paramContext, ViewGroup paramViewGroup);
+  
+  public boolean a()
+  {
+    return false;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

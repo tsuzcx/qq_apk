@@ -1,715 +1,707 @@
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import dynamic_plugin_interface.UserDynamicPlugin.ReqGetUserDynamicPlugin;
-import dynamic_plugin_interface.UserDynamicPlugin.ReqSetUserDynamicPlugin;
-import dynamic_plugin_interface.UserDynamicPlugin.RspGetUserDynamicPlugin;
-import dynamic_plugin_interface.UserDynamicPlugin.RspSetUserDynamicPlugin;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Paint.Cap;
+import android.graphics.Paint.Join;
+import android.graphics.Paint.Style;
+import android.graphics.Shader.TileMode;
+import android.graphics.Typeface;
+import android.support.v4.util.MQLruCache;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hiboom.HiBoomFontDrawer.1;
+import com.tencent.mobileqq.hiboom.HiBoomFontDrawer.2;
+import com.tencent.mobileqq.hiboom.HiBoomFontDrawer.3;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import tencent.im.PluginConfig.PluginConfig.BatchGetResourceReq;
-import tencent.im.PluginConfig.PluginConfig.BatchGetResourceResp;
-import tencent.im.PluginConfig.PluginConfig.GetResourceReq;
-import tencent.im.PluginConfig.PluginConfig.GetResourceResp;
-import tencent.im.PluginConfig.PluginConfig.GetResourceRespInfo;
-import tencent.im.PluginConfig.PluginConfig.PluginGroup;
-import tencent.im.PluginConfig.PluginConfig.PluginLayout;
+import java.util.Vector;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.annotation.Nonnull;
+import mqq.os.MqqHandler;
 
 public class avrf
-  extends anii
 {
-  protected boolean a;
+  public int a;
+  Paint a;
+  public Typeface a;
+  public avre a;
+  public avrg a;
+  public ArrayList<WeakReference<HiBoomTextView>> a;
+  public Vector<String> a;
+  public AtomicBoolean a;
+  public int b;
+  public AtomicBoolean b;
+  public int c;
+  public AtomicBoolean c;
   
-  public avrf(QQAppInterface paramQQAppInterface)
+  avrf(int paramInt, @Nonnull avre paramavre)
   {
-    super(paramQQAppInterface);
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_JavaUtilVector = new Vector();
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_Avre = paramavre;
+    a(true);
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  /* Error */
+  public static Bitmap a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.CommPluginHandler", 2, "handleBatchGetPluginList");
-    }
-    Object localObject2 = "";
-    boolean bool2;
-    Object localObject1;
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: new 58	java/io/BufferedInputStream
+    //   5: dup
+    //   6: new 60	java/io/FileInputStream
+    //   9: dup
+    //   10: aload_0
+    //   11: invokespecial 63	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 66	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   17: astore_1
+    //   18: aload_1
+    //   19: astore_0
+    //   20: aload_1
+    //   21: invokestatic 72	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   24: astore_2
+    //   25: aload_2
+    //   26: astore_0
+    //   27: aload_1
+    //   28: ifnull +9 -> 37
+    //   31: aload_1
+    //   32: invokevirtual 75	java/io/BufferedInputStream:close	()V
+    //   35: aload_2
+    //   36: astore_0
+    //   37: aload_0
+    //   38: areturn
+    //   39: astore_0
+    //   40: ldc 77
+    //   42: iconst_1
+    //   43: ldc 79
+    //   45: aload_0
+    //   46: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   49: aload_2
+    //   50: areturn
+    //   51: astore_2
+    //   52: aconst_null
+    //   53: astore_1
+    //   54: aload_1
+    //   55: astore_0
+    //   56: ldc 77
+    //   58: iconst_1
+    //   59: ldc 79
+    //   61: aload_2
+    //   62: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   65: aload_3
+    //   66: astore_0
+    //   67: aload_1
+    //   68: ifnull -31 -> 37
+    //   71: aload_1
+    //   72: invokevirtual 75	java/io/BufferedInputStream:close	()V
+    //   75: aconst_null
+    //   76: areturn
+    //   77: astore_0
+    //   78: ldc 77
+    //   80: iconst_1
+    //   81: ldc 79
+    //   83: aload_0
+    //   84: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   87: aconst_null
+    //   88: areturn
+    //   89: astore_2
+    //   90: aconst_null
+    //   91: astore_1
+    //   92: aload_1
+    //   93: astore_0
+    //   94: ldc 77
+    //   96: iconst_1
+    //   97: ldc 79
+    //   99: aload_2
+    //   100: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   103: aload_3
+    //   104: astore_0
+    //   105: aload_1
+    //   106: ifnull -69 -> 37
+    //   109: aload_1
+    //   110: invokevirtual 75	java/io/BufferedInputStream:close	()V
+    //   113: aconst_null
+    //   114: areturn
+    //   115: astore_0
+    //   116: ldc 77
+    //   118: iconst_1
+    //   119: ldc 79
+    //   121: aload_0
+    //   122: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   125: aconst_null
+    //   126: areturn
+    //   127: astore_1
+    //   128: aconst_null
+    //   129: astore_0
+    //   130: aload_0
+    //   131: ifnull +7 -> 138
+    //   134: aload_0
+    //   135: invokevirtual 75	java/io/BufferedInputStream:close	()V
+    //   138: aload_1
+    //   139: athrow
+    //   140: astore_0
+    //   141: ldc 77
+    //   143: iconst_1
+    //   144: ldc 79
+    //   146: aload_0
+    //   147: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   150: goto -12 -> 138
+    //   153: astore_1
+    //   154: goto -24 -> 130
+    //   157: astore_2
+    //   158: goto -66 -> 92
+    //   161: astore_2
+    //   162: goto -108 -> 54
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	165	0	paramString	String
+    //   17	93	1	localBufferedInputStream	java.io.BufferedInputStream
+    //   127	12	1	localObject1	Object
+    //   153	1	1	localObject2	Object
+    //   24	26	2	localBitmap	Bitmap
+    //   51	11	2	localException1	Exception
+    //   89	11	2	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   157	1	2	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   161	1	2	localException2	Exception
+    //   1	103	3	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   31	35	39	java/io/IOException
+    //   2	18	51	java/lang/Exception
+    //   71	75	77	java/io/IOException
+    //   2	18	89	java/lang/OutOfMemoryError
+    //   109	113	115	java/io/IOException
+    //   2	18	127	finally
+    //   134	138	140	java/io/IOException
+    //   20	25	153	finally
+    //   56	65	153	finally
+    //   94	103	153	finally
+    //   20	25	157	java/lang/OutOfMemoryError
+    //   20	25	161	java/lang/Exception
+  }
+  
+  private void a(Canvas paramCanvas, String paramString, int paramInt1, int paramInt2, avrh paramavrh, avrj paramavrj, float paramFloat)
+  {
     int i;
-    label85:
-    boolean bool1;
-    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null) && (paramObject != null))
+    Paint localPaint;
+    Bitmap localBitmap;
+    Canvas localCanvas;
+    Object localObject2;
+    Object localObject1;
+    if (paramInt1 > paramInt2)
     {
-      bool2 = true;
-      if (bool2) {
-        localObject1 = new PluginConfig.BatchGetResourceResp();
+      i = paramInt1;
+      localPaint = new Paint();
+      localPaint.setAntiAlias(true);
+      localPaint.setDither(true);
+      localPaint.setFilterBitmap(true);
+      localPaint.setTextSize(i);
+      localPaint.setColor(-16777216);
+      if (this.jdField_a_of_type_AndroidGraphicsTypeface != null) {
+        localPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
       }
-    }
-    else
-    {
-      try
+      localBitmap = Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_8888);
+      localCanvas = new Canvas(localBitmap);
+      localObject2 = null;
+      localObject1 = paramavrj.jdField_b_of_type_ArrayOfInt;
+      if ((localObject1 != null) && (localObject1[3] != 0)) {
+        break label972;
+      }
+      if (!TextUtils.isEmpty(paramavrj.jdField_b_of_type_JavaLangString)) {
+        break label872;
+      }
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty(paramavrh.d))
       {
-        Object localObject4 = (PluginConfig.BatchGetResourceResp)((PluginConfig.BatchGetResourceResp)localObject1).mergeFrom((byte[])paramObject);
-        if (!((PluginConfig.BatchGetResourceResp)localObject4).errcode.has()) {
-          break label415;
+        if ((!paramavrh.d.startsWith("#")) || (paramavrh.d.length() != 9)) {
+          break label818;
         }
-        i = ((PluginConfig.BatchGetResourceResp)localObject4).errcode.get();
-        if (i != 0) {
-          break label421;
-        }
-        bool1 = true;
-        label93:
+        localPaint.setColor(Color.parseColor(paramavrh.d));
         localObject1 = localObject2;
-        try
-        {
-          if (!((PluginConfig.BatchGetResourceResp)localObject4).errmsg.has()) {
-            break label427;
-          }
-          localObject1 = localObject2;
-          paramObject = ((PluginConfig.BatchGetResourceResp)localObject4).errmsg.get();
-          label121:
-          if (!bool1) {
-            break label467;
-          }
-          localObject1 = paramObject;
-          if (!((PluginConfig.BatchGetResourceResp)localObject4).resp_list.has()) {
-            break label482;
-          }
-          localObject1 = paramObject;
-          localObject2 = ((PluginConfig.BatchGetResourceResp)localObject4).resp_list.get();
-          label153:
-          if (localObject2 == null) {
-            break label433;
-          }
-          localObject1 = paramObject;
-          if (((List)localObject2).isEmpty()) {
-            break label433;
-          }
-          localObject1 = paramObject;
-          localObject2 = ((List)localObject2).iterator();
-          for (;;)
-          {
-            localObject1 = paramObject;
-            if (!((Iterator)localObject2).hasNext()) {
-              break;
-            }
-            localObject1 = paramObject;
-            localObject4 = (PluginConfig.GetResourceResp)((Iterator)localObject2).next();
-            if (localObject4 != null)
-            {
-              localObject1 = paramObject;
-              if (((PluginConfig.GetResourceResp)localObject4).plugin_type.get() != 4000)
-              {
-                localObject1 = paramObject;
-                if (((PluginConfig.GetResourceResp)localObject4).plugin_type.get() != 4026) {}
-              }
-              else
-              {
-                localObject1 = paramObject;
-                a(true, paramToServiceMsg, paramFromServiceMsg, (PluginConfig.GetResourceResp)localObject4);
-              }
-            }
-          }
-          QLog.d("Q.lebatab.CommPluginHandler", 1, "handleBatchGetPluginList exp:" + ((Exception)localObject1).toString());
-        }
-        catch (Exception localException2)
-        {
-          paramObject = localObject1;
-          localObject1 = localException2;
-        }
       }
-      catch (Exception localException1)
+      label182:
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label1301;
+      }
+      localPaint.setColor(-16777216);
+      localObject1 = (Bitmap)BaseApplicationImpl.sImageCache.get(localObject1);
+      paramavrh = (avrh)localObject1;
+      if (localObject1 != null)
       {
-        for (;;)
+        if (((Bitmap)localObject1).getWidth() == i)
         {
-          i = -1;
-          paramObject = "";
+          paramavrh = (avrh)localObject1;
+          if (((Bitmap)localObject1).getHeight() == i) {}
         }
+        else
+        {
+          paramavrh = new Matrix();
+          paramavrh.setScale(i / ((Bitmap)localObject1).getWidth(), i / ((Bitmap)localObject1).getHeight());
+          paramavrh = Bitmap.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), paramavrh, false);
+        }
+        localPaint.setShader(new BitmapShader(paramavrh, Shader.TileMode.REPEAT, Shader.TileMode.MIRROR));
       }
-      bool1 = false;
     }
-    label415:
-    label421:
-    label427:
-    label433:
-    label467:
-    label482:
-    label488:
     for (;;)
     {
-      if ((bool1) && (bool2)) {}
-      for (boolean bool3 = true;; bool3 = false)
-      {
-        if (!bool3) {
-          a(false, paramToServiceMsg, paramFromServiceMsg, null);
-        }
-        QLog.d("Q.lebatab.CommPluginHandler", 1, new Object[] { "handleBatchGetPluginList finalResult:", Boolean.valueOf(bool3), ",ssoSuc=", Boolean.valueOf(bool2), ",busiSuc=", Boolean.valueOf(bool1), ",busiErrCode=", Integer.valueOf(i), ",errMsg=", paramObject });
-        return;
-        bool2 = false;
-        break;
-        i = -1;
-        break label85;
-        bool1 = false;
-        break label93;
-        paramObject = "";
-        break label121;
-        bool1 = false;
-        localObject1 = paramObject;
-        QLog.d("Q.lebatab.CommPluginHandler", 1, "handleBatchGetPluginList respInfoList is null");
-        break label488;
+      localCanvas.drawColor(Color.parseColor(paramavrj.jdField_c_of_type_JavaLangString));
+      localCanvas.drawText(paramString, 0.0F, (int)(i / 2.0F - (localPaint.descent() + localPaint.ascent()) / 2.0F), localPaint);
+      localCanvas.save();
+      if (paramavrh != null) {
+        paramavrh.recycle();
       }
-      break label488;
-      i = -1;
-      bool1 = false;
-      paramObject = localException2;
-      continue;
-      Object localObject3 = null;
-      break label153;
-    }
-  }
-  
-  private void a(List<PluginConfig.GetResourceReq> paramList)
-  {
-    QLog.i("Q.lebatab.CommPluginHandler", 1, "batchGetPluginList");
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      QLog.i("Q.lebatab.CommPluginHandler", 1, "batchGetPluginList return for req_list is empty");
-      return;
-    }
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "PluginConfig.dynamic_plugin");
-    PluginConfig.BatchGetResourceReq localBatchGetResourceReq = new PluginConfig.BatchGetResourceReq();
-    localBatchGetResourceReq.req_list.set(paramList);
-    localToServiceMsg.putWupBuffer(localBatchGetResourceReq.toByteArray());
-    localToServiceMsg.extraData.putString("uin", this.app.getCurrentAccountUin());
-    sendPbReq(localToServiceMsg);
-  }
-  
-  private void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, PluginConfig.GetResourceResp paramGetResourceResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.CommPluginHandler", 2, "handleGetLebaPluginList");
-    }
-    int i = -1;
-    paramToServiceMsg = Collections.emptyList();
-    paramFromServiceMsg = Collections.emptyList();
-    int k = -1;
-    int j = -1;
-    label100:
-    label121:
-    int m;
-    if (paramBoolean)
-    {
-      if (paramGetResourceResp != null) {}
+      if (paramavrj.jdField_c_of_type_Int > 0)
+      {
+        paramavrh = null;
+        if (!TextUtils.isEmpty(paramavrj.d))
+        {
+          localPaint.setShader(null);
+          localPaint.setStyle(Paint.Style.STROKE);
+          localPaint.setStrokeJoin(Paint.Join.ROUND);
+          localPaint.setStrokeCap(Paint.Cap.ROUND);
+          localPaint.setStrokeWidth(paramavrj.jdField_c_of_type_Int * paramFloat);
+          if ((!paramavrj.d.startsWith("#")) || (paramavrj.d.length() != 9)) {
+            break label1241;
+          }
+          localPaint.setColor(Color.parseColor(paramavrj.d));
+          label485:
+          if (TextUtils.isEmpty(paramavrh)) {
+            break label1295;
+          }
+          localPaint.setColor(-16777216);
+          localObject1 = (Bitmap)BaseApplicationImpl.sImageCache.get(paramavrh);
+          paramavrh = (avrh)localObject1;
+          if (localObject1 != null)
+          {
+            if (((Bitmap)localObject1).getWidth() == i)
+            {
+              paramavrh = (avrh)localObject1;
+              if (((Bitmap)localObject1).getHeight() == i) {}
+            }
+            else
+            {
+              paramavrh = new Matrix();
+              paramavrh.setScale(i / ((Bitmap)localObject1).getWidth(), i / ((Bitmap)localObject1).getHeight());
+              paramavrh = Bitmap.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), paramavrh, false);
+            }
+            localPaint.setShader(new BitmapShader(paramavrh, Shader.TileMode.REPEAT, Shader.TileMode.MIRROR));
+          }
+        }
+      }
       for (;;)
       {
-        try
-        {
-          i = paramGetResourceResp.plugin_type.get();
+        localCanvas.drawText(paramString, 0.0F, (int)(i / 2.0F - (localPaint.descent() + localPaint.ascent()) / 2.0F), localPaint);
+        localCanvas.save();
+        if (paramavrh != null) {
+          paramavrh.recycle();
         }
-        catch (Exception localException1)
-        {
-          Object localObject;
-          List localList;
-          label142:
-          int i1;
-          label162:
-          int n;
-          label312:
-          label355:
-          m = -1;
-          label430:
-          i = j;
-          j = m;
-          paramGetResourceResp = paramFromServiceMsg;
-          paramFromServiceMsg = localException1;
-          continue;
+        paramString = new Matrix();
+        if ((localBitmap.getWidth() != paramInt1) || (localBitmap.getHeight() != paramInt2)) {
+          paramString.postScale(paramInt1 / localBitmap.getWidth(), paramInt2 / localBitmap.getHeight());
         }
-        for (;;)
+        paramString.postTranslate(paramavrj.jdField_c_of_type_ArrayOfInt[0] * paramFloat - paramInt1 / 2, paramavrj.jdField_c_of_type_ArrayOfInt[1] * paramFloat - paramInt2 / 2);
+        paramString.postRotate(paramavrj.jdField_b_of_type_Int, paramavrj.jdField_c_of_type_ArrayOfInt[0] * paramFloat, paramavrj.jdField_c_of_type_ArrayOfInt[1] * paramFloat);
+        paramCanvas.drawBitmap(localBitmap, paramString, localPaint);
+        paramCanvas.save();
+        localBitmap.recycle();
+        return;
+        i = paramInt2;
+        break;
+        label818:
+        localObject1 = this.jdField_a_of_type_Avre.a() + this.jdField_b_of_type_Int + File.separator + "images/" + paramavrh.d;
+        break label182;
+        label872:
+        if ((paramavrj.jdField_b_of_type_JavaLangString.startsWith("#")) && (paramavrj.jdField_b_of_type_JavaLangString.length() == 9))
         {
-          try
-          {
-            if (paramGetResourceResp.plugin_layout.has())
-            {
-              localObject = (PluginConfig.PluginLayout)paramGetResourceResp.plugin_layout.get();
-              if (localObject == null) {
-                continue;
-              }
-              if (!((PluginConfig.PluginLayout)localObject).layout_type.has()) {
-                break label312;
-              }
-              j = ((PluginConfig.PluginLayout)localObject).layout_type.get();
-            }
-          }
-          catch (Exception localException2)
-          {
-            j = -1;
-            paramGetResourceResp = paramFromServiceMsg;
-            paramFromServiceMsg = localException2;
-            break label430;
-            j = -1;
-            localFromServiceMsg = paramFromServiceMsg;
-            break label355;
-          }
-          try
-          {
-            if (((PluginConfig.PluginLayout)localObject).plugin_layout_seq.has()) {
-              k = ((PluginConfig.PluginLayout)localObject).plugin_layout_seq.get();
-            }
-          }
-          catch (Exception localException3)
-          {
-            m = -1;
-            k = j;
-            j = m;
-            paramGetResourceResp = paramFromServiceMsg;
-            paramFromServiceMsg = localException3;
-            break label430;
-          }
+          localPaint.setColor(Color.parseColor(paramavrj.jdField_b_of_type_JavaLangString));
+          localObject1 = localObject2;
+          break label182;
         }
-        for (;;)
+        localObject1 = this.jdField_a_of_type_Avre.a() + this.jdField_b_of_type_Int + File.separator + "images/" + paramavrj.jdField_b_of_type_JavaLangString;
+        break label182;
+        label972:
+        paramavrh = this.jdField_a_of_type_Avre.a() + this.jdField_b_of_type_Int + File.separator + "images/" + paramavrj.jdField_b_of_type_JavaLangString;
+        paramavrh = (Bitmap)BaseApplicationImpl.sImageCache.get(paramavrh);
+        if (paramavrh == null) {
+          break label1301;
+        }
+        int k = paramavrh.getWidth();
+        int j = paramavrh.getHeight();
+        double d;
+        if (localObject1[3] == -1)
         {
-          try
-          {
-            if (((PluginConfig.PluginLayout)localObject).group_list.has())
-            {
-              localList = ((PluginConfig.PluginLayout)localObject).group_list.get();
-              if (localList == null) {
-                continue;
-              }
-              localObject = new ArrayList();
-              m = 0;
-              i1 = 0;
-            }
-          }
-          catch (Exception localException4)
-          {
-            m = k;
-            k = j;
-            j = m;
-            paramGetResourceResp = paramFromServiceMsg;
-            paramFromServiceMsg = localException4;
-            break label430;
-            m = k;
-            k = j;
-            localFromServiceMsg = paramFromServiceMsg;
-            j = m;
-            break label355;
-          }
-          try
-          {
-            if (i1 < localList.size())
-            {
-              paramFromServiceMsg = (PluginConfig.PluginGroup)localList.get(i1);
-              n = m;
-              if (paramFromServiceMsg.has())
-              {
-                n = m;
-                if (paramFromServiceMsg.res_id.has())
-                {
-                  paramFromServiceMsg = paramFromServiceMsg.res_id.get();
-                  int i2 = 0;
-                  for (;;)
-                  {
-                    n = m;
-                    if (i2 >= paramFromServiceMsg.size()) {
-                      break;
-                    }
-                    anow localanow = new anow();
-                    localanow.jdField_a_of_type_Long = ((Integer)paramFromServiceMsg.get(i2)).intValue();
-                    localanow.jdField_a_of_type_Int = i1;
-                    m += 1;
-                    localanow.b = m;
-                    ((List)localObject).add(localanow);
-                    i2 += 1;
-                  }
-                  localObject = null;
-                  break;
-                  j = -1;
-                  break label100;
-                  k = -1;
-                  break label121;
-                  localList = null;
-                  break label142;
-                }
-              }
-              i1 += 1;
-              m = n;
-              break label162;
-            }
-            m = j;
-            j = k;
-            k = m;
-          }
-          catch (Exception paramFromServiceMsg)
-          {
-            paramGetResourceResp = localException4;
-            m = k;
-            k = j;
-            j = m;
-            break label430;
-          }
+          k = (int)(Math.random() * (k - paramInt1));
+          d = Math.random();
         }
+        for (localObject1 = Bitmap.createBitmap(paramavrh, k, (int)((j - paramInt2) * d), paramInt1, paramInt2);; localObject1 = Bitmap.createBitmap(paramavrh, localObject1[0], localObject1[1], localObject1[2], localObject1[3]))
+        {
+          paramavrh = (avrh)localObject1;
+          if (localObject1 == null) {
+            break;
+          }
+          if (((Bitmap)localObject1).getWidth() == i)
+          {
+            paramavrh = (avrh)localObject1;
+            if (((Bitmap)localObject1).getHeight() == i) {}
+          }
+          else
+          {
+            paramavrh = new Matrix();
+            paramavrh.setScale(i / ((Bitmap)localObject1).getWidth(), i / ((Bitmap)localObject1).getHeight());
+            paramavrh = Bitmap.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), paramavrh, false);
+          }
+          localPaint.setShader(new BitmapShader(paramavrh, Shader.TileMode.REPEAT, Shader.TileMode.MIRROR));
+          break;
+        }
+        label1241:
+        paramavrh = this.jdField_a_of_type_Avre.a() + this.jdField_b_of_type_Int + File.separator + "images/" + paramavrj.d;
+        break label485;
+        label1295:
+        paramavrh = null;
       }
-      try
-      {
-        paramFromServiceMsg = paramGetResourceResp.respinfo_list.get();
-        paramGetResourceResp = new ArrayList();
-        if (paramFromServiceMsg == null) {
-          break label572;
-        }
-        try
-        {
-          paramToServiceMsg = paramFromServiceMsg.iterator();
-          while (paramToServiceMsg.hasNext())
-          {
-            paramFromServiceMsg = LebaPluginInfo.convToLocalPluginInfo((PluginConfig.GetResourceRespInfo)paramToServiceMsg.next());
-            if (paramFromServiceMsg != null) {
-              paramGetResourceResp.add(paramFromServiceMsg);
-            }
-          }
-          QLog.d("Q.lebatab.CommPluginHandler", 1, "handleGetLebaPluginList exp:" + paramFromServiceMsg.toString());
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          paramToServiceMsg = paramGetResourceResp;
-          paramGetResourceResp = (PluginConfig.GetResourceResp)localObject;
-        }
+      label1301:
+      paramavrh = null;
+    }
+  }
+  
+  private void a(List<String> paramList)
+  {
+    ThreadManager.post(new HiBoomFontDrawer.2(this, paramList), 8, null, true);
+  }
+  
+  private boolean a(String paramString)
+  {
+    int i;
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.startsWith("#")))
+    {
+      paramString = this.jdField_a_of_type_Avre.a() + this.jdField_b_of_type_Int + File.separator + "images/" + paramString;
+      i = 0;
+      if (i >= this.jdField_a_of_type_JavaUtilVector.size()) {
+        break label99;
       }
-      catch (Exception paramFromServiceMsg)
-      {
-        paramGetResourceResp = localException4;
-        break label430;
+      if (!paramString.equals(this.jdField_a_of_type_JavaUtilVector.get(i))) {
+        break label92;
       }
-      m = k;
-      paramBoolean = false;
-      k = i;
-      i = m;
-      paramFromServiceMsg = paramGetResourceResp;
+    }
+    label92:
+    label99:
+    while (BaseApplicationImpl.sImageCache.get(paramString) != null)
+    {
+      return false;
+      i += 1;
+      break;
+    }
+    return true;
+  }
+  
+  private void b()
+  {
+    ThreadManager.getUIHandler().post(new HiBoomFontDrawer.3(this));
+  }
+  
+  private void b(Canvas paramCanvas, String paramString, int paramInt1, int paramInt2, avrh paramavrh, avrj paramavrj, float paramFloat)
+  {
+    Paint localPaint;
+    float f1;
+    float f2;
+    if (paramInt1 > paramInt2)
+    {
+      localPaint = new Paint();
+      localPaint.setAntiAlias(true);
+      localPaint.setDither(true);
+      localPaint.setFilterBitmap(true);
+      localPaint.setTextSize(paramInt1);
+      f1 = paramavrj.jdField_c_of_type_ArrayOfInt[0] * paramFloat;
+      f2 = paramavrj.jdField_c_of_type_ArrayOfInt[1] * paramFloat;
+      localPaint.setColor(Color.parseColor(paramavrj.jdField_c_of_type_JavaLangString));
+      paramCanvas.drawRect(f1 - paramInt1 / 2, f2 - paramInt1 / 2, f1 + paramInt1 / 2, f2 + paramInt1 / 2, localPaint);
+      paramCanvas.save();
+      if (this.jdField_a_of_type_AndroidGraphicsTypeface != null) {
+        localPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+      }
+      if (!TextUtils.isEmpty(paramavrj.jdField_b_of_type_JavaLangString)) {
+        break label396;
+      }
+      if ((!TextUtils.isEmpty(paramavrh.d)) && (paramavrh.d.startsWith("#")) && (paramavrh.d.length() == 9)) {
+        localPaint.setColor(Color.parseColor(paramavrh.d));
+      }
     }
     for (;;)
     {
-      if (paramToServiceMsg != null)
+      paramCanvas.drawText(paramString, f1 - paramInt1 / 2, paramInt1 / 2.0F - (localPaint.descent() + localPaint.ascent()) / 2.0F - paramInt1 / 2 + f2, localPaint);
+      paramCanvas.save();
+      if ((paramavrj.jdField_c_of_type_Int > 0) && (!TextUtils.isEmpty(paramavrj.d)))
       {
-        m = paramToServiceMsg.size();
-        label488:
-        if (paramFromServiceMsg == null) {
-          break label629;
+        localPaint.setShader(null);
+        localPaint.setStyle(Paint.Style.STROKE);
+        localPaint.setStrokeJoin(Paint.Join.ROUND);
+        localPaint.setStrokeCap(Paint.Cap.ROUND);
+        localPaint.setStrokeWidth(paramavrj.jdField_c_of_type_Int * paramFloat);
+        if ((paramavrj.d.startsWith("#")) && (paramavrj.d.length() == 9)) {
+          localPaint.setColor(Color.parseColor(paramavrj.d));
         }
+        paramCanvas.drawText(paramString, f1 - paramInt1 / 2, paramInt1 / 2.0F - (localPaint.descent() + localPaint.ascent()) / 2.0F - paramInt1 / 2 + f2, localPaint);
+        paramCanvas.save();
       }
-      label572:
-      label629:
-      for (n = paramFromServiceMsg.size();; n = 0)
-      {
-        QLog.d("Q.lebatab.CommPluginHandler", 1, new Object[] { "handleGetLebaPluginList isSuc:", Boolean.valueOf(paramBoolean), ", resultInfos.size=", Integer.valueOf(m), ", groupList.size=", Integer.valueOf(n) });
-        this.app.a().a(paramBoolean, j, paramFromServiceMsg, paramToServiceMsg, i, k);
-        return;
-        m = i;
-        paramFromServiceMsg = (FromServiceMsg)localObject;
-        paramToServiceMsg = paramGetResourceResp;
-        i = j;
-        j = m;
-        for (;;)
-        {
-          m = j;
-          j = i;
-          i = k;
-          k = m;
-          break;
-          paramBoolean = false;
-          QLog.d("Q.lebatab.CommPluginHandler", 1, "handleGetLebaPluginList respInfo is null");
-        }
-        m = 0;
-        break label488;
+      return;
+      paramInt1 = paramInt2;
+      break;
+      label396:
+      if ((paramavrj.jdField_b_of_type_JavaLangString.startsWith("#")) && (paramavrj.jdField_b_of_type_JavaLangString.length() == 9)) {
+        localPaint.setColor(Color.parseColor(paramavrj.jdField_b_of_type_JavaLangString));
       }
-      FromServiceMsg localFromServiceMsg;
-      k = -1;
-      j = -1;
-      i = -1;
     }
+  }
+  
+  public int a(boolean paramBoolean)
+  {
+    Object localObject = new File(this.jdField_a_of_type_Avre.a() + this.jdField_b_of_type_Int);
+    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+    {
+      localObject = ((File)localObject).list();
+      if ((localObject != null) && (localObject.length > 0))
+      {
+        int i = 0;
+        while (i < localObject.length)
+        {
+          if (localObject[i].endsWith(".hy")) {
+            return 1;
+          }
+          if (localObject[i].endsWith(".fz")) {
+            return 2;
+          }
+          if (localObject[i].endsWith(".hy3")) {
+            return 3;
+          }
+          if (localObject[i].endsWith(".fz4")) {
+            return 4;
+          }
+          i += 1;
+        }
+      }
+    }
+    if (paramBoolean)
+    {
+      this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      this.jdField_a_of_type_Avre.a(this.jdField_b_of_type_Int);
+    }
+    return -1;
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.CommPluginHandler", 2, "getAllPluginList");
-    }
-    PluginConfig.GetResourceReq localGetResourceReq = this.app.a().a();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(localGetResourceReq);
-    a(localArrayList);
+    this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     b();
   }
   
-  public void a(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void a(HiBoomTextView paramHiBoomTextView)
   {
-    Object localObject = null;
-    int i = 0;
-    boolean bool2 = false;
-    boolean bool1 = false;
-    StringBuilder localStringBuilder = new StringBuilder("handleGetPluginUserSort ");
-    if ((paramFromServiceMsg == null) || (paramObject == null)) {
-      localStringBuilder.append("res == null || data == null");
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     }
-    for (;;)
-    {
-      localStringBuilder.append(", isSuc=").append(bool1);
-      QLog.i("leba_sort", 1, localStringBuilder.toString());
-      if (this.app == null) {
-        break label328;
-      }
-      this.app.a().a(bool1);
-      return;
-      if (paramFromServiceMsg.isSuccess()) {
-        break;
-      }
-      localStringBuilder.append(paramFromServiceMsg.getResultCode()).append("|").append(paramFromServiceMsg.getRequestSsoSeq());
-    }
-    label328:
-    label346:
-    for (paramFromServiceMsg = new UserDynamicPlugin.RspGetUserDynamicPlugin();; paramFromServiceMsg = null) {
-      for (;;)
-      {
-        for (;;)
-        {
-          try
-          {
-            paramObject = (UserDynamicPlugin.RspGetUserDynamicPlugin)paramFromServiceMsg.mergeFrom((byte[])paramObject);
-            if (!paramObject.ret.has()) {
-              break label346;
-            }
-            paramFromServiceMsg = Integer.valueOf(paramObject.ret.get());
-            if (paramFromServiceMsg != null)
-            {
-              int j = paramFromServiceMsg.intValue();
-              if (j == 0)
-              {
-                l = 0L;
-                paramFromServiceMsg = localObject;
-              }
-            }
-          }
-          catch (Exception paramFromServiceMsg)
-          {
-            long l;
-            bool1 = bool2;
-          }
-          try
-          {
-            if (paramObject.plugin_id.has()) {
-              paramFromServiceMsg = paramObject.plugin_id.get();
-            }
-            if (paramObject.last_time.has()) {
-              l = paramObject.last_time.get();
-            }
-            if (paramObject.plugin_type.has()) {
-              i = paramObject.plugin_type.get();
-            }
-            a(paramFromServiceMsg, l, i, localStringBuilder);
-            localStringBuilder.append(" info = ").append(paramFromServiceMsg).append(" lastTime = ").append(l).append(" pluginType = ").append(i);
-            bool1 = true;
-          }
-          catch (Exception paramFromServiceMsg)
-          {
-            for (;;)
-            {
-              bool1 = true;
-            }
-          }
-        }
-        localStringBuilder.append("ret = ").append(paramFromServiceMsg);
-        bool1 = false;
-        continue;
-        QLog.i("leba_sort", 1, "handleGetPluginUserSort", paramFromServiceMsg);
-        break;
-        QLog.i("leba_sort", 1, "handleGetPluginUserSort app == null");
-        return;
-      }
-    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramHiBoomTextView));
   }
   
-  public void a(List<Integer> paramList, long paramLong, int paramInt)
+  public void a(String paramString, int paramInt, Canvas paramCanvas)
   {
-    String str = "";
-    Object localObject = new StringBuffer("setPluginUserSort data= ").append(paramList).append(",time=").append(paramLong).append(",type=").append(paramInt);
-    if (this.app == null) {
-      ((StringBuffer)localObject).append(" app == null");
+    if (TextUtils.isEmpty(paramString)) {
+      throw new Exception("text is null!");
     }
-    for (;;)
-    {
-      QLog.i("leba_sort", 1, ((StringBuffer)localObject).toString());
-      localObject = new ToServiceMsg("mobileqq.service", str, "DynamicPluginSvc.SetList");
-      UserDynamicPlugin.ReqSetUserDynamicPlugin localReqSetUserDynamicPlugin = new UserDynamicPlugin.ReqSetUserDynamicPlugin();
-      localReqSetUserDynamicPlugin.plugin_id.set(paramList);
-      localReqSetUserDynamicPlugin.last_time.set((int)paramLong);
-      localReqSetUserDynamicPlugin.plugin_type.set(paramInt);
-      ((ToServiceMsg)localObject).putWupBuffer(localReqSetUserDynamicPlugin.toByteArray());
-      ((ToServiceMsg)localObject).extraData.putString("uin", str);
-      sendPbReq((ToServiceMsg)localObject);
-      return;
-      str = this.app.getCurrentAccountUin();
+    if (this.jdField_a_of_type_Avrg == null) {
+      throw new Exception("please init font first!");
     }
-  }
-  
-  public void a(List<Integer> paramList, long paramLong, int paramInt, StringBuilder paramStringBuilder)
-  {
-    if (this.app == null) {
-      paramStringBuilder.append(" app == null");
-    }
-    long l;
+    Object localObject2 = null;
+    int i = paramString.length();
+    Object localObject3 = this.jdField_a_of_type_Avrg.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject1;
     do
     {
-      return;
-      l = anoy.a(this.app, paramInt);
-      paramStringBuilder.append(" localTime = ").append(l);
-      if (paramLong >= l)
+      localObject1 = localObject2;
+      if (!((Iterator)localObject3).hasNext()) {
+        break;
+      }
+      localObject1 = (avrh)((Iterator)localObject3).next();
+    } while (((avrh)localObject1).jdField_a_of_type_Int != i);
+    if (localObject1 == null) {
+      throw new Exception("hiboomStyle error!");
+    }
+    int j;
+    label241:
+    float f1;
+    if (localObject1.jdField_a_of_type_ArrayOfInt[0] >= localObject1.jdField_a_of_type_ArrayOfInt[1])
+    {
+      j = localObject1.jdField_a_of_type_ArrayOfInt[1] * paramInt / localObject1.jdField_a_of_type_ArrayOfInt[0];
+      i = paramInt;
+      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
       {
-        SharedPreferences localSharedPreferences = this.app.getPreferences();
-        Object localObject = paramList;
-        if (paramList == null) {
-          localObject = new ArrayList();
-        }
-        anoy.a(localSharedPreferences, (List)localObject, Long.valueOf(paramLong), paramInt);
-        paramStringBuilder.append(" saveUserSortInfo");
-        return;
+        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
       }
-      paramList = anoy.a(this.app, paramInt);
-    } while ((paramList == null) || (paramList.isEmpty()));
-    a(paramList, l, paramInt);
-    paramStringBuilder.append(" setPluginUserSort, localSort = ").append(paramList);
-  }
-  
-  public boolean a(FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool = false;
-    StringBuilder localStringBuilder = new StringBuilder("handleSetPluginUserSort ");
-    if ((paramFromServiceMsg == null) || (paramObject == null)) {
-      localStringBuilder.append("res == null || data == null");
+      if (!TextUtils.isEmpty(((avrh)localObject1).jdField_c_of_type_JavaLangString))
+      {
+        if ((!((avrh)localObject1).jdField_c_of_type_JavaLangString.startsWith("#")) || (((avrh)localObject1).jdField_c_of_type_JavaLangString.length() != 9)) {
+          break label553;
+        }
+        paramCanvas.drawColor(Color.parseColor(((avrh)localObject1).jdField_c_of_type_JavaLangString));
+      }
+      f1 = i / localObject1.jdField_a_of_type_ArrayOfInt[0];
+      paramInt = 0;
+      label257:
+      if (paramInt >= ((avrh)localObject1).b.size()) {
+        break label737;
+      }
+      localObject2 = (avrj)((avrh)localObject1).b.get(paramInt);
+      i = (int)(localObject2.jdField_a_of_type_ArrayOfInt[0] * f1);
+      j = (int)(localObject2.jdField_a_of_type_ArrayOfInt[1] * f1);
+      if ((localObject2.jdField_a_of_type_ArrayOfInt[0] != localObject2.jdField_a_of_type_ArrayOfInt[1]) || (((!TextUtils.isEmpty(((avrj)localObject2).jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(((avrh)localObject1).d)) || (!((avrh)localObject1).d.startsWith("#")) || (((avrh)localObject1).d.length() != 9)) && ((TextUtils.isEmpty(((avrj)localObject2).jdField_b_of_type_JavaLangString)) || (!((avrj)localObject2).jdField_b_of_type_JavaLangString.startsWith("#")) || (((avrj)localObject2).jdField_b_of_type_JavaLangString.length() != 9) || ((((avrj)localObject2).jdField_c_of_type_Int > 0) && ((((avrj)localObject2).jdField_c_of_type_Int <= 0) || (TextUtils.isEmpty(((avrj)localObject2).d)) || (!((avrj)localObject2).d.startsWith("#")) || (((avrj)localObject2).d.length() != 9))) || (((avrj)localObject2).jdField_b_of_type_Int != 0)))) {
+        break label691;
+      }
+      b(paramCanvas, paramString.charAt(((avrj)localObject2).jdField_a_of_type_Int) + "", i, j, (avrh)localObject1, (avrj)localObject2, f1);
     }
     for (;;)
     {
-      localStringBuilder.append(", isSuc=").append(bool);
-      QLog.i("leba_sort", 1, localStringBuilder.toString());
-      return bool;
-      if (!paramFromServiceMsg.isSuccess()) {
-        localStringBuilder.append(paramFromServiceMsg.getResultCode()).append("|").append(paramFromServiceMsg.getRequestSsoSeq());
-      } else {
-        for (paramFromServiceMsg = new UserDynamicPlugin.RspSetUserDynamicPlugin();; paramFromServiceMsg = null)
-        {
-          try
-          {
-            paramFromServiceMsg = (UserDynamicPlugin.RspSetUserDynamicPlugin)paramFromServiceMsg.mergeFrom((byte[])paramObject);
-            if (!paramFromServiceMsg.ret.has()) {
-              continue;
-            }
-            paramFromServiceMsg = Integer.valueOf(paramFromServiceMsg.ret.get());
-            if ((paramFromServiceMsg != null) && (paramFromServiceMsg.intValue() == 0))
-            {
-              bool = true;
-            }
-            else
-            {
-              localStringBuilder.append("ret = ").append(paramFromServiceMsg);
-              bool = false;
-            }
-          }
-          catch (Exception paramFromServiceMsg)
-          {
-            QLog.i("leba_sort", 1, "handleGetPluginUserSort", paramFromServiceMsg);
-          }
-          break;
-        }
-      }
-    }
-  }
-  
-  public void b()
-  {
-    int i;
-    String str;
-    Object localObject;
-    if (bdch.a())
-    {
-      i = 4026;
-      str = "";
-      localObject = new StringBuffer("getPluginUserSort pluginType = ").append(i);
-      if (this.app != null) {
-        break label127;
-      }
-      ((StringBuffer)localObject).append(" app == null");
-    }
-    for (;;)
-    {
-      QLog.i("leba_sort", 1, ((StringBuffer)localObject).toString());
-      localObject = new ToServiceMsg("mobileqq.service", str, "DynamicPluginSvc.GetList");
-      UserDynamicPlugin.ReqGetUserDynamicPlugin localReqGetUserDynamicPlugin = new UserDynamicPlugin.ReqGetUserDynamicPlugin();
-      localReqGetUserDynamicPlugin.platform.set(2);
-      localReqGetUserDynamicPlugin.plugin_type.set(i);
-      ((ToServiceMsg)localObject).putWupBuffer(localReqGetUserDynamicPlugin.toByteArray());
-      ((ToServiceMsg)localObject).extraData.putString("uin", str);
-      sendPbReq((ToServiceMsg)localObject);
-      return;
-      i = 4000;
+      paramInt += 1;
+      break label257;
+      i = localObject1.jdField_a_of_type_ArrayOfInt[0] * paramInt / localObject1.jdField_a_of_type_ArrayOfInt[1];
+      j = paramInt;
       break;
-      label127:
-      str = this.app.getCurrentAccountUin();
+      label553:
+      localObject2 = this.jdField_a_of_type_Avre.a() + this.jdField_b_of_type_Int + File.separator + "images/" + ((avrh)localObject1).jdField_c_of_type_JavaLangString;
+      localObject2 = (Bitmap)BaseApplicationImpl.sImageCache.get(localObject2);
+      if (localObject2 == null) {
+        break label241;
+      }
+      localObject3 = new Matrix();
+      if ((((Bitmap)localObject2).getWidth() != i) || (((Bitmap)localObject2).getHeight() != j)) {
+        ((Matrix)localObject3).setScale(i / ((Bitmap)localObject2).getWidth(), j / ((Bitmap)localObject2).getHeight());
+      }
+      paramCanvas.drawBitmap((Bitmap)localObject2, (Matrix)localObject3, this.jdField_a_of_type_AndroidGraphicsPaint);
+      break label241;
+      label691:
+      a(paramCanvas, paramString.charAt(((avrj)localObject2).jdField_a_of_type_Int) + "", i, j, (avrh)localObject1, (avrj)localObject2, f1);
     }
-  }
-  
-  protected boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null)
+    label737:
+    if (((avrh)localObject1).jdField_a_of_type_JavaUtilList != null)
     {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("PluginConfig.dynamic_plugin");
-      this.allowCmdSet.add("DynamicPluginSvc.GetList");
-      this.allowCmdSet.add("DynamicPluginSvc.SetList");
+      paramString = ((avrh)localObject1).jdField_a_of_type_JavaUtilList.iterator();
+      while (paramString.hasNext())
+      {
+        localObject1 = (avri)paramString.next();
+        if (!TextUtils.isEmpty(((avri)localObject1).jdField_a_of_type_JavaLangString))
+        {
+          localObject2 = this.jdField_a_of_type_Avre.a() + this.jdField_b_of_type_Int + File.separator + "images/" + ((avri)localObject1).jdField_a_of_type_JavaLangString;
+          localObject2 = (Bitmap)BaseApplicationImpl.sImageCache.get(localObject2);
+          localObject3 = new Matrix();
+          float f2 = localObject1.jdField_a_of_type_ArrayOfInt[0] * f1;
+          float f3 = localObject1.jdField_a_of_type_ArrayOfInt[1] * f1;
+          if (localObject2 != null)
+          {
+            if ((((Bitmap)localObject2).getWidth() != f2) || (((Bitmap)localObject2).getHeight() != f3)) {
+              ((Matrix)localObject3).postScale(f2 / ((Bitmap)localObject2).getWidth(), f3 / ((Bitmap)localObject2).getHeight());
+            }
+            ((Matrix)localObject3).postTranslate(localObject1.jdField_b_of_type_ArrayOfInt[0] * f1 - f2 / 2.0F, localObject1.jdField_b_of_type_ArrayOfInt[1] * f1 - f3 / 2.0F);
+            ((Matrix)localObject3).postRotate(((avri)localObject1).jdField_a_of_type_Int, localObject1.jdField_b_of_type_ArrayOfInt[0] * f1, localObject1.jdField_b_of_type_ArrayOfInt[1] * f1);
+            paramCanvas.drawBitmap((Bitmap)localObject2, (Matrix)localObject3, this.jdField_a_of_type_AndroidGraphicsPaint);
+            paramCanvas.save();
+          }
+        }
+      }
     }
-    return !this.allowCmdSet.contains(paramString);
   }
   
-  protected Class<? extends anil> observerClass()
+  public void a(boolean paramBoolean)
   {
-    return null;
-  }
-  
-  public void onDestroy()
-  {
-    this.a = true;
-    super.onDestroy();
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (msgCmdFilter(paramFromServiceMsg.getServiceCmd()))) {
-      QLog.d("Q.lebatab.CommPluginHandler", 1, "req or res is null");
-    }
-    String str;
-    do
-    {
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       return;
-      str = paramFromServiceMsg.getServiceCmd();
-      if ("PluginConfig.dynamic_plugin".equals(str))
+    }
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    ThreadManager.getFileThreadHandler().post(new HiBoomFontDrawer.1(this, paramBoolean));
+  }
+  
+  public boolean a(int paramInt)
+  {
+    ArrayList localArrayList = null;
+    for (;;)
+    {
+      Object localObject3;
+      boolean bool;
+      try
       {
-        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
+        localObject3 = this.jdField_a_of_type_Avrg.jdField_a_of_type_JavaUtilList.iterator();
+        Object localObject1 = localArrayList;
+        if (((Iterator)localObject3).hasNext())
+        {
+          localObject1 = (avrh)((Iterator)localObject3).next();
+          int i = ((avrh)localObject1).jdField_a_of_type_Int;
+          if (i != paramInt) {
+            continue;
+          }
+        }
+        if (localObject1 == null)
+        {
+          bool = false;
+          return bool;
+        }
+        localArrayList = new ArrayList();
+        if (a(((avrh)localObject1).jdField_c_of_type_JavaLangString)) {
+          localArrayList.add(this.jdField_a_of_type_Avre.a() + this.jdField_b_of_type_Int + File.separator + "images/" + ((avrh)localObject1).jdField_c_of_type_JavaLangString);
+        }
+        if (a(((avrh)localObject1).d)) {
+          localArrayList.add(this.jdField_a_of_type_Avre.a() + this.jdField_b_of_type_Int + File.separator + "images/" + ((avrh)localObject1).d);
+        }
+        localObject3 = ((avrh)localObject1).jdField_a_of_type_JavaUtilList.iterator();
+        if (((Iterator)localObject3).hasNext())
+        {
+          avri localavri = (avri)((Iterator)localObject3).next();
+          if (!a(localavri.jdField_a_of_type_JavaLangString)) {
+            continue;
+          }
+          localArrayList.add(this.jdField_a_of_type_Avre.a() + this.jdField_b_of_type_Int + File.separator + "images/" + localavri.jdField_a_of_type_JavaLangString);
+          continue;
+        }
+        localIterator = localObject2.b.iterator();
       }
-      if ("DynamicPluginSvc.GetList".equals(str))
+      finally {}
+      Iterator localIterator;
+      while (localIterator.hasNext())
       {
-        a(paramFromServiceMsg, paramObject);
-        return;
+        localObject3 = (avrj)localIterator.next();
+        if (a(((avrj)localObject3).jdField_c_of_type_JavaLangString)) {
+          localArrayList.add(this.jdField_a_of_type_Avre.a() + this.jdField_b_of_type_Int + File.separator + "images/" + ((avrj)localObject3).jdField_c_of_type_JavaLangString);
+        }
+        if (a(((avrj)localObject3).jdField_b_of_type_JavaLangString)) {
+          localArrayList.add(this.jdField_a_of_type_Avre.a() + this.jdField_b_of_type_Int + File.separator + "images/" + ((avrj)localObject3).jdField_b_of_type_JavaLangString);
+        }
+        if (a(((avrj)localObject3).d)) {
+          localArrayList.add(this.jdField_a_of_type_Avre.a() + this.jdField_b_of_type_Int + File.separator + "images/" + ((avrj)localObject3).d);
+        }
       }
-    } while (!"DynamicPluginSvc.SetList".equals(str));
-    a(paramFromServiceMsg, paramObject);
+      if (localArrayList.size() == 0)
+      {
+        bool = true;
+      }
+      else
+      {
+        a(localArrayList);
+        bool = false;
+      }
+    }
   }
 }
 

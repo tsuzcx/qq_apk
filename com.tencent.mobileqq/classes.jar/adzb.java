@@ -1,31 +1,19 @@
-import android.opengl.GLSurfaceView.Renderer;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Conversation.22.1;
-import com.tencent.mobileqq.activity.Conversation.22.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class adzb
-  implements GLSurfaceView.Renderer
+  implements bjbm
 {
-  public adzb(Conversation paramConversation) {}
+  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131372948);
   
-  public void onDrawFrame(GL10 paramGL10) {}
+  public adzb(BaseChatPie paramBaseChatPie) {}
   
-  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2) {}
-  
-  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
+  public boolean a()
   {
-    Conversation.a(this.a, paramGL10.glGetString(7937));
-    if (Conversation.a(this.a) != null) {
-      ThreadManager.post(new Conversation.22.1(this), 5, null, true);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_GPU", 2, "onSurfaceCreated|GL_RENDERER= " + Conversation.a(this.a));
-    }
-    this.a.a(new Conversation.22.2(this));
+    return (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.isDirty()) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.isDirty()) || (this.jdField_a_of_type_AndroidViewView.isDirty());
   }
 }
 

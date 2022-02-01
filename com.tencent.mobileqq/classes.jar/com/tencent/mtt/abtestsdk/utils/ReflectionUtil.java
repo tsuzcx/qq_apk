@@ -288,67 +288,61 @@ public class ReflectionUtil
   
   public static Object invokeMethod(Object paramObject, String paramString, Object[] paramArrayOfObject, Class<?>[] paramArrayOfClass)
   {
-    int j = 0;
-    int i;
-    Class localClass;
-    if (paramArrayOfObject != null)
+    if (paramArrayOfObject != null) {}
+    for (int i = paramArrayOfObject.length;; i = 0)
     {
-      i = paramArrayOfObject.length;
-      localClass = paramObject.getClass();
-    }
-    for (;;)
-    {
-      Object localObject;
+      Class localClass = paramObject.getClass();
       try
       {
-        localObject = getCacheMethod(localClass, paramString, i);
-        if (localObject != null) {
-          break label132;
-        }
-        localObject = paramArrayOfClass;
-        if (paramArrayOfObject != null)
+        Method localMethod = getCacheMethod(localClass, paramString, i);
+        Object localObject = localMethod;
+        if (localMethod == null)
         {
           localObject = paramArrayOfClass;
-          if (paramArrayOfClass == null)
+          if (paramArrayOfObject != null)
           {
-            paramArrayOfClass = new Class[paramArrayOfObject.length];
-            int k = paramArrayOfObject.length;
             localObject = paramArrayOfClass;
-            if (j < k)
+            if (paramArrayOfClass == null)
             {
-              paramArrayOfClass[j] = paramArrayOfObject[j].getClass();
-              j += 1;
-              continue;
+              paramArrayOfClass = new Class[paramArrayOfObject.length];
+              int k = paramArrayOfObject.length;
+              int j = 0;
+              for (;;)
+              {
+                localObject = paramArrayOfClass;
+                if (j >= k) {
+                  break;
+                }
+                paramArrayOfClass[j] = paramArrayOfObject[j].getClass();
+                j += 1;
+              }
             }
           }
+          paramArrayOfClass = getMethod(localClass, paramString, (Class[])localObject);
+          localObject = paramArrayOfClass;
+          if (paramArrayOfClass != null)
+          {
+            paramArrayOfClass.setAccessible(true);
+            addCacheMethod(localClass, paramString, i, paramArrayOfClass);
+            localObject = paramArrayOfClass;
+          }
         }
-        paramArrayOfClass = getMethod(localClass, paramString, (Class[])localObject);
-        if (paramArrayOfClass == null) {
-          break label144;
+        if (localObject != null)
+        {
+          paramObject = ((Method)localObject).invoke(paramObject, paramArrayOfObject);
+          return paramObject;
         }
-        paramArrayOfClass.setAccessible(true);
-        addCacheMethod(localClass, paramString, i, paramArrayOfClass);
       }
-      catch (Exception paramObject) {}
-      if (paramString != null)
+      catch (Exception paramObject)
       {
-        paramObject = paramString.invoke(paramObject, paramArrayOfObject);
-        return paramObject;
+        ABTestLog.error(paramObject.getMessage(), new Object[0]);
       }
       return null;
-      label132:
-      paramString = (String)localObject;
-      continue;
-      i = 0;
-      break;
-      label144:
-      paramString = paramArrayOfClass;
     }
   }
   
   public static Object invokeStaticMethod(Class<?> paramClass, String paramString, Object[] paramArrayOfObject)
   {
-    int j = 0;
     Object localObject2 = null;
     int i;
     if (paramArrayOfObject != null) {
@@ -363,10 +357,11 @@ public class ReflectionUtil
         if (localObject3 == null)
         {
           if (paramArrayOfObject == null) {
-            break label139;
+            break label150;
           }
           localObject3 = new Class[paramArrayOfObject.length];
           int k = paramArrayOfObject.length;
+          int j = 0;
           localObject1 = localObject3;
           if (j < k)
           {
@@ -391,11 +386,12 @@ public class ReflectionUtil
       }
       catch (Exception paramClass)
       {
+        ABTestLog.warn(paramClass.getMessage(), new Object[0]);
         return null;
       }
       i = 0;
       continue;
-      label139:
+      label150:
       Object localObject1 = null;
     }
   }

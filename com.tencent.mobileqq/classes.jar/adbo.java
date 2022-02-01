@@ -1,64 +1,13 @@
-import android.app.Dialog;
-import android.os.Message;
-import java.lang.reflect.Field;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class adbo
+public abstract interface adbo
 {
-  public static void a(Dialog paramDialog)
-  {
-    if (paramDialog == null) {}
-    for (;;)
-    {
-      return;
-      String[] arrayOfString = new String[3];
-      arrayOfString[0] = "mDismissMessage";
-      arrayOfString[1] = "mCancelMessage";
-      arrayOfString[2] = "mShowMessage";
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = arrayOfString[i];
-        try
-        {
-          localObject = Dialog.class.getDeclaredField((String)localObject);
-          if (localObject != null)
-          {
-            if (!((Field)localObject).isAccessible()) {
-              ((Field)localObject).setAccessible(true);
-            }
-            localObject = ((Field)localObject).get(paramDialog);
-            if ((localObject instanceof Message))
-            {
-              localObject = (Message)localObject;
-              if (((Message)localObject).obj != null)
-              {
-                ((Message)localObject).obj = null;
-                ((Message)localObject).what = 0;
-              }
-            }
-          }
-        }
-        catch (NoSuchFieldException localNoSuchFieldException)
-        {
-          localNoSuchFieldException.printStackTrace();
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          localIllegalArgumentException.printStackTrace();
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          localIllegalAccessException.printStackTrace();
-        }
-        catch (Throwable localThrowable)
-        {
-          localThrowable.printStackTrace();
-        }
-        i += 1;
-      }
-    }
-  }
+  public abstract im_msg_body.RichText a(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface);
+  
+  public abstract void a(MessageRecord paramMessageRecord, msg_svc.PbSendMsgReq paramPbSendMsgReq, QQAppInterface paramQQAppInterface);
 }
 
 

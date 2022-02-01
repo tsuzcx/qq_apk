@@ -6,18 +6,18 @@ import android.os.ResultReceiver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bglp;
-import bgpa;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
-import msj;
-import msk;
-import msl;
+import mth;
+import mti;
+import mtj;
 
 public class PopupDialogQQSide
   extends PublicBaseFragment
 {
-  public bgpa a = null;
+  public bhpc a = null;
   
   void a()
   {
@@ -40,31 +40,31 @@ public class PopupDialogQQSide
     boolean bool1 = ((Bundle)localObject1).getBoolean("leftBtnVisiable", true);
     boolean bool2 = ((Bundle)localObject1).getBoolean("rightBtnVisiable", true);
     a();
-    localObject1 = new msj(this, (ResultReceiver)localObject2);
-    localObject2 = new msk(this, (ResultReceiver)localObject2);
+    localObject1 = new mth(this, (ResultReceiver)localObject2);
+    localObject2 = new mti(this, (ResultReceiver)localObject2);
     if (i == 0) {
-      i = 2131719054;
+      i = 2131719223;
     }
     for (;;)
     {
       if (j == 0) {
-        j = 2131719054;
+        j = 2131719223;
       }
       for (;;)
       {
-        bgpa localbgpa = bglp.a(getActivity(), k);
-        localbgpa.setMessage(str2);
-        localbgpa.setTitle(str1);
+        bhpc localbhpc = bhlq.a(getActivity(), k);
+        localbhpc.setMessage(str2);
+        localbhpc.setTitle(str1);
         if (bool1) {
-          localbgpa.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
+          localbhpc.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
         }
         if (bool2) {
-          localbgpa.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
+          localbhpc.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
         }
-        localbgpa.setOnDismissListener(new msl(this));
-        localbgpa.setCancelable(true);
-        localbgpa.show();
-        this.a = localbgpa;
+        localbhpc.setOnDismissListener(new mtj(this));
+        localbhpc.setCancelable(true);
+        localbhpc.show();
+        this.a = localbhpc;
         return;
       }
     }

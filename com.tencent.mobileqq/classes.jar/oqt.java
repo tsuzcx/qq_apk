@@ -1,65 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.biz.pubaccount.readinjoy.ad.utils.ReadInJoyTelePhoneUtils.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppActivity;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class oqt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initHeadMedalClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oqt
+  implements opd
 {
-  public static JSONObject a(int paramInt1, int paramInt2, String paramString, AdvertisementInfo paramAdvertisementInfo)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull otd paramotd, @NotNull otp paramotp, @NotNull ViewBase paramViewBase)
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("perstatus", paramInt1);
-      localJSONObject.put("callact", paramInt2);
-      localJSONObject.put("callnum", paramString);
-      if (paramAdvertisementInfo != null) {
-        localJSONObject.put("phone_cmpt_id", String.valueOf(paramAdvertisementInfo.mPhoneComponetId));
-      }
-      paramString = new JSONObject();
-      paramString.put("comp_stat_src", "");
-      paramString.put("phone_component_info", localJSONObject.toString());
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static void a(Context paramContext, AdvertisementInfo paramAdvertisementInfo)
-  {
-    if ((paramAdvertisementInfo == null) || (paramAdvertisementInfo.mAdRl == null)) {
-      return;
-    }
-    ThreadManager.excute(new ReadInJoyTelePhoneUtils.1(paramAdvertisementInfo, paramContext), 128, null, true);
-  }
-  
-  public static void a(Context paramContext, String paramString, AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (!(paramContext instanceof AppActivity)) {
-      return;
-    }
-    b(paramContext, paramString, paramAdvertisementInfo);
-  }
-  
-  public static boolean a(AdvertisementInfo paramAdvertisementInfo)
-  {
-    return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.mPhoneComponetId != 0) && (oqi.e(paramAdvertisementInfo));
-  }
-  
-  public static void b(Context paramContext, String paramString, AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (paramContext == null) {
-      return;
-    }
-    paramContext.startActivity(new Intent("android.intent.action.DIAL", Uri.parse("tel:" + paramString)));
-    nxw.a(new omp().a(paramContext).a(nxw.x).b(nxw.ah).a(paramAdvertisementInfo).e(a(2, 1, paramString, paramAdvertisementInfo)).a());
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(paramotd, "adapter");
+    Intrinsics.checkParameterIsNotNull(paramotp, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oqu(paramotp, paramotd, paramContainer));
   }
 }
 

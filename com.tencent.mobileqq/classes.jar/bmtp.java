@@ -1,68 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
-import java.io.File;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
+import cooperation.qzone.report.lp.LpReportInfo_dc00321;
 
-class bmtp
-  implements Downloader.DownloadListener
+public class bmtp
+  implements View.OnClickListener
 {
-  bmtp(bmto parambmto, bmst parambmst, String paramString1, String paramString2, aqul paramaqul) {}
+  public bmtp(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void onClick(View paramView)
   {
-    QZLog.i("VipARQGLoaderManager", 2, "onDownloadCanceled = " + paramString);
-    if (this.jdField_a_of_type_Bmst != null) {
-      this.jdField_a_of_type_Bmst.b("download canceld url = " + paramString);
-    }
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    QZLog.i("VipARQGLoaderManager", 2, "onDownloadFailed = " + paramString);
-    if (this.jdField_a_of_type_Bmst != null) {
-      this.jdField_a_of_type_Bmst.b("download fail url = " + paramString);
-    }
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    QZLog.i("VipARQGLoaderManager", 2, "onDownloadSucceed = " + paramString);
-    paramString = QzoneZipCacheHelper.getBasePath("vip_qg", String.valueOf(this.jdField_a_of_type_JavaLangString.hashCode()));
-    paramDownloadResult = bita.a(this.b);
-    if (this.jdField_a_of_type_Aqul != null) {
-      QZLog.i("VipARQGLoaderManager", 1, "download fileMD5 = " + paramDownloadResult + " config.md5 = " + this.jdField_a_of_type_Aqul.c);
-    }
-    if ((this.jdField_a_of_type_Aqul != null) && (!TextUtils.isEmpty(paramDownloadResult)) && (paramDownloadResult.equalsIgnoreCase(this.jdField_a_of_type_Aqul.c)))
+    if (!this.a.b)
     {
-      paramDownloadResult = new File(this.b);
-      QzoneZipCacheHelper.unzipFile(paramDownloadResult.getAbsolutePath(), paramString);
-      if (paramDownloadResult.exists()) {
-        atwl.a(paramDownloadResult);
+      if (1 == this.a.c) {
+        LpReportInfo_dc00321.report(8, 129, 0, false, false, null);
       }
-      if (new File(paramString).exists())
-      {
-        QZLog.i("VipARQGLoaderManager", 1, "download success file exist start put to map = " + paramString);
-        bmto.a(this.jdField_a_of_type_Bmto).put(this.jdField_a_of_type_JavaLangString, paramString);
-        if (this.jdField_a_of_type_Bmst != null) {
-          this.jdField_a_of_type_Bmst.a(paramString);
-        }
-      }
+      this.a.a(false, false);
+      this.a.b();
     }
-    while (this.jdField_a_of_type_Bmst == null)
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Bmst == null);
-      this.jdField_a_of_type_Bmst.b("download success but the file is not exist");
-      return;
-    }
-    this.jdField_a_of_type_Bmst.b("download success but the file md5 is not match");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

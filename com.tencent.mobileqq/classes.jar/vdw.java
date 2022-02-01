@@ -1,25 +1,26 @@
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StUser;
+import qqcircle.QQCircleRight.SetCircleUnCareRsp;
+
 class vdw
-  implements zxw
+  implements aaav<QQCircleRight.SetCircleUnCareRsp>
 {
-  vdw(vdt paramvdt) {}
+  vdw(vdv paramvdv) {}
   
-  public void a(zxz paramzxz, Object paramObject)
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleRight.SetCircleUnCareRsp paramSetCircleUnCareRsp)
   {
-    if (paramzxz.e()) {
-      if (vdt.a(this.a) != null) {
-        vdt.a(this.a).a(vdt.a(this.a), vdt.b(this.a), true, false);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QCirclePersonalTitleBar", 1, "black person: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + paramString);
     }
-    do
+    if ((paramBoolean) && (paramLong == 0L))
     {
+      QQToast.a(this.a.a.a(), 2, 2131697168, 0).a();
+      this.a.a.a(vdr.a(this.a.a).id.get());
       return;
-      if (paramzxz.d())
-      {
-        vdt.a(this.a, false);
-        return;
-      }
-    } while (!paramzxz.c());
-    vdt.a(this.a, true);
+    }
+    QQToast.a(this.a.a.a(), 1, 2131697280, 0).a();
   }
 }
 

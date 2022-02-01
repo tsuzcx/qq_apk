@@ -1,21 +1,12 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
 class xgr
-  extends Handler
+  extends xgd
 {
-  xgr(xgq paramxgq, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  xgr(xgp paramxgp, xhw paramxhw) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean b()
   {
-    if (this.a.a) {
-      return;
-    }
-    xgq.a(this.a, this.a.c);
+    this.jdField_a_of_type_Xhw.a = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 

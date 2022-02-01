@@ -1,21 +1,15 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class aege
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aege(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public aege(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.getActivity().isFinishing()) {
-      ForwardTroopListFragment.a(this.a).dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    ChatSettingForTroop.i(this.a);
   }
 }
 

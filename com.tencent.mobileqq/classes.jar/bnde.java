@@ -1,12 +1,34 @@
-import com.tencent.ttpic.video.AECoderFactory.AEDecoderFactory;
-import com.tencent.ttpic.video.AEDecoder;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.qzone.panorama.widget.PanoramaLoadingBall;
 
-final class bnde
-  implements AECoderFactory.AEDecoderFactory
+public class bnde
+  extends Handler
 {
-  public AEDecoder createDecoder(String paramString)
+  public bnde(PanoramaLoadingBall paramPanoramaLoadingBall, Looper paramLooper)
   {
-    return new barp(paramString);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if ((paramMessage.what == 291) && (Build.VERSION.SDK_INT >= 11))
+    {
+      if (PanoramaLoadingBall.a(this.a)) {
+        PanoramaLoadingBall.a(this.a, 60.0F);
+      }
+      if (PanoramaLoadingBall.a(this.a) == 0) {
+        this.a.setRotationX(PanoramaLoadingBall.a(this.a));
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.setRotationY(PanoramaLoadingBall.a(this.a));
   }
 }
 

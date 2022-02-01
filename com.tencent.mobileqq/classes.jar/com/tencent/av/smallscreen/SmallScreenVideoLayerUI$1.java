@@ -1,17 +1,17 @@
 package com.tencent.av.smallscreen;
 
 import android.view.View;
-import lzd;
+import lzz;
 
 public class SmallScreenVideoLayerUI$1
   implements Runnable
 {
-  public SmallScreenVideoLayerUI$1(lzd paramlzd) {}
+  public SmallScreenVideoLayerUI$1(lzz paramlzz) {}
   
   public void run()
   {
-    if (lzd.a(this.this$0) != null) {
-      lzd.b(this.this$0).findViewById(2131363076).setVisibility(8);
+    if (lzz.a(this.this$0) != null) {
+      lzz.b(this.this$0).findViewById(2131363097).setVisibility(8);
     }
   }
 }

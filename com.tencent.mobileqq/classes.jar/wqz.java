@@ -1,41 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.utils.JsonORM;
-import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
 public class wqz
+  implements View.OnFocusChangeListener
 {
-  @zkv(a="gametype")
-  public int a;
-  @zkv(a="gameid")
-  public String a;
-  @zkv(a="name")
-  public String b;
-  @zkv(a="result")
-  public String c;
+  public wqz(StoryInputBarView paramStoryInputBarView) {}
   
-  public static wqz a(String paramString)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    if (!paramBoolean) {
+      this.a.a();
     }
-    try
-    {
-      paramString = (wqz)JsonORM.a(new JSONObject(paramString), wqz.class);
-      return paramString;
+    while (this.a.jdField_a_of_type_Boolean) {
+      return;
     }
-    catch (JsonORM.JsonParseException paramString)
+    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Yey.jdField_a_of_type_Boolean);
+    this.a.jdField_a_of_type_Yey.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
+    paramView = this.a;
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramView.jdField_a_of_type_Boolean = paramBoolean;
+      return;
     }
   }
 }

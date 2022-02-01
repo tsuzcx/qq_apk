@@ -1,35 +1,21 @@
-import Wallet.RedInfoSyncRsp;
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
 class aktj
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  aktj(akti paramakti) {}
+  aktj(aktf paramaktf) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QWalletRedManager", 2, "redInfoSyncReq onReceive" + paramBoolean);
+      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
     }
-    StringBuilder localStringBuilder;
-    if ((paramBoolean) && (paramBundle != null))
-    {
-      paramBundle = (RedInfoSyncRsp)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("RedInfoSyncRsp|");
-        if (paramBundle == null) {
-          break label97;
-        }
-      }
-    }
-    label97:
-    for (paramBundle = Integer.valueOf(paramBundle.result);; paramBundle = "")
-    {
-      QLog.d("QWalletRedManager", 2, paramBundle);
-      return;
+    if (((NewPhotoListActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
     }
   }
 }

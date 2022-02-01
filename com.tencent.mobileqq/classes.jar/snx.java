@@ -1,28 +1,81 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.35.1;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.35.3;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.35.4;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.35.5;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.35.6;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.35.8;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class snx
-  implements bkls
+public class snx
+  extends pph
 {
-  snx(snh paramsnh, BaseArticleInfo paramBaseArticleInfo) {}
+  public snx(FastWebActivity paramFastWebActivity) {}
   
-  public void a()
+  public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseAdapter", 2, "onAdComplain");
-    }
-    if ((this.jdField_a_of_type_Snh.a instanceof Activity))
+    if ((TextUtils.isEmpty(paramString)) || (this.a.a == null) || (!paramString.equals(this.a.a.innerUniqueID)) || (FastWebActivity.a(this.a) == null))
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_from_type", 1);
-      localIntent.putExtra("key_ad_info", (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-      PublicFragmentActivity.a(this.jdField_a_of_type_Snh.a, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+      QLog.d("FastWebActivity", 2, "handleLikeCntInfoResp fail, msg not match !");
+      return;
     }
+    ThreadManager.getUIHandler().post(new FastWebActivity.35.4(this, paramInt));
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (this.a.a == null) || (!paramString.equals(this.a.a.innerUniqueID)) || (FastWebActivity.a(this.a) == null))
+    {
+      QLog.d("FastWebActivity", 2, "handleBiuCntInfoResp fail, msg not match !");
+      return;
+    }
+    ThreadManager.getUIHandler().post(new FastWebActivity.35.3(this, paramLong));
+  }
+  
+  public void a(FastWebArticleInfo paramFastWebArticleInfo, int paramInt, String paramString)
+  {
+    this.a.runOnUiThread(new FastWebActivity.35.8(this, paramInt, paramFastWebArticleInfo, paramString));
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.runOnUiThread(new FastWebActivity.35.6(this, paramString));
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, ssh paramssh)
+  {
+    super.a(paramBoolean, paramInt, paramssh);
+    String str;
+    if (this.a.a != null)
+    {
+      str = this.a.a.mArticleContentUrl;
+      if ((!paramBoolean) || (paramssh == null) || (TextUtils.isEmpty(paramssh.a(paramInt))) || (TextUtils.isEmpty(str))) {
+        break label86;
+      }
+    }
+    label86:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      ThreadManager.getUIHandler().post(new FastWebActivity.35.1(this, paramBoolean, paramInt, str, paramssh));
+      return;
+      str = "";
+      break;
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (this.a.a == null) || (!paramString.equals(this.a.a.innerUniqueID)) || (FastWebActivity.a(this.a) == null))
+    {
+      QLog.d("FastWebActivity", 2, "handleLikeStateResp fail, msg not match !");
+      return;
+    }
+    ThreadManager.getUIHandler().post(new FastWebActivity.35.5(this, paramBoolean));
   }
 }
 

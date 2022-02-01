@@ -1,50 +1,12 @@
-import android.view.LayoutInflater;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
-public class bbwt
-  extends bbwv
+class bbwt
+  extends RecyclerView.ViewHolder
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
-  
-  public bbwt(ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2)
+  bbwt(bbwr parambbwr, View paramView)
   {
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559249, paramViewGroup, false);
-    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new bbwu(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131378776));
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131371277));
-    if (paramBoolean2) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131365606);
-    if (paramBoolean1) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
-    }
-  }
-  
-  public TextView b()
-  {
-    return this.jdField_b_of_type_AndroidWidgetTextView;
+    super(paramView);
   }
 }
 

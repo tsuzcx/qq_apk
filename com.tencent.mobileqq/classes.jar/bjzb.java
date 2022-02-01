@@ -1,6 +1,9 @@
-public abstract interface bjzb
+public class bjzb
 {
-  public abstract void a(int paramInt, String paramString);
+  public String a;
+  public byte[] a;
+  public String b;
+  public byte[] b;
 }
 
 

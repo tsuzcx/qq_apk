@@ -1,29 +1,22 @@
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aeuq
-  extends aniz
+  extends aeuk
 {
-  public aeuq(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
-  
-  protected void onCardLabelUpdate(boolean paramBoolean, Object paramObject)
+  public aeuq(JumpActivity paramJumpActivity)
   {
-    if (paramBoolean)
-    {
-      this.a.setResult(-1);
-      this.a.b(2131718397);
-    }
-    for (;;)
-    {
-      this.a.a = false;
-      this.a.finish();
-      return;
-      this.a.b(2131718395);
-    }
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeuq
  * JD-Core Version:    0.7.0.1
  */

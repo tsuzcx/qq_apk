@@ -1,25 +1,45 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import java.util.List;
 
 public class sxm
-  implements aqgg
+  extends sxk
 {
-  public sxm(FastWebActivity paramFastWebActivity) {}
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private sxn jdField_a_of_type_Sxn;
+  private List<String> b;
+  protected boolean b;
   
-  public void a()
+  public sxm(Activity paramActivity, sxn paramsxn, List<String> paramList1, List<String> paramList2)
   {
-    FastWebActivity.b(this.a, true);
-    QLog.d("FastWebActivity", 1, "onPageSwipeClose");
+    super(paramActivity);
+    this.jdField_a_of_type_Sxn = paramsxn;
+    this.jdField_a_of_type_JavaUtilList = paramList1;
+    this.jdField_b_of_type_JavaUtilList = paramList2;
   }
   
-  public void b()
+  public View a(LayoutInflater paramLayoutInflater)
   {
-    if (FastWebActivity.a(this.a) == 0L)
+    paramLayoutInflater = (LinearLayout)paramLayoutInflater.inflate(2131560144, null);
+    RecyclerView localRecyclerView = (RecyclerView)paramLayoutInflater.findViewById(2131364953);
+    oyv localoyv = new oyv(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_Sxn);
+    localRecyclerView.setLayoutManager(new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity));
+    localRecyclerView.setAdapter(localoyv);
+    return paramLayoutInflater;
+  }
+  
+  public void b(View paramView)
+  {
+    if (!this.jdField_b_of_type_Boolean)
     {
-      FastWebActivity.a(this.a, NetConnInfoCenter.getServerTime());
-      QLog.d("FastWebActivity", 1, "onPageSwipeNotClose time :" + FastWebActivity.a(this.a));
+      a();
+      this.jdField_b_of_type_Boolean = true;
     }
+    a(paramView);
   }
 }
 

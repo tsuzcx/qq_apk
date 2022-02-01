@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.app.proxy.ProxyObserver;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageForGrayTips;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahxr
-  extends ProxyObserver
+public class ahxr
+  implements ahyf
 {
-  ahxr(ahxp paramahxp) {}
-  
-  public void onProxyUpdataTroopMember()
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    this.a.b(false, false);
+    paramahed.a((MessageForGrayTips)paramMessageRecord, paramahfq);
   }
 }
 

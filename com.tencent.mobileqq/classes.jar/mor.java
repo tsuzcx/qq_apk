@@ -1,29 +1,8 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.AVRedPacketManager;
-
-class mor
-  extends ljd
+public abstract interface mor
 {
-  mor(moq parammoq) {}
+  public abstract int a(long paramLong);
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
-  {
-    c();
-  }
-  
-  protected void b(long paramLong, boolean paramBoolean)
-  {
-    c();
-  }
-  
-  void c()
-  {
-    moy localmoy = this.a.a();
-    if ((localmoy != null) && (localmoy.a())) {
-      ((AVRedPacketManager)this.a.a.a(6)).c(this.a.a.a().a().j);
-    }
-  }
+  public abstract boolean a();
 }
 
 

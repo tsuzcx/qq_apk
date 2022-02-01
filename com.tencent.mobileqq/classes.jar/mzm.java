@@ -1,191 +1,83 @@
-import android.app.Activity;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.avgame.gamelogic.data.GameRecordInfo;
-import com.tencent.avgame.gamelogic.data.RoomInfo;
-import com.tencent.avgame.util.AVGameNodeReportUtil;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import androidx.annotation.NonNull;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class mzm
-  implements mzc, mzr
+public abstract class mzm
+  implements myp
 {
-  protected mzs a;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  String jdField_a_of_type_JavaLangString = "";
+  boolean jdField_a_of_type_Boolean = false;
+  String[] jdField_a_of_type_ArrayOfJavaLangString = new String[3];
+  String b = "";
   
-  public mzm(mzs parammzs)
+  public int a()
   {
-    this.a = parammzs;
+    return this.jdField_a_of_type_Int;
   }
   
-  private void a(GameRecordInfo paramGameRecordInfo)
+  public long a()
   {
-    Object localObject1 = null;
-    if (paramGameRecordInfo.extraJsonData != null) {}
-    for (;;)
-    {
-      try
-      {
-        localObject2 = new JSONObject(paramGameRecordInfo.extraJsonData);
-        paramGameRecordInfo = ((JSONObject)localObject2).optString("textContent", null);
-      }
-      catch (JSONException paramGameRecordInfo)
-      {
-        Object localObject2;
-        paramGameRecordInfo = null;
-        continue;
-      }
-      try
-      {
-        localObject2 = ((JSONObject)localObject2).optString("bgUrl", null);
-        localObject1 = localObject2;
-      }
-      catch (JSONException localJSONException)
-      {
-        continue;
-      }
-      this.a.a(paramGameRecordInfo, localObject1);
-      return;
-      paramGameRecordInfo = null;
-    }
+    return this.jdField_a_of_type_Long;
   }
   
-  private void g()
+  @Nullable
+  public String a()
   {
-    myc localmyc = mxl.a().a();
-    mxl.a().a(localmyc.b());
+    return this.b;
   }
   
-  public void a()
+  public List<? extends myp> a()
   {
-    mxl.a().a(this);
-    GameRecordInfo localGameRecordInfo = mxl.a().a().a();
-    if (localGameRecordInfo.gameType == 5)
-    {
-      a(localGameRecordInfo);
-      return;
-    }
-    String str1 = localGameRecordInfo.photoFilePath;
-    String str2 = localGameRecordInfo.videoFilePath;
-    if (QLog.isColorLevel()) {
-      QLog.i("GameResultPresenterImp_GameRC", 1, "pic:" + str1 + ",\nvod:" + str2);
-    }
-    mxl.a().a(str1, str2);
-    this.a.a(localGameRecordInfo.gameType, str1, str2);
+    return null;
   }
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public abstract myp a();
+  
+  public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("GameResultPresenterImp", 1, "uploadRes:" + paramInt + " " + paramString1 + " " + paramString2);
-    }
-    this.a.a(paramInt, paramString2, paramString1);
-    mxl.a().a(paramString2, paramString1);
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean)
   {
-    QLog.i("GameResultPresenterImp", 1, "onChangeUserStatusFailed " + paramString + " and from = " + paramInt2);
-    if (paramInt2 == 4) {
-      this.a.a(paramString);
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(String paramString, int paramInt, myc parammyc)
+  public boolean a(myp parammyp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameResultPresenterImp", 2, "pushOnChangeUserStatus uin = " + paramString);
-    }
-    if ((paramString.equals(mxl.a().a().getAccount())) && (paramInt == 1)) {
-      this.a.b(parammyc);
-    }
+    return (parammyp != null) && (parammyp.a() == a()) && (parammyp.b() == b());
   }
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  public String[] a()
   {
-    if (this.a != null) {
-      this.a.a(paramString1, paramString2, paramString3);
-    }
+    return this.jdField_a_of_type_ArrayOfJavaLangString;
   }
   
-  public void a(myc parammyc, int paramInt)
+  public String b()
   {
-    QLog.i("GameResultPresenterImp", 1, "onChangeUserStatusSuccess " + parammyc + " and from = " + paramInt);
-    if (paramInt == 4) {
-      this.a.b(parammyc);
-    }
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public int c()
   {
-    if (QLog.isDebugVersion()) {
-      QLog.i("GameResultPresenterImp_GameRC", 1, String.format("onGameResultUpload isSucc[%b],playId[%s],fileType[%d],fileUrl[%s]", new Object[] { Boolean.valueOf(paramBoolean), paramString1, Integer.valueOf(paramInt), paramString2 }));
-    }
-    if ((paramBoolean) && (paramInt == 0)) {
-      aobd.a().a(paramString1, paramString2);
-    }
+    return 0;
   }
   
-  public boolean a()
+  @NonNull
+  public String toString()
   {
-    return mxl.a().c();
-  }
-  
-  public void b()
-  {
-    if (this.a != null) {
-      mxb.a().a(this.a.a(), false, true);
-    }
-  }
-  
-  public void c()
-  {
-    g();
-    QLog.i("GameResultPresenterImp", 1, "exitGameRoom from result.");
-    mxl.a().a(false, 1);
-    if (this.a.a() != null) {
-      this.a.a().finish();
-    }
-  }
-  
-  public void d()
-  {
-    mxl.a().c();
-    AVGameAppInterface localAVGameAppInterface = mxl.a().a();
-    String str1 = localAVGameAppInterface.getCurrentAccountUin();
-    myc localmyc = mxl.a().a();
-    long l = localmyc.a();
-    String str2 = localmyc.a().getNick(str1);
-    String str3 = localmyc.b();
-    int i = localmyc.c();
-    int j = localmyc.d();
-    if ((i == 2) || (i == 4) || (i == 5))
-    {
-      this.a.a(localAVGameAppInterface, l, str1, j, str2, str3);
-      return;
-    }
-    aobd.a().a(localAVGameAppInterface, this.a.a(), l, Long.valueOf(str1).longValue(), str2, str3, j);
-  }
-  
-  public void e()
-  {
-    myc localmyc = mxl.a().a();
-    mxl.a().a(localmyc.a(), mxl.a().a().getAccount(), 1, 4);
-    g();
-    mxl.a().a().a(null, null, 0L);
-    mxl.a().a().a(null);
-    AVGameNodeReportUtil.f();
-  }
-  
-  public void f()
-  {
-    mxl.a().b(this);
-  }
-  
-  public void i(myc parammyc)
-  {
-    if (this.a != null) {
-      this.a.a(parammyc);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id").append("=").append(this.jdField_a_of_type_Int).append("|");
+    localStringBuilder.append("isTopicBank").append("=").append(this.jdField_a_of_type_Boolean).append("|");
+    localStringBuilder.append("gameType").append("=").append(b()).append("|");
+    localStringBuilder.append("content").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append("answer").append("=").append(this.b).append("|");
+    localStringBuilder.append("buff type").append("=").append(this.jdField_a_of_type_ArrayOfJavaLangString[0]).append("|");
+    localStringBuilder.append("buff point").append("=").append(this.jdField_a_of_type_ArrayOfJavaLangString[1]).append("|");
+    localStringBuilder.append("buff color").append("=").append(this.jdField_a_of_type_ArrayOfJavaLangString[2]).append("|");
+    return localStringBuilder.toString();
   }
 }
 

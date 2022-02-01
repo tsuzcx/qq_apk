@@ -1,18 +1,74 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.TMG.sdk.AVAudioCtrl;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVRoomMulti.AVCustomData;
+import com.tencent.TMG.sdk.AVRoomMulti.EventListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class anmd
-  extends audo
+class anmd
+  implements AVRoomMulti.EventListener
 {
-  public anmd(FrameHelperActivity paramFrameHelperActivity) {}
+  anmd(anmc paramanmc) {}
   
-  public void a()
+  public void onCameraSettingNotify(int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onDisableAudioIssue() {}
+  
+  public void onEndpointsUpdateInfo(int paramInt, String[] paramArrayOfString)
   {
-    if (this.a.a.hasMessages(17)) {
-      this.a.a.removeMessages(17);
+    QLog.i("AVManager", 1, String.format("onEndpointsUpdateInfo|eventid=%d", new Object[] { Integer.valueOf(paramInt) }));
+    if (this.a.jdField_a_of_type_Anmg != null) {
+      this.a.jdField_a_of_type_Anmg.a(paramInt, paramArrayOfString);
     }
-    this.a.a.sendEmptyMessage(17);
   }
+  
+  public void onEnterRoomComplete(int paramInt, String paramString)
+  {
+    QLog.i("AVManager", 1, "mRoomEventListener.onEnterRoomComplete| result = " + paramInt + paramString);
+    if (paramInt != 0) {
+      this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
+    }
+    if (this.a.jdField_a_of_type_Anmf != null) {
+      this.a.jdField_a_of_type_Anmf.a(paramInt, paramString);
+    }
+  }
+  
+  public void onExitRoomComplete()
+  {
+    QLog.i("AVManager", 1, "mRoomEventListener.onExitRoomComplete");
+    this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
+    if (this.a.jdField_a_of_type_Anmg != null) {
+      this.a.jdField_a_of_type_Anmg.a();
+    }
+  }
+  
+  public void onHwStateChangeNotify(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
+  
+  public void onPrivilegeDiffNotify(int paramInt) {}
+  
+  public void onRecvCustomData(AVRoomMulti.AVCustomData paramAVCustomData, String paramString) {}
+  
+  public void onRoomDisconnect(int paramInt, String paramString)
+  {
+    if (this.a.jdField_a_of_type_Anmg != null) {
+      this.a.jdField_a_of_type_Anmg.a(paramInt, paramString);
+    }
+  }
+  
+  public void onRoomEvent(int paramInt1, int paramInt2, Object paramObject) {}
+  
+  public void onSemiAutoRecvCameraVideo(String[] paramArrayOfString)
+  {
+    QLog.i("AVManager", 1, String.format("onSemiAutoRecvCameraVideo", new Object[0]));
+    if (this.a.jdField_a_of_type_Anmg != null) {
+      this.a.jdField_a_of_type_Anmg.a(paramArrayOfString);
+    }
+  }
+  
+  public void onSemiAutoRecvMediaFileVideo(String[] paramArrayOfString) {}
+  
+  public void onSemiAutoRecvScreenVideo(String[] paramArrayOfString) {}
+  
+  public void onSwitchRoomComplete(int paramInt, String paramString) {}
 }
 
 

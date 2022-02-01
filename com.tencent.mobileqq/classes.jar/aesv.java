@@ -1,22 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aesv
-  implements DialogInterface.OnKeyListener
+  extends Handler
 {
-  public aesv(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
+  public aesv(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 4)
-    {
-      SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
-      this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "mWaitingDialogControlHandler operationFinished = " + GroupManagerActivity.b(this.a));
     }
-    return false;
+    GroupManagerActivity.b(this.a, true);
+    if (GroupManagerActivity.b(this.a))
+    {
+      this.a.a(true);
+      return;
+    }
+    paramMessage = GroupManagerActivity.a(this.a).obtainMessage(0);
+    GroupManagerActivity.a(this.a).sendMessageDelayed(paramMessage, 60000L);
+    GroupManagerActivity.c(this.a, true);
   }
 }
 

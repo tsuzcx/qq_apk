@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.recent;
 
-import alcv;
+import alol;
 
 public class RecentPubAccHelper$1
   implements Runnable
 {
-  public RecentPubAccHelper$1(alcv paramalcv) {}
+  public RecentPubAccHelper$1(alol paramalol) {}
   
   public void run()
   {

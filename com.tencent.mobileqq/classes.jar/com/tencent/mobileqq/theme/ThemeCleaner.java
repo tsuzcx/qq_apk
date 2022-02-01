@@ -7,8 +7,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Process;
 import android.text.TextUtils;
-import arpm;
-import bdps;
+import asfa;
+import beio;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
@@ -109,7 +109,7 @@ public class ThemeCleaner
   
   private static boolean a(AppRuntime paramAppRuntime, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!arpm.a(paramString)) || ("1000".equals(paramString)) || (jdField_a_of_type_JavaUtilHashSet.contains(paramString))) {}
+    if ((TextUtils.isEmpty(paramString)) || (!asfa.a(paramString)) || ("1000".equals(paramString)) || (jdField_a_of_type_JavaUtilHashSet.contains(paramString))) {}
     for (;;)
     {
       return false;
@@ -166,7 +166,7 @@ public class ThemeCleaner
   
   private static void b(AppRuntime paramAppRuntime, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!arpm.a(paramString)))
+    if ((TextUtils.isEmpty(paramString)) || (!asfa.a(paramString)))
     {
       QLog.e("ThemeCleaner", 1, "cleanTheme error id: " + paramString);
       return;
@@ -176,7 +176,7 @@ public class ThemeCleaner
       QLog.e("ThemeCleaner", 1, paramString + " is current, should not clean");
       return;
     }
-    b(new File(new bdps().a(paramString).a(paramAppRuntime.getApplication())));
+    b(new File(new beio().a(paramString).a(paramAppRuntime.getApplication())));
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)

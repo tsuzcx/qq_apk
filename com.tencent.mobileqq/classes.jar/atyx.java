@@ -1,18 +1,7 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class atyx
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public atyx(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    atcq.a().b(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-  }
+  public String a;
+  public byte[] a;
 }
 
 

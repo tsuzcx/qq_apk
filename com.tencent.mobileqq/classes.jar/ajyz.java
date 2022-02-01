@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ajyz
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  ajyz(ajyx paramajyx) {}
+  ajyz(ajyt paramajyt, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
+    ajyt.a(this.jdField_a_of_type_Ajyt, this.jdField_a_of_type_Int);
   }
 }
 

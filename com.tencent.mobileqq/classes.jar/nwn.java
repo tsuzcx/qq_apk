@@ -1,41 +1,58 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.EncryptUinInfo;
-import com.tencent.common.app.AppInterface;
+import com.tencent.image.URLDrawable.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.ArrayList;
 
 class nwn
-  extends nwo
+  implements URLDrawable.DownloadListener
 {
   nwn(nwm paramnwm) {}
   
-  protected void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle)
+  public void onFileDownloadFailed(int paramInt)
   {
-    if ((paramBoolean) && (paramList != null) && (!paramList.isEmpty()))
+    synchronized ()
     {
-      paramList = (EncryptUinInfo)paramList.get(0);
-      if ((paramList.jdField_a_of_type_Int != 0) || (paramList.jdField_a_of_type_Long != this.a.mApp.getLongAccountUin()) || (TextUtils.isEmpty(paramList.jdField_a_of_type_JavaLangString))) {
-        break label113;
+      String str = (String)nwm.a(this.a).get(0);
+      nwm.a(this.a).remove(0);
+      if (nwm.b(this.a) != null)
+      {
+        if (!nwm.b(this.a).contains(str)) {
+          break label119;
+        }
+        nwm.b(this.a).remove(str);
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(delete) url:" + str);
+        }
       }
-      nwm.a(this.a, paramList.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: " + nwm.a(this.a));
-      }
+      label119:
+      do
+      {
+        nwm.a(this.a, null);
+        nwm.a(this.a);
+        return;
+        nwm.a(this.a).add(str);
+        nwm.b(this.a).add(str);
+      } while (!QLog.isColorLevel());
+      QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(retry) url:" + str);
     }
-    label113:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: failed，code=" + paramList.jdField_a_of_type_Int);
   }
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
   {
-    if (paramInt == 1)
+    synchronized ()
     {
-      super.onUpdate(paramInt, paramBoolean, paramObject);
-      this.a.mApp.removeObserver(nwm.a(this.a));
+      String str = (String)nwm.a(this.a).get(0);
+      nwm.a(this.a).remove(0);
+      if ((nwm.b(this.a) != null) && (nwm.b(this.a).contains(str))) {
+        nwm.b(this.a).remove(str);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadSucceed url:" + str);
+      }
+      nwm.a(this.a, null);
+      nwm.a(this.a);
+      return;
     }
   }
 }

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import amzj;
+import anld;
 
 public class ApolloUrlInterceptor$PreloadCGITask$1
   implements Runnable
 {
-  public ApolloUrlInterceptor$PreloadCGITask$1(amzj paramamzj) {}
+  public ApolloUrlInterceptor$PreloadCGITask$1(anld paramanld) {}
   
   public void run()
   {
-    amzj.a(this.a);
+    anld.a(this.a);
   }
 }
 

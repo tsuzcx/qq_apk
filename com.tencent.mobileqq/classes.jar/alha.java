@@ -1,23 +1,10 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.widget.QQToast;
-
-public class alha
-  implements alhv
+public abstract interface alha
 {
-  public alha(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public abstract void a();
   
-  public void a() {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(String paramString)
-  {
-    EditLocalVideoActivity.a(this.a, paramString);
-    EditLocalVideoActivity.g(this.a);
-  }
-  
-  public void b()
-  {
-    QQToast.a(this.a, 2131694279, 1).a();
-  }
+  public abstract void b();
 }
 
 

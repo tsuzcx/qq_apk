@@ -1,31 +1,11 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import android.widget.TextView;
 
-public class ahxl
-  extends ahxe
+class ahxl
+  extends aggl
 {
-  public Bitmap a;
-  public String b;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public ahxl(String paramString)
-  {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
-    {
-      this.a = paramRedPacketInfo.icon;
-      this.b = paramRedPacketInfo.resPath;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.a != null) && (!TextUtils.isEmpty(this.b));
-  }
+  ahxl(ahxi paramahxi) {}
 }
 
 

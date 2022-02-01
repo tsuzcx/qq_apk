@@ -1,26 +1,27 @@
-import com.tencent.mobileqq.search.searchengine.MiniProgramSearchEngine;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
 public class bbtn
-  implements Comparator<bbnd>
+  implements QQPermissionCallback
 {
-  public bbtn(MiniProgramSearchEngine paramMiniProgramSearchEngine) {}
+  public bbtn(SignTextEditFragment paramSignTextEditFragment, AppActivity paramAppActivity) {}
   
-  public int a(bbnd parambbnd1, bbnd parambbnd2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    int i = parambbnd2.a[2] - parambbnd1.a[2];
-    if (i != 0) {}
-    int j;
-    do
-    {
-      return i;
-      j = parambbnd1.a[0] - parambbnd2.a[0];
-      i = j;
-    } while (j != 0);
-    parambbnd1 = parambbnd1.c().substring(parambbnd1.a[0] + parambbnd1.a[1]);
-    parambbnd2 = parambbnd2.c().substring(parambbnd2.a[0] + parambbnd2.a[1]);
-    return ChnToSpell.a(parambbnd1, 2).compareTo(ChnToSpell.a(parambbnd2, 2));
+    if (QLog.isColorLevel()) {
+      QLog.d("SignTextEditFragment", 2, "requestPermission user denied");
+    }
+    bhlq.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SignTextEditFragment", 2, "requestPermission user grant");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignTextEditFragment.c();
   }
 }
 

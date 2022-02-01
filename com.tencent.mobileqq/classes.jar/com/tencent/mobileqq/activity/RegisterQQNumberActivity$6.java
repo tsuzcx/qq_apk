@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import biau;
+import bjbs;
 
 class RegisterQQNumberActivity$6
   implements Runnable

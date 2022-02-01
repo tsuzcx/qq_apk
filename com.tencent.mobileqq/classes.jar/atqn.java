@@ -1,18 +1,16 @@
-import android.view.View;
-
 class atqn
-  implements atwb
+  implements atqq
 {
-  atqn(atqm paramatqm) {}
+  atqn(atpa paramatpa) {}
   
-  public void onClick(View paramView)
+  public void a(Object[] paramArrayOfObject)
   {
-    atvo.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Atoo.d());
+    atpa.c(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atqn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,22 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import cooperation.qqreader.QRBridgeActivity;
+import com.tencent.ark.open.delegate.IArkDelegateSetup;
+import java.util.ArrayList;
 
-public class aqey
-  implements aqfb
+final class aqey
+  extends IArkDelegateSetup
 {
-  public String a()
+  public ArrayList<String> onGetPredownloadApp()
   {
-    return anni.a(2131715718);
+    return null;
   }
   
-  public void a(View paramView, int paramInt)
+  public void reportEvent(String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString4, String paramString5)
   {
-    if (paramView == null) {}
-    Context localContext;
-    do
-    {
-      do
-      {
-        return;
-      } while (paramInt != 16908289);
-      localContext = paramView.getContext();
-    } while (localContext == null);
-    paramView = new Intent(paramView.getContext(), QRBridgeActivity.class);
-    paramView.putExtra("readtype", "18");
-    paramView.addFlags(268435456);
-    localContext.startActivity(paramView);
-    bcst.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 3, 0, "", "", "", "");
+    bdke.a(null, paramString1, paramString2, paramString3, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramString4, paramString5);
+  }
+  
+  public void setupArkEnvironment(boolean paramBoolean)
+  {
+    aqet.a(paramBoolean);
   }
 }
 

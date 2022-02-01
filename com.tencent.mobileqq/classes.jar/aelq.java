@@ -1,22 +1,17 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class aelq
-  extends aelh
 {
-  public aelq(JumpActivity paramJumpActivity)
-  {
-    super(paramJumpActivity);
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    this.b.l();
-  }
+  private aelq(DiscussionMemberActivity paramDiscussionMemberActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelq
  * JD-Core Version:    0.7.0.1
  */

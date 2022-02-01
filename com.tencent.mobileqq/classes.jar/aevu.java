@@ -1,10 +1,21 @@
-import android.content.Context;
-import android.util.AttributeSet;
-import android.view.View;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.30.1;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aevu
+public class aevu
+  extends apce
 {
-  public abstract View a(String paramString, Context paramContext, AttributeSet paramAttributeSet);
+  public aevu(Leba paramLeba) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.leba", 2, "onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
+      this.a.a(new Leba.30.1(this));
+    }
+  }
 }
 
 

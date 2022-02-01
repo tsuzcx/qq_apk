@@ -1,6 +1,35 @@
-abstract interface acqj
+import com.tencent.ad.tangram.ipc.AdIPCManager.Handler;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
+
+final class acqj
+  implements AdIPCManager.Handler
 {
-  public abstract boolean a(acpp paramacpp, String paramString, String... paramVarArgs);
+  public AdIPCManager.Result handle(AdIPCManager.Params paramParams)
+  {
+    String str2 = null;
+    AdIPCManager.Result localResult = new AdIPCManager.Result();
+    if (paramParams == null) {
+      if (paramParams == null) {
+        break label91;
+      }
+    }
+    label91:
+    for (String str1 = paramParams.getAction();; str1 = null)
+    {
+      if (paramParams != null) {
+        str2 = paramParams.getToProcessName();
+      }
+      acvc.b("GdtInterstitialPreDownloader", String.format("IPCHandlerForPreDownload.handle action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(localResult.success) }));
+      return localResult;
+      if (!paramParams.isValid()) {
+        break;
+      }
+      acqg.a().a();
+      localResult.success = true;
+      break;
+    }
+  }
 }
 
 

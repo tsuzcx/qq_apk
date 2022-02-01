@@ -1,16 +1,17 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agtl
-  extends afuv
+  implements DialogInterface.OnClickListener
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  List<ImageView> jdField_a_of_type_JavaUtilList;
-  TextView b;
+  agtl(agtj paramagtj, ChatMessage paramChatMessage) {}
   
-  agtl(agtk paramagtk) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Agtj.d(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

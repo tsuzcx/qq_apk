@@ -1,10 +1,25 @@
-import org.jetbrains.annotations.NotNull;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
-public abstract interface tgh
+public class tgh
+  extends tgb
 {
-  public abstract void a();
+  tgh(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
+  {
+    super(paramtfy1, paramActivity, paramtfy2, paramJSONObject);
+  }
   
-  public abstract void a(@NotNull String paramString);
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    if ((paramString2 != null) && (paramString2.contains("kandianshare.html5.qq.com")))
+    {
+      tfy.a(this.a).mShareHelper.a(paramString2);
+      return;
+    }
+    tfy.a(this.a).mShareHelper.a(paramString1);
+  }
 }
 
 

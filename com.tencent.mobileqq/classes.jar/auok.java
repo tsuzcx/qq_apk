@@ -1,41 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.fragment.TroopRobotFragment;
-import com.tencent.mobileqq.fragment.TroopRobotFragment.1.1;
-import com.tencent.qphone.base.util.QLog;
-
-public class auok
-  extends anxg
+public abstract interface auok
 {
-  public auok(TroopRobotFragment paramTroopRobotFragment) {}
+  public abstract long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong, int paramInt3);
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
-  {
-    String str = String.valueOf(paramLong1);
-    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
-    {
-      TroopRobotFragment.a(this.a, paramLong1);
-      return;
-    }
-    QLog.i("TroopRobotFragment", 2, "onAddRobot  net troopuin" + paramLong1 + " cur " + TroopRobotFragment.a(this.a));
-  }
+  public abstract long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong1, int paramInt3, long paramLong2, int paramInt4);
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, bftv parambftv)
-  {
-    String str = String.valueOf(paramLong);
-    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
-    {
-      if ((paramBoolean) && (parambftv != null) && (this.a.getActivity() != null))
-      {
-        QLog.d("TroopRobotFragment", 2, "onGetAllRobots");
-        this.a.getActivity().runOnUiThread(new TroopRobotFragment.1.1(this, parambftv));
-        return;
-      }
-      QLog.e("TroopRobotFragment", 2, "onGetAllRobots err " + paramInt + " :" + paramLong);
-      TroopRobotFragment.a(this.a, paramLong);
-      return;
-    }
-    QLog.i("TroopRobotFragment", 2, "onGetAllRobots  net troopuin" + paramLong + " cur " + TroopRobotFragment.a(this.a));
-  }
+  public abstract String a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, long paramLong1, long paramLong2, long paramLong3, int paramInt3);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, long paramLong, int paramInt, String paramString2, String paramString3, String paramString4);
 }
 
 

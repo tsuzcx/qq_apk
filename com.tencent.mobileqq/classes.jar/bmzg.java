@@ -1,11 +1,14 @@
-import com.tencent.weiyun.utils.Singleton;
+import java.io.File;
+import java.io.FileFilter;
 
-final class bmzg
-  extends Singleton<bmzf, Void>
+class bmzg
+  implements FileFilter
 {
-  protected bmzf a(Void paramVoid)
+  bmzg(bmzc parambmzc) {}
+  
+  public boolean accept(File paramFile)
   {
-    return new bmzf(null);
+    return paramFile.getName().endsWith(".ftf");
   }
 }
 

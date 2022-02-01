@@ -1,26 +1,21 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class auni
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public auni(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b = 1;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
+  private String e;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public auni()
   {
-    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131694401), "qqsetting_auto_receive_magic_face_key", paramBoolean);
-    QQAppInterface localQQAppInterface = QQSettingAutoDownloadAndSaveFragment.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      bcst.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
+    this.jdField_a_of_type_JavaLangString = "share_file";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

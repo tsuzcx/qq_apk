@@ -1,39 +1,58 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
 
-public class azid
-  implements bmeo
+class azid
+  extends anuw
 {
-  public azid(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  azid(azic paramazic) {}
   
-  public void a(boolean paramBoolean, int paramInt, String paramString)
+  protected void onGetDetailInfo(boolean paramBoolean, String paramString, Card paramCard)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickyNotePublishFragment", 2, String.format("publishStickyNote onResult success=%s resultCode=%s resultMsg=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString }));
-    }
-    if ((StickyNotePublishFragment.a(this.a) != null) && (StickyNotePublishFragment.a(this.a).isShowing())) {
-      StickyNotePublishFragment.a(this.a).dismiss();
-    }
-    if (paramBoolean)
+    super.onGetDetailInfo(paramBoolean, paramString, paramCard);
+    boolean bool;
+    int i;
+    if ((paramString != null) && (paramString.equals(azic.a(this.a).getCurrentAccountUin())))
     {
-      QQToast.a(BaseApplication.context, 2, 2131698188, 0).a();
-      if (this.a.getActivity() != null)
-      {
-        StickyNotePublishFragment.b(this.a, false);
-        this.a.a(this.a.getActivity().app);
-        this.a.getActivity().setResult(-1);
-        this.a.getActivity().finish();
+      bool = true;
+      if ((paramCard == null) || (paramCard.lBirthday == azic.a(this.a))) {
+        break label290;
       }
+      i = 1;
+      label53:
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineStatusManager", 2, new Object[] { "onGetDetailInfo: invoked. [constellation] ", " isSuccess: ", Boolean.valueOf(paramBoolean), " uin: ", paramString, " mSelfCurrentBirthday: ", Long.valueOf(azic.a(this.a)), " isSelfUin: ", Boolean.valueOf(bool) });
+      }
+      if ((i == 0) || (azic.a(this.a).getExtOnlineStatus() != 1040L) || (!bool)) {
+        break label296;
+      }
+      paramString = azic.a(this.a).getCurrentAccountUin();
+      str1 = azla.a(azic.a(this.a), paramString);
+      paramBoolean = TextUtils.isEmpty(str1);
+      if (paramBoolean)
+      {
+        str2 = azla.b(azic.a(this.a), paramString);
+        azia.a(azic.a(this.a), str2);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineStatusManager", 2, new Object[] { "sendBussinessInfoRegisterPush: invoked. [constellation] (拉取资料回调中，如果运势为空，才执行运势拉取) ", " emptyTrend: ", Boolean.valueOf(paramBoolean), " uin: ", paramString, " trend: ", str1 });
+      }
+      azic.a(this.a, paramCard.lBirthday);
+    }
+    label290:
+    label296:
+    while (!QLog.isColorLevel())
+    {
+      String str1;
+      String str2;
       return;
+      bool = false;
+      break;
+      i = 0;
+      break label53;
     }
-    int i = 2131698186;
-    if (paramInt == azhv.b) {
-      i = 2131698187;
-    }
-    QQToast.a(BaseApplication.context, 1, i, 0).a();
+    QLog.d("OnlineStatusManager", 2, new Object[] { "onGetDetailInfo: invoked.[constellation]  no need fetch", " mApp.getExtOnlineStatus(): ", Long.valueOf(azic.a(this.a).getExtOnlineStatus()) });
   }
 }
 

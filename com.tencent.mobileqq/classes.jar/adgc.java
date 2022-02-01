@@ -1,92 +1,36 @@
-import android.os.Bundle;
-import android.util.LruCache;
-import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
-import com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment;
-import com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment.UrlNotauthorizedError;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0xb60.CheckUrlRsp;
-import tencent.im.oidb.oidb_0xb60.RspBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0xcf.submsgtype0xcf.MsgBody;
 
 public class adgc
-  extends niv
+  implements adci
 {
-  public adgc(VerifyUrlJobSegment paramVerifyUrlJobSegment, awlp paramawlp, String paramString) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "onResult type=" + this.jdField_a_of_type_Awlp.jdField_a_of_type_Int + ", appid=" + this.jdField_a_of_type_Awlp.jdField_a_of_type_JavaLangString + ", url=" + this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment.jdField_a_of_type_JavaLangString + ", code=" + paramInt);
+      QLog.d("QAV.Random.push", 2, "[1v1] onLinePush receive 0x210_0xcf");
     }
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    try
     {
-      VerifyUrlJobSegment.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment, new AppInfoError(7, "jobVerifyUrl req error " + paramInt));
-      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
-        break label444;
-      }
+      submsgtype0xcf.MsgBody localMsgBody = new submsgtype0xcf.MsgBody();
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      paramQQAppInterface.a().a(localMsgBody);
+      return;
     }
-    for (;;)
+    catch (Exception paramQQAppInterface)
     {
-      try
-      {
-        paramBundle = ((oidb_0xb60.RspBody)new oidb_0xb60.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
-        StringBuilder localStringBuilder = new StringBuilder().append("req error code=").append(paramInt);
-        if (paramArrayOfByte == null)
-        {
-          paramArrayOfByte = ", data=null";
-          QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, paramArrayOfByte);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle = "";
-        continue;
-        paramArrayOfByte = ", msg=" + paramBundle;
-        continue;
-      }
-      paramBundle = new oidb_0xb60.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (paramBundle.check_url_rsp.has()) {
-          break label313;
-        }
-        VerifyUrlJobSegment.b(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment, new AppInfoError(7, "jobVerifyUrl rsp invalid"));
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "rsp invalid");
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        VerifyUrlJobSegment.d(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment, new AppInfoError(7, "jobVerifyUrl parse rsp error"));
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "parse rsp error", paramArrayOfByte);
-        return;
-        label313:
-        if (QLog.isColorLevel()) {
-          QLog.d("DoraemonOpenAPI.jobVerifyUrl", 2, "receive is_auth:" + paramBundle.check_url_rsp.is_authed.get() + ", duration:" + paramBundle.check_url_rsp.next_req_duration.get());
-        }
-        if (paramBundle.check_url_rsp.is_authed.get())
-        {
-          VerifyUrlJobSegment.jdField_a_of_type_AndroidUtilLruCache.put(this.jdField_a_of_type_JavaLangString, Long.valueOf(NetConnInfoCenter.getServerTimeMillis() + paramBundle.check_url_rsp.next_req_duration.get() * 1000L));
-          VerifyUrlJobSegment.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment, this.jdField_a_of_type_Awlp);
-          return;
-        }
-        VerifyUrlJobSegment.c(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment, new VerifyUrlJobSegment.UrlNotauthorizedError());
-        return;
-        label444:
-        paramBundle = "";
-      }
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QAV.Random.push", 2, "[1v1] onLinePush 0x210_0xcf push exception", paramQQAppInterface);
     }
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

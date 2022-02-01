@@ -1,62 +1,36 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.av.so.DownloadInfo;
+import android.os.Handler;
+import com.tencent.av.smallscreen.SmallScreenService;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-class lzm
+public class lzm
   extends BroadcastReceiver
 {
-  lzm(lzl paramlzl) {}
+  public lzm(SmallScreenService paramSmallScreenService) {}
   
-  public void onReceive(Context arg1, Intent paramIntent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    for (;;)
+    long l = AudioHelper.b();
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.w("SmallScreenService", 1, "onReceive, action[" + paramContext + "], seq[" + l + "]");
+    }
+    if (paramContext.equals("android.intent.action.NEW_OUTGOING_CALL"))
     {
-      return;
-      if (!"tencent.video.somgr.notify".equals(paramIntent.getAction())) {
-        continue;
-      }
-      int i = paramIntent.getIntExtra("Event_Progress", 0);
-      if ((i == 100) || (i < 0))
-      {
-        this.a.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
-        int j = this.a.jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_Int = lzn.a(this.a.jdField_a_of_type_ComTencentAvSoDownloadInfo);
-        boolean bool;
-        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11))
-        {
-          bool = true;
-          QLog.i("QavSo", 1, String.format("receive notify, lastStatus[%s], progress[%s], mStatusSo[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentAvSoDownloadInfo }));
-          paramIntent = new ArrayList();
-        }
-        synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-        {
-          paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-          ??? = paramIntent.iterator();
-          while (???.hasNext()) {
-            ((lzh)???.next()).a(bool, this.a.b(), this.a.jdField_a_of_type_Int);
-          }
-          bool = false;
-        }
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavSo", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
-      }
-      paramIntent = new ArrayList();
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-      {
-        paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-        ??? = paramIntent.iterator();
-        if (!???.hasNext()) {
-          continue;
-        }
-        ((lzh)???.next()).a(i);
+      paramContext = paramIntent.getStringExtra("android.intent.extra.PHONE_NUMBER");
+      if (QLog.isColorLevel()) {
+        QLog.d("SmallScreenService", 2, "onReceive NEW_OUTGOING_CALL phoneNumber = " + paramContext);
       }
     }
+    while ((!paramContext.equals("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED")) || (this.a.a == null)) {
+      return;
+    }
+    this.a.a().removeCallbacks(this.a.a);
+    this.a.a.a = l;
+    this.a.a().postDelayed(this.a.a, 200L);
   }
 }
 

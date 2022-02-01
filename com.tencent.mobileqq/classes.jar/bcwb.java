@@ -1,10 +1,31 @@
-public abstract interface bcwb
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+
+public class bcwb
+  extends MSFServlet
 {
-  public static final String al = anni.a(2131713304);
-  public static final String am = anni.a(2131713296);
-  public static final String an = anni.a(2131713289);
-  public static final String ao = anni.a(2131713300);
-  public static final String ap = anhk.ba + "photo" + "/temp/";
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
+  
+  public void onSend(Intent paramIntent, Packet paramPacket) {}
+  
+  public void service(Intent paramIntent)
+  {
+    String str = paramIntent.getAction();
+    if ((str != null) && ("gif_ui_show".equals(str)))
+    {
+      int i = paramIntent.getIntExtra("gif_ui_show_bid", 0);
+      long l = paramIntent.getLongExtra("gif_ui_show_seq", 0L);
+      paramIntent = new Bundle();
+      paramIntent.putInt("gif_ui_show_bid", i);
+      paramIntent.putLong("gif_ui_show_seq", l);
+      notifyObserver(null, 0, true, paramIntent, ayxp.class);
+      return;
+    }
+    super.service(paramIntent);
+  }
 }
 
 

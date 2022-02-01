@@ -1,18 +1,29 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aljc
-  implements View.OnLayoutChangeListener
+class aljc
+  implements mnx
 {
-  public aljc(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt) {}
+  aljc(aljb paramaljb) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.removeOnLayoutChangeListener(this);
-    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, this.jdField_a_of_type_Int, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.addOnLayoutChangeListener(new aljd(this));
+    if (QLog.isColorLevel()) {
+      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onError " + paramInt);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onStart " + paramString);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onFinish " + paramString);
+    }
   }
 }
 

@@ -1,29 +1,25 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqcircle.widgets.feed.QCircleInsFeedItemView;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StUser;
 
-class weg
-  implements CompoundButton.OnCheckedChangeListener
+public class weg
+  extends anuw
 {
-  weg(wef paramwef) {}
+  public weg(QCircleInsFeedItemView paramQCircleInsFeedItemView) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
   {
     if (paramBoolean)
     {
-      wef.a(this.a);
-      if (wef.a(this.a)) {
-        yqu.a("video_shoot_slides", "clk_setting_on", 0, 0, new String[0]);
+      String str = paramCard.strNick;
+      if (QCircleInsFeedItemView.a(this.a) != null) {
+        QCircleInsFeedItemView.a(this.a).a(paramCard.strNick, paramCard.uin);
       }
-    }
-    for (;;)
-    {
-      wef.a(this.a, paramBoolean);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      wef.b(this.a);
-      if (wef.a(this.a)) {
-        yqu.a("video_shoot_slides", "clk_setting_close", 0, 0, new String[0]);
+      if (uzg.a(paramCard.uin))
+      {
+        uyn.a().nick.set(str);
+        uyn.a(str);
       }
     }
   }

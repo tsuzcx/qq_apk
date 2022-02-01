@@ -1,20 +1,122 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.Message;
+import android.os.RemoteException;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class aybl
-  implements View.OnClickListener
+public class aybl
 {
-  aybl(aybk paramaybk) {}
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new aybm(this);
+  aybg jdField_a_of_type_Aybg;
+  private aybj jdField_a_of_type_Aybj;
+  aybo jdField_a_of_type_Aybo = new aybn(this);
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public void onClick(View paramView)
+  public aybl(AppInterface paramAppInterface, aybj paramaybj)
   {
-    if (((paramView.getTag() instanceof aybm)) && (this.a.a != null))
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Aybj = paramaybj;
+  }
+  
+  public Message a(Message paramMessage)
+  {
+    if ((this.jdField_a_of_type_Aybg == null) || (paramMessage == null)) {}
+    for (;;)
     {
-      aybm localaybm = (aybm)paramView.getTag();
-      this.a.a.a(this.a, paramView, localaybm);
+      return null;
+      try
+      {
+        synchronized (this.jdField_a_of_type_JavaLangObject)
+        {
+          if (this.jdField_a_of_type_Aybg != null) {
+            break label49;
+          }
+          return null;
+        }
+        if (!QLog.isDevelopLevel()) {}
+      }
+      catch (RemoteException paramMessage) {}
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramMessage.printStackTrace();
+    return null;
+    label49:
+    paramMessage = this.jdField_a_of_type_Aybg.a(paramMessage);
+    return paramMessage;
+  }
+  
+  public void a()
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ConnectNearbyProcService.class);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.msgbox.tab", 2, "bindService");
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Aybg != null;
+  }
+  
+  public Object[] a(int paramInt)
+  {
+    return a(paramInt, new Object[0]);
+  }
+  
+  public Object[] a(int paramInt, Object... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_Aybg == null) {}
+    for (;;)
+    {
+      return null;
+      try
+      {
+        synchronized (this.jdField_a_of_type_JavaLangObject)
+        {
+          if (this.jdField_a_of_type_Aybg != null) {
+            break label45;
+          }
+          return null;
+        }
+        if (!QLog.isDevelopLevel()) {}
+      }
+      catch (RemoteException paramVarArgs) {}
+    }
+    paramVarArgs.printStackTrace();
+    return null;
+    label45:
+    paramVarArgs = this.jdField_a_of_type_Aybg.a(new BasicTypeDataParcel(paramInt, paramVarArgs));
+    if (paramVarArgs == null) {
+      return null;
+    }
+    paramVarArgs = paramVarArgs.a;
+    return paramVarArgs;
+  }
+  
+  Message b(Message paramMessage)
+  {
+    if (this.jdField_a_of_type_Aybj != null) {
+      return this.jdField_a_of_type_Aybj.a(paramMessage);
+    }
+    return null;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
+  }
+  
+  Object[] b(int paramInt, Object... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_Aybj != null) {
+      return this.jdField_a_of_type_Aybj.a(paramInt, paramVarArgs);
+    }
+    return null;
   }
 }
 

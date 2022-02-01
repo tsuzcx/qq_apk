@@ -1,16 +1,30 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract interface bole
+class bole
+  implements Animation.AnimationListener
 {
-  public abstract void a(bolr parambolr);
+  bole(bokv parambokv, boolean paramBoolean, int paramInt, String paramString) {}
   
-  public abstract void a(bolr parambolr, boolean paramBoolean, int paramInt, Bundle paramBundle);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    bokv.a(this.jdField_a_of_type_Bokv, false);
+    bokv.b(this.jdField_a_of_type_Bokv).setVisibility(8);
+    bokv.a(this.jdField_a_of_type_Bokv).setVisibility(8);
+    if ((this.jdField_a_of_type_Boolean) && (!bokv.a(this.jdField_a_of_type_Bokv).get())) {
+      bokv.a(this.jdField_a_of_type_Bokv, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    }
+  }
   
-  public abstract void a(bolu parambolu, boolean paramBoolean, int paramInt, Bundle paramBundle);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void a(bomb parambomb, boolean paramBoolean, int paramInt, Bundle paramBundle);
-  
-  public abstract void a(bpyf parambpyf);
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    bokv.a(this.jdField_a_of_type_Bokv, true);
+  }
 }
 
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.flutter.launch;
 
-import aufo;
+import auxj;
 
 public class QFlutterLauncher$4
   implements Runnable
 {
-  public QFlutterLauncher$4(aufo paramaufo, int paramInt, boolean paramBoolean) {}
+  public QFlutterLauncher$4(auxj paramauxj, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    aufo.b(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    auxj.b(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
 }
 

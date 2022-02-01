@@ -1,35 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class afsq
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public afsq(ActivateFriendView paramActivateFriendView) {}
+  public afsq(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ActivateFriendViewItem localActivateFriendViewItem = (ActivateFriendViewItem)paramView;
-    if (localActivateFriendViewItem.a)
+    QQAppInterface localQQAppInterface = this.a.app;
+    String str2 = this.a.a.troopUin;
+    if (this.a.a.bOwner) {}
+    for (String str1 = "0";; str1 = "1")
     {
-      ActivateFriendView.a(this.a);
-      if (localActivateFriendViewItem.a) {
-        break label82;
-      }
-    }
-    label82:
-    for (boolean bool = true;; bool = false)
-    {
-      localActivateFriendViewItem.setChecked(bool);
-      if (ActivateFriendView.a(this.a) != null) {
-        ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
+      bdll.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "0", "");
+      paramDialogInterface.dismiss();
       return;
-      ActivateFriendView.b(this.a);
-      break;
     }
   }
 }

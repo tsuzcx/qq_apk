@@ -1,40 +1,51 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
+import com.tencent.lbssearch.httpresponse.BaseObject;
+import com.tencent.lbssearch.httpresponse.Poi;
+import com.tencent.lbssearch.object.result.Geo2AddressResultObject;
+import com.tencent.lbssearch.object.result.Geo2AddressResultObject.ReverseAddressResult;
+import com.tencent.map.tools.net.http.HttpResponseListener;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.List;
 
-class azkm
-  implements Animation.AnimationListener
+public class azkm
+  implements HttpResponseListener<BaseObject>
 {
-  azkm(azkl paramazkl) {}
+  private final azkr jdField_a_of_type_Azkr;
+  private final LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public azkm(azkl paramazkl, LatLng paramLatLng, azkr paramazkr)
   {
-    if (!azkl.a(this.a)) {
-      for (;;)
-      {
-        int j = (int)(azkl.a(this.a) * (Math.random() * 2.0D - 1.0D));
-        int i = (int)Math.sqrt(azkl.a(this.a) * azkl.a(this.a) - j * j);
-        if (Math.random() > 0.5D) {}
-        while ((azkl.b(this.a) + j) * (azkl.b(this.a) + j) + (azkl.c(this.a) + i) * (azkl.c(this.a) + i) <= azkl.d(this.a) * azkl.d(this.a))
-        {
-          azkl.a(this.a, new TranslateAnimation(azkl.b(this.a), azkl.b(this.a) + j, azkl.c(this.a), azkl.c(this.a) + i));
-          azkl.a(this.a, j + azkl.b(this.a));
-          azkl.b(this.a, i + azkl.c(this.a));
-          azkl.a(this.a).setAnimationListener(azkl.a(this.a));
-          azkl.a(this.a).setDuration(azkl.a(this.a) * (int)(50.0D + Math.random() * 30.0D));
-          azkl.a(this.a).startAnimation(azkl.a(this.a));
-          return;
-          i = -i;
-        }
-      }
-    }
-    azkl.a(this.a, false);
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
+    this.jdField_a_of_type_Azkr = paramazkr;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(int paramInt, BaseObject paramBaseObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(azki.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_Azkl.b + "] netGet onSuccess. resultCode : " + paramInt + " result : " + paramBaseObject);
+    }
+    if ((paramBaseObject instanceof Geo2AddressResultObject))
+    {
+      paramBaseObject = (Geo2AddressResultObject)paramBaseObject;
+      if ((paramBaseObject.result != null) && (paramBaseObject.result.pois != null) && (paramBaseObject.result.pois.size() > 0))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(azki.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_Azkl.b + "]  netGet invoked success. latLng : " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " poi_size : " + paramBaseObject.result.pois.size());
+        }
+        Poi[] arrayOfPoi = new Poi[paramBaseObject.result.pois.size()];
+        paramBaseObject = new PoiBean(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, paramBaseObject.result.ad_info, (Poi[])paramBaseObject.result.pois.toArray(arrayOfPoi));
+        this.jdField_a_of_type_Azkl.a("netGet", paramBaseObject);
+        this.jdField_a_of_type_Azkr.a(paramBaseObject);
+      }
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onFailure(int paramInt, String paramString, Throwable paramThrowable)
+  {
+    QLog.e(azki.a, 1, paramThrowable, new Object[] { "[status][poiLoader][" + this.jdField_a_of_type_Azkl.b + "] netGet invoked fail. latLng : " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " errorCode : " + paramInt + " errorMsg : " + paramString });
+    this.jdField_a_of_type_Azkr.a(null);
+  }
 }
 
 

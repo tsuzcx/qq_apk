@@ -1,19 +1,40 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 
-final class akgh
-  implements DialogInterface.OnClickListener
+class akgh
+  extends auoz
 {
-  akgh(Activity paramActivity, String paramString1, String paramString2) {}
+  akgh(akgf paramakgf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView)
   {
-    if (paramInt == 0)
+    if ((akgf.a(this.a)) && (akgf.a(this.a) != null))
     {
-      akgc.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      if (paramView.getId() != 2131365823) {
+        break label43;
+      }
+      akgf.a(this.a).a(1);
     }
+    label43:
+    do
+    {
+      return;
+      if (paramView.getId() == 2131365828)
+      {
+        akgf.a(this.a).a(3);
+        return;
+      }
+      if (paramView.getId() == 2131365825)
+      {
+        akgf.a(this.a).a(2);
+        return;
+      }
+      if (paramView.getId() == 2131365822)
+      {
+        akgf.a(this.a).a(4);
+        return;
+      }
+    } while (paramView.getId() != 2131365824);
+    akgf.a(this.a).a(5);
   }
 }
 

@@ -1,19 +1,8 @@
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-final class mad
-  extends ClickableSpan
+public abstract interface mad
 {
-  mad(mai parammai) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    View.OnClickListener localOnClickListener = this.a.a();
-    if (localOnClickListener != null) {
-      localOnClickListener.onClick(paramView);
-    }
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
 }
 
 

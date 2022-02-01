@@ -1,43 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class aegd
-  implements bbpl
+  implements DialogInterface.OnClickListener
 {
-  public aegd(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public aegd(ChatSettingForTroop paramChatSettingForTroop, boolean paramBoolean) {}
   
-  public void a(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 1;
-    bbmu localbbmu = (bbmu)paramView.getTag(2131380929);
-    if (localbbmu == null) {}
-    for (;;)
-    {
-      return;
-      String str1 = localbbmu.b();
-      String str2 = localbbmu.a().toString();
-      paramView = "-1";
-      if ((localbbmu instanceof bbli))
-      {
-        paramView = ((bbli)localbbmu).e();
-        i = 3000;
-      }
-      while ((i != -1) && (ForwardTroopListFragment.a(this.a, new ResultRecord(str1, str2, i, paramView, ""))))
-      {
-        this.a.a.notifyDataSetChanged();
-        return;
-        if ((localbbmu instanceof bblo)) {
-          paramView = ((bblo)localbbmu).a;
-        } else if ((localbbmu instanceof bblt)) {
-          paramView = ((bblt)localbbmu).a().troopuin;
-        } else if ((localbbmu instanceof bblj)) {
-          i = 0;
-        } else {
-          i = -1;
-        }
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      bdll.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
     }
   }
 }

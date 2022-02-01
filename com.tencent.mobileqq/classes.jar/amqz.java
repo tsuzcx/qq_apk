@@ -1,184 +1,205 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameToolCmdChannel.5;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResultCallback;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.device.DeviceHeadMgr;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ExpandableListView;
 
-public class amqz
+public abstract class amqz
+  extends bloj
+  implements aoog, blih
 {
-  private static String[] a = { "cs.create_room.local", "cs.game_start.local", "cs.game_tips.local", "cs.check_pubAccount_state.local", "cs.on_get_open_key.local", "general_cmd_ui_show_toast", "cs.get_dress_path.local", "cs.send_game_msg.local", "cs.report_data_2_backstage.local", "cs.report_flow_data.local", "cs.openWebView.local", "cs.openFloatTransparentView.local", "cs.get_server_ip_port.local", "cs.save_recommend_ip.local", "cs.script_get_action_data.local", "cs.game_shell_share_callback.local", "cs.create_xy.local", "cs.open_cm_aio.local", "cs.show_one_more_page.local" };
-  private static String[] b = { "cs.report_data_2_compass.local", "cs.invite_friends.local", "cs.send_b2c_redpacket.local", "cs.share_game_result.local", "cs.qta_notify_test_result.local", "cs.share_pic.local", "cs.apolloGameWebMessage.local", "cs.openWebViewWithoutUrl.local", "cs.share_game_in_ark.local", "cs.enter_pubAccount_card.local", "cs.fetch_cloud_signature.local", "cs.game_update_score.local", "cs.get_redPacket_result.local", "cs.closeWebview.local", "cs.game_ad_video_jump.local", "cs.xy_ad_banner_jump.local", "cs.game_ad_video_close.local", "cs.get_user_info.local", "cs.get_app_friends.local", "cs.get_location.local", "cs.get_city.local", "cs.apolloGameTargetWebMessage.local", "cs.load_subpackage.local", "sc.load_percentage_nofity.local", "cs.file_correctness_check.local", "cs.game_ad_banner_show.local", "cs.game_ad_banner_close.local", "cs.game_ad_banner_hide.local", "cs.game_ad_banner_resize.local", "cs.game_ad_banner_load.local", "cs.report_event.local" };
-  private static String[] c = { "cs.first_frame_drawn.local", "cs.join_room.local", "cs.make_room_min.local", "cs.close_room.local" };
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private aoof jdField_a_of_type_Aoof;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected ExpandableListView a;
   
-  public static int a(long paramLong, String paramString1, String paramString2, boolean paramBoolean)
+  public amqz(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView)
   {
-    if (!ampj.a()) {
-      return 0;
-    }
-    int i = -1;
-    amrk localamrk = ampj.b(paramLong);
-    if (localamrk != null) {
-      i = localamrk.a();
-    }
-    int j = a(paramString1);
-    if ((1 == j) || (3 == j)) {
-      a(paramLong, paramString1, paramString2, paramBoolean, i);
-    }
-    return j;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
+    this.jdField_a_of_type_Aoof = new aoof(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Aoof.a(this);
+    bhmq.a();
   }
   
-  public static int a(String paramString)
+  protected void a(amra paramamra, Bitmap paramBitmap)
   {
-    int i;
-    if (a(paramString, a)) {
-      i = 1;
+    a(paramamra, paramBitmap, true);
+  }
+  
+  protected void a(amra paramamra, Bitmap paramBitmap, boolean paramBoolean)
+  {
+    if (paramamra.d == null) {
+      return;
+    }
+    if (antf.z.equals(paramamra.a))
+    {
+      paramamra.d.setBackgroundResource(2130844234);
+      return;
+    }
+    if (antf.A.equals(paramamra.a))
+    {
+      paramamra.d.setBackgroundResource(2130844232);
+      return;
+    }
+    if (antf.B.equals(paramamra.a))
+    {
+      paramamra.d.setBackgroundResource(2130844237);
+      return;
+    }
+    if (antf.y.equals(paramamra.a))
+    {
+      paramamra.d.setBackgroundResource(2130839573);
+      return;
+    }
+    Bitmap localBitmap;
+    if (paramBitmap == null) {
+      if ((antf.aa.equals(paramamra.a)) && ((paramamra instanceof ajup)))
+      {
+        Object localObject = (Friends)((ajup)paramamra).a;
+        localBitmap = paramBitmap;
+        if (localObject != null) {
+          if (DeviceHeadMgr.getInstance().isLostQfindDevice(((Friends)localObject).name))
+          {
+            localObject = DeviceHeadMgr.getInstance().getDeviceHeadDrawableByDin(((Friends)localObject).name);
+            localBitmap = paramBitmap;
+            if (localObject != null) {
+              paramamra.d.setBackgroundDrawable((Drawable)localObject);
+            }
+          }
+          else
+          {
+            localBitmap = DeviceHeadMgr.getInstance().getDeviceHeadByDin(((Friends)localObject).name);
+          }
+        }
+        paramBitmap = localBitmap;
+      }
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameToolCmdChannel", 2, new Object[] { "[getCmdType], cmd:", paramString, ",type:", Integer.valueOf(i) });
+      label205:
+      localBitmap = paramBitmap;
+      if (paramBitmap == null) {
+        if (paramBoolean) {
+          if (!(paramamra instanceof ajxk)) {
+            break label368;
+          }
+        }
       }
-      return i;
-      if (a(paramString, b)) {
-        i = 2;
-      } else if (a(paramString, c)) {
-        i = 3;
-      } else {
-        i = 0;
-      }
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, boolean paramBoolean, EIPCResultCallback paramEIPCResultCallback, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("cmd", paramString1);
-    localBundle.putString("reqData", paramString2);
-    localBundle.putBoolean("async", paramBoolean);
-    localBundle.putInt("gameId", paramInt);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_chanel_req", localBundle, paramEIPCResultCallback);
-  }
-  
-  private static boolean a(long paramLong, String paramString1, String paramString2, boolean paramBoolean, int paramInt)
-  {
-    if (paramString1.equals("cs.check_pubAccount_state.local")) {
-      a(paramString1, paramString2, paramBoolean, new amra(paramLong), paramInt);
-    }
-    label199:
-    do
-    {
-      Object localObject2;
-      do
+      label368:
+      for (paramBitmap = bhmq.h();; paramBitmap = bhmq.a())
       {
-        do
+        localBitmap = paramBitmap;
+        if (!this.jdField_a_of_type_Aoof.a())
         {
-          return false;
-          if (paramString1.equals("cs.on_get_open_key.local"))
-          {
-            a(paramString1, paramString2, paramBoolean, new amrb(paramLong), paramInt);
-            return false;
-          }
-          if (!paramString1.equals("cs.get_dress_path.local")) {
-            break label199;
-          }
-          localObject2 = new amrc(paramLong, paramString1);
-          try
-          {
-            amrk localamrk = ampj.b(paramLong);
-            str = paramString2;
-            if (localamrk != null)
-            {
-              JSONObject localJSONObject = new JSONObject(paramString2);
-              str = paramString2;
-              if (!localJSONObject.has("gameId"))
-              {
-                localJSONObject.put("gameId", localamrk.a());
-                str = localJSONObject.toString();
-              }
-            }
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              String str;
-              QLog.e("cmgame_process.CmGameToolCmdChannel", 1, localException, new Object[0]);
-              localObject1 = paramString2;
-            }
-          }
-          a(paramString1, str, paramBoolean, (EIPCResultCallback)localObject2, paramInt);
-        } while (!QLog.isColorLevel());
-        QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_DRESS_PATH ccallServer reqData:" + str);
-        return false;
-        if (!paramString1.equals("cs.script_get_action_data.local")) {
+          this.jdField_a_of_type_Aoof.a(paramamra.a, paramamra.b, false);
+          localBitmap = paramBitmap;
+        }
+        if (localBitmap == null) {
           break;
         }
-        Object localObject1 = new amrd(paramLong);
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putString("cmd", paramString1);
-        ((Bundle)localObject2).putString("reqData", paramString2);
-        ((Bundle)localObject2).putBoolean("async", paramBoolean);
-        QIPCClientHelper.getInstance().callServer("cm_game_module", "action_get_action_data", (Bundle)localObject2, (EIPCResultCallback)localObject1);
-      } while (!QLog.isColorLevel());
-      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, "GET_ACTION_DATA ccallServer bundle:" + localObject2);
-      return false;
-      if (!"cs.game_shell_share_callback.local".equals(paramString1)) {
+        if ((paramamra.b != 1) || (!(paramamra.d instanceof DynamicAvatarView)) || (!(paramamra instanceof ajup))) {
+          break label399;
+        }
+        if (((ajup)paramamra).b) {
+          break label375;
+        }
+        paramamra.d.setBackgroundDrawable(null);
+        ((DynamicAvatarView)paramamra.d).setFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap), 1, paramamra.a, 100, false, true, 1);
+        return;
+        paramBitmap = this.jdField_a_of_type_Aoof.a(paramamra.b, paramamra.a);
+        break label205;
+      }
+      label375:
+      paramamra.d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
+      return;
+      label399:
+      paramamra.d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
+      return;
+    }
+  }
+  
+  public void a(String paramString, Bitmap paramBitmap)
+  {
+    int j = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildCount();
+    int i = 0;
+    Object localObject;
+    if (i < j)
+    {
+      localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildAt(i).getTag();
+      if ((localObject != null) && ((localObject instanceof amra)))
+      {
+        localObject = (amra)localObject;
+        if (paramString != null) {
+          break label69;
+        }
+        a((amra)localObject, null, false);
+      }
+      label69:
+      while (!paramString.equals(((amra)localObject).a))
+      {
+        i += 1;
         break;
       }
-      paramString1 = ampj.b(paramLong);
-      if (paramString1 != null) {
-        paramString1.d(paramString2);
+      if (paramBitmap != null)
+      {
+        if ((((amra)localObject).b != 1) || (!(((amra)localObject).d instanceof DynamicAvatarView)) || (!(localObject instanceof ajup))) {
+          break label175;
+        }
+        if (((ajup)localObject).b) {
+          break label151;
+        }
+        ((DynamicAvatarView)((amra)localObject).d).a(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GAME_SHARE_CALLBACK ");
-    return false;
-    if ("cs.show_one_more_page.local".equals(paramString1))
-    {
-      ThreadManagerV2.excute(new CmGameToolCmdChannel.5(paramInt, paramString1, paramString2), 16, null, false);
-      return false;
     }
-    a(paramString1, paramString2, paramBoolean, null, paramInt);
-    return false;
+    return;
+    label151:
+    ((amra)localObject).d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+    return;
+    label175:
+    ((amra)localObject).d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
   }
   
-  public static boolean a(long paramLong, boolean paramBoolean, String paramString1, String paramString2)
+  public void c()
   {
-    if (!ampj.a()) {}
-    for (;;)
-    {
-      return false;
-      try
-      {
-        amry localamry = ampj.a(paramLong);
-        if (localamry != null)
-        {
-          paramBoolean = localamry.a(paramLong, paramBoolean, paramString1, paramString2);
-          return paramBoolean;
-        }
-      }
-      catch (Throwable paramString1) {}
+    if (this.jdField_a_of_type_Aoof != null) {
+      this.jdField_a_of_type_Aoof.d();
     }
-    return false;
   }
   
-  public static boolean a(String paramString, String[] paramArrayOfString)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    for (;;)
-    {
-      return false;
-      int i = 0;
-      while (i < paramArrayOfString.length)
-      {
-        if (paramArrayOfString[i].equals(paramString)) {
-          return true;
-        }
-        i += 1;
-      }
+    if ((!this.jdField_a_of_type_Aoof.a()) && (paramBitmap != null)) {
+      a(paramString, paramBitmap);
     }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt != 0)
+    {
+      this.jdField_a_of_type_Aoof.a();
+      this.jdField_a_of_type_Aoof.c();
+      aonz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      return;
+    }
+    if (this.jdField_a_of_type_Aoof.a())
+    {
+      this.jdField_a_of_type_Aoof.a();
+      this.jdField_a_of_type_Aoof.b();
+      a(null, null);
+    }
+    aonz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

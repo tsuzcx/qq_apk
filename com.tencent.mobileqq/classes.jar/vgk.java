@@ -1,12 +1,22 @@
-public class vgk
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import qqcircle.QQCircleRead.ConfidentCircleMemberRsp;
+
+class vgk
+  implements aaav<QQCircleRead.ConfidentCircleMemberRsp>
 {
-  public int a;
-  public boolean a;
+  vgk(vgi paramvgi) {}
   
-  private vgk()
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleRead.ConfidentCircleMemberRsp paramConfidentCircleMemberRsp)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = vgi.jdField_a_of_type_Int;
+    if ((!paramBoolean) || (paramLong != 0L) || (paramConfidentCircleMemberRsp == null))
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        QLog.e("QCircleTopAuthPart", 1, "confirmCircleMemberShip error:" + paramString);
+      }
+      return;
+    }
+    QLog.e("QCircleTopAuthPart", 1, "confirmCircleMemberShip success!");
   }
 }
 

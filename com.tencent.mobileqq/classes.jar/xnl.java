@@ -1,106 +1,57 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class xnl
-  extends xmt
+public class xnl
+  extends xmx
 {
-  public int a;
-  @NonNull
-  public final View a;
-  public StoryPlayerGroupHolder a;
-  public String a;
-  public xne a;
-  protected xnm a;
-  protected boolean a;
-  public int b;
-  private final String b;
-  protected boolean b;
+  private ShareFromMemoryPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo;
+  private String jdField_a_of_type_JavaLangString = "";
+  private xms jdField_a_of_type_Xms;
   
-  public xnl(@NonNull ViewGroup paramViewGroup)
+  public xnl(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo)
   {
-    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.playernew." + getClass().getSimpleName());
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this));
-    this.jdField_a_of_type_AndroidViewView = a(paramViewGroup);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo = paramShareFromMemoryPlayInfo;
+    this.jdField_a_of_type_Xms = new xms(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
   }
   
-  protected abstract View a(ViewGroup paramViewGroup);
-  
-  public xnl a(Class<? extends xnl> paramClass)
+  public List<xmz> a(List<xms> paramList)
   {
-    if (this.jdField_a_of_type_Xnm != null) {
-      return this.jdField_a_of_type_Xnm.b(paramClass);
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(new xnm(this, (xms)paramList.next()));
     }
-    return null;
+    return localArrayList;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public xmv a()
   {
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
-    yqp.a(this.jdField_a_of_type_JavaLangString, "onPositionChanged, oldVer=%d, oldHor=%d, newVer=%d, newHor=%d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2, @NonNull xne paramxne, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
-  {
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Xne = paramxne;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = paramStoryPlayerGroupHolder;
-  }
-  
-  void a(xnm paramxnm)
-  {
-    this.jdField_a_of_type_Xnm = paramxnm;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.videoListOrder == 0)
     {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      b(this.jdField_b_of_type_Boolean);
-      return;
+      localObject = ((ymk)wth.a(12)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId, 1);
+      if ((localObject == null) || (((FeedVideoInfo)localObject).mVideoItemList.size() <= 0)) {}
     }
-    yqp.e(this.jdField_a_of_type_JavaLangString, "onSelected donot changed !");
+    for (Object localObject = ((StoryVideoItem)((FeedVideoInfo)localObject).mVideoItemList.get(0)).mVid;; localObject = null)
+    {
+      yuk.d("Q.qqstory.player.data.ShareFromMemoryPlayPageLoader", "getStartInfo GroupId=" + this.jdField_a_of_type_Xms + ",vid=" + (String)localObject + ",feedId=" + this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
+      return new xmv(this.jdField_a_of_type_Xms, (String)localObject, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
+    }
   }
   
-  protected void b() {}
+  public void a() {}
   
-  protected void b(boolean paramBoolean)
+  public void a(int paramInt, xmy paramxmy)
   {
-    yqp.b(this.jdField_a_of_type_JavaLangString, "onSelectedChanged (ver=%d, hor=%d) , => %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(paramBoolean));
+    paramxmy.a(new ErrorMessage(), Collections.singletonList(this.jdField_a_of_type_Xms), true);
   }
   
-  public void c()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Xne = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = null;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String toString()
-  {
-    return "VideoHolderBase{, GroupPos=" + this.jdField_a_of_type_Int + ", VideoPos=" + this.jdField_b_of_type_Int + ", mData=" + this.jdField_a_of_type_Xne + '}';
-  }
+  public void b() {}
 }
 
 

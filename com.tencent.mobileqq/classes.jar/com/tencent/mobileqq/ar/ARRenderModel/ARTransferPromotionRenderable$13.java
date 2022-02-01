@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aoua;
-import aouh;
-import aouj;
+import aphq;
+import aphx;
+import aphz;
 import com.tencent.mobileqq.ar.ARNativeBridge;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARTransferPromotionRenderable$13
   implements Runnable
 {
-  public ARTransferPromotionRenderable$13(aouh paramaouh, int paramInt) {}
+  public ARTransferPromotionRenderable$13(aphx paramaphx, int paramInt) {}
   
   public void run()
   {
@@ -19,23 +19,23 @@ public class ARTransferPromotionRenderable$13
     }
     for (;;)
     {
-      aouh.e(this.this$0);
+      aphx.e(this.this$0);
       return;
-      if ((this.a == 1) && (aouh.a(this.this$0) != null) && (aouh.a(this.this$0).a.booleanValue())) {
-        aouh.a(this.this$0).b(0, 1);
+      if ((this.a == 1) && (aphx.a(this.this$0) != null) && (aphx.a(this.this$0).a.booleanValue())) {
+        aphx.a(this.this$0).b(0, 1);
       }
-      if (aouh.a(this.this$0) != null)
+      if (aphx.a(this.this$0) != null)
       {
-        aouh.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
+        aphx.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
         continue;
         if (this.this$0.b == 3)
         {
-          if (aouh.a(this.this$0) != null) {
-            aouh.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
+          if (aphx.a(this.this$0) != null) {
+            aphx.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
           }
         }
         else {
-          aouh.a(this.this$0, 4, aouh.a(this.this$0).c + "360Video.mp4", false, aouh.a(this.this$0).d, false);
+          aphx.a(this.this$0, 4, aphx.a(this.this$0).c + "360Video.mp4", false, aphx.a(this.this$0).d, false);
         }
       }
     }

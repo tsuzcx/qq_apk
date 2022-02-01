@@ -1,15 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 final class rzf
-  extends AnimatorListenerAdapter
+  implements sum
 {
-  rzf(View paramView) {}
+  rzf(BaseArticleInfo paramBaseArticleInfo, URL paramURL) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(suo paramsuo, int paramInt) {}
+  
+  public void a(suo paramsuo, Throwable paramThrowable)
   {
-    this.a.setLayerType(0, null);
+    QLog.e(rze.a, 2, "preload failed " + this.jdField_a_of_type_JavaNetURL);
+  }
+  
+  public void a(suo paramsuo, suk paramsuk)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.setHasFirstFramePreload(true);
+    if (QLog.isColorLevel()) {
+      QLog.d(rze.a, 2, "preload success width: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getFirstFrameWidth() + ", height: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getFirstFrameHeight() + ", " + this.jdField_a_of_type_JavaNetURL + ", title: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mTitle);
+    }
   }
 }
 

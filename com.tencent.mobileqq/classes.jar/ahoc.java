@@ -1,22 +1,57 @@
-import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
+import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
+import com.tencent.mobileqq.activity.aio.item.PttAudioChangeView;
+import com.tencent.mobileqq.activity.aio.item.PttAudioPlayView;
+import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
 
 public class ahoc
+  extends aggl
 {
-  public float a;
-  public int a;
-  public Bitmap a;
-  public float b;
-  public int b;
-  public float c = 0.0F;
-  public float d = 0.0F;
-  public float e;
+  public agjk a;
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public VoicePrintUtils.VoicePrintView a;
+  public BreathAnimationLayout a;
+  public PttAudioChangeView a;
+  public PttAudioPlayView a;
+  public PttAudioWaveView a;
+  public StringBuilder a;
+  private boolean a;
+  public ImageView b;
+  public TextView b;
+  public PttAudioChangeView b;
+  public ImageView c;
+  public ImageView d;
+  public ImageView e;
+  public ImageView f;
   
-  private ahoc()
+  public void a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView.a();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.b();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioChangeView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioChangeView.a();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

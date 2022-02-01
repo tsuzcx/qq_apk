@@ -1,27 +1,6 @@
-import android.hardware.Camera;
-import android.hardware.Camera.PreviewCallback;
-
-class aygq
-  implements Camera.PreviewCallback
+public abstract interface aygq
 {
-  aygq(aygn paramaygn) {}
-  
-  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    if (paramArrayOfByte == null) {
-      return;
-    }
-    if (((this.a.jdField_a_of_type_Boolean) || (this.a.e == 1)) && (!aygn.a(this.a)))
-    {
-      this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-      if ((this.a.e != 1) && (System.currentTimeMillis() - aygn.a(this.a) > this.a.c))
-      {
-        aygn.a(this.a, System.currentTimeMillis());
-        aygn.a(this.a, paramArrayOfByte);
-      }
-    }
-    aygn.a(this.a).addCallbackBuffer(paramArrayOfByte);
-  }
+  public abstract boolean a(aygm paramaygm, int paramInt, Object paramObject);
 }
 
 

@@ -1,21 +1,17 @@
-import com.tencent.qapmsdk.base.meta.DumpResult;
-
-public abstract interface adby
-  extends adbu
+public class adby
+  implements adbx
 {
-  public abstract DumpResult a(String paramString, adcb paramadcb);
+  private adbd<Integer, adbw> a = new adbe();
   
-  public abstract String a();
+  public adbw a(Integer paramInteger)
+  {
+    return (adbw)this.a.a(paramInteger);
+  }
   
-  public abstract void a(adbw paramadbw);
-  
-  public abstract void a(DumpResult paramDumpResult);
-  
-  public abstract String b();
-  
-  public abstract void b(adbw paramadbw);
-  
-  public abstract boolean c();
+  public void a(Integer paramInteger, Class<? extends adbw> paramClass)
+  {
+    this.a.a(paramInteger, paramClass);
+  }
 }
 
 

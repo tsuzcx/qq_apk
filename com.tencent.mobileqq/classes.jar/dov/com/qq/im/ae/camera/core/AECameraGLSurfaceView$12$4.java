@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bnid;
-import bnzb;
+import bojl;
+import bpam;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 
 class AECameraGLSurfaceView$12$4
   implements Runnable
 {
-  AECameraGLSurfaceView$12$4(AECameraGLSurfaceView.12 param12, VideoMaterial paramVideoMaterial, bnid parambnid) {}
+  AECameraGLSurfaceView$12$4(AECameraGLSurfaceView.12 param12, VideoMaterial paramVideoMaterial, bojl parambojl) {}
   
   public void run()
   {
-    bnzb.d("AECameraGLSurfaceView", "[setVideoMaterial] update material" + this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial.getId());
-    this.jdField_a_of_type_Bnid.a(this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial);
+    bpam.d("AECameraGLSurfaceView", "[setVideoMaterial] update material" + this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial.getId());
+    this.jdField_a_of_type_Bojl.a(this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial);
   }
 }
 

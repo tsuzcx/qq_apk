@@ -14,8 +14,8 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bgbe;
-import bgbf;
+import bhbf;
+import bhbg;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -35,7 +35,7 @@ public class TroopPicEffectGuidePicActivity
   
   protected void a(View paramView)
   {
-    paramView.setOnTouchListener(new bgbe(this));
+    paramView.setOnTouchListener(new bhbf(this));
   }
   
   @Override
@@ -50,11 +50,11 @@ public class TroopPicEffectGuidePicActivity
   {
     super.doOnCreate(paramBundle);
     getWindow().setFlags(1024, 1024);
-    setContentView(2131563027);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131379338));
-    this.b = ((ImageButton)findViewById(2131379339));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131379340));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379342));
+    setContentView(2131563062);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131379505));
+    this.b = ((ImageButton)findViewById(2131379506));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131379507));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379509));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
     this.b.setOnClickListener(this);
     a(this.jdField_a_of_type_AndroidWidgetImageButton);
@@ -67,7 +67,7 @@ public class TroopPicEffectGuidePicActivity
     this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramBundle);
     this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
     paramBundle = URLDrawable.URLDrawableOptions.obtain();
-    localObject = getResources().getDrawable(2130850719);
+    localObject = getResources().getDrawable(2130850738);
     paramBundle.mFailedDrawable = ((Drawable)localObject);
     paramBundle.mLoadingDrawable = ((Drawable)localObject);
     paramBundle = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/groupgift/troop_pic_effects_select_pic_button.png", paramBundle);
@@ -78,7 +78,7 @@ public class TroopPicEffectGuidePicActivity
     paramBundle.mLoadingDrawable = ((Drawable)localObject);
     paramBundle = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/groupgift/troop_pic_effects_select_pic_wording.png", paramBundle);
     this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramBundle);
-    bgbf.a("app_entry_guide", "page_exp");
+    bhbg.a("app_entry_guide", "page_exp");
     return true;
   }
   

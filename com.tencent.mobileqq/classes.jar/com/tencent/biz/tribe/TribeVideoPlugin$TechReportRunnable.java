@@ -1,7 +1,7 @@
 package com.tencent.biz.tribe;
 
-import bcst;
-import bgnt;
+import bdll;
+import bhnv;
 import com.tencent.mobileqq.app.BaseActivity;
 import java.lang.ref.WeakReference;
 
@@ -27,7 +27,7 @@ class TribeVideoPlugin$TechReportRunnable
     if (this.jdField_a_of_type_Boolean) {}
     for (int i = 1;; i = 0)
     {
-      bcst.b(null, "dc00899", "BizTechReport", str, "tribe_video", "play", 0, 0, Integer.toString(i), Integer.toString(bgnt.b(TribeVideoPlugin.a(localTribeVideoPlugin))), "", "");
+      bdll.b(null, "dc00899", "BizTechReport", str, "tribe_video", "play", 0, 0, Integer.toString(i), Integer.toString(bhnv.b(TribeVideoPlugin.a(localTribeVideoPlugin))), "", "");
       return;
     }
   }

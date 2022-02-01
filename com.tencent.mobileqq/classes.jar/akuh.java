@@ -1,141 +1,26 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Array;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.videostory.video.FrameVideoHelper;
+import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import java.util.ArrayList;
 
-public class akuh
-  extends akvm
+class akuh
+  implements abbj
 {
-  private StringBuilder a;
+  akuh(akug paramakug, LocalMediaInfo paramLocalMediaInfo, FrameVideoHelper paramFrameVideoHelper) {}
   
-  public akuh(String paramString1, String paramString2)
+  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
   {
-    super(paramString1, paramString2);
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_JavaLangStringBuilder == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
-  }
-  
-  public boolean a(aggc paramaggc, String paramString, float paramFloat1, int paramInt, float paramFloat2)
-  {
-    if ((paramaggc == null) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
-      do
-      {
-        return false;
-        paramaggc = akuz.a(paramaggc, 28, 28, paramFloat2);
-        localObject1 = a(paramaggc);
-        akuz.a(paramaggc);
-      } while (localObject1 == null);
-      Object localObject2 = a((float[][][][])localObject1);
-      paramaggc = new HashSet();
-      Object localObject1 = new LinkedList();
-      paramFloat2 = Math.min(0.01F, paramFloat1);
-      if (localObject2 != null)
-      {
-        paramInt = 0;
-        while (paramInt < this.jdField_a_of_type_JavaUtilList.size())
-        {
-          if ((localObject2.length > paramInt) && (localObject2[paramInt] > paramFloat2))
-          {
-            ((List)localObject1).add(new akuj((String)this.jdField_a_of_type_JavaUtilList.get(paramInt), localObject2[paramInt]));
-            if ((localObject2[paramInt] > paramFloat1) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
-              paramaggc.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
-            }
-          }
-          paramInt += 1;
-        }
-      }
-      Collections.sort((List)localObject1, new akui(this));
-      localObject2 = new StringBuilder();
-      paramInt = 0;
-      while ((paramInt < 20) && (paramInt < ((List)localObject1).size()))
-      {
-        akuj localakuj = (akuj)((List)localObject1).get(paramInt);
-        ((StringBuilder)localObject2).append(localakuj.jdField_a_of_type_JavaLangString + ":" + localakuj.jdField_a_of_type_Float + "\n");
-        paramInt += 1;
-      }
-      this.jdField_a_of_type_JavaLangStringBuilder = ((StringBuilder)localObject2);
-      if (QLog.isColorLevel()) {
-        QLog.d("DrawClassifier.DefaultClassifier", 2, "recog result:" + ((StringBuilder)localObject2).toString());
-      }
-      if (paramaggc.contains(paramString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("DrawClassifier.DefaultClassifier", 2, "recognition succ:" + paramString);
-        }
-        return true;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("DrawClassifier.DefaultClassifier", 2, "recognition failed:" + paramString);
-    return false;
-  }
-  
-  public float[][][][] a(Bitmap paramBitmap)
-  {
-    if (paramBitmap == null) {
-      return (float[][][][])null;
-    }
-    float[][][][] arrayOfFloat = (float[][][][])Array.newInstance(Float.TYPE, new int[] { 1, 28, 28, 1 });
-    int[] arrayOfInt1 = new int[784];
-    float[] arrayOfFloat1 = new float[arrayOfInt1.length];
-    int[] arrayOfInt2 = new int[784];
-    paramBitmap.getPixels(arrayOfInt2, 0, paramBitmap.getWidth(), 0, 0, 28, 28);
-    int i = 0;
-    while (i < arrayOfInt1.length)
-    {
-      arrayOfInt1[i] = 255;
-      i += 1;
-    }
-    i = 0;
-    while (i < arrayOfInt2.length)
-    {
-      arrayOfInt2[i] &= 0xFF;
-      i += 1;
-    }
-    i = 0;
-    while (i < arrayOfInt1.length)
-    {
-      arrayOfFloat1[i] = (1.0F - arrayOfInt1[i] / 255.0F);
-      i += 1;
-    }
-    int m = arrayOfFloat1.length;
-    i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
-    {
-      k = j;
-      if (arrayOfFloat1[i] != 0.0F) {
-        k = j + 1;
-      }
-      i += 1;
-    }
-    if (j < 40) {
-      return (float[][][][])null;
-    }
-    i = 0;
-    while (i < arrayOfFloat[0].length)
-    {
-      j = 0;
-      while (j < arrayOfFloat[0][i].length)
-      {
-        arrayOfFloat[0][i][j][0] = arrayOfFloat1[(i * 28 + j)];
-        j += 1;
-      }
-      i += 1;
-    }
-    return arrayOfFloat;
+    ((NewPhotoListActivity)this.jdField_a_of_type_Akug.a.mActivity).cancleProgressDailog();
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", paramLong);
+    localBundle.putBoolean("VIDEO_STORY_PHOTO_LIST_TO_EDIT", true);
+    localBundle.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", paramArrayList);
+    ((NewPhotoListActivity)this.jdField_a_of_type_Akug.a.mActivity).getIntent().putExtra("VIDEO_STORY_MEDIA_TYPE", 100);
+    akue.a(this.jdField_a_of_type_Akug.a, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, localBundle);
+    this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.a();
   }
 }
 

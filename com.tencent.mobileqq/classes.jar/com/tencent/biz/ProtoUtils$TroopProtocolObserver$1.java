@@ -1,16 +1,16 @@
 package com.tencent.biz;
 
 import android.os.Bundle;
-import niv;
+import nkq;
 
 public class ProtoUtils$TroopProtocolObserver$1
   implements Runnable
 {
-  public ProtoUtils$TroopProtocolObserver$1(niv paramniv, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public ProtoUtils$TroopProtocolObserver$1(nkq paramnkq, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
-    niv.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    nkq.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

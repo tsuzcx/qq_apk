@@ -1,32 +1,39 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import com.tencent.widget.SwipListView;
+import android.graphics.Bitmap;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
 public class airo
-  implements amdt
+  extends NativeGifImage
 {
-  public airo(AddContactsView paramAddContactsView) {}
+  public airo(File paramFile, boolean paramBoolean)
+  {
+    super(paramFile, paramBoolean);
+  }
+  
+  public int a()
+  {
+    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
+  }
+  
+  public Bitmap a()
+  {
+    return this.mCurrentFrameBitmap;
+  }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled");
-    }
-    this.a.b.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
+    getNextFrame();
+    applyNextFrame();
   }
   
-  public void b()
+  public int b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onRecommendsAvailable");
-    }
-    this.a.b.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
-    this.a.e();
+    return this.mMetaData[FRAME_COUNT_INDEX];
+  }
+  
+  public int c()
+  {
+    return this.mCurrentFrameIndex;
   }
 }
 

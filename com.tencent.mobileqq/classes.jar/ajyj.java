@@ -1,35 +1,32 @@
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.XListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajyj
-  implements bkhe
+public class ajyj
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  public ajyj(ImgPreviewAdapter paramImgPreviewAdapter) {}
   
-  ajyj(ajye paramajye) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-    this.b = paramInt3;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (this.jdField_a_of_type_Ajye.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == this.jdField_a_of_type_Ajye.jdField_a_of_type_Ajyo) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i(ajye.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, scrollState = " + paramInt + ", lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
+    EmoticonFromGroupEntity localEmoticonFromGroupEntity = this.a.a(ImgPreviewAdapter.a(this.a).getCurrentItem());
+    if (localEmoticonFromGroupEntity != null) {
+      if (localEmoticonFromGroupEntity.msg != null) {
+        ImgPreviewAdapter.a(this.a).a(ImgPreviewAdapter.a(this.a), localEmoticonFromGroupEntity.msg, paramView);
       }
-    } while ((this.b == 0) || (this.jdField_a_of_type_Int != this.b) || (paramInt != 0));
-    if (QLog.isColorLevel()) {
-      QLog.i(ajye.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, reach bottom, lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
     }
-    ajye.a(this.jdField_a_of_type_Ajye);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QLog.e("ImgPreviewAdapter.msgnull", 1, "img click msg is null.");
+      continue;
+      QLog.e("ImgPreviewAdapter.emonull", 1, "img click emo is null.");
+    }
   }
 }
 

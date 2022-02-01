@@ -1,32 +1,32 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
 class banp
+  extends bezs
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int b;
-  
-  public banp(bano parambano, String paramString, int paramInt1, int paramInt2)
+  banp(bano parambano, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    super(paramQQAppInterface, paramString1);
   }
   
-  public int a()
+  protected void realCancel()
   {
-    if (this.jdField_a_of_type_Int > 0) {
-      return this.b * 100 / this.jdField_a_of_type_Int;
-    }
-    return 0;
+    QLog.i("QbossPreDownloadManager", 1, "ctrl realCancel");
   }
   
-  public void a()
+  protected void realStart()
   {
-    this.b += 1;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int += 1;
+    QLog.i("QbossPreDownloadManager", 1, "downloadRes realStart packagename:" + this.jdField_a_of_type_JavaLangString + ",path" + this.b);
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("Qboss_PreDownload_PackageName", this.jdField_a_of_type_JavaLangString);
+    bano.a("Qboss_PreDownload_Start", (HashMap)localObject);
+    localObject = new beum();
+    ((beum)localObject).jdField_a_of_type_Beuq = new banq(this.app, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
+    ((beum)localObject).jdField_a_of_type_JavaLangString = this.c;
+    ((beum)localObject).jdField_a_of_type_Int = 0;
+    ((beum)localObject).c = this.b;
+    ((bevo)this.app.getNetEngine(0)).a((bevl)localObject);
   }
 }
 

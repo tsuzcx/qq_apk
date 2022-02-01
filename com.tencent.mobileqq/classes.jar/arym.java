@@ -1,36 +1,13 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
 
 public class arym
-  implements awnc<EmoticonPackage>
+  implements View.OnClickListener
 {
-  public arym(EmoticonPanelLinearLayout paramEmoticonPanelLinearLayout, Emoticon paramEmoticon, arxg paramarxg, asbq paramasbq) {}
+  public arym(DBFixConfigActivity paramDBFixConfigActivity) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
-  {
-    if (paramEmoticonPackage == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionPanelLinearLayout", 2, "package is null, epId: " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
-      }
-    }
-    do
-    {
-      return;
-      arxd localarxd = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_Arxd;
-      if (localarxd != null) {
-        localarxd.a(this.jdField_a_of_type_Arxg);
-      }
-    } while (this.jdField_a_of_type_Asbq.d != 2);
-    if ((paramEmoticonPackage.jobType == 0) && (paramEmoticonPackage.subType == 4))
-    {
-      bcst.b(((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "ep_mall", "0X800579F", 0, 0, "", "", "3", "");
-      return;
-    }
-    bcst.b(((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "ep_mall", "0X800579F", 0, 0, "", "", "2", "");
-  }
+  public void onClick(View paramView) {}
 }
 
 

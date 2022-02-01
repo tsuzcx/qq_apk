@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import agpp;
+import agyv;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -12,7 +12,7 @@ public class RecommendCommonMessage$ArkMsgAppInfo
   public String appView = "";
   public boolean equalInputText;
   public String keyword = "";
-  public agpp mArkContainer;
+  public agyv mArkContainer;
   public LinkedList<ArkMsgAppInfo> mOpenCardAppInfoList = new LinkedList();
   public String meta = "";
   

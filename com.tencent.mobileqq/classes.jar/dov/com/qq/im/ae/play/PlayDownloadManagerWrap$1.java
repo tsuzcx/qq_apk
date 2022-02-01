@@ -1,19 +1,19 @@
 package dov.com.qq.im.ae.play;
 
-import bnpc;
-import bnpf;
-import bnpq;
-import bnxt;
+import boqr;
+import boqu;
+import borc;
+import bozd;
 
 public class PlayDownloadManagerWrap$1
   implements Runnable
 {
-  public PlayDownloadManagerWrap$1(bnxt parambnxt, bnpc parambnpc, bnpf parambnpf, bnpq parambnpq) {}
+  public PlayDownloadManagerWrap$1(bozd parambozd, boqr paramboqr, boqu paramboqu, borc paramborc) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bnpc.a(this.jdField_a_of_type_Bnpc.a(), this.jdField_a_of_type_Bnpf, this.jdField_a_of_type_Bnpq);
-    this.jdField_a_of_type_Bnpf.f = true;
+    this.jdField_a_of_type_Boqr.a(this.jdField_a_of_type_Boqr.a(), this.jdField_a_of_type_Boqu, this.jdField_a_of_type_Borc);
+    this.jdField_a_of_type_Boqu.f = true;
   }
 }
 

@@ -1,24 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.LinearLayout;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StUser;
 
 class vds
-  implements Animator.AnimatorListener
+  implements wal
 {
-  vds(vdq paramvdq) {}
+  vds(vdr paramvdr) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    if (vdq.a(this.a) != null) {
-      vdq.a(this.a).setVisibility(8);
-    }
+    vtq.a(vdr.a(this.a).id.get(), 11, 3, 3, String.valueOf(1), "1", "", "", "", this.a.c());
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void a(int paramInt) {}
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void b(int paramInt)
+  {
+    vtq.a(vdr.a(this.a).id.get(), 11, 3, 2, String.valueOf(paramInt), "1", "", "", "", this.a.c());
+  }
 }
 
 

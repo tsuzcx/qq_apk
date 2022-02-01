@@ -1,29 +1,16 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import com.tencent.qphone.base.util.QLog;
 
-public class bpqp
-  implements TextWatcher
+class bpqp
+  implements bpqq
 {
-  public bpqp(bpqn parambpqn) {}
+  bpqp(bpqn parambpqn) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(float paramFloat, String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean, String paramString, bqpa parambqpa)
   {
-    String str = zkn.a(paramEditable.toString(), 30);
-    if (str.length() < paramEditable.length()) {
-      paramEditable.replace(0, paramEditable.length(), str);
-    }
-    this.a.jdField_a_of_type_JavaLangString = paramEditable.toString();
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramCharSequence = paramCharSequence.toString();
-    this.a.jdField_a_of_type_JavaLangString = paramCharSequence;
-    yqp.b("Q.qqstory.record.label.QQStoryAddVideoLabelView", "keyword = " + this.a.jdField_a_of_type_JavaLangString);
-    if (this.a.jdField_a_of_type_Bpqq != null) {
-      this.a.jdField_a_of_type_Bpqq.a(this.a.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMInformationPasterManager", 2, "preload:" + paramString + " item:" + parambqpa.toString());
     }
   }
 }

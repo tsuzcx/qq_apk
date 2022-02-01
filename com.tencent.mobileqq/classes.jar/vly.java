@@ -1,21 +1,17 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.qqcircle.fragments.main.QCircleFolderFollowTabFragment;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
 
 public class vly
-  extends RecyclerView.OnScrollListener
+  extends vrh
 {
-  public vly(QCircleFolderFollowTabFragment paramQCircleFolderFollowTabFragment) {}
+  public vly(QCircleContentImage paramQCircleContentImage, FeedCloudMeta.StFeed paramStFeed, String paramString) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(int paramInt, vrd paramvrd)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0)
-    {
-      adcd.a().a("qcircle_follow_tab_page", false);
-      return;
-    }
-    adcd.a().a("qcircle_follow_tab_page");
+    super.a(paramInt, paramvrd);
+    QLog.d("QCircleContentImage", 1, "feedId:" + this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get() + " url:" + this.jdField_a_of_type_JavaLangString + "state callback:" + paramInt);
   }
 }
 

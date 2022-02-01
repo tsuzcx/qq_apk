@@ -1,19 +1,68 @@
-class xpv
-  implements xpq
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.Map;
+
+public class xpv
+  extends AbsVideoInfoWidget
 {
-  public xpq a;
+  private xpx a = new xpx(this);
+  private boolean e;
   
-  private xpv(xpr paramxpr) {}
-  
-  public void a(xpl paramxpl)
+  public xpv(ViewGroup paramViewGroup)
   {
-    if (xpr.a(this.jdField_a_of_type_Xpr) != null) {
-      xpr.a(this.jdField_a_of_type_Xpr).a(0L, paramxpl.b(), paramxpl);
-    }
-    if (this.jdField_a_of_type_Xpq != null) {
-      this.jdField_a_of_type_Xpq.a(paramxpl);
-    }
+    super(paramViewGroup);
   }
+  
+  public String a()
+  {
+    return "LoadingMoreWidget";
+  }
+  
+  public xpx a()
+  {
+    return this.a;
+  }
+  
+  public void a(View paramView) {}
+  
+  public void a(@NonNull Map<Subscriber, String> paramMap)
+  {
+    paramMap.put(new xpw(this), "");
+  }
+  
+  public void a(@NonNull xqz paramxqz, @NonNull StoryVideoItem paramStoryVideoItem) {}
+  
+  public boolean a(@NonNull xqz paramxqz, @NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    return this.e;
+  }
+  
+  public int b()
+  {
+    return 2131561895;
+  }
+  
+  public void d()
+  {
+    this.e = true;
+    i();
+    yuk.b("Q.qqstory.playernew.LoadingMoreWidget", "showLoadMore");
+  }
+  
+  public void e()
+  {
+    this.e = false;
+    k();
+    yuk.b("Q.qqstory.playernew.LoadingMoreWidget", "hideLoadMore");
+  }
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

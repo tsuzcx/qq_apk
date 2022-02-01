@@ -1,29 +1,15 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorSet;
-import android.widget.ImageView;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
 class qjj
-  implements Animator.AnimatorListener
+  implements blmq
 {
-  qjj(qji paramqji) {}
+  qjj(qjh paramqjh) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    qji.a(this.a).setSelected(this.a.isSelected());
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    qji.a(this.a).setSelected(this.a.isSelected());
-    qji.a(this.a).start();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    qji.a(this.a, true);
+    qjh.a(this.a, (ppu)this.a.a, paramInt, paramArrayList, paramObject);
   }
 }
 

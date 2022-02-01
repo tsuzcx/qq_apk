@@ -1,21 +1,24 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.ad.soft_component.VideoFeedsSoftAdBarDelegateForAd.1.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class opm
-  implements olv
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class opm
+  implements ViewBase.OnClickListener
 {
-  opm(opl paramopl) {}
+  opm(otp paramotp, otd paramotd, Container paramContainer) {}
   
-  public void a(orb paramorb, int paramInt1, int paramInt2)
+  public final void onClick(ViewBase paramViewBase)
   {
-    if ((paramorb == null) || (paramorb.d == null) || (opl.a(this.a) == null) || (opl.a(this.a).a == null) || (opl.a(this.a).a.mAdvertisementSoftInfo == null)) {}
-    while (!opl.a(this.a).a.mAdvertisementSoftInfo.o.equalsIgnoreCase(paramorb.d)) {
-      return;
+    if (tpk.a(this.jdField_a_of_type_Otp))
+    {
+      paramViewBase = this.jdField_a_of_type_Otd.a();
+      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
+      tpk.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Otp, 3);
     }
-    ThreadManager.getUIHandler().post(new VideoFeedsSoftAdBarDelegateForAd.1.1(this, paramInt1, paramInt2));
   }
 }
 

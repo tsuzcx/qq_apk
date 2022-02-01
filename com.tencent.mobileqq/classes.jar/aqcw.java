@@ -1,60 +1,87 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import java.util.Comparator;
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.ark.ArkPanelPagerAdapter;
+import com.tencent.widget.XPanelContainer;
 
-class aqcw
-  implements Comparator<ColorNote>
+public class aqcw
+  extends RelativeLayout
 {
-  aqcw(aqcv paramaqcv) {}
+  public int a;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  public int a(ColorNote paramColorNote1, ColorNote paramColorNote2)
+  public aqcw(ArkPanelPagerAdapter paramArkPanelPagerAdapter, Context paramContext, AttributeSet paramAttributeSet)
   {
-    int j = 0;
-    int k = 1;
-    boolean bool1 = aqda.c(paramColorNote1);
-    boolean bool2 = aqda.c(paramColorNote2);
-    int i;
-    if ((bool1) && (bool2)) {
-      i = aqcv.a(this.a, paramColorNote1, paramColorNote2);
-    }
-    do
+    super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    int k = paramArkPanelPagerAdapter.a();
+    int m = paramArkPanelPagerAdapter.b();
+    int n = agej.a(15.0F, getContext().getResources());
+    int i = 0;
+    while (i < m)
     {
-      do
+      paramArkPanelPagerAdapter = new LinearLayout(paramContext);
+      int j = (XPanelContainer.jdField_a_of_type_Int - XPanelContainer.d - n) / m;
+      paramAttributeSet = new RelativeLayout.LayoutParams(-1, j);
+      paramAttributeSet.leftMargin = agej.a(20.0F, getContext().getResources());
+      paramAttributeSet.rightMargin = agej.a(20.0F, getContext().getResources());
+      paramArkPanelPagerAdapter.setOrientation(0);
+      if (i == 0) {}
+      for (paramAttributeSet.topMargin = (XPanelContainer.d / (m + 1));; paramAttributeSet.topMargin = (j * i + XPanelContainer.d * (i + 2) / (m + 1) / 2))
       {
-        do
+        j = 0;
+        while (j < k)
         {
-          return i;
-          if (bool1) {
-            return -1;
+          Object localObject = new LinearLayout.LayoutParams(-1, -1);
+          ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
+          if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+            this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
           }
-          i = k;
-        } while (bool2);
-        bool1 = aqda.b(paramColorNote1);
-        bool2 = aqda.b(paramColorNote2);
-        if ((bool1) && (bool2)) {
-          return aqcv.a(this.a, paramColorNote1, paramColorNote2);
+          View localView = LayoutInflater.from(paramContext).inflate(2131558868, null);
+          paramArkPanelPagerAdapter.addView(localView, (ViewGroup.LayoutParams)localObject);
+          localObject = new aqcx();
+          ((aqcx)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368344));
+          ((aqcx)localObject).b = ((ImageView)localView.findViewById(2131366785));
+          ((aqcx)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378618));
+          localView.setTag(localObject);
+          j += 1;
         }
-        if (bool1) {
-          return -1;
-        }
-        i = k;
-      } while (bool2);
-      if (paramColorNote1.getServiceType() == 16973824) {}
-      for (i = 1;; i = 0)
+      }
+      addView(paramArkPanelPagerAdapter, paramAttributeSet);
+      i += 1;
+    }
+    setTag(Integer.valueOf(XPanelContainer.d));
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    while (i < getChildCount())
+    {
+      Object localObject = getChildAt(i);
+      if (localObject != null)
       {
-        if (paramColorNote2.getServiceType() == 16973824) {
-          j = 1;
+        localObject = (aqcx)((View)localObject).getTag();
+        if ((localObject != null) && (((aqcx)localObject).jdField_a_of_type_AndroidWidgetImageView != null)) {
+          ((aqcx)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
         }
-        if ((i == 0) || (j == 0)) {
-          break;
-        }
-        return aqcv.a(this.a, paramColorNote1, paramColorNote2);
       }
-      if (i != 0) {
-        return -1;
-      }
-      i = k;
-    } while (j != 0);
-    return aqcv.a(this.a, paramColorNote1, paramColorNote2);
+      i += 1;
+    }
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

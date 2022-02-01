@@ -1,71 +1,157 @@
-import android.text.TextUtils;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import android.graphics.PointF;
+import com.tencent.ttpic.openapi.PTFaceAttr;
+import java.nio.ByteBuffer;
+import java.util.List;
 
 public class lpp
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString = null;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int = 0;
-  String jdField_c_of_type_JavaLangString = null;
-  int d = 0;
-  int e = 0;
+  public int a;
+  public List<PointF> a;
+  public short a;
+  public boolean a;
+  public byte[] a;
+  public float[] a;
+  public int b;
+  public short b;
+  public byte[] b;
+  public int c;
+  public byte[] c;
   
-  public void a(String paramString, long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, FilterDesc paramFilterDesc, VideoMaterial paramVideoMaterial, PendantItem paramPendantItem, lop paramlop, int paramInt4)
+  public lpp()
   {
-    String str;
-    label34:
-    label43:
-    StringBuilder localStringBuilder;
-    if ((paramFilterDesc == null) || (paramFilterDesc.name == null))
+    this.jdField_a_of_type_JavaUtilList = null;
+    this.jdField_a_of_type_ArrayOfFloat = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_b_of_type_ArrayOfByte = null;
+    this.jdField_c_of_type_ArrayOfByte = null;
+  }
+  
+  private byte[] a(int paramInt1, int paramInt2, float paramFloat)
+  {
+    PointF localPointF = null;
+    Object localObject = localPointF;
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      paramFilterDesc = "null";
-      if ((paramPendantItem != null) && (paramPendantItem.getId() != null)) {
-        break label522;
-      }
-      str = "null";
-      if (paramVideoMaterial != null) {
-        break label532;
-      }
-      paramVideoMaterial = "null";
-      if ((paramInt1 != this.jdField_a_of_type_Int) || (paramInt2 != this.jdField_b_of_type_Int) || (paramInt3 != this.jdField_c_of_type_Int) || (paramBoolean != this.jdField_b_of_type_Boolean) || (this.d != paramlop.jdField_a_of_type_ArrayOfByte.length) || (this.jdField_a_of_type_Boolean != paramlop.jdField_a_of_type_Boolean) || (this.e != paramInt4) || (!TextUtils.equals(paramFilterDesc, this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(str, this.jdField_b_of_type_JavaLangString)) || (!TextUtils.equals(paramVideoMaterial, this.jdField_c_of_type_JavaLangString)))
+      localObject = localPointF;
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
-        localStringBuilder = new StringBuilder().append("RenderInfoLog, frameIndex[").append(paramLong).append("], width[").append(this.jdField_a_of_type_Int).append("->").append(paramInt1).append("], height[").append(this.jdField_b_of_type_Int).append("->").append(paramInt2).append("], angle[").append(this.jdField_c_of_type_Int).append("->").append(paramInt3).append("], needFaceData[").append(this.jdField_b_of_type_Boolean).append("->").append(paramBoolean).append("], mDataLen[").append(this.d).append("->").append(paramlop.jdField_a_of_type_ArrayOfByte.length).append("], mBeautyLevel[").append(this.e).append("->").append(paramInt4).append("], isFront[").append(this.jdField_a_of_type_Boolean).append("->").append(paramlop.jdField_a_of_type_Boolean).append("], getFrameAngle[").append(lpb.a(paramlop.jdField_a_of_type_Boolean)).append("], fAngle[").append((paramlop.d - lpb.a(paramlop.jdField_a_of_type_Boolean) - 1 + 4) % 4).append("], strFilterDesc[").append(paramFilterDesc).append("], strPendantItem[").append(str).append("], pendantItem[");
-        if ((paramPendantItem != null) && (paramPendantItem.getId() != null)) {
-          break label542;
+        localObject = localPointF;
+        if (paramInt1 != 0)
+        {
+          localObject = localPointF;
+          if (paramInt2 != 0)
+          {
+            localObject = localPointF;
+            if (paramFloat > 0.0001D)
+            {
+              float f = 240.0F / (paramInt1 * paramFloat);
+              paramFloat = 320.0F / (paramInt2 * paramFloat);
+              lbj.c("FaceData", "getFaceFeature:" + paramInt1 + "|" + paramInt2 + "|" + f);
+              localObject = ByteBuffer.allocate(this.jdField_a_of_type_JavaUtilList.size() * 4);
+              paramInt1 = 0;
+              while (paramInt1 < this.jdField_a_of_type_JavaUtilList.size())
+              {
+                localPointF = (PointF)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
+                short s1 = (short)(int)(localPointF.x * f);
+                short s2 = (short)(int)(localPointF.y * paramFloat);
+                ((ByteBuffer)localObject).putShort(s1);
+                ((ByteBuffer)localObject).putShort(s2);
+                paramInt1 += 1;
+              }
+              localObject = ((ByteBuffer)localObject).array();
+            }
+          }
         }
       }
     }
-    label522:
-    label532:
-    label542:
-    for (paramPendantItem = "null";; paramPendantItem = paramPendantItem.getId())
+    return localObject;
+  }
+  
+  private byte[] b(int paramInt1, int paramInt2, float paramFloat)
+  {
+    PointF localPointF = null;
+    Object localObject = localPointF;
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      QLog.w(paramString, 1, paramPendantItem + "], strFilters[" + paramVideoMaterial + "]");
-      this.jdField_a_of_type_Boolean = paramlop.jdField_a_of_type_Boolean;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_b_of_type_Int = paramInt2;
-      this.jdField_c_of_type_Int = paramInt3;
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_JavaLangString = paramFilterDesc;
-      this.jdField_b_of_type_JavaLangString = str;
-      this.jdField_c_of_type_JavaLangString = paramVideoMaterial;
-      this.d = paramlop.jdField_a_of_type_ArrayOfByte.length;
-      this.e = paramInt4;
-      return;
-      paramFilterDesc = paramFilterDesc.name;
-      break;
-      str = paramPendantItem.getId();
-      break label34;
-      paramVideoMaterial = paramVideoMaterial.toString();
-      break label43;
+      localObject = localPointF;
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      {
+        localObject = localPointF;
+        if (paramInt1 != 0)
+        {
+          localObject = localPointF;
+          if (paramInt2 != 0)
+          {
+            localObject = localPointF;
+            if (paramFloat > 0.0001D)
+            {
+              float f = 2.4E+008F / (paramInt1 * paramFloat);
+              paramFloat = 3.2E+008F / (paramInt2 * paramFloat);
+              lbj.c("FaceData", "getFaceFeature2:" + paramInt1 + "|" + paramInt2 + "|" + f);
+              localObject = ByteBuffer.allocate(this.jdField_a_of_type_JavaUtilList.size() * 8);
+              paramInt1 = 0;
+              while (paramInt1 < this.jdField_a_of_type_JavaUtilList.size())
+              {
+                localPointF = (PointF)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
+                paramInt2 = (int)(localPointF.x * f);
+                int i = (int)(localPointF.y * paramFloat);
+                ((ByteBuffer)localObject).putInt(paramInt2);
+                ((ByteBuffer)localObject).putInt(i);
+                paramInt1 += 1;
+              }
+              localObject = ((ByteBuffer)localObject).array();
+            }
+          }
+        }
+      }
     }
+    return localObject;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaUtilList = null;
+    this.jdField_a_of_type_ArrayOfFloat = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_b_of_type_ArrayOfByte = null;
+    this.jdField_c_of_type_ArrayOfByte = null;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(PTFaceAttr paramPTFaceAttr, float paramFloat, boolean paramBoolean)
+  {
+    if (paramPTFaceAttr != null)
+    {
+      this.jdField_a_of_type_Int = paramPTFaceAttr.getFaceCount();
+      if ((this.jdField_a_of_type_Int > 0) && (paramPTFaceAttr != null))
+      {
+        if (paramBoolean) {
+          break label104;
+        }
+        this.jdField_a_of_type_JavaUtilList = ((List)paramPTFaceAttr.getAllFacePoints().get(0));
+        this.jdField_a_of_type_ArrayOfFloat = ((float[])paramPTFaceAttr.getAllFaceAngles().get(0));
+        this.jdField_a_of_type_ArrayOfByte = a(this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, paramFloat);
+        this.jdField_b_of_type_ArrayOfByte = b(this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, paramFloat);
+      }
+    }
+    label104:
+    do
+    {
+      return;
+      this.jdField_a_of_type_Int = 0;
+      break;
+      paramPTFaceAttr = paramPTFaceAttr.genOrigFaceData();
+    } while (paramPTFaceAttr == null);
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramPTFaceAttr.getBytes().length + 4);
+    this.jdField_a_of_type_Short = ((short)(int)(this.jdField_c_of_type_Int * paramFloat));
+    this.jdField_b_of_type_Short = ((short)(int)(this.jdField_b_of_type_Int * paramFloat));
+    localByteBuffer.put(new byte[] { (byte)(this.jdField_b_of_type_Short >> 8), (byte)(this.jdField_b_of_type_Short >> 0), (byte)(this.jdField_a_of_type_Short >> 8), (byte)(this.jdField_a_of_type_Short >> 0) });
+    localByteBuffer.put(paramPTFaceAttr.getBytes());
+    this.jdField_c_of_type_ArrayOfByte = localByteBuffer.array();
   }
 }
 

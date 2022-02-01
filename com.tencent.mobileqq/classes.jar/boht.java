@@ -1,18 +1,17 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class boht
-  extends LinearLayoutManager
+class boht
+  implements DialogInterface.OnClickListener
 {
-  public boht(AEEditorColorSelectorView paramAEEditorColorSelectorView, Context paramContext, int paramInt, boolean paramBoolean)
-  {
-    super(paramContext, paramInt, paramBoolean);
-  }
+  boht(bohp parambohp) {}
   
-  public boolean canScrollHorizontally()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
   }
 }
 

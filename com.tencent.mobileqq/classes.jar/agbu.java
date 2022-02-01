@@ -1,74 +1,41 @@
-import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
+import com.tencent.mobileqq.data.ActivateFriendItem;
+import java.util.ArrayList;
 
 public class agbu
-  extends AsyncTask<Long, Void, Void>
+  extends aole
 {
-  private Object jdField_a_of_type_JavaLangObject;
+  public agbu(ActivateFriendGrid paramActivateFriendGrid) {}
   
-  public agbu(FriendProfileCardBgDrawable paramFriendProfileCardBgDrawable, Object paramObject)
+  public void b()
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  protected Void a(Long... paramVarArgs)
-  {
+    if ((ActivateFriendGrid.a(this.a) == null) || (ActivateFriendGrid.b(this.a) == null)) {
+      return;
+    }
+    int i = 0;
+    label23:
+    if (i < ActivateFriendGrid.a(this.a).size())
+    {
+      if (!this.a.a.c(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2)) {
+        break label122;
+      }
+      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
+      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689517));
+    }
     for (;;)
     {
-      try
+      i += 1;
+      break label23;
+      break;
+      label122:
+      if (this.a.a.b(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2))
       {
-        l1 = paramVarArgs[0].longValue();
-        long l2 = paramVarArgs[1].longValue();
-        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.a(this.jdField_a_of_type_JavaLangObject, (int)l2);
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.d)
-        {
-          paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler;
-          FriendProfileCardBgDrawable localFriendProfileCardBgDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable;
-          if (FriendProfileCardBgDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable) != null) {
-            break label203;
-          }
-          l1 = 1000L;
-          paramVarArgs.postDelayed(localFriendProfileCardBgDrawable, l1);
-          return null;
-        }
-        if ((paramVarArgs != null) && (!isCancelled()))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = paramVarArgs;
-          l2 = SystemClock.uptimeMillis();
-          if (l2 < l1)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable, l1 - l2);
-            return null;
-          }
-        }
+        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
+        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689520));
       }
-      catch (OutOfMemoryError paramVarArgs)
-      {
-        QLog.e("FriendProfileCardBgDrawable", 4, "", paramVarArgs);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = null;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Boolean = true;
-        return null;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable);
-        return null;
-      }
-      catch (Throwable paramVarArgs)
-      {
-        QLog.e("FriendProfileCardBgDrawable", 1, "", paramVarArgs);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = null;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Boolean = true;
-      }
-      return null;
-      label203:
-      long l1 = 0L;
     }
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Agbu = null;
   }
 }
 

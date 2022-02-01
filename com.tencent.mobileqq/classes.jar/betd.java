@@ -1,33 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import java.net.URL;
 
 class betd
-  implements bkhw
+  implements bezb
 {
-  betd(besy parambesy, boolean paramBoolean, besl parambesl, bkho parambkho) {}
+  betd(betb parambetb) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public Bitmap getBitmap(URL paramURL)
   {
-    int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
+    paramURL = this.a.a(paramURL);
+    if (paramURL == null) {
+      return null;
     }
-    switch (i)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      TroopFileTransferManager.a(this.jdField_a_of_type_Besy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Besy.jdField_a_of_type_Long).a(this.jdField_a_of_type_Besl.a);
-      bcst.b(this.jdField_a_of_type_Besy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_delete_local", 0, 0, "", this.jdField_a_of_type_Besy.jdField_a_of_type_Long + "", "", "");
-      continue;
-      if (besy.a(this.jdField_a_of_type_Besy) != 0)
-      {
-        bfrm.a(this.jdField_a_of_type_Besy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Besy.jdField_a_of_type_Long).b(this.jdField_a_of_type_Besl);
-        bcst.b(this.jdField_a_of_type_Besy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_delete_share", 0, 0, "", this.jdField_a_of_type_Besy.jdField_a_of_type_Long + "", "", "");
-      }
-    }
+    return ShortVideoUtils.a(null, paramURL.a);
   }
 }
 

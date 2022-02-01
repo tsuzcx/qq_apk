@@ -1,27 +1,12 @@
-import com.tencent.qg.sdk.invoke.BaseJsModule;
-import com.tencent.qg.sdk.invoke.InvokeCallback;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bmte
-  extends BaseJsModule
+final class bmte
+  implements DialogInterface.OnClickListener
 {
-  public bmte(bmtc parambmtc) {}
-  
-  public String getModuleName()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "VipQGModel";
-  }
-  
-  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
-  {
-    if ("notifyJsInvokeFinish".equalsIgnoreCase(paramString))
-    {
-      QLog.i("VipQGModel", 1, "handleJsRequest: notifyJsInvokeFinish");
-      this.a.a("getDeviceSize", new float[] { bgtn.a(), bgtn.b() });
-      return true;
-    }
-    return false;
+    paramDialogInterface.dismiss();
   }
 }
 

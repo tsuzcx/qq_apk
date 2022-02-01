@@ -1,36 +1,63 @@
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.photo.album.preview.PicPreviewPresent;
-import com.tencent.mobileqq.activity.photo.album.preview.PreviewBean;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharpP.SharpPUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
 
 public class akky
-  extends PicPreviewPresent
+  implements IMiniMsgUnreadCallback
 {
-  public akky(PreviewBean paramPreviewBean)
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  public akky(View paramView, TextView paramTextView)
   {
-    super(paramPreviewBean);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void destroy()
   {
-    String str = this.mBean.getPath();
-    paramView = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = paramViewGroup.getWidth();
-    localURLDrawableOptions.mRequestHeight = paramViewGroup.getHeight();
-    localURLDrawableOptions.mLoadingDrawable = bdzx.a;
-    paramViewGroup = URLDrawable.getDrawable(SharpPUtils.getWebpUrl(str), localURLDrawableOptions);
-    if (paramViewGroup == null) {
-      QLog.w("PEAK", 2, "drawable == null");
+    this.jdField_a_of_type_AndroidViewView = null;
+    this.jdField_a_of_type_AndroidWidgetTextView = null;
+  }
+  
+  public void hide()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+  }
+  
+  public void hideUnread()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  public boolean show(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    updateUnreadCount(paramInt, false);
+    return true;
+  }
+  
+  public void updateOnBackFromMiniAIO(Bundle paramBundle) {}
+  
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  {
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    String str = String.valueOf(paramInt);
+    if (paramInt > 99) {
+      str = "99+";
     }
-    paramView.setImageDrawable(paramViewGroup);
-    return paramView;
+    localTextView.setText(str);
+    if (!paramBoolean)
+    {
+      if (paramInt <= 0) {
+        localTextView.setVisibility(8);
+      }
+    }
+    else {
+      return;
+    }
+    localTextView.setVisibility(0);
   }
 }
 

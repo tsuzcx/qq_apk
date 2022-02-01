@@ -1,80 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aqos
-  extends aqkz<aqor>
+class aqos
+  implements AdapterView.OnItemClickListener
 {
-  @NonNull
-  public aqor a(int paramInt)
-  {
-    return new aqor();
-  }
+  aqos(aqop paramaqop) {}
   
-  @Nullable
-  public aqor a(aqlg[] paramArrayOfaqlg)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfaqlg != null)
+    boolean bool = aqpc.a(aqop.f(this.a).a).a(paramInt, aqop.a(this.a).getCount());
+    if (aqop.a(this.a) == null) {
+      aqop.a(this.a, new aqoz());
+    }
+    aqop.a(this.a).a(aqop.g(this.a), aqop.a(this.a).a(paramInt), bool);
+    QQAppInterface localQQAppInterface = aqop.h(this.a).a;
+    int i = aqpc.a(aqop.i(this.a).a).a(String.valueOf(aqop.a(this.a)));
+    if (bool) {}
+    for (String str = "1";; str = aqop.a(this.a).a(paramInt).a)
     {
-      localObject1 = localObject2;
-      if (paramArrayOfaqlg.length > 0)
-      {
-        localObject1 = localObject2;
-        if (paramArrayOfaqlg[0] != null)
-        {
-          localObject1 = aqor.a(paramArrayOfaqlg[0].a);
-          paramArrayOfaqlg = BaseApplicationImpl.getApplication().getRuntime();
-          if ((paramArrayOfaqlg instanceof QQAppInterface)) {
-            ((FlashChatManager)((QQAppInterface)paramArrayOfaqlg).getManager(217)).b(((aqor)localObject1).a);
-          }
-        }
-      }
+      bdll.b(localQQAppInterface, "dc00898", "", "", "0X800B32A", "0X800B32A", i, 0, str, paramInt + "", "", "");
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
     }
-    return localObject1;
-  }
-  
-  public void a(aqor paramaqor)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlashChatConfProcessor", 2, "onUpdate " + paramaqor.toString());
-    }
-  }
-  
-  public Class<aqor> clazz()
-  {
-    return aqor.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 168;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqos
  * JD-Core Version:    0.7.0.1
  */

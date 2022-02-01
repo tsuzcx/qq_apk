@@ -1,28 +1,60 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.soload.LoadParam.LoadItem;
-import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
-import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
-class bcnr
-  implements bcom
+public class bcnr
+  implements bcny
 {
-  bcnr(bcnp parambcnp, String paramString, bcoc parambcoc, LoadParam.LoadItem paramLoadItem) {}
+  protected View a;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bcnz jdField_a_of_type_Bcnz;
+  private List<bcnz> jdField_a_of_type_JavaUtilList;
+  private TextView b;
   
-  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
+  public bcnr() {}
+  
+  public bcnr(ViewGroup paramViewGroup, int paramInt)
   {
-    if (!this.jdField_a_of_type_Bcnp.a(paramSoInfo))
-    {
-      bcnp.a(this.jdField_a_of_type_Bcnp, 2);
-      return;
-    }
-    if ((TextUtils.equals(this.jdField_a_of_type_Bcnp.a.ver, this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Bcoc.b()))
-    {
-      this.jdField_a_of_type_Bcnp.c = "runcrash";
-      bcnp.a(this.jdField_a_of_type_Bcnp, 8);
-      return;
-    }
-    bcod.b(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name);
-    bcnp.a(this.jdField_a_of_type_Bcnp, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371384));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370112));
+    this.jdField_a_of_type_Bcnz = new bcnt(this.jdField_a_of_type_AndroidViewView.findViewById(2131368845));
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public LinearLayout a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public bcnz a()
+  {
+    return this.jdField_a_of_type_Bcnz;
+  }
+  
+  public List<bcnz> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.b;
   }
 }
 

@@ -1,13 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.webviewplugin.OpenCenterPlugin;
+import com.tencent.mobileqq.mini.out.webPlugins.MiniAppPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebReport;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import java.util.ArrayList;
+import java.util.List;
 
 final class bnqa
-  implements DialogInterface.OnClickListener
+  extends WebAccelerateHelper.CommonJsPluginFactory
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public List<WebViewPlugin> getCommonJsPlugin()
   {
-    bnzb.d("AEResUtil", "【Camera is in Prepareing】toast show: choose sure");
-    bnpy.a();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new amsb());
+    localArrayList.add(new abff());
+    localArrayList.add(new abgo());
+    localArrayList.add(new abfo());
+    localArrayList.add(new bitv());
+    localArrayList.add(new VasWebReport());
+    localArrayList.add(new awgm());
+    localArrayList.add(new OpenCenterPlugin());
+    localArrayList.add(new MiniAppPlugin());
+    localArrayList.add(new abgj());
+    localArrayList.add(new QzoneWebMusicJsPlugin());
+    localArrayList.add(new abhi());
+    return localArrayList;
   }
 }
 

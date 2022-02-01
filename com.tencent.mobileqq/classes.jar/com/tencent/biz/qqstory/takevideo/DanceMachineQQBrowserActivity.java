@@ -14,7 +14,7 @@ import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import yqy;
+import yut;
 
 public class DanceMachineQQBrowserActivity
   extends QQTranslucentBrowserActivity
@@ -93,7 +93,7 @@ public class DanceMachineQQBrowserActivity
   public void doOnResume()
   {
     getWindow().getDecorView().setSystemUiVisibility(2);
-    getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new yqy(this));
+    getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new yut(this));
   }
   
   public void finish()

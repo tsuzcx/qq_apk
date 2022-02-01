@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ancb;
-import ancx;
-import ancz;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import bgbw;
-import bggl;
+import annv;
+import anor;
+import anot;
+import bhbx;
+import bhgm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -15,18 +15,18 @@ import java.io.File;
 public class ApolloGameShare$2
   implements Runnable
 {
-  public ApolloGameShare$2(ancx paramancx, int paramInt) {}
+  public ApolloGameShare$2(anor paramanor, int paramInt) {}
   
   public void run()
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(ancb.s).append(ancx.a(this.this$0)).append("/inviteIcon.png");
+    ((StringBuilder)localObject).append(annv.s).append(anor.a(this.this$0)).append("/inviteIcon.png");
     try
     {
       if (new File(((StringBuilder)localObject).toString()).exists()) {
         localObject = BitmapFactory.decodeFile(((StringBuilder)localObject).toString());
       } else {
-        localObject = bggl.b(BaseApplicationImpl.getApplication().getResources(), 2130838606);
+        localObject = bhgm.b(BaseApplicationImpl.getApplication().getResources(), 2130838619);
       }
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -42,10 +42,10 @@ public class ApolloGameShare$2
     Bitmap localBitmap;
     while (localBitmap != null)
     {
-      localBitmap = bgbw.a(localThrowable);
-      ancx.a(this.this$0, String.valueOf(System.currentTimeMillis()));
-      WXShareHelper.a().a(new ancz(this));
-      WXShareHelper.a().a(ancx.a(this.this$0), ancx.b(this.this$0), localBitmap, ancx.c(this.this$0), ancx.d(this.this$0), this.a);
+      localBitmap = bhbx.a(localThrowable);
+      anor.a(this.this$0, String.valueOf(System.currentTimeMillis()));
+      WXShareHelper.a().a(new anot(this));
+      WXShareHelper.a().a(anor.a(this.this$0), anor.b(this.this$0), localBitmap, anor.c(this.this$0), anor.d(this.this$0), this.a);
       return;
     }
   }

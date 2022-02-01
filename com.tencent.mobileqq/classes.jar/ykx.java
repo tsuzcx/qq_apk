@@ -1,30 +1,29 @@
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
 public class ykx
+  extends QQUIEventReceiver<yku, xqa>
 {
-  public static ThreadLocal<StringBuilder> a = new yky();
-  
-  public static String a(Object... paramVarArgs)
+  public ykx(@NonNull yku paramyku)
   {
-    StringBuilder localStringBuilder = (StringBuilder)a.get();
-    if (paramVarArgs.length > 0)
+    super(paramyku);
+  }
+  
+  public void a(@NonNull yku paramyku, @NonNull xqa paramxqa)
+  {
+    yuk.a("Q.qqstory.memories.MemoriesVideoListSegment", "play video groupId=%s, %s", paramxqa.jdField_a_of_type_Xms, paramxqa.b);
+    if ((yku.a(paramyku).equals(paramxqa.jdField_a_of_type_JavaLangString)) && ((paramxqa.jdField_a_of_type_Xms instanceof xnd)))
     {
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = paramVarArgs[i];
-        if (localObject != null) {
-          localStringBuilder.append(localObject.toString());
-        }
-        i += 1;
+      ylw localylw = ((xnd)paramxqa.jdField_a_of_type_Xms).a;
+      if (localylw != null) {
+        paramyku.a(localylw.jdField_a_of_type_JavaLangString, paramxqa.b, true);
       }
     }
-    return "";
-    paramVarArgs = localStringBuilder.toString();
-    if (localStringBuilder.length() > 512) {
-      a.set(new StringBuilder(512));
-    }
-    localStringBuilder.setLength(0);
-    return paramVarArgs;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xqa.class;
   }
 }
 

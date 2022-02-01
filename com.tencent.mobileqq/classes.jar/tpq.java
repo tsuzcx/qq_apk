@@ -1,27 +1,51 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoyBiuButton;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class tpq
-  extends tpg
 {
-  tpq(tpd paramtpd1, Activity paramActivity, tpd paramtpd2, JSONObject paramJSONObject)
+  public static int a(int paramInt)
   {
-    super(paramtpd1, paramActivity, paramtpd2, paramJSONObject);
+    switch (paramInt)
+    {
+    default: 
+      return -1;
+    case 11: 
+      return 1;
+    case 12: 
+      return 2;
+    case 13: 
+      return 3;
+    }
+    return 4;
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  public static void a(ViewBase paramViewBase, ArticleInfo paramArticleInfo, boolean paramBoolean)
   {
-    if (!TextUtils.isEmpty(paramString3))
+    if ((!ubd.a(paramArticleInfo)) || (paramViewBase == null)) {}
+    do
     {
-      paramString1 = new Intent(this.jdField_a_of_type_AndroidAppActivity, AccountDetailActivity.class);
-      paramString1.putExtra("uin", paramString3);
-      paramString1.putExtra("from_js", true);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString1);
+      return;
+      if ((paramViewBase instanceof qbu))
+      {
+        nzq.a(new tlx().a(BaseApplication.getContext()).a(11).b(3).a((AdvertisementInfo)paramArticleInfo).a());
+        return;
+      }
+      if ((paramViewBase instanceof ReadInJoyBiuButton))
+      {
+        nzq.a(new tlx().a(BaseApplication.getContext()).a(13).b(3).a((AdvertisementInfo)paramArticleInfo).a());
+        return;
+      }
+    } while (!(paramViewBase instanceof NativeButton));
+    if (paramBoolean)
+    {
+      nzq.a(new tlx().a(BaseApplication.getContext()).a(14).b(3).a((AdvertisementInfo)paramArticleInfo).a());
+      return;
     }
+    nzq.a(new tlx().a(BaseApplication.getContext()).a(12).b(3).a((AdvertisementInfo)paramArticleInfo).a());
   }
 }
 

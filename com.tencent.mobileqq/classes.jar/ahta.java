@@ -1,12 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
-class ahta
-  implements DialogInterface.OnClickListener
+public class ahta
+  implements PopupWindow.OnDismissListener
 {
-  ahta(ahsy paramahsy) {}
+  public ahta(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onDismiss()
+  {
+    StructingMsgItemBuilder.a(this.a, false);
+  }
 }
 
 

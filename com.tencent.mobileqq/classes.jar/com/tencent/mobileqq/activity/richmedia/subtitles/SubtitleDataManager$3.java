@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import alnu;
-import bamy;
+import alzm;
+import bbfr;
 
 public class SubtitleDataManager$3
   implements Runnable
 {
-  public SubtitleDataManager$3(alnu paramalnu, String paramString, bamy parambamy) {}
+  public SubtitleDataManager$3(alzm paramalzm, String paramString, bbfr parambbfr) {}
   
   public void run()
   {
-    if (alnu.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bamy)) {
+    if (alzm.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bbfr)) {
       return;
     }
-    this.jdField_a_of_type_Bamy.jdField_c_of_type_Int = this.this$0.a(this.jdField_a_of_type_Bamy.jdField_c_of_type_JavaLangString, alnu.a(this.this$0) + this.jdField_a_of_type_Bamy.d, this.jdField_a_of_type_Bamy.d, alnu.a(this.this$0));
+    this.jdField_a_of_type_Bbfr.jdField_c_of_type_Int = this.this$0.a(this.jdField_a_of_type_Bbfr.jdField_c_of_type_JavaLangString, alzm.a(this.this$0) + this.jdField_a_of_type_Bbfr.d, this.jdField_a_of_type_Bbfr.d, alzm.a(this.this$0));
   }
 }
 

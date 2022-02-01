@@ -1,22 +1,39 @@
-import com.tencent.mobileqq.applets.data.AppletItem;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.QLog;
+import friendlist.FriendInfo;
 
 public class aoqv
 {
-  public String a;
-  public List<AppletItem> a;
+  QQAppInterface a;
   
-  public aoqv()
+  public aoqv(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.a = paramQQAppInterface;
   }
   
-  public String toString()
+  public void a() {}
+  
+  public void a(Friends paramFriends, FriendInfo paramFriendInfo)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("AppletsSetting:[").append("des = ").append(this.jdField_a_of_type_JavaLangString).append(this.jdField_a_of_type_JavaUtilList);
-    return localStringBuilder.toString();
+    paramFriends = ((anyw)this.a.getManager(51)).e(paramFriends.uin);
+    if (paramFriends != null)
+    {
+      amsx localamsx = (amsx)this.a.getManager(153);
+      ApolloBaseInfo localApolloBaseInfo = localamsx.b(paramFriends.uin);
+      if ((localApolloBaseInfo.apolloStatus != paramFriendInfo.cApolloFlag) || (localApolloBaseInfo.apolloServerTS != paramFriendInfo.uApolloTimestamp) || (localApolloBaseInfo.apolloSignValidTS != paramFriendInfo.uApolloSignTime))
+      {
+        localApolloBaseInfo.apolloStatus = paramFriendInfo.cApolloFlag;
+        localApolloBaseInfo.apolloServerTS = paramFriendInfo.uApolloTimestamp;
+        localApolloBaseInfo.apolloSignValidTS = paramFriendInfo.uApolloSignTime;
+        localApolloBaseInfo.apolloSignStr = "";
+        localamsx.a(localApolloBaseInfo);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.contacttab.friend.ApolloBaseInfoBatchUpdater", 2, "handleGetFriendDetailInfo, update apollo info uin=" + paramFriends.uin + "apollo status: " + paramFriendInfo.cApolloFlag + ", apollo svr TS: " + paramFriendInfo.uApolloTimestamp + ", sign TS: " + paramFriendInfo.uApolloSignTime);
+        }
+      }
+    }
   }
 }
 

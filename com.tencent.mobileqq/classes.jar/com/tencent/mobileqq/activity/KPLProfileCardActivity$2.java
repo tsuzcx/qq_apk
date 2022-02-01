@@ -10,7 +10,7 @@ class KPLProfileCardActivity$2
   
   public void run()
   {
-    QQToast.a(this.this$0, this.this$0.getResources().getString(2131693992), 0).b(this.this$0.getTitleBarHeight());
+    QQToast.a(this.this$0, this.this$0.getResources().getString(2131694009), 0).b(this.this$0.getTitleBarHeight());
   }
 }
 

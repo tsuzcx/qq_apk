@@ -1,27 +1,142 @@
-import android.database.DataSetObserver;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
 
 public class rlk
-  extends DataSetObserver
 {
-  public rlk(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  private static final String jdField_a_of_type_JavaLangString = "Q.readinjoy.video." + rlk.class.getSimpleName();
+  private static final rlk jdField_a_of_type_Rlk = new rlk();
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public void onChanged()
+  private rlk()
   {
-    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
+    if (a()) {
+      this.jdField_a_of_type_Int = a("entrance_button_day_display_count");
+    }
+    for (this.b = a("entrance_jump_app_display_count");; this.b = 0)
     {
-      ReadInJoyVideoTagSelectionFragment.a(this.a).setVisibility(0);
-      String str = this.a.getString(2131717187, new Object[] { Integer.valueOf(ReadInJoyVideoTagSelectionFragment.a(this.a).getCount()), Integer.valueOf(5) });
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(str);
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-4473925), 5, str.length(), 0);
-      ReadInJoyVideoTagSelectionFragment.a(this.a).setText(localSpannableStringBuilder);
+      a("EntranceButtonExposureHelper() mDayDisplayCount:" + this.jdField_a_of_type_Int + ",mEntranceDownloadInfoDisplayCount:" + this.b);
+      return;
+      this.jdField_a_of_type_Int = 0;
+    }
+  }
+  
+  private int a(String paramString)
+  {
+    return bnrf.a(ozs.a(), true, true).getInt(paramString, 0);
+  }
+  
+  public static rlk a()
+  {
+    return jdField_a_of_type_Rlk;
+  }
+  
+  private static void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, paramString);
+    }
+  }
+  
+  private void a(String paramString, int paramInt)
+  {
+    if (bnrf.a(ozs.a(), true, true) == null)
+    {
+      a("writeToSP() failed");
       return;
     }
-    ReadInJoyVideoTagSelectionFragment.a(this.a).setVisibility(8);
+    bnrf.a(paramString, Integer.valueOf(paramInt));
+  }
+  
+  private static boolean a()
+  {
+    Object localObject1 = Calendar.getInstance();
+    int i = ((Calendar)localObject1).get(1);
+    int j = ((Calendar)localObject1).get(2);
+    int k = ((Calendar)localObject1).get(5);
+    localObject1 = i + j + k;
+    Object localObject2 = bnrf.a(ozs.a(), true, true);
+    if (localObject2 == null)
+    {
+      a("checkIsToday() failed");
+      return false;
+    }
+    String str = ((SharedPreferences)localObject2).getString("entrance_button_daily", null);
+    a("checkIsToday localDate = " + str);
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).equals(str))) {
+      return true;
+    }
+    localObject2 = ((SharedPreferences)localObject2).edit();
+    ((SharedPreferences.Editor)localObject2).putString("entrance_button_daily", (String)localObject1);
+    bnrf.a((SharedPreferences.Editor)localObject2, true);
+    return false;
+  }
+  
+  public int a()
+  {
+    try
+    {
+      a("getDayDisplayCount() mDayDisplayCount:" + this.jdField_a_of_type_Int);
+      int i = this.jdField_a_of_type_Int;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(tay paramtay)
+  {
+    for (;;)
+    {
+      try
+      {
+        boolean bool = a();
+        if (bool)
+        {
+          this.jdField_a_of_type_Int += 1;
+          a("entrance_button_day_display_count", this.jdField_a_of_type_Int);
+          if ((paramtay instanceof VideoInfo.EntranceDownloadInfo))
+          {
+            if (bool)
+            {
+              this.b += 1;
+              a("entrance_jump_app_display_count", this.b);
+            }
+          }
+          else {
+            a("addToCount() mDayDisplayCount:" + this.jdField_a_of_type_Int + "，mEntranceDownloadInfoDisplayCount：" + this.b);
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_Int = 0;
+          continue;
+        }
+        this.b = 0;
+      }
+      finally {}
+    }
+  }
+  
+  public int b()
+  {
+    try
+    {
+      int i = this.b;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

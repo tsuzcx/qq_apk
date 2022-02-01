@@ -1,8 +1,20 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
 
-public abstract interface asyq
+public class asyq
+  implements DialogInterface.OnClickListener
 {
-  public abstract void h(ChatMessage paramChatMessage);
+  public asyq(ExtendFriendFragment paramExtendFriendFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ExtendFriendFragment.a(this.a).dismiss();
+    ExtendFriendFragment.a(this.a, null);
+    ExtendFriendFragment.a(this.a).finish();
+  }
 }
 
 

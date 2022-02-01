@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ajeq;
-import ajfo;
+import ajpz;
+import ajqx;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import anhk;
-import bdgn;
+import antf;
+import bdzi;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.recent.TimeManager;
@@ -92,10 +92,10 @@ public class RecentItemTroopNotification
     if (TextUtils.isEmpty(this.mTitleName)) {
       this.mTitleName = paramContext.getString(2131690949);
     }
-    this.mUnreadNum = ajeq.a(paramQQAppInterface);
-    String str = bdgn.a().a(paramQQAppInterface);
-    structmsg.StructMsg localStructMsg = bdgn.a().a();
-    paramQQAppInterface = paramQQAppInterface.a().b(anhk.N, 0);
+    this.mUnreadNum = ajpz.a(paramQQAppInterface);
+    String str = bdzi.a().a(paramQQAppInterface);
+    structmsg.StructMsg localStructMsg = bdzi.a().a();
+    paramQQAppInterface = paramQQAppInterface.a().b(antf.N, 0);
     label101:
     int i;
     if (paramQQAppInterface != null)
@@ -116,8 +116,8 @@ public class RecentItemTroopNotification
         if (this.mUnreadNum != 0) {
           break label576;
         }
-        i = ajfo.c();
-        this.unDealMsgCountNunFlag = ajfo.a(ajfo.c());
+        i = ajqx.c();
+        this.unDealMsgCountNunFlag = ajqx.a(ajqx.c());
       }
     }
     for (;;)
@@ -126,13 +126,13 @@ public class RecentItemTroopNotification
       {
         long l = System.currentTimeMillis();
         this.mUnreadNum = i;
-        this.mLastMsg = (paramContext.getString(2131718844) + String.valueOf(this.mUnreadNum) + paramContext.getString(2131718845));
-        ajfo.a(true);
-        i = ajfo.a() + 1;
-        ajfo.a(i);
-        int j = ajfo.b() + 1;
-        ajfo.b(j);
-        ajfo.b(System.currentTimeMillis());
+        this.mLastMsg = (paramContext.getString(2131718994) + String.valueOf(this.mUnreadNum) + paramContext.getString(2131718995));
+        ajqx.a(true);
+        i = ajqx.a() + 1;
+        ajqx.a(i);
+        int j = ajqx.b() + 1;
+        ajqx.b(j);
+        ajqx.b(System.currentTimeMillis());
         if (QLog.isColorLevel())
         {
           QLog.d("RecentItemTroopNotification", 2, new Object[] { "unDealMsgCountNunFlag", "oneWeekCount =", Integer.valueOf(i), "oneDayCount =", Integer.valueOf(j), "mUnreadNum =", Integer.valueOf(this.mUnreadNum) });

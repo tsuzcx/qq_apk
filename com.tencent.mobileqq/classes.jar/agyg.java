@@ -1,17 +1,22 @@
-import android.widget.BaseAdapter;
+import android.view.View;
 import com.tencent.mobileqq.data.ChatMessage;
 
 class agyg
-  extends ahbl
+  implements bliz
 {
-  agyg(agwz paramagwz)
-  {
-    super(paramagwz, null);
-  }
+  agyg(agye paramagye, agzk paramagzk, blir paramblir) {}
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void OnClick(View paramView, int paramInt)
   {
-    return atcb.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, 3, paramChatMessage);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.cancel();
+      return;
+      aean.c(this.jdField_a_of_type_Agye.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agye.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agye.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Agzk.a.uniseq);
+    }
   }
 }
 

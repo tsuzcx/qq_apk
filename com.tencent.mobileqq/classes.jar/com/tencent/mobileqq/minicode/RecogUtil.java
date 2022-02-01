@@ -9,9 +9,9 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Rect;
 import android.os.Build;
 import android.text.TextUtils;
-import anhk;
-import apdk;
-import bckf;
+import antf;
+import apra;
+import bdcx;
 import com.tencent.biz.flatbuffers.FlatBuffersParser;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
@@ -277,7 +277,7 @@ public class RecogUtil
   
   public static void copyRes(String paramString1, String paramString2, String paramString3)
   {
-    paramString2 = anhk.cW + paramString2 + paramString1;
+    paramString2 = antf.cW + paramString2 + paramString1;
     File localFile = new File(paramString2);
     paramString1 = paramString3 + paramString1;
     if (localFile.exists()) {}
@@ -354,7 +354,7 @@ public class RecogUtil
   
   public static final String getResPath()
   {
-    return anhk.cW;
+    return antf.cW;
   }
   
   public static final String getSoPath()
@@ -370,11 +370,11 @@ public class RecogUtil
       i = -2;
       return i;
     }
-    int m = bckf.a();
-    int k = bckf.b();
+    int m = bdcx.a();
+    int k = bdcx.b();
     if (!s_bHasSupportReported)
     {
-      apdk.c(m, k);
+      apra.c(m, k);
       s_bHasSupportReported = true;
     }
     if (k > 0) {}
@@ -398,7 +398,7 @@ public class RecogUtil
   
   public static final String getTmpPath()
   {
-    return anhk.cW + "tmp/";
+    return antf.cW + "tmp/";
   }
   
   public static boolean isX86VM()

@@ -1,17 +1,58 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetLocation;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetLocation;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class xcv
-  extends xby
+public class xcv
+  extends wpa<xep>
 {
-  xcv(xcu paramxcu, StoryVideoItem paramStoryVideoItem, xea paramxea)
+  private static final String a = wnu.a("StorySvc.get_location");
+  public final int c;
+  public final int d;
+  public final int e;
+  
+  public xcv(int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramStoryVideoItem);
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
   }
   
-  public boolean b()
+  public String a()
   {
-    this.jdField_a_of_type_Xea.a = ((String)a("result"));
-    return true;
+    return a;
+  }
+  
+  public wov a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetLocation localRspGetLocation = new qqstory_service.RspGetLocation();
+    try
+    {
+      localRspGetLocation.mergeFrom(paramArrayOfByte);
+      return new xep(localRspGetLocation);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetLocation localReqGetLocation = new qqstory_service.ReqGetLocation();
+    localReqGetLocation.coordinate.set(this.c);
+    localReqGetLocation.gps.lng.set(this.d);
+    localReqGetLocation.gps.lat.set(this.e);
+    localReqGetLocation.gps.setHasFlag(true);
+    return localReqGetLocation.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetLocationRequest{mCoordinate=" + this.c + ", mLng=" + this.d + ", mLat=" + this.e + '}';
   }
 }
 

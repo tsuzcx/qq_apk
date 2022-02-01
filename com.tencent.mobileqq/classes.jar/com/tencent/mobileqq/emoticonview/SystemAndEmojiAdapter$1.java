@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emoticonview;
 
-import asct;
+import assh;
 
 public class SystemAndEmojiAdapter$1
   implements Runnable
 {
-  public SystemAndEmojiAdapter$1(asct paramasct, int paramInt) {}
+  public SystemAndEmojiAdapter$1(assh paramassh, int paramInt) {}
   
   public void run()
   {

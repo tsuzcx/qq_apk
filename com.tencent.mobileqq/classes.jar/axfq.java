@@ -1,32 +1,14 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.util.Pair;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class axfq
-  implements bhtl<oidb_0x8e4.RspBody>
+class axfq
+  implements axfv<Pair<String, Integer>, EmoticonPackage>
 {
-  public axfq(GameRoomInviteActivity paramGameRoomInviteActivity, axge paramaxge) {}
+  axfq(axfj paramaxfj) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public EmoticonPackage a(Pair<String, Integer> paramPair)
   {
-    if ((paramInt == 0) && (paramRspBody != null))
-    {
-      paramRspBody = this.jdField_a_of_type_Axge;
-      if (!this.jdField_a_of_type_Axge.a)
-      {
-        bool = true;
-        paramRspBody.a = bool;
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a.notifyDataSetChanged();
-      }
-    }
-    while (paramRspBody == null) {
-      for (;;)
-      {
-        return;
-        boolean bool = false;
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(paramInt, paramRspBody, anni.a(2131703924));
+    return this.a.a((String)paramPair.first, ((Integer)paramPair.second).intValue());
   }
 }
 

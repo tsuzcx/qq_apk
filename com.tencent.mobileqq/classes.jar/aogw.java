@@ -1,34 +1,48 @@
+import com.tencent.mobileqq.addon.DiyPendantEntity;
+import com.tencent.mobileqq.addon.DiyPendantSticker;
+import com.tencent.mobileqq.app.SVIPHandler.2;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
-import com.tencent.robolectric.ShadowParcel;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-class aogw
-  implements PermissionMonitor.Listener
+public class aogw
+  implements anui
 {
-  static
+  public aogw(SVIPHandler.2 param2, amrx paramamrx) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (!aogs.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    try
     {
-      jdField_a_of_type_Boolean = bool;
+      if ((paramObject instanceof List))
+      {
+        paramObject = (List)paramObject;
+        if (paramObject.size() > 0)
+        {
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            Iterator localIterator = ((DiyPendantEntity)paramObject.next()).getStickerInfoList().iterator();
+            while (localIterator.hasNext())
+            {
+              Object localObject = (DiyPendantSticker)localIterator.next();
+              localObject = this.jdField_a_of_type_Amrx.a((DiyPendantSticker)localObject);
+              this.jdField_a_of_type_Amrx.b.add(localObject);
+            }
+          }
+        }
+      }
       return;
     }
-  }
-  
-  aogw(aogs paramaogs) {}
-  
-  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
-  {
-    if (aogs.a(this.jdField_a_of_type_Aogs) != Thread.currentThread()) {}
-    while ((!aogs.a(this.jdField_a_of_type_Aogs)) || (paramArrayOfObject.length != 4)) {
-      return;
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SVIPHandler", 2, paramObject.getMessage());
+      }
     }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aogs.a(this.jdField_a_of_type_Aogs))) {
-      throw new AssertionError();
-    }
-    ShadowParcel.a((int)aogs.a(this.jdField_a_of_type_Aogs), (byte[])paramArrayOfObject[1], ((Integer)paramArrayOfObject[2]).intValue(), ((Integer)paramArrayOfObject[3]).intValue());
-    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
+    this.jdField_a_of_type_Amrx.b();
   }
 }
 

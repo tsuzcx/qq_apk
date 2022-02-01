@@ -1,32 +1,33 @@
 public class argf
 {
-  private long a;
-  private long b;
+  private argg jdField_a_of_type_Argg;
+  private String jdField_a_of_type_JavaLangString;
   
-  public argf(long paramLong)
+  public argf()
   {
-    this.b = paramLong;
-    this.a = this.b;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Argg = new argg();
   }
   
-  public long a()
+  public argf(String paramString, argg paramargg)
   {
-    return this.b;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Argg = paramargg;
   }
   
-  public argf a()
+  public argg a()
   {
-    return new argf(this.b);
+    return this.jdField_a_of_type_Argg;
   }
   
-  public void a(float paramFloat)
+  public String a()
   {
-    this.b = (((float)this.b * paramFloat));
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argf
  * JD-Core Version:    0.7.0.1
  */

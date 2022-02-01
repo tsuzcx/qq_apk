@@ -1,19 +1,8 @@
-import android.support.annotation.NonNull;
-
-class borc
-  implements boqp
+public abstract interface borc
 {
-  borc(borb paramborb) {}
+  public abstract void a(boqu paramboqu, int paramInt);
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
-  {
-    String str = paramString;
-    if (paramInt == 0) {
-      str = bfsj.b(paramString);
-    }
-    return str;
-  }
+  public abstract void a(boqu paramboqu, boolean paramBoolean);
 }
 
 

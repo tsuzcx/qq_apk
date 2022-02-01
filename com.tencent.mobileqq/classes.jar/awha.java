@@ -1,126 +1,37 @@
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.managers.CUOpenCardGuideMng.GuideConfigData.1;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 import org.json.JSONObject;
 
 public class awha
+  implements QQPermissionCallback
 {
-  public long a;
-  public final String a;
-  public final ArrayList<Integer> a;
-  public boolean a;
-  public awhb[] a;
-  public String b;
-  public boolean b;
+  public awha(MediaApiPlugin paramMediaApiPlugin, Intent paramIntent, Context paramContext, String paramString, JSONObject paramJSONObject, boolean paramBoolean, AppActivity paramAppActivity) {}
   
-  public awha(String paramString)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ArrayOfAwhb = new awhb[6];
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfAwhb.length)
-    {
-      this.jdField_a_of_type_ArrayOfAwhb[i] = null;
-      i += 1;
-    }
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaUtilArrayList = bgln.a();
-    ThreadManager.post(new CUOpenCardGuideMng.GuideConfigData.1(this), 5, null, false);
+    QLog.d(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, "User requestPermissions RECORD_AUDIO denied");
+    bhlq.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
+    try
     {
+      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+      MediaApiPlugin.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).putString("getMediaParam", this.jdField_a_of_type_OrgJsonJSONObject.toString()).putBoolean("calledFromOpenApi", this.jdField_a_of_type_Boolean).commit();
       return;
-      a(BaseApplicationImpl.getApplication().getSharedPreferences("ChinaUnicomPhoneCard" + this.jdField_a_of_type_JavaLangString, 4).getString("config_content", ""));
-    } while (!QLog.isColorLevel());
-    QLog.i("CUOpenCardGuideMng", 2, "init");
-  }
-  
-  public void a(String paramString)
-  {
-    int j = 0;
-    int i = 0;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    if ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString.equals(paramString))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("CUOpenCardGuideMng", 2, "parseConfig config not change");
-      }
     }
-    do
+    catch (Exception paramArrayOfString)
     {
-      return;
-      if (!TextUtils.isEmpty(paramString)) {
-        break;
-      }
-      this.jdField_b_of_type_Boolean = false;
-      while (i < this.jdField_a_of_type_ArrayOfAwhb.length)
-      {
-        this.jdField_a_of_type_ArrayOfAwhb[i] = null;
-        i += 1;
-      }
-      this.jdField_b_of_type_JavaLangString = "";
-    } while (!QLog.isColorLevel());
-    QLog.i("CUOpenCardGuideMng", 2, "parseConfig config is empty");
-    return;
-    for (;;)
-    {
-      Object localObject;
-      try
-      {
-        localObject = new JSONObject(paramString);
-        if (!((JSONObject)localObject).has("isNeedShowGuide")) {
-          break label359;
-        }
-        this.jdField_b_of_type_Boolean = ((JSONObject)localObject).getBoolean("isNeedShowGuide");
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      finally {}
-      if ((i < this.jdField_a_of_type_ArrayOfAwhb.length) && (i < awgy.a.length))
-      {
-        if (((JSONObject)localObject).has(awgy.a[i])) {
-          this.jdField_a_of_type_ArrayOfAwhb[i] = awhb.a(((JSONObject)localObject).getJSONObject(awgy.a[i]));
-        } else {
-          this.jdField_a_of_type_ArrayOfAwhb[i] = null;
-        }
-      }
-      else
-      {
-        this.jdField_b_of_type_JavaLangString = paramString;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localObject = new StringBuilder(300);
-        ((StringBuilder)localObject).append("parseConfig:").append("\n");
-        ((StringBuilder)localObject).append("config: ").append(paramString).append("\n");
-        ((StringBuilder)localObject).append("mIsShowGuide: ").append(this.jdField_b_of_type_Boolean).append("\n");
-        i = j;
-        while ((i < this.jdField_a_of_type_ArrayOfAwhb.length) && (i < awgy.a.length))
-        {
-          ((StringBuilder)localObject).append(awgy.a[i]).append(": ").append(this.jdField_a_of_type_ArrayOfAwhb[i]).append("\n");
-          i += 1;
-        }
-        QLog.i("CUOpenCardGuideMng", 2, ((StringBuilder)localObject).toString());
-        continue;
-        label359:
-        i = 0;
-        continue;
-      }
-      i += 1;
+      QLog.e(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, paramArrayOfString, new Object[0]);
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690578, 0).a();
     }
   }
 }

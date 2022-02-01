@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import bdup;
+import betj;
 
 public class ForwardSdkShareProcessor$1
   implements Runnable
 {
-  public ForwardSdkShareProcessor$1(bdup parambdup) {}
+  public ForwardSdkShareProcessor$1(betj parambetj) {}
   
   public void run()
   {

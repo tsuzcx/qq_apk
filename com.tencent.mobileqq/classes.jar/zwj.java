@@ -1,22 +1,21 @@
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 
 public class zwj
+  implements DialogInterface.OnCancelListener
 {
-  private static ConcurrentHashMap<String, zwe> a = new ConcurrentHashMap();
+  public zwj(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public static zwe a(zwd paramzwd)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    zwe localzwe = (zwe)a.get(paramzwd.a());
-    if (localzwe == null) {
-      try
-      {
-        localzwe = new zwe(paramzwd);
-        a.put(paramzwd.a(), localzwe);
-        return localzwe;
-      }
-      finally {}
+    if (this.a.h) {
+      return;
     }
-    return localzwe;
+    this.a.i = -1;
+    this.a.h = true;
+    QRDisplayActivity.a(this.a).dismiss();
   }
 }
 

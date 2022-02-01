@@ -2,22 +2,22 @@ package com.tencent.biz.pubaccount.ecshopassit;
 
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
-import odh;
-import odj;
-import odk;
+import oer;
+import oet;
+import oeu;
 
 public class EcshopAdHandler$3$1
   implements Runnable
 {
-  public EcshopAdHandler$3$1(odj paramodj, Object paramObject) {}
+  public EcshopAdHandler$3$1(oet paramoet, Object paramObject) {}
   
   public void run()
   {
     ChatMessage localChatMessage = (ChatMessage)this.a;
-    odh localodh = (odh)this.this$0.a.getBusinessHandler(139);
-    odk localodk = new odk();
-    localodk.a = 10;
-    localodh.a(odh.a(localodk, localChatMessage), null);
+    oer localoer = (oer)this.this$0.a.getBusinessHandler(139);
+    oeu localoeu = new oeu();
+    localoeu.a = 10;
+    localoer.a(oer.a(localoeu, localChatMessage), null);
   }
 }
 

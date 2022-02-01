@@ -1,72 +1,35 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import android.animation.Animator;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
 
-class altp
-  implements aobv
+public class altp
+  extends also
 {
-  protected aobu a;
-  boolean jdField_a_of_type_Boolean = true;
+  public altp(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public altp(alth paramalth, Context paramContext, AppInterface paramAppInterface)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Aobu = new aobu(paramContext, paramAppInterface);
-    this.jdField_a_of_type_Aobu.a(this);
-  }
-  
-  private Bitmap a(String paramString, int paramInt1, byte paramByte, int paramInt2)
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_Aobu == null) {
-      localObject = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationEnd <<===");
     }
-    Bitmap localBitmap;
-    do
-    {
-      return localObject;
-      localBitmap = this.jdField_a_of_type_Aobu.b(paramInt1, paramString, paramInt2);
-      localObject = localBitmap;
-    } while (localBitmap != null);
-    QLog.w("FriendTeamListInnerFrameBuddyListAdapter", 1, "requestDecodeFace, uin[" + paramString + "]");
-    this.jdField_a_of_type_Aobu.a(paramString, paramInt1, true, paramByte);
-    return bgmo.a();
-  }
-  
-  public Bitmap a(TroopMemberInfo paramTroopMemberInfo)
-  {
-    return a(paramTroopMemberInfo.memberuin, 1, (byte)0, 0);
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_Aobu != null)
-      {
-        this.jdField_a_of_type_Aobu.d();
-        this.jdField_a_of_type_Aobu = null;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      return;
+    if (this.a.jdField_a_of_type_Aluk != null) {
+      this.a.jdField_a_of_type_Aluk.a();
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        this.jdField_a_of_type_Aobu = null;
-      }
+    this.a.k();
+    this.a.e.setVisibility(4);
+    this.a.e.setPadding(0, 0, 0, 0);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.y();
     }
   }
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    QLog.w("FriendTeamListInnerFrameBuddyListAdapter", 1, "onDecodeTaskCompleted, uin[" + paramString + "]");
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationStart ===>>");
     }
-    alth.a(this.jdField_a_of_type_Alth, paramString, paramBitmap);
   }
 }
 

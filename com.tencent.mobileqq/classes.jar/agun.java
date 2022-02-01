@@ -1,46 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.Html.TagHandler;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.xml.sax.XMLReader;
 
-public class agun
-  implements View.OnClickListener
+class agun
+  implements Html.TagHandler
 {
-  public agun(agtx paramagtx) {}
-  
-  public void onClick(View paramView)
+  static
   {
-    MessageForPoke localMessageForPoke = (MessageForPoke)((aguj)afur.a(paramView)).a;
-    bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8008913", "0X8008913", 0, 0, "", "", "", "");
-    switch (localMessageForPoke.interactType)
+    if (!aguk.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      jdField_a_of_type_Boolean = bool;
       return;
-      adrm.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 1, "", "");
-      continue;
-      adrm.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 2, "", "");
-      continue;
-      adrm.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 3, "", "");
-      continue;
-      adrm.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 4, "", "");
-      continue;
-      adrm.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 1, "", "");
-      continue;
-      adrm.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 6, "", "");
-      continue;
-      adrm.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 5, "", "");
-      continue;
-      if (!aheh.a)
-      {
-        aheh.a = true;
-        aheh.a(this.a.b, localMessageForPoke.subId, localMessageForPoke.name, -1, localMessageForPoke.minVersion, 1);
-      }
     }
+  }
+  
+  agun(aguk paramaguk) {}
+  
+  public void handleTag(boolean paramBoolean, String paramString, Editable paramEditable, XMLReader paramXMLReader)
+  {
+    if (paramString.equalsIgnoreCase("newLine")) {}
+    int i;
+    do
+    {
+      do
+      {
+        paramEditable.append("\n");
+        do
+        {
+          return;
+        } while (!paramString.equalsIgnoreCase("emotion"));
+        paramXMLReader = aguk.a(this.jdField_a_of_type_Aguk, paramXMLReader, "id");
+      } while (TextUtils.isEmpty(paramXMLReader));
+      if ((!jdField_a_of_type_Boolean) && (paramXMLReader == null)) {
+        throw new AssertionError();
+      }
+      i = Integer.parseInt(paramXMLReader);
+      paramEditable.append(this.jdField_a_of_type_Aguk.a("\024" + (char)i));
+    } while (!QLog.isColorLevel());
+    QLog.d("FullScreenInputHelper", 2, "[mix]handleTag: " + paramString + " emotionTag: " + paramXMLReader + " emotionId: " + i);
   }
 }
 

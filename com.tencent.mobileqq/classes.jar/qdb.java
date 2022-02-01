@@ -1,18 +1,13 @@
-class qdb
-  extends roq
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
+public class qdb
+  implements ViewBase.IBuilder
 {
-  qdb(qda paramqda) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public ViewBase build(VafContext paramVafContext)
   {
-    boolean bool = true;
-    if (paramInt2 == 1) {}
-    for (;;)
-    {
-      qda.a(this.a, paramInt1, bool);
-      return;
-      bool = false;
-    }
+    return new qcz(paramVafContext);
   }
 }
 

@@ -1,10 +1,8 @@
-import android.view.View;
-
 public abstract interface mho
 {
-  public abstract void a(View paramView, int paramInt);
+  public abstract void a(long paramLong);
   
-  public abstract void a(View paramView1, View paramView2);
+  public abstract void a(long paramLong, mii parammii);
 }
 
 

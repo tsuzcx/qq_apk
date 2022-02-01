@@ -1,13 +1,22 @@
-class bfzy
-  implements bdet
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+
+public class bfzy
+  implements bgbf
 {
-  bfzy(bfzx parambfzx) {}
+  public bfzy(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void a()
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    long l = bgbb.a(this.a.a, paramInt1, paramInt2, paramInt3) / 1000L;
+    if (!PublishHomeWorkFragment.a(this.a, l))
+    {
+      bgbb.a(this.a.a, (bgbb)this.a.a.a());
+      return;
     }
+    this.a.c = l;
+    this.a.a.b();
+    this.a.b.setRightText(this.a.a(l));
   }
 }
 

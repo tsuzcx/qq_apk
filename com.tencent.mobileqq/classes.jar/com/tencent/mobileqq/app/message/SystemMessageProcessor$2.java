@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app.message;
 
-import ajfn;
-import aogd;
+import ajqw;
+import aoti;
 import java.util.ArrayList;
 
 public class SystemMessageProcessor$2
   implements Runnable
 {
-  public SystemMessageProcessor$2(aogd paramaogd, ArrayList paramArrayList, int paramInt) {}
+  public SystemMessageProcessor$2(aoti paramaoti, ArrayList paramArrayList, int paramInt) {}
   
   public void run()
   {
-    ajfn.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int);
+    ajqw.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int);
   }
 }
 

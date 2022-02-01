@@ -1,53 +1,22 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import com.tencent.mobileqq.data.KplCard;
+import com.tencent.qphone.base.util.QLog;
 
 public class aevf
-  implements Comparator<aevm>
+  extends anuw
 {
-  public aevf(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public aevf(KPLProfileCardActivity paramKPLProfileCardActivity) {}
   
-  public int a(aevm paramaevm1, aevm paramaevm2)
+  protected void onGetKplCard(boolean paramBoolean, Object paramObject)
   {
-    paramaevm1 = paramaevm1.a.name;
-    paramaevm2 = paramaevm2.a.name;
-    if ((paramaevm1 == null) && (paramaevm2 == null)) {}
-    int j;
-    int k;
-    do
+    if (QLog.isColorLevel()) {
+      QLog.i("KPLProfileCardActivity", 2, "onGetKplCard, isSuccess=" + paramBoolean);
+    }
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof KplCard)))
     {
-      return 0;
-      if ((paramaevm1 == null) && (paramaevm2 != null)) {
-        return -1;
-      }
-      if ((paramaevm1 != null) && (paramaevm2 == null)) {
-        return 1;
-      }
-      j = paramaevm1.length();
-      k = paramaevm2.length();
-      int m = Math.min(j, k);
-      int i = 0;
-      while (i < m)
-      {
-        char c1 = paramaevm1.charAt(i);
-        char c2 = paramaevm2.charAt(i);
-        if (c1 != c2)
-        {
-          paramaevm1 = ChnToSpell.a(c1, i);
-          paramaevm2 = ChnToSpell.a(c2, i);
-          if (paramaevm1.jdField_a_of_type_Int == paramaevm2.jdField_a_of_type_Int) {
-            return paramaevm1.jdField_a_of_type_JavaLangString.compareTo(paramaevm2.jdField_a_of_type_JavaLangString);
-          }
-          return paramaevm1.jdField_a_of_type_Int - paramaevm2.jdField_a_of_type_Int;
-        }
-        i += 1;
-      }
-      if (j < k) {
-        return -1;
-      }
-    } while (j <= k);
-    return 1;
+      KPLProfileCardActivity.a(this.a, (KplCard)paramObject);
+      this.a.a = ((KplCard)paramObject);
+    }
   }
 }
 

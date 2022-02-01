@@ -1,26 +1,61 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.open.agent.AuthorityControlFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XListView;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bijv
-  implements View.OnClickListener
 {
-  public bijv(AuthorityControlFragment paramAuthorityControlFragment) {}
+  public int a;
+  public String a;
+  public List<bijx> a;
+  public boolean a;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public bijv()
   {
-    AuthorityControlFragment.a(this.a).c();
-    AuthorityControlFragment.a(this.a, this.a.rightViewText, 2131690167);
-    this.a.rightViewText.setTextColor(AuthorityControlFragment.a(this.a));
-    this.a.rightViewText.setEnabled(true);
-    this.a.setLeftButton("", null);
-    this.a.leftView.setVisibility(0);
-    AuthorityControlFragment.a(this.a).setText(2131690178);
-    AuthorityControlFragment.a(this.a).setOverScrollHeader(AuthorityControlFragment.a(this.a));
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Int = -30009;
+  }
+  
+  public bijv(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_Int = -30009;
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("msg");
+    if (paramJSONObject.optInt("openflag") == 1)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("ret", -30009);
+      this.c = paramJSONObject.optString("content");
+      this.b = paramJSONObject.optString("url");
+      paramJSONObject = paramJSONObject.optString("list");
+      if (!TextUtils.isEmpty(paramJSONObject)) {
+        break label96;
+      }
+    }
+    for (;;)
+    {
+      return;
+      bool = false;
+      break;
+      label96:
+      paramJSONObject = new JSONArray(paramJSONObject);
+      int j = paramJSONObject.length();
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      while (i < j)
+      {
+        JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
+        if (localJSONObject != null) {
+          this.jdField_a_of_type_JavaUtilList.add(new bijx(localJSONObject.optString("num"), localJSONObject.optString("light")));
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    return "LiangHaoRsp{openFlag=" + this.jdField_a_of_type_Boolean + ", ret=" + this.jdField_a_of_type_Int + ", msg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", moreUrl='" + this.b + '\'' + ", content='" + this.c + '\'' + '}';
   }
 }
 

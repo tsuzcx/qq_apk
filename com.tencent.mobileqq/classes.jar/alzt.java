@@ -1,169 +1,76 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.AppActivity;
-import mqq.manager.Manager;
-import mqq.observer.BusinessObserver;
+import java.nio.ByteBuffer;
 
 public class alzt
-  implements Manager, BusinessObserver
 {
-  public static String a;
-  private alzu jdField_a_of_type_Alzu;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public alzt(QQAppInterface paramQQAppInterface)
+  private static void a(int paramInt1, short[] paramArrayOfShort, int paramInt2, int paramInt3, ByteBuffer paramByteBuffer)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface = BaseApplicationImpl.getContext();
-    jdField_a_of_type_JavaLangString = paramQQAppInterface.getFilesDir().getAbsoluteFile() + File.separator + "WeatherResource";
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("weather_resources", 0);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this);
-  }
-  
-  public long a()
-  {
-    long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_weather_res_version", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("weatherManager", 2, "getConfigVersion version=" + l);
-    }
-    return l;
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("weatherManager", 2, "updateResourceVersion version=" + paramLong);
-    }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_weather_res_version", paramLong).commit();
-  }
-  
-  public void a(alzu paramalzu)
-  {
-    this.jdField_a_of_type_Alzu = paramalzu;
-  }
-  
-  public void a(AppActivity paramAppActivity)
-  {
-    if ((anpe.c()) && (!this.jdField_a_of_type_Boolean))
+    int i = paramInt3 * 16000 / paramInt1;
+    long l1 = 0L;
+    long l2 = (paramInt3 - 2 << 16) / (i - 2);
+    paramInt1 = 0;
+    while (paramInt1 < i - 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("weatherManager", 2, "updateWeatherInfo  from  LocaleManager.isLocaleUpdatedByUser()");
-      }
-      this.jdField_a_of_type_Boolean = true;
-      alzv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramAppActivity);
+      long l3 = 0xFFFF & l1;
+      int j = paramArrayOfShort[((int)(l1 >> 16) + paramInt2)];
+      int k = paramArrayOfShort[((int)(l1 >> 16) + 1 + paramInt2)];
+      long l4 = j;
+      j = (int)(l3 * k + l4 * (65536L - l3) >> 16);
+      paramByteBuffer.put((byte)(j & 0xFF));
+      paramByteBuffer.put((byte)((j & 0xFF00) >> 8));
+      l1 += l2;
+      paramInt1 += 1;
     }
-    Long localLong;
+    paramByteBuffer.put((byte)(paramArrayOfShort[(paramInt3 - 1 + paramInt2)] & 0xFF));
+    paramByteBuffer.put((byte)((paramArrayOfShort[(paramInt3 - 1 + paramInt2)] & 0xFF00) >> 8));
+  }
+  
+  public static void a(int paramInt1, short[] paramArrayOfShort, int paramInt2, ByteBuffer paramByteBuffer)
+  {
+    int i = 0;
+    int j = paramInt1 * 5 / 100;
+    if (paramInt2 <= j) {
+      a(paramInt1, paramArrayOfShort, 0, paramInt2, paramByteBuffer);
+    }
+    int k;
     do
     {
       return;
-      localLong = Long.valueOf(BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0).getLong("drawer_last_success_time", 0L));
-      if (QLog.isColorLevel()) {
-        QLog.d("weatherManager", 2, "updateWeatherInfo successTime:" + localLong + ",currentTime:" + System.currentTimeMillis());
-      }
-    } while (Math.abs(System.currentTimeMillis() - localLong.longValue()) <= 3600000L);
-    alzv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramAppActivity);
-  }
-  
-  public boolean a(long paramLong, String paramString)
-  {
-    boolean bool = true;
-    try
-    {
-      bgmg.a(jdField_a_of_type_JavaLangString, false);
-      bgmg.a(paramString, jdField_a_of_type_JavaLangString, false);
-      if (bool)
+      k = paramInt2 / j;
+      while (i < k)
       {
-        a(paramLong);
-        return bool;
+        a(paramInt1, paramArrayOfShort, i * j, j, paramByteBuffer);
+        i += 1;
       }
-    }
-    catch (Exception paramString)
-    {
-      do
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.e("weatherManager", 2, "pareseRulesFromZip : delete and uncompress Exception=>", paramString);
-          }
-          bool = false;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("weatherManager", 2, "pareseRulesFromZip : delete and uncompressZip failure, parse from Res");
-    }
-    return bool;
+    } while (paramInt2 - k * j <= 0);
+    a(paramInt1, paramArrayOfShort, k * j, paramInt2 - j * k, paramByteBuffer);
   }
   
-  public void onDestroy()
+  public static void a(short[] paramArrayOfShort, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this);
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBundle == null) {}
-    do
-    {
+    if ((paramArrayOfShort == null) || (paramInt2 <= 0)) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("weatherManager", 2, new Object[] { "WeatherManager onReceive type:" + paramInt, ",bundle:", paramBundle });
-      }
-    } while ((paramInt != 6666) && (paramInt != 8888));
+    }
+    int i = 0;
+    label11:
     int j;
-    SharedPreferences.Editor localEditor;
-    if (paramBoolean)
+    if (i < paramInt2)
     {
-      String str1 = paramBundle.getString("KEY_TEMPER");
-      String str2 = paramBundle.getString("area_info");
-      int i = paramBundle.getInt("adcode");
-      String str3 = paramBundle.getString("o_wea_code");
-      j = paramBundle.getInt("show_flag");
-      if (QLog.isColorLevel()) {
-        QLog.d("WeatherSetting", 2, "onReceive show_flag:" + j + ",temp:" + str1 + ",area_name" + str2 + "adcode" + i + ",o_wea_code" + str3);
+      j = paramArrayOfShort[(paramInt1 + i)] * 10;
+      if (j < 32767.0F) {
+        break label50;
       }
-      localEditor = BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0).edit();
-      if (j != 1) {
-        break label421;
-      }
-      if ((str1 != null) && (!str1.equals("")) && (!TextUtils.isEmpty(str2)))
-      {
-        Long localLong = Long.valueOf(System.currentTimeMillis());
-        localEditor.putLong("pa_send_time", localLong.longValue());
-        localEditor.putString("cur_temp", str1);
-        localEditor.putString("cur_code", str3);
-        localEditor.putString("cur_city", str2);
-        localEditor.putInt("cur_adcode", i);
-        localEditor.putBoolean("show_flag", true);
-        localEditor.putLong("drawer_last_success_time", localLong.longValue());
-        localEditor.putString("drawer_cur_city", str2);
-        localEditor.putString("drawer_cur_temp", str1);
-        localEditor.putInt("drawer_cur_adcode", i);
-        localEditor.putString("drawer_cur_code", str3);
-        localEditor.putBoolean("drawer_show_flag", true);
-      }
+      paramArrayOfShort[(paramInt1 + i)] = 32767;
     }
     for (;;)
     {
-      localEditor.commit();
-      if (this.jdField_a_of_type_Alzu == null) {
-        break;
-      }
-      this.jdField_a_of_type_Alzu.a(paramInt, paramBoolean, paramBundle);
-      return;
-      label421:
-      if (j == 0) {
-        localEditor.putBoolean("show_flag", false);
+      i += 1;
+      break label11;
+      break;
+      label50:
+      if (j <= -32768.0F) {
+        paramArrayOfShort[(paramInt1 + i)] = -32768;
+      } else {
+        paramArrayOfShort[(paramInt1 + i)] = ((short)j);
       }
     }
   }

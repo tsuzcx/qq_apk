@@ -1,8 +1,10 @@
-import java.util.ArrayList;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public abstract interface befk
+class befk
 {
-  public abstract void a(int paramInt, String paramString, ArrayList<befh> paramArrayList);
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

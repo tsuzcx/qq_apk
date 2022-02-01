@@ -1,86 +1,21 @@
-import android.content.Context;
-import android.support.v4.util.SparseArrayCompat;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class ahrb
-  implements bkqk
+class ahrb
+  implements bjhv
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SparseArrayCompat<ahrc<? extends View>> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  ahrb(ahqw paramahqw, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
   
-  public ahrb(Context paramContext, BaseChatPie paramBaseChatPie)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    a();
-  }
-  
-  private void a()
-  {
-    a(new ahrh(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie));
-    a(new ahri(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie));
-    a(new ahqt(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie));
-    a(new ahqs(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie));
-    a(new ahrd(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie));
-    a(new ahrj(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie));
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof TroopChatPie)) {
-      a(new ahrm(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie));
-    }
-  }
-  
-  private void a(ahrc<? extends View> paramahrc)
-  {
-    this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(paramahrc.a(), paramahrc);
-  }
-  
-  public View a(int paramInt)
-  {
-    ahrc localahrc = (ahrc)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt);
-    if (localahrc != null) {
-      return localahrc.a(this.jdField_a_of_type_AndroidContentContext);
-    }
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
+    if (paramInt == 2)
     {
-      ((ahrc)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(i))).a(paramInt1, paramInt2);
-      i += 1;
+      this.jdField_a_of_type_Ahqw.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+      bcwu.jdField_a_of_type_Boolean = true;
     }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    ahrc localahrc = (ahrc)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt);
-    if (localahrc != null) {
-      return localahrc.a();
+    while ((paramInt != 3) && (paramInt != 1)) {
+      return;
     }
-    return false;
-  }
-  
-  public <T extends View> T b(int paramInt)
-  {
-    ahrc localahrc = (ahrc)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt);
-    if (localahrc != null) {
-      return localahrc.a();
-    }
-    return null;
-  }
-  
-  public void s()
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
-    {
-      ((ahrc)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(i))).a();
-      i += 1;
-    }
+    bcwu.jdField_a_of_type_Long = 0L;
   }
 }
 

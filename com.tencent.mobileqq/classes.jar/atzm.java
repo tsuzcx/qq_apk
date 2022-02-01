@@ -1,49 +1,147 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-class atzm
-  implements aucs
+public class atzm
+  extends atzn
 {
-  atzm(atzj paramatzj) {}
+  private axow jdField_a_of_type_Axow;
+  private axpl jdField_a_of_type_Axpl;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  HashMap<String, ArrayList<MessageRecord>> jdField_a_of_type_JavaUtilHashMap;
+  private HashMap<String, ArrayList<MessageRecord>> b;
   
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public atzm(QQAppInterface paramQQAppInterface, axpl paramaxpl, HashMap<String, ArrayList<MessageRecord>> paramHashMap, axow paramaxow)
   {
-    atzj.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Axpl = paramaxpl;
+    this.jdField_a_of_type_Axow = paramaxow;
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
   }
   
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  public int a()
   {
-    bcst.b(null, "P_CliOper", "webview", "", "webview_apk_download", "download_success", 0, 1, 0, "", "", "", "");
-    paramBundle.getInt("_CB_SID");
-    String str = paramBundle.getString("_CB_URL");
-    paramBundle = paramBundle.getBundle("_CB_USERDATA");
-    atzj.a(this.a, str);
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>insertFM and install. PH:" + paramString + " SZ:" + paramLong);
-    if (this.a.a != null) {
-      this.a.a.a().a(null, -1, paramString, paramLong, 16, null, paramBundle);
+    if (this.jdField_a_of_type_Axpl == null) {}
+    while (this.jdField_a_of_type_Axpl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+      return -1;
     }
-    for (;;)
+    return this.jdField_a_of_type_Axpl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Axpl == null) {
+      return "";
+    }
+    if (this.jdField_a_of_type_Axpl.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing == null) {
+      return "";
+    }
+    return String.valueOf(this.jdField_a_of_type_Axpl.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq);
+  }
+  
+  public HashMap<String, ArrayList<MessageRecord>> a()
+  {
+    if (this.b == null)
     {
-      if (paramBundle != null) {
-        auck.a(paramString, paramBundle.getString("big_brother_source_key"));
+      this.b = new HashMap();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      if (localIterator.hasNext())
+      {
+        Object localObject = (String)localIterator.next();
+        ArrayList localArrayList = new ArrayList();
+        this.b.put(localObject, localArrayList);
+        localObject = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+        int i = 0;
+        label86:
+        MessageRecord localMessageRecord1;
+        if (i < ((ArrayList)localObject).size())
+        {
+          localMessageRecord1 = (MessageRecord)((ArrayList)localObject).get(i);
+          if (!(localMessageRecord1 instanceof MessageForReplyText)) {
+            break label175;
+          }
+          MessageForReplyText localMessageForReplyText = (MessageForReplyText)localMessageRecord1;
+          MessageRecord localMessageRecord2 = localMessageForReplyText.getSourceMessage();
+          if ((localMessageRecord2 == null) || (!aunj.a(localMessageRecord2))) {
+            break label165;
+          }
+          localMessageRecord2.isMultiMsg = localMessageForReplyText.isMultiMsg;
+          localArrayList.add(localMessageRecord2);
+        }
+        for (;;)
+        {
+          i += 1;
+          break label86;
+          break;
+          label165:
+          localArrayList.add(localMessageRecord1);
+          continue;
+          label175:
+          localArrayList.add(localMessageRecord1);
+        }
       }
-      atzj.a(this.a);
-      if ("https://qqwx.qq.com/s?aid=index&g_f=429&mType=QQSpaceClean".equals(str)) {
-        bcst.b(null, "P_CliOper", "Safe_SpaceClean", "", "SpaceClean_", "download secure apk sucess", 0, 0, "", "", "", "");
-      }
-      return;
-      atvo.c(paramString);
     }
+    return this.b;
   }
   
-  public void b(int paramInt, Bundle paramBundle) {}
+  public void a(int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2)
+  {
+    a(this.b, this.jdField_a_of_type_JavaUtilHashMap);
+    paramList2 = new ArrayList();
+    if ((paramList1 != null) && (paramList1.size() > 0))
+    {
+      paramList2.addAll(paramList1);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramList2, null);
+    }
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_Axow.a(1, 2, this.jdField_a_of_type_Axpl);
+      return;
+    }
+    this.jdField_a_of_type_Axow.a(0, 2, this.jdField_a_of_type_Axpl);
+  }
   
-  public void c(int paramInt, Bundle paramBundle) {}
+  public void a(String paramString, List<MessageRecord> paramList, MessageRecord paramMessageRecord, int paramInt)
+  {
+    if ((paramList == null) || (paramMessageRecord == null)) {}
+    do
+    {
+      return;
+      paramList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      paramString = null;
+      if (paramList != null) {
+        paramString = (MessageRecord)paramList.get(paramInt);
+      }
+    } while (paramString == null);
+    if ((paramString instanceof MessageForReplyText))
+    {
+      paramList = anzj.a(2131705905) + paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+      paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramMessageRecord, paramList, true);
+      ((MessageForReplyText)paramString).setSourceMessageRecord(paramList);
+      return;
+    }
+    paramString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFaildReason");
+    paramList.set(paramInt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramMessageRecord, paramString, true));
+  }
   
-  public void d(int paramInt, Bundle paramBundle) {}
+  public String b()
+  {
+    if (this.jdField_a_of_type_Axpl == null) {
+      return "";
+    }
+    if (this.jdField_a_of_type_Axpl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+      return "";
+    }
+    return String.valueOf(this.jdField_a_of_type_Axpl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

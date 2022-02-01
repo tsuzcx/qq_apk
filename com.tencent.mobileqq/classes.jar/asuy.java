@@ -1,18 +1,9 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelFileTabView.1;
-import java.util.Comparator;
-
 public class asuy
-  implements Comparator<Long>
 {
-  public asuy(QfileLocalFileDelFileTabView.1 param1) {}
+  public String a;
+  public String b;
   
-  public int a(Long paramLong1, Long paramLong2)
-  {
-    if (paramLong1.equals(paramLong2)) {
-      return 1;
-    }
-    return (int)(paramLong1.longValue() - paramLong2.longValue());
-  }
+  asuy(asuw paramasuw) {}
 }
 
 

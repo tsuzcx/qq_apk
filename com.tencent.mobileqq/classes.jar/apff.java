@@ -1,39 +1,33 @@
-import android.content.Context;
-import android.opengl.GLES20;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
-public class apff
+class apff
+  implements SoundPool.OnLoadCompleteListener
 {
-  public static int a(String paramString1, Context paramContext, int paramInt, String paramString2)
-  {
-    int i = 0;
-    paramInt = GLES20.glCreateShader(paramInt);
-    GLES20.glShaderSource(paramInt, paramString2);
-    GLES20.glCompileShader(paramInt);
-    paramContext = new int[1];
-    GLES20.glGetShaderiv(paramInt, 35713, paramContext, 0);
-    if (paramContext[0] == 0)
-    {
-      QLog.e(paramString1, 1, "Error compiling shader: " + GLES20.glGetShaderInfoLog(paramInt));
-      GLES20.glDeleteShader(paramInt);
-      paramInt = i;
-    }
-    for (;;)
-    {
-      if (paramInt == 0) {}
-      return paramInt;
-    }
-  }
+  apff(apfb paramapfb) {}
   
-  public static void a(String paramString1, String paramString2)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    for (;;)
+    if (paramInt2 != 0) {}
+    try
     {
-      int i = GLES20.glGetError();
-      if (i == 0) {
-        break;
-      }
-      QLog.e(paramString1, 1, paramString2 + ": glError " + i);
+      QLog.e("ARMusicController", 2, "load fire music failed. id=" + paramInt1);
+      return;
+    }
+    catch (Exception paramSoundPool)
+    {
+      paramSoundPool.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMusicController", 2, "load fire music success. id=" + paramInt1);
+    }
+    apfb.a(this.a).add(Integer.valueOf(paramInt1));
+    if (apfb.b(this.a).contains(Integer.valueOf(paramInt1)))
+    {
+      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
+      return;
     }
   }
 }

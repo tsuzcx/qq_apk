@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.microapp.ext;
 
-import afur;
-import akwm;
-import amhd;
+import agej;
+import alib;
+import amsx;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -24,7 +24,7 @@ public class GameProxy
   {
     try
     {
-      paramQQAppInterface = (amhd)paramQQAppInterface.getManager(153);
+      paramQQAppInterface = (amsx)paramQQAppInterface.getManager(153);
       if (paramQQAppInterface != null)
       {
         if (!paramQQAppInterface.j()) {
@@ -125,7 +125,7 @@ public class GameProxy
         paramString.putString("gameName", str6);
         paramString.putInt("src", k);
         paramString.putInt("enter", 3);
-        paramJSONObject = afur.a(new Intent(paramActivity, SplashActivity.class), new int[] { 2 });
+        paramJSONObject = agej.a(new Intent(paramActivity, SplashActivity.class), new int[] { 2 });
         paramJSONObject.putExtras(paramString);
         paramActivity.startActivity(paramJSONObject);
         if (QLog.isColorLevel()) {
@@ -146,7 +146,7 @@ public class GameProxy
         if (paramActivity.src == 318) {
           paramActivity.disableMinGame = true;
         }
-        akwm.a(paramActivity);
+        alib.a(paramActivity);
         return true;
       }
       return false;

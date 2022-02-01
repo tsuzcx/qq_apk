@@ -1,18 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.poi.PoiInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public final class bowi
-  implements Parcelable.Creator<PoiInfo>
+class bowi
+  implements View.OnClickListener
 {
-  public PoiInfo a(Parcel paramParcel)
-  {
-    return new PoiInfo(paramParcel, null);
-  }
+  bowi(bowh parambowh, AECaptureMode paramAECaptureMode, int paramInt) {}
   
-  public PoiInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new PoiInfo[paramInt];
+    bowd.a(this.jdField_a_of_type_Bowh.a, this.jdField_a_of_type_DovComQqImAeModeAECaptureMode);
+    if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.GIF) {
+      bozr.a().I();
+    }
+    for (;;)
+    {
+      bpam.b("AEVideoStoryCaptureModePart", "【AE_CAPTURE_MODE】:" + this.jdField_a_of_type_Int);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.NORMAL) {
+        bozr.a().H();
+      } else if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.PLAY) {
+        bozr.a().R();
+      }
+    }
   }
 }
 

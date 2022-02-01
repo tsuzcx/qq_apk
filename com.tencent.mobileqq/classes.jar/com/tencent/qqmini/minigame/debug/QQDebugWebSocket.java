@@ -6,18 +6,15 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
-import com.tencent.mobileqq.triton.sdk.bridge.IJSEngine;
-import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
-import com.tencent.mobileqq.triton.sdk.bridge.InspectorAgent;
-import com.tencent.mobileqq.triton.sdk.bridge.InspectorAgent.DebuggerMessageListener;
-import com.tencent.mobileqq.triton.sdk.game.MiniGameInfo;
-import com.tencent.qqmini.minigame.GameRuntime;
+import com.tencent.mobileqq.triton.script.InspectorAgent;
+import com.tencent.mobileqq.triton.script.InspectorAgent.DebuggerMessageListener;
+import com.tencent.qqmini.sdk.action.AppStateEvent;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.NetworkUtil;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.manager.LoginManager;
 import com.tencent.qqmini.sdk.utils.ViewUtils;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -33,7 +30,7 @@ public class QQDebugWebSocket
   private static final String DISCONNECT_TIPS_NOT_RECOVERY = "真机调试断开连接，请退出重试";
   private static final String RECONNECT_TIPS = "真机调试断线重连...";
   private AtomicInteger count = new AtomicInteger();
-  private MiniGameInfo gameInfo;
+  private MiniAppInfo gameInfo;
   Runnable heartbeatRunnable = new QQDebugWebSocket.4(this);
   private boolean isQQDebugReady = false;
   private DebugWebSocket.DebuggerStateListener mDebugListener;
@@ -42,10 +39,10 @@ public class QQDebugWebSocket
   private DebugWebSocket.DebugSocketListener qqSocketListener = new QQDebugWebSocket.1(this);
   private String sessionId;
   
-  public QQDebugWebSocket(IMiniAppContext paramIMiniAppContext, MiniGameInfo paramMiniGameInfo)
+  public QQDebugWebSocket(IMiniAppContext paramIMiniAppContext, MiniAppInfo paramMiniAppInfo)
   {
     this.miniAppContext = paramIMiniAppContext;
-    this.gameInfo = paramMiniGameInfo;
+    this.gameInfo = paramMiniAppInfo;
     this.TAG = "[debugger].QQDebugWebSocket";
   }
   
@@ -168,46 +165,26 @@ public class QQDebugWebSocket
     }
   }
   
-  private void doPerformance(JSONObject paramJSONObject)
+  private void doPerformance(@NonNull JSONObject paramJSONObject)
   {
-    if (this.miniAppContext.getAttachedActivity() == null) {
-      QMLog.e(this.TAG, "qq onSocketMessage performance fail, no gameRuntime");
-    }
-    Object localObject;
+    paramJSONObject = paramJSONObject.getString("data");
     String str;
     int i;
-    do
+    if (!TextUtils.isEmpty(paramJSONObject))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              localObject = null;
-              if ((this.miniAppContext instanceof GameRuntime)) {
-                localObject = ((GameRuntime)this.miniAppContext).getGameEngine();
-              }
-            } while (localObject == null);
-            localObject = ((ITTEngine)localObject).getJsEngine();
-          } while (localObject == null);
-          localObject = ((IJSEngine)localObject).getJsRuntime(1);
-        } while (localObject == null);
-        paramJSONObject = paramJSONObject.getString("data");
-      } while (TextUtils.isEmpty(paramJSONObject));
       paramJSONObject = new JSONObject(paramJSONObject);
       str = paramJSONObject.getString("method");
       i = paramJSONObject.getInt("id");
-      if (TextUtils.equals(str, "profile.start"))
-      {
-        ((ITTJSRuntime)localObject).evaluateJs("global.q9zq.FrameProfileStart(" + i + ")");
-        return;
+      if (!TextUtils.equals(str, "profile.start")) {
+        break label66;
       }
-    } while (!TextUtils.equals(str, "profile.end"));
-    ((ITTJSRuntime)localObject).evaluateJs("global.q9zq.FrameProfileEnd(" + i + ")");
+      AppStateEvent.obtain(2056, Integer.valueOf(i)).notifyRuntime(this.miniAppContext);
+    }
+    label66:
+    while (!TextUtils.equals(str, "profile.end")) {
+      return;
+    }
+    AppStateEvent.obtain(2057, Integer.valueOf(i)).notifyRuntime(this.miniAppContext);
   }
   
   private long getAccount()

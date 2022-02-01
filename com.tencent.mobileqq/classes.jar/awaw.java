@@ -1,81 +1,136 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.widget.Toast;
+import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.mobileqq.intervideo.huayang.HuayangDowanloadHelper.GetLoginKeyDataListener.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptorFactory;
-import com.tencent.tencentmap.mapsdk.maps.model.Marker;
-import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
-import com.tencent.tencentmap.mapsdk.maps.model.Polyline;
-import java.lang.ref.SoftReference;
-import java.util.Map;
 
 public class awaw
-  implements avwo
+  implements avzh
 {
-  public awaw(MapWidget paramMapWidget) {}
+  private final long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private final InstalledPlugin jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin;
+  private final IVPluginInfo jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo;
+  private final String jdField_a_of_type_JavaLangString;
+  private final boolean jdField_a_of_type_Boolean;
+  private volatile boolean b;
+  
+  public awaw(awat paramawat, String paramString, IVPluginInfo paramIVPluginInfo, InstalledPlugin paramInstalledPlugin, boolean paramBoolean, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo = paramIVPluginInfo;
+    this.jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin = paramInstalledPlugin;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  private void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (!paramBoolean2))
+    {
+      awat.a(this.jdField_a_of_type_Awat).a(5, new Object[] { "" });
+      return;
+    }
+    if (paramBoolean1) {}
+    for (long l = 0L;; l = 2000L)
+    {
+      if (!this.b) {
+        break label66;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("HuayangPluginNewDownloader", 2, "需要stop");
+      return;
+    }
+    label66:
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new HuayangDowanloadHelper.GetLoginKeyDataListener.1(this, paramBoolean1, paramBoolean2), l);
+  }
   
   public void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline != null) {
-      this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline.remove();
-    }
-    if (MapWidget.a(this.a) != null) {
-      MapWidget.a(this.a).a(null);
-    }
+    this.b = true;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
   
-  public void a(LocationRoom.Venue paramVenue)
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    Object localObject = (aqpm)aqlk.a().a(575);
-    if (localObject != null) {}
-    for (localObject = ((aqpm)localObject).a();; localObject = null)
-    {
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
-      for (localObject = this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addMarker(new MarkerOptions(paramVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).anchor(0.5F, 0.8F).zIndex(2.147484E+009F).icon(BitmapDescriptorFactory.fromResource(2130840568)));; localObject = this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addMarker(new MarkerOptions(paramVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).anchor(0.5F, 0.8F).zIndex(2.147484E+009F).icon(BitmapDescriptorFactory.fromBitmap((Bitmap)localObject))))
+    int j = 1;
+    long l1;
+    label99:
+    String str;
+    if (paramBoolean) {
+      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_Int == 1)
       {
-        if (localObject != null)
-        {
-          paramVenue.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(localObject);
-          MapWidget.a(this.a, (Marker)localObject);
-          ((Marker)localObject).setClickable(false);
-          ((Marker)localObject).refreshInfoWindow();
+        this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_AndroidOsBundle = awat.a(this.jdField_a_of_type_Awat).a().a.getExtras();
+        if ("Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+          awbj.a("2653752");
         }
-        if (MapWidget.a(this.a) != null) {
-          MapWidget.a(this.a).a(paramVenue);
+        a(this.jdField_a_of_type_Boolean, paramBoolean);
+        long l2 = System.currentTimeMillis();
+        if (!"Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+          break label421;
         }
+        l1 = awat.a(this.jdField_a_of_type_Awat);
+        l1 = l2 - l1;
         if (QLog.isColorLevel()) {
-          QLog.d("MapWidget", 2, new Object[] { "[map][venue]onNewVenue invoked. Result venue: ", paramVenue });
+          QLog.d("HuayangPluginNewDownloader", 2, "拉取票据完成 耗时：" + l1 + "appId = " + paramString + " isSuccess =  " + paramBoolean + " code = " + paramInt);
         }
-        return;
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
-        localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
-        localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
-        ((URLDrawable)localObject).downloadImediatly();
-        localObject = bgmo.b((Drawable)localObject);
+        if (!awbj.jdField_a_of_type_Boolean) {
+          break label433;
+        }
+        str = "huayang";
+        label175:
+        if (!paramBoolean) {
+          break label440;
+        }
+        i = 1;
+        label182:
+        yup.a(str, "getLoginKey", i, (int)l1, new String[] { awat.c(this.jdField_a_of_type_Awat), paramInt + "", paramString, "8.4.5" });
+        paramString = awat.a(this.jdField_a_of_type_Awat).opName(awat.a(this.jdField_a_of_type_Awat)).opType("getLoginKey");
+        if (!paramBoolean) {
+          break label446;
+        }
       }
     }
-  }
-  
-  public void a(String paramString)
-  {
-    Marker localMarker = (Marker)MapWidget.a(this.a).get(paramString);
-    if (localMarker != null)
+    label421:
+    label433:
+    label440:
+    label446:
+    for (int i = j;; i = 0)
     {
-      localMarker.remove();
-      MapWidget.a(this.a).remove(paramString);
-    }
-    localMarker = (Marker)this.a.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localMarker != null)
-    {
-      localMarker.remove();
-      this.a.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      paramString.opIn(i).opResult(paramInt).report();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_Int != 2) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_AndroidOsBundle = awdu.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo, awat.a(this.jdField_a_of_type_Awat));
+      if (!"Od".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+        break;
+      }
+      awbj.a("2691711");
+      break;
+      if ("Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+        awbj.a("2653753");
+      }
+      for (;;)
+      {
+        Toast.makeText(awat.a(this.jdField_a_of_type_Awat), anzj.a(2131704530) + paramInt, 0).show();
+        break;
+        if ("Od".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+          awbj.a("2691712");
+        }
+      }
+      l1 = awat.b(this.jdField_a_of_type_Awat);
+      break label99;
+      str = "group_video";
+      break label175;
+      i = 0;
+      break label182;
     }
   }
 }

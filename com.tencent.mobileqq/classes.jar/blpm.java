@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qqreader.ui.ForceUserUpdateActivity;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 
 public class blpm
-  implements View.OnClickListener
 {
-  public blpm(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    ForceUserUpdateActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public final Rect a = new Rect();
+  public Drawable a;
+  public boolean a;
+  public int b;
 }
 
 

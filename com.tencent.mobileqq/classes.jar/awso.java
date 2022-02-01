@@ -1,10 +1,33 @@
-import com.tencent.widget.ListView;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface awso
+class awso
+  implements View.OnClickListener
 {
-  public abstract ListView a();
+  awso(awsk paramawsk, Activity paramActivity) {}
   
-  public abstract void a();
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Awsk.a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
+      }
+      awsk.a(this.jdField_a_of_type_Awsk).setClickable(false);
+      awsk.a(this.jdField_a_of_type_Awsk).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840550));
+      awsk.a(this.jdField_a_of_type_Awsk).a(true);
+      bdll.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
+    }
+  }
 }
 
 

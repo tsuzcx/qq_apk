@@ -1,30 +1,12 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-
-class sdf
-  extends skd
+public abstract interface sdf
 {
-  sdf(sce paramsce) {}
+  public abstract void a();
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    if ((paramVideoInfo.n != null) && (paramVideoInfo.n.contains("kandianshare.html5.qq.com")))
-    {
-      sce.a(this.a, paramVideoInfo.c, "", paramVideoInfo.n, paramVideoInfo.b);
-      return;
-    }
-    sce.a(this.a, paramVideoInfo.c, "", paramString + "&sourcefrom=4", paramVideoInfo.b);
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public int b()
-  {
-    return 5;
-  }
+  public abstract void b();
   
-  public int c()
-  {
-    return 5;
-  }
+  public abstract void c();
 }
 
 

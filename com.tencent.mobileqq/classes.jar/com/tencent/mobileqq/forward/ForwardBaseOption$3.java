@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.forward;
 
-import aufz;
+import auxu;
 
 public class ForwardBaseOption$3
   implements Runnable
 {
-  public ForwardBaseOption$3(aufz paramaufz) {}
+  public ForwardBaseOption$3(auxu paramauxu) {}
   
   public void run()
   {
-    aufz.d(this.this$0);
+    auxu.d(this.this$0);
   }
 }
 

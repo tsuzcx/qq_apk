@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.AbsSpinner.SavedState;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-public final class bkhm
-  implements Parcelable.Creator<AbsSpinner.SavedState>
+public class bkhm
+  implements bivl
 {
-  public AbsSpinner.SavedState a(Parcel paramParcel)
-  {
-    return new AbsSpinner.SavedState(paramParcel, null);
-  }
+  public bkhm(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public AbsSpinner.SavedState[] a(int paramInt)
-  {
-    return new AbsSpinner.SavedState[paramInt];
-  }
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
 }
 
 

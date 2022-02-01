@@ -1,11 +1,7 @@
-public class bqgr
+public abstract interface bqgr
+  extends bqgj
 {
-  public int a;
-  public ayxt a;
-  public bqgq a;
-  public Object a;
-  public String a;
-  public String[] a;
+  public abstract int a();
 }
 
 

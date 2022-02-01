@@ -1,20 +1,59 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
 
-class bgiz
-  implements View.OnClickListener
+public class bgiz
 {
-  bgiz(bgit parambgit, Context paramContext, Dialog paramDialog, QQAppInterface paramQQAppInterface) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
+  private long b;
   
-  public void onClick(View paramView)
+  public bgiz(QQAppInterface paramQQAppInterface)
   {
-    bgit.b(this.jdField_a_of_type_Bgit, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidAppDialog);
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B0C8", "0X800B0C8", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
+  }
+  
+  private boolean a(TroopInfo paramTroopInfo)
+  {
+    if (paramTroopInfo == null) {}
+    long l;
+    do
+    {
+      do
+      {
+        return true;
+        if (this.jdField_a_of_type_Int != paramTroopInfo.wMemberNum) {
+          return false;
+        }
+        l = System.currentTimeMillis();
+        if (paramTroopInfo.wMemberNum > 500) {
+          break;
+        }
+      } while (l - this.b < 180000L);
+      return false;
+    } while (l - this.b < 1800000L);
+    return false;
+  }
+  
+  public void a(String paramString)
+  {
+    TroopInfo localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString);
+    aoip localaoip = (aoip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if ((localaoip != null) && (this.jdField_a_of_type_ComTencentMobileqqAppTroopManager != null))
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      localaoip.a(true, paramString, localTroopInfo.troopcode, true, 2, this.jdField_a_of_type_Long, 0);
+      this.jdField_a_of_type_Int = localTroopInfo.wMemberNum;
+      this.b = System.currentTimeMillis();
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return a(this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString));
   }
 }
 

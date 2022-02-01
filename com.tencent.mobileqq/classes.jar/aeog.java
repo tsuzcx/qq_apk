@@ -1,28 +1,34 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeog
-  implements Animation.AnimationListener
+  extends antg
 {
-  public aeog(LoginInfoActivity paramLoginInfoActivity, boolean paramBoolean, String paramString) {}
+  public aeog(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(int paramInt)
   {
-    LoginInfoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).setVisibility(4);
-    LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).clearAnimation();
-    LoginInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      try
+      {
+        ForwardRecentActivity.g(this.a);
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ForwardOption.ForwardEntranceActivity", 1, "mInitObserver", localException);
+      }
+      this.a.a.i();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeog
  * JD-Core Version:    0.7.0.1
  */

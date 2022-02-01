@@ -1,78 +1,68 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import OnlinePushPack.SvcRespPushMsg;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.biz.game.SensorAPIJavaScript.9.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class npi
-  implements BusinessObserver
+  implements noy
 {
-  public npi(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  public npi(SensorAPIJavaScript paramSensorAPIJavaScript) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      if (!EqqAccountDetailActivity.a(this.a)) {
-        this.a.d(2131694617);
-      }
-    }
-    for (;;)
+    if (this.a.jdField_a_of_type_AndroidAppActivity != null)
     {
-      EqqAccountDetailActivity.a(this.a);
-      if (EqqAccountDetailActivity.b(this.a) == 0) {
-        EqqAccountDetailActivity.a(this.a);
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("crmtest", 4, "receive sendCrmDetailInfoRequest, ts=" + System.currentTimeMillis());
-      }
-      return;
-      if (paramBoolean) {}
-      try
+      AppInterface localAppInterface = this.a.mRuntime.a();
+      if (localAppInterface != null)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
-          localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
-          {
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail == null) || ((localGetEqqAccountDetailInfoResponse.seqno.has()) && (localGetEqqAccountDetailInfoResponse.seqno.get() != this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.seqno)))
-            {
-              this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse = localGetEqqAccountDetailInfoResponse;
-              paramBundle = new EqqDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse);
-              if ((EqqAccountDetailActivity.b(this.a)) && (paramBundle.followType == 1))
-              {
-                this.a.a(paramBundle, false);
-                continue;
-              }
-              this.a.a(paramBundle, true);
-              continue;
-            }
-            if ((!EqqAccountDetailActivity.c(this.a)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType != 1)) {
-              continue;
-            }
-            this.a.f();
-            continue;
-          }
-          this.a.d(2131694617);
-          continue;
+        ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", localAppInterface.getAccount(), "OnlinePush.RespPush");
+        localToServiceMsg.setNeedCallback(false);
+        UniPacket localUniPacket = new UniPacket(true);
+        localUniPacket.setEncodeName("utf-8");
+        int i = bcpt.a;
+        bcpt.a = i + 1;
+        localUniPacket.setRequestId(i);
+        localUniPacket.setServantName("OnlinePush");
+        localUniPacket.setFuncName("SvcRespPushMsg");
+        localUniPacket.setRequestId(paramInt);
+        localUniPacket.put("resp", paramSvcRespPushMsg);
+        localToServiceMsg.putWupBuffer(localUniPacket.encode());
+        paramSvcRespPushMsg = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), aqwr.class);
+        paramSvcRespPushMsg.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
+        localAppInterface.startServlet(paramSvcRespPushMsg);
+        if (QLog.isColorLevel()) {
+          QLog.d("SensorApi", 2, "reply push");
         }
-        if (EqqAccountDetailActivity.d(this.a)) {
-          continue;
-        }
-        this.a.d(2131694617);
-      }
-      catch (Exception paramBundle) {}
-      if (!EqqAccountDetailActivity.e(this.a)) {
-        this.a.d(2131694617);
       }
     }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    String str = SensorAPIJavaScript.jdField_a_of_type_Nov.a(String.valueOf(paramInt));
+    if (!TextUtils.isEmpty(str))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SensorApi", 2, "send data to appId=" + paramInt);
+      }
+      if (this.a.jdField_a_of_type_AndroidOsHandler == null) {
+        this.a.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new SensorAPIJavaScript.9.1(this, str, paramString));
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("SensorApi", 2, "appId=" + paramInt + "'s callback is empty");
   }
 }
 

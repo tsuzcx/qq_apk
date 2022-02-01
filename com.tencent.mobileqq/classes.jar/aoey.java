@@ -1,64 +1,23 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.GrayTipsSpan;
-import com.tencent.mobileqq.data.MessageForGrayTips;
-import com.tencent.mobileqq.data.MessageForNewGrayTips;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.av.gaudio.AVNotifyCenter;
 
-public class aoey
+class aoey
+  implements msj
 {
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddMessageHelper", 2, "-----addDatingSafetyGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + bgjw.a(paramString2));
-    }
-    long l = bbyp.a();
-    MessageForGrayTips localMessageForGrayTips = (MessageForGrayTips)bbzh.a(-1028);
-    localMessageForGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, -1028, paramInt, l);
-    localMessageForGrayTips.isread = true;
-    if (!anqc.a(paramQQAppInterface, localMessageForGrayTips)) {
-      paramQQAppInterface.a().a(localMessageForGrayTips, paramQQAppInterface.getCurrentAccountUin());
-    }
-  }
+  aoey(aoex paramaoex, long paramLong, int paramInt) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, ArrayList<GrayTipsSpan> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public void a(int paramInt1, msl parammsl, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + bgjw.a(paramString2));
-    }
-    if ((paramBoolean1) && (acwh.e(paramInt)) && (QLog.isColorLevel())) {
-      QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage faild : no troop uin");
-    }
-    long l = bbyp.a();
-    if (paramBoolean1) {}
-    for (int i = -5001;; i = -5000)
+    if (paramInt1 == 0)
     {
-      QQMessageFacade.Message localMessage = paramQQAppInterface.a().a(paramString1, paramInt);
-      MessageForNewGrayTips localMessageForNewGrayTips = (MessageForNewGrayTips)bbzh.a(i);
-      localMessageForNewGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, i, paramInt, l);
-      if (localMessage != null) {
-        localMessageForNewGrayTips.shmsgseq = localMessage.shmsgseq;
-      }
-      localMessageForNewGrayTips.isread = paramBoolean3;
-      localMessageForNewGrayTips.spans = paramArrayList;
-      localMessageForNewGrayTips.updateMsgData();
-      if ((!paramBoolean2) || (!anqc.a(paramQQAppInterface, localMessageForNewGrayTips, false))) {
-        paramQQAppInterface.a().a(localMessageForNewGrayTips, paramQQAppInterface.getCurrentAccountUin());
-      }
-      return;
+      this.jdField_a_of_type_Aoex.a.a(10, 1, this.jdField_a_of_type_Long, null, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Aoex.a.a(7, this.jdField_a_of_type_Long, 2, 0, 0, 21, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Aoex.a.a(21, 1, this.jdField_a_of_type_Long, 0L);
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    a(paramQQAppInterface, paramString1, paramString2, paramInt, null, paramBoolean1, paramBoolean2, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoey
  * JD-Core Version:    0.7.0.1
  */

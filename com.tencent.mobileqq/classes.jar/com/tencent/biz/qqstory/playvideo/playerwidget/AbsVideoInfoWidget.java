@@ -27,20 +27,20 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import javax.annotation.Nullable;
-import wfo;
-import wpj;
-import wpm;
-import xiy;
-import xlt;
-import xne;
-import xsl;
-import xsm;
-import xsn;
-import yqp;
-import zkb;
+import wjj;
+import wte;
+import wth;
+import xmt;
+import xpo;
+import xqz;
+import xwg;
+import xwh;
+import xwi;
+import yuk;
+import znw;
 
 public abstract class AbsVideoInfoWidget
-  extends xlt
+  extends xpo
   implements IEventReceiver
 {
   protected Dialog a;
@@ -48,8 +48,8 @@ public abstract class AbsVideoInfoWidget
   protected AbsVideoInfoWidget.ProgressView a;
   protected Map<Subscriber, String> a;
   @Nullable
-  public xne a;
-  public xsn a;
+  public xqz a;
+  public xwi a;
   public final String b;
   public boolean b;
   protected boolean c;
@@ -71,26 +71,26 @@ public abstract class AbsVideoInfoWidget
     this.jdField_b_of_type_JavaLangString = ("Q.qqstory.player.videoinfowidget." + a());
   }
   
-  private final void a(xne paramxne)
+  private final void a(xqz paramxqz)
   {
-    if ((paramxne == null) || (!paramxne.c()))
+    if ((paramxqz == null) || (!paramxqz.c()))
     {
-      this.jdField_a_of_type_Xne = null;
+      this.jdField_a_of_type_Xqz = null;
       k();
       return;
     }
-    this.jdField_a_of_type_Xne = paramxne;
-    StoryVideoItem localStoryVideoItem = ((wpj)wpm.a(5)).b(paramxne.a);
+    this.jdField_a_of_type_Xqz = paramxqz;
+    StoryVideoItem localStoryVideoItem = ((wte)wth.a(5)).b(paramxqz.a);
     if ((localStoryVideoItem == null) || (localStoryVideoItem.mErrorCode != 0))
     {
       k();
       return;
     }
-    if (a(paramxne, localStoryVideoItem))
+    if (a(paramxqz, localStoryVideoItem))
     {
       h();
       j();
-      a(paramxne, localStoryVideoItem);
+      a(paramxqz, localStoryVideoItem);
       return;
     }
     k();
@@ -99,13 +99,13 @@ public abstract class AbsVideoInfoWidget
   private final void d()
   {
     this.jdField_b_of_type_Boolean = true;
-    xsm localxsm = new xsm(this);
+    xwh localxwh = new xwh(this);
     this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_JavaUtilMap.put(localxsm, "");
-    wfo.a().registerSubscriber("", localxsm);
-    this.jdField_a_of_type_Xsn = new xsn(this);
-    a(this.jdField_a_of_type_Xsn);
-    yqp.b(this.jdField_b_of_type_JavaLangString, "onWidgetCreate!");
+    this.jdField_a_of_type_JavaUtilMap.put(localxwh, "");
+    wjj.a().registerSubscriber("", localxwh);
+    this.jdField_a_of_type_Xwi = new xwi(this);
+    a(this.jdField_a_of_type_Xwi);
+    yuk.b(this.jdField_b_of_type_JavaLangString, "onWidgetCreate!");
   }
   
   private final void e()
@@ -119,13 +119,13 @@ public abstract class AbsVideoInfoWidget
     while (localIterator.hasNext())
     {
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localIterator.next()).getKey();
-      wfo.a().unRegisterSubscriber(localSubscriber);
+      wjj.a().unRegisterSubscriber(localSubscriber);
     }
     this.jdField_a_of_type_JavaUtilMap.clear();
-    if (this.jdField_a_of_type_Xsn != null) {
-      b(this.jdField_a_of_type_Xsn);
+    if (this.jdField_a_of_type_Xwi != null) {
+      b(this.jdField_a_of_type_Xwi);
     }
-    yqp.b(this.jdField_b_of_type_JavaLangString, "onWidgetDestroy!");
+    yuk.b(this.jdField_b_of_type_JavaLangString, "onWidgetDestroy!");
   }
   
   public final View a(ViewGroup paramViewGroup)
@@ -135,21 +135,21 @@ public abstract class AbsVideoInfoWidget
   
   public abstract String a();
   
-  public final void a(int paramInt, xiy paramxiy, @NonNull ArrayList<xne> paramArrayList)
+  public final void a(int paramInt, xmt paramxmt, @NonNull ArrayList<xqz> paramArrayList)
   {
     boolean bool = this.jdField_a_of_type_Boolean;
-    super.a(paramInt, paramxiy, paramArrayList);
+    super.a(paramInt, paramxmt, paramArrayList);
     if (!bool) {
       d();
     }
     paramInt = ((StoryPlayerGroupHolder)a()).b;
     if ((paramInt >= this.jdField_a_of_type_JavaUtilList.size()) || (paramInt < 0))
     {
-      yqp.d(this.jdField_b_of_type_JavaLangString, "Position error , bind data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
+      yuk.d(this.jdField_b_of_type_JavaLangString, "Position error , bind data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
       i();
       return;
     }
-    a((xne)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    a((xqz)this.jdField_a_of_type_JavaUtilList.get(paramInt));
   }
   
   protected abstract void a(View paramView);
@@ -173,9 +173,9 @@ public abstract class AbsVideoInfoWidget
   
   protected abstract void a(@NonNull Map<Subscriber, String> paramMap);
   
-  protected abstract void a(@NonNull xne paramxne, @NonNull StoryVideoItem paramStoryVideoItem);
+  protected abstract void a(@NonNull xqz paramxqz, @NonNull StoryVideoItem paramStoryVideoItem);
   
-  protected abstract boolean a(@NonNull xne paramxne, @NonNull StoryVideoItem paramStoryVideoItem);
+  protected abstract boolean a(@NonNull xqz paramxqz, @NonNull StoryVideoItem paramStoryVideoItem);
   
   protected abstract int b();
   
@@ -186,9 +186,9 @@ public abstract class AbsVideoInfoWidget
   
   public final String b()
   {
-    if (this.jdField_a_of_type_Xne != null)
+    if (this.jdField_a_of_type_Xqz != null)
     {
-      VideoListFeedItem localVideoListFeedItem = this.jdField_a_of_type_Xne.a();
+      VideoListFeedItem localVideoListFeedItem = this.jdField_a_of_type_Xqz.a();
       if ((localVideoListFeedItem != null) && ((localVideoListFeedItem instanceof ShareGroupFeedItem))) {
         return ((ShareGroupFeedItem)localVideoListFeedItem).getOwner().getUnionId();
       }
@@ -200,7 +200,7 @@ public abstract class AbsVideoInfoWidget
   {
     super.b();
     StoryPlayerGroupHolder localStoryPlayerGroupHolder = (StoryPlayerGroupHolder)a();
-    localStoryPlayerGroupHolder.a.a(new xsl(this, localStoryPlayerGroupHolder));
+    localStoryPlayerGroupHolder.a.a(new xwg(this, localStoryPlayerGroupHolder));
   }
   
   public final int c()
@@ -237,7 +237,7 @@ public abstract class AbsVideoInfoWidget
         Object localObject = (Map.Entry)localIterator.next();
         Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject).getKey();
         localObject = (String)((Map.Entry)localObject).getValue();
-        wfo.a().registerSubscriber((String)localObject, localSubscriber);
+        wjj.a().registerSubscriber((String)localObject, localSubscriber);
       }
       this.jdField_a_of_type_JavaUtilMap.putAll(localHashMap);
       if (!this.d)
@@ -245,7 +245,7 @@ public abstract class AbsVideoInfoWidget
         this.d = true;
         if (b() != -1)
         {
-          zkb.a(this.jdField_a_of_type_AndroidViewView instanceof ViewGroup);
+          znw.a(this.jdField_a_of_type_AndroidViewView instanceof ViewGroup);
           LayoutInflater.from(this.jdField_a_of_type_AndroidViewView.getContext()).inflate(b(), (ViewGroup)this.jdField_a_of_type_AndroidViewView, true);
         }
         a(this.jdField_a_of_type_AndroidViewView);
@@ -255,7 +255,7 @@ public abstract class AbsVideoInfoWidget
   
   public final void i()
   {
-    a(this.jdField_a_of_type_Xne);
+    a(this.jdField_a_of_type_Xqz);
   }
   
   public final boolean isValidate()

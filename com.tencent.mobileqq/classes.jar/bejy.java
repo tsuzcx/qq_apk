@@ -1,46 +1,34 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.ExtendGridView;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 import java.util.ArrayList;
 
-public class bejy
-  implements Animation.AnimationListener
+class bejy
+  implements bnwp
 {
-  public bejy(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  bejy(bejx parambejx) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    boolean bool = false;
-    paramAnimation = this.a;
-    paramAnimation.jdField_q_of_type_Int -= 1;
-    if (this.a.jdField_q_of_type_Int == 0)
+    QLog.d("TogetherControlManager", 2, new Object[] { "ongetAdvs result:", Boolean.valueOf(paramBoolean), " rsp:", paramGetAdsRsp.toString() });
+    if (paramBoolean)
     {
-      this.a.jdField_q_of_type_Boolean = false;
-      int i = 0;
-      while (i < this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getCount())
+      paramGetAdsRsp = beke.a(paramBoolean, paramGetAdsRsp);
+      if (paramGetAdsRsp != null)
       {
-        paramAnimation = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getChildAt(i);
-        if (paramAnimation != null) {
-          paramAnimation.clearAnimation();
-        }
-        i += 1;
+        this.a.a.add(paramGetAdsRsp);
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        URLDrawable.getDrawable(paramGetAdsRsp.c, localURLDrawableOptions).startDownload();
+        bnwq.a().a(paramGetAdsRsp.a);
       }
-      this.a.c.clearAnimation();
-      this.a.jdField_a_of_type_JavaUtilArrayList.remove(this.a.r);
-      paramAnimation = this.a.jdField_a_of_type_Beji;
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() < this.a.s) {
-        bool = true;
-      }
-      paramAnimation.a(bool, true);
-      this.a.jdField_a_of_type_Beji.a(this.a.jdField_a_of_type_JavaUtilArrayList);
     }
+    else
+    {
+      return;
+    }
+    QLog.d("TogetherControlManager", 2, "ongetAdvs banner is null");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

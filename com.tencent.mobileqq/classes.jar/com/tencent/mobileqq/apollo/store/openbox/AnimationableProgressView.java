@@ -12,7 +12,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import anni;
+import anzj;
 
 public class AnimationableProgressView
   extends View
@@ -68,7 +68,7 @@ public class AnimationableProgressView
     if (this.jdField_b_of_type_Long > 0L) {
       if (this.jdField_a_of_type_Long > 0L)
       {
-        this.jdField_a_of_type_JavaLangString = (anni.a(2131699074) + this.d + anni.a(2131699076));
+        this.jdField_a_of_type_JavaLangString = (anzj.a(2131699181) + this.d + anzj.a(2131699183));
         this.i = -34816;
       }
     }
@@ -76,7 +76,7 @@ public class AnimationableProgressView
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(14.0F * getResources().getDisplayMetrics().density);
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = (this.d + "/" + this.c + anni.a(2131699075));
+        this.jdField_a_of_type_JavaLangString = (this.d + "/" + this.c + anzj.a(2131699182));
       }
       float f1 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_Float = ((this.jdField_a_of_type_Int - f1) / 2.0F);
@@ -84,10 +84,10 @@ public class AnimationableProgressView
       this.jdField_b_of_type_Float = ((this.jdField_b_of_type_Int - localFontMetrics.bottom - localFontMetrics.top) / 2.0F);
       super.invalidate();
       return;
-      this.jdField_a_of_type_JavaLangString = (anni.a(2131699071) + this.d + "/" + this.c);
+      this.jdField_a_of_type_JavaLangString = (anzj.a(2131699178) + this.d + "/" + this.c);
       break;
       this.i = -16777216;
-      this.jdField_a_of_type_JavaLangString = (anni.a(2131699073) + this.d + "/" + this.c + anni.a(2131699072));
+      this.jdField_a_of_type_JavaLangString = (anzj.a(2131699180) + this.d + "/" + this.c + anzj.a(2131699179));
     } while (this.d <= 0);
     if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
       this.jdField_a_of_type_AndroidGraphicsPath = new Path();

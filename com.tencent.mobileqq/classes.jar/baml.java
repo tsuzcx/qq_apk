@@ -1,12 +1,11 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.data.MessageForPtt;
 import java.util.ArrayList;
 
-public class baml
+class baml
 {
   public int a;
-  public bcdv a;
-  public PtvTemplateManager.PtvTemplateInfo a;
-  public ArrayList<bamk> a = new ArrayList();
+  public final ArrayList<MessageForPtt> a = new ArrayList(100);
+  public final int b = 99;
 }
 
 

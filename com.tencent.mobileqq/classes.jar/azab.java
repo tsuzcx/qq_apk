@@ -1,9 +1,17 @@
-public final class azab
-  extends ayzn
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.8.1;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+
+public class azab
+  implements ayzo
 {
-  protected int a()
+  public azab(ScanOcrActivity paramScanOcrActivity) {}
+  
+  public void a() {}
+  
+  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
   {
-    return 511;
+    this.a.runOnUiThread(new ScanOcrActivity.8.1(this, paramString, paramInt, paramOcrRecogResult, paramLong));
   }
 }
 

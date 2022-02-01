@@ -1,39 +1,49 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-class sob
-  extends sfp
+public class sob
+  implements aqrn
 {
-  sob(soa paramsoa, BaseArticleInfo paramBaseArticleInfo) {}
+  public sob(FastWebActivity paramFastWebActivity) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public ColorNote getColorNote()
   {
-    if (paramBoolean3)
+    String str2 = "";
+    String str1 = str2;
+    if (FastWebActivity.a(this.a) != null)
     {
-      if (paramBoolean4) {
-        this.jdField_a_of_type_Soa.a.jdField_a_of_type_Seu.c();
+      str1 = str2;
+      if (FastWebActivity.a(this.a).g != null) {
+        str1 = FastWebActivity.a(this.a).g;
       }
     }
-    else
+    aqrv localaqrv = new aqrv().a(16908290);
+    StringBuilder localStringBuilder = new StringBuilder().append(aqso.b);
+    if (this.a.a == null)
     {
-      if (paramBoolean1) {
-        break label92;
+      str2 = "";
+      localaqrv = localaqrv.a(str2);
+      if (this.a.a != null) {
+        break label165;
       }
-      this.jdField_a_of_type_Soa.a.b = false;
+      str2 = "";
+      label109:
+      localaqrv = localaqrv.b(str2);
+      if (this.a.a != null) {
+        break label179;
+      }
     }
-    for (;;)
+    label165:
+    label179:
+    for (str2 = "";; str2 = this.a.a.mSubscribeName)
     {
-      if ((paramBoolean2) && (this.jdField_a_of_type_Soa.a.jdField_a_of_type_Sfn != null)) {
-        this.jdField_a_of_type_Soa.a.jdField_a_of_type_Sfn.a(2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, 0L, 0L);
-      }
-      return;
-      this.jdField_a_of_type_Soa.a.jdField_a_of_type_Seu.b(2);
+      return localaqrv.c(str2).d(str1).a(FastWebActivity.a(this.a)).a();
+      str2 = this.a.a.innerUniqueID;
       break;
-      label92:
-      if (this.jdField_a_of_type_Soa.a.b)
-      {
-        this.jdField_a_of_type_Soa.a.jdField_a_of_type_Seu.c();
-        this.jdField_a_of_type_Soa.a.b = false;
-      }
+      str2 = this.a.a.mTitle;
+      break label109;
     }
   }
 }

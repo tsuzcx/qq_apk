@@ -1,255 +1,202 @@
-import com.tencent.biz.qqcircle.beans.Friend;
-import com.tencent.biz.qqcircle.requests.QCircleGetFollowListRequest;
-import com.tencent.biz.qqcircle.utils.QCircleDoubleFollowUserHepler.2;
-import com.tencent.biz.qqcircle.utils.QCircleDoubleFollowUserHepler.3;
-import com.tencent.biz.qqcircle.utils.QCircleDoubleFollowUserHepler.4;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
+import android.graphics.Rect;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import feedcloud.FeedCloudMeta.StFeed;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import mqq.app.AppRuntime;
+import qqcircle.QQCircleDitto.StItemInfo;
 
 public class vtj
+  extends RecyclerView.OnScrollListener
+  implements aabg<QCircleReportBean>
 {
-  private static vtj jdField_a_of_type_Vtj;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private ArrayList<Friend> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private List<Friend> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static String jdField_a_of_type_JavaLangString = "QCircleFeedCardReportHelper";
+  private int jdField_a_of_type_Int;
+  private QCircleReportBean jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean;
+  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
+  private ArrayList<waz> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private volatile boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
   
-  private vtj()
+  private void a(RecyclerView paramRecyclerView)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (localAppRuntime == null) {}
-    while (!(localAppRuntime instanceof QQAppInterface)) {
+    int i;
+    RecyclerView.ViewHolder localViewHolder;
+    Rect localRect;
+    int m;
+    if ((paramRecyclerView != null) && ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)))
+    {
+      LinearLayoutManager localLinearLayoutManager = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
+      i = localLinearLayoutManager.findFirstVisibleItemPosition();
+      int k = localLinearLayoutManager.findLastVisibleItemPosition();
+      if (i <= k) {
+        if (i <= k)
+        {
+          View localView = localLinearLayoutManager.findViewByPosition(i);
+          localViewHolder = paramRecyclerView.findViewHolderForLayoutPosition(i);
+          if ((localViewHolder instanceof waz))
+          {
+            localRect = new Rect(0, 0, ImmersiveUtils.a(), ImmersiveUtils.b());
+            localView.getGlobalVisibleRect(localRect);
+            m = localView.getWidth();
+            if (localRect.right <= 0) {
+              break label180;
+            }
+          }
+        }
+      }
+    }
+    label180:
+    for (int j = localRect.right - localRect.left;; j = 0)
+    {
+      if (j / m >= 0.5D)
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 4, "report card expose index:" + i);
+        b((waz)localViewHolder);
+      }
+      i += 1;
+      break;
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)localAppRuntime);
   }
   
-  private ArrayList<RecentUser> a(List<Friend> paramList)
+  private void b()
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
+    if (!this.jdField_a_of_type_Boolean)
     {
-      paramList = (Friend)localIterator.next();
-      if (paramList != null)
+      QLog.d(jdField_a_of_type_JavaLangString, 4, "checkFirstScreenCardExpose report expose size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        if (uxx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramList.mUin))) {}
-        for (paramList = new RecentUser(String.valueOf(paramList.mUin), 0);; paramList = new RecentUser(String.valueOf(paramList.mUin), 10008))
-        {
-          localArrayList.add(paramList);
-          break;
-        }
+        c((waz)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+        i += 1;
       }
+      this.jdField_a_of_type_Boolean = true;
     }
-    if (localArrayList.size() > 0) {
-      return localArrayList;
-    }
-    return null;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
   }
   
-  public static vtj a()
+  private void b(waz paramwaz)
   {
-    if (jdField_a_of_type_Vtj == null) {}
-    try
+    QQCircleDitto.StItemInfo localStItemInfo = paramwaz.a();
+    vud localvud;
+    vuf localvuf;
+    if (localStItemInfo != null)
     {
-      if (jdField_a_of_type_Vtj == null) {
-        jdField_a_of_type_Vtj = new vtj();
+      vtn.a(localStItemInfo.id.get(), 3, 1, 3, 1, this.jdField_a_of_type_Int, localStItemInfo.id.get(), "", localStItemInfo.id.get(), paramwaz.a(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, null, this.jdField_b_of_type_Int, -1);
+      localvud = vud.a();
+      localvuf = new vuf().a("card").b("impression").a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed).a(a()).a(this.jdField_a_of_type_Int).c(localStItemInfo.id.get());
+      if ((!localStItemInfo.des.has()) || (localStItemInfo.des.size() <= 0)) {
+        break label166;
       }
-      return jdField_a_of_type_Vtj;
     }
-    finally {}
-  }
-  
-  private void a(String paramString, long paramLong)
-  {
-    VSNetworkHelper.a().a(new QCircleGetFollowListRequest(paramString, paramLong), new vtk(this));
-  }
-  
-  private ArrayList<Entity> b(List<Friend> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    label166:
+    for (paramwaz = (String)localStItemInfo.des.get().get(0);; paramwaz = null)
     {
-      Friend localFriend = (Friend)paramList.next();
-      if (localFriend != null)
-      {
-        Friends localFriends = new Friends();
-        localFriends.uin = String.valueOf(localFriend.mUin);
-        localFriends.name = localFriend.mName;
-        localFriends.remark = localFriend.mName;
-        localArrayList.add(localFriends);
-      }
+      localvud.a(localvuf.d(paramwaz));
+      return;
     }
-    if (localArrayList.size() > 0) {
-      return localArrayList;
-    }
-    return null;
   }
   
-  public static void b()
+  private void c(waz paramwaz)
   {
-    if (jdField_a_of_type_Vtj != null) {
+    int i = 0;
+    if (paramwaz != null) {
       try
       {
-        if (jdField_a_of_type_Vtj != null) {
-          jdField_a_of_type_Vtj = null;
+        View localView = paramwaz.itemView;
+        if (localView == null) {
+          return;
         }
-        return;
+        Rect localRect = new Rect(0, 0, ImmersiveUtils.a(), ImmersiveUtils.b());
+        localView.getGlobalVisibleRect(localRect);
+        int j = localView.getWidth();
+        if (localRect.right > 0) {
+          i = localRect.right - localRect.left;
+        }
+        if (i / j >= 0.5D)
+        {
+          QLog.d(jdField_a_of_type_JavaLangString, 4, "report card expose index:" + paramwaz.a());
+          b(paramwaz);
+          return;
+        }
       }
-      finally {}
+      catch (Exception paramwaz)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "checkCardExpose exception:" + paramwaz.toString());
+      }
     }
   }
   
-  public ArrayList<RecentUser> a()
+  public QCircleReportBean a()
   {
-    Object localObject2 = null;
-    Object localObject1;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      localObject1 = a(this.jdField_a_of_type_JavaUtilList);
-    }
-    do
-    {
-      do
-      {
-        return localObject1;
-        localObject1 = localObject2;
-      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-      }
-      this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(Friend.class);
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      localObject1 = localObject2;
-    } while (!QLog.isColorLevel());
-    QLog.i("QCircleDoubleFollowUserHepler", 2, "there has no double friends");
-    return null;
-    return a(this.jdField_a_of_type_JavaUtilList);
+    return this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean;
   }
   
   public void a()
   {
-    if (System.currentTimeMillis() - uwz.a().b() > QzoneConfig.getQQCircleGetFollowUserInternal())
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      a(null, 0L);
+    b();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void a(FeedCloudMeta.StFeed paramStFeed, int paramInt)
+  {
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(waz paramwaz)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramwaz);
     }
   }
   
-  public void a(String paramString1, String paramString2, boolean paramBoolean)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    label89:
-    label127:
-    do
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    QLog.d(jdField_a_of_type_JavaLangString, 4, "onScrollStateChanged" + paramInt);
+    if (paramInt == 0) {}
+    try
     {
-      long l;
-      Friend localFriend;
-      try
-      {
-        l = Long.parseLong(paramString1);
-        if (paramBoolean) {
-          break label127;
-        }
-        paramString2 = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramString2.hasNext())
-        {
-          localFriend = (Friend)paramString2.next();
-          if ((localFriend != null) && (localFriend.mUin == l))
-          {
-            this.jdField_a_of_type_JavaUtilList.remove(localFriend);
-            if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-              break label89;
-            }
-          }
-        }
-        return;
+      a(paramRecyclerView);
+      if (this.jdField_b_of_type_Boolean) {
+        vtn.a("", 3, 1, 30, 2, this.jdField_a_of_type_Int, "", "", "", -1, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, null, this.jdField_b_of_type_Int, -1);
       }
-      catch (Exception paramString1)
-      {
-        QLog.e("QCircleDoubleFollowUserHepler", 1, paramString1, new Object[0]);
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-      }
-      ThreadManagerV2.excute(new QCircleDoubleFollowUserHepler.3(this, paramString1), 32, null, true);
       return;
-      paramString1 = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramString1.hasNext())
-      {
-        localFriend = (Friend)paramString1.next();
-        if ((localFriend != null) && (localFriend.mUin == l)) {
-          return;
-        }
-      }
-      paramString1 = new Friend(l, paramString2);
-      this.jdField_a_of_type_JavaUtilList.add(paramString1);
-    } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
     }
-    ThreadManagerV2.excute(new QCircleDoubleFollowUserHepler.4(this, paramString1), 32, null, true);
+    catch (Exception paramRecyclerView)
+    {
+      for (;;)
+      {
+        paramRecyclerView.printStackTrace();
+      }
+    }
   }
   
-  public void a(List<Friend> paramList)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QCircleDoubleFollowUserHepler", 2, "updateRenameList");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    do
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (paramInt1 > 0) {}
+    for (boolean bool = true;; bool = false)
     {
+      this.jdField_b_of_type_Boolean = bool;
+      b();
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-      }
-    } while ((paramList == null) || (paramList.size() == 0));
-    ThreadManagerV2.excute(new QCircleDoubleFollowUserHepler.2(this, paramList), 32, null, true);
-  }
-  
-  public ArrayList<Entity> b()
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      localObject1 = b(this.jdField_a_of_type_JavaUtilList);
     }
-    do
-    {
-      do
-      {
-        return localObject1;
-        localObject1 = localObject2;
-      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-      }
-      this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(Friend.class);
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      localObject1 = localObject2;
-    } while (!QLog.isColorLevel());
-    QLog.i("QCircleDoubleFollowUserHepler", 2, "there has no double friends");
-    return null;
-    return b(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

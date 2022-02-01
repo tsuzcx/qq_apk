@@ -10,6 +10,7 @@ public final class AcsMsg
   implements Comparable<AcsMsg>
 {
   public String applet_jump_url = "";
+  public int banner_type;
   public String banner_url = "";
   public String btn_text = "";
   public String busi_icon = "";
@@ -82,6 +83,12 @@ public final class AcsMsg
     this.banner_url = paramJceInputStream.readString(11, false);
     this.jump_url = paramJceInputStream.readString(12, false);
     this.applet_jump_url = paramJceInputStream.readString(13, false);
+    this.banner_type = paramJceInputStream.read(this.banner_type, 14, false);
+  }
+  
+  public String toString()
+  {
+    return "AcsMsg{msg_id='" + this.msg_id + '\'' + ", busi_id='" + this.busi_id + '\'' + ", busi_name='" + this.busi_name + '\'' + ", busi_icon='" + this.busi_icon + '\'' + ", sub_time=" + this.sub_time + ", type=" + this.type + ", flag_text='" + this.flag_text + '\'' + ", btn_text='" + this.btn_text + '\'' + ", title='" + this.title + '\'' + ", content='" + this.content + '\'' + ", notice_time=" + this.notice_time + ", banner_type=" + this.banner_type + ", banner_url='" + this.banner_url + '\'' + ", jump_url='" + this.jump_url + '\'' + ", applet_jump_url='" + this.applet_jump_url + '\'' + '}';
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -122,6 +129,7 @@ public final class AcsMsg
     if (this.applet_jump_url != null) {
       paramJceOutputStream.write(this.applet_jump_url, 13);
     }
+    paramJceOutputStream.write(this.banner_type, 14);
   }
 }
 

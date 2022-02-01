@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import anru;
+import aoec;
 
 public class PublicAccountHandler$5$1
   implements Runnable
 {
-  public PublicAccountHandler$5$1(anru paramanru) {}
+  public PublicAccountHandler$5$1(aoec paramaoec) {}
   
   public void run()
   {

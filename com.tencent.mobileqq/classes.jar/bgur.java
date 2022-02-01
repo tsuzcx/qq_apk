@@ -1,42 +1,40 @@
-public class bgur
+import android.text.TextUtils;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+
+final class bgur
+  implements bhce
 {
-  public static int a;
-  public static long a;
-  public static boolean a;
-  public static int b;
-  public static long b;
-  public static int c;
-  public static long c;
-  public static int d;
-  public static long d;
-  public static int e;
-  public static long e;
-  public static int f;
-  public static long f;
-  public static int g;
-  public static int h;
-  public static int i;
-  public static int j;
+  bgur(TroopInfoData paramTroopInfoData) {}
   
-  public static void a()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 0;
-    jdField_c_of_type_Int = 0;
-    jdField_d_of_type_Int = 0;
-    jdField_e_of_type_Int = 0;
-    jdField_f_of_type_Int = 0;
-    g = 0;
-    jdField_a_of_type_Long = 0L;
-    jdField_b_of_type_Long = 0L;
-    h = 0;
-    i = 0;
-    j = 0;
-    jdField_c_of_type_Long = 0L;
-    jdField_d_of_type_Long = 0L;
-    jdField_e_of_type_Long = 0L;
-    jdField_f_of_type_Long = 0L;
-    jdField_a_of_type_Boolean = false;
+    String str1;
+    if (this.a.isMember)
+    {
+      str1 = "";
+      switch (paramInt)
+      {
+      }
+    }
+    while (TextUtils.isEmpty(str1))
+    {
+      return;
+      str1 = "share_circle";
+      continue;
+      str1 = "share_qq";
+      continue;
+      str1 = "share_qzone";
+      continue;
+      str1 = "share_wechat";
+    }
+    String str3 = this.a.troopUin;
+    String str4 = bhju.a(this.a);
+    if (paramBoolean) {}
+    for (String str2 = "0";; str2 = "1")
+    {
+      bhju.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, str4, str2 });
+      return;
+    }
   }
 }
 

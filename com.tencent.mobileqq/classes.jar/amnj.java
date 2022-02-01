@@ -1,29 +1,31 @@
-import android.os.Process;
+import android.os.Handler;
+import android.view.View;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter.1;
 
-public class amnj
+public abstract class amnj
+  extends BaseAdapter
+  implements AbsListView.OnScrollListener
 {
-  public static final int a;
-  public static final long a;
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  public long b;
-  public long c;
+  protected Handler a;
+  public String a;
   
-  static
+  private final void a(View paramView, Object paramObject, int paramInt, amnk paramamnk)
   {
-    jdField_a_of_type_JavaLangString = bgln.e();
-    jdField_b_of_type_JavaLangString = bgln.i();
-    jdField_c_of_type_JavaLangString = bgln.g();
-    jdField_a_of_type_Int = bgln.b();
-    jdField_a_of_type_Long = bgln.a();
+    Object localObject = a(paramInt);
+    if (localObject == null) {
+      return;
+    }
+    paramView = new BaseWhatASmoothAdapter.1(this, paramView, localObject, paramObject, paramInt, paramamnk);
+    amnk.a(paramamnk, true);
+    amnk.a(paramamnk, paramView);
+    this.a.post(paramView);
   }
   
-  public amnj()
-  {
-    this.jdField_b_of_type_Long = bgln.a(Process.myPid());
-    this.jdField_c_of_type_Long = bgln.f();
-  }
+  protected abstract Object a(int paramInt);
+  
+  public abstract void a(View paramView, Object paramObject);
 }
 
 

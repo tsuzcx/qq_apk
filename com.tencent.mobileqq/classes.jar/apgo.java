@@ -1,15 +1,11 @@
-import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
+import java.util.Comparator;
 
-public class apgo
-  implements apgp
+public final class apgo
+  implements Comparator<apgp>
 {
-  public apgo(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
-  
-  public void a(int paramInt)
+  public int a(apgp paramapgp1, apgp paramapgp2)
   {
-    if (ScanEntryProviderContainerView.a(this.a) != null) {
-      ScanEntryProviderContainerView.a(this.a).c(paramInt);
-    }
+    return paramapgp1.a - paramapgp2.a;
   }
 }
 

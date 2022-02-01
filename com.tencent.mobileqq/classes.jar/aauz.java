@@ -1,141 +1,111 @@
-import WEISHI_USER_GROWTH.WEISHI.stMetaFeed;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
 import java.util.List;
 
 public class aauz
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+  extends BaseAdapter
 {
-  private aaym jdField_a_of_type_Aaym;
-  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private List<aavc> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public long a;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  public String a;
+  List<aujx> jdField_a_of_type_JavaUtilList;
+  private short jdField_a_of_type_Short;
   private boolean jdField_a_of_type_Boolean;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  private String f;
   
-  public aauz(BaseActivity paramBaseActivity)
+  public aauz(List<aujx> paramList, Activity paramActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramActivity);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  private void a(RecyclerView.ViewHolder paramViewHolder, WEISHI.stMetaFeed paramstMetaFeed, int paramInt)
+  public void a(List<aujx> paramList)
   {
-    paramViewHolder = (aavb)paramViewHolder;
-    paramstMetaFeed = paramstMetaFeed.material_thumburl.get();
-    a(paramViewHolder.a, paramstMetaFeed);
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  private void a(ImageView paramImageView, String paramString)
+  public void a(boolean paramBoolean, String paramString, short paramShort)
   {
-    paramString = zlu.a(paramString);
-    if (!paramString.equals(paramImageView.getTag())) {
-      zlx.a(paramImageView, paramString, 68, 90, 4, zlx.b, "QQStoryMemory");
-    }
-  }
-  
-  public void a(aaym paramaaym)
-  {
-    this.jdField_a_of_type_Aaym = paramaaym;
-  }
-  
-  public void a(List<WEISHI.stMetaFeed> paramList, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_Boolean = paramBoolean;
-    int i;
-    aavc localaavc;
-    int j;
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      i = 3;
-      if (paramBoolean)
-      {
-        i = 2;
-        localaavc = new aavc(null, 100);
-        this.jdField_a_of_type_JavaUtilList.add(localaavc);
-      }
-      j = paramList.size();
-      if (j >= i) {
-        break label133;
-      }
-      i = j;
-    }
-    label133:
-    for (;;)
-    {
-      j = 0;
-      while (j < i)
-      {
-        localaavc = new aavc((WEISHI.stMetaFeed)paramList.get(j), 101);
-        this.jdField_a_of_type_JavaUtilList.add(localaavc);
-        j += 1;
-      }
-      notifyDataSetChanged();
-      return;
-    }
+    this.f = paramString;
+    this.jdField_a_of_type_Short = paramShort;
   }
   
-  public int getItemCount()
+  public int getCount()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      if (this.jdField_a_of_type_JavaUtilList.size() > 3) {
-        return 3;
-      }
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public int getItemViewType(int paramInt)
+  public Object getItem(int paramInt)
   {
-    return ((aavc)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int;
+    return null;
   }
   
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public long getItemId(int paramInt)
   {
-    int i = paramViewHolder.getAdapterPosition();
-    aavc localaavc = (aavc)this.jdField_a_of_type_JavaUtilList.get(i);
-    int j = localaavc.jdField_a_of_type_Int;
-    WEISHI.stMetaFeed localstMetaFeed = localaavc.jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed;
-    switch (j)
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    aavb localaavb;
+    if (paramView == null)
     {
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560938, null);
+      localaavb = new aavb();
+      localaavb.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366629));
+      localaavb.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366632));
+      localaavb.b = ((TextView)paramView.findViewById(2131366635));
+      localaavb.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376654);
+      paramView.setTag(localaavb);
+      paramView.setOnClickListener(new aava(this));
     }
     for (;;)
     {
-      paramViewHolder.itemView.setOnClickListener(new aava(this, localaavc));
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
-      if (j == 101)
+      localaavb = (aavb)paramView.getTag();
+      aujx localaujx = (aujx)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (localaujx.jdField_a_of_type_Boolean)
       {
-        a(paramViewHolder, localstMetaFeed, i);
-        continue;
-        if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-          ((aavb)paramViewHolder).a.setImageResource(2130850277);
-        } else {
-          ((aavb)paramViewHolder).a.setImageResource(2130845877);
+        localaavb.b.setText(anzj.a(2131715818));
+        localaavb.jdField_a_of_type_AndroidWidgetTextView.setText(aunj.d(localaujx.jdField_a_of_type_JavaLangString));
+        localaavb.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130844292);
+        localaavb.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+      for (;;)
+      {
+        localaavb.jdField_a_of_type_Aujx = localaujx;
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        localaavb.b.setText(auog.a(localaujx.jdField_a_of_type_Long));
+        localaavb.jdField_a_of_type_AndroidWidgetTextView.setText(aunj.d(localaujx.jdField_a_of_type_JavaLangString));
+        aunj.a(localaavb.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localaujx.jdField_a_of_type_JavaLangString);
+        localaavb.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        if (aunj.a(localaujx.jdField_a_of_type_JavaLangString) == 0)
+        {
+          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+          FileManagerEntity localFileManagerEntity = localQQAppInterface.a().b(localaujx.b);
+          localFileManagerEntity.isZipInnerFile = true;
+          aunj.b(localaavb.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity);
+          localQQAppInterface.a().c(localFileManagerEntity);
         }
       }
     }
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    LayoutInflater localLayoutInflater = LayoutInflater.from(paramViewGroup.getContext());
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    return new aavb(localLayoutInflater.inflate(2131561455, paramViewGroup, false));
   }
 }
 

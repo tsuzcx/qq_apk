@@ -1,25 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
+import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment.2.1;
+import mqq.os.MqqHandler;
 
 public class boxi
-  extends AnimatorListenerAdapter
+  extends boqk
 {
-  public boxi(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public boxi(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void b(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner 140ms translate end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner lockView begin");
-    }
+    AETakeFacePhotoPreviewFragment.a(this.a).removeObserver(this);
+    ThreadManager.getUIHandler().post(new AETakeFacePhotoPreviewFragment.2.1(this, paramBoolean, paramInt));
   }
 }
 

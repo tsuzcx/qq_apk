@@ -1,26 +1,12 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiig
-  implements aiie
+class aiig
+  implements DialogInterface.OnClickListener
 {
-  aiig(aiif paramaiif) {}
+  aiig(aihy paramaihy) {}
   
-  public void a()
-  {
-    aiif.a(this.a, aiif.a(this.a));
-    ThreadManager.getUIHandler().post(new StickerBubbleAnimationViewHolder.1.1(this));
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleAnimationViewHolder", 2, "onSurfaceDestroyed");
-    }
-    aiif.b(this.a, aiif.a(this.a));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

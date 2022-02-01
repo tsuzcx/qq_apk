@@ -1,47 +1,22 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class bgdf
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public bgdf() {}
+  protected bgdf(bgdd parambgdd) {}
   
-  public bgdf(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(bgdf parambgdf)
-  {
-    if (parambgdf != null)
-    {
-      this.jdField_a_of_type_Int = parambgdf.jdField_a_of_type_Int;
-      this.jdField_a_of_type_JavaLangString = parambgdf.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Bgdd.a != null) {
+      this.jdField_a_of_type_Bgdd.a.a(paramView, this.jdField_a_of_type_Int);
     }
-  }
-  
-  public Object clone()
-  {
-    return new bgdf(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof bgdf))
-    {
-      paramObject = (bgdf)paramObject;
-      bool1 = bool2;
-      if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int)
-      {
-        bool1 = bool2;
-        if (bgjw.a(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

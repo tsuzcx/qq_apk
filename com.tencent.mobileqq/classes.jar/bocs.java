@@ -1,22 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bocs
-  implements Animator.AnimatorListener
+class bocs
+  implements DialogInterface.OnClickListener
 {
-  public bocs(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  bocs(bocn parambocn) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AEEditorAILoadingView.a(this.a).setVisibility(0);
+    this.a.a.a(2);
   }
 }
 

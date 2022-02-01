@@ -1,16 +1,26 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aqdy
-  implements View.OnTouchListener
+public class aqdy
+  implements View.OnClickListener
 {
-  aqdy(aqdv paramaqdv) {}
+  public aqdy(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return aqdv.a(this.a).onTouchEvent(paramMotionEvent);
+    blir localblir = (blir)blji.a(BaseActivity.sTopActivity, null);
+    localblir.a(BaseActivity.sTopActivity.getString(2131690113));
+    localblir.a(2131690112, 3);
+    localblir.c(2131690111);
+    localblir.setOnDismissListener(new aqdz(this, localblir));
+    localblir.a(new aqea(this, localblir));
+    if (!localblir.isShowing()) {
+      localblir.show();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

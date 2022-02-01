@@ -1,19 +1,19 @@
 package dov.com.qq.im.ae.play;
 
 import android.widget.ProgressBar;
-import bnvl;
+import bowv;
 
 public class AEPlayShowGridViewHolder$3
   implements Runnable
 {
-  public AEPlayShowGridViewHolder$3(bnvl parambnvl, int paramInt) {}
+  public AEPlayShowGridViewHolder$3(bowv parambowv, int paramInt) {}
   
   public void run()
   {
-    if (bnvl.a(this.this$0).getVisibility() != 0) {
-      bnvl.a(this.this$0).setVisibility(0);
+    if (bowv.a(this.this$0).getVisibility() != 0) {
+      bowv.a(this.this$0).setVisibility(0);
     }
-    bnvl.a(this.this$0).setProgress(this.a);
+    bowv.a(this.this$0).setProgress(this.a);
   }
 }
 

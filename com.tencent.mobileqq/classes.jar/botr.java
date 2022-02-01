@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.view.MusicProviderView;
-
-public class botr
-  implements DialogInterface.OnClickListener
+public abstract interface botr
 {
-  public botr(MusicProviderView paramMusicProviderView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(boqw paramboqw);
 }
 
 

@@ -1,17 +1,22 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollectionID;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wxt
+  extends QQUIEventReceiver<wxp, wsm>
 {
-  public int a;
-  public int b;
-  
-  public qqstory_struct.DateVideoCollectionID a()
+  public wxt(@NonNull wxp paramwxp)
   {
-    qqstory_struct.DateVideoCollectionID localDateVideoCollectionID = new qqstory_struct.DateVideoCollectionID();
-    localDateVideoCollectionID.collection_id.set(this.a);
-    localDateVideoCollectionID.collection_type.set(this.b);
-    return localDateVideoCollectionID;
+    super(paramwxp);
+  }
+  
+  public void a(@NonNull wxp paramwxp, @NonNull wsm paramwsm)
+  {
+    paramwxp.a.b(paramwsm);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wsm.class;
   }
 }
 

@@ -1,32 +1,14 @@
-public class bqdg
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bqdg
+  implements DialogInterface.OnClickListener
 {
-  public static final int a;
-  public static final int b = bqja.a(2.0F);
-  public static final int c = bqja.a(4.0F);
-  public static final int d = bqja.a(8.0F);
-  public float a;
-  public boolean a;
-  public float b;
-  public boolean b;
-  public float c;
-  public boolean c;
-  public float d;
-  public boolean d;
-  public float e;
-  public int e = 0;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
+  bqdg(bqdc parambqdc) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_Int = bqja.a(20.0F);
-  }
-  
-  public bqdg()
-  {
-    this.jdField_a_of_type_Float = jdField_a_of_type_Int;
+    paramDialogInterface.dismiss();
   }
 }
 

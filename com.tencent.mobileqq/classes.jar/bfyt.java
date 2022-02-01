@@ -1,54 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.highway.transaction.Transaction;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class bfyt
-  extends bfyu
+class bfyt
+  implements woy<bfyv, wov>
 {
-  public bfyt(bfyr parambfyr, int paramInt)
-  {
-    super(parambfyr, paramInt);
-  }
+  bfyt(bfys parambfys) {}
   
-  public void a()
+  public void a(@NonNull bfyv parambfyv, @Nullable wov paramwov, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (a(this.jdField_a_of_type_Bfyr.a)) {
+    if (paramErrorMessage.isFail())
+    {
+      yuk.e("QQ.Troop.homework.SendArithHomeResultSegment", "onCmdRespond failed :" + paramErrorMessage);
+      bfys.a(this.a, paramErrorMessage);
       return;
     }
-    e();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      c();
-    }
-  }
-  
-  public void c()
-  {
-    boolean bool = true;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("isVideo", 0);
-    if (this.b != null)
+    if (paramwov.a == 0)
     {
-      localBundle.putInt("result", 1);
-      localBundle.putString("url", this.b);
-    }
-    for (;;)
-    {
-      bfys.a().a(bool, this.jdField_a_of_type_Int, localBundle);
+      parambfyv = new bfyw();
+      parambfyv.a = bfys.a(this.a);
+      parambfyv.b = bfys.a(this.a).b;
+      bfys.a(this.a, parambfyv);
       return;
-      localBundle.putInt("result", 0);
-      localBundle.putString("error", "");
-      bool = false;
     }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
-      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
-    }
+    yuk.e("QQ.Troop.homework.SendArithHomeResultSegment", "baseResponse failed :" + paramwov.b);
+    bfys.b(this.a, new ErrorMessage(paramwov.a, paramwov.b));
   }
 }
 

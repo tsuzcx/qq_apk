@@ -1,69 +1,185 @@
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.store.ApolloVoiceDIYHelper.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugManager.1;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugManager.2;
+import com.tencent.mobileqq.apollo.debug.page.CmGameDebugBaseFragment;
+import com.tencent.mobileqq.apollo.debug.page.CmGameDebugLogFragment;
+import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
+import com.tencent.mobileqq.app.ThreadManager;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import mqq.os.MqqHandler;
 
 public class amxt
 {
-  private double jdField_a_of_type_Double = 2147483647.0D;
-  private int jdField_a_of_type_Int;
-  private WeakReference<ApolloTextureView> jdField_a_of_type_JavaLangRefWeakReference;
-  private int b;
-  private int c;
-  private int d = -1;
+  public static final String[] a;
+  public static final String[] b;
+  public static final String[] c;
+  private WeakReference<amxu> jdField_a_of_type_JavaLangRefWeakReference;
+  private BlockingQueue<amyc> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new ArrayBlockingQueue(100);
+  private boolean jdField_a_of_type_Boolean;
+  private BlockingQueue<amyc> b;
+  private BlockingQueue<amyc> c;
   
-  private void b(double paramDouble)
+  static
   {
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localApolloTextureView == null) {
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "Log", "Tool" };
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "All", "Log", "Info", "Error", "Game" };
+    jdField_c_of_type_ArrayOfJavaLangString = new String[] { "#000000", "#000000", "#6a59d6", "#FF0000", "#556B2F" };
+  }
+  
+  public amxt()
+  {
+    this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue = new ArrayBlockingQueue(50);
+    this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue = new ArrayBlockingQueue(50);
+  }
+  
+  public static CmGameDebugBaseFragment a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return new CmGameDebugLogFragment();
+    case 0: 
+      return new CmGameDebugLogFragment();
+    }
+    return new CmGameDebugToolFragment();
+  }
+  
+  private void a(amyc paramamyc)
+  {
+    if (paramamyc == null) {
       return;
     }
-    localApolloTextureView.getRender().mIsFrameMode = true;
-    localApolloTextureView.getRender().mDuration = paramDouble;
-    localApolloTextureView.getRenderImpl().a(0L);
-    String[] arrayOfString2 = amzq.a(13, this.jdField_a_of_type_Int, this.b, true);
-    String[] arrayOfString1 = null;
-    if (this.c == 1) {
-      arrayOfString1 = amzq.a(13, this.jdField_a_of_type_Int, this.b, false);
+    switch (paramamyc.a)
+    {
     }
-    localApolloTextureView.getRenderImpl().a(this.jdField_a_of_type_Int, 0, arrayOfString2, arrayOfString1);
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(paramamyc);
+      if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size() == 100) {
+        this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.poll();
+      }
+      ThreadManager.getUIHandler().post(new CmGameDebugManager.1(this, paramamyc));
+      return;
+      this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.offer(paramamyc);
+      if (this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.size() == 50)
+      {
+        this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.poll();
+        continue;
+        this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.offer(paramamyc);
+        if (this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.size() == 50) {
+          this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.poll();
+        }
+      }
+    }
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    andn localandn = anbd.a();
+    if (localandn != null) {
+      return localandn.a(paramInt);
+    }
+    return false;
+  }
+  
+  public static boolean a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramStartCheckParam != null)
+    {
+      bool1 = bool2;
+      if (paramStartCheckParam.isWhiteUsr)
+      {
+        bool1 = bool2;
+        if (a(paramStartCheckParam.gameId)) {
+          bool1 = BaseApplicationImpl.getApplication().getSharedPreferences("cmgame_sp", 0).getBoolean("game_debug_tool_switch", true);
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  private List<amyc> b(int paramInt)
+  {
+    Object localObject = Arrays.asList(this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.toArray(new amyc[0]));
+    if (paramInt == 0) {
+      return localObject;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      amyc localamyc = (amyc)((Iterator)localObject).next();
+      if (localamyc.a == paramInt) {
+        localArrayList.add(localamyc);
+      }
+    }
+    return localArrayList;
+  }
+  
+  public List<amyc> a(int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    switch (paramInt)
+    {
+    default: 
+      return localArrayList;
+    case 0: 
+      return Arrays.asList(this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.toArray(new amyc[0]));
+    case 1: 
+      return b(1);
+    case 2: 
+      return b(2);
+    case 3: 
+      return Arrays.asList(this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.toArray(new amyc[0]));
+    }
+    return Arrays.asList(this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.toArray(new amyc[0]));
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Double = 2147483647.0D;
+    this.jdField_a_of_type_Boolean = true;
+    a(false);
   }
   
-  public void a(double paramDouble)
+  public void a(amxu paramamxu)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloVoiceDIYHelper", 2, "[renderFrame], curSec:" + paramDouble + ",lastDur:" + this.jdField_a_of_type_Double);
-    }
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localApolloTextureView == null) {
-      return;
-    }
-    if (paramDouble <= this.jdField_a_of_type_Double) {
-      b(paramDouble);
-    }
-    for (;;)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramamxu);
+  }
+  
+  public void a(String paramString, int paramInt, Object... paramVarArgs)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
+    localStringBuilder.append(paramString).append(" | ");
+    int i = 0;
+    while (i < paramVarArgs.length)
     {
-      this.jdField_a_of_type_Double = paramDouble;
-      return;
-      localApolloTextureView.queueEvent(new ApolloVoiceDIYHelper.1(this, localApolloTextureView, paramDouble - this.jdField_a_of_type_Double));
+      paramString = paramVarArgs[i];
+      if (paramString != null) {
+        localStringBuilder.append(paramString.toString());
+      }
+      i += 1;
     }
+    a(new amyc(localStringBuilder.toString(), paramInt));
   }
   
-  public void a(ApolloTextureView paramApolloTextureView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloTextureView);
-    if (paramInt1 != this.d) {
-      a();
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.clear();
+    this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.clear();
+    this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.clear();
+    if ((paramBoolean) && (!this.jdField_a_of_type_Boolean)) {
+      ThreadManager.getUIHandler().post(new CmGameDebugManager.2(this));
     }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.d = this.jdField_a_of_type_Int;
-    this.b = paramInt2;
-    this.c = paramInt3;
   }
 }
 

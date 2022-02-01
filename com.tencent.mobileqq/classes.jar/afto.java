@@ -1,123 +1,49 @@
-import Wallet.AcsMsg;
-import android.content.Intent;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.TroopInviteStatusFragment;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class afto
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+  implements ajqa
 {
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
+  public afto(TroopInviteStatusFragment paramTroopInviteStatusFragment) {}
   
-  public afto(ReminderListFragment paramReminderListFragment, View paramView)
+  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376363));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376362));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.c = ((TextView)paramView.findViewById(2131376367));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376364));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369940));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369939));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376365));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131376366));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
-  }
-  
-  private void a(View paramView, AcsMsg paramAcsMsg)
-  {
-    if ((paramView instanceof FrameLayout))
+    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512))) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      paramView = ((FrameLayout)paramView).getChildAt(0);
-      if ((paramView instanceof Button))
-      {
-        paramView = (Button)paramView;
-        paramView.setTag(paramAcsMsg);
-        paramView = (FrameLayout.LayoutParams)paramView.getLayoutParams();
-        paramAcsMsg = new Rect();
-        this.jdField_a_of_type_AndroidWidgetImageView.getLocalVisibleRect(paramAcsMsg);
-        paramView.rightMargin = paramAcsMsg.right;
-        this.jdField_a_of_type_AndroidWidgetImageView.getGlobalVisibleRect(paramAcsMsg);
-        paramView.topMargin = (paramAcsMsg.top - paramView.width);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopInviteStatusFragment", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
       }
-    }
-  }
-  
-  public void a(afub paramafub)
-  {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setTag(paramafub.jdField_a_of_type_WalletAcsMsg);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramafub.jdField_a_of_type_WalletAcsMsg.title);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setTag(paramafub.jdField_a_of_type_WalletAcsMsg.jump_url);
-    Object localObject1 = paramafub.jdField_a_of_type_WalletAcsMsg.busi_icon;
-    Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.jdField_b_of_type_AndroidWidgetImageView.getHeight();
-    ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.jdField_b_of_type_AndroidWidgetImageView.getWidth();
-    localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
-    if (localObject1 != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
-    }
-    String str = afsx.a(paramafub.jdField_a_of_type_WalletAcsMsg.notice_time * 1000L, "yyyy.MM.dd");
-    localObject2 = afsx.a(paramafub.jdField_a_of_type_WalletAcsMsg.notice_time * 1000L, "HH:mm");
-    localObject1 = localObject2;
-    if (paramafub.jdField_a_of_type_Int == 0) {
-      localObject1 = (String)localObject2 + "　　　开启时提醒";
-    }
-    localObject1 = str + "　　　" + (String)localObject1;
-    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-    localObject1 = this.c;
-    if (!bgsp.a(paramafub.jdField_a_of_type_JavaLangString))
-    {
-      ((TextView)localObject1).setText(paramafub.jdField_a_of_type_JavaLangString);
-      ((TextView)localObject1).setVisibility(0);
+      ajpz.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString, "");
+      ajpz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if ((this.a.jdField_a_of_type_Bjbs != null) && (this.a.jdField_a_of_type_Bjbs.isShowing())) {
+        this.a.jdField_a_of_type_Bjbs.dismiss();
+      }
       return;
     }
-    ((TextView)localObject1).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopInviteStatusFragment", 2, "onTroopPrivilege normalTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt + ", sendSystemMsgAction-----");
+    }
+    TroopInviteStatusFragment.a(this.a, 2);
   }
   
-  public void onClick(View paramView)
+  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
   {
-    switch (paramView.getId())
-    {
+    if ((this.a.jdField_a_of_type_Bjbs != null) && (this.a.jdField_a_of_type_Bjbs.isShowing())) {
+      this.a.jdField_a_of_type_Bjbs.dismiss();
     }
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopInviteStatusFragment", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
+    }
+    paramString1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    if (paramInt1 == 72) {}
+    for (paramInt1 = 2131689976;; paramInt1 = 2131689975)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      QQToast.a(paramString1, paramInt1, 1).a();
       return;
-      if (!bgsp.a((String)paramView.getTag()))
-      {
-        Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment.getActivity(), QQBrowserActivity.class);
-        localIntent.putExtra("url", (String)paramView.getTag());
-        localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-        this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment.startActivity(localIntent);
-        continue;
-        if (ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment) != null)
-        {
-          a(ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment).getContentView(), (AcsMsg)this.jdField_a_of_type_AndroidWidgetFrameLayout.getTag());
-          ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment).showAtLocation(ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment), 17, 0, 0);
-        }
-      }
     }
   }
 }

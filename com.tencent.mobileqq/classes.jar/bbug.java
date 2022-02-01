@@ -1,129 +1,43 @@
-import java.util.Arrays;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.app.SignatureHandler;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bbug
+  implements bliz
 {
-  static boolean a(int paramInt, long[][] paramArrayOfLong, long[] paramArrayOfLong1, long[] paramArrayOfLong2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, boolean[] paramArrayOfBoolean1, boolean[] paramArrayOfBoolean2, long[] paramArrayOfLong3)
-  {
-    paramArrayOfBoolean1[paramInt] = true;
-    int i = 0;
-    if (i < paramArrayOfLong2.length)
-    {
-      if ((paramArrayOfBoolean2[i] != 0) || (paramArrayOfLong[paramInt][i] <= 0L)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        long l = paramArrayOfLong1[paramInt] + paramArrayOfLong2[i] - paramArrayOfLong[paramInt][i];
-        if (l == 0L)
-        {
-          paramArrayOfBoolean2[i] = true;
-          int j = paramArrayOfInt2[i];
-          if ((j == -1) || (a(j, paramArrayOfLong, paramArrayOfLong1, paramArrayOfLong2, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfBoolean1, paramArrayOfBoolean2, paramArrayOfLong3)))
-          {
-            paramArrayOfInt2[i] = paramInt;
-            paramArrayOfInt1[paramInt] = i;
-            return true;
-          }
-        }
-        else if (l < paramArrayOfLong3[i])
-        {
-          paramArrayOfLong3[i] = l;
-        }
-      }
-    }
-    return false;
-  }
+  public bbug(SignatureHistoryFragment paramSignatureHistoryFragment, CommentItem paramCommentItem, String paramString, blir paramblir) {}
   
-  public static int[] a(long[][] paramArrayOfLong, int paramInt1, int paramInt2)
+  public void OnClick(View paramView, int paramInt)
   {
-    long[] arrayOfLong1 = new long[paramInt1];
-    long[] arrayOfLong2 = new long[paramInt2];
-    long[] arrayOfLong3 = new long[paramInt2];
-    int[] arrayOfInt1 = new int[paramInt1];
-    int[] arrayOfInt2 = new int[paramInt2];
-    Arrays.fill(arrayOfLong1, -9223372036854775808L);
-    Arrays.fill(arrayOfLong2, 0L);
-    int i = 0;
-    int j;
-    while (i < paramInt1)
+    switch (paramInt)
     {
-      j = 0;
-      while (j < paramInt2)
-      {
-        if ((paramArrayOfLong[i][j] > 0L) && (paramArrayOfLong[i][j] > arrayOfLong1[i])) {
-          arrayOfLong1[i] = paramArrayOfLong[i][j];
-        }
-        j += 1;
-      }
-      i += 1;
     }
-    Arrays.fill(arrayOfInt1, -1);
-    Arrays.fill(arrayOfInt2, -1);
-    i = 0;
-    if (i < paramInt1)
+    for (;;)
     {
-      boolean[] arrayOfBoolean1 = new boolean[paramInt1];
-      boolean[] arrayOfBoolean2 = new boolean[paramInt2];
-      Arrays.fill(arrayOfLong3, 9223372036854775807L);
-      Arrays.fill(arrayOfBoolean1, false);
-      Arrays.fill(arrayOfBoolean2, false);
-      for (;;)
+      this.jdField_a_of_type_Blir.e();
+      return;
+      if (!bhnv.d(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity()))
       {
-        long l1;
-        if (!a(i, paramArrayOfLong, arrayOfLong1, arrayOfLong2, arrayOfInt1, arrayOfInt2, arrayOfBoolean1, arrayOfBoolean2, arrayOfLong3))
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), 2131692905, 0).a();
+      }
+      else
+      {
+        SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment, this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem);
+        if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem != null) && (!TextUtils.isEmpty(SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment))) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
         {
-          l1 = 9223372036854775807L;
-          j = 0;
-          if (j < paramInt2)
-          {
-            long l2;
-            if (arrayOfBoolean2[j] != 0) {
-              l2 = l1;
-            }
-            for (;;)
-            {
-              j += 1;
-              l1 = l2;
-              break;
-              l2 = l1;
-              if (arrayOfLong3[j] < l1) {
-                l2 = arrayOfLong3[j];
-              }
-            }
+          if (SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment) == null) {
+            SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment, new bjbs(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity().getTitleBarHeight()));
           }
-          if ((l1 != 9223372036854775807L) && (l1 != 0L)) {}
+          SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).a(null);
+          SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).show();
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.a.a(Long.valueOf(SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment)).longValue(), this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem.feedId, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem.id);
         }
-        else
-        {
-          i += 1;
-          break;
-        }
-        j = 0;
-        while (j <= i)
-        {
-          if (arrayOfBoolean1[j] != 0) {
-            arrayOfLong1[j] -= l1;
-          }
-          j += 1;
-        }
-        j = 0;
-        if (j < paramInt2)
-        {
-          if (arrayOfBoolean2[j] != 0) {
-            arrayOfLong2[j] += l1;
-          }
-          for (;;)
-          {
-            j += 1;
-            break;
-            arrayOfLong3[j] -= l1;
-          }
-        }
-        Arrays.fill(arrayOfBoolean1, false);
-        Arrays.fill(arrayOfBoolean2, false);
       }
     }
-    return arrayOfInt1;
   }
 }
 

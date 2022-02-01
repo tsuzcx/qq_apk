@@ -1,8 +1,17 @@
-public abstract interface mhj
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+
+class mhj
+  implements View.OnLayoutChangeListener
 {
-  public abstract void a();
+  mhj(mhi parammhi) {}
   
-  public abstract void b();
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    if (paramInt4 - paramInt2 != paramInt8 - paramInt6) {
+      this.a.notifyDataSetChanged();
+    }
+  }
 }
 
 

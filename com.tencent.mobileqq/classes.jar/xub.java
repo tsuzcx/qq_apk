@@ -1,30 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
 public class xub
-  extends wfr<xts, wwl>
+  implements xvq
 {
-  public xub(xts paramxts)
-  {
-    super(paramxts);
-  }
+  public xub(TextureVideoView paramTextureVideoView) {}
   
-  public void a(@NonNull xts paramxts, @NonNull wwl paramwwl)
+  public void a(xvo paramxvo)
   {
-    if ((paramxts.a != null) && (paramwwl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwwl.jdField_a_of_type_JavaUtilList.contains(paramxts.a.a)))
-    {
-      yqp.a(this.TAG, "receive tag info change event. %s", paramwwl.toString());
-      paramxts.i();
+    this.a.jdField_a_of_type_Int = 5;
+    this.a.b = 5;
+    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
+    }
+    if (this.a.jdField_a_of_type_Xvq != null) {
+      this.a.jdField_a_of_type_Xvq.a(this.a.jdField_a_of_type_Xvo);
     }
   }
-  
-  public Class acceptEventClass()
-  {
-    return wwl.class;
-  }
-  
-  public void b(@NonNull xts paramxts, @NonNull wwl paramwwl) {}
 }
 
 

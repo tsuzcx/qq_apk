@@ -1,13 +1,20 @@
-import android.widget.ImageView.ScaleType;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class amyh
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public ImageView.ScaleType a = ImageView.ScaleType.CENTER_INSIDE;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  public amyh(CmGameDebugToolFragment paramCmGameDebugToolFragment) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    CmGameDebugToolFragment.a(this.a).edit().putBoolean("game_storage_switch", paramBoolean).commit();
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 

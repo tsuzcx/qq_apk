@@ -1,39 +1,27 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.startup.step.CheckPermission;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
-class bdhw
-  implements WtTicketPromise
+public final class bdhw
+  implements QQPermissionCallback
 {
-  bdhw(bdhv parambdhv, Runnable paramRunnable) {}
+  public bdhw(bdhy parambdhy, AppActivity paramAppActivity) {}
   
-  public void Done(Ticket paramTicket)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TeamWorkFileExportHandler", 2, "--- pskey invalid retry ---  ");
-    }
-    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
+    CheckPermission.showSDCardExplainDialog(this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_Bdhy);
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("TeamWorkFileExportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TeamWorkFileExportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
+    if (this.jdField_a_of_type_Bdhy != null) {
+      this.jdField_a_of_type_Bdhy.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdhw
  * JD-Core Version:    0.7.0.1
  */

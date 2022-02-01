@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-
-public class axfs
-  implements DialogInterface.OnClickListener
+public abstract interface axfs
 {
-  public axfs(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    axgp.a(this.a, 10);
-    GameRoomInviteActivity.b(this.a);
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void a(boolean paramBoolean, int paramInt);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 

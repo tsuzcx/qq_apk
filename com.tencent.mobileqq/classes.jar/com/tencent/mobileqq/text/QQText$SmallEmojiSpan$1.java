@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.text;
 
-import arup;
-import arve;
-import arze;
-import awmr;
-import bdnt;
-import bdoc;
-import bgmg;
-import bhhf;
-import bhhh;
+import askd;
+import asks;
+import asos;
+import axfj;
+import begp;
+import begy;
+import bhmi;
+import bihu;
+import bihw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
@@ -20,17 +20,17 @@ import mqq.app.AccountNotMatchException;
 public class QQText$SmallEmojiSpan$1
   implements Runnable
 {
-  public QQText$SmallEmojiSpan$1(bdoc parambdoc) {}
+  public QQText$SmallEmojiSpan$1(begy parambegy) {}
   
   public void run()
   {
-    Object localObject2 = arze.r.replace("[epId]", Integer.toString(this.this$0.e));
-    boolean bool = bgmg.a((String)localObject2);
+    Object localObject2 = asos.r.replace("[epId]", Integer.toString(this.this$0.e));
+    boolean bool = bhmi.a((String)localObject2);
     for (;;)
     {
       try
       {
-        QQAppInterface localQQAppInterface1 = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(bdnt.d());
+        QQAppInterface localQQAppInterface1 = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(begp.d());
         if (localQQAppInterface1 == null)
         {
           if (QLog.isColorLevel()) {
@@ -46,32 +46,32 @@ public class QQText$SmallEmojiSpan$1
         continue;
         if (bool)
         {
-          localObject3 = arze.a();
+          localObject3 = asos.a();
           if (localObject3 == null) {
             break label385;
           }
-          localObject1 = ((awmr)localObject3).a(Integer.toString(this.this$0.e), Integer.toString(this.this$0.f));
+          localObject1 = ((axfj)localObject3).a(Integer.toString(this.this$0.e), Integer.toString(this.this$0.f));
           if (localObject1 != null)
           {
-            localObject1 = ((awmr)localObject3).a(Integer.toString(this.this$0.e));
+            localObject1 = ((axfj)localObject3).a(Integer.toString(this.this$0.e));
             if ((localObject1 != null) && (((EmoticonPackage)localObject1).isAPNG == 0))
             {
               localObject3 = new ArrayList();
-              localObject2 = bgmg.a(new File((String)localObject2));
-              arve.a(localQQAppInterface2, (EmoticonPackage)localObject1, arup.c, (byte[])localObject2, (ArrayList)localObject3);
+              localObject2 = bhmi.a(new File((String)localObject2));
+              asks.a(localQQAppInterface2, (EmoticonPackage)localObject1, askd.c, (byte[])localObject2, (ArrayList)localObject3);
             }
             this.this$0.a((EmoticonPackage)localObject1);
             return;
           }
         }
-        Object localObject3 = arze.c.replace("[epId]", Integer.toString(this.this$0.e));
+        Object localObject3 = asos.c.replace("[epId]", Integer.toString(this.this$0.e));
         localObject1 = new File((String)localObject2);
         if (QLog.isColorLevel()) {
           QLog.d("QQText", 2, "small emoji json not exist. epId:" + this.this$0.e + ",downloadUrl:" + (String)localObject3);
         }
-        localObject2 = new bhhf((String)localObject3, (File)localObject1);
-        ((bhhf)localObject2).j = true;
-        int i = bhhh.a((bhhf)localObject2, localQQAppInterface2);
+        localObject2 = new bihu((String)localObject3, (File)localObject1);
+        ((bihu)localObject2).j = true;
+        int i = bihw.a((bihu)localObject2, localQQAppInterface2);
         localObject2 = new EmoticonPackage();
         ((EmoticonPackage)localObject2).epId = Integer.toString(this.this$0.e);
         ((EmoticonPackage)localObject2).jobType = 4;
@@ -80,9 +80,9 @@ public class QQText$SmallEmojiSpan$1
         }
         if (((File)localObject1).exists())
         {
-          localObject1 = bgmg.a((File)localObject1);
+          localObject1 = bhmi.a((File)localObject1);
           localObject3 = new ArrayList();
-          arve.a(localQQAppInterface2, (EmoticonPackage)localObject2, arup.c, (byte[])localObject1, (ArrayList)localObject3);
+          asks.a(localQQAppInterface2, (EmoticonPackage)localObject2, askd.c, (byte[])localObject1, (ArrayList)localObject3);
           this.this$0.a((EmoticonPackage)localObject2);
           return;
         }

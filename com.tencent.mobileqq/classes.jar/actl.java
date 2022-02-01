@@ -1,40 +1,21 @@
-import com.tencent.gdtad.views.image.GdtGifImageView;
-import com.tencent.image.URLDrawable;
-import java.lang.ref.WeakReference;
-import java.net.URL;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class actl
-  implements actk
+class actl
+  extends BroadcastReceiver
 {
-  public actl(GdtGifImageView paramGdtGifImageView) {}
+  private actl(actj paramactj) {}
   
-  public void a(URLDrawable paramURLDrawable)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (String str = paramURLDrawable.getURL().toString();; str = null)
+    int i = paramIntent.getIntExtra("android.media.EXTRA_VOLUME_STREAM_TYPE", -1);
+    if (i == 3) {}
+    for (boolean bool = true;; bool = false)
     {
-      acqy.b("GdtImageView", String.format("onLoadSuccessful %s", new Object[] { str }));
-      if ((!GdtGifImageView.a(this.a)) || (!GdtGifImageView.b(this.a))) {
-        GdtGifImageView.a(this.a, paramURLDrawable, str);
-      }
-      if ((GdtGifImageView.a(this.a) != null) && (GdtGifImageView.a(this.a).get() != null) && (GdtGifImageView.c(this.a))) {
-        ((actm)GdtGifImageView.a(this.a).get()).a(true);
-      }
-      return;
-    }
-  }
-  
-  public void b(URLDrawable paramURLDrawable)
-  {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (String str = paramURLDrawable.getURL().toString();; str = null)
-    {
-      acqy.b("GdtImageView", String.format("onLoadFailed %s", new Object[] { str }));
-      if ((!GdtGifImageView.a(this.a)) || (!GdtGifImageView.b(this.a))) {
-        GdtGifImageView.a(this.a, paramURLDrawable, str);
-      }
-      if ((GdtGifImageView.a(this.a) != null) && (GdtGifImageView.a(this.a).get() != null)) {
-        ((actm)GdtGifImageView.a(this.a).get()).a(false);
+      acvc.a("VolumeBroadcastReceiver", "VolumeBroadcastReceiver action type = " + paramIntent.getAction() + ", isStreamMusic = " + bool + ", streamType = " + i);
+      if (("android.media.VOLUME_CHANGED_ACTION".equals(paramIntent.getAction())) && (bool) && (actj.a(this.a) != null)) {
+        actj.a(this.a).a(new Object[0]);
       }
       return;
     }

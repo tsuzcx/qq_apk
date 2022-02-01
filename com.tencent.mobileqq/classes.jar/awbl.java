@@ -1,94 +1,77 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.location.window.CanBackFrameLayout;
-import com.tencent.mobileqq.location.window.GlobalFloatDialogEventReceiver;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.hlyyb.downloader.DownloaderTaskListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.intervideo.now.DownloadEngine.DownloadTaskListenerBridge.1;
+import mqq.os.MqqHandler;
 
 public class awbl
+  implements DownloaderTaskListener
 {
-  private final View jdField_a_of_type_AndroidViewView = View.inflate(BaseApplicationImpl.context, 2131558992, null);
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager = (WindowManager)BaseApplicationImpl.context.getSystemService("window");
-  private final TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365464);
-  private CanBackFrameLayout jdField_a_of_type_ComTencentMobileqqLocationWindowCanBackFrameLayout = (CanBackFrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365499);
-  private GlobalFloatDialogEventReceiver jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver;
-  private final TextView b;
-  private final TextView c;
+  private awbn a;
   
-  public awbl()
+  public awbl(awbn paramawbn)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new awbm(this));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365470));
-    this.b.setOnClickListener(new awbn(this));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365479));
-    this.c.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver = new GlobalFloatDialogEventReceiver();
+    this.a = paramawbn;
   }
   
   public void a()
   {
-    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (localLayoutParams.type = 2038;; localLayoutParams.type = 2002)
-    {
-      localLayoutParams.format = -3;
-      localLayoutParams.height = bgtn.b();
-      localLayoutParams.width = bgtn.a();
-      this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-      this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver.a(this);
-      return;
+    this.a = null;
+  }
+  
+  public void onTaskCompletedMainloop(DownloaderTask paramDownloaderTask)
+  {
+    if (this.a != null) {
+      this.a.a(paramDownloaderTask);
     }
   }
   
-  public void a(View.OnClickListener paramOnClickListener)
+  public void onTaskCompletedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskDetectedMainloop(DownloaderTask paramDownloaderTask)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new awbo(this, paramOnClickListener));
+    if (this.a != null) {
+      this.a.b(paramDownloaderTask);
+    }
   }
   
-  public void a(String paramString)
+  public void onTaskDetectedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskFailedMainloop(DownloaderTask paramDownloaderTask)
   {
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365475)).setText(paramString);
+    ThreadManager.getSubThreadHandler().post(new DownloadTaskListenerBridge.1(this, paramDownloaderTask));
   }
   
-  public void b()
+  public void onTaskFailedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPausedMainloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPausedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPendingMainloop(DownloaderTask paramDownloaderTask)
   {
-    this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver.a();
+    if (this.a != null) {
+      this.a.d(paramDownloaderTask);
+    }
   }
   
-  public void b(View.OnClickListener paramOnClickListener)
+  public void onTaskReceivedMainloop(DownloaderTask paramDownloaderTask)
   {
-    this.b.setOnClickListener(new awbp(this, paramOnClickListener));
+    if (this.a != null) {
+      this.a.f(paramDownloaderTask);
+    }
   }
   
-  public void b(String paramString)
+  public void onTaskReceivedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskStartedMainloop(DownloaderTask paramDownloaderTask)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    if (this.a != null) {
+      this.a.e(paramDownloaderTask);
+    }
   }
   
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public void c(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqLocationWindowCanBackFrameLayout.setBackKeyListener(new awbq(this, paramOnClickListener));
-  }
-  
-  public void c(String paramString)
-  {
-    this.b.setText(paramString);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-  }
+  public void onTaskStartedSubloop(DownloaderTask paramDownloaderTask) {}
 }
 
 

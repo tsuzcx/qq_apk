@@ -1,20 +1,30 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.location.OnlineStatusLocationFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.NearbyPeople;
 
 public class ayss
-  implements View.OnClickListener
 {
-  public ayss(OnlineStatusLocationFragment paramOnlineStatusLocationFragment) {}
+  public static String a;
+  public static List<oidb_0x8dd.NearbyPeople> a;
   
-  public void onClick(View paramView)
+  static
   {
-    if ((this.a.getActivity() != null) && (!this.a.getActivity().isFinishing())) {
-      this.a.getActivity().finish();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    jdField_a_of_type_JavaLangString = "0";
+  }
+  
+  public static String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public static List<oidb_0x8dd.NearbyPeople> a()
+  {
+    return jdField_a_of_type_JavaUtilList;
+  }
+  
+  public static void a(String paramString, List<oidb_0x8dd.NearbyPeople> paramList)
+  {
+    jdField_a_of_type_JavaUtilList = paramList;
+    jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

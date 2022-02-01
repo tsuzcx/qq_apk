@@ -10,17 +10,21 @@ public final class PrivilegeInfo
   public int iFeeType = -1;
   public int iFlag;
   public int iIsBig;
+  public int iIsRemind;
   public int iLevel = -1;
+  public int iRemindTime;
   public int iSort = -1;
+  public int iTipsTimes;
   public int iType = -1;
   public boolean isOpen;
   public String strDeluxeIconUrl = "";
   public String strIconUrl = "";
   public String strJumpUrl = "";
+  public String strTipsIconUrl = "";
   
   public PrivilegeInfo() {}
   
-  public PrivilegeInfo(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, String paramString2, String paramString3, int paramInt6)
+  public PrivilegeInfo(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, String paramString2, String paramString3, int paramInt6, int paramInt7, int paramInt8, String paramString4, int paramInt9)
   {
     this.iType = paramInt1;
     this.iSort = paramInt2;
@@ -31,6 +35,10 @@ public final class PrivilegeInfo
     this.strDeluxeIconUrl = paramString2;
     this.strJumpUrl = paramString3;
     this.iIsBig = paramInt6;
+    this.iIsRemind = paramInt7;
+    this.iRemindTime = paramInt8;
+    this.strTipsIconUrl = paramString4;
+    this.iTipsTimes = paramInt9;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -44,6 +52,10 @@ public final class PrivilegeInfo
     this.strDeluxeIconUrl = paramJceInputStream.readString(6, false);
     this.strJumpUrl = paramJceInputStream.readString(7, false);
     this.iIsBig = paramJceInputStream.read(this.iIsBig, 8, false);
+    this.iIsRemind = paramJceInputStream.read(this.iIsRemind, 9, false);
+    this.iRemindTime = paramJceInputStream.read(this.iRemindTime, 10, false);
+    this.strTipsIconUrl = paramJceInputStream.readString(11, false);
+    this.iTipsTimes = paramJceInputStream.read(this.iTipsTimes, 12, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -63,6 +75,10 @@ public final class PrivilegeInfo
       paramJceOutputStream.write(this.strJumpUrl, 7);
     }
     paramJceOutputStream.write(this.iIsBig, 8);
+    paramJceOutputStream.write(this.iIsRemind, 9);
+    paramJceOutputStream.write(this.iRemindTime, 10);
+    paramJceOutputStream.write(this.strTipsIconUrl, 11);
+    paramJceOutputStream.write(this.iTipsTimes, 12);
   }
 }
 

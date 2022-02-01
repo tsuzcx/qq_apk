@@ -1,26 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView.4;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class algn
-  implements Animation.AnimationListener
+  extends albm
 {
-  public algn(LoginView.4 param4) {}
+  public algn(DrawHbFragment paramDrawHbFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.this$0.c.setVisibility(0);
-    this.a.this$0.c.clearAnimation();
-    this.a.this$0.c.setAnimation(null);
-    this.a.this$0.a.invalidate();
+    DrawHbFragment.a(this.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

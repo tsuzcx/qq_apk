@@ -1,77 +1,85 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.ArrayList;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.datarecv.pb.ZhituReportMsg.ReqBody;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class aizr
-  extends aiyi
-  implements View.OnClickListener
 {
-  public aizr(Context paramContext, QQAppInterface paramQQAppInterface, ajae paramajae, ajax paramajax)
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  @Nullable
+  public String f;
+  @Nullable
+  public String g;
+  
+  public ZhituReportMsg.ReqBody a()
   {
-    super(paramContext, paramQQAppInterface, paramajae, paramajax);
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_JavaLangString = "";
+    }
+    if (this.c == null) {
+      this.c = "";
+    }
+    if (this.b == null) {
+      this.b = "";
+    }
+    if (this.d == null) {
+      this.d = "";
+    }
+    if (this.e == null) {
+      this.e = "";
+    }
+    if (this.f == null) {
+      this.f = "";
+    }
+    if (this.g == null) {
+      this.g = "";
+    }
+    ZhituReportMsg.ReqBody localReqBody = new ZhituReportMsg.ReqBody();
+    localReqBody.bytes_pass.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localReqBody.bytes_pic_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqBody.bytes_style.set(ByteStringMicro.copyFromUtf8(this.c));
+    localReqBody.uint32_action.set(this.jdField_a_of_type_Int);
+    localReqBody.bytes_aio_type.set(ByteStringMicro.copyFromUtf8(this.d));
+    localReqBody.bytes_mobile_type.set(ByteStringMicro.copyFromUtf8("android"));
+    localReqBody.bytes_current_text.set(ByteStringMicro.copyFromUtf8(this.e));
+    return localReqBody;
   }
   
-  private void a(TextView paramTextView, ajax paramajax)
+  public String toString()
   {
-    if ((paramajax == null) || (!(paramajax instanceof ajbe))) {}
-    do
+    StringBuilder localStringBuilder = new StringBuilder().append("ZhituReportData{pass='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", imgId='").append(this.b).append('\'').append(", styles='").append(this.c).append('\'').append(", action=").append(this.jdField_a_of_type_Int).append(", aioType='").append(this.d).append('\'').append(", queryText='");
+    if (this.e != null)
     {
-      return;
-      paramajax = (ajbe)paramajax;
-    } while ((paramajax.jdField_a_of_type_JavaUtilArrayList == null) || (paramajax.jdField_a_of_type_JavaUtilArrayList.size() == 0));
-    String str = this.jdField_a_of_type_AndroidContentContext.getString(2131698105);
-    paramTextView.setVisibility(0);
-    paramTextView.setText(str);
-    if (paramajax.jdField_a_of_type_Boolean)
-    {
-      paramTextView.setPadding(0, bgtn.a(16.0F), 0, bgtn.a(6.0F));
-      return;
+      str = blev.a(this.e);
+      localStringBuilder = localStringBuilder.append(str).append('\'').append(", lastMessage='");
+      if (this.f == null) {
+        break label207;
+      }
+      str = blev.a(this.f);
+      label139:
+      localStringBuilder = localStringBuilder.append(str).append('\'').append(", lastTwoMessage='");
+      if (this.g == null) {
+        break label213;
+      }
     }
-    paramTextView.setPadding(0, bgtn.a(16.0F), 0, bgtn.a(6.0F));
-  }
-  
-  public View a(int paramInt, View paramView)
-  {
-    View localView;
-    Object localObject;
-    if ((paramView == null) || (!(paramView.getTag() instanceof aizs)))
+    label207:
+    label213:
+    for (String str = blev.a(this.g);; str = "null")
     {
-      paramView = new aizs();
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561332, null);
-      paramView.a = ((TextView)localView.findViewById(2131378191));
-      localView.setTag(paramView);
-      localObject = paramView;
-    }
-    for (;;)
-    {
-      c(((aizs)localObject).a);
-      a(((aizs)localObject).a, this.jdField_a_of_type_Ajax);
-      localView.setOnClickListener(this);
-      return localView;
-      localObject = (aizs)paramView.getTag();
-      localView = paramView;
+      return str + '\'' + ", isReported=" + this.jdField_a_of_type_Boolean + '}';
+      str = "null";
+      break;
+      str = "null";
+      break label139;
     }
   }
-  
-  public void c(View paramView)
-  {
-    if (paramView == null) {
-      return;
-    }
-    if (ThemeUtil.isDefaultTheme())
-    {
-      paramView.setBackgroundResource(2130839394);
-      return;
-    }
-    paramView.setBackgroundResource(2130850219);
-  }
-  
-  public void onClick(View paramView) {}
 }
 
 

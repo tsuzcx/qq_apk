@@ -1,7 +1,8 @@
-public class bliz
+import android.view.View;
+
+public abstract interface bliz
 {
-  public int a;
-  public String a;
+  public abstract void OnClick(View paramView, int paramInt);
 }
 
 

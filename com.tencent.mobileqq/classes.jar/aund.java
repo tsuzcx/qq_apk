@@ -1,27 +1,12 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class aund
-  extends aopa
+final class aund
+  implements Comparator<Map.Entry<String, Integer>>
 {
-  public aund(NowLiveFragment paramNowLiveFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public int a(Map.Entry<String, Integer> paramEntry1, Map.Entry<String, Integer> paramEntry2)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (paramInt != 0)
-    {
-      QQToast.a(this.a.a, 1, anni.a(2131706440), 1).a();
-      this.a.f();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("NowLiveFragment", 2, "startLocation finish" + System.currentTimeMillis());
-    }
-    this.a.a(paramSosoLbsInfo);
+    return ((Integer)paramEntry2.getValue()).intValue() - ((Integer)paramEntry1.getValue()).intValue();
   }
 }
 

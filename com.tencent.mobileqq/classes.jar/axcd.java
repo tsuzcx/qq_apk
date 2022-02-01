@@ -1,10 +1,19 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.mediafocus.MediaFocusStackItem;
 
-public class axcd
-  implements BusinessObserver
+public final class axcd
+  implements Parcelable.Creator<MediaFocusStackItem>
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public MediaFocusStackItem a(Parcel paramParcel)
+  {
+    return new MediaFocusStackItem(paramParcel);
+  }
+  
+  public MediaFocusStackItem[] a(int paramInt)
+  {
+    return new MediaFocusStackItem[paramInt];
+  }
 }
 
 

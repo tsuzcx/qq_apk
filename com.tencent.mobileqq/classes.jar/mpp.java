@@ -1,34 +1,90 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.redbag.AVRedBag.2.1;
 
 public class mpp
-  extends mqf
+  extends lfl
 {
-  public int a;
-  public lfk a;
-  public boolean a;
-  public boolean b;
+  mpp(mpn parammpn) {}
   
-  mpp(moy parammoy)
+  protected void a(long paramLong)
   {
-    super(parammoy);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Lfk = new mpq(this);
-    parammoy = lfj.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    if (parammoy != null)
+    int i = this.a.a.a().a().d;
+    if ((i == 2) || (i == 1))
     {
-      parammoy.a(11, this.jdField_a_of_type_Lfk);
+      mqq.a(this.a.a.a().c());
+      mqq.g();
+      d(3);
       return;
     }
-    QLog.w(this.i, 1, "ListenPeerMsg, mHandlerForVideo为空");
+    mqq.a(0L);
   }
   
-  void a(String paramString)
+  protected void b(long paramLong)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.i, 1, "resetData[" + paramString + "]");
+    mpv localmpv = this.a.a();
+    if (localmpv != null) {
+      localmpv.b("onResumeVideo");
     }
+  }
+  
+  protected void b(long paramLong, String paramString, boolean paramBoolean)
+  {
+    paramString = this.a.a();
+    if (paramString != null) {
+      paramString.c(paramBoolean);
+    }
+    mqq.h();
+  }
+  
+  protected void c()
+  {
+    mpv localmpv = this.a.a();
+    if (localmpv != null) {
+      localmpv.b("onPauseVideo");
+    }
+  }
+  
+  protected void c(String paramString, boolean paramBoolean)
+  {
+    paramString = this.a.a();
+    if (paramString == null) {}
+    do
+    {
+      int i;
+      do
+      {
+        return;
+        i = this.a.a.a().a().d;
+      } while ((i != 2) && (i != 1));
+      if (paramBoolean)
+      {
+        if (paramString.a != null) {
+          paramString.a.a("onPeerSwitchTerminal");
+        }
+        paramString.b("onPeerSwitchTerminal");
+        return;
+      }
+      paramString.a("onPeerSwitchTerminal");
+    } while (paramString.a == null);
+    paramString.a(paramString.a.b);
+  }
+  
+  public void d(int paramInt)
+  {
+    if (paramInt <= 0) {
+      return;
+    }
+    mpv localmpv = this.a.a();
+    if (localmpv != null)
+    {
+      localmpv.a("onConnected:" + paramInt);
+      if (localmpv.a != null) {
+        localmpv.a(localmpv.a.b);
+      }
+    }
+    this.a.a.a().postDelayed(new AVRedBag.2.1(this, paramInt), 1100L);
   }
 }
 

@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.RainView;
+import android.database.DataSetObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class sne
-  implements bdet
+class sne
+  extends DataSetObserver
 {
-  public sne(RainView paramRainView) {}
+  sne(snd paramsnd) {}
   
-  public void a()
+  public void onChanged()
   {
-    this.a.b(this.a);
+    QLog.d("FastWebActivity", 2, "DataSetObserver ");
+    FastWebActivity.a(this.a.a, 100L);
   }
 }
 

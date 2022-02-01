@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.view;
 
-import anet;
+import anqo;
 import java.util.List;
 
 class ApolloPanel$12
   implements Runnable
 {
-  ApolloPanel$12(ApolloPanel paramApolloPanel, anet paramanet, List paramList) {}
+  ApolloPanel$12(ApolloPanel paramApolloPanel, anqo paramanqo, List paramList) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Anet != null) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      this.jdField_a_of_type_Anet.b(this.jdField_a_of_type_JavaUtilList);
+    if ((this.jdField_a_of_type_Anqo != null) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
+      this.jdField_a_of_type_Anqo.b(this.jdField_a_of_type_JavaUtilList);
     }
   }
 }

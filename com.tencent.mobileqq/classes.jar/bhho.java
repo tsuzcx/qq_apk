@@ -1,189 +1,83 @@
-import android.app.Activity;
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vip.KCWraperV2.1;
-import com.tencent.mobileqq.vip.KCWraperV2.2;
-import com.tencent.mobileqq.vip.KingCardActivationFragment;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.lp.LpReportInfo_dc04233;
-import dualsim.common.IKcActivationViewer;
-import dualsim.common.IKingCardInterface;
-import dualsim.common.OrderCheckResult;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
-import tmsdk.common.KcSdkShellManager;
+import java.lang.ref.WeakReference;
+import java.util.Map;
 
 public class bhho
-  extends bhhn
+  extends AsyncTask<Object, Void, Drawable>
 {
-  public AtomicBoolean a = new AtomicBoolean(false);
+  private Object jdField_a_of_type_JavaLangObject;
+  private final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
-  private void a(OrderCheckResult paramOrderCheckResult)
+  private View a()
   {
-    int i = 1;
-    String str1;
-    if (paramOrderCheckResult != null)
-    {
-      str1 = paramOrderCheckResult.toString();
-      a(str1);
-      if (paramOrderCheckResult != null) {
-        break label30;
-      }
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (!this.jdField_a_of_type_Boolean) {}
+    while (this == bhhm.a(this.jdField_a_of_type_Bhhm, localView)) {
+      return localView;
     }
-    label30:
-    label46:
-    boolean bool2;
-    do
-    {
-      return;
-      str1 = "result == null";
-      break;
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (localObject != null) {
-        break label186;
-      }
-      str1 = null;
-      if (TextUtils.isEmpty(str1)) {
-        break label206;
-      }
-      bool2 = a(str1, paramOrderCheckResult);
-    } while (!(localObject instanceof QQAppInterface));
-    Object localObject = (QQAppInterface)localObject;
-    String str2 = paramOrderCheckResult.phoneNum;
-    anyj localanyj = (anyj)((QQAppInterface)localObject).a(27);
-    boolean bool1;
-    label113:
-    long l;
-    if (paramOrderCheckResult.operator == 1)
-    {
-      if (paramOrderCheckResult.kingcard != 1) {
-        break label196;
-      }
-      bool1 = true;
-      localanyj.a(str1, str2, bool1, paramOrderCheckResult.product, "");
-      l = Long.parseLong(str1);
-      if (paramOrderCheckResult.kingcard != 1) {
-        break label201;
-      }
-    }
+    return null;
+  }
+  
+  public Drawable a(Object... paramVarArgs)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramVarArgs[0];
+    String str = String.valueOf(this.jdField_a_of_type_JavaLangObject);
+    bhhk localbhhk = (bhhk)paramVarArgs[1];
+    this.jdField_a_of_type_Boolean = ((Boolean)paramVarArgs[2]).booleanValue();
+    if (((bhhm.a(this.jdField_a_of_type_Bhhm) == null) || (isCancelled()) || (a() == null) || (bhhm.a(this.jdField_a_of_type_Bhhm))) || ((0 == 0) && (!isCancelled()) && (a() != null) && (!bhhm.a(this.jdField_a_of_type_Bhhm)))) {}
     for (;;)
-    {
-      new LpReportInfo_dc04233(l, i).report();
-      if (!bool2) {
-        break;
-      }
-      localanyj.a(((TicketManager)((QQAppInterface)localObject).getManager(2)).getSkey(str1), str1);
-      return;
-      label186:
-      str1 = ((AppRuntime)localObject).getAccount();
-      break label46;
-      label196:
-      bool1 = false;
-      break label113;
-      label201:
-      i = 0;
-    }
-    label206:
-    QLog.e("KC.TMSManager", 1, "tmsQuery can't get uin");
-  }
-  
-  public String a()
-  {
-    return "KC.KCWraperV2";
-  }
-  
-  void a(ViewGroup paramViewGroup)
-  {
-    Object localObject = KcSdkShellManager.getInstance().getKingCardInterface();
-    if (localObject != null)
-    {
-      localObject = ((IKingCardInterface)localObject).generateActivationView(paramViewGroup.getContext());
-      if (localObject != null)
-      {
-        paramViewGroup.addView(((IKcActivationViewer)localObject).getWebView());
-        ((IKcActivationViewer)localObject).startLoad();
-        return;
-      }
-      QLog.e("KC.TMSManager", 1, "activationViewer == null");
-    }
-    QLog.e("KC.TMSManager", 1, "kingCardInterface == null");
-  }
-  
-  public void a(bhhy parambhhy, boolean paramBoolean)
-  {
-    ThreadManager.post(new KCWraperV2.2(this, parambhhy, paramBoolean), 5, null, false);
-  }
-  
-  void a(Runnable paramRunnable)
-  {
-    a("load jar");
-    if (this.a.get()) {
-      return;
-    }
-    Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    File localFile = new File(bhhx.a().a(localContext));
-    if (!localFile.exists())
-    {
-      if (paramRunnable != null) {
-        paramRunnable.run();
-      }
-      a(false);
-      return;
-    }
-    ThreadManager.post(new KCWraperV2.1(this, localFile, localContext), 5, null, false);
-  }
-  
-  boolean a()
-  {
-    if (this.a.get()) {
-      return true;
-    }
-    if (!new File(bhhx.a().a(BaseApplicationImpl.getApplication())).exists()) {
-      return false;
-    }
-    synchronized (this.a)
     {
       try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e(a(), 1, "wait load");
+        paramVarArgs = localbhhk.a();
+        if ((bhhm.a(this.jdField_a_of_type_Bhhm) != null) && (paramVarArgs != null)) {
+          bhhm.a(this.jdField_a_of_type_Bhhm).a(str, paramVarArgs);
         }
-        this.a.wait(500L);
-        if (QLog.isColorLevel()) {
-          QLog.e(a(), 1, "wait end");
-        }
+        return paramVarArgs;
       }
-      catch (InterruptedException localInterruptedException)
+      catch (OutOfMemoryError paramVarArgs)
       {
-        for (;;)
+        if (bhhm.a(this.jdField_a_of_type_Bhhm) != null) {
+          bhhm.a(this.jdField_a_of_type_Bhhm).a();
+        }
+        System.gc();
+        Thread.yield();
+        try
         {
-          localInterruptedException.printStackTrace();
-          QLog.e(a(), 1, localInterruptedException, new Object[0]);
+          paramVarArgs = localbhhk.a();
+        }
+        catch (OutOfMemoryError paramVarArgs)
+        {
+          QLog.w("ImageWorker", 2, "OutOfMemoryError!!!!!");
         }
       }
-      return this.a.get();
+      paramVarArgs = null;
     }
   }
   
-  boolean a(Activity paramActivity)
+  public void a(Drawable paramDrawable)
   {
-    PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
-    return true;
-  }
-  
-  boolean b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("KC.TMSManager", 1, "supportActivationView == true");
+    View localView = a();
+    bhhp localbhhp = (bhhp)bhhm.a(this.jdField_a_of_type_Bhhm).remove(localView);
+    if ((isCancelled()) || (bhhm.a(this.jdField_a_of_type_Bhhm))) {
+      paramDrawable = null;
     }
-    return true;
+    if (localView != null)
+    {
+      if (paramDrawable != null) {
+        break label72;
+      }
+      if ((localbhhp != null) && (localbhhp.a != null)) {
+        localbhhp.a.a(localView, null);
+      }
+    }
+    return;
+    label72:
+    bhhm.a(this.jdField_a_of_type_Bhhm, this.jdField_a_of_type_Boolean, localView, paramDrawable, localbhhp);
   }
 }
 

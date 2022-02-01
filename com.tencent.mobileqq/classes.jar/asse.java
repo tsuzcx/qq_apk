@@ -1,17 +1,12 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import android.content.DialogInterface.OnClickListener;
 
-public class asse
-  implements DialogInterface.OnDismissListener
+class asse
+  implements DialogInterface.OnClickListener
 {
-  public asse(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  asse(assc paramassc) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a.a(null);
-    LocalFileBrowserActivity.a(this.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

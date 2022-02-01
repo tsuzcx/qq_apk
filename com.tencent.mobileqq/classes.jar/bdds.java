@@ -1,9 +1,19 @@
-import com.tencent.shadow.dynamic.host.EnterCallback;
+import com.tencent.maxvideo.common.AVIOStruct;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import java.util.concurrent.atomic.AtomicReference;
 
-public abstract interface bdds
-  extends EnterCallback
+public class bdds
 {
-  public abstract void a(Throwable paramThrowable);
+  public int a;
+  public bdbu a;
+  public bden a;
+  public AVIOStruct a;
+  public AtomicReference<SVHwEncoder> a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

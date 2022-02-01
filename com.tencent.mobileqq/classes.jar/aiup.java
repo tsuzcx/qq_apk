@@ -1,36 +1,20 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface aiup
+class aiup
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  aiup(aiul paramaiul) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, List<aiuo> paramList);
-  
-  public abstract void a(List<String> paramList);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = (mxc)aiul.a(this.a).getManager(373);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.a(aiul.a(this.a).a);
+    }
+  }
 }
 
 

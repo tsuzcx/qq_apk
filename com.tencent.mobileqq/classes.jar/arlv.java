@@ -1,87 +1,42 @@
-import android.content.res.ColorStateList;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
-import mqq.util.WeakReference;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arlv
-  extends ClickableSpan
-  implements auon
+  implements arae<String>
 {
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private WeakReference<View.OnClickListener> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private ColorStateList b;
+  public String a;
+  public boolean a;
   
-  public arlv(View.OnClickListener paramOnClickListener, int paramInt)
+  public arlv()
   {
-    this(paramOnClickListener, ColorStateList.valueOf(paramInt), null);
+    this.jdField_a_of_type_JavaLangString = "{}";
   }
   
-  public arlv(View.OnClickListener paramOnClickListener, ColorStateList paramColorStateList)
+  public void a(String paramString)
   {
-    this(paramOnClickListener, paramColorStateList, null);
-  }
-  
-  public arlv(View.OnClickListener paramOnClickListener, ColorStateList paramColorStateList1, ColorStateList paramColorStateList2)
-  {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramOnClickListener);
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList1;
-    this.b = paramColorStateList2;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference != null)
-    {
-      View.OnClickListener localOnClickListener = (View.OnClickListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      if (localOnClickListener != null) {
-        localOnClickListener.onClick(paramView);
-      }
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("QFileFileReaderConfigBean<QFile>", 1, "onParse: but configContent is null!");
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[] { 16842919 }, 0);
-        paramTextPaint.setColor(i);
-        label46:
-        if (this.b == null) {
-          break label122;
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          break label107;
-        }
-      }
-    }
-    label107:
-    for (int i = this.b.getColorForState(new int[] { 16842919 }, 0);; i = this.b.getColorForState(new int[0], 0))
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
     {
-      paramTextPaint.bgColor = i;
+      paramString = new JSONObject(paramString);
+      if (paramString.has("barShowSwitch")) {
+        this.jdField_a_of_type_Boolean = paramString.getBoolean("barShowSwitch");
+      }
       return;
-      i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[0], 0);
-      break;
-      paramTextPaint.setColor(-16777216);
-      break label46;
     }
-    label122:
-    paramTextPaint.bgColor = 0;
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileFileReaderConfigBean<QFile>", 1, QLog.getStackTraceString(paramString));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arlv
  * JD-Core Version:    0.7.0.1
  */

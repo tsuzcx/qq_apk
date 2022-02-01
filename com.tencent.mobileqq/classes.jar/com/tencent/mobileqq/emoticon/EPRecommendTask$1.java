@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticon;
 
-import arum;
+import aska;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class EPRecommendTask$1
   implements Runnable
 {
-  public EPRecommendTask$1(arum paramarum) {}
+  public EPRecommendTask$1(aska paramaska) {}
   
   public void run()
   {

@@ -1,272 +1,127 @@
-import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.managers.CUOpenCardGuideMng.GuideConfigData.1;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import org.json.JSONObject;
 
 public class awzs
 {
-  public static int a(long paramLong1, long paramLong2)
+  public long a;
+  public final String a;
+  public final ArrayList<Integer> a;
+  public boolean a;
+  public awzt[] a;
+  public String b;
+  public boolean b;
+  
+  public awzs(String paramString)
   {
-    if ((paramLong1 > 0L) && (paramLong2 >= 0L)) {
-      return awzy.a(paramLong1, paramLong2);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_ArrayOfAwzt = new awzt[6];
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfAwzt.length)
+    {
+      this.jdField_a_of_type_ArrayOfAwzt[i] = null;
+      i += 1;
     }
-    return 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaUtilArrayList = bhlo.a();
+    ThreadManager.post(new CUOpenCardGuideMng.GuideConfigData.1(this), 5, null, false);
   }
   
-  public static int a(afyd paramafyd)
+  public void a()
   {
-    long l1 = paramafyd.a();
-    long l2 = paramafyd.b();
-    if (l1 == 17L)
+    if (this.jdField_a_of_type_Boolean) {}
+    do
     {
-      if (paramafyd.a()) {
-        return 999;
+      return;
+      a(BaseApplicationImpl.getApplication().getSharedPreferences("ChinaUnicomPhoneCard" + this.jdField_a_of_type_JavaLangString, 4).getString("config_content", ""));
+    } while (!QLog.isColorLevel());
+    QLog.i("CUOpenCardGuideMng", 2, "init");
+  }
+  
+  public void a(String paramString)
+  {
+    int j = 0;
+    int i = 0;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    if ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString.equals(paramString))) {
+      if (QLog.isColorLevel()) {
+        QLog.i("CUOpenCardGuideMng", 2, "parseConfig config not change");
       }
-      return 0;
     }
-    return a(l1, l2);
-  }
-  
-  public static ArrayList<awzu> a(QQAppInterface paramQQAppInterface, String paramString, StringBuilder paramStringBuilder)
-  {
-    Object localObject = Pattern.compile("#(name|icon)_(\\d+)").matcher(paramStringBuilder);
-    ArrayList localArrayList = new ArrayList();
-    awzu localawzu;
-    int i;
-    if (((Matcher)localObject).find())
+    do
     {
-      localawzu = new awzu();
-      localawzu.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
-      localawzu.jdField_b_of_type_Int = ((Matcher)localObject).start();
-      localawzu.jdField_b_of_type_JavaLangString = ((Matcher)localObject).group(2);
-      if (localawzu.a()) {}
-      for (i = 2;; i = 1)
-      {
-        localawzu.jdField_a_of_type_Int = i;
-        localArrayList.add(localawzu);
+      return;
+      if (!TextUtils.isEmpty(paramString)) {
         break;
       }
-    }
-    localObject = Pattern.compile("\\(([^\\(]+?)\\)\\[([^\\)]+?)\\]").matcher(paramStringBuilder);
-    while (((Matcher)localObject).find())
-    {
-      localawzu = new awzu();
-      localawzu.jdField_a_of_type_Int = 3;
-      localawzu.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
-      localawzu.jdField_b_of_type_Int = ((Matcher)localObject).start();
-      localawzu.jdField_c_of_type_JavaLangString = ((Matcher)localObject).group(1);
-      localawzu.jdField_d_of_type_JavaLangString = ((Matcher)localObject).group(2);
-      localArrayList.add(localawzu);
-    }
-    localObject = Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramStringBuilder);
-    while (((Matcher)localObject).find())
-    {
-      localawzu = new awzu();
-      localawzu.jdField_a_of_type_Int = 4;
-      localawzu.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
-      localawzu.jdField_b_of_type_Int = ((Matcher)localObject).start();
-      localawzu.jdField_d_of_type_JavaLangString = ((Matcher)localObject).group(1);
-      localawzu.jdField_c_of_type_JavaLangString = localawzu.jdField_a_of_type_JavaLangString;
-      localArrayList.add(localawzu);
-    }
-    Collections.sort(localArrayList, new awzt());
-    localObject = localArrayList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      localawzu = (awzu)((Iterator)localObject).next();
-      if (!TextUtils.isEmpty(localawzu.jdField_a_of_type_JavaLangString))
+      this.jdField_b_of_type_Boolean = false;
+      while (i < this.jdField_a_of_type_ArrayOfAwzt.length)
       {
-        i = paramStringBuilder.indexOf(localawzu.jdField_a_of_type_JavaLangString);
-        int j = localawzu.jdField_a_of_type_JavaLangString.length() + i;
-        if ((i >= 0) && (j <= paramStringBuilder.length()))
-        {
-          switch (localawzu.jdField_a_of_type_Int)
-          {
-          }
-          for (;;)
-          {
-            if (localawzu.jdField_c_of_type_JavaLangString == null) {
-              localawzu.jdField_c_of_type_JavaLangString = localawzu.jdField_a_of_type_JavaLangString;
-            }
-            localawzu.jdField_c_of_type_Int = i;
-            localawzu.jdField_d_of_type_Int = (localawzu.jdField_c_of_type_JavaLangString.length() + i);
-            paramStringBuilder.replace(i, j, localawzu.jdField_c_of_type_JavaLangString);
-            break;
-            localawzu.jdField_c_of_type_JavaLangString = awzn.a(paramQQAppInterface, localawzu.jdField_b_of_type_JavaLangString);
-            continue;
-            localawzu.jdField_c_of_type_JavaLangString = awzn.a(paramQQAppInterface, paramString, localawzu.jdField_b_of_type_JavaLangString);
-          }
-        }
+        this.jdField_a_of_type_ArrayOfAwzt[i] = null;
+        i += 1;
       }
-    }
-    return localArrayList;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, ExtensionInfo paramExtensionInfo, afyd paramafyd, aofx paramaofx)
-  {
-    int i = 2097153;
-    afyf localafyf = paramafyd.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkGrayTipsHelper", 2, "checkAndInsertGrayTips grayInfo:" + localafyf + " onlinePush:" + paramaofx.a);
-    }
-    int k;
-    int j;
-    if ((localafyf != null) && (localafyf.a()))
-    {
-      k = -5040;
-      j = 0;
-      if (TextUtils.isEmpty(localafyf.jdField_b_of_type_JavaLangString)) {
-        break label209;
-      }
-      paramaofx = localafyf.jdField_b_of_type_JavaLangString;
-      switch (paramafyd.jdField_a_of_type_Int)
-      {
-      default: 
-        label172:
-        i = 2097155;
-      }
-    }
+      this.jdField_b_of_type_JavaLangString = "";
+    } while (!QLog.isColorLevel());
+    QLog.i("CUOpenCardGuideMng", 2, "parseConfig config is empty");
+    return;
     for (;;)
     {
-      if (a(paramafyd)) {
-        k = -5020;
-      }
-      a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramafyd, localafyf.jdField_a_of_type_JavaLangString, k, i, j, paramaofx);
-      return;
-      label209:
-      paramaofx = paramafyd.jdField_b_of_type_JavaLangString + "_" + paramafyd.jdField_a_of_type_Int + "_" + paramaofx.b + "_" + localafyf.jdField_a_of_type_Long;
-      break;
-      j = a(paramafyd);
-      continue;
-      i = 2097154;
-      continue;
-      if ((paramafyd.jdField_a_of_type_Afyg == null) || (paramafyd.jdField_b_of_type_Afyg == null)) {
-        break label172;
-      }
-      if (paramafyd.jdField_a_of_type_Afyg.a() > paramafyd.jdField_b_of_type_Afyg.a())
+      Object localObject;
+      try
       {
-        i = 2097154;
+        localObject = new JSONObject(paramString);
+        if (!((JSONObject)localObject).has("isNeedShowGuide")) {
+          break label359;
+        }
+        this.jdField_b_of_type_Boolean = ((JSONObject)localObject).getBoolean("isNeedShowGuide");
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      finally {}
+      if ((i < this.jdField_a_of_type_ArrayOfAwzt.length) && (i < awzq.a.length))
+      {
+        if (((JSONObject)localObject).has(awzq.a[i])) {
+          this.jdField_a_of_type_ArrayOfAwzt[i] = awzt.a(((JSONObject)localObject).getJSONObject(awzq.a[i]));
+        } else {
+          this.jdField_a_of_type_ArrayOfAwzt[i] = null;
+        }
       }
       else
       {
-        if (paramafyd.jdField_a_of_type_Afyg.a() >= paramafyd.jdField_b_of_type_Afyg.a()) {
-          break label172;
+        this.jdField_b_of_type_JavaLangString = paramString;
+        if (!QLog.isColorLevel()) {
+          continue;
         }
-        j = a(paramafyd);
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, ExtensionInfo paramExtensionInfo, afyd paramafyd, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkGrayTipsHelper", 2, "insertGrayTips friendUin:" + paramafyd.jdField_b_of_type_JavaLangString + " grayType:" + paramInt1 + " grayID:" + paramInt2 + " subType:" + paramInt3 + " grayTipKey:" + paramString2 + " _grayTipTemplate:" + paramString1);
-    }
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    Object localObject = paramString1;
-    if (paramString1.contains("#nick")) {
-      localObject = paramString1.replaceAll("#nick", bglf.m(paramQQAppInterface, paramafyd.jdField_b_of_type_JavaLangString));
-    }
-    localObject = new StringBuilder((String)localObject);
-    axaj.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramafyd, (StringBuilder)localObject);
-    paramString1 = a(paramQQAppInterface, paramafyd.jdField_b_of_type_JavaLangString, (StringBuilder)localObject);
-    localObject = ((StringBuilder)localObject).toString();
-    auxc localauxc = new auxc(paramafyd.jdField_b_of_type_JavaLangString, paramafyd.jdField_b_of_type_JavaLangString, (String)localObject, 0, paramInt1, paramInt2, bbyp.a());
-    MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
-    localMessageForUniteGrayTip.hasRead = 0;
-    localMessageForUniteGrayTip.subType = paramInt3;
-    localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, localauxc);
-    localMessageForUniteGrayTip.tipParam.jdField_d_of_type_JavaLangString = paramString2;
-    if (paramInt3 == 998) {
-      localMessageForUniteGrayTip.caidanAnimUrl = paramafyd.a();
-    }
-    for (;;)
-    {
-      a(paramQQAppInterface, (String)localObject, localauxc, paramString1);
-      localMessageForUniteGrayTip.saveExtInfoToExtStr("mutualmark_id", awzy.a(paramafyd.a(), paramafyd.b()));
-      axaj.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramafyd, (String)localObject, localauxc, paramString1);
-      auxd.a(paramQQAppInterface, localMessageForUniteGrayTip);
-      awzm.a(paramQQAppInterface, localMessageForUniteGrayTip, localMessageForUniteGrayTip.tipParam.jdField_b_of_type_Int);
-      return;
-      if (paramInt3 == 999)
-      {
-        localMessageForUniteGrayTip.caidanAnimUrl = paramafyd.b();
-        localMessageForUniteGrayTip.caidanAnimUrlMd5 = paramafyd.c();
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, auxc paramauxc, ArrayList<awzu> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
-    for (;;)
-    {
-      return;
-      paramQQAppInterface = paramArrayList.iterator();
-      while (paramQQAppInterface.hasNext())
-      {
-        paramString = (awzu)paramQQAppInterface.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("MutualMarkGrayTipsHelper", 2, "handleHighlightInfo item=" + paramString);
-        }
-        switch (paramString.jdField_a_of_type_Int)
+        localObject = new StringBuilder(300);
+        ((StringBuilder)localObject).append("parseConfig:").append("\n");
+        ((StringBuilder)localObject).append("config: ").append(paramString).append("\n");
+        ((StringBuilder)localObject).append("mIsShowGuide: ").append(this.jdField_b_of_type_Boolean).append("\n");
+        i = j;
+        while ((i < this.jdField_a_of_type_ArrayOfAwzt.length) && (i < awzq.a.length))
         {
-        default: 
-          break;
-        case 1: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putInt("key_action", 11);
-            paramArrayList.putString("key_action_DATA", paramString.jdField_c_of_type_JavaLangString);
-            paramauxc.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
-          break;
-        case 2: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putString("image_resource", paramString.jdField_c_of_type_JavaLangString);
-            paramauxc.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
-          break;
-        case 3: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putInt("key_action", 1);
-            paramArrayList.putString("key_action_DATA", paramString.jdField_d_of_type_JavaLangString);
-            paramauxc.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
-          break;
-        case 4: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putString("image_resource", paramString.jdField_c_of_type_JavaLangString);
-            paramauxc.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
-          break;
+          ((StringBuilder)localObject).append(awzq.a[i]).append(": ").append(this.jdField_a_of_type_ArrayOfAwzt[i]).append("\n");
+          i += 1;
         }
+        QLog.i("CUOpenCardGuideMng", 2, ((StringBuilder)localObject).toString());
+        continue;
+        label359:
+        i = 0;
+        continue;
       }
+      i += 1;
     }
-  }
-  
-  public static boolean a(afyd paramafyd)
-  {
-    long l1 = paramafyd.a();
-    long l2 = paramafyd.b();
-    return (l1 == 21L) && (l2 == 1L);
   }
 }
 

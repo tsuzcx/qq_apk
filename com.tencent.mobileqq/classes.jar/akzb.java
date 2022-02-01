@@ -1,39 +1,15 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
 
-class akzb
-  implements View.OnClickListener
+public class akzb
+  implements DialogInterface.OnClickListener
 {
-  akzb(akyh paramakyh) {}
+  public akzb(RedPacketPopFragment paramRedPacketPopFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
-    {
-      if (this.a.jdField_b_of_type_Long == 77313L) {
-        this.a.jdField_b_of_type_Boolean = true;
-      }
-      this.a.c();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Intent localIntent = new Intent(akyh.a(this.a), QRLoginMgrActivity.class);
-      localIntent.putExtra("loginInfo", this.a.jdField_b_of_type_JavaLangString);
-      localIntent.putExtra("appType", this.a.jdField_b_of_type_Int);
-      localIntent.putExtra("subappid", this.a.a);
-      localIntent.putExtra("clientType", this.a.jdField_b_of_type_Long);
-      akyh.a(this.a).startActivity(localIntent);
-      bcst.a(akyh.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 10, 0, "", "", "", "");
-      if (this.a.jdField_b_of_type_Long == 77313L) {
-        bcst.b(akyh.a(this.a).app, "dc00898", "", "", "0X8008880", "0X8008880", 0, 0, "", "", "", "");
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -5,8 +5,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
-import lco;
-import lnh;
+import lcv;
+import lnv;
 
 class VideoController$28
   implements Runnable
@@ -21,22 +21,22 @@ class VideoController$28
     HashSet localHashSet = new HashSet();
     Iterator localIterator = VideoController.a(this.this$0).iterator();
     while (localIterator.hasNext()) {
-      localHashSet.add(Long.valueOf(((lco)localIterator.next()).jdField_a_of_type_Long));
+      localHashSet.add(Long.valueOf(((lcv)localIterator.next()).jdField_a_of_type_Long));
     }
     localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     boolean bool = false;
     if (localIterator.hasNext())
     {
-      lnh locallnh = (lnh)localIterator.next();
-      if (localHashSet.contains(Long.valueOf(locallnh.jdField_a_of_type_Long))) {
+      lnv locallnv = (lnv)localIterator.next();
+      if (localHashSet.contains(Long.valueOf(locallnv.jdField_a_of_type_Long))) {
         break label276;
       }
-      lco locallco = new lco();
-      locallco.jdField_d_of_type_Int = 0;
-      locallco.jdField_a_of_type_Long = locallnh.jdField_a_of_type_Long;
-      locallco.h = false;
-      locallco.jdField_d_of_type_Long = locallnh.b;
-      VideoController.a(this.this$0).add(locallco);
+      lcv locallcv = new lcv();
+      locallcv.jdField_d_of_type_Int = 0;
+      locallcv.jdField_a_of_type_Long = locallnv.jdField_a_of_type_Long;
+      locallcv.h = false;
+      locallcv.jdField_d_of_type_Long = locallnv.b;
+      VideoController.a(this.this$0).add(locallcv);
       bool = true;
     }
     label276:

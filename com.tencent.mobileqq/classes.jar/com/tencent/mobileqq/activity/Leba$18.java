@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
 import android.view.View;
-import arcs;
+import arsh;
 
 class Leba$18
   implements Runnable
 {
-  Leba$18(Leba paramLeba, View paramView, arcs paramarcs) {}
+  Leba$18(Leba paramLeba, View paramView, arsh paramarsh) {}
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Arcs);
+    this.this$0.b(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Arsh);
   }
 }
 

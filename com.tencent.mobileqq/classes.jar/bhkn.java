@@ -1,22 +1,23 @@
-public class bhkn
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime;
+
+final class bhkn
+  implements axcc
 {
-  public int a;
-  public bhko a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  
-  public bhkn(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, int paramInt4, bhko parambhko)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramInt2;
-    this.jdField_b_of_type_Int = paramInt3;
-    this.d = paramInt4;
-    this.jdField_a_of_type_Bhko = parambhko;
+    switch (paramInt)
+    {
+    }
+    AppRuntime localAppRuntime;
+    do
+    {
+      return;
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(localAppRuntime instanceof QQAppInterface));
+    MediaPlayerManager.a((QQAppInterface)localAppRuntime).a(false);
   }
 }
 

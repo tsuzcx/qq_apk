@@ -1,6 +1,6 @@
-public abstract interface bhvk
+class bhvk
 {
-  public abstract void a();
+  public static final bhvi a = new bhvi(null);
 }
 
 

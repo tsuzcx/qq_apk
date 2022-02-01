@@ -1,9 +1,13 @@
 import android.view.View;
-import java.util.Map;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemSingle;
 
-public abstract interface qrb
+public class qrb
+  implements View.OnClickListener
 {
-  public abstract void a(View paramView, Map<String, Object> paramMap);
+  public qrb(ComponentTopicItemSingle paramComponentTopicItemSingle) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

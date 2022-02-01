@@ -39,21 +39,21 @@ public class AppActivity
   public static Locale locale;
   public static int localeId;
   public static IActivityDispatchCallback sActivityDispatchCallback;
-  private boolean mIsFinishingInOnCreate;
+  private boolean mIsFinishingInOnCreate = false;
   private boolean mIsResultWaiting;
-  protected boolean mIsResume;
-  private boolean mIsSplashing;
-  private boolean mIsStartSkipped;
+  protected boolean mIsResume = false;
+  private boolean mIsSplashing = false;
+  private boolean mIsStartSkipped = false;
   private Intent mNewIntent;
-  private Bundle mOnCreateBundle;
+  private Bundle mOnCreateBundle = null;
   private Bundle mOnRestoreBundle;
   private SparseArray<List> mPermissionCallerMap = new SparseArray();
-  private Bundle mPostCreateBundle;
+  private Bundle mPostCreateBundle = null;
   private AppRuntime mProRuntime;
   private int mRequestCode;
   private int mResultCode;
   private Intent mResultData;
-  protected AppRuntime mRuntime;
+  protected AppRuntime mRuntime = null;
   private int mWindowFocusState = -1;
   
   private boolean isActivityLocaleUpdated(Locale paramLocale)

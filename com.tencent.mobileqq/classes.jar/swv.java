@@ -1,30 +1,24 @@
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
 
 public class swv
-  implements qyx
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public swv(FastWebActivity paramFastWebActivity) {}
+  private swv(GestureCropImageView paramGestureCropImageView) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    FastWebActivity.e(this.a, paramBoolean);
-    if (paramBoolean)
-    {
-      FastWebActivity.c(this.a, paramString);
-      if (FastWebActivity.a(this.a).getVisibility() == 0) {
-        break label55;
-      }
-      FastWebActivity.a(this.a).setImageResource(2130849435);
+    if (GestureCropImageView.a(this.a)) {
+      this.a.a(this.a.c(), paramMotionEvent.getX(), paramMotionEvent.getY(), 200L);
     }
-    for (;;)
-    {
-      FastWebActivity.h(this.a);
-      return;
-      label55:
-      FastWebActivity.a(this.a).setImageResource(2130849519);
-    }
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    this.a.a(-paramFloat1, -paramFloat2);
+    return true;
   }
 }
 

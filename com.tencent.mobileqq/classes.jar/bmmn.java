@@ -1,31 +1,22 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
 public class bmmn
-  extends bmmk
+  extends aqrh
 {
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public bmmn(LocationDetailActivity paramLocationDetailActivity) {}
+  
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ("jumpNuanProfile".equals(paramString3))
+    super.onAddColorNote(paramBundle, paramBoolean);
+    QLog.e("PoiMapActivity", 1, "[ColorNote exit]");
+    if (this.a.v)
     {
-      bool1 = bool2;
-      if (!"Qzone".equals(paramString2)) {}
+      bdll.b(null, "dc00898", "", "", "0X800A991", "0X800A991", 4, 0, "", "", "", "");
+      return;
     }
-    try
-    {
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("uin", "");
-      paramString1 = blsi.a();
-      paramString1.a = this.a.mRuntime.a().getAccount();
-      blsb.b(this.a.mRuntime.a(), paramString1, paramJsBridgeListener, -1);
-      bool1 = true;
-      return bool1;
-    }
-    catch (Throwable paramJsBridgeListener) {}
-    return false;
+    bdll.b(null, "dc00898", "", "", "0X800A990", "0X800A990", 4, 0, "", "", "", "");
   }
 }
 

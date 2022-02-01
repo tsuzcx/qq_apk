@@ -1,16 +1,16 @@
 package com.tencent.biz.qqcircle.widgets;
 
+import aabg;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import com.tencent.biz.qqcircle.report.QCircleReportBean;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import zxl;
 
 public abstract class QCircleBaseWidgetView<T>
   extends BaseWidgetView<T>
-  implements zxl<QCircleReportBean>
+  implements aabg<QCircleReportBean>
 {
   protected QCircleReportBean a;
   

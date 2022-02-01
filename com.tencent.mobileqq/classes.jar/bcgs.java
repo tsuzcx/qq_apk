@@ -1,7 +1,13 @@
 public class bcgs
 {
-  public int a = -1;
-  public bcgp a;
+  public int a;
+  public CharSequence a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  
+  public bcgs(bcgq parambcgq) {}
 }
 
 

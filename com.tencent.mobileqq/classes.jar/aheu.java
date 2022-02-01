@@ -1,13 +1,30 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.app.Activity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 class aheu
-  implements aabv
+  extends ClickableSpan
 {
-  aheu(ahes paramahes) {}
+  aheu(ahed paramahed) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    vrf.a(this.a.a.a, 45, 2, 3);
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      paramView = blir.a(this.a.jdField_a_of_type_AndroidContentContext);
+      paramView.b(2131718792);
+      paramView.c(2131690580);
+      paramView.a(new ahev(this));
+      paramView.a(new ahew(this, paramView));
+      paramView.show();
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005975", "0X8005975", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

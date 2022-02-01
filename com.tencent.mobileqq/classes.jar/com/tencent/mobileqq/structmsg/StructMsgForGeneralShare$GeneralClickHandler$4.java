@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.structmsg;
 
-import bcst;
-import bcwp;
+import bdll;
+import bdpi;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class StructMsgForGeneralShare$GeneralClickHandler$4
   implements Runnable
 {
-  public StructMsgForGeneralShare$GeneralClickHandler$4(bcwp parambcwp, QQAppInterface paramQQAppInterface) {}
+  public StructMsgForGeneralShare$GeneralClickHandler$4(bdpi parambdpi, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    bcst.b(this.a, "dc00898", "", "", "0X8009304", "0X8009304", 0, 0, "", "", "", "");
+    bdll.b(this.a, "dc00898", "", "", "0X8009304", "0X8009304", 0, 0, "", "", "", "");
   }
 }
 

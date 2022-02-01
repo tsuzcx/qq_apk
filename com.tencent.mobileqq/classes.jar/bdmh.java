@@ -1,23 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.Context;
 
 class bdmh
-  implements DialogInterface.OnKeyListener
+  extends bdmc
 {
-  bdmh(bdme parambdme) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  protected bdmh(Context paramContext)
   {
-    if ((paramInt == 4) && (bdme.a(this.a) != null)) {
-      bdme.a(this.a).a();
-    }
-    return paramInt == 4;
+    super(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdmh
  * JD-Core Version:    0.7.0.1
  */

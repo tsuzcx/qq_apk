@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.listentogether.fragment;
 
 import android.support.v4.app.FragmentActivity;
-import awzk;
+import axsd;
 
 class ListenTogetherPlayFragment$5
   implements Runnable
@@ -10,7 +10,7 @@ class ListenTogetherPlayFragment$5
   
   public void run()
   {
-    awzk.a(this.this$0.getActivity(), "https://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10034308");
+    axsd.a(this.this$0.getActivity(), "https://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10034308");
     this.this$0.getActivity().runOnUiThread(new ListenTogetherPlayFragment.5.1(this));
   }
 }

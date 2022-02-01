@@ -1,24 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class xyl
-  extends SimpleJob<Object>
+  implements DialogInterface.OnClickListener
 {
-  xyl(xyk paramxyk, String paramString)
-  {
-    super(paramString);
-  }
+  xyl(xyd paramxyd, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a == null) {
-      this.a.a = new xyn(this.a, this.a.c);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
-    this.a.d = "";
-    xyk.a(this.a);
-    return null;
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    }
+    wlt.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+    yup.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
   }
 }
 

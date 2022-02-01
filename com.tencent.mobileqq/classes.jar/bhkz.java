@@ -1,28 +1,29 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import cooperation.liveroom.LiveRoomGiftCallback;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.qphone.base.util.QLog;
 
-class bhkz
-  implements MediaPlayer.OnCompletionListener
+public class bhkz
+  extends BroadcastReceiver
 {
-  bhkz(bhky parambhky) {}
+  public bhkz(BusinessCommonConfig paramBusinessCommonConfig, QQAppInterface paramQQAppInterface) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (bhky.a(this.a)) {
-      this.a.a.start();
-    }
-    for (;;)
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    int i;
+    do
     {
-      if (bhky.a(this.a) != null) {
-        bhky.a(this.a).onCall(7, "");
-      }
-      return;
-      bhky.a(this.a, false);
-      if (bhky.a(this.a) != null) {
-        bhky.a(this.a).onCompletion(this.a.a);
-      }
-    }
+      do
+      {
+        return;
+      } while (!"tencent.businessnotify.subprocess.to.qq".equals(paramIntent.getAction()));
+      i = paramIntent.getIntExtra("event", 0);
+      QLog.w(this.jdField_a_of_type_ComTencentMobileqqUtilsBusinessCommonConfig.TAG, 1, "收到其他进程的通知, event[" + i + "]");
+    } while (i != 1);
+    BusinessCommonConfig.onDownloadRequest(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramIntent);
   }
 }
 

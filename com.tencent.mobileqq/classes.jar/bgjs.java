@@ -1,27 +1,8 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.view.View;
 
-final class bgjs
-  extends Handler
+public abstract interface bgjs
 {
-  bgjs(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      bgjr.a();
-      return;
-    }
-    bgjr.b();
-  }
+  public abstract void a(View paramView);
 }
 
 

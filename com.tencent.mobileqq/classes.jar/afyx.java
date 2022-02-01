@@ -1,30 +1,14 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import java.util.Comparator;
 
-class afyx
-  implements URLDrawable.URLDrawableListener
+public class afyx
+  implements Comparator<afyz>
 {
-  afyx(afyw paramafyw) {}
+  private afyx(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public int a(afyz paramafyz1, afyz paramafyz2)
   {
-    afyw.d(this.a);
-    QQToast.a(this.a.a, 0, 2131693109, 1).a();
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    afyw.d(this.a);
-    QQToast.a(this.a.a, 0, 2131693109, 1).a();
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    afyw.d(this.a);
-    afyw.a(this.a, afyw.a(this.a));
+    return paramafyz1.f.compareToIgnoreCase(paramafyz2.f);
   }
 }
 

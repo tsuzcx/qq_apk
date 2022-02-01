@@ -1,21 +1,19 @@
-public class aktk
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+
+class aktk
+  implements aumz
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  aktk(aktf paramaktf) {}
   
-  public aktk(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  public void a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.a.b();
   }
   
-  public String toString()
+  public void b()
   {
-    return "ShowInfo{Red=" + this.jdField_a_of_type_Boolean + ",Corner=" + this.jdField_b_of_type_Boolean + ",con='" + this.jdField_a_of_type_JavaLangString + '\'' + ",buf='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
   }
 }
 

@@ -1,61 +1,96 @@
-import android.os.Message;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-class afdd
-  extends bdzm
+public class afdd
+  extends azov
 {
-  afdd(afdc paramafdc) {}
+  public afdd(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    int i = paramMessage.what;
-    paramMessage = (bduk)paramMessage.obj;
-    if (paramMessage == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SendMultiPictureHelper", 2, "file is null");
+    PhoneUnityBindInfoActivity.c(this.a);
+    int i;
+    if (paramBoolean)
+    {
+      i = paramBundle.getInt("k_result");
+      if ((i == 104) || (i == 0))
+      {
+        this.a.i();
+        this.a.a(false);
       }
     }
-    do
+    for (;;)
     {
-      do
+      this.a.app.unRegistObserver(this.a.b);
+      this.a.b = null;
+      return;
+      if (i == 107)
       {
-        return;
+        paramBundle = this.a.a.getString("country_code");
+        byte[] arrayOfByte = this.a.a(3);
+        if (arrayOfByte != null)
+        {
+          PhoneUnityBindInfoActivity.a(this.a).b(paramBundle, arrayOfByte, 0, true, false);
+          PhoneUnityBindInfoActivity.b(this.a, 2131717902, 1000L, true);
+        }
+        for (;;)
+        {
+          bdll.b(this.a.app, "dc00898", "", "", "0X800B31D", "0X800B31D", 0, 0, "2", "", "", "");
+          return;
+          if (QLog.isColorLevel()) {
+            QLog.e("PhoneUnityBindInfoActivity", 2, "sendBindMobileEncrypt contact vaskey is null.");
+          }
+        }
+      }
+      if (i == 106)
+      {
+        this.a.a();
+        bdll.b(this.a.app, "dc00898", "", "", "0X800B31D", "0X800B31D", 0, 0, "1", "", "", "");
+      }
+      else if (i == 227)
+      {
+        this.a.j();
+        this.a.a(false);
+      }
+      else if (i == 226)
+      {
+        this.a.k();
+        this.a.a(false);
+      }
+      else
+      {
         if (QLog.isColorLevel()) {
-          QLog.d("SendMultiPictureHelper", 2, "transferListener status: " + i);
+          QLog.d("PhoneUnityBindInfoActivity", 2, "bind error " + i);
         }
-        i = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessage.p, paramMessage.i, paramMessage.b);
-      } while (this.a.jdField_d_of_type_Boolean);
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        if (paramMessage.d == 1005)
-        {
-          this.a.jdField_c_of_type_Boolean = true;
-          return;
+        PhoneUnityBindInfoActivity.b(this.a, a(i));
+        this.a.a(false);
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("PhoneUnityBindInfoActivity", 2, "onBindMobile failed");
         }
-        if (paramMessage.d == 1003)
-        {
-          this.a.a();
-          return;
-        }
-        afdc.a(this.a, this.a.jdField_c_of_type_Int, this.a.jdField_a_of_type_JavaLangString, paramMessage.b);
-        return;
+        PhoneUnityBindInfoActivity.c(this.a, 2131717454);
+        this.a.a(false);
       }
-      if (paramMessage.d == 1003)
-      {
-        if (this.a.jdField_a_of_type_Bgpa != null) {
-          this.a.jdField_a_of_type_Bgpa.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(100) }));
-        }
-        this.a.a();
-        return;
-      }
-      if (paramMessage.d == 1005)
-      {
-        this.a.a();
-        return;
-      }
-    } while (this.a.jdField_a_of_type_Bgpa == null);
-    this.a.jdField_a_of_type_Bgpa.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(i) }));
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Bundle paramBundle)
+  {
+    PhoneUnityBindInfoActivity.d(this.a);
+    if (paramBoolean) {
+      this.a.i();
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(this.a.b);
+      this.a.b = null;
+      return;
+      PhoneUnityBindInfoActivity.d(this.a, 2131717454);
+      this.a.a(false);
+    }
   }
 }
 

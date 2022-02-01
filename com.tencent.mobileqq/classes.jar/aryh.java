@@ -1,19 +1,31 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelFavHelper.5.1;
-import mqq.os.MqqHandler;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class aryh
-  extends anli
+  implements RadioGroup.OnCheckedChangeListener
 {
-  aryh(aryf paramaryf) {}
+  public aryh(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime, String paramString) {}
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (paramBoolean) {
-      this.a.b();
+    if (paramInt == 2131365784) {
+      DBFixConfigActivity.a = 1;
     }
-    if ((paramObject != null) && ((paramObject instanceof Integer))) {
-      ThreadManager.getUIHandler().post(new EmoticonPanelFavHelper.5.1(this, paramObject));
+    for (;;)
+    {
+      this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(DBFixManager.b, 0).edit().putInt(this.jdField_a_of_type_JavaLangString + DBFixManager.c, DBFixConfigActivity.a).commit();
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      if (paramInt == 2131365305) {
+        DBFixConfigActivity.a = 2;
+      }
     }
   }
 }

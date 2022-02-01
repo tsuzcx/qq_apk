@@ -1,20 +1,21 @@
-public abstract interface xbt
+import java.util.ArrayList;
+import java.util.List;
+
+public class xbt
+  extends wip
 {
-  public abstract void a();
+  public String a;
+  public List<ykj> a;
   
-  public abstract void a(int paramInt);
+  public xbt()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
   
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d();
-  
-  public abstract void d(int paramInt);
+  public String toString()
+  {
+    return super.toString() + " collectionId=" + this.jdField_a_of_type_JavaLangString + "mSimpleInfoList.size=" + this.jdField_a_of_type_JavaUtilList.size() + "mSimpleInfoList=" + this.jdField_a_of_type_JavaUtilList;
+  }
 }
 
 

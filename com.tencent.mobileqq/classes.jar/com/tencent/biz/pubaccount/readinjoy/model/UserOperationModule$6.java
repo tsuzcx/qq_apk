@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pyq;
-import qps;
-import qpt;
+import pra;
+import qig;
+import qih;
 
 public class UserOperationModule$6
   implements Runnable
 {
-  public UserOperationModule$6(pyq parampyq, int paramInt1, String paramString1, String paramString2, int paramInt2) {}
+  public UserOperationModule$6(pra parampra, int paramInt1, String paramString1, String paramString2, int paramInt2, boolean paramBoolean) {}
   
   public void run()
   {
-    qps.a.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int);
+    qig.a.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
   }
 }
 

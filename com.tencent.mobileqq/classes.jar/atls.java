@@ -1,42 +1,32 @@
-import android.app.Activity;
-import android.view.Display;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.tbs.reader.TbsReaderView;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import java.util.ArrayList;
 
-class atls
-  implements View.OnClickListener
+public class atls
 {
-  atls(atlp paramatlp, int paramInt, Activity paramActivity) {}
+  ArrayList<FavFileInfo> a = new ArrayList();
+  ArrayList<FavFileInfo> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  ArrayList<FavFileInfo> c = new ArrayList();
+  ArrayList<FavFileInfo> d = new ArrayList();
+  ArrayList<FavFileInfo> e = new ArrayList();
   
-  public void onClick(View paramView)
+  public atls(atlm paramatlm) {}
+  
+  ArrayList<FavFileInfo> a(String paramString)
   {
-    int i;
-    if (this.jdField_a_of_type_Int == 5018)
-    {
-      Display localDisplay = this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay();
-      if (localDisplay.getWidth() > localDisplay.getHeight())
-      {
-        i = 0;
-        if (i == 0) {
-          break label61;
-        }
-        this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(0);
-      }
+    int i = aunj.a(paramString);
+    if (i == 0) {
+      return this.a;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = 1;
-      break;
-      label61:
-      this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
-      continue;
-      atlp.a(this.jdField_a_of_type_Atlp).doCommand(Integer.valueOf(this.jdField_a_of_type_Int), null, null);
+    if ((i == 3) || (i == 6) || (i == 7) || (i == 9) || (i == 10)) {
+      return this.jdField_b_of_type_JavaUtilArrayList;
     }
+    if (i == 2) {
+      return this.c;
+    }
+    if (i == 5) {
+      return this.d;
+    }
+    return this.e;
   }
 }
 

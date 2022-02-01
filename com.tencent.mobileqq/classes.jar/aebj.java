@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aebj
-  implements DialogInterface.OnDismissListener
+public final class aebj
+  implements View.OnClickListener
 {
-  public aebj(DialogActivity paramDialogActivity) {}
+  public aebj(Toast paramToast) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

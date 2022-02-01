@@ -1,18 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.config.AladdinListener;
-import java.util.ArrayList;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
+import com.tencent.mobileqq.widget.AutoFitTextView;
 
 public class phu
+  implements bivg
 {
-  public static ArrayList<AladdinListener> a = new ArrayList();
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
+  AutoFitTextView jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView;
   
-  public static void a(AladdinListener paramAladdinListener)
-  {
-    a.add(paramAladdinListener);
-  }
+  public phu(phs paramphs) {}
   
-  public static void b(AladdinListener paramAladdinListener)
+  public int a()
   {
-    a.remove(paramAladdinListener);
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth() - bhgr.a(phs.a(this.jdField_a_of_type_Phs), 10.0F);
   }
 }
 

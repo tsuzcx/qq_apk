@@ -1,144 +1,60 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URL;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
 public class rsn
+  implements View.OnLayoutChangeListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private riw jdField_a_of_type_Riw;
-  private rjf jdField_a_of_type_Rjf = new rjf();
-  private rsg jdField_a_of_type_Rsg = new rsg();
-  private rsj jdField_a_of_type_Rsj;
-  private rsw jdField_a_of_type_Rsw = new rsw();
+  public rsn(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
   
-  public rsn(Activity paramActivity, rsj paramrsj)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Rsj = paramrsj;
-    c();
-  }
-  
-  private void a(Bitmap paramBitmap, String paramString)
-  {
-    paramBitmap = new rsk(paramBitmap, paramString);
-    paramBitmap.a(new rsv(this));
-    paramBitmap.a();
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_Rsg.a("暂不支持该类视频格式", new rso(this));
-    this.jdField_a_of_type_Rsg.a("视频时长短于5秒，无法上传", new rsp(this));
-    this.jdField_a_of_type_Rsg.a("视频文件不存在", new rsq(this));
-    String str = "视频大小超过" + sli.b() + "，无法上传";
-    this.jdField_a_of_type_Rsg.a(str, new rsr(this));
-    this.jdField_a_of_type_Rjf.a(new rss(this));
-  }
-  
-  private void d()
-  {
-    URL localURL = bgkc.generateAlbumVideoThumbURL(this.jdField_a_of_type_Riw.b, null);
-    this.jdField_a_of_type_Riw.e = bdsh.d(localURL.toString());
-    if (new File(this.jdField_a_of_type_Riw.e).exists())
+    this.a.removeOnLayoutChangeListener(this);
+    if ((VideoFeedsRecyclerView.a(this.a) != null) && (VideoFeedsRecyclerView.a(this.a)))
     {
-      f();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(localURL, null);
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1)
-    {
-      a(bgmo.b(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()), this.jdField_a_of_type_Riw.e);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new rsu(this));
-    this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
-  }
-  
-  private void e()
-  {
-    int j = 0;
-    int i;
-    if (this.jdField_a_of_type_Riw == null)
-    {
-      i = 1;
-      if (i != 0) {
-        i = j;
+      paramInt1 = 0;
+      if (VideoFeedsRecyclerView.a(this.a) != 0) {
+        break label228;
       }
     }
-    for (;;)
+    label227:
+    label228:
+    label244:
+    do
     {
-      if (i >= this.jdField_a_of_type_Rsj.a()) {
-        break label76;
-      }
-      riw localriw = this.jdField_a_of_type_Rsj.a(i);
-      if (this.jdField_a_of_type_Rsg.a(localriw, null))
+      paramInt1 = (int)(this.a.getHeight() * 0.3D);
+      break label227;
+      paramView = VideoFeedsRecyclerView.a(this.a).getLayoutParams();
+      paramView.height = paramInt1;
+      VideoFeedsRecyclerView.a(this.a).setLayoutParams(paramView);
+      if (VideoFeedsRecyclerView.a(this.a) == 0)
       {
-        this.jdField_a_of_type_Rsj.b(i);
-        return;
-        i = 0;
-        break;
+        paramView = this.a.getLayoutManager().findViewByPosition(1);
+        if ((paramView != null) && (paramView.getHeight() > 0) && (VideoFeedsRecyclerView.b(this.a)))
+        {
+          paramInt1 = paramView.getHeight();
+          paramInt1 = (int)(this.a.getHeight() / 2.0F - paramInt1 / 2.0F);
+          VideoFeedsRecyclerView.a(this.a, paramInt1);
+          if ((!VideoFeedsRecyclerView.a(this.a).a(1)) || (VideoFeedsRecyclerView.a(this.a).b() == 1)) {
+            break label244;
+          }
+        }
+        for (paramInt1 = 1;; paramInt1 = 0)
+        {
+          if ((paramInt1 == 0) && (VideoFeedsRecyclerView.a(this.a) != null) && (VideoFeedsRecyclerView.a(this.a).b() != 1)) {
+            this.a.a(this.a.getChildViewHolder(paramView));
+          }
+          return;
+          if (VideoFeedsRecyclerView.a(this.a) != 1) {
+            break;
+          }
+          paramInt1 = 0;
+          break;
+        }
       }
-      i += 1;
-    }
-    label76:
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJUGC.SelectVideoPresenter", 2, "not found the select video...");
-    }
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131693999, 1).a();
-  }
-  
-  private void f()
-  {
-    Intent localIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-    EditVideoFragment.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Riw, 10001, localIntent);
-  }
-  
-  private void g()
-  {
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, "请选择一个视频", 0).a();
-  }
-  
-  public rsw a()
-  {
-    return this.jdField_a_of_type_Rsw;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Rjf.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Rjf.a(paramInt);
-  }
-  
-  public void a(riw paramriw)
-  {
-    this.jdField_a_of_type_Riw = paramriw;
-    this.jdField_a_of_type_Rsw.a(paramriw);
-  }
-  
-  public boolean a(riw paramriw)
-  {
-    return this.jdField_a_of_type_Rsg.a(paramriw, new rst(this));
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Riw == null)
-    {
-      QLog.e("RIJUGC.SelectVideoPresenter", 1, "saveVideoCoverAndJump failed for selectMediaInfo is null.");
-      return;
-    }
-    d();
+    } while (VideoFeedsRecyclerView.a(this.a) != 1);
+    VideoFeedsRecyclerView.a(this.a, VideoFeedsRecyclerView.b(this.a));
   }
 }
 

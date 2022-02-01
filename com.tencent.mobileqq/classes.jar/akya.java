@@ -1,22 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
 
-class akya
-  extends aoqm
+public class akya
+  implements DialogInterface.OnClickListener
 {
-  akya(akxz paramakxz) {}
+  public akya(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
   
-  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (paramList != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
-      }
-      akxz.a(this.a).obtainMessage(2, 0, 0, paramList).sendToTarget();
-    }
+    this.a.getActivity().finish();
   }
 }
 

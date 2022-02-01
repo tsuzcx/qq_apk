@@ -1,16 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class srg
-  extends pue
+class srg
+  implements srh
 {
-  public srg(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
-  {
-    super(paramString);
-  }
+  srg(sqr paramsqr) {}
   
-  public void a(ptx paramptx)
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    paramptx.e();
+    paramViewBase = paramProteusItemData.c;
+    if ((paramViewBase != null) && ((paramContext instanceof FastWebActivity))) {
+      ssl.a(paramViewBase, (FastWebActivity)paramContext, paramProteusItemData.b, paramProteusItemData.a);
+    }
   }
 }
 

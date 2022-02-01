@@ -7,17 +7,17 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import pxk;
-import qqs;
-import qrb;
-import qva;
-import qyo;
+import ppu;
+import qjg;
+import qjp;
+import qno;
+import qrc;
 
 public class ComponentDivider
   extends View
-  implements qqs
+  implements qjg
 {
-  qva a;
+  qno a;
   
   public ComponentDivider(Context paramContext)
   {
@@ -46,16 +46,16 @@ public class ComponentDivider
   private void a(Context paramContext, Object paramObject)
   {
     b(paramContext);
-    if ((paramObject instanceof pxk))
+    if ((paramObject instanceof ppu))
     {
-      this.a.a((pxk)paramObject);
+      this.a.a((ppu)paramObject);
       b();
     }
   }
   
   private void b(Context paramContext)
   {
-    this.a = new qva();
+    this.a = new qno();
     a(paramContext);
     a();
   }
@@ -64,15 +64,15 @@ public class ComponentDivider
   
   public void a(Context paramContext)
   {
-    setBackgroundColor(getContext().getResources().getColor(2131166866));
+    setBackgroundColor(getContext().getResources().getColor(2131166870));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pxk))
+    if ((paramObject instanceof ppu))
     {
-      this.a.a((pxk)paramObject);
-      if ((((pxk)paramObject).a() == 53) && ((getLayoutParams() instanceof LinearLayout.LayoutParams)))
+      this.a.a((ppu)paramObject);
+      if ((((ppu)paramObject).a() == 53) && ((getLayoutParams() instanceof LinearLayout.LayoutParams)))
       {
         paramObject = (LinearLayout.LayoutParams)getLayoutParams();
         paramObject.leftMargin = Utils.dp2px(6.0D);
@@ -90,16 +90,16 @@ public class ComponentDivider
     setVisibility(8);
   }
   
-  public void a(qrb paramqrb)
+  public void a(qjp paramqjp)
   {
-    this.a.a(paramqrb);
+    this.a.a(paramqjp);
   }
   
   public void b()
   {
-    pxk localpxk = this.a.a;
+    ppu localppu = this.a.a;
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -2);
-    qyo.a(getContext(), localpxk, localLayoutParams);
+    qrc.a(getContext(), localppu, localLayoutParams);
     setLayoutParams(localLayoutParams);
   }
 }

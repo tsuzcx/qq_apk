@@ -1,8 +1,6 @@
 public abstract interface mnu
 {
-  public abstract int a(long paramLong);
-  
-  public abstract boolean a();
+  public abstract void a(long paramLong, int paramInt, String paramString);
 }
 
 

@@ -1,9 +1,15 @@
-import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.doutu.DoutuData;
 
-public class ascg
-  extends arwg
+class ascg
 {
-  public LinearLayout[] a;
+  int jdField_a_of_type_Int;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  DoutuData jdField_a_of_type_ComTencentMobileqqDoutuDoutuData;
 }
 
 

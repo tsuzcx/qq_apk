@@ -1,15 +1,15 @@
 package com.tencent.qqprotect.qsec;
 
-import bkcc;
+import bldg;
 
 public class QSecLibMgr$3
   implements Runnable
 {
-  public QSecLibMgr$3(bkcc parambkcc) {}
+  public QSecLibMgr$3(bldg parambldg) {}
   
   public void run()
   {
-    bkcc.d(this.this$0);
+    bldg.d(this.this$0);
   }
 }
 

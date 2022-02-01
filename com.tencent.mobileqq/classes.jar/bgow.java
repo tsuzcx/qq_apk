@@ -1,21 +1,11 @@
 class bgow
-  implements agpt
+  implements bgzo
 {
-  bgow(bgov parambgov) {}
+  bgow(bgot parambgot) {}
   
-  public boolean a(agpq paramagpq)
+  public void a()
   {
-    if (this.a.isShowing())
-    {
-      this.a.dismiss();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(agpq paramagpq, String paramString1, String paramString2)
-  {
-    return false;
+    this.a.e();
   }
 }
 

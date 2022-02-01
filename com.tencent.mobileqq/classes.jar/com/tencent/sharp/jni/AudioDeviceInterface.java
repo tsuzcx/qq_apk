@@ -9,7 +9,7 @@ import android.media.AudioTrack;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Environment;
-import bkdw;
+import blfa;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -2683,7 +2683,7 @@ public class AudioDeviceInterface
     this.switchState = 0;
     this._streamType = TraeAudioManager.b(this._audioStreamTypePolicy);
     if (this._as == null) {
-      this._as = new TraeAudioSession(this._context, new bkdw(this));
+      this._as = new TraeAudioSession(this._context, new blfa(this));
     }
     this._preDone = false;
     if (this._as != null) {

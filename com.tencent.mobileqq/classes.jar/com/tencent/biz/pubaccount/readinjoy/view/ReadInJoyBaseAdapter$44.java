@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.text.TextUtils;
-import anrs;
+import aody;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import oat;
-import och;
+import ocd;
+import odr;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,7 +27,7 @@ public class ReadInJoyBaseAdapter$44
         }
         localObject = (QQAppInterface)localObject;
         if (localObject != null) {
-          if (!((anrs)((AppInterface)localObject).getManager(56)).a(Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeID))) {
+          if (!((aody)((AppInterface)localObject).getManager(56)).a(Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeID))) {
             break label151;
           }
         }
@@ -41,7 +41,7 @@ public class ReadInJoyBaseAdapter$44
           break;
         }
         localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID;
-        oat.a(null, str2, "0X80077B9", "0X80077B9", 0, 0, "", "", (String)localObject, och.a(null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoVid, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID, this.jdField_a_of_type_OrgJsonJSONObject), false);
+        ocd.a(null, str2, "0X80077B9", "0X80077B9", 0, 0, "", "", (String)localObject, odr.a(null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoVid, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID, this.jdField_a_of_type_OrgJsonJSONObject), false);
         return;
       }
     }
@@ -64,7 +64,7 @@ public class ReadInJoyBaseAdapter$44
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.44
  * JD-Core Version:    0.7.0.1
  */

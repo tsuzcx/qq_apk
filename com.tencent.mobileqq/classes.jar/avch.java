@@ -1,8 +1,16 @@
-public abstract interface avch
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardSendHongBaoOption;
+
+public class avch
+  implements DialogInterface.OnClickListener
 {
-  public abstract void f();
+  public avch(ForwardSendHongBaoOption paramForwardSendHongBaoOption, bhpc parambhpc) {}
   
-  public abstract void g();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bhpc.dismiss();
+  }
 }
 
 

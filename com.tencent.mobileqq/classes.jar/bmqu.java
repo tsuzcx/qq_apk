@@ -1,373 +1,112 @@
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.RemoteException;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.smartdevice.ipc.SmartDeviceIPCHost.3;
-import cooperation.smartdevice.ipc.SmartDeviceIPCHost.4;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Observable;
-import java.util.Observer;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-public class bmqu
-  implements Observer
+public final class bmqu
 {
-  ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new bmqw(this);
-  private Handler jdField_a_of_type_AndroidOsHandler = new bmqv(this, Looper.getMainLooper());
-  public bmqr a;
-  public QQAppInterface a;
-  public ArrayList<Bundle> a;
-  public boolean a;
-  
-  public bmqu(QQAppInterface paramQQAppInterface)
+  public static int a(Context paramContext)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this);
-    }
-    for (;;)
-    {
-      c();
-      d();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("SmartDeviceIPCHost", 2, "SmartDeviceIPCHost() construct!!!!! error: app == null");
-      }
-    }
+    return bmqt.a(paramContext).getInt("GRAY_UPDATE_GRAY_LEVEL", 0);
   }
   
-  private void d()
+  public static long a(Context paramContext)
   {
-    if ((this.jdField_a_of_type_Bmqr == null) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      QLog.d("SmartDeviceIPCHost", 1, "start plugin service now");
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 300000L);
-      accz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Net_Start_Service_Host", 0, 0, 0);
-      bmqo.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentServiceConnection);
-    }
+    return bmqt.a(paramContext).getLong("LAST_EXIT_BOOKSTORE_POP_WINDOW_TIME_", 0L);
   }
   
-  private void e()
+  public static void a(Context paramContext, int paramInt)
   {
-    PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
-    if (localPluginCommunicationHandler == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SmartDeviceIPCHost", 2, "unregisterRemoteCommand PluginCommunicationHandler.getInstance failed");
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!localPluginCommunicationHandler.containsCmd("com.qqsmartdevice.remotecall"));
-      localPluginCommunicationHandler.unregister("com.qqsmartdevice.remotecall");
-    } while (!QLog.isColorLevel());
-    QLog.d("SmartDeviceIPCHost", 2, "SmartDeviceIPCHost::unregisterRemoteCommand unregister CMD:com.qqsmartdevice.remotecall");
+    bmqt.a(paramContext).edit().putInt("GRAY_UPDATE_GRAY_LEVEL", paramInt).apply();
   }
   
-  public Bundle a(Bundle paramBundle)
+  public static void a(Context paramContext, long paramLong)
   {
-    if (paramBundle == null) {
-      paramBundle = null;
-    }
-    for (;;)
-    {
-      return paramBundle;
-      String str = paramBundle.getString("notify_cmd");
-      if ((this.jdField_a_of_type_Bmqr == null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-      {
-        boolean bool = paramBundle.getBoolean("forceStart", false);
-        paramBundle = (abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
-        if ((bool) || ((paramBundle != null) && (paramBundle.a())))
-        {
-          QLog.d("SmartDeviceIPCHost", 1, "start plugin service when send " + str);
-          d();
-        }
-        return null;
-      }
-      b();
-      try
-      {
-        paramBundle.setClassLoader(getClass().getClassLoader());
-        Bundle localBundle = this.jdField_a_of_type_Bmqr.a("com.qqsmartdevice.action.notify", paramBundle);
-        paramBundle = localBundle;
-        if (localBundle != null)
-        {
-          localBundle.setClassLoader(getClass().getClassLoader());
-          return localBundle;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("SmartDeviceIPCHost", 2, "plugin service transfer failed strNotifyCmd:" + str);
-        }
-      }
-    }
-    return null;
+    bmqt.a(paramContext).edit().putLong("LAST_EXIT_BOOKSTORE_POP_WINDOW_TIME_", paramLong).apply();
   }
   
-  public void a()
+  public static void a(Context paramContext, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SmartDeviceIPCHost", 2, "SmartDeviceIPCHost::OnDestory");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    }
-    e();
+    bmqt.a(paramContext).edit().putBoolean("is_frist_enter_home_page_from_leba", paramBoolean).apply();
   }
   
-  public void a(Bundle paramBundle)
+  public static boolean a(Context paramContext)
   {
-    if (paramBundle == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SmartDeviceIPCHost", 2, "params is null");
-      }
-    }
-    Object localObject;
-    do
-    {
-      boolean bool;
-      abqn localabqn;
-      do
-      {
-        return;
-        localObject = paramBundle.getString("notify_cmd");
-        if ((this.jdField_a_of_type_Bmqr != null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SmartDeviceIPCHost", 2, "plugin service not started strNotifyCmd:" + (String)localObject + " cached");
-        }
-        bool = paramBundle.getBoolean("forceStart", false);
-        localabqn = (abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
-      } while ((!bool) && ((localabqn == null) || (!localabqn.a())));
-      QLog.d("SmartDeviceIPCHost", 1, "start plugin service when post " + (String)localObject);
-      d();
-      localObject = Looper.getMainLooper();
-      if (Thread.currentThread() != ((Looper)localObject).getThread())
-      {
-        new Handler((Looper)localObject).post(new SmartDeviceIPCHost.3(this, paramBundle));
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramBundle);
-      b();
-      return;
-      b();
-      if (paramBundle != null) {}
-      try
-      {
-        paramBundle.setClassLoader(getClass().getClassLoader());
-        this.jdField_a_of_type_Bmqr.a("com.qqsmartdevice.action.notify", paramBundle);
-        return;
-      }
-      catch (RemoteException paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("SmartDeviceIPCHost", 2, " plugin service transfer failed strNotifyCmd:" + (String)localObject);
+    return bmqt.a(paramContext).getBoolean("is_frist_enter_home_page_from_leba", true);
   }
   
-  public Bundle b(Bundle paramBundle)
+  public static int b(Context paramContext)
   {
-    Object localObject = paramBundle.getString("invoke_cmd");
-    if ((QLog.isColorLevel()) && (!"invokeCmdGetFaceBitmap".equals(localObject))) {
-      QLog.i("SmartDeviceIPCHost", 2, "SmartDeviceIPCHost::OnRemoteInvoke strNotifyCmd:" + (String)localObject);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return null;
-    }
-    if (((String)localObject).compareToIgnoreCase("invokeCmdOpenChatMsgActivity") == 0)
-    {
-      ((abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(paramBundle);
-      return null;
-    }
-    if (((String)localObject).equals("SmartDeviceHandler_makeSureProxyServiceStart"))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(50);
-      if (this.jdField_a_of_type_Bmqr != null)
-      {
-        accz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Net_Start_Service_Remote", 0, 1, 0);
-        return null;
-      }
-      this.jdField_a_of_type_Boolean = false;
-      QLog.d("SmartDeviceIPCHost", 1, "try to start service again");
-      d();
-      accz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Net_Start_Service_Remote", 0, 0, 0);
-      return null;
-    }
-    if (((String)localObject).compareToIgnoreCase("invokeCmdStartVideoChat") == 0)
-    {
-      if (!paramBundle.containsKey("devSubCode")) {
-        break label726;
-      }
-      localObject = new HashMap();
-      ((Map)localObject).put("devSubCode", paramBundle.getString("devSubCode"));
-    }
-    for (;;)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), 9500, paramBundle.getString("din"), paramBundle.getString("devName"), "", paramBundle.getBoolean("onlyAudio", false), paramBundle.getString("tinyid"), true, false, null, "from_internal", (Map)localObject);
-      return null;
-      if (((String)localObject).compareToIgnoreCase("invokeCmdStartVideoMessage") == 0)
-      {
-        abru.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), paramBundle.getString("din"), paramBundle.getString("videoPath"));
-        return null;
-      }
-      if (((String)localObject).compareToIgnoreCase("invokeCmdGetBuddyName") == 0)
-      {
-        paramBundle = paramBundle.getString("Uin");
-        paramBundle = bglf.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, true);
-        localObject = new Bundle();
-        ((Bundle)localObject).putString("BuddyName", paramBundle);
-        return localObject;
-      }
-      if (((String)localObject).compareToIgnoreCase("invokeCmdTransFileController") == 0)
-      {
-        ((abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).b(paramBundle);
-        return null;
-      }
-      if (((String)localObject).compareToIgnoreCase("invokeCmdGetLockState") == 0)
-      {
-        i = asfr.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getApplication());
-        paramBundle = new Bundle();
-        paramBundle.putInt("LockState", i);
-        return paramBundle;
-      }
-      if (((String)localObject).compareToIgnoreCase("qfind_localnotify") == 0)
-      {
-        long l = paramBundle.getLong("din");
-        paramBundle = paramBundle.getString("msg");
-        localObject = (MessageForText)bbzh.a(-1000);
-        ((MessageForText)localObject).msgtype = -1000;
-        ((MessageForText)localObject).istroop = 9501;
-        ((MessageForText)localObject).issend = 0;
-        ((MessageForText)localObject).isread = false;
-        ((MessageForText)localObject).selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-        ((MessageForText)localObject).senderuin = (l + "");
-        ((MessageForText)localObject).frienduin = (l + "");
-        ((MessageForText)localObject).msg = paramBundle;
-        ((MessageForText)localObject).time = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((MessageRecord)localObject);
-        return null;
-      }
-      if (((String)localObject).compareToIgnoreCase("init_msgHandler") == 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49);
-        return null;
-      }
-      if (((String)localObject).compareToIgnoreCase("invokeCmdGetFaceBitmap") == 0)
-      {
-        paramBundle = paramBundle.getString("uin");
-        paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramBundle, true);
-        localObject = new Bundle();
-        ((Bundle)localObject).putParcelable("face_bitmap", paramBundle);
-        return localObject;
-      }
-      if (((String)localObject).compareToIgnoreCase("invokeCmdGetUnreadMsgNum") != 0) {
-        break;
-      }
-      paramBundle = paramBundle.getString("din");
-      int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramBundle, 9501);
-      paramBundle = new Bundle();
-      paramBundle.putInt("unread", i);
-      return paramBundle;
-      label726:
-      localObject = null;
-    }
+    return bmqt.a(paramContext).getInt("GRAY_UPDATE_UPDATE_STATUS", 0);
   }
   
-  public void b()
+  public static void b(Context paramContext, int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) || (this.jdField_a_of_type_Bmqr == null)) {}
-    for (;;)
-    {
-      return;
-      Object localObject1 = Looper.getMainLooper();
-      if (Thread.currentThread() != ((Looper)localObject1).getThread())
-      {
-        new Handler((Looper)localObject1).post(new SmartDeviceIPCHost.4(this));
-        return;
-      }
-      while (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-      {
-        Bundle localBundle = (Bundle)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-        localObject1 = "";
-        Object localObject2 = localObject1;
-        if (localBundle != null) {}
-        try
-        {
-          localObject2 = localBundle.getString("notify_cmd");
-          localObject1 = localObject2;
-          localBundle.setClassLoader(getClass().getClassLoader());
-          localObject1 = localObject2;
-          if (QLog.isColorLevel())
-          {
-            localObject1 = localObject2;
-            QLog.d("SmartDeviceIPCHost", 2, "qq->plugin main thread doPostCachedMsg strNotifyCmd:" + (String)localObject2 + " thread:" + Thread.currentThread());
-          }
-          localObject1 = localObject2;
-          this.jdField_a_of_type_Bmqr.a("com.qqsmartdevice.action.notify", localBundle);
-        }
-        catch (RemoteException localRemoteException)
-        {
-          localRemoteException.printStackTrace();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SmartDeviceIPCHost", 2, "mSmartDeviceService.transfer failed strNotifyCmd:" + (String)localObject1);
-        }
-      }
-    }
+    bmqt.a(paramContext).edit().putInt("GRAY_UPDATE_UPDATE_STATUS", paramInt).apply();
   }
   
-  public void c()
+  public static void b(Context paramContext, boolean paramBoolean)
   {
-    PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
-    if (localPluginCommunicationHandler == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SmartDeviceIPCHost", 2, "PluginCommunicationHandler.getInstance failed");
-      }
-      return;
-    }
-    localPluginCommunicationHandler.register(new bmqx(this, "com.qqsmartdevice.remotecall"));
+    bmqt.a(paramContext).edit().putBoolean("GRAY_UPDATE_IS_UPDATE_TO_QQ_BOOKSTORE", paramBoolean).apply();
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  public static boolean b(Context paramContext)
   {
-    if ((paramObject instanceof MessageRecord))
-    {
-      paramObservable = (MessageRecord)paramObject;
-      if ((paramObservable.istroop == 9501) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramObservable.frienduin, 9501) > 0))
-      {
-        paramObservable = new Bundle();
-        paramObservable.putString("notify_cmd", "updateUnreadMsgsNum");
-        a(paramObservable);
-      }
-    }
+    return bmqt.a(paramContext).getBoolean("HOME_PAGE_NEXT_BOTTOM_ITEM_IS_SHELF", false);
+  }
+  
+  public static int c(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("SETTING", 0).getInt("NUM_OF_RED_POINT", 0);
+  }
+  
+  public static void c(Context paramContext, int paramInt)
+  {
+    bmqt.a(paramContext).edit().putInt("GRAY_UPDATING_NEXT_REQ_TIME_INTERVAL", paramInt).apply();
+  }
+  
+  public static void c(Context paramContext, boolean paramBoolean)
+  {
+    bmqt.a(paramContext).edit().putBoolean("HOME_PAGE_NEXT_BOTTOM_ITEM_IS_SHELF", paramBoolean).apply();
+  }
+  
+  public static boolean c(Context paramContext)
+  {
+    return bmqt.a(paramContext).getBoolean("GRAY_UPDATE_IS_UPDATE_TO_QQ_BOOKSTORE", false);
+  }
+  
+  public static void d(Context paramContext, int paramInt)
+  {
+    bmqt.a(paramContext).edit().putInt("GRAY_UPDATING_REMAIN_MAX_TIME", paramInt).apply();
+  }
+  
+  public static void d(Context paramContext, boolean paramBoolean)
+  {
+    bmqt.a(paramContext).edit().putBoolean("GRAY_UPDATE_IS_HAS_TAB_CONFIG_DATA", paramBoolean).apply();
+  }
+  
+  public static boolean d(Context paramContext)
+  {
+    return bmqt.a(paramContext).getBoolean("GRAY_UPDATE_IS_HAS_TAB_CONFIG_DATA", false);
+  }
+  
+  public static void e(Context paramContext, boolean paramBoolean)
+  {
+    bmqt.a(paramContext).edit().putBoolean("new_user_in_act", paramBoolean).apply();
+  }
+  
+  public static boolean e(Context paramContext)
+  {
+    return bmqt.a(paramContext).getBoolean("new_user_in_act", false);
+  }
+  
+  public static void f(Context paramContext, boolean paramBoolean)
+  {
+    paramContext.getSharedPreferences("SETTING", 0).edit().putBoolean("is_new_user", paramBoolean).apply();
+  }
+  
+  public static boolean f(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("SETTING", 0).getBoolean("is_new_user", true);
   }
 }
 

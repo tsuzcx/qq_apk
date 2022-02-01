@@ -1,77 +1,76 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqwa
-  extends aqkz<aqvz>
+  extends arac<aqwb>
 {
-  @NonNull
-  public aqvz a(int paramInt)
+  private static boolean a;
+  
+  public static boolean a()
   {
-    return new aqvz();
+    aqwb localaqwb = (aqwb)aran.a().a(576);
+    if ((localaqwb != null) && (!TextUtils.isEmpty(localaqwb.a))) {
+      a = "1".equals(localaqwb.a);
+    }
+    return a;
   }
   
-  @Nullable
-  public aqvz a(aqlg[] paramArrayOfaqlg)
+  @NonNull
+  public aqwb a(int paramInt)
   {
-    QLog.i("QFileExcitingC2CDownloadConfigProcessor<FileAssistant>", 1, "onParsed");
-    if (paramArrayOfaqlg != null) {
-      try
-      {
-        if (paramArrayOfaqlg.length > 0)
-        {
-          paramArrayOfaqlg = (aqvz)aqlu.a(paramArrayOfaqlg[0].a, aqvz.class);
-          return paramArrayOfaqlg;
-        }
+    return new aqwb();
+  }
+  
+  public aqwb a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString).optString("IsDanmuEnable");
+      if (QLog.isColorLevel()) {
+        QLog.e("DanmuConfProcessor", 2, "parse conf, IsDanmuEnable:" + paramString);
       }
-      catch (QStorageInstantiateException paramArrayOfaqlg)
-      {
-        QLog.e("QFileExcitingC2CDownloadConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaqlg.getMessage());
-      }
+      paramString = new aqwb(paramString.trim());
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
     return null;
   }
   
-  public void a(aqvz paramaqvz)
+  @Nullable
+  public aqwb a(araj[] paramArrayOfaraj)
   {
-    if (paramaqvz != null)
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
     {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label152;
+      aqwb localaqwb = a(paramArrayOfaraj[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("DanmuConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
       }
+      return localaqwb;
     }
-    label152:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    return new aqwb();
+  }
+  
+  public void a(aqwb paramaqwb)
+  {
+    if ((paramaqwb != null) && (!TextUtils.isEmpty(paramaqwb.a)))
     {
-      if (localObject != null)
-      {
-        if (TextUtils.isEmpty(paramaqvz.a)) {
-          paramaqvz.a = "{}";
-        }
-        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("c2cfile_excitingdownload_" + ((QQAppInterface)localObject).c(), 0).edit();
-        localEditor.putString("qfile_c2cfile_excitingdownload", paramaqvz.a);
-        localEditor.apply();
-        QLog.i("QFileExcitingC2CDownloadConfigProcessor<FileAssistant>", 1, "save Exciting-C2C-Download config [" + paramaqvz.a + "]");
-        localObject = (atam)((QQAppInterface)localObject).getManager(317);
-        if (localObject != null) {
-          ((atam)localObject).a(paramaqvz);
-        }
+      a = "1".equals(paramaqwb.a);
+      if (QLog.isColorLevel()) {
+        QLog.e("DanmuConfProcessor", 2, "onUpdate, isDanmuEnable:" + a);
       }
-      return;
     }
   }
   
-  public Class<aqvz> clazz()
+  public Class<aqwb> clazz()
   {
-    return aqvz.class;
+    return aqwb.class;
   }
   
   public boolean isNeedCompressed()
@@ -89,19 +88,16 @@ public class aqwa
     return 0;
   }
   
-  public void onReqFailed(int paramInt)
-  {
-    QLog.i("QFileExcitingC2CDownloadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
+  public void onReqFailed(int paramInt) {}
   
   public int type()
   {
-    return 556;
+    return 576;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqwa
  * JD-Core Version:    0.7.0.1
  */

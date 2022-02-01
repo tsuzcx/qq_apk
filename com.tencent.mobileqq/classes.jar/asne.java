@@ -1,35 +1,18 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog$SpacesItemDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "space", "", "firstItemTopSpace", "(II)V", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class asne
-  extends RecyclerView.ItemDecoration
+public class asne
+  extends RadioButton
 {
-  private final int a;
-  private final int b;
-  
-  public asne(int paramInt1, int paramInt2)
+  public asne(EmoticonPagerRadioGroup paramEmoticonPagerRadioGroup, Context paramContext)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    super(paramContext);
   }
   
-  public void getItemOffsets(@NotNull Rect paramRect, @NotNull View paramView, @NotNull RecyclerView paramRecyclerView, @NotNull RecyclerView.State paramState)
+  public boolean performClick()
   {
-    Intrinsics.checkParameterIsNotNull(paramRect, "outRect");
-    Intrinsics.checkParameterIsNotNull(paramView, "view");
-    Intrinsics.checkParameterIsNotNull(paramRecyclerView, "parent");
-    Intrinsics.checkParameterIsNotNull(paramState, "state");
-    paramRect.bottom = this.a;
-    if (paramRecyclerView.getChildPosition(paramView) == 0) {
-      paramRect.top = this.b;
-    }
+    return true;
   }
 }
 

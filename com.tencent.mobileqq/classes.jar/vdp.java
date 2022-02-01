@@ -1,20 +1,25 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
+import com.tencent.biz.qqcircle.widgets.QCircleBaseLightInteractWidget;
+import com.tencent.common.app.AppInterface;
+import feedcloud.FeedCloudMeta.StFeed;
 
-class vdp
-  implements bkhw
+public class vdp
+  extends RecyclerView.ViewHolder
 {
-  vdp(vde paramvde) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public vdp(vdj paramvdj, View paramView)
   {
-    if (vde.a(this.a) == null) {}
-    do
+    super(paramView);
+  }
+  
+  public void a(AppInterface paramAppInterface, Object paramObject, int paramInt1, int paramInt2, FeedCloudMeta.StFeed paramStFeed, ReportExtraTypeInfo paramReportExtraTypeInfo)
+  {
+    if ((this.itemView instanceof QCircleBaseLightInteractWidget))
     {
-      return;
-      bkif.b(this.a.a(), vde.a(this.a));
-      paramView = vde.a(this.a).a(paramInt);
-    } while (paramView == null);
-    vde.a(this.a, paramView.c, true);
+      ((QCircleBaseLightInteractWidget)this.itemView).a(paramAppInterface, paramStFeed, paramReportExtraTypeInfo, paramInt2);
+      ((QCircleBaseLightInteractWidget)this.itemView).a(paramObject, paramInt1);
+    }
   }
 }
 

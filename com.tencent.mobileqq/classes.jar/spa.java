@@ -1,6 +1,6 @@
 public abstract interface spa
 {
-  public abstract void c();
+  public abstract void a();
 }
 
 

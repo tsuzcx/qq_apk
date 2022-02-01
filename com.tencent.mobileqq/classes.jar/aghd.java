@@ -1,11 +1,9 @@
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface aghd
+public class aghd
 {
-  public abstract void a(String paramString, int paramInt, aggv paramaggv, List<aghq> paramList, Map<Integer, Integer> paramMap);
-  
-  public abstract boolean a(String paramString);
+  public ChatMessage a;
+  public StringBuilder b;
 }
 
 

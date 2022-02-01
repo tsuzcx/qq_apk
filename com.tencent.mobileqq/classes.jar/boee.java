@@ -1,14 +1,6 @@
-import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment;
-
 public class boee
-  implements boct
 {
-  public boee(AEEditorCommonEditFragment paramAEEditorCommonEditFragment) {}
-  
-  public void a()
-  {
-    this.a.e();
-  }
+  public void a() {}
 }
 
 

@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
-
-public class bgek
-  implements DialogInterface.OnDismissListener
+public abstract interface bgek
 {
-  public bgek(UpgradeActivity paramUpgradeActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public abstract int d();
 }
 
 

@@ -1,17 +1,35 @@
-import android.content.Context;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import android.text.SpannableStringBuilder;
+import java.util.ArrayList;
 
-final class upk
-  implements ShareActionSheet.OnItemClickListener
+public class upk
+  extends SpannableStringBuilder
 {
-  upk(Context paramContext, uoc paramuoc) {}
+  private ArrayList<upm> a;
+  private ArrayList<upl> b;
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  upk(CharSequence paramCharSequence)
   {
-    uph.a(this.jdField_a_of_type_AndroidContentContext, paramActionSheetItem, this.jdField_a_of_type_Uoc);
-    paramShareActionSheet.dismiss();
+    super(paramCharSequence);
+  }
+  
+  public ArrayList<upm> a()
+  {
+    return this.a;
+  }
+  
+  public void a(ArrayList<upm> paramArrayList)
+  {
+    this.a = paramArrayList;
+  }
+  
+  public ArrayList<upl> b()
+  {
+    return this.b;
+  }
+  
+  public void b(ArrayList<upl> paramArrayList)
+  {
+    this.b = paramArrayList;
   }
 }
 

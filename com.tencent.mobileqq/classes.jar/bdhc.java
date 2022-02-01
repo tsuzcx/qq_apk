@@ -1,68 +1,13 @@
-import java.net.InetAddress;
-import java.net.Socket;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
-
-public class bdhc
-  extends SSLSocketFactory
+class bdhc
+  implements bdhh
 {
-  private final SSLSocketFactory a;
+  bdhc(bdhb parambdhb, bdhe parambdhe, String paramString) {}
   
-  public bdhc()
+  public void a(int paramInt)
   {
-    this.a = HttpsURLConnection.getDefaultSSLSocketFactory();
-  }
-  
-  public bdhc(SSLSocketFactory paramSSLSocketFactory)
-  {
-    this.a = paramSSLSocketFactory;
-  }
-  
-  private Socket a(Socket paramSocket)
-  {
-    if ((paramSocket instanceof SSLSocket))
-    {
-      paramSocket = new bdhf(this, (SSLSocket)paramSocket, null);
-      ((bdhf)paramSocket).setEnabledProtocols(new String[] { "TLSv1.1", "TLSv1.2" });
-      return paramSocket;
+    if (this.jdField_a_of_type_Bdhe != null) {
+      this.jdField_a_of_type_Bdhe.a(paramInt, bdhb.a(this.jdField_a_of_type_Bdhb, this.jdField_a_of_type_JavaLangString));
     }
-    return paramSocket;
-  }
-  
-  public Socket createSocket(String paramString, int paramInt)
-  {
-    return a(this.a.createSocket(paramString, paramInt));
-  }
-  
-  public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
-  {
-    return a(this.a.createSocket(paramString, paramInt1, paramInetAddress, paramInt2));
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress, int paramInt)
-  {
-    return a(this.a.createSocket(paramInetAddress, paramInt));
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
-  {
-    return a(this.a.createSocket(paramInetAddress1, paramInt1, paramInetAddress2, paramInt2));
-  }
-  
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-  {
-    return a(this.a.createSocket(paramSocket, paramString, paramInt, paramBoolean));
-  }
-  
-  public String[] getDefaultCipherSuites()
-  {
-    return this.a.getDefaultCipherSuites();
-  }
-  
-  public String[] getSupportedCipherSuites()
-  {
-    return this.a.getSupportedCipherSuites();
   }
 }
 

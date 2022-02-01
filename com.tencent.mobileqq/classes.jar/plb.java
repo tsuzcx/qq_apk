@@ -1,35 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 
-class plb
-  implements View.OnClickListener
+public class plb
+  implements URLDrawable.URLDrawableListener
 {
-  plb(pla parampla) {}
+  public plb(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    int i = ((plc)paramView.getTag()).getAdapterPosition() - pla.a(this.a).c();
-    int j = this.a.getItemViewType(i);
-    ArticleInfo localArticleInfo = (ArticleInfo)pla.a(this.a, i);
-    if (localArticleInfo == null) {
-      QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onItemClick onClick articleInfo is null.");
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadCanceled");
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onItemClick, position = ", Integer.valueOf(i), ", itemViewType = ", Integer.valueOf(j) });
-      this.a.a(i, paramView);
-      localArticleInfo.invalidateProteusTemplateBean();
-      pha.a = localArticleInfo;
-      pmh.a().a(localArticleInfo.mArticleID, System.currentTimeMillis());
-      this.a.notifyItemChanged(i);
-      pha.b(pla.a(this.a), localArticleInfo, (int)localArticleInfo.mChannelID);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadFialed");
     }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadProgressed =" + paramInt);
+    }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment, this.jdField_a_of_type_Int, this.b);
+    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).removeMessages(-2);
+    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).sendEmptyMessage(-2);
   }
 }
 

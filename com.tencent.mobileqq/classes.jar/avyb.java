@@ -1,15 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-public class avyb
-  implements DialogInterface.OnClickListener
+class avyb
+  implements TVK_SDKMgr.OnLogListener
 {
-  public avyb(LocationDialogUtil.4 param4) {}
+  avyb(avya paramavya) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int d(String paramString1, String paramString2)
   {
-    bcst.b(null, "CliOper", "", "", "0X800A968", "0X800A968", 0, 0, "0", "0", "0", "");
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
+    return 0;
   }
 }
 

@@ -1,63 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import com.tencent.mobileqq.statistics.LocalCrashCollector.3;
+import com.tencent.widget.XEditTextEx;
 
-class bdky
-  extends bkov
+public class bdky
+  implements DialogInterface.OnClickListener
 {
-  bdky(bdkw parambdkw, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4, List paramList, int[] paramArrayOfInt5)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  public bdky(LocalCrashCollector.3 param3, SessionInfo paramSessionInfo) {}
   
-  public View a(int paramInt, Object paramObject, bkou parambkou, View.OnClickListener paramOnClickListener)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    parambkou = super.a(paramInt, paramObject, parambkou, paramOnClickListener);
-    if (parambkou != null) {
-      parambkou.setTag(-10, paramObject);
-    }
-    return parambkou;
-  }
-  
-  public void a(int paramInt, Object paramObject, bkou[] paramArrayOfbkou)
-  {
-    paramInt = 0;
-    Object localObject = this.jdField_a_of_type_Bdkw.a((bdmc)paramObject);
-    int i = ((List)localObject).size();
-    paramObject = localObject;
-    if (i > 3)
+    try
     {
-      paramObject = ((List)localObject).subList(i - 2, i);
-      paramObject.add(0, bdkw.a);
-    }
-    i = Math.min(paramObject.size(), 3);
-    if (paramInt < paramArrayOfbkou.length)
-    {
-      int j;
-      if (paramInt < i)
+      if (LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0) > 0)
       {
-        localObject = (bdmd)paramObject.get(paramInt);
-        j = this.jdField_a_of_type_JavaUtilList.indexOf(localObject);
-        if (j < 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i(this.jdField_a_of_type_JavaLangString, 1, "getRightMenuItemInfo error, can not find the menu， menuId[" + ((bdmd)localObject).b() + "]");
-          }
-          paramArrayOfbkou[paramInt].b = -1;
-          paramArrayOfbkou[paramInt].a = -1;
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
+          break label106;
         }
+        LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("/data/data/com.tencent.mobileqq/files/crashinfo/CrashInfoSummary.txt", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
       }
       for (;;)
       {
-        paramInt += 1;
-        break;
-        paramArrayOfbkou[paramInt].b = j;
-        paramArrayOfbkou[paramInt].a = this.jdField_a_of_type_ArrayOfInt[j];
-        continue;
-        paramArrayOfbkou[paramInt].b = -1;
-        paramArrayOfbkou[paramInt].a = -1;
+        LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+        LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).delete(0, LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).length());
+        paramDialogInterface.dismiss();
+        return;
+        label106:
+        LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("/data/data/com.tencent.mobileqq/files/crashinfo/CrashInfoSummary.txt", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true);
       }
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
     }
   }
 }

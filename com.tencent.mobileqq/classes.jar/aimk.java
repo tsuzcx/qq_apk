@@ -1,44 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LinearInterpolator;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class aimk
-  implements Animation.AnimationListener
+  extends anyu
 {
-  aimk(aimj paramaimj) {}
+  aimk(aimd paramaimd) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void onAddFriend(String paramString)
   {
-    try
-    {
-      if ((this.a.jdField_b_of_type_AndroidViewAnimationAnimation != null) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAnimation))
-      {
-        paramAnimation = AnimationUtils.loadAnimation(BaseApplicationImpl.getContext(), 2130772266);
-        paramAnimation.setInterpolator(new LinearInterpolator());
-        this.a.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366873));
-        this.a.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366874));
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
-        return;
-      }
-      if ((paramAnimation == this.a.c) && (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout) != -1))
-      {
-        this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.removeView(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddFriend : " + paramString);
     }
-    catch (Throwable paramAnimation) {}
+    if ((this.a.v()) && (paramString != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+      aimd.a(this.a);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

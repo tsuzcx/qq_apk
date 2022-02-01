@@ -1,11 +1,19 @@
-import android.view.View;
-import android.widget.ImageView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionText;
 
-public class agik
-  extends agip
+public final class agik
+  implements Parcelable.Creator<ForwardUtils.SectionText>
 {
-  public View a;
-  public ImageView a;
+  public ForwardUtils.SectionText a(Parcel paramParcel)
+  {
+    return new ForwardUtils.SectionText(paramParcel);
+  }
+  
+  public ForwardUtils.SectionText[] a(int paramInt)
+  {
+    return new ForwardUtils.SectionText[paramInt];
+  }
 }
 
 

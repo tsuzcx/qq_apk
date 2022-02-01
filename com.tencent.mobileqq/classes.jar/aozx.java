@@ -1,18 +1,29 @@
-public abstract interface aozx
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
+public class aozx
+  extends aoxg
 {
-  public abstract void a(int paramInt, apah paramapah, long paramLong);
+  public aozx(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    super(paramQQAppInterface, paramContext);
+  }
   
-  public abstract void a(aozz paramaozz);
-  
-  public abstract void a(apaa paramapaa);
-  
-  public abstract void a(apab paramapab);
-  
-  public abstract void a(apac paramapac);
-  
-  public abstract void a(apaj paramapaj);
-  
-  public abstract void b(apaa paramapaa);
+  public boolean a()
+  {
+    try
+    {
+      aaej.a(this.jdField_a_of_type_AndroidContentContext, this.c, this.jdField_a_of_type_JavaUtilHashMap);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("SubScribeAction", 1, "doAction error: " + localException.getMessage());
+      a("SubScribeAction");
+    }
+    return false;
+  }
 }
 
 

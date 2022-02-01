@@ -1,95 +1,153 @@
-import android.content.Intent;
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.highway.utils.BaseConstants.NetType;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
 
-class bame
-  implements bdvw
+public final class bame
+  implements BaseConstants.NetType
 {
-  bame(bamd parambamd, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3) {}
+  private static boolean jdField_a_of_type_Boolean;
+  private static int[] jdField_a_of_type_ArrayOfInt = new int[6];
+  private static boolean b = true;
+  private static boolean c;
   
-  public void onResp(bdwt parambdwt)
+  public static int a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager_PTV", 2, "onResp resultcode: " + parambdwt.c + " threadid=" + Thread.currentThread().getId());
-    }
-    File localFile = new File(bamd.jdField_a_of_type_JavaIoFile, "temp_ptv_template_zip");
-    if (!localFile.exists())
+    int i = 0;
+    if ((paramQQAppInterface == null) || (paramInt1 == 0)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip !zipfile.exists()");
-      }
-      alkm.a(0);
-      return;
-    }
-    Object localObject = "";
-    try
-    {
-      parambdwt = bgmg.c(localFile.getPath());
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(parambdwt))) {}
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
+      return 800;
+      b(paramQQAppInterface, false);
+      paramQQAppInterface = jdField_a_of_type_ArrayOfInt;
+      paramInt1 = i;
+      if (paramInt2 >= 0)
       {
-        try
-        {
-          nmk.a(localFile, this.b);
-          parambdwt = new File(this.c);
-          if (!parambdwt.exists()) {
-            break label330;
-          }
-          parambdwt = bamd.a(parambdwt);
-          localObject = bamd.a(null, parambdwt, this.jdField_a_of_type_Bamd.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig);
-          if ((localObject != null) && (!((List)localObject).isEmpty())) {
-            break;
-          }
-          bamd.a(parambdwt, "ptv_template_new.cfg");
-          if (QLog.isColorLevel()) {
-            QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip null == infos || infos.isEmpty()");
-          }
-          alkm.a(-4);
-          return;
-          localUnsatisfiedLinkError = localUnsatisfiedLinkError;
-          parambdwt = (bdwt)localObject;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          localUnsatisfiedLinkError.printStackTrace();
-          parambdwt = (bdwt)localObject;
+        paramInt1 = i;
+        if (paramInt2 < paramQQAppInterface.length) {
+          paramInt1 = paramQQAppInterface[paramInt2];
         }
-        catch (Exception parambdwt)
-        {
-          alkm.a(-3);
-          bgsg.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          parambdwt.printStackTrace();
-          continue;
-        }
-        alkm.a(-2);
       }
-      bamd.a(parambdwt, "ptv_template_new.cfg");
-      this.jdField_a_of_type_Bamd.c(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip finsh configContent=" + parambdwt);
-      }
-      alkm.a(1);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(new Intent("action_brocassreceiver_for_ptv"));
-      return;
-    }
-    label330:
-    if (QLog.isColorLevel()) {
-      QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip !jsonFile.exists()");
-    }
-    bgsg.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0);
+    } while (paramInt1 == 0);
+    return paramInt1;
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  private static String a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface.getCurrentAccountUin(), 0).getString("StreamCfg", null);
+    if (QLog.isColorLevel()) {
+      QLog.d("StreamParams", 2, "getSavedStreamCfg: " + paramQQAppInterface);
+    }
+    return paramQQAppInterface;
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_Boolean = false;
+    b = true;
+    c = false;
+    jdField_a_of_type_ArrayOfInt = new int[6];
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putString("StreamCfg", paramString).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("StreamParams", 2, "saveStreamCfg: " + paramString);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if ((jdField_a_of_type_Boolean) && (!paramBoolean)) {
+      return;
+    }
+    jdField_a_of_type_Boolean = true;
+    for (;;)
+    {
+      try
+      {
+        paramQQAppInterface = a(paramQQAppInterface);
+        if (QLog.isColorLevel()) {
+          QLog.d("StreamParams", 2, "initSupportCfg :" + paramQQAppInterface);
+        }
+        if (paramQQAppInterface != null)
+        {
+          int i = paramQQAppInterface.length();
+          if (i != 0) {
+            continue;
+          }
+        }
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        continue;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("StreamParams", 2, "init params: " + b);
+      return;
+      paramQQAppInterface = paramQQAppInterface.split("\\|");
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.length >= 1)) {
+        b = "1".equals(paramQQAppInterface[0]);
+      }
+    }
+  }
+  
+  private static String b(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface.getCurrentAccountUin(), 0).getString("StreamSliceCfg", null);
+    if (QLog.isColorLevel()) {
+      QLog.d("StreamParams", 2, "getSavedStreamSliceCfg: " + paramQQAppInterface);
+    }
+    return paramQQAppInterface;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putString("StreamSliceCfg", paramString).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("StreamParams", 2, "saveStreamSliceCfg: " + paramString);
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if ((c) && (!paramBoolean)) {}
+    for (;;)
+    {
+      return;
+      c = true;
+      try
+      {
+        paramQQAppInterface = b(paramQQAppInterface);
+        if (QLog.isColorLevel()) {
+          QLog.d("StreamParams", 2, "initSliceCfg: " + paramQQAppInterface);
+        }
+        if (paramQQAppInterface == null) {
+          continue;
+        }
+        paramQQAppInterface = paramQQAppInterface.split("\\|");
+        int i = 0;
+        while (i < paramQQAppInterface.length)
+        {
+          if (paramQQAppInterface[i].startsWith("1-"))
+          {
+            String[] arrayOfString = paramQQAppInterface[i].split("-");
+            int j = Integer.parseInt(arrayOfString[1]);
+            int k = Integer.parseInt(arrayOfString[2]);
+            jdField_a_of_type_ArrayOfInt[j] = k;
+          }
+          i += 1;
+        }
+        return;
+      }
+      catch (Exception paramQQAppInterface) {}
+    }
+  }
 }
 
 

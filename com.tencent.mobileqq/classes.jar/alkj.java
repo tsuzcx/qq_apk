@@ -1,32 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.RunnableUpdateThumb;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.VersionUtils;
 
-public class alkj
-  implements Animator.AnimatorListener
+class alkj
+  implements View.OnClickListener
 {
-  public alkj(NewFlowCameraActivity.RunnableUpdateThumb paramRunnableUpdateThumb) {}
+  alkj(aljw paramaljw) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if ((NewFlowCameraActivity.a(this.a.this$0) != null) && (NewFlowCameraActivity.b(this.a.this$0) != null) && (NewFlowCameraActivity.a(this.a.this$0) != null))
+    if (VersionUtils.isHoneycomb()) {
+      aljw.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
+    }
+    for (;;)
     {
-      NewFlowCameraActivity.a(this.a.this$0).setVisibility(8);
-      NewFlowCameraActivity.b(this.a.this$0).setImageBitmap(this.a.b);
-      NewFlowCameraActivity.b(this.a.this$0).setVisibility(0);
-      NewFlowCameraActivity.a(this.a.this$0).setText(NewFlowCameraActivity.c(this.a.this$0) + "");
-      NewFlowCameraActivity.a(this.a.this$0).setVisibility(0);
+      bdll.a(aljw.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 1, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      aljw.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
     }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

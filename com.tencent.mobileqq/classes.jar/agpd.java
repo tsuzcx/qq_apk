@@ -1,33 +1,95 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class agpd
-  implements View.OnClickListener
 {
-  public agpd(ApolloItemBuilder paramApolloItemBuilder) {}
+  private long jdField_a_of_type_Long;
+  private agpw jdField_a_of_type_Agpw = new agpw();
+  private ArrayList<agqn> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void onClick(View paramView)
+  public long a()
   {
-    if (amhd.a(this.a.a.getApplication()))
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public agpw a()
+  {
+    return this.jdField_a_of_type_Agpw;
+  }
+  
+  public String a()
+  {
+    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
     {
-      ApolloUtil.a(paramView.getContext(), null, "aio", ancb.ah, null);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      agqn localagqn = (agqn)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      if (localagqn != null)
+      {
+        if (localagqn.a > 0) {
+          return String.valueOf(localagqn.a());
+        }
+        return String.valueOf(localagqn.b());
+      }
     }
-    if (!amhd.c(this.a.a.getApplication())) {}
-    for (String str = ancb.U;; str = ancb.V + blae.b)
+    return "";
+  }
+  
+  public ArrayList<agqn> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(agqn paramagqn, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramagqn == null) {}
+    do
     {
-      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
-      VasWebviewUtil.openQQBrowserActivity(paramView.getContext(), str, -1L, localIntent, false, -1);
+      return;
+      if (paramBoolean1) {
+        this.jdField_a_of_type_Agpw.a(paramagqn);
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramagqn);
+    } while (!paramBoolean2);
+    this.jdField_a_of_type_Long += paramagqn.a();
+  }
+  
+  public void a(List<agqn> paramList, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    long l;
+    if (paramList != null)
+    {
+      l = 0L;
+      if ((paramBoolean1) || (paramBoolean2))
+      {
+        Iterator localIterator = paramList.iterator();
+        l = 0L;
+        if (localIterator.hasNext())
+        {
+          agqn localagqn = (agqn)localIterator.next();
+          if (paramBoolean1) {
+            this.jdField_a_of_type_Agpw.a(localagqn);
+          }
+          if (!paramBoolean2) {
+            break label103;
+          }
+          l = localagqn.a() + l;
+        }
+      }
+    }
+    label103:
+    for (;;)
+    {
       break;
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+      if (paramBoolean2) {
+        this.jdField_a_of_type_Long = (l + this.jdField_a_of_type_Long);
+      }
+      return;
     }
   }
 }

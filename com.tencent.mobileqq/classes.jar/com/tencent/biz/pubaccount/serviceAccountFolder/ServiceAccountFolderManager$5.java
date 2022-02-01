@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import acvy;
-import aldk;
+import adab;
+import alpb;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.Iterator;
-import tue;
+import tug;
 
 public class ServiceAccountFolderManager$5
   implements Runnable
 {
-  public ServiceAccountFolderManager$5(tue paramtue, ArrayList paramArrayList, QQAppInterface paramQQAppInterface) {}
+  public ServiceAccountFolderManager$5(tug paramtug, ArrayList paramArrayList, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ServiceAccountFolderManager$5
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      aldk.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 1008);
+      alpb.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 1008);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(str, 1008);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(str, 1008, true);
     }

@@ -1,38 +1,69 @@
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.upload.UploadManager;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 public class auam
+  implements bcil<bcfr, bcnz>
 {
-  private final bmzs jdField_a_of_type_Bmzs;
-  private final UploadManager.IUploadStatusListener jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadManager$IUploadStatusListener;
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
-  private String b;
+  private auar a;
   
-  public auam(String paramString, Object paramObject, boolean paramBoolean, UploadManager.IUploadStatusListener paramIUploadStatusListener, bmzs parambmzs)
+  public void a(auar paramauar)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadManager$IUploadStatusListener = paramIUploadStatusListener;
-    this.jdField_a_of_type_Bmzs = parambmzs;
+    this.a = paramauar;
   }
   
-  public void a()
+  public void a(bcfr parambcfr, bcnz parambcnz)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if ((parambcnz.a() != null) && (!TextUtils.isEmpty(parambcfr.a())))
     {
-      WeiyunTransmissionGlobal.getInstance().getUploadManager().removeJob(this.jdField_a_of_type_JavaLangString);
-      return;
+      parambcnz.a().setVisibility(0);
+      parambcnz.a().setText(parambcfr.a());
     }
-    bmzf.a().a(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a(String paramString)
-  {
-    this.b = paramString;
+    if ((parambcnz.b() != null) && (!TextUtils.isEmpty(parambcfr.b())))
+    {
+      parambcnz.b().setVisibility(0);
+      parambcnz.b().setText(parambcfr.b());
+    }
+    if ((parambcnz.c() != null) && (!TextUtils.isEmpty(parambcfr.c())))
+    {
+      parambcnz.c().setVisibility(0);
+      parambcnz.c().setText(parambcfr.c());
+    }
+    if ((parambcfr.d() == null) && (parambcnz.d() != null)) {
+      parambcnz.d().setVisibility(8);
+    }
+    if ((parambcnz.d() != null) && (parambcfr.d() != null))
+    {
+      parambcnz.d().setVisibility(0);
+      parambcnz.d().setText(parambcfr.d());
+    }
+    aual localaual = (aual)parambcfr;
+    View localView = parambcnz.a();
+    parambcnz = (AsyncImageView)parambcnz.b();
+    String str = localaual.c();
+    int i = localaual.e();
+    if (!TextUtils.isEmpty(str))
+    {
+      aunj.a(parambcnz, str, i);
+      parambcnz.setOnClickListener(new auan(this, parambcfr));
+      parambcnz = (CheckBox)localView.findViewById(2131366617);
+      if (localaual.d() <= 1) {
+        break label336;
+      }
+      parambcnz.setVisibility(8);
+    }
+    for (;;)
+    {
+      parambcnz.setChecked(localaual.b());
+      localView.setOnClickListener(new auao(this, parambcfr));
+      return;
+      parambcnz.setDefaultImage(aunj.a(i));
+      break;
+      label336:
+      parambcnz.setVisibility(0);
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import arrp;
-import arrx;
+import ashd;
+import ashl;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -11,17 +11,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class FavroamingManager$4
   implements Runnable
 {
-  public FavroamingManager$4(arrp paramarrp) {}
+  public FavroamingManager$4(ashd paramashd) {}
   
   public void run()
   {
-    Iterator localIterator = arrp.a(this.this$0).iterator();
+    Iterator localIterator = ashd.a(this.this$0).iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       if ((localWeakReference != null) && (localWeakReference.get() != null))
       {
-        ((arrx)localWeakReference.get()).a(null, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+        ((ashl)localWeakReference.get()).a(null, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
         if (QLog.isColorLevel()) {
           QLog.i("FavroamingManager", 2, "now notify listener on file done!");
         }

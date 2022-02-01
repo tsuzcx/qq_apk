@@ -1,39 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.ttpic.baseutils.device.DeviceUtils;
 
-public class boua
-  extends AnimatorListenerAdapter
+class boua
+  extends RecyclerView.ItemDecoration
 {
-  public boua(QIMCircleProgress paramQIMCircleProgress) {}
+  boua(botw parambotw) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    this.a.a = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator cancel");
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a = false;
-    if ((this.a.c) && (this.a.b != null)) {
-      this.a.b.start();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "capturedSegmentBlinkAnimator start");
-    }
+    int i = paramRecyclerView.getChildAdapterPosition(paramView) % 2;
+    int j = (int)(DeviceUtils.getScreenWidth(botw.a(this.a)) * 0.04F);
+    paramRect.left = (j - i * j / 2);
+    paramRect.right = ((i + 1) * j / 2);
+    paramRect.bottom = j;
   }
 }
 

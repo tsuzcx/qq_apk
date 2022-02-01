@@ -1,18 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class rlh
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/CodecReuseHelper$Companion$pullConfigFromServer$1", "Lcom/tencent/biz/pubaccount/readinjoy/viola/view/ViolaBaseView$LoadAsyBack;", "onFail", "", "onProcess", "process", "", "onSucc", "result", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rlh
+  implements tjn
 {
-  public rlh(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
-  
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    rlf.a(rle.a);
+  }
+  
+  public void a(@Nullable String paramString)
+  {
+    if (paramString != null)
+    {
+      rle.a.a(rle.a.a(paramString));
+      rlf.a(rle.a, paramString);
+    }
   }
 }
 

@@ -1,15 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahkn
-  extends afwr
+class ahkn
+  extends ahkx
 {
-  long jdField_a_of_type_Long;
-  afzq jdField_a_of_type_Afzq;
-  public alqf a;
-  public ImageView b;
-  public ImageView c;
-  public TextView d;
+  ahkn(ahgk paramahgk)
+  {
+    super(paramahgk, null);
+  }
+  
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new QQStoryItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

@@ -1,29 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class adqx
-  implements DialogInterface.OnClickListener
+public class adqx
+  implements View.OnClickListener
 {
-  adqx(adsy paramadsy, int paramInt, adsx paramadsx) {}
+  public adqx(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Adsy.a)
-    {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label59;
-      }
-      bcst.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "2", "", "", "");
-    }
+    View localView = (View)paramView.getParent().getParent();
+    if ((localView == null) || (localView.getTag() == null)) {}
     for (;;)
     {
-      if (this.jdField_a_of_type_Adsx != null) {
-        this.jdField_a_of_type_Adsx.a();
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      label59:
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
-        bcst.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "2", "", "", "");
+      int i = ((Integer)localView.getTag()).intValue();
+      if ((i != 0) || (azoz.a().a(this.a.app, this.a)))
+      {
+        this.a.a(i);
+        bdll.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit_delete", 0, 0, "", "", "", "");
       }
     }
   }

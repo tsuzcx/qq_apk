@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Build.VERSION;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-final class axle
-  implements DialogInterface.OnCancelListener
+public class axle
 {
-  axle(DialogInterface.OnDismissListener paramOnDismissListener) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public static void a()
   {
-    this.a.onDismiss(paramDialogInterface);
+    if (Build.VERSION.SDK_INT > 25)
+    {
+      Runtime.getRuntime().gc();
+      Runtime.getRuntime().gc();
+      Runtime.getRuntime().runFinalization();
+    }
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < 2)
+      {
+        ArrayList localArrayList = new ArrayList();
+        do
+        {
+          localArrayList.add(new WeakReference(new byte[100]));
+        } while (((WeakReference)localArrayList.get((int)(Math.random() * localArrayList.size()))).get() != null);
+        i += 1;
+      }
+    }
   }
 }
 

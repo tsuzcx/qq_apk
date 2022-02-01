@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import afjy;
+import aftc;
 
 public class TroopInfoActivity$23$2
   implements Runnable
 {
-  public TroopInfoActivity$23$2(afjy paramafjy) {}
+  public TroopInfoActivity$23$2(aftc paramaftc) {}
   
   public void run()
   {

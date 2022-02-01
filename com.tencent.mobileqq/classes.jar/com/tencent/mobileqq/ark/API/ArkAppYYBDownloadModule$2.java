@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ark.API;
 
-import apjw;
+import apxm;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ArkAppYYBDownloadModule$2
   implements Runnable
 {
-  public ArkAppYYBDownloadModule$2(apjw paramapjw, String paramString) {}
+  public ArkAppYYBDownloadModule$2(apxm paramapxm, String paramString) {}
   
   public void run()
   {

@@ -1,60 +1,59 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.AgeSelectionActivity;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.JvmField;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/constellation/ConstellationLauncher;", "", "()V", "DEFAULT_CONSTELLATION", "", "REQUEST_CODE_BIRTHDAY", "launchMiniProgram", "", "activity", "Landroid/app/Activity;", "url", "", "launchScene", "launchSelectAge", "launchFrom", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class aysf
+public class aysf
+  extends ayqg
 {
-  @JvmField
-  public static final int a = 1001;
-  public static final aysf a;
-  @JvmField
-  public static final int b = 0;
-  
-  static
+  public aysf(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Aysf = new aysf();
-    jdField_a_of_type_Int = 1001;
+    super(paramContext, paramQQAppInterface);
   }
   
-  public final void a(@NotNull Activity paramActivity, @NotNull String paramString)
+  public int a(ayqn paramayqn)
   {
-    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
-    Intrinsics.checkParameterIsNotNull(paramString, "launchFrom");
-    Intent localIntent = new Intent((Context)paramActivity, AgeSelectionActivity.class);
-    Object localObject = BaseApplicationImpl.getApplication();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
-    localObject = ((BaseApplicationImpl)localObject).getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    return 5;
+  }
+  
+  public View a(ViewGroup paramViewGroup, ayqn paramayqn)
+  {
+    paramViewGroup = (aysg)paramayqn;
+    paramayqn = new TextView(this.a);
+    paramayqn.setTextColor(this.a.getResources().getColor(2131165343));
+    paramayqn.setTextSize(1, 16.0F);
+    paramayqn.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+    paramViewGroup.g = paramayqn;
+    return paramayqn;
+  }
+  
+  public ayqn a()
+  {
+    return new aysg(this);
+  }
+  
+  public void f(ayqn paramayqn)
+  {
+    paramayqn = (aysg)paramayqn;
+    Object localObject = (ayso)paramayqn.a;
+    String str = ((ayso)localObject).n;
+    localObject = bhsy.a(this.a, ((ayso)localObject).a, str);
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      int i = (int)bghy.a((QQAppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin()).lBirthday;
-      if (QLog.isColorLevel()) {
-        QLog.d("ConstellationLauncher", 2, new Object[] { "launchSelectAge: called. ", "{card.lBirthday}: " + i });
-      }
-      localIntent.putExtra("param_birthday", i);
-      localIntent.putExtra("param_launch_from", paramString);
-      paramActivity.startActivityForResult(localIntent, jdField_a_of_type_Int);
+      paramayqn.g.setVisibility(8);
+      return;
     }
-  }
-  
-  public final void a(@NotNull Activity paramActivity, @Nullable String paramString, int paramInt)
-  {
-    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
-    if (QLog.isColorLevel()) {
-      QLog.d("ConstellationLauncher", 2, new Object[] { "launchMiniProgram: called. ", "url: " + paramString + "  launchScene: " + paramInt });
+    paramayqn.g.setVisibility(0);
+    if ((localObject instanceof SpannableString)) {
+      paramayqn.g.setMovementMethod(LinkMovementMethod.getInstance());
     }
-    MiniAppLauncher.startMiniApp((Context)paramActivity, paramString, paramInt, null, null);
+    paramayqn.g.setText((CharSequence)localObject);
   }
 }
 

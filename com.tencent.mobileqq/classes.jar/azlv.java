@@ -1,11 +1,20 @@
-public abstract interface azlv<VIEW, DATA>
-  extends azlx
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/onlinestatus/view/ConstellationView$1$1"}, k=3, mv={1, 1, 16})
+final class azlv
+  implements View.OnClickListener
 {
-  public abstract int a();
+  azlv(azlu paramazlu) {}
   
-  public abstract String a();
-  
-  public abstract boolean a(DATA paramDATA);
+  public final void onClick(View paramView)
+  {
+    this.a.dismiss();
+    this.a.a().a(1040);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

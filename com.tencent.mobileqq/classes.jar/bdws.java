@@ -1,87 +1,128 @@
-import java.io.OutputStream;
-import java.util.HashMap;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.QQPlayerService;
+import cooperation.qwallet.plugin.PatternLockUtils;
+import mqq.os.MqqHandler;
 
 public class bdws
 {
-  public long a;
-  public bdvv a;
-  public bdvw a;
-  public bdvx a;
-  public bdwt a;
-  public OutputStream a;
-  public Object a;
-  public HashMap<String, String> a;
-  public List<bdyf> a;
-  public byte[] a;
-  public int b;
-  public long b;
-  private Object b;
-  public int c;
-  public long c;
-  public String c;
-  public int d = 1;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public boolean j;
-  public boolean k = true;
-  public boolean l;
-  public boolean m = true;
-  public boolean n = true;
-  public boolean o;
-  
-  public bdws()
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_c_of_type_Long = 480000L;
-    this.jdField_b_of_type_Int = 8;
-    this.jdField_c_of_type_Int = 5;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      paramQQAppInterface = paramQQAppInterface.getHandler(SubAccountUgActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.sendEmptyMessage(1980);
   }
   
-  public Object a()
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong)
   {
-    try
+    if (paramQQAppInterface == null) {}
+    do
     {
-      Object localObject1 = this.jdField_b_of_type_JavaLangObject;
-      return localObject1;
-    }
-    finally
-    {
-      localObject2 = finally;
-      throw localObject2;
-    }
+      return;
+      paramQQAppInterface = paramQQAppInterface.getHandler(SubAccountBindActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.sendEmptyMessageDelayed(1990, paramLong);
   }
   
-  public void a(Object paramObject)
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    try
-    {
-      this.jdField_b_of_type_JavaLangObject = paramObject;
+    if ((paramQQAppInterface == null) || (paramContext == null) || (!paramQQAppInterface.isRunning()) || (paramContext.getApplicationContext() == null)) {
       return;
     }
-    finally
+    paramContext = paramContext.getApplicationContext();
+    if (QQPlayerService.a())
     {
-      paramObject = finally;
-      throw paramObject;
+      Intent localIntent = new Intent();
+      localIntent.setAction("qqplayer_exit_action");
+      paramContext.sendBroadcast(localIntent);
     }
+    PatternLockUtils.setFirstEnterAfterLoginState(paramContext, paramQQAppInterface.getCurrentAccountUin(), true);
   }
   
-  public boolean a()
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
   {
-    return (this.jdField_c_of_type_JavaLangString != null) || (this.jdField_a_of_type_JavaIoOutputStream != null);
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    paramQQAppInterface = new Intent(paramContext, AssociatedAccountActivity.class);
+    paramQQAppInterface.putExtra("subAccount", paramString);
+    paramContext.startActivity(paramQQAppInterface);
   }
   
-  public boolean b()
+  public static void b(QQAppInterface paramQQAppInterface)
   {
-    return this.jdField_c_of_type_JavaLangString != null;
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      paramQQAppInterface = paramQQAppInterface.getHandler(SubAccountBindActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.sendEmptyMessage(1981);
   }
   
-  public boolean c()
+  public static void b(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    return this.jdField_a_of_type_JavaIoOutputStream != null;
+    if ((paramQQAppInterface == null) || (paramContext == null) || (!paramQQAppInterface.isRunning()) || (paramContext.getApplicationContext() == null)) {
+      return;
+    }
+    paramContext = paramContext.getApplicationContext();
+    LoginActivity.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin());
+    bgts.a();
+    amjp.a(true);
+    bjji.a().a(paramQQAppInterface.getCurrentAccountUin());
+    PatternLockUtils.setFirstEnterAfterLoginState(paramContext, paramQQAppInterface.getCurrentAccountUin(), true);
+    arsc.a(paramQQAppInterface, paramContext.getClass(), System.currentTimeMillis(), false);
+    paramQQAppInterface = paramContext.getSharedPreferences("qrcode", 0).edit();
+    paramQQAppInterface.clear();
+    paramQQAppInterface.commit();
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      paramQQAppInterface = paramQQAppInterface.getHandler(SubLoginActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.sendEmptyMessage(1982);
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (!paramQQAppInterface.isRunning()) || (paramContext.getApplicationContext() == null)) {}
+    do
+    {
+      return;
+      paramQQAppInterface = paramContext.getApplicationContext();
+    } while (!QQPlayerService.a());
+    paramContext = new Intent();
+    paramContext.setAction("qqplayer_exit_action");
+    paramQQAppInterface.sendBroadcast(paramContext);
+  }
+  
+  public static void d(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      paramQQAppInterface = paramQQAppInterface.getHandler(LoginPhoneNumActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.sendEmptyMessage(2014);
   }
 }
 

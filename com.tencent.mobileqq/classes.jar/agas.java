@@ -1,14 +1,17 @@
-import android.view.MotionEvent;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-public abstract interface agas
+public class agas
+  extends blgm
 {
-  public abstract int a(int paramInt);
+  public agas(VisitorsActivity paramVisitorsActivity) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract int b(int paramInt);
-  
-  public abstract boolean onTouchEvent(MotionEvent paramMotionEvent);
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.jdField_f_of_type_Boolean = true;
+  }
 }
 
 

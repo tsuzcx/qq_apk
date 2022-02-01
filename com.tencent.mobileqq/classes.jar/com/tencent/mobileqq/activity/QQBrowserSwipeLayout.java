@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aewh;
+import affl;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.biz.pubaccount.util.SwipeBackLayout;
 import com.tencent.qphone.base.util.QLog;
-import ubc;
+import ube;
 
 public class QQBrowserSwipeLayout
   extends SwipeBackLayout
@@ -35,7 +35,7 @@ public class QQBrowserSwipeLayout
   public QQBrowserSwipeLayout(Context paramContext, boolean paramBoolean)
   {
     super(paramContext, paramBoolean);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new aewh(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new affl(this, paramContext));
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -57,7 +57,7 @@ public class QQBrowserSwipeLayout
         this.jdField_d_of_type_Int = i;
         this.jdField_b_of_type_Int = i;
         this.jdField_c_of_type_Int = ((int)paramMotionEvent.getRawY());
-        if ((this.jdField_b_of_type_Int < this.jdField_e_of_type_Int / 3) && ((this.jdField_a_of_type_Ubc.a()) || (!a(paramMotionEvent))) && (this.jdField_e_of_type_Boolean)) {
+        if ((this.jdField_b_of_type_Int < this.jdField_e_of_type_Int / 3) && ((this.jdField_a_of_type_Ube.a()) || (!a(paramMotionEvent))) && (this.jdField_e_of_type_Boolean)) {
           this.jdField_d_of_type_Boolean = true;
         }
       }

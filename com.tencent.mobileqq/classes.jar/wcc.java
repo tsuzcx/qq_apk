@@ -1,23 +1,13 @@
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleSpecialFollowUserItemView;
 
-final class wcc
-  implements Comparator<wcl>
+public class wcc
+  implements DialogInterface.OnClickListener
 {
-  public int a(wcl paramwcl1, wcl paramwcl2)
-  {
-    if (paramwcl1.a() > paramwcl2.a()) {}
-    do
-    {
-      return 1;
-      if (paramwcl1.a() < paramwcl2.a()) {
-        return -1;
-      }
-      if (paramwcl1.d() == paramwcl2.d()) {
-        return 0;
-      }
-    } while (paramwcl1.d() < paramwcl2.d());
-    return -1;
-  }
+  public wcc(QCircleSpecialFollowUserItemView paramQCircleSpecialFollowUserItemView) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

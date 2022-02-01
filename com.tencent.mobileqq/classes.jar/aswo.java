@@ -1,39 +1,27 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView;
 
 public class aswo
-  extends atwn
+  extends RecyclerView.ViewHolder
 {
-  public aswo(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  private ExtendFriendCampusVerifyTipsView a;
   
-  public void a()
+  public aswo(View paramView, atdp paramatdp)
   {
-    this.a.a.a().c();
+    super(paramView);
+    this.a = ((ExtendFriendCampusVerifyTipsView)paramView);
+    this.a.setOnClickListener(paramatdp);
   }
   
-  public void b()
+  public void a(asxh paramasxh, int paramInt)
   {
-    this.a.a.a().k();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().l();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().m();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().n();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().D();
+    if ((paramasxh instanceof aswp))
+    {
+      paramasxh = (aswp)paramasxh;
+      this.a.setTipsType(paramasxh.a);
+      this.a.setPadding(0, paramInt, 0, 0);
+    }
   }
 }
 

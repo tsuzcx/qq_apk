@@ -15,7 +15,7 @@ class FileJsPlugin$13
     //   3: lstore_1
     //   4: aload_0
     //   5: getfield 20	com/tencent/qqmini/sdk/plugins/FileJsPlugin$13:this$0	Lcom/tencent/qqmini/sdk/plugins/FileJsPlugin;
-    //   8: invokestatic 50	com/tencent/qqmini/sdk/plugins/FileJsPlugin:access$5700	(Lcom/tencent/qqmini/sdk/plugins/FileJsPlugin;)Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
+    //   8: invokestatic 50	com/tencent/qqmini/sdk/plugins/FileJsPlugin:access$5500	(Lcom/tencent/qqmini/sdk/plugins/FileJsPlugin;)Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
     //   11: ldc 52
     //   13: invokeinterface 58 2 0
     //   18: checkcast 52	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
@@ -54,7 +54,7 @@ class FileJsPlugin$13
     //   92: areturn
     //   93: aload_0
     //   94: getfield 20	com/tencent/qqmini/sdk/plugins/FileJsPlugin$13:this$0	Lcom/tencent/qqmini/sdk/plugins/FileJsPlugin;
-    //   97: invokestatic 90	com/tencent/qqmini/sdk/plugins/FileJsPlugin:access$5800	(Lcom/tencent/qqmini/sdk/plugins/FileJsPlugin;)Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
+    //   97: invokestatic 90	com/tencent/qqmini/sdk/plugins/FileJsPlugin:access$5600	(Lcom/tencent/qqmini/sdk/plugins/FileJsPlugin;)Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
     //   100: ldc 52
     //   102: invokeinterface 58 2 0
     //   107: checkcast 52	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
@@ -130,7 +130,7 @@ class FileJsPlugin$13
     //   259: areturn
     //   260: aload_0
     //   261: getfield 20	com/tencent/qqmini/sdk/plugins/FileJsPlugin$13:this$0	Lcom/tencent/qqmini/sdk/plugins/FileJsPlugin;
-    //   264: invokestatic 129	com/tencent/qqmini/sdk/plugins/FileJsPlugin:access$5900	(Lcom/tencent/qqmini/sdk/plugins/FileJsPlugin;)Z
+    //   264: invokestatic 129	com/tencent/qqmini/sdk/plugins/FileJsPlugin:access$5700	(Lcom/tencent/qqmini/sdk/plugins/FileJsPlugin;)Z
     //   267: ifeq +57 -> 324
     //   270: new 124	org/json/JSONObject
     //   273: dup
@@ -208,7 +208,7 @@ class FileJsPlugin$13
     //   420: areturn
     //   421: aload_0
     //   422: getfield 20	com/tencent/qqmini/sdk/plugins/FileJsPlugin$13:this$0	Lcom/tencent/qqmini/sdk/plugins/FileJsPlugin;
-    //   425: invokestatic 161	com/tencent/qqmini/sdk/plugins/FileJsPlugin:access$6000	(Lcom/tencent/qqmini/sdk/plugins/FileJsPlugin;)Z
+    //   425: invokestatic 161	com/tencent/qqmini/sdk/plugins/FileJsPlugin:access$5800	(Lcom/tencent/qqmini/sdk/plugins/FileJsPlugin;)Z
     //   428: ifeq +57 -> 485
     //   431: new 124	org/json/JSONObject
     //   434: dup

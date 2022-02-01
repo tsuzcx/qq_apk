@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bcst;
+import bdll;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collections;
 import java.util.List;
@@ -56,7 +56,7 @@ class TroopAssistantActivity$18
     }
     catch (Exception localException1)
     {
-      bcst.b(this.this$0.app, "P_CliOper", "BizTechReport", "", "troop_assistant", "load_data_failed", 0, 0, localException1.toString(), "", "", "");
+      bdll.b(this.this$0.app, "P_CliOper", "BizTechReport", "", "troop_assistant", "load_data_failed", 0, 0, localException1.toString(), "", "", "");
       if (QLog.isColorLevel()) {
         QLog.i("TroopAssistantActivity", 2, "refreshTroopList exception:" + localException1.toString());
       }

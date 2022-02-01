@@ -1,25 +1,23 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
+import com.tencent.widget.ListView;
 
-final class bccn
-  implements bccq
+public class bccn
+  extends bcbj<bcfr, bcnz>
 {
-  bccn(BusinessObserver paramBusinessObserver) {}
-  
-  public void a(int paramInt, String paramString)
+  public bccn(FunctionSearchFragment paramFunctionSearchFragment, ListView paramListView, aoof paramaoof)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("dataErrorMsg", paramString);
-    localBundle.putInt("dataErrorCode", paramInt);
-    this.a.onReceive(0, false, localBundle);
+    super(paramListView, paramaoof);
   }
   
-  public void a(String paramString)
+  protected bcil<bcfr, bcnz> a(int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putByteArray("data", paramString.getBytes());
-    localBundle.putString("cmd", "isIpForeign");
-    this.a.onReceive(0, true, localBundle);
+    return new bchs(this.jdField_a_of_type_Aoof, 268435456);
+  }
+  
+  protected bcoa a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new bcph(paramViewGroup, 268435456);
   }
 }
 

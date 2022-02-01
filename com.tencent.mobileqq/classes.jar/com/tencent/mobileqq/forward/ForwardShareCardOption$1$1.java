@@ -7,7 +7,7 @@ class ForwardShareCardOption$1$1
   
   public void run()
   {
-    this.a.this$0.l();
+    this.a.this$0.m();
   }
 }
 

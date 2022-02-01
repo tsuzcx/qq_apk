@@ -1,18 +1,17 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
+import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
+import com.tencent.biz.qqcircle.scrollers.QCircleFeedPicPreloadScroller.3;
+import java.util.concurrent.ConcurrentHashMap;
 
-class vum
-  implements zxa<FeedCloudRead.StGetBusiInfoRsp>
+public class vum
+  extends vrh
 {
-  vum(vul paramvul, QCircleGetTabListRequest paramQCircleGetTabListRequest) {}
+  public vum(QCircleFeedPicPreloadScroller.3 param3) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
+  public void a(int paramInt, vrd paramvrd)
   {
-    boolean bool = VSNetworkHelper.a(paramString);
-    QLog.d("QCircleTabViewModel", 1, "requestTabData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isCache:" + bool);
-    this.jdField_a_of_type_Vul.a(paramBoolean, paramLong, paramString, paramStGetBusiInfoRsp);
+    if ((paramInt == QCircleFeedPicLoader.f) || (paramInt == QCircleFeedPicLoader.c)) {
+      vuj.a(this.a.this$0).put(paramvrd.b(), Boolean.valueOf(true));
+    }
   }
 }
 

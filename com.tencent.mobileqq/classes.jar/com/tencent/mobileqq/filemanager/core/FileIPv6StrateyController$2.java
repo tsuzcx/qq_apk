@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atcq;
+import atul;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
 public class FileIPv6StrateyController$2
@@ -8,11 +8,11 @@ public class FileIPv6StrateyController$2
 {
   public void run()
   {
-    if (!atcq.a(this.this$0)) {
+    if (!atul.a(this.this$0)) {
       return;
     }
     AppNetConnInfo.unregisterNetInfoHandler(this.this$0);
-    atcq.a(this.this$0, false);
+    atul.a(this.this$0, false);
   }
 }
 

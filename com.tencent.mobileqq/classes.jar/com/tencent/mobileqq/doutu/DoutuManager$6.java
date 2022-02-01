@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.doutu;
 
-import armo;
-import armt;
+import asce;
+import ascj;
 
 public class DoutuManager$6
   implements Runnable
 {
-  public DoutuManager$6(armt paramarmt, long paramLong) {}
+  public DoutuManager$6(ascj paramascj, long paramLong) {}
   
   public void run()
   {

@@ -1,11 +1,18 @@
-class bfov
-  implements bfzn
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.InviteToGroupInfo.UinInfo;
+
+public final class bfov
+  implements Parcelable.Creator<InviteToGroupInfo.UinInfo>
 {
-  bfov(bfos parambfos) {}
-  
-  public void a()
+  public InviteToGroupInfo.UinInfo a(Parcel paramParcel)
   {
-    this.a.e();
+    return new InviteToGroupInfo.UinInfo(paramParcel);
+  }
+  
+  public InviteToGroupInfo.UinInfo[] a(int paramInt)
+  {
+    return new InviteToGroupInfo.UinInfo[paramInt];
   }
 }
 

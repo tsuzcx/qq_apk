@@ -1,40 +1,54 @@
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
 
-class arml
+public class arml
+  extends armf<armi>
 {
-  arml(armk paramarmk, boolean paramBoolean) {}
-  
-  @QQPermissionDenied(1818)
-  public void denied()
+  @NonNull
+  public static armi c()
   {
-    QLog.e("VoiceInputHelper", 1, "checkPermission user denied");
-    armk.a(this.jdField_a_of_type_Armk);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Armk.onGetError(1830001);
-      return;
+    armi localarmi2 = (armi)aran.a().a(541);
+    armi localarmi1 = localarmi2;
+    if (localarmi2 == null) {
+      localarmi1 = armi.a();
     }
-    armk.a(this.jdField_a_of_type_Armk, false, 1830001);
+    return localarmi1;
   }
   
-  @QQPermissionGrant(1818)
-  public void grant()
+  @NonNull
+  public armi a()
   {
-    QLog.d("VoiceInputHelper", 1, "checkPermission user grant");
-    armk.a(this.jdField_a_of_type_Armk);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      armk.b(this.jdField_a_of_type_Armk);
-      return;
+    return armi.a();
+  }
+  
+  @NonNull
+  public armi a(@NonNull araj[] paramArrayOfaraj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("KC.ConfigProcessor", 1, paramArrayOfaraj[0].a);
     }
-    armk.a(this.jdField_a_of_type_Armk, true, 0);
+    return armi.a(paramArrayOfaraj[0].a);
+  }
+  
+  @NonNull
+  public armi b()
+  {
+    return armi.a();
+  }
+  
+  public Class<armi> clazz()
+  {
+    return armi.class;
+  }
+  
+  public int type()
+  {
+    return 541;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arml
  * JD-Core Version:    0.7.0.1
  */

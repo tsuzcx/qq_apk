@@ -7,11 +7,11 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
-import stx;
+import slb;
 
 class ReadInJoyPicWaterFallFragment$ScrollableHeader
   extends FrameLayout
-  implements stx
+  implements slb
 {
   Rect a = new Rect();
   

@@ -1,16 +1,6 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-
-public class swi
-  implements MessageQueue.IdleHandler
+public abstract interface swi
 {
-  public swi(FastWebActivity paramFastWebActivity) {}
-  
-  public boolean queueIdle()
-  {
-    FastWebActivity.a(this.a, this.a.a);
-    return false;
-  }
+  public abstract void a();
 }
 
 

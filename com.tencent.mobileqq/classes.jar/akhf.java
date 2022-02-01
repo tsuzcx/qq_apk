@@ -1,26 +1,37 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class akhf
-  implements akhd
+  implements akgz
 {
-  akhf(akhe paramakhe) {}
+  akhf(akha paramakha) {}
   
-  public void a(long paramLong, float paramFloat, String paramString)
+  public void a()
   {
-    akhe.a(this.a).put(Long.valueOf(paramLong), Float.valueOf(paramFloat));
-    akhe.a(this.a).a(paramLong, paramFloat, paramString);
+    this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
   }
   
-  public void b(long paramLong)
+  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
   {
-    QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onDownloadSuccess:" + paramLong);
-    akhe.a(this.a).b(paramLong);
+    boolean bool = true;
+    Object localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    ((Message)localObject).obj = paramRedTypeInfo;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+    localObject = pfs.a();
+    if (paramRedTypeInfo != null) {}
+    for (;;)
+    {
+      ((pfs)localObject).b(bool);
+      return;
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhf
  * JD-Core Version:    0.7.0.1
  */

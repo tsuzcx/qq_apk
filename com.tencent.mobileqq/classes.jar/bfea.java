@@ -1,29 +1,20 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
 
-class bfea
-  implements nkm
+public class bfea
+  implements View.OnTouchListener
 {
-  bfea(bfdy parambfdy, long paramLong) {}
+  public bfea(TribeVideoPreviewFragment paramTribeVideoPreviewFragment) {}
   
-  public void loaded(int paramInt, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SoLibraryLoader", 2, "transToLocalUrl loadMode:" + paramInt + ", time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.getActivity().finish();
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("SoLibraryLoader", 4, "transToLocalUrl transUrl:" + paramString);
-    }
-    paramString = nku.a(bfdy.a(this.jdField_a_of_type_Bfdy)) + bfdy.a(this.jdField_a_of_type_Bfdy) + File.separator + bfdy.b(this.jdField_a_of_type_Bfdy);
-    if (!new File(paramString).exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("SoLibraryLoader", 2, "file not exist! path = " + paramString);
-      }
-      return;
-    }
-    bgmg.d(paramString, bfdy.a(this.jdField_a_of_type_Bfdy).getFilesDir().getAbsolutePath() + File.separator + bfdy.b(this.jdField_a_of_type_Bfdy));
+    return true;
   }
 }
 

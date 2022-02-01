@@ -1,41 +1,37 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.cs.smartptt.Smartptt.PttUpReq;
-import tencent.im.cs.smartptt.Smartptt.ReqBody;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.CompletionListener.1;
+import mqq.util.WeakReference;
 
 public class bdyw
+  implements MediaPlayer.OnCompletionListener
 {
-  public static Smartptt.ReqBody a(bdyx parambdyx)
+  private WeakReference<VideoSprite> a;
+  
+  private bdyw(VideoSprite paramVideoSprite)
   {
-    int j = 0;
-    Smartptt.ReqBody localReqBody = new Smartptt.ReqBody();
-    localReqBody.uint32_sub_cmd.set(3);
-    Smartptt.PttUpReq localPttUpReq = new Smartptt.PttUpReq();
-    localPttUpReq.uint32_bits_per_sample.set(16);
-    localPttUpReq.uint32_voice_file_type.set(1);
-    localPttUpReq.uint32_voice_encode_type.set(parambdyx.jdField_a_of_type_Int);
-    localPttUpReq.uint32_samples_per_sec.set(16000);
-    localPttUpReq.str_voice_id.set(parambdyx.jdField_a_of_type_JavaLangString);
-    PBUInt32Field localPBUInt32Field = localPttUpReq.uint32_is_first;
-    if (parambdyx.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
+    this.a = new WeakReference(paramVideoSprite);
+  }
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    paramMediaPlayer = (VideoSprite)this.a.get();
+    if (paramMediaPlayer == null) {}
+    do
     {
-      localPBUInt32Field.set(i);
-      localPBUInt32Field = localPttUpReq.uint32_is_end;
-      i = j;
-      if (parambdyx.jdField_b_of_type_Boolean) {
-        i = 1;
+      return;
+      if (paramMediaPlayer.j)
+      {
+        paramMediaPlayer.b.b(new VideoSprite.CompletionListener.1(this, paramMediaPlayer));
+        return;
       }
-      localPBUInt32Field.set(i);
-      localPttUpReq.uint32_offset.set(parambdyx.jdField_b_of_type_Int);
-      localPttUpReq.str_Filemd5.set(parambdyx.jdField_c_of_type_JavaLangString);
-      localPttUpReq.uint32_chat_type.set(parambdyx.e);
-      localPttUpReq.uint32_service_id.set(1);
-      localPttUpReq.uint32_voice_num.set(parambdyx.jdField_c_of_type_Int);
-      localPttUpReq.uint32_voice_offset.set(parambdyx.d);
-      localReqBody.msg_ptt_up_req.set(localPttUpReq);
-      return localReqBody;
-    }
+      paramMediaPlayer.g = false;
+      paramMediaPlayer.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    } while (paramMediaPlayer.jdField_a_of_type_Bdyi == null);
+    paramMediaPlayer.jdField_a_of_type_Bdyi.a();
   }
 }
 

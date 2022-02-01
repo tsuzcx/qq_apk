@@ -1,24 +1,12 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
-import java.lang.ref.WeakReference;
-
-public class awvj
-  extends GestureDetector.SimpleOnGestureListener
+public abstract interface awvj
 {
-  public awvj(MultiCardRootLayout paramMultiCardRootLayout) {}
+  public abstract void a(int paramInt, Exception paramException);
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if ((MultiCardRootLayout.a(this.a)) && (MultiCardRootLayout.a(this.a) != null))
-    {
-      awvm localawvm = (awvm)MultiCardRootLayout.a(this.a).get();
-      if (localawvm != null) {
-        localawvm.a(this.a);
-      }
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
-  }
+  public abstract void a(Exception paramException);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import bdme;
+import beez;
 import com.tencent.biz.widgets.ElasticHorScrView;
 
 public class ShareUtils$2
   implements Runnable
 {
-  public ShareUtils$2(bdme parambdme, int paramInt1, int paramInt2) {}
+  public ShareUtils$2(beez parambeez, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (bdme.a(this.this$0).getWidth() < this.a) {
-      bdme.a(this.this$0).setMove(true);
+    if (beez.a(this.this$0).getWidth() < this.a) {
+      beez.a(this.this$0).setMove(true);
     }
-    while (bdme.b(this.this$0).getWidth() < this.b)
+    while (beez.b(this.this$0).getWidth() < this.b)
     {
-      bdme.b(this.this$0).setMove(true);
+      beez.b(this.this$0).setMove(true);
       return;
-      bdme.a(this.this$0).setMove(false);
+      beez.a(this.this$0).setMove(false);
     }
-    bdme.b(this.this$0).setMove(false);
+    beez.b(this.this$0).setMove(false);
   }
 }
 

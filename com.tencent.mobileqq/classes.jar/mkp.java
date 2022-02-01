@@ -1,22 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.QavPanel;
+import android.widget.ImageButton;
 import com.tencent.av.ui.VideoInviteActivity;
 
-class mkp
-  implements DialogInterface.OnClickListener
+public class mkp
+  implements bljb
 {
-  mkp(mkn parammkn) {}
+  public mkp(VideoInviteActivity paramVideoInviteActivity, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss()
   {
-    mqw.e(false, false);
-    if (paramDialogInterface != null)
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramDialogInterface.dismiss();
-      if ((this.a.a.a != null) && (this.a.a.a.a != null)) {
-        this.a.a.a.a.b();
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+      for (str = "0X80043A4";; str = "0X80043B6")
+      {
+        bdll.b(null, "CliOper", "", "", str, str, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
+        if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton != null))
+        {
+          this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setEnabled(true);
+          this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton.setEnabled(true);
+        }
+        return;
       }
+    }
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+    for (String str = "0X80043AA";; str = "0X80043B0") {
+      break;
     }
   }
 }

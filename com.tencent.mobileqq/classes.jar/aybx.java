@@ -1,44 +1,41 @@
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.support.v4.app.NotificationCompat.BigTextStyle;
-import android.support.v4.app.NotificationCompat.Builder;
-import android.support.v4.app.NotificationCompat.Style;
-import android.text.TextUtils;
-import androidx.annotation.RequiresApi;
-import com.tencent.commonsdk.util.notification.SdkInfoUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.CustomViewPager;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/NotificationBuilder;", "", "()V", "build", "Landroid/app/Notification;", "contentIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class aybx
+public class aybx
+  implements ayfx
 {
-  public static final aybx a = new aybx();
+  public aybx(SmallVideoFragment paramSmallVideoFragment) {}
   
-  @RequiresApi(16)
-  @NotNull
-  public final Notification a(@Nullable PendingIntent paramPendingIntent, @NotNull ayca paramayca)
+  public void a(int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramayca, "pushComponent");
-    NotificationCompat.BigTextStyle localBigTextStyle = new NotificationCompat.BigTextStyle();
-    localBigTextStyle.bigText((CharSequence)paramayca.c);
-    paramPendingIntent = new NotificationCompat.Builder((Context)BaseApplication.context).setSmallIcon(2130841393).setAutoCancel(true).setContentText((CharSequence)paramayca.c).setWhen(System.currentTimeMillis()).setTicker((CharSequence)paramayca.c).setContentIntent(paramPendingIntent).setPriority(2).setStyle((NotificationCompat.Style)localBigTextStyle);
-    if (!TextUtils.isEmpty((CharSequence)paramayca.a)) {
-      paramPendingIntent.setContentTitle((CharSequence)paramayca.a);
+    Object localObject;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a() != null)
+    {
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a().jdField_a_of_type_JavaLangString;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a() == null) {
+        break label168;
+      }
     }
-    if ((SdkInfoUtil.isOreo()) && (SdkInfoUtil.isTargetSDKOreo())) {
-      paramPendingIntent.setChannelId("CHANNEL_ID_OTHER");
+    label168:
+    for (long l = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a().jdField_a_of_type_Long;; l = 0L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Native_ShortVideo_Report", 2, "onClickClose report module=short_video, action=view_click, obj1=6, res2=" + (String)localObject + ", anchor=" + l);
+      }
+      localObject = (VideoPlayerPagerAdapter)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getAdapter();
+      if ((((VideoPlayerPagerAdapter)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getCurrentItem()) instanceof ShortVideoCommentsView)) {
+        ((ShortVideoCommentsView)((VideoPlayerPagerAdapter)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getCurrentItem())).j();
+      }
+      this.a.d();
+      return;
+      localObject = "0";
+      break;
     }
-    paramayca = aycb.a.a(paramayca.b);
-    if (paramayca != null) {
-      paramPendingIntent.setLargeIcon(paramayca);
-    }
-    paramPendingIntent = paramPendingIntent.build();
-    Intrinsics.checkExpressionValueIsNotNull(paramPendingIntent, "notifyBuilder.build()");
-    return paramPendingIntent;
   }
 }
 

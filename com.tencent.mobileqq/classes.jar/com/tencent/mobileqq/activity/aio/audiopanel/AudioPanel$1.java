@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import bdxh;
+import bewa;
 
 class AudioPanel$1
   implements Runnable
@@ -9,7 +9,7 @@ class AudioPanel$1
   
   public void run()
   {
-    bdxh.c(this.a);
+    bewa.c(this.a);
   }
 }
 

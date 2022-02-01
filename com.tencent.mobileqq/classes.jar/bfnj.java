@@ -1,59 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.widget.CustomHorizontalScrollView;
 
 public class bfnj
-  extends aqkz<bfni>
+  extends Handler
 {
-  @NonNull
-  public bfni a(int paramInt)
-  {
-    QLog.d("TroopMemberLevelMapCofigProcessor", 2, "migrateOldOrDefaultContent, type = " + paramInt);
-    return new bfni();
-  }
+  public bfnj(NewTroopContactView paramNewTroopContactView) {}
   
-  @Nullable
-  public bfni a(aqlg[] paramArrayOfaqlg)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberLevelMapCofigProcessor", 2, "onParsed");
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return bfni.a(paramArrayOfaqlg[0].a);
-    }
-    return null;
-  }
-  
-  public void a(bfni parambfni) {}
-  
-  public Class<bfni> clazz()
-  {
-    return bfni.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TroopMemberLevelMapCofigProcessor", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 659;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
   }
 }
 

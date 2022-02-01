@@ -1,40 +1,56 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
-import com.tencent.widget.pull2refresh.RecyclerViewCompat;
+import android.arch.lifecycle.MutableLiveData;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudCommon.StCommonExt;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.ArrayList;
+import java.util.Collection;
+import qqcircle.QQCircleFeedBase.StFollowPageData;
+import qqcircle.QQCircleFeedBase.StTabInfo;
 
 public class vlf
-  extends RecyclerView.ViewHolder
 {
   private int jdField_a_of_type_Int;
-  private final QCircleContentOperationView jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
-  public RecyclerViewCompat a;
-  public vjn a;
+  private FeedCloudCommon.StCommonExt jdField_a_of_type_FeedcloudFeedCloudCommon$StCommonExt;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<FeedCloudMeta.StFeed> jdField_a_of_type_JavaUtilArrayList;
+  private QQCircleFeedBase.StFollowPageData jdField_a_of_type_QqcircleQQCircleFeedBase$StFollowPageData;
+  private QQCircleFeedBase.StTabInfo jdField_a_of_type_QqcircleQQCircleFeedBase$StTabInfo;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public vlf(vld paramvld, View paramView)
+  public static vlf a(vwy paramvwy, int paramInt1, int paramInt2)
   {
-    super(paramView);
-    paramvld = (FrameLayout)paramView;
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat = ((RecyclerViewCompat)paramvld.getChildAt(0));
-    this.jdField_a_of_type_Vjn = ((vjn)this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.getAdapter());
-    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView = ((QCircleContentOperationView)paramvld.getChildAt(1));
-    this.jdField_a_of_type_Vjn.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView);
-  }
-  
-  public RecyclerViewCompat a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat;
-  }
-  
-  public vjn a()
-  {
-    return this.jdField_a_of_type_Vjn;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramvwy == null)
+    {
+      QLog.d("QCircleFolderCacheHelper", 1, "wrap failed!model is null");
+      return null;
+    }
+    vlf localvlf = new vlf();
+    QQCircleFeedBase.StTabInfo localStTabInfo = paramvwy.a();
+    Collection localCollection = paramvwy.a();
+    boolean bool = paramvwy.b();
+    FeedCloudCommon.StCommonExt localStCommonExt = paramvwy.a();
+    String str1 = paramvwy.b();
+    String str2 = paramvwy.c();
+    if ((localStTabInfo == null) || (localCollection == null) || (localCollection.isEmpty()) || (TextUtils.isEmpty(str1)))
+    {
+      QLog.d("QCircleFolderCacheHelper", 1, "wrap failed!miss key data!");
+      return null;
+    }
+    localvlf.jdField_a_of_type_Int = paramInt1;
+    localvlf.jdField_b_of_type_Int = paramInt2;
+    localvlf.jdField_a_of_type_QqcircleQQCircleFeedBase$StTabInfo = localStTabInfo;
+    localvlf.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    localvlf.jdField_a_of_type_JavaUtilArrayList.addAll(localCollection);
+    localvlf.jdField_a_of_type_Boolean = bool;
+    localvlf.jdField_a_of_type_FeedcloudFeedCloudCommon$StCommonExt = localStCommonExt;
+    localvlf.jdField_a_of_type_JavaLangString = str1;
+    localvlf.jdField_b_of_type_JavaLangString = str2;
+    localvlf.jdField_a_of_type_QqcircleQQCircleFeedBase$StFollowPageData = ((QQCircleFeedBase.StFollowPageData)paramvwy.b().getValue());
+    QLog.d("QCircleFolderCacheHelper", 1, "wrap success!");
+    return localvlf;
   }
 }
 

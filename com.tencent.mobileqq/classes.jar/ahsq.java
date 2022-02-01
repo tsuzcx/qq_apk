@@ -1,53 +1,27 @@
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.24.1;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageForStarLeague;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahsq
-  implements ahrx
+class ahsq
+  implements View.OnClickListener
 {
-  ahsq(ahsd paramahsd) {}
+  ahsq(ahsp paramahsp) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    View localView;
-    if (paramInt == 0)
+    MessageForStarLeague localMessageForStarLeague = (MessageForStarLeague)((ahsr)agej.a(paramView)).a;
+    if (!axev.a((BaseActivity)paramView.getContext(), localMessageForStarLeague.actionUrl, localMessageForStarLeague))
     {
-      localView = this.a.a().findViewById(2131367298);
-      if (localView != null) {}
+      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("url", localMessageForStarLeague.actionUrl);
+      paramView.getContext().startActivity(localIntent);
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localView.setVisibility(0);
-          AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-          localAlphaAnimation.setDuration(300L);
-          localView.startAnimation(localAlphaAnimation);
-          localView.postDelayed(new AIOGalleryScene.24.1(this, localView), 8000L);
-          return;
-          if (1 != paramInt) {
-            break;
-          }
-        } while ((this.a.jdField_a_of_type_Bckg == null) || (((ahsd.J(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)ahsd.K(this.a)).b)) || (this.a.c));
-        this.a.c(null);
-        return;
-        if (2 != paramInt) {
-          break;
-        }
-        this.a.a(null);
-      } while ((this.a.jdField_a_of_type_Bckg == null) || (((ahsd.L(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)ahsd.M(this.a)).b)) || (this.a.c));
-      this.a.jdField_a_of_type_Bckg.b(this.a.jdField_a_of_type_Ahtj.a().jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData);
-      return;
-    } while (3 != paramInt);
-    this.a.jdField_a_of_type_Ahtj.a().jdField_a_of_type_Ahuj.i = true;
-    this.a.e.setText("");
-    this.a.u();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

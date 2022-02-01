@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.videonew;
 
 import android.widget.TextView;
-import ryx;
+import rpt;
 
 class ViolaVideoView$11
   implements Runnable
@@ -10,7 +10,7 @@ class ViolaVideoView$11
   
   public void run()
   {
-    ryx.a(this.a, 8);
+    rpt.a(this.a, 8);
   }
 }
 

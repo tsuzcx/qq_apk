@@ -1,13 +1,14 @@
+import com.tencent.mobileqq.data.ApolloActionData;
+
 public class anpy
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
+  public void a() {}
+  
+  public void a(ApolloActionData paramApolloActionData) {}
+  
+  public void a(Boolean paramBoolean) {}
+  
+  public void b(ApolloActionData paramApolloActionData) {}
 }
 
 

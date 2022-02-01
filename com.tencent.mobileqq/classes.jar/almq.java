@@ -1,558 +1,407 @@
-import android.net.NetworkInfo;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.AppInterface;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView.ScaleType;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.richmedia.subtitles.EncodeRunnable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.recent.QbossADBannerManager.2;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.nio.ByteBuffer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.util.QZLog;
 import java.util.HashMap;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class almq
-  implements alnd
+  implements View.OnClickListener
 {
-  private static almq jdField_a_of_type_Almq;
-  private static String jdField_a_of_type_JavaLangString = "AudioTranslator";
-  private long jdField_a_of_type_Long;
-  private alnz jdField_a_of_type_Alnz;
-  private bavu jdField_a_of_type_Bavu;
-  private WeakReference<AudioCapture> jdField_a_of_type_JavaLangRefWeakReference;
+  private aljw jdField_a_of_type_Aljw;
+  protected View a;
+  protected URLImageView a;
+  protected BaseActivity a;
+  private Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new HashMap();
   private boolean jdField_a_of_type_Boolean;
+  protected View b;
   private boolean b;
   private boolean c;
   
-  public static almq a()
+  public static almq a(BaseActivity paramBaseActivity, aljw paramaljw)
   {
-    try
+    Object localObject = almo.a().a(a());
+    if (localObject != null)
     {
-      if (jdField_a_of_type_Almq == null) {
-        jdField_a_of_type_Almq = new almq();
-      }
-      return jdField_a_of_type_Almq;
-    }
-    finally {}
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_Alnz == null) {
-      return;
-    }
-    this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new almr(this);
-    AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-  }
-  
-  private void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "tryReconnect, start");
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Alnz == null) {
-        return;
-      }
-      if (this.jdField_a_of_type_Alnz.jdField_a_of_type_JavaLangRefWeakReference == null) {
-        return;
-      }
-    }
-    finally {}
-    e();
-  }
-  
-  /* Error */
-  private void a(alnz paramalnz, boolean paramBoolean, int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnonnull +6 -> 9
-    //   6: aload_0
-    //   7: monitorexit
-    //   8: return
-    //   9: iload_2
-    //   10: ifeq +58 -> 68
-    //   13: iload_3
-    //   14: ifgt +11 -> 25
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: return
-    //   20: astore_1
-    //   21: aload_0
-    //   22: monitorexit
-    //   23: aload_1
-    //   24: athrow
-    //   25: aload_1
-    //   26: getfield 94	alnz:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   29: ifnonnull +17 -> 46
-    //   32: aload_1
-    //   33: new 96	android/os/Handler
-    //   36: dup
-    //   37: invokestatic 102	com/tencent/mobileqq/app/ThreadManager:getSubThreadLooper	()Landroid/os/Looper;
-    //   40: invokespecial 105	android/os/Handler:<init>	(Landroid/os/Looper;)V
-    //   43: putfield 94	alnz:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   46: aload_1
-    //   47: getfield 94	alnz:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   50: new 107	com/tencent/mobileqq/activity/richmedia/subtitles/AudioTranslator$3
-    //   53: dup
-    //   54: aload_0
-    //   55: iload_3
-    //   56: invokespecial 109	com/tencent/mobileqq/activity/richmedia/subtitles/AudioTranslator$3:<init>	(Lalmq;I)V
-    //   59: iload_3
-    //   60: i2l
-    //   61: invokevirtual 113	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   64: pop
-    //   65: aload_0
-    //   66: monitorexit
-    //   67: return
-    //   68: aload_1
-    //   69: getfield 94	alnz:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   72: ifnull +16 -> 88
-    //   75: aload_1
-    //   76: getfield 94	alnz:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   79: aconst_null
-    //   80: invokevirtual 117	android/os/Handler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
-    //   83: aload_1
-    //   84: aconst_null
-    //   85: putfield 94	alnz:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   88: invokestatic 70	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   91: ifeq -26 -> 65
-    //   94: getstatic 23	almq:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   97: iconst_2
-    //   98: ldc 119
-    //   100: invokestatic 76	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   103: goto -38 -> 65
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	106	0	this	almq
-    //   0	106	1	paramalnz	alnz
-    //   0	106	2	paramBoolean	boolean
-    //   0	106	3	paramInt	int
-    // Exception table:
-    //   from	to	target	type
-    //   6	8	20	finally
-    //   17	19	20	finally
-    //   21	23	20	finally
-    //   25	46	20	finally
-    //   46	65	20	finally
-    //   65	67	20	finally
-    //   68	88	20	finally
-    //   88	103	20	finally
-  }
-  
-  public static boolean a(boolean paramBoolean)
-  {
-    NetworkInfo localNetworkInfo = AppNetConnInfo.getRecentNetworkInfo();
-    if (localNetworkInfo == null) {}
-    boolean bool;
-    do
-    {
-      return false;
-      bool = localNetworkInfo.isConnected();
-      if (!paramBoolean) {
-        break;
-      }
-    } while (!AppNetConnInfo.isWifiConn());
-    return true;
-    return bool;
-  }
-  
-  private void b()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_Bavu != null) {
-        return;
-      }
-      this.jdField_a_of_type_Bavu = new alms(this);
-      QQStoryContext.a().addObserver(this.jdField_a_of_type_Bavu);
-      return;
-    }
-    finally {}
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  private void c()
-  {
-    String str1 = "";
-    try
-    {
-      if (this.jdField_a_of_type_Alnz == null) {
-        return;
-      }
-      if (this.jdField_a_of_type_Alnz.jdField_b_of_type_Int != 3)
+      if (bnua.a(((almm)localObject).jdField_c_of_type_JavaLangString)) {}
+      for (localObject = ((almm)localObject).b();; localObject = ((almm)localObject).a())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, " changesession state error:" + this.jdField_a_of_type_Alnz.jdField_b_of_type_Int);
+        if (localObject != null) {
+          ((almq)localObject).a(paramBaseActivity, paramaljw);
         }
-        return;
+        return localObject;
       }
     }
-    finally {}
-    boolean bool = this.jdField_a_of_type_Alnz.jdField_a_of_type_Boolean;
-    String str2;
-    if (this.jdField_a_of_type_Alnz.jdField_a_of_type_Long != -1L) {
-      str2 = String.valueOf(this.jdField_a_of_type_Alnz.jdField_a_of_type_Long);
+    return null;
+  }
+  
+  private static String a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("QbossADBannerManager", 4, "getCurrentUin = " + localAppRuntime.getAccount());
+      }
+      return localAppRuntime.getAccount();
     }
-    ((bavs)QQStoryContext.a().getBusinessHandler(0)).a(str2, "TransInfo.ChangeSession", null, 0, 0, bool);
+    return null;
+  }
+  
+  private void b(almm paramalmm)
+  {
+    this.jdField_b_of_type_Boolean = paramalmm.a();
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.c = this.jdField_a_of_type_Aljw.a();
+      if (this.c) {
+        i();
+      }
+    }
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "changesession start:" + bool + " sessionid:" + str2);
+      QLog.d("QbossADBannerManager", 2, "startPreloadWebView needed: " + this.jdField_b_of_type_Boolean + ", done: " + this.c);
     }
   }
   
-  private void c(boolean paramBoolean)
+  private void i()
   {
-    boolean bool;
-    try
-    {
-      if (this.jdField_a_of_type_Alnz == null) {
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "checksession state:" + this.jdField_a_of_type_Alnz.jdField_b_of_type_Int + "  withenglish:" + paramBoolean + " old:" + this.jdField_a_of_type_Alnz.jdField_a_of_type_Boolean);
-      }
-      bool = this.jdField_a_of_type_Alnz.jdField_a_of_type_Boolean;
-      this.jdField_a_of_type_Alnz.jdField_a_of_type_Boolean = paramBoolean;
-      if (this.jdField_a_of_type_Alnz.jdField_b_of_type_Int == 1)
-      {
-        if (this.jdField_a_of_type_Alnz.jdField_a_of_type_Boolean != bool) {
-          this.jdField_a_of_type_Alnz.jdField_b_of_type_Boolean = true;
-        }
-        return;
-      }
-    }
-    finally {}
-    if (this.jdField_a_of_type_Alnz.jdField_b_of_type_Int == 3)
-    {
-      if (this.jdField_a_of_type_Alnz.jdField_a_of_type_Boolean != bool) {
-        c();
-      }
-      return;
-    }
-    this.jdField_a_of_type_Alnz.jdField_b_of_type_Int = 1;
-    ((bavs)QQStoryContext.a().getBusinessHandler(0)).a(null, "TransInfoCreate.CreateSession", null, 0, 0, paramBoolean);
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("from", -1);
+    localIntent.setAction("com.tencent.mobileqq.webprocess.preload_web_process");
+    localIntent.setPackage(MobileQQ.getContext().getPackageName());
+    BaseApplicationImpl.sApplication.sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
+  }
+  
+  private void j()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    this.c = false;
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "send create session cmd");
+      QLog.d("QbossADBannerManager", 2, "stopPreloadWebView");
     }
   }
   
-  private void d()
+  protected int a()
   {
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_Alnz == null) {
-          return;
-        }
-        if (this.jdField_a_of_type_Alnz.jdField_b_of_type_Int == 0) {
-          break label172;
-        }
-        i = 1;
-        if (this.jdField_a_of_type_Alnz.jdField_a_of_type_Long != -1L)
-        {
-          l = this.jdField_a_of_type_Alnz.jdField_a_of_type_Long;
-          String str1 = String.valueOf(this.jdField_a_of_type_Alnz.jdField_a_of_type_Long);
-          this.jdField_a_of_type_Alnz.jdField_b_of_type_Int = 0;
-          this.jdField_a_of_type_Alnz.jdField_a_of_type_Long = -1L;
-          this.jdField_a_of_type_Alnz.jdField_a_of_type_Int = 0;
-          this.jdField_a_of_type_Alnz.jdField_a_of_type_Baqs = null;
-          if (i != 0)
-          {
-            ((bavs)QQStoryContext.a().getBusinessHandler(0)).a(l);
-            if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "send stop tcp cmd:" + str1);
-            }
-          }
-          a(this.jdField_a_of_type_Alnz, false, 0);
-          return;
-        }
-      }
-      finally {}
-      String str2 = "";
-      long l = 0L;
-      continue;
-      label172:
-      int i = 0;
-    }
+    return 2131562013;
   }
   
-  private void e()
+  protected int a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "restart begin");
+    if (TextUtils.isEmpty(paramString)) {
+      return -1;
+    }
+    String str = paramString;
+    if (!paramString.startsWith("#")) {
+      str = "#" + paramString;
     }
     try
     {
-      if (this.jdField_a_of_type_Alnz == null) {
-        return;
-      }
-      if (this.jdField_a_of_type_Alnz.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        almt localalmt = (almt)this.jdField_a_of_type_Alnz.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localalmt != null) {
-          a(localalmt, this.jdField_a_of_type_Alnz.jdField_a_of_type_Boolean, this.jdField_a_of_type_Alnz.jdField_c_of_type_Boolean, true);
-        }
-      }
-      return;
+      int i = Color.parseColor(str);
+      return i;
     }
-    finally {}
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      QZLog.i("QbossADBannerManager", 1, " getValidTextColor error color = " + str);
+    }
+    return -1;
   }
   
-  private void f()
+  public View a()
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_Alnz == null) {
-          return;
-        }
-        if (this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable != null) {
-          break;
-        }
-        this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable = new EncodeRunnable(this, this.jdField_a_of_type_Alnz.jdField_c_of_type_Int);
-        EncodeRunnable localEncodeRunnable1 = this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable;
-        if (!this.jdField_a_of_type_Alnz.jdField_c_of_type_Boolean)
-        {
-          localEncodeRunnable1.a(bool1);
-          if (this.jdField_a_of_type_Alnz.jdField_b_of_type_Int == 3) {
-            this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable.a(this.jdField_a_of_type_Alnz.jdField_a_of_type_Long, this.jdField_a_of_type_Alnz.jdField_a_of_type_Int);
-          }
-          this.jdField_a_of_type_Alnz.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable, "TransAudio", 8);
-          this.jdField_a_of_type_Alnz.jdField_a_of_type_JavaLangThread.start();
-          return;
-        }
-      }
-      finally {}
-      bool1 = false;
+    QLog.i("QbossADBannerManager", 1, "initQbossADBanner");
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(a(), null);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368587);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368577));
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
+    localLayoutParams.width = b();
+    localLayoutParams.height = c();
+    this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  protected String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
     }
-    if ((this.jdField_a_of_type_Alnz.jdField_a_of_type_JavaLangThread.isAlive()) && (!this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable.a()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "encode thread is running");
-      }
-      return;
-    }
-    this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable.a();
-    this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable = null;
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "create new EncodeThread ");
-    }
-    this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable = new EncodeRunnable(this, this.jdField_a_of_type_Alnz.jdField_c_of_type_Int);
-    EncodeRunnable localEncodeRunnable2 = this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable;
-    if (!this.jdField_a_of_type_Alnz.jdField_c_of_type_Boolean) {}
-    for (bool1 = bool2;; bool1 = false)
-    {
-      localEncodeRunnable2.a(bool1);
-      if (this.jdField_a_of_type_Alnz.jdField_b_of_type_Int == 3) {
-        this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable.a(this.jdField_a_of_type_Alnz.jdField_a_of_type_Long, this.jdField_a_of_type_Alnz.jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_Alnz.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable, "TransAudio", 8);
-      this.jdField_a_of_type_Alnz.jdField_a_of_type_JavaLangThread.start();
-      return;
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app != null)) {}
+    for (String str = bhlg.h(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin());; str = "") {
+      return paramString.replace("{nickname}", str);
     }
   }
   
-  public void a(long paramLong, ByteBuffer paramByteBuffer)
+  public void a()
   {
-    if (paramByteBuffer == null) {
-      return;
-    }
-    String str1 = "";
-    try
+    almm localalmm = almo.a().a(a());
+    if (localalmm != null)
     {
-      if (this.jdField_a_of_type_Alnz == null) {
-        return;
-      }
-    }
-    finally {}
-    if (this.jdField_a_of_type_Alnz.jdField_b_of_type_Int != 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "onEncodePackage, state not match:" + this.jdField_a_of_type_Alnz.jdField_b_of_type_Int);
-      }
-      return;
-    }
-    if (this.jdField_a_of_type_Alnz.jdField_a_of_type_Long != paramLong)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "onEncodePackage, session not match:" + this.jdField_a_of_type_Alnz.jdField_a_of_type_Long + "-" + paramLong);
-      }
-      return;
-    }
-    boolean bool = this.jdField_a_of_type_Alnz.jdField_a_of_type_Boolean;
-    if (this.jdField_a_of_type_Alnz.jdField_a_of_type_Long != -1L) {
-      str1 = String.valueOf(this.jdField_a_of_type_Alnz.jdField_a_of_type_Long);
-    }
-    this.jdField_a_of_type_Alnz.jdField_b_of_type_Long = System.currentTimeMillis();
-    bavs localbavs = (bavs)QQStoryContext.a().getBusinessHandler(0);
-    String str2 = "";
-    if (this.jdField_a_of_type_Alnz.jdField_a_of_type_Baqs != null) {
-      str2 = this.jdField_a_of_type_Alnz.jdField_a_of_type_Baqs.jdField_a_of_type_JavaLangString;
-    }
-    for (int i = this.jdField_a_of_type_Alnz.jdField_a_of_type_Baqs.jdField_a_of_type_Int;; i = 0)
-    {
-      localbavs.a(str1, "TransInfo.RawData", str2, i, paramByteBuffer.array(), 0, paramByteBuffer.limit(), bool, 2);
-      return;
+      bnfx.a().b(localalmm.jdField_b_of_type_JavaLangString, null);
+      bnua.a(a() + "", 138, localalmm.jdField_c_of_type_Int + "", localalmm.jdField_b_of_type_JavaLangString);
     }
   }
   
-  public void a(almt paramalmt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  protected void a(almm paramalmm)
   {
-    try
-    {
-      if (this.jdField_a_of_type_Alnz == null) {
-        return;
-      }
-      this.jdField_a_of_type_Alnz.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramalmt);
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "start, state:" + this.jdField_a_of_type_Alnz.jdField_b_of_type_Int + " withenglish:" + paramBoolean1 + " rocordmode:" + paramBoolean2 + " resumecapture:" + paramBoolean3);
-      }
-      this.jdField_a_of_type_Alnz.jdField_c_of_type_Boolean = paramBoolean2;
-      c(paramBoolean1);
-      this.jdField_a_of_type_Alnz.jdField_a_of_type_JavaUtilHashMap.clear();
-      f();
-      b(true);
-      if ((paramBoolean3) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
-      {
-        paramalmt = (AudioCapture)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramalmt != null) {
-          paramalmt.d();
-        }
-      }
-      this.jdField_a_of_type_Alnz.jdField_c_of_type_Long = System.currentTimeMillis();
+    if (paramalmm == null) {
       return;
     }
-    finally {}
+    QLog.i("QbossADBannerManager", 1, "onQBossADBannerExposed show");
+    String str = paramalmm.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.jdField_a_of_type_JavaUtilMap.put(str, Boolean.valueOf(true));
+    bnua.a(a() + "");
+    QLog.i("QbossADBannerManager", 1, "onQBossADBannerExposed start expose");
+    bnfx.a().c(paramalmm.jdField_b_of_type_JavaLangString, null);
   }
   
-  public void a(AudioCapture paramAudioCapture)
+  public void a(BaseActivity paramBaseActivity, aljw paramaljw)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "registAudioRecord :" + paramAudioCapture);
-    }
-    if (paramAudioCapture == null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-      a(false, this.jdField_c_of_type_Boolean);
-      this.jdField_c_of_type_Boolean = false;
-      return;
-    }
-    finally {}
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAudioCapture);
-    if ((this.jdField_a_of_type_Alnz != null) && (this.jdField_a_of_type_Alnz.jdField_a_of_type_JavaLangRefWeakReference != null)) {
-      e();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_Aljw = paramaljw;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "stop, pausecapture:" + paramBoolean1 + " canrestart:" + paramBoolean2);
+      QLog.i("QbossADBannerManager", 2, "onScrollChange isScroll = " + paramBoolean);
     }
-    try
-    {
-      b(false);
-      if (this.jdField_a_of_type_Alnz == null) {
-        return;
-      }
-      if ((paramBoolean1) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
-      {
-        AudioCapture localAudioCapture = (AudioCapture)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localAudioCapture != null) {
-          localAudioCapture.b();
-        }
-      }
-      if (!paramBoolean2) {
-        this.jdField_a_of_type_Alnz.jdField_a_of_type_JavaLangRefWeakReference = null;
-      }
-      if ((this.jdField_a_of_type_Alnz != null) && (this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "stop begin:" + this.jdField_a_of_type_Alnz.jdField_b_of_type_Int);
-        }
-        this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable.a();
-        this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable = null;
-      }
-      d();
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (!a()) {}
-    EncodeRunnable localEncodeRunnable;
-    do
-    {
-      do
-      {
-        return;
-      } while (paramInt2 <= 0);
-      try
-      {
-        if (this.jdField_a_of_type_Alnz == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "transcontext is null");
-          }
-          return;
-        }
-      }
-      finally {}
-      localEncodeRunnable = this.jdField_a_of_type_Alnz.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable;
-    } while (localEncodeRunnable == null);
-    localEncodeRunnable.a(paramArrayOfByte, paramInt1, paramInt2);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    boolean bool = true;
+    Object localObject = a();
+    localObject = almo.a().a((String)localObject);
+    if ((localObject == null) || (((almm)localObject).jdField_a_of_type_AndroidUtilSparseArray == null) || (((almm)localObject).jdField_a_of_type_AndroidUtilSparseArray.size() == 0))
+    {
+      QLog.i("QbossADBannerManager", 1, "isNeedShowQBossADBanner configInfo is null, return false.");
+      bool = false;
+    }
+    return bool;
   }
   
-  public boolean a(int paramInt1, int paramInt2, int paramInt3)
+  protected int b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "init, samplerate:" + paramInt1 + " channel:" + paramInt2 + " format:" + paramInt3);
-    }
-    try
+    return bhtq.a();
+  }
+  
+  public void b()
+  {
+    almm localalmm = almo.a().a(a());
+    if (localalmm != null)
     {
-      if (this.jdField_a_of_type_Alnz != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "create error, transcontext not null!");
-        }
-        return false;
-      }
-      this.jdField_a_of_type_Alnz = new alnz();
-      this.jdField_a_of_type_Alnz.jdField_c_of_type_Int = paramInt1;
-      this.jdField_a_of_type_Alnz.d = paramInt2;
-      this.jdField_a_of_type_Alnz.e = paramInt3;
-      b();
-      a();
-      return true;
+      bnfx.a().a(localalmm.jdField_b_of_type_JavaLangString, null);
+      bnua.a(a() + "", 137, localalmm.jdField_c_of_type_Int + "", localalmm.jdField_b_of_type_JavaLangString);
     }
-    finally {}
+  }
+  
+  protected int c()
+  {
+    return (int)(b() * 0.1333333F);
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_ComTencentImageURLImageView == null))
+    {
+      QLog.e("QbossADBannerManager", 1, "showQbossADBanner xml init error");
+      e();
+      return;
+    }
+    QLog.i("QbossADBannerManager", 1, "start showQbossADBanner");
+    almm localalmm = almo.a().a(a());
+    if ((localalmm != null) && (localalmm.jdField_a_of_type_AndroidUtilSparseArray != null))
+    {
+      almn localalmn = (almn)localalmm.jdField_a_of_type_AndroidUtilSparseArray.get(1);
+      if (localalmn == null)
+      {
+        QLog.e("QbossADBannerManager", 1, "initQbossADBanner resourceInfo = null");
+        e();
+        return;
+      }
+      if ((!TextUtils.isEmpty(localalmn.jdField_c_of_type_JavaLangString)) && ((localalmm.jdField_a_of_type_Int == 1) || (localalmm.jdField_a_of_type_Int == 0)))
+      {
+        Object localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = beyq.a;
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = beyq.a;
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = b();
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = c();
+        if (localalmm.jdField_a_of_type_Int == 1) {}
+        for (boolean bool = true;; bool = false)
+        {
+          ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = bool;
+          localObject = URLDrawable.getFileDrawable(localalmn.jdField_c_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
+          if (localObject != null) {
+            break;
+          }
+          QLog.i("QbossADBannerManager", 1, "initQbossADBanner urlDrawable == null  file path = " + localalmn.jdField_c_of_type_JavaLangString);
+          e();
+          return;
+        }
+        this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+        if (((URLDrawable)localObject).getStatus() == 1)
+        {
+          this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+          QLog.i("QbossADBannerManager", 1, "showQbossADBanner urlDrawable status is success");
+          a(localalmm);
+          return;
+        }
+        ((URLDrawable)localObject).setURLDrawableListener(new almr(this, localalmm, localalmn));
+        ThreadManager.executeOnFileThread(new QbossADBannerManager.2(this, (URLDrawable)localObject));
+        return;
+      }
+      QLog.i("QbossADBannerManager", 1, "initQbossADBanner resType is wrong: " + localalmm.jdField_a_of_type_Int + " file path = " + localalmn.jdField_c_of_type_JavaLangString);
+      e();
+      return;
+    }
+    QLog.i("QbossADBannerManager", 1, "initQbossADBanner config info is null, uin: " + a());
+    e();
+  }
+  
+  public void d()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("QbossADBannerManager", 4, "checkIfHideBanner isClick: " + this.jdField_a_of_type_Boolean);
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      e();
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void e()
+  {
+    QLog.e("QbossADBannerManager", 1, "hideBanner");
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_Aljw != null)
+    {
+      this.jdField_a_of_type_Aljw.f();
+      j();
+    }
+    g();
+  }
+  
+  public void f()
+  {
+    QLog.e("QbossADBannerManager", 1, "onRecycle");
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_JavaUtilMap != null) {
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
+  }
+  
+  public void h()
+  {
+    if ((this.jdField_b_of_type_Boolean) && (!this.c))
+    {
+      this.c = true;
+      i();
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      bdll.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 11, 0, "", "", "", "");
+      almm localalmm;
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        b();
+        e();
+        almo.a().a(a());
+        break;
+        localalmm = almo.a().a(a());
+        if ((localalmm != null) && (!TextUtils.isEmpty(localalmm.jdField_a_of_type_JavaLangString))) {
+          break label139;
+        }
+        QLog.e("QbossADBannerManager", 1, "qboss banner configInfo = null || jumpUrl = null");
+      }
+      label139:
+      a();
+      if (QLog.isColorLevel()) {
+        QLog.i("QbossADBannerManager", 2, "qboss banner jump url = " + localalmm.jdField_a_of_type_JavaLangString);
+      }
+      Object localObject1;
+      if (localalmm.jdField_b_of_type_Int == 1)
+      {
+        Object localObject2 = localalmm.jdField_a_of_type_JavaLangString;
+        localObject1 = localObject2;
+        if (!((String)localObject2).contains("http://"))
+        {
+          localObject1 = localObject2;
+          if (!((String)localObject2).contains("https://")) {
+            localObject1 = "https://" + (String)localObject2;
+          }
+        }
+        if (((String)localObject1).contains("?")) {}
+        for (localObject1 = (String)localObject1 + "&qboss_trace=" + localalmm.jdField_b_of_type_JavaLangString;; localObject1 = (String)localObject1 + "?qboss_trace=" + localalmm.jdField_b_of_type_JavaLangString)
+        {
+          localObject1 = (String)localObject1 + bmzn.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), localalmm.jdField_b_of_type_JavaLangString, "&");
+          if (QLog.isDevelopLevel()) {
+            QLog.i("QbossADBannerManager", 4, "TraceInfo qboss banner final traceInfo jump url = " + (String)localObject1);
+          }
+          this.jdField_a_of_type_Boolean = true;
+          localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+          ((Intent)localObject2).putExtra("url", (String)localObject1);
+          ((Intent)localObject2).putExtra("big_brother_source_key", "biz_src_jc_vip");
+          this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject2);
+          break;
+        }
+      }
+      if (localalmm.jdField_b_of_type_Int == 2)
+      {
+        localObject1 = bhni.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localalmm.jdField_a_of_type_JavaLangString);
+        if (localObject1 != null)
+        {
+          this.jdField_a_of_type_Boolean = true;
+          ((bhmr)localObject1).a();
+        }
+        else
+        {
+          bnfx.a().a(2741, localalmm.jdField_c_of_type_Int, 100, "qboss banner jump scheme action = null , url =  " + localalmm.jdField_a_of_type_JavaLangString);
+        }
+      }
+    }
   }
 }
 

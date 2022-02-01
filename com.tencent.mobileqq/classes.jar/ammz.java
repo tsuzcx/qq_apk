@@ -1,18 +1,35 @@
-public class ammz
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ammz
+  implements View.OnClickListener
 {
-  public static int a;
-  public static final String a;
-  public static int b;
-  public static int c;
-  public static int d;
+  ammz(ammy paramammy, aknh paramaknh, int paramInt) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_Int = 6;
-    b = 1;
-    c = 1;
-    d = 1;
-    jdField_a_of_type_JavaLangString = ancb.jdField_a_of_type_JavaLangString + "/game";
+    Intent localIntent = new Intent(this.jdField_a_of_type_Ammy.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_Aknh.b);
+    localIntent.putExtra("isShowAd", false);
+    this.jdField_a_of_type_Ammy.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    if ((this.jdField_a_of_type_Ammy.jdField_a_of_type_AndroidContentContext instanceof AvatarPendantActivity)) {
+      ((AvatarPendantActivity)this.jdField_a_of_type_Ammy.jdField_a_of_type_AndroidContentContext).a = -1L;
+    }
+    if (this.jdField_a_of_type_Int == 1) {
+      VasWebviewUtil.reportCommercialDrainage("", "faceaddon", "0X8008486", "", 1, 0, 0, "", "", "");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bdll.b(this.jdField_a_of_type_Ammy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006334", "0X8006334", 0, 0, "", "", "", "");
+    }
   }
 }
 

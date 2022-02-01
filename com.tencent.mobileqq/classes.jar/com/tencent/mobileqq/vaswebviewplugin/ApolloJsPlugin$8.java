@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import amlo;
-import amlp;
+import amxi;
+import amxj;
 import android.app.Activity;
-import anni;
-import bglp;
-import bgpa;
+import anzj;
+import bhlq;
+import bhpc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
@@ -14,24 +14,24 @@ import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class ApolloJsPlugin$8
-  extends amlo
+  extends amxi
 {
   ApolloJsPlugin$8(ApolloJsPlugin paramApolloJsPlugin, AppInterface paramAppInterface, boolean paramBoolean, String paramString, Activity paramActivity)
   {
     super(paramAppInterface, paramBoolean);
   }
   
-  public void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, amlp paramamlp, long paramLong)
+  public void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, amxj paramamxj, long paramLong)
   {
-    String str = String.format(anni.a(2131699265), new Object[] { Float.valueOf((float)paramLong * 1.0F / 1024.0F / 1024.0F) });
-    bglp.a(this.val$activity, 0, null, str, 2131694081, 2131690582, new ApolloJsPlugin.8.1(this), new ApolloJsPlugin.8.2(this, paramamlp, paramStartCheckParam)).show();
+    String str = String.format(anzj.a(2131699372), new Object[] { Float.valueOf((float)paramLong * 1.0F / 1024.0F / 1024.0F) });
+    bhlq.a(this.val$activity, 0, null, str, 2131694098, 2131690580, new ApolloJsPlugin.8.1(this), new ApolloJsPlugin.8.2(this, paramamxj, paramStartCheckParam)).show();
     VipUtils.a(null, "cmshow", "Apollo", "download_confirm_toast", 0, 3, new String[] { String.valueOf(paramStartCheckParam.game.gameId) });
   }
   
   public void onDownloadGameResFail(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
     super.onDownloadGameResFail(paramStartCheckParam);
-    this.this$0.callbackError(this.val$callbackId, anni.a(2131699262));
+    this.this$0.callbackError(this.val$callbackId, anzj.a(2131699369));
     ApolloJsPlugin.access$500(this.this$0, -1);
   }
   
@@ -52,7 +52,7 @@ class ApolloJsPlugin$8
   
   public void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    this.this$0.callbackError(this.val$callbackId, anni.a(2131699231));
+    this.this$0.callbackError(this.val$callbackId, anzj.a(2131699338));
     ApolloJsPlugin.access$500(this.this$0, -1);
   }
   
@@ -69,7 +69,7 @@ class ApolloJsPlugin$8
         QLog.d("ApolloJsPlugin", 2, new Object[] { "IPC_APOLLO_DOWNLOAD_GAME onVerifyGameFinish resultCode:", Long.valueOf(paramLong) });
       }
       return;
-      this.this$0.callbackError(this.val$callbackId, anni.a(2131699227));
+      this.this$0.callbackError(this.val$callbackId, anzj.a(2131699334));
       ApolloJsPlugin.access$500(this.this$0, -1);
     }
   }

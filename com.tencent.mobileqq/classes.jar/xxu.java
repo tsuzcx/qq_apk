@@ -1,68 +1,36 @@
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.DeleteStoryVideoEventReceiver.1;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
 import java.util.List;
-import mqq.os.MqqHandler;
 
-public class xxu
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wor>
+public final class xxu
+  extends QQUIEventReceiver<xxn, wzw>
 {
-  public xxu(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public xxu(@NonNull xxn paramxxn)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super(paramxxn);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wor paramwor)
+  public void a(@NonNull xxn paramxxn, @NonNull wzw paramwzw)
   {
-    if (!paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString.equals(paramwor.c)) {}
-    while ((!paramwor.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) || (TextUtils.isEmpty(paramwor.d)) || (!((woz)wpm.a(19)).a(paramwor.d).contains(paramwor.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "get delete event. groupId=" + paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString + ", feedId=" + paramwor.d);
-    }
-    ShareGroupItem localShareGroupItem;
-    if (paramQQStoryShareGroupProfileActivity.a != null)
+    if ((paramwzw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwzw.jdField_a_of_type_JavaUtilList != null) && (paramxxn.a != null))
     {
-      localShareGroupItem = paramQQStoryShareGroupProfileActivity.a;
-      int i = localShareGroupItem.videoCount - 1;
-      localShareGroupItem.videoCount = i;
-      if (i == 0)
+      paramwzw = paramwzw.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramwzw.hasNext())
       {
-        ThreadManager.getUIHandler().postDelayed(new QQStoryShareGroupProfileActivity.DeleteStoryVideoEventReceiver.1(this, paramQQStoryShareGroupProfileActivity), 400L);
-        return;
-      }
-    }
-    if (paramQQStoryShareGroupProfileActivity.isResume())
-    {
-      if (paramwor.jdField_b_of_type_Boolean)
-      {
-        localShareGroupItem = ((xzh)wpm.a(7)).a(paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString);
-        if ((localShareGroupItem != null) && (localShareGroupItem.headerUnionIdList.contains(paramwor.jdField_b_of_type_JavaLangString))) {
-          QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, true);
+        wuk localwuk = (wuk)paramwzw.next();
+        if (TextUtils.equals(paramxxn.a.b, localwuk.a)) {
+          paramxxn.i();
         }
       }
-      paramQQStoryShareGroupProfileActivity.b(false);
-      return;
     }
-    if (paramwor.jdField_b_of_type_Boolean)
-    {
-      paramQQStoryShareGroupProfileActivity.jdField_b_of_type_Boolean = true;
-      paramQQStoryShareGroupProfileActivity.c = true;
-      return;
-    }
-    paramQQStoryShareGroupProfileActivity.jdField_b_of_type_Boolean = true;
   }
   
   public Class acceptEventClass()
   {
-    return wor.class;
+    return wzw.class;
   }
 }
 

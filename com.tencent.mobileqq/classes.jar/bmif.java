@@ -1,51 +1,18 @@
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.QZLog;
-import java.io.File;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.RecvMsg;
 
-class bmif
-  implements ModuleDownloadListener
+public final class bmif
+  implements Parcelable.Creator<RecvMsg>
 {
-  bmif(bmic parambmic) {}
-  
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString) {}
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
+  public RecvMsg a(Parcel paramParcel)
   {
-    if (!paramString.equals("libandroidndkbeauty.so")) {}
-    for (;;)
-    {
-      return;
-      String str = bmic.a.getPath();
-      paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
-      if (paramString.exists()) {}
-      try
-      {
-        bmic.a(paramString, new File(bmic.a.getPath() + "/libandroidndkbeauty.zip"));
-        paramString = new File(str);
-        if (!paramString.exists()) {
-          paramString.mkdirs();
-        }
-        if (this.a.a(bmic.b, false)) {
-          continue;
-        }
-        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "unzip beauty so" });
-        bmij.b(new File(bmic.a.getPath() + "/libandroidndkbeauty.zip"), paramString);
-        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "unzip beauty so finish" });
-        return;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
-      }
-    }
+    return new RecvMsg(paramParcel);
+  }
+  
+  public RecvMsg[] a(int paramInt)
+  {
+    return new RecvMsg[paramInt];
   }
 }
 

@@ -11,12 +11,12 @@ class AudioJsPlugin$InnerAudioManager$1
   public void onPrepared()
   {
     MiniAppAudioPlayer localMiniAppAudioPlayer;
-    if ((this.val$autoPlay) && (AudioJsPlugin.InnerAudioManager.access$3400(this.this$1) != null))
+    if ((this.val$autoPlay) && (AudioJsPlugin.InnerAudioManager.access$3300(this.this$1) != null))
     {
-      AudioJsPlugin.InnerAudioManager.access$3400(this.this$1).setLooping(this.val$loop);
-      AudioJsPlugin.InnerAudioManager.access$3400(this.this$1).setVolume((float)this.val$volume);
-      localMiniAppAudioPlayer = AudioJsPlugin.InnerAudioManager.access$3400(this.this$1);
-      if (AudioJsPlugin.access$3500()) {
+      AudioJsPlugin.InnerAudioManager.access$3300(this.this$1).setLooping(this.val$loop);
+      AudioJsPlugin.InnerAudioManager.access$3300(this.this$1).setVolume((float)this.val$volume);
+      localMiniAppAudioPlayer = AudioJsPlugin.InnerAudioManager.access$3300(this.this$1);
+      if (AudioJsPlugin.access$3400()) {
         break label94;
       }
     }
@@ -24,7 +24,7 @@ class AudioJsPlugin$InnerAudioManager$1
     for (boolean bool = true;; bool = false)
     {
       localMiniAppAudioPlayer.setAudioFocus(bool);
-      AudioJsPlugin.InnerAudioManager.access$3400(this.this$1).start();
+      AudioJsPlugin.InnerAudioManager.access$3300(this.this$1).start();
       if (this.val$outerPreparedListener != null) {
         this.val$outerPreparedListener.onPrepared();
       }

@@ -2,18 +2,18 @@ package dov.com.qq.im.ae.camera.core;
 
 import android.os.Looper;
 import android.text.TextUtils;
-import anni;
-import bamb;
-import bnhe;
-import bnhn;
-import bnid;
-import bnlm;
-import bnpc;
-import bnpt;
-import bnpy;
-import bnvg;
-import bnzb;
-import bqgu;
+import anzj;
+import bbeu;
+import boim;
+import boiv;
+import bojl;
+import bomz;
+import boqr;
+import borf;
+import bork;
+import bows;
+import bpam;
+import brig;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
 import com.tencent.ttpic.baseutils.string.StringUtils;
@@ -34,28 +34,28 @@ public class AECameraGLSurfaceView$12
   {
     if (Looper.myLooper() == null)
     {
-      bnzb.d("AECameraGLSurfaceView", "[setMaterial] Looper.myLooper() == null");
+      bpam.d("AECameraGLSurfaceView", "[setMaterial] Looper.myLooper() == null");
       Looper.prepare();
     }
     if ((this.this$0.b()) || (!AECameraGLSurfaceView.c(this.this$0)))
     {
-      bnzb.d("AECameraGLSurfaceView", "[setMaterial]isRecording" + this.this$0.b());
-      bnzb.d("AECameraGLSurfaceView", "[setMaterial]isAEKitAvailable" + AECameraGLSurfaceView.c(this.this$0));
+      bpam.d("AECameraGLSurfaceView", "[setMaterial]isRecording" + this.this$0.b());
+      bpam.d("AECameraGLSurfaceView", "[setMaterial]isAEKitAvailable" + AECameraGLSurfaceView.c(this.this$0));
       return;
     }
     Object localObject2 = this.a;
-    bnid localbnid = (bnid)AECameraGLSurfaceView.a(this.this$0);
+    bojl localbojl = (bojl)AECameraGLSurfaceView.a(this.this$0);
     if (TextUtils.isEmpty((CharSequence)localObject2))
     {
       AECameraGLSurfaceView.a(this.this$0).a(null);
-      localbnid.a = true;
+      localbojl.a = true;
       AECameraGLSurfaceView.a(this.this$0, null);
       AECameraGLSurfaceView.c(this.this$0, false);
-      this.this$0.queueEvent(new AECameraGLSurfaceView.12.1(this, localbnid));
-      AECameraGLSurfaceView.a(this.this$0, localbnid);
+      this.this$0.queueEvent(new AECameraGLSurfaceView.12.1(this, localbojl));
+      AECameraGLSurfaceView.a(this.this$0, localbojl);
       AECameraGLSurfaceView.a(this.this$0).a();
       AECameraGLSurfaceView.a(this.this$0, null);
-      bnzb.d("AECameraGLSurfaceView", "[setMaterial] materialPath:" + (String)localObject2);
+      bpam.d("AECameraGLSurfaceView", "[setMaterial] materialPath:" + (String)localObject2);
       return;
     }
     Object localObject1 = localObject2;
@@ -64,18 +64,18 @@ public class AECameraGLSurfaceView$12
     }
     if (!new File((String)localObject1).exists())
     {
-      bnzb.d("AECameraGLSurfaceView", "[setMaterial] materialPath not exist");
+      bpam.d("AECameraGLSurfaceView", "[setMaterial] materialPath not exist");
       return;
     }
     localObject2 = AEMaterialConfigParser.a((String)localObject1);
     if (localObject2 == null)
     {
-      bnzb.d("AECameraGLSurfaceView", "[setMaterial] videoMaterial null");
+      bpam.d("AECameraGLSurfaceView", "[setMaterial] videoMaterial null");
       return;
     }
     if (((VideoMaterial)localObject2).getGameParams() != null)
     {
-      bnzb.d("AECameraGLSurfaceView", "[setMaterial] gameplay");
+      bpam.d("AECameraGLSurfaceView", "[setMaterial] gameplay");
       return;
     }
     AECameraGLSurfaceView.a(this.this$0).a((VideoMaterial)localObject2);
@@ -85,32 +85,32 @@ public class AECameraGLSurfaceView$12
     label688:
     label753:
     int i;
-    if (bnpc.a((VideoMaterial)localObject2))
+    if (boqr.a((VideoMaterial)localObject2))
     {
-      if (bnpy.a(bnpt.c))
+      if (bork.a(borf.c))
       {
         if (!FeatureManager.ensureMaterialSoLoaded((VideoMaterial)localObject2))
         {
-          bnzb.d("AECameraGLSurfaceView", "[Special Material] load so failed");
-          if ((VideoMaterialUtil.is3DMaterial((VideoMaterial)localObject2)) && (bnpc.a()))
+          bpam.d("AECameraGLSurfaceView", "[Special Material] load so failed");
+          if ((VideoMaterialUtil.is3DMaterial((VideoMaterial)localObject2)) && (boqr.b()))
           {
-            bnpy.a(this.this$0.getContext());
-            bnzb.d("AECameraGLSurfaceView", "[setMaterial] support 3D And StartDownLoad");
-            AECameraGLSurfaceView.a(this.this$0, anni.a(2131689774));
+            bork.a(this.this$0.getContext());
+            bpam.d("AECameraGLSurfaceView", "[setMaterial] support 3D And StartDownLoad");
+            AECameraGLSurfaceView.a(this.this$0, anzj.a(2131689779));
             return;
           }
-          if ((VideoMaterialUtil.is3DMaterial((VideoMaterial)localObject2)) && (!bnpc.a()))
+          if ((VideoMaterialUtil.is3DMaterial((VideoMaterial)localObject2)) && (!boqr.b()))
           {
-            bnzb.d("AECameraGLSurfaceView", "[setMaterial] Not support 3D !!");
-            AECameraGLSurfaceView.a(this.this$0, anni.a(2131689773));
+            bpam.d("AECameraGLSurfaceView", "[setMaterial] Not support 3D !!");
+            AECameraGLSurfaceView.a(this.this$0, anzj.a(2131689778));
             return;
           }
-          bnzb.d("AECameraGLSurfaceView", "[setMaterial] try download B package");
-          AECameraGLSurfaceView.a(this.this$0, anni.a(2131689774));
-          bnpy.a(this.this$0.getContext());
+          bpam.d("AECameraGLSurfaceView", "[setMaterial] try download B package");
+          AECameraGLSurfaceView.a(this.this$0, anzj.a(2131689779));
+          bork.a(this.this$0.getContext());
           return;
         }
-        bnzb.d("AECameraGLSurfaceView", "[Special Material] load success");
+        bpam.d("AECameraGLSurfaceView", "[Special Material] load success");
       }
     }
     else
@@ -124,8 +124,8 @@ public class AECameraGLSurfaceView$12
         AECameraGLSurfaceView.d(this.this$0, true);
         ThreadManager.getUIHandler().post(new AECameraGLSurfaceView.12.2(this));
       }
-      if (bnpc.a() != null) {
-        bnpc.a().a = VideoMaterialUtil.isWatermarkEditable((VideoMaterial)localObject2);
+      if (boqr.a() != null) {
+        boqr.a().a = VideoMaterialUtil.isWatermarkEditable((VideoMaterial)localObject2);
       }
       if (AECameraGLSurfaceView.a(this.this$0) != null)
       {
@@ -143,7 +143,7 @@ public class AECameraGLSurfaceView$12
       AECameraGLSurfaceView.a(this.this$0).a(this.this$0.getContext(), AECameraGLSurfaceView.a(this.this$0));
       AECameraGLSurfaceView.c(this.this$0, ((VideoMaterial)localObject2).needFaceInfo());
       AECameraGLSurfaceView.a(this.this$0, (VideoMaterial)localObject2);
-      AECameraGLSurfaceView.a(this.this$0, localbnid);
+      AECameraGLSurfaceView.a(this.this$0, localbojl);
       if (!StringUtils.equals(((VideoMaterial)localObject2).getPreferCameraId(), "back")) {
         break label1024;
       }
@@ -162,19 +162,19 @@ public class AECameraGLSurfaceView$12
     {
       AECameraGLSurfaceView.a(this.this$0, (VideoMaterial)localObject2);
       if (i != 0) {
-        this.this$0.queueEvent(new AECameraGLSurfaceView.12.4(this, (VideoMaterial)localObject2, localbnid));
+        this.this$0.queueEvent(new AECameraGLSurfaceView.12.4(this, (VideoMaterial)localObject2, localbojl));
       }
-      if ((!bnlm.a()) || (TextUtils.isEmpty(this.a))) {
+      if ((!bomz.a()) || (TextUtils.isEmpty(this.a))) {
         break;
       }
-      bnlm.a(this.this$0.a, 1500L);
+      bomz.a(this.this$0.a, 1500L);
       return;
-      bnzb.d("AECameraGLSurfaceView", "[Special Material] version error");
-      AECameraGLSurfaceView.a(this.this$0, anni.a(2131689774));
-      bnpy.a(this.this$0.getContext());
+      bpam.d("AECameraGLSurfaceView", "[Special Material] version error");
+      AECameraGLSurfaceView.a(this.this$0, anzj.a(2131689779));
+      bork.a(this.this$0.getContext());
       return;
       label884:
-      bnzb.b("AECameraGLSurfaceView", "updateWMProps mIsTryLocationPermission false");
+      bpam.b("AECameraGLSurfaceView", "updateWMProps mIsTryLocationPermission false");
       ThreadManager.getUIHandler().post(new AECameraGLSurfaceView.12.3(this));
       break label526;
       label910:

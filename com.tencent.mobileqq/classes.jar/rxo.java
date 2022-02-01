@@ -1,50 +1,84 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeController.VolumeReceiver.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
 public class rxo
-  extends RecyclerView.ViewHolder
+  extends BroadcastReceiver
 {
-  public final int a;
-  public VideoFeedsAlphaMaskView a;
-  public int b;
-  public int c;
+  private rxo(rxk paramrxk) {}
   
-  public rxo(View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView = ((VideoFeedsAlphaMaskView)paramView.findViewById(2131364840));
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(rwy paramrwy, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean)
-  {
-    int i = 1;
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.getVisibility() != 0)) {
+    if ((BaseApplicationImpl.getApplication().getRuntime().isBackgroundStop) || (BaseApplicationImpl.getApplication().getRuntime().isBackgroundPause)) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        if (rxk.a(this.a) == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("VideoVolumeController", 2, "VolumeReceiver onReceive null");
+          }
+        }
+        else if (rxk.b(this.a)) {
+          if (rxk.c(this.a))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("VideoVolumeController", 2, "dynamicPauseReceive true");
+            }
+          }
+          else
+          {
+            int i;
+            try
+            {
+              if (!paramIntent.getAction().equals("android.media.VOLUME_CHANGED_ACTION")) {
+                break;
+              }
+              i = rxk.a(this.a).getStreamVolume(3);
+              if (QLog.isColorLevel()) {
+                QLog.d("VideoVolumeController", 2, "volume change:" + i);
+              }
+              if (rxk.d(this.a))
+              {
+                QLog.d("VideoVolumeController", 2, "volume change shield ");
+                return;
+              }
+            }
+            catch (Exception paramContext)
+            {
+              QLog.d("VideoVolumeController", 1, "VolumeReceiver", paramContext);
+              return;
+            }
+            paramContext = rxk.a(this.a).iterator();
+            while (paramContext.hasNext()) {
+              ((rxl)paramContext.next()).onSystemVolumeChanged(i);
+            }
+          }
+        }
+      }
+    } while (!paramIntent.getAction().equals("android.intent.action.HEADSET_PLUG"));
+    boolean bool = rxk.a(this.a).isWiredHeadsetOn();
+    if (rxk.e(this.a))
+    {
+      rxk.a(this.a, false);
       return;
     }
-    if (paramLinearLayoutManager.getOrientation() == 1)
-    {
-      if (i == 0) {
-        break label118;
-      }
-      i = paramLinearLayoutManager.getDecoratedMeasuredHeight(this.itemView);
+    rxk.b(this.a, true);
+    paramContext = rxk.a(this.a).iterator();
+    while (paramContext.hasNext()) {
+      ((rxl)paramContext.next()).onHeadsetStateChanged(bool);
     }
-    for (float f1 = Math.abs(paramLinearLayoutManager.getDecoratedTop(this.itemView) - (paramLinearLayoutManager.getHeight() / 2 - i / 2)) / i;; f1 = Math.abs(paramLinearLayoutManager.getDecoratedLeft(this.itemView) - (paramLinearLayoutManager.getWidth() / 2 - i / 2)) / i)
-    {
-      float f2 = Math.round(f1 * 100.0F) / 100.0F;
-      f1 = f2;
-      if (f2 > 1.0F) {
-        f1 = 1.0F;
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setAlpha(f1);
-      return;
-      i = 0;
-      break;
-      label118:
-      i = paramLinearLayoutManager.getDecoratedMeasuredWidth(this.itemView);
-    }
+    rxk.a(this.a).postDelayed(new VideoVolumeController.VolumeReceiver.1(this), 200L);
   }
 }
 

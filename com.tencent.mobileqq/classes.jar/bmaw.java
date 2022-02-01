@@ -1,83 +1,128 @@
 import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bmaw
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private bmav jdField_a_of_type_Bmav;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  private String d;
-  private String e = "";
-  private String f = "";
-  private String g;
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f;
+  public boolean f;
+  public int g;
+  public boolean g;
+  public int h;
+  public boolean h;
+  public int i;
+  public boolean i;
+  public boolean j;
+  public boolean k;
   
-  public bmav a()
+  public static bmaw a(String paramString)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      throw new IllegalArgumentException("moduleId can not be null");
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    return new bmav(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.f, this.g, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_Bmav);
+    try
+    {
+      paramString = new JSONObject(paramString);
+      return a(paramString);
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PreloadPublicParam", 2, "PreloadPublicParam parseJson Exception");
+        }
+        paramString = null;
+      }
+    }
   }
   
-  public bmaw a(int paramInt)
+  public static bmaw a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bmaw a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public bmaw a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public bmaw b(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
-  
-  public bmaw c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  public bmaw d(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
-  
-  public bmaw e(String paramString)
-  {
-    this.e = paramString;
-    return this;
-  }
-  
-  public bmaw f(String paramString)
-  {
-    this.f = paramString;
-    return this;
-  }
-  
-  public bmaw g(String paramString)
-  {
-    this.g = paramString;
-    return this;
+    if (paramJSONObject == null) {
+      return null;
+    }
+    bmaw localbmaw = new bmaw();
+    try
+    {
+      if (paramJSONObject.has("pppid")) {
+        localbmaw.jdField_a_of_type_Int = paramJSONObject.getInt("pppid");
+      }
+      if (paramJSONObject.has("timecontrol"))
+      {
+        localObject = paramJSONObject.getJSONObject("timecontrol");
+        localbmaw.jdField_a_of_type_Boolean = ((JSONObject)localObject).getBoolean("switch");
+        localbmaw.jdField_b_of_type_Int = ((JSONObject)localObject).getInt("dayofweek");
+        localbmaw.jdField_c_of_type_Int = ((JSONObject)localObject).getInt("hourofday");
+      }
+      if (paramJSONObject.has("reddot"))
+      {
+        localObject = paramJSONObject.getJSONObject("reddot");
+        localbmaw.jdField_b_of_type_Boolean = ((JSONObject)localObject).getBoolean("switch");
+        localbmaw.jdField_c_of_type_Boolean = ((JSONObject)localObject).optBoolean("apponly");
+        localbmaw.jdField_d_of_type_Boolean = ((JSONObject)localObject).getBoolean("app");
+        localbmaw.jdField_e_of_type_Boolean = ((JSONObject)localObject).getBoolean("leba");
+      }
+      if (paramJSONObject.has("lebalist")) {
+        localbmaw.jdField_h_of_type_Boolean = paramJSONObject.getJSONObject("lebalist").getBoolean("switch");
+      }
+      if (paramJSONObject.has("activetime"))
+      {
+        localObject = paramJSONObject.getJSONObject("activetime");
+        localbmaw.jdField_i_of_type_Boolean = ((JSONObject)localObject).getBoolean("switch");
+        localbmaw.jdField_e_of_type_Int = ((JSONObject)localObject).getInt("hour");
+      }
+      if (paramJSONObject.has("usedtimes"))
+      {
+        localObject = paramJSONObject.getJSONObject("usedtimes");
+        localbmaw.j = ((JSONObject)localObject).getBoolean("switch");
+        localbmaw.jdField_f_of_type_Int = ((JSONObject)localObject).getInt("times");
+      }
+      if (paramJSONObject.has("userlearn"))
+      {
+        localObject = paramJSONObject.getJSONObject("userlearn");
+        localbmaw.k = ((JSONObject)localObject).getBoolean("switch");
+        localbmaw.jdField_g_of_type_Int = ((JSONObject)localObject).getInt("timearea");
+        localbmaw.jdField_h_of_type_Int = ((JSONObject)localObject).getInt("methodid");
+        localbmaw.jdField_i_of_type_Int = ((JSONObject)localObject).getInt("clusternum");
+      }
+      localObject = localbmaw;
+      if (paramJSONObject.has("cdperiod"))
+      {
+        paramJSONObject = paramJSONObject.getJSONObject("cdperiod");
+        localbmaw.jdField_f_of_type_Boolean = paramJSONObject.optBoolean("switch");
+        localbmaw.jdField_d_of_type_Int = paramJSONObject.optInt("time");
+        localbmaw.jdField_g_of_type_Boolean = paramJSONObject.optBoolean("reverse");
+        localObject = localbmaw;
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PreloadPublicParam", 2, "PreloadPublicParam parseJson Exception");
+        }
+        Object localObject = null;
+      }
+    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmaw
  * JD-Core Version:    0.7.0.1
  */

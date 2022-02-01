@@ -1,8 +1,8 @@
 package cooperation.qzone.music;
 
-import bhod;
-import bmfd;
-import bmfg;
+import bioy;
+import bngf;
+import bngi;
 import com.tencent.common.app.AppInterface;
 
 class QzoneWebMusicJsPlugin$24
@@ -12,7 +12,7 @@ class QzoneWebMusicJsPlugin$24
   
   public void run()
   {
-    bmfd.a().a().a(this.this$0.mRuntime.a().getLongAccountUin(), this.a, this.b, this.c);
+    bngf.a().a().a(this.this$0.mRuntime.a().getLongAccountUin(), this.a, this.b, this.c);
   }
 }
 

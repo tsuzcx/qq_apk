@@ -1,19 +1,51 @@
-import android.opengl.GLES20;
-
-class aouz
-  implements apdu
+public class aouz
+  implements aouy
 {
-  aouz(aouy paramaouy) {}
-  
-  public void a()
+  public void a(aocj paramaocj, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, aock paramaock)
   {
-    GLES20.glUniform1i(aouy.a(this.a), aouy.b(this.a));
-  }
-  
-  public void a(int paramInt)
-  {
-    aouy.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
-    aovg.a("glGetUniformLocation uDisplayType");
+    switch (paramInt)
+    {
+    case 8021: 
+    case 8025: 
+    case 8026: 
+    case 8027: 
+    case 8028: 
+    case 8029: 
+    default: 
+      return;
+    case 8017: 
+      paramaocj.l(paramBoolean, paramObject);
+      return;
+    case 8024: 
+      if (paramObject != null) {}
+      for (paramArrayOfObject = ((bdxe)paramObject).a;; paramArrayOfObject = null)
+      {
+        paramaocj.a(paramBoolean, paramArrayOfObject, (bdxe)paramObject);
+        return;
+      }
+    case 8016: 
+      paramaocj.l(paramBoolean, paramArrayOfObject);
+      return;
+    case 8018: 
+      paramaocj.m(paramBoolean, paramArrayOfObject);
+      return;
+    case 8019: 
+      paramaocj.n(paramBoolean, paramArrayOfObject);
+      return;
+    case 8020: 
+      paramaocj.a(paramObject);
+      return;
+    case 8022: 
+      paramaocj.f(paramArrayOfObject);
+      return;
+    case 8023: 
+      paramaocj.d();
+      return;
+    case 8030: 
+      paramaocj.o(paramBoolean, paramArrayOfObject);
+      return;
+    }
+    paramaocj.b(((Integer)paramObject).intValue());
   }
 }
 

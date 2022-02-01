@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import afnx;
-import ajer;
+import afxb;
+import ajqa;
 
 public class TroopRequestActivity$22$2
   implements Runnable
 {
-  public TroopRequestActivity$22$2(afnx paramafnx, int paramInt1, int paramInt2, String paramString) {}
+  public TroopRequestActivity$22$2(afxb paramafxb, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Ajer.a(this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    this.this$0.jdField_a_of_type_Ajqa.a(this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

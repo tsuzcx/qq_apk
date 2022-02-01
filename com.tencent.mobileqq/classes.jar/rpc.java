@@ -1,9 +1,27 @@
-public class rpc
-  extends pmn
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+
+class rpc
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public void o()
+  rpc(roy paramroy) {}
+  
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    super.o();
+    ReadInJoyCommentListFragment localReadInJoyCommentListFragment;
+    if (roy.a(this.a) != null)
+    {
+      localReadInJoyCommentListFragment = roy.a(this.a);
+      if ((paramInt & 0x2) != 0) {
+        break label32;
+      }
+    }
+    label32:
+    for (boolean bool = true;; bool = false)
+    {
+      localReadInJoyCommentListFragment.a(bool);
+      return;
+    }
   }
 }
 

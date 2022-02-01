@@ -1,45 +1,14 @@
-import android.widget.TextView;
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tav.player.IPlayer.PlayerListener;
-import com.tencent.tav.player.IPlayer.PlayerStatus;
-import com.tencent.tavcut.player.MoviePlayer;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import dov.com.qq.im.aeeditor.module.controlpanel.VideoControlPanel;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModelProvider;
 
-public class bofl
-  implements IPlayer.PlayerListener
+class bofl
+  implements borx
 {
-  public bofl(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
+  bofl(bofh parambofh) {}
   
-  public void onPositionChanged(CMTime paramCMTime)
+  public void a(bosp parambosp)
   {
-    if (AEEditorVideoEditFragment.a(this.a) == 0L)
-    {
-      CMTime localCMTime = AEEditorVideoEditFragment.a(this.a).getDuration();
-      AEEditorVideoEditFragment.a(this.a, ((float)(localCMTime.value * 1000L) / localCMTime.timeScale));
-    }
-    float f = (float)(paramCMTime.value * 1000L) / paramCMTime.timeScale;
-    paramCMTime = bojc.a(f) + "/" + bojc.a(AEEditorVideoEditFragment.a(this.a));
-    AEEditorVideoEditFragment.a(this.a).setText(paramCMTime);
-    long l = bojc.a(f);
-    if (AEEditorVideoEditFragment.a(this.a) != null) {
-      bogt.a().a(l, AEEditorVideoEditFragment.a(this.a));
-    }
-    AEEditorVideoEditFragment.a(this.a).b((int)l, (int)AEEditorVideoEditFragment.a(this.a));
-    if ((AEEditorVideoEditFragment.a(this.a) != null) && (AEEditorVideoEditFragment.a(this.a) != null)) {
-      AEEditorVideoEditFragment.a(this.a).updateVideoProgress(f);
-    }
-  }
-  
-  public void onStatusChanged(IPlayer.PlayerStatus paramPlayerStatus)
-  {
-    if ((paramPlayerStatus == IPlayer.PlayerStatus.PLAYING) || (paramPlayerStatus == IPlayer.PlayerStatus.REPLAY))
-    {
-      AEEditorVideoEditFragment.a(this.a, true);
-      return;
-    }
-    AEEditorVideoEditFragment.a(this.a, false);
+    ((bovd)bofz.a(this.a, bpxz.a()).get(bovd.class)).a().postValue(parambosp);
   }
 }
 

@@ -1,739 +1,236 @@
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusFriendsPermissionItem;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionChecker.OnlineStatusPermissionItem;
-import com.tencent.mobileqq.onlinestatus.music.OnlineStatusHandler.1;
-import com.tencent.mobileqq.onlinestatus.music.OnlineStatusHandler.2;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.msf.service.protocol.push.SvcRespRegister;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.app.AppRuntime.Status;
-import tencent.im.cs.cmd0xe59.cmd0xe59.ReqBody;
-import tencent.im.cs.cmd0xe59.cmd0xe59.RspBody;
-import tencent.im.groupstatus.ImStatus.ImStatusDataPush;
-import tencent.im.oidb.cmd0xe62.ReqBody;
-import tencent.im.statsvc.business.info.businessinfo.ReqBody;
-import tencent.im.statsvc.business.info.businessinfo.RspBody;
-import tencent.im.statsvc.song.StatSvcStatSong.ReqBody;
-import tencent.im.statsvc.song.StatSvcStatSong.RspBody;
+import tencent.im.oidb.cmd0x6cd.PullRedpointReq;
+import tencent.im.oidb.cmd0x6cd.RedpointInfo;
+import tencent.im.oidb.cmd0x6cd.ReqBody;
+import tencent.im.oidb.cmd0x6cd.RspBody;
+import tencent.im.oidb.cmd0x6ce.ReadRedpointReq;
+import tencent.im.oidb.cmd0x6ce.ReqBody;
+import tencent.im.oidb.cmd0x6ce.RspBody;
+import tencent.im.oidb.cmd0x6f5.ReqBody;
+import tencent.im.oidb.cmd0x6f5.RspBody;
 
 public class ayta
-  extends anii
+  extends anud
 {
-  private Friends a;
-  
-  public ayta(QQAppInterface paramQQAppInterface)
+  public ayta(AppInterface paramAppInterface)
   {
-    super(paramQQAppInterface);
+    super(paramAppInterface);
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "handleGetRedPointConfigs");
+    }
+    paramToServiceMsg = new cmd0x6f5.RspBody();
+    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "handleGetRedPointConfigs, errCode=" + i);
+    }
+    if ((i == 0) && (paramToServiceMsg.str_config_version.has()))
+    {
+      paramFromServiceMsg = paramToServiceMsg.str_config_version.get();
+      if (QLog.isColorLevel()) {
+        QLog.i("RedtouchHandler", 2, "handleGetRedPointConfigs, server configVersion=" + paramFromServiceMsg);
+      }
+      if (!TextUtils.isEmpty(paramFromServiceMsg))
+      {
+        paramObject = (aysq)this.app.getManager(160);
+        if (paramObject != null)
+        {
+          paramObject.a(paramFromServiceMsg);
+          paramObject.a(paramToServiceMsg);
+          paramObject.a();
+        }
+      }
+    }
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    for (;;)
+    RedTouchItem localRedTouchItem = null;
+    Object localObject = null;
+    boolean bool3 = false;
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "handlePullRedTouch");
+    }
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
+      return;
+    }
+    boolean bool4 = paramToServiceMsg.extraData.getBoolean("is_single_task", false);
+    if (bool4) {}
+    label164:
+    label345:
+    for (int i = paramToServiceMsg.extraData.getInt("task_id");; i = 0)
     {
-      int i;
-      try
+      cmd0x6cd.RspBody localRspBody = new cmd0x6cd.RspBody();
+      int j = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+      paramObject = (aysq)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(160);
+      if (paramObject == null) {
+        break;
+      }
+      if (j == 0)
       {
-        paramFromServiceMsg = new businessinfo.RspBody();
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        i = paramFromServiceMsg.uint32_error_code.get();
-        paramObject = paramFromServiceMsg.string_error_msg.get();
-        int j = paramFromServiceMsg.uint32_interval.get();
         if (QLog.isColorLevel()) {
-          QLog.d("OnlineStatusHandler", 2, new Object[] { "handleRecvSetExtBusinessInfo,errorCode  = ", Integer.valueOf(i), " errorMsg=", paramObject, " interval=", Integer.valueOf(j) });
+          QLog.i("RedtouchHandler", 2, "handlePullRedTouch success.");
         }
-        if (i != 0) {
-          break label301;
-        }
-        paramFromServiceMsg = (OnlineStatusPermissionChecker.OnlineStatusPermissionItem)paramToServiceMsg.getAttribute("online_status_permission_item");
-        if (paramFromServiceMsg != null) {
-          ((aypo)this.mApp.getManager(370)).a(new OnlineStatusFriendsPermissionItem(paramFromServiceMsg.isAllHasPermission(), paramFromServiceMsg.getPermissionUins()));
-        }
-        int k = paramToServiceMsg.extraData.getInt("StatusId");
-        if (((Boolean)paramToServiceMsg.getAttribute("from_need_update_delay_time", Boolean.valueOf(false))).booleanValue())
+        if (localRspBody.rpt_msg_redpoint.has())
         {
-          paramFromServiceMsg = (aypj)this.mApp.getManager(369);
-          paramFromServiceMsg.a(k, j);
-          paramFromServiceMsg.a().a(k, NetConnInfoCenter.getServerTime());
+          paramToServiceMsg = localRspBody.rpt_msg_redpoint.get();
+          if (paramToServiceMsg == null) {
+            break label345;
+          }
+          paramFromServiceMsg = new ArrayList(paramToServiceMsg.size());
+          j = 0;
+          if (j >= paramToServiceMsg.size()) {
+            break label232;
+          }
+          localRedTouchItem = RedTouchItem.getRedTouchItem((cmd0x6cd.RedpointInfo)paramToServiceMsg.get(j));
+          if ((!bool4) || (localRedTouchItem.taskId == i)) {
+            break label220;
+          }
         }
-        bool1 = ((Boolean)paramToServiceMsg.getAttribute("from_register", Boolean.valueOf(false))).booleanValue();
-        boolean bool2 = ((Boolean)paramToServiceMsg.getAttribute("from_modify", Boolean.valueOf(false))).booleanValue();
-        if ((bool1) || (bool2)) {
-          break label301;
+        for (;;)
+        {
+          j += 1;
+          break label164;
+          paramToServiceMsg = null;
+          break;
+          label220:
+          paramFromServiceMsg.add(localRedTouchItem);
         }
-        this.app.a(AppRuntime.Status.online, k);
       }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+      label232:
+      for (paramToServiceMsg = paramFromServiceMsg;; paramToServiceMsg = null)
       {
-        paramToServiceMsg.printStackTrace();
-        return;
+        paramFromServiceMsg = localObject;
+        if (localRspBody.rpt_unfinished_redpoint.has()) {
+          paramFromServiceMsg = localRspBody.rpt_unfinished_redpoint.get();
+        }
+        boolean bool1 = bool2;
+        if (paramFromServiceMsg != null)
+        {
+          bool1 = bool2;
+          if (paramFromServiceMsg.size() > 0)
+          {
+            bool1 = true;
+            a(paramFromServiceMsg, bool4);
+          }
+        }
+        for (;;)
+        {
+          paramObject.a(paramToServiceMsg, bool1);
+          return;
+          bool1 = bool3;
+          paramToServiceMsg = localRedTouchItem;
+          if (QLog.isColorLevel())
+          {
+            QLog.i("RedtouchHandler", 2, "handlePullRedTouch failed:" + j);
+            bool1 = bool3;
+            paramToServiceMsg = localRedTouchItem;
+          }
+        }
       }
-      notifyUI(7, bool1, paramToServiceMsg.extraData);
-      return;
-      boolean bool1 = false;
-      continue;
-      label301:
-      if (i == 0) {
-        bool1 = true;
-      }
-    }
-  }
-  
-  private void c(FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    try
-    {
-      paramFromServiceMsg = new businessinfo.RspBody();
-      paramFromServiceMsg.mergeFrom((byte[])paramObject);
-      int i = paramFromServiceMsg.uint32_error_code.get();
-      paramObject = paramFromServiceMsg.string_error_msg.get();
-      int j = paramFromServiceMsg.uint32_interval.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("OnlineStatusHandler", 2, new Object[] { "handleRecvSetBatteryBusinessInfo,errorCode  = ", Integer.valueOf(i), " errorMsg=", paramObject, " interval=", Integer.valueOf(j) });
-      }
-      if (i == 0) {}
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-    {
-      paramFromServiceMsg.printStackTrace();
     }
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramFromServiceMsg = new businessinfo.RspBody();
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        i = paramFromServiceMsg.uint32_error_code.get();
-        paramObject = paramFromServiceMsg.string_error_msg.get();
-        int j = paramFromServiceMsg.uint32_interval.get();
-        long l = ((Integer)paramToServiceMsg.getAttribute("StatusId", Integer.valueOf(0))).intValue();
-        if (QLog.isColorLevel()) {
-          QLog.d("OnlineStatusHandler", 2, new Object[] { "handleRecvSetLocationBusinessInfo,errorCode  = ", Integer.valueOf(i), " errorMsg=", paramObject, " interval=", Integer.valueOf(j), " id=", Long.valueOf(l) });
-        }
-        if (i == 0)
-        {
-          paramToServiceMsg = (aypj)this.mApp.getManager(369);
-          if (l > 40000L)
-          {
-            paramToServiceMsg.a().b(40000, j);
-            break label221;
-            notifyUI(3, bool, null);
-          }
-          else
-          {
-            paramToServiceMsg.a(l, j);
-            paramToServiceMsg.a().a((int)l, NetConnInfoCenter.getServerTime());
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-        return;
-      }
-      label221:
-      while (i != 0)
-      {
-        bool = false;
-        break;
-      }
-      boolean bool = true;
-    }
-  }
-  
-  private void d(FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    Bundle localBundle = new Bundle();
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
-    {
-      paramObject = (SvcRespRegister)paramObject;
-      long l1 = paramObject.timeStamp;
-      byte b = paramObject.cReplyCode;
-      long l2 = paramObject.iStatus;
-      long l3 = paramObject.uExtOnlineStatus;
-      long l4 = paramObject.uClientAutoStatusInterval;
-      if (QLog.isColorLevel()) {
-        QLog.d("OnlineStatusHandler", 2, new Object[] { "[status][autoMgr] handleRecvSetOnlineStatus timeStamp:", Long.valueOf(l1), " cCode:", Byte.valueOf(b), " iStatus:", Long.valueOf(l2), " extOnlineStatus:", Long.valueOf(l3), " autoStatusInterval: ", Long.valueOf(l4) });
-      }
-      if (b == 0)
-      {
-        localBundle.putLong("onlineStatus", l2);
-        localBundle.putLong("extStatus", l3);
-        localBundle.putLong("autoStatusInterval", l4);
-        this.mApp.setOnlineStatus(AppRuntime.Status.build((int)l2));
-        this.mApp.setExtOnlineStatus(l3);
-        ((aypj)this.mApp.getManager(369)).c();
-        notifyUI(1, true, localBundle);
-        return;
-      }
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusHandler", 2, new Object[] { "handleRecvSetOnlineStatus res:", Boolean.valueOf(paramFromServiceMsg.isSuccess()) });
+      QLog.i("RedtouchHandler", 2, "handleReportTouchClick");
     }
-    notifyUI(1, false, localBundle);
-  }
-  
-  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramFromServiceMsg = new businessinfo.RspBody();
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        i = paramFromServiceMsg.uint32_error_code.get();
-        paramObject = paramFromServiceMsg.string_error_msg.get();
-        int j = paramFromServiceMsg.uint32_interval.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("OnlineStatusHandler", 2, new Object[] { "handleRecvSetLocationBusinessInfo,errorCode  = ", Integer.valueOf(i), " errorMsg=", paramObject, " interval=", Integer.valueOf(j) });
-        }
-        if (i == 0)
-        {
-          paramFromServiceMsg = (OnlineStatusPermissionChecker.OnlineStatusPermissionItem)paramToServiceMsg.getAttribute("online_status_permission_item");
-          if (paramFromServiceMsg != null) {
-            ((aypo)this.mApp.getManager(370)).a(new OnlineStatusFriendsPermissionItem(paramFromServiceMsg.isAllHasPermission(), paramFromServiceMsg.getPermissionUins()));
-          }
-          ((aypj)this.mApp.getManager(369)).a(-1L, j);
-          if (!((Boolean)paramToServiceMsg.getAttribute("from_register", Boolean.valueOf(false))).booleanValue())
-          {
-            this.app.a(AppRuntime.Status.online, -1L);
-            break label244;
-            notifyUI(2, bool, null);
-          }
-        }
-        else
-        {
-          this.app.runOnUiThread(new OnlineStatusHandler.1(this));
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-        return;
-      }
-      label244:
-      while (i != 0)
-      {
-        bool = false;
-        break;
-      }
-      boolean bool = true;
-    }
-  }
-  
-  public Handler a()
-  {
-    return ThreadManager.getSubThreadHandler();
-  }
-  
-  public awdu a(String paramString)
-  {
-    awdu localawdu2 = awec.a(paramString, true);
-    awdu localawdu1 = localawdu2;
-    if (localawdu2 == null) {
-      localawdu1 = awec.a(paramString, false);
-    }
-    return localawdu1;
-  }
-  
-  public ayox a()
-  {
-    return ayox.a();
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
+    int i;
     do
     {
-      return null;
-      paramString = a(paramString);
-    } while (paramString == null);
-    return Uri.parse(paramString.toString()).getQueryParameter("songmid");
-  }
-  
-  public URL a(String paramString)
-  {
-    try
-    {
-      paramString = (HttpURLConnection)new URL(paramString).openConnection();
-      paramString.setInstanceFollowRedirects(false);
-      paramString.setRequestProperty("Accept-Encoding", "identity");
-      paramString.connect();
-      if (paramString.getResponseCode() == 302)
-      {
-        paramString = new URL(paramString.getHeaderField("Location"));
-        return paramString;
-      }
-    }
-    catch (Exception paramString)
-    {
-      QLog.d("OnlineStatusHandler", 1, "redirectShortUrl, ", paramString);
-    }
-    return null;
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    int i = 1000;
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "StatSvc.SyncBusinessInfo");
-    businessinfo.ReqBody localReqBody = new businessinfo.ReqBody();
-    int j = paramBundle.getInt("StatusId", 0);
-    switch (paramInt)
-    {
-    default: 
-      QLog.w("OnlineStatusHandler", 1, "error type:" + paramInt);
-      return;
-    case 1: 
-      j = paramBundle.getInt("BatteryInfo", 0);
-      localReqBody.int32_battery_status.set(j);
-      localReqBody.uint32_status.set(AppRuntime.Status.online.getValue());
-      localReqBody.uint32_ext_status.set(1000);
-    }
-    for (;;)
-    {
-      localToServiceMsg.addAttribute("StatusId", Integer.valueOf(i));
-      localToServiceMsg.addAttribute("business_type", Integer.valueOf(paramInt));
-      localToServiceMsg.putWupBuffer(localReqBody.toByteArray());
-      sendPbReq(localToServiceMsg);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("OnlineStatusHandler", 2, new Object[] { "requestSynBusinessInfo type:", Integer.valueOf(paramInt) });
-      return;
-      paramBundle = paramBundle.getByteArray("LocationInfo");
-      localReqBody.uint32_status.set(AppRuntime.Status.online.getValue());
-      localReqBody.uint32_ext_status.set(-1);
-      localReqBody.bytes_business_info.set(ByteStringMicro.copyFrom(paramBundle));
-      paramBundle = new cmd0xe62.ReqBody();
-      localReqBody.private_info.set(paramBundle);
-      i = -1;
-      continue;
-      paramBundle = paramBundle.getByteArray("ExtInfo");
-      localReqBody.uint32_status.set(AppRuntime.Status.online.getValue());
-      localReqBody.uint32_ext_status.set(j);
-      localReqBody.bytes_business_info.set(ByteStringMicro.copyFrom(paramBundle));
-      paramBundle = new cmd0xe62.ReqBody();
-      localReqBody.private_info.set(paramBundle);
-      i = j;
-    }
-  }
-  
-  public void a(int paramInt, Bundle paramBundle, OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem)
-  {
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "StatSvc.SetBusinessInfo");
-    businessinfo.ReqBody localReqBody = new businessinfo.ReqBody();
-    PBUInt32Field localPBUInt32Field;
-    switch (paramInt)
-    {
-    default: 
-    case 1: 
-    case 2: 
       do
       {
-        for (;;)
-        {
-          localToServiceMsg.addAttribute("from_modify", Boolean.valueOf(paramBundle.getBoolean("from_modify", false)));
-          localToServiceMsg.addAttribute("from_register", Boolean.valueOf(paramBundle.getBoolean("from_register", false)));
-          localToServiceMsg.addAttribute("from_need_update_delay_time", Boolean.valueOf(paramBundle.getBoolean("from_need_update_delay_time", false)));
-          localToServiceMsg.addAttribute("business_type", Integer.valueOf(paramInt));
-          localToServiceMsg.putWupBuffer(localReqBody.toByteArray());
-          sendPbReq(localToServiceMsg);
-          if (QLog.isColorLevel()) {
-            QLog.d("OnlineStatusHandler", 2, new Object[] { "requestSetBusinessInfo type:", Integer.valueOf(paramInt) });
-          }
-          return;
-          i = paramBundle.getInt("BatteryInfo", 0);
-          localReqBody.uint32_status.set(AppRuntime.Status.online.getValue());
-          localReqBody.uint32_ext_status.set(1000);
-          localReqBody.int32_battery_status.set(i);
-        }
-        localObject = paramBundle.getByteArray("LocationInfo");
-        localReqBody.uint32_status.set(AppRuntime.Status.online.getValue());
-        localReqBody.uint32_ext_status.set(-1);
-        localReqBody.bytes_business_info.set(ByteStringMicro.copyFrom((byte[])localObject));
-      } while (paramOnlineStatusPermissionItem == null);
-      localObject = new cmd0xe62.ReqBody();
-      localPBUInt32Field = ((cmd0xe62.ReqBody)localObject).set_type;
-      if (paramOnlineStatusPermissionItem.isAllHasPermission()) {}
-      for (i = 1;; i = 2)
-      {
-        localPBUInt32Field.set(i);
-        if (paramOnlineStatusPermissionItem.getPermissionUins() != null) {
-          ((cmd0xe62.ReqBody)localObject).rpt_uint64_uin.set(paramOnlineStatusPermissionItem.getPermissionUins());
-        }
-        localReqBody.private_info.set((MessageMicro)localObject);
-        localToServiceMsg.addAttribute("online_status_permission_item", paramOnlineStatusPermissionItem);
-        break;
-      }
-    }
-    Object localObject = paramBundle.getByteArray("ExtInfo");
-    int j = paramBundle.getInt("StatusId");
-    localReqBody.uint32_status.set(AppRuntime.Status.online.getValue());
-    localReqBody.uint32_ext_status.set(j);
-    localReqBody.bytes_business_info.set(ByteStringMicro.copyFrom((byte[])localObject));
-    if (paramOnlineStatusPermissionItem != null)
-    {
-      localObject = new cmd0xe62.ReqBody();
-      localPBUInt32Field = ((cmd0xe62.ReqBody)localObject).set_type;
-      if (!paramOnlineStatusPermissionItem.isAllHasPermission()) {
-        break label537;
-      }
-    }
-    label537:
-    for (int i = 1;; i = 2)
-    {
-      localPBUInt32Field.set(i);
-      if (paramOnlineStatusPermissionItem.getPermissionUins() != null) {
-        ((cmd0xe62.ReqBody)localObject).rpt_uint64_uin.set(paramOnlineStatusPermissionItem.getPermissionUins());
-      }
-      localReqBody.private_info.set((MessageMicro)localObject);
-      localToServiceMsg.addAttribute("online_status_permission_item", paramOnlineStatusPermissionItem);
-      localToServiceMsg.extraData.putAll(paramBundle);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("OnlineStatusHandler", 2, new Object[] { "requestSetBusinessInfo: invoked. ", " statusId: ", Integer.valueOf(j), " onlinePermission: ", paramOnlineStatusPermissionItem });
-      break;
-    }
-  }
-  
-  public void a(aytb paramaytb)
-  {
-    long l = a().a(this.app);
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusHandler", 2, new Object[] { "pushMusicStatus curExtStatus:", Long.valueOf(l), ", ", paramaytb });
-    }
-    Object localObject = paramaytb;
-    if (paramaytb == null) {
-      localObject = new aytb();
-    }
-    if (l == 1028L)
-    {
-      paramaytb = new StatSvcStatSong.ReqBody();
-      paramaytb.bool_need_convert.set(((aytb)localObject).jdField_a_of_type_Boolean);
-      paramaytb.uint32_song_type.set(((aytb)localObject).jdField_a_of_type_Int);
-      paramaytb.uint32_remaining_time.set(((aytb)localObject).jdField_b_of_type_Int);
-      paramaytb.uint32_source_type.set(((aytb)localObject).jdField_c_of_type_Int);
-      paramaytb.bytes_song_id.set(ByteStringMicro.copyFromUtf8(((aytb)localObject).jdField_a_of_type_JavaLangString));
-      paramaytb.bytes_song_name.set(ByteStringMicro.copyFromUtf8(((aytb)localObject).jdField_b_of_type_JavaLangString));
-      paramaytb.bytes_singer_name.set(ByteStringMicro.copyFromUtf8(((aytb)localObject).jdField_c_of_type_JavaLangString));
-      paramaytb.bool_pause_flag.set(((aytb)localObject).jdField_b_of_type_Boolean);
-      paramaytb.uint32_song_play_time.set(((aytb)localObject).d);
-      localObject = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "StatSvc.SetSong");
-      ((ToServiceMsg)localObject).extraData.putBoolean("req_pb_protocol_flag", true);
-      ((ToServiceMsg)localObject).putWupBuffer(paramaytb.toByteArray());
-      sendPbReq((ToServiceMsg)localObject);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusHandler", 2, new Object[] { "requestSetOnlineStatus onlineStatus:", paramStatus, " extStatus:", Long.valueOf(paramLong1), " largeSeq:", Long.valueOf(paramLong2), " isAutoSet: " + paramBoolean });
-    }
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", paramQQAppInterface.getCurrentAccountUin(), "StatSvc.SetStatusFromClient");
-    Bundle localBundle = localToServiceMsg.extraData;
-    localBundle.putLong("K_SEQ", paramLong2);
-    localBundle.putSerializable("onlineStatus", paramStatus);
-    localBundle.putLong("extOnlineStatus", paramLong1);
-    if ((paramStatus == AppRuntime.Status.online) && (paramLong1 == 1000L)) {}
-    try
-    {
-      if (paramQQAppInterface.getExtOnlineStatus() != 1000L) {
-        paramQQAppInterface.setPowerConnect(ayox.c());
-      }
-      localBundle.putInt("batteryCapacity", paramQQAppInterface.getBatteryCapacity());
-      localBundle.putInt("powerConnect", paramQQAppInterface.getPowerConnect());
-      localBundle.putBoolean("isAutoSet", paramBoolean);
-      send(localToServiceMsg);
-      return;
-    }
-    catch (Throwable paramStatus)
-    {
-      for (;;)
-      {
-        QLog.e("OnlineStatusHandler", 1, "setOnlineStatus t:", paramStatus);
-      }
-    }
-  }
-  
-  public void a(Friends paramFriends)
-  {
-    String str = paramFriends.songId;
-    if (QLog.isColorLevel()) {
-      QLog.e("OnlineStatusHandler", 2, new Object[] { "getMusicLyric, id:", str });
-    }
-    if (aysz.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
-    {
-      QLog.e("OnlineStatusHandler", 1, "getMusicLyric return, getting status");
-      return;
-    }
-    this.a = paramFriends;
-    aysz.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, new awdu(0, 0, null));
-    cmd0xe59.ReqBody localReqBody = new cmd0xe59.ReqBody();
-    localReqBody.song_id.set(ByteStringMicro.copyFromUtf8(str));
-    localReqBody.zip_compress_flag.set(true);
-    if (!TextUtils.isEmpty(paramFriends.songName)) {
-      localReqBody.song_name.set(ByteStringMicro.copyFromUtf8(paramFriends.songName));
-    }
-    if (!TextUtils.isEmpty(paramFriends.singerName)) {
-      localReqBody.singer_name.set(ByteStringMicro.copyFromUtf8(paramFriends.singerName));
-    }
-    paramFriends = makeOIDBPkg("OidbSvc.0xe59", 3673, 0, localReqBody.toByteArray());
-    paramFriends.getAttributes().put("songId", str);
-    sendPbReq(paramFriends);
-  }
-  
-  public void a(MusicInfo paramMusicInfo, int paramInt, boolean paramBoolean, long paramLong)
-  {
-    if (paramMusicInfo == null)
-    {
-      a(null);
-      return;
-    }
-    aytb localaytb = new aytb();
-    localaytb.jdField_a_of_type_Boolean = true;
-    localaytb.jdField_a_of_type_JavaLangString = paramMusicInfo.jdField_a_of_type_JavaLangString;
-    localaytb.jdField_b_of_type_JavaLangString = paramMusicInfo.jdField_b_of_type_JavaLangString;
-    localaytb.jdField_a_of_type_Int = 1;
-    if ((paramMusicInfo.jdField_a_of_type_JavaUtilList != null) && (!paramMusicInfo.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      localaytb.jdField_c_of_type_JavaLangString = ((String)paramMusicInfo.jdField_a_of_type_JavaUtilList.get(0));
-    }
-    localaytb.jdField_b_of_type_Int = paramInt;
-    localaytb.jdField_c_of_type_Int = aysz.a().jdField_a_of_type_Int;
-    localaytb.jdField_b_of_type_Boolean = paramBoolean;
-    localaytb.d = ((int)paramLong);
-    a(localaytb);
-  }
-  
-  public void a(SongInfo paramSongInfo, int paramInt, boolean paramBoolean, long paramLong)
-  {
-    if (paramSongInfo == null)
-    {
-      a(null);
-      return;
-    }
-    aytb localaytb = new aytb();
-    localaytb.jdField_a_of_type_Boolean = false;
-    localaytb.jdField_a_of_type_JavaLangString = paramSongInfo.jdField_a_of_type_JavaLangString;
-    if ((TextUtils.isEmpty(paramSongInfo.jdField_a_of_type_JavaLangString)) || (paramSongInfo.jdField_a_of_type_JavaLangString.equals("0")))
-    {
-      localaytb.jdField_a_of_type_JavaLangString = a(paramSongInfo.f);
-      if (TextUtils.isEmpty(localaytb.jdField_a_of_type_JavaLangString))
-      {
-        QLog.d("OnlineStatusHandler", 1, "pushMusicStatus, songMid is null");
         return;
-      }
-    }
-    localaytb.jdField_b_of_type_JavaLangString = paramSongInfo.jdField_c_of_type_JavaLangString;
-    localaytb.jdField_a_of_type_Int = 1;
-    if (TextUtils.isEmpty(paramSongInfo.h)) {}
-    for (paramSongInfo = paramSongInfo.d;; paramSongInfo = paramSongInfo.h)
-    {
-      localaytb.jdField_c_of_type_JavaLangString = paramSongInfo;
-      if (localaytb.jdField_c_of_type_JavaLangString == null) {
-        localaytb.jdField_c_of_type_JavaLangString = "";
-      }
-      localaytb.jdField_b_of_type_Int = paramInt;
-      localaytb.jdField_c_of_type_Int = aysz.a().jdField_a_of_type_Int;
-      localaytb.jdField_b_of_type_Boolean = paramBoolean;
-      localaytb.d = ((int)paramLong);
-      a(localaytb);
-      return;
-    }
-  }
-  
-  public void a(FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (paramFromServiceMsg != null) {
-      try
-      {
-        if (!paramFromServiceMsg.isSuccess()) {
-          return;
-        }
-        StatSvcStatSong.RspBody localRspBody = new StatSvcStatSong.RspBody();
-        localRspBody.mergeFrom((byte[])paramObject);
-        int i = localRspBody.error_code.get();
-        paramObject = localRspBody.error_msg.get();
-        paramFromServiceMsg = "";
-        if (localRspBody.bytes_song_id.get() != null) {
-          paramFromServiceMsg = localRspBody.bytes_song_id.get().toStringUtf8();
-        }
-        QLog.d("OnlineStatusHandler", 1, new Object[] { "handlePushMusicStatusRsp, errorCode:", Integer.valueOf(i), " errorMsg:", paramObject, " convertSongId:", paramFromServiceMsg });
-        return;
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        QLog.e("OnlineStatusHandler", 1, "handlePushMusicStatusRsp, ", paramFromServiceMsg);
-      }
-    }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    String str = (String)paramToServiceMsg.getAttribute("songId", "");
-    if (paramFromServiceMsg != null) {}
-    for (;;)
-    {
-      Object localObject;
-      boolean bool1;
-      try
-      {
-        if ((!paramFromServiceMsg.isSuccess()) || (TextUtils.isEmpty(str)))
-        {
-          aysz.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
-          return;
-        }
-        localObject = new cmd0xe59.RspBody();
-        parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
-        bool1 = ((cmd0xe59.RspBody)localObject).safe_hit_flag.get();
-        int i = ((cmd0xe59.RspBody)localObject).ret.get();
-        int j = ((cmd0xe59.RspBody)localObject).sub_ret.get();
-        paramObject = ((cmd0xe59.RspBody)localObject).msg.get().toStringUtf8();
-        boolean bool2 = ((cmd0xe59.RspBody)localObject).zip_compress_flag.get();
-        if ((i != 0) || (bool1)) {
-          break label343;
-        }
-        paramFromServiceMsg = new awdu(0, 0, new ArrayList());
-        paramToServiceMsg = paramFromServiceMsg;
-        if (((cmd0xe59.RspBody)localObject).song_lyric.has())
-        {
-          localObject = ((cmd0xe59.RspBody)localObject).song_lyric.get().toByteArray();
-          paramToServiceMsg = paramFromServiceMsg;
-          if (localObject.length > 0)
-          {
-            if (!bool2) {
-              break label330;
-            }
-            paramToServiceMsg = new String(bbzc.a((byte[])localObject));
-            paramToServiceMsg = a(paramToServiceMsg);
-          }
-        }
-        if (paramToServiceMsg != null) {
-          aysz.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramToServiceMsg);
-        }
-        if (!QLog.isColorLevel()) {
+        i = paramToServiceMsg.extraData.getInt("redPointId", 0);
+        if (parseOIDBPkg(paramFromServiceMsg, paramObject, new cmd0x6ce.RspBody()) != 0) {
           break;
         }
-        QLog.d("OnlineStatusHandler", 2, new Object[] { "handleGetMusicLyric, ret:", Integer.valueOf(i), " subRet:", Integer.valueOf(j), " errorMsg:", paramObject, " zipFlag:", Boolean.valueOf(bool2), " safeHitFlag:", Boolean.valueOf(bool1) });
-        return;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        QLog.e("OnlineStatusHandler", 1, "handleGetMusicLyric", paramToServiceMsg);
-        aysz.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
-        return;
-      }
-      label330:
-      paramToServiceMsg = new String((byte[])localObject);
-      continue;
-      label343:
-      aysz.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
-      if ((bool1) && (this.a != null) && (str.equals(this.a.songId)))
-      {
-        this.a.songName = "";
-        this.a.singerName = "";
-        aysz.a().jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.a.songId);
-        ((FriendListHandler)this.app.a(1)).c(this.a.uin, false);
-      }
-    }
+      } while (!QLog.isColorLevel());
+      QLog.i("RedtouchHandler", 2, "handleReportTouchClick success. taskId:" + i);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.i("RedtouchHandler", 2, "handleReportTouchClick faild. taskId:" + i);
   }
   
-  public boolean a()
+  public void a()
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity != null) && ((localBaseActivity instanceof SplashActivity))) {
-      return ((SplashActivity)localBaseActivity).a() == MainFragment.d;
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "getRedPointConfigs(), client version : 8.4.5");
     }
-    return false;
+    cmd0x6f5.ReqBody localReqBody = new cmd0x6f5.ReqBody();
+    localReqBody.uint32_qq_platform.set(1);
+    localReqBody.str_qq_version.set("8.4.5");
+    sendPbReq(makeOIDBPkg("OidbSvc.cmd0x6f5", 1781, 0, localReqBody.toByteArray()));
   }
   
-  public void b(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void a(List<cmd0x6ce.ReadRedpointReq> paramList)
   {
-    int j = 0;
-    if (paramFromServiceMsg != null) {}
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "reportRedTouchClick, redPointId=" + ((cmd0x6ce.ReadRedpointReq)paramList.get(0)).uint32_appid.get());
+    }
+    Object localObject = new cmd0x6ce.ReqBody();
+    ((cmd0x6ce.ReqBody)localObject).rpt_msg_read_req.set(paramList);
+    localObject = makeOIDBPkg("OidbSvc.cmd0x6ce", 1742, 0, ((cmd0x6ce.ReqBody)localObject).toByteArray());
+    ((ToServiceMsg)localObject).extraData.putInt("redPointId", ((cmd0x6ce.ReadRedpointReq)paramList.get(0)).uint32_appid.get());
+    super.sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  public void a(List<cmd0x6cd.PullRedpointReq> paramList, boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      try
-      {
-        if (!paramFromServiceMsg.isSuccess()) {
-          return;
-        }
-        paramFromServiceMsg = new ImStatus.ImStatusDataPush();
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        paramObject = String.valueOf(paramFromServiceMsg.uint64_uin.get());
-        int k = paramFromServiceMsg.uint32_music_info_refresh.get();
-        if (k == 1)
-        {
-          paramFromServiceMsg = this.app.a().a();
-          i = j;
-          if (paramObject != null)
-          {
-            if (paramObject.equals(paramFromServiceMsg)) {
-              break label222;
-            }
-            i = j;
-            if (paramObject.equals(this.app.getCurrentAccountUin())) {
-              break label222;
-            }
-          }
-          boolean bool = a();
-          if ((i != 0) || (bool)) {
-            a().postDelayed(new OnlineStatusHandler.2(this, paramObject), 500L);
-          }
-          QLog.d("OnlineStatusHandler", 1, new Object[] { "handleRecvMusicStatusPush, uin:", bgsp.e(paramObject), " currentChatUin:", bgsp.e(paramFromServiceMsg), " needRefresh:", Integer.valueOf(k), " isContactShown:", Boolean.valueOf(bool) });
-          return;
-        }
+      localStringBuilder = new StringBuilder().append("pullRedTouch, list size=");
+      if (paramList != null) {
+        break label68;
       }
-      catch (Exception paramFromServiceMsg)
-      {
-        QLog.e("OnlineStatusHandler", 1, "handlePushMusicStatusRsp, ", paramFromServiceMsg);
+    }
+    label68:
+    for (Object localObject = "";; localObject = Integer.valueOf(paramList.size()))
+    {
+      QLog.i("RedtouchHandler", 2, localObject + ", isSingleTask=" + paramBoolean);
+      if ((paramList != null) && (paramList.size() != 0)) {
+        break;
       }
       return;
-      label222:
-      int i = 1;
+    }
+    localObject = new cmd0x6cd.ReqBody();
+    if (paramBoolean) {
+      ((cmd0x6cd.ReqBody)localObject).msg_pull_single_task.set((MessageMicro)paramList.get(0));
+    }
+    for (;;)
+    {
+      ((cmd0x6cd.ReqBody)localObject).uint32_ret_msg_rec.set(1);
+      localObject = makeOIDBPkg("OidbSvc.cmd0x6cd", 1741, 0, ((cmd0x6cd.ReqBody)localObject).toByteArray());
+      ((ToServiceMsg)localObject).extraData.putBoolean("is_single_task", paramBoolean);
+      if (paramBoolean) {
+        ((ToServiceMsg)localObject).extraData.putInt("task_id", ((cmd0x6cd.PullRedpointReq)paramList.get(0)).uint32_taskid.get());
+      }
+      super.sendPbReq((ToServiceMsg)localObject);
+      return;
+      ((cmd0x6cd.ReqBody)localObject).rpt_last_pull_redpoint.set(paramList);
     }
   }
   
@@ -742,73 +239,33 @@ public class ayta
     if (this.allowCmdSet == null)
     {
       this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("StatSvc.SetStatusFromClient");
-      this.allowCmdSet.add("StatSvc.SetBusinessInfo");
-      this.allowCmdSet.add("StatSvc.SyncBusinessInfo");
-      this.allowCmdSet.add("StatSvc.SetSong");
-      this.allowCmdSet.add("ImStatus.ReqPushStatus");
-      this.allowCmdSet.add("OidbSvc.0xe59");
+      this.allowCmdSet.add("OidbSvc.cmd0x6f5");
+      this.allowCmdSet.add("OidbSvc.cmd0x6cd");
+      this.allowCmdSet.add("OidbSvc.cmd0x6ce");
     }
     return !this.allowCmdSet.contains(paramString);
   }
   
-  protected Class<? extends anil> observerClass()
+  protected Class<? extends anui> observerClass()
   {
-    return aypl.class;
+    return null;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
-    String str;
+    String str = paramFromServiceMsg.getServiceCmd();
+    if ("OidbSvc.cmd0x6cd".equals(str)) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
     do
     {
-      int i;
-      do
-      {
-        return;
-        str = paramFromServiceMsg.getServiceCmd();
-        if ((msgCmdFilter(str)) && (QLog.isColorLevel())) {
-          QLog.d("OnlineStatusHandler", 2, "onReceive, msgCmdFilter is true,cmd  = " + str);
-        }
-        if ("StatSvc.SetSong".equals(str))
-        {
-          a(paramFromServiceMsg, paramObject);
-          return;
-        }
-        if ("StatSvc.SetStatusFromClient".equals(str))
-        {
-          d(paramFromServiceMsg, paramObject);
-          return;
-        }
-        if ("StatSvc.SyncBusinessInfo".equals(str))
-        {
-          c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-          return;
-        }
-        if (!"StatSvc.SetBusinessInfo".equals(str)) {
-          break;
-        }
-        i = ((Integer)paramToServiceMsg.getAttribute("business_type", Integer.valueOf(-1))).intValue();
-        if (i == 2)
-        {
-          d(paramToServiceMsg, paramFromServiceMsg, paramObject);
-          return;
-        }
-        if (i == 1)
-        {
-          c(paramFromServiceMsg, paramObject);
-          return;
-        }
-      } while (i != 3);
-      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
-      if ("ImStatus.ReqPushStatus".equals(str))
+      if ("OidbSvc.cmd0x6ce".equals(str))
       {
-        b(paramFromServiceMsg, paramObject);
+        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
-    } while (!"OidbSvc.0xe59".equals(str));
+    } while (!"OidbSvc.cmd0x6f5".equals(str));
     a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }

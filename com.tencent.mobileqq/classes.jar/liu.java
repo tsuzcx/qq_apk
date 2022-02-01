@@ -1,13 +1,8 @@
 public abstract interface liu
-  extends lim
 {
-  public abstract void a(float paramFloat1, float paramFloat2, boolean paramBoolean);
+  public abstract void a();
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  public abstract void setDrawParticle(boolean paramBoolean);
+  public abstract void b();
 }
 
 

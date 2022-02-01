@@ -1,78 +1,108 @@
-import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.av.config.ConfigInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
 
 public class lfo
 {
-  private static lfo a = new lfo();
+  private static lfo jdField_a_of_type_Lfo;
+  int jdField_a_of_type_Int = 0;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lfp(this);
+  lkk jdField_a_of_type_Lkk = null;
   
-  private static int a(byte[] paramArrayOfByte)
+  public lfo(Context paramContext)
   {
-    return paramArrayOfByte[3] & 0xFF | (paramArrayOfByte[2] & 0xFF) << 8 | (paramArrayOfByte[1] & 0xFF) << 16 | (paramArrayOfByte[0] & 0xFF) << 24;
-  }
-  
-  @SuppressLint({"DefaultLocale"})
-  public static String a(int paramInt)
-  {
-    return String.format("%d.%d.%d.%d", new Object[] { Integer.valueOf(paramInt >> 24 & 0xFF), Integer.valueOf(paramInt >> 16 & 0xFF), Integer.valueOf(paramInt >> 8 & 0xFF), Integer.valueOf(paramInt & 0xFF) });
-  }
-  
-  public static String a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    if (QLog.isDevelopLevel()) {
+      QLog.w("AVConfigManager", 1, "构造", new Throwable("打印调用栈"));
     }
-    char[] arrayOfChar1 = "0123456789ABCDEF".toCharArray();
-    char[] arrayOfChar2 = new char[paramArrayOfByte.length * 2];
-    int i = 0;
-    while (i < paramArrayOfByte.length)
+  }
+  
+  public static lfo a(Context paramContext)
+  {
+    if (jdField_a_of_type_Lfo == null) {}
+    try
     {
-      int j = paramArrayOfByte[i] & 0xFF;
-      arrayOfChar2[(i * 2)] = arrayOfChar1[(j >>> 4)];
-      arrayOfChar2[(i * 2 + 1)] = arrayOfChar1[(j & 0xF)];
-      i += 1;
+      if (jdField_a_of_type_Lfo == null)
+      {
+        jdField_a_of_type_Lfo = new lfo(paramContext);
+        jdField_a_of_type_Lfo.b(paramContext);
+      }
+      return jdField_a_of_type_Lfo;
     }
-    return new String(arrayOfChar2);
+    finally {}
   }
   
-  public static lfo a()
+  public static lkk a(Context paramContext)
   {
-    return a;
+    return a(paramContext).b(paramContext);
   }
   
-  public static lfp a(byte[] paramArrayOfByte)
+  public static void a(Context paramContext)
   {
-    int i = paramArrayOfByte.length;
-    int j = paramArrayOfByte[0];
-    j = paramArrayOfByte[(i - 1)];
-    Object localObject = new byte[4];
-    byte[] arrayOfByte = new byte[4];
-    QLog.d("AudioTrans runhw", 2, "rspBodyBytes = " + a(paramArrayOfByte));
-    System.arraycopy(paramArrayOfByte, 1, localObject, 0, 4);
-    System.arraycopy(paramArrayOfByte, 5, arrayOfByte, 0, 4);
-    j = a((byte[])localObject);
-    int k = a(arrayOfByte);
-    QLog.d("AudioTrans runhw", 2, "rspBytesLen = " + i + ", lengthOfHead = " + j + ", lengthOfBody = " + k);
-    localObject = new lfp(j, k);
-    System.arraycopy(paramArrayOfByte, 9, ((lfp)localObject).a, 0, j);
-    System.arraycopy(paramArrayOfByte, j + 9, ((lfp)localObject).b, 0, k);
-    return localObject;
+    try
+    {
+      if (jdField_a_of_type_Lfo != null)
+      {
+        jdField_a_of_type_Lfo.c(paramContext);
+        jdField_a_of_type_Lfo = null;
+      }
+      return;
+    }
+    finally {}
   }
   
-  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  lkk b(Context paramContext)
   {
-    int i = paramArrayOfByte1.length;
-    int j = paramArrayOfByte2.length;
-    byte[] arrayOfByte1 = ByteBuffer.allocate(4).putInt(i).array();
-    byte[] arrayOfByte2 = ByteBuffer.allocate(4).putInt(j).array();
-    byte[] arrayOfByte3 = new byte[i + 9 + j + 1];
-    arrayOfByte3[0] = 40;
-    System.arraycopy(arrayOfByte1, 0, arrayOfByte3, 1, 4);
-    System.arraycopy(arrayOfByte2, 0, arrayOfByte3, 5, 4);
-    System.arraycopy(paramArrayOfByte1, 0, arrayOfByte3, 9, i);
-    System.arraycopy(paramArrayOfByte2, 0, arrayOfByte3, i + 9, j);
-    arrayOfByte3[(arrayOfByte3.length - 1)] = 41;
-    return arrayOfByte3;
+    try
+    {
+      if (this.jdField_a_of_type_Lkk == null)
+      {
+        String str = ConfigInfo.getSharpConfigPayloadFromFile(paramContext);
+        this.jdField_a_of_type_Int = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
+        this.jdField_a_of_type_Lkk = new lkk(str);
+        QLog.w("AVConfigManager", 1, "getParser, Version[" + this.jdField_a_of_type_Int + "], data[\n" + str + "\n]");
+      }
+      paramContext = this.jdField_a_of_type_Lkk;
+      return paramContext;
+    }
+    finally {}
+  }
+  
+  public void b(Context paramContext)
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE");
+    localIntentFilter.addAction("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD");
+    paramContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+  }
+  
+  void c(Context paramContext)
+  {
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
+    {
+      paramContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+    }
+  }
+  
+  public void d(Context paramContext)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Lkk == null) {
+        return;
+      }
+      int i = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
+      if ((this.jdField_a_of_type_Int != i) || (this.jdField_a_of_type_Lkk.a()))
+      {
+        QLog.w("AVConfigManager", 1, "reload, Version[" + this.jdField_a_of_type_Int + "->" + i + "]");
+        this.jdField_a_of_type_Lkk = null;
+        this.jdField_a_of_type_Int = 0;
+      }
+      return;
+    }
+    finally {}
   }
 }
 

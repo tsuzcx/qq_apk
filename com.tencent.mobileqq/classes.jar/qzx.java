@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
 
-class qzx
-  implements View.OnClickListener
+public abstract interface qzx
 {
-  qzx(qzw paramqzw, int paramInt1, int paramInt2, int paramInt3) {}
+  public abstract void a(Bundle paramBundle, float paramFloat);
   
-  public void onClick(View paramView)
-  {
-    String str = String.format("https://viola.qq.com/js/redpackIndex.js?_rij_violaUrl=1&hideNav=1&statusColor=1&statusBarStyle=1&v_nav_immer=1&v_tid=6&v_bundleName=redpackIndex&v_bid=3740&redpack_type=%d&plat_source=%d&jump_source=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
-    pha.a(paramView.getContext(), str);
-    this.jdField_a_of_type_Qzw.b();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(Bundle paramBundle, int paramInt, float paramFloat);
+  
+  public abstract void a(Bundle paramBundle, String paramString);
+  
+  public abstract void a(String paramString);
 }
 
 

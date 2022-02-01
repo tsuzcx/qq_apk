@@ -1,16 +1,35 @@
+import android.view.View;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
+import com.tencent.mobileqq.intervideo.od.ODLoadingActivity.3;
+import com.tencent.mobileqq.intervideo.od.ODLoadingActivity.3.1.1;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+
 public class awdt
+  implements EnterCallback
 {
-  public final int a;
-  public final long a;
-  public final int b;
-  public final long b;
+  public awdt(ODLoadingActivity.3 param3) {}
   
-  public awdt(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
+  public void onCloseLoadingView()
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    ODLoadingActivity.b(this.a.this$0);
+    this.a.this$0.finish();
+    ODLoadingActivity.a(this.a.this$0).opType("onCloseLoadingView").report();
+    awbj.b("33669909");
+  }
+  
+  public void onEnterComplete()
+  {
+    ODLoadingActivity.a(this.a.this$0).opType("onEnterComplete").report();
+    awbj.b("33669911");
+  }
+  
+  public void onShowLoadingView(View paramView)
+  {
+    ODLoadingActivity.a(this.a.this$0, paramView);
+    this.a.this$0.runOnUiThread(new ODLoadingActivity.3.1.1(this));
+    ODLoadingActivity.a(this.a.this$0).opType("onShowLoadingView").report();
+    awbj.b("33669908");
   }
 }
 

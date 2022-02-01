@@ -2,7 +2,7 @@ package com.tencent.avgame.gamelogic.data;
 
 import android.text.TextUtils;
 import androidx.annotation.Nullable;
-import bglf;
+import bhlg;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -86,7 +86,7 @@ public class RoomInfo
   
   public String getNick(String paramString, int paramInt)
   {
-    return bglf.a(getNick(paramString), paramInt);
+    return bhlg.a(getNick(paramString), paramInt);
   }
   
   public Player getPlayer(String paramString)

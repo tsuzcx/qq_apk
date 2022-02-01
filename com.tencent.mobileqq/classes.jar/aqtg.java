@@ -1,74 +1,27 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class aqtg
-  extends aqkz<aqth>
+class aqtg
+  implements Animator.AnimatorListener
 {
-  public static aqth a()
-  {
-    return (aqth)aqlk.a().a(564);
-  }
+  aqtg(aqsy paramaqsy) {}
   
-  @NonNull
-  public aqth a(int paramInt)
-  {
-    return new aqth();
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  @Nullable
-  public aqth a(aqlg[] paramArrayOfaqlg)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length == 0)) {
-      return null;
-    }
-    paramArrayOfaqlg = paramArrayOfaqlg[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor onParsed, content:" + paramArrayOfaqlg);
-    }
-    return aqth.a(paramArrayOfaqlg);
-  }
-  
-  public void a(aqth paramaqth)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor update.");
-    }
-    if (paramaqth != null) {
-      bazp.a = (int)(paramaqth.a * 60.0D * 60.0D);
+    if (aqsy.a(this.a) != null) {
+      aqsy.a(this.a).b();
     }
   }
   
-  public Class<aqth> clazz()
-  {
-    return aqth.class;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 564;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqtg
  * JD-Core Version:    0.7.0.1
  */

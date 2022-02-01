@@ -1,16 +1,18 @@
-public class bfsq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
+
+class bfsq
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
+  bfsq(bfsf parambfsf, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
   
-  public bfsq(bfsk parambfsk, String paramString1, boolean paramBoolean, String paramString2, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c(this.jdField_a_of_type_JavaUtilUUID);
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.model;
 
 import android.text.TextUtils;
-import awmr;
+import axfj;
 import com.tencent.mobileqq.data.RecentEmotion;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityTransaction;
@@ -11,7 +11,7 @@ import java.util.List;
 public class EmoticonManager$20
   implements Runnable
 {
-  public EmoticonManager$20(awmr paramawmr, List paramList) {}
+  public EmoticonManager$20(axfj paramaxfj, List paramList) {}
   
   public void run()
   {
@@ -49,7 +49,7 @@ public class EmoticonManager$20
           if (localRecentEmotion2 != null) {
             this.this$0.a.remove(localRecentEmotion2);
           }
-          awmr.a(this.this$0, localRecentEmotion3);
+          axfj.a(this.this$0, localRecentEmotion3);
         }
       }
       catch (Exception localException)

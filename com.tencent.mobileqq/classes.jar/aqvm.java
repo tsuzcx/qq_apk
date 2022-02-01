@@ -1,22 +1,68 @@
-public abstract interface aqvm
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class aqvm
+  implements InvocationHandler
 {
-  public abstract aqvn a();
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private List<aqvn> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public abstract String a();
+  public aqvm(Activity paramActivity, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
-  public abstract void a();
+  public void a()
+  {
+    if ((!this.b) && (this.jdField_a_of_type_AndroidAppActivity != null))
+    {
+      this.b = true;
+      aqvh.a(this.jdField_a_of_type_AndroidAppActivity, this);
+    }
+  }
   
-  public abstract boolean a();
+  public void a(aqvn paramaqvn)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramaqvn);
+  }
   
-  public abstract String b();
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
   
-  public abstract void b();
-  
-  public abstract void c();
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  {
+    if ((paramMethod.getName().equalsIgnoreCase("onTranslucentConversionComplete")) && (paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      paramMethod = paramArrayOfObject[0];
+      if (QLog.isColorLevel()) {
+        QLog.d("TranslucentConvertor", 2, "onTranslucentConversionComplete: " + paramMethod);
+      }
+      paramObject = Boolean.valueOf(false);
+      if ((paramMethod instanceof Boolean)) {
+        paramObject = (Boolean)paramMethod;
+      }
+      paramMethod = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramMethod.hasNext()) {
+        ((aqvn)paramMethod.next()).d_(paramObject.booleanValue());
+      }
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqvm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,58 @@
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
 
 public class qwe
-  implements pyu
 {
-  public qwe(ComponentContentRecommend paramComponentContentRecommend, RecommendFollowInfo paramRecommendFollowInfo) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public static qwe a(articlesummary.HotWordItem paramHotWordItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ComponentContentRecommend.a, 2, "followPubAccount() unfollowUin uin=" + paramString + ", isSuccess=" + paramBoolean);
+    qwe localqwe = new qwe();
+    if (paramHotWordItem.hot_word.has()) {
+      localqwe.a = paramHotWordItem.hot_word.get().toStringUtf8();
     }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = false;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-      ComponentContentRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend).notifyDataSetChanged();
-      return;
+    if (paramHotWordItem.jump_url.has()) {
+      localqwe.b = paramHotWordItem.jump_url.get().toStringUtf8();
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.getContext(), 1, 2131717086, 0).a();
+    if (paramHotWordItem.index_word_color.has()) {
+      localqwe.c = paramHotWordItem.index_word_color.get().toStringUtf8();
+    }
+    if (paramHotWordItem.index_bg_color.has()) {
+      localqwe.d = paramHotWordItem.index_bg_color.get().toStringUtf8();
+    }
+    return localqwe;
+  }
+  
+  public articlesummary.HotWordItem a()
+  {
+    articlesummary.HotWordItem localHotWordItem = new articlesummary.HotWordItem();
+    if (!TextUtils.isEmpty(this.a)) {
+      localHotWordItem.hot_word.set(ByteStringMicro.copyFromUtf8(this.a));
+    }
+    if (!TextUtils.isEmpty(this.d)) {
+      localHotWordItem.index_bg_color.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      localHotWordItem.index_word_color.set(ByteStringMicro.copyFromUtf8(this.c));
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localHotWordItem.jump_url.set(ByteStringMicro.copyFromUtf8(this.b));
+    }
+    return localHotWordItem;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof qwe)) {
+      return (!TextUtils.isEmpty(this.a)) && (this.a.equals(((qwe)paramObject).a)) && (!TextUtils.isEmpty(this.b)) && (this.b.equals(((qwe)paramObject).b));
+    }
+    return false;
   }
 }
 

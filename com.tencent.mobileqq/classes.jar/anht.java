@@ -1,53 +1,191 @@
+import android.annotation.TargetApi;
 import android.os.Bundle;
-import com.tencent.mobileqq.data.Card;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.ArrayList;
+import java.util.List;
 
-class anht
-  extends aniz
+public class anht
 {
-  anht(anhs paramanhs) {}
+  public static int a;
+  private anhc jdField_a_of_type_Anhc;
+  private anhr jdField_a_of_type_Anhr;
+  private ApolloTextureView jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView;
+  private final int b;
+  private int c;
   
-  public void onCardDownload(boolean paramBoolean, Object paramObject)
+  public anht(CmShowRenderView paramCmShowRenderView, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView = paramCmShowRenderView;
+    this.b = paramInt;
+  }
+  
+  public static void a(ArrayList<String> paramArrayList, int[] paramArrayOfInt)
+  {
+    QLog.i("CmShow_RenderViewController", 1, "CmShow_ preLoadRes start");
+    Bundle localBundle = new Bundle();
+    localBundle.putIntArray("actionIds", paramArrayOfInt);
+    localBundle.putStringArrayList("uins", paramArrayList);
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_preload_res", localBundle, new anhu());
+  }
+  
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("BabyQIPCModule", 2, "babyqWeb onCardDownload ");
+      QLog.d("CmShow_RenderViewController", 2, "onResume");
     }
-    if ((paramObject instanceof Card))
-    {
-      paramObject = (Card)paramObject;
-      if (QLog.isColorLevel()) {
-        QLog.d("BabyQIPCModule", 2, "babyqWeb onCardDownload set card info uin = " + paramObject.uin);
-      }
-      if (anhk.aC.equals(paramObject.uin))
-      {
-        anhs.a(this.a, paramObject);
-        anhs.a(this.a).jdField_a_of_type_ComTencentMobileqqDataCard = anhs.a(this.a);
-        anhs.a(this.a).jdField_a_of_type_ArrayOfJavaLangString[0] = anhs.a(this.a).strNick;
-        anhs.a(this.a).jdField_a_of_type_ArrayOfJavaLangString[4] = anhs.a(this.a).strReMark;
-      }
-    }
-    if (anhs.a(this.a).get("getZanVoteCount") != null)
-    {
-      paramObject = (Bundle)anhs.a(this.a).get("getZanVoteCount");
-      int i = paramObject.getInt("key_process_callback_id");
-      paramObject = paramObject.getString("key_js_callback_id");
-      Bundle localBundle = new Bundle();
-      localBundle.putString("key_method_action", "getZanVoteCount");
-      localBundle.putLong("key_get_zan_vote_count", anhs.a(this.a).lVoteCount);
-      localBundle.putString("web_js_call_back_id", paramObject);
-      this.a.callbackResult(i, EIPCResult.createSuccessResult(localBundle));
-      anhs.a(this.a).remove("getZanVoteCount");
+    if ((a()) && (this.jdField_a_of_type_Anhc != null)) {
+      this.jdField_a_of_type_Anhc.b();
     }
   }
   
-  public void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(int paramInt1, int paramInt2)
   {
-    anhs.a(this.a).babyQSwitch = paramBoolean2;
-    if (QLog.isColorLevel()) {
-      QLog.d("BabyQIPCModule", 2, "babyqWeb onGetBabyQSwitch babyQSwitch = " + paramBoolean2);
+    if (this.jdField_a_of_type_Anhc != null) {
+      this.jdField_a_of_type_Anhc.a(paramInt1, paramInt2);
     }
+  }
+  
+  public void a(angy paramangy)
+  {
+    if (this.jdField_a_of_type_Anhr != null) {
+      this.jdField_a_of_type_Anhr.a(paramangy);
+    }
+    if (this.jdField_a_of_type_Anhc != null) {
+      this.jdField_a_of_type_Anhc.a(paramangy);
+    }
+  }
+  
+  public void a(CmShowRenderView.PlayActionConfig paramPlayActionConfig)
+  {
+    if (this.jdField_a_of_type_Anhc != null) {
+      this.jdField_a_of_type_Anhc.a(paramPlayActionConfig);
+    }
+  }
+  
+  @TargetApi(14)
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_RenderViewController", 2, "initApolloSurfaceView");
+    }
+    this.jdField_a_of_type_Anhc = new anhc(paramString, this.b);
+    this.jdField_a_of_type_Anhr = new anhr(this.jdField_a_of_type_Anhc, 0);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.init(this.jdField_a_of_type_Anhr);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.setDumplicateCreateRenderThread(amsx.q);
+    this.jdField_a_of_type_Anhc.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView);
+    int i = angi.a();
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.setInitHeight(i);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (this.jdField_a_of_type_Anhc != null) {
+      this.jdField_a_of_type_Anhc.a(paramString, paramInt);
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.jdField_a_of_type_Anhc != null) {
+      this.jdField_a_of_type_Anhc.a(paramString, paramInt1, paramInt2, paramInt3);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_Anhc != null) {
+      this.jdField_a_of_type_Anhc.a(paramString1, paramString2);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, float paramFloat, int paramInt, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Anhc != null) {
+      this.jdField_a_of_type_Anhc.a(paramString1, paramString2, paramFloat, paramInt, paramBundle);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Anhc != null) {
+      this.jdField_a_of_type_Anhc.a(paramString1, paramString2, paramInt1, paramInt2);
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Anhc != null) {
+      this.jdField_a_of_type_Anhc.a(paramString, paramBoolean);
+    }
+  }
+  
+  public void a(List<String> paramList, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Anhc != null) {
+      this.jdField_a_of_type_Anhc.a(paramList, paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView != null;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_RenderViewController", 2, "onPause");
+    }
+    if ((a()) && (this.jdField_a_of_type_Anhc != null)) {
+      this.jdField_a_of_type_Anhc.a();
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.jdField_a_of_type_Anhc != null) {
+      this.jdField_a_of_type_Anhc.a(paramString);
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_RenderViewController", 2, "onDestroy ");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView != null)
+    {
+      ApolloRender localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender();
+      if (localApolloRender != null) {
+        localApolloRender.queueDestroy();
+      }
+    }
+    if (this.jdField_a_of_type_Anhc != null)
+    {
+      this.jdField_a_of_type_Anhc.c();
+      this.jdField_a_of_type_Anhc = null;
+    }
+    if (!a())
+    {
+      QLog.e("CmShow_RenderViewController", 1, new Object[] { "[onDestory] isViewAvailable:", Boolean.valueOf(a()) });
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.setVisibility(8);
+      if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getParent() instanceof ViewGroup)) {
+        ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getParent()).removeView(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView = null;
+    }
+    this.c = 0;
+    angt.a();
   }
 }
 

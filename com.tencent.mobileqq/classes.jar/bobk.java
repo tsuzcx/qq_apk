@@ -1,49 +1,7 @@
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import dov.com.qq.im.aeeditor.lyric.widget.LyricViewScroll;
-
-public class bobk
-  extends Handler
+final class bobk
+  implements bhvb
 {
-  int jdField_a_of_type_Int;
-  
-  public bobk(LyricViewScroll paramLyricViewScroll) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_Int != this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.getScrollY()) {
-          break;
-        }
-        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        if (LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll) != null) {
-          LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).b(this.jdField_a_of_type_Int);
-        }
-        Log.d("LyricViewScroll", "fling stop");
-        LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll, false);
-        LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).sendEmptyMessageDelayed(2, this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.jdField_b_of_type_Int);
-        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.jdField_b_of_type_Boolean = false;
-      } while (LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll) == null);
-      LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).a();
-      return;
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.getScrollY();
-      if (LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll) != null) {
-        LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).a(this.jdField_a_of_type_Int);
-      }
-      LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).sendEmptyMessageDelayed(1, 100L);
-      return;
-      this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.jdField_b_of_type_Boolean = true;
-    } while (LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll) == null);
-    LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).b();
-  }
+  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
 }
 
 

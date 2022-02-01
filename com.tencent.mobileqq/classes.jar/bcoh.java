@@ -1,23 +1,34 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.mobileqq.soload.LoadParam;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-class bcoh
-  implements bcob
+public class bcoh
+  extends bcog
 {
-  public long a;
-  public bcob a;
-  public LoadParam a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  bcoh(bcob parambcob, long paramLong, LoadParam paramLoadParam)
+  public bcoh(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Bcob = parambcob;
-    this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam = paramLoadParam;
+    super(paramViewGroup, paramInt);
   }
   
-  public void a(int paramInt, LoadExtResult paramLoadExtResult)
+  protected void a()
   {
-    bcof.a(paramInt, paramLoadExtResult, this.jdField_a_of_type_Long, this.jdField_a_of_type_Bcob, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam);
+    super.a();
+    View localView = a(this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131369629));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131363417));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368212));
+    this.b = ((TextView)localView.findViewById(2131366690));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377227));
+    this.d = ((TextView)localView.findViewById(2131362008));
   }
 }
 

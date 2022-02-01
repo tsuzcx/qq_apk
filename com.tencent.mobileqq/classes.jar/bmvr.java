@@ -1,29 +1,20 @@
-import android.graphics.drawable.Drawable;
-import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
-import cooperation.vip.vipcomponent.util.VipResourcesListener;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QzoneTranslucentBrowserFragment;
 
 public class bmvr
-  extends bmvz
+  implements View.OnClickListener
 {
-  public bmvr(QzoneHuangzuanVipIconShow paramQzoneHuangzuanVipIconShow, VipResourcesListener paramVipResourcesListener, int paramInt1, bmvo parambmvo, int paramInt2, int paramInt3, boolean paramBoolean1, String paramString, int paramInt4, boolean paramBoolean2, int paramInt5) {}
+  public bmvr(QzoneTranslucentBrowserFragment paramQzoneTranslucentBrowserFragment) {}
   
-  public void onDownloaded(String paramString1, int paramInt, String paramString2, Drawable paramDrawable)
+  public void onClick(View paramView)
   {
-    QzoneHuangzuanVipIconShow.access$000(this.jdField_a_of_type_CooperationVipVipcomponentUiQzoneHuangzuanVipIconShow, paramInt, paramDrawable, this.jdField_a_of_type_Int, this.jdField_a_of_type_Bmvo);
-    if (this.mCount <= 0)
-    {
-      QzoneHuangzuanVipIconShow.access$100(this.jdField_a_of_type_CooperationVipVipcomponentUiQzoneHuangzuanVipIconShow, this.jdField_a_of_type_Bmvo, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.c, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.d, this.jdField_b_of_type_Boolean, this.e);
-      if (this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener != null) {
-        this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener.onLoaded(this.jdField_a_of_type_Bmvo);
-      }
+    if (this.a.getHostActivity() != null) {
+      this.a.getHostActivity().finish();
     }
-  }
-  
-  public void onFailed(String paramString1, int paramInt, String paramString2)
-  {
-    if (this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener != null) {
-      this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener.onFailed();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,18 +1,18 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qlb
   implements View.OnClickListener
 {
-  qlb(qla paramqla) {}
+  qlb(qkv paramqkv) {}
   
   public void onClick(View paramView)
   {
-    spn.a((Activity)qla.a(this.a).getContext());
-    spn.a(2);
+    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
+    if (localsgf != null) {
+      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

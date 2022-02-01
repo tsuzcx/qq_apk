@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public class aekg
-  extends anuu
+class aekg
+  implements DialogInterface.OnClickListener
 {
-  public aekg(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  aekg(aeke paramaeke) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      H5MagicPlayerActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, "{code:0}");
-    }
+    this.a.a.a();
+    DevlockQuickLoginActivity.c(this.a.a);
+    DevlockQuickLoginActivity.c(this.a.a, 0, 2130772001);
   }
 }
 

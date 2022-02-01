@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import seu;
+import rvy;
 
 public class VideoPlayManager$1
   implements Runnable
 {
-  public VideoPlayManager$1(seu paramseu) {}
+  public VideoPlayManager$1(rvy paramrvy) {}
   
   public void run()
   {

@@ -1,56 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.widget.EditText;
 
-class alcw
-  implements BusinessObserver
+public class alcw
+  extends alcd
 {
-  alcw(alcv paramalcv, RecentBaseData paramRecentBaseData, QQAppInterface paramQQAppInterface) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public alcw(EditText paramEditText)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentPubAccHelper", 2, "unfollow isSuccess:" + String.valueOf(paramBoolean) + ", uin: " + this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-    }
-    if (!paramBoolean)
+    super(paramEditText);
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramInt1 = 1;
+    paramCharSequence = paramCharSequence.toString();
+    if (paramCharSequence.startsWith("0"))
     {
-      alcv.a(this.jdField_a_of_type_Alcv, 2131694617);
-      return;
+      paramInt2 = bmrq.a(paramCharSequence, 1);
+      if (paramInt2 != 0) {
+        break label53;
+      }
     }
     for (;;)
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
-          localUnFollowResponse.mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() != 0) {
-            continue;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("RecentPubAccHelper", 2, "unfollow success");
-          }
-          alcv.a(this.jdField_a_of_type_Alcv, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-          ((bfrd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-          alcv.b(this.jdField_a_of_type_Alcv, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        continue;
-      }
-      alcv.a(this.jdField_a_of_type_Alcv);
+      paramCharSequence = String.valueOf(paramInt1);
+      this.a.setText(paramCharSequence);
+      this.a.setSelection(paramCharSequence.length());
       return;
-      alcv.b(this.jdField_a_of_type_Alcv, 2131694617);
+      label53:
+      paramInt1 = paramInt2;
     }
   }
 }

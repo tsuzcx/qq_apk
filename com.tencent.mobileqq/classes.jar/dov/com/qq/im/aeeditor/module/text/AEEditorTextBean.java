@@ -4,7 +4,7 @@ import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bofw;
+import bphr;
 import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerConfig;
 import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerConfig.FrameConfig;
 import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerConfig.StyleConfig;
@@ -49,11 +49,11 @@ public class AEEditorTextBean
     AEEditorTextBean localAEEditorTextBean = new AEEditorTextBean();
     localAEEditorTextBean.id = paramAEEditorPagStickerInfo.stickerId;
     localAEEditorTextBean.thumbUrl = paramAEEditorPagStickerInfo.thumbUrl;
-    localAEEditorTextBean.pagFilePath = bofw.a().e(paramAEEditorPagStickerInfo.stickerId);
+    localAEEditorTextBean.pagFilePath = bphr.a().e(paramAEEditorPagStickerInfo.stickerId);
     if (paramAEEditorPagStickerInfo.backgroundColorAdjustable == 1)
     {
       localAEEditorTextBean.type = 1;
-      localAEEditorTextBean.pagThumbFilePath = bofw.a().f(paramAEEditorPagStickerInfo.stickerId);
+      localAEEditorTextBean.pagThumbFilePath = bphr.a().f(paramAEEditorPagStickerInfo.stickerId);
     }
     for (;;)
     {

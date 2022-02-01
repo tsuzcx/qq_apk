@@ -1,35 +1,554 @@
-import android.content.Context;
-import android.graphics.Point;
+import android.graphics.PointF;
+import android.widget.RelativeLayout;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.1;
+import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.10;
+import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.11;
+import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.12;
+import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.13;
+import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.2;
+import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.3;
+import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.4;
+import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.5;
+import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.6;
+import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.7;
+import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.8;
+import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.9;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecog;
 import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
-import com.tencent.tencentmap.mapsdk.maps.MapView;
-import com.tencent.tencentmap.mapsdk.maps.Projection;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class apfq
-  implements TencentMap.OnMapLoadedCallback
+  implements apfi
 {
-  public apfq(ARScanEntryView paramARScanEntryView) {}
+  public static final String a;
+  public int a;
+  private long jdField_a_of_type_Long;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private apfh jdField_a_of_type_Apfh;
+  private apfr jdField_a_of_type_Apfr;
+  volatile apft jdField_a_of_type_Apft = null;
+  private apfu jdField_a_of_type_Apfu;
+  private apoq jdField_a_of_type_Apoq = new apoq();
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private ArCloudConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
+  public ARScanEntryView a;
+  public WeakReference<apse> a;
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private boolean jdField_a_of_type_Boolean;
+  public final int b;
+  private String jdField_b_of_type_JavaLangString = "";
+  private boolean jdField_b_of_type_Boolean = true;
+  public final int c;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean = true;
+  public final int d;
+  private String d;
+  public final int e = 4;
+  public final int f = 5;
+  public final int g = 6;
+  private volatile int h = -1;
+  private int i;
+  private int j = 15;
   
-  public void onMapLoaded()
+  static
   {
-    this.a.j = true;
-    if (ARScanEntryView.a(this.a) != null)
+    jdField_a_of_type_JavaLangString = apfq.class.getSimpleName();
+  }
+  
+  public apfq()
+  {
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_c_of_type_Int = 2;
+    this.jdField_d_of_type_Int = 3;
+  }
+  
+  public int a()
+  {
+    return this.h;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Apfu != null) {
+      this.jdField_a_of_type_Apfu.b(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    }
+    this.jdField_a_of_type_Apfr = null;
+    f();
+    this.h = -1;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "setGamePlayMode mode " + paramInt);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "setRecogRes");
+    if (this.jdField_a_of_type_Apfr != null)
     {
-      Projection localProjection = ARScanEntryView.a(this.a).getMap().getProjection();
-      TencentMap localTencentMap = ARScanEntryView.a(this.a).getMap();
-      if ((localProjection != null) && (localTencentMap != null))
+      this.jdField_a_of_type_Apfr.a(paramInt1, paramInt2, paramInt3, paramInt4);
+      return;
+    }
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "setRecogRes failed.");
+  }
+  
+  public void a(apfr paramapfr)
+  {
+    if (paramapfr != null)
+    {
+      this.jdField_a_of_type_Apfr = paramapfr;
+      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+        this.jdField_a_of_type_Apfr.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      }
+      this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Apfr.b();
+      if (!this.jdField_a_of_type_Apfr.c()) {
+        break label75;
+      }
+    }
+    label75:
+    for (int k = 1;; k = 2)
+    {
+      this.jdField_a_of_type_Int = k;
+      this.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Apfr.a();
+      return;
+    }
+  }
+  
+  public void a(apoq paramapoq, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "processInternalGestureRecogResult");
+    if (!b()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "processInternalGestureRecogResult into Error status");
+    }
+    this.jdField_a_of_type_Apoq = paramapoq;
+    int k = 1;
+    if (this.jdField_a_of_type_Long > 0L) {
+      k = 0;
+    }
+    int m;
+    boolean bool;
+    if ((this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_d_of_type_Int == 0) && (this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_c_of_type_Int > 0))
+    {
+      f();
+      if (k != 0)
       {
-        Point localPoint = localProjection.toScreenLocation(localTencentMap.getCameraPosition().target);
-        if (localPoint != null)
+        c(4);
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "processInternalGestureRecogResult start draw circle");
+      }
+      paramapoq = ARLocalGestureCircleRecog.a(paramInt1, paramInt2, paramInt3, paramInt4, new PointF(this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_a_of_type_Apor.b, this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_a_of_type_Apor.c));
+      m = (int)(this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_a_of_type_Apor.jdField_a_of_type_Float / paramInt2 * paramInt3);
+      int n = (int)paramapoq.x;
+      int i1 = (int)paramapoq.y;
+      if (this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_a_of_type_Apor.jdField_a_of_type_Boolean)
+      {
+        k = 1;
+        a(m, n, i1, k);
+        b(1);
+        apgw.a().a(6);
+        this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.g = 0;
+      }
+    }
+    else
+    {
+      if (this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_c_of_type_Int <= this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_d_of_type_Int) {
+        break label547;
+      }
+      m = 0;
+      if (this.jdField_a_of_type_Apoq.jdField_a_of_type_Apot.jdField_d_of_type_Int != 1) {
+        break label478;
+      }
+      if (this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_d_of_type_Int != 0) {
+        break label457;
+      }
+      k = 0;
+      m = 1;
+      bool = true;
+    }
+    for (;;)
+    {
+      label291:
+      if (m != 0)
+      {
+        if (this.jdField_a_of_type_Apoq.jdField_a_of_type_Apot.jdField_d_of_type_Int != 1) {
+          break label779;
+        }
+        paramapoq = new int[this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_c_of_type_Int - k];
+        int[] arrayOfInt1 = new int[this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_c_of_type_Int - k];
+        int[] arrayOfInt2 = new int[this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_c_of_type_Int - k];
+        paramInt2 = k;
+        for (;;)
         {
-          localPoint.offset(0, afur.a(60.0F, this.a.a.getResources()) * -1);
-          localTencentMap.moveCamera(CameraUpdateFactory.newLatLng(localProjection.fromScreenLocation(localPoint)));
+          if (paramInt2 < this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_c_of_type_Int)
+          {
+            PointF localPointF = ARLocalGestureCircleRecog.a(paramInt1, paramInt1, paramInt3, paramInt4, this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[paramInt2]);
+            paramapoq[(paramInt2 - k)] = ((int)localPointF.x);
+            arrayOfInt1[(paramInt2 - k)] = ((int)localPointF.y);
+            arrayOfInt2[(paramInt2 - k)] = this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_a_of_type_ArrayOfInt[paramInt2];
+            paramInt2 += 1;
+            continue;
+            k = -1;
+            break;
+            label457:
+            k = this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_d_of_type_Int;
+            m = 1;
+            bool = false;
+            break label291;
+            label478:
+            if (this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_c_of_type_Int >= 1) {
+              m = 1;
+            }
+            if (this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_d_of_type_Int < 1)
+            {
+              bool = true;
+              k = 0;
+              break label291;
+            }
+            bool = false;
+            k = this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_d_of_type_Int;
+            break label291;
+          }
+        }
+        a(paramapoq, arrayOfInt1, arrayOfInt2, bool);
+      }
+    }
+    for (;;)
+    {
+      label547:
+      if ((this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_a_of_type_Int == -1) && (this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_b_of_type_Int != -1) && (this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_c_of_type_Int > 0))
+      {
+        this.jdField_c_of_type_Boolean = true;
+        d();
+        c(3);
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+          ((apse)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(new ARTransferDoorLogicManager.2(this), 1000L);
+        }
+      }
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "zoomOutWorldCupSparks curent state " + this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_a_of_type_Int);
+      if ((this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.jdField_b_of_type_Int != 0))
+      {
+        c(5);
+        b(2);
+        ThreadManager.getSubThreadHandler().post(new ARTransferDoorLogicManager.3(this));
+        if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+          ((apse)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(new ARTransferDoorLogicManager.4(this), 1500L);
+        }
+      }
+      return;
+      label779:
+      this.i = 0;
+      if (this.jdField_c_of_type_Boolean)
+      {
+        this.jdField_c_of_type_Boolean = false;
+        paramapoq = new ARTransferDoorLogicManager.1(this, paramInt1, paramInt2, paramInt3, paramInt4);
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "DrawCircle. resume. mDrawCirclePuase = " + this.jdField_c_of_type_Boolean + ", genIdx = " + this.jdField_a_of_type_Apoq.jdField_a_of_type_Apos.g);
+        if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (!this.jdField_c_of_type_Boolean)) {
+          ((apse)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramapoq, this.j);
         }
       }
     }
+  }
+  
+  public void a(apse paramapse)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramapse);
+  }
+  
+  public void a(AppInterface paramAppInterface, ScanTorchActivity paramScanTorchActivity, RelativeLayout paramRelativeLayout)
+  {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getUIHandler();
+    this.jdField_a_of_type_Apfh = new apfh(paramScanTorchActivity);
+    this.jdField_a_of_type_Apfh.a(this);
+    if ((this.jdField_a_of_type_Apfr != null) && (paramRelativeLayout != null))
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "init " + paramRelativeLayout.getChildCount());
+      this.jdField_a_of_type_Apfr.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      this.jdField_a_of_type_Apfu = new apfu(paramScanTorchActivity);
+      return;
+    }
+    paramAppInterface = jdField_a_of_type_JavaLangString;
+    paramRelativeLayout = new StringBuilder().append("init ");
+    if (this.jdField_a_of_type_Apfr != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d(paramAppInterface, 2, bool);
+      break;
+    }
+  }
+  
+  public void a(ArCloudConfigInfo paramArCloudConfigInfo)
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "startRenderTransferGame config " + paramArCloudConfigInfo);
+    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo == null) {
+      this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
+    }
+    ArCloudConfigInfo localArCloudConfigInfo = paramArCloudConfigInfo;
+    if (paramArCloudConfigInfo == null)
+    {
+      localArCloudConfigInfo = paramArCloudConfigInfo;
+      if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo != null)
+      {
+        localArCloudConfigInfo = paramArCloudConfigInfo;
+        if (a()) {
+          localArCloudConfigInfo = this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
+        }
+      }
+    }
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((apse)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(4096L, localArCloudConfigInfo);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    b();
+    if (paramBoolean)
+    {
+      if ((this.jdField_a_of_type_Apfr != null) && (this.jdField_a_of_type_Int == 1)) {
+        if (this.jdField_a_of_type_Apfr.b())
+        {
+          c(6);
+          this.jdField_a_of_type_Apfr.a();
+          this.h = -1;
+        }
+      }
+      for (;;)
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "onPhonePoseChaned standBy SUCCESS with mode: " + this.jdField_a_of_type_Int + "-mCurrentPoseStatus:" + this.h);
+        return;
+        this.h = 0;
+        continue;
+        if ((this.jdField_a_of_type_Apfr != null) && (this.jdField_a_of_type_Int == 2))
+        {
+          c(2);
+          this.h = 0;
+        }
+        else if (this.jdField_a_of_type_Apfr == null)
+        {
+          c(2);
+          this.h = 0;
+        }
+      }
+    }
+    if ((this.jdField_a_of_type_Apfr != null) && (this.jdField_a_of_type_Apfr.b()) && (this.jdField_a_of_type_Int == 1)) {
+      c(1);
+    }
+    for (;;)
+    {
+      this.h = 1;
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "onPhonePoseChaned standBy FAIL with mode: " + this.jdField_a_of_type_Int + "-mCurrentPoseStatus:" + this.h);
+      return;
+      if (this.jdField_a_of_type_Int == 2) {
+        c(1);
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "updateUITipsMessage " + paramBoolean + ";" + paramString);
+    if ((this.jdField_a_of_type_Boolean == paramBoolean) && (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.6(this, paramString));
+      return;
+    }
+    this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.7(this));
+  }
+  
+  public void a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, boolean paramBoolean)
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "insertWorldCupSpark start.");
+    if ((this.jdField_a_of_type_Apfr != null) && (this.jdField_a_of_type_Apfr.a()))
+    {
+      this.jdField_a_of_type_Apfr.a(paramArrayOfInt1, paramArrayOfInt2, paramArrayOfInt3, paramBoolean);
+      return;
+    }
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "insertWorldCupSpark failed.");
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 2;
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_Apfr != null) {
+      return this.jdField_a_of_type_Apfr.a();
+    }
+    return 0;
+  }
+  
+  public void b()
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "doOnResume");
+    if (this.jdField_a_of_type_Int == 1) {}
+  }
+  
+  public void b(int paramInt)
+  {
+    boolean bool = true;
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "switchGameStatus " + paramInt);
+    if (this.jdField_a_of_type_Apfr != null)
+    {
+      this.jdField_a_of_type_Apfr.a(paramInt);
+      return;
+    }
+    String str = jdField_a_of_type_JavaLangString;
+    if ("switchGameStatus " + paramInt + "|" + this.jdField_a_of_type_Apfr != null) {}
+    for (;;)
+    {
+      QLog.d(str, 2, new Object[] { Boolean.valueOf(bool) });
+      return;
+      bool = false;
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.5(this, paramBoolean));
+    }
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_Apfr == null) {}
+    int k;
+    do
+    {
+      return true;
+      k = b();
+    } while ((k == 0) || (k == 1));
+    return false;
+  }
+  
+  public void c()
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "notifyEnterIntoTransferDoorStatus");
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((apse)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d(1);
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "OnARTransferStatusChanged status changeTo " + paramInt);
+    if ((this.jdField_a_of_type_MqqOsMqqHandler == null) || (this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView == null) || ((this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView != null) && (!this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.a()))) {
+      return;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.8(this));
+      return;
+    case 2: 
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.9(this));
+      return;
+    case 3: 
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.10(this));
+      return;
+    case 4: 
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.11(this));
+      return;
+    case 5: 
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.12(this));
+      return;
+    }
+    this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.13(this));
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_c_of_type_Boolean = true;
+    this.i = 0;
+    this.j = 15;
+  }
+  
+  public void e()
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "startPhonePoseDetect");
+    this.jdField_a_of_type_Apfh.a();
+    this.h = -1;
+  }
+  
+  public void f()
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "stopPhonePoseDetect");
+    this.jdField_a_of_type_Apfh.b();
+  }
+  
+  public void g()
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "doOnPause");
+    if (this.jdField_a_of_type_Apfr == null)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "doOnPause but do nothing here");
+      return;
+    }
+    if (this.jdField_a_of_type_Apfu != null) {
+      this.jdField_a_of_type_Apfu.b(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    }
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    c(6);
+    f();
+    this.h = -1;
+  }
+  
+  public void h()
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "ARWorldGC ARWorldCupGameLogicManager uninit");
+    this.jdField_a_of_type_Apfr = null;
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(null);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView = null;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+    this.jdField_a_of_type_Apft = null;
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    }
+    this.jdField_a_of_type_Apfu = null;
+    if (this.jdField_a_of_type_Apfh != null)
+    {
+      this.jdField_a_of_type_Apfh.b();
+      this.jdField_a_of_type_Apfh = null;
+    }
+    this.h = -1;
+    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
+  }
+  
+  public void i()
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "zoomOutWorldCupSparks .");
+    if (this.jdField_a_of_type_Apfr != null)
+    {
+      this.jdField_a_of_type_Apfr.b();
+      return;
+    }
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "zoomOutWorldCupSparks failed.");
   }
 }
 

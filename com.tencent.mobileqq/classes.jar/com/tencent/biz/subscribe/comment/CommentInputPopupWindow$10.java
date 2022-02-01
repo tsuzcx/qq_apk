@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaeq;
+import aair;
 import android.widget.ImageButton;
 
 public class CommentInputPopupWindow$10
@@ -8,10 +8,10 @@ public class CommentInputPopupWindow$10
 {
   public void run()
   {
-    aaeq.a(this.this$0).setVisibility(8);
-    aaeq.b(this.this$0).setVisibility(0);
-    aaeq.a(this.this$0, true);
-    aaeq.a(this.this$0).requestFocus();
+    aair.a(this.this$0).setVisibility(8);
+    aair.b(this.this$0).setVisibility(0);
+    aair.a(this.this$0, true);
+    aair.a(this.this$0).requestFocus();
   }
 }
 

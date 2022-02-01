@@ -34,7 +34,7 @@ public class c
     e locale = e.d(paramContext);
     this.m = locale.b(paramContext);
     this.k = locale.i(paramContext);
-    if (j.c(this.k)) {
+    if (j.b(this.k)) {
       this.k = locale.e(paramContext);
     }
     this.l = locale.h(paramContext);
@@ -67,7 +67,7 @@ public class c
   private void b(Context paramContext)
   {
     this.g = e.d(paramContext).f(paramContext);
-    if (!j.c(this.g)) {}
+    if (!j.b(this.g)) {}
     for (;;)
     {
       try
@@ -77,7 +77,7 @@ public class c
         if (i1 == 1) {
           continue;
         }
-        if (j.c(paramContext.a("IMEI_DENGTA", "")))
+        if (j.b(paramContext.a("IMEI_DENGTA", "")))
         {
           paramContext = paramContext.b();
           paramContext.a("IMEI_DENGTA", this.g).a();
@@ -90,7 +90,7 @@ public class c
       }
       d.d("[core] imei: " + this.g, new Object[0]);
       return;
-      if (j.c(paramContext.a("IMEI_DENGTA", "imei_v2", "")))
+      if (j.b(paramContext.a("IMEI_DENGTA", "imei_v2", "")))
       {
         paramContext = paramContext.b();
         paramContext.b("imei_v2", this.g).a();
@@ -125,7 +125,7 @@ public class c
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 34	com/tencent/beacon/core/info/c:g	Ljava/lang/String;
-    //   6: invokestatic 76	com/tencent/beacon/core/e/j:c	(Ljava/lang/String;)Z
+    //   6: invokestatic 76	com/tencent/beacon/core/e/j:b	(Ljava/lang/String;)Z
     //   9: ifeq +28 -> 37
     //   12: invokestatic 135	com/tencent/beacon/core/info/f:a	()I
     //   15: iconst_1
@@ -261,7 +261,7 @@ public class c
   {
     try
     {
-      if (j.c(this.f)) {
+      if (j.b(this.f)) {
         this.f = ("" + this.e.getApplicationInfo().targetSdkVersion);
       }
       String str = this.f;

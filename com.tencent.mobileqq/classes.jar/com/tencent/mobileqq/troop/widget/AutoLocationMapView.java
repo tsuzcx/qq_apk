@@ -3,15 +3,15 @@ package com.tencent.mobileqq.troop.widget;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
-import bfvc;
-import bfvd;
+import bgvd;
+import bgve;
 import com.tencent.tencentmap.mapsdk.maps.MapView;
 
 public class AutoLocationMapView
   extends MapView
 {
-  Handler a = new bfvc(this);
-  public bfvd a;
+  Handler a = new bgvd(this);
+  public bgve a;
   
   public AutoLocationMapView(Context paramContext)
   {

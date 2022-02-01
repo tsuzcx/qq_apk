@@ -1,117 +1,109 @@
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
-import android.content.Intent;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody;
-import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader;
+import tencent.mobileim.structmsg.structmsg.FlagInfo;
+import tencent.mobileim.structmsg.structmsg.ReqSystemMsgNew;
 
 public class aogr
-  extends acvl
+  implements bcuc
 {
-  public aogr(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
+  private AppInterface a;
+  
+  public aogr(AppInterface paramAppInterface)
   {
-    super(paramQQAppInterface, paramMessageHandler);
+    this.a = paramAppInterface;
   }
   
-  private void a(byte[] paramArrayOfByte)
+  public int a()
   {
-    if (paramArrayOfByte == null) {}
-    do
+    return 5;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    ReqItem localReqItem = new ReqItem();
+    localReqItem.eServiceID = 114;
+    Object localObject1 = new structmsg.ReqSystemMsgNew();
+    ((structmsg.ReqSystemMsgNew)localObject1).msg_num.set(20);
+    ((structmsg.ReqSystemMsgNew)localObject1).checktype.set(4);
+    Object localObject2 = ((QQAppInterface)this.a).a();
+    boolean bool = this.a.getPreferences().getBoolean("SP_VERSION_UPDATE", false);
+    if (!bool) {
+      this.a.getPreferences().edit().putBoolean("SP_VERSION_UPDATE", true);
+    }
+    PBUInt64Field localPBUInt64Field = ((structmsg.ReqSystemMsgNew)localObject1).latest_friend_seq;
+    if (bool) {}
+    for (long l = ((MessageHandler)localObject2).a().e("last_friend_seq_47");; l = 0L)
     {
-      for (;;)
-      {
-        return;
-        C2CType0x211_SubC2CType0xb.MsgBody localMsgBody = new C2CType0x211_SubC2CType0xb.MsgBody();
-        try
-        {
-          paramArrayOfByte = (C2CType0x211_SubC2CType0xb.MsgBody)localMsgBody.mergeFrom(paramArrayOfByte);
-          paramArrayOfByte = (C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader)paramArrayOfByte.msg_msg_header.get();
-          if (paramArrayOfByte != null) {
-            break label71;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.e("Q.msg.BaseMessageProcessor", 2, "<VideoMessageProcessor><---handle0x2110xbMsg : subMsgType[0xb] MsgHeader failed");
-            return;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+      localPBUInt64Field.set(l);
+      ((structmsg.ReqSystemMsgNew)localObject1).latest_group_seq.set(0L);
+      ((structmsg.ReqSystemMsgNew)localObject1).version.set(1000);
+      ((structmsg.ReqSystemMsgNew)localObject1).is_get_grp_ribbon.set(false);
+      ((structmsg.ReqSystemMsgNew)localObject1).friend_msg_type_flag.set(1L);
+      localObject2 = new structmsg.FlagInfo();
+      ((structmsg.FlagInfo)localObject2).GrpMsg_Kick_Admin.set(1);
+      ((structmsg.FlagInfo)localObject2).GrpMsg_WordingDown.set(1);
+      ((structmsg.FlagInfo)localObject2).GrpMsg_GetOfficialAccount.set(1);
+      ((structmsg.FlagInfo)localObject2).FrdMsg_GetBusiCard.set(1);
+      ((structmsg.FlagInfo)localObject2).GrpMsg_GetPayInGroup.set(1);
+      ((structmsg.FlagInfo)localObject2).FrdMsg_Discuss2ManyChat.set(1);
+      ((structmsg.FlagInfo)localObject2).FrdMsg_NeedWaitingMsg.set(1);
+      ((structmsg.FlagInfo)localObject2).GrpMsg_NotAllowJoinGrp_InviteNotFrd.set(1);
+      ((structmsg.FlagInfo)localObject2).FrdMsg_uint32_need_all_unread_msg.set(1);
+      ((structmsg.FlagInfo)localObject2).GrpMsg_get_transfer_group_msg_flag.set(1);
+      ((structmsg.FlagInfo)localObject2).GrpMsg_NeedAutoAdminWording.set(1);
+      ((structmsg.FlagInfo)localObject2).GrpMsg_get_quit_pay_group_msg_flag.set(1);
+      ((structmsg.FlagInfo)localObject2).GrpMsg_GetC2cInviteJoinGroup.set(1);
+      ((structmsg.ReqSystemMsgNew)localObject1).flag.set((MessageMicro)localObject2);
+      ((structmsg.ReqSystemMsgNew)localObject1).is_get_frd_ribbon.set(false);
+      localObject1 = ((structmsg.ReqSystemMsgNew)localObject1).toByteArray();
+      localObject2 = new byte[localObject1.length + 4];
+      bhvd.a((byte[])localObject2, 0, localObject1.length + 4);
+      bhvd.a((byte[])localObject2, 4, (byte[])localObject1, localObject1.length);
+      localReqItem.vecParam = ((byte[])localObject2);
+      return localReqItem;
+    }
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if (paramRespItem.eServiceID == 114)
+    {
+      if (paramRespItem.cResult != 2) {
+        break label106;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.msg.BaseMessageProcessor", 2, "<VideoMessageProcessor><---handle0x2110xbMsg : subMsgType[0xb] MsgBody failed", paramArrayOfByte);
-    return;
-    label71:
-    long l1 = paramArrayOfByte.uint64_to_uin.get();
-    long l2 = paramArrayOfByte.uint64_room_id.get();
-    paramArrayOfByte = new Intent();
-    paramArrayOfByte.setAction("tencent.video.q2v.AudioEngineReady");
-    paramArrayOfByte.putExtra("uin", String.valueOf(l1));
-    paramArrayOfByte.putExtra("c2cuin", l1);
-    paramArrayOfByte.putExtra("c2croomid", l2);
-    this.a.getApp().sendBroadcast(paramArrayOfByte);
-    QLog.d("svenxu", 1, "ACTION_OPPOSITE_AUDIO_ENGINE_READY Send video c2c broadcast: selfUin = " + l1 + " roomid = " + l2);
-  }
-  
-  private void a(byte[] paramArrayOfByte, int paramInt)
-  {
-    switch (paramInt)
+      localObject = paramRespItem.vecUpdate;
+      i = localObject.length - 4;
+      paramRespItem = new byte[i];
+      System.arraycopy(localObject, 4, paramRespItem, 0, i);
+      localObject = new ToServiceMsg("mobileqq.service", this.a.getAccount(), "ProfileService.Pb.ReqSystemMsgNew");
+      localFromServiceMsg = new FromServiceMsg(this.a.getAccount(), "ProfileService.Pb.ReqSystemMsgNew");
+      localFromServiceMsg.setServiceCmd("ProfileService.Pb.ReqSystemMsgNew");
+      localFromServiceMsg.setMsgSuccess();
+      ((QQAppInterface)this.a).a().onReceive((ToServiceMsg)localObject, localFromServiceMsg, paramRespItem);
+    }
+    label106:
+    while (!QLog.isColorLevel())
     {
-    default: 
+      Object localObject;
+      int i;
+      FromServiceMsg localFromServiceMsg;
       return;
     }
-    a(paramArrayOfByte);
+    QLog.d("ReqSystemMsgNewItem", 2, "error happend item.cResult = " + paramRespItem.cResult);
   }
-  
-  public acwn a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return new acwn(null, true);
-      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
-      {
-        a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime);
-      }
-      else
-      {
-        a(getClass().getName(), paramInt);
-        continue;
-        if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
-        {
-          boolean bool = lkm.a(paramMsgInfo.vMsg);
-          this.a.a().a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime, bool);
-        }
-        else
-        {
-          a(getClass().getName(), paramInt);
-        }
-      }
-    }
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if ((paramVarArgs != null) && (paramVarArgs.length == 3))
-    {
-      a((byte[])paramVarArgs[2], 11);
-      return;
-    }
-    a(getClass().getName(), paramInt);
-  }
-  
-  public void a(long paramLong1, byte[] paramArrayOfByte, long paramLong2, int paramInt) {}
 }
 
 

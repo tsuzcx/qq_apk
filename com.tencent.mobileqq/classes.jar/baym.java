@@ -1,21 +1,48 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
+import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
-class baym
-  implements MessageQueue.IdleHandler
+public class baym
+  extends QzoneExternalRequest
 {
-  baym(bayi parambayi) {}
+  public JceStruct a;
   
-  public boolean queueIdle()
+  public baym(newest_feeds_req paramnewest_feeds_req)
   {
-    AIOPictureData localAIOPictureData = this.a.a();
-    bawu localbawu = new bawu();
-    if ((localAIOPictureData != null) && (localbawu.a(localAIOPictureData, 4)) && (localbawu.a(localAIOPictureData, 4) == null))
-    {
-      this.a.f(true);
-      this.a.updateUI();
+    super.setHostUin(paramnewest_feeds_req.login_uin);
+    super.setLoginUserId(paramnewest_feeds_req.login_uin);
+    this.a = paramnewest_feeds_req;
+  }
+  
+  public static newest_feeds_rsp a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
     }
-    return false;
+    newest_feeds_rsp localnewest_feeds_rsp;
+    do
+    {
+      return paramArrayOfByte;
+      localnewest_feeds_rsp = (newest_feeds_rsp)decode(paramArrayOfByte, "getAIONewestFeeds");
+      paramArrayOfByte = localnewest_feeds_rsp;
+    } while (localnewest_feeds_rsp != null);
+    return null;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.getAIONewestFeeds";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "getAIONewestFeeds";
   }
 }
 

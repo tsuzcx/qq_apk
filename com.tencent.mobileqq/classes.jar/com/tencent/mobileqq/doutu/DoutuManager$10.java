@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.doutu;
 
-import armt;
+import ascj;
 import com.tencent.mobileqq.persistence.EntityManager;
 
 public class DoutuManager$10
   implements Runnable
 {
-  public DoutuManager$10(armt paramarmt) {}
+  public DoutuManager$10(ascj paramascj) {}
   
   public void run()
   {
-    if (armt.a(this.this$0) != null) {
-      armt.a(this.this$0).drop(DoutuData.class);
+    if (ascj.a(this.this$0) != null) {
+      ascj.a(this.this$0).drop(DoutuData.class);
     }
   }
 }

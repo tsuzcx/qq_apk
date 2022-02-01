@@ -1,37 +1,38 @@
-import android.content.Context;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.widget.SingleLineTextView;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopNameHelper.GenTroopNameTask;
 
-public final class bgtq
-  implements URLDrawable.URLDrawableListener
+public class bgtq
+  implements Comparable<bgtq>
 {
-  public bgtq(boolean paramBoolean, SingleLineTextView paramSingleLineTextView, Context paramContext) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  public bgtq(TroopNameHelper.GenTroopNameTask paramGenTroopNameTask) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public int a(@NonNull bgtq parambgtq)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      if (paramURLDrawable.getCurrDrawable() != null) {
-        paramURLDrawable.getCurrDrawable().setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
-      }
+    int i = -1;
+    if ((this.f != null) && (parambgtq.f != null)) {
+      i = this.f.compareTo(parambgtq.f);
     }
-    for (;;)
+    do
     {
-      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, VipUtils.a(afur.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), paramURLDrawable));
-      return;
-      if (paramURLDrawable.getCurrDrawable() != null) {
-        paramURLDrawable.getCurrDrawable().setColorFilter(null);
-      }
-    }
+      do
+      {
+        return i;
+        if (this.f != null) {
+          break;
+        }
+      } while (parambgtq.f == null);
+      return 1;
+    } while (parambgtq.f == null);
+    return 0;
   }
 }
 

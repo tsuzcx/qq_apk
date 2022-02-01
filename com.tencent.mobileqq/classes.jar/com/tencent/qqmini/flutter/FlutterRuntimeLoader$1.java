@@ -6,23 +6,20 @@ import android.text.TextUtils;
 import com.tencent.qqmini.sdk.core.tissue.TissueEnv;
 import com.tencent.qqmini.sdk.core.tissue.TissueGlobal;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
+import com.tencent.qqmini.sdk.ipc.AppBrandCmdProxy;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.MiniSDKConst;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.shell.ICommonManager;
+import com.tencent.qqmini.sdk.launcher.utils.CPUUtil;
 import com.tencent.qqmini.sdk.runtime.BaseRuntimeLoader.Creator;
 import com.tencent.qqmini.sdk.utils.DeviceInfoUtil;
+import java.io.File;
 
 final class FlutterRuntimeLoader$1
   implements BaseRuntimeLoader.Creator<FlutterRuntimeLoader>
 {
-  public FlutterRuntimeLoader create(Context paramContext, Bundle paramBundle)
-  {
-    return new FlutterRuntimeLoader(paramContext);
-  }
-  
-  public void doPrepareEngine(Bundle paramBundle) {}
-  
-  public boolean isEnginePrepared(Bundle paramBundle)
+  private boolean checkTissueSo(Bundle paramBundle)
   {
     if ((TissueGlobal.tissueEnv != null) && (!TextUtils.isEmpty(TissueGlobal.tissueEnv.getNativeLibDir()))) {}
     for (int i = 1; i != 0; i = 0) {
@@ -48,10 +45,38 @@ final class FlutterRuntimeLoader$1
     }
   }
   
+  private boolean checkV8()
+  {
+    if (v8rtExist()) {
+      return true;
+    }
+    AppBrandCmdProxy.g().sendCmd("cmd_update_v8rt", new Bundle(), new FlutterRuntimeLoader.1.2(this));
+    return false;
+  }
+  
+  private boolean v8rtExist()
+  {
+    return new File(MiniSDKConst.getMiniAppV8rtPath()).exists();
+  }
+  
+  public FlutterRuntimeLoader create(Context paramContext, Bundle paramBundle)
+  {
+    return new FlutterRuntimeLoader(paramContext);
+  }
+  
+  public void doPrepareEngine(Bundle paramBundle) {}
+  
+  public boolean isEnginePrepared(Bundle paramBundle)
+  {
+    boolean bool1 = checkTissueSo(paramBundle);
+    boolean bool2 = checkV8();
+    return (bool1) && (bool2);
+  }
+  
   public boolean support(MiniAppInfo paramMiniAppInfo)
   {
-    if ((DeviceInfoUtil.getPerfLevel() == 3) && (!WnsConfig.getConfig("qqminiapp", "mini_app_low_level_device_flutter_enabled", false))) {}
-    while ((paramMiniAppInfo == null) || (!paramMiniAppInfo.isEngineTypeMiniApp()) || (!paramMiniAppInfo.supportNativeRenderMode())) {
+    if (CPUUtil.sIsX86Emulator) {}
+    while (((DeviceInfoUtil.getPerfLevel() == 3) && (!WnsConfig.getConfig("qqminiapp", "mini_app_low_level_device_flutter_enabled", false))) || (paramMiniAppInfo == null) || (!paramMiniAppInfo.isEngineTypeMiniApp()) || (!paramMiniAppInfo.supportNativeRenderMode())) {
       return false;
     }
     return true;

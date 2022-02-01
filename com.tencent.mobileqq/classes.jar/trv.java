@@ -1,39 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.VTopicVideo;
-import com.tencent.viola.core.dispatch.ComponentAppearEvent;
-import com.tencent.viola.core.dispatch.IEvent;
-import com.tencent.viola.core.dispatch.IObserver;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class trv
-  implements IObserver
+class trv
+  implements Handler.Callback
 {
-  public trv(VTopicVideo paramVTopicVideo) {}
+  trv(trt paramtrt) {}
   
-  public String getRef()
+  public boolean handleMessage(Message paramMessage)
   {
-    return this.a.getRef();
-  }
-  
-  public void onReceive(IEvent paramIEvent)
-  {
-    if ((paramIEvent.getRef().equals(this.a.getRef())) && (this.a.getVideoLifeCycleChangeListener() != null))
+    switch (paramMessage.what)
     {
-      paramIEvent = (ComponentAppearEvent)paramIEvent;
-      if (!paramIEvent.event.equals("didDisappear")) {
-        break label59;
-      }
-      this.a.getVideoLifeCycleChangeListener().K_();
-    }
-    label59:
-    do
-    {
-      return;
-      if (paramIEvent.event.equals("willAppear"))
+    default: 
+      return false;
+    case 1: 
+      if (System.currentTimeMillis() - trt.a(this.a) > 1500L)
       {
-        this.a.getVideoLifeCycleChangeListener().I_();
-        return;
+        trt.a(this.a, false);
+        QLog.d("KandianAdPandent", 2, "time up do not update volume");
       }
-    } while (!paramIEvent.event.equals("didAppear"));
-    this.a.getVideoLifeCycleChangeListener().J_();
+      if (trt.b(this.a))
+      {
+        trt.a(this.a).sendEmptyMessageDelayed(1, 300L);
+        this.a.d();
+        return false;
+      }
+      trt.a(this.a).removeMessages(1);
+      return false;
+    }
+    trt.a(this.a);
+    return false;
   }
 }
 

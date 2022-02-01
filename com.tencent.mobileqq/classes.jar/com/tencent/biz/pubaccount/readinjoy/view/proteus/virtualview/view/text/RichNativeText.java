@@ -1,207 +1,42 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text;
 
-import android.graphics.Color;
-import android.graphics.Rect;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.text.SpannableStringBuilder;
-import android.text.method.LinkMovementMethod;
-import android.text.style.AbsoluteSizeSpan;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.StyleSpan;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CustomMethodsRegister;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CustomMethodsRegister.CustomMethodInterface;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.RichTextParser;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.htmlcss.CssStyle;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.htmlcss.CssStyleSet;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.node.ImgNode;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.node.Node;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.node.TextNode;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 import org.json.JSONArray;
 
 public class RichNativeText
   extends NativeText
 {
-  private static final int LINK_TEXT_COLOR = -15504151;
   private static final String TAG = "RichNativeText";
-  protected final Drawable GRAY_PLACEHOLDER = new ColorDrawable(Color.parseColor("#E9E9E9"));
-  private int maxFontSize = -1;
-  private int maxLineHeight = -1;
-  protected Node nodes;
-  private final RichTextParser richTextParser;
-  private int spaceHeight = 0;
-  protected SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+  private Object richData;
   
   public RichNativeText(VafContext paramVafContext)
   {
     super(paramVafContext);
     this.mTextSize = Utils.dp2px(16.0D);
-    this.richTextParser = new RichTextParser(paramVafContext.getContext());
-  }
-  
-  private void dealImgNode(ImgNode paramImgNode, int paramInt1, int paramInt2)
-  {
-    Rect localRect = new Rect();
-    Object localObject1 = paramImgNode.cssStyleSet.getCssStyleMap();
-    if (localObject1 != null)
-    {
-      localObject1 = ((Map)localObject1).entrySet().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject3 = (Map.Entry)((Iterator)localObject1).next();
-        localObject2 = ((CssStyle)((Map.Entry)localObject3).getValue()).styleName;
-        localObject3 = ((CssStyle)((Map.Entry)localObject3).getValue()).styleValue;
-        if ("width".equalsIgnoreCase((String)localObject2))
-        {
-          localRect.left = 0;
-          localRect.right = ((Integer)localObject3).intValue();
-        }
-        else if ("height".equalsIgnoreCase((String)localObject2))
-        {
-          localRect.top = 0;
-          localRect.bottom = ((Integer)localObject3).intValue();
-        }
-        else if (("display".equalsIgnoreCase((String)localObject2)) && ("block".equals(localObject3)) && (this.spannableStringBuilder.length() > 0) && (this.spannableStringBuilder.charAt(this.spannableStringBuilder.length() - 1) != '\n'))
-        {
-          this.spannableStringBuilder.append('\n');
-        }
-      }
-    }
-    Object localObject2 = DrawableUtil.getDrawableFromNet(this.mContext.getContext(), paramImgNode.src, this.GRAY_PLACEHOLDER, this.GRAY_PLACEHOLDER, localRect.right, localRect.bottom, new RichNativeText.DrawableCallBack(this));
-    localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject2 = DrawableUtil.getDrawable(this.mContext.getContext(), paramImgNode.src, this.GRAY_PLACEHOLDER, this.GRAY_PLACEHOLDER);
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        LogUtils.d("RichNativeText", "请处理未知图片: " + paramImgNode.src);
-        return;
-      }
-    }
-    ((Drawable)localObject1).setBounds(localRect);
-    paramImgNode = new RichNativeText.CustomImageSpan(this, (Drawable)localObject1, 101);
-    this.spannableStringBuilder.setSpan(paramImgNode, paramInt1, paramInt2, 33);
-  }
-  
-  private void dealNodeItem(Node paramNode)
-  {
-    int i = Math.max(this.spannableStringBuilder.length(), 0);
-    switch (paramNode.nodeType)
-    {
-    }
-    while (paramNode.children != null)
-    {
-      paramNode = paramNode.children.iterator();
-      while (paramNode.hasNext()) {
-        dealNodeItem((Node)paramNode.next());
-      }
-      this.spannableStringBuilder.append(decodeEmotion(((TextNode)paramNode).text));
-      dealTextStyle(paramNode, i, this.spannableStringBuilder.length());
-      continue;
-      this.spannableStringBuilder.append(',');
-      dealImgNode((ImgNode)paramNode, i, this.spannableStringBuilder.length());
-    }
-  }
-  
-  private void dealTextStyle(Node paramNode, int paramInt1, int paramInt2)
-  {
-    Object localObject1 = paramNode.cssStyleSet.getCssStyleMap();
-    if (localObject1 != null)
-    {
-      localObject1 = ((Map)localObject1).entrySet().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject3 = (Map.Entry)((Iterator)localObject1).next();
-        Object localObject2 = ((CssStyle)((Map.Entry)localObject3).getValue()).styleName;
-        localObject3 = ((CssStyle)((Map.Entry)localObject3).getValue()).styleValue;
-        int i;
-        if ("line-height".equalsIgnoreCase((String)localObject2))
-        {
-          i = (int)(((Integer)localObject3).intValue() * paramNode.nodeRatio);
-          if (i > this.maxLineHeight) {
-            this.maxLineHeight = i;
-          }
-        }
-        else if ("font-size".equalsIgnoreCase((String)localObject2))
-        {
-          i = (int)(((Integer)localObject3).intValue() * paramNode.nodeRatio);
-          this.maxFontSize = Math.max(this.maxFontSize, i);
-          localObject2 = new AbsoluteSizeSpan(i);
-          this.spannableStringBuilder.setSpan(localObject2, paramInt1, paramInt2, 33);
-        }
-        else if ("color".equalsIgnoreCase((String)localObject2))
-        {
-          localObject2 = new ForegroundColorSpan(Color.parseColor((String)localObject3));
-          this.spannableStringBuilder.setSpan(localObject2, paramInt1, paramInt2, 33);
-        }
-        else if ("font-weight".equalsIgnoreCase((String)localObject2))
-        {
-          if ("bold".equals(localObject3)) {
-            this.spannableStringBuilder.setSpan(new StyleSpan(1), paramInt1, paramInt2, 33);
-          }
-        }
-        else if ("-webkit-line-clamp".equalsIgnoreCase((String)localObject2))
-        {
-          this.mNative.setMaxLines(((Integer)localObject3).intValue());
-        }
-        else if ((!"display".equalsIgnoreCase((String)localObject2)) && ("href".equalsIgnoreCase((String)localObject2)))
-        {
-          localObject2 = String.valueOf(localObject3);
-          this.spannableStringBuilder.setSpan(new RichNativeText.ClickSpan((String)localObject2, -15504151), paramInt1, paramInt2, 33);
-          this.mNative.setMovementMethod(LinkMovementMethod.getInstance());
-        }
-      }
-    }
-  }
-  
-  private CharSequence decodeEmotion(CharSequence paramCharSequence)
-  {
-    CharSequence localCharSequence = paramCharSequence;
-    if (CustomMethodsRegister.customMethodInterface != null)
-    {
-      Object localObject = CustomMethodsRegister.customMethodInterface.invoke("decodeEmotion", new Object[] { paramCharSequence });
-      localCharSequence = paramCharSequence;
-      if ((localObject instanceof CharSequence)) {
-        localCharSequence = (CharSequence)localObject;
-      }
-    }
-    return localCharSequence;
   }
   
   private void setRichText()
   {
-    if (this.nodes != null)
+    if ((this.richData instanceof JSONArray))
     {
-      this.maxLineHeight = -1;
-      this.spaceHeight = 0;
-      this.mText = "";
-      this.spannableStringBuilder = new SpannableStringBuilder();
-      dealNodeItem(this.nodes);
-      if ((this.maxLineHeight > 0) && (this.maxLineHeight > this.maxFontSize))
-      {
-        this.spaceHeight = (this.maxLineHeight - this.maxFontSize);
-        this.mNative.setLineSpacing(this.spaceHeight, 1.0F);
-      }
-      setText(this.spannableStringBuilder);
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+      RichTextParser.parse(this.mNative, localSpannableStringBuilder, this.richData);
+      setText(localSpannableStringBuilder);
+      this.mNative.setTruncateAttr(RichTextParser.getTruncate());
     }
   }
   
   public boolean onClick()
   {
-    if ((this.mNative.getSelectionStart() == -1) && (this.mNative.getSelectionEnd() == -1)) {
-      return super.onClick();
+    if (this.mNative.isHyperLinkClick())
+    {
+      this.mNative.setHyperLinkClick(false);
+      return true;
     }
-    return true;
+    return super.onClick();
   }
   
   public void onParseValueFinished()
@@ -212,17 +47,14 @@ public class RichNativeText
   
   public boolean setAttribute(int paramInt, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt == 66)
     {
-    default: 
-      return super.setAttribute(paramInt, paramObject);
+      if ((paramObject instanceof JSONArray)) {
+        this.richData = paramObject;
+      }
+      return true;
     }
-    if ((paramObject instanceof JSONArray))
-    {
-      this.nodes = this.richTextParser.parse((JSONArray)paramObject);
-      this.spannableStringBuilder = new SpannableStringBuilder();
-    }
-    return true;
+    return super.setAttribute(paramInt, paramObject);
   }
 }
 

@@ -1,35 +1,17 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyBaseLikeView;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalDynamicFragment;
+import feedcloud.FeedCloudMeta.StUser;
 
-final class vpz
-  extends QCirclePolyBaseLikeView
+public class vpz
+  implements Observer<FeedCloudMeta.StUser>
 {
-  vpz(Context paramContext, int paramInt)
+  public vpz(QCirclePersonalDynamicFragment paramQCirclePersonalDynamicFragment) {}
+  
+  public void a(@Nullable FeedCloudMeta.StUser paramStUser)
   {
-    super(paramContext, paramInt);
+    this.a.a(paramStUser);
   }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public String a()
-  {
-    return "emptyPolyView";
-  }
-  
-  public void a(Context paramContext, View paramView)
-  {
-    super.a(paramContext, paramView);
-  }
-  
-  public void a(Object paramObject) {}
-  
-  public void a(Object paramObject, int paramInt) {}
-  
-  public void setReportBean(Object paramObject) {}
 }
 
 

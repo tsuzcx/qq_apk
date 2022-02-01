@@ -1,79 +1,93 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.hotpic.HotPicTab;
-import com.tencent.mobileqq.hotpic.HotPicTagInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class avck
-  extends BaseAdapter
+class avck
+  implements azrg
 {
-  ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
-  public List<HotPicTagInfo> a;
-  boolean jdField_a_of_type_Boolean;
+  avck(avcj paramavcj) {}
   
-  public avck(List<HotPicTagInfo> paramList, ArrayList<Integer> paramArrayList, boolean paramBoolean)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    this.jdField_a_of_type_JavaUtilList = paramArrayList;
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)paramBoolean.clone());
-    boolean bool;
-    this.jdField_a_of_type_Boolean = bool;
+    return null;
   }
   
-  public int getCount()
+  public void a(azrh paramazrh)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
-    {
-      localObject = new avcm(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab);
-      paramView = LayoutInflater.from(HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab)).inflate(2131558614, null);
-      ((avcm)localObject).a = ((TextView)paramView.findViewById(2131368082));
-      paramView.setTag(localObject);
+    if (paramazrh != null) {
+      QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, "upCallBack updateMsg info =" + paramazrh);
     }
-    for (;;)
+  }
+  
+  public void b(azrh paramazrh)
+  {
+    String str2 = avcj.a(this.a).getString("uin");
+    HashMap localHashMap = new HashMap();
+    String str1;
+    if (avcj.a(this.a))
     {
-      String str = ((HotPicTagInfo)getItem(paramInt)).tagName;
-      localObject = ((avcm)localObject).a;
-      ((TextView)localObject).setText(str);
-      ((TextView)localObject).setTextSize(2, HotPicTab.b());
-      ((TextView)localObject).setTextColor(HotPicTab.c());
-      ((TextView)localObject).setPadding(0, 0, 0, 0);
-      ((TextView)localObject).setFocusable(true);
-      ((TextView)localObject).setGravity(17);
-      paramView.setLayoutParams(new RelativeLayout.LayoutParams(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue(), -1));
-      paramView.setContentDescription(str);
-      paramView.setFocusable(true);
-      paramView.setOnHoverListener(new avcl(this));
-      if (!HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).contains(Integer.valueOf(paramInt)))
-      {
-        bcst.b(null, "dc00898", "", "", "0X8008077", "0X8008077", 0, 0, paramInt + "", "", str, "");
-        HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).add(Integer.valueOf(paramInt));
+      str1 = "1";
+      localHashMap.put("param_time_out", str1);
+      if (!avcj.b(this.a)) {
+        break label167;
       }
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localObject = (avcm)paramView.getTag();
+      str1 = "1";
+      label61:
+      localHashMap.put("param_is_first_show", str1);
+      if (str2 != null) {
+        break label174;
+      }
+      str1 = "";
+      label80:
+      avcw.a("KEY_STAGE_2_SEND_MSG_BY_SERVER", str1, localHashMap, ForwardUtils.a(paramazrh));
+      QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, new Object[] { "UpCallBack onSend result =", paramazrh, ", isTimeOut=", Boolean.valueOf(avcj.a(this.a)), ", isFirstShow =", Boolean.valueOf(avcj.b(this.a)) });
+      if (avcj.b(this.a)) {
+        break label181;
+      }
     }
+    label167:
+    label174:
+    label181:
+    do
+    {
+      do
+      {
+        return;
+        str1 = "0";
+        break;
+        str1 = "0";
+        break label61;
+        str1 = str2;
+        break label80;
+      } while (avcj.a(this.a));
+      i = paramazrh.jdField_a_of_type_Int;
+      if (i == 0)
+      {
+        paramazrh = (String[])paramazrh.jdField_a_of_type_JavaLangObject;
+        if ((paramazrh != null) && (paramazrh.length == 2))
+        {
+          QLog.i("SDK_SHARE.ForwardShareByServerHelper", 1, "UpCallBack onSend urls=" + paramazrh[0] + " ," + paramazrh[1]);
+          avcj.a(this.a, avcj.a(this.a), paramazrh[0], paramazrh[1]);
+          return;
+        }
+        QLog.e("SDK_SHARE.ForwardShareByServerHelper", 1, "onSend updateMsg error !");
+        return;
+      }
+    } while (-1 != i);
+    int i = paramazrh.b;
+    boolean bool = ForwardUtils.a(avcj.a(this.a));
+    paramazrh = (String[])paramazrh.jdField_a_of_type_JavaLangObject;
+    QLog.i("SDK_SHARE.ForwardShareByServerHelper", 1, "UpCallBack onSend failed errCode=" + i + ", hasSDPermission=" + bool);
+    if ((i == 9402) && (!bool) && (paramazrh != null) && (paramazrh.length == 2))
+    {
+      QLog.i("SDK_SHARE.ForwardShareByServerHelper", 1, "UpCallBack onSend failed urls=" + paramazrh[0] + " ," + paramazrh[1]);
+      avcj.a(this.a, avcj.a(this.a), paramazrh[0], paramazrh[1]);
+      return;
+    }
+    avcj.a(this.a, avcj.a);
   }
 }
 

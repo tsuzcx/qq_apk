@@ -1,17 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
-public class affo
-  implements DialogInterface.OnClickListener
+class affo
+  implements DialogInterface.OnDismissListener
 {
-  public affo(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  affo(affm paramaffm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bcst.b(this.a.app, "dc00898", "", "", "0X8007547", "0X8007547", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
-    this.a.finish();
+    QQIdentiferActivity.a(this.a.a, 205, anzj.a(2131709240));
+    this.a.a.finish();
   }
 }
 

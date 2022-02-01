@@ -1,7 +1,7 @@
 package com.tencent.biz.publicAccountImageCollection;
 
 import android.support.v4.util.MQLruCache;
-import anhk;
+import antf;
 import java.io.File;
 
 class PublicAccountImageCollectionPreloadManager$6
@@ -15,7 +15,7 @@ class PublicAccountImageCollectionPreloadManager$6
       this.this$0.a.releaseLargeCache();
     }
     long l = System.currentTimeMillis();
-    Object localObject1 = new File(anhk.cQ);
+    Object localObject1 = new File(antf.cQ);
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
       localObject1 = ((File)localObject1).listFiles();

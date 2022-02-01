@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import aswx;
+import atnb;
 
 public class QfileBaseLocalFileTabView$7$1
   implements Runnable
 {
-  public QfileBaseLocalFileTabView$7$1(aswx paramaswx) {}
+  public QfileBaseLocalFileTabView$7$1(atnb paramatnb) {}
   
   public void run()
   {

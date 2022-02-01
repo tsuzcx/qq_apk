@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.concurrent.atomic.AtomicBoolean;
-import nki;
+import aiyz;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
 
 class AfterSyncMsg$4
   implements Runnable
@@ -11,8 +11,8 @@ class AfterSyncMsg$4
   
   public void run()
   {
-    if (!nki.a.get()) {
-      nki.a(BaseApplicationImpl.getContext());
+    if (this.this$0.a.app.getApplication() != null) {
+      aiyz.a(this.this$0.a.app).a(this.this$0.a.app);
     }
   }
 }

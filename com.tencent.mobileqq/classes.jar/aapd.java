@@ -1,17 +1,28 @@
-import com.tencent.biz.troop.VideoCombineHelper.4;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDelFeedRsp;
+import android.app.Activity;
+import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aapd
-  extends aapz
+class aapd
+  implements aaav<CertifiedAccountWrite.StDelFeedRsp>
 {
-  public aapd(VideoCombineHelper.4 param4)
-  {
-    super(param4.this$0);
-  }
+  aapd(aapa paramaapa) {}
   
-  public void b(aapy paramaapy)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDelFeedRsp paramStDelFeedRsp)
   {
-    QLog.d(".troop.VideoCombineHelper", 2, "");
+    if (this.a.a == null) {
+      return;
+    }
+    if ((!paramBoolean) || (paramLong != 0L))
+    {
+      QQToast.a(this.a.a, 1, anzj.a(2131713450), 0).a();
+      return;
+    }
+    aaak.a().a(new SubscribeFeedsEvent(aapa.a(this.a).a.id.get(), 3));
+    this.a.a.finish();
+    QQToast.a(this.a.a, anzj.a(2131713446), 0).a();
   }
 }
 

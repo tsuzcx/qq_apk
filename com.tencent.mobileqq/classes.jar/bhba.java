@@ -1,177 +1,26 @@
-import android.content.Context;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Process;
 import android.text.TextUtils;
-import com.etrump.mixlayout.ETEngine;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.minigame.utils.AppUtil;
-import com.tencent.mobileqq.vas.adapter.ThemeFontAdapter.2;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.TextHook;
-import java.io.File;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 
-public class bhba
-  extends bhax
+class bhba
+  implements aojm
 {
-  static bcni jdField_a_of_type_Bcni = new bhbb();
-  private static bhba jdField_a_of_type_Bhba;
-  private static bhbc jdField_a_of_type_Bhbc = new bhbc();
-  private static int b;
-  private static int c = 10;
-  private static int d;
+  public bhbb a;
   
-  public bhba(bhac parambhac, AppRuntime paramAppRuntime, int paramInt)
-  {
-    super(parambhac, paramAppRuntime, paramInt);
-  }
+  private bhba(bhay parambhay) {}
   
-  public static String a(Context paramContext)
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    return paramContext.getSharedPreferences("theme", 4).getString("theme_font_root_pre", null);
-  }
-  
-  public static void a(Context paramContext)
-  {
-    paramContext = paramContext.getSharedPreferences("theme", 4);
-    paramContext.edit().remove("theme_font_root_pre").commit();
-    paramContext.edit().remove("theme_font_root").commit();
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getSharedPreferences("theme", 4);
-    paramContext.edit().putString("theme_font_root_pre", paramString).commit();
-    paramContext.edit().remove("theme_font_root").commit();
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      a(BaseApplicationImpl.getApplication().getApplicationContext());
-    }
-    if (!TextHook.getInstance().isDefault())
+    if ((this.jdField_a_of_type_Bhbb != null) && (paramTroopMemberInfo != null) && (TextUtils.equals(this.jdField_a_of_type_Bhbb.jdField_a_of_type_JavaLangString, paramTroopMemberInfo.memberuin)))
     {
-      QLog.d("ThemeFontAdapter", 1, "resetDefaultFont");
-      TextHook.getInstance().switchDefault();
-      TextHook.getInstance().update(BaseApplicationImpl.getApplication().getApplicationContext());
-    }
-    b = 0;
-    d = 0;
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    boolean bool1 = false;
-    boolean bool2 = bool1;
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      if (!TextUtils.isEmpty(paramString2)) {
-        break label22;
+      paramTroopMemberInfo = new begb(((TroopManager)this.jdField_a_of_type_Bhay.a.getManager(52)).a(paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin), 13).a();
+      this.jdField_a_of_type_Bhbb.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopMemberInfo);
+      if (AppSetting.c) {
+        bhay.a(this.jdField_a_of_type_Bhay, this.jdField_a_of_type_Bhbb);
       }
-      bool2 = bool1;
-    }
-    for (;;)
-    {
-      return bool2;
-      label22:
-      String str = paramString2 + "." + Process.myPid() + ".tmp";
-      try
-      {
-        ETEngine.getInstanceForSpace();
-        bool1 = ETEngine.native_ftf2ttf(paramString1, str);
-        if (bool1)
-        {
-          paramString1 = new File(str);
-          paramString2 = new File(paramString2);
-          if (!paramString2.exists()) {
-            bool1 = paramString1.renameTo(paramString2);
-          }
-          bool2 = bool1;
-          if (bool1) {
-            continue;
-          }
-          QLog.e("ThemeFontAdapter", 1, "failed to move trueType font file, from path = " + paramString1.getAbsolutePath());
-          return bool1;
-        }
-      }
-      catch (Throwable paramString1)
-      {
-        QLog.e("ThemeFontAdapter", 1, "call native_ftf2ttf error, errMsg = " + paramString1.toString());
-        return false;
-      }
-    }
-    QLog.e("ThemeFontAdapter", 1, "call native_ftf2ttf error");
-    return bool1;
-  }
-  
-  public static void b(int paramInt)
-  {
-    b((int)gc.a(paramInt), gc.b(paramInt));
-  }
-  
-  public static void b(int paramInt1, int paramInt2)
-  {
-    QLog.d("ThemeFontAdapter", 1, "switchFont  fontId:" + paramInt1 + " fontType:" + paramInt2);
-    if (b == paramInt1)
-    {
-      QLog.d("ThemeFontAdapter", 1, "switchFont already set fontId:" + paramInt1 + " fontType:" + paramInt2);
-      return;
-    }
-    if (paramInt1 == 0)
-    {
-      a(true);
-      return;
-    }
-    ThreadManagerV2.executeOnFileThread(new ThemeFontAdapter.2(paramInt1, paramInt2));
-  }
-  
-  public static void b(Context paramContext)
-  {
-    TextHook.setSupportProcess(true);
-    paramContext.registerReceiver(jdField_a_of_type_Bhbc, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
-  }
-  
-  public static void c(Context paramContext)
-  {
-    paramContext.unregisterReceiver(jdField_a_of_type_Bhbc);
-  }
-  
-  public static void d()
-  {
-    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).addObserver(jdField_a_of_type_Bcni);
-  }
-  
-  private static void d(int paramInt1, int paramInt2)
-  {
-    if (jdField_a_of_type_Bhba != null) {
-      jdField_a_of_type_Bhba.c();
-    }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    bhac localbhac = new bhac(localAppRuntime, paramInt1);
-    jdField_a_of_type_Bhba = new bhba(localbhac, localAppRuntime, paramInt2);
-    localbhac.a(jdField_a_of_type_Bhba);
-  }
-  
-  public void b()
-  {
-    if (AppUtil.isMainProcess()) {}
-    for (gb localgb = a(this.jdField_a_of_type_Bhae.a(), this.jdField_a_of_type_Int);; localgb = gg.a().a(this.jdField_a_of_type_Bhae.a(), this.jdField_a_of_type_Int))
-    {
-      QLog.e("ThemeFontAdapter", 2, "load   fontInfo:" + localgb + " sCurrentTryNumber:" + d);
-      if (localgb != null)
-      {
-        int i = d;
-        d = i + 1;
-        if (i < c) {
-          b(localgb.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-        }
-      }
-      return;
     }
   }
 }

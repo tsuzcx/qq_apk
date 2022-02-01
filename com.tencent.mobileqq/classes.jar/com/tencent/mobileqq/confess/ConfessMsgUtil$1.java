@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.confess;
 
-import aqjm;
-import aqjo;
-import bbyp;
+import aqyp;
+import aqyr;
+import bcrg;
 import com.tencent.qphone.base.util.QLog;
 
 public final class ConfessMsgUtil$1
   implements Runnable
 {
-  public ConfessMsgUtil$1(aqjm paramaqjm, String paramString, aqjo paramaqjo, long paramLong1, long paramLong2) {}
+  public ConfessMsgUtil$1(aqyp paramaqyp, String paramString, aqyr paramaqyr, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aqjm.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqjo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Long, this.b);
+    this.jdField_a_of_type_Aqyp.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqyr, this.jdField_a_of_type_Long, this.jdField_a_of_type_Long, this.b);
     if (QLog.isColorLevel())
     {
-      long l = bbyp.a();
-      QLog.i("ConfessMsgUtil", 2, "decodeConfessMsgElem 1 strConfessorDesc:" + this.jdField_a_of_type_Aqjo.f + " msgTime:" + this.jdField_a_of_type_Long + " msgSeq:" + this.b + " nowTime" + l);
+      long l = bcrg.a();
+      QLog.i("ConfessMsgUtil", 2, "decodeConfessMsgElem 1 strConfessorDesc:" + this.jdField_a_of_type_Aqyr.f + " msgTime:" + this.jdField_a_of_type_Long + " msgSeq:" + this.b + " nowTime" + l);
     }
   }
 }

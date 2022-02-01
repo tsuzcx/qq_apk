@@ -1,24 +1,22 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity.4.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aewl
-  implements baod
+  extends aoge
 {
-  public aewl(QQIdentiferActivity paramQQIdentiferActivity) {}
+  public aewl(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void a(float paramFloat)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    if (paramFloat < 0.0F)
-    {
-      this.a.a(this.a.getString(2131693843));
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
+    }
+    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
       return;
     }
-    if (paramFloat > 175.0F)
-    {
-      this.a.a(this.a.getString(2131693842));
-      return;
-    }
-    QQIdentiferActivity.a(this.a).setText("");
+    paramObject = akgr.a().a();
+    this.a.runOnUiThread(new LebaListMgrActivity.4.1(this, paramObject));
   }
 }
 

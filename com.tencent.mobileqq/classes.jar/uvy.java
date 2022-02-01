@@ -1,6 +1,6 @@
 public abstract interface uvy
 {
-  public abstract void a(Object paramObject);
+  public abstract int a();
 }
 
 

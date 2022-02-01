@@ -1,35 +1,36 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import bnmn;
-import bnmu;
-import bnpc;
-import bnpf;
+import android.text.TextUtils;
+import booa;
+import boof;
+import boqr;
+import boqu;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class AEMaterialAdapter$2
   implements Runnable
 {
-  public AEMaterialAdapter$2(bnmn parambnmn, int paramInt, bnpf parambnpf, boolean paramBoolean) {}
+  public AEMaterialAdapter$2(booa parambooa, int paramInt, boqu paramboqu, boolean paramBoolean) {}
   
   public void run()
   {
-    bnpc localbnpc;
-    bnpf localbnpf;
-    if ((((bnpf)this.this$0.a.get(this.jdField_a_of_type_Int)).a.equals(this.jdField_a_of_type_Bnpf.a)) && (this.jdField_a_of_type_Boolean) && (bnmn.a(this.this$0) != null))
+    Object localObject1 = (boqu)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
+    Object localObject2 = booa.a(this.this$0).a();
+    if ((!TextUtils.isEmpty(this.this$0.jdField_a_of_type_JavaLangString)) && (this.this$0.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Boqu.jdField_a_of_type_JavaLangString)) && (((String)localObject2).equals(this.jdField_a_of_type_Boqu.jdField_a_of_type_JavaLangString)) && (localObject1 != null) && (((boqu)localObject1).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Boqu.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Boolean) && (booa.a(this.this$0) != null))
     {
-      localbnpc = bnmn.a(this.this$0);
-      localbnpf = this.jdField_a_of_type_Bnpf;
-      if (bnmn.a(this.this$0)) {
-        break label129;
+      localObject1 = booa.a(this.this$0);
+      localObject2 = this.jdField_a_of_type_Boqu;
+      if (booa.a(this.this$0)) {
+        break label193;
       }
     }
-    label129:
+    label193:
     for (boolean bool = true;; bool = false)
     {
-      localbnpc.a(localbnpf, bool);
-      QLog.d("AEMaterialAdapter", 4, "### [material panel] download finish, select material " + this.jdField_a_of_type_Bnpf.a);
-      bnmn.a(this.this$0).a(this.jdField_a_of_type_Bnpf);
+      ((boqr)localObject1).a((boqu)localObject2, bool);
+      QLog.d("AEMaterialAdapter", 4, "### [material panel] download finish, select material " + this.jdField_a_of_type_Boqu.jdField_a_of_type_JavaLangString);
+      booa.a(this.this$0).a(this.jdField_a_of_type_Boqu);
       return;
     }
   }

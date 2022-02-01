@@ -1,12 +1,40 @@
-import android.support.annotation.Nullable;
-import android.view.View;
-import android.view.ViewGroup;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.viola.core.ViolaEnvironment;
 
-public abstract interface tji
+public class tji
+  implements tjn
 {
-  public abstract View a(ViewGroup paramViewGroup);
+  public tji(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
   
-  public abstract void a(tjf paramtjf1, @Nullable tjf paramtjf2, int paramInt);
+  public void a()
+  {
+    ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, 5, this.jdField_a_of_type_Boolean);
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView)))
+    {
+      if (!TextUtils.isEmpty(paramString))
+      {
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, paramString);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_END_NET);
+          ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_MAIN_JS_NET, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+          ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).sendEmptyMessageDelayed(3, 0L);
+        }
+        ThreadManager.post(new ViolaBaseView.3.1(this), 8, null, true);
+      }
+    }
+    else {
+      return;
+    }
+    ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, 10, this.jdField_a_of_type_Boolean);
+  }
 }
 
 

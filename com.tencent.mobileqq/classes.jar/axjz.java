@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public final class axjz
-  implements Parcelable.Creator<Comments.Comment>
+class axjz
+  implements DialogInterface.OnClickListener
 {
-  public Comments.Comment a(Parcel paramParcel)
-  {
-    return new Comments.Comment(paramParcel);
-  }
+  axjz(axjo paramaxjo) {}
   
-  public Comments.Comment[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new Comments.Comment[paramInt];
+    if (this.a.g()) {
+      axjo.a(this.a).a(false, null, false);
+    }
+    bdll.b(this.a.a, "CliOper", "", "", axjo.b, axjo.b, 1, 0, "", "", "", "");
   }
 }
 

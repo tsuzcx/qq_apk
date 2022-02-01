@@ -1,40 +1,36 @@
-public class bnab
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.CoverCacheData;
+import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
+import cooperation.qzone.model.CoverCacheData.PackageInfo;
+
+public final class bnab
+  implements Parcelable.Creator<CoverCacheData>
 {
-  private static bdvu jdField_a_of_type_Bdvu;
-  private static bguy jdField_a_of_type_Bguy = new bnac();
-  private static bdvu jdField_b_of_type_Bdvu;
-  private static bguy jdField_b_of_type_Bguy = new bnad();
-  
-  public static bdvu a()
+  public CoverCacheData a(Parcel paramParcel)
   {
-    if (jdField_a_of_type_Bdvu == null) {}
-    try
+    CoverCacheData localCoverCacheData = new CoverCacheData();
+    if (paramParcel != null)
     {
-      if (jdField_a_of_type_Bdvu == null)
-      {
-        bgut localbgut = new bgut(jdField_a_of_type_Bguy, 128);
-        localbgut.a();
-        jdField_a_of_type_Bdvu = new bdwv(localbgut, true);
-      }
-      return jdField_a_of_type_Bdvu;
+      localCoverCacheData.jdField_a_of_type_Long = paramParcel.readLong();
+      localCoverCacheData.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      localCoverCacheData.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localCoverCacheData.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      localCoverCacheData.jdField_a_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
+      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo = ((CoverCacheData.PackageInfo)paramParcel.readParcelable(getClass().getClassLoader()));
+      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo = ((CoverCacheData.GameCoverInfo)paramParcel.readParcelable(getClass().getClassLoader()));
+      localCoverCacheData.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(getClass().getClassLoader());
+      localCoverCacheData.jdField_a_of_type_Int = paramParcel.readInt();
+      localCoverCacheData.jdField_b_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
+      localCoverCacheData.jdField_c_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
+      localCoverCacheData.jdField_b_of_type_Int = paramParcel.readInt();
     }
-    finally {}
+    return localCoverCacheData;
   }
   
-  public static bdvu b()
+  public CoverCacheData[] a(int paramInt)
   {
-    if (jdField_b_of_type_Bdvu == null) {}
-    try
-    {
-      if (jdField_b_of_type_Bdvu == null)
-      {
-        bgut localbgut = new bgut(jdField_b_of_type_Bguy, 128);
-        localbgut.a();
-        jdField_b_of_type_Bdvu = new bdwv(localbgut, true);
-      }
-      return jdField_b_of_type_Bdvu;
-    }
-    finally {}
+    return null;
   }
 }
 

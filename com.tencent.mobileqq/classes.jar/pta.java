@@ -1,28 +1,46 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
 
-public class pta
-  implements Animator.AnimatorListener
+class pta
+  implements View.OnClickListener
 {
-  public pta(VideoView paramVideoView) {}
+  pta(psx parampsx) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (VideoView.access$2800(this.a) != null) {
-      VideoView.access$2800(this.a).setVisibility(4);
-    }
-    if (VideoView.access$2900(this.a) != null) {
-      VideoView.access$2900(this.a).setVisibility(4);
+    RefreshData localRefreshData = qtq.b(psx.a(this.a), 0);
+    ubg.a(false);
+    paa localpaa = new paa();
+    localpaa.h().b().e().a(psx.a(this.a).e()).f().g().d();
+    if ((psx.a(this.a).e() != 0) || (localRefreshData != null)) {}
+    for (;;)
+    {
+      try
+      {
+        if (!localRefreshData.isAD) {
+          continue;
+        }
+        i = 1;
+        localpaa.a("ad_page", i);
+      }
+      catch (JSONException localJSONException)
+      {
+        int i;
+        localJSONException.printStackTrace();
+        continue;
+      }
+      ocd.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, bnrf.a("default_feeds_proteus_offline_bid"), "", "", localpaa.a(), false);
+      if (psx.a(this.a) != null) {
+        psx.a(this.a).c();
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      i = 0;
     }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

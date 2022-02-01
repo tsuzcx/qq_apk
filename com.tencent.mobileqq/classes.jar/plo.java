@@ -1,56 +1,75 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
 
 public class plo
-  implements pyb
 {
-  public plo(KandianDailyManager paramKandianDailyManager) {}
-  
-  public void onLoadUserInfoFailed(String paramString1, String paramString2) {}
-  
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public static void a(String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)pha.a();
-    if (localQQAppInterface == null) {}
-    QQMessageFacade localQQMessageFacade;
-    MessageForStructing localMessageForStructing;
-    String str1;
-    String str2;
-    do
+    Object localObject = TVK_SDKMgr.getProxyFactory();
+    if (localObject != null)
     {
-      do
+      localObject = ((TVK_IProxyFactory)localObject).getCacheMgr(BaseApplicationImpl.getContext());
+      if (localObject != null)
       {
-        do
-        {
-          return;
-          localQQMessageFacade = localQQAppInterface.a();
-          localMessageForStructing = (MessageForStructing)localQQMessageFacade.b(anhk.aR, 1008);
-        } while (localMessageForStructing == null);
-        if (!localMessageForStructing.mIsParsed) {
-          localMessageForStructing.parse();
-        }
-      } while (localMessageForStructing.structingMsg == null);
-      str1 = localMessageForStructing.getExtInfoFromExtStr("puin");
-      str2 = localMessageForStructing.structingMsg.mMsgBrief;
-    } while ((!localMessageForStructing.isread) || (TextUtils.isEmpty(str2)) || (!str2.contains(ReadInJoyUserInfoModule.a())) || (!TextUtils.equals(str1, paramString)));
-    localMessageForStructing.structingMsg.mMsgBrief = str2.replace(ReadInJoyUserInfoModule.a(), paramReadInJoyUserInfo.nick);
-    localMessageForStructing.createMessageUniseq();
-    localMessageForStructing.doPrewrite();
-    localQQMessageFacade.a(localMessageForStructing.frienduin, localMessageForStructing.istroop, localMessageForStructing.uniseq, localMessageForStructing.msgData);
-    paramReadInJoyUserInfo = localQQAppInterface.getHandler(Conversation.class);
-    if (paramReadInJoyUserInfo != null) {
-      paramReadInJoyUserInfo.sendEmptyMessage(1009);
+        TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, nzq.a(paramString), "");
+        localTVK_PlayerVideoInfo.setConfigMap("cache_duration", "2");
+        localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", rwe.a);
+        ((TVK_ICacheMgr)localObject).preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramString, null, localTVK_PlayerVideoInfo);
+      }
     }
-    QLog.d("KandianDailyManager", 2, "update msg bref, uin : " + paramString + ", msg : " + localMessageForStructing);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    Object localObject1 = TVK_SDKMgr.getProxyFactory();
+    if (localObject1 == null) {
+      return false;
+    }
+    localObject1 = ((TVK_IProxyFactory)localObject1).getCacheMgr(BaseApplicationImpl.getContext());
+    if (localObject1 == null) {
+      return false;
+    }
+    Object localObject2 = nzq.a(paramString);
+    TVK_UserInfo localTVK_UserInfo = new TVK_UserInfo("", "");
+    localObject2 = new TVK_PlayerVideoInfo(2, (String)localObject2, "");
+    ((TVK_PlayerVideoInfo)localObject2).setConfigMap("cache_duration", "2");
+    ((TVK_PlayerVideoInfo)localObject2).setConfigMap("cache_servers_type", rwe.a);
+    ((TVK_PlayerVideoInfo)localObject2).addExtraParamsMap("shouq_bus_type", "bus_type_kandian_feeds");
+    String[] arrayOfString = new String[6];
+    arrayOfString[0] = "msd";
+    arrayOfString[1] = "hd";
+    arrayOfString[2] = "fhd";
+    arrayOfString[3] = "mp4";
+    arrayOfString[4] = "shd";
+    arrayOfString[5] = "sd";
+    int m = arrayOfString.length;
+    int j = 0;
+    int i = 0;
+    while (j < m)
+    {
+      String str = arrayOfString[j];
+      try
+      {
+        int k = ((TVK_ICacheMgr)localObject1).isVideoCached(BaseApplicationImpl.getContext(), paramString, localTVK_UserInfo, (TVK_PlayerVideoInfo)localObject2, str);
+        i = k;
+      }
+      catch (Exception localException)
+      {
+        label176:
+        break label176;
+        j += 1;
+      }
+      if ((i == 2) || (i == 1)) {
+        return true;
+      }
+    }
+    if (QLog.isColorLevel()) {}
+    return false;
   }
 }
 

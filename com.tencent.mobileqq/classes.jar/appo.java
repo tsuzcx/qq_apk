@@ -1,36 +1,72 @@
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.widget.TipsBar;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class appo
 {
-  public int a;
-  public long a;
-  public agpp a;
-  public MessageForArkApp a;
-  public String a;
-  public WeakReference<TipsBar> a;
-  public long b;
-  public String b;
-  public WeakReference<aikx> b;
-  public String c;
-  public String d;
+  protected static beup a;
+  private beuo jdField_a_of_type_Beuo;
+  private bezv jdField_a_of_type_Bezv;
+  public QQAppInterface a;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ArrayList<appu> jdField_a_of_type_JavaUtilArrayList;
+  private HashMap<String, appt> jdField_a_of_type_JavaUtilHashMap;
   
-  appo(agpp paramagpp, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
+  static
   {
-    a(paramagpp, paramString1, paramLong1, paramLong2, paramString2, paramInt, paramString3, paramMessageForArkApp);
+    jdField_a_of_type_Beup = new apps();
   }
   
-  void a(agpp paramagpp, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
+  public appo(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Agpp = paramagpp;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.c = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-    this.d = paramString3;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp = paramMessageForArkApp;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Beuo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Bezv = ((bezv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193));
+  }
+  
+  public boolean a(appu paramappu, appt paramappt)
+  {
+    if ((paramappu == null) || (paramappt == null)) {
+      return false;
+    }
+    Object localObject1 = new appp(this, paramappu);
+    ??? = new appq(this);
+    beum localbeum = new beum();
+    localbeum.jdField_a_of_type_Beuq = ((beuq)???);
+    localbeum.jdField_a_of_type_JavaLangString = paramappu.jdField_a_of_type_JavaLangString;
+    localbeum.jdField_a_of_type_Int = 0;
+    localbeum.c = paramappu.c;
+    localbeum.d = 1;
+    localbeum.jdField_a_of_type_Beup = jdField_a_of_type_Beup;
+    paramappu.jdField_a_of_type_Beum = localbeum;
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramappu);
+        switch (bhnv.a(BaseApplication.getContext()))
+        {
+        default: 
+          i = 1;
+          localObject1 = new appr(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramappu.b, (bezu)localObject1, localbeum, paramappu, paramappt);
+          this.jdField_a_of_type_Bezv.a(10065, "prd", paramappu.b, 0, paramappu.jdField_a_of_type_JavaLangString, localbeum.c, i, 0, false, (bezs)localObject1);
+          this.jdField_a_of_type_JavaUtilHashMap.put(paramappu.b, paramappt);
+          QLog.i("AREngine_ARPreSoResourceDownload", 1, "submitDownloadTask. url = " + paramappu.jdField_a_of_type_JavaLangString);
+          return true;
+        }
+      }
+      int i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+    }
   }
 }
 

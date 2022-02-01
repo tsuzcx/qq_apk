@@ -1,32 +1,115 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.ecshopassit.view.MinusViewBotomView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import tencent.im.oidb.qqshop.qq_ad.QQAdGet;
 
-class ofp
-  implements View.OnClickListener
+public class ofp
+  implements ofs
 {
-  ofp(ofk paramofk) {}
+  private List<ChatMessage> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  private void a(List<ChatMessage> paramList)
   {
-    QLog.i("DailyHeaderViewController", 1, "[onClick] clickToGrantPermission");
-    BaseActivity localBaseActivity = (BaseActivity)paramView.getContext();
-    if (Build.VERSION.SDK_INT >= 23) {
-      if (localBaseActivity.shouldShowRequestPermissionRationale("android.permission.ACCESS_FINE_LOCATION")) {
-        ofk.a(this.a, true);
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      paramList = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(0);
+      if ((paramList != null) && (ofz.a(ofz.a(paramList)))) {
+        this.jdField_a_of_type_JavaUtilList.remove(paramList);
       }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localBaseActivity.requestPermissions(new ofq(this, localBaseActivity), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
-      continue;
-      ofk.a(this.a, 5);
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (paramContext != null) {
+      paramContext.sendBroadcast(new Intent("com.tencent.biz.pubaccount.ecshop.tabpage.finish"));
     }
+    ogd.a().a.clear();
+  }
+  
+  public void a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {
+      return;
+    }
+    ofz.a(paramMessageRecord.uniseq);
+  }
+  
+  public void a(List<ChatMessage> paramList, oft paramoft)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("EcshopMinusViewChatPie", 2, "messageArrayList.size: " + this.jdField_a_of_type_JavaUtilList.size());
+    }
+    a(paramList);
+    paramList = ofz.a(paramList);
+    if ((paramList != null) && (ofz.a(ofz.a(paramList))))
+    {
+      paramList.saveExtInfoToExtStr("add_title", "minus_view_title_first");
+      this.jdField_a_of_type_JavaUtilList.add(0, paramList);
+    }
+    if (paramoft != null) {
+      paramoft.a(this.jdField_a_of_type_JavaUtilList);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    paramList = new qq_ad.QQAdGet();
+    try
+    {
+      if (ofz.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime())) {
+        paramList.trigger_type.set(22);
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("EcshopMinusViewChatPie", 2, "<<<<<<<<<<<<<<sendRequest<<<<<<<<<");
+        }
+        ofd.a(paramList.toByteArray(), "trpc.qqshop.adpush.PushService.GetAd", new ofq(this, paramoft));
+        return;
+        paramList.trigger_type.set(18);
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        paramList.trigger_type.set(22);
+      }
+    }
+  }
+  
+  public boolean a(Context paramContext, RelativeLayout paramRelativeLayout)
+  {
+    paramContext = new MinusViewBotomView(paramContext);
+    paramContext.setTag("echopMinusViewBotomView");
+    paramContext.setBtnText(ofx.a());
+    paramRelativeLayout.addView(paramContext);
+    paramContext = (RelativeLayout.LayoutParams)paramContext.getLayoutParams();
+    if (paramContext != null)
+    {
+      paramContext.width = -1;
+      paramContext.height = -2;
+      paramContext.addRule(12);
+    }
+    return true;
+  }
+  
+  public boolean a(RelativeLayout paramRelativeLayout)
+  {
+    return (paramRelativeLayout != null) && (paramRelativeLayout.findViewWithTag("echopMinusViewBotomView") != null);
   }
 }
 

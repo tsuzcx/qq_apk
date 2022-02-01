@@ -1,9 +1,16 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract interface wjq
+class wjq
+  implements INetEventHandler
 {
-  public abstract void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage);
+  private wjq(wjn paramwjn) {}
+  
+  public void onNetChangeEvent(boolean paramBoolean)
+  {
+    yuk.d("Q.qqstory.publish:VideoServerInfoManager", "network change");
+    this.a.b.set(true);
+  }
 }
 
 

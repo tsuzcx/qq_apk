@@ -1,15 +1,43 @@
-import java.util.List;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.richstatus.ActionUrlActivity;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
+import com.tencent.widget.ProtectedWebView;
 
-class bbsh
+public class bbsh
+  extends WebViewClient
 {
-  String jdField_a_of_type_JavaLangString;
-  List<bbmu> jdField_a_of_type_JavaUtilList;
+  private bbsh(ActionUrlActivity paramActionUrlActivity) {}
   
-  public bbsh(String paramString, List<bbmu> paramList)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramList;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    super.onPageFinished(paramWebView, paramString);
+    this.a.a();
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    ActionUrlActivity.a(this.a).setVisibility(0);
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    ActionUrlActivity.a(this.a).clearView();
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    ActionUrlActivity.a(this.a).setVisibility(0);
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return ActionUrlActivity.a(this.a).a(paramWebView, paramString);
   }
 }
 

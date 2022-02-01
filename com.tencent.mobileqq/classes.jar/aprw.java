@@ -1,52 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
 
-public class aprw
+public final class aprw
+  implements Parcelable.Creator<ArLBSActivity>
 {
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private HashMap<String, aprx> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  public aprw(QQAppInterface paramQQAppInterface)
+  public ArLBSActivity a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    return new ArLBSActivity(paramParcel);
   }
   
-  public aprx a(String paramString)
+  public ArLBSActivity[] a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.getPreprocessor in valid param");
-      }
-      return null;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      paramString = (aprx)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      return paramString;
-    }
-  }
-  
-  public void a(String paramString, aprx paramaprx)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramaprx == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.setPreprocessor in valid param");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, new Object[] { "AAShare.setPreprocessor app=", paramString });
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramaprx);
-      return;
-    }
+    return new ArLBSActivity[paramInt];
   }
 }
 

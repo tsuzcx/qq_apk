@@ -3,7 +3,7 @@ package com.tencent.mobileqq.onlinestatus;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import bcst;
+import bdll;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
@@ -31,7 +31,7 @@ public class OnlineStatusPermissionChecker
       if (paramInt == -1) {}
       for (paramQQAppInterface = "0X800AE77";; paramQQAppInterface = "0X800AE78")
       {
-        bcst.b(null, "dc00898", "", "", paramQQAppInterface, paramQQAppInterface, 0, 0, "", "", "", "");
+        bdll.b(null, "dc00898", "", "", paramQQAppInterface, paramQQAppInterface, 0, 0, "", "", "", "");
         if ((paramInt == -1) && (paramIntent != null)) {
           break;
         }
@@ -98,10 +98,10 @@ public class OnlineStatusPermissionChecker
     ((Intent)localObject).putExtra("param_entrance", 40);
     ((Intent)localObject).putExtra("param_add_passed_members_to_result_set", true);
     ((Intent)localObject).putExtra("param_max", 1000);
-    ((Intent)localObject).putExtra("param_title", paramActivity.getString(2131697608));
+    ((Intent)localObject).putExtra("param_title", paramActivity.getString(2131697692));
     ((Intent)localObject).putExtra("online_status_permission_item", paramOnlineStatusPermissionItem);
-    ((Intent)localObject).putExtra("param_done_button_wording", paramActivity.getString(2131697609));
-    ((Intent)localObject).putExtra("param_done_button_highlight_wording", paramActivity.getString(2131697610));
+    ((Intent)localObject).putExtra("param_done_button_wording", paramActivity.getString(2131697693));
+    ((Intent)localObject).putExtra("param_done_button_highlight_wording", paramActivity.getString(2131697694));
     paramOnlineStatusPermissionItem = new ArrayList(1);
     ((Intent)localObject).putStringArrayListExtra("param_uins_hide", paramOnlineStatusPermissionItem);
     ((Intent)localObject).putExtra("filer_robot", true);

@@ -1,48 +1,172 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.app.MobileQQ;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.TroopActiveLayout;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import com.tencent.mobileqq.widget.FolderTextView;
+import com.tencent.widget.ThemeImageView;
 
 public class bcph
-  extends URLDrawableParams
+  extends bcpp
 {
-  private ProtocolDownloader a;
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  public Button a;
+  public ImageView a;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TroopActiveLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout;
+  private TroopLabelLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
+  private FolderTextView jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView;
+  public ImageView b;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TroopLabelLayout jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
+  private ImageView jdField_c_of_type_AndroidWidgetImageView;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private View e;
+  private View f;
   
-  public bcph(MobileQQ paramMobileQQ)
+  public bcph(ViewGroup paramViewGroup, int paramInt)
   {
-    super(paramMobileQQ);
-  }
-  
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
-  {
-    if ((("http".equals(paramString)) || ("https".equals(paramString))) && (this.a == null)) {
-      this.a = new bdvl();
+    this.jdField_a_of_type_Int = paramInt;
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      this.jdField_c_of_type_Int = 2131559838;
     }
-    return this.a;
+    for (;;)
+    {
+      paramViewGroup.getResources();
+      LinearLayout localLinearLayout = new LinearLayout(paramViewGroup.getContext());
+      localLinearLayout.setOrientation(1);
+      localLinearLayout.addView(LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_c_of_type_Int, null, false), new LinearLayout.LayoutParams(-1, -2));
+      localLinearLayout.setClickable(true);
+      localLinearLayout.setFocusable(true);
+      this.jdField_b_of_type_AndroidViewView = localLinearLayout;
+      a();
+      return;
+      this.jdField_c_of_type_Int = 2131560411;
+      continue;
+      this.jdField_c_of_type_Int = 2131559805;
+      continue;
+      this.jdField_c_of_type_Int = 2131561358;
+      continue;
+      this.jdField_c_of_type_Int = 2131561359;
+    }
   }
   
-  public String doGetLocalFilePath(String paramString)
+  public View a(String paramString)
   {
-    return null;
+    if ("ActiveEntitySearchResultPresenter_add_troop".equals(paramString)) {
+      return this.jdField_a_of_type_AndroidViewView;
+    }
+    if ("ActiveEntitySearchResultPresenter_pay_troop".equals(paramString)) {
+      return this.e;
+    }
+    if ("ActiveEntitySearchResultPresenter_hot_troop".equals(paramString)) {
+      return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout;
+    }
+    if ("ActiveEntitySearchResultPresenter_expand_desc".equals(paramString)) {
+      return this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView;
+    }
+    return super.a(paramString);
   }
   
-  public ApngSoLoader getApngSoLoader()
+  public TroopLabelLayout a()
   {
-    return bgzd.a();
+    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
   }
   
-  public Drawable getDefaultLoadingDrawable()
+  protected void a()
   {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130847826);
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368212));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365172));
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131365088);
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setTag("ActiveEntitySearchResultPresenter_add_troop");
+      }
+      this.e = this.jdField_b_of_type_AndroidViewView.findViewById(2131372988);
+      if (this.e != null)
+      {
+        this.e.setTag("ActiveEntitySearchResultPresenter_pay_troop");
+        if ((this.e instanceof ThemeImageView)) {
+          ((ThemeImageView)this.e).setMaskShape(blqj.jdField_c_of_type_Int);
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout = ((TroopActiveLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131362005));
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout != null) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout.setTag("ActiveEntitySearchResultPresenter_hot_troop");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView = ((FolderTextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366940));
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView.setTag("ActiveEntitySearchResultPresenter_expand_desc");
+      }
+      return;
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131376575));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131376585));
+      this.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131379447));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370666));
+      this.f = this.jdField_b_of_type_AndroidViewView.findViewById(2131380059);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379360));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379322));
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131379447));
+      if (this.h != null)
+      {
+        TextView localTextView = this.h;
+        int j = bdep.jdField_a_of_type_Int - bdep.a(187.0F);
+        int i = j;
+        if (j <= 0) {
+          i = bdep.a(220.0F);
+        }
+        localTextView.setMaxWidth(i);
+      }
+    }
   }
   
-  public Drawable getDefualtFailedDrawable()
+  public View b()
   {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130847826);
+    return this.f;
+  }
+  
+  public TroopLabelLayout b()
+  {
+    return this.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
+  }
+  
+  public ImageView c()
+  {
+    return this.jdField_c_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView e()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public TextView f()
+  {
+    return this.jdField_a_of_type_AndroidWidgetButton;
+  }
+  
+  public TextView g()
+  {
+    return this.jdField_b_of_type_AndroidWidgetTextView;
+  }
+  
+  public TextView h()
+  {
+    return this.jdField_c_of_type_AndroidWidgetTextView;
   }
 }
 

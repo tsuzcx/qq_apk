@@ -27,36 +27,36 @@ import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.TextView;
-import anni;
-import aukw;
-import bctj;
-import bglp;
-import bgmj;
-import bgnt;
-import bgpa;
-import biau;
-import biip;
-import bijb;
-import bijc;
-import bijd;
-import bije;
-import bijf;
-import bijh;
-import biji;
-import bijj;
-import bikw;
-import bint;
-import bipi;
-import bipn;
-import bipr;
-import biqf;
-import bisy;
-import bitk;
-import bitw;
-import bivh;
-import biyc;
-import biyn;
-import biyz;
+import anzj;
+import avcw;
+import bdmc;
+import bhlq;
+import bhml;
+import bhnv;
+import bhpc;
+import bjbs;
+import bjjo;
+import bjka;
+import bjkb;
+import bjkc;
+import bjkd;
+import bjke;
+import bjkg;
+import bjkh;
+import bjki;
+import bjlv;
+import bjos;
+import bjqh;
+import bjqm;
+import bjqq;
+import bjre;
+import bjtx;
+import bjuj;
+import bjuv;
+import bjwg;
+import bjzb;
+import bjzm;
+import bjzy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
@@ -108,7 +108,7 @@ import org.json.JSONObject;
 
 public class AuthorityActivity
   extends BaseActivity
-  implements View.OnClickListener, bitw
+  implements View.OnClickListener, bjuv
 {
   protected static boolean a;
   public static String e;
@@ -121,9 +121,9 @@ public class AuthorityActivity
   protected View a;
   public Button a;
   protected TextView a;
-  protected biau a;
-  private bipn jdField_a_of_type_Bipn = new bipn();
-  public biyc a;
+  protected bjbs a;
+  private bjqm jdField_a_of_type_Bjqm = new bjqm();
+  public bjzb a;
   public CardContainer a;
   private MaxHeightScrollView jdField_a_of_type_ComTencentOpenWidgetMaxHeightScrollView;
   public SdkAuthorize.AuthorizeResponse a;
@@ -140,20 +140,20 @@ public class AuthorityActivity
   protected SharedPreferences b;
   protected View b;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private bipn jdField_b_of_type_Bipn = new bipn();
+  private bjqm jdField_b_of_type_Bjqm = new bjqm();
   public String b;
   public boolean b;
   public int c;
   protected long c;
   protected SharedPreferences c;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private bipn jdField_c_of_type_Bipn = new bipn();
+  private bjqm jdField_c_of_type_Bjqm = new bjqm();
   public String c;
   public boolean c;
   public int d;
   public long d;
   private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private bipn jdField_d_of_type_Bipn = new bipn();
+  private bjqm jdField_d_of_type_Bjqm = new bjqm();
   protected String d;
   protected boolean d;
   private int e;
@@ -183,10 +183,10 @@ public class AuthorityActivity
   
   public AuthorityActivity()
   {
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new bijb(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new bjka(this);
     this.jdField_a_of_type_JavaLangRunnable = new AuthorityActivity.5(this);
     this.jdField_e_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler$Callback = new bijj(this);
+    this.jdField_a_of_type_AndroidOsHandler$Callback = new bjki(this);
     this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus = new HandlerPlus(this.jdField_a_of_type_AndroidOsHandler$Callback);
   }
   
@@ -223,7 +223,7 @@ public class AuthorityActivity
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("PARAM_RETRY_COUNT", Integer.toString(paramInt));
-    aukw.a(paramString, this.jdField_a_of_type_Biyc, localHashMap, paramBoolean);
+    avcw.a(paramString, this.jdField_a_of_type_Bjzb, localHashMap, paramBoolean);
   }
   
   private void m()
@@ -240,11 +240,11 @@ public class AuthorityActivity
       ((TextView)((AuthorityAccountView)localObject).findViewById(2131361862)).setVisibility(0);
       localTextView = (TextView)((AuthorityAccountView)localObject).findViewById(2131361861);
       str = this.jdField_a_of_type_AndroidOsBundle.getString("sdkp");
-      localObject = anni.a(2131699608);
+      localObject = anzj.a(2131699715);
       if (!"web".equals(str)) {
         break label87;
       }
-      localObject = anni.a(2131699603);
+      localObject = anzj.a(2131699710);
     }
     for (;;)
     {
@@ -252,18 +252,18 @@ public class AuthorityActivity
       return;
       label87:
       if ("android".equals(str)) {
-        localObject = anni.a(2131699609);
+        localObject = anzj.a(2131699716);
       }
     }
   }
   
   private void n()
   {
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131378874));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131368947));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131368994));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131368979));
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(2131690582);
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131379037));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131369042));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131369088));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131369073));
+    this.jdField_d_of_type_AndroidWidgetTextView.setText(2131690580);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.a(0);
@@ -277,16 +277,16 @@ public class AuthorityActivity
       if (this.jdField_d_of_type_JavaLangString.length() > 12) {
         localObject = this.jdField_d_of_type_JavaLangString.substring(0, 12) + "...";
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131694126), new Object[] { localObject }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131694144), new Object[] { localObject }));
     }
     Object localObject = new WloginSimpleInfo();
-    this.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(this.jdField_a_of_type_Biyc.jdField_a_of_type_JavaLangString, (WloginSimpleInfo)localObject);
+    this.jdField_a_of_type_MqqManagerWtloginManager.getBasicUserInfo(this.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString, (WloginSimpleInfo)localObject);
     String str = new String(((WloginSimpleInfo)localObject)._nick);
     localObject = str;
     if (TextUtils.isEmpty(str)) {
-      localObject = this.jdField_a_of_type_Biyc.jdField_a_of_type_JavaLangString;
+      localObject = this.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString;
     }
-    this.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(this.jdField_a_of_type_Biyc.jdField_a_of_type_JavaLangString, (String)localObject, null, false);
+    this.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(this.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString, (String)localObject, null, false);
     b();
   }
   
@@ -329,34 +329,34 @@ public class AuthorityActivity
     for (localObject1 = "";; localObject1 = Build.VERSION.RELEASE)
     {
       ((GetAppInfoProto.GetAppinfoRequest)localObject2).os.set((String)localObject1);
-      ((GetAppInfoProto.GetAppinfoRequest)localObject2).qqv.set(biip.a().d());
+      ((GetAppInfoProto.GetAppinfoRequest)localObject2).qqv.set(bjjo.a().d());
       ((GetAppInfoProto.GetAppinfoRequest)localObject2).app_type.set(1);
       ((GetAppInfoProto.GetAppinfoRequest)localObject2).setHasFlag(true);
       ((GetAppInfoProto.GetAppinfoRequest)localObject2).need_ads.set(1);
-      localObject1 = bipr.a(this);
+      localObject1 = bjqq.a(this);
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         ((GetAppInfoProto.GetAppinfoRequest)localObject2).appUniqueIdentifier.set((String)localObject1);
       }
       ((GetAppInfoProto.GetAppinfoRequest)localObject2).referer.set(1);
-      ((GetAppInfoProto.GetAppinfoRequest)localObject2).skey.set(this.jdField_a_of_type_Biyc.jdField_b_of_type_JavaLangString);
-      String str = bipr.a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, this.jdField_a_of_type_Biyc, ((GetAppInfoProto.GetAppinfoRequest)localObject2).login_sig, "ConnAuthSvr.get_app_info", "ConnAuthSvr.get_app_info_emp");
+      ((GetAppInfoProto.GetAppinfoRequest)localObject2).skey.set(this.jdField_a_of_type_Bjzb.jdField_b_of_type_JavaLangString);
+      String str = bjqq.a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, this.jdField_a_of_type_Bjzb, ((GetAppInfoProto.GetAppinfoRequest)localObject2).login_sig, "ConnAuthSvr.get_app_info", "ConnAuthSvr.get_app_info_emp");
       boolean bool = "ConnAuthSvr.get_app_info_emp".equals(str);
-      NewIntent localNewIntent = new NewIntent(this, biqf.class);
+      NewIntent localNewIntent = new NewIntent(this, bjre.class);
       localNewIntent.setWithouLogin(true);
-      localNewIntent.putExtra("uin", this.jdField_a_of_type_Biyc.jdField_a_of_type_JavaLangString);
+      localNewIntent.putExtra("uin", this.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString);
       localObject2 = ((GetAppInfoProto.GetAppinfoRequest)localObject2).toByteArray();
       localObject1 = localObject2;
       if (bool) {
-        localObject1 = biyz.a((byte[])localObject2, this.jdField_a_of_type_Biyc);
+        localObject1 = bjzy.a((byte[])localObject2, this.jdField_a_of_type_Bjzb);
       }
       localNewIntent.putExtra("data", (byte[])localObject1);
       localNewIntent.putExtra("cmd", str);
       QLog.d("AuthorityActivity", 1, new Object[] { "getAppInfo cmd=", str });
-      localNewIntent.setObserver(new bijh(this, bool));
-      aukw.a("KEY_GET_APP_INFO_REQUEST");
+      localNewIntent.setObserver(new bjkg(this, bool));
+      avcw.a("KEY_GET_APP_INFO_REQUEST");
       super.getAppRuntime().startServlet(localNewIntent);
-      this.jdField_c_of_type_Bipn.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_c_of_type_Bipn.jdField_a_of_type_JavaLangString = str;
+      this.jdField_c_of_type_Bjqm.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_c_of_type_Bjqm.jdField_a_of_type_JavaLangString = str;
       this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
       return;
@@ -370,39 +370,39 @@ public class AuthorityActivity
     if (this.jdField_a_of_type_MqqManagerWtloginManager == null) {
       this.jdField_a_of_type_MqqManagerWtloginManager = ((WtloginManager)this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getManager(1));
     }
-    NewIntent localNewIntent = new NewIntent(this, biqf.class);
+    NewIntent localNewIntent = new NewIntent(this, bjre.class);
     localNewIntent.setWithouLogin(true);
-    localNewIntent.putExtra("uin", this.jdField_a_of_type_Biyc.jdField_a_of_type_JavaLangString);
-    String str = bipr.a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, this.jdField_a_of_type_Biyc, paramGetAuthApiListRequest.login_sig, "ConnAuthSvr.get_auth_api_list", "ConnAuthSvr.get_auth_api_list_emp");
+    localNewIntent.putExtra("uin", this.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString);
+    String str = bjqq.a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, this.jdField_a_of_type_Bjzb, paramGetAuthApiListRequest.login_sig, "ConnAuthSvr.get_auth_api_list", "ConnAuthSvr.get_auth_api_list_emp");
     boolean bool = "ConnAuthSvr.get_auth_api_list_emp".equals(str);
     byte[] arrayOfByte = paramGetAuthApiListRequest.toByteArray();
     paramGetAuthApiListRequest = arrayOfByte;
     if (bool)
     {
-      if ((this.jdField_a_of_type_Biyc.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_Biyc.jdField_a_of_type_ArrayOfByte.length == 0))
+      if ((this.jdField_a_of_type_Bjzb.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_Bjzb.jdField_a_of_type_ArrayOfByte.length == 0))
       {
         paramGetAuthApiListRequest = this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
         paramGetAuthApiListRequest.what = 6;
         paramGetAuthApiListRequest.arg1 = 3000;
-        paramGetAuthApiListRequest.obj = getResources().getString(2131694134);
+        paramGetAuthApiListRequest.obj = getResources().getString(2131694152);
         this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramGetAuthApiListRequest);
         return;
       }
-      paramGetAuthApiListRequest = biyz.a(arrayOfByte, this.jdField_a_of_type_Biyc);
+      paramGetAuthApiListRequest = bjzy.a(arrayOfByte, this.jdField_a_of_type_Bjzb);
     }
     localNewIntent.putExtra("data", paramGetAuthApiListRequest);
     localNewIntent.putExtra("cmd", str);
     this.jdField_a_of_type_Int = 0;
-    localNewIntent.setObserver(new bijf(this, bool, str));
+    localNewIntent.setObserver(new bjke(this, bool, str));
     if (this.jdField_c_of_type_Int == 0) {
-      aukw.a("KEY_GET_AUTH_API_LIST_REQUEST");
+      avcw.a("KEY_GET_AUTH_API_LIST_REQUEST");
     }
     super.getAppRuntime().startServlet(localNewIntent);
-    this.jdField_b_of_type_Bipn.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Bipn.jdField_a_of_type_JavaLangString = str;
+    this.jdField_b_of_type_Bjqm.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_b_of_type_Bjqm.jdField_a_of_type_JavaLangString = str;
     this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
-    QLog.d("AuthorityActivity", 1, "send | cmd: " + str + " | uin : *" + bipr.a(this.jdField_a_of_type_Biyc.jdField_a_of_type_JavaLangString));
+    QLog.d("AuthorityActivity", 1, "send | cmd: " + str + " | uin : *" + bjqq.a(this.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString));
   }
   
   protected void a(String paramString)
@@ -411,7 +411,7 @@ public class AuthorityActivity
       return;
     }
     WloginSimpleInfo localWloginSimpleInfo = new WloginSimpleInfo();
-    this.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(paramString, localWloginSimpleInfo);
+    this.jdField_a_of_type_MqqManagerWtloginManager.getBasicUserInfo(paramString, localWloginSimpleInfo);
     Object localObject2 = new String(localWloginSimpleInfo._nick);
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
@@ -421,7 +421,7 @@ public class AuthorityActivity
     paramString = this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(paramString, (int)(58.0F * this.jdField_a_of_type_Float), true);
     if (paramString != null)
     {
-      localObject2 = bipr.a(this, paramString, 63, 63);
+      localObject2 = bjqq.a(this, paramString, 63, 63);
       paramString.recycle();
       this.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(this.jdField_a_of_type_JavaLangString, (String)localObject1, (Bitmap)localObject2, false);
       return;
@@ -438,18 +438,18 @@ public class AuthorityActivity
         break label54;
       }
       if (!isDestroyed()) {
-        bglp.b(this, 230).setMessageWithUrl(paramString).setTitle(super.getString(2131717436)).setPositiveButton(17039370, paramOnClickListener).show();
+        bhlq.b(this, 230).setMessageWithUrl(paramString).setTitle(super.getString(2131717567)).setPositiveButton(17039370, paramOnClickListener).show();
       }
     }
     return;
     label54:
-    bglp.b(this, 230).setMessageWithUrl(paramString).setTitle(super.getString(2131717436)).setPositiveButton(17039370, paramOnClickListener).show();
+    bhlq.b(this, 230).setMessageWithUrl(paramString).setTitle(super.getString(2131717567)).setPositiveButton(17039370, paramOnClickListener).show();
   }
   
   public void a(String paramString, Bitmap paramBitmap)
   {
-    bisy.c("AuthorityActivity", "-->onTaskCompleted identifier = " + paramString + " - b = " + paramBitmap);
-    if ((this.jdField_a_of_type_Biyc != null) && (paramString.equals(this.jdField_a_of_type_Biyc.jdField_a_of_type_JavaLangString)) && (paramBitmap != null)) {
+    bjtx.c("AuthorityActivity", "-->onTaskCompleted identifier = " + paramString + " - b = " + paramBitmap);
+    if ((this.jdField_a_of_type_Bjzb != null) && (paramString.equals(this.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString)) && (paramBitmap != null)) {
       runOnUiThread(new AuthorityActivity.9(this, paramBitmap));
     }
   }
@@ -467,25 +467,25 @@ public class AuthorityActivity
   public void a(String paramString1, String paramString2, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AuthorityActivity", 2, "-->loginSuccess--userAccount = *" + bipr.a(paramString1));
+      QLog.d("AuthorityActivity", 2, "-->loginSuccess--userAccount = *" + bjqq.a(paramString1));
     }
     if (!this.m) {
       this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendEmptyMessage(5);
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
     paramString1 = "" + this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.jdField_a_of_type_MqqManagerWtloginManager, paramString1);
-    biyc localbiyc = new biyc();
-    localbiyc.jdField_a_of_type_JavaLangString = paramString1;
-    localbiyc.jdField_b_of_type_JavaLangString = paramString2;
+    bjzb localbjzb = new bjzb();
+    localbjzb.jdField_a_of_type_JavaLangString = paramString1;
+    localbjzb.jdField_b_of_type_JavaLangString = paramString2;
     if (paramBundle != null)
     {
-      localbiyc.jdField_a_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp");
-      localbiyc.jdField_b_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp_key");
+      localbjzb.jdField_a_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp");
+      localbjzb.jdField_b_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp_key");
     }
-    this.jdField_a_of_type_Biyc = localbiyc;
+    this.jdField_a_of_type_Bjzb = localbjzb;
     this.jdField_a_of_type_JavaLangString = paramString1;
-    aukw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", this.jdField_a_of_type_Biyc);
-    aukw.a("KEY_LOGIN_STAGE_1_TOTAL", paramString1, this.jdField_a_of_type_Long, null, true);
+    avcw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", this.jdField_a_of_type_Bjzb);
+    avcw.a("KEY_LOGIN_STAGE_1_TOTAL", paramString1, this.jdField_a_of_type_Long, null, true);
     if (this.jdField_e_of_type_Int == 1)
     {
       k();
@@ -496,9 +496,9 @@ public class AuthorityActivity
   
   public void a(String paramString, boolean paramBoolean)
   {
-    if (bipr.a(this.jdField_a_of_type_MqqManagerWtloginManager, paramString))
+    if (bjqq.a(this.jdField_a_of_type_MqqManagerWtloginManager, paramString))
     {
-      QLog.d("AuthorityActivity", 1, "changeAccountLogin IsNeedLoginWithPasswd | uin : *" + bipr.a(paramString));
+      QLog.d("AuthorityActivity", 1, "changeAccountLogin IsNeedLoginWithPasswd | uin : *" + bjqq.a(paramString));
       c(paramString);
     }
     for (;;)
@@ -506,10 +506,10 @@ public class AuthorityActivity
       this.jdField_b_of_type_Boolean = paramBoolean;
       this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse = null;
       return;
-      QLog.d("AuthorityActivity", 1, "changeAccountLogin send | cmd: g_t_n_p | uin : *" + bipr.a(paramString));
-      aukw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
+      QLog.d("AuthorityActivity", 1, "changeAccountLogin send | cmd: g_t_n_p | uin : *" + bjqq.a(paramString));
+      avcw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
       AccountManage.a().a(paramString, this.jdField_a_of_type_MqqObserverSSOAccountObserver, jdField_e_of_type_JavaLangString, AccountManage.RefreshReason.useCacheFirst);
-      bipr.a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, paramString);
+      bjqq.a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, paramString);
     }
   }
   
@@ -561,15 +561,15 @@ public class AuthorityActivity
     try
     {
       localObject = HttpBaseUtil.a((String)localObject);
-      biyc localbiyc = new biyc();
-      localbiyc.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).getString("uin");
-      localbiyc.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).getString("skey");
-      localbiyc.jdField_a_of_type_ArrayOfByte = paramIntent.getByteArrayExtra("st_temp");
-      localbiyc.jdField_b_of_type_ArrayOfByte = paramIntent.getByteArrayExtra("st_temp_key");
-      if ((localbiyc.jdField_a_of_type_JavaLangString != null) && (localbiyc.jdField_b_of_type_JavaLangString != null)) {
-        this.jdField_a_of_type_Biyc = localbiyc;
+      bjzb localbjzb = new bjzb();
+      localbjzb.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).getString("uin");
+      localbjzb.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).getString("skey");
+      localbjzb.jdField_a_of_type_ArrayOfByte = paramIntent.getByteArrayExtra("st_temp");
+      localbjzb.jdField_b_of_type_ArrayOfByte = paramIntent.getByteArrayExtra("st_temp_key");
+      if ((localbjzb.jdField_a_of_type_JavaLangString != null) && (localbjzb.jdField_b_of_type_JavaLangString != null)) {
+        this.jdField_a_of_type_Bjzb = localbjzb;
       }
-      if (this.jdField_a_of_type_Biyc != null) {
+      if (this.jdField_a_of_type_Bjzb != null) {
         return true;
       }
     }
@@ -590,24 +590,24 @@ public class AuthorityActivity
   
   protected void b()
   {
-    bitk.a().a(this, this.jdField_a_of_type_Biyc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Biyc.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.b(this.jdField_a_of_type_Biyc.jdField_a_of_type_JavaLangString), this);
+    bjuj.a().a(this, this.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bjzb.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.b(this.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString), this);
   }
   
   public void b(int paramInt, String paramString)
   {
     j();
     if (TextUtils.isEmpty(paramString)) {
-      a(String.format(super.getString(2131694131), new Object[] { Integer.valueOf(paramInt) }), new bijc(this));
+      a(String.format(super.getString(2131694149), new Object[] { Integer.valueOf(paramInt) }), new bjkb(this));
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131694138);
-    this.jdField_a_of_type_AndroidWidgetButton.setTag(Integer.valueOf(2131694134));
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131694156);
+    this.jdField_a_of_type_AndroidWidgetButton.setTag(Integer.valueOf(2131694152));
     d(paramInt, paramString);
   }
   
   public void b(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    ForwardUtils.a(paramInt, this.jdField_a_of_type_Biyc);
+    ForwardUtils.a(paramInt, this.jdField_a_of_type_Bjzb);
     if (QLog.isColorLevel()) {
       QLog.d("AuthorityActivity", 2, "-->setSdkResult--error = " + paramInt);
     }
@@ -650,7 +650,7 @@ public class AuthorityActivity
     }
     for (;;)
     {
-      bctj.a(this).a(this.jdField_a_of_type_JavaLangString, "connect_sso_authfail", false, 0L, 0L, paramString1, "");
+      bdmc.a(this).a(this.jdField_a_of_type_JavaLangString, "connect_sso_authfail", false, 0L, 0L, paramString1, "");
       paramString1 = "0";
       if (i1 != 0) {
         paramString1 = "1";
@@ -661,11 +661,11 @@ public class AuthorityActivity
       {
         for (;;)
         {
-          bipi.a().a(this.jdField_a_of_type_JavaLangString, "", jdField_e_of_type_JavaLangString, "1", "9", paramString1, true);
+          bjqh.a().a(this.jdField_a_of_type_JavaLangString, "", jdField_e_of_type_JavaLangString, "1", "9", paramString1, true);
           try
           {
             if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount())) && (!this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount()))) {
-              bipi.a().a(this.jdField_a_of_type_JavaLangString, "", jdField_e_of_type_JavaLangString, "1", "10", paramString1, true);
+              bjqh.a().a(this.jdField_a_of_type_JavaLangString, "", jdField_e_of_type_JavaLangString, "1", "10", paramString1, true);
             }
             return;
           }
@@ -696,7 +696,7 @@ public class AuthorityActivity
             break;
             try
             {
-              bipi.a().a(this.jdField_a_of_type_JavaLangString, "", jdField_e_of_type_JavaLangString, "1", "6", "0", false);
+              bjqh.a().a(this.jdField_a_of_type_JavaLangString, "", jdField_e_of_type_JavaLangString, "1", "6", "0", false);
             }
             catch (Exception paramString1)
             {
@@ -718,17 +718,17 @@ public class AuthorityActivity
   public void b(String paramString)
   {
     SharedPreferences.Editor localEditor = this.jdField_b_of_type_AndroidContentSharedPreferences.edit();
-    localEditor.putString(paramString, this.jdField_a_of_type_Biyc.jdField_a_of_type_JavaLangString);
-    if ((TextUtils.isEmpty(jdField_e_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_a_of_type_Biyc.jdField_a_of_type_JavaLangString))) {
+    localEditor.putString(paramString, this.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString);
+    if ((TextUtils.isEmpty(jdField_e_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString))) {
       return;
     }
-    localEditor.putString(jdField_e_of_type_JavaLangString + ":" + this.jdField_a_of_type_Biyc.jdField_a_of_type_JavaLangString, paramString);
+    localEditor.putString(jdField_e_of_type_JavaLangString + ":" + this.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString, paramString);
     localEditor.commit();
   }
   
   public void b(String paramString1, String paramString2)
   {
-    bctj.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, paramString1, jdField_e_of_type_JavaLangString + "|" + paramString2 + "|" + this.g);
+    bdmc.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, paramString1, jdField_e_of_type_JavaLangString + "|" + paramString2 + "|" + this.g);
   }
   
   public void b(String paramString, boolean paramBoolean)
@@ -754,7 +754,7 @@ public class AuthorityActivity
     for (String str = "auth";; str = "uauth")
     {
       localHashMap.put("p2", str);
-      bctj.a(this).a(this.jdField_a_of_type_JavaLangString, "connect_sso_backto3rd", false, 0L, 0L, localHashMap, "");
+      bdmc.a(this).a(this.jdField_a_of_type_JavaLangString, "connect_sso_backto3rd", false, 0L, 0L, localHashMap, "");
       return;
       str = "logged";
       break;
@@ -767,9 +767,9 @@ public class AuthorityActivity
     localJSONObject.put("ret", paramInt);
     localJSONObject.put("msg", paramString);
     if (TextUtils.isEmpty(paramString)) {}
-    for (paramString = String.format(super.getString(2131694131), new Object[] { Integer.valueOf(paramInt) });; paramString = String.format(super.getString(2131695788), new Object[] { paramString, Integer.valueOf(paramInt) }))
+    for (paramString = String.format(super.getString(2131694149), new Object[] { Integer.valueOf(paramInt) });; paramString = String.format(super.getString(2131695831), new Object[] { paramString, Integer.valueOf(paramInt) }))
     {
-      a(paramString, new bijd(this, paramInt, localJSONObject));
+      a(paramString, new bjkc(this, paramInt, localJSONObject));
       return;
     }
   }
@@ -777,7 +777,7 @@ public class AuthorityActivity
   public void c(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AuthorityActivity", 2, "-->showLoginActivity--uin = *" + bipr.a(this.jdField_a_of_type_JavaLangString));
+      QLog.d("AuthorityActivity", 2, "-->showLoginActivity--uin = *" + bjqq.a(this.jdField_a_of_type_JavaLangString));
     }
     Intent localIntent = new Intent(this, Login.class);
     localIntent.putExtra("appid", jdField_e_of_type_JavaLangString);
@@ -789,31 +789,31 @@ public class AuthorityActivity
   
   protected void d()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376788);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131363750);
-    this.jdField_a_of_type_ComTencentOpenWidgetMaxHeightScrollView = ((MaxHeightScrollView)findViewById(2131364213));
-    this.jdField_b_of_type_JavaLangString = ((String)super.getText(2131694138));
-    this.jdField_c_of_type_JavaLangString = ((String)super.getText(2131694128));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131371971));
-    this.jdField_a_of_type_ComTencentOpenAgentCardContainer = ((CardContainer)super.findViewById(2131364212));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131376925);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131363774);
+    this.jdField_a_of_type_ComTencentOpenWidgetMaxHeightScrollView = ((MaxHeightScrollView)findViewById(2131364258));
+    this.jdField_b_of_type_JavaLangString = ((String)super.getText(2131694156));
+    this.jdField_c_of_type_JavaLangString = ((String)super.getText(2131694146));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131372085));
+    this.jdField_a_of_type_ComTencentOpenAgentCardContainer = ((CardContainer)super.findViewById(2131364257));
     if (this.m) {
       this.jdField_a_of_type_ComTencentOpenAgentCardContainer.setTag(Boolean.valueOf(this.m));
     }
     n();
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131694125);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131694143);
     if (this.m)
     {
-      this.jdField_c_of_type_JavaLangString = ((String)super.getText(2131694129));
+      this.jdField_c_of_type_JavaLangString = ((String)super.getText(2131694147));
       this.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131694138);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131694156);
       this.jdField_a_of_type_AndroidWidgetButton.setTag(this.jdField_c_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131371701).setVisibility(8);
+      this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131371809).setVisibility(8);
       this.jdField_a_of_type_ComTencentOpenAgentCardContainer.setVisibility(4);
     }
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_ComTencentOpenWidgetMaxHeightScrollView.getViewTreeObserver().addOnGlobalLayoutListener(new bije(this));
+    this.jdField_a_of_type_ComTencentOpenWidgetMaxHeightScrollView.getViewTreeObserver().addOnGlobalLayoutListener(new bjkd(this));
   }
   
   public void d(int paramInt, String paramString)
@@ -832,7 +832,7 @@ public class AuthorityActivity
     }
     for (;;)
     {
-      bctj.a(this).a(this.jdField_a_of_type_JavaLangString, "connect_sso_authfail", false, 0L, 0L, localHashMap, "");
+      bdmc.a(this).a(this.jdField_a_of_type_JavaLangString, "connect_sso_authfail", false, 0L, 0L, localHashMap, "");
       return;
       label103:
       if (paramString.getType() == 0) {
@@ -860,7 +860,7 @@ public class AuthorityActivity
   protected void d(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AuthorityActivity", 2, "-->LocalAccountCache--userAccount = *" + bipr.a(paramString));
+      QLog.d("AuthorityActivity", 2, "-->LocalAccountCache--userAccount = *" + bjqq.a(paramString));
     }
     SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
     localEditor.putString("last_account", paramString);
@@ -947,7 +947,7 @@ public class AuthorityActivity
     QLog.d("AuthorityActivity", 1, "-->login--");
     this.jdField_d_of_type_Long = SystemClock.elapsedRealtime();
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    if (!bgnt.g(this))
+    if (!bhnv.g(this))
     {
       this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.post(this.jdField_a_of_type_JavaLangRunnable);
@@ -966,17 +966,17 @@ public class AuthorityActivity
     if (this.jdField_f_of_type_JavaLangString != null) {
       this.jdField_a_of_type_JavaLangString = this.jdField_f_of_type_JavaLangString;
     }
-    if (!bipr.a(this.jdField_a_of_type_MqqManagerWtloginManager, this.jdField_a_of_type_JavaLangString))
+    if (!bjqq.a(this.jdField_a_of_type_MqqManagerWtloginManager, this.jdField_a_of_type_JavaLangString))
     {
-      QLog.d("AuthorityActivity", 1, "send | cmd: g_t_n_p | uin : *" + bipr.a(this.jdField_a_of_type_JavaLangString));
-      aukw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
+      QLog.d("AuthorityActivity", 1, "send | cmd: g_t_n_p | uin : *" + bjqq.a(this.jdField_a_of_type_JavaLangString));
+      avcw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
       AccountManage.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverSSOAccountObserver, jdField_e_of_type_JavaLangString, AccountManage.RefreshReason.useCacheFirst);
-      this.jdField_a_of_type_Bipn.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Biau.a(getResources().getString(2131694135));
-      if ((!super.isFinishing()) && (!this.jdField_a_of_type_Biau.isShowing())) {}
+      this.jdField_a_of_type_Bjqm.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Bjbs.a(getResources().getString(2131694153));
+      if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bjbs.isShowing())) {}
       try
       {
-        this.jdField_a_of_type_Biau.show();
+        this.jdField_a_of_type_Bjbs.show();
         a("" + this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.jdField_a_of_type_MqqManagerWtloginManager, this.jdField_a_of_type_JavaLangString));
         return;
       }
@@ -996,14 +996,14 @@ public class AuthorityActivity
   protected void g()
   {
     QLog.d("AuthorityActivity", 1, "-->startAccountActivity--");
-    if (!bivh.a())
+    if (!bjwg.a())
     {
       a(true);
       HashMap localHashMap = new HashMap();
       localHashMap.put("appid", jdField_e_of_type_JavaLangString);
       localHashMap.put("p1", "notlogged");
       localHashMap.put("p2", "uauth");
-      bctj.a(this).a(this.jdField_a_of_type_JavaLangString, "connect_sso_pageview", false, System.currentTimeMillis() - this.jdField_a_of_type_Long, 0L, localHashMap, "");
+      bdmc.a(this).a(this.jdField_a_of_type_JavaLangString, "connect_sso_pageview", false, System.currentTimeMillis() - this.jdField_a_of_type_Long, 0L, localHashMap, "");
       return;
     }
     f();
@@ -1012,13 +1012,13 @@ public class AuthorityActivity
   protected void h()
   {
     QLog.d("AuthorityActivity", 1, "-->loginSSO--");
-    this.jdField_a_of_type_Biau.a(super.getString(2131694141));
-    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Biau.isShowing())) {}
+    this.jdField_a_of_type_Bjbs.a(super.getString(2131694159));
+    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bjbs.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Biau.show();
+      this.jdField_a_of_type_Bjbs.show();
       if (this.jdField_a_of_type_JavaLangString != null) {
-        if (bipr.a(this.jdField_a_of_type_MqqManagerWtloginManager, this.jdField_a_of_type_JavaLangString))
+        if (bjqq.a(this.jdField_a_of_type_MqqManagerWtloginManager, this.jdField_a_of_type_JavaLangString))
         {
           c(this.jdField_a_of_type_JavaLangString);
           return;
@@ -1033,10 +1033,10 @@ public class AuthorityActivity
           QLog.d("AuthorityActivity", 2, "-->loginSSO(), mProgress.show();", localException);
         }
       }
-      QLog.d("AuthorityActivity", 1, "send | cmd: g_t_n_p | uin :*" + bipr.a(this.jdField_a_of_type_JavaLangString));
-      aukw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
+      QLog.d("AuthorityActivity", 1, "send | cmd: g_t_n_p | uin :*" + bjqq.a(this.jdField_a_of_type_JavaLangString));
+      avcw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
       AccountManage.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverSSOAccountObserver, jdField_e_of_type_JavaLangString, AccountManage.RefreshReason.useCacheFirst);
-      this.jdField_a_of_type_Bipn.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Bjqm.jdField_a_of_type_Long = System.currentTimeMillis();
       a("" + this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.jdField_a_of_type_MqqManagerWtloginManager, this.jdField_a_of_type_JavaLangString));
       return;
     }
@@ -1049,7 +1049,7 @@ public class AuthorityActivity
   {
     QLog.d("AuthorityActivity", 1, "-->queryAuthority");
     this.jdField_f_of_type_Long = SystemClock.elapsedRealtime();
-    if (this.jdField_a_of_type_Biyc == null)
+    if (this.jdField_a_of_type_Bjzb == null)
     {
       this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
@@ -1075,7 +1075,7 @@ public class AuthorityActivity
     {
       localObject = "";
       localGetAuthApiListRequest.os.set((String)localObject);
-      localGetAuthApiListRequest.qqv.set(biip.a().d());
+      localGetAuthApiListRequest.qqv.set(bjjo.a().d());
       localGetAuthApiListRequest.app_type.set(1);
       str = this.jdField_a_of_type_AndroidOsBundle.getString("pf");
       localObject = str;
@@ -1118,10 +1118,10 @@ public class AuthorityActivity
         }
       }
       localGetAuthApiListRequest.need_pay.set(1);
-      if (this.jdField_a_of_type_Biyc != null) {
-        localGetAuthApiListRequest.skey.set(this.jdField_a_of_type_Biyc.jdField_b_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Bjzb != null) {
+        localGetAuthApiListRequest.skey.set(this.jdField_a_of_type_Bjzb.jdField_b_of_type_JavaLangString);
       }
-      localObject = bipr.a(this);
+      localObject = bjqq.a(this);
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         localGetAuthApiListRequest.appUniqueIdentifier.set((String)localObject);
       }
@@ -1139,10 +1139,10 @@ public class AuthorityActivity
   
   public void j()
   {
-    if ((!super.isFinishing()) && (this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {}
+    if ((!super.isFinishing()) && (this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Biau.dismiss();
+      this.jdField_a_of_type_Bjbs.dismiss();
       return;
     }
     catch (Exception localException)
@@ -1163,12 +1163,12 @@ public class AuthorityActivity
     ((Bundle)localObject3).putBoolean("doAuthorize", true);
     ((Bundle)localObject3).putString("need_pay", "1");
     ((Bundle)localObject3).putString("appid_for_getting_config", ((Bundle)localObject3).getString("client_id") + "");
-    this.jdField_a_of_type_Biau.a(getResources().getString(2131694141));
-    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Biau.isShowing())) {
-      this.jdField_a_of_type_Biau.show();
+    this.jdField_a_of_type_Bjbs.a(getResources().getString(2131694159));
+    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bjbs.isShowing())) {
+      this.jdField_a_of_type_Bjbs.show();
     }
     if (this.k) {
-      bint.a().a((Bundle)localObject3, true);
+      bjos.a().a((Bundle)localObject3, true);
     }
     label362:
     do
@@ -1181,9 +1181,9 @@ public class AuthorityActivity
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (bikw)((Iterator)localObject1).next();
-        if (((bikw)localObject2).jdField_a_of_type_Int > 0) {
-          localAuthorizeRequest.openapi.add(Integer.valueOf(((bikw)localObject2).b));
+        localObject2 = (bjlv)((Iterator)localObject1).next();
+        if (((bjlv)localObject2).jdField_a_of_type_Int > 0) {
+          localAuthorizeRequest.openapi.add(Integer.valueOf(((bjlv)localObject2).b));
         }
       }
       String str;
@@ -1192,7 +1192,7 @@ public class AuthorityActivity
         localObject1 = "";
         localAuthorizeRequest.os.set((String)localObject1);
         localAuthorizeRequest.app_type.set(1);
-        localAuthorizeRequest.qqv.set(biip.a().d());
+        localAuthorizeRequest.qqv.set(bjjo.a().d());
         localObject2 = ((Bundle)localObject3).getString("pf");
         localObject1 = localObject2;
         if (localObject2 == null) {
@@ -1210,7 +1210,7 @@ public class AuthorityActivity
         }
         localAuthorizeRequest.sdkv.set("1.5.9");
         localAuthorizeRequest.response_type.set("token");
-        localObject1 = bipr.a(this);
+        localObject1 = bjqq.a(this);
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           break label687;
         }
@@ -1255,7 +1255,7 @@ public class AuthorityActivity
         break label391;
         QLog.d("AuthorityActivity", 1, "doAuthorize.appUniqueIdentifier is null");
         break label426;
-        localObject2 = biyz.a(this, (String)localObject1);
+        localObject2 = bjzy.a(this, (String)localObject1);
         localObject1 = localObject2[1];
         localObject2 = localObject2[2];
         QLog.d("AuthorityActivity", 1, "doAuthorize.getAuthorizeSign again");
@@ -1277,30 +1277,30 @@ public class AuthorityActivity
         ((StringBuffer)localObject2).delete(((StringBuffer)localObject2).length() - 1, ((StringBuffer)localObject2).length());
         localAuthorizeRequest.passData.set(((StringBuffer)localObject2).toString());
       }
-      localAuthorizeRequest.skey.set(this.jdField_a_of_type_Biyc.jdField_b_of_type_JavaLangString);
+      localAuthorizeRequest.skey.set(this.jdField_a_of_type_Bjzb.jdField_b_of_type_JavaLangString);
       this.jdField_a_of_type_Int = 1;
-      localObject3 = new NewIntent(this, biqf.class);
+      localObject3 = new NewIntent(this, bjre.class);
       ((NewIntent)localObject3).setWithouLogin(true);
-      ((NewIntent)localObject3).putExtra("uin", this.jdField_a_of_type_Biyc.jdField_a_of_type_JavaLangString);
-      Object localObject4 = bipr.a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, this.jdField_a_of_type_Biyc, localAuthorizeRequest.login_sig, "ConnAuthSvr.sdk_auth_api", "ConnAuthSvr.sdk_auth_api_emp");
+      ((NewIntent)localObject3).putExtra("uin", this.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString);
+      Object localObject4 = bjqq.a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, this.jdField_a_of_type_Bjzb, localAuthorizeRequest.login_sig, "ConnAuthSvr.sdk_auth_api", "ConnAuthSvr.sdk_auth_api_emp");
       boolean bool = "ConnAuthSvr.sdk_auth_api_emp".equals(localObject4);
       Object localObject2 = localAuthorizeRequest.toByteArray();
       localObject1 = localObject2;
       if (bool) {
-        localObject1 = biyz.a((byte[])localObject2, this.jdField_a_of_type_Biyc);
+        localObject1 = bjzy.a((byte[])localObject2, this.jdField_a_of_type_Bjzb);
       }
       ((NewIntent)localObject3).putExtra("data", (byte[])localObject1);
       ((NewIntent)localObject3).putExtra("cmd", (String)localObject4);
-      ((NewIntent)localObject3).setObserver(new biji(this, bool, (String)localObject4));
+      ((NewIntent)localObject3).setObserver(new bjkh(this, bool, (String)localObject4));
       if (this.jdField_d_of_type_Int == 0) {
-        aukw.a("KEY_AUTHORIZE_REQUEST");
+        avcw.a("KEY_AUTHORIZE_REQUEST");
       }
       super.getAppRuntime().startServlet((NewIntent)localObject3);
-      this.jdField_d_of_type_Bipn.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_d_of_type_Bipn.jdField_a_of_type_JavaLangString = ((String)localObject4);
+      this.jdField_d_of_type_Bjqm.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_d_of_type_Bjqm.jdField_a_of_type_JavaLangString = ((String)localObject4);
       this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
-      QLog.d("AuthorityActivity", 1, "send | cmd: " + (String)localObject4 + " | uin : *" + bipr.a(this.jdField_a_of_type_Biyc.jdField_a_of_type_JavaLangString));
+      QLog.d("AuthorityActivity", 1, "send | cmd: " + (String)localObject4 + " | uin : *" + bjqq.a(this.jdField_a_of_type_Bjzb.jdField_a_of_type_JavaLangString));
     } while (!QLog.isColorLevel());
     label391:
     label426:
@@ -1313,8 +1313,8 @@ public class AuthorityActivity
   
   public void l()
   {
-    int i1 = getResources().getColor(2131165920);
-    ColorStateList localColorStateList = getResources().getColorStateList(2131165920);
+    int i1 = getResources().getColor(2131165921);
+    ColorStateList localColorStateList = getResources().getColorStateList(2131165921);
     if (this.jdField_c_of_type_AndroidWidgetTextView != null)
     {
       this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(i1);
@@ -1356,13 +1356,13 @@ public class AuthorityActivity
           c();
         }
         this.jdField_e_of_type_Long = SystemClock.elapsedRealtime();
-        bisy.c("Authority_TimeCost", "<TimeStamp> login cost : " + (this.jdField_e_of_type_Long - this.jdField_d_of_type_Long));
+        bjtx.c("Authority_TimeCost", "<TimeStamp> login cost : " + (this.jdField_e_of_type_Long - this.jdField_d_of_type_Long));
         return;
       }
       if (-1 == paramInt2)
       {
         this.jdField_e_of_type_Long = SystemClock.elapsedRealtime();
-        bisy.c("Authority_TimeCost", "<TimeStamp> login cost : " + (this.jdField_e_of_type_Long - this.jdField_d_of_type_Long));
+        bjtx.c("Authority_TimeCost", "<TimeStamp> login cost : " + (this.jdField_e_of_type_Long - this.jdField_d_of_type_Long));
         this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse = null;
         this.jdField_c_of_type_Boolean = a(paramIntent);
         try
@@ -1375,7 +1375,7 @@ public class AuthorityActivity
             Object localObject1 = new WloginSimpleInfo();
             if (this.jdField_a_of_type_MqqManagerWtloginManager != null)
             {
-              this.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(this.jdField_a_of_type_JavaLangString, (WloginSimpleInfo)localObject1);
+              this.jdField_a_of_type_MqqManagerWtloginManager.getBasicUserInfo(this.jdField_a_of_type_JavaLangString, (WloginSimpleInfo)localObject1);
               this.jdField_a_of_type_JavaLangString = Long.toString(((WloginSimpleInfo)localObject1)._uin);
             }
             this.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(1);
@@ -1383,7 +1383,7 @@ public class AuthorityActivity
             if (bool)
             {
               d(this.jdField_a_of_type_JavaLangString);
-              bipr.a(getAppRuntime(), this.jdField_a_of_type_JavaLangString);
+              bjqq.a(getAppRuntime(), this.jdField_a_of_type_JavaLangString);
             }
             Object localObject2 = paramIntent.getBundleExtra("ssobundle");
             if (localObject2 != null)
@@ -1392,15 +1392,15 @@ public class AuthorityActivity
               localObject2 = ((Bundle)localObject2).getByteArray("st_temp_key");
               if ((localObject1 != null) && (localObject2 != null))
               {
-                this.jdField_a_of_type_Biyc.jdField_a_of_type_ArrayOfByte = ((byte[])localObject1);
-                this.jdField_a_of_type_Biyc.jdField_b_of_type_ArrayOfByte = ((byte[])localObject2);
+                this.jdField_a_of_type_Bjzb.jdField_a_of_type_ArrayOfByte = ((byte[])localObject1);
+                this.jdField_a_of_type_Bjzb.jdField_b_of_type_ArrayOfByte = ((byte[])localObject2);
               }
             }
             this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendEmptyMessage(5);
             this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendEmptyMessage(11);
             this.jdField_b_of_type_Boolean = true;
             this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-            if ((paramIntent.getBooleanExtra("fromLoginPhoneNum", false)) && (this.jdField_a_of_type_Biyc != null) && (this.jdField_a_of_type_Biyc.jdField_b_of_type_ArrayOfByte == null))
+            if ((paramIntent.getBooleanExtra("fromLoginPhoneNum", false)) && (this.jdField_a_of_type_Bjzb != null) && (this.jdField_a_of_type_Bjzb.jdField_b_of_type_ArrayOfByte == null))
             {
               f();
               return;
@@ -1411,7 +1411,7 @@ public class AuthorityActivity
         {
           for (;;)
           {
-            bisy.e("AuthorityActivity", "mAuthAppId " + jdField_e_of_type_JavaLangString + " can not cast to long ");
+            bjtx.e("AuthorityActivity", "mAuthAppId " + jdField_e_of_type_JavaLangString + " can not cast to long ");
           }
           i();
         }
@@ -1421,7 +1421,7 @@ public class AuthorityActivity
   
   public void onBackPressed()
   {
-    if ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_Biyc != null)) {}
+    if ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_Bjzb != null)) {}
     super.setResult(0);
     super.finish();
     c();
@@ -1451,7 +1451,7 @@ public class AuthorityActivity
             continue;
           }
           this.jdField_c_of_type_Long = l1;
-          if (!bgnt.g(this))
+          if (!bhnv.g(this))
           {
             this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
             this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.post(this.jdField_a_of_type_JavaLangRunnable);
@@ -1460,26 +1460,26 @@ public class AuthorityActivity
         }
         finally {}
         this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-        if ((this.i) || (this.jdField_a_of_type_Biyc == null))
+        if ((this.i) || (this.jdField_a_of_type_Bjzb == null))
         {
           f();
         }
         else if (this.jdField_a_of_type_Int == 0)
         {
-          this.jdField_a_of_type_Biau.a(super.getString(2131694135));
-          if ((!super.isFinishing()) && (!this.jdField_a_of_type_Biau.isShowing())) {
-            this.jdField_a_of_type_Biau.show();
+          this.jdField_a_of_type_Bjbs.a(super.getString(2131694153));
+          if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bjbs.isShowing())) {
+            this.jdField_a_of_type_Bjbs.show();
           }
           i();
         }
-        else if (this.jdField_a_of_type_AndroidWidgetButton.getTag().equals(super.getString(2131694134)))
+        else if (this.jdField_a_of_type_AndroidWidgetButton.getTag().equals(super.getString(2131694152)))
         {
           f();
         }
         else
         {
-          aukw.a("KEY_LOGIN_STAGE_2_OLD_TOTAL", this.jdField_a_of_type_Biyc);
-          aukw.a("KEY_LOGIN_STAGE_3_TOTAL");
+          avcw.a("KEY_LOGIN_STAGE_2_OLD_TOTAL", this.jdField_a_of_type_Bjzb);
+          avcw.a("KEY_LOGIN_STAGE_3_TOTAL");
           if (this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse != null)
           {
             if (QLog.isColorLevel()) {
@@ -1493,7 +1493,7 @@ public class AuthorityActivity
           }
           for (;;)
           {
-            bipi.a().a(this.jdField_a_of_type_JavaLangString, "", jdField_e_of_type_JavaLangString, "1", "2", "0", false);
+            bjqh.a().a(this.jdField_a_of_type_JavaLangString, "", jdField_e_of_type_JavaLangString, "1", "2", "0", false);
             break;
             if (QLog.isColorLevel()) {
               QLog.d("SDKQQAgentPref", 2, "ClickAuthButton -- doAuthorize(): " + SystemClock.elapsedRealtime());
@@ -1508,7 +1508,7 @@ public class AuthorityActivity
         {
         default: 
           break;
-        case 2131363015: 
+        case 2131363036: 
           c(this.jdField_a_of_type_JavaLangString);
           if (this.jdField_a_of_type_ComTencentOpenAgentCardContainer != null) {
             this.jdField_a_of_type_ComTencentOpenAgentCardContainer.b();
@@ -1533,11 +1533,11 @@ public class AuthorityActivity
       QLog.d("AuthorityActivity", 2, "-->onCreate--");
     }
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    aukw.a("KEY_LOGIN_STAGE_2_OLD_TOTAL");
+    avcw.a("KEY_LOGIN_STAGE_2_OLD_TOTAL");
     if (!(super.getAppRuntime() instanceof OpenSDKAppInterface)) {
       return;
     }
-    super.setContentView(2131559668);
+    super.setContentView(2131559674);
     this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface = ((OpenSDKAppInterface)super.getAppRuntime());
     this.jdField_a_of_type_AndroidOsBundle = super.getIntent().getBundleExtra("key_params");
     if (this.jdField_a_of_type_AndroidOsBundle == null)
@@ -1567,7 +1567,7 @@ public class AuthorityActivity
     {
       MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
       localMessageDigest.update(str1.getBytes());
-      str1 = bgmj.a(localMessageDigest.digest());
+      str1 = bhml.a(localMessageDigest.digest());
       paramBundle = str1;
     }
     catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
@@ -1579,7 +1579,7 @@ public class AuthorityActivity
         if (isChild()) {}
         for (paramBundle = getParent();; paramBundle = this)
         {
-          this.jdField_a_of_type_Biau = new biau(paramBundle, super.getTitleBarHeight());
+          this.jdField_a_of_type_Bjbs = new bjbs(paramBundle, super.getTitleBarHeight());
           break;
         }
         label801:
@@ -1606,7 +1606,7 @@ public class AuthorityActivity
     this.jdField_a_of_type_AndroidOsBundle.putString("sign", paramBundle);
     this.jdField_a_of_type_AndroidOsBundle.putString("time", str2);
     AccountManage.a().a();
-    this.jdField_a_of_type_JavaUtilList = bivh.a();
+    this.jdField_a_of_type_JavaUtilList = bjwg.a();
     if (this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.isLogin()) {
       this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount();
     }
@@ -1620,12 +1620,12 @@ public class AuthorityActivity
     d();
     this.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("oauth_app_name");
     this.g = this.jdField_a_of_type_AndroidOsBundle.getString("sdkv");
-    this.jdField_b_of_type_AndroidContentSharedPreferences = biyn.a(this, "uin_openid_store");
-    this.jdField_c_of_type_AndroidContentSharedPreferences = biyn.a(this, "openid_encrytoken");
+    this.jdField_b_of_type_AndroidContentSharedPreferences = bjzm.a(this, "uin_openid_store");
+    this.jdField_c_of_type_AndroidContentSharedPreferences = bjzm.a(this, "openid_encrytoken");
     if (this.l)
     {
-      this.jdField_a_of_type_Biau = new biau(this, 0, 2131561463, 17);
-      this.jdField_a_of_type_Biau.a(-1);
+      this.jdField_a_of_type_Bjbs = new bjbs(this, 0, 2131561504, 17);
+      this.jdField_a_of_type_Bjbs.a(-1);
       if (this.jdField_d_of_type_JavaLangString != null) {
         this.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(this.jdField_d_of_type_JavaLangString, null);
       }
@@ -1662,7 +1662,7 @@ public class AuthorityActivity
     {
       label930:
       this.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(1);
-      bipi.a().a(this.jdField_a_of_type_JavaLangString, "", jdField_e_of_type_JavaLangString, "1", "1", "0", false);
+      bjqh.a().a(this.jdField_a_of_type_JavaLangString, "", jdField_e_of_type_JavaLangString, "1", "1", "0", false);
       if (this.l) {
         this.jdField_b_of_type_Boolean = true;
       }

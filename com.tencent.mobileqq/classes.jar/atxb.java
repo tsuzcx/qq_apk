@@ -1,15 +1,29 @@
-import android.content.Context;
-import android.os.AsyncTask;
+import com.tencent.qphone.base.util.QLog;
 
-final class atxb
-  extends df
+class atxb
+  extends atxd
 {
-  atxb(Context paramContext) {}
-  
-  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
+  public atxb(atwy paramatwy)
   {
-    super.a(paramAsyncTask, paramInt);
-    dc.a(this.a, paramAsyncTask, paramInt, new atxc(this));
+    super(paramatwy);
+  }
+  
+  protected String a()
+  {
+    return "StateAcceptByPCWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    atwy.b(this.jdField_a_of_type_Atwy, 11, 5);
+    atwy.c(this.jdField_a_of_type_Atwy, 11, 5);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateAcceptByPC)");
+    this.jdField_a_of_type_Atxd = new atxa(this.jdField_a_of_type_Atwy);
   }
 }
 

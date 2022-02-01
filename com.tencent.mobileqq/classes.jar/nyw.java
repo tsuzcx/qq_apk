@@ -1,18 +1,34 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.FadeIconImageView;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class nyw
-  implements View.OnClickListener
+  implements bliz
 {
-  public nyw(PublicAccountBrowser paramPublicAccountBrowser) {}
+  public nyw(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    PublicAccountBrowser.a(this.a).callOnClick();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (ReadInJoyNativeAdFragment.a(this.a)) {
+      return;
+    }
+    ReadInJoyNativeAdFragment.a(this.a, true);
+    paramView = "";
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoyNativeAdFragment.a(this.a).dismiss();
+      QQToast.a(this.a.getActivity(), 2, paramView, 0).b(0);
+      return;
+      nzq.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 1, 0);
+      paramView = this.a.getString(2131717190);
+      continue;
+      nzq.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 2, 0);
+      paramView = this.a.getString(2131717192);
+    }
   }
 }
 

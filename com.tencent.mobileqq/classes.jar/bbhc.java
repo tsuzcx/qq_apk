@@ -1,8 +1,10 @@
-import java.util.List;
-
 public abstract interface bbhc
 {
-  public abstract void a(int paramInt, List<? extends bbgm> paramList);
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

@@ -1,22 +1,8 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import android.os.Bundle;
 
-class awaq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface awaq
 {
-  awaq(awap paramawap) {}
-  
-  public void onGlobalLayout()
-  {
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    CameraPosition localCameraPosition = this.a.a.a.getCameraPosition();
-    if (localCameraPosition != null) {
-      MapWidget.a(this.a.a).a(localCameraPosition.target);
-    }
-  }
+  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 

@@ -1,78 +1,23 @@
-import android.content.Context;
-import android.provider.ContactsContract.CommonDataKinds.Phone;
-import android.view.LayoutInflater;
+import android.content.res.Resources;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
 
 public class azvo
-  extends BaseAdapter
+  extends RecyclerView.ViewHolder
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<PhoneContact> jdField_a_of_type_JavaUtilList;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public azvo(Context paramContext, List<PhoneContact> paramList)
+  public azvo(CustomCoverFragment paramCustomCoverFragment, View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  private View a(int paramInt, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561079, null);
-    azvq localazvq = new azvq(null);
-    localazvq.a = ((TextView)paramViewGroup.findViewById(2131374198));
-    localazvq.b = ((TextView)paramViewGroup.findViewById(2131374197));
-    paramViewGroup.setTag(localazvq);
-    return paramViewGroup;
-  }
-  
-  private void a(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (azvq)paramView.getTag();
-    PhoneContact localPhoneContact = (PhoneContact)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramInt = localPhoneContact.type;
-    paramView = null;
-    if (paramInt == 0) {
-      paramView = localPhoneContact.label;
-    }
-    paramView = (String)ContactsContract.CommonDataKinds.Phone.getTypeLabel(this.jdField_a_of_type_AndroidContentContext.getResources(), paramInt, paramView);
-    paramViewGroup.a.setText(paramView);
-    paramViewGroup.b.setText(localPhoneContact.mobileNo);
-  }
-  
-  public int getCount()
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (i > 20) {
-      return 20;
-    }
-    return i;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {}
-    for (View localView = a(paramInt, paramViewGroup);; localView = paramView)
-    {
-      a(paramInt, localView, paramViewGroup);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
-    }
+    super(paramView);
+    this.itemView.setTag(this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367040));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367031));
+    this.itemView.setBackgroundColor(paramCustomCoverFragment.getResources().getColor(2131167302));
   }
 }
 

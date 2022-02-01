@@ -1,34 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
-final class bgfu
-  implements DownloadParams.DecodeHandler
+public class bgfu
+  extends bgff<bgep>
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public TextWatcher a;
+  public EditText a;
+  public TextView a;
+  
+  public bgfu(View paramView)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    if (paramDownloadParams[0] == 0) {
-      paramDownloadParams[0] = paramBitmap.getWidth();
-    }
-    if (paramDownloadParams[1] == 0) {
-      paramDownloadParams[1] = paramBitmap.getHeight();
-    }
-    return bgmo.d(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378773));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131365894));
   }
 }
 

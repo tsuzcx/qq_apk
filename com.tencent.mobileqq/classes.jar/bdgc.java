@@ -1,35 +1,35 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import QC.GetConciseThemeRsp;
+import QC.ItemDisDetail;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bdgc
-  implements MediaPlayer.OnErrorListener
+final class bdgc
+  implements anui
 {
-  private WeakReference<VideoSprite> a;
+  bdgc(String paramString, AppInterface paramAppInterface, boolean paramBoolean) {}
   
-  private bdgc(VideoSprite paramVideoSprite)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a = new WeakReference(paramVideoSprite);
-  }
-  
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
-  {
-    paramMediaPlayer = (VideoSprite)this.a.get();
-    if (paramMediaPlayer == null) {}
-    do
+    if ((paramBoolean) && ((paramObject instanceof GetConciseThemeRsp)))
     {
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.e("VideoSprite", 2, "onError: " + paramInt1);
+      paramObject = (GetConciseThemeRsp)paramObject;
+      bdgb.a.clear();
+      paramInt = 0;
+      while (paramInt < paramObject.vItems.size())
+      {
+        ItemDisDetail localItemDisDetail = (ItemDisDetail)paramObject.vItems.get(paramInt);
+        bdgb.a.add(localItemDisDetail.itemId + "");
+        if (TextUtils.equals("2920", localItemDisDetail.itemId + "")) {
+          bdgb.c = paramInt;
+        }
+        paramInt += 1;
       }
-    } while (paramInt1 != 1);
-    if (paramMediaPlayer.a != null) {
-      paramMediaPlayer.a.a();
+      paramInt = bdgb.a(this.jdField_a_of_type_JavaLangString);
+      bdgb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Boolean, 1);
+      bdgb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramInt, 1);
     }
-    paramMediaPlayer.j();
-    return true;
   }
 }
 

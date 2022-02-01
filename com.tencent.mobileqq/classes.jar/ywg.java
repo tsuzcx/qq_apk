@@ -1,62 +1,14 @@
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
-import java.io.File;
-import org.json.JSONObject;
-
 public class ywg
-  implements Cloneable
 {
-  public static final String a;
-  public int a;
-  public int b;
-  public String b;
-  public String c;
+  public final int a;
+  public final CharSequence a;
+  public final int b;
   
-  static
+  public ywg(int paramInt1, int paramInt2, CharSequence paramCharSequence)
   {
-    jdField_a_of_type_JavaLangString = ArtFilterManager.jdField_b_of_type_JavaLangString + "loading" + File.separator;
-  }
-  
-  public static ywg a(JSONObject paramJSONObject)
-  {
-    ywg localywg = new ywg();
-    localywg.jdField_b_of_type_Int = paramJSONObject.getInt("version");
-    localywg.jdField_a_of_type_Int = paramJSONObject.getInt("picNum");
-    localywg.c = paramJSONObject.getString("url");
-    localywg.jdField_b_of_type_JavaLangString = paramJSONObject.getString("md5");
-    return localywg;
-  }
-  
-  public String a()
-  {
-    Object localObject = new File(c());
-    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
-    {
-      localObject = ((File)localObject).listFiles();
-      if ((localObject != null) && (localObject.length == this.jdField_a_of_type_Int)) {
-        return c();
-      }
-    }
-    return null;
-  }
-  
-  public String b()
-  {
-    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + ".zip";
-  }
-  
-  public String c()
-  {
-    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + File.separator;
-  }
-  
-  public Object clone()
-  {
-    return super.clone();
-  }
-  
-  public String d()
-  {
-    return "loading" + File.separator + this.jdField_b_of_type_Int + ".zip";
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
   }
 }
 

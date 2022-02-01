@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.filter;
 
-import lgj;
+import lgr;
 
 public class FilterItem
-  extends lgj
+  extends lgr
 {
   private String desc;
   private String filterid;

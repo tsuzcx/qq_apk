@@ -1,89 +1,153 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.ShareGroupEntry;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.HashMap;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.Map;
 
 public class xzh
-  implements wou
+  extends AbsVideoInfoWidget
+  implements View.OnClickListener
 {
-  protected HashMap<String, String> a;
-  private wew<String, ShareGroupItem> a;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private boolean e;
   
-  public xzh()
+  public xzh(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Wew = new wew(300);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    super(paramViewGroup);
   }
   
-  private QQStoryContext a()
+  public String a()
   {
-    return QQStoryContext.a();
+    return "UploadStatusVideoInfoWidget";
   }
   
-  public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
+  public void a(View paramView)
   {
-    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131380989));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380991));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131380990));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380992));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
   }
   
-  public static boolean a(ShareGroupItem paramShareGroupItem)
+  public void a(StoryVideoItem paramStoryVideoItem)
   {
-    if (paramShareGroupItem == null) {
-      return false;
-    }
-    long l = paramShareGroupItem.groupUin;
-    return awhv.a().a(QQStoryContext.a(), String.valueOf(l));
-  }
-  
-  public ShareGroupItem a(ShareGroupItem paramShareGroupItem)
-  {
-    paramShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_Wew.a(paramShareGroupItem.shareGroupId, paramShareGroupItem);
-    ShareGroupEntry localShareGroupEntry = paramShareGroupItem.convertTo();
-    a().a().createEntityManager().persistOrReplace(localShareGroupEntry);
-    return paramShareGroupItem;
-  }
-  
-  public ShareGroupItem a(String paramString)
-  {
-    zkb.a(paramString);
-    Object localObject = (ShareGroupItem)this.jdField_a_of_type_Wew.a(paramString);
-    if (localObject != null)
+    if (paramStoryVideoItem.isUploadFail())
     {
-      yqp.d("Q.qqstory.discover.ShareGroupManager", "read sg cc:%s, unionId:" + ((ShareGroupItem)localObject).headerUnionIdList, new Object[] { ((ShareGroupItem)localObject).shareGroupId });
-      return localObject;
+      j();
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      switch (paramStoryVideoItem.mUpLoadFailedError)
+      {
+      default: 
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131698629);
+      }
+      while (this.e)
+      {
+        this.e = false;
+        yup.a("play_video", "retrypub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from), "", "", paramStoryVideoItem.mVid });
+        return;
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131698631);
+      }
+      yup.a("play_video", "exp_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from), "", "", paramStoryVideoItem.mVid });
+      return;
     }
-    localObject = a(a().a().createEntityManager(), ShareGroupEntry.class, ShareGroupEntry.class.getSimpleName(), ShareGroupEntry.getShareGroupSelectionNoArg(), new String[] { paramString });
-    if ((localObject == null) || (((List)localObject).size() == 0))
+    if (paramStoryVideoItem.isUploading())
     {
-      yqp.d("Q.qqstory.discover.ShareGroupManager", "find not find share group:%s", new Object[] { paramString });
-      return null;
+      j();
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      int i = wmf.a().a(paramStoryVideoItem.mVid);
+      if (i >= 0) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131714706) + i + "%");
+      }
+      for (;;)
+      {
+        wmf.a().a(paramStoryVideoItem.mVid, new xzi(this));
+        return;
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131714708));
+      }
     }
-    localObject = new ShareGroupItem((ShareGroupEntry)((List)localObject).get(0));
-    return (ShareGroupItem)this.jdField_a_of_type_Wew.a(paramString, (wev)localObject);
+    k();
   }
   
-  public void a() {}
-  
-  public ShareGroupItem b(String paramString)
+  public void a(@NonNull Map<Subscriber, String> paramMap)
   {
-    ShareGroupItem localShareGroupItem2 = a(paramString);
-    ShareGroupItem localShareGroupItem1 = localShareGroupItem2;
-    if (localShareGroupItem2 == null)
-    {
-      localShareGroupItem1 = new ShareGroupItem();
-      localShareGroupItem1.shareGroupId = paramString;
-      localShareGroupItem1.name = paramString;
-      localShareGroupItem1.ownerUnionId = QQStoryContext.a().b();
-      localShareGroupItem1.assertItem();
-      yqp.d("Q.qqstory.discover.ShareGroupManager", "create one fake groupItem:%s", new Object[] { localShareGroupItem1 });
-    }
-    return localShareGroupItem1;
+    paramMap.put(new xzj(this), "");
   }
   
-  public void b() {}
+  public void a(@NonNull xqz paramxqz, @NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    a(paramStoryVideoItem);
+  }
+  
+  public boolean a(@NonNull xqz paramxqz, @NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    return (paramStoryVideoItem.isUploadFail()) || (paramStoryVideoItem.isUploading());
+  }
+  
+  public int b()
+  {
+    return 2131561909;
+  }
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void onClick(View paramView)
+  {
+    StoryVideoItem localStoryVideoItem;
+    if (this.jdField_a_of_type_Xqz != null)
+    {
+      localStoryVideoItem = this.jdField_a_of_type_Xqz.a();
+      if (localStoryVideoItem != null) {
+        break label41;
+      }
+      yuk.d(this.b, "video item not found ,click error..");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localStoryVideoItem = null;
+      break;
+      label41:
+      switch (paramView.getId())
+      {
+      default: 
+        break;
+      case 2131380989: 
+        switch (localStoryVideoItem.mUploadStatus)
+        {
+        }
+        break;
+      }
+    }
+    if (!xiz.a(localStoryVideoItem, b())) {
+      yup.a("play_video", "retrypub_fail", 0, 0, new String[0]);
+    }
+    for (;;)
+    {
+      yup.a("play_video", "clk_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from) });
+      yuk.b(this.b, "on retry click !");
+      break;
+      this.e = true;
+    }
+  }
 }
 
 

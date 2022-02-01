@@ -1,15 +1,31 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.HashMap;
 
-class betg
-  implements bigw
+public class betg
+  extends betf
 {
-  betg(besy parambesy, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
+  public HashMap<String, String> a = new HashMap();
+  public String b;
+  public String c;
+  public boolean c;
+  public long d;
+  public String d;
+  public boolean d;
+  public int e;
+  public long e;
+  public long f;
   
-  public void a(int paramInt)
+  public String a()
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    if (a())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("{");
+      localStringBuilder.append("elapsed:" + a());
+      localStringBuilder.append(",tryCount:" + this.b);
+      localStringBuilder.append("}");
+      return localStringBuilder.toString();
     }
+    return "{}";
   }
 }
 

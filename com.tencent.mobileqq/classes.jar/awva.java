@@ -1,22 +1,52 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
-import com.tencent.qphone.base.util.QLog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-public class awva
-  extends GestureDetector.SimpleOnGestureListener
+final class awva
+  extends Handler
 {
-  public awva(MultiCardPageIndicator paramMultiCardPageIndicator) {}
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  awva(Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 10000001)
+    {
+      paramMessage = (ProgressBar)awuz.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131367008);
+      localDrawable = awuz.jdField_a_of_type_AndroidAppProgressDialog.getContext().getResources().getDrawable(2130839593);
+      paramMessage.setIndeterminateDrawable(localDrawable);
+      paramMessage.setBackgroundDrawable(localDrawable);
+      ((TextView)awuz.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131365519)).setText(2131717890);
+      awuz.a().sendEmptyMessageDelayed(10000002, 2000L);
     }
-    if (MultiCardPageIndicator.a(this.a) != null) {
-      this.a.performClick();
+    while ((paramMessage.what != 10000002) || (awuz.jdField_a_of_type_AndroidAppProgressDialog == null))
+    {
+      Drawable localDrawable;
+      return;
     }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    try
+    {
+      awuz.jdField_a_of_type_Boolean = false;
+      awuz.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
+      return;
+    }
+    finally
+    {
+      awuz.jdField_a_of_type_AndroidAppProgressDialog = null;
+    }
   }
 }
 

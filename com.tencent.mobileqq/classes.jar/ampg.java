@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import eipc.EIPCResult;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class ampg
-  implements bgzi
+  implements View.OnTouchListener
 {
-  ampg(ampb paramampb, VasExtensionHandler paramVasExtensionHandler, int paramInt) {}
+  ampg(ampf paramampf) {}
   
-  public void a(boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasVasExtensionHandler.a(null);
-    if (paramBoolean) {}
-    for (int i = 0;; i = -1)
+    switch (paramMotionEvent.getAction())
     {
-      EIPCResult localEIPCResult = EIPCResult.createResult(i, null);
-      this.jdField_a_of_type_Ampb.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
-      return;
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }

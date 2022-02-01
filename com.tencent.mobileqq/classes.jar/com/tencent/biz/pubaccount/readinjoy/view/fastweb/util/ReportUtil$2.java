@@ -1,43 +1,38 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import org.json.JSONException;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import ocd;
 import org.json.JSONObject;
-import pha;
-import tcc;
+import sbf;
+import sbg;
+import tci;
 
 public final class ReportUtil$2
   implements Runnable
 {
-  public ReportUtil$2(Context paramContext, ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo) {}
+  public ReportUtil$2(ColorNote paramColorNote, long paramLong) {}
   
   public void run()
   {
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    int i = (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID;
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.c()) {
-      localObject = "2";
-    }
-    for (;;)
+    try
     {
-      localObject = pha.a(localContext, localArticleInfo, i, (String)localObject);
-      try
+      JSONObject localJSONObject = tci.b(this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote);
+      if (localJSONObject != null)
       {
-        ((JSONObject)localObject).put("rowkey", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
-        tcc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800A731", ((JSONObject)localObject).toString());
-        return;
-        localObject = "1";
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
+        if (localJSONObject.length() == 0) {
+          return;
         }
+        long l1 = NetConnInfoCenter.getServerTime();
+        long l2 = this.jdField_a_of_type_Long;
+        ocd.a(null, null, "0X800A732", "0X800A732", 0, 0, "", "", "", new sbg(localJSONObject.toString()).i(l1 - l2).a().a(), false);
+        return;
       }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ReportUtil", 1, "handleViolaRemainTimeReport: " + localException.getMessage());
     }
   }
 }

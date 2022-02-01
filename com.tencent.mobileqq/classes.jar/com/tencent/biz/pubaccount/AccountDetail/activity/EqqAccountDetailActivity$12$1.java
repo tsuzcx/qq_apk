@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.AccountDetail.activity;
 
-import npc;
+import nra;
 
 public class EqqAccountDetailActivity$12$1
   implements Runnable
 {
-  public EqqAccountDetailActivity$12$1(npc paramnpc) {}
+  public EqqAccountDetailActivity$12$1(nra paramnra) {}
   
   public void run()
   {

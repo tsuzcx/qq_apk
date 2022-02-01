@@ -1,42 +1,53 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import java.util.List;
 
 public class bcff
+  implements bcfq
 {
-  public static bcfi a(String paramString)
+  protected int a;
+  private String a;
+  public List<bcfr> a;
+  
+  public bcff(List<bcfr> paramList, String paramString, int paramInt)
   {
-    String str = paramString;
-    if (bcgg.a())
-    {
-      str = paramString;
-      if (!paramString.endsWith("64bit")) {
-        str = paramString + "64bit";
-      }
-    }
-    paramString = new bcfi();
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_resource_status_sp", 4);
-    paramString.a = localSharedPreferences.getInt(str + "_version_k", 0);
-    paramString.b = localSharedPreferences.getInt(str + "_status_k", -1);
-    paramString.c = localSharedPreferences.getInt(str + "_last_error_k", -1);
-    return paramString;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static boolean a(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public int a()
   {
-    String str = paramString;
-    if (bcgg.a())
-    {
-      str = paramString;
-      if (!paramString.endsWith("64bit")) {
-        str = paramString + "64bit";
-      }
-    }
-    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_resource_status_sp", 4).edit();
-    paramString.putInt(str + "_version_k", paramInt1);
-    paramString.putInt(str + "_status_k", paramInt2);
-    paramString.putInt(str + "_last_error_k", paramInt3);
-    return paramString.commit();
+    return 3;
+  }
+  
+  public String a()
+  {
+    return anzj.a(2131704288);
+  }
+  
+  public List<bcfr> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    bcjy.a(null, 0, this.jdField_a_of_type_Int, "0X8009D47", 0, 0, null, null);
+    String str = bcni.b("pages/search-results/search-results?mode=search&q=" + this.jdField_a_of_type_JavaLangString);
+    str = bcni.b("https://m.q.qq.com/a/p/1108291530?via=2005_2&referer=2005&s=" + str);
+    str = "mqqapi://microapp/open?url=" + str;
+    MiniAppLauncher.startMiniApp(paramView.getContext(), str, 2005, null);
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

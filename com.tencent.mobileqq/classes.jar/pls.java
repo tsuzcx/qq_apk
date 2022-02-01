@@ -1,96 +1,102 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetMessageConfigurationResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class pls
-  implements BusinessObserver
+  implements rzs
 {
-  public pls(KandianMergeManager paramKandianMergeManager) {}
+  public pls(VideoView paramVideoView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void a(@Nullable String paramString)
   {
-    mobileqq_mp.GetMessageConfigurationResponse localGetMessageConfigurationResponse;
-    if (paramBoolean) {
-      localGetMessageConfigurationResponse = new mobileqq_mp.GetMessageConfigurationResponse();
+    try
+    {
+      paramString = new JSONObject(paramString);
+      paramString.getInt("callBackType");
+      int i = paramString.getInt("fileSize");
+      this.a.setFileSize(i);
+      return;
     }
+    catch (JSONException paramString) {}
+  }
+  
+  public void a(@NotNull rzt arg1)
+  {
     for (;;)
     {
-      try
+      synchronized (this.a)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label253;
-        }
-        localGetMessageConfigurationResponse.mergeFrom(paramBundle);
-        if ((!localGetMessageConfigurationResponse.ret_info.has()) || (!localGetMessageConfigurationResponse.ret_info.ret_code.has())) {
-          break label238;
-        }
-        paramInt = localGetMessageConfigurationResponse.ret_info.ret_code.get();
-        if (paramInt != 0) {
-          break label206;
-        }
-        if (!localGetMessageConfigurationResponse.type.has()) {
-          break label267;
-        }
-        paramInt = localGetMessageConfigurationResponse.type.get();
-        if (paramInt != 1) {
-          break label268;
-        }
-        paramBoolean = true;
-        paramBundle = BaseActivity.sTopActivity;
-        if (!bmqa.e(KandianMergeManager.a(this.a)))
+        if (VideoView.access$1300(this.a))
         {
-          if (!(paramBundle instanceof ReadInJoySettingActivity)) {
-            break label195;
+          VideoView.access$000(this.a, 6);
+          VideoView.access$1402(this.a, VideoView.access$1500(this.a));
+          VideoView.access$1602(this.a, "");
+          VideoView.access$1700(this.a);
+          if (VideoView.access$1800(this.a) != null) {
+            this.a.mProgressHandler.postDelayed(this.a, 500L);
           }
-          paramBundle = (ReadInJoySettingActivity)paramBundle;
-          if (paramBundle.a()) {
-            QLog.d("KandianMergeManager", 1, "setting: has set kandian status");
-          }
-        }
-        else
-        {
-          QLog.d("KandianMergeManager", 1, "result:" + paramInt);
           return;
         }
-        this.a.a(paramBoolean);
-        paramBundle.a(paramBoolean);
-        continue;
-        this.a.a(paramBoolean);
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.d("KandianMergeManager", 1, "failed to handle request Kandian status configuration");
-        return;
-      }
-      label195:
-      continue;
-      label206:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("KandianMergeManager", 2, "request Kandian status fail code:" + paramInt);
-        return;
-        label238:
-        if (QLog.isColorLevel())
-        {
-          QLog.d("KandianMergeManager", 2, "request Kandian status wrong resp");
-          return;
-          label253:
-          if (QLog.isColorLevel()) {
-            QLog.d("KandianMergeManager", 2, "request Kandian status fail data null");
-          }
+        QLog.d("gifvideo.VideoView", 1, "invalid state");
+        VideoView.access$1602(this.a, "");
+        if (VideoView.access$500(this.a).get() == 5) {
+          VideoView.access$1900(this.a);
         }
       }
-      label267:
+      if (VideoView.access$500(this.a).get() == 4) {
+        VideoView.access$2000(this.a);
+      }
+    }
+  }
+  
+  public void a(@NotNull rzt paramrzt, int paramInt1, int paramInt2) {}
+  
+  public void a(@NotNull rzt paramrzt, int paramInt1, int paramInt2, int paramInt3, @Nullable Bitmap paramBitmap) {}
+  
+  public boolean a(@NotNull rzt paramrzt, int paramInt1, int paramInt2, int paramInt3, @Nullable String paramString)
+  {
+    QLog.e("gifvideo.VideoView", 1, "TVK_IMediaPlayer.OnErrorListener model = " + paramInt1 + " errorType = " + paramInt2 + " errorCode = " + paramInt3 + " extra = " + paramString);
+    return false;
+  }
+  
+  public boolean a(@NotNull rzt paramrzt, int paramInt, @Nullable Object paramObject)
+  {
+    return false;
+  }
+  
+  public void b(@NotNull rzt arg1)
+  {
+    synchronized (this.a)
+    {
+      VideoView.access$000(this.a, 10);
+      this.a.displayCover();
+      if (VideoView.access$2100(this.a) != null) {
+        VideoView.access$2100(this.a).c();
+      }
+      VideoView.access$2200(this.a);
       return;
-      label268:
-      paramBoolean = false;
+    }
+  }
+  
+  public void c(@NotNull rzt arg1)
+  {
+    synchronized (this.a)
+    {
+      if (VideoView.access$900(this.a) != null) {
+        VideoView.access$900(this.a).a();
+      }
+      if (VideoView.access$1800(this.a) != null) {
+        this.a.mProgressHandler.postDelayed(this.a, 500L);
+      }
+      return;
     }
   }
 }

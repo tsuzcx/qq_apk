@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.transport;
 
-import awnr;
-import awql;
+import axgj;
+import axjd;
 
 class MsgBackupNotifier$7
   implements Runnable
@@ -10,7 +10,7 @@ class MsgBackupNotifier$7
   
   public void run()
   {
-    awnr.a().a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.b);
+    axgj.a().a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.b);
   }
 }
 

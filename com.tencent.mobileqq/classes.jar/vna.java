@@ -1,31 +1,19 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StNotice;
-import qqcircle.QQCircleFeedBase.StNoticeBusiData;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqcircle.transition.QCircleTransitionInnerLayout;
 
 class vna
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  vna(vmz paramvmz, Context paramContext) {}
+  vna(vmw paramvmw) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QLog.i("QCircleSystemMessagePresenter", 1, "clickSystemMessage messageId" + this.jdField_a_of_type_Vmz.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.feedId.get());
-    if ((this.jdField_a_of_type_Vmz.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData != null) && (this.jdField_a_of_type_Vmz.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData.busiInfo.get() != null))
-    {
-      String str = uxn.a(this.jdField_a_of_type_Vmz.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData.busiInfo.get(), "noticeFeedJumpUrl");
-      QLog.i("QCircleSystemMessagePresenter", 1, "clickSystemMessage get jumpUrl" + str);
-      if (!TextUtils.isEmpty(str)) {
-        uxo.b(this.jdField_a_of_type_AndroidContentContext, str);
-      }
+    int i = (int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * 255.0F);
+    if ((vmw.a(this.a) != null) && (vmw.a(this.a).getBackground() != null)) {
+      vmw.a(this.a).getBackground().setAlpha(i);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,45 +1,20 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFeedVisitor;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFeedVisitor;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import java.util.ArrayList;
 
 public class wzu
-  extends wlf
+  extends wip
 {
-  public static final String a = wjz.a("StorySvc.feed_visitor_list");
-  public String b;
+  public final int a;
+  public ArrayList<wzt> a;
   
-  public String a()
+  public wzu(int paramInt)
   {
-    return a;
-  }
-  
-  public wla a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetFeedVisitor localRspGetFeedVisitor = new qqstory_service.RspGetFeedVisitor();
-    try
-    {
-      localRspGetFeedVisitor.mergeFrom(paramArrayOfByte);
-      return new xbf(this.b, localRspGetFeedVisitor);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yqp.d("Q.qqstory:GetVideoWatcherListRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetFeedVisitor localReqGetFeedVisitor = new qqstory_service.ReqGetFeedVisitor();
-    localReqGetFeedVisitor.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localReqGetFeedVisitor.toByteArray();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public String toString()
   {
-    return "GetVideoWatcherListRequest{, feedId='" + this.b + '\'' + '}';
+    return "UpdateMemoriesEvent{dateList=" + this.jdField_a_of_type_JavaUtilArrayList + ", source=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

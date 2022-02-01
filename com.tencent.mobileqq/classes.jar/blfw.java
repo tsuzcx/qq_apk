@@ -1,12 +1,42 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sveffects.Logger;
 
-class blfw
-  implements FilenameFilter
+public class blfw
+  implements Logger
 {
-  public boolean accept(File paramFile, String paramString)
+  public void d(String paramString1, String paramString2)
   {
-    return paramString.endsWith(this.a);
+    bpam.a(paramString1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    bpam.d(paramString1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    bpam.a(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void e(String paramString, Throwable paramThrowable)
+  {
+    bpam.a(paramString, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    bpam.b(paramString1, paramString2);
+  }
+  
+  public boolean isEnable()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    bpam.c(paramString1, paramString2);
   }
 }
 

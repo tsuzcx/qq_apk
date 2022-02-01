@@ -1,10 +1,19 @@
-public abstract interface apte
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+
+public class apte
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(String paramString1, String paramString2, int paramInt);
+  public apte(ARScanEntryView paramARScanEntryView) {}
   
-  public abstract void a(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject);
-  
-  public abstract void b();
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a).g();
+    ARScanEntryView.a(this.a, true);
+  }
 }
 
 

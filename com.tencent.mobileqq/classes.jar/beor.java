@@ -1,17 +1,24 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
 
 class beor
+  extends bepm<EditorState>
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
-  String jdField_a_of_type_JavaLangString;
+  beor(beoh parambeoh, EditorState paramEditorState, List paramList)
+  {
+    super(paramEditorState, paramList);
+  }
   
-  beor(beop parambeop) {}
+  public void a(EditorState paramEditorState)
+  {
+    super.a(paramEditorState);
+    beoh.a(this.a).a();
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 

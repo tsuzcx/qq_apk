@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.statistics;
 
-import bctj;
+import bdmc;
 import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class StatisticCollector$6
   implements Runnable
 {
-  public StatisticCollector$6(bctj parambctj, ToServiceMsg paramToServiceMsg) {}
+  public StatisticCollector$6(bdmc parambdmc, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {

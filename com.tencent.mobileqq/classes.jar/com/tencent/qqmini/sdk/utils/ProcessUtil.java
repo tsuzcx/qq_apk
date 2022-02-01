@@ -26,14 +26,14 @@ public class ProcessUtil
   
   public static void exitProcess(Activity paramActivity)
   {
-    AppLoaderFactory.g().getAppBrandProxy().onAppDestroy(null);
+    AppLoaderFactory.g().getAppBrandProxy().onAppDestroy(null, null);
     finishAndRemoveAllTasks(paramActivity);
     Process.killProcess(Process.myPid());
   }
   
   public static void exitProcess(IMiniAppContext paramIMiniAppContext)
   {
-    AppLoaderFactory.g().getAppBrandProxy().onAppDestroy(null);
+    AppLoaderFactory.g().getAppBrandProxy().onAppDestroy(null, null);
     finishAndRemoveAllTasks(paramIMiniAppContext.getAttachedActivity());
     Process.killProcess(Process.myPid());
   }

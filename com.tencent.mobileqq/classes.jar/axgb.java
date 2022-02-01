@@ -1,30 +1,6 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-
-public class axgb
-  implements bhtl<oidb_0x8e4.RspBody>
+public abstract interface axgb
 {
-  public axgb(GameRoomInviteActivity paramGameRoomInviteActivity, bhte parambhte) {}
-  
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
-  {
-    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
-    {
-      GameRoomInviteActivity localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
-      if ((!paramRspBody.uint64_leader_uin.has()) || (paramRspBody.uint64_leader_uin.get() == this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), null, anni.a(2131703895));
-        return;
-      }
-    }
-    this.jdField_a_of_type_Bhte.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b, new axgc(this));
-  }
+  public abstract void a();
 }
 
 

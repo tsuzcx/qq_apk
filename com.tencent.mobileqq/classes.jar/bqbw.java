@@ -1,19 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
+import dov.com.qq.im.capture.paster.InteractPasterParcelData;
 
-public final class bqbw
-  implements Parcelable.Creator<FilterCategory>
+public abstract interface bqbw
+  extends bqgj
 {
-  public FilterCategory a(Parcel paramParcel)
-  {
-    return new FilterCategory(paramParcel);
-  }
+  public abstract void a(InteractPasterParcelData paramInteractPasterParcelData);
   
-  public FilterCategory[] a(int paramInt)
-  {
-    return new FilterCategory[paramInt];
-  }
+  public abstract boolean b();
 }
 
 

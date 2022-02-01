@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import java.util.Comparator;
 
 public class bazu
-  implements bazy
+  implements Comparator<ReceiptMessageReadMemberListFragment.MemberInfo>
 {
-  public bazu(EditActivity paramEditActivity) {}
+  public bazu(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
   {
-    if ((paramInt1 == 102) && (EditActivity.a(this.a).actionId != 0) && (" ".equals(EditActivity.a(this.a).actionText)))
-    {
-      bazh localbazh = EditActivity.a(this.a).a(EditActivity.a(this.a).actionId);
-      if (localbazh != null)
-      {
-        EditActivity.a(this.a).actionText = localbazh.d;
-        EditActivity.a(this.a, false);
-      }
+    if (paramMemberInfo1.a == paramMemberInfo2.a) {
+      return 0;
     }
+    if (paramMemberInfo1.a < paramMemberInfo2.a) {
+      return -1;
+    }
+    return 1;
   }
 }
 

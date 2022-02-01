@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahzy;
-import axba;
+import aijm;
+import axts;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class FriendChatPie$20
   implements Runnable
 {
-  public FriendChatPie$20(ahzy paramahzy) {}
+  public FriendChatPie$20(aijm paramaijm) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Axba.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    this.this$0.jdField_a_of_type_Axts.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 

@@ -1,19 +1,14 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnLongClickListener;
 
 class bfvw
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
-  bfvw(bfvv parambfvv, bfvx parambfvx, MediaPreviewInfo paramMediaPreviewInfo) {}
+  bfvw(bfvu parambfvu) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_Bfvx.a.setVisibility(8);
-    this.jdField_a_of_type_Bfvv.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewInfo, this.jdField_a_of_type_Bfvx);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return this.a.a(paramView);
   }
 }
 

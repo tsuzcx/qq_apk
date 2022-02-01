@@ -1,30 +1,30 @@
 package com.tencent.biz.qqcircle.picload;
 
-import atwl;
-import vou;
-import voy;
+import auog;
+import vrd;
+import vrh;
 
 class QCircleFeedPicLoader$4
   implements Runnable
 {
-  QCircleFeedPicLoader$4(QCircleFeedPicLoader paramQCircleFeedPicLoader, vou paramvou, voy paramvoy) {}
+  QCircleFeedPicLoader$4(QCircleFeedPicLoader paramQCircleFeedPicLoader, vrd paramvrd, vrh paramvrh) {}
   
   public void run()
   {
-    QCircleFeedPicLoader.a(this.this$0, this.jdField_a_of_type_Vou, this.jdField_a_of_type_Vou.a());
-    if (atwl.a(this.this$0.b(this.jdField_a_of_type_Vou)))
+    QCircleFeedPicLoader.a(this.this$0, this.jdField_a_of_type_Vrd, this.jdField_a_of_type_Vrd.a());
+    if (auog.a(this.this$0.b(this.jdField_a_of_type_Vrd)))
     {
-      if (this.jdField_a_of_type_Vou.a())
+      if (this.jdField_a_of_type_Vrd.a())
       {
-        this.jdField_a_of_type_Vou.d = 1;
-        QCircleFeedPicLoader.a(this.this$0, this.jdField_a_of_type_Vou, this.jdField_a_of_type_Voy);
+        this.jdField_a_of_type_Vrd.d = 1;
+        QCircleFeedPicLoader.a(this.this$0, this.jdField_a_of_type_Vrd, this.jdField_a_of_type_Vrh);
       }
       return;
     }
-    vou localvou1 = this.jdField_a_of_type_Vou;
-    vou localvou2 = this.jdField_a_of_type_Vou;
-    localvou1.d = 2;
-    QCircleFeedPicLoader.b(this.this$0, this.jdField_a_of_type_Vou, this.jdField_a_of_type_Voy);
+    vrd localvrd1 = this.jdField_a_of_type_Vrd;
+    vrd localvrd2 = this.jdField_a_of_type_Vrd;
+    localvrd1.d = 2;
+    QCircleFeedPicLoader.b(this.this$0, this.jdField_a_of_type_Vrd, this.jdField_a_of_type_Vrh);
   }
 }
 

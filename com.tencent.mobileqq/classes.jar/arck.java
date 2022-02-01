@@ -1,26 +1,44 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.text.TextUtils;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class arck
-  implements arcm
 {
-  arck(arcj paramarcj, QQAppInterface paramQQAppInterface) {}
+  private static volatile arck a;
   
-  public int a()
+  public static arck a()
   {
-    return bcek.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-  }
-  
-  public void a(int paramInt)
-  {
-    bcek.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt);
-  }
-  
-  public void a(List<String> paramList)
-  {
-    if ((paramList != null) && (paramList.size() > 0)) {
-      bcek.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramList);
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new arck();
+      }
+      return a;
     }
+    finally {}
+  }
+  
+  public String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      paramString = Pattern.compile("^\\[(\\d+)\\]$").matcher(paramString);
+    } while (!paramString.find());
+    return paramString.group(1);
+  }
+  
+  public String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      paramString = Pattern.compile("^\\[('|\")(.+)('|\")\\]$").matcher(paramString);
+    } while (!paramString.find());
+    return paramString.group(2);
   }
 }
 

@@ -1,13 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
-
-public abstract interface arhm
+class arhm
+  implements bpuc
 {
-  public abstract void a(View paramView, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct);
+  arhm(arhl paramarhl) {}
+  
+  public void a(String paramString)
+  {
+    ((bpqt)bplq.a(1)).a(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arhm
  * JD-Core Version:    0.7.0.1
  */

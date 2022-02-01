@@ -1,12 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class axxs
-  implements DialogInterface.OnClickListener
+public abstract interface axxs
 {
-  axxs(axxm paramaxxm) {}
+  public abstract void bt();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void bu();
 }
 
 

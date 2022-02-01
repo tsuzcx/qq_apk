@@ -1,48 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StReply;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentVideo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class vmv
-  implements vth
+public class vmv
+  implements View.OnClickListener
 {
-  vmv(vms paramvms) {}
+  public vmv(QCircleContentOperationView paramQCircleContentOperationView) {}
   
-  public void a(FeedCloudMeta.StComment paramStComment)
+  public void onClick(View paramView)
   {
-    QLog.d("QCircleReplyMessagePresenter", 1, "addFakeComment stComment" + paramStComment.id.get());
-  }
-  
-  public void a(FeedCloudMeta.StReply paramStReply)
-  {
-    QLog.d("QCircleReplyMessagePresenter", 1, "addFakeReply stReply" + paramStReply.id.get());
-    uzk localuzk = vms.a(this.a);
-    if (localuzk != null)
-    {
-      if (this.a.a != 1) {
-        break label140;
-      }
-      vms.a(this.a, localuzk, 7);
+    if (((QCircleContentOperationView.a(this.a) instanceof vlx)) && (((vlx)QCircleContentOperationView.a(this.a)).a != null)) {
+      ((vlx)QCircleContentOperationView.a(this.a)).a.M_();
     }
-    for (;;)
-    {
-      localuzk.a = paramStReply;
-      paramStReply = vms.a(this.a);
-      if (TextUtils.isEmpty(paramStReply)) {
-        break;
-      }
-      QLog.d("QCircleReplyMessagePresenter", 1, "getFakeReplysKey" + paramStReply);
-      paramStReply = vtd.a().a(paramStReply, localuzk);
-      vms.a(this.a).a(paramStReply);
-      vms.a(this.a).notifyDataSetChanged();
-      return;
-      label140:
-      if (this.a.a == 2) {
-        vms.a(this.a, localuzk, 11);
-      }
-    }
-    QLog.d("QCircleReplyMessagePresenter", 1, "getFakeReplysKey error");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

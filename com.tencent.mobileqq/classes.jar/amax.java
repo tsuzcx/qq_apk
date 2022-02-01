@@ -1,9 +1,8 @@
-import android.widget.TextView;
+import android.graphics.Bitmap;
 
-public class amax
+public abstract interface amax
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

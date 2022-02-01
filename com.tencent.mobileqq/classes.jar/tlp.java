@@ -1,34 +1,30 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment.1.1;
-import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class tlp
-  implements HippyQQEngine.HippyQQEngineListener
 {
-  public void onError(int paramInt, String paramString)
-  {
-    if (this.a.getActivity() != null) {}
-    for (Looper localLooper = this.a.getActivity().getMainLooper();; localLooper = BaseActivity.sTopActivity.getMainLooper())
-    {
-      new Handler(localLooper).postDelayed(new ViolaFragment.1.1(this), 1000L);
-      if (QLog.isColorLevel()) {
-        QLog.e("ViolaFragment", 2, "initHippy error statusCode=" + paramInt + ", msg=" + paramString);
-      }
-      return;
-    }
-  }
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void onSuccess()
+  public void a(JSONObject paramJSONObject)
   {
-    this.a.a.b();
-    this.a.a.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaFragment", 2, "reloadPage success!");
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("adDownloadApiUrl");
+      this.b = paramJSONObject.optString("pkg_name");
+      this.c = paramJSONObject.optString("appid");
+      this.d = paramJSONObject.optString("appname");
+      this.e = paramJSONObject.optString("pkgurl");
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("business_type", 0);
+      paramJSONObject = paramJSONObject.optString("apk_url");
+      if (!TextUtils.isEmpty(paramJSONObject)) {
+        this.e = paramJSONObject;
+      }
     }
   }
 }

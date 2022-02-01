@@ -1,27 +1,26 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class aigv
-  implements bfwg
+  extends aigs
 {
-  public aigv(TroopChatPie paramTroopChatPie) {}
+  public String b;
   
-  public void a(boolean paramBoolean, String paramString)
+  public aigv(String paramString)
   {
-    if ((paramBoolean) && (this.a.g.equals(paramString)))
-    {
-      TroopChatPie.b(this.a, true);
-      paramString = (agnt)this.a.a(23);
-      if (paramString != null) {
-        paramString.a(true);
-      }
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null) {
+      this.b = paramRedPacketInfo.resPath;
     }
-    do
-    {
-      return;
-      TroopChatPie.b(this.a, false);
-      paramString = (agnt)this.a.a(23);
-    } while (paramString == null);
-    paramString.a(false);
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.b);
   }
 }
 

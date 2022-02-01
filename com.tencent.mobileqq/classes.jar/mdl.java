@@ -1,25 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
 
 public class mdl
-  implements View.OnTouchListener
+  implements mif
 {
-  public mdl(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  public mdl(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    this.a.j = true;
+    this.a.M();
+  }
+  
+  public void b()
+  {
+    this.a.j = false;
   }
 }
 

@@ -1,35 +1,52 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtBaseAdItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 
 public class actq
-  extends BroadcastReceiver
+  extends QIPCModule
 {
-  private actq(GdtVideoCommonView paramGdtVideoCommonView) {}
+  private static volatile actq a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private actq(String paramString)
   {
-    int i;
-    if (("android.intent.action.HEADSET_PLUG".equals(paramIntent.getAction())) && (paramIntent.hasExtra("state")))
+    super(paramString);
+  }
+  
+  public static actq a()
+  {
+    if (a == null) {}
+    try
     {
-      i = paramIntent.getIntExtra("state", 0);
-      if (i != 1) {
-        break label43;
+      if (a == null) {
+        a = new actq("gdt_ipc");
       }
-      QLog.i("GdtVideoCommonView", 1, "ACTION_HEADSET_PLUG HEADSET on");
+      return a;
     }
-    label43:
-    do
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    acvc.b("gdt_ipc", "Action  " + paramString);
+    if ("do_app_jump".equals(paramString))
     {
-      do
+      if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
       {
-        return;
-      } while (i != 0);
-      QLog.i("GdtVideoCommonView", 1, "ACTION_HEADSET_PLUG HEADSET off " + this.a.a);
-    } while (!this.a.a);
-    GdtVideoCommonView.d(this.a);
+        paramString = (acvd)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(110);
+        paramBundle.setClassLoader(getClass().getClassLoader());
+        paramBundle = (GdtBaseAdItem)paramBundle.getParcelable("gdtBaseAdItem");
+        paramString.a(BaseApplicationImpl.getContext(), paramBundle);
+        callbackResult(paramInt, EIPCResult.createSuccessResult(null));
+      }
+    }
+    else {
+      return null;
+    }
+    callbackResult(paramInt, EIPCResult.createResult(-1, null));
+    return null;
   }
 }
 

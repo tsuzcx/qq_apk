@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.structmsg.view;
 
 import android.widget.TextView;
-import bcvu;
+import bdon;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
 public class StructMsgItemTitle
-  extends bcvu
+  extends bdon
 {
   public boolean c;
   public boolean d;
@@ -36,7 +36,7 @@ public class StructMsgItemTitle
   
   public void a(AbsShareMsg paramAbsShareMsg)
   {
-    paramAbsShareMsg.mContentTitle = this.ag;
+    paramAbsShareMsg.mContentTitle = this.ai;
   }
   
   public void a(boolean paramBoolean, int paramInt)
@@ -52,7 +52,7 @@ public class StructMsgItemTitle
   
   public int c()
   {
-    return 2131379957;
+    return 2131380141;
   }
   
   public int e()

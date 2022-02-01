@@ -1,46 +1,30 @@
+import com.tencent.qphone.base.util.QLog;
+
 class anta
+  extends biht
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  int jdField_c_of_type_Int;
-  long jdField_c_of_type_Long;
-  int jdField_d_of_type_Int;
-  long jdField_d_of_type_Long;
-  int jdField_e_of_type_Int;
-  long jdField_e_of_type_Long;
-  int jdField_f_of_type_Int;
-  long jdField_f_of_type_Long;
-  int jdField_g_of_type_Int;
-  long jdField_g_of_type_Long;
-  int h;
+  anta(ansz paramansz, String paramString1, String paramString2, String paramString3) {}
   
-  public String toString()
+  public void onDone(bihu parambihu)
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("{");
-    localStringBuilder.append("wSubCmd: ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", llAccount: ").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", cKeyLen: ").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", dwRoomNum: ").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(", dwClientSeq: ").append(this.jdField_c_of_type_Long);
-    localStringBuilder.append(", llFromAccount: ").append(this.d);
-    localStringBuilder.append(", dwFlag: ").append(this.jdField_c_of_type_Int);
-    localStringBuilder.append(", cRelationBufLen: ").append(this.jdField_e_of_type_Int);
-    localStringBuilder.append(", dwRelationId: ").append(this.jdField_e_of_type_Long);
-    localStringBuilder.append(", wCount: ").append(this.jdField_f_of_type_Int);
-    localStringBuilder.append(", dwSendTime: ").append(this.jdField_f_of_type_Long);
-    localStringBuilder.append(", wReverseLen: ").append(this.jdField_g_of_type_Int);
-    localStringBuilder.append(", cOriginalType: ").append(this.h);
-    localStringBuilder.append(", dwMsgSeq: ").append(this.jdField_g_of_type_Long);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    super.onDone(parambihu);
+    if (3 == parambihu.a()) {
+      this.jdField_a_of_type_Ansz.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SimpleFrameZipDecoder", 2, "downloadZip onDone task.getStatus()->" + parambihu.a());
+      }
+      return;
+      this.jdField_a_of_type_Ansz.a = 2;
+      this.jdField_a_of_type_Ansz.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anta
  * JD-Core Version:    0.7.0.1
  */

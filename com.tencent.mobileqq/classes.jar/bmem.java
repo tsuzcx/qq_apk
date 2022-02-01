@@ -1,121 +1,190 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import cooperation.qzone.plugin.PluginRecord;
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import com.qq.jce.wup.BasicClassTypeUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.groupvideo.GVideoPluginInstallerActivity;
+import cooperation.groupvideo.GVideoProxyActivity;
+import cooperation.plugin.PluginInfo;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public abstract class bmem
-  extends Binder
-  implements bmel
+public class bmem
 {
-  public bmem()
+  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    attachInterface(this, "cooperation.qzone.plugin.QZoneRemotePluginManager");
-  }
-  
-  public static bmel a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
+    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
       return null;
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
-    if ((localIInterface != null) && ((localIInterface instanceof bmel))) {
-      return (bmel)localIInterface;
-    }
-    return new bmen(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    int j = 0;
-    int k = 0;
-    int m = 0;
-    int n = 0;
-    int i = 0;
-    boolean bool;
-    switch (paramInt1)
+    try
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qzone.plugin.QZoneRemotePluginManager");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
-      bool = a();
-      paramParcel2.writeNoException();
-      paramInt1 = i;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
-      bool = a(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      paramInt1 = j;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
-      bool = a(paramParcel1.readString(), bmcu.a(paramParcel1.readStrongBinder()), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      paramInt1 = k;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 4: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
-      bool = b(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      paramInt1 = m;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 5: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
-      bool = c(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      paramInt1 = n;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 6: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
-      paramParcel1 = a(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
+      paramString = Class.forName("com.gvideo.com.tencent.av.app.GroupVideoAppInterface");
+      paramBaseApplicationImpl = paramString;
+    }
+    catch (ClassNotFoundException paramString)
+    {
+      for (;;)
       {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-        return true;
+        try
+        {
+          QLog.e("GroupVideoLog", 1, "*createGroupVideoAppInterface load class fail");
+          return null;
+        }
+        catch (ClassNotFoundException paramBaseApplicationImpl)
+        {
+          paramBaseApplicationImpl.printStackTrace();
+        }
+        paramString = paramString;
+        paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "group_video_plugin.apk");
+        paramBaseApplicationImpl = paramString.loadClass("com.gvideo.com.tencent.av.app.GroupVideoAppInterface");
+        BasicClassTypeUtil.setClassLoader(true, paramString);
       }
-      paramParcel2.writeInt(0);
-      return true;
-    case 7: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
-      a(bmcr.a(paramParcel1.readStrongBinder()), paramParcel1.readInt());
-      paramParcel2.writeNoException();
+      do
+      {
+        return null;
+        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppInterface)));
+      paramBaseApplicationImpl = (AppInterface)paramBaseApplicationImpl;
+      return paramBaseApplicationImpl;
+    }
+    catch (IllegalArgumentException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (IllegalAccessException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InstantiationException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InvocationTargetException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (NoSuchMethodException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (Exception paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    if (paramBaseApplicationImpl != null) {}
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, ServiceConnection paramServiceConnection)
+  {
+    if ((paramAppRuntime == null) || (paramServiceConnection == null)) {
+      return;
+    }
+    try
+    {
+      paramAppRuntime.getApplication().unbindService(paramServiceConnection);
+      return;
+    }
+    catch (IllegalArgumentException paramAppRuntime)
+    {
+      QLog.d("GroupVideoHelper", 2, "unbindService error" + paramAppRuntime.getMessage());
+    }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, Class paramClass, ServiceConnection paramServiceConnection, String paramString)
+  {
+    if ((paramAppRuntime == null) || (paramServiceConnection == null)) {
+      return;
+    }
+    paramClass = new Intent(paramAppRuntime.getApplication(), paramClass);
+    paramClass.putExtra("useSkinEngine", 1);
+    paramClass.putExtra("userQqResources", 2);
+    bmgt localbmgt = new bmgt(1);
+    localbmgt.b = "group_video_plugin.apk";
+    localbmgt.d = PluginInfo.k;
+    localbmgt.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    localbmgt.e = paramString;
+    localbmgt.jdField_a_of_type_AndroidContentIntent = paramClass;
+    localbmgt.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    bmgk.c(paramAppRuntime.getApplication(), localbmgt);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if (paramContext != null)
+    {
+      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+      if (paramContext != null)
+      {
+        paramContext = paramContext.iterator();
+        while (paramContext.hasNext()) {
+          if ("com.tencent.mobileqq:groupvideo".compareTo(((ActivityManager.RunningAppProcessInfo)paramContext.next()).processName) == 0) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  public static boolean a(AppInterface paramAppInterface, Activity paramActivity, Intent paramIntent, int paramInt)
+  {
+    if ((paramAppInterface == null) || (paramActivity == null)) {
+      return false;
+    }
+    if ((paramIntent != null) && (paramIntent.getIntExtra("Type", 0) == 0)) {
+      paramIntent.putExtra("isInviteMode", true);
+    }
+    for (;;)
+    {
+      GVideoProxyActivity.a(paramActivity, paramIntent, GVideoProxyActivity.a(paramActivity), "com.gvideo.com.tencent.av.ui.GroupVideoActivity", paramAppInterface.getCurrentAccountUin(), paramInt);
       return true;
     }
-    paramParcel1.enforceInterface("cooperation.qzone.plugin.QZoneRemotePluginManager");
-    a();
-    paramParcel2.writeNoException();
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, int paramInt)
+  {
+    if ((paramQQAppInterface == null) || (!(paramContext instanceof Activity))) {
+      return false;
+    }
+    paramContext = (Activity)paramContext;
+    bmgk localbmgk = (bmgk)paramQQAppInterface.getManager(27);
+    if (localbmgk == null) {
+      return false;
+    }
+    if (localbmgk.isPlugininstalled("group_video_plugin.apk")) {
+      return a(paramQQAppInterface, paramContext, paramIntent, paramInt);
+    }
+    paramIntent.setClass(paramContext, GVideoPluginInstallerActivity.class);
+    paramContext.startActivityForResult(paramIntent, paramInt);
     return true;
   }
 }

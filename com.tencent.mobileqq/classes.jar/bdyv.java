@@ -1,83 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.sharpP.SharpPUtil;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
-import mqq.app.AppRuntime;
-import org.apache.http.Header;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
+import android.os.Handler;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdyv
-  extends bdsh
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  private static String a(int paramInt, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("https://gxh.vip.qq.com/xydata/");
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
-  }
+  public bdyv(VideoSprite.2 param2) {}
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    paramURLDrawableHandler = paramDownloadParams.url.getFile();
-    paramOutputStream = paramURLDrawableHandler;
-    if (paramURLDrawableHandler.startsWith(File.separator)) {
-      paramOutputStream = paramURLDrawableHandler.substring(1);
-    }
-    String str = paramDownloadParams.url.getHost();
-    Object localObject = paramDownloadParams.getHeader("my_uin");
-    paramURLDrawableHandler = null;
-    if (localObject != null) {
-      paramURLDrawableHandler = ((Header)localObject).getValue();
-    }
-    paramURLDrawableHandler = BaseApplicationImpl.sApplication.getAppRuntime(paramURLDrawableHandler);
-    localObject = new File(bgyw.a(paramOutputStream, str));
-    if (((File)localObject).exists()) {
-      return localObject;
-    }
-    if (paramDownloadParams.useSharpPImage)
+    try
     {
-      localObject = new File(bkdi.a((File)localObject));
-      if (((File)localObject).exists()) {
-        return localObject;
+      this.a.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+      this.a.this$0.g = true;
+      if (this.a.this$0.jdField_a_of_type_Bdyz != null) {
+        this.a.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.this$0, 33L);
       }
+      return;
     }
-    return a(paramURLDrawableHandler, paramOutputStream, str, paramDownloadParams.useSharpPImage);
-  }
-  
-  public File a(AppRuntime paramAppRuntime, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    String str = a(Integer.parseInt(paramString1), paramString2);
-    paramString2 = new File(bgyw.a(paramString1, paramString2));
-    bhhf localbhhf = new bhhf(str, paramString2);
-    localbhhf.k = paramBoolean;
-    if (paramAppRuntime != null)
+    catch (Exception paramMediaPlayer)
     {
-      if (bhhh.a(localbhhf, paramAppRuntime) != 0) {
-        break label102;
-      }
-      if ((!paramString2.exists()) || (SignatureManager.a(paramString2.getAbsolutePath()))) {
-        break label88;
-      }
-      paramString2.delete();
-    }
-    for (;;)
-    {
-      return new File(anhk.ba);
-      label88:
-      if (SharpPUtil.isSharpPFile(paramString2)) {
-        return bkdi.a(paramString2);
-      }
-      return paramString2;
-      label102:
-      bgzu.a(null, "individual_v2_signature_download_fail", "" + localbhhf.a, "error code = " + localbhhf.a + " errorMsg = " + localbhhf.b + "url = " + str, null, 0.0F);
-      bgzt.a("individual_v2_signature_download_fail", "tlpId:" + paramString1 + " errCode:" + localbhhf.a + " errMsg:" + localbhhf.b);
+      while (!QLog.isColorLevel()) {}
+      QLog.e("VideoSprite", 2, "playVideo: " + QLog.getStackTraceString(paramMediaPlayer));
     }
   }
 }

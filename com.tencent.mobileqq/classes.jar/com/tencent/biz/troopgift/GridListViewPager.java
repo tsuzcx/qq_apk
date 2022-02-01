@@ -1,8 +1,8 @@
 package com.tencent.biz.troopgift;
 
-import aasa;
-import aasc;
-import afur;
+import aawd;
+import aawf;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -54,23 +54,23 @@ public class GridListViewPager
   
   public View a(int paramInt, ArrayList<Object> paramArrayList)
   {
-    aasc localaasc = new aasc(this, getContext());
-    localaasc.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    localaasc.setVerticalSpacing(0);
-    localaasc.setHorizontalSpacing(10);
-    localaasc.setColumnWidth(this.jdField_a_of_type_Int / this.b - 40);
-    localaasc.setNumColumns(this.b);
+    aawf localaawf = new aawf(this, getContext());
+    localaawf.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+    localaawf.setVerticalSpacing(0);
+    localaawf.setHorizontalSpacing(10);
+    localaawf.setColumnWidth(this.jdField_a_of_type_Int / this.b - 40);
+    localaawf.setNumColumns(this.b);
     Object localObject = getContext().getResources();
-    localaasc.setPadding(afur.a(5.0F, (Resources)localObject), afur.a(1.0F, (Resources)localObject), afur.a(5.0F, (Resources)localObject), afur.a(1.0F, (Resources)localObject));
-    localaasc.setGravity(1);
-    localaasc.setSelector(new ColorDrawable(0));
-    localObject = new aasa(getContext(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel);
-    ((aasa)localObject).a(paramArrayList);
-    ((aasa)localObject).a(this.jdField_a_of_type_JavaLangString);
-    localaasc.setAdapter((ListAdapter)localObject);
-    localaasc.setOnItemClickListener(this);
-    ((aasa)localObject).notifyDataSetChanged();
-    return localaasc;
+    localaawf.setPadding(agej.a(5.0F, (Resources)localObject), agej.a(1.0F, (Resources)localObject), agej.a(5.0F, (Resources)localObject), agej.a(1.0F, (Resources)localObject));
+    localaawf.setGravity(1);
+    localaawf.setSelector(new ColorDrawable(0));
+    localObject = new aawd(getContext(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel);
+    ((aawd)localObject).a(paramArrayList);
+    ((aawd)localObject).a(this.jdField_a_of_type_JavaLangString);
+    localaawf.setAdapter((ListAdapter)localObject);
+    localaawf.setOnItemClickListener(this);
+    ((aawd)localObject).notifyDataSetChanged();
+    return localaawf;
   }
   
   public ArrayList<Object> a(int paramInt)
@@ -87,7 +87,7 @@ public class GridListViewPager
     int i = 0;
     while (i < localArrayList.size())
     {
-      ((aasa)((GridView)localArrayList.get(i)).getAdapter()).notifyDataSetChanged();
+      ((aawd)((GridView)localArrayList.get(i)).getAdapter()).notifyDataSetChanged();
       i += 1;
     }
   }

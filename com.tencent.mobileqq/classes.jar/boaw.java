@@ -1,20 +1,22 @@
-public abstract class boaw<T, P>
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import java.util.Iterator;
+import java.util.List;
+
+class boaw
+  implements ThreadPool.Job<Void>
 {
-  private volatile T a;
+  boaw(boan paramboan, List paramList) {}
   
-  protected abstract T a(P paramP);
-  
-  public final T b(P paramP)
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    if (this.a == null) {}
-    try
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramJobContext.hasNext())
     {
-      if (this.a == null) {
-        this.a = a(paramP);
-      }
-      return this.a;
+      long l = ((Long)paramJobContext.next()).longValue();
+      this.jdField_a_of_type_Boan.a(l);
     }
-    finally {}
+    return null;
   }
 }
 

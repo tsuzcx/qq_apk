@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import pxk;
+import ppu;
 
 public class ComponentContentBigGallery
   extends ComponentContentBig
@@ -30,21 +30,21 @@ public class ComponentContentBigGallery
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560091, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560103, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.b = ((TextView)paramView.findViewById(2131367291));
+    this.b = ((TextView)paramView.findViewById(2131367345));
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof pxk))
+    if ((paramObject instanceof ppu))
     {
-      paramObject = ((pxk)paramObject).a();
+      paramObject = ((ppu)paramObject).a();
       this.b.setText(String.valueOf(paramObject.mGalleryPicNumber));
     }
   }

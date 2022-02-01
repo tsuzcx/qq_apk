@@ -1,87 +1,26 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.tavcut.bean.TextEditorData;
+import com.tencent.tavcut.session.TAVCutSession;
 
-public class bpkc
-  implements InputFilter
+class bpkc
+  implements bpka
 {
-  protected int a;
-  private QQToast a;
+  bpkc(bpkb parambpkb, TextEditorData paramTextEditorData, TAVCutSession paramTAVCutSession) {}
   
-  public bpkc(int paramInt)
+  public void a(TextEditorData paramTextEditorData)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a(CharSequence paramCharSequence)
-  {
-    int j = 0;
-    int m = paramCharSequence.length();
-    int i = 0;
-    while (i < m)
+    if (paramTextEditorData != null)
     {
-      int n = paramCharSequence.charAt(i);
-      int k;
-      if (n != 10)
+      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setContent(paramTextEditorData.getContent());
+      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setTextColor(paramTextEditorData.getTextColor());
+      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutSession.updateTextSticker(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
+      if (bpkb.a(this.jdField_a_of_type_Bpkb) != null)
       {
-        k = j;
-        if (n != 13) {}
+        bpkb.a(this.jdField_a_of_type_Bpkb).a(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
+        bpam.a("AEEditorTextPart", "[stickerInfo] update");
       }
-      else
-      {
-        k = j + 1;
-      }
-      i += 1;
-      j = k;
+      return;
     }
-    return j;
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(BaseApplicationImpl.getContext(), anni.a(2131702489), 0);
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.c()) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
-    }
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    paramInt3 = this.jdField_a_of_type_Int - (paramSpanned.length() - (paramInt4 - paramInt3));
-    paramInt4 = paramInt2 - paramInt1 - a(paramCharSequence.subSequence(paramInt1, paramInt2));
-    if (paramInt3 > 0)
-    {
-      paramInt2 = paramInt3;
-      if (paramInt3 >= paramInt4) {}
-    }
-    else
-    {
-      paramInt2 = paramInt3 + a(paramSpanned);
-    }
-    if (((paramInt2 <= 0) || (paramInt2 < paramInt4)) && (!TextUtils.equals("", paramCharSequence))) {
-      a();
-    }
-    if (paramInt2 <= 0) {
-      return "";
-    }
-    if (paramInt2 >= paramInt4) {
-      return null;
-    }
-    paramInt3 = paramInt2 + paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
-    {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1) {
-        return "";
-      }
-    }
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
+    bpam.d("AEEditorTextPart", "update sticker back null.");
   }
 }
 

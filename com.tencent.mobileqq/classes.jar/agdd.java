@@ -1,20 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agdd
-  implements agdf
+public class agdd
+  implements View.OnClickListener
 {
-  agdd(agdc paramagdc, agde paramagde) {}
+  public agdd(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      agdc.a(this.jdField_a_of_type_Agdc, this.jdField_a_of_type_Agde.a());
-      this.jdField_a_of_type_Agde.a();
-      return;
-    }
-    QLog.e("FriendShipViewManager", 1, "director.prepare not ready, cannot play anim, type = " + this.jdField_a_of_type_Agde.a());
-    agdc.a(this.jdField_a_of_type_Agdc, 0);
+    bdll.b(this.a.app, "CliOper", "", "", "0X8004E0A", "0X8004E0A", 0, 0, "", "", "", "");
+    this.a.setResult(0);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

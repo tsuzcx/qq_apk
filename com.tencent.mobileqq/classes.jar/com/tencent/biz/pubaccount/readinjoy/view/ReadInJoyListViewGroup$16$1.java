@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import pil;
-import pmy;
-import pnn;
+import pbd;
+import pfs;
+import pgh;
 
 class ReadInJoyListViewGroup$16$1
   implements Runnable
@@ -11,8 +11,8 @@ class ReadInJoyListViewGroup$16$1
   
   public void run()
   {
-    if (((this.a.this$0.a() == 0) || (pil.c(this.a.this$0.a()))) && (!this.a.a)) {
-      pmy.a().a.a(8, this.a.this$0.a);
+    if (((this.a.this$0.a() == 0) || (pbd.c(this.a.this$0.a()))) && (!this.a.a)) {
+      pfs.a().a.a(8, this.a.this$0.a);
     }
   }
 }

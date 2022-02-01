@@ -23,7 +23,7 @@ class MiniGamePublicAccountWebFragment$5
     super.onPageFinished(paramWebView, paramString);
     MiniGamePublicAccountWebFragment.access$1100(this.this$0).setVisibility(0);
     MiniGamePublicAccountWebFragment.access$1200(this.this$0).setVisibility(8);
-    int i = MiniGamePublicAccountWebFragment.access$400(this.this$0);
+    int i = MiniGamePublicAccountWebFragment.access$600(this.this$0);
     this.this$0.notifyWebHeaderHeight(i);
   }
   

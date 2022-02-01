@@ -1,18 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-
-public class alju
-  implements DialogInterface.OnClickListener
+public abstract interface alju
 {
-  public alju(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    yqu.a("video_shoot", "down_now", 0, 0, new String[0]);
-    avju.b(null);
-    paramDialogInterface.dismiss();
-  }
+  public abstract void b(int paramInt);
 }
 
 

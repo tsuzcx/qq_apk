@@ -1,22 +1,13 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import com.tencent.mfsdk.impls.memory.MemoryDumpHelper.5;
 
 public class adly
-  implements View.OnClickListener
+  implements adkz
 {
-  public adly(AssistantSettingActivity paramAssistantSettingActivity, ArrayList paramArrayList) {}
+  public adly(MemoryDumpHelper.5 param5) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity, ArkAppListActivity.class);
-    localIntent.putExtra("intent_extra_authority_app_list", (String[])this.jdField_a_of_type_JavaUtilArrayList.toArray(new String[this.jdField_a_of_type_JavaUtilArrayList.size()]));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    adlu.c(this.a.this$0);
   }
 }
 

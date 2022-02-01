@@ -1,27 +1,18 @@
-import android.text.Spanned;
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
 
-public class rls
-  implements Comparator<Object>
+public final class rls
+  implements Parcelable.Creator<LikeAnimationInfo>
 {
-  private Spanned a;
-  
-  public rls(Spanned paramSpanned)
+  public LikeAnimationInfo a(Parcel paramParcel)
   {
-    this.a = paramSpanned;
+    return new LikeAnimationInfo(paramParcel);
   }
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public LikeAnimationInfo[] a(int paramInt)
   {
-    int i = this.a.getSpanStart(paramObject1);
-    int j = this.a.getSpanStart(paramObject2);
-    if (i > j) {
-      return 1;
-    }
-    if (i < j) {
-      return -1;
-    }
-    return 0;
+    return new LikeAnimationInfo[paramInt];
   }
 }
 

@@ -1,85 +1,50 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class yef
-  extends zpa
+public final class yef
+  implements View.OnClickListener
 {
-  public static final String KEY = "DetailEmptyInteractionSegment";
-  private int a;
+  public yef(yed paramyed, Activity paramActivity, String paramString) {}
   
-  public yef(Context paramContext)
+  public void onClick(View paramView)
   {
-    super(paramContext);
-  }
-  
-  public void T_()
-  {
-    zpa localzpa1 = a().a("DetailCommentSegment");
-    zpa localzpa2 = a().a("DetailLikeListSegment");
-    yee localyee = (yee)a().a("DetailDoubleTabSegment");
-    if ((localyee != null) && (localyee.a() > 0) && (localzpa1 != null) && (localzpa1.a() == 0) && (localzpa2 != null) && (localzpa2.a() == 0))
+    yuk.d("QQStoryMainController", "top right button on click:" + this.jdField_a_of_type_Yed);
+    String str;
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_Yed.c)) && (nnr.a(this.jdField_a_of_type_Yed.c)))
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = localyee.b();
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View a(int paramInt, ynb paramynb, ViewGroup paramViewGroup)
-  {
-    paramInt = zlx.d(this.jdField_a_of_type_AndroidContentContext);
-    int i = zlx.e(this.jdField_a_of_type_AndroidContentContext);
-    int j = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight();
-    int k = zlx.a(this.jdField_a_of_type_AndroidContentContext, 56.0F);
-    paramViewGroup = (yeq)a().a("GeneralFeedProfileSegment");
-    yes localyes = (yes)a().a("ShareGroupFeedProfileSegment");
-    ydz localydz = (ydz)a().a("BannerProfileSegment");
-    yeh localyeh = (yeh)a().a("DetailInteractSegment");
-    yee localyee = (yee)a().a("DetailDoubleTabSegment");
-    paramInt = paramInt - i - j - (paramViewGroup.b() + localyes.b() + localydz.b() + localyeh.b() + localyee.c()) - k;
-    if (paramInt > zlx.a(this.jdField_a_of_type_AndroidContentContext, 50.0F))
-    {
-      paramynb.a().getLayoutParams().height = paramInt;
-      yqp.b("Q.qqstory.detail.DetailEmptyInteractionSegment", "view height is %d.", Integer.valueOf(paramynb.a().getLayoutParams().height));
-      paramViewGroup = (TextView)paramynb.a(2131377881);
-      if (this.jdField_a_of_type_Int != 1) {
-        break label247;
+      str = this.jdField_a_of_type_Yed.c;
+      if (this.jdField_a_of_type_Yed.a != 1) {
+        break label179;
       }
-      paramViewGroup.setText(anni.a(2131701926));
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      localIntent.putExtra("url", str);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+      label102:
+      yup.a("hall", "exp", 0, 0, new String[] { "" });
+      if (!"troopStoryHallConfig".equals(this.jdField_a_of_type_JavaLangString)) {
+        break label204;
+      }
+      yup.a("story_grp", "clk_find_left", 0, 0, new String[] { "", "", "", "" });
     }
     for (;;)
     {
-      return paramynb.a();
-      paramynb.a().getLayoutParams().height = zlx.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      str = "https://story.now.qq.com/mobile/find.html?_wv=3&_bid=2542";
       break;
-      label247:
-      paramViewGroup.setText(anni.a(2131701927));
+      label179:
+      if ((this.jdField_a_of_type_Yed.a == 2) || (this.jdField_a_of_type_Yed.a != 3)) {
+        break label102;
+      }
+      break label102;
+      label204:
+      yup.a("home_page", "clk_find_entry", 0, 0, new String[0]);
     }
-  }
-  
-  public String a()
-  {
-    return "DetailEmptyInteractionSegment";
-  }
-  
-  public ynb a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new ynb(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561658, paramViewGroup, false));
   }
 }
 

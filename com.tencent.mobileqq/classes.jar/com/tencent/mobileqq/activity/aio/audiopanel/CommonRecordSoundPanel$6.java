@@ -8,7 +8,7 @@ class CommonRecordSoundPanel$6
 {
   public void run()
   {
-    QQToast.a(this.this$0.a, 2131689966, 1).b(this.this$0.a.getTitleBarHeight());
+    QQToast.a(this.this$0.a, 2131689973, 1).b(this.this$0.a.getTitleBarHeight());
   }
 }
 

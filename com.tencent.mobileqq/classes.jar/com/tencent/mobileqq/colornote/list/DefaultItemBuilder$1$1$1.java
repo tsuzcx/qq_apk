@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.colornote.list;
 
-import aqee;
-import aqef;
+import aqth;
+import aqti;
 
 public class DefaultItemBuilder$1$1$1
   implements Runnable
 {
-  public DefaultItemBuilder$1$1$1(aqef paramaqef) {}
+  public DefaultItemBuilder$1$1$1(aqti paramaqti) {}
   
   public void run()
   {
     if (!this.a.a.jdField_a_of_type_Boolean) {
-      aqee.a(this.a.a.this$0, this.a.a.jdField_a_of_type_Aqdu);
+      aqth.a(this.a.a.this$0, this.a.a.jdField_a_of_type_Aqsx);
     }
   }
 }

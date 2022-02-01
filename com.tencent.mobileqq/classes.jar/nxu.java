@@ -1,24 +1,15 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
 class nxu
-  implements sps
+  implements DialogInterface.OnClickListener
 {
-  nxu(nxr paramnxr, AdvertisementInfo paramAdvertisementInfo) {}
+  nxu(nxo paramnxo, JsResult paramJsResult) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeAdDislikeHelper", 2, "onComplain");
-    }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("key_from_type", 1);
-    localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
-    PublicFragmentActivity.a(nxr.a(this.jdField_a_of_type_Nxr), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
-    nxr.a(this.jdField_a_of_type_Nxr).dismiss();
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
   }
 }
 

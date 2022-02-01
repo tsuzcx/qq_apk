@@ -1,21 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.ark.ArkEnvironmentManager.Log;
 import com.tencent.qphone.base.util.QLog;
 
-class aqbr
-  implements bgyv
+public final class aqbr
+  implements ArkEnvironmentManager.Log
 {
-  aqbr(aqbp paramaqbp, int paramInt) {}
-  
-  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  public void d(String paramString1, String paramString2)
   {
-    paramQQAppInterface = bhcd.a(this.jdField_a_of_type_Aqbp.a.getApp(), this.jdField_a_of_type_Int);
     if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "playRingId.onCompleted: invoked. ", " wavPath: ", paramQQAppInterface });
+      QLog.d(paramString1, 2, paramString2);
     }
-    aqbp.a(this.jdField_a_of_type_Aqbp, paramQQAppInterface);
   }
   
-  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
+  }
 }
 
 

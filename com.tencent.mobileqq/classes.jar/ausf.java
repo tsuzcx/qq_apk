@@ -1,37 +1,37 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import java.util.concurrent.ConcurrentHashMap;
 
-class ausf
-  implements View.OnClickListener
+public class ausf
 {
-  ausf(ause paramause, FeedsItemData paramFeedsItemData) {}
+  private static ausf jdField_a_of_type_Ausf;
+  public static String a;
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new ausg(this, "Module_WeiyunDownloadService");
+  private ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void onClick(View paramView)
+  public static ausf a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl)) {
-      if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl.startsWith("mqqapi://miniapp/")) {
-        MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Ause.a, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl, 2016, null);
-      }
-    }
-    for (;;)
+    if (jdField_a_of_type_Ausf == null) {}
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Intent localIntent = new Intent(this.jdField_a_of_type_Ause.a, QQBrowserActivity.class);
-      localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl);
-      this.jdField_a_of_type_Ause.a.startActivity(localIntent);
-      continue;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.groupId)) {
-        auud.a(this.jdField_a_of_type_Ause.a, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.groupId);
-      }
+      jdField_a_of_type_Ausf = new ausf();
+      return jdField_a_of_type_Ausf;
     }
+    finally {}
+  }
+  
+  private QQAppInterface a()
+  {
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    return null;
+  }
+  
+  public QIPCModule a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
   }
 }
 

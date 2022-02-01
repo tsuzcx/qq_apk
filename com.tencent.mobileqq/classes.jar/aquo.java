@@ -1,78 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Point;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
 public class aquo
-  extends aqkz<aqun>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  @NonNull
-  public aqun a(int paramInt)
-  {
-    return new aqun();
-  }
+  public aquo(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout1, ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout2, Point paramPoint, LinearLayout.LayoutParams paramLayoutParams, int paramInt) {}
   
-  @Nullable
-  public aqun a(aqlg[] paramArrayOfaqlg)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
-    {
-      aqun localaqun = aqun.a(paramArrayOfaqlg[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
-      }
-      return localaqun;
+    int i = (int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * (ColorNoteSmallScreenRelativeLayout.b(this.b) / 2));
+    int j = ColorNoteSmallScreenRelativeLayout.a(this.b, this.b.e());
+    int k = ColorNoteSmallScreenRelativeLayout.c(this.b);
+    if (ColorNoteSmallScreenRelativeLayout.a(this.b) != null) {
+      ColorNoteSmallScreenRelativeLayout.a(this.b).a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout, this.jdField_a_of_type_AndroidGraphicsPoint.x - i, this.jdField_a_of_type_AndroidGraphicsPoint.y, j + this.jdField_a_of_type_AndroidGraphicsPoint.x - i, k + this.jdField_a_of_type_AndroidGraphicsPoint.y);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public void a(aqun paramaqun)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "onUpdate " + paramaqun.toString());
-    }
-  }
-  
-  public Class<aqun> clazz()
-  {
-    return aqun.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 585;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = (this.jdField_a_of_type_Int + i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aquo
  * JD-Core Version:    0.7.0.1
  */

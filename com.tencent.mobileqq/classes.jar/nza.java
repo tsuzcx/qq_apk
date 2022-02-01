@@ -1,32 +1,55 @@
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketPopupView;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class nza
-  implements qyw
+class nza
+  implements INetInfoHandler
 {
-  public nza(PublicAccountBrowser paramPublicAccountBrowser, String paramString) {}
+  nza(nyy paramnyy) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onNetMobile2None()
   {
-    if (paramBoolean)
-    {
-      RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser.findViewById(2131363653);
-      if (PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser) == null)
-      {
-        PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, new RIJRedPacketPopupView(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser));
-        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        localRelativeLayout.addView(PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser), localLayoutParams);
-      }
-      int i = zby.b(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, 16.0F);
-      int j = localRelativeLayout.getHeight();
-      int k = zby.b(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, 78.0F);
-      PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser), i, j - k - i, false, false, paramString, 2147483647);
-      PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, true);
-      PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, paramInt);
-      PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setOnClickListener(new nzb(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetMobile2None");
     }
+    nyy.b(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetMobile2Wifi");
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetNone2Mobile");
+    }
+    nyy.b(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetNone2Wifi");
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetWifi2Mobile");
+    }
+    nyy.b(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetWifi2None");
+    }
+    nyy.b(this.a);
   }
 }
 

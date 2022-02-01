@@ -1,18 +1,27 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
 public class xnr
-  implements xfq
+  extends Subscriber.SingleEventSubscriberNoRefect<wsm>
 {
-  public xnr(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  xno a;
   
-  public void a()
+  public xnr(@NonNull xno paramxno)
   {
-    yqp.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoaded");
+    this.a = paramxno;
   }
   
-  public void b()
+  protected void a(@NonNull wsm paramwsm)
   {
-    yqp.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoadedFailed");
+    if (paramwsm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      this.a.a(paramwsm.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wsm.class;
   }
 }
 

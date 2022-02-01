@@ -1,32 +1,26 @@
-import java.util.List;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.IdlePushWakeParam;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ubw
-  implements pnh
+final class ubw
+  implements bjig
 {
-  private static ubw a = new ubw();
-  
-  public static void a()
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    pnc.a(a);
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131718139, 1).a();
+    case -2: 
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 2, 2131718157, 1).a();
   }
-  
-  public static void a(int paramInt) {}
-  
-  public static void a(List<oidb_cmd0x80a.IdlePushWakeParam> paramList) {}
-  
-  public static void b()
-  {
-    pnc.b(a);
-  }
-  
-  public void l() {}
-  
-  public void m() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ubw
  * JD-Core Version:    0.7.0.1
  */

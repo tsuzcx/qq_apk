@@ -1,29 +1,21 @@
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import android.content.res.Resources;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.widget.ksong.KSongView;
 
-class akyn
-  implements View.OnClickListener
+public class akyn
+  extends bjet
 {
-  akyn(akyh paramakyh, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  public akyn(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper close banner");
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)akyh.a(this.jdField_a_of_type_Akyh).getAppRuntime();
-    this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper.a();
-    UpgradeTIMWrapper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper);
-    akyh.a(this.jdField_a_of_type_Akyh).obtainMessage(20).sendToTarget();
-    bcst.b(localQQAppInterface, "CliOper", "", "", "0X800865A", "0X800865A", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.a();
+    this.a.b = false;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a();
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.getResources().getDrawable(2130847314));
+    this.a.c.setText(anzj.a(2131712185));
   }
 }
 

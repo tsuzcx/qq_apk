@@ -7,7 +7,7 @@ class NativeAvatarView$2
   
   public void run()
   {
-    NativeAvatarView.access$100(this.this$0);
+    NativeAvatarView.access$000(this.this$0);
   }
 }
 

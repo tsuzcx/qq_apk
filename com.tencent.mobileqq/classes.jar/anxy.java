@@ -1,7 +1,18 @@
+import android.os.Handler;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+
 public class anxy
-  implements anil
+  implements aoel
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  public anxy(FrameHelperActivity paramFrameHelperActivity) {}
+  
+  public void a()
+  {
+    if (this.a.a.hasMessages(17)) {
+      this.a.a.removeMessages(17);
+    }
+    this.a.a.sendEmptyMessage(17);
+  }
 }
 
 

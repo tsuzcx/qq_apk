@@ -3,14 +3,14 @@ package com.tencent.biz.pubaccount.weishi_new.push;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import org.json.JSONObject;
-import ulq;
-import ulv;
+import umo;
+import umt;
 
 public class WSPushStrategyInfo
-  extends ulq
+  extends umo
   implements IWSPushStrategy
 {
-  public static final Parcelable.Creator<WSPushStrategyInfo> CREATOR = new ulv();
+  public static final Parcelable.Creator<WSPushStrategyInfo> CREATOR = new umt();
   public String mScheme;
   public WSPushGloryKingModel mWSPushGloryKingModel;
   public WSPushOpModel mWSPushModel;

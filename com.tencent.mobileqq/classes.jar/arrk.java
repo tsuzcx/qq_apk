@@ -1,32 +1,61 @@
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class arrk
-  implements auah
+public class arrk
+  extends arac<arrj>
 {
-  public MqqHandler a;
-  
-  public arrk(MqqHandler paramMqqHandler)
+  public static arrj a()
   {
-    this.a = paramMqqHandler;
+    return (arrj)aran.a().a(344);
   }
   
-  public void a(int paramInt, String paramString)
+  @NonNull
+  public arrj a(int paramInt)
   {
-    if (this.a != null) {
-      this.a.sendMessageDelayed(this.a.obtainMessage(101, paramInt, 0, paramString), 1500L);
-    }
+    return new arrj();
   }
   
-  public void a(Object paramObject)
+  @Nullable
+  public arrj a(araj[] paramArrayOfaraj)
   {
-    if (this.a != null) {
-      this.a.sendEmptyMessageDelayed(100, 1500L);
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return arrj.a(paramArrayOfaraj);
     }
+    return null;
+  }
+  
+  public void a(arrj paramarrj) {}
+  
+  public Class<arrj> clazz()
+  {
+    return arrj.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 344;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arrk
  * JD-Core Version:    0.7.0.1
  */

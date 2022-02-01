@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.haoliyou.JefsClass;
-
-public class auxg
-  extends ThreadLocal<Boolean>
+public abstract interface auxg
 {
-  public auxg(JefsClass paramJefsClass) {}
-  
-  protected Boolean a()
-  {
-    return Boolean.valueOf(false);
-  }
+  public abstract void a(auxh paramauxh);
 }
 
 

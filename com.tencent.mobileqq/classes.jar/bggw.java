@@ -1,109 +1,149 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bggw
-  implements bggy
+public class bggw
 {
-  bggw(bggv parambggv) {}
+  private HashMap<Integer, bghb> a = new HashMap();
   
-  public void a(int paramInt, List<bggz> paramList)
+  public static bggw a(String paramString)
   {
-    if ((paramInt != 1) || (paramList == null) || (paramList.isEmpty())) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("JoinTroopSecurityTipsConfig.config", 2, "content : " + paramString);
     }
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder(200);
-      localStringBuilder.append("fetchInfoBatch size:").append(paramList.size()).append("  [");
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
+    HashMap localHashMap = new HashMap();
     for (;;)
     {
-      ArrayList localArrayList = new ArrayList(paramList.size());
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      int i;
+      bghb localbghb;
+      int j;
+      try
       {
-        bggz localbggz = (bggz)paramList.next();
-        if ((localbggz != null) && (localbggz.jdField_a_of_type_Int == 1) && (localbggz.a()))
+        paramString = new JSONObject(paramString).getJSONArray("ui");
+        if ((paramString != null) && (paramString.length() > 0))
         {
-          if ((localbggz.jdField_a_of_type_JavaLangString != null) && (localbggz.jdField_a_of_type_JavaLangString.length() > 0)) {
-            localArrayList.add(localbggz.jdField_a_of_type_JavaLangString);
-          }
-          if (localStringBuilder != null) {
-            localStringBuilder.append(localbggz.jdField_a_of_type_JavaLangString).append(",");
+          i = 0;
+          if (i < paramString.length())
+          {
+            Object localObject = paramString.getJSONObject(i);
+            if (localObject == null) {
+              break label307;
+            }
+            localbghb = new bghb();
+            localbghb.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("id", 0);
+            localbghb.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("title", "");
+            localbghb.b = ((JSONObject)localObject).optString("text", "");
+            localObject = ((JSONObject)localObject).getJSONArray("btns");
+            if ((localObject == null) || (((JSONArray)localObject).length() <= 0)) {
+              break label292;
+            }
+            j = 0;
+            if (j >= ((JSONArray)localObject).length()) {
+              break label292;
+            }
+            JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(j);
+            if (localJSONObject == null) {
+              break label314;
+            }
+            localbghb.getClass();
+            bghc localbghc = new bghc(localbghb);
+            localbghc.jdField_a_of_type_JavaLangString = localJSONObject.optString("text", "");
+            localbghc.b = localJSONObject.optString("action", "");
+            localbghc.c = localJSONObject.optString("url", "");
+            localbghb.jdField_a_of_type_JavaUtilList.add(localbghc);
           }
         }
       }
-      if ((QLog.isColorLevel()) && (localStringBuilder != null))
+      catch (JSONException paramString)
       {
-        localStringBuilder.append("]");
-        QLog.i("FetchBuddyAndTroopNameHelper", 2, localStringBuilder.toString());
+        paramString.printStackTrace();
+        paramString = new bggw();
+        paramString.a = localHashMap;
+        return paramString;
       }
-      paramList = (FriendListHandler)bggv.a(this.a).a(1);
-      if (paramList == null) {
-        break;
-      }
-      paramList.a(localArrayList, false);
-      return;
-      localStringBuilder = null;
+      label292:
+      localHashMap.put(Integer.valueOf(localbghb.jdField_a_of_type_Int), localbghb);
+      label307:
+      i += 1;
+      continue;
+      label314:
+      j += 1;
     }
   }
   
-  public void a(bggz parambggz)
+  private boolean a(bghb parambghb)
   {
-    if ((parambggz == null) || (!parambggz.a())) {}
-    Object localObject;
-    do
+    boolean bool2 = false;
+    boolean bool1;
+    if ((parambghb == null) || (TextUtils.isEmpty(parambghb.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(parambghb.b)))
     {
-      do
+      bool1 = true;
+      return bool1;
+    }
+    if ((parambghb.jdField_a_of_type_JavaUtilList == null) || (parambghb.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return true;
+    }
+    int i = 0;
+    for (;;)
+    {
+      if (i >= parambghb.jdField_a_of_type_JavaUtilList.size()) {
+        break label139;
+      }
+      bghc localbghc = (bghc)parambghb.jdField_a_of_type_JavaUtilList.get(i);
+      if (localbghc != null)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.d("FetchBuddyAndTroopNameHelper", 2, bgsp.a(new Object[] { "fetchInfo()", parambggz.toString() }));
-              }
-              if (parambggz.jdField_a_of_type_Int != 2) {
-                break;
-              }
-              localObject = (anwd)bggv.a(this.a).a(20);
-            } while (localObject == null);
-            ((anwd)localObject).m(parambggz.jdField_a_of_type_JavaLangString);
-            return;
-            if (parambggz.jdField_a_of_type_Int != 1) {
-              break;
-            }
-            localObject = (FriendListHandler)bggv.a(this.a).a(1);
-          } while (localObject == null);
-          ((FriendListHandler)localObject).b(parambggz.jdField_a_of_type_JavaLangString);
-          return;
-          if (parambggz.jdField_a_of_type_Int != 3) {
-            break;
-          }
-          localObject = (anwd)bggv.a(this.a).a(20);
-        } while (localObject == null);
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(parambggz.jdField_a_of_type_JavaLangString);
-        if ((parambggz.jdField_a_of_type_AndroidOsBundle != null) && (parambggz.jdField_a_of_type_AndroidOsBundle.getInt(bglf.jdField_a_of_type_JavaLangString) == bglf.b))
-        {
-          ((anwd)localObject).a(parambggz.b, localArrayList, false, parambggz.jdField_a_of_type_AndroidOsBundle);
-          return;
+        if (TextUtils.isEmpty(localbghc.jdField_a_of_type_JavaLangString)) {
+          return true;
         }
-        ((anwd)localObject).a(parambggz.b, (String)parambggz.jdField_a_of_type_JavaLangObject, localArrayList);
-        return;
-      } while (parambggz.jdField_a_of_type_Int != 4);
-      localObject = (FriendListHandler)bggv.a(this.a).a(1);
-    } while (localObject == null);
-    ((FriendListHandler)localObject).a(parambggz.jdField_a_of_type_JavaLangString, true);
+        bool1 = bool2;
+        if (!"web".equals(localbghc.b)) {
+          break;
+        }
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(localbghc.c)) {
+          break;
+        }
+        return true;
+      }
+      i += 1;
+    }
+    label139:
+    return true;
+  }
+  
+  public bghb a(int paramInt)
+  {
+    bghb localbghb2 = (bghb)this.a.get(Integer.valueOf(paramInt));
+    bghb localbghb1 = localbghb2;
+    if (a(localbghb2))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("JoinTroopSecurityTipsConfig.config", 2, "getItem isInvalidItem");
+      }
+      localbghb1 = null;
+    }
+    return localbghb1;
+  }
+  
+  public bghb a(Context paramContext)
+  {
+    bghb localbghb = new bghb();
+    localbghb.jdField_a_of_type_Int = 0;
+    localbghb.jdField_a_of_type_JavaLangString = paramContext.getString(2131693166);
+    localbghb.b = paramContext.getString(2131693165);
+    localbghb.getClass();
+    bghc localbghc = new bghc(localbghb);
+    localbghc.jdField_a_of_type_JavaLangString = paramContext.getString(2131693164);
+    localbghb.jdField_a_of_type_JavaUtilList.add(localbghc);
+    return localbghb;
   }
 }
 

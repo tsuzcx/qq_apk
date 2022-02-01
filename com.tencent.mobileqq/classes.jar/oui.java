@@ -1,35 +1,16 @@
-public class oui
-  extends bdod
+import java.util.List;
+
+class oui
+  extends ovd
 {
-  public oui(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  oui(otv paramotv, boolean paramBoolean, List paramList)
   {
-    super(paramCharSequence, paramInt1, paramInt2);
+    super(paramotv, null);
   }
   
-  public int a()
+  void a(ovg paramovg)
   {
-    int j = 0;
-    bdoa[] arrayOfbdoa = (bdoa[])getSpans(0, super.length(), bdoa.class);
-    if ((arrayOfbdoa == null) || (arrayOfbdoa.length <= 0)) {
-      return super.length();
-    }
-    int k = arrayOfbdoa.length;
-    int i = 0;
-    if (i < k)
-    {
-      bdoa localbdoa = arrayOfbdoa[i];
-      switch (localbdoa.c)
-      {
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        int m = getSpanStart(localbdoa);
-        j += getSpanEnd(localbdoa) - m - 1;
-      }
-    }
-    return super.length() - j;
+    paramovg.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, otv.d(this.jdField_a_of_type_Otv), 2, 2);
   }
 }
 

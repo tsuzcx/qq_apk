@@ -1,35 +1,32 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class beds
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  beds(bedo parambedo) {}
+  beds(bedr parambedr) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    bedo.a(this.a).setPadding(bggq.a(bedo.a(this.a).getContext(), 8.0F), -bedo.a(this.a), 0, 0);
-    bedo.a(this.a).setVisibility(8);
-    bedo.a(this.a, false);
-    bedo.b(this.a, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    bedo.a(this.a).setPadding(bggq.a(bedo.a(this.a).getContext(), 8.0F), -bedo.a(this.a), 0, 0);
-    bedo.a(this.a).setVisibility(8);
-    bedo.a(this.a, false);
-    bedo.b(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    bedo.a(this.a).setPadding(bggq.a(bedo.a(this.a).getContext(), 8.0F), 0, 0, 0);
-    bedo.a(this.a, true);
-    bedo.b(this.a, true);
+    beex localbeex;
+    if (bhjx.a("tag_swip_icon_menu_item", paramView.getTag()))
+    {
+      localbeex = (beex)paramView.getTag(-10);
+      if (paramView.getId() != 2131364627) {
+        break label47;
+      }
+      bedr.a(this.a, localbeex);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label47:
+      if (bedr.a(this.a) != null) {
+        bedr.a(this.a).a(paramView.getId(), localbeex);
+      }
+    }
   }
 }
 

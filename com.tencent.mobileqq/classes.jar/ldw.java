@@ -1,59 +1,35 @@
-import android.content.IntentFilter;
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import java.util.HashMap;
 
 public class ldw
 {
-  public static String a;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  ldx jdField_a_of_type_Ldx;
-  boolean jdField_a_of_type_Boolean = false;
+  HashMap<String, String> a = new HashMap();
+  HashMap<String, Long> b = new HashMap();
   
-  static
+  void a(String paramString, boolean paramBoolean)
   {
-    jdField_a_of_type_JavaLangString = "GAudioMsgReceiver";
+    QLog.w("DeviceCapabilityExamination", 1, "setDownloadFinish, md5[" + paramString + "], suc[" + paramBoolean + "], time[" + this.b.get(paramString) + "]");
+    AudioHelper.c(anzj.a(2131702064) + paramBoolean);
+    this.a.remove(paramString);
+    this.b.remove(paramString);
   }
   
-  public ldw(VideoAppInterface paramVideoAppInterface)
+  boolean a()
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_Ldx = new ldx(paramVideoAppInterface);
+    return this.a.isEmpty();
   }
   
-  public void a()
+  public boolean a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a.get(paramString1) != null)
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Ldx);
-      this.jdField_a_of_type_Boolean = false;
+      QLog.w("DeviceCapabilityExamination", 1, "isDownloading, md5[" + paramString1 + "], time[" + this.b.get(paramString1) + "]");
+      return true;
     }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQGAudioMsg Receiver");
-    }
-    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
-    localIntentFilter.addAction("tencent.video.q2v.AddDiscussMember");
-    localIntentFilter.addAction("tencent.video.q2v.SwitchToMultiAudo");
-    localIntentFilter.addAction("tencent.video.q2v.GroupSystemMsg");
-    localIntentFilter.addAction("tencent.video.q2v.SelectMember");
-    localIntentFilter.addAction("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED");
-    localIntentFilter.addAction("tencent.video.q2v.GvideoGift");
-    localIntentFilter.addAction("tencent.video.q2v.GvideoLevelUpgrade");
-    localIntentFilter.addAction("tencent.video.q2v.GvideoMemUntInvite");
-    localIntentFilter.addAction("tencent.video.q2v.close_invite_msg_box_by_invite_id");
-    localIntentFilter.addAction("tencent.video.q2v.randomMultiOwnerOnlinePush");
-    localIntentFilter.addAction("tencent.video.q2v.random1V1OnlinePush");
-    localIntentFilter.addAction("tencent.video.q2v.avreportOnlinePush");
-    localIntentFilter.addAction("tencent.video.q2v.AudioTransPush");
-    localIntentFilter.addAction("tencent.video.q2v.AudioEngineReady");
-    localIntentFilter.addAction("tencent.video.q2v.GroupInfoChanged");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Ldx, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    this.a.put(paramString1, paramString2);
+    this.b.put(paramString1, Long.valueOf(System.currentTimeMillis()));
+    return false;
   }
 }
 

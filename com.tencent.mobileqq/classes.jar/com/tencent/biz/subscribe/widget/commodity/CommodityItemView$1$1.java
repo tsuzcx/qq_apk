@@ -1,17 +1,17 @@
 package com.tencent.biz.subscribe.widget.commodity;
 
-import aalk;
+import aapl;
 import android.graphics.drawable.Drawable;
 import com.tencent.mobileqq.widget.SquareImageView;
 
 public class CommodityItemView$1$1
   implements Runnable
 {
-  public CommodityItemView$1$1(aalk paramaalk, Drawable paramDrawable) {}
+  public CommodityItemView$1$1(aapl paramaapl, Drawable paramDrawable) {}
   
   public void run()
   {
-    CommodityItemView.a(this.jdField_a_of_type_Aalk.a).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    CommodityItemView.a(this.jdField_a_of_type_Aapl.a).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

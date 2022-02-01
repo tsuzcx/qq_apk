@@ -1,25 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.Choreographer.FrameCallback;
 
-public class bhgu
-  implements View.OnClickListener
+class bhgu
+  implements Choreographer.FrameCallback
 {
-  public bhgu(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  bhgu(bhgt parambhgt) {}
   
-  public void onClick(View paramView)
+  public void doFrame(long paramLong)
   {
-    if (this.a.getRequestedOrientation() == 0) {
-      this.a.setRequestedOrientation(1);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.setResult(0);
-      this.a.finish();
-    }
+    bhgt.a(this.a, paramLong);
   }
 }
 

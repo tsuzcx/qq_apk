@@ -24,7 +24,7 @@ public class EngineVersion
   public EngineVersion(String paramString)
   {
     if (QUAUtil.isQQApp()) {}
-    for (String str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();; str = "1.6.0")
+    for (String str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();; str = "1.7.0")
     {
       this.mMajor = str;
       this.mMinor = paramString;

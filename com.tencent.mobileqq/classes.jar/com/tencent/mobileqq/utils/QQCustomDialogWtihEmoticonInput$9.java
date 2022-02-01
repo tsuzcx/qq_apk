@@ -2,16 +2,16 @@ package com.tencent.mobileqq.utils;
 
 import android.view.View;
 import android.view.WindowManager;
-import bgpw;
+import bhpy;
 
 public class QQCustomDialogWtihEmoticonInput$9
   implements Runnable
 {
-  public QQCustomDialogWtihEmoticonInput$9(bgpw parambgpw, View paramView) {}
+  public QQCustomDialogWtihEmoticonInput$9(bhpy parambhpy, View paramView) {}
   
   public void run()
   {
-    if (bgpw.a(this.this$0)) {
+    if (bhpy.a(this.this$0)) {
       return;
     }
     this.this$0.jdField_a_of_type_AndroidViewWindowManager.addView(this.a, this.this$0.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);

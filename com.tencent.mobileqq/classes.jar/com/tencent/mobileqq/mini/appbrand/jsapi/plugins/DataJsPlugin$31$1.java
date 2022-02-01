@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import biau;
+import bjbs;
 
 class DataJsPlugin$31$1
   implements Runnable
 {
-  DataJsPlugin$31$1(DataJsPlugin.31 param31, biau parambiau) {}
+  DataJsPlugin$31$1(DataJsPlugin.31 param31, bjbs parambjbs) {}
   
   public void run()
   {

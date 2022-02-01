@@ -4,9 +4,9 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings.Secure;
-import bgnt;
-import biip;
-import blru;
+import bhnv;
+import bjjo;
+import bmsw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 public class MiniProgramLpReportDC05115$ReportModel
 {
   private String androidID;
-  private String clientVersion = "8.4.1.4680";
+  private String clientVersion = "8.4.5.4745";
   private int cpuAVG;
   private long crashErrorNum;
   private String deviceManufacturer = Build.MANUFACTURER;
@@ -60,7 +60,7 @@ public class MiniProgramLpReportDC05115$ReportModel
   private String openID = "null";
   private long pkgDownloadCost;
   private String pkgDownloadResult;
-  private String qua = blru.a();
+  private String qua = bmsw.a();
   private long relaunchCost;
   private String x5Version = String.valueOf(QbSdk.getTbsVersion(BaseApplicationImpl.getApplication()));
   
@@ -77,10 +77,10 @@ public class MiniProgramLpReportDC05115$ReportModel
     try
     {
       if (this.networkSSID == null) {
-        this.networkSSID = bgnt.b(biip.a().a());
+        this.networkSSID = bhnv.b(bjjo.a().a());
       }
       if (this.androidID == null) {
-        this.androidID = Settings.Secure.getString(biip.a().a().getContentResolver(), "android_id");
+        this.androidID = Settings.Secure.getString(bjjo.a().a().getContentResolver(), "android_id");
       }
     }
     catch (Throwable localThrowable)

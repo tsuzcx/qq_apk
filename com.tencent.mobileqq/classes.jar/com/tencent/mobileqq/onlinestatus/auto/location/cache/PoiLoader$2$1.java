@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.onlinestatus.auto.location.cache;
 
-import ayrn;
-import ayru;
-import ayrv;
+import azkg;
+import azkn;
+import azko;
 import com.tencent.qphone.base.util.QLog;
 
 public class PoiLoader$2$1
   implements Runnable
 {
-  public PoiLoader$2$1(ayrv paramayrv, PoiBean paramPoiBean) {}
+  public PoiLoader$2$1(azko paramazko, PoiBean paramPoiBean) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PoiLoader", 2, "[status][poiLoader][" + ayru.a(this.jdField_a_of_type_Ayrv.jdField_a_of_type_Ayru) + "] persist. latLng: " + this.jdField_a_of_type_Ayrv.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " poiBean: " + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean);
+      QLog.d("PoiLoader", 2, "[status][poiLoader][" + azkn.a(this.jdField_a_of_type_Azko.jdField_a_of_type_Azkn) + "] persist. latLng: " + this.jdField_a_of_type_Azko.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " poiBean: " + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean != null) {
-      ayru.a(this.jdField_a_of_type_Ayrv.jdField_a_of_type_Ayru).a(this.jdField_a_of_type_Ayrv.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, ayru.a(this.jdField_a_of_type_Ayrv.jdField_a_of_type_Ayru), this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean);
+      azkn.a(this.jdField_a_of_type_Azko.jdField_a_of_type_Azkn).a(this.jdField_a_of_type_Azko.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, azkn.a(this.jdField_a_of_type_Azko.jdField_a_of_type_Azkn), this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean);
     }
   }
 }

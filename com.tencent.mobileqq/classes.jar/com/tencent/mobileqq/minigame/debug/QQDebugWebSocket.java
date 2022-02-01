@@ -6,19 +6,15 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import anni;
-import bgtn;
+import anzj;
+import bhtq;
+import com.tencent.mobileqq.mini.apkg.DebugInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
-import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
-import com.tencent.mobileqq.triton.sdk.bridge.IJSEngine;
-import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
-import com.tencent.mobileqq.triton.sdk.bridge.InspectorAgent;
-import com.tencent.mobileqq.triton.sdk.bridge.InspectorAgent.DebuggerMessageListener;
-import com.tencent.mobileqq.triton.sdk.game.MiniGameInfo;
+import com.tencent.mobileqq.triton.script.InspectorAgent;
+import com.tencent.mobileqq.triton.script.InspectorAgent.DebuggerMessageListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONArray;
@@ -29,28 +25,30 @@ public class QQDebugWebSocket
   extends DebugWebSocket
   implements InspectorAgent
 {
-  private static final String DISCONNECT_TIPS = anni.a(2131708976);
-  private static final String DISCONNECT_TIPS_NOT_RECOVERY = anni.a(2131708975);
+  private static final String DISCONNECT_TIPS = anzj.a(2131709085);
+  private static final String DISCONNECT_TIPS_NOT_RECOVERY = anzj.a(2131709084);
   public static final int NETWORKTYPE_2G = 2;
   public static final int NETWORKTYPE_3G = 3;
   public static final int NETWORKTYPE_4G = 4;
   public static final int NETWORKTYPE_OFFLINE = 0;
   public static final int NETWORKTYPE_OTHER = 1;
   public static final int NETWORKTYPE_WIFI = 6;
-  private static final String RECONNECT_TIPS = anni.a(2131708977);
+  private static final String RECONNECT_TIPS = anzj.a(2131709086);
   private AtomicInteger count = new AtomicInteger();
-  private MiniGameInfo gameInfo;
   Runnable heartbeatRunnable = new QQDebugWebSocket.4(this);
   private boolean isQQDebugReady;
   public QQDebugWebSocket.ProfileJsPlugin jsPlugin;
+  private final String mAppId;
+  private final DebugInfo mDebugInfo;
   private DebugWebSocket.DebuggerStateListener mDebugListener;
   private InspectorAgent.DebuggerMessageListener mDebuggerMessageListener;
   private DebugWebSocket.DebugSocketListener qqSocketListener = new QQDebugWebSocket.1(this);
   private String sessionId;
   
-  public QQDebugWebSocket(MiniGameInfo paramMiniGameInfo)
+  public QQDebugWebSocket(String paramString, DebugInfo paramDebugInfo)
   {
-    this.gameInfo = paramMiniGameInfo;
+    this.mAppId = paramString;
+    this.mDebugInfo = paramDebugInfo;
     this.TAG = "[debugger].QQDebugWebSocket";
     this.jsPlugin = new QQDebugWebSocket.ProfileJsPlugin(this);
   }
@@ -81,115 +79,81 @@ public class QQDebugWebSocket
     }
     catch (JSONException localJSONException)
     {
-      int i;
-      String str;
       do
       {
-        do
+        for (;;)
         {
-          do
+          QLog.e(this.TAG, 1, "qq onSocketMessage", localJSONException);
+          continue;
+          if (TextUtils.equals(paramString1, "DebugPing"))
           {
-            do
+            try
             {
-              do
+              paramString1 = new JSONObject(paramString2).getString("ping_id");
+              int i = getNetworkTypeForMini();
+              if (this.isQQDebugReady) {
+                continue;
+              }
+              sendQQDebugMethodMsg("DebugPong", "{\"ping_id\":" + paramString1 + ",\"network_type\":" + i + "}");
+              this.isQQDebugReady = true;
+              notifyIdeSetUp();
+              checkDebuggerReady();
+              return;
+            }
+            catch (JSONException paramString1)
+            {
+              QLog.e(this.TAG, 1, "qq onSocketMessage", paramString1);
+              return;
+            }
+          }
+          else
+          {
+            if (!TextUtils.equals(paramString1, "DebugMessageMaster")) {
+              break label464;
+            }
+            try
+            {
+              QLog.i(this.TAG, 1, "qq onSocketMessage cmd:" + paramString1 + ",data:" + paramString2);
+              paramString1 = new JSONObject(paramString2).getJSONArray("debug_message");
+              if ((paramString1 != null) && (paramString1.getJSONObject(0) != null))
               {
-                do
+                paramString1 = paramString1.getJSONObject(0);
+                if (paramString1 != null)
                 {
-                  for (;;)
+                  paramString2 = paramString1.getString("category");
+                  if (TextUtils.equals(paramString2, "chromeDevtools"))
                   {
-                    QLog.e(this.TAG, 1, "qq onSocketMessage", localJSONException);
-                    continue;
-                    if (TextUtils.equals(paramString1, "DebugPing"))
+                    paramString1 = paramString1.getString("data");
+                    if (TextUtils.isEmpty(paramString1)) {
+                      continue;
+                    }
+                    paramString1 = new JSONObject(paramString1);
+                    paramString2 = paramString1.getString("method");
+                    if ((TextUtils.equals(paramString2, "Runtime.evaluate")) || (TextUtils.equals(paramString2, "Debugger.evaluateOnCallFrame")))
                     {
-                      try
+                      paramString2 = paramString1.getJSONObject("params");
+                      if (paramString2 != null)
                       {
-                        paramString1 = new JSONObject(paramString2).getString("ping_id");
-                        i = getNetworkTypeForMini();
-                        if (this.isQQDebugReady) {
-                          continue;
-                        }
-                        sendQQDebugMethodMsg("DebugPong", "{\"ping_id\":" + paramString1 + ",\"network_type\":" + i + "}");
-                        this.isQQDebugReady = true;
-                        notifyIdeSetUp();
-                        checkDebuggerReady();
-                        return;
-                      }
-                      catch (JSONException paramString1)
-                      {
-                        QLog.e(this.TAG, 1, "qq onSocketMessage", paramString1);
-                        return;
+                        paramString2.remove("timeout");
+                        paramString1.put("params", paramString2);
                       }
                     }
-                    else
-                    {
-                      if (!TextUtils.equals(paramString1, "DebugMessageMaster")) {
-                        break label639;
-                      }
-                      try
-                      {
-                        QLog.i(this.TAG, 1, "qq onSocketMessage cmd:" + paramString1 + ",data:" + paramString2);
-                        paramString1 = new JSONObject(paramString2).getJSONArray("debug_message");
-                        if ((paramString1 != null) && (paramString1.getJSONObject(0) != null))
-                        {
-                          paramString1 = paramString1.getJSONObject(0);
-                          if (paramString1 != null)
-                          {
-                            paramString2 = paramString1.getString("category");
-                            if (TextUtils.equals(paramString2, "chromeDevtools"))
-                            {
-                              paramString1 = paramString1.getString("data");
-                              if (TextUtils.isEmpty(paramString1)) {
-                                continue;
-                              }
-                              paramString1 = new JSONObject(paramString1);
-                              paramString2 = paramString1.getString("method");
-                              if ((TextUtils.equals(paramString2, "Runtime.evaluate")) || (TextUtils.equals(paramString2, "Debugger.evaluateOnCallFrame")))
-                              {
-                                paramString2 = paramString1.getJSONObject("params");
-                                if (paramString2 != null)
-                                {
-                                  paramString2.remove("timeout");
-                                  paramString1.put("params", paramString2);
-                                }
-                              }
-                              this.mDebuggerMessageListener.sendMessageToEngine(paramString1.toString());
-                            }
-                          }
-                        }
-                      }
-                      catch (JSONException paramString1)
-                      {
-                        QLog.e(this.TAG, 1, "qq onSocketMessage", paramString1);
-                        return;
-                      }
-                    }
+                    this.mDebuggerMessageListener.sendMessageToEngine(paramString1.toString());
                   }
-                } while (!TextUtils.equals(paramString2, "performance"));
-                if ((this.jsPlugin.jsPluginEngine == null) || (this.jsPlugin.jsPluginEngine.appBrandRuntime == null) || (this.jsPlugin.jsPluginEngine.appBrandRuntime.activity == null) || (GameRuntimeLoaderManager.g().getBindRuntimeLoader(this.jsPlugin.jsPluginEngine.appBrandRuntime.activity) == null))
-                {
-                  QLog.e(this.TAG, 1, "qq onSocketMessage performance fail, no gameRuntime");
-                  return;
                 }
-                paramString2 = GameRuntimeLoaderManager.g().getBindRuntimeLoader(this.jsPlugin.jsPluginEngine.appBrandRuntime.activity).getGameEngine();
-              } while (paramString2 == null);
-              paramString2 = paramString2.getJsEngine();
-            } while (paramString2 == null);
-            paramString2 = paramString2.getJsRuntime(1);
-          } while (paramString2 == null);
-          paramString1 = paramString1.getString("data");
-        } while (TextUtils.isEmpty(paramString1));
-        paramString1 = new JSONObject(paramString1);
-        str = paramString1.getString("method");
-        i = paramString1.getInt("id");
-        if (TextUtils.equals(str, "profile.start"))
-        {
-          paramString2.evaluateJs("global.q9zq.FrameProfileStart(" + i + ")");
-          return;
+              }
+            }
+            catch (JSONException paramString1)
+            {
+              QLog.e(this.TAG, 1, "qq onSocketMessage", paramString1);
+              return;
+            }
+          }
         }
-      } while (!TextUtils.equals(str, "profile.end"));
-      paramString2.evaluateJs("global.q9zq.FrameProfileEnd(" + i + ")");
+      } while ((!TextUtils.equals(paramString2, "performance")) || ((this.jsPlugin.jsPluginEngine != null) && (this.jsPlugin.jsPluginEngine.appBrandRuntime != null) && (this.jsPlugin.jsPluginEngine.appBrandRuntime.activity != null) && (GameRuntimeLoaderManager.g().getBindRuntimeLoader(this.jsPlugin.jsPluginEngine.appBrandRuntime.activity) != null)));
+      QLog.e(this.TAG, 1, "qq onSocketMessage performance fail, no gameRuntime");
       return;
-      label639:
+      label464:
       QLog.i(this.TAG, 1, "qq onSocketMessage cmd:" + paramString1 + ",data:" + paramString2);
     }
   }
@@ -202,9 +166,9 @@ public class QQDebugWebSocket
       localJSONObject.put("device_name", Build.DEVICE);
       localJSONObject.put("device_model", Build.MODEL);
       localJSONObject.put("os", Build.VERSION.SDK_INT);
-      localJSONObject.put("qq_version", "8.4.1");
+      localJSONObject.put("qq_version", "8.4.5");
       localJSONObject.put("pixel_ratio", "3");
-      localJSONObject.put("screen_width", bgtn.a());
+      localJSONObject.put("screen_width", bhtq.a());
       localJSONObject.put("user_agent", "MiniGame");
       return localJSONObject;
     }

@@ -1,13 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment.10;
+import java.io.File;
 
 public class bofc
-  implements DialogInterface.OnDismissListener
 {
-  public bofc(AEEditorVideoEditFragment.10 param10) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public static final String a = bofe.a + File.separator + "playshow";
+  public static final String b = boev.e;
+  public static final String c = a + File.separator + "material_config";
+  public static final String d = a + File.separator + "thumbs";
+  public static final String e = a + File.separator + "videos";
 }
 
 

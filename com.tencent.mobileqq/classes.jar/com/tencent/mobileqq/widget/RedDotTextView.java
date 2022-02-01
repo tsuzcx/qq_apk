@@ -43,7 +43,7 @@ public class RedDotTextView
     if (this.jdField_a_of_type_Boolean)
     {
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850388);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850400);
       }
       String str = getText().toString();
       TextPaint localTextPaint = getPaint();

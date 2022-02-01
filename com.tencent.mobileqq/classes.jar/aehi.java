@@ -1,28 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
 
 public class aehi
-  implements View.OnClickListener
+  extends ScaleAnimation
 {
-  public aehi(FriendProfileImageActivity paramFriendProfileImageActivity) {}
-  
-  public void onClick(View paramView)
+  public aehi(ContactBindedActivity paramContactBindedActivity, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, float paramFloat5, int paramInt2, float paramFloat6)
   {
-    if (paramView.getId() == 2131365302)
-    {
-      aehv localaehv = this.a.jdField_a_of_type_Aeht.a();
-      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (localaehv != null))
-      {
-        bkho localbkho = (bkho)bkif.a(this.a, null);
-        localbkho.a(2131692950, 3);
-        localbkho.c(2131690582);
-        localbkho.a(new aehj(this, localaehv, localbkho));
-        localbkho.show();
-      }
+    super(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramFloat5, paramInt2, paramFloat6);
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    if (paramTransformation == null) {
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.applyTransformation(paramFloat, paramTransformation);
+    paramTransformation.setAlpha(0.0F + 1.0F * paramFloat);
   }
 }
 

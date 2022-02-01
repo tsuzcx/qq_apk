@@ -1,111 +1,86 @@
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBDoubleField;
-import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import tencent.im.oidb.location.RoomOperate.ReqRoomOperation;
-import tencent.im.oidb.location.RoomOperate.RspRoomOperation;
-import tencent.im.oidb.location.qq_lbs_share.ResultInfo;
-import tencent.im.oidb.location.qq_lbs_share.RoomKey;
+import eipc.EIPCResult;
+import face.qqlogin.faceproto.Response;
+import java.io.File;
+import java.util.HashMap;
 
-public class avxh
-  extends avwr<avwv>
+class avxh
+  implements ITransactionCallback
 {
-  private avwv a;
+  avxh(avxe paramavxe, File paramFile, EIPCResult paramEIPCResult, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, int paramInt3) {}
   
-  avxh(QQAppInterface paramQQAppInterface, avwv paramavwv)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Avwv = paramavwv;
+    QLog.i("qqidentification_server", 1, "BDH.Upload fail  : result:" + paramInt);
+    avxe.a(this.jdField_a_of_type_Avxe);
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097EC", "0X80097EC", 0, 0, "", "", this.c + "", "");
+    this.jdField_a_of_type_EipcEIPCResult.code = -102;
+    paramArrayOfByte = new Bundle();
+    paramArrayOfByte.putInt("ret", 209);
+    paramArrayOfByte.putString("subError", "UPLOAD onFailed I=" + paramInt);
+    paramArrayOfByte.putString("errMsg", anzj.a(2131704601));
+    this.jdField_a_of_type_EipcEIPCResult.data = paramArrayOfByte;
+    this.jdField_a_of_type_Avxe.callbackResult(avxe.a(this.jdField_a_of_type_Avxe), this.jdField_a_of_type_EipcEIPCResult);
   }
   
-  private void a(int paramInt1, int paramInt2, long paramLong)
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    Object localObject = this.jdField_a_of_type_Avwv.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RoomOperateHandler", 2, new Object[] { "requestOperateRoom: invoked. ", "operateType = [" + paramInt1 + "]  R_OPT_CREATE = 1; //创建房间 R_OPT_JOIN = 2; //加入 R_OPT_QUIT = 3; //退出\n", ", uinType = [" + paramInt2 + "], sessionUin = [" + paramLong + "], location = [" + localObject + "]" });
-    }
-    if (localObject == null) {
-      return;
-    }
-    RoomOperate.ReqRoomOperation localReqRoomOperation = new RoomOperate.ReqRoomOperation();
-    qq_lbs_share.RoomKey localRoomKey = awbi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt2, paramLong);
-    localReqRoomOperation.room_key.set(localRoomKey);
-    localReqRoomOperation.room_key.setHasFlag(true);
-    localReqRoomOperation.room_operation.set(paramInt1);
-    localReqRoomOperation.lat.set(((LatLng)localObject).latitude);
-    localReqRoomOperation.lon.set(((LatLng)localObject).longitude);
-    localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "QQLBSShareSvc.room_operation");
-    ((ToServiceMsg)localObject).extraData.putInt("OPT_ROOM_TYPE", paramInt1);
-    ((ToServiceMsg)localObject).extraData.putInt("uintype", paramInt2);
-    ((ToServiceMsg)localObject).extraData.putString("uin", String.valueOf(paramLong));
-    ((ToServiceMsg)localObject).putWupBuffer(localReqRoomOperation.toByteArray());
-    a().sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  private void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    awbi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramString, false);
-    awbh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramString, false);
-    a().notifyUI(1, false, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1), paramString });
-  }
-  
-  protected avwv a()
-  {
-    return avwv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    try
+    QLog.d("qqidentification_server", 1, "upload file success");
+    avxe.a(this.jdField_a_of_type_Avxe);
+    this.jdField_a_of_type_JavaIoFile.delete();
+    paramHashMap = new faceproto.Response();
+    for (;;)
     {
-      long l = Long.parseLong(paramString);
-      a(paramInt1, paramInt2, l);
-      return;
-    }
-    catch (NumberFormatException paramString)
-    {
-      QLog.e("RoomOperateHandler", 1, "requestOperateRoom: failed. ", paramString);
-    }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int i;
-    if (a(paramToServiceMsg, paramFromServiceMsg, paramObject)) {
       try
       {
-        i = paramToServiceMsg.extraData.getInt("OPT_ROOM_TYPE");
-        int j = paramToServiceMsg.extraData.getInt("uintype", -1);
-        paramToServiceMsg = paramToServiceMsg.extraData.getString("uin");
-        paramFromServiceMsg = (qq_lbs_share.ResultInfo)((RoomOperate.RspRoomOperation)new RoomOperate.RspRoomOperation().mergeFrom((byte[])paramObject)).msg_result.get();
-        if (awbi.a(paramFromServiceMsg))
-        {
-          a().notifyUI(1, true, new Object[] { Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(j), paramToServiceMsg });
-          return;
+        paramHashMap.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = new Bundle();
+        i = paramHashMap.Ret.get();
+        paramArrayOfByte.putInt("ret", i);
+        str = paramHashMap.ErrMsg.get();
+        paramArrayOfByte.putString("errMsg", str);
+        paramArrayOfByte.putBoolean("needRetry", paramHashMap.NeedRetry.get());
+        QLog.d("qqidentification_server", 1, "retry: " + paramHashMap.NeedRetry.get() + " ret=" + i);
+        paramArrayOfByte.putString("idKey", paramHashMap.IDKey.get());
+        this.jdField_a_of_type_EipcEIPCResult.data = paramArrayOfByte;
+        if (i != 0) {
+          continue;
         }
-        a(j, paramToServiceMsg, paramFromServiceMsg.uint32_result.get(), i);
-        return;
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097ED", "0X80097ED", 0, 0, this.jdField_a_of_type_Int + "", "" + this.b, this.c + "", "");
       }
-      catch (Exception paramToServiceMsg)
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        QLog.e("RoomOperateHandler", 1, "requestOperateRoomResp: failed. ", paramToServiceMsg);
-        return;
+        int i;
+        String str;
+        QLog.e("qqidentification_server", 1, new Object[] { "parse bytes error : ", paramArrayOfByte.getMessage() });
+        this.jdField_a_of_type_EipcEIPCResult.code = -102;
+        paramArrayOfByte = new Bundle();
+        paramArrayOfByte.putString("subError", "InvalidProtocolBufferMicroException");
+        paramArrayOfByte.putInt("ret", 208);
+        paramArrayOfByte.putString("errMsg", anzj.a(2131704603));
+        this.jdField_a_of_type_EipcEIPCResult.data = paramArrayOfByte;
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097EC", "0X80097EC", 0, 0, this.jdField_a_of_type_Int + "", "" + this.b, this.c + "", "");
+        continue;
       }
+      this.jdField_a_of_type_Avxe.callbackResult(avxe.a(this.jdField_a_of_type_Avxe), this.jdField_a_of_type_EipcEIPCResult);
+      return;
+      QLog.e("qqidentification_server", 1, "request err: " + i + ", " + str);
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097EE", "0X80097EE", 0, 0, this.jdField_a_of_type_Int + "", "" + this.b, this.c + "", i + "");
     }
-    if (paramFromServiceMsg != null)
-    {
-      i = paramFromServiceMsg.getResultCode();
-      if (QLog.isColorLevel()) {
-        QLog.d("RoomOperateHandler", 2, new Object[] { "requestOperateRoomResp: invoked. ", " resultCode: ", Integer.valueOf(i) });
-      }
-    }
-    a(-2, "", -10001, -1);
   }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart() {}
+  
+  public void onUpdateProgress(int paramInt) {}
 }
 
 

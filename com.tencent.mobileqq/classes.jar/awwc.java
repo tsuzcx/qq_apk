@@ -1,10 +1,30 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.view.ViewGroup;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper.1.1;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface awwc
+public class awwc
+  implements awvz
 {
-  public abstract void a(awws paramawws, HashMap<String, ArrayList<MessageRecord>> paramHashMap, awwd paramawwd);
+  awwc(awwb paramawwb) {}
+  
+  public void a(awvw paramawvw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "onShowCommonGuideWeb");
+    }
+    awwb.a(this.a, paramawvw);
+  }
+  
+  public void a(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "onShowContactsGuideLayer");
+    }
+    if (awwb.a(this.a) != null) {
+      awwb.a(this.a).post(new LoginwelcomeHelper.1.1(this, paramURLDrawable));
+    }
+  }
 }
 
 

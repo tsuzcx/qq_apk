@@ -1,16 +1,27 @@
-public abstract interface abfy
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+
+class abfy
+  implements Animation.AnimationListener
 {
-  public abstract void f();
+  abfy(abfw paramabfw, URLImageView paramURLImageView, URLDrawable paramURLDrawable, ScaleAnimation paramScaleAnimation) {}
   
-  public abstract void g();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+  }
   
-  public abstract void h();
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void i();
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abfy
  * JD-Core Version:    0.7.0.1
  */

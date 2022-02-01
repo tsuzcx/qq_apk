@@ -1,29 +1,37 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.lifeachivement.LayerImageView;
-import com.tencent.widget.AlphaClickableRelativeLayout;
-import com.tencent.widget.AlphaClickableTextView;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class azgz
-  extends RecyclerView.ViewHolder
+public class azgz
+  implements View.OnClickListener
 {
-  public TextView a;
-  public LayerImageView a;
-  public AlphaClickableRelativeLayout a;
-  public AlphaClickableTextView a;
-  public TextView b;
+  public azgz(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  public azgz(View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout = ((AlphaClickableRelativeLayout)paramView.findViewById(2131368365));
-    this.jdField_a_of_type_ComTencentMobileqqProfileLifeachivementLayerImageView = ((LayerImageView)paramView.findViewById(2131361931));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361932));
-    this.b = ((TextView)paramView.findViewById(2131361930));
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableTextView = ((AlphaClickableTextView)paramView.findViewById(2131361933));
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout.a(false);
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableTextView.setEnabled(true);
+    azhx.a(AutoReplyEditActivity.a(this.a), false);
+    String str2 = String.valueOf(AutoReplyEditActivity.a(this.a).getText());
+    String str1;
+    if (AutoReplyEditActivity.a(this.a) != null)
+    {
+      str1 = AutoReplyEditActivity.a(this.a).getRawText();
+      if (str2.equals(str1)) {
+        break label75;
+      }
+      AutoReplyEditActivity.a(this.a);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      str1 = "";
+      break;
+      label75:
+      AutoReplyEditActivity.a(this.a);
+    }
   }
 }
 

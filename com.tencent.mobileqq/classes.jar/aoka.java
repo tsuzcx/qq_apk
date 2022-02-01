@@ -1,33 +1,13 @@
-import android.content.Context;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.Set;
-
 public class aoka
-  extends aojt
+  implements anui
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramQQAppInterface = new aojy(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "lightapp";
-    paramQQAppInterface.c = "open";
-    paramContext = Uri.parse(paramString);
-    paramString = paramContext.getQueryParameterNames().iterator();
-    while (paramString.hasNext())
-    {
-      paramaojw = (String)paramString.next();
-      if (!TextUtils.isEmpty(paramaojw))
-      {
-        String str = paramContext.getQueryParameter(paramaojw);
-        if (!TextUtils.isEmpty(str)) {
-          paramQQAppInterface.a(paramaojw, str);
-        }
-      }
+    if (paramInt == 999) {
+      a(paramBoolean, paramObject);
     }
-    return paramQQAppInterface;
   }
 }
 

@@ -1,72 +1,126 @@
-import android.os.Bundle;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.view.accessibility.AccessibilityRecordCompat;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class xoz
-  extends AccessibilityDelegateCompat
+  extends zsv
+  implements View.OnClickListener
 {
-  public xoz(XViewPager paramXViewPager) {}
+  public static final String KEY = "PlayerDoubleTabSegment";
+  private int jdField_a_of_type_Int = 1;
+  private xoj jdField_a_of_type_Xoj;
+  private yfw jdField_a_of_type_Yfw;
+  private yqw jdField_a_of_type_Yqw;
   
-  private boolean a()
+  public xoz(Context paramContext)
   {
-    return (XViewPager.a(this.a) != null) && (XViewPager.a(this.a).getCount() > 1);
+    super(paramContext);
   }
   
-  public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+  private void a(TextView paramTextView, boolean paramBoolean)
   {
-    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
-    paramAccessibilityEvent.setClassName(XViewPager.class.getName());
-    paramView = AccessibilityRecordCompat.obtain();
-    paramView.setScrollable(a());
-    if ((paramAccessibilityEvent.getEventType() == 4096) && (XViewPager.a(this.a) != null))
+    if (paramBoolean)
     {
-      paramView.setItemCount(XViewPager.a(this.a).getCount());
-      paramView.setFromIndex(XViewPager.a(this.a));
-      paramView.setToIndex(XViewPager.a(this.a));
-    }
-  }
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setClassName(XViewPager.class.getName());
-    paramAccessibilityNodeInfoCompat.setScrollable(a());
-    if (this.a.canScrollHorizontally(1)) {
-      paramAccessibilityNodeInfoCompat.addAction(4096);
-    }
-    if (this.a.canScrollHorizontally(-1)) {
-      paramAccessibilityNodeInfoCompat.addAction(8192);
-    }
-  }
-  
-  public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
-  {
-    if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
-      return true;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 4096: 
-      if (this.a.canScrollHorizontally(1))
-      {
-        this.a.setCurrentItem(XViewPager.a(this.a) + 1);
-        return true;
+      if (QQStoryContext.a()) {
+        paramTextView.setBackgroundResource(2130846476);
       }
-      return false;
+      for (;;)
+      {
+        paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166465));
+        return;
+        paramTextView.setBackgroundResource(2130846475);
+      }
     }
-    if (this.a.canScrollHorizontally(-1))
+    paramTextView.setBackgroundResource(0);
+    if (QQStoryContext.a())
     {
-      this.a.setCurrentItem(XViewPager.a(this.a) - 1);
-      return true;
+      paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166478));
+      return;
     }
-    return false;
+    paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166466));
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Yfw != null) && (this.jdField_a_of_type_Yfw.b())) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View a(int paramInt, yqw paramyqw, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (TextView)paramyqw.a(2131378036);
+    TextView localTextView = (TextView)paramyqw.a(2131378035);
+    if (QQStoryContext.a())
+    {
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166476));
+      localTextView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166476));
+      paramyqw.a(2131374576).setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166478));
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      a(paramViewGroup, true);
+      a(localTextView, false);
+    }
+    for (;;)
+    {
+      return paramyqw.a();
+      a(paramViewGroup, false);
+      a(localTextView, true);
+    }
+  }
+  
+  public String a()
+  {
+    return "PlayerDoubleTabSegment";
+  }
+  
+  public yqw a(int paramInt, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Yqw = new yqw(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561698, paramViewGroup, false));
+    paramViewGroup = (TextView)this.jdField_a_of_type_Yqw.a(2131378036);
+    TextView localTextView = (TextView)this.jdField_a_of_type_Yqw.a(2131378035);
+    paramViewGroup.setOnClickListener(this);
+    localTextView.setOnClickListener(this);
+    return this.jdField_a_of_type_Yqw;
+  }
+  
+  public void a(xoj paramxoj)
+  {
+    this.jdField_a_of_type_Xoj = paramxoj;
+  }
+  
+  public void a(yfw paramyfw)
+  {
+    this.jdField_a_of_type_Yfw = paramyfw;
+    if (this.jdField_a_of_type_Yfw.a()) {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_Xoj.a();
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Xoj.a(1);
+      yup.a("content_flow", "clk_detail_reply", 0, 1, new String[] { "", yup.a(4444), this.jdField_a_of_type_Yfw.a.feedId });
+      continue;
+      this.jdField_a_of_type_Xoj.a(2);
+      yup.a("content_flow", "clk_detail_reply", 0, 2, new String[] { "", yup.a(4444), this.jdField_a_of_type_Yfw.a.feedId });
+    }
   }
 }
 

@@ -2,9 +2,13 @@ package com.tencent.tmediacodec.pools;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.tmediacodec.TCodecManager;
 import com.tencent.tmediacodec.codec.FormatWrapper;
 import com.tencent.tmediacodec.codec.ReuseCodecWrapper;
 import com.tencent.tmediacodec.reuse.ReuseHelper.ReuseType;
+import com.tencent.tmediacodec.reuse.ReusePolicy;
+import com.tencent.tmediacodec.reuse.ReusePolicy.EraseType;
 import com.tencent.tmediacodec.util.LogUtils;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArraySet;
@@ -24,13 +28,26 @@ public final class CodecWrapperPool
     this.name = paramString;
   }
   
-  private ReuseCodecWrapper getFirst()
+  private ReuseCodecWrapper getFirstCodecWrapper()
   {
     Iterator localIterator = this.storeSet.iterator();
     if (localIterator.hasNext()) {
       return (ReuseCodecWrapper)localIterator.next();
     }
     return null;
+  }
+  
+  private ReuseCodecWrapper getRemoveItem(ReuseCodecWrapper paramReuseCodecWrapper)
+  {
+    Iterator localIterator = this.storeSet.iterator();
+    if (TCodecManager.getInstance().getReusePolicy().eraseType == ReusePolicy.EraseType.SAME)
+    {
+      paramReuseCodecWrapper = replaceSameTypeCodec(paramReuseCodecWrapper, localIterator);
+      if (paramReuseCodecWrapper != null) {
+        return paramReuseCodecWrapper;
+      }
+    }
+    return getFirstCodecWrapper();
   }
   
   private final ReuseCodecWrapper pickSuitableCodecWrapper(FormatWrapper paramFormatWrapper)
@@ -45,6 +62,18 @@ public final class CodecWrapperPool
       localReuseCodecWrapper.trackCantReuse();
       if (localReuseCodecWrapper.needToErase()) {
         remove(localReuseCodecWrapper);
+      }
+    }
+    return null;
+  }
+  
+  private ReuseCodecWrapper replaceSameTypeCodec(ReuseCodecWrapper paramReuseCodecWrapper, Iterator paramIterator)
+  {
+    while (paramIterator.hasNext())
+    {
+      ReuseCodecWrapper localReuseCodecWrapper = (ReuseCodecWrapper)paramIterator.next();
+      if (TextUtils.equals(paramReuseCodecWrapper.getCodecName(), localReuseCodecWrapper.getCodecName())) {
+        return localReuseCodecWrapper;
       }
     }
     return null;
@@ -92,7 +121,7 @@ public final class CodecWrapperPool
   public void put(@NonNull ReuseCodecWrapper paramReuseCodecWrapper)
   {
     if (isFull()) {
-      remove(getFirst());
+      remove(getRemoveItem(paramReuseCodecWrapper));
     }
     this.storeSet.add(paramReuseCodecWrapper);
   }

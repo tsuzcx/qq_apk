@@ -1,30 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.widget.WorkSpaceView;
+import QC.GetItemWatchWordReq;
+import QC.GetItemWatchWordRsp;
+import QC.UniBusinessItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import eipc.EIPCModule;
+import eipc.EIPCResultCallback;
 
 public class bidk
-  extends Handler
+  implements bidj
 {
-  public bidk(WorkSpaceView paramWorkSpaceView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString1, String paramString2, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      int i = ((bcvm)this.a.getChildAt(this.a.a).getTag()).a;
-      if ((this.a.getChildCount() > 1) && (this.a.getWidth() > 0)) {
-        this.a.a(this.a.a() + 1);
-      }
-      WorkSpaceView.a(this.a).sendEmptyMessageDelayed(0, i * 1000);
-      continue;
-      WorkSpaceView.a(this.a).removeMessages(0);
-    }
+    paramEIPCResultCallback = new biib("QC.UniBusinessLoginServer.UniBusinessLoginObj", "QCUniBusinessLogin.watchword", "stReq", "stRsp");
+    UniBusinessItem localUniBusinessItem = new UniBusinessItem();
+    localUniBusinessItem.appid = Integer.parseInt(paramString1);
+    localUniBusinessItem.itemid = Integer.parseInt(paramString2);
+    paramEIPCResultCallback.a("GetItemWatchWord", new GetItemWatchWordReq(aogu.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()), localUniBusinessItem), new GetItemWatchWordRsp(), new bidl(this, paramEIPCModule, paramInt), true);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.view;
 
 import android.graphics.drawable.Drawable;
-import baif;
+import bbav;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -21,7 +21,7 @@ class ApolloPanel$35
     if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null))
     {
       this.this$0.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
-      ((baif)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(36)).a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+      ((bbav)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(36)).a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = ApolloPanel.a(this.this$0);

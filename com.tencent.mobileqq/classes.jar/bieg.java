@@ -1,18 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import android.content.Context;
+import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
 
 public class bieg
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bieg(FloatingScreenContainer paramFloatingScreenContainer, WindowManager.LayoutParams paramLayoutParams) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static boolean a(Context paramContext)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.alpha = (paramValueAnimator.floatValue() * 1.0F + 0.0F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    return bmfx.a(paramContext, VipWallpaperService.class.getName());
   }
 }
 

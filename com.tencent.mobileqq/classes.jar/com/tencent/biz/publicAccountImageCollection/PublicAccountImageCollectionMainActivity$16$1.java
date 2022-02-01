@@ -1,6 +1,6 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import uvi;
+import uwt;
 
 class PublicAccountImageCollectionMainActivity$16$1
   implements Runnable

@@ -1,36 +1,16 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
-class osd
-  implements Handler.Callback
+public class osd
+  implements ovw
 {
-  osd(osb paramosb) {}
+  public osd(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment, ovw paramovw) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 1: 
-      if (System.currentTimeMillis() - osb.a(this.a) > 1500L)
-      {
-        osb.a(this.a, false);
-        QLog.d("KandianAdPandent", 2, "time up do not update volume");
-      }
-      if (osb.b(this.a))
-      {
-        osb.a(this.a).sendEmptyMessageDelayed(1, 300L);
-        this.a.d();
-        return false;
-      }
-      osb.a(this.a).removeMessages(1);
-      return false;
+    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).c();
+    if (this.jdField_a_of_type_Ovw != null) {
+      this.jdField_a_of_type_Ovw.a(paramInt);
     }
-    osb.a(this.a);
-    return false;
   }
 }
 

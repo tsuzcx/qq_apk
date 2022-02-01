@@ -1,24 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.qav.QavDef.MultiUserInfo;
+import java.util.List;
 
-class mxw
-  extends Handler
+public abstract class mxw
 {
-  mxw(mxv parammxv) {}
+  public void a() {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      mxv.a(this.a, mxv.a(this.a), mxv.a(this.a));
-      mxv.a(this.a);
-      return;
-    }
-    mxv.b(this.a);
-  }
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(QavDef.MultiUserInfo paramMultiUserInfo) {}
+  
+  public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean) {}
+  
+  public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean, int paramInt) {}
+  
+  public void a(List<QavDef.MultiUserInfo> paramList) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void b(QavDef.MultiUserInfo paramMultiUserInfo) {}
+  
+  public void b(boolean paramBoolean, long paramLong, int paramInt) {}
+  
+  public void c(int paramInt) {}
 }
 
 

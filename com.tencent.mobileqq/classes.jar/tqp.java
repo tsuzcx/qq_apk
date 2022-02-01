@@ -1,26 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyCutImageView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/PublicAccountNewBridgeInvokeHandler$getUserInfo$1$1", "Lcom/tencent/biz/pubaccount/readinjoy/model/ReadInJoyUserInfoModule$RefreshUserInfoCallBack;", "onLoadUserInfoFailed", "", "uin", "", "errMsg", "onLoadUserInfoSucceed", "userInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ReadInJoyUserInfo;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tqp
-  implements pyb
+class tqp
+  extends AnimatorListenerAdapter
 {
-  tqp(String paramString1, tqn paramtqn, String paramString2) {}
+  tqp(tqn paramtqn, ReadInjoyCutImageView paramReadInjoyCutImageView) {}
   
-  public void onLoadUserInfoFailed(@NotNull String paramString1, @NotNull String paramString2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Intrinsics.checkParameterIsNotNull(paramString1, "uin");
-    Intrinsics.checkParameterIsNotNull(paramString2, "errMsg");
-    this.jdField_a_of_type_Tqn.a(this.jdField_a_of_type_JavaLangString, tym.a(paramString2));
+    super.onAnimationEnd(paramAnimator);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyCutImageView.setVisibility(4);
+    tqn.a(this.jdField_a_of_type_Tqn).a();
   }
   
-  public void onLoadUserInfoSucceed(@NotNull String paramString, @NotNull ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "uin");
-    Intrinsics.checkParameterIsNotNull(paramReadInJoyUserInfo, "userInfo");
-    this.jdField_a_of_type_Tqn.a(this.jdField_a_of_type_JavaLangString, tym.a(paramReadInJoyUserInfo));
+    super.onAnimationStart(paramAnimator);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyCutImageView.setVisibility(0);
   }
 }
 

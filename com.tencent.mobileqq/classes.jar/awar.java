@@ -1,68 +1,71 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
-import com.tencent.tencentmap.mapsdk.maps.model.TencentMapGestureListener;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
 public class awar
-  implements TencentMapGestureListener
 {
-  private boolean jdField_a_of_type_Boolean;
-  private volatile boolean b;
-  
-  public awar(MapWidget paramMapWidget) {}
-  
-  public boolean onDoubleTap(float paramFloat1, float paramFloat2)
+  public static int a(Context paramContext)
   {
-    return false;
-  }
-  
-  public boolean onDown(float paramFloat1, float paramFloat2)
-  {
-    this.b = true;
-    if (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null) {
-      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(false, new Point(Math.round(paramFloat1), Math.round(paramFloat2)));
-    }
-    return false;
-  }
-  
-  public boolean onFling(float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean onLongPress(float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onMapStable()
-  {
-    if ((this.b) && (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null)) {
-      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a.getCameraPosition().target);
-    }
-    this.b = false;
-  }
-  
-  public boolean onScroll(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return false;
-  }
-  
-  public boolean onSingleTap(float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean onUp(float paramFloat1, float paramFloat2)
-  {
-    if (this.jdField_a_of_type_Boolean)
+    switch (b(paramContext))
     {
-      bcst.b(null, "CliOper", "", "", "0X800A772", "0X800A772", 0, 0, "", "0", "0", "");
-      this.jdField_a_of_type_Boolean = false;
+    case 0: 
+    default: 
+      return -1;
+    case 1: 
+      return 1;
+    case 2: 
+      return 2;
+    case 3: 
+      return 3;
+    case 4: 
+      return 4;
     }
-    return false;
+    return 0;
+  }
+  
+  public static int b(Context paramContext)
+  {
+    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    if (paramContext == null) {
+      return 0;
+    }
+    paramContext = paramContext.getActiveNetworkInfo();
+    if ((paramContext == null) || (!paramContext.isConnected())) {
+      return 0;
+    }
+    switch (paramContext.getType())
+    {
+    default: 
+      return -1;
+    case 1: 
+      return 1;
+    case 9: 
+      return 5;
+    }
+    switch (paramContext.getSubtype())
+    {
+    case 16: 
+    default: 
+      return -1;
+    case 1: 
+    case 2: 
+    case 4: 
+    case 7: 
+    case 11: 
+      return 2;
+    case 3: 
+    case 5: 
+    case 6: 
+    case 8: 
+    case 9: 
+    case 10: 
+    case 12: 
+    case 14: 
+    case 15: 
+    case 17: 
+      return 3;
+    }
+    return 4;
   }
 }
 

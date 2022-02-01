@@ -1,29 +1,25 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aftn
-  extends RecyclerView.ItemDecoration
+  implements DialogInterface.OnClickListener
 {
-  private aftn(ReminderListFragment paramReminderListFragment) {}
+  public aftn(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    paramRect.left = afur.a(16.0F, this.a.getResources());
-    paramRect.right = afur.a(16.0F, this.a.getResources());
-    int i = paramRecyclerView.getChildAdapterPosition(paramView);
-    int j = ReminderListFragment.a(this.a).getItemCount();
-    if (QLog.isColorLevel()) {
-      QLog.i(ReminderListFragment.a(), 2, "position: " + i + ", totalCnt: " + j);
-    }
-    paramRect.top = afur.a(12.0F, this.a.getResources());
-    if (i == j - 1) {
-      paramRect.bottom = afur.a(12.0F, this.a.getResources());
+    QQAppInterface localQQAppInterface = this.a.app;
+    String str2 = this.a.a.troopUin;
+    if (this.a.a.bOwner) {}
+    for (String str1 = "0";; str1 = "1")
+    {
+      bdll.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "1", "");
+      paramDialogInterface.dismiss();
+      this.a.k();
+      return;
     }
   }
 }

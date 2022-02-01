@@ -1,95 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aika
-  extends aqkz<aijz>
+class aika
+  implements View.OnClickListener
 {
-  private QQAppInterface a;
+  aika(aijm paramaijm) {}
   
-  @NonNull
-  public aijz a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new aijz();
-  }
-  
-  @Nullable
-  public aijz a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
-    {
-      aijz localaijz = aijz.a(paramArrayOfaqlg[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("AdEmoConfigProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
-      }
-      return localaijz;
+    if (QLog.isColorLevel()) {
+      QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "mQimStatusOnClickListener.onClick: invoked. info: v = " + paramView);
     }
-    return null;
-  }
-  
-  public void a(aijz paramaijz)
-  {
-    Object localObject;
-    StringBuilder localStringBuilder;
-    if (this.a == null)
-    {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("onUpdate, runtime is null ?  ");
-        if (localObject != null) {
-          break label113;
-        }
-      }
-    }
-    label113:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("AdEmoConfigProcessor", 2, bool + " , runtime instanceof QQAppInterface ? " + (localObject instanceof QQAppInterface));
-      if ((localObject instanceof QQAppInterface)) {
-        this.a = ((QQAppInterface)localObject);
-      }
-      if (this.a != null)
-      {
-        localObject = this.a.c();
-        aijy.a(this.a.getApp(), (String)localObject, paramaijz.a);
-      }
-      return;
-    }
-  }
-  
-  public Class<aijz> clazz()
-  {
-    return aijz.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return super.isAccountRelated();
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 657;
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X80087E6");
+    aifn.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,77 +1,58 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.mobileqq.mini.sdk.MiniAppController.ActivityResultListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import java.util.ArrayList;
+import com.tencent.open.appstore.js.DownloadInterfaceNew;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-class bjtk
-  implements MiniAppController.ActivityResultListener
+public class bjtk
+  implements bjwx
 {
-  bjtk(bjtj parambjtj, RequestEvent paramRequestEvent) {}
+  public bjtk(DownloadInterfaceNew paramDownloadInterfaceNew, String paramString) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void a(int paramInt, String paramString)
   {
-    JSONArray localJSONArray;
-    if (paramInt1 == 10)
+    bjtx.e("DownloadInterfaceNew", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
+  }
+  
+  public void a(List<DownloadInfo> paramList)
+  {
+    bjtx.c("DownloadInterfaceNew", "[innerQuery] onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
     {
-      MiniAppController.getInstance().removeActivityResultListener(this);
-      localJSONArray = new JSONArray();
-      if ((paramIntent == null) || (paramInt2 != -1)) {
-        break label190;
-      }
-      paramIntent = paramIntent.getParcelableArrayListExtra("result_set");
-      paramInt1 = 0;
-      for (;;)
+      if (i < j)
       {
-        if (paramInt1 < paramIntent.size())
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
         {
-          ResultRecord localResultRecord = (ResultRecord)paramIntent.get(paramInt1);
-          try
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("packagename", localDownloadInfo.e);
+          localJSONObject.put("versioncode", localDownloadInfo.b);
+          localJSONObject.put("url", localDownloadInfo.d);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONObject.put("download_from", localDownloadInfo.h);
+          localJSONObject.put("writecodestate", localDownloadInfo.j);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
           {
-            localJSONArray.put(new JSONObject().put("uin", localResultRecord.a).put("name", localResultRecord.b));
-            paramInt1 += 1;
-          }
-          catch (JSONException localJSONException2)
-          {
-            for (;;)
-            {
-              localJSONException2.printStackTrace();
-            }
+            localJSONException.printStackTrace();
           }
         }
       }
     }
-    label190:
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      paramIntent = new JSONObject();
-      try
-      {
-        paramIntent.put("persons", localJSONArray);
-        if (QLog.isColorLevel()) {
-          QLog.i("GroupPlugin", 2, String.format("evaluateCallback [ACTION_REQUEST_OPEN_GROUP_SELECTMEMBERS] %s", new Object[] { paramIntent }));
-        }
-        if (paramInt1 != 0)
-        {
-          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(paramIntent);
-          return false;
-        }
-      }
-      catch (JSONException localJSONException1)
-      {
-        for (;;)
-        {
-          localJSONException1.printStackTrace();
-        }
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(paramIntent, "errDesc");
-        return false;
-      }
-    }
+    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
+    bjtx.c("DownloadInterfaceNew", "[innerQuery] querySucess : " + paramList);
+    DownloadInterfaceNew.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDownloadInterfaceNew, paramList);
   }
 }
 

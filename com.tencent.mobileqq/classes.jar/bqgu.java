@@ -1,75 +1,43 @@
-import android.content.Context;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
-import com.tencent.ttpic.openapi.initializer.Voice2TextInitializer;
-import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
-import com.tencent.ttpic.voicechanger.common.audio.VoiceTextRecognizer;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.shortvideo.videotransfer.TransferData;
+import java.util.List;
 
-public class bqgu
+public abstract interface bqgu
+  extends bqgj
 {
-  private static String jdField_a_of_type_JavaLangString = "wx7d02f7e92ea2884d";
-  private AudioCapture jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture;
-  private boolean jdField_a_of_type_Boolean;
+  public abstract int a();
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.c(false);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.b();
-      VoiceTextRecognizer.getInstance().destroy();
-    }
-  }
+  public abstract long a(int paramInt);
   
-  public void a(Context paramContext, AudioCapture paramAudioCapture)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = true;
-    FeatureManager.Features.VOICE_TO_TEXT.init();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture = paramAudioCapture;
-    VoiceTextRecognizer.setWxVoiceRecognizerAppid(jdField_a_of_type_JavaLangString);
-    VoiceTextRecognizer.getInstance().init(paramContext, false);
-    VoiceTextRecognizer.getInstance().setVRErrorListener(new bqgv(this));
-    VoiceTextRecognizer.getInstance().start();
-    paramAudioCapture.c(true);
-    paramAudioCapture.c();
-  }
+  public abstract Bitmap a(int paramInt);
   
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream;
-    if ((this.jdField_a_of_type_Boolean) && (paramInt2 > 0))
-    {
-      paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte, 0, paramInt2);
-      localByteArrayOutputStream = new ByteArrayOutputStream(Math.max((int)Math.ceil(paramInt2 * 16000 / this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a()), 1));
-    }
-    try
-    {
-      new zno(paramArrayOfByte, localByteArrayOutputStream, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a(), 16000, 2, 2, 1, paramInt2, 0.0D, 0, true);
-      byte[] arrayOfByte = localByteArrayOutputStream.toByteArray();
-      VoiceTextRecognizer.getInstance().recognizeFromPCMBuffer(arrayOfByte, arrayOfByte.length);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        try
-        {
-          paramArrayOfByte.close();
-          localByteArrayOutputStream.close();
-          return;
-        }
-        catch (Exception paramArrayOfByte)
-        {
-          paramArrayOfByte.printStackTrace();
-        }
-        localException = localException;
-        localException.printStackTrace();
-      }
-    }
-  }
+  public abstract List<? extends bqix> a();
+  
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt1, int paramInt2, float paramFloat);
+  
+  public abstract void a(int paramInt, byte[] paramArrayOfByte);
+  
+  public abstract void a(long paramLong, boolean paramBoolean);
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  
+  public abstract void a(TransferData paramTransferData);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a(long paramLong);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(long paramLong, boolean paramBoolean);
+  
+  public abstract void k();
+  
+  public abstract void l();
 }
 
 

@@ -1,12 +1,35 @@
-class xcw
-  extends xci
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetMusicListConfig;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+
+public class xcw
+  extends wpa<xeq>
 {
-  xcw(xcu paramxcu, xeb paramxeb) {}
+  private static final String a = wnu.a("StorySvc.video_music_get");
   
-  public boolean b()
+  public String a()
   {
-    this.jdField_a_of_type_Xeb.a = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    return a;
+  }
+  
+  public xeq a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetMusicListConfig localRspGetMusicListConfig = new qqstory_service.RspGetMusicListConfig();
+    try
+    {
+      localRspGetMusicListConfig.mergeFrom(paramArrayOfByte);
+      return new xeq(localRspGetMusicListConfig);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetMusicListConfig().toByteArray();
   }
 }
 

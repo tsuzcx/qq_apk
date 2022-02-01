@@ -1,219 +1,109 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.teamworkforgroup.GroupPadTemplateInfo;
+import android.content.Intent;
+import com.tencent.mobileqq.pluginsdk.IStatisticsUploader;
+import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Random;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class bdle
-  extends BaseAdapter
-  implements View.OnClickListener
+  implements IStatisticsUploader
 {
-  public static int a;
-  public static int b;
-  Context jdField_a_of_type_AndroidContentContext;
-  protected View.OnClickListener a;
-  final List<GroupPadTemplateInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private Set<String> b;
+  public static final Random a = new Random();
   
-  static
+  public static void a(String paramString, int paramInt, long paramLong)
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-  }
-  
-  public bdle(Context paramContext, View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_b_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void a(AsyncImageView paramAsyncImageView, GroupPadTemplateInfo paramGroupPadTemplateInfo)
-  {
-    if (paramGroupPadTemplateInfo != null)
+    if (a.nextInt(1000) != 0) {}
+    do
     {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840250);
-      if (!bkgj.a(paramGroupPadTemplateInfo.mobThumbUrl)) {
-        paramAsyncImageView.setImageDrawable(localDrawable);
-      }
-      for (;;)
+      do
       {
         return;
-        String str = paramGroupPadTemplateInfo.mobThumbUrl;
-        paramGroupPadTemplateInfo = URLDrawable.URLDrawableOptions.obtain();
-        paramGroupPadTemplateInfo.mLoadingDrawable = localDrawable;
-        paramGroupPadTemplateInfo.mFailedDrawable = localDrawable;
-        Object localObject = null;
-        try
-        {
-          paramGroupPadTemplateInfo = URLDrawable.getDrawable(str, paramGroupPadTemplateInfo);
-          if (paramGroupPadTemplateInfo != null)
-          {
-            if ((paramGroupPadTemplateInfo.getStatus() == 2) && (this.jdField_b_of_type_JavaUtilSet.remove(str))) {
-              paramGroupPadTemplateInfo.restartDownload();
-            }
-            paramGroupPadTemplateInfo.setDownloadListener(new bdlf(this, str));
-            paramAsyncImageView.setImageDrawable(paramGroupPadTemplateInfo);
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("GroupPadTemplateAdapter", 2, "loadThumbImage is ok. url: " + str);
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            paramGroupPadTemplateInfo = localObject;
-            if (QLog.isColorLevel())
-            {
-              QLog.e("GroupPadTemplateAdapter", 2, localException, new Object[] { "loadThumbImage failed" });
-              paramGroupPadTemplateInfo = localObject;
-            }
-          }
-          paramAsyncImageView.setImageDrawable(localDrawable);
-          return;
-        }
-      }
+        localObject1 = new HashMap();
+        ((HashMap)localObject1).put(BaseConstants.RDM_NoChangeFailCode, String.valueOf(paramInt));
+        ((HashMap)localObject1).put("plugin_name", paramString);
+        ((HashMap)localObject1).put("cost", String.valueOf(paramLong));
+        ((HashMap)localObject1).put("result", String.valueOf(paramInt));
+        localObject2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      } while (localObject2 == null);
+      Object localObject2 = ((AppRuntime)localObject2).getAccount();
+      bdmc.a(MobileQQ.sMobileQQ).a((String)localObject2, "actPluginDexa2OatInfo", false, paramLong, 0L, (HashMap)localObject1, null);
+    } while (!QLog.isColorLevel());
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("uploadDexOatInfo pluginId ");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append(" ");
+    ((StringBuilder)localObject1).append(String.valueOf(paramInt));
+    ((StringBuilder)localObject1).append(" ");
+    ((StringBuilder)localObject1).append(paramLong);
+    QLog.d("PluginStatisticsCollector", 2, ((StringBuilder)localObject1).toString());
+  }
+  
+  public void uploadStartupFailure(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    boolean bool = false;
+    if ("success".equals(paramString5)) {
+      bool = true;
     }
-    paramAsyncImageView.setImageResource(2130840250);
-  }
-  
-  public GroupPadTemplateInfo a()
-  {
-    GroupPadTemplateInfo localGroupPadTemplateInfo = new GroupPadTemplateInfo();
-    localGroupPadTemplateInfo.docOrSheetType = 1;
-    localGroupPadTemplateInfo.templateName = this.jdField_a_of_type_AndroidContentContext.getString(2131692808);
-    return localGroupPadTemplateInfo;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(List<GroupPadTemplateInfo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if ((paramList != null) && (paramList.size() > 0))
+    String str = paramString5;
+    if (paramString5 != null)
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      str = paramString5;
+      if (paramString5.contains(ClassNotFoundException.class.getName()))
       {
-        GroupPadTemplateInfo localGroupPadTemplateInfo = (GroupPadTemplateInfo)paramList.next();
-        if ((localGroupPadTemplateInfo != null) && (localGroupPadTemplateInfo.templateID >= 0)) {
-          this.jdField_a_of_type_JavaUtilList.add(localGroupPadTemplateInfo);
-        }
+        float f = bhmi.a();
+        str = "GetAvailableInnernalMemorySize:" + f + "__" + paramString5;
       }
-      paramList = a();
-      this.jdField_a_of_type_JavaUtilList.add(paramList);
     }
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginStatisticsCollector", 2, "uploadStartupFailure result = " + bool + ", pluginName = " + paramString2 + ", extraInfo = " + str);
     }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    GroupPadTemplateInfo localGroupPadTemplateInfo = (GroupPadTemplateInfo)getItem(paramInt);
-    if (localGroupPadTemplateInfo != null) {
-      return localGroupPadTemplateInfo.templateID;
-    }
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    GroupPadTemplateInfo localGroupPadTemplateInfo = (GroupPadTemplateInfo)getItem(paramInt);
-    View localView;
-    if (getCount() == paramInt + 1)
+    if (!bool)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559246, null);
-      paramView = new bdlg(this);
-      paramView.jdField_a_of_type_Int = jdField_b_of_type_Int;
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)localView.findViewById(2131367668));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367664));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367662));
-      paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo = localGroupPadTemplateInfo;
-      localView.setTag(paramView);
-      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      if (paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo == null) {
-        break label316;
-      }
-      if (paramView.jdField_a_of_type_Int != jdField_a_of_type_Int) {
-        break label293;
-      }
-      a(paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localGroupPadTemplateInfo);
-      label141:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localGroupPadTemplateInfo.templateName);
-      label153:
-      if (AppSetting.c)
-      {
-        if (localGroupPadTemplateInfo == null) {
-          break label338;
-        }
-        localView.setContentDescription(localGroupPadTemplateInfo.templateName);
-      }
+      paramString5 = new HashMap();
+      paramString5.put(BaseConstants.RDM_NoChangeFailCode, "");
+      paramString5.put("plugin_name", paramString2);
+      paramString5.put("plugin_loc", paramString3);
+      paramString5.put("plugin_activity", paramString4);
+      paramString5.put("plugin_extra_info", str);
+      bdmc.a(paramContext).a(paramString1, "actPluginStartupFailure", bool, 0L, 0L, paramString5, null);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559245, null);
-      paramView = new bdlg(this);
-      paramView.jdField_a_of_type_Int = jdField_a_of_type_Int;
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)localView.findViewById(2131367667));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367666));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367661));
-      paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo = localGroupPadTemplateInfo;
-      localView.setTag(paramView);
-      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      break;
-      label293:
-      if (paramView.jdField_a_of_type_Int != jdField_b_of_type_Int) {
-        break label141;
-      }
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130840252);
-      break label141;
-      label316:
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130840250);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      break label153;
-      label338:
-      localView.setContentDescription("");
-    }
+    paramString3 = new HashMap();
+    paramString3.put(BaseConstants.RDM_NoChangeFailCode, "");
+    paramString3.put("plugin_name", paramString2);
+    bdmc.a(paramContext).a(paramString1, "actPluginStartupResult", bool, 0L, 0L, paramString3, null);
   }
   
-  public void onClick(View paramView) {}
+  public void uploadStartupSpeedInfo(Context paramContext, Intent paramIntent)
+  {
+    long l1 = paramIntent.getLongExtra("launchTotal", 0L);
+    long l2 = paramIntent.getLongExtra("pluginApkCost", 0L);
+    long l3 = paramIntent.getLongExtra("pluginOatCost", 0L);
+    long l4 = paramIntent.getLongExtra("pluginDownloadCost", 0L);
+    long l5 = paramIntent.getLongExtra("pluginLibCost", 0L);
+    long l6 = paramIntent.getLongExtra("pluginLoaderCost", 0L);
+    String str1 = paramIntent.getStringExtra("launchComponent");
+    String str2 = paramIntent.getStringExtra("launchProcName");
+    String str3 = paramIntent.getStringExtra("pluginsdk_selfuin");
+    String str4 = paramIntent.getStringExtra("pluginsdk_pluginName");
+    String str5 = paramIntent.getStringExtra("pluginsdk_pluginLocation");
+    String str6 = paramIntent.getStringExtra("pluginsdk_pluginpath");
+    paramIntent = paramIntent.getStringExtra("pluginsdk_launchActivity");
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+    localHashMap.put("plugin_name", str4);
+    localHashMap.put("plugin_loc", str5);
+    localHashMap.put("plugin_activity", paramIntent);
+    localHashMap.put("plugin_extra_info", str6);
+    localHashMap.put("pluginOatCost", String.valueOf(l3));
+    localHashMap.put("pluginApkCost", String.valueOf(l2));
+    localHashMap.put("pluginLoaderCost", String.valueOf(l6));
+    localHashMap.put("launchTotal", String.valueOf(l1));
+    bdmc.a(paramContext).a(str3, "actPluginSpeedInfoV2", false, l1, 0L, localHashMap, null);
+    QLog.d("plugin_tag", 1, "uploadStartupSpeedInfo  " + str5 + ", launchTotal " + l1 + ", apkCost " + l2 + ", dex2OatCost " + l3 + ", libCost " + l5 + ", downloadCost " + l4 + ", loaderCost " + l6 + ", launchComponent " + str1 + ", procName " + str2);
+  }
 }
 
 

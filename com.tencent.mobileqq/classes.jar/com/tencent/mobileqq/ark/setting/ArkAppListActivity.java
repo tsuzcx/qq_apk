@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.setting;
 
 import Override;
-import afur;
+import agej;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import apru;
+import aqfk;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -34,10 +34,10 @@ public class ArkAppListActivity
     super.doOnCreate(paramBundle);
     paramBundle = new LinearLayout(this);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    paramBundle.setBackgroundResource(2130838759);
+    paramBundle.setBackgroundResource(2130838779);
     paramBundle.setLayoutParams(localLayoutParams);
     paramBundle.setOrientation(1);
-    paramBundle.setPadding(0, afur.a(20.0F, getResources()), 0, 0);
+    paramBundle.setPadding(0, agej.a(20.0F, getResources()), 0, 0);
     this.a = paramBundle;
     paramBundle = getIntent().getStringArrayExtra("intent_extra_authority_app_list");
     if ((paramBundle != null) && (paramBundle.length > 0))
@@ -51,14 +51,14 @@ public class ArkAppListActivity
           FormSimpleItem localFormSimpleItem = new FormSimpleItem(this);
           localFormSimpleItem.setLeftText(localLayoutParams);
           localFormSimpleItem.a(true);
-          localFormSimpleItem.setOnClickListener(new apru(this, localLayoutParams));
+          localFormSimpleItem.setOnClickListener(new aqfk(this, localLayoutParams));
           this.a.addView(localFormSimpleItem);
         }
         i += 1;
       }
     }
     super.setContentView(this.a);
-    super.setTitle(2131690085);
+    super.setTitle(2131690093);
     return true;
   }
   

@@ -6,19 +6,19 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
 import android.util.Base64;
-import anhk;
-import ayma;
-import bamd;
-import bann;
-import bclu;
-import bcly;
-import bdvs;
-import bdvu;
-import bdwu;
-import bghp;
-import bgmg;
-import bgnt;
-import bkcx;
+import antf;
+import azet;
+import bbew;
+import bbgg;
+import bdem;
+import bdeq;
+import beum;
+import beuo;
+import bevn;
+import bhhq;
+import bhmi;
+import bhnv;
+import bleb;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -79,7 +79,7 @@ public class RecentDanceConfigMgr
         if (paramQQAppInterface != null) {
           if (paramQQAppInterface.compress.get() == 1)
           {
-            paramQQAppInterface = ayma.a(paramQQAppInterface.content.get().toByteArray());
+            paramQQAppInterface = azet.a(paramQQAppInterface.content.get().toByteArray());
             if (paramQQAppInterface == null) {}
           }
         }
@@ -312,7 +312,7 @@ public class RecentDanceConfigMgr
   
   private static boolean a(AppInterface paramAppInterface, RecentDanceConfigMgr.DItemInfo paramDItemInfo)
   {
-    boolean bool = bann.a();
+    boolean bool = bbgg.a();
     if (QLog.isColorLevel()) {
       QLog.d("RecentDanceConfigMgr", 2, "needShowDanceInPlus supportMediaCodec=" + bool);
     }
@@ -320,7 +320,7 @@ public class RecentDanceConfigMgr
     {
       if (paramDItemInfo.categoryID == 10)
       {
-        bool = bcly.g(paramAppInterface);
+        bool = bdeq.g(paramAppInterface);
         if (QLog.isColorLevel()) {
           QLog.d("RecentDanceConfigMgr", 2, "needShowDanceInPlus isSupportDance=" + bool);
         }
@@ -364,7 +364,7 @@ public class RecentDanceConfigMgr
           i = 0;
           if (i < paramString.length())
           {
-            localDItemInfo = (RecentDanceConfigMgr.DItemInfo)bghp.a(paramString.getJSONObject(i), RecentDanceConfigMgr.DItemInfo.class);
+            localDItemInfo = (RecentDanceConfigMgr.DItemInfo)bhhq.a(paramString.getJSONObject(i), RecentDanceConfigMgr.DItemInfo.class);
             if (localDItemInfo == null) {
               break label492;
             }
@@ -456,7 +456,7 @@ public class RecentDanceConfigMgr
     {
       try
       {
-        paramString = bkcx.a(new File(paramString));
+        paramString = bleb.a(new File(paramString));
         return paramString;
       }
       catch (Exception paramString) {}
@@ -503,7 +503,7 @@ public class RecentDanceConfigMgr
   
   private static String c()
   {
-    Object localObject = new StringBuilder(anhk.ba);
+    Object localObject = new StringBuilder(antf.ba);
     ((StringBuilder)localObject).append("sv_config_icon");
     ((StringBuilder)localObject).append(File.separator);
     localObject = ((StringBuilder)localObject).toString();
@@ -527,14 +527,14 @@ public class RecentDanceConfigMgr
     Object localObject = Base64.decode(paramDItemInfo.icon_url, 0);
     if (localObject != null)
     {
-      bgmg.a((byte[])localObject, paramString);
+      bhmi.a((byte[])localObject, paramString);
       if (new File(paramString).exists())
       {
         localObject = b(paramString);
         if ((localObject != null) && (!"".equals(localObject)) && (((String)localObject).equalsIgnoreCase(paramDItemInfo.icon_md5))) {
           break label68;
         }
-        bgmg.d(paramString);
+        bhmi.d(paramString);
       }
     }
     return;
@@ -552,23 +552,23 @@ public class RecentDanceConfigMgr
   
   private static boolean c()
   {
-    return new File(bamd.a, "ptv_template_new.cfg").exists();
+    return new File(bbew.a, "ptv_template_new.cfg").exists();
   }
   
   private static void d(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString)
   {
-    bdvs localbdvs = new bdvs();
-    localbdvs.jdField_a_of_type_Bdvw = new bclu(paramDItemInfo, paramString);
-    localbdvs.jdField_a_of_type_JavaLangString = paramDItemInfo.icon_url;
-    localbdvs.jdField_a_of_type_Int = 0;
-    localbdvs.c = (paramString + "_temp");
-    localbdvs.b = bgnt.a(bdwu.a().a());
+    beum localbeum = new beum();
+    localbeum.jdField_a_of_type_Beuq = new bdem(paramDItemInfo, paramString);
+    localbeum.jdField_a_of_type_JavaLangString = paramDItemInfo.icon_url;
+    localbeum.jdField_a_of_type_Int = 0;
+    localbeum.c = (paramString + "_temp");
+    localbeum.b = bhnv.a(bevn.a().a());
     try
     {
       paramString = BaseApplicationImpl.getApplication().getRuntime();
       if (QQAppInterface.class.isInstance(paramString))
       {
-        ((QQAppInterface)paramString).getNetEngine(0).a(localbdvs);
+        ((QQAppInterface)paramString).getNetEngine(0).a(localbeum);
         if (QLog.isColorLevel()) {
           QLog.i("RecentDanceConfigMgr", 2, "processNetWork url: " + paramDItemInfo.icon_url);
         }

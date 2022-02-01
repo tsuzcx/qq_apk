@@ -1,46 +1,28 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
 
-public abstract class ajhb
-  implements ajic
+public class ajhb
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  protected Activity a;
+  public ajhb(TroopView paramTroopView) {}
   
-  public ajhb(Activity paramActivity)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.a = paramActivity;
-  }
-  
-  public Activity a()
-  {
-    return this.a;
-  }
-  
-  public void a(View paramView) {}
-  
-  public void a(QQAppInterface paramQQAppInterface) {}
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c() {}
-  
-  public void c(boolean paramBoolean)
-  {
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      FrameHelperActivity.c(paramBoolean);
+    if (bduy.a()) {}
+    while (paramInt != 1) {
       return;
     }
+    TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
   }
   
-  public void d() {}
-  
-  public void e() {}
+  public void onPageSelected(int paramInt)
+  {
+    if (bduy.a()) {
+      return;
+    }
+    TroopView.a(this.a, paramInt);
+  }
 }
 
 

@@ -1,19 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
 
-class avsw
-  implements ankk
+public abstract interface avsw
 {
-  avsw(avsv paramavsv) {}
+  public abstract void a(Animation paramAnimation);
   
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      avsv.a(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogether.dpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
-    }
-  }
+  public abstract void a(HeartLayout paramHeartLayout, float paramFloat1, float paramFloat2);
+  
+  public abstract void b(Animation paramAnimation);
 }
 
 

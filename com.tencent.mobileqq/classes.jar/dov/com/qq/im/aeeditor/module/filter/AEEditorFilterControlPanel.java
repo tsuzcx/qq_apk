@@ -14,21 +14,21 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import bgnt;
-import bnyh;
-import bnzb;
-import bnzc;
-import bobw;
-import bofq;
-import bofr;
-import bofs;
-import boft;
-import bofu;
-import bofv;
-import bofw;
-import bogc;
-import bogd;
-import bogg;
+import bhnv;
+import bozr;
+import bpam;
+import bpan;
+import bpdr;
+import bphl;
+import bphm;
+import bphn;
+import bpho;
+import bphp;
+import bphq;
+import bphr;
+import bphx;
+import bphy;
+import bpib;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -43,7 +43,7 @@ import mqq.os.MqqHandler;
 
 public class AEEditorFilterControlPanel
   extends FrameLayout
-  implements View.OnClickListener, bogg
+  implements View.OnClickListener, bpib
 {
   private static final String jdField_a_of_type_JavaLangString = AEEditorFilterControlPanel.class.getSimpleName();
   private int jdField_a_of_type_Int = -1;
@@ -52,9 +52,9 @@ public class AEEditorFilterControlPanel
   private Button jdField_a_of_type_AndroidWidgetButton;
   private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bofu jdField_a_of_type_Bofu;
-  private bogc jdField_a_of_type_Bogc;
-  private bogd jdField_a_of_type_Bogd;
+  private bphp jdField_a_of_type_Bphp;
+  private bphx jdField_a_of_type_Bphx;
+  private bphy jdField_a_of_type_Bphy;
   private AEEditorFilterBean jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean = AEEditorFilterBean.createAiFilterInstance();
   private List<AEEditorFilterBean> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
@@ -85,12 +85,12 @@ public class AEEditorFilterControlPanel
   {
     try
     {
-      paramString = (AEFilterExtendBean)new Gson().fromJson(paramString, new bofs(this).getType());
+      paramString = (AEFilterExtendBean)new Gson().fromJson(paramString, new bphn(this).getType());
       return paramString;
     }
     catch (JsonSyntaxException paramString)
     {
-      bnzb.d(jdField_a_of_type_JavaLangString, "parse effect json exception: " + paramString.toString());
+      bpam.d(jdField_a_of_type_JavaLangString, "parse effect json exception: " + paramString.toString());
     }
     return null;
   }
@@ -108,21 +108,21 @@ public class AEEditorFilterControlPanel
     String str1 = paramAEEditorFilterBean.getEffectExtendBean().getLutID();
     if (!TextUtils.isEmpty(str1))
     {
-      String str2 = bofw.a().a(paramAEEditorFilterBean);
+      String str2 = bphr.a().a(paramAEEditorFilterBean);
       if ((!TextUtils.isEmpty(str2)) && (new File(str2).exists()))
       {
         b(paramInt, paramAEEditorFilterBean);
         return;
       }
-      if (!bgnt.a())
+      if (!bhnv.a())
       {
-        QQToast.a(getContext(), a(2131693989), 0).a();
+        QQToast.a(getContext(), a(2131694006), 0).a();
         return;
       }
       if ((paramAEEditorFilterBean.getEditorEffectItem().getPreDownload() != 0) || (paramAEEditorFilterBean.type == AEEditorFilterBean.FilterID.NETWORK)) {
-        b(a(2131691662));
+        b(a(2131691665));
       }
-      bofw.a().a(str1, new boft(this, paramAEEditorFilterBean, paramInt));
+      bphr.a().a(str1, new bpho(this, paramAEEditorFilterBean, paramInt));
       return;
     }
     b(paramInt, paramAEEditorFilterBean);
@@ -130,14 +130,14 @@ public class AEEditorFilterControlPanel
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = bnzc.a();
-    View localView = View.inflate(paramContext, 2131558546, this);
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)localView.findViewById(2131366614));
+    this.jdField_a_of_type_Boolean = bpan.a();
+    View localView = View.inflate(paramContext, 2131558548, this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)localView.findViewById(2131366664));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new bofq(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131362839));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new bphl(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131362857));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131366613));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131366663));
     paramContext = new LinearLayoutManager(paramContext, 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramContext);
   }
@@ -165,7 +165,7 @@ public class AEEditorFilterControlPanel
   
   public int a()
   {
-    return this.jdField_a_of_type_Bogd.a();
+    return this.jdField_a_of_type_Bphy.a();
   }
   
   public AEEditorFilterBean a()
@@ -183,13 +183,13 @@ public class AEEditorFilterControlPanel
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean);
     this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean);
-    this.jdField_a_of_type_Bogd = new bogd(this.jdField_a_of_type_JavaUtilList, 0, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bogd);
+    this.jdField_a_of_type_Bphy = new bphy(this.jdField_a_of_type_JavaUtilList, 0, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bphy);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Bogd.a(paramInt);
+    this.jdField_a_of_type_Bphy.a(paramInt);
   }
   
   public void a(TextView paramTextView)
@@ -199,7 +199,7 @@ public class AEEditorFilterControlPanel
   
   public void a(String paramString)
   {
-    bnzb.b(jdField_a_of_type_JavaLangString, "selectFilter---" + paramString);
+    bpam.b(jdField_a_of_type_JavaLangString, "selectFilter---" + paramString);
     if (TextUtils.isEmpty(paramString)) {}
     label104:
     for (;;)
@@ -248,65 +248,65 @@ public class AEEditorFilterControlPanel
     this.c = paramAEEditorFilterBean;
     if (paramAEEditorFilterBean.type == AEEditorFilterBean.FilterID.AIFilter)
     {
-      bnzb.b(jdField_a_of_type_JavaLangString, "select ai filter");
-      if (this.jdField_a_of_type_Bofu != null)
+      bpam.b(jdField_a_of_type_JavaLangString, "select ai filter");
+      if (this.jdField_a_of_type_Bphp != null)
       {
-        this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Bofu.f();
-        bnyh.a().b(paramAEEditorFilterBean.getEffectId());
+        this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Bphp.f();
+        bozr.a().b(paramAEEditorFilterBean.getEffectId());
       }
     }
     for (;;)
     {
       if (this.jdField_b_of_type_Boolean)
       {
-        if (this.jdField_a_of_type_Bogc != null) {
-          bool = this.jdField_a_of_type_Bogc.a(this.jdField_b_of_type_Int, paramInt);
+        if (this.jdField_a_of_type_Bphx != null) {
+          bool = this.jdField_a_of_type_Bphx.a(this.jdField_b_of_type_Int, paramInt);
         }
-        if ((bool) && (this.jdField_a_of_type_Bofu != null)) {
-          this.jdField_a_of_type_Bofu.u();
+        if ((bool) && (this.jdField_a_of_type_Bphp != null)) {
+          this.jdField_a_of_type_Bphp.u();
         }
         this.jdField_b_of_type_Int = paramInt;
       }
       return this.jdField_b_of_type_Boolean;
       if (paramAEEditorFilterBean.type == AEEditorFilterBean.FilterID.NON)
       {
-        bnzb.b(jdField_a_of_type_JavaLangString, "select none filter");
-        if (this.jdField_a_of_type_Bofu != null)
+        bpam.b(jdField_a_of_type_JavaLangString, "select none filter");
+        if (this.jdField_a_of_type_Bphp != null)
         {
-          this.jdField_a_of_type_Bofu.r();
-          bnyh.a().b(paramAEEditorFilterBean.getEffectId());
+          this.jdField_a_of_type_Bphp.r();
+          bozr.a().b(paramAEEditorFilterBean.getEffectId());
         }
       }
       else if (paramAEEditorFilterBean.type == AEEditorFilterBean.FilterID.CLIENT)
       {
-        bnzb.b(jdField_a_of_type_JavaLangString, "select color filter: " + paramAEEditorFilterBean.getEffectId());
-        String str = bofw.a().b(paramAEEditorFilterBean);
+        bpam.b(jdField_a_of_type_JavaLangString, "select color filter: " + paramAEEditorFilterBean.getEffectId());
+        String str = bphr.a().b(paramAEEditorFilterBean);
         this.jdField_b_of_type_Boolean = false;
         if ((!TextUtils.isEmpty(str)) && (new File(str).exists()))
         {
           a(str, paramInt, paramAEEditorFilterBean);
         }
-        else if (!bgnt.a())
+        else if (!bhnv.a())
         {
-          QQToast.a(getContext(), a(2131693989), 0).a();
+          QQToast.a(getContext(), a(2131694006), 0).a();
         }
         else
         {
           if ((paramAEEditorFilterBean.getEditorEffectItem().getPreDownload() != 0) || (paramAEEditorFilterBean.type == AEEditorFilterBean.FilterID.NETWORK)) {
-            b(a(2131691662));
+            b(a(2131691665));
           }
-          AEEditorDownloadResBean localAEEditorDownloadResBean = bobw.a(paramAEEditorFilterBean);
-          bofw.a().a(localAEEditorDownloadResBean);
-          bofw.a().a(localAEEditorDownloadResBean, new bofr(this, paramAEEditorFilterBean, paramInt, str));
+          AEEditorDownloadResBean localAEEditorDownloadResBean = bpdr.a(paramAEEditorFilterBean);
+          bphr.a().a(localAEEditorDownloadResBean);
+          bphr.a().a(localAEEditorDownloadResBean, new bphm(this, paramAEEditorFilterBean, paramInt, str));
         }
       }
       else if (paramAEEditorFilterBean.type == AEEditorFilterBean.FilterID.NETWORK)
       {
-        bnzb.b(jdField_a_of_type_JavaLangString, "select comics filter");
-        if (this.jdField_a_of_type_Bofu != null)
+        bpam.b(jdField_a_of_type_JavaLangString, "select comics filter");
+        if (this.jdField_a_of_type_Bphp != null)
         {
-          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Bofu.a(paramInt, paramAEEditorFilterBean);
-          bnyh.a().b(paramAEEditorFilterBean.getEffectId());
+          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Bphp.a(paramInt, paramAEEditorFilterBean);
+          bozr.a().b(paramAEEditorFilterBean.getEffectId());
         }
       }
     }
@@ -340,20 +340,20 @@ public class AEEditorFilterControlPanel
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((this.jdField_a_of_type_AndroidWidgetButton.isEnabled()) && (this.jdField_a_of_type_Bofu != null) && ((this.jdField_a_of_type_Bofu instanceof bofv))) {
-        ((bofv)this.jdField_a_of_type_Bofu).q();
+      if ((this.jdField_a_of_type_AndroidWidgetButton.isEnabled()) && (this.jdField_a_of_type_Bphp != null) && ((this.jdField_a_of_type_Bphp instanceof bphq))) {
+        ((bphq)this.jdField_a_of_type_Bphp).q();
       }
     }
   }
   
-  public void setFilterChangedComparator(bogc parambogc)
+  public void setFilterChangedComparator(bphx parambphx)
   {
-    this.jdField_a_of_type_Bogc = parambogc;
+    this.jdField_a_of_type_Bphx = parambphx;
   }
   
-  public void setFilterControlListener(bofu parambofu)
+  public void setFilterControlListener(bphp parambphp)
   {
-    this.jdField_a_of_type_Bofu = parambofu;
+    this.jdField_a_of_type_Bphp = parambphp;
   }
   
   public void setFiltersData(List<AEEditorFilterBean> paramList)
@@ -365,8 +365,8 @@ public class AEEditorFilterControlPanel
       this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean);
       this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
-    if (this.jdField_a_of_type_Bogd != null) {
-      this.jdField_a_of_type_Bogd.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Bphy != null) {
+      this.jdField_a_of_type_Bphy.notifyDataSetChanged();
     }
   }
   

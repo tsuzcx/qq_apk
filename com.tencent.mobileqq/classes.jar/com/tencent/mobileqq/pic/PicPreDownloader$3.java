@@ -6,21 +6,19 @@ import com.tencent.qphone.base.util.QLog;
 class PicPreDownloader$3
   implements Runnable
 {
-  PicPreDownloader$3(PicPreDownloader paramPicPreDownloader, MessageForPic paramMessageForPic, int paramInt) {}
+  PicPreDownloader$3(PicPreDownloader paramPicPreDownloader, MessageForPic paramMessageForPic, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (!this.this$0.a())
+    if (!PicPreDownloader.a(this.this$0))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("PIC_TAG_PRELOAD", 2, "productAysnc(): cannot predownload");
+        QLog.d("PIC_TAG_PRELOAD", 2, "productAsync, cannot preDownload");
       }
       this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, -1);
-    }
-    while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic == null) || (!(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic instanceof MessageForPic))) {
       return;
     }
-    this.this$0.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, this.jdField_a_of_type_Int, 5);
+    PicPreDownloader.b(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, this.jdField_a_of_type_Int, this.b);
   }
 }
 

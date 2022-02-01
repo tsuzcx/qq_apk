@@ -1,22 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XListView;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import android.content.Context;
+import java.util.ArrayList;
 
 public class akct
-  implements View.OnClickListener
 {
-  public akct(ContactListView paramContactListView) {}
+  public ArrayList<akcu> a;
+  public int[] a;
+  public String[] a;
   
-  public void onClick(View paramView)
+  public akct()
   {
-    ContactListView.a(this.a).removeHeaderView(ContactListView.a(this.a));
-    ContactListView.a(this.a, null);
-    blnc.a(this.a.getContext(), QQPimGetTipsInfoIPC.a().a);
-    QQPimGetTipsInfoIPC.a().c();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public void a(Context paramContext, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
+  {
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt1;
+    String[] arrayOfString = new String[paramArrayOfInt2.length];
+    int i = 0;
+    while (i < paramArrayOfInt2.length)
+    {
+      arrayOfString[i] = paramContext.getString(paramArrayOfInt2[i]);
+      this.jdField_a_of_type_JavaUtilArrayList.add(new akcu(paramArrayOfInt1[i], arrayOfString[i]));
+      i += 1;
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = arrayOfString;
   }
 }
 

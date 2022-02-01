@@ -1,21 +1,21 @@
 package com.tencent.biz.publicAccountImageCollection;
 
 import android.widget.ImageView;
-import uwf;
+import uxq;
 
 public class PublicAccountImageCollectionMainActivity$3$2
   implements Runnable
 {
-  public PublicAccountImageCollectionMainActivity$3$2(uwf paramuwf) {}
+  public PublicAccountImageCollectionMainActivity$3$2(uxq paramuxq) {}
   
   public void run()
   {
     if (PublicAccountImageCollectionMainActivity.b(this.a.a))
     {
-      this.a.a.e.setImageResource(2130841597);
+      this.a.a.e.setImageResource(2130841607);
       return;
     }
-    this.a.a.e.setImageResource(2130841596);
+    this.a.a.e.setImageResource(2130841606);
   }
 }
 

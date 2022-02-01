@@ -1,6 +1,6 @@
-class biin
+public abstract interface biin
 {
-  public static biik a = new biik("ae_camera_get_info_client");
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
 }
 
 

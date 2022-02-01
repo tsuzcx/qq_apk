@@ -1,35 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
 
 class qmd
-  extends pmn
+  implements View.OnTouchListener
 {
-  qmd(qly paramqly) {}
+  qmd(qmb paramqmb, RelativeLayout paramRelativeLayout) {}
   
-  public void h(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool;
-    if (paramInt < 3)
-    {
-      bool = true;
-      QLog.d("RvPolymericContainer", 1, "visibility changed, visible :  " + bool);
-      if (!bool) {
-        break label61;
-      }
-      qly.c(this.a);
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(false);
     }
-    for (;;)
-    {
-      if (paramInt == 5) {
-        pmk.a().b(this);
-      }
-      return;
-      bool = false;
-      break;
-      label61:
-      if (qly.a(this.a) != null) {
-        qly.a(this.a).b();
-      }
-    }
+    return false;
   }
 }
 

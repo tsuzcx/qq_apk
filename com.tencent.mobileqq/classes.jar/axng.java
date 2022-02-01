@@ -1,24 +1,55 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.OperationView;
-import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
-import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardFragment.ReportRunnable;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class axng
+  extends axlx
 {
-  public int a;
-  public View a;
-  public ViewGroup a;
-  public RelativeLayout a;
-  public VideoData a;
-  public OperationView a;
-  public QQStoryVideoPlayerErrorView a;
-  public ImageDisplayView a;
+  public axng(MultiCardFragment paramMultiCardFragment) {}
   
-  public axng(VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter) {}
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "onPageSelected() called with: position = [" + paramInt + "]");
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "ViewPager onPageScrollStateChanged() called with: state = [" + paramInt + "]");
+    }
+    switch (paramInt)
+    {
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return;
+          MultiCardFragment.a(this.a);
+          MultiCardFragment.a(this.a, true);
+          if ((MultiCardFragment.a(this.a) != null) && (MultiCardFragment.a(this.a).a() > MultiCardFragment.a(this.a).a()))
+          {
+            MultiCardFragment.a(this.a).b(MultiCardFragment.a(this.a).a());
+            MultiCardFragment.a(this.a).a();
+          }
+        } while (MultiCardFragment.a(this.a) == null);
+        MultiCardFragment.a(this.a).setViewPagerBusy(false);
+        return;
+        MultiCardFragment.b(this.a, true);
+        MultiCardFragment.a(this.a, false);
+      } while (MultiCardFragment.a(this.a) == null);
+      MultiCardFragment.a(this.a, MultiCardFragment.a(this.a).a());
+      return;
+    }
+    MultiCardFragment.b(this.a, true);
+    MultiCardFragment.a(this.a, false);
+  }
 }
 
 

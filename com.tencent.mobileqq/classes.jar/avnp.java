@@ -1,19 +1,17 @@
-public final class avnp
-  implements bdvw
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.qphone.base.util.QLog;
+
+public class avnp
+  implements aldq
 {
-  public avnp(bdvw parambdvw) {}
+  public avnp(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void onResp(bdwt parambdwt)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (this.a != null) {
-      this.a.onResp(parambdwt);
-    }
-  }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2)
-  {
-    if (this.a != null) {
-      this.a.onUpdateProgeress(parambdws, paramLong1, paramLong2);
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath))) {
+      QLog.d("GameWebPage", 1, "loading apng download succ!");
     }
   }
 }

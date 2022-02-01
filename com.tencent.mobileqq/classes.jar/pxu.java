@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDianDianEntranceModule.1;
-
-public class pxu
-  implements pml
+class pxu
+  implements qoe
 {
-  public pxu(ReadInJoyDianDianEntranceModule.1 param1) {}
+  pxu(pxl parampxl, ppu paramppu) {}
   
-  public void a(pmn parampmn)
+  public void a()
   {
-    parampmn.a(this.a.a);
+    sgf localsgf = this.jdField_a_of_type_Ppu.a().a();
+    if (localsgf != null) {
+      localsgf.a(null, this.jdField_a_of_type_Ppu.a(), 1);
+    }
   }
 }
 

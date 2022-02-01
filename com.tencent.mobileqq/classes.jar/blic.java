@@ -1,133 +1,39 @@
-import android.content.ServiceConnection;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QlinkPluginProxyService;
-import cooperation.qlink.QlinkServiceProxy.2;
-import cooperation.qlink.SendMsg;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.view.KeyEvent;
+import android.view.inputmethod.InputConnection;
+import android.view.inputmethod.InputConnectionWrapper;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.widget.AbsListView;
 
 public class blic
+  extends InputConnectionWrapper
 {
-  private volatile long jdField_a_of_type_Long = -1L;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new blid(this);
-  private volatile blhg jdField_a_of_type_Blhg;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ConcurrentLinkedQueue<SendMsg> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public blic(AppRuntime paramAppRuntime)
+  public blic(AbsListView paramAbsListView, InputConnection paramInputConnection, boolean paramBoolean)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    super(paramInputConnection, paramBoolean);
   }
   
-  private boolean a()
+  public boolean performEditorAction(int paramInt)
   {
-    return this.jdField_a_of_type_Blhg != null;
-  }
-  
-  private void b()
-  {
-    QlinkServiceProxy.2 local2 = new QlinkServiceProxy.2(this);
-    local2.setName("handleWaitSendProxyMsgThread");
-    local2.start();
-  }
-  
-  private void b(SendMsg paramSendMsg)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramSendMsg);
-  }
-  
-  private void c(SendMsg paramSendMsg)
-  {
-    this.jdField_a_of_type_Blhg.a(paramSendMsg);
-  }
-  
-  public void a()
-  {
-    long l = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_Long == -1L) || (l - this.jdField_a_of_type_Long > 10000L))
+    if (paramInt == 6)
     {
-      this.jdField_a_of_type_Long = l;
-      QlinkPluginProxyService.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection);
-      return;
+      InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getContext().getSystemService("input_method");
+      if (localInputMethodManager != null) {
+        localInputMethodManager.hideSoftInputFromWindow(this.a.getWindowToken(), 0);
+      }
+      return true;
     }
-    QLog.d("QlinkServiceProxy", 1, "wait start qlink service result, skiped...");
+    return false;
   }
   
-  /* Error */
-  public void a(SendMsg paramSendMsg)
+  public boolean reportFullscreenMode(boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 20	blic:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   4: astore_2
-    //   5: aload_2
-    //   6: monitorenter
-    //   7: aload_0
-    //   8: invokespecial 108	blic:a	()Z
-    //   11: ifeq +11 -> 22
-    //   14: aload_0
-    //   15: aload_1
-    //   16: invokespecial 53	blic:c	(Lcooperation/qlink/SendMsg;)V
-    //   19: aload_2
-    //   20: monitorexit
-    //   21: return
-    //   22: aload_0
-    //   23: getfield 57	blic:jdField_a_of_type_Boolean	Z
-    //   26: ifeq +23 -> 49
-    //   29: aload_0
-    //   30: aload_1
-    //   31: invokespecial 110	blic:b	(Lcooperation/qlink/SendMsg;)V
-    //   34: goto -15 -> 19
-    //   37: astore_3
-    //   38: aload_2
-    //   39: monitorexit
-    //   40: aload_3
-    //   41: athrow
-    //   42: astore_2
-    //   43: aload_0
-    //   44: aload_1
-    //   45: invokespecial 110	blic:b	(Lcooperation/qlink/SendMsg;)V
-    //   48: return
-    //   49: aload_0
-    //   50: iconst_1
-    //   51: putfield 57	blic:jdField_a_of_type_Boolean	Z
-    //   54: aload_0
-    //   55: aload_1
-    //   56: invokespecial 110	blic:b	(Lcooperation/qlink/SendMsg;)V
-    //   59: aload_0
-    //   60: invokevirtual 112	blic:a	()V
-    //   63: goto -44 -> 19
-    //   66: astore_2
-    //   67: aload_0
-    //   68: getfield 43	blic:jdField_a_of_type_Blhg	Lblhg;
-    //   71: ifnonnull +9 -> 80
-    //   74: aload_0
-    //   75: aload_1
-    //   76: invokespecial 110	blic:b	(Lcooperation/qlink/SendMsg;)V
-    //   79: return
-    //   80: aload_2
-    //   81: invokevirtual 115	java/lang/Exception:printStackTrace	()V
-    //   84: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	85	0	this	blic
-    //   0	85	1	paramSendMsg	SendMsg
-    //   42	1	2	localDeadObjectException	android.os.DeadObjectException
-    //   66	15	2	localException	java.lang.Exception
-    //   37	4	3	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   7	19	37	finally
-    //   19	21	37	finally
-    //   22	34	37	finally
-    //   38	40	37	finally
-    //   49	63	37	finally
-    //   0	7	42	android/os/DeadObjectException
-    //   40	42	42	android/os/DeadObjectException
-    //   0	7	66	java/lang/Exception
-    //   40	42	66	java/lang/Exception
+    return AbsListView.access$3400(this.a).reportFullscreenMode(paramBoolean);
+  }
+  
+  public boolean sendKeyEvent(KeyEvent paramKeyEvent)
+  {
+    return AbsListView.access$3400(this.a).sendKeyEvent(paramKeyEvent);
   }
 }
 

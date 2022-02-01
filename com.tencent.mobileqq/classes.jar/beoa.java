@@ -1,10 +1,8 @@
-import android.view.View;
+import com.tencent.mobileqq.together.writetogether.websocket.msg.NewChangesMsg.Data;
 
-class beoa
-  extends beob
+public class beoa
 {
-  public long a;
-  public View a;
+  public NewChangesMsg.Data a;
 }
 
 

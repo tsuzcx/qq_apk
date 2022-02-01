@@ -1,75 +1,48 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.ISecurityFileHelper;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
 
-public class aopt
-  extends aopr
-  implements ISecurityFileHelper
+class aopt
+  implements Comparator<Entity>
 {
-  public aopt()
-  {
-    super(null);
-  }
+  aopt(aops paramaops) {}
   
-  protected String a()
+  public int a(Entity paramEntity1, Entity paramEntity2)
   {
-    return "QQFavoriteMigration";
-  }
-  
-  public String declareBusinessFileName()
-  {
-    return "QQ_Favorite";
-  }
-  
-  public boolean doMigrate(File paramFile)
-  {
-    QLog.d("ISecurityFileHelper", 1, "Move QQFavorite file start");
-    File localFile = new File(anhk.bl);
-    if ((localFile.exists()) && (paramFile.isDirectory()))
+    int j = -1;
+    paramEntity1 = (RecentUser)paramEntity1;
+    paramEntity2 = (RecentUser)paramEntity2;
+    long l1 = Math.max(paramEntity1.lastmsgtime, paramEntity1.lastmsgdrafttime);
+    long l2 = Math.max(paramEntity2.lastmsgtime, paramEntity2.lastmsgdrafttime);
+    int i;
+    if (l1 < l2)
     {
-      paramFile = aopp.a(localFile);
-      int j = paramFile.length;
-      int i = 0;
-      while (i < j)
+      i = 1;
+      if (paramEntity1.getType() != paramEntity2.getType()) {
+        break label80;
+      }
+    }
+    label80:
+    do
+    {
+      do
       {
-        localFile = paramFile[i];
-        String str = localFile.getName();
-        if ((str.length() > 4) && (str.matches("[0-9]{5}.*"))) {
-          bgmg.a(localFile.getAbsolutePath(), anhk.bl + aopp.a(str));
+        return i;
+        if (l1 == l2)
+        {
+          i = 0;
+          break;
         }
-        i += 1;
+        i = -1;
+        break;
+        i = j;
+      } while (paramEntity1.getType() == 0);
+      if (paramEntity2.getType() == 0) {
+        return 1;
       }
-    }
-    a();
-    return true;
-  }
-  
-  public boolean needMigration()
-  {
-    if (a())
-    {
-      File localFile = new File(anhk.bl);
-      if ((localFile.exists()) && (localFile.isDirectory())) {
-        return true;
-      }
-      a();
-    }
-    return false;
-  }
-  
-  public File oldBusinessDir(String paramString)
-  {
-    return null;
-  }
-  
-  public boolean oldBusinessDirExist(String paramString)
-  {
-    return false;
-  }
-  
-  public String[] reportHistoryFileInfo()
-  {
-    return new String[] { "0", "0" };
+      i = j;
+    } while (paramEntity1.getType() - paramEntity2.getType() > 0);
+    return 1;
   }
 }
 

@@ -1,27 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.biz.qqcircle.widgets.QCircleLightInteractPolyLikeWidget;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StUser;
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.biz.qqcircle.requests.QCircleChangePMSettingRequest;
+import com.tencent.biz.qqcircle.requests.QCircleGetPMSettingRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import qqcircle.QQCirclePrivateMsgShow.StChangePMSettingRsp;
+import qqcircle.QQCirclePrivateMsgShow.StGetPMSettingRsp;
+import qqcircle.QQCirclePrivateMsgShow.StPMSettingData;
 
 public class vxj
-  implements View.OnClickListener
+  extends aabb
 {
-  public vxj(QCircleLightInteractPolyLikeWidget paramQCircleLightInteractPolyLikeWidget, FeedCloudMeta.StUser paramStUser) {}
+  public MutableLiveData<vxq<QQCirclePrivateMsgShow.StGetPMSettingRsp>> a = new MutableLiveData();
+  public MutableLiveData<vxq<QQCirclePrivateMsgShow.StChangePMSettingRsp>> b = new MutableLiveData();
   
-  public void onClick(View paramView)
+  public String a()
   {
-    uxo.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPolyLikeWidget.a().clone().setElementIdStr("portrait"));
-    if (paramView == QCircleLightInteractPolyLikeWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPolyLikeWidget)) {
-      vrc.a(71, 2, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPolyLikeWidget.a, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPolyLikeWidget.d());
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      vrc.a(72, 2, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPolyLikeWidget.a, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPolyLikeWidget.d());
-    }
+    return "QCirclePrivateMessageSettingViewModel";
+  }
+  
+  public void a(String paramString)
+  {
+    paramString = new QCircleGetPMSettingRequest(paramString);
+    this.a.setValue(vxq.b());
+    VSNetworkHelper.a().a(paramString, new vxk(this));
+  }
+  
+  public void a(QQCirclePrivateMsgShow.StPMSettingData paramStPMSettingData)
+  {
+    paramStPMSettingData = new QCircleChangePMSettingRequest(paramStPMSettingData);
+    this.b.setValue(vxq.b());
+    VSNetworkHelper.a().a(paramStPMSettingData, new vxl(this));
   }
 }
 

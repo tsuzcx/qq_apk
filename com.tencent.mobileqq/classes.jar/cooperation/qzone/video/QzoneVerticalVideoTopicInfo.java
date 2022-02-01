@@ -5,15 +5,15 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import bmkq;
-import bmkr;
+import bnlt;
+import bnlu;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class QzoneVerticalVideoTopicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<QzoneVerticalVideoTopicInfo> CREATOR = new bmkq();
+  public static final Parcelable.Creator<QzoneVerticalVideoTopicInfo> CREATOR = new bnlt();
   private String a = QzoneVerticalVideoTopicInfo.class.getSimpleName();
   private String b;
   private String c;
@@ -100,9 +100,9 @@ public class QzoneVerticalVideoTopicInfo
   
   public String f()
   {
-    bmkr localbmkr = new bmkr(this);
-    localbmkr.a("weishi_feedId", this.b).a("weishi_fileId", this.c).a("weishi_musicId", this.d).a("weishi_musicName", this.e).a("weishi_thumbUrl", this.g).a("weishi_topicID", this.h).a("weishi_topicName", this.i);
-    return localbmkr.toString();
+    bnlu localbnlu = new bnlu(this);
+    localbnlu.a("weishi_feedId", this.b).a("weishi_fileId", this.c).a("weishi_musicId", this.d).a("weishi_musicName", this.e).a("weishi_thumbUrl", this.g).a("weishi_topicID", this.h).a("weishi_topicName", this.i);
+    return localbnlu.toString();
   }
   
   public String g()

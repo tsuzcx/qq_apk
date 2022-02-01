@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.settings;
 
-import atut;
+import aumo;
 import java.io.File;
 
 public class FMSettings$1
   implements Runnable
 {
-  public FMSettings$1(atut paramatut, String paramString) {}
+  public FMSettings$1(aumo paramaumo, String paramString) {}
   
   public void run()
   {

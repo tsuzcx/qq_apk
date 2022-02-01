@@ -1,15 +1,41 @@
-import java.util.HashMap;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileYearNodeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-class xda
-  extends xch
+public class xda
+  extends wpa
 {
-  xda(xcu paramxcu, xdy paramxdy) {}
+  public String a;
   
-  public boolean b()
+  public String a()
   {
-    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
-    this.jdField_a_of_type_Xdy.a = ((String)localHashMap.get(this.jdField_a_of_type_Xdy.a));
-    return true;
+    return wnu.a("StorySvc.get_profile_year_node_info");
+  }
+  
+  public wov a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspProfileYearNodeList localRspProfileYearNodeList = new qqstory_service.RspProfileYearNodeList();
+    try
+    {
+      localRspProfileYearNodeList.mergeFrom(paramArrayOfByte);
+      return new xdb(localRspProfileYearNodeList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqProfileYearNodeList localReqProfileYearNodeList = new qqstory_service.ReqProfileYearNodeList();
+    localReqProfileYearNodeList.union_id.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localReqProfileYearNodeList.toByteArray();
   }
 }
 

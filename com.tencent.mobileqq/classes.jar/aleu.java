@@ -1,79 +1,49 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class aleu
-  extends alej
 {
-  public aleu(Context paramContext)
+  public static int a(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = anni.a(2131692537);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramObject instanceof aleu))
+    SharedPreferences localSharedPreferences = a(paramInt2);
+    paramInt2 = paramInt1;
+    if (localSharedPreferences != null)
     {
-      paramObject = (aleu)paramObject;
-      paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
-      return paramObject;
-    }
-    paramObject = new aleu(BaseApplication.getContext());
-    paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
-    return paramObject;
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Beps == null) {
-        this.jdField_a_of_type_Beps = new beps();
+      paramInt2 = paramInt1;
+      if (!TextUtils.isEmpty(paramString)) {
+        paramInt2 = localSharedPreferences.getInt("url_down_scene" + paramString, paramInt1);
       }
-      this.jdField_a_of_type_Beps.a(paramArrayOfByte.getString("messageNavInfo"));
-      return;
     }
-    catch (JSONException paramArrayOfByte)
+    return paramInt2;
+  }
+  
+  private static SharedPreferences a(int paramInt)
+  {
+    if (BaseApplicationImpl.getApplication() != null)
     {
-      paramArrayOfByte.printStackTrace();
+      if (paramInt == 1) {
+        return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_down_record_utilinner", 4);
+      }
+      return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_down_record_util", 4);
+    }
+    return null;
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
+      localSharedPreferences.edit().remove("url_down_scene" + paramString).apply();
     }
   }
   
-  public byte[] a()
+  public static void a(String paramString, int paramInt1, int paramInt2)
   {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Beps != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Beps.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+    SharedPreferences localSharedPreferences = a(paramInt2);
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
+      localSharedPreferences.edit().putInt("url_down_scene" + paramString, paramInt1).apply();
     }
   }
 }

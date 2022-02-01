@@ -1,61 +1,27 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class rxw
-  extends rxu
+class rxw
+  extends Handler
 {
-  private rxx a;
-  
-  public rxw(rwy paramrwy, rxx paramrxx)
+  rxw(rxt paramrxt, Looper paramLooper)
   {
-    super(paramrwy, paramrxx);
-    this.a = paramrxx;
-    paramrwy = ryx.b(rwy.a(paramrwy));
-    if (paramrwy[1] / paramrwy[0] >= 1.97D)
-    {
-      paramrxx.d = paramrxx.s.getLayoutParams().height;
-      paramrxx.s.setBackgroundDrawable(null);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.feeds.VideofeedsUserGuideController", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
     }
-  }
-  
-  int a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return 2130843083;
-    }
-    return 2130843085;
-  }
-  
-  public void a(VideoInfo paramVideoInfo, boolean paramBoolean)
-  {
-    super.a(paramVideoInfo, paramBoolean);
-    rxx.a(this.a).setHeadImgByUin(rwy.a(this.d).getLongAccountUin());
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    switch (paramMessage.what)
     {
-      if (this.a.a.a.q) {
-        this.a.k.setVisibility(0);
-      }
-      rxx.a(this.a).setVisibility(0);
+    default: 
       return;
     }
-    this.a.k.setVisibility(8);
-    rxx.a(this.a).setVisibility(8);
-  }
-  
-  void c(VideoInfo paramVideoInfo)
-  {
-    ryx.b(this.a.A, paramVideoInfo.e, "评论");
-    this.a.m.setImageResource(2130843082);
+    this.a.a();
   }
 }
 

@@ -1,56 +1,17 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import java.util.List;
 
 public class ayqy
-  extends aopa
+  implements ayrl
 {
-  private static ayru jdField_a_of_type_Ayru = new ayru("weather", 1000, 3, 1);
-  private int jdField_a_of_type_Int;
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private WeakReference<ayra> jdField_a_of_type_MqqUtilWeakReference;
+  public ayqy(NearbyMomentFragment paramNearbyMomentFragment, ayre paramayre) {}
   
-  public ayqy(int paramInt, Intent paramIntent, ayra paramayra)
+  public void a(boolean paramBoolean1, List<aysk> paramList, boolean paramBoolean2, int paramInt)
   {
-    super(0, true, true, 60000L, false, false, "official_location");
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramayra);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] onLocationFinish error. mCallback is null ");
-      }
-      return;
-    }
-    if ((paramSosoLbsInfo == null) || (paramInt != 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] onLocationFinish error. errCode : " + paramInt);
-      }
-      ((ayra)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramInt, 0.0D, 0.0D, "", "", this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentIntent);
-      return;
-    }
-    paramSosoLbsInfo = new LatLng(paramSosoLbsInfo.a.a, paramSosoLbsInfo.a.b);
-    if (QLog.isColorLevel()) {
-      QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] onLocationFinish invoked. latLng : " + paramSosoLbsInfo + " errCode : " + paramInt);
-    }
-    try
-    {
-      jdField_a_of_type_Ayru.a(paramSosoLbsInfo, new ayqz(this, paramSosoLbsInfo, paramInt));
-      return;
-    }
-    catch (Throwable paramSosoLbsInfo)
-    {
-      QLog.e("OnlineStatusWeatherLocationListener", 1, "getPoiWithLatLngError", paramSosoLbsInfo);
-    }
+    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).clear();
+    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).addAll(paramList);
+    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, paramList);
+    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, paramBoolean1, paramBoolean2, paramInt, paramList, this.jdField_a_of_type_Ayre);
   }
 }
 

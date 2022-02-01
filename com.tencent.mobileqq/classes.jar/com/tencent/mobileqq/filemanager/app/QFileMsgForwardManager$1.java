@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.text.TextUtils;
-import atan;
-import atbh;
-import atbj;
-import atbk;
-import atht;
-import atvo;
-import bcst;
-import bgnt;
+import atsi;
+import attc;
+import atte;
+import attf;
+import atzn;
+import aunj;
+import bdll;
+import bhnv;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.text.DecimalFormat;
@@ -20,11 +20,11 @@ import java.util.Set;
 public class QFileMsgForwardManager$1
   implements Runnable
 {
-  public QFileMsgForwardManager$1(atan paramatan, atht paramatht) {}
+  public QFileMsgForwardManager$1(atsi paramatsi, atzn paramatzn) {}
   
   public void run()
   {
-    boolean bool = bgnt.g(null);
+    boolean bool = bhnv.g(null);
     if (QLog.isColorLevel()) {
       QLog.i("FileMultiMsgManager<FileAssistant>", 1, "isNetworkAvailable:" + bool);
     }
@@ -37,7 +37,7 @@ public class QFileMsgForwardManager$1
       this.a.a(0, new ArrayList(), new ArrayList());
       return;
     }
-    atbk localatbk = new atbk(this.this$0, str1, this.a, localHashMap);
+    attf localattf = new attf(this.this$0, str1, this.a, localHashMap);
     Iterator localIterator1 = localHashMap.keySet().iterator();
     long l1 = 0L;
     if (localIterator1.hasNext())
@@ -51,15 +51,15 @@ public class QFileMsgForwardManager$1
           break;
         }
         Object localObject = (MessageRecord)localIterator2.next();
-        if ((atvo.a((MessageRecord)localObject)) && (atan.a(this.this$0, (MessageRecord)localObject)))
+        if ((aunj.a((MessageRecord)localObject)) && (atsi.a(this.this$0, (MessageRecord)localObject)))
         {
-          atbh localatbh = atan.a(this.this$0, str2, i, str1, (MessageRecord)localObject);
-          if (localatbh == null) {
+          attc localattc = atsi.a(this.this$0, str2, i, str1, (MessageRecord)localObject);
+          if (localattc == null) {
             break label301;
           }
-          localatbk.a(localatbh);
+          localattf.a(localattc);
           if (!bool) {
-            localatbh.a.a("", true);
+            localattc.a.a("", true);
           }
           localObject = ((MessageRecord)localObject).getExtInfoFromExtStr("_m_ForwardSize");
           if (!TextUtils.isEmpty((CharSequence)localObject)) {
@@ -72,15 +72,15 @@ public class QFileMsgForwardManager$1
       this.a.a(1, new ArrayList(), new ArrayList());
       return;
     }
-    if (localatbk.a() > 0)
+    if (localattf.a() > 0)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 2, "addMultiRequest : forwardMsgSeq[" + str1 + "] toUin[" + str2 + "] toType[" + i + "] uploadCount[" + localatbk.a() + "]");
+        QLog.i("FileMultiMsgManager<FileAssistant>", 2, "addMultiRequest : forwardMsgSeq[" + str1 + "] toUin[" + str2 + "] toType[" + i + "] uploadCount[" + localattf.a() + "]");
       }
       str2 = new DecimalFormat("0.00").format(l1 / 1024.0D / 1024.0D);
-      bcst.b(atan.a(this.this$0), "dc00898", "", "", "0X8009ABE", "0X8009ABE", 0, 0, "", "", str2, "");
-      atan.a(this.this$0).put(str1, localatbk);
-      localatbk.a();
+      bdll.b(atsi.a(this.this$0), "dc00898", "", "", "0X8009ABE", "0X8009ABE", 0, 0, "", "", str2, "");
+      atsi.a(this.this$0).put(str1, localattf);
+      localattf.a();
       return;
     }
     this.a.a(0, new ArrayList(), new ArrayList());

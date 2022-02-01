@@ -1,18 +1,27 @@
 package com.tencent.biz.qrcode.activity;
 
-import zvc;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import zyx;
 
 class QRDisplayActivity$12$1
   implements Runnable
 {
-  QRDisplayActivity$12$1(QRDisplayActivity.12 param12) {}
+  QRDisplayActivity$12$1(QRDisplayActivity.12 param12, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    if (this.a.this$0.isFinishing()) {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+      localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$12.this$0.sendBroadcast(localIntent);
+      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$12.this$0.getString(2131694371), 1).b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$12.this$0.getTitleBarHeight());
       return;
     }
-    zvc.a(1, 2131695774);
+    zyx.a(1, 2131715965);
   }
 }
 

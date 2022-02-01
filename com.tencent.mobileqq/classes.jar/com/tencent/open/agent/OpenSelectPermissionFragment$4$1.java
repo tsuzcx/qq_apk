@@ -2,9 +2,9 @@ package com.tencent.open.agent;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import anni;
-import bino;
-import bios;
+import anzj;
+import bjon;
+import bjpr;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -21,47 +21,47 @@ import org.json.JSONObject;
 public class OpenSelectPermissionFragment$4$1
   implements Runnable
 {
-  public OpenSelectPermissionFragment$4$1(bino parambino, boolean paramBoolean, bios parambios, int paramInt) {}
+  public OpenSelectPermissionFragment$4$1(bjon parambjon, boolean paramBoolean, bjpr parambjpr, int paramInt) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bios != null))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bjpr != null))
     {
-      OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bino.a, true);
-      this.jdField_a_of_type_Bino.a.a(this.jdField_a_of_type_Bios.c.get());
-      this.jdField_a_of_type_Bino.a.a(this.jdField_a_of_type_Bios.c.get(), this.jdField_a_of_type_Bios.e.get());
+      OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bjon.a, true);
+      this.jdField_a_of_type_Bjon.a.a(this.jdField_a_of_type_Bjpr.c.get());
+      this.jdField_a_of_type_Bjon.a.a(this.jdField_a_of_type_Bjpr.c.get(), this.jdField_a_of_type_Bjpr.e.get());
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("ret", this.jdField_a_of_type_Bios.jdField_a_of_type_ComTencentMobileqqPbPBUInt32Field.get());
-        localJSONObject.put("openid", this.jdField_a_of_type_Bios.c.get());
-        localJSONObject.put("access_token", this.jdField_a_of_type_Bios.jdField_b_of_type_ComTencentMobileqqPbPBStringField.get());
-        localJSONObject.put("pay_token", this.jdField_a_of_type_Bios.d.get());
-        localJSONObject.put("expires_in", this.jdField_a_of_type_Bios.jdField_a_of_type_ComTencentMobileqqPbPBInt64Field.get());
-        localJSONObject.put("code", this.jdField_a_of_type_Bios.n.get());
-        localJSONObject.put("proxy_code", this.jdField_a_of_type_Bios.jdField_a_of_type_ComTencentQconnProtofileAuth$ProxyAuthResponse.code.get());
-        localJSONObject.put("proxy_expires_in", this.jdField_a_of_type_Bios.jdField_a_of_type_ComTencentQconnProtofileAuth$ProxyAuthResponse.expires_in.get());
-        localJSONObject.put("pf", this.jdField_a_of_type_Bios.f.get());
-        localJSONObject.put("pfkey", this.jdField_a_of_type_Bios.g.get());
-        localJSONObject.put("msg", this.jdField_a_of_type_Bios.jdField_a_of_type_ComTencentMobileqqPbPBStringField.get());
-        localJSONObject.put("login_cost", OpenSelectPermissionFragment.c(this.jdField_a_of_type_Bino.a));
-        localJSONObject.put("query_authority_cost", OpenSelectPermissionFragment.d(this.jdField_a_of_type_Bino.a));
-        localJSONObject.put("authority_cost", SystemClock.elapsedRealtime() - OpenSelectPermissionFragment.e(this.jdField_a_of_type_Bino.a));
-        if (this.jdField_a_of_type_Bios.jdField_b_of_type_ComTencentMobileqqPbPBUInt32Field.has()) {
-          localJSONObject.put("sendinstall", this.jdField_a_of_type_Bios.jdField_b_of_type_ComTencentMobileqqPbPBUInt32Field.get());
+        localJSONObject.put("ret", this.jdField_a_of_type_Bjpr.jdField_a_of_type_ComTencentMobileqqPbPBUInt32Field.get());
+        localJSONObject.put("openid", this.jdField_a_of_type_Bjpr.c.get());
+        localJSONObject.put("access_token", this.jdField_a_of_type_Bjpr.jdField_b_of_type_ComTencentMobileqqPbPBStringField.get());
+        localJSONObject.put("pay_token", this.jdField_a_of_type_Bjpr.d.get());
+        localJSONObject.put("expires_in", this.jdField_a_of_type_Bjpr.jdField_a_of_type_ComTencentMobileqqPbPBInt64Field.get());
+        localJSONObject.put("code", this.jdField_a_of_type_Bjpr.n.get());
+        localJSONObject.put("proxy_code", this.jdField_a_of_type_Bjpr.jdField_a_of_type_ComTencentQconnProtofileAuth$ProxyAuthResponse.code.get());
+        localJSONObject.put("proxy_expires_in", this.jdField_a_of_type_Bjpr.jdField_a_of_type_ComTencentQconnProtofileAuth$ProxyAuthResponse.expires_in.get());
+        localJSONObject.put("pf", this.jdField_a_of_type_Bjpr.f.get());
+        localJSONObject.put("pfkey", this.jdField_a_of_type_Bjpr.g.get());
+        localJSONObject.put("msg", this.jdField_a_of_type_Bjpr.jdField_a_of_type_ComTencentMobileqqPbPBStringField.get());
+        localJSONObject.put("login_cost", OpenSelectPermissionFragment.c(this.jdField_a_of_type_Bjon.a));
+        localJSONObject.put("query_authority_cost", OpenSelectPermissionFragment.d(this.jdField_a_of_type_Bjon.a));
+        localJSONObject.put("authority_cost", SystemClock.elapsedRealtime() - OpenSelectPermissionFragment.e(this.jdField_a_of_type_Bjon.a));
+        if (this.jdField_a_of_type_Bjpr.jdField_b_of_type_ComTencentMobileqqPbPBUInt32Field.has()) {
+          localJSONObject.put("sendinstall", this.jdField_a_of_type_Bjpr.jdField_b_of_type_ComTencentMobileqqPbPBUInt32Field.get());
         }
-        if ((this.jdField_a_of_type_Bios.j.has()) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bios.j.get()))) {
-          localJSONObject.put("installwording", this.jdField_a_of_type_Bios.j.get());
+        if ((this.jdField_a_of_type_Bjpr.j.has()) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bjpr.j.get()))) {
+          localJSONObject.put("installwording", this.jdField_a_of_type_Bjpr.j.get());
         }
-        if ((this.jdField_a_of_type_Bios.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField.has()) && (this.jdField_a_of_type_Bios.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField.size() > 0))
+        if ((this.jdField_a_of_type_Bjpr.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField.has()) && (this.jdField_a_of_type_Bjpr.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField.size() > 0))
         {
-          Iterator localIterator = this.jdField_a_of_type_Bios.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField.get().iterator();
+          Iterator localIterator = this.jdField_a_of_type_Bjpr.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField.get().iterator();
           while (localIterator.hasNext())
           {
             appType.PassData localPassData = (appType.PassData)localIterator.next();
             localJSONObject.put(localPassData.key.get(), localPassData.value.get());
             continue;
-            this.jdField_a_of_type_Bino.a.a();
+            this.jdField_a_of_type_Bjon.a.a();
           }
         }
       }
@@ -69,31 +69,31 @@ public class OpenSelectPermissionFragment$4$1
       for (;;)
       {
         return;
-        this.jdField_a_of_type_Bino.a.a(this.jdField_a_of_type_Bios.jdField_a_of_type_ComTencentMobileqqPbPBUInt32Field.get(), localJSONException.toString(), null, null);
+        this.jdField_a_of_type_Bjon.a.a(this.jdField_a_of_type_Bjpr.jdField_a_of_type_ComTencentMobileqqPbPBUInt32Field.get(), localJSONException.toString(), null, null);
       }
     }
     if (this.jdField_a_of_type_Int == 110509)
     {
-      QLog.d("SDK_LOGIN.OpenSelectPermissionFragment", 1, "onDoAuthorize mAuthRetryCountBy110509=" + OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bino.a));
-      if (OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bino.a) >= 2) {
-        OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bino.a, anni.a(2131699946), false);
+      QLog.d("SDK_LOGIN.OpenSelectPermissionFragment", 1, "onDoAuthorize mAuthRetryCountBy110509=" + OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bjon.a));
+      if (OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bjon.a) >= 2) {
+        OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bjon.a, anzj.a(2131700053), false);
       }
       for (;;)
       {
-        OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bino.a, false);
+        OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bjon.a, false);
         break;
-        OpenSelectPermissionFragment.b(this.jdField_a_of_type_Bino.a);
-        OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bino.a, AccountManage.RefreshReason.forceRefreshBy110509);
+        OpenSelectPermissionFragment.b(this.jdField_a_of_type_Bjon.a);
+        OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bjon.a, AccountManage.RefreshReason.forceRefreshBy110509);
       }
     }
-    if ((this.jdField_a_of_type_Bios != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bios.jdField_a_of_type_ComTencentMobileqqPbPBStringField.get()))) {
-      OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bino.a, this.jdField_a_of_type_Bios.jdField_a_of_type_ComTencentMobileqqPbPBStringField.get() + anni.a(2131706619) + this.jdField_a_of_type_Int, false);
+    if ((this.jdField_a_of_type_Bjpr != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bjpr.jdField_a_of_type_ComTencentMobileqqPbPBStringField.get()))) {
+      OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bjon.a, this.jdField_a_of_type_Bjpr.jdField_a_of_type_ComTencentMobileqqPbPBStringField.get() + anzj.a(2131706726) + this.jdField_a_of_type_Int, false);
     }
     for (;;)
     {
-      OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bino.a, false);
+      OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bjon.a, false);
       break;
-      OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bino.a, anni.a(2131706629) + this.jdField_a_of_type_Int, false);
+      OpenSelectPermissionFragment.a(this.jdField_a_of_type_Bjon.a, anzj.a(2131706738) + this.jdField_a_of_type_Int, false);
     }
   }
 }

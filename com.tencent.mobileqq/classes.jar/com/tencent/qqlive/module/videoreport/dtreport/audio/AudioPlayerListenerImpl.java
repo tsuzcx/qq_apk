@@ -5,6 +5,7 @@ import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.dtreport.audio.api.IAudioPlayListener;
 import com.tencent.qqlive.module.videoreport.dtreport.audio.api.IAudioPlayer;
 import com.tencent.qqlive.module.videoreport.dtreport.audio.data.AudioDataManager;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.data.IAudioDataManager;
 import com.tencent.qqlive.module.videoreport.dtreport.time.audio.AudioSession;
 import com.tencent.qqlive.module.videoreport.task.ThreadUtils;
 

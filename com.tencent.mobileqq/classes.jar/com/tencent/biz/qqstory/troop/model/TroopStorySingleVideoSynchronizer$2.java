@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.troop.model;
 
 import java.util.Collections;
-import zjz;
+import znu;
 
 public class TroopStorySingleVideoSynchronizer$2
   implements Runnable

@@ -1,20 +1,113 @@
-import android.app.Dialog;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-class bgiv
-  implements Animation.AnimationListener
+public class bgiv
 {
-  bgiv(bgit parambgit, Dialog paramDialog) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  private static int a(int paramInt, MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    int j = -1;
+    boolean bool = axuz.a(paramMessageRecord);
+    int i;
+    if (paramInt != 27) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder().append("getFlowersCounts, bizType = ").append(paramInt).append(", isNearbyFlowerMsg = ").append(bool).append(", msgType = ");
+        paramInt = j;
+        if (paramMessageRecord != null) {
+          paramInt = paramMessageRecord.msgtype;
+        }
+        QLog.d("Navigate.UpdateMsgInfoUtil", 2, paramInt + ", flowersCount = " + i);
+      }
+      return i;
+      if ((paramMessageRecord.msgtype != -2035) && (paramMessageRecord.msgtype != -2038) && (!bool))
+      {
+        i = -1;
+      }
+      else
+      {
+        if (bool)
+        {
+          if ((paramMessageRecord instanceof MessageForStructing)) {
+            i = axuz.a((MessageForStructing)paramMessageRecord);
+          }
+        }
+        else
+        {
+          if ((paramMessageRecord instanceof MessageForDeliverGiftTips))
+          {
+            i = ((MessageForDeliverGiftTips)paramMessageRecord).giftCount;
+            continue;
+          }
+          i = -1;
+          continue;
+        }
+        i = -1;
+      }
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  @Nullable
+  public static Object a(QQAppInterface paramQQAppInterface, String paramString, bfoy parambfoy, Object paramObject, MessageRecord paramMessageRecord, boolean paramBoolean)
+  {
+    a(paramQQAppInterface, paramString, parambfoy, paramMessageRecord, paramBoolean);
+    return b(paramQQAppInterface, paramString, parambfoy, paramObject, paramMessageRecord, paramBoolean);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  private static String a(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 1;; i = 3000) {
+      return bgiw.a(paramString, i);
+    }
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, String paramString, bfoy parambfoy, MessageRecord paramMessageRecord, boolean paramBoolean)
+  {
+    int j = parambfoy.a(paramQQAppInterface, paramBoolean, paramString);
+    int i = a(j, paramMessageRecord);
+    if (((!paramBoolean) && (!a(j))) || (i == -1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Navigate.UpdateMsgInfoUtil", 2, "isTroop = " + paramBoolean + ", bizType = " + j + ", flowers = " + i + ", troopCode = " + paramString + ", isTroop = " + paramBoolean);
+      }
+      return;
+    }
+    String str = a(paramString, paramBoolean);
+    j = bghv.b(j);
+    paramString = null;
+    if (j == 102) {
+      paramString = paramMessageRecord;
+    }
+    long l = bfpe.a(j, parambfoy.a.a, parambfoy.a.b);
+    ((bgiw)paramQQAppInterface.getManager(363)).a(str, j, parambfoy.a.a, l, "", i, paramString);
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 13) || (paramInt == 24) || (paramInt == 12) || (paramInt == 20) || (paramInt == 22);
+  }
+  
+  @Nullable
+  private static Object b(QQAppInterface paramQQAppInterface, String paramString, bfoy parambfoy, Object paramObject, MessageRecord paramMessageRecord, boolean paramBoolean)
+  {
+    int i = parambfoy.a(paramQQAppInterface, paramBoolean, paramString);
+    if ((!paramBoolean) && (!a(i))) {
+      return null;
+    }
+    paramString = ((alqe)paramQQAppInterface.getManager(366)).a(i);
+    if (paramString != null) {
+      return paramString.a(i, parambfoy, paramObject, paramMessageRecord, paramQQAppInterface);
+    }
+    return null;
+  }
 }
 
 

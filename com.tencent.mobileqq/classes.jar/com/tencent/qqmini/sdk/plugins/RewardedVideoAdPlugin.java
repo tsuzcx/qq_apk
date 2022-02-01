@@ -37,7 +37,7 @@ public class RewardedVideoAdPlugin
   public static final String EVENT_REWARDED_VIDEO_SHOW_DONE = "onRewardedVideoShowDone";
   public static final String EVENT_REWARDED_VIDEO_STATE_CHANGE = "onRewardedVideoStateChange";
   private static final String TAG = "RewardedVideoAdPlugin";
-  private static final HashMap<Integer, String> errCodeMsgMap = MiniSDKConst.AdConst.CodeMsgMap;
+  private static final HashMap<Integer, String> errCodeMsgMap = MiniSDKConst.AdConst.CODE_MSG_MAP;
   private boolean mGetRewarded = false;
   private boolean mHasShowGPToast = false;
   private boolean mIsOrientationLandscape = false;

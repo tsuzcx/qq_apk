@@ -1,18 +1,9 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-
 public class oig
-  extends Editable.Factory
+  extends bnrp
 {
-  public oig(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
-  
-  public Editable newEditable(CharSequence paramCharSequence)
+  protected void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
   {
-    if ((paramCharSequence instanceof oui)) {
-      return (Editable)paramCharSequence;
-    }
-    return new oui(paramCharSequence, 3, 20);
+    oid.a().a(paramString, paramLong1, paramArrayOfLong, paramLong2);
   }
 }
 

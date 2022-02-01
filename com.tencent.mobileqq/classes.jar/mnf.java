@@ -1,20 +1,8 @@
-import android.util.LruCache;
+import android.view.MotionEvent;
 
-class mnf
-  extends LruCache<String, mng>
+public abstract interface mnf
 {
-  mnf(mne parammne, int paramInt)
-  {
-    super(paramInt);
-  }
-  
-  protected int a(String paramString, mng parammng)
-  {
-    if (parammng == null) {
-      return 0;
-    }
-    return parammng.a.length;
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent, boolean paramBoolean);
 }
 
 

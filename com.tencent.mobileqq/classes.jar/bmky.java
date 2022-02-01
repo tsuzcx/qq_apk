@@ -1,40 +1,108 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public class bmky
-  extends bmmk
+public final class bmky
 {
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public static void a(AppRuntime paramAppRuntime, int paramInt)
   {
-    if ((!paramString2.equals("qqexplive")) || (this.a == null)) {}
-    while (TextUtils.isEmpty(paramString3)) {
-      return false;
+    a(paramAppRuntime, "User_NewFav", paramInt, 0, 0);
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2)
+  {
+    a(paramAppRuntime, "User_AddFav", paramInt2, 0, paramInt1);
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfavReport", 2, "subAction= 0X800AA51, actionName = 0X800AA51, fromType = " + paramInt1 + ", actionResult = " + paramInt2 + ", ext2 = " + paramInt3);
     }
-    QLog.i("QZoneECLiveJsPlugin", 2, "ec_live_jsbridge, dispatch method callback linkchain, " + paramString3);
-    try
+    bdll.b(null, "dc00898", "", "", "0X800AA51", "0X800AA51", paramInt1, paramInt2, "" + paramInt3, "", "", "");
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    a(paramAppRuntime, paramString, paramInt1, paramInt2, paramInt3, 0, "", "");
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3)
+  {
+    QQAppInterface localQQAppInterface = null;
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)paramAppRuntime;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfavReport", 2, "actionName = " + paramString1 + ", fromType = " + paramInt1 + ", actionResult = " + paramInt2 + ", ext2 =" + paramInt3 + ", ext3 =" + paramInt4 + ", ext4 =" + paramString2 + ", ext5 =" + paramString3);
+    }
+    String str1 = "" + paramInt3;
+    String str2 = "" + paramInt4;
+    if (paramString2 == null)
     {
-      paramJsBridgeListener = new Intent("com.tencent.mobileqq.action.ACTION_EC_LIVE_DISPATCH_EVENT");
-      paramJsBridgeListener.putExtra("event", paramString3);
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+      paramAppRuntime = "";
+      if (paramString3 != null) {
+        break label196;
+      }
+    }
+    label196:
+    for (paramString2 = "";; paramString2 = paramString3)
+    {
+      bdll.b(localQQAppInterface, "CliOper", "", "", "Favorite", paramString1, paramInt1, paramInt2, str1, str2, paramAppRuntime, paramString2);
+      return;
+      paramAppRuntime = paramString2;
+      break;
+    }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, boolean paramBoolean, long paramLong)
+  {
+    Object localObject = new String[3];
+    int i = bhnv.a(paramAppRuntime.getApplication().getApplicationContext());
+    if (i == 1) {
+      if (paramBoolean)
       {
-        paramString1 = new JSONObject(paramVarArgs[0]);
-        if (paramString1 != null) {
-          paramJsBridgeListener.putExtra("data", paramString1.toString());
+        localObject[0] = "param_WIFIFavoritesUploadFlow";
+        localObject[1] = "param_WIFIFlow";
+        localObject[2] = "param_Flow";
+        paramAppRuntime.sendAppDataIncermentMsg(paramAppRuntime.getAccount(), (String[])localObject, paramLong);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder().append("addFlowCount ").append(paramLong).append(" for ");
+          if (!paramBoolean) {
+            break label156;
+          }
         }
       }
-      BaseApplicationImpl.getContext().sendBroadcast(paramJsBridgeListener, "com.tencent.msg.permission.pushnotify");
-      return true;
     }
-    catch (Throwable paramJsBridgeListener)
+    label156:
+    for (paramAppRuntime = "upload";; paramAppRuntime = "download")
     {
-      QLog.e("QZoneECLiveJsPlugin", 1, "qz_livevideo_jsbridge, dispatch method callback linkchain exception", paramJsBridgeListener);
+      QLog.d("qqfav", 2, paramAppRuntime + ", netType is " + i);
+      return;
+      localObject[0] = "param_WIFIFavoritesDownloadFlow";
+      break;
+      if (paramBoolean) {
+        localObject[0] = "param_XGFavoritesUploadFlow";
+      }
+      for (;;)
+      {
+        localObject[1] = "param_XGFlow";
+        break;
+        localObject[0] = "param_XGFavoritesDownloadFlow";
+      }
     }
-    return false;
+  }
+  
+  public static void b(AppRuntime paramAppRuntime, int paramInt)
+  {
+    a(paramAppRuntime, "User_DelFav", 0, 0, paramInt);
+  }
+  
+  public static void b(AppRuntime paramAppRuntime, int paramInt1, int paramInt2)
+  {
+    a(paramAppRuntime, "User_OpenFavPage", paramInt2, 0, paramInt1);
   }
 }
 

@@ -1,6 +1,14 @@
-public abstract interface pjw
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+
+public class pjw
+  implements pks
 {
-  public abstract void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3);
+  public pjw(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void a()
+  {
+    ReadInJoySelfFragment.g(this.a);
+  }
 }
 
 

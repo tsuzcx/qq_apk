@@ -2,7 +2,7 @@ package com.tencent.mobileqq.data;
 
 import android.graphics.Color;
 import android.text.TextUtils;
-import anni;
+import anzj;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -38,7 +38,7 @@ public class MessageForTribeShortVideo
   
   public static String buildCompatibleText()
   {
-    return anni.a(2131705357) + "QQ" + anni.a(2131705385);
+    return anzj.a(2131705464) + "QQ" + anzj.a(2131705492);
   }
   
   public void doParse()
@@ -86,12 +86,12 @@ public class MessageForTribeShortVideo
   public String getSummaryMsg()
   {
     if (!TextUtils.isEmpty(this.themeName)) {
-      return anni.a(2131705376) + this.themeName;
+      return anzj.a(2131705483) + this.themeName;
     }
     if (!TextUtils.isEmpty(this.brief)) {
-      return anni.a(2131705351) + this.brief;
+      return anzj.a(2131705458) + this.brief;
     }
-    return anni.a(2131705393);
+    return anzj.a(2131705500);
   }
   
   public boolean isSupportReply()

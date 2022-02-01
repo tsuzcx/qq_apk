@@ -1,22 +1,18 @@
-public abstract class sie
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+
+public class sie
+  extends pmr
 {
-  abstract void a();
+  public sie(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt)
+  {
+    super(paramString);
+  }
   
-  abstract void a(int paramInt1, int paramInt2, String paramString);
-  
-  abstract void a(int paramInt, Object paramObject);
-  
-  abstract void a(String paramString);
-  
-  abstract void a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2);
-  
-  abstract void a(sfb paramsfb);
-  
-  abstract void a(sfb paramsfb, int paramInt);
-  
-  abstract void a(boolean paramBoolean);
-  
-  abstract void b(sfb paramsfb);
+  public void a(pmk parampmk)
+  {
+    parampmk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView, this.jdField_a_of_type_Int);
+  }
 }
 
 

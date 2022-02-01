@@ -1,23 +1,17 @@
-import android.os.Handler;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.Collections;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.util.List;
 
-class ysq
-  implements yyr
+public class ysq
 {
-  ysq(ysm paramysm) {}
+  public final int a;
+  public final List<LocalMediaInfo> a;
+  public final wgg a;
   
-  public void a(int paramInt, List<wqr> paramList)
+  public ysq(List<LocalMediaInfo> paramList, int paramInt, wgg paramwgg)
   {
-    yqp.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = Collections.EMPTY_LIST;
-    }
-    wfo.a().dispatch(new yyp(paramInt, (List)localObject));
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Wgg = paramwgg;
   }
 }
 

@@ -1,8 +1,12 @@
-public abstract interface atak
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class atak
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  atak(atag paramatag) {}
   
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

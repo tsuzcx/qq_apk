@@ -1,22 +1,33 @@
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import com.tencent.qapmsdk.battery.BatteryMonitor;
+import com.tencent.qapmsdk.battery.monitor.HookMethodCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class adlm
-  implements agpt
+class adlm
+  extends adlj
 {
-  public adlm(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
-  
-  public boolean a(agpq paramagpq)
+  public HookMethodCallback a()
   {
-    this.a.finish();
-    if (ArkFullScreenAppActivity.a(this.a)) {
-      this.a.overridePendingTransition(2130771997, 2130772001);
-    }
-    return false;
+    return BatteryMonitor.getInstance().getWakeLockHook();
   }
   
-  public boolean a(agpq paramagpq, String paramString1, String paramString2)
+  public void a()
   {
-    return false;
+    try
+    {
+      JavaHookBridge.findAndHookMethod(PowerManager.class, "newWakeLock", new Object[] { Integer.TYPE, String.class, this });
+      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "acquire", new Object[] { this });
+      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "acquire", new Object[] { Long.TYPE, this });
+      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "release", new Object[] { Integer.TYPE, this });
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MagnifierSDK.QAPM.QAPMBatteryWrapper", 2, "", localThrowable);
+    }
   }
 }
 

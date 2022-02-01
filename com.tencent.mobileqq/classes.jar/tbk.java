@@ -1,9 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
 
-public abstract interface tbk
+public class tbk
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(boolean paramBoolean, List<BaseData> paramList);
+  public tbk(TickerView paramTickerView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    TickerView.a(this.a).a();
+    TickerView.a(this.a);
+    this.a.invalidate();
+  }
 }
 
 

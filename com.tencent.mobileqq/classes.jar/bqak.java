@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.setting.QIMSelectEffectParams;
 
-public class bqak
-  implements DialogInterface.OnClickListener
+public final class bqak
+  implements Parcelable.Creator<QIMSelectEffectParams>
 {
-  public bqak(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public QIMSelectEffectParams a(Parcel paramParcel)
   {
-    this.a.finish();
+    return new QIMSelectEffectParams(paramParcel);
+  }
+  
+  public QIMSelectEffectParams[] a(int paramInt)
+  {
+    return new QIMSelectEffectParams[paramInt];
   }
 }
 

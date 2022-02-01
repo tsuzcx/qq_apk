@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
-import arui;
+import asjw;
 
 public class WebIPCOperator$4
   implements Runnable
 {
-  public WebIPCOperator$4(arui paramarui, Bundle paramBundle) {}
+  public WebIPCOperator$4(asjw paramasjw, Bundle paramBundle) {}
   
   public void run()
   {

@@ -1,22 +1,31 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import java.util.Iterator;
-import java.util.List;
+import NS_USER_ACTION_REPORT.ActionInfo;
 
-class bmzp
-  implements ThreadPool.Job<Void>
+public class bmzp
 {
-  bmzp(bmzf parambmzf, List paramList) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private long b;
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public bmzp(long paramLong, int paramInt)
   {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramJobContext.hasNext())
-    {
-      long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_Bmzf.b(l);
-    }
-    return null;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public bmzp(long paramLong1, int paramInt, long paramLong2)
+  {
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong2;
+  }
+  
+  public ActionInfo a()
+  {
+    ActionInfo localActionInfo = new ActionInfo();
+    localActionInfo.oper_time = this.jdField_a_of_type_Long;
+    localActionInfo.action_id = this.jdField_a_of_type_Int;
+    localActionInfo.action_value = this.b;
+    return localActionInfo;
   }
 }
 

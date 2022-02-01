@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.dating;
 
 import Override;
-import acvy;
+import adab;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anhk;
-import arkw;
-import arlr;
-import axdw;
+import antf;
+import asam;
+import asbh;
+import axwp;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -31,11 +31,11 @@ import mqq.os.MqqHandler;
 public class SayHelloMsgListActivity
   extends BaseMsgBoxActivity
 {
-  axdw a;
+  axwp a;
   
   public SayHelloMsgListActivity()
   {
-    this.jdField_a_of_type_Axdw = new arlr(this);
+    this.jdField_a_of_type_Axwp = new asbh(this);
   }
   
   protected List<RecentBaseData> a(List<MessageRecord> paramList)
@@ -97,7 +97,7 @@ public class SayHelloMsgListActivity
       {
         localIterator.remove();
       }
-      else if (arkw.b(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
+      else if (asam.b(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
       {
         localObject3 = localObject1;
         if (localObject1 == null) {
@@ -107,7 +107,7 @@ public class SayHelloMsgListActivity
         ((List)localObject3).add(localMessageRecord);
         localObject1 = localObject3;
       }
-      else if (arkw.a(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
+      else if (asam.a(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
       {
         localObject3 = localObject2;
         if (localObject2 == null) {
@@ -139,20 +139,20 @@ public class SayHelloMsgListActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setTitle(2131698074);
-    this.app.addObserver(this.jdField_a_of_type_Axdw, true);
+    super.setTitle(2131698175);
+    this.app.addObserver(this.jdField_a_of_type_Axwp, true);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_Axdw);
+    removeObserver(this.jdField_a_of_type_Axwp);
   }
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_Int == 1001) && (anhk.aj.equals(this.jdField_a_of_type_JavaLangString)))
+    if ((this.jdField_a_of_type_Int == 1001) && (antf.aj.equals(this.jdField_a_of_type_JavaLangString)))
     {
       this.app.getPreferences().edit().putLong("sp_key_say_hello_msg_clean_unread_time", NetConnInfoCenter.getServerTime()).commit();
       this.app.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);

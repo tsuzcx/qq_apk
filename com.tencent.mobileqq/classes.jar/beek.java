@@ -1,27 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.24.1;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.24.2;
-import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnInfoListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 
 public class beek
-  implements ISuperPlayer.OnInfoListener
+  implements DialogInterface.OnClickListener
 {
-  public beek(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public beek(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.24.1(this));
-      continue;
-      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.24.2(this));
-    }
+    GroupTeamWorkListActivity.a(this.a);
   }
 }
 

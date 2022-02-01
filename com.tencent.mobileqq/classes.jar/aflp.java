@@ -1,32 +1,54 @@
-import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.List;
 
 public class aflp
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public aflp(TroopMemberListActivity paramTroopMemberListActivity) {}
+  private aflp(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public void onClick(View paramView)
+  public int getCount()
   {
-    zkb.a(this.a.a);
-    zkb.a(this.a.a.a);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.a.a.a.size())
-    {
-      localArrayList.add(((afna)this.a.a.a.get(i)).a);
-      i += 1;
+    return SearchFriendListActivity.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= SearchFriendListActivity.a(this.a).size())) {
+      return null;
     }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", localArrayList);
-    this.a.setResult(-1, localIntent);
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return SearchFriendListActivity.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = this.a.getLayoutInflater().inflate(2131562860, paramViewGroup, false);
+      aflq localaflq = new aflq();
+      localaflq.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367925));
+      localaflq.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371826));
+      localaflq.b = ((TextView)paramView.findViewById(2131365331));
+      paramView.setTag(localaflq);
+      paramView.setOnClickListener(this.a);
+    }
+    for (;;)
+    {
+      this.a.a(paramView, paramInt);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
   }
 }
 

@@ -1,46 +1,48 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
+import UserGrowth.stSimpleGetFeedDetailRsp;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import java.util.ArrayList;
+import java.util.List;
 
 class uvr
-  extends GestureDetector.SimpleOnGestureListener
+  implements ukd
 {
-  private uvr(uvi paramuvi) {}
+  uvr(uvq paramuvq, long paramLong, uoq paramuoq, usf paramusf) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a(uko paramuko)
   {
-    com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.a = true;
-    uvi.b(this.a);
-    return false;
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return super.onDoubleTapEvent(paramMotionEvent);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
-  {
-    super.onShowPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if ((!(uvi.a(this.a).getTag() instanceof uvp)) || (((uvi.a(this.a).getTag() instanceof uvp)) && (!uvi.a(this.a).a(uvi.a(this.a)).booleanValue()))) {
-      uvi.c(this.a);
+    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    uqf.a("weishi-beacon", "小程序播放页请求耗时：" + l + "毫秒");
+    uoc.a().a(true, l, this.jdField_a_of_type_Uoq.d(), 1, "fullscreen_videoplay", true);
+    if (!paramuko.a())
+    {
+      uqf.d("WSVerticalForMiniAppPresenter", "GetFeedDetailRequest onTaskResponse failed code:" + paramuko.jdField_a_of_type_Int + ", msg:" + paramuko.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Usf != null) {
+        this.jdField_a_of_type_Usf.a(paramuko.jdField_a_of_type_Int, paramuko.jdField_a_of_type_JavaLangString);
+      }
     }
-    return false;
+    do
+    {
+      Object localObject;
+      do
+      {
+        do
+        {
+          return;
+          if (!(paramuko.jdField_a_of_type_JavaLangObject instanceof stSimpleGetFeedDetailRsp)) {
+            break;
+          }
+          paramuko = ((stSimpleGetFeedDetailRsp)paramuko.jdField_a_of_type_JavaLangObject).feed;
+          localObject = new ArrayList();
+          ((ArrayList)localObject).add(paramuko);
+          paramuko = WSVerticalDataManager.a().a((List)localObject);
+          localObject = this.jdField_a_of_type_Uvq.a();
+        } while ((localObject == null) || (((urv)localObject).a() == null) || (((urv)localObject).a().a() == null));
+        localObject = ((urv)localObject).a().a().a;
+      } while (!(localObject instanceof utq));
+      ((utq)localObject).b((usv)paramuko.get(0));
+      return;
+    } while (this.jdField_a_of_type_Usf == null);
+    this.jdField_a_of_type_Usf.a(paramuko.b, paramuko.jdField_a_of_type_JavaLangString);
   }
 }
 

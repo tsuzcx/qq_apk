@@ -1,280 +1,112 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-public class amwz
-  extends bdsh
+public abstract class amwz<T>
 {
-  public static int a;
-  public static int b = 2;
-  public static int c = 3;
+  protected final List<amxc> a = new ArrayList();
   
-  static
+  public void a(boolean paramBoolean)
   {
-    jdField_a_of_type_Int = 1;
-  }
-  
-  public static URLDrawable a(String paramString1, URLDrawable.URLDrawableOptions paramURLDrawableOptions, String paramString2)
-  {
-    return a(false, paramString1, paramURLDrawableOptions, paramString2);
-  }
-  
-  public static URLDrawable a(String paramString1, URLDrawable.URLDrawableOptions paramURLDrawableOptions, String paramString2, boolean paramBoolean)
-  {
-    return a(false, paramString1, paramURLDrawableOptions, paramString2, paramBoolean);
-  }
-  
-  public static URLDrawable a(boolean paramBoolean, String paramString1, URLDrawable.URLDrawableOptions paramURLDrawableOptions, String paramString2)
-  {
-    return a(paramBoolean, paramString1, paramURLDrawableOptions, paramString2, false);
-  }
-  
-  public static URLDrawable a(boolean paramBoolean1, String paramString1, URLDrawable.URLDrawableOptions paramURLDrawableOptions, String paramString2, boolean paramBoolean2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return null;
-    }
-    if (!paramBoolean1) {}
-    for (String str = ancb.k + "boxcard/" + paramString1;; str = paramString1)
+    try
     {
-      File localFile = new File(str);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = paramURLDrawableOptions;
-      if (paramURLDrawableOptions == null)
-      {
-        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mExtraInfo = null;
-      }
-      if (localURLDrawableOptions.mLoadingDrawable == null) {
-        localURLDrawableOptions.mLoadingDrawable = bdzx.a;
-      }
-      if (localURLDrawableOptions.mFailedDrawable == null) {
-        localURLDrawableOptions.mFailedDrawable = bdzx.a;
-      }
-      if (localURLDrawableOptions.mExtraInfo == null) {
-        localURLDrawableOptions.mExtraInfo = new amxa();
-      }
-      paramBoolean1 = paramBoolean2;
-      if ((localURLDrawableOptions.mExtraInfo instanceof amxa))
-      {
-        paramURLDrawableOptions = (amxa)localURLDrawableOptions.mExtraInfo;
-        if (!TextUtils.isEmpty(str)) {
-          paramURLDrawableOptions.jdField_a_of_type_JavaLangString = str;
-        }
-        if (!TextUtils.isEmpty(paramString2)) {
-          paramURLDrawableOptions.jdField_b_of_type_JavaLangString = paramString2;
-        }
-        if (paramURLDrawableOptions.jdField_a_of_type_Int != jdField_a_of_type_Int)
-        {
-          paramBoolean1 = paramBoolean2;
-          if (!paramURLDrawableOptions.jdField_b_of_type_Boolean) {}
-        }
-        else
-        {
-          paramBoolean1 = true;
-        }
-      }
-      if ((!paramBoolean1) && (localFile.exists()))
-      {
-        paramURLDrawableOptions = URLDrawable.getDrawable(localFile, localURLDrawableOptions);
-        paramString1 = paramURLDrawableOptions;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ApolloImageDownloader", 2, "getDrawable file exsit path->" + str + ",url:" + paramString2);
-          paramString1 = paramURLDrawableOptions;
-        }
-      }
-      for (;;)
-      {
-        return paramString1;
-        try
-        {
-          paramString1 = URLDrawable.getDrawable(new URL("apollo_image", "", paramString1), localURLDrawableOptions);
-        }
-        catch (Exception paramString1)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloImageDownloader", 2, paramString1.getMessage());
-          }
-          paramString1 = null;
-        }
-      }
+      this.a.clear();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public static final String a(int paramInt1, int paramInt2)
+  /* Error */
+  public boolean a()
   {
-    if (paramInt1 == 3) {
-      return "https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_" + paramInt2 + "/task_detail.gif";
-    }
-    return "https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_item_" + paramInt2 + "/task_detail.png";
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 17	amwz:a	Ljava/util/List;
+    //   6: invokeinterface 28 1 0
+    //   11: istore_1
+    //   12: iload_1
+    //   13: ifne +9 -> 22
+    //   16: iconst_1
+    //   17: istore_1
+    //   18: aload_0
+    //   19: monitorexit
+    //   20: iload_1
+    //   21: ireturn
+    //   22: iconst_0
+    //   23: istore_1
+    //   24: goto -6 -> 18
+    //   27: astore_2
+    //   28: aload_0
+    //   29: monitorexit
+    //   30: aload_2
+    //   31: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	32	0	this	amwz
+    //   11	13	1	bool	boolean
+    //   27	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	12	27	finally
   }
   
-  public static final String a(String paramString)
+  public boolean a(amxc paramamxc)
   {
-    return "https://cmshow.gtimg.cn/client/img/" + paramString;
+    try
+    {
+      boolean bool = this.a.remove(paramamxc);
+      return bool;
+    }
+    finally
+    {
+      paramamxc = finally;
+      throw paramamxc;
+    }
   }
   
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return false;
-      String str = ancb.k + paramString.substring(paramString.lastIndexOf("/") + 1);
-      if (new File(str).exists()) {
-        return true;
-      }
-      paramString = a(true, str, null, paramString, true);
-    } while (paramString == null);
-    paramString.startDownload();
-    return false;
-  }
+  public abstract boolean a(T paramT, float paramFloat);
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  /* Error */
+  public boolean a(List<amxc> paramList)
   {
-    if (paramURLDrawableHandler != null) {
-      paramURLDrawableHandler.onFileDownloadStarted();
-    }
-    if ((paramDownloadParams.mExtraInfo != null) && ((paramDownloadParams.mExtraInfo instanceof amxa)))
-    {
-      paramOutputStream = (amxa)paramDownloadParams.mExtraInfo;
-      paramDownloadParams = paramOutputStream.jdField_a_of_type_JavaLangString;
-      paramOutputStream = paramOutputStream.jdField_b_of_type_JavaLangString;
-      paramDownloadParams = new File(paramDownloadParams);
-      if (paramDownloadParams.exists())
-      {
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.length());
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloImageDownloader", 2, "downloadImage file exsit url->" + paramOutputStream);
-        }
-      }
-      int i;
-      do
-      {
-        return paramDownloadParams;
-        paramDownloadParams.getParentFile().mkdirs();
-        if ((BaseApplicationImpl.sApplication != null) && (!bgnt.g(BaseApplicationImpl.sApplication)) && (paramURLDrawableHandler != null)) {
-          paramURLDrawableHandler.onFileDownloadFailed(0);
-        }
-        bhhf localbhhf = new bhhf(paramOutputStream, paramDownloadParams);
-        localbhhf.b = 1;
-        localbhhf.p = false;
-        localbhhf.q = true;
-        localbhhf.r = true;
-        i = bhhh.a(localbhhf, null);
-        if (i != 0) {
-          break;
-        }
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.length());
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ApolloImageDownloader", 2, "url->" + paramOutputStream + " result->0");
-      return paramDownloadParams;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloImageDownloader", 2, "url->" + paramOutputStream + " result->" + i);
-      }
-    }
-    if (paramURLDrawableHandler != null) {
-      paramURLDrawableHandler.onFileDownloadFailed(0);
-    }
-    return null;
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    Bitmap localBitmap = null;
-    amxa localamxa;
-    if ((paramFile != null) && (paramDownloadParams.mExtraInfo != null) && ((paramDownloadParams.mExtraInfo instanceof amxa)))
-    {
-      localamxa = (amxa)paramDownloadParams.mExtraInfo;
-      if (localamxa.jdField_a_of_type_Int != jdField_a_of_type_Int) {
-        break label102;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        localBitmap = SafeBitmapFactory.decodeFile(paramFile.getAbsolutePath());
-        localBitmap = bgmo.a(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
-        paramFile = localBitmap;
-        return paramFile;
-      }
-      catch (Throwable localThrowable)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloImageDownloader", 2, localThrowable.getMessage());
-        }
-      }
-      label102:
-      do
-      {
-        return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
-      } while (localamxa.jdField_a_of_type_Int != b);
-      if (paramFile.exists())
-      {
-        paramURLDrawableHandler = new BitmapFactory.Options();
-        paramURLDrawableHandler.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(paramFile.getPath(), paramURLDrawableHandler);
-        paramURLDrawableHandler.inSampleSize = bgmo.a(paramURLDrawableHandler, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight);
-        paramURLDrawableHandler.inJustDecodeBounds = false;
-        paramURLDrawableHandler.inPreferredConfig = Bitmap.Config.RGB_565;
-        try
-        {
-          paramFile = BitmapFactory.decodeFile(paramFile.getPath(), paramURLDrawableHandler);
-          if (paramFile != null) {
-            if (localamxa.jdField_a_of_type_Boolean)
-            {
-              i = 2130849989;
-              paramDownloadParams = bgmo.a(paramFile, i, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, true);
-              paramFile = paramDownloadParams;
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("ApolloImageDownloader", 2, "ApolloItemBuilder decodeFile bgBitmap:" + paramDownloadParams);
-              return paramDownloadParams;
-            }
-          }
-        }
-        catch (OutOfMemoryError paramFile)
-        {
-          for (;;)
-          {
-            QLog.e("ApolloImageDownloader", 1, "decode server pic oom!!");
-            System.gc();
-            paramFile = localThrowable;
-            continue;
-            int i = 2130849813;
-          }
-          paramDownloadParams = paramFile;
-        }
-      }
-    }
-    for (;;)
-    {
-      paramFile = paramDownloadParams;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ApolloImageDownloader", 2, "ApolloItemBuilder decodeFile bgBitmap:" + paramDownloadParams);
-      return paramDownloadParams;
-      paramDownloadParams = null;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: ifnull +27 -> 30
+    //   6: aload_1
+    //   7: invokeinterface 28 1 0
+    //   12: ifne +18 -> 30
+    //   15: aload_0
+    //   16: getfield 17	amwz:a	Ljava/util/List;
+    //   19: aload_1
+    //   20: invokeinterface 39 2 0
+    //   25: istore_2
+    //   26: aload_0
+    //   27: monitorexit
+    //   28: iload_2
+    //   29: ireturn
+    //   30: iconst_0
+    //   31: istore_2
+    //   32: goto -6 -> 26
+    //   35: astore_1
+    //   36: aload_0
+    //   37: monitorexit
+    //   38: aload_1
+    //   39: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	40	0	this	amwz
+    //   0	40	1	paramList	List<amxc>
+    //   25	7	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   6	26	35	finally
   }
 }
 

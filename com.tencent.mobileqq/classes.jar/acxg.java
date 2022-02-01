@@ -1,18 +1,30 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.ad.tangram.canvas.views.form.AdFormError;
+import com.tencent.ad.tangram.canvas.views.xijing.AdTextData;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
 
 public class acxg
-  implements acxf
+  implements View.OnFocusChangeListener
 {
-  private acwu<acxe> a = new acwv();
+  public acxg(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
   
-  public List<acxe> a()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    return this.a.a();
-  }
-  
-  public void a(Class<? extends acxe> paramClass)
-  {
-    this.a.a(paramClass);
+    if ((this.a.a() == null) || (!this.a.a().isValid()))
+    {
+      acvc.b("GdtFormItemTextBoxView", "onFocusChange error");
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramView = new AdFormError(2, -1, this.a.a().title.text);
+      paramView.index = GdtFormItemTextBoxView.a(this.a);
+      GdtFormItemTextBoxView.a(this.a, paramView);
+      return;
+    }
+    GdtFormItemTextBoxView.a(this.a);
   }
 }
 

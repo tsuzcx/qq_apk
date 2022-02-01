@@ -1,36 +1,71 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.FriendViewHolder.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-
 public class wvj
-  extends wvi
 {
-  private aoch a;
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public void a(wrs paramwrs)
+  public wvj(String paramString1, String paramString2, String paramString3)
   {
-    super.a(paramwrs);
-    this.itemView.setTag(paramwrs.a);
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    if ((paramString1 == null) || (paramString2 == null)) {
+      throw new IllegalArgumentException("both downloadUrl and downloadLocalPath should not be null");
+    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = true;
+    boolean bool3 = false;
+    if (this == paramObject) {
+      bool1 = true;
+    }
+    do
     {
-      localObject = (QQAppInterface)localObject;
-      String str1 = String.valueOf(paramwrs.b);
-      this.jdField_a_of_type_Aoch = aoch.a((AppInterface)localObject, 1, str1);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Aoch);
-      String str2 = bglf.m((QQAppInterface)localObject, str1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
-      ThreadManager.post(new FriendViewHolder.1(this, (QQAppInterface)localObject, str1), 8, null, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("zivonchen", 2, "FriendViewHolder userItem = " + paramwrs.b + ", name = " + str2 + ", faceDrawable = " + this.jdField_a_of_type_Aoch);
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool1;
+            bool1 = bool3;
+          } while (paramObject == null);
+          bool1 = bool3;
+        } while (getClass() != paramObject.getClass());
+        paramObject = (wvj)paramObject;
+        bool1 = bool3;
+      } while (!this.a.equals(paramObject.a));
+      bool1 = bool3;
+    } while (!this.b.equals(paramObject.b));
+    if (this.c != null)
+    {
+      bool1 = bool2;
+      if (this.c.equals(paramObject.c)) {}
+    }
+    for (boolean bool1 = false;; bool1 = bool2)
+    {
+      return bool1;
+      if (paramObject.c != null) {
+        break;
       }
     }
+  }
+  
+  public int hashCode()
+  {
+    int j = this.a.hashCode();
+    int k = this.b.hashCode();
+    if (this.c != null) {}
+    for (int i = this.c.hashCode();; i = 0) {
+      return i + (j * 31 + k) * 31;
+    }
+  }
+  
+  public String toString()
+  {
+    return "Input{downloadUrl='" + this.a + '\'' + ", downloadLocalPath='" + this.b + '\'' + ", downloadFileMd5='" + this.c + '\'' + '}';
   }
 }
 

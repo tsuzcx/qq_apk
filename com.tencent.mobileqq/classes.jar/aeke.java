@@ -1,25 +1,91 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aeke
-  extends WebViewClient
+  extends WtloginObserver
 {
-  public aeke(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  public aeke(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
   
-  @Override
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public void onCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt + " time=" + paramLong);
+      if (paramArrayOfByte2 == null) {}
+    }
+    try
+    {
+      paramString = new String(paramArrayOfByte2, "utf-8");
+      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode errMsg=" + paramString);
+      this.a.c();
+      if (DevlockQuickLoginActivity.a(this.a)) {
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+      if (paramInt == 0)
+      {
+        QQToast.a(this.a.getApplicationContext(), 2, 2131691855, 0).b(DevlockQuickLoginActivity.a(this.a));
+        DevlockQuickLoginActivity.a(this.a);
+        DevlockQuickLoginActivity.a(this.a, 0, 2130772001);
+        return;
+      }
+      if (paramInt == 21)
+      {
+        paramString = this.a.getString(2131691852);
+        paramArrayOfByte1 = this.a.getString(2131718422);
+        this.a.a(null, paramString, paramArrayOfByte1, new aekf(this));
+        return;
+      }
+      paramString = DevlockQuickLoginActivity.a(this.a, 2131691853);
+      QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(DevlockQuickLoginActivity.b(this.a));
+    }
   }
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public void onException(String paramString, int paramInt)
   {
-    if (this.a.a(paramString)) {}
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("DevlockQuickLoginActivity", 2, "OnException e=" + paramString);
+    }
+    this.a.c();
+    QQToast.a(DevlockQuickLoginActivity.b(this.a), 1, this.a.getString(2131691854), 0).b(DevlockQuickLoginActivity.d(this.a));
+  }
+  
+  public void onVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DevlockQuickLoginActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
+    }
+    if (DevlockQuickLoginActivity.b(this.a))
+    {
+      this.a.c();
+      return;
+    }
+    if (paramInt == 0)
+    {
+      this.a.b();
+      return;
+    }
+    this.a.c();
+    if (paramInt == 21)
+    {
+      paramString = this.a.getString(2131691852);
+      paramArrayOfByte1 = this.a.getString(2131718422);
+      this.a.a(null, paramString, paramArrayOfByte1, new aekg(this));
+      return;
+    }
+    paramString = this.a.getString(2131691853);
+    QQToast.a(DevlockQuickLoginActivity.a(this.a), 1, paramString, 0).b(DevlockQuickLoginActivity.c(this.a));
   }
 }
 

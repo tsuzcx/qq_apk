@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import aeyd;
-import aoor;
+import afhi;
+import apch;
 
 public class QQMapActivity$9$1
   implements Runnable
 {
-  public QQMapActivity$9$1(aeyd paramaeyd) {}
+  public QQMapActivity$9$1(afhi paramafhi) {}
   
   public void run()
   {
-    aoor.b(this.a.a.a);
+    apch.b(this.a.a.a);
   }
 }
 

@@ -25,6 +25,8 @@ public abstract interface ITPPlayerBase
   
   public abstract long getDurationMs();
   
+  public abstract int getNativePlayerId();
+  
   public abstract long getPlayableDurationMs();
   
   public abstract TPProgramInfo[] getProgramInfo();

@@ -6,15 +6,15 @@ import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
-import ozw;
-import pay;
+import osl;
+import otp;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJCommentNetworkHelper$authorDeleteComment$1
   extends Lambda
   implements Function1<String, Unit>
 {
-  public RIJCommentNetworkHelper$authorDeleteComment$1(ozw paramozw, pay parampay, int paramInt)
+  public RIJCommentNetworkHelper$authorDeleteComment$1(osl paramosl, otp paramotp, int paramInt)
   {
     super(1);
   }

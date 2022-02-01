@@ -1,36 +1,15 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class xwu
-  extends JobSegment<List<Bitmap>, Bitmap>
+class xwu
+  implements DialogInterface.OnDismissListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString = "story.icon.BitmapListToIconSegment";
+  xwu(xwr paramxwr, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public xwu(Context paramContext, String paramString, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "[" + paramString + "]");
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void a(JobContext paramJobContext, List<Bitmap> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      notifyError(new ErrorMessage(-1, "bitmap list should not be empty"));
-      return;
-    }
-    paramJobContext = (Bitmap[])paramList.toArray(new Bitmap[paramList.size()]);
-    paramList = bgia.a(this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888, paramJobContext);
-    xwv.b(this.jdField_a_of_type_JavaLangString, "result bitmap = %s, child count = %d", paramList, Integer.valueOf(paramJobContext.length));
-    notifyResult(paramList);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
   }
 }
 

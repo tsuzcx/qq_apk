@@ -1,6 +1,15 @@
-public abstract interface xic
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+
+class xic
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a(String paramString);
+  xic(xhz paramxhz) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    this.a.f();
+  }
 }
 
 

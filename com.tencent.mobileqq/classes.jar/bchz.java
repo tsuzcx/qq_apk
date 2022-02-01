@@ -1,18 +1,17 @@
-public abstract interface bchz
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bchz
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3);
+  bchz(bchy parambchy, bcfr parambcfr) {}
   
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
-  
-  public abstract void a(String paramString, int paramInt, long paramLong);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void c();
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Bcfr.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

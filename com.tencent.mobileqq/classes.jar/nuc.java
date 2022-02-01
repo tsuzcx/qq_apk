@@ -1,36 +1,17 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class nuc
-  implements ViewPager.OnPageChangeListener
+class nuc
+  implements View.OnClickListener
 {
-  public nuc(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  nuc(ntc paramntc, oag paramoag) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
-      return;
-    }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
-    if (paramInt2 != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
-      return;
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    PublicAccountAdvertisementActivity.a(this.a, paramInt);
+    ntc.a(this.jdField_a_of_type_Ntc);
+    ntc.a(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_Oag.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

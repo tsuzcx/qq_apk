@@ -1,65 +1,87 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 class bnpp
-  implements bdvw
+  extends BroadcastReceiver
 {
-  private bnpf jdField_a_of_type_Bnpf;
-  private bnpq jdField_a_of_type_Bnpq;
-  private String jdField_a_of_type_JavaLangString;
+  bnpp(bnpo parambnpo) {}
   
-  public bnpp(bnpf parambnpf, String paramString, bnpq parambnpq)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Bnpf = parambnpf;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bnpq = parambnpq;
-  }
-  
-  public void onResp(bdwt parambdwt)
-  {
-    long l2 = 0L;
-    if (QLog.isColorLevel()) {
-      QLog.i(bnpo.a(), 2, "onResp url: " + this.jdField_a_of_type_Bnpf.d + " resultcode: " + parambdwt.c);
-    }
-    if ((this.jdField_a_of_type_Bnpf instanceof bnpl)) {
-      bnjj.a((bnpl)this.jdField_a_of_type_Bnpf);
-    }
-    for (this.jdField_a_of_type_Bnpf.jdField_e_of_type_Boolean = true;; this.jdField_a_of_type_Bnpf.jdField_e_of_type_Boolean = bnpc.a(this.jdField_a_of_type_Bnpf))
+    Object localObject;
+    if (QLog.isDevelopLevel())
     {
-      this.jdField_a_of_type_Bnpf.jdField_f_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Bnpq != null) {
-        this.jdField_a_of_type_Bnpq.a(this.jdField_a_of_type_Bnpf, this.jdField_a_of_type_Bnpf.jdField_e_of_type_Boolean);
+      localObject = new StringBuilder().append("intent is: ");
+      if (paramIntent == null)
+      {
+        paramContext = "null";
+        QLog.d("QZonePersonalizePlugin", 4, paramContext);
       }
-      if (parambdwt.b == 0) {
-        break;
+    }
+    else
+    {
+      if ((paramIntent == null) || (!"QZoneCardPreDownload".equals(paramIntent.getAction()))) {
+        break label239;
       }
-      bnyh.a().a(this.jdField_a_of_type_Bnpf.jdField_a_of_type_JavaLangString, parambdwt.b, parambdwt.g, 0L, this.jdField_a_of_type_Bnpf.jdField_e_of_type_JavaLangString);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QZoneCardLogic.QZonePersonalizePlugin", 4, "QZoneCardPreDownload js receive setting action" + paramIntent.getAction());
+      }
+      localObject = paramIntent.getExtras();
+      paramIntent = "";
+      paramContext = "";
+      if (localObject != null)
+      {
+        paramIntent = ((Bundle)localObject).getString("result");
+        paramContext = ((Bundle)localObject).getString("cardurl");
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QZoneCardLogic.QZonePersonalizePlugin", 4, "QZoneCardPreDownload js receive cardurl:" + paramContext + "\n dowonload result:" + paramIntent);
+      }
+      if (this.a.mRuntime != null) {
+        break label182;
+      }
+    }
+    label182:
+    label239:
+    int i;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              paramContext = "not null";
+              break;
+            } while (this.a.mRuntime.a() == null);
+            paramIntent = this.a.mRuntime.a();
+          } while (paramIntent == null);
+          paramIntent.callJs("window.QzFeedDressJSInterface.onReceive({type:\"cardurl\",data:\"" + paramContext + "\"});window.QzFeedDressJSInterface.onReceive({type:\"result\",data:\"success\"});");
+          return;
+        } while ((paramIntent == null) || (!"action_facade_qzone2js".equals(paramIntent.getAction())));
+        paramIntent = paramIntent.getExtras();
+      } while (paramIntent == null);
+      i = paramIntent.getInt("ret");
+      paramContext = paramIntent.getString("imgDir");
+      paramIntent = paramIntent.getString("imgNameList");
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QZonePersonalizePlugin", 4, "receive ret:" + i + "|imgDir:" + paramContext + "|imgNameList:" + paramIntent);
+      }
+    } while ((this.a.mRuntime == null) || (this.a.mRuntime.a() == null));
+    if (i == 0)
+    {
+      this.a.callJs("window.QzAvatarDressJSInterface.onReceive({type:\"result\",data:\"success\",imgDir:\"" + paramContext + "\",imgNameList:\"" + paramIntent + "\"});");
       return;
     }
-    if ((parambdwt.b == 0) && (!this.jdField_a_of_type_Bnpf.jdField_e_of_type_Boolean))
-    {
-      bnyh.a().a(this.jdField_a_of_type_Bnpf.jdField_a_of_type_JavaLangString, 1111, parambdwt.g, 0L, this.jdField_a_of_type_Bnpf.jdField_e_of_type_JavaLangString);
-      return;
-    }
-    File localFile = new File(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bnpf.jdField_f_of_type_JavaLangString);
-    long l1 = l2;
-    if (localFile.exists())
-    {
-      l1 = l2;
-      if (localFile.isFile()) {
-        l1 = localFile.length();
-      }
-    }
-    bnyh.a().a(this.jdField_a_of_type_Bnpf.jdField_a_of_type_JavaLangString, parambdwt.b, parambdwt.g, l1, this.jdField_a_of_type_Bnpf.jdField_e_of_type_JavaLangString);
-  }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_Bnpf.b = paramLong2;
-    this.jdField_a_of_type_Bnpf.jdField_e_of_type_Int = ((int)(100L * paramLong1 / paramLong2));
-    if (this.jdField_a_of_type_Bnpq != null) {
-      this.jdField_a_of_type_Bnpq.a(this.jdField_a_of_type_Bnpf, this.jdField_a_of_type_Bnpf.jdField_e_of_type_Int);
-    }
+    this.a.callJs("window.QzAvatarDressJSInterface.onReceive({type:\"result\",data:\"fail\"});");
   }
 }
 

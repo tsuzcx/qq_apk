@@ -1,13 +1,19 @@
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+
 class vbw
-  implements zxw
+  extends RecyclerView.OnScrollListener
 {
-  vbw(vbt paramvbt) {}
+  vbw(vbr paramvbr) {}
   
-  public void a(zxz paramzxz, Object paramObject)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (paramzxz.e()) {
-      vbt.a(this.a).a(vbt.a(this.a), true, false, vbt.a(this.a), null);
+    if (paramInt == 0)
+    {
+      adlb.a().a("qcircle_comment_page", false);
+      return;
     }
+    adlb.a().a("qcircle_comment_page");
   }
 }
 

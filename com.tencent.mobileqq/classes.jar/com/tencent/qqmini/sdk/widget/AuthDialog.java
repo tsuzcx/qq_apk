@@ -5,6 +5,7 @@ import NS_MINI_INTERFACE.INTERFACE.StGetUserSettingRsp;
 import NS_MINI_INTERFACE.INTERFACE.StSubscribeMessage;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.CheckBox;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -32,7 +34,9 @@ import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
+import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -53,6 +57,7 @@ public class AuthDialog
   public static final int TYPE_NORMAL = 1;
   public static final int TYPE_ONCE_SUB_MSG = 3;
   public static final int TYPE_PHONENUMBER = 2;
+  public static final int TYPE_SYS_SUB_MSG = 4;
   private String mAppId = null;
   private TextView mAuthDesc;
   private ImageView mAuthInfoBackIcon;
@@ -100,6 +105,7 @@ public class AuthDialog
   private RelativeLayout onceSubLayout2;
   private RelativeLayout onceSubLayout3;
   private CheckBox onceSubMaintainCheckBox;
+  private final CompoundButton.OnCheckedChangeListener onceSubOnCheckedChangeListener = new AuthDialog.1(this);
   private TextView onceSubTextView1;
   private TextView onceSubTextView2;
   private TextView onceSubTextView3;
@@ -122,6 +128,8 @@ public class AuthDialog
     this.mType = paramInt;
     switch (paramInt)
     {
+    default: 
+      initView(paramActivity);
     }
     for (;;)
     {
@@ -136,11 +144,11 @@ public class AuthDialog
       continue;
       initPhoneNumberView(paramActivity);
       continue;
-      initOnceSubMsgView(paramActivity);
+      initOnceSubMsgView(paramActivity, paramInt);
     }
   }
   
-  private void initOnceSubMsgView(Context paramContext)
+  private void initOnceSubMsgView(Context paramContext, int paramInt)
   {
     paramContext = LayoutInflater.from(paramContext).inflate(R.layout.mini_sdk_once_sub_auth_dialog, null);
     this.mRootView = paramContext;
@@ -154,8 +162,11 @@ public class AuthDialog
     this.onceSubLayout2 = ((RelativeLayout)paramContext.findViewById(R.id.rl_once_sub_2));
     this.onceSubLayout3 = ((RelativeLayout)paramContext.findViewById(R.id.rl_once_sub_3));
     this.onceSubCheckBox1 = ((CheckBox)paramContext.findViewById(R.id.cb_once_sub_1));
+    this.onceSubCheckBox1.setOnCheckedChangeListener(this.onceSubOnCheckedChangeListener);
     this.onceSubCheckBox2 = ((CheckBox)paramContext.findViewById(R.id.cb_once_sub_2));
+    this.onceSubCheckBox2.setOnCheckedChangeListener(this.onceSubOnCheckedChangeListener);
     this.onceSubCheckBox3 = ((CheckBox)paramContext.findViewById(R.id.cb_once_sub_3));
+    this.onceSubCheckBox3.setOnCheckedChangeListener(this.onceSubOnCheckedChangeListener);
     this.onceSubMaintainCheckBox = ((CheckBox)paramContext.findViewById(R.id.cb_maintain));
     this.onceSubTextView1 = ((TextView)paramContext.findViewById(R.id.tv_once_sub_1));
     this.onceSubTextView2 = ((TextView)paramContext.findViewById(R.id.tv_once_sub_2));
@@ -163,6 +174,9 @@ public class AuthDialog
     this.onceSubTips1 = ((ImageView)paramContext.findViewById(R.id.iv_once_sub_1));
     this.onceSubTips2 = ((ImageView)paramContext.findViewById(R.id.iv_once_sub_2));
     this.onceSubTips3 = ((ImageView)paramContext.findViewById(R.id.iv_once_sub_3));
+    if (paramInt == 4) {
+      paramContext.findViewById(R.id.rl_maintain).setVisibility(8);
+    }
   }
   
   private void initPhoneNumberView(Context paramContext)
@@ -230,15 +244,15 @@ public class AuthDialog
       return;
     case 0: 
       this.onceSubTextView1.setText(((INTERFACE.StSubscribeMessage)paramList.get(0)).example.title.get());
-      this.onceSubTips1.setOnClickListener(new AuthDialog.4(this, paramList));
+      this.onceSubTips1.setOnClickListener(new AuthDialog.5(this, paramList));
       return;
     case 1: 
       this.onceSubTextView2.setText(((INTERFACE.StSubscribeMessage)paramList.get(1)).example.title.get());
-      this.onceSubTips2.setOnClickListener(new AuthDialog.5(this, paramList));
+      this.onceSubTips2.setOnClickListener(new AuthDialog.6(this, paramList));
       return;
     }
     this.onceSubTextView3.setText(((INTERFACE.StSubscribeMessage)paramList.get(2)).example.title.get());
-    this.onceSubTips3.setOnClickListener(new AuthDialog.6(this, paramList));
+    this.onceSubTips3.setOnClickListener(new AuthDialog.7(this, paramList));
   }
   
   private void loadOnceSubMsgBottomBtn()
@@ -247,13 +261,13 @@ public class AuthDialog
     {
       this.mLeftBtn.setText("拒绝");
       this.mLeftBtn.setVisibility(0);
-      this.mLeftBtn.setOnClickListener(new AuthDialog.2(this));
+      this.mLeftBtn.setOnClickListener(new AuthDialog.3(this));
     }
     if (this.mRightBtn != null)
     {
       this.mRightBtn.setText("允许");
       this.mRightBtn.setVisibility(0);
-      this.mRightBtn.setOnClickListener(new AuthDialog.3(this));
+      this.mRightBtn.setOnClickListener(new AuthDialog.4(this));
     }
   }
   
@@ -316,9 +330,16 @@ public class AuthDialog
     loadOnceSubItemView(localThrowable, 2);
   }
   
+  private void realReportTo4239(String paramString)
+  {
+    String str = this.mResBuilder.getReportSubAction();
+    MiniAppInfo localMiniAppInfo = this.mResBuilder.getMiniAppInfo();
+    SDKMiniProgramLpReportDC04239.reportMiniAppEvent(localMiniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(localMiniAppInfo), null, "scope", str, paramString, null);
+  }
+  
   private void setActivityResultListener()
   {
-    ActivityResultManager.g().addActivityResultListener(new AuthDialog.1(this));
+    ActivityResultManager.g().addActivityResultListener(new AuthDialog.2(this));
   }
   
   private void setAppIcon(AuthDialog.AuthDialogResBuilder paramAuthDialogResBuilder)
@@ -680,6 +701,21 @@ public class AuthDialog
     }
   }
   
+  public void reportAuthDialogCancelTo4239()
+  {
+    realReportTo4239("cancel");
+  }
+  
+  public void reportAuthDialogClickTo4239()
+  {
+    realReportTo4239("click");
+  }
+  
+  public void reportAuthDialogExpoTo4239()
+  {
+    realReportTo4239("expo");
+  }
+  
   public void setConfirm(boolean paramBoolean)
   {
     this.mIsConfirm = paramBoolean;
@@ -688,6 +724,12 @@ public class AuthDialog
   public void setRefuse(boolean paramBoolean)
   {
     this.mIsRefuse = paramBoolean;
+  }
+  
+  public void show()
+  {
+    super.show();
+    reportAuthDialogExpoTo4239();
   }
   
   public void show(AuthDialog.AuthDialogResBuilder paramAuthDialogResBuilder)
@@ -714,18 +756,28 @@ public class AuthDialog
     setAuthTitle(paramAuthDialogResBuilder);
     setUserIcon(paramAuthDialogResBuilder);
     setUserName(paramAuthDialogResBuilder);
-    if (this.mType == 3)
+    if (this.mType == 4)
     {
       loadOnceSubMsgBottomBtn();
       loadOnceSubMsgView();
+      paramAuthDialogResBuilder.setReportSubAction("sysMsgSubscribed");
     }
     for (;;)
     {
       setAuthDesc(paramAuthDialogResBuilder);
       show();
       return;
-      setLeftBtn(paramAuthDialogResBuilder);
-      setRightBtn(paramAuthDialogResBuilder);
+      if (this.mType == 3)
+      {
+        loadOnceSubMsgBottomBtn();
+        loadOnceSubMsgView();
+        paramAuthDialogResBuilder.setReportSubAction("onceMsgSubscribed");
+      }
+      else
+      {
+        setLeftBtn(paramAuthDialogResBuilder);
+        setRightBtn(paramAuthDialogResBuilder);
+      }
     }
   }
 }

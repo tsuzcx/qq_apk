@@ -1,21 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import com.tencent.widget.BubblePopupWindow;
 import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "clickedView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "which", "", "OnClick"}, k=3, mv={1, 1, 16})
 final class oxk
-  implements ViewBase.OnClickListener
+  implements bliz
 {
-  oxk(pan parampan, Container paramContainer, pay parampay) {}
+  oxk(oxi paramoxi, blir paramblir) {}
   
-  public final void onClick(ViewBase paramViewBase)
+  public final void OnClick(View paramView, int paramInt)
   {
-    paramViewBase = this.jdField_a_of_type_Pan.a();
-    Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
-    opu.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Pay, 4);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      oxi.a(this.jdField_a_of_type_Oxi).a().b(oxi.a(this.jdField_a_of_type_Oxi), oxi.a(this.jdField_a_of_type_Oxi).b());
+      oxi.a(this.jdField_a_of_type_Oxi).b();
+    }
   }
 }
 

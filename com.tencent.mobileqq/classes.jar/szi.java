@@ -1,41 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyScrollViewSwitcher;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class szi
-  implements ViewBase.OnClickListener
+public class szi
+  implements View.OnClickListener
 {
-  szi(szh paramszh) {}
+  public szi(ReadInJoyScrollViewSwitcher paramReadInJoyScrollViewSwitcher, szl paramszl) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    int i;
-    if ((szg.a(this.a.jdField_a_of_type_Szg) instanceof AdData)) {
-      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-      {
-      default: 
-        i = -1;
-      }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyScrollViewSwitcher.a != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyScrollViewSwitcher.a.a(this.jdField_a_of_type_Szl);
     }
-    for (;;)
-    {
-      tbe.a(this.a.jdField_a_of_type_AndroidContentContext, oqk.a((AdData)szg.a(this.a.jdField_a_of_type_Szg)), true, true, i);
-      return;
-      tby.a(szg.a(this.a.jdField_a_of_type_Szg), paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
-      return;
-      i = 4;
-      continue;
-      i = 3;
-      continue;
-      i = 5;
-      continue;
-      i = 8;
-      continue;
-      i = 1;
-      continue;
-      i = 1000;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

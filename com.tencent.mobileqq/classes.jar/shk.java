@@ -1,19 +1,6 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$dismissGuideRootView$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "isReverse", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class shk
-  extends AnimatorListenerAdapter
+public abstract interface shk
 {
-  shk(View paramView) {}
-  
-  public void onAnimationEnd(@Nullable Animator paramAnimator, boolean paramBoolean)
-  {
-    this.a.setVisibility(8);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

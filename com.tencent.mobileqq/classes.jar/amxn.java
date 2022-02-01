@@ -1,6 +1,34 @@
-public abstract interface amxn
+import java.util.ArrayList;
+
+public class amxn
+  implements Cloneable
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public int a;
+  public long a;
+  public ArrayList<String> a;
+  public int b;
+  public int c;
+  
+  protected Object clone()
+  {
+    Object localObject = null;
+    try
+    {
+      amxn localamxn = (amxn)super.clone();
+      localObject = localamxn;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      for (;;)
+      {
+        localCloneNotSupportedException.printStackTrace();
+      }
+    }
+    if (this.a != null) {
+      localObject.a = ((ArrayList)this.a.clone());
+    }
+    return localObject;
+  }
 }
 
 

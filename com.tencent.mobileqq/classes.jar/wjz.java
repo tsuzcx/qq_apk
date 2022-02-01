@@ -1,73 +1,36 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Iterator;
+import java.util.List;
 
-public class wjz
+class wjz
+  implements woy<xdo, xez>
 {
-  public static int a(int paramInt)
-  {
-    return BaseApplicationImpl.getApplication().getResources().getInteger(paramInt);
-  }
+  wjz(wjt paramwjt, wkc paramwkc, String paramString) {}
   
-  public static Boolean a(int paramInt)
+  public void a(@NonNull xdo paramxdo, @Nullable xez paramxez, @NonNull ErrorMessage paramErrorMessage)
   {
-    return Boolean.valueOf(BaseApplicationImpl.getApplication().getResources().getBoolean(paramInt));
-  }
-  
-  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
-  {
-    return wkm.a(paramClass, paramVarArgs);
-  }
-  
-  public static String a(int paramInt)
-  {
-    return BaseApplicationImpl.getApplication().getResources().getString(paramInt);
-  }
-  
-  public static String a(int paramInt, Object... paramVarArgs)
-  {
-    return BaseApplicationImpl.getApplication().getResources().getString(paramInt, paramVarArgs);
-  }
-  
-  public static String a(String paramString)
-  {
-    return paramString;
-  }
-  
-  public static <T extends Activity> wki<T> a(Class<? extends wki<T>> paramClass, Class<wki<T>> paramClass1, Object... paramVarArgs)
-  {
-    return (wki)wkm.a(paramClass, paramClass1, paramVarArgs);
-  }
-  
-  public static zpa a(Context paramContext, int paramInt)
-  {
-    return wkp.a(paramContext, paramInt);
-  }
-  
-  public static void a(Context paramContext, int paramInt, long paramLong)
-  {
-    wks.a(paramContext, paramInt, paramLong);
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString)
-  {
-    wks.a(paramContext, paramInt, paramString);
-  }
-  
-  public static void a(Object paramObject)
-  {
-    wkq.a(paramObject);
-  }
-  
-  public static boolean a()
-  {
-    return wkr.a();
-  }
-  
-  public static String[] a(int paramInt)
-  {
-    return BaseApplicationImpl.getApplication().getResources().getStringArray(paramInt);
+    yuk.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response " + paramxez);
+    if ((paramErrorMessage.isFail()) || (paramxez == null))
+    {
+      yuk.e("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response error!");
+      this.jdField_a_of_type_Wkc.a(true);
+      return;
+    }
+    paramxdo = (wte)wth.a(5);
+    if (paramxez.a != null)
+    {
+      paramErrorMessage = paramxez.a.iterator();
+      while (paramErrorMessage.hasNext()) {
+        ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
+      }
+    }
+    paramxez.a = paramxdo.a(paramxez.a);
+    ((wjt)wth.a(28)).a(paramxez.b);
+    this.jdField_a_of_type_Wjt.c(this.jdField_a_of_type_JavaLangString, 0);
+    this.jdField_a_of_type_Wkc.a(true);
   }
 }
 

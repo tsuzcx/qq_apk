@@ -1,33 +1,55 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-
-final class bgtk
-  implements Handler.Callback
+public class bgtk
 {
-  public boolean handleMessage(Message paramMessage)
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  
+  public static bgtk a()
   {
-    QQAppInterface localQQAppInterface;
-    if ((BaseApplicationImpl.getApplication().waitAppRuntime(null) instanceof QQAppInterface))
-    {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null);
-      switch (paramMessage.what)
-      {
-      }
-    }
-    for (;;)
-    {
-      return true;
-      QQToast.a(localQQAppInterface.getApplication(), anni.a(2131714719), 0).a();
-      continue;
-      QQToast.a(localQQAppInterface.getApplication(), anni.a(2131714718), 0).a();
-      continue;
-      QQToast.a(localQQAppInterface.getApplication(), anni.a(2131714717), 0).a();
-      continue;
-      QQToast.a(localQQAppInterface.getApplication(), anni.a(2131714720), 0).a();
-    }
+    return new bgtk();
+  }
+  
+  public bgtk a(String paramString)
+  {
+    this.a = paramString;
+    return this;
+  }
+  
+  public bgtk b(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public bgtk c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public bgtk d(String paramString)
+  {
+    this.d = paramString;
+    return this;
+  }
+  
+  public bgtk e(String paramString)
+  {
+    this.e = paramString;
+    return this;
+  }
+  
+  public bgtk f(String paramString)
+  {
+    this.j = paramString;
+    return this;
   }
 }
 

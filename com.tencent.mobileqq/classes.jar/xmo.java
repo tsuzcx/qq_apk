@@ -1,12 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.HotRecommendFeedPlayInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-class xmo
-  implements DialogInterface.OnClickListener
+public class xmo
+  extends xmg<HotRecommendFeedPlayInfo>
 {
-  xmo(xmn paramxmn) {}
+  public xmo(HotRecommendFeedPlayInfo paramHotRecommendFeedPlayInfo)
+  {
+    super(paramHotRecommendFeedPlayInfo);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public ylw a(String paramString)
+  {
+    paramString = new ylw(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
+    paramString.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
+    return paramString;
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, xmy paramxmy)
+  {
+    ArrayList localArrayList = new ArrayList();
+    xmh localxmh = new xmh(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, new ylw(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
+    localxmh.a.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
+    localArrayList.add(localxmh);
+    paramxmy.a(new ErrorMessage(), localArrayList, true);
+  }
 }
 
 

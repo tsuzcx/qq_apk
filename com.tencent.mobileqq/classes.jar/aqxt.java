@@ -1,50 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqxt
+  implements View.OnClickListener
 {
-  private int a = 1;
+  public aqxt(IphonePickerView paramIphonePickerView) {}
   
-  @NonNull
-  public static aqxt a()
+  public void onClick(View paramView)
   {
-    return new aqxt();
-  }
-  
-  @NonNull
-  public static aqxt a(@Nullable String paramString)
-  {
-    aqxt localaqxt = new aqxt();
-    try
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        localaqxt.a = new JSONObject(paramString).getInt("use_apm");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("QVIP.SDK.ConfigProcessor", 1, " : " + localaqxt.toString());
-      }
-      return localaqxt;
+    if (IphonePickerView.a(this.a) != null) {
+      IphonePickerView.a(this.a).a();
     }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        QLog.e("QVIP.SDK.ConfigProcessor", 1, "json parse error:" + paramString);
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    return "QVipPerfLevelConfig{use_apm=" + this.a + '}';
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqxt
  * JD-Core Version:    0.7.0.1
  */

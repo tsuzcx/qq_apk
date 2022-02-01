@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
 
-class ajyh
-  implements View.OnClickListener
+public class ajyh
 {
-  ajyh(ajye paramajye) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public String b;
 }
 
 

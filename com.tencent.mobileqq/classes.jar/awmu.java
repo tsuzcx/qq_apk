@@ -1,14 +1,19 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-class awmu
-  implements awnd<Pair<String, Integer>, EmoticonPackage>
+public class awmu
+  implements DialogInterface.OnCancelListener
 {
-  awmu(awmr paramawmr) {}
+  public awmu(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, awnq paramawnq) {}
   
-  public EmoticonPackage a(Pair<String, Integer> paramPair)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    return this.a.c((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    this.jdField_a_of_type_Awnq.b(false);
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    }
   }
 }
 

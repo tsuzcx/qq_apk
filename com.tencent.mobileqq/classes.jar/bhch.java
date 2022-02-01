@@ -1,127 +1,126 @@
-import androidx.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.DataOutputStream;
+import java.io.OutputStream;
 
 public class bhch
-  extends bhbw
+  extends DataOutputStream
 {
-  public static bhch a;
-  private List<bhci> a;
+  private static final byte[] c = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
+  private static final byte[] d = { 13, 10 };
+  private static final byte[] e = { 48, 13, 10 };
+  protected int a;
+  protected byte[] a;
+  protected int b;
+  protected byte[] b;
   
-  static
+  public bhch(OutputStream paramOutputStream)
   {
-    jdField_a_of_type_Bhch = new bhch();
+    this(new byte[512], paramOutputStream);
   }
   
-  private ArrayList<bhci> a()
+  public bhch(byte[] paramArrayOfByte, OutputStream paramOutputStream)
   {
-    localArrayList = new ArrayList();
-    try
+    super(paramOutputStream);
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_b_of_type_ArrayOfByte = new byte[32];
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_b_of_type_Int = paramArrayOfByte.length;
+  }
+  
+  protected void a()
+  {
+    this.out.write(e, 0, 3);
+    this.out.write(d, 0, 2);
+    this.out.flush();
+  }
+  
+  protected final void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Int + 1 >= this.jdField_b_of_type_Int) {
+      b();
+    }
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    arrayOfByte[i] = ((byte)(paramInt & 0xFF));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      JSONArray localJSONArray = new JSONObject(a()).getJSONArray("namePlateUrlConfig");
-      int i = 0;
-      while (i < localJSONArray.length())
-      {
-        JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-        bhci localbhci = new bhci();
-        localbhci.a = localJSONObject.optString("vipType");
-        localbhci.b = localJSONObject.optString("itemId");
-        localbhci.d = localJSONObject.optString("drawerUrl");
-        localbhci.e = localJSONObject.optString("VaProfileUrl");
-        localbhci.f = localJSONObject.optString("ctocUrl");
-        localbhci.c = localJSONObject.optString("nameplateType");
-        localbhci.g = localJSONObject.optString("VaProfileGuestUrl");
-        localbhci.h = localJSONObject.optString("ctocGuestUrl");
-        localbhci.i = localJSONObject.optString("ctocSettingUrl");
-        localbhci.j = localJSONObject.optString("ctocSettingGuestUrl");
-        localArrayList.add(localbhci);
-        i += 1;
-      }
-      return localArrayList;
+      b();
+      a();
+      super.close();
+      return;
     }
-    catch (Exception localException)
+    b();
+    a();
+  }
+  
+  protected void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {
+      return;
+    }
+    int i = 3;
+    this.jdField_b_of_type_ArrayOfByte[30] = 13;
+    this.jdField_b_of_type_ArrayOfByte[31] = 10;
+    int j = paramInt2;
+    while (j > 15)
     {
-      localException.printStackTrace();
+      this.jdField_b_of_type_ArrayOfByte[(32 - i)] = c[(j % 16)];
+      j >>= 4;
+      i += 1;
     }
+    this.jdField_b_of_type_ArrayOfByte[(32 - i)] = c[j];
+    this.out.write(this.jdField_b_of_type_ArrayOfByte, 32 - i, i);
+    this.out.write(paramArrayOfByte, paramInt1, paramInt2);
+    this.out.write(d, 0, 2);
+    this.out.flush();
   }
   
-  @Nullable
-  public bhci a(int paramInt1, int paramInt2, int paramInt3)
+  protected void b()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    bhci localbhci;
-    try
+    if (this.jdField_a_of_type_Int == 0) {
+      return;
+    }
+    a(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public final void b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Int + paramInt2 >= this.jdField_b_of_type_Int) {
+      b();
+    }
+    if (paramInt2 < this.jdField_a_of_type_ArrayOfByte.length)
     {
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_JavaUtilList = a();
-      }
-      Object localObject1 = null;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (!localIterator.hasNext()) {
-        break label137;
-      }
-      localbhci = (bhci)localIterator.next();
-      if ((!localbhci.a.equals(String.valueOf(paramInt1))) || (!localbhci.c.equals(String.valueOf(paramInt3)))) {
-        break label140;
-      }
-      if (localbhci.b.equals(String.valueOf(paramInt2))) {
-        return localbhci;
-      }
+      System.arraycopy(paramArrayOfByte, paramInt1, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, paramInt2);
+      this.jdField_a_of_type_Int += paramInt2;
+      return;
     }
-    finally {}
-    Object localObject3;
-    if (localbhci.b.equals("1000000")) {
-      localObject3 = localbhci;
-    }
-    label137:
-    label140:
-    for (;;)
-    {
-      break;
-      return localObject3;
-    }
+    a(paramArrayOfByte, paramInt1, paramInt2);
   }
   
-  String a()
+  public void close()
   {
-    try
-    {
-      String str = bgmg.b(new File(getSavePath(BaseApplicationImpl.getContext(), "namePlate_UrlConfig")));
-      return str;
-    }
-    catch (Exception localException) {}
-    return null;
+    a(true);
   }
   
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  public void flush()
   {
-    return super.isFileExists(paramQQAppInterface, getBID(), paramString);
+    b();
+    super.flush();
   }
   
-  public long getBID()
+  public void write(int paramInt)
   {
-    return 34L;
+    a(paramInt);
   }
   
-  protected String getRootDir()
+  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    return "vipicon";
-  }
-  
-  protected String getScidPrefix()
-  {
-    return "namePlate_UrlConfig";
-  }
-  
-  protected boolean isZip_KeepZip()
-  {
-    return false;
+    b(paramArrayOfByte, paramInt1, paramInt2);
   }
 }
 

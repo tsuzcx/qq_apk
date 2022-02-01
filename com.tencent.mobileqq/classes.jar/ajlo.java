@@ -1,22 +1,31 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.Comparator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ajlo
-  implements Comparator<MayKnowRecommend>
+public class ajlo
+  extends Handler
 {
-  ajlo(ajlm paramajlm) {}
+  public ajlo(SystemMsgListView paramSystemMsgListView) {}
   
-  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
+  public void handleMessage(Message paramMessage)
   {
-    long l1 = paramMayKnowRecommend1.cardDisplayTimestamp;
-    long l2 = paramMayKnowRecommend2.cardDisplayTimestamp;
-    if (l1 < l2) {
-      return 1;
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (SystemMsgListView.a(this.a) == null);
+      this.a.i();
+      SystemMsgListView.a(this.a).notifyDataSetChanged();
+      return;
     }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131718508);
+    QQToast.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
   }
 }
 

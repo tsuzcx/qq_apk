@@ -1,25 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class ahgm
-  implements afzq
+final class ahgm
+  implements ahky
 {
-  ahgm(ahgl paramahgl) {}
-  
-  public boolean onLongClick(View paramView)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    paramView = (ahgv)((View)paramView.getParent().getParent().getParent()).getTag();
-    if (paramView != null) {
-      paramView.a.performLongClick();
-    }
-    return true;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return false;
+    return 18;
   }
 }
 

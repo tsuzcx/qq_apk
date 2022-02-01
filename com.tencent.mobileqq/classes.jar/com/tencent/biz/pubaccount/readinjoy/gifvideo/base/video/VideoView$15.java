@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video;
 
-import android.text.TextUtils;
+import android.animation.ObjectAnimator;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 import com.tencent.qphone.base.util.QLog;
 
 class VideoView$15
@@ -10,45 +11,24 @@ class VideoView$15
   
   public void run()
   {
-    for (;;)
+    if ((VideoView.access$2700(this.this$0) != null) && (VideoView.access$2800(this.this$0) != null))
     {
-      synchronized (this.this$0)
-      {
-        QLog.d("gifvideo.VideoView", 1, "startPlay");
-        VideoView.access$3002(this.this$0, System.currentTimeMillis());
-        if (this.this$0.getCurrentState() == 6)
-        {
-          if ((!TextUtils.isEmpty(VideoView.access$1500(this.this$0))) && (VideoView.access$1500(this.this$0).equals(VideoView.access$1600(this.this$0))))
-          {
-            QLog.d("gifvideo.VideoView", 1, "has opened");
-            VideoView.access$1800(this.this$0);
-            return;
-          }
-          QLog.d("gifvideo.VideoView", 1, "not current url");
-          if (VideoView.access$900(this.this$0) == null) {
-            continue;
-          }
-          VideoView.access$2000(this.this$0);
-          this.this$0.openVideo();
-        }
+      QLog.d("gifvideo.VideoView", 2, this.this$0.getTag() + " displaycover");
+      if (VideoView.access$3400(this.this$0) != null) {
+        VideoView.access$3400(this.this$0).cancel();
       }
-      if (this.this$0.getCurrentState() == 4)
-      {
-        QLog.d("gifvideo.VideoView", 1, "has inited, just start");
-        VideoView.access$3100(this.this$0);
+      if (VideoView.access$3500(this.this$0) != null) {
+        VideoView.access$3500(this.this$0).cancel();
       }
-      else if (this.this$0.getCurrentState() == 9)
+      VideoView.access$2700(this.this$0).setVisibility(0);
+      VideoView.access$2700(this.this$0).setAlpha(1.0F);
+      VideoView.access$3600(this.this$0);
+      if (VideoView.access$3700(this.this$0))
       {
-        QLog.d("gifvideo.VideoView", 1, "now is stop, so start again");
-        VideoView.access$3100(this.this$0);
-      }
-      else if (this.this$0.getCurrentState() == 8)
-      {
-        this.this$0.resume();
-      }
-      else
-      {
-        QLog.d("gifvideo.VideoView", 1, "current state is " + this.this$0.getCurrentState() + ", do nothing");
+        VideoView.access$2800(this.this$0).clearAnimation();
+        VideoView.access$2800(this.this$0).setVisibility(0);
+        VideoView.access$2800(this.this$0).setAlpha(1.0F);
+        VideoView.access$3800(this.this$0);
       }
     }
   }

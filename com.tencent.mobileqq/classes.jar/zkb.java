@@ -1,99 +1,31 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 
 public class zkb
+  extends RecyclerView.ViewHolder
 {
-  public static <T> T a(T paramT)
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public RoundCornerImageView a;
+  public boolean a;
+  public RelativeLayout b;
+  public TextView b;
+  
+  public zkb(View paramView)
   {
-    if (paramT == null) {
-      yqp.e("Q.qqstory.AssertUtils", "checkNotNull failed:" + a(2));
-    }
-    return paramT;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377799));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131377795));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363330));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377796));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377798));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377797));
   }
-  
-  public static String a(int paramInt)
-  {
-    for (;;)
-    {
-      try
-      {
-        localObject = new RuntimeException("getStackTrace").getStackTrace();
-        localStringBuilder = new StringBuilder();
-        i = paramInt;
-        if (localObject.length > paramInt) {
-          break label87;
-        }
-        i = localObject.length;
-      }
-      catch (Exception localException)
-      {
-        Object localObject;
-        StringBuilder localStringBuilder;
-        int i;
-        return "";
-      }
-      if (paramInt < i)
-      {
-        localStringBuilder.append("\n" + localObject[paramInt].toString());
-        paramInt += 1;
-      }
-      else
-      {
-        localObject = localStringBuilder.toString();
-        return localObject;
-        label87:
-        paramInt = 2;
-      }
-    }
-  }
-  
-  public static void a() {}
-  
-  public static <T> void a(T paramT)
-  {
-    if (paramT == null)
-    {
-      paramT = zls.a("StoryAssertUtils Exception!");
-      bcrp.a(paramT, "StoryAssertUtils assertNotNull_DEBUG()");
-      yqp.c("Q.qqstory.AssertUtils", "assertNotNull_DEBUG failed: ", paramT);
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    yqp.e("Q.qqstory.AssertUtils", "checkNotEmpty failed :" + a(2));
-  }
-  
-  public static void a(String paramString, Object... paramVarArgs)
-  {
-    if (paramVarArgs.length == 0) {}
-    for (;;)
-    {
-      yqp.e("Q.qqstory.AssertUtils", paramString);
-      return;
-      paramString = String.format(paramString, paramVarArgs);
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      yqp.e("Q.qqstory.AssertUtils", "assertTrue failed:" + a(4));
-    }
-  }
-  
-  public static void a(boolean paramBoolean, @NonNull String paramString)
-  {
-    if (paramBoolean) {
-      return;
-    }
-    yqp.e("Q.qqstory.AssertUtils", paramString);
-  }
-  
-  public static void b() {}
 }
 
 

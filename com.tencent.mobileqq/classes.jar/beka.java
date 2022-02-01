@@ -1,20 +1,24 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.6;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class beka
-  extends AnimatorListenerAdapter
+class beka
+  extends anyu
 {
-  public beka(TroopBarPublishActivity.6 param6) {}
+  beka(bejx parambejx) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if (this.a.a) {
-      this.a.this$0.s();
+    QLog.i("TogetherControlManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    if (paramBoolean)
+    {
+      Iterator localIterator = bejx.a(this.a).entrySet().iterator();
+      while (localIterator.hasNext()) {
+        ((beki)((Map.Entry)localIterator.next()).getValue()).a(paramObject);
+      }
     }
-    this.a.this$0.b.requestFocus();
   }
 }
 

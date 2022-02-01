@@ -1,14 +1,13 @@
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import com.tencent.util.Pair;
+import java.util.HashMap;
 
 public class bkgg
 {
-  public static String a(Throwable paramThrowable)
-  {
-    StringWriter localStringWriter = new StringWriter();
-    paramThrowable.printStackTrace(new PrintWriter(localStringWriter));
-    return localStringWriter.toString();
-  }
+  public static HashMap<Long, Pair<Long, Long>> a = new HashMap();
+  
+  public static void a(long paramLong) {}
+  
+  public static void a(long paramLong, String paramString) {}
 }
 
 

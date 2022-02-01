@@ -1,17 +1,13 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Transformation;
 
 class binr
-  implements CompoundButton.OnCheckedChangeListener
+  implements bhtj<Integer>
 {
-  binr(binq parambinq, bikw parambikw) {}
+  binr(binq parambinq) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(bhtd<Integer> parambhtd, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    this.jdField_a_of_type_Bikw.b = paramBoolean;
-    this.jdField_a_of_type_Binq.notifyDataSetChanged();
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    this.a.b(paramInteger.intValue());
   }
 }
 

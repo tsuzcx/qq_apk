@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-
-public class uqx
-  implements uuu
+final class uqx
+  implements sum
 {
-  public uqx(WSVerticalPageFragment paramWSVerticalPageFragment) {}
+  public void a(suo paramsuo, int paramInt) {}
   
-  public boolean a()
+  public void a(suo paramsuo, Throwable paramThrowable)
   {
-    return this.a.a().a();
+    uqf.b("PreloadCoverImgLog", "onFail request = " + paramsuo);
+  }
+  
+  public void a(suo paramsuo, suk paramsuk)
+  {
+    uqf.b("PreloadCoverImgLog", "onSuccess request = " + paramsuo);
   }
 }
 

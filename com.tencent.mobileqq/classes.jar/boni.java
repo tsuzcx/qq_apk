@@ -1,45 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class boni
-  implements zmv
+class boni
+  implements CompoundButton.OnCheckedChangeListener
 {
-  boni(String paramString, bonv parambonv) {}
+  boni(bonf parambonf) {}
   
-  public void onFailure(String paramString)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onFailure: invoked. info: Failed to convert sample rate. message = " + paramString);
-    }
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_Bonv != null) && (localFile.exists()))
+    RecyclerView localRecyclerView = bonf.b(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-      this.jdField_a_of_type_Bonv.a(localFile);
-      this.jdField_a_of_type_Bonv.c();
-    }
-    while (!QLog.isColorLevel()) {
+      localRecyclerView.setVisibility(i);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-    }
-    QLog.i("HumUtils", 2, "onFinish: audioFile not exist. audioFile = " + localFile);
-  }
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onStart: invoked. info: ");
-    }
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onSuccess: invoked. info: message = " + paramString);
     }
   }
 }

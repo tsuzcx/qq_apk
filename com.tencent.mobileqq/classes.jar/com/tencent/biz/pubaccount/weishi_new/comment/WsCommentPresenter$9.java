@@ -1,29 +1,29 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
-import aafw;
+import aajx;
 import android.widget.TextView;
-import ufp;
+import ufr;
 
 public class WsCommentPresenter$9
   implements Runnable
 {
-  public WsCommentPresenter$9(ufp paramufp) {}
+  public WsCommentPresenter$9(ufr paramufr) {}
   
   public void run()
   {
-    if (ufp.b(this.this$0) != null)
+    if (ufr.b(this.this$0) != null)
     {
-      if (ufp.b(this.this$0) > 0L)
+      if (ufr.b(this.this$0) > 0L)
       {
-        ufp.b(this.this$0).setText(aafw.a(ufp.b(this.this$0)));
-        ufp.b(this.this$0).setVisibility(0);
+        ufr.b(this.this$0).setText(aajx.a(ufr.b(this.this$0)));
+        ufr.b(this.this$0).setVisibility(0);
       }
     }
     else {
       return;
     }
-    ufp.b(this.this$0).setText("");
-    ufp.b(this.this$0).setVisibility(8);
+    ufr.b(this.this$0).setText("");
+    ufr.b(this.this$0).setVisibility(8);
   }
 }
 

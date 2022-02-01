@@ -1,4 +1,8 @@
-// INTERNAL ERROR //
+public abstract interface rwd
+{
+  public abstract void a(rwc paramrwc, boolean paramBoolean);
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rwd

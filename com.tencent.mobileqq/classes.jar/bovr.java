@@ -1,102 +1,83 @@
-import android.os.Build.VERSION;
+import android.graphics.PointF;
+import android.graphics.SurfaceTexture;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+import com.tencent.filter.SurfaceTextureFilter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.gif.video.PngsCreator.1;
+import dov.com.qq.im.ae.gif.video.PngsCreator.2;
+import dov.com.qq.im.ae.gif.video.PngsCreator.3;
+import dov.com.qq.im.ae.gif.video.PngsCreator.4;
+import dov.com.qq.im.ae.gif.video.PngsCreator.5;
 import java.io.File;
+import java.util.List;
 
 public class bovr
-  implements bqjt
 {
-  int jdField_a_of_type_Int = 1024000;
-  final long jdField_a_of_type_Long;
-  final String jdField_a_of_type_JavaLangString;
-  public Throwable a;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int = 25;
-  final long jdField_b_of_type_Long;
-  boolean jdField_b_of_type_Boolean;
-  int jdField_c_of_type_Int;
-  boolean jdField_c_of_type_Boolean;
-  int d;
-  int e;
-  int f;
+  private static String jdField_a_of_type_JavaLangString = bovr.class.getSimpleName();
+  private double jdField_a_of_type_Double = 1.0D;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bost jdField_a_of_type_Bost = new bost();
+  private bovs jdField_a_of_type_Bovs;
+  private bovw jdField_a_of_type_Bovw;
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new SurfaceTextureFilter();
+  private List<List<List<PointF>>> jdField_a_of_type_JavaUtilList;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private List<List<float[]>> jdField_b_of_type_JavaUtilList;
   
-  public bovr(String paramString, int paramInt, long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
+  public bovr(String paramString, List<List<List<PointF>>> paramList, List<List<float[]>> paramList1, double paramDouble)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.jdField_c_of_type_Boolean = paramBoolean2;
-  }
-  
-  public bqju a(int paramInt1, int paramInt2)
-  {
-    bqju localbqju = new bqju();
-    if (paramInt1 <= paramInt2) {}
-    for (;;)
-    {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-      localbqju.jdField_a_of_type_JavaIoFile = localFile;
-      localbqju.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      localbqju.jdField_a_of_type_Float = (960.0F / paramInt2);
-      localbqju.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      localbqju.jdField_b_of_type_Boolean = a();
-      localbqju.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      localbqju.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-      localbqju.jdField_c_of_type_Boolean = this.jdField_b_of_type_Boolean;
-      localbqju.d = this.jdField_c_of_type_Boolean;
-      localbqju.f = this.jdField_c_of_type_Int;
-      localbqju.g = this.d;
-      localbqju.h = this.e;
-      localbqju.i = this.f;
-      yqp.a("CropVideoActivity", "HWCompressProcessor, step: getEncodeConfig() config.setRotation = " + localbqju.jdField_b_of_type_Boolean + ", scaleRate=" + localbqju.jdField_a_of_type_Float + ", videoBitRate=" + localbqju.jdField_a_of_type_Int + ", videoFrameRate=" + localbqju.jdField_b_of_type_Int + ", beginTime=" + localbqju.jdField_a_of_type_Long + ", endTime=" + localbqju.jdField_b_of_type_Long, ", isMute=" + this.jdField_b_of_type_Boolean, ", accurateSeek=" + this.jdField_c_of_type_Boolean + ", cropX=" + this.jdField_c_of_type_Int + ", cropY=" + this.d + ", cropWidth=" + this.e + ", cropHeight=" + this.f);
-      return localbqju;
-      paramInt2 = paramInt1;
-    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_b_of_type_JavaUtilList = paramList1;
+    this.jdField_a_of_type_Double = paramDouble;
+    paramList = new HandlerThread("PngCreatorHT");
+    paramList.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramList.getLooper());
+    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.1(this, paramString));
   }
   
   public void a()
   {
-    yqp.e("CropVideoActivity", "HWCompressProcessor, step: HWCompressProcessor onSuccessed");
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.5(this));
   }
   
-  public void a(int paramInt)
+  public void a(bovs parambovs)
   {
-    yqp.b("CropVideoActivity", "HWCompressProcessor, step: HWCompressProcessor onProgress:" + paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_c_of_type_Int = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
-    this.f = paramInt4;
-  }
-  
-  public void a(Throwable paramThrowable)
-  {
-    yqp.e("CropVideoActivity", "HWCompressProcessor, step: HWCompressProcessor onFailed");
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
-      bool = true;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_b_of_type_JavaLangString = (boey.jdField_b_of_type_JavaLangString + File.separator + System.currentTimeMillis());
+    try
+    {
+      new File(this.jdField_b_of_type_JavaLangString).mkdirs();
+      QLog.d(jdField_a_of_type_JavaLangString, 4, new Object[] { "pngDir = ", this.jdField_b_of_type_JavaLangString });
+      this.jdField_a_of_type_Bovs = parambovs;
+      this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.2(this));
+      return;
     }
-    while (Build.VERSION.SDK_INT <= 19) {
-      return bool;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
     }
-    return false;
   }
   
-  public void b()
+  public void a(String paramString)
   {
-    yqp.c("CropVideoActivity", "HWCompressProcessor, step: HWCompressProcessor onCanceled");
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.3(this, paramString));
+  }
+  
+  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, String paramString4, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.4(this, paramString1, paramInt1, paramString2, paramString3, paramInt2, paramString4, paramFloat1, paramFloat2, paramFloat3, paramFloat4));
   }
 }
 

@@ -1,51 +1,35 @@
-import android.content.Context;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyAdVideoGuide;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class qiw
-  extends ViewBase
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class qiw
+  implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ReadInJoyAdVideoGuide jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInJoyAdVideoGuide;
+  qiw(qio paramqio) {}
   
-  public qiw(VafContext paramVafContext)
+  public final void onClick(View paramView)
   {
-    super(paramVafContext);
-    this.jdField_a_of_type_AndroidContentContext = paramVafContext.getContext();
-    a(paramVafContext);
-  }
-  
-  private void a(VafContext paramVafContext)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInJoyAdVideoGuide = new ReadInJoyAdVideoGuide(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInJoyAdVideoGuide.setVisibility(8);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInJoyAdVideoGuide.getMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInJoyAdVideoGuide.getMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInJoyAdVideoGuide;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInJoyAdVideoGuide.layout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInJoyAdVideoGuide.measure(paramInt1, paramInt2);
+    qio.a(this.a, qio.a(this.a) ^ true);
+    if (qio.a(this.a)) {
+      if (qio.a(this.a).a()) {
+        qio.a(this.a).setCompoundDrawablesWithIntrinsicBounds(2130849435, 0, 0, 0);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      qio.a(this.a).setCompoundDrawablesWithIntrinsicBounds(2130849436, 0, 0, 0);
+      continue;
+      if (qio.a(this.a).a()) {
+        qio.a(this.a).setCompoundDrawablesWithIntrinsicBounds(2130849441, 0, 0, 0);
+      } else {
+        qio.a(this.a).setCompoundDrawablesWithIntrinsicBounds(2130849442, 0, 0, 0);
+      }
+    }
   }
 }
 

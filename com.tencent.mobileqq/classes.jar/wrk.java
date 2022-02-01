@@ -1,9 +1,15 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.MessageMicro;
 
 public abstract interface wrk
 {
-  public abstract void a(int paramInt, wrl paramwrl, List<TroopBarPOI> paramList);
+  public abstract void a(int paramInt, Bundle paramBundle);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(MessageMicro paramMessageMicro);
+  
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 

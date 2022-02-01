@@ -1,30 +1,64 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
 
-class bdah
-  extends URLDrawableDownListener.Adapter
+public class bdah
 {
-  bdah(bdaf parambdaf) {}
+  public static int a;
+  public static boolean a;
+  public static boolean b;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  static
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
+    jdField_a_of_type_Int = 1500;
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public static boolean a()
   {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
+    }
+    boolean bool = bdax.a(bdax.r);
+    if (bool) {
+      if (QLog.isColorLevel()) {
+        QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:black=" + bool);
+      }
+    }
+    while (Build.VERSION.SDK_INT < 18) {
+      return false;
+    }
+    return jdField_a_of_type_Boolean;
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  public static boolean b()
   {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    paramView.setBackgroundDrawable(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportPre_SendEncode=" + b + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
+    }
+    if (Build.VERSION.SDK_INT < 18) {}
+    do
+    {
+      boolean bool;
+      do
+      {
+        do
+        {
+          return false;
+          bool = bdax.e(bdax.o);
+          if (!bool) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:black=" + bool);
+        return false;
+        bool = bdax.a(bdax.r);
+        if (!bool) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("HwEnvData", 2, "[@] supportRecordAndEncode:black=" + bool + " hardware Black");
+      return false;
+    } while ((!b) || (!jdField_a_of_type_Boolean));
+    return true;
   }
 }
 

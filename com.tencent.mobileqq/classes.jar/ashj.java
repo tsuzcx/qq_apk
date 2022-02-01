@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
+import java.util.List;
 
-public final class ashj
-  implements Parcelable.Creator<MiniAppRecommInfo>
+public abstract interface ashj
 {
-  public MiniAppRecommInfo a(Parcel paramParcel)
-  {
-    return new MiniAppRecommInfo(paramParcel);
-  }
+  public abstract void a(float paramFloat, List<Integer> paramList);
   
-  public MiniAppRecommInfo[] a(int paramInt)
-  {
-    return new MiniAppRecommInfo[paramInt];
-  }
+  public abstract void a(List<Integer> paramList);
 }
 
 

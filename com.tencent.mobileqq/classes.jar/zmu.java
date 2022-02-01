@@ -1,216 +1,85 @@
-import android.content.Context;
-import android.os.AsyncTask;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteAsyncTask.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGroupVideoDelete;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForTroopStory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.concurrent.TimeoutException;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
 public class zmu
-  extends AsyncTask<Void, String, zml>
+  implements Manager
 {
-  public final long a;
-  public Context a;
-  public Boolean a;
-  public Process a;
-  public StringBuilder a;
-  public final zmv a;
-  public final znl a;
-  public boolean a;
-  public final String[] a;
-  public long b;
-  public boolean b;
+  static final String jdField_a_of_type_JavaLangString = wnu.a("StoryGroupSvc.do_video_delete");
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  protected Map<String, Long> a;
+  nko jdField_a_of_type_Nko = new zmv(this);
+  public zmt a;
   
-  zmu(Context paramContext, String[] paramArrayOfString, long paramLong, boolean paramBoolean, zmv paramzmv)
+  public zmu(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Zmv = paramzmv;
-    this.jdField_a_of_type_Znl = new znl();
-    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
+    this.jdField_a_of_type_Zmt = new zmt(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
   }
   
-  private zml a()
+  public Long a(String paramString)
   {
-    zml localzml = zml.a();
-    if (this.jdField_b_of_type_Boolean)
-    {
-      b(localzml);
-      localzml.jdField_b_of_type_Boolean = true;
-    }
-    return localzml;
+    return (Long)this.jdField_a_of_type_JavaUtilMap.get(paramString);
   }
   
-  private zml a(Process paramProcess)
+  public void a()
   {
-    paramProcess = zml.a(paramProcess);
-    if (this.jdField_b_of_type_Boolean)
-    {
-      b(paramProcess);
-      paramProcess.jdField_b_of_type_Boolean = true;
-    }
-    return paramProcess;
+    this.jdField_a_of_type_JavaUtilMap.clear();
   }
   
-  private void a()
+  public void a(MessageRecord paramMessageRecord)
   {
-    if (!znm.a(this.jdField_a_of_type_JavaLangProcess))
-    {
-      if ((this.jdField_a_of_type_Long != 9223372036854775807L) && (SystemClock.uptimeMillis() > this.jdField_b_of_type_Long + this.jdField_a_of_type_Long))
-      {
-        QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow]  timeout");
-        throw new TimeoutException("FFmpeg timed out");
-      }
-      for (;;)
-      {
-        String str;
-        try
-        {
-          BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(this.jdField_a_of_type_JavaLangProcess.getInputStream()));
-          str = localBufferedReader.readLine();
-          if (str == null) {
-            break;
-          }
-          if (isCancelled()) {
-            return;
-          }
-          this.jdField_a_of_type_JavaLangStringBuilder.append(str).append("\n");
-          if (this.jdField_b_of_type_Boolean)
-          {
-            if ((TextUtils.isEmpty(str)) || (this.jdField_a_of_type_Zmv == null)) {
-              continue;
-            }
-            this.jdField_a_of_type_Zmv.onProgress(str);
-            continue;
-          }
-        }
-        catch (IOException localIOException)
-        {
-          QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow]  IOException");
-          localIOException.printStackTrace();
-        }
-        publishProgress(new String[] { str });
-      }
+    if ((paramMessageRecord instanceof MessageForTroopStory)) {
+      a(((MessageForTroopStory)paramMessageRecord).storyId, 1, this.jdField_a_of_type_Nko);
     }
-  }
-  
-  private void b(zml paramzml)
-  {
-    if (this.jdField_a_of_type_Zmv != null)
-    {
-      this.jdField_a_of_type_JavaLangStringBuilder.append(paramzml.jdField_a_of_type_JavaLangString);
-      if (!paramzml.jdField_a_of_type_Boolean) {
-        break label92;
-      }
-      this.jdField_a_of_type_Zmv.onSuccess(this.jdField_a_of_type_JavaLangStringBuilder.toString());
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Zmv.onFinish(paramzml.jdField_a_of_type_Boolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", 2, "ThreadName:" + Thread.currentThread().getName());
-      }
-      return;
-      label92:
-      this.jdField_a_of_type_Zmv.onFailure(this.jdField_a_of_type_JavaLangStringBuilder.toString());
-    }
-  }
-  
-  protected zml a(Void... paramVarArgs)
-  {
-    int i = 0;
-    try
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Boolean = znm.a(new File(zng.a(this.jdField_a_of_type_AndroidContentContext)));
-      }
-      yqp.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "[story_ffmpeg]execute start cmd=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString));
-      this.jdField_a_of_type_JavaLangProcess = this.jdField_a_of_type_Znl.a(this.jdField_a_of_type_ArrayOfJavaLangString);
-      paramVarArgs = this.jdField_a_of_type_JavaLangProcess;
-      if (paramVarArgs == null)
-      {
-        paramVarArgs = a();
-        return paramVarArgs;
-      }
-      if (this.jdField_a_of_type_JavaLangBoolean.booleanValue())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-        int j = arrayOfString.length;
-        while (i < j)
-        {
-          localStringBuilder.append(arrayOfString[i]);
-          localStringBuilder.append(' ');
-          i += 1;
-        }
-        publishProgress(new String[] { localStringBuilder.toString() });
-      }
-      a();
-      paramVarArgs = a(paramVarArgs);
-      return paramVarArgs;
-    }
-    catch (TimeoutException paramVarArgs)
-    {
-      yqp.c("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "FFmpeg timed out", paramVarArgs);
-      paramVarArgs = new zml(false, paramVarArgs.getMessage());
-      return paramVarArgs;
-    }
-    catch (Exception paramVarArgs)
-    {
-      yqp.c("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "Error running FFmpeg", paramVarArgs);
-      return a();
-    }
-    finally
-    {
-      znm.a(this.jdField_a_of_type_JavaLangProcess);
-      yqp.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", "[story_ffmpeg]execute end cmd=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString));
-    }
-  }
-  
-  protected void a(zml paramzml)
-  {
-    if (!paramzml.jdField_b_of_type_Boolean) {
-      b(paramzml);
-    }
-  }
-  
-  protected void a(String... paramVarArgs)
-  {
-    if ((paramVarArgs != null) && (paramVarArgs[0] != null) && (this.jdField_a_of_type_Zmv != null)) {
-      this.jdField_a_of_type_Zmv.onProgress(paramVarArgs[0]);
-    }
-  }
-  
-  boolean a()
-  {
-    return znm.a(this.jdField_a_of_type_JavaLangProcess);
-  }
-  
-  protected void onPreExecute()
-  {
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    if (this.jdField_a_of_type_Zmv != null)
-    {
-      if (this.jdField_b_of_type_Boolean) {
-        ThreadManager.post(new FFmpegExecuteAsyncTask.1(this), 5, null, true);
-      }
-    }
-    else {
+    while (!QLog.isColorLevel()) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", 2, "ThreadName:" + Thread.currentThread().getName());
+    QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "revoke with unknown msg type:" + paramMessageRecord.getClass().getSimpleName());
+  }
+  
+  public void a(String paramString, int paramInt, nko paramnko)
+  {
+    a(paramString, paramInt, false, paramnko);
+  }
+  
+  public void a(String paramString, int paramInt, boolean paramBoolean, nko paramnko)
+  {
+    qqstory_group.ReqGroupVideoDelete localReqGroupVideoDelete = new qqstory_group.ReqGroupVideoDelete();
+    localReqGroupVideoDelete.story_id.set(ByteStringMicro.copyFromUtf8(paramString));
+    PBUInt32Field localPBUInt32Field = localReqGroupVideoDelete.remove_author;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localPBUInt32Field.set(i);
+      localReqGroupVideoDelete.type.set(paramInt);
+      if (paramnko != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "send delete, storyId=" + paramString + ", op=" + paramInt);
+        }
+        nkm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramnko, localReqGroupVideoDelete.toByteArray(), jdField_a_of_type_JavaLangString);
+      }
+      return;
     }
-    this.jdField_a_of_type_Zmv.onStart();
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
   }
 }
 

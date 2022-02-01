@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class zdp
-  implements DialogInterface.OnClickListener
+  implements zlt
 {
-  public zdp(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  public zdp(DoodleLayout paramDoodleLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@NonNull zma paramzma)
   {
-    paramDialogInterface.dismiss();
+    yuq.b("0X80075CD");
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 1, 2);
+    }
   }
 }
 

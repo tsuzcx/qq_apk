@@ -1,25 +1,59 @@
-import android.app.Dialog;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.vip.lianghao.view.LiangHaoDialogView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.util.SystemDragUtils.TouchHandler.1;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class bhjq
-  implements bgmd
+  extends Handler
 {
-  private Dialog a;
+  static int a;
+  public agjk a;
+  public WeakReference<Context> a;
   
-  public Dialog a(Context paramContext, bhji parambhji, View.OnClickListener paramOnClickListener)
+  static
   {
-    this.a = bglp.a(paramContext, 2131693216, this, parambhji, 2131690582, 2131693214, new bhjr(this), paramOnClickListener, false, false);
-    return this.a;
+    jdField_a_of_type_Int = -1;
   }
   
-  public View a(Context paramContext, Object paramObject)
+  private void a(agjk paramagjk)
   {
-    paramContext = new LiangHaoDialogView(paramContext);
-    paramContext.a((bhji)paramObject);
-    return paramContext;
+    QLog.d("SystemDragUtils", 1, "dismissBubbleMenu Called");
+    if ((paramagjk instanceof aggt))
+    {
+      QLog.d("SystemDragUtils", 1, "dismissBubbleMenu listener is BubbleOnlongClickListener");
+      paramagjk = ((aggt)paramagjk).a;
+      if ((paramagjk != null) && (paramagjk.a()))
+      {
+        QLog.d("SystemDragUtils", 1, "dismissBubbleMenu menuWrapper dismiss");
+        paramagjk.a();
+        return;
+      }
+      QLog.d("SystemDragUtils", 1, "dismissBubbleMenu menuWrapper notshow");
+      return;
+    }
+    QLog.d("SystemDragUtils", 1, "dismissBubbleMenu listener is: " + paramagjk.getClass());
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if ((paramMessage.what == jdField_a_of_type_Int) && ((paramMessage.obj instanceof View)) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      paramMessage = (aggl)agej.a((View)paramMessage.obj);
+      QLog.d("SystemDragUtils", 1, "DRAG TRIGGER: holder is: " + paramMessage.getClass());
+      if (paramMessage.a != null) {
+        ThreadManager.executeOnFileThread(new SystemDragUtils.TouchHandler.1(this, paramMessage));
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.e("SystemDragUtils", 1, "DRAG TRIGGER: holder message is null");
   }
 }
 

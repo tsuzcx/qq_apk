@@ -1,30 +1,42 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arlg
-  implements Handler.Callback
+  implements arae<String>
 {
-  private String a;
+  public String a;
+  public boolean a;
   
-  public arlg(String paramString)
+  public arlg()
   {
-    this.a = paramString;
+    this.jdField_a_of_type_JavaLangString = "{}";
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(String paramString)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("QFileAppStorePromoteDialogConfigBean<QFile>", 1, "onParse: but configContent is null!");
     }
-    axdl.a(this.a, 1);
-    return true;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (paramString.has("dialogSwitch")) {
+        this.jdField_a_of_type_Boolean = paramString.getBoolean("dialogSwitch");
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileAppStorePromoteDialogConfigBean<QFile>", 1, QLog.getStackTraceString(paramString));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arlg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import afiv;
-import afiw;
+import afrz;
+import afsa;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
-import bgao;
-import bgap;
-import biip;
-import biuw;
-import bkij;
+import bhap;
+import bhaq;
+import bjjo;
+import bjvv;
+import bljm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -23,43 +23,43 @@ import java.util.ArrayList;
 
 public class TroopClassChoiceActivity
   extends IphoneTitleBarActivity
-  implements bkij
+  implements bljm
 {
-  private afiw jdField_a_of_type_Afiw;
-  public bgao a;
+  private afsa jdField_a_of_type_Afsa;
+  public bhap a;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   String jdField_a_of_type_JavaLangString;
-  public ArrayList<bgao> a;
+  public ArrayList<bhap> a;
   private String b;
   
   private void b()
   {
     Object localObject = getIntent();
     this.b = String.valueOf(((Intent)localObject).getStringExtra("troopGroupClassExt"));
-    bgao localbgao = bgap.a(this).a();
-    if ((localbgao != null) && (this.b.equals(localbgao.b)))
+    bhap localbhap = bhaq.a(this).a();
+    if ((localbhap != null) && (this.b.equals(localbhap.b)))
     {
-      this.jdField_a_of_type_Bgao = localbgao;
+      this.jdField_a_of_type_Bhap = localbhap;
       this.jdField_a_of_type_JavaLangString = ((Intent)localObject).getStringExtra("id");
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         break label113;
       }
-      this.jdField_a_of_type_JavaUtilArrayList = bgap.a(this).a();
+      this.jdField_a_of_type_JavaUtilArrayList = bhaq.a(this).a();
     }
     for (;;)
     {
-      biuw.a(biip.a().a());
+      bjvv.a(bjjo.a().a());
       a();
       return;
-      this.jdField_a_of_type_Bgao = bgap.a(this).a(this, this.b);
+      this.jdField_a_of_type_Bhap = bhaq.a(this).a(this, this.b);
       break;
       label113:
-      this.jdField_a_of_type_JavaUtilArrayList = bgap.a(this).a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilArrayList = bhaq.a(this).a(this.jdField_a_of_type_JavaLangString);
       if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
       {
-        localObject = (bgao)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        if (((bgao)localObject).jdField_a_of_type_Bgao != null) {
-          setTitle(((bgao)localObject).jdField_a_of_type_Bgao.jdField_a_of_type_JavaLangString);
+        localObject = (bhap)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        if (((bhap)localObject).jdField_a_of_type_Bhap != null) {
+          setTitle(((bhap)localObject).jdField_a_of_type_Bhap.jdField_a_of_type_JavaLangString);
         }
       }
     }
@@ -67,16 +67,16 @@ public class TroopClassChoiceActivity
   
   private void c()
   {
-    setContentBackgroundResource(2130838758);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131379149));
+    setContentBackgroundResource(2130838778);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131379313));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Afiw = new afiw(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Afiw);
+    this.jdField_a_of_type_Afsa = new afsa(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Afsa);
   }
   
   public void a()
   {
-    bgap.a(BaseApplicationImpl.getContext()).a(this.b, new afiv(this));
+    bhaq.a(BaseApplicationImpl.getContext()).a(this.b, new afrz(this));
   }
   
   @Override
@@ -106,15 +106,15 @@ public class TroopClassChoiceActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131562990);
-    setTitle(2131718717);
+    super.setContentView(2131563024);
+    setTitle(2131718853);
     b();
     c();
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (bgao)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramAdapterView = (bhap)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     if ((paramAdapterView.jdField_a_of_type_JavaUtilArrayList != null) && (paramAdapterView.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (!paramAdapterView.b.equals("10015")) && (!paramAdapterView.b.equals("10017")))
     {
       paramView = new Intent(this, TroopClassChoiceActivity.class);
@@ -123,7 +123,7 @@ public class TroopClassChoiceActivity
       startActivityForResult(paramView, 11);
       return;
     }
-    bgap.a(this).a(paramAdapterView);
+    bhaq.a(this).a(paramAdapterView);
     paramView = new Intent();
     paramView.putExtra("id", paramAdapterView.b);
     setResult(-1, paramView);

@@ -1,56 +1,26 @@
-import android.os.Bundle;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-class obc<T extends MessageMicro<?>>
-  implements BusinessObserver
+public class obc
 {
-  private Class<T> jdField_a_of_type_JavaLangClass;
-  private obd<T> jdField_a_of_type_Obd;
+  public obc(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString, long paramLong) {}
   
-  public obc(obd<T> paramobd, Class<T> paramClass)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    this.jdField_a_of_type_Obd = paramobd;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
   }
   
-  private T a(byte[] paramArrayOfByte, Class<T> paramClass)
+  @QQPermissionGrant(1)
+  public void grant()
   {
-    try
-    {
-      paramClass = (MessageMicro)paramClass.newInstance();
-      if (paramArrayOfByte == null) {
-        return null;
-      }
-      paramClass.mergeFrom(paramArrayOfByte);
-      return paramClass;
+    SosoInterface.a(new obi(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, 0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long));
+    if (QLog.isColorLevel()) {
+      QLog.d("PAjs.location", 2, "SosoInterface.startLocation");
     }
-    catch (Throwable paramArrayOfByte)
-    {
-      Toast.makeText(BaseApplicationImpl.getContext(), 2131694617, 0).show();
-      QLog.w("PublicAccountStQWebServlet", 4, "decode pb err:" + paramArrayOfByte.getMessage(), paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Obd == null) {
-      return;
-    }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Obd.a(paramInt, paramBoolean, null, paramBundle);
-    }
-    byte[] arrayOfByte = paramBundle.getByteArray("data");
-    if (a(arrayOfByte, this.jdField_a_of_type_JavaLangClass) == null)
-    {
-      this.jdField_a_of_type_Obd.a(paramInt, false, null, paramBundle);
-      return;
-    }
-    this.jdField_a_of_type_Obd.a(paramInt, paramBoolean, a(arrayOfByte, this.jdField_a_of_type_JavaLangClass), paramBundle);
   }
 }
 

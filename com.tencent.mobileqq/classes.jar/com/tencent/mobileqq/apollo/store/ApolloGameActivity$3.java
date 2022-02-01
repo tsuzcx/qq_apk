@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.store;
 
 import android.os.SystemClock;
-import bkgm;
+import blhq;
 import com.tencent.qphone.base.util.QLog;
 
 class ApolloGameActivity$3

@@ -1,8 +1,20 @@
-import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface qlw
+class qlw
+  implements View.OnClickListener
 {
-  public abstract void a(MotionEvent paramMotionEvent);
+  qlw(qlv paramqlv) {}
+  
+  public void onClick(View paramView)
+  {
+    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
+    if (localsgf != null) {
+      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

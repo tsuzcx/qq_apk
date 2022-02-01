@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.view.ucrop;
 
-import tgh;
+import sxb;
 
 class CropImageView$2
   implements Runnable
 {
-  CropImageView$2(CropImageView paramCropImageView, boolean paramBoolean, tgh paramtgh, String paramString) {}
+  CropImageView$2(CropImageView paramCropImageView, boolean paramBoolean, sxb paramsxb, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Tgh.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Sxb.a(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    this.jdField_a_of_type_Tgh.a();
+    this.jdField_a_of_type_Sxb.a();
   }
 }
 

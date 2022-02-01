@@ -1,99 +1,98 @@
-import android.app.Application;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.os.Build.VERSION;
-import android.provider.Settings.Secure;
-import android.telephony.TelephonyManager;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.MD5;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x3b.Submsgtype0x3b.MsgBody;
 
 public class addt
+  implements adci
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static String jdField_a_of_type_JavaLangString = "";
-  
-  public static String a(Application paramApplication)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-      return jdField_a_of_type_JavaLangString;
-    }
-    String str1 = "";
-    Context localContext = paramApplication.getApplicationContext();
-    Object localObject = str1;
-    if (a(paramApplication))
-    {
-      paramApplication = (TelephonyManager)localContext.getSystemService("phone");
-      String str2 = paramApplication.getDeviceId();
-      localObject = str1;
-      if (!TextUtils.isEmpty(str2)) {
-        localObject = "" + str2;
-      }
-      str1 = paramApplication.getSubscriberId();
-      if (TextUtils.isEmpty(str1)) {
-        break label170;
-      }
-      paramApplication = (String)localObject + str1;
-    }
+    boolean bool = false;
     for (;;)
     {
-      localObject = paramApplication;
-      if (TextUtils.isEmpty(paramApplication))
+      try
       {
-        localObject = paramApplication;
-        if (Build.VERSION.SDK_INT >= 23) {
-          localObject = bkfy.c();
+        Submsgtype0x3b.MsgBody localMsgBody = new Submsgtype0x3b.MsgBody();
+        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+        Object localObject1;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder().append("0x210Push_0x3b, group code: ");
+          if (!localMsgBody.uint64_group_code.has()) {
+            break label391;
+          }
+          paramMsgType0x210 = String.valueOf(localMsgBody.uint64_group_code.get());
+          localObject1 = ((StringBuilder)localObject1).append(paramMsgType0x210).append(", user switch: ");
+          if (localMsgBody.uint32_user_show_flag.has())
+          {
+            paramMsgType0x210 = String.valueOf(localMsgBody.uint32_user_show_flag.get());
+            QLog.d("Q.getTroopMemberLevelInfo", 2, paramMsgType0x210 + ", level map changed: " + localMsgBody.uint32_member_level_changed.has() + ",uint32_member_level_new_changed" + localMsgBody.uint32_member_level_new_changed.has());
+          }
+        }
+        else
+        {
+          if (!localMsgBody.uint64_group_code.has()) {
+            break label390;
+          }
+          if (localMsgBody.uint32_user_show_flag.has())
+          {
+            int i = localMsgBody.uint32_user_show_flag.get();
+            paramMsgType0x210 = String.valueOf(localMsgBody.uint64_group_code.get());
+            Object localObject2 = (TroopManager)paramQQAppInterface.getManager(52);
+            localObject1 = ((TroopManager)localObject2).b(paramMsgType0x210);
+            ((TroopInfo)localObject1).cGroupRankUserFlag = ((byte)i);
+            ((TroopManager)localObject2).b((TroopInfo)localObject1);
+            localObject2 = (aoip)paramQQAppInterface.a(20);
+            if (localObject2 != null)
+            {
+              if (i == 1) {
+                bool = true;
+              }
+              ((aoip)localObject2).notifyUI(152, true, new Object[] { paramMsgType0x210, Boolean.valueOf(bool) });
+            }
+            if (1 == ((TroopInfo)localObject1).cGroupRankUserFlag) {
+              ((aoip)paramQQAppInterface.a(20)).f(paramMsgType0x210);
+            }
+          }
+          if (localMsgBody.uint32_member_level_changed.has())
+          {
+            l = localMsgBody.uint64_group_code.get();
+            ((aoip)paramQQAppInterface.a(20)).f(String.valueOf(l));
+          }
+          if (!localMsgBody.uint32_member_level_new_changed.has()) {
+            break label390;
+          }
+          long l = localMsgBody.uint64_group_code.get();
+          ((aoip)paramQQAppInterface.a(20)).f(String.valueOf(l));
+          return;
+        }
+        paramMsgType0x210 = "";
+        continue;
+        return;
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.getTroopMemberLevelInfo", 2, "0x210Push_0x3b, failed to parse Submsgtype0x3b.MsgBody");
         }
       }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        paramApplication = (Application)localObject;
-        if (!((String)localObject).startsWith("012345678912345")) {}
-      }
-      else
-      {
-        paramApplication = Settings.Secure.getString(localContext.getContentResolver(), "android_id");
-      }
-      jdField_a_of_type_JavaLangString = MD5.toMD5(paramApplication);
-      return jdField_a_of_type_JavaLangString;
-      label170:
-      str1 = paramApplication.getSimOperator();
-      paramApplication = (Application)localObject;
-      if (!TextUtils.isEmpty(str1)) {
-        paramApplication = (String)localObject + str1;
-      }
+      label390:
+      label391:
+      paramMsgType0x210 = "";
     }
   }
   
-  private static boolean a(Application paramApplication)
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    boolean bool = true;
-    if (jdField_a_of_type_Int == -1)
-    {
-      bool = a(paramApplication, "android.permission.READ_PHONE_STATE");
-      if (bool) {
-        jdField_a_of_type_Int = 1;
-      }
-    }
-    while (jdField_a_of_type_Int > 0) {
-      for (;;)
-      {
-        return bool;
-        jdField_a_of_type_Int = 0;
-      }
-    }
-    return false;
-  }
-  
-  private static boolean a(Application paramApplication, String paramString)
-  {
-    if (paramApplication == null) {}
-    PackageManager localPackageManager;
-    do
-    {
-      return false;
-      localPackageManager = paramApplication.getPackageManager();
-    } while ((localPackageManager == null) || (localPackageManager.checkPermission(paramString, paramApplication.getPackageName()) != 0));
-    return true;
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

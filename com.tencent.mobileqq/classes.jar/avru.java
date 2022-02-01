@@ -1,119 +1,127 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.hiboom.HiBoomPanelView;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import com.tencent.mobileqq.hiboom.SectorProgressView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import mqq.app.AppRuntime;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Vector;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract class avru
+public class avru
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  private avrv jdField_a_of_type_Avrv = new avrv();
-  private final HashSet<Long> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private final Map<Long, avrx> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = true;
+  public int a;
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public HiBoomTextView a;
+  public SectorProgressView a;
+  public boolean a;
+  public ImageView b;
+  public ImageView c;
   
-  public avru()
+  public avru(HiBoomPanelView paramHiBoomPanelView, View paramView, boolean paramBoolean)
   {
-    aqpi localaqpi = (aqpi)aqlk.a().a(598);
-    if (localaqpi != null) {
-      if (localaqpi.jdField_a_of_type_Boolean) {
-        break label74;
-      }
-    }
-    label74:
-    for (boolean bool = true;; bool = false)
+    super(paramView);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView = ((HiBoomTextView)paramView.findViewById(2131368026));
+      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setLoadingScale(0.6F);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368024));
+      this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView = ((SectorProgressView)paramView.findViewById(2131368025));
+      this.b = ((ImageView)paramView.findViewById(2131368021));
+      this.c = ((ImageView)paramView.findViewById(2131368022));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131368019));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368023));
+      paramView.setOnClickListener(this);
     }
   }
   
-  private void a(long paramLong, RedTouch paramRedTouch)
+  public void onClick(View paramView)
   {
-    int i = avry.a(paramRedTouch);
-    if (i != 0) {
-      this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), new avrx(i, avry.b(paramRedTouch)));
-    }
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface, long paramLong, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
-  {
-    if ((!this.jdField_a_of_type_JavaUtilHashSet.contains(Long.valueOf(paramLong))) && (paramAppInfo != null) && (paramAppInfo.iNewFlag.get() != 0))
-    {
-      this.jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(paramLong));
-      ((baif)paramQQAppInterface.getManager(36)).a((int)paramLong, 30);
-    }
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Avrv != null) {
-      return this.jdField_a_of_type_Avrv.jdField_a_of_type_Int;
-    }
-    return -1;
-  }
-  
-  public abstract BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString);
-  
-  public Map<Long, avrx> a()
-  {
-    return this.jdField_a_of_type_JavaUtilMap;
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_JavaUtilHashSet.isEmpty()) {}
-    try
-    {
-      ajvi.jdField_a_of_type_Int |= 0x2;
-      QLog.i("Q.lebatab.LebaRedTouchBase", 1, "onPause update" + ajvi.jdField_a_of_type_Int);
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        ((antv)((QQAppInterface)localAppRuntime).a(87)).notifyUI(4, true, null);
-      }
-      this.jdField_a_of_type_JavaUtilHashSet.clear();
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    int i;
+    if (this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.getVisibility() == 0) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.a())
       {
-        QLog.i("Q.lebatab.LebaRedTouchBase", 1, "onPause", localException);
+        this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.a();
+        this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.setProgress(0);
+        i = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_Avrt.a(this.jdField_a_of_type_Int);
+        avrl.a.a(i);
       }
     }
-  }
-  
-  public void a(ajvf paramajvf)
-  {
-    QQAppInterface localQQAppInterface = paramajvf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    Context localContext = paramajvf.jdField_a_of_type_AndroidContentContext;
-    RedTouch localRedTouch = paramajvf.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch;
-    long l = paramajvf.jdField_a_of_type_Long;
-    String str = paramajvf.jdField_a_of_type_JavaLangString;
-    int i = paramajvf.jdField_a_of_type_Int;
-    paramajvf = a(localQQAppInterface, String.valueOf(l));
-    a(localQQAppInterface, l, paramajvf);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = this.jdField_a_of_type_Avrv.a(localQQAppInterface, localContext, l, localRedTouch, str, this.jdField_a_of_type_JavaUtilMap, i);; bool = false)
+    for (;;)
     {
-      QLog.d("Q.lebatab.LebaRedTouchBase", 1, new Object[] { "updateRedTouch,resID=", Long.valueOf(l), ",resPkgName=", str, ",isHandledRedTouch=", Boolean.valueOf(bool), ",leba_red_touch_spcific_enable->mSpecificEnable=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-      if (!bool)
-      {
-        a(localRedTouch, paramajvf);
-        a(l, localRedTouch);
-        this.jdField_a_of_type_Avrv.a(localQQAppInterface, str, paramajvf);
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      Object localObject2;
+      Object localObject1;
+      if (this.b.getVisibility() == 0)
+      {
+        switch (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_Avrt.a(this.jdField_a_of_type_Int))
+        {
+        default: 
+          break;
+        case -1: 
+          localObject2 = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c();
+          if (this.c.getVisibility() == 0) {}
+          for (localObject1 = "0";; localObject1 = "1")
+          {
+            VasWebviewUtil.reportCommercialDrainage((String)localObject2, "HighFont", "ClickPlus", "", 1, 0, 0, "", "", (String)localObject1);
+            this.c.setVisibility(8);
+            this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getPreferences().edit().putBoolean("hiboom_red_dot_show", true).commit();
+            localObject1 = bhyk.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext(), "font", "mvip.gexinghua.mobile.font.client_tab_store") + "&haibao=1";
+            if (QLog.isColorLevel()) {
+              QLog.d("HiBoomFont.HiBoomPanelView", 2, "enter hiboom mall url = " + (String)localObject1);
+            }
+            VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext(), (String)localObject1, 4096L, null, false, -1);
+            break;
+          }
+        }
+      }
+      else if (this.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("HiBoomFont.HiBoomPanelView", 2, "dirty filter ");
+        }
+      }
+      else
+      {
+        if (avrl.b.compareAndSet(false, true))
+        {
+          localObject1 = (aogu)this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(13);
+          localObject2 = (avrl)this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(219);
+          i = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_Avrt.a(this.jdField_a_of_type_Int);
+          if (QLog.isColorLevel()) {
+            QLog.d("HiBoomFont.HiBoomPanelView", 2, "onClick hiboomid = " + i);
+          }
+          if (((avrl)localObject2).c.contains(Integer.valueOf(i))) {
+            ((aogu)localObject1).a(i, true, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.a());
+          }
+          for (;;)
+          {
+            bdll.b(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "CliOper", "", "", "0X80094D7", "0X80094D7", 0, 0, "", "", "", "");
+            break;
+            ((aogu)localObject1).a(i, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.a(), 2);
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("HiBoomFont.HiBoomPanelView", 2, "onClick is sending");
+        }
+      }
     }
   }
-  
-  public abstract void a(RedTouch paramRedTouch, BusinessInfoCheckUpdate.AppInfo paramAppInfo);
 }
 
 

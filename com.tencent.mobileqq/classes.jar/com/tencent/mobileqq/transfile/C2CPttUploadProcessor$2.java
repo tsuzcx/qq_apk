@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import bdtl;
+import bese;
 
 public class C2CPttUploadProcessor$2
   implements Runnable
 {
-  public C2CPttUploadProcessor$2(bdtl parambdtl, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public C2CPttUploadProcessor$2(bese parambese, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {

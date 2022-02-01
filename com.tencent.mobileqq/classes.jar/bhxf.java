@@ -1,12 +1,12 @@
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
 
-public abstract interface bhxf
+public class bhxf
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(Drawable paramDrawable);
-  
-  public abstract void b(Drawable paramDrawable);
+  public int a;
+  public Bitmap a;
+  public float[] a;
+  public int[] a;
+  public int b;
 }
 
 

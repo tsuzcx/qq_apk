@@ -1,17 +1,11 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import java.util.List;
 
-public class pqr
-  implements prw
+public abstract interface pqr
 {
-  public pqr(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public abstract void a(SelectPositionModule.PositionData paramPositionData);
   
-  public void a()
-  {
-    pha.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), pgc.r);
-    oat.a(null, "CliOper", "", "", "0X8008E3C", "0X8008E3C", 0, 0, "", "", "", pha.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), "8.4.1".replace("", ""), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()), false);
-  }
+  public abstract void a(List<psl> paramList);
 }
 
 

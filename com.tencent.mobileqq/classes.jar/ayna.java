@@ -1,16 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class ayna
-  extends ayor
+  implements DialogInterface.OnDismissListener
 {
-  ayna(aymu paramaymu) {}
+  ayna(aymj paramaymj) {}
   
-  public void a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountPanel", 2, "onBatteryChanged updateOnlineStatusItem");
-    }
-    aymu.a(this.a).b();
+    this.a.s = false;
   }
 }
 

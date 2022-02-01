@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
 
 public class bjgk
-  implements DialogInterface.OnClickListener
+  implements MediaPlayer.OnCompletionListener
 {
-  public bjgk(QidianProfileCardActivity paramQidianProfileCardActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public bjgk(VideoTextureView paramVideoTextureView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    if (VideoTextureView.a() != null) {
+      VideoTextureView.a().onVideoComplete(true);
+    }
   }
 }
 

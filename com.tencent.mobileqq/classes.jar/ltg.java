@@ -1,58 +1,85 @@
-import android.os.Bundle;
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.redpacket.AVRedPacketManager.GameStateInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.random.RandomWebProtocol;
 import com.tencent.qphone.base.util.QLog;
+import mqq.manager.TicketManager;
+import org.json.JSONObject;
 
 public class ltg
-  implements ltj
 {
-  public ltg(AVRedPacketManager paramAVRedPacketManager) {}
+  public int a;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  boolean jdField_a_of_type_Boolean;
+  public int b;
+  String b;
+  public String c;
+  public String d;
+  String e = "client";
   
-  public void a(boolean paramBoolean, int paramInt)
+  public ltg(RandomWebProtocol paramRandomWebProtocol)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "onLoadFinish, isSucc=" + paramBoolean + ",type=" + paramInt);
-    }
-    if (!AVRedPacketManager.a(this.a, true)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (paramInt != 1);
-      if ((this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode == 1) && (this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameState == 1))
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putString("key", this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.key);
-        localBundle.putInt("gameState", 1);
-        localBundle.putInt("fromWho", 1);
-        localBundle.putInt("musicId", this.a.g);
-        localBundle.putInt("enterType", this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.enterType);
-        this.a.jdField_a_of_type_Ltd.a();
-        this.a.a(1, localBundle);
-        this.a.a(false, 1011, AVRedPacketManager.jdField_a_of_type_Long, null);
-        this.a.a(false, 1021, AVRedPacketManager.c, null);
-        return;
-      }
-    } while ((this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode != 2) || (this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameState != 1));
-    long l = Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.mRedPacketComeStartTime);
-    paramBoolean = mpu.b(AVRedPacketManager.a(this.a));
-    if (l >= AVRedPacketManager.f)
-    {
-      if (paramBoolean)
-      {
-        this.a.d();
-        return;
-      }
-      this.a.f();
+    this.jdField_a_of_type_Int = 0;
+    String str = RandomWebProtocol.a(paramRandomWebProtocol).getAccount();
+    paramRandomWebProtocol = (TicketManager)RandomWebProtocol.a(paramRandomWebProtocol).getManager(2);
+    if (paramRandomWebProtocol == null) {
       return;
     }
-    if (paramBoolean)
+    this.jdField_a_of_type_JavaLangString = "8.4.5";
+    this.jdField_a_of_type_Boolean = false;
+    try
     {
-      this.a.a(false, 1028, AVRedPacketManager.f - l, null);
+      this.jdField_a_of_type_Long = Long.parseLong(str);
+      this.jdField_b_of_type_JavaLangString = paramRandomWebProtocol.getSkey(str);
+      this.jdField_b_of_type_Int = -1;
+      this.jdField_a_of_type_OrgJsonJSONObject = null;
+      this.c = null;
+      this.d = null;
       return;
     }
-    this.a.a(false, 1026, AVRedPacketManager.f - l, null);
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        this.jdField_a_of_type_Long = 0L;
+        if (QLog.isColorLevel()) {
+          QLog.d("RandomWebProtocol", 2, "[randomWeb] init Req error: failed parse self_uin: " + str);
+        }
+      }
+    }
+  }
+  
+  ltg(RandomWebProtocol paramRandomWebProtocol, ltg paramltg)
+  {
+    this.jdField_a_of_type_Int = paramltg.jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaLangString = paramltg.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramltg.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Long = paramltg.jdField_a_of_type_Long;
+    this.jdField_b_of_type_JavaLangString = paramltg.jdField_b_of_type_JavaLangString;
+    this.jdField_b_of_type_Int = paramltg.jdField_b_of_type_Int;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramltg.jdField_a_of_type_OrgJsonJSONObject;
+    this.c = paramltg.c;
+    this.d = paramltg.d;
+    this.e = paramltg.e;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Int == 0) {
+      return "";
+    }
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("reqtype", this.jdField_a_of_type_Int).put("qqversion", this.jdField_a_of_type_JavaLangString).put("isdebug", this.jdField_a_of_type_Boolean).put("self_uin", this.jdField_a_of_type_Long).put("self_skey", this.jdField_b_of_type_JavaLangString).put("self_gender", this.jdField_b_of_type_Int).put("reqbody", this.jdField_a_of_type_OrgJsonJSONObject);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return "";
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import bfos;
+import bgot;
 
 class BaseChatPie$88
   implements Runnable
 {
-  BaseChatPie$88(BaseChatPie paramBaseChatPie, bfos parambfos, boolean paramBoolean) {}
+  BaseChatPie$88(BaseChatPie paramBaseChatPie, bgot parambgot, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bfos.a(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Bgot.a(this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,55 +1,70 @@
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.mini.util.ApiUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 
 class bjxk
-  implements MiniAppCmdInterface
+  implements DialogInterface.OnClickListener
 {
-  bjxk(bjxj parambjxj, RequestEvent paramRequestEvent, BaseRuntime paramBaseRuntime, String paramString, int paramInt) {}
+  bjxk(bjxd parambjxd, boolean paramBoolean1, DialogInterface.OnClickListener paramOnClickListener, Bundle paramBundle, int paramInt1, boolean paramBoolean2, Activity paramActivity, String paramString1, boolean paramBoolean3, boolean paramBoolean4, String paramString2, int paramInt2) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("MiniSDKClientQIPCModule", 1, "sendArkMsg receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
-    if (paramJSONObject == null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
-    }
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBoolean)
+    bjtx.c("MyAppApi", "---onConfirm--onClick");
+    if (!this.jdField_a_of_type_Bjxd.b())
     {
-      try
+      this.jdField_a_of_type_Bjxd.jdField_a_of_type_Bjxo = new bjxo(this.jdField_a_of_type_Bjxd);
+      this.jdField_a_of_type_Bjxd.jdField_a_of_type_Bjxo.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+      this.jdField_a_of_type_Bjxd.jdField_a_of_type_Bjxo.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_Bjxd.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+      this.jdField_a_of_type_Bjxd.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_AndroidOsBundle;
+      this.jdField_a_of_type_Bjxd.jdField_a_of_type_Bjxo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      if (this.jdField_b_of_type_Boolean)
       {
-        int i = paramJSONObject.getInt("retCode");
-        paramJSONObject = paramJSONObject.getString("errMsg");
-        if (i == 0)
-        {
-          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok();
-          bjxj.a(this.jdField_a_of_type_Bjxj, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, "share_success");
-          if (!this.jdField_a_of_type_JavaLangString.equals("shareMessageToFriend")) {
-            return;
-          }
-          bjxj.a(this.jdField_a_of_type_Bjxj, localJSONObject, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, this.jdField_a_of_type_Int, "", true, ApiUtil.wrapCallbackOk(this.jdField_a_of_type_JavaLangString, localJSONObject));
-          return;
+        this.jdField_a_of_type_Bjxd.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 0);
+        if ((this.jdField_a_of_type_Bjxd.jdField_a_of_type_Bjxr != null) && (this.jdField_a_of_type_Bjxd.jdField_a_of_type_Bjxr.isShowing())) {
+          this.jdField_a_of_type_Bjxd.jdField_a_of_type_Bjxr.a(0, 1);
         }
-        localJSONObject.put("errMsg", paramJSONObject);
-        localJSONObject.put("errCode", i);
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(localJSONObject, paramJSONObject);
-        bjxj.a(this.jdField_a_of_type_Bjxj, localJSONObject, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, this.jdField_a_of_type_Int, paramJSONObject, false, ApiUtil.wrapCallbackFail(this.jdField_a_of_type_JavaLangString, localJSONObject));
-        return;
-      }
-      catch (Throwable paramJSONObject)
-      {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
-        bjxj.a(this.jdField_a_of_type_Bjxj, localJSONObject, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, this.jdField_a_of_type_Int, "请求失败", false, ApiUtil.wrapCallbackFail(this.jdField_a_of_type_JavaLangString, localJSONObject));
-        return;
       }
     }
-    else
+    label636:
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
-      bjxj.a(this.jdField_a_of_type_Bjxj, localJSONObject, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, this.jdField_a_of_type_Int, "请求失败", false, ApiUtil.wrapCallbackFail(this.jdField_a_of_type_JavaLangString, localJSONObject));
+      paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(bjwo.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjwo.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjwo.d);
+      this.jdField_a_of_type_Bjxd.c = true;
+      bjvg.a("201", bjvg.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.jdField_b_of_type_JavaLangString);
+      paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 100 + "|" + paramDialogInterface;
+      bjqw.a().a(25, paramDialogInterface);
+      bdll.b(null, "dc00898", "", "", "0X8008F7D", "0X8008F7D", 0, 0, "", "", "", "");
+      if (this.jdField_b_of_type_Int == 1)
+      {
+        paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString("pageId") + "_" + this.jdField_a_of_type_AndroidOsBundle.getString("moduleId") + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjwo.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjwo.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bjwo.d);
+        bjto.b("6006", "1", "0", this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+      }
+      if (("ANDROID.QQ.YYBXZGAMECENTER".equals(this.jdField_a_of_type_JavaLangString)) || ("ANDROID.QQ.NEWYYBXZGAMECENTER".equals(this.jdField_a_of_type_JavaLangString))) {
+        acik.a(null, "765", "205010", this.jdField_b_of_type_JavaLangString, "76501", "1", "156");
+      }
+      return;
+      new bjxn(this.jdField_a_of_type_Bjxd, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bjxd.jdField_a_of_type_Bjxo).execute(new Void[0]);
+      continue;
+      if ((bjwj.h()) || (this.c)) {
+        if (this.jdField_a_of_type_Int == 0) {
+          this.jdField_a_of_type_Bjxd.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.d);
+        }
+      }
+      for (;;)
+      {
+        if ((this.jdField_a_of_type_Bjxd.jdField_a_of_type_Bjxr == null) || (!this.jdField_a_of_type_Bjxd.jdField_a_of_type_Bjxr.isShowing())) {
+          break label636;
+        }
+        this.jdField_a_of_type_Bjxd.jdField_a_of_type_Bjxr.dismiss();
+        break;
+        this.jdField_a_of_type_Bjxd.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.d);
+        continue;
+        if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+          this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+        }
+      }
     }
   }
 }

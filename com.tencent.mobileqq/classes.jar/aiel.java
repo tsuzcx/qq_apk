@@ -1,33 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.mobileqq.activity.aio.InputLinearLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
 
-class aiel
-  implements View.OnClickListener
+public class aiel
 {
-  aiel(aidp paramaidp) {}
+  public int a;
+  public long a;
+  public MessageForShortVideo a;
+  String jdField_a_of_type_JavaLangString;
+  public String[] a;
   
-  public void onClick(View paramView)
+  public aiel(aiei paramaiei, String[] paramArrayOfString, long paramLong, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
   {
-    afur.n = true;
-    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean a()
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.d(" LongVideoUrlCacheManager", 2, "UrlsCacheBean, now=  " + l1 + ", mGetTime" + this.jdField_a_of_type_Long + " diff=" + l2 + " urlTimeValidDiff=" + aiei.a());
     }
-    if (this.a.h != null) {
-      this.a.h.setVisibility(0);
-    }
-    if (this.a.i != null) {
-      this.a.i.setVisibility(0);
-    }
-    this.a.aA();
-    if (this.a.jdField_a_of_type_Nzz.b(this.a.a()) != 0) {
-      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC5", "0X8005EC5", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return l2 < aiei.a();
   }
 }
 

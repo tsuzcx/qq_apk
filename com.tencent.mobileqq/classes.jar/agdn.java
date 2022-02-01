@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import Wallet.AcsMsg;
+import java.util.List;
 
 class agdn
-  implements bdet
+  implements agdq
 {
   agdn(agdj paramagdj) {}
   
-  public void a()
+  public void a(List<AcsMsg> paramList)
   {
-    bdez localbdez = new bdez(3000, 360, 0);
-    localbdez.a = true;
-    this.a.a.g.a(new bdes[] { localbdez });
+    agdj.a(this.a, paramList);
   }
 }
 

@@ -1,12 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-
 class zql
-  extends RecyclerView.ViewHolder
+  extends zqh
 {
-  zql(zqj paramzqj, View paramView)
+  zql(zqi paramzqi, zqq paramzqq) {}
+  
+  public void onFailure(String paramString)
   {
-    super(paramView);
+    yuk.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onFail: " + paramString);
+    this.jdField_a_of_type_Zqq.onFailure(paramString);
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    yuk.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onSuccess: " + paramString);
   }
 }
 

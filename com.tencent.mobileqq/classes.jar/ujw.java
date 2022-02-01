@@ -1,63 +1,38 @@
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
 
 public class ujw
-  implements INetInfoHandler
+  implements IMiniMsgUnreadCallback
 {
-  private WSPlayerManager a;
-  
-  public ujw(WSPlayerManager paramWSPlayerManager)
+  public void destroy()
   {
-    this.a = paramWSPlayerManager;
+    uqf.a("AIOLog", 1, "MiniMsgUser destroy");
   }
   
-  private void a()
+  public void hide()
   {
-    if ((this.a != null) && (this.a.a() != null))
-    {
-      ukb localukb = this.a.a();
-      if ((!this.a.f()) && (!this.a.e())) {
-        break label55;
-      }
-      this.a.b(localukb, false);
-    }
-    label55:
-    while (!this.a.g()) {
-      return;
-    }
-    this.a.a();
+    uqf.a("AIOLog", 1, "MiniMsgUser hide");
   }
   
-  public void onNetMobile2None()
+  public void hideUnread()
   {
-    upe.b("WSPlayerForNetInfoHandler", "onNetMobile2None");
+    uqf.a("AIOLog", 1, "MiniMsgUser hideUnread");
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public boolean show(int paramInt)
   {
-    upe.b("WSPlayerForNetInfoHandler", "onNetMobile2Wifi s:" + paramString);
+    uqf.a("AIOLog", 1, "MiniMsgUser show = " + paramInt);
+    return false;
   }
   
-  public void onNetNone2Mobile(String paramString)
+  public void updateOnBackFromMiniAIO(Bundle paramBundle)
   {
-    upe.b("WSPlayerForNetInfoHandler", "onNetNone2Mobile s:" + paramString);
-    a();
+    uqf.a("AIOLog", 1, "MiniMsgUser updateOnBackFromMiniAIO");
   }
   
-  public void onNetNone2Wifi(String paramString)
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
   {
-    upe.b("WSPlayerForNetInfoHandler", "onNetNone2Wifi s:" + paramString);
-    a();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    upe.b("WSPlayerForNetInfoHandler", "onNetWifi2Mobile s:" + paramString);
-  }
-  
-  public void onNetWifi2None()
-  {
-    upe.b("WSPlayerForNetInfoHandler", "onNetWifi2None");
+    uqf.a("AIOLog", 1, "MiniMsgUser updateUnreadCount i = " + paramInt + ", b = " + paramBoolean);
   }
 }
 

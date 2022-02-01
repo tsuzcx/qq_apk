@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aoyz;
+import apmp;
 
 public class ARCamera$1
   implements Runnable
 {
-  public ARCamera$1(aoyz paramaoyz, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public ARCamera$1(apmp paramapmp, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void run()
   {
-    aoyz.a(this.this$0, this.a, this.b, this.c, this.d, aoyz.f());
+    apmp.a(this.this$0, this.a, this.b, this.c, this.d, apmp.f());
   }
 }
 

@@ -1,60 +1,49 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopAppInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.Player;
+import java.lang.ref.WeakReference;
 
-public class aigk
-  implements nns
+public final class aigk
+  extends AnimationView.Player
 {
-  public aigk(TroopChatPie paramTroopChatPie) {}
+  public static boolean a;
   
-  public void a()
+  public aigk(AnimationView paramAnimationView)
   {
-    if ((ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) != null) || (QLog.isColorLevel())) {
-      QLog.d(".troop.notify_feeds.aio", 2, "getAppIds onFailed, reqNotifyItems");
-    }
-    bfqk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    super(paramAnimationView);
   }
   
-  public void a(ArrayList<TroopAppInfo> paramArrayList)
+  public static void a(boolean paramBoolean)
   {
-    if (ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) != null) {}
-    ArrayList localArrayList;
-    do
+    jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(AnimationView paramAnimationView)
+  {
+    reset();
+    this.jdField_a_of_type_JavaLangRefWeakReference.clear();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAnimationView);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      return;
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(1L));
-      localArrayList.add(Long.valueOf(2L));
-      localArrayList.add(Long.valueOf(1101236949L));
-      localArrayList.add(Long.valueOf(1101484419L));
-      localArrayList.add(Long.valueOf(1102858908L));
-      localArrayList.add(Long.valueOf(1106611799L));
-      localArrayList.add(Long.valueOf(1104445552L));
-      localArrayList.add(Long.valueOf(1106717414L));
-      localArrayList.add(Long.valueOf(101509131L));
-      localArrayList.add(Long.valueOf(1106588005L));
-      localArrayList.add(Long.valueOf(1106664488L));
-      localArrayList.add(Long.valueOf(101618516L));
-      localArrayList.add(Long.valueOf(101872323L));
-      if ((paramArrayList != null) && (paramArrayList.size() > 0))
-      {
-        paramArrayList = paramArrayList.iterator();
-        while (paramArrayList.hasNext()) {
-          localArrayList.add(Long.valueOf(((TroopAppInfo)paramArrayList.next()).appId));
-        }
-      }
-      paramArrayList = (anwd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    } while (paramArrayList == null);
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.notify_feeds.aio", 2, "send_oidb_0x8c9_2, appIds.size=" + localArrayList.size());
     }
-    paramArrayList.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localArrayList, false);
+    for (;;)
+    {
+      return false;
+      if (jdField_a_of_type_Boolean)
+      {
+        paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
+      }
+      else
+      {
+        a();
+      }
+    }
   }
 }
 

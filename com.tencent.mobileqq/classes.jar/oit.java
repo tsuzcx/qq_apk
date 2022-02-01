@@ -1,19 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class oit
-  implements nkl
+class oit
+  implements ViewFactory.FoundClickableViewListener
 {
-  public oit(ReadInJoyFeedsActivity.1 param1) {}
+  oit(ois paramois, TemplateBean paramTemplateBean) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onFound(ViewBase paramViewBase)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    {
     }
+    do
+    {
+      return;
+    } while (!(paramViewBase instanceof qek));
+    ((qek)paramViewBase).a(new oiu(this, paramViewBase));
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

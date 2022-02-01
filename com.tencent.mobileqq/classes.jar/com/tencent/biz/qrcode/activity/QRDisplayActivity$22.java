@@ -1,19 +1,18 @@
 package com.tencent.biz.qrcode.activity;
 
-import android.view.View;
-import bgfz;
-import zrp;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+import zyx;
 
 class QRDisplayActivity$22
   implements Runnable
 {
-  QRDisplayActivity$22(QRDisplayActivity paramQRDisplayActivity) {}
+  QRDisplayActivity$22(QRDisplayActivity paramQRDisplayActivity, String paramString) {}
   
   public void run()
   {
-    zrp localzrp = new zrp(this.this$0.d, this.this$0);
-    this.this$0.d.setAccessibilityDelegate(localzrp);
-    bgfz.a(this.this$0.a, false);
+    String str = zyx.a(this.this$0, this.a, this.this$0.b);
+    ThreadManager.getUIHandler().post(new QRDisplayActivity.22.1(this, str));
   }
 }
 

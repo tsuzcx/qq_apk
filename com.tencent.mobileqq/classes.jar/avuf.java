@@ -1,22 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.view.View;
+import com.tencent.mobileqq.hotpic.HotPicData;
 
-public class avuf
-  implements DialogInterface.OnClickListener
+public abstract interface avuf
 {
-  public avuf(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager, avuv paramavuv) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.a(true);
-    this.jdField_a_of_type_Avuv.b(false);
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
-    }
-  }
+  public abstract boolean a(View paramView, String paramString, HotPicData paramHotPicData);
 }
 
 

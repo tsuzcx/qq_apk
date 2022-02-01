@@ -1,29 +1,34 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView.2.1;
-import com.tencent.widget.HorizontalListView;
+import android.arch.lifecycle.MutableLiveData;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import mqq.app.QQPermissionCallback;
+import org.jetbrains.annotations.NotNull;
 
-public class ammc
-  implements Animation.AnimationListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel$requestAdCode$1", "Lmqq/app/QQPermissionCallback;", "deny", "", "i", "", "strings", "", "", "ints", "", "(I[Ljava/lang/String;[I)V", "grant", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ammc
+  implements QQPermissionCallback
 {
-  public ammc(CmGameDebugView paramCmGameDebugView) {}
+  ammc(String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void deny(int paramInt, @NotNull String[] paramArrayOfString, @NotNull int[] paramArrayOfInt)
   {
-    if (CmGameDebugView.a(this.a))
-    {
-      CmGameDebugView.a(this.a).postDelayed(new CmGameDebugView.2.1(this), 0L);
-      CmGameDebugView.a(this.a, false);
-    }
-    if (CmGameDebugView.b(this.a)) {
-      CmGameDebugView.b(this.a, 0);
+    Intrinsics.checkParameterIsNotNull(paramArrayOfString, "strings");
+    Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "ints");
+    QLog.i("WeatherWebArkViewModel", 1, "requestAdCode deny");
+    if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Amma.a().postValue(new ammk(3, null, null, null, 0, 0, 62, null));
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void grant(int paramInt, @NotNull String[] paramArrayOfString, @NotNull int[] paramArrayOfInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfString, "strings");
+    Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "ints");
+    QLog.i("WeatherWebArkViewModel", 1, "requestAdCode grant");
+    this.jdField_a_of_type_Amma.a(this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

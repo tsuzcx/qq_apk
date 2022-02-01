@@ -1,13 +1,20 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class ahou
-  implements ahor
+  extends ahoq
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public RelativeLayout a;
+  public BubbleImageView a;
+  public MessageProgressView a;
+  public RelativeLayout b;
+  public int e;
+  public int f;
+  
+  public ahou(ahot paramahot)
   {
-    paramagup.e(paramMessageRecord, paramagwc);
+    super(paramahot);
   }
 }
 

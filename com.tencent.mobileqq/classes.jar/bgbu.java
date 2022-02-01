@@ -1,22 +1,8 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troopreward.OrientationAdapterImageView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.homework.recite.ui.PinyinTextView;
 
 public class bgbu
-  extends Handler
 {
-  public bgbu(OrientationAdapterImageView paramOrientationAdapterImageView) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.a.invalidate();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("OrientationAdapterImageView", 2, "handleMessage:" + this.a.jdField_a_of_type_Int + "," + this.a.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
-  }
+  PinyinTextView a;
 }
 
 

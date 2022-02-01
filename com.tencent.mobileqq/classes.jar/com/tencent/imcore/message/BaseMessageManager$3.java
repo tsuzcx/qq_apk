@@ -1,17 +1,31 @@
 package com.tencent.imcore.message;
 
-import acvh;
-import awmg;
+import aotu;
+import bcrg;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 
-public class BaseMessageManager$3
+class BaseMessageManager$3
   implements Runnable
 {
-  public BaseMessageManager$3(acvh paramacvh, awmg paramawmg, MessageRecord paramMessageRecord) {}
+  BaseMessageManager$3(BaseMessageManager paramBaseMessageManager, MessageRecord paramMessageRecord, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Awmg.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    this.this$0.a.a().f(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    this.this$0.a();
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    if (!this.this$0.a.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq)) {
+      this.this$0.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 15000L - (l1 - l2));
+    }
+    for (;;)
+    {
+      this.this$0.a.a().f(null);
+      return;
+      this.this$0.a.a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, aotu.b, aotu.j);
+    }
   }
 }
 

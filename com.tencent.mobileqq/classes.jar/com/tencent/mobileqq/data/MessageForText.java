@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
 import ActionMsg.MsgBody;
-import abdn;
-import acwh;
-import adrt;
+import abhq;
+import adak;
+import aeau;
 import android.text.TextUtils;
-import bdnt;
-import bfmd;
-import bgjz;
-import bgwv;
-import bihn;
+import begp;
+import bgme;
+import bhka;
+import bhwz;
+import bjim;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
@@ -25,12 +25,12 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AccountNotMatchException;
 import mqq.app.AppRuntime;
-import nmn;
-import nmp;
+import noi;
+import nok;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tzo;
+import tzq;
 
 public class MessageForText
   extends RecommendCommonMessage
@@ -186,7 +186,7 @@ public class MessageForText
       }
       localObject = new CopyOnWriteArrayList();
       ((List)localObject).add(this);
-      bihn.a(this, (List)localObject, bool1, HexUtil.hexStr2Bytes(str2));
+      bjim.a(this, (List)localObject, bool1, HexUtil.hexStr2Bytes(str2));
       return;
     }
   }
@@ -198,7 +198,7 @@ public class MessageForText
     Object localObject1 = localObject2;
     if (this.msgtype == -1003)
     {
-      localObject1 = bgjz.a((String)localObject2);
+      localObject1 = bhka.a((String)localObject2);
       this.action = ((MsgBody)localObject1).action;
       localObject1 = ((MsgBody)localObject1).msg;
     }
@@ -208,15 +208,15 @@ public class MessageForText
     }
     if (this.istroop == 1008)
     {
-      this.sb = new abdn((CharSequence)localObject2, 13);
-      ((abdn)this.sb).a = this.selfuin;
-      ((abdn)this.sb).b = this.frienduin;
-      ((abdn)this.sb).a(tzo.b(this.frienduin));
+      this.sb = new abhq((CharSequence)localObject2, 13);
+      ((abhq)this.sb).a = this.selfuin;
+      ((abhq)this.sb).b = this.frienduin;
+      ((abhq)this.sb).a(tzq.b(this.frienduin));
     }
     for (;;)
     {
-      if ((this.sb instanceof bdnt)) {
-        ((bdnt)this.sb).a("biz_src_jc_aio");
+      if ((this.sb instanceof begp)) {
+        ((begp)this.sb).a("biz_src_jc_aio");
       }
       return;
       if ((this.istroop == 1024) && (!isSendFromLocal()))
@@ -232,7 +232,7 @@ public class MessageForText
               continue;
             }
             localObject1 = localAppRuntime;
-            boolean bool = nmp.a((QQAppInterface)localAppRuntime, this.frienduin, this.istroop);
+            boolean bool = nok.a((QQAppInterface)localAppRuntime, this.frienduin, this.istroop);
             paramBoolean = bool;
           }
           catch (AccountNotMatchException localAccountNotMatchException)
@@ -245,14 +245,14 @@ public class MessageForText
             QLog.e("MessageForText", 2, String.format("User %s don't match current accound", new Object[] { this.selfuin }));
             localObject3 = localObject1;
             continue;
-            this.sb = new bdnt((CharSequence)localObject2, 13, ChatTextSizeSettingActivity.a(), this);
+            this.sb = new begp((CharSequence)localObject2, 13, ChatTextSizeSettingActivity.a(), this);
             continue;
           }
           if (!paramBoolean) {
             continue;
           }
-          this.sb = new nmn((CharSequence)localObject2, 13, ChatTextSizeSettingActivity.a(), this, this.frienduin, this.selfuin, (QQAppInterface)localAppRuntime);
-          ((bdnt)this.sb).a("biz_src_jc_aio");
+          this.sb = new noi((CharSequence)localObject2, 13, ChatTextSizeSettingActivity.a(), this, this.frienduin, this.selfuin, (QQAppInterface)localAppRuntime);
+          ((begp)this.sb).a("biz_src_jc_aio");
           break;
           localObject1 = localAppRuntime;
           if (QLog.isColorLevel())
@@ -266,14 +266,14 @@ public class MessageForText
       Object localObject3;
       if ((this.istroop == 1037) || (this.istroop == 1045) || (this.istroop == 1044))
       {
-        this.sb = new bdnt((CharSequence)localObject2, 5, ChatTextSizeSettingActivity.a(), this);
+        this.sb = new begp((CharSequence)localObject2, 5, ChatTextSizeSettingActivity.a(), this);
         if (QLog.isColorLevel()) {
           QLog.d("MessageForText", 2, "limit chat, dont parse url:" + this.uniseq);
         }
       }
       else
       {
-        this.sb = bgwv.a((String)localObject2, this, ChatTextSizeSettingActivity.a(), 13);
+        this.sb = bhwz.a((String)localObject2, this, ChatTextSizeSettingActivity.a(), 13);
         localObject1 = getExtInfoFromExtStr("disc_at_info_list");
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
@@ -284,12 +284,12 @@ public class MessageForText
             if (!QQAppInterface.class.isInstance(localObject3)) {
               break label580;
             }
-            this.msg2 = bfmd.a((QQAppInterface)localObject3, (StringBuilder)localObject2, (String)localObject1, this.frienduin, isSend()).toString();
-            this.sb2 = bgwv.a(this.msg2, this, ChatTextSizeSettingActivity.a(), 13);
-            if (!(this.sb2 instanceof bdnt)) {
+            this.msg2 = bgme.a((QQAppInterface)localObject3, (StringBuilder)localObject2, (String)localObject1, this.frienduin, isSend()).toString();
+            this.sb2 = bhwz.a(this.msg2, this, ChatTextSizeSettingActivity.a(), 13);
+            if (!(this.sb2 instanceof begp)) {
               continue;
             }
-            ((bdnt)this.sb2).a("biz_src_jc_aio");
+            ((begp)this.sb2).a("biz_src_jc_aio");
           }
           catch (Exception localException)
           {
@@ -315,7 +315,7 @@ public class MessageForText
   
   public boolean isSupportFTS()
   {
-    return acwh.x(this.istroop);
+    return adak.x(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -340,17 +340,17 @@ public class MessageForText
     this.msgData = str1.getBytes();
   }
   
-  public void setSendMsgParams(adrt paramadrt)
+  public void setSendMsgParams(aeau paramaeau)
   {
-    this.mMsgSignalSum = paramadrt.jdField_a_of_type_Int;
-    this.mMsgSignalCount = paramadrt.b;
-    this.mIsMsgSignalOpen = paramadrt.jdField_c_of_type_Boolean;
-    this.mMsgSignalNetType = paramadrt.jdField_c_of_type_Int;
-    this.mMsgSendTime = paramadrt.jdField_a_of_type_Long;
-    this.mPasswdRedBagFlag = paramadrt.f;
-    this.mPasswdRedBagSender = paramadrt.d;
+    this.mMsgSignalSum = paramaeau.jdField_a_of_type_Int;
+    this.mMsgSignalCount = paramaeau.b;
+    this.mIsMsgSignalOpen = paramaeau.jdField_c_of_type_Boolean;
+    this.mMsgSignalNetType = paramaeau.jdField_c_of_type_Int;
+    this.mMsgSendTime = paramaeau.jdField_a_of_type_Long;
+    this.mPasswdRedBagFlag = paramaeau.f;
+    this.mPasswdRedBagSender = paramaeau.d;
     if ((this instanceof MessageForFoldMsg)) {
-      ((MessageForFoldMsg)this).foldFlagTemp = paramadrt.e;
+      ((MessageForFoldMsg)this).foldFlagTemp = paramaeau.e;
     }
   }
 }

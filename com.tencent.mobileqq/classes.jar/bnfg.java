@@ -1,23 +1,32 @@
-import android.support.v4.view.OnApplyWindowInsetsListener;
-import android.support.v4.view.WindowInsetsCompat;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class bnfg
-  implements OnApplyWindowInsetsListener
+  extends Handler
 {
-  bnfg(bnff parambnff) {}
-  
-  public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
+  bnfg(bnff parambnff, Looper paramLooper)
   {
-    if ((paramView instanceof ViewGroup))
-    {
-      paramView = (ViewGroup)paramView.findViewById(2131376788);
-      if (paramView != null) {
-        paramView.setPadding(0, paramWindowInsetsCompat.getSystemWindowInsetTop(), 0, 0);
-      }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePluginPreInstaller", 2, "handleMessage, retryInstallNum=" + bnff.a());
     }
-    return paramWindowInsetsCompat;
+    if (paramMessage.what == 1) {}
+    try
+    {
+      paramMessage = (String)paramMessage.obj;
+      bnff.a(this.a).a(paramMessage, this.a, 2);
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      QLog.e("QZonePluginPreInstaller", 1, paramMessage, new Object[0]);
+    }
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.widgets;
 
+import aabe;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,17 +17,16 @@ import feedcloud.FeedCloudCommon.Entry;
 import feedcloud.FeedCloudRead.StGetRankingListRsp;
 import java.util.List;
 import qqcircle.QQCircleFeedBase.StGetRankingListBusiRspData;
-import vxh;
-import zxj;
+import wao;
 
 public class QCircleFuelTopView
   extends QCircleBaseWidgetView<FeedCloudRead.StGetRankingListRsp>
 {
+  private aabe jdField_a_of_type_Aabe;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private QCircleFuelRankItemView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView;
   private List<FeedCloudCommon.Entry> jdField_a_of_type_JavaUtilList;
-  private zxj jdField_a_of_type_Zxj;
   private QCircleFuelRankItemView b;
   private QCircleFuelRankItemView c;
   
@@ -47,7 +47,7 @@ public class QCircleFuelTopView
   
   public int a()
   {
-    return 2131560719;
+    return 2131560737;
   }
   
   protected String a()
@@ -57,12 +57,12 @@ public class QCircleFuelTopView
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView = ((QCircleFuelRankItemView)paramView.findViewById(2131373949));
-    this.b = ((QCircleFuelRankItemView)paramView.findViewById(2131373951));
-    this.c = ((QCircleFuelRankItemView)paramView.findViewById(2131373950));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131370127));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379682));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new vxh(this));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView = ((QCircleFuelRankItemView)paramView.findViewById(2131374088));
+    this.b = ((QCircleFuelRankItemView)paramView.findViewById(2131374090));
+    this.c = ((QCircleFuelRankItemView)paramView.findViewById(2131374089));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131370226));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379860));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new wao(this));
   }
   
   public void a(FeedCloudRead.StGetRankingListRsp paramStGetRankingListRsp)
@@ -71,15 +71,15 @@ public class QCircleFuelTopView
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView.setRank(1);
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView.setData(localObject);
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView.setReportBean(a());
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView.setParentPart(this.jdField_a_of_type_Zxj);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView.setParentPart(this.jdField_a_of_type_Aabe);
     this.b.setRank(2);
     this.b.setData(localObject);
     this.b.setReportBean(a());
-    this.b.setParentPart(this.jdField_a_of_type_Zxj);
+    this.b.setParentPart(this.jdField_a_of_type_Aabe);
     this.c.setRank(3);
     this.c.setData(localObject);
     this.c.setReportBean(a());
-    this.c.setParentPart(this.jdField_a_of_type_Zxj);
+    this.c.setParentPart(this.jdField_a_of_type_Aabe);
     localObject = new QQCircleFeedBase.StGetRankingListBusiRspData();
     try
     {
@@ -94,9 +94,9 @@ public class QCircleFuelTopView
     }
   }
   
-  public void setParentPart(zxj paramzxj)
+  public void setParentPart(aabe paramaabe)
   {
-    this.jdField_a_of_type_Zxj = paramzxj;
+    this.jdField_a_of_type_Aabe = paramaabe;
   }
 }
 

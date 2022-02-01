@@ -1,14 +1,23 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.qwallet.fragment.ExclusiveHbFragment;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
 
 public class akpk
-  extends akqb
+  implements akot
 {
-  public akpk(ExclusiveHbFragment paramExclusiveHbFragment) {}
+  public akpk(PhoneLaunchActivity paramPhoneLaunchActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    ExclusiveHbFragment.a(this.a);
+    PhoneLaunchActivity.a(this.a).setEnabled(true);
+    if ((!paramBoolean) && (paramContext != null))
+    {
+      Intent localIntent = new Intent(paramContext, GuideBindPhoneActivity.class);
+      localIntent.putExtra("fromKeyForContactBind", 2);
+      paramContext.startActivity(localIntent);
+    }
   }
 }
 

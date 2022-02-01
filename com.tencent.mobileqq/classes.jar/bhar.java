@@ -1,54 +1,33 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class bhar
-  extends ReportDialog
+class bhar
+  extends biht
 {
-  private static int jdField_a_of_type_Int = 150;
-  private static int b = 56;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bhas(this);
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  bhat jdField_a_of_type_Bhat;
+  bhar(bhaq parambhaq, File paramFile, bhas parambhas) {}
   
-  public bhar(Context paramContext)
+  public void onDone(bihu parambihu)
   {
-    super(paramContext, 2131755173);
-  }
-  
-  public void a(bhat parambhat)
-  {
-    this.jdField_a_of_type_Bhat = parambhat;
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    setContentView(2131562084);
-    findViewById(2131374906).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    findViewById(2131374907).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    findViewById(2131374908).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374909));
-    paramBundle = new ColorDrawable(15856629);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    Resources localResources = BaseApplicationImpl.sApplication.getResources();
-    float f = localResources.getDisplayMetrics().density;
-    localURLDrawableOptions.mRequestWidth = ((int)(localResources.getDisplayMetrics().widthPixels - b * f));
-    localURLDrawableOptions.mRequestHeight = ((int)(jdField_a_of_type_Int * f));
-    localURLDrawableOptions.mFailedDrawable = paramBundle;
-    localURLDrawableOptions.mLoadingDrawable = paramBundle;
-    paramBundle = URLDrawable.getDrawable("https://gxh.vip.qq.com/xydata/like/app/zanDoubleConfig/single.png", localURLDrawableOptions);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupCatalogTool", 2, "getChoiceListFromServer download suc ");
+    }
+    if ((parambihu.a == 0) && (this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_Bhaq.a(BaseApplicationImpl.getContext())) && (this.jdField_a_of_type_Bhaq.b(BaseApplicationImpl.getContext())))
+    {
+      this.jdField_a_of_type_Bhaq.a(BaseApplicationImpl.getContext(), System.currentTimeMillis());
+      if (this.jdField_a_of_type_Bhas != null) {
+        this.jdField_a_of_type_Bhas.a(true);
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if ((i == 0) && (this.jdField_a_of_type_Bhas != null))
+      {
+        QLog.e("GroupCatalogTool", 1, "getChoiceListFromServer failed!");
+        this.jdField_a_of_type_Bhas.a(false);
+      }
+      return;
+    }
   }
 }
 

@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
-public final class adsh
-  implements View.OnClickListener
+public class adsh
+  implements bjbu
 {
-  public adsh(Toast paramToast) {}
+  public adsh(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.cancel();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.onBackPressed();
+    AddFriendLogicActivity.a(this.a).a(null);
   }
 }
 

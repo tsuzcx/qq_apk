@@ -1,28 +1,14 @@
-import android.content.Context;
-import com.tencent.ad.tangram.ipc.AdIPCManager;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
 
-public final class acpm
+public abstract interface acpm
+  extends acou
 {
-  private static volatile acpm a;
+  public static final AdAntiSpamForClick a = new AdAntiSpamForClick();
   
-  public static acpm a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new acpm();
-      }
-      return a;
-    }
-    finally {}
-  }
+  public abstract View b();
   
-  public void a(Context paramContext)
-  {
-    AdIPCManager.INSTANCE.init(paramContext, new WeakReference(acsb.a().a()));
-  }
+  public abstract void setSize(int paramInt1, int paramInt2);
 }
 
 

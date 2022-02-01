@@ -1,29 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.JoinGroupTransitActivity;
+import java.lang.ref.WeakReference;
 
-class njh
-  extends BroadcastReceiver
+public class njh
+  extends Handler
 {
-  njh(njg paramnjg) {}
+  private WeakReference<JoinGroupTransitActivity> a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public njh(JoinGroupTransitActivity paramJoinGroupTransitActivity)
   {
-    int i = paramIntent.getIntExtra("request_type", 0);
-    QLog.i(this.a.c, 2, "receive request" + paramIntent.getExtras());
-    switch (i)
+    this.a = new WeakReference(paramJoinGroupTransitActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    JoinGroupTransitActivity localJoinGroupTransitActivity = (JoinGroupTransitActivity)this.a.get();
+    if ((paramMessage == null) || (localJoinGroupTransitActivity == null) || (localJoinGroupTransitActivity.isFinishing())) {
+      return;
+    }
+    switch (paramMessage.what)
     {
     default: 
       return;
+    case 0: 
+      JoinGroupTransitActivity.a(localJoinGroupTransitActivity).a(JoinGroupTransitActivity.a(localJoinGroupTransitActivity));
+      return;
     }
-    paramContext = new Intent();
-    paramContext.setAction("com.tencent.mobileqq.NearbyJsInterface");
-    paramContext.putExtra("command_type", 1);
-    paramContext.putExtra("data", njg.a(this.a));
-    this.a.a.getApp().sendBroadcast(paramContext);
+    localJoinGroupTransitActivity.finish();
   }
 }
 

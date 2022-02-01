@@ -1,16 +1,15 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
 
-class awqw
-  implements bihh
+public class awqw
+  implements DialogInterface.OnClickListener
 {
-  awqw(awqv paramawqv) {}
+  public awqw(LocationDialogUtil.4 param4) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("AIOShareActionSheet", 1, "WXShareResult trans:" + paramBaseResp.transaction + " ,errCode:" + paramBaseResp.errCode + " ,errStr:" + paramBaseResp.errStr);
-    WXShareHelper.a().b(this);
+    bdll.b(null, "CliOper", "", "", "0X800A968", "0X800A968", 0, 0, "0", "0", "0", "");
   }
 }
 

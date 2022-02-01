@@ -1,14 +1,11 @@
 public class bbcs
 {
-  public String a;
-  public String b;
+  public long a;
+  public boolean a;
   
-  public bbcs() {}
-  
-  public bbcs(String paramString1, String paramString2)
+  public String toString()
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    return "OneWayFriendResult{friendUin=" + this.jdField_a_of_type_Long + ", oneWayFriend=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

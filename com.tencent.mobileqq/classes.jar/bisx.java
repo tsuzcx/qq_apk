@@ -1,53 +1,23 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import android.widget.EditText;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
 
 public class bisx
-  implements InputFilter
+  implements bisz
 {
-  protected int a;
-  protected EditText a;
+  public bisx(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState, long paramLong) {}
   
-  public bisx(EditText paramEditText, int paramInt)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    paramSpanned = new StringBuilder(this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString());
-    paramInt4 = this.jdField_a_of_type_Int - bite.a(paramSpanned.toString());
-    paramInt3 = bite.a(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
-    if (paramInt4 <= 0) {
-      return "";
+    if (TextUtils.isEmpty(paramString)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Int = 10004;
     }
-    if (paramInt4 >= paramInt3) {
-      return null;
-    }
-    paramInt3 = paramInt1;
-    if (paramInt3 < paramInt2)
-    {
-      int j;
-      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3))) {
-        j = bite.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
-      }
-      for (int i = 2;; i = 1)
-      {
-        paramInt4 -= j;
-        if (paramInt4 < 0) {
-          break label161;
-        }
-        paramInt3 = i + paramInt3;
-        break;
-        j = bite.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
-      }
-    }
-    label161:
-    if (paramInt3 == paramInt1) {
-      return "";
-    }
-    return paramCharSequence.subSequence(paramInt1, paramInt3);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e = false;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = false;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Bisl.d = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
   }
 }
 

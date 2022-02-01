@@ -1,18 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class qyb
-  implements View.OnClickListener
 {
-  public qyb(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
+  private qyc jdField_a_of_type_Qyc = new qyc(0L);
+  private qyd jdField_a_of_type_Qyd = new qyd("");
+  private qye jdField_a_of_type_Qye = new qye("");
   
-  public void onClick(View paramView)
+  public void a(qyc paramqyc)
   {
-    qam.a(2, this.jdField_a_of_type_JavaLangString);
-    pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Qyc = paramqyc;
+  }
+  
+  public void a(qyd paramqyd)
+  {
+    this.jdField_a_of_type_Qyd = paramqyd;
   }
 }
 

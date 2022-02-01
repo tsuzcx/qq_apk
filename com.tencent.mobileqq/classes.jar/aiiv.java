@@ -1,149 +1,58 @@
-import android.util.SparseIntArray;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 
-public class aiiv
+class aiiv
+  implements View.OnClickListener
 {
-  private static final SparseIntArray a = new SparseIntArray();
+  aiiv(aiit paramaiit) {}
   
-  static
+  public void onClick(View paramView)
   {
-    a.put(2, 10);
-    a.put(3, 20);
-    a.put(4, 30);
-  }
-  
-  public static <T extends aiis> List<T> a(QQAppInterface paramQQAppInterface, List<T> paramList)
-  {
-    paramQQAppInterface = new ArrayList();
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchStickerRecEmoticonUtil", 2, "getSearchStickerRecEmotions stickerRecSearches.size:" + paramList.size());
-      }
-      a(paramList, paramQQAppInterface);
-      a(paramList);
-      if (paramList.size() > 0) {
-        paramQQAppInterface.add(paramList.remove(0));
-      }
-      if (paramList.size() > 0) {
-        b(paramList, paramQQAppInterface);
-      }
-      if (paramList.size() > 0)
-      {
-        Collections.sort(paramList, new aiiw());
-        b(paramList, paramQQAppInterface);
-      }
-      if (QLog.isColorLevel()) {
-        paramList = paramQQAppInterface.iterator();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(antf.y)) {
+      if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
+        this.a.I();
       }
     }
-    else
+    for (;;)
     {
-      while (paramList.hasNext())
-      {
-        aiis localaiis = (aiis)paramList.next();
-        QLog.d("SearchStickerRecEmoticonUtil", 2, "getSearchStickerRecEmotions item.ClickNum:" + localaiis.b() + ",item.ExposeNum: " + localaiis.a());
-        continue;
-        return paramQQAppInterface;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject1 = new Intent();
+      ((Intent)localObject1).putExtra("nickname", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
+      ((Intent)localObject1).putExtra("bitmap", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (byte)2, false));
+      Object localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("smartdevice_entry", 4).getString("square_url_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "");
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        ((Intent)localObject1).putExtra("url", (String)localObject2);
       }
-      QLog.d("SearchStickerRecEmoticonUtil", 2, "getSearchStickerRecEmotions stickerRecEmotionList.size:" + paramQQAppInterface.size());
-    }
-    return paramQQAppInterface;
-  }
-  
-  public static <T extends aiis> void a(List<T> paramList)
-  {
-    Collections.sort(paramList, new aiix());
-  }
-  
-  public static <T extends aiis> void a(List<T> paramList1, List<T> paramList2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramList1.iterator();
-    while (localIterator.hasNext())
-    {
-      aiis localaiis = (aiis)localIterator.next();
-      if (localaiis.c() == 5)
+      for (;;)
       {
-        paramList2.add(localaiis);
-        localArrayList.add(localaiis);
+        bnrt.a().a(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (Intent)localObject1, "com.tencent.device.activities.DeviceSquareActivity", 0, null, SmartDevicePluginProxyActivity.class);
+        break;
+        ((Intent)localObject1).putExtra("url", "https://qzs.qq.com/open/mobile/iot_public_device_2/html/devDiscover.html");
       }
-    }
-    paramList1.removeAll(localArrayList);
-  }
-  
-  private static <T extends aiis> boolean a(List<T> paramList, T paramT)
-  {
-    if ((paramList == null) || (paramT == null)) {
-      return false;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Object localObject2 = (aiis)paramList.next();
-      if (((aiis)localObject2).c() != paramT.c())
+      localObject1 = (abur)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
+      localObject2 = ((abur)localObject1).a(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
+      if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue())
       {
-        Object localObject3;
-        Object localObject1;
-        String str;
-        if ((((aiis)localObject2).c() == 2) && (paramT.c() == 4))
-        {
-          localObject2 = (aijn)localObject2;
-          localObject3 = (aijl)paramT;
-          localObject1 = ((aijl)localObject3).a.emoPath;
-          localObject3 = ((aijl)localObject3).a.eId;
-          str = ((aijn)localObject2).a.epId;
-          localObject2 = ((aijn)localObject2).a.eId;
-          if ((localObject1 != null) && (((String)localObject1).equals(str)) && (localObject3 != null) && (((String)localObject3).equals(localObject2))) {
-            return true;
-          }
+        if (aiit.a(this.a)) {
+          ((abur)localObject1).a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, (DeviceInfo)localObject2, false);
         }
-        else if ((((aiis)localObject2).c() == 4) && (paramT.c() == 2))
-        {
-          localObject1 = (aijn)paramT;
-          localObject3 = (aijl)localObject2;
-          localObject2 = ((aijl)localObject3).a.emoPath;
-          localObject3 = ((aijl)localObject3).a.eId;
-          str = ((aijn)localObject1).a.epId;
-          localObject1 = ((aijn)localObject1).a.eId;
-          if ((localObject2 != null) && (((String)localObject2).equals(str)) && (localObject3 != null) && (((String)localObject3).equals(localObject1))) {
-            return true;
-          }
-        }
-        else
-        {
-          if ((((aiis)localObject2).c() == 4) && (paramT.c() == 3) && (((aijl)localObject2).c() != null) && (((aijl)localObject2).c().equals(((aije)paramT).c()))) {
-            return true;
-          }
-          if ((((aiis)localObject2).c() == 3) && (paramT.c() == 4) && (((aijl)paramT).c() != null) && (((aijl)paramT).c().equals(((aije)localObject2).c()))) {
-            return true;
-          }
-        }
+        this.a.I();
+      }
+      else
+      {
+        ((abur)localObject1).a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, (DeviceInfo)localObject2, false);
       }
     }
-    return false;
-  }
-  
-  private static <T extends aiis> void b(List<T> paramList1, List<T> paramList2)
-  {
-    if (paramList2 == null) {}
-    aiis localaiis;
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramList1 == null) || (paramList1.isEmpty()));
-      for (localaiis = (aiis)paramList1.remove(0); (a(paramList2, localaiis)) && (paramList1.size() > 0); localaiis = (aiis)paramList1.remove(0)) {}
-    } while (a(paramList2, localaiis));
-    paramList2.add(localaiis);
   }
 }
 

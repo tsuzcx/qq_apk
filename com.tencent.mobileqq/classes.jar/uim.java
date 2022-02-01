@@ -1,24 +1,43 @@
-import android.app.Activity;
+import UserGrowth.stFeed;
+import UserGrowth.stSplitBlock;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class uim
-  extends uig
+  extends blsy<stFeed>
 {
-  public uim(uii paramuii)
+  private TextView a;
+  
+  private uim(ViewGroup paramViewGroup, ucr paramucr)
   {
-    super(paramuii);
+    super(paramViewGroup, 2131560397);
+    b();
   }
   
-  public boolean a(uii paramuii)
+  public static uim a(ViewGroup paramViewGroup, ucr paramucr)
   {
-    if ((paramuii.a() instanceof Activity))
+    return new uim(paramViewGroup, paramucr);
+  }
+  
+  private void b()
+  {
+    this.a = ((TextView)a(2131381501));
+  }
+  
+  public void a()
+  {
+    uns.a(2);
+  }
+  
+  public void a(stFeed paramstFeed)
+  {
+    if (paramstFeed == null) {}
+    do
     {
-      ugx.a((Activity)paramuii.a(), paramuii.a(), true);
-      if (paramuii.a() != null) {
-        paramuii.a().d();
-      }
-      return true;
-    }
-    return false;
+      return;
+      paramstFeed = paramstFeed.recommend_splitter;
+    } while (paramstFeed == null);
+    this.a.setText(paramstFeed.tips);
   }
 }
 

@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
 
 public class alwv
-  implements bigw
+  implements DialogInterface.OnClickListener
 {
-  public alwv(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Runnable paramRunnable) {}
+  public alwv(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
   }
 }
 

@@ -1,46 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import java.util.Iterator;
+import java.util.Set;
 
-class zms
-  extends BroadcastReceiver
+public class zms
 {
-  zms(zmn paramzmn) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static void a(@NonNull String paramString, Bundle paramBundle)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.SCREEN_OFF")) {
-      if ((this.a.jdField_a_of_type_Zmu != null) && (!this.a.jdField_a_of_type_Zmu.a()))
-      {
-        this.a.b = true;
-        yqp.d("Q.qqstory.ffmpeg.FFmpegCmd", "屏幕灭屏了，FFmpeg还在执行当中");
-      }
-    }
-    do
+    if (paramBundle == null)
     {
-      do
-      {
-        return;
-      } while ((!paramContext.equals("android.intent.action.SCREEN_ON")) || (!this.a.b));
-      this.a.b = false;
-    } while ((this.a.jdField_a_of_type_Zmt == null) || (this.a.jdField_a_of_type_Int == -9999) || (this.a.jdField_a_of_type_Zmt.a == null));
-    if (this.a.jdField_a_of_type_Int == 1)
-    {
-      paramContext = anni.a(2131703273);
-      this.a.jdField_a_of_type_Zmt.a.onSuccess(paramContext);
-      this.a.jdField_a_of_type_Zmt.a.onFinish(true);
-      yqp.d("Q.qqstory.ffmpeg.FFmpegCmd", paramContext);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Int = -9999;
+      yuk.b(paramString, ", logBundleDetails : null");
       return;
-      paramContext = anni.a(2131703272);
-      this.a.jdField_a_of_type_Zmt.a.onFailure(paramContext);
-      this.a.jdField_a_of_type_Zmt.a.onFinish(false);
-      yqp.d("Q.qqstory.ffmpeg.FFmpegCmd", paramContext);
     }
+    yuk.b(paramString, "-- ----------- logBundleDetails ------------- [[[");
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      yuk.a(paramString, "-- - %s : %s", str, paramBundle.get(str));
+    }
+    yuk.b(paramString, "-- ----------- logBundleDetails ------------- ]]]");
   }
 }
 

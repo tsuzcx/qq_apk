@@ -7,8 +7,8 @@ import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 
 public class MiniFragmentLauncher
 {
-  private static final Class FRAGMENT_ACTIVITY = findClass("MiniFragmentActivity");
-  private static final Class FRAGMENT_ACTIVITY_TRANSLUCENT = findClass("MiniTranslucentFragmentActivity");
+  private static final Class FRAGMENT_ACTIVITY = MiniFragmentActivity.class;
+  private static final Class FRAGMENT_ACTIVITY_TRANSLUCENT = MiniTranslucentFragmentActivity.class;
   private static final String PACKAGE_NAME = "com.tencent.qqmini.sdk.ui.";
   
   private static Class findClass(String paramString)

@@ -1,10 +1,4 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-
-public abstract interface akah
-{
-  public abstract void a(RecentBaseData paramRecentBaseData);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akah

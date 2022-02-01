@@ -1,18 +1,18 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.5;
+import com.tencent.mobileqq.activity.Leba.5.1;
 
 public class aewd
+  implements bimf
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
+  public aewd(Leba.5.1 param1) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      Leba.b(this.a.a.this$0).a();
+    }
+  }
 }
 
 

@@ -1,18 +1,16 @@
-import feedcloud.FeedCloudMeta.StFeed;
-import qqcircle.QQCircleFeedBase.StPolyLike;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalPushFragment;
+import feedcloud.FeedCloudMeta.StUser;
 
-class vqb
-  implements aavl
+public class vqb
+  implements Observer<FeedCloudMeta.StUser>
 {
-  vqb(vqa paramvqa, FeedCloudMeta.StFeed paramStFeed, int paramInt, QQCircleFeedBase.StPolyLike paramStPolyLike1, QQCircleFeedBase.StPolyLike paramStPolyLike2) {}
+  public vqb(QCirclePersonalPushFragment paramQCirclePersonalPushFragment) {}
   
-  public void a()
+  public void a(@Nullable FeedCloudMeta.StUser paramStUser)
   {
-    if ((!vqa.a(this.jdField_a_of_type_Vqa)) && (!vqa.b(this.jdField_a_of_type_Vqa)) && (nmd.a(vqa.a(this.jdField_a_of_type_Vqa))))
-    {
-      this.jdField_a_of_type_Vqa.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Int, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike, this.b);
-      vqa.a(this.jdField_a_of_type_Vqa, true);
-    }
+    this.a.a(paramStUser);
   }
 }
 

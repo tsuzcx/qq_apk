@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.data.FlowMusic;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bonw
-  implements boku
+  implements View.OnClickListener
 {
-  bonw(bonv parambonv, String paramString) {}
+  bonw(bonv parambonv, bony parambony) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramObject == null) {}
-    do
-    {
-      return;
-      paramObject = (FlowMusic)paramObject;
-      bonv.a(this.jdField_a_of_type_Bonv, bonv.a(this.jdField_a_of_type_Bonv, paramObject, this.jdField_a_of_type_JavaLangString));
-    } while (!bonv.a(this.jdField_a_of_type_Bonv).equals(bonv.a(this.jdField_a_of_type_Bonv).getClass()));
-    this.jdField_a_of_type_Bonv.d();
+    int i = this.jdField_a_of_type_Bony.getLayoutPosition();
+    bonv.a(this.jdField_a_of_type_Bonv).a(this.jdField_a_of_type_Bony.itemView, i);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

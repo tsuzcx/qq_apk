@@ -2,8 +2,8 @@ package com.tencent.mobileqq.imcore.proxy;
 
 public final class IMCoreResourceRoute$Resource$drawable
 {
-  public static int recent_icon_failed;
-  public static int recent_icon_sending;
+  public static int recent_icon_failed = 0;
+  public static int recent_icon_sending = 0;
 }
 
 

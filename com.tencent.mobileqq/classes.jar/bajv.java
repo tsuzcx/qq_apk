@@ -1,64 +1,12 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class bajv
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$PrivacySelectActionSheetClickListener;", "", "onPrivacySelectActionSheetClick", "", "view", "Landroid/view/View;", "item", "Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$ActionSheetPrivacySelectBean;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface bajv
 {
-  private int jdField_a_of_type_Int;
-  private bajx jdField_a_of_type_Bajx;
-  private bajy jdField_a_of_type_Bajy = new bajw(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public bajv(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OneWayFriendHelper", 0, String.format("OneWayFriendHelper app=%s curType=%s friendUin=%s", new Object[] { paramQQAppInterface, Integer.valueOf(paramInt), paramString }));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Bajy);
-  }
-  
-  private void a(String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OneWayFriendHelper", 0, String.format("notifyOneWayFriend friendUin=%s oneWayFriend=%s", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
-    }
-    if (this.jdField_a_of_type_Bajx != null) {
-      this.jdField_a_of_type_Bajx.a(paramString, paramBoolean);
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
-  {
-    paramQQAppInterface = (anmw)paramQQAppInterface.getManager(51);
-    return (paramInt == 0) && (!paramQQAppInterface.b(paramString));
-  }
-  
-  public void a()
-  {
-    if (a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString))
-    {
-      baju localbaju = (baju)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(179);
-      if (localbaju != null) {
-        localbaju.a(Long.parseLong(this.jdField_a_of_type_JavaLangString));
-      }
-      return;
-    }
-    a(this.jdField_a_of_type_JavaLangString, false);
-  }
-  
-  public void a(bajx parambajx)
-  {
-    this.jdField_a_of_type_Bajx = parambajx;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bajx = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Bajy);
-  }
+  public abstract void a(@NotNull View paramView, @Nullable bajt parambajt);
 }
 
 

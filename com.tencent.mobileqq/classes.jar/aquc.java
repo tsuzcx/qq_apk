@@ -1,78 +1,49 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aquc
-  extends aqkz<aqua>
+  implements View.OnClickListener
 {
-  @NonNull
-  public aqua a(int paramInt)
-  {
-    return new aqua();
-  }
+  public aquc(HistoryFormItem paramHistoryFormItem) {}
   
-  @Nullable
-  public aqua a(aqlg[] paramArrayOfaqlg)
+  public void onClick(View paramView)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
+    boolean bool = true;
+    int i;
+    HistoryFormItem localHistoryFormItem;
+    if (aqri.a())
     {
-      aqua localaqua = aqua.a(paramArrayOfaqlg[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherEntryConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
+      i = 1;
+      if ((i != 0) && (this.a.a()))
+      {
+        localHistoryFormItem = this.a;
+        if (HistoryFormItem.a(this.a)) {
+          break label119;
+        }
       }
-      return localaqua;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherEntryConfProcessor", 2, "onParsed is null");
+    for (;;)
+    {
+      HistoryFormItem.a(localHistoryFormItem, bool);
+      this.a.a(paramView, HistoryFormItem.a(this.a));
+      if (HistoryFormItem.a(this.a) != null) {
+        HistoryFormItem.a(this.a).a(paramView, HistoryFormItem.a(this.a), HistoryFormItem.a(this.a));
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      aqsd.a(paramView.getContext());
+      i = 0;
+      break;
+      label119:
+      bool = false;
     }
-    return null;
-  }
-  
-  public void a(aqua paramaqua)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherEntryConfProcessor", 2, "onUpdate " + paramaqua.toString());
-    }
-  }
-  
-  public Class<aqua> clazz()
-  {
-    return aqua.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherEntryConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherEntryConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 553;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aquc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app.soso;
 
-import acrx;
-import acry;
-import acrz;
-import acsb;
-import acsc;
+import acwb;
+import acwc;
+import acwd;
+import acwf;
+import acwg;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -19,12 +19,12 @@ final class SosoInterface$8
 {
   public void run()
   {
-    acsb.a().a(BaseApplication.getContext(), new acsc());
-    Object localObject = new acry();
-    ((acry)localObject).a = "8b5c3a";
-    localObject = acrx.a(BaseApplication.getContext(), (acry)localObject);
+    acwf.a().a(BaseApplication.getContext(), new acwg());
+    Object localObject = new acwc();
+    ((acwc)localObject).a = "8b5c3a";
+    localObject = acwb.a(BaseApplication.getContext(), (acwc)localObject);
     if (localObject != null) {
-      localObject = ((acrz)localObject).a;
+      localObject = ((acwd)localObject).a;
     }
     for (;;)
     {

@@ -1,52 +1,35 @@
-import android.app.Activity;
-import com.tencent.gdtad.api.motivevideo.GdtDemoMvFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class acnn
-  implements acko
+class acnn
+  implements EIPCResultCallback
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
+  acnn(acnm paramacnm, AdIPCManager.Params paramParams, int paramInt) {}
   
-  public acnn(GdtDemoMvFragment paramGdtDemoMvFragment, Activity paramActivity)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
-      return paramGdtAd.getAd().getAId();
+    String str2 = null;
+    String str1;
+    if (this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params != null)
+    {
+      str1 = this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params.getAction();
+      if (this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params != null) {
+        str2 = this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params.getToProcessName();
+      }
+      if (paramEIPCResult == null) {
+        break label91;
+      }
     }
-    return -2147483648L;
-  }
-  
-  public void onAdClicked(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    QLog.i("GdtDemoMvFragment", 1, String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-  }
-  
-  public void onAdClosed(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    QLog.i("GdtDemoMvFragment", 1, String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-  }
-  
-  public void onAdFailedToLoad(com.tencent.gdtad.api.GdtAd paramGdtAd, ackn paramackn)
-  {
-    QLog.e("GdtDemoMvFragment", 1, "onAdFailedToLoad " + paramackn.a());
-  }
-  
-  public void onAdImpression(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    QLog.i("GdtDemoMvFragment", 1, String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-  }
-  
-  public void onAdLoaded(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    GdtDemoMvFragment.a(this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtDemoMvFragment, paramGdtAd);
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, "demo数据构造成功", 0).a();
-    QLog.i("GdtDemoMvFragment", 1, String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    ackk.a().a(paramGdtAd.getAd());
+    label91:
+    for (boolean bool = paramEIPCResult.isSuccess();; bool = false)
+    {
+      acvc.b("GdtIPCAdapter", String.format("ClientToServerIPCAsyncModule.onCallback action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(bool) }));
+      this.jdField_a_of_type_Acnm.callbackResult(this.jdField_a_of_type_Int, paramEIPCResult);
+      return;
+      str1 = null;
+      break;
+    }
   }
 }
 

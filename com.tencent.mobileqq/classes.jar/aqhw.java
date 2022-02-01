@@ -1,31 +1,56 @@
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.OneUinHeadInfo;
 
 public class aqhw
-  implements anjl
 {
-  public aqhw(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  public int a;
+  public long a;
+  public ArrayList<aqhx> a;
+  public long b;
   
-  public void a(int paramInt, boolean paramBoolean)
+  public static aqhw a(oidb_0x74b.OneUinHeadInfo paramOneUinHeadInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearchFriendActivity", 2, "onGetConfig | mDialogType = " + this.a.j + ", isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
+    Object localObject;
+    if (paramOneUinHeadInfo == null) {
+      localObject = null;
     }
-    if ((this.a.j == 1) || (this.a.j == 2))
+    aqhw localaqhw;
+    do
     {
-      if (paramBoolean) {
-        break label110;
+      return localObject;
+      localaqhw = new aqhw();
+      if (paramOneUinHeadInfo.uint64_uin.has()) {
+        localaqhw.jdField_a_of_type_Long = paramOneUinHeadInfo.uint64_uin.get();
       }
-      this.a.a();
-      QQToast.a(this.a, 2131690905, 0).b(this.a.getTitleBarHeight());
+      if (paramOneUinHeadInfo.uint64_tinyid.has()) {
+        localaqhw.b = paramOneUinHeadInfo.uint64_tinyid.get();
+      }
+      localaqhw.jdField_a_of_type_Int = ((int)(System.currentTimeMillis() / 1000L));
+      localObject = localaqhw;
+    } while (!paramOneUinHeadInfo.rpt_msg_head_list.has());
+    localaqhw.jdField_a_of_type_JavaUtilArrayList = aqhx.a(paramOneUinHeadInfo.rpt_msg_head_list.get());
+    return localaqhw;
+  }
+  
+  public static ArrayList<aqhw> a(List<oidb_0x74b.OneUinHeadInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return null;
     }
-    label110:
-    while (paramInt != 2) {
-      return;
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      aqhw localaqhw = a((oidb_0x74b.OneUinHeadInfo)paramList.next());
+      if (localaqhw != null) {
+        localArrayList.add(localaqhw);
+      }
     }
-    this.a.a();
-    this.a.a(this.a.j);
+    return localArrayList;
   }
 }
 

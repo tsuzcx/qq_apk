@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.data.NewFriendMoreInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajay
-  extends ajax
+  implements DialogInterface.OnClickListener
 {
-  public NewFriendMoreInfo a;
+  public ajay(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public ajay(NewFriendMoreInfo paramNewFriendMoreInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramNewFriendMoreInfo;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    if (!bhnv.g(this.a.getApplicationContext())) {
+      QQToast.a(this.a, 2131694197, 1).a();
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      this.a.f();
+    }
   }
 }
 

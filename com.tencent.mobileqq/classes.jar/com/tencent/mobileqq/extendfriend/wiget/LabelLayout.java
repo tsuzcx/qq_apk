@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import ason;
-import bgtn;
+import ater;
+import bhtq;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,29 +40,29 @@ public class LabelLayout
     setOrientation(0);
   }
   
-  public int a(int paramInt1, List<ason> paramList, boolean paramBoolean, int paramInt2)
+  public int a(int paramInt1, List<ater> paramList, boolean paramBoolean, int paramInt2)
   {
     removeAllViews();
-    int j = bgtn.b(12.0F);
-    int k = bgtn.b(1.0F);
-    int m = bgtn.b(8.0F);
-    int n = bgtn.b(6.0F);
+    int j = bhtq.b(12.0F);
+    int k = bhtq.b(1.0F);
+    int m = bhtq.b(8.0F);
+    int n = bhtq.b(6.0F);
     Object localObject = new Paint();
-    ((Paint)localObject).setTextSize(bgtn.b(paramInt2));
+    ((Paint)localObject).setTextSize(bhtq.b(paramInt2));
     ArrayList localArrayList = new ArrayList(paramList.size());
     int i1 = paramList.size();
     int i = 0;
-    ason localason;
+    ater localater;
     if (i < i1)
     {
-      localason = (ason)paramList.get(i);
-      if (TextUtils.isEmpty(localason.jdField_a_of_type_JavaLangCharSequence)) {
+      localater = (ater)paramList.get(i);
+      if (TextUtils.isEmpty(localater.jdField_a_of_type_JavaLangCharSequence)) {
         break label366;
       }
-      int i2 = (int)(((Paint)localObject).measureText(localason.jdField_a_of_type_JavaLangCharSequence.toString()) + m * 2);
+      int i2 = (int)(((Paint)localObject).measureText(localater.jdField_a_of_type_JavaLangCharSequence.toString()) + m * 2);
       if (paramInt1 >= i2 + n)
       {
-        localArrayList.add(localason);
+        localArrayList.add(localater);
         paramInt1 = paramInt1 - i2 - n;
       }
     }
@@ -72,17 +72,17 @@ public class LabelLayout
       i += 1;
       break;
       if (i == 0) {
-        localArrayList.add(localason);
+        localArrayList.add(localater);
       }
       i = localArrayList.size();
       paramInt1 = 0;
       while (paramInt1 < i)
       {
-        localObject = (ason)localArrayList.get(paramInt1);
+        localObject = (ater)localArrayList.get(paramInt1);
         paramList = new LabelTextView(getContext());
-        paramList.setParam(((ason)localObject).jdField_a_of_type_Int, ((ason)localObject).b, j);
+        paramList.setParam(((ater)localObject).jdField_a_of_type_Int, ((ater)localObject).b, j);
         paramList.setTextSize(paramInt2);
-        paramList.setText(((ason)localObject).jdField_a_of_type_JavaLangCharSequence);
+        paramList.setText(((ater)localObject).jdField_a_of_type_JavaLangCharSequence);
         paramList.setPadding(m, k, m, k);
         localObject = new LinearLayout.LayoutParams(-2, -2);
         if (paramInt1 != 0) {

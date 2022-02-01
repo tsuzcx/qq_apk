@@ -1,14 +1,15 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
 
 public class bnbu
-  implements bqdh
+  implements ModuleDownloadListener
 {
-  public bnbu(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public void onDownloadCanceled(String paramString) {}
   
-  public void a()
-  {
-    QIMEffectCameraCaptureUnit.d(this.a);
-  }
+  public void onDownloadFailed(String paramString) {}
+  
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString) {}
 }
 
 

@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:paddingTop="5.0dip" android:layout_width="275.0dip" android:layout_height="422.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:textColorHint="#ffffffff" android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@id/k59" android:background="@drawable/diy" android:paddingLeft="14.5dip" android:paddingRight="14.5dip" android:layout_width="0.0dip" android:layout_height="40.0dip" android:minWidth="183.0dip" android:hint="@string/wqk" android:maxLines="1" android:layout_weight="1.0" />
-    <LinearLayout android:gravity="center|top" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.biz.qqcircle.polylike.QCirclePolyLikeFrameLayout android:id="@id/dwx" android:layout_width="46.0dip" android:layout_height="46.0dip" />
-        <com.tencent.biz.qqcircle.widgets.QCirclePraiseTextView android:textSize="12.0dip" android:textColor="@color/al3" android:id="@id/g0g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-3.0dip" android:text="@string/wt0" android:includeFontPadding="false" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip">
-        <ImageView android:id="@id/dus" android:background="@drawable/ggd" android:padding="11.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/get" android:scaleType="fitCenter" />
-        <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:id="@id/dur" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-3.0dip" android:text="@string/wq_" android:includeFontPadding="false" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/mwy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip">
-        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView android:layout_gravity="center" android:id="@id/dvj" android:padding="11.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" />
-            <ImageView android:layout_gravity="center" android:id="@id/mu1" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/gnx" />
+    <RelativeLayout android:id="@id/nhm" android:background="@drawable/dk8" android:layout_width="fill_parent" android:layout_height="386.0dip" android:layout_marginTop="35.0dip">
+        <TextView android:textSize="24.0dip" android:textColor="@color/yw" android:id="@id/nhj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="47.0dip" android:layout_marginRight="22.0dip" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/aaw" android:id="@id/nhl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/nhj" android:layout_centerHorizontal="true" />
+        <FrameLayout android:id="@id/nhh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_below="@id/nhl" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/nhf" android:layout_width="220.0dip" android:layout_height="220.0dip" />
+            <ImageView android:id="@id/nhg" android:background="#ffffffff" android:visibility="gone" android:layout_width="220.0dip" android:layout_height="220.0dip" android:alpha="0.96" />
+            <TextView android:textSize="17.0dip" android:textColor="#ff878b99" android:gravity="center_horizontal" android:layout_gravity="center" android:id="@id/nhi" android:visibility="gone" android:layout_width="150.0dip" android:layout_height="wrap_content" />
         </FrameLayout>
-        <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:id="@id/mt8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-3.0dip" android:text="@string/wtf" android:includeFontPadding="false" />
-    </LinearLayout>
-</LinearLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/aaw" android:gravity="center" android:id="@id/nhk" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="16.0dip" android:layout_below="@id/nhh" android:layout_centerHorizontal="true" />
+        <TextView android:gravity="center" android:id="@id/ngw" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="6.0dip" android:layout_marginTop="16.0dip" android:layout_toLeftOf="@id/nhk" android:layout_below="@id/nhh" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <ImageView android:layout_width="80.0dip" android:layout_height="35.0dip" android:src="@drawable/e46" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/nhe" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.message;
 
-import aofa;
-import aong;
-import bbyp;
+import aosf;
+import apaw;
+import bcrg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
@@ -16,7 +16,7 @@ import fb;
 public class DatalineMessageManager$1
   implements Runnable
 {
-  public DatalineMessageManager$1(aofa paramaofa, DataLineMsgRecord paramDataLineMsgRecord, fb paramfb) {}
+  public DatalineMessageManager$1(aosf paramaosf, DataLineMsgRecord paramDataLineMsgRecord, fb paramfb) {}
   
   public void run()
   {
@@ -24,17 +24,17 @@ public class DatalineMessageManager$1
     try
     {
       if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time == 0L) {
-        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time = bbyp.a();
+        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time = bcrg.a();
       }
       if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgseq == 0L) {
         this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgseq = ((int)this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time);
       }
-      aong localaong = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-      RecentUser localRecentUser = (RecentUser)localaong.findRecentUserByUin(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
+      apaw localapaw = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+      RecentUser localRecentUser = (RecentUser)localapaw.findRecentUserByUin(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
       localRecentUser.setType(this.this$0.jdField_a_of_type_Int);
       localRecentUser.lastmsgtime = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time;
-      localaong.saveRecentUser(localRecentUser);
-      aofa.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, localEntityManager);
+      localapaw.saveRecentUser(localRecentUser);
+      aosf.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, localEntityManager);
       long l = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId;
       this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
       this.jdField_a_of_type_Fb.a();

@@ -1,17 +1,32 @@
-import android.opengl.GLES20;
-
 public class lqx
-  extends lqy
 {
-  public lqx(String paramString)
+  private float jdField_a_of_type_Float = 1.0F;
+  private int jdField_a_of_type_Int;
+  
+  public float a()
   {
-    super(paramString);
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (paramFloat >= 0.0F) {}
+    for (boolean bool = true;; bool = false)
+    {
+      blgo.a(bool);
+      this.jdField_a_of_type_Float = paramFloat;
+      return;
+    }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = GLES20.glGetAttribLocation(paramInt, this.jdField_a_of_type_JavaLangString);
-    lrz.a();
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

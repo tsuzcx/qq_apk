@@ -1,10 +1,15 @@
-public abstract interface aock
+public class aock
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
+  public int a;
+  public long a = 9223372036854775807L;
+  public String a;
+  public int b = 1000;
+  public int c;
+  public int d = -1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aock
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,14 @@
-public abstract interface pfc
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+
+class pfc
+  implements qzs<TabChannelCoverInfo>
 {
-  public abstract void a(String paramString, Object paramObject);
+  pfc(pfa parampfa) {}
+  
+  public boolean a(TabChannelCoverInfo paramTabChannelCoverInfo)
+  {
+    return (paramTabChannelCoverInfo != null) && (paramTabChannelCoverInfo.reason != 4);
+  }
 }
 
 

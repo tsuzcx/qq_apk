@@ -1,28 +1,51 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.onlinestatus.AccountPanel.17.1;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.ProgressButton;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aync
-  extends AccountObserver
+class aync
+  extends Handler
 {
-  aync(aymu paramaymu) {}
+  aync(aymj paramaymj) {}
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramBoolean1) && (aymu.a(this.a) != null)) {
-      aymu.a(this.a).a(paramStatus);
+    switch (paramMessage.what)
+    {
     }
-    if (!paramBoolean2) {
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+            } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131698303);
+            return;
+          } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(paramMessage.arg1);
+          return;
+        } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(100);
+        return;
+      } while ((this.a.jdField_a_of_type_Aypz == null) || (aymj.a(this.a) == null));
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131697963);
+      }
+      this.a.jdField_a_of_type_Aypz.a(aymj.a(this.a).uRoomid);
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_bootstrap", 0, 0, aymj.a(this.a).uin, "", "yes", "android");
       return;
-    }
-    ThreadManager.getUIHandler().post(new AccountPanel.17.1(this, paramBoolean1, paramStatus));
-  }
-  
-  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
-  {
-    this.a.c();
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 2131698300, 0).a();
+      return;
+    } while (this.a.jdField_a_of_type_Aypz == null);
+    this.a.jdField_a_of_type_Aypz.a();
   }
 }
 

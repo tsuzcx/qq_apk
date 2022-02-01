@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import obu;
+import odd;
 import org.json.JSONObject;
 
 public class VideoInfo$GameAdComData
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameAdComData> CREATOR = new obu();
+  public static final Parcelable.Creator<GameAdComData> CREATOR = new odd();
   public String A;
   public String B;
   public int a;

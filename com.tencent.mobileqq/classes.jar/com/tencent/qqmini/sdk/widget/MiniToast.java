@@ -262,7 +262,7 @@ public class MiniToast
     MiniToast.ProtectedToast localProtectedToast = new MiniToast.ProtectedToast(this.mContext);
     View localView = this.mInflater.inflate(paramInt2, null);
     Object localObject = localView.findViewById(R.id.toast_background);
-    if (Build.VERSION.SDK_INT >= 21) {
+    if ((localObject != null) && (Build.VERSION.SDK_INT >= 21)) {
       ((View)localObject).setElevation(6.0F);
     }
     AnimationUtils.loadAnimation(this.mContext, R.anim.mini_sdk_toast_enter_anim);
@@ -295,7 +295,7 @@ public class MiniToast
         }
       }
       if (!useIOSLikeUI()) {
-        break label372;
+        break label377;
       }
       localProtectedToast.setGravity(55, 0, 0);
     }
@@ -309,7 +309,7 @@ public class MiniToast
       return localProtectedToast;
       ((ImageView)localView.findViewById(R.id.toast_icon)).setVisibility(8);
       break;
-      label372:
+      label377:
       if (paramInt1 == 6316128) {
         localProtectedToast.setGravity(55, 0, getStatusBarHeight());
       } else {

@@ -1,12 +1,6 @@
-public class atwi
+public abstract interface atwi
 {
-  int a;
-  int b;
-  
-  public String toString()
-  {
-    return "Type [type1=" + this.a + ", type2=" + this.b + "]";
-  }
+  public abstract void a(boolean paramBoolean, atwg paramatwg);
 }
 
 

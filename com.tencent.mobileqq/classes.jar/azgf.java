@@ -1,15 +1,85 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.MobileQQ;
 
-public class azgf
-  implements DialogInterface.OnClickListener
+class azgf
+  implements View.OnClickListener
 {
-  public azgf(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  azgf(azfn paramazfn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.e();
+    if ((paramView.getTag() instanceof azgg)) {}
+    SubAccountInfo localSubAccountInfo;
+    Object localObject1;
+    switch (((azgg)paramView.getTag()).a)
+    {
+    default: 
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    case 2: 
+      localSubAccountInfo = (SubAccountInfo)paramView.getTag(2131361895);
+      if (localSubAccountInfo != null)
+      {
+        localObject1 = azfn.a(this.a).getApplication().getAllAccounts();
+        Object localObject2 = new ArrayList();
+        if (localObject1 != null) {
+          ((List)localObject2).addAll((Collection)localObject1);
+        }
+        if ((localObject2 != null) && (((List)localObject2).size() > 0))
+        {
+          localObject2 = ((List)localObject2).iterator();
+          do
+          {
+            if (!((Iterator)localObject2).hasNext()) {
+              break;
+            }
+            localObject1 = (SimpleAccount)((Iterator)localObject2).next();
+          } while (!TextUtils.equals(((SimpleAccount)localObject1).getUin(), localSubAccountInfo.subuin));
+        }
+      }
+      break;
+    }
+    for (;;)
+    {
+      if (localObject1 != null) {
+        this.a.a((SimpleAccount)localObject1, azfn.a(this.a).app);
+      }
+      for (;;)
+      {
+        bdll.b(azfn.a(this.a), "dc00898", "", "", "0X800AC36", "0X800AC36", 0, 0, "", "", "", "");
+        bdll.b(azfn.a(this.a), "CliOper", "", "", "0X80072D2", "0X80072D2", 0, 0, "", "", "", "");
+        azir.a("0X800AF3A");
+        break;
+        if (localSubAccountInfo != null)
+        {
+          localObject1 = new Intent("before_account_change");
+          azfn.a(this.a).sendBroadcast((Intent)localObject1);
+          localObject1 = new Intent(azfn.a(this.a), SubAccountUgActivity.class);
+          ((Intent)localObject1).putExtra("subAccount", localSubAccountInfo.subuin);
+          azfn.a(this.a).startActivity((Intent)localObject1);
+        }
+      }
+      localObject1 = (SimpleAccount)paramView.getTag(2131361895);
+      this.a.a((SimpleAccount)localObject1, azfn.a(this.a));
+      bdll.b(azfn.a(this.a), "dc00898", "", "", "0X800AC36", "0X800AC36", 0, 0, "", "", "", "");
+      bdll.b(azfn.a(this.a), "CliOper", "", "", "0X80072D3", "0X80072D3", 0, 0, "", "", "", "");
+      azir.a("0X800AF3A");
+      break;
+      localObject1 = null;
+    }
   }
 }
 

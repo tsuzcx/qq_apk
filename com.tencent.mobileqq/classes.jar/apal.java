@@ -1,81 +1,32 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
 public class apal
-  extends apae
+  extends aoxg
 {
-  public int a;
-  public String a;
-  public apam[] a;
-  public int b = -1;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e = 0;
-  
-  public apal()
+  public apal(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfApam = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
+    super(paramQQAppInterface, paramContext);
   }
   
-  public static boolean a(apal paramapal)
+  public boolean a()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramapal != null)
+    boolean bool = false;
+    try
     {
-      bool1 = bool2;
-      if (paramapal.jdField_a_of_type_Int == 0)
-      {
-        bool1 = bool2;
-        if (paramapal.b == 0)
-        {
-          bool1 = bool2;
-          if (paramapal.jdField_a_of_type_ArrayOfApam != null)
-          {
-            bool1 = bool2;
-            if (paramapal.jdField_a_of_type_ArrayOfApam[0].jdField_c_of_type_Int == 0)
-            {
-              bool1 = bool2;
-              if (paramapal.jdField_a_of_type_ArrayOfApam[0].a != null) {
-                bool1 = true;
-              }
-            }
-          }
-        }
+      if ("openPlayer".equals(this.jdField_a_of_type_JavaUtilHashMap.get("action"))) {
+        bool = ujx.a().a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
       }
+      return bool;
     }
-    return bool1;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfApam[0].a;
-  }
-  
-  public String toString()
-  {
-    if (this.jdField_a_of_type_ArrayOfApam != null)
+    catch (Exception localException)
     {
-      String str1 = "ImageTags{";
-      int i = 0;
-      for (;;)
-      {
-        str2 = str1;
-        if (i >= this.jdField_a_of_type_ArrayOfApam.length) {
-          break;
-        }
-        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfApam[i];
-        i += 1;
-      }
+      QLog.e("WeishiPublicAccountVideoAction", 1, "doAction error: " + localException.getMessage());
+      a("WeishiPublicAccountVideoAction");
     }
-    String str2 = "null";
-    return "ARCloudSceneRecogResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
+    return false;
   }
 }
 

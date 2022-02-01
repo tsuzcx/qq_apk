@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.now.message;
 
-import afxi;
-import agwz;
+import aghc;
+import ahgk;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.FragmentActivity;
@@ -11,14 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
-import axlp;
-import aydg;
-import aydh;
-import aydi;
-import aydl;
 import ayej;
-import bcvs;
-import bcvz;
+import ayvz;
+import aywa;
+import aywb;
+import aywe;
+import ayxc;
+import bdol;
+import bdos;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
@@ -30,32 +30,32 @@ import java.util.List;
 public class MessageReceivingAdapter
   extends PagerAdapter
 {
-  private agwz jdField_a_of_type_Agwz;
+  private ahgk jdField_a_of_type_Ahgk;
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   private List<ChatMessage> jdField_a_of_type_JavaUtilList;
   
   public MessageReceivingAdapter(FragmentActivity paramFragmentActivity, BaseChatPie paramBaseChatPie)
   {
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
-    this.jdField_a_of_type_Agwz = new agwz(paramFragmentActivity, paramFragmentActivity.app, paramBaseChatPie.a, null, paramBaseChatPie);
+    this.jdField_a_of_type_Ahgk = new ahgk(paramFragmentActivity, paramFragmentActivity.app, paramBaseChatPie.a, null, paramBaseChatPie);
   }
   
   private View a(Context paramContext, ViewGroup paramViewGroup, MessageForArkApp paramMessageForArkApp, int paramInt)
   {
-    paramContext = new WrapperArkView(paramContext, paramViewGroup, paramMessageForArkApp, this.jdField_a_of_type_Agwz.a(paramMessageForArkApp, null), paramInt);
-    paramContext.setOnArkViewTouchListener(new aydi(this, paramInt, paramMessageForArkApp));
+    paramContext = new WrapperArkView(paramContext, paramViewGroup, paramMessageForArkApp, this.jdField_a_of_type_Ahgk.a(paramMessageForArkApp, null), paramInt);
+    paramContext.setOnArkViewTouchListener(new aywb(this, paramInt, paramMessageForArkApp));
     return paramContext;
   }
   
   private View a(Context paramContext, ViewGroup paramViewGroup, MessageForStructing paramMessageForStructing, int paramInt)
   {
-    afxi localafxi = this.jdField_a_of_type_Agwz.a(paramMessageForStructing, null);
+    aghc localaghc = this.jdField_a_of_type_Ahgk.a(paramMessageForStructing, null);
     if ((paramMessageForStructing.structingMsg instanceof StructMsgForGeneralShare))
     {
       StructMsgForGeneralShare localStructMsgForGeneralShare = (StructMsgForGeneralShare)paramMessageForStructing.structingMsg;
       paramContext = new GeneralSharePagerView(paramContext);
-      axlp.a().a(paramContext.a, localStructMsgForGeneralShare.mContentCover, new ColorDrawable(0), new ColorDrawable(0), null);
-      paramContext.a(localafxi.a(paramInt, getCount(), paramMessageForStructing, null, paramViewGroup, new aydh(this, paramInt, paramMessageForStructing, localStructMsgForGeneralShare)));
+      ayej.a().a(paramContext.a, localStructMsgForGeneralShare.mContentCover, new ColorDrawable(0), new ColorDrawable(0), null);
+      paramContext.a(localaghc.a(paramInt, getCount(), paramMessageForStructing, null, paramViewGroup, new aywa(this, paramInt, paramMessageForStructing, localStructMsgForGeneralShare)));
       return paramContext;
     }
     return a(paramViewGroup, paramMessageForStructing, paramInt);
@@ -63,21 +63,21 @@ public class MessageReceivingAdapter
   
   private View a(ViewGroup paramViewGroup, ChatMessage paramChatMessage, int paramInt)
   {
-    return this.jdField_a_of_type_Agwz.a(paramChatMessage, null).a(paramInt, getCount(), paramChatMessage, null, paramViewGroup, new aydl());
+    return this.jdField_a_of_type_Ahgk.a(paramChatMessage, null).a(paramInt, getCount(), paramChatMessage, null, paramViewGroup, new aywe());
   }
   
   private boolean a(View paramView, ChatMessage paramChatMessage, StructMsgForGeneralShare paramStructMsgForGeneralShare)
   {
-    paramView = new bcvz(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, paramView, paramChatMessage);
+    paramView = new bdos(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, paramView, paramChatMessage);
     if (!TextUtils.isEmpty(paramStructMsgForGeneralShare.mMsgUrl)) {
       return paramView.a(paramStructMsgForGeneralShare.mMsgUrl, paramChatMessage.getId(), null);
     }
     Iterator localIterator = paramStructMsgForGeneralShare.mStructMsgItemLists.iterator();
     while (localIterator.hasNext())
     {
-      bcvs localbcvs = (bcvs)localIterator.next();
-      if ((localbcvs.a == paramStructMsgForGeneralShare.msgId) && (!TextUtils.isEmpty(localbcvs.b))) {
-        return paramView.a(localbcvs.b, paramChatMessage.getId(), null);
+      bdol localbdol = (bdol)localIterator.next();
+      if ((localbdol.a == paramStructMsgForGeneralShare.msgId) && (!TextUtils.isEmpty(localbdol.b))) {
+        return paramView.a(localbdol.b, paramChatMessage.getId(), null);
       }
     }
     return false;
@@ -85,7 +85,7 @@ public class MessageReceivingAdapter
   
   private View b(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131559529, paramViewGroup, false);
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131559534, paramViewGroup, false);
   }
   
   public View a(ViewGroup paramViewGroup, int paramInt)
@@ -100,7 +100,7 @@ public class MessageReceivingAdapter
     if ((localChatMessage instanceof MessageForStructing))
     {
       paramViewGroup = a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramViewGroup, (MessageForStructing)localChatMessage, paramInt);
-      ayej.a(paramInt + 1, aydg.b(localChatMessage), "2");
+      ayxc.a(paramInt + 1, ayvz.b(localChatMessage), "2");
     }
     for (;;)
     {
@@ -108,7 +108,7 @@ public class MessageReceivingAdapter
       if ((localChatMessage instanceof MessageForArkApp))
       {
         paramViewGroup = a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramViewGroup, (MessageForArkApp)localChatMessage, paramInt);
-        ayej.a(paramInt + 1, aydg.b(localChatMessage), "1");
+        ayxc.a(paramInt + 1, ayvz.b(localChatMessage), "1");
       }
       else
       {

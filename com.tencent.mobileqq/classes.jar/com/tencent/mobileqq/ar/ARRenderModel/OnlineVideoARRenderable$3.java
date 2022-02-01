@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aoua;
-import aouy;
+import aphq;
+import apio;
 
 public class OnlineVideoARRenderable$3
   implements Runnable
@@ -9,8 +9,8 @@ public class OnlineVideoARRenderable$3
   public void run()
   {
     this.this$0.f();
-    if (aouy.a(this.this$0) != null) {
-      aouy.a(this.this$0).b(1, aouy.c(this.this$0) - aouy.d(this.this$0));
+    if (apio.a(this.this$0) != null) {
+      apio.a(this.this$0).b(1, apio.c(this.this$0) - apio.d(this.this$0));
     }
   }
 }

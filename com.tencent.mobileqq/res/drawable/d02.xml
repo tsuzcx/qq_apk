@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:state_pressed="true">
-        <bitmap android:src="@drawable/fxq" android:alpha="0.5" />
-    </item>
-    <item android:state_enabled="false" android:drawable="@drawable/fwl" />
-    <item android:state_selected="true" android:state_pressed="false" android:drawable="@drawable/fxq" />
-    <item android:state_selected="false" android:state_pressed="true">
-        <bitmap android:src="@drawable/fwl" android:alpha="0.5" />
-    </item>
-    <item android:state_selected="false" android:drawable="@drawable/fwl" />
-    <item android:drawable="@drawable/fxq" />
-</selector>
+    <solid android:color="#1a7b7b7b" />
+    <corners android:radius="50.0dip" />
+</shape>

@@ -1,178 +1,50 @@
-import android.content.res.AssetManager;
-import android.content.res.Resources;
-import android.util.Xml;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.turingfd.sdk.xq.TuringFdService;
-import com.tencent.turingfd.sdk.xq.TuringFdService.ITuringDID;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashSet;
-import java.util.Set;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
+import com.tencent.smtt.sdk.WebView;
 
-public class acrs
+class acrs
+  extends acyg
 {
-  private volatile Set<String> jdField_a_of_type_JavaUtilSet;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static acrs a()
+  acrs(acrq paramacrq, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    return acru.a();
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
   }
   
-  private acrv a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if (!bcuj.b())
-    {
-      acqy.a("GdtAidHelper", "only arm support taid");
-      return new acrv("", "", -2147483647, 0L, null);
-    }
-    boolean bool = false;
-    acqy.a("GdtAidHelper", "getAidTicket start , businessId -> " + paramString + ", useCache -> " + paramBoolean1 + ", needVerifyBusinessId -> " + paramBoolean2 + "， TuringVersion : " + TuringFdService.getVersionInfo());
-    if (paramBoolean2) {
-      bool = a(paramString);
-    }
-    paramString = BaseApplicationImpl.getContext().getApplicationContext();
-    if (!this.jdField_a_of_type_Boolean) {
-      acqy.a("GdtAidHelper", "getAidTicket init TuringSDK");
-    }
-    int j;
-    long l;
-    for (;;)
-    {
-      try
-      {
-        bgjv.a();
-        this.jdField_a_of_type_Boolean = true;
-        if (paramBoolean1) {}
-        String str1;
-        String str2;
-        paramString = TuringFdService.getTuringDID(paramString);
-      }
-      catch (Throwable paramString)
-      {
-        try
-        {
-          paramString = TuringFdService.getTuringDIDCached(paramString);
-          j = paramString.getErrorCode();
-          l = paramString.getExpiredTimestamp();
-          if ((!paramBoolean2) || (j != 0)) {
-            break label361;
-          }
-          i = 1;
-          if (i == 0) {
-            break;
-          }
-          bcst.b(null, "dc00898", "", "", "0X800A5B3", "0X800A5B3", 0, 0, "", "", "", "");
-          str1 = paramString.getAIDTicket();
-          str2 = paramString.getTAIDTicket();
-          acqy.a("GdtAidHelper", "getAidTicket aid ticket ->" + str1 + ", taidTicket -> " + str2);
-          return new acrv(paramString.getAIDTicket(), paramString.getTAIDTicket(), 0, l, null);
-        }
-        catch (Throwable paramString)
-        {
-          QLog.e("GdtAidHelper", 1, paramString, new Object[] { "Turing get aid crash" + TuringFdService.getVersionInfo() });
-          return new acrv("", "", -2147483645, 0L, paramString, null);
-        }
-        paramString = paramString;
-        QLog.e("GdtAidHelper", 1, paramString, new Object[] { "Turing init crash fail" });
-        return new acrv("", "", -2147483646, 0L, paramString, null);
-      }
-      continue;
-      label361:
-      i = 0;
-    }
-    int i = j;
-    if (paramBoolean2)
-    {
-      i = j;
-      if (!bool) {
-        i = -2147483648;
-      }
-    }
-    acqy.a("GdtAidHelper", "getAidTicket business id not verify, error code return only : error code-> " + i);
-    return new acrv("", "", i, l, null);
+    super.onPageFinished(paramWebView, paramString);
+    QLog.i("AbsWebView", 1, "onPageFinished:" + paramString);
   }
   
-  private boolean a(String paramString)
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_JavaUtilSet == null) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        HashSet localHashSet;
-        if (this.jdField_a_of_type_JavaUtilSet == null) {
-          localHashSet = new HashSet();
-        }
-        try
-        {
-          InputStream localInputStream = BaseApplicationImpl.getContext().getResources().getAssets().open("AidAuthorityFile.xml");
-          localXmlPullParser = Xml.newPullParser();
-          localXmlPullParser.setInput(localInputStream, "utf-8");
-          i = localXmlPullParser.getEventType();
-        }
-        catch (IOException localIOException)
-        {
-          XmlPullParser localXmlPullParser;
-          String str;
-          localIOException.printStackTrace();
-          this.jdField_a_of_type_JavaUtilSet = localHashSet;
-          if ((this.jdField_a_of_type_JavaUtilSet == null) || (!this.jdField_a_of_type_JavaUtilSet.contains(paramString))) {
-            break label227;
-          }
-          bool = true;
-          if (bool) {
-            continue;
-          }
-          bcsb.a("GdtAidHelper", "business id verify fail, please check the business id");
-          return bool;
-          localIOException.close();
-          continue;
-        }
-        catch (XmlPullParserException localXmlPullParserException)
-        {
-          localXmlPullParserException.printStackTrace();
-          continue;
-        }
-        i = localXmlPullParser.next();
-        break label232;
-        if (!localXmlPullParser.getName().equalsIgnoreCase("business")) {
-          continue;
-        }
-        str = localXmlPullParser.getAttributeValue(null, "id");
-        localHashSet.add(str);
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.d("GdtAidHelper", 4, "init sensitive au, busiId = " + str);
-        continue;
-        boolean bool = false;
-      }
-      finally {}
-      label227:
-      continue;
-      label232:
-      if (i != 1) {
-        switch (i)
-        {
-        }
-      }
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    QLog.i("AbsWebView", 1, "onPageStarted:" + paramString);
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+    QLog.i("AbsWebView", 1, "onReceivedError url = " + paramInt + ",description = " + paramString1 + ",failingUrl = " + paramString2);
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    super.onReceivedTitle(paramWebView, paramString);
+    QLog.i("AbsWebView", 1, "onReceivedTitle: " + paramString);
+    acrq.a(this.a, paramString);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if (acrq.a(this.a, paramWebView, paramString)) {
+      return true;
     }
-  }
-  
-  public acrv a()
-  {
-    return a("", false, false);
-  }
-  
-  acrv a(String paramString)
-  {
-    return a(paramString, true, true);
+    return a(paramWebView, paramString);
   }
 }
 

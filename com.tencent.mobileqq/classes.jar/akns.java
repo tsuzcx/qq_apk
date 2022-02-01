@@ -1,26 +1,89 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class akns
-  implements View.OnClickListener
+  extends azov
 {
-  public akns(RedPacketVoiceFragment paramRedPacketVoiceFragment) {}
+  public akns(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((!this.a.c()) && (RedPacketVoiceFragment.a(this.a) != null) && (paramView != null))
+    this.a.f = false;
+    this.a.a();
+    this.a.b();
+    int i;
+    if (paramBoolean)
     {
-      Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
-      localIntent.putExtras(RedPacketVoiceFragment.a(this.a));
-      localIntent.putExtra("pay_requestcode", 5);
-      paramView.getContext().startActivity(localIntent);
+      String str = bhlg.b();
+      if (!TextUtils.isEmpty(str)) {
+        bdll.b(this.a.app, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      }
+      i = paramBundle.getInt("k_result");
+      if (paramBundle.getBoolean("k_buto_bind", false)) {
+        this.a.c();
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      bhlg.a();
+      this.a.app.unRegistObserver(this.a.a);
+      this.a.a = null;
+      return;
+      if ((i == 104) || (i == 0))
+      {
+        this.a.b();
+      }
+      else
+      {
+        if (i == 107)
+        {
+          this.a.a(paramBundle);
+          return;
+        }
+        if (i == 106)
+        {
+          this.a.a(null, 2);
+        }
+        else if (i == 227)
+        {
+          this.a.d();
+        }
+        else if (i == 226)
+        {
+          this.a.e();
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("BindNumberActivity", 2, "bind error " + i);
+          }
+          this.a.a(a(i));
+          continue;
+          if (QLog.isColorLevel()) {
+            QLog.d("BindNumberActivity", 2, "onBindMobile failed");
+          }
+          this.a.a(2131717454);
+        }
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Bundle paramBundle)
+  {
+    this.a.b();
+    if (paramBoolean) {
+      this.a.b();
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(this.a.a);
+      this.a.a = null;
+      return;
+      this.a.a(2131717454);
+    }
   }
 }
 

@@ -1,17 +1,18 @@
-import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class apwm
+  extends BroadcastReceiver
 {
-  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("android.intent.action.VIEW");
-    localIntent.putExtra("big_brother_source_key", paramString2);
-    localIntent.putExtra("key_callback_id", paramInt);
-    localIntent.setData(Uri.parse(paramString1));
-    paramActivity.startActivity(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.i("ark.ArkAppNotifyCenter", 2, "--VolumeReceiver---" + paramIntent.getAction());
+    }
+    ArkAppNotifyCenter.access$100("com.tencent.gouwu.video");
   }
 }
 

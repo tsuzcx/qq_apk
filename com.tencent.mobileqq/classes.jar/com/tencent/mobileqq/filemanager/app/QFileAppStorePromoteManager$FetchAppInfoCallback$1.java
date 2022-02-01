@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atae;
-import ataj;
-import atal;
+import atrz;
+import atse;
+import atsg;
 import com.tencent.tmassistant.appinfo.data.AppDetail;
 import java.util.HashMap;
 import java.util.List;
@@ -10,12 +10,12 @@ import java.util.List;
 public class QFileAppStorePromoteManager$FetchAppInfoCallback$1
   implements Runnable
 {
-  public QFileAppStorePromoteManager$FetchAppInfoCallback$1(ataj paramataj, int paramInt1, int paramInt2, List paramList) {}
+  public QFileAppStorePromoteManager$FetchAppInfoCallback$1(atse paramatse, int paramInt1, int paramInt2, List paramList) {}
   
   public void run()
   {
-    atal localatal = (atal)atae.a(this.jdField_a_of_type_Ataj.a).get(Integer.valueOf(this.jdField_a_of_type_Int));
-    if (localatal != null) {
+    atsg localatsg = (atsg)atrz.a(this.jdField_a_of_type_Atse.a).get(Integer.valueOf(this.jdField_a_of_type_Int));
+    if (localatsg != null) {
       if (this.b != 0) {
         break label58;
       }
@@ -23,7 +23,7 @@ public class QFileAppStorePromoteManager$FetchAppInfoCallback$1
     label58:
     for (boolean bool = true;; bool = false)
     {
-      localatal.a(bool, (AppDetail)this.jdField_a_of_type_JavaUtilList.get(0));
+      localatsg.a(bool, (AppDetail)this.jdField_a_of_type_JavaUtilList.get(0));
       return;
     }
   }

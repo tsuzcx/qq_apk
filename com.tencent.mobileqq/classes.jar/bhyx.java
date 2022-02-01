@@ -1,35 +1,23 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.widget.PagingScrollView;
+import android.os.Bundle;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
+import eipc.EIPCResult;
 
 public class bhyx
-  extends GestureDetector.SimpleOnGestureListener
+  implements bhyv
 {
-  public bhyx(PagingScrollView paramPagingScrollView) {}
+  public bhyx(QuickUpdateIPCModule paramQuickUpdateIPCModule, int paramInt) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (PagingScrollView.access$000(this.a))
-    {
-      PagingScrollView.access$002(this.a, false);
-      paramFloat1 = Math.abs(paramFloat1);
-      paramFloat2 = Math.abs(paramFloat2);
-      if (paramFloat2 > paramFloat1)
-      {
-        if (paramFloat1 >= 0.01F) {
-          break label62;
-        }
-        PagingScrollView.access$002(this.a, true);
-      }
-    }
-    for (;;)
-    {
-      return PagingScrollView.access$000(this.a);
-      label62:
-      if (paramFloat2 / paramFloat1 > 1.73205F) {
-        PagingScrollView.access$002(this.a, true);
-      }
-    }
+    QuickUpdateIPCModule.Params localParams = new QuickUpdateIPCModule.Params(null);
+    localParams.intVal = paramInt;
+    localParams.strVal1 = paramString1;
+    localParams.strVal2 = paramString2;
+    paramString1 = new Bundle();
+    paramString1.putSerializable("params", localParams);
+    paramString1 = EIPCResult.createResult(0, paramString1);
+    this.jdField_a_of_type_ComTencentMobileqqVasQuickUpdateIPCModule.callbackResult(this.jdField_a_of_type_Int, paramString1);
   }
 }
 

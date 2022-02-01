@@ -15,9 +15,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anni;
-import bfvm;
-import bfvn;
+import anzj;
+import bgvn;
+import bgvo;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -29,8 +29,8 @@ public class ExpandableTextView
   private int jdField_a_of_type_Int;
   private SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray;
   protected TextView a;
-  private bfvm jdField_a_of_type_Bfvm;
-  private bfvn jdField_a_of_type_Bfvn;
+  private bgvn jdField_a_of_type_Bgvn;
+  private bgvo jdField_a_of_type_Bgvo;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -70,9 +70,9 @@ public class ExpandableTextView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366122));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366171));
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366120));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366169));
     TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
     if (this.jdField_b_of_type_Boolean) {}
     for (String str = this.jdField_a_of_type_JavaLangString;; str = this.jdField_b_of_type_JavaLangString)
@@ -92,7 +92,7 @@ public class ExpandableTextView
     this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(3);
     this.jdField_b_of_type_JavaLangString = paramAttributeSet.getString(2);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = anni.a(2131703022);
+      this.jdField_a_of_type_JavaLangString = anzj.a(2131703129);
     }
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
       this.jdField_b_of_type_JavaLangString = "";
@@ -131,16 +131,16 @@ public class ExpandableTextView
       if (this.jdField_a_of_type_AndroidUtilSparseBooleanArray != null) {
         this.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.f, this.jdField_b_of_type_Boolean);
       }
-      if (this.jdField_a_of_type_Bfvm != null)
+      if (this.jdField_a_of_type_Bgvn != null)
       {
-        bfvm localbfvm = this.jdField_a_of_type_Bfvm;
+        bgvn localbgvn = this.jdField_a_of_type_Bgvn;
         TextView localTextView1 = this.jdField_a_of_type_AndroidWidgetTextView;
         TextView localTextView2 = this.jdField_b_of_type_AndroidWidgetTextView;
         bool1 = bool2;
         if (!this.jdField_b_of_type_Boolean) {
           bool1 = true;
         }
-        localbfvm.a(localTextView1, localTextView2, bool1);
+        localbgvn.a(localTextView1, localTextView2, bool1);
       }
       this.jdField_a_of_type_Boolean = true;
       break;
@@ -184,10 +184,10 @@ public class ExpandableTextView
       if (this.jdField_b_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(this.jdField_c_of_type_Int);
-        if (this.jdField_a_of_type_Bfvn == null) {
-          this.jdField_a_of_type_Bfvn = new bfvn(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_c_of_type_Int);
+        if (this.jdField_a_of_type_Bgvo == null) {
+          this.jdField_a_of_type_Bgvo = new bgvo(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_c_of_type_Int);
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_Bfvn);
+        this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_Bgvo);
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       super.onMeasure(paramInt1, paramInt2);
@@ -196,9 +196,9 @@ public class ExpandableTextView
     this.jdField_a_of_type_Int = getMeasuredHeight();
   }
   
-  public void setOnExpandStateChangeListener(bfvm parambfvm)
+  public void setOnExpandStateChangeListener(bgvn parambgvn)
   {
-    this.jdField_a_of_type_Bfvm = parambfvm;
+    this.jdField_a_of_type_Bgvn = parambgvn;
   }
   
   public void setOrientation(int paramInt)

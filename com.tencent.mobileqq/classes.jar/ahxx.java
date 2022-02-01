@@ -1,23 +1,14 @@
-import java.util.List;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahxx
-  extends anle
+public class ahxx
+  implements ahyf
 {
-  ahxx(ahxt paramahxt) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if (paramBoolean)
-    {
-      this.a.b = asfi.a(this.a.a).a(this.a.a, this.a.a());
-      this.a.b(this.a.b);
-      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
-        this.a.v(false);
-      }
-    }
+    paramahed.b(paramMessageRecord, paramahfq);
   }
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

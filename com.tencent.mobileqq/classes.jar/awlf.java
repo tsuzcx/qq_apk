@@ -1,271 +1,539 @@
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Looper;
-import android.os.SystemClock;
-import android.text.SpannableString;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import com.tencent.mobileqq.leba.widget.LebaRoundLayout;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
-import java.io.File;
-import mqq.manager.Manager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class awlf
-  implements Manager
+  implements View.OnClickListener
 {
-  CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  boolean jdField_a_of_type_Boolean = true;
+  private int jdField_a_of_type_Int;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  public LinearLayout a;
+  public awkd a;
+  public awkl a;
+  public QQAppInterface a;
+  private List<arsh> jdField_a_of_type_JavaUtilList;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
   
-  public awlf(QQAppInterface paramQQAppInterface)
+  public awlf(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Boolean = a();
+    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130845353);
+    this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().densityDpi;
+    paramContext = paramContext.getResources();
+    this.f = 3;
+    this.jdField_b_of_type_Int = agej.a(1.0F, paramContext);
+    this.c = this.jdField_b_of_type_Int;
+    this.e = bhtq.b(16.0F);
+    this.d = agej.a(114.0F, paramContext);
   }
   
-  public static Bitmap a(String paramString)
+  private int a(int paramInt)
   {
-    if (Looper.getMainLooper() == Looper.myLooper())
+    int i = 0;
+    int k = 0;
+    int j = k;
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      QLog.e("NewMsgNotificationManager", 1, new Object[] { "getBitmapFromUrl: failed. can't run in ui thread. ", paramString });
-      return null;
+      if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+        j = k;
+      }
     }
-    String str = bdsh.d(paramString);
-    Object localObject = new File(str);
-    long l1 = SystemClock.uptimeMillis();
-    localObject = new bhhf(paramString, (File)localObject);
-    ((bhhf)localObject).n = true;
-    ((bhhf)localObject).b = 2;
-    ((bhhf)localObject).a = str;
-    ((bhhf)localObject).b(512);
-    int i = bhhh.a((bhhf)localObject, null, null);
-    long l2 = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("NewMsgNotificationManager", 2, "download cost " + (l2 - l1) + " result " + i + " key " + ((bhhf)localObject).a + " iconUrl: " + paramString);
+    else {
+      return j;
     }
-    return SafeBitmapFactory.decodeFile(str);
-  }
-  
-  public static awlf a(QQAppInterface paramQQAppInterface)
-  {
-    return (awlf)paramQQAppInterface.getManager(349);
-  }
-  
-  private static boolean a(int paramInt)
-  {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 3000) || (paramInt == 1009) || (paramInt == 1001) || (paramInt == 10002) || (paramInt == 10004) || (paramInt == 1003) || (paramInt == 1004) || (paramInt == 1005) || (paramInt == 1020) || (paramInt == 1000) || (paramInt == 1023) || (paramInt == 1024) || (paramInt == 1025) || (paramInt == 7220) || (paramInt == 7120) || (paramInt == 7200) || (paramInt == 1008) || (paramInt == 3001) || (paramInt == 7210) || (paramInt == 7230) || (paramInt == 7) || (paramInt == 6000) || (paramInt == 6003) || (paramInt == 7000) || (paramInt == 10007) || (paramInt == 10008) || (paramInt == 10010);
-  }
-  
-  private boolean a(int paramInt, String paramString)
-  {
-    boolean bool1 = true;
-    boolean bool2 = c();
-    if (QLog.isColorLevel()) {
-      QLog.d("NewMsgNotificationManager", 2, new Object[] { "newMsgNotificationEnabled: invoked. ", " systemNotificationEnabled: ", Boolean.valueOf(bool2) });
+    int m = this.jdField_a_of_type_JavaUtilList.size();
+    if (paramInt == 0) {
+      i = 1;
     }
-    if ((a(paramInt)) || (a(paramString))) {
-      bool1 = b();
+    j = i;
+    if (paramInt == m - 1) {
+      j = i | 0x4;
     }
-    return bool1;
+    if (this.f > m) {}
+    for (k = m - 1;; k = this.f - 1)
+    {
+      i = j;
+      if (paramInt == k) {
+        i = j | 0x2;
+      }
+      j = m % this.f;
+      k = j;
+      if (j == 0) {
+        k = 3;
+      }
+      j = i;
+      if (paramInt != m - k) {
+        break;
+      }
+      return i | 0x8;
+    }
   }
   
-  private static boolean a(String paramString)
+  private int a(LinearLayout paramLinearLayout)
   {
-    return anhk.M.equals(paramString);
+    int i = 0;
+    int k = 0;
+    int m = paramLinearLayout.getChildCount();
+    if (m == 0) {}
+    int j;
+    do
+    {
+      return k;
+      j = 0;
+      k = i;
+    } while (j >= m);
+    View localView = paramLinearLayout.getChildAt(j);
+    if ((localView != null) && ((localView instanceof LinearLayout))) {
+      i = ((LinearLayout)localView).getChildCount() + i;
+    }
+    for (;;)
+    {
+      j += 1;
+      break;
+    }
   }
   
-  private Bitmap b(String paramString)
+  private View a(LinearLayout paramLinearLayout, int paramInt)
   {
     try
     {
-      int i = Integer.parseInt(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("NewMsgNotificationManager", 2, new Object[] { "getBitmapFromLocal: invoked. ", " id: ", Integer.valueOf(i), " iconUrl: ", paramString });
-      }
-      i = auxe.a(i);
-      paramString = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), i);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("NewMsgNotificationManager", 1, "getBitmapFromLocal: failed. ", paramString);
-      return null;
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      for (;;)
+      paramLinearLayout = (LinearLayout)paramLinearLayout.getChildAt(paramInt / this.f);
+      if (paramLinearLayout == null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("NewMsgNotificationManager", 2, "getBitmapFromLocal: failed. ", paramString);
+        QLog.i("Q.lebatab.LebaTableLogic", 1, String.format("lineLayout == null  ", new Object[] { Integer.valueOf(paramInt) }));
+        return null;
+      }
+      paramLinearLayout = paramLinearLayout.getChildAt(paramInt % this.f);
+      return paramLinearLayout;
+    }
+    catch (Exception paramLinearLayout)
+    {
+      QLog.i("Q.lebatab.LebaTableLogic", 1, String.format("findViewByIndex,index = ", new Object[] { Integer.valueOf(paramInt) }), paramLinearLayout);
+    }
+    return null;
+  }
+  
+  private arsh a(View paramView)
+  {
+    int i = paramView.getId();
+    if ((i >= 0) && (i < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (arsh)this.jdField_a_of_type_JavaUtilList.get(i);
+    }
+    return null;
+  }
+  
+  private void a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, String paramString, View paramView, StringBuilder paramStringBuilder1, StringBuilder paramStringBuilder2)
+  {
+    if (paramView == null) {
+      paramStringBuilder1.append(",headView == null");
+    }
+    int i;
+    int j;
+    do
+    {
+      return;
+      paramView = paramView.findViewById(2131375492);
+      if (paramView == null)
+      {
+        paramStringBuilder1.append(",qZone == null");
+        return;
+      }
+      i = paramView.getTop();
+      j = paramView.getHeight() + i;
+      paramStringBuilder1.append(",qZoneTop = ").append(i).append(",qZoneBottom = ").append(j);
+    } while (((paramFloat1 >= i) || (i >= paramFloat2)) && ((paramFloat1 >= j) || (j >= paramFloat2)));
+    paramStringBuilder2.append(10000L).append("_").append(0).append("_").append(paramInt1).append("_").append(0).append("_").append(awkp.a(paramInt2)).append("_").append(paramString).append(";");
+  }
+  
+  private void a(float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean, String paramString, View paramView, StringBuilder paramStringBuilder1, StringBuilder paramStringBuilder2)
+  {
+    if (paramView == null) {
+      paramStringBuilder1.append(",headView == null");
+    }
+    int i;
+    int j;
+    do
+    {
+      return;
+      paramView = paramView.findViewById(2131374480);
+      if (paramView == null)
+      {
+        paramStringBuilder1.append(",qcircle == null");
+        return;
+      }
+      if (!paramBoolean)
+      {
+        paramStringBuilder1.append(",no ShowQQCirle");
+        return;
+      }
+      i = paramView.getTop();
+      j = paramView.getHeight() + i;
+      paramStringBuilder1.append(",qCircleTop = ").append(i).append(",qCircleBottom = ").append(j);
+    } while (((paramFloat1 >= i) || (i >= paramFloat2)) && ((paramFloat1 >= j) || (j >= paramFloat2)));
+    paramStringBuilder2.append(10004L).append("_").append(0).append("_").append(paramInt).append("_").append(0).append("_").append(0).append("_").append(paramString).append(";");
+  }
+  
+  private void a(float paramFloat1, float paramFloat2, String paramString, View paramView, StringBuilder paramStringBuilder1, StringBuilder paramStringBuilder2)
+  {
+    paramView = paramView.findViewById(2131378380);
+    if (paramView == null)
+    {
+      paramStringBuilder1.append(",tableRoot == null");
+      return;
+    }
+    int n = paramView.getTop();
+    int i1 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    paramStringBuilder1.append(", r_top = ").append(n).append(", r_count = ").append(i1);
+    int i = 0;
+    label65:
+    if (i < i1)
+    {
+      paramView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      if (paramView != null) {
+        break label97;
+      }
+    }
+    label97:
+    int j;
+    int k;
+    label223:
+    Object localObject;
+    for (;;)
+    {
+      i += 1;
+      break label65;
+      break;
+      if ((paramView instanceof LinearLayout))
+      {
+        j = paramView.getTop() + n;
+        k = paramView.getHeight() + j;
+        paramStringBuilder1.append(",").append(i).append(" v_top ").append(j).append(" v_bottom ").append(k);
+        if (((paramFloat1 < j) && (j < paramFloat2)) || ((paramFloat1 < k) && (k < paramFloat2))) {}
+        for (j = 1; (j != 0) && ((paramView instanceof LinearLayout)); j = 0)
+        {
+          paramView = (LinearLayout)paramView;
+          int i2 = paramView.getChildCount();
+          j = 0;
+          if (j >= i2) {
+            break label449;
+          }
+          localObject = paramView.getChildAt(j);
+          if (localObject != null) {
+            break label259;
+          }
+          paramStringBuilder1.append("itemView == null ");
+          return;
+        }
+      }
+    }
+    label259:
+    arsh localarsh = a((View)localObject);
+    if ((localarsh == null) || (localarsh.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null))
+    {
+      paramStringBuilder1.append(" item == null ||  item.info == null ");
+      return;
+    }
+    paramStringBuilder1.append(localarsh.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId).append(",");
+    long l = localarsh.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId;
+    int i3 = ((View)localObject).getId();
+    int m;
+    if (this.jdField_a_of_type_Awkl != null)
+    {
+      localObject = (awko)this.jdField_a_of_type_Awkl.a().get(Long.valueOf(localarsh.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId));
+      if (localObject != null)
+      {
+        m = ((awko)localObject).jdField_a_of_type_Int;
+        k = ((awko)localObject).jdField_b_of_type_Int;
+      }
+    }
+    for (;;)
+    {
+      paramStringBuilder2.append(l).append("_").append(i3 + 1).append("_").append(m).append("_").append(k).append("_").append(0).append("_").append(paramString).append(";");
+      j += 1;
+      break label223;
+      label449:
+      break;
+      k = 0;
+      m = 0;
+    }
+  }
+  
+  private void a(int paramInt, LinearLayout paramLinearLayout)
+  {
+    for (;;)
+    {
+      try
+      {
+        int i = (paramInt + 1) % this.f;
+        if (i != 0) {
+          break label265;
+        }
+        i = this.f;
+        j = paramInt / this.f;
+        LinearLayout localLinearLayout = (LinearLayout)paramLinearLayout.getChildAt(j);
+        if (localLinearLayout != null) {
+          break label262;
+        }
+        localLinearLayout = new LinearLayout(paramLinearLayout.getContext());
+        localLinearLayout.setWeightSum(this.f);
+        Object localObject = new LinearLayout.LayoutParams(-1, this.d);
+        if (j <= 0) {
+          break label268;
+        }
+        j = this.c;
+        ((LinearLayout.LayoutParams)localObject).setMargins(0, j, 0, 0);
+        paramLinearLayout.addView(localLinearLayout, (ViewGroup.LayoutParams)localObject);
+        localObject = new awlg(paramLinearLayout.getContext(), this.jdField_a_of_type_AndroidViewLayoutInflater);
+        paramLinearLayout = ((awlg)localObject).jdField_a_of_type_AndroidViewView;
+        paramLinearLayout.setTag(localObject);
+        paramLinearLayout.setId(paramInt);
+        localObject = ((awlg)localObject).jdField_a_of_type_ComTencentMobileqqLebaWidgetLebaRoundLayout;
+        if (localObject != null)
+        {
+          ((LebaRoundLayout)localObject).jdField_a_of_type_Int = this.e;
+          ((LebaRoundLayout)localObject).jdField_b_of_type_Int = a(paramInt);
+          localObject = new LinearLayout.LayoutParams(0, this.d, 1.0F);
+          if (i > 1)
+          {
+            i = this.jdField_b_of_type_Int;
+            ((LinearLayout.LayoutParams)localObject).setMargins(i, 0, 0, 0);
+            localLinearLayout.addView(paramLinearLayout, (ViewGroup.LayoutParams)localObject);
+          }
+        }
+        else
+        {
+          QLog.i("Q.lebatab.LebaTableLogic", 1, "rootLayout != null");
+          continue;
+        }
+        i = 0;
+      }
+      catch (Exception paramLinearLayout)
+      {
+        QLog.i("Q.lebatab.LebaTableLogic", 1, "addTableItem,index = " + paramInt, paramLinearLayout);
+        return;
+      }
+      continue;
+      label262:
+      continue;
+      label265:
+      continue;
+      label268:
+      int j = 0;
+    }
+  }
+  
+  private void a(LinearLayout paramLinearLayout)
+  {
+    int i = a(paramLinearLayout);
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    if (i != j)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+      localStringBuilder.append("removeAllViews");
+      i = 0;
+      while (i < j)
+      {
+        a(i, paramLinearLayout);
+        localStringBuilder.append(" ").append(i);
+        i += 1;
+      }
+      QLog.i("Q.lebatab.LebaTableLogic", 1, localStringBuilder.toString());
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null)
+    {
+      QLog.i("Q.lebatab.LebaTableLogic", 1, "notifyDataSetChanged mRootLayout == null");
+      return;
+    }
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    {
+      a();
+      return;
+    }
+    a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    b(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+  }
+  
+  private void b(LinearLayout paramLinearLayout)
+  {
+    Object localObject1 = ThemeUtil.getCurrentThemeId();
+    boolean bool1;
+    boolean bool2;
+    int i;
+    label100:
+    Object localObject2;
+    if (("1000".equals(localObject1)) || ("2105".equals(localObject1)) || ("1103".equals(localObject1)) || ("2101".equals(localObject1)))
+    {
+      bool1 = true;
+      bool2 = ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null);
+      QLog.i("Q.lebatab.LebaTableLogic", 1, String.format("bindDataToTable themeId %s isNeedWaterMark %b isNight = %b", new Object[] { localObject1, Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      i = 0;
+      if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+        return;
+      }
+      localObject1 = (arsh)this.jdField_a_of_type_JavaUtilList.get(i);
+      localObject2 = a(paramLinearLayout, i);
+      if (localObject2 != null) {
+        break label176;
+      }
+      QLog.i("Q.lebatab.LebaTableLogic", 1, String.format("itemView == null %d", new Object[] { Integer.valueOf(i) }));
+    }
+    for (;;)
+    {
+      i += 1;
+      break label100;
+      bool1 = false;
+      break;
+      label176:
+      if (((View)localObject2).getTag() == null)
+      {
+        QLog.i("Q.lebatab.LebaTableLogic", 1, String.format("itemView.getTag() == null %d", new Object[] { Integer.valueOf(i) }));
+      }
+      else
+      {
+        localObject2 = (awlg)((View)localObject2).getTag();
+        awlh localawlh = new awlh();
+        localawlh.jdField_a_of_type_Arsh = ((arsh)localObject1);
+        localawlh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localawlh.jdField_a_of_type_AndroidContentContext = paramLinearLayout.getContext();
+        localawlh.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        localawlh.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+        localawlh.jdField_a_of_type_AndroidViewView$OnClickListener = this;
+        localawlh.jdField_a_of_type_Awkl = this.jdField_a_of_type_Awkl;
+        localawlh.jdField_a_of_type_Boolean = bool2;
+        localawlh.jdField_b_of_type_Int = i;
+        localawlh.jdField_b_of_type_Boolean = bool1;
+        ((awlg)localObject2).a(localawlh);
+      }
+    }
+  }
+  
+  private void b(List<arsh> paramList)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    while (paramList != null)
+    {
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        arsh localarsh = (arsh)localIterator.next();
+        if ((localarsh != null) && (TextUtils.isEmpty(localarsh.jdField_a_of_type_JavaLangString))) {
+          this.jdField_a_of_type_JavaUtilList.add(localarsh);
+        }
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+    aoaz.b(paramList, a());
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      int j = this.jdField_a_of_type_JavaUtilList.size() % this.f;
+      if ((j > 0) && (j < this.f))
+      {
+        int i = 0;
+        while (i < this.f - j)
+        {
+          this.jdField_a_of_type_JavaUtilList.add(new arsh());
+          i += 1;
         }
       }
     }
   }
   
-  private void b(BaseActivity paramBaseActivity)
+  public List<Integer> a()
   {
-    Intent localIntent = bgnj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-    if (BaseActivity.sTopActivity != null)
-    {
-      BaseActivity.sTopActivity.startActivity(localIntent);
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      return aoaz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, aoaz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
     }
-    paramBaseActivity.startActivity(localIntent);
-  }
-  
-  public Bitmap a(String paramString1, String paramString2, Bitmap paramBitmap)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    do
-    {
-      return paramBitmap;
-      if ("2".equals(paramString1)) {
-        return a(paramString2);
-      }
-    } while (!"1".equals(paramString1));
-    return b(paramString2);
-  }
-  
-  public CompoundButton.OnCheckedChangeListener a(NotifyPushSettingActivity paramNotifyPushSettingActivity, FormSwitchItem paramFormSwitchItem1, FormSimpleItem paramFormSimpleItem, FormSwitchItem paramFormSwitchItem2)
-  {
-    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new awlg(this, paramNotifyPushSettingActivity, paramFormSwitchItem1, paramFormSwitchItem2);
-    return this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
+    return null;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = null;
-  }
-  
-  public void a(BaseActivity paramBaseActivity)
-  {
-    awli localawli = new awli(this);
-    awlj localawlj = new awlj(this, paramBaseActivity);
-    bglp.a(paramBaseActivity, 230, null, paramBaseActivity.getString(2131693160), paramBaseActivity.getString(2131690582), paramBaseActivity.getString(2131693159), localawlj, localawli).show();
-  }
-  
-  public void a(BaseActivity paramBaseActivity, TextView paramTextView)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources();
-    int i = paramTextView.getCurrentTextColor();
-    String str = ((Resources)localObject).getString(2131694393);
-    localObject = new SpannableString(str + "允许QQ通知" + ((Resources)localObject).getString(2131694394));
-    ((SpannableString)localObject).setSpan(new awlh(this, paramBaseActivity), str.length(), (str + "允许QQ通知").length(), 17);
-    paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
-    paramTextView.setText((CharSequence)localObject);
-    paramTextView.setClickable(true);
-    paramTextView.setTextColor(i);
-  }
-  
-  public void a(FormSwitchItem paramFormSwitchItem1, TextView paramTextView, FormSwitchItem paramFormSwitchItem2, FormSwitchItem paramFormSwitchItem3)
-  {
-    int i = 0;
-    boolean bool1 = c();
-    if (bool1 != this.jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("NewMsgNotificationManager", 2, new Object[] { "onNotifyPushActivityResume: invoked. ", " curSystemState[系统设置发生了变化]: ", Boolean.valueOf(bool1), " systemNotificationEnabled: ", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-      }
-      this.jdField_a_of_type_Boolean = bool1;
-      SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), null, "system_notification_enabled_key", bool1);
-      paramFormSwitchItem1 = paramFormSwitchItem1.a();
-      paramFormSwitchItem2 = paramFormSwitchItem2.a();
-      paramFormSwitchItem3 = paramFormSwitchItem3.a();
-      if (bool1) {
-        break label217;
-      }
-      paramFormSwitchItem1.setAlpha(0.5F);
-      paramFormSwitchItem2.setAlpha(0.5F);
-      paramFormSwitchItem3.setAlpha(0.5F);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, 0, 0, 0);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
     }
-    for (;;)
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, View paramView1, View paramView2, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetLinearLayout == null) || (paramView1 == null))
     {
-      if (bool1) {
-        i = 8;
-      }
-      paramTextView.setVisibility(i);
+      QLog.i("Q.lebatab.LebaTableLogic", 1, "statExposure mRootLayout == null || lvView == null");
       return;
-      boolean bool2 = b();
-      if (!QLog.isColorLevel()) {
-        break;
+    }
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    String str = ThemeUtil.getCurrentThemeId();
+    paramFloat2 += paramView1.getHeight() - paramView1.getPaddingBottom() - paramView1.getPaddingTop();
+    localStringBuilder1.append("reportExposure, e_top = ").append(paramFloat1).append(", e_bottom = ").append(paramFloat2);
+    a(paramFloat1, paramFloat2, paramInt1, paramInt2, str, paramView2, localStringBuilder1, localStringBuilder2);
+    a(paramFloat1, paramFloat2, paramInt3, paramBoolean, str, paramView2, localStringBuilder1, localStringBuilder2);
+    a(paramFloat1, paramFloat2, str, paramView2, localStringBuilder1, localStringBuilder2);
+    paramView1 = awkp.a("plugin_exp");
+    paramView1.jdField_a_of_type_JavaLangString = localStringBuilder2.toString();
+    bdkm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView1);
+    QLog.i("Q.lebatab.LebaTableLogic", 1, localStringBuilder2);
+  }
+  
+  public void a(List<arsh> paramList)
+  {
+    b(paramList);
+    b();
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      arsh localarsh = a(paramView);
+      if ((localarsh != null) && (this.jdField_a_of_type_Awkd != null))
+      {
+        awkn localawkn = new awkn();
+        localawkn.jdField_a_of_type_Boolean = true;
+        localawkn.jdField_a_of_type_Long = localarsh.jdField_a_of_type_Long;
+        localawkn.jdField_a_of_type_Int = (paramView.getId() + 1);
+        if ((paramView instanceof RedTouch))
+        {
+          localawkn.jdField_b_of_type_Int = awkp.a((RedTouch)paramView);
+          localawkn.c = awkp.b((RedTouch)paramView);
+        }
+        this.jdField_a_of_type_Awkd.a(paramView, localarsh, localawkn);
       }
-      QLog.d("NewMsgNotificationManager", 2, new Object[] { "onNotifyPushActivityResume: invoked. [系统设置未变化]", " curSystemState: ", Boolean.valueOf(bool1), " globalSwitchOn: ", Boolean.valueOf(bool2) });
-      break;
-      label217:
-      paramFormSwitchItem1.setAlpha(1.0F);
-      paramFormSwitchItem2.setAlpha(1.0F);
-      paramFormSwitchItem3.setAlpha(1.0F);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public boolean a()
-  {
-    if (SettingCloneUtil.isContainValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), null, "system_notification_enabled_key")) {
-      return SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), null, "system_notification_enabled_key", true);
-    }
-    return c();
-  }
-  
-  public boolean a(QQMessageFacade.Message paramMessage)
-  {
-    if (paramMessage == null) {
-      return true;
-    }
-    return a(paramMessage.istroop, paramMessage.frienduin);
-  }
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
-      return true;
-    }
-    return a(paramMessageRecord.istroop, paramMessageRecord.frienduin);
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewMsgNotificationManager", 2, new Object[] { "needDecodeIcon: invoked. ", " iconType: ", paramString1, " iconUrl: ", paramString2 });
-    }
-    return (("1".equals(paramString1)) || ("2".equals(paramString1))) && (!TextUtils.isEmpty(paramString2));
-  }
-  
-  public boolean b()
-  {
-    boolean bool = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), null, "new_msg_notification_key", true);
-    if (QLog.isColorLevel()) {
-      QLog.d("NewMsgNotificationManager", 2, new Object[] { "globalSwitchOn: invoked. ", " enable: ", Boolean.valueOf(bool) });
-    }
-    return bool;
-  }
-  
-  public boolean c()
-  {
-    boolean bool = QQNotificationManager.getInstance().areNotificationsEnabled(BaseApplicationImpl.getContext());
-    if (QLog.isColorLevel()) {
-      QLog.d("NewMsgNotificationManager", 2, new Object[] { "systemNotificationEnabled: invoked. ", " enable: ", Boolean.valueOf(bool) });
-    }
-    return bool;
-  }
-  
-  public void onDestroy() {}
 }
 
 

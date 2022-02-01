@@ -1,6 +1,14 @@
-public abstract interface old
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+
+public class old
+  implements bljb
 {
-  public abstract void a(boolean paramBoolean);
+  public old(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  
+  public void onDismiss()
+  {
+    ReadInJoySettingActivity.b(this.a).cancel();
+  }
 }
 
 

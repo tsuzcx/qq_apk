@@ -1,14 +1,8 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
-
-public class bqjd
-  implements FileFilter
+public abstract interface bqjd
 {
-  public boolean accept(File paramFile)
-  {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(bqjc parambqjc);
 }
 
 

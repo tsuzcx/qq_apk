@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bham;
+import bias;
 import com.tencent.qphone.base.util.QLog;
 
 class QQSettingMe$8
@@ -13,7 +13,7 @@ class QQSettingMe$8
     if (QLog.isColorLevel()) {
       QLog.d("QQSettingRedesign", 2, "init parse config json");
     }
-    bham.a().a(this.this$0.a);
+    bias.a().a(this.this$0.a);
   }
 }
 

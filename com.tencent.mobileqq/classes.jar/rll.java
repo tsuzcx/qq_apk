@@ -1,20 +1,105 @@
-import android.database.DataSetObserver;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import java.util.ArrayList;
 
 public class rll
-  extends DataSetObserver
 {
-  public rll(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
-  
-  public void onChanged()
+  public static VideoInfo a(BaseArticleInfo paramBaseArticleInfo)
   {
-    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
+    VideoInfo localVideoInfo = new VideoInfo();
+    localVideoInfo.g = paramBaseArticleInfo.getInnerUniqueID();
+    localVideoInfo.jdField_b_of_type_Boolean = sel.g(paramBaseArticleInfo);
+    localVideoInfo.jdField_d_of_type_Long = paramBaseArticleInfo.mFeedId;
+    localVideoInfo.jdField_h_of_type_Int = paramBaseArticleInfo.mFeedType;
+    return localVideoInfo;
+  }
+  
+  public static BaseArticleInfo a(VideoInfo paramVideoInfo)
+  {
+    if ((paramVideoInfo != null) && (paramVideoInfo.jdField_a_of_type_Int != 0))
     {
-      ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(0);
-      return;
+      ArticleInfo localArticleInfo = new ArticleInfo();
+      try
+      {
+        localArticleInfo.mArticleID = paramVideoInfo.jdField_c_of_type_Long;
+        localArticleInfo.innerUniqueID = paramVideoInfo.g;
+        localArticleInfo.mTitle = paramVideoInfo.jdField_c_of_type_JavaLangString;
+        localArticleInfo.mSubscribeName = paramVideoInfo.k;
+        localArticleInfo.mSubscribeID = paramVideoInfo.j;
+        localArticleInfo.mFirstPagePicUrl = paramVideoInfo.jdField_b_of_type_JavaLangString;
+        localArticleInfo.mVideoDuration = paramVideoInfo.jdField_d_of_type_Int;
+        localArticleInfo.mVideoCoverUrl = tye.a(paramVideoInfo.jdField_b_of_type_JavaLangString, paramVideoInfo.jdField_a_of_type_Int);
+        localArticleInfo.mVideoVid = paramVideoInfo.jdField_a_of_type_JavaLangString;
+        localArticleInfo.mFeedType = paramVideoInfo.jdField_h_of_type_Int;
+        localArticleInfo.mFeedId = paramVideoInfo.jdField_d_of_type_Long;
+        localArticleInfo.mXGFileSize = paramVideoInfo.jdField_b_of_type_Long;
+        localArticleInfo.busiType = paramVideoInfo.jdField_a_of_type_Int;
+        localArticleInfo.mJsonVideoList = paramVideoInfo.l;
+        localArticleInfo.mVideoCommentCount = paramVideoInfo.jdField_e_of_type_Int;
+        localArticleInfo.mVideoJsonWidth = paramVideoInfo.jdField_b_of_type_Int;
+        localArticleInfo.mVideoJsonHeight = paramVideoInfo.jdField_c_of_type_Int;
+        localArticleInfo.mArticleContentUrl = paramVideoInfo.jdField_f_of_type_JavaLangString;
+        localArticleInfo.thirdIcon = paramVideoInfo.p;
+        localArticleInfo.thirdName = paramVideoInfo.k;
+        localArticleInfo.thirdAction = paramVideoInfo.o;
+        localArticleInfo.thirdUin = paramVideoInfo.j;
+        localArticleInfo.thirdUinName = paramVideoInfo.jdField_q_of_type_JavaLangString;
+        localArticleInfo.mVideoPlayCount = paramVideoInfo.jdField_q_of_type_Int;
+        localArticleInfo.mRecommentdReason = paramVideoInfo.jdField_h_of_type_JavaLangString;
+        localArticleInfo.videoReportInfo = paramVideoInfo.z;
+        localArticleInfo.mSummary = paramVideoInfo.jdField_d_of_type_JavaLangString;
+        localArticleInfo.mTime = paramVideoInfo.jdField_a_of_type_Long;
+        localArticleInfo.mAlgorithmID = paramVideoInfo.jdField_f_of_type_Long;
+        localArticleInfo.mDiskLikeInfoString = DislikeInfo.a(paramVideoInfo.jdField_a_of_type_JavaUtilArrayList);
+        localArticleInfo.mArticleSubscriptText = paramVideoInfo.x;
+        localArticleInfo.mArticleSubscriptColor = paramVideoInfo.y;
+        localArticleInfo.mRecommendSeq = paramVideoInfo.jdField_e_of_type_Long;
+        localArticleInfo.mVideoLogoUrl = paramVideoInfo.u;
+        if (paramVideoInfo.jdField_b_of_type_Boolean)
+        {
+          paramVideoInfo.jdField_a_of_type_Int = 6;
+          localArticleInfo.mSocialFeedInfo = new SocializeFeedsInfo();
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl = new qyl();
+          if (!TextUtils.isEmpty(paramVideoInfo.j)) {
+            localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.jdField_a_of_type_Long = Long.valueOf(paramVideoInfo.j).longValue();
+          }
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.jdField_a_of_type_Int = paramVideoInfo.jdField_h_of_type_Int;
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.jdField_b_of_type_JavaLangString = paramVideoInfo.k;
+          localArticleInfo.mSocialFeedInfo.jdField_d_of_type_Int = paramVideoInfo.jdField_e_of_type_Int;
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+          qyn localqyn = new qyn();
+          localqyn.jdField_d_of_type_JavaLangString = paramVideoInfo.jdField_b_of_type_JavaLangString;
+          localqyn.jdField_e_of_type_JavaLangString = paramVideoInfo.jdField_c_of_type_JavaLangString;
+          localqyn.jdField_a_of_type_Long = (paramVideoInfo.jdField_d_of_type_Int * 1000);
+          localqyn.jdField_a_of_type_Int = paramVideoInfo.jdField_b_of_type_Int;
+          localqyn.jdField_b_of_type_Int = paramVideoInfo.jdField_c_of_type_Int;
+          localqyn.g = paramVideoInfo.g;
+          if (paramVideoInfo.jdField_e_of_type_JavaLangString != null) {
+            localqyn.jdField_e_of_type_Int = Integer.parseInt(paramVideoInfo.jdField_e_of_type_JavaLangString);
+          }
+          localqyn.jdField_h_of_type_JavaLangString = paramVideoInfo.jdField_f_of_type_JavaLangString;
+          localqyn.f = paramVideoInfo.jdField_a_of_type_Int;
+          localqyn.i = paramVideoInfo.jdField_a_of_type_JavaLangString;
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.jdField_b_of_type_JavaUtilArrayList.add(localqyn);
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxt.jdField_a_of_type_Long = Long.parseLong(paramVideoInfo.j);
+          paramVideoInfo = new qxr();
+          paramVideoInfo.a = Long.valueOf(localArticleInfo.mFeedId);
+          paramVideoInfo.b = Long.valueOf(localArticleInfo.mFeedType);
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qxr = paramVideoInfo;
+        }
+        return localArticleInfo;
+      }
+      catch (Throwable paramVideoInfo)
+      {
+        paramVideoInfo.printStackTrace();
+        return localArticleInfo;
+      }
     }
-    ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(8);
+    return null;
   }
 }
 

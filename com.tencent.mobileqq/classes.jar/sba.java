@@ -1,79 +1,33 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.HashSet;
+import android.graphics.Bitmap;
+import android.view.PixelCopy.OnPixelCopyFinishedListener;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class sba
-  extends pvp
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "copyResult", "", "onPixelCopyFinished", "com/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$captureViewApiO$1$1"}, k=3, mv={1, 1, 16})
+final class sba
+  implements PixelCopy.OnPixelCopyFinishedListener
 {
-  private sba(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  sba(Bitmap paramBitmap, saw paramsaw, View paramView, float paramFloat, sax paramsax) {}
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public final void onPixelCopyFinished(int paramInt)
   {
-    VideoFeedsPlayActivity.a("handleDoFavoriteResult isSuccess = " + paramBoolean + ", operationType = " + paramInt + ", cid = " + paramString2);
-    if (TextUtils.isEmpty(paramString1)) {}
+    Object localObject;
+    if (paramInt == 0)
+    {
+      localObject = this.jdField_a_of_type_Saw;
+      Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      Intrinsics.checkExpressionValueIsNotNull(localBitmap, "bitmap");
+      saw.a((saw)localObject, localBitmap, this.jdField_a_of_type_Sax);
+    }
     do
     {
       return;
-      paramString1 = VideoFeedsRecommendFragment.a(this.a).a(paramString1);
-    } while (paramString1 == null);
-    if (paramBoolean)
-    {
-      if (paramInt != 1) {
-        break label204;
-      }
-      paramString1.a.add(paramString2);
-      if (!paramString1.d) {
-        new ArrayList(paramString1.a);
-      }
-    }
-    label103:
-    if (paramString1.e)
-    {
-      paramString2 = new QQToast(this.a.getActivity().getApplicationContext());
-      paramString2.d(2000);
-      if (!paramBoolean) {
-        break label212;
-      }
-      paramString2.a(QQToast.a(2));
-      paramString2.c(2131691987);
-      paramString2.b(this.a.getActivity().getApplicationContext().getResources().getDimensionPixelSize(2131298998) - (int)bgme.a(this.a.getActivity().getApplicationContext(), 5.0F));
-    }
-    for (;;)
-    {
-      paramString1.e = false;
-      return;
-      label204:
-      if (paramInt != 2) {
-        break label103;
-      }
-      break label103;
-      break;
-      label212:
-      paramString2.a(QQToast.a(1));
-      paramString2.c(2131691988);
-      paramString2.b(this.a.getActivity().getApplicationContext().getResources().getDimensionPixelSize(2131298998) - (int)bgme.a(this.a.getActivity().getApplicationContext(), 5.0F));
-      paramString1.d = false;
-    }
-  }
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList)
-  {
-    VideoFeedsPlayActivity.a("handleFavoriteStatus isSuccess = " + paramBoolean1 + ", rowkey = " + paramString + ", isFavorite = " + paramBoolean2);
-    if ((!paramBoolean1) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
-      return;
-      paramString = VideoFeedsRecommendFragment.a(this.a).a(paramString);
-    } while (paramString == null);
-    paramString.d = paramBoolean2;
-    paramString.a.addAll(paramArrayList);
+      QLog.e("ScreenCaptureHelper", 1, "captureViewApiO failed, copyResult:" + paramInt);
+      localObject = this.jdField_a_of_type_Sax;
+    } while (localObject == null);
+    ((sax)localObject).a();
   }
 }
 

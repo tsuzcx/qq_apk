@@ -1,78 +1,50 @@
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class qaf
+  implements ViewBase.OnClickListener
 {
-  public int a;
-  public ToServiceMsg a;
-  public String a;
-  public List<ArticleInfo> a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public List<ArticleInfo> b;
-  public boolean b;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
   
-  public qaf a()
+  public qaf(ArticleInfo paramArticleInfo, VafContext paramVafContext)
   {
-    qaf localqaf = new qaf();
-    localqaf.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg).a(this.jdField_a_of_type_Int).b(this.jdField_b_of_type_Int).a(this.jdField_a_of_type_JavaUtilList).b(this.jdField_b_of_type_JavaUtilList).a(this.jdField_a_of_type_Boolean).b(this.jdField_b_of_type_Boolean).a(this.jdField_a_of_type_ArrayOfByte).a(this.jdField_a_of_type_JavaLangString);
-    return localqaf;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = paramVafContext;
   }
   
-  public qaf a(int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public qaf a(ToServiceMsg paramToServiceMsg)
-  {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    return this;
-  }
-  
-  public qaf a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public qaf a(List<ArticleInfo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    return this;
-  }
-  
-  public qaf a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public qaf a(byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    return this;
-  }
-  
-  public qaf b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public qaf b(List<ArticleInfo> paramList)
-  {
-    this.jdField_b_of_type_JavaUtilList = paramList;
-    return this;
-  }
-  
-  public qaf b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
+      return;
+    }
+    if (ozs.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
+    {
+      osp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, null, 17, "", "", false, null, -1);
+      oxw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009A72", null);
+      return;
+    }
+    osp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, null, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId, anzj.a(2131706725), null, false, null, false, null, 1);
+    if (ubg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID)) {}
+    for (paramViewBase = "0X80094A0";; paramViewBase = "0X800949E") {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("folder_status", "x");
+        ocd.a(null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSubscribeID, paramViewBase, paramViewBase, 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), "" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId, localJSONObject.toString(), false);
+        return;
+      }
+      catch (JSONException paramViewBase)
+      {
+        paramViewBase.printStackTrace();
+        return;
+      }
+    }
   }
 }
 

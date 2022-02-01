@@ -1,15 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-class axue
-  implements DialogInterface.OnClickListener
+public class axue
 {
-  axue(axtp paramaxtp) {}
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c = "";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public axue()
   {
-    this.a.d(true);
-    bcst.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public axue(boolean paramBoolean1, boolean paramBoolean2, long paramLong, String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+  }
+  
+  public boolean a()
+  {
+    long l = NetConnInfoCenter.getServerTime();
+    return (this.jdField_a_of_type_Long <= 0L) || (l > this.jdField_a_of_type_Long);
   }
 }
 

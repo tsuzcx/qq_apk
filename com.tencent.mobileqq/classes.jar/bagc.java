@@ -1,26 +1,31 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent;
+import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent.ColorScreenLoader;
 import com.tencent.qphone.base.util.QLog;
 
-class bagc
-  extends AnimatorListenerAdapter
+public class bagc
+  implements OnCompositionLoadedListener
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public bagc(ProfileColorScreenComponent.ColorScreenLoader paramColorScreenLoader) {}
   
-  bagc(baga parambaga) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    QLog.i("QzoneGiftManager", 1, "onAnimationEnd");
-    if (this.jdField_a_of_type_Boolean) {
-      baga.a(this.jdField_a_of_type_Baga, 8);
+    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
+      QLog.d("ColorScreenManager", 1, "onCompositionLoaded: composition= " + paramLottieComposition);
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    QLog.i("QzoneGiftManager", 1, "onAnimationStart");
-    this.jdField_a_of_type_Boolean = true;
+    if (paramLottieComposition == null)
+    {
+      biaa.a(ProfileColorScreenComponent.a(this.a.this$0), "individual_v2_colorscreen_parse_fail", "0", "", Integer.toString(ProfileColorScreenComponent.ColorScreenLoader.a(this.a)), null, null, 0.0F, 0.0F);
+      bhzz.a("individual_v2_colorscreen_parse_fail", "id:" + ProfileColorScreenComponent.ColorScreenLoader.a(this.a));
+    }
+    do
+    {
+      return;
+      ProfileColorScreenComponent.ColorScreenLoader.a(this.a, paramLottieComposition);
+    } while (ProfileColorScreenComponent.a(this.a.this$0) == null);
+    ProfileColorScreenComponent.a(this.a.this$0).postDelayed(this.a, 500L);
   }
 }
 

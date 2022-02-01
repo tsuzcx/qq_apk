@@ -1,15 +1,15 @@
 package com.tencent.avgame.gameroom.video;
 
-import ncz;
+import ner;
 
 public class AVGameVideoLayer$1
   implements Runnable
 {
-  public AVGameVideoLayer$1(ncz paramncz) {}
+  public AVGameVideoLayer$1(ner paramner) {}
   
   public void run()
   {
-    ncz.a(this.this$0);
+    ner.a(this.this$0);
   }
 }
 

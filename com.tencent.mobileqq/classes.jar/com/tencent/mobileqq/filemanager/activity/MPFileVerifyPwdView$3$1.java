@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.app.Activity;
-import asso;
+import atis;
 import java.util.TimerTask;
 
 public class MPFileVerifyPwdView$3$1
   extends TimerTask
 {
-  public MPFileVerifyPwdView$3$1(asso paramasso) {}
+  public MPFileVerifyPwdView$3$1(atis paramatis) {}
   
   public void run()
   {

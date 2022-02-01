@@ -1,75 +1,57 @@
-import android.arch.lifecycle.MutableLiveData;
-import com.tencent.biz.qqcircle.requests.QCircleGetLightInteractRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.os.Build;
+import android.os.Build.VERSION;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import feedcloud.FeedCloudCommon.Entry;
 import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StLightInteractInfo;
-import feedcloud.FeedCloudRead.StGetLightInteractListRsp;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudMeta.StVideo;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class vub
-  extends zxg
 {
-  public static String a;
-  private MutableLiveData<vup<List<FeedCloudMeta.StLightInteractInfo>>> a;
-  private String b = "";
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  private static long b;
   
-  static
+  public static long a()
   {
-    jdField_a_of_type_JavaLangString = "QCircleLightInteractViewModel";
+    return jdField_a_of_type_Long;
   }
   
-  public vub()
+  public static List<FeedCloudCommon.Entry> a(long paramLong, String paramString, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
+    paramString = new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("host_uin", String.valueOf(bjjo.a().a())), vtt.a("qua", bmsw.a()), vtt.a("network_type", vtt.b()), vtt.a("client_time", String.valueOf(System.currentTimeMillis())), vtt.a("event_id", paramString), vtt.a("mobile_type", Build.MODEL + "_" + Build.VERSION.RELEASE), vtt.a("version", "8.4.5.4745"), vtt.a("platform", "AND"), vtt.a("video_play_id", String.valueOf(paramLong)), vtt.a("unique_id", String.valueOf(b())) }));
+    a(paramObject, paramString);
+    return paramString;
   }
   
-  public MutableLiveData<vup<List<FeedCloudMeta.StLightInteractInfo>>> a()
+  public static void a()
   {
-    return this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
+    jdField_a_of_type_Long = System.currentTimeMillis() / 1000L << 32 | jdField_a_of_type_Int;
+    jdField_a_of_type_Int += 1;
   }
   
-  public String a()
+  private static void a(Object paramObject, List<FeedCloudCommon.Entry> paramList)
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(FeedCloudMeta.StFeed paramStFeed, boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
-  {
-    if (!paramBoolean1) {
-      this.b = "";
-    }
-    paramStFeed = new QCircleGetLightInteractRequest(paramStFeed, this.b, paramInt, paramString);
-    paramStFeed.setEnableCache(paramBoolean2);
-    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.setValue(vup.b());
-    a(paramStFeed, new vuc(this, paramStFeed, paramBoolean1));
-  }
-  
-  public void a(boolean paramBoolean1, long paramLong, boolean paramBoolean2, String paramString, FeedCloudRead.StGetLightInteractListRsp paramStGetLightInteractListRsp)
-  {
-    boolean bool1 = true;
-    boolean bool2 = VSNetworkHelper.a(paramString);
-    if ((!paramBoolean1) || (paramLong != 0L) || (paramStGetLightInteractListRsp == null))
+    if ((paramObject instanceof FeedCloudMeta.StFeed))
     {
-      this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.setValue(vup.a(paramString).b(paramBoolean2));
-      return;
+      paramList.add(vtt.a("video_url", String.valueOf(((FeedCloudMeta.StFeed)paramObject).video.playUrl.get())));
+      paramList.add(vtt.a("total_time", String.valueOf(((FeedCloudMeta.StFeed)paramObject).video.duration.get() / 1000.0F)));
+      paramList.add(vtt.a("orig_uin", String.valueOf(((FeedCloudMeta.StFeed)paramObject).poster.id.get())));
+      paramList.add(vtt.a("feed_id", String.valueOf(((FeedCloudMeta.StFeed)paramObject).id.get())));
+      paramList.add(vtt.a("feed_type", String.valueOf(((FeedCloudMeta.StFeed)paramObject).type.get())));
+      paramList.add(vtt.a("video_resolution", String.valueOf(String.valueOf(((FeedCloudMeta.StFeed)paramObject).video.width.get()) + "x" + String.valueOf(((FeedCloudMeta.StFeed)paramObject).video.height.get()))));
     }
-    this.b = paramStGetLightInteractListRsp.attachInfo.get();
-    Object localObject = paramStGetLightInteractListRsp.listInfo.get();
-    if (((List)localObject).size() > 0)
-    {
-      paramString = this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
-      localObject = vup.a(bool2).a(paramBoolean2, localObject);
-      if (paramStGetLightInteractListRsp.isFinish.get() == 1) {}
-      for (paramBoolean1 = bool1;; paramBoolean1 = false)
-      {
-        paramString.setValue(((vup)localObject).c(paramBoolean1));
-        return;
-      }
-    }
-    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.setValue(vup.a().b(paramBoolean2));
+  }
+  
+  public static long b()
+  {
+    long l = b;
+    b = 1L + l;
+    return l;
   }
 }
 

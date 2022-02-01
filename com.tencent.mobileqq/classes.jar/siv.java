@@ -1,11 +1,27 @@
-import kotlin.Metadata;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKEventListener;", "", "onInstalledFailed", "", "errorCode", "", "onInstalledSuccessed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface siv
+public class siv
+  extends AnimatorListenerAdapter
 {
-  public abstract void a();
+  public siv(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public abstract void a(int paramInt);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    ReadInJoyListViewGroup.a(this.a).setLayerType(0, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+  }
 }
 
 

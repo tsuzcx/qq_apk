@@ -1,20 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
 
-class qum
-  implements View.OnClickListener
+public abstract interface qum
 {
-  qum(qul paramqul) {}
-  
-  public void onClick(View paramView)
-  {
-    spb localspb = this.a.jdField_a_of_type_Snh.a();
-    if (localspb != null) {
-      localspb.a(null, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt, String paramString, BaseResData paramBaseResData);
 }
 
 

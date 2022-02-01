@@ -17,20 +17,14 @@ class WebInputHandler$MyOnGlobalLayoutListener
   
   public void onGlobalLayout()
   {
-    if ((this.webEditText.isFocused()) && (WebInputHandler.access$000(this.this$0)))
-    {
-      arrayOfInt = new int[2];
-      this.webEditText.getLocationOnScreen(arrayOfInt);
-      i = arrayOfInt[1];
-      i = DisplayUtil.getRealHeight(this.webEditText.getContext()) - (i + this.webEditText.getHeight()) - this.webEditText.getMarginBottom();
-      if ((WebInputHandler.access$100(this.this$0) > i) && (this.webEditText.isAdjustPosition()) && (WebInputHandler.access$000(this.this$0)) && (WebInputHandler.access$200(this.this$0) != null) && (WebInputHandler.access$200(this.this$0).getPageWebviewContainer() != null)) {
-        WebInputHandler.access$400(this.this$0, new float[] { 0.0F, -(WebInputHandler.access$100(this.this$0) - i) });
-      }
+    int[] arrayOfInt = new int[2];
+    this.webEditText.getLocationOnScreen(arrayOfInt);
+    int i = arrayOfInt[1];
+    i = DisplayUtil.getRealHeight(this.webEditText.getContext()) - (i + this.webEditText.getHeight()) - this.webEditText.getMarginBottom();
+    if ((this.webEditText.isFocused()) && (this.webEditText.isAdjustPosition()) && (WebInputHandler.access$100(this.this$0)) && (WebInputHandler.access$000(this.this$0) > i) && (WebInputHandler.access$200(this.this$0) != null) && (WebInputHandler.access$200(this.this$0).getPageWebviewContainer() != null)) {
+      WebInputHandler.access$400(this.this$0, new float[] { 0.0F, -(WebInputHandler.access$000(this.this$0) - i) });
     }
-    while ((WebInputHandler.access$000(this.this$0)) || (WebInputHandler.access$200(this.this$0) == null) || (WebInputHandler.access$200(this.this$0).getPageWebviewContainer() == null))
-    {
-      int[] arrayOfInt;
-      int i;
+    while ((WebInputHandler.access$100(this.this$0)) || (WebInputHandler.access$200(this.this$0) == null) || (WebInputHandler.access$200(this.this$0).getPageWebviewContainer() == null)) {
       return;
     }
     WebInputHandler.access$400(this.this$0, new float[] { WebInputHandler.access$200(this.this$0).getPageWebviewContainer().getTranslationY(), 0.0F });

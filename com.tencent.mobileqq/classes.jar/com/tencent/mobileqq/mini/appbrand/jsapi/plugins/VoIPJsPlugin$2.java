@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import anni;
+import anzj;
 import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +17,7 @@ class VoIPJsPlugin$2
     try
     {
       this.val$res.put("errCode", paramInt);
-      this.val$webview.evaluateCallbackJs(this.val$callbackId, ApiUtil.wrapCallbackFail(this.val$eventName, this.val$res, anni.a(2131715529)).toString());
+      this.val$webview.evaluateCallbackJs(this.val$callbackId, ApiUtil.wrapCallbackFail(this.val$eventName, this.val$res, anzj.a(2131715638)).toString());
       return;
     }
     catch (JSONException localJSONException)

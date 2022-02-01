@@ -1,9 +1,21 @@
-public final class azae
-  extends ayzn
+import java.util.ArrayList;
+
+public class azae
 {
-  protected int a()
+  public int a;
+  public String a;
+  public ArrayList<String> a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  
+  public String toString()
   {
-    return 510;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",session_id:").append(this.c).append(",content:").append(this.d).append(",language").append(this.e).append(",ocr_language_list").append(this.jdField_a_of_type_JavaUtilArrayList);
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,17 +1,16 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bcis
-  implements Camera.AutoFocusCallback
+  implements View.OnClickListener
 {
   bcis(bcir parambcir) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraProxy", 2, "Request Focus onAutoFocus");
-    }
+    bcir.a(this.a).a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
-public class bbsw
-  extends bbti
+public abstract interface bbsw
 {
-  public bbsw(GroupSearchEngine paramGroupSearchEngine, bbtj parambbtj, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, parambbtj, paramString, paramInt);
-  }
+  public abstract void a(int paramInt, RichStatus paramRichStatus, Object paramObject);
   
-  public bbmx a(List<bbmy> paramList, String paramString)
-  {
-    return new bbml(paramList, paramString);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void b(int paramInt, boolean paramBoolean);
 }
 
 

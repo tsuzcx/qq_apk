@@ -1,29 +1,20 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import java.util.ArrayList;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$ActionSheetPrivacySelectBean;", "", "state", "", "privacySelectDes", "", "(ILjava/lang/String;)V", "getPrivacySelectDes", "()Ljava/lang/String;", "setPrivacySelectDes", "(Ljava/lang/String;)V", "getState", "()I", "setState", "(I)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class azrd
+public abstract interface azrd
 {
-  private int jdField_a_of_type_Int;
-  @NotNull
-  private String jdField_a_of_type_JavaLangString;
+  public abstract void a(int paramInt);
   
-  public azrd(int paramInt, @NotNull String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a(int paramInt, azql paramazql);
   
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  public abstract void a(int paramInt, ArrayList<azql> paramArrayList);
   
-  @NotNull
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public abstract void a_(int paramInt, boolean paramBoolean);
+  
+  public abstract void b(int paramInt, azql paramazql);
+  
+  public abstract void c(int paramInt, azql paramazql);
+  
+  public abstract void d(int paramInt, azql paramazql);
 }
 
 

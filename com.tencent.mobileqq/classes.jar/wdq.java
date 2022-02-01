@@ -1,55 +1,15 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter.MultiPicAdapter;
+import com.tencent.qphone.base.util.QLog;
 
 public class wdq
+  extends vrh
 {
-  private double a;
-  private double b;
+  public wdq(QCircleFeedItemPicPresenter.MultiPicAdapter paramMultiPicAdapter) {}
   
-  public wdq(double paramDouble1, double paramDouble2)
+  public void a(int paramInt, vrd paramvrd)
   {
-    this.a = paramDouble1;
-    this.b = paramDouble2;
-  }
-  
-  public double a()
-  {
-    return this.a;
-  }
-  
-  public qqstory_struct.GpsMsg a()
-  {
-    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
-    localGpsMsg.setHasFlag(true);
-    localGpsMsg.lat.set((int)(a() * 1000000.0D));
-    localGpsMsg.lng.set((int)(b() * 1000000.0D));
-    return localGpsMsg;
-  }
-  
-  public double b()
-  {
-    return this.b;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
-    }
-    if (!(paramObject instanceof wdq)) {
-      return false;
-    }
-    return (((wdq)paramObject).a == this.a) && (((wdq)paramObject).b == this.b);
-  }
-  
-  public int hashCode()
-  {
-    return "Gps".hashCode() + (int)(this.a * 1000000.0D) + (int)(this.b * 1000000.0D);
-  }
-  
-  public String toString()
-  {
-    return "Gps{lat=" + this.a + ", lng=" + this.b + '}';
+    super.a(paramInt, paramvrd);
+    QLog.d("QCircleFeedItemPicPresent1", 1, paramvrd.a() + "\n, state callback:" + paramInt);
   }
 }
 

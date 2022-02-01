@@ -1,24 +1,19 @@
-public class bnae
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.DiscoverTab;
+
+public final class bnae
+  implements Parcelable.Creator<DiscoverTab>
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
+  public DiscoverTab a(Parcel paramParcel)
+  {
+    return new DiscoverTab(paramParcel);
+  }
+  
+  public DiscoverTab[] a(int paramInt)
+  {
+    return new DiscoverTab[paramInt];
+  }
 }
 
 

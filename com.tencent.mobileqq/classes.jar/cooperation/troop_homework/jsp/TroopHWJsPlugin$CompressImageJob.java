@@ -2,8 +2,8 @@ package cooperation.troop_homework.jsp;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import bmru;
-import bmrv;
+import bnsz;
+import bnta;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -58,10 +58,10 @@ class TroopHWJsPlugin$CompressImageJob
         label207:
         this.this$0.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localException);
         ((HashMap)localObject1).put(Integer.valueOf(i), localException);
-        bmru localbmru = new bmru(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.e, this.this$0.d);
-        bmrv localbmrv = this.this$0.a(this.this$0, i, localException, null, localbmru, 1);
-        this.this$0.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localbmrv);
-        localbmrv.a();
+        bnsz localbnsz = new bnsz(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.e, this.this$0.d);
+        bnta localbnta = this.this$0.a(this.this$0, i, localException, null, localbnsz, 1);
+        this.this$0.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localbnta);
+        localbnta.a();
       }
       else
       {

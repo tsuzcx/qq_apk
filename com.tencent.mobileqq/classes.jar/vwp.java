@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
-
-class vwp
-  implements DialogInterface.OnClickListener
+public abstract interface vwp
 {
-  vwp(vwo paramvwo) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    QCircleFeedCommentWidget.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext().hashCode(), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

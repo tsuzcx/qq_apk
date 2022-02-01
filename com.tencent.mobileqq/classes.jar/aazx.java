@@ -1,46 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.webviewplugin.BusinessReportPlugin.1;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
 public class aazx
-  extends WebViewPlugin
+  implements abab
 {
-  private Handler a;
-  public boolean a;
+  private float jdField_a_of_type_Float = 0.8F;
+  private aazv jdField_a_of_type_Aazv = aazv.a(1);
+  private float jdField_b_of_type_Float = 0.2F;
+  private aazv jdField_b_of_type_Aazv = aazv.b(1);
   
-  public aazx()
+  public void a(View paramView, float paramFloat)
   {
-    this.mPluginNameSpace = "JD_REPORT";
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidOsHandler.post(new BusinessReportPlugin.1(this, paramString));
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("BusinessReporter", 1, "Report Error:" + paramString);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_Boolean = ocz.a(paramString);
-  }
-  
-  public Object handleEvent(String paramString, long paramLong)
-  {
-    if (paramLong == 8L) {
-      a(paramString);
-    }
-    return null;
+    this.jdField_a_of_type_Aazv.a(paramView);
+    this.jdField_b_of_type_Aazv.a(paramView);
+    paramFloat = Math.abs(paramFloat);
+    float f = this.jdField_a_of_type_Float;
+    paramFloat = (1.0F - paramFloat) * this.jdField_b_of_type_Float + f;
+    paramView.setScaleX(paramFloat);
+    paramView.setScaleY(paramFloat);
   }
 }
 

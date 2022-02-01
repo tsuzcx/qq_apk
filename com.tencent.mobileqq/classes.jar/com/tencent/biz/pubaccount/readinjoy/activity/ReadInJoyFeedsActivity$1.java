@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import nko;
-import ois;
-import oit;
-import oiu;
-import oiv;
+import nmj;
+import oka;
+import okb;
+import okc;
+import okd;
 
 public class ReadInJoyFeedsActivity$1
   implements Runnable
@@ -13,10 +13,10 @@ public class ReadInJoyFeedsActivity$1
   
   public void run()
   {
-    nko.b("2378", this.this$0.app, true, new ois(this));
-    nko.b("2464", this.this$0.app, true, new oit(this));
-    nko.b("2463", this.this$0.app, true, new oiu(this));
-    nko.b("3256", this.this$0.app, true, new oiv(this));
+    nmj.b("2378", this.this$0.app, true, new oka(this));
+    nmj.b("2464", this.this$0.app, true, new okb(this));
+    nmj.b("2463", this.this$0.app, true, new okc(this));
+    nmj.b("3256", this.this$0.app, true, new okd(this));
   }
 }
 

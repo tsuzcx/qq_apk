@@ -1,56 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.smtt.sdk.WebView;
-
-class abbi
-  implements nmc
+public class abbi
 {
-  abbi(abbc paramabbc) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
   
-  public void a()
+  public abbi(int paramInt, String paramString)
   {
-    Object localObject = this.a.mRuntime.a();
-    if (localObject == null) {}
-    for (;;)
-    {
-      return;
-      bhni localbhni = this.a.mRuntime.a(this.a.mRuntime.a());
-      if ((localbhni != null) && ((localbhni instanceof bhsl)) && (((bhsl)localbhni).getTopActivity() != localObject))
-      {
-        localObject = this.a.mRuntime.a();
-        if (localObject != null) {
-          try
-          {
-            localbhni = this.a.mRuntime.a(this.a.mRuntime.a());
-            if ((localbhni instanceof bhsx))
-            {
-              ((WebView)localObject).loadUrl(((bhsx)localbhni).getCurrentUrl());
-              return;
-            }
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-          }
-        }
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void loaded(String paramString, int paramInt)
+  public int a()
   {
-    paramString = this.a.a.obtainMessage();
-    paramString.arg1 = 5;
-    paramString.arg2 = paramInt;
-    this.a.a.sendMessage(paramString);
+    return this.jdField_a_of_type_Int;
   }
   
-  public void progress(int paramInt)
+  public void a(int paramInt)
   {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.arg1 = 4;
-    localMessage.arg2 = paramInt;
-    this.a.a.sendMessage(localMessage);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/nab" android:background="@drawable/gf5" android:paddingLeft="12.0dip" android:paddingTop="10.0dip" android:paddingRight="12.0dip" android:paddingBottom="10.0dip" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="-15.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView android:id="@id/iir" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</FrameLayout>
+    <com.tencent.mobileqq.widget.RoundCorneredRelativeLayout android:id="@id/nac" android:layout_width="220.0dip" android:layout_height="280.0dip" android:layout_centerInParent="true">
+        <ImageView android:id="@id/nad" android:layout_width="74.5dip" android:layout_height="73.5dip" android:layout_marginBottom="4.0dip" android:src="@drawable/grd" android:scaleType="centerCrop" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        <com.tencent.image.URLImageView android:id="@id/nag" android:layout_width="110.0dip" android:layout_height="110.0dip" android:scaleType="centerCrop" android:layout_alignParentRight="true" />
+        <com.tencent.image.URLImageView android:id="@id/naf" android:layout_width="110.0dip" android:layout_height="110.0dip" android:scaleType="centerCrop" android:layout_below="@id/nag" android:layout_alignParentRight="true" />
+        <com.tencent.image.URLImageView android:id="@id/nae" android:layout_width="110.0dip" android:layout_height="220.0dip" android:scaleType="centerCrop" />
+        <ImageView android:layout_width="fill_parent" android:layout_height="60.0dip" />
+        <ImageView android:id="@id/naa" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/gq3" android:layout_alignParentRight="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="16.0dip" android:layout_marginBottom="2.0dip" android:layout_below="@id/nae" android:layout_alignParentBottom="true">
+            <LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:id="@id/na_" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/gk8" />
+                <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:id="@id/nah" android:layout_width="wrap_content" android:layout_height="22.5dip" android:layout_marginLeft="4.0dip" android:text="美好小世界" />
+            </LinearLayout>
+            <TextView android:textSize="12.0dip" android:textColor="@color/agf" android:gravity="center" android:id="@id/nai" android:layout_width="wrap_content" android:layout_height="16.5dip" android:layout_marginTop="2.0dip" android:text="来自最近参与的小世界" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.RoundCorneredRelativeLayout>
+</RelativeLayout>

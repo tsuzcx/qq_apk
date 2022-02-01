@@ -1,34 +1,53 @@
-import android.text.InputFilter.LengthFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 
-class bozn
-  extends InputFilter.LengthFilter
+public class bozn
+  extends QIPCModule
 {
-  boolean jdField_a_of_type_Boolean = true;
+  private static boolean a;
   
-  bozn(bozm parambozm, int paramInt1, int paramInt2)
+  public bozn(String paramString)
   {
-    super(paramInt1);
+    super(paramString);
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public static bozn a()
   {
-    if (this.jdField_a_of_type_Int - (paramSpanned.length() - (paramInt4 - paramInt3)) <= 0)
+    return bozo.a;
+  }
+  
+  public static void a()
+  {
+    if (!a)
     {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        yqu.a("textEdit", "overLimit", boza.b(this.jdField_a_of_type_Bozm.a), 0, new String[0]);
-        this.jdField_a_of_type_Boolean = false;
-      }
-      if (boza.a(this.jdField_a_of_type_Bozm.a) != null) {
-        QQToast.a(this.jdField_a_of_type_Bozm.getContext(), anni.a(2131713122) + boza.a(this.jdField_a_of_type_Bozm.a).c + anni.a(2131713108), 0).a();
-      }
+      QIPCClientHelper.getInstance().getClient().registerModule(a());
+      a = true;
+    }
+  }
+  
+  public static void b()
+  {
+    if (a)
+    {
+      QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
+      a = false;
+    }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("action_get_send_to_info".equals(paramString)) {
+      bozr.a().a(Long.valueOf(paramBundle.getLong("key_receiver_type")));
     }
     for (;;)
     {
-      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      this.jdField_a_of_type_Boolean = true;
+      return null;
+      if ("action_get_cancle_send_info".equals(paramString)) {
+        bozr.a().W();
+      }
     }
   }
 }

@@ -13,7 +13,7 @@ class SearchRecommendAdapter$TitleViewHolder
   public SearchRecommendAdapter$TitleViewHolder(View paramView)
   {
     super(paramView);
-    this.title = ((TextView)paramView.findViewById(2131371046));
+    this.title = ((TextView)paramView.findViewById(2131371151));
   }
   
   public void update(TitleInfo paramTitleInfo)

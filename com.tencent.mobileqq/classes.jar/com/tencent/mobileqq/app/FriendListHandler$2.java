@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ajjm;
+import ajuv;
 
 class FriendListHandler$2
   implements Runnable
@@ -9,7 +9,7 @@ class FriendListHandler$2
   
   public void run()
   {
-    ajjm.a();
+    ajuv.a();
     this.this$0.d();
   }
 }

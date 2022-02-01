@@ -1,27 +1,37 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-class amyo
-  implements amxn
+public class amyo
 {
-  amyo(amyl paramamyl, File paramFile, String paramString) {}
+  public String a;
   
-  public void a(boolean paramBoolean, int paramInt)
+  public amyo(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:" + paramBoolean);
-    }
-    if (paramBoolean)
+    this.a = paramString;
+  }
+  
+  public void a(angr paramangr, Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
+  {
+    int i = amsx.a(paramQQAppInterface);
+    if ((paramangr == null) || (paramContext == null) || (paramQQAppInterface == null) || (i == 1)) {}
+    SharedPreferences localSharedPreferences;
+    do
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
-      {
-        this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 0, anni.a(2131699293));
-        return;
-      }
-      this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 2, anni.a(2131699322));
       return;
+      paramContext = "apollo_friend_profile_drawer_first" + paramQQAppInterface.getCurrentAccountUin();
+      localSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
+    } while (!localSharedPreferences.getBoolean(paramContext, true));
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileBubble", 2, "onBubbleShow first");
     }
-    this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 2, anni.a(2131699304));
+    angi.a(paramangr, paramString, 3, 0);
+    localSharedPreferences.edit().putBoolean(paramContext, false).commit();
+    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "Guide_bubbles_show", 0, 0, new String[] { "", "", "", this.a });
   }
 }
 

@@ -1,42 +1,56 @@
+import android.util.SparseArray;
+import com.tencent.smtt.utils.ByteUtils;
+import java.nio.ByteBuffer;
+
 public class lop
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  public mrd a;
-  boolean jdField_a_of_type_Boolean;
-  byte[] jdField_a_of_type_ArrayOfByte;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  int jdField_c_of_type_Int;
-  long jdField_c_of_type_Long;
-  int d;
-  int e;
-  public int f;
-  public int g;
-  
-  lop() {}
-  
-  public lop(long paramLong1, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, long paramLong2, long paramLong3)
+  public static SparseArray<loo> a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.d = paramInt4;
-    this.e = paramInt5;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_b_of_type_Long = paramLong3;
-    this.jdField_c_of_type_Long = paramLong1;
-    this.f = 0;
-    this.g = 0;
+    ByteBuffer localByteBuffer = ByteBuffer.wrap(paramArrayOfByte);
+    SparseArray localSparseArray = new SparseArray();
+    int j = 0;
+    while (j < paramArrayOfByte.length)
+    {
+      short s = a(localByteBuffer, j);
+      j += 2;
+      int i = b(localByteBuffer, j);
+      j += 2;
+      byte[] arrayOfByte = a(paramArrayOfByte, j, i);
+      j += i;
+      localSparseArray.put(s, new loo(s, i, arrayOfByte));
+    }
+    return localSparseArray;
   }
   
-  lop(lop paramlop)
+  private static short a(ByteBuffer paramByteBuffer, int paramInt)
   {
-    this(paramlop.jdField_c_of_type_Long, paramlop.jdField_a_of_type_ArrayOfByte, paramlop.jdField_a_of_type_Int, paramlop.jdField_b_of_type_Int, paramlop.jdField_c_of_type_Int, paramlop.d, paramlop.e, paramlop.jdField_a_of_type_Boolean, paramlop.jdField_a_of_type_Long, paramlop.jdField_b_of_type_Long);
-    this.f = paramlop.f;
-    this.g = paramlop.g;
+    return paramByteBuffer.getShort(paramInt);
+  }
+  
+  public static byte[] a(loo paramloo)
+  {
+    if (paramloo != null)
+    {
+      short s1 = paramloo.a();
+      short s2 = paramloo.b();
+      paramloo = paramloo.a();
+      ByteBuffer localByteBuffer = ByteBuffer.allocate(s2 + 4);
+      localByteBuffer.putShort(s1);
+      localByteBuffer.putShort(s2);
+      localByteBuffer.put(paramloo);
+      return localByteBuffer.array();
+    }
+    return null;
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    return ByteUtils.subByte(paramArrayOfByte, paramInt1, paramInt2);
+  }
+  
+  private static short b(ByteBuffer paramByteBuffer, int paramInt)
+  {
+    return paramByteBuffer.getShort(paramInt);
   }
 }
 

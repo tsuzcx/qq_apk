@@ -1,20 +1,25 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.IntimateInfo;
 
 class agit
-  implements MessageQueue.IdleHandler
+  implements DialogInterface.OnClickListener
 {
-  agit(agis paramagis) {}
+  agit(agiq paramagiq) {}
   
-  public boolean queueIdle()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseChatDrawer", 2, "queueIdle");
+    if ((!TextUtils.isEmpty(this.a.a)) && (agiq.a(this.a) != null))
+    {
+      if (agiq.a(this.a) == 1) {
+        agiq.b(this.a, this.a.a);
+      }
     }
-    if (agiq.b()) {
-      this.a.a();
+    else {
+      return;
     }
-    return false;
+    agiq.a(this.a, this.a.a, agiq.a(this.a).maskType);
   }
 }
 

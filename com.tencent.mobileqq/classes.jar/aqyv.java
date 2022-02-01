@@ -1,95 +1,40 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.QVipWatchWordConfig;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.confess.ConfessPlugin;
 
 public class aqyv
-  extends aqwr<QVipWatchWordConfig>
+  implements View.OnTouchListener
 {
-  public static QVipWatchWordConfig a()
-  {
-    return (QVipWatchWordConfig)aqlk.a().a(648);
-  }
+  public aqyv(ConfessPlugin paramConfessPlugin) {}
   
-  public static boolean a(String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool2 = false;
-    Object localObject = a();
-    boolean bool1 = bool2;
-    int i;
-    if (localObject != null)
+    switch (paramMotionEvent.getAction())
     {
-      bool1 = bool2;
-      if (((QVipWatchWordConfig)localObject).isEnable())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QVipWatchWordProcessor", 2, "isShowWatchWord:" + paramString + " configUrl:" + ((QVipWatchWordConfig)localObject).getWatchUrl() + " configPattern:" + ((QVipWatchWordConfig)localObject).getPattern());
-        }
-        localObject = ((QVipWatchWordConfig)localObject).getWatchUrl();
-        i = 0;
-      }
     }
     for (;;)
     {
-      bool1 = bool2;
-      if (i < ((ArrayList)localObject).size())
+      return false;
+      if ((paramView instanceof TextView))
       {
-        if (paramString.contains((CharSequence)((ArrayList)localObject).get(i))) {
-          bool1 = true;
+        int i = ((TextView)paramView).getCurrentTextColor();
+        ((TextView)paramView).setTextColor(Color.argb(128, Color.red(i), Color.green(i), Color.blue(i)));
+        continue;
+        if ((paramView instanceof TextView))
+        {
+          i = ((TextView)paramView).getCurrentTextColor();
+          ((TextView)paramView).setTextColor(Color.argb(255, Color.red(i), Color.green(i), Color.blue(i)));
         }
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
-  }
-  
-  @NonNull
-  public QVipWatchWordConfig a(@NonNull aqlg[] paramArrayOfaqlg)
-  {
-    QVipWatchWordConfig localQVipWatchWordConfig = null;
-    String str = paramArrayOfaqlg[0].a;
-    paramArrayOfaqlg = localQVipWatchWordConfig;
-    if (!TextUtils.isEmpty(str))
-    {
-      localQVipWatchWordConfig = (QVipWatchWordConfig)avnn.a(str, QVipWatchWordConfig.class);
-      paramArrayOfaqlg = localQVipWatchWordConfig;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QVipWatchWordProcessor", 2, "content:" + str + " config:" + localQVipWatchWordConfig.toString());
-        paramArrayOfaqlg = localQVipWatchWordConfig;
-      }
-    }
-    return paramArrayOfaqlg;
-  }
-  
-  @NonNull
-  public QVipWatchWordConfig b()
-  {
-    return new QVipWatchWordConfig();
-  }
-  
-  @NonNull
-  public QVipWatchWordConfig c()
-  {
-    return new QVipWatchWordConfig();
-  }
-  
-  public Class<QVipWatchWordConfig> clazz()
-  {
-    return QVipWatchWordConfig.class;
-  }
-  
-  public int type()
-  {
-    return 648;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqyv
  * JD-Core Version:    0.7.0.1
  */

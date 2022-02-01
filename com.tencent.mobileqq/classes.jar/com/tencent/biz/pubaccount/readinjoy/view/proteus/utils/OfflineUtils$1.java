@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.utils;
 
-import teh;
-import tek;
+import suz;
+import svc;
 
 public final class OfflineUtils$1
   implements Runnable
@@ -13,9 +13,9 @@ public final class OfflineUtils$1
     if (this.a) {
       return;
     }
-    teh.a();
-    teh.a("default_feeds", true);
-    new tek().a();
+    suz.a();
+    suz.a("default_feeds", true);
+    new svc().a();
   }
 }
 

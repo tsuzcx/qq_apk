@@ -1,28 +1,72 @@
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.widget.CircleBubbleImageView;
+import java.net.URL;
 
 class ahrl
-  implements URLDrawable.URLDrawableListener
+  extends CircleBubbleImageView
 {
-  ahrl(ahrk paramahrk, String paramString) {}
+  URLDrawable a;
+  URLDrawable b;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  public ahrl(Context paramContext)
+  {
+    super(paramContext);
+    a(true);
+  }
+  
+  public void a(URLDrawable paramURLDrawable)
+  {
+    if (this.a != null) {
+      this.a.setURLDrawableListener(null);
+    }
+    paramURLDrawable.setURLDrawableListener(this);
+    this.a = paramURLDrawable;
+    paramURLDrawable.startDownload();
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (this.b == null) || (!this.b.getURL().getPath().equals(paramString));
+  }
+  
+  public void b(URLDrawable paramURLDrawable)
+  {
+    setImageDrawable(paramURLDrawable);
+    if (this.b != paramURLDrawable) {
+      this.b = paramURLDrawable;
+    }
+  }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    QLog.e("AioPanelMiniAppManager", 1, "onLoadFialed: failed. ", paramThrowable);
+    if (paramURLDrawable == this.a)
+    {
+      b(paramURLDrawable);
+      return;
+    }
+    super.onLoadFialed(paramURLDrawable, paramThrowable);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
+  @TargetApi(11)
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioPanelMiniAppManager", 2, "onLoadSuccessed: invoked.  url: " + this.jdField_a_of_type_JavaLangString);
+    if (paramURLDrawable == this.a) {
+      b(paramURLDrawable);
     }
-    ahrk.a(this.jdField_a_of_type_Ahrk).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+    super.onLoadSuccessed(paramURLDrawable);
+  }
+  
+  public void setImageDrawable(Drawable paramDrawable)
+  {
+    super.setImageDrawable(paramDrawable);
+    if (this.a != null)
+    {
+      this.a.setURLDrawableListener(null);
+      this.a = null;
+    }
   }
 }
 

@@ -13,14 +13,14 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import znu;
-import znv;
+import zrp;
+import zrq;
 
 public class EmptySupportViewPager
   extends ViewPager
 {
-  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new znu(this);
-  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new znv(this);
+  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new zrp(this);
+  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new zrq(this);
   public List<ViewPager.OnPageChangeListener> a;
   public Set<Pair<View, Boolean>> a;
   

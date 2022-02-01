@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo.view;
 
-import amux;
-import anej;
+import angr;
+import anqe;
 import java.lang.ref.WeakReference;
 
 public class ApolloDrawerInfoViewListener$1
   implements Runnable
 {
-  public ApolloDrawerInfoViewListener$1(anej paramanej) {}
+  public ApolloDrawerInfoViewListener$1(anqe paramanqe) {}
   
   public void run()
   {
-    if (anej.a(this.this$0).get() != null) {
-      ((amux)anej.a(this.this$0).get()).a(anej.a(this.this$0));
+    if (anqe.a(this.this$0).get() != null) {
+      ((angr)anqe.a(this.this$0).get()).a(anqe.a(this.this$0));
     }
   }
 }

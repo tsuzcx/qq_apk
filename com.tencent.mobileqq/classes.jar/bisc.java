@@ -1,19 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.appstore.dl.DownloadManagerV2.19;
-
 public class bisc
-  implements DialogInterface.OnClickListener
 {
-  public bisc(DownloadManagerV2.19 param19) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bivp.r, false);
-    bise.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
-    paramDialogInterface.dismiss();
-  }
+  public static String a;
+  public static boolean a;
 }
 
 

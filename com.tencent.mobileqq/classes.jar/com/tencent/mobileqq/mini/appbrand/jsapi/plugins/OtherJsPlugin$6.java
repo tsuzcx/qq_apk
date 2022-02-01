@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import aqcb;
-import bgpa;
+import aqre;
+import bhpc;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 
 class OtherJsPlugin$6
   implements Runnable
 {
-  OtherJsPlugin$6(OtherJsPlugin paramOtherJsPlugin, aqcb paramaqcb, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
+  OtherJsPlugin$6(OtherJsPlugin paramOtherJsPlugin, aqre paramaqre, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
   
   public void run()
   {
-    bgpa localbgpa = new bgpa(this.this$0.jsPluginEngine.getActivityContext(), 2131755823);
-    localbgpa.setContentView(2131559383);
-    localbgpa.setMessage("是否将" + this.this$0.jsPluginEngine.getAppInfo().name + "添加到彩签？");
-    localbgpa.setPositiveButton("确定", new OtherJsPlugin.6.1(this));
-    localbgpa.setNegativeButton("取消", new OtherJsPlugin.6.2(this));
-    localbgpa.setCanceledOnTouchOutside(false);
-    localbgpa.show();
+    bhpc localbhpc = new bhpc(this.this$0.jsPluginEngine.getActivityContext(), 2131755824);
+    localbhpc.setContentView(2131559383);
+    localbhpc.setMessage("是否将" + this.this$0.jsPluginEngine.getAppInfo().name + "添加到彩签？");
+    localbhpc.setPositiveButton("确定", new OtherJsPlugin.6.1(this));
+    localbhpc.setNegativeButton("取消", new OtherJsPlugin.6.2(this));
+    localbhpc.setCanceledOnTouchOutside(false);
+    localbhpc.show();
   }
 }
 

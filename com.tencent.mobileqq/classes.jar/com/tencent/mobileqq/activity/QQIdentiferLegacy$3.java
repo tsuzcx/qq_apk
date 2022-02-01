@@ -17,16 +17,21 @@ class QQIdentiferLegacy$3
   public void onClick(View paramView)
   {
     Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("title", this.a.getString(2131693207));
-    localIntent.putExtra("selfSet_leftViewText", this.a.getString(2131690563));
-    if ("setFaceData".equals(QQIdentiferLegacy.a(this.a)))
+    localIntent.putExtra("title", this.a.getString(2131693219));
+    localIntent.putExtra("selfSet_leftViewText", this.a.getString(2131690559));
+    paramView = getURL();
+    if (("identify".equals(QQIdentiferLegacy.a(this.a))) && (!TextUtils.isEmpty(paramView)) && (paramView.contains("?appname="))) {}
+    for (;;)
     {
-      paramView = getURL() + "?appname=qq_safety";
       localIntent.putExtra("url", paramView);
       this.a.startActivity(localIntent);
       return;
+      if (!"setFaceData".equals(QQIdentiferLegacy.a(this.a))) {
+        break;
+      }
+      paramView = paramView + "?appname=qq_safety";
     }
-    StringBuilder localStringBuilder = new StringBuilder().append(getURL());
+    StringBuilder localStringBuilder = new StringBuilder().append(paramView);
     if ((QQIdentiferLegacy.a(this.a) == null) || (TextUtils.isEmpty(QQIdentiferLegacy.a(this.a).appName))) {}
     for (paramView = "";; paramView = "?appname=" + QQIdentiferLegacy.a(this.a).appName)
     {

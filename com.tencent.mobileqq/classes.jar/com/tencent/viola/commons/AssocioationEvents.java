@@ -4,18 +4,22 @@ import org.json.JSONArray;
 
 public class AssocioationEvents
 {
+  public static final String ASSOCIOATION_KEY_APPLY_LAYOUT = "applyLayout";
   public static String ASSOCIOATION_KEY_CALLBACK_CONDITION;
   public static String ASSOCIOATION_KEY_EVENT;
   public static String ASSOCIOATION_KEY_PROPS;
   public static String ASSOCIOATION_KEY_REF = "ref";
+  public static final String ASSOCIOATION_KEY_SYNC = "sync";
   public static String ASSOCIOATION_PROPS_KEY_ATTR = "attr";
   public static String ASSOCIOATION_PROPS_KEY_STYLE;
   public static String ASSOCIOATION_PROPS_KEY_TARGET;
+  public boolean applyLayout;
   public String mCallbackCondition;
   public String mCallbackId;
   public String mEvent;
   public JSONArray mProps;
   public String mRef;
+  public boolean sync;
   
   static
   {
@@ -26,13 +30,15 @@ public class AssocioationEvents
     ASSOCIOATION_PROPS_KEY_STYLE = "style";
   }
   
-  public AssocioationEvents(String paramString1, String paramString2, JSONArray paramJSONArray, String paramString3, String paramString4)
+  public AssocioationEvents(String paramString1, String paramString2, JSONArray paramJSONArray, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.mRef = paramString1;
     this.mEvent = paramString2;
     this.mProps = paramJSONArray;
     this.mCallbackCondition = paramString3;
     this.mCallbackId = paramString4;
+    this.sync = paramBoolean1;
+    this.applyLayout = paramBoolean2;
   }
   
   public String toString()

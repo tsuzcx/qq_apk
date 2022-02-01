@@ -1,44 +1,44 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import java.util.Map;
+import android.text.Spanned;
+import android.text.style.CharacterStyle;
+import java.util.Comparator;
 
-class biwc
-  extends QIPCModule
+public class biwc
+  implements Comparator<CharacterStyle>
 {
-  biwc(biwb parambiwb, String paramString)
-  {
-    super(paramString);
-  }
+  Spanned a;
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public int a(CharacterStyle paramCharacterStyle1, CharacterStyle paramCharacterStyle2)
   {
-    bisy.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
-    Object localObject = biwb.a(this.a);
-    if (localObject == null) {
-      bisy.c("DownloaderWriteCodeIPC", "onCall action but appInterface is null");
+    int i = 1;
+    if (this.a == null) {
+      i = 0;
     }
-    String str;
-    int i;
+    int j;
+    int k;
     do
     {
       do
       {
-        return null;
-      } while ((!"DownloaderWriteCodeIPC_Action__GetCode".equals(paramString)) || (paramBundle == null));
-      str = paramBundle.getString("PackageName");
-      i = paramBundle.getInt("VersionCode");
-      bisy.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " packageName|" + str + " versionCode|" + i);
-    } while (str == null);
-    ((QQAppInterface)localObject).a(biwb.a(this.a));
-    paramString = (anjo)((QQAppInterface)localObject).a(4);
-    localObject = str + "_" + i;
-    paramBundle.putInt("CallbackId", paramInt);
-    paramBundle = new Bundle(paramBundle);
-    biwb.a(this.a).put(localObject, paramBundle);
-    paramString.a(str, i, (String)localObject);
-    return null;
+        return i;
+        j = this.a.getSpanStart(paramCharacterStyle1);
+        k = this.a.getSpanStart(paramCharacterStyle2);
+        if (j != k) {
+          break;
+        }
+        j = this.a.getSpanEnd(paramCharacterStyle1);
+        k = this.a.getSpanEnd(paramCharacterStyle2);
+        if (j == k) {
+          return 0;
+        }
+      } while (j > k);
+      return -1;
+    } while (j > k);
+    return -1;
+  }
+  
+  public void a(Spanned paramSpanned)
+  {
+    this.a = paramSpanned;
   }
 }
 

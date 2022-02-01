@@ -1,50 +1,20 @@
-import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aaqf
-  implements URLDrawable.URLDrawableListener
+public class aaqf
+  implements View.OnClickListener
 {
-  aaqf(aaqa paramaaqa, DisplayMetrics paramDisplayMetrics) {}
+  public aaqf(ServiceFolderFollowPBHeadView paramServiceFolderFollowPBHeadView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aaqa.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_Aaqa.c = false;
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_Aaqa.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_Aaqa.c = false;
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_Aaqa.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_Aaqa.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-    float f1 = paramURLDrawable.getIntrinsicHeight();
-    float f2 = paramURLDrawable.getIntrinsicWidth();
-    paramURLDrawable = this.jdField_a_of_type_Aaqa.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    int i = 0;
-    if (f2 != 0.0F) {
-      if (f1 <= bgme.a(this.jdField_a_of_type_Aaqa.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F)) {
-        break label109;
-      }
+    if (ServiceFolderFollowPBHeadView.a(this.a) != null) {
+      ServiceFolderFollowPBHeadView.a(this.a).setCurrentItem(1, true);
     }
-    label109:
-    for (i = (int)bgme.a(this.jdField_a_of_type_Aaqa.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F);; i = (int)((this.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels - bgme.a(this.jdField_a_of_type_Aaqa.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 60.0F)) * (f1 / f2)))
-    {
-      if (i > 0)
-      {
-        paramURLDrawable.height = i;
-        this.jdField_a_of_type_Aaqa.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramURLDrawable);
-      }
-      return;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

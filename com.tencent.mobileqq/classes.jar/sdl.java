@@ -1,35 +1,41 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.res.Resources;
-import android.os.Message;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class sdl
-  extends MqqHandler
+  implements View.OnClickListener
 {
-  private sdl(sce paramsce) {}
+  sdl(sdk paramsdk, ViewGroup paramViewGroup) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (ChannelClassificationListView.a(this.jdField_a_of_type_Sdk.a) != null) {
+      ChannelClassificationListView.a(this.jdField_a_of_type_Sdk.a).onItemClick((AdapterView)this.jdField_a_of_type_AndroidViewViewGroup, paramView, i, this.jdField_a_of_type_Sdk.getItemId(i));
     }
-    do
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
+      localJSONObject.put("subchannelid", this.jdField_a_of_type_Sdk.a(i).b());
+      localJSONObject.put("subchannelname", this.jdField_a_of_type_Sdk.a(i).a());
+      localJSONObject.put("channelid", ChannelClassificationListView.a(this.jdField_a_of_type_Sdk.a));
+      ocd.a(null, ozs.a() + "", "0X8009933", "0X8009933", 0, 0, "", "", "", localJSONObject.toString(), false);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      QQToast.a(sce.a(this.a), 2131718072, 0).a();
-      return;
-      String str = sce.a(this.a).getString(2131718073);
-      paramMessage = (String)paramMessage.obj;
-      QQToast.a(sce.a(this.a), 2, str + paramMessage, 0).a();
-      bgmo.a(sce.a(this.a), paramMessage);
-      return;
-    } while ((sce.a(this.a) == null) || (sce.a(this.a).jdField_a_of_type_Int != 0));
-    paramMessage = ShortVideoUtils.a(sce.a(this.a).jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
-    bglp.a(sce.a(this.a), 232, sce.a(this.a).getResources().getString(2131718104), sce.a(this.a).getResources().getString(2131718103), 2131718087, 2131717317, new sdm(this, paramMessage), new sdn(this)).show();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 

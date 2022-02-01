@@ -1,6 +1,10 @@
-public abstract class bopx
+import android.widget.EditText;
+
+public abstract interface bopx
 {
-  abstract void a(int paramInt, bopy parambopy);
+  public abstract void a();
+  
+  public abstract void a(int paramInt, String paramString, EditText paramEditText);
 }
 
 

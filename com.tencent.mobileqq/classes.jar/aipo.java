@@ -1,35 +1,33 @@
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity.11.1;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aipo
-  implements alvk
+class aipo
+  implements View.OnClickListener
 {
-  public aipo(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  aipo(aipm paramaipm) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.runOnUiThread(new BlessSelectMemberActivity.11.1(this));
-    if (BlessSelectMemberActivity.a() != null) {
-      BlessSelectMemberActivity.a().sendEmptyMessage(1);
-    }
-    synchronized (BlessSelectMemberActivity.a())
+    agej.n = true;
+    int i;
+    switch (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)
     {
-      BlessSelectMemberActivity.a().set(true);
-      BlessSelectMemberActivity.a().notifyAll();
-      this.a.finish();
-      return;
+    default: 
+      i = 0;
     }
-  }
-  
-  public void a(String arg1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
-  {
-    BlessSelectMemberActivity.a = ???;
-    synchronized (BlessSelectMemberActivity.a())
+    for (;;)
     {
-      BlessSelectMemberActivity.a().set(true);
-      BlessSelectMemberActivity.a().notifyAll();
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(i), "", "", "");
+      agju.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
     }
   }
 }

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akmy;
-import akmz;
-import akni;
+import akyj;
+import akyk;
+import akyt;
 import com.tencent.mobileqq.widget.ksong.KSongView;
 
 public class RedPacketKSongFragment$10$1
   implements Runnable
 {
-  public RedPacketKSongFragment$10$1(akmy paramakmy) {}
+  public RedPacketKSongFragment$10$1(akyj paramakyj) {}
   
   public void run()
   {
     try
     {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a(RedPacketKSongFragment.a(this.a.a).c, RedPacketKSongFragment.a(this.a.a).d, this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongProsBar, new akmz(this));
+      this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a(RedPacketKSongFragment.a(this.a.a).c, RedPacketKSongFragment.a(this.a.a).d, this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongProsBar, new akyk(this));
       return;
     }
     catch (Throwable localThrowable)

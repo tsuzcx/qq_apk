@@ -1,5 +1,12 @@
 package com.tencent.biz.qqcircle.fragments.person;
 
+import aaak;
+import aaam;
+import aabd;
+import aabe;
+import aabg;
+import aabp;
+import aabu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,12 +16,12 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import anni;
+import anzj;
 import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.qqcircle.QCircleInitBean;
 import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
 import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
 import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
 import com.tencent.biz.qqcircle.report.QCircleReportBean;
 import com.tencent.biz.qqcircle.widgets.QCirclePersonalBottomStatusView;
 import com.tencent.biz.qqcircle.widgets.QCircleStatusView;
@@ -32,45 +39,38 @@ import feedcloud.FeedCloudMeta.StUser;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import uxx;
-import uyk;
-import vnh;
-import vni;
-import vrr;
-import vrt;
-import vtt;
+import uzg;
+import uzt;
+import vpm;
+import vpn;
+import vud;
 import vuf;
-import vup;
-import zwp;
-import zwr;
-import zxi;
-import zxj;
-import zxl;
-import zxu;
-import zxz;
+import vws;
+import vxe;
+import vxq;
 
 public abstract class QCirclePersonalBaseBottomFragment
   extends BasePartFragment
-  implements zwr, zxl<QCircleReportBean>
+  implements aaam, aabg<QCircleReportBean>
 {
+  protected aabd a;
   public QCircleFakeAdapter a;
   private QCircleReportBean jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean;
   private FeedCloudMeta.StUser jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
   public String a;
-  protected vuf a;
-  protected zxi a;
+  protected vxe a;
   protected String b;
   
   public int a()
   {
-    return 2131560740;
+    return 2131560763;
   }
   
   protected QCircleFakeAdapter a()
   {
-    uyk localuyk = new uyk(new Bundle());
-    localuyk.a(a());
-    return localuyk;
+    uzt localuzt = new uzt(new Bundle());
+    localuzt.a(a());
+    return localuzt;
   }
   
   public QCircleReportBean a()
@@ -91,12 +91,12 @@ public abstract class QCirclePersonalBaseBottomFragment
   
   public abstract String a();
   
-  public List<zxj> a()
+  public List<aabe> a()
   {
     c();
     ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_Zxi = new zxi(2131365145, b(), 3, 1);
-    localArrayList.add(this.jdField_a_of_type_Zxi);
+    this.jdField_a_of_type_Aabd = new aabd(2131365189, b(), 3, 1);
+    localArrayList.add(this.jdField_a_of_type_Aabd);
     return localArrayList;
   }
   
@@ -107,7 +107,7 @@ public abstract class QCirclePersonalBaseBottomFragment
     if (this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter != null)
     {
       this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.a(paramInt);
-      vrr.a().a(new vrt().a("main").b("impression").a(a()).c(this.jdField_a_of_type_JavaLangString));
+      vud.a().a(new vuf().a("main").b("impression").a(a()).c(this.jdField_a_of_type_JavaLangString));
       this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.a(a());
     }
   }
@@ -121,30 +121,38 @@ public abstract class QCirclePersonalBaseBottomFragment
       paramLayoutInflater.init();
       paramLayoutInflater.setStatusBarVisible(2, 0);
     }
-    zwp.a().a(this);
+    aaak.a().a(this);
     d();
     a();
     this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.b();
     f();
-    if ((this.jdField_a_of_type_Zxi.a() instanceof QCirclePersonalBottomStatusView))
+    if ((this.jdField_a_of_type_Aabd.a() instanceof QCirclePersonalBottomStatusView))
     {
-      ((QCirclePersonalBottomStatusView)this.jdField_a_of_type_Zxi.a()).setUser(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser);
-      ((QCirclePersonalBottomStatusView)this.jdField_a_of_type_Zxi.a()).setHostParentFragment(a());
+      ((QCirclePersonalBottomStatusView)this.jdField_a_of_type_Aabd.a()).setUser(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser);
+      ((QCirclePersonalBottomStatusView)this.jdField_a_of_type_Aabd.a()).setHostParentFragment(a());
     }
-    this.jdField_a_of_type_Zxi.a().setVisibility(8);
-    this.jdField_a_of_type_Zxi.a().a().addOnScrollListener(new vnh(this));
+    this.jdField_a_of_type_Aabd.a().setVisibility(8);
+    this.jdField_a_of_type_Aabd.a().a().addOnScrollListener(new vpm(this));
   }
   
-  public void a(vup<List<FeedCloudMeta.StFeed>> paramvup)
+  public void a(FeedCloudMeta.StUser paramStUser)
   {
-    if (paramvup == null)
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser = paramStUser;
+    if ((this.jdField_a_of_type_Aabd.a() instanceof QCirclePersonalBottomStatusView)) {
+      ((QCirclePersonalBottomStatusView)this.jdField_a_of_type_Aabd.a()).setUser(paramStUser);
+    }
+  }
+  
+  public void a(vxq<List<FeedCloudMeta.StFeed>> paramvxq)
+  {
+    if (paramvxq == null)
     {
       QLog.e("BasePartFragment", 1, "handleFeedDataRsp return unexpected data！");
       return;
     }
-    boolean bool = paramvup.a();
+    boolean bool = paramvxq.a();
     int i;
-    switch (paramvup.a())
+    switch (paramvxq.a())
     {
     default: 
       i = 0;
@@ -154,7 +162,7 @@ public abstract class QCirclePersonalBaseBottomFragment
       this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.a(true, bool);
       return;
       QLog.e("BasePartFragment", 1, "handleFeedDataRsp() return empty data");
-      if ((paramvup.b()) && (this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter != null) && (this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getItemCount() > 0))
+      if ((paramvxq.b()) && (this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter != null) && (this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getItemCount() > 0))
       {
         this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getLoadInfo().a(bool);
         i = 1;
@@ -162,51 +170,59 @@ public abstract class QCirclePersonalBaseBottomFragment
       else
       {
         QLog.i("BasePartFragment", 1, "handleFeedDataRsp");
-        if ((this.jdField_a_of_type_Zxi != null) && (this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter != null))
+        if ((this.jdField_a_of_type_Aabd != null) && (this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter != null))
         {
           if (!this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.a())
           {
-            ((QCircleStatusView)this.jdField_a_of_type_Zxi.a().a()).a(this.b);
+            ((QCircleStatusView)this.jdField_a_of_type_Aabd.a().a()).a(this.b);
             this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.clearData();
             this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.notifyDataSetChanged();
             QLog.i("BasePartFragment", 1, "handleFeedDataRsp  StatusView = visible");
             i = 1;
             continue;
           }
-          this.jdField_a_of_type_Zxi.a().a().setVisibility(8);
+          this.jdField_a_of_type_Aabd.a().a().setVisibility(8);
           QLog.i("BasePartFragment", 1, "handleFeedDataRsp  StatusView = gone");
           i = 1;
           continue;
-          if (paramvup.a() == null) {}
-          for (Object localObject = anni.a(2131718323);; localObject = paramvup.a())
+          if (paramvxq.a() == null) {}
+          for (Object localObject = anzj.a(2131718459);; localObject = paramvxq.a())
           {
             QLog.e("BasePartFragment", 1, "handleFeedDataRsp() return error！errMsg:" + (String)localObject);
-            vtt.a(paramvup.a(), BaseApplicationImpl.getContext(), 1, (String)localObject, 1);
-            if ((this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter == null) || (this.jdField_a_of_type_Zxi == null)) {
-              break label477;
+            vws.a(paramvxq.a(), BaseApplicationImpl.getContext(), 1, (String)localObject, 1);
+            if ((this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter == null) || (this.jdField_a_of_type_Aabd == null)) {
+              break label527;
             }
-            if (this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getItemCount() > 0) {
-              break label349;
+            if (paramvxq.a() != 10022L) {
+              break label366;
             }
-            ((QCircleStatusView)this.jdField_a_of_type_Zxi.a().a()).b((String)localObject);
+            ((QCircleStatusView)this.jdField_a_of_type_Aabd.a().a()).a(this.b);
+            this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.clearData();
+            this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.notifyDataSetChanged();
             i = 1;
             break;
           }
-          label349:
-          this.jdField_a_of_type_Zxi.a().a().setVisibility(8);
+          label366:
+          if (this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getItemCount() <= 0)
+          {
+            ((QCircleStatusView)this.jdField_a_of_type_Aabd.a().a()).b((String)localObject);
+            i = 1;
+            continue;
+          }
+          this.jdField_a_of_type_Aabd.a().a().setVisibility(8);
           i = 1;
           continue;
           i = 0;
           continue;
-          localObject = (ArrayList)paramvup.a();
+          localObject = (ArrayList)paramvxq.a();
           if (this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter != null)
           {
-            if (this.jdField_a_of_type_Zxi != null)
+            if (this.jdField_a_of_type_Aabd != null)
             {
-              this.jdField_a_of_type_Zxi.a().a().setVisibility(8);
-              this.jdField_a_of_type_Zxi.a().a().setVisibility(0);
+              this.jdField_a_of_type_Aabd.a().a().setVisibility(8);
+              this.jdField_a_of_type_Aabd.a().a().setVisibility(0);
             }
-            if (paramvup.b()) {
+            if (paramvxq.b()) {
               this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.addAll((List)localObject);
             }
             for (;;)
@@ -219,7 +235,7 @@ public abstract class QCirclePersonalBaseBottomFragment
             }
           }
         }
-        label477:
+        label527:
         i = 1;
       }
     }
@@ -232,10 +248,10 @@ public abstract class QCirclePersonalBaseBottomFragment
   
   public int b()
   {
-    return uxx.a();
+    return uzg.a();
   }
   
-  protected List<zxu> b()
+  protected List<aabp> b()
   {
     ArrayList localArrayList = new ArrayList();
     this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter = a();
@@ -253,7 +269,7 @@ public abstract class QCirclePersonalBaseBottomFragment
         i += 1;
       }
     }
-    this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.setOnLoadDataDelegate(new vni(this));
+    this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.setOnLoadDataDelegate(new vpn(this));
     localArrayList.add(this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter);
     return localArrayList;
   }
@@ -277,17 +293,12 @@ public abstract class QCirclePersonalBaseBottomFragment
     this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser = ((QCircleInitBean)localObject).getUser();
   }
   
-  public boolean c()
-  {
-    return false;
-  }
-  
   protected void d()
   {
-    this.jdField_a_of_type_Zxi.a().a().setNestedScrollingEnabled(true);
-    this.jdField_a_of_type_Zxi.a().setEnableRefresh(false);
-    this.jdField_a_of_type_Zxi.a().setEnableLoadMore(true);
-    this.jdField_a_of_type_Zxi.a().setParentFragment(this);
+    this.jdField_a_of_type_Aabd.a().a().setNestedScrollingEnabled(true);
+    this.jdField_a_of_type_Aabd.a().setEnableRefresh(false);
+    this.jdField_a_of_type_Aabd.a().setEnableLoadMore(true);
+    this.jdField_a_of_type_Aabd.a().setParentFragment(this);
   }
   
   public boolean d()
@@ -328,6 +339,11 @@ public abstract class QCirclePersonalBaseBottomFragment
     }
   }
   
+  public boolean f_()
+  {
+    return false;
+  }
+  
   public ArrayList<Class> getEventClass()
   {
     ArrayList localArrayList = new ArrayList();
@@ -338,7 +354,7 @@ public abstract class QCirclePersonalBaseBottomFragment
   public void onDestroy()
   {
     super.onDestroy();
-    zwp.a().b(this);
+    aaak.a().b(this);
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
@@ -352,7 +368,7 @@ public abstract class QCirclePersonalBaseBottomFragment
         ThreadManager.getUIHandler().postDelayed(new QCirclePersonalBaseBottomFragment.4(this), 200L);
         return;
       }
-    } while ((!uxx.a(this.jdField_a_of_type_JavaLangString)) || (((QCircleFeedEvent)paramSimpleBaseEvent).mState != 3));
+    } while ((!uzg.a(this.jdField_a_of_type_JavaLangString)) || (((QCircleFeedEvent)paramSimpleBaseEvent).mState != 3));
     ThreadManager.getUIHandler().postDelayed(new QCirclePersonalBaseBottomFragment.5(this), 200L);
   }
 }

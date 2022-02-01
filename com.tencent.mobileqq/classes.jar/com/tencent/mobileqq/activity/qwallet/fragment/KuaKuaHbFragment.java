@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import akpm;
-import akpn;
-import akpo;
-import akpp;
-import akqa;
-import akww;
+import alax;
+import alay;
+import alaz;
+import alba;
+import albl;
+import alil;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,11 +15,10 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
-import bggq;
-import bgsp;
-import blqo;
-import blqv;
+import anzj;
+import bhsr;
+import bmrq;
+import bmrx;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 import com.tencent.mobileqq.widget.QQToast;
@@ -180,11 +179,11 @@ public class KuaKuaHbFragment
     do
     {
       return;
-      i = blqo.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), 1);
-      str = blqo.a(String.valueOf(blqo.a(this.b.getText().toString())));
+      i = bmrq.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), 1);
+      str = bmrq.a(String.valueOf(bmrq.a(this.b.getText().toString())));
       if (TextUtils.isEmpty(str))
       {
-        QQToast.a(getActivity(), 2131692852, 0).a();
+        QQToast.a(getActivity(), 2131692860, 0).a();
         return;
       }
       localObject = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString().trim();
@@ -229,57 +228,57 @@ public class KuaKuaHbFragment
   
   public int a()
   {
-    return 2131561958;
+    return 2131561998;
   }
   
   protected String a()
   {
-    return anni.a(2131710049);
+    return anzj.a(2131710158);
   }
   
   public void a()
   {
     c();
     Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKuaKuaHbFragment$KuaKuaHbBundleInfo.recommend, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKuaKuaHbFragment$KuaKuaHbBundleInfo.upSubjects, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKuaKuaHbFragment$KuaKuaHbBundleInfo.downSubjects);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a((List)localObject, false, new akpo(this), null, new akpp(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a((List)localObject, false, new alaz(this), null, new alba(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.setRecommendCnt(b());
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.setStyle(1);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView);
     localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).width = -1;
-    ((RelativeLayout.LayoutParams)localObject).height = bggq.a(getActivity(), 280.0F);
+    ((RelativeLayout.LayoutParams)localObject).height = getChooseViewHeight();
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379960));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380144));
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView = new ChooseItemView(this.mActivity);
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.setMaxLines(8);
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.setStyle(1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369604));
-    blqv.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKuaKuaHbFragment$KuaKuaHbBundleInfo);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369698));
+    bmrx.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKuaKuaHbFragment$KuaKuaHbBundleInfo);
     if (QLog.isColorLevel()) {
       QLog.i("KuaKuaHbFragment", 2, "bizParams:" + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKuaKuaHbFragment$KuaKuaHbBundleInfo.biz_params);
     }
-    if (blqv.b.contains(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKuaKuaHbFragment$KuaKuaHbBundleInfo.recv_type))
+    if (bmrx.b.contains(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKuaKuaHbFragment$KuaKuaHbBundleInfo.recv_type))
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText("1");
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131379093).setVisibility(8);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131379257).setVisibility(8);
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetTextView.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new akpm(this));
-      akww.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.6F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new alax(this));
+      alil.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.6F);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView != null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a();
       }
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new akpn(this));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new alay(this));
       return;
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKuaKuaHbFragment$KuaKuaHbBundleInfo.people_num)) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(anni.a(2131704507) + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKuaKuaHbFragment$KuaKuaHbBundleInfo.people_num + anni.a(2131704511));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(anzj.a(2131704614) + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKuaKuaHbFragment$KuaKuaHbBundleInfo.people_num + anzj.a(2131704618));
       }
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     }
@@ -311,7 +310,7 @@ public class KuaKuaHbFragment
       if (QLog.isColorLevel()) {
         QLog.i("KuaKuaHbFragment", 2, "bizParams:" + (String)localObject);
       }
-      if (!bgsp.a((String)localObject))
+      if (!bhsr.a((String)localObject))
       {
         localObject = new JSONObject((String)localObject);
         if (localObject != null)

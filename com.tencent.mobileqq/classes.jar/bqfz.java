@@ -1,10 +1,27 @@
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-public abstract interface bqfz
+class bqfz
+  implements View.OnTouchListener
 {
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt);
+  bqfz(bqfy parambqfy) {}
   
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
+      continue;
+      this.a.a.setTextColor(Color.parseColor("#ffffff"));
+    }
+  }
 }
 
 

@@ -20,6 +20,6 @@
             <com.tencent.widget.XEditTextEx android:id="@id/byq" android:background="@color/ajr" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxLines="6" android:layout_weight="1.0" android:lineSpacingMultiplier="1.5" />
             <ImageView android:layout_gravity="bottom" android:id="@id/bvo" android:paddingLeft="4.0dip" android:paddingRight="8.0dip" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/skin_aio_panel_emotion_nor" android:scaleType="centerInside" />
         </LinearLayout>
-        <Button android:textSize="14.0dip" android:textColor="@color/skin_aio_send_button" android:id="@id/ajw" android:background="@drawable/e1l" android:layout_width="60.0dip" android:layout_height="34.0dip" android:layout_marginLeft="3.0dip" android:layout_marginRight="16.0dip" android:text="@string/a1p" android:layout_alignBottom="@id/bl3" android:layout_alignParentRight="true" />
+        <Button android:textSize="14.0dip" android:textColor="@color/skin_aio_send_button" android:id="@id/ajw" android:background="@drawable/e5b" android:layout_width="60.0dip" android:layout_height="34.0dip" android:layout_marginLeft="3.0dip" android:layout_marginRight="16.0dip" android:text="@string/a1p" android:layout_alignBottom="@id/bl3" android:layout_alignParentRight="true" />
     </RelativeLayout>
 </RelativeLayout>

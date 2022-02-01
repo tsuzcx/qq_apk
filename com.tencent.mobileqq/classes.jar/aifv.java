@@ -1,34 +1,69 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
 
-class aifv
-  implements View.OnClickListener
+public class aifv
+  extends aifp
 {
-  aifv(aift paramaift) {}
+  akwu a;
   
-  public void onClick(View paramView)
+  public aifv(QQAppInterface paramQQAppInterface, aigj paramaigj, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, aghj paramaghj)
   {
-    afur.n = true;
-    int i;
-    switch (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)
+    super(paramQQAppInterface, paramaigj, paramQQWalletBaseMsgElem, paramInt, paramaghj);
+    this.jdField_a_of_type_Akwu = ((akwu)paramQQAppInterface.getManager(125));
+    if (a(this.jdField_a_of_type_Akwu.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId))) {}
+    for (this.i = 0;; this.i = paramQQWalletBaseMsgElem.effectsId)
     {
-    default: 
-      i = 0;
-    }
-    for (;;)
-    {
-      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(i), "", "", "");
-      agaa.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.j = 2130847242;
       return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
     }
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
+    }
+    this.jdField_a_of_type_Aigj.b.setVisibility(0);
+    this.jdField_a_of_type_Aigj.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Aigj.b.setText(aifu.i);
+    return true;
+  }
+  
+  public void f()
+  {
+    super.f();
+    try
+    {
+      this.jdField_a_of_type_Aigj.a.setText(alil.a(this.jdField_a_of_type_Aigj.a.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataQQWalletBaseMsgElem.title, 330, this.jdField_a_of_type_Aigj.a.getPaint()));
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public void i()
+  {
+    QQWalletRedPacketMsg localQQWalletRedPacketMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg;
+    akwt localakwt2 = this.jdField_a_of_type_Akwu.a(localQQWalletRedPacketMsg.redPacketId);
+    akwt localakwt1 = localakwt2;
+    if (localakwt2 == null)
+    {
+      localakwt1 = new akwt(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletBaseMsgElem.title, false, false, false, 2);
+      this.jdField_a_of_type_Akwu.a(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletBaseMsgElem.title, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, String.valueOf(this.jdField_a_of_type_Akwu.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop)), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, localQQWalletRedPacketMsg.authkey, false, false, 2);
+    }
+    if (!a(localakwt1))
+    {
+      this.jdField_a_of_type_Aigj.d.setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_Aigj.d.setVisibility(0);
   }
 }
 

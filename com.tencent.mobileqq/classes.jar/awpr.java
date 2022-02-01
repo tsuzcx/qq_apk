@@ -1,31 +1,38 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class awpr
-  implements awnk
+class awpr
+  extends aojs
 {
-  public awpr(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
+  awpr(awpq paramawpq) {}
   
-  public void a(List<RecentBaseData> paramList)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    MsgBackupSelectionFragment.a(this.a, true);
-    if ((paramList != null) && (paramList.size() > 0))
+    super.a(paramInt1, paramInt2, paramString);
+    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0))
     {
-      this.a.a.clear();
-      this.a.a.addAll(paramList);
-    }
-    for (;;)
-    {
-      paramList = MsgBackupSelectionFragment.a(this.a).obtainMessage(10000);
-      MsgBackupSelectionFragment.a(this.a).sendMessage(paramList);
-      return;
-      if (MsgBackupSelectionFragment.a(this.a) == 0) {
-        awqs.a("0X800A232");
-      } else if (awnr.c) {
-        awqs.a("0X800A257");
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, new Object[] { "onTroopManagerSuccess: invoked. 主动退群 or 解散群", " reqtype: ", Integer.valueOf(paramInt1), " troopUin: ", paramString });
       }
+      awsk.a(this.a.app, 1, paramString);
+    }
+  }
+  
+  protected void b(String paramString, int paramInt)
+  {
+    super.b(paramString, paramInt);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
+      }
+      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+      if ((localBaseActivity != null) && (this.a.a.a())) {
+        QQToast.a(localBaseActivity, 2131692855, 1).a();
+      }
+      awsk.a(this.a.app, 1, paramString);
     }
   }
 }

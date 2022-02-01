@@ -1,19 +1,13 @@
-import android.text.TextUtils;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-class avhr
-  implements avid
-{
-  avhr(avhq paramavhq, String paramString) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (TextUtils.equals("download", this.jdField_a_of_type_JavaLangString)))
-    {
-      avhq.a(this.jdField_a_of_type_Avhq).c(2131694964);
-      avhq.a(this.jdField_a_of_type_Avhq).show();
-    }
-  }
-}
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface avhr {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

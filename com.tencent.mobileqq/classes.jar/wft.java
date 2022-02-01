@@ -1,47 +1,31 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import org.json.JSONObject;
-
 class wft
-  extends SimpleJob<Object>
+  implements nmg
 {
-  wft(wfs paramwfs, String paramString)
+  wft(wfr paramwfr, boolean paramBoolean) {}
+  
+  public void loaded(String paramString, int paramInt)
   {
-    super(paramString);
+    yuk.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource loaded code = %d ", Integer.valueOf(paramInt));
+    switch (paramInt)
+    {
+    case -1: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+    case 6: 
+    case 7: 
+    default: 
+      return;
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      wfr.a(this.jdField_a_of_type_Wfr);
+    }
+    yuk.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource download success", Integer.valueOf(paramInt));
   }
   
-  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
-  {
-    Object localObject = (String)((wpf)wpm.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", "");
-    synchronized (this.a.b)
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        long l = this.a.a.jdField_a_of_type_Long;
-        if (l != 0L) {}
-      }
-      try
-      {
-        paramVarArgs = new wfw();
-        localObject = new JSONObject((String)localObject);
-        paramVarArgs.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("t");
-        paramVarArgs.jdField_a_of_type_ArrayOfByte = bgmj.a(((JSONObject)localObject).getString("ak"));
-        this.a.a = paramVarArgs;
-        yqp.a("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init success -> %s", localObject);
-        return null;
-      }
-      catch (Exception paramVarArgs)
-      {
-        for (;;)
-        {
-          yqp.b("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init error , %s", paramVarArgs);
-        }
-      }
-    }
-  }
+  public void progress(int paramInt) {}
 }
 
 

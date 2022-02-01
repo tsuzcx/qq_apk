@@ -1,31 +1,18 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajaf
-  extends Handler
+  implements View.OnClickListener
 {
-  public ajaf(SystemMsgListView paramSystemMsgListView) {}
+  public ajaf(BlessActivity paramBlessActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (SystemMsgListView.a(this.a) == null);
-      this.a.i();
-      SystemMsgListView.a(this.a).notifyDataSetChanged();
-      return;
-    }
-    paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131718372);
-    QQToast.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
+    bdll.b(this.a.app, "CliOper", "", "", "0X800632F", "0X800632F", 0, 0, "", "", "", "");
+    BlessActivity.a(this.a, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

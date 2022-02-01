@@ -1,92 +1,166 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.QueryItemVersionCallback;
-import com.tencent.mobileqq.vas.updatesystem.VasUpdateEngineProxy.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.callback.ICommonManager;
-import com.tencent.vas.update.entity.db.SeqConfigEntity;
-import com.tencent.vas.update.wrapper.VasUpdateWrapper;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bhdh
-  implements bhdf
 {
-  private bhdf a;
+  public final bhdg a;
+  public final List<bhdg> a;
   
-  public bhdh(QQAppInterface paramQQAppInterface)
+  public bhdh()
   {
-    this.a = new bhdi(paramQQAppInterface);
+    this.jdField_a_of_type_Bhdg = new bhdg();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  private void a()
+  public int a(bhdh parambhdh)
   {
-    if (BaseApplicationImpl.getApplication().getSharedPreferences("quick_update_common", 0).getInt("isFirstMove", 0) == 0) {}
-    try
-    {
-      bhdo localbhdo = (bhdo)((bhdg)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(374)).a().getDbManager();
-      if (localbhdo != null) {
-        localbhdo.a();
+    int j;
+    int i;
+    label22:
+    int k;
+    if (parambhdh != null) {
+      if (this.jdField_a_of_type_JavaUtilList == null)
+      {
+        j = 0;
+        if (parambhdh.jdField_a_of_type_JavaUtilList != null) {
+          break label100;
+        }
+        i = 0;
+        if (j != i) {
+          break label144;
+        }
+        k = 0;
+        i = 1;
+        label32:
+        if ((i == 0) || (k >= j)) {
+          break label113;
+        }
+        if (bhjx.a((bhdg)this.jdField_a_of_type_JavaUtilList.get(k), (bhdg)parambhdh.jdField_a_of_type_JavaUtilList.get(k))) {
+          break label161;
+        }
+        i = 0;
       }
-      b();
-      return;
     }
-    catch (Throwable localThrowable)
+    label144:
+    label161:
+    for (;;)
     {
-      localThrowable.printStackTrace();
+      k += 1;
+      break label32;
+      j = this.jdField_a_of_type_JavaUtilList.size();
+      break;
+      label100:
+      i = parambhdh.jdField_a_of_type_JavaUtilList.size();
+      break label22;
+      label113:
+      if (i != 0) {
+        i = 0;
+      }
+      while (bhjx.a(parambhdh.jdField_a_of_type_Bhdg, this.jdField_a_of_type_Bhdg)) {
+        if (i == 0)
+        {
+          return 0;
+          i = 3;
+          continue;
+          i = 3;
+        }
+        else
+        {
+          return 1;
+        }
+      }
+      if (i == 0) {
+        return 2;
+      }
+      return 3;
+      return 3;
     }
   }
   
-  private void b()
+  public Object clone()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VasUpdateEngineProxy", 2, "copySeqConfig");
+    bhdh localbhdh = new bhdh();
+    localbhdh.jdField_a_of_type_Bhdg.a(this.jdField_a_of_type_Bhdg);
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      bhdg localbhdg = (bhdg)this.jdField_a_of_type_JavaUtilList.get(i);
+      localbhdh.jdField_a_of_type_JavaUtilList.add((bhdg)localbhdg.clone());
+      i += 1;
     }
-    VasUpdateWrapper.getCommonManager().copyFile(VasQuickUpdateEngine.ENGINE_CONFIG_PATH + File.separator + "seq.cfg", SeqConfigEntity.SEQ_CONFIG_PATH);
+    return localbhdh;
   }
   
-  public void cancelDwonloadItem(long paramLong, String paramString)
+  public boolean equals(Object paramObject)
   {
-    this.a.cancelDwonloadItem(paramLong, paramString);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    int i;
+    int j;
+    if ((paramObject instanceof bhdh))
+    {
+      paramObject = (bhdh)paramObject;
+      bool1 = bool2;
+      if (bhjx.a(paramObject.jdField_a_of_type_Bhdg, this.jdField_a_of_type_Bhdg)) {
+        if (this.jdField_a_of_type_JavaUtilList == null)
+        {
+          i = 0;
+          if (paramObject.jdField_a_of_type_JavaUtilList != null) {
+            break label134;
+          }
+          j = 0;
+          label55:
+          bool1 = bool2;
+          if (i != j) {
+            break label147;
+          }
+          bool1 = true;
+          j = 0;
+          label69:
+          if ((!bool1) || (j >= i)) {
+            break label147;
+          }
+          if (bhjx.a((bhdg)this.jdField_a_of_type_JavaUtilList.get(j), (bhdg)paramObject.jdField_a_of_type_JavaUtilList.get(j))) {
+            break label150;
+          }
+          bool1 = false;
+        }
+      }
+    }
+    label134:
+    label147:
+    label150:
+    for (;;)
+    {
+      j += 1;
+      break label69;
+      i = this.jdField_a_of_type_JavaUtilList.size();
+      break;
+      j = paramObject.jdField_a_of_type_JavaUtilList.size();
+      break label55;
+      return bool1;
+    }
   }
   
-  public void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2)
+  public String toString()
   {
-    this.a.downloadGatherItem(paramLong, paramString1, paramArrayOfString, paramString2);
-  }
-  
-  public void downloadItem(long paramLong, String paramString1, String paramString2)
-  {
-    this.a.downloadItem(paramLong, paramString1, paramString2);
-  }
-  
-  public void onDestory()
-  {
-    this.a.onDestory();
-  }
-  
-  public void onPbMsgRecv(int paramInt, String paramString1, String paramString2)
-  {
-    this.a.onPbMsgRecv(paramInt, paramString1, paramString2);
-  }
-  
-  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback)
-  {
-    this.a.queryItemVersion(paramInt, paramString, paramBoolean, paramQueryItemVersionCallback);
-  }
-  
-  public void setWeakHandler(WeakReference<VasExtensionHandler> paramWeakReference)
-  {
-    this.a.setWeakHandler(paramWeakReference);
-  }
-  
-  public void startUpdateAllItem()
-  {
-    ThreadManagerV2.excute(new VasUpdateEngineProxy.1(this), 32, null, true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[head]").append("type = ").append(this.jdField_a_of_type_Bhdg.jdField_a_of_type_Int).append(", value = ").append(bhjx.b(this.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString)).append("\r\n");
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (Object localObject = null;; localObject = Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()))
+    {
+      int j = ((Integer)localObject).intValue();
+      int i = 0;
+      while (i < j)
+      {
+        localObject = (bhdg)this.jdField_a_of_type_JavaUtilList.get(i);
+        if (localObject != null) {
+          localStringBuilder.append("[more item]").append("type = ").append(((bhdg)localObject).jdField_a_of_type_Int).append(", value = ").append(bhjx.b(((bhdg)localObject).jdField_a_of_type_JavaLangString)).append("\r\n");
+        }
+        i += 1;
+      }
+    }
+    return localStringBuilder.toString();
   }
 }
 

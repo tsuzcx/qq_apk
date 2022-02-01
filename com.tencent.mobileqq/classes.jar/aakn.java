@@ -1,33 +1,25 @@
-import android.widget.ImageView;
-import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView;
-import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2;
-import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.1;
-import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.2;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class aakn
-  implements bdvw
+class aakn
+  implements TextView.OnEditorActionListener
 {
-  public aakn(AbsSubscribeShareCardView.2 param2) {}
+  aakn(aakh paramaakh) {}
   
-  public void onResp(bdwt parambdwt)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (parambdwt.jdField_a_of_type_Int == 0)
+    switch (paramInt)
     {
-      ((ImageView)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.jdField_a_of_type_Int)).setImageBitmap(SafeBitmapFactory.decodeFile(this.a.jdField_a_of_type_JavaLangString));
-      AbsSubscribeShareCardView.a(this.a.this$0);
-      if (AbsSubscribeShareCardView.b(this.a.this$0) == this.a.b.size()) {
-        ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.1(this));
-      }
-      return;
+    case 5: 
+    default: 
+      return false;
     }
-    ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.2(this));
+    if (aakh.a(this.a) != null) {
+      aakh.a(this.a).a();
+    }
+    return true;
   }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

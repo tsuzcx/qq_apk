@@ -1,60 +1,7 @@
-import android.app.Activity;
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-
-public class aolt
-  extends aojs
-{
-  public aolt(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
-  
-  private boolean C()
-  {
-    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin");
-    for (;;)
-    {
-      try
-      {
-        if (TextUtils.isEmpty(str))
-        {
-          str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-          blsb.a((Activity)this.jdField_a_of_type_AndroidContentContext, blsi.a(), str, 0, 0, 0);
-          return true;
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("QzoneOpenHomePageAction", 1, localException, new Object[0]);
-        return true;
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = C();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QzoneOpenHomePageAction", 1, "doAction error: " + localException.getMessage());
-      a("QzoneOpenHomePageAction");
-    }
-    return false;
-  }
-}
+public class aolt {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aolt
  * JD-Core Version:    0.7.0.1
  */

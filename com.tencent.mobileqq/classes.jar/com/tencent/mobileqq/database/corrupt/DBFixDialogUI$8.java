@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import ariy;
-import arjh;
+import aryn;
+import aryw;
 
 public class DBFixDialogUI$8
   implements Runnable
 {
-  public DBFixDialogUI$8(ariy paramariy, int paramInt) {}
+  public DBFixDialogUI$8(aryn paramaryn, int paramInt) {}
   
   public void run()
   {
-    if (this.a == arjh.d) {
-      ariy.c(this.this$0);
+    if (this.a == aryw.d) {
+      aryn.c(this.this$0);
     }
-    while (this.a != arjh.e) {
+    while (this.a != aryw.e) {
       return;
     }
-    ariy.d(this.this$0);
+    aryn.d(this.this$0);
   }
 }
 

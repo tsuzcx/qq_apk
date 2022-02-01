@@ -1,110 +1,29 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.FormMultiLineItem;
-import com.tencent.widget.MultiImageTextView;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
 
-public class aiwo
-  extends amck
+class aiwo
+  implements View.OnClickListener
 {
-  public aiwo(PublicView paramPublicView, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView)
-  {
-    super(paramContext, paramQQAppInterface, paramXListView, 1, true);
-    paramXListView.setAdapter(this);
-  }
+  aiwo(aiwm paramaiwm) {}
   
-  public PublicRecommendAccountInfo a(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((PublicView.a(this.a) != null) && (paramInt >= 0) && (paramInt < PublicView.a(this.a).size())) {
-      return (PublicRecommendAccountInfo)PublicView.a(this.a).get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if ((PublicView.a(this.a) != null) && (PublicView.a(this.a).size() > 0)) {
-      return PublicView.a(this.a).size();
-    }
-    return 0;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1;
-    if (paramView == null)
+    aiwm.a(this.a).a(aiwm.a(this.a).a, Integer.valueOf(4));
+    aiwm.a(this.a).a();
+    axan.a().c(aiwm.a(this.a).a, aiwm.a(this.a));
+    axan.a().c(aiwm.a(this.a), aiwm.a(this.a).a);
+    bdll.b(aiwm.a(this.a), "P_CliOper", "Grp_msg", "", "AIOchat", "Clk_setmsg", 0, 0, aiwm.a(this.a).a, "", "", "");
+    QQAppInterface localQQAppInterface = aiwm.a(this.a);
+    String str2 = aiwm.a(this.a).a;
+    if (aiwm.a(this.a).b(aiwm.a(this.a).a) == 3) {}
+    for (String str1 = "1";; str1 = "0")
     {
-      localObject1 = new FormMultiLineItem(this.a.a);
-      ((View)localObject1).setId(2131374068);
-      paramView = new aiwq();
-      paramView.c = ((FormMultiLineItem)localObject1).a();
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((FormMultiLineItem)localObject1).a(0);
-      paramView.b = ((FormMultiLineItem)localObject1).a(1);
-      ((View)localObject1).setTag(paramView);
-      ((View)localObject1).setOnClickListener(this.a);
-    }
-    Object localObject2;
-    for (;;)
-    {
-      localObject2 = a(paramInt);
-      if (localObject2 != null) {
-        break;
-      }
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject2 = (aiwq)paramView.getTag();
-      localObject1 = paramView;
-      paramView = (View)localObject2;
-    }
-    if (((PublicRecommendAccountInfo)localObject2).mSource == 1)
-    {
-      paramView.jdField_a_of_type_JavaLangString = ((PublicRecommendAccountInfo)localObject2).mEqqNameAccount;
-      label154:
-      paramView.jdField_a_of_type_ComTencentMobileqqDataPublicRecommendAccountInfo = ((PublicRecommendAccountInfo)localObject2);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramView.b.setVisibility(0);
-      paramView.c.setImageBitmap(a(1, paramView.jdField_a_of_type_JavaLangString));
-      if (((PublicRecommendAccountInfo)localObject2).mSource != 1) {
-        break label404;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((PublicRecommendAccountInfo)localObject2).mEqqCs);
-      paramView.b.setText(((PublicRecommendAccountInfo)localObject2).mEqqSi);
-    }
-    for (;;)
-    {
-      if ((((PublicRecommendAccountInfo)localObject2).mIsVerified != null) && (((PublicRecommendAccountInfo)localObject2).mIsVerified.equalsIgnoreCase("1")))
-      {
-        localObject2 = this.a.getResources().getDrawable(2130841741);
-        int i = (int)bgme.a(this.a.a, 15.0F);
-        ((Drawable)localObject2).setBounds(0, 0, i, i);
-        ((MultiImageTextView)paramView.jdField_a_of_type_AndroidWidgetTextView).a(6.0F);
-        ((MultiImageTextView)paramView.jdField_a_of_type_AndroidWidgetTextView).a((Drawable)localObject2, i, i);
-        ((MultiImageTextView)paramView.jdField_a_of_type_AndroidWidgetTextView).b();
-      }
-      if (AppSetting.c)
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(paramView.jdField_a_of_type_AndroidWidgetTextView.getText().toString());
-        ((StringBuilder)localObject2).append(paramView.b.getText().toString());
-        ((View)localObject1).setContentDescription(((StringBuilder)localObject2).toString());
-      }
-      break;
-      paramView.jdField_a_of_type_JavaLangString = String.valueOf(((PublicRecommendAccountInfo)localObject2).mPublicuin);
-      break label154;
-      label404:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((PublicRecommendAccountInfo)localObject2).mPublicname);
-      paramView.b.setText(((PublicRecommendAccountInfo)localObject2).mPublicdesc);
+      bdll.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_confirm", 0, 0, str2, str1, "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
 }

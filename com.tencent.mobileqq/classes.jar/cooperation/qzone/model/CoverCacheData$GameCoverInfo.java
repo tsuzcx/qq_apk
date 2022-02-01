@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blza;
+import bnac;
 
 public class CoverCacheData$GameCoverInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameCoverInfo> CREATOR = new blza();
+  public static final Parcelable.Creator<GameCoverInfo> CREATOR = new bnac();
   public double a;
   public int a;
   public String a;

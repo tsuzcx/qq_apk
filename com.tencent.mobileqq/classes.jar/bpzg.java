@@ -1,8 +1,30 @@
-public abstract interface bpzg
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.SystemClock;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+
+public class bpzg
+  extends AnimatorListenerAdapter
 {
-  public abstract void invalidate();
+  public bpzg(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
   
-  public abstract void postInvalidate();
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation deleteView 140ms translate end");
+    }
+    this.a.a.d = 4;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a.a = SystemClock.uptimeMillis();
+    this.a.a.b = 140L;
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation deleteView begin");
+    }
+  }
 }
 
 

@@ -1,7 +1,14 @@
-public class awzo
+import com.tencent.mobileqq.data.Emoticon;
+
+class awzo
+  implements awzj
 {
-  public static final long[] a = { 1L, 2L, 3L, 4L, 5L, 6L, 7L, 12L };
-  public static final long[] b = { 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 12L, 16L, 17L, 19L, 20L, 21L };
+  awzo(awzk paramawzk, Emoticon paramEmoticon, int paramInt1, String paramString, int paramInt2) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Awzk.a.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+  }
 }
 
 

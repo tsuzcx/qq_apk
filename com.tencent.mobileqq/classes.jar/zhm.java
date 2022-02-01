@@ -1,11 +1,23 @@
-import java.util.List;
-import javax.annotation.Nonnull;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog.6.1;
 
-public abstract interface zhm
+public class zhm
+  implements wsh<wsc>
 {
-  public abstract void a(int paramInt, @Nonnull List<zhp> paramList, boolean paramBoolean);
+  public zhm(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public abstract void b(int paramInt, @Nonnull List<zhp> paramList, boolean paramBoolean);
+  public void a(boolean paramBoolean, wsc paramwsc)
+  {
+    yuk.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
+    if ((paramBoolean) && (paramwsc != null))
+    {
+      yuk.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramwsc);
+      this.a.a.post(new EditVideoMusicDialog.6.1(this, paramwsc));
+      return;
+    }
+    yuk.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
+  }
 }
 
 

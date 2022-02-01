@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-final class aajl
-  implements View.OnClickListener
+public class aajl
 {
-  aajl(aajp paramaajp, String paramString, bkho parambkho) {}
+  private static boolean a;
   
-  public void onClick(View paramView)
+  public static boolean a()
   {
-    this.jdField_a_of_type_Aajp.a(false, this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_Bkho.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return a;
   }
 }
 

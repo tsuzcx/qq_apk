@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_gravity="bottom" android:id="@id/nuf" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSPlayerControlBar android:id="@id/nu8" android:visibility="visible" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="5.5dip" android:layout_marginBottom="10.0dip" />
-</FrameLayout>
+    <TextView android:textSize="@dimen/aym" android:textColor="@color/bp" android:gravity="center" android:id="@id/o1w" android:background="@drawable/h51" android:paddingLeft="@dimen/mw" android:paddingRight="@dimen/mw" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:layout_gravity="right" android:id="@id/o1v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/h4_" />
+</LinearLayout>

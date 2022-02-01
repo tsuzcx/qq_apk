@@ -1,22 +1,6 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-class rye
-  implements Animation.AnimationListener
+abstract interface rye
 {
-  rye(ryd paramryd) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (ryd.a(this.a) != null) {
-      ryd.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract long a();
 }
 
 

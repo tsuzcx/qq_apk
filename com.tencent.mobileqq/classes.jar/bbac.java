@@ -1,10 +1,4 @@
-import PersonalState.UserProfile;
-import java.util.List;
-
-public abstract interface bbac
-{
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, List<UserProfile> paramList, boolean paramBoolean3);
-}
+public class bbac {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

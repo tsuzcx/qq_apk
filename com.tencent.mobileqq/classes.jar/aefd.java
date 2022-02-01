@@ -1,34 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class aefd
-  implements amcr
+  implements bbst
 {
-  public aefd(ForwardRecentActivity paramForwardRecentActivity) {}
+  public aefd(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void a(View paramView)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    boolean bool = ForwardRecentActivity.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onItemViewClicked" + bool);
+    if ((this.a.g != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
+      ChatSettingActivity.a(this.a, this.a.a, this.a.g);
     }
-    if (bool)
-    {
-      ForwardRecentActivity.a(this.a, paramView);
-      return;
-    }
-    this.a.a(paramView);
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    return ForwardRecentActivity.a(this.a, paramString, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefd
  * JD-Core Version:    0.7.0.1
  */

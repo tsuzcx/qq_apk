@@ -1,12 +1,13 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class nqv
-  implements TVK_IMediaPlayer.OnCompletionListener
+public class nqv
+  implements ahzu
 {
-  nqv(nqt paramnqt) {}
-  
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    nqw.a.a(paramMessageRecord);
+  }
 }
 
 

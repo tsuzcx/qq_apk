@@ -1,28 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.pb.troop.bindgame.GCBindGroup.GCBindGroupSsoServerRsp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class afkc
-  extends niv
+  implements aexy
 {
-  public afkc(TroopInfoActivity paramTroopInfoActivity) {}
+  public afkc(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a()
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
-    {
-      paramBundle = new GCBindGroup.GCBindGroupSsoServerRsp();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.a.a(paramBundle);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      QLog.e("Q.troopinfo", 1, "parse game bind status failed");
-    }
+    RegisterPhoneNumActivity.a(this.a).b();
+  }
+  
+  public void b()
+  {
+    RegisterPhoneNumActivity.a(this.a).b();
   }
 }
 

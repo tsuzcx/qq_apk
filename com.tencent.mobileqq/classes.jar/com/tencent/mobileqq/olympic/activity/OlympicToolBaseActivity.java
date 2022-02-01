@@ -9,11 +9,11 @@ import android.os.Handler.Callback;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View.OnClickListener;
-import anni;
-import aylf;
-import aylg;
-import biau;
-import bkgm;
+import anzj;
+import azdy;
+import azdz;
+import bjbs;
+import blhq;
 import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
@@ -35,10 +35,10 @@ public class OlympicToolBaseActivity
   public static boolean g = true;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aylg(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aylf(this);
-  private biau jdField_a_of_type_Biau;
-  private bkgm jdField_a_of_type_Bkgm;
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new azdz(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new azdy(this);
+  private bjbs jdField_a_of_type_Bjbs;
+  private blhq jdField_a_of_type_Blhq;
   public QQAppInterface a;
   public ARScanAR a;
   public OcrConfig a;
@@ -53,7 +53,7 @@ public class OlympicToolBaseActivity
   {
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.i = NearbyFakeActivity.a();
-    this.jdField_a_of_type_Bkgm.removeMessages(0);
+    this.jdField_a_of_type_Blhq.removeMessages(0);
     if (this.i)
     {
       f();
@@ -62,7 +62,7 @@ public class OlympicToolBaseActivity
     this.jdField_a_of_type_Boolean = true;
     i();
     k();
-    this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(0, 5000L);
+    this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(0, 5000L);
   }
   
   private void i()
@@ -73,14 +73,14 @@ public class OlympicToolBaseActivity
       return;
       try
       {
-        if (this.jdField_a_of_type_Biau == null)
+        if (this.jdField_a_of_type_Bjbs == null)
         {
-          this.jdField_a_of_type_Biau = new biau(this, getTitleBarHeight());
-          this.jdField_a_of_type_Biau.a(anni.a(2131706607));
-          this.jdField_a_of_type_Biau.c(false);
+          this.jdField_a_of_type_Bjbs = new bjbs(this, getTitleBarHeight());
+          this.jdField_a_of_type_Bjbs.a(anzj.a(2131706714));
+          this.jdField_a_of_type_Bjbs.c(false);
         }
         this.h = true;
-        this.jdField_a_of_type_Biau.show();
+        this.jdField_a_of_type_Bjbs.show();
         return;
       }
       catch (Exception localException) {}
@@ -92,8 +92,8 @@ public class OlympicToolBaseActivity
   {
     try
     {
-      if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {
-        this.jdField_a_of_type_Biau.dismiss();
+      if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {
+        this.jdField_a_of_type_Bjbs.dismiss();
       }
       return;
     }
@@ -158,7 +158,7 @@ public class OlympicToolBaseActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Bkgm = new bkgm(this.jdField_a_of_type_AndroidOsHandler$Callback);
+    this.jdField_a_of_type_Blhq = new blhq(this.jdField_a_of_type_AndroidOsHandler$Callback);
     this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver = new ScannerResultReceiver(null);
     return true;
   }
@@ -166,8 +166,8 @@ public class OlympicToolBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Biau != null) {
-      this.jdField_a_of_type_Biau.dismiss();
+    if (this.jdField_a_of_type_Bjbs != null) {
+      this.jdField_a_of_type_Bjbs.dismiss();
     }
   }
   
@@ -217,7 +217,7 @@ public class OlympicToolBaseActivity
   public void f()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bkgm.removeMessages(0);
+    this.jdField_a_of_type_Blhq.removeMessages(0);
     j();
     Intent localIntent = new Intent(this, ScanTorchActivity.class);
     localIntent.addFlags(67108864);

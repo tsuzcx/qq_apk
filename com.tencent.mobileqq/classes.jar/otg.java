@@ -1,81 +1,36 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.view.SurfaceHolder;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.TextView;
 
-public class otg
-  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnVideoPreparedListener, IVideoViewBase.IVideoViewCallBack
+class otg
+  implements bliz
 {
-  private WeakReference<ReadInJoyArticleBottomVideoView> a;
+  otg(otd paramotd, blir paramblir, int[] paramArrayOfInt, Context paramContext, osv paramosv) {}
   
-  public otg(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = new WeakReference(paramReadInJoyArticleBottomVideoView);
-  }
-  
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
-    if (paramTVK_IMediaPlayer == null) {
+    this.jdField_a_of_type_Blir.dismiss();
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfInt.length)) {
       return;
     }
-    ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer, 9);
-    ood.c = true;
-    paramTVK_IMediaPlayer.j();
-    paramTVK_IMediaPlayer.r();
-    ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer).a = true;
-  }
-  
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
-  {
-    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
-    if (paramTVK_IMediaPlayer == null) {}
-    do
+    paramView = this.jdField_a_of_type_AndroidContentContext.getString(this.jdField_a_of_type_ArrayOfInt[paramInt]);
+    bhpc localbhpc = new bhpc(this.jdField_a_of_type_AndroidContentContext, 2131755824);
+    localbhpc.setContentView(2131558984);
+    localbhpc.setMessage(String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131717040), new Object[] { paramView }));
+    localbhpc.setTitle(2131717041);
+    ViewGroup.LayoutParams localLayoutParams = localbhpc.getMessageTextView().getLayoutParams();
+    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
     {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArticleBottomVideoView", 0, "error msg = " + paramString);
-      }
-      ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer, 8);
-      paramTVK_IMediaPlayer.j();
-    } while (!QLog.isColorLevel());
-    QLog.i("ReadInJoyArticleBottomVideoView", 3, "WebFastProteusViewAdBannerVideoCreator start video error");
-    return false;
-  }
-  
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
-  
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
-  
-  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
-  {
-    paramSurfaceHolder = (ReadInJoyArticleBottomVideoView)this.a.get();
-    if (paramSurfaceHolder == null) {
-      return;
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).leftMargin = bhtq.a(12.0F);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).rightMargin = bhtq.a(12.0F);
+      localbhpc.getMessageTextView().setLayoutParams(localLayoutParams);
     }
-    paramSurfaceHolder.q();
-  }
-  
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
-    if (paramTVK_IMediaPlayer == null) {
-      return;
-    }
-    if ((Looper.myLooper() != Looper.getMainLooper()) && (ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer) != null))
-    {
-      ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(paramTVK_IMediaPlayer, 2));
-      return;
-    }
-    ReadInJoyArticleBottomVideoView.b(paramTVK_IMediaPlayer);
+    localbhpc.setTag(paramView);
+    localbhpc.setPositiveButton(2131717043, new oth(this, paramView, paramInt + 1));
+    localbhpc.setNegativeButton(2131717042, new oti(this));
+    localbhpc.show();
   }
 }
 

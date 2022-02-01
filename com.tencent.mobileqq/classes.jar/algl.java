@@ -1,13 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class algl
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public algl(LoginView paramLoginView) {}
+  public algl(DrawHbFragment paramDrawHbFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if ((paramView instanceof TextView))
+    {
+      DrawHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
+      DrawHbFragment.a(this.a).c("draw.wrappacket.choose");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

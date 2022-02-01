@@ -1,159 +1,39 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AutoReplyText;
-import mqq.app.AppRuntime.Status;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aype
+class aype
+  extends beyf
 {
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface != null) {
-      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDA", "0X8009DDA", 0, 0, "", "", "", "");
-    }
-  }
+  aype(ayot paramayot) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    int i;
-    if ((paramQQAppInterface != null) && (paramStatus != null)) {
-      switch (aypf.a[paramStatus.ordinal()])
-      {
-      default: 
-        i = 0;
-      }
-    }
-    for (;;)
+    bete localbete = (bete)paramMessage.obj;
+    switch (paramMessage.what)
     {
-      int j = i;
-      if (i == 1)
+    case 1004: 
+    default: 
+    case 1003: 
+      do
       {
-        j = i;
-        if (paramLong > 0L) {
-          j = (int)paramLong;
+        do
+        {
+          return;
+        } while (localbete.b != 8);
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + bevi.a);
         }
-      }
-      if (j != 0) {
-        bcst.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDB", "0X8009DDB", j, 0, "", "", "", "");
-      }
+      } while (ayot.a(this.a) == null);
+      ayot.a(this.a).a = bevi.a;
+      ayot.a(this.a);
       return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
-      i = 5;
-      continue;
-      i = 6;
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong, AutoReplyText paramAutoReplyText)
-  {
-    if ((paramQQAppInterface != null) && (paramAutoReplyText != null) && (aypc.a(paramStatus)))
-    {
-      int i = 1;
-      if (paramAutoReplyText.getTextId() == 2147483647) {
-        i = 2;
-      }
-      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDC", "0X8009DDC", i, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    String str1;
-    if (paramQQAppInterface != null)
-    {
-      if (!paramBoolean) {
-        break label41;
-      }
-      str1 = "0X8009DDE";
-      if (!paramBoolean) {
-        break label47;
-      }
-    }
-    label41:
-    label47:
-    for (String str2 = "0X8009DDE";; str2 = "0X8009DDF")
-    {
-      bcst.b(paramQQAppInterface, "dc00898", "", "", str1, str2, 0, 0, "", "", "", "");
-      return;
-      str1 = "0X8009DDF";
-      break;
-    }
-  }
-  
-  public static void a(AppRuntime.Status paramStatus, long paramLong)
-  {
-    int i = -1;
-    switch (aypf.a[paramStatus.ordinal()])
-    {
-    }
-    for (;;)
-    {
-      int j = i;
-      if (i == 1)
-      {
-        j = i;
-        if (paramLong > 0L) {
-          j = (int)paramLong;
-        }
-      }
-      aypy.a("0X800AF3D", j);
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
-      i = 5;
-      continue;
-      i = 6;
-    }
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface != null) {
-      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDD", "0X8009DDD", 0, 0, "", "", "", "");
-    }
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong)
-  {
-    int i = -1;
-    switch (aypf.a[paramStatus.ordinal()])
-    {
-    }
-    for (;;)
-    {
-      int j = i;
-      if (i == 1)
-      {
-        j = i;
-        if (paramLong > 0L) {
-          j = (int)paramLong;
-        }
-      }
-      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X8009DE0", "0X8009DE0", j, 0, "", "", "", "");
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
-      i = 5;
-      continue;
-      i = 6;
-    }
+    this.a.a.a();
+    this.a.a.b(anzj.a(2131706205));
   }
 }
 

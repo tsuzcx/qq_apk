@@ -1,51 +1,18 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
 
-class abch
-  extends Handler
+public class abch
+  extends AnimatorListenerAdapter
 {
-  abch(abcg paramabcg, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abch(SingleLyricView paramSingleLyricView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    Object localObject;
-    int i;
-    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
-    {
-      paramMessage = (Bundle)paramMessage.obj;
-      localObject = paramMessage.getString("url");
-      if ((paramMessage.getInt("req_state", 0) == 2) && (!TextUtils.isEmpty(abcg.a(this.a))) && (!TextUtils.isEmpty(abcg.b(this.a))) && (abcg.b(this.a).equals(localObject)))
-      {
-        i = paramMessage.getInt("result_code");
-        localObject = new JSONObject();
-        if (i != 0) {
-          break label158;
-        }
-      }
-    }
-    try
-    {
-      ((JSONObject)localObject).put("code", 0);
-      for (;;)
-      {
-        label113:
-        this.a.callJs(abcg.a(this.a) + "(" + ((JSONObject)localObject).toString() + ");");
-        return;
-        label158:
-        ((JSONObject)localObject).put("code", i);
-        ((JSONObject)localObject).put("msg", paramMessage.getString("error_message"));
-      }
-    }
-    catch (Exception paramMessage)
-    {
-      break label113;
+    super.onAnimationCancel(paramAnimator);
+    if (SingleLyricView.a(this.a) != null) {
+      SingleLyricView.a(this.a).setAlpha(1.0F);
     }
   }
 }

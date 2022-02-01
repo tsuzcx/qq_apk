@@ -1,40 +1,34 @@
-import android.opengl.GLSurfaceView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.util.Arrays;
 
-public final class aoue
+class aoue
+  implements PermissionMonitor.Listener
 {
-  public static aoty a(aoua paramaoua, aouc paramaouc, GLSurfaceView paramGLSurfaceView)
+  static
   {
-    if (paramaouc == null) {
-      return null;
-    }
-    switch (paramaouc.a)
+    if (!aotx.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-    default: 
-      return null;
-    case 0: 
-      paramaoua = new aoun(paramaoua, (aouo)paramaouc);
-      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_3D here " + paramaouc.toString());
-      return paramaoua;
-    case 2: 
-    case 3: 
-      paramaoua = new aouv(paramaoua, (aoux)paramaouc);
-      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_NORAML_2D_VIDEO here" + paramaouc.toString());
-      return paramaoua;
-    case 4: 
-      paramaoua = new aouy(paramaoua, (aova)paramaouc);
-      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_ONLINE_VIDEO here" + paramaouc.toString());
-      return paramaoua;
-    case 5: 
-      paramaoua = new aouu(paramaoua, (aout)paramaouc);
-      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_MULTI_ANIM here" + paramaouc.toString());
-      return paramaoua;
-    case 100: 
-      paramaoua = new aour(paramaoua, (aous)paramaouc, paramGLSurfaceView);
-      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_BINHAI_3D here" + paramaouc.toString());
-      return paramaoua;
+      jdField_a_of_type_Boolean = bool;
+      return;
     }
-    return new aouh(paramaoua, (aouj)paramaouc);
+  }
+  
+  aoue(aotx paramaotx) {}
+  
+  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
+  {
+    if (aotx.a(this.jdField_a_of_type_Aotx) != Thread.currentThread()) {}
+    while ((!aotx.a(this.jdField_a_of_type_Aotx)) || (paramArrayOfObject.length != 2)) {
+      return;
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aotx.a(this.jdField_a_of_type_Aotx))) {
+      throw new AssertionError();
+    }
+    ShadowParcel.a((int)aotx.a(this.jdField_a_of_type_Aotx), ((Integer)paramArrayOfObject[1]).intValue());
+    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

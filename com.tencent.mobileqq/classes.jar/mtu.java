@@ -1,17 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-
-class mtu
-  implements bkhy
+public abstract interface mtu
 {
-  mtu(mts parammts) {}
+  public abstract void a();
   
-  public void onDismiss()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D22 at: " + System.currentTimeMillis());
-    }
-    bcst.b(null, "CliOper", "", "", "0X8008D22", "0X8008D22", 0, 0, "", "", "", "");
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

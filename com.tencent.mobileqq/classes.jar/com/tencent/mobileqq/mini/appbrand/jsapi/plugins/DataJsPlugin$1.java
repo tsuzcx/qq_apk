@@ -45,6 +45,7 @@ final class DataJsPlugin$1
     add("getNativeWeRunData");
     add("subscribeAppMsg");
     add("subscribeOnceAppMsg");
+    add("requestSubscribeSystemMessage");
     add("getGroupInfoExtra");
     add("getCloudTicket");
     add("shareInvite");

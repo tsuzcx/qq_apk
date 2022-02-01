@@ -1,16 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class sqv
-  extends pue
+class sqv
+  implements srh
 {
-  public sqv(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
-  {
-    super(paramString);
-  }
+  sqv(sqr paramsqr) {}
   
-  public void a(ptx paramptx)
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    paramptx.f();
+    sry.a(paramProteusItemData.b, paramProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo, paramProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    paramViewBase = paramViewBase.getEventAttachedData();
+    if (!TextUtils.isEmpty(paramViewBase)) {
+      ozs.d(paramContext, paramViewBase);
+    }
   }
 }
 

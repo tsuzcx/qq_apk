@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.listentogether.fragment;
 
 import android.graphics.Bitmap;
-import awyn;
+import axrg;
 
 class ListenTogetherPlayFragment$2
   implements Runnable
 {
-  ListenTogetherPlayFragment$2(ListenTogetherPlayFragment paramListenTogetherPlayFragment, awyn paramawyn, Bitmap paramBitmap) {}
+  ListenTogetherPlayFragment$2(ListenTogetherPlayFragment paramListenTogetherPlayFragment, axrg paramaxrg, Bitmap paramBitmap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Awyn.run(null, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_Axrg.run(null, this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

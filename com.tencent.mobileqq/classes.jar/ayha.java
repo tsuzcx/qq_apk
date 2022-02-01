@@ -1,23 +1,11 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.ocr.TranslateFragment;
-import java.util.List;
-
-public class ayha
-  implements PopupWindow.OnDismissListener
+class ayha
+  implements xvq
 {
-  public ayha(TranslateFragment paramTranslateFragment, ayfk paramayfk) {}
+  ayha(aygz paramaygz, aygn paramaygn) {}
   
-  public void onDismiss()
+  public void a(xvo paramxvo)
   {
-    TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, null);
-    if ((this.jdField_a_of_type_Ayfk.b != null) && (this.jdField_a_of_type_Ayfk.b.size() > 1))
-    {
-      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment.getResources().getDrawable(2130846156);
-      TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
-    }
+    this.jdField_a_of_type_Aygn.a(this.jdField_a_of_type_Aygz);
   }
 }
 

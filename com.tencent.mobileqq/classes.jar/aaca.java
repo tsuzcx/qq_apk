@@ -1,24 +1,12 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFollowRcmd;
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
+import com.tencent.biz.richframework.part.block.base.RefreshHeaderView;
 
-class aaca
+public class aaca
   extends RecyclerView.ViewHolder
 {
-  public aaca(aaby paramaaby, View paramView)
+  public aaca(RefreshHeaderView paramRefreshHeaderView)
   {
-    super(paramView);
-  }
-  
-  public void a(CertifiedAccountMeta.StFollowRcmd paramStFollowRcmd, int paramInt)
-  {
-    if ((this.itemView instanceof BlankRecommendItemView))
-    {
-      ((BlankRecommendItemView)this.itemView).setData(paramStFollowRcmd);
-      ((BlankRecommendItemView)this.itemView).setExtraTypeInfo(this.a.getExtraTypeInfo());
-      ((BlankRecommendItemView)this.itemView).setPos(paramInt);
-    }
+    super(paramRefreshHeaderView);
   }
 }
 

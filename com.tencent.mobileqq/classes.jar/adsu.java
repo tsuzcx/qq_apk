@@ -1,28 +1,15 @@
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
-public final class adsu
-  implements DialogInterface.OnClickListener
+public class adsu
+  implements DialogInterface.OnDismissListener
 {
-  public adsu(long paramLong, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString, boolean paramBoolean1, adsx paramadsx, Bundle paramBundle, boolean paramBoolean2) {}
+  public adsu(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    boolean bool = false;
-    paramDialogInterface = ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext);
-    if (paramInt == 1)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDialogInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Adsx, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    if (!this.b) {
-      bool = true;
-    }
-    ChatActivityUtils.a(paramDialogInterface, bool, null);
+    this.a.a = null;
   }
 }
 

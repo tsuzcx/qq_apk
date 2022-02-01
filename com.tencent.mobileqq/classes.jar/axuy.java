@@ -1,14 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.NearbyFakeActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class axuy
-  implements DialogInterface.OnClickListener
+public class axuy
+  extends Handler
 {
-  axuy(axuv paramaxuv, bgpa parambgpa) {}
+  public axuy(NearbyFakeActivity paramNearbyFakeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Bgpa.dismiss();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("NearbyFakeActivity", 2, "procPreload time out");
+      }
+      NearbyFakeActivity.a(this.a, 1);
+    }
   }
 }
 

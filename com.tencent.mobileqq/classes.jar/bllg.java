@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qqfav.widget.LocationDetailActivity;
+import android.database.DataSetObserver;
+import com.tencent.widget.ExpandableListConnector;
 
 public class bllg
-  implements View.OnClickListener
+  extends DataSetObserver
 {
-  public bllg(LocationDetailActivity paramLocationDetailActivity) {}
+  public bllg(ExpandableListConnector paramExpandableListConnector) {}
   
-  public void onClick(View paramView)
+  public void onChanged()
   {
-    this.a.onBackPressed();
-    EventCollector.getInstance().onViewClicked(paramView);
+    ExpandableListConnector.a(this.a, true, true);
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    ExpandableListConnector.a(this.a, true, true);
+    this.a.notifyDataSetInvalidated();
   }
 }
 

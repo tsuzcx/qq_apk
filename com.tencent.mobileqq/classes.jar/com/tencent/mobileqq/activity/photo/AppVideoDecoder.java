@@ -3,11 +3,11 @@ package com.tencent.mobileqq.activity.photo;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
-import beai;
+import bezb;
 import java.net.URL;
 
 public class AppVideoDecoder
-  implements beai
+  implements bezb
 {
   Context mContext;
   LocalMediaInfo mLocalMediaInfo;

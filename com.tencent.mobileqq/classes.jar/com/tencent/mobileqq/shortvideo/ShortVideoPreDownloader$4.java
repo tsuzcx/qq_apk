@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bcef;
-import bcen;
-import bcev;
+import bcwx;
+import bcxf;
+import bcxn;
 
 public class ShortVideoPreDownloader$4
   implements Runnable
 {
-  public ShortVideoPreDownloader$4(bcen parambcen, bcev parambcev) {}
+  public ShortVideoPreDownloader$4(bcxf parambcxf, bcxn parambcxn) {}
   
   public void run()
   {
-    bcen.a("consumeShortVideo", "start pre download short video type=" + this.a.b + " uniseq=" + this.a.a.jdField_a_of_type_Long + ", uuid=" + this.a.a.jdField_a_of_type_JavaLangString);
+    bcxf.a("consumeShortVideo", "start pre download short video type=" + this.a.b + " uniseq=" + this.a.a.jdField_a_of_type_Long + ", uuid=" + this.a.a.jdField_a_of_type_JavaLangString);
     this.this$0.a(this.a);
   }
 }

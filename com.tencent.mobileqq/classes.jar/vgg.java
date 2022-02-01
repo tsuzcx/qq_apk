@@ -1,141 +1,157 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import com.tencent.biz.qqcircle.bizparts.danmaku.element.ColorElement;
-import common.config.service.QzoneConfig;
-import java.util.regex.Pattern;
+import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.widget.PopupWindow;
+import com.tencent.biz.qqcircle.events.QCircleTaskCenterEvent;
+import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 public class vgg
+  extends vbk
+  implements aaam
 {
-  public static int a;
-  public static final Pattern a;
-  public static final Pattern b = Pattern.compile("@?\\{uin:\\d+,nick(name)?:.*?\\}");
-  public static final Pattern c = Pattern.compile("\\{url:(.*?),text:(.*?),color:(.*?)\\}");
-  public static final Pattern d = Pattern.compile("\\{url:.*?,text:.*?\\}");
-  public static final Pattern e = Pattern.compile("\\<uin:.*?,nick(name)?:.*?\\>");
-  public static final Pattern f = Pattern.compile("\\[em\\]e\\d{1,}\\[/em\\]", 2);
-  public static final Pattern g = Pattern.compile("\\{img:.*?,w:\\d+,h:\\d+\\}");
-  public static final Pattern h = Pattern.compile("\\{img:.*?,w:\\d+,h:.+?\\}");
+  private aabg<QCircleReportBean> jdField_a_of_type_Aabg;
+  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
+  private vai jdField_a_of_type_Vai;
   
-  static
+  public String a()
   {
-    jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("QZoneSetting", "RichTextNeedDecode", 0);
-    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("<uin:.*?,nickname:.*?>");
+    return "QCircleTaskCenterPart";
   }
   
-  public static ColorElement a(String paramString)
+  public void a()
   {
-    i = paramString.indexOf("text:") + "text:".length();
-    int n = paramString.indexOf(",color:");
-    if ((i == -1) || (n == -1)) {
-      return new ColorElement();
-    }
-    ColorElement localColorElement = new ColorElement();
-    localColorElement.text = paramString.substring(i, n);
-    j = paramString.indexOf(",useDefaultFont:");
-    k = paramString.indexOf(",useSuperFont:");
-    int m = paramString.indexOf(",fontName:");
-    i = paramString.length() - 1;
-    if (j != -1) {}
-    try
+    String str;
+    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (!this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
     {
-      if (paramString.charAt(",useDefaultFont:".length() + j) == '1') {
-        localColorElement.useDefaultFont = true;
+      str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      if (!QCircleReportBean.isContentDetailPage(c())) {
+        break label84;
       }
-      i = j;
     }
-    catch (Exception localException1)
+    label84:
+    for (int i = b();; i = c())
     {
-      for (;;)
-      {
-        i = j;
-        continue;
-        j = k;
+      vtq.a(str, 8, 1, 0, i);
+      if (this.jdField_a_of_type_Vai != null) {
+        this.jdField_a_of_type_Vai.onRefreshData();
       }
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(a().getRootView(), 81, 0, 0);
+      return;
     }
-    if (k != -1)
-    {
-      if (j == -1) {
-        break label362;
-      }
-      i = j;
+  }
+  
+  public void a(aabg<QCircleReportBean> paramaabg)
+  {
+    this.jdField_a_of_type_Aabg = paramaabg;
+  }
+  
+  protected void a(View paramView)
+  {
+    this.jdField_a_of_type_Vai = new vai(null);
+    if (this.jdField_a_of_type_Aabg != null) {
+      this.jdField_a_of_type_Vai.a(this.jdField_a_of_type_Aabg);
     }
-    try
-    {
-      if (paramString.charAt(",useSuperFont:".length() + k) == '0')
-      {
-        localColorElement.useSuperFont = false;
-        i = j;
-      }
-    }
-    catch (Exception localException4)
-    {
-      for (;;)
-      {
-        i = j;
-      }
-    }
-    k = i;
-    try
-    {
-      int i1 = paramString.indexOf(",bold:");
-      j = i;
-      if (i1 >= 0)
-      {
-        k = i;
-        j = Math.min(i1, i);
-      }
-      i = j;
-      k = j;
-      if (paramString.charAt(i1 + ",bold:".length()) == '1')
-      {
-        k = j;
-        localColorElement.isBold = true;
-        i = j;
-      }
-    }
-    catch (Exception localException3)
-    {
-      for (;;)
-      {
-        i = k;
-      }
-    }
-    j = i;
-    if (m != -1) {}
     for (;;)
     {
-      try
-      {
-        str = paramString.substring(",fontName:".length() + m, i);
-        if (!TextUtils.isEmpty(str))
-        {
-          str = str.trim();
-          localColorElement.fontFamilyUrl = ("https://downv6.qq.com/video_story/qcircle/ttf/" + str + ".ttf");
-        }
-        j = m;
+      a().add(this.jdField_a_of_type_Vai);
+      super.a(paramView);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(a(), -1, -1);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131755543);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new ColorDrawable(0));
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(a());
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
+      a().a().setBackgroundResource(2130844123);
+      a().setBackgroundResource(2131165355);
+      a().setOnClickListener(new vgh(this));
+      a().setPadding(0, (int)(zft.b(a()) * 0.6D), 0, 0);
+      return;
+      if (a() != null) {
+        this.jdField_a_of_type_Vai.a(a());
       }
-      catch (Exception localException2)
-      {
-        String str;
-        j = i;
-        continue;
-      }
-      try
-      {
-        str = paramString.substring(",color:".length() + n, j);
-        paramString = str;
-        if (!TextUtils.isEmpty(str))
-        {
-          paramString = str;
-          if (!str.startsWith("#")) {
-            paramString = "#" + str;
-          }
-        }
-        localColorElement.color = Color.parseColor(paramString);
-      }
-      catch (Exception paramString) {}
     }
-    return localColorElement;
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
+    {
+      b();
+      return true;
+    }
+    return super.a();
+  }
+  
+  protected int b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean != null) {
+      return QCircleReportBean.getParentPageId("QCircleTaskCenterPart", this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
+    }
+    if (this.jdField_a_of_type_Aabg != null) {
+      return QCircleReportBean.getParentPageId("QCircleTaskCenterPart", (QCircleReportBean)this.jdField_a_of_type_Aabg.getReportBean());
+    }
+    return 0;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing())) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    }
+  }
+  
+  protected int c()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean != null) {
+      return QCircleReportBean.getPageId("QCircleTaskCenterPart", this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
+    }
+    if (this.jdField_a_of_type_Aabg != null) {
+      return QCircleReportBean.getPageId("QCircleTaskCenterPart", (QCircleReportBean)this.jdField_a_of_type_Aabg.getReportBean());
+    }
+    return 0;
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(QCircleTaskCenterEvent.class);
+    return localArrayList;
+  }
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    b();
+    super.onActivityDestroyed(paramActivity);
+  }
+  
+  public void onActivityStarted(Activity paramActivity)
+  {
+    super.onActivityStarted(paramActivity);
+    aaak.a().a(this);
+  }
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    super.onActivityStopped(paramActivity);
+    aaak.a().b(this);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if ((!(paramSimpleBaseEvent instanceof QCircleTaskCenterEvent)) || (((QCircleTaskCenterEvent)paramSimpleBaseEvent).mPopContextHashCode != a().hashCode())) {
+      return;
+    }
+    if (((QCircleTaskCenterEvent)paramSimpleBaseEvent).mIsShowTaskPanel)
+    {
+      a();
+      return;
+    }
+    b();
   }
 }
 

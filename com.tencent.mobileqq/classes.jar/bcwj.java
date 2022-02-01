@@ -1,17 +1,51 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.15;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class bcwj
-  implements View.OnTouchListener
+  implements beuq
 {
-  public bcwj(StructMsgForGeneralShare paramStructMsgForGeneralShare, afzq paramafzq) {}
+  public bcwj(PtvTemplateManager.15 param15) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onResp(bevm parambevm)
   {
-    return this.jdField_a_of_type_Afzq.onTouch(paramView, paramMotionEvent);
+    if (QLog.isColorLevel()) {
+      QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "onResp url: " + this.a.a.doodleUrl + " resultcode: " + parambevm.c);
+    }
+    this.a.a.doodleUsable = this.a.this$0.a(this.a.a, false);
+    if (this.a.a.doodleUsable) {}
+    try
+    {
+      nof.a(new File(PtvTemplateManager.b, this.a.a.doodleName), PtvTemplateManager.c);
+      if (parambevm.jdField_a_of_type_Int == 0)
+      {
+        Object localObject = this.a.this$0.a();
+        if (localObject != null)
+        {
+          localObject = (bezv)((QQAppInterface)localObject).getManager(193);
+          if (((bezv)localObject).a()) {
+            ((bezv)localObject).a(this.a.a.doodleUrl, parambevm.jdField_a_of_type_Long);
+          }
+        }
+      }
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          localIOException.printStackTrace();
+        }
+      }
+    }
   }
+  
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

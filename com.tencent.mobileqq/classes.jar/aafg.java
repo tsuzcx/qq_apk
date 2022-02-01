@@ -1,18 +1,16 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
+import com.tencent.biz.subscribe.event.RecommendFeedbackEvent;
 
 class aafg
-  implements View.OnClickListener
+  implements aamw
 {
-  aafg(aafd paramaafd, CertifiedAccountMeta.StComment paramStComment) {}
+  aafg(aaff paramaaff) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    aaet.a(this.jdField_a_of_type_Aafd.a, aaet.a(this.jdField_a_of_type_Aafd.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, null);
-    aaet.a(this.jdField_a_of_type_Aafd.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBoolean) {
+      aaak.a().a(new RecommendFeedbackEvent(RecommendBannerItemView.a(this.a.a)));
+    }
   }
 }
 

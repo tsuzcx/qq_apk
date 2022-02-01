@@ -1,26 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class oqw
-  implements ValueAnimator.AnimatorUpdateListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initSocialAvatarOnClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oqw
+  implements opd
 {
-  oqw(oqv paramoqv, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, ReadInjoyCutImageView paramReadInjoyCutImageView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull otd paramotd, @NotNull otp paramotp, @NotNull ViewBase paramViewBase)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = paramValueAnimator.floatValue();
-    float f3 = this.b;
-    float f4 = paramValueAnimator.floatValue();
-    float f5 = this.c;
-    float f6 = paramValueAnimator.floatValue();
-    float f7 = this.d;
-    float f8 = paramValueAnimator.floatValue();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setLeftAreaTranslate(f1 * f2, f3 * f4);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setRightAreaTranslate(f5 * f6, f8 * f7);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.postInvalidate();
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(paramotd, "adapter");
+    Intrinsics.checkParameterIsNotNull(paramotp, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oqx(paramotp, paramotd, paramContainer));
   }
 }
 

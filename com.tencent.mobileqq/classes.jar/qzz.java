@@ -1,8 +1,10 @@
-public abstract interface qzz
+import java.util.List;
+
+public abstract interface qzz<T>
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2, rab paramrab);
+  public abstract List<T> a(int paramInt1, int paramInt2);
   
-  public abstract void a(raa paramraa);
+  public abstract void a(List<T> paramList, boolean paramBoolean);
 }
 
 

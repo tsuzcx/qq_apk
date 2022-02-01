@@ -1,25 +1,51 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
 
-public final class adsd
-  implements adsw
+public class adsd
+  implements TextWatcher
 {
-  public adsd(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
+  public adsd(AddAccountActivity paramAddAccountActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void afterTextChanged(Editable paramEditable)
   {
-    AudioHelper.b("发起音视频_获取会议id_rsp");
-    Bundle localBundle2 = this.jdField_a_of_type_AndroidOsBundle;
-    Bundle localBundle1 = localBundle2;
-    if (localBundle2 == null) {
-      localBundle1 = new Bundle();
+    AddAccountActivity.a(this.a, null);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AddAccountActivity.a(this.a, paramCharSequence.toString());
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
+    {
+      paramCharSequence = paramCharSequence.toString();
+      if ((paramCharSequence != null) && (AddAccountActivity.a(this.a) != null) && (AddAccountActivity.a(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
+        BaseApplicationImpl.sApplication.refreAccountList();
+      }
+      AddAccountActivity.a(this.a, null);
+      if ((AddAccountActivity.a(this.a) == null) || (AddAccountActivity.a(this.a).length() == 0)) {}
+      do
+      {
+        return;
+        if ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (paramCharSequence.length() != AddAccountActivity.a(this.a).length() + 1))
+        {
+          BaseApplicationImpl.sApplication.refreAccountList();
+          return;
+        }
+        if ((!paramCharSequence.substring(0, AddAccountActivity.a(this.a).length()).equals(AddAccountActivity.a(this.a))) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText == null)) {
+          break;
+        }
+        paramCharSequence = paramCharSequence.substring(AddAccountActivity.a(this.a).length());
+      } while ((paramCharSequence == null) || (paramCharSequence.length() != 1));
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText(paramCharSequence);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(1);
     }
-    localBundle1.putInt("ConfAppID", paramInt1);
-    localBundle1.putInt("MeetingConfID", paramInt2);
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, localBundle1);
+    AddAccountActivity.a(this.a, null);
   }
 }
 

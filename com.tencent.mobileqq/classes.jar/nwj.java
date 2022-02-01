@@ -1,6 +1,32 @@
-public abstract interface nwj
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+
+public class nwj
+  implements View.OnTouchListener
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public nwj(VideoCoverFragment paramVideoCoverFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      VideoCoverFragment.a(this.a).b();
+      if (!this.a.a())
+      {
+        if (!VideoCoverFragment.a(this.a)) {
+          break label47;
+        }
+        this.a.a(false);
+      }
+    }
+    return false;
+    label47:
+    this.a.a(true);
+    return false;
+  }
 }
 
 

@@ -1,11 +1,6 @@
-import android.widget.ImageView;
-
-class zib
+public abstract interface zib
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView b;
-  
-  zib(zia paramzia) {}
+  public abstract void a(zia paramzia);
 }
 
 

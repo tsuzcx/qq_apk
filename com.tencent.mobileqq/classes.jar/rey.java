@@ -1,18 +1,57 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public final class rey
-  implements Parcelable.Creator<ColumnInfo>
+public class rey
+  extends BaseAdapter
 {
-  public ColumnInfo a(Parcel paramParcel)
+  public rey(EditVideoFragment paramEditVideoFragment) {}
+  
+  public ColumnInfo a(int paramInt)
   {
-    return new ColumnInfo(paramParcel);
+    return (ColumnInfo)EditVideoFragment.a(this.a).get(paramInt);
   }
   
-  public ColumnInfo[] a(int paramInt)
+  public int getCount()
   {
-    return new ColumnInfo[paramInt];
+    return EditVideoFragment.a(this.a).size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    rez localrez;
+    ColumnInfo localColumnInfo;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(this.a.getActivity()).inflate(2131560168, paramViewGroup, false);
+      localrez = new rez(this.a.getActivity(), (ViewGroup)localView);
+      localView.setTag(localrez);
+      localColumnInfo = a(paramInt);
+      if (EditVideoFragment.a(this.a) == null) {
+        break label121;
+      }
+    }
+    label121:
+    for (int i = EditVideoFragment.a(this.a).columnID;; i = 0)
+    {
+      localrez.a(localColumnInfo, i);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localrez = (rez)paramView.getTag();
+      localView = paramView;
+      break;
+    }
   }
 }
 

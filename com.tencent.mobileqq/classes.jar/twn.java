@@ -1,35 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
+import com.tencent.biz.pubaccount.readinjoy.config.beans.AchillesParams;
+import com.tencent.biz.pubaccount.util.Achilles;
+import com.tencent.biz.pubaccount.util.Achilles.1;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public final class twn
-  implements txg
+public class twn
+  extends aqjo
 {
-  @NonNull
-  private final RecyclerView.Adapter a;
+  public twn(Achilles.1 param1, RockDownloadInfo paramRockDownloadInfo, AchillesParams paramAchillesParams) {}
   
-  public twn(@NonNull RecyclerView.Adapter paramAdapter)
+  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
   {
-    this.a = paramAdapter;
+    QLog.d("Achilles", 1, "query predownload info fail: " + paramRockDownloadInfo);
+    Achilles.a(this.jdField_a_of_type_ComTencentMobileqqDataRockDownloadInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyConfigBeansAchillesParams);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(ArrayList<RockDownloadInfo> paramArrayList)
   {
-    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Object paramObject)
-  {
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2, paramObject);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
-  }
-  
-  public void c(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemMoved(paramInt1, paramInt2);
+    QLog.d("Achilles", 1, "query predownload info success: " + paramArrayList);
   }
 }
 

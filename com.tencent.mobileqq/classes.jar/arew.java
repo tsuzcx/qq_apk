@@ -1,220 +1,144 @@
-import android.graphics.drawable.Drawable;
-import android.util.SparseArray;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class arew
 {
-  private static aret jdField_a_of_type_Aret;
-  private static arfj jdField_a_of_type_Arfj;
-  private static arfm jdField_a_of_type_Arfm;
-  private static final String jdField_a_of_type_JavaLangString = arew.class.getSimpleName();
-  private int jdField_a_of_type_Int;
-  private final SparseArray<arfh> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private arfa jdField_a_of_type_Arfa;
-  private arfb jdField_a_of_type_Arfb;
-  private arfd jdField_a_of_type_Arfd;
-  private arfe jdField_a_of_type_Arfe;
-  private arff jdField_a_of_type_Arff;
-  private arfg jdField_a_of_type_Arfg;
-  private arfi jdField_a_of_type_Arfi;
-  private arfq jdField_a_of_type_Arfq = new arfq();
-  private final argc<Drawable> jdField_a_of_type_Argc;
-  private List<arfn> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h = true;
   
-  private arew(arey paramarey)
+  public arew()
   {
-    this.jdField_a_of_type_Boolean = arey.a(paramarey);
-    this.jdField_a_of_type_Arfg = arey.a(paramarey);
-    this.jdField_a_of_type_Arfe = arey.a(paramarey);
-    this.jdField_a_of_type_Arfd = arey.a(paramarey);
-    jdField_a_of_type_Arfj = arey.a(paramarey);
-    this.jdField_a_of_type_Arfi = arey.a(paramarey);
-    this.jdField_a_of_type_Arff = paramarey.jdField_a_of_type_Arff;
-    this.jdField_a_of_type_Arfb = paramarey.jdField_a_of_type_Arfb;
-    this.jdField_a_of_type_Arfa = arey.a(paramarey);
-    this.jdField_a_of_type_Int = arey.a(paramarey);
-    this.b = arey.b(paramarey);
-    this.jdField_a_of_type_Argc = new argc();
-    a(paramarey);
-    c();
+    this.jdField_a_of_type_JavaLangString = "0.0f|0.0f|0.0f|0.0f";
+    this.jdField_b_of_type_JavaLangString = "-1";
+    this.jdField_c_of_type_JavaLangString = "-1";
   }
   
-  public static aret a()
+  public static arew a(String paramString)
   {
-    if (jdField_a_of_type_Aret == null) {}
-    try
+    if (paramString == null)
     {
-      if (jdField_a_of_type_Aret == null) {
-        jdField_a_of_type_Aret = new aret();
-      }
-      return jdField_a_of_type_Aret;
+      paramString = null;
+      return paramString;
     }
-    finally {}
-  }
-  
-  public static arey a()
-  {
-    return new arey(null);
-  }
-  
-  public static arfm a()
-  {
-    if (jdField_a_of_type_Arfm == null) {}
-    try
+    for (;;)
     {
-      if ((jdField_a_of_type_Arfm == null) && (jdField_a_of_type_Arfj != null)) {
-        jdField_a_of_type_Arfm = jdField_a_of_type_Arfj.a();
-      }
-      if (jdField_a_of_type_Arfm == null) {
-        jdField_a_of_type_Arfm = new arfm();
-      }
-      return jdField_a_of_type_Arfm;
-    }
-    finally {}
-  }
-  
-  private void a(arey paramarey)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.addAll(arey.a(paramarey));
-  }
-  
-  private void c()
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Arfg == null)) {
-      throw new IllegalArgumentException("Danmaku module need an IDanmakuPlayTimeSupplier or is live setter for computing timeline");
-    }
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Arff != null) {
-      return this.jdField_a_of_type_Arff.a();
-    }
-    return (int)Math.ceil(argo.a(a()));
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_Arfg == null) {
-      return -1L;
-    }
-    return this.jdField_a_of_type_Arfg.a();
-  }
-  
-  public aren a(int paramInt)
-  {
-    Object localObject;
-    if (paramInt == -2147483647) {
-      localObject = new arev(this);
-    }
-    aren localaren;
-    do
-    {
-      return localObject;
-      localaren = null;
-      if (this.jdField_a_of_type_Arfb != null) {
-        localaren = this.jdField_a_of_type_Arfb.a(this, paramInt);
-      }
-      localObject = localaren;
-    } while (localaren != null);
-    return new ares(this);
-  }
-  
-  public arfh a(int paramInt)
-  {
-    Object localObject3 = (arfh)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    Object localObject1 = localObject3;
-    if (localObject3 == null) {}
-    try
-    {
-      localObject3 = (arfh)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-      localObject1 = localObject3;
-      if (localObject3 == null)
+      try
       {
-        localObject1 = localObject3;
-        if (this.jdField_a_of_type_Arfi != null)
+        arew localarew = new arew();
+        Object localObject = new JSONObject(paramString);
+        localarew.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("userratio_new", "0.0f|0.0f|0.0f|0.0f");
+        localarew.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("extralsteps_new", "-1");
+        localarew.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("predownloadwhitelist_new", "-1");
+        localarew.e = ((JSONObject)localObject).optBoolean("useapm_new", false);
+        localarew.h = ((JSONObject)localObject).optBoolean("suspendWhiteListOnly", true);
+        paramString = Float.valueOf(Float.parseFloat(((JSONObject)localObject).optString("suspend_user_ratio", "0.0f")));
+        if (paramString != null)
         {
-          localObject1 = this.jdField_a_of_type_Arfi.a(paramInt);
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
+          if (paramString.floatValue() > Math.random())
+          {
+            bool = true;
+            localarew.f = bool;
+          }
+        }
+        else
+        {
+          localObject = Float.valueOf(Float.parseFloat(((JSONObject)localObject).optString("fake_suspend_user_ratio", "0.0f")));
+          if (localObject != null)
+          {
+            if (((Float)localObject).floatValue() <= Math.random()) {
+              break label472;
+            }
+            bool = true;
+            localarew.g = bool;
+          }
+          if (!localarew.jdField_a_of_type_JavaLangString.isEmpty())
+          {
+            String[] arrayOfString = localarew.jdField_a_of_type_JavaLangString.split("\\|");
+            if (arrayOfString.length == 4)
+            {
+              float f1 = Float.parseFloat(arrayOfString[0]);
+              float f2 = Float.parseFloat(arrayOfString[1]);
+              float f3 = Float.parseFloat(arrayOfString[2]);
+              float f4 = Float.parseFloat(arrayOfString[3]);
+              if (f1 <= Math.random()) {
+                break label478;
+              }
+              bool = true;
+              localarew.jdField_a_of_type_Boolean = bool;
+              if (f2 <= Math.random()) {
+                break label484;
+              }
+              bool = true;
+              localarew.jdField_b_of_type_Boolean = bool;
+              if (f3 <= Math.random()) {
+                break label490;
+              }
+              bool = true;
+              localarew.jdField_c_of_type_Boolean = bool;
+              if (f4 <= Math.random()) {
+                break label496;
+              }
+              bool = true;
+              localarew.d = bool;
+              QLog.d("Perf", 1, "disable_preload_user_ratio = " + f1 + ",disable_predownload_user_ratio = " + f2 + ",disable_gettroop_user_ratio = " + f3 + ",enable_auto_user_ratio = " + f4 + ",suspend_user_ratio = " + paramString + ",fake_suspend_user_ratio = " + localObject);
+            }
+          }
+          paramString = localarew;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("Perf", 2, "confBean = " + localarew.toString());
+          return localarew;
         }
       }
-      localObject3 = localObject1;
-      if (localObject1 == null) {
-        localObject3 = a();
+      catch (Throwable paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Perf", 1, new Object[] { "parse e:", paramString.toString() });
+        }
+        return null;
       }
-      return localObject3;
-    }
-    finally {}
-  }
-  
-  public arfn a(aren paramaren)
-  {
-    Iterator localIterator = a().iterator();
-    Object localObject;
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localObject = (arfn)localIterator.next();
-    } while (!((arfn)localObject).a(paramaren));
-    for (paramaren = (aren)localObject;; paramaren = null)
-    {
-      localObject = paramaren;
-      if (paramaren == null) {
-        localObject = this.jdField_a_of_type_Arfq;
-      }
-      return localObject;
-    }
-  }
-  
-  public List<arfn> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Arfa != null) {
-      this.jdField_a_of_type_Arfa.a();
-    }
-  }
-  
-  public void a(aren paramaren)
-  {
-    if (this.jdField_a_of_type_Arfe != null) {
-      this.jdField_a_of_type_Arfe.a(paramaren);
+      boolean bool = false;
+      continue;
+      label472:
+      bool = false;
+      continue;
+      label478:
+      bool = false;
+      continue;
+      label484:
+      bool = false;
+      continue;
+      label490:
+      bool = false;
+      continue;
+      label496:
+      bool = false;
     }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Boolean) || (a() < 0L);
+    return !this.e;
   }
   
-  public int b()
+  public String toString()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Argc.a(0);
-  }
-  
-  public boolean b()
-  {
-    return this.b;
+    return "LowEndPerfBean{mDisablePreloadProcess=" + this.jdField_a_of_type_Boolean + ",mDisablePredownload=" + this.jdField_b_of_type_Boolean + ",mDisableGetTroopList=" + this.jdField_c_of_type_Boolean + ",mEnableAutomatorDelay=" + this.d + ",mUserRatio=" + this.jdField_a_of_type_JavaLangString + ",mExtraSteps=" + this.jdField_b_of_type_JavaLangString + ",mPredownLoadWhiteList=" + this.jdField_c_of_type_JavaLangString + ",mUseApmConfig=" + this.e + ",mSuspend_Thread=" + this.f + ",mFake_Suspend_Thread = " + this.g + ",mSuspendWhiteListThreadOnly = " + this.h + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arew
  * JD-Core Version:    0.7.0.1
  */

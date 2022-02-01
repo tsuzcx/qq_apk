@@ -1,65 +1,120 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.EffectOperateManager;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
-public class lgk<T extends lgj>
-  extends Handler
+public class lgk
 {
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference<EffectConfigBase<T>> jdField_a_of_type_JavaLangRefWeakReference;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private lgj[] jdField_a_of_type_ArrayOfLgj = new lgj[15];
   
-  public lgk(String paramString, EffectConfigBase<T> paramEffectConfigBase)
+  public lgk(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramEffectConfigBase);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    a(4);
+    a(5);
+    a(12);
+    a(10);
   }
   
-  public void handleMessage(Message paramMessage)
+  public lgj a(int paramInt)
   {
-    boolean bool = true;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+    Object localObject1 = this.jdField_a_of_type_ArrayOfLgj[paramInt];
+    if (localObject1 != null) {
+      return localObject1;
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      EffectConfigBase localEffectConfigBase = (EffectConfigBase)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      lgj locallgj;
-      switch (paramMessage.what)
+      lgj locallgj = this.jdField_a_of_type_ArrayOfLgj[paramInt];
+      localObject1 = locallgj;
+      if (locallgj == null)
       {
-      default: 
-        localEffectConfigBase.a(paramMessage);
-      case 0: 
-        do
+        locallgj = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt);
+        localObject1 = locallgj;
+        if (locallgj != null)
         {
-          return;
-          locallgj = (lgj)paramMessage.obj;
-          l = paramMessage.arg1;
-          bool = EffectConfigBase.a(localEffectConfigBase, locallgj, localEffectConfigBase.jdField_a_of_type_Lgj);
-          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "MSG_ON_ITEM_SELECT_CHANGED, seq[" + l + "], isEqual[" + bool + "], count_MSG[" + localEffectConfigBase.jdField_a_of_type_Int + "], \nitem[" + locallgj + "], \ncur[" + localEffectConfigBase.jdField_a_of_type_Lgj + "]");
-          if (localEffectConfigBase.jdField_a_of_type_Int >= 0) {
-            localEffectConfigBase.jdField_a_of_type_Int -= 1;
-          }
-        } while (!bool);
-        EffectConfigBase.a(localEffectConfigBase, l, locallgj);
-        return;
-      case 1: 
-        locallgj = (lgj)paramMessage.obj;
-        l = paramMessage.arg2;
-        if (paramMessage.arg1 == 1) {}
-        for (;;)
-        {
-          EffectConfigBase.a(localEffectConfigBase, l, locallgj, bool);
-          return;
-          bool = false;
+          this.jdField_a_of_type_ArrayOfLgj[paramInt] = locallgj;
+          localObject1 = locallgj;
         }
       }
-      EffectConfigBase.a(localEffectConfigBase, (lgj)paramMessage.obj, paramMessage.arg1);
-      return;
+      return localObject1;
     }
-    long l = 0L;
-    if (paramMessage.what == 0) {
-      l = paramMessage.arg1;
+  }
+  
+  protected lgj a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    Object localObject = null;
+    long l1 = System.currentTimeMillis();
+    switch (paramInt)
+    {
+    case 9: 
+    default: 
+      lbj.c("BusinessManagerFactory", "error-->create Manager unknown name :" + paramInt);
+      paramVideoAppInterface = localObject;
     }
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "handleMessage, had destroy, msg[" + paramMessage.what + "], seq[" + l + "]");
+    for (;;)
+    {
+      if (paramVideoAppInterface != null) {
+        paramVideoAppInterface.a();
+      }
+      long l2 = System.currentTimeMillis();
+      lbj.c("BusinessManagerFactory", "create Manager,cost time:" + (l2 - l1));
+      return paramVideoAppInterface;
+      paramVideoAppInterface = new lix(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lgv(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lhx(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lie(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lih(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lgx(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new AVRedPacketManager(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new mpv(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new EffectOperateManager(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lio(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lin(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lgt(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lhm(paramVideoAppInterface);
+      continue;
+      paramVideoAppInterface = new lhz(paramVideoAppInterface);
+    }
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
+  {
+    if ((paramInt >= 0) && (paramInt < 15) && (!lgj.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt)) && (a(paramInt).a(paramString))) {
+      lgj.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), paramInt, true);
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramInt >= 0)
+    {
+      bool1 = bool2;
+      if (paramInt < 15)
+      {
+        bool1 = bool2;
+        if (this.jdField_a_of_type_ArrayOfLgj[paramInt] != null) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
 }
 

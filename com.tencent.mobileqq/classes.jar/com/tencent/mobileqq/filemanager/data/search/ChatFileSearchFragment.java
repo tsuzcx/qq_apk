@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
-import athx;
-import bbio;
-import bbtj;
+import anzj;
+import atzr;
+import bcbi;
+import bcmc;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.ArrayList;
@@ -31,12 +31,12 @@ public class ChatFileSearchFragment
     this.jdField_a_of_type_JavaLangRunnable = new ChatFileSearchFragment.1(this);
   }
   
-  public bbio a()
+  public bcbi a()
   {
-    return new athx(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aobu, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new atzr(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aoof, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public bbtj a()
+  public bcmc a()
   {
     ChatFileManagerSearchEngine localChatFileManagerSearchEngine = new ChatFileManagerSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c);
     if (this.jdField_a_of_type_Int == 1)
@@ -87,11 +87,11 @@ public class ChatFileSearchFragment
       ThreadManager.executeOnFileThread(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViewsInLayout();
       paramViewGroup = new TextView(getActivity());
-      paramViewGroup.setText(anni.a(2131700390));
+      paramViewGroup.setText(anzj.a(2131700497));
       paramViewGroup.setSingleLine(true);
       paramViewGroup.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
       paramViewGroup.setTextSize(1, 15.0F);
-      paramViewGroup.setTextColor(getResources().getColor(2131167066));
+      paramViewGroup.setTextColor(getResources().getColor(2131167076));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramViewGroup);
     }
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);

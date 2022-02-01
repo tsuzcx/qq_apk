@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.teamwork.fragment;
 
-import abcr;
+import abgu;
 import android.app.Activity;
 import android.content.Intent;
-import bdjd;
-import bdjg;
-import bhos;
-import bhpv;
-import bhqo;
+import beby;
+import becb;
+import bipn;
+import biqq;
+import birj;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class TeamWorkDocsListFragment
@@ -15,16 +15,16 @@ public class TeamWorkDocsListFragment
 {
   public void showActionSheet()
   {
-    bhpv localbhpv = (bhpv)this.mComponentsProvider.a(4);
-    if (localbhpv != null)
+    biqq localbiqq = (biqq)this.mComponentsProvider.a(4);
+    if (localbiqq != null)
     {
-      abcr localabcr = ensureShare();
-      if ((localabcr != null) && (bdjg.a(localabcr.a())))
+      abgu localabgu = ensureShare();
+      if ((localabgu != null) && (becb.a(localabgu.a())))
       {
         getHostActivity().getIntent().putExtra("big_brother_source_key", "biz_src_xl_docs");
-        localbhpv.a = new bdjd(getHostActivity());
+        localbiqq.a = new beby(getHostActivity());
       }
-      localbhpv.a(localabcr, this.mUIStyle.a);
+      localbiqq.a(localabgu, this.mUIStyle.a);
     }
   }
 }

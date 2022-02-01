@@ -7,24 +7,24 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import bhod;
-import biau;
+import bioy;
+import bjbs;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
-import nmb;
-import tym;
-import zvc;
+import nnw;
+import tyo;
+import zyx;
 
 public class PublicAccountH5AbilityPlugin$26
   implements Runnable
 {
-  public PublicAccountH5AbilityPlugin$26(tym paramtym, String paramString, Bundle paramBundle, biau parambiau) {}
+  public PublicAccountH5AbilityPlugin$26(tyo paramtyo, String paramString, Bundle paramBundle, bjbs parambjbs) {}
   
   public void run()
   {
-    Object localObject = nmb.a(this.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    Object localObject = nnw.a(this.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
     int i;
-    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing()))
+    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing()))
     {
       i = 1;
       if (i != 0)
@@ -44,11 +44,11 @@ public class PublicAccountH5AbilityPlugin$26
         if (WXShareHelper.a().a()) {
           break label153;
         }
-        i = 2131719199;
+        i = 2131719399;
         if (i == -1) {
           break label168;
         }
-        zvc.a(0, i);
+        zyx.a(0, i);
         localObject = new Intent(this.this$0.mRuntime.a(), PublicAccountBrowser.class);
         ((Intent)localObject).putExtra("url", "https://weixin.qq.com/download");
         this.this$0.mRuntime.a().startActivity((Intent)localObject);
@@ -64,13 +64,13 @@ public class PublicAccountH5AbilityPlugin$26
       label153:
       if (!WXShareHelper.a().b())
       {
-        i = 2131719200;
+        i = 2131719400;
         continue;
         label168:
         WXShareHelper.a().a(localOutOfMemoryError, localBitmap, 1, true);
         return;
         label179:
-        zvc.a(1, 2131694639);
+        zyx.a(1, 2131694681);
       }
       else
       {

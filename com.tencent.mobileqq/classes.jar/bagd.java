@@ -1,18 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.qzonevip.gift.particle.ParticleDropView;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent.ColorScreenLoader;
 
-class bagd
-  extends AnimatorListenerAdapter
+public class bagd
+  implements ImageAssetDelegate
 {
-  bagd(baga parambaga) {}
+  public bagd(ProfileColorScreenComponent.ColorScreenLoader paramColorScreenLoader) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    if (baga.a(this.a) != null) {
-      baga.a(this.a).c();
-    }
-    baga.a(this.a, 8);
+    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
   }
 }
 

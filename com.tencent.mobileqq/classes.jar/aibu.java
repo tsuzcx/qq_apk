@@ -1,18 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class aibu
-  implements DialogInterface.OnClickListener
+  implements EIPCResultCallback
 {
-  aibu(aiay paramaiay, bhtt parambhtt) {}
+  aibu(aibr paramaibr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_Aiay.aa = true;
-    this.jdField_a_of_type_Aiay.Z = true;
-    aiay.b(this.jdField_a_of_type_Aiay, false);
-    if ((this.jdField_a_of_type_Bhtt.a()) && (!this.jdField_a_of_type_Bhtt.b())) {
-      bcst.b(this.jdField_a_of_type_Aiay.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
+    if (-102 == paramEIPCResult.code) {
+      aibr.r(this.a).finish();
     }
   }
 }

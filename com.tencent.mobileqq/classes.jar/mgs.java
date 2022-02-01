@@ -1,8 +1,19 @@
-public abstract interface mgs
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+
+public class mgs
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(long paramLong);
+  public mgs(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public abstract void a(long paramLong, mhm parammhm);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    mru.e(false, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

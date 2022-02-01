@@ -1,19 +1,18 @@
-import com.tencent.biz.qqstory.database.LikeEntry;
-import java.util.List;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tribe.async.dispatch.Dispatcher;
 
 public class ybo
+  extends ydd
 {
-  public int a;
-  public List<LikeEntry> a;
-  public boolean a;
-  public int b;
+  public ybo(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
   
-  public ybo(boolean paramBoolean, List<LikeEntry> paramList, int paramInt1, int paramInt2)
+  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    xbt localxbt = new xbt();
+    localxbt.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
+    localxbt.jdField_a_of_type_JavaUtilList = paramVideoCollectionItem.collectionVideoUIItemList;
+    wjj.a().dispatch(localxbt);
   }
 }
 

@@ -1,33 +1,33 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaet;
-import aafc;
-import aafw;
+import aaiu;
+import aajd;
+import aajx;
 import android.widget.TextView;
 
 public class CommentPresenter$2
   implements Runnable
 {
-  public CommentPresenter$2(aaet paramaaet) {}
+  public CommentPresenter$2(aaiu paramaaiu) {}
   
   public void run()
   {
-    if (aaet.a(this.this$0) != null) {
-      aaet.a(this.this$0).a(aaet.a(this.this$0));
+    if (aaiu.a(this.this$0) != null) {
+      aaiu.a(this.this$0).a(aaiu.a(this.this$0));
     }
-    if (aaet.a(this.this$0) != null)
+    if (aaiu.a(this.this$0) != null)
     {
-      if (aaet.a(this.this$0) > 0)
+      if (aaiu.a(this.this$0) > 0)
       {
-        aaet.a(this.this$0).setText(aafw.a(aaet.a(this.this$0)));
-        aaet.a(this.this$0).setVisibility(0);
+        aaiu.a(this.this$0).setText(aajx.a(aaiu.a(this.this$0)));
+        aaiu.a(this.this$0).setVisibility(0);
       }
     }
     else {
       return;
     }
-    aaet.a(this.this$0).setText("");
-    aaet.a(this.this$0).setVisibility(8);
+    aaiu.a(this.this$0).setText("");
+    aaiu.a(this.this$0).setVisibility(8);
   }
 }
 

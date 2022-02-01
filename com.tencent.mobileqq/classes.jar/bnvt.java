@@ -1,25 +1,13 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.image.ApngImage;
-import dov.com.qq.im.ae.play.AEPlayShowTabView;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 
 class bnvt
-  extends ViewPager.SimpleOnPageChangeListener
+  implements bnwp
 {
-  bnvt(bnvr parambnvr) {}
+  bnvt(bnvs parambnvs) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    if (paramInt == 0)
-    {
-      ApngImage.resumeAll();
-      return;
-    }
-    ApngImage.pauseAll();
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    bnvr.a(this.a).a(paramInt);
+    this.a.a(paramBoolean, paramGetAdsRsp);
   }
 }
 

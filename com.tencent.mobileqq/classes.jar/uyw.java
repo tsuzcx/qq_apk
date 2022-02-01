@@ -1,42 +1,83 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.net.Uri;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
+import common.config.service.QzoneConfig;
+import feedcloud.FeedCloudCommon.Entry;
+import java.net.URI;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-class uyw
-  implements View.OnClickListener
+public class uyw
 {
-  uyw(uyv paramuyv) {}
+  public static final String a;
+  public static final HashSet<String> a;
   
-  public void onClick(View paramView)
+  static
   {
-    Object localObject;
-    if (uyv.a(this.a) != null)
+    jdField_a_of_type_JavaLangString = QzoneConfig.getQQCircleSearchPageUrl();
+    jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    jdField_a_of_type_JavaUtilHashSet.add("_wwv");
+    jdField_a_of_type_JavaUtilHashSet.add("_proxy");
+    jdField_a_of_type_JavaUtilHashSet.add("_wv");
+  }
+  
+  public static String a(List<FeedCloudCommon.Entry> paramList, String paramString)
+  {
+    return uzg.a(paramList, paramString, "");
+  }
+  
+  public static HashMap<String, String> a(String paramString)
+  {
+    HashMap localHashMap;
+    try
     {
-      if (bgsp.a(uyv.a(this.a))) {
-        QLog.w("QCircleTaskCenterAdapter", 1, "task center url is empty");
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramString = Uri.parse(paramString);
+        if (paramString != null)
+        {
+          localHashMap = new HashMap();
+          Iterator localIterator = paramString.getQueryParameterNames().iterator();
+          while (localIterator.hasNext())
+          {
+            String str = (String)localIterator.next();
+            localHashMap.put(str, paramString.getQueryParameter(str));
+          }
+        }
       }
-      localObject = bgng.a(QQStoryContext.a(), paramView.getContext(), uyv.a(this.a));
-      if (localObject != null) {
-        ((bgmp)localObject).a();
-      }
-      localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      if (!QCircleReportBean.isContentDetailPage(this.a.a())) {
-        break label113;
-      }
+      return new HashMap();
     }
-    label113:
-    for (int i = this.a.b();; i = this.a.a())
+    catch (Exception paramString)
     {
-      vrf.a((String)localObject, 8, 2, 0, i);
-      vog.a().b(false);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      paramString.printStackTrace();
     }
+    return localHashMap;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    try
+    {
+      URI localURI = new URI(paramString);
+      String str = localURI.getHost();
+      QLog.d("QCircleJsUrlConfig", 1, "url:" + paramString + " domain:" + str);
+      if ((!TextUtils.isEmpty(str)) && (str.endsWith(".qq.com")))
+      {
+        boolean bool = localURI.getScheme().equals("https");
+        if (bool) {
+          return true;
+        }
+      }
+      return false;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
   }
 }
 

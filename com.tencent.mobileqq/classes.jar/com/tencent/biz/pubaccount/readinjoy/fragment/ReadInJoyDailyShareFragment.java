@@ -15,9 +15,9 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ScrollView;
-import anhk;
-import bgbw;
-import bgmo;
+import antf;
+import bhbx;
+import bhmq;
 import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
@@ -33,12 +33,12 @@ import java.util.Date;
 import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pfr;
-import qhx;
-import qjr;
-import qkl;
-import qmv;
-import tey;
+import oyj;
+import qai;
+import qcd;
+import qcx;
+import qfg;
+import svq;
 
 public class ReadInJoyDailyShareFragment
   extends PublicBaseFragment
@@ -48,7 +48,7 @@ public class ReadInJoyDailyShareFragment
   private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
   private String jdField_a_of_type_JavaLangString;
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private qhx jdField_a_of_type_Qhx;
+  private qai jdField_a_of_type_Qai;
   private String b;
   
   private Bitmap a(View paramView)
@@ -79,13 +79,13 @@ public class ReadInJoyDailyShareFragment
       return;
       Object localObject = this.jdField_a_of_type_OrgJsonJSONObject.optString("qr_code_url");
       if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-      for (localObject = bgbw.a((String)localObject, getActivity().getResources(), 540, 0, false);; localObject = null)
+      for (localObject = bhbx.a((String)localObject, getActivity().getResources(), 540, 0, false);; localObject = null)
       {
         if (localObject == null) {
           break label92;
         }
         ViewBase localViewBase = (ViewBase)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.a().getViewIdMapping().get("id_kandian_share_qr_code");
-        if (!(localViewBase instanceof qkl)) {
+        if (!(localViewBase instanceof qcx)) {
           break;
         }
         ((ImageView)localViewBase.getNativeView()).setImageBitmap((Bitmap)localObject);
@@ -101,7 +101,7 @@ public class ReadInJoyDailyShareFragment
     }
     try
     {
-      bgmo.a(paramBitmap, new File(paramString));
+      bhmq.a(paramBitmap, new File(paramString));
       return true;
     }
     catch (IOException paramBitmap)
@@ -114,8 +114,8 @@ public class ReadInJoyDailyShareFragment
   private void b()
   {
     ViewBase localViewBase = (ViewBase)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.a().getViewIdMapping().get("id_share_choice");
-    if ((localViewBase instanceof qjr)) {
-      ((qjr)localViewBase).a(new ReadInJoyDailyShareFragment.1(this, localViewBase));
+    if ((localViewBase instanceof qcd)) {
+      ((qcd)localViewBase).a(new ReadInJoyDailyShareFragment.1(this, localViewBase));
     }
   }
   
@@ -126,9 +126,9 @@ public class ReadInJoyDailyShareFragment
       View localView = ((ViewBase)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.a().getViewIdMapping().get("id_check_container")).getNativeView();
       if (localView != null)
       {
-        this.jdField_a_of_type_JavaLangString = anhk.bg;
+        this.jdField_a_of_type_JavaLangString = antf.bg;
         this.b = (this.jdField_a_of_type_JavaLangString + "kandiandaily-" + a(Calendar.getInstance().getTime()) + ".png");
-        tey.a(new File(this.jdField_a_of_type_JavaLangString));
+        svq.a(new File(this.jdField_a_of_type_JavaLangString));
         this.jdField_a_of_type_AndroidGraphicsBitmap = a(localView);
         a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.b);
       }
@@ -165,12 +165,12 @@ public class ReadInJoyDailyShareFragment
       {
         this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramBundle);
         QLog.d("ReadInJoyDailyShareFragment", 1, "shareinfo is " + this.jdField_a_of_type_OrgJsonJSONObject.toString());
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qmv();
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qfg();
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(getActivity());
-        pfr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "default_feeds");
+        oyj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "default_feeds");
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(getActivity());
-        this.jdField_a_of_type_Qhx = new qhx();
-        this.jdField_a_of_type_Qhx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext);
+        this.jdField_a_of_type_Qai = new qai();
+        this.jdField_a_of_type_Qai.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext);
         return;
         paramBundle = null;
       }
@@ -186,11 +186,11 @@ public class ReadInJoyDailyShareFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560139, paramViewGroup, false);
-    paramViewGroup = (ScrollView)paramLayoutInflater.findViewById(2131377368);
-    if ((paramViewGroup != null) && (this.jdField_a_of_type_Qhx != null) && (this.jdField_a_of_type_OrgJsonJSONObject != null))
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560151, paramViewGroup, false);
+    paramViewGroup = (ScrollView)paramLayoutInflater.findViewById(2131377513);
+    if ((paramViewGroup != null) && (this.jdField_a_of_type_Qai != null) && (this.jdField_a_of_type_OrgJsonJSONObject != null))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView = this.jdField_a_of_type_Qhx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_OrgJsonJSONObject);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView = this.jdField_a_of_type_Qai.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_OrgJsonJSONObject);
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView != null) {
         paramViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView, -1, -1);
       }

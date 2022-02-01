@@ -1,43 +1,121 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class oxv
-  implements ViewBase.OnClickListener
+public class oxv
 {
-  oxv(pay parampay, pan parampan) {}
+  private static final int a = Utils.rp2px(10.0D);
   
-  public final void onClick(ViewBase paramViewBase)
+  private static int a(TemplateBean paramTemplateBean)
   {
-    if (this.jdField_a_of_type_Pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
+    if (paramTemplateBean == null)
     {
-      paramViewBase = new oyn(this.jdField_a_of_type_Pay).a().a();
-      oat.a(null, paa.a(this.jdField_a_of_type_Pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), "0X8009010", "0X8009010", 0, 0, String.valueOf(this.jdField_a_of_type_Pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), String.valueOf(this.jdField_a_of_type_Pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId), this.jdField_a_of_type_Pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, paramViewBase, false);
+      QLog.i("DividerConfigUtils", 1, "templateBean TYPE_UNKNOWN == null");
+      return -1;
     }
-    if ((this.jdField_a_of_type_Pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof CommentData))
+    if (paramTemplateBean.findViewById("id_separator_normal_bottom") != null) {
+      return 1;
+    }
+    if (paramTemplateBean.findViewById("id_separator_special_bottom_space") != null) {
+      return 2;
+    }
+    QLog.i("DividerConfigUtils", 1, "getViewType TYPE_UNKNOWN" + paramTemplateBean);
+    return -1;
+  }
+  
+  private static int a(ViewBase paramViewBase, boolean paramBoolean)
+  {
+    if (paramViewBase == null) {
+      return 0;
+    }
+    Layout.Params localParams = paramViewBase.getComLayoutParams();
+    int i = localParams.mLayoutHeight;
+    if (paramBoolean) {}
+    for (localParams.mLayoutHeight = a;; localParams.mLayoutHeight = 0)
     {
-      paramViewBase = this.jdField_a_of_type_Pay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData;
-      if (paramViewBase == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData");
-      }
-      if (((CommentData)paramViewBase).subCommentNum > 0)
+      paramViewBase.setComLayoutParams(localParams);
+      return localParams.mLayoutHeight - i;
+    }
+  }
+  
+  public static boolean a(Container paramContainer, ppu paramppu)
+  {
+    int i = 0;
+    if ((paramContainer == null) || (paramppu == null)) {}
+    Object localObject;
+    int j;
+    do
+    {
+      do
       {
-        if ((this.jdField_a_of_type_Pan instanceof ozh))
+        do
         {
-          paramViewBase = this.jdField_a_of_type_Pan;
-          if (paramViewBase == null) {
-            throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter");
-          }
-          ((ozh)paramViewBase).a(this.jdField_a_of_type_Pay, oyk.a(this.jdField_a_of_type_Pay, 0), 1);
+          return false;
+          localObject = paramppu.a();
+        } while (localObject == null);
+        j = paramppu.h();
+        paramppu = ((sel)localObject).b(j);
+        localObject = ((sel)localObject).b(j + 1);
+      } while ((paramppu == null) || (localObject == null));
+      j = a(paramppu.mProteusTemplateBean);
+    } while (j == -1);
+    int k = a(((BaseArticleInfo)localObject).mProteusTemplateBean);
+    QLog.i("DividerConfigUtils", 1, "topType:" + j + " nextType:" + k);
+    if (k < 0) {
+      QLog.i("DividerConfigUtils", 1, "nextArticleInfo:" + ((BaseArticleInfo)localObject).mProteusTemplateBean);
+    }
+    paramppu = paramContainer.getVirtualView();
+    switch (j)
+    {
+    }
+    for (;;)
+    {
+      localObject = paramppu.getComLayoutParams();
+      if (((Layout.Params)localObject).mLayoutHeight >= 0) {
+        ((Layout.Params)localObject).mLayoutHeight = (i + ((Layout.Params)localObject).mLayoutHeight);
+      }
+      paramppu = paramppu.getComLayoutParams();
+      paramContainer.setLayoutParams(new RelativeLayout.LayoutParams(paramppu.mLayoutWidth, paramppu.mLayoutHeight));
+      return true;
+      localObject = paramppu.findViewBaseByName("id_separator_normal_bottom");
+      switch (k)
+      {
+      default: 
+        i = b((ViewBase)localObject, true);
+        break;
+      case 2: 
+        i = b((ViewBase)localObject, false);
+        continue;
+        localObject = paramppu.findViewBaseByName("id_separator_special_bottom_space");
+        switch (k)
+        {
+        default: 
+          i = a((ViewBase)localObject, false);
+          break;
+        case 2: 
+          i = a((ViewBase)localObject, true);
         }
-        return;
+        break;
       }
     }
-    this.jdField_a_of_type_Pan.a(this.jdField_a_of_type_Pay);
+  }
+  
+  private static int b(ViewBase paramViewBase, boolean paramBoolean)
+  {
+    if (paramViewBase == null) {
+      return 0;
+    }
+    if (paramBoolean) {}
+    for (int i = 0;; i = 4)
+    {
+      paramViewBase.setVisibility(i);
+      return 0;
+    }
   }
 }
 

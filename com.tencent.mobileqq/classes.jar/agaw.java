@@ -1,37 +1,14 @@
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PAMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agaw
+class agaw
+  implements DialogInterface.OnClickListener
 {
-  public static LruCache<String, PAMessage> a = new LruCache(50);
+  agaw(agav paramagav) {}
   
-  public static PAMessage a(MessageRecord paramMessageRecord)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return a(paramMessageRecord.frienduin, paramMessageRecord.shmsgseq, paramMessageRecord.msgUid, paramMessageRecord.msgData);
-  }
-  
-  public static PAMessage a(String paramString, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
-  {
-    String str = a(paramString, paramLong1, paramLong2);
-    PAMessage localPAMessage = (PAMessage)a.get(str);
-    paramString = localPAMessage;
-    if (localPAMessage == null)
-    {
-      paramArrayOfByte = txp.a(paramArrayOfByte);
-      paramString = paramArrayOfByte;
-      if (paramArrayOfByte != null)
-      {
-        a.put(str, paramArrayOfByte);
-        paramString = paramArrayOfByte;
-      }
-    }
-    return paramString;
-  }
-  
-  private static String a(String paramString, long paramLong1, long paramLong2)
-  {
-    return paramString + "&" + paramLong1 + "&" + paramLong2;
+    paramDialogInterface.dismiss();
   }
 }
 

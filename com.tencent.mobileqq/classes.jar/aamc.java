@@ -1,50 +1,35 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StQQGroup;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class aamc
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+public abstract class aamc
 {
-  private List<CertifiedAccountMeta.StQQGroup> jdField_a_of_type_JavaUtilList;
+  public static final AtomicInteger a = new AtomicInteger(0);
   
-  public aamc(List<CertifiedAccountMeta.StQQGroup> paramList)
-  {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
+  public abstract byte[] a();
   
-  public int getItemCount()
+  public byte[] a(Intent paramIntent, int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
+    if (TextUtils.isEmpty(paramString)) {
+      throw new RuntimeException("req traceId is null!");
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt))
-    {
-      aamd localaamd = (aamd)paramViewHolder;
-      if (localaamd != null) {
-        localaamd.a((CertifiedAccountMeta.StQQGroup)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-      }
+    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
+    localStQWebReq.Seq.set(paramInt);
+    localStQWebReq.qua.set(bmsw.a());
+    localStQWebReq.deviceInfo.set(bmsv.a().c());
+    localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(a()));
+    if (!TextUtils.isEmpty(paramString)) {
+      localStQWebReq.traceid.set(paramString);
     }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558784, paramViewGroup, false);
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() == 1)) {
-      paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+    if (paramIntent != null) {
+      paramIntent.putExtra("traceid", paramString);
     }
-    return new aamd(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView, paramViewGroup);
+    return localStQWebReq.toByteArray();
   }
 }
 

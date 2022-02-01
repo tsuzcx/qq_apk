@@ -1,38 +1,41 @@
+import android.content.res.Resources;
+import android.graphics.LightingColorFilter;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-class aehc
-  implements bkhw
+public class aehc
+  implements View.OnTouchListener
 {
-  aehc(aegy paramaegy, int[] paramArrayOfInt, muh parammuh) {}
+  public aehc(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = this.jdField_a_of_type_ArrayOfInt[paramInt];
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "videoActionSheet onClick,showItems =  " + Arrays.toString(this.jdField_a_of_type_ArrayOfInt) + ",which = " + paramInt + ",item = " + i);
-    }
-    this.jdField_a_of_type_Muh.dismiss();
-    switch (i)
+    int i;
+    if ((TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 512)))
     {
-    default: 
-      return;
-    case 1: 
-      FriendProfileCardActivity.a(this.jdField_a_of_type_Aegy.a.app, this.jdField_a_of_type_Aegy.a, this.jdField_a_of_type_Aegy.a.a);
-      bcst.b(this.jdField_a_of_type_Aegy.a.app, "CliOper", "", "", "0X8008405", "0X8008405", 0, 0, "", "", "", "");
-      return;
+      i = 1;
+      if ((!this.a.a.isMember) && (i != 0)) {
+        break label66;
+      }
     }
-    paramView = new SessionInfo();
-    paramView.jdField_a_of_type_Int = bghy.a(this.jdField_a_of_type_Aegy.a.a.a);
-    paramView.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Aegy.a.a.a.jdField_a_of_type_JavaLangString;
-    paramView.d = FriendProfileCardActivity.a(this.jdField_a_of_type_Aegy.a.a, this.jdField_a_of_type_Aegy.a.app);
-    paramView.b = this.jdField_a_of_type_Aegy.a.a.a.d;
-    agaa.a(this.jdField_a_of_type_Aegy.a.app, this.jdField_a_of_type_Aegy.a, paramView, false, null, null);
-    bcst.b(this.jdField_a_of_type_Aegy.a.app, "CliOper", "", "", "0X80085D6", "0X80085D6", 9, 0, "", "", "", "");
+    label66:
+    do
+    {
+      return false;
+      i = 0;
+      break;
+      if (paramMotionEvent.getAction() == 0) {
+        paramView.getBackground().setColorFilter(new LightingColorFilter(0, -950263));
+      }
+    } while ((paramMotionEvent.getX() < this.a.getResources().getDisplayMetrics().widthPixels - 2) && (paramMotionEvent.getX() > 0.0F) && (paramMotionEvent.getY() > 0.0F) && (paramMotionEvent.getY() <= this.a.getResources().getDimensionPixelSize(2131297021) - 2) && (paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1));
+    paramView.getBackground().setColorFilter(new LightingColorFilter(0, -158425));
+    return false;
   }
 }
 

@@ -1,29 +1,45 @@
-import android.content.Context;
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ttj
-  implements View.OnClickListener
+class ttj
+  implements URLDrawable.URLDrawableListener
 {
-  public ttj(LimitWordCountEditText paramLimitWordCountEditText) {}
+  ttj(tti paramtti, String paramString) {}
   
-  public final void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (!LimitWordCountEditText.a(this.a).hasFocus())
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadFialed:" + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadProgressed");
+    }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadSuccessed:" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (paramURLDrawable != null)
     {
-      LimitWordCountEditText.a(this.a).requestFocus();
-      LimitWordCountEditText.a(this.a).setSelection(LimitWordCountEditText.a(this.a).getText().length());
+      tti.a(this.jdField_a_of_type_Tti, new ttg(paramURLDrawable.getCurrDrawable(), tti.a(this.jdField_a_of_type_Tti), tti.b(this.jdField_a_of_type_Tti) - (tti.c(this.jdField_a_of_type_Tti) + tti.d(this.jdField_a_of_type_Tti))));
+      tti.a(this.jdField_a_of_type_Tti).setImageDrawable(tti.a(this.jdField_a_of_type_Tti));
+      tti.a(this.jdField_a_of_type_Tti, this.jdField_a_of_type_JavaLangString);
     }
-    InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getContext().getSystemService("input_method");
-    if (localInputMethodManager != null) {
-      localInputMethodManager.showSoftInput(LimitWordCountEditText.a(this.a), 2);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,93 +1,36 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0xb6e.Oidb_0xb6e.AppFriendsInfo;
-import tencent.im.oidb.cmd0xb6e.Oidb_0xb6e.RspBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0xab.SubMsgType0xab.MsgBody;
 
-class adfm
-  extends niv
+public class adfm
+  implements adci
 {
-  adfm(adfk paramadfk, adea paramadea) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(adfk.jdField_a_of_type_JavaLangString, 2, "onResult appid=" + adfk.a(this.jdField_a_of_type_Adfk).jdField_a_of_type_JavaLangString + ", openid=" + this.jdField_a_of_type_Adfk.jdField_a_of_type_Adfn.jdField_a_of_type_JavaLangString + ", openkey=" + this.jdField_a_of_type_Adfk.jdField_a_of_type_Adfn.b + ", code=" + paramInt);
+      QLog.d(".troop.troop_reward.push", 2, "onLinePush receive 0x210_0xab");
     }
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      adhh.a(this.jdField_a_of_type_Adea, paramInt, "getappfriends result error, try again");
-      return;
-    }
-    paramBundle = new Oidb_0xb6e.RspBody();
     try
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = paramBundle;
+      SubMsgType0xab.MsgBody localMsgBody = new SubMsgType0xab.MsgBody();
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      ((aoip)paramQQAppInterface.a(20)).a(localMsgBody);
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramBundle)
+    catch (Exception paramQQAppInterface)
     {
-      JSONArray localJSONArray;
-      for (;;)
-      {
-        paramArrayOfByte = null;
-        paramBundle.printStackTrace();
-      }
-      try
-      {
-        paramBundle.put("appfriends", localJSONArray);
-        adhh.a(this.jdField_a_of_type_Adea, paramBundle);
-        return;
-      }
-      catch (JSONException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e(adfk.jdField_a_of_type_JavaLangString, 2, paramArrayOfByte.getMessage(), paramArrayOfByte);
-          }
-        }
-      }
-      adhh.a(this.jdField_a_of_type_Adea, -1, "parse result error, try again");
+      while (!QLog.isColorLevel()) {}
+      QLog.w(".troop.troop_reward.push", 2, "onLinePush 0x210_0xab push exception", paramQQAppInterface);
     }
-    if (paramArrayOfByte != null)
-    {
-      paramBundle = new JSONObject();
-      localJSONArray = new JSONArray();
-      paramArrayOfByte = paramArrayOfByte.rpt_friends_info.get().iterator();
-      while (paramArrayOfByte.hasNext())
-      {
-        Object localObject = (Oidb_0xb6e.AppFriendsInfo)paramArrayOfByte.next();
-        String str1 = ((Oidb_0xb6e.AppFriendsInfo)localObject).openid.get();
-        String str2 = ((Oidb_0xb6e.AppFriendsInfo)localObject).nick.get().toStringUtf8();
-        localObject = ((Oidb_0xb6e.AppFriendsInfo)localObject).figure_url_qq.get();
-        if (!TextUtils.isEmpty(str1))
-        {
-          try
-          {
-            JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("openid", str1.toUpperCase());
-            localJSONObject.put("nickName", str2);
-            localJSONObject.put("avatarUrl", localObject);
-            localJSONArray.put(localJSONObject);
-          }
-          catch (JSONException localJSONException) {}
-          if (QLog.isColorLevel()) {
-            QLog.e(adfk.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
-          }
-        }
-      }
-    }
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

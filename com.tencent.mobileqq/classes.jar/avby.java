@@ -1,72 +1,48 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.HotPicFooter.1;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.qphone.base.util.QLog;
 
 public class avby
-  implements avbd
+  extends nkq
 {
-  int jdField_a_of_type_Int = 1;
-  avbw jdField_a_of_type_Avbw;
-  public boolean a;
+  public avby(ForwardSdkShareOption paramForwardSdkShareOption, String paramString1, String paramString2, String paramString3) {}
   
-  public avby(HotPicPageView paramHotPicPageView, avbw paramavbw)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Avbw = paramavbw;
-  }
-  
-  public RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new avcc(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_AndroidContentContext).inflate(2131558611, paramViewGroup, false), null);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    StaggeredGridLayoutManager.LayoutParams localLayoutParams1 = null;
-    if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
-      localLayoutParams1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
-    }
-    StaggeredGridLayoutManager.LayoutParams localLayoutParams2 = localLayoutParams1;
-    if (localLayoutParams1 == null)
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      localLayoutParams2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
-      paramViewHolder.itemView.setLayoutParams(localLayoutParams2);
-    }
-    localLayoutParams2.setFullSpan(true);
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_Int;
-    if ((!this.jdField_a_of_type_Boolean) && (paramInt != -20) && (this.jdField_a_of_type_Int == 1))
-    {
-      avbk.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramInt);
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      paramViewHolder.itemView.findViewById(2131368099).setVisibility(0);
-      paramViewHolder.itemView.findViewById(2131368100).setVisibility(4);
+      avcw.a("KEY_STAGE_2_IMAGE_B77", bool);
+      if (paramBundle == null) {
+        break;
+      }
+      long l = paramBundle.getLong("0xb77_9_sendTime", -1L);
+      QLog.d("ForwardOption.ForwardSdkShareOption", 1, new Object[] { "handleGetMessageState currentRequestTime =", Long.valueOf(ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption)), ", sendStamp = ", Long.valueOf(l) });
+      if ((l != -1L) && (l == ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption))) {
+        break;
+      }
+      ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption, ForwardSdkShareOption.e(), this.jdField_a_of_type_JavaLangString);
       return;
     }
-    if (HotPicPageView.b())
+    bdll.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, "" + paramInt, "4", this.b, this.c);
+    QLog.d("ForwardOption.ForwardSdkShareOption", 1, new Object[] { "大图发送消息后客户端收到回调=0X8009C94, errorCode=", Integer.valueOf(paramInt), ", fileType=4, toType=", this.b, ", title=", this.c });
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      paramViewHolder.itemView.findViewById(2131368100).setVisibility(0);
-      paramViewHolder.itemView.findViewById(2131368099).setVisibility(8);
+      paramArrayOfByte = ForwardUtils.a(paramArrayOfByte);
+      ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption, (String)paramArrayOfByte[2], this.jdField_a_of_type_JavaLangString);
       return;
     }
-    ThreadManager.getUIHandler().post(new HotPicPageView.HotPicFooter.1(this, paramViewHolder));
+    ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption, "", this.jdField_a_of_type_JavaLangString);
   }
   
-  public void a(boolean paramBoolean)
+  public boolean a(int paramInt, String paramString, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (!TextUtils.isEmpty(paramString)) {
+      QLog.e("ForwardOption.ForwardSdkShareOption", 1, new Object[] { "onError msg =", paramString });
+    }
+    return super.a(paramInt, paramString, paramBundle);
   }
 }
 

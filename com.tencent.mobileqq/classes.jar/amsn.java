@@ -1,33 +1,50 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.TMG.opengl.GraphicRendererMgr;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVVideoCtrl;
+import com.tencent.TMG.utils.QLog;
 
-class amsn
-  implements ancw
+public class amsn
+  implements SurfaceHolder.Callback
 {
-  amsn(amsk paramamsk, String paramString) {}
+  amsn(amsm paramamsm) {}
   
-  public void a(int paramInt)
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameSubRscHandler", 2, new Object[] { "[onVerifyResult], retCode:", Integer.valueOf(paramInt) });
-      }
-      ApolloCmdChannel localApolloCmdChannel = ampj.a();
-      if (localApolloCmdChannel != null)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("packName", this.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("result", paramInt);
-        localApolloCmdChannel.callbackFromRequest(amsk.a(this.jdField_a_of_type_Amsk), 0, "cs.file_correctness_check.local", localJSONObject.toString());
-      }
+    if (paramSurfaceHolder.getSurface() == null) {
       return;
     }
-    catch (Throwable localThrowable)
+    paramSurfaceHolder.setFixedSize(paramInt2, paramInt3);
+    QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceChanged");
+  }
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    if (GraphicRendererMgr.getInstance() != null)
     {
-      QLog.e("cmgame_process.CmGameSubRscHandler", 1, localThrowable, new Object[0]);
+      anmc.a(amsm.a(this.a)).a().setRenderMgrAndHolder(GraphicRendererMgr.getInstance(), paramSurfaceHolder);
+      anmc.a(amsm.a(this.a)).a().getVideoCtrl().setLocalVideoPreviewCallback(new amso(this));
+      anmc.a(amsm.a(this.a)).a().getVideoCtrl().setRemoteVideoPreviewCallback(new amsp(this));
     }
+    for (;;)
+    {
+      QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceCreated");
+      return;
+      QLog.e("AVCameraCaptureModel", 0, "GraphicRendererMgr is null, so can't load");
+    }
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    paramSurfaceHolder = this.a.a();
+    if (paramSurfaceHolder == null)
+    {
+      QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceDestroyed avCtrl == null");
+      return;
+    }
+    paramSurfaceHolder.enableCamera(0, false, new amsq(this));
+    QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceDestroyed");
   }
 }
 

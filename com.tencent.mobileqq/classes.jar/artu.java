@@ -1,23 +1,57 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.33;
+import android.util.SparseArray;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class artu
-  implements amzx
 {
-  public artu(MessengerService.IncomingHandler.33 param33) {}
+  private final SparseArray<BlockingQueue<aruc>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private arul jdField_a_of_type_Arul;
+  private final BlockingQueue<aruc> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
   
-  public void a(long paramLong, String paramString)
+  public artu(arul paramarul)
   {
-    Bundle localBundle = new Bundle();
-    if (paramLong == 0L) {}
-    for (int i = 0;; i = 1)
+    this.jdField_a_of_type_Arul = paramarul;
+  }
+  
+  protected int a()
+  {
+    return 300;
+  }
+  
+  public aruc a(int paramInt, Object paramObject)
+  {
+    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = localBlockingQueue;
+    if (localBlockingQueue == null) {
+      localObject = new LinkedBlockingQueue();
+    }
+    localObject = (aruc)((BlockingQueue)localObject).poll();
+    if (localObject == null)
     {
-      localBundle.putInt("result", i);
-      localBundle.putString("message", paramString);
-      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
-      return;
+      localObject = this.jdField_a_of_type_Arul.a(paramInt);
+      arwe.a("DanmakuFactory", new Object[] { localObject, " is created " });
+    }
+    for (;;)
+    {
+      ((aruc)localObject).e();
+      ((aruc)localObject).a(paramObject);
+      return localObject;
+      arwe.a("DanmakuFactory", new Object[] { localObject, " is reused " });
+    }
+  }
+  
+  public void a(aruc paramaruc)
+  {
+    int i = paramaruc.a();
+    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+    Object localObject = localBlockingQueue;
+    if (localBlockingQueue == null)
+    {
+      localObject = new LinkedBlockingQueue();
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localObject);
+    }
+    if (a() > ((BlockingQueue)localObject).size()) {
+      ((BlockingQueue)localObject).add(paramaruc);
     }
   }
 }

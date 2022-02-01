@@ -8,6 +8,7 @@ import android.os.ResultReceiver;
 import com.tencent.qqmini.sdk.R.drawable;
 import com.tencent.qqmini.sdk.annotation.ProxyService;
 import com.tencent.qqmini.sdk.core.manager.HttpServer;
+import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
@@ -22,6 +23,7 @@ import com.tencent.qqmini.sdk.launcher.ui.MoreItemList.Builder;
 import com.tencent.qqmini.sdk.launcher.ui.OnAppCloseAction;
 import com.tencent.qqmini.sdk.launcher.ui.OnMoreItemSelectedListener;
 import com.tencent.qqmini.sdk.ui.DefaultMoreItemSelectedListener;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
 import java.io.Closeable;
 import java.util.ArrayList;
 import java.util.List;
@@ -133,6 +135,25 @@ public class MiniAppProxyDefault
     return "ABC";
   }
   
+  public int getPayMode()
+  {
+    int i = 2;
+    int j = 1;
+    if ((QUAUtil.isAlienApp()) || (QUAUtil.isMicroApp()) || (QUAUtil.isQQApp())) {
+      if (WnsConfig.getConfig("qqminiapp", "mini_game_pay_by_h5", 0) != 0) {}
+    }
+    do
+    {
+      for (;;)
+      {
+        return i;
+        i = 1;
+      }
+      i = j;
+    } while (WnsConfig.getConfig("qqminiapp", "mini_game_pay_by_h5", 1) == 1);
+    return 2;
+  }
+  
   public String getPayOpenId()
   {
     return "123";
@@ -165,7 +186,7 @@ public class MiniAppProxyDefault
   
   public boolean isDebugVersion()
   {
-    return false;
+    return true;
   }
   
   public void muteAudioFocus(Context paramContext, boolean paramBoolean) {}
@@ -214,6 +235,11 @@ public class MiniAppProxyDefault
     return false;
   }
   
+  public boolean openNativePage(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    return false;
+  }
+  
   public boolean openSchema(Context paramContext, String paramString, int paramInt, ResultReceiver paramResultReceiver)
   {
     return false;
@@ -233,7 +259,7 @@ public class MiniAppProxyDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.MiniAppProxyDefault
  * JD-Core Version:    0.7.0.1
  */

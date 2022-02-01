@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import bcjg;
+import bdby;
 import com.tencent.maxvideo.mediadevice.AVCodec;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
-import yvl;
+import yzg;
 
 public class EditWebVideoPartManager$3
   implements Runnable
 {
-  public EditWebVideoPartManager$3(yvl paramyvl, RMVideoStateMgr paramRMVideoStateMgr) {}
+  public EditWebVideoPartManager$3(yzg paramyzg, RMVideoStateMgr paramRMVideoStateMgr) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class EditWebVideoPartManager$3
       if (QLog.isColorLevel()) {
         QLog.d("EditWebVideoActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.a.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
       }
-      bcjg.a().a().recordSubmit();
+      bdby.a().a().recordSubmit();
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)

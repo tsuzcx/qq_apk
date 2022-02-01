@@ -1,18 +1,39 @@
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class ajyb
-  implements bkik
+public class ajyb
+  implements AdapterView.OnItemClickListener
 {
-  ajyb(ajxt paramajxt) {}
+  public ajyb(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
+    ajyh localajyh = (ajyh)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
+    boolean bool = localajyh.jdField_a_of_type_Boolean;
+    if (bool)
+    {
+      if (EmoticonGroupStoreFragment.b(this.a).contains(localajyh.jdField_a_of_type_JavaLangString)) {
+        EmoticonGroupStoreFragment.b(this.a).remove(localajyh.jdField_a_of_type_JavaLangString);
+      }
+      localajyh = (ajyh)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
+      if (bool) {
+        break label144;
+      }
     }
-    return true;
+    label144:
+    for (bool = true;; bool = false)
+    {
+      localajyh.jdField_a_of_type_Boolean = bool;
+      EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      EmoticonGroupStoreFragment.b(this.a).add(localajyh.jdField_a_of_type_JavaLangString);
+      break;
+    }
   }
 }
 

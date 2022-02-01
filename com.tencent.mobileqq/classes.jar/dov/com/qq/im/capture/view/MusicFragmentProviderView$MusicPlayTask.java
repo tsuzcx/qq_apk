@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.view;
 
-import bkgm;
+import blhq;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 

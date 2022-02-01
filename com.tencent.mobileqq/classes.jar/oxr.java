@@ -1,16 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
+import android.annotation.TargetApi;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.view.View;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class oxr
-  implements ViewBase.OnClickListener
+public class oxr
 {
-  oxr(pan parampan, pay parampay) {}
-  
-  public final void onClick(ViewBase paramViewBase)
+  @TargetApi(16)
+  public static void a(View paramView, Drawable paramDrawable)
   {
-    oyk.a(this.jdField_a_of_type_Pan, this.jdField_a_of_type_Pay);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      paramView.setBackground(paramDrawable);
+      return;
+    }
+    paramView.setBackgroundDrawable(paramDrawable);
   }
 }
 

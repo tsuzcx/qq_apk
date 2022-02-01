@@ -47,6 +47,11 @@ public class TbsFileInterfaceImpl
     return ReaderEngine.getInstance().isSupportCurrentPlatform();
   }
   
+  public static void initEngineAsync(Context paramContext, ITbsReaderCallback paramITbsReaderCallback)
+  {
+    ReaderEngine.getInstance().initReaderEntryAsync(paramContext, paramITbsReaderCallback);
+  }
+  
   public static void setProviderSetting(String paramString)
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();

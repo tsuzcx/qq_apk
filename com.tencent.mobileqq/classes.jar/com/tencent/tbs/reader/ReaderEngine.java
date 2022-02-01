@@ -37,6 +37,122 @@ public class ReaderEngine
     finally {}
   }
   
+  /* Error */
+  private boolean loadFileEngine(TBSOneManager paramTBSOneManager, com.tencent.tbs.one.TBSOneComponent paramTBSOneComponent)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 40	com/tencent/tbs/reader/ReaderEngine:mReaderEntry	Lcom/tencent/tbs/reader/ITbsReaderEntry;
+    //   4: ifnull +5 -> 9
+    //   7: iconst_1
+    //   8: ireturn
+    //   9: aload_2
+    //   10: ifnonnull +5 -> 15
+    //   13: iconst_0
+    //   14: ireturn
+    //   15: aload_2
+    //   16: invokeinterface 46 1 0
+    //   21: astore 4
+    //   23: aload_0
+    //   24: aload_2
+    //   25: invokeinterface 49 1 0
+    //   30: putfield 51	com/tencent/tbs/reader/ReaderEngine:mVersionName	Ljava/lang/String;
+    //   33: aload_0
+    //   34: aload_2
+    //   35: invokeinterface 55 1 0
+    //   40: putfield 57	com/tencent/tbs/reader/ReaderEngine:mVersionCode	I
+    //   43: aload 4
+    //   45: instanceof 59
+    //   48: ifeq +133 -> 181
+    //   51: aload 4
+    //   53: checkcast 59	com/tencent/tbs/reader/ITbsReaderEntry
+    //   56: astore_2
+    //   57: aload_0
+    //   58: aload_2
+    //   59: putfield 40	com/tencent/tbs/reader/ReaderEngine:mReaderEntry	Lcom/tencent/tbs/reader/ITbsReaderEntry;
+    //   62: aload_2
+    //   63: invokeinterface 62 1 0
+    //   68: iconst_1
+    //   69: istore_3
+    //   70: ldc 8
+    //   72: new 64	java/lang/StringBuilder
+    //   75: dup
+    //   76: invokespecial 65	java/lang/StringBuilder:<init>	()V
+    //   79: ldc 67
+    //   81: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: getstatic 77	com/tencent/tbs/tbsfile/BuildConfig:SDK_CAN_AUTO_UPDATE	Ljava/lang/Boolean;
+    //   87: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   90: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   93: invokestatic 89	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   96: pop
+    //   97: getstatic 77	com/tencent/tbs/tbsfile/BuildConfig:SDK_CAN_AUTO_UPDATE	Ljava/lang/Boolean;
+    //   100: invokevirtual 95	java/lang/Boolean:booleanValue	()Z
+    //   103: ifeq +12 -> 115
+    //   106: aload_2
+    //   107: ifnonnull +30 -> 137
+    //   110: aload_1
+    //   111: iconst_1
+    //   112: invokevirtual 101	com/tencent/tbs/one/TBSOneManager:setAutoUpdateEnabled	(Z)V
+    //   115: iload_3
+    //   116: ireturn
+    //   117: astore 4
+    //   119: aconst_null
+    //   120: astore_2
+    //   121: iconst_0
+    //   122: istore_3
+    //   123: aload_0
+    //   124: sipush 1000
+    //   127: ldc 102
+    //   129: aload 4
+    //   131: invokevirtual 106	com/tencent/tbs/reader/ReaderEngine:report	(ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   134: goto -64 -> 70
+    //   137: aload_1
+    //   138: aload_2
+    //   139: invokeinterface 109 1 0
+    //   144: invokevirtual 101	com/tencent/tbs/one/TBSOneManager:setAutoUpdateEnabled	(Z)V
+    //   147: goto -32 -> 115
+    //   150: astore_2
+    //   151: aload_2
+    //   152: invokevirtual 112	java/lang/Throwable:printStackTrace	()V
+    //   155: aload_1
+    //   156: iconst_1
+    //   157: invokevirtual 101	com/tencent/tbs/one/TBSOneManager:setAutoUpdateEnabled	(Z)V
+    //   160: goto -45 -> 115
+    //   163: astore_1
+    //   164: goto -49 -> 115
+    //   167: astore 4
+    //   169: iconst_0
+    //   170: istore_3
+    //   171: goto -48 -> 123
+    //   174: astore 4
+    //   176: iconst_1
+    //   177: istore_3
+    //   178: goto -55 -> 123
+    //   181: iconst_0
+    //   182: istore_3
+    //   183: aconst_null
+    //   184: astore_2
+    //   185: goto -115 -> 70
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	188	0	this	ReaderEngine
+    //   0	188	1	paramTBSOneManager	TBSOneManager
+    //   0	188	2	paramTBSOneComponent	com.tencent.tbs.one.TBSOneComponent
+    //   69	114	3	bool	boolean
+    //   21	31	4	localObject	Object
+    //   117	13	4	localThrowable1	Throwable
+    //   167	1	4	localThrowable2	Throwable
+    //   174	1	4	localThrowable3	Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   15	57	117	java/lang/Throwable
+    //   110	115	150	java/lang/Throwable
+    //   137	147	150	java/lang/Throwable
+    //   155	160	163	java/lang/Throwable
+    //   57	62	167	java/lang/Throwable
+    //   62	68	174	java/lang/Throwable
+  }
+  
   public View createDebugView(Context paramContext)
   {
     TBSOneManager localTBSOneManager = TBSOneManager.getDefaultInstance(paramContext);
@@ -77,7 +193,7 @@ public class ReaderEngine
             break label183;
           }
           bool1 = bool2;
-          paramTBSOneCallback = new ReaderEngine.1(this, paramTBSOneCallback);
+          paramTBSOneCallback = new ReaderEngine.2(this, paramTBSOneCallback);
           bool1 = bool2;
           localBundle = new Bundle();
           bool1 = bool2;
@@ -128,148 +244,62 @@ public class ReaderEngine
     return this.mVersionName;
   }
   
-  /* Error */
   public boolean initReaderEntry(Context paramContext)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 51	com/tencent/tbs/reader/ReaderEngine:mReaderEntry	Lcom/tencent/tbs/reader/ITbsReaderEntry;
-    //   4: ifnull +5 -> 9
-    //   7: iconst_1
-    //   8: ireturn
-    //   9: aload_1
-    //   10: invokestatic 38	com/tencent/tbs/one/TBSOneManager:getDefaultInstance	(Landroid/content/Context;)Lcom/tencent/tbs/one/TBSOneManager;
-    //   13: astore 4
-    //   15: aload 4
-    //   17: getstatic 98	com/tencent/tbs/one/TBSOneManager$Policy:BUILTIN_FIRST	Lcom/tencent/tbs/one/TBSOneManager$Policy;
-    //   20: invokevirtual 102	com/tencent/tbs/one/TBSOneManager:setPolicy	(Lcom/tencent/tbs/one/TBSOneManager$Policy;)V
-    //   23: new 115	android/os/Bundle
-    //   26: dup
-    //   27: invokespecial 116	android/os/Bundle:<init>	()V
-    //   30: astore_1
-    //   31: aload_1
-    //   32: ldc 118
-    //   34: iconst_1
-    //   35: invokevirtual 122	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   38: aload_1
-    //   39: ldc 126
-    //   41: iconst_1
-    //   42: invokevirtual 122	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   45: aload 4
-    //   47: ldc 27
-    //   49: invokevirtual 106	com/tencent/tbs/one/TBSOneManager:isComponentInstalled	(Ljava/lang/String;)Z
-    //   52: ifne +10 -> 62
-    //   55: aload_1
-    //   56: ldc 124
-    //   58: iconst_1
-    //   59: invokevirtual 122	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   62: aload 4
-    //   64: ldc 27
-    //   66: aload_1
-    //   67: invokevirtual 150	com/tencent/tbs/one/TBSOneManager:loadComponentSync	(Ljava/lang/String;Landroid/os/Bundle;)Lcom/tencent/tbs/one/TBSOneComponent;
-    //   70: astore_1
-    //   71: aload_0
-    //   72: aload_1
-    //   73: invokeinterface 154 1 0
-    //   78: putfield 144	com/tencent/tbs/reader/ReaderEngine:mVersionName	Ljava/lang/String;
-    //   81: aload_0
-    //   82: aload_1
-    //   83: invokeinterface 156 1 0
-    //   88: putfield 141	com/tencent/tbs/reader/ReaderEngine:mVersionCode	I
-    //   91: aload_1
-    //   92: invokeinterface 160 1 0
-    //   97: checkcast 53	com/tencent/tbs/reader/ITbsReaderEntry
-    //   100: astore_1
-    //   101: aload_1
-    //   102: invokeinterface 163 1 0
-    //   107: ldc 8
-    //   109: new 60	java/lang/StringBuilder
-    //   112: dup
-    //   113: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   116: ldc 165
-    //   118: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   121: getstatic 171	com/tencent/tbs/tbsfile/BuildConfig:SDK_CAN_AUTO_UPDATE	Ljava/lang/Boolean;
-    //   124: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   127: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   130: invokestatic 92	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
-    //   133: pop
-    //   134: getstatic 171	com/tencent/tbs/tbsfile/BuildConfig:SDK_CAN_AUTO_UPDATE	Ljava/lang/Boolean;
-    //   137: invokevirtual 177	java/lang/Boolean:booleanValue	()Z
-    //   140: ifeq +13 -> 153
-    //   143: aload_1
-    //   144: ifnonnull +70 -> 214
-    //   147: aload 4
-    //   149: iconst_1
-    //   150: invokevirtual 134	com/tencent/tbs/one/TBSOneManager:setAutoUpdateEnabled	(Z)V
-    //   153: aload_1
-    //   154: instanceof 53
-    //   157: ifeq +93 -> 250
-    //   160: aload_0
-    //   161: aload_1
-    //   162: putfield 51	com/tencent/tbs/reader/ReaderEngine:mReaderEntry	Lcom/tencent/tbs/reader/ITbsReaderEntry;
-    //   165: iconst_1
-    //   166: istore_2
-    //   167: ldc 8
-    //   169: new 60	java/lang/StringBuilder
-    //   172: dup
-    //   173: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   176: ldc 179
-    //   178: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   181: iload_2
-    //   182: invokevirtual 86	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   185: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   188: invokestatic 92	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
-    //   191: pop
-    //   192: iload_2
-    //   193: ireturn
-    //   194: astore_3
-    //   195: aconst_null
-    //   196: astore_1
-    //   197: aload_3
-    //   198: invokevirtual 137	java/lang/Throwable:printStackTrace	()V
-    //   201: aload_0
-    //   202: sipush 1000
-    //   205: ldc 180
-    //   207: aload_3
-    //   208: invokevirtual 77	com/tencent/tbs/reader/ReaderEngine:report	(ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   211: goto -104 -> 107
-    //   214: aload 4
-    //   216: aload_1
-    //   217: invokeinterface 183 1 0
-    //   222: invokevirtual 134	com/tencent/tbs/one/TBSOneManager:setAutoUpdateEnabled	(Z)V
-    //   225: goto -72 -> 153
-    //   228: astore_3
-    //   229: aload_3
-    //   230: invokevirtual 137	java/lang/Throwable:printStackTrace	()V
-    //   233: aload 4
-    //   235: iconst_1
-    //   236: invokevirtual 134	com/tencent/tbs/one/TBSOneManager:setAutoUpdateEnabled	(Z)V
-    //   239: goto -86 -> 153
-    //   242: astore_3
-    //   243: goto -90 -> 153
-    //   246: astore_3
-    //   247: goto -50 -> 197
-    //   250: iconst_0
-    //   251: istore_2
-    //   252: goto -85 -> 167
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	255	0	this	ReaderEngine
-    //   0	255	1	paramContext	Context
-    //   166	86	2	bool	boolean
-    //   194	14	3	localThrowable1	Throwable
-    //   228	2	3	localThrowable2	Throwable
-    //   242	1	3	localThrowable3	Throwable
-    //   246	1	3	localThrowable4	Throwable
-    //   13	221	4	localTBSOneManager	TBSOneManager
-    // Exception table:
-    //   from	to	target	type
-    //   23	62	194	java/lang/Throwable
-    //   62	101	194	java/lang/Throwable
-    //   147	153	228	java/lang/Throwable
-    //   214	225	228	java/lang/Throwable
-    //   233	239	242	java/lang/Throwable
-    //   101	107	246	java/lang/Throwable
+    if (this.mReaderEntry != null) {
+      return true;
+    }
+    localObject = null;
+    TBSOneManager localTBSOneManager = TBSOneManager.getDefaultInstance(paramContext);
+    localTBSOneManager.setPolicy(TBSOneManager.Policy.BUILTIN_FIRST);
+    try
+    {
+      paramContext = new Bundle();
+      paramContext.putBoolean("is_ignore_wifi_state", true);
+      paramContext.putBoolean("is_ignore_flow_control", true);
+      if (!localTBSOneManager.isComponentInstalled("file")) {
+        paramContext.putBoolean("is_ignore_frequency_limitation", true);
+      }
+      paramContext = localTBSOneManager.loadComponentSync("file", paramContext);
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        boolean bool;
+        paramContext.printStackTrace();
+        report(1000, "initReaderEntry", paramContext);
+        paramContext = localObject;
+      }
+    }
+    bool = loadFileEngine(localTBSOneManager, paramContext);
+    Log.d("ReaderEngine", "initReaderEntry,ret:" + bool);
+    return bool;
+  }
+  
+  public void initReaderEntryAsync(Context paramContext, ITbsReaderCallback paramITbsReaderCallback)
+  {
+    if (this.mReaderEntry != null) {
+      return;
+    }
+    TBSOneManager localTBSOneManager = TBSOneManager.getDefaultInstance(paramContext);
+    localTBSOneManager.setPolicy(TBSOneManager.Policy.BUILTIN_FIRST);
+    try
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putBoolean("is_ignore_wifi_state", true);
+      localBundle.putBoolean("is_ignore_flow_control", true);
+      if (!localTBSOneManager.isComponentInstalled("file")) {
+        localBundle.putBoolean("is_ignore_frequency_limitation", true);
+      }
+      localTBSOneManager.loadComponentAsync("file", localBundle, new ReaderEngine.1(this, paramContext, localTBSOneManager, paramITbsReaderCallback));
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      paramContext.printStackTrace();
+      report(1000, "initReaderEntry", paramContext);
+    }
   }
   
   public boolean isSupportCurrentPlatform()

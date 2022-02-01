@@ -1,93 +1,63 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
 
 public class arcc
-  extends aqkz<arcb>
+  extends arca
 {
-  public static arcb a()
+  public arbu a(String paramString)
   {
-    arcb localarcb2 = (arcb)aqlk.a().a(573);
-    arcb localarcb1 = localarcb2;
-    if (localarcb2 == null) {
-      localarcb1 = new arcb();
-    }
-    return localarcb1;
-  }
-  
-  @NonNull
-  public arcb a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("SuspiciousTroopConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new arcb();
-  }
-  
-  @Nullable
-  public arcb a(aqlg[] paramArrayOfaqlg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SuspiciousTroopConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    QLog.d("ArkAIKeyWordConfigProcessor", 1, "[onParsed] type=" + type() + ", content = " + paramString);
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SuspiciousTroopConfProcessor", 2, "onParsed " + paramArrayOfaqlg.length);
+      try
+      {
+        arcn localarcn = (arcn)arax.a(paramString, arcn.class);
+        arcx localarcx;
+        QLog.i("ArkAIKeyWordConfigProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException1);
       }
-      return arcb.a(paramArrayOfaqlg[0]);
+      catch (QStorageInstantiateException localQStorageInstantiateException1)
+      {
+        try
+        {
+          localarcx = (arcx)arax.a(paramString, arcx.class);
+          return new arbw(paramString, localarcn, localarcx);
+        }
+        catch (QStorageInstantiateException localQStorageInstantiateException2)
+        {
+          Object localObject;
+          break label71;
+        }
+        localQStorageInstantiateException1 = localQStorageInstantiateException1;
+        localarcn = null;
+      }
+      label71:
+      localObject = null;
     }
-    return null;
   }
   
-  public void a(arcb paramarcb)
+  public void a(arbu paramarbu)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramarcb == null) {
-        break label43;
-      }
+    super.a(paramarbu);
+    if (paramarbu == null) {
+      QLog.i("ArkAIKeyWordConfigProcessor", 1, "newConf is null");
     }
-    label43:
-    for (paramarcb = paramarcb.toString();; paramarcb = " empty")
+    apzu localapzu;
+    do
     {
-      QLog.d("SuspiciousTroopConfProcessor", 2, paramarcb);
       return;
-    }
-  }
-  
-  public Class<arcb> clazz()
-  {
-    return arcb.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("SuspiciousTroopConfProcessor", 2, "onReqFailed " + paramInt);
-    }
+      QLog.d("ArkAIKeyWordConfigProcessor", 1, "[onUpdate] type=" + type() + ", content = " + paramarbu.a());
+      localapzu = ((ArkAppCenter)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(121)).a();
+      paramarbu = paramarbu.a();
+    } while (paramarbu == null);
+    localapzu.a(paramarbu.a());
   }
   
   public int type()
   {
-    return 573;
+    return 186;
   }
 }
 

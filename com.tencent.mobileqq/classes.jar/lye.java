@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvMsg;
 
-class lye
-  implements DialogInterface.OnDismissListener
+public final class lye
+  implements Parcelable.Creator<RecvMsg>
 {
-  lye(lya paramlya, long paramLong) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public RecvMsg a(Parcel paramParcel)
   {
-    QLog.w("ShareChat", 1, "ActionSheet.onDismiss, mChoosedLinkType[" + this.jdField_a_of_type_Lya.b + "], mIHandle[" + this.jdField_a_of_type_Lya.jdField_a_of_type_Lyf + "], seq[" + this.jdField_a_of_type_Long + "]");
-    if ((this.jdField_a_of_type_Lya.b == -1) && (this.jdField_a_of_type_Lya.jdField_a_of_type_Lyf != null)) {
-      this.jdField_a_of_type_Lya.a(this.jdField_a_of_type_Lya.jdField_a_of_type_Int, this.jdField_a_of_type_Lya.b, 1);
-    }
+    return new RecvMsg(paramParcel);
+  }
+  
+  public RecvMsg[] a(int paramInt)
+  {
+    return new RecvMsg[paramInt];
   }
 }
 

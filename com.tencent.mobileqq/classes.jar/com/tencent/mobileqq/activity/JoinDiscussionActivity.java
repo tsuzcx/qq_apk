@@ -2,10 +2,10 @@ package com.tencent.mobileqq.activity;
 
 import Override;
 import QQService.DiscussMemberInfo;
-import aekx;
-import aeky;
-import aekz;
-import aela;
+import aeua;
+import aeub;
+import aeuc;
+import aeud;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -16,10 +16,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anks;
-import anmu;
-import anni;
-import bgnt;
+import anwo;
+import anyu;
+import anzj;
+import bhnv;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
@@ -33,14 +33,14 @@ public class JoinDiscussionActivity
 {
   int jdField_a_of_type_Int = 0;
   public long a;
-  private aekz jdField_a_of_type_Aekz;
-  private aela jdField_a_of_type_Aela;
+  private aeuc jdField_a_of_type_Aeuc;
+  private aeud jdField_a_of_type_Aeud;
   private Button jdField_a_of_type_AndroidWidgetButton;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  public anks a;
-  private anmu jdField_a_of_type_Anmu = new aeky(this);
+  public anwo a;
+  private anyu jdField_a_of_type_Anyu = new aeub(this);
   public String a;
   public ArrayList<String> a;
   public List<DiscussMemberInfo> a;
@@ -62,34 +62,34 @@ public class JoinDiscussionActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365554));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365564));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365570));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365158));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369374));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131366125));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365596));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365606));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365612));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365202));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369464));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131366174));
   }
   
   private void c()
   {
-    setTitle(anni.a(2131704671));
-    setRightButton(2131690582, this);
+    setTitle(anzj.a(2131704778));
+    setRightButton(2131690580, this);
     this.leftView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aekx(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aeua(this));
   }
   
   private void d()
   {
-    if (bgnt.d(this))
+    if (bhnv.d(this))
     {
       startTitleProgress();
       if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0)) {
-        this.jdField_a_of_type_Anks.c(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Anwo.c(this.jdField_a_of_type_JavaLangString);
       }
       while ((this.jdField_b_of_type_JavaLangString == null) || (this.jdField_b_of_type_JavaLangString.length() <= 0)) {
         return;
       }
-      this.jdField_a_of_type_Anks.b(this.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_Anwo.b(this.jdField_b_of_type_JavaLangString);
       return;
     }
     a(0, -160);
@@ -102,10 +102,10 @@ public class JoinDiscussionActivity
   
   public void a()
   {
-    if (bgnt.d(this))
+    if (bhnv.d(this))
     {
       startTitleProgress();
-      this.jdField_a_of_type_Anks.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Anwo.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
       return;
     }
     a(1, -160);
@@ -119,7 +119,7 @@ public class JoinDiscussionActivity
     {
     default: 
       if (paramInt1 == 1) {
-        str = anni.a(2131704669);
+        str = anzj.a(2131704776);
       }
       break;
     }
@@ -127,19 +127,19 @@ public class JoinDiscussionActivity
     {
       QQToast.a(this, str, 0).b(getTitleBarHeight());
       return;
-      str = anni.a(2131704663);
+      str = anzj.a(2131704770);
       continue;
-      str = anni.a(2131704667);
+      str = anzj.a(2131704774);
       continue;
-      str = anni.a(2131704665);
+      str = anzj.a(2131704772);
       continue;
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       return;
-      str = anni.a(2131704666);
+      str = anzj.a(2131704773);
       continue;
       if (paramInt1 == 0) {
-        str = anni.a(2131704664);
+        str = anzj.a(2131704771);
       }
     }
   }
@@ -157,11 +157,11 @@ public class JoinDiscussionActivity
     super.doOnCreate(paramBundle);
     super.setContentView(2131559283);
     paramBundle = getIntent().getExtras();
-    this.jdField_a_of_type_Aela = new aela(this, null);
-    this.jdField_a_of_type_Aekz = new aekz(this, null);
-    addObserver(this.jdField_a_of_type_Aela);
-    addObserver(this.jdField_a_of_type_Aekz);
-    addObserver(this.jdField_a_of_type_Anmu);
+    this.jdField_a_of_type_Aeud = new aeud(this, null);
+    this.jdField_a_of_type_Aeuc = new aeuc(this, null);
+    addObserver(this.jdField_a_of_type_Aeud);
+    addObserver(this.jdField_a_of_type_Aeuc);
+    addObserver(this.jdField_a_of_type_Anyu);
     this.jdField_a_of_type_Int = paramBundle.getInt("addDisSource");
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("sig");
     this.jdField_b_of_type_JavaLangString = paramBundle.getString("innerSig");
@@ -180,16 +180,16 @@ public class JoinDiscussionActivity
     }
     b();
     c();
-    this.jdField_a_of_type_Anks = ((anks)this.app.a(6));
+    this.jdField_a_of_type_Anwo = ((anwo)this.app.a(6));
     d();
     return true;
   }
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Aela);
-    removeObserver(this.jdField_a_of_type_Aekz);
-    removeObserver(this.jdField_a_of_type_Anmu);
+    removeObserver(this.jdField_a_of_type_Aeud);
+    removeObserver(this.jdField_a_of_type_Aeuc);
+    removeObserver(this.jdField_a_of_type_Anyu);
     super.doOnDestroy();
   }
   

@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-final class nxz
-  extends aoou
+class nxz
+  implements DialogInterface.OnClickListener
 {
-  nxz(String paramString)
-  {
-    super(paramString);
-  }
+  nxz(nxo paramnxo, JsResult paramJsResult, Context paramContext) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeAdUtils", 2, "getADPosition doStartADLocation onLocationFinish errCode " + paramInt + " info = " + paramSosoLbsInfo);
-    }
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
   }
 }
 

@@ -1,22 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class adib
-  implements DialogInterface.OnClickListener
+  extends adic
 {
-  public adib(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.setClass(this.a, SubAccountBindActivity.class);
-    paramDialogInterface.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
-    this.a.startActivity(paramDialogInterface);
-    bcst.b(this.a.app, "CliOper", "", "", "0X80040A6", "0X80040A6", 0, 0, "", "", "", "");
-    this.a.d();
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  {
+    awtz.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramList, paramList1, paramStringBuilder, paramMsg, paramBoolean2, parambfoy);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (31 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

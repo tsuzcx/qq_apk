@@ -1,77 +1,21 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopAdminList;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class behp
-  extends BaseAdapter
+final class behp
+  implements DialogInterface.OnClickListener
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  behp(behr parambehr) {}
   
-  public behp(TroopAdminList paramTroopAdminList, Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    if (paramView == null)
-    {
-      paramView = new behq();
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560550, null);
-      paramView.c = ((ImageView)localView.findViewById(2131369142));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371539));
-      paramView.b = ((TextView)localView.findViewById(2131368563));
-      localView.setTag(paramView);
-      localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localObject = (Map)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.jdField_a_of_type_JavaUtilList.get(paramInt);
-      String str = ((Map)localObject).get("uin").toString();
-      paramView.jdField_a_of_type_JavaLangString = str;
-      paramView.c.setBackgroundDrawable(bgmo.b());
-      aoch localaoch = aoch.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.app, ((Map)localObject).get("uin").toString(), (byte)3);
-      if (localaoch != null) {
-        paramView.c.setBackgroundDrawable(localaoch);
-      }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((Map)localObject).get("nick").toString());
-      if (!this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.b.equals(str)) {
-        break label249;
-      }
-      paramView.b.setVisibility(0);
+    behm.a("0X800A5CB");
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeManager", 2, "showThemeDarkModeTips");
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (behq)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label249:
-      paramView.b.setVisibility(4);
+    behm.a(false);
+    if (this.a != null) {
+      this.a.onConfirm();
     }
   }
 }

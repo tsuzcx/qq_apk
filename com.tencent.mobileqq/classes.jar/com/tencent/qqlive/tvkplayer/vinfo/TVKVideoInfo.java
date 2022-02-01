@@ -19,11 +19,10 @@ public class TVKVideoInfo
   public static final int MODEL_CODE_VINFO = 111;
   public static final int MODEL_CODE_VKEY = 112;
   public static final int SUCCESS = 0;
-  private static final String TAG = "TVKVideoInfo";
+  public static final String TAG = "TVKVideoInfo";
   public static final int TYPE_JSON = 1;
   public static final int TYPE_XML = 2;
   private static final long serialVersionUID = -1L;
-  private String VKey = "";
   private String actionUrl;
   private String adsid;
   private String[] backPlayUrl;
@@ -40,7 +39,6 @@ public class TVKVideoInfo
   private int fp2p = -1;
   private int height;
   private int iFlag = 0;
-  private Object jceResponse;
   private String level = "";
   private int logHeight;
   private int logWidth;
@@ -61,6 +59,7 @@ public class TVKVideoInfo
   private String targetId = "";
   private int type;
   private ArrayList<TVKVideoInfo.ReferUrl> urlList = new ArrayList();
+  private String vKey = "";
   private String vKeyXml;
   private String vid;
   private int videoType;
@@ -245,11 +244,6 @@ public class TVKVideoInfo
     return this.iFlag;
   }
   
-  public Object getJceResponse()
-  {
-    return this.jceResponse;
-  }
-  
   public String getLevel()
   {
     return this.level;
@@ -375,7 +369,7 @@ public class TVKVideoInfo
   
   public String getVKey()
   {
-    return this.VKey;
+    return this.vKey;
   }
   
   public String getVKeyXml()
@@ -558,11 +552,6 @@ public class TVKVideoInfo
     super.setIsHevc(paramBoolean);
   }
   
-  public void setJceResponse(Object paramObject)
-  {
-    this.jceResponse = paramObject;
-  }
-  
   public void setLevel(String paramString)
   {
     this.level = paramString;
@@ -700,7 +689,7 @@ public class TVKVideoInfo
   
   public void setVKey(String paramString)
   {
-    this.VKey = paramString;
+    this.vKey = paramString;
   }
   
   public void setVKeyXml(String paramString)

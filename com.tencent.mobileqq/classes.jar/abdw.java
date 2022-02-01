@@ -1,32 +1,79 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.biz.widgets.ScannerView;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.Locale;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class abdw
-  implements SensorEventListener
+  extends WebViewPlugin
 {
-  private WeakReference<ScannerView> a;
+  public static final String a = abdw.class.getSimpleName();
   
-  public abdw(ScannerView paramScannerView)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    this.a = new WeakReference(paramScannerView);
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    ScannerView localScannerView = (ScannerView)this.a.get();
-    if (localScannerView != null) {
-      localScannerView.a(paramSensorEvent);
+    boolean bool2 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    if ("arcard".equals(paramString2)) {
+      if ("isEntranceSupport".equals(paramString3)) {
+        if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+          break label328;
+        }
+      }
     }
-    QLog.d("ScannerView", 2, "onSensorChanged but mRef got null");
+    for (;;)
+    {
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        QLog.d(a, 2, "handleJsRequest jsonobject is " + paramJsBridgeListener.toString());
+        paramJsBridgeListener = paramJsBridgeListener.optString("callback");
+        if (!apiw.a())
+        {
+          bool1 = true;
+          paramString1 = new JSONObject();
+          paramString1.put("is_entrance_support", bool1);
+          callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+          bool1 = bool2;
+          return bool1;
+        }
+        bool1 = false;
+        continue;
+        if (!"isModelSupport".equals(paramString3)) {
+          break label296;
+        }
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+        return false;
+      }
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        QLog.d(a, 2, "handleJsRequest jsonobject is " + paramJsBridgeListener.toString());
+        paramJsBridgeListener = paramJsBridgeListener.optString("callback");
+        bool1 = aphh.a();
+        paramString1 = new JSONObject();
+        paramString1.put("is_device_support", bool1);
+        callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+        bool1 = bool2;
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+        return false;
+      }
+      label296:
+      boolean bool1 = super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+      continue;
+      bool1 = super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+      continue;
+      label328:
+      bool1 = false;
+    }
   }
 }
 

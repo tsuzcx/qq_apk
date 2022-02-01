@@ -1,12 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.Comparator;
 
-class axss
-  implements DialogInterface.OnClickListener
+final class axss
+  implements Comparator<String>
 {
-  axss(axsd paramaxsd) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a(String paramString1, String paramString2)
+  {
+    if (paramString1.length() > paramString2.length()) {
+      return -1;
+    }
+    if (paramString1.length() < paramString2.length()) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 

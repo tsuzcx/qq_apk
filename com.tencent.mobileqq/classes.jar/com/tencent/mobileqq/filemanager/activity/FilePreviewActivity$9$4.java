@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.view.ViewGroup;
-import asrw;
+import atia;
 
 public class FilePreviewActivity$9$4
   implements Runnable
 {
-  public FilePreviewActivity$9$4(asrw paramasrw) {}
+  public FilePreviewActivity$9$4(atia paramatia) {}
   
   public void run()
   {

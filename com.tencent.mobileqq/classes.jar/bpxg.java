@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-class bpxg
-  implements DialogInterface.OnClickListener
+public class bpxg
+  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  bpxg(bpxe parambpxe) {}
+  public bpxg(CropVideoActivity paramCropVideoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    paramDialogInterface.dismiss();
-    ((bpxa)this.a.a).f(true);
-    bpxe.a(this.a).setSelected(true);
-    ((bpxa)this.a.a).c(3002);
+    float f = paramScaleGestureDetector.getScaleFactor();
+    CropVideoActivity.a(this.a).b(f, f, 1.0F);
+    return true;
   }
 }
 

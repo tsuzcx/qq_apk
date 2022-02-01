@@ -21,8 +21,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anni;
-import bfvu;
+import anzj;
+import bgvv;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
@@ -244,22 +244,22 @@ public class HotChatPostItemView
     Calendar.getInstance().setTimeInMillis(this.jdField_a_of_type_Long);
     paramLong = this.jdField_a_of_type_Long - paramLong;
     if (paramLong <= 59L) {
-      return anni.a(2131704372);
+      return anzj.a(2131704479);
     }
     if (paramLong <= 60L) {
       return "1分钟前";
     }
     if (paramLong < 3600L) {
-      return (int)Math.floor(paramLong / 60L) + anni.a(2131704364);
+      return (int)Math.floor(paramLong / 60L) + anzj.a(2131704471);
     }
     if (paramLong < 86400L) {
-      return (int)Math.floor(paramLong / 3600L) + anni.a(2131704360);
+      return (int)Math.floor(paramLong / 3600L) + anzj.a(2131704467);
     }
     if ((paramLong >= 86400L) && (paramLong < 172800L)) {
-      return anni.a(2131704381);
+      return anzj.a(2131704488);
     }
     if (paramLong < 2592000L) {
-      return (int)Math.ceil(paramLong / 86400L) + anni.a(2131704371);
+      return (int)Math.ceil(paramLong / 86400L) + anzj.a(2131704478);
     }
     if ((paramLong >= 2592000L) && (paramLong < 31104000L)) {
       return new SimpleDateFormat("MM-dd").format(localDate);
@@ -307,7 +307,7 @@ public class HotChatPostItemView
         localURLDrawable = URLDrawable.getDrawable(paramString);
       }
       paramImageView.setImageDrawable(a(localURLDrawable, paramFloat));
-      localURLDrawable.setURLDrawableListener(new bfvu(paramImageView, paramInt6, paramInt4, paramInt5, paramString, localURLDrawable, paramFloat, paramInt3));
+      localURLDrawable.setURLDrawableListener(new bgvv(paramImageView, paramInt6, paramInt4, paramInt5, paramString, localURLDrawable, paramFloat, paramInt3));
       return;
     }
     catch (OutOfMemoryError paramImageView)
@@ -346,19 +346,19 @@ public class HotChatPostItemView
   
   public View a()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559930, null);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559936, null);
     addView(localView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371719));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378776));
-    this.d = ((TextView)localView.findViewById(2131364999));
-    this.e = ((TextView)localView.findViewById(2131364797));
-    this.f = ((TextView)localView.findViewById(2131375967));
-    this.c = ((TextView)localView.findViewById(2131378714));
-    this.g = ((TextView)localView.findViewById(2131381395));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131367855));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131365127));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371826));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378936));
+    this.d = ((TextView)localView.findViewById(2131365046));
+    this.e = ((TextView)localView.findViewById(2131364844));
+    this.f = ((TextView)localView.findViewById(2131376107));
+    this.c = ((TextView)localView.findViewById(2131378875));
+    this.g = ((TextView)localView.findViewById(2131381584));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131367923));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131365172));
     this.jdField_a_of_type_AndroidViewView = localView;
-    setBackgroundResource(2130842293);
+    setBackgroundResource(2130842305);
     return this;
   }
   

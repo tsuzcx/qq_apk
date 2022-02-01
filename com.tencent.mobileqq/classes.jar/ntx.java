@@ -1,21 +1,38 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.widget.Switch;
 
-public class ntx
-  implements View.OnClickListener
+class ntx
+  implements DialogInterface.OnClickListener
 {
-  public ntx(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
+  ntx(ntc paramntc, oag paramoag, boolean paramBoolean, Switch paramSwitch) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PublicAccountAdvertisementActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementActivityPublicAccountAdvertisementActivity);
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    boolean bool = true;
+    if (paramInt == 0) {
+      if ((3 == this.jdField_a_of_type_Oag.e) && (this.jdField_a_of_type_Oag.d == 0))
+      {
+        paramDialogInterface = this.jdField_a_of_type_Ntc;
+        localoag = this.jdField_a_of_type_Oag;
+        if (!this.jdField_a_of_type_Boolean) {
+          paramDialogInterface.a(localoag, bool);
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_Ntc.a(this.jdField_a_of_type_Oag, this.jdField_a_of_type_ComTencentWidgetSwitch);
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    while (paramInt != 1) {
+      for (;;)
+      {
+        oag localoag;
+        return;
+        bool = false;
+      }
+    }
+    this.jdField_a_of_type_Ntc.a(this.jdField_a_of_type_Oag, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -2,21 +2,21 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.text.TextUtils;
 import java.util.Properties;
-import pha;
-import sfb;
-import sip;
+import ozs;
+import rwf;
+import rzt;
 
 public class VideoPlayerWrapper$1
   implements Runnable
 {
-  public VideoPlayerWrapper$1(sfb paramsfb, sip paramsip) {}
+  public VideoPlayerWrapper$1(rwf paramrwf, rzt paramrzt) {}
   
   public void run()
   {
     Object localObject = this.a.a();
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = pha.a((String)localObject);
+      localObject = ozs.a((String)localObject);
       if (localObject != null) {
         this.this$0.a = Long.parseLong(((Properties)localObject).getProperty("VideoBitRate"));
       }

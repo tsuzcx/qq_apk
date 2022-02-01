@@ -25,19 +25,23 @@ class QWalletMixJsPlugin$1$1
             return;
           }
           QWalletMixJsPlugin.access$200(this.this$1.this$0, 1);
-          if (localAcsDelMsgRsp != null) {
-            QLog.i(QWalletMixJsPlugin.access$000(), 2, "@qqnotify ret_code =  " + localAcsDelMsgRsp.ret_code);
+          if (localAcsDelMsgRsp == null) {
+            return;
           }
-        }
-        else
-        {
-          QWalletMixJsPlugin.access$200(this.this$1.this$0, 2);
-          QLog.i(QWalletMixJsPlugin.access$000(), 2, "@qqnotify delete faield not success  ");
+          QLog.i(QWalletMixJsPlugin.access$000(), 2, "@qqnotify ret_code =  " + localAcsDelMsgRsp.ret_code);
         }
       }
-      return;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.e(QWalletMixJsPlugin.access$000(), 1, "sendDelReminderListById onReceive", localException);
+        return;
+        QWalletMixJsPlugin.access$200(this.this$1.this$0, 2);
+        QLog.i(QWalletMixJsPlugin.access$000(), 2, "@qqnotify delete faield not success  ");
+      }
+    }
   }
 }
 

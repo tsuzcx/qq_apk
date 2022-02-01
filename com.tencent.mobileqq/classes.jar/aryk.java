@@ -1,63 +1,27 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-class aryk
-  extends BaseAdapter
+public class aryk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<String> jdField_a_of_type_JavaUtilList;
+  public aryk(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
   
-  public aryk(Context paramContext, List<String> paramList)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-    this.jdField_a_of_type_AndroidContentContext = paramList;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559129, null);
+    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(aove.a, 0).edit().putBoolean(aove.b, paramBoolean).commit();
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getApplicationContext(), anzj.a(2131701768), 1).a();
+    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).b(false);
     }
-    for (;;)
-    {
-      Button localButton = (Button)paramView.findViewById(2131363937);
-      localButton.setText((CharSequence)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-      localButton.setContentDescription((CharSequence)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-      localButton.setBackgroundDrawable(this.jdField_a_of_type_Aryi.a(12));
-      if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_Aryi.a(), false, null)) {
-        localButton.setTextColor(Color.parseColor("#B0B3BF"));
-      }
-      for (;;)
-      {
-        localButton.setOnClickListener(new aryl(this, localButton));
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        localButton.setTextColor(Color.parseColor("#03081A"));
-      }
-    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

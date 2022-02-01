@@ -1,21 +1,16 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+
 public class azeu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public float a;
-  public int a;
-  public int b;
-  public int c;
+  public azeu(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public azeu(int paramInt1, float paramFloat, int paramInt2, int paramInt3)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public String toString()
-  {
-    return super.toString();
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

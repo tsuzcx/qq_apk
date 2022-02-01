@@ -1,34 +1,16 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader.3;
 
-class wfu
-  implements wld<wzy, xbj>
+public class wfu
+  implements nmh
 {
-  wfu(wfs paramwfs) {}
+  public wfu(StoryAlbumResourceDownloader.3 param3) {}
   
-  public void a(wzy arg1, xbj paramxbj, ErrorMessage paramErrorMessage)
+  public void loaded(int paramInt, String paramString)
   {
-    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (paramErrorMessage.isSuccess()) {}
-    for (;;)
-    {
-      synchronized (this.a.jdField_b_of_type_JavaLangObject)
-      {
-        this.a.jdField_a_of_type_Wfw = paramxbj.jdField_a_of_type_Wfw;
-        this.a.jdField_a_of_type_Wfw.a();
-        yqp.b("Q.qqstory.publish:VideoServerInfoManager", "get server inf %s", this.a.jdField_a_of_type_Wfw);
-        this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      }
-      synchronized (this.a.jdField_a_of_type_JavaLangObject)
-      {
-        this.a.jdField_a_of_type_JavaLangObject.notifyAll();
-        return;
-        paramxbj = finally;
-        throw paramxbj;
-        yqp.b("Q.qqstory.publish:VideoServerInfoManager", "get server info:%s", paramErrorMessage);
-      }
-    }
+    wfr.a(this.a.this$0);
+    wfr.a(this.a.this$0, false);
+    wfr.a(this.a.this$0, false);
+    yuk.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "unzip success , code = %d", Integer.valueOf(paramInt));
   }
 }
 

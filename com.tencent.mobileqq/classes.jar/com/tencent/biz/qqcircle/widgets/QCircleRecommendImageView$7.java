@@ -1,24 +1,19 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.utils.NetworkUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-
 class QCircleRecommendImageView$7
   implements Runnable
 {
-  QCircleRecommendImageView$7(QCircleRecommendImageView paramQCircleRecommendImageView, String paramString) {}
+  QCircleRecommendImageView$7(QCircleRecommendImageView paramQCircleRecommendImageView) {}
   
   public void run()
   {
-    if (!NetworkUtils.isNetworkAvailable(BaseApplicationImpl.getContext()))
+    QCircleRecommendImageView localQCircleRecommendImageView = this.this$0;
+    if (QCircleRecommendImageView.a(this.this$0) > 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, BaseApplicationImpl.getContext().getResources().getString(2131693957), 0).a();
+      QCircleRecommendImageView.a(localQCircleRecommendImageView, bool);
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, this.a, 0).a();
   }
 }
 

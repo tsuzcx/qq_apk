@@ -1,63 +1,21 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.widget.PublishItemBar;
 
-public abstract class bffi<VH extends RecyclerView.ViewHolder, D extends bfem>
-  implements View.OnClickListener
+public class bffi
+  implements Animation.AnimationListener
 {
-  public bffj a;
-  public XMediaEditor a;
+  public bffi(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public bffi(XMediaEditor paramXMediaEditor)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor = paramXMediaEditor;
+    this.a.a.clearAnimation();
   }
   
-  public abstract VH a(ViewGroup paramViewGroup);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public bffi a(bffj parambffj)
-  {
-    this.jdField_a_of_type_Bffj = parambffj;
-    return this;
-  }
-  
-  public bffj a()
-  {
-    return this.jdField_a_of_type_Bffj;
-  }
-  
-  public void a() {}
-  
-  public void a(VH paramVH) {}
-  
-  public abstract void a(VH paramVH, D paramD, int paramInt);
-  
-  public abstract void a(View paramView, VH paramVH);
-  
-  public void b(VH paramVH) {}
-  
-  public void b(View paramView, VH paramVH)
-  {
-    paramView.setTag(paramVH);
-    paramView.setOnClickListener(this);
-  }
-  
-  public void b(D paramD) {}
-  
-  public void c(VH paramVH) {}
-  
-  public void c(D paramD) {}
-  
-  public void d(D paramD) {}
-  
-  public void onClick(View paramView)
-  {
-    a(paramView, (RecyclerView.ViewHolder)paramView.getTag());
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

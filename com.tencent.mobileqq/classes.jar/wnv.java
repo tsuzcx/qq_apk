@@ -1,19 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class wnv
-  implements View.OnClickListener
+public class wnv
 {
-  wnv(wnu paramwnu, wnt paramwnt) {}
+  public static int a;
+  public static boolean a;
+  public static boolean b;
+  public static boolean c;
   
-  public void onClick(View paramView)
+  static
   {
-    int i = this.jdField_a_of_type_Wnt.getPosition();
-    if (i >= 0) {
-      this.jdField_a_of_type_Wnu.a.a(this.jdField_a_of_type_Wnt.itemView, i);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    jdField_a_of_type_Boolean = false;
+    b = false;
+    c = false;
+    jdField_a_of_type_Int = 725;
+  }
+  
+  public static boolean a()
+  {
+    return false;
+  }
+  
+  public static boolean b()
+  {
+    return true;
   }
 }
 

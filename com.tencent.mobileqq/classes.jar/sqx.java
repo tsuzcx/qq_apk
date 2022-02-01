@@ -1,17 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
 
-public class sqx
-  extends pue
+class sqx
+  implements View.OnLongClickListener
 {
-  public sqx(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
-  {
-    super(paramString);
-  }
+  sqx(sqr paramsqr, View paramView, ProteusItemData paramProteusItemData) {}
   
-  public void a(ptx paramptx)
+  public boolean onLongClick(View paramView)
   {
-    paramptx.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
+    paramView = new bhuk();
+    paramView.a(0, anzj.a(2131715661));
+    bhkx.a(this.jdField_a_of_type_AndroidViewView, paramView, new sqy(this), new sqz(this));
+    return true;
   }
 }
 

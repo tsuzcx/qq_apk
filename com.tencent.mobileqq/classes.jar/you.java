@@ -1,4 +1,60 @@
-public abstract interface you {}
+import android.widget.ImageView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.ListIterator;
+import java.util.Map.Entry;
+import java.util.WeakHashMap;
+
+public class you
+{
+  private LinkedHashMap<zsk, WeakReference<ImageView>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(10, 0.75F, true);
+  private WeakHashMap<ImageView, zsk> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
+  }
+  
+  public ListIterator<Map.Entry<zsk, WeakReference<ImageView>>> a()
+  {
+    return new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet()).listIterator(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
+  }
+  
+  public zsk a(ImageView paramImageView)
+  {
+    paramImageView = (zsk)this.jdField_a_of_type_JavaUtilWeakHashMap.remove(paramImageView);
+    if (paramImageView != null) {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramImageView);
+    }
+    return paramImageView;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilWeakHashMap.clear();
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+  }
+  
+  public void a(ImageView paramImageView, zsk paramzsk)
+  {
+    zsk localzsk = (zsk)this.jdField_a_of_type_JavaUtilWeakHashMap.put(paramImageView, paramzsk);
+    if (localzsk != null) {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(localzsk);
+    }
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramzsk, new WeakReference(paramImageView));
+  }
+  
+  public void a(zsk paramzsk)
+  {
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramzsk);
+  }
+  
+  public zsk b(ImageView paramImageView)
+  {
+    return (zsk)this.jdField_a_of_type_JavaUtilWeakHashMap.get(paramImageView);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

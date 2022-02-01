@@ -1,27 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
 public class ayhf
-  implements View.OnClickListener
+  implements ayhe
 {
-  public ayhf(ScanOcrActivity paramScanOcrActivity) {}
+  private int jdField_a_of_type_Int;
+  private ayci jdField_a_of_type_Ayci;
+  private ayer jdField_a_of_type_Ayer;
+  private VideoData jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData;
   
-  public void onClick(View paramView)
+  public ayhf(ayer paramayer, VideoData paramVideoData, QQAppInterface paramQQAppInterface)
   {
-    if ((ScanOcrActivity.a(this.a) == 1) && ((ScanOcrActivity.b(this.a) == 0) || (ScanOcrActivity.b(this.a) == 4)))
-    {
-      ScanOcrActivity.a(this.a).a();
-      ScanOcrActivity.a(this.a, false);
-      ScanOcrActivity.b(this.a);
+    this.jdField_a_of_type_Ayer = paramayer;
+    this.jdField_a_of_type_Ayci = new aycm(paramVideoData, paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    b();
+  }
+  
+  public void a(Comments.Comment paramComment)
+  {
+    this.jdField_a_of_type_Ayci.a(paramComment, new ayhh(this));
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Ayer != null) {
+      this.jdField_a_of_type_Ayer.a();
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.finish();
-    }
+    this.jdField_a_of_type_Ayci.a(this.jdField_a_of_type_Int, new ayhg(this));
+  }
+  
+  public void b(Comments.Comment paramComment)
+  {
+    this.jdField_a_of_type_Ayci.a(paramComment, new ayhi(this));
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Ayer = null;
   }
 }
 

@@ -1,52 +1,17 @@
-import com.tencent.component.network.module.base.inter.Log;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
 import com.tencent.qphone.base.util.QLog;
 
-public class bmdq
-  implements Log
+class bmdq
+  extends AVAudioCtrl.EnableMicCompleteCallback
 {
-  public void d(String paramString1, String paramString2)
-  {
-    QLog.d(paramString1, 1, paramString2);
-  }
+  bmdq(bmdn parambmdn) {}
   
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    QLog.d(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public int getLogLevel()
-  {
-    return 1;
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.i(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.w(paramString1, 1, paramString2, paramThrowable);
+    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean, paramInt);
+    }
   }
 }
 

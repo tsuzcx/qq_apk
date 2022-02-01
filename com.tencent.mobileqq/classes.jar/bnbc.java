@@ -1,10 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastAudio;
 
-final class bnbc
-  implements DialogInterface.OnDismissListener
+public final class bnbc
+  implements Parcelable.Creator<BroadcastAudio>
 {
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public BroadcastAudio a(Parcel paramParcel)
+  {
+    return new BroadcastAudio(paramParcel);
+  }
+  
+  public BroadcastAudio[] a(int paramInt)
+  {
+    return new BroadcastAudio[paramInt];
+  }
 }
 
 

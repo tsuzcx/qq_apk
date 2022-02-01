@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.transfile;
 
-import bdth;
-import bdti;
+import besa;
+import besb;
 
 public class C2CPicUploadProcessor$3$2
   implements Runnable
 {
-  public C2CPicUploadProcessor$3$2(bdti parambdti, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public C2CPicUploadProcessor$3$2(besb parambesb, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bdti.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
+    this.jdField_a_of_type_Besb.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
   }
 }
 

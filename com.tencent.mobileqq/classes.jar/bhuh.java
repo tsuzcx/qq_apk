@@ -1,19 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.GetConfigListen;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
 
-class bhuh
-  implements Animation.AnimationListener
+public class bhuh
+  implements NormalConfigHandler.GetConfigListen<QAVFunCallConfig>
 {
-  bhuh(bhuf parambhuf) {}
+  public bhuh(QAVFunCallHandler paramQAVFunCallHandler) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(AppInterface paramAppInterface, QAVFunCallConfig paramQAVFunCallConfig)
   {
-    bhuf.a(this.a, true);
+    this.a.setConfig(paramQAVFunCallConfig);
+    this.a.onGetConfig(paramAppInterface);
+    QAVFunCallHandler.access$000(this.a, "onGetConfig", paramAppInterface);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

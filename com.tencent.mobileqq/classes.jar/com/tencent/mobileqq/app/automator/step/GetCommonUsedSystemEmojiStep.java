@@ -2,8 +2,8 @@ package com.tencent.mobileqq.app.automator.step;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anlb;
-import arwz;
+import anwx;
+import asmn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -19,32 +19,32 @@ public class GetCommonUsedSystemEmojiStep
   {
     SharedPreferences localSharedPreferences = this.a.app.getApp().getSharedPreferences("commonUsedSystemEmoji_sp", 0);
     long l = localSharedPreferences.getLong("lastRequestTime", 0L);
-    anlb localanlb = (anlb)this.a.app.a(12);
+    anwx localanwx = (anwx)this.a.app.a(12);
     File localFile1 = new File(BaseApplicationImpl.sApplication.getFilesDir(), "commonusedSystemEmojiInfoFile_v2_" + this.a.app.getCurrentAccountUin());
     File localFile2 = new File(BaseApplicationImpl.sApplication.getFilesDir(), "commonusedSystemEmojiInfoFile_v3_" + this.a.app.getCurrentAccountUin());
     if ((!localFile1.exists()) && (!localFile2.exists()))
     {
       QLog.d("QQInitHandler", 1, "GetCommonUsedSystemEmojiStep file and fileV2  not exsist");
-      localanlb.b();
+      localanwx.b();
       localSharedPreferences.edit().putLong("lastRequestTime", System.currentTimeMillis()).commit();
       return 7;
     }
     if ((localFile1.exists()) && (!localFile2.exists())) {
-      ((arwz)this.a.app.getManager(172)).a(localFile1, localFile2);
+      ((asmn)this.a.app.getManager(172)).a(localFile1, localFile2);
     }
     if ((System.currentTimeMillis() - l > 43200000L) || (System.currentTimeMillis() - l < 0L))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "GetCommonUsedSystemEmojiStep send req");
       }
-      localanlb.b();
+      localanwx.b();
       localSharedPreferences.edit().putLong("lastRequestTime", System.currentTimeMillis()).commit();
       return 7;
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "GetCommonUsedSystemEmojiStep updateCacheFromFile");
     }
-    ((arwz)this.a.app.getManager(172)).c();
+    ((asmn)this.a.app.getManager(172)).c();
     return 7;
   }
 }

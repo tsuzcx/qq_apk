@@ -1,25 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.liveroom.LiveRoomProxyActivity;
 
-public class pyr
-  implements pyb
+class pyr
+  implements View.OnClickListener
 {
-  public pyr(UserOperationModule.1 param1) {}
+  pyr(pyp parampyp, int paramInt, sel paramsel, ppu paramppu) {}
   
-  public void onLoadUserInfoFailed(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    QLog.e("UserOperationModule", 1, "handle0x978Resp onLoadUserInfoFailed, uin=" + paramString1 + ", errMsg=" + paramString2);
-    pyq.a(this.a.this$0, this.a.a, "", this.a.b, 2);
-  }
-  
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
-  {
-    paramString = "";
-    if (paramReadInJoyUserInfo != null) {
-      paramString = paramReadInJoyUserInfo.faceUrl;
+    if (this.jdField_a_of_type_Int == 120) {
+      LiveRoomProxyActivity.open(this.jdField_a_of_type_Sel.a(), this.jdField_a_of_type_Ppu.a().mSocialFeedInfo.a.c, "kandian feed click");
     }
-    pyq.a(this.a.this$0, this.a.a, paramString, this.a.b, 2);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      sgf localsgf = this.jdField_a_of_type_Sel.a();
+      if (localsgf != null) {
+        localsgf.a(paramView, this.jdField_a_of_type_Ppu.a(), 2);
+      }
+    }
   }
 }
 

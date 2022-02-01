@@ -1,17 +1,22 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class albw
-  extends alcf
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public DragTextView a;
-  public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
-  public ImageView b;
-  public SingleLineTextView b;
+  public albw(WordChainHbFragment.1 param1, TextView paramTextView, alcc paramalcc) {}
+  
+  public void onClick(View paramView)
+  {
+    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0);
+    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_Alcc);
+    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0, this.jdField_a_of_type_AndroidWidgetTextView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

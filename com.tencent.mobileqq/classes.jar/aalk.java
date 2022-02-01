@@ -1,26 +1,39 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView.1.1;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.ImageLoader.Options;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aalk
-  implements ImageLoader.ImageLoadListener
+  implements View.OnClickListener
 {
-  public aalk(CommodityItemView paramCommodityItemView) {}
+  public aalk(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, aaks paramaaks) {}
   
-  public void onImageCanceled(String paramString, ImageLoader.Options paramOptions) {}
-  
-  public void onImageFailed(String paramString, ImageLoader.Options paramOptions) {}
-  
-  public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
+  public void onClick(View paramView)
   {
-    if (CommodityItemView.a(this.a) != null) {
-      this.a.post(new CommodityItemView.1.1(this, paramDrawable));
+    Intent localIntent = new Intent();
+    localIntent.putExtra("postUin", this.jdField_a_of_type_Aaks.a.poster.id.get());
+    if (this.jdField_a_of_type_Aaks.a.poster.youZhan.size() > 0) {
+      if (((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_Aaks.a.poster.youZhan.get(0)).type.get() <= 1) {
+        break label139;
+      }
+    }
+    label139:
+    for (boolean bool = true;; bool = false)
+    {
+      localIntent.putExtra("has_shop", bool);
+      bmtd.a(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment.getActivity(), localIntent, 0);
+      abbe.b(this.jdField_a_of_type_Aaks.a.poster.id.get(), "auth_person", "blank_post", 0, 0, new String[0]);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
-  
-  public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions) {}
 }
 
 

@@ -1,24 +1,36 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.widget.ImageView;
+import com.tencent.ark.ark.VariantWrapper;
 
 class apwz
-  extends AnimatorListenerAdapter
+  extends apxb
 {
-  apwz(apwv paramapwv, apxc paramapxc, ObjectAnimator paramObjectAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  private apwz()
   {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+    super(null);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public String a()
   {
-    if (this.jdField_a_of_type_Apxc != null) {
-      this.jdField_a_of_type_Apxc.a.setVisibility(0);
-    }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    return "GetSkey";
+  }
+  
+  public void a(apvx paramapvx, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    paramVariantWrapper.SetString(apxv.b());
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean b()
+  {
+    return true;
   }
 }
 

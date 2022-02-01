@@ -1,10 +1,6 @@
 public abstract interface trk
 {
-  public abstract void I_();
-  
-  public abstract void J_();
-  
-  public abstract void K_();
+  public abstract void a(long paramLong);
 }
 
 

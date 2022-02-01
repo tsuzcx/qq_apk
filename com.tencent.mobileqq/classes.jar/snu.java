@@ -1,63 +1,28 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import cooperation.plugin.PluginBaseActivity;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.30.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class snu
-  implements sow
+public class snu
+  implements blrf
 {
-  snu(snh paramsnh) {}
+  public snu(FastWebActivity paramFastWebActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.a();
-    this.a.a();
-    puq localpuq = (puq)paramView.getTag();
-    if (localpuq == null) {}
-    for (;;)
+    if (FastWebActivity.f(this.a))
     {
-      return;
-      BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)this.a.jdField_b_of_type_JavaUtilList.get(localpuq.a);
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("time", System.currentTimeMillis() / 1000L);
-        localJSONObject.put("channel_id", this.a.c);
-        if ((this.a.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
-        {
-          localJSONObject.put("folder_status", pha.d);
-          localJSONObject.put("kandian_mode", pha.e());
-          localJSONObject.put("feeds_type", "" + pha.a(localBaseArticleInfo));
-          localJSONObject.put("rowkey", ube.a(localBaseArticleInfo));
-          oat.a(null, "", "0X8007058", "0X8007058", 0, 0, "", "", "", localJSONObject.toString(), false);
-        }
-        while (localBaseArticleInfo != null)
-        {
-          snh.a(this.a, paramView, localpuq, localBaseArticleInfo);
-          if ((this.a.jdField_a_of_type_Seu != null) && (this.a.jdField_a_of_type_Seu.b()))
-          {
-            this.a.jdField_a_of_type_Seu.a();
-            this.a.jdField_b_of_type_Boolean = true;
-          }
-          puf.a(paramView);
-          return;
-          if ((this.a.jdField_a_of_type_AndroidAppActivity instanceof PluginBaseActivity))
-          {
-            localJSONObject.put("folder_status", 1);
-            bcst.b(null, "CliOper", "", "", "0X800705F", "0X800705F", 0, 0, "", "", "", localJSONObject.toString());
-          }
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
+      FastWebActivity.a(this.a).a(FastWebActivity.a(this.a).getWidth());
+      FastWebActivity.d(this.a, false);
+      FastWebActivity.h(this.a);
+      FastWebActivity.a(this.a, new spb(FastWebActivity.a(this.a), FastWebActivity.a(this.a).getFirstVisiblePosition(), FastWebActivity.a(this.a).getLastVisiblePosition()));
+      long l = std.a("FastWebActivity.show");
+      std.b("fast_web_show_light_house_draw_finish");
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.addAll(FastWebActivity.a(this.a));
+      ThreadManager.post(new FastWebActivity.30.1(this, l, localArrayList), 5, null, false);
     }
   }
 }

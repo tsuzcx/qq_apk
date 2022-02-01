@@ -1,24 +1,14 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.settings.QGSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnVideoSizeChangedListener;
 
-public class xwd
-  implements CompoundButton.OnCheckedChangeListener
+class xwd
+  implements MediaPlayer.OnVideoSizeChangedListener
 {
-  public xwd(QGSettingFragment paramQGSettingFragment) {}
+  xwd(xvy paramxvy, xvw paramxvw) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (paramBoolean) {
-      QGSettingFragment.a(true);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      QGSettingFragment.a(false);
-    }
+    this.jdField_a_of_type_Xvw.a(this.jdField_a_of_type_Xvy, paramInt1, paramInt2);
   }
 }
 

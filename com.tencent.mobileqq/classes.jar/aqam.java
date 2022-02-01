@@ -1,28 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class aqam
-  implements View.OnTouchListener
+class aqam
+  implements aqau
 {
-  public aqam(ClearEllipsisEditText paramClearEllipsisEditText) {}
+  aqam(aqai paramaqai, aqas paramaqas, aqau paramaqau, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean)
   {
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    for (;;)
+    if (paramBoolean)
     {
-      return false;
-      if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - ClearEllipsisEditText.a(this.a).getIntrinsicWidth()) {}
-      for (int i = 1; (paramMotionEvent.getAction() == 0) && (i != 0); i = 0)
-      {
-        this.a.setText("");
-        this.a.setClearButtonVisible(false);
-        return true;
-      }
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update success, name=%s", new Object[] { this.jdField_a_of_type_Aqas.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_Aqau.a(true);
+      return;
     }
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.jdField_a_of_type_Aqas.jdField_a_of_type_JavaLangString }));
+    aqai.a(this.jdField_a_of_type_Aqai, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqas, new aqan(this));
   }
 }
 

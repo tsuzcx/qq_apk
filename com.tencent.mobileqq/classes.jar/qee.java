@@ -1,26 +1,48 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.StateListDrawable;
 
 class qee
-  implements qms
 {
-  qee(qec paramqec, ArticleInfo paramArticleInfo, Container paramContainer) {}
+  private final Drawable a;
+  private final Drawable b;
   
-  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
+  qee(Context paramContext)
   {
-    QLog.d("multiVideoColumnInfo", 1, "position : " + paramInt);
-    paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a;
-    if ((paramInt >= 0) && (paramInt < paramViewBase.size()) && (paramViewBase.get(paramInt) != null) && (((rhx)paramViewBase.get(paramInt)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo != null))
-    {
-      paramTemplateBean = ((rhx)paramViewBase.get(paramInt)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo;
-      ryx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramTemplateBean);
-      qec.a(this.jdField_a_of_type_Qec, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2, paramTemplateBean.e, ((rhx)paramViewBase.get(paramInt)).jdField_a_of_type_JavaLangString);
-    }
+    paramContext = paramContext.getResources();
+    this.a = paramContext.getDrawable(2130837561);
+    this.b = paramContext.getDrawable(2130837565);
+  }
+  
+  private Drawable a(Drawable paramDrawable)
+  {
+    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
+  }
+  
+  private Drawable b(Drawable paramDrawable)
+  {
+    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
+    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
+    return paramDrawable;
+  }
+  
+  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  {
+    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
+    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
+    return paramDrawable;
+  }
+  
+  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
+  {
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
+    localStateListDrawable.addState(new int[0], paramDrawable1);
+    return localStateListDrawable;
   }
 }
 

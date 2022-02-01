@@ -1,23 +1,24 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afbp
-  implements Handler.Callback
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public afbp(RewardNoticeActivity paramRewardNoticeActivity) {}
+  public afbp(NotifyPushSettingActivity paramNotifyPushSettingActivity, anum paramanum) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
+    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getString(2131716143), "qqsetting_special_care_bar", paramBoolean);
+    this.jdField_a_of_type_Anum.c(paramBoolean);
+    blhw.a(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.i("IphoneTitleBarActivity", 2, "onCheckedChanged: invoked. care bar  isChecked: " + paramBoolean);
     }
-    for (;;)
-    {
-      return true;
-      paramMessage = new afbq(this);
-      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
-    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

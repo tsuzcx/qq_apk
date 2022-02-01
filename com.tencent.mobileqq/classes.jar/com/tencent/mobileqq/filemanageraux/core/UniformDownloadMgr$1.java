@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.filemanageraux.core;
 
 import android.content.IntentFilter;
-import atzj;
-import atzk;
+import aure;
+import aurf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class UniformDownloadMgr$1
   implements Runnable
 {
-  public UniformDownloadMgr$1(atzj paramatzj) {}
+  public UniformDownloadMgr$1(aure paramaure) {}
   
   public void run()
   {
     try
     {
-      if (atzj.a(this.this$0) == null)
+      if (aure.a(this.this$0) == null)
       {
-        atzj.a(this.this$0, new atzk(this));
+        aure.a(this.this$0, new aurf(this));
         IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.qfile_unifromdownload");
-        BaseApplicationImpl.getApplication().registerReceiver(atzj.a(this.this$0), localIntentFilter);
+        BaseApplicationImpl.getApplication().registerReceiver(aure.a(this.this$0), localIntentFilter);
         QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr Register UNIDOWNLOAD_BORDCAST");
         return;
       }

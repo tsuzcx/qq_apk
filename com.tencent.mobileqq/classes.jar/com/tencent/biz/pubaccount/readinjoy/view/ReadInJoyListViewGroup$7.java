@@ -7,7 +7,7 @@ class ReadInJoyListViewGroup$7
 {
   public void run()
   {
-    View localView = this.this$0.findViewById(2131366993);
+    View localView = this.this$0.findViewById(2131367044);
     this.jdField_a_of_type_AndroidViewView.getHeight();
     if (this.jdField_a_of_type_Boolean) {}
     for (int i = this.jdField_a_of_type_Int;; i = this.b)

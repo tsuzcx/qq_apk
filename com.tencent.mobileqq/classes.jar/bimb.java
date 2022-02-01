@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class bimb
-  implements View.OnClickListener
 {
-  public bimb(OpenAuthorityAccountView paramOpenAuthorityAccountView) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onClick(View paramView)
+  bimb(int paramInt)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject != null) && ((localObject instanceof String))) {
-      this.a.b((String)localObject);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramInt;
+    this.b = 0;
+    this.c = 0;
+    this.d = 0;
   }
 }
 

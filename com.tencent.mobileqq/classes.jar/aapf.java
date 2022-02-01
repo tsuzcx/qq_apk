@@ -1,25 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-
-class aapf
-  extends aapv
+public abstract interface aapf
 {
-  aapf(aapa paramaapa, aapi paramaapi, String paramString)
-  {
-    super(paramaapa);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "splitVideoUnit end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "splitVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Aapa.a));
-      this.jdField_a_of_type_Aapa.a = System.currentTimeMillis();
-    }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Aapi.a(this.jdField_a_of_type_JavaLangString, false, "splitVideo done.");
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

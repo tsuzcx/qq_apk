@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.gpkg;
 
 import android.text.TextUtils;
-import bgsp;
+import bhsr;
 import com.tencent.mobileqq.mini.apkg.ApkgBaseInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.NetworkTimeoutInfo;
@@ -104,7 +104,7 @@ public class MiniGamePkg
   
   public String getRootPath(String paramString)
   {
-    if (bgsp.a(paramString)) {
+    if (bhsr.a(paramString)) {
       return "";
     }
     if (this.subPackRoots != null)

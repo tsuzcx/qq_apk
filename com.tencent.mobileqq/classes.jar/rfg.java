@@ -1,51 +1,8 @@
-import java.net.URL;
+import java.util.List;
 
-public class rfg
+public abstract interface rfg
 {
-  private int jdField_a_of_type_Int;
-  private URL jdField_a_of_type_JavaNetURL;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public URL a()
-  {
-    return this.jdField_a_of_type_JavaNetURL;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(URL paramURL)
-  {
-    this.jdField_a_of_type_JavaNetURL = paramURL;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.b = paramInt;
-  }
+  public abstract void a(List<String> paramList);
 }
 
 

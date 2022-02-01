@@ -1,13 +1,39 @@
-import android.widget.TextView;
+import android.content.Context;
+import android.net.Uri;
+import java.util.Map;
 
-class xvn
-  implements wim
+public class xvn
+  implements xvl
 {
-  xvn(xvm paramxvm) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Uri jdField_a_of_type_AndroidNetUri;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap;
+  private Uri jdField_b_of_type_AndroidNetUri;
+  private Map<String, String> jdField_b_of_type_JavaUtilMap;
   
-  public void a(String paramString, int paramInt)
+  public xvn(Context paramContext, Uri paramUri, Map<String, String> paramMap)
   {
-    xvm.a(this.a).setText(anni.a(2131714598) + paramInt + "%");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidNetUri = paramUri;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+  }
+  
+  public xvg a()
+  {
+    xvg localxvg = new xvg();
+    localxvg.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaUtilMap);
+    return localxvg;
+  }
+  
+  public xvg b()
+  {
+    if (this.jdField_b_of_type_AndroidNetUri != null)
+    {
+      xvg localxvg = new xvg();
+      localxvg.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidNetUri, this.jdField_b_of_type_JavaUtilMap);
+      return localxvg;
+    }
+    return null;
   }
 }
 

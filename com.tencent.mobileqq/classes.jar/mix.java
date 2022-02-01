@@ -1,35 +1,6 @@
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.mobileqq.utils.AudioHelper;
-
-public class mix
-  implements mic
+public abstract interface mix
 {
-  public mix(VideoControlUI paramVideoControlUI) {}
-  
-  public long a()
-  {
-    return this.a.a();
-  }
-  
-  public void a()
-  {
-    this.a.C(AudioHelper.b());
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.a.c(paramBoolean1, paramBoolean2);
-  }
-  
-  public boolean a()
-  {
-    return this.a.g();
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

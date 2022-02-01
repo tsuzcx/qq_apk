@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
 public class asyd
-  extends asyw
+  implements DialogInterface.OnClickListener
 {
-  public asyd(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  public asyd(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  protected void a(athr paramathr)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramathr);
-    if ((paramathr.b != null) && (paramathr.b.length() > 0)) {
-      this.a.i();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

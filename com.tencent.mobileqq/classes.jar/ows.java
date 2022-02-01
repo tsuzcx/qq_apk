@@ -1,25 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class ows
-  implements ViewBase.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/helper/RIJCommentNetworkHelper$RIJCreateCommentObserver;", "", "onCreateCommentResult", "", "seq", "", "success", "", "commentType", "", "commentId", "", "commentJsonStr", "feedsType", "isFeeds", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface ows
 {
-  ows(pay parampay, pan parampan, Container paramContainer) {}
-  
-  public final void onClick(ViewBase paramViewBase)
-  {
-    if (opu.a(this.jdField_a_of_type_Pay))
-    {
-      paramViewBase = this.jdField_a_of_type_Pan.a();
-      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
-      opu.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Pay, 8);
-    }
-  }
+  public abstract void a(long paramLong, boolean paramBoolean1, int paramInt1, @Nullable String paramString1, @Nullable String paramString2, int paramInt2, boolean paramBoolean2);
 }
 
 

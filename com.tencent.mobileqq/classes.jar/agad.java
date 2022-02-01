@@ -1,32 +1,24 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-final class agad
-  implements blqq
+public class agad
+  implements DialogInterface.OnClickListener
 {
-  agad(int paramInt1, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, int paramInt2, String paramString, Activity paramActivity) {}
+  public agad(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void a(int paramInt, String... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null))
+    this.a.l();
+    this.a.b(this.a.n);
+    if (VipUtils.b(this.a.app)) {}
+    for (paramDialogInterface = "4";; paramDialogInterface = "3")
     {
-      QLog.i("PlusPanelUtils", 2, "error get pskey...");
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, nnr.a(), paramDialogInterface, "1");
       return;
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("pskey_type", "27");
-    localHashMap.put("pskey", paramVarArgs[0]);
-    localHashMap.put("recv_group_type", this.jdField_a_of_type_Int + "");
-    localHashMap.put("recv_group_id", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    localHashMap.put("send_nickname", bglf.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
-    localHashMap.put("send_uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    localHashMap.put("group_count", this.b + "");
-    paramVarArgs = blqo.a(this.jdField_a_of_type_JavaLangString, localHashMap, true);
-    akwv.a(this.jdField_a_of_type_AndroidAppActivity, paramVarArgs);
   }
 }
 

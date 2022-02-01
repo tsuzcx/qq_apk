@@ -1,14 +1,84 @@
-import android.app.Activity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import org.json.JSONObject;
 
-public abstract interface amkw
+public class amkw
+  implements MediaPlayer.OnPreparedListener
 {
-  public abstract int a();
+  String jdField_a_of_type_JavaLangString;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  boolean jdField_a_of_type_Boolean;
   
-  public abstract amlc a(long paramLong, String paramString1, String paramString2);
+  public amkw(amkr paramamkr, JSONObject paramJSONObject, String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
-  public abstract void a();
+  public void a()
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
+      this.jdField_a_of_type_Amkr.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+      return;
+    }
+    catch (Exception localException1)
+    {
+      amkr.a(this.jdField_a_of_type_Amkr, "-->handleJsRequest exception:" + localException1.toString());
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("code", 2);
+        localJSONObject.put("errorMessage", "exception");
+        this.jdField_a_of_type_Amkr.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+    }
+  }
   
-  public abstract boolean a(Activity paramActivity);
+  public void onPrepared(MediaPlayer paramMediaPlayer)
+  {
+    if (amkr.a(this.jdField_a_of_type_Amkr).a()) {}
+    try
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        amkr.a(this.jdField_a_of_type_Amkr, "-->play failed");
+        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
+        this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Amkr.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+        return;
+        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 0);
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      amkr.a(this.jdField_a_of_type_Amkr, "-->handleJsRequest exception:" + paramMediaPlayer.toString());
+      try
+      {
+        paramMediaPlayer = new JSONObject();
+        paramMediaPlayer.put("code", 2);
+        paramMediaPlayer.put("errorMessage", "exception");
+        this.jdField_a_of_type_Amkr.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
+        return;
+      }
+      catch (Exception paramMediaPlayer)
+      {
+        paramMediaPlayer.printStackTrace();
+      }
+    }
+  }
 }
 
 

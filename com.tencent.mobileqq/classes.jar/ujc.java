@@ -1,38 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import UserGrowth.stSchema;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
 public class ujc
-  implements IMiniMsgUnreadCallback
+  extends uiv
 {
-  public void destroy()
+  public ujc(uix paramuix)
   {
-    upe.a("AIOLog", 1, "MiniMsgUser destroy");
+    super(paramuix);
   }
   
-  public void hide()
+  public boolean a(uix paramuix)
   {
-    upe.a("AIOLog", 1, "MiniMsgUser hide");
-  }
-  
-  public void hideUnread()
-  {
-    upe.a("AIOLog", 1, "MiniMsgUser hideUnread");
-  }
-  
-  public boolean show(int paramInt)
-  {
-    upe.a("AIOLog", 1, "MiniMsgUser show = " + paramInt);
-    return false;
-  }
-  
-  public void updateOnBackFromMiniAIO(Bundle paramBundle)
-  {
-    upe.a("AIOLog", 1, "MiniMsgUser updateOnBackFromMiniAIO");
-  }
-  
-  public void updateUnreadCount(int paramInt, boolean paramBoolean)
-  {
-    upe.a("AIOLog", 1, "MiniMsgUser updateUnreadCount i = " + paramInt + ", b = " + paramBoolean);
+    MiniAppLauncher.MiniAppLaunchListener localMiniAppLaunchListener = paramuix.a();
+    ueg.a(paramuix.a(), paramuix.a().miniAppSchema, new ujd(this, localMiniAppLaunchListener));
+    if (paramuix.a() != null) {
+      paramuix.a().b();
+    }
+    return true;
   }
 }
 

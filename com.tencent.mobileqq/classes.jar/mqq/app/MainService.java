@@ -34,41 +34,41 @@ public class MainService
 {
   public static final String CMD_PRE_AUTH = "QQConnectLogin.pre_auth";
   public static final String MSFPROCESSNAMETAG = ":MSF";
+  public static final String MSF_SERVICE_NAME = "com.tencent.mobileqq.msf.service.MsfService";
   public static final String QQPROCESSNAME = "com.tencent.mobileqq";
   public static final String SERVICE_CMD = "serviceCmd";
   private static final String TAG = MainService.class.getSimpleName();
+  public static final String UIN_NOT_MATCH_TAG = "uinNotMatch";
   public static boolean isDebugVersion = false;
   public static boolean isGrayVersion = false;
-  public static final String msfServiceName = "com.tencent.mobileqq.msf.service.MsfService";
-  private static IServiceCmdCallback sCmdCallback;
+  private static IServiceCmdCallback sCmdCallback = null;
   public static int sNativeTidOfReceiver = -1;
-  public static long sPwdPacketTime = 0L;
+  public static long sPwdPacketTime;
   public static long sReceiverCpuTime = 0L;
   public static MqqRegulatorCallback sRegulatorCallback;
-  public static final String uinNotMatchTag = "uinNotMatch";
-  private static AbstractUnifiedMonitor um;
-  private final Runnable MSFReceiver = new MainService.2(this);
+  private static AbstractUnifiedMonitor um = null;
   private IAuthHandler authHandler = new MainService.7(this);
-  public int cbExceedCount;
-  public int cbIncreaseCount;
-  public long cbIncreaseTime;
-  public long cbLastUpdateSPTime;
+  public int cbExceedCount = 0;
+  public int cbIncreaseCount = 0;
+  public long cbIncreaseTime = 0L;
+  public long cbLastUpdateSPTime = 0L;
   private IErrorHandler errorHandler = new MainService.MyErrorHandler(this, null);
   private MobileQQ mApplicaiton;
   private volatile AppRuntime.InterceptKickListener mInterceptKickListener;
   private final Map<Integer, Class<? extends MSFServlet>> mRequestServlets = new ConcurrentHashMap();
+  private final Runnable mSFReceiver = new MainService.2(this);
   private IMsfMsgHandler msfMsgHandler = new MainService.3(this);
   private Thread msfRecvThread;
   private final MsfRespHandleUtil msfRespHandleUtil;
   public final MsfServiceSdk msfSub;
   INotifyHandler notifyHandler = new MainService.5(this);
   private IPushHandler pushHandler = new MainService.4(this);
-  private boolean recvThreadRegulatoring;
+  private boolean recvThreadRegulatoring = false;
   private IRegisterUinHandler registerUinHandler = new MainService.6(this);
   private int reportThreshold = -1;
   private IServerInfoHandler serverInfoHandler = new MainService.8(this);
   private IServerMsgPushHandler serverMsgPushHandler = new MainService.9(this);
-  private int umNotReported;
+  private int umNotReported = 0;
   
   MainService(MobileQQ paramMobileQQ, int paramInt, String paramString, boolean paramBoolean)
   {
@@ -79,6 +79,11 @@ public class MainService
     if (paramBoolean) {
       start();
     }
+  }
+  
+  private boolean isValidAccount(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, String paramString1, AppRuntime paramAppRuntime, boolean paramBoolean, String paramString2)
+  {
+    return (paramBoolean) || (paramString2.equals(paramAppRuntime.getAccount())) || (isWhiteCommand(paramFromServiceMsg)) || ((paramString1 != null) && (paramString1.equals("subaccount"))) || ((paramToServiceMsg != null) && (paramToServiceMsg.getAttributes().containsKey("uinNotMatch")));
   }
   
   private boolean isWhiteCommand(FromServiceMsg paramFromServiceMsg)
@@ -95,100 +100,96 @@ public class MainService
   
   private void receiveMessageFromMSF(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    String str2 = null;
-    AppRuntime localAppRuntime = this.mApplicaiton.waitAppRuntime(null);
+    String str1 = null;
+    Object localObject2 = this.mApplicaiton.waitAppRuntime(null);
+    Object localObject1 = localObject2;
     if (paramToServiceMsg != null) {
-      localAppRuntime = localAppRuntime.getAppRuntime(paramToServiceMsg.extraData.getString("moduleId"));
+      localObject1 = ((AppRuntime)localObject2).getAppRuntime(paramToServiceMsg.extraData.getString("moduleId"));
     }
-    for (;;)
+    if (QLog.isColorLevel()) {}
+    for (long l1 = SystemClock.currentThreadTimeMillis();; l1 = 0L)
     {
-      if (QLog.isColorLevel()) {}
-      for (long l1 = SystemClock.currentThreadTimeMillis();; l1 = 0L)
+      long l2;
+      String str2;
+      int i;
+      if (paramToServiceMsg != null)
       {
-        Class localClass;
-        long l2;
-        String str1;
-        int i;
-        if (paramToServiceMsg != null)
+        localObject2 = (Class)this.mRequestServlets.remove(Integer.valueOf(paramToServiceMsg.getAppSeq()));
+        l2 = paramToServiceMsg.extraData.getLong("sendTime");
+        l2 = System.currentTimeMillis() - l2;
+        paramFromServiceMsg.addAttribute("msf_receive", Long.valueOf(System.currentTimeMillis()));
+        if (paramFromServiceMsg.isSuccess())
         {
-          localClass = (Class)this.mRequestServlets.remove(Integer.valueOf(paramToServiceMsg.getAppSeq()));
-          l2 = paramToServiceMsg.extraData.getLong("sendTime");
-          l2 = System.currentTimeMillis() - l2;
-          paramFromServiceMsg.addAttribute("msf_receive", Long.valueOf(System.currentTimeMillis()));
-          if (paramFromServiceMsg.isSuccess())
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("mqq", 2, "[MSF Receive]" + paramFromServiceMsg.getServiceCmd() + " appSeq:" + paramToServiceMsg.getAppSeq() + "  " + localAppRuntime.getClass().getSimpleName() + "@" + localAppRuntime.hashCode() + "  cost=" + l2 + "ms.");
-            }
-            if (sCmdCallback != null) {
-              sCmdCallback.onCmdResponse(paramFromServiceMsg.getServiceCmd());
-            }
-            recordKeyTimestamp(paramToServiceMsg, paramFromServiceMsg);
-            str1 = (String)paramToServiceMsg.getAttribute("from_where");
-            str2 = (String)paramToServiceMsg.getAttribute("mainaccount");
-            i = 0;
-            label258:
-            if (!"0".equals(paramFromServiceMsg.getUin())) {
-              break label820;
-            }
-            paramFromServiceMsg.setUin(localAppRuntime.getAccount());
+          if (QLog.isColorLevel()) {
+            QLog.d("mqq", 2, "[MSF Receive]" + paramFromServiceMsg.getServiceCmd() + " appSeq:" + paramToServiceMsg.getAppSeq() + "  " + localObject1.getClass().getSimpleName() + "@" + localObject1.hashCode() + "  cost=" + l2 + "ms.");
           }
+          if (sCmdCallback != null) {
+            sCmdCallback.onCmdResponse(paramFromServiceMsg.getServiceCmd());
+          }
+          recordKeyTimestamp(paramToServiceMsg, paramFromServiceMsg);
+          str2 = (String)paramToServiceMsg.getAttribute("from_where");
+          str1 = (String)paramToServiceMsg.getAttribute("mainaccount");
+          i = 0;
         }
-        label820:
-        for (int j = 1;; j = 0)
+      }
+      for (;;)
+      {
+        boolean bool = false;
+        if ("0".equals(paramFromServiceMsg.getUin()))
         {
-          String str3 = paramFromServiceMsg.getUin();
-          if ((str1 != null) && (str1.length() > 0)) {
-            paramFromServiceMsg.addAttribute("from_where", str1);
-          }
-          if ((str2 != null) && (str2.length() > 0)) {
-            paramFromServiceMsg.addAttribute("mainaccount", str2);
-          }
-          if ((j != 0) || (str3.equals(localAppRuntime.getAccount())) || (isWhiteCommand(paramFromServiceMsg)) || ((str1 != null) && (str1.equals("subaccount"))) || ((paramToServiceMsg != null) && (paramToServiceMsg.getAttributes().containsKey("uinNotMatch"))))
-          {
-            startUnifiedMonitorReport();
-            l2 = SystemClock.uptimeMillis();
-            localAppRuntime.getServletContainer().notifyMSFServlet(localClass, paramFromServiceMsg);
-            if (i != 0) {
-              try
-              {
-                paramToServiceMsg = localAppRuntime.subRuntimeMap.values().iterator();
-                while (paramToServiceMsg.hasNext()) {
-                  ((AppRuntime)paramToServiceMsg.next()).getServletContainer().notifyMSFServlet(localClass, paramFromServiceMsg);
-                }
-                l2 = SystemClock.uptimeMillis() - l2;
+          paramFromServiceMsg.setUin(((AppRuntime)localObject1).getAccount());
+          bool = true;
+        }
+        String str3 = paramFromServiceMsg.getUin();
+        if ((str2 != null) && (str2.length() > 0)) {
+          paramFromServiceMsg.addAttribute("from_where", str2);
+        }
+        if ((str1 != null) && (str1.length() > 0)) {
+          paramFromServiceMsg.addAttribute("mainaccount", str1);
+        }
+        if (isValidAccount(paramToServiceMsg, paramFromServiceMsg, str2, (AppRuntime)localObject1, bool, str3))
+        {
+          startUnifiedMonitorReport();
+          l2 = SystemClock.uptimeMillis();
+          ((AppRuntime)localObject1).getServletContainer().notifyMSFServlet((Class)localObject2, paramFromServiceMsg);
+          if (i != 0) {
+            try
+            {
+              paramToServiceMsg = ((AppRuntime)localObject1).subRuntimeMap.values().iterator();
+              while (paramToServiceMsg.hasNext()) {
+                ((AppRuntime)paramToServiceMsg.next()).getServletContainer().notifyMSFServlet((Class)localObject2, paramFromServiceMsg);
               }
-              catch (Exception paramToServiceMsg)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.e(TAG, 2, "", paramToServiceMsg);
-                }
+              l2 = SystemClock.uptimeMillis() - l2;
+            }
+            catch (Exception paramToServiceMsg)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.e(TAG, 2, "", paramToServiceMsg);
               }
             }
-            stopUnifiedMonitorReport(paramFromServiceMsg, l2);
-            long l3 = SystemClock.currentThreadTimeMillis();
-            sReceiverCpuTime = l3;
-            if (QLog.isColorLevel()) {
-              QLog.d("mqq", 2, new Object[] { "[MSF End][notifyMSFServlet]", paramFromServiceMsg.getServiceCmd(), ",ssoseq=", Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()), ",cost=", Long.valueOf(l2), "ms, cpucost=", Long.valueOf(l3 - l1), "(", Long.valueOf(l3), ")." });
-            }
-            reportMsfLongCallback(paramFromServiceMsg, l2);
-            reportMSFCallBackCost(l2, false);
-            notifyCostTooLongIfDebug(paramFromServiceMsg, localAppRuntime, l2);
           }
-          return;
-          if (!QLog.isColorLevel()) {
-            break;
+          stopUnifiedMonitorReport(paramFromServiceMsg, l2);
+          long l3 = SystemClock.currentThreadTimeMillis();
+          sReceiverCpuTime = l3;
+          if (QLog.isColorLevel()) {
+            QLog.d("mqq", 2, new Object[] { "[MSF End][notifyMSFServlet]", paramFromServiceMsg.getServiceCmd(), ",ssoseq=", Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()), ",cost=", Long.valueOf(l2), "ms, cpucost=", Long.valueOf(l3 - l1), "(", Long.valueOf(l3), ")." });
           }
-          QLog.w("mqq", 2, "[MSF Receive]" + paramFromServiceMsg.getServiceCmd() + " appSeq:" + paramToServiceMsg.getAppSeq() + "  " + localAppRuntime.getClass().getSimpleName() + "@" + localAppRuntime.hashCode() + "  code=" + paramFromServiceMsg.getResultCode() + ",cost=" + l2 + "ms.");
+          reportMsfLongCallback(paramFromServiceMsg, l2);
+          reportMSFCallBackCost(l2, false);
+          notifyCostTooLongIfDebug(paramFromServiceMsg, (AppRuntime)localObject1, l2);
+        }
+        return;
+        if (!QLog.isColorLevel()) {
           break;
-          if ((this.mApplicaiton.getQQProcessName().endsWith(":video")) || (QLog.isColorLevel())) {
-            QLog.d("mqq", 1, "[MSF Push]" + paramFromServiceMsg.getServiceCmd() + ",ssoseq=" + paramFromServiceMsg.getRequestSsoSeq());
-          }
-          i = 1;
-          str1 = null;
-          localClass = null;
-          break label258;
         }
+        QLog.w("mqq", 2, "[MSF Receive]" + paramFromServiceMsg.getServiceCmd() + " appSeq:" + paramToServiceMsg.getAppSeq() + "  " + localObject1.getClass().getSimpleName() + "@" + localObject1.hashCode() + "  code=" + paramFromServiceMsg.getResultCode() + ",cost=" + l2 + "ms.");
+        break;
+        if ((this.mApplicaiton.getQQProcessName().endsWith(":video")) || (QLog.isColorLevel())) {
+          QLog.d("mqq", 1, "[MSF Push]" + paramFromServiceMsg.getServiceCmd() + ",ssoseq=" + paramFromServiceMsg.getRequestSsoSeq());
+        }
+        i = 1;
+        str2 = null;
+        localObject2 = null;
       }
     }
   }
@@ -420,7 +421,7 @@ public class MainService
   {
     if (this.msfRecvThread == null)
     {
-      this.msfRecvThread = new Thread(this.MSFReceiver, "MSF-Receiver");
+      this.msfRecvThread = new Thread(this.mSFReceiver, "MSF-Receiver");
       QLog.d(TAG, 1, "start MSF-Receiver " + this.msfRecvThread.getId());
       if ((this.mApplicaiton == null) || (this.mApplicaiton.getQQProcessName() == null) || (!this.mApplicaiton.getQQProcessName().endsWith(":video"))) {
         break label130;

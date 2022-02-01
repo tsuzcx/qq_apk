@@ -1,9 +1,11 @@
-import com.tencent.biz.now.NowVideoLayout;
+import java.util.ArrayList;
 
-public class bcyj
+public abstract class bcyj
+  implements bcyi
 {
-  public bcxb a;
-  public NowVideoLayout a;
+  public void a(int paramInt, ArrayList<bcyb> paramArrayList) {}
+  
+  public void b(int paramInt, bcyb parambcyb) {}
 }
 
 

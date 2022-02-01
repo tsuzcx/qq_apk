@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import aqel;
-import aqer;
+import aqto;
+import aqtu;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import java.util.Iterator;
 import java.util.List;
@@ -14,7 +14,7 @@ public class ColorNoteSettingBaseSection
   extends LinearLayout
 {
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private aqel jdField_a_of_type_Aqel;
+  private aqto jdField_a_of_type_Aqto;
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   
   public ColorNoteSettingBaseSection(Context paramContext)
@@ -37,15 +37,15 @@ public class ColorNoteSettingBaseSection
   
   private void b()
   {
-    inflate(getContext(), 2131558919, this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131377103));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363309));
+    inflate(getContext(), 2131558918, this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131377242));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363333));
   }
   
   public void a()
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    Iterator localIterator = this.jdField_a_of_type_Aqel.a(getContext()).iterator();
+    Iterator localIterator = this.jdField_a_of_type_Aqto.a(getContext()).iterator();
     while (localIterator.hasNext())
     {
       HistoryFormItem localHistoryFormItem = (HistoryFormItem)localIterator.next();
@@ -53,10 +53,10 @@ public class ColorNoteSettingBaseSection
     }
   }
   
-  public void setAdapter(aqel paramaqel)
+  public void setAdapter(aqto paramaqto)
   {
-    this.jdField_a_of_type_Aqel = paramaqel;
-    this.jdField_a_of_type_Aqel.a(new aqer(this));
+    this.jdField_a_of_type_Aqto = paramaqto;
+    this.jdField_a_of_type_Aqto.a(new aqtu(this));
   }
   
   public void setContentDescription(CharSequence paramCharSequence)

@@ -1,12 +1,27 @@
-import com.tencent.ttpic.video.AECoderFactory.AEEncoderFactory;
-import com.tencent.ttpic.video.AEEncoder;
+import cooperation.qzone.panorama.widget.PanoramaView;
 
-final class bndf
-  implements AECoderFactory.AEEncoderFactory
+public class bndf
+  implements bncl
 {
-  public AEEncoder createEncoder(String paramString, int paramInt1, int paramInt2)
+  public bndf(PanoramaView paramPanoramaView) {}
+  
+  public void a()
   {
-    return new barq(paramString, paramInt1, paramInt2);
+    if (PanoramaView.a(this.a) != null) {
+      PanoramaView.a(this.a).onPanoramaClick();
+    }
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (PanoramaView.a(this.a) != null) {
+      PanoramaView.a(this.a).a(paramFloat);
+    }
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    this.a.a(paramFloat1, paramFloat2);
   }
 }
 

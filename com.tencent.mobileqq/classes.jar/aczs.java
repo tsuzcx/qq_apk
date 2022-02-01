@@ -1,55 +1,46 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.BusinessWPATmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Map;
+import tencent.im.oidb.cmd0x6ef.oidb_cmd0x6ef.RspBody;
 
-public class aczs
-  implements acxp
+class aczs
+  extends nkq
 {
-  public int a()
+  aczs(aczr paramaczr, boolean paramBoolean, bfoy parambfoy, long paramLong1, long paramLong2, RecentUser paramRecentUser, String paramString, MessageRecord paramMessageRecord, Map paramMap)
   {
-    return 1024;
+    super(paramBoolean);
   }
   
-  public boolean a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    byte[] arrayOfByte = paramQQAppInterface.a().d(paramMessageRecord.frienduin);
-    msg_svc.BusinessWPATmp localBusinessWPATmp = new msg_svc.BusinessWPATmp();
-    localBusinessWPATmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    if (arrayOfByte != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BusinessCRMRoutingType", 2, "conversation------>sig:" + bgmj.a(arrayOfByte) + ",length:" + arrayOfByte.length);
-      }
-      localBusinessWPATmp.sig.set(ByteStringMicro.copyFrom(arrayOfByte));
-    }
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
     for (;;)
     {
-      paramRoutingHead.business_wpa_tmp.set(localBusinessWPATmp);
-      return true;
-      paramMessageRecord = paramQQAppInterface.a().e(paramMessageRecord.frienduin);
-      if (paramMessageRecord != null)
+      return;
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("BusinessCRMRoutingType", 2, "conversation------>sigt:" + bgmj.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+        paramBundle = new oidb_cmd0x6ef.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if ((paramBundle.is_create.get() == 1) || (paramBundle.is_join.get() == 1))
+        {
+          this.jdField_a_of_type_Bfoy.a.a(21, this.jdField_a_of_type_Long, this.b);
+          if (21 >= this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType = 21;
+            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg = bgiv.a(this.jdField_a_of_type_Aczr.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bfoy, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, true);
+            this.jdField_a_of_type_JavaUtilMap.put(adak.a(this.jdField_a_of_type_JavaLangString, 1), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
+            return;
+          }
         }
-        localBusinessWPATmp.sigt.set(ByteStringMicro.copyFrom(paramMessageRecord));
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
       }
     }
-  }
-  
-  public int b()
-  {
-    return 0;
   }
 }
 

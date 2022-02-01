@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForLongMsg;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
 
 class ahbz
-  implements DialogInterface.OnClickListener
+  extends agen
 {
-  ahbz(ahbx paramahbx, MessageForLongMsg paramMessageForLongMsg) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    adrm.a(this.jdField_a_of_type_Ahbx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahbx.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahbx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongMsg);
-  }
+  public long a;
+  ConfessNewsBgView a;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
 }
 
 

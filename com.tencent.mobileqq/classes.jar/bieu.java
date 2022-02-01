@@ -1,8 +1,23 @@
-public abstract interface bieu
+import android.graphics.Canvas;
+import android.view.SurfaceHolder;
+
+public class bieu
+  extends bies
 {
-  public abstract boolean a();
+  public bieu(SurfaceHolder paramSurfaceHolder)
+  {
+    super(paramSurfaceHolder);
+  }
   
-  public abstract boolean a(int paramInt1, int paramInt2);
+  Canvas a(SurfaceHolder paramSurfaceHolder)
+  {
+    return paramSurfaceHolder.lockHardwareCanvas();
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 

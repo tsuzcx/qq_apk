@@ -1,29 +1,36 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class atop
-  implements atne
+  implements aumz
 {
-  atop(atoo paramatoo, String paramString) {}
+  atop(atoo paramatoo, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  public void a()
   {
-    paramString = new ArrayList();
-    if ((paramList != null) && (!paramList.isEmpty()))
+    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 3) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 0))
     {
-      paramString.addAll(paramList);
-      if (this.jdField_a_of_type_Atoo.jdField_a_of_type_Atmk != null) {
-        this.jdField_a_of_type_Atoo.jdField_a_of_type_Atmk.c();
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+      {
+        this.jdField_a_of_type_Atoo.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+        return;
       }
+      this.jdField_a_of_type_Atoo.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      return;
     }
-    this.jdField_a_of_type_Atoo.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, paramString);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    {
+      this.jdField_a_of_type_Atoo.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      return;
+    }
+    this.jdField_a_of_type_Atoo.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atop
  * JD-Core Version:    0.7.0.1
  */

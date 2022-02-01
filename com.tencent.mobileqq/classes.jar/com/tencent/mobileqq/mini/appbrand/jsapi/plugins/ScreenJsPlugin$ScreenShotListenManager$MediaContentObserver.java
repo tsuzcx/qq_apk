@@ -18,7 +18,7 @@ class ScreenJsPlugin$ScreenShotListenManager$MediaContentObserver
   public void onChange(boolean paramBoolean)
   {
     super.onChange(paramBoolean);
-    ScreenJsPlugin.ScreenShotListenManager.access$000(this.this$0, this.mContentUri);
+    ScreenJsPlugin.ScreenShotListenManager.access$100(this.this$0, this.mContentUri);
   }
 }
 

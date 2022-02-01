@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="21.0dip" />
-    <solid android:color="#ffeb632f" />
-</shape>
+    <item android:state_checked="true" android:drawable="@drawable/gzq" />
+    <item android:state_checked="false" android:drawable="@drawable/gzp" />
+    <item android:drawable="@drawable/gzp" />
+</selector>

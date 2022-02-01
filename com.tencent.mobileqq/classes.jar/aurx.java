@@ -1,18 +1,37 @@
-import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
-import java.util.Comparator;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp;
 
-final class aurx
-  implements Comparator<PadFaceAd>
+class aurx
+  implements boae<WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp>
 {
-  public int a(PadFaceAd paramPadFaceAd1, PadFaceAd paramPadFaceAd2)
+  aurx(aurp paramaurp, ausc paramausc) {}
+  
+  public void a(int paramInt, String paramString, WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
   {
-    if (paramPadFaceAd1.startTime < paramPadFaceAd2.startTime) {
-      return -1;
+    QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "sendWeiYun2Dataline onFailed: errcode[" + paramInt + "], errmsg[" + paramString + "]");
+    if (this.jdField_a_of_type_Ausc != null) {
+      this.jdField_a_of_type_Ausc.a(paramInt, paramString);
     }
-    if (paramPadFaceAd1.startTime == paramPadFaceAd2.startTime) {
-      return 0;
+  }
+  
+  public void a(WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
+  {
+    paramCrossBidProxyCopyFileToOtherBidMsgRsp = new String(paramCrossBidProxyCopyFileToOtherBidMsgRsp.dst_path.get().toByteArray());
+    if (paramCrossBidProxyCopyFileToOtherBidMsgRsp.length() < 1)
+    {
+      QLog.e("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^! [CS Replay]sendWeiYun2Dataline onSucceed,But uuid is null!!!");
+      if (this.jdField_a_of_type_Ausc != null) {
+        this.jdField_a_of_type_Ausc.a(-3, "copyFileToOtherBid_fail");
+      }
     }
-    return 1;
+    do
+    {
+      return;
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^ [CS Replay] sendWeiYun2Dataline onSucceed, Uuid[" + paramCrossBidProxyCopyFileToOtherBidMsgRsp + "]");
+    } while (this.jdField_a_of_type_Ausc == null);
+    this.jdField_a_of_type_Ausc.a(paramCrossBidProxyCopyFileToOtherBidMsgRsp);
   }
 }
 

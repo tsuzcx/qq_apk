@@ -1,33 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
+import android.os.Bundle;
 import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.widget.XListView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajrr
-  extends Handler
+  implements View.OnClickListener
 {
-  public ajrr(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  public ajrr(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if ((paramMessage.what != 1) || (ChatHistoryTroopFileFragment.a(this.a) == null)) {}
+    Object localObject;
+    if ((paramView.getTag() instanceof ajpx))
+    {
+      localObject = (ajpx)paramView.getTag();
+      if (localObject != null) {
+        break label30;
+      }
+    }
     for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      int i = ChatHistoryTroopFileFragment.a(this.a).getFirstVisiblePosition();
-      while (i <= ChatHistoryTroopFileFragment.a(this.a).getLastVisiblePosition())
-      {
-        paramMessage = ChatHistoryTroopFileFragment.a(this.a).getChildAt(i);
-        if (paramMessage != null)
-        {
-          paramMessage = paramMessage.getTag();
-          if ((paramMessage != null) && ((paramMessage instanceof bewa))) {
-            ((bewa)paramMessage).a(this.a.a, ChatHistoryTroopFileFragment.a(this.a));
-          }
-        }
-        i += 1;
-      }
+      label30:
+      localObject = TroopInfoActivity.a(((ajpx)localObject).b, 4);
+      ((Bundle)localObject).putInt("t_s_f", 1002);
+      bguq.a(this.a.getActivity(), (Bundle)localObject, 2);
     }
   }
 }

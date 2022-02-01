@@ -1172,7 +1172,7 @@ public class CanvasView
     //   39: aconst_null
     //   40: aload_3
     //   41: ldc 139
-    //   43: invokestatic 891	com/tencent/qqmini/sdk/core/utils/NativeBuffer:unpackNativeBuffer	(Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;Lorg/json/JSONObject;Ljava/lang/String;)Lcom/tencent/qqmini/sdk/core/utils/NativeBuffer;
+    //   43: invokestatic 891	com/tencent/qqmini/sdk/core/utils/NativeBuffer:unpackNativeBuffer	(Lcom/tencent/qqmini/sdk/launcher/core/IJsService;Lorg/json/JSONObject;Ljava/lang/String;)Lcom/tencent/qqmini/sdk/core/utils/NativeBuffer;
     //   46: astore_3
     //   47: aload_3
     //   48: ifnull +364 -> 412

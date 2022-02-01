@@ -11,8 +11,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aoch;
-import bggq;
+import aoot;
+import bhgr;
 import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -62,14 +62,14 @@ public class TroopAppFormItem
         break label174;
       }
       label33:
-      float f3 = i - bggq.a(getContext(), 12.0F) - bggq.a(getContext(), 12.0F) - bggq.a(getContext(), 15.0F);
+      float f3 = i - bhgr.a(getContext(), 12.0F) - bhgr.a(getContext(), 12.0F) - bhgr.a(getContext(), 15.0F);
       if ((this.jdField_a_of_type_Int != -1) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
         break label241;
       }
       if (TextUtils.isEmpty(this.c)) {
         break label192;
       }
-      f1 = i - bggq.a(getContext(), 30.0F) - bggq.a(getContext(), 5.0F) - bggq.a(getContext(), 5.0F) - bggq.a(getContext(), 5.0F) - f1;
+      f1 = i - bhgr.a(getContext(), 30.0F) - bhgr.a(getContext(), 5.0F) - bhgr.a(getContext(), 5.0F) - bhgr.a(getContext(), 5.0F) - f1;
     }
     for (;;)
     {
@@ -81,16 +81,16 @@ public class TroopAppFormItem
       this.jdField_b_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_b_of_type_JavaLangString);
       break label33;
       label192:
-      f1 = i - bggq.a(getContext(), 10.0F) - bggq.a(getContext(), 5.0F) - bggq.a(getContext(), 5.0F) - bggq.a(getContext(), 5.0F) - f1;
+      f1 = i - bhgr.a(getContext(), 10.0F) - bhgr.a(getContext(), 5.0F) - bhgr.a(getContext(), 5.0F) - bhgr.a(getContext(), 5.0F) - f1;
       continue;
       label241:
       if (!TextUtils.isEmpty(this.c))
       {
-        f1 = i - bggq.a(getContext(), 30.0F) - bggq.a(getContext(), 5.0F) - bggq.a(getContext(), 5.0F) - bggq.a(getContext(), 5.0F) - f1;
+        f1 = i - bhgr.a(getContext(), 30.0F) - bhgr.a(getContext(), 5.0F) - bhgr.a(getContext(), 5.0F) - bhgr.a(getContext(), 5.0F) - f1;
       }
       else
       {
-        f1 = bggq.a(getContext(), 5.0F);
+        f1 = bhgr.a(getContext(), 5.0F);
         f1 = f2;
       }
     }
@@ -109,7 +109,7 @@ public class TroopAppFormItem
     {
       if (Friends.isValidUin(this.c))
       {
-        paramString1 = aoch.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 1, this.c);
+        paramString1 = aoot.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 1, this.c);
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable(paramString1);
       }
     }
@@ -130,12 +130,12 @@ public class TroopAppFormItem
       return;
       if (this.c.startsWith("http"))
       {
-        paramString1 = getResources().getDrawable(2130840264);
+        paramString1 = getResources().getDrawable(2130840274);
         paramString2 = URLDrawable.URLDrawableOptions.obtain();
         paramString2.mLoadingDrawable = paramString1;
         paramString2.mFailedDrawable = paramString1;
-        paramString2.mRequestWidth = bggq.a(getContext(), 30.0F);
-        paramString2.mRequestHeight = bggq.a(getContext(), 30.0F);
+        paramString2.mRequestWidth = bhgr.a(getContext(), 30.0F);
+        paramString2.mRequestHeight = bhgr.a(getContext(), 30.0F);
         paramString1 = URLDrawable.getDrawable(this.c, paramString2);
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable(paramString1);
         break;
@@ -164,21 +164,21 @@ public class TroopAppFormItem
   public void a(oidb_0xe83.TabInfo paramTabInfo, int paramInt)
   {
     if (paramTabInfo.appid.get() == 1106912788L) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(bggq.a(getContext(), 30.0F));
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(bhgr.a(getContext(), 30.0F));
     }
     a(paramTabInfo.name.get(), paramTabInfo.desc.get(), paramTabInfo.pic.get(), paramTabInfo.red_point.get(), paramInt);
   }
   
   public void b()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131560564, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371539));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378007));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369775));
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131376564);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)localView.findViewById(2131368246));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(bggq.a(getContext(), 4.0F));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368348));
+    View localView = LayoutInflater.from(getContext()).inflate(2131560579, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371647));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378162));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369872));
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131376696);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)localView.findViewById(2131368320));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(bhgr.a(getContext(), 4.0F));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368421));
   }
   
   public void c()

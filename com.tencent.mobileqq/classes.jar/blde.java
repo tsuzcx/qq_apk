@@ -1,8 +1,19 @@
-import android.os.Bundle;
+import com.tencent.mqp.app.sec.d;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-public abstract interface blde
+public class blde
+  implements bldk
 {
-  public abstract void a(Bundle paramBundle);
+  public blde(QSecFramework paramQSecFramework) {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 1) && (paramInt2 == 1))
+    {
+      d.e(1, d.x(), null);
+      QSecFramework.a(this.a).b(this);
+    }
+  }
 }
 
 

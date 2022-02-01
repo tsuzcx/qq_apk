@@ -10,6 +10,7 @@ final class ScreenJsPlugin$1
     add("setScreenBrightness");
     add("getScreenBrightness");
     add("setKeepScreenOn");
+    add("onUserCaptureScreen");
   }
 }
 

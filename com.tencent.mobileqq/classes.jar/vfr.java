@@ -1,30 +1,38 @@
-import com.etrump.mixlayout.ETDecoration;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.requests.QCircleDeleteFeedRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StRecomForward;
+import feedcloud.FeedCloudMeta.StUser;
 
-public class vfr
+class vfr
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  private long a;
-  public CharSequence a;
-  public vfv a;
-  public int b = -1;
+  vfr(vfi paramvfi) {}
   
-  public vfr()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  static vfr a(vgl paramvgl)
-  {
-    if (paramvgl.jdField_a_of_type_ComEtrumpMixlayoutETDecoration == null) {
-      return null;
+    if (paramInt == 1)
+    {
+      if (!vfi.a(this.a).a.isRecomFd.get()) {
+        break label118;
+      }
+      paramDialogInterface = new FeedCloudMeta.StFeed();
+      paramDialogInterface.id.set(vfi.a(this.a).a.recomForward.id.get());
+      paramDialogInterface.poster.set(vfi.a(this.a).a.recomForward.poster.get());
     }
-    vfr localvfr = new vfr();
-    localvfr.jdField_a_of_type_Vfv = paramvgl.jdField_a_of_type_Vfv;
-    localvfr.jdField_a_of_type_JavaLangCharSequence = paramvgl.b();
-    localvfr.jdField_a_of_type_Int = paramvgl.jdField_a_of_type_ComEtrumpMixlayoutETDecoration.currentFrameIndex();
-    localvfr.jdField_a_of_type_Long = System.currentTimeMillis();
-    localvfr.b = paramvgl.c;
-    return localvfr;
+    for (;;)
+    {
+      String str = paramDialogInterface.id.get();
+      paramDialogInterface = new QCircleDeleteFeedRequest(paramDialogInterface);
+      VSNetworkHelper.a().a(paramDialogInterface, new vfs(this, str));
+      return;
+      label118:
+      paramDialogInterface = vfi.a(this.a).a;
+    }
   }
 }
 

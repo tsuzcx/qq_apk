@@ -1,82 +1,30 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
+import com.tencent.qphone.base.util.QLog;
 
-public class atxj
+class atxj
+  extends atxd
 {
-  public static final int[] a;
-  protected Context a;
-  protected Bundle a;
-  protected QQAppInterface a;
-  protected QFileSendBottomView a;
-  protected boolean a;
-  
-  static
+  public atxj(atwy paramatwy)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 1, 5 };
+    super(paramatwy);
   }
   
-  public atxj(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
+  protected String a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView = paramQFileSendBottomView;
+    return "StateChangeToOffWhenPause";
   }
   
-  public static atxj a(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView, Bundle paramBundle)
+  protected void a()
   {
-    int i = paramBundle.getInt("qfile_search_param_exparams_busi_type");
-    paramBundle.getInt("qfile_search_param_exparams_peer_type");
-    if (i == 1) {
-      paramQQAppInterface = new atsg(paramQQAppInterface, paramContext, paramQFileSendBottomView);
-    }
-    for (;;)
+    if (this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      paramQQAppInterface.a(paramBundle);
-      return paramQQAppInterface;
-      if (i == 5) {
-        paramQQAppInterface = new atsd(paramQQAppInterface, paramContext, paramQFileSendBottomView);
-      } else {
-        paramQQAppInterface = new atxk(paramQQAppInterface, paramContext, paramQFileSendBottomView);
-      }
-    }
-  }
-  
-  public void a() {}
-  
-  protected void a(int paramInt, Intent paramIntent)
-  {
-    if (paramIntent != null) {}
-    for (paramIntent = new Intent(paramIntent);; paramIntent = new Intent())
-    {
-      paramIntent.putExtra("qfile_send_bottom_bar_finish_result_code", -1);
-      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-      localActivity.setResult(paramInt, paramIntent);
-      localActivity.finish();
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
     }
+    atwy.b(this.jdField_a_of_type_Atwy, 9, 11);
+    atwy.c(this.jdField_a_of_type_Atwy, 9, 14);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateUploadingWhenRecv)");
+    this.jdField_a_of_type_Atxd = new atyf(this.jdField_a_of_type_Atwy);
   }
-  
-  protected void a(Intent paramIntent)
-  {
-    a(-1, paramIntent);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (paramBundle != null)
-    {
-      this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void b() {}
 }
 
 

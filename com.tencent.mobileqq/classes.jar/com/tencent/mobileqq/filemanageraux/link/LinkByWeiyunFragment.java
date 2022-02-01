@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanageraux.link;
 
-import aevv;
+import afez;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -16,17 +16,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import atcv;
-import atvo;
-import atwl;
-import aubt;
-import aubu;
-import aubv;
-import aubw;
-import auca;
-import aucb;
-import bgpa;
-import bihh;
+import atup;
+import aunj;
+import auog;
+import auto;
+import autp;
+import autq;
+import autr;
+import autv;
+import autw;
+import bhpc;
+import bjig;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
@@ -51,14 +51,14 @@ import java.util.List;
 
 public class LinkByWeiyunFragment
   extends IphoneTitleBarFragment
-  implements DialogInterface.OnClickListener, View.OnClickListener, aubt, bihh, ShareActionSheet.OnItemClickListener
+  implements DialogInterface.OnClickListener, View.OnClickListener, auto, bjig, ShareActionSheet.OnItemClickListener
 {
   private static final int jdField_a_of_type_Int = Color.parseColor("#00000000");
   private View jdField_a_of_type_AndroidViewView;
-  private aubw jdField_a_of_type_Aubw;
-  private auca jdField_a_of_type_Auca;
-  private aucb jdField_a_of_type_Aucb;
-  private bgpa jdField_a_of_type_Bgpa;
+  private autr jdField_a_of_type_Autr;
+  private autv jdField_a_of_type_Autv;
+  private autw jdField_a_of_type_Autw;
+  private bhpc jdField_a_of_type_Bhpc;
   private FileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo;
   private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
   private AsyncImageView jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
@@ -79,11 +79,11 @@ public class LinkByWeiyunFragment
       localIntent.putExtra("key_local_file_path", paramString);
     }
     localIntent.putExtra("key_by_qr_code", paramBoolean);
-    aevv.a(paramContext, localIntent, PublicFragmentActivity.class, LinkByWeiyunFragment.class);
+    afez.a(paramContext, localIntent, PublicFragmentActivity.class, LinkByWeiyunFragment.class);
     if (paramBoolean) {}
     for (paramContext = "0X800A9D5";; paramContext = "0X800A9D4")
     {
-      aubv.a(paramContext, aubv.a(paramFileManagerEntity, paramString), null);
+      autq.a(paramContext, autq.a(paramFileManagerEntity, paramString), null);
       return;
     }
   }
@@ -108,7 +108,7 @@ public class LinkByWeiyunFragment
       if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.a() > 0L))
       {
         bool = true;
-        return aubv.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, bool);
+        return autq.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, bool);
       }
     }
     catch (Throwable localThrowable)
@@ -132,17 +132,17 @@ public class LinkByWeiyunFragment
     String str;
     if (this.jdField_a_of_type_Boolean)
     {
-      i = 2131697430;
+      i = 2131697511;
       setTitle(getString(i));
       if (!ThemeUtil.isNowThemeIsNight(null, false, null)) {
         break label191;
       }
       i = 2131165359;
-      this.mContentView.findViewById(2131372883).setBackgroundResource(i);
-      this.mContentView.findViewById(2131369896).setBackgroundResource(i);
-      localObject = (TextView)this.mContentView.findViewById(2131377313);
-      localTextView = (TextView)this.mContentView.findViewById(2131377311);
-      localAsyncImageView = (AsyncImageView)this.mContentView.findViewById(2131377312);
+      this.mContentView.findViewById(2131372996).setBackgroundResource(i);
+      this.mContentView.findViewById(2131369994).setBackgroundResource(i);
+      localObject = (TextView)this.mContentView.findViewById(2131377453);
+      localTextView = (TextView)this.mContentView.findViewById(2131377451);
+      localAsyncImageView = (AsyncImageView)this.mContentView.findViewById(2131377452);
       str = a();
       if (((TextView)localObject).getMeasuredWidth() > 0) {
         break label198;
@@ -151,13 +151,13 @@ public class LinkByWeiyunFragment
     }
     for (;;)
     {
-      localTextView.setText(atwl.a(a()));
-      localAsyncImageView.setImageResource(atvo.b(str));
+      localTextView.setText(auog.a(a()));
+      localAsyncImageView.setImageResource(aunj.b(str));
       i = a();
       if ((i == 5) || (i == 0))
       {
         localObject = b();
-        if (atwl.b((String)localObject))
+        if (auog.b((String)localObject))
         {
           if (i != 5) {
             break label220;
@@ -166,13 +166,13 @@ public class LinkByWeiyunFragment
         }
       }
       return;
-      i = 2131697442;
+      i = 2131697523;
       break;
       label191:
-      i = 2131167294;
+      i = 2131167317;
       break label31;
       label198:
-      ((TextView)localObject).setText(atvo.a(str, true, ((TextView)localObject).getMeasuredWidth(), ((TextView)localObject).getPaint(), 1));
+      ((TextView)localObject).setText(aunj.a(str, true, ((TextView)localObject).getMeasuredWidth(), ((TextView)localObject).getPaint(), 1));
     }
     label220:
     localAsyncImageView.setAsyncImage((String)localObject);
@@ -180,34 +180,34 @@ public class LinkByWeiyunFragment
   
   private void d()
   {
-    this.jdField_a_of_type_Aucb = new aucb(this, this.mContentView.findViewById(2131377306), this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Aubw = new aubw(this, this.mContentView.findViewById(2131372888), this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Auca = new auca(this, (ViewGroup)this.mContentView.findViewById(2131376788));
+    this.jdField_a_of_type_Autw = new autw(this, this.mContentView.findViewById(2131377446), this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Autr = new autr(this, this.mContentView.findViewById(2131373001), this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Autv = new autv(this, (ViewGroup)this.mContentView.findViewById(2131376925));
   }
   
   private void e()
   {
-    bgpa localbgpa;
-    if (this.jdField_a_of_type_Bgpa == null)
+    bhpc localbhpc;
+    if (this.jdField_a_of_type_Bhpc == null)
     {
-      this.jdField_a_of_type_Bgpa = new bgpa(getActivity(), 2131755823);
-      this.jdField_a_of_type_Bgpa.setContentView(2131559009);
-      localbgpa = this.jdField_a_of_type_Bgpa;
+      this.jdField_a_of_type_Bhpc = new bhpc(getActivity(), 2131755824);
+      this.jdField_a_of_type_Bhpc.setContentView(2131559008);
+      localbhpc = this.jdField_a_of_type_Bhpc;
       if (!this.jdField_a_of_type_Boolean) {
         break label123;
       }
     }
     label123:
-    for (int i = 2131697421;; i = 2131697422)
+    for (int i = 2131697502;; i = 2131697503)
     {
-      localbgpa.setTitle(i);
-      this.jdField_a_of_type_Bgpa.setMessage(null);
-      this.jdField_a_of_type_Bgpa.setNegativeButton(2131690582, this);
-      this.jdField_a_of_type_Bgpa.setPositiveButton(2131692667, this);
-      this.jdField_a_of_type_Bgpa.setCancelable(true);
-      this.jdField_a_of_type_Bgpa.setCanceledOnTouchOutside(false);
-      if (!this.jdField_a_of_type_Bgpa.isShowing()) {
-        this.jdField_a_of_type_Bgpa.show();
+      localbhpc.setTitle(i);
+      this.jdField_a_of_type_Bhpc.setMessage(null);
+      this.jdField_a_of_type_Bhpc.setNegativeButton(2131690580, this);
+      this.jdField_a_of_type_Bhpc.setPositiveButton(2131692675, this);
+      this.jdField_a_of_type_Bhpc.setCancelable(true);
+      this.jdField_a_of_type_Bhpc.setCanceledOnTouchOutside(false);
+      if (!this.jdField_a_of_type_Bhpc.isShowing()) {
+        this.jdField_a_of_type_Bhpc.show();
       }
       return;
     }
@@ -226,7 +226,7 @@ public class LinkByWeiyunFragment
         break;
       }
     } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.a() == 5);
-    return atvo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.d());
+    return aunj.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.d());
     return -1;
   }
   
@@ -241,12 +241,12 @@ public class LinkByWeiyunFragment
     return 0L;
   }
   
-  public aubu a()
+  public autp a()
   {
-    if (this.jdField_a_of_type_Aucb == null) {
-      return new aubu();
+    if (this.jdField_a_of_type_Autw == null) {
+      return new autp();
     }
-    return this.jdField_a_of_type_Aucb.a();
+    return this.jdField_a_of_type_Autw.a();
   }
   
   public BaseActivity a()
@@ -272,14 +272,14 @@ public class LinkByWeiyunFragment
   
   public void a()
   {
-    if (this.jdField_a_of_type_Aubw != null) {
-      this.jdField_a_of_type_Aubw.a();
+    if (this.jdField_a_of_type_Autr != null) {
+      this.jdField_a_of_type_Autr.a();
     }
   }
   
   public void a(Bitmap paramBitmap)
   {
-    if ((this.jdField_a_of_type_Aubw == null) || (this.jdField_a_of_type_Auca == null)) {
+    if ((this.jdField_a_of_type_Autr == null) || (this.jdField_a_of_type_Autv == null)) {
       return;
     }
     Object localObject = a();
@@ -312,7 +312,7 @@ public class LinkByWeiyunFragment
       if (!this.jdField_a_of_type_Boolean) {
         break label225;
       }
-      paramBitmap = this.jdField_a_of_type_Auca.a((Context)localObject);
+      paramBitmap = this.jdField_a_of_type_Autv.a((Context)localObject);
       label157:
       if (!this.jdField_a_of_type_Boolean) {
         break label237;
@@ -322,7 +322,7 @@ public class LinkByWeiyunFragment
     label219:
     label225:
     label237:
-    for (localObject = this.jdField_a_of_type_Auca.b((Context)localObject);; localObject = this.jdField_a_of_type_Aubw.b((Context)localObject))
+    for (localObject = this.jdField_a_of_type_Autv.b((Context)localObject);; localObject = this.jdField_a_of_type_Autr.b((Context)localObject))
     {
       localShareActionSheet.setActionSheetItems(paramBitmap, (List)localObject);
       this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(this);
@@ -335,7 +335,7 @@ public class LinkByWeiyunFragment
       break label84;
       i = 8;
       break label126;
-      paramBitmap = this.jdField_a_of_type_Aubw.a((Context)localObject);
+      paramBitmap = this.jdField_a_of_type_Autr.a((Context)localObject);
       break label157;
     }
   }
@@ -348,7 +348,7 @@ public class LinkByWeiyunFragment
   public boolean a(Bitmap paramBitmap, int paramInt, String paramString)
   {
     if ((!isAdded()) || (isDetached()) || (isRemoving())) {}
-    while ((this.jdField_a_of_type_Auca == null) || (!this.jdField_a_of_type_Auca.a(paramBitmap, paramInt, paramString))) {
+    while ((this.jdField_a_of_type_Autv == null) || (!this.jdField_a_of_type_Autv.a(paramBitmap, paramInt, paramString))) {
       return false;
     }
     return true;
@@ -367,18 +367,18 @@ public class LinkByWeiyunFragment
   
   public void b()
   {
-    aucb localaucb;
-    if (this.jdField_a_of_type_Aucb != null)
+    autw localautw;
+    if (this.jdField_a_of_type_Autw != null)
     {
-      localaucb = this.jdField_a_of_type_Aucb;
-      if ((this.jdField_a_of_type_Aubw != null) && (this.jdField_a_of_type_Aubw.a())) {
+      localautw = this.jdField_a_of_type_Autw;
+      if ((this.jdField_a_of_type_Autr != null) && (this.jdField_a_of_type_Autr.a())) {
         break label37;
       }
     }
     label37:
     for (boolean bool = true;; bool = false)
     {
-      localaucb.a(bool);
+      localautw.a(bool);
       return;
     }
   }
@@ -399,12 +399,12 @@ public class LinkByWeiyunFragment
   
   public int getContentLayoutId()
   {
-    return 2131560877;
+    return 2131560908;
   }
   
   public boolean onBackEvent()
   {
-    if ((this.jdField_a_of_type_Aubw != null) && (this.jdField_a_of_type_Aubw.b()))
+    if ((this.jdField_a_of_type_Autr != null) && (this.jdField_a_of_type_Autr.b()))
     {
       e();
       return true;
@@ -414,15 +414,15 @@ public class LinkByWeiyunFragment
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDialogInterface.equals(this.jdField_a_of_type_Bgpa)) {}
+    if (paramDialogInterface.equals(this.jdField_a_of_type_Bhpc)) {}
     switch (paramInt)
     {
     case 0: 
     default: 
       return;
     }
-    if (this.jdField_a_of_type_Aubw != null) {
-      this.jdField_a_of_type_Aubw.b();
+    if (this.jdField_a_of_type_Autr != null) {
+      this.jdField_a_of_type_Autr.b();
     }
     a();
   }
@@ -458,25 +458,25 @@ public class LinkByWeiyunFragment
     }
     this.jdField_a_of_type_JavaLangString = null;
     WXShareHelper.a().b(this);
-    if (this.jdField_a_of_type_Aucb != null)
+    if (this.jdField_a_of_type_Autw != null)
     {
-      this.jdField_a_of_type_Aucb.a();
-      this.jdField_a_of_type_Aucb = null;
+      this.jdField_a_of_type_Autw.a();
+      this.jdField_a_of_type_Autw = null;
     }
-    if (this.jdField_a_of_type_Aubw != null)
+    if (this.jdField_a_of_type_Autr != null)
     {
-      this.jdField_a_of_type_Aubw.c();
-      this.jdField_a_of_type_Aubw = null;
+      this.jdField_a_of_type_Autr.c();
+      this.jdField_a_of_type_Autr = null;
     }
-    if (this.jdField_a_of_type_Auca != null)
+    if (this.jdField_a_of_type_Autv != null)
     {
-      this.jdField_a_of_type_Auca.a();
-      this.jdField_a_of_type_Auca = null;
+      this.jdField_a_of_type_Autv.a();
+      this.jdField_a_of_type_Autv = null;
     }
-    if (this.jdField_a_of_type_Bgpa != null)
+    if (this.jdField_a_of_type_Bhpc != null)
     {
-      this.jdField_a_of_type_Bgpa.dismiss();
-      this.jdField_a_of_type_Bgpa = null;
+      this.jdField_a_of_type_Bhpc.dismiss();
+      this.jdField_a_of_type_Bhpc = null;
     }
     super.onDestroy();
   }
@@ -490,13 +490,13 @@ public class LinkByWeiyunFragment
     int i;
     if ((j == 9) || (j == 10)) {
       if (!WXShareHelper.a().a()) {
-        i = 2131719199;
+        i = 2131719399;
       }
     }
     for (;;)
     {
       if (i != -1) {
-        aubv.a(0, i, false);
+        autq.a(0, i, false);
       }
       do
       {
@@ -504,15 +504,15 @@ public class LinkByWeiyunFragment
         if (WXShareHelper.a().b()) {
           break label186;
         }
-        i = 2131719200;
+        i = 2131719400;
         break;
         if (QLog.isColorLevel()) {
           QLog.i("LinkByWeiyunFragment<FileAssistant>", 2, "onItemClick.chooseChannel: " + j);
         }
-      } while ((this.jdField_a_of_type_Aubw == null) || (this.jdField_a_of_type_Auca == null));
+      } while ((this.jdField_a_of_type_Autr == null) || (this.jdField_a_of_type_Autv == null));
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Auca.a(paramActionSheetItem);
+        this.jdField_a_of_type_Autv.a(paramActionSheetItem);
         if (!this.jdField_a_of_type_Boolean) {
           break label179;
         }
@@ -520,9 +520,9 @@ public class LinkByWeiyunFragment
       label179:
       for (paramActionSheetItem = "0X800A9DB";; paramActionSheetItem = "0X800A9DA")
       {
-        aubv.a(paramActionSheetItem, aubv.c(j), null);
+        autq.a(paramActionSheetItem, autq.c(j), null);
         return;
-        this.jdField_a_of_type_Aubw.a(paramActionSheetItem);
+        this.jdField_a_of_type_Autr.a(paramActionSheetItem);
         break;
       }
       label186:
@@ -540,10 +540,10 @@ public class LinkByWeiyunFragment
     case -2: 
     case -1: 
     default: 
-      aubv.a(1, 2131718007, true);
+      autq.a(1, 2131718139, true);
       return;
     }
-    aubv.a(2, 2131718025, true);
+    autq.a(2, 2131718157, true);
   }
 }
 

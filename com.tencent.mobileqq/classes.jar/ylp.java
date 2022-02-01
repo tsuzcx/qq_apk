@@ -1,40 +1,38 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPhotographyGuide;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import java.util.List;
 
 public class ylp
-  extends wlf
 {
-  public static final String a = wjz.a("StorySvc.get_photography_guide");
+  private wix<ylv> a;
   
-  public String a()
+  public void a()
   {
-    return a;
-  }
-  
-  public wla a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetPhotographyGuide localRspGetPhotographyGuide = new qqstory_service.RspGetPhotographyGuide();
     try
     {
-      localRspGetPhotographyGuide.mergeFrom(paramArrayOfByte);
-      return new ylq(localRspGetPhotographyGuide);
+      if (this.a != null)
+      {
+        this.a.a();
+        this.a = null;
+      }
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    finally
     {
-      yqp.d("Q.qqstory:GetPhotographyGuideRequest", "" + paramArrayOfByte);
+      localObject = finally;
+      throw localObject;
     }
-    return null;
   }
   
-  protected byte[] a()
+  public void a(List<ylv> paramList)
   {
-    return new qqstory_service.ReqGetPhotographyGuide().toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetPhotographyGuideRequest{}";
+    try
+    {
+      if (this.a == null) {
+        this.a = new wix(new ylr());
+      }
+      this.a.a(paramList);
+      return;
+    }
+    finally {}
   }
 }
 

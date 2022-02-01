@@ -1,48 +1,63 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqcircle.QCircleInitBean;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.qqcircle.events.QCircleFollowUpdateEvent;
+import com.tencent.biz.qqcircle.events.QCircleFuelAnimationEvent;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
+import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import common.config.service.QzoneConfig;
-import feedcloud.FeedCloudMeta.StTagInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudWrite.StDoFollowRsp;
 
-class wai
-  implements View.OnClickListener
+public class wai
+  implements aaav<FeedCloudWrite.StDoFollowRsp>
 {
-  wai(wah paramwah) {}
+  public wai(QCircleFollowView paramQCircleFollowView, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoFollowRsp paramStDoFollowRsp)
   {
-    Object localObject = new ArrayList();
-    ((List)localObject).add(vri.a("ext1", this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get()));
-    vrc.a(16, 2, this.a.jdField_a_of_type_Wag.a.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo, (List)localObject, this.a.jdField_a_of_type_Wag.a.b());
-    if (QzoneConfig.getQQCircleTagToLayer())
+    boolean bool = true;
+    QLog.d("QCircleFollowView", 1, "doFollow: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + paramString);
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      localObject = new uxk();
-      ((uxk)localObject).a(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo);
-      ((uxk)localObject).a(this.a.jdField_a_of_type_Wag.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType);
-      localObject = ((uxk)localObject).a();
-      if (localObject != null)
+      if (!QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView)) {}
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a(this.jdField_a_of_type_Int, true);
+      if (this.jdField_a_of_type_Int == 1) {
+        aaak.a().a(new QCircleFuelAnimationEvent());
+      }
+      String str;
+      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a != null)
       {
-        Intent localIntent = new Intent();
-        vrf.a("", 17, 3);
-        ((QCircleInitBean)localObject).mFromReportBean = this.a.jdField_a_of_type_Wag.a.a().clone().setElementIdStr("portraitlist");
-        uxo.a(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), (QCircleInitBean)localObject, localIntent);
+        if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView) != null)
+        {
+          paramString = QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView);
+          if (this.jdField_a_of_type_Int != 1) {
+            break label296;
+          }
+          paramBoolean = true;
+          paramString.a(paramBoolean, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a);
+        }
+        aaak.a().a(new QCircleFollowUpdateEvent(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a.id.get()));
+        QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.getContext(), this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a.id.get(), this.jdField_a_of_type_Int);
+        paramString = vqn.a();
+        str = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a.id.get();
+        if (this.jdField_a_of_type_Int != 1) {
+          break label301;
+        }
+      }
+      label296:
+      label301:
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramString.a(str, paramBoolean);
+        if (paramStDoFollowRsp != null) {
+          vwh.a().a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a.id.get(), this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a.nick.get(), paramStDoFollowRsp.isDoubly.get());
+        }
+        return;
+        paramBoolean = false;
+        break;
       }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      vrf.a("", 17, 3);
-      uxo.a(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagId.get(), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get(), this.a.jdField_a_of_type_Wag.a.a().clone().setElementIdStr("portraitlist"));
-    }
+    QLog.d("QCircleFollowView", 1, "revertFollowUI:" + this.b);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a(this.b, true);
   }
 }
 

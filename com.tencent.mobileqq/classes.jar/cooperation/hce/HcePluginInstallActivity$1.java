@@ -1,7 +1,7 @@
 package cooperation.hce;
 
 import android.os.Handler;
-import blfh;
+import bmgk;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.widget.QQToast;
@@ -26,7 +26,7 @@ class HcePluginInstallActivity$1
         HcePluginInstallActivity.a(this.this$0, true);
         return;
       }
-      QQToast.a(this.this$0.getApplicationContext(), 2131694345, 0).a();
+      QQToast.a(this.this$0.getApplicationContext(), 2131694387, 0).a();
       HcePluginInstallActivity.a(this.this$0, false);
       this.this$0.finish();
       return;

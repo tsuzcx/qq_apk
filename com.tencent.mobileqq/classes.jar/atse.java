@@ -1,40 +1,26 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.app.QFileAppStorePromoteManager.FetchAppInfoCallback.1;
+import com.tencent.tmassistant.appinfo.aidl.GetAppInfoCallback;
+import com.tencent.tmassistant.appinfo.data.AppDetail;
+import java.util.List;
 
-class atse
-  implements View.OnClickListener
+public class atse
+  extends GetAppInfoCallback
 {
-  atse(atsd paramatsd) {}
+  atse(atrz paramatrz) {}
   
-  public void onClick(View paramView)
+  public void onGetAppInfoResponse(int paramInt1, int paramInt2, List<AppDetail> paramList)
   {
-    if (!atsd.a(this.a)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramList == null) || (paramList.size() <= 0)) {
       return;
-      if ((atvo.a()) && (athc.c() > atgz.a()))
-      {
-        atvb.a(SplashActivity.sTopActivity, 2131692321, 2131692326, new atsf(this));
-      }
-      else
-      {
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.addAll(athc.a());
-        Intent localIntent = new Intent();
-        localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
-        atsd.b(this.a, localIntent);
-      }
     }
+    ThreadManagerV2.getUIHandlerV2().post(new QFileAppStorePromoteManager.FetchAppInfoCallback.1(this, paramInt1, paramInt2, paramList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atse
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.bless;
 
-import afur;
+import agej;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import anni;
-import atwl;
+import anzj;
+import auog;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.persistence.ConflictClause;
@@ -19,7 +19,7 @@ public class BlessPtvModule
   extends Entity
 {
   public static final String DEFAULT_MODULE_ID = "0";
-  public static final String DEFAULT_MODULE_TITLE = anni.a(2131699966);
+  public static final String DEFAULT_MODULE_TITLE = anzj.a(2131700073);
   public static final String DEFAULT_VIP_LEVEL = "0";
   public static String path;
   public int audioLength;
@@ -66,13 +66,13 @@ public class BlessPtvModule
   public Drawable getPngDrawable(Activity paramActivity)
   {
     if ("0".equals(this.id)) {
-      return paramActivity.getResources().getDrawable(2130838781);
+      return paramActivity.getResources().getDrawable(2130838855);
     }
     String str = path + File.separator + this.id + File.separator + this.id + ".png";
     try
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      int i = afur.a(56.0F, paramActivity.getResources());
+      int i = agej.a(56.0F, paramActivity.getResources());
       localURLDrawableOptions.mRequestHeight = i;
       localURLDrawableOptions.mRequestWidth = i;
       paramActivity = URLDrawable.getDrawable(new File(str), localURLDrawableOptions);
@@ -91,10 +91,10 @@ public class BlessPtvModule
   {
     if (this.id == "0")
     {
-      if ((this.defaultM4aPath == null) || (!atwl.a(this.defaultM4aPath))) {}
+      if ((this.defaultM4aPath == null) || (!auog.a(this.defaultM4aPath))) {}
     }
     else {
-      while ((atwl.a(getLrcPath())) && (atwl.a(getM4aPath())) && (atwl.a(getPicPath()))) {
+      while ((auog.a(getLrcPath())) && (auog.a(getM4aPath())) && (auog.a(getPicPath()))) {
         return true;
       }
     }

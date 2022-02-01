@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.NetworkState;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class bmiu
-  implements INetEventHandler
+class bmiu
+  implements DialogInterface.OnClickListener
 {
-  public void onNetChangeEvent(boolean paramBoolean)
+  bmiu(bmim parambmim, zyf paramzyf) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("NetworkState", 1, "--onNetChangeEvent isNetEffective:" + paramBoolean);
-    NetworkState.access$000(paramBoolean);
+    this.jdField_a_of_type_Zyf.a();
+    paramDialogInterface.dismiss();
   }
 }
 

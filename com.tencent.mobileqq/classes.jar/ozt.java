@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
 
-public class ozt
-  implements View.OnClickListener
+final class ozt
+  implements tch
 {
-  public ozt(ReadInJoyCommentListView paramReadInJoyCommentListView) {}
+  ozt(Context paramContext, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    QLog.d("ReadInJoyCommentListView", 2, "loadmore comment when network not available");
-    ReadInJoyCommentListView.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
   }
 }
 

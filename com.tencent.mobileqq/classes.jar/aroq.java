@@ -1,76 +1,7 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavVideoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-
-public class aroq
-  extends arnz
-{
-  public aroq(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.qav.video", paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 10049;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return QavVideoData.class;
-  }
-  
-  public String a()
-  {
-    return "qavDownloadVideoDuration";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavVideoDownloadHandler", 2, "download success: " + paramString);
-    }
-    try
-    {
-      bgmg.a(paramString, mrs.c(), false);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QavVideoData localQavVideoData = (QavVideoData)a();
-    if ((localQavVideoData != null) && (!localQavVideoData.autoDownload))
-    {
-      localQavVideoData.autoDownload = true;
-      arnn.a(localQavVideoData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    return ((QavVideoData)a()).autoDownload;
-  }
-}
+public class aroq {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aroq
  * JD-Core Version:    0.7.0.1
  */

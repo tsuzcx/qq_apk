@@ -1,67 +1,64 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
-public class bedt
+class bedt
+  extends blpy
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  private int d;
-  public String d;
-  public String e;
-  
-  public bedt()
+  bedt(bedr parambedr, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4, List paramList, int[] paramArrayOfInt5)
   {
-    this.jdField_d_of_type_Int = 1;
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public JSONObject a()
+  public View a(int paramInt, Object paramObject, blpx paramblpx, View.OnClickListener paramOnClickListener)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("vid", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("url", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("video_md5", this.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("video_thumbe_url", this.jdField_d_of_type_JavaLangString);
-      localJSONObject.put("text", this.e);
-      localJSONObject.put("duration", this.jdField_a_of_type_Int);
-      localJSONObject.put("size", this.jdField_a_of_type_Long);
-      localJSONObject.put("width", this.jdField_b_of_type_Int);
-      localJSONObject.put("height", this.jdField_c_of_type_Int);
-      localJSONObject.put("isLocalVideo", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("takeVideoMode", this.jdField_d_of_type_Int);
-      return localJSONObject;
+    paramblpx = super.a(paramInt, paramObject, paramblpx, paramOnClickListener);
+    if (paramblpx != null) {
+      paramblpx.setTag(-10, paramObject);
     }
-    catch (JSONException localJSONException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("VideoInfo", 2, "VideoInfo: " + QLog.getStackTraceString(localJSONException));
-    }
-    return localJSONObject;
+    return paramblpx;
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt, Object paramObject, blpx[] paramArrayOfblpx)
   {
-    switch (paramInt)
+    paramInt = 0;
+    Object localObject = this.jdField_a_of_type_Bedr.a((beex)paramObject);
+    int i = ((List)localObject).size();
+    paramObject = localObject;
+    if (i > 3)
     {
-    default: 
-      this.jdField_d_of_type_Int = -1;
-      return;
-    case 1: 
-      this.jdField_d_of_type_Int = 2;
-      return;
-    case 0: 
-      this.jdField_d_of_type_Int = 1;
-      return;
+      paramObject = ((List)localObject).subList(i - 2, i);
+      paramObject.add(0, bedr.a);
     }
-    this.jdField_d_of_type_Int = 3;
+    i = Math.min(paramObject.size(), 3);
+    if (paramInt < paramArrayOfblpx.length)
+    {
+      int j;
+      if (paramInt < i)
+      {
+        localObject = (beey)paramObject.get(paramInt);
+        j = this.jdField_a_of_type_JavaUtilList.indexOf(localObject);
+        if (j < 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i(this.jdField_a_of_type_JavaLangString, 1, "getRightMenuItemInfo error, can not find the menu， menuId[" + ((beey)localObject).b() + "]");
+          }
+          paramArrayOfblpx[paramInt].b = -1;
+          paramArrayOfblpx[paramInt].a = -1;
+        }
+      }
+      for (;;)
+      {
+        paramInt += 1;
+        break;
+        paramArrayOfblpx[paramInt].b = j;
+        paramArrayOfblpx[paramInt].a = this.jdField_a_of_type_ArrayOfInt[j];
+        continue;
+        paramArrayOfblpx[paramInt].b = -1;
+        paramArrayOfblpx[paramInt].a = -1;
+      }
+    }
   }
 }
 

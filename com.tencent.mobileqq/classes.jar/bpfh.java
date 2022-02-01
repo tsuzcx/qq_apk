@@ -1,90 +1,97 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.coremedia.CMTimeRange;
+import com.tencent.tav.player.IPlayer.PlayerStatus;
+import com.tencent.tavcut.timeline.SliderChangeListener;
+import com.tencent.tavcut.util.Logger;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
 
-class bpfh
-  extends SimpleObserver<bpsf>
+public class bpfh
+  implements SliderChangeListener
 {
-  bpfh(bpff parambpff, bpsf parambpsf) {}
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void a(bpsf parambpsf)
+  public bpfh(AEEditorMvClipMenu paramAEEditorMvClipMenu) {}
+  
+  public void onIndicatorMove(float paramFloat) {}
+  
+  public void onIndicatorMove(long paramLong)
   {
-    super.onNext(parambpsf);
-    this.jdField_a_of_type_Bpff.a(5);
-    parambpsf = this.jdField_a_of_type_Bpsf.a;
-    yqp.b("EditVideoSave", "publishParam = " + parambpsf);
-    Intent localIntent1;
-    int j;
-    int i;
-    if (this.jdField_a_of_type_Bpff.jdField_a_of_type_Bpfx.getActivity() != null)
+    CMTime.convertTimeScale(CMTime.fromMs(paramLong), 1000);
+  }
+  
+  public void onIndicatorPress()
+  {
+    AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, AEEditorMvClipMenu.b(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu));
+    AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, false);
+    AEEditorMvClipMenu.b(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, true);
+  }
+  
+  public void onIndicatorRelease()
+  {
+    AEEditorMvClipMenu localAEEditorMvClipMenu = this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu;
+    if ((AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu) == IPlayer.PlayerStatus.PLAYING) || (AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu) == IPlayer.PlayerStatus.REPLAY)) {}
+    for (boolean bool = true;; bool = false)
     {
-      localIntent1 = this.jdField_a_of_type_Bpff.jdField_a_of_type_Bpfx.getActivity().getIntent();
-      if (localIntent1 == null) {
-        break label318;
-      }
-      j = localIntent1.getIntExtra("sv_total_frame_count", 0);
-      i = localIntent1.getIntExtra("sv_total_record_time", 0);
-    }
-    for (;;)
-    {
-      Intent localIntent2 = SaveVideoActivity.a(this.jdField_a_of_type_Bpff.jdField_a_of_type_Bpfx.a(), parambpsf.b, i, j, this.jdField_a_of_type_Bpff.jdField_a_of_type_Bpep.a.a());
-      bpff.a(this.jdField_a_of_type_Bpff, parambpsf.b);
-      localIntent2.putExtra("mediacodec_encode_enable", true);
-      boolean bool;
-      if (parambpsf.e != 0)
-      {
-        bool = true;
-        localIntent2.putExtra("video_edit_flag", bool);
-        if (localIntent1 != null) {
-          localIntent2.putExtra("qqstory_slide_show_scene", localIntent1.getIntExtra("qqstory_slide_show_scene", -1));
-        }
-        if (this.jdField_a_of_type_Bpff.jdField_a_of_type_Int != 47) {
-          break label296;
-        }
-        this.jdField_a_of_type_Bpff.jdField_a_of_type_Bpfx.getActivity().startActivityForResult(localIntent2, 222);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Bpff.jdField_a_of_type_Float = 5.0F;
-        this.jdField_a_of_type_Bpff.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Bpff.b = (50000.0F / (float)parambpsf.a);
-        if (this.jdField_a_of_type_Bpff.b == 0.0F) {
-          this.jdField_a_of_type_Bpff.b = 1.0F;
-        }
-        this.jdField_a_of_type_Bpff.d();
-        return;
-        bool = false;
-        break;
-        label296:
-        this.jdField_a_of_type_Bpff.jdField_a_of_type_Bpfx.getActivity().startActivityForResult(localIntent2, 111);
-      }
-      label318:
-      i = 0;
-      j = 0;
+      AEEditorMvClipMenu.a(localAEEditorMvClipMenu, bool);
+      AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, null);
+      AEEditorMvClipMenu.b(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, false);
+      return;
     }
   }
   
-  public void onCancel()
+  public void onSelectionChange(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    super.onCancel();
-    yqp.d("EditVideoSave", "saveVideo cancel !");
-    this.jdField_a_of_type_Bpff.jdField_a_of_type_Bpep.a(0);
-    this.jdField_a_of_type_Bpff.j();
-    QQToast.a(this.jdField_a_of_type_Bpff.jdField_a_of_type_Bpfx.a(), anni.a(2131702616), 0).a();
+    Object localObject1 = CMTime.convertTimeScale(CMTime.fromMs(paramLong1), 1000);
+    CMTime localCMTime = CMTime.convertTimeScale(CMTime.fromMs(paramLong2), 1000);
+    Object localObject2 = localCMTime.sub((CMTime)localObject1);
+    if (!paramBoolean)
+    {
+      if (AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu) == null) {
+        AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, AEEditorMvClipMenu.b(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu));
+      }
+      AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, false);
+      AEEditorMvClipMenu.b(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, true);
+    }
+    Logger.i("VideoDemoSlider", "onSelectionChange: seek " + this.jdField_a_of_type_Boolean + localCMTime.getTimeSeconds());
+    AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, new CMTimeRange((CMTime)localObject1, (CMTime)localObject2));
+    localObject2 = this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      AEEditorMvClipMenu.a((AEEditorMvClipMenu)localObject2, (CMTime)localObject1);
+      if (paramBoolean)
+      {
+        AEEditorMvClipMenu.b(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, false);
+        localObject1 = this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu;
+        if ((AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu) != IPlayer.PlayerStatus.PLAYING) && (AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu) != IPlayer.PlayerStatus.REPLAY)) {
+          break label224;
+        }
+      }
+    }
+    label224:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      AEEditorMvClipMenu.a((AEEditorMvClipMenu)localObject1, paramBoolean);
+      AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, null);
+      return;
+      localObject1 = localCMTime;
+      break;
+    }
   }
   
-  public void onError(@NonNull Error paramError)
+  public void onSliderBarMove(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    super.onError(paramError);
-    yqp.e("EditVideoSave", "saveVideo error ：" + paramError);
-    this.jdField_a_of_type_Bpff.jdField_a_of_type_Bpep.a(0);
-    QQToast.a(this.jdField_a_of_type_Bpff.jdField_a_of_type_Bpfx.a(), 1, anni.a(2131702525) + paramError, 0).a();
-    this.jdField_a_of_type_Bpff.j();
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onSliderBarRelease(boolean paramBoolean)
+  {
+    AEEditorMvClipMenu localAEEditorMvClipMenu = this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu;
+    if ((AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu) == IPlayer.PlayerStatus.PLAYING) || (AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu) == IPlayer.PlayerStatus.REPLAY)) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      AEEditorMvClipMenu.a(localAEEditorMvClipMenu, paramBoolean);
+      return;
+    }
   }
 }
 

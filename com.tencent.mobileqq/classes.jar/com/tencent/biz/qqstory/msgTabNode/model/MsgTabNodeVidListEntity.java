@@ -3,7 +3,7 @@ package com.tencent.biz.qqstory.msgTabNode.model;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
-import wrs;
+import wvn;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="unionId,nodeType,requestSource")
 public class MsgTabNodeVidListEntity
@@ -15,12 +15,12 @@ public class MsgTabNodeVidListEntity
   public byte[] rspData;
   public String unionId;
   
-  public static String[] getArgs(wrs paramwrs)
+  public static String[] getArgs(wvn paramwvn)
   {
-    int i = paramwrs.jdField_a_of_type_Int;
-    if (paramwrs.jdField_a_of_type_JavaLangString == null) {}
-    for (String str = "";; str = paramwrs.jdField_a_of_type_JavaLangString) {
-      return new String[] { String.valueOf(i), str, String.valueOf(paramwrs.f) };
+    int i = paramwvn.jdField_a_of_type_Int;
+    if (paramwvn.jdField_a_of_type_JavaLangString == null) {}
+    for (String str = "";; str = paramwvn.jdField_a_of_type_JavaLangString) {
+      return new String[] { String.valueOf(i), str, String.valueOf(paramwvn.f) };
     }
   }
   

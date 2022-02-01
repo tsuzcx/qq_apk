@@ -1,26 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class bbhf
-  implements Manager
+  implements GLSurfaceView.EGLContextFactory
 {
-  public static final String a;
-  public static final String b = anni.a(2131712445);
-  public static final String c = anni.a(2131712444);
-  public static final String d = anni.a(2131712447);
-  int jdField_a_of_type_Int = -1;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private int jdField_a_of_type_Int = 12440;
   
-  static
+  public bbhf(CameraCaptureView paramCameraCaptureView) {}
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    jdField_a_of_type_JavaLangString = anni.a(2131712446);
+    int i = this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 1, "createContext. display = " + paramEGLDisplay + " tid = " + Thread.currentThread().getId());
+    }
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = paramEGLConfig;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
+    return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   }
   
-  public bbhf(QQAppInterface paramQQAppInterface) {}
-  
-  public void onDestroy()
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.g();
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
+      QLog.e("CameraCaptureView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
+    }
   }
 }
 

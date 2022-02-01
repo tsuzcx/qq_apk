@@ -1,8 +1,54 @@
-public abstract interface aykz
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aykz
+  implements View.OnClickListener
 {
-  public abstract void a();
+  aykz(aykx paramaykx, String paramString) {}
   
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    bdlq localbdlq = new bdlq(this.jdField_a_of_type_Aykx.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).b("grp_lbs").c("data_card").d("nonlive_clk").e(aykx.a(this.jdField_a_of_type_Aykx).uin);
+    Object localObject;
+    if (aykx.a(this.jdField_a_of_type_Aykx).gender == 0)
+    {
+      localObject = "1";
+      localbdlq.a(new String[] { localObject }).a();
+      if (!this.jdField_a_of_type_JavaLangString.startsWith("mqqapi:")) {
+        break label188;
+      }
+      localObject = bhni.a(this.jdField_a_of_type_Aykx.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, this.jdField_a_of_type_Aykx.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+      if (localObject == null) {
+        break label157;
+      }
+      ((bhmr)localObject).a();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (aykx.a(this.jdField_a_of_type_Aykx).gender == 1)
+      {
+        localObject = "2";
+        break;
+      }
+      localObject = "0";
+      break;
+      label157:
+      QLog.i("NearbyProfileDisplayPanel", 1, "ja==null, jumpUrl=" + this.jdField_a_of_type_JavaLangString);
+      continue;
+      label188:
+      localObject = new Intent(this.jdField_a_of_type_Aykx.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aykx.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.startActivity((Intent)localObject);
+    }
+  }
 }
 
 

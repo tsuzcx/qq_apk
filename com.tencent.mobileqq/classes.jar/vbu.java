@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class vbu
-  implements View.OnClickListener
+  implements aakg
 {
-  vbu(vbt paramvbt) {}
+  vbu(vbr paramvbr) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    vbt.a(this.a).d();
-    EventCollector.getInstance().onViewClicked(paramView);
+    vbr.b(this.a, 0);
   }
+  
+  public void a(int paramInt) {}
 }
 
 

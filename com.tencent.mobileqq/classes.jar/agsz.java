@@ -1,13 +1,19 @@
-import com.dataline.util.widget.AsyncImageView;
-import com.tencent.mobileqq.customviews.MessageProgressTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class agsz
-  extends afwr
+  implements View.OnClickListener
 {
-  public AsyncImageView a;
-  public MessageProgressTextView a;
+  public agsz(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public agsz(agsw paramagsw) {}
+  public void onClick(View paramView)
+  {
+    this.a.b(paramView);
+    AIOLongShotHelper.a("0X8009DE9");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

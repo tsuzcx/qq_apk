@@ -7,17 +7,19 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import azth;
-import bcck;
-import bctj;
-import bdvz;
-import bdxz;
-import bdyf;
-import bgnt;
-import bgsp;
+import balx;
+import bcvc;
+import bdmc;
+import bews;
+import bewy;
+import bezn;
+import bezp;
+import bhnv;
+import bhsr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -174,7 +176,7 @@ public class InnerDns
   
   public static String getHostFromUrl(String paramString)
   {
-    if (bgsp.a(paramString)) {
+    if (bhsr.a(paramString)) {
       return paramString;
     }
     try
@@ -265,13 +267,13 @@ public class InnerDns
   private String getNetIdentifier()
   {
     Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    String str2 = String.valueOf(bgnt.a(localContext));
+    String str2 = String.valueOf(bhnv.a(localContext));
     String str1 = str2;
-    if (!bgsp.a(str2))
+    if (!bhsr.a(str2))
     {
       str1 = str2;
       if (str2.equals(String.valueOf(1))) {
-        str1 = azth.a(localContext);
+        str1 = balx.a(localContext);
       }
     }
     return str1;
@@ -279,7 +281,7 @@ public class InnerDns
   
   public static int getPortFromUrl(String paramString)
   {
-    if (bgsp.a(paramString)) {
+    if (bhsr.a(paramString)) {
       return -1;
     }
     try
@@ -341,10 +343,10 @@ public class InnerDns
   {
     Object localObject1 = paramString1;
     Object localObject2;
-    if (!bgsp.a(paramString2))
+    if (!bhsr.a(paramString2))
     {
       localObject1 = paramString1;
-      if (!bgsp.a(paramString1))
+      if (!bhsr.a(paramString1))
       {
         localObject2 = null;
         localObject1 = paramString1;
@@ -359,7 +361,7 @@ public class InnerDns
     }
     for (;;)
     {
-      localObject1 = bdxz.a(paramString1, (String)localObject1);
+      localObject1 = bews.a(paramString1, (String)localObject1);
       return localObject1;
       label71:
       localObject1 = localObject2;
@@ -375,7 +377,7 @@ public class InnerDns
     localHashMap.put("param_FailCode", String.valueOf(paramInt2));
     localHashMap.put("domain", paramString);
     localHashMap.put("businessType", String.valueOf(paramInt1));
-    bctj.a(BaseApplication.getContext()).a(null, "actDnsReq", paramBoolean, BaseApplicationImpl.sProcessId, 0L, localHashMap, "");
+    bdmc.a(BaseApplication.getContext()).a(null, "actDnsReq", paramBoolean, BaseApplicationImpl.sProcessId, 0L, localHashMap, "");
     if (QLog.isColorLevel()) {
       QLog.d("InnerDns", 2, "reqDnsForIpList succeeded:" + paramBoolean + " error=" + paramInt2);
     }
@@ -479,7 +481,7 @@ public class InnerDns
       }
       Object localObject2 = (DomainIp.iplistInfo)paramList.next();
       paramHashMap = ((DomainIp.iplistInfo)localObject2).string_dname.get();
-      if ((!bgsp.a(paramHashMap)) && (((DomainIp.iplistInfo)localObject2).int32_result.get() == 0))
+      if ((!bhsr.a(paramHashMap)) && (((DomainIp.iplistInfo)localObject2).int32_result.get() == 0))
       {
         int i = ((DomainIp.iplistInfo)localObject2).uint32_type.get();
         if ((i != 1) && (i != 28))
@@ -546,7 +548,7 @@ public class InnerDns
       }
       try
       {
-        if (!bgsp.a((String)localObject))
+        if (!bhsr.a((String)localObject))
         {
           if ((this.mNetMap.size() >= 3) && (!this.mNetMap.containsKey(localObject))) {
             this.mNetMap.clear();
@@ -575,7 +577,7 @@ public class InnerDns
     if ((BaseApplicationImpl.sProcessId == 1) && (!this.mIsRequestingIPDomaining))
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localQQAppInterface.startServlet(new NewIntent(localQQAppInterface.getApp(), bcck.class));
+      localQQAppInterface.startServlet(new NewIntent(localQQAppInterface.getApp(), bcvc.class));
       this.mIsRequestingIPDomaining = true;
     }
   }
@@ -707,7 +709,7 @@ public class InnerDns
     paramString2 = paramString2.replaceAll("\\[(.*)\\]", "$1");
     int i;
     boolean bool1;
-    if ((bgsp.a(paramString1)) || (bgsp.a(paramString2)) || (paramString1.equals(paramString2)))
+    if ((bhsr.a(paramString1)) || (bhsr.a(paramString2)) || (paramString1.equals(paramString2)))
     {
       i = 40;
       bool1 = false;
@@ -725,7 +727,7 @@ public class InnerDns
       ((HashMap)localObject).put("ip", paramString2);
       ((HashMap)localObject).put("businessType", String.valueOf(paramInt));
       ((HashMap)localObject).put("param_FailCode", String.valueOf(i));
-      bctj.a(BaseApplication.getContext()).a(null, "actDnsBadIp", bool1, BaseApplicationImpl.sProcessId, 0L, (HashMap)localObject, "");
+      bdmc.a(BaseApplication.getContext()).a(null, "actDnsBadIp", bool1, BaseApplicationImpl.sProcessId, 0L, (HashMap)localObject, "");
       return;
       localObject = getNetIdentifier();
       if ((this.mNetMap != null) && (this.mNetMap.containsKey(localObject)))
@@ -789,7 +791,7 @@ public class InnerDns
   
   public String reqDns(String paramString, int paramInt, boolean paramBoolean)
   {
-    if (bdvz.a()) {
+    if (bezp.a()) {
       return reqDns(paramString, paramInt, paramBoolean, 28);
     }
     return reqDns(paramString, paramInt, paramBoolean, 1);
@@ -811,7 +813,8 @@ public class InnerDns
   public ArrayList<String> reqDnsForIpList(String paramString, int paramInt)
   {
     ArrayList localArrayList = reqDnsForIpList(paramString, paramInt, true, 1, true);
-    return bdvz.a(reqDnsForIpList(paramString, paramInt, true, 28, true), localArrayList);
+    paramString = reqDnsForIpList(paramString, paramInt, true, 28, true);
+    return bezp.a().a(paramString, localArrayList, NetConnInfoCenter.getActiveNetIpFamily(true));
   }
   
   public ArrayList<String> reqDnsForIpList(String paramString, int paramInt1, boolean paramBoolean, int paramInt2)
@@ -873,7 +876,7 @@ public class InnerDns
     if (QLog.isColorLevel()) {
       QLog.d("InnerDns", 2, "reqDns, p:" + BaseApplicationImpl.sProcessId + " d:" + paramString + " b:" + paramInt + "N:" + this.mServerProcName);
     }
-    if (bgsp.a(paramString)) {
+    if (bhsr.a(paramString)) {
       return null;
     }
     if ((this.mMainProcess) || ((this.mNetMap != null) && (!this.mNetMap.isEmpty()))) {
@@ -882,13 +885,14 @@ public class InnerDns
     return getIpDataListIPC(paramString, paramInt, paramBoolean);
   }
   
-  public ArrayList<bdyf> reqSerAddrList(String paramString, int paramInt)
+  public ArrayList<bewy> reqSerAddrList(String paramString, int paramInt)
   {
     ArrayList localArrayList = reqSerAddrList(paramString, paramInt, 1);
-    return bdvz.a(reqSerAddrList(paramString, paramInt, 28), localArrayList);
+    paramString = reqSerAddrList(paramString, paramInt, 28);
+    return bezp.a().a(paramString, localArrayList, NetConnInfoCenter.getActiveNetIpFamily(true));
   }
   
-  public ArrayList<bdyf> reqSerAddrList(String paramString, int paramInt1, int paramInt2)
+  public ArrayList<bewy> reqSerAddrList(String paramString, int paramInt1, int paramInt2)
   {
     Object localObject = reqIpDataList(paramString, paramInt1, true);
     if (localObject != null)
@@ -900,14 +904,14 @@ public class InnerDns
         IpData localIpData = (IpData)((Iterator)localObject).next();
         if (localIpData.mType == paramInt2)
         {
-          bdyf localbdyf = new bdyf();
-          localbdyf.jdField_a_of_type_JavaLangString = localIpData.mIp;
-          localbdyf.jdField_a_of_type_Int = localIpData.mPort;
+          bewy localbewy = new bewy();
+          localbewy.jdField_a_of_type_JavaLangString = localIpData.mIp;
+          localbewy.jdField_a_of_type_Int = localIpData.mPort;
           if (paramInt2 == 28) {}
           for (boolean bool = true;; bool = false)
           {
-            localbdyf.jdField_a_of_type_Boolean = bool;
-            paramString.add(localbdyf);
+            localbewy.jdField_a_of_type_Boolean = bool;
+            paramString.add(localbewy);
             break;
           }
         }

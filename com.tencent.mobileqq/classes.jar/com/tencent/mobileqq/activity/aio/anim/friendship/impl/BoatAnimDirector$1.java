@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.anim.friendship.impl;
 
-import agco;
+import agmo;
 import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
 public class BoatAnimDirector$1
   implements Runnable
 {
-  public BoatAnimDirector$1(agco paramagco, FriendShipWaveView paramFriendShipWaveView) {}
+  public BoatAnimDirector$1(agmo paramagmo, FriendShipWaveView paramFriendShipWaveView) {}
   
   public void run()
   {

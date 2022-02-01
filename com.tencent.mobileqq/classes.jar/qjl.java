@@ -1,13 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class qjl
-  implements ViewBase.IBuilder
+class qjl
+  implements PopupWindow.OnDismissListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  qjl(qjh paramqjh, blms paramblms) {}
+  
+  public void onDismiss()
   {
-    return new qji(paramVafContext);
+    this.jdField_a_of_type_Blms.a(1.0F);
+    if (this.jdField_a_of_type_Qjh.a.b)
+    {
+      rvy localrvy = this.jdField_a_of_type_Qjh.a.a();
+      if (localrvy != null)
+      {
+        localrvy.c();
+        this.jdField_a_of_type_Qjh.a.b = false;
+      }
+    }
   }
 }
 

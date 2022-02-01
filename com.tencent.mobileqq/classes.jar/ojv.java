@@ -1,13 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ojv
-  implements bkhy
+  implements View.OnClickListener
 {
-  public ojv(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public ojv(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    ReadInJoySettingActivity.b(this.a).cancel();
+    ReadInJoyChannelActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,31 +1,32 @@
 import android.view.View;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.AdapterView;
+import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import org.jetbrains.annotations.NotNull;
 
-public class bakl
-  implements bkil
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileTitleHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "profileTitleItem", "Landroid/widget/TextView;", "getProfileTitleItem", "()Landroid/widget/TextView;", "setProfileTitleItem", "(Landroid/widget/TextView;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bakl
+  extends RecyclerView.ViewHolder
 {
-  public bakl(IosTimepicker paramIosTimepicker) {}
+  @NotNull
+  private TextView a;
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public bakl(@NotNull View paramView)
   {
-    IosTimepicker.a(this.a, paramView, 1);
-    if (paramView.getTag() != null)
-    {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
-      {
-        if (i != paramInt) {
-          IosTimepicker.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-        }
-        paramInt += 1;
-      }
+    super(paramView);
+    paramView = paramView.findViewById(2131373033);
+    if (paramView == null) {
+      throw new TypeCastException("null cannot be cast to non-null type android.widget.TextView");
     }
+    this.a = ((TextView)paramView);
   }
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  @NotNull
+  public final TextView a()
+  {
+    return this.a;
+  }
 }
 
 

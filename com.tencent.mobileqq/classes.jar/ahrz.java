@@ -1,25 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.VideoListener.1;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class ahrz
-  implements VideoDrawable.OnPlayRepeatListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public AIOGalleryAdapter a;
+  public ahrz(SixCombolEffectView paramSixCombolEffectView, ahso paramahso) {}
   
-  public ahrz(AIOGalleryAdapter paramAIOGalleryAdapter)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a = paramAIOGalleryAdapter;
-  }
-  
-  public void onPlayRepeat(int paramInt)
-  {
-    if (paramInt != 1) {
-      return;
+    this.jdField_a_of_type_Ahso.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.jdField_a_of_type_Ahso.b) && (this.jdField_a_of_type_Ahso.a < 0.52F)) {
+      this.jdField_a_of_type_Ahso.b = true;
     }
-    new Handler(Looper.getMainLooper()).post(new AIOGalleryAdapter.VideoListener.1(this));
   }
 }
 

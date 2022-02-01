@@ -1,110 +1,83 @@
-import android.media.MediaFormat;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Iterator;
+import java.util.List;
 
 public class bchx
+  extends bcia
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  public boolean a;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  public boolean b;
-  public boolean c;
-  boolean d;
-  boolean e;
-  boolean f;
-  boolean g;
+  private List<PhoneContact> a;
   
-  public bchx(SVHwEncoder.HwEncode paramHwEncode) {}
-  
-  public void a()
+  public bchx(aoof paramaoof, bcie parambcie, List<PhoneContact> paramList)
   {
-    a("releaseMuxer[resetValidData]");
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = false;
-    this.d = false;
-    this.e = false;
-    this.f = false;
-    this.g = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
+    super(paramaoof, parambcie);
+    this.a = paramList;
   }
   
-  public void a(MediaFormat paramMediaFormat)
+  public void b(bcfr parambcfr, bcnz parambcnz)
   {
-    if ((paramMediaFormat.containsKey("csd-0")) && (paramMediaFormat.containsKey("csd-1"))) {
-      this.d = true;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SVHwEncoder", 2, paramString + ": mHasKeyFrame=" + this.jdField_a_of_type_Boolean + " mVideoFirst=" + this.jdField_b_of_type_Boolean + " mFirstIsKey=" + this.c + " mVideoConfigOK=" + this.d + " mAudioConfigOK=" + this.e + " mVideoMuxeredframeCount=" + SVHwEncoder.HwEncode.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mAudioMuxeredframeCount=" + SVHwEncoder.HwEncode.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mVideoOrderError=" + this.f + " mAudioOrderError=" + this.g + " mVideoOrderErrorCnt=" + this.jdField_a_of_type_Int + " mAudioOrderErrorCnt=" + this.jdField_b_of_type_Int);
-    }
-  }
-  
-  boolean a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("releaseMuxer[audioSpecOK]", "mNeedEncodeAudio=" + SVHwEncoder.HwEncode.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mAudioConfigOK=" + this.e);
-    if (SVHwEncoder.HwEncode.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode)) {
-      return this.e;
-    }
-    return true;
-  }
-  
-  public boolean a(long paramLong, boolean paramBoolean)
-  {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (paramBoolean)
+    boolean bool = true;
+    super.b(parambcfr, parambcnz);
+    int i;
+    int j;
+    if (parambcnz.c() != null)
     {
-      if (this.jdField_a_of_type_Long <= paramLong) {
-        break label83;
+      parambcfr = (bcej)parambcfr;
+      if (this.a != null)
+      {
+        Iterator localIterator = this.a.iterator();
+        i = 0;
+        j = i;
+        if (!localIterator.hasNext()) {
+          break label101;
+        }
+        if (((PhoneContact)localIterator.next()).contactID != parambcfr.a.contactID) {
+          break label197;
+        }
+        parambcnz.c().setText(anzj.a(2131701425));
+        i = 1;
       }
-      this.f = true;
-      this.jdField_a_of_type_Int += 1;
     }
-    label83:
-    for (paramBoolean = bool1;; paramBoolean = false)
+    label191:
+    label197:
+    for (;;)
     {
-      this.jdField_a_of_type_Long = paramLong;
-      return paramBoolean;
-      if (this.jdField_b_of_type_Long > paramLong)
+      break;
+      j = 0;
+      label101:
+      if (!TextUtils.isEmpty(parambcfr.c()))
       {
-        this.g = true;
-        this.jdField_b_of_type_Int += 1;
+        parambcnz.c().setText(parambcfr.c());
+        j = 1;
       }
-      for (paramBoolean = bool2;; paramBoolean = false)
+      parambcfr = parambcnz.c();
+      if (j != 0)
       {
-        this.jdField_b_of_type_Long = paramLong;
-        return paramBoolean;
+        i = 0;
+        parambcfr.setVisibility(i);
+        parambcfr = parambcnz.a();
+        if (j != 0) {
+          break label191;
+        }
+      }
+      for (;;)
+      {
+        parambcfr.setClickable(bool);
+        if (parambcnz.a() != null) {
+          parambcnz.a().setVisibility(8);
+        }
+        return;
+        i = 8;
+        break;
+        bool = false;
       }
     }
   }
   
-  public void b(MediaFormat paramMediaFormat)
-  {
-    if (paramMediaFormat.containsKey("csd-0")) {
-      this.e = true;
-    }
-  }
-  
-  boolean b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("releaseMuxer[videoSpecOK]", "mNeedEncodeVideo=" + SVHwEncoder.HwEncode.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mVideoConfigOK=" + this.d);
-    return (!SVHwEncoder.HwEncode.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode)) || ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.c) && (this.d) && (!this.f));
-  }
-  
-  public boolean c()
-  {
-    return (a()) && (b());
-  }
+  public void d(bcfr parambcfr, bcnz parambcnz) {}
 }
 
 

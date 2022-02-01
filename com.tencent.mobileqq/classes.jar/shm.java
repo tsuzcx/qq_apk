@@ -1,18 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import kotlin.Metadata;
+import com.tencent.widget.AbsListView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"}, k=3, mv={1, 1, 16})
-final class shm
-  implements View.OnTouchListener
+class shm
+  extends pmr
 {
-  shm(shi paramshi) {}
-  
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  shm(shl paramshl, String paramString, AbsListView paramAbsListView, int paramInt)
   {
-    shi.a(this.a);
-    return true;
+    super(paramString);
+  }
+  
+  public void a(pmk parampmk)
+  {
+    parampmk.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
   }
 }
 

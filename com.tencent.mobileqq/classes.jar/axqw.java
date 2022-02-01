@@ -1,304 +1,251 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage.1;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage.3;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.RemoteCallbackList;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class axqw
-  extends abgb
+  extends axqt
 {
-  protected Context a;
-  public PicInfo a;
-  int e;
-  
-  public axqw(Context paramContext, PicInfo paramPicInfo)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo = paramPicInfo;
-  }
+  public axqw(QQPlayerService paramQQPlayerService) {}
   
   public int a()
   {
-    return this.e;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayState");
+    }
+    return QQPlayerService.a();
   }
   
-  public View a(int paramInt, Handler paramHandler, axqy paramaxqy)
+  public Intent a()
   {
-    File localFile = null;
-    URL localURL = null;
-    URLDrawable localURLDrawable = null;
-    boolean bool2 = true;
-    URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo == null) {
-      return localURLImageView;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayBarIntent ");
     }
-    Object localObject1;
-    Object localObject3;
-    label258:
-    long l;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c))
-    {
-      localObject1 = URLDrawable.getDrawable(new File(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c), null);
-      localObject3 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject1);
-      ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject1);
-      ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
-      ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
-      ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = true;
-      ((URLDrawable.URLDrawableOptions)localObject3).mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c)) {
-        localObject1 = localURLDrawable;
-      }
+    return QQPlayerService.a();
+  }
+  
+  public Bundle a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getExtras ");
     }
-    else
-    {
-      try
-      {
-        localFile = new File(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c);
-        localObject1 = localURLDrawable;
-        localURL = localFile.toURL();
-        localObject1 = localURLDrawable;
-        localURLDrawable = URLDrawable.getDrawable(new URL("nearbylocalimage", localURL.getAuthority(), localURL.getFile()), (URLDrawable.URLDrawableOptions)localObject3);
-        localObject1 = localURLDrawable;
-        localURLImageView.setImageDrawable(localURLDrawable);
-        localObject1 = localURLDrawable;
-        if (!localFile.exists()) {
-          break label441;
-        }
-        localObject1 = localURLDrawable;
-        bool1 = localFile.isFile();
-        if (!bool1) {
-          break label441;
-        }
-        bool1 = true;
-        localObject1 = localURLDrawable;
-      }
-      catch (MalformedURLException localMalformedURLException1)
-      {
-        for (;;)
-        {
-          label315:
-          if (QLog.isDevelopLevel()) {
-            localMalformedURLException1.printStackTrace();
-          }
-          bool1 = false;
-        }
-      }
-      if ((localObject1 == null) || (((URLDrawable)localObject1).getStatus() == 1) || (((URLDrawable)localObject1).getStatus() == 2) || (((URLDrawable)localObject1).getStatus() == 4)) {
-        break label627;
-      }
-      localURLImageView.setURLDrawableDownListener(new axqx(this, paramaxqy, paramInt));
-      if (!bool1) {
-        break label619;
-      }
-      l = 1000L;
-      paramHandler.postDelayed(new PicBrowserImage.3(this, (URLDrawable)localObject1, paramaxqy, paramInt), l);
+    return QQPlayerService.a();
+  }
+  
+  public SongInfo a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSong");
     }
-    for (;;)
-    {
-      label441:
-      Object localObject2;
-      for (;;)
-      {
-        return localURLImageView;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.b))
-        {
-          String str = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.b.replaceFirst("http", "nearbyimage");
-          if (bdsh.b(str))
-          {
-            localObject3 = URLDrawable.getDrawable(str, null);
-            localObject1 = localObject3;
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.i("PicBrowser", 2, "PicBrowserGalleryAdapter getView loadingDrawble is: " + str);
-            localObject1 = localObject3;
-            break;
-          }
-          localObject1 = bdzx.a;
-          break;
-        }
-        localObject1 = bdzx.a;
-        break;
-        bool1 = false;
-        localObject1 = localURLDrawable;
-        break label258;
-        localObject2 = localURL;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a))
-        {
-          localObject1 = localFile;
-          try
-          {
-            localObject2 = bdwn.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a);
-            localObject1 = localFile;
-            this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a = ((URL)localObject2).toString();
-            localObject1 = localFile;
-            localObject2 = URLDrawable.getDrawable((URL)localObject2, (URLDrawable.URLDrawableOptions)localObject3);
-            localObject1 = localObject2;
-            ((URLDrawable)localObject2).setDownloadListener(new axbq(this.jdField_a_of_type_AndroidContentContext, "actNearbyPicBrowser"));
-            localObject1 = localObject2;
-            localURLImageView.setImageDrawable((Drawable)localObject2);
-            localObject1 = localObject2;
-            bool1 = bdsh.b(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a);
-            localObject1 = localObject2;
-          }
-          catch (MalformedURLException localMalformedURLException2)
-          {
-            localObject2 = localObject1;
-            if (QLog.isDevelopLevel())
-            {
-              localMalformedURLException2.printStackTrace();
-              localObject2 = localObject1;
-            }
-          }
-        }
-      }
-      bool1 = false;
-      localObject1 = localObject2;
-      break label258;
-      label619:
-      l = 300L;
-      break label315;
-      label627:
-      if (localObject1 != null) {
-        break label643;
-      }
-      paramaxqy.a(paramInt, false);
+    return QQPlayerService.b();
+  }
+  
+  public String a()
+  {
+    return QQPlayerService.a();
+  }
+  
+  public String a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : generateToken : callerType=" + paramInt + ",id=" + paramString);
     }
-    label643:
-    if (((URLDrawable)localObject1).getStatus() == 1) {}
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      paramaxqy.a(paramInt, bool1);
-      break;
-    }
+    return QQPlayerService.a(paramInt, paramString);
   }
   
   public void a()
   {
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo != null) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : pause");
     }
+    QQPlayerService.a(this.a);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : setPlayMode");
+    }
+    QQPlayerService.a(paramInt);
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : setPlayBarIntent: " + paramIntent.toString());
+    }
+    QQPlayerService.a(paramIntent);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : setExtras ");
+    }
+    QQPlayerService.a(paramBundle);
+  }
+  
+  public void a(axqp paramaxqp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : registerCallback");
+    }
+    if (paramaxqp == null) {
+      return;
+    }
+    if (QQPlayerService.a(this.a) == null) {}
     try
     {
-      localObject = bdwn.a((String)localObject);
-      if (localObject != null)
-      {
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo;
-        localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
-        ((URLDrawable)localObject).setDownloadListener(new axbq(this.jdField_a_of_type_AndroidContentContext));
-        ThreadManager.postImmediately(new PicBrowserImage.1(this, (URLDrawable)localObject), null, true);
+      if (QQPlayerService.a(this.a) == null) {
+        QQPlayerService.a(this.a, new RemoteCallbackList());
       }
+      QQPlayerService.a(this.a).register(paramaxqp);
       return;
     }
-    catch (Exception localException) {}
+    finally {}
   }
   
-  public void a(View paramView, int paramInt, axqy paramaxqy)
+  public void a(String paramString, SongInfo[] paramArrayOfSongInfo, int paramInt)
   {
-    paramView = (URLImageView)paramView;
-    URLDrawable localURLDrawable = (URLDrawable)paramView.getDrawable();
-    if (localURLDrawable == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : startPlay sCallback = " + QQPlayerService.a() + ",startIndex" + paramInt);
     }
-    if ((localURLDrawable.getStatus() != 1) && (localURLDrawable.getStatus() != 2))
+    if (QQPlayerService.a() != null)
     {
-      int i = localURLDrawable.getProgress();
-      if (i > 0) {
-        paramaxqy.b(paramInt, i / 100);
-      }
-      paramView.setMinimumHeight(10);
-      paramView.setMinimumWidth(10);
-      return;
+      QQPlayerService.a(QQPlayerService.a());
+      QQPlayerService.b(null);
     }
-    if (localURLDrawable.getStatus() == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramaxqy.a(paramInt, bool);
-      break;
-    }
+    QQPlayerService.a(this.a, paramString, paramArrayOfSongInfo, paramInt);
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public Drawable c()
+  public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo == null) {
-      return null;
+    return QQPlayerService.a();
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : isPlayingMySong : token=" + paramString);
     }
-    Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = bdzx.a;
-    ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = bdzx.a;
-    ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = true;
-    ((URLDrawable.URLDrawableOptions)localObject1).mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c)) {}
-    for (;;)
-    {
-      Object localObject4;
-      Object localObject2;
-      try
-      {
-        localObject1 = URLDrawable.getDrawable(new File(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c).toURL(), (URLDrawable.URLDrawableOptions)localObject1);
-        localObject4 = b();
-        if ((localObject1 == null) || (localObject4 == null)) {
-          break;
-        }
-        this.e = a((Rect)localObject4, (Drawable)localObject1);
-        if (QLog.isColorLevel()) {
-          QLog.d("PicBrowser", 2, "getAnimationDrawable ,cutValue = " + this.e);
-        }
-        return localObject1;
-      }
-      catch (MalformedURLException localMalformedURLException1)
-      {
-        if (QLog.isDevelopLevel()) {
-          localMalformedURLException1.printStackTrace();
-        }
-        localObject2 = null;
-        continue;
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.b)) {
-        try
-        {
-          localObject4 = new URL(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.b);
-          localObject4 = new URL("nearbyimage", ((URL)localObject4).getAuthority(), ((URL)localObject4).getFile());
-          if (bdsh.b(((URL)localObject4).toString()))
-          {
-            localObject2 = URLDrawable.getDrawable((URL)localObject4, (URLDrawable.URLDrawableOptions)localObject2);
-            continue;
-          }
-          localObject4 = new URL(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a);
-          localObject2 = URLDrawable.getDrawable(new URL("nearbyimage", ((URL)localObject4).getAuthority(), ((URL)localObject4).getFile()), (URLDrawable.URLDrawableOptions)localObject2);
-        }
-        catch (MalformedURLException localMalformedURLException2)
-        {
-          if (QLog.isDevelopLevel()) {
-            localMalformedURLException2.printStackTrace();
-          }
-        }
-      } else {
-        Object localObject3 = null;
-      }
+    return QQPlayerService.a(paramString);
+  }
+  
+  public SongInfo[] a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayList");
+    }
+    return QQPlayerService.a();
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayMode");
+    }
+    return QQPlayerService.b();
+  }
+  
+  public SongInfo b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getNextSong");
+    }
+    return QQPlayerService.c();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : resume");
+    }
+    QQPlayerService.b(this.a);
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : seekTo " + paramInt);
+    }
+    QQPlayerService.b(paramInt);
+  }
+  
+  public void b(axqp paramaxqp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : unRegisterCallback");
+    }
+    if ((paramaxqp != null) && (QQPlayerService.a(this.a) != null)) {
+      QQPlayerService.a(this.a).unregister(paramaxqp);
     }
   }
   
-  public void c() {}
+  public int c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getDuration");
+    }
+    return QQPlayerService.d();
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : stop");
+    }
+    QQPlayerService.c(this.a);
+  }
+  
+  public int d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSongPosition");
+    }
+    return QQPlayerService.e();
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : playNext");
+    }
+    QQPlayerService.b(this.a);
+  }
+  
+  public int e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSongIndex");
+    }
+    return QQPlayerService.g();
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : playPrev");
+    }
+    QQPlayerService.a(this.a);
+  }
+  
+  public int f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayListCount");
+    }
+    return QQPlayerService.c();
+  }
+  
+  public int g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentPlayPosition");
+    }
+    return QQPlayerService.f();
+  }
 }
 
 

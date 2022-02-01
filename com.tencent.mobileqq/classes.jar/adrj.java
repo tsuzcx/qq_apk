@@ -1,22 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class adrj
-  implements DialogInterface.OnClickListener
+public class adrj
+  implements View.OnClickListener
 {
-  adrj(adsy paramadsy, adsx paramadsx) {}
+  public adrj(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Adsy.a) {
-      bcst.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
-    }
-    if (this.jdField_a_of_type_Adsx != null) {
-      this.jdField_a_of_type_Adsx.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    this.a.i();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

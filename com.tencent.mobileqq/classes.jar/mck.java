@@ -1,12 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.SeekBar;
+import com.tencent.av.ui.BeautyToolbar;
 
-public final class mck
-  implements DialogInterface.OnClickListener
+public class mck
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public mck(BeautyToolbar paramBeautyToolbar) {}
+  
+  public void onGlobalLayout()
   {
-    paramDialogInterface.dismiss();
+    if ((this.a.mIs1stShow) && (this.a.mSeek != null) && (this.a.mSeek.getWidth() > 0))
+    {
+      this.a.mIs1stShow = false;
+      this.a.updateTip(this.a.mSeek.getProgress());
+    }
   }
 }
 

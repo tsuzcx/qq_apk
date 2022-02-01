@@ -1,127 +1,71 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.opengl.GLES20;
-import android.os.Handler;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.avgame.gameroom.video.AVGameBusinessVideoLayer.1;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.RectF;
+import android.view.View;
 
-@TargetApi(18)
 public class nck
-  extends ncz
+  implements nci
 {
-  private ngq a = new ngq(paramContext, this);
+  protected nbp a;
+  protected ncj a;
   
-  public nck(Context paramContext, AVGameAppInterface paramAVGameAppInterface)
+  public nck(ncj paramncj)
   {
-    super(paramContext, paramAVGameAppInterface);
+    this.jdField_a_of_type_Ncj = paramncj;
   }
   
-  private boolean a(long paramLong)
+  public int a()
   {
-    Iterator localIterator = this.b.iterator();
-    boolean bool = false;
-    if (localIterator.hasNext())
-    {
-      nan localnan = (nan)localIterator.next();
-      if ((localnan.jdField_a_of_type_Long != paramLong) || (localnan.jdField_a_of_type_Boolean)) {
-        break label60;
-      }
-      bool = true;
-    }
-    label60:
-    for (;;)
-    {
-      break;
-      return bool;
-    }
+    return this.jdField_a_of_type_Ncj.a();
   }
   
-  public nbo a()
+  public View a()
   {
-    return this.a;
+    return this.jdField_a_of_type_Ncj.a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Ncj.a();
+  }
+  
+  public void a(RectF paramRectF)
+  {
+    this.jdField_a_of_type_Ncj.a(paramRectF);
   }
   
   public void a(String paramString)
   {
-    super.a(paramString);
-    if (this.c) {
-      return;
-    }
-    bcst.b(null, "dc00898", "", "", "0X800B0F6", "0X800B0F6", 0, 0, "", "", "", "");
-    this.a.a(paramString);
+    this.jdField_a_of_type_Ncj.a(paramString);
   }
   
-  public void a(List<nan> paramList)
+  public void a(String paramString1, Bitmap paramBitmap1, String paramString2, long paramLong1, long paramLong2, long paramLong3, Bitmap paramBitmap2, long paramLong4, boolean paramBoolean)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    synchronized (this.b)
-    {
-      this.b.clear();
-      this.b.addAll(paramList);
-      bjcq.d("AVGameBusinessVideoLayer", "onMemberVideoDisplayInfoUpdate infoList:=" + Arrays.toString(paramList.toArray()));
-      neq.a().b().post(new AVGameBusinessVideoLayer.1(this));
-      return;
-    }
+    this.jdField_a_of_type_Ncj.a(paramString1, paramBitmap1, paramString2, paramLong1, paramLong2, paramLong3, paramBitmap2, paramLong4, paramBoolean);
   }
   
-  public void a(nbn paramnbn)
+  public void a(String paramString, RectF paramRectF, int paramInt)
   {
-    this.a.a(paramnbn);
+    this.jdField_a_of_type_Ncj.a(paramString, paramRectF, paramInt);
+  }
+  
+  public void a(nbp paramnbp)
+  {
+    this.jdField_a_of_type_Nbp = paramnbp;
+  }
+  
+  public void b(RectF paramRectF)
+  {
+    this.jdField_a_of_type_Ncj.b(paramRectF);
   }
   
   public void b(String paramString)
   {
-    super.b(paramString);
-    if (this.c) {
-      return;
-    }
-    this.a.b(paramString);
+    this.jdField_a_of_type_Ncj.b(paramString);
   }
   
-  protected void f(lpx paramlpx)
+  public void b(String paramString, RectF paramRectF, int paramInt)
   {
-    if (this.a.a())
-    {
-      this.a.a(paramlpx);
-      return;
-    }
-    GLES20.glBindFramebuffer(36160, 0);
-    GLES20.glViewport(0, 0, paramlpx.a(), paramlpx.b());
-    super.f(paramlpx);
-    this.a.g();
-  }
-  
-  public void g(lpx paramlpx)
-  {
-    super.f(paramlpx);
-  }
-  
-  public void l()
-  {
-    super.l();
-  }
-  
-  public void m()
-  {
-    super.m();
-    this.a.c();
-  }
-  
-  public void n()
-  {
-    super.n();
-    this.a.d();
-  }
-  
-  public void o()
-  {
-    super.o();
-    this.a.h();
+    this.jdField_a_of_type_Ncj.b(paramString, paramRectF, paramInt);
   }
 }
 

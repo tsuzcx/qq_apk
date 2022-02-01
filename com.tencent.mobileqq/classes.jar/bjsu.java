@@ -1,31 +1,26 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import com.tencent.qqconnect.wtlogin.Login;
-
 public class bjsu
-  implements TextWatcher
 {
-  public bjsu(Login paramLogin) {}
+  private android.webkit.CookieManager jdField_a_of_type_AndroidWebkitCookieManager = android.webkit.CookieManager.getInstance();
+  private com.tencent.smtt.sdk.CookieManager jdField_a_of_type_ComTencentSmttSdkCookieManager = com.tencent.smtt.sdk.CookieManager.getInstance();
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(String paramString1, String paramString2)
   {
-    if (paramInt3 < 2)
-    {
-      this.a.jdField_b_of_type_Boolean = false;
-      if (paramCharSequence.length() == 0) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
-      }
+    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
+      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie(paramString1, paramString2);
     }
-    else
-    {
-      return;
+    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
+      this.jdField_a_of_type_AndroidWebkitCookieManager.setCookie(paramString1, paramString2);
     }
-    this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
+      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setAcceptCookie(paramBoolean);
+    }
+    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
+      this.jdField_a_of_type_AndroidWebkitCookieManager.setAcceptCookie(paramBoolean);
+    }
   }
 }
 

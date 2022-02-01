@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.lbs.BusinessBuff;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class bbyi
-  implements Parcelable.Creator<BusinessBuff>
+class bbyi
+  implements View.OnTouchListener
 {
-  public BusinessBuff a(Parcel paramParcel)
-  {
-    return new BusinessBuff(paramParcel);
-  }
+  bbyi(bbyf parambbyf) {}
   
-  public BusinessBuff[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new BusinessBuff[paramInt];
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

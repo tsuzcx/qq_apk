@@ -1,24 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
 
-class albq
-  implements View.OnTouchListener
+public class albq
 {
-  albq(albp paramalbp) {}
+  public int a;
+  public BaseHbFragment a;
+  public String a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public albq(int paramInt, String paramString, BaseHbFragment paramBaseHbFragment)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      paramView.setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(1.0F);
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment = paramBaseHbFragment;
   }
 }
 

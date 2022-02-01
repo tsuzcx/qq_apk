@@ -1,56 +1,191 @@
-import android.content.BroadcastReceiver;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.media.AudioManager;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtAppReceiver;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import org.json.JSONObject;
 
 public class acts
-  extends BroadcastReceiver
+  extends VasWebviewJsPlugin
 {
-  private acts(GdtVideoCommonView paramGdtVideoCommonView) {}
+  private GdtAppReceiver a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public acts()
   {
-    boolean bool2 = true;
-    if (GdtVideoCommonView.d(this.a))
+    this.mPluginNameSpace = "qq_gdt_ad";
+    if (a() != null) {}
+    for (Object localObject = a();; localObject = BaseApplicationImpl.getApplication())
     {
-      GdtVideoCommonView.c(this.a, false);
-      QLog.i("GdtVideoCommonView", 1, "SilentModeReceiver first auto called! so skip!");
-    }
-    while ((GdtVideoCommonView.a(this.a) == null) || (!"android.media.RINGER_MODE_CHANGED".equalsIgnoreCase(paramIntent.getAction()))) {
+      acwf.a().a((Context)localObject, new acwg());
       return;
     }
-    int i = GdtVideoCommonView.a(this.a).getRingerMode();
-    int j = GdtVideoCommonView.a(this.a).getStreamVolume(3);
-    QLog.i("GdtVideoCommonView", 1, "system context mode: " + i);
-    switch (i)
-    {
-    default: 
-      this.a.b = true;
-      GdtVideoCommonView.d(this.a, false);
-      GdtVideoCommonView.a(this.a).setOutputMute(true);
-      bool1 = bool2;
-      GdtVideoCommonView.a(this.a, j, this.a.a, false, bool1);
+  }
+  
+  private void a()
+  {
+    if ((this.a != null) || (this.mRuntime == null)) {
       return;
     }
-    this.a.b = false;
-    if (j > 0) {
-      GdtVideoCommonView.d(this.a, true);
+    acvc.b("GdtAdWebPlugin", "registerReceiverForApp");
+    this.a = new GdtAppReceiver();
+    this.a.register(a());
+  }
+  
+  private void b()
+  {
+    if ((this.a == null) || (this.mRuntime == null)) {
+      return;
     }
-    paramContext = GdtVideoCommonView.a(this.a);
-    if (!GdtVideoCommonView.e(this.a)) {}
-    for (boolean bool1 = true;; bool1 = false)
+    acvc.b("GdtAdWebPlugin", "unregisterReceiverForApp");
+    this.a.unregister(a());
+    this.a = null;
+  }
+  
+  public Activity a()
+  {
+    if (this.mRuntime != null) {}
+    for (Activity localActivity1 = this.mRuntime.a();; localActivity1 = null)
     {
-      paramContext.setOutputMute(bool1);
-      bool1 = bool2;
-      if (!GdtVideoCommonView.e(this.a)) {
-        break;
+      Activity localActivity2 = localActivity1;
+      if ((localActivity1 instanceof BasePluginActivity)) {
+        localActivity2 = ((BasePluginActivity)BasePluginActivity.class.cast(localActivity1)).getOutActivity();
       }
-      bool1 = false;
-      break;
+      return localActivity2;
     }
+  }
+  
+  public GdtAppReceiver a()
+  {
+    return this.a;
+  }
+  
+  public String a()
+  {
+    Activity localActivity = a();
+    if (localActivity == null) {}
+    while (!(localActivity instanceof QQBrowserActivity)) {
+      return null;
+    }
+    return ((QQBrowserActivity)QQBrowserActivity.class.cast(localActivity)).getCurrentUrl();
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    paramJsBridgeListener = null;
+    try
+    {
+      paramString1 = new JSONObject(paramVarArgs[0]).optString("callback");
+      if ("loadAdDemo".equals(paramString3))
+      {
+        paramJsBridgeListener = actr.a().a(5);
+        if (paramJsBridgeListener != null) {
+          paramJsBridgeListener.a(this, paramString1, paramVarArgs);
+        }
+        return true;
+      }
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        acvc.d("GdtAdWebPlugin", "GdtAdWebPlugin handleJsCallRequest error ", paramString1);
+        paramString1 = null;
+        continue;
+        if ("getLocation".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(4);
+        }
+        else if ("getDeviceId".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(7);
+        }
+        else if ("getMacAddress".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(8);
+        }
+        else if ("getCarrier".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(9);
+        }
+        else if ("getNetType".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(10);
+        }
+        else if ("getOSVersion".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(11);
+        }
+        else if ("handleClick".equals(paramString3))
+        {
+          a();
+          paramJsBridgeListener = actr.a().a(12);
+        }
+        else if ("showBanner".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(13);
+        }
+        else if ("showInterstitial".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(19);
+        }
+        else if ("showInterstitialForJS".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(20);
+        }
+        else if ("getDeviceInfo".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(14);
+        }
+        else if ("c2sReport".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(15);
+        }
+        else if ("openMotiveVideoAd".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(16);
+        }
+        else if ("getUserInfo".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(17);
+        }
+        else if ("preLoadAfterAdLoaded".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(18);
+        }
+        else if ("getCanvasJson".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(21);
+        }
+        else if ("getAdInfo".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(22);
+        }
+        else if ("handleRewardVideoClick".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(23);
+        }
+        else if ("launchAppWithDeeplink".equals(paramString3))
+        {
+          paramJsBridgeListener = actr.a().a(24);
+        }
+      }
+    }
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    acvc.b("GdtAdWebPlugin", String.format("onActivityResult requestCode:%d resultCode:%d", new Object[] { Byte.valueOf(paramByte), Integer.valueOf(paramInt) }));
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    b();
   }
 }
 

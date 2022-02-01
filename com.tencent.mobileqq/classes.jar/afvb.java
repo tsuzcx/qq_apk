@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-final class afvb
-  implements afvp
+public class afvb
+  implements View.OnTouchListener
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  public afvb(TroopMemberListActivity paramTroopMemberListActivity, InputMethodManager paramInputMethodManager) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 57);
-    paramQQAppInterface.h = paramSessionInfo.d;
-    return paramQQAppInterface;
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

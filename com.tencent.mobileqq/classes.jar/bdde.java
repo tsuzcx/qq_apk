@@ -1,39 +1,23 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.shadow.dynamic.host.DynamicPluginManager;
-import com.tencent.shadow.dynamic.host.EnterCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bdde
-  implements bddd
+class bdde
+  implements View.OnClickListener
 {
-  private final DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
-  private final String jdField_a_of_type_JavaLangString = "shadow::PluginManagerWrapper";
-  private final String b;
+  bdde(bdcy parambdcy) {}
   
-  public bdde(String paramString, DynamicPluginManager paramDynamicPluginManager)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = paramDynamicPluginManager;
-    this.b = paramString;
-  }
-  
-  public void enter(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("shadow::PluginManagerWrapper", 2, "enter formId:" + paramLong + " enterCallback:" + paramEnterCallback);
-    }
-    avhg.a().a(this.b, this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    bdcy.a(this.a, bdcy.a(this.a));
+    bdcy.b(this.a, System.currentTimeMillis());
+    if (bdcy.a(this.a) - bdcy.b(this.a) < 300L) {}
+    for (;;)
     {
-      localObject = (bdcs)((QQAppInterface)localObject).getManager(362);
-      if (localObject != null) {
-        ((bdcs)localObject).a(this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bdcy.a(this.a);
     }
-    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
   }
 }
 

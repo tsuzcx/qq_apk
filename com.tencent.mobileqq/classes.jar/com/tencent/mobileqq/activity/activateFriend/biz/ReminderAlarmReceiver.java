@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.activateFriend.biz;
 
+import agdj;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import anyr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -27,7 +27,7 @@ public class ReminderAlarmReceiver
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "---" + paramContext + "---msgId---" + paramIntent);
       }
-      ((anyr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(85)).a(paramContext, paramIntent);
+      ((agdj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(378)).a(paramContext, paramIntent);
     }
   }
 }

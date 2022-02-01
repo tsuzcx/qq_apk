@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import afur;
+import agej;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.widget.ImageView;
-import bhzg;
+import bjae;
 
 class DoodleMsgLayout$2$1
   implements Runnable
@@ -15,9 +15,9 @@ class DoodleMsgLayout$2$1
   {
     if (DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0) != null)
     {
-      bhzg localbhzg = new bhzg(this.jdField_a_of_type_AndroidGraphicsBitmap, 0, false);
-      localbhzg.setBounds(new Rect(0, 0, afur.a(19.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0.getResources()), afur.a(19.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0.getResources())));
-      DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0).setImageDrawable(localbhzg);
+      bjae localbjae = new bjae(this.jdField_a_of_type_AndroidGraphicsBitmap, 0, false);
+      localbjae.setBounds(new Rect(0, 0, agej.a(19.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0.getResources()), agej.a(19.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0.getResources())));
+      DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0).setImageDrawable(localbjae);
     }
     DoodleMsgLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0, false);
   }

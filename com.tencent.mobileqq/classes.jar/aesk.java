@@ -1,24 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aesk
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public aesk(NotifyPushSettingActivity paramNotifyPushSettingActivity, anip paramanip) {}
+  public aesk(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getString(2131716034), "qqsetting_special_care_bar", paramBoolean);
-    this.jdField_a_of_type_Anip.c(paramBoolean);
-    bkgt.a(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.i("IphoneTitleBarActivity", 2, "onCheckedChanged: invoked. care bar  isChecked: " + paramBoolean);
-    }
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

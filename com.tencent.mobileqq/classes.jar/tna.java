@@ -1,195 +1,134 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.utils.ViolaLogUtils;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.widget.AbsListView;
+import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 
 public class tna
-  implements DownloadListener
+  implements spj, spo
 {
-  public tna(BridgeModule paramBridgeModule, String paramString1, String paramString2) {}
+  protected BaseData a;
+  protected VafContext a;
+  protected WeakReference<Context> a;
+  protected spi a;
+  protected ssa a;
   
-  public void installSucceed(String paramString1, String paramString2)
+  public tna()
   {
+    this.jdField_a_of_type_Ssa = new ssa();
+  }
+  
+  public int a(BaseData paramBaseData)
+  {
+    return 0;
+  }
+  
+  public spi a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qfg();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
+      oyj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    }
+    ProteusItemData localProteusItemData = (ProteusItemData)paramBaseData;
+    paramBaseData = null;
     try
     {
-      paramString1 = new JSONObject();
-      paramString1.put("type", 6);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.b, paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.d(BridgeModule.TAG, 2, "downloadApk installSucceed, packageName = " + paramString2);
-      }
-      return;
+      paramViewGroup = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localProteusItemData.a);
+      paramBaseData = paramViewGroup;
+      oyj.a(((Container)paramViewGroup).getVirtualView(), localProteusItemData.a.getViewBean());
+      paramBaseData = paramViewGroup;
+      str = localProteusItemData.c.toString();
+      paramBaseData = paramViewGroup;
     }
-    catch (Exception paramString1)
+    catch (Exception paramViewGroup)
     {
       for (;;)
       {
-        ViolaLogUtils.e("downloadApk", "installSucceed error:" + paramString1.getMessage());
+        boolean bool;
+        String str = "error!! msg=" + paramViewGroup.toString();
       }
     }
+    bool = false;
+    paramViewGroup = paramBaseData;
+    if (paramBaseData == null)
+    {
+      paramViewGroup = new View(paramContext);
+      bool = true;
+    }
+    tpx.a("WebFastBaseProteusAdCreator", "createViewHolder viewIsNull=" + bool + "  proteusData=" + str);
+    this.jdField_a_of_type_Spi = a(paramViewGroup, localProteusItemData);
+    return this.jdField_a_of_type_Spi;
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  protected spi a(View paramView, BaseData paramBaseData)
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("type", 3);
-      if ((paramDownloadInfo != null) && (this.jdField_a_of_type_JavaLangString.equals(paramDownloadInfo.d))) {
-        localJSONObject.put("data", paramDownloadInfo.f);
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.b, localJSONObject);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ViolaLogUtils.e("onDownloadCancel", "onDownloadError error:" + localException.getMessage());
-        localException.printStackTrace();
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(BridgeModule.TAG, 2, "downloadApk onDownloadCancel, url = " + paramDownloadInfo.d + " , packageName = " + paramDownloadInfo.e);
-    }
+    return null;
   }
   
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  public void a() {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public boolean a(BaseData paramBaseData)
   {
-    try
-    {
-      paramString = new JSONObject();
-      paramString.put("type", 4);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.b, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d(BridgeModule.TAG, 2, "downloadApk onDownloadError, url = " + paramDownloadInfo.d + " , packageName = " + paramDownloadInfo.e);
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        ViolaLogUtils.e("downloadApk", "onDownloadError error:" + paramString.getMessage());
-        paramString.printStackTrace();
-      }
-    }
+    return false;
   }
   
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  public void b()
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("type", 2);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.b, localJSONObject);
-      if (QLog.isColorLevel()) {
-        QLog.d(BridgeModule.TAG, 2, "downloadApk onDownloadFinish, url = " + paramDownloadInfo.d + " , packageName = " + paramDownloadInfo.e);
-      }
-      return;
+    if (this.jdField_a_of_type_Ssa != null) {
+      this.jdField_a_of_type_Ssa.a();
     }
-    catch (Exception localException)
+    if ((this.jdField_a_of_type_Spi instanceof tnb))
     {
-      for (;;)
+      localObject = this.jdField_a_of_type_Spi.a;
+      if (!(localObject instanceof Container)) {
+        break label93;
+      }
+    }
+    label93:
+    for (Object localObject = (Container)localObject;; localObject = null)
+    {
+      if (localObject == null) {}
+      do
       {
-        ViolaLogUtils.e("downloadApk", "onDownloadFinish error:" + localException.getMessage());
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("type", 5);
-      if ((paramDownloadInfo != null) && (this.jdField_a_of_type_JavaLangString.equals(paramDownloadInfo.d))) {
-        localJSONObject.put("data", paramDownloadInfo.f);
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.b, localJSONObject);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ViolaLogUtils.e("onDownloadPause", "onDownloadPause error:" + localException.getMessage());
-        localException.printStackTrace();
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(BridgeModule.TAG, 2, "downloadApk onDownloadPause, url = " + paramDownloadInfo.d + " , packageName = " + paramDownloadInfo.e);
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    paramList = paramList.iterator();
-    for (;;)
-    {
-      if (paramList.hasNext())
-      {
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        if (this.jdField_a_of_type_JavaLangString.equals(localDownloadInfo.d)) {}
-        try
+        do
         {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("type", 1);
-          localJSONObject.put("data", localDownloadInfo.f);
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.b, localJSONObject);
-          if (QLog.isColorLevel()) {
-            QLog.d(BridgeModule.TAG, 2, "downloadApk onDownloadUpdate, url = " + localDownloadInfo.d + " , packageName = " + localDownloadInfo.e + " process = " + localDownloadInfo.f);
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            ViolaLogUtils.e("downloadApk", "onDownloadFinish error:" + localException.getMessage());
-            localException.printStackTrace();
-          }
-        }
-      }
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(BridgeModule.TAG, 2, "downloadApk onDownloadWait, url = " + paramDownloadInfo.d + " , packageName = " + paramDownloadInfo.e);
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    try
-    {
-      paramString1 = new JSONObject();
-      paramString1.put("type", 6);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.b, paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.d(BridgeModule.TAG, 2, "downloadApk packageReplaced, packageName = " + paramString2);
-      }
+          return;
+          localObject = ((Container)localObject).getVirtualView();
+        } while (localObject == null);
+        localObject = ((ViewBase)localObject).findViewBaseByName(tks.a(Aladdin.getConfig(341).getIntegerFromString("bottom_ad_style", 0)));
+      } while (!(localObject instanceof tse));
+      ((tse)localObject).c();
       return;
     }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        ViolaLogUtils.e("downloadApk", "packageReplaced error:" + paramString1.getMessage());
-      }
+  }
+  
+  public void c() {}
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Ssa != null) {
+      this.jdField_a_of_type_Ssa.b();
     }
   }
   
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(BridgeModule.TAG, 2, "downloadApk uninstallSucceed, packageName = " + paramString2);
-    }
-  }
+  public void e() {}
 }
 
 

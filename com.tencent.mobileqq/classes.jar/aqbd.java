@@ -1,18 +1,18 @@
-import android.hardware.Camera;
-import android.hardware.Camera.PictureCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.PictureCallbackForward.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class aqbd
-  implements Camera.PictureCallback
+class aqbd
+  implements anui
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final aqat jdField_a_of_type_Aqat;
-  private final aqav jdField_a_of_type_Aqav;
+  aqbd(aqay paramaqay) {}
   
-  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PictureCallbackForward.1(this, paramArrayOfByte));
+    if (!paramBoolean)
+    {
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "doVipReport(), sso request failed");
+      return;
+    }
+    ArkAppCenter.b("ArkApp.ArkAppCGI", "doVipReport().server.back=" + paramObject);
   }
 }
 

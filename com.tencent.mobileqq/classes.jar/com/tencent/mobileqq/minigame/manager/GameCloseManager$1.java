@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bgpa;
+import bhpc;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -12,7 +12,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 final class GameCloseManager$1
   implements View.OnClickListener
 {
-  GameCloseManager$1(MiniAppInfo paramMiniAppInfo, bgpa parambgpa, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity) {}
+  GameCloseManager$1(MiniAppInfo paramMiniAppInfo, bhpc parambhpc, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity) {}
   
   public void onClick(View paramView)
   {

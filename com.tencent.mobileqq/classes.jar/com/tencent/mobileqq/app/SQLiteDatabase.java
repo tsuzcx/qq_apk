@@ -32,9 +32,9 @@ import java.util.regex.Pattern;
 public class SQLiteDatabase
 {
   private static final String DBTRANSLOG = "SQLiteDatabase";
-  private static final long DbError_CheckInternal = 240000L;
-  private static final int DbError_ThresholdCount = 10;
-  private static final long DbError_ToastInternal = 21600000L;
+  private static final long DB_ERROR_CHECK_INTERNAL = 240000L;
+  private static final int DB_ERROR_THRESHOLD_COUNT = 10;
+  private static final long DB_ERROR_TOAST_INTERNAL = 21600000L;
   private static final boolean OPEN_DB_LOG = false;
   private static final String REPORT_TAG_OP_TABLE_NAME = "OpTableName";
   private static final String REPORT_TAG_OP_TYPE = "OpType";
@@ -45,16 +45,23 @@ public class SQLiteDatabase
   private static final String TAG_SQLITE_DB = "SQLiteDataBaseLog";
   private static final String UIN_SAMPLE_SUFFIX = "59.db";
   private static int dbError_count;
-  private static long dbError_lastCheckTime;
+  private static long dbError_lastCheckTime = 0L;
   private static long dbError_lastToastTime;
   private static boolean dbError_toastTimeInited;
-  public static boolean sIsLogcatDBOperation;
+  public static boolean sIsLogcatDBOperation = false;
   final android.database.sqlite.SQLiteDatabase db;
-  private long mOpCount;
-  private boolean mUinNeedReport;
+  private long mOpCount = 0L;
+  private boolean mUinNeedReport = false;
   private final Map<String, ArrayList<String>> queryCacheMap = new ConcurrentHashMap(32);
   private final Map<String, ArrayList<String>> tableMap = new ConcurrentHashMap(32);
-  private TableNameCache tableNameCache;
+  private TableNameCache tableNameCache = null;
+  
+  static
+  {
+    dbError_count = 0;
+    dbError_toastTimeInited = false;
+    dbError_lastToastTime = 0L;
+  }
   
   SQLiteDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, TableNameCache paramTableNameCache, String paramString)
   {
@@ -63,12 +70,10 @@ public class SQLiteDatabase
     if (AppSetting.isDebugVersion) {
       loadIsLogcatDBOperation();
     }
-    if ((TextUtils.isEmpty(paramString)) || (paramString.endsWith("59.db"))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mUinNeedReport = bool;
-      return;
+    if ((TextUtils.isEmpty(paramString)) || (paramString.endsWith("59.db"))) {
+      bool = true;
     }
+    this.mUinNeedReport = bool;
   }
   
   private ArrayList<String> analyseRawQueryWhere(String paramString)
@@ -317,13 +322,13 @@ public class SQLiteDatabase
     }
     try
     {
-      printDBErrStackTrace(paramThrowable, localStringBuilder, "", null);
-      label56:
+      printDBErrStackTrace(paramThrowable, localStringBuilder, "", null, 0);
+      label57:
       QLog.e("SQLiteDatabase", 2, new Object[] { localStringBuilder });
       if (!AppSetting.isDebugVersion) {
-        break label77;
+        break label78;
       }
-      label77:
+      label78:
       while ((paramThrowable.getMessage() == null) || (paramThrowable.getMessage().contains("no such table"))) {
         return;
       }
@@ -356,7 +361,7 @@ public class SQLiteDatabase
     }
     catch (Exception localException)
     {
-      break label56;
+      break label57;
     }
   }
   
@@ -434,62 +439,65 @@ public class SQLiteDatabase
     QLog.d("SQLiteDataBaseLog", 2, paramString1);
   }
   
-  private void printDBErrStackTrace(Throwable paramThrowable, StringBuilder paramStringBuilder, String paramString, StackTraceElement[] paramArrayOfStackTraceElement)
+  private void printDBErrStackTrace(Throwable paramThrowable, StringBuilder paramStringBuilder, String paramString, StackTraceElement[] paramArrayOfStackTraceElement, int paramInt)
   {
     int j = 0;
-    StringBuilder localStringBuilder = paramStringBuilder;
     if (paramStringBuilder == null) {
-      localStringBuilder = new StringBuilder();
+      paramStringBuilder = new StringBuilder();
     }
-    localStringBuilder.append(paramThrowable.toString());
-    localStringBuilder.append("\n");
-    paramStringBuilder = paramThrowable.getStackTrace();
-    if (paramStringBuilder != null)
+    for (;;)
     {
-      int i;
-      if (paramArrayOfStackTraceElement != null)
+      paramStringBuilder.append(paramThrowable.toString());
+      paramStringBuilder.append("\n");
+      StackTraceElement[] arrayOfStackTraceElement = paramThrowable.getStackTrace();
+      if (arrayOfStackTraceElement != null)
       {
-        i = countDuplicates(paramStringBuilder, paramArrayOfStackTraceElement);
-        if (j >= paramStringBuilder.length - i) {
-          break label182;
-        }
-        if (j >= 3) {
-          break label129;
-        }
-        localStringBuilder.append(paramString);
-        localStringBuilder.append("\tat ");
-        localStringBuilder.append(paramStringBuilder[j].toString());
-        localStringBuilder.append("\n");
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        i = 0;
-        break;
-        label129:
-        if (j == paramStringBuilder.length - i - 1)
+        int i;
+        if (paramArrayOfStackTraceElement != null)
         {
-          localStringBuilder.append(paramString);
-          localStringBuilder.append("\t...at ");
-          localStringBuilder.append(paramStringBuilder[j].toString());
-          localStringBuilder.append("\n");
+          i = countDuplicates(arrayOfStackTraceElement, paramArrayOfStackTraceElement);
+          if (j >= arrayOfStackTraceElement.length - i) {
+            break label175;
+          }
+          if (j >= 3) {
+            break label124;
+          }
+          paramStringBuilder.append(paramString);
+          paramStringBuilder.append("\tat ");
+          paramStringBuilder.append(arrayOfStackTraceElement[j].toString());
+          paramStringBuilder.append("\n");
+        }
+        for (;;)
+        {
+          j += 1;
+          break;
+          i = 0;
+          break;
+          label124:
+          if (j == arrayOfStackTraceElement.length - i - 1)
+          {
+            paramStringBuilder.append(paramString);
+            paramStringBuilder.append("\t...at ");
+            paramStringBuilder.append(arrayOfStackTraceElement[j].toString());
+            paramStringBuilder.append("\n");
+          }
+        }
+        label175:
+        if (i > 0)
+        {
+          paramStringBuilder.append(paramString);
+          paramStringBuilder.append("\t... ");
+          paramStringBuilder.append(Integer.toString(i));
+          paramStringBuilder.append(" more\n");
         }
       }
-      label182:
-      if (i > 0)
+      if ((paramThrowable.getCause() != null) && (paramInt < 5))
       {
-        localStringBuilder.append(paramString);
-        localStringBuilder.append("\t... ");
-        localStringBuilder.append(Integer.toString(i));
-        localStringBuilder.append(" more\n");
+        paramStringBuilder.append(paramString);
+        paramStringBuilder.append("Caused by: ");
+        printDBErrStackTrace(paramThrowable, paramStringBuilder, paramString, arrayOfStackTraceElement, paramInt + 1);
       }
-    }
-    if (paramThrowable.getCause() != null)
-    {
-      localStringBuilder.append(paramString);
-      localStringBuilder.append("Caused by: ");
-      printDBErrStackTrace(paramThrowable, localStringBuilder, paramString, paramStringBuilder);
+      return;
     }
   }
   
@@ -984,49 +992,49 @@ public class SQLiteDatabase
   public Cursor rawQuery(String paramString1, String paramString2, String paramString3, String[] paramArrayOfString)
   {
     // Byte code:
-    //   0: invokestatic 429	java/lang/System:currentTimeMillis	()J
+    //   0: invokestatic 438	java/lang/System:currentTimeMillis	()J
     //   3: lstore 5
     //   5: aload_0
     //   6: aload_2
     //   7: aload_3
     //   8: aload 4
-    //   10: invokespecial 560	com/tencent/mobileqq/app/SQLiteDatabase:convertWhereValues	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
+    //   10: invokespecial 563	com/tencent/mobileqq/app/SQLiteDatabase:convertWhereValues	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
     //   13: aload_0
-    //   14: getfield 73	com/tencent/mobileqq/app/SQLiteDatabase:db	Landroid/database/sqlite/SQLiteDatabase;
+    //   14: getfield 91	com/tencent/mobileqq/app/SQLiteDatabase:db	Landroid/database/sqlite/SQLiteDatabase;
     //   17: aload_1
     //   18: aload 4
-    //   20: invokevirtual 699	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   20: invokevirtual 700	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   23: astore 9
-    //   25: invokestatic 429	java/lang/System:currentTimeMillis	()J
+    //   25: invokestatic 438	java/lang/System:currentTimeMillis	()J
     //   28: lstore 7
-    //   30: getstatic 485	com/tencent/mobileqq/app/SQLiteDatabase:sIsLogcatDBOperation	Z
+    //   30: getstatic 61	com/tencent/mobileqq/app/SQLiteDatabase:sIsLogcatDBOperation	Z
     //   33: ifne +9 -> 42
-    //   36: invokestatic 569	com/tencent/mobileqq/imcore/proxy/IMCoreProxyRoute$AIOUtils:getLogcatDBOperation	()Z
+    //   36: invokestatic 572	com/tencent/mobileqq/imcore/proxy/IMCoreProxyRoute$AIOUtils:getLogcatDBOperation	()Z
     //   39: ifeq +41 -> 80
-    //   42: ldc_w 749
+    //   42: ldc_w 750
     //   45: aload_2
-    //   46: new 395	java/lang/StringBuilder
+    //   46: new 408	java/lang/StringBuilder
     //   49: dup
-    //   50: invokespecial 396	java/lang/StringBuilder:<init>	()V
+    //   50: invokespecial 409	java/lang/StringBuilder:<init>	()V
     //   53: aload_1
-    //   54: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: ldc_w 574
-    //   60: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: invokevirtual 472	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: ldc_w 577
+    //   60: invokevirtual 472	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   63: aload_3
-    //   64: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: invokevirtual 471	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokevirtual 472	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: invokevirtual 476	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   70: aload 4
     //   72: lload 7
     //   74: lload 5
     //   76: lsub
-    //   77: invokestatic 577	com/tencent/mobileqq/app/SQLiteDatabase:logcatSQLiteProfiler	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;J)V
+    //   77: invokestatic 580	com/tencent/mobileqq/app/SQLiteDatabase:logcatSQLiteProfiler	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;J)V
     //   80: aload 9
     //   82: astore_2
-    //   83: invokestatic 587	com/tencent/util/MsgAutoMonitorUtil:getInstance	()Lcom/tencent/util/MsgAutoMonitorUtil;
-    //   86: invokestatic 429	java/lang/System:currentTimeMillis	()J
+    //   83: invokestatic 590	com/tencent/util/MsgAutoMonitorUtil:getInstance	()Lcom/tencent/util/MsgAutoMonitorUtil;
+    //   86: invokestatic 438	java/lang/System:currentTimeMillis	()J
     //   89: lload 5
     //   91: lsub
-    //   92: invokevirtual 591	com/tencent/util/MsgAutoMonitorUtil:addDbIoTime	(J)V
+    //   92: invokevirtual 594	com/tencent/util/MsgAutoMonitorUtil:addDbIoTime	(J)V
     //   95: aload_2
     //   96: areturn
     //   97: astore_3
@@ -1035,7 +1043,7 @@ public class SQLiteDatabase
     //   100: aload_0
     //   101: aload_3
     //   102: aload_1
-    //   103: invokespecial 597	com/tencent/mobileqq/app/SQLiteDatabase:handleDBErr	(Ljava/lang/Throwable;Ljava/lang/String;)V
+    //   103: invokespecial 600	com/tencent/mobileqq/app/SQLiteDatabase:handleDBErr	(Ljava/lang/Throwable;Ljava/lang/String;)V
     //   106: goto -23 -> 83
     //   109: astore_1
     //   110: aload_1
@@ -1078,7 +1086,7 @@ public class SQLiteDatabase
       localObject2 = localCursor;
       if (QLog.isColorLevel())
       {
-        QLog.d("db", 2, "rawQuery() called with: sql = [" + paramString + "], selectionArgs = [" + Arrays.toString(paramArrayOfString) + "], cost = [" + l + "]");
+        QLog.d("db", 2, "rawQuery() called with: sql = [" + paramString + "], selectionArgs = [" + Arrays.toString(paramArrayOfString) + "], costTime = [" + l + "]");
         localObject2 = localCursor;
       }
     }
@@ -1094,7 +1102,7 @@ public class SQLiteDatabase
       if (!QLog.isColorLevel()) {
         break label264;
       }
-      QLog.d("db", 2, "rawQuery() called with: sql = [" + paramString + "], selectionArgs = [" + Arrays.toString(paramArrayOfString) + "], cost = [" + l + "]");
+      QLog.d("db", 2, "rawQuery() called with: sql = [" + paramString + "], selectionArgs = [" + Arrays.toString(paramArrayOfString) + "], costTime = [" + l + "]");
     }
     return localObject2;
   }

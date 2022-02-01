@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.util;
 
-import ayyz;
-import bcst;
-import bgsp;
+import azrm;
+import bdll;
+import bhsr;
 import com.tencent.mobileqq.pic.CompressInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,12 +10,12 @@ import java.util.UUID;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tym;
+import tyo;
 
 public class PublicAccountH5AbilityPlugin$3
   implements Runnable
 {
-  public PublicAccountH5AbilityPlugin$3(tym paramtym, ArrayList paramArrayList, JSONArray paramJSONArray, JSONObject paramJSONObject) {}
+  public PublicAccountH5AbilityPlugin$3(tyo paramtyo, ArrayList paramArrayList, JSONArray paramJSONArray, JSONObject paramJSONObject) {}
   
   public void run()
   {
@@ -31,11 +31,11 @@ public class PublicAccountH5AbilityPlugin$3
           this.jdField_a_of_type_OrgJsonJSONArray.put(i, str);
           CompressInfo localCompressInfo = new CompressInfo((String)this.jdField_a_of_type_JavaUtilArrayList.get(i), 0);
           localCompressInfo.f = 0;
-          ayyz.a(localCompressInfo);
-          if (!bgsp.a(localCompressInfo.e)) {
-            tym.b.put(str, localCompressInfo.e);
+          azrm.a(localCompressInfo);
+          if (!bhsr.a(localCompressInfo.e)) {
+            tyo.b.put(str, localCompressInfo.e);
           } else {
-            tym.b.put(str, this.jdField_a_of_type_JavaUtilArrayList.get(i));
+            tyo.b.put(str, this.jdField_a_of_type_JavaUtilArrayList.get(i));
           }
         }
       }
@@ -50,7 +50,7 @@ public class PublicAccountH5AbilityPlugin$3
       this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "album");
       this.this$0.callJs(this.this$0.o, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
       this.this$0.o = "";
-      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
+      bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
       return;
       i += 1;
     }

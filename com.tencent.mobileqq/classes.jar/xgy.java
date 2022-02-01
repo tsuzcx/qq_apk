@@ -1,17 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
-
-public class xgy
-  extends AnimatorListenerAdapter
+class xgy
+  extends xgd
 {
-  public xgy(StoryPlayerActivity paramStoryPlayerActivity) {}
+  xgy(xgp paramxgp, xhx paramxhx) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean b()
   {
-    super.onAnimationEnd(paramAnimator);
-    StoryPlayerActivity.a(this.a);
-    StoryPlayerActivity.a(this.a, 0, 0);
+    this.jdField_a_of_type_Xhx.e = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 

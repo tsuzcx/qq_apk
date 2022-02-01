@@ -1,22 +1,26 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aknr
-  implements OnCompositionLoadedListener
+  extends azov
 {
-  public aknr(RedPacketPopFragment paramRedPacketPopFragment, ImageView paramImageView) {}
+  public aknr(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  protected void a(boolean paramBoolean)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localLottieDrawable);
+    super.a(paramBoolean);
+    if (paramBoolean) {
+      BindNumberActivity.a(this.a).sendEmptyMessage(3);
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(this.a.b);
+      this.a.b = null;
+      return;
+      this.a.b();
+      this.a.a(2131717454);
+    }
   }
 }
 

@@ -32,17 +32,13 @@ public class TVKVideoInfoEnum
   public static final String CKEY_REQ_PARAM_KEY_SPTEST = "sptest";
   public static final String CKEY_REQ_PARAM_KEY_TOUSHE = "toushe";
   public static final String CKEY_VERSION = "ckey_version";
-  public static final String DLNA_PARAM_KEY_COOkIE = "cookie";
+  public static final String DLNA_PARAM_KEY_COOKIE = "cookie";
   public static final String DLNA_PROJECTION = "projection";
   public static final String DOWNLOAD_AND_PLAY = "download_and_play";
   public static final int DOWNLOAD_ERROR_CHANGE = 4;
   public static final int DOWNLOAD_FINISHEDDONLOAD = 3;
   public static final int DOWNLOAD_STARTDOWNLOAD = 1;
   public static final int DOWNLOAD_STOPDOWNLOAD = 2;
-  public static final int DRM_ERR_FailedLoaded = 100004;
-  public static final int DRM_ERR_InvalidULR = 100003;
-  public static final int DRM_ERR_NoLicense = 100002;
-  public static final int DRM_ERR_NoToken = 100001;
   public static final String ENABLE_P2PPROXY = "enable_p2pproxy";
   public static final String ENABLE_START_PLAY_BY_CDN_URL = "enableCdnPlay";
   public static final int ERROR_CGI = 10006;
@@ -50,29 +46,23 @@ public class TVKVideoInfoEnum
   public static final int ERROR_CODE_ILLEGAL_ARGUMENT = 30004;
   public static final int ERROR_CODE_QQOPEN_ERROR = 30001;
   public static final int ERROR_CODE_SWTICH_ORIGNAL_URL = 30005;
+  public static final int ERROR_DOWNLOAD_FAILED = 10011;
   public static final int ERROR_DRM = 10010;
   public static final int ERROR_FORMAT_NOT_FOUND = 10004;
   public static final int ERROR_HTTP_ERROR = 10005;
   public static final int ERROR_INVALID_JSON = 10008;
+  public static final int ERROR_INVALID_M3U8 = 10009;
   public static final int ERROR_INVALID_VIDEO_INFO = 10007;
   public static final int ERROR_INVAL_GETKEY = 20006;
   public static final int ERROR_INVAL_IP = 20005;
   public static final int ERROR_INVAL_URL = 20004;
   public static final int ERROR_LOCALSERVER_FAILED = 10012;
   public static final int ERROR_NETWORK = 10001;
-  public static final int ERROR_OFFLINE_DBDELETEFAIL = 21285;
-  public static final int ERROR_OFFLINE_MCSISNULL = 21276;
-  public static final int ERROR_OFFLINE_NOTFOUNTRECORD = 21248;
-  public static final int ERROR_OFFLINE_TASKISEXIST = 21279;
   public static final int ERROR_OUT_OF_MEMORY = 10002;
   public static final int ERROR_PLAYDATA_NOT_FOUND = 10003;
   public static final int ERROR_REC_NOT_FOUND = 20002;
   public static final int ERROR_STORAGE = 20001;
-  public static final int ERROR_SWITCHVIDEO_CREATEFAILED = 21288;
-  public static final int ERROR_SWITCHVIDEO_PATHEMPTY = 21287;
   public static final int ERROR_UNKNOWN = 40000;
-  public static final int ERROR＿DOWNLOAD_FAILED = 10011;
-  public static final int ERROR＿INVALID_M3U8 = 10009;
   public static final int EVENT_PLAYBUFFER = 7;
   public static final int EVENT_PLAYERROR = 8;
   public static final int EVENT_PLAYPAUSE = 5;
@@ -101,11 +91,11 @@ public class TVKVideoInfoEnum
   public static final int OFFLINE_TYPE_MP4 = 1;
   public static final String OPEN_VINFO_SERVER = "https://graph.qq.com/v3/video/get_v_info";
   public static final String OPEN_VKEY_SERVER = "https://graph.qq.com/v3/video/get_v_key";
-  public static final String OfflineDownloadMultCount = "offlineDownloadmultCount";
   public static final int PAY_TYPE_NO_DEFI = 9;
   public static final int PAY_TYPE_NO_NEED_PAY = 0;
   public static final int PAY_TYPE_PAYED = 2;
   public static final int PAY_TYPE_UNPAYED = 1;
+  public static final int PLATFORM_ANDROID_PHONE_APP = TVideoMgr.getVinfoPlatform();
   public static final String PLAYING = "is_playing";
   public static final int PLAYING_STATE_IN_SEEKING = 1;
   public static final int PLAYING_STATE_ON_BLOCKING = 2;
@@ -116,6 +106,7 @@ public class TVKVideoInfoEnum
   public static final int PLAYING_STATE_ON_REALPLAY = 101;
   public static final int PLAYING_STATE_ON_SECONDBLOCKING = 4;
   public static final int PLAY_AD_DURATION = 1;
+  public static final String PLAY_CAPACITY_LEVEL = "play_capacity_level";
   public static final String PLAY_CDN_CLIENT_IP = "play_cdn_clientIp";
   public static final String PLAY_CDN_PROTO = "proto";
   public static final String PLAY_CDN_PROTOVER = "protover";
@@ -136,7 +127,6 @@ public class TVKVideoInfoEnum
   public static final String PLAY_SPEED = "play_speed";
   public static final String PLAY_START_TIME = "play_start_time";
   public static final String PLAY_SWITCH_P2P = "play_switch_p2p";
-  public static final String Play_CAPACITY_LEVEL = "play_capacity_level";
   public static final String QQ_IS_VIP = "qq_is_vip";
   public static final int REQUEST_TYPE_CGI = 1;
   public static final int REQUEST_TYPE_JCE = 2;
@@ -193,18 +183,6 @@ public class TVKVideoInfoEnum
   public static final String VKEY_BK_SERVER;
   public static final String VKEY_SERVER;
   public static final String WX_OPEN_ID = "wx_open_id";
-  public static final int eDOWNLOAD_TASK_TYPE_HLS_ADV = 2;
-  public static final int eDOWNLOAD_TASK_TYPE_HLS_ADV_LOOP = 3;
-  public static final int eDOWNLOAD_TASK_TYPE_HLS_DETAIL_PREPARE = 4;
-  public static final int eDOWNLOAD_TASK_TYPE_HLS_HOT_SPOT_PREPARE = 6;
-  public static final int eDOWNLOAD_TASK_TYPE_HLS_LIVE = 9999;
-  public static final int eDOWNLOAD_TASK_TYPE_HLS_NEXT_PREPARE = 5;
-  public static final int eDOWNLOAD_TASK_TYPE_HLS_OFFLINE_DOWNLOAD = 100;
-  public static final int eDOWNLOAD_TASK_TYPE_HLS_VOD = 0;
-  public static final int eDOWNLOAD_TASK_TYPE_HLS_VOD_LOOP = 1;
-  public static final int ePlayerError_NoRequest = 2;
-  public static final int ePlayerError_RequestRepeatTs = 1;
-  public static final int platForm_AndroidPhoneApp;
   
   static
   {
@@ -220,7 +198,6 @@ public class TVKVideoInfoEnum
     VBKEY_SERVER_NEW = TVKConfigUrl.vbkey_cgi_host;
     VBKEY_BK_SERVER_NEW = TVKConfigUrl.vbkey_cgi_host_bk;
     VBKEY_V6_SERVER_NEW = TVKConfigUrl.vbkey_ipv6_cgi_host;
-    platForm_AndroidPhoneApp = TVideoMgr.getVinfoPlatform();
   }
 }
 

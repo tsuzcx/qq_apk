@@ -1,24 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.widget.RadioGroup;
-import com.tencent.mobileqq.fragment.SimpleDebugFragment;
+import android.media.MediaScannerConnection.OnScanCompletedListener;
+import android.net.Uri;
+import com.tencent.qphone.base.util.QLog;
 
-public class auoa
-  implements biea
+final class auoa
+  implements MediaScannerConnection.OnScanCompletedListener
 {
-  public auoa(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
-  
-  public void onItemSelect(View paramView, int paramInt)
+  public void onScanCompleted(String paramString, Uri paramUri)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (QLog.isDebugVersion()) {
+      QLog.i("FilePathUtil<FileAssistant>", 1, "MediaScannerConnection Scanned:\n" + paramString + ":\nuri=" + paramUri);
     }
-    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
-    {
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentSimpleDebugFragment.getActivity().finish();
   }
 }
 

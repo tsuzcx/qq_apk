@@ -1,6 +1,6 @@
 package com.tencent.hippy.qq.update;
 
-import bgmg;
+import bhmi;
 import java.io.File;
 
 public class UpdateTotal
@@ -26,7 +26,7 @@ public class UpdateTotal
     this.mModuleFilePath = HippyQQFileUtil.getModuleFile(this.mModule, this.mVersion).getAbsolutePath();
     try
     {
-      bgmg.a(paramFile.getAbsolutePath(), this.mModuleFilePath, false);
+      bhmi.a(paramFile.getAbsolutePath(), this.mModuleFilePath, false);
       return true;
     }
     catch (Exception paramFile)

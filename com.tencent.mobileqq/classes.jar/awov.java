@@ -1,22 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
-
-public class awov
-  implements DialogInterface.OnClickListener
+class awov
 {
-  public awov(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public awov(String paramString1, String paramString2)
   {
-    MsgBackupCompleteFragment.a(this.a);
-    if (MsgBackupCompleteFragment.a(this.a) == 1) {
-      awqs.a("0X800A253", 5);
-    }
-    while ((MsgBackupCompleteFragment.a(this.a) != 4) || (!MsgBackupCompleteFragment.a(this.a))) {
-      return;
-    }
-    awqs.a("0X800A267", 2);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = bjtz.d(paramString2);
+    this.d = awor.a(paramString1);
+  }
+  
+  public String toString()
+  {
+    return "MusicReqInfo{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", url='" + this.b + '\'' + ", md5='" + this.c + '\'' + ", status=" + this.jdField_a_of_type_Int + ", cachePath='" + this.d + '\'' + '}';
   }
 }
 

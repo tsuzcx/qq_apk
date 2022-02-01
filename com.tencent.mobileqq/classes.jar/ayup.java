@@ -1,68 +1,75 @@
-public class ayup
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "fallbackJumpIntent", "jumpActionIntent", "jumpIntent", "jumpMsgTabIntent", "needCustomJump", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract class ayup
 {
-  public static final String a;
-  public static final String[] a;
-  public static final String b;
-  public static final String c;
-  public static final String d;
-  public static final String e;
-  public static final String f;
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public int c;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  
-  static
+  private final PendingIntent e(ayut paramayut)
   {
-    jdField_a_of_type_JavaLangString = anni.a(2131705419);
-    jdField_b_of_type_JavaLangString = anni.a(2131705418);
-    jdField_c_of_type_JavaLangString = anni.a(2131705417);
-    d = anni.a(2131705421);
-    e = anni.a(2131705420);
-    f = anni.a(2131705422);
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "uin", "uin_type", "senderUin", "msg_type", "msgid", "msgTime", "is_send", "msgContent", "media_path", "mediaStatus" };
+    BaseApplication localBaseApplication = BaseApplication.context;
+    Intent localIntent = new Intent((Context)localBaseApplication, SplashActivity.class);
+    localIntent.putExtra("tab_index", MainFragment.b);
+    localIntent.putExtra("fragment_id", 1);
+    localIntent.setFlags(335544320);
+    paramayut = PendingIntent.getActivity((Context)localBaseApplication, paramayut.jdField_d_of_type_Int, localIntent, 134217728);
+    Intrinsics.checkExpressionValueIsNotNull(paramayut, "jumpPendingIntent");
+    return paramayut;
   }
   
-  private ayup() {}
+  @NotNull
+  protected abstract PendingIntent a(@NotNull ayut paramayut);
   
-  public ayup(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, long paramLong, boolean paramBoolean, String paramString4, String paramString5, int paramInt3)
+  protected boolean a()
   {
-    this.g = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.h = paramString2;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.i = paramString3;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.j = paramString4;
-    this.k = paramString5;
-    this.jdField_c_of_type_Int = paramInt3;
+    return false;
   }
   
-  public Object[] a()
+  @NotNull
+  public final PendingIntent b(@NotNull ayut paramayut)
   {
-    return new Object[] { this.g, Integer.valueOf(this.jdField_a_of_type_Int), this.h, Integer.valueOf(this.jdField_b_of_type_Int), this.i, Long.valueOf(this.jdField_a_of_type_Long), Boolean.valueOf(this.jdField_a_of_type_Boolean), this.j, this.k, Integer.valueOf(this.jdField_c_of_type_Int) };
+    Intrinsics.checkParameterIsNotNull(paramayut, "pushComponent");
+    if (a()) {
+      return a(paramayut);
+    }
+    return c(paramayut);
   }
   
-  public String toString()
+  @NotNull
+  public final PendingIntent c(@NotNull ayut paramayut)
   {
-    StringBuilder localStringBuilder = new StringBuilder(200);
-    localStringBuilder.append(this.g).append("; ");
-    localStringBuilder.append(this.jdField_b_of_type_Int).append("; ");
-    localStringBuilder.append(this.h).append("; ");
-    localStringBuilder.append(this.i).append("; ");
-    localStringBuilder.append(this.jdField_a_of_type_Long).append(";");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean).append("; ");
-    localStringBuilder.append(this.j).append("; ");
-    localStringBuilder.append(this.k).append("; ");
-    localStringBuilder.append(this.jdField_c_of_type_Int).append(". ");
-    return localStringBuilder.toString();
+    Intrinsics.checkParameterIsNotNull(paramayut, "pushComponent");
+    if (Intrinsics.areEqual(paramayut.jdField_d_of_type_JavaLangString, "")) {
+      return e(paramayut);
+    }
+    BaseApplication localBaseApplication = BaseApplication.context;
+    Intent localIntent = new Intent((Context)localBaseApplication, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramayut.jdField_d_of_type_JavaLangString);
+    localIntent.addFlags(268435456);
+    ayuu.a(localIntent, paramayut);
+    localIntent.putExtra("param_notifyid", paramayut.jdField_d_of_type_Int);
+    paramayut = PendingIntent.getActivity((Context)localBaseApplication, paramayut.jdField_d_of_type_Int, localIntent, 134217728);
+    Intrinsics.checkExpressionValueIsNotNull(paramayut, "jumpPendingIntent");
+    return paramayut;
+  }
+  
+  @NotNull
+  public final PendingIntent d(@NotNull ayut paramayut)
+  {
+    Intrinsics.checkParameterIsNotNull(paramayut, "pushComponent");
+    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramayut.jdField_d_of_type_JavaLangString));
+    localIntent.setFlags(268435456);
+    paramayut = PendingIntent.getActivity((Context)BaseApplication.context, paramayut.jdField_d_of_type_Int, localIntent, 134217728);
+    Intrinsics.checkExpressionValueIsNotNull(paramayut, "PendingIntent.getActivit…tent.FLAG_UPDATE_CURRENT)");
+    return paramayut;
   }
 }
 

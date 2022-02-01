@@ -1,20 +1,21 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aidp;
+import ainh;
+import odw;
 
 public class PublicAccountChatPie$62
   implements Runnable
 {
-  public PublicAccountChatPie$62(aidp paramaidp) {}
+  public PublicAccountChatPie$62(ainh paramainh, boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    boolean bool = false;
-    aidp localaidp = this.this$0;
-    if ((this.this$0.b(true)) || (this.this$0.b(false))) {
-      bool = true;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.this$0.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c);
+      return;
     }
-    localaidp.ar = bool;
+    this.this$0.a.a();
   }
 }
 

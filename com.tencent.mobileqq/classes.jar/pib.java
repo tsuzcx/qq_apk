@@ -1,16 +1,23 @@
-import com.tencent.aladdin.config.utils.SpUtils.IAladdinSpOperator;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
-final class pib
-  implements SpUtils.IAladdinSpOperator
+public class pib
+  extends ReadInjoyXRecyclerView
 {
-  public <T> T getSpValue(String paramString, T paramT, boolean paramBoolean)
+  public pib(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, Context paramContext)
   {
-    return bmqa.a(paramString, paramT, paramBoolean);
+    super(paramContext);
   }
   
-  public <T> void updateSpValue(String paramString, T paramT, boolean paramBoolean)
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    bmqa.a(paramString, paramT, paramBoolean);
+    super.a(paramViewHolder, paramInt);
+    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView != null)) {
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView.setData(this.a.a(), this.a.jdField_a_of_type_JavaUtilArrayList);
+    }
   }
 }
 

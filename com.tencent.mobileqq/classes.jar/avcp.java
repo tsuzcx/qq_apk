@@ -1,30 +1,31 @@
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import java.util.List;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class avcp
-  implements bedc
+class avcp
+  extends BroadcastReceiver
 {
-  public avcp(HotVideoData paramHotVideoData, avcr paramavcr, avcq paramavcq) {}
+  avcp(avcj paramavcj) {}
   
-  public void a(bebv parambebv, beck parambeck)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (parambeck != null) {
-      if (parambeck.a.size() > 0)
-      {
-        parambebv = (becy)parambeck.a.get(0);
-        this.jdField_a_of_type_Avcr.a(parambebv);
-      }
-    }
-    for (;;)
+    if ((avcj.a(this.a) == null) || (avcj.a(this.a).isFinishing())) {}
+    do
     {
-      this.jdField_a_of_type_Avcq.a(this.jdField_a_of_type_Avcr);
       return;
-      this.jdField_a_of_type_Avcr.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Avcr.jdField_a_of_type_JavaLangString = "Unknown error！";
-      continue;
-      this.jdField_a_of_type_Avcr.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Avcr.jdField_a_of_type_JavaLangString = "Unknown error！";
+      paramContext = auzl.a(paramIntent.getStringExtra("key_share_image_by_server"));
+      QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, new Object[] { "initBroadcastReceiver errorMsg=", paramContext });
+    } while (paramContext == null);
+    if (TextUtils.isEmpty(paramContext))
+    {
+      avcj.a(this.a, avcj.a(this.a).getIntent().getExtras());
+      avcj.a(avcj.a(this.a), avcj.a(this.a), avcj.a(this.a));
+      return;
     }
+    avcj.a(this.a, paramContext);
   }
 }
 

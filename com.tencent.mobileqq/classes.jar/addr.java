@@ -1,36 +1,25 @@
-import java.util.HashMap;
-import java.util.Observable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.observer.SubAccountObserver;
 
-public class addr
-  extends Observable
+final class addr
+  extends SubAccountObserver
 {
-  private static addr a;
-  public HashMap<String, String> a;
+  addr(adan paramadan, bdxc parambdxc) {}
   
-  public static addr a()
+  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    if (jdField_a_of_type_Addr == null) {}
-    try
-    {
-      if (jdField_a_of_type_Addr == null) {
-        jdField_a_of_type_Addr = new addr();
-      }
-      return jdField_a_of_type_Addr;
+    if ((paramString3 == null) || (this.jdField_a_of_type_Adan.a() == null) || (paramString1 == null)) {}
+    while (!paramString1.equalsIgnoreCase(this.jdField_a_of_type_Adan.a().getAccount())) {
+      return;
     }
-    finally {}
-  }
-  
-  public void a(HashMap<String, String> paramHashMap)
-  {
-    paramHashMap.put("key_type", "t_held_thread");
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    setChanged();
-    notifyObservers();
+    this.jdField_a_of_type_Bdxc.a(paramString2, paramString3, true);
+    bdwt.a(this.jdField_a_of_type_Adan.a(), (byte)1, paramString2);
+    bdwt.a(this.jdField_a_of_type_Adan.a(), paramString2, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     addr
  * JD-Core Version:    0.7.0.1
  */

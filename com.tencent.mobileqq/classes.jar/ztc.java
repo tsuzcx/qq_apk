@@ -1,29 +1,9 @@
-import android.os.Bundle;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import java.util.List;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import com.tencent.biz.qqstory.view.widget.InnerListView;
 
-public class ztc
-  implements BusinessObserver
+public abstract interface ztc
 {
-  public ztc(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  protected void a(boolean paramBoolean, List<String> paramList1, List<String> paramList2) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if (paramBoolean)
-    {
-      a(paramBoolean, paramBundle.getStringArrayList("nickname_list"), paramBundle.getStringArrayList("uin_list"));
-      return;
-    }
-    this.b.i();
-  }
+  public abstract void a(InnerListView paramInnerListView, View paramView, int paramInt);
 }
 
 

@@ -1,10 +1,17 @@
-public abstract interface akxh
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+
+public class akxh
+  extends biht
 {
-  public abstract void l();
+  akxh(akxg paramakxg) {}
   
-  public abstract void m();
-  
-  public abstract void n();
+  public void onDone(bihu parambihu)
+  {
+    super.onDone(parambihu);
+    ThreadManager.getFileThreadHandler().post(new PreloadImgManager.1.1(this, parambihu));
+  }
 }
 
 

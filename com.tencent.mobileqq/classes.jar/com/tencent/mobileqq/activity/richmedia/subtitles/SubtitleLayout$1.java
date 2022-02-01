@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import almq;
-import almx;
+import alyi;
+import alyp;
 import com.tencent.qphone.base.util.QLog;
 
 class SubtitleLayout$1
@@ -20,7 +20,7 @@ class SubtitleLayout$1
       SubtitleLayout.a(this.this$0, null);
       return;
     }
-    almq.a().a(true, false);
+    alyi.a().a(true, false);
     this.this$0.a();
     if (this.this$0.a != 0)
     {

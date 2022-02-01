@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.JumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
+import java.util.List;
 
-public final class rhe
-  implements Parcelable.Creator<SocializeFeedsInfo.JumpInfo>
+public class rhe
+  extends pfh
 {
-  public SocializeFeedsInfo.JumpInfo a(Parcel paramParcel)
-  {
-    return new SocializeFeedsInfo.JumpInfo(paramParcel);
-  }
+  public rhe(FollowingListFragment paramFollowingListFragment) {}
   
-  public SocializeFeedsInfo.JumpInfo[] a(int paramInt)
+  public void b(boolean paramBoolean1, List<qwb> paramList, long paramLong, boolean paramBoolean2)
   {
-    return new SocializeFeedsInfo.JumpInfo[paramInt];
+    FollowingListFragment.a(this.a, paramList);
+    if (FollowingListFragment.a(this.a) != null) {
+      FollowingListFragment.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 

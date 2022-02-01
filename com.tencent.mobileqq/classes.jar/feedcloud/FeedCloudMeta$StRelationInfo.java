@@ -16,11 +16,12 @@ public final class FeedCloudMeta$StRelationInfo
   public final PBStringField id = PBField.initString("");
   public final PBUInt32Field relation = PBField.initUInt32(0);
   public final PBUInt32Field relationState = PBField.initUInt32(0);
+  public final PBUInt32Field score = PBField.initUInt32(0);
   
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32 }, new String[] { "id", "relation", "busiData", "relationState" }, new Object[] { "", Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, StRelationInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40 }, new String[] { "id", "relation", "busiData", "relationState", "score" }, new Object[] { "", Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, StRelationInfo.class);
   }
 }
 

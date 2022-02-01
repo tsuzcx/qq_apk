@@ -1,16 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.SystemClock;
+import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
+import com.tencent.mobileqq.flutter.container.QFlutterContainerFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class auwz
-  implements View.OnClickListener
+public class auwz
 {
-  auwz(auwx paramauwx, auxb paramauxb) {}
-  
-  public void onClick(View paramView)
+  public static void a(Activity paramActivity, String paramString, Map<String, Object> paramMap)
   {
-    auwx.a(this.jdField_a_of_type_Auwx, this.jdField_a_of_type_Auxb.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.router", 2, String.format("openPage: %s", new Object[] { paramString }));
+    }
+    boolean bool = avsm.a("com.tencent.mobileqq:tool");
+    Intent localIntent = new Intent();
+    localIntent.putExtra("url", paramString);
+    localIntent.putExtra("click_millis", SystemClock.elapsedRealtime());
+    localIntent.putExtra("preload_process", bool);
+    if (paramMap != null)
+    {
+      paramString = new BoostFlutterActivity.SerializableMap();
+      paramString.setMap(paramMap);
+      localIntent.putExtra("params", paramString);
+    }
+    PublicFragmentActivityForTool.b(paramActivity, localIntent, QFlutterContainerFragment.class, 1000);
   }
 }
 

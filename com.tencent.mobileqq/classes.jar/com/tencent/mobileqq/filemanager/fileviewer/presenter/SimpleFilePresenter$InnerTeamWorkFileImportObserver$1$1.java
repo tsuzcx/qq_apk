@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import atri;
-import atrn;
+import aujd;
+import auji;
 import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
 
 class SimpleFilePresenter$InnerTeamWorkFileImportObserver$1$1

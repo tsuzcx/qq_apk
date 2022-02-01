@@ -1,58 +1,40 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.content.Context;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public abstract class aoyb
-  extends Binder
-  implements aoya
+public class aoyb
+  extends aoxg
 {
-  public aoyb()
+  public aoyb(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+    super(paramQQAppInterface, paramContext);
   }
   
-  public static aoya a(IBinder paramIBinder)
+  public boolean a()
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof aoya))) {
-      return (aoya)localIInterface;
-    }
-    return new aoyc(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    try
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      a(paramParcel1.readInt(), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
+      if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey("scheme")) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey("msgid")) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey("busiid")))
+      {
+        String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("msgid");
+        String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("busiid");
+        String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("scheme");
+        String str1 = "";
+        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("domain")) {
+          str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("domain");
+        }
+        QQNotifySettingFragment.a(this.jdField_a_of_type_AndroidContentContext, str2, str3, str4, str1);
+      }
+      return false;
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-    b(paramParcel1.readInt(), paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    catch (Exception localException)
+    {
+      QLog.e("QQNotifySettingAction", 1, "doAction error: " + localException.getMessage());
+      a("QQNotifySettingAction");
+    }
+    return false;
   }
 }
 

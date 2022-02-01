@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.bubble;
 
-import atbx;
-import atcv;
-import atvo;
-import atwl;
+import atts;
+import atup;
+import aunj;
+import auog;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class OfflineFileBubbleModel$3
   implements Runnable
 {
-  public OfflineFileBubbleModel$3(atbx paramatbx, FileManagerEntity paramFileManagerEntity) {}
+  public OfflineFileBubbleModel$3(atts paramatts, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    atvo.c(this.a);
-    if (atwl.b(this.a.strLargeThumPath)) {
+    aunj.c(this.a);
+    if (auog.b(this.a.strLargeThumPath)) {
       this.this$0.a.a().c(this.a);
     }
   }

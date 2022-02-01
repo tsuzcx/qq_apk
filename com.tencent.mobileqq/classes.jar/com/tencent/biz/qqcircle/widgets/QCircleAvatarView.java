@@ -9,15 +9,16 @@ import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import aoch;
-import bggq;
+import bhgr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.widget.SquareImageView;
 import feedcloud.FeedCloudMeta.StUser;
-import uxh;
-import uxx;
+import uyn;
+import uys;
+import uzg;
 
 public class QCircleAvatarView
   extends FrameLayout
@@ -31,7 +32,7 @@ public class QCircleAvatarView
   private int d;
   private int e;
   private int f;
-  private int g = 2130843886;
+  private int g = 2130843904;
   
   public QCircleAvatarView(Context paramContext)
   {
@@ -54,8 +55,8 @@ public class QCircleAvatarView
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.QCircleAvatarView);
     if (paramContext != null)
     {
-      this.jdField_a_of_type_Int = ((int)paramContext.getDimension(4, bggq.a(getContext(), 24.0F)));
-      this.jdField_b_of_type_Int = ((int)paramContext.getDimension(1, bggq.a(getContext(), 24.0F)));
+      this.jdField_a_of_type_Int = ((int)paramContext.getDimension(4, bhgr.a(getContext(), 24.0F)));
+      this.jdField_b_of_type_Int = ((int)paramContext.getDimension(1, bhgr.a(getContext(), 24.0F)));
       this.c = paramContext.getColor(5, 0);
       this.d = ((int)paramContext.getDimension(6, 0.0F));
       this.jdField_a_of_type_Boolean = paramContext.getBoolean(0, true);
@@ -70,7 +71,7 @@ public class QCircleAvatarView
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setLayoutParams(paramContext);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setRoundRect(90);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundDrawable(getResources().getDrawable(2130840264));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundDrawable(getResources().getDrawable(2130840274));
     if (this.c != 0) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundColor(this.c);
     }
@@ -87,15 +88,15 @@ public class QCircleAvatarView
   
   public void setAvatar(AppInterface paramAppInterface, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundDrawable(aoch.a(paramAppInterface, 1, 4, paramString));
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView != null) && ((paramAppInterface instanceof QQAppInterface))) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundDrawable(uyn.a((QQAppInterface)paramAppInterface, paramString));
     }
   }
   
   public void setAvatarUrl(String paramString)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView != null) {
-      uxh.a(paramString, this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
+      uys.a(paramString, this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
     }
   }
   
@@ -136,7 +137,7 @@ public class QCircleAvatarView
     if ((paramStUser != null) && (!TextUtils.isEmpty(paramStUser.id.get())))
     {
       setAvatar(paramAppInterface, paramStUser.id.get());
-      setIsAuth(uxx.c(paramStUser));
+      setIsAuth(uzg.c(paramStUser));
     }
   }
 }

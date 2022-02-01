@@ -1,73 +1,76 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import tencent.im.s2c.msgtype0x210.submsgtype0xc7.submsgtype0xc7.RelationalChainInfo;
 
 public class agia
 {
-  int jdField_a_of_type_Int = 2;
-  public List<aghx> a;
-  boolean jdField_a_of_type_Boolean = false;
+  public int a;
+  public agib a;
+  public agic a;
+  public byte[] a;
   
-  public agia()
+  public static agia a(submsgtype0xc7.RelationalChainInfo paramRelationalChainInfo)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public List<aghx> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_JavaUtilList.clear();
-    aghx localaghx = new aghx();
-    localaghx.a((aghx)localArrayList.get(localArrayList.size() - 1));
-    this.jdField_a_of_type_JavaUtilList.add(localaghx);
-    this.jdField_a_of_type_Boolean = true;
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-      return;
-    }
-    aghx localaghx = (aghx)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1);
-    localaghx.a.a(localaghx.b);
-    localaghx.c.a(localaghx.d);
-    localaghx.b.a(localaghx.d);
-    this.jdField_a_of_type_JavaUtilList.add(localaghx);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    aghx localaghx = new aghx();
-    localaghx.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.jdField_a_of_type_JavaUtilList.add(localaghx);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    aghx localaghx1 = new aghx();
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
+    if (paramRelationalChainInfo != null)
     {
-      a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-      return false;
+      agia localagia = new agia();
+      localagia.jdField_a_of_type_Int = paramRelationalChainInfo.uint64_type.get();
+      if (paramRelationalChainInfo.bytes_attr.has()) {
+        localagia.jdField_a_of_type_Agic = agic.a(localagia.jdField_a_of_type_Int, paramRelationalChainInfo.bytes_attr.get().toByteArray());
+      }
+      if (paramRelationalChainInfo.bytes_intimate_info.has()) {
+        localagia.jdField_a_of_type_Agib = agib.a(paramRelationalChainInfo.bytes_intimate_info.get().toByteArray());
+      }
+      if (paramRelationalChainInfo.bytes_mutualmark_alienation.has()) {
+        localagia.jdField_a_of_type_ArrayOfByte = paramRelationalChainInfo.bytes_mutualmark_alienation.get().toByteArray();
+      }
+      return localagia;
     }
-    aghx localaghx2 = (aghx)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1);
-    localaghx1.a.a(localaghx2.b);
-    localaghx1.c.a(localaghx2.d);
-    localaghx1.b.a((localaghx1.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (localaghx1.c.b + paramFloat2) / 2.0F, (localaghx1.c.c + paramFloat3) / 2.0F, (localaghx1.c.jdField_a_of_type_Long + paramLong) / 2L);
-    localaghx1.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.jdField_a_of_type_JavaUtilList.add(localaghx1);
-    if (this.jdField_a_of_type_Boolean)
+    return null;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Agic != null) {
+      return (int)this.jdField_a_of_type_Agic.b;
+    }
+    if ((this.jdField_a_of_type_Agib != null) && ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 3))) {
+      return this.jdField_a_of_type_Agib.jdField_a_of_type_Int;
+    }
+    return 0;
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_Agic != null) {
+      return (int)this.jdField_a_of_type_Agic.h;
+    }
+    return 0;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExtSnsRelationalChainPushInfo{");
+    localStringBuilder.append("relation_type:").append(this.jdField_a_of_type_Int).append(", ");
+    localStringBuilder.append("mutualMarkInfo:").append(this.jdField_a_of_type_Agic).append(", ");
+    localStringBuilder.append("intimateInfo:").append(this.jdField_a_of_type_Agib).append(", ");
+    localStringBuilder.append("relationIconFlag:");
+    if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length > 0))
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilList.remove(0);
+      int i = 0;
+      while ((i < this.jdField_a_of_type_ArrayOfByte.length) && (i < 10))
+      {
+        localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte[0]).append(" ");
+        i += 1;
+      }
     }
-    return this.jdField_a_of_type_JavaUtilList.size() > this.jdField_a_of_type_Int;
+    localStringBuilder.append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

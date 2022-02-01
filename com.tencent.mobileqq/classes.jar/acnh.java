@@ -1,75 +1,110 @@
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.ad.tangram.canvas.download.AdDownloaderAdapter;
+import com.tencent.ad.tangram.canvas.download.IAdDownloader;
+import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
+import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/MotiveBrowsingData;", "", "event", "", "script", "", "leftSecond", "(ILjava/lang/String;I)V", "getEvent", "()I", "getLeftSecond", "getScript", "()Ljava/lang/String;", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class acnh
+public class acnh
+  implements AdDownloaderAdapter
 {
-  public static final acni a;
-  private final int jdField_a_of_type_Int;
-  @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  private final int b;
-  
-  static
+  public void doDownloadAction(Activity paramActivity, Bundle paramBundle, String paramString, int paramInt)
   {
-    jdField_a_of_type_Acni = new acni(null);
+    bjtd.a().a(paramActivity, paramBundle, paramString, null, paramInt);
   }
   
-  public acnh(int paramInt1, @NotNull String paramString, int paramInt2)
+  public int getCurrentPkgDownloadProgress(Context paramContext, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
+    return acwa.c(paramContext, paramString1, paramString2);
   }
   
-  public final int a()
+  public Object getDownloadInfoByUrl(String paramString)
   {
-    return this.jdField_a_of_type_Int;
+    paramString = bjsz.a().b(paramString);
+    paramString.m = "biz_src_ads";
+    return paramString;
   }
   
-  @NotNull
-  public final String a()
+  public IAdDownloader getDownloader()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this;
   }
   
-  public final int b()
+  public int getProgress(Object paramObject)
   {
-    return this.b;
+    if (!(paramObject instanceof DownloadInfo)) {
+      return 0;
+    }
+    paramObject = (DownloadInfo)DownloadInfo.class.cast(paramObject);
+    if (paramObject != null) {}
+    for (int i = paramObject.f;; i = 0) {
+      return i;
+    }
   }
   
-  public boolean equals(@Nullable Object paramObject)
+  public void installDownload(Object paramObject)
   {
-    if (this != paramObject)
+    if ((paramObject instanceof DownloadInfo)) {
+      bjsz.a().a((DownloadInfo)paramObject);
+    }
+    while (!(paramObject instanceof Bundle)) {
+      return;
+    }
+    bjtd.a((Bundle)paramObject);
+  }
+  
+  public boolean isCurrentPkgTask(Pair<String, String> paramPair, Object paramObject)
+  {
+    if ((paramPair == null) || (TextUtils.isEmpty((CharSequence)paramPair.first)) || (TextUtils.isEmpty((CharSequence)paramPair.second)) || (!(paramObject instanceof AdAppBtnData))) {}
+    do
     {
-      if ((paramObject instanceof acnh))
+      do
       {
-        paramObject = (acnh)paramObject;
-        if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (this.b != paramObject.b)) {}
-      }
-    }
-    else {
-      return true;
-    }
-    return false;
+        return false;
+        paramPair = bjsz.a().b((String)paramPair.first);
+      } while (paramPair == null);
+      paramObject = (AdAppBtnData)paramObject;
+    } while ((TextUtils.isEmpty(paramPair.e)) || (TextUtils.isEmpty(paramPair.c)) || (TextUtils.isEmpty(paramObject.packageName)) || (TextUtils.isEmpty(paramObject.mGdtAd_appId)));
+    return (paramPair.e.equals(paramObject.packageName)) && (paramPair.c.equals(paramObject.mGdtAd_appId));
   }
   
-  public int hashCode()
+  public int isPkgDownloadPaused(Context paramContext, String paramString1, String paramString2)
   {
-    int j = this.jdField_a_of_type_Int;
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0) {
-      return (i + j * 31) * 31 + this.b;
+    return acwa.b(paramContext, paramString1, paramString2);
+  }
+  
+  public int isPkgDownloading(Context paramContext, String paramString1, String paramString2)
+  {
+    return acwa.a(paramContext, paramString1, paramString2);
+  }
+  
+  public boolean isPkgExist(Context paramContext, String paramString1, String paramString2)
+  {
+    return acwa.b(paramContext, paramString2);
+  }
+  
+  public void pauseDownload(String paramString1, String paramString2)
+  {
+    bjsz.a().a(paramString2);
+  }
+  
+  public void registerListener(IAdDownloader.Callback paramCallback)
+  {
+    if ((paramCallback instanceof DownloadListener)) {
+      bjsz.a().a((DownloadListener)paramCallback);
     }
   }
   
-  @NotNull
-  public String toString()
+  public void unregisterListener(IAdDownloader.Callback paramCallback)
   {
-    return "MotiveBrowsingData(event=" + this.jdField_a_of_type_Int + ", script=" + this.jdField_a_of_type_JavaLangString + ", leftSecond=" + this.b + ")";
+    if ((paramCallback instanceof DownloadListener)) {
+      bjsz.a().b((DownloadListener)paramCallback);
+    }
   }
 }
 

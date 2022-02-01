@@ -1,46 +1,23 @@
-import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import okhttp3.ConnectionPool;
-import okhttp3.Dispatcher;
-import okhttp3.OkHttpClient;
-import okhttp3.OkHttpClient.Builder;
-import okhttp3.Protocol;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayaj
+  implements View.OnClickListener
 {
-  private static final ConnectionPool jdField_a_of_type_Okhttp3ConnectionPool = new ConnectionPool(10, 60L, TimeUnit.SECONDS);
-  private static final Dispatcher jdField_a_of_type_Okhttp3Dispatcher = new Dispatcher();
-  private static volatile OkHttpClient jdField_a_of_type_Okhttp3OkHttpClient;
+  public ayaj(NearbyGuideActivity paramNearbyGuideActivity) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_Okhttp3Dispatcher.setMaxRequests(64);
-    jdField_a_of_type_Okhttp3Dispatcher.setMaxRequestsPerHost(8);
-    a(30000L);
-  }
-  
-  private static OkHttpClient.Builder a(long paramLong, boolean paramBoolean)
-  {
-    OkHttpClient.Builder localBuilder = new OkHttpClient.Builder();
-    if (paramBoolean) {}
-    for (List localList = Arrays.asList(new Protocol[] { Protocol.HTTP_2, Protocol.HTTP_1_1 });; localList = Arrays.asList(new Protocol[] { Protocol.HTTP_1_1 })) {
-      return localBuilder.protocols(localList).connectTimeout(paramLong, TimeUnit.MILLISECONDS).readTimeout(paramLong, TimeUnit.MILLISECONDS).writeTimeout(paramLong, TimeUnit.MILLISECONDS).connectionPool(jdField_a_of_type_Okhttp3ConnectionPool).dispatcher(jdField_a_of_type_Okhttp3Dispatcher);
+    if ((this.a.a != null) && (!this.a.isFinishing()))
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+      this.a.e("0X800590A");
     }
-  }
-  
-  public static OkHttpClient a()
-  {
-    if (jdField_a_of_type_Okhttp3OkHttpClient == null) {
-      a(30000L);
-    }
-    return jdField_a_of_type_Okhttp3OkHttpClient;
-  }
-  
-  private static void a(long paramLong)
-  {
-    jdField_a_of_type_Okhttp3OkHttpClient = a(paramLong, GameWnsUtils.enableHttp2()).build();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

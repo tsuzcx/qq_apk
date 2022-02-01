@@ -1,8 +1,14 @@
-public abstract interface baoq
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+
+public class baoq
+  implements bljb
 {
-  public abstract void a(bnjk parambnjk);
+  public baoq(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public abstract void a(String paramString);
+  public void onDismiss()
+  {
+    bdll.b(this.a.app, "CliOper", "", "", "0X8005AFA", "0X8005AFA", 0, 0, "", "", "", "");
+  }
 }
 
 

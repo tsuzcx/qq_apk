@@ -1,103 +1,69 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.util.Pair;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import java.util.List;
-import org.json.JSONArray;
 
 public class xxl
-  extends JobSegment<List<String>, List<String>>
-  implements www
+  extends wjm<xxj, xbq>
 {
-  private String a = "story.icon.UidListToUrlListSegment";
-  
-  public xxl(String paramString) {}
-  
-  private Pair<List<String>, Boolean> a(List<String> paramList)
+  public xxl(xxj paramxxj)
   {
-    ArrayList localArrayList = new ArrayList();
-    wpy localwpy = (wpy)wpm.a(2);
-    paramList = paramList.iterator();
-    boolean bool = true;
-    if (paramList.hasNext())
-    {
-      QQUserUIItem localQQUserUIItem = localwpy.b((String)paramList.next());
-      if ((localQQUserUIItem != null) && (localQQUserUIItem.headUrl != null)) {
-        localArrayList.add(localQQUserUIItem.headUrl);
-      }
-      for (;;)
-      {
-        break;
-        localArrayList.add("stub_url");
-        bool = false;
-      }
-    }
-    return new Pair(localArrayList, Boolean.valueOf(bool));
+    super(paramxxj);
   }
   
-  private void b(List<String> paramList)
+  public void a(@NonNull xxj paramxxj, @NonNull xbq paramxbq)
   {
-    xwv.a(this.a, "fireRefreshUserInfo : %s", new JSONArray(paramList));
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localArrayList.add(new wqt(null, (String)paramList.next()));
-    }
-    new wwv(this).a(1, localArrayList);
-  }
-  
-  protected void a(JobContext paramJobContext, List<String> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      notifyError(new ErrorMessage(-1, ""));
-    }
-    do
+    if (xxj.a(paramxxj) != 1) {}
+    label149:
+    label209:
+    label218:
+    for (;;)
     {
       return;
-      paramJobContext = Collections.unmodifiableList(paramList);
-      paramList = a(paramJobContext);
-      xwv.a(this.a, "getUnionIdListFromCache ok=%s", paramList.second);
-      a((List)paramList.first);
-    } while (((Boolean)paramList.second).booleanValue());
-    xwv.a(this.a, "fireRefreshUserInfo");
-    b(paramJobContext);
-  }
-  
-  protected void a(List<String> paramList)
-  {
-    xwv.a(this.a, "notifyResult url list : " + new JSONArray(paramList));
-    if (paramList.size() == 1)
-    {
-      xwv.b(this.a, "add one more default item because of product logic");
-      paramList.add("stub_url");
-    }
-    super.notifyResult(paramList);
-  }
-  
-  public void a(wwx paramwwx)
-  {
-    if ((paramwwx == null) || (paramwwx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramwwx.jdField_a_of_type_JavaUtilList == null))
-    {
-      xwv.b(this.a, "refresh user info fail %s", paramwwx);
-      if (paramwwx == null) {}
-      for (paramwwx = new ErrorMessage(-1, "event is null");; paramwwx = paramwwx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage)
+      int i = 0;
+      StoryVideoItem localStoryVideoItem;
+      if (i < paramxbq.a.size())
       {
-        notifyError(paramwwx);
-        return;
+        localStoryVideoItem = (StoryVideoItem)paramxbq.a.get(i);
+        if (!localStoryVideoItem.mVid.equals(xxj.a(paramxxj))) {}
+      }
+      for (paramxbq = localStoryVideoItem;; paramxbq = null)
+      {
+        if ((paramxbq == null) || (paramxbq.mErrorCode != 0)) {
+          break label218;
+        }
+        localStoryVideoItem = xxj.a(paramxxj).a();
+        i = localStoryVideoItem.comparedLevel;
+        int j = xxj.a(paramxxj).a.jdField_a_of_type_Int;
+        String str = xxj.a(paramxxj).a.jdField_a_of_type_JavaLangString;
+        xxj.a(paramxxj, xxj.a(paramxxj), str, false, i, j);
+        paramxxj = ((wtt)wth.a(2)).b(paramxbq.mOwnerUid);
+        if ((paramxxj != null) && (paramxxj.isVip))
+        {
+          i = 1;
+          if (i == 0) {
+            break label209;
+          }
+        }
+        for (paramxxj = "2";; paramxxj = "1")
+        {
+          yup.a("play_video", "multishoot_entry_clk", 0, j, new String[] { paramxxj, paramxbq.mVid, paramxbq.mOwnerUid, localStoryVideoItem.mVid });
+          return;
+          i += 1;
+          break;
+          i = 0;
+          break label149;
+        }
       }
     }
-    xwv.a(this.a, "refresh user info success, let's return the new info");
-    ArrayList localArrayList = new ArrayList();
-    paramwwx = paramwwx.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramwwx.hasNext()) {
-      localArrayList.add(((QQUserUIItem)paramwwx.next()).headUrl);
-    }
-    a(localArrayList);
   }
+  
+  public Class acceptEventClass()
+  {
+    return xbq.class;
+  }
+  
+  public void b(@NonNull xxj paramxxj, @NonNull xbq paramxbq) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bgmg;
+import bhmi;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -11,7 +11,7 @@ class PtvTemplateManager$13
   
   public void run()
   {
-    bgmg.a(PtvTemplateManager.b.getPath() + File.separator, "doodle_template_new.cfg", this.a);
+    bhmi.a(PtvTemplateManager.b.getPath() + File.separator, "doodle_template_new.cfg", this.a);
     if (QLog.isColorLevel()) {
       QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "save Config to file finish.");
     }

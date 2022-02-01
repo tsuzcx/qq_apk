@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.biz.qqstory.view.segment.SegmentList;
-import ygw;
+import ykr;
 
 public class StoryMemoriesReloadListView
   extends SegmentList
@@ -28,7 +28,7 @@ public class StoryMemoriesReloadListView
   
   public void a()
   {
-    a(new ygw(this.a));
+    a(new ykr(this.a));
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
     super.setHorizontalScrollBarEnabled(false);

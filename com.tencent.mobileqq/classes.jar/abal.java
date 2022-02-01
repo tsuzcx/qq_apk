@@ -1,20 +1,69 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-class abal
-  extends aoou
+public class abal
+  extends arac<abak>
 {
-  abal(abak paramabak, String paramString)
+  @NonNull
+  public abak a(int paramInt)
   {
-    super(paramString);
+    return new abak();
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  @Nullable
+  public abak a(araj[] paramArrayOfaraj)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("LocationPlugin", 2, "onLocationFinish errCode = " + paramInt);
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    {
+      abak localabak = abak.a(paramArrayOfaraj[0].a);
+      a(localabak);
+      QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
+      return localabak;
     }
-    abaj.a(this.a.jdField_a_of_type_Abaj, paramSosoLbsInfo, this.a.jdField_a_of_type_JavaLangString);
+    return null;
+  }
+  
+  public void a(abak paramabak)
+  {
+    QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onUpdate ");
+    if (paramabak != null)
+    {
+      QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onUpdate " + paramabak.toString());
+      abac.a().a("sticky_note_publish_entrance_config", paramabak.a());
+    }
+  }
+  
+  public Class<abak> clazz()
+  {
+    return abak.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 595;
   }
 }
 

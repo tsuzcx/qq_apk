@@ -1,14 +1,12 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.view.View;
 
-public final class blpr
+public abstract interface blpr
 {
-  private static SharedPreferences b(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("reader_user" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
-  }
+  public abstract void a_(View paramView);
+  
+  public abstract void e(boolean paramBoolean);
+  
+  public abstract void f();
 }
 
 

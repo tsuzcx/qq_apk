@@ -1,23 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton;
+import android.graphics.Color;
 
-public class bixy
-  implements DialogInterface.OnClickListener
+public abstract interface bixy
 {
-  public bixy(ApkFileDownloadButton paramApkFileDownloadButton, DownloadInfo paramDownloadInfo) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.h();
-    ApkFileDownloadButton.a(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-    bisp.b(bisr.a().a("400").k(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.a).j("5").l(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.c).m(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.d).a(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.h).b(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.f).g(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.e));
-  }
+  public static final int b = bhtq.b(0.5F);
+  public static final int c = Color.parseColor("#EBEDF5");
+  public static final int d = bhtq.b(16.0F);
+  public static final int e = bhtq.b(9.0F);
+  public static final int f = bhtq.b(15.0F);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bixy
  * JD-Core Version:    0.7.0.1
  */

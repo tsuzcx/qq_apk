@@ -1,28 +1,21 @@
-import android.os.Bundle;
-import java.util.UUID;
+import java.util.HashMap;
 
-class bexh
-  extends aarj
+public class bexh
 {
-  bexh(bexg parambexg) {}
+  public static long a;
+  public static Object a;
+  public static HashMap<Long, Object> a;
+  public static long b;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  static
   {
-    if (paramBundle.getLong("troopUin") != bexg.a(this.a)) {}
-    do
-    {
-      return;
-      paramBundle = paramBundle.getString("itemKey");
-    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
-    if (!paramBoolean) {
-      bevx.a("TroopFileToTroopForwarder", bevx.a, "[" + bexg.a(this.a) + "] onFowardToTroopResult isSuccess:false ");
-    }
-    bexg.a(this.a, paramInt1, paramInt2, paramString1, paramString2, paramString3);
+    jdField_a_of_type_JavaLangObject = new Object();
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bexh
  * JD-Core Version:    0.7.0.1
  */

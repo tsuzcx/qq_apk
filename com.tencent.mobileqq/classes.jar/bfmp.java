@@ -1,16 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import android.content.DialogInterface.OnDismissListener;
 
-public class bfmp
-  implements DialogInterface.OnClickListener
+class bfmp
+  implements DialogInterface.OnDismissListener
 {
-  public bfmp(VisitorTroopCardFragment paramVisitorTroopCardFragment, boolean paramBoolean) {}
+  bfmp(bfmn parambfmn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      bfng.a(2, new Object());
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
   }
 }

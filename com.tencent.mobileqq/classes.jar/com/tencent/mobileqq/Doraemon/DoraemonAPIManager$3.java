@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.Doraemon;
 
-import adea;
-import aded;
+import admy;
+import adnb;
 import org.json.JSONObject;
 
 public class DoraemonAPIManager$3
   implements Runnable
 {
-  public DoraemonAPIManager$3(aded paramaded, String paramString, JSONObject paramJSONObject, adea paramadea) {}
+  public DoraemonAPIManager$3(adnb paramadnb, String paramString, JSONObject paramJSONObject, admy paramadmy) {}
   
   public void run()
   {
-    aded.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Adea);
+    adnb.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Admy);
   }
 }
 

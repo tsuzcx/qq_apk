@@ -2,8 +2,8 @@ package com.tencent.mobileqq.minigame.publicaccount;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import anhk;
-import aoqq;
+import antf;
+import apeg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -51,7 +51,7 @@ public class MiniGamePublicAccountIPCModule
     try
     {
       int j = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGamePublicAccountMsgListCount", 4);
-      List localList = paramQQAppInterface.a().a(anhk.aW, 1008, 10);
+      List localList = paramQQAppInterface.a().a(antf.aW, 1008, 10);
       ArrayList localArrayList = new ArrayList();
       int i;
       if ((localList != null) && (localList.size() > 0)) {
@@ -62,7 +62,7 @@ public class MiniGamePublicAccountIPCModule
         if (i >= 0)
         {
           MessageRecord localMessageRecord = (MessageRecord)localList.get(i);
-          if (anhk.aW.equals(localMessageRecord.frienduin))
+          if (antf.aW.equals(localMessageRecord.frienduin))
           {
             String str = paramQQAppInterface.getAccount();
             if ((localMessageRecord instanceof MessageForArkApp))
@@ -107,7 +107,7 @@ public class MiniGamePublicAccountIPCModule
         paramMessageRecord = new JSONObject((String)localObject1).optString("report_key_bytes_oac_msg_extend", "");
         if (!TextUtils.isEmpty(paramMessageRecord))
         {
-          Bundle localBundle = aoqq.a(paramMessageRecord);
+          Bundle localBundle = apeg.a(paramMessageRecord);
           if ((localBundle != null) && (!TextUtils.isEmpty(paramQQGameMsgInfo.arkMetaList)))
           {
             localObject2 = new JSONObject(paramQQGameMsgInfo.arkMetaList);
@@ -158,7 +158,7 @@ public class MiniGamePublicAccountIPCModule
         return null;
       }
     } while (!"action_do_on_resume".equals(paramString));
-    ((QQAppInterface)paramBundle).a().a(anhk.aW, 1008, true, true);
+    ((QQAppInterface)paramBundle).a().a(antf.aW, 1008, true, true);
     return null;
   }
 }

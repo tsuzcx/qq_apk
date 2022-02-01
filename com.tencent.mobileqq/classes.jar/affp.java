@@ -1,19 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 public class affp
-  implements DialogInterface.OnClickListener
+  implements bbgw
 {
-  public affp(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  public affp(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(float paramFloat)
   {
-    QQSettingCleanActivity.a(this.a);
-    bcst.b(this.a.app, "dc00898", "", "", "0X8007546", "0X8007546", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
-    this.a.finish();
+    if (paramFloat < 0.0F)
+    {
+      this.a.a(this.a.getString(2131693860));
+      return;
+    }
+    if (paramFloat > 175.0F)
+    {
+      this.a.a(this.a.getString(2131693859));
+      return;
+    }
+    QQIdentiferActivity.a(this.a).setText("");
   }
 }
 

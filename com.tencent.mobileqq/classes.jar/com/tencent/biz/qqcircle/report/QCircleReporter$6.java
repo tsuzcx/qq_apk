@@ -2,17 +2,17 @@ package com.tencent.biz.qqcircle.report;
 
 import java.util.List;
 import qqcircle.QQCircleReport.SingleDcData;
-import vrl;
+import vtw;
 
 public class QCircleReporter$6
   implements Runnable
 {
-  public QCircleReporter$6(vrl paramvrl, QQCircleReport.SingleDcData paramSingleDcData) {}
+  public QCircleReporter$6(vtw paramvtw, QQCircleReport.SingleDcData paramSingleDcData) {}
   
   public void run()
   {
-    vrl.d(this.this$0).add(this.a);
-    vrl.a(this.this$0);
+    vtw.d(this.this$0).add(this.a);
+    vtw.a(this.this$0);
   }
 }
 

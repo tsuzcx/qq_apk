@@ -126,6 +126,7 @@ public class AppUIProxy$LoadingUI
     localLayoutParams1.topMargin = DisplayUtil.dip2px(getContext(), 60.0F);
     localLayoutParams1.addRule(14, -1);
     this.mLogoView.setRoundRect(40);
+    this.mLogoView.setLayerType(1, null);
     this.mRootView.addView(this.mLogoView, localLayoutParams1);
     this.mNameView = new TextView(getContext());
     this.mNameView.setId(R.id.game_name);

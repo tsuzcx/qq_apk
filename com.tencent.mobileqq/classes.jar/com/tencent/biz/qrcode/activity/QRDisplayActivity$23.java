@@ -1,25 +1,19 @@
 package com.tencent.biz.qrcode.activity;
 
 import android.view.View;
-import zsq;
+import bhga;
+import zvk;
 
-public class QRDisplayActivity$23
+class QRDisplayActivity$23
   implements Runnable
 {
-  QRDisplayActivity$23(QRDisplayActivity paramQRDisplayActivity, boolean paramBoolean) {}
+  QRDisplayActivity$23(QRDisplayActivity paramQRDisplayActivity) {}
   
   public void run()
   {
-    if (this.a)
-    {
-      this.this$0.d.setOnClickListener(null);
-      this.this$0.d.setClickable(false);
-      this.this$0.d.setOnTouchListener(new zsq(this));
-      return;
-    }
-    this.this$0.d.setClickable(true);
-    this.this$0.d.setOnClickListener(this.this$0);
-    this.this$0.d.setTouchDelegate(null);
+    zvk localzvk = new zvk(this.this$0.d, this.this$0);
+    this.this$0.d.setAccessibilityDelegate(localzvk);
+    bhga.a(this.this$0.a, false);
   }
 }
 

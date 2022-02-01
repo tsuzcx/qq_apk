@@ -8,16 +8,17 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import bndd;
-import bnqb;
-import bnyl;
-import bnzc;
-import bnzl;
-import bnzm;
-import bnzp;
-import bobu;
+import boem;
+import born;
+import bozv;
+import bpan;
+import bpbg;
+import bpbh;
+import bpbk;
+import bpdp;
 import com.tencent.aekit.api.standard.ai.AIManager;
 import com.tencent.mobileqq.activity.aio.photo.PeakFragmentActivity;
+import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.tavcut.TAVCut;
 import com.tencent.ttpic.openapi.PTFaceDetector;
@@ -31,25 +32,26 @@ import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.List;
+import vuc;
 
 public class AEEditorActivity
   extends PeakFragmentActivity
 {
   private static final String jdField_a_of_type_JavaLangString = AEEditorActivity.class.getSimpleName();
-  private bnzp jdField_a_of_type_Bnzp;
-  private List<bnzm> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private bpbk jdField_a_of_type_Bpbk;
+  private List<bpbh> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private List<String> b = new ArrayList();
   private List<String> c = new ArrayList();
   
   private void a()
   {
-    if (!bndd.a()) {
-      this.jdField_a_of_type_JavaUtilList.add(new bnzm(this, -1));
+    if (!boem.a()) {
+      this.jdField_a_of_type_JavaUtilList.add(new bpbh(this, -1));
     }
     for (;;)
     {
-      TAVCut.initTAVCut(getApplicationContext(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), new bnzl(this));
+      TAVCut.initTAVCut(getApplicationContext(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), new bpbg(this));
       return;
       a(FeatureManager.Features.YT_COMMON.init(), -2);
       a(FeatureManager.Features.PTU_TOOLS.init(), -3);
@@ -63,67 +65,74 @@ public class AEEditorActivity
   private void a(boolean paramBoolean, int paramInt)
   {
     if (!paramBoolean) {
-      this.jdField_a_of_type_JavaUtilList.add(new bnzm(this, paramInt));
+      this.jdField_a_of_type_JavaUtilList.add(new bpbh(this, paramInt));
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {}
+    VideoReport.addToDetectionWhitelist(getActivity());
+    VideoReport.setPageId(this, "small_world_base");
+    VideoReport.setPageParams(this, new vuc().a(jdField_a_of_type_JavaLangString).a());
   }
   
   private void c()
+  {
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {}
+  }
+  
+  private void d()
   {
     Bundle localBundle = new Bundle();
     if (getIntent().getExtras() != null) {
       localBundle = getIntent().getExtras();
     }
-    this.jdField_a_of_type_Bnzp = new bnzp(getSupportFragmentManager());
-    this.jdField_a_of_type_Bnzp.a(localBundle);
+    this.jdField_a_of_type_Bpbk = new bpbk(getSupportFragmentManager());
+    this.jdField_a_of_type_Bpbk.a(localBundle);
   }
   
-  private void d()
+  private void e()
   {
     Intent localIntent = getIntent();
     int i = localIntent.getIntExtra("editorType", -1);
     int j = localIntent.getIntExtra("editorFrom", -1);
-    if ((j == bnqb.x.a()) || (j == bnqb.z.a())) {
+    if ((j == born.x.a()) || (j == born.z.a())) {
       if (i == 0) {
-        bnyl.a().a().b = bnyl.b.longValue();
+        bozv.a().a().b = bozv.b.longValue();
       }
     }
     for (;;)
     {
-      bnyl.a().a().jdField_a_of_type_JavaLangString = bnyl.a().a();
+      bozv.a().a().jdField_a_of_type_JavaLangString = bozv.a().b();
       return;
       if (i == 1)
       {
-        bnyl.a().a().b = bnyl.c.longValue();
+        bozv.a().a().b = bozv.c.longValue();
       }
       else
       {
-        bnyl.a().a().b = bnyl.a.longValue();
+        bozv.a().a().b = bozv.a.longValue();
         continue;
-        if ((j == bnqb.y.a()) || (j == bnqb.A.a()))
+        if ((j == born.y.a()) || (j == born.A.a()))
         {
           if (i == 0) {
-            bnyl.a().a().b = bnyl.d.longValue();
+            bozv.a().a().b = bozv.d.longValue();
           } else if (i == 1) {
-            bnyl.a().a().b = bnyl.e.longValue();
+            bozv.a().a().b = bozv.e.longValue();
           } else {
-            bnyl.a().a().b = bnyl.a.longValue();
+            bozv.a().a().b = bozv.a.longValue();
           }
         }
         else {
-          bnyl.a().a().b = bnyl.a.longValue();
+          bozv.a().a().b = bozv.a.longValue();
         }
       }
     }
   }
   
-  public bnzp a()
+  public bpbk a()
   {
-    return this.jdField_a_of_type_Bnzp;
+    return this.jdField_a_of_type_Bpbk;
   }
   
   @Override
@@ -136,23 +145,23 @@ public class AEEditorActivity
   
   public void doOnBackPressed()
   {
-    if (this.jdField_a_of_type_Bnzp != null) {
-      this.jdField_a_of_type_Bnzp.a(this, true);
+    if (this.jdField_a_of_type_Bpbk != null) {
+      this.jdField_a_of_type_Bpbk.a(this, true);
     }
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    bnzc.a();
-    this.jdField_a_of_type_Boolean = bnzc.a();
+    bpan.a();
+    this.jdField_a_of_type_Boolean = bpan.a();
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = true;
     setImmersiveStatus(getResources().getColor(2131165215));
     super.doOnCreate(paramBundle);
-    setContentView(2131558537);
+    setContentView(2131558539);
     if (Build.VERSION.SDK_INT >= 19)
     {
-      paramBundle = (RelativeLayout)findViewById(2131376788);
+      paramBundle = (RelativeLayout)findViewById(2131376925);
       int i = getStatusBarHeight();
       paramBundle.setPadding(paramBundle.getPaddingLeft(), i + paramBundle.getPaddingTop(), paramBundle.getPaddingRight(), paramBundle.getPaddingBottom());
     }
@@ -160,17 +169,18 @@ public class AEEditorActivity
       ImmersiveUtils.a(true, getWindow());
     }
     a();
-    b();
-    bobu.a();
     c();
+    bpdp.a();
     d();
+    e();
+    b();
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bobu.b();
+    bpdp.b();
   }
   
   public boolean isWrapContent()

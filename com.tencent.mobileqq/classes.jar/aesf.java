@@ -1,20 +1,20 @@
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aesf
   implements View.OnClickListener
 {
-  public aesf(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public aesf(GeneralSettingActivity paramGeneralSettingActivity) {}
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
+    Intent localIntent = new Intent(this.a, FontSettingActivity.class);
     this.a.startActivity(localIntent);
-    bcst.b(this.a.app, "CliOper", "", "", "0X800403C", "0X800403C", 0, 0, "", "", "", "");
+    bdll.b(this.a.app, "CliOper", "", "", "Setting_tab", "0X8004FA2", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

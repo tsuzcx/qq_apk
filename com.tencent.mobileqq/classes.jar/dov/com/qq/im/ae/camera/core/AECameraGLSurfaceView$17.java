@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bnid;
+import bojl;
 
 class AECameraGLSurfaceView$17
   implements Runnable
@@ -9,9 +9,9 @@ class AECameraGLSurfaceView$17
   
   public void run()
   {
-    bnid localbnid = (bnid)AECameraGLSurfaceView.a(this.this$0);
-    if (localbnid != null) {
-      localbnid.b(this.a);
+    bojl localbojl = (bojl)AECameraGLSurfaceView.a(this.this$0);
+    if (localbojl != null) {
+      localbojl.b(this.a);
     }
   }
 }

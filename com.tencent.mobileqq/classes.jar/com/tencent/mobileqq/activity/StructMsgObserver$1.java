@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import affw;
-import afsd;
+import afpa;
+import agbh;
 
 public class StructMsgObserver$1
   implements Runnable
 {
-  public StructMsgObserver$1(affw paramaffw, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  public StructMsgObserver$1(afpa paramafpa, String paramString1, int paramInt, String paramString2, String paramString3) {}
   
   public void run()
   {
-    afsd.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
+    agbh.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

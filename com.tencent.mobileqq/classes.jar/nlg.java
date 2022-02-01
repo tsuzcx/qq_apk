@@ -1,71 +1,87 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import java.util.HashMap;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
+import tencent.im.troop_search_popclassifc.popclassifc.RspBody;
+import tencent.im.troop_search_searchtab.searchtab.RspBody;
 
-class nlg
-  implements ITMAssistantDownloadClientListener
+public class nlg
+  implements BusinessObserver
 {
-  nlg(nlf paramnlf) {}
+  protected int a;
+  protected WeakReference<nlf> a;
+  protected WeakReference<QQAppInterface> b;
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public nlg(nlf paramnlf, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if (paramTMAssistantDownloadClient == null) {}
-    do
-    {
-      return;
-      paramTMAssistantDownloadClient = (nla)nlf.a().get(paramString);
-    } while ((paramTMAssistantDownloadClient == null) || (paramTMAssistantDownloadClient.a == null));
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    paramTMAssistantDownloadClient.a.progress(i);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramnlf);
+    this.b = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OfflineDownload", 2, "task onDownloadSDKTaskStateChanged + url = " + paramString1 + ", state = " + paramInt1 + ", errorCode = " + paramInt2);
-    }
-    if (paramTMAssistantDownloadClient == null) {
-      this.a.a(null, paramString1, null, -1, "client is null, " + paramString2);
-    }
-    do
+    boolean bool2 = false;
+    nlf localnlf = (nlf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject1 = (QQAppInterface)this.b.get();
+    Object localObject2;
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        do
-        {
-          return;
-          paramString2 = (nla)nlf.a().get(paramString1);
-          if ((paramString2 == null) || (paramString2.a == null))
+      localObject2 = new StringBuilder().append("InfoReqObserver: type=").append(paramInt).append(", reqType=").append(this.jdField_a_of_type_Int).append(", isSucc=").append(paramBoolean).append(", cbIsNull=");
+      if (localnlf != null) {
+        break label270;
+      }
+    }
+    label269:
+    label270:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      localObject2 = ((StringBuilder)localObject2).append(bool1).append(", appIsNull=");
+      bool1 = bool2;
+      if (localObject1 == null) {
+        bool1 = true;
+      }
+      QLog.d("AddContactTroopHandler", 2, bool1);
+      if ((localnlf != null) && (localObject1 != null)) {
+        if ((paramBoolean) && (paramBundle != null)) {
+          try
           {
-            this.a.a(null, paramString1, null, -1, "download info is null or callback is null");
-            return;
+            paramBundle = paramBundle.getByteArray("data");
+            if (paramBundle != null)
+            {
+              localObject1 = (nlh)((QQAppInterface)localObject1).getManager(80);
+              if (this.jdField_a_of_type_Int == 1)
+              {
+                localObject2 = new popclassifc.RspBody();
+                ((popclassifc.RspBody)localObject2).mergeFrom(paramBundle);
+                ((nlh)localObject1).a((popclassifc.RspBody)localObject2);
+                localnlf.a();
+                return;
+              }
+              if (this.jdField_a_of_type_Int != 2) {
+                break label269;
+              }
+              localObject2 = new searchtab.RspBody();
+              ((searchtab.RspBody)localObject2).mergeFrom(paramBundle);
+              ((nlh)localObject1).a((searchtab.RspBody)localObject2);
+              localnlf.a();
+              return;
+            }
           }
-          switch (paramInt1)
+          catch (Exception paramBundle)
           {
-          default: 
-            return;
+            if (QLog.isColorLevel()) {
+              QLog.e("AddContactTroopHandler", 2, "InfoReqObserver exp:", paramBundle);
+            }
           }
-        } while (!QLog.isColorLevel());
-        QLog.d("OfflineDownload", 2, "task downloading + url = " + paramString1);
-        return;
-        this.a.a(paramTMAssistantDownloadClient, paramString2, paramString1);
-        return;
-        this.a.a(paramString2.a, paramString1, paramString2.c, paramInt2, "offline zip download fail");
-        try
-        {
-          this.a.a.cancelDownloadTask(paramString1);
-          return;
+        } else {
+          localnlf.b();
         }
-        catch (Exception paramTMAssistantDownloadClient) {}
-      } while (!QLog.isDevelopLevel());
-      QLog.d("OfflineDownload", 4, paramTMAssistantDownloadClient.toString());
+      }
       return;
-    } while (!QLog.isColorLevel());
-    QLog.d("OfflineDownload", 2, "task paused + url = " + paramString1);
+    }
   }
-  
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
 }
 
 

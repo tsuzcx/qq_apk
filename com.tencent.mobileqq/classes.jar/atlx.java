@@ -1,6 +1,17 @@
-public abstract interface atlx
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+
+public class atlx
+  implements blln
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public atlx(QfileFavFileTabView paramQfileFavFileTabView) {}
+  
+  public void a(int paramInt)
+  {
+    if ((paramInt == this.a.jdField_a_of_type_Atjm.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
+    }
+  }
 }
 
 

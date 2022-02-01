@@ -1,16 +1,12 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-
-public class lml
+public abstract interface lml
 {
-  public long a;
-  String jdField_a_of_type_JavaLangString = null;
-  public boolean a;
+  public abstract void a(int paramInt);
   
-  public lml(AVNotifyCenter paramAVNotifyCenter) {}
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lml
  * JD-Core Version:    0.7.0.1
  */

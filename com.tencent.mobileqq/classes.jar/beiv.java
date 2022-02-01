@@ -1,22 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.theme.ThemeUtil.2.1;
+import mqq.os.MqqHandler;
 
-class beiv
-  implements bkhw
+public final class beiv
+  extends beit
 {
-  beiv(beiu parambeiu, bkho parambkho) {}
+  public beiv(QQAppInterface paramQQAppInterface) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean a(int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      this.jdField_a_of_type_Beiu.a.a(this.jdField_a_of_type_Beiu.a.a);
-    }
+    ThreadManager.getSubThreadHandler().postDelayed(new ThemeUtil.2.1(this), 1000L);
+    return super.a(paramInt);
   }
 }
 

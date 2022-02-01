@@ -1,20 +1,17 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aktt
-  implements BusinessObserver
+class aktt
+  implements View.OnClickListener
 {
-  public aktt(RedPacketManager paramRedPacketManager) {}
+  aktt(aktq paramaktq) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.a.a(paramBoolean, paramBundle);
+    this.a.onMagicStickClick(paramView, -1, new Bundle(), 2, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

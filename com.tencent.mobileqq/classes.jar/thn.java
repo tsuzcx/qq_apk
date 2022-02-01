@@ -1,238 +1,83 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyFeedbackPopupWindow.3;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.10;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.11;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.12;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.13;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.14;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.15;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.16;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.17;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.18;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.19;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.2;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.20;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.21;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.22;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.23;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.24;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.25;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.26;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.27;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.28;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.3;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.4;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.5;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.6;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.7;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.8;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.9;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import org.jetbrains.annotations.NotNull;
 
-public class thn
-  extends tgq
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/RIJBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class thn
+  extends tgo
 {
-  private int jdField_a_of_type_Int;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private snh jdField_a_of_type_Snh;
-  private tbm jdField_a_of_type_Tbm;
-  private tht jdField_a_of_type_Tht = new tho(this);
-  private View jdField_b_of_type_AndroidViewView;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private boolean jdField_b_of_type_Boolean = true;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_c_of_type_AndroidWidgetLinearLayout;
-  private ImageView d;
-  private ImageView e;
-  private ImageView f;
+  public static final tho a = new tho(null);
   
-  public thn(Activity paramActivity, snh paramsnh)
+  public thn(@NotNull BridgeModule paramBridgeModule)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_Snh = paramsnh;
-    this.jdField_a_of_type_Tbm = new tbm();
+    super(paramBridgeModule);
   }
   
-  private int a(int paramInt)
+  @NotNull
+  public String a()
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return 2;
-    case 1: 
-      return 3;
-    case 2: 
-      return 9;
-    }
-    return 10;
+    return "readinjoy";
   }
   
-  private void a(int paramInt)
+  public void a()
   {
-    if (!a()) {
-      return;
-    }
-    ((pmm)pha.a().getManager(163)).a().a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramInt, this.jdField_a_of_type_Tht);
-  }
-  
-  private void a(String paramString, int paramInt)
-  {
-    Object localObject;
-    if (b("reportData")) {
-      localObject = pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    }
-    try
-    {
-      localObject = ((phi)localObject).o(paramInt).d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessId).a();
-      oat.a(null, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.publishUin), paramString, paramString, 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId), (String)localObject, false);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.d("ReadInJoyBasePopupWindow", 1, "reportData json exception.");
-      paramString.printStackTrace();
-    }
-  }
-  
-  private boolean a()
-  {
-    if (!bgnt.g(this.jdField_a_of_type_AndroidAppActivity))
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, 2131716972, 0).a();
-      return false;
-    }
-    return true;
-  }
-  
-  private boolean a(ArticleInfo paramArticleInfo)
-  {
-    return (paramArticleInfo != null) && (paramArticleInfo.publishUin > 0L) && (pha.a() == paramArticleInfo.publishUin);
-  }
-  
-  private boolean a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null)
-    {
-      QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { paramString, ", mArticleInfo is null." });
-      return false;
-    }
-    return true;
-  }
-  
-  private boolean b(String paramString)
-  {
-    if ((a(paramString)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null)) {
-      return true;
-    }
-    QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { paramString, ", mSocialFeedInfo is null" });
-    return false;
-  }
-  
-  private void c()
-  {
-    if (a("reportFeeds")) {
-      ThreadManager.getSubThreadHandler().post(new ReadInJoyFeedbackPopupWindow.3(this));
-    }
-  }
-  
-  private void d()
-  {
-    bkho localbkho = bkho.a(this.jdField_a_of_type_AndroidAppActivity);
-    localbkho.a(2131717022);
-    localbkho.a(2131717021, 0);
-    localbkho.c(2131690582);
-    if (!localbkho.isShowing()) {
-      localbkho.show();
-    }
-    localbkho.a(new ths(this, localbkho));
-  }
-  
-  private void e()
-  {
-    if (!a()) {}
-    while (!a("shieldFeeds")) {
-      return;
-    }
-    tbf.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Tht);
-  }
-  
-  public View a(LayoutInflater paramLayoutInflater)
-  {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560057, null);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131377407));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131376402));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131365319));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131377202));
-    this.d = ((ImageView)paramLayoutInflater.findViewById(2131375040));
-    this.e = ((ImageView)paramLayoutInflater.findViewById(2131381164));
-    this.f = ((ImageView)paramLayoutInflater.findViewById(2131371236));
-    return paramLayoutInflater;
-  }
-  
-  public final void a(View paramView1, ArticleInfo paramArticleInfo, int paramInt, View paramView2)
-  {
-    QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "show, articleInfo = ", paramArticleInfo });
-    if (!this.jdField_a_of_type_Boolean) {
-      a();
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_b_of_type_AndroidViewView = paramView2;
-    this.jdField_a_of_type_Int = paramInt;
-    a(paramArticleInfo);
-    a(paramView1);
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(ArticleInfo paramArticleInfo)
-  {
-    if (a(paramArticleInfo))
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842822));
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842821));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842822));
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.e.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.d.setOnClickListener(this);
-    this.f.setOnClickListener(this);
-    setOnDismissListener(new thr(this));
-  }
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_b_of_type_Boolean = false;
-    dismiss();
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      e();
-      a("0X80095D4", 5);
-      continue;
-      c();
-      a("0X80095D4", 7);
-      continue;
-      d();
-      a("0X80095D4", 6);
-      continue;
-      a(0);
-      a("0X80095D4", 1);
-      continue;
-      a(1);
-      a("0X80095D4", 2);
-      continue;
-      a(2);
-      a("0X80095D4", 3);
-      continue;
-      a(3);
-      a("0X80095D4", 4);
-    }
+    a("openPrivateLetter", (Function2)new RIJBridgeInvokeHandler.register.1(this));
+    a("openVideo", (Function2)new RIJBridgeInvokeHandler.register.2(this));
+    a("QReport", (Function2)new RIJBridgeInvokeHandler.register.3(this));
+    a("showUGCEditPage", (Function2)new RIJBridgeInvokeHandler.register.4(this));
+    a("showMultiBiuEditPage", (Function2)new RIJBridgeInvokeHandler.register.5(this));
+    a("selectAndInviteFriend", (Function2)new RIJBridgeInvokeHandler.register.6(this));
+    a("selectAndUploadAvatar", (Function2)new RIJBridgeInvokeHandler.register.7(this));
+    a("uploadTopicPic", (Function2)new RIJBridgeInvokeHandler.register.8(this));
+    a("showPicture", (Function2)new RIJBridgeInvokeHandler.register.9(this));
+    a("openAccountPageMore", (Function2)new RIJBridgeInvokeHandler.register.10(this));
+    a("socialize_feeds_update", (Function2)new RIJBridgeInvokeHandler.register.11(this));
+    a("updateAccountCardFollowInfo", (Function2)new RIJBridgeInvokeHandler.register.12(this));
+    a("updateTopicCardFollowInfo", (Function2)new RIJBridgeInvokeHandler.register.13(this));
+    a("showVisibleUserList", (Function2)new RIJBridgeInvokeHandler.register.14(this));
+    a("getBiuTriggerType", (Function2)new RIJBridgeInvokeHandler.register.15(this));
+    a("showShareReadInJoyMenu", (Function2)new RIJBridgeInvokeHandler.register.16(this));
+    a("showUGCVideoRecordPage", (Function2)new RIJBridgeInvokeHandler.register.17(this));
+    a("showCommentEditor", (Function2)new RIJBridgeInvokeHandler.register.18(this));
+    a("showCommentEditorNative", (Function2)new RIJBridgeInvokeHandler.register.19(this));
+    a("feeds_refresh_message", (Function2)new RIJBridgeInvokeHandler.register.20(this));
+    a("isInKanDianTab", (Function2)new RIJBridgeInvokeHandler.register.21(this));
+    a("hasRedPacketSharePermission", (Function2)new RIJBridgeInvokeHandler.register.22(this));
+    a("updateRedPacketShareTime", (Function2)new RIJBridgeInvokeHandler.register.23(this));
+    a("requestRedPacketContentShareToast", (Function2)new RIJBridgeInvokeHandler.register.24(this));
+    a("clearMessageBoxData", (Function2)new RIJBridgeInvokeHandler.register.25(this));
+    a("showFollowAlertView", (Function2)new RIJBridgeInvokeHandler.register.26(this));
+    a("hideFollowAlertView", (Function2)new RIJBridgeInvokeHandler.register.27(this));
+    a("getALDConfigParams", (Function2)new RIJBridgeInvokeHandler.register.28(this));
   }
 }
 

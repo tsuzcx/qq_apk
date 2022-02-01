@@ -1,19 +1,43 @@
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2;
+import android.app.Dialog;
+import android.os.Handler;
+import java.util.HashMap;
 
-public class aiov
-  implements aipa
+class aiov
+  extends bkia
 {
-  public aiov(BlessActivity paramBlessActivity) {}
+  aiov(ainh paramainh) {}
   
-  public void a()
+  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if (BlessActivity.a(this.a) < this.a.jdField_a_of_type_Aipe.l())
+    if ((!paramBoolean) || (paramHashMap == null))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.start();
-      BlessActivity.b(this.a);
+      this.a.D(2);
+      this.a.a.sendEmptyMessageDelayed(10, 3000L);
+      return;
     }
+    if (((Integer)paramHashMap.get("result")).intValue() == 0)
+    {
+      this.a.D(1);
+      this.a.a.sendEmptyMessageDelayed(10, 3000L);
+      return;
+    }
+    this.a.an = true;
+    this.a.bE();
+    if ((ainh.a(this.a) != null) && (ainh.a(this.a).isShowing())) {
+      ainh.a(this.a).dismiss();
+    }
+    this.a.bF();
+  }
+  
+  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  {
+    if ((!paramBoolean) || (paramHashMap == null)) {
+      return;
+    }
+    this.a.aq = true;
+    this.a.ap = ((Boolean)paramHashMap.get("result")).booleanValue();
+    this.a.bE();
+    this.a.bF();
   }
 }
 

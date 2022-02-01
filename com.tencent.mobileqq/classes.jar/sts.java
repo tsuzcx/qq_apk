@@ -1,22 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class sts
-  extends Handler
+class sts
+  extends BroadcastReceiver
 {
-  public sts(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  sts(stp paramstp) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == ReadInjoyXRecyclerView.b) {
-      this.a.b();
-    }
+    this.a.g();
   }
 }
 

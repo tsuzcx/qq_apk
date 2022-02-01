@@ -1,20 +1,32 @@
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 
 public class aers
-  extends aniz
+  extends abkg
 {
-  public aers(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  public aers(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
   
-  protected void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  public abjn a(Activity paramActivity, abjt paramabjt)
   {
-    if (paramBoolean1)
-    {
-      SettingCloneUtil.writeValue(this.a.app.getApp(), paramString2, null, "qqsetting_pcactive_key", true);
-      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
-    }
+    return super.a(paramActivity, paramabjt);
+  }
+  
+  public abjp a(Activity paramActivity, abjt paramabjt)
+  {
+    this.a.a = new azvs((FriendProfilePicBrowserActivity)paramActivity, paramabjt);
+    return this.a.a;
+  }
+  
+  public abjt a(Activity paramActivity)
+  {
+    paramActivity = new ayjt(this.a, FriendProfilePicBrowserActivity.a(this.a));
+    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
+    return paramActivity;
+  }
+  
+  public abju a(Activity paramActivity, abjt paramabjt)
+  {
+    return null;
   }
 }
 

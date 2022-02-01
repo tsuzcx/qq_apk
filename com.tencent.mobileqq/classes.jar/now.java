@@ -1,26 +1,4 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-class now
-  extends Handler
-{
-  now(nov paramnov, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a = true;
-    nov.a(this.a);
-  }
-}
+class now {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,21 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import mqq.app.AppRuntime;
 
-final class nlv
-  implements HostnameVerifier
+public class nlv
 {
-  nlv(URL paramURL) {}
+  TroopMemberApiService a;
   
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  public nlv(TroopMemberApiService paramTroopMemberApiService)
   {
-    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a.getHost(), paramSSLSession);
-    if (bool) {
-      QLog.d("URLUtil", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.a.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
-    }
-    return bool;
+    this.a = paramTroopMemberApiService;
+  }
+  
+  public void a(AppRuntime paramAppRuntime, Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vashealth;
 
-import bhfq;
-import bhfv;
+import bigb;
+import bigg;
 
 public class SportManager$3$1
   implements Runnable
 {
-  public SportManager$3$1(bhfv parambhfv, String paramString) {}
+  public SportManager$3$1(bigg parambigg, String paramString) {}
   
   public void run()
   {
-    bhfq.a(this.jdField_a_of_type_JavaLangString);
+    bigb.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

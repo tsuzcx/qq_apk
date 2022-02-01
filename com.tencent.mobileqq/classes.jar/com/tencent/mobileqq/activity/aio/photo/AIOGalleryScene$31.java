@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahsa;
-import ahsd;
-import ahtj;
-import ahui;
-import ahul;
+import aibo;
+import aibr;
+import aicx;
+import aidw;
+import aidz;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.Gallery;
 import java.util.Iterator;
@@ -13,24 +13,24 @@ import java.util.List;
 public class AIOGalleryScene$31
   implements Runnable
 {
-  public AIOGalleryScene$31(ahsd paramahsd, long paramLong, ahui paramahui, boolean paramBoolean) {}
+  public AIOGalleryScene$31(aibr paramaibr, long paramLong, aidw paramaidw, boolean paramBoolean) {}
   
   public void run()
   {
     int j = 0;
     int i;
     boolean bool;
-    if ((this.jdField_a_of_type_Long == this.jdField_a_of_type_Ahui.a.jdField_f_of_type_Long) || (this.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_Long == this.jdField_a_of_type_Aidw.a.jdField_f_of_type_Long) || (this.jdField_a_of_type_Boolean))
     {
-      i = this.this$0.jdField_a_of_type_Ahul.a(this.jdField_a_of_type_Ahui.a.jdField_f_of_type_Long, this.jdField_a_of_type_Ahui.a.jdField_f_of_type_Int);
+      i = this.this$0.jdField_a_of_type_Aidz.a(this.jdField_a_of_type_Aidw.a.jdField_f_of_type_Long, this.jdField_a_of_type_Aidw.a.jdField_f_of_type_Int);
       if ((i >= 0) && (i < 100))
       {
         bool = true;
         if (QLog.isColorLevel()) {
           QLog.d("AIOGalleryScene", 2, "onRevokeMsg isSaving:" + bool);
         }
-        ahsd.a(this.this$0, this.jdField_a_of_type_Ahui, bool);
-        ahsa.a(ahsd.O(this.this$0), ahsd.b(this.this$0));
+        aibr.a(this.this$0, this.jdField_a_of_type_Aidw, bool);
+        aibo.a(aibr.O(this.this$0), aibr.b(this.this$0));
       }
     }
     label208:
@@ -41,27 +41,27 @@ public class AIOGalleryScene$31
         return;
         bool = false;
         break;
-        if (this.this$0.jdField_a_of_type_Ahtj.a(this.jdField_a_of_type_Long) != null) {
+        if (this.this$0.jdField_a_of_type_Aicx.a(this.jdField_a_of_type_Long) != null) {
           break label208;
         }
       } while (!QLog.isColorLevel());
-      QLog.d("AIOGalleryScene", 2, "onRevokeMsg seq:" + this.jdField_a_of_type_Long + ", selectItem seq:" + this.jdField_a_of_type_Ahui.a.jdField_f_of_type_Long);
+      QLog.d("AIOGalleryScene", 2, "onRevokeMsg seq:" + this.jdField_a_of_type_Long + ", selectItem seq:" + this.jdField_a_of_type_Aidw.a.jdField_f_of_type_Long);
       return;
-      List localList = this.this$0.jdField_a_of_type_Ahtj.a();
+      List localList = this.this$0.jdField_a_of_type_Aicx.a();
       Iterator localIterator = localList.iterator();
-      ahui localahui;
+      aidw localaidw;
       do
       {
         i = j;
         if (!localIterator.hasNext()) {
           break;
         }
-        localahui = (ahui)localIterator.next();
-      } while (localahui.a.jdField_f_of_type_Long != this.jdField_a_of_type_Ahui.a.jdField_f_of_type_Long);
-      i = localList.indexOf(localahui);
+        localaidw = (aidw)localIterator.next();
+      } while (localaidw.a.jdField_f_of_type_Long != this.jdField_a_of_type_Aidw.a.jdField_f_of_type_Long);
+      i = localList.indexOf(localaidw);
     } while (i < 0);
     this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(true);
-    ahsd.e(this.this$0).setSelection(i);
+    aibr.e(this.this$0).setSelection(i);
   }
 }
 

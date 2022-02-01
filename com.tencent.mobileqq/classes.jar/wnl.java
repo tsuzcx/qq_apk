@@ -1,39 +1,9 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.AppInterface;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
 
-public class wnl
+public abstract interface wnl
 {
-  public static wnl a;
-  
-  public static wnl a()
-  {
-    if (a == null) {
-      a = new wnl();
-    }
-    return a;
-  }
-  
-  private void a(String paramString, byte[] paramArrayOfByte, BusinessObserver paramBusinessObserver)
-  {
-    QQStoryContext.a();
-    AppInterface localAppInterface = QQStoryContext.a();
-    NewIntent localNewIntent = new NewIntent(localAppInterface.getApp(), niq.class);
-    localNewIntent.putExtra("cmd", paramString);
-    localNewIntent.putExtra("data", paramArrayOfByte);
-    localNewIntent.putExtra("isResend", false);
-    localNewIntent.setObserver(paramBusinessObserver);
-    localAppInterface.startServlet(localNewIntent);
-  }
-  
-  public void a(wnn paramwnn, wno paramwno)
-  {
-    byte[] arrayOfByte = paramwnn.a();
-    String str = paramwnn.a();
-    long l = System.currentTimeMillis();
-    a(paramwnn.a(), arrayOfByte, new wnm(this, l, paramwnn, str, paramwno));
-  }
+  public abstract void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage);
 }
 
 

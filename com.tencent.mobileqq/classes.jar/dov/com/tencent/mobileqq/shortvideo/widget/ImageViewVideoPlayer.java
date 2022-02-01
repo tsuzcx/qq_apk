@@ -10,9 +10,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bcif;
-import bqjw;
-import bqjx;
+import bdax;
+import brli;
+import brlj;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLDrawableDownListener;
@@ -24,7 +24,7 @@ import com.tencent.image.VideoDrawable.VideoDrawableParams;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
-import zkr;
+import zom;
 
 public class ImageViewVideoPlayer
   extends LinearLayout
@@ -34,8 +34,8 @@ public class ImageViewVideoPlayer
   public int a;
   public Bitmap a;
   public BitmapDrawable a;
-  public bqjw a;
-  public bqjx a;
+  public brli a;
+  public brlj a;
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   public URLImageView a;
   public VideoDrawable a;
@@ -77,7 +77,7 @@ public class ImageViewVideoPlayer
       {
         this.jdField_a_of_type_ComTencentImageVideoDrawable = ((VideoDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
         boolean bool2 = this.jdField_a_of_type_ComTencentImageVideoDrawable.isAudioPlaying();
-        if ((!bcif.d(bcif.c)) && (!bcif.a(bcif.d))) {
+        if ((!bdax.d(bdax.c)) && (!bdax.a(bdax.d))) {
           break label141;
         }
         bool1 = true;
@@ -169,7 +169,7 @@ public class ImageViewVideoPlayer
       if (localFile.endsWith(".af")) {
         this.jdField_b_of_type_JavaLangString = (str + localFile);
       }
-      if ((localFile.endsWith(".vf")) && (zkr.a(str + localFile) > 0L)) {
+      if ((localFile.endsWith(".vf")) && (zom.a(str + localFile) > 0L)) {
         this.jdField_a_of_type_JavaLangString = (str + localFile);
       }
       i += 1;
@@ -181,7 +181,7 @@ public class ImageViewVideoPlayer
       return -2;
     }
     this.f = false;
-    if (zkr.a(this.jdField_b_of_type_JavaLangString) > 0L)
+    if (zom.a(this.jdField_b_of_type_JavaLangString) > 0L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ImageViewVideoPlayer", 2, "getVFileAndAFile(), mNeedPlayAudio = " + this.f);
@@ -383,8 +383,8 @@ public class ImageViewVideoPlayer
       if ((bool) && (!this.d)) {
         f();
       }
-      if (this.jdField_a_of_type_Bqjw != null) {
-        this.jdField_a_of_type_Bqjw.a(this.jdField_c_of_type_Int);
+      if (this.jdField_a_of_type_Brli != null) {
+        this.jdField_a_of_type_Brli.a(this.jdField_c_of_type_Int);
       }
       return;
     }
@@ -395,14 +395,14 @@ public class ImageViewVideoPlayer
     this.d = paramBoolean;
   }
   
-  public void setIMPFrameListener(bqjw parambqjw)
+  public void setIMPFrameListener(brli parambrli)
   {
-    this.jdField_a_of_type_Bqjw = parambqjw;
+    this.jdField_a_of_type_Brli = parambrli;
   }
   
-  public void setIMPlayerEndListener(bqjx parambqjx)
+  public void setIMPlayerEndListener(brlj parambrlj)
   {
-    this.jdField_a_of_type_Bqjx = parambqjx;
+    this.jdField_a_of_type_Brlj = parambrlj;
   }
   
   public void setNeedPlayAudio(boolean paramBoolean)

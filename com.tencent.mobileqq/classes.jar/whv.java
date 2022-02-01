@@ -1,35 +1,18 @@
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class whv
-  implements Comparable<whv>
+  implements View.OnClickListener
 {
-  public long a;
-  public final File a;
+  whv(whs paramwhs) {}
   
-  public whv(whu paramwhu, File paramFile)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    paramwhu = paramFile.getName();
-    try
-    {
-      this.jdField_a_of_type_Long = Long.parseLong(paramwhu);
-      return;
+    if (whs.a(this.a) != null) {
+      whs.a(this.a).a(whs.a(this.a));
     }
-    catch (Exception paramFile)
-    {
-      yqp.d("Q.qqstory.cleaner:MyVideoCleanStep", "Parse %s error , %s", new Object[] { paramwhu, paramFile.getMessage() });
-    }
-  }
-  
-  public int a(whv paramwhv)
-  {
-    if (this.jdField_a_of_type_Long < paramwhv.jdField_a_of_type_Long) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_Long == paramwhv.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return 1;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

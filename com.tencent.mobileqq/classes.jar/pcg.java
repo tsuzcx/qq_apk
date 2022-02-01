@@ -1,14 +1,16 @@
-class pcg
-  extends pcm
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/config/handlers/ViolaVideoFeedsConfigHandler$Companion;", "", "()V", "KEY_FROM_SOURCE", "", "TAG", "detectConfigInDebug", "", "isViolaVideoFeeds", "videoFromType", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pcg
 {
-  pcg(pbe parampbe, pay parampay, boolean paramBoolean, int paramInt)
+  @JvmStatic
+  public final boolean a(int paramInt)
   {
-    super(parampbe, null);
-  }
-  
-  void a(pcp parampcp)
-  {
-    parampcp.onCommentCreate(true, this.jdField_a_of_type_Pay, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Pbe.a(this.jdField_a_of_type_Int), this.jdField_a_of_type_Int);
+    if ("all".equals((String)bnrf.a("viola_video_feeds_config", ""))) {
+      return true;
+    }
+    return bnrf.b(paramInt, "\\|", "viola_video_feeds_config");
   }
 }
 

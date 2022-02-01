@@ -4,13 +4,13 @@ import android.text.TextUtils;
 import com.tencent.biz.qqstory.database.PromoteTaskEntry;
 import java.util.Collections;
 import java.util.List;
-import wod;
-import wpk;
+import wry;
+import wtf;
 
 public class DebugPromoteTaskCode$4
   implements Runnable
 {
-  public DebugPromoteTaskCode$4(wod paramwod, String paramString1, String paramString2) {}
+  public DebugPromoteTaskCode$4(wry paramwry, String paramString1, String paramString2) {}
   
   public void run()
   {

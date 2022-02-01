@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anni;
-import aoch;
+import anzj;
+import aoot;
 
 public class ForwardRobotOption
   extends ForwardRecommendFriendOption
@@ -24,9 +24,9 @@ public class ForwardRobotOption
   
   private View a(String paramString, Drawable paramDrawable)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559008, null);
-    TextView localTextView = (TextView)localView.findViewById(2131380123);
-    ImageView localImageView = (ImageView)localView.findViewById(2131368507);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559007, null);
+    TextView localTextView = (TextView)localView.findViewById(2131380308);
+    ImageView localImageView = (ImageView)localView.findViewById(2131368580);
     localTextView.setText(paramString);
     localImageView.setImageDrawable(paramDrawable);
     return localView;
@@ -34,10 +34,10 @@ public class ForwardRobotOption
   
   public View a()
   {
-    return a(String.format("[%s]%s", new Object[] { anni.a(2131703569), this.i }), aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.h));
+    return a(String.format("[%s]%s", new Object[] { anzj.a(2131703676), this.i }), aoot.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.h));
   }
   
-  public boolean i()
+  public boolean j()
   {
     return true;
   }

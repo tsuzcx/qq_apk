@@ -1,69 +1,34 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView.SharedMemWriteFile;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
-import java.nio.ByteBuffer;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.Bundle;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bclw
+  extends bcmb
 {
-  public int a;
-  private long jdField_a_of_type_Long;
-  public CameraFilterGLView.SharedMemWriteFile a;
-  public ByteBuffer a;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  
-  public bclw(int paramInt)
+  public bclw(GroupSearchEngine paramGroupSearchEngine, bcmc parambcmc, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = 0;
+    super(paramGroupSearchEngine, parambcmc, paramString, paramInt);
   }
   
-  public void a()
+  public bcfq a(List<bcfr> paramList, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(0);
+    return null;
   }
   
-  public boolean a(int paramInt1, int paramInt2, int paramInt3)
+  public List<bcfq> a(bcmq parambcmq)
   {
-    int i = paramInt1 * paramInt2 * paramInt3;
-    if ((this.jdField_a_of_type_Boolean) && (this.b == i) && (this.jdField_a_of_type_JavaNioByteBuffer != null)) {
-      return true;
-    }
     this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaNioByteBuffer = null;
-    try
-    {
-      this.jdField_a_of_type_Long = PtvFilterUtils.getNativePtrIndex(paramInt1, paramInt2, paramInt3, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Long == 0L) {
-        return false;
-      }
+    this.jdField_a_of_type_Int = -1;
+    if (parambcmq.jdField_a_of_type_AndroidOsBundle == null) {
+      parambcmq.jdField_a_of_type_AndroidOsBundle = new Bundle();
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
-    {
-      for (;;)
-      {
-        this.jdField_a_of_type_Long = 0L;
-      }
-      try
-      {
-        this.jdField_a_of_type_JavaNioByteBuffer = PtvFilterUtils.allocateSharedMem(this.jdField_a_of_type_Long);
-        if (this.jdField_a_of_type_JavaNioByteBuffer == null) {
-          return false;
-        }
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
-      {
-        for (;;)
-        {
-          this.jdField_a_of_type_JavaNioByteBuffer = null;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        this.b = i;
-      }
-    }
-    return true;
+    ArrayList localArrayList = new ArrayList();
+    parambcmq = new bcfg(parambcmq.jdField_a_of_type_JavaLangString, GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine));
+    localArrayList.add(new bcey(parambcmq));
+    localArrayList.add(parambcmq);
+    bcnh.a(0);
+    return localArrayList;
   }
 }
 

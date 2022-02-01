@@ -1,64 +1,23 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class akty
+class akty
+  implements DialogInterface.OnClickListener
 {
-  protected Context a;
-  protected Rect a;
-  protected DoodleView a;
+  akty(aktq paramaktq) {}
   
-  public akty(DoodleView paramDoodleView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    if (paramDoodleView == null) {
-      throw new IllegalStateException("DoodleView can not be null.");
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
     }
-    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView = paramDoodleView;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView.invalidate();
+    if (((NewPhotoPreviewActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(true);
     }
   }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
-  }
-  
-  public final void a(Canvas paramCanvas)
-  {
-    b(paramCanvas);
-  }
-  
-  public boolean a()
-  {
-    return b();
-  }
-  
-  public final boolean a(MotionEvent paramMotionEvent)
-  {
-    a();
-    return b(paramMotionEvent);
-  }
-  
-  protected abstract void b(Canvas paramCanvas);
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  protected abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

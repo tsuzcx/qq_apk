@@ -1,47 +1,42 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.VideoMeasureScaleView;
 
-class sde
-  extends skd
+public class sde
+  implements sdf
 {
-  sde(sce paramsce) {}
+  public sde(CaptureOperateTouchLayout paramCaptureOperateTouchLayout, TextView paramTextView, VideoMeasureScaleView paramVideoMeasureScaleView, ImageView paramImageView) {}
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void a()
   {
-    if (paramVideoInfo != null) {}
-    try
-    {
-      sce.a(this.a).a(sce.b(this.a));
-      paramString = new Intent(sce.a(this.a), ReadInJoyDeliverBiuActivity.class);
-      if ((sce.a(this.a).jdField_a_of_type_Int == 6) && (paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)) {
-        paramString.putExtra("feedsType", sce.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType);
-      }
-      paramString.putExtra("ARG_VIDEO_ARTICLE_ID", sce.a(this.a).g);
-      paramString.putExtra("biu_src", 2);
-      paramString.putExtra("arg_from_type", 8);
-      paramString.putExtra("arg_article_info", paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      sce.a(this.a).startActivityForResult(paramString, 102);
-      sce.a(this.a).overridePendingTransition(0, 0);
-      return;
-    }
-    catch (Exception paramVideoInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("VideoFeedsShareController", 2, "innerOpenReadInJoyBiuActivity error exception = " + paramVideoInfo.getMessage());
-      }
-      sce.a(this.a).a(false);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717243);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView.setVisibility(0);
+    int i = CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout);
+    CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, this.jdField_a_of_type_AndroidWidgetImageView.getX() / CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout));
+    CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, i);
+    if (CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout) != null) {
+      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).a(i, CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, CaptureOperateTouchLayout.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout)));
     }
   }
   
-  public int c()
+  public void a(boolean paramBoolean)
   {
-    return 0;
+    if (CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout) != null) {
+      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).a();
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717124);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView.setVisibility(4);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717292);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView.setVisibility(4);
   }
 }
 

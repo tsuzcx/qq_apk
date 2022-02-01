@@ -1,6 +1,6 @@
-public abstract interface anxf
+public class anxf
 {
-  public abstract void a(Object paramObject);
+  public static final String a = bigv.a(antf.bg);
 }
 
 

@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.Emoticon;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
-class awmw
-  implements awnc<asbq>
+public class awmw
+  implements DialogInterface.OnClickListener
 {
-  awmw(awmr paramawmr, boolean paramBoolean, SessionInfo paramSessionInfo) {}
+  public awmw(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
   
-  public void a(asbq paramasbq)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramasbq != null) && (paramasbq.a != null))
+    if (FloatingScreenPermission.requestPermission(BaseApplicationImpl.getContext()))
     {
-      if (this.jdField_a_of_type_Boolean) {
-        awmr.a(this.jdField_a_of_type_Awmr.a, "0X800A937", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramasbq.a.epId);
-      }
-    }
-    else {
+      ListenTogetherOverlayFragment.a(this.a, true);
       return;
     }
-    awmr.a(this.jdField_a_of_type_Awmr.a, "0X800A936", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramasbq.a.epId);
+    ListenTogetherOverlayFragment.a(this.a).finish();
   }
 }
 

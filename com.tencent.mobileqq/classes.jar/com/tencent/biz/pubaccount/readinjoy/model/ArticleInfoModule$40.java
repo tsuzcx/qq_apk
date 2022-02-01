@@ -12,14 +12,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
-import pwb;
+import pon;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.FeedsInfo;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.SocializeFeedsInfo;
 
 public class ArticleInfoModule$40
   implements Runnable
 {
-  public ArticleInfoModule$40(pwb parampwb, List paramList, ConcurrentHashMap paramConcurrentHashMap) {}
+  public ArticleInfoModule$40(pon parampon, List paramList, ConcurrentHashMap paramConcurrentHashMap) {}
   
   public void run()
   {
@@ -40,10 +40,10 @@ public class ArticleInfoModule$40
         }
         for (;;)
         {
-          localObject = (ConcurrentHashMap)pwb.a(this.this$0).get(Integer.valueOf(0));
-          pwb.a(this.this$0, (ConcurrentHashMap)localObject, l, i, localArrayList2);
-          localObject = (ConcurrentHashMap)pwb.a(this.this$0).get(Integer.valueOf(70));
-          pwb.b(this.this$0, (ConcurrentHashMap)localObject, l, i, localArrayList2);
+          localObject = (ConcurrentHashMap)pon.a(this.this$0).get(Integer.valueOf(0));
+          pon.a(this.this$0, (ConcurrentHashMap)localObject, l, i, localArrayList2);
+          localObject = (ConcurrentHashMap)pon.a(this.this$0).get(Integer.valueOf(70));
+          pon.b(this.this$0, (ConcurrentHashMap)localObject, l, i, localArrayList2);
           break;
           QLog.d("ArticleInfoModule", 1, "remove artileinfo cache is null while feedid = " + l + "feedtype" + i);
         }

@@ -1,46 +1,23 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.CompInfoBase;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBaseVidList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class xbc
-  extends wla
+  extends wip
 {
-  public final List<wzp> a = new ArrayList();
+  public final int a;
+  public final String a;
+  public final String b;
   
-  public xbc(qqstory_service.RspStoryPlayerTagInfo paramRspStoryPlayerTagInfo)
+  public xbc(xbb paramxbb, ErrorMessage paramErrorMessage, String paramString1, String paramString2, int paramInt)
   {
-    super(paramRspStoryPlayerTagInfo.result);
-    Iterator localIterator = paramRspStoryPlayerTagInfo.tag_info.get().iterator();
-    Object localObject;
-    String str;
-    qqstory_struct.TagInfoBase localTagInfoBase;
-    if (localIterator.hasNext())
-    {
-      localObject = (qqstory_struct.TagInfoBaseVidList)localIterator.next();
-      str = ((qqstory_struct.TagInfoBaseVidList)localObject).vid.get().toStringUtf8();
-      localTagInfoBase = (qqstory_struct.TagInfoBase)((qqstory_struct.TagInfoBaseVidList)localObject).tag_info.get();
-      if (!((qqstory_struct.TagInfoBaseVidList)localObject).comp_info.has()) {
-        break label163;
-      }
-    }
-    label163:
-    for (paramRspStoryPlayerTagInfo = new zhi((qqstory_struct.CompInfoBase)((qqstory_struct.TagInfoBaseVidList)localObject).comp_info.get());; paramRspStoryPlayerTagInfo = null)
-    {
-      if (((qqstory_struct.TagInfoBaseVidList)localObject).extern_config_json.has()) {}
-      for (localObject = ((qqstory_struct.TagInfoBaseVidList)localObject).extern_config_json.get().toStringUtf8();; localObject = null)
-      {
-        this.a.add(new wzp(str, new zhq(localTagInfoBase), paramRspStoryPlayerTagInfo, (String)localObject));
-        break;
-        return;
-      }
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.jdField_a_of_type_Int + "} " + super.toString();
   }
 }
 

@@ -18,11 +18,11 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bgbr;
+import bhbs;
 
 public class PhantomPicView
   extends FrameLayout
-  implements bgbr
+  implements bhbs
 {
   protected Handler a;
   protected FrameLayout a;

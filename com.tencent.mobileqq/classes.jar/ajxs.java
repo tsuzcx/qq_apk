@@ -1,17 +1,25 @@
+import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
+import com.tencent.mobileqq.activity.contacts.troop.TroopFragment;
+import com.tencent.qphone.base.util.QLog;
+
 public class ajxs
+  extends antg
 {
-  public String a;
+  public ajxs(TroopFragment paramTroopFragment) {}
   
-  public ajxs(String paramString)
+  protected void a(int paramInt)
   {
-    this.a = paramString;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("keyword = ").append(this.a);
-    return localStringBuilder.toString();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
+      }
+    } while (this.a.a == null);
+    this.a.a.e();
   }
 }
 

@@ -1,5 +1,5 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: QQ-8.4.1-1442-3834.apk
+apkFileName: QQ-8.4.5-1468-3834.apk
 compressionType: false
 doNotCompress:
 - resources.arsc
@@ -22,6 +22,7 @@ doNotCompress:
 - assets/licence_dual.conf
 - png
 - mp4
+- assets/qua.ini
 - assets/revision.txt
 - jpg
 - assets/txlib
@@ -249,5 +250,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '1442'
-  versionName: 8.4.1
+  versionCode: '1468'
+  versionName: 8.4.5

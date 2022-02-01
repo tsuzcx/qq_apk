@@ -1,24 +1,18 @@
 import android.view.View;
-import android.widget.ExpandableListAdapter;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.widget.ExpandableListView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingMe.31;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afic
-  implements bkki
+  implements View.OnClickListener
 {
-  public afic(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public afic(QQSettingMe.31 param31) {}
   
-  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong)
+  public void onClick(View paramView)
   {
-    if (((amfu)paramExpandableListView.a()).getChildType(paramInt1, paramInt2) == 1) {
-      return true;
-    }
-    bctt.b(this.a.getActivity(), this.a.app.getCurrentAccountUin());
-    paramExpandableListView = (TroopInfo)paramExpandableListView.a().getChild(paramInt1, paramInt2);
-    this.a.a(paramExpandableListView);
-    return true;
+    bhyu.a();
+    bhyu.a("0X800B232", bhyu.a(), bhyu.b());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.launch;
 
-import anni;
+import anzj;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager.UpdateListener;
 import com.tencent.qphone.base.util.QLog;
 
@@ -17,19 +17,19 @@ class AppBrandLaunchManager$14
     }
     if (paramInt == 1)
     {
-      QLog.w("miniapp-process_AppBrandLaunchManager", 1, anni.a(2131699404));
+      QLog.w("miniapp-process_AppBrandLaunchManager", 1, anzj.a(2131699511));
       return;
     }
-    String str = anni.a(2131699401);
+    String str = anzj.a(2131699508);
     if (paramInt == 1100) {
-      str = anni.a(2131699407);
+      str = anzj.a(2131699514);
     }
     for (;;)
     {
       QLog.w("miniapp-process_AppBrandLaunchManager", 1, str);
       return;
       if (paramInt == 1101) {
-        str = anni.a(2131699410);
+        str = anzj.a(2131699517);
       }
     }
   }

@@ -5,13 +5,13 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import java.util.ArrayList;
 import java.util.List;
-import zbw;
-import zbx;
+import zfr;
+import zfs;
 
 public class FaceViewPager
   extends ViewPager
 {
-  private List<zbx> a;
+  private List<zfs> a;
   
   public FaceViewPager(Context paramContext)
   {
@@ -28,13 +28,13 @@ public class FaceViewPager
   private void a()
   {
     this.a = new ArrayList();
-    setOnPageChangeListener(new zbw(this));
+    setOnPageChangeListener(new zfr(this));
   }
   
-  public void a(zbx paramzbx)
+  public void a(zfs paramzfs)
   {
-    if (!this.a.contains(paramzbx)) {
-      this.a.add(paramzbx);
+    if (!this.a.contains(paramzfs)) {
+      this.a.add(paramzfs);
     }
   }
 }

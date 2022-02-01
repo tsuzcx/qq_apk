@@ -1,23 +1,21 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import com.tencent.biz.qqcircle.comment.QCircleCommentItemView;
+import java.util.LinkedList;
 
 public class vim
-  extends LinearLayoutManager
 {
-  public vim(QCircleCommentItemView paramQCircleCommentItemView, Context paramContext, int paramInt, boolean paramBoolean)
-  {
-    super(paramContext, paramInt, paramBoolean);
-  }
+  public static final int a;
+  private static final LinkedList<vio> a;
   
-  public boolean canScrollHorizontally()
+  static
   {
-    return false;
-  }
-  
-  public boolean canScrollVertically()
-  {
-    return false;
+    jdField_a_of_type_Int = (int)(20.0F * bhtq.a());
+    jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    int i = 10 - jdField_a_of_type_JavaUtilLinkedList.size();
+    while (i > 0)
+    {
+      vio localvio = new vio(null);
+      jdField_a_of_type_JavaUtilLinkedList.add(localvio);
+      i -= 1;
+    }
   }
 }
 

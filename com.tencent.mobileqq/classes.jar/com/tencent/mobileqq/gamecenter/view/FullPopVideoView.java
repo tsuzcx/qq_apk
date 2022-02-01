@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import auuj;
+import avmj;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
@@ -18,7 +18,7 @@ public class FullPopVideoView
   extends FrameLayout
   implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnSeekCompleteListener, TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  private auuj jdField_a_of_type_Auuj;
+  private avmj jdField_a_of_type_Avmj;
   private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
   
   public FullPopVideoView(@NonNull Context paramContext)
@@ -45,8 +45,8 @@ public class FullPopVideoView
     if (QLog.isColorLevel()) {
       QLog.d("FullPopVideoView", 1, "onCompletion ");
     }
-    if (this.jdField_a_of_type_Auuj != null) {
-      this.jdField_a_of_type_Auuj.a();
+    if (this.jdField_a_of_type_Avmj != null) {
+      this.jdField_a_of_type_Avmj.a();
     }
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
     {
@@ -78,9 +78,9 @@ public class FullPopVideoView
   
   public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
-  public void setListener(auuj paramauuj)
+  public void setListener(avmj paramavmj)
   {
-    this.jdField_a_of_type_Auuj = paramauuj;
+    this.jdField_a_of_type_Avmj = paramavmj;
   }
 }
 

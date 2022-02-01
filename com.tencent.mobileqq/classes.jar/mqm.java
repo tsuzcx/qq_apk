@@ -1,48 +1,33 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-final class mqm
-  implements bkhw
+public class mqm
+  extends mrc
 {
-  mqm(muh parammuh, int[] paramArrayOfInt, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt) {}
+  public int a;
+  public lfs a;
+  public boolean a;
+  public boolean b;
   
-  public void OnClick(View paramView, int paramInt)
+  mqm(mpv parammpv)
   {
-    this.jdField_a_of_type_Muh.dismiss();
-    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
+    super(parammpv);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Lfs = new mqn(this);
+    parammpv = lfr.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    if (parammpv != null)
     {
-    default: 
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      if (paramInt > 0) {
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A518", "0X800A518", 0, paramInt, "", "", "", "");
-      }
+      parammpv.a(11, this.jdField_a_of_type_Lfs);
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
-      {
-        mqk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true);
-        paramInt = 3;
-      }
-      else
-      {
-        mqk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, this.jdField_a_of_type_Int, null);
-        paramInt = 1;
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
-        {
-          mqk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
-          paramInt = 4;
-        }
-        else
-        {
-          mqk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, this.jdField_a_of_type_Int, null);
-          paramInt = 2;
-        }
-      }
+    }
+    QLog.w(this.i, 1, "ListenPeerMsg, mHandlerForVideo为空");
+  }
+  
+  void a(String paramString)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -1;
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.i, 1, "resetData[" + paramString + "]");
     }
   }
 }

@@ -1,16 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class beti
-  implements DialogInterface.OnClickListener
+  extends beyf
 {
-  beti(besy parambesy, FileManagerEntity paramFileManagerEntity) {}
+  beti(beth parambeth) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 1) {
-      besy.a(this.jdField_a_of_type_Besy, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    int i = paramMessage.what;
+    bete localbete = (bete)paramMessage.obj;
+    if ((i == 2002) || ((beth.a(this.a).equals(localbete.p)) && (localbete.b == 1) && (i != 2002)))
+    {
+      if ((localbete.r == null) || (!localbete.r.equals(beth.b(this.a)))) {
+        return;
+      }
+      switch (i)
+      {
+      }
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      beth.a(this.a);
+      continue;
+      if (bhmi.b(beth.c(this.a)))
+      {
+        beth.a(this.a).a().b(this);
+        beth.b(this.a);
+      }
+      else
+      {
+        beth.a(this.a);
+      }
     }
   }
 }

@@ -1,943 +1,352 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.opencl.OpenclInfoManager;
-import com.tencent.mobileqq.shortvideo.filter.QQBaseFilter;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.os.Message;
+import android.support.annotation.NonNull;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.shortvideo.videotransfer.TransferData;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.device.DeviceInstance;
-import dov.com.qq.im.ptv.LightVideoConfigMgr;
-import java.util.HashMap;
-import java.util.Iterator;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoPlayer.3;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
+@TargetApi(14)
 public class bqcb
+  extends bqgi
+  implements bqgu, brli, brlj, xuh, xvt
 {
-  private static bqcb jdField_a_of_type_Bqcb;
-  public float a;
-  private int jdField_a_of_type_Int = 1;
-  public String a;
-  public Map<Integer, Float> a;
-  public boolean a;
-  private int jdField_b_of_type_Int = 1;
-  private String jdField_b_of_type_JavaLangString = "";
-  private Map<Integer, allk> jdField_b_of_type_JavaUtilMap = new HashMap();
-  public boolean b;
-  private Map<Integer, allk> c;
-  public boolean c;
-  public boolean d;
+  protected int a;
+  public ImageView a;
+  protected TextView a;
+  protected bqst a;
+  protected TrimTextureVideoView a;
+  protected String a;
+  protected boolean a;
+  protected bqce[] a;
+  protected int b;
+  protected boolean b;
   
-  private bqcb()
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_Float = 0.5F;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_c_of_type_JavaUtilMap = new HashMap();
-    a();
+    return 0;
   }
   
-  public static bqcb a()
+  public long a(int paramInt)
   {
-    if (jdField_a_of_type_Bqcb == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bqcb == null) {
-        jdField_a_of_type_Bqcb = new bqcb();
-      }
-      return jdField_a_of_type_Bqcb;
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfBqce.length)) {
+      throw new IllegalArgumentException("getDurationOfFragment 传入了错误的index: " + paramInt);
     }
-    finally {}
+    bqce localbqce = this.jdField_a_of_type_ArrayOfBqce[paramInt];
+    return localbqce.jdField_b_of_type_Int - localbqce.jdField_a_of_type_Int;
   }
   
-  private String a()
+  public Bitmap a(int paramInt)
   {
-    String str2 = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_gpu_config", 0).getString("cfg_content", "");
-    String str1;
-    if (TextUtils.isEmpty(str2))
-    {
-      str2 = bgmg.d("short_video_device_rule_config.xml");
-      str1 = str2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("DovSVParamManager", 2, "take local config");
-        str1 = str2;
-      }
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfBqce.length)) {
+      throw new IllegalArgumentException("getDurationOfFragment 传入了错误的index: " + paramInt);
     }
-    do
-    {
-      return str1;
-      str1 = str2;
-    } while (!QLog.isColorLevel());
-    QLog.d("DovSVParamManager", 2, "take server config");
-    return str2;
+    bqce localbqce = this.jdField_a_of_type_ArrayOfBqce[paramInt];
+    if (localbqce.c.isRecycled()) {
+      yuk.e("Q.qqstory.record.EditLocalVideoPlayer", "自己的bitmap被外边recycle了!");
+    }
+    return localbqce.c;
   }
   
-  private void a(String paramString)
+  protected Bitmap a(Bitmap paramBitmap)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    if (paramBitmap == null) {
+      return null;
     }
-    String[] arrayOfString = paramString.split(";");
-    for (;;)
-    {
-      int j;
-      int i;
-      boolean bool1;
-      Object localObject;
-      int k;
-      int m;
-      int n;
-      try
-      {
-        if (this.jdField_a_of_type_JavaLangString.contains("Mali"))
-        {
-          j = arrayOfString.length;
-          i = 0;
-          bool1 = bool3;
-          if (i < j)
-          {
-            paramString = arrayOfString[i].split("#");
-            bool1 = bool3;
-            if (paramString.length == 4)
-            {
-              localObject = paramString[0] + paramString[1];
-              if (!this.jdField_a_of_type_JavaLangString.contains((CharSequence)localObject)) {
-                break label383;
-              }
-              localObject = Pattern.compile("(G|T|\\-)(\\d+)(.+MP(\\d+))?").matcher(this.jdField_a_of_type_JavaLangString);
-              bool1 = ((Matcher)localObject).find();
-              if (!bool1) {
-                break label383;
-              }
-            }
-          }
-        }
-        bool1 = bool3;
-      }
-      catch (Exception paramString)
-      {
-        try
-        {
-          k = Integer.parseInt(((Matcher)localObject).group(4));
-          m = Integer.parseInt(paramString[2]);
-          n = Integer.parseInt(paramString[3]);
-          if ((k > n) || (k < m)) {
-            break label377;
-          }
-          bool1 = bool2;
-          a(bool1);
-          return;
-        }
-        catch (Exception paramString)
-        {
-          paramString.printStackTrace();
-        }
-        paramString = paramString;
-        paramString.printStackTrace();
-        return;
-      }
-      if (this.jdField_a_of_type_JavaLangString.contains("Adreno"))
-      {
-        j = arrayOfString.length;
-        i = 0;
-        for (;;)
-        {
-          for (;;)
-          {
-            bool1 = bool3;
-            if (i >= j) {
-              break;
-            }
-            localObject = arrayOfString[i].split("#");
-            paramString = "0";
-            Matcher localMatcher = Pattern.compile("Adreno.*(\\d{3,4})").matcher(this.jdField_a_of_type_JavaLangString);
-            if (localMatcher.find()) {
-              paramString = localMatcher.group(1);
-            }
-            if ((localObject.length != 3) || (!paramString.substring(0, 1).equals(localObject[0])))
-            {
-              k = localObject.length;
-              if (k != 2) {}
-            }
-            else
-            {
-              try
-              {
-                k = Integer.parseInt(paramString);
-                m = Integer.parseInt(localObject[(localObject.length - 2)]);
-                n = Integer.parseInt(localObject[(localObject.length - 1)]);
-                bool1 = bool3;
-                if (k > n) {
-                  break;
-                }
-                bool1 = bool3;
-                if (k < m) {
-                  break;
-                }
-                bool1 = true;
-              }
-              catch (Exception paramString)
-              {
-                paramString.printStackTrace();
-              }
-            }
-          }
-          i += 1;
-        }
-        label377:
-        bool1 = false;
-        continue;
-        label383:
-        i += 1;
-      }
-    }
+    return Bitmap.createBitmap(paramBitmap);
   }
   
-  private void a(String paramString1, String paramString2)
+  public List<? extends bqix> a()
   {
-    if ("large".equals(paramString1)) {
-      a(paramString2, true);
-    }
-    do
+    bqce[] arrayOfbqce = new bqce[this.jdField_a_of_type_ArrayOfBqce.length];
+    int i = 0;
+    while (i < arrayOfbqce.length)
     {
-      return;
-      if ("less".equals(paramString1))
-      {
-        a(paramString2, false);
-        return;
-      }
-      if ("between".equals(paramString1))
-      {
-        a(paramString2);
-        return;
-      }
-    } while (!"enum".equals(paramString1));
-    b(paramString2);
-  }
-  
-  private void a(String paramString, boolean paramBoolean)
-  {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    String[] arrayOfString1 = paramString.split(";");
-    label409:
-    label415:
-    for (;;)
-    {
-      int j;
-      int i;
-      boolean bool1;
-      String[] arrayOfString2;
-      int k;
-      int m;
-      try
-      {
-        if (!this.jdField_a_of_type_JavaLangString.contains("Mali")) {
-          break label232;
-        }
-        j = arrayOfString1.length;
-        i = 0;
-        bool1 = bool3;
-        if (i < j)
-        {
-          arrayOfString2 = arrayOfString1[i].split("#");
-          if (arrayOfString2.length != 2) {
-            break label185;
-          }
-          paramString = arrayOfString2[0];
-          if (!this.jdField_a_of_type_JavaLangString.contains(paramString)) {
-            break label415;
-          }
-          paramString = Pattern.compile("(G|T|\\-)(\\d+)(.+MP(\\d+))?").matcher(this.jdField_a_of_type_JavaLangString);
-          k = arrayOfString2.length;
-          bool1 = paramString.find();
-          if (!bool1) {
-            break label415;
-          }
-        }
-        bool1 = bool3;
-      }
-      catch (Exception paramString)
-      {
-        try
-        {
-          k = Integer.parseInt(paramString.group((k - 1) * 2));
-          m = Integer.parseInt(arrayOfString2[(arrayOfString2.length - 1)]);
-          if (paramBoolean)
-          {
-            bool1 = bool2;
-            if (k >= m) {}
-          }
-          else
-          {
-            if ((paramBoolean) || (k > m)) {
-              break label409;
-            }
-            bool1 = bool2;
-          }
-          a(bool1);
-          return;
-        }
-        catch (Exception paramString)
-        {
-          paramString.printStackTrace();
-        }
-        paramString = paramString;
-        paramString.printStackTrace();
-        return;
-      }
-      label185:
-      if (arrayOfString2.length == 3)
-      {
-        paramString = arrayOfString2[0] + arrayOfString2[1];
-        continue;
-        label232:
-        bool1 = bool3;
-        if (this.jdField_a_of_type_JavaLangString.contains("Adreno"))
-        {
-          j = arrayOfString1.length;
-          i = 0;
-          for (;;)
-          {
-            for (;;)
-            {
-              bool1 = bool3;
-              if (i >= j) {
-                break;
-              }
-              arrayOfString2 = arrayOfString1[i].split("#");
-              paramString = "0";
-              Matcher localMatcher = Pattern.compile("Adreno.*(\\d{3,4})").matcher(this.jdField_a_of_type_JavaLangString);
-              if (localMatcher.find()) {
-                paramString = localMatcher.group(1);
-              }
-              if ((arrayOfString2.length != 2) || (!paramString.substring(0, 1).equals(arrayOfString2[0])))
-              {
-                k = arrayOfString2.length;
-                if (k != 1) {}
-              }
-              else
-              {
-                try
-                {
-                  k = Integer.parseInt(paramString);
-                  m = Integer.parseInt(arrayOfString2[(arrayOfString2.length - 1)]);
-                  if ((!paramBoolean) || (k < m))
-                  {
-                    bool1 = bool3;
-                    if (paramBoolean) {
-                      break;
-                    }
-                    bool1 = bool3;
-                    if (k > m) {
-                      break;
-                    }
-                  }
-                  bool1 = true;
-                }
-                catch (Exception paramString)
-                {
-                  paramString.printStackTrace();
-                }
-              }
-            }
-            i += 1;
-          }
-          bool1 = false;
-          continue;
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if ("white".equals(this.jdField_b_of_type_JavaLangString)) {
-      if (paramBoolean)
-      {
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Boolean = false;
-      }
-    }
-    while (!"black".equals(this.jdField_b_of_type_JavaLangString))
-    {
-      return;
-      this.jdField_b_of_type_Boolean = false;
-      return;
-    }
-    if (!paramBoolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  private void b(String paramString)
-  {
-    boolean bool2 = false;
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    paramString = paramString.split(";");
-    for (;;)
-    {
-      int i;
-      try
-      {
-        int j = paramString.length;
-        i = 0;
-        boolean bool1 = bool2;
-        if (i < j)
-        {
-          CharSequence localCharSequence = paramString[i];
-          if (this.jdField_a_of_type_JavaLangString.contains(localCharSequence)) {
-            bool1 = true;
-          }
-        }
-        else
-        {
-          a(bool1);
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
+      arrayOfbqce[i] = bqce.a(this.jdField_a_of_type_ArrayOfBqce[i], a(this.jdField_a_of_type_ArrayOfBqce[i].c));
       i += 1;
     }
-  }
-  
-  private void c(JSONObject paramJSONObject)
-  {
-    try
-    {
-      String[] arrayOfString = paramJSONObject.getString("verdor").split(";");
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = arrayOfString[i];
-        if (this.jdField_a_of_type_JavaLangString.contains(str)) {
-          d(paramJSONObject.getJSONObject(str));
-        }
-        i += 1;
-      }
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-  }
-  
-  private void d(JSONObject paramJSONObject)
-  {
-    try
-    {
-      String[] arrayOfString = paramJSONObject.getString("strategy").split(";");
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = arrayOfString[i];
-        JSONObject localJSONObject = paramJSONObject.getJSONObject(str);
-        this.jdField_b_of_type_JavaLangString = str;
-        e(localJSONObject);
-        i += 1;
-      }
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-  }
-  
-  private void e(JSONObject paramJSONObject)
-  {
-    try
-    {
-      String[] arrayOfString = paramJSONObject.getString("rule").split(";");
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = arrayOfString[i];
-        a(str, paramJSONObject.getString(str));
-        i += 1;
-      }
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-  }
-  
-  private void f(JSONObject paramJSONObject)
-  {
-    try
-    {
-      this.jdField_a_of_type_Float = Float.valueOf(paramJSONObject.getString("maxWeight")).floatValue();
-      paramJSONObject = paramJSONObject.getJSONObject("renderListWeight");
-      Iterator localIterator = paramJSONObject.keys();
-      while (localIterator.hasNext())
-      {
-        String str1 = (String)localIterator.next();
-        String str2 = paramJSONObject.getString(str1);
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(str1), Float.valueOf(str2));
-      }
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-  }
-  
-  private void g(JSONObject paramJSONObject)
-  {
-    int i = 0;
-    try
-    {
-      String[] arrayOfString1 = paramJSONObject.getString("resolutionList").split(";");
-      paramJSONObject = paramJSONObject.getString("cpResolutionList").split(";");
-      if (arrayOfString1.length == paramJSONObject.length) {
-        while (i < arrayOfString1.length)
-        {
-          String[] arrayOfString2 = arrayOfString1[i].split("\\*");
-          String[] arrayOfString3 = paramJSONObject[i].split("\\*");
-          if ((arrayOfString2.length == 2) && (arrayOfString3.length == 2))
-          {
-            this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(i), new allk(Integer.valueOf(arrayOfString2[0]).intValue(), Integer.valueOf(arrayOfString2[1]).intValue()));
-            this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(i), new allk(Integer.valueOf(arrayOfString3[0]).intValue(), Integer.valueOf(arrayOfString3[1]).intValue()));
-          }
-          i += 1;
-        }
-      }
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-  }
-  
-  private void h(JSONObject paramJSONObject)
-  {
-    try
-    {
-      String str1 = Build.MANUFACTURER + ";" + Build.MODEL;
-      paramJSONObject = paramJSONObject.getJSONArray("blackList");
-      int i = 0;
-      for (;;)
-      {
-        if (i < paramJSONObject.length())
-        {
-          String str2 = paramJSONObject.getString(i);
-          if (!str2.trim().equals(str1.trim())) {
-            break label107;
-          }
-          this.d = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("DovSVParamManager", 2, "parseJSONBlackList true =" + str2);
-          }
-        }
-        return;
-        label107:
-        i += 1;
-      }
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-  }
-  
-  private void i(JSONObject paramJSONObject)
-  {
-    try
-    {
-      String str1 = DeviceInstance.getInstance().getDeviceName();
-      paramJSONObject = paramJSONObject.getJSONArray("qijianList");
-      int i = 0;
-      for (;;)
-      {
-        if (i < paramJSONObject.length())
-        {
-          String str2 = paramJSONObject.getString(i);
-          if (!str2.trim().equals(str1.trim())) {
-            break label86;
-          }
-          this.jdField_c_of_type_Boolean = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("DovSVParamManager", 2, "parseJSONQijianList true =" + str2);
-          }
-        }
-        return;
-        label86:
-        i += 1;
-      }
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-  }
-  
-  private void j(JSONObject paramJSONObject)
-  {
-    try
-    {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("faceDetectSwitch", 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("DovSVParamManager", 2, "parseJSONFaceDetectSwitch mFaceDetectType:" + this.jdField_a_of_type_Int);
-      }
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public float a(int paramInt)
-  {
-    return 1.0F;
-  }
-  
-  public float a(List<QQBaseFilter> paramList)
-  {
-    paramList = paramList.iterator();
-    float f = 0.0F;
-    if (paramList.hasNext())
-    {
-      QQBaseFilter localQQBaseFilter = (QQBaseFilter)paramList.next();
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(localQQBaseFilter.getFilterType()))) {
-        break label77;
-      }
-      f = ((Float)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(localQQBaseFilter.getFilterType()))).floatValue() + f;
-    }
-    label77:
-    for (;;)
-    {
-      break;
-      return f;
-    }
-  }
-  
-  public int a(int paramInt)
-  {
-    return 4000;
-  }
-  
-  public int a(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("short_video_gpu_config", 0).getInt("cfg_version", 0);
-  }
-  
-  public allk a(int paramInt)
-  {
-    if (this.d) {}
-    for (allk localallk = (allk)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(1));; localallk = (allk)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(0)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DovSVParamManager", 2, "getCameraResolution inBlackPhone = " + this.d + " dpcSize=" + localallk);
-      }
-      return localallk;
-    }
-  }
-  
-  public allk a(Context paramContext)
-  {
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
-    return new allk(localDisplayMetrics.heightPixels, localDisplayMetrics.widthPixels);
-  }
-  
-  public baou a(Context paramContext)
-  {
-    baou localbaou = new baou();
-    int i = bani.a();
-    allk localallk1 = a(i);
-    allk localallk2 = b(i);
-    paramContext = a(paramContext);
-    if (localallk1 != null)
-    {
-      localbaou.a(localallk1.a());
-      localbaou.b(localallk1.b());
-    }
-    if (localallk2 != null)
-    {
-      localbaou.c(localallk2.a());
-      localbaou.d(localallk2.b());
-    }
-    if (paramContext != null)
-    {
-      localbaou.e(paramContext.a());
-      localbaou.f(paramContext.b());
-    }
-    localbaou.a(a(i));
-    int j = a(i) * 1000;
-    localbaou.j(j);
-    bcjb.r = j;
-    localbaou.k(1);
-    localbaou.i(i);
-    if ((bclh.f()) && (Build.VERSION.SDK_INT < 27)) {
-      localbaou.m(0);
-    }
-    return localbaou;
-  }
-  
-  public bnhe a(Context paramContext, int paramInt)
-  {
-    paramContext = new bnhe();
-    allk localallk1 = a(paramInt);
-    allk localallk2 = b(paramInt);
-    if (localallk1 != null)
-    {
-      paramContext.a(localallk1.a());
-      paramContext.b(localallk1.b());
-    }
-    if (localallk2 != null)
-    {
-      paramContext.c(localallk2.a());
-      paramContext.d(localallk2.b());
-    }
-    paramContext.a(a(paramInt));
-    int i = a(paramInt) * 1000;
-    paramContext.e(i);
-    bcjb.r = i;
-    paramContext.f(1);
-    paramContext.g(paramInt);
-    if ((bclh.f()) && (Build.VERSION.SDK_INT < 27)) {
-      paramContext.h(0);
-    }
-    return paramContext;
+    return Arrays.asList(arrayOfbqce);
   }
   
   public void a()
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(a());
-      g(localJSONObject);
-      f(localJSONObject);
-      a(localJSONObject);
-      h(localJSONObject);
-      i(localJSONObject);
-      j(localJSONObject);
-      b(localJSONObject);
+    super.a();
+    if ((!this.jdField_a_of_type_Bqgk.a.d()) || (!this.jdField_a_of_type_Bqgk.a.b())) {
       return;
     }
-    catch (Exception localException)
+    Object localObject = (EditLocalVideoSource)this.jdField_a_of_type_Bqgk.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
+    int k = ((EditLocalVideoSource)localObject).jdField_a_of_type_Int;
+    int m = ((EditLocalVideoSource)localObject).jdField_b_of_type_Int;
+    int n = this.jdField_a_of_type_Bqgk.a.d();
+    this.jdField_a_of_type_ArrayOfBqce = new bqce[n];
+    yuk.a("Q.qqstory.record.EditLocalVideoPlayer", "onCreate EditSource fragmentCount is %d", Integer.valueOf(n));
+    int j = k;
+    int i = 0;
+    while (i < n)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("DovSVParamManager", 2, "parse sv config error, stacktrace :  " + QLog.getStackTraceString(localException));
+      this.jdField_a_of_type_ArrayOfBqce[i] = new bqce(i, null);
+      bqce localbqce = this.jdField_a_of_type_ArrayOfBqce[i];
+      localbqce.jdField_a_of_type_Int = j;
+      localbqce.jdField_b_of_type_Int = Math.min(j + 10000, m);
+      if (i == n - 1) {
+        localbqce.jdField_b_of_type_Int = m;
+      }
+      j += 10000;
+      i += 1;
+    }
+    this.jdField_a_of_type_Int = ((EditLocalVideoSource)localObject).jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = ((EditLocalVideoSource)localObject).jdField_b_of_type_Int;
+    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView = ((TrimTextureVideoView)a(2131366869));
+    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131365109));
+    this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.a(((EditLocalVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation, ((EditLocalVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth, ((EditLocalVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131376088));
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    if (bqyp.a != null)
+    {
+      boolean bool = this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.a();
+      localObject = bqyp.a;
+      if (!bool) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      yuk.b("Q.qqstory.record.EditLocalVideoPlayer", "onCreate mBackgroundImage.setImageBitmap()");
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setOnRecyclePlayListener(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setOnPreparedListener(this);
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bqgk.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setVideoPath(this.jdField_a_of_type_JavaLangString);
+    localObject = this.jdField_a_of_type_Bqgk.a.a("extra_upload_temp_directory");
+    this.jdField_a_of_type_Bqst = new bqst();
+    this.jdField_a_of_type_Bqst.a(null);
+    this.jdField_a_of_type_Bqst.a(this.jdField_a_of_type_JavaLangString, (String)localObject, this.jdField_b_of_type_Boolean, 480, k, 10000, n, false, new bqcc(this), new bqcd(this));
+    a(bqgu.class, this);
+  }
+  
+  public void a(float paramFloat) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat) {}
+  
+  public void a(int paramInt, @NonNull bqua parambqua)
+  {
+    if ((parambqua.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource))
+    {
+      parambqua.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.hasFragments = true;
+      yuk.b("Q.qqstory.record.EditLocalVideoPlayer", "editVideoPrePublish(%d) -> %s", Integer.valueOf(paramInt), this.jdField_a_of_type_ArrayOfBqce[paramInt] + ",mNeedRotate=" + this.jdField_b_of_type_Boolean);
+      parambqua.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoNeedRotate = this.jdField_b_of_type_Boolean;
+      parambqua.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeStart = this.jdField_a_of_type_ArrayOfBqce[paramInt].jdField_a_of_type_Int;
+      parambqua.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd = this.jdField_a_of_type_ArrayOfBqce[paramInt].jdField_b_of_type_Int;
     }
   }
   
-  public void a(JSONObject paramJSONObject)
+  public void a(int paramInt, byte[] paramArrayOfByte) {}
+  
+  public void a(long paramLong, boolean paramBoolean)
   {
-    boolean bool = true;
-    if ((Build.MODEL.contains("Pixel")) || (Build.MODEL.contains("Nexus")) || (Build.VERSION.SDK_INT >= 24) || (Build.VERSION.SDK_INT < 21)) {
-      if (!a(4, 1200000L, 2573741824L, 17))
+    if (this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.seekTo((int)paramLong);
+    }
+  }
+  
+  public void a(Bitmap paramBitmap) {}
+  
+  public void a(Bitmap paramBitmap, boolean paramBoolean) {}
+  
+  public void a(TransferData paramTransferData) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ArrayOfBqce[this.jdField_a_of_type_Bqgk.a()].jdField_a_of_type_Boolean = paramBoolean;
+    b(false);
+  }
+  
+  public boolean a(long paramLong)
+  {
+    return false;
+  }
+  
+  protected boolean a(Message paramMessage)
+  {
+    if (paramMessage.what == 3)
+    {
+      switch (paramMessage.arg1)
       {
-        bool = true;
-        this.jdField_a_of_type_Boolean = bool;
+      default: 
+        return true;
+      case 1: 
+        b(false);
+        return true;
+      case 2: 
+        this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.c();
+        return true;
       }
+      b(true);
+      return true;
     }
-    do
+    int i;
+    if (paramMessage.what == 6)
     {
-      c(paramJSONObject);
-      return;
-      bool = false;
-      break;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      i = paramMessage.arg2;
+      if ((this.jdField_a_of_type_ArrayOfBqce == null) || (i >= this.jdField_a_of_type_ArrayOfBqce.length) || (this.jdField_a_of_type_ArrayOfBqce[i].jdField_b_of_type_Boolean))
       {
-        this.jdField_a_of_type_JavaLangString = new OpenclInfoManager().a();
-        QLog.d("DovSVParamManager", 1, "GPUInfo:" + this.jdField_a_of_type_JavaLangString);
+        yuk.e("Q.qqstory.record.EditLocalVideoPlayer", "Error! PlayerContext is illegal %s index=%d", new Object[] { Arrays.toString(this.jdField_a_of_type_ArrayOfBqce), Integer.valueOf(i) });
+        return false;
       }
-    } while (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-    if (!a(4, 1200000L, 2573741824L, 17)) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      break;
-      bool = false;
+      b(true);
+      return true;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(int paramInt1, long paramLong1, long paramLong2, int paramInt2)
-  {
-    int i = bgln.a();
-    if (i < paramInt2)
+    if (paramMessage.what == 7)
     {
-      lbc.c("DovSVParamManager", "isSupportOfDevice error OSversion: " + i);
-      return false;
-    }
-    paramInt2 = lkw.e();
-    if (paramInt2 < paramInt1)
-    {
-      lbc.c("DovSVParamManager", "isSupportOfDevice error cpucount: " + paramInt2);
-      return false;
-    }
-    long l = lkw.d();
-    if (l < paramLong1)
-    {
-      lbc.c("DovSVParamManager", "isSupportOfDevice error cpuFrequency: " + l);
-      return false;
-    }
-    paramLong1 = bgln.d();
-    if (paramLong1 < paramLong2)
-    {
-      lbc.c("DovSVParamManager", "isSupportOfDevice error memory: " + paramLong1);
-      return false;
-    }
-    return true;
-  }
-  
-  public boolean a(String paramString, int paramInt, Context paramContext)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DovSVParamManager", 2, "saveGPUConfig :  " + paramString);
-    }
-    paramContext = paramContext.getSharedPreferences("short_video_gpu_config", 0).edit();
-    paramContext.putString("cfg_content", paramString);
-    paramContext.putInt("cfg_version", paramInt);
-    return paramContext.commit();
-  }
-  
-  public allk b(int paramInt)
-  {
-    if (this.d) {}
-    for (allk localallk = (allk)this.jdField_c_of_type_JavaUtilMap.get(Integer.valueOf(1));; localallk = (allk)this.jdField_c_of_type_JavaUtilMap.get(Integer.valueOf(0)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DovSVParamManager", 2, "getDpcCompressResolution inBlackPhone = " + this.d + " dpcCompressSize=" + localallk);
+      i = paramMessage.arg1;
+      if ((this.jdField_a_of_type_ArrayOfBqce == null) || (i >= this.jdField_a_of_type_ArrayOfBqce.length))
+      {
+        yuk.e("Q.qqstory.record.EditLocalVideoPlayer", "Error! PlayerContext is illegal %s index=%d", new Object[] { Arrays.toString(this.jdField_a_of_type_ArrayOfBqce), Integer.valueOf(i) });
+        return false;
       }
-      return localallk;
+      this.jdField_a_of_type_ArrayOfBqce[i].jdField_b_of_type_Boolean = true;
+      yuk.b("Q.qqstory.record.EditLocalVideoPlayer", "PlayerContext %d Deleted!", Integer.valueOf(i));
+      return true;
     }
+    return false;
   }
   
-  public baou b(Context paramContext)
+  public void aY_()
   {
-    paramContext = new baou();
-    int i = bani.a();
-    allk localallk = banz.a().a(i);
-    paramContext.a(localallk.a());
-    paramContext.b(localallk.b());
-    paramContext.a(banz.a().a(i));
-    int j = banz.a().a(i) * 1000;
-    paramContext.j(j);
-    bcjb.r = j;
-    paramContext.k(1);
-    paramContext.i(i);
-    return paramContext;
-  }
-  
-  public bnhe b(Context paramContext, int paramInt)
-  {
-    paramContext = new bnhe();
-    allk localallk = banz.a().a(paramInt);
-    paramContext.a(localallk.a());
-    paramContext.b(localallk.b());
-    paramContext.a(banz.a().a(paramInt));
-    int i = banz.a().a(paramInt) * 1000;
-    paramContext.e(i);
-    bcjb.r = i;
-    paramContext.f(1);
-    paramContext.g(paramInt);
-    return paramContext;
-  }
-  
-  public void b(JSONObject paramJSONObject)
-  {
-    try
-    {
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("samSungCameraSwitch", 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("DovSVParamManager", 2, "parseJsonSamSungSwitch parseJsonSamSungSwitch:" + this.jdField_b_of_type_Int);
-      }
+    super.aY_();
+    if (this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView == null) {
       return;
     }
-    catch (Exception paramJSONObject) {}
+    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.c();
   }
   
-  public boolean b()
+  public void a_(int paramInt, Object paramObject)
   {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public baou c(Context paramContext)
-  {
-    paramContext = new baou();
-    if (bcie.c()) {}
-    for (int i = 1;; i = 2)
+    if (this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView == null) {
+      return;
+    }
+    switch (paramInt)
     {
-      allk localallk = banz.a().b(i);
-      paramContext.a(localallk.a());
-      paramContext.b(localallk.b());
-      paramContext.a(1.0F);
-      int j = LightVideoConfigMgr.a().c() * 1000;
+    case 6: 
+    case 10: 
+    case 2: 
+    case 5: 
+    case 7: 
+    case 8: 
+    case 9: 
+    default: 
+      b(false);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.c();
+  }
+  
+  public void a_(xvo paramxvo)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new EditLocalVideoPlayer.3(this), 300L);
+    }
+    yuk.a("Q.qqstory.record.EditLocalVideoPlayer", "onPrepared %s", this.jdField_a_of_type_Bqgk.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a());
+    this.jdField_a_of_type_Boolean = true;
+    b(true);
+  }
+  
+  public void b()
+  {
+    bqch localbqch = (bqch)a(bqch.class);
+    if (localbqch != null)
+    {
       if (QLog.isColorLevel()) {
-        QLog.e("DovSVParamManager", 2, "getLightVideoCaptureParam bitrate:  " + j);
+        QLog.d("zivonchen", 2, "onPlayRecycle()");
       }
-      paramContext.j(j);
-      bcjb.r = j;
-      paramContext.k(1);
-      paramContext.i(i);
-      return paramContext;
+      localbqch.b();
     }
   }
   
-  public boolean c()
+  public void b(int paramInt) {}
+  
+  public void b(long paramLong, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Int == 1;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.seekTo((int)paramLong);
+    }
   }
   
-  public boolean d()
+  protected void b(boolean paramBoolean)
   {
-    return this.jdField_b_of_type_Int == 1;
+    if ((this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView == null) || (!this.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    int i = this.jdField_a_of_type_Bqgk.a();
+    if ((this.jdField_a_of_type_ArrayOfBqce == null) || (i >= this.jdField_a_of_type_ArrayOfBqce.length) || (this.jdField_a_of_type_ArrayOfBqce[i].jdField_b_of_type_Boolean))
+    {
+      yuk.e("Q.qqstory.record.EditLocalVideoPlayer", "Error! resumePlay(%b): PlayerContext is illegal %s index=%d", new Object[] { Boolean.valueOf(paramBoolean), Arrays.toString(this.jdField_a_of_type_ArrayOfBqce), Integer.valueOf(i) });
+      return;
+    }
+    bqce localbqce = this.jdField_a_of_type_ArrayOfBqce[i];
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setPlayRange(localbqce.jdField_a_of_type_Int, localbqce.jdField_b_of_type_Int);
+      this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.b(localbqce.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.a(true);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.b(localbqce.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.a(false);
   }
   
-  public boolean e()
+  public void c() {}
+  
+  public void d() {}
+  
+  public void f()
   {
-    return this.d;
+    super.f();
+    b(false);
+  }
+  
+  public void g()
+  {
+    super.g();
+    this.jdField_a_of_type_Bqst.a();
+  }
+  
+  public void i() {}
+  
+  public void j()
+  {
+    this.jdField_a_of_type_Bqgk.a(Message.obtain(null, 8));
+  }
+  
+  public void k()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.c();
+  }
+  
+  public void l()
+  {
+    b(true);
+  }
+  
+  public void y_()
+  {
+    super.y_();
   }
 }
 

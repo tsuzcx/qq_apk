@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bqcd;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.NavigationBarInfo;
 import com.tencent.mobileqq.mini.apkg.WindowInfo;
@@ -16,6 +15,7 @@ import com.tencent.mobileqq.minigame.jsapi.GameBrandRuntime;
 import com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 
 public class NavigatorBarForMiniGame
   extends RelativeLayout
@@ -61,11 +61,11 @@ public class NavigatorBarForMiniGame
       this.mContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.mContainer.setClipChildren(false);
       this.mCapsuleButton = new CapsuleButton(getContext());
-      this.mCapsuleButton.setId(2131364995);
+      this.mCapsuleButton.setId(2131365042);
       localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 80.0F), DisplayUtil.dip2px(getContext(), 30.0F));
       ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
       j = DisplayUtil.dip2px(getContext(), 9.0F);
-      if (bqcd.b()) {
+      if (LiuHaiUtils.b()) {
         i = ImmersiveUtils.getStatusBarHeight(getContext());
       }
       ((RelativeLayout.LayoutParams)localObject).topMargin = (i + j);
@@ -107,7 +107,7 @@ public class NavigatorBarForMiniGame
   {
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.mCapsuleButton.getLayoutParams();
     int j = DisplayUtil.dip2px(getContext(), 9.0F);
-    if (bqcd.b()) {}
+    if (LiuHaiUtils.b()) {}
     for (int i = ImmersiveUtils.getStatusBarHeight(getContext());; i = 0)
     {
       localLayoutParams.topMargin = (i + j);

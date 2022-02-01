@@ -1,6 +1,22 @@
-public abstract interface aszw
+import com.tencent.mobileqq.fragment.PublicBaseFragment;
+
+public abstract class aszw
+  extends PublicBaseFragment
 {
-  public abstract void a(boolean paramBoolean);
+  protected asyr a;
+  protected int j = -1;
+  
+  public void a(asyr paramasyr)
+  {
+    this.a = paramasyr;
+  }
+  
+  public void i() {}
+  
+  public void i(int paramInt)
+  {
+    this.j = paramInt;
+  }
 }
 
 

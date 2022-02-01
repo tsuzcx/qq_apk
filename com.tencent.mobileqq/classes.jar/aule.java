@@ -1,24 +1,6 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.qphone.base.util.QLog;
-
-class aule
-  extends RecyclerView.OnScrollListener
+public abstract interface aule
 {
-  aule(aulb paramaulb) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
-  {
-    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "onScrollStateChanged state: " + paramInt);
-    if (paramInt != 0) {
-      aulb.a(this.a).c();
-    }
-    while (!aulb.a(this.a).a()) {
-      return;
-    }
-    aulb.a(this.a).b();
-    aulb.a(this.a).notifyDataSetChanged();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

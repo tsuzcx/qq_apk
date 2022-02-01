@@ -1,26 +1,42 @@
-import android.util.Pair;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
 import java.util.List;
 
 class aulc
-  extends anxg
+  implements bjhv
 {
-  aulc(aulb paramaulb) {}
+  aulc(aukz paramaukz, List paramList, atqx paramatqx, aule paramaule) {}
   
-  protected void a(String paramString, List<Pair<String, String>> paramList)
+  public void a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
-    if (paramList == null) {}
-    for (int i = 0;; i = paramList.size())
+    if (paramInt == 2)
     {
-      QLog.i("ForwardTroopMemberControllerForMiniPie", 2, i);
-      if ((aulb.a(this.a).equals(paramString)) && (aulb.a(this.a) != null))
+      auna.d(aukz.a(this.jdField_a_of_type_Aukz).getString(2131692445));
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        aulb.a(this.a);
-        aulb.a(this.a).a(paramList);
+        localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+          if (bhmi.b(localFileManagerEntity.getFilePath())) {
+            this.jdField_a_of_type_Atqx.a(localFileManagerEntity.getFilePath(), "", aukz.a(this.jdField_a_of_type_Aukz).getCurrentAccountUin(), 0, false);
+          } else {
+            this.jdField_a_of_type_Atqx.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+          }
+        }
       }
+      if (this.jdField_a_of_type_Aule != null) {
+        this.jdField_a_of_type_Aule.a(4, 0);
+      }
+    }
+    while (this.jdField_a_of_type_Aule == null)
+    {
+      Iterator localIterator;
+      FileManagerEntity localFileManagerEntity;
       return;
     }
+    this.jdField_a_of_type_Aule.a(4, 1);
   }
 }
 

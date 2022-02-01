@@ -1,3 +1,4 @@
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -5,15 +6,19 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class tvv
   implements View.OnClickListener
 {
-  tvv(tvr paramtvr, tvq paramtvq) {}
+  tvv(tvt paramtvt, tvs paramtvs) {}
   
   public void onClick(View paramView)
   {
-    oat.a(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B6F", "0X8005B6F", 0, 0, "", "", "", "", false);
-    bcst.b(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642D", "0X800642D", 0, 0, "", "", "", "");
-    aevt.a(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_AndroidAppActivity, tyg.a(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_AndroidAppActivity), null, null);
-    tvx.b(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    bdll.b(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.a, "P_CliOper", "Pb_account_lifeservice", "", "0X8005731", "0X8005731", 0, 0, "", "", "", "");
+    bdll.b(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.a, "CliOper", "", "", "0X800642E", "0X800642E", 0, 0, String.valueOf(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvr.a), "", "", "");
+    if ((this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvr == null) || (TextUtils.isEmpty(String.valueOf(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvr.a)))) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      tvt.a(this.jdField_a_of_type_Tvt);
+    }
   }
 }
 

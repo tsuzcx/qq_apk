@@ -1,42 +1,21 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class wlw
-  extends wno
+final class wlw
+  extends SimpleJob<Void>
 {
-  qqstory_service.RspDelFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment;
-  wnp jdField_a_of_type_Wnp;
-  
-  public wlw(qqstory_service.RspDelFeedComment paramRspDelFeedComment, wnp paramwnp)
+  wlw(String paramString1, String paramString2)
   {
-    super(paramRspDelFeedComment.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment = paramRspDelFeedComment;
-    this.jdField_a_of_type_Wnp = paramwnp;
+    super(paramString1);
   }
   
-  public wlw(wnp paramwnp)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    this.jdField_a_of_type_Wnp = paramwnp;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Wnp.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment);
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Wnp.a(paramInt, paramBundle);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Wnp.a(paramInt, paramString);
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Wnp.a(paramBoolean, paramBundle);
+    int i = wlt.a();
+    yuk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", this.a + " : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
+    return null;
   }
 }
 

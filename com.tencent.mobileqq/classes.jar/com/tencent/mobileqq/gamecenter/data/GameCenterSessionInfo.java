@@ -5,8 +5,8 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import aurs;
-import bdnt;
+import avjs;
+import begp;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class GameCenterSessionInfo
   implements Parcelable, Comparable<GameCenterSessionInfo>
 {
-  public static final Parcelable.Creator<GameCenterSessionInfo> CREATOR = new aurs();
+  public static final Parcelable.Creator<GameCenterSessionInfo> CREATOR = new avjs();
   public int a;
   public long a;
   public String a;
@@ -71,10 +71,10 @@ public class GameCenterSessionInfo
       localJSONObject.put("gameName", f());
       localJSONObject.put("faceUrl", this.jdField_d_of_type_JavaLangString);
       localJSONObject.put("nickName", h());
-      localJSONObject.put("firstMsg", new bdnt(this.f, 6, 32, -1).a());
+      localJSONObject.put("firstMsg", new begp(this.f, 6, 32, -1).a());
       localJSONObject.put("firstMsgTime", this.jdField_a_of_type_Long);
       localJSONObject.put("requestCount", this.jdField_b_of_type_Int);
-      localJSONObject.put("lastMsg", new bdnt(this.g, 6, 32, -1).a());
+      localJSONObject.put("lastMsg", new begp(this.g, 6, 32, -1).a());
       localJSONObject.put("lastMsgTime", this.jdField_b_of_type_Long);
       localJSONObject.put("unreadMsg", this.jdField_c_of_type_Int);
       localJSONObject.put("onlineType", this.jdField_d_of_type_Int);

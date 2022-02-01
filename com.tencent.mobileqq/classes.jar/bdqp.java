@@ -1,82 +1,100 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.widget.PAHighLightImageView;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import java.util.HashMap;
 
-public class bdqp
+class bdqp
+  extends URLDrawableDownListener.Adapter
 {
-  SparseArray<bdqm> jdField_a_of_type_AndroidUtilSparseArray;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  bdqp(bdqo parambdqo) {}
   
-  bdqp(QQAppInterface paramQQAppInterface)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(bdqn.a.length);
-  }
-  
-  bdqm a(int paramInt)
-  {
-    bdqm localbdqm = (bdqm)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localbdqm != null) {
-      ??? = localbdqm;
-    }
-    do
-    {
-      do
-      {
-        return ???;
-        switch (paramInt)
-        {
-        default: 
-          ??? = localbdqm;
-        }
-      } while (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null);
-      ??? = localbdqm;
-    } while (localbdqm == null);
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
-      {
-        if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-          break label167;
-        }
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localbdqm);
-        return localbdqm;
-      }
-      Object localObject2 = new bdqx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      break;
-      localObject2 = new bdqw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      break;
-      localObject2 = new bdqz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      break;
-      localObject2 = new bdqy(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      break;
-      label167:
-      localObject2 = (bdqm)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsgItemCover", 2, "onLoadCancelled");
     }
   }
   
-  void a()
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    for (;;)
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsgItemCover", 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null))
     {
-      int i;
-      synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+      paramThrowable = paramURLDrawable.getURL().toString();
+      if (paramThrowable.startsWith("http://url.cn"))
       {
-        int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-        i = 0;
-        if (i < j)
+        paramThrowable = paramThrowable.replace("http://", "https://");
+        try
         {
-          bdqm localbdqm = (bdqm)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-          if (localbdqm != null) {
-            localbdqm.a();
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+          paramThrowable = URLDrawable.getDrawable(new URL(paramThrowable), (URLDrawable.URLDrawableOptions)paramURLDrawable.getTag());
+          paramThrowable.setAutoDownload(true);
+          ((PAHighLightImageView)paramView).setImageDrawable(paramThrowable);
           return;
         }
+        catch (Exception paramThrowable)
+        {
+          paramThrowable.printStackTrace();
+        }
       }
-      i += 1;
+    }
+    try
+    {
+      paramThrowable = new HashMap();
+      paramThrowable.put("param_Url", paramURLDrawable.getURL().toString());
+      bdmc.a(BaseApplication.getContext()).a(null, "StructMsgPicShow", false, 0L, 0L, paramThrowable, null);
+      label152:
+      this.a.a(paramView, 0, 1001);
+      return;
+    }
+    catch (Exception paramURLDrawable)
+    {
+      break label152;
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsgItemCover", 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {
+      return;
+    }
+    paramView.setBackgroundDrawable(null);
+    if ((paramView instanceof ImageView)) {
+      ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
+    }
+    try
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_Url", paramURLDrawable.getURL().toString());
+      bdmc.a(BaseApplication.getContext()).a(null, "StructMsgPicShow", true, 0L, 0L, localHashMap, null);
+      label66:
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsgItemCover", 2, "onLoadSuccessed");
+      }
+      this.a.a(paramView, 1, 1001);
+      return;
+    }
+    catch (Exception paramURLDrawable)
+    {
+      break label66;
     }
   }
 }

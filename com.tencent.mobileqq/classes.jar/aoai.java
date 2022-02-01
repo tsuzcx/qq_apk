@@ -1,36 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.Comparator;
 
-public final class aoai
-  implements bdvv
+class aoai
+  implements Comparator<aoal>
 {
-  public void a(bdws parambdws, bdwt parambdwt)
+  aoai(aoah paramaoah) {}
+  
+  public int a(aoal paramaoal1, aoal paramaoal2)
   {
-    if ((parambdws == null) || (parambdwt == null)) {}
+    if ((paramaoal1 == null) || (paramaoal2 == null)) {}
     do
     {
-      do
-      {
-        return;
-      } while (!(parambdws instanceof bdvs));
-      parambdws = (bdvs)parambdws;
-      parambdws.jdField_a_of_type_Long += parambdwt.c;
-      parambdwt.c = 0L;
-      parambdwt = "bytes=" + parambdws.jdField_a_of_type_Long + "-";
-      parambdws.jdField_a_of_type_JavaUtilHashMap.put("Range", parambdwt);
-      parambdwt = parambdws.jdField_a_of_type_JavaLangString;
-      if (parambdwt.contains("range="))
-      {
-        String str = parambdwt.substring(0, parambdwt.lastIndexOf("range="));
-        parambdws.jdField_a_of_type_JavaLangString = (str + "range=" + parambdws.jdField_a_of_type_Long);
+      return 0;
+      if (paramaoal1.a > paramaoal2.a) {
+        return 1;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("MonitorSocketDownload", 2, "IBreakDownFix, " + parambdwt);
+    } while (paramaoal1.a >= paramaoal2.a);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoai
  * JD-Core Version:    0.7.0.1
  */

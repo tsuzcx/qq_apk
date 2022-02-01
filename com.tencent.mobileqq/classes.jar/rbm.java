@@ -1,52 +1,42 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public abstract class rbm
-  extends Binder
-  implements rbl
+public class rbm
+  extends pfh
 {
-  public rbm()
-  {
-    attachInterface(this, "com.tencent.biz.pubaccount.readinjoy.service.redpacket.IShouldDoTaskTimingCallback");
-  }
+  public rbm(ReadInJoyPrivacyListFragment paramReadInJoyPrivacyListFragment) {}
   
-  public static rbl a(IBinder paramIBinder)
+  public void a(int paramInt1, long paramLong, List<Long> paramList, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IShouldDoTaskTimingCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof rbl))) {
-      return (rbl)localIInterface;
-    }
-    return new rbn(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    StringBuilder localStringBuilder = new StringBuilder().append("onGetPrivacyList | retcode ").append(paramInt1).append(" | feedsId ").append(paramLong).append("| totalCnt ").append(paramInt3).append(" | nextPageStartIndex ").append(paramInt2).append(" | hasNextPage ").append(paramBoolean).append("| uinList size ");
+    int i;
+    if (paramList != null)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IShouldDoTaskTimingCallback");
-      return true;
+      i = paramList.size();
+      QLog.d("ReadInJoyPrivacyListFragment", 1, i);
+      if (paramInt1 != 0) {
+        break label180;
+      }
+      ReadInJoyPrivacyListFragment.a(this.a, paramInt2);
+      ReadInJoyPrivacyListFragment.b(this.a, paramInt3);
+      ReadInJoyPrivacyListFragment.a(this.a, paramBoolean);
+      if (paramList != null) {
+        ReadInJoyPrivacyListFragment.a(this.a).addAll(paramList);
+      }
+      if (ReadInJoyPrivacyListFragment.a(this.a) != null) {
+        ReadInJoyPrivacyListFragment.a(this.a).a(ReadInJoyPrivacyListFragment.a(this.a));
+      }
     }
-    paramParcel1.enforceInterface("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IShouldDoTaskTimingCallback");
-    if (paramParcel1.readInt() != 0) {}
-    for (boolean bool = true;; bool = false)
+    label180:
+    while (ReadInJoyPrivacyListFragment.a(this.a) == null)
     {
-      a(bool);
-      paramParcel2.writeNoException();
-      return true;
+      return;
+      i = 0;
+      break;
     }
+    ReadInJoyPrivacyListFragment.a(this.a).a();
   }
 }
 

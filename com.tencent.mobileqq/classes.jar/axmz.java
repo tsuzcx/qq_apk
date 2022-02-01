@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
 
 public class axmz
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public axmz(StuffContainerView paramStuffContainerView) {}
+  public axmz(MultiCardFragment paramMultiCardFragment) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.a.a != null) {
-      this.a.a.a(0);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.onAnimationCancel(paramAnimator);
+    MultiCardFragment.b(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    MultiCardFragment.b(this.a);
   }
 }
 

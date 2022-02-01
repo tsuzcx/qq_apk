@@ -2,17 +2,17 @@ package com.tencent.mobileqq.filemanager.util;
 
 import android.content.Context;
 import android.widget.TextView;
-import atwb;
-import atwt;
+import aunx;
+import auoo;
 
 public final class QFileUtils$2
   implements Runnable
 {
-  public QFileUtils$2(Context paramContext, TextView paramTextView, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, atwb paramatwb) {}
+  public QFileUtils$2(Context paramContext, TextView paramTextView, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, aunx paramaunx) {}
   
   public void run()
   {
-    atwt.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Atwb);
+    auoo.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Aunx);
   }
 }
 

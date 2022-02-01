@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.musicgene;
 
-import awys;
+import axrl;
 import java.util.TimerTask;
 
 public class MusicGeneWebViewPlugin$6
   extends TimerTask
 {
-  public MusicGeneWebViewPlugin$6(awys paramawys) {}
+  public MusicGeneWebViewPlugin$6(axrl paramaxrl) {}
   
   public void run()
   {
-    awys.a(this.this$0);
+    axrl.a(this.this$0);
   }
 }
 

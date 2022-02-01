@@ -1,12 +1,12 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import bode;
+import bpez;
 import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
 class AEEditorVideoEditFragment$15
   implements Runnable
 {
-  AEEditorVideoEditFragment$15(AEEditorVideoEditFragment paramAEEditorVideoEditFragment, bode parambode) {}
+  AEEditorVideoEditFragment$15(AEEditorVideoEditFragment paramAEEditorVideoEditFragment, bpez parambpez) {}
   
   public void run()
   {

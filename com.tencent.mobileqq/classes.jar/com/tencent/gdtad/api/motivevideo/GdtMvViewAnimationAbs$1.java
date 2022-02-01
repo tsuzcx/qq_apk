@@ -1,15 +1,15 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import acov;
+import acsy;
 
 public class GdtMvViewAnimationAbs$1
   implements Runnable
 {
-  public GdtMvViewAnimationAbs$1(acov paramacov) {}
+  public GdtMvViewAnimationAbs$1(acsy paramacsy) {}
   
   public void run()
   {
-    acov.a(this.this$0, this.this$0.a);
+    acsy.a(this.this$0, this.this$0.a);
   }
 }
 

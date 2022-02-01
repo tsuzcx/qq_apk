@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount;
 
 import org.json.JSONObject;
-import pil;
-import pmy;
+import pbd;
+import pfs;
 
 public final class PublicAccountReportUtils$2
   implements Runnable
@@ -15,10 +15,10 @@ public final class PublicAccountReportUtils$2
     {
       int j = new JSONObject(this.a).getInt("channel_id");
       int i = 2;
-      if (pil.c(j)) {
+      if (pbd.c(j)) {
         i = 0;
       }
-      pmy.e(i);
+      pfs.e(i);
       return;
     }
     catch (Exception localException)

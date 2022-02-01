@@ -1,30 +1,9 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.ViewGroup;
 
-final class bmyd
-  implements atve
+public abstract interface bmyd
 {
-  bmyd(ArrayList paramArrayList1, QQAppInterface paramQQAppInterface, ArrayList paramArrayList2, ArrayList paramArrayList3, ArrayList paramArrayList4, MqqHandler paramMqqHandler, int paramInt) {}
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      MessageForFile localMessageForFile = (MessageForFile)localIterator.next();
-      atvo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForFile, BaseActivity.sTopActivity, true);
-    }
-    if (bmyc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, this.c, this.d, this.jdField_a_of_type_MqqOsMqqHandler, this.jdField_a_of_type_Int)) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131692439, 0).b(this.jdField_a_of_type_Int);
-    }
-  }
-  
-  public void b() {}
+  public abstract void a(int paramInt, View paramView, ViewGroup paramViewGroup);
 }
 
 

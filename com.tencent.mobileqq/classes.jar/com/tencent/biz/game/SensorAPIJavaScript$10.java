@@ -6,7 +6,7 @@ import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 import gp;
 import gr;
-import nmj;
+import noe;
 
 class SensorAPIJavaScript$10
   extends Thread
@@ -28,7 +28,7 @@ class SensorAPIJavaScript$10
       return;
     }
     this.this$0.c = false;
-    this.this$0.callJs(this.d, new String[] { nmj.a(Integer.toString(1)) });
+    this.this$0.callJs(this.d, new String[] { noe.a(Integer.toString(1)) });
   }
 }
 

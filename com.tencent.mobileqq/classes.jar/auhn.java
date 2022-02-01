@@ -1,38 +1,44 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
 
-public class auhn
+class auhn
+  extends anua
 {
-  private static auhn jdField_a_of_type_Auhn;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  auhn(auha paramauha) {}
   
-  public static auhn a()
+  protected void a(bftf parambftf, int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle)
   {
-    if (jdField_a_of_type_Auhn == null) {
-      jdField_a_of_type_Auhn = new auhn();
+    if (this.a.jdField_a_of_type_Auei.a().TroopUin != parambftf.b) {}
+    while ((parambftf.a == null) || (auha.a(this.a) == null) || (!auha.a(this.a).equals(parambftf.a.toString())) || (this.a.jdField_a_of_type_Augm == null) || (paramInt1 != 0)) {
+      return;
     }
-    return jdField_a_of_type_Auhn;
+    this.a.jdField_a_of_type_Augm.a(paramInt2, paramString1, paramString2, paramBundle);
   }
   
-  public static String a(String paramString)
+  protected void a(Object paramObject)
   {
-    if (jdField_a_of_type_Auhn == null) {
-      paramString = null;
+    Object localObject = this.a.jdField_a_of_type_Auei.a();
+    paramObject = (bftf)paramObject;
+    if (((FileManagerEntity)localObject).TroopUin != paramObject.b) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TroopFileModel<FileAssistant>", 4, "difference troop uin file");
+      }
     }
-    String str;
     do
     {
-      return paramString;
-      str = (String)jdField_a_of_type_Auhn.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      paramString = str;
-    } while (!jdField_a_of_type_Auhn.jdField_a_of_type_JavaUtilMap.isEmpty());
-    jdField_a_of_type_Auhn = null;
-    return str;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+      return;
+      if (TextUtils.isEmpty(auha.a(this.a)))
+      {
+        localObject = this.a.a((FileManagerEntity)localObject);
+        if (((bftf)localObject).a != null) {
+          auha.a(this.a, ((bftf)localObject).a.toString());
+        }
+      }
+    } while ((paramObject.a == null) || (auha.a(this.a) == null) || (!auha.a(this.a).equals(paramObject.a.toString())));
+    auha.a(this.a, paramObject);
   }
 }
 

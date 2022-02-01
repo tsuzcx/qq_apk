@@ -1,242 +1,183 @@
-import android.os.Handler;
-import android.os.SystemClock;
-import android.util.Log;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.lyric.common.TimerTaskManager;
-import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
-import com.tencent.mobileqq.lyric.widget.LyricView;
-import com.tencent.mobileqq.lyric.widget.LyricViewController.10;
-import com.tencent.mobileqq.lyric.widget.LyricViewController.2;
-import com.tencent.mobileqq.lyric.widget.LyricViewController.3;
-import com.tencent.mobileqq.lyric.widget.LyricViewController.4;
-import com.tencent.mobileqq.lyric.widget.LyricViewController.5;
-import com.tencent.mobileqq.lyric.widget.LyricViewController.9;
-import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
-import com.tencent.mobileqq.lyric.widget.LyricViewScroll;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.app.Dialog;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import javax.annotation.Nonnull;
+import mqq.app.MobileQQ;
 
 public class awen
 {
-  public int a;
-  public long a;
-  public awdu a;
-  protected awek a;
-  private aweq jdField_a_of_type_Aweq = new aweo(this);
-  protected TimerTaskManager.TimerTaskRunnable a;
-  protected TimerTaskManager a;
-  public LyricViewInternal a;
-  private LyricViewScroll jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll;
-  protected final String a;
-  protected volatile boolean a;
-  public int b;
-  public volatile boolean b;
-  private volatile int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
+  private static volatile String a;
   
-  public awen(LyricView paramLyricView)
+  public static int a(Context paramContext, @Nonnull WatchTogetherFloatingData paramWatchTogetherFloatingData)
   {
-    this.jdField_a_of_type_JavaLangString = ("task_name_lyric_draw_" + System.currentTimeMillis());
-    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager = awdz.a();
-    this.jdField_a_of_type_Awek = new awek();
-    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable = new LyricViewController.2(this);
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll = paramLyricView.a();
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal = paramLyricView.a();
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.setScrollListener(this.jdField_a_of_type_Aweq);
+    int i = 1;
+    if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool")) {}
+    do
+    {
+      try
+      {
+        paramContext = new Intent();
+        paramContext.setAction("action_show_together_floating_windows");
+        paramContext.setPackage(MobileQQ.getContext().getPackageName());
+        paramContext.putExtra("com.tencent.mobileqq.webprocess.together.floating.data", paramWatchTogetherFloatingData);
+        paramContext.setComponent(new ComponentName(MobileQQ.getContext(), "com.tencent.mobileqq.webprocess.WebProcessReceiver"));
+        BaseApplicationImpl.getContext().sendBroadcast(paramContext, "com.tencent.msg.permission.pushnotify");
+        if (QLog.isColorLevel()) {
+          QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "showFloatingWindow main..., data=", paramWatchTogetherFloatingData.toString() });
+        }
+        i = 0;
+        return i;
+      }
+      catch (Exception paramContext)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("TogetherWatchFloatingUtil", 2, "showFloatingWindow fail...", paramContext);
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "showFloatingWindow tool..., data=", paramWatchTogetherFloatingData.toString() });
+      }
+    } while (awet.a().a(paramContext, paramWatchTogetherFloatingData) == 0);
+    return 2;
   }
   
-  private void d()
+  public static Dialog a(Context paramContext)
   {
-    this.jdField_a_of_type_Awdu = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.a();
-    awdu localawdu = this.jdField_a_of_type_Awdu;
-    if ((localawdu == null) || (localawdu.a()) || (this.jdField_a_of_type_Boolean))
+    if (paramContext == null) {
+      return null;
+    }
+    bjfq.b();
+    paramContext = bhlq.a(paramContext, 230, null, "一起看将收起为小窗进行展示，请开启QQ悬浮窗权限以正常使用功能。", paramContext.getString(2131690580), paramContext.getString(2131694098), new aweo(paramContext), null);
+    paramContext.setCancelable(false);
+    return paramContext;
+  }
+  
+  public static Dialog a(Context paramContext, Intent paramIntent)
+  {
+    paramContext = blir.a(paramContext);
+    paramContext.b(2131715996);
+    paramContext.a(2131690732, 3);
+    paramContext.c(2131690580);
+    paramContext.a(new awep(paramIntent, paramContext));
+    return paramContext;
+  }
+  
+  public static void a()
+  {
+    a = "";
+    if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool"))
     {
-      if (this.jdField_a_of_type_Boolean) {
-        Log.d("ModuleController", "onRefresh -> is scrolling");
+      Bundle localBundle = new Bundle();
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "WatchTogetherClientIPCModule", "ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS", localBundle, new awes());
+      return;
+    }
+    awet.a().b();
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString)
+  {
+    Intent localIntent = new Intent(paramContext, QQTranslucentBrowserActivity.class);
+    localIntent.putExtra("key_dialog_type", paramInt);
+    localIntent.putExtra("cur_uin", paramString);
+    localIntent.addFlags(805306368);
+    paramContext.startActivity(localIntent);
+  }
+  
+  public static void a(Context paramContext, @Nonnull WatchTogetherFloatingData paramWatchTogetherFloatingData)
+  {
+    if ((BaseApplicationImpl.getApplication() == null) || (BaseApplicationImpl.getApplication().getQQProcessName() == null)) {}
+    boolean bool1;
+    boolean bool2;
+    do
+    {
+      return;
+      if (BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool")) {
+        break;
+      }
+      bool1 = b(2, paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType());
+      bool2 = a();
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "closeFloatingWindow isSameFloatingInfo=", Boolean.valueOf(bool1), "isFloatingInfoEmpty=", Boolean.valueOf(bool2) });
+      }
+    } while ((!bool1) && (!bool2));
+    a = "";
+    paramContext = new Bundle();
+    paramContext.putSerializable("BUNDLE_KEY_UI_DATA", paramWatchTogetherFloatingData);
+    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "WatchTogetherClientIPCModule", "ACTION_QUIT_WATCH_FLOATING_WINDOWS", paramContext, new awer());
+    return;
+    awet.a().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
+  }
+  
+  public static void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "setIsWatchFloatingShow isShow=", Boolean.valueOf(paramBoolean1), " uin=", paramString, " sessionType=", Integer.valueOf(paramInt) });
+    }
+    if (!paramBoolean1) {}
+    for (a = "";; a = "2_" + paramString + "_" + paramInt)
+    {
+      if (7 == BaseApplicationImpl.sProcessId)
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putBoolean("BUNDLE_SET_KEY_REFRESH_UI", paramBoolean2);
+        localBundle.putBoolean("BUNDLE_SET_STATUS", paramBoolean1);
+        localBundle.putString("BUNDLE_SET_KEY_UIN", paramString);
+        localBundle.putInt("BUNDLE_SET_KEY_SESSION_TYPE", paramInt);
+        QIPCClientHelper.getInstance().callServer("TogetherBusinessIPCModule", "action_set_floating", localBundle, new aweq());
       }
       return;
     }
-    int j = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
-    int i = j;
-    if (this.jdField_b_of_type_Boolean)
+  }
+  
+  public static boolean a()
+  {
+    return TextUtils.isEmpty(a);
+  }
+  
+  public static boolean a(int paramInt1, String paramString, int paramInt2)
+  {
+    if (paramInt1 != 2) {}
+    do
     {
-      i = j;
-      if (j >= this.jdField_b_of_type_Int) {
-        i = this.jdField_b_of_type_Int;
-      }
-    }
-    this.jdField_c_of_type_Int = i;
-    a(localawdu.a(i), i);
-  }
-  
-  public void a()
-  {
-    Log.d("ModuleController", "start");
-    awdz.a().post(new LyricViewController.4(this));
-    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager.a(this.jdField_a_of_type_JavaLangString, 100L, 100L, this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable);
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  public void a(int paramInt)
-  {
-    Log.d("ModuleController", "seek " + paramInt);
-    awdz.a().post(new LyricViewController.5(this, paramInt));
-  }
-  
-  protected void a(int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal != null) && (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.getWindowToken() != null)) {
-      ThreadManager.getUIHandler().post(new LyricViewController.9(this, paramInt1, paramInt2));
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll != null) && (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.getWindowToken() != null)) {
-      ThreadManager.getUIHandler().post(new LyricViewController.10(this));
-    }
-  }
-  
-  public void a(awdu paramawdu1, awdu paramawdu2, awdu paramawdu3)
-  {
-    Log.v("ModuleController", "setLyric begin");
-    awdz.a().post(new LyricViewController.3(this, paramawdu3, paramawdu1, paramawdu2));
-  }
-  
-  public void a(LyricView paramLyricView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll = paramLyricView.a();
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal = paramLyricView.a();
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.setScrollListener(this.jdField_a_of_type_Aweq);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    Log.d("ModuleController", "stop");
-    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager.a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_c_of_type_Boolean = false;
-  }
-  
-  protected void b(int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if ((this.jdField_a_of_type_Awdu != null) || (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal != null))
-    {
-      paramInt = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.b(paramInt);
-      if ((this.jdField_a_of_type_Awdu == null) || (this.jdField_a_of_type_Awdu.a())) {
-        Log.w("ModuleController", "onScrollStop -> scroll without measured lyric");
-      }
-    }
-    else
-    {
-      return;
-    }
-    Log.d("ModuleController", "onScrollStop -> scroll to lineNo：" + paramInt);
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_Awdu.a.size()))
-    {
-      if (this.jdField_a_of_type_Awdu.a.get(paramInt) == null)
+      do
       {
-        Log.w("ModuleController", "onScrollStop -> current sentence is null");
-        return;
-      }
-      long l2 = ((awdw)this.jdField_a_of_type_Awdu.a.get(paramInt)).jdField_a_of_type_Long;
-      Log.d("ModuleController", "onScrollStop -> start time of current sentence：" + l2);
-      long l1 = l2;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        if ((this.jdField_a_of_type_Int < 0) || (l2 >= this.jdField_a_of_type_Int)) {
-          break label303;
-        }
-        l1 = this.jdField_a_of_type_Int;
-      }
-      for (;;)
-      {
-        Log.d("ModuleController", "onScrollStop -> correct start time：" + l1);
-        l2 = l1;
-        if (l1 < 0L) {
-          l2 = 0L;
-        }
-        l1 = (l2 / 10L + 1L) * 10L;
-        Log.d("ModuleController", "onScrollStop -> output time：" + l1);
-        this.jdField_a_of_type_Awek.a(l1);
-        if ((this.jdField_c_of_type_Boolean) || (!this.d)) {
+        return false;
+        if (QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool")) {
           break;
         }
-        a((int)l1);
-        return;
-        label303:
-        l1 = l2;
-        if (this.jdField_b_of_type_Int >= 0)
-        {
-          l1 = l2;
-          if (l2 > this.jdField_b_of_type_Int) {
-            l1 = this.jdField_b_of_type_Int;
-          }
-        }
-      }
+        a = null;
+      } while (!QLog.isColorLevel());
+      QLog.d("TogetherWatchFloatingUtil", 2, "isWatchFloatingShow， tool process NOT EXIST");
+      return false;
+    } while ((1 != BaseApplicationImpl.sProcessId) && (7 != BaseApplicationImpl.sProcessId));
+    paramString = paramInt1 + "_" + paramString + "_" + paramInt2;
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "key=", paramString, " info=", a });
     }
-    Log.w("ModuleController", "onScrollStop -> scroll out of lyric scope");
+    return TextUtils.equals(paramString, a);
   }
   
-  public void c()
+  public static boolean b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager.a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_c_of_type_Boolean = false;
+    return a == null;
   }
   
-  protected void c(int paramInt)
+  public static boolean b(int paramInt1, String paramString, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Awdu != null) || (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal != null))
-    {
-      paramInt = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.a(paramInt);
-      if ((this.jdField_a_of_type_Awdu == null) || (this.jdField_a_of_type_Awdu.a())) {
-        Log.w("ModuleController", "onScrolling -> scroll without measured lyric");
-      }
-    }
-    else
-    {
-      return;
-    }
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_Awdu.a.size()))
-    {
-      if (this.jdField_a_of_type_Awdu.a.get(paramInt) == null)
-      {
-        Log.w("ModuleController", "onScrollStop -> current sentence is null");
-        return;
-      }
-      long l2 = ((awdw)this.jdField_a_of_type_Awdu.a.get(paramInt)).jdField_a_of_type_Long;
-      long l1 = l2;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        if ((this.jdField_a_of_type_Int < 0) || (l2 >= this.jdField_a_of_type_Int)) {
-          break label178;
-        }
-        l1 = this.jdField_a_of_type_Int;
-      }
-      for (;;)
-      {
-        l2 = l1;
-        if (l1 < 0L) {
-          l2 = 0L;
-        }
-        l1 = l2 / 10L;
-        this.jdField_a_of_type_Awek.b((l1 + 1L) * 10L);
-        return;
-        label178:
-        l1 = l2;
-        if (this.jdField_b_of_type_Int >= 0)
-        {
-          l1 = l2;
-          if (l2 > this.jdField_b_of_type_Int) {
-            l1 = this.jdField_b_of_type_Int;
-          }
-        }
-      }
-    }
-    Log.w("ModuleController", "onScrollStop -> scroll out of lyric scope");
+    return TextUtils.equals(paramInt1 + "_" + paramString + "_" + paramInt2, a);
   }
 }
 

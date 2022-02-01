@@ -1,13 +1,15 @@
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
 class vzs
-  implements vuw
+  implements DialogInterface.OnClickListener
 {
-  vzs(vzq paramvzq) {}
+  vzs(vzr paramvzr) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    uxo.a(paramString, this.a.a().clone().setElementIdStr("portrait"));
+    QCircleFeedCommentWidget.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext().hashCode(), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
   }
 }
 

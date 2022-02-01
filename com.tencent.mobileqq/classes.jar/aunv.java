@@ -1,10 +1,8 @@
-import com.tencent.image.URLImageView;
+import android.graphics.Bitmap;
 
-public class aunv
+public abstract interface aunv
 {
-  public URLImageView a;
-  
-  public aunv(aunt paramaunt) {}
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

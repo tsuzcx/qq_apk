@@ -1,15 +1,21 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import mqq.os.MqqHandler;
 
-class xum
-  implements bkhy
+public class xum
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  xum(xui paramxui, AtomicBoolean paramAtomicBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  xum(xuk paramxuk) {}
   
-  public void onDismiss()
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    xuk.a(this.a).d = paramTVK_IMediaPlayer.getDuration();
+    xuk.a(this.a).e = paramTVK_IMediaPlayer.getCurrentPostion();
+    paramTVK_IMediaPlayer = this.a.a;
+    if (paramTVK_IMediaPlayer != null) {
+      ThreadManager.getUIHandler().post(new VideoViewTVKImpl.2.1(this, paramTVK_IMediaPlayer));
     }
   }
 }

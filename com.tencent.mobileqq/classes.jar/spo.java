@@ -1,25 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyXListView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
-public class spo
-  implements spc
+public abstract interface spo
 {
-  public spo(ReadInJoyDailyXListView paramReadInJoyDailyXListView) {}
+  public abstract void a();
   
-  public void a()
-  {
-    if (ReadInJoyDailyXListView.a(this.a))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDailyXListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", this.a.c + " mNoMoreData : " + this.a.b });
-      }
-      if ((this.a.c == 0) && ((!ube.a(this.a.d)) || (!this.a.b)))
-      {
-        this.a.a(4);
-        QLog.d("ReadInJoyDailyXListView", 2, "preloadOptimize switch ON, loadingMore()");
-      }
-    }
-  }
+  public abstract void a(AbsListView paramAbsListView, int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

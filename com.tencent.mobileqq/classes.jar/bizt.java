@@ -1,8 +1,31 @@
-public abstract interface bizt
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.widget.PagingScrollView;
+import com.tencent.qphone.base.util.QLog;
+
+public class bizt
+  implements View.OnTouchListener
 {
-  public abstract void a(int paramInt);
+  public bizt(PagingScrollView paramPagingScrollView) {}
   
-  public abstract void b();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (this.a.mIsOnSpecialView)
+    {
+      int i = paramMotionEvent.getAction();
+      if ((i == 1) || (i == 3))
+      {
+        this.a.mIsOnSpecialView = false;
+        this.a.getParent().requestDisallowInterceptTouchEvent(false);
+        if (QLog.isDevelopLevel()) {
+          QLog.i("PageScrollView", 4, "C.TE ACT_UP or CANCEL");
+        }
+      }
+    }
+    return false;
+  }
 }
 
 

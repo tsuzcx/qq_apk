@@ -1,8 +1,17 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-public abstract interface ayfj
+public class ayfj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(List<ayir> paramList);
+  public ayfj(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ShortVideoCommentsView.c(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+  }
 }
 
 

@@ -1,45 +1,28 @@
-import java.util.Calendar;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class axwd
-  implements aqiw
+  extends bbap
 {
-  axwd(axvz paramaxvz) {}
+  axwd(axwa paramaxwa, QQAppInterface paramQQAppInterface) {}
   
-  public int a()
+  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
   {
-    return 3;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return this.a.b - 1896 + 1;
-    case 1: 
-      return 12;
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "updateNumMsg: appid msgList.size = " + paramList.size());
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.a.e + 1896);
-    localCalendar.set(2, this.a.f);
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
+    if (("nearby_num_red_dot".equals(paramString)) && (paramList != null))
     {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1896 + anni.a(2131706085);
-    case 1: 
-      return paramInt2 + 1 + anni.a(2131706077);
+      this.jdField_a_of_type_Axwa.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList);
+      aogf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+      if ((paramString != null) && (paramString.a("businessbase_processor") != null)) {
+        paramString.a("businessbase_processor").a(105, true, null);
+      }
     }
-    return paramInt2 + 1 + anni.a(2131706065);
   }
 }
 

@@ -1,42 +1,24 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public class lyp
-  extends OrientationEventListener
+class lyp
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int = -1;
+  lyp(lyo paramlyo, long paramLong) {}
   
-  public lyp(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, Context paramContext, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramContext, paramInt);
-  }
-  
-  public void onOrientationChanged(int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt < 0) {
-      i = paramInt + 360;
-    }
-    if ((i > 314) || (i < 45)) {
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      if (paramInt != this.jdField_a_of_type_Int)
-      {
-        this.jdField_a_of_type_Int = paramInt;
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a();
-      }
+    if (this.jdField_a_of_type_Lyo.jdField_a_of_type_ComTencentAvShareAVSchema.a("checkQAVPermission.callback", this.jdField_a_of_type_Long)) {
       return;
-      if (i < 135) {
-        paramInt = 90;
-      } else if (i < 225) {
-        paramInt = 180;
-      } else {
-        paramInt = 270;
-      }
     }
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_Lyo.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Lyo.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    ChatActivityUtils.a(this.jdField_a_of_type_Lyo.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new lyq(this));
   }
 }
 

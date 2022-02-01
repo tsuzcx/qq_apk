@@ -1,21 +1,42 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-
-public class alyg
-  implements Animation.AnimationListener
+public abstract interface alyg
 {
-  public alyg(SpecailCareListActivity paramSpecailCareListActivity, alyv paramalyv) {}
+  public abstract void A();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Alyv.c.setVisibility(4);
-  }
+  public abstract void a(int paramInt);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract int d();
+  
+  public abstract void g(boolean paramBoolean);
+  
+  public abstract void n();
+  
+  public abstract void o();
+  
+  public abstract void p();
+  
+  public abstract void q();
+  
+  public abstract void r();
+  
+  public abstract void s();
+  
+  public abstract void t();
+  
+  public abstract void u();
+  
+  public abstract void w();
+  
+  public abstract void x();
+  
+  public abstract void y();
+  
+  public abstract void z();
 }
 
 

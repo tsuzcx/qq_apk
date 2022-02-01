@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.recent;
 
-import akyh;
-import akzi;
+import aljw;
+import alkx;
 
 public class BannerManager$31$1
   implements Runnable
 {
-  public BannerManager$31$1(akzi paramakzi) {}
+  public BannerManager$31$1(alkx paramalkx) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Akyh.a(34, 2);
-    this.a.jdField_a_of_type_Akyh.a(34, this.a.jdField_a_of_type_AndroidOsMessage);
+    this.a.jdField_a_of_type_Aljw.a(35, 2);
+    this.a.jdField_a_of_type_Aljw.a(35, this.a.jdField_a_of_type_AndroidOsMessage);
   }
 }
 

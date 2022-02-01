@@ -1,19 +1,88 @@
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
-public abstract interface pcp
-  extends pco
+public class pcp
+  implements ITMAssistantDownloadClientListener
 {
-  public abstract void onCommentCreate(boolean paramBoolean, pay parampay, List<pay> paramList, int paramInt);
+  private List<pco> a = new LinkedList();
   
-  public abstract void onCommentCreate(boolean paramBoolean1, pay parampay, boolean paramBoolean2, List<pay> paramList, int paramInt);
+  private static String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "UNKNOWN";
+    case 1: 
+      return "DownloadSDKTaskState_WAITING";
+    case 2: 
+      return "DownloadSDKTaskState_DOWNLOADING";
+    case 4: 
+      return "DownloadSDKTaskState_SUCCEED";
+    case 3: 
+      return "DownloadSDKTaskState_PAUSED";
+    case 6: 
+      return "DownloadSDKTaskState_DELETE";
+    }
+    return "DownloadSDKTaskState_FAILED";
+  }
   
-  public abstract void onCommentDelete(int paramInt1, boolean paramBoolean, pay parampay, int paramInt2);
+  public void a(pco parampco)
+  {
+    if (!this.a.contains(parampco)) {
+      this.a.add(parampco);
+    }
+  }
   
-  public abstract void onCommentLikeOrDislike(boolean paramBoolean, String paramString, int paramInt1, int paramInt2);
+  public void b(pco parampco)
+  {
+    this.a.remove(parampco);
+  }
   
-  public abstract void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<pay> paramList, boolean paramBoolean2, int paramInt2);
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  {
+    try
+    {
+      QLog.d("DownloadListenerDelegate", 2, "[onDownloadSDKTaskProgressChanged] url=" + paramString + " receiveLen=" + paramLong1 + " totalLen=" + paramLong2 + " progress=" + paramLong1 * 1.0D / paramLong2 * 100.0D);
+      return;
+    }
+    catch (Throwable paramTMAssistantDownloadClient)
+    {
+      QLog.e("DownloadListenerDelegate", 1, "[onDownloadSDKTaskProgressChanged] ", paramTMAssistantDownloadClient);
+    }
+  }
   
-  public abstract void onCommentReply(boolean paramBoolean, pay parampay);
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (paramTMAssistantDownloadClient != null) {
+      try
+      {
+        paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
+        if (paramTMAssistantDownloadClient != null)
+        {
+          QLog.d("DownloadListenerDelegate", 2, "[onDownloadSDKTaskProgressChanged] url=" + paramString1 + " savedPath= " + paramTMAssistantDownloadClient.mSavePath + " state=" + a(paramInt1) + " errorCode=" + paramInt2 + " errorMsg=" + paramString2);
+          Iterator localIterator = this.a.iterator();
+          while (localIterator.hasNext()) {
+            ((pco)localIterator.next()).a(paramString1, paramTMAssistantDownloadClient.mSavePath, paramInt1, paramInt2, paramString2);
+          }
+        }
+        return;
+      }
+      catch (Throwable paramTMAssistantDownloadClient)
+      {
+        QLog.e("DownloadListenerDelegate", 1, "[onDownloadSDKTaskStateChanged] ", paramTMAssistantDownloadClient);
+      }
+    }
+  }
+  
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
+  {
+    QLog.d("DownloadListenerDelegate", 2, "[onDwonloadSDKServiceInvalid] ");
+  }
 }
 
 

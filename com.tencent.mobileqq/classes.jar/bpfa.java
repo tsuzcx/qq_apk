@@ -1,88 +1,90 @@
-import android.support.annotation.NonNull;
+import android.content.Context;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.aeeditor.module.aifilter.BatchImageAIFilterProxy.1;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bpfa
-  extends bpen
-  implements bopm
+  extends bpeu
 {
-  private bopj a;
+  private static final String jdField_a_of_type_JavaLangString = bpfa.class.getSimpleName();
+  private bpez jdField_a_of_type_Bpez;
+  private int b;
+  private List<String> c;
+  private List<bpbu> d;
   
-  public bpfa(@NonNull bpep parambpep)
+  public bpfa(List<String> paramList, List<bpbu> paramList1, int paramInt, bpez parambpez)
   {
-    super(parambpep);
-    this.jdField_a_of_type_Bopj = new bopj();
-    this.jdField_a_of_type_Bopj.a(this);
-    this.jdField_a_of_type_Bopj.a().a(this.jdField_a_of_type_Bpep.a);
+    this.c = paramList;
+    this.d = paramList1;
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bpez = parambpez;
+    this.jdField_a_of_type_Int = (paramList.size() - 1);
   }
   
-  public void a()
+  protected bpez a(List<bpey> paramList)
   {
-    this.jdField_a_of_type_Bopj.a(this.jdField_a_of_type_Bpfx.a());
+    int j = 0;
+    bpfb localbpfb = new bpfb();
+    int i;
+    if ((paramList == null) || (paramList.size() == 0)) {
+      i = 1;
+    }
+    for (;;)
+    {
+      if (i != 0)
+      {
+        i = j;
+        for (;;)
+        {
+          if (i < this.jdField_a_of_type_Int)
+          {
+            paramList = a(null);
+            paramList.jdField_a_of_type_Boolean = true;
+            localbpfb.jdField_a_of_type_JavaUtilList.add(paramList);
+            i += 1;
+            continue;
+            if (paramList.size() == this.jdField_b_of_type_JavaUtilList.size()) {
+              break label210;
+            }
+            bpam.d(jdField_a_of_type_JavaLangString, "batch image responseList size not match image size");
+            i = 1;
+            break;
+          }
+        }
+        localbpfb.jdField_a_of_type_Boolean = true;
+      }
+      for (;;)
+      {
+        localbpfb.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_Int, (bpfe)this.jdField_a_of_type_Bpez);
+        return localbpfb;
+        i = 0;
+        while (i < this.jdField_a_of_type_Int)
+        {
+          Object localObject = (bpey)paramList.get(i);
+          this.jdField_a_of_type_JavaUtilList.clear();
+          this.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_JavaUtilList.get(i));
+          localObject = a((bpey)localObject);
+          localbpfb.jdField_a_of_type_JavaUtilList.add(localObject);
+          i += 1;
+        }
+      }
+      label210:
+      i = 0;
+    }
+  }
+  
+  protected void a(Context paramContext, bpex parambpex)
+  {
+    ArrayList localArrayList = new ArrayList(this.c);
+    localArrayList.remove(this.jdField_b_of_type_Int);
+    ThreadManager.excute(new BatchImageAIFilterProxy.1(this, localArrayList, paramContext, parambpex), 128, null, false);
   }
   
   public boolean a()
   {
-    return b();
+    return false;
   }
-  
-  public void aU_()
-  {
-    this.jdField_a_of_type_Bopj.a().b();
-  }
-  
-  public void aV_()
-  {
-    b();
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Bopj.d();
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Bopj.a();
-      this.jdField_a_of_type_Bopj.a().a(true, this.jdField_a_of_type_Bpfx.getActivity());
-    } while (!(paramObject instanceof bpdi));
-    paramObject = (bpdi)paramObject;
-    this.jdField_a_of_type_Bopj.a().a(paramObject.jdField_a_of_type_Bpfb, paramObject.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Bopj.e();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bpep.a(4, this.jdField_a_of_type_Bopj.a().a());
-  }
-  
-  protected boolean b()
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Bopj.a())
-    {
-      this.jdField_a_of_type_Bpep.a(0);
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public void c()
-  {
-    bpep localbpep = this.jdField_a_of_type_Bpep;
-    if (this.jdField_a_of_type_Bpep.a()) {}
-    for (String str = "2";; str = "1")
-    {
-      localbpep.a("change_poi", 0, 0, new String[] { str });
-      yqv.a("0X80076D0");
-      yqv.b("0X80075E5");
-      b();
-      return;
-    }
-  }
-  
-  public void y_() {}
 }
 
 

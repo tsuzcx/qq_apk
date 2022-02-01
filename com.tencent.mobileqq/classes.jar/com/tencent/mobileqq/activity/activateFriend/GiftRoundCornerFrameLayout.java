@@ -9,12 +9,12 @@ import android.os.Build.VERSION;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import bgtn;
+import bhtq;
 
 public class GiftRoundCornerFrameLayout
   extends FrameLayout
 {
-  private float jdField_a_of_type_Float = bgtn.b(4.0F);
+  private float jdField_a_of_type_Float = bhtq.b(4.0F);
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   

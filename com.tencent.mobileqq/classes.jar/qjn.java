@@ -1,25 +1,21 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.PopupWindow.OnDismissListener;
 
 class qjn
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements PopupWindow.OnDismissListener
 {
-  qjn(qjm paramqjm) {}
+  qjn(qjh paramqjh, blmm paramblmm) {}
   
-  public void onGlobalLayout()
+  public void onDismiss()
   {
-    if ((qjm.a(this.a).isShown()) && (!qjm.a(this.a)))
+    this.jdField_a_of_type_Blmm.a(1.0F);
+    if (this.jdField_a_of_type_Qjh.a.b)
     {
-      QLog.d("ReadInJoyLottieView", 2, "resumeAnimation");
-      this.a.a();
-      qjm.a(this.a, true);
-    }
-    if ((!qjm.a(this.a).isShown()) && (qjm.a(this.a)))
-    {
-      QLog.d("ReadInJoyLottieView", 2, "pauseAnimation");
-      this.a.b();
-      qjm.a(this.a, false);
+      rvy localrvy = this.jdField_a_of_type_Qjh.a.a();
+      if (localrvy != null)
+      {
+        localrvy.c();
+        this.jdField_a_of_type_Qjh.a.b = false;
+      }
     }
   }
 }

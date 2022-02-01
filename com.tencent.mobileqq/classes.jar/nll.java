@@ -1,40 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 public class nll
 {
-  private static final String a = nll.class.getName();
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
   
-  public static String a(String paramString)
+  public nll(nlj paramnlj, boolean paramBoolean)
   {
-    localStringBuffer = new StringBuffer();
-    try
-    {
-      paramString = new BufferedReader(new InputStreamReader(((HttpURLConnection)new URL(paramString).openConnection()).getInputStream()));
-      for (;;)
-      {
-        String str = paramString.readLine();
-        if (str == null) {
-          break;
-        }
-        localStringBuffer.append(str);
-      }
-      return localStringBuffer.toString();
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "http error");
-      }
-    }
-  }
-  
-  public static void a(String paramString, nln paramnln)
-  {
-    new nlm(paramnln, paramString).execute(new Void[0]);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.subscribe;
 
-import aaab;
-import aaaf;
+import aaeg;
+import aaek;
 import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public class SubscribeJsPlugin$3
   implements Runnable
 {
-  public SubscribeJsPlugin$3(aaab paramaaab, Bitmap paramBitmap, String paramString) {}
+  public SubscribeJsPlugin$3(aaeg paramaaeg, Bitmap paramBitmap, String paramString) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class SubscribeJsPlugin$3
     }
     try
     {
-      String str = aaaf.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      String str = aaek.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("uin", this.jdField_a_of_type_JavaLangString);
       localJSONObject.put("avatarData", str);

@@ -1,12 +1,24 @@
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.tablequery.TableQueryViewer;
+
 public class bdzs
 {
-  public int a;
-  public int b;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
+  TextView d;
   
-  public bdzs(int paramInt1, int paramInt2)
+  public bdzs(TableQueryViewer paramTableQueryViewer, View paramView)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378379));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(10.0F);
+    this.b = ((TextView)paramView.findViewById(2131378377));
+    this.b.setTextSize(10.0F);
+    this.c = ((TextView)paramView.findViewById(2131378382));
+    this.c.setTextSize(10.0F);
+    this.d = ((TextView)paramView.findViewById(2131378375));
+    this.d.setTextSize(10.0F);
   }
 }
 

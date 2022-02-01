@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.widget.QQToast;
-
-public class aljj
-  implements alkk
+public abstract interface aljj
 {
-  public aljj(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public abstract int a();
   
-  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
-  {
-    if (this.a.r == 10011)
-    {
-      NewFlowCameraActivity.a(this.a, paramString1);
-      return;
-    }
-    if (paramBoolean)
-    {
-      NewFlowCameraActivity.b(this.a, paramString1);
-      return;
-    }
-    this.a.i(true);
-    QQToast.a(this.a, anni.a(2131706263), 0).a();
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract boolean c();
+  
+  public abstract void i();
+  
+  public abstract void j();
 }
 
 

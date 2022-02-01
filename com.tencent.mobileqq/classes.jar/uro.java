@@ -1,16 +1,74 @@
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import UserGrowth.stCollection;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class uro
-  implements ujj
+  extends uej<Object>
 {
-  public uro(WSVerticalDataManager paramWSVerticalDataManager, long paramLong, boolean paramBoolean1, boolean paramBoolean2, ure paramure, Object paramObject, String paramString) {}
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+  private View jdField_b_of_type_AndroidViewView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  public void a(uju paramuju)
+  public uro(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    upe.a("weishi-beacon", "请求播放页（推荐)耗时：" + l + "毫秒");
-    unb.a().a(true, l, "feeds", 2, "fullscreen_videoplay", this.jdField_a_of_type_Boolean);
-    WSVerticalDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager, paramuju, this.b, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Ure, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_JavaLangString);
+    super(paramContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
+  }
+  
+  protected void a()
+  {
+    if ((a() != null) && ((a() instanceof stSimpleMetaFeed))) {
+      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)a());
+    }
+  }
+  
+  protected int b()
+  {
+    return 2131560001;
+  }
+  
+  protected void b()
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection != null))
+    {
+      int i = (int)(this.jdField_b_of_type_AndroidViewView.getWidth() * 1.5F);
+      int j = uqs.c();
+      this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(j - i);
+      String str = a().getString(2131719355);
+      str = str + this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection.name;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+    }
+  }
+  
+  protected void c() {}
+  
+  public void c(int paramInt)
+  {
+    if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection != null))
+    {
+      String str = paramInt + "/" + this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection.feed_count;
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
+    }
+  }
+  
+  protected void e()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment == null) {
+      return;
+    }
+    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131380700);
+    usd.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity(), localRelativeLayout);
+    this.jdField_b_of_type_AndroidViewView = a(2131380699);
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new urp(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380692));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131379741));
   }
 }
 

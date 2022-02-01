@@ -1,11 +1,23 @@
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface auqi
+public class auqi
+  implements View.OnClickListener
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public auqi(SendBottomBar paramSendBottomBar) {}
   
-  public abstract boolean a(ScaleGestureDetector paramScaleGestureDetector);
+  public void onClick(View paramView)
+  {
+    if (this.a.a.isShowing()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a.show();
+    }
+  }
 }
 
 

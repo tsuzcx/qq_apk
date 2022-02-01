@@ -1,83 +1,33 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.business.sougou.WordMatchManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import eipc.EIPCResult;
+import mqq.manager.TicketManager;
 
 public class apyq
-  implements bfpo
+  implements apyw
 {
-  public apyq(WordMatchManager paramWordMatchManager) {}
-  
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public EIPCResult a(Bundle paramBundle)
   {
-    int i = 1;
-    if (paramJSONObject != null) {}
-    try
+    paramBundle = apxv.a();
+    if (paramBundle == null)
     {
-      int j = paramJSONObject.getInt("retcode");
-      if (j != 0) {
-        i = 0;
-      }
-      if (i == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi end(failed)| type:" + paramInt + ",time:" + System.currentTimeMillis());
-        }
-        this.a.a(false);
-        return;
-      }
+      QLog.e("ArkApp.GetSKeyHandler", 1, "GetSKeyHandler.onCall, qq app is null");
+      return EIPCResult.createResult(-102, new Bundle());
     }
-    catch (JSONException paramBundle)
+    paramBundle = ((TicketManager)paramBundle.getManager(2)).getSkey(paramBundle.getCurrentAccountUin());
+    Bundle localBundle = new Bundle();
+    if (TextUtils.isEmpty(paramBundle))
     {
-      paramBundle = paramBundle;
-      paramBundle.printStackTrace();
-      paramBundle = new apyr();
-      try
-      {
-        if (paramJSONObject.has("result"))
-        {
-          paramJSONObject = paramJSONObject.getJSONObject("result");
-          if (paramJSONObject.has("id")) {
-            paramBundle.c = paramJSONObject.getString("id");
-          }
-          if (paramJSONObject.has("md5")) {
-            paramBundle.jdField_a_of_type_JavaLangString = paramJSONObject.getString("md5");
-          }
-          if (paramJSONObject.has("type")) {
-            paramBundle.jdField_a_of_type_Int = paramJSONObject.getInt("type");
-          }
-          if (paramJSONObject.has("need_flag")) {
-            paramBundle.jdField_b_of_type_Int = paramJSONObject.getInt("need_flag");
-          }
-          if (paramJSONObject.has("delay")) {
-            paramBundle.jdField_a_of_type_Long = paramJSONObject.getLong("delay");
-          }
-          if (paramJSONObject.has("base_md5")) {
-            paramBundle.jdField_b_of_type_JavaLangString = paramJSONObject.getString("base_md5");
-          }
-        }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot parse json error | type:" + paramInt + ",time:" + System.currentTimeMillis());
-          }
-        }
-        this.a.a(paramBundle);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi end(success) | type:" + paramInt + ",time:" + System.currentTimeMillis());
-      }
-      if (paramBundle.jdField_a_of_type_Int != paramInt)
-      {
-        this.a.a(false);
-        return;
-      }
+      QLog.e("ArkApp.GetSKeyHandler", 1, "GetSKeyHandler.onCall, skey is empty");
+      localBundle.putString("SKey", "");
     }
-    finally {}
+    for (;;)
+    {
+      return EIPCResult.createResult(0, localBundle);
+      localBundle.putString("SKey", paramBundle);
+    }
   }
 }
 

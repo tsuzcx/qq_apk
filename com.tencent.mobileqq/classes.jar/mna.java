@@ -1,10 +1,20 @@
-public abstract interface mna
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import android.widget.EditText;
+
+class mna
+  extends AccessibilityDelegateCompat
 {
-  public abstract void a(int paramInt);
+  mna(mmw parammmw) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void b(String paramString);
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramView = behh.e(((EditText)paramView).getText().toString());
+    paramAccessibilityNodeInfoCompat.setText(paramView);
+    paramAccessibilityNodeInfoCompat.setContentDescription(paramView);
+  }
 }
 
 

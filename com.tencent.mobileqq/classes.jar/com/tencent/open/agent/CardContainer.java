@@ -17,16 +17,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anni;
-import arnj;
-import bggq;
-import bija;
-import bikr;
-import biks;
-import bikt;
-import biku;
-import bikv;
-import bikw;
+import anzj;
+import ascz;
+import bhgr;
+import bjjz;
+import bjlq;
+import bjlr;
+import bjls;
+import bjlt;
+import bjlu;
+import bjlv;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLDrawableDownListener.Adapter;
@@ -62,7 +62,7 @@ public class CardContainer
   public AnyScaleTypeImageView a;
   protected FixedBounceScrollView a;
   public AuthorityAccountView a;
-  protected List<bikw> a;
+  protected List<bjlv> a;
   public boolean a;
   protected final int b;
   protected ImageView b;
@@ -82,8 +82,8 @@ public class CardContainer
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new bikr(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new biks(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bjlq(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bjlr(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     new DisplayMetrics();
     paramAttributeSet = getResources().getDisplayMetrics();
@@ -98,7 +98,7 @@ public class CardContainer
     localObject3 = null;
     try
     {
-      Object localObject1 = new arnj(0, this.jdField_b_of_type_Int, 100);
+      Object localObject1 = new ascz(0, this.jdField_b_of_type_Int, 100);
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject1);
       localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject1);
@@ -149,9 +149,9 @@ public class CardContainer
     }
     ValueAnimator localValueAnimator1 = ValueAnimator.ofInt(new int[] { 0, paramInt1 });
     ValueAnimator localValueAnimator2 = ValueAnimator.ofInt(new int[] { 0, paramInt2 });
-    localValueAnimator1.addUpdateListener(new bikt(this, paramImageView));
-    localValueAnimator1.addListener(new biku(this, paramImageView));
-    localValueAnimator2.addUpdateListener(new bikv(this));
+    localValueAnimator1.addUpdateListener(new bjls(this, paramImageView));
+    localValueAnimator1.addListener(new bjlt(this, paramImageView));
+    localValueAnimator2.addUpdateListener(new bjlu(this));
     localValueAnimator1.setDuration(300L);
     localValueAnimator2.setDuration(300L);
     paramImageView = new AnimatorSet();
@@ -228,7 +228,7 @@ public class CardContainer
     return localStringBuilder.toString();
   }
   
-  public List<bikw> a()
+  public List<bjlv> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
@@ -279,7 +279,7 @@ public class CardContainer
     QLog.i("showAppInfo", 1, "showAppInfo appName = " + paramString, new RuntimeException("ShowAppInfoStack"));
     setVisibility(0);
     if ((!TextUtils.isEmpty(paramString)) && (getTag() != null)) {
-      ((TextView)findViewById(2131362293)).setText(anni.a(2131700253) + paramString + anni.a(2131700252));
+      ((TextView)findViewById(2131362305)).setText(anzj.a(2131700360) + paramString + anzj.a(2131700359));
     }
     if (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView != null) {
       this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.setAppInfo(paramString, paramBitmap);
@@ -320,7 +320,7 @@ public class CardContainer
       this.jdField_b_of_type_AndroidWidgetTextView.setText(str1);
       if (!TextUtils.isEmpty(paramString1))
       {
-        paramString2 = String.format(super.getContext().getString(2131689806), new Object[] { paramString1 });
+        paramString2 = String.format(super.getContext().getString(2131689811), new Object[] { paramString1 });
         this.jdField_c_of_type_AndroidWidgetTextView.setText(paramString2);
         this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString2);
         if (this.e.getVisibility() == 0) {
@@ -355,19 +355,19 @@ public class CardContainer
       appType.AuthItem localAuthItem = (appType.AuthItem)((Iterator)localObject).next();
       if (localAuthItem.is_new.get() != 0)
       {
-        bikw localbikw = new bikw();
-        localbikw.jdField_b_of_type_JavaLangString = localAuthItem.api_list.get();
-        localbikw.jdField_a_of_type_Int = localAuthItem.default_flag.get();
-        localbikw.jdField_b_of_type_Int = localAuthItem.id.get();
+        bjlv localbjlv = new bjlv();
+        localbjlv.jdField_b_of_type_JavaLangString = localAuthItem.api_list.get();
+        localbjlv.jdField_a_of_type_Int = localAuthItem.default_flag.get();
+        localbjlv.jdField_b_of_type_Int = localAuthItem.id.get();
         if (localAuthItem.is_new.get() == 0) {}
         for (bool = false;; bool = true)
         {
-          localbikw.jdField_a_of_type_Boolean = bool;
-          localbikw.jdField_a_of_type_JavaLangString = localAuthItem.title.get();
+          localbjlv.jdField_a_of_type_Boolean = bool;
+          localbjlv.jdField_a_of_type_JavaLangString = localAuthItem.title.get();
           if (QLog.isColorLevel()) {
-            paramGetAuthApiListResponse.append("--> Permission p, api: ").append(localbikw.jdField_b_of_type_JavaLangString).append(" | flag: ").append(localbikw.jdField_a_of_type_Int).append(" | id: ").append(localbikw.jdField_b_of_type_Int).append(" | isNew: ").append(localbikw.jdField_a_of_type_Boolean).append(" | title: ").append(localbikw.jdField_a_of_type_JavaLangString).append("\n");
+            paramGetAuthApiListResponse.append("--> Permission p, api: ").append(localbjlv.jdField_b_of_type_JavaLangString).append(" | flag: ").append(localbjlv.jdField_a_of_type_Int).append(" | id: ").append(localbjlv.jdField_b_of_type_Int).append(" | isNew: ").append(localbjlv.jdField_a_of_type_Boolean).append(" | title: ").append(localbjlv.jdField_a_of_type_JavaLangString).append("\n");
           }
-          this.jdField_a_of_type_JavaUtilList.add(localbikw);
+          this.jdField_a_of_type_JavaUtilList.add(localbjlv);
           break;
         }
       }
@@ -394,9 +394,9 @@ public class CardContainer
     paramGetAuthApiListResponse = "";
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      localObject = (bikw)this.jdField_a_of_type_JavaUtilList.get(i);
+      localObject = (bjlv)this.jdField_a_of_type_JavaUtilList.get(i);
       if (getTag() != null) {}
-      for (paramGetAuthApiListResponse = paramGetAuthApiListResponse + "· 获得你与QQ通讯录绑定的电话号码";; paramGetAuthApiListResponse = paramGetAuthApiListResponse + "· " + ((bikw)localObject).jdField_a_of_type_JavaLangString)
+      for (paramGetAuthApiListResponse = paramGetAuthApiListResponse + "· 获得你与QQ通讯录绑定的电话号码";; paramGetAuthApiListResponse = paramGetAuthApiListResponse + "· " + ((bjlv)localObject).jdField_a_of_type_JavaLangString)
       {
         paramGetAuthApiListResponse = paramGetAuthApiListResponse + "\n";
         i += 1;
@@ -417,26 +417,26 @@ public class CardContainer
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362299));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362300));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362291));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362295));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362297));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362292));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362296));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362298));
-    this.e = ((TextView)super.findViewById(2131362294));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362311));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362312));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362303));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362307));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362309));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362304));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362308));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362310));
+    this.e = ((TextView)super.findViewById(2131362306));
     this.e.setVisibility(8);
-    this.f = ((TextView)super.findViewById(2131371973));
+    this.f = ((TextView)super.findViewById(2131372087));
     this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView = ((AuthorityAccountView)super.findViewById(2131361927));
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131363017));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView = ((FixedBounceScrollView)super.findViewById(2131363028));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.setMaxHeight(bggq.a(this.jdField_a_of_type_AndroidContentContext, 102.0F));
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131363038));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView = ((FixedBounceScrollView)super.findViewById(2131363049));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.setMaxHeight(bhgr.a(this.jdField_a_of_type_AndroidContentContext, 102.0F));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.setNeedDisallowIntercept(true);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362302));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131367315));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131378861));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131378862));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362314));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131367373));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131379023));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131379024));
   }
   
   public void setAdImageByURL(AnyScaleTypeImageView paramAnyScaleTypeImageView, String paramString)
@@ -448,7 +448,7 @@ public class CardContainer
     }
     try
     {
-      paramAnyScaleTypeImageView = new arnj(0, this.jdField_b_of_type_Int, 100);
+      paramAnyScaleTypeImageView = new ascz(0, this.jdField_b_of_type_Int, 100);
       localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = paramAnyScaleTypeImageView;
       localURLDrawableOptions.mFailedDrawable = paramAnyScaleTypeImageView;
@@ -501,10 +501,10 @@ public class CardContainer
     }
   }
   
-  public void setChangeAccountListener(bija parambija)
+  public void setChangeAccountListener(bjjz parambjjz)
   {
     if (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView != null) {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.setChangeAccountListener(parambija);
+      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.setChangeAccountListener(parambjjz);
     }
   }
 }

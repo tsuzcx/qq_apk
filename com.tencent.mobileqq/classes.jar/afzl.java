@@ -1,25 +1,19 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.data.MessageForPtt;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
 
 public class afzl
-  implements MediaPlayer.OnCompletionListener
+  extends amof
 {
-  public afzl(MediaPlayerManager paramMediaPlayerManager) {}
+  public int a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  int jdField_b_of_type_Int;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    bgkl.a = null;
-    if ((MediaPlayerManager.a(this.a) != null) && ((MediaPlayerManager.a(this.a) instanceof MessageForPtt))) {
-      ((MessageForPtt)MediaPlayerManager.a(this.a)).playProgress = 0.0F;
-    }
-    if ((MediaPlayerManager.a(this.a) != null) && (MediaPlayerManager.a(this.a))) {
-      return;
-    }
-    MediaPlayerManager.a(this.a, null);
-    this.a.e();
-  }
+  private afzl(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
 }
 
 

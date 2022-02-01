@@ -1,85 +1,93 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.qphone.base.util.QLog;
-
-public class atrf
-  extends atri
+class atrf
+  implements bevw
 {
-  public atrf(atoo paramatoo, Activity paramActivity)
-  {
-    super(paramatoo, paramActivity);
-  }
+  atrf(atrd paramatrd) {}
   
-  private boolean c()
+  public void a(bevy parambevy, bevx parambevx)
   {
-    return (d()) && (!this.jdField_a_of_type_Atoo.f());
-  }
-  
-  private boolean d()
-  {
-    return (atvo.a(this.jdField_a_of_type_AndroidAppActivity.getBaseContext(), this.jdField_a_of_type_Atoo.c(), this.jdField_a_of_type_Atoo.c())) || (bdjg.c(this.jdField_a_of_type_Atoo.d(), this.jdField_a_of_type_Atoo.c(), this.jdField_a_of_type_Atoo.c()));
-  }
-  
-  public void a()
-  {
-    boolean bool = true;
-    super.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("SimpleFilePresenter<FileAssistant>", 1, "FileBrowserPresenter init: type = preview simple");
+    if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_RECV_LIST-100".equals(parambevx.a)) {
+      atrd.a(this.a, parambevx, parambevy);
     }
-    label81:
-    SimpleFileViewer localSimpleFileViewer;
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_Atoo.h())) || (16 == this.jdField_a_of_type_Atoo.b()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.e(false);
-      if (this.jdField_a_of_type_Atoo.b() != 16) {
-        break label123;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131692146));
-      aA_();
-      localSimpleFileViewer = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer;
-      if (this.jdField_a_of_type_Atoo.i()) {
-        break label152;
-      }
-    }
-    for (;;)
-    {
-      localSimpleFileViewer.c(bool);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.g(this.jdField_a_of_type_Atoo.h());
-      break;
-      label123:
-      if (!this.jdField_a_of_type_Atoo.d()) {
-        break label81;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131692319));
-      break label81;
-      label152:
-      bool = false;
-    }
-  }
-  
-  protected void aA_()
-  {
-    if ((this.jdField_a_of_type_Atoo.b() == 16) || (this.jdField_a_of_type_Atoo.d())) {}
     do
     {
       return;
-      if (bgmg.b(this.jdField_a_of_type_Atoo.d()))
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_SEND_LIST-200".equals(parambevx.a))
       {
-        super.aA_();
+        atrd.b(this.a, parambevx, parambevy);
         return;
       }
-    } while ((!bgnt.d(BaseApplicationImpl.getContext())) || (!c()));
-    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131692467);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(str, new atrg(this));
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD-500".equals(parambevx.a))
+      {
+        atrd.c(this.a, parambevx, parambevy);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_UPLOAD_SUCC-800".equals(parambevx.a))
+      {
+        atrd.d(this.a, parambevx, parambevy);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_DOWNLOAD-1200".equals(parambevx.a))
+      {
+        this.a.a(parambevx, parambevy);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_DOWNLOAD_SUCC-1000".equals(parambevx.a))
+      {
+        this.a.b(parambevx, parambevy);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_FORWARD_FILE-700".equals(parambevx.a))
+      {
+        this.a.d(parambevx, parambevy);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_COPY_TO-60100".equals(parambevx.a))
+      {
+        this.a.e(parambevx, parambevy);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_DOWNLOAD_ABS-1100".equals(parambevx.a))
+      {
+        this.a.c(parambevx, parambevy);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_DELETE_FILE-900".equals(parambevx.a))
+      {
+        atrd.e(this.a, parambevx, parambevy);
+        return;
+      }
+      if ("GTalkFileAppSvr.CMD_DISCUSS_FILE".equals(parambevx.a))
+      {
+        atrd.f(this.a, parambevx, parambevy);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V2-1600".equals(parambevx.a))
+      {
+        this.a.g(parambevx, parambevy);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V3-1700".equals(parambevx.a))
+      {
+        this.a.f(parambevx, parambevy);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_HIT_V2-1800".equals(parambevx.a))
+      {
+        atrd.g(this.a, parambevx, parambevy);
+        return;
+      }
+      if ("SafeCenterSvr.CMD_FACE2FACE_FLAG_REQ".equals(parambevx.a))
+      {
+        atrd.h(this.a, parambevx, parambevy);
+        return;
+      }
+    } while (!"OfflineFilleHandleSvr.pb_ftn_CMD_REQ_RECALL-400".equals(parambevx.a));
+    atrd.i(this.a, parambevx, parambevy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atrf
  * JD-Core Version:    0.7.0.1
  */

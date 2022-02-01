@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import antv;
+import aogf;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
 public class RedpointHandler$2
   implements Runnable
 {
-  public RedpointHandler$2(antv paramantv, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
+  public RedpointHandler$2(aogf paramaogf, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
   
   public void run()
   {
-    antv.b(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
+    aogf.b(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
   }
 }
 

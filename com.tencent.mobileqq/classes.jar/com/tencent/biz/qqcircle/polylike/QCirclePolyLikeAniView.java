@@ -1,6 +1,7 @@
 package com.tencent.biz.qqcircle.polylike;
 
-import aavl;
+import aaae;
+import aazo;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -15,22 +16,21 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView.ScaleType;
 import androidx.annotation.NonNull;
-import bclx;
+import bdep;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import qqcircle.QQCircleFeedBase.StPolyLike;
-import uwz;
-import uxh;
-import vpk;
-import vpl;
-import vpn;
-import vpu;
-import zvg;
-import zvh;
-import zwe;
-import zwj;
+import uyk;
+import uys;
+import vrt;
+import vru;
+import vrw;
+import vsd;
+import zzb;
+import zzc;
+import zzz;
 
 public class QCirclePolyLikeAniView
   extends FrameLayout
@@ -54,7 +54,7 @@ public class QCirclePolyLikeAniView
   
   private String fetchLocal(String paramString)
   {
-    paramString = zvh.a(zwj.a(uwz.a()).b(paramString));
+    paramString = zzc.a(aaae.a(uyk.a()).b(paramString));
     if ((paramString != null) && (paramString.length > 0)) {
       return paramString[0];
     }
@@ -76,7 +76,7 @@ public class QCirclePolyLikeAniView
     return true;
   }
   
-  public void startRewardAni(QQCircleFeedBase.StPolyLike paramStPolyLike, View paramView1, View paramView2, boolean paramBoolean1, aavl paramaavl, boolean paramBoolean2)
+  public void startRewardAni(QQCircleFeedBase.StPolyLike paramStPolyLike, View paramView1, View paramView2, boolean paramBoolean1, aazo paramaazo, boolean paramBoolean2)
   {
     String str;
     if (paramStPolyLike != null)
@@ -88,15 +88,15 @@ public class QCirclePolyLikeAniView
     {
       return;
     }
-    zvg localzvg = new zvg(str);
-    localzvg.b(40);
-    localzvg.a(2147483647L);
-    localzvg.a(true);
-    localzvg.b(false);
-    zvh.a().a(hashCode(), localzvg.a(), new vpl(this, str, paramBoolean2, paramStPolyLike, paramView1, paramView2, paramBoolean1, paramaavl));
+    zzb localzzb = new zzb(str);
+    localzzb.b(40);
+    localzzb.a(2147483647L);
+    localzzb.a(true);
+    localzzb.b(false);
+    zzc.a().a(hashCode(), localzzb.a(), new vru(this, str, paramBoolean2, paramStPolyLike, paramView1, paramView2, paramBoolean1, paramaazo));
   }
   
-  public void startZanAni(QQCircleFeedBase.StPolyLike paramStPolyLike, View paramView1, View paramView2, View paramView3, int[] paramArrayOfInt, boolean paramBoolean, aavl paramaavl)
+  public void startZanAni(QQCircleFeedBase.StPolyLike paramStPolyLike, View paramView1, View paramView2, View paramView3, int[] paramArrayOfInt, boolean paramBoolean, aazo paramaazo)
   {
     Object localObject2;
     int[] arrayOfInt;
@@ -110,7 +110,7 @@ public class QCirclePolyLikeAniView
       arrayOfInt = new int[2];
       paramView2.getLocationInWindow((int[])localObject2);
       getLocationOnScreen(arrayOfInt);
-      paramArrayOfInt[1] -= vpu.a / 2;
+      paramArrayOfInt[1] -= vsd.a / 2;
       localObject1 = new PointF();
       localPointF1 = new PointF();
       localPointF2 = new PointF();
@@ -124,30 +124,30 @@ public class QCirclePolyLikeAniView
       }
     }
     label601:
-    for (localPointF1.y -= bclx.a(150.0F);; localPointF2.y = (((PointF)localObject1).y - bclx.a(150.0F)))
+    for (localPointF1.y -= bdep.a(150.0F);; localPointF2.y = (((PointF)localObject1).y - bdep.a(150.0F)))
     {
       QLog.d("QCirclePolymorphicAniView", 1, "start pos:" + ((PointF)localObject1).x + " " + ((PointF)localObject1).y + "  control pos:" + localPointF2.x + " " + localPointF2.y + " edn pos:" + localPointF1.x + " " + localPointF1.y + "aniPanel:" + getWidth() + " " + getHeight());
       paramView2 = new QCirclePolyLikeAniView.MovingImg(getContext());
       paramView2.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
       localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850664);
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850680);
       ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = paramView1.getWidth();
       ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = paramView1.getHeight();
       paramView2.setWidthAndHeight(paramView1.getWidth(), paramView1.getHeight());
-      uxh.a(fetchLocal(paramStPolyLike.polySource.get()), paramView2, (URLDrawable.URLDrawableOptions)localObject2, true);
+      uys.a(fetchLocal(paramStPolyLike.polySource.get()), paramView2, (URLDrawable.URLDrawableOptions)localObject2, true);
       paramView2.setTopShift(arrayOfInt[1]);
       paramView2.setX(paramArrayOfInt[0]);
       paramView2.setY(paramArrayOfInt[1] - arrayOfInt[1]);
       paramView1 = new FrameLayout.LayoutParams(paramView1.getWidth(), paramView1.getHeight());
       removeAllViews();
       addView(paramView2, paramView1);
-      paramView1 = ObjectAnimator.ofObject(paramView2, "mPointF", new vpn(this, localPointF2), new Object[] { localObject1, localPointF1 });
-      paramArrayOfInt = ObjectAnimator.ofObject(paramView2, "mScale", new vpn(this, new PointF(0.88F, 1.0F)), new Object[] { new PointF(1.0F, 1.0F), new PointF(0.0F, 0.0F) });
+      paramView1 = ObjectAnimator.ofObject(paramView2, "mPointF", new vrw(this, localPointF2), new Object[] { localObject1, localPointF1 });
+      paramArrayOfInt = ObjectAnimator.ofObject(paramView2, "mScale", new vrw(this, new PointF(0.88F, 1.0F)), new Object[] { new PointF(1.0F, 1.0F), new PointF(0.0F, 0.0F) });
       localObject1 = new AnimatorSet();
       ((AnimatorSet)localObject1).playTogether(new Animator[] { paramView1, paramArrayOfInt });
       ((AnimatorSet)localObject1).setDuration(300L);
       ((AnimatorSet)localObject1).start();
-      ((AnimatorSet)localObject1).addListener(new vpk(this, paramaavl, paramView3, paramView2, paramStPolyLike));
+      ((AnimatorSet)localObject1).addListener(new vrt(this, paramaazo, paramView3, paramView2, paramStPolyLike));
       return;
     }
   }

@@ -1,18 +1,8 @@
-public class xzg
+public abstract interface xzg
 {
-  public String a;
-  public String b;
+  public abstract void a();
   
-  public xzg(String paramString1, String paramString2)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public String toString()
-  {
-    return "GroupID{groupUin='" + this.a + '\'' + ", groupUnionID='" + this.b + '\'' + '}';
-  }
+  public abstract void b();
 }
 
 

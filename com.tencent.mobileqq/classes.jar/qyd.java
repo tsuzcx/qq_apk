@@ -1,33 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaVideoView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPGCShortContentBig;
-import com.tencent.qphone.base.util.QLog;
-
 public class qyd
-  implements ptm
 {
-  public qyd(ComponentPGCShortContentBig paramComponentPGCShortContentBig, rhp paramrhp) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
+  private String d;
   
-  public void a(String[] paramArrayOfString1, String[] paramArrayOfString2)
+  public qyd(String paramString)
   {
-    if ((ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPGCShortContentBig) != null) && ((ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPGCShortContentBig) instanceof VideoView)))
-    {
-      if ((paramArrayOfString2 != null) && (paramArrayOfString2.length > 0))
-      {
-        paramArrayOfString2 = paramArrayOfString2[0];
-        if ((!TextUtils.isEmpty(this.jdField_a_of_type_Rhp.e)) && (this.jdField_a_of_type_Rhp.e.equals(paramArrayOfString1[0])) && (this.jdField_a_of_type_Rhp.e.equals(((MediaVideoView)ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPGCShortContentBig)).getVideoVid())))
-        {
-          ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPGCShortContentBig, paramArrayOfString2);
-          return;
-        }
-        QLog.d("gifvideo.ComponentPGCShortContentBig", 2, "not current video");
-        return;
-      }
-      QLog.d("gifvideo.ComponentPGCShortContentBig", 2, "urls null");
-      return;
-    }
-    QLog.d("gifvideo.ComponentPGCShortContentBig", 2, "not vieoview");
+    this.d = paramString;
   }
 }
 

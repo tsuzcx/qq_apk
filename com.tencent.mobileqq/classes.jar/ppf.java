@@ -1,24 +1,18 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.commonsdk.cache.QQLruCache;
+import java.util.List;
 
-public class ppf
-  extends RecyclerView.OnScrollListener
+class ppf
+  extends QQLruCache<String, List<BaseData>>
 {
-  public ppf(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  ppf(ppe paramppe, int paramInt1, int paramInt2, int paramInt3)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      if (pih.a()) {
-        pmk.a().l();
-      }
-      return;
-      ReadInJoyPicWaterFallFragment.a(this.a);
-    }
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramList1, paramList2);
   }
 }
 

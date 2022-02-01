@@ -1,19 +1,24 @@
-import android.os.Handler;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity;
-import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity.1;
-import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity.1.1.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.capture.view.VideoCoverPickerProviderView;
+import java.lang.ref.WeakReference;
 
 public class bpww
-  implements bpyh
+  implements View.OnClickListener
 {
-  public bpww(QzoneEditPictureActivity.1 param1) {}
+  public bpww(VideoCoverPickerProviderView paramVideoCoverPickerProviderView) {}
   
-  public void l(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QzoneEditPictureActivity.a(this.a.this$0).a != null) {
-      QzoneHandlerThreadFactory.getMainHandler().post(new QzoneEditPictureActivity.1.1.1(this));
+    if (VideoCoverPickerProviderView.a(this.a) != null)
+    {
+      bpwx localbpwx = (bpwx)VideoCoverPickerProviderView.a(this.a).get();
+      if (localbpwx != null) {
+        localbpwx.a(VideoCoverPickerProviderView.b(this.a), false);
+      }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

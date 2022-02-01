@@ -1,32 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awil
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public awil(MedalGuideView paramMedalGuideView) {}
+  public awil(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("translate")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
-    f = paramValueAnimator.getAnimatedFraction();
-    if ((!this.a.c) && (f >= 0.8857143F))
-    {
-      this.a.c = true;
-      this.a.jdField_a_of_type_Bkgm.sendEmptyMessage(4);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("MedalWallMng", 4, "send MSG_START_3D_ROTATE");
-      }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
     }
-    if (f >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

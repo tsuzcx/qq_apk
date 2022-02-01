@@ -1,16 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import android.graphics.Rect;
 
-class apqk
-  implements bkhw
+public class apqk
 {
-  apqk(apqi paramapqi, bkho parambkho) {}
+  public float a;
+  public int a;
+  public Rect a;
   
-  public void OnClick(View paramView, int paramInt)
+  public apqk()
   {
-    this.jdField_a_of_type_Apqi.a.e();
-    this.jdField_a_of_type_Apqi.a.b(anni.a(2131699501));
-    this.jdField_a_of_type_Bkho.dismiss();
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  }
+  
+  public String toString()
+  {
+    return String.format("AIRect[%d,%.2f,%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Float.valueOf(this.jdField_a_of_type_Float), this.jdField_a_of_type_AndroidGraphicsRect });
   }
 }
 

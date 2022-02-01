@@ -1,10 +1,4 @@
-public class awfs
-{
-  public String a;
-  public byte[] a;
-  public String b;
-  public byte[] b;
-}
+class awfs {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

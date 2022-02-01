@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bcnj;
+import bdgb;
 
 class GeneralSettingActivity$16
   implements Runnable
@@ -10,10 +10,10 @@ class GeneralSettingActivity$16
   public void run()
   {
     if (this.this$0.isFinishing()) {}
-    while ((!bcnj.b()) || (this.this$0.a())) {
+    while ((!bdgb.b()) || (this.this$0.a())) {
       return;
     }
-    this.this$0.a(true, bcnj.c());
+    this.this$0.a(true, bdgb.c());
   }
 }
 

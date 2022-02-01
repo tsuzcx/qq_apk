@@ -1,54 +1,11 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
-import com.tencent.widget.BubblePopupWindow;
+import java.util.Comparator;
 
-public class bhvq
-  implements View.OnLongClickListener, View.OnTouchListener
+final class bhvq
+  implements Comparator<bhvr>
 {
-  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-  
-  private bhvq(ContextMenuTextView paramContextMenuTextView) {}
-  
-  protected void a(View paramView)
+  public int a(bhvr parambhvr1, bhvr parambhvr2)
   {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-1);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-7829368);
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
-    {
-      a(paramView);
-      return false;
-    }
-    bguh localbguh = new bguh();
-    localbguh.a(2131365147, ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView).getString(2131691140), 2130838920);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bgkw.a(paramView, (int)this.jdField_a_of_type_AndroidGraphicsPointF.x, (int)this.jdField_a_of_type_AndroidGraphicsPointF.y, localbguh, this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new bhvp(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView));
-    }
-    a(paramView);
-    return true;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
-    }
-    return false;
+    return parambhvr2.a() - parambhvr1.a();
   }
 }
 

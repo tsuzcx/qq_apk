@@ -1,17 +1,23 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoReplyRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tribe.async.dispatch.Dispatcher;
-
 class aaeh
-  implements zxa<CertifiedAccountWrite.StDoReplyRsp>
+  implements aanq
 {
-  aaeh(aaec paramaaec, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  aaeh(aaeg paramaaeg, String paramString1, String paramString2) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoReplyRsp paramStDoReplyRsp)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    wfo.a().dispatch(this.jdField_a_of_type_Aaec.a(new Object[] { Integer.valueOf(4), Long.valueOf(paramLong), paramString, paramStDoReplyRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.id.get(), Integer.valueOf(this.jdField_a_of_type_Aaec.hashCode()) }));
+    if (!paramBoolean2)
+    {
+      this.jdField_a_of_type_Aaeg.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0}" });
+      if (aaeg.a(this.jdField_a_of_type_Aaeg) == null)
+      {
+        aaeg.a(this.jdField_a_of_type_Aaeg, aasb.a());
+        aaeg.a(this.jdField_a_of_type_Aaeg).a();
+      }
+      aaeg.a(this.jdField_a_of_type_Aaeg).i(paramString, this.b);
+      abbe.a(paramString, "auth_follow", "clk_unfollow", 0, 0, new String[] { "", "", this.b });
+      return;
+    }
+    abbe.a(paramString, "auth_follow", "clk_cancel", 0, 0, new String[] { "", "", this.b });
   }
 }
 

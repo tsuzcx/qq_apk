@@ -1,24 +1,15 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
 
-class aukn
-  implements DialogInterface.OnClickListener
+public class aukn
+  implements ausw
 {
-  aukn(aukj paramaukj) {}
+  public aukn(SimpleFileViewer paramSimpleFileViewer) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramInt == 1)
-    {
-      ForwardSdkBaseOption.a(aukj.a(this.a), false, "shareToQQ", aukj.a(this.a));
-      nmj.a(aukj.a(this.a), 0, "", "");
-      if (aukj.a(this.a) != null) {
-        aukj.a(this.a).b(1);
-      }
-      aukj.a(this.a).moveTaskToBack(true);
+    if (SimpleFileViewer.d(this.a) != null) {
+      SimpleFileViewer.d(this.a).setVisibility(8);
     }
   }
 }

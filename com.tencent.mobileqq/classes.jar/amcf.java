@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
-import java.util.HashMap;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class amcf
-  implements Comparator<Entity>
+  implements View.OnTouchListener
 {
-  amcf(amce paramamce, HashMap paramHashMap) {}
+  amcf(amce paramamce) {}
   
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
-    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
-    if (l1 < l2) {
-      return -1;
+    if (paramMotionEvent.getAction() == 0)
+    {
+      amce.a(this.a).x = ((int)paramMotionEvent.getRawX());
+      amce.a(this.a).y = ((int)paramMotionEvent.getRawY());
     }
-    if (l1 > l2) {
-      return 1;
-    }
-    return 0;
+    return false;
   }
 }
 

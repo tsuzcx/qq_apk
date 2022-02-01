@@ -1,33 +1,17 @@
-import NS_MINI_INTERFACE.INTERFACE.StReportExecuteRsp;
-import com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdHelper.MiniAppCmdCallback;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import org.json.JSONObject;
+import android.content.Context;
 
-class bjvv
-  implements MiniAppSSOCmdHelper.MiniAppCmdCallback<INTERFACE.StReportExecuteRsp>
+public class bjvv
 {
-  bjvv(bjvo parambjvo, AsyncResult paramAsyncResult) {}
+  protected static bjwd a;
   
-  public void a(boolean paramBoolean, INTERFACE.StReportExecuteRsp paramStReportExecuteRsp)
+  public static bjwd a()
   {
-    JSONObject localJSONObject;
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null) {
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("response", paramStReportExecuteRsp);
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(paramBoolean, localJSONObject);
-      return;
-    }
-    catch (Throwable paramStReportExecuteRsp)
-    {
-      for (;;)
-      {
-        QLog.e("ChannelProxyImpl", 1, "tianshuRequestAdv", paramStReportExecuteRsp);
-      }
-    }
+    return a;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    a = bjwd.a(paramContext);
   }
 }
 

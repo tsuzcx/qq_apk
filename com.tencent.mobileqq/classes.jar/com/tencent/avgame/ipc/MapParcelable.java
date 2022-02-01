@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.HashMap;
-import ndo;
+import nfh;
 
 public class MapParcelable
   implements Parcelable
 {
-  public static final Parcelable.Creator<MapParcelable> CREATOR = new ndo();
+  public static final Parcelable.Creator<MapParcelable> CREATOR = new nfh();
   public HashMap<String, String> a = new HashMap();
   
   public int describeContents()

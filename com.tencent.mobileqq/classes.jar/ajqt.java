@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.7.1;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class ajqt
-  implements awxb
+public class ajqt
+  implements ThreadExcutor.IThreadListener
 {
-  ajqt(ajqs paramajqs) {}
+  public ajqt(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void a()
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    this.a.jdField_a_of_type_Awxi.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
-    this.a.jdField_a_of_type_Awxi.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.v();
+    ThreadManager.getUIHandler().post(new TroopNotifyAndRecommendView.7.1(this));
   }
+  
+  public void onPreRun() {}
 }
 
 

@@ -1,35 +1,22 @@
-import com.tencent.pts.core.jni.PTSJsJniHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView;
 
-class qou
-  extends qnn
+public class qou
 {
-  qou(qot paramqot) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
+  ReadInJoyNickNameTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView;
+  RingAvatarView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView;
+  TextView b;
   
-  public void a(int paramInt, List<Long> paramList, long paramLong)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[onFeedsLoaded], channelID = ").append(paramInt).append("\n");
-    paramList = pmh.a().a(Integer.valueOf(paramInt), paramList);
-    if (QLog.isColorLevel())
-    {
-      paramInt = 0;
-      while (paramInt < paramList.size())
-      {
-        ((StringBuilder)localObject).append("articleInfo [").append(paramInt).append("]: ").append(paramList.get(paramInt)).append("\n");
-        paramInt += 1;
-      }
-      QLog.i("PTSLoadFeedsModule", 1, ((StringBuilder)localObject).toString());
-    }
-    localObject = new Object[1];
-    localObject[0] = qor.a(true, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.i("PTSLoadFeedsModule", 1, "[onFeedsLoaded], args[0]" + localObject[0]);
-    }
-    QLog.i("PTSLoadFeedsModule", 1, "js callback ptr = " + paramLong);
-    PTSJsJniHandler.jsFunctionCallbackAsync(paramLong, (Object[])localObject);
-  }
+  public qou(ComponentContentRecommend paramComponentContentRecommend) {}
 }
 
 

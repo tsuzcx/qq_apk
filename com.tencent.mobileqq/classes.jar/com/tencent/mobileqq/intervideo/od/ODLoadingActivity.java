@@ -12,11 +12,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import anni;
-import anvy;
-import avjb;
-import avlh;
-import biau;
+import anzj;
+import aoik;
+import awbj;
+import awds;
+import bjbs;
 import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 import com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVCommonInterfaceImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -30,26 +30,26 @@ public class ODLoadingActivity
   private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private biau jdField_a_of_type_Biau;
+  private bjbs jdField_a_of_type_Bjbs;
   private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
   private void a()
   {
-    if (this.jdField_a_of_type_Biau == null)
+    if (this.jdField_a_of_type_Bjbs == null)
     {
-      this.jdField_a_of_type_Biau = new biau(this, 40);
-      this.jdField_a_of_type_Biau.a(anni.a(2131706597));
+      this.jdField_a_of_type_Bjbs = new bjbs(this, 40);
+      this.jdField_a_of_type_Bjbs.a(anzj.a(2131706704));
     }
-    this.jdField_a_of_type_Biau.show();
+    this.jdField_a_of_type_Bjbs.show();
   }
   
   private void b()
   {
     this.b = true;
-    if (this.jdField_a_of_type_Biau != null) {
-      this.jdField_a_of_type_Biau.dismiss();
+    if (this.jdField_a_of_type_Bjbs != null) {
+      this.jdField_a_of_type_Bjbs.dismiss();
     }
   }
   
@@ -73,7 +73,7 @@ public class ODLoadingActivity
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("onBackPressed").report();
-      avjb.b("33669910");
+      awbj.b("33669910");
       IVCommonInterfaceImpl.getInstance().onHostActivityBackPress();
     }
   }
@@ -101,19 +101,19 @@ public class ODLoadingActivity
       for (;;)
       {
         str = paramBundle.getString("bizType");
-        paramBundle.putString("qqVersion", "8.4.1");
+        paramBundle.putString("qqVersion", "8.4.5");
         paramBundle.putBoolean("isGooglePlayVersion", false);
         this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(str).d1(String.valueOf(l));
         this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("enterLoading").report();
-        avjb.b("33669907");
+        awbj.b("33669907");
         this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
         setContentView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
         findViewById(16908290).setVisibility(8);
         this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ODLoadingActivity.1(this), 1000L);
-        ExecutorService localExecutorService = anvy.a(192);
-        localExecutorService.submit(new ODLoadingActivity.3(this, localExecutorService.submit(new avlh(this, str)), l, paramBundle));
+        ExecutorService localExecutorService = aoik.a(192);
+        localExecutorService.submit(new ODLoadingActivity.3(this, localExecutorService.submit(new awds(this, str)), l, paramBundle));
         return;
         QLog.e("ODLoadingActivity", 2, "not have fromId");
       }

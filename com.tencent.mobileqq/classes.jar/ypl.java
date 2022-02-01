@@ -1,32 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class ypl
-  extends wfi
+public class ypl
+  extends wov
 {
-  ypl(ypb paramypb) {}
+  public List<String> a = new ArrayList();
+  public int b;
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  public ypl(qqstory_service.RspGetPhotographyGuide paramRspGetPhotographyGuide)
   {
-    if ((ypb.a(this.a) == null) || (ypb.a(this.a).a == null))
+    super(paramRspGetPhotographyGuide.result);
+    Object localObject = paramRspGetPhotographyGuide.word.get();
+    if (localObject != null)
     {
-      yqp.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
-      return;
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        ByteStringMicro localByteStringMicro = (ByteStringMicro)((Iterator)localObject).next();
+        this.a.add(localByteStringMicro.toStringUtf8());
+      }
     }
-    String str = ypb.a(this.a).a.a;
-    if (!TextUtils.equals(str, paramStoryPushMsg.d))
-    {
-      yqp.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
-      return;
-    }
-    switch (paramStoryPushMsg.a)
-    {
-    case 16: 
-    case 17: 
-    default: 
-      return;
-    }
-    this.a.a(new ymk[] { new ymf(yln.a(str)), (ymk)this.a.b.a(), new yme(new ypm(this, str)) });
+    this.b = paramRspGetPhotographyGuide.seqno.get();
+  }
+  
+  public String toString()
+  {
+    return "GetPhotographyGuideResponse{, wordList=" + this.a.size() + ", seqno=" + this.b + '}';
   }
 }
 

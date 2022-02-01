@@ -1,50 +1,26 @@
-import android.view.View;
-
-public abstract class boas
+class boas
+  implements beuq
 {
-  public int a(int paramInt)
+  boas(boan paramboan, boaz paramboaz, String paramString1, String paramString2) {}
+  
+  public void onResp(bevm parambevm)
   {
-    return paramInt;
+    if (parambevm.jdField_a_of_type_Int == 3) {
+      return;
+    }
+    if (parambevm.jdField_a_of_type_Int == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      int i = parambevm.b;
+      this.jdField_a_of_type_Boaz.a(this.jdField_a_of_type_JavaLangString, this.b, bool, parambevm.jdField_a_of_type_JavaLangString, i);
+      return;
+    }
   }
   
-  public int a(View paramView)
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2)
   {
-    return 0;
+    this.jdField_a_of_type_Boaz.a(this.jdField_a_of_type_JavaLangString, paramLong2, (float)paramLong1);
   }
-  
-  public int a(View paramView, int paramInt1, int paramInt2)
-  {
-    return 0;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(View paramView, float paramFloat1, float paramFloat2) {}
-  
-  public void a(View paramView, int paramInt) {}
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public abstract boolean a(View paramView, int paramInt);
-  
-  public int b(View paramView)
-  {
-    return 0;
-  }
-  
-  public int b(View paramView, int paramInt1, int paramInt2)
-  {
-    return 0;
-  }
-  
-  public void b(int paramInt1, int paramInt2) {}
 }
 
 

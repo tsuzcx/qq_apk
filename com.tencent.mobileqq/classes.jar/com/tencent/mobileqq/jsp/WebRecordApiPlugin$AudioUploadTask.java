@@ -3,8 +3,8 @@ package com.tencent.mobileqq.jsp;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import anni;
-import atwl;
+import anzj;
+import auog;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.troop.data.AudioInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
 import mqq.util.WeakReference;
-import nlw;
+import nnr;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -51,7 +51,7 @@ public class WebRecordApiPlugin$AudioUploadTask
       this.jdField_a_of_type_Int = 0;
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo == null) || (!atwl.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path)))
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo == null) || (!auog.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("WebRecordApiPlugin", 2, "Audio is null!");
@@ -79,7 +79,7 @@ public class WebRecordApiPlugin$AudioUploadTask
     if (!TextUtils.isEmpty(this.b)) {
       localHashMap.put("Cookie", this.b);
     }
-    localObject4 = nlw.a(this.jdField_a_of_type_JavaLangString, (String)localObject1, (String)localObject2, (Map)localObject4, (Map)localObject5, localHashMap);
+    localObject4 = nnr.a(this.jdField_a_of_type_JavaLangString, (String)localObject1, (String)localObject2, (Map)localObject4, (Map)localObject5, localHashMap);
     localObject5 = new JSONObject();
     for (;;)
     {
@@ -102,7 +102,7 @@ public class WebRecordApiPlugin$AudioUploadTask
         catch (JSONException localJSONException1) {}
         localObject4 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(16711690);
         localObject1 = localObject4;
-        ((JSONObject)localObject5).put("msg", anni.a(2131715559));
+        ((JSONObject)localObject5).put("msg", anzj.a(2131715668));
         localObject2 = localObject4;
         localObject1 = localObject4;
         if (!QLog.isColorLevel()) {

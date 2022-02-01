@@ -1,30 +1,8 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.QavOperationMenuView;
+import com.tencent.common.app.AppInterface;
 
-public class mhp
-  implements mlr
+public abstract interface mhp
 {
-  public mhp(QavOperationMenuView paramQavOperationMenuView) {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    case 1: 
-    default: 
-    case 2: 
-      do
-      {
-        return;
-      } while (this.a.a == null);
-      this.a.a.a(paramString, paramInt2, false);
-      return;
-    }
-    if (this.a.a != null) {
-      this.a.a.a(paramString, paramInt2, true);
-    }
-    mqw.c(2131373387);
-  }
+  public abstract void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, mii parammii, mih parammih);
 }
 
 

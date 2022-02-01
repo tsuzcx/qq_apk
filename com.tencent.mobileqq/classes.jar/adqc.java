@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class adqc
-  implements QQPermissionCallback
+class adqc
+  implements View.OnClickListener
 {
-  public adqc(BaseChatPie paramBaseChatPie) {}
+  adqc(adqa paramadqa, View.OnClickListener paramOnClickListener) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    bglp.a(this.a.a(), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.bi();
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null) {
+      QLog.e("SdkAuthDialog", 1, "negativeListener is null");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+      bdll.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "2", "", "", "");
+    }
   }
 }
 

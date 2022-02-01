@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.receipt;
 
 import android.os.Bundle;
-import azte;
-import bahs;
+import balu;
+import bbai;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.QQRecorder;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class ReceiptMsgManager$1
   implements Runnable
 {
-  public ReceiptMsgManager$1(bahs parambahs, int paramInt1, int paramInt2, QQRecorder.RecorderParam paramRecorderParam, String paramString, int paramInt3, boolean paramBoolean, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  public ReceiptMsgManager$1(bbai parambbai, int paramInt1, int paramInt2, QQRecorder.RecorderParam paramRecorderParam, String paramString, int paramInt3, boolean paramBoolean, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
@@ -22,12 +22,12 @@ public class ReceiptMsgManager$1
     this.this$0.a.fullLocalPath = this.jdField_a_of_type_JavaLangString;
     ArrayList localArrayList = new ArrayList(1);
     localArrayList.add(this.this$0.a);
-    azte.b(this.jdField_a_of_type_JavaLangString);
+    balu.b(this.jdField_a_of_type_JavaLangString);
     Bundle localBundle = new Bundle();
     localBundle.putString("ReceiptMsgManager.EXTRA_KEY_PTT_PATH", this.jdField_a_of_type_JavaLangString);
     localBundle.putInt("ReceiptMsgManager.EXTRA_KEY_PTT_SEND_SOURCE", this.c);
     localBundle.putBoolean("ReceiptMsgManager.EXTRA_KEY_PTT_COMPRESS_FINISHED", this.jdField_a_of_type_Boolean);
-    bahs.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, bahs.a(this.this$0, 3), false, localArrayList, localBundle);
+    bbai.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, bbai.a(this.this$0, 3), false, localArrayList, localBundle);
   }
 }
 

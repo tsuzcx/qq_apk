@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.SingleLineTextView;
 
-class bdrg
-  implements DialogInterface.OnClickListener
+public class bdrg
 {
-  bdrg(bdrb parambdrb) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public SingleLineTextView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  bdrg(bdrf parambdrf) {}
 }
 
 

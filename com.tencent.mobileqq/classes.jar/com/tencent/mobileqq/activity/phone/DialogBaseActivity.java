@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.phone;
 
 import Override;
-import akdj;
-import akdk;
-import akdl;
-import akdm;
-import akdn;
+import akou;
+import akov;
+import akow;
+import akox;
+import akoy;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.MotionEvent;
 import android.view.View;
-import anni;
-import bcst;
-import bglp;
-import bgpa;
-import biau;
+import anzj;
+import bdll;
+import bhlq;
+import bhpc;
+import bjbs;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -26,9 +26,9 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class DialogBaseActivity
   extends IphoneTitleBarActivity
 {
-  private akdn jdField_a_of_type_Akdn;
+  private akoy jdField_a_of_type_Akoy;
   private View jdField_a_of_type_AndroidViewView;
-  public biau a;
+  public bjbs a;
   public PhoneContactManagerImp a;
   
   public void a(int paramInt)
@@ -38,12 +38,12 @@ public class DialogBaseActivity
   
   public void a(int paramInt, long paramLong, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_Akdn;
+    Object localObject = this.jdField_a_of_type_Akoy;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      localObject = ((akdn)localObject).obtainMessage(1, paramInt, i);
-      this.jdField_a_of_type_Akdn.sendMessageDelayed((Message)localObject, paramLong);
+      localObject = ((akoy)localObject).obtainMessage(1, paramInt, i);
+      this.jdField_a_of_type_Akoy.sendMessageDelayed((Message)localObject, paramLong);
       return;
     }
   }
@@ -57,14 +57,14 @@ public class DialogBaseActivity
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if ((!isFinishing()) && (this.jdField_a_of_type_Biau == null))
+    if ((!isFinishing()) && (this.jdField_a_of_type_Bjbs == null))
     {
-      this.jdField_a_of_type_Biau = new biau(this, getTitleBarHeight());
-      this.jdField_a_of_type_Biau.setOnDismissListener(new akdm(this));
-      this.jdField_a_of_type_Biau.c(paramInt);
-      this.jdField_a_of_type_Biau.setCancelable(paramBoolean);
-      this.jdField_a_of_type_Biau.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_Biau.show();
+      this.jdField_a_of_type_Bjbs = new bjbs(this, getTitleBarHeight());
+      this.jdField_a_of_type_Bjbs.setOnDismissListener(new akox(this));
+      this.jdField_a_of_type_Bjbs.c(paramInt);
+      this.jdField_a_of_type_Bjbs.setCancelable(paramBoolean);
+      this.jdField_a_of_type_Bjbs.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_Bjbs.show();
     }
   }
   
@@ -76,53 +76,53 @@ public class DialogBaseActivity
   public void a(String paramString1, String paramString2)
   {
     if (!isFinishing()) {
-      bglp.a(this, 231, paramString1, paramString2, new akdj(this), null).show();
-    }
-  }
-  
-  void a(boolean paramBoolean)
-  {
-    String str3;
-    String str1;
-    if (!isFinishing())
-    {
-      bcst.b(this.app, "dc00898", "", "", "0X8006AA4", "0X8006AA4", 0, 0, "", "", "", "");
-      str3 = getResources().getString(2131694204);
-      if (!paramBoolean) {
-        break label103;
-      }
-      str1 = anni.a(2131702035);
-      if (!paramBoolean) {
-        break label112;
-      }
-    }
-    label103:
-    label112:
-    for (String str2 = anni.a(2131702038);; str2 = anni.a(2131702036))
-    {
-      bglp.a(this, 230, str1, str3, anni.a(2131702037), str2, new akdk(this, paramBoolean), new akdl(this, paramBoolean)).show();
-      return;
-      str1 = anni.a(2131702034);
-      break;
+      bhlq.a(this, 231, paramString1, paramString2, new akou(this), null).show();
     }
   }
   
   public boolean b()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Akdn.hasMessages(1))
+    if (this.jdField_a_of_type_Akoy.hasMessages(1))
     {
-      this.jdField_a_of_type_Akdn.removeMessages(1);
+      this.jdField_a_of_type_Akoy.removeMessages(1);
       bool = true;
     }
-    if (this.jdField_a_of_type_Biau != null)
+    if (this.jdField_a_of_type_Bjbs != null)
     {
-      this.jdField_a_of_type_Biau.cancel();
-      this.jdField_a_of_type_Biau.setOnDismissListener(null);
-      this.jdField_a_of_type_Biau = null;
+      this.jdField_a_of_type_Bjbs.cancel();
+      this.jdField_a_of_type_Bjbs.setOnDismissListener(null);
+      this.jdField_a_of_type_Bjbs = null;
       return true;
     }
     return bool;
+  }
+  
+  void c(boolean paramBoolean)
+  {
+    String str3;
+    String str1;
+    if (!isFinishing())
+    {
+      bdll.b(this.app, "dc00898", "", "", "0X8006AA4", "0X8006AA4", 0, 0, "", "", "", "");
+      str3 = getResources().getString(2131694229);
+      if (!paramBoolean) {
+        break label103;
+      }
+      str1 = anzj.a(2131702142);
+      if (!paramBoolean) {
+        break label112;
+      }
+    }
+    label103:
+    label112:
+    for (String str2 = anzj.a(2131702145);; str2 = anzj.a(2131702143))
+    {
+      bhlq.a(this, 230, str1, str3, anzj.a(2131702144), str2, new akov(this, paramBoolean), new akow(this, paramBoolean)).show();
+      return;
+      str1 = anzj.a(2131702141);
+      break;
+    }
   }
   
   @Override
@@ -136,7 +136,7 @@ public class DialogBaseActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Akdn = new akdn(this);
+    this.jdField_a_of_type_Akoy = new akoy(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp = ((PhoneContactManagerImp)this.app.getManager(11));
     return true;
   }

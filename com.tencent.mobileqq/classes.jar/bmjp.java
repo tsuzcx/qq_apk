@@ -1,13 +1,15 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class bmjp
-  implements FileFilter
+  implements DialogInterface.OnDismissListener
 {
-  public boolean accept(File paramFile)
+  public bmjp(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return Pattern.matches("cpu[0-9]+", paramFile.getName());
+    this.a.finish();
   }
 }
 

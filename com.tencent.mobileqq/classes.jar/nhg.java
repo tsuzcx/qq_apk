@@ -1,21 +1,24 @@
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.avgame.ui.AvGameLoadingActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class nhg
-  implements WtTicketPromise
+public class nhg
+  extends BroadcastReceiver
 {
-  nhg(nhe paramnhe) {}
+  public nhg(AvGameLoadingActivity paramAvGameLoadingActivity) {}
   
-  public void Done(Ticket paramTicket)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    nhe.a(this.a, false);
-    this.a.h();
+    paramContext = paramIntent.getAction();
+    QLog.d("AvGameManagerAvGameLoadingActivity", 2, "receive broadcast");
+    if ("com.tencent.avgame.ui.AvGameLoadingActivity.ACTION_LOADING_FINISH".equals(paramContext))
+    {
+      nhp.a().a("param_StepLoading", 0);
+      AvGameLoadingActivity.a(this.a, true, 0);
+    }
   }
-  
-  public void Failed(ErrMsg paramErrMsg) {}
-  
-  public void Timeout(ErrMsg paramErrMsg) {}
 }
 
 

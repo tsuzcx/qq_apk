@@ -1,17 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class rpy
-  implements rpo
+final class rpy
+  implements DialogInterface.OnClickListener
 {
-  rpy(rps paramrps, UgcVideo paramUgcVideo) {}
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.getProgress();
-    if (QLog.isColorLevel()) {
-      QLog.i("RIJUGC.RIJUgcVideoPublishManager", 2, "uploadCallback: taskType = " + paramInt + ",isSuccess = " + paramBoolean1 + "isFinish = " + paramBoolean2 + "errorMsg = " + paramString + "progress = " + i);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

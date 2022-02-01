@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.os.Build.VERSION;
-import bctj;
-import bgln;
+import bdmc;
+import bhlo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import pha;
+import ozs;
 
 class ReadinjoyTabFrame$InitWebProcessRunnable
   implements Runnable
@@ -34,22 +34,22 @@ class ReadinjoyTabFrame$InitWebProcessRunnable
       localWebProcessManager = (WebProcessManager)localReadinjoyTabFrame.a.getManager(13);
       if (localWebProcessManager != null)
       {
-        i = pha.f();
-        if (!pha.h()) {}
+        i = ozs.f();
+        if (!ozs.h()) {}
       }
       try
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-        localHashMap.put("param_totalMem", String.valueOf(bgln.d()));
-        localHashMap.put("param_availableMem", String.valueOf(bgln.e()));
-        localHashMap.put("param_cpuNum", String.valueOf(bgln.b()));
-        localHashMap.put("param_cpuFreq", String.valueOf(bgln.a()));
+        localHashMap.put("param_totalMem", String.valueOf(bhlo.d()));
+        localHashMap.put("param_availableMem", String.valueOf(bhlo.e()));
+        localHashMap.put("param_cpuNum", String.valueOf(bhlo.b()));
+        localHashMap.put("param_cpuFreq", String.valueOf(bhlo.a()));
         localHashMap.put("param_preloadLevel", String.valueOf(i));
         if (QLog.isColorLevel()) {
           QLog.d("Q.readinjoy.4tab", 2, "preloadToolProcessReport:" + localHashMap.toString());
         }
-        bctj.a(localReadinjoyTabFrame.a()).a(localReadinjoyTabFrame.a.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
+        bdmc.a(localReadinjoyTabFrame.a()).a(localReadinjoyTabFrame.a.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
       }
       catch (Exception localException)
       {

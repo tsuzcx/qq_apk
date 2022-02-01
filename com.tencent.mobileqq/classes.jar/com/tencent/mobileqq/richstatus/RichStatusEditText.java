@@ -12,10 +12,10 @@ import android.view.ContextMenu;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.widget.EditText;
-import bbah;
-import bbai;
-import bbaj;
-import bhvb;
+import bbta;
+import bbtb;
+import bbtc;
+import bivw;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.os.MqqHandler;
@@ -26,9 +26,9 @@ public class RichStatusEditText
   private static float jdField_a_of_type_Float = 1.0F;
   int jdField_a_of_type_Int = -1;
   private Context jdField_a_of_type_AndroidContentContext;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new bbah(this);
-  private bbaj jdField_a_of_type_Bbaj;
-  private bhvb jdField_a_of_type_Bhvb;
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new bbta(this);
+  private bbtc jdField_a_of_type_Bbtc;
+  private bivw jdField_a_of_type_Bivw;
   public boolean a;
   int b = -1;
   
@@ -79,15 +79,15 @@ public class RichStatusEditText
     paramInt = i;
     if (i == 0)
     {
-      bhvb localbhvb = a(i, true, false);
+      bivw localbivw = a(i, true, false);
       paramInt = i;
-      if (localbhvb != null)
+      if (localbivw != null)
       {
         paramInt = i;
-        if (this.jdField_a_of_type_Bbaj != null)
+        if (this.jdField_a_of_type_Bbtc != null)
         {
           paramInt = i;
-          if (!this.jdField_a_of_type_Bbaj.a(localbhvb)) {
+          if (!this.jdField_a_of_type_Bbtc.a(localbivw)) {
             paramInt = i + 1;
           }
         }
@@ -101,76 +101,76 @@ public class RichStatusEditText
     return getText();
   }
   
-  private bhvb a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  private bivw a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     int i = 0;
-    bhvb[] arrayOfbhvb = (bhvb[])a().getSpans(0, getText().length(), bhvb.class);
-    while (i < arrayOfbhvb.length)
+    bivw[] arrayOfbivw = (bivw[])a().getSpans(0, getText().length(), bivw.class);
+    while (i < arrayOfbivw.length)
     {
-      bhvb localbhvb = arrayOfbhvb[i];
-      int j = a().getSpanStart(localbhvb);
-      int k = a().getSpanEnd(localbhvb);
+      bivw localbivw = arrayOfbivw[i];
+      int j = a().getSpanStart(localbivw);
+      int k = a().getSpanEnd(localbivw);
       if ((paramInt > j) && (paramInt < k)) {
-        return localbhvb;
+        return localbivw;
       }
       if ((paramBoolean1) && (paramInt == j)) {
-        return localbhvb;
+        return localbivw;
       }
       if ((paramBoolean2) && (paramInt == k)) {
-        return localbhvb;
+        return localbivw;
       }
       i += 1;
     }
     return null;
   }
   
-  private bhvb a(bhvb parambhvb)
+  private bivw a(bivw parambivw)
   {
-    if (parambhvb != null) {
-      parambhvb.b(this);
+    if (parambivw != null) {
+      parambivw.b(this);
     }
-    return parambhvb;
+    return parambivw;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_Bhvb != null)
+    if (this.jdField_a_of_type_Bivw != null)
     {
-      this.jdField_a_of_type_Bhvb.a(this);
-      this.jdField_a_of_type_Bhvb = null;
+      this.jdField_a_of_type_Bivw.a(this);
+      this.jdField_a_of_type_Bivw = null;
     }
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    bhvb[] arrayOfbhvb = (bhvb[])a().getSpans(paramInt1, paramInt1 + paramInt2, bhvb.class);
+    bivw[] arrayOfbivw = (bivw[])a().getSpans(paramInt1, paramInt1 + paramInt2, bivw.class);
     paramInt1 = 0;
-    while (paramInt1 < arrayOfbhvb.length)
+    while (paramInt1 < arrayOfbivw.length)
     {
-      bhvb localbhvb = arrayOfbhvb[paramInt1];
-      if (this.jdField_a_of_type_Bbaj != null) {
-        this.jdField_a_of_type_Bbaj.a(localbhvb);
+      bivw localbivw = arrayOfbivw[paramInt1];
+      if (this.jdField_a_of_type_Bbtc != null) {
+        this.jdField_a_of_type_Bbtc.a(localbivw);
       }
-      if (localbhvb == this.jdField_a_of_type_Bhvb) {
-        this.jdField_a_of_type_Bhvb = null;
+      if (localbivw == this.jdField_a_of_type_Bivw) {
+        this.jdField_a_of_type_Bivw = null;
       }
-      a().removeSpan(localbhvb);
+      a().removeSpan(localbivw);
       paramInt1 += 1;
     }
   }
   
   private int b(int paramInt, float paramFloat1, float paramFloat2)
   {
-    bhvb localbhvb1 = a(paramInt, false, true);
-    bhvb localbhvb2 = a(paramInt, true, false);
+    bivw localbivw1 = a(paramInt, false, true);
+    bivw localbivw2 = a(paramInt, true, false);
     int j;
-    if (localbhvb1 != null)
+    if (localbivw1 != null)
     {
-      j = a().getSpanEnd(localbhvb1);
+      j = a().getSpanEnd(localbivw1);
       if (paramInt != j) {
         return paramInt;
       }
-      if ((j != getText().length()) && (localbhvb2 == null)) {
+      if ((j != getText().length()) && (localbivw2 == null)) {
         break label276;
       }
       this.jdField_a_of_type_Boolean = false;
@@ -188,14 +188,14 @@ public class RichStatusEditText
       if (k == j) {
         return k - 1;
       }
-      if (localbhvb2 == null) {
+      if (localbivw2 == null) {
         break;
       }
-      i = a().getSpanStart(localbhvb2);
+      i = a().getSpanStart(localbivw2);
       if (paramInt != i) {
         break;
       }
-      if ((i == 0) || (localbhvb1 != null))
+      if ((i == 0) || (localbivw1 != null))
       {
         this.jdField_a_of_type_Boolean = false;
         getText().insert(i, " ");
@@ -215,11 +215,11 @@ public class RichStatusEditText
     }
   }
   
-  public bbai a(int paramInt)
+  public bbtb a(int paramInt)
   {
     int k = getText().length();
     if ((paramInt < 0) || (paramInt > k)) {
-      return new bbai(k, k);
+      return new bbtb(k, k);
     }
     ImageSpan[] arrayOfImageSpan = (ImageSpan[])a().getSpans(0, k, ImageSpan.class);
     int i1 = arrayOfImageSpan.length;
@@ -243,7 +243,7 @@ public class RichStatusEditText
       {
         k = m;
         continue;
-        return new bbai(i, k);
+        return new bbtb(i, k);
       }
     }
   }
@@ -254,39 +254,39 @@ public class RichStatusEditText
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(bhvb parambhvb1, bhvb parambhvb2)
+  public void a(bivw parambivw1, bivw parambivw2)
   {
-    if (parambhvb1 == this.jdField_a_of_type_Bhvb) {
-      this.jdField_a_of_type_Bhvb = parambhvb2;
+    if (parambivw1 == this.jdField_a_of_type_Bivw) {
+      this.jdField_a_of_type_Bivw = parambivw2;
     }
-    int i = a().getSpanStart(parambhvb1);
-    int j = a().getSpanEnd(parambhvb1);
+    int i = a().getSpanStart(parambivw1);
+    int j = a().getSpanEnd(parambivw1);
     if ((i == -1) || (j == -1)) {
       return;
     }
-    a(parambhvb1, false, false);
-    setSpan(parambhvb2, i, j);
+    a(parambivw1, false, false);
+    setSpan(parambivw2, i, j);
   }
   
-  public void a(bhvb parambhvb, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(bivw parambivw, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((this.jdField_a_of_type_Bbaj != null) && (paramBoolean2)) {
-      this.jdField_a_of_type_Bbaj.a(parambhvb);
+    if ((this.jdField_a_of_type_Bbtc != null) && (paramBoolean2)) {
+      this.jdField_a_of_type_Bbtc.a(parambivw);
     }
-    if (this.jdField_a_of_type_Bhvb == parambhvb) {
-      this.jdField_a_of_type_Bhvb = null;
+    if (this.jdField_a_of_type_Bivw == parambivw) {
+      this.jdField_a_of_type_Bivw = null;
     }
     if (!paramBoolean1) {
-      a().removeSpan(parambhvb);
+      a().removeSpan(parambivw);
     }
     int i;
     int j;
     do
     {
       return;
-      i = a().getSpanStart(parambhvb);
-      j = a().getSpanEnd(parambhvb);
-      a().removeSpan(parambhvb);
+      i = a().getSpanStart(parambivw);
+      j = a().getSpanEnd(parambivw);
+      a().removeSpan(parambivw);
     } while (i == -1);
     getText().replace(i, j, "", 0, 0);
   }
@@ -314,15 +314,15 @@ public class RichStatusEditText
   {
     if ((paramInt == 67) && (paramKeyEvent.getAction() == 0))
     {
-      if (this.jdField_a_of_type_Bhvb != null)
+      if (this.jdField_a_of_type_Bivw != null)
       {
-        paramInt = a().getSpanStart(this.jdField_a_of_type_Bhvb);
-        a(this.jdField_a_of_type_Bhvb, true, true);
-        this.jdField_a_of_type_Bhvb = null;
+        paramInt = a().getSpanStart(this.jdField_a_of_type_Bivw);
+        a(this.jdField_a_of_type_Bivw, true, true);
+        this.jdField_a_of_type_Bivw = null;
         setSelection(paramInt);
         setCursorVisible(true);
       }
-      bhvb localbhvb;
+      bivw localbivw;
       do
       {
         return true;
@@ -331,30 +331,30 @@ public class RichStatusEditText
           a(getSelectionStart(), getSelectionEnd() - getSelectionStart());
           return super.onKeyDown(paramInt, paramKeyEvent);
         }
-        localbhvb = a(getSelectionStart(), false, true);
-        if (localbhvb == null) {
+        localbivw = a(getSelectionStart(), false, true);
+        if (localbivw == null) {
           break;
         }
-      } while (!localbhvb.a());
-      this.jdField_a_of_type_Bhvb = a(localbhvb);
+      } while (!localbivw.a());
+      this.jdField_a_of_type_Bivw = a(localbivw);
       setCursorVisible(false);
       return true;
     }
     if ((paramInt == 21) && (paramKeyEvent.getAction() == 0))
     {
-      if (this.jdField_a_of_type_Bhvb != null)
+      if (this.jdField_a_of_type_Bivw != null)
       {
         setCursorVisible(true);
-        paramInt = a().getSpanStart(this.jdField_a_of_type_Bhvb);
+        paramInt = a().getSpanStart(this.jdField_a_of_type_Bivw);
         setSelection(paramInt, paramInt);
         a();
         return true;
       }
     }
-    else if ((paramInt == 22) && (paramKeyEvent.getAction() == 0) && (this.jdField_a_of_type_Bhvb != null))
+    else if ((paramInt == 22) && (paramKeyEvent.getAction() == 0) && (this.jdField_a_of_type_Bivw != null))
     {
       setCursorVisible(true);
-      paramInt = a().getSpanEnd(this.jdField_a_of_type_Bhvb);
+      paramInt = a().getSpanEnd(this.jdField_a_of_type_Bivw);
       setSelection(paramInt, paramInt);
       a();
       return true;
@@ -375,14 +375,14 @@ public class RichStatusEditText
   {
     Object localObject;
     int i;
-    if ((paramInt1 != paramInt2) && (((bhvb[])a().getSpans(Math.min(paramInt1, paramInt2), Math.max(paramInt1, paramInt2), bhvb.class)).length != 0))
+    if ((paramInt1 != paramInt2) && (((bivw[])a().getSpans(Math.min(paramInt1, paramInt2), Math.max(paramInt1, paramInt2), bivw.class)).length != 0))
     {
       if ((paramInt1 != 0) || (paramInt2 != getText().length())) {
         break label207;
       }
       localObject = a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = ((bbai)localObject).jdField_a_of_type_Int;
-      this.b = ((bbai)localObject).b;
+      this.jdField_a_of_type_Int = ((bbtb)localObject).jdField_a_of_type_Int;
+      this.b = ((bbtb)localObject).b;
       i = 1;
     }
     for (;;)
@@ -407,7 +407,7 @@ public class RichStatusEditText
       if ((paramInt1 == paramInt2) && (paramInt1 == 0))
       {
         localObject = a(0, true, false);
-        if ((localObject != null) && (this.jdField_a_of_type_Bbaj != null) && (!this.jdField_a_of_type_Bbaj.a((bhvb)localObject)))
+        if ((localObject != null) && (this.jdField_a_of_type_Bbtc != null) && (!this.jdField_a_of_type_Bbtc.a((bivw)localObject)))
         {
           i = 1;
           continue;
@@ -449,24 +449,24 @@ public class RichStatusEditText
     Object localObject = a(i, false, false);
     if (k == 0)
     {
-      if (this.jdField_a_of_type_Bhvb != null) {
+      if (this.jdField_a_of_type_Bivw != null) {
         a();
       }
-      this.jdField_a_of_type_Bhvb = ((bhvb)localObject);
-      if (this.jdField_a_of_type_Bhvb != null) {
+      this.jdField_a_of_type_Bivw = ((bivw)localObject);
+      if (this.jdField_a_of_type_Bivw != null) {
         setCursorVisible(false);
       }
     }
     for (;;)
     {
-      if ((localObject == null) && (this.jdField_a_of_type_Bhvb != null)) {
+      if ((localObject == null) && (this.jdField_a_of_type_Bivw != null)) {
         paramMotionEvent.setAction(3);
       }
-      if (this.jdField_a_of_type_Bhvb != null)
+      if (this.jdField_a_of_type_Bivw != null)
       {
-        bool = this.jdField_a_of_type_Bhvb.a(this, paramMotionEvent);
+        bool = this.jdField_a_of_type_Bivw.a(this, paramMotionEvent);
         if ((k == 1) || (k == 3)) {
-          this.jdField_a_of_type_Bhvb = null;
+          this.jdField_a_of_type_Bivw = null;
         }
       }
       if (k == 1)
@@ -489,15 +489,15 @@ public class RichStatusEditText
   
   public boolean performLongClick()
   {
-    if (this.jdField_a_of_type_Bhvb != null) {
+    if (this.jdField_a_of_type_Bivw != null) {
       return true;
     }
     return super.performLongClick();
   }
   
-  public void setEditListener(bbaj parambbaj)
+  public void setEditListener(bbtc parambbtc)
   {
-    this.jdField_a_of_type_Bbaj = parambbaj;
+    this.jdField_a_of_type_Bbtc = parambbtc;
   }
   
   public void setSpan(ImageSpan paramImageSpan, int paramInt1, int paramInt2)
@@ -507,7 +507,7 @@ public class RichStatusEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.RichStatusEditText
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,24 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyXListView;
 import com.tencent.qphone.base.util.QLog;
 
-class sgs
-  extends Handler
+public class sgs
+  implements sgg
 {
-  sgs(sgp paramsgp, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public sgs(ReadInJoyDailyXListView paramReadInJoyDailyXListView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideofeedsUserGuideController", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
-    }
-    switch (paramMessage.what)
+    if (ReadInJoyDailyXListView.a(this.a))
     {
-    default: 
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDailyXListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", this.a.c + " mNoMoreData : " + this.a.b });
+      }
+      if ((this.a.c == 0) && ((!ubg.a(this.a.d)) || (!this.a.b)))
+      {
+        this.a.a(4);
+        QLog.d("ReadInJoyDailyXListView", 2, "preloadOptimize switch ON, loadingMore()");
+      }
     }
-    this.a.a();
   }
 }
 

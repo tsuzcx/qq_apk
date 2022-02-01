@@ -1,29 +1,31 @@
-import android.util.Log;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class bpmg
-  implements bpmj
+  extends RecyclerView.ItemDecoration
 {
-  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
+  int a = 0;
+  int b = 0;
+  int c = 0;
+  int d = 0;
+  
+  public bpmg(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    try
-    {
-      paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, null);
-      return paramEGL10;
-    }
-    catch (IllegalArgumentException paramEGL10)
-    {
-      Log.e("GLTextureView", "eglCreateWindowSurface", paramEGL10);
-    }
-    return null;
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
   }
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
+    paramRect.left = this.a;
+    paramRect.right = this.b;
+    paramRect.bottom = this.d;
+    paramRect.top = this.c;
   }
 }
 

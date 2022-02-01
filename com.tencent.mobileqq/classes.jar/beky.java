@@ -1,14 +1,11 @@
-import android.net.Uri;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-
-public class beky
-  implements bekr
+final class beky
+  implements bell
 {
-  public beky(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  beky(beko parambeko) {}
   
-  public void a(Uri paramUri)
+  public void a(belm parambelm1, belm parambelm2, belm parambelm3)
   {
-    this.a.a = paramUri;
+    beks.a(parambelm1, parambelm2, parambelm3, this.a);
   }
 }
 

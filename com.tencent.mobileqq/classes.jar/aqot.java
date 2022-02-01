@@ -1,241 +1,151 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aqot
+  extends BaseAdapter
 {
-  public String A = "";
-  public String B = "";
-  public String C = "";
-  public String D = "";
-  public String E = "";
-  public String F = "";
-  public String G = "";
-  public String H = "";
-  public String I = "";
-  public String J = "";
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = "";
-  public String o = "";
-  public String p = "";
-  public String q = "";
-  public String r = "";
-  public String s = "";
-  public String t = "";
-  public String u = "";
-  public String v = "";
-  public String w = "";
-  public String x = "";
-  public String y = "";
-  public String z = "";
+  private Context jdField_a_of_type_AndroidContentContext;
+  private aqou jdField_a_of_type_Aqou;
+  private List<aqon> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public aqot()
+  public aqot(Context paramContext, List<aqon> paramList, aqou paramaqou)
   {
-    this.jdField_a_of_type_JavaLangString = "https://ti.qq.com/hybrid-h5/intimate/list?_wv=83886083";
-    this.jdField_b_of_type_JavaLangString = "https://ti.qq.com/hybrid-h5/intimate/launch?_wv=83886083";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 80;
-    this.jdField_b_of_type_Int = 100;
-    this.jdField_c_of_type_Int = 80;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Aqou = paramaqou;
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
   }
   
-  public static aqot a(String paramString)
+  private void a(ImageView paramImageView, String paramString)
   {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838677);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
+    localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
+    localObject = paramImageView.getLayoutParams();
+    localURLDrawableOptions.mRequestHeight = ((ViewGroup.LayoutParams)localObject).height;
+    localURLDrawableOptions.mRequestWidth = ((ViewGroup.LayoutParams)localObject).width;
     try
     {
-      aqot localaqot = new aqot();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("isUpgradeOpen", 0) == 1) {}
-      for (;;)
-      {
-        localaqot.jdField_a_of_type_Boolean = bool;
-        localaqot.jdField_a_of_type_JavaLangString = paramString.optString("managePageURL", "https://ti.qq.com/hybrid-h5/intimate/list?_wv=83886083");
-        if (TextUtils.isEmpty(localaqot.jdField_a_of_type_JavaLangString)) {
-          localaqot.jdField_a_of_type_JavaLangString = "https://ti.qq.com/hybrid-h5/intimate/list?_wv=83886083";
-        }
-        localaqot.jdField_b_of_type_JavaLangString = paramString.optString("bindPageURL", "https://ti.qq.com/hybrid-h5/intimate/launch?_wv=83886083");
-        if (TextUtils.isEmpty(localaqot.jdField_b_of_type_JavaLangString)) {
-          localaqot.jdField_b_of_type_JavaLangString = "https://ti.qq.com/hybrid-h5/intimate/launch?_wv=83886083";
-        }
-        Object localObject;
-        JSONArray localJSONArray;
-        if (paramString.has("bgImg"))
-        {
-          localObject = paramString.optJSONObject("bgImg");
-          if ((localObject != null) && (((JSONObject)localObject).has("relationNo")))
-          {
-            localJSONArray = ((JSONObject)localObject).optJSONArray("relationNo");
-            if ((localJSONArray != null) && (localJSONArray.length() > 0)) {
-              localaqot.jdField_c_of_type_JavaLangString = localJSONArray.getString(0);
-            }
-          }
-          if ((localObject != null) && (((JSONObject)localObject).has("relationGuimi")))
-          {
-            localJSONArray = ((JSONObject)localObject).optJSONArray("relationGuimi");
-            if ((localJSONArray != null) && (localJSONArray.length() > 2))
-            {
-              localaqot.d = localJSONArray.getString(0);
-              localaqot.e = localJSONArray.getString(1);
-              localaqot.f = localJSONArray.getString(2);
-            }
-          }
-          if ((localObject != null) && (((JSONObject)localObject).has("relationJiyou")))
-          {
-            localJSONArray = ((JSONObject)localObject).optJSONArray("relationJiyou");
-            if ((localJSONArray != null) && (localJSONArray.length() > 2))
-            {
-              localaqot.g = localJSONArray.getString(0);
-              localaqot.h = localJSONArray.getString(1);
-              localaqot.i = localJSONArray.getString(2);
-            }
-          }
-          if ((localObject != null) && (((JSONObject)localObject).has("relationLover")))
-          {
-            localObject = ((JSONObject)localObject).optJSONArray("relationLover");
-            if ((localObject != null) && (((JSONArray)localObject).length() > 2))
-            {
-              localaqot.j = ((JSONArray)localObject).getString(0);
-              localaqot.k = ((JSONArray)localObject).getString(1);
-              localaqot.l = ((JSONArray)localObject).getString(2);
-            }
-          }
-        }
-        if (paramString.has("darkBgImg"))
-        {
-          localObject = paramString.optJSONObject("darkBgImg");
-          if ((localObject != null) && (((JSONObject)localObject).has("relationGuimi")))
-          {
-            localJSONArray = ((JSONObject)localObject).optJSONArray("relationGuimi");
-            if ((localJSONArray != null) && (localJSONArray.length() > 2))
-            {
-              localaqot.m = localJSONArray.getString(0);
-              localaqot.n = localJSONArray.getString(1);
-              localaqot.o = localJSONArray.getString(2);
-            }
-          }
-          if ((localObject != null) && (((JSONObject)localObject).has("relationJiyou")))
-          {
-            localJSONArray = ((JSONObject)localObject).optJSONArray("relationJiyou");
-            if ((localJSONArray != null) && (localJSONArray.length() > 2))
-            {
-              localaqot.p = localJSONArray.getString(0);
-              localaqot.q = localJSONArray.getString(1);
-              localaqot.r = localJSONArray.getString(2);
-            }
-          }
-          if ((localObject != null) && (((JSONObject)localObject).has("relationLover")))
-          {
-            localObject = ((JSONObject)localObject).optJSONArray("relationLover");
-            if ((localObject != null) && (((JSONArray)localObject).length() > 2))
-            {
-              localaqot.s = ((JSONArray)localObject).getString(0);
-              localaqot.t = ((JSONArray)localObject).getString(1);
-              localaqot.u = ((JSONArray)localObject).getString(2);
-            }
-          }
-        }
-        if (paramString.has("shareImg"))
-        {
-          localObject = paramString.optJSONObject("shareImg");
-          if ((localObject != null) && (((JSONObject)localObject).has("relationNo")))
-          {
-            localJSONArray = ((JSONObject)localObject).optJSONArray("relationNo");
-            if ((localJSONArray != null) && (localJSONArray.length() > 0)) {
-              localaqot.v = localJSONArray.getString(0);
-            }
-          }
-          if ((localObject != null) && (((JSONObject)localObject).has("relationGuimi")))
-          {
-            localJSONArray = ((JSONObject)localObject).optJSONArray("relationGuimi");
-            if ((localJSONArray != null) && (localJSONArray.length() > 2))
-            {
-              localaqot.w = localJSONArray.getString(0);
-              localaqot.x = localJSONArray.getString(1);
-              localaqot.y = localJSONArray.getString(2);
-            }
-          }
-          if ((localObject != null) && (((JSONObject)localObject).has("relationJiyou")))
-          {
-            localJSONArray = ((JSONObject)localObject).optJSONArray("relationJiyou");
-            if ((localJSONArray != null) && (localJSONArray.length() > 2))
-            {
-              localaqot.z = localJSONArray.getString(0);
-              localaqot.A = localJSONArray.getString(1);
-              localaqot.B = localJSONArray.getString(2);
-            }
-          }
-          if ((localObject != null) && (((JSONObject)localObject).has("relationLover")))
-          {
-            localObject = ((JSONObject)localObject).optJSONArray("relationLover");
-            if ((localObject != null) && (((JSONArray)localObject).length() > 2))
-            {
-              localaqot.C = ((JSONArray)localObject).getString(0);
-              localaqot.D = ((JSONArray)localObject).getString(1);
-              localaqot.E = ((JSONArray)localObject).getString(2);
-            }
-          }
-        }
-        if (paramString.has("scoreAnimation")) {
-          localaqot.H = paramString.optString("scoreAnimation");
-        }
-        if (paramString.has("scoreAnimationMd5")) {
-          localaqot.I = paramString.optString("scoreAnimationMd5");
-        }
-        if (paramString.has("scoreRuleURL")) {
-          localaqot.J = paramString.optString("scoreRuleURL");
-        }
-        if (paramString.has("scoreDisplayIntimateMin")) {
-          localaqot.jdField_a_of_type_Int = paramString.optInt("scoreDisplayIntimateMin");
-        }
-        if (paramString.has("scoreDisplayFriendMin")) {
-          localaqot.jdField_b_of_type_Int = paramString.optInt("scoreDisplayFriendMin");
-        }
-        if (paramString.has("scoreDisplayFriendMin818")) {
-          localaqot.jdField_c_of_type_Int = paramString.optInt("scoreDisplayFriendMin818");
-        }
-        localaqot.F = paramString.optString("gifNormalUrl");
-        localaqot.G = paramString.optString("gifNightUrl");
-        return localaqot;
-        bool = false;
-      }
-      return null;
+      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+      paramString.setTag(bhez.b(((ViewGroup.LayoutParams)localObject).width, ((ViewGroup.LayoutParams)localObject).height, bhtq.a(2.0F)));
+      paramString.setDecodeHandler(bhez.j);
+      paramImageView.setImageDrawable(paramString);
+      return;
     }
-    catch (Exception paramString)
+    catch (Exception paramImageView)
     {
-      paramString.printStackTrace();
+      while (!QLog.isColorLevel()) {}
+      QLog.d("C2CShortcutBarAdapter", 2, "updateIconView exception ", paramImageView);
     }
   }
   
-  public String toString()
+  public aqon a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("FriendIntimateRelationshipBean isUpgradeOpen:").append(this.jdField_a_of_type_Boolean).append(" managePageURL:").append(this.jdField_a_of_type_JavaLangString).append(" bindPageURL:").append(this.jdField_b_of_type_JavaLangString).append(" relationNoBgUrl:").append(this.jdField_c_of_type_JavaLangString).append(" relationGuimiBg0Url:").append(this.d).append(" relationGuimiBg1Url:").append(this.e).append(" relationGuimiBg2Url:").append(this.f).append(" relationJiyouBg0Url:").append(this.g).append(" relationJiyouBg1Url:").append(this.h).append(" relationJiyouBg2Url:").append(this.i).append(" relationLoverBg0Url:").append(this.j).append(" relationLoverBg1Url:").append(this.k).append(" relationLoverBg2Url:").append(this.l).append(" relationGuimiDarkBg0Url:").append(this.m).append(" relationGuimiDarkBg1Url:").append(this.n).append(" relationGuimiDarkBg2Url:").append(this.o).append(" relationJiyouDarkBg0Url:").append(this.p).append(" relationJiyouDarkBg1Url:").append(this.q).append(" relationJiyouDarkBg2Url:").append(this.r).append(" relationLoverDarkBg0Url:").append(this.s).append(" relationLoverDarkBg1Url:").append(this.t).append(" relationLoverDarkBg2Url:").append(this.u).append(" relationNoShareUrl:").append(this.v).append(" relationGuimiShare0Url:").append(this.w).append(" relationGuimiShare1Url:").append(this.x).append(" relationGuimiShare2Url:").append(this.y).append(" relationJiyouShare0Url:").append(this.z).append(" relationJiyouShare1Url:").append(this.A).append(" relationJiyouShare2Url:").append(this.B).append(" relationLoverShare0Url:").append(this.C).append(" relationLoverShare1Url:").append(this.D).append(" relationLoverShare2Url:").append(this.E).append(" gifNormalUrl:").append(this.F).append(" gifNightUrl:").append(this.G);
-    return localStringBuilder.toString();
+    return (aqon)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(List<aqon> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    if (paramView == null)
+    {
+      paramView = new aqov();
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561050, paramViewGroup, false);
+      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131377579));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377581));
+      paramView.b = ((TextView)localView.findViewById(2131377580));
+      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131381441);
+      paramView.c = ((TextView)localView.findViewById(2131377577));
+      localView.setTag(paramView);
+      localObject = a(paramInt);
+      boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
+      if (!bool) {
+        break label275;
+      }
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#ffffff"));
+      label136:
+      if (!bool) {
+        break label291;
+      }
+      localView.setBackgroundDrawable(localView.getResources().getDrawable(2130838639));
+      label156:
+      if (TextUtils.isEmpty(((aqon)localObject).g)) {
+        break label310;
+      }
+      paramView.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      paramView.c.setVisibility(0);
+      paramView.c.setText(((aqon)localObject).g);
+    }
+    for (;;)
+    {
+      a(paramView.jdField_a_of_type_ComTencentImageURLImageView, ((aqon)localObject).c);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((aqon)localObject).b);
+      if (this.jdField_a_of_type_Aqou != null) {
+        this.jdField_a_of_type_Aqou.a((aqon)localObject, paramInt);
+      }
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (aqov)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label275:
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#1C1D1E"));
+      break label136;
+      label291:
+      localView.setBackgroundDrawable(localView.getResources().getDrawable(2130838638));
+      break label156;
+      label310:
+      paramView.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      paramView.c.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqot
  * JD-Core Version:    0.7.0.1
  */

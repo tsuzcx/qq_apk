@@ -1,9 +1,20 @@
-public final class ayzu
-  extends ayzn
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.TranslateFragment;
+
+public class ayzu
+  implements azbw
 {
-  protected int a()
+  public ayzu(TranslateFragment paramTranslateFragment, ayyd paramayyd) {}
+  
+  public void a(int paramInt, azbx paramazbx)
   {
-    return 509;
+    if ((paramazbx != null) && (!TextUtils.isEmpty(paramazbx.b)))
+    {
+      if (!this.jdField_a_of_type_Ayyd.c.equalsIgnoreCase(paramazbx.b)) {
+        TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, this.jdField_a_of_type_Ayyd.b, paramazbx.b);
+      }
+      ayyb.a("0X800AD31", ayyb.a(paramazbx.b));
+    }
   }
 }
 

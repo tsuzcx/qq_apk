@@ -13,7 +13,8 @@ class InternalJSPlugin$8$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     QMLog.e("InternalJSPlugin", "cancel");
-    this.this$1.val$req.fail("click cancel");
+    paramDialogInterface = InternalJSPlugin.access$700(this.this$1.this$0, 5);
+    this.this$1.val$req.fail(paramDialogInterface, "click download cancel");
   }
 }
 

@@ -1,46 +1,29 @@
-import android.graphics.Bitmap;
-import android.support.v4.app.NotificationCompat.Builder;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIPosters;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.POIPosterData;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import java.util.ArrayList;
 
-class xer
-  implements URLDrawable.URLDrawableListener
+public class xer
+  extends wov
 {
-  xer(xeq paramxeq, NotificationCompat.Builder paramBuilder, QQAppInterface paramQQAppInterface, StoryPushMsg paramStoryPushMsg, int paramInt) {}
+  public final ArrayList<wum> a = new ArrayList();
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public xer(qqstory_service.RspGetPOIPosters paramRspGetPOIPosters)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
-    }
-    this.jdField_a_of_type_Xeq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryPushMsg, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder);
-    xeq.a(this.jdField_a_of_type_Xeq).remove(paramURLDrawable);
+    a(paramRspGetPOIPosters);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  private void a(qqstory_service.RspGetPOIPosters paramRspGetPOIPosters)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed start, mURLDrawableList.size():" + xeq.a(this.jdField_a_of_type_Xeq).size());
-    }
-    Bitmap localBitmap1 = bgmo.a(paramURLDrawable.getCurrDrawable(), 200, 200);
-    Bitmap localBitmap2 = nmb.b(localBitmap1, 1);
-    if (QLog.isColorLevel()) {
-      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed start, cutBitmap.size():" + localBitmap2.getHeight() + ", " + localBitmap2.getWidth());
-    }
-    this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setLargeIcon(localBitmap2);
-    this.jdField_a_of_type_Xeq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryPushMsg, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder);
-    localBitmap1.recycle();
-    xeq.a(this.jdField_a_of_type_Xeq).remove(paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed, mURLDrawableList.size():" + xeq.a(this.jdField_a_of_type_Xeq).size());
+    int i = 0;
+    while (i < paramRspGetPOIPosters.poi_posters.size())
+    {
+      Object localObject = (qqstory_struct.POIPosterData)paramRspGetPOIPosters.poi_posters.get(i);
+      localObject = new wum(((qqstory_struct.POIPosterData)localObject).poster_name.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).name.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).thumb_url.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).poster_url.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).poster_json_layout_desc.get().toStringUtf8());
+      this.a.add(localObject);
+      i += 1;
     }
   }
 }

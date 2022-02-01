@@ -1,6 +1,7 @@
 package com.tencent.qqmini.sdk.request;
 
 import NS_COMM.COMM.StCommonExt;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StInteractiveTemplate;
 import NS_MINI_CLOUDSTORAGE.CloudStorage.StKVData;
 import NS_MINI_CLOUDSTORAGE.CloudStorage.StModifyFriendInteractiveStorageReq;
 import NS_MINI_CLOUDSTORAGE.CloudStorage.StModifyFriendInteractiveStorageRsp;
@@ -20,7 +21,7 @@ public class ModifyFriendInteractiveStorageRequest
   private static final String TAG = "ModifyFriendInteractiveStorageRequest";
   private CloudStorage.StModifyFriendInteractiveStorageReq req = new CloudStorage.StModifyFriendInteractiveStorageReq();
   
-  public ModifyFriendInteractiveStorageRequest(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, HashMap<String, String> paramHashMap)
+  public ModifyFriendInteractiveStorageRequest(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, HashMap<String, String> paramHashMap, boolean paramBoolean, CloudStorage.StInteractiveTemplate paramStInteractiveTemplate)
   {
     if (paramStCommonExt != null) {
       this.req.ext.set(paramStCommonExt);
@@ -30,14 +31,21 @@ public class ModifyFriendInteractiveStorageRequest
     this.req.shareId.set(paramString3);
     this.req.opNum.set(paramInt);
     this.req.operation.set(paramString4);
-    paramStCommonExt = paramHashMap.entrySet().iterator();
-    while (paramStCommonExt.hasNext())
+    paramStCommonExt = this.req.quiet;
+    if (paramBoolean) {}
+    for (paramInt = 1;; paramInt = 0)
     {
-      paramString1 = (Map.Entry)paramStCommonExt.next();
-      paramString2 = new CloudStorage.StKVData();
-      paramString2.key.set((String)paramString1.getKey());
-      paramString2.value.set((String)paramString1.getValue());
-      this.req.KVDataList.add(paramString2);
+      paramStCommonExt.set(paramInt);
+      this.req.desc.set(paramStInteractiveTemplate);
+      paramStCommonExt = paramHashMap.entrySet().iterator();
+      while (paramStCommonExt.hasNext())
+      {
+        paramString1 = (Map.Entry)paramStCommonExt.next();
+        paramString2 = new CloudStorage.StKVData();
+        paramString2.key.set((String)paramString1.getKey());
+        paramString2.value.set((String)paramString1.getValue());
+        this.req.KVDataList.add(paramString2);
+      }
     }
   }
   

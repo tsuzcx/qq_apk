@@ -1,18 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushOpDialogModel;
+import android.support.annotation.UiThread;
+import java.lang.ref.WeakReference;
 
-public final class uls
-  implements Parcelable.Creator<WSPushOpDialogModel>
+public class uls<V extends ucj>
+  implements ucm<V>
 {
-  public WSPushOpDialogModel a(Parcel paramParcel)
+  private WeakReference<V> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  
+  @UiThread
+  public V a()
   {
-    return new WSPushOpDialogModel(paramParcel);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
+    }
+    return (ucj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
   }
   
-  public WSPushOpDialogModel[] a(int paramInt)
+  public void a()
   {
-    return new WSPushOpDialogModel[paramInt];
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    }
+  }
+  
+  @UiThread
+  public void a(V paramV)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramV);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

@@ -1,25 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class awrj
-  implements View.OnClickListener
+public abstract interface awrj
 {
-  public awrj(MultiAIOFragment paramMultiAIOFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    TextView localTextView = (TextView)MultiAIOFragment.a(this.a).findViewById(2131379999);
-    awsm.a -= 1;
-    if (awsm.a < 1) {
-      awsm.a = 1;
-    }
-    localTextView.setText(anni.a(2131705776) + awsm.a);
-    MultiAIOFragment.d(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt);
 }
 
 

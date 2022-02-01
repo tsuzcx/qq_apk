@@ -1,18 +1,14 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class adsc
+class adsc
   implements DialogInterface.OnClickListener
 {
-  public adsc(QQAppInterface paramQQAppInterface, String paramString) {}
+  adsc(adsa paramadsa) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bgoo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), null);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

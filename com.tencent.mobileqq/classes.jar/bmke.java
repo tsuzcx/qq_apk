@@ -1,35 +1,33 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.XMPCoreUtil.2;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
-public class bmke
-  implements ModuleDownloadListener
+class bmke
+  extends RemoteCommand
 {
-  public bmke(XMPCoreUtil.2 param2) {}
-  
-  public void onDownloadCanceled(String paramString)
+  bmke(bmkd parambmkd, String paramString)
   {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadCanceled ", paramString });
+    super(paramString);
   }
   
-  public void onDownloadFailed(String paramString)
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadFailed ", paramString });
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("xmpcore.jar")) {
-      return;
+    if (paramBundle == null) {
+      paramBundle = null;
     }
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "url = ", bmkc.a(), " onDownloadSucceed = ", bmkc.b() });
-    LocalMultiProcConfig.putString("xmp_core_file_md5", bmkc.b());
+    Bundle localBundle;
+    do
+    {
+      return paramBundle;
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      localBundle = bmkd.a(this.a, paramBundle);
+      if (localBundle != null) {
+        localBundle.setClassLoader(getClass().getClassLoader());
+      }
+      paramBundle = localBundle;
+    } while (paramOnInvokeFinishLinstener == null);
+    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
+    return localBundle;
   }
 }
 

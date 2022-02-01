@@ -3,7 +3,7 @@ package com.dataline.activities;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import aofa;
+import aosf;
 import ay;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;

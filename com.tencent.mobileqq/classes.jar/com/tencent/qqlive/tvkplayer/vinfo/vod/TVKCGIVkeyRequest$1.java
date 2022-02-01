@@ -26,7 +26,7 @@ class TVKCGIVkeyRequest$1
       if ((TVKCGIVkeyRequest.access$500(this.this$0)) && (TVKCGIVkeyRequest.access$400(this.this$0) == TVKCGIVkeyRequest.access$800()) && (TVKCGIVkeyRequest.access$600(this.this$0) != null))
       {
         int j = 1402000 + i;
-        TVKCGIVkeyRequest.access$600(this.this$0).OnVkeyFailure(TVKCGIVkeyRequest.access$700(this.this$0), String.format("%d.%d", new Object[] { Integer.valueOf(103), Integer.valueOf(j) }), j);
+        TVKCGIVkeyRequest.access$600(this.this$0).onVkeyFailure(TVKCGIVkeyRequest.access$700(this.this$0), String.format("%d.%d", new Object[] { Integer.valueOf(103), Integer.valueOf(j) }), j);
       }
       if ((i >= 16) && (i <= 20)) {
         TVKCGIVkeyRequest.access$102(this.this$0, true);
@@ -87,14 +87,14 @@ class TVKCGIVkeyRequest$1
             }
           }
         } while (TVKCGIVkeyRequest.access$600(this.this$0) == null);
-        TVKCGIVkeyRequest.access$600(this.this$0).OnVkeySuccess(TVKCGIVkeyRequest.access$700(this.this$0), paramHttpResponse.getXml(), paramHttpResponse.getDocument());
+        TVKCGIVkeyRequest.access$600(this.this$0).onVkeySuccess(TVKCGIVkeyRequest.access$700(this.this$0), paramHttpResponse.getXml(), paramHttpResponse.getDocument());
         return;
         TVKLogUtil.e("MediaPlayer[TVKCGIVkeyRequest.java]", "[vinfo][getkey] xml parse error");
         if ((!TVKCGIVkeyRequest.access$500(this.this$0)) || (TVKCGIVkeyRequest.access$400(this.this$0) != TVKCGIVkeyRequest.access$800())) {
           break;
         }
       } while (TVKCGIVkeyRequest.access$600(this.this$0) == null);
-      TVKCGIVkeyRequest.access$600(this.this$0).OnVkeyFailure(TVKCGIVkeyRequest.access$700(this.this$0), String.format("%d.%d", new Object[] { Integer.valueOf(103), Integer.valueOf(1402015) }), 1402015);
+      TVKCGIVkeyRequest.access$600(this.this$0).onVkeyFailure(TVKCGIVkeyRequest.access$700(this.this$0), String.format("%d.%d", new Object[] { Integer.valueOf(103), Integer.valueOf(1402015) }), 1402015);
       return;
       this.this$0.executeRequest();
       return;
@@ -103,7 +103,7 @@ class TVKCGIVkeyRequest$1
         break;
       }
     } while (TVKCGIVkeyRequest.access$600(this.this$0) == null);
-    TVKCGIVkeyRequest.access$600(this.this$0).OnVkeyFailure(TVKCGIVkeyRequest.access$700(this.this$0), String.format("%d.%d", new Object[] { Integer.valueOf(103), Integer.valueOf(1402013) }), 1402013);
+    TVKCGIVkeyRequest.access$600(this.this$0).onVkeyFailure(TVKCGIVkeyRequest.access$700(this.this$0), String.format("%d.%d", new Object[] { Integer.valueOf(103), Integer.valueOf(1402013) }), 1402013);
     return;
     this.this$0.executeRequest();
   }

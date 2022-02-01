@@ -1,9 +1,31 @@
-import android.content.Intent;
+import com.tencent.widget.AuthorizationItem;
 
-class bljx
+public final class bljx
 {
-  public long a;
-  public Intent a;
+  public final int a;
+  public final String a;
+  public final String b;
+  
+  public bljx(String paramString1, String paramString2, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static bljx a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return AuthorizationItem.d;
+    case 0: 
+      return AuthorizationItem.a;
+    case 1: 
+      return AuthorizationItem.b;
+    }
+    return AuthorizationItem.c;
+  }
 }
 
 

@@ -1,86 +1,16 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import java.lang.ref.WeakReference;
-import java.util.WeakHashMap;
+import java.io.Closeable;
 
-public abstract class zop
+public final class zop
 {
-  public int a;
-  public Drawable a;
-  public Object a;
-  protected WeakReference<ImageView> a;
-  public zoo a;
-  protected zoq a;
-  protected volatile boolean a;
-  public Drawable b;
-  
-  public zop(ImageView paramImageView)
+  public static void a(Closeable paramCloseable)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
-  }
-  
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public void a(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if (this.jdField_a_of_type_Zoq != null) {
-      this.jdField_a_of_type_Zoq.a(this);
-    }
-  }
-  
-  public void a(Drawable paramDrawable, String paramString)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if (this.jdField_a_of_type_Zoq != null) {
-      this.jdField_a_of_type_Zoq.a(this, paramString);
-    }
-  }
-  
-  public void a(WeakHashMap<ImageView, Drawable> paramWeakHashMap, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    ImageView localImageView;
-    do
+    if (paramCloseable != null) {}
+    try
     {
-      return;
-      localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localImageView == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null));
-    if ((paramBoolean) && (this.jdField_a_of_type_Int == 0))
-    {
-      yqp.a("Q.qqstory.newImageLoader", "save to waiting queue t:%s", this.jdField_a_of_type_JavaLangObject);
-      paramWeakHashMap.put(localImageView, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      paramCloseable.close();
       return;
     }
-    localImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    ykv.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", localImageView.getTag(2131369475), " and change to: ", this.jdField_a_of_type_JavaLangObject.toString(), " view hash:" + localImageView.hashCode() });
-    localImageView.setTag(2131369475, this.jdField_a_of_type_JavaLangObject.toString());
-  }
-  
-  public void a(zoq paramzoq)
-  {
-    this.jdField_a_of_type_Zoq = paramzoq;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    ykv.b("Q.qqstory.newImageLoader", new Object[] { anni.a(2131713421), this.jdField_a_of_type_JavaLangObject });
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_Zoq = null;
-    this.jdField_a_of_type_Zoo = null;
-    ykv.b("Q.qqstory.newImageLoader", new Object[] { anni.a(2131713422), this.jdField_a_of_type_JavaLangObject });
+    catch (Exception paramCloseable) {}
   }
 }
 

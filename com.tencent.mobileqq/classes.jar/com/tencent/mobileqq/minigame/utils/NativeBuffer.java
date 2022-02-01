@@ -2,7 +2,7 @@ package com.tencent.mobileqq.minigame.utils;
 
 import android.text.TextUtils;
 import android.util.Base64;
-import com.tencent.mobileqq.triton.sdk.bridge.ITNativeBufferPool;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,7 +25,7 @@ public class NativeBuffer
     return paramJSONObject.has("__nativeBuffers__");
   }
   
-  public static void packNativeBuffer(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, String paramString, JSONObject paramJSONObject, ITNativeBufferPool paramITNativeBufferPool)
+  public static void packNativeBuffer(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, String paramString, JSONObject paramJSONObject, JsRuntime paramJsRuntime)
   {
     if ((paramJSONObject == null) || (paramString == null)) {
       return;
@@ -51,18 +51,18 @@ public class NativeBuffer
         QLog.e("[minigame] ", 1, "packNativeBuffer err :", paramArrayOfByte);
         return;
       }
-      if ((paramInt3 == TYPE_BUFFER_NATIVE) && (paramITNativeBufferPool != null)) {
-        localJSONObject.put("id", paramITNativeBufferPool.newNativeBuffer(paramArrayOfByte, paramInt1, paramInt2));
+      if ((paramInt3 == TYPE_BUFFER_NATIVE) && (paramJsRuntime != null)) {
+        localJSONObject.put("id", paramJsRuntime.createNativeBuffer(paramArrayOfByte, paramInt1, paramInt2));
       }
     }
   }
   
-  public static void packNativeBuffer(byte[] paramArrayOfByte, int paramInt, String paramString, JSONObject paramJSONObject, ITNativeBufferPool paramITNativeBufferPool)
+  public static void packNativeBuffer(byte[] paramArrayOfByte, int paramInt, String paramString, JSONObject paramJSONObject, JsRuntime paramJsRuntime)
   {
-    packNativeBuffer(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt, paramString, paramJSONObject, paramITNativeBufferPool);
+    packNativeBuffer(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt, paramString, paramJSONObject, paramJsRuntime);
   }
   
-  public static NativeBuffer unpackNativeBuffer(JSONObject paramJSONObject, String paramString, ITNativeBufferPool paramITNativeBufferPool)
+  public static NativeBuffer unpackNativeBuffer(JSONObject paramJSONObject, String paramString, JsRuntime paramJsRuntime)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
@@ -113,8 +113,8 @@ public class NativeBuffer
         localObject1 = paramJSONObject;
       } while (i == -1);
       localObject1 = paramJSONObject;
-    } while (paramITNativeBufferPool == null);
-    paramJSONObject.buf = paramITNativeBufferPool.getNativeBuffer(i);
+    } while (paramJsRuntime == null);
+    paramJSONObject.buf = paramJsRuntime.getNativeBuffer(i);
     paramJSONObject.type = TYPE_BUFFER_NATIVE;
     return paramJSONObject;
   }

@@ -1,17 +1,34 @@
-import android.content.Context;
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
+import MQQ.VipUserInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aokw
-  extends aojt
+  implements anui
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  protected void a(boolean paramBoolean, int paramInt) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramQQAppInterface = new aokv(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "qapp";
-    paramQQAppInterface.c = Uri.parse(paramString).getHost();
-    return paramQQAppInterface;
+    if (QLog.isColorLevel()) {
+      QLog.d("VipInfoObserver", 2, "onUpdate-isSuccess:" + paramBoolean);
+    }
+    if (paramInt == 1)
+    {
+      int i = -1;
+      paramInt = i;
+      if (paramBoolean)
+      {
+        paramObject = (VipUserInfo)paramObject;
+        paramInt = i;
+        if (paramObject != null)
+        {
+          paramInt = i;
+          if (paramObject.bUpdate == 1) {
+            paramInt = paramObject.iGrowthValue;
+          }
+        }
+      }
+      a(paramBoolean, paramInt);
+    }
   }
 }
 

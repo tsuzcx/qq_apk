@@ -1,6 +1,23 @@
-public abstract interface biet
+import android.graphics.Canvas;
+import android.view.SurfaceHolder;
+
+public class biet
+  extends bies
 {
-  public abstract void a();
+  public biet(SurfaceHolder paramSurfaceHolder)
+  {
+    super(paramSurfaceHolder);
+  }
+  
+  Canvas a(SurfaceHolder paramSurfaceHolder)
+  {
+    return paramSurfaceHolder.lockCanvas();
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
 }
 
 

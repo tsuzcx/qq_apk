@@ -1,8 +1,26 @@
-public abstract interface bgdj
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
+import com.tencent.widget.AdapterView;
+import java.util.Set;
+
+public class bgdj
+  implements bljm
 {
-  public abstract void a(int paramInt);
+  public bgdj(SelectReciteParagraphFragment paramSelectReciteParagraphFragment) {}
   
-  public abstract boolean a(int paramInt);
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if (this.a.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt))) {
+      this.a.jdField_a_of_type_JavaUtilSet.remove(Integer.valueOf(paramInt));
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Bgdl.notifyDataSetChanged();
+      this.a.e();
+      return;
+      this.a.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
+    }
+  }
 }
 
 

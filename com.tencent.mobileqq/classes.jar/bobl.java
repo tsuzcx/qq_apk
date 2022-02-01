@@ -1,8 +1,7 @@
-public abstract interface bobl
+final class bobl
+  implements bhvb
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
 }
 
 

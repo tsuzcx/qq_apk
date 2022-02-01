@@ -1,65 +1,31 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTodayStoryVidList;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Calendar;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yll
-  implements ymk
+  extends QQUIEventReceiver<StoryMessageListActivity, xas>
 {
-  protected yln a;
-  protected yml a;
-  protected ymm a;
-  
-  public Object a()
+  public yll(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
   {
-    return this.jdField_a_of_type_Yln;
+    super(paramStoryMessageListActivity);
   }
   
-  public String a()
+  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull xas paramxas)
   {
-    return getClass().getSimpleName();
+    if (paramxas.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramxas.jdField_a_of_type_JavaUtilList);
+      }
+      paramStoryMessageListActivity.g();
+    }
   }
   
-  public void a()
+  public Class acceptEventClass()
   {
-    yqp.c("GetMyStoryVideoListStep", "GetMyStoryVideoListStep");
-    d();
-  }
-  
-  public void a(Object paramObject) {}
-  
-  public void a(yml paramyml)
-  {
-    this.jdField_a_of_type_Yml = paramyml;
-  }
-  
-  public void a(ymm paramymm)
-  {
-    this.jdField_a_of_type_Ymm = paramymm;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  protected void d()
-  {
-    String str = wjz.a("StorySvc.homepage_my_day_710");
-    qqstory_service.ReqTodayStoryVidList localReqTodayStoryVidList = new qqstory_service.ReqTodayStoryVidList();
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(l);
-    int i = localCalendar.get(1);
-    int j = localCalendar.get(2);
-    int k = localCalendar.get(5);
-    localReqTodayStoryVidList.date.set(i * 10000 + (j + 1) * 100 + k);
-    this.jdField_a_of_type_Yln = new yln();
-    wlb.a().a(new wyl(str, localReqTodayStoryVidList, null), new ylm(this, localReqTodayStoryVidList, str));
+    return xas.class;
   }
 }
 

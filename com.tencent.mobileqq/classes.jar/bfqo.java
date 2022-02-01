@@ -1,40 +1,23 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.troop.createNewTroop.RelationTroopEntity;
+import java.util.ArrayList;
 
-public class bfqo
+class bfqo
+  implements bghp
 {
-  public static bfqo[] a;
-  public String a;
+  bfqo(bfqm parambfqm, bfqu parambfqu) {}
   
-  static
+  public void a(ArrayList<bgho> paramArrayList)
   {
-    jdField_a_of_type_ArrayOfBfqo = new bfqo[] { new bfqo("BulkChatMessageConfig") };
-  }
-  
-  public bfqo(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  final JSONObject a(String paramString)
-  {
-    try
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramArrayList.size())
     {
-      paramString = new JSONObject(paramString);
-      return a(paramString);
+      RelationTroopEntity localRelationTroopEntity = new RelationTroopEntity();
+      localRelationTroopEntity.troopInfo = ((bgho)paramArrayList.get(i)).a;
+      localArrayList.add(localRelationTroopEntity);
+      i += 1;
     }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString = new JSONObject();
-      }
-    }
-  }
-  
-  JSONObject a(JSONObject paramJSONObject)
-  {
-    return paramJSONObject;
+    this.jdField_a_of_type_Bfqu.a(localArrayList);
   }
 }
 

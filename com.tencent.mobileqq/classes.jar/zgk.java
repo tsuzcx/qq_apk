@@ -1,71 +1,40 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
 public class zgk
-  extends bkrh
+  extends zfy
 {
-  private zfx a;
+  public int c;
   
-  public zgk(zfx paramzfx)
+  public zgk(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    this.a = paramzfx;
+    super(paramInt1, paramString, paramInt2);
+    this.c = paramInt3;
   }
   
-  public void clearView(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  @NonNull
+  public Class<? extends zfz> a()
   {
-    super.clearView(paramRecyclerView, paramViewHolder);
-    if ((paramViewHolder instanceof zgg))
-    {
-      ((zgg)paramViewHolder).a = false;
-      if ((paramRecyclerView.getScrollState() == 0) && (!paramRecyclerView.isComputingLayout())) {
-        paramRecyclerView.getAdapter().notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
-      }
-    }
+    return zgl.class;
   }
   
-  public float getMoveThreshold(RecyclerView.ViewHolder paramViewHolder)
+  @NonNull
+  public zfz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return 0.25F;
+    return new zgl(this, paramContext, paramViewGroup);
   }
   
-  public int getMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  public void a(int paramInt)
   {
-    paramRecyclerView = paramRecyclerView.getLayoutManager();
-    if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).getOrientation() == 0)) {}
-    for (int i = 15;; i = 0) {
-      return makeMovementFlags(i, 0);
-    }
+    yuk.a("WeatherFilterData", "updateWeather:%s", Integer.valueOf(paramInt));
+    this.c = paramInt;
   }
   
-  public boolean isItemViewSwipeEnabled()
+  public boolean a()
   {
-    return false;
+    return true;
   }
-  
-  public boolean onMove(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
-  {
-    if (this.a != null) {
-      this.a.a(paramViewHolder1.getAdapterPosition(), paramViewHolder2.getAdapterPosition());
-    }
-    return false;
-  }
-  
-  public void onSelectedChanged(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    super.onSelectedChanged(paramViewHolder, paramInt);
-    if ((paramInt == 2) && ((paramViewHolder instanceof zgg)))
-    {
-      paramViewHolder = (zgg)paramViewHolder;
-      paramViewHolder.a = true;
-      if ((this.a instanceof zgd)) {
-        ((zgd)this.a).notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
-      }
-    }
-  }
-  
-  public void onSwiped(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
 }
 
 

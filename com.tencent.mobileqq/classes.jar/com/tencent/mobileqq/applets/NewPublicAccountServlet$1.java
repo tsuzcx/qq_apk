@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.applets;
 
-import aoqn;
-import aoqp;
+import aped;
+import apef;
 
 public class NewPublicAccountServlet$1
   implements Runnable
 {
-  public NewPublicAccountServlet$1(aoqp paramaoqp, aoqn paramaoqn, byte[] paramArrayOfByte) {}
+  public NewPublicAccountServlet$1(apef paramapef, aped paramaped, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aoqn.onUpdate(4, true, this.jdField_a_of_type_ArrayOfByte);
+    this.jdField_a_of_type_Aped.onUpdate(4, true, this.jdField_a_of_type_ArrayOfByte);
   }
 }
 

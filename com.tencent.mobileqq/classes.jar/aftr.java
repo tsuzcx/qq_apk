@@ -1,10 +1,16 @@
-public abstract interface aftr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+
+public class aftr
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public aftr(TroopLowCreditLevelNotifyActivity paramTroopLowCreditLevelNotifyActivity) {}
   
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void c(int paramInt, String paramString);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.finish();
+  }
 }
 
 

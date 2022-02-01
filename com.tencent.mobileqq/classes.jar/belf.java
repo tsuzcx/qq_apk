@@ -1,40 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import java.util.ArrayList;
-
 public class belf
-  extends BroadcastReceiver
 {
-  public belf(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public beko a;
+  public String a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public belf(String paramString, beko parambeko)
   {
-    paramContext = paramIntent.getAction();
-    if ("key_photo_delete_action".equals(paramContext))
-    {
-      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
-      if ((i >= 0) && (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())) {
-        this.a.jdField_a_of_type_JavaUtilArrayList.remove(i);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!"key_audio_delete_action".equals(paramContext)) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      } while (!this.a.k);
-      bfqu.a(this.a.m, this.a.n, "del_record", this.a.o, "", "", "");
-      return;
-    } while (!"key_photo_add_action".equals(paramContext));
-    this.a.h();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Beko = parambeko;
   }
 }
 

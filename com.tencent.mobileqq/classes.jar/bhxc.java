@@ -1,15 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import java.util.Vector;
 
 class bhxc
-  implements ValueAnimator.AnimatorUpdateListener
+  extends VasQuickUpdateManager.CallBacker
 {
-  bhxc(bhxb parambhxb) {}
+  bhxc(bhwz parambhwz) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    bhxb.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidateSelf();
+    if (paramLong == 27L)
+    {
+      paramInt2 = Integer.parseInt(paramString1.substring("groupnickitem.".length(), paramString1.length()));
+      bhwz.a(this.a).removeElement(Integer.valueOf(paramInt2));
+      if (paramInt1 == 0) {
+        this.a.a(paramInt2);
+      }
+    }
   }
 }
 

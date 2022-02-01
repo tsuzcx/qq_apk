@@ -16,25 +16,25 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
-import bgtn;
+import bhtq;
 import com.tencent.biz.qqcircle.bizparts.danmaku.model.QzoneBarrageEffectData.BarrageEffectInfo;
 import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
 import com.tencent.mobileqq.R.styleable;
 import java.util.ArrayList;
 import java.util.Iterator;
-import vfl;
-import vfm;
-import vfn;
-import vfo;
-import vgl;
-import vgs;
-import vgt;
-import vha;
-import vhc;
+import vhp;
+import vhq;
+import vhr;
+import vhs;
+import vip;
+import viw;
+import vix;
+import vje;
+import vjg;
 
 public class CellTextView
   extends View
-  implements vhc
+  implements vjg
 {
   protected int a;
   protected Context a;
@@ -45,9 +45,9 @@ public class CellTextView
   public TextCell a;
   protected String a;
   protected ArrayList<TextCell> a;
-  public vfo a;
-  public vgl a;
-  public vgs a;
+  public vhs a;
+  public vip a;
+  public viw a;
   public boolean a;
   protected int b;
   protected ColorStateList b;
@@ -66,8 +66,8 @@ public class CellTextView
     this.jdField_c_of_type_Boolean = true;
     this.jdField_c_of_type_Int = -1;
     this.jdField_d_of_type_Int = -1;
-    this.jdField_a_of_type_Vfo = new vfl(this);
-    this.jdField_a_of_type_AndroidOsHandler = new vfn(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Vhs = new vhp(this);
+    this.jdField_a_of_type_AndroidOsHandler = new vhr(this, Looper.getMainLooper());
     a(paramContext, null, 0);
   }
   
@@ -80,8 +80,8 @@ public class CellTextView
     this.jdField_c_of_type_Boolean = true;
     this.jdField_c_of_type_Int = -1;
     this.jdField_d_of_type_Int = -1;
-    this.jdField_a_of_type_Vfo = new vfl(this);
-    this.jdField_a_of_type_AndroidOsHandler = new vfn(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Vhs = new vhp(this);
+    this.jdField_a_of_type_AndroidOsHandler = new vhr(this, Looper.getMainLooper());
     a(paramContext, paramAttributeSet, 0);
   }
   
@@ -94,22 +94,22 @@ public class CellTextView
     this.jdField_c_of_type_Boolean = true;
     this.jdField_c_of_type_Int = -1;
     this.jdField_d_of_type_Int = -1;
-    this.jdField_a_of_type_Vfo = new vfl(this);
-    this.jdField_a_of_type_AndroidOsHandler = new vfn(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Vhs = new vhp(this);
+    this.jdField_a_of_type_AndroidOsHandler = new vhr(this, Looper.getMainLooper());
     a(paramContext, paramAttributeSet, paramInt);
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_Vgl != null) {
-      this.jdField_a_of_type_Vgl.l();
+    if (this.jdField_a_of_type_Vip != null) {
+      this.jdField_a_of_type_Vip.l();
     }
   }
   
   private void e()
   {
-    if (this.jdField_a_of_type_Vgl != null) {
-      this.jdField_a_of_type_Vgl.m();
+    if (this.jdField_a_of_type_Vip != null) {
+      this.jdField_a_of_type_Vip.m();
     }
   }
   
@@ -129,7 +129,7 @@ public class CellTextView
   public float a()
   {
     a();
-    return this.jdField_a_of_type_Vgl.a();
+    return this.jdField_a_of_type_Vip.a();
   }
   
   public View a()
@@ -140,7 +140,7 @@ public class CellTextView
   public String a()
   {
     a();
-    return this.jdField_a_of_type_Vgl.a();
+    return this.jdField_a_of_type_Vip.a();
   }
   
   public ArrayList<TextCell> a(CharSequence paramCharSequence)
@@ -157,7 +157,7 @@ public class CellTextView
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramCharSequence);
     a();
-    this.jdField_a_of_type_Vgl.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Vip.a(this.jdField_a_of_type_JavaUtilArrayList);
     requestLayout();
     invalidate();
     return paramCharSequence;
@@ -165,10 +165,10 @@ public class CellTextView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Vgl == null) {
-      this.jdField_a_of_type_Vgl = new vgl(this);
+    if (this.jdField_a_of_type_Vip == null) {
+      this.jdField_a_of_type_Vip = new vip(this);
     }
-    this.jdField_a_of_type_Vgl.a(this);
+    this.jdField_a_of_type_Vip.a(this);
   }
   
   protected void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -205,7 +205,7 @@ public class CellTextView
         j = i2;
         i = i3;
         break;
-        setTextSize(paramAttributeSet.getDimensionPixelSize(i5, (int)bgtn.a(13.0F)));
+        setTextSize(paramAttributeSet.getDimensionPixelSize(i5, (int)bhtq.a(13.0F)));
         n = m;
         i1 = k;
         i2 = j;
@@ -300,10 +300,10 @@ public class CellTextView
         this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this);
       }
     }
-    while (this.jdField_a_of_type_Vgs == null) {
+    while (this.jdField_a_of_type_Viw == null) {
       return;
     }
-    this.jdField_a_of_type_Vgs.a(paramTextCell, this);
+    this.jdField_a_of_type_Viw.a(paramTextCell, this);
   }
   
   public boolean a()
@@ -333,7 +333,7 @@ public class CellTextView
   
   public ArrayList<TextCell> b(CharSequence paramCharSequence, boolean paramBoolean)
   {
-    return vha.a(this, paramCharSequence, this.jdField_a_of_type_Vgl.a(a()), this.jdField_c_of_type_Boolean, paramBoolean);
+    return vje.a(this, paramCharSequence, this.jdField_a_of_type_Vip.a(a()), this.jdField_c_of_type_Boolean, paramBoolean);
   }
   
   public void b()
@@ -365,7 +365,7 @@ public class CellTextView
   {
     super.onDraw(paramCanvas);
     a();
-    this.jdField_a_of_type_Vgl.a(this, paramCanvas);
+    this.jdField_a_of_type_Vip.a(this, paramCanvas);
   }
   
   @SuppressLint({"DrawAllocation"})
@@ -382,15 +382,15 @@ public class CellTextView
         i = -2147483648;
       }
     }
-    this.jdField_a_of_type_Vgl.a(i, paramInt2);
-    setMeasuredDimension(this.jdField_a_of_type_Vgl.a(), this.jdField_a_of_type_Vgl.b());
+    this.jdField_a_of_type_Vip.a(i, paramInt2);
+    setMeasuredDimension(this.jdField_a_of_type_Vip.a(), this.jdField_a_of_type_Vip.b());
     setContentDescription(a());
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     a();
-    return this.jdField_a_of_type_Vgl.a(paramMotionEvent, this.jdField_a_of_type_AndroidOsHandler);
+    return this.jdField_a_of_type_Vip.a(paramMotionEvent, this.jdField_a_of_type_AndroidOsHandler);
   }
   
   protected void onWindowVisibilityChanged(int paramInt)
@@ -408,58 +408,58 @@ public class CellTextView
   public void requestLayout()
   {
     a();
-    this.jdField_a_of_type_Vgl.a();
+    this.jdField_a_of_type_Vip.a();
     super.requestLayout();
   }
   
   public void setBarrageEffect(boolean paramBoolean, QzoneBarrageEffectData.BarrageEffectInfo paramBarrageEffectInfo)
   {
     a();
-    this.jdField_a_of_type_Vgl.a(paramBoolean, paramBarrageEffectInfo);
+    this.jdField_a_of_type_Vip.a(paramBoolean, paramBarrageEffectInfo);
   }
   
   public void setCellClickable(boolean paramBoolean)
   {
     this.jdField_c_of_type_Boolean = paramBoolean;
     a();
-    this.jdField_a_of_type_Vgl.c(paramBoolean);
+    this.jdField_a_of_type_Vip.c(paramBoolean);
   }
   
   public void setClickable(boolean paramBoolean)
   {
     super.setClickable(paramBoolean);
     a();
-    this.jdField_a_of_type_Vgl.f(paramBoolean);
+    this.jdField_a_of_type_Vip.f(paramBoolean);
   }
   
   public void setColorBackground(int paramInt)
   {
     a();
-    this.jdField_a_of_type_Vgl.a(this.jdField_d_of_type_Boolean);
+    this.jdField_a_of_type_Vip.a(this.jdField_d_of_type_Boolean);
   }
   
   public void setDrawBackground(boolean paramBoolean)
   {
     a();
-    this.jdField_a_of_type_Vgl.a(paramBoolean);
+    this.jdField_a_of_type_Vip.a(paramBoolean);
   }
   
   public void setDrawablePadding(int paramInt)
   {
     a();
-    this.jdField_a_of_type_Vgl.b(paramInt);
+    this.jdField_a_of_type_Vip.b(paramInt);
   }
   
   public void setEllipsisStr(String paramString)
   {
     a();
-    this.jdField_a_of_type_Vgl.a(paramString);
+    this.jdField_a_of_type_Vip.a(paramString);
   }
   
   public void setFakeFeed(boolean paramBoolean)
   {
     a();
-    this.jdField_a_of_type_Vgl.j(paramBoolean);
+    this.jdField_a_of_type_Vip.j(paramBoolean);
   }
   
   public void setFont(int paramInt1, String paramString, int paramInt2)
@@ -470,37 +470,37 @@ public class CellTextView
   public void setFont(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
     a();
-    this.jdField_a_of_type_Vgl.a(paramInt1, paramString1, paramInt2, paramString2);
+    this.jdField_a_of_type_Vip.a(paramInt1, paramString1, paramInt2, paramString2);
   }
   
   public void setGradientColor(int[] paramArrayOfInt, float[] paramArrayOfFloat, GradientDrawable.Orientation paramOrientation)
   {
     a();
-    this.jdField_a_of_type_Vgl.a(paramArrayOfInt, paramArrayOfFloat, paramOrientation);
+    this.jdField_a_of_type_Vip.a(paramArrayOfInt, paramArrayOfFloat, paramOrientation);
   }
   
   public void setHasMore(boolean paramBoolean)
   {
     a();
-    this.jdField_a_of_type_Vgl.k(paramBoolean);
+    this.jdField_a_of_type_Vip.k(paramBoolean);
   }
   
   public void setLineBreakInContent(boolean paramBoolean)
   {
     a();
-    this.jdField_a_of_type_Vgl.e(paramBoolean);
+    this.jdField_a_of_type_Vip.e(paramBoolean);
   }
   
   public void setLineBreakNeeded(boolean paramBoolean)
   {
     a();
-    this.jdField_a_of_type_Vgl.d(paramBoolean);
+    this.jdField_a_of_type_Vip.d(paramBoolean);
   }
   
   public void setLineSpace(int paramInt)
   {
     a();
-    this.jdField_a_of_type_Vgl.g(paramInt);
+    this.jdField_a_of_type_Vip.g(paramInt);
     invalidate();
   }
   
@@ -511,47 +511,47 @@ public class CellTextView
   
   public void setLongclickable(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Vgl.g(paramBoolean);
+    this.jdField_a_of_type_Vip.g(paramBoolean);
     if (paramBoolean) {
-      setOnLongClickListener(new vfm(this));
+      setOnLongClickListener(new vhq(this));
     }
   }
   
   public void setMaxCommentLine(int paramInt)
   {
-    if (this.jdField_a_of_type_Vgl != null) {
-      this.jdField_a_of_type_Vgl.a(paramInt, true);
+    if (this.jdField_a_of_type_Vip != null) {
+      this.jdField_a_of_type_Vip.a(paramInt, true);
     }
   }
   
   public void setMaxLine(int paramInt)
   {
     a();
-    this.jdField_a_of_type_Vgl.c(paramInt);
+    this.jdField_a_of_type_Vip.c(paramInt);
   }
   
   public void setMaxWidth(int paramInt)
   {
     a();
-    this.jdField_a_of_type_Vgl.j(paramInt);
+    this.jdField_a_of_type_Vip.j(paramInt);
   }
   
   public void setMeasuredTextCacheEnabled(boolean paramBoolean)
   {
     a();
-    this.jdField_a_of_type_Vgl.i(paramBoolean);
+    this.jdField_a_of_type_Vip.i(paramBoolean);
   }
   
   public void setNinePatchBackground(int paramInt)
   {
-    this.jdField_a_of_type_Vgl.a(paramInt);
+    this.jdField_a_of_type_Vip.a(paramInt);
   }
   
-  public void setOnCellClickListener(vgs paramvgs)
+  public void setOnCellClickListener(viw paramviw)
   {
-    this.jdField_a_of_type_Vgs = paramvgs;
+    this.jdField_a_of_type_Viw = paramviw;
     a();
-    this.jdField_a_of_type_Vgl.a(paramvgs);
+    this.jdField_a_of_type_Vip.a(paramviw);
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
@@ -560,21 +560,21 @@ public class CellTextView
     this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  public void setOnSideDrawableClickListener(vgt paramvgt)
+  public void setOnSideDrawableClickListener(vix paramvix)
   {
     a();
-    this.jdField_a_of_type_Vgl.a(paramvgt);
+    this.jdField_a_of_type_Vip.a(paramvix);
   }
   
-  public void setOnTextOperateListener(vfo paramvfo)
+  public void setOnTextOperateListener(vhs paramvhs)
   {
-    this.jdField_a_of_type_Vfo = paramvfo;
+    this.jdField_a_of_type_Vhs = paramvhs;
   }
   
   public void setOuterListener(ImageLoader.ImageLoadListener paramImageLoadListener)
   {
-    if (this.jdField_a_of_type_Vgl != null) {
-      this.jdField_a_of_type_Vgl.a(paramImageLoadListener);
+    if (this.jdField_a_of_type_Vip != null) {
+      this.jdField_a_of_type_Vip.a(paramImageLoadListener);
     }
   }
   
@@ -582,7 +582,7 @@ public class CellTextView
   {
     super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
     a();
-    this.jdField_a_of_type_Vgl.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_Vip.a(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void setParseUrl(boolean paramBoolean) {}
@@ -595,13 +595,13 @@ public class CellTextView
   public void setShadowLayer(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     a();
-    this.jdField_a_of_type_Vgl.b(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_Vip.b(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void setShowMore(boolean paramBoolean)
   {
     a();
-    this.jdField_a_of_type_Vgl.b(paramBoolean);
+    this.jdField_a_of_type_Vip.b(paramBoolean);
   }
   
   public void setText(int paramInt)
@@ -614,7 +614,7 @@ public class CellTextView
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_JavaUtilArrayList.add(paramTextCell);
     a();
-    this.jdField_a_of_type_Vgl.a(paramTextCell);
+    this.jdField_a_of_type_Vip.a(paramTextCell);
     requestLayout();
     invalidate();
   }
@@ -624,7 +624,7 @@ public class CellTextView
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_JavaUtilArrayList.add(new TextCell(0, paramString));
     a();
-    this.jdField_a_of_type_Vgl.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Vip.a(this.jdField_a_of_type_JavaUtilArrayList);
     requestLayout();
     invalidate();
   }
@@ -633,7 +633,7 @@ public class CellTextView
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
     a();
-    this.jdField_a_of_type_Vgl.a(paramArrayList);
+    this.jdField_a_of_type_Vip.a(paramArrayList);
     requestLayout();
     invalidate();
   }
@@ -641,20 +641,20 @@ public class CellTextView
   public void setTextBold(boolean paramBoolean)
   {
     a();
-    this.jdField_a_of_type_Vgl.h(paramBoolean);
+    this.jdField_a_of_type_Vip.h(paramBoolean);
   }
   
   public void setTextColor(int paramInt)
   {
     a();
-    this.jdField_a_of_type_Vgl.f(paramInt);
+    this.jdField_a_of_type_Vip.f(paramInt);
     invalidate();
   }
   
   public void setTextColor(ColorStateList paramColorStateList)
   {
     a();
-    this.jdField_a_of_type_Vgl.a(paramColorStateList);
+    this.jdField_a_of_type_Vip.a(paramColorStateList);
     drawableStateChanged();
     invalidate();
   }
@@ -662,21 +662,21 @@ public class CellTextView
   public void setTextColorAnimation(ArrayList<Integer> paramArrayList, int paramInt)
   {
     a();
-    this.jdField_a_of_type_Vgl.a(paramArrayList, paramInt);
+    this.jdField_a_of_type_Vip.a(paramArrayList, paramInt);
   }
   
   public void setTextColorLink(int paramInt)
   {
     a();
     this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_Vgl.h(paramInt);
+    this.jdField_a_of_type_Vip.h(paramInt);
     invalidate();
   }
   
   public void setTextColorLink(ColorStateList paramColorStateList)
   {
     a();
-    this.jdField_a_of_type_Vgl.b(paramColorStateList);
+    this.jdField_a_of_type_Vip.b(paramColorStateList);
     drawableStateChanged();
     invalidate();
   }
@@ -684,19 +684,19 @@ public class CellTextView
   public void setTextColorLinkBackground(int paramInt)
   {
     a();
-    this.jdField_a_of_type_Vgl.i(paramInt);
+    this.jdField_a_of_type_Vip.i(paramInt);
   }
   
   public void setTextGravity(int paramInt)
   {
     a();
-    this.jdField_a_of_type_Vgl.e(paramInt);
+    this.jdField_a_of_type_Vip.e(paramInt);
   }
   
   public void setTextSize(float paramFloat)
   {
     a();
-    this.jdField_a_of_type_Vgl.a(paramFloat);
+    this.jdField_a_of_type_Vip.a(paramFloat);
     requestLayout();
     invalidate();
   }
@@ -717,15 +717,15 @@ public class CellTextView
   
   public void setTextStyle(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Vgl.a(paramString, paramInt1, paramInt2);
+    this.jdField_a_of_type_Vip.a(paramString, paramInt1, paramInt2);
   }
   
   public void setUrlColorRes(int paramInt) {}
   
   public void setUseSoftLineBreak(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Vgl != null) {
-      this.jdField_a_of_type_Vgl.l(paramBoolean);
+    if (this.jdField_a_of_type_Vip != null) {
+      this.jdField_a_of_type_Vip.l(paramBoolean);
     }
   }
   

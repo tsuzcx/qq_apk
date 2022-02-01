@@ -10,29 +10,29 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
-import bkpj;
+import blqm;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import puw;
-import pux;
-import tdt;
-import tdw;
-import ted;
-import tef;
-import teg;
-import uwv;
+import pnj;
+import pnk;
+import sul;
+import suo;
+import suv;
+import sux;
+import suy;
+import uyg;
 
 public class ZImageView
   extends ImageView
 {
   static int FADE_DURATION = 300;
-  static Drawable sColorDrawable = new ColorDrawable(-1);
   private boolean hasSetAlphaBgDrawable;
   private boolean isRound;
   private ValueAnimator mAlphaAnimator;
   private Drawable mBackgroundDrawableTemp;
-  protected tdt mController;
+  public sul mController;
   private URL mUrl;
+  private Drawable sColorDrawable = new ColorDrawable(-1);
   private boolean startAplhaOnce;
   private String tag = "zimage.ZImageView.v" + hashCode();
   
@@ -56,12 +56,12 @@ public class ZImageView
   
   private void init()
   {
-    this.mController = new tdt(sColorDrawable, this);
+    this.mController = new sul(this.sColorDrawable, this);
     this.mAlphaAnimator = ValueAnimator.ofInt(new int[] { 0, 255 });
     this.mAlphaAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
     this.mAlphaAnimator.setDuration(FADE_DURATION);
-    this.mAlphaAnimator.addListener(new tef(this));
-    this.mAlphaAnimator.addUpdateListener(new teg(this));
+    this.mAlphaAnimator.addListener(new sux(this));
+    this.mAlphaAnimator.addUpdateListener(new suy(this));
   }
   
   private void resetBgDrawable()
@@ -71,20 +71,20 @@ public class ZImageView
       setBackgroundDrawable(this.mBackgroundDrawableTemp);
       this.hasSetAlphaBgDrawable = false;
       if (QLog.isColorLevel()) {
-        ted.a(this.tag, "cancel alpha bg drawable !");
+        suv.a(this.tag, "cancel alpha bg drawable !");
       }
     }
   }
   
   private void setBgDrawable()
   {
-    if ((!this.hasSetAlphaBgDrawable) && (this.mController.a != sColorDrawable))
+    if ((!this.hasSetAlphaBgDrawable) && (this.mController.a != this.sColorDrawable))
     {
       this.mBackgroundDrawableTemp = getBackground();
       setBackgroundDrawable(this.mController.a);
       this.hasSetAlphaBgDrawable = true;
       if (QLog.isColorLevel()) {
-        ted.a(this.tag, "set alpha bg drawable !");
+        suv.a(this.tag, "set alpha bg drawable !");
       }
     }
   }
@@ -114,7 +114,7 @@ public class ZImageView
     label63:
     for (Object localObject = localObject.getClass().getName();; localObject = null)
     {
-      ted.a(this.tag, "onAttachedToWindow, parent: " + (String)localObject);
+      suv.a(this.tag, "onAttachedToWindow, parent: " + (String)localObject);
       this.mController.b("onAttachedToWindow");
       return;
     }
@@ -124,7 +124,7 @@ public class ZImageView
   {
     super.onDetachedFromWindow();
     if (QLog.isColorLevel()) {
-      ted.a(this.tag, "onDetachedFromWindow");
+      suv.a(this.tag, "onDetachedFromWindow");
     }
     this.mController.a("onDetachedFromWindow");
   }
@@ -134,13 +134,13 @@ public class ZImageView
     if (this.mUrl != null)
     {
       if (QLog.isColorLevel()) {
-        ted.a(this.tag, "onDraw dispatch load image");
+        suv.a(this.tag, "onDraw dispatch load image");
       }
-      tdw localtdw = new tdw();
-      localtdw.jdField_a_of_type_JavaNetURL = this.mUrl;
-      localtdw.jdField_a_of_type_Int = getWidth();
-      localtdw.b = getHeight();
-      this.mController.a(localtdw);
+      suo localsuo = new suo();
+      pnk.a.a(localsuo, this.mUrl.toString());
+      localsuo.jdField_a_of_type_Int = getWidth();
+      localsuo.b = getHeight();
+      this.mController.a(localsuo);
       this.mUrl = null;
     }
     super.onDraw(paramCanvas);
@@ -150,7 +150,7 @@ public class ZImageView
   {
     super.onFinishTemporaryDetach();
     if (QLog.isColorLevel()) {
-      ted.a(this.tag, "onFinishTemporaryDetach");
+      suv.a(this.tag, "onFinishTemporaryDetach");
     }
     this.mController.b("onFinishTemporaryDetach");
   }
@@ -168,7 +168,7 @@ public class ZImageView
     label63:
     for (Object localObject = localObject.getClass().getName();; localObject = null)
     {
-      ted.a(this.tag, "onStartTemporaryDetach, parent: " + (String)localObject);
+      suv.a(this.tag, "onStartTemporaryDetach, parent: " + (String)localObject);
       this.mController.a("onStartTemporaryDetach");
       return;
     }
@@ -176,10 +176,10 @@ public class ZImageView
   
   public ZImageView setImage(URL paramURL)
   {
-    bkpj.a("ZImageView.setImage");
+    blqm.a("ZImageView.setImage");
     if (paramURL == null)
     {
-      bkpj.a();
+      blqm.a();
       return this;
     }
     if ((this.mUrl != null) && (this.mUrl.getPath().equals(paramURL.getPath()))) {
@@ -192,22 +192,22 @@ public class ZImageView
       if (Build.VERSION.SDK_INT >= 19) {
         bool = isAttachedToWindow();
       }
-      ted.a(this.tag, "setImage " + paramURL + " width " + getWidth() + " isAttach " + bool);
+      suv.a(this.tag, "setImage " + paramURL + " width " + getWidth() + " isAttach " + bool);
     }
     if (getWidth() > 0)
     {
-      bkpj.a("ZImageView.newImageRequest");
-      tdw localtdw = new tdw();
-      pux.a.a(localtdw, paramURL.toString());
-      localtdw.jdField_a_of_type_Int = getWidth();
-      localtdw.b = getHeight();
-      puw.a(1, localtdw);
-      this.mController.a(localtdw);
-      bkpj.a();
+      blqm.a("ZImageView.newImageRequest");
+      suo localsuo = new suo();
+      pnk.a.a(localsuo, paramURL.toString());
+      localsuo.jdField_a_of_type_Int = getWidth();
+      localsuo.b = getHeight();
+      pnj.a(1, localsuo);
+      this.mController.a(localsuo);
+      blqm.a();
     }
     for (;;)
     {
-      bkpj.a();
+      blqm.a();
       return this;
       this.mUrl = paramURL;
     }
@@ -231,20 +231,20 @@ public class ZImageView
     setImageDrawable(paramDrawable);
   }
   
-  public ZImageView setImageForImageCollection(tdw paramtdw, uwv paramuwv)
+  public ZImageView setImageForImageCollection(suo paramsuo, uyg paramuyg)
   {
-    if ((paramtdw == null) || (paramtdw.jdField_a_of_type_JavaNetURL == null)) {
+    if ((paramsuo == null) || (paramsuo.jdField_a_of_type_JavaNetURL == null)) {
       return this;
     }
-    pux.a.a(paramtdw, paramtdw.jdField_a_of_type_JavaNetURL.toString());
-    if (paramuwv != null) {
-      this.mController.a(paramuwv);
+    pnk.a.a(paramsuo, paramsuo.jdField_a_of_type_JavaNetURL.toString());
+    if (paramuyg != null) {
+      this.mController.a(paramuyg);
     }
     this.mUrl = null;
     if (QLog.isColorLevel()) {
-      QLog.d(this.tag, 2, "setImageForImageCollection url = " + paramtdw.jdField_a_of_type_JavaNetURL + " reqWidth = " + paramtdw.jdField_a_of_type_Int + " reqHeight = " + paramtdw.b);
+      QLog.d(this.tag, 2, "setImageForImageCollection url = " + paramsuo.jdField_a_of_type_JavaNetURL + " reqWidth = " + paramsuo.jdField_a_of_type_Int + " reqHeight = " + paramsuo.b);
     }
-    this.mController.a(paramtdw);
+    this.mController.a(paramsuo);
     return this;
   }
   
@@ -255,10 +255,10 @@ public class ZImageView
     return this;
   }
   
-  public void setPublicAccountImageDownListener(uwv paramuwv)
+  public void setPublicAccountImageDownListener(uyg paramuyg)
   {
-    if (paramuwv != null) {
-      this.mController.a(paramuwv);
+    if (paramuyg != null) {
+      this.mController.a(paramuyg);
     }
   }
   

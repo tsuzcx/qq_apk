@@ -1,759 +1,427 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.annotation.MainThread;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.QzoneMainRuntime;
-import com.tencent.component.media.image.IDecoder;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.image.SafeBitmapFactory;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
-import cooperation.qzone.zipanimate.ZipDrawableLoader.3;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import cooperation.qqreader.js.JsCallParams;
+import cooperation.qqreader.proxy.ReaderJsCallback;
+import cooperation.qqreader.proxy.ReaderJsPluginProxy;
+import cooperation.qqreader.ui.ReaderContentPageActivity;
+import cooperation.qqreader.ui.ReaderHomePageActivity;
+import cooperation.qqreader.utils.QRDebugEnvUrlUtils;
+import java.util.Arrays;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bmpr
+  extends VasWebviewJsPlugin
+  implements binj
 {
-  public static final byte[] a;
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private bmpw jdField_a_of_type_Bmpw;
-  private bmpx jdField_a_of_type_Bmpx;
-  private bmpy jdField_a_of_type_Bmpy;
-  private QzoneZipCacheHelperCallBack jdField_a_of_type_CooperationQzoneWebviewpluginQzoneZipCacheHelperCallBack = new bmps(this);
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "JSRoot", "JSToast", "JSBookDir", "JSPublicAccount", "JSTopRightButton", "JSTittlebarAction", "JSPay", "JSPublicAccountUtil", "JSRedTouch", "JSBookDetailForQQ", "JSbookshelf", "JSContent", "readonline", "JSPopupList", "JSTypeface" };
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bmpu jdField_a_of_type_Bmpu = new bmpu(this);
+  private JsBridgeListener jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener;
+  private ReaderJsCallback jdField_a_of_type_CooperationQqreaderProxyReaderJsCallback = new bmps(this);
+  private ReaderJsPluginProxy jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy;
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private Set<WeakReference<Bitmap>> jdField_a_of_type_JavaUtilSet;
-  private CopyOnWriteArrayList<bmpu> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  public boolean a;
-  private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int = -1;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private int d = -1;
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
   
-  static
+  private void a(JsBridgeListener paramJsBridgeListener, String paramString)
   {
-    jdField_a_of_type_ArrayOfByte = new byte[24576];
-  }
-  
-  public bmpr(Context paramContext)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    if (Build.VERSION.SDK_INT >= 11) {
-      this.jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
-    }
-  }
-  
-  private int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
-  {
-    int k = paramOptions.outHeight;
-    int m = paramOptions.outWidth;
-    int j = 1;
-    int i = 1;
-    if ((k > paramInt2) || (m > paramInt1))
+    paramJsBridgeListener = new JSONObject(paramString).optString("callback");
+    if (!TextUtils.isEmpty(paramJsBridgeListener))
     {
-      k /= 2;
-      m /= 2;
-      for (;;)
-      {
-        j = i;
-        if (k / i <= paramInt2) {
-          break;
-        }
-        j = i;
-        if (m / i <= paramInt1) {
-          break;
-        }
-        i *= 2;
-      }
+      paramString = new JSONObject();
+      paramString.put("graylevel", bmpi.a());
+      paramString.put("is_update_newstyle", bmpi.a());
+      paramString.put("result", 0);
+      paramString.put("message", "success");
+      callJs(paramJsBridgeListener, new String[] { paramString.toString() });
     }
-    return j;
   }
   
-  @TargetApi(12)
-  private BitmapDrawable a(String paramString)
+  private void a(Object paramObject)
   {
-    int i = 1;
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if ((QZLog.isColorLevel()) && (System.currentTimeMillis() - this.jdField_a_of_type_Long > 1000L))
-    {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      QZLog.i("zip_drawable", 2, "decodeBitmap mZipUrl = " + this.jdField_a_of_type_JavaLangString);
-    }
-    label293:
-    label295:
-    for (;;)
-    {
-      try
-      {
-        if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QzoneMainRuntime))
-        {
-          localObject = ImageManager.getInstance().getDecoder();
-          if (localObject == null) {
-            break label293;
-          }
-          paramString = new File(paramString);
-          if ((!paramString.exists()) || (paramString.isDirectory())) {
-            break label293;
-          }
-          Bitmap localBitmap = a();
-          paramString = ((IDecoder)localObject).decodeBitmap(paramString, this.jdField_c_of_type_Int, this.d, localBitmap);
-          break label295;
-          if (paramString == null) {
-            break;
-          }
-          paramString.setDensity(160);
-          return new BitmapDrawable(paramString);
-        }
-        Object localObject = new BitmapFactory.Options();
-        ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-        ((BitmapFactory.Options)localObject).inTempStorage = jdField_a_of_type_ArrayOfByte;
-        BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
-        if ((this.d < 0) && (this.jdField_c_of_type_Int < 0))
-        {
-          ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-          ((BitmapFactory.Options)localObject).inSampleSize = i;
-          ((BitmapFactory.Options)localObject).inTempStorage = jdField_a_of_type_ArrayOfByte;
-          if (Build.VERSION.SDK_INT >= 11) {
-            a((BitmapFactory.Options)localObject);
-          }
-          paramString = SafeBitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
-        }
-        else
-        {
-          i = a((BitmapFactory.Options)localObject, this.jdField_c_of_type_Int, this.d);
-          continue;
-          paramString = null;
-        }
-      }
-      catch (OutOfMemoryError paramString)
-      {
-        QZLog.e("ziploader", "OutOfMemoryError  ");
-        return null;
-      }
-      catch (Exception paramString)
-      {
-        QZLog.e("ziploader", "decode bitmap exception " + paramString);
-        return null;
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener.a(paramObject);
     }
   }
   
-  @TargetApi(11)
-  private void a(BitmapFactory.Options paramOptions)
-  {
-    paramOptions.inMutable = true;
-    Bitmap localBitmap = a();
-    if (localBitmap != null) {
-      paramOptions.inBitmap = localBitmap;
-    }
-  }
-  
-  private void a(BitmapDrawable paramBitmapDrawable)
-  {
-    if (paramBitmapDrawable != null)
-    {
-      if ((Build.VERSION.SDK_INT < 11) || (this.jdField_a_of_type_JavaUtilSet.size() >= this.jdField_a_of_type_Int)) {
-        break label50;
-      }
-      this.jdField_a_of_type_JavaUtilSet.add(new WeakReference(paramBitmapDrawable.getBitmap()));
-    }
-    label50:
-    do
-    {
-      return;
-      paramBitmapDrawable = paramBitmapDrawable.getBitmap();
-      if ((paramBitmapDrawable != null) && (!paramBitmapDrawable.isRecycled())) {
-        paramBitmapDrawable.recycle();
-      }
-    } while (!QZLog.isColorLevel());
-    QZLog.d("ziploader", 1, " out of max preload num:");
-  }
-  
-  private void a(String[] paramArrayOfString, String paramString)
-  {
-    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0)) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-        i = 0;
-        if (i < paramArrayOfString.length)
-        {
-          bmpu localbmpu = new bmpu();
-          localbmpu.jdField_a_of_type_JavaLangString = (paramString + File.separator + paramArrayOfString[i]);
-          if ((!localbmpu.jdField_a_of_type_JavaLangString.endsWith(".jpg")) && (!localbmpu.jdField_a_of_type_JavaLangString.endsWith(".png"))) {
-            break label158;
-          }
-          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localbmpu);
-          break label158;
-        }
-        bool = true;
-        if (this.jdField_c_of_type_Boolean) {
-          a(0, this.jdField_a_of_type_Bmpx);
-        }
-        if (this.jdField_a_of_type_Bmpy != null) {
-          this.jdField_a_of_type_Bmpy.onZipLoaded(bool);
-        }
-        return;
-      }
-      finally {}
-      boolean bool = false;
-      continue;
-      label158:
-      i += 1;
-    }
-  }
-  
-  private boolean a(int paramInt)
+  private void a(String paramString)
   {
     try
     {
-      bmpu localbmpu = (bmpu)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt);
-      if (localbmpu.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localbmpu.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
-      }
-      d(this.jdField_b_of_type_Int);
-      a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList, this.jdField_b_of_type_Int + 1);
+      boolean bool = new JSONObject(paramString).getBoolean("visible");
+      paramString = Message.obtain();
+      paramString.what = 109;
+      paramString.obj = Boolean.valueOf(bool);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  private void a(String paramString, int paramInt)
+  {
+    Object localObject1 = new JSONObject(paramString);
+    paramString = ((JSONObject)localObject1).getString("book_name");
+    String str1 = ((JSONObject)localObject1).getString("chapter_name");
+    String str2 = ((JSONObject)localObject1).getString("nbid");
+    localObject1 = ((JSONObject)localObject1).optString("callback");
+    Object localObject2 = this.mRuntime.a();
+    if ((localObject2 instanceof ReaderHomePageActivity)) {
+      localObject2 = (ReaderHomePageActivity)localObject2;
+    }
+    switch (paramInt)
+    {
+    case 5: 
+    case 7: 
+    default: 
+      return;
+    case 4: 
+      ((ReaderHomePageActivity)localObject2).a(paramString, str1, str2);
+      return;
+    case 6: 
+      ((ReaderHomePageActivity)localObject2).b(paramString, str1, str2);
+      return;
+    }
+    boolean bool = ((ReaderHomePageActivity)localObject2).a(paramString, str1, str2);
+    paramString = new JSONObject();
+    if (bool) {}
+    for (paramInt = 0;; paramInt = 1)
+    {
+      paramString.put("result", paramInt);
+      callJs((String)localObject1, new String[] { paramString.toString() });
+      return;
+    }
+  }
+  
+  private void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return;
+    }
+    Log.i("ReaderJsPlugin", "registerWebSearch");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("callback");
+  }
+  
+  private static boolean a(String[] paramArrayOfString, String paramString)
+  {
+    return Arrays.asList(paramArrayOfString).contains(paramString);
+  }
+  
+  private void b(String paramString)
+  {
+    Intent localIntent = new Intent(this.mRuntime.a(), ReaderContentPageActivity.class);
+    localIntent.putExtras(bmok.a(localIntent, 2));
+    localIntent.putExtra("url", paramString);
+    this.mRuntime.a().startActivity(localIntent);
+  }
+  
+  private void b(String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (bmop.a().a())
+    {
+      bmqw.e("ReaderJsPlugin", "pluginHandleJS ->  handleJsCall");
+      a(paramString1, paramString2, paramString3, paramVarArgs);
+      return;
+    }
+    bmqw.e("ReaderJsPlugin", "js plugin is not ready...");
+    if ((("JSbookshelf".equals(paramString2)) && ("openLocalBook".equals(paramString3))) || (("readonline".equals(paramString2)) && ("readbook".equals(paramString3))))
+    {
+      c(paramString1, paramString2, paramString3, paramVarArgs);
+      return;
+    }
+    this.jdField_a_of_type_Bmpu.a(paramString1, paramString2, paramString3, paramVarArgs);
+  }
+  
+  private void b(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
+    {
+      paramJSONObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(114, paramJSONObject);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramJSONObject);
+    }
+  }
+  
+  private void c(String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    Intent localIntent = new Intent(this.mRuntime.a(), ReaderContentPageActivity.class);
+    localIntent.putExtra("is_to_splash_activity", true);
+    localIntent.putExtra("splash_pending_js_param", new JsCallParams(paramString1, paramString2, paramString3, paramVarArgs));
+    this.mRuntime.a().startActivity(localIntent);
+  }
+  
+  public bmpr a(Handler paramHandler)
+  {
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    return this;
+  }
+  
+  public void a(TextView paramTextView)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
+      return;
+    }
+    if (paramString1.trim().length() == 0)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
+    if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 8) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bmpt(this));
+  }
+  
+  @MainThread
+  void a(String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy == null)
+    {
+      bmqw.d("ReaderJsPlugin", "create a new js plugin");
+      this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy = bmop.a().a(this.jdField_a_of_type_CooperationQqreaderProxyReaderJsCallback);
+    }
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy != null)
+    {
+      this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy.setHandler(this.jdField_a_of_type_AndroidOsHandler);
+      this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy.call(paramString1, paramString2, paramString3, paramVarArgs);
+      bmqw.d("ReaderJsPlugin", "create a new js ,method=" + paramString3);
+    }
+    do
+    {
+      return;
+      bmqw.a("ReaderJsPlugin", "handleJsCall mJsPlugin is null!");
+    } while (!QRDebugEnvUrlUtils.isDebugEnv());
+    Toast.makeText(BaseApplicationImpl.getApplication(), "ReaderRunTime 未创建！", 0).show();
+  }
+  
+  boolean a()
+  {
+    if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof ReaderHomePageActivity))) {
+      return ((ReaderHomePageActivity)this.mRuntime.a()).c();
+    }
+    return false;
+  }
+  
+  public boolean b()
+  {
+    boolean bool = true;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":\"0\"}" });
+    }
+    for (;;)
+    {
+      Log.i("ReaderJsPlugin", "registerWebSearch callWebSearch=" + bool);
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public String[] getMultiNameSpace()
+  {
+    return jdField_a_of_type_ArrayOfJavaLangString;
+  }
+  
+  public Object handleEvent(String paramString, long paramLong)
+  {
+    return super.handleEvent(paramString, paramLong);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    bmqw.e("ReaderJsPlugin", "handleJsRequest, url=" + paramString1 + " ,pakName=" + paramString2 + " ,method=" + paramString3);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener = paramJsBridgeListener;
+    if (!a(jdField_a_of_type_ArrayOfJavaLangString, paramString2)) {}
+    while ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3))) {
       return false;
     }
-    finally {}
-  }
-  
-  private void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
+    if ("JSTittlebarAction".equals(paramString2))
     {
-      bmpu localbmpu = (bmpu)localIterator.next();
-      if (localbmpu.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) {
-        localbmpu.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = null;
+      if ("setLoadingVisible".equals(paramString3))
+      {
+        if (paramVarArgs.length > 0)
+        {
+          a(paramVarArgs[0]);
+          a(null);
+        }
+        return true;
+      }
+      if ("addDeskShortcutEvent".equals(paramString3))
+      {
+        this.jdField_a_of_type_Boolean = true;
+        return true;
+      }
+      if ("setChannelTabAlpha".equals(paramString3))
+      {
+        if (paramVarArgs.length > 0) {
+          a(null);
+        }
+        return true;
       }
     }
-  }
-  
-  private void b(int paramInt, bmpx parambmpx)
-  {
-    if (paramInt > this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size()) {}
-    do
+    else if ("JSContent".equals(paramString2))
     {
-      do
+      if ("registerWebSearch".equals(paramString3))
       {
-        return;
-        if (((bmpu)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt)).jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable == null)
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+        try
         {
-          QzoneHandlerThreadFactory.getHandlerThread("YellowVip_HandlerThread").post(new ZipDrawableLoader.3(this, paramInt, parambmpx));
-          return;
+          a(new JSONObject(paramVarArgs[0]));
+          return true;
         }
-        if (parambmpx != null) {
-          parambmpx.a(paramInt, ((bmpu)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt)).jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
-        }
-      } while (this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Boolean = true;
-    } while (this.jdField_a_of_type_Bmpw == null);
-    this.jdField_a_of_type_Bmpw.a(((bmpu)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt)).jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      a(QzoneZipCacheHelper.getFolderFileNameList(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString), QzoneZipCacheHelper.getBasePath(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString));
-    }
-    while (this.jdField_a_of_type_Bmpy == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bmpy.onZipLoaded(paramBoolean);
-  }
-  
-  private void c(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    }
-  }
-  
-  private void d(int paramInt)
-  {
-    int k = paramInt + this.jdField_a_of_type_Int;
-    int m = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-    if ((paramInt < 0) || (paramInt >= k) || (paramInt >= m)) {}
-    for (;;)
-    {
-      return;
-      int i;
-      bmpu localbmpu;
-      if (k >= m)
-      {
-        i = k % m;
-        while (i < paramInt)
+        catch (JSONException paramJsBridgeListener)
         {
-          localbmpu = (bmpu)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
-          if (localbmpu.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
+          for (;;)
           {
-            if (this.jdField_b_of_type_Boolean) {
-              a(localbmpu.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
-            }
-            localbmpu.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = null;
+            bmqw.a("ReaderJsPlugin", "Failed to parse json str,json=" + paramVarArgs[0]);
           }
-          i += 1;
         }
       }
-      else
+      if ("showRedPoint".equals(paramString3))
       {
-        i = 0;
-        int j;
-        for (;;)
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+        try
         {
-          j = k;
-          if (i >= paramInt) {
-            break;
-          }
-          localbmpu = (bmpu)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
-          if (localbmpu.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
-          {
-            if (this.jdField_b_of_type_Boolean) {
-              a(localbmpu.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
-            }
-            localbmpu.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = null;
-          }
-          i += 1;
+          b(new JSONObject(paramVarArgs[0]));
+          return true;
         }
-        while (j < m)
+        catch (JSONException paramJsBridgeListener)
         {
-          localbmpu = (bmpu)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(j);
-          if (localbmpu.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
+          for (;;)
           {
-            if (this.jdField_b_of_type_Boolean) {
-              a(localbmpu.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
-            }
-            localbmpu.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = null;
+            bmqw.a("ReaderJsPlugin", "Failed to parse json str,json=" + paramVarArgs[0]);
           }
-          j += 1;
         }
       }
+      if ("openDetailMore".equals(paramString3))
+      {
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+          b(paramVarArgs[0]);
+        }
+        return true;
+      }
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-  }
-  
-  protected Bitmap a()
-  {
-    Bitmap localBitmap3 = null;
-    Bitmap localBitmap1 = localBitmap3;
-    if (this.jdField_a_of_type_JavaUtilSet != null)
+    else
     {
-      localBitmap1 = localBitmap3;
-      if (!this.jdField_a_of_type_JavaUtilSet.isEmpty()) {
-        synchronized (this.jdField_a_of_type_JavaUtilSet)
+      if ("JSbookshelf".equals(paramString2))
+      {
+        if ("getGrayUpdateData".equals(paramString3))
         {
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-          localBitmap1 = null;
-          while (localIterator.hasNext())
+          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+          try
           {
-            localBitmap3 = (Bitmap)((WeakReference)localIterator.next()).get();
-            if ((localBitmap3 != null) && (localBitmap3.isMutable()))
+            a(paramJsBridgeListener, paramVarArgs[0]);
+            return true;
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            for (;;)
             {
-              localIterator.remove();
-              localBitmap1 = localBitmap3;
-            }
-            else
-            {
-              localIterator.remove();
+              bmqw.e("ReaderJsPlugin", paramJsBridgeListener.getMessage());
             }
           }
         }
+        if ("addColorfulTab".equals(paramString3))
+        {
+          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+          try
+          {
+            a(paramVarArgs[0], 4);
+            return true;
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            for (;;)
+            {
+              bmqw.e("ReaderJsPlugin", paramJsBridgeListener.getMessage());
+            }
+          }
+        }
+        if ("removeColorfulTab".equals(paramString3))
+        {
+          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+          try
+          {
+            a(paramVarArgs[0], 6);
+            return true;
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            for (;;)
+            {
+              bmqw.e("ReaderJsPlugin", paramJsBridgeListener.getMessage());
+            }
+          }
+        }
+        if (!"isExitsInColorfulTab".equals(paramString3)) {
+          break label584;
+        }
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+        try
+        {
+          a(paramVarArgs[0], 8);
+          return true;
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            bmqw.e("ReaderJsPlugin", paramJsBridgeListener.getMessage());
+          }
+        }
+      }
+      if (("JSTopRightButton".equals(paramString2)) && ("showRightButton".equals(paramString3)))
+      {
+        if (paramVarArgs.length > 1)
+        {
+          a(paramVarArgs[0], paramVarArgs[1]);
+          a(null);
+        }
+        return true;
       }
     }
-    return localBitmap2;
+    label584:
+    b(paramString1, paramString2, paramString3, paramVarArgs);
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
   
-  public Drawable a()
+  public void onCreate()
   {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
+    super.onCreate();
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy != null) {
+      this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy.onCreate();
     }
-    return String.valueOf(paramString.hashCode());
+    this.jdField_a_of_type_Bmpu.a();
   }
   
-  public CopyOnWriteArrayList<bmpu> a()
+  public void onDestroy()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-  }
-  
-  public void a()
-  {
-    c(false);
-    b();
-    this.jdField_a_of_type_JavaUtilSet.clear();
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  /* Error */
-  public void a(int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 46	bmpr:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   6: invokevirtual 352	java/util/concurrent/CopyOnWriteArrayList:size	()I
-    //   9: istore_2
-    //   10: iload_1
-    //   11: iload_2
-    //   12: if_icmplt +6 -> 18
-    //   15: aload_0
-    //   16: monitorexit
-    //   17: return
-    //   18: aload_0
-    //   19: iload_1
-    //   20: putfield 48	bmpr:jdField_b_of_type_Int	I
-    //   23: aload_0
-    //   24: iload_1
-    //   25: invokespecial 430	bmpr:a	(I)Z
-    //   28: pop
-    //   29: goto -14 -> 15
-    //   32: astore_3
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: aload_3
-    //   36: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	37	0	this	bmpr
-    //   0	37	1	paramInt	int
-    //   9	4	2	i	int
-    //   32	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	10	32	finally
-    //   18	29	32	finally
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_c_of_type_Int = paramInt1;
-    this.d = paramInt2;
-  }
-  
-  /* Error */
-  public void a(int paramInt, bmpx parambmpx)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 46	bmpr:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   6: invokevirtual 352	java/util/concurrent/CopyOnWriteArrayList:size	()I
-    //   9: istore_3
-    //   10: iload_3
-    //   11: iload_1
-    //   12: if_icmpgt +6 -> 18
-    //   15: aload_0
-    //   16: monitorexit
-    //   17: return
-    //   18: aload_0
-    //   19: iload_1
-    //   20: aload_2
-    //   21: invokespecial 433	bmpr:b	(ILbmpx;)V
-    //   24: aload_0
-    //   25: iload_1
-    //   26: invokevirtual 435	bmpr:a	(I)V
-    //   29: goto -14 -> 15
-    //   32: astore_2
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: aload_2
-    //   36: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	37	0	this	bmpr
-    //   0	37	1	paramInt	int
-    //   0	37	2	parambmpx	bmpx
-    //   9	4	3	i	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	10	32	finally
-    //   18	29	32	finally
-  }
-  
-  public void a(Rect paramRect)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
+    super.onDestroy();
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy != null) {
+      this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy.onDestroy();
     }
-  }
-  
-  public void a(bmpx parambmpx)
-  {
-    this.jdField_a_of_type_Bmpx = parambmpx;
-  }
-  
-  public void a(bmpy parambmpy)
-  {
-    this.jdField_a_of_type_Bmpy = parambmpy;
-  }
-  
-  public void a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    try
-    {
-      a(paramString, "zip_drawable", a(paramString), paramInt, paramBoolean);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  /* Error */
-  public void a(String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 46	bmpr:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   6: invokevirtual 289	java/util/concurrent/CopyOnWriteArrayList:clear	()V
-    //   9: aload_1
-    //   10: ifnonnull +6 -> 16
-    //   13: aload_0
-    //   14: monitorexit
-    //   15: return
-    //   16: aload_0
-    //   17: getfield 37	bmpr:jdField_a_of_type_Int	I
-    //   20: ifgt +8 -> 28
-    //   23: aload_0
-    //   24: iconst_1
-    //   25: putfield 37	bmpr:jdField_a_of_type_Int	I
-    //   28: aload_0
-    //   29: aload_1
-    //   30: putfield 144	bmpr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   33: aload_0
-    //   34: aload_3
-    //   35: putfield 383	bmpr:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   38: aload_0
-    //   39: aload_2
-    //   40: putfield 338	bmpr:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   43: aload_0
-    //   44: iload 5
-    //   46: putfield 309	bmpr:jdField_c_of_type_Boolean	Z
-    //   49: ldc_w 451
-    //   52: invokestatic 360	cooperation/qzone/thread/QzoneHandlerThreadFactory:getHandlerThread	(Ljava/lang/String;)Lcooperation/qzone/thread/QzoneBaseThread;
-    //   55: new 453	cooperation/qzone/zipanimate/ZipDrawableLoader$1
-    //   58: dup
-    //   59: aload_0
-    //   60: iload 4
-    //   62: invokespecial 456	cooperation/qzone/zipanimate/ZipDrawableLoader$1:<init>	(Lbmpr;I)V
-    //   65: invokevirtual 371	cooperation/qzone/thread/QzoneBaseThread:post	(Ljava/lang/Runnable;)V
-    //   68: goto -55 -> 13
-    //   71: astore_1
-    //   72: aload_0
-    //   73: monitorexit
-    //   74: aload_1
-    //   75: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	76	0	this	bmpr
-    //   0	76	1	paramString1	String
-    //   0	76	2	paramString2	String
-    //   0	76	3	paramString3	String
-    //   0	76	4	paramInt	int
-    //   0	76	5	paramBoolean	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	9	71	finally
-    //   16	28	71	finally
-    //   28	68	71	finally
-  }
-  
-  /* Error */
-  public void a(String paramString, boolean paramBoolean)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 46	bmpr:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   6: invokevirtual 289	java/util/concurrent/CopyOnWriteArrayList:clear	()V
-    //   9: aload_1
-    //   10: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   13: istore_3
-    //   14: iload_3
-    //   15: ifeq +6 -> 21
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: return
-    //   21: aload_0
-    //   22: getfield 37	bmpr:jdField_a_of_type_Int	I
-    //   25: ifgt +8 -> 33
-    //   28: aload_0
-    //   29: iconst_1
-    //   30: putfield 37	bmpr:jdField_a_of_type_Int	I
-    //   33: aload_0
-    //   34: iload_2
-    //   35: putfield 309	bmpr:jdField_c_of_type_Boolean	Z
-    //   38: aload_0
-    //   39: aload_1
-    //   40: invokestatic 461	cooperation/qzone/webviewplugin/QzoneZipCacheHelper:getFileList	(Ljava/lang/String;)[Ljava/lang/String;
-    //   43: aload_1
-    //   44: invokespecial 395	bmpr:a	([Ljava/lang/String;Ljava/lang/String;)V
-    //   47: goto -29 -> 18
-    //   50: astore_1
-    //   51: aload_0
-    //   52: monitorexit
-    //   53: aload_1
-    //   54: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	55	0	this	bmpr
-    //   0	55	1	paramString	String
-    //   0	55	2	paramBoolean	boolean
-    //   13	2	3	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	50	finally
-    //   21	33	50	finally
-    //   33	47	50	finally
-  }
-  
-  /* Error */
-  void a(java.util.List<bmpu> paramList, int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 46	bmpr:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   6: invokevirtual 462	java/util/concurrent/CopyOnWriteArrayList:isEmpty	()Z
-    //   9: istore 4
-    //   11: iload 4
-    //   13: ifeq +6 -> 19
-    //   16: aload_0
-    //   17: monitorexit
-    //   18: return
-    //   19: iconst_0
-    //   20: istore_3
-    //   21: iload_3
-    //   22: aload_0
-    //   23: getfield 37	bmpr:jdField_a_of_type_Int	I
-    //   26: if_icmpge -10 -> 16
-    //   29: aload_0
-    //   30: iload_2
-    //   31: iload_3
-    //   32: iadd
-    //   33: aload_1
-    //   34: invokeinterface 465 1 0
-    //   39: irem
-    //   40: aload_0
-    //   41: getfield 311	bmpr:jdField_a_of_type_Bmpx	Lbmpx;
-    //   44: invokespecial 433	bmpr:b	(ILbmpx;)V
-    //   47: iload_3
-    //   48: iconst_1
-    //   49: iadd
-    //   50: istore_3
-    //   51: goto -30 -> 21
-    //   54: astore_1
-    //   55: aload_0
-    //   56: monitorexit
-    //   57: aload_1
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	59	0	this	bmpr
-    //   0	59	1	paramList	java.util.List<bmpu>
-    //   0	59	2	paramInt	int
-    //   20	31	3	i	int
-    //   9	3	4	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	11	54	finally
-    //   21	47	54	finally
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    try
-    {
-      int j = this.jdField_b_of_type_Int + 1;
-      int k = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-      int i = j;
-      if (j >= k) {
-        i = 0;
-      }
-      a(i);
-      if (i == k - 1) {
-        bool = true;
-      }
-      return bool;
-    }
-    finally {}
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (paramInt >= this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size())) {}
-    bmpu localbmpu;
-    do
-    {
-      return;
-      this.jdField_b_of_type_Int = paramInt;
-      localbmpu = (bmpu)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt);
-    } while (localbmpu.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable == null);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localbmpu.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
-  }
-  
-  public void c(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_Int = paramInt;
-    }
+    this.jdField_a_of_type_Bmpu.b();
   }
 }
 

@@ -1,15 +1,51 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment.1.1;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
 
 public class avuh
-  implements awyo
+  extends RecyclerView.OnScrollListener
 {
-  public avuh(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
+  public avuh(HotPicRecyclerView paramHotPicRecyclerView) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2, Object paramObject)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.a.getActivity().runOnUiThread(new ListenTogetherPlayFragment.1.1(this, paramString, paramInt1, paramInt2));
+    if (paramInt == 0)
+    {
+      AbstractGifImage.resumeAll();
+      avup.c();
+      this.a.b();
+      if (paramInt != 2) {
+        break label128;
+      }
+      this.a.jdField_a_of_type_Avvv.a(true);
+    }
+    for (;;)
+    {
+      if ((paramInt == 0) && (this.a.jdField_a_of_type_Int == 2))
+      {
+        ((StaggeredGridLayoutManager)this.a.getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.a.jdField_a_of_type_ArrayOfInt);
+        if ((this.a.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.a.jdField_a_of_type_Avui != null)) {
+          this.a.jdField_a_of_type_Avui.d();
+        }
+      }
+      this.a.jdField_a_of_type_Int = paramInt;
+      return;
+      this.a.c();
+      AbstractGifImage.pauseAll();
+      avup.b();
+      break;
+      label128:
+      this.a.jdField_a_of_type_Avvv.a(false);
+    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 > 0) {
+      this.a.jdField_a_of_type_Avvv.a(paramInt2);
+    }
   }
 }
 

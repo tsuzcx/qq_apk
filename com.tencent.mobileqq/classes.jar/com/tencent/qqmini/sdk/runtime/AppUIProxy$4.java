@@ -1,15 +1,13 @@
 package com.tencent.qqmini.sdk.runtime;
 
 class AppUIProxy$4
-  extends AppRuntimeEventCenter.RuntimeStateObserver
+  implements Runnable
 {
   AppUIProxy$4(AppUIProxy paramAppUIProxy) {}
   
-  public void onStateChange(AppRuntimeEventCenter.MiniAppStateMessage paramMiniAppStateMessage)
+  public void run()
   {
-    if (paramMiniAppStateMessage.what == 11) {
-      this.this$0.hideLoading();
-    }
+    AppUIProxy.access$000(this.this$0).onStop();
   }
 }
 

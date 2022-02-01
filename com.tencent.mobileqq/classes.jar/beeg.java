@@ -1,31 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.20.1;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.20.2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 
 public class beeg
-  implements INetInfoHandler
+  implements DialogInterface.OnClickListener
 {
-  public beeg(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public beeg(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.20.1(this));
+    ((bhpc)paramDialogInterface).getCheckBoxState();
   }
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.20.2(this));
-  }
-  
-  public void onNetWifi2None() {}
 }
 
 

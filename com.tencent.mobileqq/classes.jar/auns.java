@@ -1,37 +1,23 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class auns
-  extends Handler
+final class auns
+  extends ClickableSpan
 {
-  public auns(QQSettingMsgClearFragment paramQQSettingMsgClearFragment) {}
+  auns(aunx paramaunx) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
+    if (this.a != null) {
+      this.a.onClick(paramView);
     }
-    do
-    {
-      return;
-      paramMessage = this.a.getActivity();
-      if ((paramMessage != null) && (!paramMessage.isFinishing()))
-      {
-        this.a.jdField_a_of_type_Biau.a(this.a.getString(2131690709));
-        this.a.jdField_a_of_type_Biau.d(2130849667);
-        this.a.jdField_a_of_type_Biau.b(false);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-      return;
-    } while ((this.a.jdField_a_of_type_Biau == null) || (!this.a.jdField_a_of_type_Biau.isShowing()));
-    this.a.jdField_a_of_type_Biau.cancel();
-    this.a.jdField_a_of_type_Biau.a(this.a.getString(2131690711));
-    this.a.jdField_a_of_type_Biau.c(true);
-    this.a.jdField_a_of_type_Biau.a(false);
-    this.a.jdField_a_of_type_Biau.b(true);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.content.res.Resources;
-import aqcb;
+import aqre;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -9,11 +9,11 @@ import com.tencent.qphone.base.util.BaseApplication;
 class OtherJsPlugin$7
   implements Runnable
 {
-  OtherJsPlugin$7(OtherJsPlugin paramOtherJsPlugin, aqcb paramaqcb) {}
+  OtherJsPlugin$7(OtherJsPlugin paramOtherJsPlugin, aqre paramaqre) {}
   
   public void run()
   {
-    OtherJsPlugin.access$600(this.this$0, this.val$finalColorNoteController);
+    OtherJsPlugin.access$700(this.this$0, this.val$finalColorNoteController);
     QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690746), 5000).a();
   }
 }

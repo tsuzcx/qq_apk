@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -15,23 +15,23 @@ import java.util.Arrays;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import pgk;
-import pha;
-import pxk;
-import qqr;
-import qrb;
-import qva;
-import qyo;
-import snh;
+import ozc;
+import ozs;
+import ppu;
+import qjf;
+import qjp;
+import qno;
+import qrc;
+import sel;
 
 public class ComponentContentThree
   extends FrameLayout
-  implements qqr
+  implements qjf
 {
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
   List<KandianUrlImageView> jdField_a_of_type_JavaUtilList;
-  qva jdField_a_of_type_Qva;
+  qno jdField_a_of_type_Qno;
   KandianUrlImageView b;
   KandianUrlImageView c;
   
@@ -55,14 +55,14 @@ public class ComponentContentThree
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Qva = new qva();
+    this.jdField_a_of_type_Qno = new qno();
     a(paramContext);
     a();
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560105, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560117, this, true);
   }
   
   public void a() {}
@@ -74,41 +74,41 @@ public class ComponentContentThree
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376037));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131369732));
-    this.b = ((KandianUrlImageView)paramView.findViewById(2131364255));
-    this.c = ((KandianUrlImageView)paramView.findViewById(2131376511));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376177));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131369828));
+    this.b = ((KandianUrlImageView)paramView.findViewById(2131364300));
+    this.c = ((KandianUrlImageView)paramView.findViewById(2131376643));
     this.jdField_a_of_type_JavaUtilList = Arrays.asList(new KandianUrlImageView[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, this.b, this.c });
     b();
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pxk))
+    if ((paramObject instanceof ppu))
     {
-      paramObject = (pxk)paramObject;
-      this.jdField_a_of_type_Qva.a(paramObject);
+      paramObject = (ppu)paramObject;
+      this.jdField_a_of_type_Qno.a(paramObject);
       setContent(paramObject);
     }
   }
   
-  public void a(qrb paramqrb)
+  public void a(qjp paramqjp)
   {
-    this.jdField_a_of_type_Qva.a(paramqrb);
+    this.jdField_a_of_type_Qno.a(paramqjp);
   }
   
   public void b()
   {
-    qyo.a(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, true);
-    qyo.a(getContext(), this.b, true);
-    qyo.a(getContext(), this.c, true);
-    ((LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams()).setMargins(0, 0, afur.a(1.5F, getResources()), 0);
-    ((LinearLayout.LayoutParams)this.b.getLayoutParams()).setMargins(0, 0, afur.a(1.5F, getResources()), 0);
+    qrc.a(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, true);
+    qrc.a(getContext(), this.b, true);
+    qrc.a(getContext(), this.c, true);
+    ((LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams()).setMargins(0, 0, agej.a(1.5F, getResources()), 0);
+    ((LinearLayout.LayoutParams)this.b.getLayoutParams()).setMargins(0, 0, agej.a(1.5F, getResources()), 0);
   }
   
-  public void setContent(pxk parampxk)
+  public void setContent(ppu paramppu)
   {
-    Object localObject2 = parampxk.a();
+    Object localObject2 = paramppu.a();
     if (localObject2 == null) {}
     Object localObject3;
     do
@@ -117,13 +117,13 @@ public class ComponentContentThree
       if ((((ArticleInfo)localObject2).mPictures != null) && (((ArticleInfo)localObject2).mPictures.length > 0)) {
         break;
       }
-      localObject3 = snh.a(((ArticleInfo)localObject2).mJsonPictureList, "pictures");
+      localObject3 = sel.a(((ArticleInfo)localObject2).mJsonPictureList, "pictures");
     } while ((localObject3 == null) || (((JSONArray)localObject3).length() <= 0));
-    parampxk = ((JSONArray)localObject3).optJSONObject(0);
+    paramppu = ((JSONArray)localObject3).optJSONObject(0);
     Object localObject1;
-    if (parampxk == null)
+    if (paramppu == null)
     {
-      parampxk = ((ArticleInfo)localObject2).mFirstPagePicUrl;
+      paramppu = ((ArticleInfo)localObject2).mFirstPagePicUrl;
       localObject1 = ((JSONArray)localObject3).optJSONObject(1);
       if (localObject1 != null) {
         break label151;
@@ -139,16 +139,16 @@ public class ComponentContentThree
     label161:
     for (localObject2 = ((ArticleInfo)localObject2).mFirstPagePicUrl;; localObject2 = ((JSONObject)localObject3).optString("picture"))
     {
-      pgk.a(this.jdField_a_of_type_JavaUtilList, Arrays.asList(new URL[] { pha.a(parampxk), pha.a((String)localObject1), pha.a((String)localObject2) }), getContext());
+      ozc.a(this.jdField_a_of_type_JavaUtilList, Arrays.asList(new URL[] { ozs.a(paramppu), ozs.a((String)localObject1), ozs.a((String)localObject2) }), getContext());
       return;
-      parampxk = parampxk.optString("picture");
+      paramppu = paramppu.optString("picture");
       break;
       localObject1 = ((JSONObject)localObject1).optString("picture");
       break label83;
     }
     if ((((ArticleInfo)localObject2).mPictures.length < 1) || (localObject2.mPictures[0] == null))
     {
-      parampxk = ((ArticleInfo)localObject2).mSinglePicture;
+      paramppu = ((ArticleInfo)localObject2).mSinglePicture;
       if ((((ArticleInfo)localObject2).mPictures.length >= 2) && (localObject2.mPictures[1] != null)) {
         break label282;
       }
@@ -162,9 +162,9 @@ public class ComponentContentThree
     label292:
     for (localObject2 = ((ArticleInfo)localObject2).mSinglePicture;; localObject2 = localObject2.mPictures[2])
     {
-      pgk.a(this.jdField_a_of_type_JavaUtilList, Arrays.asList(new URL[] { parampxk, localObject1, localObject2 }), getContext());
+      ozc.a(this.jdField_a_of_type_JavaUtilList, Arrays.asList(new URL[] { paramppu, localObject1, localObject2 }), getContext());
       return;
-      parampxk = localObject2.mPictures[0];
+      paramppu = localObject2.mPictures[0];
       break;
       localObject1 = localObject2.mPictures[1];
       break label218;

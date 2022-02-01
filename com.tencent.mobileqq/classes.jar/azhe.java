@@ -1,25 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.lifeachivement.LifeAchivementPanelView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity.8;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class azhe
   implements View.OnClickListener
 {
-  public azhe(LifeAchivementPanelView paramLifeAchivementPanelView) {}
+  public azhe(AutoReplyEditActivity.8 param8) {}
   
   public void onClick(View paramView)
   {
-    int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.i("LifeAchivementPanelView", 2, "DATA_TYPE_LIFE_ACHIVEMENT_TITLE on click");
-    }
-    azhc.a(LifeAchivementPanelView.b(this.a), this.a.a);
-    if (LifeAchivementPanelView.a(this.a)) {
-      i = 1;
-    }
-    bcst.b(null, "", "", "", "0X800AE57", "0X800AE57", i, 0, "", "", "", "");
+    AutoReplyEditActivity.a(this.a.this$0, true);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

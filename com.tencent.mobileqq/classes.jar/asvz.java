@@ -1,19 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavPicFileTabView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class asvz
-  implements View.OnClickListener
+public abstract interface asvz
 {
-  public asvz(QfileFavPicFileTabView paramQfileFavPicFileTabView) {}
-  
-  public void onClick(View paramView)
-  {
-    QfileFavPicFileTabView.a(this.a, paramView, true);
-    paramView.sendAccessibilityEvent(8);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

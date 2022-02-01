@@ -1,17 +1,49 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
+import com.tencent.mobileqq.data.AppShareID;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class adys
-  implements View.OnLayoutChangeListener
+  extends anvn
 {
-  public adys(Conversation paramConversation) {}
+  public adys(BaseChatPie paramBaseChatPie) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  protected void a(String paramString, int paramInt, ArrayList<QQOperationViopTipTask> paramArrayList)
   {
-    Conversation.a(this.a).removeOnLayoutChangeListener(this);
-    Conversation.i(this.a);
+    if (this.a.A()) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (QLog.isDevelopLevel()) {
+            QLog.d("QQOperateVoIP", 4, "on showTips, chatactivity upadte ui");
+          }
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == paramInt)) {
+            break;
+          }
+        } while (!QLog.isDevelopLevel());
+        QLog.d("QQOperateVoIP", 4, "on showTips, uin dosenot equal");
+        return;
+        if ((paramArrayList != null) && (paramArrayList.size() != 0)) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.d("QQOperateVoIP", 4, "on showTips,tasklist is null");
+      return;
+    } while (this.a.jdField_a_of_type_Aivw == null);
+    this.a.jdField_a_of_type_Aivw.a(paramArrayList);
+  }
+  
+  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_Aggs != null)) {
+      this.a.jdField_a_of_type_Aggs.notifyDataSetChanged();
+    }
   }
 }
 

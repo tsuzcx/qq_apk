@@ -46,7 +46,7 @@ class ILaunchManager$Stub$Proxy
           {
             localParcel1.writeInt(1);
             paramBundle.writeToParcel(localParcel1, 0);
-            this.mRemote.transact(6, localParcel1, localParcel2, 0);
+            this.mRemote.transact(5, localParcel1, localParcel2, 0);
             localParcel2.readException();
           }
         }
@@ -87,7 +87,7 @@ class ILaunchManager$Stub$Proxy
     //   26: invokevirtual 47	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:writeToParcel	(Landroid/os/Parcel;I)V
     //   29: aload_0
     //   30: getfield 15	com/tencent/qqmini/sdk/launcher/ipc/ILaunchManager$Stub$Proxy:mRemote	Landroid/os/IBinder;
-    //   33: iconst_5
+    //   33: iconst_4
     //   34: aload_2
     //   35: aload_3
     //   36: iconst_0
@@ -140,7 +140,7 @@ class ILaunchManager$Stub$Proxy
         {
           localParcel1.writeInt(1);
           paramBundle.writeToParcel(localParcel1, 0);
-          this.mRemote.transact(8, localParcel1, localParcel2, 0);
+          this.mRemote.transact(7, localParcel1, localParcel2, 0);
           localParcel2.readException();
           if (localParcel2.readInt() != 0)
           {
@@ -182,7 +182,7 @@ class ILaunchManager$Stub$Proxy
           {
             paramString1 = paramMiniCmdCallback.asBinder();
             localParcel1.writeStrongBinder(paramString1);
-            this.mRemote.transact(7, localParcel1, localParcel2, 0);
+            this.mRemote.transact(6, localParcel1, localParcel2, 0);
             localParcel2.readException();
           }
         }
@@ -252,7 +252,7 @@ class ILaunchManager$Stub$Proxy
     try
     {
       localParcel1.writeInterfaceToken("com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager");
-      this.mRemote.transact(4, localParcel1, localParcel2, 0);
+      this.mRemote.transact(3, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -322,29 +322,10 @@ class ILaunchManager$Stub$Proxy
     //   29	47	64	finally
     //   56	61	64	finally
   }
-  
-  public void stopMiniAppByAppId(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager");
-      localParcel1.writeString(paramString);
-      this.mRemote.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

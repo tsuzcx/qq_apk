@@ -1,13 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-public class awpw
-  implements DialogInterface.OnClickListener
+public abstract interface awpw
 {
-  public awpw(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(LatLng paramLatLng, Double paramDouble, boolean paramBoolean);
 }
 
 

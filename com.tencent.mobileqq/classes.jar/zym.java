@@ -1,34 +1,46 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
-public class zym
-  extends zxj
+class zym
+  implements View.OnTouchListener
 {
-  public String a()
-  {
-    return null;
-  }
+  zym(zyl paramzyl, Drawable paramDrawable, zyr paramzyr) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.a(paramInt1, paramInt2, paramIntent);
-  }
-  
-  protected void a(View paramView)
-  {
-    super.a(paramView);
-  }
-  
-  public boolean a()
-  {
-    return super.a();
-  }
-  
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
-  {
-    super.onActivityCreated(paramActivity, paramBundle);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return true;
+      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable)) {
+        if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
+        {
+          ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-15263977);
+        }
+        else
+        {
+          ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-920840);
+          continue;
+          if (zyl.a(this.jdField_a_of_type_Zyl) != null) {
+            zyl.a(this.jdField_a_of_type_Zyl).a(this.jdField_a_of_type_Zyr);
+          }
+          if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable)) {
+            if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
+              ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-16777216);
+            } else {
+              ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-1);
+            }
+          }
+        }
+      }
+    }
   }
 }
 

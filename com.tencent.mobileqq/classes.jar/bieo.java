@@ -1,17 +1,57 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import com.tencent.image.ApngDrawable;
 
-public final class bieo
-  implements DialogInterface.OnClickListener
+public class bieo
+  implements biel
 {
-  public bieo(Context paramContext) {}
+  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bieo(Drawable paramDrawable)
   {
-    bier.c();
-    FloatingScreenPermission.requestPermission(this.a);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof ApngDrawable))
+    {
+      if (paramBoolean) {
+        ((ApngDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).resume();
+      }
+    }
+    else {
+      return;
+    }
+    ((ApngDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).pause();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    {
+      a(true);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(true, false);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.invalidateSelf();
+    }
+  }
+  
+  public void a(biem parambiem)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new biep(this, parambiem);
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    {
+      a(false);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(false, false);
+    }
   }
 }
 

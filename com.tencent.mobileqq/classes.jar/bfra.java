@@ -1,39 +1,106 @@
 import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowRequest;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoRequest;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import mqq.manager.TicketManager;
+import tencent.im.oidb.cmd0x487.oidb_0x487.RspBody;
 
-public class bfra
+class bfra
+  extends nkq
 {
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, niv paramniv)
-  {
-    if (paramLong <= 0L) {
-      return;
-    }
-    mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.4.1,3,4680");
-    localGetPublicAccountDetailInfoRequest.version.set(1);
-    localGetPublicAccountDetailInfoRequest.seqno.set(0);
-    localGetPublicAccountDetailInfoRequest.luin.set(paramLong);
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("uin", paramLong);
-    nir.a(paramQQAppInterface, paramniv, localGetPublicAccountDetailInfoRequest.toByteArray(), "PubAccountSvc.get_detail_info", localBundle);
-  }
+  bfra(bfqz parambfqz, long paramLong) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, niv paramniv, Bundle paramBundle)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    mobileqq_mp.FollowRequest localFollowRequest = new mobileqq_mp.FollowRequest();
-    localFollowRequest.luin.set(paramLong);
-    localFollowRequest.ext.set("0");
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.troop_pubaccount", 2, "TroopEntranceBar fetchBindTroopInfo onResult, errorCode=" + paramInt);
     }
-    nir.a(paramQQAppInterface, paramniv, localFollowRequest.toByteArray(), "PubAccountSvc.follow", localBundle);
-    oat.a(paramQQAppInterface, "" + paramLong, 0);
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    for (;;)
+    {
+      try
+      {
+        Object localObject = new oidb_0x487.RspBody();
+        ((oidb_0x487.RspBody)localObject).mergeFrom(paramArrayOfByte);
+        paramInt = ((oidb_0x487.RspBody)localObject).uint32_result.get();
+        if (QLog.isColorLevel())
+        {
+          if (!((oidb_0x487.RspBody)localObject).bytes_errmsg.has()) {
+            break label563;
+          }
+          paramArrayOfByte = ((oidb_0x487.RspBody)localObject).bytes_errmsg.get().toStringUtf8();
+          QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo onResult, ret=" + paramInt + "," + paramArrayOfByte);
+        }
+        if ((paramInt == 0) && (((oidb_0x487.RspBody)localObject).uint32_groups_flag.has()))
+        {
+          this.jdField_a_of_type_Bfqz.jdField_a_of_type_Int = ((oidb_0x487.RspBody)localObject).uint32_groups_flag.get();
+          bfqz.a(this.jdField_a_of_type_Bfqz);
+          this.jdField_a_of_type_Bfqz.notifyObservers(Integer.valueOf(0));
+          return;
+        }
+        if ((paramInt == 0) && (((oidb_0x487.RspBody)localObject).uint32_follow_state.has()))
+        {
+          paramBundle = (bgre)this.jdField_a_of_type_Bfqz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
+          paramInt = ((oidb_0x487.RspBody)localObject).uint32_follow_state.get();
+          int i = ((oidb_0x487.RspBody)localObject).uint32_remind_flag.get();
+          if (i == 1)
+          {
+            localObject = (QQAppInterface)this.b.get();
+            if (localObject == null) {
+              break label562;
+            }
+            String str = ((QQAppInterface)localObject).c();
+            paramArrayOfByte = (TicketManager)((QQAppInterface)localObject).getManager(2);
+            if (paramArrayOfByte == null) {
+              break label557;
+            }
+            paramArrayOfByte = paramArrayOfByte.getSkey(str);
+            HashMap localHashMap = new HashMap();
+            Bundle localBundle = new Bundle();
+            localBundle.putString("op", "0");
+            localBundle.putString("puin", "" + this.jdField_a_of_type_Long);
+            localBundle.putString("Cookie", "uin=" + str + ";skey=" + paramArrayOfByte);
+            localBundle.putString("Referer", "https://buluo.qq.com");
+            localHashMap.put("BUNDLE", localBundle);
+            localHashMap.put("CONTEXT", ((QQAppInterface)localObject).getApp().getApplicationContext());
+            new bgpq("https://buluo.qq.com/cgi-bin/bar/extra/clean_temp_follow_state", "", new bfrb(this, paramBundle, i), 1000, null).a(localHashMap);
+          }
+          paramBundle.a(this.jdField_a_of_type_Bfqz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramInt, i);
+          if (paramInt == 1)
+          {
+            bfqz.b(this.jdField_a_of_type_Bfqz);
+            this.jdField_a_of_type_Bfqz.notifyObservers(Integer.valueOf(1));
+            return;
+          }
+        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo, exception=" + paramArrayOfByte.toString());
+        }
+      }
+      for (;;)
+      {
+        bfqz.c(this.jdField_a_of_type_Bfqz);
+        this.jdField_a_of_type_Bfqz.notifyObservers();
+        return;
+        QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo error. errorCode=" + paramInt);
+      }
+      label557:
+      paramArrayOfByte = null;
+      continue;
+      label562:
+      return;
+      label563:
+      paramArrayOfByte = "";
+    }
   }
 }
 

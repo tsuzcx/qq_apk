@@ -1,24 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
 
 class awbz
-  implements View.OnClickListener
+  implements aasd
 {
-  awbz(awbw paramawbw, BaseActivity paramBaseActivity, avwp paramavwp) {}
+  awbz(awby paramawby) {}
   
-  public void onClick(View paramView)
+  public void callback(Bundle paramBundle)
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-    int i = this.jdField_a_of_type_Avwp.a();
-    Object localObject = this.jdField_a_of_type_Avwp.a();
-    avwv.a(localQQAppInterface).a.a(3, i, (String)localObject);
-    localObject = new avwp(i, (String)localObject);
-    avwv.a(localQQAppInterface).a((avwp)localObject, false);
-    bcst.b(null, "CliOper", "", "", "0X800A979", "0X800A979", 0, 0, "", "0", "0", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = paramBundle.getInt("msg");
+    if (i == 90)
+    {
+      awby.a(this.a, paramBundle.getInt("state"));
+      awby.a(this.a, awby.a(this.a), awby.b(this.a));
+    }
+    while (i != 91) {
+      return;
+    }
+    i = paramBundle.getInt("errCode");
+    paramBundle = paramBundle.getString("desc");
+    awby.a(this.a, i, paramBundle);
   }
 }
 

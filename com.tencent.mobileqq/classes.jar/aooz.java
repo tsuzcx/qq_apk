@@ -1,25 +1,46 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.face.FaceInfo;
+import java.lang.ref.WeakReference;
 
-public final class aooz
-  extends aopa
+public class aooz
+  implements aoox
 {
-  public aooz(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public String a;
+  public WeakReference<aoot> a;
+  
+  aooz(aoov paramaoov, aoot paramaoot)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaoot);
+    if ((paramaoot != null) && (paramaoot.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo != null)) {
+      this.jdField_a_of_type_JavaLangString = paramaoot.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_JavaLangString;
+    }
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo arg2)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SOSO.LBS", 2, "onLocationFinish() lock.notifyAll()");
-    }
-    synchronized (SosoInterface.a())
-    {
-      SosoInterface.a().notifyAll();
+    this.jdField_a_of_type_Aoov.a(paramBoolean, 11, paramString, this.jdField_a_of_type_Aoov.jdField_a_of_type_Aooz);
+  }
+  
+  public void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_Aoov.a(paramBoolean1, 32, paramString, this.jdField_a_of_type_Aoov.jdField_a_of_type_Aooz);
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_Aoov.a(paramBoolean, 1, paramString, this.jdField_a_of_type_Aoov.jdField_a_of_type_Aooz);
+  }
+  
+  public void b(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  {
+    if ((this.jdField_a_of_type_Aoov.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo == null) || (paramInt != this.jdField_a_of_type_Aoov.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b)) {
       return;
     }
+    this.jdField_a_of_type_Aoov.a(paramBoolean1, 16, paramString, this.jdField_a_of_type_Aoov.jdField_a_of_type_Aooz);
+  }
+  
+  public void c(boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_Aoov.a(paramBoolean, 4, paramString, this.jdField_a_of_type_Aoov.jdField_a_of_type_Aooz);
   }
 }
 

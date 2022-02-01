@@ -5,7 +5,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
-import bgtn;
+import bhtq;
 import com.tencent.image.URLImageView;
 
 public class ResizeURLImageView
@@ -19,7 +19,7 @@ public class ResizeURLImageView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     if (getContext().getResources().getConfiguration().orientation == 1) {}
-    for (paramInt1 = bgtn.a() - getPaddingLeft() - getPaddingRight();; paramInt1 = bgtn.b() - getPaddingTop() - getPaddingBottom())
+    for (paramInt1 = bhtq.a() - getPaddingLeft() - getPaddingRight();; paramInt1 = bhtq.b() - getPaddingTop() - getPaddingBottom())
     {
       paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
       super.onMeasure(paramInt1, paramInt1);

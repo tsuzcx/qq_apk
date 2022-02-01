@@ -1,23 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.mobileqq.data.MessageForLightVideo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahbo
-  implements bkhw
+class ahbo
+  implements DialogInterface.OnClickListener
 {
-  public ahbo(LightVideoItemBuilder paramLightVideoItemBuilder, MessageForLightVideo paramMessageForLightVideo, ahbr paramahbr, bkho parambkho) {}
+  ahbo(ahbn paramahbn) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      LightVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo, this.jdField_a_of_type_Ahbr);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

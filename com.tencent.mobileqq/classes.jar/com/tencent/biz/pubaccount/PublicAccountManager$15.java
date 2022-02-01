@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import tue;
+import tug;
 
 public final class PublicAccountManager$15
   implements Runnable
@@ -10,7 +10,7 @@ public final class PublicAccountManager$15
   
   public void run()
   {
-    tue.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    tug.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,26 +1,9 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.tavcut.session.TAVCutImageSession;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import java.io.File;
 
 public class boeu
-  implements View.OnTouchListener
 {
-  public boeu(AEEditorImageEditFragment paramAEEditorImageEditFragment, GestureDetector paramGestureDetector) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-    {
-      AEEditorImageEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment).toggleAEKit(AEEditorImageEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment), true);
-      bnzb.a(AEEditorImageEditFragment.e(), "[onTouch] onTouch/ACTION_CANCEL ");
-    }
-    bnzb.a(AEEditorImageEditFragment.e(), "[onTouch] Action: " + paramMotionEvent.getAction());
-    return (paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment.a == null);
-  }
+  public static final String a = bofe.b + File.separator + "camera";
+  public static final String b = a + File.separator + "photo_compress";
 }
 
 

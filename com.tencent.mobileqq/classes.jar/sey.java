@@ -1,96 +1,64 @@
-import android.support.annotation.Nullable;
 import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.VideoViewGroup;
-import java.util.Map;
+import com.tencent.mobileqq.app.BaseActivity;
+import cooperation.plugin.PluginBaseActivity;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class sey
-  extends ruh
+class sey
+  implements sga
 {
-  public View a;
-  public BaseArticleInfo a;
-  public VideoViewGroup a;
-  public Map<String, Object> a;
-  public rgc a;
-  public six a;
-  boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public long c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public int e = -1;
-  public long e;
-  public String e;
-  public int f;
-  public long f;
-  public String f;
-  public int g;
-  public long g = -1L;
-  public String g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public String l;
-  public int m;
-  public String m;
-  public int n = 0;
-  public String n;
-  public int o;
-  public int p;
-  public int q;
-  public int r;
+  sey(sel paramsel) {}
   
-  public sey()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public VideoInfo a()
-  {
-    return rup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getInnerUniqueID();
+    this.a.a();
+    this.a.a();
+    pnd localpnd = (pnd)paramView.getTag();
+    if (localpnd == null) {}
+    for (;;)
+    {
+      return;
+      BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)this.a.jdField_b_of_type_JavaUtilList.get(localpnd.a);
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("time", System.currentTimeMillis() / 1000L);
+        localJSONObject.put("channel_id", this.a.c);
+        if ((this.a.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
+        {
+          localJSONObject.put("folder_status", ozs.d);
+          localJSONObject.put("kandian_mode", ozs.e());
+          localJSONObject.put("feeds_type", "" + ozs.a(localBaseArticleInfo));
+          localJSONObject.put("rowkey", ubg.a(localBaseArticleInfo));
+          ocd.a(null, "", "0X8007058", "0X8007058", 0, 0, "", "", "", localJSONObject.toString(), false);
+        }
+        while (localBaseArticleInfo != null)
+        {
+          sel.a(this.a, paramView, localpnd, localBaseArticleInfo);
+          if ((this.a.jdField_a_of_type_Rvy != null) && (this.a.jdField_a_of_type_Rvy.b()))
+          {
+            this.a.jdField_a_of_type_Rvy.a();
+            this.a.jdField_b_of_type_Boolean = true;
+          }
+          pms.a(paramView);
+          return;
+          if ((this.a.jdField_a_of_type_AndroidAppActivity instanceof PluginBaseActivity))
+          {
+            localJSONObject.put("folder_status", 1);
+            bdll.b(null, "CliOper", "", "", "0X800705F", "0X800705F", 0, 0, "", "", "", localJSONObject.toString());
+          }
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
     }
-    return "";
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if ((paramObject instanceof sey)) {
-      return a().equals(((sey)paramObject).a());
-    }
-    return super.equals(paramObject);
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("VideoPlayParam[");
-    localStringBuilder.append(" articleID:").append(this.jdField_c_of_type_Long);
-    localStringBuilder.append(", videoVid:").append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(", busitype:").append(this.f);
-    localStringBuilder.append(", videoDuration:").append(this.b);
-    localStringBuilder.append(", position:").append(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
-      localStringBuilder.append(", title:").append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mTitle);
-    }
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
   }
 }
 

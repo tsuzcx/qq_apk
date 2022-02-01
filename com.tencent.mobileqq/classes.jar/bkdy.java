@@ -1,35 +1,25 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import com.tencent.sharp.jni.TraeAudioManager;
-
 public class bkdy
-  extends bkea
+  extends bkdw
 {
-  public bkdy(TraeAudioManager paramTraeAudioManager)
+  private static bkdy jdField_a_of_type_Bkdy;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  
+  public static bkdy a()
   {
-    super(paramTraeAudioManager);
+    if (jdField_a_of_type_Bkdy == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Bkdy == null) {
+        jdField_a_of_type_Bkdy = new bkdy();
+      }
+      return jdField_a_of_type_Bkdy;
+    }
   }
   
-  public String a()
+  public void a()
   {
-    return "BluetoohHeadsetCheckFake";
-  }
-  
-  public void a() {}
-  
-  void a(Context paramContext, Intent paramIntent) {}
-  
-  void a(IntentFilter paramIntentFilter) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(Context paramContext, bkeb parambkeb)
-  {
-    return true;
+    super.a();
+    jdField_a_of_type_Bkdy = null;
   }
 }
 

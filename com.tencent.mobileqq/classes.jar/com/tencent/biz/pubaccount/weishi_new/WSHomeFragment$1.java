@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.weishi_new;
 
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.mobileqq.mini.monitor.service.TaskMonitorManager;
 
 public class WSHomeFragment$1
@@ -11,7 +11,7 @@ public class WSHomeFragment$1
   
   public void run()
   {
-    String str = anni.a(2131705608) + TaskMonitorManager.g().getMemeryUsage() + "%";
+    String str = anzj.a(2131705715) + TaskMonitorManager.g().getMemeryUsage() + "%";
     if (WSHomeFragment.a(this.this$0) != null) {
       WSHomeFragment.a(this.this$0).setText(str);
     }

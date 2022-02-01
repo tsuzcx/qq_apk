@@ -1,21 +1,36 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aeek
-  extends MqqHandler
+class aeek
+  implements aumz
 {
-  public aeek(FontSettingActivity paramFontSettingActivity) {}
+  aeek(aeej paramaeej, FileManagerEntity paramFileManagerEntity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    if (16711697 == paramMessage.what)
-    {
-      anll.a(this.a, FontSettingActivity.a(this.a), false);
-      this.a.c = true;
-      this.a.a.notifyDataSetChanged();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Aeej.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
+    anvu localanvu;
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
+      }
+      localanvu = (anvu)this.jdField_a_of_type_Aeej.a.a.a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localanvu.a(localArrayList));
+    auna.a(2131692318);
+    return;
+    this.jdField_a_of_type_Aeej.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
+  
+  public void b() {}
 }
 
 

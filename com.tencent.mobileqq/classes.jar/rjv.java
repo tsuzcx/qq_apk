@@ -1,30 +1,31 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import android.app.Activity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
+import java.util.ArrayList;
 
 public class rjv
-  implements bkhw
+  extends FragmentPagerAdapter
 {
-  public rjv(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public rjv(SelectVideoTabFragment paramSelectVideoTabFragment, FragmentManager paramFragmentManager)
   {
-    if (ReadInJoyDeliverUGCActivity.a(this.a)) {
-      return;
-    }
-    ReadInJoyDeliverUGCActivity.b(this.a, true);
-    ReadInJoyDeliverUGCActivity.c(this.a, ReadInJoyDeliverUGCActivity.c(this.a));
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ReadInJoyDeliverUGCActivity.a(this.a).dismiss();
-      return;
-      ReadInJoyDeliverUGCActivity.b(this.a);
-      oat.a(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", pha.g(), false);
-      continue;
-      ReadInJoyDeliverUGCActivity.c(this.a);
-    }
+    super(paramFragmentManager);
+  }
+  
+  public int getCount()
+  {
+    return SelectVideoTabFragment.a(this.a).size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    return (Fragment)SelectVideoTabFragment.a(this.a).get(paramInt);
+  }
+  
+  public CharSequence getPageTitle(int paramInt)
+  {
+    return SelectVideoTabFragment.a(this.a).getString(SelectVideoTabFragment.a()[paramInt]);
   }
 }
 

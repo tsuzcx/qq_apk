@@ -6,7 +6,9 @@ public class NotificationReportUtil
   
   public static void reportAll()
   {
-    s_notificationReportController.reportAll();
+    if (s_notificationReportController != null) {
+      s_notificationReportController.reportAll();
+    }
   }
   
   public static void reportNotification(int paramInt1, String paramString, int paramInt2)

@@ -1,14 +1,20 @@
+import UserGrowth.stFollowFeedsReq;
+import UserGrowth.stFollowFeedsRsp;
+
 public class uom
+  extends ukl<stFollowFeedsRsp>
 {
-  public String a;
-  public String b;
-  
-  public uom() {}
-  
-  public uom(String paramString1, String paramString2)
+  public uom(String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, int paramInt)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    super("FollowFeeds", paramInt);
+    stFollowFeedsReq localstFollowFeedsReq = new stFollowFeedsReq();
+    localstFollowFeedsReq.attatch_info = paramString1;
+    localstFollowFeedsReq.is_refresh = paramBoolean2;
+    localstFollowFeedsReq.is_first = paramBoolean1;
+    localstFollowFeedsReq.push_info = paramString2;
+    localstFollowFeedsReq.scene = paramInt;
+    this.a = localstFollowFeedsReq;
+    uqf.d("FollowRequest", localstFollowFeedsReq.toString());
   }
 }
 

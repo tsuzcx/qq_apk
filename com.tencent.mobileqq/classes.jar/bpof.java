@@ -1,27 +1,25 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bpof
-  implements URLDrawable.URLDrawableListener
+  implements View.OnClickListener
 {
-  bpof(bpoe parambpoe, String paramString1, bpnl parambpnl, ImageView paramImageView, String paramString2) {}
+  bpof(bpoc parambpoc) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    yqp.b("NormalFaceAdapter", "applyNormalPaster onLoadFialed path:" + this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    yqp.b("NormalFaceAdapter", "applyNormalPaster onLoadSuccessed path:" + this.jdField_a_of_type_JavaLangString);
-    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
-    bpoe.a(this.jdField_a_of_type_Bpoe).a(this.jdField_a_of_type_JavaLangString, paramURLDrawable);
-    bpoe.a(this.jdField_a_of_type_Bpoe, this.jdField_a_of_type_Bpnl, paramURLDrawable, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString, this.b, 1);
+    if (bpoc.a(this.a)) {
+      this.a.a.y();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QQToast.a(BaseApplicationImpl.getContext(), anzj.a(2131712574), 0).a();
+    }
   }
 }
 

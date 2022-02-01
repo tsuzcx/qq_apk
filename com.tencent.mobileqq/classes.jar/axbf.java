@@ -1,18 +1,25 @@
-import android.arch.lifecycle.Observer;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function1;
-import org.jetbrains.annotations.Nullable;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "T", "it", "onChanged", "(Ljava/lang/Object;)V"}, k=3, mv={1, 1, 16})
-final class axbf<T>
-  implements Observer<T>
+public class axbf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  axbf(Function1 paramFunction1) {}
+  public axbf(MedalGuideView paramMedalGuideView) {}
   
-  public final void onChanged(@Nullable T paramT)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramT != null) {
-      this.a.invoke(paramT);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    MedalGuideView.a(this.a, f);
+    if (this.a.a != null)
+    {
+      this.a.a.a(f);
+      if (f <= 0.05F) {
+        this.a.a.b();
+      }
+    }
+    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
+      paramValueAnimator.removeAllUpdateListeners();
     }
   }
 }

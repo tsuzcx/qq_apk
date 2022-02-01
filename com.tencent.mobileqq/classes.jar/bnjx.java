@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.1.1;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.NetworkState;
 
-public class bnjx
+public final class bnjx
   implements INetEventHandler
 {
-  bnjx(bnjw parambnjw) {}
-  
   public void onNetChangeEvent(boolean paramBoolean)
   {
-    ThreadManager.getUIHandler().post(new AEBottomListAdapter.1.1(this));
+    QLog.i("NetworkState", 1, "--onNetChangeEvent isNetEffective:" + paramBoolean);
+    NetworkState.access$000(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bnjx
  * JD-Core Version:    0.7.0.1
  */

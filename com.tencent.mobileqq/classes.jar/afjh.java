@@ -1,44 +1,81 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import QQService.SvcDevLoginInfo;
+import QQService.SvcRspGetDevLoginInfo;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopGagActivity;
-import com.tencent.mobileqq.activity.TroopGagActivity.3.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
 
 public class afjh
-  extends anxg
+  extends anyu
 {
-  public afjh(TroopGagActivity paramTroopGagActivity) {}
+  public afjh(RecentLoginDevActivity paramRecentLoginDevActivity) {}
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  protected void onDelHistoryDevResult(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onDelHistoryDevResult isSuccess=" + paramBoolean + " errorMsg=" + paramString + " index=" + paramInt);
     }
+    RecentLoginDevActivity.b(this.a);
     if (paramBoolean)
     {
-      this.a.jdField_a_of_type_Afjj.notifyDataSetChanged();
-      if (this.a.jdField_a_of_type_Afjj.getCount() != 0) {
-        break label209;
+      bdll.b(this.a.app, "CliOper", "", "", "My_eq", "Delete_eq", 0, 0, "", "", "", "");
+      if ((paramInt > -1) && (RecentLoginDevActivity.a(this.a) != null) && (paramInt < RecentLoginDevActivity.a(this.a).size()))
+      {
+        RecentLoginDevActivity.a(this.a).remove(paramInt);
+        RecentLoginDevActivity.a(this.a, RecentLoginDevActivity.a(this.a));
       }
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131691823), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    if (TextUtils.isEmpty(paramString))
+    {
+      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131693914), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  protected void onGetHistoryDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  {
+    RecentLoginDevActivity.b(this.a);
+    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult success");
+      }
+      RecentLoginDevActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecHistoryLoginDevInfo);
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
+        paramSvcRspGetDevLoginInfo = RecentLoginDevActivity.a(this.a).iterator();
+        while (paramSvcRspGetDevLoginInfo.hasNext())
+        {
+          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
+          if (localSvcDevLoginInfo != null) {
+            QLog.d("Q.devlock.RecentLoginDevActivity", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
+          }
+        }
+        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
+      }
+      RecentLoginDevActivity.a(this.a, RecentLoginDevActivity.a(this.a));
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed isSuccess=" + paramBoolean);
+      if (paramSvcRspGetDevLoginInfo != null) {
+        break label288;
+      }
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed data is null");
     }
     for (;;)
     {
-      this.a.getSharedPreferences("last_update_time" + this.a.app.getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + this.a.jdField_a_of_type_JavaLangString, System.currentTimeMillis()).commit();
-      ThreadManager.post(new TroopGagActivity.3.1(this, (bfsk)this.a.app.getManager(48)), 8, null, false);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopGagActivity", 2, "onUpdateTroopGetMemberList: isSuccess=" + paramBoolean);
+      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131691834), 0).b(this.a.getTitleBarHeight());
       return;
-      label209:
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      label288:
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
     }
   }
 }

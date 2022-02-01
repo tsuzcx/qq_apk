@@ -1,14 +1,21 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.QQWalletTransferBubbleView;
 
 public class ahpq
-  implements ahor
+  extends aggl
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramagup.a(paramagwc.b);
-  }
+  public long a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public QQWalletTransferBubbleView a;
+  public TextView b;
+  public QQWalletTransferBubbleView b;
+  public TextView c;
+  
+  public ahpq(ahpn paramahpn) {}
 }
 
 

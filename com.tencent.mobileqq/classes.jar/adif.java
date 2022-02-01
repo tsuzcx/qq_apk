@@ -1,42 +1,26 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.TipsInfo;
 
 public class adif
-  extends anqd
+  extends adic
 {
-  public adif(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void a(boolean paramBoolean, String paramString, bdei parambdei)
+  public int a()
   {
-    if (this.a.isFinishing()) {}
-    bddy localbddy;
-    do
-    {
-      for (;;)
-      {
-        return;
-        AccountManageActivity.a(this.a, false);
-        localbddy = (bddy)this.a.app.getManager(62);
-        if (parambdei.a != 1) {
-          break;
-        }
-        if ((this.a.isResume()) && (bddy.a(this.a.app, "sub.uin.all")))
-        {
-          paramString = localbddy.a("sub.uin.all");
-          int j = paramString.size();
-          int i = 0;
-          while (i < j)
-          {
-            parambdei = (Pair)paramString.get(i);
-            localbddy.a(this.a.app, this.a, parambdei, new adig(this, localbddy, parambdei));
-            i += 1;
-          }
-        }
-      }
-    } while (!this.a.isResume());
-    localbddy.a(paramString, 1, true);
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  {
+    new bcrt().b(paramList, paramList1, paramStringBuilder);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return paramElem.tips_info.has();
   }
 }
 

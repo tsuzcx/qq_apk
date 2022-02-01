@@ -1,18 +1,36 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 
-public class zjg
-  implements View.OnLongClickListener
+class zjg
+  implements ServiceConnection
 {
-  public zjg(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
+  private zje a;
   
-  public boolean onLongClick(View paramView)
+  public zjg(zje paramzje)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
+    this.a = paramzje;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    zje localzje = this.a;
+    if (localzje != null) {
+      localzje.a(paramComponentName, paramIBinder);
     }
-    return true;
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    zje localzje = this.a;
+    if (localzje != null) {
+      localzje.a(paramComponentName);
+    }
   }
 }
 

@@ -1,17 +1,16 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class utz
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  utz(utx paramutx) {}
+  utz(uty paramuty) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    utx.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
+    uty.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

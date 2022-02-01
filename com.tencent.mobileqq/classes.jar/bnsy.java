@@ -1,14 +1,20 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
+import android.app.Activity;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
 
-class bnsy
-  implements MediaPlayer.OnPreparedListener
+public class bnsy
+  implements QQPermissionCallback
 {
-  bnsy(bnss parambnss) {}
+  public bnsy(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, Activity paramActivity) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramMediaPlayer.start();
+    bhlq.b(this.jdField_a_of_type_AndroidAppActivity);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.d(this.jdField_a_of_type_Int);
   }
 }
 

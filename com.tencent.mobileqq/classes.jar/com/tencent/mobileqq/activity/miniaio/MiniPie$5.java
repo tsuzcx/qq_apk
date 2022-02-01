@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import akaj;
+import aklt;
 import android.app.Activity;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import bgsk;
+import bhsm;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 import com.tencent.qphone.base.util.QLog;
 
 public class MiniPie$5
   implements Runnable
 {
-  public MiniPie$5(akaj paramakaj) {}
+  public MiniPie$5(aklt paramaklt) {}
   
   public void run()
   {
@@ -22,9 +22,9 @@ public class MiniPie$5
     if (k <= 0)
     {
       QLog.e(this.this$0.jdField_a_of_type_JavaLangString, 1, "emoHeight <=0 reset to 196dp");
-      i = bgsk.a(0);
+      i = bhsm.a(0);
     }
-    k = akaj.a(this.this$0, this.this$0.jdField_a_of_type_AndroidViewViewGroup);
+    k = aklt.a(this.this$0, this.this$0.jdField_a_of_type_AndroidViewViewGroup);
     int m = this.this$0.jdField_a_of_type_AndroidViewViewGroup.getHeight();
     if (QLog.isColorLevel()) {
       QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "dialogHeight" + m + " emoh " + i + " dY " + k);

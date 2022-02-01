@@ -1,19 +1,15 @@
-import android.os.Handler;
-import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
 
-public class boat
+class boat
+  implements ThreadPool.Job<Void>
 {
-  private static final boaw<Handler, Void> a = new boau();
-  private static boaw<TimerTaskManager, Void> b = new boav();
+  boat(boan paramboan, beum parambeum) {}
   
-  public static Handler a()
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    return (Handler)a.b(null);
-  }
-  
-  public static TimerTaskManager a()
-  {
-    return (TimerTaskManager)b.b(null);
+    boan.a(this.jdField_a_of_type_Boan).a(this.jdField_a_of_type_Beum);
+    return null;
   }
 }
 

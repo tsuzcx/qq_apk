@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.SeekBar;
-import uuw;
+import uvy;
 
 public class RotationSeekBar
   extends SeekBar
@@ -17,7 +17,7 @@ public class RotationSeekBar
   private static float jdField_a_of_type_Float = -1.0F;
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private uuw jdField_a_of_type_Uuw;
+  private uvy jdField_a_of_type_Uvy;
   private float[] jdField_a_of_type_ArrayOfFloat;
   
   public RotationSeekBar(Context paramContext)
@@ -93,8 +93,8 @@ public class RotationSeekBar
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((paramMotionEvent != null) && (paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_Uuw != null)) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_Uuw.a();
+    if ((paramMotionEvent != null) && (paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_Uvy != null)) {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_Uvy.a();
     }
     MotionEvent localMotionEvent;
     if (this.jdField_a_of_type_Int == 0)
@@ -147,9 +147,9 @@ public class RotationSeekBar
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setOnRotationChangeListener(uuw paramuuw)
+  public void setOnRotationChangeListener(uvy paramuvy)
   {
-    this.jdField_a_of_type_Uuw = paramuuw;
+    this.jdField_a_of_type_Uvy = paramuvy;
   }
 }
 

@@ -1,8 +1,33 @@
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
-public abstract interface alec
+class alec
+  implements EIPCOnGetConnectionListener
 {
-  public abstract void a(float paramFloat1, float paramFloat2, int paramInt, View paramView);
+  alec(aleb paramaleb) {}
+  
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      aleb.a(this.a, paramEIPCConnection.procName);
+    }
+    aleb.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "onConnectBind");
+    }
+  }
+  
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      aleb.a(this.a, paramEIPCConnection.procName);
+    }
+    aleb.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "onConnectUnbind");
+    }
+  }
 }
 
 

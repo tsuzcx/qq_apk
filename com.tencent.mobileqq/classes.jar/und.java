@@ -1,21 +1,4 @@
-public class und
-  extends unc
-{
-  public und(int paramInt)
-  {
-    super(paramInt);
-  }
-  
-  String a()
-  {
-    return "officialacc_weishi";
-  }
-  
-  String b()
-  {
-    return "weishi_share_officialacc";
-  }
-}
+public class und {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

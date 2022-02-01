@@ -1,115 +1,68 @@
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class bdze
-  extends bdvl
+  extends bdzd
+  implements bdxk<SpriteNativeView>
 {
-  private float a = 2.0F;
+  private Bitmap a;
+  protected ImageView a;
   
-  public bdze(BaseApplicationImpl paramBaseApplicationImpl)
+  public bdze(SpriteNativeView paramSpriteNativeView)
   {
-    try
-    {
-      this.a = paramBaseApplicationImpl.getResources().getDisplayMetrics().density;
-      return;
-    }
-    catch (Exception paramBaseApplicationImpl) {}
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = paramSpriteNativeView;
+    this.jdField_a_of_type_AndroidWidgetImageView = a();
   }
   
-  public static Bitmap a(Bitmap paramBitmap, double paramDouble1, double paramDouble2)
+  protected ImageView a()
   {
-    Object localObject;
-    if (paramBitmap == null) {
-      localObject = null;
-    }
-    Bitmap localBitmap;
-    do
-    {
-      return localObject;
-      float f1 = paramBitmap.getWidth();
-      float f2 = paramBitmap.getHeight();
-      localObject = new Matrix();
-      ((Matrix)localObject).postScale((float)paramDouble1 / f1, (float)paramDouble2 / f2);
-      localBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, (int)f1, (int)f2, (Matrix)localObject, true);
-      localObject = localBitmap;
-    } while (localBitmap == paramBitmap);
-    paramBitmap.recycle();
-    return localBitmap;
+    return new ImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void a(SpriteNativeView paramSpriteNativeView, Bitmap paramBitmap)
   {
-    URL localURL = paramDownloadParams.url;
-    paramDownloadParams.url = new URL("http", localURL.getAuthority(), localURL.getFile());
-    return super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    paramSpriteNativeView = new FrameLayout.LayoutParams(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramSpriteNativeView);
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2);
+    this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public boolean c()
   {
-    paramDownloadParams = null;
-    try
-    {
-      paramFile = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), null);
-      paramDownloadParams = a(paramFile, this.a * 50.0F, this.a * 50.0F);
-      int i = paramDownloadParams.getWidth();
-      int j = paramDownloadParams.getHeight();
-      paramFile = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-      paramFile.setDensity(160);
-      paramURLDrawableHandler = new Canvas(paramFile);
-      Paint localPaint = new Paint(1);
-      localPaint.setColor(-16777216);
-      Rect localRect = new Rect(0, 0, i, j);
-      RectF localRectF = new RectF(localRect);
-      float f = 10.0F * this.a;
-      paramURLDrawableHandler.drawRoundRect(localRectF, f, f, localPaint);
-      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-      paramURLDrawableHandler.drawBitmap(paramDownloadParams, localRect, localRect, localPaint);
+    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
-    catch (OutOfMemoryError paramFile)
+    boolean bool = super.c();
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      for (;;)
-      {
-        try
-        {
-          if (!paramDownloadParams.isRecycled()) {
-            paramDownloadParams.recycle();
-          }
-          return paramFile;
-        }
-        catch (Throwable paramDownloadParams)
-        {
-          paramDownloadParams.printStackTrace();
-        }
-        paramFile = paramFile;
-        paramFile.printStackTrace();
-        paramFile = paramDownloadParams;
-      }
+      a(this.jdField_a_of_type_Bdxm);
+      float f1 = this.jdField_a_of_type_Bdxm.a;
+      float f2 = b();
+      float f3 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
+      float f4 = this.f;
+      float f5 = this.jdField_a_of_type_Bdxm.b;
+      float f6 = b();
+      float f7 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
+      this.jdField_a_of_type_AndroidWidgetImageView.setX(f1 * f2 - f3);
+      this.jdField_a_of_type_AndroidWidgetImageView.setY(f4 - f5 * f6 - f7);
     }
-    catch (Exception paramFile)
-    {
-      for (;;)
-      {
-        paramFile.printStackTrace();
-        paramFile = paramDownloadParams;
-      }
-    }
-    return paramFile;
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(this.e * b());
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(this.e * b());
+    this.jdField_a_of_type_AndroidWidgetImageView.setRotation(this.g);
+    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(this.jdField_a_of_type_Int * (b() / 255.0F) / 255.0F);
+    return bool;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.addView(this.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
   }
 }
 

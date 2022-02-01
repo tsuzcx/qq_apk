@@ -1,23 +1,8 @@
-import com.tencent.avgame.gameroom.stage.StageView;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.qphone.base.util.QLog;
-
-public class nbs
-  implements mzy
+public abstract interface nbs
 {
-  public nbs(StageView paramStageView) {}
+  public abstract void a(int paramInt);
   
-  public void a(LottieDrawable paramLottieDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StageView", 2, "COUNT_DOWN_5S_JSON onLoad lottieDrawable = " + paramLottieDrawable);
-    }
-    if (paramLottieDrawable != null)
-    {
-      this.a.a = paramLottieDrawable;
-      StageView.a(this.a);
-    }
-  }
+  public abstract void b(int paramInt);
 }
 
 

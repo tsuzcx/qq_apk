@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo;
 
-import amjg;
+import amva;
 
 public class CmShowRscCacheManager$1
   implements Runnable
 {
-  public CmShowRscCacheManager$1(amjg paramamjg) {}
+  public CmShowRscCacheManager$1(amva paramamva) {}
   
   public void run()
   {
-    amjg.a(this.this$0);
+    amva.a(this.this$0);
   }
 }
 

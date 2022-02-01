@@ -1,19 +1,22 @@
-import android.os.Bundle;
-import com.tencent.TMG.utils.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function1;
-import org.jetbrains.annotations.Nullable;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule$requestUpdatePushStatus$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onResult", "", "errorCode", "", "data", "", "bundle", "Landroid/os/Bundle;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qpx
-  extends niv
+public class qpx
+  extends ClickableSpan
 {
-  qpx(Function1 paramFunction1) {}
+  public qpx(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
   
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    QLog.i("RIJPushNotifyModule", 1, "requestUpdatePushStatus response errorCode: " + paramInt);
-    this.a.invoke(Integer.valueOf(paramInt));
+    ozs.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(agej.a(2, 14, this.a.getResources()));
   }
 }
 

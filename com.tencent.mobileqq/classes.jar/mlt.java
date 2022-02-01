@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.beauty.BeautyView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.av.widget.RotateLayout;
 
 public class mlt
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public mlt(BeautyView paramBeautyView) {}
+  private mlt(VideoLayerUI paramVideoLayerUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramDialogInterface.dismiss();
+    VideoLayerUI.a(this.a).setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,8 +1,10 @@
 public class bcps
 {
-  public int a;
-  public String a;
-  public int b;
+  private float jdField_a_of_type_Float;
+  private boolean jdField_a_of_type_Boolean;
+  private float b;
+  
+  public bcps(bcpr parambcpr) {}
 }
 
 

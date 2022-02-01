@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import pwi;
+import pou;
 
 class ReadInJoyChannelPanelFragment$1
   implements Runnable
 {
-  ReadInJoyChannelPanelFragment$1(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, pwi parampwi) {}
+  ReadInJoyChannelPanelFragment$1(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, pou parampou) {}
   
   public void run()
   {

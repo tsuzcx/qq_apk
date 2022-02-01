@@ -11,8 +11,8 @@ class ReplyTextItemBuilder$9$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setTag(2131378258, this.jdField_a_of_type_JavaLangString);
-    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setTag(2131378259, Long.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgSenderUin));
+    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setTag(2131378415, this.jdField_a_of_type_JavaLangString);
+    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setTag(2131378416, Long.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgSenderUin));
     this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidTextSpannableString);
     this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(" " + this.this$0.jdField_b_of_type_JavaLangString);
   }

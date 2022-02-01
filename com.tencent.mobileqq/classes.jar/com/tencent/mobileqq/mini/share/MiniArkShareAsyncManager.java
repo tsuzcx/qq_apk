@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import apoh;
-import aprw;
-import bdsp;
-import bdzi;
-import bdzm;
-import bdzn;
-import biip;
+import aqbx;
+import aqfm;
+import berh;
+import beyb;
+import beyf;
+import beyg;
+import bjjo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -75,7 +75,7 @@ public class MiniArkShareAsyncManager
       }
     }
     label262:
-    for (String str1 = apoh.a(str3, str2);; str1 = str2)
+    for (String str1 = aqbx.a(str3, str2);; str1 = str2)
     {
       Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject1 instanceof QQAppInterface))
@@ -86,7 +86,7 @@ public class MiniArkShareAsyncManager
         {
           localObject2 = ((ArkAppCenter)localObject2).a();
           if (localObject2 != null) {
-            ((aprw)localObject2).a(str3, new MiniArkShareAsyncPreprocessor(paramBundle));
+            ((aqfm)localObject2).a(str3, new MiniArkShareAsyncPreprocessor(paramBundle));
           }
         }
         if (i != 0)
@@ -131,25 +131,25 @@ public class MiniArkShareAsyncManager
       if ((localObject instanceof QQAppInterface))
       {
         localObject = (QQAppInterface)localObject;
-        bdzn localbdzn = new bdzn();
-        localbdzn.jdField_a_of_type_Boolean = true;
-        localbdzn.i = paramString;
-        localbdzn.jdField_c_of_type_Int = 62;
-        localbdzn.jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
-        localbdzn.jdField_c_of_type_JavaLangString = "0";
-        localbdzn.jdField_b_of_type_JavaLangString = String.valueOf(biip.a().a());
-        localbdzn.jdField_b_of_type_Int = 24;
-        localbdzn.jdField_a_of_type_JavaLangString = "miniAppArkShareUploadPicHit";
+        beyg localbeyg = new beyg();
+        localbeyg.jdField_a_of_type_Boolean = true;
+        localbeyg.i = paramString;
+        localbeyg.jdField_c_of_type_Int = 62;
+        localbeyg.jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
+        localbeyg.jdField_c_of_type_JavaLangString = "0";
+        localbeyg.jdField_b_of_type_JavaLangString = String.valueOf(bjjo.a().a());
+        localbeyg.jdField_b_of_type_Int = 24;
+        localbeyg.jdField_a_of_type_JavaLangString = "miniAppArkShareUploadPicHit";
         paramString = new Bdh_extinfo.CommFileExtReq();
         paramString.uint32_action_type.set(0);
         paramString.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
-        localbdzn.jdField_a_of_type_ArrayOfByte = paramString.toByteArray();
+        localbeyg.jdField_a_of_type_ArrayOfByte = paramString.toByteArray();
         paramString = new MiniArkShareAsyncTransProcessorHandler(ThreadManagerV2.getFileThreadLooper(), paramCmdCallback);
-        paramString.addFilter(new Class[] { bdsp.class });
+        paramString.addFilter(new Class[] { berh.class });
         if (((QQAppInterface)localObject).a() != null)
         {
           ((QQAppInterface)localObject).a().a(paramString);
-          ((QQAppInterface)localObject).a().a(localbdzn);
+          ((QQAppInterface)localObject).a().a(localbeyg);
         }
       }
     }
@@ -180,7 +180,7 @@ public class MiniArkShareAsyncManager
         localObject = ((ArkAppCenter)localObject).a();
         if (localObject != null)
         {
-          ((aprw)localObject).a("com.tencent.miniapp", new MiniArkShareAsyncPreprocessor(new Bundle()));
+          ((aqfm)localObject).a("com.tencent.miniapp", new MiniArkShareAsyncPreprocessor(new Bundle()));
           QLog.d("MiniArkShareAsyncManage [miniappArkShare]", 2, "registerMiniArkShareMessageProcessorAfterProcessRestart");
         }
       }

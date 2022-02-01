@@ -1,29 +1,42 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bkgu
+class bkgu
+  extends apcq
 {
-  public static int a(Context paramContext, String paramString)
+  bkgu(bkgt parambkgt, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2, int paramInt2, String paramString3, int paramInt3, String paramString4, String paramString5, String paramString6)
   {
-    return a(paramContext, paramString).versionCode;
+    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString1);
   }
   
-  public static PackageInfo a(Context paramContext, String paramString)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    return paramContext.getPackageManager().getPackageInfo(paramString, 0);
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
-  {
-    try
-    {
-      a(paramContext, paramString);
-      return true;
+    double d2 = 0.0D;
+    if (QLog.isColorLevel()) {
+      QLog.d("QidianManager", 2, "onLocationFinish(): BEGIN errCode=" + paramInt);
     }
-    catch (PackageManager.NameNotFoundException paramContext) {}
-    return false;
+    String str;
+    double d1;
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
+      if (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null)
+      {
+        str = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
+        if (QLog.isColorLevel()) {
+          QLog.d("QidianManager", 2, "onLocationFinish() latitude=" + paramSosoLbsInfo.a.a + ", longitude=" + paramSosoLbsInfo.a.jdField_b_of_type_Double + ", address=" + str);
+        }
+        d1 = paramSosoLbsInfo.a.a;
+        d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkgt.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, d1, d2, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.c, this.d, this.e);
+      return;
+      str = "";
+      break;
+      d1 = 0.0D;
+    }
   }
 }
 

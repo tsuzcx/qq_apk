@@ -1,26 +1,34 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.qcircle.QCircleChatMsgListFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class bape
-  extends Animation
+  extends anyu
 {
-  public bape(CircleBarView paramCircleBarView) {}
+  public bape(QCircleChatMsgListFragment paramQCircleChatMsgListFragment) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
-    CircleBarView.b(this.a, 30.0F);
-    if (CircleBarView.a(this.a) != null)
-    {
-      if (CircleBarView.a(this.a) != null) {
-        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
-      }
-      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a(paramString))) {
+      this.a.a();
     }
-    this.a.postInvalidate();
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QCircleChatMsgListFragment", 2, "onUpdateFriendInfo uin =" + paramString);
+      }
+      int i = 0;
+      if (this.a.a(paramString)) {
+        i = 1;
+      }
+      if (i != 0) {
+        this.a.a();
+      }
+    }
   }
 }
 

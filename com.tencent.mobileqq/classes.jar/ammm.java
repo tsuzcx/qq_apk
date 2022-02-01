@@ -1,21 +1,7 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class ammm
-  implements CompoundButton.OnCheckedChangeListener
-{
-  public ammm(CmGameDebugToolFragment paramCmGameDebugToolFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    CmGameDebugToolFragment.a(this.a).edit().putBoolean("game_whitelist_verify_switch", paramBoolean).commit();
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WebViewFragmentWithArk$Companion;", "", "()V", "ARK_MAX_HEIGHT", "", "KEY_AD_CODE", "", "KEY_APP_META", "KEY_APP_NAME", "KEY_APP_VERSION", "KEY_APP_VIEW", "KEY_IS_FROM_SHARE", "KEY_IS_TO_ARK", "KEY_START_TIME", "KEY_WEB_PROCESS_EXIST", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ammm {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

@@ -1,147 +1,74 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 
 public class avai
 {
-  public static ConcurrentHashMap<String, ArrayList<aval>> a = new ConcurrentHashMap();
-  public static ConcurrentHashMap<String, avak> b = new ConcurrentHashMap();
+  public View a;
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
   
-  public static void a()
+  public void a(Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    synchronized (a)
+    if (paramDrawable == null) {
+      return;
+    }
+    if (paramBoolean1)
     {
-      HashSet localHashSet = new HashSet();
-      Iterator localIterator2 = a.values().iterator();
-      while (localIterator2.hasNext())
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams.addRule(13);
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      if (!paramBoolean2)
       {
-        Iterator localIterator3 = ((ArrayList)localIterator2.next()).iterator();
-        if (localIterator3.hasNext())
-        {
-          aval localaval = (aval)localIterator3.next();
-          localaval.d();
-          localHashSet.add(localaval.d);
+        this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
+        this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bhtq.a(140.0F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+        if (paramInt >= 2) {
+          break;
         }
+        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(null);
+        return;
+        this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
+        this.jdField_a_of_type_AndroidWidgetImageView.setMaxWidth(bhtq.a(120.0F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bhtq.a(120.0F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
       }
-    }
-    Iterator localIterator1 = localObject.iterator();
-    while (localIterator1.hasNext()) {
-      c((String)localIterator1.next());
-    }
-  }
-  
-  public static void a(aval paramaval)
-  {
-    synchronized (a)
-    {
-      String str = paramaval.a();
-      ArrayList localArrayList = (ArrayList)a.get(str);
-      if (localArrayList == null)
+      if (paramInt == 2)
       {
-        localArrayList = new ArrayList();
-        localArrayList.add(paramaval);
-        a.put(str, localArrayList);
-      }
-      while (localArrayList.contains(paramaval)) {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130840141);
         return;
       }
-      localArrayList.add(paramaval);
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    synchronized (a)
-    {
-      aval localaval;
-      do
-      {
-        Iterator localIterator = a.keySet().iterator();
-        Object localObject;
-        while (!((Iterator)localObject).hasNext())
-        {
-          do
-          {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            localObject = (String)localIterator.next();
-          } while (!((String)localObject).endsWith("plugin"));
-          localObject = ((ArrayList)a.get(localObject)).iterator();
-        }
-        localaval = (aval)((Iterator)localObject).next();
-      } while (!((avaj)localaval).a.equals(paramString));
-      localaval.b();
-      localaval.d();
-    }
-  }
-  
-  public static void b(String paramString)
-  {
-    synchronized (a)
-    {
-      Iterator localIterator = a.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (String)localIterator.next();
-        if (((String)localObject).startsWith(paramString))
-        {
-          localObject = ((ArrayList)a.get(localObject)).iterator();
-          if (((Iterator)localObject).hasNext()) {
-            ((aval)((Iterator)localObject).next()).d();
-          }
-        }
-      }
-    }
-    c(paramString);
-  }
-  
-  public static void c(String paramString)
-  {
-    synchronized (a)
-    {
-      avak localavak = (avak)b.get(paramString);
-      if (localavak != null)
-      {
-        localavak.d();
-        b.remove(paramString);
-      }
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130840142);
       return;
     }
-  }
-  
-  public static void d(String paramString)
-  {
-    synchronized (a)
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramDrawable, null, null, null);
+    if (paramDrawable != null)
     {
-      paramString = (avak)b.get(paramString);
-      if (paramString != null) {
-        paramString.b();
-      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }
-  }
-  
-  public static void e(String paramString)
-  {
-    synchronized (a)
-    {
-      if ((avak)b.get(paramString) == null)
-      {
-        avak localavak = new avak(paramString);
-        b.put(paramString, localavak);
-        localavak.a();
-      }
-      return;
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avai
  * JD-Core Version:    0.7.0.1
  */

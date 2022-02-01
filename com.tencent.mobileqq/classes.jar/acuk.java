@@ -1,33 +1,39 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Rect;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxEnterImageView;
-import com.tencent.gdtad.views.videoimax.TransitionContext;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acuk
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public acuk(TransitionContext paramTransitionContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, Rect paramRect) {}
+  public acuk(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    int j = this.jdField_a_of_type_Int;
-    int k = Math.round((0 - this.jdField_a_of_type_Int) * f1);
-    int m = this.b;
-    int n = Math.round((0 - this.b) * f1);
-    int i1 = this.c;
-    int i2 = Math.round((this.d - this.c) * f1);
-    if (this.e < TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).getHeight()) {}
-    for (int i = TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).getHeight();; i = this.e)
+    GdtInterstitialFragmentForJS.a(this.a).a = 1;
+    GdtInterstitialFragmentForJS.a(this.a).b = GdtInterstitialFragmentForJS.a(this.a.getActivity());
+    String str;
+    if (GdtInterstitialFragmentForJS.a(this.a) == null)
     {
-      int i3 = this.f;
-      i = Math.round((i - this.f) * f1);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(k + j, n + m, i2 + i1, i + i3);
-      TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).setClipBoundsCompact(this.jdField_a_of_type_AndroidGraphicsRect);
-      TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).invalidate();
-      acqy.a("TransitionContext", "onAnimationUpdate() mPreviewView.getHeight = [" + TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).getHeight() + "]");
+      str = "ad is not loaded";
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
+    }
+    for (;;)
+    {
+      Toast.makeText(this.a.getActivity().getApplicationContext(), str, 0).show();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (GdtInterstitialFragmentForJS.a(this.a) == null) {
+        str = "ad is loading";
+      } else if (GdtInterstitialFragmentForJS.a(this.a).a() != 0) {
+        str = GdtInterstitialFragmentForJS.a(this.a).a();
+      } else if (GdtInterstitialFragmentForJS.a(this.a).a(this.a.getActivity())) {
+        str = "正在打开插屏";
+      } else {
+        str = "打开插屏错误";
+      }
     }
   }
 }

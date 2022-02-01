@@ -1,6 +1,15 @@
-public abstract interface awij
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+
+public class awij
+  implements aayx
 {
-  public abstract void g();
+  public awij(UiApiPlugin paramUiApiPlugin) {}
+  
+  public void a()
+  {
+    this.a.dispatchJsEvent("qbrowserPullDown", null, null);
+    this.a.h = true;
+  }
 }
 
 

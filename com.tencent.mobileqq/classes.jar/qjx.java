@@ -1,26 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
 class qjx
-  implements pyu
+  implements View.OnTouchListener
 {
-  qjx(qjt paramqjt, RecommendFollowInfo paramRecommendFollowInfo) {}
+  qjx(qjt paramqjt, LinearLayout paramLinearLayout) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
     }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
-      qjt.a(this.jdField_a_of_type_Qjt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-      qjt.a(this.jdField_a_of_type_Qjt).notifyDataSetChanged();
-      return;
-    }
-    QQToast.a(qjt.b(this.jdField_a_of_type_Qjt).getContext(), 1, 2131717086, 0).a();
+    return false;
   }
 }
 

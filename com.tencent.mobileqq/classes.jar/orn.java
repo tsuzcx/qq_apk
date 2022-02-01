@@ -1,25 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.HotPicData;
+import mqq.os.MqqHandler;
 
-class orn
-  extends Handler
+public class orn
+  implements avvs
 {
-  orn(orm paramorm, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public orn(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(HotPicData paramHotPicData)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    orm.a(this.a).set(1);
-    orm.a(this.a, true);
+    this.a.a = paramHotPicData;
+    ReadInJoyCommentComponentFragment.a(this.a, null);
+    ThreadManager.getUIHandler().post(new ReadInJoyCommentComponentFragment.8.1(this));
   }
 }
 

@@ -1,13 +1,10 @@
-import android.util.Size;
-import java.util.Comparator;
-
 public class bcgr
-  implements Comparator<Size>
 {
-  public int a(Size paramSize1, Size paramSize2)
-  {
-    return Long.signum(paramSize1.getWidth() * paramSize1.getHeight() - paramSize2.getWidth() * paramSize2.getHeight());
-  }
+  public int a;
+  public CharSequence a;
+  public String a;
+  
+  public bcgr(bcgq parambcgq) {}
 }
 
 

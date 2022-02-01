@@ -1,75 +1,192 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.events.QCircleSpecialFollowListLoadEvent;
+import com.tencent.biz.qqcircle.events.QCircleSpecialFollowUpdateEvent;
+import com.tencent.biz.qqcircle.manager.QCircleSpecialFollowManager.2;
+import com.tencent.biz.qqcircle.requests.QCircleDoFollowRequest;
+import com.tencent.biz.qqcircle.requests.QCircleGetFollowListRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import mqq.manager.Manager;
-import qqcircle.QQCircleCounter.RedPointInfo;
+import feedcloud.FeedCloudMeta.StRelationInfo;
+import feedcloud.FeedCloudMeta.StUser;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import mqq.app.AppRuntime;
 
 public class vqu
-  implements Manager, vqt
+  implements Handler.Callback
 {
-  private static boolean jdField_a_of_type_Boolean;
-  private final vqr jdField_a_of_type_Vqr;
-  private vqt jdField_a_of_type_Vqt;
-  private final vqx jdField_a_of_type_Vqx;
+  private int jdField_a_of_type_Int;
+  private final aaak jdField_a_of_type_Aaak = aaak.a();
+  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+  private String jdField_a_of_type_JavaLangString;
+  private final Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private final vqy jdField_a_of_type_Vqy = new vqy(this.jdField_a_of_type_AndroidOsHandler, null);
+  private vra jdField_a_of_type_Vra;
+  private boolean jdField_a_of_type_Boolean;
   
-  public vqu(QQAppInterface paramQQAppInterface)
+  private vqu()
   {
-    this.jdField_a_of_type_Vqr = new vqr(paramQQAppInterface);
-    this.jdField_a_of_type_Vqx = new vqx(paramQQAppInterface);
-    boolean bool1 = QzoneConfig.isEeveeSysTemPolling();
-    boolean bool2 = QzoneConfig.isQQCircleUseEeveeRedPoint();
-    if ((bool1) && (bool2)) {
-      this.jdField_a_of_type_Vqt = this.jdField_a_of_type_Vqr;
+    this.jdField_a_of_type_Aaak.a(this.jdField_a_of_type_Vqy);
+  }
+  
+  public static vqu a()
+  {
+    return vqz.a();
+  }
+  
+  private void a(String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Aaak.a(new QCircleSpecialFollowUpdateEvent(paramString, paramBoolean));
+  }
+  
+  private void a(vrb paramvrb, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Aaak.a(new QCircleSpecialFollowListLoadEvent(paramvrb, paramBoolean));
+  }
+  
+  private void b(String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new QCircleSpecialFollowManager.2(this, paramBoolean, paramString));
+  }
+  
+  public int a()
+  {
+    int j = this.jdField_a_of_type_JavaUtilSet.size();
+    int i = j;
+    if (this.jdField_a_of_type_Vra != null) {
+      i = j + 1;
     }
-    for (jdField_a_of_type_Boolean = true;; jdField_a_of_type_Boolean = false)
-    {
-      QLog.e("QCircleRedPointManager", 1, "isQQCircleCurrentUseEeveeRedPoint: " + jdField_a_of_type_Boolean + ", ( isEeveeSysTemPolling: " + bool1 + ", isQQCircleUseEeveeRedPoint: " + bool2 + " )");
+    QLog.d("QCircleSpecialFollowMgr", 4, "getSpecialFollowCnt: " + i);
+    return i;
+  }
+  
+  public void a()
+  {
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    if (str.equals(this.jdField_a_of_type_JavaLangString)) {
       return;
-      this.jdField_a_of_type_Vqt = this.jdField_a_of_type_Vqx;
     }
+    this.jdField_a_of_type_JavaLangString = str;
+    try
+    {
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaUtilSet.clear();
+      return;
+    }
+    finally {}
   }
   
-  private vqt a()
+  public void a(FeedCloudMeta.StUser paramStUser, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Vqt;
+    int i = 0;
+    String str = paramStUser.id.get();
+    QLog.d("QCircleSpecialFollowMgr", 4, "doSpecialFollow: " + str + " " + paramBoolean);
+    if (TextUtils.isEmpty(str))
+    {
+      b("设置失败", false);
+      return;
+    }
+    if (paramBoolean) {
+      i = 1;
+    }
+    paramStUser = new QCircleDoFollowRequest(paramStUser, i, null, true);
+    VSNetworkHelper.a().a(paramStUser, new vqv(this, paramBoolean, str));
   }
   
-  public static boolean a()
+  public void b()
   {
-    return jdField_a_of_type_Boolean;
+    try
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        return;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Int += 1;
+      int i = this.jdField_a_of_type_Int;
+      QLog.d("QCircleSpecialFollowMgr", 4, "updateSpecialFollowList: " + i);
+      QCircleGetFollowListRequest localQCircleGetFollowListRequest = new QCircleGetFollowListRequest(null, 0L, true);
+      VSNetworkHelper.a().a(localQCircleGetFollowListRequest, new vqw(this, i));
+      return;
+    }
+    finally {}
   }
   
-  public QQCircleCounter.RedPointInfo a(String paramString)
+  public void c()
   {
-    return a().a(paramString);
+    if (this.jdField_a_of_type_Vra == null)
+    {
+      QLog.w("QCircleSpecialFollowMgr", 1, "loadMoreSpecialFollowList: wrong");
+      b();
+      return;
+    }
+    vra localvra = this.jdField_a_of_type_Vra;
+    QCircleGetFollowListRequest localQCircleGetFollowListRequest = new QCircleGetFollowListRequest(vra.a(localvra), vra.a(localvra), true);
+    VSNetworkHelper.a().a(localQCircleGetFollowListRequest, new vqx(this, localvra));
   }
   
-  public void a(String paramString)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Vqr.b(paramString);
-    this.jdField_a_of_type_Vqx.b(paramString);
-  }
-  
-  public void a(String paramString, vqv paramvqv, boolean paramBoolean)
-  {
-    a().a(paramString, paramvqv, paramBoolean);
-  }
-  
-  public void a(String paramString, vqw paramvqw)
-  {
-    this.jdField_a_of_type_Vqr.a(paramString, paramvqw);
-    this.jdField_a_of_type_Vqx.a(paramString, paramvqw);
-  }
-  
-  public QQCircleCounter.RedPointInfo b(String paramString)
-  {
-    return a().b(paramString);
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_Vqr.onDestroy();
-    this.jdField_a_of_type_Vqx.onDestroy();
+    Iterator localIterator;
+    FeedCloudMeta.StRelationInfo localStRelationInfo;
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 1001: 
+      paramMessage = (String)paramMessage.obj;
+      QLog.d("QCircleSpecialFollowMgr", 1, "handleMessage: follow " + paramMessage);
+      this.jdField_a_of_type_JavaUtilSet.add(paramMessage);
+      a(paramMessage, true);
+      return true;
+    case 1002: 
+      paramMessage = (String)paramMessage.obj;
+      QLog.d("QCircleSpecialFollowMgr", 1, "handleMessage: cancel " + paramMessage);
+      this.jdField_a_of_type_JavaUtilSet.remove(paramMessage);
+      a(paramMessage, false);
+      if ((this.jdField_a_of_type_JavaUtilSet.size() < 99) && (this.jdField_a_of_type_Vra != null)) {
+        c();
+      }
+      return true;
+    case 1003: 
+      this.jdField_a_of_type_JavaUtilSet.clear();
+      paramMessage = (vrb)paramMessage.obj;
+      QLog.d("QCircleSpecialFollowMgr", 1, "handleMessage: update " + vrb.a(paramMessage) + " " + paramMessage.jdField_a_of_type_JavaUtilList.size());
+      localIterator = paramMessage.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localStRelationInfo = (FeedCloudMeta.StRelationInfo)localIterator.next();
+        this.jdField_a_of_type_JavaUtilSet.add(localStRelationInfo.id.get());
+      }
+      this.jdField_a_of_type_Vra = paramMessage.jdField_a_of_type_Vra;
+      a(paramMessage, true);
+      return true;
+    case 1004: 
+      paramMessage = (vrb)paramMessage.obj;
+      QLog.d("QCircleSpecialFollowMgr", 1, "handleMessage: more " + vrb.a(paramMessage) + " " + paramMessage.jdField_a_of_type_JavaUtilList.size());
+      if ((this.jdField_a_of_type_Vra == null) || (vra.a(this.jdField_a_of_type_Vra) != vrb.a(paramMessage))) {
+        return true;
+      }
+      localIterator = paramMessage.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localStRelationInfo = (FeedCloudMeta.StRelationInfo)localIterator.next();
+        this.jdField_a_of_type_JavaUtilSet.add(localStRelationInfo.id.get());
+      }
+      this.jdField_a_of_type_Vra = paramMessage.jdField_a_of_type_Vra;
+      a(paramMessage, false);
+      return true;
+    }
+    a(null, true);
+    return true;
   }
 }
 

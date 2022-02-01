@@ -1,170 +1,66 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Canvas;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tribe.async.async.JobContext;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.util.WeakReference;
 
-public class bpsh
-  extends bpsv<bpsf, bpsf>
-  implements wjy
+class bpsh
+  implements beuq
 {
-  public final int a;
-  public final String a;
-  public final WeakReference<bozw> a;
-  public final WeakReference<bozx> b;
+  bpsh(bpsg parambpsg) {}
   
-  public bpsh(bozw parambozw, bozx parambozx, int paramInt)
+  public void onResp(bevm arg1)
   {
-    this(parambozw, parambozx, null, paramInt);
-  }
-  
-  public bpsh(bozw parambozw, bozx parambozx, String paramString, int paramInt)
-  {
-    if (parambozw == null) {
-      throw new NullPointerException("doodleLayout should not be null");
+    bpsf localbpsf = (bpsf)???.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("DText", 2, "onResp, url is: " + localbpsf.jdField_a_of_type_JavaLangString + " http status: " + ???.c);
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambozw);
-    this.b = new WeakReference(parambozx);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void a(JobContext paramJobContext, bpsf parambpsf)
-  {
-    long l1 = SystemClock.uptimeMillis();
-    paramJobContext = parambpsf.jdField_a_of_type_JavaLangString;
-    if (TextUtils.isEmpty(paramJobContext))
-    {
-      super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
-      yqu.b("take_video", "create_doodle_result", 0, -1, new String[0]);
-      return;
-    }
-    bozw localbozw = (bozw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject = (bozx)this.b.get();
-    Bitmap localBitmap;
-    String str;
-    if ((localbozw != null) && ((!localbozw.a(this.jdField_a_of_type_Int)) || ((localObject != null) && (((bozx)localObject).a(this.jdField_a_of_type_Int)))))
-    {
-      localBitmap = localbozw.a(this.jdField_a_of_type_Int, true);
-      str = this.jdField_a_of_type_JavaLangString;
-      if (str != null) {
-        break label682;
-      }
-      str = bpsy.a(parambpsf.jdField_a_of_type_Int, parambpsf.b, ".png");
-      if (localBitmap != null) {
-        if (localObject == null) {}
-      }
-    }
-    for (;;)
-    {
-      try
+    bpsg.a(this.a, localbpsf);
+    if ((bpsg.a(this.a).b(localbpsf)) && (bpsg.a(this.a).a(localbpsf))) {}
+    for (boolean bool = true;; bool = false) {
+      for (;;)
       {
-        if (((bozx)localObject).a(this.jdField_a_of_type_Int)) {
-          ((bozx)localObject).a(this.jdField_a_of_type_Int, new Canvas(localBitmap), localBitmap.getWidth(), localBitmap.getHeight());
-        }
-        localObject = new BitmapFactory.Options();
-        ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-        try
+        int i;
+        synchronized (bpsg.a(this.a))
         {
-          bgmo.a(paramJobContext, (BitmapFactory.Options)localObject);
-          m = ((BitmapFactory.Options)localObject).outWidth;
-          n = ((BitmapFactory.Options)localObject).outHeight;
-          if ((parambpsf.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 14) && (parambpsf.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.d()) && (parambpsf.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a() < parambpsf.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b())) {
-            break label685;
-          }
-          if (parambpsf.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 14) {
-            continue;
-          }
-        }
-        catch (OutOfMemoryError paramJobContext)
-        {
-          int m;
-          int n;
-          int k;
-          int i;
-          long l2;
-          yqp.b("Q.qqstory.publish.edit.GenerateDynamicDoodleImage", "decode video thumb failed %s", paramJobContext);
-          super.notifyError(new BitmapError("Q.qqstory.publish.edit.GenerateDynamicDoodleImage", 6));
-          return;
-        }
-        k = n;
-        i = m;
-        if (m > n)
-        {
-          k = n;
-          i = m;
-          if (j != 0)
+          ArrayList localArrayList = (ArrayList)bpsg.a(this.a).remove(localbpsf.jdField_a_of_type_JavaLangString);
+          i = localArrayList.size() - 1;
+          if (i >= 0)
           {
-            i = ((BitmapFactory.Options)localObject).outHeight;
-            k = ((BitmapFactory.Options)localObject).outWidth;
+            WeakReference localWeakReference = (WeakReference)localArrayList.get(i);
+            if (localWeakReference.get() != null) {
+              ((bpsi)localWeakReference.get()).a(bool, localbpsf.jdField_a_of_type_JavaLangString);
+            }
           }
-        }
-        paramJobContext = zkh.c(localBitmap, i, k, true, false);
-        i = bpsq.a(parambpsf);
-        if (i != 0)
-        {
-          paramJobContext = zlx.a(paramJobContext, i);
-          if (paramJobContext == null) {
-            break label673;
-          }
-          bool = zkh.a(paramJobContext, Bitmap.CompressFormat.PNG, 60, str);
-          localbozw.a(localBitmap);
-          if (paramJobContext != localBitmap) {
-            zkh.a(paramJobContext);
-          }
-          if ((paramJobContext != null) && (bool))
+          else
           {
-            yqp.b("Q.qqstory.publish.edit.GenerateDynamicDoodleImage", "resize and crop original doodle image success");
-            l2 = SystemClock.uptimeMillis();
-            yqu.b("take_video", "create_doodle_time", 0, 0, new String[] { "" + (l2 - l1) });
-            yqu.b("take_video", "create_doodle_result", 0, 0, new String[0]);
-            parambpsf.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.putExtra("dynamic_Sticker_image_path", str);
-            super.notifyResult(parambpsf);
             return;
-            j = 0;
           }
         }
-        else
-        {
-          if ((((BitmapFactory.Options)localObject).outWidth <= ((BitmapFactory.Options)localObject).outHeight) || ((parambpsf.jdField_a_of_type_Int != 12) && (parambpsf.jdField_a_of_type_Int != 11))) {
-            break label679;
-          }
-          paramJobContext = zlx.a(paramJobContext, 270.0F);
-          continue;
-        }
-        yqp.d("Q.qqstory.publish.edit.GenerateDynamicDoodleImage", "resize and save doodle image failed");
+        i -= 1;
       }
-      finally
+    }
+  }
+  
+  public void onUpdateProgeress(bevl arg1, long paramLong1, long paramLong2)
+  {
+    bpsf localbpsf = (bpsf)???.a();
+    synchronized (bpsg.a(this.a))
+    {
+      Iterator localIterator = ((ArrayList)bpsg.a(this.a).get(localbpsf.jdField_a_of_type_JavaLangString)).iterator();
+      while (localIterator.hasNext())
       {
-        localbozw.a(localBitmap);
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if (localWeakReference.get() != null) {
+          ((bpsi)localWeakReference.get()).a((float)(100L * paramLong1 / paramLong2), localbpsf.jdField_a_of_type_JavaLangString, localbpsf.jdField_a_of_type_Int);
+        }
       }
-      yqu.b("take_video", "create_doodle_result", 0, -2, new String[0]);
-      super.notifyError(new ErrorMessage(-1, "Resize or store doodle failed"));
-      return;
-      yqp.d("Q.qqstory.publish.edit.GenerateDynamicDoodleImage", "get doodle bitmap failed");
-      yqu.b("take_video", "create_doodle_result", 0, -2, new String[0]);
-      super.notifyError(new ErrorMessage(-1, "DoodleLayout get bitmap failed"));
-      return;
-      yqp.d("Q.qqstory.publish.edit.GenerateDynamicDoodleImage", "do not generate doodle image because doodle is empty");
-      super.notifyResult(parambpsf);
-      return;
-      label673:
-      boolean bool = false;
-      continue;
-      label679:
-      continue;
-      label682:
-      break;
-      label685:
-      int j = 1;
+    }
+    float f = (float)paramLong1 * 100.0F / (float)paramLong2;
+    localObject.b = ((int)f);
+    if (QLog.isColorLevel()) {
+      QLog.i("DText", 2, "onResDownloadProgressUpdate url: " + localObject.jdField_a_of_type_JavaLangString + " progress: " + f + " curOffset: " + paramLong1 + " totalLen: " + paramLong2);
     }
   }
 }

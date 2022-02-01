@@ -1,39 +1,18 @@
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.BaseVMPeakActivity;
 
-public abstract interface boty
+class boty
+  implements View.OnClickListener
 {
-  public abstract int a();
+  boty(botw parambotw) {}
   
-  public abstract void a(int paramInt, QIMFilterCategoryItem paramQIMFilterCategoryItem);
-  
-  public abstract void a(int paramInt, Object paramObject);
-  
-  public abstract void a(int paramInt, Object... paramVarArgs);
-  
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void d(int paramInt);
-  
-  public abstract void e(int paramInt);
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void k();
+  public void onClick(View paramView)
+  {
+    botw.a(this.a).finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

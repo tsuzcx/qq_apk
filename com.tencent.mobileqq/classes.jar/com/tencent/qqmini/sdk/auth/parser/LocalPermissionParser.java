@@ -185,7 +185,7 @@ public final class LocalPermissionParser
       localPermissionInfo = new PermissionInfo();
       i = 0;
       if (i >= paramXmlPullParser.getAttributeCount()) {
-        break label235;
+        break label259;
       }
       str1 = paramXmlPullParser.getAttributeName(i);
       str2 = paramXmlPullParser.getAttributeValue(i);
@@ -208,21 +208,27 @@ public final class LocalPermissionParser
       localPermissionInfo.builtIn = Boolean.parseBoolean(str2);
     } else if ("min-sdk-version".equals(str1)) {
       if (!isNumeric(str2)) {
-        break label271;
+        break label295;
       }
     }
-    label271:
+    label259:
+    label288:
+    label295:
     for (int j = Integer.parseInt(str2);; j = 1)
     {
       if (Build.VERSION.SDK_INT < j)
       {
         Log.i("PermissionParser", "Ignore permission " + localPermissionInfo + ". Required min-sdk-version is " + j);
         return null;
-        label235:
-        if (StringUtil.isEmpty(localPermissionInfo.rejectDescription)) {
-          localPermissionInfo.rejectDescription = this.mContext.getString(R.string.mini_sdk_perm_desc_default_reject);
+        if ("report_sub_action".endsWith(str1))
+        {
+          localPermissionInfo.reportSubAction = getStringByAttribute(str2);
+          break label288;
+          if (StringUtil.isEmpty(localPermissionInfo.rejectDescription)) {
+            localPermissionInfo.rejectDescription = this.mContext.getString(R.string.mini_sdk_perm_desc_default_reject);
+          }
+          return localPermissionInfo;
         }
-        return localPermissionInfo;
       }
       i += 1;
       break;

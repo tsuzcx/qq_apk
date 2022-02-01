@@ -1,26 +1,33 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.List;
 
-public class yls
-  implements wld<ylu, ylv>
+class yls
+  extends SimpleObserver<yff>
 {
-  private WeakReference<ylr> a;
+  yls(ylr paramylr) {}
   
-  public yls(ylr paramylr)
+  public void a(yff paramyff)
   {
-    this.a = new WeakReference(paramylr);
+    super.onNext(paramyff);
+    if (paramyff.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      wse localwse = (wse)wth.a(17);
+      localwse.a(paramyff.jdField_a_of_type_JavaUtilList, paramyff.jdField_a_of_type_JavaLangString, false, false);
+      paramyff.jdField_a_of_type_JavaUtilList.addAll(localwse.b(paramyff.jdField_a_of_type_JavaLangString, false));
+    }
+    wjj.a().dispatch(paramyff);
+    this.a.b();
+    yuk.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull next");
   }
   
-  public void a(@NonNull ylu paramylu, @Nullable ylv paramylv, @NonNull ErrorMessage paramErrorMessage)
+  public void onError(@NonNull Error paramError)
   {
-    yqp.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
-    ylr localylr = (ylr)this.a.get();
-    if (localylr == null) {
-      return;
-    }
-    localylr.a(paramylu, paramylv, paramErrorMessage);
+    super.onError(paramError);
+    this.a.b();
+    yuk.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull error", paramError);
   }
 }
 

@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class bbbr
-  implements DialogInterface.OnClickListener
+class bbbr
+  implements Comparator<Map.Entry<String, Long>>
 {
-  public bbbr(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  bbbr(bbbq parambbbq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(Map.Entry<String, Long> paramEntry1, Map.Entry<String, Long> paramEntry2)
   {
-    bcst.b(null, "dc00898", "", "", "0X800A98D", "0X800A98D", 2, 0, "0", "0", "", "");
+    return ((Long)paramEntry2.getValue()).compareTo((Long)paramEntry1.getValue());
   }
 }
 

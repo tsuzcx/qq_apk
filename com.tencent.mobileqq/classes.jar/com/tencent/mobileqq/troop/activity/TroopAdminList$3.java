@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bglf;
+import bhlg;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +16,7 @@ class TroopAdminList$3
     while (i < j)
     {
       String str = (String)((Map)this.this$0.a.get(i)).get("uin");
-      ((Map)this.this$0.a.get(i)).put("nick", bglf.j(this.this$0.app, str));
+      ((Map)this.this$0.a.get(i)).put("nick", bhlg.j(this.this$0.app, str));
       i += 1;
     }
     this.this$0.runOnUiThread(new TroopAdminList.3.1(this));

@@ -1,6 +1,32 @@
-public abstract interface aqhf
+import android.content.Context;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.List;
+
+public class aqhf
+  extends aqhe
 {
-  public abstract long a();
+  private float[] d = new float[16];
+  
+  public aqhf(Context paramContext, int paramInt, SensorManager paramSensorManager, aqgw paramaqgw)
+  {
+    super(paramContext, paramInt, paramSensorManager, paramaqgw);
+    paramContext = paramSensorManager.getDefaultSensor(15);
+    if ((Build.VERSION.SDK_INT >= 18) && (paramContext != null))
+    {
+      this.a.add(paramContext);
+      return;
+    }
+    throw new OrientationProviderNotFound(String.valueOf(15));
+  }
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    aqgy.a(this.d, paramSensorEvent);
+    super.a(this.d);
+  }
 }
 
 

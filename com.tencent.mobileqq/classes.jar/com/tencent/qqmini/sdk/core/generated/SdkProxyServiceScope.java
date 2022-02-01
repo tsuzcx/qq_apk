@@ -39,11 +39,11 @@ public final class SdkProxyServiceScope
     PROXY_SERVICES.put(DownloaderProxy.class, DownloaderProxyDefault.class);
     PROXY_SERVICES.put(NavigationProxy.class, NavigationProxyDefault.class);
     PROXY_SERVICES.put(RequestStrategyProxy.class, RequestStrategyProxyDefault.class);
-    PROXY_SERVICES.put(WnsConfigProxy.class, WnsConfigProxyDefault.class);
     PROXY_SERVICES.put(MusicPlayerProxy.class, MusicPlayerProxyDefault.class);
+    PROXY_SERVICES.put(WnsConfigProxy.class, WnsConfigProxyDefault.class);
+    PROXY_SERVICES.put(KingCardProxy.class, KingCardProxyDefault.class);
     PROXY_SERVICES.put(ChannelProxy.class, ChannelProxyDefault.class);
     PROXY_SERVICES.put(IMiniAppNotifyProxy.class, MiniAppNotifyProxyDefault.class);
-    PROXY_SERVICES.put(KingCardProxy.class, KingCardProxyDefault.class);
     PROXY_SERVICES.put(ShareProxy.class, ShareProxyDefault.class);
   }
 }

@@ -1,17 +1,44 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
 class agzc
-  extends ahbl
+  extends Handler
 {
-  agzc(agwz paramagwz)
+  agzc(agzb paramagzb, Looper paramLooper)
   {
-    super(paramagwz, null);
+    super(paramLooper);
   }
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void handleMessage(Message paramMessage)
   {
-    return new ahbx(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (paramMessage.obj == null)
+    {
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 4: 
+        agzb.a(this.a);
+        return;
+      }
+      agzb.a(this.a, true);
+      return;
+    }
+    WeakReference localWeakReference = (WeakReference)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      agzb.a(this.a, localWeakReference);
+      return;
+    case 2: 
+      agzb.b(this.a, localWeakReference);
+      return;
+    }
+    agzb.c(this.a, localWeakReference);
   }
 }
 

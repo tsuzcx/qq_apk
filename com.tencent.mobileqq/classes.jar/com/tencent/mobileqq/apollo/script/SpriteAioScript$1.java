@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.script;
 
-import amkg;
-import amty;
-import amug;
-import anaw;
+import amwa;
 import android.text.TextUtils;
-import anec;
+import anfs;
+import anga;
+import anmq;
+import anpx;
 import com.tencent.mobileqq.apollo.ApolloEngine;
 import com.tencent.mobileqq.apollo.ApolloRenderDriver;
 import com.tencent.mobileqq.apollo.IApolloRunnableTask;
@@ -14,7 +14,7 @@ import com.tencent.qphone.base.util.QLog;
 public class SpriteAioScript$1
   extends IApolloRunnableTask
 {
-  public SpriteAioScript$1(amty paramamty, String paramString, amkg paramamkg, int paramInt, boolean paramBoolean) {}
+  public SpriteAioScript$1(anfs paramanfs, String paramString, amwa paramamwa, int paramInt, boolean paramBoolean) {}
   
   public int a()
   {
@@ -43,23 +43,23 @@ public class SpriteAioScript$1
       QLog.i("cmshow_scripted_SpriteAioScript", 1, "TraceReport exe Js:" + this.jdField_a_of_type_JavaLangString.length());
     }
     if ((this.jdField_a_of_type_JavaLangString.startsWith("initDrawerInfoSprite")) || (this.jdField_a_of_type_JavaLangString.startsWith("initSprite"))) {
-      anaw.a(this.this$0.a.a(), 350, 0, new Object[] { "enter exeInitSprite" });
+      anmq.a(this.this$0.a.a(), 350, 0, new Object[] { "enter exeInitSprite" });
     }
-    if ((this.jdField_a_of_type_Amkg != null) && (this.jdField_a_of_type_Amkg.getWorker() != null) && (this.jdField_a_of_type_Amkg.getWorker().a != null)) {
-      this.jdField_a_of_type_Amkg.getWorker().a.a(this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Amwa != null) && (this.jdField_a_of_type_Amwa.getWorker() != null) && (this.jdField_a_of_type_Amwa.getWorker().a != null)) {
+      this.jdField_a_of_type_Amwa.getWorker().a.a(this.jdField_a_of_type_JavaLangString);
     }
     if (QLog.isColorLevel())
     {
       if (!this.jdField_a_of_type_JavaLangString.contains("CMShowDefActionName")) {
         break label164;
       }
-      anec.b("exeCmshow0");
+      anpx.b("exeCmshow0");
     }
     label164:
     while (!this.jdField_a_of_type_JavaLangString.contains("commonInit")) {
       return;
     }
-    anec.b("exeCommon");
+    anpx.b("exeCommon");
   }
 }
 

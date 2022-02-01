@@ -1,20 +1,11 @@
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import android.graphics.Rect;
 
-class bhtg
-  implements bhtl<oidb_0x8ed.RspBody>
+final class bhtg
+  implements bhtk<Rect>
 {
-  bhtg(bhte parambhte, bhtl parambhtl) {}
-  
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
   {
-    if (paramInt == 0) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WerewolvesHandler", 2, "startAnotherRound, quitFailed: errorCode :" + paramInt);
-    }
-    this.jdField_a_of_type_Bhtl.a(-1, null);
+    return new Rect(paramRect1.left + (int)((paramRect2.left - paramRect1.left) * paramFloat), paramRect1.top + (int)((paramRect2.top - paramRect1.top) * paramFloat), paramRect1.right + (int)((paramRect2.right - paramRect1.right) * paramFloat), paramRect1.bottom + (int)((paramRect2.bottom - paramRect1.bottom) * paramFloat));
   }
 }
 

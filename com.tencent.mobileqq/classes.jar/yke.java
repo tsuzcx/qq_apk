@@ -1,80 +1,62 @@
 import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.view.View;
+import android.content.res.Resources;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class yke
-  implements ykf
+public class yke
 {
-  protected Activity a;
+  public static int a;
+  public static int b = 2;
+  public Activity a;
+  public String a;
+  private List<zsv> a;
+  public yqx a;
+  public int c;
+  public int d;
   
-  public Activity a()
+  static
   {
-    return this.a;
+    jdField_a_of_type_Int = 1;
   }
   
-  public View a(int paramInt)
+  public yke(Activity paramActivity, int paramInt1, String paramString, int paramInt2, yqx paramyqx)
   {
-    Activity localActivity = this.a;
-    if (localActivity != null) {
-      return localActivity.findViewById(paramInt);
-    }
-    yqp.e(getClass().getSimpleName(), "findViewById can not access after detach");
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt)
-  {
-    Activity localActivity = this.a;
-    if (localActivity != null)
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.d = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramInt2;
+    this.jdField_a_of_type_Yqx = paramyqx;
+    if (paramInt2 == jdField_a_of_type_Int)
     {
-      localActivity.setContentView(paramInt);
+      a();
       return;
     }
-    yqp.e(getClass().getSimpleName(), "setContentView can not access after detach");
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(int paramInt, Intent paramIntent)
-  {
-    Activity localActivity = this.a;
-    if (localActivity != null)
+    if (paramInt2 == b)
     {
-      localActivity.setResult(paramInt, paramIntent);
+      b();
       return;
     }
-    yqp.e(getClass().getSimpleName(), "finish can not access after detach");
+    throw new IllegalStateException("setup profile list error because unknown list type.");
   }
   
-  public void a(@NonNull Activity paramActivity)
+  private void a()
   {
-    this.a = paramActivity;
+    this.jdField_a_of_type_JavaUtilList.add(new yks(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_JavaUtilList.add(new ykq(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_AndroidAppActivity, 12, this.jdField_a_of_type_Yqx, false));
+    this.jdField_a_of_type_JavaUtilList.add(new ykp(this.jdField_a_of_type_AndroidAppActivity, "FeedSegment", this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131698607), 2130846612, 2130846613));
   }
   
-  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
+  private void b()
   {
-    this.a = null;
+    this.jdField_a_of_type_JavaUtilList.add(new yks(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_JavaUtilList.add(new yku(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_JavaUtilList.add(new ykt(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
   }
   
-  public void e()
+  public List<zsv> a()
   {
-    Activity localActivity = this.a;
-    if (localActivity != null)
-    {
-      localActivity.finish();
-      return;
-    }
-    yqp.e(getClass().getSimpleName(), "finish can not access after detach");
+    return this.jdField_a_of_type_JavaUtilList;
   }
 }
 

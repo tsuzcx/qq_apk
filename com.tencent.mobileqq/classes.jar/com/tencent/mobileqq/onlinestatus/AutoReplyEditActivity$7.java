@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import bkft;
+import blgx;
 
 class AutoReplyEditActivity$7
   implements Runnable
@@ -9,7 +9,7 @@ class AutoReplyEditActivity$7
   
   public void run()
   {
-    bkft.a(AutoReplyEditActivity.a(this.this$0));
+    blgx.a(AutoReplyEditActivity.a(this.this$0));
   }
 }
 

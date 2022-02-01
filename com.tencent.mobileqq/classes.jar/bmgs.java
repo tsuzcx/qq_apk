@@ -1,12 +1,8 @@
-public class bmgs
+import cooperation.plugin.PluginInfo;
+
+public abstract interface bmgs
 {
-  public static bmgp a(String paramString, int paramInt)
-  {
-    if (paramInt >= 24) {
-      return new bmgt();
-    }
-    return new bmgr();
-  }
+  public abstract void a(String paramString, PluginInfo paramPluginInfo, bmgk parambmgk);
 }
 
 

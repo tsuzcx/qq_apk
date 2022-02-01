@@ -1,27 +1,6 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.camera.CameraUtils;
-
-public class moq
-  extends mqf
+public abstract interface moq
 {
-  public lfe a;
-  public ljd a;
-  public mbx a;
-  
-  moq(moy parammoy)
-  {
-    super(parammoy);
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_Ljd = new mor(this);
-    this.jdField_a_of_type_Lfe = new mos(this);
-    this.jdField_a_of_type_Mbx = new mot(this);
-    CameraUtils.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication()).a(this.jdField_a_of_type_Ljd);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Lfe);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Mbx);
-  }
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 

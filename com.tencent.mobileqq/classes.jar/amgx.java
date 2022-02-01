@@ -1,439 +1,442 @@
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Process;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.apollo.ApolloGameArkHandler.1;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.mediadevice.EncodeThread;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.LRULinkedHashMap;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.File;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class amgx
+  extends AsyncTask<Void, Void, Integer>
 {
-  public static final LRULinkedHashMap<String, String> a;
-  private WeakReference<QQAppInterface> a;
+  public static ConcurrentHashMap<Long, amgx> a;
+  private static zqi jdField_a_of_type_Zqi;
+  private int jdField_a_of_type_Int;
+  private amha jdField_a_of_type_Amha = new amgz(this);
+  private amhc jdField_a_of_type_Amhc;
+  private amhd jdField_a_of_type_Amhd;
+  private Context jdField_a_of_type_AndroidContentContext;
+  public PublishVideoEntry a;
+  public MessageForShortVideo a;
+  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean = true;
+  private byte[] jdField_b_of_type_ArrayOfByte;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  private String jdField_d_of_type_JavaLangString;
+  private boolean jdField_d_of_type_Boolean;
+  private String jdField_e_of_type_JavaLangString;
+  private boolean jdField_e_of_type_Boolean;
+  private boolean f;
   
   static
   {
-    jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(50);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public amgx(QQAppInterface paramQQAppInterface)
+  public amgx(Context paramContext, String paramString, boolean paramBoolean, amhd paramamhd)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this(paramContext, paramString, paramBoolean, paramamhd, false);
   }
   
-  private String a(MessageForApollo paramMessageForApollo)
+  public amgx(Context paramContext, String paramString, boolean paramBoolean1, amhd paramamhd, boolean paramBoolean2)
   {
-    if ((a() == null) || (paramMessageForApollo == null)) {
-      return "com.tencent.cmshow";
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Amhd = paramamhd;
+    this.jdField_c_of_type_Boolean = paramBoolean1;
+    if (paramamhd != null) {
+      this.jdField_b_of_type_JavaLangString = paramamhd.jdField_a_of_type_JavaLangString;
     }
-    if (paramMessageForApollo.istroop == 1036) {
-      return "com.tencent.cmgame.social";
-    }
-    if (paramMessageForApollo.isHasOwnArk())
+    this.jdField_d_of_type_Boolean = paramBoolean2;
+  }
+  
+  public amgx(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, boolean paramBoolean, amhd paramamhd, MessageForShortVideo paramMessageForShortVideo)
+  {
+    this(paramContext, paramString, paramBoolean, paramamhd, false);
+    if ((paramMessageForShortVideo != null) && (paramMessageForShortVideo.busiType == 1) && (paramQQAppInterface != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQ_CmGame_CmGameTemp", 2, new Object[] { "[getArkAppName], msg.gameId:", Integer.valueOf(paramMessageForApollo.gameId), " hasOwnArk." });
-      }
-      return "com.tencent.cmshow." + paramMessageForApollo.gameId;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
+      paramMessageForShortVideo.videoFileStatus = 998;
     }
-    return "com.tencent.cmshow";
-  }
-  
-  private JSONArray a(List<Long> paramList, int paramInt, String paramString)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return null;
-    }
-    for (;;)
-    {
-      JSONArray localJSONArray;
-      int i;
-      String str;
-      JSONObject localJSONObject;
-      try
-      {
-        localJSONArray = new JSONArray();
-        int j = paramList.size();
-        i = 0;
-        if (i >= j) {
-          break label213;
-        }
-        str = String.valueOf(paramList.get(i));
-        if (TextUtils.isEmpty(str))
-        {
-          QLog.w("QQ_CmGame_CmGameTemp", 1, "[getPlayerInfo], uin is null.");
-        }
-        else
-        {
-          localJSONObject = new JSONObject();
-          localJSONObject.put("uin", str);
-          localObject = a();
-          if (localObject == null) {
-            break;
-          }
-          if (str.equals(((QQAppInterface)localObject).getCurrentAccountUin()))
-          {
-            localObject = ((QQAppInterface)localObject).getCurrentNickname();
-            localJSONObject.put("nickname", localObject);
-            localObject = a(str);
-            if (TextUtils.isEmpty((CharSequence)localObject)) {
-              break label200;
-            }
-            localJSONObject.put("avatarUrl", localObject);
-            localJSONArray.put(localJSONObject);
-          }
-        }
-      }
-      catch (Throwable paramList)
-      {
-        QLog.e("QQ_CmGame_CmGameTemp", 1, paramList, new Object[0]);
-        return null;
-      }
-      Object localObject = amuo.a((QQAppInterface)localObject, paramInt, str, paramString, true);
-      continue;
-      label200:
-      localJSONObject.put("avatarUrl", "");
-      continue;
-      label213:
-      return localJSONArray;
-      i += 1;
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    ThreadManager.post(new ApolloGameArkHandler.1(this, paramString), 5, null, true);
-  }
-  
-  public QQAppInterface a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    return null;
-  }
-  
-  public MessageForArkApp a(MessageForApollo paramMessageForApollo, MessageForArkApp paramMessageForArkApp)
-  {
-    MessageForArkApp localMessageForArkApp = paramMessageForArkApp;
-    if (paramMessageForArkApp == null)
-    {
-      QLog.i("QQ_CmGame_CmGameTemp", 1, "create an arkMsg obj.");
-      localMessageForArkApp = new MessageForArkApp();
-      localMessageForArkApp.ark_app_message = new ArkAppMessage();
-    }
-    paramMessageForArkApp = a();
-    ArkAppMessage localArkAppMessage = localMessageForArkApp.ark_app_message;
-    if ((paramMessageForApollo == null) || (localArkAppMessage == null) || (paramMessageForArkApp == null)) {
-      return localMessageForArkApp;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQ_CmGame_CmGameTemp", 2, new Object[] { "gameStatus:", Integer.valueOf(paramMessageForApollo.gameStatus), ",gameId:", Integer.valueOf(paramMessageForApollo.gameId), ",arkInfo:", paramMessageForApollo.gameArkInfo, ",roomId:", Long.valueOf(paramMessageForApollo.roomId), ",msgId:", Long.valueOf(paramMessageForApollo.uniseq), ",seq:", Long.valueOf(paramMessageForApollo.msgseq), ",msgType:", Integer.valueOf(paramMessageForApollo.msgType) });
-    }
-    int i;
-    JSONObject localJSONObject1;
-    JSONObject localJSONObject2;
-    Object localObject1;
-    label400:
-    Object localObject2;
-    for (;;)
-    {
-      try
-      {
-        i = paramMessageForApollo.gameStatus;
-        localArkAppMessage.reset();
-        localArkAppMessage.appName = a(paramMessageForApollo);
-        localArkAppMessage.appMinVersion = "1.0.0.0";
-        localArkAppMessage.appDesc = anni.a(2131699160);
-        localJSONObject1 = new JSONObject();
-        localJSONObject2 = new JSONObject();
-        localJSONObject2.put("gameId", paramMessageForApollo.gameId);
-        localJSONObject2.put("msgId", String.valueOf(paramMessageForApollo.uniseq));
-        if (paramMessageForApollo.istroop == 1036)
-        {
-          localJSONObject2.put("senderUin", paramMessageForApollo.senderuin);
-          if (paramMessageForApollo.isSend())
-          {
-            localJSONObject2.put("receiverUin", paramMessageForApollo.frienduin);
-            localJSONObject2.put("createTime", paramMessageForApollo.time);
-            localJSONObject2.put("roomId", String.valueOf(paramMessageForApollo.roomId));
-            localJSONObject2.put("gameName", paramMessageForApollo.gameName);
-          }
-        }
-        else
-        {
-          if (TextUtils.isEmpty(paramMessageForApollo.gameExtendJson)) {
-            break label1273;
-          }
-          localObject1 = new JSONObject(paramMessageForApollo.gameExtendJson);
-          localJSONObject2.put("extendInfo", ((JSONObject)localObject1).optString("extendInfo"));
-          if (paramMessageForApollo.msgType != 4) {
-            break label577;
-          }
-          localArkAppMessage.appView = "game_share";
-          localJSONObject2.put("gameStatus", 100);
-          i = 100;
-          if (paramMessageForApollo.istroop != 1036) {
-            break label1282;
-          }
-          localObject1 = ((amhd)paramMessageForArkApp.getManager(153)).a();
-          localObject2 = new JSONArray();
-        }
-        switch (i)
-        {
-        case 0: 
-          label496:
-          paramMessageForArkApp = new JSONArray();
-          localObject1 = paramMessageForApollo.winnerList.iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break label884;
-          }
-          paramMessageForArkApp.put(String.valueOf((Long)((Iterator)localObject1).next()));
-          continue;
-          localJSONObject2.put("receiverUin", paramMessageForApollo.selfuin);
-        }
-      }
-      catch (Throwable paramMessageForApollo)
-      {
-        QLog.e("QQ_CmGame_CmGameTemp", 1, paramMessageForApollo, new Object[0]);
-        return localMessageForArkApp;
-      }
-      continue;
-      label577:
-      if (paramMessageForApollo.istroop == 1036) {}
-      for (localArkAppMessage.appView = "SocialGame";; localArkAppMessage.appView = "game_aio")
-      {
-        localJSONObject2.put("gameStatus", paramMessageForApollo.gameStatus);
-        localJSONObject2.put("extendJson", paramMessageForApollo.gameArkInfo);
-        localJSONObject2.put("commInfo", paramMessageForApollo.commInfo);
-        break;
-      }
-      paramMessageForArkApp = new JSONObject();
-      paramMessageForArkApp.put("uin", paramMessageForApollo.senderuin);
-      paramMessageForArkApp.put("nickname", ((amop)localObject1).a.get(paramMessageForApollo.senderuin));
-      paramMessageForArkApp.put("avatarUrl", ((amop)localObject1).b.get(paramMessageForApollo.senderuin));
-      ((JSONArray)localObject2).put(paramMessageForArkApp);
-      localJSONObject2.put("players", localObject2);
-    }
-    paramMessageForArkApp = new JSONObject();
-    paramMessageForArkApp.put("uin", paramMessageForApollo.senderuin);
-    paramMessageForArkApp.put("nickname", ((amop)localObject1).a.get(paramMessageForApollo.senderuin));
-    paramMessageForArkApp.put("avatarUrl", ((amop)localObject1).b.get(paramMessageForApollo.senderuin));
-    ((JSONArray)localObject2).put(paramMessageForArkApp);
-    if (paramMessageForApollo.isSend()) {}
-    for (paramMessageForArkApp = paramMessageForApollo.frienduin;; paramMessageForArkApp = paramMessageForApollo.selfuin)
-    {
-      JSONObject localJSONObject3 = new JSONObject();
-      localJSONObject3.put("uin", paramMessageForArkApp);
-      localJSONObject3.put("nickname", ((amop)localObject1).a.get(paramMessageForArkApp));
-      localJSONObject3.put("avatarUrl", ((amop)localObject1).b.get(paramMessageForArkApp));
-      ((JSONArray)localObject2).put(localJSONObject3);
-      localJSONObject2.put("players", localObject2);
-      break;
-    }
-    label884:
-    localJSONObject2.put("winList", paramMessageForArkApp);
-    long l2 = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    long l1 = l2;
-    if (l2 < paramMessageForApollo.time) {
-      l1 = paramMessageForApollo.time;
-    }
-    localJSONObject2.put("currentTime", l1);
-    for (;;)
-    {
-      localJSONObject1.put("gameArk", localJSONObject2);
-      localArkAppMessage.metaList = localJSONObject1.toString();
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("QQ_CmGame_CmGameTemp", 2, localArkAppMessage.metaList);
-      return localMessageForArkApp;
-      localJSONObject2.put("roomCapacity", paramMessageForApollo.roomVol);
-      paramMessageForApollo = a(paramMessageForApollo.playerList, paramMessageForApollo.istroop, paramMessageForApollo.frienduin);
-      if ((paramMessageForApollo != null) && (paramMessageForApollo.length() > 0))
-      {
-        localJSONObject2.put("players", paramMessageForApollo);
-        continue;
-        paramMessageForArkApp = new JSONArray();
-        localObject1 = paramMessageForApollo.winnerList.iterator();
-        while (((Iterator)localObject1).hasNext()) {
-          paramMessageForArkApp.put(String.valueOf((Long)((Iterator)localObject1).next()));
-        }
-        localJSONObject2.put("winList", paramMessageForArkApp);
-        localJSONObject2.put("overType", paramMessageForApollo.overType);
-        paramMessageForArkApp = a(paramMessageForApollo.playerList, paramMessageForApollo.istroop, paramMessageForApollo.frienduin);
-        if ((paramMessageForArkApp != null) && (paramMessageForArkApp.length() > 0)) {
-          localJSONObject2.put("players", paramMessageForArkApp);
-        }
-        localJSONObject2.put("wording", paramMessageForApollo.winRecord);
-        continue;
-        localObject2 = ((ancd)paramMessageForArkApp.getManager(155)).a(paramMessageForApollo.gameId);
-        paramMessageForArkApp = anni.a(2131699161);
-        if (!TextUtils.isEmpty(paramMessageForApollo.gameName)) {
-          paramMessageForArkApp = paramMessageForApollo.gameName;
-        }
-        if (localObject2 != null) {
-          paramMessageForArkApp = ((ApolloGameData)localObject2).name;
-        }
-        if (localObject1 != null)
-        {
-          localJSONObject2.put("summary", ((JSONObject)localObject1).optString("summary"));
-          localJSONObject2.put("picUrl", ((JSONObject)localObject1).optString("picUrl"));
-        }
-        localJSONObject2.put("title", paramMessageForArkApp);
-        localJSONObject2.put("gameMode", paramMessageForApollo.mGameMode);
-        continue;
-        label1273:
-        localObject1 = null;
-        break label400;
-        break label496;
-        label1282:
-        switch (i)
-        {
-        }
-      }
-    }
-  }
-  
-  /* Error */
-  public String a(String paramString)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: getstatic 19	amgx:jdField_a_of_type_ComTencentUtilLRULinkedHashMap	Lcom/tencent/util/LRULinkedHashMap;
-    //   5: ifnull +12 -> 17
-    //   8: aload_1
-    //   9: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   12: istore_2
-    //   13: iload_2
-    //   14: ifeq +9 -> 23
-    //   17: aconst_null
-    //   18: astore_3
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: aload_3
-    //   22: areturn
-    //   23: getstatic 19	amgx:jdField_a_of_type_ComTencentUtilLRULinkedHashMap	Lcom/tencent/util/LRULinkedHashMap;
-    //   26: aload_1
-    //   27: invokevirtual 426	com/tencent/util/LRULinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   30: checkcast 106	java/lang/String
-    //   33: astore 4
-    //   35: aload 4
-    //   37: astore_3
-    //   38: aload 4
-    //   40: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   43: ifeq -24 -> 19
-    //   46: aload_0
-    //   47: aload_1
-    //   48: invokespecial 428	amgx:a	(Ljava/lang/String;)V
-    //   51: aconst_null
-    //   52: astore_3
-    //   53: goto -34 -> 19
-    //   56: astore_1
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: aload_1
-    //   60: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	61	0	this	amgx
-    //   0	61	1	paramString	String
-    //   12	2	2	bool	boolean
-    //   18	35	3	localObject	Object
-    //   33	6	4	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   2	13	56	finally
-    //   23	35	56	finally
-    //   38	51	56	finally
-  }
-  
-  public void a(MessageForApollo paramMessageForApollo)
-  {
-    MessageForArkApp localMessageForArkApp = a(paramMessageForApollo, paramMessageForApollo.mApolloGameArkMsg);
-    if ((localMessageForArkApp == null) || (localMessageForArkApp.ark_app_message == null)) {
-      return;
-    }
-    if (paramMessageForApollo.istroop == 1036)
-    {
-      a(paramMessageForApollo, "UpdateSocialGame", localMessageForArkApp.ark_app_message.metaList);
-      return;
-    }
-    a(paramMessageForApollo, "UpdateGameAioView", localMessageForArkApp.ark_app_message.metaList);
-  }
-  
-  public void a(MessageForApollo paramMessageForApollo, String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramMessageForApollo == null)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQ_CmGame_CmGameTemp", 2, new Object[] { "eventName:", paramString1, ",data:", paramString2 });
-    }
-    paramMessageForApollo = a(paramMessageForApollo);
     try
     {
-      ArkAppCenter.a(paramMessageForApollo, paramString1, paramString2, "json");
+      paramMessageForShortVideo.serial();
+      paramQQAppInterface.a().a(paramMessageForShortVideo.frienduin, paramMessageForShortVideo.istroop, paramMessageForShortVideo.uniseq, paramMessageForShortVideo.msgData);
+      if (QLog.isColorLevel()) {
+        QLog.i("EncodeVideoTask", 2, "encodeVideoTask uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+      }
       return;
     }
-    catch (Throwable paramMessageForApollo)
+    catch (Exception paramQQAppInterface)
     {
-      QLog.e("QQ_CmGame_CmGameTemp", 1, paramMessageForApollo, new Object[0]);
+      QLog.e("EncodeVideoTask", 2, "CompressTask Init", paramQQAppInterface);
     }
   }
   
-  /* Error */
-  public void a(String paramString1, String paramString2)
+  public static void a(long paramLong, int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: getstatic 19	amgx:jdField_a_of_type_ComTencentUtilLRULinkedHashMap	Lcom/tencent/util/LRULinkedHashMap;
-    //   5: ifnull +19 -> 24
-    //   8: aload_1
-    //   9: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   12: ifne +12 -> 24
-    //   15: aload_2
-    //   16: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   19: istore_3
-    //   20: iload_3
-    //   21: ifeq +6 -> 27
-    //   24: aload_0
-    //   25: monitorexit
-    //   26: return
-    //   27: getstatic 19	amgx:jdField_a_of_type_ComTencentUtilLRULinkedHashMap	Lcom/tencent/util/LRULinkedHashMap;
-    //   30: aload_1
-    //   31: aload_2
-    //   32: invokevirtual 457	com/tencent/util/LRULinkedHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   35: pop
-    //   36: goto -12 -> 24
-    //   39: astore_1
-    //   40: aload_0
-    //   41: monitorexit
-    //   42: aload_1
-    //   43: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	44	0	this	amgx
-    //   0	44	1	paramString1	String
-    //   0	44	2	paramString2	String
-    //   19	2	3	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	20	39	finally
-    //   27	36	39	finally
+    a(paramLong, paramInt, 0);
+  }
+  
+  public static void a(long paramLong, int paramInt1, int paramInt2)
+  {
+    if (paramLong <= 0L) {}
+    label121:
+    label125:
+    for (;;)
+    {
+      return;
+      String str = "";
+      HashMap localHashMap;
+      if (paramInt1 == 1)
+      {
+        str = "actShortVideoGenerateSource";
+        if (paramInt2 == 0) {
+          break label121;
+        }
+        localHashMap = new HashMap();
+        localHashMap.put("hcState", String.valueOf(paramInt2));
+      }
+      for (;;)
+      {
+        if (TextUtils.isEmpty(str)) {
+          break label125;
+        }
+        bdmc.a(BaseApplicationImpl.getContext()).a(null, str, true, paramLong, 0L, localHashMap, "");
+        return;
+        if (paramInt1 == 2)
+        {
+          str = "actShortVideoGenerateAudio";
+          break;
+        }
+        if (paramInt1 == 3)
+        {
+          str = "actShortVideoGeneratePic";
+          break;
+        }
+        if (paramInt1 == 4)
+        {
+          str = "actMediaCodecMergeEdit";
+          break;
+        }
+        if (paramInt1 != 5) {
+          break;
+        }
+        str = "actMediaCodecMergeSelfAudio";
+        break;
+        localHashMap = null;
+      }
+    }
+  }
+  
+  private static void b(String paramString, PublishVideoEntry paramPublishVideoEntry, amha paramamha)
+  {
+    String str = ShortVideoUtils.b(new File(paramPublishVideoEntry.mLocalRawVideoDir));
+    if (jdField_a_of_type_Zqi == null) {
+      jdField_a_of_type_Zqi = zqi.a(BaseApplicationImpl.getApplication());
+    }
+    if (jdField_a_of_type_Zqi.a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EncodeVideoTask", 2, "generate files mFFmpeg is running!");
+      }
+      return;
+    }
+    try
+    {
+      amhe localamhe = new amhe(paramPublishVideoEntry, paramString, str, paramamha);
+      jdField_a_of_type_Zqi.a(str);
+      jdField_a_of_type_Zqi.a(paramPublishVideoEntry.doodlePath, paramString, str, paramPublishVideoEntry.videoWidth, paramPublishVideoEntry.videoHeight, localamhe);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramamha.a(-12);
+      QLog.e("EncodeVideoTask", 2, "generate files save alum:", paramString);
+    }
+  }
+  
+  protected Integer a()
+  {
+    long l = System.currentTimeMillis();
+    if (bpty.jdField_c_of_type_Boolean) {
+      bpty.g.b();
+    }
+    PublishVideoEntry localPublishVideoEntry = wmk.a(this.jdField_a_of_type_JavaLangString);
+    if (localPublishVideoEntry == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("EncodeVideoTask", 2, "[StoryEncodeType]configure param error, fakeVid:" + this.jdField_a_of_type_JavaLangString);
+      }
+      return Integer.valueOf(-62);
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = localPublishVideoEntry;
+    if (TextUtils.isEmpty(localPublishVideoEntry.mLocalRawVideoDir))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("EncodeVideoTask", 2, "[StoryEncodeType]configure param error, fakeId:" + this.jdField_a_of_type_JavaLangString + ", EntryId:" + localPublishVideoEntry.fakeVid);
+      }
+      bbnk.a(new RuntimeException("onMediaCodecEncode failed"));
+      return Integer.valueOf(-62);
+    }
+    String str = ShortVideoUtils.b(new File(localPublishVideoEntry.mLocalRawVideoDir).getParentFile());
+    new wmk().a(localPublishVideoEntry, str, false, true, new amgy(this, localPublishVideoEntry, str, l));
+    return Integer.valueOf(0);
+  }
+  
+  protected Integer a(Void... paramVarArgs)
+  {
+    if (!this.jdField_c_of_type_Boolean) {
+      return c(paramVarArgs);
+    }
+    return b(paramVarArgs);
+  }
+  
+  public void a(int paramInt, PublishVideoEntry paramPublishVideoEntry, long paramLong)
+  {
+    if ((paramPublishVideoEntry != null) && (paramPublishVideoEntry.publishState == 0)) {}
+    label336:
+    label339:
+    for (;;)
+    {
+      return;
+      if (paramPublishVideoEntry != null)
+      {
+        paramPublishVideoEntry.publishState = 0;
+        QQStoryContext.a().a().createEntityManager().update(paramPublishVideoEntry);
+      }
+      boolean bool;
+      if (paramInt == 0)
+      {
+        bool = true;
+        if (paramInt != 0) {
+          break label99;
+        }
+      }
+      label99:
+      for (String str = "1";; str = "0")
+      {
+        yup.a("AIOMergeVideoSuc", bool, 0L, new String[] { str });
+        if (paramInt == 0) {
+          break label107;
+        }
+        yup.a("AIOMergeVideoError", true, 0L, new String[] { String.valueOf(paramInt) });
+        return;
+        bool = false;
+        break;
+      }
+      label107:
+      if (paramLong == 0L)
+      {
+        paramLong = 0L;
+        if ((paramPublishVideoEntry == null) || (!paramPublishVideoEntry.isPicture)) {
+          break label336;
+        }
+      }
+      for (paramInt = 1;; paramInt = 0)
+      {
+        if ((!bpty.jdField_c_of_type_Boolean) || (paramInt != 0) || (!bpty.g.a())) {
+          break label339;
+        }
+        long l1 = bpty.g.a[0];
+        long l2 = bpty.g.a[1];
+        long l3 = bpty.g.a[2];
+        long l4 = bpty.g.a[3];
+        long l5 = bpty.g.a[4];
+        if ((yup.a(paramLong, 0L, 120000L)) && (yup.a(l1, 0L, 120000L)) && (yup.a(l2, 0L, 120000L)) && (yup.a(l3, 0L, 10000L)) && (yup.a(l4, 0L, 120000L)) && (yup.a(l5, 0L, 120000L))) {
+          yup.a("AIOMergeVideoCost", true, paramLong, new String[] { String.valueOf(l1), String.valueOf(l2), String.valueOf(l3), String.valueOf(l4), String.valueOf(l5) });
+        }
+        bpty.g.c();
+        return;
+        paramLong = System.currentTimeMillis() - paramLong;
+        break;
+      }
+    }
+  }
+  
+  public void a(amhc paramamhc)
+  {
+    this.jdField_a_of_type_Amhc = paramamhc;
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    super.onPostExecute(paramInteger);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", Integer.toString(paramInteger.intValue()));
+    bdmc localbdmc = bdmc.a(BaseApplicationImpl.getContext());
+    if (paramInteger.intValue() == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localbdmc.a(null, "actMediaCodecEncodeSuccessRate", bool, 0L, 0L, localHashMap, "");
+      if (paramInteger.intValue() != 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("EncodeVideoTask", 2, "onPostExecute result:" + paramInteger);
+        }
+        this.jdField_a_of_type_Amhc.a(paramInteger.intValue());
+      }
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.isCancel = true;
+      this.f = true;
+      boolean bool = bddu.a();
+      zqr.a();
+      if (QLog.isColorLevel()) {
+        QLog.i("EncodeVideoTask", 2, "shortVideoCancel, cancelMerge:" + bool);
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  protected Integer b(Void... paramVarArgs)
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_Amha.a(-61, null, null, null, 0L);
+      return Integer.valueOf(-61);
+    }
+    long l = SystemClock.uptimeMillis();
+    int i = admw.a().a(0, 1, 1, Process.myTid(), 8000, 603, 1L, Process.myTid(), "video", true);
+    int j = a().intValue();
+    if (j != 0) {
+      this.jdField_a_of_type_Amha.a(j, null, null, null, 0L);
+    }
+    if (i != 0) {
+      admw.a().a(i);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("EncodeVideoTask", 2, new Object[] { "encode cost=" + (SystemClock.uptimeMillis() - l), " ret:", Integer.valueOf(j) });
+    }
+    return Integer.valueOf(j);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_e_of_type_Boolean = paramBoolean;
+  }
+  
+  protected Integer c(Void... paramVarArgs)
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return Integer.valueOf(-1);
+    }
+    PublishVideoEntry localPublishVideoEntry = wmk.a(this.jdField_a_of_type_JavaLangString);
+    if (localPublishVideoEntry == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("EncodeVideoTask", 2, "configure param error, fakeVid:" + this.jdField_a_of_type_JavaLangString);
+      }
+      return Integer.valueOf(-2);
+    }
+    bdbt.y = (int)localPublishVideoEntry.recordTime;
+    bdbt.z = localPublishVideoEntry.recordFrames;
+    if (localPublishVideoEntry.saveMode != 0) {
+      bdbt.J = localPublishVideoEntry.saveMode;
+    }
+    int i;
+    label131:
+    int j;
+    Object localObject2;
+    Object localObject1;
+    long l;
+    if (localPublishVideoEntry.businessId == 2)
+    {
+      i = 0;
+      bdbt.D = i;
+      if (TextUtils.isEmpty(localPublishVideoEntry.backgroundMusicPath)) {
+        break label385;
+      }
+      i = 1;
+      if (TextUtils.isEmpty(localPublishVideoEntry.doodlePath)) {
+        break label390;
+      }
+      j = 1;
+      localObject2 = new File(localPublishVideoEntry.mLocalRawVideoDir);
+      localObject1 = ShortVideoUtils.c((File)localObject2);
+      paramVarArgs = (Void[])localObject1;
+      if (i == 0)
+      {
+        paramVarArgs = (Void[])localObject1;
+        if (j == 0) {
+          paramVarArgs = ShortVideoUtils.b((File)localObject2);
+        }
+      }
+      l = System.currentTimeMillis();
+      localObject1 = new EncodeThread(null, null, localPublishVideoEntry.mLocalRawVideoDir, paramVarArgs, null);
+      ((EncodeThread)localObject1).a(false);
+      ((EncodeThread)localObject1).b(false);
+      ((EncodeThread)localObject1).d(localPublishVideoEntry.isMuteRecordVoice);
+      if (localPublishVideoEntry.mMosaicMask != null) {
+        ((EncodeThread)localObject1).a(localPublishVideoEntry.mMosaicMask, localPublishVideoEntry.mMosaicSize);
+      }
+      ((EncodeThread)localObject1).run();
+      a(System.currentTimeMillis() - l, 1);
+      if (QLog.isColorLevel()) {
+        QLog.d("EncodeVideoTask", 2, "generate files|first step cost:" + (System.currentTimeMillis() - l) / 1000.0D);
+      }
+      if (i == 0) {
+        break label415;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject1 = ShortVideoUtils.d((File)localObject2);
+        l = ShortVideoUtils.b(paramVarArgs);
+        localObject2 = new amhb(localPublishVideoEntry, paramVarArgs, (String)localObject1);
+        ((amhb)localObject2).a(this.jdField_a_of_type_Amha);
+        zqr.b(this.jdField_a_of_type_AndroidContentContext, paramVarArgs, localPublishVideoEntry.backgroundMusicPath, localPublishVideoEntry.backgroundMusicOffset, (int)l, (String)localObject1, (zqh)localObject2);
+        return Integer.valueOf(0);
+        i = 1;
+        break;
+        label385:
+        i = 0;
+        break label131;
+        label390:
+        j = 0;
+      }
+      catch (Exception paramVarArgs)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("EncodeVideoTask", 2, "generate error:", paramVarArgs);
+        continue;
+      }
+      label415:
+      this.jdField_a_of_type_Amha.a(localPublishVideoEntry, paramVarArgs);
+    }
   }
 }
 

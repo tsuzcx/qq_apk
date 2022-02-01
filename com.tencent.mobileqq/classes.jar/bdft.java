@@ -1,100 +1,31 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Canvas;
+import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdft
-  extends bdfu
-  implements bdeo<bdfu>, bdfv
 {
-  public List<bdek> b = new ArrayList();
+  public boolean d = true;
+  public boolean e = true;
+  public int f;
+  public boolean f;
+  public int g;
   
-  public bdft(SpriteGLView paramSpriteGLView)
+  bdft(TCProgressBar paramTCProgressBar)
   {
-    this.a = paramSpriteGLView;
+    this.jdField_f_of_type_Boolean = false;
   }
   
-  public <N extends bdek> N a(String paramString)
+  void a(Canvas paramCanvas)
   {
-    int i = 0;
-    while (i < this.b.size())
-    {
-      bdfu localbdfu = (bdfu)this.b.get(i);
-      if (paramString.equals(localbdfu.jdField_a_of_type_JavaLangString)) {
-        return localbdfu;
-      }
-      if ((localbdfu instanceof bdft)) {
-        return ((bdft)localbdfu).a(paramString);
-      }
-      i += 1;
+    this.jdField_f_of_type_Boolean = false;
+  }
+  
+  boolean a(float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
     }
-    return null;
-  }
-  
-  public List<bdek> a()
-  {
-    return this.b;
-  }
-  
-  public void a()
-  {
-    super.a();
-    int i = 0;
-    while (i < this.b.size())
-    {
-      ((bdfu)this.b.get(i)).a();
-      i += 1;
-    }
-    this.b.clear();
-  }
-  
-  public void a(bdfu parambdfu)
-  {
-    if (parambdfu.jdField_a_of_type_Bdeo == null)
-    {
-      this.b.add(parambdfu);
-      parambdfu.jdField_a_of_type_Bdeo = this;
-      return;
-    }
-    new RuntimeException("the node had another parent");
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2)
-  {
-    Object[] arrayOfObject = this.b.toArray();
-    int i = arrayOfObject.length - 1;
-    while (i >= 0)
-    {
-      if (((arrayOfObject[i] instanceof bdfv)) && (((bdfv)arrayOfObject[i]).a(paramMotionEvent, paramInt1, paramInt2))) {
-        return true;
-      }
-      i -= 1;
-    }
-    return false;
-  }
-  
-  protected void aK_()
-  {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
-    {
-      bdek localbdek = (bdek)localIterator.next();
-      if ((localbdek instanceof bdfw)) {
-        ((bdfw)localbdek).aK_();
-      }
-    }
-  }
-  
-  public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
-  {
-    super.c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
-    int i = 0;
-    while (i < this.b.size())
-    {
-      ((bdfu)this.b.get(i)).c(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramArrayOfFloat);
-      i += 1;
-    }
+    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
   }
 }
 

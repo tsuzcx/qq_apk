@@ -1,26 +1,18 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.upgrade.UpgradeTIMManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class adhl
-  implements View.OnClickListener
+  extends adic
 {
-  public adhl(AboutActivity paramAboutActivity, awhu paramawhu) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Awhu.d))
-    {
-      ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app.getManager(256)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, this.jdField_a_of_type_Awhu.d);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X800865C", "0X800865C", 0, 0, "", "", "", "");
-    }
-    this.jdField_a_of_type_Awhu.a();
-    AboutActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return -1000;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (18 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

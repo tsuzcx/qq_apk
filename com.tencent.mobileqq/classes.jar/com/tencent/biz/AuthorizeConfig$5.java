@@ -3,19 +3,19 @@ package com.tencent.biz;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import mqq.manager.TicketManager;
-import nhe;
+import niz;
 
 public class AuthorizeConfig$5
   implements Runnable
 {
-  public AuthorizeConfig$5(nhe paramnhe, TicketManager paramTicketManager, String paramString, String[] paramArrayOfString) {}
+  public AuthorizeConfig$5(niz paramniz, TicketManager paramTicketManager, String paramString, String[] paramArrayOfString) {}
   
   public void run()
   {
     try
     {
       if (this.jdField_a_of_type_MqqManagerTicketManager != null) {
-        if ((this.jdField_a_of_type_MqqManagerTicketManager.GetPskey(this.jdField_a_of_type_JavaLangString, 16L, this.jdField_a_of_type_ArrayOfJavaLangString, this.this$0.a) == null) || (TextUtils.isEmpty(this.jdField_a_of_type_MqqManagerTicketManager.getSkey(this.jdField_a_of_type_JavaLangString)))) {
+        if ((this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_JavaLangString, 16L, this.jdField_a_of_type_ArrayOfJavaLangString, this.this$0.a) == null) || (TextUtils.isEmpty(this.jdField_a_of_type_MqqManagerTicketManager.getSkey(this.jdField_a_of_type_JavaLangString)))) {
           break label84;
         }
       }

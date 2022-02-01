@@ -1,10 +1,12 @@
-public abstract interface bnhu
+public class bnhu
 {
-  public abstract void a(String paramString, float paramFloat);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7);
+  public static bnhr a(String paramString, int paramInt)
+  {
+    if (paramInt >= 24) {
+      return new bnhv();
+    }
+    return new bnht();
+  }
 }
 
 

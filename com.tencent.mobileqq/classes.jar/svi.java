@@ -1,8 +1,11 @@
+import java.io.InputStream;
+import java.util.List;
+
 public abstract interface svi
 {
-  public abstract void a(tkf paramtkf);
+  public abstract InputStream a(String paramString);
   
-  public abstract void b(tkf paramtkf);
+  public abstract List<String> a();
 }
 
 

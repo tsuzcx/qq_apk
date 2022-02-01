@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import axzw;
+import aysq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 
@@ -11,15 +11,15 @@ class LikeRankingListActivity$3
   
   public void run()
   {
-    axzw localaxzw = (axzw)this.this$0.app.getManager(160);
-    RedTouchItem localRedTouchItem1 = localaxzw.a(100601);
-    if (localaxzw.a(localRedTouchItem1, false))
+    aysq localaysq = (aysq)this.this$0.app.getManager(160);
+    RedTouchItem localRedTouchItem1 = localaysq.a(100601);
+    if (localaysq.a(localRedTouchItem1, false))
     {
-      RedTouchItem localRedTouchItem2 = localaxzw.a(-7);
-      if ((localaxzw.a(localRedTouchItem2, true)) && (localRedTouchItem2.receiveTime == localRedTouchItem1.receiveTime)) {
+      RedTouchItem localRedTouchItem2 = localaysq.a(-7);
+      if ((localaysq.a(localRedTouchItem2, true)) && (localRedTouchItem2.receiveTime == localRedTouchItem1.receiveTime)) {
         localRedTouchItem2.unReadFlag = false;
       }
-      localaxzw.a(100601);
+      localaysq.a(100601);
     }
   }
 }

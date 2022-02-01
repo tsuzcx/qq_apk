@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import biau;
+import bjbs;
 
 class RecentLoginDevActivity$5
   implements Runnable
@@ -12,7 +12,7 @@ class RecentLoginDevActivity$5
     try
     {
       if ((RecentLoginDevActivity.a(this.this$0) == null) && (!this.this$0.isFinishing())) {
-        RecentLoginDevActivity.a(this.this$0, new biau(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+        RecentLoginDevActivity.a(this.this$0, new bjbs(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
       }
       if ((RecentLoginDevActivity.a(this.this$0) != null) && (!RecentLoginDevActivity.a(this.this$0).isShowing())) {
         RecentLoginDevActivity.a(this.this$0).show();

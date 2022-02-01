@@ -1,27 +1,25 @@
-import android.content.Context;
-import java.io.File;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.VideoInfo.VideoRemark;
 
-final class bnar
-  implements bmzr
+public final class bnar
+  implements Parcelable.Creator<VideoInfo.VideoRemark>
 {
-  bnar(String paramString1, String paramString2, bnat parambnat, Context paramContext, File paramFile1, File paramFile2) {}
-  
-  public void a(String paramString, long paramLong, float paramFloat)
+  public VideoInfo.VideoRemark a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_Bnat != null) {
-      this.jdField_a_of_type_Bnat.a(paramLong, paramFloat);
-    }
+    VideoInfo.VideoRemark localVideoRemark = new VideoInfo.VideoRemark();
+    localVideoRemark.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localVideoRemark.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localVideoRemark.c = paramParcel.readString();
+    localVideoRemark.jdField_a_of_type_Int = paramParcel.readInt();
+    localVideoRemark.d = paramParcel.readString();
+    localVideoRemark.jdField_b_of_type_Int = paramParcel.readInt();
+    return localVideoRemark;
   }
   
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
+  public VideoInfo.VideoRemark[] a(int paramInt)
   {
-    if (paramBoolean) {
-      bmzf.a().a(bnaq.a(), this.jdField_a_of_type_JavaLangString, "SoHelper", new bnas(this));
-    }
-    while (this.jdField_a_of_type_Bnat == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bnat.a(paramString3);
+    return new VideoInfo.VideoRemark[paramInt];
   }
 }
 

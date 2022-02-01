@@ -1,12 +1,20 @@
-public class aikb
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aikb
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  aikb(aijm paramaijm) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!azhq.a().a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramView)) {
+      bhxv.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "aio");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.data.search.troop;
 
-import atih;
-import atiz;
+import auab;
+import auat;
 
 public class TroopFileSearchEngine$1
   implements Runnable
 {
-  public TroopFileSearchEngine$1(atiz paramatiz) {}
+  public TroopFileSearchEngine$1(auat paramauat) {}
   
   public void run()
   {
-    if (!atiz.a(this.this$0)) {
+    if (!auat.a(this.this$0)) {
       return;
     }
-    atiz.a(this.this$0);
-    atiz.a(this.this$0, atiz.a(this.this$0).b());
-    atiz.a(this.this$0, atiz.a(this.this$0));
+    auat.a(this.this$0);
+    auat.a(this.this$0, auat.a(this.this$0).b());
+    auat.a(this.this$0, auat.a(this.this$0));
   }
 }
 

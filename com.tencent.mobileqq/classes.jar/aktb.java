@@ -1,22 +1,22 @@
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
 import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoListLogicBase;
+import mqq.app.AppRuntime;
 
-class aktb
-  implements akse
+public class aktb
+  extends ayxo
 {
-  aktb(akss paramakss, ResultReceiver paramResultReceiver) {}
+  public aktb(NewPhotoListActivity paramNewPhotoListActivity) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadUrls" + paramPathResult);
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp))) {
+      ((aktm)this.a.mPhotoListLogic.mOtherCommonData).a = ((get_albumlist_num_rsp)paramBundle).album_num;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result_code", paramInt);
-    localBundle.putSerializable("path_result", paramPathResult);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.a);
   }
 }
 

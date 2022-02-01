@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForLongTextMsg;
-import com.tencent.mobileqq.data.MessageForWantGiftMsg;
-
-final class agxa
-  implements ahbm
+class agxa
+  implements bgwh
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  agxa(agwy paramagwy, String paramString) {}
+  
+  public void a(boolean paramBoolean, String paramString)
   {
-    if ((paramChatMessage instanceof MessageForLongTextMsg)) {
-      return 63;
+    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))
+    {
+      ((aihd)agwy.a(this.jdField_a_of_type_Agwy)).W = true;
+      this.jdField_a_of_type_Agwy.a(true);
+      return;
     }
-    if ((paramChatMessage instanceof MessageForWantGiftMsg)) {
-      return 72;
-    }
-    if ((paramChatMessage.vipBubbleID == 100000L) && (!paramChatMessage.isSend())) {
-      return 9;
-    }
-    return 0;
+    ((aihd)agwy.a(this.jdField_a_of_type_Agwy)).W = false;
+    this.jdField_a_of_type_Agwy.a(false);
   }
 }
 

@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
-class akzg
-  implements View.OnClickListener
+public class akzg
+  implements DialogInterface.OnClickListener
 {
-  akzg(akyh paramakyh, aysb paramaysb) {}
+  public akzg(SendHbActivity paramSendHbActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ayqb.a(akyh.a(this.jdField_a_of_type_Akyh).app, this.jdField_a_of_type_Aysb.a, false, "br_switch");
-    aypy.a("0X800AFA0", (int)this.jdField_a_of_type_Aysb.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
+    SendHbActivity.a(this.a);
   }
 }
 

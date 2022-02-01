@@ -14,8 +14,8 @@ public class as
   
   public void onClick(View paramView)
   {
-    afur.n = true;
-    bcti.a(this.a.app.getApplication().getApplicationContext(), this.a.app.getCurrentAccountUin(), "dl_ckadv");
+    agej.n = true;
+    bdmb.a(this.a.app.getApplication().getApplicationContext(), this.a.app.getCurrentAccountUin(), "dl_ckadv");
     Intent localIntent = new Intent(this.a, LiteAdvanceActivity.class);
     localIntent.putExtra("targetUin", this.a.b);
     this.a.startActivityForResult(localIntent, 7);

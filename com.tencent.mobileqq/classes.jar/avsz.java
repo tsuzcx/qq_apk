@@ -1,20 +1,38 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.content.Context;
+import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
 
 public class avsz
-  implements avtt
 {
-  public avsz(ListenTogetherManager paramListenTogetherManager, BaseActivity paramBaseActivity, int paramInt, String paramString) {}
+  protected Context a;
+  protected avsx a;
+  protected avsx b;
+  protected avsx c;
   
-  public void a()
+  public avsz(Context paramContext)
   {
-    if ((ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
-      return;
-    }
-    ListenTogetherManager.a(ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1002);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void b() {}
+  public avsx a(int paramInt, avsr paramavsr)
+  {
+    switch (paramInt)
+    {
+    default: 
+      if (this.jdField_a_of_type_Avsx == null) {
+        this.jdField_a_of_type_Avsx = new avsy(this.jdField_a_of_type_AndroidContentContext, 2130845891, paramavsr);
+      }
+      return this.jdField_a_of_type_Avsx;
+    case 2: 
+      if (this.c == null) {
+        this.c = new PayLikeFloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130842568, paramavsr);
+      }
+      return this.c;
+    }
+    if (this.b == null) {
+      this.b = new avsy(this.jdField_a_of_type_AndroidContentContext, 2130845895, paramavsr);
+    }
+    return this.b;
+  }
 }
 
 

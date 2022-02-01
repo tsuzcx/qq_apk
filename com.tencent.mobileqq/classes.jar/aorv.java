@@ -1,8 +1,18 @@
-public abstract interface aorv
+public class aorv
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  private aort jdField_a_of_type_Aort;
+  private String jdField_a_of_type_JavaLangString;
   
-  public abstract void a(Runnable paramRunnable);
+  public aorv(String paramString, aort paramaort)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Aort = paramaort;
+  }
+  
+  public aort a()
+  {
+    return this.jdField_a_of_type_Aort;
+  }
 }
 
 

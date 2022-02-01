@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.data;
 
 import android.text.TextUtils;
-import awqu;
+import axjn;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 
@@ -27,7 +27,7 @@ public class MsgBackupResEntity
   public void postRead()
   {
     super.postRead();
-    awqu.b(this);
+    axjn.b(this);
     try
     {
       if (this.extraData != null) {
@@ -37,7 +37,7 @@ public class MsgBackupResEntity
     }
     catch (Exception localException)
     {
-      awqu.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
+      axjn.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
       this.extraDataStr = "";
     }
   }
@@ -48,8 +48,8 @@ public class MsgBackupResEntity
     if (!TextUtils.isEmpty(this.extraDataStr)) {
       this.extraData = this.extraDataStr.getBytes();
     }
-    awqu.a(this);
-    this.filePath = awqu.c(this.filePath);
+    axjn.a(this);
+    this.filePath = axjn.c(this.filePath);
   }
   
   public String toLogString()

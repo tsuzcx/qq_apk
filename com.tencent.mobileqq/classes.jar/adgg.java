@@ -1,11 +1,36 @@
-public abstract class adgg
-  extends adee
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdb.submsgtype0xdb.MsgBody;
+
+public class adgg
+  implements adci
 {
-  protected adgh a;
-  
-  protected void a()
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    this.jdField_a_of_type_Adgh = new adgh(this.jdField_a_of_type_Aded.a());
+    if (QLog.isColorLevel()) {
+      QLog.d("QAV.push", 2, "onLinePush receive 0x210_0xdb");
+    }
+    try
+    {
+      submsgtype0xdb.MsgBody localMsgBody = new submsgtype0xdb.MsgBody();
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      paramQQAppInterface.a().a(localMsgBody);
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QAV.push", 2, "onLinePush 0x210_0xdb push exception : ", paramQQAppInterface);
+    }
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

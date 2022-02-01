@@ -1,17 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.widget.QQViewPager;
 
-public class akca
-  implements DialogInterface.OnKeyListener
+class akca
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public akca(BaseActivityView paramBaseActivityView) {}
+  akca(akbz paramakbz) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    return (paramInt == 4) && (this.a.a.f()) && (bgnt.d(this.a.getContext()));
+    if (paramInt == 1) {
+      this.a.b = this.a.a.getCurrentItem();
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    akbz.a(this.a, paramInt);
   }
 }
 

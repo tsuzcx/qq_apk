@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.onlinestatus.auto;
 
-import ayop;
-import ayqb;
-import ayqj;
-import ayqk;
+import azhi;
+import aziu;
+import azjc;
+import azjd;
 
 public class OnlineStatusSmartDisplayInfo$1$1
   implements Runnable
 {
-  public OnlineStatusSmartDisplayInfo$1$1(ayqk paramayqk, int paramInt) {}
+  public OnlineStatusSmartDisplayInfo$1$1(azjd paramazjd, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ayqk.a.b = ayqj.a(this.jdField_a_of_type_Ayqk.a).a(Integer.valueOf(this.jdField_a_of_type_Int));
-    ayqj.b(this.jdField_a_of_type_Ayqk.a).a();
+    this.jdField_a_of_type_Azjd.a.b = azjc.a(this.jdField_a_of_type_Azjd.a).a(Integer.valueOf(this.jdField_a_of_type_Int));
+    azjc.b(this.jdField_a_of_type_Azjd.a).a();
   }
 }
 

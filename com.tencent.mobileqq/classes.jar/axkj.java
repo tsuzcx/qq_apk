@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.MedalItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class axkj
-  implements Parcelable.Creator<MedalItem>
+public class axkj
+  implements View.OnClickListener
 {
-  public MedalItem a(Parcel paramParcel)
-  {
-    return new MedalItem(paramParcel);
-  }
+  public axkj(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public MedalItem[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new MedalItem[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "onClick() called with: v = [" + paramView + "]");
+    }
+    MultiAIOFragment.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

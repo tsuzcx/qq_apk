@@ -1,52 +1,56 @@
-import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class omk
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  private JSONObject a = new JSONObject();
   
-  public static omk a(String paramString)
+  public String a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
+    return this.a.toString();
+  }
+  
+  public omk a()
+  {
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      paramString = new omk();
+      this.a.put("network", oxw.a(BaseApplicationImpl.getApplication().getApplicationContext()));
+      this.a.put("version", odr.a);
+      this.a.put("os", "1");
+      this.a.put("uin", ozs.a());
+      this.a.put("city", oxw.b());
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return this;
+  }
+  
+  public omk a(int paramInt)
+  {
+    int i = 0;
+    if (paramInt == 41516) {
+      i = 3;
+    }
+    for (;;)
+    {
       try
       {
-        paramString.jdField_a_of_type_Int = localJSONObject.optInt("gift_id", 0);
-        paramString.jdField_a_of_type_JavaLangString = localJSONObject.optString("gift_name", "");
-        paramString.b = localJSONObject.optString("activity_id", "");
-        paramString.c = localJSONObject.optString("gift_icon", "");
-        paramString.g = localJSONObject.optString("gift_desc", "");
-        paramString.d = localJSONObject.optString("bag_item_icon_1", "");
-        paramString.e = localJSONObject.optString("bag_item_icon_2", "");
-        paramString.f = localJSONObject.optString("bag_item_icon_3", "");
-        paramString.h = localJSONObject.optString("need_role", "");
-        return paramString;
+        this.a.put("source", i);
+        return this;
       }
-      catch (JSONException localJSONException1) {}
-    }
-    catch (JSONException localJSONException2)
-    {
-      for (;;)
+      catch (JSONException localJSONException)
       {
-        paramString = null;
+        localJSONException.printStackTrace();
+      }
+      if (paramInt == 41522) {
+        i = 16;
       }
     }
-    localJSONException1.printStackTrace();
-    return paramString;
+    return this;
   }
 }
 

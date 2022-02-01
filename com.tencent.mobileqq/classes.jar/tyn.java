@@ -1,19 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 class tyn
-  extends Handler
+  implements bivv
 {
-  tyn(tym paramtym) {}
+  tyn(tyl paramtyl) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a = false;
+    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

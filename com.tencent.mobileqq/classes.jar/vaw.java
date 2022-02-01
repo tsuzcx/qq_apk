@@ -1,16 +1,45 @@
-import feedcloud.FeedCloudMeta.StTagInfo;
-import mqq.app.QQPermissionCallback;
+import com.tencent.common.config.AppSetting;
 
-class vaw
-  implements QQPermissionCallback
+public class vaw
 {
-  vaw(vav paramvav, FeedCloudMeta.StTagInfo paramStTagInfo) {}
+  public String a = "android";
+  public String b = AppSetting.f();
+  public String c = "1";
+  public String d = "KQQ";
+  public String e = "2400002";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "0";
+  public String j = "";
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public vau a()
   {
-    vav.a(this.jdField_a_of_type_Vav, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo);
+    return new vau(this, null);
+  }
+  
+  public vaw a(String paramString)
+  {
+    this.f = paramString;
+    return this;
+  }
+  
+  public vaw b(String paramString)
+  {
+    this.g = paramString;
+    return this;
+  }
+  
+  public vaw c(String paramString)
+  {
+    this.h = paramString;
+    return this;
+  }
+  
+  public vaw d(String paramString)
+  {
+    this.j = paramString;
+    return this;
   }
 }
 

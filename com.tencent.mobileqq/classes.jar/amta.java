@@ -1,175 +1,84 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.OvershootInterpolator;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Vector;
 
-public class amta
-  implements aimh
+class amta
+  extends Handler
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
-  public RelativeLayout a;
-  public TextView a;
-  public WeakReference<Context> a;
-  private Animation b;
-  public RelativeLayout b;
-  public TextView b;
-  public RelativeLayout c;
-  
-  public amta(Context paramContext, View.OnClickListener paramOnClickListener)
+  amta(amsx paramamsx, Looper paramLooper)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(-1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = new RelativeLayout((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    paramContext = new RelativeLayout.LayoutParams(-1, afur.a(44.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetRelativeLayout, paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(16.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131700932));
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(afur.a(8.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
-    paramOnClickListener = a(2130838508);
-    paramOnClickListener.setBounds(0, 0, paramOnClickListener.getIntrinsicWidth(), paramOnClickListener.getIntrinsicHeight());
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramOnClickListener, null, null, null);
-    paramContext = new RelativeLayout.LayoutParams(-2, afur.a(44.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
-    paramContext.addRule(15);
-    paramContext.leftMargin = afur.a(12.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
-    paramContext.addRule(9);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, paramContext);
-    Object localObject = new ImageView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(15);
-    localLayoutParams.addRule(11);
-    localLayoutParams.rightMargin = afur.a(12.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
-    paramContext = new StateListDrawable();
-    Drawable localDrawable1 = a(2130838615);
-    Drawable localDrawable2 = a(2130838616);
-    paramContext.addState(new int[] { 16842919, 16842910 }, localDrawable2);
-    paramContext.addState(new int[0], localDrawable1);
-    ((ImageView)localObject).setImageDrawable(paramContext);
-    ((ImageView)localObject).setDuplicateParentStateEnabled(true);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView((View)localObject, localLayoutParams);
-    this.c = new RelativeLayout((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    localObject = new RelativeLayout.LayoutParams(-1, afur.a(44.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.c, (ViewGroup.LayoutParams)localObject);
-    this.jdField_b_of_type_AndroidWidgetTextView = new TextView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(16.0F);
-    this.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131700933));
-    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(afur.a(8.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
-    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(paramOnClickListener, null, null, null);
-    paramOnClickListener = new RelativeLayout.LayoutParams(-2, afur.a(44.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
-    paramOnClickListener.addRule(15);
-    paramOnClickListener.leftMargin = afur.a(12.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
-    paramOnClickListener.addRule(9);
-    this.c.addView(this.jdField_b_of_type_AndroidWidgetTextView, paramOnClickListener);
-    paramOnClickListener = new ImageView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    localObject = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject).addRule(15);
-    ((RelativeLayout.LayoutParams)localObject).addRule(11);
-    ((RelativeLayout.LayoutParams)localObject).rightMargin = afur.a(12.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
-    paramOnClickListener.setImageDrawable(paramContext);
-    paramOnClickListener.setDuplicateParentStateEnabled(true);
-    this.c.addView(paramOnClickListener, (ViewGroup.LayoutParams)localObject);
-    this.c.setVisibility(4);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -1.0F, 1, 0.0F);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setDuration(500L);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(500L);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet = new AnimationSet(false);
-    paramContext = new AlphaAnimation(0.0F, 1.0F);
-    paramContext.setDuration(500L);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(paramContext);
-    paramContext = new ScaleAnimation(0.8F, 1.0F, 0.8F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramContext.setDuration(500L);
-    paramContext.setInterpolator(new OvershootInterpolator(1.3F));
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(paramContext);
+    super(paramLooper);
   }
   
-  public int a()
+  public void handleMessage(Message paramMessage)
   {
-    return 40;
-  }
-  
-  public Drawable a(int paramInt)
-  {
-    try
+    if (paramMessage.what == amsx.jdField_a_of_type_Int)
     {
-      Drawable localDrawable = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDrawable(paramInt);
-      return localDrawable;
+      paramMessage = (VasExtensionHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71);
+      if (paramMessage != null) {
+        localObject = new ArrayList(amsx.jdField_a_of_type_JavaUtilVector.size());
+      }
     }
-    catch (Throwable localThrowable)
+    while (paramMessage.what != amsx.jdField_b_of_type_Int)
     {
-      ColorDrawable localColorDrawable = new ColorDrawable(-1);
-      localThrowable.printStackTrace();
-      QLog.e("CmGameTipsBar", 2, localThrowable.getMessage());
-      return localColorDrawable;
+      try
+      {
+        Iterator localIterator = amsx.jdField_a_of_type_JavaUtilVector.iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          if (!((ArrayList)localObject).contains(str)) {
+            ((ArrayList)localObject).add(Long.valueOf(Long.parseLong(str)));
+          }
+        }
+        paramMessage.a((ArrayList)localObject, "troop");
+      }
+      catch (Exception localException) {}
+      for (;;)
+      {
+        amsx.jdField_a_of_type_JavaUtilVector.clear();
+        if (amsx.jdField_b_of_type_JavaUtilVector.size() > 0)
+        {
+          paramMessage.a((String[])amsx.jdField_b_of_type_JavaUtilVector.toArray(new String[0]));
+          amsx.jdField_b_of_type_JavaUtilVector.clear();
+        }
+        return;
+        if ((amsx.a(this.a) != null) && (amsx.a(this.a).apolloLocalTS != amsx.a(this.a).apolloServerTS) && (!((ArrayList)localObject).contains(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()))) {
+          ((ArrayList)localObject).add(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin()));
+        }
+      }
     }
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.reset();
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-    this.c.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.reset();
-    this.c.clearAnimation();
-    this.c.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 15;
-  }
-  
-  public void b()
-  {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.reset();
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
-    this.c.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.reset();
-    this.c.clearAnimation();
-    this.c.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    Object localObject = (String)paramMessage.obj;
+    if (paramMessage.arg1 == 1) {
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!amsx.jdField_a_of_type_JavaUtilVector.contains(localObject)))
+      {
+        amsx.jdField_a_of_type_JavaUtilVector.add(localObject);
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloManager", 2, "addToBulkPullMap-->dress uin:" + (String)localObject);
+        }
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(amsx.jdField_a_of_type_Int);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(amsx.jdField_a_of_type_Int, 200L);
+      return;
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!amsx.jdField_b_of_type_JavaUtilVector.contains(localObject)))
+      {
+        amsx.jdField_b_of_type_JavaUtilVector.add(localObject);
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloManager", 2, "addToBulkPullMap-->info uin:" + (String)localObject);
+        }
+      }
+    }
   }
 }
 

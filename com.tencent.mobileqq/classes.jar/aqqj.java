@@ -1,125 +1,273 @@
+import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.hardware.Camera;
+import android.hardware.Camera.CameraInfo;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.camera.adapter.CameraWrapper.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.app.AppRuntime.Status;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
+@TargetApi(9)
 public class aqqj
 {
-  private ArrayList<aypi> jdField_a_of_type_JavaUtilArrayList = new ArrayList(20);
-  private HashMap<String, aypi> jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
+  private static int jdField_a_of_type_Int = -1;
+  private static aqqj jdField_a_of_type_Aqqj;
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public aqqj()
+  private aqqj()
   {
-    int i = 0;
-    while (i < aypc.a.length)
-    {
-      AppRuntime.Status localStatus = aypc.a[i];
-      aypi localaypi = new aypi(localStatus);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localaypi);
-      this.jdField_a_of_type_JavaUtilHashMap.put(aypi.a(localStatus, localaypi.jdField_a_of_type_Long), localaypi);
-      i += 1;
-    }
+    a(false);
   }
   
-  public static aqqj a(String paramString)
+  public static aqqj a()
   {
-    aqqj localaqqj = new aqqj();
+    if (jdField_a_of_type_Aqqj == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aqqj == null) {
+        jdField_a_of_type_Aqqj = new aqqj();
+      }
+      return jdField_a_of_type_Aqqj;
+    }
+    finally {}
+  }
+  
+  public int a()
+  {
+    return 21;
+  }
+  
+  public int a(int paramInt1, int paramInt2)
+  {
+    QLog.d("Q.camera.CameraWrapper", 2, "[getCameraOrientation] cameraId = " + paramInt1 + ", cameraOrientation = " + paramInt2);
+    Camera.CameraInfo localCameraInfo = new Camera.CameraInfo();
+    Camera.getCameraInfo(paramInt1, localCameraInfo);
+    paramInt1 = localCameraInfo.orientation;
+    aqqi.a().d();
+    if (localCameraInfo.facing == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.camera.CameraWrapper", 2, "is FRONT camera, orientation = " + paramInt1);
+      }
+      switch (paramInt2)
+      {
+      }
+    }
     for (;;)
     {
-      int i;
-      try
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.camera.CameraWrapper", 2, "return orientation = " + paramInt1);
+      }
+      return paramInt1;
+      if (aqqi.a().jdField_b_of_type_Int != -1)
       {
-        paramString = new JSONArray(paramString);
-        if (paramString != null)
+        paramInt1 = aqqi.a().jdField_b_of_type_Int;
+        QLog.d("Q.camera.CameraWrapper", 2, "reset FRONT Cam frontCamRotate0 = " + paramInt1);
+        continue;
+        if (aqqi.a().jdField_c_of_type_Int != -1)
         {
-          i = 0;
-          if (i < paramString.length())
+          paramInt1 = aqqi.a().jdField_c_of_type_Int;
+          QLog.d("Q.camera.CameraWrapper", 2, "reset FRONT Cam frontCamRotate90 = " + paramInt1);
+          continue;
+          if (aqqi.a().d != -1)
           {
-            Object localObject2 = (JSONObject)paramString.get(i);
-            if (localObject2 == null) {
-              break label212;
-            }
-            long l = ((JSONObject)localObject2).optLong("id");
-            Object localObject1 = ((JSONObject)localObject2).optString("title");
-            localObject2 = ((JSONObject)localObject2).optString("icon");
-            if ((l == 1000L) && (a()))
+            paramInt1 = aqqi.a().d;
+            QLog.d("Q.camera.CameraWrapper", 2, "reset FRONT Cam frontCamRotate180 = " + paramInt1);
+            continue;
+            if (aqqi.a().e != -1)
             {
-              QLog.d("OnlineStatusConfProcessor", 1, "incompatible for battery status");
-            }
-            else
-            {
-              localObject1 = new aypi(l, (String)localObject1, (String)localObject2);
-              localaqqj.jdField_a_of_type_JavaUtilHashMap.put(aypi.a(AppRuntime.Status.online, ((aypi)localObject1).jdField_a_of_type_Long), localObject1);
-              localaqqj.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+              paramInt1 = aqqi.a().e;
+              QLog.d("Q.camera.CameraWrapper", 2, "reset FRONT Cam frontCamRotate270 = " + paramInt1);
+              continue;
+              if (QLog.isColorLevel()) {
+                QLog.d("Q.camera.CameraWrapper", 2, "is BACK camera, orientation = " + paramInt1);
+              }
+              switch (paramInt2)
+              {
+              default: 
+                break;
+              case -1: 
+              case 0: 
+                if (aqqi.a().f != -1)
+                {
+                  paramInt1 = aqqi.a().f;
+                  QLog.d("Q.camera.CameraWrapper", 2, "reset BACK Cam backCamRotate0 = " + paramInt1);
+                }
+                break;
+              case 90: 
+                if (aqqi.a().jdField_g_of_type_Int != -1)
+                {
+                  paramInt1 = aqqi.a().jdField_g_of_type_Int;
+                  QLog.d("Q.camera.CameraWrapper", 2, "reset BACK Cam backCamRotate90 = " + paramInt1);
+                }
+                break;
+              case 180: 
+                if (aqqi.a().h != -1)
+                {
+                  paramInt1 = aqqi.a().h;
+                  QLog.d("Q.camera.CameraWrapper", 2, "reset BACK Cam backCamRotate180 = " + paramInt1);
+                }
+                break;
+              case 270: 
+                if (aqqi.a().i != -1)
+                {
+                  paramInt1 = aqqi.a().i;
+                  QLog.d("Q.camera.CameraWrapper", 2, "reset BACK Cam backCamRotate270 = " + paramInt1);
+                }
+                break;
+              }
             }
           }
         }
       }
-      catch (Exception paramString)
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    aqqi.a().a(aqql.a(BaseApplicationImpl.getContext()), paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = true;
+    boolean bool3 = false;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.camera.CameraWrapper", 2, "[isSysVersionValid] ENTER sysCamerOn=" + aqqi.a().jdField_b_of_type_Boolean + " sysMinVersion=" + aqqi.a().a + " sysMaxVersion=" + aqqi.a().jdField_b_of_type_JavaLangString + " currVersion=" + Build.VERSION.RELEASE);
+    }
+    aqqi.a().a();
+    boolean bool1 = bool3;
+    if (aqqi.a().jdField_b_of_type_Boolean) {}
+    try
+    {
+      String[] arrayOfString2 = aqqi.a().a.split("\\.");
+      String[] arrayOfString3 = aqqi.a().jdField_b_of_type_JavaLangString.split("\\.");
+      String[] arrayOfString1;
+      int j;
+      int i;
+      if (Build.VERSION.RELEASE != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("OnlineStatusConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+        arrayOfString1 = Build.VERSION.RELEASE.split("\\.");
+        bool1 = bool3;
+        if (arrayOfString1 != null)
+        {
+          bool1 = bool3;
+          if (arrayOfString2.length == 3)
+          {
+            bool1 = bool3;
+            if (arrayOfString3.length == 3)
+            {
+              j = Integer.parseInt(arrayOfString2[0]);
+              int i3 = Integer.parseInt(arrayOfString2[1]);
+              int i4 = Integer.parseInt(arrayOfString2[2]);
+              int k = Integer.parseInt(arrayOfString1[0]);
+              int m = Integer.parseInt(arrayOfString1[1]);
+              if (arrayOfString1.length != 3) {
+                break label356;
+              }
+              i = Integer.parseInt(arrayOfString1[2]);
+              label231:
+              int n = Integer.parseInt(arrayOfString3[0]);
+              int i1 = Integer.parseInt(arrayOfString3[1]);
+              int i2 = Integer.parseInt(arrayOfString3[2]);
+              if ((k <= j) && ((k != j) || (m <= i3)) && ((j != k) || (i3 != m) || (i < i4))) {
+                break label361;
+              }
+              j = 1;
+              label295:
+              if ((k >= n) && ((k != n) || (m >= i1)) && ((n != k) || (i1 != m) || (i > i2))) {
+                break label366;
+              }
+              i = 1;
+              label335:
+              if ((j == 0) || (i == 0)) {
+                break label371;
+              }
+            }
+          }
         }
-        return localaqqj;
       }
-      QLog.d("OnlineStatusConfProcessor", 1, "confBean = " + localaqqj.toString());
-      return localaqqj;
-      label212:
-      i += 1;
+      label356:
+      label361:
+      label366:
+      label371:
+      for (bool1 = bool2;; bool1 = false)
+      {
+        return bool1;
+        arrayOfString1 = null;
+        break;
+        i = 0;
+        break label231;
+        j = 0;
+        break label295;
+        i = 0;
+        break label335;
+      }
+      return false;
     }
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = false;
-    if (ayox.a() <= 0) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public aypi a(AppRuntime.Status paramStatus, long paramLong)
-  {
-    Object localObject = paramStatus;
-    if (paramStatus == null)
+    catch (Exception localException)
     {
-      QLog.d("OnlineStatus", 1, new Object[] { "getOnlineStatusItem with null, id:", Long.valueOf(paramLong) });
-      localObject = AppRuntime.Status.online;
+      localException.printStackTrace();
     }
-    paramStatus = aypi.a((AppRuntime.Status)localObject, paramLong);
-    localObject = (aypi)this.jdField_a_of_type_JavaUtilHashMap.get(paramStatus);
-    paramStatus = (AppRuntime.Status)localObject;
-    if (localObject == null) {
-      paramStatus = new aypi(AppRuntime.Status.online);
-    }
-    return paramStatus;
   }
   
-  public ArrayList<aypi> a()
+  public int b()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(50);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    int j;
+    if (jdField_a_of_type_Int != -1)
     {
-      aypi localaypi = (aypi)localIterator.next();
-      localStringBuilder.append("id:").append(localaypi.jdField_a_of_type_Long).append(" ");
-      localStringBuilder.append("title:").append(localaypi.jdField_a_of_type_JavaLangString).append(" ");
-      localStringBuilder.append("icon:").append(localaypi.b).append("\n");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.camera.CameraWrapper", 2, "[getNumberOfCameras] sNumberOfCameras = " + jdField_a_of_type_Int);
+      }
+      j = jdField_a_of_type_Int;
+      return j;
     }
-    return localStringBuilder.toString();
+    SharedPreferences localSharedPreferences = aqql.b(BaseApplicationImpl.getContext());
+    int i;
+    if (localSharedPreferences.contains("localsp_camera_num"))
+    {
+      j = localSharedPreferences.getInt("localsp_camera_num", 0);
+      i = j;
+      if (j < 1)
+      {
+        i = Camera.getNumberOfCameras();
+        bdmc.e("event_camera_num_less_two");
+      }
+    }
+    for (;;)
+    {
+      jdField_a_of_type_Int = i;
+      j = i;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("Q.camera.CameraWrapper", 2, new Object[] { "getNumberOfCameras, return ", Integer.valueOf(jdField_a_of_type_Int) });
+      return i;
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        ThreadManager.excute(new CameraWrapper.1(this, localSharedPreferences), 64, null, false);
+      }
+      i = 2;
+    }
+  }
+  
+  public boolean b()
+  {
+    aqqi.a().e();
+    return aqqi.a().jdField_g_of_type_Boolean;
+  }
+  
+  public boolean c()
+  {
+    aqqi.a().b();
+    return aqqi.a().jdField_c_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqqj
  * JD-Core Version:    0.7.0.1
  */

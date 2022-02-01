@@ -1,42 +1,75 @@
-import android.text.Layout;
-import android.text.SpannedString;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import com.tencent.mobileqq.teamworkforgroup.GPadInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class beew
-  implements View.OnTouchListener
+public class beew
+  implements anui
 {
-  beew(beeu parambeeu) {}
+  public static String a = "GroupTeamWorkObserver";
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, int paramInt, String paramString) {}
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString, List<GPadInfo> paramList) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, String paramString, List<GPadInfo> paramList, int paramInt2, int paramInt3) {}
+  
+  public void a(boolean paramBoolean1, int paramInt1, String paramString, List<GPadInfo> paramList, int paramInt2, boolean paramBoolean2) {}
+  
+  public void b(boolean paramBoolean, int paramInt, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int i = paramMotionEvent.getAction();
-    TextView localTextView = (TextView)paramView;
-    CharSequence localCharSequence = localTextView.getText();
-    if (((localCharSequence instanceof SpannedString)) && (i == 1))
-    {
-      i = (int)paramMotionEvent.getX();
-      int j = (int)paramMotionEvent.getY();
-      int k = localTextView.getTotalPaddingLeft();
-      int m = localTextView.getTotalPaddingTop();
-      int n = localTextView.getScrollX();
-      int i1 = localTextView.getScrollY();
-      paramMotionEvent = localTextView.getLayout();
-      i = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(j - m + i1), i - k + n);
-      paramMotionEvent = (ClickableSpan[])((SpannedString)localCharSequence).getSpans(i, i, ClickableSpan.class);
-      if (paramMotionEvent.length != 0) {
-        paramMotionEvent[0].onClick(localTextView);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, "GroupTeamWorkObserver type=" + paramInt + ", isSuccess=" + paramBoolean);
     }
-    else
+    switch (paramInt)
     {
-      return true;
     }
-    paramView.performClick();
-    return true;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        return;
+                      } while (paramObject == null);
+                      paramObject = (Object[])paramObject;
+                    } while (paramObject.length != 5);
+                    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (List)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
+                    return;
+                  } while (paramObject == null);
+                  paramObject = (Object[])paramObject;
+                } while (paramObject.length != 3);
+                a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (List)paramObject[2]);
+                return;
+              } while (paramObject == null);
+              paramObject = (Object[])paramObject;
+            } while (paramObject.length != 5);
+            a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (List)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Boolean)paramObject[4]).booleanValue());
+            return;
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 2);
+        a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 3);
+    b(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
   }
 }
 

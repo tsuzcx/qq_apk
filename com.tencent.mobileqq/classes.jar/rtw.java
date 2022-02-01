@@ -1,35 +1,24 @@
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+
 class rtw
-  implements rtq
+  extends sbh
 {
-  rtw(rtv paramrtv) {}
+  rtw(rsx paramrsx) {}
   
-  public void a() {}
-  
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      rtv.a(this.a, paramString1);
-      rtv.b(this.a, paramString2);
-      rtv.a(this.a, 3);
-      return;
-    case 1001: 
-      rtv.b(this.a, 10);
-      return;
-    case 1002: 
-      rtv.b(this.a, 9);
-      return;
-    case 1003: 
-      rtv.b(this.a, 11);
-      return;
-    }
-    rtv.b(this.a, 13);
-    rtv.c(this.a, 1002);
+    rsx.a(this.a, paramVideoInfo);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public int c()
+  {
+    return 1;
   }
 }
 

@@ -1,17 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import android.database.DataSetObserver;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
 
-class aewj
-  implements DialogInterface.OnClickListener
+public class aewj
+  extends DataSetObserver
 {
-  aewj(aewi paramaewi) {}
+  public aewj(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onChanged()
   {
-    paramDialogInterface.dismiss();
-    QQIdentiferActivity.a(this.a.a, 205, anni.a(2131709131));
-    this.a.a.finish();
+    TextView localTextView = LebaListMgrActivity.a(this.a);
+    if (LebaListMgrActivity.a(this.a).getCount() > 0) {}
+    for (int i = 0;; i = 8)
+    {
+      localTextView.setVisibility(i);
+      return;
+    }
   }
 }
 

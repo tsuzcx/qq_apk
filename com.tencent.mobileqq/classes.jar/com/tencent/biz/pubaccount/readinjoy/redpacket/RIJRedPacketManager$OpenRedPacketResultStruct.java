@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.redpacket;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qzd;
+import qri;
 
 public class RIJRedPacketManager$OpenRedPacketResultStruct
   implements Parcelable
 {
-  public static final Parcelable.Creator<OpenRedPacketResultStruct> CREATOR = new qzd();
+  public static final Parcelable.Creator<OpenRedPacketResultStruct> CREATOR = new qri();
   public long a;
   public String a;
   public boolean a;
@@ -17,8 +17,6 @@ public class RIJRedPacketManager$OpenRedPacketResultStruct
   public String d;
   public String e;
   public String f;
-  
-  public RIJRedPacketManager$OpenRedPacketResultStruct() {}
   
   public RIJRedPacketManager$OpenRedPacketResultStruct(Parcel paramParcel)
   {

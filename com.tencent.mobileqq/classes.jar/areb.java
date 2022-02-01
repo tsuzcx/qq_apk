@@ -1,110 +1,241 @@
-import android.graphics.Canvas;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.TreeSet;
+import android.text.TextUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public abstract class areb
+public class areb
 {
-  protected int a;
-  protected arec a;
-  protected arew a;
-  protected final arfo a;
-  protected argb a;
-  protected argg a;
-  private ArrayList<arfr> a;
-  protected final List<aren> a;
-  protected final TreeSet<aren> a;
+  public String A = "";
+  public String B = "";
+  public String C = "";
+  public String D = "";
+  public String E = "";
+  public String F = "";
+  public String G = "";
+  public String H = "";
+  public String I = "";
+  public String J = "";
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
+  public String p = "";
+  public String q = "";
+  public String r = "";
+  public String s = "";
+  public String t = "";
+  public String u = "";
+  public String v = "";
+  public String w = "";
+  public String x = "";
+  public String y = "";
+  public String z = "";
   
-  protected areb(arew paramarew, arec paramarec, Comparator<aren> paramComparator, argg paramargg, argb paramargb)
+  public areb()
   {
-    this.jdField_a_of_type_Arew = paramarew;
-    this.jdField_a_of_type_Arec = paramarec;
-    this.jdField_a_of_type_Argg = paramargg;
-    this.jdField_a_of_type_Argb = paramargb;
-    this.jdField_a_of_type_Arfo = new arfo(paramarec);
-    this.jdField_a_of_type_JavaUtilTreeSet = new TreeSet(paramComparator);
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    a();
+    this.jdField_a_of_type_JavaLangString = "https://ti.qq.com/hybrid-h5/intimate/list?_wv=83886083";
+    this.jdField_b_of_type_JavaLangString = "https://ti.qq.com/hybrid-h5/intimate/launch?_wv=83886083";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 80;
+    this.jdField_b_of_type_Int = 100;
+    this.jdField_c_of_type_Int = 80;
   }
   
-  public static areb a(arew paramarew, arec paramarec, Comparator<aren> paramComparator, argg paramargg, argb paramargb)
+  public static areb a(String paramString)
   {
-    return new arem(paramarew, paramarec, paramComparator, paramargg, paramargb);
-  }
-  
-  private void a(Canvas paramCanvas, arew paramarew, long paramLong)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramCanvas != null))
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
+    }
+    try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((arfr)localIterator.next()).a(paramCanvas, paramarew, paramLong);
+      areb localareb = new areb();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("isUpgradeOpen", 0) == 1) {}
+      for (;;)
+      {
+        localareb.jdField_a_of_type_Boolean = bool;
+        localareb.jdField_a_of_type_JavaLangString = paramString.optString("managePageURL", "https://ti.qq.com/hybrid-h5/intimate/list?_wv=83886083");
+        if (TextUtils.isEmpty(localareb.jdField_a_of_type_JavaLangString)) {
+          localareb.jdField_a_of_type_JavaLangString = "https://ti.qq.com/hybrid-h5/intimate/list?_wv=83886083";
+        }
+        localareb.jdField_b_of_type_JavaLangString = paramString.optString("bindPageURL", "https://ti.qq.com/hybrid-h5/intimate/launch?_wv=83886083");
+        if (TextUtils.isEmpty(localareb.jdField_b_of_type_JavaLangString)) {
+          localareb.jdField_b_of_type_JavaLangString = "https://ti.qq.com/hybrid-h5/intimate/launch?_wv=83886083";
+        }
+        Object localObject;
+        JSONArray localJSONArray;
+        if (paramString.has("bgImg"))
+        {
+          localObject = paramString.optJSONObject("bgImg");
+          if ((localObject != null) && (((JSONObject)localObject).has("relationNo")))
+          {
+            localJSONArray = ((JSONObject)localObject).optJSONArray("relationNo");
+            if ((localJSONArray != null) && (localJSONArray.length() > 0)) {
+              localareb.jdField_c_of_type_JavaLangString = localJSONArray.getString(0);
+            }
+          }
+          if ((localObject != null) && (((JSONObject)localObject).has("relationGuimi")))
+          {
+            localJSONArray = ((JSONObject)localObject).optJSONArray("relationGuimi");
+            if ((localJSONArray != null) && (localJSONArray.length() > 2))
+            {
+              localareb.d = localJSONArray.getString(0);
+              localareb.e = localJSONArray.getString(1);
+              localareb.f = localJSONArray.getString(2);
+            }
+          }
+          if ((localObject != null) && (((JSONObject)localObject).has("relationJiyou")))
+          {
+            localJSONArray = ((JSONObject)localObject).optJSONArray("relationJiyou");
+            if ((localJSONArray != null) && (localJSONArray.length() > 2))
+            {
+              localareb.g = localJSONArray.getString(0);
+              localareb.h = localJSONArray.getString(1);
+              localareb.i = localJSONArray.getString(2);
+            }
+          }
+          if ((localObject != null) && (((JSONObject)localObject).has("relationLover")))
+          {
+            localObject = ((JSONObject)localObject).optJSONArray("relationLover");
+            if ((localObject != null) && (((JSONArray)localObject).length() > 2))
+            {
+              localareb.j = ((JSONArray)localObject).getString(0);
+              localareb.k = ((JSONArray)localObject).getString(1);
+              localareb.l = ((JSONArray)localObject).getString(2);
+            }
+          }
+        }
+        if (paramString.has("darkBgImg"))
+        {
+          localObject = paramString.optJSONObject("darkBgImg");
+          if ((localObject != null) && (((JSONObject)localObject).has("relationGuimi")))
+          {
+            localJSONArray = ((JSONObject)localObject).optJSONArray("relationGuimi");
+            if ((localJSONArray != null) && (localJSONArray.length() > 2))
+            {
+              localareb.m = localJSONArray.getString(0);
+              localareb.n = localJSONArray.getString(1);
+              localareb.o = localJSONArray.getString(2);
+            }
+          }
+          if ((localObject != null) && (((JSONObject)localObject).has("relationJiyou")))
+          {
+            localJSONArray = ((JSONObject)localObject).optJSONArray("relationJiyou");
+            if ((localJSONArray != null) && (localJSONArray.length() > 2))
+            {
+              localareb.p = localJSONArray.getString(0);
+              localareb.q = localJSONArray.getString(1);
+              localareb.r = localJSONArray.getString(2);
+            }
+          }
+          if ((localObject != null) && (((JSONObject)localObject).has("relationLover")))
+          {
+            localObject = ((JSONObject)localObject).optJSONArray("relationLover");
+            if ((localObject != null) && (((JSONArray)localObject).length() > 2))
+            {
+              localareb.s = ((JSONArray)localObject).getString(0);
+              localareb.t = ((JSONArray)localObject).getString(1);
+              localareb.u = ((JSONArray)localObject).getString(2);
+            }
+          }
+        }
+        if (paramString.has("shareImg"))
+        {
+          localObject = paramString.optJSONObject("shareImg");
+          if ((localObject != null) && (((JSONObject)localObject).has("relationNo")))
+          {
+            localJSONArray = ((JSONObject)localObject).optJSONArray("relationNo");
+            if ((localJSONArray != null) && (localJSONArray.length() > 0)) {
+              localareb.v = localJSONArray.getString(0);
+            }
+          }
+          if ((localObject != null) && (((JSONObject)localObject).has("relationGuimi")))
+          {
+            localJSONArray = ((JSONObject)localObject).optJSONArray("relationGuimi");
+            if ((localJSONArray != null) && (localJSONArray.length() > 2))
+            {
+              localareb.w = localJSONArray.getString(0);
+              localareb.x = localJSONArray.getString(1);
+              localareb.y = localJSONArray.getString(2);
+            }
+          }
+          if ((localObject != null) && (((JSONObject)localObject).has("relationJiyou")))
+          {
+            localJSONArray = ((JSONObject)localObject).optJSONArray("relationJiyou");
+            if ((localJSONArray != null) && (localJSONArray.length() > 2))
+            {
+              localareb.z = localJSONArray.getString(0);
+              localareb.A = localJSONArray.getString(1);
+              localareb.B = localJSONArray.getString(2);
+            }
+          }
+          if ((localObject != null) && (((JSONObject)localObject).has("relationLover")))
+          {
+            localObject = ((JSONObject)localObject).optJSONArray("relationLover");
+            if ((localObject != null) && (((JSONArray)localObject).length() > 2))
+            {
+              localareb.C = ((JSONArray)localObject).getString(0);
+              localareb.D = ((JSONArray)localObject).getString(1);
+              localareb.E = ((JSONArray)localObject).getString(2);
+            }
+          }
+        }
+        if (paramString.has("scoreAnimation")) {
+          localareb.H = paramString.optString("scoreAnimation");
+        }
+        if (paramString.has("scoreAnimationMd5")) {
+          localareb.I = paramString.optString("scoreAnimationMd5");
+        }
+        if (paramString.has("scoreRuleURL")) {
+          localareb.J = paramString.optString("scoreRuleURL");
+        }
+        if (paramString.has("scoreDisplayIntimateMin")) {
+          localareb.jdField_a_of_type_Int = paramString.optInt("scoreDisplayIntimateMin");
+        }
+        if (paramString.has("scoreDisplayFriendMin")) {
+          localareb.jdField_b_of_type_Int = paramString.optInt("scoreDisplayFriendMin");
+        }
+        if (paramString.has("scoreDisplayFriendMin818")) {
+          localareb.jdField_c_of_type_Int = paramString.optInt("scoreDisplayFriendMin818");
+        }
+        localareb.F = paramString.optString("gifNormalUrl");
+        localareb.G = paramString.optString("gifNightUrl");
+        return localareb;
+        bool = false;
       }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
-  public int a()
+  public String toString()
   {
-    return this.jdField_a_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FriendIntimateRelationshipBean isUpgradeOpen:").append(this.jdField_a_of_type_Boolean).append(" managePageURL:").append(this.jdField_a_of_type_JavaLangString).append(" bindPageURL:").append(this.jdField_b_of_type_JavaLangString).append(" relationNoBgUrl:").append(this.jdField_c_of_type_JavaLangString).append(" relationGuimiBg0Url:").append(this.d).append(" relationGuimiBg1Url:").append(this.e).append(" relationGuimiBg2Url:").append(this.f).append(" relationJiyouBg0Url:").append(this.g).append(" relationJiyouBg1Url:").append(this.h).append(" relationJiyouBg2Url:").append(this.i).append(" relationLoverBg0Url:").append(this.j).append(" relationLoverBg1Url:").append(this.k).append(" relationLoverBg2Url:").append(this.l).append(" relationGuimiDarkBg0Url:").append(this.m).append(" relationGuimiDarkBg1Url:").append(this.n).append(" relationGuimiDarkBg2Url:").append(this.o).append(" relationJiyouDarkBg0Url:").append(this.p).append(" relationJiyouDarkBg1Url:").append(this.q).append(" relationJiyouDarkBg2Url:").append(this.r).append(" relationLoverDarkBg0Url:").append(this.s).append(" relationLoverDarkBg1Url:").append(this.t).append(" relationLoverDarkBg2Url:").append(this.u).append(" relationNoShareUrl:").append(this.v).append(" relationGuimiShare0Url:").append(this.w).append(" relationGuimiShare1Url:").append(this.x).append(" relationGuimiShare2Url:").append(this.y).append(" relationJiyouShare0Url:").append(this.z).append(" relationJiyouShare1Url:").append(this.A).append(" relationJiyouShare2Url:").append(this.B).append(" relationLoverShare0Url:").append(this.C).append(" relationLoverShare1Url:").append(this.D).append(" relationLoverShare2Url:").append(this.E).append(" gifNormalUrl:").append(this.F).append(" gifNightUrl:").append(this.G);
+    return localStringBuilder.toString();
   }
-  
-  public abstract aren a(argk paramargk);
-  
-  public List<aren> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a() {}
-  
-  public final void a(Canvas paramCanvas, long paramLong)
-  {
-    b(paramCanvas, paramLong);
-    a(paramCanvas, this.jdField_a_of_type_Arew, paramLong);
-  }
-  
-  protected void a(Canvas paramCanvas, aren paramaren)
-  {
-    arfn localarfn = this.jdField_a_of_type_Arew.a(paramaren);
-    this.jdField_a_of_type_Arfo.a(paramCanvas, paramaren, this.jdField_a_of_type_Arew, localarfn);
-    paramaren.f();
-  }
-  
-  public void a(aren paramaren)
-  {
-    this.jdField_a_of_type_JavaUtilTreeSet.add(paramaren);
-  }
-  
-  public abstract void b();
-  
-  public abstract void b(Canvas paramCanvas, long paramLong);
-  
-  public void b(aren paramaren)
-  {
-    paramaren.c(true);
-    paramaren.d(true);
-    float f = paramaren.f();
-    arek.a(this.jdField_a_of_type_Arew, paramaren);
-    paramaren.c((paramaren.f() + paramaren.f()) / (f + paramaren.f()));
-  }
-  
-  public abstract void c();
-  
-  public abstract void c(aren paramaren);
-  
-  public void d()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public abstract void d(aren paramaren);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     areb
  * JD-Core Version:    0.7.0.1
  */

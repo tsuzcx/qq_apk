@@ -18,31 +18,31 @@ import android.os.Looper;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import android.widget.ProgressBar;
-import anhk;
-import anni;
-import anrs;
-import atwl;
-import bcst;
-import bgku;
-import bglp;
-import bgmj;
-import bgmp;
-import bgng;
-import bgnt;
-import bgpa;
-import bgyg;
-import bhgg;
-import bhmn;
+import antf;
+import anzj;
+import aody;
+import auog;
+import bdll;
+import bhkv;
+import bhlq;
+import bhml;
+import bhmr;
 import bhni;
-import bhod;
-import bhpq;
-import bhpv;
-import bhql;
-import bhsr;
-import bhss;
-import bhsx;
-import bhsz;
-import bkgf;
+import bhnv;
+import bhpc;
+import bhyk;
+import bigv;
+import bini;
+import biod;
+import bioy;
+import biql;
+import biqq;
+import birg;
+import bitm;
+import bitn;
+import bits;
+import bitu;
+import blhj;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -82,42 +82,42 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppActivity;
-import nmj;
-import nzm;
-import nzn;
-import nzo;
-import nzp;
-import nzq;
-import nzr;
-import nzs;
-import nzt;
-import nzu;
-import nzv;
-import nzw;
-import nzx;
+import noe;
+import oaw;
+import oax;
+import oay;
+import oaz;
+import oba;
+import obb;
+import obc;
+import obd;
+import obe;
+import obf;
+import obg;
+import obh;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tzo;
+import tzq;
 
 public class PublicAccountJavascriptInterface
-  extends bhmn
+  extends bini
 {
   private static long jdField_a_of_type_Long;
   public static final String a;
   protected static HashMap<String, String> a;
   public Activity a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new nzo(this);
-  bgpa jdField_a_of_type_Bgpa;
-  private bhsx jdField_a_of_type_Bhsx;
-  private bhsz jdField_a_of_type_Bhsz;
-  protected List<nzx> a;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new oay(this);
+  bhpc jdField_a_of_type_Bhpc;
+  private bits jdField_a_of_type_Bits;
+  private bitu jdField_a_of_type_Bitu;
+  protected List<obh> a;
   public boolean a;
   boolean b = false;
   
   static
   {
-    jdField_a_of_type_JavaLangString = bhgg.a(anhk.ba + "pubaccount/");
+    jdField_a_of_type_JavaLangString = bigv.a(antf.ba + "pubaccount/");
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
@@ -521,7 +521,7 @@ public class PublicAccountJavascriptInterface
   
   private void a(String paramString, long paramLong)
   {
-    ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(new nzs(this, paramString, paramLong), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(new obc(this, paramString, paramLong), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
   }
   
   private void a(String paramString1, String paramString2)
@@ -581,13 +581,13 @@ public class PublicAccountJavascriptInterface
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 83	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:mRuntime	Lbhod;
-    //   4: invokevirtual 322	bhod:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
+    //   1: getfield 83	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:mRuntime	Lbioy;
+    //   4: invokevirtual 322	bioy:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
     //   7: ifnonnull +4 -> 11
     //   10: return
     //   11: aload_0
-    //   12: getfield 83	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:mRuntime	Lbhod;
-    //   15: invokevirtual 88	bhod:a	()Lcom/tencent/common/app/AppInterface;
+    //   12: getfield 83	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:mRuntime	Lbioy;
+    //   15: invokevirtual 88	bioy:a	()Lcom/tencent/common/app/AppInterface;
     //   18: astore 7
     //   20: aload 7
     //   22: ifnull +864 -> 886
@@ -785,7 +785,7 @@ public class PublicAccountJavascriptInterface
     //   441: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   444: aload 7
     //   446: invokevirtual 93	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
-    //   449: invokestatic 404	bgmj:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   449: invokestatic 404	bhml:b	(Ljava/lang/String;)Ljava/lang/String;
     //   452: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   455: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   458: invokespecial 405	java/io/File:<init>	(Ljava/lang/String;)V
@@ -812,7 +812,7 @@ public class PublicAccountJavascriptInterface
     //   499: dup
     //   500: aload_1
     //   501: aload 6
-    //   503: invokestatic 404	bgmj:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   503: invokestatic 404	bhml:b	(Ljava/lang/String;)Ljava/lang/String;
     //   506: invokespecial 414	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   509: astore 6
     //   511: aload 6
@@ -831,7 +831,7 @@ public class PublicAccountJavascriptInterface
     //   534: dup
     //   535: aload 6
     //   537: aload 5
-    //   539: invokestatic 404	bgmj:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   539: invokestatic 404	bhml:b	(Ljava/lang/String;)Ljava/lang/String;
     //   542: invokespecial 414	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   545: astore 5
     //   547: aload_1
@@ -1087,8 +1087,8 @@ public class PublicAccountJavascriptInterface
         if (!(this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity)) {
           break label292;
         }
-        if ((this.jdField_a_of_type_Bgpa != null) && (this.jdField_a_of_type_Bgpa.isShowing())) {
-          this.jdField_a_of_type_Bgpa.dismiss();
+        if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {
+          this.jdField_a_of_type_Bhpc.dismiss();
         }
         str = "";
         localObject = this.mRuntime.a();
@@ -1097,7 +1097,7 @@ public class PublicAccountJavascriptInterface
         }
         localObject = "";
         if (this.mRuntime.a() != null) {
-          localObject = nmj.b(this.mRuntime.a().getUrl());
+          localObject = noe.b(this.mRuntime.a().getUrl());
         }
         if (!getLocationPermissionGrant(str, (String)localObject)) {
           break;
@@ -1112,12 +1112,12 @@ public class PublicAccountJavascriptInterface
     } while (!QLog.isColorLevel());
     QLog.d("PAjs", 2, "already ask");
     return;
-    this.jdField_a_of_type_Bgpa = bglp.a(this.jdField_a_of_type_AndroidAppActivity, 0);
-    this.jdField_a_of_type_Bgpa.setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131719133, new Object[] { localObject }));
-    this.jdField_a_of_type_Bgpa.setPositiveButton(2131719152, new nzt(this, paramBoolean, paramString1, paramString2, str, (String)localObject));
-    this.jdField_a_of_type_Bgpa.setNegativeButton(this.jdField_a_of_type_AndroidAppActivity.getString(2131719163), new nzu(this, paramString2));
-    this.jdField_a_of_type_Bgpa.setOnCancelListener(new nzv(this, paramString2));
-    this.jdField_a_of_type_Bgpa.show();
+    this.jdField_a_of_type_Bhpc = bhlq.a(this.jdField_a_of_type_AndroidAppActivity, 0);
+    this.jdField_a_of_type_Bhpc.setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131719303, new Object[] { localObject }));
+    this.jdField_a_of_type_Bhpc.setPositiveButton(2131719322, new obd(this, paramBoolean, paramString1, paramString2, str, (String)localObject));
+    this.jdField_a_of_type_Bhpc.setNegativeButton(this.jdField_a_of_type_AndroidAppActivity.getString(2131719333), new obe(this, paramString2));
+    this.jdField_a_of_type_Bhpc.setOnCancelListener(new obf(this, paramString2));
+    this.jdField_a_of_type_Bhpc.show();
     return;
     label292:
     callJs(paramString2, new String[] { "-4", "{}" });
@@ -1138,7 +1138,7 @@ public class PublicAccountJavascriptInterface
     {
       MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
       localMessageDigest.update(paramString.getBytes("UTF-8"));
-      paramString = bgmj.a(localMessageDigest.digest());
+      paramString = bhml.a(localMessageDigest.digest());
       localMessageDigest.reset();
       return paramString;
     }
@@ -1155,7 +1155,7 @@ public class PublicAccountJavascriptInterface
   
   private String b(String paramString1, String paramString2)
   {
-    return bkgf.a(paramString1, paramString2);
+    return blhj.a(paramString1, paramString2);
   }
   
   private void b(String paramString1, String paramString2, JSONObject paramJSONObject)
@@ -1200,7 +1200,7 @@ public class PublicAccountJavascriptInterface
       label96:
       break label96;
     }
-    ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(new nzm(this, paramBoolean, i, bool1, paramString2, l1), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(new oaw(this, paramBoolean, i, bool1, paramString2, l1), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
   }
   
   private static long c()
@@ -1276,7 +1276,7 @@ public class PublicAccountJavascriptInterface
         if (((arrayOfByte[0] & 0xFF) == 255) && ((arrayOfByte[1] & 0xFF) == 216))
         {
           paramString = "data:image/jpeg;base64,";
-          return paramString + bgku.encodeToString(arrayOfByte, 2);
+          return paramString + bhkv.encodeToString(arrayOfByte, 2);
           paramString = (String)localObject;
           if ((arrayOfByte[0] & 0xFF) != 71) {
             continue;
@@ -1307,7 +1307,7 @@ public class PublicAccountJavascriptInterface
   
   private String c(String paramString1, String paramString2)
   {
-    return bkgf.b(paramString1, paramString2);
+    return blhj.b(paramString1, paramString2);
   }
   
   public static void deleteAllH5Data(AppInterface paramAppInterface)
@@ -1320,9 +1320,9 @@ public class PublicAccountJavascriptInterface
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (CouponH5Data)((Iterator)localObject1).next();
-        localObject2 = new File(jdField_a_of_type_JavaLangString + "/" + bgmj.b(paramAppInterface.getAccount()) + "/" + ((CouponH5Data)localObject2).mHost);
+        localObject2 = new File(jdField_a_of_type_JavaLangString + "/" + bhml.b(paramAppInterface.getAccount()) + "/" + ((CouponH5Data)localObject2).mHost);
         if (((File)localObject2).exists()) {
-          atwl.a((File)localObject2);
+          auog.a((File)localObject2);
         }
       }
     }
@@ -1365,8 +1365,8 @@ public class PublicAccountJavascriptInterface
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 83	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:mRuntime	Lbhod;
-    //   4: invokevirtual 88	bhod:a	()Lcom/tencent/common/app/AppInterface;
+    //   1: getfield 83	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:mRuntime	Lbioy;
+    //   4: invokevirtual 88	bioy:a	()Lcom/tencent/common/app/AppInterface;
     //   7: astore 6
     //   9: aload 6
     //   11: ifnonnull +7 -> 18
@@ -1480,7 +1480,7 @@ public class PublicAccountJavascriptInterface
     //   253: aload_2
     //   254: aload 5
     //   256: aload 4
-    //   258: invokestatic 803	nlw:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)Ljava/lang/String;
+    //   258: invokestatic 803	nnr:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)Ljava/lang/String;
     //   261: astore_1
     //   262: aload_1
     //   263: areturn
@@ -1552,8 +1552,8 @@ public class PublicAccountJavascriptInterface
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 83	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:mRuntime	Lbhod;
-    //   4: invokevirtual 88	bhod:a	()Lcom/tencent/common/app/AppInterface;
+    //   1: getfield 83	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:mRuntime	Lbioy;
+    //   4: invokevirtual 88	bioy:a	()Lcom/tencent/common/app/AppInterface;
     //   7: astore 6
     //   9: aload 6
     //   11: ifnonnull +4 -> 15
@@ -1746,7 +1746,7 @@ public class PublicAccountJavascriptInterface
     //   419: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   422: aload 6
     //   424: invokevirtual 93	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
-    //   427: invokestatic 404	bgmj:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   427: invokestatic 404	bhml:b	(Ljava/lang/String;)Ljava/lang/String;
     //   430: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   433: ldc_w 401
     //   436: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1755,12 +1755,12 @@ public class PublicAccountJavascriptInterface
     //   444: ldc_w 401
     //   447: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   450: aload 5
-    //   452: invokestatic 404	bgmj:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   452: invokestatic 404	bhml:b	(Ljava/lang/String;)Ljava/lang/String;
     //   455: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   458: ldc_w 401
     //   461: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   464: aload 7
-    //   466: invokestatic 404	bgmj:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   466: invokestatic 404	bhml:b	(Ljava/lang/String;)Ljava/lang/String;
     //   469: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   472: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   475: invokespecial 405	java/io/File:<init>	(Ljava/lang/String;)V
@@ -2036,10 +2036,10 @@ public class PublicAccountJavascriptInterface
     }
     try
     {
-      Object localObject = tzo.a(paramString);
+      Object localObject = tzq.a(paramString);
       if (localObject != null)
       {
-        paramString = (bhpv)super.getBrowserComponent(4);
+        paramString = (biqq)super.getBrowserComponent(4);
         if (((JSONObject)localObject).has("pageType"))
         {
           int j = ((JSONObject)localObject).getInt("pageType");
@@ -2051,11 +2051,11 @@ public class PublicAccountJavascriptInterface
             while (i < ((JSONArray)localObject).length())
             {
               JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-              nzw localnzw = new nzw();
-              localnzw.jdField_a_of_type_Int = localJSONObject.optInt("itemType");
-              localnzw.jdField_a_of_type_JavaLangString = localJSONObject.optString("itemName");
-              localnzw.b = localJSONObject.optString("itemActionData");
-              localArrayList.add(localnzw);
+              obg localobg = new obg();
+              localobg.jdField_a_of_type_Int = localJSONObject.optInt("itemType");
+              localobg.jdField_a_of_type_JavaLangString = localJSONObject.optString("itemName");
+              localobg.b = localJSONObject.optString("itemActionData");
+              localArrayList.add(localobg);
               i += 1;
             }
           }
@@ -2152,7 +2152,7 @@ public class PublicAccountJavascriptInterface
           break label489;
         }
         a(str1, str2);
-        atwl.a(new File(jdField_a_of_type_JavaLangString + "/" + bgmj.b(localAppInterface.getAccount()) + "/" + str1 + "/" + bgmj.b(str2)));
+        auog.a(new File(jdField_a_of_type_JavaLangString + "/" + bhml.b(localAppInterface.getAccount()) + "/" + str1 + "/" + bhml.b(str2)));
       }
       for (;;)
       {
@@ -2162,7 +2162,7 @@ public class PublicAccountJavascriptInterface
         return;
         label489:
         a(str1, str2, str3);
-        atwl.a(new File(jdField_a_of_type_JavaLangString + "/" + bgmj.b(localAppInterface.getAccount()) + "/" + str1 + "/" + bgmj.b(str2) + "/" + bgmj.b(str3)));
+        auog.a(new File(jdField_a_of_type_JavaLangString + "/" + bhml.b(localAppInterface.getAccount()) + "/" + str1 + "/" + bhml.b(str2) + "/" + bhml.b(str3)));
       }
     }
   }
@@ -2224,7 +2224,7 @@ public class PublicAccountJavascriptInterface
           str = "defaulthost";
         }
         a(str);
-        atwl.a(new File(jdField_a_of_type_JavaLangString + "/" + bgmj.b(localAppInterface.getAccount()) + "/" + str));
+        auog.a(new File(jdField_a_of_type_JavaLangString + "/" + bhml.b(localAppInterface.getAccount()) + "/" + str));
         callJs(paramString2, new String[] { "{ret:0, response:" + localJSONObject1.toString() + "}" });
         return;
       }
@@ -2240,10 +2240,10 @@ public class PublicAccountJavascriptInterface
     }
     try
     {
-      Object localObject = tzo.a(paramString);
+      Object localObject = tzq.a(paramString);
       if (localObject != null)
       {
-        paramString = (bhpv)super.getBrowserComponent(4);
+        paramString = (biqq)super.getBrowserComponent(4);
         if (((JSONObject)localObject).has("enable"))
         {
           localObject = ((JSONObject)localObject).getString("enable");
@@ -2273,17 +2273,17 @@ public class PublicAccountJavascriptInterface
     if (QLog.isColorLevel()) {
       QLog.d("PAjs", 2, "enableScreenshot->enable:" + paramString);
     }
-    bhpq localbhpq = (bhpq)super.getBrowserComponent(64);
-    if (localbhpq != null)
+    biql localbiql = (biql)super.getBrowserComponent(64);
+    if (localbiql != null)
     {
       if ("1".equals(paramString)) {
-        localbhpq.b("");
+        localbiql.b("");
       }
     }
     else {
       return;
     }
-    localbhpq.a();
+    localbiql.a();
   }
   
   public void enableShareDianDian(String paramString)
@@ -2293,10 +2293,10 @@ public class PublicAccountJavascriptInterface
     }
     try
     {
-      Object localObject = tzo.a(paramString);
+      Object localObject = tzq.a(paramString);
       if (localObject != null)
       {
-        paramString = (bhpv)super.getBrowserComponent(4);
+        paramString = (biqq)super.getBrowserComponent(4);
         if (((JSONObject)localObject).has("enable"))
         {
           String str = ((JSONObject)localObject).getString("enable");
@@ -2346,19 +2346,19 @@ public class PublicAccountJavascriptInterface
     }
     try
     {
-      paramString = tzo.a(paramString);
+      paramString = tzq.a(paramString);
       if ((paramString != null) && (paramString.has("enable")))
       {
         paramString = paramString.getString("enable");
-        bhpv localbhpv = (bhpv)super.getBrowserComponent(4);
-        if (localbhpv != null)
+        biqq localbiqq = (biqq)super.getBrowserComponent(4);
+        if (localbiqq != null)
         {
           if ("1".equals(paramString))
           {
-            localbhpv.a(true);
+            localbiqq.a(true);
             return;
           }
-          localbhpv.a(false);
+          localbiqq.a(false);
           return;
         }
       }
@@ -2373,7 +2373,7 @@ public class PublicAccountJavascriptInterface
   
   public void getJson(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    callJs("clientCallback", new String[] { nmj.a("{'r': -102, 'msg': 'no such method'}"), nmj.a(paramString4) });
+    callJs("clientCallback", new String[] { noe.a("{'r': -102, 'msg': 'no such method'}"), noe.a(paramString4) });
   }
   
   public void getLocation(String paramString)
@@ -2441,14 +2441,14 @@ public class PublicAccountJavascriptInterface
           }
           localObject2 = "";
           if (this.mRuntime.a() != null) {
-            localObject2 = nmj.a(this.mRuntime.a().getUrl(), 2);
+            localObject2 = noe.a(this.mRuntime.a().getUrl(), 2);
           }
         } while (TextUtils.isEmpty(paramString));
         if (!(this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity)) {
           break label577;
         }
-        if ((this.jdField_a_of_type_Bgpa != null) && (this.jdField_a_of_type_Bgpa.isShowing())) {
-          this.jdField_a_of_type_Bgpa.dismiss();
+        if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {
+          this.jdField_a_of_type_Bhpc.dismiss();
         }
         if (!getLocationPermissionGrant((String)localObject1, (String)localObject2)) {
           break;
@@ -2463,12 +2463,12 @@ public class PublicAccountJavascriptInterface
     } while (!QLog.isColorLevel());
     QLog.d("PAjs", 2, "already ask");
     return;
-    this.jdField_a_of_type_Bgpa = bglp.a(this.jdField_a_of_type_AndroidAppActivity, 0);
-    this.jdField_a_of_type_Bgpa.setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131719133, new Object[] { localObject2 }));
-    this.jdField_a_of_type_Bgpa.setPositiveButton(2131719152, new nzp(this, paramString, l, (String)localObject1, (String)localObject2));
-    this.jdField_a_of_type_Bgpa.setNegativeButton(this.jdField_a_of_type_AndroidAppActivity.getString(2131719163), new nzq(this, paramString));
-    this.jdField_a_of_type_Bgpa.setOnCancelListener(new nzr(this, paramString));
-    this.jdField_a_of_type_Bgpa.show();
+    this.jdField_a_of_type_Bhpc = bhlq.a(this.jdField_a_of_type_AndroidAppActivity, 0);
+    this.jdField_a_of_type_Bhpc.setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131719303, new Object[] { localObject2 }));
+    this.jdField_a_of_type_Bhpc.setPositiveButton(2131719322, new oaz(this, paramString, l, (String)localObject1, (String)localObject2));
+    this.jdField_a_of_type_Bhpc.setNegativeButton(this.jdField_a_of_type_AndroidAppActivity.getString(2131719333), new oba(this, paramString));
+    this.jdField_a_of_type_Bhpc.setOnCancelListener(new obb(this, paramString));
+    this.jdField_a_of_type_Bhpc.show();
     return;
     label577:
     callJs(paramString, new String[] { "-4", "{}" });
@@ -2481,7 +2481,7 @@ public class PublicAccountJavascriptInterface
   
   public int getNetworkState()
   {
-    return bgnt.b(BaseApplication.getContext());
+    return bhnv.b(BaseApplication.getContext());
   }
   
   public String getNetworkType()
@@ -2532,13 +2532,13 @@ public class PublicAccountJavascriptInterface
   
   public void getPageLoadStamp(String paramString)
   {
-    if (this.jdField_a_of_type_Bhsx != null)
+    if (this.jdField_a_of_type_Bits != null)
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Bhsx.getCurrentUrl())) {}
-      for (String str = this.jdField_a_of_type_Bhsx.getCurrentUrl();; str = "")
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Bits.getCurrentUrl())) {}
+      for (String str = this.jdField_a_of_type_Bits.getCurrentUrl();; str = "")
       {
-        if (this.jdField_a_of_type_Bhsz != null) {
-          callJs(paramString, new String[] { "{ret:0, onCreateTime:" + this.jdField_a_of_type_Bhsz.getmOnCreateMilliTimeStamp() + ", startLoadUrlTime:" + this.jdField_a_of_type_Bhsz.getmStartLoadUrlMilliTimeStamp() + ", url:'" + str + "'}" });
+        if (this.jdField_a_of_type_Bitu != null) {
+          callJs(paramString, new String[] { "{ret:0, onCreateTime:" + this.jdField_a_of_type_Bitu.getmOnCreateMilliTimeStamp() + ", startLoadUrlTime:" + this.jdField_a_of_type_Bitu.getmStartLoadUrlMilliTimeStamp() + ", url:'" + str + "'}" });
         }
         return;
       }
@@ -2570,15 +2570,15 @@ public class PublicAccountJavascriptInterface
   public void hideLoading()
   {
     Object localObject = this.mRuntime.a(this.mRuntime.a());
-    if ((localObject != null) && ((localObject instanceof bhss))) {
-      ((bhss)localObject).a();
+    if ((localObject != null) && ((localObject instanceof bitn))) {
+      ((bitn)localObject).a();
     }
     do
     {
       return;
-      localObject = (bhql)super.getBrowserComponent(2);
-    } while ((localObject == null) || (((bhql)localObject).a == null));
-    ((bhql)localObject).a.setVisibility(8);
+      localObject = (birg)super.getBrowserComponent(2);
+    } while ((localObject == null) || (((birg)localObject).a == null));
+    ((birg)localObject).a.setVisibility(8);
   }
   
   public void isFollowUin(String paramString1, String paramString2)
@@ -2610,9 +2610,9 @@ public class PublicAccountJavascriptInterface
         }
       }
     }
-    Object localObject = (anrs)((AppInterface)localObject).getManager(56);
+    Object localObject = (aody)((AppInterface)localObject).getManager(56);
     if (localObject != null) {}
-    for (boolean bool = ((anrs)localObject).a(Long.valueOf(paramString1));; bool = false)
+    for (boolean bool = ((aody)localObject).a(Long.valueOf(paramString1));; bool = false)
     {
       localJSONObject.put("follow", bool);
       callJs(paramString2, new String[] { "{ret:0, response:" + localJSONObject.toString() + "}" });
@@ -2646,10 +2646,10 @@ public class PublicAccountJavascriptInterface
         str3 = ((JSONObject)localObject).getString("callback");
       }
       localObject = this.mRuntime.a(this.mRuntime.a());
-      if ((localObject != null) && ((localObject instanceof bhsr))) {
-        ((bhsr)localObject).shareStructMsgForH5(str4, str5, str6, str7, paramString, str1, str2, str3);
+      if ((localObject != null) && ((localObject instanceof bitm))) {
+        ((bitm)localObject).shareStructMsgForH5(str4, str5, str6, str7, paramString, str1, str2, str3);
       }
-      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_sys_30", "share_click", 0, 0, str4, "", "", "");
+      bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_sys_30", "share_click", 0, 0, str4, "", "", "");
       return;
     }
     catch (JSONException paramString)
@@ -2667,13 +2667,13 @@ public class PublicAccountJavascriptInterface
     if (jdField_a_of_type_Long == 0L) {
       ThreadManager.executeOnNetWorkThread(new PublicAccountJavascriptInterface.1(this));
     }
-    bhni localbhni = this.mRuntime.a(this.mRuntime.a());
-    if ((localbhni != null) && ((localbhni instanceof bhsx))) {
-      this.jdField_a_of_type_Bhsx = ((bhsx)localbhni);
+    biod localbiod = this.mRuntime.a(this.mRuntime.a());
+    if ((localbiod != null) && ((localbiod instanceof bits))) {
+      this.jdField_a_of_type_Bits = ((bits)localbiod);
     }
-    localbhni = this.mRuntime.a(this.mRuntime.a());
-    if ((localbhni != null) && ((localbhni instanceof bhsz))) {
-      this.jdField_a_of_type_Bhsz = ((bhsz)localbhni);
+    localbiod = this.mRuntime.a(this.mRuntime.a());
+    if ((localbiod != null) && ((localbiod instanceof bitu))) {
+      this.jdField_a_of_type_Bitu = ((bitu)localbiod);
     }
   }
   
@@ -2683,9 +2683,9 @@ public class PublicAccountJavascriptInterface
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      nzx localnzx = (nzx)localIterator.next();
-      if (!localnzx.isCancelled()) {
-        localnzx.cancel(true);
+      obh localobh = (obh)localIterator.next();
+      if (!localobh.isCancelled()) {
+        localobh.cancel(true);
       }
     }
     this.jdField_a_of_type_JavaUtilList.clear();
@@ -2693,8 +2693,8 @@ public class PublicAccountJavascriptInterface
     if (this.b) {
       this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
     }
-    if ((this.jdField_a_of_type_Bgpa != null) && (this.jdField_a_of_type_Bgpa.isShowing())) {
-      this.jdField_a_of_type_Bgpa.dismiss();
+    if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {
+      this.jdField_a_of_type_Bhpc.dismiss();
     }
     super.onDestroy();
   }
@@ -2703,7 +2703,7 @@ public class PublicAccountJavascriptInterface
   {
     if ("com.tencent.mobileqq.activity.ChatBubbleSettingActivity".equals(paramString))
     {
-      VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_AndroidAppActivity, bgyg.a(this.jdField_a_of_type_AndroidAppActivity, "bubble", ""), 64L, null, false, -1);
+      VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_AndroidAppActivity, bhyk.a(this.jdField_a_of_type_AndroidAppActivity, "bubble", ""), 64L, null, false, -1);
       return;
     }
     Intent localIntent = new Intent();
@@ -2718,7 +2718,7 @@ public class PublicAccountJavascriptInterface
     }
     try
     {
-      paramString = tzo.a(paramString);
+      paramString = tzq.a(paramString);
       if (paramString != null)
       {
         long l = paramString.getLong("puin");
@@ -2848,35 +2848,35 @@ public class PublicAccountJavascriptInterface
     }
     try
     {
-      bhpq localbhpq = (bhpq)super.getBrowserComponent(64);
-      paramString = tzo.a(paramString);
+      biql localbiql = (biql)super.getBrowserComponent(64);
+      paramString = tzq.a(paramString);
       String str;
       if ((paramString != null) && (paramString.has("title")))
       {
         str = paramString.getString("title");
-        if (localbhpq != null) {
-          localbhpq.c(str);
+        if (localbiql != null) {
+          localbiql.c(str);
         }
       }
       if ((paramString != null) && (paramString.has("shareUrl")))
       {
         str = paramString.getString("shareUrl");
-        if (localbhpq != null) {
-          localbhpq.e(str);
+        if (localbiql != null) {
+          localbiql.e(str);
         }
       }
       if ((paramString != null) && (paramString.has("sinaShareTitle")))
       {
         str = paramString.getString("sinaShareTitle");
-        if (localbhpq != null) {
-          localbhpq.d(str);
+        if (localbiql != null) {
+          localbiql.d(str);
         }
       }
       if ((paramString != null) && (paramString.has("shareActionSheetTitle")))
       {
         paramString = paramString.optJSONArray("shareActionSheetTitle");
-        if (localbhpq != null) {
-          localbhpq.a(paramString);
+        if (localbiql != null) {
+          localbiql.a(paramString);
         }
       }
       return;
@@ -2893,15 +2893,15 @@ public class PublicAccountJavascriptInterface
   {
     boolean bool1 = "true".equals(paramString3);
     boolean bool2 = "true".equals(paramString4);
-    paramString3 = bglp.a(this.jdField_a_of_type_AndroidAppActivity, 0);
+    paramString3 = bhlq.a(this.jdField_a_of_type_AndroidAppActivity, 0);
     paramString3.setTitle(paramString1);
     paramString3.setMessage(paramString2);
-    paramString1 = new nzn(this, paramString6, paramString5);
+    paramString1 = new oax(this, paramString6, paramString5);
     if (bool2) {
-      paramString3.setNegativeButton(anni.a(2131707522), paramString1);
+      paramString3.setNegativeButton(anzj.a(2131707631), paramString1);
     }
     if (bool1) {
-      paramString3.setPositiveButton(anni.a(2131707558), paramString1);
+      paramString3.setPositiveButton(anzj.a(2131707667), paramString1);
     }
     try
     {
@@ -2914,15 +2914,15 @@ public class PublicAccountJavascriptInterface
   public void showLoading()
   {
     Object localObject = this.mRuntime.a(this.mRuntime.a());
-    if ((localObject != null) && ((localObject instanceof bhss))) {
-      ((bhss)localObject).b();
+    if ((localObject != null) && ((localObject instanceof bitn))) {
+      ((bitn)localObject).b();
     }
     do
     {
       return;
-      localObject = (bhql)super.getBrowserComponent(2);
-    } while ((localObject == null) || (((bhql)localObject).a == null));
-    ((bhql)localObject).a.setVisibility(0);
+      localObject = (birg)super.getBrowserComponent(2);
+    } while ((localObject == null) || (((birg)localObject).a == null));
+    ((birg)localObject).a.setVisibility(0);
   }
   
   public void showProfile(String paramString)
@@ -3060,7 +3060,7 @@ public class PublicAccountJavascriptInterface
             if (!(localObject3 instanceof QQAppInterface)) {
               break label768;
             }
-            bgng.a((QQAppInterface)localObject3, this.jdField_a_of_type_AndroidAppActivity, paramString).a();
+            bhni.a((QQAppInterface)localObject3, this.jdField_a_of_type_AndroidAppActivity, paramString).a();
             break;
             paramString = "";
             break label626;
@@ -3079,7 +3079,7 @@ public class PublicAccountJavascriptInterface
     }
     try
     {
-      localObject = tzo.a(paramString);
+      localObject = tzq.a(paramString);
       if ((localObject == null) || (!((JSONObject)localObject).has("image_url"))) {
         break label151;
       }
@@ -3104,11 +3104,11 @@ public class PublicAccountJavascriptInterface
     if ((localObject != null) && (((JSONObject)localObject).has("isGif")))
     {
       bool = ((JSONObject)localObject).getBoolean("isGif");
-      localObject = (bhpq)super.getBrowserComponent(64);
+      localObject = (biql)super.getBrowserComponent(64);
       if (localObject == null) {
         return;
       }
-      ((bhpq)localObject).a(paramString, bool);
+      ((biql)localObject).a(paramString, bool);
     }
     label151:
   }
@@ -3154,11 +3154,11 @@ public class PublicAccountJavascriptInterface
       {
         PublicAccountHandler.a(localAppInterface, paramString1, "Pb_account_lifeservice", "mp_msg_sys_5", "addpage_hot");
         return;
-        localObject2 = (anrs)localAppInterface.getManager(56);
+        localObject2 = (aody)localAppInterface.getManager(56);
         if (localObject2 == null) {
           break;
         }
-        localObject1 = ((anrs)localObject2).b(paramString1);
+        localObject1 = ((aody)localObject2).b(paramString1);
         break;
         paramString2 = new Intent((Context)localObject2, AccountDetailActivity.class);
         paramString2.putExtra("uin", paramString1);
@@ -3212,11 +3212,11 @@ public class PublicAccountJavascriptInterface
       {
         PublicAccountHandler.a(localAppInterface, paramString1, "Pb_account_lifeservice", "mp_msg_sys_5", "addpage_hot");
         return;
-        localObject2 = (anrs)localAppInterface.getManager(56);
+        localObject2 = (aody)localAppInterface.getManager(56);
         if (localObject2 == null) {
           break;
         }
-        localObject1 = ((anrs)localObject2).b(paramString1);
+        localObject1 = ((aody)localObject2).b(paramString1);
         break;
         paramString2 = new Intent((Context)localObject2, AccountDetailActivity.class);
         paramString2.putExtra("uin", paramString1);

@@ -1,25 +1,35 @@
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.sharp.jni.TraeAudioManager;
+
 public class blfc
+  extends blfe
 {
-  private static final String[] a = { "B", "K", "M", "G" };
-  
-  public static final String a(long paramLong)
+  public blfc(TraeAudioManager paramTraeAudioManager)
   {
-    float f1 = 0.0F;
-    int i = 0;
-    while (paramLong >= 1024L)
-    {
-      paramLong /= 1024L;
-      f1 = (float)(paramLong % 1024L);
-      i += 1;
-    }
-    if (f1 == 0.0F)
-    {
-      f1 = (float)paramLong;
-      return String.valueOf(paramLong) + a[i];
-    }
-    f1 /= 1024.0F;
-    float f2 = (float)paramLong;
-    return String.format("%.2f", new Object[] { Float.valueOf(f1 + f2) }) + a[i];
+    super(paramTraeAudioManager);
+  }
+  
+  public String a()
+  {
+    return "BluetoohHeadsetCheckFake";
+  }
+  
+  public void a() {}
+  
+  void a(Context paramContext, Intent paramIntent) {}
+  
+  void a(IntentFilter paramIntentFilter) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(Context paramContext, blff paramblff)
+  {
+    return true;
   }
 }
 

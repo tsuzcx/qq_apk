@@ -1,125 +1,51 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.SignatureManagerForTool.1;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResultCallback;
-import java.util.Observable;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import java.lang.ref.WeakReference;
 
-public class bbce
-  extends Observable
+class bbce
+  extends anyu
 {
-  private static bbce jdField_a_of_type_Bbce;
-  public RichStatus a;
-  public EIPCResultCallback a;
-  private ConcurrentHashMap<Integer, bgyy> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  public RichStatus b;
-  private EIPCResultCallback jdField_b_of_type_EipcEIPCResultCallback = new bbcf(this);
-  private ConcurrentHashMap<Integer, String> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  bbce(bbcd parambbcd) {}
   
-  private bbce()
+  protected void onReqLastChatTime(boolean paramBoolean, String paramString1, String paramString2, Long paramLong)
   {
-    this.jdField_a_of_type_EipcEIPCResultCallback = new bbcg(this);
-  }
-  
-  public static bbce a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Bbce == null) {
-        jdField_a_of_type_Bbce = new bbce();
-      }
-      bbce localbbce = jdField_a_of_type_Bbce;
-      return localbbce;
-    }
-    finally {}
-  }
-  
-  public static String a(int paramInt, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("https://gxh.vip.qq.com/xydata/");
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
-  }
-  
-  public bgyy a(int paramInt)
-  {
-    return a(paramInt, false);
-  }
-  
-  public bgyy a(int paramInt, boolean paramBoolean)
-  {
-    bgyy localbgyy2 = (bgyy)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    int j = 1;
+    anyw localanyw;
+    int i;
     Object localObject;
-    if ((localbgyy2 != null) && (!localbgyy2.a.get()))
+    if (paramBoolean)
     {
-      localObject = localbgyy2;
-      if (!paramBoolean) {}
-    }
-    else
-    {
-      bgyy localbgyy1 = localbgyy2;
-      if (localbgyy2 == null)
+      localanyw = (anyw)this.a.a.getManager(51);
+      ExtensionInfo localExtensionInfo = localanyw.a(paramString2, true);
+      i = 0;
+      localObject = localExtensionInfo;
+      if (localExtensionInfo == null)
       {
-        localbgyy1 = new bgyy(Integer.toString(paramInt));
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localbgyy1);
+        localObject = new ExtensionInfo();
+        ((ExtensionInfo)localObject).uin = paramString2;
+        i = 1;
       }
-      localObject = localbgyy1;
-      if (paramInt != 0)
+      if (((ExtensionInfo)localObject).lastIceBreakChatTs >= paramLong.longValue()) {
+        break label152;
+      }
+      ((ExtensionInfo)localObject).lastIceBreakChatTs = paramLong.longValue();
+      i = j;
+    }
+    label152:
+    for (;;)
+    {
+      if (i != 0) {
+        localanyw.a((ExtensionInfo)localObject);
+      }
+      if (bbcd.a(this.a) == null) {}
+      for (localObject = null;; localObject = (bbch)bbcd.a(this.a).get())
       {
-        localbgyy1.a.set(true);
-        if (QLog.isColorLevel()) {
-          QLog.e("Signature.TOOL", 2, "before getTemplateInfo info");
+        if (localObject != null) {
+          ((bbch)localObject).a(paramBoolean, paramString1, paramString2, paramLong);
         }
-        ThreadManager.excute(new SignatureManagerForTool.1(this, paramInt), 128, null, true);
-        localObject = localbgyy1;
+        return;
       }
     }
-    return localObject;
-  }
-  
-  public String a(int paramInt)
-  {
-    String str = (String)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-    if (TextUtils.isEmpty(str))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("id", paramInt);
-      QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gm.g, localBundle, this.jdField_b_of_type_EipcEIPCResultCallback);
-    }
-    return str;
-  }
-  
-  public void a(RichStatus paramRichStatus)
-  {
-    if (paramRichStatus == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus == null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(paramRichStatus);
-    QLog.d("Signature.TOOL", 2, "updateHandleStatus: tpdId=" + this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId + " fontId=" + this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.fontId);
-  }
-  
-  public void b(RichStatus paramRichStatus)
-  {
-    if (paramRichStatus == null) {
-      return;
-    }
-    if (this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus == null) {
-      this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
-    }
-    this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(paramRichStatus);
-    QLog.d("Signature.TOOL", 2, "updateSaveStatus: tpdId=" + this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.tplId + " fontId=" + this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.fontId);
-    a(paramRichStatus);
   }
 }
 

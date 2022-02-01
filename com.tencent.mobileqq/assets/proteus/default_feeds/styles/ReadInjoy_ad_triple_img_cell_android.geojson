@@ -211,9 +211,7 @@
             },
             {"$includeComponet": "componet/android/ad_article_location.geojson"},
             {"$includeComponet":"componet/android/ad_article_main_body.geojson"},
-            {
-            	"$includeComponet": "componet/android/ad_info_bar.geojson"
-            },
+            {"$includeComponet":"componet/android/ad_info_bar.geojson"},
             {
                 "view_type":"UIView",
                 "view_id":"id_separator",

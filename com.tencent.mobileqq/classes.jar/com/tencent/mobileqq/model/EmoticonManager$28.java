@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.model;
 
-import awmr;
+import axfj;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.persistence.EntityManager;
 
 public class EmoticonManager$28
   implements Runnable
 {
-  public EmoticonManager$28(awmr paramawmr, Emoticon paramEmoticon) {}
+  public EmoticonManager$28(axfj paramaxfj, Emoticon paramEmoticon) {}
   
   public void run()
   {

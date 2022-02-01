@@ -1,22 +1,22 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext.StoryBroadcastReceiver;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class wio
+  extends SimpleJob<Void>
 {
-  public int a;
-  public ErrorMessage a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  
-  public wio()
+  public wio(QQStoryContext.StoryBroadcastReceiver paramStoryBroadcastReceiver, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage();
+    super(paramString);
   }
   
-  public String toString()
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return "UploadResult{errorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", fileKey='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileId='" + this.b + '\'' + ", uploadServerIp='" + this.d + '\'' + ", mLastUploadOffset='" + this.jdField_a_of_type_Int + '\'' + ", cdnUrl='" + this.c + '\'' + '}';
+    int i = wlt.a();
+    yuk.d(QQStoryContext.StoryBroadcastReceiver.a(), "onReceive : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
+    return null;
   }
 }
 

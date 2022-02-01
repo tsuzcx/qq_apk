@@ -1,25 +1,6 @@
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
-
-class avmj
-  implements IVideoInnerStatusListener
+public abstract interface avmj
 {
-  avmj(avmi paramavmi) {}
-  
-  public void notifyVideoClose(int paramInt) {}
-  
-  public void notifyVideoSeek(int paramInt) {}
-  
-  public void notifyVideoStart()
-  {
-    if (avmi.a(this.a) != null)
-    {
-      awjg.a().a(1, avmi.a(this.a));
-      return;
-    }
-    this.a.a(false);
-  }
-  
-  public void notifyVideoStop() {}
+  public abstract void a();
 }
 
 

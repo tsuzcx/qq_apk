@@ -1,26 +1,16 @@
-import java.util.List;
-
-public abstract interface nat
+public class nat
 {
-  public abstract int a();
+  String jdField_a_of_type_JavaLangString;
+  nas jdField_a_of_type_Nas;
+  public boolean a;
+  public String b;
+  public boolean b = false;
+  boolean c = false;
   
-  public abstract List<myg> a();
-  
-  public abstract void a();
-  
-  public abstract void a(myc parammyc);
-  
-  public abstract void a(myg parammyg, int paramInt);
-  
-  public abstract void a(nal paramnal);
-  
-  public abstract void a(int[] paramArrayOfInt);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void b(myg parammyg, int paramInt);
+  private nat(naq paramnaq)
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
 }
 
 

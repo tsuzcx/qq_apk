@@ -18,5 +18,5 @@
             <ImageView android:layout_gravity="center" android:id="@id/cq0" android:background="@drawable/d8o" android:layout_width="21.0dip" android:layout_height="21.0dip" />
         </FrameLayout>
     </LinearLayout>
-    <com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyAdVideoGuide android:id="@id/ex" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdVideoGuide android:id="@id/ex" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
 </RelativeLayout>

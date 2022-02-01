@@ -1,25 +1,18 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
 
-class aaky
-  implements bihh
+public class aaky
+  implements aqvd
 {
-  aaky(aakt paramaakt) {}
+  public aaky(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void onColorNoteAnimFinish()
   {
-    if ((aakt.c(this.a) == null) || (!aakt.c(this.a).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    if (this.a.getActivity() != null)
     {
-    case -2: 
-    case -1: 
-    default: 
-      QQToast.a(aakt.a(this.a), 1, "分享失败", 0).a();
-      return;
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
-    QQToast.a(aakt.a(this.a), 2, "分享成功", 0).a();
   }
 }
 

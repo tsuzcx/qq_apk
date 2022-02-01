@@ -2,20 +2,20 @@ package com.tencent.mobileqq.profilecard.bussiness.presentwall;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import azov;
-import bgsg;
+import bahl;
+import bhsi;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class ProfilePresentWallComponent$1$1
   implements Runnable
 {
-  public ProfilePresentWallComponent$1$1(azov paramazov) {}
+  public ProfilePresentWallComponent$1$1(bahl parambahl) {}
   
   public void run()
   {
     SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("showPresentRed", 0).edit();
     localEditor.putBoolean("showRed", false);
-    bgsg.a(localEditor);
+    bhsi.a(localEditor);
   }
 }
 

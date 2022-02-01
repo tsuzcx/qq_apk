@@ -1,31 +1,19 @@
-import com.tencent.mobileqq.mini.network.RequestStrategy;
-import com.tencent.qqmini.sdk.annotation.ProxyService;
-import com.tencent.qqmini.sdk.launcher.core.proxy.RequestStrategyProxy;
-import java.util.Map;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@ProxyService(proxy=RequestStrategyProxy.class)
 public class bjyn
-  implements RequestStrategyProxy
+  implements View.OnClickListener
 {
-  public String addHttpForwardingInfo(String paramString, Map<String, String> paramMap)
-  {
-    return RequestStrategy.g.addHttpForwardingInfo(paramString, paramMap);
-  }
+  public bjyn(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
   
-  public void addHttpForwardingInfo(JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    RequestStrategy.g.addHttpForwardingInfo(paramJSONObject);
-  }
-  
-  public boolean isIPV6Only()
-  {
-    return RequestStrategy.g.isIPv6Only();
-  }
-  
-  public void notifyNetWorkStatusChange()
-  {
-    RequestStrategy.g.notifyNetWorkStatusChange();
+    bjto.b(bjtq.a().a("200").k(ApkFileDownloadFragment.a(this.a).b).j("1").l("0").m(ApkFileDownloadFragment.a(this.a).a).a(ApkFileDownloadFragment.a(this.a).h).b(ApkFileDownloadFragment.a(this.a).f).g(ApkFileDownloadFragment.a(this.a).e));
+    ApkFileDownloadFragment.a(this.a).finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

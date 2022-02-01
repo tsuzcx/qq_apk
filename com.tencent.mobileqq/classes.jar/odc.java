@@ -1,23 +1,18 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
 
-class odc
-  implements aobv
+public final class odc
+  implements Parcelable.Creator<VideoInfo.EntranceDownloadInfo>
 {
-  odc(oda paramoda) {}
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public VideoInfo.EntranceDownloadInfo a(Parcel paramParcel)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramBitmap != null))
-    {
-      Intent localIntent = new Intent("action_decode_finish");
-      localIntent.putExtra("bitmap", paramBitmap);
-      localIntent.putExtra("uin", paramString);
-      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
-    }
+    return new VideoInfo.EntranceDownloadInfo(paramParcel);
+  }
+  
+  public VideoInfo.EntranceDownloadInfo[] a(int paramInt)
+  {
+    return new VideoInfo.EntranceDownloadInfo[paramInt];
   }
 }
 

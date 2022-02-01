@@ -6,34 +6,34 @@ import android.view.animation.RotateAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-import oha;
-import ohb;
+import oii;
+import oij;
 
 public class ReadInJoyNaviController$1
   implements Runnable
 {
-  public ReadInJoyNaviController$1(oha paramoha) {}
+  public ReadInJoyNaviController$1(oii paramoii) {}
   
   public void run()
   {
-    Object localObject = oha.a(this.this$0).a();
-    oha.a(this.this$0, 1000L);
-    if ((localObject != null) && (oha.a(this.this$0)))
+    Object localObject = oii.a(this.this$0).a();
+    oii.a(this.this$0, 1000L);
+    if ((localObject != null) && (oii.a(this.this$0)))
     {
-      oha.a(this.this$0, false);
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -((View)localObject).getHeight(), oha.e);
+      oii.a(this.this$0, false);
+      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -((View)localObject).getHeight(), oii.e);
       localTranslateAnimation.setDuration(300L);
-      localTranslateAnimation.setAnimationListener(new ohb(this, (View)localObject));
+      localTranslateAnimation.setAnimationListener(new oij(this, (View)localObject));
       ((View)localObject).startAnimation(localTranslateAnimation);
-      if (oha.a(this.this$0) != null)
+      if (oii.a(this.this$0) != null)
       {
         localObject = new RotateAnimation(0.0F, 180.0F, 1, 0.5F, 1, 0.5F);
         ((Animation)localObject).setDuration(200L);
         ((Animation)localObject).setFillEnabled(true);
         ((Animation)localObject).setFillAfter(true);
-        oha.a(this.this$0).startAnimation((Animation)localObject);
+        oii.a(this.this$0).startAnimation((Animation)localObject);
       }
-      oha.a(0, oha.a(0, null));
+      oii.a(0, oii.a(0, null));
     }
   }
 }

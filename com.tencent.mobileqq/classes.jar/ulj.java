@@ -1,34 +1,29 @@
-import UserGrowth.stSimpleMetaFeed;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import com.tencent.biz.pubaccount.weishi_new.net.WeishiRequestException;
-import java.util.ArrayList;
-import rx.Subscriber;
+import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
+import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
-class ulj
-  extends Subscriber<ArrayList<stSimpleMetaFeed>>
+public class ulj
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  ulj(ulf paramulf, WSRecommendFragment paramWSRecommendFragment, boolean paramBoolean1, boolean paramBoolean2, uju paramuju, long paramLong, boolean paramBoolean3) {}
+  public ulj(WSVideoPreDownloadManager paramWSVideoPreDownloadManager) {}
   
-  public void a(ArrayList<stSimpleMetaFeed> paramArrayList)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendFragment.a(paramArrayList, this.jdField_a_of_type_Boolean, this.b, true, this.c);
+    uqf.d("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][onPreLoadFailed] ERROR!! videoUrl:" + paramString1 + " ERROR code: " + paramInt);
+    if (WSVideoPreDownloadManager.a(this.a) != null) {
+      WSVideoPreDownloadManager.a(this.a).onPreLoadFailed(paramString1, paramInt, paramString2);
+    }
+    ThreadManager.post(new WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask(this.a, false), 5, null, true);
   }
   
-  public void onCompleted() {}
-  
-  public void onError(Throwable paramThrowable)
+  public void onPreLoadSucess(String paramString1, String paramString2)
   {
-    if ((paramThrowable instanceof WeishiRequestException))
-    {
-      paramThrowable = (WeishiRequestException)paramThrowable;
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendFragment.a(paramThrowable.code, paramThrowable.msg, this.jdField_a_of_type_Boolean, this.b);
+    uqf.g("WS_VIDEO_PRE_DL", "<<<<<<[WSVideoPreDownloadManager.java][onPreLoadSuccess] SUCCESS!! videoUrl:" + paramString1 + " SUCCESS");
+    if (WSVideoPreDownloadManager.a(this.a) != null) {
+      WSVideoPreDownloadManager.a(this.a).onPreLoadSucess(paramString1, paramString2);
     }
-    for (;;)
-    {
-      ulf.a(this.jdField_a_of_type_Ulf, this.jdField_a_of_type_Uju, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long);
-      return;
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendFragment.a(-1, paramThrowable.getMessage(), this.jdField_a_of_type_Boolean, this.b);
-    }
+    ThreadManager.post(new WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask(this.a, true), 5, null, true);
   }
 }
 

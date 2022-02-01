@@ -1,44 +1,67 @@
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.report.lp.LpReportInfo_dc00518;
 
-class agbo
-  extends Animation
+public class agbo
+  implements bliz
 {
-  private float jdField_a_of_type_Float;
-  private float b;
+  public agbo(ActivateFriendActivity paramActivateFriendActivity, blir paramblir) {}
   
-  agbo(agbk paramagbk) {}
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void OnClick(View paramView, int paramInt)
   {
-    float f2 = 1.5F;
-    float f1 = 0.0F;
-    if (paramFloat < this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 5.0F) {
-      paramFloat = f2;
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      paramTransformation.setAlpha(f1);
-      paramTransformation.getMatrix().setScale(paramFloat, paramFloat, this.jdField_a_of_type_Float, this.b);
+      this.jdField_a_of_type_Blir.dismiss();
       return;
-      if (paramFloat < 13.0F * this.jdField_a_of_type_Agbk.jdField_a_of_type_Float)
-      {
-        f1 = 0.5F - (paramFloat - this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 5.0F) / (this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 8.0F) * 0.5F;
-        paramFloat = 1.5F + (paramFloat - this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 5.0F) / (this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 8.0F) * 0.5F;
+      if (ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity) == null) {
+        ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity, (aold)this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.app.getManager(85));
       }
-      else
+      if (bhnv.d(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity))
       {
-        paramFloat = 2.0F;
+        paramView = ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity);
+        boolean bool;
+        if (!ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity))
+        {
+          bool = true;
+          label91:
+          paramView.a(bool, true);
+          if (!ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity)) {
+            break label219;
+          }
+          paramInt = 2;
+          label109:
+          LpReportInfo_dc00518.report(100, paramInt, paramInt);
+          if (!ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity)) {
+            break label224;
+          }
+        }
+        label219:
+        label224:
+        for (paramView = "QQnotice.aio.detail.seton";; paramView = "QQnotice.aio.detail.setoff")
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ActivateFriends.MainActivity", 2, "do report: " + paramView);
+          }
+          bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.app, "P_CliOper", "QQnotice", "", "", paramView, 0, 0, "", "", "", "");
+          agci.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.app, "remindpage_click", null, null, String.valueOf(1), String.valueOf(paramInt));
+          break;
+          bool = false;
+          break label91;
+          paramInt = 1;
+          break label109;
+        }
+      }
+      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity != null)) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity, 1, this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.getResources().getString(2131693965), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.getTitleBarHeight());
       }
     }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
-    this.b = (paramInt2 * 0.5F);
   }
 }
 

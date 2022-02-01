@@ -1,6 +1,20 @@
-public abstract interface bdge
+public class bdge
 {
-  public abstract void a(int paramInt);
+  public int a;
+  public long a;
+  public int b;
+  public int c = 0;
+  
+  bdge()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
+  public String toString()
+  {
+    return "FailInfo{lastFCode=" + this.jdField_a_of_type_Int + ", lastSubFCode=" + this.b + ", netType=" + this.c + ", lastFTime=" + this.jdField_a_of_type_Long + '}';
+  }
 }
 
 

@@ -11,6 +11,7 @@ public class MiniMsgUserParam
   public Intent backConversationIntent;
   public int businessName;
   public int colorType;
+  public int contentIconResId;
   public int entryType;
   public View entryView;
   public int filterMsgType;

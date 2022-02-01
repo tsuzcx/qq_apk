@@ -1,67 +1,12 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x74b.oidb_0x74b.HeadInfo;
-
 public class apuh
 {
   public int a;
   public String a;
-  public ArrayList<apui> a;
-  public int b;
-  public int c;
-  public int d;
   
-  public static apuh a(oidb_0x74b.HeadInfo paramHeadInfo)
+  public apuh(int paramInt, String paramString)
   {
-    Object localObject;
-    if (paramHeadInfo == null) {
-      localObject = null;
-    }
-    apuh localapuh;
-    do
-    {
-      return localObject;
-      localapuh = new apuh();
-      if (paramHeadInfo.uint32_id.has()) {
-        localapuh.jdField_a_of_type_Int = paramHeadInfo.uint32_id.get();
-      }
-      if (paramHeadInfo.str_photohead.has()) {
-        localapuh.jdField_a_of_type_JavaLangString = paramHeadInfo.str_photohead.get();
-      }
-      if (paramHeadInfo.uint32_invalid.has()) {
-        localapuh.b = paramHeadInfo.uint32_invalid.get();
-      }
-      if (paramHeadInfo.uint32_timestamp.has()) {
-        localapuh.c = paramHeadInfo.uint32_timestamp.get();
-      }
-      if (paramHeadInfo.uint32_type.has()) {
-        localapuh.d = paramHeadInfo.uint32_type.get();
-      }
-      localObject = localapuh;
-    } while (!paramHeadInfo.rpt_videoheadlist.has());
-    localapuh.jdField_a_of_type_JavaUtilArrayList = apui.a(paramHeadInfo.rpt_videoheadlist.get());
-    return localapuh;
-  }
-  
-  public static ArrayList<apuh> a(List<oidb_0x74b.HeadInfo> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      apuh localapuh = a((oidb_0x74b.HeadInfo)paramList.next());
-      if (localapuh != null) {
-        localArrayList.add(localapuh);
-      }
-    }
-    return localArrayList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

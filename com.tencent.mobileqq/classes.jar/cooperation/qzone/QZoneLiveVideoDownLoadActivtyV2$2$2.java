@@ -1,11 +1,11 @@
 package cooperation.qzone;
 
-import blsp;
+import bmtr;
 
 public class QZoneLiveVideoDownLoadActivtyV2$2$2
   implements Runnable
 {
-  public QZoneLiveVideoDownLoadActivtyV2$2$2(blsp paramblsp) {}
+  public QZoneLiveVideoDownLoadActivtyV2$2$2(bmtr parambmtr) {}
   
   public void run()
   {

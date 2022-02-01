@@ -2,26 +2,26 @@ package com.tencent.mobileqq.nearby;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import axed;
+import axww;
 import com.tencent.qphone.base.util.QLog;
-import nlw;
+import nnr;
 import org.json.JSONObject;
 
 public class NearbyTribeAppController$1
   implements Runnable
 {
-  public NearbyTribeAppController$1(axed paramaxed) {}
+  public NearbyTribeAppController$1(axww paramaxww) {}
   
   public void run()
   {
     try
     {
-      axed.a(this.this$0, false);
+      axww.a(this.this$0, false);
       Object localObject = new Bundle();
       ((Bundle)localObject).putString("REFERER", " https://buluo.qq.com/");
       ((Bundle)localObject).putString("HOST", " buluo.qq.com");
-      QLog.e(axed.a(this.this$0), 1, "这里已经下架，如果依然发现该log，异常case");
-      localObject = new JSONObject(nlw.a(axed.a(this.this$0), "https://buluo.qq.com/cgi-bin/bar/post/get_entry?entry_ids=[18]", "POST", null, (Bundle)localObject));
+      QLog.e(axww.a(this.this$0), 1, "这里已经下架，如果依然发现该log，异常case");
+      localObject = new JSONObject(nnr.a(axww.a(this.this$0), "https://buluo.qq.com/cgi-bin/bar/post/get_entry?entry_ids=[18]", "POST", null, (Bundle)localObject));
       if (((JSONObject)localObject).getInt("retcode") == 0)
       {
         localObject = ((JSONObject)localObject).getJSONObject("result").getJSONObject("18").getString("download_link");
@@ -31,14 +31,14 @@ public class NearbyTribeAppController$1
           return;
         }
       }
-      QLog.e(axed.a(this.this$0), 1, "这里已经下架，如果依然发现该log，异常case");
+      QLog.e(axww.a(this.this$0), 1, "这里已经下架，如果依然发现该log，异常case");
       this.this$0.a("https://pub.idqqimg.com/pc/misc/files/20170706/c221bf304be44e5a9e0441768beacff0.apk");
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      QLog.e(axed.a(this.this$0), 1, "这里已经下架，如果依然发现该log，异常case");
+      QLog.e(axww.a(this.this$0), 1, "这里已经下架，如果依然发现该log，异常case");
       this.this$0.a("https://pub.idqqimg.com/pc/misc/files/20170706/c221bf304be44e5a9e0441768beacff0.apk");
     }
   }

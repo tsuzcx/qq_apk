@@ -1,31 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aynl
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  aynl(aymu paramaymu) {}
+  aynl(aymj paramaymj, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    try
+    Intent localIntent = new Intent(this.jdField_a_of_type_Aymj.a, QQBrowserActivity.class);
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
+    Object localObject = this.jdField_a_of_type_Aymj.a;
+    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Aymj.a.j)) {}
+    for (localObject = "1";; localObject = "2")
     {
-      if ((aymu.a(this.a) != null) && (aymu.a(this.a).isShowing()))
-      {
-        this.a.c();
-        aymu.a(this.a).dismiss();
-        aymu.a(this.a, null);
-      }
-      label49:
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountPanel", 2, "switch status cancel");
-      }
+      localIntent.putExtra("url", (String)localObject);
+      bdll.b(this.jdField_a_of_type_Aymj.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_focus", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Aymj.a.startActivity(localIntent);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label49;
     }
   }
 }

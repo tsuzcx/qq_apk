@@ -1,11 +1,18 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+
 class axwn
-  implements bkhy
+  extends AnimatorListenerAdapter
 {
-  axwn(axvz paramaxvz) {}
+  axwn(axwm paramaxwm, URLDrawable paramURLDrawable) {}
   
-  public void onDismiss()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    axvz.a(this.a, this.a.b, false);
+    this.jdField_a_of_type_Axwm.a.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    ObjectAnimator.ofFloat(this.jdField_a_of_type_Axwm.a, "alpha", new float[] { 0.1F, 1.0F }).setDuration(1500L).start();
   }
 }
 

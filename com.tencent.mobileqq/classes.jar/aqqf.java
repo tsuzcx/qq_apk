@@ -1,75 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.hardware.Camera;
+import android.hardware.Camera.PictureCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.PictureCallbackForward.1;
 
 public class aqqf
+  implements Camera.PictureCallback
 {
-  private static final aqqf jdField_a_of_type_Aqqf = new aqqf();
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
-  private String b = "";
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aqpv jdField_a_of_type_Aqpv;
+  private final aqpx jdField_a_of_type_Aqpx;
   
-  public static aqqf a(aqlg[] paramArrayOfaqlg)
+  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    Object localObject;
-    if (paramArrayOfaqlg == null) {
-      localObject = jdField_a_of_type_Aqqf;
-    }
-    for (;;)
-    {
-      return localObject;
-      try
-      {
-        aqqf localaqqf = new aqqf();
-        int j = paramArrayOfaqlg.length;
-        int i = 0;
-        localObject = localaqqf;
-        if (i >= j) {
-          continue;
-        }
-        localObject = new JSONObject(paramArrayOfaqlg[i].jdField_a_of_type_JavaLangString);
-        if (((JSONObject)localObject).optInt("visible", 0) == 1) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localaqqf.jdField_a_of_type_Boolean = bool;
-          localaqqf.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("guideText", "");
-          localaqqf.b = ((JSONObject)localObject).optString("guideHighlightText", "");
-          localaqqf.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("showIntervalMs", 0L);
-          i += 1;
-          break;
-        }
-        return jdField_a_of_type_Aqqf;
-      }
-      catch (Exception paramArrayOfaqlg)
-      {
-        QLog.e("NotificationBannerBean", 1, "parse: failed. ", paramArrayOfaqlg);
-      }
-    }
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PictureCallbackForward.1(this, paramArrayOfByte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqqf
  * JD-Core Version:    0.7.0.1
  */

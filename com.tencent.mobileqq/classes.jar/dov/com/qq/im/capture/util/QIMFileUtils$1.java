@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.util;
 
-import bgmg;
+import bhmi;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -11,7 +11,7 @@ public final class QIMFileUtils$1
   
   public void run()
   {
-    bgmg.a(this.jdField_a_of_type_JavaIoFile.getPath() + File.separator, this.jdField_a_of_type_JavaLangString, this.b);
+    bhmi.a(this.jdField_a_of_type_JavaIoFile.getPath() + File.separator, this.jdField_a_of_type_JavaLangString, this.b);
     if (QLog.isColorLevel()) {
       QLog.i("QIMFileUtils", 2, "paster config save to file " + this.jdField_a_of_type_JavaIoFile.getPath() + File.separator + this.jdField_a_of_type_JavaLangString);
     }

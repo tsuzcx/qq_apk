@@ -1,23 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
-class bfcz
-  implements DialogInterface.OnClickListener
+public class bfcz
+  implements DialogInterface.OnDismissListener
 {
-  bfcz(bfcy parambfcy) {}
+  public bfcz(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.a(this.a.a.a);
-    if (ReciteRecordLayout.a(this.a.a) != null) {
-      ReciteRecordLayout.a(this.a.a).f();
-    }
+    TribeVideoListPlayerFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfcz
  * JD-Core Version:    0.7.0.1
  */

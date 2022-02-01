@@ -1,16 +1,10 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class agka
-  implements bkhw
+final class agka
+  implements DialogInterface.OnClickListener
 {
-  public agka(Activity paramActivity, bkho parambkho, String paramString, agkf paramagkf) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    AIOLongShotHelper.a(this.jdField_a_of_type_AndroidAppActivity, paramView, paramInt, this.jdField_a_of_type_Bkho, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agkf);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

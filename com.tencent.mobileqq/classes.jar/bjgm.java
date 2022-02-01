@@ -1,13 +1,16 @@
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
 
 public class bjgm
-  implements bhuq
+  implements MediaPlayer.OnErrorListener
 {
-  public bjgm(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public bjgm(VideoTextureView paramVideoTextureView) {}
   
-  public void a(float paramFloat1, float paramFloat2) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  {
+    return true;
+  }
 }
 
 

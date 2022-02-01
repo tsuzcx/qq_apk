@@ -1,35 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
+import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
-class aeat
-  implements DialogInterface.OnClickListener
+public class aeat
+  extends ayxo
 {
-  aeat(aear paramaear, HotChatInfo paramHotChatInfo, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  public SessionInfo a;
+  public WeakReference<QQAppInterface> a;
+  public boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void b(boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isWifiHotChat) {}
-    for (paramInt = 1;; paramInt = 2)
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed appRef==null");
+      }
+    }
+    QQAppInterface localQQAppInterface;
+    do
     {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004D2C", "0X8004D2C", paramInt, 0, "", "", "", "");
-      if (bgnt.d(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
         break;
       }
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext(), anni.a(2131701399), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-      return;
+    } while (!QLog.isColorLevel());
+    QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed app == null || sessionInfo == nul");
+    return;
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof AIONewestFeedRsp))) {
+      aean.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (AIONewestFeedRsp)paramBundle, this.jdField_a_of_type_Boolean);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.addObserver(aear.a(this.jdField_a_of_type_Aear));
-    ((anno)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_LEFT_NORMAL__ACTION_DELETE_SHELL);
-    this.jdField_a_of_type_Aear.a = new biau(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-    this.jdField_a_of_type_Aear.a.setContentView(2131562815);
-    this.jdField_a_of_type_Aear.a.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131691896));
-    this.jdField_a_of_type_Aear.a.setCancelable(true);
-    this.jdField_a_of_type_Aear.a.show();
+    paramBundle = (aeat)aean.a().get(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    aean.a().remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    localQQAppInterface.unRegistObserver(paramBundle);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
   }
 }
 

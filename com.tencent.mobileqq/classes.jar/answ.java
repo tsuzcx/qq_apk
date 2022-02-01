@@ -1,17 +1,10 @@
-class answ
-  implements bldl
+public abstract interface answ
 {
-  answ(ansp paramansp, byte[] paramArrayOfByte) {}
-  
-  public void a(bldk parambldk)
-  {
-    parambldk.a(this.jdField_a_of_type_ArrayOfByte);
-    parambldk.a();
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     answ
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,26 @@
-import android.content.Context;
-import android.os.Bundle;
+import android.annotation.SuppressLint;
+import android.graphics.Outline;
+import android.graphics.Rect;
 import android.view.View;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLoading;
-import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
+import android.view.ViewOutlineProvider;
+import com.tencent.qphone.base.util.QLog;
 
-class avkj
-  implements CustomizedLoading
+@SuppressLint({"NewApi"})
+public class avkj
+  extends ViewOutlineProvider
 {
-  avkj(avju paramavju) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onShowLoading(Context paramContext, Bundle paramBundle, View paramView)
+  public void getOutline(View paramView, Outline paramOutline)
   {
-    LoadingFragment.a(paramContext, paramBundle, paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomOutlineProvider", 1, "----->getOutline");
+    }
+    paramView.getGlobalVisibleRect(new Rect());
+    paramOutline.setRoundRect(new Rect(this.c, this.a, this.d, this.b), 0.0F);
   }
 }
 

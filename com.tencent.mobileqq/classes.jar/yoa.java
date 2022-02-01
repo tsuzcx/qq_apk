@@ -1,16 +1,23 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 
-class yoa
-  implements bhye
+public abstract interface yoa
 {
-  yoa(ynm paramynm, String paramString, QQStoryAutoPlayView paramQQStoryAutoPlayView) {}
+  public abstract void a();
   
-  public void a(String paramString)
-  {
-    yqp.a("Q.qqstory.home:FeedSegment", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
-    wik.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(@NonNull Activity paramActivity);
+  
+  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

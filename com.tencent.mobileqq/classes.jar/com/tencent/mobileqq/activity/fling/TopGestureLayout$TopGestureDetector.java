@@ -71,20 +71,20 @@ public class TopGestureLayout$TopGestureDetector
           if (TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout))
           {
             this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setGestureFlag(1);
-            return true;
+            return TopGestureLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
           }
         }
-        else if ((paramFloat1 > 0.0F) && (f2 < 0.5F) && (TopGestureLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout)))
+        else if ((paramFloat1 > 0.0F) && (f2 < 0.5F) && (TopGestureLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout)))
         {
           this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setGestureFlag(2);
-          return true;
+          return TopGestureLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
         }
       }
     }
     else
     {
       if (!this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.hasGestureFlag(1)) {
-        break label200;
+        break label212;
       }
       if ((paramFloat1 > 0.0F) || (f2 >= 0.5F)) {
         this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setGestureFlag(-1);
@@ -93,7 +93,7 @@ public class TopGestureLayout$TopGestureDetector
     for (;;)
     {
       return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      label200:
+      label212:
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.hasGestureFlag(2)) && ((paramFloat1 < 0.0F) || (f2 >= 0.5F))) {
         this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setGestureFlag(-1);
       }

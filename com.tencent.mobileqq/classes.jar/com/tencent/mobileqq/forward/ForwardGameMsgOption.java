@@ -10,7 +10,7 @@ public class ForwardGameMsgOption
     super(paramIntent);
   }
   
-  public boolean h()
+  public boolean i()
   {
     return true;
   }

@@ -1,11 +1,20 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class urm
-  implements ujj
+  implements View.OnClickListener
 {
-  urm(url paramurl, ure paramure) {}
+  urm(url paramurl) {}
   
-  public void a(uju paramuju)
+  public void onClick(View paramView)
   {
-    url.a(this.jdField_a_of_type_Url, paramuju, this.jdField_a_of_type_Ure);
+    if (url.a(this.a).getActivity() != null) {
+      url.a(this.a).getActivity().doOnBackPressed();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

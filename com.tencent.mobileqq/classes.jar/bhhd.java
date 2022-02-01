@@ -1,6 +1,21 @@
-public abstract interface bhhd
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.util.HeadRequest;
+
+public final class bhhd
+  implements Parcelable.Creator<HeadRequest>
 {
-  public abstract void callback(int paramInt);
+  public HeadRequest a(Parcel paramParcel)
+  {
+    HeadRequest localHeadRequest = new HeadRequest();
+    localHeadRequest.a(paramParcel);
+    return localHeadRequest;
+  }
+  
+  public HeadRequest[] a(int paramInt)
+  {
+    return new HeadRequest[paramInt];
+  }
 }
 
 

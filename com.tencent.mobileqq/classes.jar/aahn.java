@@ -1,21 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.event.UserStateUpdateEvent;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aahn
-  extends BroadcastReceiver
+class aahn
+  implements View.OnClickListener
 {
-  private aahn(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment) {}
+  aahn(aahk paramaahk) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_reload_get_main_page")))
+    if (this.a.a() != null)
     {
-      SubscribePersonalDetailFragment.b(this.a, false);
-      zwp.a().a(new UserStateUpdateEvent());
+      CertifiedAccountMeta.StFeed localStFeed = this.a.a().a();
+      if (localStFeed == null) {
+        break label41;
+      }
+      this.a.d(localStFeed);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label41:
+      QQToast.a(aahk.a(this.a), 1, anzj.a(2131713453), 0).a();
     }
   }
 }

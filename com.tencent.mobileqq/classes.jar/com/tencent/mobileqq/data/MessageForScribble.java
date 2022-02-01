@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import anni;
-import biaj;
+import anzj;
+import bjbh;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
@@ -23,7 +23,7 @@ public class MessageForScribble
   public int gifId;
   public String localFildPath = "";
   public MessageForScribble.FileExistInfo mExistInfo = new MessageForScribble.FileExistInfo(this);
-  public biaj mProgressPie;
+  public bjbh mProgressPie;
   public int mRealProgress;
   public int mUiProgress;
   public Runnable mUpdateProgressRunnable;
@@ -82,7 +82,7 @@ public class MessageForScribble
     //   40: getfield 58	com/tencent/mobileqq/data/MessageForScribble:mExistInfo	Lcom/tencent/mobileqq/data/MessageForScribble$FileExistInfo;
     //   43: aload_0
     //   44: getfield 51	com/tencent/mobileqq/data/MessageForScribble:localFildPath	Ljava/lang/String;
-    //   47: invokestatic 112	bgmg:a	(Ljava/lang/String;)Z
+    //   47: invokestatic 112	bhmi:a	(Ljava/lang/String;)Z
     //   50: putfield 116	com/tencent/mobileqq/data/MessageForScribble$FileExistInfo:mLocalPathExist	Z
     //   53: aload_2
     //   54: astore_1
@@ -91,8 +91,8 @@ public class MessageForScribble
     //   57: aload_0
     //   58: getfield 58	com/tencent/mobileqq/data/MessageForScribble:mExistInfo	Lcom/tencent/mobileqq/data/MessageForScribble$FileExistInfo;
     //   61: aload_0
-    //   62: invokestatic 122	bbet:b	(Lcom/tencent/mobileqq/data/MessageForScribble;)Ljava/lang/String;
-    //   65: invokestatic 112	bgmg:a	(Ljava/lang/String;)Z
+    //   62: invokestatic 122	bbxm:b	(Lcom/tencent/mobileqq/data/MessageForScribble;)Ljava/lang/String;
+    //   65: invokestatic 112	bhmi:a	(Ljava/lang/String;)Z
     //   68: putfield 125	com/tencent/mobileqq/data/MessageForScribble$FileExistInfo:mDataFileExist	Z
     //   71: aload_2
     //   72: astore_1
@@ -101,8 +101,8 @@ public class MessageForScribble
     //   75: aload_0
     //   76: getfield 58	com/tencent/mobileqq/data/MessageForScribble:mExistInfo	Lcom/tencent/mobileqq/data/MessageForScribble$FileExistInfo;
     //   79: aload_0
-    //   80: invokestatic 127	bbet:a	(Lcom/tencent/mobileqq/data/MessageForScribble;)Ljava/lang/String;
-    //   83: invokestatic 112	bgmg:a	(Ljava/lang/String;)Z
+    //   80: invokestatic 127	bbxm:a	(Lcom/tencent/mobileqq/data/MessageForScribble;)Ljava/lang/String;
+    //   83: invokestatic 112	bhmi:a	(Ljava/lang/String;)Z
     //   86: putfield 130	com/tencent/mobileqq/data/MessageForScribble$FileExistInfo:mCombineFileExist	Z
     //   89: aload_2
     //   90: astore_1
@@ -238,7 +238,7 @@ public class MessageForScribble
   
   public String getSummaryMsg()
   {
-    return anni.a(2131705354);
+    return anzj.a(2131705461);
   }
   
   public boolean isSupportReply()

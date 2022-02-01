@@ -1,37 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+
 public class aptd
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public apte a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c;
+  public aptd(ARScanEntryView paramARScanEntryView) {}
   
-  public aptd()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("|_DownloadParam_start");
-    localStringBuilder.append("|").append(" type:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("|").append(" md5:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("|").append(" endFix:").append(this.c);
-    localStringBuilder.append("|").append(" retryCount:").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("|").append(" needUnzip:").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("|").append(" needVerify:").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append("|").append(" url:").append(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_JavaLangObject != null) {
-      localStringBuilder.append("|").append(" userData:").append(this.jdField_a_of_type_JavaLangObject);
-    }
-    localStringBuilder.append("|end");
-    return localStringBuilder.toString();
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a).g();
+    ARScanEntryView.a(this.a, true);
   }
 }
 

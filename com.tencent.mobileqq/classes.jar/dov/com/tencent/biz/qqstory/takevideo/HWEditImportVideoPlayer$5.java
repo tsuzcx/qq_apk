@@ -1,27 +1,27 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import bpep;
-import bpgi;
+import bqgk;
+import bqid;
 
 public class HWEditImportVideoPlayer$5
   implements Runnable
 {
-  public HWEditImportVideoPlayer$5(bpgi parambpgi, long paramLong) {}
+  public HWEditImportVideoPlayer$5(bqid parambqid, long paramLong) {}
   
   public void run()
   {
     long l2 = this.a / 1000000L;
     long l1;
-    if (l2 < bpgi.a(this.this$0)) {
-      l1 = bpgi.a(this.this$0);
+    if (l2 < bqid.a(this.this$0)) {
+      l1 = bqid.a(this.this$0);
     }
     while (this.this$0.a.b)
     {
       return;
       l1 = l2;
-      if (l2 > bpgi.b(this.this$0)) {
-        l1 = bpgi.b(this.this$0);
+      if (l2 > bqid.b(this.this$0)) {
+        l1 = bqid.b(this.this$0);
       }
     }
     this.this$0.a.a(Message.obtain(null, 13, new Long[] { Long.valueOf(l1), Long.valueOf(this.a) }));

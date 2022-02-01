@@ -1,93 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mfsdk.config.APMModuleConfig;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
-import com.tencent.qapmsdk.base.meta.LooperMeta;
-import com.tencent.qapmsdk.looper.ILooperListener;
-import com.tencent.qapmsdk.looper.LooperMonitor;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONObject;
 
 public class adcr
-  extends adcg
-  implements ILooperListener
+  implements adci
 {
-  protected void a(APMModuleConfig paramAPMModuleConfig)
+  private static void a(long paramLong, MsgType0x210 paramMsgType0x210)
   {
-    String str2;
-    String str1;
-    if (BaseApplicationImpl.sProcessId == 2)
-    {
-      paramAPMModuleConfig.threshold = QzoneConfig.getInstance().getConfig("QzoneHomepage", "DropFrame_Stack_Threshold", paramAPMModuleConfig.threshold);
-      str2 = QzoneConfig.getInstance().getConfig("QzoneHomepage", "DropFrame_Stack_UserSampleRatio");
-      str1 = QzoneConfig.getInstance().getConfig("QzoneHomepage", "Dropframe_Stack_EventSampleRatio");
-      if (TextUtils.isEmpty(str2)) {}
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x113, ]");
     }
-    try
-    {
-      f = Float.valueOf(str2).floatValue();
-      if (f >= 0.0F) {
-        paramAPMModuleConfig.userRatio = f;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        try
-        {
-          float f = Float.valueOf(str1).floatValue();
-          if (f >= 0.0F) {
-            paramAPMModuleConfig.evenRatio = f;
-          }
-          return;
-        }
-        catch (Exception paramAPMModuleConfig)
-        {
-          paramAPMModuleConfig.printStackTrace();
-        }
-        localException = localException;
-        localException.printStackTrace();
-      }
-    }
-    if (!TextUtils.isEmpty(str1)) {}
+    banv.a(paramMsgType0x210.vProtobuf, paramLong);
   }
   
-  protected void b()
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    LooperMonitor.setLooperListener(this);
-  }
-  
-  public String c()
-  {
-    return "looper";
-  }
-  
-  public void onMetaGet(LooperMeta paramLooperMeta)
-  {
-    HashMap localHashMap = new HashMap();
-    paramLooperMeta = paramLooperMeta.getLooperParams();
-    try
-    {
-      Iterator localIterator = paramLooperMeta.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localHashMap.put(str, paramLooperMeta.getString(str));
-      }
-      i = adch.a();
-    }
-    catch (Exception paramLooperMeta)
-    {
-      QLog.e("MagnifierSDK.QAPM", 1, "onMetaGet looper", paramLooperMeta);
-      return;
-    }
-    int i;
-    int j = paramLooperMeta.getInt("cost_time");
-    UnifiedMonitor.a().addEvent(i, "LooperSingle", j, 0, localHashMap);
+    a(paramLong, paramMsgType0x210);
+    return null;
   }
 }
 

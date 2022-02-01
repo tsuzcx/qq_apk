@@ -1,42 +1,21 @@
-import android.util.SparseIntArray;
-import com.tencent.util.VersionUtils;
-
-public class vhi
+final class vhi<T>
 {
-  public static String a(String paramString)
+  public final T a;
+  public vhi<T> a;
+  public vhi<T> b;
+  
+  public vhi()
   {
-    if (VersionUtils.isIceScreamSandwich()) {
-      return paramString;
-    }
-    if (paramString == null) {
-      return "";
-    }
-    if (paramString.length() <= 0) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int k = paramString.length();
-    int i = 0;
-    if (i < k)
-    {
-      int m = paramString.codePointAt(i);
-      if (bdnh.a.get(m, -1) != -1)
-      {
-        int j = i;
-        if (m > 65535) {
-          j = i + 1;
-        }
-        localStringBuilder.append("*");
-        i = j;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.append(paramString.charAt(i));
-      }
-    }
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_JavaLangObject = null;
+    this.jdField_a_of_type_Vhi = this;
+    this.b = this;
+  }
+  
+  public vhi(T paramT, vhi<T> paramvhi1, vhi<T> paramvhi2)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    this.jdField_a_of_type_Vhi = paramvhi1;
+    this.b = paramvhi2;
   }
 }
 

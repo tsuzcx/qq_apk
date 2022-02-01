@@ -1,25 +1,19 @@
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class adyj
-  implements adsx
+  implements bhgf
 {
-  public adyj(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  public adyj(BaseChatPie paramBaseChatPie) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    this.a.finish();
+    this.a.onClick(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyj
  * JD-Core Version:    0.7.0.1
  */

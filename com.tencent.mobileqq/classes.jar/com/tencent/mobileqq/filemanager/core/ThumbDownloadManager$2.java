@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atgs;
+import atym;
 
 public class ThumbDownloadManager$2
   implements Runnable
 {
-  public ThumbDownloadManager$2(atgs paramatgs, String paramString) {}
+  public ThumbDownloadManager$2(atym paramatym, String paramString) {}
   
   public void run()
   {
-    atgs.a(this.this$0, this.a);
-    atgs.b(this.this$0, this.a);
+    atym.a(this.this$0, this.a);
+    atym.b(this.this$0, this.a);
   }
 }
 

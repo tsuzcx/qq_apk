@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
 class bbre
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  bbre(bbrd parambbrd, bbmy parambbmy) {}
+  bbre(bbrb parambbrb) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bbmy.a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 4, "showSaveFileTips cancel");
   }
 }
 

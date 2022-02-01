@@ -1,23 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
 class nfd
-  implements View.OnTouchListener
+  implements bori
 {
-  nfd(nfb paramnfb) {}
+  final WeakReference<nez> a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  nfd(nez paramnez)
   {
-    switch (paramMotionEvent.getActionMasked())
+    this.a = new WeakReference(paramnez);
+  }
+  
+  public void a(borf paramborf, long paramLong1, long paramLong2)
+  {
+    if (QLog.isDevelopLevel())
     {
+      float f = 0.0F;
+      if (paramLong2 != 0L) {
+        f = (float)paramLong1 / (float)paramLong2;
+      }
+      QLog.i("AVGameServerIPCModule", 4, "onAEProgressUpdate, [" + f + "]");
     }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+  }
+  
+  public void a(borf paramborf, String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AVGameServerIPCModule", 2, "onAEResDownloadResult, package[" + paramborf.a + "], isDownloaded[" + paramBoolean + "], errorType[" + paramInt + "]");
+    }
+    paramborf = (nez)this.a.get();
+    if (paramborf != null) {
+      paramborf.a(1, paramBoolean, paramString);
     }
   }
 }

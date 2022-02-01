@@ -20,7 +20,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lbc;
+import lbj;
 
 public class EffectFilterTextPager$FilterTextAdapter
   extends PagerAdapter
@@ -88,15 +88,15 @@ public class EffectFilterTextPager$FilterTextAdapter
     Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localContext != null)
     {
-      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131559784, null);
-      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131373246);
+      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131559790, null);
+      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131373370);
       localImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
       if (localObject != null) {}
       for (localObject = ((FilterItem)localObject).getIconurl();; localObject = null)
       {
         if (TextUtils.isEmpty((CharSequence)localObject))
         {
-          lbc.c("EffectFilterTextPager", "decodeFile url is null.");
+          lbj.c("EffectFilterTextPager", "decodeFile url is null.");
           localImageView.setImageDrawable(null);
         }
         for (;;)
@@ -104,7 +104,7 @@ public class EffectFilterTextPager$FilterTextAdapter
           if (this.jdField_a_of_type_Boolean)
           {
             localObject = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
-            float f = localContext.getResources().getDimension(2131297638);
+            float f = localContext.getResources().getDimension(2131297650);
             ((LinearLayout.LayoutParams)localObject).setMargins(((LinearLayout.LayoutParams)localObject).leftMargin, (int)f, ((LinearLayout.LayoutParams)localObject).rightMargin, ((LinearLayout.LayoutParams)localObject).bottomMargin);
             localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
             localImageView.setScaleX(0.6F);
@@ -115,8 +115,8 @@ public class EffectFilterTextPager$FilterTextAdapter
           URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
           localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
           localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-          localURLDrawableOptions.mRequestWidth = localContext.getResources().getDimensionPixelSize(2131297643);
-          localURLDrawableOptions.mRequestHeight = localContext.getResources().getDimensionPixelSize(2131297642);
+          localURLDrawableOptions.mRequestWidth = localContext.getResources().getDimensionPixelSize(2131297655);
+          localURLDrawableOptions.mRequestHeight = localContext.getResources().getDimensionPixelSize(2131297654);
           localImageView.setImageDrawable(URLDrawable.getDrawable((String)localObject, localURLDrawableOptions));
         }
       }

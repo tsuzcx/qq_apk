@@ -1,38 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
 
-class axsn
-  implements View.OnClickListener
+public class axsn
 {
-  axsn(axsd paramaxsd, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
   
-  public void onClick(View paramView)
+  public axsn()
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
-    {
-      axsd.a(this.jdField_a_of_type_Axsd, 1);
-      new bcsy(this.jdField_a_of_type_Axsd.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_dislike").e(this.jdField_a_of_type_Axsd.a.a.a).a();
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString.contains("icon");
     }
-    for (;;)
-    {
-      axsd.b(this.jdField_a_of_type_Axsd);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView == this.b)
-      {
-        axsd.a(this.jdField_a_of_type_Axsd, 2);
-        new bcsy(this.jdField_a_of_type_Axsd.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_superlike").e(this.jdField_a_of_type_Axsd.a.a.a).a();
-      }
-      else if (paramView == this.c)
-      {
-        axsd.a(this.jdField_a_of_type_Axsd, 3);
-        new bcsy(this.jdField_a_of_type_Axsd.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_like").e(this.jdField_a_of_type_Axsd.a.a.a).a();
-      }
-    }
+    return false;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GrayTipHighlightItemInfo{");
+    localStringBuilder.append("old_key:").append(this.jdField_a_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("old_start:").append(this.jdField_b_of_type_Int).append(", ");
+    localStringBuilder.append("id:").append(this.jdField_b_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("start:").append(this.jdField_c_of_type_Int).append(", ");
+    localStringBuilder.append("end:").append(this.jdField_d_of_type_Int).append(", ");
+    localStringBuilder.append("key:").append(this.jdField_c_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("url:").append(this.jdField_d_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

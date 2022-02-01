@@ -1,12 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
 
-class ajwa
-  implements DialogInterface.OnDismissListener
+public abstract class ajwa
+  implements ajwe, ajwf
 {
-  ajwa(ajvx paramajvx) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  ajwa(CommonRefreshLayout paramCommonRefreshLayout) {}
 }
 
 

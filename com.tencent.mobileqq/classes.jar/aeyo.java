@@ -1,30 +1,59 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class aeyo
-  implements View.OnTouchListener
+  extends aeyq
 {
-  public aeyo(QQSettingMe paramQQSettingMe, ImageView paramImageView, TextView paramTextView, View paramView) {}
+  protected View a;
+  protected String a;
+  protected boolean a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aeyo(View paramView, String paramString)
   {
-    switch (paramMotionEvent.getAction())
+    super(null);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    try
     {
+      if (QSecFramework.a().a(1001).booleanValue())
+      {
+        if (!this.jdField_a_of_type_Boolean) {
+          break label106;
+        }
+        View localView = this.jdField_a_of_type_AndroidViewView;
+        QSecFramework.a().a(5, 0, 1, new Object[] { Integer.valueOf(80), localView }, null);
+        this.jdField_a_of_type_Boolean = false;
+        if (QLog.isColorLevel()) {
+          QLog.i("MainFragment", 2, "附近人机上报: lebaView onCreate, from=" + this.jdField_a_of_type_JavaLangString);
+        }
+      }
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        label106:
+        QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(80), Integer.valueOf(1), Integer.valueOf(6), "lebaClick", null }, null);
+        if (QLog.isColorLevel()) {
+          QLog.i("MainFragment", 2, "附近人机上报: lebaView onClick, from=" + this.jdField_a_of_type_JavaLangString);
+        }
+      }
     }
-    for (;;)
+    catch (Exception localException)
     {
-      return false;
-      mue.a(this.jdField_a_of_type_AndroidWidgetImageView, 0.5F);
-      mue.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.5F);
-      mue.a(this.jdField_a_of_type_AndroidViewView, 0.5F);
-      continue;
-      mue.a(this.jdField_a_of_type_AndroidWidgetImageView, 1.0F);
-      mue.a(this.jdField_a_of_type_AndroidWidgetTextView, 1.0F);
-      mue.a(this.jdField_a_of_type_AndroidViewView, 1.0F);
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MainFragment", 2, "ABotDragClickListener onClick exp=", localException);
+        }
+      }
     }
   }
 }

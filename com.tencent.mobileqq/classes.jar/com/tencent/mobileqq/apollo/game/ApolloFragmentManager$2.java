@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.game;
 
-import ammx;
+import amyr;
 import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class ApolloFragmentManager$2
   implements Runnable
 {
-  public ApolloFragmentManager$2(ammx paramammx, ApolloFragment paramApolloFragment) {}
+  public ApolloFragmentManager$2(amyr paramamyr, ApolloFragment paramApolloFragment) {}
   
   public void run()
   {
-    ((ApolloGameActivity)ammx.a(this.this$0)).a(this.a.getIntent());
+    ((ApolloGameActivity)amyr.a(this.this$0)).a(this.a.getIntent());
   }
 }
 

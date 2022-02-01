@@ -1,10 +1,19 @@
-import android.graphics.Bitmap;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 
-public abstract interface bnxp
+class bnxp
+  implements View.OnKeyListener
 {
-  public abstract void a(int paramInt);
+  bnxp(bnxm parambnxm) {}
   
-  public abstract void a(Bitmap paramBitmap);
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramKeyEvent.getAction() == 0) && (paramInt == 4)) {
+      this.a.d();
+    }
+    return false;
+  }
 }
 
 

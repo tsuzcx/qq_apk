@@ -1,39 +1,46 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class wmy
-  extends wnk
+public class wmy
+  implements zqq
 {
-  wmy(wmx paramwmx) {}
+  private wmz jdField_a_of_type_Wmz;
   
-  public void onClick(View paramView)
+  public wmy(wmx paramwmx, wmz paramwmz)
   {
-    wml localwml;
-    int i;
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_AndroidAppActivity != null))
+    this.jdField_a_of_type_Wmz = paramwmz;
+  }
+  
+  public void onFailure(String paramString)
+  {
+    yuk.e(wmx.a, "fail to execute ffmpeg command. error message : %s.", new Object[] { paramString });
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    wmx.a(this.jdField_a_of_type_Wmx);
+    if (wmx.b(this.jdField_a_of_type_Wmx) == 0)
     {
-      localwml = (wml)this.a.a();
-      if (wmx.a(this.a) != 11) {
-        break label145;
-      }
-      i = 211;
+      yuk.b(wmx.a, "all ffmpeg commands have already finished. start clearing cache.");
+      wmx.a(this.jdField_a_of_type_Wmx);
     }
-    for (;;)
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    yuk.b(wmx.a, "start executing ffmpeg commands.");
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (zom.a(BaseApplication.getContext(), this.jdField_a_of_type_Wmz.d, this.jdField_a_of_type_Wmz.e))
     {
-      StoryDetailActivity.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, i, 0);
-      i = yqu.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-      yqu.a("home_page", "clk_like_more", yqu.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(i), yqu.a(localwml.a), "", this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-      EventCollector.getInstance().onViewClicked(paramView);
+      yuk.b(wmx.a, "save video to album success.");
+      yup.a("video_edit", "video_save_local", 0, 0, new String[0]);
       return;
-      label145:
-      if (wmx.a(this.a) == 12) {
-        i = 222;
-      } else {
-        i = 210;
-      }
     }
+    yuk.e(wmx.a, "save video to album failed.");
   }
 }
 

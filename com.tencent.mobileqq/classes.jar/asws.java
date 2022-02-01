@@ -1,53 +1,54 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class asws
+public class asws
+  extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  asws(aswr paramaswr, View paramView) {}
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private aszz jdField_a_of_type_Aszz;
   
-  public void onClick(View paramView)
+  public asws(View paramView, aszz paramaszz)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((localObject instanceof asth))
+    super(paramView);
+    this.jdField_a_of_type_Aszz = paramaszz;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380285));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(atcx.a);
+  }
+  
+  public void a(asws paramasws, asxh paramasxh)
+  {
+    String str = "";
+    boolean bool = false;
+    switch (paramasxh.mFooterType)
     {
-      localObject = (FileInfo)((asth)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-      if (paramView.getId() != 2131365302) {
-        break label158;
-      }
-      bkho localbkho = (bkho)bkif.a(this.jdField_a_of_type_Aswr.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, null);
-      localbkho.a(anni.a(2131708390));
-      localbkho.a(anni.a(2131708386), 3);
-      localbkho.d(anni.a(2131708387));
-      localbkho.a(new aswt(this, (FileInfo)localObject, localbkho));
-      localbkho.show();
+    default: 
+      paramasxh = str;
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramasws.jdField_a_of_type_AndroidWidgetTextView.setText(paramasxh);
+      paramasws.jdField_a_of_type_AndroidWidgetTextView.setEnabled(bool);
       return;
-      if ((localObject instanceof asxd))
-      {
-        localObject = (FileInfo)((asxd)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-        break;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "unknow Object");
-        continue;
-        label158:
-        if (paramView.getId() == 2131367030)
-        {
-          localObject = atvo.a((FileInfo)localObject);
-          atwt.b(QfileBaseLocalFileTabView.a(this.jdField_a_of_type_Aswr.a), this.jdField_a_of_type_Aswr.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, (FileManagerEntity)localObject);
-        }
-      }
+      paramasxh = anzj.a(2131703605);
+      continue;
+      paramasxh = anzj.a(2131703607);
+      bool = true;
+      continue;
+      paramasxh = anzj.a(2131703606);
     }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Aszz != null) {
+      this.jdField_a_of_type_Aszz.c();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

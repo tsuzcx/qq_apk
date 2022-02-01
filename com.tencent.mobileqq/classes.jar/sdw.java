@@ -1,31 +1,9 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
+import android.support.annotation.NonNull;
+import android.view.View;
 
-class sdw
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface sdw
 {
-  sdw(sdu paramsdu, LinearLayout.LayoutParams paramLayoutParams, boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.bottomMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      if (!this.b) {
-        break label63;
-      }
-      sdu.a(this.jdField_a_of_type_Sdu).A.setVisibility(0);
-    }
-    for (;;)
-    {
-      sdu.a(this.jdField_a_of_type_Sdu).y.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-      return;
-      label63:
-      sdu.a(this.jdField_a_of_type_Sdu).z.setVisibility(0);
-    }
-  }
+  public abstract void a(@NonNull View paramView, int paramInt);
 }
 
 

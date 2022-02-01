@@ -1,44 +1,19 @@
 package com.tencent.hippy.qq.update;
 
-import java.util.Iterator;
-import java.util.List;
+import bdgt;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.qphone.base.util.QLog;
 
 class HippyQQLibraryManager$1
-  implements Runnable
+  implements bdgt
 {
   HippyQQLibraryManager$1(HippyQQLibraryManager paramHippyQQLibraryManager) {}
   
-  public void run()
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    if (HippyQQLibraryManager.access$000(this.this$0) != 2)
-    {
-      Object localObject = HippyQQLibraryManager.access$100(this.this$0);
-      if ((HippyQQLibraryManager.access$200(this.this$0, (String)localObject)) && (HippyQQLibraryManager.access$300(this.this$0, (String)localObject)))
-      {
-        HippyQQLibraryManager.access$002(this.this$0, 2);
-        UpdateSetting.getInstance().setCDNUpdateFlag(false);
-        if (HippyQQLibraryManager.access$400(this.this$0) != null) {
-          localObject = HippyQQLibraryManager.access$400(this.this$0).iterator();
-        }
-      }
-      else
-      {
-        while (((Iterator)localObject).hasNext())
-        {
-          ((HippyQQLibraryManager.LibraryLoadListener)((Iterator)localObject).next()).onLoadSuccess();
-          continue;
-          HippyQQLibraryManager.access$002(this.this$0, 0);
-          if (HippyQQLibraryManager.access$400(this.this$0) != null)
-          {
-            localObject = HippyQQLibraryManager.access$400(this.this$0).iterator();
-            while (((Iterator)localObject).hasNext()) {
-              ((HippyQQLibraryManager.LibraryLoadListener)((Iterator)localObject).next()).onLoadFail(-9, "");
-            }
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Hippy", 2, "Hippy: SoLoadManager download resCode=" + paramInt);
     }
-    HippyQQLibraryManager.access$400(this.this$0).clear();
   }
 }
 

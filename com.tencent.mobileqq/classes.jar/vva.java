@@ -1,28 +1,37 @@
-import com.tencent.biz.qqcircle.widgets.QCircleBaseVideoView;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import feedcloud.FeedCloudMeta.StVideo;
-import java.util.Collections;
+import com.tencent.biz.qqcircle.requests.QCircleDoRecommendRequest;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudWrite.StDoPushReq;
 
 public class vva
-  implements vob
+  extends aadn<QCircleDoRecommendRequest, vuz>
 {
-  public vva(QCircleBaseVideoView paramQCircleBaseVideoView, int paramInt, FeedCloudMeta.StVideo paramStVideo) {}
-  
-  public void a(long paramLong, String paramString)
+  public long a(QCircleDoRecommendRequest paramQCircleDoRecommendRequest)
   {
-    QCircleBaseVideoView.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView, QCircleBaseVideoView.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView), "video_exchange_url", this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView.a(), Collections.singletonList(vri.a("ret_code", String.valueOf(paramLong))));
-    if (VSNetworkHelper.a((int)paramLong)) {
-      return;
-    }
-    QCircleBaseVideoView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StVideo, this.jdField_a_of_type_Int);
+    return 1500L;
   }
   
-  public void a(FeedCloudMeta.StVideo paramStVideo, boolean paramBoolean)
+  public QCircleDoRecommendRequest a(QCircleDoRecommendRequest paramQCircleDoRecommendRequest1, QCircleDoRecommendRequest paramQCircleDoRecommendRequest2)
   {
-    QCircleBaseVideoView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView, paramStVideo, this.jdField_a_of_type_Int);
-    if (!paramBoolean) {
-      QCircleBaseVideoView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView, QCircleBaseVideoView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView), "video_exchange_url", this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView.a(), Collections.singletonList(vri.a("ret_code", "0")));
-    }
+    FeedCloudWrite.StDoPushReq localStDoPushReq = paramQCircleDoRecommendRequest1.getReq();
+    paramQCircleDoRecommendRequest2 = paramQCircleDoRecommendRequest2.getReq();
+    int i = localStDoPushReq.comboCount.get();
+    int j = paramQCircleDoRecommendRequest2.comboCount.get();
+    localStDoPushReq.comboCount.set(j + i);
+    paramQCircleDoRecommendRequest1.setReq(localStDoPushReq);
+    return paramQCircleDoRecommendRequest1;
+  }
+  
+  public String a()
+  {
+    return "QCirclePushMergeReqInterceptor";
+  }
+  
+  public String a(QCircleDoRecommendRequest paramQCircleDoRecommendRequest)
+  {
+    FeedCloudWrite.StDoPushReq localStDoPushReq = paramQCircleDoRecommendRequest.getReq();
+    return paramQCircleDoRecommendRequest.getCmdName() + localStDoPushReq.feed.id.get();
   }
 }
 

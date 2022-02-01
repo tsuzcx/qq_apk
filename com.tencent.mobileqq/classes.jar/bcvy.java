@@ -1,58 +1,165 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class bcvy
-  extends Drawable
+  extends MSFServlet
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -16777216;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private int b;
-  private int c;
-  
-  public bcvy(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private byte[] a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_Float = paramInt4;
+    Object localObject = new oidb_sso.OIDBSSOPkg();
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_command.set(1231);
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(1);
+    localObject = ((oidb_sso.OIDBSSOPkg)localObject).toByteArray();
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(localObject.length + 4);
+    localByteBuffer.putInt(localObject.length + 4);
+    localByteBuffer.put((byte[])localObject);
+    return localByteBuffer.array();
   }
   
-  public void draw(Canvas paramCanvas)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    Rect localRect = getBounds();
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = localRect.top;
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = localRect.left;
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = localRect.right;
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = localRect.bottom;
-    paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    boolean bool1 = paramFromServiceMsg.isSuccess();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive() is called, isSuccess is:" + bool1);
+    }
+    Bundle localBundle = new Bundle();
+    Object localObject1;
+    if (bool1) {
+      localObject1 = new ArrayList();
+    }
+    label539:
+    label689:
+    label694:
+    for (;;)
+    {
+      int j;
+      Object localObject2;
+      int k;
+      try
+      {
+        i = paramFromServiceMsg.getResultCode();
+        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        j = paramFromServiceMsg.getInt();
+        localObject2 = new byte[j - 4];
+        paramFromServiceMsg.get((byte[])localObject2);
+        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])localObject2);
+        k = paramFromServiceMsg.uint32_result.get();
+        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
+        int m = paramFromServiceMsg.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,result is:" + k + ",response.lenth is:" + j + ",sso.RespResult is:" + i + ",cCount is:" + m);
+        }
+        if (k == 0) {
+          continue;
+        }
+        bool1 = false;
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        boolean bool2 = false;
+        bool1 = bool2;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive occurs exception,error msg is:" + paramFromServiceMsg.getMessage(), paramFromServiceMsg);
+        bool1 = bool2;
+        continue;
+        localBundle.putStringArrayList("redu_list", (ArrayList)localObject1);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,reduList is:" + localObject1);
+        if (paramIntent == null) {
+          break label539;
+        }
+      }
+      int i = 0;
+      if (paramIntent != null) {
+        i = paramIntent.getIntExtra("action", 0);
+      }
+      notifyObserver(paramIntent, i, bool1, localBundle, bcvx.class);
+      return;
+      long l;
+      if (paramFromServiceMsg.position() < paramFromServiceMsg.capacity())
+      {
+        localObject2 = new byte[4];
+        paramFromServiceMsg.get((byte[])localObject2, 0, localObject2.length);
+        l = bhvd.a((byte[])localObject2, 0);
+        i = paramFromServiceMsg.getShort();
+        if (QLog.isColorLevel()) {
+          QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,uin is:" + l + ",redu is:" + i);
+        }
+        ((ArrayList)localObject1).add(String.valueOf(l));
+      }
+      else
+      {
+        for (paramFromServiceMsg = paramIntent.getStringExtra("k_uin");; paramFromServiceMsg = null)
+        {
+          if (paramFromServiceMsg != null)
+          {
+            l = bcrg.a();
+            SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("free_call", 0).edit();
+            localEditor.putString(aivb.b(paramFromServiceMsg), String.valueOf(l));
+            j = ((ArrayList)localObject1).size();
+            localObject2 = new StringBuilder();
+            k = Math.min(j, 100);
+            i = 0;
+            while (i < k)
+            {
+              ((StringBuilder)localObject2).append((String)((ArrayList)localObject1).get(i));
+              ((StringBuilder)localObject2).append("|");
+              i += 1;
+              continue;
+              if (!QLog.isColorLevel()) {
+                break label689;
+              }
+              QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,qq has exception,request is null");
+              break label689;
+            }
+            localObject2 = ((StringBuilder)localObject2).toString();
+            localObject1 = localObject2;
+            if (j > 0) {
+              localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
+            }
+            localEditor.putString(aivb.c(paramFromServiceMsg), (String)localObject1);
+            localEditor.commit();
+            if (!QLog.isColorLevel()) {
+              break label694;
+            }
+            QLog.d("ReduFriendServlet", 2, "reduSize is:" + j + ",curTime is:" + l + ",allReduFriend is:" + (String)localObject1);
+            break label694;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,please pass uin,uin is empty");
+          }
+          break;
+          break;
+        }
+      }
+    }
   }
   
-  public int getIntrinsicHeight()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return this.c;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onSend() is called");
+    }
+    paramPacket.putSendData(a());
+    paramPacket.setSSOCommand("OidbSvc.0x4cf_1");
   }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.b;
-  }
-  
-  public int getOpacity()
-  {
-    return 0;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

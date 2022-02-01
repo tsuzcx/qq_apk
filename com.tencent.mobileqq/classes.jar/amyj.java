@@ -1,36 +1,121 @@
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class amyj
-  extends Animation
 {
-  private final int a;
-  private final int b;
-  private final int c;
-  private final int d;
-  private final int e;
-  private final int f;
-  
-  public amyj(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public static int a(int paramInt)
   {
-    this.e = paramInt1;
-    this.f = paramInt2;
-    this.d = paramInt5;
-    this.c = paramInt6;
-    this.a = paramInt3;
-    this.b = paramInt4;
+    if (a(paramInt)) {
+      return 1;
+    }
+    return 0;
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public static int a(int paramInt, long paramLong)
   {
-    float f1 = this.e;
-    float f2 = this.a;
-    float f3 = this.d;
-    float f4 = this.f;
-    float f5 = this.b;
-    float f6 = this.c;
-    paramTransformation.getMatrix().preTranslate((1.0F - paramFloat) * (1.0F - paramFloat) * f1 + 2.0F * paramFloat * (1.0F - paramFloat) * f2 + paramFloat * paramFloat * f3, (1.0F - paramFloat) * (1.0F - paramFloat) * f4 + 2.0F * paramFloat * (1.0F - paramFloat) * f5 + paramFloat * paramFloat * f6);
+    int i = paramInt * 400 / 540;
+    if (i <= paramLong * 0.7D)
+    {
+      paramInt = i;
+      if (i > 0) {}
+    }
+    else
+    {
+      paramInt = (int)(paramLong * 0.7D);
+    }
+    return paramInt;
+  }
+  
+  public static amtm a(QQAppInterface paramQQAppInterface, String paramString, ApolloBaseInfo paramApolloBaseInfo, int paramInt)
+  {
+    if ((paramQQAppInterface == null) || (paramApolloBaseInfo == null) || (TextUtils.isEmpty(paramString)))
+    {
+      QLog.e("ApolloDrawerInfoManager", 1, "checkDrawerRoleDressInfo param err");
+      return null;
+    }
+    int i = 0;
+    int[] arrayOfInt = null;
+    int j = 0;
+    amtm localamtm = null;
+    int k = amsx.a(paramQQAppInterface, paramString);
+    int m = paramApolloBaseInfo.apolloStatus;
+    amxm localamxm = paramApolloBaseInfo.getApolloDress();
+    if (localamxm != null)
+    {
+      i = localamxm.jdField_a_of_type_Int;
+      arrayOfInt = localamxm.a();
+    }
+    localamxm = paramApolloBaseInfo.getApolloDress3D();
+    paramApolloBaseInfo = localamtm;
+    if (localamxm != null)
+    {
+      j = localamxm.jdField_a_of_type_Int;
+      paramApolloBaseInfo = localamxm.a();
+    }
+    localamtm = new amtm();
+    localamtm.jdField_a_of_type_Int = i;
+    localamtm.jdField_a_of_type_ArrayOfInt = arrayOfInt;
+    localamtm.jdField_b_of_type_Int = j;
+    localamtm.jdField_b_of_type_ArrayOfInt = paramApolloBaseInfo;
+    localamtm.c = m;
+    localamtm.d = k;
+    localamtm.e = angi.b(paramInt);
+    boolean bool;
+    if (m != 1)
+    {
+      bool = true;
+      QLog.e("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo apollo not open from:", Integer.valueOf(paramInt), ",apolloFeatureFlag:", Integer.valueOf(m) });
+      anmq.a(localamtm.e, 10, 101, new Object[] { "apollo not open, flag:", Integer.valueOf(m) });
+    }
+    for (;;)
+    {
+      localamtm.jdField_a_of_type_Boolean = bool;
+      if ((!bool) && (QLog.isColorLevel())) {
+        QLog.d("ApolloDrawerInfoManager", 2, new Object[] { "checkDrawerRoleDressInfo from:", Integer.valueOf(paramInt), ",result:", localamtm.toString() });
+      }
+      anmq.a(localamtm.e, 10, new Object[] { localamtm.toString() });
+      return localamtm;
+      if ((k == 1) && ((i <= 0) || (arrayOfInt == null) || (arrayOfInt.length <= 0) || ((i > 0) && (!anlk.a(paramString, i, arrayOfInt, paramQQAppInterface)))))
+      {
+        bool = true;
+        QLog.e("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo basic not ready, from:", Integer.valueOf(paramInt), ",result:", localamtm.toString() });
+        anmq.a(localamtm.e, 10, 111, new Object[] { "basic not ready:" + localamtm.toString() });
+      }
+      else
+      {
+        if ((k == 2) && ((j <= 0) || (paramApolloBaseInfo == null) || (paramApolloBaseInfo.length <= 0) || ((j > annv.jdField_a_of_type_Int) && (!anlk.a(paramString, j, paramApolloBaseInfo, paramQQAppInterface)))))
+        {
+          QLog.d("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo 3D not ready, from:", Integer.valueOf(paramInt), ",result:", localamtm.toString() });
+          anmq.a(localamtm.e, 10, new Object[] { "3D role/dress not ready but show basic" });
+        }
+        if (!ApolloEngine.a())
+        {
+          QLog.d("ApolloDrawerInfoManager", 1, "so is not ready");
+          anmq.a(localamtm.e, 10, 102, new Object[] { "so not ready" });
+          bool = true;
+        }
+        else
+        {
+          bool = false;
+        }
+      }
+    }
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return paramInt == 6;
+  }
+  
+  public static int b(int paramInt)
+  {
+    if (a(paramInt)) {
+      return 3;
+    }
+    return 2;
   }
 }
 

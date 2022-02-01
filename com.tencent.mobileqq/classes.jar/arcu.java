@@ -1,21 +1,10 @@
-import java.io.File;
-import java.util.Comparator;
-
-class arcu
-  implements Comparator<File>
+public class arcu
 {
-  arcu(arct paramarct) {}
-  
-  public int a(File paramFile1, File paramFile2)
-  {
-    if (paramFile2.lastModified() > paramFile1.lastModified()) {
-      return 1;
-    }
-    if (paramFile2.lastModified() < paramFile1.lastModified()) {
-      return -1;
-    }
-    return 0;
-  }
+  public Boolean a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

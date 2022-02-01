@@ -1,48 +1,38 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.widget.AdapterView;
 
 public class aqxu
-  extends aqwr<aqxt>
+  implements bljo
 {
-  @NonNull
-  public aqxt a()
-  {
-    return aqxt.a();
-  }
+  public aqxu(IphonePickerView paramIphonePickerView) {}
   
-  @NonNull
-  public aqxt a(@NonNull aqlg[] paramArrayOfaqlg)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVIP.PERF.ConfigProcessor", 1, paramArrayOfaqlg[0].a);
+    IphonePickerView.a(this.a, paramView, 1);
+    IphonePickerView.a(this.a, paramView, true);
+    if ((paramView != null) && (paramView.getTag() != null))
+    {
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt)
+        {
+          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), false);
+        }
+        paramInt += 1;
+      }
     }
-    return aqxt.a(paramArrayOfaqlg[0].a);
   }
   
-  @NonNull
-  public aqxt b()
-  {
-    return aqxt.a();
-  }
-  
-  public Class<aqxt> clazz()
-  {
-    return aqxt.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public int type()
-  {
-    return 580;
-  }
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqxu
  * JD-Core Version:    0.7.0.1
  */

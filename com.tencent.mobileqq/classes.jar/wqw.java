@@ -1,100 +1,72 @@
-import android.support.annotation.Nullable;
-import java.util.Arrays;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
 public class wqw
 {
-  public final int a;
-  private final String a;
-  public final String[] a;
-  public final int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public final int i;
+  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  private static HashSet<String> jdField_a_of_type_JavaUtilHashSet;
+  private static wqw jdField_a_of_type_Wqw;
   
-  private wqw(JSONObject paramJSONObject)
+  public static wqw a()
   {
-    int k;
-    try
+    if (jdField_a_of_type_Wqw == null)
     {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
-      this.jdField_a_of_type_Int = paramJSONObject.getInt("v");
-      this.b = paramJSONObject.getInt("id");
-      this.i = paramJSONObject.getJSONObject("a").getInt("r");
-      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
-      this.c = localJSONArray.getInt(0);
-      this.d = localJSONArray.getInt(1);
-      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
-      this.e = localJSONArray.getInt(0);
-      this.f = localJSONArray.getInt(1);
-      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
-      this.g = localJSONArray.getInt(0);
-      this.h = localJSONArray.getInt(1);
-      paramJSONObject = paramJSONObject.getJSONObject("a").getJSONArray("c");
-      k = paramJSONObject.length();
-      if (k < 1) {
-        throw new IllegalArgumentException("content length should more than 1");
+      jdField_a_of_type_Wqw = new wqw();
+      jdField_a_of_type_JavaUtilHashSet = new HashSet();
+      jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      Iterator localIterator = ((wse)wth.a(17)).a().iterator();
+      while (localIterator.hasNext())
+      {
+        CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
+        if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+        {
+          jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
+          jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+        }
       }
     }
-    catch (JSONException paramJSONObject)
-    {
-      throw new IllegalArgumentException(paramJSONObject);
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[k];
-    while (j < k)
-    {
-      this.jdField_a_of_type_ArrayOfJavaLangString[j] = paramJSONObject.optString(j, "(NULL)");
-      j += 1;
-    }
+    return jdField_a_of_type_Wqw;
   }
   
-  public static wqw a(@Nullable String paramString)
+  public int a(String paramString)
   {
-    try
-    {
-      paramString = a(new JSONObject(paramString));
-      return paramString;
+    paramString = (Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (paramString == null) {
+      return -1;
     }
-    catch (JSONException paramString)
-    {
-      yqp.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
-      return null;
-    }
-    catch (NullPointerException paramString)
-    {
-      yqp.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
-    }
-    return null;
+    return paramString.intValue();
   }
   
-  public static wqw a(JSONObject paramJSONObject)
+  public void a()
   {
-    try
+    jdField_a_of_type_JavaUtilHashSet.clear();
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    Iterator localIterator = ((wse)wth.a(17)).a().iterator();
+    while (localIterator.hasNext())
     {
-      paramJSONObject = new wqw(paramJSONObject);
-      return paramJSONObject;
+      CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
+      if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+      {
+        jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
+        jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+      }
     }
-    catch (IllegalArgumentException paramJSONObject)
-    {
-      yqp.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
-    }
-    return null;
+    yuk.d("StoryFailCommentCacher", "update failed comments. size = %d.", new Object[] { Integer.valueOf(jdField_a_of_type_JavaUtilHashSet.size()) });
   }
   
-  public String a()
+  public boolean a(String paramString)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
   }
   
-  public String toString()
+  public void b()
   {
-    return "PollLayout{version=" + this.jdField_a_of_type_Int + ", id=" + this.b + ", screenWidth=" + this.c + ", screenHeight=" + this.d + ", layoutWidth=" + this.e + ", layoutHeight=" + this.f + ", layoutCenterX=" + this.g + ", layoutCenterY=" + this.h + ", rotation=" + this.i + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
+    jdField_a_of_type_JavaUtilHashSet.clear();
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    jdField_a_of_type_Wqw = null;
   }
 }
 

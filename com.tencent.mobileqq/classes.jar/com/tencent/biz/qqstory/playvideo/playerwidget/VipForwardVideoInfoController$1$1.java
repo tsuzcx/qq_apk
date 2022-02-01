@@ -1,26 +1,26 @@
 package com.tencent.biz.qqstory.playvideo.playerwidget;
 
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import wwx;
-import xso;
-import xvp;
-import xvq;
+import xas;
+import xwj;
+import xzk;
+import xzl;
 
 public class VipForwardVideoInfoController$1$1
   implements Runnable
 {
-  public VipForwardVideoInfoController$1$1(xvq paramxvq, wwx paramwwx) {}
+  public VipForwardVideoInfoController$1$1(xzl paramxzl, xas paramxas) {}
   
   public void run()
   {
-    QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_Wwx.a;
+    QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_Xas.a;
     if (localQQUserUIItem != null)
     {
-      this.jdField_a_of_type_Xvq.jdField_a_of_type_Xvp.a.j();
-      xvp.a(this.jdField_a_of_type_Xvq.jdField_a_of_type_Xvp, localQQUserUIItem, this.jdField_a_of_type_Xvq.jdField_a_of_type_Xss);
+      this.jdField_a_of_type_Xzl.jdField_a_of_type_Xzk.a.j();
+      xzk.a(this.jdField_a_of_type_Xzl.jdField_a_of_type_Xzk, localQQUserUIItem, this.jdField_a_of_type_Xzl.jdField_a_of_type_Xwn);
       return;
     }
-    this.jdField_a_of_type_Xvq.jdField_a_of_type_Xvp.a.k();
+    this.jdField_a_of_type_Xzl.jdField_a_of_type_Xzk.a.k();
   }
 }
 

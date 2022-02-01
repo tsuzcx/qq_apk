@@ -1,63 +1,59 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.opengl.EGL14;
+import android.opengl.EGLSurface;
+import com.tencent.qphone.base.util.QLog;
 
+@TargetApi(17)
 public class bbmb
-  implements bbmx
 {
-  private aitt jdField_a_of_type_Aitt;
-  private String jdField_a_of_type_JavaLangString;
-  private List<bbmy> jdField_a_of_type_JavaUtilList;
+  private EGLSurface a;
+  protected bbma a;
   
-  public bbmb(aitt paramaitt, List<bbmy> paramList, String paramString)
+  public bbmb(bbma parambbma)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aitt = paramaitt;
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
+    this.jdField_a_of_type_Bbma = parambbma;
   }
   
-  public int a()
+  public void a()
   {
-    return 1;
+    this.jdField_a_of_type_Bbma.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
   }
   
-  public String a()
+  public void a(int paramInt1, int paramInt2)
   {
-    if (UniteSearchActivity.d == 12) {
-      return anni.a(2131704140) + tyg.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext());
+    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
+      throw new IllegalStateException("surface already created");
     }
-    return anni.a(2131704139);
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_Bbma.a(paramInt1, paramInt2);
   }
   
-  public List<bbmy> a()
+  public void a(long paramLong)
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Bbma.a(this.jdField_a_of_type_AndroidOpenglEGLSurface, paramLong);
   }
   
-  public void a(View paramView)
+  public void a(Object paramObject)
   {
-    bbup.a(this.jdField_a_of_type_JavaLangString, 90, 0, paramView);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("from_key", 2);
-    localIntent.putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
-    localIntent.setClass(paramView.getContext(), ClassificationSearchActivity.class);
-    localIntent.putExtra("jump_src_key", 0);
-    ClassificationSearchActivity.a((Activity)paramView.getContext(), localIntent, this.jdField_a_of_type_Aitt);
-    paramView = paramView.getContext();
-    if ((paramView != null) && ((paramView instanceof BaseActivity))) {
-      oat.a(((BaseActivity)paramView).app, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D22", "0X8005D22", 0, 0, "0", "1", this.jdField_a_of_type_JavaLangString, "", false);
+    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
+      throw new IllegalStateException("surface already created");
     }
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_Bbma.a(paramObject);
   }
   
-  public String b()
+  public boolean a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    boolean bool = this.jdField_a_of_type_Bbma.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
+    if ((!bool) && (QLog.isColorLevel())) {
+      QLog.d("EglSurfaceBase", 2, "WARNING: swapBuffers() failed");
+    }
+    return bool;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bbma.b(this.jdField_a_of_type_AndroidOpenglEGLSurface);
   }
 }
 

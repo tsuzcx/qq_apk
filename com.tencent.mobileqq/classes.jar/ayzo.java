@@ -1,10 +1,10 @@
-public final class ayzo
-  extends ayzn
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+
+public abstract interface ayzo
 {
-  protected int a()
-  {
-    return 502;
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong);
 }
 
 

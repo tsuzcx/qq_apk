@@ -2,9 +2,9 @@ package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
 public class ExcitingTransferDef$Recv$ReceiveResultInternal
 {
-  public static final int ReceiveResult_Internal_NoNetWork = 3;
-  public static final int ReceiveResult_Internal_Retry_Exceed = 2;
-  public static final int ReceiveResult_Internal_Uuid_Invalid = 1;
+  public static final int RECEIVE_RESULT_INTERNAL_NO_NET_WORK = 3;
+  public static final int RECEIVE_RESULT_INTERNAL_RETRY_EXCEED = 2;
+  public static final int RECEIVE_RESULT_INTERNAL_UUID_INVALID = 1;
 }
 
 

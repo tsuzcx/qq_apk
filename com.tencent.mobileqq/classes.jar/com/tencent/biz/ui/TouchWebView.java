@@ -1,6 +1,6 @@
 package com.tencent.biz.ui;
 
-import aauv;
+import aayy;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -18,7 +18,7 @@ public class TouchWebView
   extends CustomWebView
   implements WebViewCallbackClient
 {
-  protected aauv helper;
+  protected aayy helper;
   TouchWebView.OnOverScrollHandler l;
   GestureDetector mGesture;
   public float mLastYUp;
@@ -178,9 +178,9 @@ public class TouchWebView
     this.mScrollListenerForBiz = paramOnScrollChangedListener;
   }
   
-  public void setWebViewHelper(aauv paramaauv)
+  public void setWebViewHelper(aayy paramaayy)
   {
-    this.helper = paramaauv;
+    this.helper = paramaayy;
   }
 }
 

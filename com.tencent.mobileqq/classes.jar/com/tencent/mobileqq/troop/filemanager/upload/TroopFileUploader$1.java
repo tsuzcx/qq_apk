@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import beyj;
+import bfyd;
 
 public class TroopFileUploader$1
   implements Runnable
 {
-  public TroopFileUploader$1(beyj parambeyj) {}
+  public TroopFileUploader$1(bfyd parambfyd) {}
   
   public void run()
   {
-    if ((beyj.a(this.this$0) != null) && (this.this$0.a != null)) {
+    if ((bfyd.a(this.this$0) != null) && (this.this$0.a != null)) {
       this.this$0.a();
     }
-    this.this$0.a(true, beyj.a(this.this$0), 9303, "readfilefail", null);
+    this.this$0.a(true, bfyd.a(this.this$0), 9303, "readfilefail", null);
   }
 }
 

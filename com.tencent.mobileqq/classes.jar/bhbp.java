@@ -1,17 +1,43 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import java.lang.ref.WeakReference;
+import tencent.im.msg.im_msg_body.CustomFace;
+import tencent.im.msg.im_msg_body.RichText;
 
-class bhbp
-  implements Handler.Callback
+public class bhbp
+  implements azrg
 {
-  bhbp(bhbn parambhbn) {}
+  protected WeakReference<TroopPicEffectsEditActivity> a;
   
-  public boolean handleMessage(Message paramMessage)
+  public bhbp(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity)
   {
-    if ((paramMessage != null) && (paramMessage.obj != null)) {
-      bhbn.a().a(paramMessage.obj.toString());
+    this.a = new WeakReference(paramTroopPicEffectsEditActivity);
+  }
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    return null;
+  }
+  
+  public void a(azrh paramazrh) {}
+  
+  public void b(azrh paramazrh)
+  {
+    TroopPicEffectsEditActivity localTroopPicEffectsEditActivity = (TroopPicEffectsEditActivity)this.a.get();
+    if (localTroopPicEffectsEditActivity == null) {
+      return;
     }
-    return false;
+    localTroopPicEffectsEditActivity.c();
+    Intent localIntent = new Intent(localTroopPicEffectsEditActivity, SplashActivity.class);
+    localIntent.putExtra("uin", localTroopPicEffectsEditActivity.getIntent().getStringExtra("friendUin"));
+    localIntent.putExtra("uintype", 1);
+    localIntent.putExtra("troop_uin", localTroopPicEffectsEditActivity.getIntent().getStringExtra("troopUin"));
+    localIntent.putExtra("isFromTroopEffectPic", true);
+    localTroopPicEffectsEditActivity.startActivity(agej.a(localIntent, new int[] { 1 }));
+    localTroopPicEffectsEditActivity.finish();
+    localTroopPicEffectsEditActivity.a(localTroopPicEffectsEditActivity.a, (im_msg_body.CustomFace)paramazrh.a, new bhbq(this, localTroopPicEffectsEditActivity));
   }
 }
 

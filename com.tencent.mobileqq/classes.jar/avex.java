@@ -1,10 +1,15 @@
-import android.view.View;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
 
-public abstract interface avex
+public class avex
+  implements bljb
 {
-  public abstract void a(avey paramavey);
+  public avex(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public abstract void a(View... paramVarArgs);
+  public void onDismiss()
+  {
+    this.a.a = null;
+    this.a.o();
+  }
 }
 
 

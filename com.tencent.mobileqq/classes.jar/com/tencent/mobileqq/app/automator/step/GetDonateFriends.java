@@ -2,8 +2,8 @@ package com.tencent.mobileqq.app.automator.step;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import anyj;
-import blru;
+import aokv;
+import bmsw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -22,7 +22,7 @@ public class GetDonateFriends
     long l = ((SharedPreferences)localObject).getLong("sp_vip_info_request_time", 0L);
     int i = ((SharedPreferences)localObject).getInt("sp_vip_info_update_freq", 10);
     localObject = ((SharedPreferences)localObject).getString("sp_vip_info_current_version", "");
-    if (!blru.a().equalsIgnoreCase((String)localObject)) {
+    if (!bmsw.a().equalsIgnoreCase((String)localObject)) {
       bool = true;
     }
     QLog.e("Ilive", 1, " isVersionChange = " + bool);
@@ -30,7 +30,7 @@ public class GetDonateFriends
     {
       localObject = this.a.app.getCurrentAccountUin();
       String str = ((TicketManager)this.a.app.getManager(2)).getSkey((String)localObject);
-      ((anyj)this.a.app.a(27)).a(str, (String)localObject);
+      ((aokv)this.a.app.a(27)).a(str, (String)localObject);
     }
     return 7;
   }

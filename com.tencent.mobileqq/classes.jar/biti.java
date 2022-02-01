@@ -1,59 +1,9 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Toast;
-import com.tencent.open.base.ToastUtil.1;
-import com.tencent.open.base.ToastUtil.2;
-import com.tencent.open.base.ToastUtil.3;
+import android.view.View.OnClickListener;
 
-public class biti
+public abstract interface biti
+  extends biod
 {
-  protected static biti a;
-  protected Handler a;
-  public Toast a;
-  public Toast b;
-  
-  public biti()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
-  
-  public static biti a()
-  {
-    if (jdField_a_of_type_Biti == null) {
-      jdField_a_of_type_Biti = new biti();
-    }
-    return jdField_a_of_type_Biti;
-  }
-  
-  public void a(int paramInt)
-  {
-    a(paramInt, 0);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.2(this, paramInt1, paramInt2));
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.3(this, paramView, paramInt));
-  }
-  
-  public void a(String paramString)
-  {
-    a(paramString, 0);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.1(this, paramString, paramInt));
-  }
+  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener);
 }
 
 

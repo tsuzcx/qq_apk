@@ -1,20 +1,22 @@
 import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.activity.Leba;
 
 public class aevo
-  extends amcl
+  implements ViewSwitcher.ViewFactory
 {
-  public aevm a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  public aevo(Leba paramLeba) {}
+  
+  public View makeView()
+  {
+    ImageView localImageView = new ImageView(this.a.a());
+    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    return localImageView;
+  }
 }
 
 

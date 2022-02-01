@@ -1,33 +1,81 @@
-import android.util.Log;
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.now.message.MessageReceivingAdapter;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import mqq.manager.TicketManager;
+import tencent.im.oidb.cmd0xada.oidb_0xada.ReqBody;
 
 public class aydi
-  extends aydl
 {
-  public aydi(MessageReceivingAdapter paramMessageReceivingAdapter, int paramInt, MessageForArkApp paramMessageForArkApp) {}
+  public int a;
+  public aydk a;
+  public aydl a;
+  public AppInterface a;
+  public int b;
   
-  public boolean onClick(View paramView)
+  public aydi(AppInterface paramAppInterface)
   {
-    int i = 0;
-    ayej.b(this.jdField_a_of_type_Int + 1, aydg.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp), "1");
-    paramView = ayep.a(ayep.a(aydg.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp), "fromid", String.valueOf(60013)), "startsrc", String.valueOf(60013));
-    try
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+  }
+  
+  private boolean a(oidb_0xada.ReqBody paramReqBody)
+  {
+    paramReqBody.uid.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
+    paramReqBody.tinyid.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
+    Object localObject = (TicketManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2);
+    String str = ((TicketManager)localObject).getA2(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    localObject = ((TicketManager)localObject).getSkey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
     {
-      int j = Integer.parseInt(ayep.a(paramView, "roomid"));
-      i = j;
+      paramReqBody.a2.set(str);
+      paramReqBody.platform.set(1);
+      paramReqBody.version.set("8.4.5");
+      paramReqBody.original_id.set(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+      paramReqBody.original_key.set((String)localObject);
+      paramReqBody.original_id_type.set(1);
+      return true;
     }
-    catch (Exception localException)
+    return false;
+  }
+  
+  public aydi a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public aydi a(aydk paramaydk)
+  {
+    this.jdField_a_of_type_Aydk = paramaydk;
+    return this;
+  }
+  
+  public aydi a(aydl paramaydl)
+  {
+    this.jdField_a_of_type_Aydl = paramaydl;
+    return this;
+  }
+  
+  public aydi a(byte[] paramArrayOfByte)
+  {
+    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
+    if (a(localReqBody))
     {
-      for (;;)
-      {
-        QLog.e("MessageReceivingAdapter", 4, localException, new Object[0]);
-      }
+      localReqBody.cmd.set(this.jdField_a_of_type_Int);
+      localReqBody.subcmd.set(this.b);
+      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+      nkm.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new aydj(this), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
     }
-    Log.i("MessageReceivingAdapter", "jumpUrl = " + paramView);
-    return ayen.a(MessageReceivingAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter), paramView, i, 60012);
+    return this;
+  }
+  
+  public aydi b(int paramInt)
+  {
+    this.b = paramInt;
+    return this;
   }
 }
 

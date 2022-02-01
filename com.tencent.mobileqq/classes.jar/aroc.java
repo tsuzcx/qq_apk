@@ -1,78 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.HotFriendResData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.support.annotation.NonNull;
 
 public class aroc
-  extends arnz
+  extends armf<arob>
 {
-  public aroc(QQAppInterface paramQQAppInterface)
+  @NonNull
+  public arob a()
   {
-    super("qq.android.hotfriend.res", paramQQAppInterface);
+    return new arob();
   }
   
-  public int a()
+  @NonNull
+  public arob a(@NonNull araj[] paramArrayOfaraj)
   {
-    return 10042;
+    return arob.a(paramArrayOfaraj[0].a);
   }
   
-  public Class<? extends XmlData> a()
+  @NonNull
+  public arob b()
   {
-    return HotFriendResData.class;
+    return new arob();
   }
   
-  public String a()
+  public Class<arob> clazz()
   {
-    return "HotFriendResHandler";
+    return arob.class;
   }
   
-  public void a(String paramString)
+  public int type()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess:" + paramString);
-    }
-    if (!new File(paramString).exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess sorse not exists");
-      }
-      return;
-    }
-    try
-    {
-      String str = axav.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess imagePath=" + str);
-      }
-      if (!TextUtils.isEmpty(str)) {
-        bgmg.a(paramString, str, false);
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-    super.a(paramString);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
+    return 662;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aroc
  * JD-Core Version:    0.7.0.1
  */

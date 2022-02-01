@@ -1,30 +1,20 @@
-import java.nio.ByteBuffer;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class xri
+  extends xrg
 {
-  int jdField_a_of_type_Int;
-  public long a;
-  ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  public boolean a;
-  public boolean b;
+  public final View b;
   
-  public xri()
+  public xri(View paramView)
   {
-    a();
+    super((ViewGroup)paramView.getParent());
+    this.b = paramView;
   }
   
-  public void a()
+  protected View a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaNioByteBuffer = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-  }
-  
-  public String toString()
-  {
-    return "FrameInfo{buffer=" + this.jdField_a_of_type_Int + ", data=" + this.jdField_a_of_type_JavaNioByteBuffer + ", presentationTimeUs=" + this.jdField_a_of_type_Long + ", endOfStream=" + this.jdField_a_of_type_Boolean + ", representationChanged=" + this.b + '}';
+    return this.b;
   }
 }
 

@@ -1,17 +1,18 @@
-import android.view.View;
+import UserGrowth.stPostFeedCommentV2Req;
+import UserGrowth.stPostFeedCommentV2Rsp;
+import UserGrowth.stSimpleMetaComment;
+import UserGrowth.stSimpleMetaFeed;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
 
-final class uow
-  implements bkhw
+public class uow
+  extends ukl<stPostFeedCommentV2Rsp>
 {
-  uow(bkhw parambkhw, bkho parambkho) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public uow(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleMetaComment paramstSimpleMetaComment)
   {
-    upe.b("WSFeedUtils", "clickedView :" + paramView + ", which: " + paramInt);
-    if (this.jdField_a_of_type_Bkhw != null) {
-      this.jdField_a_of_type_Bkhw.OnClick(paramView, paramInt);
-    }
-    this.jdField_a_of_type_Bkho.dismiss();
+    super("PostFeedCommentV2", 10003);
+    this.a = new stPostFeedCommentV2Req(paramstSimpleMetaFeed.id, paramstSimpleMetaComment, new ArrayList(), 0);
+    uqf.c("WsCommentBusiness", "stPostFeedCommentV2Req:" + this.a.toString());
   }
 }
 

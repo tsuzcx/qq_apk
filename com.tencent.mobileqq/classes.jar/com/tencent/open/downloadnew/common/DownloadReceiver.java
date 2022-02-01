@@ -4,11 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import biqd;
-import birz;
-import bisy;
-import biub;
-import bixh;
+import bjrc;
+import bjsy;
+import bjtx;
+import bjva;
+import bjyg;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -21,7 +21,7 @@ public class DownloadReceiver
     if (paramIntent != null)
     {
       str3 = paramIntent.getStringExtra("processName");
-      if ((!TextUtils.isEmpty(str3)) && (str3.equalsIgnoreCase(biqd.r()))) {
+      if ((!TextUtils.isEmpty(str3)) && (str3.equalsIgnoreCase(bjrc.r()))) {
         break label32;
       }
     }
@@ -38,12 +38,12 @@ public class DownloadReceiver
         paramIntent = (NoticeParam)paramIntent.getParcelableExtra("noticeParam");
       } while (paramIntent == null);
       str2 = str3.replace(":", ".");
-      if ((bixh.e + "." + str2).equals(str1))
+      if ((bjyg.e + "." + str2).equals(str1))
       {
-        biub.a(paramContext, paramIntent.d);
+        bjva.a(paramContext, paramIntent.d);
         return;
       }
-      bisy.b("vivi", "processName :" + str3 + " | formatStr:" + str2);
+      bjtx.b("vivi", "processName :" + str3 + " | formatStr:" + str2);
       str3 = paramIntent.a;
       str4 = paramIntent.d;
     } while ((TextUtils.isEmpty(str3)) && (TextUtils.isEmpty(str4)));
@@ -56,14 +56,14 @@ public class DownloadReceiver
       i += 1;
     }
     if (!TextUtils.isEmpty(str3)) {
-      birz.a.put(str3, localStringBuilder.toString());
+      bjsy.a.put(str3, localStringBuilder.toString());
     }
     for (;;)
     {
       ThreadManager.executeOnSubThread(new DownloadReceiver.1(this, str3, str4, paramIntent, str2, str1, paramContext));
       return;
       if (!TextUtils.isEmpty(paramIntent.e)) {
-        birz.a.put(paramIntent.e, localStringBuilder.toString());
+        bjsy.a.put(paramIntent.e, localStringBuilder.toString());
       }
     }
   }

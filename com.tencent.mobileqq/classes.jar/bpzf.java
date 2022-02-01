@@ -1,6 +1,21 @@
-public abstract interface bpzf
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+
+public class bpzf
+  extends Handler
 {
-  public abstract void a();
+  public bpzf(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    this.a.a(paramMessage);
+  }
 }
 
 

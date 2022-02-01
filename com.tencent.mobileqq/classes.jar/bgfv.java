@@ -1,53 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 
-final class bgfv
-  implements DownloadParams.DecodeHandler
+public abstract class bgfv<VH extends RecyclerView.ViewHolder, D extends bgeg>
+  extends bgfc<VH, D>
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public bgfv(XMediaEditor paramXMediaEditor)
   {
-    if (paramBitmap == null) {
-      localObject1 = null;
-    }
-    Object localObject2;
-    do
-    {
-      do
-      {
-        return localObject1;
-        localObject2 = paramDownloadParams.tag;
-        localObject1 = paramBitmap;
-      } while (!(localObject2 instanceof int[]));
-      localObject1 = paramBitmap;
-    } while (((int[])localObject2).length != 3);
-    Object localObject1 = (int[])localObject2;
-    int j = localObject1[0];
-    int i = j;
-    if (j == 0)
-    {
-      if (paramDownloadParams.reqWidth == 0) {
-        i = paramBitmap.getWidth();
-      }
-    }
-    else
-    {
-      int k = localObject1[1];
-      j = k;
-      if (k == 0) {
-        if (paramDownloadParams.reqHeight != 0) {
-          break label128;
-        }
-      }
-    }
-    label128:
-    for (j = paramBitmap.getHeight();; j = paramDownloadParams.reqHeight)
-    {
-      return bgmo.d(paramBitmap, localObject1[2], i, j);
-      i = paramDownloadParams.reqWidth;
-      break;
-    }
+    super(paramXMediaEditor);
   }
+  
+  public abstract void a(D paramD);
 }
 
 

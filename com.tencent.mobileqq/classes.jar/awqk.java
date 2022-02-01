@@ -1,56 +1,33 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadPoolParams;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class awqk
+class awqk
+  implements bliz
 {
-  private static awqk jdField_a_of_type_Awqk;
-  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  awqk(awqj paramawqj, blir paramblir) {}
   
-  private awqk()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null)
+    switch (paramInt)
     {
-      int i = Runtime.getRuntime().availableProcessors();
-      ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
-      localThreadPoolParams.corePoolsize = i;
-      localThreadPoolParams.maxPooolSize = i;
-      localThreadPoolParams.priority = 5;
-      localThreadPoolParams.poolThreadName = "msgbackup_Tranport_Executor";
-      this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool(localThreadPoolParams);
     }
-  }
-  
-  public static awqk a()
-  {
-    try
+    for (;;)
     {
-      if (jdField_a_of_type_Awqk == null) {
-        jdField_a_of_type_Awqk = new awqk();
-      }
-      awqk localawqk = jdField_a_of_type_Awqk;
-      return localawqk;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    awqu.a("MsgBackupMsgBackupTransportExecutor", "msgbackup destroy-------------> destroyed = " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get(), new Object[0]);
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      this.jdField_a_of_type_Blir.e();
       return;
+      awqj.a(this.jdField_a_of_type_Awqj).finish();
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      Object localObject = awqj.a(this.jdField_a_of_type_Awqj).getIntent();
+      String str = ((Intent)localObject).getStringExtra("uin");
+      paramInt = ((Intent)localObject).getIntExtra("uintype", -1);
+      awpq.a(paramView).a.a(3, paramInt, str);
+      localObject = new awpk(paramInt, str);
+      awpq.a(paramView).a((awpk)localObject, false);
+      bdll.b(null, "CliOper", "", "", "0X800A76E", "0X800A76E", 0, 0, "", "0", "0", "");
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null) {
-      awqu.a("MsgBackupMsgBackupTransportExecutor", "thread pool is destroyed!", new Object[0]);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(paramRunnable);
   }
 }
 

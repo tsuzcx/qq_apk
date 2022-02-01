@@ -1,18 +1,10 @@
-import com.tencent.map.geolocation.TencentDirectionListener;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
 
-class avwz
-  implements TencentDirectionListener
+public abstract interface avwz
 {
-  avwz(avwv paramavwv) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void onDirectionChanged(double paramDouble, int paramInt)
-  {
-    if (avwv.a(this.a) != null)
-    {
-      avwv.a(this.a, 180.0D + paramDouble);
-      avwv.a(this.a, false);
-    }
-  }
+  public abstract void a(FaceDetectForThirdPartyManager.AppConf paramAppConf);
 }
 
 

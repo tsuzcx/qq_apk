@@ -1,22 +1,54 @@
-import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public class azsa
-  implements QQPermissionCallback
+public abstract class azsa
+  extends arac<azsf>
 {
-  public azsa(ProfileCardMoreActivity paramProfileCardMoreActivity1, ProfileCardMoreActivity paramProfileCardMoreActivity2) {}
+  protected abstract int a();
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  @NonNull
+  public azsf a(int paramInt)
   {
-    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions denied...");
-    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
+    return new azsf();
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  @Nullable
+  public azsf a(araj[] paramArrayOfaraj)
   {
-    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions grant...");
-    this.b.g();
+    azsf localazsf = new azsf();
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null)) {
+      azsf.a(localazsf, paramArrayOfaraj[0].a);
+    }
+    return localazsf;
+  }
+  
+  public void a(azsf paramazsf) {}
+  
+  public Class<azsf> clazz()
+  {
+    return azsf.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return a();
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import bdyi;
+import bexb;
 
 public class ShortVideoDownloadProcessor$1
   implements Runnable
 {
-  public ShortVideoDownloadProcessor$1(bdyi parambdyi) {}
+  public ShortVideoDownloadProcessor$1(bexb parambexb) {}
   
   public void run()
   {

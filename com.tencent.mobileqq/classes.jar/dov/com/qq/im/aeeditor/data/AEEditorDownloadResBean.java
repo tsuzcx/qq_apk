@@ -5,6 +5,8 @@ import java.io.Serializable;
 public class AEEditorDownloadResBean
   implements Serializable
 {
+  public static final int PRE_DOWNLOAD_FALSE = 0;
+  public static final int PRE_DOWNLOAD_TRUE = 1;
   private String id;
   private String md5;
   private int preDownload;

@@ -1,6 +1,16 @@
-public abstract interface bosh
+import android.support.v7.widget.RecyclerView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
+
+class bosh
+  implements aazn
 {
-  public abstract void a(String paramString);
+  bosh(bory parambory) {}
+  
+  public void a()
+  {
+    bory.a(this.a).setVisibility(0);
+    bory.a(this.a).setVisibility(0);
+  }
 }
 
 

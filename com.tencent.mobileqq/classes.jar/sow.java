@@ -1,9 +1,7 @@
-import android.view.View;
+import kotlin.Metadata;
 
-abstract interface sow
-{
-  public abstract void onClick(View paramView);
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/data/PtsData$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sow {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

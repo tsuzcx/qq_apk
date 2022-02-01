@@ -1,145 +1,142 @@
-import android.content.Context;
-import com.tencent.mobileqq.richmedia.capture.view.BeautyProviderView;
-import com.tencent.mobileqq.richmedia.capture.view.FilterProviderView;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderView;
-import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateProviderView;
-import com.tencent.mobileqq.richmedia.capture.view.SubtitleProviderView;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.io.File;
 
 public class banw
 {
-  public static final int[] a;
-  public static final int[] b;
-  public static final int[] c;
-  public static final int[] d;
-  private int jdField_a_of_type_Int = 0;
-  private ArrayList<int[]> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public int a;
+  public String a;
   public boolean a;
+  public int b;
+  public String b;
   public boolean b;
-  public boolean c;
-  public boolean d;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f = "";
+  public String g = "";
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l = "-1";
   
-  static
+  public banw(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, String paramString5, int paramInt2, String paramString6, int paramInt3, String paramString7, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString8, int paramInt4, String paramString9, String paramString10, int paramInt5, String paramString11)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 101, 2130845914 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 102, 2130845917 };
-    jdField_c_of_type_ArrayOfInt = new int[] { 103, 2130845913 };
-    jdField_d_of_type_ArrayOfInt = new int[] { 104, 2130845920 };
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_d_of_type_JavaLangString = paramString4;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_e_of_type_JavaLangString = paramString5;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.f = paramString6;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.g = paramString7;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean3;
+    this.h = paramString8;
+    this.jdField_d_of_type_Int = paramInt4;
+    this.j = paramString9;
+    this.k = paramString10;
+    this.jdField_e_of_type_Int = paramInt5;
+    this.l = paramString11;
   }
   
-  public banw(int paramInt)
+  private boolean a(String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return -1;
+    boolean bool = false;
+    paramString = bnua.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString).getString("splash_union_banner_res_path_" + paramString, "");
+    if (!TextUtils.isEmpty(paramString)) {
+      bool = a(paramString, false);
     }
-    return ((int[])this.jdField_a_of_type_JavaUtilArrayList.get(paramInt))[0];
+    return bool;
   }
   
-  public ProviderView a(Context paramContext, int paramInt)
+  public static boolean a(String paramString, boolean paramBoolean)
   {
-    Object localObject = null;
-    switch (paramInt)
+    boolean bool2 = false;
+    try
     {
-    default: 
-      paramContext = localObject;
-      if (QLog.isColorLevel())
+      paramString = new File(paramString);
+      boolean bool1 = bool2;
+      if (paramString != null)
       {
-        QLog.d("ProviderViewBuilder", 2, "bad id=" + paramInt);
-        paramContext = localObject;
-      }
-      break;
-    }
-    for (;;)
-    {
-      if (paramContext != null)
-      {
-        if (this.jdField_a_of_type_Int != 0) {
-          break;
+        bool1 = bool2;
+        if (paramString.exists())
+        {
+          if (paramBoolean)
+          {
+            paramBoolean = paramString.getAbsolutePath().endsWith(".splashtemp");
+            if (!paramBoolean) {}
+          }
+          bool1 = true;
         }
-        paramContext.setTabBarPosition(2);
       }
-      return paramContext;
-      paramContext = new FilterProviderView(paramContext, this.jdField_a_of_type_Int);
-      paramContext.setId(2131364146);
-      continue;
-      paramContext = new PtvTemplateProviderView(paramContext);
-      continue;
-      paramContext = new BeautyProviderView(paramContext);
-      continue;
-      paramContext = new SubtitleProviderView(paramContext);
+      return bool1;
     }
-    paramContext.setTabBarPosition(1);
-    if (paramContext.a())
-    {
-      paramContext.b(213);
-      return paramContext;
-    }
-    paramContext.b(249);
-    return paramContext;
+    catch (Exception paramString) {}
+    return false;
   }
   
-  public void a(int paramInt)
+  public boolean a()
   {
-    if ((paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaUtilArrayList.size())) {}
-    do
+    boolean bool2 = false;
+    if ((this.jdField_b_of_type_Boolean) && (a(this.h, true))) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      return;
-      paramInt = ((int[])this.jdField_a_of_type_JavaUtilArrayList.get(paramInt))[0];
-      if (paramInt == 101)
+      if ((bool1) && (bnua.a(this.l))) {
+        if (!a(this.jdField_b_of_type_JavaLangString)) {
+          bool1 = bool2;
+        }
+      }
+      for (;;)
       {
-        bamn.a().a(1, 0, "");
-        return;
+        QLog.i("QSplash@QbossSplashUtil", 1, "adid [" + this.jdField_b_of_type_JavaLangString + "] shouldSplash " + bool1);
+        return bool1;
+        bnua.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
       }
-    } while (paramInt != 102);
-    bamd.a().a(1, 0, "");
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int b(int paramInt)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      if (((int[])this.jdField_a_of_type_JavaUtilArrayList.get(i))[0] == paramInt) {
-        return i;
-      }
-      i += 1;
     }
-    return -1;
   }
   
-  public void b(boolean paramBoolean)
+  public boolean b()
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!a(this.h, true))
+    {
+      bool1 = bool2;
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        bool1 = bool2;
+        if (!banv.a(this.jdField_d_of_type_JavaLangString)) {
+          bool1 = true;
+        }
+      }
+    }
+    QLog.i("QSplash@QbossSplashUtil", 1, "adid [" + this.jdField_b_of_type_JavaLangString + "] shouldRequestRes result = " + bool1);
+    return bool1;
   }
   
-  public void c(boolean paramBoolean)
+  public String toString()
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    return "SplashADEntry{, mAdID='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mBeginTime='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mEndTime='" + this.jdField_d_of_type_JavaLangString + '\'' + ", mContentType=" + this.jdField_a_of_type_Int + ", mDownloadUrl='" + this.jdField_e_of_type_JavaLangString + '\'' + ", mJumpType=" + this.jdField_b_of_type_Int + ", mJumpH5Url='" + this.f + '\'' + ", mExposureUrl='" + this.g + '\'' + ", mResPath='" + this.h + '\'' + ", mVideoPath='" + this.i + '\'' + ", mShowpriority" + this.jdField_d_of_type_Int + '\'' + ", isLowerDeviceLimit=" + this.jdField_a_of_type_Boolean + '\'' + ", mCanShow=" + this.jdField_b_of_type_Boolean + '\'' + ", mResTraceinfo=" + this.j + '\'' + ", mResMD5=" + this.k + '\'' + ", mShowAdMark=" + this.jdField_e_of_type_Int + ", mBannerType=" + this.l + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     banw
  * JD-Core Version:    0.7.0.1
  */

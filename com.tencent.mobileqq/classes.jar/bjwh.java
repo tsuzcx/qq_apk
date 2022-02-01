@@ -1,24 +1,8 @@
-import com.tencent.mobileqq.minigame.manager.FileDownloadManager;
-import com.tencent.qqmini.sdk.annotation.ProxyService;
-import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy;
-import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener;
-import java.util.Map;
+import android.os.Bundle;
 
-@ProxyService(proxy=DownloaderProxy.class)
-public class bjwh
-  extends DownloaderProxy
+public abstract interface bjwh
 {
-  public void abort(String paramString)
-  {
-    FileDownloadManager.abort(paramString);
-  }
-  
-  public boolean download(String paramString1, Map<String, String> paramMap, String paramString2, int paramInt, DownloaderProxy.DownloadListener paramDownloadListener)
-  {
-    return FileDownloadManager.download(paramString1, paramMap, paramString2, paramInt, paramDownloadListener);
-  }
-  
-  public void preConnectDownloadHost() {}
+  public abstract void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle);
 }
 
 

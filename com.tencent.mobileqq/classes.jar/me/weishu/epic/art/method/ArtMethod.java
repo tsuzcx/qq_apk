@@ -2,16 +2,17 @@ package me.weishu.epic.art.method;
 
 import android.os.Build.VERSION;
 import android.util.Log;
-import com.taobao.android.dexposed.utility.Logger;
-import com.taobao.android.dexposed.utility.NeverCalled;
-import de.robv.android.xposed.XposedHelpers;
+import com.qq.android.dexposed.XposedHelpers;
+import com.qq.android.dexposed.utility.Logger;
+import com.qq.android.dexposed.utility.NeverCalled;
+import com.qq.android.dexposed.utility.Unsafe;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.nio.ByteBuffer;
-import java.util.Arrays;
+import me.weishu.epic.art.Epic;
 import me.weishu.epic.art.EpicNative;
 
 public class ArtMethod
@@ -21,6 +22,7 @@ public class ArtMethod
   private long address;
   private Constructor constructor;
   private Method method;
+  private long objectAddress;
   private ArtMethod origin;
   
   private ArtMethod(Constructor paramConstructor)
@@ -66,9 +68,11 @@ public class ArtMethod
     if (this.constructor != null)
     {
       this.address = EpicNative.getMethodAddress(this.constructor);
+      this.objectAddress = Unsafe.getObjectAddress(this.constructor);
       return;
     }
     this.address = EpicNative.getMethodAddress(this.method);
+    this.objectAddress = Unsafe.getObjectAddress(this.method);
   }
   
   private Object invokeInternal(Object paramObject, Object... paramVarArgs)
@@ -101,28 +105,40 @@ public class ArtMethod
   
   public static long searchOffset(long paramLong1, long paramLong2, int paramInt)
   {
-    long l = paramLong2 / 4L;
-    for (paramLong2 = 0L; paramLong2 < l; paramLong2 = 1L + paramLong2)
+    long l2 = paramLong2 / 4L;
+    for (paramLong2 = 0L;; paramLong2 = 1L + paramLong2)
     {
-      byte[] arrayOfByte = EpicNative.memget(paramLong2 * 4L + paramLong1, 4);
-      if (ByteBuffer.allocate(4).put(arrayOfByte).getInt() == paramInt) {
-        return paramLong2 * 4L;
+      long l1;
+      if (paramLong2 >= l2) {
+        l1 = -1L;
       }
+      byte[] arrayOfByte;
+      do
+      {
+        return l1;
+        l1 = paramLong2 * 4L;
+        arrayOfByte = EpicNative.memget(paramLong2 * 4L + paramLong1, 4);
+      } while (ByteBuffer.allocate(4).put(arrayOfByte).getInt() == paramInt);
     }
-    return -1L;
   }
   
   public static long searchOffset(long paramLong1, long paramLong2, long paramLong3)
   {
-    long l = paramLong2 / 4L;
-    for (paramLong2 = 0L; paramLong2 < l; paramLong2 = 1L + paramLong2)
+    long l2 = paramLong2 / 4L;
+    for (paramLong2 = 0L;; paramLong2 = 1L + paramLong2)
     {
-      byte[] arrayOfByte = EpicNative.memget(4L * paramLong2 + paramLong1, 4);
-      if (ByteBuffer.allocate(8).put(arrayOfByte).getLong() == paramLong3) {
-        return 4L * paramLong2;
+      long l1;
+      if (paramLong2 >= l2) {
+        l1 = -1L;
       }
+      byte[] arrayOfByte;
+      do
+      {
+        return l1;
+        l1 = 4L * paramLong2;
+        arrayOfByte = EpicNative.memget(4L * paramLong2 + paramLong1, 4);
+      } while (ByteBuffer.allocate(8).put(arrayOfByte).getLong() == paramLong3);
     }
-    return -1L;
   }
   
   public ArtMethod backup()
@@ -150,25 +166,25 @@ public class ArtMethod
           localObject3 = ((Constructor)localObject3).newInstance(new Object[0]);
           localObject4 = ((Class)localObject1).getDeclaredFields();
           j = localObject4.length;
-          if (i < j)
+          if (i >= j)
           {
-            localObject5 = localObject4[i];
-            if (!localObject5.isAccessible()) {
-              localObject5.setAccessible(true);
-            }
-            localObject5.set(localObject3, localObject5.get(localObject2));
-            i += 1;
-            continue;
+            localObject1 = (Method)Method.class.getConstructor(new Class[] { localObject1 }).newInstance(new Object[] { localObject3 });
+            ((Method)localObject1).setAccessible(true);
+            localObject1 = of((Method)localObject1);
+            ((ArtMethod)localObject1).setEntryPointFromQuickCompiledCode(getEntryPointFromQuickCompiledCode());
+            ((ArtMethod)localObject1).setEntryPointFromJni(getEntryPointFromJni());
+            ((ArtMethod)localObject1).makePrivate();
+            ((ArtMethod)localObject1).setAccessible(true);
+            ((ArtMethod)localObject1).origin = this;
+            return localObject1;
           }
-          localObject1 = (Method)Method.class.getConstructor(new Class[] { localObject1 }).newInstance(new Object[] { localObject3 });
-          ((Method)localObject1).setAccessible(true);
-          localObject1 = of((Method)localObject1);
-          ((ArtMethod)localObject1).setEntryPointFromQuickCompiledCode(getEntryPointFromQuickCompiledCode());
-          ((ArtMethod)localObject1).setEntryPointFromJni(getEntryPointFromJni());
-          ((ArtMethod)localObject1).makePrivate();
-          ((ArtMethod)localObject1).setAccessible(true);
-          ((ArtMethod)localObject1).origin = this;
-          return localObject1;
+          localObject5 = localObject4[i];
+          if (!localObject5.isAccessible()) {
+            localObject5.setAccessible(true);
+          }
+          localObject5.set(localObject3, localObject5.get(localObject2));
+          i += 1;
+          continue;
         }
         Object localObject4 = Method.class.getDeclaredConstructor(new Class[0]);
         if (Build.VERSION.SDK_INT == 23)
@@ -182,14 +198,7 @@ public class ArtMethod
           localObject4 = ((Class)localObject3).getDeclaredFields();
           int k = localObject4.length;
           i = j;
-          if (i < k)
-          {
-            localObject5 = localObject4[i];
-            localObject5.setAccessible(true);
-            localObject5.set(localObject1, localObject5.get(localObject2));
-            i += 1;
-          }
-          else
+          if (i >= k)
           {
             localObject2 = ((Class)localObject3).getDeclaredField("artMethod");
             ((Field)localObject2).setAccessible(true);
@@ -198,6 +207,13 @@ public class ArtMethod
             EpicNative.put(EpicNative.get(this.address, i), l);
             ((Field)localObject2).set(localObject1, Long.valueOf(l));
             localObject1 = of((Method)localObject1);
+          }
+          else
+          {
+            localObject5 = localObject4[i];
+            localObject5.setAccessible(true);
+            localObject5.set(localObject1, localObject5.get(localObject2));
+            i += 1;
           }
         }
         else
@@ -327,13 +343,13 @@ public class ArtMethod
   {
     if ((Build.VERSION.SDK_INT >= 24) && (this.origin != null))
     {
-      byte[] arrayOfByte1 = EpicNative.get(this.origin.address, 4);
-      byte[] arrayOfByte2 = EpicNative.get(this.address, 4);
-      if (!Arrays.equals(arrayOfByte1, arrayOfByte2))
+      long l = Unsafe.getObjectAddress(getExecutable());
+      if (l != this.objectAddress)
       {
-        Logger.i("ArtMethod", "the address of java method was moved by gc, backup it now! origin address: 0x" + Arrays.toString(arrayOfByte1) + " , currentAddress: 0x" + Arrays.toString(arrayOfByte2));
-        EpicNative.put(arrayOfByte1, this.address);
-        return invokeInternal(paramObject, paramVarArgs);
+        ArtMethod localArtMethod = this.origin.backup();
+        Logger.i("ArtMethod", "the address of java method was moved by gc, backup it now! origin address: 0x" + Long.toHexString(this.objectAddress) + " , currentAddress: 0x" + Long.toHexString(l));
+        Epic.setBackMethod(this.origin, localArtMethod);
+        return localArtMethod.invokeInternal(paramObject, paramVarArgs);
       }
       Logger.i("ArtMethod", "the address is same with last invoke, not moved by gc");
     }

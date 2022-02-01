@@ -50,6 +50,8 @@ public class VideoMaterial
   private int arParticleType;
   private Audio2Text audio2Text;
   private GameParams audio3DParams;
+  private double autoBrightnessStrength = 1.0D;
+  private double autoContrastStrength = 1.0D;
   private double blendAlpha;
   private int blendMode;
   private BlurEffectItem blurEffectItem;
@@ -59,6 +61,7 @@ public class VideoMaterial
   private int cosmeticChangeMode;
   private int cosmeticChangeSwitch;
   private int cosmeticShelterSwitchClose;
+  private List<CustomFilterItem> customCosFunInnerFilterGroupList = new ArrayList();
   private List<CustomFilterItem> customFilterGroupList = new ArrayList();
   private List<CustomFilterItem> customFilterList = new ArrayList();
   private String dataPath;
@@ -72,6 +75,7 @@ public class VideoMaterial
   private HashMap<String, Object> extAttributes = new HashMap();
   private FabbyParts fabbyParts;
   private List<FaceBeautyItem> faceBeautyItemList;
+  private double faceColorStrength = 1.0D;
   private FaceCropItem faceCropItem;
   private int faceDetectType;
   private String faceExchangeImage;
@@ -132,6 +136,7 @@ public class VideoMaterial
   private String lipsLutStyleMaskPath;
   private int lipsSegType;
   private boolean loadImageFromCache = true;
+  private double lowlightAdjustStrength = 1.0D;
   public BigAnimationParam mBigHeadParam;
   private List<VideoMaterial.DIYMaterialParams> mDIYMaterialParamsList = new ArrayList();
   private String mDiyItemId;
@@ -357,6 +362,11 @@ public class VideoMaterial
   public int getCosmeticShelterSwitchClose()
   {
     return this.cosmeticShelterSwitchClose;
+  }
+  
+  public List<CustomFilterItem> getCustomCosFunInnerFilterGroupList()
+  {
+    return this.customCosFunInnerFilterGroupList;
   }
   
   public List<CustomFilterItem> getCustomFilterGroupList()
@@ -1275,6 +1285,11 @@ public class VideoMaterial
   public void setCosmeticShelterSwitchClose(int paramInt)
   {
     this.cosmeticShelterSwitchClose = paramInt;
+  }
+  
+  public void setCustomCosFunInnerFilterGroupList(List<CustomFilterItem> paramList)
+  {
+    this.customCosFunInnerFilterGroupList = paramList;
   }
   
   public void setCustomFilterGroupList(ArrayList<CustomFilterItem> paramArrayList)

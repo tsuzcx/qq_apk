@@ -1,19 +1,18 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
-public class akjt
-  extends akhu
+class akjt
+  implements View.OnTouchListener
 {
-  akjt(NewPhotoListActivity paramNewPhotoListActivity)
-  {
-    super(paramNewPhotoListActivity);
-  }
+  akjt(akjn paramakjn) {}
   
-  public void initData(Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.initData(paramIntent);
-    ((akib)this.mOtherCommonData).a = 6291456;
-    paramIntent.putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", true);
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

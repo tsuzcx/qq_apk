@@ -18,7 +18,7 @@ class PermisionPrivacyActivity$7$1
     }
     if (this.jdField_a_of_type_Int > 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$7.this$0.c.setRightText(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$7.this$0.getString(2131698245, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+      this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$7.this$0.c.setRightText(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$7.this$0.getString(2131698347, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$7.this$0.c.setRightText("");

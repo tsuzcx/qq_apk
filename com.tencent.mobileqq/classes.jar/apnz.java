@@ -1,12 +1,10 @@
-import java.io.File;
-import java.io.FileFilter;
-
-public final class apnz
-  implements FileFilter
+public class apnz
 {
-  public boolean accept(File paramFile)
+  public int a = 3000;
+  
+  public String toString()
   {
-    return (paramFile.getName().startsWith("hc_")) || (paramFile.getName().startsWith(".hc_"));
+    return "ARCloudReqMarkerInfo{timeout = " + this.a + '}';
   }
 }
 

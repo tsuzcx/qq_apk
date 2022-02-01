@@ -1,318 +1,433 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Intent;
+import android.os.SystemClock;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.extendfriend.ExtendFriendResourceDownloader.4;
+import com.tencent.mobileqq.emosm.emosearch.EmotionSearchItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.hotpicmsg.HotPicMsg.GetImgInfoReq;
+import com.tencent.pb.hotpicmsg.HotPicMsg.GetImgInfoRsp;
+import com.tencent.pb.hotpicmsg.HotPicMsg.ImgInfo;
+import com.tencent.pb.hotpicmsg.HotPicMsg.ReqBody;
+import com.tencent.pb.hotpicmsg.HotPicMsg.RspBody;
+import com.tencent.pb.hotpicmsg.HotPicMsg.ThirdPartyInfo;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import mqq.os.MqqHandler;
+import java.util.List;
+import mqq.app.NewIntent;
+import mqq.manager.Manager;
+import mqq.util.WeakReference;
 
 public class asgg
+  implements Manager
 {
-  private asgl jdField_a_of_type_Asgl;
-  private beaw jdField_a_of_type_Beaw;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, asge> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
-  private String b;
+  volatile asgi jdField_a_of_type_Asgi;
+  asgj jdField_a_of_type_Asgj;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  List<EmotionSearchItem> jdField_a_of_type_JavaUtilList = new ArrayList();
+  WeakReference<asgh> jdField_a_of_type_MqqUtilWeakReference;
+  volatile asgi b;
   
   public asgg(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_Beaw = ((beaw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193));
-    }
   }
   
-  public static String a()
+  public static asgg a(QQAppInterface paramQQAppInterface)
   {
-    return String.format("%s/res", new Object[] { b() });
+    return (asgg)paramQQAppInterface.getManager(367);
   }
   
-  private String a(String paramString)
+  private void a(asgh paramasgh)
   {
-    return String.format("%s/%s.zip", new Object[] { b(), paramString });
-  }
-  
-  private void a(String paramString)
-  {
-    paramString = new File(paramString);
-    if (paramString.exists()) {
-      paramString.delete();
-    }
-  }
-  
-  private boolean a(asge paramasge)
-  {
-    boolean bool3 = false;
-    boolean bool2 = false;
-    boolean bool1 = bool3;
-    if (paramasge != null)
-    {
-      bool1 = bool3;
-      if (paramasge.a()) {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-      }
-    }
-    try
-    {
-      bool3 = this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramasge.jdField_a_of_type_JavaLangString);
-      bool1 = bool2;
-      if (bool3) {
-        bool1 = true;
-      }
-      return bool1;
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
-  }
-  
-  private boolean a(String paramString1, String paramString2)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (new File(paramString1).exists())
-    {
-      paramString1 = azby.a(paramString1);
-      bool1 = bool2;
-      if (paramString2 != null)
-      {
-        bool1 = bool2;
-        if (paramString2.equalsIgnoreCase(paramString1)) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  private static String b()
-  {
-    Object localObject1 = null;
-    Object localObject2 = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject2 != null)
-    {
-      localObject2 = ((File)localObject2).getAbsolutePath() + "/pddata/prd/ef_res";
-      File localFile = new File((String)localObject2);
-      localObject1 = localObject2;
-      if (!localFile.exists())
-      {
-        localFile.mkdirs();
-        localObject1 = localObject2;
-      }
-    }
-    return localObject1;
-  }
-  
-  private void b(asge paramasge)
-  {
-    c(paramasge);
-    ThreadManager.getSubThreadHandler().post(new ExtendFriendResourceDownloader.4(this, paramasge));
-  }
-  
-  private boolean b()
-  {
-    boolean bool = false;
-    if (!TextUtils.isEmpty(this.b)) {
-      bool = a(a(this.b), this.b);
-    }
-    return bool;
-  }
-  
-  private boolean b(asge paramasge)
-  {
-    return (paramasge != null) && (paramasge.a()) && (aslb.a.contains(paramasge.jdField_a_of_type_JavaLangString));
-  }
-  
-  private boolean b(String paramString1, String paramString2)
-  {
-    try
-    {
-      aovr.a(paramString1, paramString2);
-      return true;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("ExtendFriendResourceDownloader", 1, "unzipResource fail.", paramString1);
-    }
-    return false;
-  }
-  
-  private void c(asge paramasge)
-  {
-    if ((paramasge != null) && (paramasge.a())) {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    }
-    try
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramasge.jdField_a_of_type_JavaLangString, paramasge);
+    if (paramasgh == null) {
       return;
     }
-    finally
+    int i;
+    if (paramasgh.jdField_a_of_type_Asgi == null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
-  }
-  
-  private boolean c()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(this.b))
-    {
-      bool1 = bool2;
-      if (asmk.a()) {
-        bool1 = true;
+      i = 0;
+      label14:
+      if (paramasgh.jdField_a_of_type_Asgi != null) {
+        break label63;
       }
     }
-    return bool1;
+    label63:
+    for (String str = "";; str = paramasgh.jdField_a_of_type_Asgi.jdField_a_of_type_JavaLangString)
+    {
+      a(paramasgh.jdField_a_of_type_Int, i, str);
+      if (this.jdField_a_of_type_Asgj == null) {
+        break;
+      }
+      this.jdField_a_of_type_Asgj.a(paramasgh);
+      return;
+      i = paramasgh.jdField_a_of_type_Asgi.jdField_a_of_type_Int;
+      break label14;
+    }
   }
   
-  private void d(asge paramasge)
+  private void a(asgi paramasgi, List<EmotionSearchItem> arg2, int paramInt)
   {
-    if ((paramasge != null) && (paramasge.a())) {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    }
-    try
+    if (!paramasgi.a(this.b))
     {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramasge.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.e("EmotionSearchManager", 2, "handleResponsData requestTask not current error, requestTask = " + paramasgi.jdField_a_of_type_Int + "|" + paramasgi.jdField_a_of_type_JavaLangString);
+      }
       return;
     }
-    finally
+    asgh localasgh = new asgh(paramInt);
+    paramasgi.jdField_a_of_type_Boolean = false;
+    if ((paramInt == 0) && (???.size() > 0) && (this.jdField_a_of_type_JavaUtilList.size() == ((EmotionSearchItem)???.get(0)).picIndex))
     {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      this.jdField_a_of_type_JavaUtilList.addAll(???);
+      paramasgi.jdField_a_of_type_Boolean = true;
+    }
+    localasgh.jdField_a_of_type_Asgi = paramasgi;
+    localasgh.jdField_a_of_type_JavaUtilList = new ArrayList();
+    localasgh.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_Asgi = this.b;
+      this.b = null;
+      if ((paramasgi.jdField_a_of_type_Int == 0) && (paramInt == 0)) {
+        this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(localasgh);
+      }
+      a(localasgh);
+      return;
+    }
+  }
+  
+  private void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionSearchManager", 2, "requestData start");
+    }
+    Object localObject1 = this.b;
+    if (localObject1 == null)
+    {
+      QLog.e("EmotionSearchManager", 2, "requestData currentSearchingTask is null");
+      return;
+    }
+    int i = ((asgi)localObject1).b;
+    int j = ((asgi)localObject1).b;
+    int k = ((asgi)localObject1).c;
+    Object localObject2 = new HotPicMsg.ReqBody();
+    Object localObject3 = new HotPicMsg.GetImgInfoReq();
+    ((HotPicMsg.ReqBody)localObject2).setHasFlag(true);
+    ((HotPicMsg.GetImgInfoReq)localObject3).uint64_src_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    ((HotPicMsg.GetImgInfoReq)localObject3).uint32_src_term.set(3);
+    ((HotPicMsg.GetImgInfoReq)localObject3).uint32_start_pic_index.set(i);
+    ((HotPicMsg.GetImgInfoReq)localObject3).uint32_end_pic_index.set(j + 16 - 1);
+    ((HotPicMsg.GetImgInfoReq)localObject3).uint32_build_ver.set(k);
+    if (((asgi)localObject1).jdField_a_of_type_Int == 1)
+    {
+      ((HotPicMsg.GetImgInfoReq)localObject3).uint32_search_req.set(1);
+      ((HotPicMsg.GetImgInfoReq)localObject3).str_search_word.set(((asgi)localObject1).jdField_a_of_type_JavaLangString);
+      ((HotPicMsg.GetImgInfoReq)localObject3).bytes_client_ver.set(ByteStringMicro.copyFromUtf8("8.4.5"));
+      ((HotPicMsg.GetImgInfoReq)localObject3).uint32_need_update.set(0);
+      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + SystemClock.uptimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("EmotionSearchManager", 2, "sessionId:" + str);
+      }
+      ((HotPicMsg.GetImgInfoReq)localObject3).bytes_session_id.set(ByteStringMicro.copyFromUtf8(str));
+      ((HotPicMsg.ReqBody)localObject2).msg_get_imginfo_req.set((MessageMicro)localObject3);
+      localObject2 = ((HotPicMsg.ReqBody)localObject2).toByteArray();
+      localObject3 = ByteBuffer.allocate(localObject2.length + 4);
+      ((ByteBuffer)localObject3).putInt(localObject2.length + 4).put((byte[])localObject2);
+      localObject3 = ((ByteBuffer)localObject3).array();
+      localObject2 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), avuk.class);
+      ((NewIntent)localObject2).putExtra("key_body", (byte[])localObject3);
+      ((NewIntent)localObject2).putExtra("key_cmd", "ImagePopular.GetInfo");
+      ((NewIntent)localObject2).putExtra("isFrom_EmoSearch", true);
+      ((NewIntent)localObject2).putExtra("EmoSearch_reqType", ((asgi)localObject1).jdField_a_of_type_Int);
+      if (((asgi)localObject1).jdField_a_of_type_JavaLangString != null) {
+        break label422;
+      }
+    }
+    label422:
+    for (localObject1 = "";; localObject1 = ((asgi)localObject1).jdField_a_of_type_JavaLangString)
+    {
+      ((NewIntent)localObject2).putExtra("EmoSearch_reqKeywords", (String)localObject1);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject2);
+      return;
+      ((HotPicMsg.GetImgInfoReq)localObject3).uint32_pic_tag.set(2);
+      break;
     }
   }
   
   public void a()
   {
-    int i = 1;
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b))) {
-      QLog.e("ExtendFriendResourceDownloader", 1, "downloadResource invalid parameters.");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendResourceDownloader", 2, String.format("checkResourceReady download=%s unzipped=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
-    }
-    Object localObject1 = a(this.b);
-    if (!a((String)localObject1, this.b))
+    if (this.b != null)
     {
-      a((String)localObject1);
-      if (this.jdField_a_of_type_Beaw != null)
-      {
-        localObject2 = new bdvs();
-        ((bdvs)localObject2).jdField_a_of_type_Bdvw = new asgh(this);
-        ((bdvs)localObject2).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-        ((bdvs)localObject2).jdField_a_of_type_Int = 0;
-        ((bdvs)localObject2).c = ((String)localObject1);
-        ((bdvs)localObject2).d = 0;
-        ((bdvs)localObject2).jdField_a_of_type_Bdvv = new asgi(this);
-        localObject2 = new beau(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, new asgj(this), (bdvs)localObject2);
-        this.jdField_a_of_type_Beaw.a(10073, "prd", this.b, 0, this.jdField_a_of_type_JavaLangString, (String)localObject1, 2, 0, false, (beat)localObject2);
-      }
-    }
-    while (c())
-    {
-      Object localObject2;
+      a(new asgh(-103));
       return;
     }
-    boolean bool3 = b((String)localObject1, a());
-    boolean bool2 = c();
+    if (this.jdField_a_of_type_Asgi == null)
+    {
+      a(new asgh(-102));
+      return;
+    }
+    if (!this.jdField_a_of_type_Asgi.jdField_a_of_type_Boolean)
+    {
+      a(new asgh(-104));
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.b = this.jdField_a_of_type_Asgi;
+      this.b.b = this.jdField_a_of_type_JavaUtilList.size();
+      c();
+      return;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendResourceDownloader", 2, String.format("downloadResource unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool2) }));
+      QLog.d("EmotionSearchManager", 2, "reportEmoSearchMonitor result: " + paramInt1);
     }
-    boolean bool1;
-    if (this.jdField_a_of_type_Asgl != null)
+    HashMap localHashMap = new HashMap();
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    localHashMap.put("keywords", str);
+    localHashMap.put("searchType", paramInt2 + "");
+    localHashMap.put("result", paramInt1 + "");
+    paramString = bdmc.a(BaseApplication.getContext());
+    if (paramInt1 == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      localObject1 = this.jdField_a_of_type_Asgl;
-      if ((bool3) && (bool2))
+      paramString.a(null, "emo_search_monitor", bool, 0L, 0L, localHashMap, null);
+      return;
+    }
+  }
+  
+  public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    int j = 0;
+    int i;
+    asgi localasgi;
+    try
+    {
+      i = paramIntent.getIntExtra("EmoSearch_reqType", 0);
+      paramIntent = paramIntent.getStringExtra("EmoSearch_reqKeywords");
+      localasgi = this.b;
+      if (localasgi == null) {
+        QLog.e("EmotionSearchManager", 2, "handleResonpse currentSearchingTask is null");
+      }
+      for (;;)
       {
-        bool1 = true;
-        ((asgl)localObject1).a(bool1);
+        return;
+        if (localasgi.a(i, paramIntent)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("EmotionSearchManager", 2, "handleResonpse resp not current task current");
+        }
       }
+      localArrayList = new ArrayList();
     }
-    else
+    finally {}
+    ArrayList localArrayList;
+    int k = -100;
+    if (paramFromServiceMsg.getResultCode() == 1000)
     {
-      localObject1 = asmj.a();
-      if ((!bool3) || (!bool2)) {
-        break label347;
-      }
-      bool1 = true;
-      label330:
-      if (bool2) {
-        break label352;
-      }
+      i = paramFromServiceMsg.getWupBuffer().length - 4;
+      paramIntent = new byte[i];
+      bhvd.a(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      paramFromServiceMsg.putWupBuffer(paramIntent);
     }
     for (;;)
     {
-      ((asmj)localObject1).b(bool1, i);
-      return;
-      bool1 = false;
-      break;
-      label347:
-      bool1 = false;
-      break label330;
-      label352:
-      i = 0;
+      for (;;)
+      {
+        try
+        {
+          paramIntent = paramFromServiceMsg.getWupBuffer();
+          paramFromServiceMsg = new HotPicMsg.RspBody();
+          paramFromServiceMsg.mergeFrom(paramIntent);
+          paramFromServiceMsg = (HotPicMsg.GetImgInfoRsp)paramFromServiceMsg.msg_get_imginfo_rsp.get();
+          if ((paramFromServiceMsg != null) && ((paramFromServiceMsg.int32_result.get() == 0) || (paramFromServiceMsg.int32_result.get() == -5)))
+          {
+            k = paramFromServiceMsg.uint32_build_ver.get();
+            paramIntent = new ArrayList();
+            paramFromServiceMsg = paramFromServiceMsg.rpt_msg_img_info.get();
+            if ((paramFromServiceMsg != null) && (paramFromServiceMsg.size() > 0))
+            {
+              i = 0;
+              if (i < paramFromServiceMsg.size())
+              {
+                Object localObject = (HotPicMsg.ImgInfo)paramFromServiceMsg.get(i);
+                EmotionSearchItem localEmotionSearchItem = new EmotionSearchItem();
+                localEmotionSearchItem.version = k;
+                localEmotionSearchItem.picIndex = ((HotPicMsg.ImgInfo)localObject).uint32_pic_index.get();
+                localEmotionSearchItem.fileType = ((HotPicMsg.ImgInfo)localObject).uint32_file_type.get();
+                localEmotionSearchItem.sourceType = ((HotPicMsg.ImgInfo)localObject).uint32_source_type.get();
+                localEmotionSearchItem.height = ((HotPicMsg.ImgInfo)localObject).uint32_thumb_file_height.get();
+                localEmotionSearchItem.width = ((HotPicMsg.ImgInfo)localObject).uint32_thumb_file_width.get();
+                localEmotionSearchItem.url = ((HotPicMsg.ImgInfo)localObject).bytes_thumb_down_url.get().toStringUtf8();
+                localEmotionSearchItem.md5 = ((HotPicMsg.ImgInfo)localObject).bytes_thumb_file_md5.get().toStringUtf8().toUpperCase();
+                localEmotionSearchItem.fileSize = ((HotPicMsg.ImgInfo)localObject).uint64_thumb_file_size.get();
+                localEmotionSearchItem.originalMD5 = ((HotPicMsg.ImgInfo)localObject).bytes_file_md5.get().toStringUtf8().toUpperCase();
+                localEmotionSearchItem.originalUrl = ((HotPicMsg.ImgInfo)localObject).bytes_pic_down_url.get().toStringUtf8();
+                localEmotionSearchItem.originalHeight = ((HotPicMsg.ImgInfo)localObject).uint32_file_height.get();
+                localEmotionSearchItem.originalWidth = ((HotPicMsg.ImgInfo)localObject).uint32_file_width.get();
+                localEmotionSearchItem.oringinalSize = ((HotPicMsg.ImgInfo)localObject).uint64_file_size.get();
+                if (localEmotionSearchItem.sourceType == 3)
+                {
+                  localObject = ((HotPicMsg.ImgInfo)localObject).msg_third_party_info;
+                  localEmotionSearchItem.iconUrl = ((HotPicMsg.ThirdPartyInfo)localObject).bytes_icon_url.get().toStringUtf8();
+                  localEmotionSearchItem.name = ((HotPicMsg.ThirdPartyInfo)localObject).bytes_name.get().toStringUtf8();
+                  localEmotionSearchItem.jumpUrl = ((HotPicMsg.ThirdPartyInfo)localObject).bytes_jump_url.get().toStringUtf8();
+                  localEmotionSearchItem.appid = ((HotPicMsg.ThirdPartyInfo)localObject).bytes_appid.get().toStringUtf8();
+                }
+                paramIntent.add(localEmotionSearchItem);
+                i += 1;
+                continue;
+              }
+            }
+            localArrayList.addAll(paramIntent);
+            i = j;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramIntent)
+        {
+          i = -100;
+        }
+        try
+        {
+          if (QLog.isColorLevel())
+          {
+            i = j;
+            QLog.d("EmotionSearchManager", 2, "handleResonpse,REQ_GET_PIC success,size:" + localArrayList.size());
+          }
+          i = 0;
+          a(localasgi, localArrayList, i);
+        }
+        catch (InvalidProtocolBufferMicroException paramIntent)
+        {
+          label670:
+          break label670;
+        }
+      }
+      j = paramFromServiceMsg.int32_result.get();
+      i = j;
+      if (QLog.isColorLevel())
+      {
+        i = j;
+        QLog.d("EmotionSearchManager", 2, "handleResonpse,REQ_GET_PIC error,result:" + paramFromServiceMsg.int32_result.get());
+      }
+      i = j;
+      continue;
+      paramIntent.printStackTrace();
+      continue;
+      i = k;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("EmotionSearchManager", 2, "handleResonpse,msg.getResultCode() error:" + paramFromServiceMsg.getResultCode());
+        i = k;
+      }
     }
   }
   
-  public void a(asge paramasge)
+  public void a(asgi arg1)
   {
-    if (paramasge == null)
-    {
-      QLog.e("ExtendFriendResourceDownloader", 2, "Limitchatres resInfo is null");
+    if (??? == null) {
       return;
     }
-    if (!paramasge.a())
+    if (QLog.isColorLevel()) {
+      if ("pushEmotionSearchTask start task = " + ???.jdField_a_of_type_Int + "|" + ???.jdField_a_of_type_JavaLangString != null) {
+        break label106;
+      }
+    }
+    label106:
+    for (??? = "";; ??? = ???.jdField_a_of_type_JavaLangString)
     {
-      QLog.e("ExtendFriendResourceDownloader", 2, "Limitchatres resInfo is not effect");
+      QLog.d("EmotionSearchManager", 2, (String)???);
+      if (!???.a(this.b)) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("EmotionSearchManager", 2, "pushEmotionSearchTask isSame task");
+      }
+      ??? = new asgh(-101);
+      ((asgh)???).jdField_a_of_type_Asgi = ???;
+      a((asgh)???);
       return;
     }
-    if (!a(paramasge))
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      b(paramasge);
-      return;
+      this.b = ???;
+      this.jdField_a_of_type_JavaUtilList.clear();
+      if (???.jdField_a_of_type_Int != 0) {
+        break label228;
+      }
+      if (this.jdField_a_of_type_MqqUtilWeakReference == null) {
+        break label223;
+      }
+      ??? = (asgh)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      if (??? == null) {
+        break label223;
+      }
     }
-    QLog.i("ExtendFriendResourceDownloader", 2, "Limitchatres is downloading" + paramasge.jdField_a_of_type_JavaLangString);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilList.addAll(((asgh)???).jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Asgi = this.b;
+      this.b = null;
+      a(true);
+      a((asgh)???);
+      return;
+      ??? = finally;
+      throw ???;
+    }
+    label223:
+    a(false);
+    label228:
+    c();
   }
   
-  public void a(asgl paramasgl)
+  public void a(asgj paramasgj)
   {
-    this.jdField_a_of_type_Asgl = paramasgl;
+    this.jdField_a_of_type_Asgj = paramasgj;
   }
   
-  public void a(String paramString1, String paramString2)
+  public void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendResourceDownloader", 2, String.format("setDownloadInfo url=%s md5=%s", new Object[] { paramString1, paramString2 }));
+      QLog.d("EmotionSearchManager", 2, "reportEmoSearchCatchUseMonitor isUse: " + paramBoolean);
     }
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public boolean a()
-  {
-    boolean bool1 = b();
-    boolean bool2 = c();
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendResourceDownloader", 2, String.format("checkResourceReady download=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-    }
-    return (bool1) && (bool2);
+    bdmc.a(BaseApplication.getContext()).a(null, "emo_search_catch_use_monitor", paramBoolean, 0L, 0L, null, null);
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Beaw != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_Beaw.a(this.jdField_a_of_type_JavaLangString);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_Asgi = null;
+      this.b = null;
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_Asgj = null;
+      return;
     }
+  }
+  
+  public void onDestroy()
+  {
+    b();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 

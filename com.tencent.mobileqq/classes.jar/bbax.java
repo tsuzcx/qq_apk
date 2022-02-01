@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
-
-public class bbax
-  implements DialogInterface.OnClickListener
+public abstract interface bbax
 {
-  public bbax(SignatureEditFragment paramSignatureEditFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract boolean a(bbba parambbba);
 }
 
 

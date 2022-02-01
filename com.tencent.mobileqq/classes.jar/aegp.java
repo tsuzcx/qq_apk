@@ -1,37 +1,79 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.widget.AbsListView;
-import java.util.Iterator;
-import java.util.List;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class aegp
-  implements bkhe
+  extends anua
 {
-  public aegp(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aegp(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    if (FriendProfileCardActivity.a(this.a) != null)
+    if ((paramInt2 != 0) && (TextUtils.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, paramString1)))
     {
-      Iterator localIterator = FriendProfileCardActivity.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((bkhe)localIterator.next()).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      if ((!this.a.isFinishing()) && (this.a.isResume()))
+      {
+        paramString1 = paramString2;
+        if (TextUtils.isEmpty(paramString2)) {
+          paramString1 = this.a.getResources().getString(2131694174);
+        }
+        QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
       }
+      ChatSettingForTroop.m(this.a);
     }
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    if (paramInt == 0) {
-      adcd.a().a("vas_profilecard_list", false);
-    }
-    while (FriendProfileCardActivity.a(this.a) != null)
+    boolean bool = true;
+    super.a(paramBoolean, paramString1, paramString2, paramString3, paramInt);
+    if (TextUtils.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, paramString1))
     {
-      Iterator localIterator = FriendProfileCardActivity.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((bkhe)localIterator.next()).onScrollStateChanged(paramAbsListView, paramInt);
+      this.a.p();
+      if (!paramBoolean) {
+        break label171;
       }
-      adcd.a().a("vas_profilecard_list");
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopName = true;
+      this.a.a(paramString2);
+      if ((this.a.isResume()) && (this.a.e))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop = false;
+        bguq.a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, this.a, new aegq(this));
+        this.a.e = false;
+      }
+      paramString1 = this.a;
+      if ((this.a.d) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop)) {
+        break label166;
+      }
+      paramBoolean = bool;
+      ChatSettingForTroop.b(paramString1, paramBoolean);
     }
+    label166:
+    label171:
+    do
+    {
+      return;
+      paramBoolean = false;
+      break;
+      if (paramInt == 1328) {
+        ChatSettingForTroop.n(this.a);
+      }
+      paramString1 = paramString3;
+      if (TextUtils.isEmpty(paramString3)) {
+        paramString1 = anzj.a(2131700658);
+      }
+      QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopName = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.getTroopName();
+        this.a.e();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.chatopttroop", 2, paramString1);
   }
 }
 

@@ -1,575 +1,82 @@
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import android.graphics.Bitmap;
+import android.opengl.GLES20;
+import android.opengl.GLUtils;
+import android.support.annotation.Nullable;
 
 public class bblk
-  extends bbmu
 {
-  private long a;
-  protected TroopInfo a;
-  protected CharSequence a;
-  public String a;
-  protected List<bblm> a;
-  protected Set<bblm> a;
-  private long b;
-  protected String b;
-  protected List<String> b;
-  protected List<String> c;
-  
-  public bblk(QQAppInterface paramQQAppInterface, int paramInt, String paramString, List<bblm> paramList)
+  public static int a(int paramInt)
   {
-    super(paramQQAppInterface, paramInt, 0L);
-    this.jdField_b_of_type_Long = bbgl.T;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = ((TroopManager)paramQQAppInterface.getManager(52)).c(this.jdField_a_of_type_JavaLangString);
-    if (paramQQAppInterface.a().a().isUinInRecent(paramString))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop()) {
-        this.jdField_b_of_type_Long = bbgl.K;
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_b_of_type_Long = bbgl.U;
+    return a(paramInt, null, 9729, 9729, 33071, 33071);
   }
   
-  private long a(aong paramaong, String paramString1, long paramLong, String paramString2)
+  public static int a(int paramInt, Bitmap paramBitmap)
   {
-    boolean bool = true;
-    switch (SearchConfigManager.sReduceDiscussionWeight)
-    {
-    default: 
-      return bbup.a(paramString2, paramString1, paramLong, false, false, true);
-    case 0: 
-    case 1: 
-      if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop()) {
-        bool = false;
-      }
-      return bbup.a(paramString2, paramString1, paramLong, false, false, bool);
-    }
-    if (paramaong.isUinInRecent(this.jdField_a_of_type_JavaLangString)) {
-      return bbup.a(paramString2, paramString1, paramLong, false, false, false);
-    }
-    return bbup.a(paramString2, paramString1, paramLong, false, false, true);
+    return a(paramInt, paramBitmap, 9729, 9729, 33071, 33071);
   }
   
-  private long a(List<List<bbll>> paramList)
+  public static int a(int paramInt1, @Nullable Bitmap paramBitmap, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    long[] arrayOfLong = new long[paramList.size()];
-    HashMap localHashMap1 = new HashMap();
-    HashMap localHashMap2 = new HashMap();
-    int[] arrayOfInt = new int[paramList.size()];
-    HashMap localHashMap3 = new HashMap();
-    int i = 0;
-    int j;
-    Object localObject;
-    long l2;
-    while (i < paramList.size())
-    {
-      l1 = -9223372036854775808L;
-      j = 0;
-      while (j < ((List)paramList.get(i)).size())
-      {
-        localObject = ((bbll)((List)paramList.get(i)).get(j)).jdField_a_of_type_Bblm;
-        if (!localHashMap3.containsKey(localObject))
-        {
-          localHashMap3.put(localObject, Integer.valueOf(-1));
-          localHashMap1.put(localObject, Long.valueOf(0L));
-        }
-        l2 = l1;
-        if (((bbll)((List)paramList.get(i)).get(j)).jdField_a_of_type_Long > l1) {
-          l2 = ((bbll)((List)paramList.get(i)).get(j)).jdField_a_of_type_Long;
-        }
-        j += 1;
-        l1 = l2;
-      }
-      arrayOfLong[i] = l1;
-      i += 1;
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenTextures(1, arrayOfInt, 0);
+    a("glGenTextures");
+    GLES20.glBindTexture(paramInt1, arrayOfInt[0]);
+    a("glBindTexture " + arrayOfInt[0]);
+    GLES20.glTexParameterf(paramInt1, 10241, paramInt2);
+    GLES20.glTexParameterf(paramInt1, 10240, paramInt3);
+    GLES20.glTexParameteri(paramInt1, 10242, paramInt4);
+    GLES20.glTexParameteri(paramInt1, 10243, paramInt5);
+    if (paramBitmap != null) {
+      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
     }
-    i = 0;
-    while (i < paramList.size())
-    {
-      localObject = new boolean[paramList.size()];
-      Arrays.fill((boolean[])localObject, false);
-      HashSet localHashSet = new HashSet();
-      Iterator localIterator = localHashMap1.keySet().iterator();
-      while (localIterator.hasNext()) {
-        localHashMap2.put((bblm)localIterator.next(), Long.valueOf(9223372036854775807L));
-      }
-      for (;;)
-      {
-        localHashSet.clear();
-        Arrays.fill((boolean[])localObject, false);
-        if (a(i, paramList, arrayOfLong, localHashMap1, arrayOfInt, localHashMap3, (boolean[])localObject, localHashSet, localHashMap2)) {
-          break;
-        }
-        l1 = 9223372036854775807L;
-        localIterator = localHashMap2.keySet().iterator();
-        bblm localbblm;
-        while (localIterator.hasNext())
-        {
-          localbblm = (bblm)localIterator.next();
-          if (!localHashSet.contains(localbblm))
-          {
-            l2 = ((Long)localHashMap2.get(localbblm)).longValue();
-            if (l2 < l1) {
-              l1 = l2;
-            }
-          }
-        }
-        if ((l1 == 9223372036854775807L) || (l1 == 0L))
-        {
-          l2 = -9223372036854775808L;
-          return l2;
-        }
-        j = 0;
-        if (j <= i)
-        {
-          if (localObject[j] == 0) {}
-          for (;;)
-          {
-            j += 1;
-            break;
-            arrayOfLong[j] -= l1;
-          }
-        }
-        localIterator = localHashMap1.keySet().iterator();
-        while (localIterator.hasNext())
-        {
-          localbblm = (bblm)localIterator.next();
-          if (!localHashSet.contains(localbblm)) {
-            localHashMap2.put(localbblm, Long.valueOf(((Long)localHashMap2.get(localbblm)).longValue() - l1));
-          } else {
-            localHashMap1.put(localbblm, Long.valueOf(((Long)localHashMap1.get(localbblm)).longValue() + l1));
-          }
-        }
-      }
-      i += 1;
+    a("glTexParameter");
+    return arrayOfInt[0];
+  }
+  
+  public static void a(int paramInt)
+  {
+    a(paramInt, null);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, @Nullable Bitmap paramBitmap, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    GLES20.glBindTexture(paramInt2, paramInt1);
+    a("glBindTexture " + paramInt1);
+    GLES20.glTexParameterf(paramInt2, 10241, paramInt3);
+    GLES20.glTexParameterf(paramInt2, 10240, paramInt4);
+    GLES20.glTexParameteri(paramInt2, 10242, paramInt5);
+    GLES20.glTexParameteri(paramInt2, 10243, paramInt6);
+    if (paramBitmap != null) {
+      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
     }
-    long l1 = -9223372036854775808L;
-    i = 0;
-    for (;;)
-    {
-      l2 = l1;
-      if (i >= paramList.size()) {
-        break;
-      }
-      long l3 = ((bbll)((List)paramList.get(i)).get(arrayOfInt[i])).jdField_a_of_type_Long;
-      l2 = l1;
-      if (l3 > l1) {
-        l2 = l3;
-      }
-      this.jdField_a_of_type_JavaUtilSet.add(((bbll)((List)paramList.get(i)).get(arrayOfInt[i])).jdField_a_of_type_Bblm);
-      this.jdField_b_of_type_JavaUtilList.add(((bbll)((List)paramList.get(i)).get(arrayOfInt[i])).jdField_a_of_type_JavaLangString);
-      i += 1;
-      l1 = l2;
+    a("glTexParameter");
+  }
+  
+  public static void a(int paramInt, @Nullable Bitmap paramBitmap)
+  {
+    a(paramInt, 3553, paramBitmap, 9729, 9729, 33071, 33071);
+  }
+  
+  public static void a(String paramString)
+  {
+    int i = GLES20.glGetError();
+    if (i != 0) {
+      yuk.e("FlowEdit_GlUtil", paramString + ": glError 0x" + Integer.toHexString(i));
     }
   }
   
-  static boolean a(int paramInt, List<List<bbll>> paramList, long[] paramArrayOfLong, Map<bblm, Long> paramMap1, int[] paramArrayOfInt, Map<bblm, Integer> paramMap, boolean[] paramArrayOfBoolean, Set<bblm> paramSet, Map<bblm, Long> paramMap2)
+  public static int[] a(int paramInt)
   {
-    paramArrayOfBoolean[paramInt] = true;
-    int i = 0;
-    if (i < ((List)paramList.get(paramInt)).size())
-    {
-      bblm localbblm = ((bbll)((List)paramList.get(paramInt)).get(i)).jdField_a_of_type_Bblm;
-      if (paramSet.contains(localbblm)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        long l = paramArrayOfLong[paramInt] + ((Long)paramMap1.get(localbblm)).longValue() - ((bbll)((List)paramList.get(paramInt)).get(i)).jdField_a_of_type_Long;
-        if (l == 0L)
-        {
-          paramSet.add(localbblm);
-          int j = ((Integer)paramMap.get(localbblm)).intValue();
-          if ((j == -1) || (a(j, paramList, paramArrayOfLong, paramMap1, paramArrayOfInt, paramMap, paramArrayOfBoolean, paramSet, paramMap2)))
-          {
-            paramMap.put(localbblm, Integer.valueOf(paramInt));
-            paramArrayOfInt[paramInt] = i;
-            return true;
-          }
-        }
-        else if (l < ((Long)paramMap2.get(localbblm)).longValue())
-        {
-          paramMap2.put(localbblm, Long.valueOf(l));
-        }
-      }
-    }
-    return false;
+    int[] arrayOfInt = new int[paramInt];
+    GLES20.glGenTextures(paramInt, arrayOfInt, 0);
+    a("glGenTextures");
+    return arrayOfInt;
   }
   
-  private Object[] a(bblm parambblm, String paramString)
+  public static void b(int paramInt)
   {
-    aong localaong = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-    long l2 = -9223372036854775808L;
-    long l1;
-    String str;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop())
-    {
-      l1 = bbgl.i;
-      l1 = a(localaong, parambblm.c, l1, paramString);
-      if (l1 <= -9223372036854775808L) {
-        break label193;
-      }
-      str = parambblm.c;
-      parambblm.jdField_a_of_type_Int = 66;
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop()) {}
-      for (long l3 = bbgl.h;; l3 = bbgl.l)
-      {
-        long l4 = a(localaong, parambblm.jdField_b_of_type_JavaLangString, l3, paramString);
-        l2 = l1;
-        if (l4 > l1)
-        {
-          str = parambblm.jdField_b_of_type_JavaLangString;
-          parambblm.jdField_a_of_type_Int = 88;
-          l2 = l4;
-        }
-        l3 = a(localaong, parambblm.d, l3, paramString);
-        l1 = l2;
-        if (l3 > l2)
-        {
-          str = parambblm.d;
-          parambblm.jdField_a_of_type_Int = 99;
-          l1 = l3;
-        }
-        return new Object[] { Long.valueOf(l1), str };
-        l1 = bbgl.q;
-        break;
-      }
-      label193:
-      str = null;
-      l1 = l2;
-    }
-  }
-  
-  private long c(String paramString)
-  {
-    paramString = paramString.split("\\s+");
-    if ((paramString != null) && (paramString.length >= 2))
-    {
-      ArrayList localArrayList1 = new ArrayList();
-      int i = 0;
-      while (i < paramString.length)
-      {
-        this.c.add(paramString[i]);
-        ArrayList localArrayList2 = new ArrayList();
-        localArrayList1.add(localArrayList2);
-        int j = 0;
-        while (j < this.jdField_a_of_type_JavaUtilList.size())
-        {
-          Object localObject = (bblm)this.jdField_a_of_type_JavaUtilList.get(j);
-          Object[] arrayOfObject = a((bblm)localObject, paramString[i]);
-          long l = ((Long)arrayOfObject[0]).longValue();
-          if ((((bblm)localObject).jdField_a_of_type_Long == -9223372036854775808L) || (l > ((bblm)localObject).jdField_a_of_type_Long))
-          {
-            ((bblm)localObject).jdField_a_of_type_Long = l;
-            ((bblm)localObject).jdField_b_of_type_Int = ((bblm)localObject).jdField_a_of_type_Int;
-          }
-          if (l != -9223372036854775808L)
-          {
-            localObject = new bbll();
-            ((bbll)localObject).jdField_a_of_type_Long = l;
-            ((bbll)localObject).jdField_a_of_type_JavaLangString = ((String)arrayOfObject[1]);
-            ((bbll)localObject).jdField_a_of_type_Bblm = ((bblm)this.jdField_a_of_type_JavaUtilList.get(j));
-            localArrayList2.add(localObject);
-          }
-          j += 1;
-        }
-        if (localArrayList2.isEmpty()) {
-          return -9223372036854775808L;
-        }
-        i += 1;
-      }
-      return a(localArrayList1);
-    }
-    return -9223372036854775808L;
-  }
-  
-  public long a()
-  {
-    return super.a();
-  }
-  
-  protected long a(String paramString)
-  {
-    Object localObject2 = null;
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.c = new ArrayList();
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-    int i = 0;
-    long l1 = -9223372036854775808L;
-    Object localObject1 = null;
-    Object localObject3;
-    if (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      localObject3 = a((bblm)this.jdField_a_of_type_JavaUtilList.get(i), paramString);
-      long l2 = ((Long)localObject3[0]).longValue();
-      if (l2 <= l1) {
-        break label273;
-      }
-      localObject1 = (bblm)this.jdField_a_of_type_JavaUtilList.get(i);
-      localObject2 = (String)localObject3[1];
-      l1 = l2;
-    }
-    for (;;)
-    {
-      i += 1;
-      localObject3 = localObject2;
-      localObject2 = localObject1;
-      localObject1 = localObject3;
-      break;
-      if (localObject2 != null)
-      {
-        this.jdField_a_of_type_JavaUtilSet.add(localObject2);
-        this.jdField_b_of_type_JavaUtilList.add(localObject1);
-        this.c.add(paramString);
-      }
-      if (l1 > this.jdField_a_of_type_Long) {
-        this.jdField_a_of_type_Long = l1;
-      }
-      if (this.jdField_a_of_type_Long == -9223372036854775808L)
-      {
-        l1 = c(paramString);
-        if (l1 > this.jdField_a_of_type_Long) {
-          this.jdField_a_of_type_Long = l1;
-        }
-      }
-      if (this.jdField_a_of_type_Long != -9223372036854775808L)
-      {
-        this.jdField_a_of_type_Long += this.jdField_b_of_type_Long;
-        a();
-      }
-      return this.jdField_a_of_type_Long;
-      label273:
-      localObject3 = localObject1;
-      localObject1 = localObject2;
-      localObject2 = localObject3;
-    }
-  }
-  
-  public CharSequence a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop()) && (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.hasSetTroopName())) {
-      return c();
-    }
-    return super.a();
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  protected void a()
-  {
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      localSpannableStringBuilder.append("包含: ");
-      int j = this.jdField_b_of_type_JavaUtilList.size() - 1;
-      int i = 0;
-      if (j >= 0)
-      {
-        k = 1;
-        label45:
-        if (i >= 10) {
-          break label124;
-        }
-      }
-      label124:
-      for (int m = 1;; m = 0)
-      {
-        if ((m & k) == 0) {
-          break label130;
-        }
-        localSpannableStringBuilder.append(bbup.a((String)this.jdField_b_of_type_JavaUtilList.get(j), (String)this.c.get(j), 6, false));
-        i += 1;
-        localSpannableStringBuilder.append("、");
-        j -= 1;
-        break;
-        k = 0;
-        break label45;
-      }
-      label130:
-      int k = 0;
-      j = i;
-      i = k;
-      label151:
-      label160:
-      Object localObject;
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        k = 1;
-        if (j >= 10) {
-          break label277;
-        }
-        m = 1;
-        if ((m & k) == 0) {
-          break label329;
-        }
-        localObject = (bblm)this.jdField_a_of_type_JavaUtilList.get(i);
-        k = j;
-        if (!this.jdField_a_of_type_JavaUtilSet.contains(localObject))
-        {
-          if (this.c.size() != 1) {
-            break label283;
-          }
-          m = ((bblm)localObject).jdField_a_of_type_Int;
-          label218:
-          if (m != 66) {
-            break label293;
-          }
-          localObject = ((bblm)localObject).c;
-        }
-      }
-      for (;;)
-      {
-        label232:
-        k = j;
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          k = j + 1;
-          localSpannableStringBuilder.append((CharSequence)localObject);
-          localSpannableStringBuilder.append("、");
-        }
-        label277:
-        label283:
-        label293:
-        do
-        {
-          i += 1;
-          j = k;
-          break;
-          k = 0;
-          break label151;
-          m = 0;
-          break label160;
-          m = ((bblm)localObject).jdField_b_of_type_Int;
-          break label218;
-          if (m == 88)
-          {
-            localObject = ((bblm)localObject).jdField_b_of_type_JavaLangString;
-            break label232;
-          }
-          k = j;
-        } while (m != 99);
-        localObject = ((bblm)localObject).d;
-      }
-    }
-    label329:
-    if ((localSpannableStringBuilder.length() > 0) && (localSpannableStringBuilder.charAt(localSpannableStringBuilder.length() - 1) == '、'))
-    {
-      this.jdField_a_of_type_JavaLangCharSequence = localSpannableStringBuilder.subSequence(0, localSpannableStringBuilder.length() - 1);
-      return;
-    }
-    this.jdField_a_of_type_JavaLangCharSequence = localSpannableStringBuilder;
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    if (bbup.a(this.jdField_b_of_type_Int))
-    {
-      String str = bglf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, true);
-      aldk.a = true;
-      aldk.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, 1, str, false);
-      anuq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString);
-      bbup.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a().toString(), this.jdField_a_of_type_JavaLangString, "", 1);
-      bbup.a(this.jdField_b_of_type_JavaLangString, 20, 2, paramView);
-      bbup.a(this.jdField_b_of_type_JavaLangString, 20, paramView, false);
-      bbup.a(this, paramView);
-      if (((a() instanceof String)) && (!this.jdField_b_of_type_Boolean)) {
-        bbup.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.i, (String)a(), e());
-      }
-      if ((paramView.getContext() instanceof UniteSearchActivity))
-      {
-        if ((this.i == null) || (TextUtils.isEmpty(this.i))) {
-          break label234;
-        }
-        bbrf.a(null, 0, this.jdField_b_of_type_Int, "0X8009D31", 2, 0, null, null);
-      }
-    }
-    for (;;)
-    {
-      if (SearchConfigManager.needSeparate) {
-        bbup.a("search", "group", "groups", 0, 0, new String[] { bbup.a(this.jdField_b_of_type_Int) });
-      }
-      return;
-      label234:
-      bbrf.a(null, 0, this.jdField_b_of_type_Int, "0X8009D3B", 0, 0, null, null);
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int c()
-  {
-    return 4;
-  }
-  
-  public CharSequence c()
-  {
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public String c()
-  {
-    return bglf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, true);
-  }
-  
-  public int d()
-  {
-    return 1;
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public String d()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int e()
-  {
-    return 2;
+    GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
+    a("glDeleteTextures");
   }
 }
 

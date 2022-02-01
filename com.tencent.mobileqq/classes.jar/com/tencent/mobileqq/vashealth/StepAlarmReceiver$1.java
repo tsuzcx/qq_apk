@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vashealth;
 
-import bhft;
+import bige;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class StepAlarmReceiver$1
@@ -13,7 +13,7 @@ class StepAlarmReceiver$1
     if (this.this$0.a == null) {
       return;
     }
-    ((bhft)this.this$0.a.getManager(260)).b();
+    ((bige)this.this$0.a.getManager(260)).b();
   }
 }
 

@@ -1,14 +1,20 @@
-import UserGrowth.stPublisherRsp;
-import UserGrowth.stRedDotRsp;
-
 public abstract interface ulm
-  extends uch
 {
-  public abstract void a();
+  public abstract void a(int paramInt);
   
-  public abstract void a(stPublisherRsp paramstPublisherRsp);
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  public abstract void a(stRedDotRsp paramstRedDotRsp);
+  public abstract void a(int paramInt, Object paramObject);
+  
+  public abstract void a(String paramString1, boolean paramBoolean, String paramString2);
+  
+  public abstract void a(ulc paramulc);
+  
+  public abstract void a(ulc paramulc, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(ulc paramulc);
 }
 
 

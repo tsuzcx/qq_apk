@@ -1,22 +1,43 @@
-public final class atks
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.qphone.base.util.QLog;
+
+public class atks
+  extends auoi
 {
-  private final Class jdField_a_of_type_JavaLangClass;
-  private final Object jdField_a_of_type_JavaLangObject;
+  public atks(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public atks(Object paramObject, Class paramClass)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.a.a.a().a();
   }
   
-  public Class a()
+  public void b()
   {
-    return this.jdField_a_of_type_JavaLangClass;
+    this.a.a.a().h();
   }
   
-  public Object a()
+  public void c()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    if (QLog.isColorLevel()) {
+      QLog.e(QfileBaseCloudFileTabView.b, 2, "wy saveto wy?" + aunj.a());
+    }
+  }
+  
+  public void d()
+  {
+    this.a.a.a().i();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().j();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().C();
   }
 }
 

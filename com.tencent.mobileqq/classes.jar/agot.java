@@ -1,45 +1,52 @@
-import NS_QQ_STORY_META.META.StStoryFeed;
-import NS_QQ_STORY_META.META.StUser;
-import android.os.Bundle;
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForAIOStoryVideo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.util.StStoryFeedUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.Serializable;
-import java.util.ArrayList;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
 
-class agot
-  implements View.OnClickListener
+public class agot
+  extends birg
 {
-  agot(agos paramagos, MessageForAIOStoryVideo paramMessageForAIOStoryVideo) {}
+  agot(ConfessHalfScreenActivity.ConfessBrowserFragment paramConfessBrowserFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    long l = System.currentTimeMillis();
-    Object localObject1 = (afwx)this.jdField_a_of_type_Agos.a.getManager(282);
-    if (localObject1 != null) {
-      ((afwx)localObject1).a(4, 7);
-    }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForAIOStoryVideo.mStStoryFeed;
-    if ((localObject2 != null) && (((META.StStoryFeed)localObject2).postUser != null))
+    WebView localWebView;
+    if (this.jdField_a_of_type_Bipq.a() != null)
     {
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putLong("key_launch_time", l);
-      ((Bundle)localObject1).putLong("key_current_feeduin", ((META.StStoryFeed)localObject2).postUser.uin.get());
-      ((Bundle)localObject1).putInt("key_request_from", 3);
-      ((Bundle)localObject1).putInt("key_weishi_entrance_type", 19);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(localObject2);
-      localObject2 = StStoryFeedUtil.getConvertDataList(localArrayList);
-      ((Bundle)localObject1).putInt("key_video_story_jump_position", 0);
-      ((Bundle)localObject1).putSerializable("key_video_story_tranparent_story_feed", (Serializable)localObject2);
-      ((Bundle)localObject1).putInt("key_request_business_type", 7);
-      bgmp.a((Bundle)localObject1);
+      localWebView = this.jdField_a_of_type_Bipq.a();
+      localWebView.setId(2131381325);
+      if (this.b != -1) {
+        localWebView.setBackgroundColor(this.b);
+      }
+      Object localObject = (Activity)localWebView.getContext();
+      if ((localObject instanceof ConfessHalfScreenActivity))
+      {
+        localObject = (ConfessHalfScreenActivity)localObject;
+        ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment, ConfessHalfScreenActivity.a((ConfessHalfScreenActivity)localObject));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("SwiftBrowserUIStyleHandler", 2, "initWebViewInContentView height=" + ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment));
+      }
+      if (!(this.c instanceof RelativeLayout)) {
+        break label171;
+      }
+      localObject = new RelativeLayout.LayoutParams(-1, ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment));
+      ((RelativeLayout.LayoutParams)localObject).addRule(12);
+      this.c.addView(localWebView, 0, (ViewGroup.LayoutParams)localObject);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      this.c.setOnClickListener(new agou(this));
+      return;
+      label171:
+      this.c.addView(localWebView, 0, new ViewGroup.LayoutParams(-1, ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment)));
+    }
   }
 }
 

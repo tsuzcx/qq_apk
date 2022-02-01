@@ -1,25 +1,36 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.net.Uri;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
 
-public final class adsl
+public class adsl
   implements DialogInterface.OnClickListener
 {
-  public adsl(Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
+  public adsl(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (paramInt == 1)
     {
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", this.jdField_a_of_type_AndroidAppActivity.getPackageName(), null));
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+      paramDialogInterface = new Intent(this.a, LoginActivity.class);
+      paramDialogInterface.putExtra("is_change_account", true);
+      paramDialogInterface.putExtra("if_check_account_same", true);
+      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
+      paramDialogInterface.putExtra("appid", AddFriendLogicActivity.c(this.a));
+      paramDialogInterface.putExtra("openid", AddFriendLogicActivity.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.putExtra("key_action", AddFriendLogicActivity.class.getSimpleName());
+      paramDialogInterface.addFlags(268435456);
+      paramDialogInterface.addFlags(67108864);
+      this.a.jdField_a_of_type_Bhpc.cancel();
+      this.a.startActivity(paramDialogInterface);
+      this.a.finish();
     }
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    while (paramInt != 0) {
+      return;
     }
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import akse;
+import aldq;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 final class h
-  implements akse
+  implements aldq
 {
   h(g paramg, c paramc, String paramString, g.a parama) {}
   

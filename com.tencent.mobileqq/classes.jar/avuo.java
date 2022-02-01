@@ -1,6 +1,11 @@
-class avuo
+import android.widget.TextView;
+import com.tencent.mobileqq.hotpic.HotPicTab;
+
+public class avuo
 {
-  private static avum a = new avum(null);
+  public TextView a;
+  
+  avuo(HotPicTab paramHotPicTab) {}
 }
 
 

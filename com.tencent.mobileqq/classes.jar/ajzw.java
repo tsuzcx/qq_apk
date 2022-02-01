@@ -1,304 +1,363 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.hardware.Camera.Size;
+import android.media.MediaRecorder;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.1;
+import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.2;
+import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.3;
+import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.4;
+import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.5;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class ajzw
-  extends anii
+  extends bocn
+  implements View.OnClickListener
 {
-  protected StringBuilder a;
-  Comparator<RecentBaseData> jdField_a_of_type_JavaUtilComparator = new ajzx(this);
-  private ConcurrentHashMap<Integer, ArrayList<RecentBaseData>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private MediaRecorder jdField_a_of_type_AndroidMediaMediaRecorder;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bixr jdField_a_of_type_Bixr;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new QFaceUnlockCameraCaptureUnit.1(this);
+  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private int jdField_c_of_type_Int;
+  private RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private String jdField_c_of_type_JavaLangString;
+  private int jdField_d_of_type_Int;
+  private Button jdField_d_of_type_AndroidWidgetButton;
+  private RelativeLayout jdField_d_of_type_AndroidWidgetRelativeLayout;
+  private String jdField_d_of_type_JavaLangString;
+  private int e = 155;
+  private int f = 211;
   
-  public ajzw(QQAppInterface paramQQAppInterface)
+  public ajzw(bqai parambqai, bqah parambqah)
   {
-    super(paramQQAppInterface);
+    super(parambqai, parambqah);
   }
   
-  private List<RecentBaseData> a(List<RecentUser> paramList, List<RecentBaseData> paramList1)
+  private Camera.Size a(List<Camera.Size> paramList1, List<Camera.Size> paramList2)
   {
-    int i;
-    ArrayList localArrayList;
-    int j;
-    label18:
-    Object localObject2;
-    Object localObject1;
-    int k;
-    if (paramList == null)
+    if ((paramList1 == null) || (paramList2 == null))
     {
-      i = 0;
-      localArrayList = new ArrayList();
-      j = 0;
-      if (j >= i) {
-        break label348;
-      }
-      RecentUser localRecentUser = (RecentUser)paramList.get(j);
-      Object localObject3 = albs.a(localRecentUser.uin, localRecentUser.getType());
-      localObject2 = albs.a().a((String)localObject3);
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = alan.a(localRecentUser, this.app, BaseApplicationImpl.getContext());
-        if (localObject1 != null) {
-          albs.a().a((RecentBaseData)localObject1, (String)localObject3);
-        }
-      }
-      if (localObject1 != null)
-      {
-        ((RecentBaseData)localObject1).update(this.app, BaseApplicationImpl.getContext());
-        if ((((RecentBaseData)localObject1).getUnreadNum() <= 0) || ((((RecentBaseData)localObject1).mUnreadFlag != 1) && (((RecentBaseData)localObject1).mUnreadFlag != 4))) {
-          break label280;
-        }
-        k = ((RecentBaseData)localObject1).getRecentUserType();
-        if (k != 1) {
-          break label254;
-        }
-        localObject2 = this.app.a(true).a(((RecentBaseData)localObject1).getRecentUserUin());
-        if (localObject2 == null) {
-          break label241;
-        }
-        localObject3 = ((bhte)this.app.a(107)).a("");
-        if ((!((HotChatInfo)localObject2).isGameRoom) && (!((HotChatInfo)localObject2).troopUin.equals(((bhtu)localObject3).a))) {
-          break label241;
-        }
-      }
+      paramList2 = null;
+      return paramList2;
     }
-    label280:
+    HashSet localHashSet = new HashSet(paramList1);
+    Iterator localIterator = paramList2.iterator();
+    paramList1 = null;
+    int i = -1;
     for (;;)
     {
-      j += 1;
-      break label18;
-      i = paramList.size();
-      break;
-      label241:
-      localArrayList.add(localObject1);
-      continue;
-      label254:
-      if ((k == 0) || (k == 3000))
+      paramList2 = paramList1;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      paramList2 = (Camera.Size)localIterator.next();
+      if (localHashSet.contains(paramList2))
       {
-        localArrayList.add(localObject1);
-        continue;
-        if ((paramList1 != null) && (paramList1.size() > 0))
+        int j = paramList2.width * paramList2.height;
+        if (j > i)
         {
-          localObject2 = paramList1.iterator();
-          while (((Iterator)localObject2).hasNext()) {
-            if (((RecentBaseData)((Iterator)localObject2).next()).getRecentUserUin().equals(((RecentBaseData)localObject1).getRecentUserUin())) {
-              localArrayList.add(localObject1);
-            }
-          }
+          i = j;
+          paramList1 = paramList2;
         }
       }
     }
-    label348:
-    return localArrayList;
   }
   
-  private void a(List<RecentUser> paramList)
+  private void b(boolean paramBoolean)
   {
-    if (QLog.isDevelopLevel())
+    ThreadManager.getSubThreadHandler().post(new QFaceUnlockCameraCaptureUnit.4(this, paramBoolean));
+  }
+  
+  private void c(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaRecorder != null)
     {
-      if (this.jdField_a_of_type_JavaLangStringBuilder == null) {
-        this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaLangStringBuilder.append("checkRUList, src[");
-        localObject1 = paramList.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (RecentUser)((Iterator)localObject1).next();
-          this.jdField_a_of_type_JavaLangStringBuilder.append(((RecentUser)localObject2).uin + "|" + ((RecentUser)localObject2).getType() + ",");
-        }
-        this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("], [");
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.setPreviewDisplay(null);
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.setOnErrorListener(null);
     }
-    Object localObject1 = null;
-    int i;
-    int j;
-    String str;
-    if (paramList != null)
+    try
     {
-      i = paramList.size() - 1;
-      for (;;)
-      {
-        if (i >= 0)
-        {
-          localObject2 = (RecentUser)paramList.get(i);
-          j = ((RecentUser)localObject2).getType();
-          str = ((RecentUser)localObject2).uin;
-          if (TextUtils.isEmpty(str))
-          {
-            paramList.remove(i);
-            if (this.jdField_a_of_type_JavaLangStringBuilder != null)
-            {
-              this.jdField_a_of_type_JavaLangStringBuilder.append(i).append(",").append(((RecentUser)localObject2).getType()).append(";");
-              i -= 1;
-            }
-          }
-          else if ((j == 1) && ((((RecentUser)localObject2).lFlag & 1L) != 0L))
-          {
-            if ((localObject1 != null) || (this.app == null)) {
-              break label483;
-            }
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("QFaceUnlockCameraCaptureUnit", 0, "releaseRecord begin");
+      }
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.release();
+      if (paramBoolean) {
+        this.jdField_a_of_type_AndroidOsHandler.post(new QFaceUnlockCameraCaptureUnit.5(this));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QFaceUnlockCameraCaptureUnit", 0, "releaseRecord end");
       }
     }
-    label483:
-    for (Object localObject2 = this.app.a(true);; localObject2 = localObject1)
+    catch (IllegalStateException localIllegalStateException)
     {
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        break;
-      }
-      localObject1 = localObject2;
-      if (((HotChatManager)localObject2).b(str)) {
-        break;
-      }
-      paramList.remove(i);
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_JavaLangStringBuilder == null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("invalide hotchat ").append(i).append(",").append(str).append(";");
-      localObject1 = localObject2;
-      break;
-      if ((j == 3000) && (this.app != null))
+      for (;;)
       {
-        localObject2 = ((ankw)this.app.getManager(53)).a(str);
-        if ((localObject2 == null) || (((DiscussionInfo)localObject2).isUIControlFlag_Hidden_RecentUser()) || (((DiscussionInfo)localObject2).isHidden()))
-        {
-          paramList.remove(i);
-          if (this.jdField_a_of_type_JavaLangStringBuilder != null) {
-            this.jdField_a_of_type_JavaLangStringBuilder.append("hidden_RecentUser ").append(i).append(",").append(str).append(";");
-          }
-        }
+        QLog.e("QFaceUnlockCameraCaptureUnit", 1, "releaseRecord failed, IllegalStateException: " + localIllegalStateException.getMessage());
       }
-      break;
-      if (this.jdField_a_of_type_JavaLangStringBuilder != null)
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        this.jdField_a_of_type_JavaLangStringBuilder.append("]");
-        QLog.i("MiniMsgHandler", 4, this.jdField_a_of_type_JavaLangStringBuilder.toString());
+        QLog.e("QFaceUnlockCameraCaptureUnit", 1, "releaseRecord failed, Exception: " + localException.getMessage());
       }
+    }
+    this.jdField_a_of_type_AndroidMediaMediaRecorder = null;
+  }
+  
+  private void l()
+  {
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_AndroidWidgetButton.setText(2131698104);
+    this.jdField_d_of_type_AndroidWidgetButton.setVisibility(0);
+    this.jdField_d_of_type_AndroidWidgetButton.setEnabled(false);
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+  }
+  
+  private void n()
+  {
+    ThreadManager.getSubThreadHandler().post(new QFaceUnlockCameraCaptureUnit.3(this));
+  }
+  
+  protected int a()
+  {
+    return 2131559170;
+  }
+  
+  public View a()
+  {
+    View localView = super.a();
+    ((TextView)localView.findViewById(2131364153)).setOnClickListener(this);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setFunctionFlag(3);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.f();
+    this.jdField_d_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131374091));
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_AndroidWidgetButton.setEnabled(false);
+    this.jdField_d_of_type_AndroidWidgetButton.setText(2131698104);
+    this.jdField_d_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366837));
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366272));
+    int i = agej.a(this.e, a().getResources());
+    this.jdField_a_of_type_Bixr = new bixr();
+    this.jdField_a_of_type_Bixr.a(agej.a(this.e + this.f, a().getResources()));
+    this.jdField_a_of_type_Bixr.a(i);
+    this.jdField_a_of_type_Bixr.b(1);
+    if (Build.VERSION.SDK_INT > 15) {
+      this.jdField_d_of_type_AndroidWidgetRelativeLayout.setBackground(this.jdField_a_of_type_Bixr);
+    }
+    for (;;)
+    {
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377955));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131376425));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366275));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_JavaLangString);
+      return localView;
+      this.jdField_d_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(this.jdField_a_of_type_Bixr);
+    }
+  }
+  
+  protected bbhn a()
+  {
+    bbhn localbbhn = super.a();
+    localbbhn.l(3);
+    localbbhn.i(1);
+    localbbhn.a(false);
+    return localbbhn;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.a(paramInt1, paramInt2, paramIntent);
+    if (QLog.isColorLevel()) {
+      QLog.i("QFaceUnlockCameraCaptureUnit", 0, "onActivityResult");
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    a().getWindow().setFlags(1024, 1024);
+    a().requestWindowFeature(1);
+    super.a(paramBundle);
+    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bqai.a().getIntent().getStringExtra("key_face_unlock_code");
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
+    {
+      this.jdField_c_of_type_JavaLangString = "6978";
+      QLog.e("QFaceUnlockCameraCaptureUnit", 1, "verification code is null, use default code");
+    }
+  }
+  
+  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult)
+  {
+    super.a(paramVideoCaptureResult);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    ThreadManager.getUIHandler().post(new QFaceUnlockCameraCaptureUnit.2(this));
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    super.a(paramBoolean, paramString);
+    if (paramBoolean)
+    {
+      this.jdField_d_of_type_AndroidWidgetButton.setEnabled(true);
       return;
     }
+    QLog.e("QFaceUnlockCameraCaptureUnit", 1, "Camera start fail!");
   }
   
-  private boolean a(int paramInt)
+  public boolean a()
   {
-    boolean bool = false;
-    if (paramInt == -2050) {
-      bool = true;
+    return super.a();
+  }
+  
+  public void c()
+  {
+    super.c();
+  }
+  
+  public void d()
+  {
+    super.d();
+    if (QLog.isColorLevel()) {
+      QLog.i("QFaceUnlockCameraCaptureUnit", 0, "onActivityPause");
     }
-    return bool;
+    b(false);
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
   
-  public List<RecentBaseData> a(int paramInt1, int paramInt2)
+  public void e()
   {
-    Object localObject2 = new ArrayList();
-    List localList = this.app.a().a().getRecentList(false);
+    super.e();
+    if (QLog.isColorLevel()) {
+      QLog.i("QFaceUnlockCameraCaptureUnit", 0, "onDestroy");
+    }
+  }
+  
+  public void f()
+  {
+    super.f();
+    if (QLog.isColorLevel()) {
+      QLog.i("QFaceUnlockCameraCaptureUnit", 0, "onActivityResume");
+    }
+  }
+  
+  public void g()
+  {
+    int i = 0;
+    l();
+    if (aqql.d()) {
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+    }
     for (;;)
     {
-      try
+      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setVisibility(8);
+      if (this.jdField_a_of_type_AndroidViewViewGroup != null)
       {
-        Object localObject1 = (ArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
-        if (localObject1 == null)
-        {
-          localObject1 = new ArrayList();
-          a(localList);
-          if (paramInt2 != 1) {
-            break label233;
-          }
-          localObject3 = localObject1;
-          ((List)localObject2).addAll(a(localList, localObject3));
-          Collections.sort((List)localObject2, this.jdField_a_of_type_JavaUtilComparator);
-          if (((List)localObject2).size() > 100)
-          {
-            localList = ((List)localObject2).subList(0, 100);
-            localObject2 = localList;
-          }
-          continue;
+        ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+        if (this.jdField_c_of_type_Boolean) {
+          i = 8;
         }
+        localViewGroup.setVisibility(i);
       }
-      catch (Exception localException1)
-      {
-        try
-        {
-          ((ArrayList)localObject1).clear();
-          ((ArrayList)localObject1).addAll((Collection)localObject2);
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt1), localObject1);
-          if (!QLog.isColorLevel()) {
-            break label230;
-          }
-          localObject1 = new StringBuilder().append("initMsgCacheByIndex : resultDataList size = ").append(((List)localObject2).size()).append(",lastDatasize = ");
-          if (localObject3 == null)
-          {
-            paramInt1 = 0;
-            QLog.d("MiniMsgHandler", 2, paramInt1);
-            return localObject2;
-          }
-          paramInt1 = localObject3.size();
-          continue;
-          localException1 = localException1;
-        }
-        catch (Exception localException2)
-        {
-          continue;
-        }
-        localException1.printStackTrace();
-        return localObject2;
+      this.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
       }
-      continue;
-      label230:
-      return localObject2;
-      label233:
-      Object localObject3 = null;
+      if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+        this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      }
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      return;
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
     }
   }
   
-  public void a()
+  public void h()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    super.h();
   }
   
-  public void a(Integer paramInteger)
+  protected void i()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramInteger);
+    super.i();
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void j() {}
+  
+  public void k() {}
+  
+  public void onClick(View paramView)
   {
-    if (((paramInt1 == 1) || (paramInt1 == 0) || (paramInt1 == 3000)) && (!a(paramInt2)))
+    if (paramView.getId() == 2131364153)
     {
-      ajzy.a().a();
-      if (!TextUtils.isEmpty(paramString)) {
-        ajzy.a().a(paramString, paramInt1);
+      a().finish();
+      a().overridePendingTransition(2130772037, 2130772243);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      super.onClick(paramView);
+      switch (paramView.getId())
+      {
+      default: 
+        break;
+      case 2131374091: 
+        if (this.jdField_c_of_type_Int == 0)
+        {
+          this.jdField_c_of_type_Int = 1;
+          this.jdField_d_of_type_AndroidWidgetButton.setText(2131698106);
+          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+          n();
+        }
+        else if (this.jdField_c_of_type_Int == 1)
+        {
+          this.jdField_d_of_type_AndroidWidgetButton.setEnabled(false);
+          this.jdField_c_of_type_Int = 2;
+          b(true);
+        }
+        break;
       }
     }
   }
-  
-  protected Class<? extends anil> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

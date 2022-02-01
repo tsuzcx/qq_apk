@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
-import bfer;
-import bfet;
-import bfeu;
-import bffs;
+import bgel;
+import bgen;
+import bgeo;
+import bgfm;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import java.lang.ref.WeakReference;
@@ -11,23 +11,23 @@ import java.lang.ref.WeakReference;
 public class ImageInfo$UploadMediaSegment$MediaUploadCallback$2
   implements Runnable
 {
-  public ImageInfo$UploadMediaSegment$MediaUploadCallback$2(bfeu parambfeu, int paramInt) {}
+  public ImageInfo$UploadMediaSegment$MediaUploadCallback$2(bgeo parambgeo, int paramInt) {}
   
   public void run()
   {
-    bfet.a(this.jdField_a_of_type_Bfeu.a).e = this.jdField_a_of_type_Int;
-    Object localObject = (XMediaEditor)bfet.a(this.jdField_a_of_type_Bfeu.a).get();
+    bgen.a(this.jdField_a_of_type_Bgeo.a).e = this.jdField_a_of_type_Int;
+    Object localObject = (XMediaEditor)bgen.a(this.jdField_a_of_type_Bgeo.a).get();
     if (localObject != null)
     {
-      localObject = ((XMediaEditor)localObject).findViewHolderForLayoutPosition(bfet.a(this.jdField_a_of_type_Bfeu.a).c);
-      if ((localObject instanceof bffs))
+      localObject = ((XMediaEditor)localObject).findViewHolderForLayoutPosition(bgen.a(this.jdField_a_of_type_Bgeo.a).c);
+      if ((localObject instanceof bgfm))
       {
-        localObject = (bffs)localObject;
-        if (bfet.a(this.jdField_a_of_type_Bfeu.a).d.equals(((bffs)localObject).a.getTag()))
+        localObject = (bgfm)localObject;
+        if (bgen.a(this.jdField_a_of_type_Bgeo.a).d.equals(((bgfm)localObject).a.getTag()))
         {
-          ((bffs)localObject).a.setVisibility(0);
-          ((bffs)localObject).a.setDrawStatus(1);
-          ((bffs)localObject).a.setAnimProgress(bfet.a(this.jdField_a_of_type_Bfeu.a).e, bfet.a(this.jdField_a_of_type_Bfeu.a).d);
+          ((bgfm)localObject).a.setVisibility(0);
+          ((bgfm)localObject).a.setDrawStatus(1);
+          ((bgfm)localObject).a.setAnimProgress(bgen.a(this.jdField_a_of_type_Bgeo.a).e, bgen.a(this.jdField_a_of_type_Bgeo.a).d);
         }
       }
     }

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.apollo.process.download;
 
-import ampj;
-import amsg;
-import amsj;
+import anbd;
+import anea;
+import aned;
 import com.tencent.qphone.base.util.QLog;
 
 public class CmGameRscDownloader$1
   implements Runnable
 {
-  public CmGameRscDownloader$1(amsg paramamsg) {}
+  public CmGameRscDownloader$1(anea paramanea) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("cmgame_process.CmGameRscDownloader", 2, "download now");
     }
-    ampj.a(new Object[] { "[downloadRes], for delay:", Integer.valueOf(amsg.a(this.this$0).e), ",and download now" });
+    anbd.a(new Object[] { "[downloadRes], for delay:", Integer.valueOf(anea.a(this.this$0).e), ",and download now" });
     this.this$0.a();
   }
 }

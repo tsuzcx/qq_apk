@@ -1,15 +1,10 @@
-import android.animation.ValueAnimator;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
 
-public class bpkh
-  implements bpkg
+public abstract interface bpkh
 {
-  public void a(ValueAnimator paramValueAnimator) {}
+  public abstract void a(int paramInt, AEEditorTextBean paramAEEditorTextBean);
   
-  public void b(ValueAnimator paramValueAnimator) {}
-  
-  public void c(ValueAnimator paramValueAnimator) {}
-  
-  public void d(ValueAnimator paramValueAnimator) {}
+  public abstract void c(int paramInt);
 }
 
 

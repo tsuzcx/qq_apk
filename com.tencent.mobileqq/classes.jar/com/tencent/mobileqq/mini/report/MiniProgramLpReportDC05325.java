@@ -8,7 +8,7 @@ import com.tencent.component.network.module.report.ImageDownloadReporter;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import java.util.HashMap;
 import java.util.Map;
-import nlw;
+import nnr;
 import okhttp3.Headers;
 import okhttp3.Response;
 import org.apache.http.Header;
@@ -67,7 +67,7 @@ public class MiniProgramLpReportDC05325
   
   public static String getNetworkType()
   {
-    String str = nlw.a();
+    String str = nnr.a();
     if (str == null) {
       return "unknown";
     }

@@ -1,44 +1,44 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aete
-  implements URLDrawable.URLDrawableListener
+  implements asid
 {
-  public aete(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public aete(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a(int paramInt)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "RemoveListener which = " + paramInt);
     }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
+    paramInt -= 1;
+    byte b;
+    if ((paramInt >= 0) && (paramInt < this.a.a.size()))
+    {
+      Object localObject = (Groups)this.a.a.get(paramInt);
+      b = (byte)((Groups)localObject).group_id;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("GroupManagerActivity", 2, "RemoveListener remove groupId :" + b);
+        QLog.d("GroupManagerActivity", 2, "RemoveListener remove friend_count :" + ((Groups)localObject).group_friend_count);
+      }
+      if (b == 0)
+      {
+        localObject = new QQToast(this.a);
+        ((QQToast)localObject).d(2000);
+        ((QQToast)localObject).c(2131718764);
+        ((QQToast)localObject).a();
+      }
     }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
+    else
+    {
+      return;
     }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, zlx.a(this.a.app.getApp(), 47.0F), zlx.a(this.a.app.getApp(), 14.0F));
-    }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
-    }
+    GroupManagerActivity.a(this.a, b);
+    bdll.b(this.a.app, "CliOper", "", "", "category", "Delete_category", 0, 0, "", "", "", "");
   }
 }
 

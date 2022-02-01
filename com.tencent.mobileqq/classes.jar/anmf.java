@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import mqq.app.AppRuntime.Status;
-
-public class anmf
-  implements aynp
+public abstract interface anmf
 {
-  public anmf(FrameHelperActivity paramFrameHelperActivity) {}
-  
-  public void a(AppRuntime.Status paramStatus)
-  {
-    this.a.a("AccountPanel.OnlineStatusChangedListener");
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

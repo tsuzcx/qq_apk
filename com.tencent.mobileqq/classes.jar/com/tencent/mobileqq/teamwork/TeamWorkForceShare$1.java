@@ -3,8 +3,8 @@ package com.tencent.mobileqq.teamwork;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import anni;
-import biau;
+import anzj;
+import bjbs;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
 import com.tencent.mobileqq.widget.share.ShareActionSheetFactory;
@@ -22,7 +22,7 @@ class TeamWorkForceShare$1
     if ((this.a == null) || (this.a.isRecycled()))
     {
       QLog.d(TeamWorkForceShare.a(), 1, "decode image failed, url = " + TeamWorkForceShare.a(this.this$0));
-      QQToast.a(TeamWorkForceShare.a(this.this$0), anni.a(2131713490), 0).a();
+      QQToast.a(TeamWorkForceShare.a(this.this$0), anzj.a(2131713599), 0).a();
       return;
     }
     if (TeamWorkForceShare.a(this.this$0) == null)

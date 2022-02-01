@@ -2,13 +2,14 @@ package com.tencent.mobileqq.fts;
 
 import android.os.Looper;
 import android.text.TextUtils;
-import aupm;
-import aupt;
-import aupu;
-import auqb;
-import auqc;
-import auqd;
+import avhm;
+import avht;
+import avhu;
+import avib;
+import avic;
+import avid;
 import com.tencent.mobileqq.fts.entity.FTSEntity;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,7 +18,7 @@ import java.util.Map;
 
 public class FTSDatabase
 {
-  private static aupt jdField_a_of_type_Aupt = new aupu();
+  private static avht jdField_a_of_type_Avht = new avhu();
   private boolean jdField_a_of_type_Boolean;
   private boolean b = true;
   
@@ -28,14 +29,14 @@ public class FTSDatabase
     }
   }
   
-  public static aupt a()
+  public static avht a()
   {
-    return jdField_a_of_type_Aupt;
+    return jdField_a_of_type_Avht;
   }
   
-  public static void a(aupt paramaupt)
+  public static void a(avht paramavht)
   {
-    jdField_a_of_type_Aupt = paramaupt;
+    jdField_a_of_type_Avht = paramavht;
   }
   
   private void b()
@@ -60,13 +61,37 @@ public class FTSDatabase
     a().a(paramString1, paramString2, paramString3);
   }
   
+  private synchronized native int mergeCommand(String paramString, int paramInt1, int paramInt2);
+  
   private synchronized native int queryIndexCount(String paramString);
   
   private synchronized native Object queryNative(String paramString, int[] paramArrayOfInt);
   
   private synchronized native boolean updateNative(String paramString, int[] paramArrayOfInt, byte[]... paramVarArgs);
   
-  public List<FTSEntity> a(aupm paramaupm)
+  public int a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (!d()) {
+      return -1;
+    }
+    if (!b())
+    {
+      QLog.d("Q.fts.troop.FTSDatabase", 1, "mergeCommand begin transaction failed");
+      return -1;
+    }
+    int i = mergeCommand(paramString, paramInt1, paramInt2);
+    if (!c())
+    {
+      QLog.d("Q.fts.troop.FTSDatabase", 1, "mergeCommand commit transaction failed");
+      return -1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.fts.troop.FTSDatabase", 2, new Object[] { "mergeCommand ", paramString, " x=", Integer.valueOf(paramInt1), " y=", Integer.valueOf(paramInt2), " ret:", Integer.valueOf(i) });
+    }
+    return i;
+  }
+  
+  public List<FTSEntity> a(avhm paramavhm)
   {
     b();
     if (!d()) {
@@ -77,7 +102,7 @@ public class FTSDatabase
     {
       return null;
       Object localObject1 = new ArrayList();
-      localObject3 = auqd.a(paramaupm, (List)localObject1);
+      localObject3 = avid.a(paramavhm, (List)localObject1);
       int[] arrayOfInt = new int[((List)localObject1).size()];
       int i = 0;
       while (i < ((List)localObject1).size())
@@ -96,7 +121,7 @@ public class FTSDatabase
         {
           localObject1 = ((List)localObject1).iterator();
           while (((Iterator)localObject1).hasNext()) {
-            ((List)localObject3).add(auqd.a((Map)((Iterator)localObject1).next(), paramaupm.a));
+            ((List)localObject3).add(avid.a((Map)((Iterator)localObject1).next(), paramavhm.a));
           }
         }
       }
@@ -167,7 +192,7 @@ public class FTSDatabase
       log("Q.fts.troop.FTSDatabase", "w", "init failed because so is not available.");
       return;
     }
-    auqc.a(new File(paramString));
+    avic.a(new File(paramString));
     try
     {
       log("Q.fts.troop.FTSDatabase", "i", Thread.currentThread().getName() + " native initNative V2");
@@ -219,7 +244,7 @@ public class FTSDatabase
       return bool2;
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
-      paramFTSEntity = auqd.a(paramFTSEntity, localArrayList2, localArrayList1);
+      paramFTSEntity = avid.a(paramFTSEntity, localArrayList2, localArrayList1);
       int[] arrayOfInt = new int[localArrayList2.size()];
       int i = 0;
       while (i < localArrayList2.size())
@@ -267,7 +292,7 @@ public class FTSDatabase
     String str2;
     for (;;)
     {
-      str2 = auqd.a(paramClass, auqb.a(), bool1, bool2, bool3);
+      str2 = avid.a(paramClass, avib.a(), bool1, bool2, bool3);
       try
       {
         bool4 = execSQLNative(str2);
@@ -283,7 +308,7 @@ public class FTSDatabase
           String str1 = getErrorMsg();
           Object localObject = str1;
           log("Q.fts.troop.FTSDatabase", "e", "Can't create virtual table. " + (String)localObject);
-          if (!auqb.a())
+          if (!avib.a())
           {
             log("Q.fts.troop.FTSDatabase", "e", "createTable failed." + (String)localObject);
             return false;

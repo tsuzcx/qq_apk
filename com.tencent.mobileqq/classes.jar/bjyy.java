@@ -1,10 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class bjyy
-  implements DialogInterface.OnClickListener
+public abstract class bjyy
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a() {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
 }
 
 

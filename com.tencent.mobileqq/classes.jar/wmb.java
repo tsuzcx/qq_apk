@@ -1,12 +1,14 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public abstract interface wmb
+public final class wmb
 {
-  public abstract void a(wmf paramwmf, View paramView, String paramString);
+  public StoryVideoItem a;
+  public StoryVideoItem b;
   
-  public abstract void a(wmf paramwmf, ViewGroup paramViewGroup, View paramView, int paramInt, CommentEntry paramCommentEntry);
+  public String toString()
+  {
+    return "{mFakeStoryVideoItem=" + this.a + ", mSucStoryVideoItem=" + this.b + '}';
+  }
 }
 
 

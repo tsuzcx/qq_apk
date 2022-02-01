@@ -1,1012 +1,502 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.Build.VERSION;
 import android.text.TextUtils;
-import android.widget.Toast;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.biz.eqq.CrmUtils.1;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowRequest;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqDetailInfoRequest;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.util.regex.Pattern;
-import mqq.app.NewIntent;
-import mqq.manager.Manager;
-import mqq.manager.TicketManager;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class nmp
 {
-  public static final Pattern a;
-  public static final boolean a;
+  private static String jdField_a_of_type_JavaLangString;
+  private static final ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+  private static String jdField_b_of_type_JavaLangString;
+  private static final ReentrantLock jdField_b_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+  private static String c;
+  private static String d;
   
-  static
+  public static String a()
   {
-    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("QQ语音");
-    jdField_a_of_type_Boolean = a();
+    if (TextUtils.isEmpty(c))
+    {
+      yuk.d("OfflineEnvHelper", "getInnerOfflineDir, initEnv");
+      a();
+    }
+    return c;
   }
   
-  public static int a(QQAppInterface paramQQAppInterface, String paramString)
+  public static String a(String paramString)
   {
-    int j = 0;
-    Object localObject = (anrs)paramQQAppInterface.getManager(56);
-    int i = j;
-    if (localObject != null)
-    {
-      localObject = ((anrs)localObject).c(paramString);
-      if (localObject != null) {
-        break label69;
-      }
-      paramQQAppInterface = (anlf)paramQQAppInterface.getManager(69);
-      if (paramQQAppInterface == null) {
-        break label84;
-      }
-      paramQQAppInterface = paramQQAppInterface.a(paramString);
-      if ((paramQQAppInterface == null) || (paramQQAppInterface.certifiedGrade <= 0)) {
-        break label84;
-      }
-      i = 2130841741;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    for (;;)
+    if (a(paramString))
     {
-      return i;
-      label69:
-      i = j;
-      if (((PublicAccountInfo)localObject).certifiedGrade > 0L)
-      {
-        return 2130841741;
-        label84:
-        i = 0;
-      }
+      yuk.d("OfflineEnvHelper", "getOfflineDir, isStoreInSD true");
+      return b();
     }
+    return a();
   }
   
   /* Error */
-  public static int a(String paramString)
+  private static void a()
   {
     // Byte code:
-    //   0: iconst_0
+    //   0: iconst_1
     //   1: istore_2
-    //   2: aload_0
-    //   3: ldc 60
-    //   5: invokevirtual 66	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   8: astore_0
-    //   9: iconst_0
-    //   10: istore_1
-    //   11: iload_1
-    //   12: istore_3
-    //   13: iload_2
-    //   14: aload_0
-    //   15: arraylength
-    //   16: if_icmpge +51 -> 67
-    //   19: iload_1
-    //   20: i2l
-    //   21: lstore 4
-    //   23: iconst_3
-    //   24: iload_2
-    //   25: isub
-    //   26: i2l
-    //   27: lstore 6
-    //   29: aload_0
-    //   30: iload_2
-    //   31: aaload
-    //   32: invokestatic 72	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   35: lstore 8
-    //   37: lload 4
-    //   39: ldc2_w 73
-    //   42: lload 6
-    //   44: lload 8
-    //   46: lmul
-    //   47: lxor
-    //   48: ladd
-    //   49: l2i
-    //   50: istore_1
-    //   51: iload_2
-    //   52: iconst_1
-    //   53: iadd
-    //   54: istore_2
-    //   55: goto -44 -> 11
-    //   58: astore_0
-    //   59: iconst_0
-    //   60: istore_1
-    //   61: aload_0
-    //   62: invokevirtual 77	java/lang/Exception:printStackTrace	()V
-    //   65: iload_1
-    //   66: istore_3
-    //   67: iload_3
-    //   68: ireturn
-    //   69: astore_0
-    //   70: goto -9 -> 61
+    //   2: sipush 10066
+    //   5: ldc 56
+    //   7: iconst_1
+    //   8: invokestatic 61	bezv:a	(ILjava/lang/String;Z)Ljava/lang/String;
+    //   11: astore 7
+    //   13: aload 7
+    //   15: invokestatic 31	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   18: ifne +268 -> 286
+    //   21: new 63	java/lang/StringBuilder
+    //   24: dup
+    //   25: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   28: aload 7
+    //   30: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: ldc 70
+    //   35: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   41: astore 6
+    //   43: new 63	java/lang/StringBuilder
+    //   46: dup
+    //   47: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   50: aload 7
+    //   52: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: ldc 75
+    //   57: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   63: astore 7
+    //   65: new 77	java/io/File
+    //   68: dup
+    //   69: aload 6
+    //   71: invokespecial 80	java/io/File:<init>	(Ljava/lang/String;)V
+    //   74: astore 8
+    //   76: aload 8
+    //   78: invokevirtual 84	java/io/File:exists	()Z
+    //   81: ifne +128 -> 209
+    //   84: getstatic 19	nmp:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   87: invokevirtual 87	java/util/concurrent/locks/ReentrantLock:tryLock	()Z
+    //   90: istore_3
+    //   91: iload_3
+    //   92: ifeq +601 -> 693
+    //   95: invokestatic 93	java/lang/System:currentTimeMillis	()J
+    //   98: lstore 4
+    //   100: new 77	java/io/File
+    //   103: dup
+    //   104: new 63	java/lang/StringBuilder
+    //   107: dup
+    //   108: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   111: invokestatic 99	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+    //   114: invokevirtual 102	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   117: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   120: ldc 104
+    //   122: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   125: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   128: invokespecial 80	java/io/File:<init>	(Ljava/lang/String;)V
+    //   131: astore 9
+    //   133: aload 9
+    //   135: invokevirtual 84	java/io/File:exists	()Z
+    //   138: ifeq +465 -> 603
+    //   141: aload 8
+    //   143: invokevirtual 107	java/io/File:mkdirs	()Z
+    //   146: pop
+    //   147: aload 9
+    //   149: aload 8
+    //   151: invokevirtual 111	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   154: ifeq +420 -> 574
+    //   157: iconst_1
+    //   158: istore_3
+    //   159: getstatic 116	nmj:a	Lnmw;
+    //   162: ldc 118
+    //   164: iconst_1
+    //   165: new 63	java/lang/StringBuilder
+    //   168: dup
+    //   169: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   172: ldc 120
+    //   174: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: invokestatic 93	java/lang/System:currentTimeMillis	()J
+    //   180: lload 4
+    //   182: lsub
+    //   183: invokevirtual 123	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   186: ldc 125
+    //   188: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   191: iload_3
+    //   192: invokevirtual 128	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   195: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   198: invokeinterface 133 4 0
+    //   203: getstatic 19	nmp:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   206: invokevirtual 136	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   209: aload 8
+    //   211: invokevirtual 84	java/io/File:exists	()Z
+    //   214: ifne +495 -> 709
+    //   217: aload 8
+    //   219: invokevirtual 107	java/io/File:mkdirs	()Z
+    //   222: ifne +487 -> 709
+    //   225: iconst_1
+    //   226: istore_0
+    //   227: new 77	java/io/File
+    //   230: dup
+    //   231: aload 7
+    //   233: invokespecial 80	java/io/File:<init>	(Ljava/lang/String;)V
+    //   236: astore 8
+    //   238: aload 8
+    //   240: invokevirtual 84	java/io/File:exists	()Z
+    //   243: ifne +471 -> 714
+    //   246: aload 8
+    //   248: invokevirtual 107	java/io/File:mkdirs	()Z
+    //   251: ifne +463 -> 714
+    //   254: iconst_1
+    //   255: istore_1
+    //   256: iload_0
+    //   257: iload_1
+    //   258: ior
+    //   259: ifeq +460 -> 719
+    //   262: getstatic 116	nmj:a	Lnmw;
+    //   265: invokeinterface 138 1 0
+    //   270: ifeq +16 -> 286
+    //   273: getstatic 116	nmj:a	Lnmw;
+    //   276: ldc 118
+    //   278: iconst_2
+    //   279: ldc 140
+    //   281: invokeinterface 133 4 0
+    //   286: sipush 10066
+    //   289: ldc 56
+    //   291: iconst_0
+    //   292: invokestatic 61	bezv:a	(ILjava/lang/String;Z)Ljava/lang/String;
+    //   295: astore 7
+    //   297: aload 7
+    //   299: invokestatic 31	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   302: ifne +271 -> 573
+    //   305: new 63	java/lang/StringBuilder
+    //   308: dup
+    //   309: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   312: aload 7
+    //   314: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   317: ldc 70
+    //   319: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   325: astore 6
+    //   327: new 63	java/lang/StringBuilder
+    //   330: dup
+    //   331: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   334: aload 7
+    //   336: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   339: ldc 75
+    //   341: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   344: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   347: astore 7
+    //   349: new 77	java/io/File
+    //   352: dup
+    //   353: aload 6
+    //   355: invokespecial 80	java/io/File:<init>	(Ljava/lang/String;)V
+    //   358: astore 8
+    //   360: aload 8
+    //   362: invokevirtual 84	java/io/File:exists	()Z
+    //   365: ifne +131 -> 496
+    //   368: getstatic 21	nmp:jdField_b_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   371: invokevirtual 87	java/util/concurrent/locks/ReentrantLock:tryLock	()Z
+    //   374: istore_3
+    //   375: iload_3
+    //   376: ifeq +481 -> 857
+    //   379: invokestatic 93	java/lang/System:currentTimeMillis	()J
+    //   382: lstore 4
+    //   384: new 77	java/io/File
+    //   387: dup
+    //   388: new 63	java/lang/StringBuilder
+    //   391: dup
+    //   392: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   395: invokestatic 146	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   398: invokevirtual 151	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
+    //   401: invokevirtual 102	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   404: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   407: ldc 153
+    //   409: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   412: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   415: invokespecial 80	java/io/File:<init>	(Ljava/lang/String;)V
+    //   418: astore 9
+    //   420: aload 9
+    //   422: invokevirtual 84	java/io/File:exists	()Z
+    //   425: ifeq +342 -> 767
+    //   428: aload 8
+    //   430: invokevirtual 107	java/io/File:mkdirs	()Z
+    //   433: pop
+    //   434: aload 9
+    //   436: aload 8
+    //   438: invokevirtual 111	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   441: ifeq +297 -> 738
+    //   444: iconst_1
+    //   445: istore_3
+    //   446: getstatic 116	nmj:a	Lnmw;
+    //   449: ldc 118
+    //   451: iconst_1
+    //   452: new 63	java/lang/StringBuilder
+    //   455: dup
+    //   456: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   459: ldc 155
+    //   461: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   464: invokestatic 93	java/lang/System:currentTimeMillis	()J
+    //   467: lload 4
+    //   469: lsub
+    //   470: invokevirtual 123	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   473: ldc 125
+    //   475: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   478: iload_3
+    //   479: invokevirtual 128	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   482: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   485: invokeinterface 133 4 0
+    //   490: getstatic 21	nmp:jdField_b_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   493: invokevirtual 136	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   496: aload 8
+    //   498: invokevirtual 84	java/io/File:exists	()Z
+    //   501: ifne +372 -> 873
+    //   504: aload 8
+    //   506: invokevirtual 107	java/io/File:mkdirs	()Z
+    //   509: ifne +364 -> 873
+    //   512: iconst_1
+    //   513: istore_0
+    //   514: new 77	java/io/File
+    //   517: dup
+    //   518: aload 7
+    //   520: invokespecial 80	java/io/File:<init>	(Ljava/lang/String;)V
+    //   523: astore 8
+    //   525: aload 8
+    //   527: invokevirtual 84	java/io/File:exists	()Z
+    //   530: ifne +348 -> 878
+    //   533: aload 8
+    //   535: invokevirtual 107	java/io/File:mkdirs	()Z
+    //   538: ifne +340 -> 878
+    //   541: iload_2
+    //   542: istore_1
+    //   543: iload_0
+    //   544: iload_1
+    //   545: ior
+    //   546: ifeq +337 -> 883
+    //   549: getstatic 116	nmj:a	Lnmw;
+    //   552: invokeinterface 138 1 0
+    //   557: ifeq +16 -> 573
+    //   560: getstatic 116	nmj:a	Lnmw;
+    //   563: ldc 118
+    //   565: iconst_2
+    //   566: ldc 157
+    //   568: invokeinterface 133 4 0
+    //   573: return
+    //   574: getstatic 116	nmj:a	Lnmw;
+    //   577: invokeinterface 138 1 0
+    //   582: ifeq +45 -> 627
+    //   585: getstatic 116	nmj:a	Lnmw;
+    //   588: ldc 118
+    //   590: iconst_2
+    //   591: ldc 159
+    //   593: invokeinterface 133 4 0
+    //   598: iconst_0
+    //   599: istore_3
+    //   600: goto -441 -> 159
+    //   603: getstatic 116	nmj:a	Lnmw;
+    //   606: invokeinterface 138 1 0
+    //   611: ifeq +16 -> 627
+    //   614: getstatic 116	nmj:a	Lnmw;
+    //   617: ldc 118
+    //   619: iconst_2
+    //   620: ldc 161
+    //   622: invokeinterface 133 4 0
+    //   627: iconst_0
+    //   628: istore_3
+    //   629: goto -470 -> 159
+    //   632: astore 9
+    //   634: getstatic 19	nmp:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   637: invokevirtual 136	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   640: aload 9
+    //   642: athrow
+    //   643: astore 9
+    //   645: getstatic 116	nmj:a	Lnmw;
+    //   648: invokeinterface 138 1 0
+    //   653: ifeq -444 -> 209
+    //   656: getstatic 116	nmj:a	Lnmw;
+    //   659: ldc 118
+    //   661: iconst_2
+    //   662: new 63	java/lang/StringBuilder
+    //   665: dup
+    //   666: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   669: ldc 163
+    //   671: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   674: aload 9
+    //   676: invokevirtual 164	java/lang/Exception:toString	()Ljava/lang/String;
+    //   679: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   682: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   685: invokeinterface 133 4 0
+    //   690: goto -481 -> 209
+    //   693: getstatic 116	nmj:a	Lnmw;
+    //   696: ldc 118
+    //   698: iconst_1
+    //   699: ldc 166
+    //   701: invokeinterface 133 4 0
+    //   706: goto -497 -> 209
+    //   709: iconst_0
+    //   710: istore_0
+    //   711: goto -484 -> 227
+    //   714: iconst_0
+    //   715: istore_1
+    //   716: goto -460 -> 256
+    //   719: aload 6
+    //   721: invokestatic 170	bigv:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   724: putstatic 172	nmp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   727: aload 7
+    //   729: invokestatic 170	bigv:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   732: putstatic 174	nmp:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   735: goto -449 -> 286
+    //   738: getstatic 116	nmj:a	Lnmw;
+    //   741: invokeinterface 138 1 0
+    //   746: ifeq +45 -> 791
+    //   749: getstatic 116	nmj:a	Lnmw;
+    //   752: ldc 118
+    //   754: iconst_2
+    //   755: ldc 176
+    //   757: invokeinterface 133 4 0
+    //   762: iconst_0
+    //   763: istore_3
+    //   764: goto -318 -> 446
+    //   767: getstatic 116	nmj:a	Lnmw;
+    //   770: invokeinterface 138 1 0
+    //   775: ifeq +16 -> 791
+    //   778: getstatic 116	nmj:a	Lnmw;
+    //   781: ldc 118
+    //   783: iconst_2
+    //   784: ldc 178
+    //   786: invokeinterface 133 4 0
+    //   791: iconst_0
+    //   792: istore_3
+    //   793: goto -347 -> 446
+    //   796: astore 9
+    //   798: getstatic 21	nmp:jdField_b_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   801: invokevirtual 136	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   804: aload 9
+    //   806: athrow
+    //   807: astore 9
+    //   809: getstatic 116	nmj:a	Lnmw;
+    //   812: invokeinterface 138 1 0
+    //   817: ifeq -321 -> 496
+    //   820: getstatic 116	nmj:a	Lnmw;
+    //   823: ldc 118
+    //   825: iconst_2
+    //   826: new 63	java/lang/StringBuilder
+    //   829: dup
+    //   830: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   833: ldc 180
+    //   835: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   838: aload 9
+    //   840: invokevirtual 164	java/lang/Exception:toString	()Ljava/lang/String;
+    //   843: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   846: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   849: invokeinterface 133 4 0
+    //   854: goto -358 -> 496
+    //   857: getstatic 116	nmj:a	Lnmw;
+    //   860: ldc 118
+    //   862: iconst_1
+    //   863: ldc 182
+    //   865: invokeinterface 133 4 0
+    //   870: goto -374 -> 496
+    //   873: iconst_0
+    //   874: istore_0
+    //   875: goto -361 -> 514
+    //   878: iconst_0
+    //   879: istore_1
+    //   880: goto -337 -> 543
+    //   883: aload 6
+    //   885: putstatic 25	nmp:c	Ljava/lang/String;
+    //   888: aload 7
+    //   890: putstatic 184	nmp:d	Ljava/lang/String;
+    //   893: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	73	0	paramString	String
-    //   10	56	1	i	int
-    //   1	54	2	j	int
-    //   12	56	3	k	int
-    //   21	17	4	l1	long
-    //   27	16	6	l2	long
-    //   35	10	8	l3	long
+    //   226	649	0	i	int
+    //   255	625	1	j	int
+    //   1	541	2	k	int
+    //   90	703	3	bool	boolean
+    //   98	370	4	l	long
+    //   41	843	6	str1	String
+    //   11	878	7	str2	String
+    //   74	460	8	localFile1	java.io.File
+    //   131	304	9	localFile2	java.io.File
+    //   632	9	9	localObject1	Object
+    //   643	32	9	localException1	java.lang.Exception
+    //   796	9	9	localObject2	Object
+    //   807	32	9	localException2	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   2	9	58	java/lang/Exception
-    //   13	19	69	java/lang/Exception
-    //   29	37	69	java/lang/Exception
+    //   95	157	632	finally
+    //   159	203	632	finally
+    //   574	598	632	finally
+    //   603	627	632	finally
+    //   76	91	643	java/lang/Exception
+    //   203	209	643	java/lang/Exception
+    //   634	643	643	java/lang/Exception
+    //   693	706	643	java/lang/Exception
+    //   379	444	796	finally
+    //   446	490	796	finally
+    //   738	762	796	finally
+    //   767	791	796	finally
+    //   360	375	807	java/lang/Exception
+    //   490	496	807	java/lang/Exception
+    //   798	807	807	java/lang/Exception
+    //   857	870	807	java/lang/Exception
   }
   
-  public static Intent a(Context paramContext, Intent paramIntent, String paramString, boolean paramBoolean1, int paramInt1, boolean paramBoolean2, int paramInt2)
+  public static boolean a(String paramString)
   {
-    try
-    {
-      bool = ((bjft)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(165)).c(paramString, false);
-      if (bool) {
-        if (paramIntent == null)
-        {
-          paramIntent = new Intent(paramContext, QidianProfileCardActivity.class);
-          if (!TextUtils.isEmpty(paramString)) {
-            paramIntent.putExtra("uin", paramString);
-          }
-          paramIntent.putExtra("AllInOne", new ProfileActivity.AllInOne(paramString, 104));
-          paramIntent.putExtra("need_finish", paramBoolean1);
-          paramIntent.putExtra("uintype", 1024);
-          paramIntent.addFlags(67108864);
-          if (paramInt1 != -1) {
-            paramIntent.putExtra("source", paramInt1);
-          }
-        }
-      }
-      try
-      {
-        AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        switch (paramInt1)
-        {
-        }
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-          continue;
-          if ((paramContext instanceof Activity)) {
-            ((Activity)paramContext).startActivityForResult(paramIntent, paramInt2);
-          }
-        }
-      }
-      if (paramBoolean2)
-      {
-        if (paramInt2 != -1) {
-          break label266;
-        }
-        paramContext.startActivity(paramIntent);
-        if ((paramContext instanceof Activity)) {
-          ((Activity)paramContext).overridePendingTransition(2130771992, 2130771993);
-        }
-      }
-      return paramIntent;
-    }
-    catch (Exception localException)
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
       for (;;)
       {
-        localException.printStackTrace();
-        boolean bool = false;
-        continue;
-        paramIntent.setClassName(paramContext, QidianProfileCardActivity.class.getName());
-        continue;
-        if (paramIntent == null)
-        {
-          paramIntent = new Intent(paramContext, EqqAccountDetailActivity.class);
-        }
-        else
-        {
-          paramIntent.setClassName(paramContext, EqqAccountDetailActivity.class.getName());
-          continue;
-          PublicAccountHandler.a(localException, paramString, "Pb_account_lifeservice", "mp_msg_sys_2", "detail");
-        }
-      }
-    }
-  }
-  
-  public static InputStream a(Bitmap paramBitmap)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
-    return new ByteArrayInputStream(localByteArrayOutputStream.toByteArray());
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    String str = "";
-    if (!TextUtils.isEmpty(paramString)) {
-      if (bjft.b(paramQQAppInterface, paramString))
-      {
-        paramQQAppInterface = ((anmw)paramQQAppInterface.getManager(51)).b(paramString);
-        if (paramQQAppInterface == null) {
-          break label189;
-        }
-        paramQQAppInterface = paramQQAppInterface.getFriendName();
-      }
-    }
-    for (;;)
-    {
-      return paramQQAppInterface;
-      Object localObject = paramQQAppInterface.getManager(56);
-      if (localObject != null)
-      {
-        localObject = ((anrs)localObject).c(paramString);
-        if (localObject != null) {
-          return ((PublicAccountInfo)localObject).name;
-        }
-        paramQQAppInterface = paramQQAppInterface.getManager(69);
-        if (paramQQAppInterface != null)
-        {
-          paramQQAppInterface = ((anlf)paramQQAppInterface).a(paramString);
-          if (paramQQAppInterface != null) {
-            return paramQQAppInterface.name;
-          }
-          paramQQAppInterface = str;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("CrmUtils", 2, String.format("We can't find %s from EqqCache", new Object[] { paramString }));
-            return "";
-          }
-        }
-        else
-        {
-          paramQQAppInterface = str;
-          if (QLog.isColorLevel())
-          {
-            QLog.e("CrmUtils", 2, "Get EqqDetailDataManager error");
-            return "";
-          }
-        }
-      }
-      else
-      {
-        paramQQAppInterface = str;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("CrmUtils", 2, "Get PublicAccountDataManager error");
-          return "";
-          paramQQAppInterface = str;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("CrmUtils", 2, "We can't get name, because uin is null");
-            return "";
-            label189:
-            paramQQAppInterface = "";
-          }
-        }
-      }
-    }
-  }
-  
-  private static void a(int paramInt, biau parambiau)
-  {
-    b(paramInt, parambiau);
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    Toast.makeText(paramContext, paramInt, 0).show();
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    try
-    {
-      paramContext = paramContext.getSharedPreferences(paramString + "_customer_transfer_sharepreference", 0).edit();
-      paramContext.clear();
-      paramContext.commit();
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    if (!jdField_a_of_type_Boolean) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("IVR_TS_CrmUtils", 4, "Don't support sharp");
-      }
-    }
-    do
-    {
-      return;
-      if (lkw.c())
-      {
-        bkho localbkho = bkho.a(paramContext);
-        localbkho.b(2131718646);
-        localbkho.c(2131690582);
-        localbkho.a(new nms(localbkho, paramQQAppInterface, paramContext, paramSessionInfo));
-        localbkho.show();
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("CrmUtils", 2, String.format("We needn't show video action sheet, because Sharp Audio is not supported", new Object[0]));
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, String paramString)
-  {
-    biau localbiau = null;
-    if (QLog.isDevelopLevel()) {
-      QLog.d("IVR_TS_CrmUtils", 4, ">>>ivrAudio2(), ts=" + System.currentTimeMillis());
-    }
-    if (bjft.b(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString)) {
-      c(paramQQAppInterface, paramContext, paramSessionInfo, paramString);
-    }
-    for (;;)
-    {
-      return;
-      Object localObject = (anrs)paramQQAppInterface.getManager(56);
-      mobileqq_mp.GetEqqDetailInfoRequest localGetEqqDetailInfoRequest;
-      if (localObject != null)
-      {
-        localObject = ((anrs)localObject).c(paramSessionInfo.jdField_a_of_type_JavaLangString);
-        if (localObject == null)
-        {
-          localObject = (anlf)paramQQAppInterface.getManager(69);
-          if (localObject != null)
-          {
-            localObject = ((anlf)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
-            if (localObject == null)
-            {
-              if (QLog.isDevelopLevel()) {
-                QLog.d("IVR_TS_CrmUtils", 4, ">>>begin getDetail, ts=" + System.currentTimeMillis());
-              }
-              if ((paramContext instanceof Activity)) {
-                localbiau = new biau(paramContext, paramContext.getResources().getDimensionPixelSize(2131298998));
-              }
-              if (localbiau != null) {
-                localbiau.setCanceledOnTouchOutside(true);
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("CrmUtils", 2, "sendDetailInfoRequest");
-              }
-              localObject = new NewIntent(paramContext.getApplicationContext(), niq.class);
-              ((NewIntent)localObject).putExtra("cmd", "EqqAccountSvc.get_eqq_detail");
-              localGetEqqDetailInfoRequest = new mobileqq_mp.GetEqqDetailInfoRequest();
-              localGetEqqDetailInfoRequest.version.set(2);
-              localGetEqqDetailInfoRequest.seqno.set(0);
-            }
-          }
-        }
-      }
-      try
-      {
-        localGetEqqDetailInfoRequest.eqq_id.set((int)Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString));
-        label280:
-        ((NewIntent)localObject).putExtra("data", localGetEqqDetailInfoRequest.toByteArray());
-        ((NewIntent)localObject).setObserver(new nmq(paramContext, paramQQAppInterface, localbiau, paramSessionInfo, paramString));
-        paramQQAppInterface.startServlet((NewIntent)localObject);
+        return true;
         try
         {
-          if ((!(paramContext instanceof Activity)) || (((Activity)paramContext).isFinishing())) {
-            continue;
-          }
-          a(2131694663, localbiau);
-          return;
-        }
-        catch (Exception paramQQAppInterface)
-        {
-          return;
-        }
-        b(paramQQAppInterface, paramContext, paramSessionInfo, null, (EqqDetail)localObject, paramString);
-        return;
-        a(paramContext, 2131694617);
-        bcst.b(paramQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
-        return;
-        b(paramQQAppInterface, paramContext, paramSessionInfo, (PublicAccountInfo)localObject, null, paramString);
-        return;
-        a(paramContext, 2131694617);
-        bcst.b(paramQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
-        return;
-      }
-      catch (Exception localException)
-      {
-        break label280;
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt, BusinessObserver paramBusinessObserver)
-  {
-    mobileqq_mp.GetEqqDetailInfoRequest localGetEqqDetailInfoRequest;
-    if (!c(paramQQAppInterface, paramString, paramInt))
-    {
-      paramContext = new NewIntent(paramContext.getApplicationContext(), niq.class);
-      paramContext.putExtra("cmd", "EqqAccountSvc.get_eqq_detail");
-      localGetEqqDetailInfoRequest = new mobileqq_mp.GetEqqDetailInfoRequest();
-      localGetEqqDetailInfoRequest.version.set(2);
-      localGetEqqDetailInfoRequest.seqno.set(0);
-    }
-    try
-    {
-      localGetEqqDetailInfoRequest.eqq_id.set((int)Long.parseLong(paramString));
-      label75:
-      paramContext.putExtra("data", localGetEqqDetailInfoRequest.toByteArray());
-      paramContext.setObserver(paramBusinessObserver);
-      paramQQAppInterface.startServlet(paramContext);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      break label75;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2)
-  {
-    if (!jdField_a_of_type_Boolean)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("IVR_TS_CrmUtils", 4, "Don't support sharp");
-      }
-      return;
-    }
-    SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = 1024;
-    localSessionInfo.d = paramString2;
-    localSessionInfo.jdField_a_of_type_JavaLangString = paramString1;
-    a(paramQQAppInterface, paramContext, localSessionInfo);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("IVR_TS_CrmUtils", 4, ">>>ivrAudio1(), ts=" + System.currentTimeMillis());
-    }
-    SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = 1024;
-    localSessionInfo.d = paramString1;
-    localSessionInfo.jdField_a_of_type_JavaLangString = paramString2;
-    a(paramQQAppInterface, paramContext, localSessionInfo, paramString3);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, EqqDetail paramEqqDetail)
-  {
-    ThreadManager.getFileThreadHandler().post(new CrmUtils.1(paramQQAppInterface, paramEqqDetail));
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = true;
-    new lkw();
-    lkw.a();
-    int i = lkw.f();
-    long l = lkw.d();
-    int j = Build.VERSION.SDK_INT;
-    if ((i < 3) || (l / 1000L < 800L) || (j < 9))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CrmUtils", 2, "User don't support sharp!");
-      }
-      bool = false;
-    }
-    return bool;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    boolean bool = true;
-    if (paramInt < 0)
-    {
-      QLog.i("CrmUtils", 1, "isCrmMaster meet error!!");
-      return false;
-    }
-    if ((paramInt & 0x1) != 0) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((paramQQAppInterface == null) || (paramString == null)) {
-      return false;
-    }
-    paramQQAppInterface = (anrs)paramQQAppInterface.getManager(56);
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = paramQQAppInterface.c(paramString);
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.extendType == 2)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    long l1 = System.currentTimeMillis();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("IVR_TS_CrmUtils", 4, ">>>hasIvrAbility(), ts=" + l1);
-    }
-    boolean bool2;
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CrmUtils", 2, "app is null or uin is empty");
-      }
-      bool2 = false;
-      return bool2;
-    }
-    boolean bool1;
-    if (paramInt == 1024)
-    {
-      Object localObject = paramQQAppInterface.getManager(56);
-      if (localObject != null)
-      {
-        localObject = ((anrs)localObject).c(paramString);
-        if (localObject != null) {}
-        for (bool1 = ((PublicAccountInfo)localObject).hasIvrAbility();; bool1 = paramQQAppInterface.hasIvrAbility())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("CrmUtils", 2, String.format("Check %s hasIvrAbility end, the result is %b", new Object[] { paramString, Boolean.valueOf(bool1) }));
-          }
-          long l2 = System.currentTimeMillis();
-          bool2 = bool1;
-          if (!QLog.isDevelopLevel()) {
-            break;
-          }
-          QLog.d("IVR_TS_CrmUtils", 4, "<<<hasIvrAbility(), ts=" + l2);
-          QLog.d("IVR_TS_CrmUtils", 4, String.format("hasIvrAbility(), cost=%dms", new Object[] { Long.valueOf(l2 - l1) }));
-          return bool1;
-          if (QLog.isColorLevel()) {
-            QLog.d("CrmUtils", 2, String.format("We cant find %s in public account cache", new Object[] { paramString }));
-          }
-          paramQQAppInterface = paramQQAppInterface.getManager(69);
-          if (paramQQAppInterface == null) {
-            break label309;
-          }
-          paramQQAppInterface = ((anlf)paramQQAppInterface).a(paramString);
-          if (paramQQAppInterface == null) {
-            break label278;
+          int i = Integer.valueOf(paramString).intValue();
+          if ((i >= 1000) && (i < 2000)) {
+            return false;
           }
         }
-        label278:
-        if (QLog.isColorLevel()) {
-          QLog.d("CrmUtils", 2, String.format("We can't find %s from EqqCache", new Object[] { paramString }));
-        }
+        catch (NumberFormatException paramString) {}
       }
-    }
-    for (;;)
-    {
-      bool1 = false;
-      break;
-      label309:
-      if (QLog.isColorLevel())
-      {
-        QLog.e("CrmUtils", 2, "Get EqqDetailDataManager error");
-        continue;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("CrmUtils", 2, "Get PublicAccountDataManager error");
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("CrmUtils", 2, String.format("uin %s isn't crmqq or now session type isn't crm", new Object[] { paramString }));
-          }
-        }
-      }
-    }
+    } while (!nmj.a.a());
+    nmj.a.a("HtmlCheckUpdate", 2, "initEnv NumberFormatException");
+    return true;
   }
   
-  public static int b(QQAppInterface paramQQAppInterface, String paramString)
+  public static String b()
   {
-    if ((paramQQAppInterface != null) && (nki.a(paramString)) && (nki.b(paramString)))
+    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
     {
-      paramQQAppInterface = (anmw)paramQQAppInterface.getManager(51);
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.b(paramString))) {
-        return 0;
-      }
-      return 1025;
+      yuk.d("OfflineEnvHelper", "getSDOfflineDir, initEnv");
+      a();
     }
-    return 1024;
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public static String b(QQAppInterface paramQQAppInterface, String paramString)
+  public static String b(String paramString)
   {
-    String str = paramString;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (!bjft.b(paramQQAppInterface, paramString)) {
-        break label25;
-      }
-      str = bjft.a(paramQQAppInterface, paramString);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    label25:
-    do
-    {
-      do
-      {
-        Object localObject;
-        do
-        {
-          do
-          {
-            return str;
-            localObject = paramQQAppInterface.getManager(56);
-            str = paramString;
-          } while (localObject == null);
-          localObject = ((anrs)localObject).c(paramString);
-          if (localObject == null) {
-            break;
-          }
-          str = paramString;
-        } while (((PublicAccountInfo)localObject).extendType != 2);
-        return ((PublicAccountInfo)localObject).name;
-        paramQQAppInterface = paramQQAppInterface.getManager(69);
-        str = paramString;
-      } while (paramQQAppInterface == null);
-      paramQQAppInterface = ((anlf)paramQQAppInterface).a(paramString);
-      str = paramString;
-    } while (paramQQAppInterface == null);
-    return paramQQAppInterface.name;
+    if (a(paramString)) {
+      return d();
+    }
+    return c();
   }
   
-  private static void b(int paramInt, biau parambiau)
+  public static String c()
   {
-    if (parambiau != null)
-    {
-      parambiau.c(paramInt);
-      parambiau.show();
+    if (TextUtils.isEmpty(d)) {
+      a();
     }
+    return d;
   }
   
-  private static void b(biau parambiau)
+  public static String d()
   {
-    if ((parambiau != null) && (parambiau.isShowing())) {
-      parambiau.dismiss();
+    if (TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) {
+      a();
     }
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, PublicAccountInfo paramPublicAccountInfo, EqqDetail paramEqqDetail, String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("IVR_TS_CrmUtils", 4, ">>>ivrAudio3(), ts=" + System.currentTimeMillis());
-    }
-    boolean bool;
-    int i;
-    if (paramPublicAccountInfo != null)
-    {
-      bool = paramPublicAccountInfo.hasIvrAbility();
-      i = 1;
-    }
-    for (;;)
-    {
-      if (bool)
-      {
-        if (i != 0) {
-          break label321;
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.d("IVR_TS_CrmUtils", 4, ">>>begin follow, ts=" + System.currentTimeMillis());
-        }
-        paramPublicAccountInfo = null;
-        if ((paramContext instanceof Activity)) {
-          paramPublicAccountInfo = new biau(paramContext, paramContext.getResources().getDimensionPixelSize(2131298998));
-        }
-        if (paramPublicAccountInfo != null) {
-          paramPublicAccountInfo.setCanceledOnTouchOutside(true);
-        }
-        NewIntent localNewIntent = new NewIntent(paramContext.getApplicationContext(), oaz.class);
-        localNewIntent.putExtra("cmd", "follow");
-        mobileqq_mp.FollowRequest localFollowRequest = new mobileqq_mp.FollowRequest();
-        localFollowRequest.uin.set((int)Long.parseLong(paramEqqDetail.uin));
-        localFollowRequest.account_type.set(2);
-        localNewIntent.putExtra("data", localFollowRequest.toByteArray());
-        localNewIntent.setObserver(new nmr(paramContext, paramQQAppInterface, paramPublicAccountInfo, paramEqqDetail, paramSessionInfo, paramString));
-        paramQQAppInterface.startServlet(localNewIntent);
-      }
-      try
-      {
-        if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing())) {
-          a(2131694663, paramPublicAccountInfo);
-        }
-        label257:
-        if (QLog.isColorLevel()) {
-          QLog.d("CrmUtils", 2, "follow exit");
-        }
-        do
-        {
-          return;
-          if (paramEqqDetail != null)
-          {
-            bool = paramEqqDetail.hasIvrAbility();
-            if (paramEqqDetail.followType != 0)
-            {
-              i = 1;
-              break;
-            }
-            i = 0;
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.w("CrmUtils", 2, "Both PublicAccountInfo and EqqDetail is NULL!");
-        return;
-        label321:
-        c(paramQQAppInterface, paramContext, paramSessionInfo, paramString);
-        return;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        break label257;
-      }
-    }
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2)
-  {
-    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
-    if (localObject == null) {}
-    for (localObject = null; (localObject == null) || (((String)localObject).length() == 0); localObject = ((TicketManager)localObject).getStweb(paramQQAppInterface.getCurrentAccountUin()))
-    {
-      new bibh(paramContext).a(2131692999, paramContext.getResources().getDimensionPixelSize(2131298998), 0, 1);
-      return;
-    }
-    paramString1 = String.format("https://ptlogin2.qq.com/qidian_client?pt_clientver=5428&pt_src=1&clientuin=%s&clientkey=%s&keyindex=19&jump=30&kfuin=%s&kfext=%s&buildver=1.0.0.0&inter=1&_wv=1027", new Object[] { paramQQAppInterface.getCurrentAccountUin(), localObject, paramString1, paramString2 });
-    if (QLog.isColorLevel()) {
-      QLog.d("CrmUtils", 2, "enterLightTalk() url = " + paramString1);
-    }
-    paramString2 = new Intent(paramContext, QQBrowserActivity.class);
-    paramString2.putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
-    paramString2.putExtra("url", paramString1);
-    paramString2.putExtra("hide_more_button", true);
-    paramContext.startActivity(paramString2);
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, EqqDetail paramEqqDetail)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CrmUtils", 2, "saveCache");
-    }
-    anlf localanlf = (anlf)paramQQAppInterface.getManager(69);
-    if (localanlf != null) {
-      localanlf.a(paramEqqDetail);
-    }
-    if ((paramEqqDetail != null) && (paramEqqDetail.followType == 1))
-    {
-      paramQQAppInterface = (anrs)paramQQAppInterface.getManager(56);
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.a(PublicAccountInfo.createPublicAccount(paramEqqDetail, 0L));
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("CrmUtils", 2, "saveCache exit");
-    }
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((paramQQAppInterface == null) || (paramString == null)) {
-      return false;
-    }
-    Object localObject = (anrs)paramQQAppInterface.getManager(56);
-    if (localObject != null)
-    {
-      localObject = ((anrs)localObject).c(paramString);
-      if ((localObject != null) && (((PublicAccountInfo)localObject).extendType == 2)) {
-        return true;
-      }
-    }
-    paramQQAppInterface = (anlf)paramQQAppInterface.getManager(69);
-    return (paramQQAppInterface != null) && (paramQQAppInterface.a(paramString) != null);
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    boolean bool2;
-    if ((paramInt != 0) && (paramInt != 1024))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CrmUtils", 2, "isQiye not friend and not crm tmp");
-      }
-      bool2 = false;
-      return bool2;
-    }
-    Object localObject;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      localObject = paramQQAppInterface.getManager(56);
-      if (localObject != null)
-      {
-        localObject = ((anrs)localObject).c(paramString);
-        if (localObject != null)
-        {
-          if (((PublicAccountInfo)localObject).extendType != 2) {
-            break label237;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("CrmUtils", 2, "isQiye PublicAccountInfo is eqq");
-          }
-          bool2 = true;
-          label95:
-          bool1 = bool2;
-          if (!bool2)
-          {
-            bool1 = bool2;
-            if (paramInt == 0)
-            {
-              bool1 = c(paramQQAppInterface, paramString);
-              if (QLog.isColorLevel()) {
-                QLog.d("CrmUtils", 2, "isQiye after getSimpleInfo value is " + bool1);
-              }
-              if (bjft.b(paramQQAppInterface, paramString)) {
-                if (QLog.isColorLevel()) {
-                  QLog.d("CrmUtils", 2, "isQiye uin is qidianmaster");
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    for (boolean bool1 = false;; bool1 = false)
-    {
-      bool2 = bool1;
-      if (!bool1) {
-        break;
-      }
-      QLog.i("CrmUtils", 1, "isQiye is true finally");
-      return bool1;
-      localObject = paramQQAppInterface.getManager(69);
-      if ((localObject != null) && (((anlf)localObject).a(paramString) != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CrmUtils", 2, "isQiye EqqDetail has data");
-        }
-        bool2 = true;
-        break label95;
-      }
-      label237:
-      bool2 = false;
-      break label95;
-    }
-  }
-  
-  private static void c(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("IVR_TS_CrmUtils", 4, ">>>startVideo(), ts=" + System.currentTimeMillis());
-    }
-    String str = paramSessionInfo.jdField_a_of_type_JavaLangString;
-    if ((paramQQAppInterface.d()) && (str != null) && (str.equals(paramQQAppInterface.a().c()))) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        bcst.b(paramQQAppInterface, "CliOper", "", "", "0X8004628", "0X8004628", 0, 0, "", "", "", "");
-      }
-      if (paramSessionInfo.jdField_a_of_type_Int != 1008) {
-        paramSessionInfo.jdField_a_of_type_Int = 1024;
-      }
-      agaa.a(paramQQAppInterface, paramContext, paramSessionInfo, true, paramString, null);
-      return;
-    }
-  }
-  
-  public static void c(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2)
-  {
-    if (!((anmw)paramQQAppInterface.getManager(51)).b(paramString2)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        if (!paramContext.getSharedPreferences(paramString1 + "_customer_transfer_sharepreference", 0).getBoolean(paramString1 + "_" + paramString2, false))
-        {
-          ((bjhb)paramQQAppInterface.a(85)).a(Long.valueOf(paramString1).longValue(), Long.valueOf(paramString2).longValue());
-          return;
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-      }
-    }
-  }
-  
-  public static boolean c(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (!nki.a(paramString)) {
-      return false;
-    }
-    paramQQAppInterface = ((anmw)paramQQAppInterface.getManager(51)).b(paramString);
-    if ((paramQQAppInterface != null) && (a(paramQQAppInterface.cSpecialFlag))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  private static boolean c(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    boolean bool2;
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CrmUtils", 2, "app is null or uin is empty");
-      }
-      bool2 = false;
-      return bool2;
-    }
-    boolean bool1;
-    if (paramInt == 1024)
-    {
-      Manager localManager = paramQQAppInterface.getManager(56);
-      if (localManager != null)
-      {
-        if (((anrs)localManager).c(paramString) != null) {}
-        for (bool1 = true;; bool1 = true)
-        {
-          bool2 = bool1;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("CrmUtils", 2, String.format("Check %s isContainUinInfo end, the result is %b", new Object[] { paramString, Boolean.valueOf(bool1) }));
-          return bool1;
-          if (QLog.isColorLevel()) {
-            QLog.d("CrmUtils", 2, String.format("We cant find %s in public account cache", new Object[] { paramString }));
-          }
-          paramQQAppInterface = paramQQAppInterface.getManager(69);
-          if (paramQQAppInterface == null) {
-            break label187;
-          }
-          if (((anlf)paramQQAppInterface).a(paramString) == null) {
-            break label157;
-          }
-        }
-        label157:
-        if (QLog.isColorLevel()) {
-          QLog.d("CrmUtils", 2, String.format("We can't find %s from EqqCache", new Object[] { paramString }));
-        }
-      }
-    }
-    for (;;)
-    {
-      bool1 = false;
-      break;
-      label187:
-      if (QLog.isColorLevel())
-      {
-        QLog.e("CrmUtils", 2, "Get EqqDetailDataManager error");
-        continue;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("CrmUtils", 2, "Get PublicAccountDataManager error");
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("CrmUtils", 2, String.format("uin %s isn't crmqq or now session type isn't crm", new Object[] { paramString }));
-          }
-        }
-      }
-    }
+    return jdField_b_of_type_JavaLangString;
   }
 }
 

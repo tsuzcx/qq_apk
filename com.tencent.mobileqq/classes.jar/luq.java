@@ -1,18 +1,18 @@
-public class luq
-  extends ltv
+import com.tencent.qphone.base.util.QLog;
+
+class luq
+  implements luy
 {
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  luq(lup paramlup) {}
   
-  public void a(long paramLong) {}
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a()
   {
-    paramInt2 = this.b * paramInt1 / 750;
-    paramInt3 = this.c * paramInt1 / 750;
-    a(paramInt2, paramInt3, this.d * paramInt1 / 750 + paramInt2, this.e * paramInt1 / 750 + paramInt3);
+    if (QLog.isColorLevel()) {
+      QLog.d("RedPacketGameEmojiAnimation", 2, "onShow called, needDetectFace set true");
+    }
+    if (this.a.a != null) {
+      this.a.a.c = true;
+    }
   }
 }
 

@@ -1,14 +1,13 @@
-import android.os.Handler;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahxz
-  extends anqd
+public class ahxz
+  implements ahyf
 {
-  ahxz(ahxt paramahxt) {}
-  
-  protected void f(boolean paramBoolean)
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    super.f(paramBoolean);
-    this.a.a.sendEmptyMessage(0);
+    paramahed.b(paramahfq.b, paramMessageRecord.extStr);
   }
 }
 

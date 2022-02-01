@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.Comparator;
 
 class poo
-  implements Animation.AnimationListener
+  implements Comparator<ArticleInfo>
 {
   poo(pon parampon) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
   {
-    this.a.a.clearAnimation();
-    this.a.a.setVisibility(8);
+    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
+      return 0;
+    }
+    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
+      return -1;
+    }
+    return 1;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,51 +1,73 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaFormat;
+import android.view.Surface;
 
+@TargetApi(16)
 public class bkgm
-  extends Handler
+  extends bkgj
 {
-  private WeakReference<Handler.Callback> a;
+  public int a;
+  public SurfaceTexture a;
+  private Surface a;
   
-  public bkgm(Handler.Callback paramCallback)
+  public bkgm(bkgl parambkgl, bkgk parambkgk, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
   {
-    this.a = new WeakReference(paramCallback);
+    super(parambkgl, parambkgk);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(paramInt);
+    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
   }
   
-  public bkgm(Looper paramLooper, Handler.Callback paramCallback)
+  protected String a()
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramCallback);
+    return "Q.qqstory.mediadecoderMediaCodecVideoRender";
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo)
   {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    if (localCallback != null) {
-      localCallback.handleMessage(paramMessage);
+    boolean bool = true;
+    int i = paramMediaCodec.dequeueOutputBuffer(paramBufferInfo, 10000L);
+    switch (i)
+    {
+    default: 
+      if ((paramBufferInfo.flags & 0x4) != 0)
+      {
+        yuk.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "output EOS");
+        this.jdField_b_of_type_Boolean = true;
+      }
+      if (paramBufferInfo.size == 0) {
+        break;
+      }
     }
-    while (!QLog.isColorLevel()) {
+    for (;;)
+    {
+      paramMediaCodec.releaseOutputBuffer(i, bool);
+      yuk.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "dequeueOutputBuffer render");
       return;
+      yuk.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "INFO_OUTPUT_BUFFERS_CHANGED");
+      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = paramMediaCodec.getOutputBuffers();
+      return;
+      yuk.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "New format " + this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat());
+      return;
+      yuk.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "dequeueOutputBuffer timed out!");
+      return;
+      bool = false;
     }
-    QLog.d("WeakReferenceHandler", 2, "handleMessage cb is null! handler = " + this);
   }
   
-  public String toString()
+  protected void a(bkgk parambkgk, MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
   {
-    Object localObject = (Handler.Callback)this.a.get();
-    StringBuilder localStringBuilder = new StringBuilder().append("WH");
-    if (localObject != null) {}
-    for (localObject = localObject.toString();; localObject = "None callback") {
-      return (String)localObject;
-    }
+    paramMediaCodec.configure(paramMediaFormat, this.jdField_a_of_type_AndroidViewSurface, null, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkgm
  * JD-Core Version:    0.7.0.1
  */

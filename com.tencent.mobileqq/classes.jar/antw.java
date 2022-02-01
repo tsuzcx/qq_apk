@@ -1,23 +1,31 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
-class antw
-  extends aoou
+public class antw
+  extends BroadcastReceiver
 {
-  antw(antv paramantv, String paramString, boolean paramBoolean)
-  {
-    super(paramString, paramBoolean);
-  }
+  private antw(BaseActivity2 paramBaseActivity2) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.d("RedpointHandler", 1, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
-    antv.a(this.a, paramInt, paramSosoLbsInfo);
+    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
+    {
+      BaseActivity2.mAppForground = false;
+      GesturePWDUtils.setAppForground(paramContext, BaseActivity2.mAppForground);
+    }
+    while (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
+      return;
+    }
+    BaseActivity2.mAppForground = GesturePWDUtils.isAppOnForegroundByTasks(paramContext);
+    GesturePWDUtils.setAppForground(paramContext, BaseActivity2.mAppForground);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     antw
  * JD-Core Version:    0.7.0.1
  */

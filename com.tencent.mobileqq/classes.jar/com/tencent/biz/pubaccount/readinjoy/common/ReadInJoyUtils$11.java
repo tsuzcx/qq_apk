@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import pha;
+import ozs;
 
 public final class ReadInJoyUtils$11
   implements Runnable
@@ -9,7 +9,7 @@ public final class ReadInJoyUtils$11
   
   public void run()
   {
-    pha.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Boolean);
+    ozs.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Boolean);
   }
 }
 

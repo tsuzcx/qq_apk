@@ -1,29 +1,21 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.pb.PBEnumField;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import java.util.List;
 
 public class ajfc
-  implements ajdd
 {
-  public ajfc(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
-  
-  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if (!(paramViewHolder instanceof ajeg)) {}
-    do
-    {
-      return;
-      paramView = (ajeg)paramViewHolder;
-    } while (paramView.a.msg_type.get() != 2);
-    TroopNotifyAndRecommendView.a(this.a, paramView);
-  }
-  
-  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    return false;
-  }
+  public int a;
+  public AccountSearchPb.hotwordrecord a;
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public int b;
+  public List<AccountSearchPb.record> b;
+  public boolean b;
+  public int c;
+  public List<AccountSearchPb.ResultItem> c;
+  public boolean c;
 }
 
 

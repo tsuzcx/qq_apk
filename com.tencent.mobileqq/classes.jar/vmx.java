@@ -1,30 +1,57 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import com.tencent.biz.qqcircle.events.QCircleDanmakuEvent;
+import com.tencent.biz.qqcircle.transition.QCircleTransitionLayout;
 
 class vmx
-  implements View.OnClickListener
+  implements vvu
 {
-  vmx(vms paramvms) {}
+  vmx(vmw paramvmw) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.a != null) {
-      this.a.a.callOnClick();
+    if (vmw.a(this.a) != null) {
+      vmw.a(this.a).a(0, 100);
     }
-    uzk localuzk = vms.a(this.a);
-    StringBuilder localStringBuilder = new StringBuilder().append("tvTime getFeedCommentInfo is");
-    if (localuzk != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("QCircleReplyMessagePresenter", 1, bool);
-      if (localuzk != null) {
-        vms.a(this.a, localuzk, 2);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (vmw.a(this.a) != null) {
+      vmw.a(this.a).animate().alpha(0.0F).setDuration(100L);
     }
+    if (vmw.a(this.a) != null) {
+      vmw.a(this.a).animate().alpha(0.0F).setDuration(100L);
+    }
+    if (vmw.a(this.a) != null) {
+      vmw.a(this.a).animate().alpha(0.0F).setDuration(100L);
+    }
+    vmw.a(this.a, 1, 0, 100);
+    aaak.a().a(new QCircleDanmakuEvent(7));
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    this.a.a(paramFloat1, paramFloat2);
+  }
+  
+  public void b()
+  {
+    if (vmw.a(this.a) != null) {
+      vmw.a(this.a).a(1, 100);
+    }
+    if (vmw.a(this.a) != null) {
+      vmw.a(this.a).animate().alpha(1.0F).setDuration(100L);
+    }
+    if (vmw.a(this.a) != null) {
+      vmw.a(this.a).animate().alpha(1.0F).setDuration(100L);
+    }
+    if (vmw.a(this.a) != null) {
+      vmw.a(this.a).animate().alpha(1.0F).setDuration(100L);
+    }
+    vmw.a(this.a, 0, 1, 100);
+    if (vmw.a(this.a) != null) {
+      vmw.a(this.a).a(true);
+    }
+    aaak.a().a(new QCircleDanmakuEvent(8));
   }
 }
 

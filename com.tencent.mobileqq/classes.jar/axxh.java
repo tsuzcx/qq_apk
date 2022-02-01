@@ -1,95 +1,108 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import android.graphics.Path;
+import android.view.View;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class axxh
-  implements BusinessObserver
+public class axxh
+  extends avsr
 {
-  axxh(axxf paramaxxf, String paramString, Context paramContext, int paramInt) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public axxh(HeartLayout paramHeartLayout)
   {
-    new Bundle();
-    String str = this.jdField_a_of_type_JavaLangString;
-    Object localObject = str;
-    if (paramBoolean) {
-      localObject = paramBundle.getByteArray("data");
-    }
-    try
-    {
-      paramBundle = new FastAuthorize.AuthorizeResponse();
-      paramBundle.mergeFrom((byte[])localObject);
-      this.jdField_a_of_type_Axxf.jdField_a_of_type_AndroidOsHandler.removeMessages(6);
-      if ((paramBundle.ret.get().equals("0")) && (paramBundle.apk_name.has()))
+    super(paramHeartLayout);
+  }
+  
+  public Path a(int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger, View paramView)
+  {
+    Random localRandom = this.jdField_a_of_type_JavaUtilRandom;
+    Path localPath = new Path();
+    label95:
+    label107:
+    int i;
+    int j;
+    int k;
+    int m;
+    if (!this.jdField_a_of_type_Avst.jdField_a_of_type_Boolean) {
+      if ((paramInt1 < 0) || (paramInt1 > paramView.getWidth()))
       {
-        if (paramBundle.access_token.has())
-        {
-          localObject = paramBundle.access_token.get();
-          this.jdField_a_of_type_Axxf.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Axxf.jdField_a_of_type_JavaLangString.replace("$AT$", (CharSequence)localObject);
+        this.jdField_a_of_type_Avst.jdField_a_of_type_Int = ((paramView.getWidth() - (int)(20.0F * this.jdField_a_of_type_Avst.jdField_a_of_type_Float)) / 2);
+        if ((paramInt2 >= 0) && (paramInt2 <= paramView.getHeight())) {
+          break label415;
         }
-        if (paramBundle.pay_token.has())
-        {
-          localObject = paramBundle.pay_token.get();
-          this.jdField_a_of_type_Axxf.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Axxf.jdField_a_of_type_JavaLangString.replace("$PT$", (CharSequence)localObject);
+        this.jdField_a_of_type_Avst.b = ((int)(20.0F * this.jdField_a_of_type_Avst.jdField_a_of_type_Float));
+        if (!this.jdField_a_of_type_JavaUtilRandom.nextBoolean()) {
+          break label447;
         }
-        if (paramBundle.openid.has())
-        {
-          localObject = paramBundle.openid.get();
-          this.jdField_a_of_type_Axxf.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Axxf.jdField_a_of_type_JavaLangString.replace("$OPID$", (CharSequence)localObject);
+        paramInt1 = 1;
+        i = paramInt1 * (localRandom.nextInt(this.jdField_a_of_type_Avst.c) + this.jdField_a_of_type_Avst.d);
+        j = paramInt1 * (localRandom.nextInt(this.jdField_a_of_type_Avst.c) + this.jdField_a_of_type_Avst.d);
+        k = paramView.getHeight() - this.jdField_a_of_type_Avst.b;
+        paramInt1 = (int)(paramAtomicInteger.intValue() * 4 * this.jdField_a_of_type_Avst.jdField_a_of_type_Float);
+        paramInt2 = this.jdField_a_of_type_Avst.g;
+        paramInt2 = localRandom.nextInt(this.jdField_a_of_type_Avst.f) + (paramInt1 + paramInt2);
+        m = paramInt2 / this.jdField_a_of_type_Avst.e;
+        paramInt1 = k - paramInt2;
+        if (paramInt1 >= 0) {
+          break label666;
         }
-        if (paramBundle.pfkey.has())
-        {
-          localObject = paramBundle.pfkey.get();
-          this.jdField_a_of_type_Axxf.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Axxf.jdField_a_of_type_JavaLangString.replace("$PF$", (CharSequence)localObject);
-        }
-        if (paramBundle.encrykey.has())
-        {
-          localObject = paramBundle.encrykey.get();
-          this.jdField_a_of_type_Axxf.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Axxf.jdField_a_of_type_JavaLangString.replace("$ESK$", (CharSequence)localObject);
-        }
-        localObject = paramBundle.apk_name.get();
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          return;
-        }
-        paramBundle = (Bundle)localObject;
-        if (((String)localObject).contains(this.jdField_a_of_type_JavaLangString)) {}
+        paramInt1 = 0;
       }
-      else
-      {
-        QLog.d(this.jdField_a_of_type_Axxf.getClass().getSimpleName(), 4, "start without login state");
-        paramBundle = str;
-      }
-      localObject = paramBundle;
     }
-    catch (InvalidProtocolBufferMicroException paramBundle)
+    label653:
+    label666:
+    for (;;)
     {
+      paramInt2 = k - paramInt2 / 2;
+      if (paramInt2 < 0) {
+        paramInt2 = 0;
+      }
       for (;;)
       {
-        localObject = str;
-        if (QLog.isColorLevel())
+        localPath.moveTo(this.jdField_a_of_type_Avst.jdField_a_of_type_Int, k);
+        localPath.cubicTo(this.jdField_a_of_type_Avst.jdField_a_of_type_Int, k - m, this.jdField_a_of_type_Avst.jdField_a_of_type_Int + i, paramInt2 + m, this.jdField_a_of_type_Avst.jdField_a_of_type_Int + i, paramInt2);
+        localPath.moveTo(this.jdField_a_of_type_Avst.jdField_a_of_type_Int + i, paramInt2);
+        if (paramInt2 - m >= 0) {
+          localPath.cubicTo(this.jdField_a_of_type_Avst.jdField_a_of_type_Int + i, paramInt2 - m, this.jdField_a_of_type_Avst.jdField_a_of_type_Int + j, paramInt1 + m, this.jdField_a_of_type_Avst.jdField_a_of_type_Int + j, paramInt1);
+        }
+        return localPath;
+        this.jdField_a_of_type_Avst.jdField_a_of_type_Int = (paramInt1 - (int)(20.0F * this.jdField_a_of_type_Avst.jdField_a_of_type_Float / 3.0F));
+        break;
+        label415:
+        this.jdField_a_of_type_Avst.b = (paramView.getHeight() - paramInt2 + (int)(20.0F * this.jdField_a_of_type_Avst.jdField_a_of_type_Float / 3.0F));
+        break label95;
+        label447:
+        paramInt1 = -1;
+        break label107;
+        k = this.jdField_a_of_type_Avst.l;
+        m = this.jdField_a_of_type_Avst.k;
+        int n = this.jdField_a_of_type_Avst.h / 2;
+        int i1;
+        int i2;
+        int i3;
+        int i4;
+        if (this.jdField_a_of_type_JavaUtilRandom.nextBoolean())
         {
-          QLog.d(this.jdField_a_of_type_Axxf.getClass().getSimpleName(), 2, paramBundle.getMessage());
-          localObject = str;
+          i = 1;
+          i1 = localRandom.nextInt(this.jdField_a_of_type_Avst.c);
+          i2 = this.jdField_a_of_type_Avst.d;
+          i3 = localRandom.nextInt(this.jdField_a_of_type_Avst.c);
+          i4 = this.jdField_a_of_type_Avst.d;
+          j = Math.abs(k - paramInt2) / (this.jdField_a_of_type_JavaUtilRandom.nextInt(3) + 2);
+          if (k <= paramInt2) {
+            break label653;
+          }
+          j = k - j;
+        }
+        for (;;)
+        {
+          localPath.moveTo(paramInt1 - this.jdField_a_of_type_Avst.h / 2, paramInt2 - this.jdField_a_of_type_Avst.i / 2);
+          localPath.cubicTo(i * (i1 + i2) + paramInt1, j, paramInt1 - i * (i3 + i4), j, m - n, k);
+          return localPath;
+          i = -1;
+          break;
+          j += k;
         }
       }
-    }
-    paramBundle = bbyc.a(this.jdField_a_of_type_Axxf.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d(getClass().getSimpleName(), 2, "lauchApp now");
-    }
-    biub.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject, paramBundle, this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Axxf.jdField_a_of_type_MqqAppNewIntent != null)
-    {
-      this.jdField_a_of_type_Axxf.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-      this.jdField_a_of_type_Axxf.jdField_a_of_type_MqqAppNewIntent = null;
-      return;
     }
   }
 }

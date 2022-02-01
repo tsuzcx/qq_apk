@@ -1,27 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tbs.one.TBSOneCallback;
-import java.io.File;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import java.util.Comparator;
 
 class atlr
-  extends TBSOneCallback<File>
+  implements Comparator<FavFileInfo>
 {
-  atlr(atlp paramatlp) {}
+  atlr(atlq paramatlq) {}
   
-  public void a(File paramFile)
+  public int a(FavFileInfo paramFavFileInfo1, FavFileInfo paramFavFileInfo2)
   {
-    QLog.i("LocalTbsViewManager<FileAssistant>", 1, "tbs reader engine download complete.");
-    bcst.b(null, "dc00898", "", "", "0X800B00A", "0X800B00A", 1, 0, "", "", "", "");
-  }
-  
-  public void onError(int paramInt, String paramString)
-  {
-    QLog.i("LocalTbsViewManager<FileAssistant>", 1, "tbs reader engine download error. code[" + paramInt + "] msg[" + paramString + "]");
-    bcst.b(null, "dc00898", "", "", "0X800B00A", "0X800B00A", 2, 0, "" + paramInt, "", "", "");
-  }
-  
-  public void onProgressChanged(int paramInt1, int paramInt2)
-  {
-    QLog.i("LocalTbsViewManager<FileAssistant>", 1, "tbs progress: oldProgress[" + paramInt1 + "] newProgress[" + paramInt2 + "]");
+    if (paramFavFileInfo2.c > paramFavFileInfo1.c) {
+      return 1;
+    }
+    if (paramFavFileInfo2.c < paramFavFileInfo1.c) {
+      return -1;
+    }
+    return 0;
   }
 }
 

@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aeio
-  implements DialogInterface.OnClickListener
+  extends ayxl
 {
-  public aeio(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bgpa parambgpa) {}
+  public aeio(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.jdField_a_of_type_Bgpa.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.getIntent();
-    paramDialogInterface.putExtra("delHead_fileid", FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity));
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.finish();
+    super.a(paramBoolean1, paramBoolean2, paramInt);
+    if ((paramBoolean1) && (paramInt != 2) && (Conversation.b(this.a))) {
+      bbba.a(this.a);
+    }
   }
 }
 

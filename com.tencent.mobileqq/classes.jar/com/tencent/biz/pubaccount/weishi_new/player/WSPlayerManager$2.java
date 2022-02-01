@@ -2,26 +2,32 @@ package com.tencent.biz.pubaccount.weishi_new.player;
 
 import android.os.Handler;
 import java.util.concurrent.ConcurrentHashMap;
-import ukb;
-import uke;
-import upe;
+import mqq.util.WeakReference;
+import ukz;
+import ulc;
+import uqf;
 
 class WSPlayerManager$2
   implements Runnable
 {
-  WSPlayerManager$2(WSPlayerManager paramWSPlayerManager, ukb paramukb, boolean paramBoolean1, boolean paramBoolean2) {}
+  WSPlayerManager$2(WSPlayerManager paramWSPlayerManager, WeakReference paramWeakReference, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ukb.jdField_a_of_type_Uke = WSPlayerManager.b(this.this$0);
-    if ((this.jdField_a_of_type_Ukb.jdField_a_of_type_Uke != null) && (WSPlayerManager.a(this.this$0) != null))
+    ukz localukz = (ukz)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localukz == null) {
+      return;
+    }
+    ulc localulc = WSPlayerManager.b(this.this$0);
+    localukz.jdField_a_of_type_Ulc = localulc;
+    if ((localulc != null) && (WSPlayerManager.a(this.this$0) != null))
     {
-      this.jdField_a_of_type_Ukb.jdField_a_of_type_Uke.a(this.jdField_a_of_type_Ukb.jdField_a_of_type_Ukf);
-      WSPlayerManager.a(this.this$0).put(this.jdField_a_of_type_Ukb.jdField_a_of_type_Uke, WSPlayerManager.a());
+      localulc.a(localukz.jdField_a_of_type_Uld);
+      WSPlayerManager.a(this.this$0).put(localulc, WSPlayerManager.a());
       WSPlayerManager.a(this.this$0).post(new WSPlayerManager.2.1(this));
       return;
     }
-    upe.d("WS_VIDEO_PLAYER", 2, "[WSPlayerManager.java][createVideoPlayerAndPlay] async run error! playerParam.videoPlayer:" + this.jdField_a_of_type_Ukb.jdField_a_of_type_Uke + ", mUIHandler:" + WSPlayerManager.a(this.this$0));
+    uqf.d("WS_VIDEO_PLAYER", 2, "[WSPlayerManager.java][createVideoPlayerAndPlay] async run error! playerParam.videoPlayer:" + localukz.jdField_a_of_type_Ulc + ", mUIHandler:" + WSPlayerManager.a(this.this$0));
   }
 }
 

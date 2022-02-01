@@ -1,10 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qg.sdk.QGRenderer.QGEventListener;
 
-public final class bqbc
-  implements DialogInterface.OnClickListener
+class bqbc
+  implements QGRenderer.QGEventListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  bqbc(bqav parambqav) {}
+  
+  public void onCanvasCreated()
+  {
+    yuk.b("StoryEffectTextMode", "Event: Canvas was created");
+    bqav.e(this.a, true);
+    bqav.c(this.a, true);
+    bqav.d(this.a);
+  }
+  
+  public void onDrawFrame()
+  {
+    if (bqav.a(this.a) != null) {
+      bqav.a(this.a).d();
+    }
+  }
 }
 
 

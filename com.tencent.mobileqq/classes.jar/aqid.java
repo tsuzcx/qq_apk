@@ -1,46 +1,121 @@
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
-public class aqid
-  implements aqiw
+class aqid
+  implements aqhu
 {
-  public aqid(LocationSelectActivity paramLocationSelectActivity) {}
+  aqid(aqib paramaqib) {}
   
-  public int a()
-  {
-    return this.a.jdField_a_of_type_Int;
-  }
+  public void a(String paramString, int paramInt) {}
   
-  public int a(int paramInt)
+  public void a(String arg1, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt] != null) {
-      return ((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt]).size();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.dynamicAvatar", 2, "onDownloadFinish url: " + ??? + " isSuccess: " + paramBoolean1 + " isFileExist: " + paramBoolean2);
     }
-    return 0;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    try
+    if (TextUtils.isEmpty(???)) {
+      return;
+    }
+    int i;
+    synchronized (this.a.c)
     {
-      if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1] != null)
+      i = this.a.c.size() - 1;
+      if (i >= 0)
       {
-        if (((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).code.equals("0")) {
-          return "----";
+        WeakReference localWeakReference = (WeakReference)this.a.c.get(i);
+        if ((localWeakReference == null) || (localWeakReference.get() == null))
+        {
+          this.a.c.remove(i);
         }
-        String str = ((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).name;
-        return str;
+        else if (???.equals(((aonz)((WeakReference)this.a.c.get(i)).get()).jdField_b_of_type_JavaLangString))
+        {
+          localWeakReference = (WeakReference)this.a.c.remove(i);
+          if (paramBoolean1)
+          {
+            this.a.b.add(localWeakReference);
+            if (QLog.isColorLevel()) {
+              QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish add to wait play list.");
+            }
+          }
+        }
       }
     }
-    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+    if (!aonz.jdField_b_of_type_Boolean) {
+      synchronized (this.a.d)
+      {
+        i = this.a.d.size() - 1;
+        label257:
+        if (i >= 0) {
+          if ((this.a.d.get(i) != null) && (((WeakReference)this.a.d.get(i)).get() != null))
+          {
+            ??? = (WeakReference)this.a.d.get(i);
+            label314:
+            if ((??? != null) && (???.get() != null)) {
+              this.a.a((aonz)???.get(), false, false);
+            }
+          }
+        }
+      }
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("LocationSelectActivity", 2, "", localIndexOutOfBoundsException);
+      synchronized (this.a.a)
+      {
+        i = this.a.a.size() - 1;
+        if (i >= 0)
+        {
+          if (((WeakReference)this.a.a.get(i)).get() == null) {
+            this.a.a.remove(i);
+          }
+          i -= 1;
+          continue;
+          this.a.d.remove(i);
+          i -= 1;
+          break label257;
+          ??? = finally;
+          throw ???;
+        }
+        i = this.a.b.size() - 1;
+        if (i < 0) {
+          break label695;
+        }
+        ??? = (WeakReference)this.a.b.get(i);
+        if ((??? == null) || (((WeakReference)???).get() == null))
+        {
+          this.a.b.remove(i);
+        }
+        else if (this.a.a.size() < aqib.a(this.a).a)
+        {
+          this.a.b.remove(i);
+          if (this.a.a.contains(???)) {
+            break label712;
+          }
+          paramBoolean1 = this.a.a((aonz)((WeakReference)???).get());
+          if (paramBoolean1) {
+            this.a.a.add(???);
+          }
+          if (!QLog.isColorLevel()) {
+            break label712;
+          }
+          QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish to play.02 result : " + paramBoolean1 + " playing size: " + this.a.a.size());
+        }
       }
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish to play.02 beyond maxPlayingCount : " + aqib.a(this.a).a);
+        break label712;
+        label695:
+        return;
+        ??? = null;
+        break label314;
+        i -= 1;
+        break;
+      }
+      label712:
+      i -= 1;
     }
-    return "";
   }
 }
 

@@ -8,9 +8,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ax
-  implements bkhw
+  implements bliz
 {
-  public ax(LiteActivity paramLiteActivity, long paramLong, DataLineMsgSet paramDataLineMsgSet, List paramList, bkho parambkho) {}
+  public ax(LiteActivity paramLiteActivity, long paramLong, DataLineMsgSet paramDataLineMsgSet, List paramList, blir paramblir) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -19,11 +19,11 @@ public class ax
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bkho.cancel();
+      this.jdField_a_of_type_Blir.cancel();
       return;
       if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(this.jdField_a_of_type_Long))
       {
-        paramView = (anjx)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
+        paramView = (anvu)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
         this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
         if (paramView.a(this.jdField_a_of_type_JavaUtilList))
         {
@@ -42,7 +42,7 @@ public class ax
         }
         else
         {
-          atvf.a(2131693360);
+          auna.a(2131693372);
         }
       }
     }

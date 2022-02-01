@@ -1,31 +1,73 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.widget.RoundImageView;
-import java.util.Iterator;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
-class aqhi
-  implements apsw
+public class aqhi
+  extends aqhe
 {
-  aqhi(aqhh paramaqhh) {}
+  private float a;
+  private float b = -1.0F;
+  private float c = -1.0F;
+  float[] d = new float[3];
+  private float[] e = new float[16];
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public aqhi(Context paramContext, int paramInt, SensorManager paramSensorManager, aqgw paramaqgw)
   {
-    paramString2 = (List)aqhh.a(this.a).get(paramString1);
-    if ((paramString2 != null) && (paramString2.size() > 0))
+    super(paramContext, paramInt, paramSensorManager, paramaqgw);
+    this.jdField_a_of_type_Float = -1.0F;
+    if (paramSensorManager.getDefaultSensor(3) != null)
     {
-      paramString2 = paramString2.iterator();
-      while (paramString2.hasNext())
+      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager.getDefaultSensor(3));
+      return;
+    }
+    throw new OrientationProviderNotFound(String.valueOf(3));
+  }
+  
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (this.jdField_a_of_type_Aqgw == null) {
+      return;
+    }
+    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
+    {
+      this.jdField_a_of_type_Float = paramFloat1;
+      this.jdField_a_of_type_Aqgw.updateAzimuth(paramFloat1);
+    }
+    if (Math.abs(paramFloat2 - this.b) > 1.0F)
+    {
+      this.b = paramFloat2;
+      this.jdField_a_of_type_Aqgw.updatePitch(paramFloat2);
+    }
+    if (Math.abs(paramFloat3 - this.c) > 1.0F)
+    {
+      this.c = paramFloat3;
+      this.jdField_a_of_type_Aqgw.updateRoll(paramFloat3);
+    }
+    this.jdField_a_of_type_Aqgw.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    if (paramSensorEvent.sensor.getType() == 3)
+    {
+      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
+      if (this.jdField_a_of_type_Int != 1)
       {
-        aqhl localaqhl = (aqhl)paramString2.next();
-        if ((localaqhl != null) && (localaqhl.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView != null) && (localaqhl.jdField_a_of_type_Arev != null))
-        {
-          localaqhl.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageBitmap(paramBitmap);
-          localaqhl.jdField_a_of_type_Arev.c(true);
-        }
+        this.d[0] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[0]));
+        this.d[1] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[1]));
+        this.d[2] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[2]));
+        aqgy.a(aqgy.a(this.d), this.e);
+        super.a(this.e);
       }
     }
-    aqhh.a(this.a).remove(paramString1);
+    else
+    {
+      return;
+    }
+    a(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2]);
   }
 }
 

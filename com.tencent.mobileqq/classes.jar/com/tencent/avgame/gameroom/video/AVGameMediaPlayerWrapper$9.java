@@ -1,19 +1,19 @@
 package com.tencent.avgame.gameroom.video;
 
 import com.tencent.superplayer.api.ISuperPlayer;
-import nct;
+import nej;
 
 public class AVGameMediaPlayerWrapper$9
   implements Runnable
 {
-  public AVGameMediaPlayerWrapper$9(nct paramnct) {}
+  public AVGameMediaPlayerWrapper$9(nej paramnej) {}
   
   public void run()
   {
-    if ((nct.a(this.this$0) == null) || (!nct.c(this.this$0))) {
+    if ((nej.a(this.this$0) == null) || (!nej.c(this.this$0))) {
       return;
     }
-    nct.a(this.this$0).start();
+    nej.a(this.this$0).start();
   }
 }
 

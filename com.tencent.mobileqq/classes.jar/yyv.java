@@ -1,15 +1,12 @@
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.view.View.OnClickListener;
 
 class yyv
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
-  yyv(yys paramyys) {}
+  yyv(yyu paramyyu) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
-  {
-    yqp.b("EditTextDialog", "onFocusChange:" + paramBoolean);
-  }
+  public void onClick(View paramView) {}
 }
 
 

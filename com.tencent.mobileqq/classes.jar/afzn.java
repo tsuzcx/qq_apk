@@ -1,21 +1,49 @@
-public abstract interface afzn
-  extends afxk
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.ServerNotifyObserver;
+
+public class afzn
+  extends ServerNotifyObserver
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  public afzn(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public abstract void ac();
+  public void onReceiveVerifyCode(String paramString1, int paramInt, String paramString2, byte[] paramArrayOfByte)
+  {
+    QLog.d("VerifyCodeActivity", 1, "onReceiveVerifyCode");
+    this.a.b = false;
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
+      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131719161), 0).a();
+    }
+    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey(paramString1);
+    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString().length() > 4)) {
+      VerifyCodeActivity.a(this.a, true);
+    }
+    if (paramArrayOfByte != null)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bhgm.a(paramArrayOfByte, 0, paramArrayOfByte.length));
+      this.a.a(false);
+      return;
+    }
+    Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131719158), 1).show();
+  }
   
-  public abstract void ad();
-  
-  public abstract void g(int paramInt);
-  
-  public abstract void h(int paramInt);
-  
-  public abstract void i(int paramInt);
+  public void onVerifyClose()
+  {
+    this.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afzn
  * JD-Core Version:    0.7.0.1
  */

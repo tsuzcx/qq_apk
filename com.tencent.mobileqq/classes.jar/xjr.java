@@ -1,40 +1,21 @@
-import com.tencent.biz.qqstory.database.VideoCollectionEntry;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher.1;
 
-class xjr
-  implements xje
+public class xjr
+  implements brhs
 {
-  private int jdField_a_of_type_Int;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  xix jdField_a_of_type_Xix;
+  public xjr(FollowCaptureLauncher.1 param1) {}
   
-  public xjr(xjq paramxjq, xix paramxix)
+  public void a()
   {
-    this.jdField_a_of_type_Xix = paramxix;
+    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65541);
   }
   
-  protected void a(String paramString, xjf paramxjf)
-  {
-    wyp localwyp = new wyp();
-    localwyp.jdField_c_of_type_JavaLangString = xjq.a(this.jdField_a_of_type_Xjq).uid;
-    if (xjq.a(this.jdField_a_of_type_Xjq).collectionKey != null) {
-      localwyp.jdField_d_of_type_Int = VideoCollectionEntry.getCollectionId(xjq.a(this.jdField_a_of_type_Xjq).collectionKey);
-    }
-    localwyp.jdField_d_of_type_JavaLangString = paramString;
-    localwyp.jdField_c_of_type_Int = 20;
-    localwyp.jdField_e_of_type_Int = xjq.a(this.jdField_a_of_type_Xjq).shareTimeZone;
-    localwyp.jdField_e_of_type_JavaLangString = xjq.a(this.jdField_a_of_type_Xjq).feedId;
-    localwyp.f = xjq.a(this.jdField_a_of_type_Xjq).identify;
-    localwyp.g = xjq.a(this.jdField_a_of_type_Xjq).videoListOrder;
-    wlb.a().a(localwyp, new xjs(this, paramxjf));
-  }
+  public void a(long paramLong1, long paramLong2) {}
   
-  public void a(xjf paramxjf)
+  public void b()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    a(xjq.a(this.jdField_a_of_type_Xjq), paramxjf);
+    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65542);
   }
 }
 

@@ -1,39 +1,30 @@
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 
 public class beep
-  extends beeq
-  implements View.OnClickListener
+  implements View.OnFocusChangeListener
 {
-  public View a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public befg a;
+  public beep(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  beep(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, View paramView)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    super(paramView);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    if (paramBoolean)
     {
+      becb.a(this.a.app, "0X800993D");
+      paramView.clearFocus();
+      if (this.a.jdField_a_of_type_AndroidAppDialog == null) {}
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a(this.jdField_a_of_type_Befg);
     }
+    this.a.jdField_a_of_type_AndroidAppDialog = new befl(this.a, GroupTeamWorkListActivity.a(this.a), this.a.app, this.a.jdField_a_of_type_Long);
+    this.a.jdField_a_of_type_AndroidAppDialog.setTitle(anzj.a(2131704291));
+    this.a.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
+    this.a.jdField_a_of_type_AndroidAppDialog.show();
+    this.a.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new beeq(this));
   }
 }
 

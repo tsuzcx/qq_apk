@@ -4,12 +4,17 @@ import android.content.Context;
 import android.view.Surface;
 import com.tencent.superplayer.player.MediaInfo;
 import com.tencent.superplayer.view.ISPlayerVideoView;
+import com.tencent.thumbplayer.api.TPTrackInfo;
 
 public abstract interface ISuperPlayer
 {
+  public abstract void addSubtitleSource(String paramString1, String paramString2, String paramString3);
+  
   public abstract int captureImageInTime(long paramLong, int paramInt1, int paramInt2);
   
   public abstract int captureImageInTime(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  
+  public abstract void deselectTrack(int paramInt, long paramLong);
   
   public abstract int getBufferPercent();
   
@@ -19,13 +24,15 @@ public abstract interface ISuperPlayer
   
   public abstract long getDurationMs();
   
-  public abstract MediaInfo getMediaInfo();
+  public abstract long getFileSizeBytes();
   
-  public abstract long getPlayedTime();
+  public abstract MediaInfo getMediaInfo();
   
   public abstract String getStreamDumpInfo();
   
   public abstract String getToken();
+  
+  public abstract TPTrackInfo[] getTrackInfo();
   
   public abstract int getVideoHeight();
   
@@ -65,7 +72,7 @@ public abstract interface ISuperPlayer
   
   public abstract void seekTo(int paramInt1, int paramInt2);
   
-  public abstract void setAudioPostFrameOptionInfo(SuperPlayerAudioInfo paramSuperPlayerAudioInfo);
+  public abstract void selectTrack(int paramInt, long paramLong);
   
   public abstract void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
@@ -86,6 +93,8 @@ public abstract interface ISuperPlayer
   public abstract void setOnInfoListener(ISuperPlayer.OnInfoListener paramOnInfoListener);
   
   public abstract void setOnSeekCompleteListener(ISuperPlayer.OnSeekCompleteListener paramOnSeekCompleteListener);
+  
+  public abstract void setOnSubtitleDataListener(ISuperPlayer.OnSubtitleDataListener paramOnSubtitleDataListener);
   
   public abstract void setOnTVideoNetInfoUpdateListener(ISuperPlayer.OnTVideoNetInfoListener paramOnTVideoNetInfoListener);
   

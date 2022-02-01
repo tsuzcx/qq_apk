@@ -1,214 +1,95 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.component.network.utils.FileUtils;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.vip.manager.MonitorManager;
 import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.FilenameFilter;
+import java.util.regex.Pattern;
+import mqq.app.ISecurityFileHelper;
 
 public class bmog
+  implements ISecurityFileHelper
 {
-  public static String a()
+  private FilenameFilter jdField_a_of_type_JavaIoFilenameFilter = new bmoh(this);
+  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("\\d{5,}");
+  
+  public String declareBusinessFileName()
   {
-    Object localObject1 = "";
-    Object localObject2 = a(null);
-    if (localObject2 != null)
-    {
-      ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("/"));
-      Object localObject3 = new File((String)localObject2);
-      localObject2 = localObject1;
-      if (((File)localObject3).isDirectory())
-      {
-        localObject3 = ((File)localObject3).listFiles();
-        int j = localObject3.length;
-        int i = 0;
-        for (;;)
-        {
-          localObject2 = localObject1;
-          if (i >= j) {
-            break;
-          }
-          Object localObject4 = localObject3[i];
-          localObject2 = localObject1;
-          if (localObject4.isDirectory()) {
-            localObject2 = (String)localObject1 + localObject4.getName() + ",";
-          }
-          i += 1;
-          localObject1 = localObject2;
-        }
-      }
-      if (((String)localObject2).length() > 0) {
-        return ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
-      }
-      return "";
-    }
-    return "";
+    return "ReaderZone";
   }
   
-  public static String a(Context paramContext)
+  public boolean doMigrate(File paramFile)
   {
-    return a("avatar");
-  }
-  
-  public static String a(String paramString)
-  {
-    Object localObject = bmoh.a();
-    if (localObject == null) {
-      localObject = null;
-    }
-    String str;
-    do
+    boolean bool2 = false;
+    File localFile1 = new File(antf.aZ, "/Tencent/ReaderZone/");
+    String[] arrayOfString = localFile1.list(this.jdField_a_of_type_JavaIoFilenameFilter);
+    boolean bool1;
+    if ((arrayOfString == null) || (arrayOfString.length == 0))
     {
-      return localObject;
-      str = ((File)localObject).getAbsolutePath();
-      localObject = str;
-    } while (TextUtils.isEmpty(paramString));
-    paramString = new File(str + File.separator + paramString);
-    try
-    {
-      if (paramString.isFile()) {
-        FileUtils.delete(paramString);
-      }
-      if (!paramString.exists()) {
-        paramString.mkdirs();
-      }
-      return paramString.getAbsolutePath();
+      bool1 = true;
+      return bool1;
     }
-    finally {}
-  }
-  
-  public static void a(bhod parambhod, String... paramVarArgs)
-  {
-    j = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneFacadeJsHandleLogic", 2, "handleSetFacadeFinish");
-    }
-    if ((parambhod.a() == null) || (parambhod.a() == null)) {
-      return;
-    }
-    LocalMultiProcConfig.putInt4Uin("key_personalize_prefix_19", 0, Long.valueOf(parambhod.a().getCurrentAccountUin()).longValue());
-    Intent localIntent = new Intent("action_facade_js2qzone");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("cmd", "setAvatar");
-    localIntent.putExtras(localBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneFacadeJsHandleLogic", 2, "actionString: " + localIntent.getAction());
-    }
-    blsb.a(parambhod.a(), blsi.a(), localIntent);
-    i = j;
-    if (paramVarArgs != null)
-    {
-      i = j;
-      if (paramVarArgs.length >= 1)
-      {
-        i = j;
-        if (TextUtils.isEmpty(paramVarArgs[0])) {}
-      }
-    }
+    int j = arrayOfString.length;
+    int i = 0;
     for (;;)
     {
-      try
-      {
-        i = new JSONObject(paramVarArgs[0]).optInt("need_jump");
-        if (i != 1) {
-          continue;
-        }
-        i = j;
+      if (i >= j) {
+        break label220;
       }
-      catch (Exception paramVarArgs)
-      {
-        QLog.e("QZoneFacadeJsHandleLogic", 1, paramVarArgs.getMessage());
-        MonitorManager.a().a(15, 4, " parse json error " + paramVarArgs.getStackTrace(), false);
-        i = j;
-        continue;
-      }
-      if (i == 0) {
+      Object localObject = arrayOfString[i];
+      File localFile2 = new File(localFile1, (String)localObject);
+      localObject = new File(paramFile.getAbsolutePath() + File.separator + (String)localObject + File.separator + declareBusinessFileName());
+      int k = bhmi.a(localFile2.getAbsolutePath(), ((File)localObject).getAbsolutePath());
+      QLog.d("ISecurityFileHelper", 1, "doMigrate：" + declareBusinessFileName() + " result = " + k + " fromFile = " + localFile2.getAbsolutePath() + " targetFile = " + ((File)localObject).getAbsolutePath());
+      bool1 = bool2;
+      if (k != 0) {
         break;
       }
-      parambhod.a().finish();
-      return;
-      i = 0;
+      i += 1;
     }
+    label220:
+    return true;
   }
   
-  public static void b(bhod parambhod, String... paramVarArgs)
+  public boolean needMigration()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneFacadeJsHandleLogic", 2, "handleDownloadFacadeFinish");
-    }
-    String str1 = "";
-    Object localObject3 = "";
-    str2 = "";
-    localObject4 = str2;
-    Object localObject2 = localObject3;
-    Object localObject1 = str1;
-    if (paramVarArgs != null)
-    {
-      localObject4 = str2;
-      localObject2 = localObject3;
-      localObject1 = str1;
-      if (paramVarArgs.length > 0)
-      {
-        localObject2 = localObject3;
-        localObject1 = str1;
-      }
-    }
-    try
-    {
-      localObject4 = new JSONObject(paramVarArgs[0]);
-      localObject2 = localObject3;
-      localObject1 = str1;
-      paramVarArgs = ((JSONObject)localObject4).getString("avatarID");
-      localObject2 = localObject3;
-      localObject1 = paramVarArgs;
-      localObject3 = ((JSONObject)localObject4).getString("avatarUrl");
-      localObject2 = localObject3;
-      localObject1 = paramVarArgs;
-      localObject4 = ((JSONObject)localObject4).getString("type");
-      localObject1 = paramVarArgs;
-      localObject2 = localObject3;
-    }
-    catch (JSONException paramVarArgs)
-    {
-      for (;;)
-      {
-        paramVarArgs.printStackTrace();
-        localObject4 = str2;
-      }
-    }
-    if ((!TextUtils.isEmpty(localObject2)) && (parambhod.a() != null))
-    {
-      paramVarArgs = new Intent("action_facade_js2qzone");
-      localObject3 = new Bundle();
-      ((Bundle)localObject3).putString("avatarId", (String)localObject1);
-      ((Bundle)localObject3).putString("avatarUrl", localObject2);
-      ((Bundle)localObject3).putString("type", (String)localObject4);
-      ((Bundle)localObject3).putString("cmd", "downloadAvatar");
-      paramVarArgs.putExtras((Bundle)localObject3);
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneFacadeJsHandleLogic", 2, "actionString: " + paramVarArgs.getAction());
-      }
-      blsb.a(parambhod.a(), blsi.a(), paramVarArgs);
-    }
+    String[] arrayOfString = new File(antf.aZ, "/Tencent/ReaderZone/").list(this.jdField_a_of_type_JavaIoFilenameFilter);
+    return (arrayOfString != null) && (arrayOfString.length > 0);
   }
   
-  public static void c(bhod parambhod, String... paramVarArgs)
+  @NonNull
+  public File oldBusinessDir(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneFacadeJsHandleLogic", 2, "handleCheckDownloadedIdList");
+    return new File(new File(antf.aZ, "/Tencent/ReaderZone/"), paramString);
+  }
+  
+  public boolean oldBusinessDirExist(String paramString)
+  {
+    paramString = oldBusinessDir(paramString);
+    return (paramString.isDirectory()) && (paramString.exists());
+  }
+  
+  public String[] reportHistoryFileInfo()
+  {
+    long l2 = 0L;
+    String[] arrayOfString1 = new String[2];
+    File localFile = new File(antf.aZ, "/Tencent/ReaderZone/");
+    String[] arrayOfString2 = localFile.list(this.jdField_a_of_type_JavaIoFilenameFilter);
+    if ((arrayOfString2 != null) && (arrayOfString2.length > 0))
+    {
+      int j = arrayOfString2.length;
+      int i = 0;
+      long l1 = 0L;
+      while (i < j)
+      {
+        String str = arrayOfString2[i];
+        l2 += bhmi.b(new File(localFile, str).getAbsolutePath());
+        l1 += bhmi.c(new File(localFile, str).getAbsolutePath());
+        i += 1;
+      }
+      arrayOfString1[0] = Long.toString(l2);
+      arrayOfString1[1] = Long.toString(l1);
+      QLog.d("ISecurityFileHelper", 1, "reportHistoryFileInfo:" + declareBusinessFileName() + " fileAmount = " + l1 + " fileSize = " + l2);
     }
-    paramVarArgs = a();
-    parambhod = parambhod.a();
-    if (parambhod != null) {
-      parambhod.callJs("window.QzAvatarDressJSInterface.onReceive({type:\"idlist\",data:\"" + paramVarArgs + "\"});");
-    }
+    return arrayOfString1;
   }
 }
 

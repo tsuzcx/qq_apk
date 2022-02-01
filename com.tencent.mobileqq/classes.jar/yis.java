@@ -1,51 +1,44 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralRecommendFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.GeneralRecommendFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.NormalCardInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.OperationCardInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class yis
-  extends yka<GeneralRecommendFeedItem>
 {
-  public yis(@NonNull GeneralRecommendFeedItem paramGeneralRecommendFeedItem)
+  private qqstory_struct.OperationCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo;
+  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
+  
+  public yis(qqstory_struct.OperationCardInfo paramOperationCardInfo)
   {
-    super(paramGeneralRecommendFeedItem);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo = paramOperationCardInfo;
   }
   
-  public GeneralRecommendFeedItem a()
+  public yis(byte[] paramArrayOfByte)
   {
-    return (GeneralRecommendFeedItem)super.a();
-  }
-  
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
-  {
-    Object localObject = (qqstory_struct.GeneralFeed)paramStoryFeed.general_recommend_feed.recommend_feed.get();
-    ((GeneralRecommendFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.GeneralFeed)localObject);
-    ((GeneralRecommendFeedItem)this.a).blurb = paramStoryFeed.general_recommend_feed.blurb.get().toStringUtf8();
-    ((GeneralRecommendFeedItem)this.a).recommendId = paramStoryFeed.general_recommend_feed.recommend_id.get();
-    ((GeneralRecommendFeedItem)this.a).recommendTitle = paramStoryFeed.general_recommend_feed.title_wording.get().toStringUtf8();
-    ((GeneralRecommendFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    paramStoryFeed = new ArrayList();
-    localObject = ((qqstory_struct.GeneralFeed)localObject).feed_video_info_list.get().iterator();
-    while (((Iterator)localObject).hasNext())
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo = new qqstory_struct.OperationCardInfo();
+    try
     {
-      qqstory_struct.FeedVideoInfo localFeedVideoInfo = (qqstory_struct.FeedVideoInfo)((Iterator)localObject).next();
-      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-      localStoryVideoItem.convertFrom("Q.qqstory.home.data.GeneralRecommendHomeFeed", localFeedVideoInfo);
-      paramStoryFeed.add(localStoryVideoItem);
+      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.mergeFrom(paramArrayOfByte);
+      return;
     }
-    c(paramStoryFeed, true);
-    return true;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yuk.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
+    }
+  }
+  
+  public CardItem.CardVideoInfo a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.card_info.story_video_info.size() == 0) {
+        return null;
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.card_info.story_video_info.get(0));
+    }
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   }
 }
 

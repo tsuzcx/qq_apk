@@ -1,27 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerTriplePicItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyUgcVideoReportItem;
 
-public class onz
-  extends onp
+public final class onz
+  implements Parcelable.Creator<ReadInJoyUgcVideoReportItem>
 {
-  public int a(BaseData paramBaseData)
+  public ReadInJoyUgcVideoReportItem a(Parcel paramParcel)
   {
-    int i = -1;
-    if ((paramBaseData instanceof ProteusBannerTriplePicItemData)) {
-      i = opz.a((ProteusBannerTriplePicItemData)paramBaseData);
-    }
-    return i;
+    return new ReadInJoyUgcVideoReportItem(paramParcel);
   }
   
-  protected syj a(View paramView, BaseData paramBaseData)
+  public ReadInJoyUgcVideoReportItem[] a(int paramInt)
   {
-    return new ooa(this, paramView, paramBaseData, this.a);
-  }
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return (paramBaseData != null) && (paramBaseData.t == 24);
+    return new ReadInJoyUgcVideoReportItem[paramInt];
   }
 }
 

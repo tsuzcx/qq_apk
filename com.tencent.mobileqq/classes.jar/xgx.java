@@ -1,15 +1,15 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-
 class xgx
-  extends AnimatorListenerAdapter
+  extends xfx
 {
-  xgx(xgw paramxgw) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  xgx(xgp paramxgp, String paramString1, String paramString2, boolean paramBoolean, xhx paramxhx)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.a.a = false;
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Xhx.c = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 

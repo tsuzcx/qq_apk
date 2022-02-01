@@ -1,47 +1,63 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.graphics.Rect;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 public class lvh
+  extends lvf
 {
-  private static volatile lvh jdField_a_of_type_Lvh;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public luz a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  private lvh()
+  public lvh(luz paramluz)
   {
-    this.jdField_a_of_type_JavaUtilMap.put("request", new String("-1"));
-    this.jdField_a_of_type_JavaUtilMap.put("update", new String("-1"));
-    this.jdField_a_of_type_JavaUtilMap.put("load", new String("-1"));
+    this.jdField_a_of_type_Luz = paramluz;
+    this.jdField_b_of_type_Long = 750L;
   }
   
-  public static lvh a()
+  public void a(long paramLong)
   {
-    if (jdField_a_of_type_Lvh == null) {}
-    try
-    {
-      if (jdField_a_of_type_Lvh == null) {
-        jdField_a_of_type_Lvh = new lvh();
-      }
-      return jdField_a_of_type_Lvh;
+    super.a(paramLong);
+    long l = this.jdField_a_of_type_Long;
+    int i = 0;
+    if (paramLong - l <= this.jdField_b_of_type_Long) {
+      i = 255;
     }
-    finally {}
+    a(i);
   }
   
-  public String a(String paramString)
+  public void a(AVRedPacketManager paramAVRedPacketManager)
   {
-    return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    this.jdField_c_of_type_ArrayOfLvr = new lvr[5];
+    int i = 0;
+    while (i < this.jdField_c_of_type_ArrayOfLvr.length)
+    {
+      this.jdField_c_of_type_ArrayOfLvr[i] = new lvr(paramAVRedPacketManager.a("qav_redpacket_gold_" + i * 2 + ".png"));
+      i += 1;
+    }
   }
   
-  public void a(String paramString, int paramInt)
+  public void b()
   {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, String.valueOf(paramInt));
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    super.b();
+    this.jdField_a_of_type_Luz = null;
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_b_of_type_Int = (paramInt1 * 399 / 750);
+    this.jdField_c_of_type_Int = (paramInt1 * 279 / 750);
+    this.d = (paramInt1 * 155 / 750);
+    this.e = (paramInt1 * 252 / 750);
+  }
+  
+  public void c()
+  {
+    Rect localRect = this.jdField_a_of_type_Luz.a();
+    int i = localRect.left - this.d;
+    int j = localRect.top - this.e;
+    a(i, j, this.jdField_b_of_type_Int + i, this.jdField_c_of_type_Int + j);
   }
 }
 

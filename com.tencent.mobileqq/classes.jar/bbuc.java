@@ -1,46 +1,43 @@
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
 
-class bbuc
-  implements Comparator<bbmu>
+public final class bbuc
+  implements asmr
 {
-  bbuc(bbub parambbub) {}
+  public bbuc(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public int a(bbmu parambbmu1, bbmu parambbmu2)
+  public void a(asmu paramasmu)
   {
-    int i = -1;
-    parambbmu1 = (bboi)parambbmu1;
-    parambbmu2 = (bboi)parambbmu2;
-    anmw localanmw = (anmw)this.a.a.getManager(51);
-    boolean bool1 = localanmw.b((String)parambbmu1.a());
-    boolean bool2 = localanmw.b((String)parambbmu2.a());
-    if ((!bool1) && (!bool2))
+    if (paramasmu != null) {}
+    try
     {
-      bool1 = localanmw.d((String)parambbmu1.a());
-      bool2 = localanmw.d((String)parambbmu2.a());
-      if ((!bool1) && (!bool2)) {
-        return parambbmu2.f() - parambbmu1.f();
-      }
-      if (bool1 != bool2)
-      {
-        if (bool2) {
-          return -1;
-        }
-        return 1;
-      }
-      return parambbmu2.f() - parambbmu1.f();
+      paramasmu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+      return;
     }
-    if (bool1 != bool2)
-    {
-      if (bool2) {}
-      for (;;)
-      {
-        return i;
-        i = 1;
-      }
-    }
-    return parambbmu2.f() - parambbmu1.f();
+    catch (Throwable paramasmu) {}
   }
+  
+  public void a(asmu paramasmu1, asmu paramasmu2, Drawable paramDrawable) {}
+  
+  public boolean a(asmu paramasmu)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    behh.a(this.jdField_a_of_type_AndroidWidgetEditText);
+  }
+  
+  public void b(asmu paramasmu) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 

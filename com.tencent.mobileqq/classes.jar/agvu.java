@@ -1,27 +1,117 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.device.datadef.DeviceInfo;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-class agvu
-  implements DialogInterface.OnClickListener
+public class agvu
+  implements agvc, Handler.Callback
 {
-  agvu(agvs paramagvs) {}
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agvu(BaseChatPie paramBaseChatPie)
   {
-    if (!bgnt.g(this.a.a.jdField_a_of_type_AndroidContentContext)) {
-      biti.a().a(2131691363);
-    }
-    do
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+  }
+  
+  private ChatMessage a()
+  {
+    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Aggs.a();
+    Iterator localIterator = localList.iterator();
+    int i = 0;
+    if (localIterator.hasNext())
     {
+      ChatMessage localChatMessage = (ChatMessage)localIterator.next();
+      if (QLog.isColorLevel()) {
+        QLog.d("vip_ptt.helper", 1, "SHOW_FIRST:" + localChatMessage.msgtype);
+      }
+      if (localChatMessage.msgtype != -2002) {
+        break label123;
+      }
+      QLog.e("vip_ptt.helper", 1, "SHOW_FIRST find the ptt msg");
+      i = 1;
+    }
+    label123:
+    for (;;)
+    {
+      break;
+      if (i != 0) {
+        return (ChatMessage)localList.get(localList.size() - 1);
+      }
+      return null;
+    }
+  }
+  
+  private void a(ChatMessage paramChatMessage, String paramString)
+  {
+    paramString = new avpd(paramChatMessage.frienduin, paramChatMessage.selfuin, paramString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, -5020, 655392, paramChatMessage.time);
+    MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
+    if (paramChatMessage.istroop == 1) {
+      localMessageForUniteGrayTip.shmsgseq = paramChatMessage.shmsgseq;
+    }
+    localMessageForUniteGrayTip.initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
+    avpe.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForUniteGrayTip);
+    QLog.e("vip_ptt.helper", 1, "It is need add gray msg and insert success");
+  }
+  
+  private boolean a()
+  {
+    if ((arms.c().a <= 1) && (ahod.d)) {
+      return !biik.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "have_add_ptt_gray_msg", false);
+    }
+    return false;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 8: 
+    case 9: 
+    default: 
+    case 6: 
+    case 7: 
+      do
+      {
+        return;
+        QLog.e("vip_ptt.helper", 1, "SHOW_FIRST_BEGIN");
+        return;
+      } while (!a());
+      QLog.e("vip_ptt.helper", 1, "It is need add gray msg");
+      ChatMessage localChatMessage = a();
+      if (localChatMessage == null)
+      {
+        QLog.e("vip_ptt.helper", 1, "It is need add gray msg,but this aio not ptt msg");
+        return;
+      }
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(10102, localChatMessage));
       return;
-      paramDialogInterface = (abqn)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
-      paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, 1, 0);
-      paramDialogInterface = paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
-    } while (paramDialogInterface == null);
-    accz.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), "Usr_AIO_Menu", 5, 0, paramDialogInterface.productId);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(10102);
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 6, 7, 10 };
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    paramMessage = (ChatMessage)paramMessage.obj;
+    if (arms.c().a <= 1)
+    {
+      a(paramMessage, anzj.a(2131707588));
+      biik.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "have_add_ptt_gray_msg", true);
+    }
+    return true;
   }
 }
 

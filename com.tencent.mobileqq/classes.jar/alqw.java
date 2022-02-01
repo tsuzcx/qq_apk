@@ -1,39 +1,75 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class alqw
-  implements bhyz
+  extends alqb
 {
-  public alqw(TextPreviewMenu paramTextPreviewMenu, TextPreviewActivity paramTextPreviewActivity) {}
-  
-  public void a()
+  public alqw(Context paramContext)
   {
-    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu);
+    this.jdField_a_of_type_JavaLangString = ("[" + anzj.a(2131698518) + "]");
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(String paramString)
+  public Object a(int paramInt, bfoy parambfoy, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
-    bdon.a(paramString, "OCR_Participle_copy");
+    if ((paramObject instanceof alqw))
+    {
+      paramObject = (alqw)paramObject;
+      paramObject.jdField_a_of_type_Bfoz.a(parambfoy.jdField_a_of_type_Bfoz);
+      return paramObject;
+    }
+    paramObject = new alqw(BaseApplication.getContext());
+    paramObject.jdField_a_of_type_Bfoz = new bfoz(parambfoy.jdField_a_of_type_Bfoz);
+    return paramObject;
   }
   
-  public void b(String paramString)
+  public void a(byte[] paramArrayOfByte)
   {
-    bdon.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, paramString);
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
+    {
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      if (this.jdField_a_of_type_Bfoz == null) {
+        this.jdField_a_of_type_Bfoz = new bfoz();
+      }
+      this.jdField_a_of_type_Bfoz.a(paramArrayOfByte.getString("messageNavInfo"));
+      return;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
   
-  public void c(String paramString)
+  public byte[] a()
   {
-    bdon.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity.app, paramString);
-  }
-  
-  public void d(String paramString)
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, TextPreviewTranslateActivity.class);
-    localIntent.putExtra("TranslateText", paramString);
-    localIntent.putExtra("WhereAreYouFrom", "AIO_TEXTPREVIEW");
-    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu, localIntent);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Bfoz != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bfoz.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 

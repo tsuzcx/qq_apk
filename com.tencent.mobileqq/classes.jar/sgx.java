@@ -1,19 +1,10 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkChangeReceiver.1;
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
-public final class sgx
-  extends BroadcastReceiver
+public abstract interface sgx
 {
-  private sgx(sgu paramsgu) {}
-  
-  public void onReceive(@NotNull Context paramContext, @NotNull Intent paramIntent)
-  {
-    sgu.a(this.a).post(new BandwidthPredictor.NetworkChangeReceiver.1(this));
-  }
+  public abstract boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject);
 }
 
 

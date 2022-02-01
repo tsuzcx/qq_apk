@@ -1,34 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneIPCModule;
-import java.util.List;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
 
 class aijq
-  implements aijs
+  implements Animation.AnimationListener
 {
   aijq(aijp paramaijp) {}
   
-  public void a(List<aiit> paramList, String paramString1, String paramString2, int paramInt, String paramString3)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (TextUtils.isEmpty(paramString1))
+    if (this.a.a.p != null)
     {
-      paramString1 = new StringBuilder().append("OnImgUpdated: empty data or text ").append(paramString1).append(" ");
-      if (paramList == null) {}
-      for (paramList = "null";; paramList = Integer.valueOf(paramList.size()))
-      {
-        QLog.i("StickerRecManager", 2, paramList);
-        return;
-      }
+      paramAnimation = AnimationUtils.loadAnimation(this.a.a.a, 2130772234);
+      paramAnimation.setAnimationListener(this);
+      this.a.a.p.startAnimation(paramAnimation);
     }
-    paramList = QzoneIPCModule.a(paramList);
-    if (paramList == null)
-    {
-      QLog.i("StickerRecManager", 2, "OnImgUpdated: failed to parse img data");
-      return;
-    }
-    QzoneIPCModule.a().a(paramString1, paramList.toString(), paramString2);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

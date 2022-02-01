@@ -1,29 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.av.utils.PopupDialogQQSide;
 
-final class mtj
-  extends BroadcastReceiver
+public class mtj
+  implements DialogInterface.OnDismissListener
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public mtj(PopupDialogQQSide paramPopupDialogQQSide) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    while (!mti.a.equals(paramIntent.getAction())) {
-      return;
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.w("SensorReport", 1, "H264_decode");
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().doOnBackPressed();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
-    HashMap localHashMap = (HashMap)paramIntent.getSerializableExtra("params");
-    paramIntent = paramIntent.getStringExtra("key");
-    paramContext = paramIntent;
-    if (paramIntent == null) {
-      paramContext = mti.a;
-    }
-    UserAction.onUserAction(paramContext, true, -1L, -1L, localHashMap, true, true);
   }
 }
 

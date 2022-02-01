@@ -1,40 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bbjn
-  implements View.OnClickListener
+public abstract interface bbjn
 {
-  bbjn(bbjm parambbjm, String paramString, int paramInt) {}
+  public abstract void a(long paramLong, bbjm parambbjm);
   
-  public void onClick(View paramView)
-  {
-    Object localObject = this.jdField_a_of_type_Bbjm.a.getActivity();
-    if ((this.jdField_a_of_type_Bbjm.a.getActivity() instanceof bbjl))
-    {
-      localObject = (bbjl)localObject;
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      bbrf.a(null, new ReportModelDC02528().module("all_search").action("clk_frame_up").ver1(this.jdField_a_of_type_JavaLangString).ver2("kandian").ver3(UniteSearchActivity.d).ver4(this.jdField_a_of_type_Bbjm.a.jdField_a_of_type_JavaLangString).ver5(this.jdField_a_of_type_Int / 2 + 1 + "").ver6(UniteSearchActivity.c).session_id(UniteSearchActivity.e));
-    }
-    for (;;)
-    {
-      if (localObject != null) {
-        ((bbjl)localObject).c(this.jdField_a_of_type_JavaLangString);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (AssociateSearchWordsFragment.a(this.jdField_a_of_type_Bbjm.a) != null) {
-        localObject = AssociateSearchWordsFragment.a(this.jdField_a_of_type_Bbjm.a);
-      } else {
-        localObject = null;
-      }
-    }
-  }
+  public abstract void a(boolean paramBoolean, long paramLong, bbjm parambbjm, bbjl parambbjl, int paramInt);
 }
 
 

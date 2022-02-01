@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.ocr;
 
-import anni;
-import ayfm;
-import ayjb;
+import anzj;
+import ayyf;
+import azbu;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class OCRResultActivity$10$2
   implements Runnable
 {
-  public OCRResultActivity$10$2(ayfm paramayfm, String paramString) {}
+  public OCRResultActivity$10$2(ayyf paramayyf, String paramString) {}
   
   public void run()
   {
     try
     {
-      OCRResultActivity.a(this.jdField_a_of_type_Ayfm.a).dismiss();
-      OCRResultActivity.a(this.jdField_a_of_type_Ayfm.a).a(0);
-      OCRResultActivity.d(this.jdField_a_of_type_Ayfm.a, false);
-      QQToast.a(this.jdField_a_of_type_Ayfm.a, 2, anni.a(2131706593), 1).a();
+      OCRResultActivity.a(this.jdField_a_of_type_Ayyf.a).dismiss();
+      OCRResultActivity.a(this.jdField_a_of_type_Ayyf.a).a(0);
+      OCRResultActivity.d(this.jdField_a_of_type_Ayyf.a, false);
+      QQToast.a(this.jdField_a_of_type_Ayyf.a, 2, anzj.a(2131706700), 1).a();
       if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
       {
-        this.jdField_a_of_type_Ayfm.a.a(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Ayyf.a.a(this.jdField_a_of_type_JavaLangString);
         return;
       }
-      QQToast.a(this.jdField_a_of_type_Ayfm.a, 1, anni.a(2131706587), 0).a();
+      QQToast.a(this.jdField_a_of_type_Ayyf.a, 1, anzj.a(2131706694), 0).a();
       return;
     }
     catch (Exception localException)

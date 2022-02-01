@@ -1,21 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorApplyAllLoadingView;
 
-class bper
-  extends SimpleJob<Object>
+public class bper
+  implements Animator.AnimatorListener
 {
-  bper(bpep parambpep, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
+  public bper(AEEditorApplyAllLoadingView paramAEEditorApplyAllLoadingView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramString1);
+    this.a.a();
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    yqu.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

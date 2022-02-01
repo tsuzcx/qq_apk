@@ -1,27 +1,50 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class bazh
+  implements URLDrawableDownListener
 {
-  public int a;
-  public String a;
-  public ArrayList<bazh> a;
-  public boolean a;
-  public int b = 1;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
+  public bazh(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
-  public bazh(int paramInt)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadCancelled: ");
+    }
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadFailed: ");
+    }
+    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadInterrupted: ");
+    }
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadProgressed: " + paramURLDrawable + " / " + paramInt);
+    }
+    ReceiptMessageDetailFragment.a(this.a).setLevel(paramInt);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
+    ReceiptMessageDetailFragment.a(this.a, paramURLDrawable);
+    ReceiptMessageDetailFragment.b(this.a);
   }
 }
 

@@ -1,30 +1,85 @@
-import java.util.ArrayList;
+import com.tencent.common.config.AppSetting;
 
 public class aqzp
 {
-  private aqzq jdField_a_of_type_Aqzq;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public aqzp()
+  public static int a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Aqzq = new aqzq();
+    if ((paramString == null) || (paramString.length() <= 0)) {}
+    String str;
+    do
+    {
+      return -1;
+      paramString = b(paramString);
+      str = bhvd.a("RESPCONDITION", paramString);
+      if (bhvd.a("RESPCONTENTTYPES", paramString).equals("PRELOAD")) {
+        return 3;
+      }
+      if (str.equals("MANUAL")) {
+        return 0;
+      }
+      if (str.equals("AUTO")) {
+        return 1;
+      }
+    } while (!str.equals("SEMIAUTO"));
+    return 2;
   }
   
-  public aqzp(String paramString, aqzq paramaqzq)
+  public static arse a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aqzq = paramaqzq;
+    arse localarse = new arse();
+    paramString = b(paramString);
+    localarse.a = bhvd.a(bhvd.a("DESC", paramString));
+    localarse.b = bhvd.a(bhvd.a("SUBJECT", paramString));
+    localarse.c = bhvd.a("RESPCONDITION", paramString);
+    if ((!localarse.c.equals("MANUAL")) && (!localarse.c.equals("AUTO")) && (!localarse.c.equals("SEMIAUTO"))) {
+      return null;
+    }
+    localarse.d = bhvd.a("RESPDESC", paramString);
+    localarse.e = bhvd.a("RESPCONTENTTYPES", paramString);
+    localarse.f = bhvd.a("RESPDEST", paramString);
+    localarse.g = bhvd.a("RESPCONTENTS", paramString);
+    localarse.d = bhvd.a(localarse.d);
+    localarse.f = bhvd.a(localarse.f).trim();
+    localarse.g = bhvd.a(localarse.g);
+    return localarse;
   }
   
-  public aqzq a()
+  public static String a(String paramString)
   {
-    return this.jdField_a_of_type_Aqzq;
+    if ((paramString == null) || (paramString.length() <= 0)) {
+      return null;
+    }
+    return bhvd.a("RESPCONTENTTYPES", paramString);
   }
   
-  public boolean a()
+  public static arse b(String paramString)
   {
-    return (this.jdField_a_of_type_Aqzq == null) || (this.jdField_a_of_type_Aqzq.a == null) || (this.jdField_a_of_type_Aqzq.a.size() <= 0);
+    paramString = a(paramString);
+    if (paramString == null) {}
+    do
+    {
+      return paramString;
+      if (paramString.c.equals("MANUAL"))
+      {
+        paramString.a(false);
+        return paramString;
+      }
+      if (paramString.c.equals("AUTO"))
+      {
+        paramString.a();
+        return paramString;
+      }
+    } while (!paramString.c.equals("SEMIAUTO"));
+    paramString.a();
+    return paramString;
+  }
+  
+  private static String b(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() <= 0)) {
+      return "";
+    }
+    return bhvd.a(bhvd.a(paramString, 0, "||QQNO||", aqzw.a()), 0, "||LICENCE||", AppSetting.d());
   }
 }
 

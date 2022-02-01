@@ -1,31 +1,55 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
-class amjf
-  implements andx
+public class amjf
+  extends Handler
 {
-  amjf(amje paramamje) {}
+  public amjf(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
   
-  public void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    QLog.d("sava_ChatPieApolloViewController", 1, "sava_native_log preLoadApolloEngine onSoLoadComplete ret:" + paramInt);
-    if (paramInt == 0)
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("sava_ChatPieApolloViewController", 2, "sava_native_log preLoadApolloEngine onSoLoadComplete");
-      }
-      if (amje.a(this.a))
+    default: 
+    case 8193: 
+    case 8194: 
+      do
       {
-        QLog.i("sava_ChatPieApolloViewController", 1, "onSoLoadComplete but AIO destroy!");
+        do
+        {
+          do
+          {
+            return;
+            if (QQSpecialCareSettingActivity.a(this.a) == null)
+            {
+              QQSpecialCareSettingActivity.a(this.a, new bjbs(this.a, this.a.getTitleBarHeight()));
+              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
+                QQSpecialCareSettingActivity.a(this.a).a((String)paramMessage.obj);
+              }
+            }
+          } while ((this.a.isFinishing()) || (QQSpecialCareSettingActivity.a(this.a).isShowing()));
+          try
+          {
+            QQSpecialCareSettingActivity.a(this.a).show();
+            return;
+          }
+          catch (Exception paramMessage) {}
+        } while (!QLog.isColorLevel());
+        QLog.e("QQSpecialCareSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
         return;
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloRender != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.preLoadDirector();
-        amje.a(this.a);
-      }
+      } while ((QQSpecialCareSettingActivity.a(this.a) == null) || (!QQSpecialCareSettingActivity.a(this.a).isShowing()));
+      QQSpecialCareSettingActivity.a(this.a).dismiss();
+      QQSpecialCareSettingActivity.a(this.a, null);
+      return;
     }
-    andw.b(this.a.jdField_a_of_type_Andx);
+    if (QQSpecialCareSettingActivity.a(this.a) != null) {
+      QQSpecialCareSettingActivity.a(this.a).cancel();
+    }
+    QQSpecialCareSettingActivity.a(this.a, QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
   }
 }
 

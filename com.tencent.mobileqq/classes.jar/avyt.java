@@ -1,78 +1,46 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.io.File;
+import java.util.concurrent.CountDownLatch;
 
 class avyt
-  implements avwu
+  implements awbm
 {
-  avyt(avys paramavys) {}
+  avyt(avyr paramavyr, File paramFile, Exception[] paramArrayOfException, long paramLong, CountDownLatch paramCountDownLatch) {}
   
-  public void a(avwp paramavwp, int paramInt)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, "[LocationShareController] onKickOff: invoked. roomKey: " + paramavwp + " mRoomKey: " + avys.a(this.a));
+    QLog.d("shadow::CdnPmUpdater", 1, " download cdn success");
+    if (!avyr.a(this.jdField_a_of_type_Avyr).renameTo(this.jdField_a_of_type_JavaIoFile)) {
+      this.jdField_a_of_type_ArrayOfJavaLangException[0] = new RuntimeException(anzj.a(2131700380) + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
     }
-    QQToast.a(avys.a(this.a), "已在其他设备进行共享", 0).a();
-    avys.a(this.a).setResult(1);
-    avys.a(this.a).finish();
-  }
-  
-  public void a(avwp paramavwp, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, new Object[] { "onOperateRoomResponse: invoked. ", " roomKey: ", paramavwp, " errorCode: ", Integer.valueOf(paramInt1), " operateType: ", Integer.valueOf(paramInt2) });
-    }
-    if (!paramavwp.equals(avys.a(this.a))) {}
-    do
+    if (avyr.b(this.jdField_a_of_type_Avyr)) {}
+    for (String str = "33669797";; str = "33669802")
     {
-      do
-      {
-        return;
-        if (paramInt1 != 10100) {
-          break;
-        }
-      } while ((avys.a(this.a) == null) || (avys.a(this.a).isFinishing()));
-      avys.a(this.a).setResult(1);
-      avxq.a(avys.a(this.a));
-      return;
-    } while ((paramInt1 != 10101) || (avys.a(this.a) == null) || (avys.a(this.a).isFinishing()));
-    avys.a(this.a).setResult(1);
-    avxq.b(avys.a(this.a));
-  }
-  
-  public void a(avwp paramavwp, LocationRoom.Venue paramVenue, List<avwn> paramList)
-  {
-    if ((!paramavwp.equals(avys.a(this.a))) || (avys.a(this.a).isFinishing())) {
+      awbj.b(str);
+      avyr.a(this.jdField_a_of_type_Avyr).opType("onDownloadComplete").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
+      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
       return;
     }
-    paramVenue = paramList.iterator();
-    while (paramVenue.hasNext())
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    this.jdField_a_of_type_ArrayOfJavaLangException[0] = new Exception("下载失败 retcode:" + paramInt1 + " httpCode:" + paramInt2 + " err:" + paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("shadow::CdnPmUpdater", 2, " onDownloadFailed retCode =  " + paramInt1);
+    }
+    if (avyr.b(this.jdField_a_of_type_Avyr)) {}
+    for (paramString = "33669798";; paramString = "33669803")
     {
-      paramList = (avwn)paramVenue.next();
-      Bitmap localBitmap = this.a.a(paramList.a());
-      if (localBitmap != null)
-      {
-        localBitmap = bgmo.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
-        avys.a(this.a).a(paramList.a(), localBitmap);
-      }
-    }
-    avys.a(this.a).a(paramavwp);
-  }
-  
-  public void b(avwp paramavwp, int paramInt)
-  {
-    if (!paramavwp.equals(avys.a(this.a))) {}
-    while ((paramInt == 2) || (paramInt == 1)) {
+      awbj.b(paramString);
+      avyr.a(this.jdField_a_of_type_Avyr).opType("onDownloadFailed").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
+      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
       return;
     }
-    avys.a(this.a).setResult(1);
-    avxq.a(avys.a(this.a));
   }
+  
+  public void a(long paramLong1, long paramLong2, int paramInt) {}
 }
 
 

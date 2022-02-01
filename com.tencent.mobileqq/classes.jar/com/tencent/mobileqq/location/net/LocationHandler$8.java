@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.location.net;
 
 import android.content.Intent;
-import avwv;
-import avxi;
-import bcst;
+import awpq;
+import awqd;
+import bdll;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -14,20 +14,20 @@ import com.tencent.qphone.base.util.QLog;
 public class LocationHandler$8
   implements Runnable
 {
-  public LocationHandler$8(avwv paramavwv) {}
+  public LocationHandler$8(awpq paramawpq) {}
   
   public void run()
   {
-    if (avwv.a(this.this$0))
+    if (awpq.a(this.this$0))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("LocationHandler", 2, new Object[] { "run: invoked. ", " bgHandlerForDelayExitRoomStopped: ", Boolean.valueOf(avwv.a(this.this$0)) });
+        QLog.d("LocationHandler", 2, new Object[] { "run: invoked. ", " bgHandlerForDelayExitRoomStopped: ", Boolean.valueOf(awpq.a(this.this$0)) });
       }
       return;
     }
-    this.this$0.a(avwv.a(this.this$0), true);
+    this.this$0.a(awpq.a(this.this$0), true);
     this.this$0.a.a();
-    QQToast.a(BaseApplicationImpl.context, this.this$0.app.getApp().getString(2131692848), 0).a();
+    QQToast.a(BaseApplicationImpl.context, this.this$0.app.getApp().getString(2131692856), 0).a();
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     if (localBaseActivity != null)
     {
@@ -39,7 +39,7 @@ public class LocationHandler$8
         localBaseActivity.finish();
       }
     }
-    bcst.b(null, "CliOper", "", "", "0X800A8BB", "0X800A8BB", 0, 0, "", "0", "0", "");
+    bdll.b(null, "CliOper", "", "", "0X800A8BB", "0X800A8BB", 0, 0, "", "0", "0", "");
   }
 }
 

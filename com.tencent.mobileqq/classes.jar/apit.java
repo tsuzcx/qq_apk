@@ -1,17 +1,8 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.3;
-import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.3.1.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-
-public class apit
-  implements acke
+public abstract interface apit
 {
-  public apit(ArkAppNotifyCenter.GdtNotify.3 param3) {}
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
   
-  public void onResponse(ackd paramackd)
-  {
-    ArkAppCenter.a().postToArkThread(new ArkAppNotifyCenter.GdtNotify.3.1.1(this, paramackd));
-  }
+  public abstract void a(float[] paramArrayOfFloat);
 }
 
 

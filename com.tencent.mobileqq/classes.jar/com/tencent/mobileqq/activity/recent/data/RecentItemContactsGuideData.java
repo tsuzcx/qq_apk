@@ -7,8 +7,6 @@ import com.tencent.mobileqq.data.RecentUser;
 public class RecentItemContactsGuideData
   extends AbsRecentUserBusinessBaseData
 {
-  public String fixed_entrance_url;
-  
   public RecentItemContactsGuideData(RecentUser paramRecentUser)
   {
     super(paramRecentUser);

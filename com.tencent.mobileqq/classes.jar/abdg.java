@@ -1,22 +1,86 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 
-class abdg
-  extends Handler
+public class abdg
+  extends RecyclerView.ViewHolder
 {
-  abdg(abdf paramabdf, Looper paramLooper)
+  private final View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private boolean jdField_a_of_type_Boolean;
+  private View b;
+  
+  public abdg(abdd paramabdd, View paramView)
   {
-    super(paramLooper);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369385));
+    this.b = paramView.findViewById(2131366770);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371555);
   }
   
-  public void handleMessage(Message paramMessage)
+  private RotateAnimation a()
   {
-    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
+    RotateAnimation localRotateAnimation = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
+    localRotateAnimation.setDuration(3000L);
+    localRotateAnimation.setInterpolator(new LinearInterpolator());
+    localRotateAnimation.setRepeatCount(-1);
+    return localRotateAnimation;
+  }
+  
+  public void a()
+  {
+    a(true);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      paramMessage = (Bundle)paramMessage.obj;
-      abdf.a(this.a, paramMessage);
+      if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 8) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      }
+      if (this.b.getVisibility() == 8) {
+        this.b.setVisibility(0);
+      }
+    }
+    while (this.b.getVisibility() != 0) {
+      return;
+    }
+    this.b.setVisibility(8);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+    }
+    while (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void c()
+  {
+    b(true);
+  }
+  
+  public void d()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(a());
+      this.jdField_a_of_type_Boolean = true;
     }
   }
 }

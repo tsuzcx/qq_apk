@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import aopw;
+import apdm;
 
 public class MessageForDeviceFile
   extends ChatMessage
@@ -66,7 +66,7 @@ public class MessageForDeviceFile
   {
     try
     {
-      MessageForDeviceFile.DeviceFileMsgSerial localDeviceFileMsgSerial = (MessageForDeviceFile.DeviceFileMsgSerial)aopw.a(this.msgData);
+      MessageForDeviceFile.DeviceFileMsgSerial localDeviceFileMsgSerial = (MessageForDeviceFile.DeviceFileMsgSerial)apdm.a(this.msgData);
       if (localDeviceFileMsgSerial != null)
       {
         this.strServiceName = localDeviceFileMsgSerial.strServiceName;
@@ -195,7 +195,7 @@ public class MessageForDeviceFile
     localDeviceFileMsgSerial.quality = this.quality;
     try
     {
-      this.msgData = aopw.a(localDeviceFileMsgSerial);
+      this.msgData = apdm.a(localDeviceFileMsgSerial);
       return;
     }
     catch (Exception localException)
@@ -206,7 +206,7 @@ public class MessageForDeviceFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForDeviceFile
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,46 @@
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
-import cooperation.qzone.report.lp.LpReportInfo_dc00321;
 
-public class blsn
-  implements View.OnClickListener
+class blsn
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public blsn(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
+  blsn(blsg paramblsg) {}
   
-  public void onClick(View paramView)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (!this.a.b)
+    return true;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    Object localObject = this.a.findChildView(paramMotionEvent);
+    if (localObject != null)
     {
-      if (1 == this.a.c) {
-        LpReportInfo_dc00321.report(8, 129, 0, false, false, null);
+      localObject = this.a.mRecyclerView.getChildViewHolder((View)localObject);
+      if ((localObject != null) && (this.a.mCallback.hasDragFlag(this.a.mRecyclerView, (RecyclerView.ViewHolder)localObject))) {
+        break label57;
       }
-      this.a.a(false, false);
-      this.a.b();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    label57:
+    do
+    {
+      do
+      {
+        return;
+      } while (paramMotionEvent.getPointerId(0) != this.a.mActivePointerId);
+      int i = paramMotionEvent.findPointerIndex(this.a.mActivePointerId);
+      float f1 = paramMotionEvent.getX(i);
+      float f2 = paramMotionEvent.getY(i);
+      this.a.mInitialTouchX = f1;
+      this.a.mInitialTouchY = f2;
+      paramMotionEvent = this.a;
+      this.a.mDy = 0.0F;
+      paramMotionEvent.mDx = 0.0F;
+    } while (!this.a.mCallback.isLongPressDragEnabled());
+    this.a.select((RecyclerView.ViewHolder)localObject, 2);
   }
 }
 

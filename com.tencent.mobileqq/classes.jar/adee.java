@@ -1,21 +1,15 @@
-import android.support.annotation.NonNull;
-import org.json.JSONObject;
+import IMMsgBodyPack.MsgType0x210;
 
-public abstract class adee
+final class adee
+  implements lya
 {
-  protected aded a;
+  adee(MsgType0x210 paramMsgType0x210) {}
   
-  protected void a() {}
-  
-  public final void a(aded paramaded)
+  public void a(lxz paramlxz)
   {
-    this.a = paramaded;
-    a();
+    paramlxz.b(this.a.vProtobuf);
+    paramlxz.a();
   }
-  
-  public abstract boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull adea paramadea);
-  
-  public void b() {}
 }
 
 

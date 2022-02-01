@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bhpq;
-import biau;
-import tcf;
+import biql;
+import bjbs;
+import stb;
 
 class SwiftBrowserScreenShotHandler$6$1
   implements Runnable
@@ -11,7 +11,7 @@ class SwiftBrowserScreenShotHandler$6$1
   
   public void run()
   {
-    bhpq.a(this.a.this$0).a().dismiss();
+    biql.a(this.a.this$0).a().dismiss();
   }
 }
 

@@ -1,15 +1,4 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-
-public class amwp
-  implements DialogInterface.OnClickListener
-{
-  public amwp(ApolloGameActivity paramApolloGameActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwp

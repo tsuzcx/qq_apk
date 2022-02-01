@@ -1,61 +1,33 @@
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.List;
+import pb.unify.search.UnifySearchUnite.TabItemGroup;
+import pb.unite.search.UniteSearch.TabItemGroup;
+
 public class bcfl
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  public String a;
+  public List<Long> a;
   
-  bcfl(String paramString)
+  public bcfl() {}
+  
+  public bcfl(UnifySearchUnite.TabItemGroup paramTabItemGroup)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramTabItemGroup == null) {
+      throw new RuntimeException("group is null in GroupTabModel Constructor.");
+    }
+    this.jdField_a_of_type_JavaLangString = paramTabItemGroup.tab_name.get().toStringUtf8();
+    this.jdField_a_of_type_JavaUtilList = paramTabItemGroup.rpt_group_mask.get();
   }
   
-  public int a()
+  public bcfl(UniteSearch.TabItemGroup paramTabItemGroup)
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
-      return -3;
+    if (paramTabItemGroup == null) {
+      throw new RuntimeException("group is null in GroupTabModel Constructor.");
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\_");
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
-      return -2;
-    }
-    return 0;
-  }
-  
-  int a(char paramChar)
-  {
-    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
-      return -3;
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\" + paramChar);
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
-      return -2;
-    }
-    return 0;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[0].trim();
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[1].trim();
-  }
-  
-  String c()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[0].trim();
-  }
-  
-  String d()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[1].trim();
+    this.jdField_a_of_type_JavaLangString = paramTabItemGroup.tab_name.get().toStringUtf8();
+    this.jdField_a_of_type_JavaUtilList = paramTabItemGroup.rpt_group_mask.get();
   }
 }
 

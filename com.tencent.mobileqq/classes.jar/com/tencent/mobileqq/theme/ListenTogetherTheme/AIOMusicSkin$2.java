@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.theme.ListenTogetherTheme;
 
-import bdpd;
+import behz;
 import com.tencent.mobileqq.activity.ChatFragment;
 
 public class AIOMusicSkin$2
   implements Runnable
 {
-  public AIOMusicSkin$2(bdpd parambdpd) {}
+  public AIOMusicSkin$2(behz parambehz) {}
   
   public void run()
   {
-    if (bdpd.a(this.this$0) != null) {
-      bdpd.a(this.this$0, bdpd.a(this.this$0).a, bdpd.a(this.this$0));
+    if (behz.a(this.this$0) != null) {
+      behz.a(this.this$0, behz.a(this.this$0).a, behz.a(this.this$0));
     }
   }
 }

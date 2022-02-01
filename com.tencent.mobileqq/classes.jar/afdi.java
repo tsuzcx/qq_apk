@@ -1,22 +1,56 @@
-import android.os.Handler;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper.6.1;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class afdi
-  implements INetEventHandler
+  extends aohf
 {
-  afdi(afdc paramafdc) {}
+  public afdi(PhoneUnityPhoneLoginActivity paramPhoneUnityPhoneLoginActivity) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void a(int paramInt, String paramString)
   {
-    if (!paramBoolean)
+    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
     {
-      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131693956), 1).show();
-      SendMultiPictureHelper.6.1 local1 = new SendMultiPictureHelper.6.1(this);
-      new Handler().postDelayed(local1, 3000L);
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
+      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(true);
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
+      return;
+    }
+    if (paramInt == 39)
+    {
+      bdll.b(this.a.app, "CliOper", "", "", "0X8005BFD", "0X8005BFD", 0, 0, "", "", "", "");
+      bhlq.a(this.a, 230, this.a.getString(2131694234), this.a.getString(2131694233), null, this.a.getString(2131691833), new afdj(this), null).show();
+      return;
+    }
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = this.a.getString(2131694232);
+    }
+    QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
+    {
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
+      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(false);
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
+      return;
+    }
+    String str;
+    if (paramInt == 36) {
+      str = this.a.getString(2131694238);
+    }
+    for (;;)
+    {
+      QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+      return;
+      str = paramString;
+      if (TextUtils.isEmpty(paramString)) {
+        str = this.a.getString(2131694237);
+      }
     }
   }
 }

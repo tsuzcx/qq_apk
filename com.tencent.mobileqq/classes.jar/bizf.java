@@ -1,12 +1,6 @@
-public class bizf
+public abstract interface bizf
 {
-  public String a;
-  public String b;
-  
-  public void a(String paramString)
-  {
-    this.b = paramString;
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

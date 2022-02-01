@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.sdk;
 
-import akwm;
+import alib;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -59,7 +59,7 @@ public class MiniAppLauncher
         if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
           return openMiniApp(paramContext, paramLaunchParam);
         }
-        akwm.a(paramLaunchParam, null);
+        alib.a(paramLaunchParam, null);
         return true;
       }
     }

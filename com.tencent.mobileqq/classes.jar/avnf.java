@@ -1,46 +1,44 @@
+import android.os.Handler;
 import android.os.Looper;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.SQLiteOpenHelper;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Message;
+import com.tencent.mobileqq.gamecenter.view.ScrollTextView;
+import java.lang.ref.WeakReference;
 
-final class avnf
-  implements HookMethodCallback
+public class avnf
+  extends Handler
 {
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  private WeakReference<ScrollTextView> a;
+  
+  public avnf(ScrollTextView paramScrollTextView)
   {
-    long l = Thread.currentThread().getId();
-    HashMap localHashMap;
-    if (avnd.a().containsKey(Long.valueOf(l)))
-    {
-      l = SystemClock.uptimeMillis() - ((Long)avnd.a().remove(Long.valueOf(l))).longValue();
-      localHashMap = new HashMap(10);
-      if (Looper.myLooper() != Looper.getMainLooper()) {
-        break label139;
-      }
-    }
-    label139:
-    for (paramMethodHookParam = "1";; paramMethodHookParam = "0")
-    {
-      localHashMap.put("param_IsMainThread", paramMethodHookParam);
-      localHashMap.put("param_OptType", "connection");
-      localHashMap.put("param_bustag", "Friends");
-      localHashMap.put("param_OptTotalCost", String.valueOf(l));
-      localHashMap.put("param_WalSwitch", String.valueOf(SQLiteOpenHelper.WAL_ENABLE));
-      bctj.a(BaseApplicationImpl.getContext()).a(null, "actFriendSqliteOpt", true, l, 0L, localHashMap, null, false);
-      return;
-    }
+    super(Looper.getMainLooper());
+    this.a = new WeakReference(paramScrollTextView);
   }
   
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam)
+  public void handleMessage(Message paramMessage)
   {
-    long l = Thread.currentThread().getId();
-    if (avnd.a().containsKey(Long.valueOf(l))) {
-      avnd.a().put(Long.valueOf(l), Long.valueOf(SystemClock.uptimeMillis()));
+    ScrollTextView localScrollTextView = (ScrollTextView)this.a.get();
+    if (localScrollTextView == null)
+    {
+      removeCallbacksAndMessages(null);
+      return;
     }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    if (ScrollTextView.a(localScrollTextView) != null)
+    {
+      localScrollTextView.b();
+      ScrollTextView.a(localScrollTextView);
+      if (ScrollTextView.b(localScrollTextView) >= ScrollTextView.a(localScrollTextView).length) {
+        ScrollTextView.a(localScrollTextView, 0);
+      }
+      localScrollTextView.setText(ScrollTextView.a(localScrollTextView)[ScrollTextView.b(localScrollTextView)]);
+    }
+    removeMessages(9001);
+    sendEmptyMessageDelayed(9001, ScrollTextView.a(localScrollTextView));
   }
 }
 

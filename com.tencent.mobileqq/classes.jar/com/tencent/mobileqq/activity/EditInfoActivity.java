@@ -2,23 +2,23 @@ package com.tencent.mobileqq.activity;
 
 import Override;
 import QQService.EVIPSPEC;
-import aecz;
-import aeda;
-import aedc;
-import aedd;
-import aede;
-import aedf;
-import aedi;
-import aedj;
-import aedk;
-import aedl;
-import aedm;
-import aedn;
-import aedo;
-import aedp;
-import aedq;
-import aedr;
-import aedt;
+import aemd;
+import aeme;
+import aemg;
+import aemh;
+import aemi;
+import aemj;
+import aemm;
+import aemn;
+import aemo;
+import aemp;
+import aemq;
+import aemr;
+import aems;
+import aemt;
+import aemu;
+import aemv;
+import aemx;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -53,43 +53,43 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anip;
-import aniz;
-import anmu;
-import anmw;
-import anni;
-import anuk;
-import anun;
-import anwd;
-import anxg;
-import aqxh;
-import aqxi;
-import arxd;
-import arxg;
-import asch;
-import ascv;
-import ascz;
-import azkd;
-import bdnf;
-import bdnj;
-import bdol;
-import bggq;
-import bgme;
-import bgnt;
-import bgwm;
-import bgwo;
-import bgwp;
-import bgwr;
-import bgws;
-import bgwv;
-import bgxb;
-import bgxc;
-import bgxo;
-import bgzm;
-import bgzo;
-import bhuy;
-import bhvd;
-import bhya;
+import anum;
+import anuw;
+import anyu;
+import anyw;
+import anzj;
+import aogu;
+import aogx;
+import aoip;
+import aojs;
+import armv;
+import armw;
+import asmr;
+import asmu;
+import asrv;
+import assj;
+import assn;
+import bacp;
+import begb;
+import begf;
+import behh;
+import bhgr;
+import bhmg;
+import bhnv;
+import bhwq;
+import bhws;
+import bhwt;
+import bhwv;
+import bhww;
+import bhwz;
+import bhxf;
+import bhxg;
+import bhxs;
+import bhzs;
+import bhzu;
+import bivt;
+import biwb;
+import biyy;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -125,7 +125,7 @@ import tencent.im.oidb.cmd0x8fc.Oidb_0x8fc.RichCardNameElem;
 
 public class EditInfoActivity
   extends IphoneTitleBarActivity
-  implements Handler.Callback, View.OnClickListener, arxd, azkd, bgwr, bhuy, bhya
+  implements Handler.Callback, View.OnClickListener, asmr, bacp, bhwv, bivt, biyy
 {
   protected int a;
   protected Drawable a;
@@ -138,13 +138,13 @@ public class EditInfoActivity
   public LinearLayout a;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  private aniz jdField_a_of_type_Aniz = new aedc(this);
-  private anmu jdField_a_of_type_Anmu = new aedd(this);
-  private anun jdField_a_of_type_Anun = new aede(this);
-  anxg jdField_a_of_type_Anxg = new aeda(this);
-  bgwm jdField_a_of_type_Bgwm;
-  private bgwp jdField_a_of_type_Bgwp = new aedi(this);
-  private bgzm jdField_a_of_type_Bgzm = new aedf(this);
+  private anuw jdField_a_of_type_Anuw = new aemg(this);
+  private anyu jdField_a_of_type_Anyu = new aemh(this);
+  private aogx jdField_a_of_type_Aogx = new aemi(this);
+  aojs jdField_a_of_type_Aojs = new aeme(this);
+  bhwq jdField_a_of_type_Bhwq;
+  private bhwt jdField_a_of_type_Bhwt = new aemm(this);
+  private bhzs jdField_a_of_type_Bhzs = new aemj(this);
   EmoticonMainPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
   SystemAndEmojiUniversalPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel = null;
   SoftInputDetectView jdField_a_of_type_ComTencentMobileqqProfileViewSoftInputDetectView;
@@ -152,9 +152,9 @@ public class EditInfoActivity
   ColorNickTextView jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView;
   InputMethodLinearLayout jdField_a_of_type_ComTencentMobileqqWidgetInputMethodLinearLayout;
   protected String a;
-  private ArrayList<bgwo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<bhws> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
-  private bgwo[] jdField_a_of_type_ArrayOfBgwo = { new bgwo(2, null, 0, null) };
+  private bhws[] jdField_a_of_type_ArrayOfBhws = { new bhws(2, null, 0, null) };
   protected int b;
   ImageView jdField_b_of_type_AndroidWidgetImageView;
   RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
@@ -217,25 +217,25 @@ public class EditInfoActivity
   
   private int a()
   {
-    if (a(new aedt(null)))
+    if (a(new aemx(null)))
     {
       localObject1 = ((ColorClearableEditText)this.jdField_a_of_type_AndroidWidgetEditText).a();
       ArrayList localArrayList = new ArrayList();
       Iterator localIterator = ((ArrayList)localObject1).iterator();
       if (localIterator.hasNext())
       {
-        localObject1 = (bhvd)localIterator.next();
+        localObject1 = (biwb)localIterator.next();
         Oidb_0x8fc.RichCardNameElem localRichCardNameElem = new Oidb_0x8fc.RichCardNameElem();
-        switch (((bhvd)localObject1).jdField_c_of_type_Int)
+        switch (((biwb)localObject1).jdField_c_of_type_Int)
         {
         }
         for (;;)
         {
           localArrayList.add(localRichCardNameElem);
           break;
-          localRichCardNameElem.bytes_text.set(ByteStringMicro.copyFrom(((bhvd)localObject1).jdField_a_of_type_JavaLangString.getBytes()));
+          localRichCardNameElem.bytes_text.set(ByteStringMicro.copyFrom(((biwb)localObject1).jdField_a_of_type_JavaLangString.getBytes()));
           continue;
-          Object localObject2 = ((bhvd)localObject1).jdField_a_of_type_JavaLangString;
+          Object localObject2 = ((biwb)localObject1).jdField_a_of_type_JavaLangString;
           localObject1 = localObject2;
           if (((String)localObject2).substring(0, 1).equals("<")) {
             localObject1 = ((String)localObject2).substring(1);
@@ -275,8 +275,8 @@ public class EditInfoActivity
   
   private void a(int paramInt)
   {
-    this.app.addObserver(this.jdField_a_of_type_Anun);
-    ((anuk)this.app.a(13)).e(paramInt);
+    this.app.addObserver(this.jdField_a_of_type_Aogx);
+    ((aogu)this.app.a(13)).e(paramInt);
   }
   
   private boolean a()
@@ -284,13 +284,13 @@ public class EditInfoActivity
     return (this.jdField_g_of_type_Boolean) && (this.jdField_f_of_type_JavaLangString.equals(this.app.getCurrentAccountUin()));
   }
   
-  private boolean a(aedt paramaedt)
+  private boolean a(aemx paramaemx)
   {
     boolean bool2 = false;
-    if (paramaedt != null)
+    if (paramaemx != null)
     {
-      paramaedt.jdField_b_of_type_Boolean = false;
-      paramaedt.jdField_a_of_type_Boolean = false;
+      paramaemx.jdField_b_of_type_Boolean = false;
+      paramaemx.jdField_a_of_type_Boolean = false;
     }
     Object localObject1;
     if ((this.jdField_a_of_type_AndroidWidgetEditText instanceof ColorClearableEditText))
@@ -305,12 +305,12 @@ public class EditInfoActivity
       localObject1 = ((ArrayList)localObject1).iterator();
       bool2 = false;
       bool1 = false;
-      bhvd localbhvd;
+      biwb localbiwb;
       int n;
       boolean bool3;
       boolean bool4;
       label173:
-      if (paramaedt == null) {
+      if (paramaemx == null) {
         break label244;
       }
     }
@@ -320,8 +320,8 @@ public class EditInfoActivity
       {
         if (((Iterator)localObject1).hasNext())
         {
-          localbhvd = (bhvd)((Iterator)localObject1).next();
-          n = localbhvd.jdField_c_of_type_Int;
+          localbiwb = (biwb)((Iterator)localObject1).next();
+          n = localbiwb.jdField_c_of_type_Int;
           if (n == 1)
           {
             bool3 = true;
@@ -341,33 +341,33 @@ public class EditInfoActivity
               if (!bool3) {
                 break;
               }
-              if (paramaedt != null)
+              if (paramaemx != null)
               {
-                paramaedt.jdField_b_of_type_Boolean = bool4;
-                paramaedt.jdField_a_of_type_Boolean = bool3;
+                paramaemx.jdField_b_of_type_Boolean = bool4;
+                paramaemx.jdField_a_of_type_Boolean = bool3;
               }
               return true;
-              if (localbhvd.jdField_c_of_type_Int != 3) {
+              if (localbiwb.jdField_c_of_type_Int != 3) {
                 break label173;
               }
               bool4 = true;
               bool3 = bool2;
             }
-            n = localbhvd.jdField_c_of_type_Int;
+            n = localbiwb.jdField_c_of_type_Int;
             bool3 = bool2;
             bool4 = bool1;
           } while (n != 2);
-          if (paramaedt != null)
+          if (paramaemx != null)
           {
-            paramaedt.jdField_b_of_type_Boolean = bool1;
-            paramaedt.jdField_a_of_type_Boolean = bool2;
+            paramaemx.jdField_b_of_type_Boolean = bool1;
+            paramaemx.jdField_a_of_type_Boolean = bool2;
           }
           return true;
         }
-        if (paramaedt != null)
+        if (paramaemx != null)
         {
-          paramaedt.jdField_b_of_type_Boolean = bool1;
-          paramaedt.jdField_a_of_type_Boolean = bool2;
+          paramaemx.jdField_b_of_type_Boolean = bool1;
+          paramaemx.jdField_a_of_type_Boolean = bool2;
         }
         return false;
       }
@@ -380,8 +380,8 @@ public class EditInfoActivity
       bool1 = false;
     }
     label229:
-    paramaedt.jdField_b_of_type_Boolean = bool1;
-    paramaedt.jdField_a_of_type_Boolean = bool2;
+    paramaemx.jdField_b_of_type_Boolean = bool1;
+    paramaemx.jdField_a_of_type_Boolean = bool2;
     label244:
     throw localObject2;
   }
@@ -403,14 +403,14 @@ public class EditInfoActivity
       {
         this.jdField_k_of_type_Int = 1;
         this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        bgwv.a(this.app).jdField_a_of_type_AndroidOsHandler = this.jdField_a_of_type_AndroidOsHandler;
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130847057);
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847062);
+        bhwz.a(this.app).jdField_a_of_type_AndroidOsHandler = this.jdField_a_of_type_AndroidOsHandler;
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130847074);
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847079);
         this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
         this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
         this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
-        ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).height = bggq.a(this, 387.0F);
-        ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).bottomMargin = bggq.a(this, 387.0F);
+        ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).height = bhgr.a(this, 387.0F);
+        ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).bottomMargin = bhgr.a(this, 387.0F);
         if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel == null)
         {
           this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = ((EmoticonMainPanel)View.inflate(getBaseContext(), 2131559123, null));
@@ -423,7 +423,7 @@ public class EditInfoActivity
           this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_Boolean = false;
           this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_b_of_type_Boolean = true;
           this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_e_of_type_Boolean = true;
-          this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a(this.app, 100001, this, getTitleBarHeight(), null, null, false, bgwv.a(this.app).jdField_a_of_type_Bgxc);
+          this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a(this.app, 100001, this, getTitleBarHeight(), null, null, false, bhwz.a(this.app).jdField_a_of_type_Bhxg);
           this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.setOverScrollMode(2);
           this.jdField_c_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
           continue;
@@ -435,14 +435,14 @@ public class EditInfoActivity
           {
             this.jdField_k_of_type_Int = 2;
             this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-            bgwv.a(this.app).jdField_a_of_type_AndroidOsHandler = this.jdField_a_of_type_AndroidOsHandler;
-            this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130847056);
-            this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847063);
+            bhwz.a(this.app).jdField_a_of_type_AndroidOsHandler = this.jdField_a_of_type_AndroidOsHandler;
+            this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130847073);
+            this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847080);
             this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
             this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
             this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
-            ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).height = bggq.a(this, 388.0F);
-            ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).bottomMargin = bggq.a(this, 388.0F);
+            ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).height = bhgr.a(this, 388.0F);
+            ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).bottomMargin = bhgr.a(this, 388.0F);
           }
         }
       }
@@ -451,20 +451,20 @@ public class EditInfoActivity
   
   private boolean b()
   {
-    aqxh localaqxh = aqxi.c();
-    if (localaqxh == null) {
+    armv localarmv = armw.c();
+    if (localarmv == null) {
       return a();
     }
-    return (localaqxh.jdField_a_of_type_Boolean) && (a());
+    return (localarmv.jdField_a_of_type_Boolean) && (a());
   }
   
   private void d(boolean paramBoolean)
   {
     Object localObject = new ArrayList();
-    Collections.addAll((Collection)localObject, this.jdField_a_of_type_ArrayOfBgwo);
+    Collections.addAll((Collection)localObject, this.jdField_a_of_type_ArrayOfBhws);
     ((ArrayList)localObject).addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Bgwm.a((List)localObject, paramBoolean);
-    localObject = ((anmw)this.app.getManager(51)).e(this.jdField_f_of_type_JavaLangString);
+    this.jdField_a_of_type_Bhwq.a((List)localObject, paramBoolean);
+    localObject = ((anyw)this.app.getManager(51)).e(this.jdField_f_of_type_JavaLangString);
     if (localObject != null)
     {
       if (((Friends)localObject).isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP))
@@ -482,8 +482,8 @@ public class EditInfoActivity
   
   private void p()
   {
-    SpannableString localSpannableString = new bdnf(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), 32).a();
-    bgwv.a(this.app, this.jdField_a_of_type_AndroidWidgetEditText, localSpannableString);
+    SpannableString localSpannableString = new begb(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), 32).a();
+    bhwz.a(this.app, this.jdField_a_of_type_AndroidWidgetEditText, localSpannableString);
   }
   
   public void a()
@@ -502,39 +502,39 @@ public class EditInfoActivity
   
   protected void a(EditText paramEditText)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365849));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365893));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_JavaLangString);
-    paramEditText.addTextChangedListener(new aedp(this, paramEditText));
+    paramEditText.addTextChangedListener(new aemt(this, paramEditText));
   }
   
-  public void a(arxg paramarxg)
+  public void a(asmu paramasmu)
   {
     if ((this.jdField_a_of_type_AndroidWidgetEditText instanceof ColorClearableEditText))
     {
       this.m = true;
-      if ((paramarxg instanceof ascv))
+      if ((paramasmu instanceof assj))
       {
-        paramarxg = (ascv)paramarxg;
-        if (paramarxg.jdField_b_of_type_Int != -1) {}
+        paramasmu = (assj)paramasmu;
+        if (paramasmu.jdField_b_of_type_Int != -1) {}
       }
-      while (!(paramarxg instanceof asch))
+      while (!(paramasmu instanceof asrv))
       {
         return;
         int n = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
         int i1 = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-        this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(n, i1, bdol.c(paramarxg.jdField_b_of_type_Int));
+        this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(n, i1, behh.c(paramasmu.jdField_b_of_type_Int));
         this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
         return;
       }
-      bgwv.a((asch)paramarxg, this.app, this.jdField_a_of_type_AndroidWidgetEditText);
+      bhwz.a((asrv)paramasmu, this.app, this.jdField_a_of_type_AndroidWidgetEditText);
       return;
     }
-    paramarxg.a(this.app, this, this.jdField_a_of_type_AndroidWidgetEditText, null);
+    paramasmu.a(this.app, this, this.jdField_a_of_type_AndroidWidgetEditText, null);
   }
   
-  public void a(arxg paramarxg1, arxg paramarxg2, Drawable paramDrawable) {}
+  public void a(asmu paramasmu1, asmu paramasmu2, Drawable paramDrawable) {}
   
-  public void a(bgwo parambgwo)
+  public void a(bhws parambhws)
   {
     ColorClearableEditText localColorClearableEditText;
     String str;
@@ -544,37 +544,37 @@ public class EditInfoActivity
     {
       this.m = true;
       localColorClearableEditText = (ColorClearableEditText)this.jdField_a_of_type_AndroidWidgetEditText;
-      str = bgwv.a(parambgwo);
-      bgxo[] arrayOfbgxo = (bgxo[])this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().getSpans(0, this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().length(), bgxo.class);
-      if ((arrayOfbgxo == null) || (arrayOfbgxo.length <= 0)) {
+      str = bhwz.a(parambhws);
+      bhxs[] arrayOfbhxs = (bhxs[])this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().getSpans(0, this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().length(), bhxs.class);
+      if ((arrayOfbhxs == null) || (arrayOfbhxs.length <= 0)) {
         break label274;
       }
-      i1 = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().getSpanStart(arrayOfbgxo[0]);
-      n = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().getSpanEnd(arrayOfbgxo[0]);
-      this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().removeSpan(arrayOfbgxo[0]);
+      i1 = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().getSpanStart(arrayOfbhxs[0]);
+      n = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().getSpanEnd(arrayOfbhxs[0]);
+      this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().removeSpan(arrayOfbhxs[0]);
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i1, n, str);
-      switch (parambgwo.jdField_a_of_type_Int)
+      switch (parambhws.jdField_a_of_type_Int)
       {
       }
       do
       {
         return;
-        if (parambgwo.jdField_b_of_type_Int != 0) {
-          localColorClearableEditText.setTextColor(parambgwo.jdField_b_of_type_Int);
+        if (parambhws.jdField_b_of_type_Int != 0) {
+          localColorClearableEditText.setTextColor(parambhws.jdField_b_of_type_Int);
         }
         for (;;)
         {
           localColorClearableEditText.setSpecialColor(0, null, null, 0, null);
           return;
-          localColorClearableEditText.setTextColor(getResources().getColor(2131167079));
+          localColorClearableEditText.setTextColor(getResources().getColor(2131167089));
         }
-        localColorClearableEditText.setTextColor(getResources().getColor(2131167079));
-        parambgwo = bgwv.a(this.app).a(parambgwo.jdField_b_of_type_Int);
-      } while (parambgwo == null);
-      localColorClearableEditText.setSpecialColor(parambgwo.jdField_a_of_type_Int, parambgwo.jdField_a_of_type_ArrayOfInt, parambgwo.jdField_a_of_type_ArrayOfFloat, parambgwo.jdField_b_of_type_Int, parambgwo.jdField_a_of_type_AndroidGraphicsBitmap);
+        localColorClearableEditText.setTextColor(getResources().getColor(2131167089));
+        parambhws = bhwz.a(this.app).a(parambhws.jdField_b_of_type_Int);
+      } while (parambhws == null);
+      localColorClearableEditText.setSpecialColor(parambhws.jdField_a_of_type_Int, parambhws.jdField_a_of_type_ArrayOfInt, parambhws.jdField_a_of_type_ArrayOfFloat, parambhws.jdField_b_of_type_Int, parambhws.jdField_a_of_type_AndroidGraphicsBitmap);
       return;
       label274:
       n = 0;
@@ -599,9 +599,9 @@ public class EditInfoActivity
       do
       {
         return;
-        if (!bgnt.d(this.app.getApplication().getApplicationContext()))
+        if (!bhnv.d(this.app.getApplication().getApplicationContext()))
         {
-          QQToast.a(this, 1, 2131693948, 0).b(getTitleBarHeight());
+          QQToast.a(this, 1, 2131693965, 0).b(getTitleBarHeight());
           return;
         }
         if (QLog.isColorLevel()) {
@@ -611,13 +611,13 @@ public class EditInfoActivity
       b(true);
       localObject = new Bundle();
       ((Bundle)localObject).putString("nick", paramString.trim());
-      ((anip)this.app.a(2)).a((Bundle)localObject);
+      ((anum)this.app.a(2)).a((Bundle)localObject);
       this.jdField_j_of_type_Boolean = true;
       return;
     }
-    if (!bgnt.d(this.app.getApplication().getApplicationContext()))
+    if (!bhnv.d(this.app.getApplication().getApplicationContext()))
     {
-      QQToast.a(this, 1, 2131693948, 0).b(getTitleBarHeight());
+      QQToast.a(this, 1, 2131693965, 0).b(getTitleBarHeight());
       return;
     }
     if (QLog.isColorLevel()) {
@@ -642,8 +642,8 @@ public class EditInfoActivity
         }
       } while ((this.jdField_a_of_type_AndroidWidgetLinearLayout == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847887);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anni.a(2131702420));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847906);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anzj.a(2131702527));
       return;
     } while ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
@@ -663,8 +663,8 @@ public class EditInfoActivity
       {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
         ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).bottomMargin = 0;
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847063);
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130847057);
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847080);
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130847074);
       }
       return;
     }
@@ -678,7 +678,7 @@ public class EditInfoActivity
     this.jdField_e_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
   }
   
-  public boolean a(arxg paramarxg)
+  public boolean a(asmu paramasmu)
   {
     return false;
   }
@@ -710,16 +710,16 @@ public class EditInfoActivity
       {
         if (TextUtils.isEmpty(paramString1))
         {
-          QQToast.a(this, getString(2131692990), 0).b(getTitleBarHeight());
+          QQToast.a(this, getString(2131692999), 0).b(getTitleBarHeight());
           return false;
         }
-        QQToast.a(this, getString(2131692991), 0).b(getTitleBarHeight());
+        QQToast.a(this, getString(2131693000), 0).b(getTitleBarHeight());
         return false;
       }
     }
     else if ((this.jdField_g_of_type_Int == 2) && (TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1)))
     {
-      QQToast.a(this, getString(2131692993), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131693002), 0).b(getTitleBarHeight());
       return false;
     }
     return true;
@@ -727,22 +727,22 @@ public class EditInfoActivity
   
   public void b()
   {
-    bdol.a(this.jdField_a_of_type_AndroidWidgetEditText);
+    behh.a(this.jdField_a_of_type_AndroidWidgetEditText);
   }
   
-  public void b(arxg paramarxg) {}
+  public void b(asmu paramasmu) {}
   
   public void b(boolean paramBoolean)
   {
     if (this.centerView == null) {
-      this.centerView = ((TextView)findViewById(2131368994));
+      this.centerView = ((TextView)findViewById(2131369088));
     }
     if (paramBoolean)
     {
       this.rightViewText.setEnabled(false);
       if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839402);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839410);
         this.centerView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
         ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
       }
@@ -784,15 +784,15 @@ public class EditInfoActivity
     super.doOnCreate(paramBundle);
     l();
     f();
-    setContentBackgroundResource(2130838758);
+    setContentBackgroundResource(2130838778);
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(new EditInfoActivity.1(this), 500L);
     if (this.jdField_g_of_type_Boolean)
     {
-      addObserver(this.jdField_a_of_type_Anxg);
-      addObserver(this.jdField_a_of_type_Bgzm);
+      addObserver(this.jdField_a_of_type_Aojs);
+      addObserver(this.jdField_a_of_type_Bhzs);
     }
     if (this.jdField_g_of_type_Int == 1) {
-      addObserver(this.jdField_a_of_type_Aniz);
+      addObserver(this.jdField_a_of_type_Anuw);
     }
     for (;;)
     {
@@ -801,7 +801,7 @@ public class EditInfoActivity
       }
       return true;
       if (this.jdField_g_of_type_Int == 2) {
-        addObserver(this.jdField_a_of_type_Anmu);
+        addObserver(this.jdField_a_of_type_Anyu);
       }
     }
   }
@@ -825,16 +825,16 @@ public class EditInfoActivity
       int n = this.jdField_a_of_type_AndroidWidgetEditText.getText().length();
       Selection.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getEditableText(), n);
       setTitle(this.jdField_a_of_type_JavaLangString);
-      setRightButton(2131692257, new aedj(this));
+      setRightButton(2131692262, new aemn(this));
       if (this.jdField_g_of_type_JavaLangString != null)
       {
         this.rightViewText.setText(this.jdField_g_of_type_JavaLangString);
-        this.rightViewText.setContentDescription(getString(2131697053, new Object[] { this.jdField_g_of_type_JavaLangString }));
+        this.rightViewText.setContentDescription(getString(2131697102, new Object[] { this.jdField_g_of_type_JavaLangString }));
       }
       if (this.jdField_h_of_type_JavaLangString != null)
       {
         this.leftView.setText(this.jdField_h_of_type_JavaLangString);
-        this.leftView.setContentDescription(getString(2131697053, new Object[] { this.jdField_h_of_type_JavaLangString }));
+        this.leftView.setContentDescription(getString(2131697102, new Object[] { this.jdField_h_of_type_JavaLangString }));
       }
       if (!this.jdField_k_of_type_Boolean) {
         this.rightViewText.setVisibility(8);
@@ -847,12 +847,12 @@ public class EditInfoActivity
       }
       if (this.jdField_i_of_type_JavaLangString != null)
       {
-        TextView localTextView = (TextView)findViewById(2131378543);
+        TextView localTextView = (TextView)findViewById(2131378702);
         if (localTextView != null)
         {
           localTextView.setVisibility(0);
           localTextView.setText(this.jdField_i_of_type_JavaLangString);
-          localTextView.setOnClickListener(new aedk(this));
+          localTextView.setOnClickListener(new aemo(this));
         }
       }
       return;
@@ -868,8 +868,8 @@ public class EditInfoActivity
   {
     super.setContentView(2131559120);
     j();
-    Object localObject = findViewById(2131369849);
-    View localView = findViewById(2131369850);
+    Object localObject = findViewById(2131369947);
+    View localView = findViewById(2131369948);
     if ("1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId")))
     {
       ((View)localObject).setVisibility(8);
@@ -880,34 +880,34 @@ public class EditInfoActivity
     }
     if (b())
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewSoftInputDetectView = ((SoftInputDetectView)super.findViewById(2131368666));
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewSoftInputDetectView = ((SoftInputDetectView)super.findViewById(2131368740));
       this.jdField_a_of_type_ComTencentMobileqqProfileViewSoftInputDetectView.setOnImStateChangedListener(this);
-      this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(bdnj.a);
+      this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(begf.a);
       this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131364662));
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)super.findViewById(2131364647));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131364708));
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)super.findViewById(2131364693));
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new GridLayoutManager(this, 3);
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager);
-      this.jdField_a_of_type_Bgwm = new bgwm(this, this);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bgwm);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(this.jdField_a_of_type_Bgwp);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131364644));
+      this.jdField_a_of_type_Bhwq = new bhwq(this, this);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bhwq);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(this.jdField_a_of_type_Bhwt);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131364690));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131364645));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131364691));
       this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131364648));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131364694));
       this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131364649));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364661));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364659));
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131364695));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364707));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364705));
       this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131364655));
-      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131364653));
+      this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131364701));
+      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131364699));
       this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)super.findViewById(2131364656));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364654));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)super.findViewById(2131364702));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364700));
       this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131364652));
+      this.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131364698));
       d(false);
       a(0);
       localObject = this.app.getPreferences().getString("color_nick_last_edit", "");
@@ -922,7 +922,7 @@ public class EditInfoActivity
         if ((this.jdField_a_of_type_AndroidWidgetEditText instanceof ColorClearableEditText)) {
           ((ColorClearableEditText)this.jdField_a_of_type_AndroidWidgetEditText).setTextClearedListener(this);
         }
-        this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new aedr(this) });
+        this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new aemv(this) });
       }
     }
     while ((!this.jdField_g_of_type_Boolean) || (!a(null))) {
@@ -930,9 +930,9 @@ public class EditInfoActivity
       {
         return;
         this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        localObject = new bdnf((CharSequence)localObject, 16).a();
+        localObject = new begb((CharSequence)localObject, 16).a();
         this.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText((CharSequence)localObject);
-        bgwv.a(this.app, this.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView, (Spannable)localObject);
+        bhwz.a(this.app, this.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView, (Spannable)localObject);
         c(true);
       }
     }
@@ -947,8 +947,8 @@ public class EditInfoActivity
       this.jdField_a_of_type_AndroidWidgetEditText.setInputType(131072);
       ((ClearableEditText)this.jdField_a_of_type_AndroidWidgetEditText).setCanMultiLine(true);
       this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine(false);
-      aedl localaedl = new aedl(this);
-      this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { localaedl });
+      aemp localaemp = new aemp(this);
+      this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { localaemp });
     }
   }
   
@@ -970,9 +970,9 @@ public class EditInfoActivity
         c(false);
         j();
         continue;
-        bgwv.a(this.app).jdField_a_of_type_Bgxc.a(this.jdField_b_of_type_JavaUtilArrayList);
+        bhwz.a(this.app).jdField_a_of_type_Bhxg.a(this.jdField_b_of_type_JavaUtilArrayList);
         if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel != null) {
-          this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a(this.app, 100001, this, getTitleBarHeight(), null, null, false, bgwv.a(this.app).jdField_a_of_type_Bgxc);
+          this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a(this.app, 100001, this, getTitleBarHeight(), null, null, false, bhwz.a(this.app).jdField_a_of_type_Bhxg);
         }
       }
     }
@@ -981,17 +981,17 @@ public class EditInfoActivity
   protected void i()
   {
     super.setContentView(2131559119);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodLinearLayout = ((InputMethodLinearLayout)super.findViewById(2131376788));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodLinearLayout = ((InputMethodLinearLayout)super.findViewById(2131376925));
     this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodLinearLayout.setOnSizeChangedListenner(this);
     j();
     if (!this.jdField_i_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.getLayoutParams().height = ((int)bgme.a(this, 149.0F));
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodLinearLayout.findViewById(2131365832).getLayoutParams();
-      localLayoutParams.height = ((int)bgme.a(this, 151.0F));
+      this.jdField_a_of_type_AndroidWidgetEditText.getLayoutParams().height = ((int)bhmg.a(this, 149.0F));
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodLinearLayout.findViewById(2131365875).getLayoutParams();
+      localLayoutParams.height = ((int)bhmg.a(this, 151.0F));
       localLayoutParams.weight = 0.0F;
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(new aedm(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(new aemq(this));
     if (this.jdField_f_of_type_Boolean) {
       k();
     }
@@ -1004,8 +1004,8 @@ public class EditInfoActivity
   
   protected void j()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131365847));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)super.findViewById(2131376788));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131365891));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)super.findViewById(2131376925));
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(this.jdField_a_of_type_JavaLangString);
     }
@@ -1042,11 +1042,11 @@ public class EditInfoActivity
         this.rightViewText.setEnabled(true);
         a(this.jdField_a_of_type_AndroidWidgetEditText);
         if (this.jdField_d_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)super.findViewById(2131365848));
+          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)super.findViewById(2131365892));
         }
         if (b())
         {
-          this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(getResources().getColor(2131167079));
+          this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(getResources().getColor(2131167089));
           p();
         }
         if (!this.jdField_k_of_type_Boolean)
@@ -1055,10 +1055,10 @@ public class EditInfoActivity
           this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
           this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(false);
           this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
-          this.jdField_a_of_type_AndroidWidgetEditText.setOnLongClickListener(new aedn(this));
+          this.jdField_a_of_type_AndroidWidgetEditText.setOnLongClickListener(new aemr(this));
           this.jdField_a_of_type_AndroidWidgetEditText.setLongClickable(false);
           this.jdField_a_of_type_AndroidWidgetEditText.setTextIsSelectable(false);
-          this.jdField_a_of_type_AndroidWidgetEditText.setCustomSelectionActionModeCallback(new aedo(this));
+          this.jdField_a_of_type_AndroidWidgetEditText.setCustomSelectionActionModeCallback(new aems(this));
         }
         return;
       }
@@ -1071,7 +1071,7 @@ public class EditInfoActivity
       }
       if (this.jdField_g_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(bgwv.b(this.jdField_b_of_type_JavaLangString));
+        this.jdField_a_of_type_AndroidWidgetEditText.setText(bhwz.b(this.jdField_b_of_type_JavaLangString));
       }
       else
       {
@@ -1096,14 +1096,14 @@ public class EditInfoActivity
   
   void k()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131365915));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378133));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131365960));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378289));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aedq(this));
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel = new ascz(this).a(true).a(this).a(this.jdField_a_of_type_AndroidWidgetEditText).a();
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aemu(this));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel = new assn(this).a(true).a(this).a(this.jdField_a_of_type_AndroidWidgetEditText).a();
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new aecz(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new aemd(this));
   }
   
   protected void l()
@@ -1122,8 +1122,8 @@ public class EditInfoActivity
         this.jdField_f_of_type_JavaLangString = ((JSONObject)localObject2).optString("uin");
         this.jdField_c_of_type_Int = ((JSONObject)localObject2).optInt("maxLength");
         this.jdField_d_of_type_Int = ((JSONObject)localObject2).optInt("src");
-        this.jdField_h_of_type_JavaLangString = anni.a(2131702424);
-        this.jdField_g_of_type_JavaLangString = anni.a(2131702421);
+        this.jdField_h_of_type_JavaLangString = anzj.a(2131702531);
+        this.jdField_g_of_type_JavaLangString = anzj.a(2131702528);
         this.jdField_g_of_type_Boolean = true;
         this.jdField_h_of_type_Int = 0;
         this.jdField_a_of_type_Int = ((Intent)localObject1).getIntExtra("edit_type", 0);
@@ -1142,9 +1142,9 @@ public class EditInfoActivity
         this.jdField_c_of_type_Boolean = ((Intent)localObject1).getBooleanExtra("auto_remark", false);
         if ((this.jdField_c_of_type_Boolean) && (this.app != null) && (this.app.getCurrentAccountUin() != null) && (this.jdField_f_of_type_JavaLangString != null) && (!this.app.getCurrentAccountUin().equals(this.jdField_f_of_type_JavaLangString)) && (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)))
         {
-          localObject1 = (anwd)this.app.a(20);
+          localObject1 = (aoip)this.app.a(20);
           if (localObject1 != null) {
-            ((anwd)localObject1).x(this.jdField_f_of_type_JavaLangString);
+            ((aoip)localObject1).x(this.jdField_f_of_type_JavaLangString);
           }
           this.jdField_d_of_type_Boolean = true;
         }
@@ -1172,12 +1172,12 @@ public class EditInfoActivity
   
   public void m()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(getResources().getColor(2131167079));
+    this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(getResources().getColor(2131167089));
     if ((this.jdField_a_of_type_AndroidWidgetEditText instanceof ColorClearableEditText)) {
       ((ColorClearableEditText)this.jdField_a_of_type_AndroidWidgetEditText).setSpecialColor(0, null, null, 0, null);
     }
-    this.jdField_a_of_type_Bgwm.a(-1);
-    this.jdField_a_of_type_Bgwm.a.a(-1);
+    this.jdField_a_of_type_Bhwq.a(-1);
+    this.jdField_a_of_type_Bhwq.a.a(-1);
   }
   
   public void n() {}
@@ -1238,14 +1238,14 @@ public class EditInfoActivity
         break;
         b(1);
       }
-      bgzo.a(this, "mvip.g.a.qnc_kt", "CJCLUBT", -1, false, true);
+      bhzu.a(this, "mvip.g.a.qnc_kt", "CJCLUBT", -1, false, true);
       VasWebviewUtil.reportCommercialDrainage(this.app.c(), "group_nickname", "group_nickname_3", "", 1, 0, 0, "", "", "");
       continue;
       this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       continue;
-      localObject = new bdnf(this.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.getText().toString(), 32).a();
+      localObject = new begb(this.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.getText().toString(), 32).a();
       this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)localObject);
-      bgwv.a(this.app, this.jdField_a_of_type_AndroidWidgetEditText, (Spannable)localObject);
+      bhwz.a(this.app, this.jdField_a_of_type_AndroidWidgetEditText, (Spannable)localObject);
       this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       continue;
       if ((this.jdField_k_of_type_Boolean) || (!this.jdField_h_of_type_Boolean)) {
@@ -1257,13 +1257,13 @@ public class EditInfoActivity
       if (n != 0) {}
       try
       {
-        for (localObject = String.format(getString(2131718862), new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString }); !TextUtils.isEmpty((CharSequence)localObject); localObject = String.format(getString(2131718863), new Object[] { this.jdField_b_of_type_JavaLangString }))
+        for (localObject = String.format(getString(2131719012), new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString }); !TextUtils.isEmpty((CharSequence)localObject); localObject = String.format(getString(2131719013), new Object[] { this.jdField_b_of_type_JavaLangString }))
         {
           if (Build.VERSION.SDK_INT >= 11) {
             break label499;
           }
           ((android.text.ClipboardManager)getSystemService("clipboard")).setText((CharSequence)localObject);
-          QQToast.a(this, 2131698390, 1).a();
+          QQToast.a(this, 2131698492, 1).a();
           break;
         }
       }
@@ -1293,8 +1293,8 @@ public class EditInfoActivity
     super.onDestroy();
     if (this.jdField_g_of_type_Boolean)
     {
-      removeObserver(this.jdField_a_of_type_Anxg);
-      removeObserver(this.jdField_a_of_type_Bgzm);
+      removeObserver(this.jdField_a_of_type_Aojs);
+      removeObserver(this.jdField_a_of_type_Bhzs);
     }
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
@@ -1305,16 +1305,16 @@ public class EditInfoActivity
     if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel != null) {
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.g();
     }
-    this.app.removeObserver(this.jdField_a_of_type_Anun);
-    bgwv.a(this.app).jdField_a_of_type_AndroidOsHandler = null;
+    this.app.removeObserver(this.jdField_a_of_type_Aogx);
+    bhwz.a(this.app).jdField_a_of_type_AndroidOsHandler = null;
     try
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(false);
       this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
       this.jdField_a_of_type_AndroidWidgetEditText.setVisibility(8);
       this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetEditText);
-      removeObserver(this.jdField_a_of_type_Aniz);
-      removeObserver(this.jdField_a_of_type_Anmu);
+      removeObserver(this.jdField_a_of_type_Anuw);
+      removeObserver(this.jdField_a_of_type_Anyu);
       return;
     }
     catch (Exception localException)

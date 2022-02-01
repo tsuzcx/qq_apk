@@ -1,7 +1,7 @@
 package com.tencent.avgame.app;
 
-import mxl;
-import ndt;
+import myk;
+import nfm;
 
 class AVGameAppInterface$2
   implements Runnable
@@ -10,8 +10,8 @@ class AVGameAppInterface$2
   
   public void run()
   {
-    ndt.a();
-    mxl.a().a();
+    nfm.a();
+    myk.a().a();
   }
 }
 

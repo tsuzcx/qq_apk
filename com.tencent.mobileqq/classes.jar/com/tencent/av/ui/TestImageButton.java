@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageButton;
 import com.tencent.qphone.base.util.QLog;
-import lyu;
+import lzq;
 
 public class TestImageButton
   extends ImageButton
@@ -30,7 +30,7 @@ public class TestImageButton
     if (QLog.isDevelopLevel()) {
       QLog.d("TestImageButton", 4, "WL_DEBUG setVisibility visibility = " + paramInt);
     }
-    lyu.a();
+    lzq.a();
   }
 }
 

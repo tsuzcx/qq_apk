@@ -1,15 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
 import com.tencent.qphone.base.util.QLog;
 
 public class plq
-  extends ayes
+  implements plz
 {
-  public plq(KandianMergeManager paramKandianMergeManager) {}
+  public plq(VideoView paramVideoView) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void a(String[] paramArrayOfString1, String[] arg2)
   {
-    QLog.d("KandianMergeManager", 1, "onGameCenterMsgReceive | redTouchObserver received a notification ");
-    KandianMergeManager.a(this.a);
+    if ((??? != null) && (???.length > 0) && (paramArrayOfString1 != null) && (paramArrayOfString1.length > 0))
+    {
+      String str = ???[0];
+      synchronized (this.a)
+      {
+        if ((!TextUtils.isEmpty(VideoView.access$3200(this.a))) && (VideoView.access$3200(this.a).equals(paramArrayOfString1[0])))
+        {
+          this.a.openVideoByUrl(str);
+          return;
+        }
+        QLog.d("gifvideo.VideoView", 2, "not current video");
+      }
+    }
+    QLog.d("gifvideo.VideoView", 2, "urls null");
   }
 }
 

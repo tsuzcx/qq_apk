@@ -1,39 +1,59 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
 public class asxy
-  extends atwn
+  implements GestureDetector.OnGestureListener
 {
-  public asxy(QfileRecentDocFileTabView paramQfileRecentDocFileTabView) {}
+  public asxy(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public void a()
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.a.a.a().b();
+    return false;
   }
   
-  public void b()
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    this.a.a.a().o();
+    int j = 1;
+    if ((paramMotionEvent1 != null) && (paramMotionEvent2 != null)) {
+      if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 50.0F) {
+        break label102;
+      }
+    }
+    label102:
+    for (int i = 1;; i = 0)
+    {
+      if (paramMotionEvent2.getY() - paramMotionEvent1.getY() > 50.0F) {
+        i = j;
+      }
+      for (;;)
+      {
+        if ((i != 0) && (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment != null))
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.a();
+          ExtendFriendEditFragment.a(this.a).setVisibility(8);
+          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+        }
+        return false;
+      }
+    }
   }
   
-  public void c()
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    this.a.a.a().p();
+    return false;
   }
   
-  public void d()
-  {
-    this.a.a.a().q();
-  }
+  public void onShowPress(MotionEvent paramMotionEvent) {}
   
-  public void e()
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    this.a.a.a().r();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().E();
+    return false;
   }
 }
 

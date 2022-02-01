@@ -1,14 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class srh
-  implements pmb
+abstract interface srh
 {
-  public srh(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
-  
-  public void ar_()
-  {
-    this.a.q();
-  }
+  public abstract void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData);
 }
 
 

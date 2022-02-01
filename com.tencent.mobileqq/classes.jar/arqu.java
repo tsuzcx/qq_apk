@@ -1,42 +1,61 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 public class arqu
+  extends arac<arqt>
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = true;
-  int b;
-  int c = 0;
-  
-  public arqu(int paramInt)
+  public static arqt a()
   {
-    this(paramInt, null);
+    return (arqt)aran.a().a(487);
   }
   
-  public arqu(int paramInt, String paramString)
+  @NonNull
+  public arqt a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return new arqt();
   }
   
-  public boolean a(int paramInt, String paramString)
+  @Nullable
+  public arqt a(araj[] paramArrayOfaraj)
   {
-    if (bgsp.a(this.jdField_a_of_type_JavaLangString)) {}
-    for (boolean bool = bgsp.a(paramString); (1 != 0) && (bool); bool = this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) {
-      return true;
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return arqt.a(paramArrayOfaraj);
     }
+    return null;
+  }
+  
+  public void a(arqt paramarqt) {}
+  
+  public Class<arqt> clazz()
+  {
+    return arqt.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
     return false;
   }
   
-  public boolean a(arqu paramarqu)
+  public int migrateOldVersion()
   {
-    if (paramarqu == null) {
-      return false;
-    }
-    return a(paramarqu.jdField_a_of_type_Int, paramarqu.jdField_a_of_type_JavaLangString);
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 487;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arqu
  * JD-Core Version:    0.7.0.1
  */

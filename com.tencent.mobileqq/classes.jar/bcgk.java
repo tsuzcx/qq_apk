@@ -1,38 +1,68 @@
-import android.hardware.Camera.PreviewCallback;
-import android.media.Image;
-import android.media.Image.Plane;
-import android.media.ImageReader;
-import android.media.ImageReader.OnImageAvailableListener;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
-import java.nio.ByteBuffer;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bcgk
-  implements ImageReader.OnImageAvailableListener
+  extends bcga
 {
-  public bcgk(Camera2Control paramCamera2Control) {}
+  public static final String a;
+  public List<bcfx> a;
+  public String b;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
   
-  public void onImageAvailable(ImageReader paramImageReader)
+  static
+  {
+    jdField_a_of_type_JavaLangString = bcgk.class.getSimpleName();
+  }
+  
+  public bcgk(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public bcgk(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public void a(String paramString)
   {
     try
     {
-      paramImageReader = paramImageReader.acquireNextImage();
-      if (paramImageReader != null)
+      paramString = new JSONObject(paramString);
+      this.b = paramString.optString("leftIconUrl");
+      this.j = paramString.optString("title");
+      this.k = paramString.optString("summary");
+      this.l = paramString.optString("rightIconUrl");
+      this.m = paramString.optString("jumpUrl");
+      paramString = paramString.optJSONArray("pageInfo");
+      if (paramString != null)
       {
-        Camera.PreviewCallback localPreviewCallback = Camera2Control.a(this.a);
-        if (localPreviewCallback != null)
+        this.jdField_a_of_type_JavaUtilList = new ArrayList(paramString.length());
+        int i = 0;
+        while (i < paramString.length())
         {
-          ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
-          byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
-          localByteBuffer.get(arrayOfByte);
-          localPreviewCallback.onPreviewFrame(arrayOfByte, null);
+          Object localObject = paramString.optJSONObject(i);
+          localObject = new bcfx(((JSONObject)localObject).optString("leftIconUrl"), ((JSONObject)localObject).optString("wording"));
+          this.jdField_a_of_type_JavaUtilList.add(localObject);
+          i += 1;
         }
-        paramImageReader.close();
       }
       return;
     }
-    catch (Exception paramImageReader)
+    catch (JSONException paramString)
     {
-      bcgu.a(1, "[Camera2] onImageAvailable mPreviewReader exception:" + paramImageReader);
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+      }
     }
   }
 }

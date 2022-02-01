@@ -1,11 +1,77 @@
-import tencent.im.oidb.articlesummary.articlesummary.LongContentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public final class rgm
-  implements pvb<articlesummary.LongContentInfo, rhg>
+public class rgm
+  extends omp
 {
-  public rhg a(articlesummary.LongContentInfo paramLongContentInfo)
+  @Nullable
+  private rgk jdField_a_of_type_Rgk;
+  @NotNull
+  private rgl jdField_a_of_type_Rgl;
+  
+  public rgm(@NotNull rgl paramrgl, @Nullable rgk paramrgk)
   {
-    return new rhg(paramLongContentInfo);
+    super(paramrgl, true, "PublishTaskStep");
+    this.jdField_a_of_type_Rgl = paramrgl;
+    this.jdField_a_of_type_Rgk = paramrgk;
+  }
+  
+  private void a(UgcVideo paramUgcVideo)
+  {
+    rgk localrgk;
+    if ((paramUgcVideo.rowkey != null) && (!paramUgcVideo.rowkey.isEmpty()))
+    {
+      paramUgcVideo.status = UgcVideo.STATUS_FINISH;
+      if (this.jdField_a_of_type_Rgk != null)
+      {
+        localrgk = this.jdField_a_of_type_Rgk;
+        if (paramUgcVideo.status != UgcVideo.STATUS_FINISH) {
+          break label74;
+        }
+      }
+    }
+    label74:
+    for (boolean bool = true;; bool = false)
+    {
+      localrgk.a(4, bool, true, "");
+      d();
+      return;
+      paramUgcVideo.status = UgcVideo.STATUS_FAILED;
+      break;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Rgl.a().status == UgcVideo.STATUS_UPLOADING;
+  }
+  
+  public boolean b()
+  {
+    boolean bool = true;
+    UgcVideo localUgcVideo = this.jdField_a_of_type_Rgl.a();
+    Object localObject = localUgcVideo.title;
+    String str = localUgcVideo.url;
+    QLog.i("RIJUGC.PublishTaskStep", 1, "onStep: title=" + (String)localObject);
+    if ((localObject != null) && (!((String)localObject).isEmpty()))
+    {
+      localObject = new ArrayList();
+      ((List)localObject).add(localUgcVideo);
+      if (localUgcVideo.columnId == 0L) {
+        break label98;
+      }
+    }
+    for (;;)
+    {
+      rfc.a(bool, (List)localObject, new rgn(this, localUgcVideo));
+      return false;
+      label98:
+      bool = false;
+    }
   }
 }
 

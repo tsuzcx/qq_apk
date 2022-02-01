@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aesu;
-import aesv;
+import afby;
+import afbz;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anni;
-import bcst;
-import bglp;
-import bgpa;
+import anzj;
+import bdll;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PCActiveNoticeActiviy
   extends BaseActivity
 {
-  private bgpa jdField_a_of_type_Bgpa;
+  private bhpc jdField_a_of_type_Bhpc;
   private String jdField_a_of_type_JavaLangString;
   
   @Override
@@ -32,34 +32,34 @@ public class PCActiveNoticeActiviy
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559516);
+    super.setContentView(2131559521);
     if ((getIntent() != null) && (getIntent().getExtras() != null)) {}
     for (this.jdField_a_of_type_JavaLangString = getIntent().getExtras().getString("uin"); TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString); this.jdField_a_of_type_JavaLangString = null)
     {
       finish();
       return false;
     }
-    if ((this.jdField_a_of_type_Bgpa != null) && (this.jdField_a_of_type_Bgpa.isShowing())) {
-      this.jdField_a_of_type_Bgpa.dismiss();
+    if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {
+      this.jdField_a_of_type_Bhpc.dismiss();
     }
-    paramBundle = anni.a(2131706680);
-    this.jdField_a_of_type_Bgpa = null;
-    this.jdField_a_of_type_Bgpa = bglp.a(this, 230);
-    this.jdField_a_of_type_Bgpa.setContentView(2131558985);
-    this.jdField_a_of_type_Bgpa.setTitle(null).setMessage(getString(2131694181)).setPositiveButton(2131694180, new aesu(this));
-    this.jdField_a_of_type_Bgpa.setTextContentDescription(paramBundle);
-    this.jdField_a_of_type_Bgpa.setOnKeyListener(new aesv(this));
-    this.jdField_a_of_type_Bgpa.show();
-    bcst.b(null, "CliOper", "", "", "0X8004973", "0X8004973", 0, 0, "", "", "", "");
+    paramBundle = anzj.a(2131706789);
+    this.jdField_a_of_type_Bhpc = null;
+    this.jdField_a_of_type_Bhpc = bhlq.a(this, 230);
+    this.jdField_a_of_type_Bhpc.setContentView(2131558984);
+    this.jdField_a_of_type_Bhpc.setTitle(null).setMessage(getString(2131694199)).setPositiveButton(2131694198, new afby(this));
+    this.jdField_a_of_type_Bhpc.setTextContentDescription(paramBundle);
+    this.jdField_a_of_type_Bhpc.setOnKeyListener(new afbz(this));
+    this.jdField_a_of_type_Bhpc.show();
+    bdll.b(null, "CliOper", "", "", "0X8004973", "0X8004973", 0, 0, "", "", "", "");
     return false;
   }
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_Bgpa != null) && (this.jdField_a_of_type_Bgpa.isShowing())) {
-      this.jdField_a_of_type_Bgpa.dismiss();
+    if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {
+      this.jdField_a_of_type_Bhpc.dismiss();
     }
-    this.jdField_a_of_type_Bgpa = null;
+    this.jdField_a_of_type_Bhpc = null;
     super.finish();
   }
   

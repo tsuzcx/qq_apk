@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import adlr;
-import adls;
+import aduq;
+import adur;
 import android.content.Intent;
-import anni;
-import aufz;
-import bglp;
-import bgpa;
+import anzj;
+import auxu;
+import bhlq;
+import bhpc;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkFullScreenAppActivity$8$1$1
@@ -20,13 +20,13 @@ public class ArkFullScreenAppActivity$8$1$1
     {
       if (this.jdField_a_of_type_AndroidContentIntent != null)
       {
-        aufz.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity$8$1.a.a, this.jdField_a_of_type_AndroidContentIntent, 100);
+        auxu.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity$8$1.a.a, this.jdField_a_of_type_AndroidContentIntent, 100);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.i("ArkFullScreenAppActivity", 2, "showActionSheet share: intent == null");
       }
-      bglp.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity$8$1.a.a, 230, anni.a(2131699492), anni.a(2131699488), new adls(this), null).show();
+      bhlq.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity$8$1.a.a, 230, anzj.a(2131699599), anzj.a(2131699595), new adur(this), null).show();
       return;
     }
     catch (Exception localException)

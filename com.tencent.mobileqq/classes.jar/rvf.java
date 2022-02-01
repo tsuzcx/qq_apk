@@ -1,33 +1,25 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.6;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
 
-public class rvf
-  implements bfpo
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "value", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"}, k=3, mv={1, 1, 16})
+final class rvf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public rvf(ReadInJoyWebDataManager.6 param6) {}
+  rvf(ruz paramruz) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QLog.w("ReadInJoyWebDataManager", 2, Long.toString(Thread.currentThread().getId()));
-    if (paramJSONObject != null) {}
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("ReadInJoyWebDataManager", 2, "sendLog result:" + paramJSONObject.toString());
-        }
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.w("ReadInJoyWebDataManager", 2, "sendLog result Exception :" + paramJSONObject);
-        return;
-      }
+    VideoFeedsStressFollowLayout localVideoFeedsStressFollowLayout = this.a.a();
+    Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "value");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null) {
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
     }
-    QLog.w("ReadInJoyWebDataManager", 2, "sendLog result null");
+    localVideoFeedsStressFollowLayout.a(((Float)paramValueAnimator).floatValue());
   }
 }
 

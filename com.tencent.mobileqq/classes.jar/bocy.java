@@ -1,17 +1,28 @@
-import java.util.HashMap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class bocy
+  implements Animation.AnimationListener
 {
-  private HashMap<String, bode> a = new HashMap();
+  public bocy(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public bode a(String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return (bode)this.a.get(paramString);
+    if (QIMEffectCameraCaptureUnit.e(this.a) != null)
+    {
+      QIMEffectCameraCaptureUnit.e(this.a).clearAnimation();
+      QIMEffectCameraCaptureUnit.e(this.a).setVisibility(8);
+    }
+    this.a.v = false;
   }
   
-  public void a(String paramString, bode parambode)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.put(paramString, parambode);
+    this.a.v = true;
   }
 }
 

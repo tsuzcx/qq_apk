@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import alif;
+import altx;
 import android.view.WindowManager.BadTokenException;
-import bglp;
-import bgpa;
+import bhlq;
+import bhpc;
 import com.tencent.qphone.base.util.QLog;
 
 public class FlowCameraActivity2$23
@@ -15,9 +15,9 @@ public class FlowCameraActivity2$23
   {
     String str = this.jdField_a_of_type_JavaLangString;
     if (this.jdField_a_of_type_Int == 2002) {
-      str = this.this$0.getString(2131698216);
+      str = this.this$0.getString(2131698318);
     }
-    this.this$0.a = bglp.a(this.this$0, 230).setMessage(str).setPositiveButton(this.this$0.getString(2131693473), new alif(this));
+    this.this$0.a = bhlq.a(this.this$0, 230).setMessage(str).setPositiveButton(this.this$0.getString(2131693485), new altx(this));
     try
     {
       this.this$0.a.setCancelable(false);

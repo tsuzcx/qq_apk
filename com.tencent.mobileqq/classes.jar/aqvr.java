@@ -1,100 +1,252 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
+import android.os.Bundle;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class aqvr
-  extends aqkz<aqvq>
+  extends QIPCModule
+  implements aqvz
 {
-  @NonNull
-  public aqvq a(int paramInt)
+  private static volatile aqvr jdField_a_of_type_Aqvr;
+  public static boolean a;
+  private List<aqvt> jdField_a_of_type_JavaUtilList = new ArrayList();
+  
+  private aqvr()
   {
-    return new aqvq();
+    super("DanmuDataIPCClient");
   }
   
-  @Nullable
-  public aqvq a(aqlg[] paramArrayOfaqlg)
+  public static aqvr a()
   {
-    QLog.i("QFileAppStorePromoteConfigProcessor<QFile>", 1, "onParsed");
-    if (paramArrayOfaqlg != null) {
-      try
-      {
-        if (paramArrayOfaqlg.length > 0)
-        {
-          paramArrayOfaqlg = (aqvq)aqlu.a(paramArrayOfaqlg[0].a, aqvq.class);
-          return paramArrayOfaqlg;
-        }
+    if (jdField_a_of_type_Aqvr == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aqvr == null) {
+        jdField_a_of_type_Aqvr = new aqvr();
       }
-      catch (QStorageInstantiateException paramArrayOfaqlg) {}
+      return jdField_a_of_type_Aqvr;
     }
-    return null;
+    finally {}
   }
   
-  public void a(aqvq paramaqvq)
+  public static void a()
   {
-    if (paramaqvq == null) {
-      QLog.i("QFileAppStorePromoteConfigProcessor<QFile>", 1, "onUpdate: newConf is null.");
+    aqvr localaqvr = a();
+    if (!jdField_a_of_type_Boolean)
+    {
+      QIPCClientHelper.getInstance().register(localaqvr);
+      jdField_a_of_type_Boolean = true;
+      QLog.d("DanmuDataIPCClient", 1, "registerModule");
     }
-    label123:
+  }
+  
+  public Bundle a(String paramString, Bundle paramBundle)
+  {
+    long l1;
+    long l2;
+    int i;
+    Object localObject;
+    if ("qipc_action_get_barrage".equals(paramString))
+    {
+      l1 = paramBundle.getLong("key_barrage_msg_seq");
+      l2 = paramBundle.getLong("key_barrage_grp_uin");
+      i = paramBundle.getInt("key_barrage_topic_type");
+      localObject = aqvp.a().a(l2, l1);
+      localObject = aqvp.a().a((String)localObject);
+      if (localObject == null) {
+        break label243;
+      }
+    }
+    label243:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("DanmuDataIPCClient", 2, new Object[] { "get barrage list, msgSeq:", Long.valueOf(l1), " groupUin:", Long.valueOf(l2), " topicType:", Integer.valueOf(i), " peakCached:", Boolean.valueOf(bool) });
+      if (bool) {
+        QLog.d("DanmuDataIPCClient", 2, new Object[] { "peak listSize:", Integer.valueOf(((aqvq)localObject).d.size()), ", fullList:", ((aqvq)localObject).d.toString() });
+      }
+      paramBundle.putBoolean("key_barrage_is_update", bool);
+      paramBundle.putLong("key_barrage_req_time", System.currentTimeMillis());
+      QIPCClientHelper.getInstance().getClient().callServer("DanmuDataIPCServer", "qipc_action_get_barrage", paramBundle, new aqvs(this));
+      if ("qipc_action_clear_cache".equals(paramString)) {
+        QIPCClientHelper.getInstance().getClient().callServer("DanmuDataIPCServer", "qipc_action_clear_cache", null);
+      }
+      return null;
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2, int paramInt)
+  {
+    QLog.d("DanmuDataIPCClient", 1, "getDanmuList start");
+    try
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putLong("key_barrage_msg_seq", paramLong1);
+      localBundle.putLong("key_barrage_grp_uin", paramLong2);
+      localBundle.putInt("key_barrage_topic_type", paramInt);
+      a().a("qipc_action_get_barrage", localBundle);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("DanmuDataIPCClient", 1, "getDanmuList fail, ", localException);
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    paramBundle.setClassLoader(DanmuItemBean.class.getClassLoader());
+    long l1 = paramBundle.getLong("key_barrage_msg_seq");
+    long l2 = paramBundle.getLong("key_barrage_grp_uin");
+    int k = paramBundle.getInt("key_barrage_topic_type");
+    boolean bool = paramBundle.getBoolean("key_barrage_is_success");
+    int m = paramBundle.getInt("key_barrage_interval_time");
+    if (QLog.isColorLevel()) {
+      QLog.d("DanmuDataIPCClient", 2, new Object[] { "handleGetBarrageEIPCResult, topicSeq:", Long.valueOf(l1), " groupUin:", Long.valueOf(l2), " topicType:", Integer.valueOf(k), " isSuccess:", Boolean.valueOf(bool) });
+    }
+    if (paramBundle.containsKey("key_barrage_req_time"))
+    {
+      long l4 = paramBundle.getLong("key_barrage_req_time");
+      long l5 = paramBundle.getLong("key_barrage_net_req_time");
+      long l3 = paramBundle.getLong("key_barrage_net_response_time");
+      l4 = l5 - l4;
+      l5 = l3 - l5;
+      l3 = System.currentTimeMillis() - l3;
+      localObject1 = new HashMap();
+      ((HashMap)localObject1).put("ipcReqCost", String.valueOf(l4));
+      ((HashMap)localObject1).put("netReqCost", String.valueOf(l5));
+      ((HashMap)localObject1).put("ipcRspCost", String.valueOf(l3));
+      bdmc.a(BaseApplication.getContext()).a(null, "DanmuPullCost", false, 0L, 0L, (HashMap)localObject1, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("DanmuDataIPCClient", 2, new Object[] { "handleGetBarrageEIPCResult, ipcReqCost:", Long.valueOf(l4), " netReqCost:", Long.valueOf(l5), " ipcRspCost:", Long.valueOf(l3) });
+      }
+    }
+    Object localObject1 = paramBundle.getParcelableArrayList("key_barrage_danmu_list");
+    Object localObject2 = paramBundle.getLongArray("key_barrage_del_seq_list");
+    int i;
+    int j;
+    label347:
+    Object localObject3;
+    if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
+    {
+      i = 1;
+      if ((localObject2 == null) || (localObject2.length <= 0)) {
+        break label506;
+      }
+      j = 1;
+      localObject3 = aqvp.a().a(l2, l1);
+      paramBundle = aqvp.a().a((String)localObject3);
+      if (paramBundle != null) {
+        break label649;
+      }
+      paramBundle = aqvp.a().b((String)localObject3);
+    }
+    label516:
+    label649:
     for (;;)
     {
-      return;
-      QLog.i("QFileAppStorePromoteConfigProcessor<QFile>", 1, "onUpdate");
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface)) {}
-      for (localObject = (QQAppInterface)localObject;; localObject = null)
+      if ((bool) && ((i != 0) || (j != 0)))
       {
-        if (localObject == null) {
-          break label123;
+        if (QLog.isColorLevel())
+        {
+          if (localObject1 == null) {
+            break label511;
+          }
+          i = ((ArrayList)localObject1).size();
+          label411:
+          if (localObject2 == null) {
+            break label516;
+          }
         }
-        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject).c(), 0).edit();
-        localEditor.putString("yyb_promote_action_key", paramaqvq.c);
-        localEditor.apply();
-        localObject = (atam)((QQAppInterface)localObject).getManager(317);
-        if (localObject == null) {
+        for (j = localObject2.length;; j = 0)
+        {
+          QLog.d("DanmuDataIPCClient", 2, new Object[] { "handleGetBarrageEIPCResult, danmuItemList size:", Integer.valueOf(i), " delSeqArr size:", Integer.valueOf(j) });
+          localObject3 = new ArrayList(localObject2.length);
+          j = localObject2.length;
+          i = 0;
+          while (i < j)
+          {
+            ((List)localObject3).add(Long.valueOf(localObject2[i]));
+            i += 1;
+          }
+          i = 0;
           break;
+          label506:
+          j = 0;
+          break label347;
+          label511:
+          i = 0;
+          break label411;
         }
-        ((atam)localObject).a(paramaqvq);
-        return;
+        localObject2 = new aqvo(l2, l1, k, true);
+        paramBundle.a((List)localObject1).b((List)localObject3).a((aqvo)localObject2).a(null).a();
       }
+      if ((bool) && (paramBundle != null) && (!paramBundle.d.isEmpty()))
+      {
+        localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          ((aqvt)((Iterator)localObject1).next()).a(l1, String.valueOf(l2), m, paramBundle.d);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("DanmuDataIPCClient", 2, "handleGetBarrageEIPCResult end");
+      }
+      return;
     }
   }
   
-  public Class<aqvq> clazz()
+  public void a(aqvt paramaqvt)
   {
-    return aqvq.class;
+    if ((paramaqvt != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramaqvt))) {
+      this.jdField_a_of_type_JavaUtilList.add(paramaqvt);
+    }
   }
   
-  public boolean isNeedCompressed()
+  public void b()
   {
-    return true;
+    aqvp.a().a();
+    a("qipc_action_clear_cache", null);
   }
   
-  public boolean isNeedStoreLargeFile()
+  public void b(aqvt paramaqvt)
   {
-    return false;
+    if ((paramaqvt != null) && (this.jdField_a_of_type_JavaUtilList.contains(paramaqvt))) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramaqvt);
+    }
   }
   
-  public int migrateOldVersion()
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 626;
+    if ("qipc_action_get_barrage_result".equals(paramString)) {
+      a(paramBundle);
+    }
+    for (;;)
+    {
+      return null;
+      if ("qipc_action_send_barrage".equals(paramString))
+      {
+        paramBundle.setClassLoader(DanmuItemBean.class.getClassLoader());
+        paramString = (DanmuItemBean)paramBundle.getParcelable("key_barrage_danmu_msg");
+        long l = paramBundle.getLong("key_barrage_msg_seq");
+        paramBundle = paramBundle.getString("key_barrage_grp_uin");
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (localIterator.hasNext()) {
+          ((aqvt)localIterator.next()).a(l, paramBundle, paramString);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqvr
  * JD-Core Version:    0.7.0.1
  */

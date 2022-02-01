@@ -1,60 +1,44 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bbuy
-  implements bbvf
+class bbuy
+  implements EIPCResultCallback
 {
-  protected View a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bbvg jdField_a_of_type_Bbvg;
-  private List<bbvg> jdField_a_of_type_JavaUtilList;
-  private TextView b;
+  bbuy(bbux parambbux) {}
   
-  public bbuy() {}
-  
-  public bbuy(ViewGroup paramViewGroup, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371277));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370012));
-    this.jdField_a_of_type_Bbvg = new bbva(this.jdField_a_of_type_AndroidViewView.findViewById(2131368771));
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public bbvg a()
-  {
-    return this.jdField_a_of_type_Bbvg;
-  }
-  
-  public List<bbvg> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public TextView b()
-  {
-    return this.b;
+    if (paramEIPCResult.data == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          switch (paramEIPCResult.data.getInt("notify_type"))
+          {
+          default: 
+            return;
+          }
+        } while (paramEIPCResult.code != 0);
+        i = paramEIPCResult.data.getInt("id");
+        paramEIPCResult = paramEIPCResult.data.getString("url");
+        if (QLog.isColorLevel()) {
+          QLog.d("Signature.TOOL", 2, "mSignatureManagerIPCCallback get action id = " + i + " url = " + paramEIPCResult);
+        }
+      } while (TextUtils.isEmpty(paramEIPCResult));
+      bbux.b(this.a).put(Integer.valueOf(i), paramEIPCResult);
+      bbux.b(this.a);
+      this.a.notifyObservers(Integer.valueOf(4));
+      return;
+    } while (paramEIPCResult.code != 0);
+    int i = paramEIPCResult.data.getInt("id");
+    this.a.a(i, true);
   }
 }
 

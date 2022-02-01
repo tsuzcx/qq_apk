@@ -1,22 +1,65 @@
-import com.tencent.open.base.img.ImageCache;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.support.v4.widget.ExploreByTouchHelper;
+import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class bivs
-  implements bity
+public class bivs
+  extends ExploreByTouchHelper
 {
-  bivs(bivr parambivr, DownloadInfo paramDownloadInfo) {}
-  
-  public void a(String paramString1, String paramString2, String paramString3) {}
-  
-  public void b(String paramString1, String paramString2, String paramString3)
+  public bivs(ClearableEditText paramClearableEditText, View paramView)
   {
-    bisy.d("DownloadManager_", ">>download apk icon err,should load another size icon");
-    ImageCache.a("app", bisw.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c, 75), null);
+    super(paramView);
+  }
+  
+  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
+  {
+    if ((ClearableEditText.c(this.a)) && (paramFloat1 > this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth())) {
+      return 0;
+    }
+    return -1;
+  }
+  
+  public void getVisibleVirtualViews(List<Integer> paramList)
+  {
+    if (ClearableEditText.c(this.a)) {
+      paramList.add(Integer.valueOf(0));
+    }
+  }
+  
+  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ClearableEditTextHelper", 2, "onPerformActionForVirtualView virtualViewId:" + paramInt1);
+    }
+    return false;
+  }
+  
+  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
+  {
+    if (paramInt == 0) {
+      paramAccessibilityEvent.setContentDescription(anzj.a(2131700856));
+    }
+  }
+  
+  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    if (paramInt == 0)
+    {
+      paramAccessibilityNodeInfoCompat.setContentDescription(anzj.a(2131700855));
+      paramAccessibilityNodeInfoCompat.addAction(16);
+      paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth(), this.a.getPaddingTop(), this.a.getWidth() - this.a.getPaddingRight(), this.a.getHeight() - this.a.getPaddingBottom()));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bivs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bgwh;
+import bhwl;
 
 class FriendProfileCardActivity$2
   implements Runnable
@@ -9,7 +9,7 @@ class FriendProfileCardActivity$2
   
   public void run()
   {
-    bgwh.b(this.this$0.app);
+    bhwl.b(this.this$0.app);
   }
 }
 

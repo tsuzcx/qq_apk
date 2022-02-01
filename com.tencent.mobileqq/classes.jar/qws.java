@@ -1,47 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
 public class qws
-  implements View.OnClickListener
+  implements Cloneable
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RecommendFollowInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  private qws(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
-  
-  public void onClick(View paramView)
+  protected Object clone()
   {
-    switch (paramView.getId())
+    try
     {
+      qws localqws = (qws)super.clone();
+      return localqws;
     }
-    for (;;)
+    catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ComponentContentRecommendFollowList localComponentContentRecommendFollowList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList;
-      RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localComponentContentRecommendFollowList.a(localRecommendFollowInfo, bool);
-        break;
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      QLog.e("NewPolymericInfo", 2, "PackVideoInfo item clone failed. exception = " + localCloneNotSupportedException);
     }
+    return null;
+  }
+  
+  public String toString()
+  {
+    return "PackVideoInfo{businessType=" + this.jdField_a_of_type_Int + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", width=" + this.jdField_b_of_type_Int + ", height=" + this.jdField_c_of_type_Int + ", duration=" + this.jdField_d_of_type_Int + ", xgFileSize=" + this.jdField_a_of_type_Long + ", thirdUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", shareUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + ", thirdUin=" + this.jdField_b_of_type_Long + ", thirdUinName='" + this.jdField_d_of_type_JavaLangString + '\'' + ", thirdName='" + this.e + '\'' + ", thirdIcon='" + this.f + '\'' + ", thirdAction='" + this.g + '\'' + '}';
   }
 }
 

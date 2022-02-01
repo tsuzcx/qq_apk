@@ -1,38 +1,49 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder.TroopGiftMsgHolder.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForTroopGift;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import java.util.Observable;
+import java.util.Observer;
 
-class ahvs
-  implements Animation.AnimationListener
+public abstract class ahvs
+  extends aggl
+  implements Observer
 {
-  ahvs(ahvr paramahvr, float paramFloat) {}
+  public ViewGroup a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  private QQAppInterface a;
+  public MessageForTroopGift a;
+  public BubbleImageView a;
+  public ViewGroup b;
+  public Button b;
+  public TextView b;
+  public View c;
+  public ViewGroup c;
+  public Button c;
+  public View d;
+  public Button d;
+  public Button e;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public ahvs(QQAppInterface paramQQAppInterface)
   {
-    ayxi.a("PhotoListPanel", "DragHandler", " flyOutAnimation End fAnimLayout:" + this.jdField_a_of_type_Ahvr.jdField_a_of_type_AndroidWidgetRelativeLayout + ",## dy = " + (this.jdField_a_of_type_Float - this.jdField_a_of_type_Ahvr.jdField_a_of_type_Ahvq.b));
-    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Ahvr.c.getLayoutParams();
-    paramAnimation.topMargin = this.jdField_a_of_type_Ahvr.d.topMargin;
-    this.jdField_a_of_type_Ahvr.c.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Ahvr.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    paramAnimation = new AnimationSet(false);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.jdField_a_of_type_Ahvr.c.getWidth() / 2, this.jdField_a_of_type_Ahvr.c.getHeight() / 2);
-    paramAnimation.addAnimation(this.jdField_a_of_type_Ahvr.b);
-    paramAnimation.addAnimation(localScaleAnimation);
-    paramAnimation.setDuration(200L);
-    this.jdField_a_of_type_Ahvr.c.startAnimation(paramAnimation);
-    ayxi.a("PhotoListPanel", "DragHandler", "startReemergeAnimation fAnimLayout:" + this.jdField_a_of_type_Ahvr.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    paramAnimation.setAnimationListener(this.jdField_a_of_type_Ahvr.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    ayxi.a("PhotoListPanel", "DragHandler", "@#flyOutAnimation, onAnimationStart ");
+    paramObservable = (bgpf)paramObject;
+    if ((paramObservable.a.equals(bgth.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift))) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.isLoading)) {
+      this.d.post(new TroopGiftMsgItemBuilder.TroopGiftMsgHolder.1(this, paramObservable));
+    }
   }
 }
 

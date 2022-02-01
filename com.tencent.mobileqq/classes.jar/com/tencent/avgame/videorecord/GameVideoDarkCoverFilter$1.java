@@ -1,16 +1,16 @@
 package com.tencent.avgame.videorecord;
 
 import android.opengl.GLES20;
-import ngn;
+import nii;
 
 public class GameVideoDarkCoverFilter$1
   implements Runnable
 {
-  public GameVideoDarkCoverFilter$1(ngn paramngn, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
+  public GameVideoDarkCoverFilter$1(nii paramnii, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
   
   public void run()
   {
-    GLES20.glUniform4f(ngn.a(this.this$0), this.a, this.b, this.c, this.d);
+    GLES20.glUniform4f(nii.a(this.this$0), this.a, this.b, this.c, this.d);
   }
 }
 

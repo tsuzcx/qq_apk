@@ -1,61 +1,30 @@
-public class bipo
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.smtt.sdk.WebView;
+
+class bipo
+  implements bipq
 {
-  public static int a(int paramInt)
+  bipo(bipn parambipn) {}
+  
+  public Activity a()
   {
-    int i = 1;
-    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 4)) {
-      i = 2;
-    }
-    while (paramInt == 5) {
-      return i;
-    }
-    return 3;
+    return this.a.a.getHostActivity();
   }
   
-  public static int a(int paramInt, String paramString)
+  public bipn a()
   {
-    int i = 1;
-    if (paramInt == 0) {
-      i = 0;
-    }
-    while (paramInt == 1) {
-      return i;
-    }
-    if (paramInt == 3000) {
-      return 2;
-    }
-    if (anhk.aG.equals(paramString)) {
-      return 3;
-    }
-    if (anhk.L.equals(paramString)) {
-      return 4;
-    }
-    if (anhk.A.equals(paramString)) {
-      return 5;
-    }
-    return -1;
+    return this.a;
   }
   
-  public static int b(int paramInt)
+  public WebViewFragment a()
   {
-    switch (paramInt)
-    {
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      return -1;
-    case 1: 
-      return 0;
-    case 2: 
-      return 1;
-    case 3: 
-      return 2;
-    case 4: 
-      return 3;
-    }
-    return 4;
+    return this.a.a.getHostFragment();
+  }
+  
+  public WebView a()
+  {
+    return this.a.a.getHostWebView();
   }
 }
 

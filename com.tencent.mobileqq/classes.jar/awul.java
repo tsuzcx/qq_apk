@@ -1,16 +1,26 @@
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class awul
-  implements awti
+class awul
+  implements INetInfoHandler
 {
-  public awul(MultiCardFragment paramMultiCardFragment) {}
+  awul(awuj paramawuj) {}
   
-  public void a(boolean paramBoolean)
+  public void onNetMobile2None()
   {
-    if (MultiCardFragment.a(this.a) != null) {
-      MultiCardFragment.a(this.a).setViewPagerBusy(paramBoolean);
-    }
+    awuj.a(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    awuj.a(this.a);
   }
 }
 

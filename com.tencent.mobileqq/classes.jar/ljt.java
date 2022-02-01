@@ -1,85 +1,50 @@
-import java.util.Comparator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 public class ljt
 {
-  public static final Object a;
-  public static final Comparator<ljt> a;
-  private static ljt b;
-  private static int c;
-  public int a;
-  public bdoa a;
-  private ljt a;
-  public int b;
+  int jdField_a_of_type_Int = -99;
+  boolean jdField_a_of_type_Boolean = false;
+  int b = -99;
+  int c = -99;
+  int d = -99;
+  int e = -99;
+  int f = -99;
+  int g = -99;
+  int h = -99;
+  int i = -99;
+  int j = -99;
   
-  static
+  void a()
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaUtilComparator = new lju();
+    a(-101, this.b, this.c, this.jdField_a_of_type_Boolean, -101, -101, -101, -101, -101, -101);
   }
   
-  private ljt(bdoa parambdoa, int paramInt1, int paramInt2)
+  void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
   {
-    this.jdField_a_of_type_Bdoa = parambdoa;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public static ljt a(bdoa parambdoa, int paramInt1, int paramInt2)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    long l = this.j;
+    if (paramInt1 <= -99) {}
+    for (this.j = 0;; this.j += 1)
     {
-      if (jdField_b_of_type_Ljt != null)
-      {
-        ljt localljt = jdField_b_of_type_Ljt;
-        jdField_b_of_type_Ljt = localljt.jdField_a_of_type_Ljt;
-        localljt.a(parambdoa, paramInt1, paramInt2);
-        c -= 1;
-        return localljt;
+      if ((this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (this.c != paramInt3) || (this.jdField_a_of_type_Boolean != paramBoolean) || (this.d != paramInt4) || (this.e != paramInt5) || (this.f != paramInt6) || (this.g != paramInt7) || (this.h != paramInt8) || (this.i != paramInt9)) {
+        QLog.w("PreviewCallbackInfo", 1, "PREVIEW_CALLBACK, Index[" + l + "->" + this.j + "], degree[" + this.jdField_a_of_type_Int + "->" + paramInt1 + "], mCurCamera[" + this.b + "->" + paramInt2 + "], nInFPS[" + this.c + "->" + paramInt3 + "], mSupportLandscape[" + this.jdField_a_of_type_Boolean + "->" + paramBoolean + "], cameraImageOrientation[" + this.d + "->" + paramInt4 + "], displayRotation[" + this.e + "->" + paramInt5 + "], mobileRotation[" + this.f + "->" + paramInt6 + "], dataLength[" + this.g + "->" + paramInt7 + "], w[" + this.h + "->" + paramInt8 + "], h[" + this.i + "->" + paramInt9 + "]");
       }
-      return new ljt(parambdoa, paramInt1, paramInt2);
-    }
-  }
-  
-  private void a(bdoa parambdoa, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Ljt = null;
-    this.jdField_a_of_type_Bdoa = parambdoa;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public static void a(List<ljt> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
-    {
-      return;
-      int i = paramList.size() - 1;
-      while (i >= 0)
-      {
-        ljt localljt = (ljt)paramList.remove(i);
-        if (localljt != null) {
-          localljt.a();
-        }
-        i -= 1;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    a(null, -1, -1);
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (c < 50)
-      {
-        this.jdField_a_of_type_Ljt = jdField_b_of_type_Ljt;
-        jdField_b_of_type_Ljt = this;
-        c += 1;
-      }
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      this.c = paramInt3;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.d = paramInt4;
+      this.e = paramInt5;
+      this.f = paramInt6;
+      this.g = paramInt7;
+      this.h = paramInt8;
+      this.i = paramInt9;
       return;
     }
+  }
+  
+  void b()
+  {
+    a(-100, this.b, this.c, this.jdField_a_of_type_Boolean, -100, -100, -100, -100, -100, -100);
   }
 }
 

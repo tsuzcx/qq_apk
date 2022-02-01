@@ -1,20 +1,57 @@
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.magicface.view.MagicfaceContainerView;
+
 public class awzh
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public final String a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
-  public final String f;
+  public awzh(MagicfaceContainerView paramMagicfaceContainerView) {}
   
-  public awzh(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
+    if (this.a.a != null) {
+      this.a.a.a(5);
+    }
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (paramMotionEvent1.getX() - paramMotionEvent2.getX() > 150.0F) {
+      if (this.a.a != null) {
+        this.a.a.a(0);
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+          if (paramMotionEvent1.getX() - paramMotionEvent2.getX() >= -150.0F) {
+            break;
+          }
+        } while (this.a.a == null);
+        this.a.a.a(1);
+        return false;
+        if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 150.0F) {
+          break;
+        }
+      } while (this.a.a == null);
+      this.a.a.a(2);
+      return false;
+    } while ((paramMotionEvent1.getY() - paramMotionEvent2.getY() >= -150.0F) || (this.a.a == null));
+    this.a.a.a(3);
+    return false;
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(4);
+    }
+    return false;
   }
 }
 

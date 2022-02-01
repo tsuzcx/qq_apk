@@ -1,119 +1,44 @@
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qqfav.QfavHelper.AsyncFavoritesProvider.1;
+import mqq.os.MqqHandler;
 
-public class bmkv
+public abstract class bmkv
+  extends OnPluginInstallListener.Stub
 {
-  public static String a(Map<Integer, Long> paramMap)
+  public Bundle a;
+  
+  public bmkv(Bundle paramBundle)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramMap.keySet().iterator();
-    if (localIterator.hasNext())
-    {
-      Object localObject = (Integer)localIterator.next();
-      if (localStringBuilder.length() > 0) {
-        localStringBuilder.append("&");
-      }
-      Long localLong = (Long)paramMap.get(localObject);
-      if (localObject != null) {}
-      for (;;)
-      {
-        try
-        {
-          localObject = URLEncoder.encode(localObject + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-          localStringBuilder.append("=");
-          if (localLong == null) {
-            break label165;
-          }
-          localObject = URLEncoder.encode(localLong + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-        }
-        catch (UnsupportedEncodingException paramMap)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramMap);
-        }
-        localObject = "";
-        continue;
-        label165:
-        localObject = "";
-      }
-    }
-    return localStringBuilder.toString();
+    this.a = paramBundle;
   }
   
-  public static Map<Integer, Long> a(String paramString)
+  public void a()
   {
-    int i = 0;
-    HashMap localHashMap = new HashMap();
-    paramString = paramString.split("&");
-    int j = paramString.length;
-    if (i < j)
-    {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length != 2) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        try
-        {
-          localHashMap.put(Integer.valueOf(URLDecoder.decode(arrayOfString[0], "UTF-8")), Long.valueOf(URLDecoder.decode(arrayOfString[1], "UTF-8")));
-        }
-        catch (UnsupportedEncodingException paramString)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramString);
-        }
-      }
-    }
-    return localHashMap;
+    bmkq.a(BaseApplication.getContext(), this);
   }
   
-  public static String b(Map<Integer, Long> paramMap)
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramMap.keySet().iterator();
-    if (localIterator.hasNext())
-    {
-      Object localObject = (Integer)localIterator.next();
-      if (localStringBuilder.length() > 0) {
-        localStringBuilder.append(",");
-      }
-      Long localLong = (Long)paramMap.get(localObject);
-      if (localObject != null) {}
-      for (;;)
-      {
-        try
-        {
-          localObject = URLEncoder.encode(localObject + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-          localStringBuilder.append("_");
-          if (localLong == null) {
-            break label165;
-          }
-          localObject = URLEncoder.encode(localLong + "", "UTF-8");
-          localStringBuilder.append((String)localObject);
-        }
-        catch (UnsupportedEncodingException paramMap)
-        {
-          throw new RuntimeException("This method requires UTF-8 encoding support", paramMap);
-        }
-        localObject = "";
-        continue;
-        label165:
-        localObject = "";
-      }
-    }
-    return localStringBuilder.toString();
+    a(false, this.a);
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    ThreadManager.getSubThreadHandler().post(new QfavHelper.AsyncFavoritesProvider.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmkv
  * JD-Core Version:    0.7.0.1
  */

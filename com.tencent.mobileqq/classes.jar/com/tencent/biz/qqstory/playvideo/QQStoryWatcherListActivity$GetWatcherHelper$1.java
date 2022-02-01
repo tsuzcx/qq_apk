@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import anni;
+import anzj;
 import com.tencent.mobileqq.widget.QQToast;
-import xgv;
+import xkq;
 
 public class QQStoryWatcherListActivity$GetWatcherHelper$1
   implements Runnable
 {
-  public QQStoryWatcherListActivity$GetWatcherHelper$1(xgv paramxgv) {}
+  public QQStoryWatcherListActivity$GetWatcherHelper$1(xkq paramxkq) {}
   
   public void run()
   {
-    QQToast.a(this.this$0.a, 1, anni.a(2131709892), 0).a();
+    QQToast.a(this.this$0.a, 1, anzj.a(2131710001), 0).a();
     this.this$0.a.a(2);
   }
 }

@@ -1,16 +1,22 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
-class agpo
-  extends afwr
+public class agpo
+  implements agrk
 {
-  public LinearLayout a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public agpo(DoodlePanel paramDoodlePanel) {}
   
-  agpo(agpn paramagpn) {}
+  public void a(int paramInt)
+  {
+    if (DoodlePanel.a(this.a) != null)
+    {
+      if (DoodlePanel.a(this.a) != null) {
+        DoodlePanel.a(this.a).setTemplateID(paramInt);
+      }
+      DoodlePanel.a(this.a);
+      bhjc.a(this.a.getContext(), "aio_doodle_template_picker_select", String.valueOf(paramInt));
+    }
+  }
 }
 
 

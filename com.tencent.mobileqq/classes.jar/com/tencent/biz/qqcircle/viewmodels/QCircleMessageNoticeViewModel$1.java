@@ -4,21 +4,21 @@ import android.content.Context;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
-import vqu;
-import vud;
-import vue;
+import vtf;
+import vxc;
+import vxd;
 
 public class QCircleMessageNoticeViewModel$1
   implements Runnable
 {
-  public QCircleMessageNoticeViewModel$1(vud paramvud, Context paramContext) {}
+  public QCircleMessageNoticeViewModel$1(vxc paramvxc, Context paramContext) {}
   
   public void run()
   {
-    vqu localvqu = (vqu)BaseApplicationImpl.getApplication().getRuntime().getManager(376);
+    vtf localvtf = (vtf)BaseApplicationImpl.getApplication().getRuntime().getManager(376);
     try
     {
-      localvqu.a("circle_entrance", new vue(this), false);
+      localvtf.a("circle_entrance", new vxd(this), false);
       return;
     }
     catch (Exception localException)

@@ -1,13 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class aakw
-  implements View.OnClickListener
+  extends aqrh
 {
-  public aakw(SubscribeQRCodeShareHelper.3 param3) {}
+  public aakw(SubscribeBaseFragment paramSubscribeBaseFragment) {}
   
-  public void onClick(View paramView) {}
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  {
+    super.onAddColorNote(paramBundle, paramBoolean);
+    aquy.a(BaseApplicationImpl.getContext(), 2, true);
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
+  }
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar;
 
-import aowo;
-import aowp;
-import aowq;
+import apke;
+import apkf;
+import apkg;
 
 class FramePerformanceMonitor$CurrentRunnable
   implements Runnable
@@ -31,8 +31,8 @@ class FramePerformanceMonitor$CurrentRunnable
       {
         localException.printStackTrace();
       }
-      aowq localaowq = FramePerformanceMonitor.a(this.this$0).a();
-      FramePerformanceMonitor.a(this.this$0).a(localaowq);
+      apkg localapkg = FramePerformanceMonitor.a(this.this$0).a();
+      FramePerformanceMonitor.a(this.this$0).a(localapkg);
       Thread.sleep(FramePerformanceMonitor.a(this.this$0));
     }
   }

@@ -1,27 +1,55 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerIndicator;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerViewPager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class nsy
-  implements bkhw
+  implements ViewPager.OnPageChangeListener
 {
-  public nsy(AccountDetailActivity paramAccountDetailActivity) {}
+  public nsy(AccountDetailBannerViewPager paramAccountDetailBannerViewPager) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if (this.a.o) {
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AccountDetailBannerViewPager", 2, "onPageScrollStateChanged->" + paramInt);
     }
-    this.a.o = true;
-    switch (paramInt)
+    AccountDetailBannerViewPager.a(this.a, paramInt);
+    if (AccountDetailBannerViewPager.a(this.a) != null)
     {
+      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
+      }
     }
-    for (;;)
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (AccountDetailBannerViewPager.a(this.a) != null)
     {
-      this.a.a.dismiss();
-      return;
-      this.a.q();
-      continue;
-      this.a.F();
+      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
+      }
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AccountDetailBannerViewPager", 2, "onPageSelected->" + paramInt);
+    }
+    if (AccountDetailBannerViewPager.a(this.a) != null)
+    {
+      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      }
+    }
+    if (AccountDetailBannerViewPager.a(this.a) != null) {
+      AccountDetailBannerViewPager.a(this.a).a(paramInt);
     }
   }
 }

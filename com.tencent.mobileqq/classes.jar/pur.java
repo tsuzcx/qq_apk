@@ -1,47 +1,21 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class pur
-  extends puq
+class pur
+  implements ViewBase.OnClickListener
 {
-  public TextView a;
-  public BaseArticleInfo a;
-  public KandianUrlImageView a;
-  public TextView b;
-  public BaseArticleInfo b;
-  public KandianUrlImageView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
-  public TextView h;
+  pur(puq parampuq, ppu paramppu, Container paramContainer) {}
   
-  public pur(Context paramContext, puf parampuf)
+  public void onClick(ViewBase paramViewBase)
   {
-    super(paramContext, parampuf);
-  }
-  
-  public View a(int paramInt, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560356, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131367610));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369770));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369774));
-    this.c = ((TextView)paramViewGroup.findViewById(2131369749));
-    this.d = ((TextView)paramViewGroup.findViewById(2131369769));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131367612));
-    this.e = ((TextView)paramViewGroup.findViewById(2131376557));
-    this.f = ((TextView)paramViewGroup.findViewById(2131376563));
-    this.g = ((TextView)paramViewGroup.findViewById(2131376537));
-    this.h = ((TextView)paramViewGroup.findViewById(2131376556));
-    paramViewGroup.setTag(this);
-    return paramViewGroup;
+    paramViewBase = this.jdField_a_of_type_Ppu.a();
+    String str = paramViewBase.mSocialFeedInfo.a.f;
+    ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
+    sel.a(paramViewBase, (int)paramViewBase.mChannelID);
+    ubg.a(paramViewBase);
   }
 }
 

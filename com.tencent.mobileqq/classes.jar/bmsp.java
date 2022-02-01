@@ -1,23 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.vip.ad.TianshuBigInsertPage.4.1;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.GeoInfo;
+import cooperation.qzone.LbsDataV2.GetGeoInfoRsp;
+import cooperation.qzone.LbsDataV2.GpsInfo;
 
-public class bmsp
-  implements akse
+public final class bmsp
+  implements Parcelable.Creator<LbsDataV2.GetGeoInfoRsp>
 {
-  bmsp(bmsl parambmsl) {}
-  
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public LbsDataV2.GetGeoInfoRsp a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TianshuBigInsertPage", 2, "onResult: " + paramInt + ", path: " + paramPathResult.filePath);
+    LbsDataV2.GetGeoInfoRsp localGetGeoInfoRsp = new LbsDataV2.GetGeoInfoRsp();
+    if (paramParcel != null)
+    {
+      localGetGeoInfoRsp.stGps = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
+      localGetGeoInfoRsp.stGeoInfo = ((LbsDataV2.GeoInfo)paramParcel.readParcelable(LbsDataV2.GeoInfo.class.getClassLoader()));
     }
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.filePath))) {
-      bmsl.a(this.a).a().runOnUiThread(new TianshuBigInsertPage.4.1(this, paramPathResult));
-    }
+    return localGetGeoInfoRsp;
+  }
+  
+  public LbsDataV2.GetGeoInfoRsp[] a(int paramInt)
+  {
+    return null;
   }
 }
 

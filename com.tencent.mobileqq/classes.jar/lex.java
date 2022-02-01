@@ -1,28 +1,47 @@
-import java.util.HashMap;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class lex
 {
-  public int a;
-  protected HashMap<String, Integer> a;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
-  public static int a(lex paramlex, String paramString)
+  public lex(VideoAppInterface paramVideoAppInterface)
   {
-    if (paramlex == null) {}
-    while ((paramlex.a == null) || (!paramlex.a.containsKey(paramString))) {
-      return 0;
-    }
-    return ((Integer)paramlex.a.get(paramString)).intValue();
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new lez(paramVideoAppInterface, null);
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public static void a(lex paramlex, String paramString, int paramInt)
+  public void a()
   {
-    if (paramlex == null) {
-      return;
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.qav.notify.accept");
+    localIntentFilter.addAction("com.tencent.qav.notify.refuse");
+    localIntentFilter.addAction("tencent.video.q2v.ptusoDownloadRet");
+    localIntentFilter.addAction("tencent.video.q2v.ptuLibpagDownloadRet");
+    localIntentFilter.addAction("tencent.video.q2v.avReceivePushMsg");
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    this.jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("QAVNotifyActionMonitor", 2, "register");
     }
-    if (paramlex.a == null) {
-      paramlex.a = new HashMap();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
     }
-    paramlex.a.put(paramString, Integer.valueOf(paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.i("QAVNotifyActionMonitor", 2, "unRegister");
+    }
   }
 }
 

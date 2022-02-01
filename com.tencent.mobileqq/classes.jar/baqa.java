@@ -1,39 +1,41 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import java.util.Iterator;
-import java.util.List;
+import NS_MOBILE_PHOTO.operation_red_touch_req;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class baqa
-  implements Animator.AnimatorListener
+  extends MSFServlet
 {
-  public baqa(ProviderContainerView paramProviderContainerView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.a.c.setVisibility(8);
-    paramAnimator = ProviderContainerView.a(this.a);
-    if (paramAnimator != null) {
-      paramAnimator.a();
-    }
-    if (ProviderContainerView.a(this.a) != null)
-    {
-      paramAnimator = ProviderContainerView.a(this.a).iterator();
-      while (paramAnimator.hasNext()) {
-        ((baqc)paramAnimator.next()).a();
+    if (paramFromServiceMsg != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedDotServlet", 2, "resultcode:" + paramFromServiceMsg.getResultCode() + ",failMsg:" + paramFromServiceMsg.getBusinessFailMsg());
       }
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("QzoneAlbumRedDotServlet", 2, "fromServiceMsg==msg");
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (ProviderContainerView.a(this.a) != null) {
-      ProviderContainerView.a(this.a).b();
+    paramIntent = paramIntent.getSerializableExtra("req");
+    if ((paramIntent != null) && ((paramIntent instanceof operation_red_touch_req)))
+    {
+      bapz localbapz = new bapz(getAppRuntime().getLongAccountUin(), (operation_red_touch_req)paramIntent);
+      byte[] arrayOfByte = localbapz.encode();
+      paramIntent = arrayOfByte;
+      if (arrayOfByte == null) {
+        paramIntent = new byte[4];
+      }
+      paramPacket.setTimeout(60000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + localbapz.uniKey());
+      paramPacket.putSendData(paramIntent);
     }
   }
 }

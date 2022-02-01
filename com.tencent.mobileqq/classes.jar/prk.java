@@ -1,23 +1,8 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.widget.HorizontalListView;
+import java.util.List;
 
-public class prk
-  implements Animation.AnimationListener
+public abstract interface prk<B>
 {
-  public prk(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    ReadInJoySelfFragment.a(this.a).setVisibility(8);
-    ReadInJoySelfFragment.b(this.a).setAnimation(null);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(boolean paramBoolean, List<B> paramList, int paramInt1, Boolean paramBoolean1, int paramInt2, String paramString);
 }
 
 

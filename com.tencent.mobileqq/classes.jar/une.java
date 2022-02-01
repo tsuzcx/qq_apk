@@ -1,24 +1,23 @@
-import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
 
-public class une
+public abstract interface une
+  extends ucm<unf>
 {
-  private static int a(String paramString)
-  {
-    int i = 2;
-    if (TextUtils.equals(paramString, "trends")) {
-      i = 6;
-    }
-    return i;
-  }
+  public abstract long a();
   
-  public static unc a(String paramString)
-  {
-    int i = a(paramString);
-    if (!TextUtils.equals(paramString, "trends")) {
-      return new und(i);
-    }
-    return new unf(i);
-  }
+  public abstract void a(WSSimpleBaseEvent paramWSSimpleBaseEvent);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract void b(String paramString);
+  
+  public abstract boolean b();
 }
 
 

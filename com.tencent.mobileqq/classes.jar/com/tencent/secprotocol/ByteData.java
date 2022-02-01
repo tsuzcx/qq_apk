@@ -20,7 +20,7 @@ public class ByteData
   public static final int MSG_DATA_UPING = 163;
   public static final int MSG_DATA_WRITE_SP = 162;
   public static final int MSG_INTERNAL_DATA_UPING = 161;
-  public static final String MY_VERSION = "0.2.4";
+  public static final String MY_VERSION = "0.2.8";
   public static final int RH_SCV = 1;
   public static String SP_MARK_TIME = "mark_time_";
   public static boolean isPrint = false;
@@ -128,7 +128,7 @@ public class ByteData
           return;
         }
         Object localObject = s.md5sum(String.valueOf(this.mUin));
-        localObject = this.mContext.getSharedPreferences(SP_MARK_TIME + processName + "_" + (String)localObject, 0).edit();
+        localObject = this.mContext.getSharedPreferences(SP_MARK_TIME + processName + "_" + (String)localObject, 4).edit();
         ((SharedPreferences.Editor)localObject).putLong(this.TIME_STAMP_NAME, paramLong);
         ((SharedPreferences.Editor)localObject).commit();
         sSessionID = String.valueOf(paramLong);
@@ -190,9 +190,8 @@ public class ByteData
     try
     {
       processName = s.getProcessName(paramContext);
-      a.a.a.a.b.a = paramContext;
       this.mBmpMgr = new a(paramContext, processName);
-      this.cData = new a.a.a.b.b(paramContext, paramString1, "", paramString2, paramString3, paramString4, sSessionID, paramString5, "0.2.4");
+      this.cData = new a.a.a.b.b(paramContext, paramString1, "", paramString2, paramString3, paramString4, sSessionID, paramString5, "0.2.8");
       setContext(paramContext);
       initLoadlibrary();
       return;

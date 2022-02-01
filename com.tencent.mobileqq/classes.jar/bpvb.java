@@ -1,25 +1,27 @@
-import android.util.Property;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
 class bpvb
-  extends Property<bpuy, Float>
+  extends RecyclerView.OnScrollListener
 {
-  bpvb(bpuy parambpuy, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  boolean jdField_a_of_type_Boolean = false;
   
-  public Float a(bpuy parambpuy)
+  bpvb(bpva parambpva) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (parambpuy != null) {
-      return Float.valueOf(bpuy.a(parambpuy));
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if ((paramInt == 0) && (this.jdField_a_of_type_Boolean))
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Bpva.a();
     }
-    return Float.valueOf(0.0F);
   }
   
-  public void a(bpuy parambpuy, Float paramFloat)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    if (parambpuy != null) {
-      bpuy.a(parambpuy, paramFloat.floatValue());
+    if ((paramInt1 != 0) || (paramInt2 != 0)) {
+      this.jdField_a_of_type_Boolean = true;
     }
   }
 }

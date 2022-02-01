@@ -1,26 +1,37 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.util.Pair;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class akze
-  implements View.OnClickListener
+public class akze
+  extends BroadcastReceiver
 {
-  akze(akyh paramakyh) {}
+  public akze(SendHbActivity paramSendHbActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Intent localIntent = new Intent(akyh.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("uin", ((QQAppInterface)akyh.a(this.a).getAppRuntime()).getCurrentAccountUin());
-    Pair localPair = (Pair)paramView.getTag();
-    if (localPair != null) {
-      akyh.a(this.a).startActivity(localIntent.putExtra("url", "https://qzs.qq.com/iot/mobile/xiaowei-qq-proxy/index.html?din=" + ((Long)localPair.first).longValue() + "&deviceRemark=" + (String)localPair.second));
+    if ("com.qwallet.report".equals(paramIntent.getAction()))
+    {
+      int i = paramIntent.getIntExtra("type", 0);
+      QLog.i("SendHbActivity", 2, "onReceive type = " + i);
+      if (999 == i) {
+        break label53;
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    label53:
+    do
+    {
+      do
+      {
+        return;
+        paramContext = paramIntent.getBundleExtra("params");
+      } while (paramContext == null);
+      QLog.i("SendHbActivity", 2, "onReceive bundle = " + paramContext.toString());
+      paramContext = paramContext.getString("from");
+    } while ((this.a.isFinishing()) || (!"video".equals(paramContext)));
+    this.a.finish();
   }
 }
 

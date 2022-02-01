@@ -1,24 +1,26 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.IPSiteModel.Video;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Book;
 
-class arwm
-  implements View.OnClickListener
+public final class arwm
+  implements Parcelable.Creator
 {
-  arwm(arwh paramarwh, IPSiteModel.Video paramVideo, String paramString1, String paramString2) {}
-  
-  public void onClick(View paramView)
+  public IPSiteModel.Book a(Parcel paramParcel)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Arwh.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    localIntent.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Arwh.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Video.redirectUrl, -1L, localIntent, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Arwh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_movieclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    IPSiteModel.Book localBook = new IPSiteModel.Book();
+    localBook.cover = paramParcel.readString();
+    localBook.desc = paramParcel.readString();
+    localBook.id = paramParcel.readString();
+    localBook.jumpUrl = paramParcel.readString();
+    localBook.name = paramParcel.readString();
+    localBook.recommDesc = paramParcel.readString();
+    localBook.authorName = paramParcel.readString();
+    return localBook;
+  }
+  
+  public IPSiteModel.Book[] a(int paramInt)
+  {
+    return new IPSiteModel.Book[paramInt];
   }
 }
 

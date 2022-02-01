@@ -1,6 +1,6 @@
 package com.tencent.common.app;
 
-import blsb;
+import bmtd;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -24,7 +24,7 @@ public class ToolRuntimePeak
       }
       return localObject;
       if ("Photoplus.apk".equals(paramString)) {
-        localObject = blsb.a(localBaseApplicationImpl);
+        localObject = bmtd.a(localBaseApplicationImpl);
       }
     }
   }

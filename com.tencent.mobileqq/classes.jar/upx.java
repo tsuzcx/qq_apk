@@ -1,20 +1,18 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 
 final class upx
-  implements Animation.AnimationListener
+  implements bliz
 {
-  upx(View paramView) {}
+  upx(bliz parambliz, blir paramblir) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.setTag(-1, null);
+    uqf.b("WSFeedUtils", "clickedView :" + paramView + ", which: " + paramInt);
+    if (this.jdField_a_of_type_Bliz != null) {
+      this.jdField_a_of_type_Bliz.OnClick(paramView, paramInt);
+    }
+    this.jdField_a_of_type_Blir.dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

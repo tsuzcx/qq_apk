@@ -13,15 +13,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
-import aqlk;
-import aqtv;
-import aqtw;
-import atwl;
-import bdjg;
-import bdkv;
-import bglf;
-import bgnt;
-import bltb;
+import aran;
+import arjh;
+import arji;
+import auog;
+import becb;
+import bedq;
+import bhlg;
+import bhnv;
+import bmud;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.GifDrawable;
@@ -45,7 +45,7 @@ import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
-import nlw;
+import nnr;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -75,7 +75,7 @@ public class TeamWorkDocEditBrowserActivity
   {
     Object localObject3;
     Object localObject1;
-    if (bgnt.d(BaseApplication.getContext()))
+    if (bhnv.d(BaseApplication.getContext()))
     {
       localObject3 = paramBundle.getString("tdsourcetag");
       if (localObject3 != null)
@@ -86,7 +86,7 @@ public class TeamWorkDocEditBrowserActivity
         {
           localObject1 = localObject2;
           if (!((String)localObject2).contains("tdsourcetag")) {
-            localObject1 = bdjg.b((String)localObject2, (String)localObject3);
+            localObject1 = becb.b((String)localObject2, (String)localObject3);
           }
         }
         if (a(paramContext, (String)localObject1, (String)localObject3, paramBundle.getBoolean("temp_preview_from_qq")))
@@ -98,18 +98,18 @@ public class TeamWorkDocEditBrowserActivity
             QLog.d("TeamWorkDocEditBrowserActivity", 2, "openDocsMiniApp in TeamWorkDocEditBrowserActivity");
             ((Activity)paramContext).finish();
           }
-          bdjg.a(paramBundle, "0X8009ED7");
+          becb.a(paramBundle, "0X8009ED7");
           return;
         }
       }
-      bdjg.a(paramBundle, "0X8009ED6");
+      becb.a(paramBundle, "0X8009ED6");
       localObject3 = new Intent(paramContext, TeamWorkDocEditBrowserActivity.class);
       Object localObject2 = paramBundle.getString("url");
       i = paramBundle.getInt("key_team_work_edit_type");
       localObject1 = localObject2;
       Object localObject4;
       Object localObject5;
-      if (bdjg.b((String)localObject2))
+      if (becb.b((String)localObject2))
       {
         localObject1 = localObject2;
         if ((paramContext instanceof FragmentActivity))
@@ -136,7 +136,7 @@ public class TeamWorkDocEditBrowserActivity
                   }
                   else
                   {
-                    localObject4 = bdjg.a(((FragmentActivity)localObject4).app, str, ((BaseChatPie)localObject5).a.jdField_a_of_type_Int);
+                    localObject4 = becb.a(((FragmentActivity)localObject4).app, str, ((BaseChatPie)localObject5).a.jdField_a_of_type_Int);
                     localObject1 = "?" + (String)localObject4;
                     if (((String)localObject2).contains("?")) {
                       localObject1 = "&" + (String)localObject4;
@@ -177,7 +177,7 @@ public class TeamWorkDocEditBrowserActivity
               {
                 ((Intent)localObject3).putExtra("doc_from_aio_uin", (String)localObject5);
                 ((Intent)localObject3).putExtra("doc_from_aio_peertype", j);
-                ((Intent)localObject3).putExtra("doc_from_aio_nickname", bglf.b(((FragmentActivity)localObject2).app, (String)localObject5, j));
+                ((Intent)localObject3).putExtra("doc_from_aio_nickname", bhlg.b(((FragmentActivity)localObject2).app, (String)localObject5, j));
               }
             }
           }
@@ -190,7 +190,7 @@ public class TeamWorkDocEditBrowserActivity
         }
         localObject2 = paramBundle.getString("tdsourcetag");
         ((Intent)localObject3).putExtra("tdsourcetag", (String)localObject2);
-        ((Intent)localObject3).putExtra("url", bdjg.b((String)localObject1, (String)localObject2));
+        ((Intent)localObject3).putExtra("url", becb.b((String)localObject1, (String)localObject2));
         label670:
         ((Intent)localObject3).putExtra("key_team_work_edit_type", i);
         ((Intent)localObject3).putExtra("hide_more_button", true);
@@ -235,7 +235,7 @@ public class TeamWorkDocEditBrowserActivity
       }
       paramContext.startActivity((Intent)localObject3);
       return;
-      QQToast.a(BaseApplication.getContext(), paramContext.getResources().getString(2131691985), 0).b(paramContext.getResources().getDimensionPixelSize(2131298998));
+      QQToast.a(BaseApplication.getContext(), paramContext.getResources().getString(2131691989), 0).b(paramContext.getResources().getDimensionPixelSize(2131299011));
       return;
     }
   }
@@ -250,18 +250,18 @@ public class TeamWorkDocEditBrowserActivity
     if ((paramString2 == null) || (paramContext == null)) {
       return false;
     }
-    String str3 = (String)bdjg.a.get(paramString2);
+    String str3 = (String)becb.a.get(paramString2);
     if (str3 == null) {
       return false;
     }
     if (QLog.isColorLevel()) {
       QLog.i("TeamWorkDocEditBrowserActivity", 2, "openDocsMiniApp:configType " + str3);
     }
-    paramString2 = (aqtv)aqlk.a().a(418);
+    paramString2 = (arjh)aran.a().a(418);
     if (paramString2 == null) {
       return false;
     }
-    paramString2 = (aqtw)paramString2.a().get(str3);
+    paramString2 = (arji)paramString2.a().get(str3);
     if (paramString2 == null) {
       return false;
     }
@@ -316,7 +316,7 @@ public class TeamWorkDocEditBrowserActivity
           QLog.e("TeamWorkDocEditBrowserActivity", 2, "openDocsMiniApp " + paramContext.getMessage());
         }
         if (TextUtils.equals(str3, "s_qq_mini_importing")) {
-          bdkv.a(null, "0X800A4B5");
+          bedq.a(null, "0X800A4B5");
         }
       }
       label434:
@@ -341,21 +341,21 @@ public class TeamWorkDocEditBrowserActivity
     if (i < paramArrayList.size())
     {
       str = (String)paramArrayList.get(i);
-      if (atwl.a(str))
+      if (auog.a(str))
       {
         if (QLog.isColorLevel()) {
           QLog.d("TeamWorkDocEditBrowserActivity", 4, "local url:" + str);
         }
-        if (atwl.a(str) <= 5242880L) {
+        if (auog.a(str) <= 5242880L) {
           break label452;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("TeamWorkDocEditBrowserActivity", 4, "file length:" + atwl.a(str));
+          QLog.d("TeamWorkDocEditBrowserActivity", 4, "file length:" + auog.a(str));
         }
         if ((paramInt != 0) || (GifDrawable.isGifFile(new File(str)))) {
           break label446;
         }
-        localObject1 = bltb.a(str, i);
+        localObject1 = bmud.a(str, i);
         if (localObject1 == null) {
           break label444;
         }
@@ -398,7 +398,7 @@ public class TeamWorkDocEditBrowserActivity
           ((Map)localObject1).put("type", paramString3);
           localObject3 = new HashMap();
           ((Map)localObject3).put("share_image", str);
-          localObject1 = nlw.a(paramString4, paramString1, paramString2, (Map)localObject1, (Map)localObject3, localHashMap);
+          localObject1 = nnr.a(paramString4, paramString1, paramString2, (Map)localObject1, (Map)localObject3, localHashMap);
           if (localObject1 == null) {}
         }
         try
@@ -429,7 +429,7 @@ public class TeamWorkDocEditBrowserActivity
           }
         }
       }
-      bltb.a(localArrayList2);
+      bmud.a(localArrayList2);
       return localArrayList1;
     }
   }

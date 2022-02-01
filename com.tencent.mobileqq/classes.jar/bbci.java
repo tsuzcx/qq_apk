@@ -1,62 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.richstatus.StatusJsHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import androidx.annotation.NonNull;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class bbci
-  implements BusinessObserver
 {
-  public bbci(StatusJsHandler paramStatusJsHandler) {}
+  public bbcj a;
+  public bbcl a;
+  public bbcm a;
+  public List<String> a;
+  public List<bbck> b = new ArrayList();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public bbci()
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      this.a.a(2131694617);
-    }
-    for (;;)
-    {
-      this.a.a(this.a.c, "false");
-      return;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-          localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
-          if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
-          {
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null))
-            {
-              paramBundle = new AccountDetail(localGetPublicAccountDetailInfoResponse);
-              this.a.a(localBaseActivity, paramBundle);
-              StatusJsHandler.a(this.a, localBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
-            }
-          }
-          else {
-            this.a.a(2131694617);
-          }
-        }
-        else
-        {
-          this.a.a(2131694617);
-        }
-      }
-      catch (Exception paramBundle) {}
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("baseProfile").append("=").append(this.jdField_a_of_type_Bbcj).append("|\n");
+    localStringBuilder.append("personalLabels").append("=").append(Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray())).append("|\n");
+    localStringBuilder.append("qZoneInfo").append("=").append(this.jdField_a_of_type_Bbcl).append("|\n");
+    localStringBuilder.append("nicePics").append("=").append(Arrays.toString(this.b.toArray())).append("|\n");
+    localStringBuilder.append("sign").append("=").append(this.jdField_a_of_type_Bbcm).append("|\n");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,29 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.ViewGroup;
+import java.lang.ref.SoftReference;
 
-class ahto
-  implements DialogInterface.OnClickListener
+public class ahto
 {
-  ahto(ahtk paramahtk, int paramInt) {}
+  public String a;
+  SoftReference<View> a;
+  SoftReference<ViewGroup> b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahto(String paramString, View paramView, ViewGroup paramViewGroup)
   {
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_Int != 0) {
-        break label47;
-      }
-      this.jdField_a_of_type_Ahtk.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(1) });
-    }
-    for (;;)
-    {
-      ahtk.b(this.jdField_a_of_type_Ahtk, null);
-      return;
-      label47:
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_Ahtk.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(2) });
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
+    this.b = new SoftReference(paramViewGroup);
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+  }
+  
+  public ViewGroup a()
+  {
+    return (ViewGroup)this.b.get();
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    this.b = new SoftReference(paramViewGroup);
   }
 }
 

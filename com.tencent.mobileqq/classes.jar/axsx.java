@@ -1,22 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class axsx
-  implements View.OnClickListener
+  implements beuq
 {
-  axsx(axsd paramaxsd) {}
+  axsx(axsw paramaxsw) {}
   
-  public void onClick(View paramView)
-  {
-    if (!this.a.a.onBackEvent())
-    {
-      this.a.a.finish();
-      this.a.a.c(false);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onResp(bevm parambevm) {}
+  
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

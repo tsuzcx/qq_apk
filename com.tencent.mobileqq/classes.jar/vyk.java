@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
 
-class vyk
-  implements View.OnClickListener
+public class vyk
+  implements blkc
 {
-  vyk(vyh paramvyh) {}
+  public vyk(QCircleCommentListView paramQCircleCommentListView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    vyh.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QCircleCommentListView.a(this.a, 63);
   }
 }
 

@@ -1,62 +1,16 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 
 public class bhac
-  implements Handler.Callback
+  implements bdyz
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private bhad jdField_a_of_type_Bhad;
-  private bhae jdField_a_of_type_Bhae;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  public bhac(TroopInteractGiftAnimationController.1.1 param1) {}
   
-  public bhac(AppRuntime paramAppRuntime, int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_Bhae = new bhae(paramInt, this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidOsHandler);
-  }
-  
-  public bhad a()
-  {
-    return this.jdField_a_of_type_Bhad;
-  }
-  
-  public bhae a()
-  {
-    return this.jdField_a_of_type_Bhae;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bhad != null) {
-      this.jdField_a_of_type_Bhad.c();
-    }
-  }
-  
-  public void a(bhad parambhad)
-  {
-    this.jdField_a_of_type_Bhad = parambhad;
-    this.jdField_a_of_type_Bhad.b();
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (this.jdField_a_of_type_Bhad == null) {
-      return false;
-    }
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_Bhad.a(paramMessage.arg1, (Bundle)paramMessage.obj);
-      return true;
-      this.jdField_a_of_type_Bhad.b();
+    if (this.a.a.this$0.a != null) {
+      this.a.a.this$0.a.setProgress(paramInt / 30);
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.qidian;
 
-import bjft;
+import bkgt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qidian.data.BmqqAccountType;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -8,11 +8,11 @@ import com.tencent.qphone.base.util.BaseApplication;
 public final class QidianManager$10
   implements Runnable
 {
-  public QidianManager$10(bjft parambjft, QQAppInterface paramQQAppInterface, BmqqAccountType paramBmqqAccountType) {}
+  public QidianManager$10(bkgt parambkgt, QQAppInterface paramQQAppInterface, BmqqAccountType paramBmqqAccountType) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bjft.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), this.jdField_a_of_type_ComTencentQidianDataBmqqAccountType);
+    this.jdField_a_of_type_Bkgt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), this.jdField_a_of_type_ComTencentQidianDataBmqqAccountType);
   }
 }
 

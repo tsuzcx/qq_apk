@@ -1,12 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class agrj
-  implements DialogInterface.OnClickListener
+public class agrj
+  extends agrm
 {
-  agrj(agre paramagre) {}
+  public int a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public agrj(int paramInt1, int paramInt2)
+  {
+    this.b = paramInt1;
+    this.a = paramInt2;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      do
+      {
+        return false;
+      } while (!(paramObject instanceof agrj));
+      paramObject = (agrj)paramObject;
+    } while ((this.b != paramObject.b) || (this.a != paramObject.a));
+    return true;
+  }
 }
 
 

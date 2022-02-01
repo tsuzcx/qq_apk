@@ -1,20 +1,29 @@
-import java.util.HashMap;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.YearNodeInfo;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class xdb
-  extends xcc
+public class xdb
+  extends wov
 {
-  xdb(xcu paramxcu, String paramString1, String paramString2, boolean paramBoolean, xdy paramxdy)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  public List<MomeriesYearNode> a = new ArrayList();
   
-  public boolean b()
+  public xdb() {}
+  
+  public xdb(qqstory_service.RspProfileYearNodeList paramRspProfileYearNodeList)
   {
-    this.jdField_a_of_type_Xdy.a = ((String)a("EncryptUrlJob_encryptedUrl"));
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(this.jdField_a_of_type_Xdy.a, this.jdField_a_of_type_Xdy.a);
-    a("ShortenUrlJob_shortenedUrls", localHashMap);
-    return true;
+    super(paramRspProfileYearNodeList.result);
+    paramRspProfileYearNodeList = paramRspProfileYearNodeList.year_node_list.get().iterator();
+    while (paramRspProfileYearNodeList.hasNext())
+    {
+      qqstory_struct.YearNodeInfo localYearNodeInfo = (qqstory_struct.YearNodeInfo)paramRspProfileYearNodeList.next();
+      MomeriesYearNode localMomeriesYearNode = new MomeriesYearNode();
+      localMomeriesYearNode.convertFrom(localYearNodeInfo);
+      this.a.add(localMomeriesYearNode);
+    }
   }
 }
 

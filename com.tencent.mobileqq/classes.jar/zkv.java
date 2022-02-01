@@ -1,13 +1,6 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface zkv
+public abstract interface zkv
 {
-  String a();
+  public abstract void a(zjv paramzjv);
 }
 
 

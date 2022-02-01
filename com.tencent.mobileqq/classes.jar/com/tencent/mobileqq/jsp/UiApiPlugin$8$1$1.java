@@ -3,10 +3,10 @@ package com.tencent.mobileqq.jsp;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
-import avqs;
-import bcwd;
-import bgim;
-import bhod;
+import awjf;
+import bdow;
+import bhin;
+import bioy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
@@ -16,20 +16,20 @@ import org.json.JSONObject;
 public class UiApiPlugin$8$1$1
   implements Runnable
 {
-  public UiApiPlugin$8$1$1(avqs paramavqs, Bitmap paramBitmap) {}
+  public UiApiPlugin$8$1$1(awjf paramawjf, Bitmap paramBitmap) {}
   
   public void run()
   {
-    String str1 = this.jdField_a_of_type_Avqs.a.a.optString("briefMsg");
-    String str2 = this.jdField_a_of_type_Avqs.a.a.optString("appName");
-    String str3 = this.jdField_a_of_type_Avqs.a.a.optString("iconUrl");
-    String str4 = this.jdField_a_of_type_Avqs.a.a.optString("actionUrl");
+    String str1 = this.jdField_a_of_type_Awjf.a.a.optString("briefMsg");
+    String str2 = this.jdField_a_of_type_Awjf.a.a.optString("appName");
+    String str3 = this.jdField_a_of_type_Awjf.a.a.optString("iconUrl");
+    String str4 = this.jdField_a_of_type_Awjf.a.a.optString("actionUrl");
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
       Object localObject1 = new File(BaseApplicationImpl.getApplication().getCacheDir(), "ShareScreenShots");
       Object localObject2 = "ShareScreenShot_" + System.currentTimeMillis() + ".jpg";
-      localObject1 = bgim.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject1, (String)localObject2);
-      localObject2 = new Intent(this.jdField_a_of_type_Avqs.a.this$0.mRuntime.a(), ForwardRecentActivity.class);
+      localObject1 = bhin.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject1, (String)localObject2);
+      localObject2 = new Intent(this.jdField_a_of_type_Awjf.a.this$0.mRuntime.a(), ForwardRecentActivity.class);
       ((Intent)localObject2).putExtra("key_flag_from_plugin", true);
       ((Intent)localObject2).putExtra("image_url", (String)localObject1);
       ((Intent)localObject2).putExtra("forward_type", -3);
@@ -43,8 +43,8 @@ public class UiApiPlugin$8$1$1
       }
       ((Intent)localObject2).putExtra("struct_share_key_source_action", "web");
       ((Intent)localObject2).putExtra("struct_share_key_source_url", str4);
-      ((Intent)localObject2).putExtra("stuctmsg_bytes", bcwd.a(((Intent)localObject2).getExtras()).getBytes());
-      this.jdField_a_of_type_Avqs.a.this$0.startActivityForResult((Intent)localObject2, (byte)15);
+      ((Intent)localObject2).putExtra("stuctmsg_bytes", bdow.a(((Intent)localObject2).getExtras()).getBytes());
+      this.jdField_a_of_type_Awjf.a.this$0.startActivityForResult((Intent)localObject2, (byte)15);
     }
   }
 }

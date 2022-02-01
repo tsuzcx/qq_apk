@@ -1,6 +1,28 @@
-public abstract interface asbz
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+
+class asbz
+  extends Handler
 {
-  public abstract void a(int paramInt);
+  asbz(asbx paramasbx, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (asbx.a(this.a));
+    QLog.e("CameraHelper", 1, "checkPermission uncertain");
+    asbx.a(this.a, false, 1830004);
+  }
 }
 
 

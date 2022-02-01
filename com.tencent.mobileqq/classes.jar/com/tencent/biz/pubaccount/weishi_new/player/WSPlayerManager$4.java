@@ -2,9 +2,9 @@ package com.tencent.biz.pubaccount.weishi_new.player;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import ujv;
-import ukb;
-import ukc;
+import ukp;
+import ukz;
+import ula;
 
 class WSPlayerManager$4
   implements Runnable
@@ -15,14 +15,14 @@ class WSPlayerManager$4
   {
     if ((WSPlayerManager.a(this.this$0) != null) && (WSPlayerManager.b(this.this$0).jdField_a_of_type_AndroidViewView != null))
     {
-      if (WSPlayerManager.b(this.this$0).jdField_a_of_type_Ujv != null) {
-        WSPlayerManager.b(this.this$0).jdField_a_of_type_Ujv.d(WSPlayerManager.b(this.this$0));
+      if (WSPlayerManager.b(this.this$0).jdField_a_of_type_Ukp != null) {
+        WSPlayerManager.b(this.this$0).jdField_a_of_type_Ukp.d(WSPlayerManager.b(this.this$0));
       }
       if (WSPlayerManager.a(this.this$0) != null)
       {
         Iterator localIterator = WSPlayerManager.a(this.this$0).iterator();
         while (localIterator.hasNext()) {
-          ((ukc)localIterator.next()).b(WSPlayerManager.b(this.this$0));
+          ((ula)localIterator.next()).b(WSPlayerManager.b(this.this$0));
         }
       }
     }

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pmk;
-import pws;
+import pfd;
+import ppd;
 
 public class DailyDynamicHeaderModule$1
   implements Runnable
 {
-  public DailyDynamicHeaderModule$1(pws parampws, boolean paramBoolean) {}
+  public DailyDynamicHeaderModule$1(ppd paramppd, boolean paramBoolean) {}
   
   public void run()
   {
-    pmk.a().d(this.a);
+    pfd.a().c(this.a);
   }
 }
 

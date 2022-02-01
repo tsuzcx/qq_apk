@@ -1,26 +1,30 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import java.util.ArrayList;
 
 public class aeof
-  implements Animation.AnimationListener
+  extends aojs
 {
-  public aeof(LoginInfoActivity paramLoginInfoActivity) {}
+  public aeof(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
   {
-    LoginInfoActivity.b(this.a).setVisibility(4);
-    LoginInfoActivity.b(this.a).clearAnimation();
+    if (paramBoolean1) {
+      ForwardRecentActivity.f(this.a);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void a(boolean paramBoolean1, ArrayList<TroopMemberCardInfo> paramArrayList, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramBoolean2)) {
+      ForwardRecentActivity.f(this.a);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeof
  * JD-Core Version:    0.7.0.1
  */

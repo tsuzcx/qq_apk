@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import yul;
-import yun;
+import yyg;
+import yyi;
 
 public class EditVideoPoi$2$2
   implements Runnable
 {
-  public EditVideoPoi$2$2(yun paramyun) {}
+  public EditVideoPoi$2$2(yyi paramyyi) {}
   
   public void run()
   {
-    yul.a(this.a.a, 1);
+    yyg.a(this.a.a, 1);
   }
 }
 

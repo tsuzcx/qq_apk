@@ -1,6 +1,21 @@
-public abstract interface bnhs
+public class bnhs
 {
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public int a;
+  public long a;
+  public bnhq a;
+  public boolean a;
+  public int b;
+  public bnhq b;
+  
+  bnhs(bnhr parambnhr)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Bnhq = null;
+    this.jdField_b_of_type_Bnhq = null;
+    this.jdField_a_of_type_Long = 0L;
+  }
 }
 
 

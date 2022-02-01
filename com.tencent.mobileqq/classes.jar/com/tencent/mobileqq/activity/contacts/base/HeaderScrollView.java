@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contacts.base;
 
-import ajht;
-import ajhu;
-import ajhv;
+import ajtc;
+import ajtd;
+import ajte;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build.VERSION;
@@ -21,8 +21,8 @@ public class HeaderScrollView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private ajht jdField_a_of_type_Ajht;
-  private ajhv jdField_a_of_type_Ajhv;
+  private ajtc jdField_a_of_type_Ajtc;
+  private ajte jdField_a_of_type_Ajte;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private View jdField_a_of_type_AndroidViewView;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
@@ -58,7 +58,7 @@ public class HeaderScrollView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
-    this.jdField_a_of_type_Ajht = new ajht();
+    this.jdField_a_of_type_Ajtc = new ajtc();
     paramContext = ViewConfiguration.get(paramContext);
     this.jdField_b_of_type_Int = paramContext.getScaledTouchSlop();
     this.jdField_c_of_type_Int = paramContext.getScaledMinimumFlingVelocity();
@@ -122,7 +122,7 @@ public class HeaderScrollView
   
   public boolean b()
   {
-    return (this.i == this.h) && (this.jdField_a_of_type_Ajht.a());
+    return (this.i == this.h) && (this.jdField_a_of_type_Ajtc.a());
   }
   
   public void computeScroll()
@@ -138,7 +138,7 @@ public class HeaderScrollView
       {
         m = this.jdField_a_of_type_AndroidWidgetScroller.getFinalY() - m;
         int n = b(this.jdField_a_of_type_AndroidWidgetScroller.getDuration(), this.jdField_a_of_type_AndroidWidgetScroller.timePassed());
-        this.jdField_a_of_type_Ajht.a(a(m, n), m, n);
+        this.jdField_a_of_type_Ajtc.a(a(m, n), m, n);
         this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
       }
     }
@@ -153,7 +153,7 @@ public class HeaderScrollView
       this.k = m;
       return;
       label101:
-      if ((this.jdField_a_of_type_Ajht.a()) || (this.jdField_c_of_type_Boolean))
+      if ((this.jdField_a_of_type_Ajtc.a()) || (this.jdField_c_of_type_Boolean))
       {
         scrollTo(0, m - this.k + getScrollY());
         if (this.i <= this.h)
@@ -180,7 +180,7 @@ public class HeaderScrollView
     {
       super.dispatchTouchEvent(paramMotionEvent);
       return true;
-      this.jdField_a_of_type_Ajht.a(true);
+      this.jdField_a_of_type_Ajtc.a(true);
       this.jdField_d_of_type_Boolean = false;
       this.jdField_b_of_type_Boolean = false;
       this.jdField_a_of_type_Boolean = false;
@@ -201,13 +201,13 @@ public class HeaderScrollView
           do
           {
             bool = a();
-            if ((!this.jdField_a_of_type_Boolean) || (((this.jdField_d_of_type_Float <= 0.0F) || (bool)) && (!this.jdField_a_of_type_Ajht.a()) && (!this.jdField_c_of_type_Boolean))) {
+            if ((!this.jdField_a_of_type_Boolean) || (((this.jdField_d_of_type_Float <= 0.0F) || (bool)) && (!this.jdField_a_of_type_Ajtc.a()) && (!this.jdField_c_of_type_Boolean))) {
               break;
             }
             if (!this.jdField_d_of_type_Boolean)
             {
               this.jdField_d_of_type_Boolean = true;
-              this.jdField_a_of_type_Ajht.a(false);
+              this.jdField_a_of_type_Ajtc.a(false);
             }
             scrollBy(0, (int)(this.jdField_d_of_type_Float + 0.5D));
             invalidate();
@@ -298,8 +298,8 @@ public class HeaderScrollView
     for (;;)
     {
       this.i = m;
-      if (this.jdField_a_of_type_Ajhv != null) {
-        this.jdField_a_of_type_Ajhv.a(m, this.g);
+      if (this.jdField_a_of_type_Ajte != null) {
+        this.jdField_a_of_type_Ajte.a(m, this.g);
       }
       super.scrollTo(paramInt1, m);
       return;
@@ -310,14 +310,14 @@ public class HeaderScrollView
     }
   }
   
-  public void setCurrentScrollableContainer(ajhu paramajhu)
+  public void setCurrentScrollableContainer(ajtd paramajtd)
   {
-    this.jdField_a_of_type_Ajht.a(paramajhu);
+    this.jdField_a_of_type_Ajtc.a(paramajtd);
   }
   
-  public void setOnScrollListener(ajhv paramajhv)
+  public void setOnScrollListener(ajte paramajte)
   {
-    this.jdField_a_of_type_Ajhv = paramajhv;
+    this.jdField_a_of_type_Ajte = paramajte;
   }
   
   public void setTopOffset(int paramInt)

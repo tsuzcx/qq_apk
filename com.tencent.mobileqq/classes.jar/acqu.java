@@ -1,50 +1,16 @@
-import android.os.Build.VERSION;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import kotlin.Metadata;
 
-class acqu
-  implements acqj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
+final class acqu
+  implements DialogInterface.OnClickListener
 {
-  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
+  acqu(acqn paramacqn) {}
+  
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = null;
-    if (paramacpp != null) {}
-    for (paramVarArgs = paramacpp.a(); (paramacpp == null) || (paramVarArgs == null); paramVarArgs = null)
-    {
-      acqy.d("GdtOSVersionJsCall", "handleJsCallRequest error");
-      return true;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("osVersion", Build.VERSION.RELEASE);
-    }
-    catch (JSONException localJSONException)
-    {
-      try
-      {
-        for (;;)
-        {
-          paramacpp.callJs(paramString, new String[] { localJSONObject.toString() });
-          paramString = localObject;
-          if (paramacpp != null) {
-            paramString = paramacpp.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getOSVersion", paramString);
-          return true;
-          localJSONException = localJSONException;
-          localJSONException.printStackTrace();
-        }
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
-      }
-    }
+    acqn.b(this.a);
   }
 }
 

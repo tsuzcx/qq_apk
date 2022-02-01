@@ -1,28 +1,7 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qidian.proto.mobileqq_qidian.ConfigCorpSimpleInfo;
-
-public class bjhh
+abstract class bjhh
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  
-  public bjhh(mobileqq_qidian.ConfigCorpSimpleInfo paramConfigCorpSimpleInfo)
-  {
-    if (paramConfigCorpSimpleInfo.str_corp_name.has()) {
-      this.a = paramConfigCorpSimpleInfo.str_corp_name.get();
-    }
-    if (paramConfigCorpSimpleInfo.str_short_name.has()) {
-      this.b = paramConfigCorpSimpleInfo.str_short_name.get();
-    }
-    if (paramConfigCorpSimpleInfo.str_detail_desc.has()) {
-      this.c = paramConfigCorpSimpleInfo.str_detail_desc.get();
-    }
-    if (paramConfigCorpSimpleInfo.str_click_url.has()) {
-      this.d = paramConfigCorpSimpleInfo.str_click_url.get();
-    }
-  }
+  public int a;
+  public byte[] a;
 }
 
 

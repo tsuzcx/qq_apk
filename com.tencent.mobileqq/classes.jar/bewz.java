@@ -1,88 +1,189 @@
-import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.UUID;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
+import java.util.List;
 
-class bewz
-  extends aark
+public class bewz
+  extends beru
 {
-  bewz(bewy parambewy) {}
-  
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
+  public bewz(bern parambern, beyg parambeyg)
   {
-    if (!paramBundle.getBoolean("isPreview", false)) {}
+    super(parambern, parambeyg);
+  }
+  
+  private final void g()
+  {
+    this.jdField_a_of_type_Berr.a();
+    bfau localbfau = a();
+    if (!e())
+    {
+      a(9366, "illegal app", null, this.jdField_a_of_type_Berr);
+      d();
+    }
     do
     {
-      do
-      {
-        return;
-      } while (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long);
-      paramBundle = paramBundle.getString("itemKey");
-    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
-    bfsf localbfsf = new bfsf();
-    localbfsf.jdField_a_of_type_Int = -1;
-    try
+      return;
+      if (QLog.isColorLevel()) {
+        b("requestStart", localbfau.toString());
+      }
+    } while ((!f()) || (localbfau == null));
+    this.jdField_a_of_type_Bfau = localbfau;
+    bfca.a(localbfau);
+  }
+  
+  protected bfau a()
+  {
+    bfau localbfau = new bfau();
+    bfbd localbfbd = new bfbd();
+    localbfbd.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+    localbfbd.jdField_a_of_type_Long = this.jdField_q_of_type_Long;
+    localbfbd.jdField_a_of_type_ArrayOfByte = this.jdField_b_of_type_ArrayOfByte;
+    localbfbd.jdField_c_of_type_Int = this.jdField_d_of_type_Int;
+    localbfbd.jdField_d_of_type_Int = this.jdField_q_of_type_Int;
+    localbfbd.b = this.n;
+    localbfbd.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+    localbfbd.jdField_a_of_type_Boolean = this.jdField_a_of_type_Beyg.l;
+    localbfbd.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Beyg.jdField_c_of_type_JavaLangString;
+    localbfau.jdField_a_of_type_Bfcb = this;
+    localbfau.jdField_a_of_type_JavaLangString = "share_pic_to_wx";
+    localbfau.jdField_a_of_type_JavaUtilList.add(localbfbd);
+    localbfau.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getProtoReqManager();
+    return localbfau;
+  }
+  
+  public final void a(bfau parambfau, bfbj parambfbj)
+  {
+    if (parambfbj != null)
     {
-      localbfsf.e = this.a.a().toString();
-      localQQAppInterface = bevv.a();
-      if (localQQAppInterface == null)
+      int i = 0;
+      if (i < parambfbj.jdField_a_of_type_JavaUtilList.size())
       {
-        bevx.a("TroopFilePreviewWorker", bevx.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult app=null");
-        return;
+        parambfau = (bfbl)parambfbj.jdField_a_of_type_JavaUtilList.get(i);
+        if (QLog.isColorLevel()) {
+          b("onBusiProtoResp", parambfau.toString());
+        }
+        a(this.jdField_a_of_type_Berr, parambfau);
+        if (QLog.isColorLevel()) {
+          QLog.d("ShareToWXUploadProcessor", 2, "onBusiProtoResp()------response.result = " + parambfau.jdField_c_of_type_Int);
+        }
+        if (parambfau.jdField_c_of_type_Int == 0)
+        {
+          this.m = parambfau.jdField_c_of_type_JavaLangString;
+          this.jdField_a_of_type_Bete.m = parambfau.jdField_d_of_type_JavaLangString;
+          if (parambfau.jdField_a_of_type_Boolean)
+          {
+            this.jdField_a_of_type_Bete.a();
+            e();
+            if (QLog.isColorLevel()) {
+              QLog.d("ShareToWXUploadProcessor", 2, "onBusiProtoResp()---- file is Exsit! " + this.jdField_a_of_type_Beyg.i);
+            }
+          }
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          this.r = parambfau.jdField_a_of_type_Long;
+          f();
+          continue;
+          d();
+        }
       }
     }
-    catch (NullPointerException paramBundle)
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    long l = System.currentTimeMillis() - this.jdField_k_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareToWXUploadProcessor", 2, "doReport, timeCost:" + l + " mFileSize:" + this.jdField_q_of_type_Long + " errorCode:" + this.jdField_k_of_type_Int);
+    }
+    if (paramBoolean) {
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_succ_flag", "1");
+    }
+    for (;;)
     {
-      QQAppInterface localQQAppInterface;
-      for (;;)
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_picSize", String.valueOf(this.jdField_q_of_type_Long));
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_errorDesc", this.j);
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", String.valueOf(this.jdField_k_of_type_Int));
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_time_cost", String.valueOf(l));
+      bdmc.a(BaseApplication.getContext()).a(null, "actPicShareToWXUpload", paramBoolean, l, this.jdField_q_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, null);
+      return;
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_succ_flag", "0");
+    }
+  }
+  
+  public final void aN_()
+  {
+    super.aN_();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareToWXUploadProcessor", 2, "start()");
+    }
+    if ((this.jdField_b_of_type_ArrayOfByte == null) && (!h()))
+    {
+      d();
+      return;
+    }
+    String str = this.jdField_a_of_type_Beyg.i;
+    long l = new File(str).length();
+    this.jdField_a_of_type_Bete.jdField_a_of_type_Long = l;
+    this.jdField_q_of_type_Long = l;
+    str = bhmi.b(str);
+    if (!TextUtils.isEmpty(str)) {
+      this.e = str;
+    }
+    g();
+  }
+  
+  void e()
+  {
+    super.e();
+    if (this.jdField_a_of_type_Beyg.jdField_a_of_type_Azrg != null)
+    {
+      azrh localazrh = new azrh();
+      localazrh.jdField_a_of_type_Int = 0;
+      localazrh.jdField_a_of_type_Long = this.jdField_q_of_type_Long;
+      localazrh.jdField_d_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+      localazrh.e = this.jdField_a_of_type_Bete.m;
+      this.jdField_a_of_type_Beyg.jdField_a_of_type_Azrg.b(localazrh);
+    }
+    for (;;)
+    {
+      d(1003);
+      if (this.jdField_a_of_type_Bfau != null)
       {
-        localbfsf.e = null;
+        bfca.b(this.jdField_a_of_type_Bfau);
+        this.jdField_a_of_type_Bfau = null;
       }
-      anie localanie = (anie)localQQAppInterface.a(22);
-      if ((paramDownloadFileRspBody == null) || (!paramBoolean))
-      {
-        bevx.a("TroopFilePreviewWorker", bevx.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult isSuccess:false  errCode:" + paramInt);
-        bfrh.a(localQQAppInterface, this.a.jdField_a_of_type_Long, 700);
-        localbfsf.jdField_a_of_type_Boolean = false;
-        localanie.c(localbfsf);
-        return;
-      }
-      paramInt = paramDownloadFileRspBody.int32_ret_code.get();
-      localbfsf.jdField_a_of_type_Int = paramInt;
-      localbfsf.jdField_a_of_type_Boolean = false;
-      String str = paramDownloadFileRspBody.str_download_ip.get();
-      paramBundle = "";
-      if (paramDownloadFileRspBody.str_download_dns.get() != null) {
-        paramBundle = paramDownloadFileRspBody.str_download_dns.get().toString();
-      }
-      localbfsf.jdField_a_of_type_JavaLangString = str;
-      if ((TextUtils.isEmpty(localbfsf.jdField_a_of_type_JavaLangString)) || (localbfsf.jdField_a_of_type_JavaLangString.equals("0.0.0.0"))) {
-        localbfsf.jdField_a_of_type_JavaLangString = paramBundle;
-      }
-      localbfsf.b = String.valueOf(paramDownloadFileRspBody.uint32_preview_port.get());
-      localbfsf.c = paramDownloadFileRspBody.str_ret_msg.get();
-      localbfsf.d = bgmj.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-      localbfsf.f = paramBundle;
-      if (paramInt < 0)
-      {
-        bevx.a("TroopFilePreviewWorker", bevx.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult fail. retCode:" + paramInt + " retMsg:" + localbfsf.c);
-        bfrh.a(localQQAppInterface, this.a.jdField_a_of_type_Long, 700);
-        if (TextUtils.isEmpty(localbfsf.c)) {
-          localbfsf.c = anni.a(2131714022);
-        }
-        localbfsf.jdField_a_of_type_Boolean = false;
-        localanie.c(localbfsf);
-        return;
-      }
-      bevx.c("TroopFilePreviewWorker", bevx.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult isSuccess:true  downloadip:" + str + " downloadDns:" + paramBundle + " port:" + localbfsf.b + " downloadKey:" + localbfsf.d + " retMsg:" + localbfsf.c + " httpsDomain:" + localbfsf.f);
-      localbfsf.jdField_a_of_type_Boolean = true;
-      localanie.c(localbfsf);
+      return;
+      c(true);
+    }
+  }
+  
+  public final void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareToWXUploadProcessor", 2, "sendFileBDH");
+    }
+    this.jdField_b_of_type_Berr.a();
+    Object localObject = new bexa(this, SystemClock.uptimeMillis());
+    byte[] arrayOfByte = bhml.a(this.m);
+    localObject = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 73, this.jdField_a_of_type_Beyg.i, (int)this.r, arrayOfByte, this.jdField_b_of_type_ArrayOfByte, (ITransactionCallback)localObject);
+    int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask((Transaction)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction submit RetCode:" + i + " T_ID:" + ((Transaction)localObject).getTransationId() + " UniSeq:" + this.jdField_a_of_type_Beyg.jdField_a_of_type_Long + " MD5:" + this.jdField_c_of_type_JavaLangString + " Path:" + ((Transaction)localObject).filePath + " Cmd:" + 73);
+    }
+    if (i != 0)
+    {
+      a(i, "SubmitError.", "", this.jdField_b_of_type_Berr);
+      d();
     }
   }
 }

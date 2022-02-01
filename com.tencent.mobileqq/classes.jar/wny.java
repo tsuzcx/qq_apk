@@ -1,14 +1,12 @@
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 
 public class wny
 {
-  public int a;
-  public String a = "";
-  public JSONObject a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
+  {
+    return wor.a(paramQQStoryAutoPlayView, paramMotionEvent);
+  }
 }
 
 

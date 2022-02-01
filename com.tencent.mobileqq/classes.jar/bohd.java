@@ -1,38 +1,18 @@
-public final class bohd
-  implements bdvw
+import android.view.View;
+
+public abstract interface bohd
 {
-  public bohd(bohe parambohe, bogx parambogx, String paramString) {}
+  public abstract View a();
   
-  public void onResp(bdwt parambdwt)
-  {
-    boolean bool2 = true;
-    bnyh localbnyh;
-    if ((parambdwt != null) && (parambdwt.a == 0))
-    {
-      bool1 = true;
-      bnzb.b("AEEditorMusicHelper", "[downloadMusic], onResp, succeeded=" + bool1);
-      if (this.jdField_a_of_type_Bohe != null) {
-        this.jdField_a_of_type_Bohe.a(this.jdField_a_of_type_Bogx, bool1, this.jdField_a_of_type_JavaLangString);
-      }
-      if (parambdwt != null)
-      {
-        localbnyh = bnyh.a();
-        if (parambdwt.a != 0) {
-          break label113;
-        }
-      }
-    }
-    label113:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localbnyh.a(bool1, 5, "AEEditorMusicDownload", this.jdField_a_of_type_Bogx.a(), parambdwt.b, parambdwt.g);
-      return;
-      bool1 = false;
-      break;
-    }
-  }
+  public abstract void a(int paramInt, bogs parambogs, bogr parambogr);
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  public abstract View b();
+  
+  public abstract void b(int paramInt, bogs parambogs, bogr parambogr);
+  
+  public abstract View c();
+  
+  public abstract void c(int paramInt, bogs parambogs, bogr parambogr);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album.logicImp;
 
-import akjm;
+import akux;
 import android.os.Handler;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
@@ -10,7 +10,7 @@ import java.util.List;
 public class PhotoListLogicQzone$2
   implements Runnable
 {
-  public PhotoListLogicQzone$2(akjm paramakjm, List paramList) {}
+  public PhotoListLogicQzone$2(akux paramakux, List paramList) {}
   
   public void run()
   {
@@ -28,7 +28,7 @@ public class PhotoListLogicQzone$2
           i += 1;
           break;
           if ((localLocalMediaInfo.mediaWidth / localLocalMediaInfo.mediaHeight == 2.0F) || (localLocalMediaInfo.mediaWidth / localLocalMediaInfo.mediaHeight >= 4.0F) || (localLocalMediaInfo.mediaHeight / localLocalMediaInfo.mediaWidth >= 4.0F)) {
-            akjm.a(this.this$0, localLocalMediaInfo);
+            akux.a(this.this$0, localLocalMediaInfo);
           } else {
             localLocalMediaInfo.panoramaPhotoType = 3;
           }

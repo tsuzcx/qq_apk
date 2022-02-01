@@ -1,43 +1,9 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.widget.AdapterView;
 
-class bljq
-  extends OnPluginInstallListener.Stub
+public abstract interface bljq
 {
-  bljq(bljp parambljp) {}
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "install plugin " + paramString + " error! " + paramInt);
-    }
-    try
-    {
-      ThreadManager.post(this.a.a, 5, null, false);
-      return;
-    }
-    catch (Exception paramString) {}
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "install plugin " + paramString + " OK.");
-    }
-    bljn.a().set(true);
-    try
-    {
-      ThreadManager.post(this.a.a, 5, null, false);
-      return;
-    }
-    catch (Exception paramString) {}
-  }
+  public abstract AdapterView a(Context paramContext, int paramInt);
 }
 
 

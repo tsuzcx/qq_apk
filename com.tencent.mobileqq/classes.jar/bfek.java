@@ -1,94 +1,102 @@
-import android.text.TextUtils;
-import javax.annotation.Nullable;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMCameraCaptureActivity;
+import dov.com.tencent.mobileqq.richmedia.capture.activity.CaptureQmcfSoDownloadActivity;
+import mqq.app.AppActivity;
 import org.json.JSONObject;
 
 public class bfek
-  implements wev
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  public static String a = "tribe_publish_TribePublishLauncher";
   
-  public bfek()
+  public static JSONObject a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-  }
-  
-  @Nullable
-  public JSONObject a(int paramInt)
-  {
-    int j = 1;
-    int i = 1;
-    JSONObject localJSONObject = new JSONObject();
-    switch (paramInt)
+    if (paramBundle != null)
     {
-    default: 
-      paramInt = i;
-    }
-    while (paramInt != 0)
-    {
-      return null;
-      paramInt = i;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      paramBundle = paramBundle.getString("options");
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "getTribeJsonExtra option: " + paramBundle);
+      }
+      try
       {
-        localJSONObject.put("raw_url", this.jdField_a_of_type_JavaLangString);
-        paramInt = 0;
-        continue;
-        paramInt = j;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-        {
-          localJSONObject.put("raw_url", this.jdField_a_of_type_JavaLangString);
-          paramInt = 0;
-        }
-        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-        {
-          localJSONObject.put("fake_url", this.jdField_b_of_type_JavaLangString);
-          paramInt = 0;
+        paramBundle = new JSONObject(paramBundle);
+        return paramBundle;
+      }
+      catch (Exception paramBundle)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(a, 2, "getTribeJsonExtra: " + paramBundle);
         }
       }
     }
-    return localJSONObject;
+    return null;
   }
   
-  public void a(JSONObject paramJSONObject)
+  public static void a(UiApiPlugin paramUiApiPlugin, Activity paramActivity, AppInterface paramAppInterface, String paramString1, byte paramByte, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("raw_url");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("fake_url");
-  }
-  
-  public void copy(Object paramObject)
-  {
-    if ((paramObject instanceof bfek))
+    if ((paramActivity instanceof AppActivity))
     {
-      paramObject = (bfek)paramObject;
-      if (!TextUtils.isEmpty(paramObject.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = paramObject.jdField_a_of_type_JavaLangString;
+      AppActivity localAppActivity = (AppActivity)paramActivity;
+      if (localAppActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0) {
+        localAppActivity.requestPermissions(new bfel(localAppActivity), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
       }
-      if (!TextUtils.isEmpty(paramObject.jdField_b_of_type_JavaLangString)) {
-        this.jdField_b_of_type_JavaLangString = paramObject.jdField_b_of_type_JavaLangString;
+    }
+    while ((lju.b(paramActivity)) || (a(paramActivity))) {
+      return;
+    }
+    boolean bool = brkn.b(paramAppInterface);
+    if ((!bool) && (!bhnv.g(paramActivity)))
+    {
+      QQToast.a(paramActivity, 2131717505, 0).a();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "launchTakeVideoForTribe, videoSoUsable=" + bool);
+    }
+    paramUiApiPlugin.g();
+    paramAppInterface = new Bundle();
+    paramAppInterface.putBoolean("flow_camera_video_mode", true);
+    paramAppInterface.putBoolean("flow_camera_capture_mode", false);
+    paramAppInterface.putString("options", paramString1);
+    paramAppInterface.putLong("ACTIVITY_START_TIME", System.currentTimeMillis());
+    paramAppInterface.putInt("edit_video_type", 10012);
+    if (bool)
+    {
+      paramUiApiPlugin.startActivityForResult(QIMCameraCaptureActivity.a(paramActivity, paramAppInterface), paramByte);
+      if (!"barindex".equals(paramString2)) {
+        break label287;
       }
-      if (paramObject.jdField_a_of_type_Int != -1) {
-        this.jdField_a_of_type_Int = paramObject.jdField_a_of_type_Int;
-      }
-      if (paramObject.jdField_b_of_type_Int != -1) {
-        this.jdField_b_of_type_Int = paramObject.jdField_b_of_type_Int;
-      }
+    }
+    label287:
+    for (int i = 1;; i = 2)
+    {
+      bdll.b(null, "dc00899", "Grp_tribe", "", "video_shoot", "exp_findview", i, 0, "", "", "", "");
+      return;
+      paramActivity = new Intent(paramActivity, CaptureQmcfSoDownloadActivity.class);
+      paramActivity.putExtras(paramAppInterface);
+      paramActivity.putExtra("pendingIntentClass", body.class.getName());
+      paramActivity.putExtra("pendingIntentRequest", paramByte);
+      paramActivity.putExtra("pendingIntentAllWait", true);
+      paramUiApiPlugin.startActivityForResult(paramActivity, paramByte);
+      break;
     }
   }
   
-  public boolean equals(Object paramObject)
+  private static boolean a(Context paramContext)
   {
-    if ((paramObject instanceof bfek))
+    boolean bool = false;
+    if (!bbgg.a())
     {
-      paramObject = (bfek)paramObject;
-      if ((this.jdField_b_of_type_JavaLangString != null) && (paramObject.jdField_b_of_type_JavaLangString != null)) {
-        return TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString);
-      }
-      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString);
+      bhlq.a(paramContext, 230).setMessage(anzj.a(2131713874)).setPositiveButton(2131694098, new bfem()).show();
+      bool = true;
     }
-    return false;
+    return bool;
   }
 }
 

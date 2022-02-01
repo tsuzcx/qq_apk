@@ -10,8 +10,8 @@ class Leba$2
   
   public void run()
   {
-    ViewStub localViewStub = (ViewStub)this.this$0.a(2131377975);
-    ((CommonLoadingView)this.this$0.a(2131364839)).setVisibility(8);
+    ViewStub localViewStub = (ViewStub)this.this$0.a(2131378130);
+    ((CommonLoadingView)this.this$0.a(2131364886)).setVisibility(8);
     localViewStub.setVisibility(0);
   }
 }

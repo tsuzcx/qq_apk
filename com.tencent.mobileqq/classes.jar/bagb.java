@@ -1,24 +1,141 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.apollo.FriendCardApolloViewController;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class bagb
-  implements Downloader.DownloadListener
+public class bagb
+  extends badc<FrameLayout>
+  implements Handler.Callback
 {
-  bagb(baga parambaga) {}
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private FriendCardApolloViewController jdField_a_of_type_ComTencentMobileqqApolloFriendCardApolloViewController;
+  protected boolean a;
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public bagb(baei parambaei, azxr paramazxr)
   {
-    QLog.i("QzoneGiftManager", 1, " preloadLottieZip fail error");
+    super(parambaei, paramazxr);
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public int a()
   {
-    QLog.i("QzoneGiftManager", 1, " preloadLottieZip success");
+    return 1020;
+  }
+  
+  public String a()
+  {
+    return "ProfileCmShowComponent";
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCmShowComponent", 0, "onWindowFocusGained");
+    }
+    if ((!this.jdField_a_of_type_Boolean) || ((this.jdField_a_of_type_ComTencentMobileqqApolloFriendCardApolloViewController != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloFriendCardApolloViewController.a())))
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 100L);
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloFriendCardApolloViewController != null) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloFriendCardApolloViewController.a(false);
+      }
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
+  {
+    super.a(paramBaseActivity, paramBundle);
+    this.jdField_a_of_type_ComTencentMobileqqApolloFriendCardApolloViewController = new FriendCardApolloViewController((FriendProfileCardActivity)paramBaseActivity, (View)this.jdField_a_of_type_JavaLangObject);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCmShowComponent", 0, "onCreate");
+    }
+  }
+  
+  public boolean a(azxr paramazxr)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCmShowComponent", 0, "onDataUpdate");
+    }
+    boolean bool = super.a(paramazxr);
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 100L);
+    }
+    return bool;
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCmShowComponent", 0, "onResume");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloFriendCardApolloViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloFriendCardApolloViewController.b();
+    }
+  }
+  
+  public void d()
+  {
+    super.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCmShowComponent", 0, "onPause");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloFriendCardApolloViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloFriendCardApolloViewController.c();
+    }
+  }
+  
+  public void e()
+  {
+    super.e();
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCmShowComponent", 0, "onStop");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloFriendCardApolloViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloFriendCardApolloViewController.d();
+    }
+  }
+  
+  public void f()
+  {
+    super.f();
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCmShowComponent", 0, "onDestroy");
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloFriendCardApolloViewController != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloFriendCardApolloViewController.e();
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileCmShowComponent", 0, "handleMessage MSG_REFRESH_APOLLO");
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqApolloFriendCardApolloViewController == null);
+    this.jdField_a_of_type_ComTencentMobileqqApolloFriendCardApolloViewController.a();
+    return false;
   }
 }
 

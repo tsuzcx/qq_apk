@@ -1,20 +1,44 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.io.File;
+import java.util.Map;
 
-final class alde
-  implements Animation.AnimationListener
+class alde
+  extends alea
 {
-  alde(View paramView, Animation paramAnimation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  alde(aldd paramaldd, biht parambiht)
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    super(parambiht);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onDoneFile(bihu parambihu)
+  {
+    long l2 = -1L;
+    super.onDoneFile(parambihu);
+    if ((parambihu != null) && (parambihu.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambihu.jdField_a_of_type_JavaLangString)))
+    {
+      File localFile = (File)parambihu.jdField_a_of_type_JavaUtilMap.get(parambihu.jdField_a_of_type_JavaLangString);
+      if (localFile != null)
+      {
+        Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        if (localObject != null)
+        {
+          localObject = (bezv)((QQAppInterface)localObject).getManager(193);
+          String str = parambihu.jdField_a_of_type_JavaLangString;
+          long l1 = l2;
+          if (parambihu.jdField_a_of_type_Int == 0)
+          {
+            l1 = l2;
+            if (localFile.exists()) {
+              l1 = localFile.length();
+            }
+          }
+          ((bezv)localObject).a(str, l1);
+        }
+      }
+    }
+  }
 }
 
 

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
-import anhk;
+import antf;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
@@ -32,7 +32,7 @@ public class TimTeamPlugin
       {
         paramJSONObject = paramJSContext.getActivity();
         paramJSContext = new Intent(paramJSONObject, AccountDetailActivity.class);
-        paramJSContext.putExtra("uin", anhk.aV);
+        paramJSContext.putExtra("uin", antf.aV);
         paramJSONObject.startActivity(paramJSContext);
       }
       return;

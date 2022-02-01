@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import aklz;
-import akpd;
-import akpl;
-import akpv;
-import akpw;
-import akpx;
-import akpy;
-import akpz;
-import akqa;
-import akxc;
+import akxk;
+import alao;
+import alaw;
+import albg;
+import albh;
+import albi;
+import albj;
+import albk;
+import albl;
+import alir;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -35,11 +35,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anni;
-import aoch;
-import bglp;
-import bgpa;
-import blqo;
+import anzj;
+import aoot;
+import bhlq;
+import bhpc;
+import bmrq;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.activity.qwallet.widget.RollNumberView;
 import com.tencent.mobileqq.activity.qwallet.widget.RollNumberView.OnRollListener;
@@ -57,12 +57,12 @@ import org.json.JSONObject;
 
 public class QzoneHbFragment
   extends BaseHbFragment
-  implements akpl, View.OnClickListener, RollNumberView.OnRollListener
+  implements alaw, View.OnClickListener, RollNumberView.OnRollListener
 {
   private int jdField_a_of_type_Int = 1;
   private long jdField_a_of_type_Long;
-  aklz jdField_a_of_type_Aklz = new akpx(this);
-  private akpz jdField_a_of_type_Akpz = new akpz(this);
+  akxk jdField_a_of_type_Akxk = new albi(this);
+  private albk jdField_a_of_type_Albk = new albk(this);
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   protected TextWatcher a;
   private View jdField_a_of_type_AndroidViewView;
@@ -89,7 +89,7 @@ public class QzoneHbFragment
   
   public QzoneHbFragment()
   {
-    this.jdField_a_of_type_AndroidTextTextWatcher = new akpv(this);
+    this.jdField_a_of_type_AndroidTextTextWatcher = new albg(this);
   }
   
   private String a()
@@ -189,22 +189,22 @@ public class QzoneHbFragment
     if (paramView == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131373649);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373678));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373650));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131373647));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131373648));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131377187));
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131376798);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131373768);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373797));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373769));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131373766));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131373767));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131377327));
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131376935);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(getActivity(), 2130772200);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131367787);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetRollNumberView = ((RollNumberView)paramView.findViewById(2131373679));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131367856);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetRollNumberView = ((RollNumberView)paramView.findViewById(2131373798));
   }
   
   private boolean a()
   {
-    this.jdField_a_of_type_Int = ((akpd)this.mQApp.getManager(245)).a("grap_hb_verify", 1, new String[] { "videoRedMinValue" });
-    return Integer.valueOf(blqo.a(this.jdField_b_of_type_JavaLangString)).intValue() >= this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = ((alao)this.mQApp.getManager(245)).a("grap_hb_verify", 1, new String[] { "videoRedMinValue" });
+    return Integer.valueOf(bmrq.a(this.jdField_b_of_type_JavaLangString)).intValue() >= this.jdField_a_of_type_Int;
   }
   
   public static boolean a(@Nullable Object paramObject)
@@ -237,7 +237,7 @@ public class QzoneHbFragment
       if ((!TextUtils.isEmpty(str)) && (str.indexOf('.') != 0)) {
         if ((str.indexOf('.') > 0) && (str.indexOf('.') < str.length() - 3))
         {
-          str = getString(2131696076);
+          str = getString(2131696119);
           if (str != null)
           {
             this.mActivity.b(str);
@@ -298,8 +298,8 @@ public class QzoneHbFragment
         this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_b_of_type_JavaLangString);
       }
       this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(aoch.a(this.mQApp, 1, this.d));
-      this.jdField_a_of_type_Akpz.postDelayed(new QzoneHbFragment.2(this), 10L);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(aoot.a(this.mQApp, 1, this.d));
+      this.jdField_a_of_type_Albk.postDelayed(new QzoneHbFragment.2(this), 10L);
       this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetRollNumberView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetEditText.setVisibility(0);
       return;
@@ -317,7 +317,7 @@ public class QzoneHbFragment
   {
     FragmentActivity localFragmentActivity = getActivity();
     if ((isAdded()) && (localFragmentActivity != null)) {
-      this.jdField_c_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new akpy(this, localFragmentActivity));
+      this.jdField_c_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new albj(this, localFragmentActivity));
     }
   }
   
@@ -421,9 +421,9 @@ public class QzoneHbFragment
           if (!a(this.jdField_b_of_type_JavaLangString)) {
             this.jdField_c_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
           }
-          paramJSONObject = this.jdField_a_of_type_Akpz.obtainMessage();
+          paramJSONObject = this.jdField_a_of_type_Albk.obtainMessage();
           paramJSONObject.what = 100;
-          this.jdField_a_of_type_Akpz.sendMessage(paramJSONObject);
+          this.jdField_a_of_type_Albk.sendMessage(paramJSONObject);
           return;
         }
         catch (Exception paramJSONObject)
@@ -441,7 +441,7 @@ public class QzoneHbFragment
       return;
     }
     getActivity();
-    String str = akxc.jdField_c_of_type_JavaLangString + this.e + "/hbThemeConfig.cfg";
+    String str = alir.jdField_c_of_type_JavaLangString + this.e + "/hbThemeConfig.cfg";
     ThreadManager.getFileThreadHandler().post(new QzoneHbFragment.7(this, str));
   }
   
@@ -450,9 +450,9 @@ public class QzoneHbFragment
     if (QLog.isColorLevel()) {
       QLog.d("QzoneHbFragment", 2, "complete---");
     }
-    Message localMessage = this.jdField_a_of_type_Akpz.obtainMessage();
+    Message localMessage = this.jdField_a_of_type_Albk.obtainMessage();
     localMessage.what = 101;
-    this.jdField_a_of_type_Akpz.sendMessage(localMessage);
+    this.jdField_a_of_type_Albk.sendMessage(localMessage);
   }
   
   public void onClick(View paramView)
@@ -488,21 +488,21 @@ public class QzoneHbFragment
         if (!this.jdField_a_of_type_Boolean)
         {
           this.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_AndroidWidgetButton.setText(anni.a(2131710680));
+          this.jdField_a_of_type_AndroidWidgetButton.setText(anzj.a(2131710789));
           this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(true);
           this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
           this.jdField_a_of_type_AndroidWidgetEditText.setText("");
           if (this.channel != 32768) {
             this.mActivity.a(300, "rewardhongbao.wrap.custom", 2);
           }
-          a(this.jdField_a_of_type_Akpz, this.jdField_a_of_type_AndroidWidgetEditText);
+          a(this.jdField_a_of_type_Albk, this.jdField_a_of_type_AndroidWidgetEditText);
         }
         else
         {
           this.jdField_a_of_type_Boolean = false;
           this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_c_of_type_JavaLangString);
           this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(false);
-          this.jdField_a_of_type_AndroidWidgetButton.setText(anni.a(2131710678));
+          this.jdField_a_of_type_AndroidWidgetButton.setText(anzj.a(2131710787));
           this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
           continue;
           long l = System.currentTimeMillis();
@@ -514,7 +514,7 @@ public class QzoneHbFragment
             }
             localObject = this.mActivity.a();
             ((Map)localObject).put("total_num", "1");
-            ((Map)localObject).put("total_amount", blqo.a(this.jdField_b_of_type_JavaLangString));
+            ((Map)localObject).put("total_amount", bmrq.a(this.jdField_b_of_type_JavaLangString));
             ((Map)localObject).put("wishing", "");
             ((Map)localObject).put("channel", this.channel + "");
             ((Map)localObject).put("feeds_name", this.f);
@@ -525,9 +525,9 @@ public class QzoneHbFragment
             if (a()) {
               break;
             }
-            localObject = blqo.a(this.jdField_a_of_type_Int + "", 0, true);
-            localObject = anni.a(2131710681) + (String)localObject + anni.a(2131710679);
-            bglp.a(getActivity(), 230, null, (CharSequence)localObject, null, getString(2131695614), new akpw(this), null).show();
+            localObject = bmrq.a(this.jdField_a_of_type_Int + "", 0, true);
+            localObject = anzj.a(2131710790) + (String)localObject + anzj.a(2131710788);
+            bhlq.a(getActivity(), 230, null, (CharSequence)localObject, null, getString(2131695657), new albh(this), null).show();
           }
         }
       }
@@ -556,7 +556,7 @@ public class QzoneHbFragment
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.mActivity.getWindow().setSoftInputMode(32);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561961, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131562001, null);
     a(paramLayoutInflater);
     d();
     c();

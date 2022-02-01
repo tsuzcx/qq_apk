@@ -1,6 +1,20 @@
-public abstract interface aale
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class aale
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public aale(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    if (SubscribeMultiPicFragment.a(this.a) != null) {
+      this.a.a(SubscribeMultiPicFragment.a(this.a).a(1));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

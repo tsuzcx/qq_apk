@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import amrg;
+import anda;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import bgln;
-import bgmo;
+import bhlo;
+import bhmq;
 import com.tencent.qphone.base.util.QLog;
 import gt;
 import java.io.File;
-import zvc;
+import zyx;
 
 public class CmGameCommonShare$2
   implements Runnable
 {
-  public CmGameCommonShare$2(amrg paramamrg, int paramInt, Bitmap paramBitmap, File paramFile) {}
+  public CmGameCommonShare$2(anda paramanda, int paramInt, Bitmap paramBitmap, File paramFile) {}
   
   public void run()
   {
@@ -26,11 +26,11 @@ public class CmGameCommonShare$2
     int k;
     try
     {
-      m = (int)bgln.i() / 4;
+      m = (int)bhlo.i() / 4;
       localBitmap = Bitmap.createBitmap(m, m, Bitmap.Config.ARGB_8888);
       localCanvas = new Canvas(localBitmap);
       localCanvas.drawColor(-1);
-      localObject2 = zvc.a("https://cmshow.qq.com/apollo/html/game-platform/scan-game.html?gameId=" + this.jdField_a_of_type_Int, -1);
+      localObject2 = zyx.a("https://cmshow.qq.com/apollo/html/game-platform/scan-game.html?gameId=" + this.jdField_a_of_type_Int, -1);
       n = ((gt)localObject2).a();
       localObject1 = new int[n * n];
       i = 0;
@@ -71,7 +71,7 @@ public class CmGameCommonShare$2
         localCanvas.restore();
       }
       ((Bitmap)localObject2).recycle();
-      bgmo.a(localBitmap, this.jdField_a_of_type_JavaIoFile);
+      bhmq.a(localBitmap, this.jdField_a_of_type_JavaIoFile);
       QLog.d("apollo_cmGame_CmGameCommonShare", 2, "checkDefaultQRSharePic end");
       return;
       for (;;)

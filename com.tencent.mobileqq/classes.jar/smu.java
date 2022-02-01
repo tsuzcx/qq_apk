@@ -1,10 +1,33 @@
-public abstract interface smu
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import com.tencent.qphone.base.util.QLog;
+
+public class smu
+  extends AnimatorListenerAdapter
 {
-  public abstract void a();
+  public smu(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public abstract boolean a();
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    super.onAnimationCancel(paramAnimator);
+    SlideActiveAnimController.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.i("SlideActiveAnimController", 1, "hideTitleViewAnim onAnimationCancel");
+    }
+  }
   
-  public abstract void b();
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    SlideActiveAnimController.a(this.a, false);
+    SlideActiveAnimController.a(this.a, SlideActiveAnimController.a());
+    SlideActiveAnimController.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.i("SlideActiveAnimController", 1, "hideTitleViewAnim onAnimationEnd");
+    }
+  }
 }
 
 

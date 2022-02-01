@@ -1,25 +1,16 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class auje
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  auje(aujb paramaujb) {}
+  auje(aujd paramaujd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
-    {
-      ForwardSdkBaseOption.a(aujb.a(this.a), false, "shareToQQ", aujb.a(this.a));
-      nmj.a(aujb.a(this.a), 0, "", "");
-      if (aujb.a(this.a) != null) {
-        aujb.a(this.a).b(1);
-      }
-      aujb.a(this.a).moveTaskToBack(true);
-    }
+    aunj.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Augj.d());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

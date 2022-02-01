@@ -1,39 +1,19 @@
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.widget.ListView;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-public abstract class agax
+public class agax
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public int a;
-  public AIOAnimationConatiner a;
-  public ListView a;
+  public agax(VisitorsActivity paramVisitorsActivity) {}
   
-  public agax(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner = paramAIOAnimationConatiner;
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public abstract boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract boolean a(Object... paramVarArgs);
-  
-  public void b() {}
-  
-  public abstract void c();
-  
-  public void d()
-  {
-    AIOAnimationConatiner.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    this.a.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int[] arrayOfInt = new int[2];
+    this.a.b.getLocationInWindow(arrayOfInt);
+    this.a.i = arrayOfInt[1];
   }
 }
 

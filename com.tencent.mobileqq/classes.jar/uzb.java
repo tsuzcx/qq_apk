@@ -1,34 +1,32 @@
-import com.tencent.biz.qqcircle.QCircleInitBean;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.util.WeakReference;
 
-public abstract class uzb
-  implements aabu
+class uzb
+  implements View.OnClickListener
 {
-  public int a()
+  uzb(uyy paramuyy) {}
+  
+  public void onClick(View paramView)
   {
-    return -1;
+    uze localuze;
+    if (uyy.a(this.a) != null)
+    {
+      localuze = (uze)uyy.a(this.a).get();
+      if (localuze != null) {
+        switch (paramView.getId())
+        {
+        }
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localuze.a(uzf.c);
+    }
   }
-  
-  public QCircleInitBean a()
-  {
-    return null;
-  }
-  
-  public QCirclePolyLikeAniView a()
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return "";
-  }
-  
-  public void a(Object paramObject) {}
-  
-  public void a(String paramString, uzc paramuzc) {}
-  
-  public void a(vca paramvca) {}
 }
 
 

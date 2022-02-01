@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richmedia.segment;
 
-import bavp;
-import bavq;
-import bdwd;
+import bboi;
+import bboj;
+import beuw;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 public class VideoSend$3
   implements Runnable
 {
-  public VideoSend$3(bavq parambavq, bdwd parambdwd) {}
+  public VideoSend$3(bboj parambboj, beuw parambeuw) {}
   
   public void run()
   {
@@ -21,8 +21,8 @@ public class VideoSend$3
     Iterator localIterator = this.this$0.b.iterator();
     while (localIterator.hasNext())
     {
-      bavp localbavp = (bavp)localIterator.next();
-      this.this$0.a.e(localbavp);
+      bboi localbboi = (bboi)localIterator.next();
+      this.this$0.a.e(localbboi);
     }
     this.this$0.b.clear();
   }

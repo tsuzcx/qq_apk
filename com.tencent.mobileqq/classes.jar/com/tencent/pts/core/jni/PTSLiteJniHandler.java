@@ -50,6 +50,16 @@ public class PTSLiteJniHandler
   }
   
   private static native void setPTSLiteData(int paramInt, String paramString);
+  
+  public static String updateData(PTSAppInstance paramPTSAppInstance, String paramString)
+  {
+    if (paramPTSAppInstance == null) {
+      return "";
+    }
+    return updatePTSLiteData(paramPTSAppInstance.getUniqueID(), paramString);
+  }
+  
+  private static native String updatePTSLiteData(int paramInt, String paramString);
 }
 
 

@@ -8,9 +8,9 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import anni;
-import bgtn;
-import vft;
+import anzj;
+import bhtq;
+import vhx;
 
 public class ImageCell
   extends TextCell
@@ -31,7 +31,7 @@ public class ImageCell
     this.type = 0;
     this.resId = paramInt;
     this.emoDrawable = this.mContext.getResources().getDrawable(paramInt);
-    paramInt = this.mContext.getResources().getDimensionPixelOffset(2131296848);
+    paramInt = this.mContext.getResources().getDimensionPixelOffset(2131296860);
     this.emoDrawable.setBounds(0, 0, paramInt, paramInt);
   }
   
@@ -42,7 +42,7 @@ public class ImageCell
   
   public void draw(Canvas paramCanvas, Paint paramPaint, int paramInt1, Rect paramRect, int paramInt2, int paramInt3, Bitmap paramBitmap)
   {
-    if (((paramPaint instanceof vft)) && (((vft)paramPaint).a()) && (!((vft)paramPaint).a)) {}
+    if (((paramPaint instanceof vhx)) && (((vhx)paramPaint).a()) && (!((vhx)paramPaint).a)) {}
     do
     {
       return;
@@ -64,7 +64,7 @@ public class ImageCell
       draw(paramCanvas, paramPaint, paramInt1, paramRect, paramInt2, paramInt3, paramBitmap);
       return false;
     }
-    String str = anni.a(2131704521);
+    String str = anzj.a(2131704628);
     double d = paramPaint.measureText(str + str) - paramPaint.measureText(str) * 2.0F;
     d = paramLong - (paramInt4 + 1) * FADE_START_INTERVAL;
     if (d <= 0.0D)
@@ -120,7 +120,7 @@ public class ImageCell
     if (paramPaint == null) {
       return 0.0F;
     }
-    int i = bgtn.a(4.0F);
+    int i = bhtq.a(4.0F);
     return paramPaint.getBounds().width() + i;
   }
 }

@@ -1,168 +1,128 @@
-import com.tencent.biz.bmqq.protocol.Crm.CrmCCNotify;
-import com.tencent.biz.bmqq.protocol.Crm.GrayMsg;
-import com.tencent.biz.bmqq.protocol.Crm.QidianGroupMsg;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qidian.data.BmqqAccountType;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import org.json.JSONObject;
-import tencent.im.msg.im_msg_body.CrmElem;
-import tencent.im.msg.im_msg_body.Elem;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
 
 public class acyg
-  extends aczg
+  extends bimg
+  implements bine
 {
-  public int a()
+  protected Intent a;
+  
+  public acyg(Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    return -1000;
+    super(paramContext, paramActivity, paramAppInterface);
+    this.a = paramIntent;
   }
   
-  public void a(im_msg_body.Elem paramElem, List<MessageRecord> paramList, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg, bbzl parambbzl)
+  public void a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject1 = localQQAppInterface.a();
-    Object localObject2 = (im_msg_body.CrmElem)paramElem.crm_elem.get();
-    if (localObject2 != null)
+    super.doOnResume();
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.doOnCreate(this.a);
+  }
+  
+  public void a(TouchWebView paramTouchWebView)
+  {
+    this.mWebview = paramTouchWebView;
+  }
+  
+  public boolean a(WebView paramWebView, String paramString)
+  {
+    QLog.i("AbsWebView", 1, "qZoneShouldOverrideUrlLoading:" + paramString);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
+    Object localObject;
+    do
     {
-      i = ((im_msg_body.CrmElem)localObject2).uint32_qidian_flag.get();
-      if (QLog.isColorLevel()) {
-        paramStringBuilder.append("has uint32_qidian_flag:").append(i).append(";");
-      }
-      if (i == 1)
+      return true;
+      localObject = ((CustomWebView)paramWebView).getPluginEngine();
+      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
       {
-        if (!paramList.isEmpty()) {
-          ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("crmelem_qidian_flag", i + "");
-        }
-        paramStringBuilder = ((MessageHandler)localObject1).app.getCurrentAccountUin();
-        paramElem = String.valueOf(paramMsg.msg_head.from_uin.get());
-        if (!paramStringBuilder.equals(paramElem))
-        {
-          paramStringBuilder = (bjft)((MessageHandler)localObject1).app.getManager(165);
-          if (!paramStringBuilder.a.containsKey(paramElem)) {
-            paramStringBuilder.a(new BmqqAccountType(paramElem, 1));
-          }
-        }
-        if ((parambbzl != null) && (parambbzl.a == 1024)) {
-          parambbzl.a = 1025;
+        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
+        for (boolean bool = true;; bool = false) {
+          return bool;
         }
       }
-      if (((im_msg_body.CrmElem)localObject2).crm_buf.has()) {
-        paramElem = new Crm.CrmCCNotify();
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        paramElem.mergeFrom(((im_msg_body.CrmElem)localObject2).crm_buf.get().toByteArray());
-        int i = paramElem.crm_flag.get();
-        int j;
-        long l1;
-        if ((i == 8) && (paramElem.qidian_group_msg.has()))
-        {
-          paramStringBuilder = (Crm.QidianGroupMsg)paramElem.qidian_group_msg.get();
-          j = paramStringBuilder.uint32_group_task_id.get();
-          int k = paramStringBuilder.uint32_group_msg_type.get();
-          l1 = paramStringBuilder.uint64_kfuin.get();
-          int m = paramStringBuilder.uint32_show_tip.get();
-          paramStringBuilder = paramStringBuilder.str_tip_text.get();
-          if (!paramList.isEmpty())
-          {
-            localObject2 = (MessageRecord)paramList.get(0);
-            if (localObject2 != null)
-            {
-              ((MessageRecord)localObject2).mQidianTaskId = j;
-              ((MessageRecord)localObject2).mQidianMasterUin = l1;
-              ((MessageRecord)localObject2).mIsShowQidianTips = m;
-              ((MessageRecord)localObject2).mQidianTipText = paramStringBuilder;
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("CrmFlagsElemDecoder", 2, String.format("received qidian bulk message taskId: %d, msgType: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k) }));
-          }
-          bbzf.a((MessageHandler)localObject1, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
-          if (j != 0)
-          {
-            paramStringBuilder = (bjhb)localQQAppInterface.a(85);
-            localObject1 = new JSONObject();
-            ((JSONObject)localObject1).put("action", "receive");
-            ((JSONObject)localObject1).put("fromUin", String.valueOf(paramMsg.msg_head.from_uin.get()));
-            ((JSONObject)localObject1).put("toUin", localQQAppInterface.getCurrentAccountUin());
-            ((JSONObject)localObject1).put("taskID", String.valueOf(j));
-            ((JSONObject)localObject1).put("clickURL", "");
-            ((JSONObject)localObject1).put("timestamp", String.valueOf(System.currentTimeMillis() / 1000L));
-            paramStringBuilder.a(((JSONObject)localObject1).toString(), String.valueOf(paramMsg.msg_head.from_uin.get()), "", 10009, 0);
-          }
-        }
-        if ((i == 11) && (paramElem.msg_gray_msg.has()))
-        {
-          localObject1 = (Crm.GrayMsg)paramElem.msg_gray_msg.get();
-          i = ((Crm.GrayMsg)localObject1).uint32_type.get();
-          paramStringBuilder = ((Crm.GrayMsg)localObject1).str_text.get();
-          l1 = ((Crm.GrayMsg)localObject1).uint64_from_uin.get();
-          j = paramMsg.msg_head.msg_seq.get();
-          long l2 = paramMsg.msg_head.msg_uid.get();
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(j);
-          ((StringBuilder)localObject1).append(l2);
-          if (QLog.isColorLevel()) {
-            QLog.d("CrmFlagsElemDecoder", 2, String.format("received qidian gray msg type: %d, tips: %s, fromUin: %d", new Object[] { Integer.valueOf(i), paramStringBuilder, Long.valueOf(l1) }));
-          }
-          bjho.a(localQQAppInterface, String.valueOf(l1), paramStringBuilder, 1024, ((StringBuilder)localObject1).toString());
-        }
-        if (paramElem.str_check_id.has()) {
-          bjho.a(localQQAppInterface, paramList, paramMsg, parambbzl, paramElem);
-        }
-        if ((parambbzl != null) && (parambbzl.a == 1024) && (paramElem.str_ext_nick_name.has()))
-        {
-          paramElem = paramElem.str_ext_nick_name.get();
-          if (!paramList.isEmpty())
-          {
-            paramList = (MessageRecord)paramList.get(0);
-            if (paramList != null) {
-              paramList.saveExtInfoToExtStr("qidian_ext_nick_name", paramElem);
-            }
-          }
-        }
-        return;
-      }
-      catch (Exception paramElem)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("CrmFlagsElemDecoder", 2, "receive ccNotify but throw exception " + paramElem.getMessage());
-        return;
-      }
-    }
-    paramStringBuilder.append("has crmElem, but crmElem is null");
-  }
-  
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+      paramString = Uri.parse(paramString);
+      localObject = paramString.getScheme();
+    } while (!niz.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
+    paramWebView = new Intent("android.intent.action.VIEW", paramString);
+    paramWebView.addFlags(268435456);
+    try
     {
-      parambepr = (im_msg_body.Elem)paramList.next();
-      if (a(parambepr)) {
-        a(parambepr, paramList1, paramStringBuilder, paramMsg, parambbzl);
-      }
+      this.mContext.startActivity(paramWebView);
+      return true;
     }
-    return false;
+    catch (Exception paramWebView)
+    {
+      QLog.e("AbsWebView", 1, "startActivity", paramWebView);
+    }
+    return true;
   }
   
-  public boolean a(im_msg_body.Elem paramElem)
+  public void b()
   {
-    return paramElem.crm_elem.has();
+    super.doOnPause();
+  }
+  
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    super.bindJavaScript(paramArrayList);
+  }
+  
+  public void buildBottomBar() {}
+  
+  public void buildContentView(Bundle paramBundle) {}
+  
+  public void buildData() {}
+  
+  public void buildLayout() {}
+  
+  public void buildTitleBar() {}
+  
+  public final void buildWebView(AppInterface paramAppInterface)
+  {
+    super.buildBaseWebView(paramAppInterface);
+  }
+  
+  public void c()
+  {
+    try
+    {
+      super.doOnDestroy();
+      return;
+    }
+    catch (Exception localException)
+    {
+      acvc.d("GdtWebViewBuilder", "getVideoComponent error", localException);
+    }
+  }
+  
+  public void preInitWebviewPlugin()
+  {
+    super.preInitPluginEngine();
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
+      return true;
+    }
+    paramWebView.loadUrl(paramString);
+    return true;
   }
 }
 

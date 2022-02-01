@@ -1,308 +1,119 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.1;
-import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.2;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class amsk
-  implements amsp
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Map<String, amso> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new LinkedHashMap());
+  private static amsk jdField_a_of_type_Amsk;
+  private Map<Long, amsl> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<Long, Long> b = new HashMap();
   
-  public amsk(int paramInt)
+  public static amsk a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    ThreadManager.excute(new CmGameSubRscHandler.1(this), 64, null, true);
+    if (jdField_a_of_type_Amsk == null) {
+      jdField_a_of_type_Amsk = new amsk();
+    }
+    return jdField_a_of_type_Amsk;
   }
   
-  private int a(String paramString1, String paramString2)
+  public int a(long paramLong)
   {
-    try
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
     {
-      StringBuilder localStringBuilder = new StringBuilder(100);
-      localStringBuilder.append(ancb.s).append(this.jdField_a_of_type_Int).append(File.separator).append(paramString2).append(File.separator).append("config.json");
-      paramString2 = new File(localStringBuilder.toString());
-      if (!paramString2.exists()) {
-        return -1;
-      }
-      int i = (int)new JSONObject(bgmg.b(paramString2)).optDouble("version");
-      paramString1 = (amso)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
-      if (paramString1 != null) {
-        paramString1.jdField_a_of_type_Int = i;
-      }
-      return i;
-    }
-    catch (Throwable paramString1)
-    {
-      QLog.e("cmgame_process.CmGameSubRscHandler", 1, paramString1, new Object[0]);
-    }
-    return -1;
-  }
-  
-  public String a(int paramInt, String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append(ancb.s).append(this.jdField_a_of_type_Int).append("/").append(a(paramString));
-    return localStringBuilder.toString();
-  }
-  
-  public String a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
-      a();
-    }
-    Object localObject = (amso)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localObject == null)
-    {
-      localObject = "";
-      return localObject;
-    }
-    String str = ((amso)localObject).jdField_b_of_type_JavaLangString;
-    if (TextUtils.isEmpty(str))
-    {
-      a();
-      str = ((amso)localObject).jdField_b_of_type_JavaLangString;
-    }
-    for (;;)
-    {
-      localObject = str;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("cmgame_process.CmGameSubRscHandler", 2, new Object[] { "name:", paramString, ",root:", str });
-      return str;
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[parseConfig]");
-      Object localObject1 = new StringBuilder(100);
-      ((StringBuilder)localObject1).append(ancb.s).append(this.jdField_a_of_type_Int).append(File.separator).append("gameConfig.json");
-      localObject1 = new File(((StringBuilder)localObject1).toString());
-      if (!((File)localObject1).exists()) {
-        QLog.w("cmgame_process.CmGameSubRscHandler", 1, "[parsePackRoot], gameConfig.json NOT exist.");
-      }
-      for (;;)
+      amsl localamsl = (amsl)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+      if (l - localamsl.jdField_a_of_type_Long < 3600000L)
       {
-        return;
-        JSONArray localJSONArray = new JSONObject(bgmg.b((File)localObject1)).optJSONArray("subpackages");
-        if (localJSONArray != null)
-        {
-          int i = 0;
-          while (i < localJSONArray.length())
-          {
-            localObject1 = localJSONArray.optJSONObject(i);
-            String str1 = ((JSONObject)localObject1).optString("name");
-            String str2 = ((JSONObject)localObject1).optString("root");
-            amso localamso = (amso)this.jdField_a_of_type_JavaUtilMap.get(str1);
-            localObject1 = localamso;
-            if (localamso == null) {
-              localObject1 = new amso();
-            }
-            ((amso)localObject1).jdField_a_of_type_JavaLangString = str1;
-            ((amso)localObject1).jdField_b_of_type_JavaLangString = str2;
-            this.jdField_a_of_type_JavaUtilMap.put(str1, localObject1);
-            a(str1, str2);
-            i += 1;
-          }
-          QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[parseConfig], done.");
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is true");
         }
+        return localamsl.jdField_a_of_type_Int;
       }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
+      }
+      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+      return 0;
     }
-    catch (Throwable localThrowable)
+    if (this.b.containsKey(Long.valueOf(paramLong)))
     {
-      for (;;)
+      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() < 43200000L)
       {
-        QLog.e("cmgame_process.CmGameSubRscHandler", 1, localThrowable, new Object[0]);
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is false");
+        }
+        return 0;
       }
-    }
-    finally {}
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("packName", paramString);
-      localJSONObject.put("percentage", paramInt1);
-      paramString = ampj.a();
-      if (paramString != null) {
-        paramString.callbackFromRequest(this.jdField_a_of_type_Long, 0, "sc.load_percentage_nofity.local", localJSONObject.toString());
+      if (QLog.isDevelopLevel()) {
+        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
       }
-      return;
+      this.b.remove(Long.valueOf(paramLong));
+      return 0;
     }
-    catch (Throwable paramString)
-    {
-      QLog.e("cmgame_process.CmGameSubRscHandler", 1, paramString, new Object[0]);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AntiFraud", 4, "use default value, false");
+    }
+    return 0;
+  }
+  
+  public void a(long paramLong)
+  {
+    long l = System.currentTimeMillis();
+    if (this.b.size() > 500) {
+      this.b.clear();
+    }
+    this.b.put(Long.valueOf(paramLong), Long.valueOf(l));
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
+      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
     }
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(long paramLong, int paramInt)
   {
-    QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[onStartDownload], gameId:" + paramInt + ",packN:" + paramString);
+    long l = System.currentTimeMillis();
+    amsl localamsl = new amsl(this);
+    localamsl.jdField_a_of_type_Int = paramInt;
+    localamsl.jdField_a_of_type_Long = l;
+    if (this.jdField_a_of_type_JavaUtilMap.size() > 500) {
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localamsl);
+    if (this.b.containsKey(Long.valueOf(paramLong))) {
+      this.b.remove(Long.valueOf(paramLong));
+    }
   }
   
-  public void a(long paramLong, String paramString)
+  public boolean a(long paramLong)
   {
-    amst localamst;
-    String str;
-    try
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
     {
-      this.jdField_a_of_type_Long = paramLong;
-      localamst = ampj.a();
-      if (localamst == null)
+      if (l - ((amsl)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Long > 3600000L)
       {
-        QLog.w("cmgame_process.CmGameSubRscHandler", 1, "jsState:" + paramLong);
-        return;
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "FraudUin, Found from local cache, timestamp is out of data");
+        }
+        this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+        return true;
       }
-      str = new JSONObject(paramString).optString("packName");
-      if (TextUtils.isEmpty(str))
+      return false;
+    }
+    if (this.b.containsKey(Long.valueOf(paramLong)))
+    {
+      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() > 43200000L)
       {
-        c(-10003, "");
-        return;
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AntiFraud", 4, "NonFraudUin, Found from local cache, timestamp is out of data");
+        }
+        this.b.remove(Long.valueOf(paramLong));
+        return true;
       }
+      return false;
     }
-    catch (Throwable paramString)
-    {
-      QLog.e("cmgame_process.CmGameSubRscHandler", 1, paramString, new Object[0]);
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AntiFraud", 4, "Out of date, use default value, true!");
     }
-    amsb localamsb = new amsb();
-    localamsb.jdField_a_of_type_Int = 10001;
-    localamsb.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_Int + "_" + str);
-    paramString = (amso)this.jdField_a_of_type_JavaUtilMap.get(str);
-    if (paramString != null)
-    {
-      if ((paramString.jdField_a_of_type_Amsg != null) && (paramString.jdField_a_of_type_Amsg.a() == 1))
-      {
-        c(-1004, str);
-        return;
-      }
-      localamsb.jdField_b_of_type_Int = paramString.jdField_a_of_type_Int;
-      paramString.jdField_a_of_type_JavaLangString = str;
-    }
-    while ((paramString.jdField_a_of_type_Boolean) && (!BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 4).getBoolean("apollo_sp_game_rsc_verify_" + localamsb.jdField_a_of_type_JavaLangString, false)))
-    {
-      QLog.i("cmgame_process.CmGameSubRscHandler", 1, "each pack requst only once in game.");
-      b(this.jdField_a_of_type_Int, str);
-      return;
-      paramString = new amso();
-      paramString.jdField_a_of_type_JavaLangString = str;
-      localamsb.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
-    }
-    QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[cmgame_pack_sub], request, packname:" + str + ",ver:" + localamsb.jdField_b_of_type_Int);
-    paramString = new ArrayList();
-    paramString.add(localamsb);
-    localamst.a(this.jdField_a_of_type_Int, str, paramString);
-  }
-  
-  public void a(amlp paramamlp, long paramLong)
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) && (paramamlp != null))
-    {
-      QLog.w("cmgame_process.CmGameSubRscHandler", 1, "[onDownloadConfirm], ctx:" + this.jdField_a_of_type_AndroidContentContext);
-      paramamlp.a(null);
-      return;
-    }
-    ThreadManager.getUIHandler().post(new CmGameSubRscHandler.2(this, paramLong, paramamlp));
-  }
-  
-  public void a(amsj paramamsj)
-  {
-    if (paramamsj == null) {}
-    amsg localamsg = new amsg(paramamsj, this);
-    amso localamso = (amso)this.jdField_a_of_type_JavaUtilMap.get(paramamsj.jdField_b_of_type_JavaLangString);
-    if (localamso != null) {
-      localamso.jdField_a_of_type_Amsg = localamsg;
-    }
-    QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[cmgame_pack_sub], response, isUpdate:" + paramamsj.jdField_a_of_type_Boolean + ",svrVer:" + paramamsj.jdField_a_of_type_Int + ",isPatch:" + paramamsj.jdField_b_of_type_Boolean);
-    if (!localamsg.a()) {
-      b(paramamsj.jdField_b_of_type_Int, paramamsj.jdField_b_of_type_JavaLangString);
-    }
-  }
-  
-  public void a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    c(0, paramString);
-    amso localamso = (amso)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localamso != null)
-    {
-      localamso.jdField_a_of_type_Boolean = true;
-      paramInt = a(paramString, localamso.jdField_b_of_type_JavaLangString);
-      QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[onDownloadSuccess], newV:" + paramInt + ",packName:" + paramString);
-    }
-  }
-  
-  public void b(long paramLong, String paramString)
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameSubRscHandler", 2, "[verifyRsc]");
-      }
-      paramString = new JSONObject(paramString).optString("packName");
-      Object localObject = (amso)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      if (localObject == null) {
-        return;
-      }
-      if (TextUtils.isEmpty(((amso)localObject).jdField_b_of_type_JavaLangString)) {
-        a();
-      }
-      localObject = new ancv(this.jdField_a_of_type_Int, 1, paramString, ((amso)localObject).jdField_b_of_type_JavaLangString);
-      ((ancv)localObject).a(new amsn(this, paramString));
-      ((ancv)localObject).a();
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("cmgame_process.CmGameSubRscHandler", 1, paramString, new Object[0]);
-    }
-  }
-  
-  public void c(int paramInt, String paramString)
-  {
-    try
-    {
-      QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[onDownloadFailure], ret:" + paramInt + ",packName:" + paramString);
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("packName", paramString);
-      localJSONObject.put("result", paramInt);
-      paramString = ampj.a();
-      if (paramString != null) {
-        paramString.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.load_subpackage.local", localJSONObject.toString());
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("cmgame_process.CmGameSubRscHandler", 1, paramString, new Object[0]);
-    }
+    return true;
   }
 }
 

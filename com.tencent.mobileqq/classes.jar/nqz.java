@@ -1,10 +1,27 @@
-public abstract interface nqz
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class nqz
+  implements View.OnClickListener
 {
-  public abstract void f();
+  public nqz(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public abstract void g();
-  
-  public abstract void h();
+  public void onClick(View paramView)
+  {
+    if (this.a.a != null)
+    {
+      Intent localIntent = new Intent(this.a, ChatHistory.class);
+      localIntent.putExtra("uin", EqqAccountDetailActivity.i(this.a));
+      localIntent.putExtra("uintype", 1024);
+      this.a.startActivity(localIntent);
+      ocd.a(EqqAccountDetailActivity.i(this.a), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.j(this.a), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

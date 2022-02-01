@@ -1,17 +1,17 @@
 package com.tencent.biz.qrcode;
 
-import zrp;
-import zrq;
+import zvk;
+import zvl;
 
 public class CustomAccessibilityDelegate$1
   implements Runnable
 {
-  public CustomAccessibilityDelegate$1(zrp paramzrp) {}
+  public CustomAccessibilityDelegate$1(zvk paramzvk) {}
   
   public void run()
   {
-    if (zrp.a(this.this$0) != null) {
-      zrp.a(this.this$0).b();
+    if (zvk.a(this.this$0) != null) {
+      zvk.a(this.this$0).b();
     }
   }
 }

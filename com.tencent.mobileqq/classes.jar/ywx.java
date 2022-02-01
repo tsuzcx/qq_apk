@@ -1,45 +1,81 @@
-import android.graphics.Canvas;
 import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
 
-public final class ywx
-  extends yxs
+public class ywx
+  implements View.OnTouchListener
 {
-  public ywx(DoodleView paramDoodleView)
+  private int jdField_a_of_type_Int;
+  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
+  private yww jdField_a_of_type_Yww;
+  private boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int = 5;
+  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
+  private boolean jdField_b_of_type_Boolean;
+  
+  public ywx(yww paramyww)
   {
-    super(paramDoodleView);
+    this.jdField_a_of_type_Yww = paramyww;
   }
   
-  public String a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return "EmptyLayer";
-  }
-  
-  public void a() {}
-  
-  protected void a(Canvas paramCanvas) {}
-  
-  public boolean a()
-  {
+    if (this.jdField_a_of_type_Yww == null) {}
+    do
+    {
+      do
+      {
+        float f;
+        do
+        {
+          do
+          {
+            return true;
+            f = paramMotionEvent.getY();
+            switch (paramMotionEvent.getAction() & 0xFF)
+            {
+            case 3: 
+            case 4: 
+            default: 
+              return true;
+            case 0: 
+              this.jdField_a_of_type_Int = ((int)f);
+              this.jdField_a_of_type_Boolean = false;
+              this.jdField_b_of_type_Boolean = false;
+              this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+              return true;
+            }
+          } while (paramMotionEvent.getPointerCount() > 2);
+          if (this.jdField_b_of_type_Boolean)
+          {
+            this.jdField_a_of_type_Yww.a(paramMotionEvent);
+            return true;
+          }
+          this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Yww.a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent);
+        } while ((!this.jdField_b_of_type_Boolean) || (!(paramView instanceof ViewParent)));
+        ((ViewParent)paramView).requestDisallowInterceptTouchEvent(true);
+        return true;
+        if (Math.abs((int)(f - this.jdField_a_of_type_Int)) > 5) {
+          this.jdField_a_of_type_Boolean = true;
+        }
+      } while (!this.jdField_b_of_type_Boolean);
+      this.jdField_a_of_type_Yww.a(paramMotionEvent);
+      return true;
+    } while ((paramMotionEvent.getPointerCount() > 2) || (!this.jdField_b_of_type_Boolean));
+    this.jdField_a_of_type_Yww.a(paramMotionEvent);
     return true;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void b(Canvas paramCanvas) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    yqp.b("EmptyLayer", "EmptyLayer handle touch event.");
-    return false;
-  }
-  
-  public boolean c(MotionEvent paramMotionEvent)
-  {
-    return false;
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Yww.onClick(paramView);
+    }
+    if ((this.jdField_b_of_type_Boolean) && ((paramView instanceof ViewParent))) {
+      ((ViewParent)paramView).requestDisallowInterceptTouchEvent(false);
+    }
+    this.jdField_a_of_type_Yww.a(paramMotionEvent);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    return true;
   }
 }
 

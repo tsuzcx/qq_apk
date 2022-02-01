@@ -1,12 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.av.widget.stageview.StageEffectView.5.1;
+import com.tencent.av.widget.stageview.StageMemberView;
 
-class mwl
-  implements DialogInterface.OnClickListener
+public class mwl
+  implements Animation.AnimationListener
 {
-  mwl(mwd parammwd) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_AndroidWidgetImageView.post(new StageEffectView.5.1(this));
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

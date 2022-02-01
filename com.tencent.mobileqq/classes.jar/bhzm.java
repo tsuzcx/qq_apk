@@ -1,81 +1,111 @@
-import android.animation.ValueAnimator;
-import android.content.Context;
-import android.os.IBinder;
-import android.view.View;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.widget.PopupWindow;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.business.qvip.QQFriendRelation2Config;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 
 public class bhzm
-  extends PopupWindow
+  extends QIPCModule
 {
-  protected Context a;
-  private View jdField_a_of_type_AndroidViewView;
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
+  private static bhzm a;
   
-  public bhzm(Context paramContext)
+  private bhzm(String paramString)
   {
-    super(paramContext, null, 2131755908);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-    setOutsideTouchable(true);
-    setFocusable(true);
-    setTouchable(true);
+    super(paramString);
   }
   
-  private void a()
+  /* Error */
+  public static bhzm a()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 14	bhzm:a	Lbhzm;
+    //   6: ifnonnull +27 -> 33
+    //   9: ldc 2
+    //   11: monitorenter
+    //   12: getstatic 14	bhzm:a	Lbhzm;
+    //   15: ifnonnull +15 -> 30
+    //   18: new 2	bhzm
+    //   21: dup
+    //   22: ldc 16
+    //   24: invokespecial 17	bhzm:<init>	(Ljava/lang/String;)V
+    //   27: putstatic 14	bhzm:a	Lbhzm;
+    //   30: ldc 2
+    //   32: monitorexit
+    //   33: getstatic 14	bhzm:a	Lbhzm;
+    //   36: astore_0
+    //   37: ldc 2
+    //   39: monitorexit
+    //   40: aload_0
+    //   41: areturn
+    //   42: astore_0
+    //   43: ldc 2
+    //   45: monitorexit
+    //   46: aload_0
+    //   47: athrow
+    //   48: astore_0
+    //   49: ldc 2
+    //   51: monitorexit
+    //   52: aload_0
+    //   53: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   36	5	0	localbhzm	bhzm
+    //   42	5	0	localObject1	java.lang.Object
+    //   48	5	0	localObject2	java.lang.Object
+    // Exception table:
+    //   from	to	target	type
+    //   12	30	42	finally
+    //   30	33	42	finally
+    //   43	46	42	finally
+    //   3	12	48	finally
+    //   33	37	48	finally
+    //   46	48	48	finally
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    int i;
+    boolean bool;
+    if ("is_white_name".equals(paramString))
     {
-      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      localValueAnimator.setDuration(400L);
-      localValueAnimator.addUpdateListener(new bhzp(this));
-      localValueAnimator.addListener(new bhzq(this));
-      localValueAnimator.start();
+      i = paramBundle.getInt("managerId", -1);
+      if (i == 490)
+      {
+        bool = axte.a().a();
+        paramString = new Bundle();
+        paramString.putBoolean("isWhiteName", bool);
+        paramString = EIPCResult.createSuccessResult(paramString);
+      }
     }
-  }
-  
-  private void a(IBinder paramIBinder)
-  {
-    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
-    localLayoutParams.width = -1;
-    localLayoutParams.height = -1;
-    localLayoutParams.format = -3;
-    localLayoutParams.type = 1000;
-    localLayoutParams.token = paramIBinder;
-    this.jdField_a_of_type_AndroidViewView = new View(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(855638016);
-    this.jdField_a_of_type_AndroidViewView.setFitsSystemWindows(false);
-    this.jdField_a_of_type_AndroidViewView.setOnKeyListener(new bhzn(this));
-    this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-    paramIBinder = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    paramIBinder.setDuration(400L);
-    paramIBinder.addUpdateListener(new bhzo(this));
-    paramIBinder.start();
-  }
-  
-  public void dismiss()
-  {
-    a();
-    super.dismiss();
-  }
-  
-  public void showAsDropDown(View paramView)
-  {
-    a(paramView.getWindowToken());
-    super.showAsDropDown(paramView);
-  }
-  
-  public void showAsDropDown(View paramView, int paramInt1, int paramInt2)
-  {
-    a(paramView.getWindowToken());
-    super.showAsDropDown(paramView, paramInt1, paramInt2);
-  }
-  
-  public void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    a(paramView.getWindowToken());
-    super.showAtLocation(paramView, paramInt1, paramInt2, paramInt3);
+    for (;;)
+    {
+      callbackResult(paramInt, paramString);
+      return null;
+      if (i == 491)
+      {
+        bool = armo.c().mIsEnable;
+        paramString = new Bundle();
+        paramString.putBoolean("isWhiteName", bool);
+        paramString = EIPCResult.createSuccessResult(paramString);
+      }
+      else
+      {
+        paramString = EIPCResult.createResult(-1, new Bundle());
+        continue;
+        if ("paySuccess".equals(paramString))
+        {
+          ((aokv)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(27)).notifyUI(5, true, paramBundle);
+          paramString = EIPCResult.createResult(0, null);
+        }
+        else
+        {
+          paramString = null;
+        }
+      }
+    }
   }
 }
 

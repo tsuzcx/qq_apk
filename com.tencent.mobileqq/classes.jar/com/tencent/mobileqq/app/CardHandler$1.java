@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.app;
 
-import anip;
-import anmw;
+import anum;
+import anyw;
 import com.tencent.mobileqq.data.Card;
 import java.util.ArrayList;
 
 public class CardHandler$1
   implements Runnable
 {
-  public CardHandler$1(anip paramanip, int paramInt, ArrayList paramArrayList) {}
+  public CardHandler$1(anum paramanum, int paramInt, ArrayList paramArrayList) {}
   
   public void run()
   {
     String str = this.this$0.app.getCurrentAccountUin();
-    anmw localanmw = (anmw)this.this$0.app.getManager(51);
-    Card localCard = localanmw.b(str);
+    anyw localanyw = (anyw)this.this$0.app.getManager(51);
+    Card localCard = localanyw.b(str);
     if (localCard != null)
     {
       localCard.iVoteIncrement = this.jdField_a_of_type_Int;
-      localanmw.a(localCard);
+      localanyw.a(localCard);
     }
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      anip.a(str, this.jdField_a_of_type_JavaUtilArrayList);
+      anum.a(str, this.jdField_a_of_type_JavaUtilArrayList);
     }
   }
 }

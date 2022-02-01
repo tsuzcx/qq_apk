@@ -3,16 +3,16 @@ package com.tencent.biz.qqcircle.utils;
 import com.tencent.biz.qqcircle.beans.Friend;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
-import vtj;
+import vwh;
 
 public class QCircleDoubleFollowUserHepler$3
   implements Runnable
 {
-  public QCircleDoubleFollowUserHepler$3(vtj paramvtj, String paramString) {}
+  public QCircleDoubleFollowUserHepler$3(vwh paramvwh, String paramString) {}
   
   public void run()
   {
-    int i = vtj.a(this.this$0).delete(Friend.class.getSimpleName(), "mUin=? ", new String[] { this.a });
+    int i = vwh.a(this.this$0).delete(Friend.class.getSimpleName(), "mUin=? ", new String[] { this.a });
     if (QLog.isColorLevel()) {
       QLog.i("QCircleDoubleFollowUserHepler", 2, "updateFollowUser remove count:" + i);
     }

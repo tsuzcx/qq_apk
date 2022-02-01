@@ -1,43 +1,48 @@
-import android.content.Context;
-import com.tencent.avgame.app.AVGameAppInterface;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 
-public class nda
-  extends mdt
+public abstract interface nda
 {
-  private final boolean p;
-  private boolean q;
+  public abstract RectF a();
   
-  public nda(Context paramContext, AVGameAppInterface paramAVGameAppInterface, String paramString, long paramLong)
-  {
-    this(paramContext, paramAVGameAppInterface, paramString, paramLong, true);
-  }
+  public abstract Drawable a();
   
-  public nda(Context paramContext, AVGameAppInterface paramAVGameAppInterface, String paramString, long paramLong, boolean paramBoolean)
-  {
-    super(paramContext, null, paramString, paramLong, paramBoolean);
-    this.p = paramBoolean;
-  }
+  public abstract nbp a();
   
-  protected boolean a(int paramInt)
-  {
-    if (h() == 2) {
-      return false;
-    }
-    return super.a(paramInt);
-  }
+  public abstract void a();
   
-  protected void b(lpx paramlpx)
-  {
-    if (this.p) {
-      super.b(paramlpx);
-    }
-  }
+  public abstract void a(ImageView paramImageView, long paramLong1, long paramLong2);
   
-  protected void d(lpx paramlpx)
-  {
-    this.q = true;
-    super.d(paramlpx);
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, mze parammze);
+  
+  public abstract void a(mze parammze);
+  
+  public abstract void a(nbp paramnbp);
+  
+  public abstract void a(ncy paramncy);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract Drawable b();
+  
+  public abstract void b();
+  
+  public abstract void b(String paramString, mze parammze);
+  
+  public abstract void b(mze parammze);
+  
+  public abstract void b(ncy paramncy);
+  
+  public abstract void c();
+  
+  public abstract void c(ncy paramncy);
+  
+  public abstract void d(ncy paramncy);
+  
+  public abstract void e(ncy paramncy);
 }
 
 

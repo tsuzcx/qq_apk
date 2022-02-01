@@ -10,10 +10,10 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.os.SystemClock;
 import android.view.Surface;
-import aotp;
-import aotq;
-import batj;
-import bgmg;
+import aphf;
+import aphg;
+import bbmc;
+import bhmi;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -32,7 +32,7 @@ public class VideoEncoderCore
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private Surface jdField_a_of_type_AndroidViewSurface;
-  private aotp jdField_a_of_type_Aotp;
+  private aphf jdField_a_of_type_Aphf;
   private Thread jdField_a_of_type_JavaLangThread;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
@@ -93,8 +93,8 @@ public class VideoEncoderCore
               {
                 this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
                 this.jdField_d_of_type_Boolean = true;
-                if (this.jdField_a_of_type_Aotp != null) {
-                  this.jdField_a_of_type_Aotp.b();
+                if (this.jdField_a_of_type_Aphf != null) {
+                  this.jdField_a_of_type_Aphf.b();
                 }
               }
             }
@@ -213,8 +213,8 @@ public class VideoEncoderCore
             {
               this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
               this.jdField_d_of_type_Boolean = true;
-              if (this.jdField_a_of_type_Aotp != null) {
-                this.jdField_a_of_type_Aotp.b();
+              if (this.jdField_a_of_type_Aphf != null) {
+                this.jdField_a_of_type_Aphf.b();
               }
             }
           }
@@ -346,14 +346,14 @@ public class VideoEncoderCore
     }
   }
   
-  public void a(batj parambatj, aotp paramaotp)
+  public void a(bbmc parambbmc, aphf paramaphf)
   {
-    this.jdField_a_of_type_Aotp = paramaotp;
-    this.jdField_a_of_type_AndroidMediaMediaFormat = MediaFormat.createVideoFormat("video/avc", parambatj.jdField_a_of_type_Int, parambatj.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Aphf = paramaphf;
+    this.jdField_a_of_type_AndroidMediaMediaFormat = MediaFormat.createVideoFormat("video/avc", parambbmc.jdField_a_of_type_Int, parambbmc.jdField_b_of_type_Int);
     this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("color-format", 2130708361);
-    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("bitrate", parambatj.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("frame-rate", parambatj.d);
-    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("i-frame-interval", parambatj.e);
+    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("bitrate", parambbmc.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("frame-rate", parambbmc.d);
+    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("i-frame-interval", parambbmc.e);
     this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createEncoderByType("video/avc");
     this.jdField_a_of_type_AndroidMediaMediaCodec.configure(this.jdField_a_of_type_AndroidMediaMediaFormat, null, null, 1);
     this.jdField_a_of_type_AndroidViewSurface = this.jdField_a_of_type_AndroidMediaMediaCodec.createInputSurface();
@@ -370,13 +370,13 @@ public class VideoEncoderCore
     this.jdField_b_of_type_AndroidMediaMediaCodec.start();
     this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("VideoEncodeThread");
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new aotq(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-    paramaotp = new File(parambatj.jdField_a_of_type_JavaLangString);
-    if (!paramaotp.exists()) {
-      bgmg.c(paramaotp.getAbsolutePath());
+    this.jdField_a_of_type_AndroidOsHandler = new aphg(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    paramaphf = new File(parambbmc.jdField_a_of_type_JavaLangString);
+    if (!paramaphf.exists()) {
+      bhmi.c(paramaphf.getAbsolutePath());
     }
-    this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(parambatj.jdField_a_of_type_JavaLangString, 0);
-    this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(parambatj.g);
+    this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(parambbmc.jdField_a_of_type_JavaLangString, 0);
+    this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(parambbmc.g);
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = -1;
     this.jdField_b_of_type_Boolean = false;

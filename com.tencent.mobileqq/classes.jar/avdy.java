@@ -1,18 +1,21 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.fragment.DeleteFaceFragment;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import mqq.app.QQPermissionCallback;
 
 class avdy
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements QQPermissionCallback
 {
-  avdy(avdv paramavdv) {}
+  avdy(avdx paramavdx, FaceDetectForThirdPartyManager.AppConf paramAppConf) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.c = 7;
-    if (avdv.a(this.a) != null) {
-      avdv.a(this.a).a(this.a.b, paramTVK_IMediaPlayer, paramInt1, paramInt2, paramInt3, paramString, paramObject);
-    }
-    return false;
+    this.jdField_a_of_type_Avdx.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment.b();
+    bhlq.a(DeleteFaceFragment.a(this.jdField_a_of_type_Avdx.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    DeleteFaceFragment.a(this.jdField_a_of_type_Avdx.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment, this.jdField_a_of_type_Avdx.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Avdx.b, this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager$AppConf);
   }
 }
 

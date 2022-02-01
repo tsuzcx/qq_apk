@@ -1,34 +1,16 @@
-import com.tencent.shadow.core.common.ILoggerFactory;
-import com.tencent.shadow.core.common.Logger;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class avgw
-  implements ILoggerFactory
+class avgw
+  extends nkq
 {
-  private static avgw jdField_a_of_type_Avgw = new avgw();
-  private final ConcurrentMap<String, Logger> jdField_a_of_type_JavaUtilConcurrentConcurrentMap = new ConcurrentHashMap();
+  avgw(avgv paramavgv) {}
   
-  public static ILoggerFactory a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return jdField_a_of_type_Avgw;
-  }
-  
-  public Logger getLogger(String paramString)
-  {
-    Logger localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.get(paramString);
-    if (localLogger != null) {
-      paramString = localLogger;
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, String.format("sendFriendRelationRedpointClickEvent, errorCode: %d", new Object[] { Integer.valueOf(paramInt) }));
     }
-    avgx localavgx;
-    do
-    {
-      return paramString;
-      localavgx = new avgx(this, paramString);
-      localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.putIfAbsent(paramString, localavgx);
-      paramString = localLogger;
-    } while (localLogger != null);
-    return localavgx;
   }
 }
 

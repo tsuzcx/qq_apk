@@ -1,26 +1,12 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class adlz
-  implements CompoundButton.OnCheckedChangeListener
+class adlz
+  implements DialogInterface.OnDismissListener
 {
-  public adlz(AssistantSettingActivity paramAssistantSettingActivity, armt paramarmt) {}
+  adlz(adlu paramadlu) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Armt.a(paramBoolean);
-    if (!paramBoolean) {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081DD", "0X80081DD", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081F1", "0X80081F1", 0, 0, "", "", "", "");
-    }
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

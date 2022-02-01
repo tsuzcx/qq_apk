@@ -1,10 +1,9 @@
-import android.os.Bundle;
+import android.graphics.drawable.Drawable;
+import android.view.View;
 
-public abstract class bhhl
+public abstract interface bhhl
 {
-  public void a(long paramLong, int paramInt, Bundle paramBundle) {}
-  
-  public void a(Bundle paramBundle) {}
+  public abstract void a(View paramView, Drawable paramDrawable);
 }
 
 

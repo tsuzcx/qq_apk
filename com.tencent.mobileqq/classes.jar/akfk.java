@@ -1,8 +1,19 @@
-import android.view.MotionEvent;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.TroopAdmin;
 
-public abstract interface akfk
+public final class akfk
+  implements Parcelable.Creator<ChatHistoryTroopMemberFragment.TroopAdmin>
 {
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  public ChatHistoryTroopMemberFragment.TroopAdmin a(Parcel paramParcel)
+  {
+    return new ChatHistoryTroopMemberFragment.TroopAdmin(paramParcel, null);
+  }
+  
+  public ChatHistoryTroopMemberFragment.TroopAdmin[] a(int paramInt)
+  {
+    return new ChatHistoryTroopMemberFragment.TroopAdmin[paramInt];
+  }
 }
 
 

@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.BaseSelectView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "BEAN", "HOLDER", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter$BaseSelectViewHolder;", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
 public final class rim
-  implements Parcelable.Creator<UgcVideo>
+  implements View.OnClickListener
 {
-  public UgcVideo a(Parcel paramParcel)
-  {
-    return new UgcVideo(paramParcel);
-  }
+  public rim(BaseSelectView paramBaseSelectView) {}
   
-  public UgcVideo[] a(int paramInt)
+  public final void onClick(View paramView)
   {
-    return new UgcVideo[paramInt];
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

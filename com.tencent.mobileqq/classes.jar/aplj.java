@@ -1,27 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
-import oicq.wlogin_sdk.tools.util;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-class aplj
-  extends WtloginObserver
+public final class aplj
+  implements Parcelable.Creator<ArCloudConfigInfo>
 {
-  aplj(aplh paramaplh, aplk paramaplk) {}
-  
-  public void OnGetOpenKeyWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, ErrMsg paramErrMsg)
+  public ArCloudConfigInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.LoginHandler", 2, "OnGetOpenKeyWithoutPasswd userAccount=" + paramString + ", dwSrcAppid=" + paramLong1 + ", dwDstAppid=" + paramLong2 + ", dwMainSigMap=" + paramInt1 + ", ret=" + paramInt2);
-    }
-    aplh.a(this.jdField_a_of_type_Aplh, null);
-    if (paramInt2 == 0)
-    {
-      paramArrayOfByte1 = util.buf_to_string(paramArrayOfByte1);
-      paramArrayOfByte2 = util.buf_to_string(paramArrayOfByte2);
-      this.jdField_a_of_type_Aplk.a(paramString, paramLong2, paramArrayOfByte1, paramArrayOfByte2);
-      return;
-    }
-    this.jdField_a_of_type_Aplk.a(null, 0L, null, null);
+    return new ArCloudConfigInfo(paramParcel);
+  }
+  
+  public ArCloudConfigInfo[] a(int paramInt)
+  {
+    return new ArCloudConfigInfo[paramInt];
   }
 }
 

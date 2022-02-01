@@ -1,34 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.1;
-import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.2;
-import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.3;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aozb
-  extends Handler
+  extends aoxh
 {
-  public aozb(aoyz paramaoyz, Looper paramLooper)
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 100: 
-      apek.a().a(new ARCamera.ARCameraHandler.1(this));
-      removeMessages(100);
-      sendEmptyMessageDelayed(100, 3000L);
-      return;
-    case 101: 
-      apek.a().a(new ARCamera.ARCameraHandler.2(this));
-      return;
+    paramQQAppInterface = new aoza(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qqnotify";
+    paramQQAppInterface.c = "open";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    apek.a().a(new ARCamera.ARCameraHandler.3(this));
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
   }
 }
 

@@ -1,24 +1,27 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
 
-class uyo
-  extends RecyclerView.ViewHolder
+final class uyo
+  implements aaav<FeedCloudRead.StGetMainPageRsp>
 {
-  public uyo(BaseWidgetView paramBaseWidgetView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    super(paramBaseWidgetView);
-  }
-  
-  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo)
-  {
-    if ((this.itemView instanceof BaseWidgetView))
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      this.itemView.setTag(this);
-      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
+      if (paramStGetMainPageRsp == null) {
+        break label54;
+      }
+      uyn.a((FeedCloudMeta.StUser)paramStGetMainPageRsp.user.get());
+      if (TextUtils.isEmpty(uyn.c().nick.get())) {
+        QLog.w("QCircleGlobalInfo", 1, "qCircle get nick empty");
+      }
     }
+    return;
+    label54:
+    QLog.w("QCircleGlobalInfo", 1, "getPuinUser empty");
   }
 }
 

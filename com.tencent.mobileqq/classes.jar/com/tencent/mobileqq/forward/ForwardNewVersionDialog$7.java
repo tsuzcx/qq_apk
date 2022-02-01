@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.forward;
 
-import auhv;
-import bkft;
+import auzt;
+import blgx;
 
 public class ForwardNewVersionDialog$7
   implements Runnable
 {
-  public ForwardNewVersionDialog$7(auhv paramauhv) {}
+  public ForwardNewVersionDialog$7(auzt paramauzt) {}
   
   public void run()
   {
-    bkft.a(auhv.a(this.this$0));
+    blgx.a(auzt.a(this.this$0));
   }
 }
 

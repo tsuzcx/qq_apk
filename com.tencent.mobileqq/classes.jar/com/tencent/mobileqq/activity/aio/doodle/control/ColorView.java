@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.doodle.control;
 
-import afur;
-import agig;
-import agih;
+import agej;
+import agrh;
+import agri;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -15,10 +15,10 @@ public class ColorView
   extends View
 {
   private int jdField_a_of_type_Int;
-  private agih jdField_a_of_type_Agih;
+  private agri jdField_a_of_type_Agri;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private int b = afur.a(4.0F, getResources());
+  private int b = agej.a(4.0F, getResources());
   
   public ColorView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -65,10 +65,10 @@ public class ColorView
     invalidate();
   }
   
-  public void setListener(agih paramagih)
+  public void setListener(agri paramagri)
   {
-    this.jdField_a_of_type_Agih = paramagih;
-    setOnClickListener(new agig(this));
+    this.jdField_a_of_type_Agri = paramagri;
+    setOnClickListener(new agrh(this));
   }
 }
 

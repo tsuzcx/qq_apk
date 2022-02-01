@@ -1,32 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Process;
-import com.tencent.mobileqq.startup.step.CheckPermission;
-import mqq.app.AppActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.SquareImageView;
 
 public class bcoz
-  implements DialogInterface.OnClickListener
+  extends bcog
 {
-  public bcoz(CheckPermission paramCheckPermission) {}
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public SquareImageView a;
+  public Button b;
+  public LinearLayout b;
+  public TextView b;
+  public LinearLayout c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bcoz(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramInt == 1)
-    {
-      if (this.a.checkPermission(CheckPermission.access$000(this.a)))
-      {
-        CheckPermission.access$002(this.a, null);
-        this.a.mDirector.b();
-      }
-      return;
-    }
-    CheckPermission.access$000(this.a).superFinish();
-    Process.killProcess(Process.myPid());
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    View localView = a(this.jdField_c_of_type_Int);
+    a(localView);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131376839));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363920));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369360));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131370148));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131370149));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379725));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379724));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131369156));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131370147));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363746));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcoz
  * JD-Core Version:    0.7.0.1
  */

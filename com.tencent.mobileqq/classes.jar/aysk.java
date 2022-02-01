@@ -1,34 +1,27 @@
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import org.jetbrains.annotations.NotNull;
+import java.util.List;
 
 public class aysk
 {
-  public final float a;
-  public final long a;
-  public final LatLng a;
-  public final String a;
-  
-  public aysk(LatLng paramLatLng, String paramString, float paramFloat, long paramLong)
-  {
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public boolean a()
-  {
-    return System.currentTimeMillis() - this.jdField_a_of_type_Long >= ayqi.N;
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    return "Location{latLng=" + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", provider='" + this.jdField_a_of_type_JavaLangString + ", accuracy=" + this.jdField_a_of_type_Float + ", time=" + new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Long)) + '}';
-  }
+  public long a;
+  public aydg a;
+  public List<aysi> a;
+  public boolean a;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
 }
 
 

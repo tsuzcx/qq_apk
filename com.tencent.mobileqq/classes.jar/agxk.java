@@ -1,17 +1,36 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class agxk
-  extends ahbl
+public class agxk
 {
-  agxk(agwz paramagwz)
+  public static agxf a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, String paramString)
   {
-    super(paramagwz, null);
-  }
-  
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new agrn(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    boolean bool = true;
+    anyw localanyw = (anyw)paramQQAppInterface.getManager(51);
+    if (localanyw != null) {
+      bool = localanyw.b(paramString);
+    }
+    if (bool)
+    {
+      paramQQAppInterface = new agiq(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder().append("getIntimateView bFriend = ").append(bool).append(" IntimateView ");
+        if (paramQQAppInterface != null) {
+          break label111;
+        }
+      }
+    }
+    label111:
+    for (paramFragmentActivity = "null";; paramFragmentActivity = "created")
+    {
+      QLog.i("IntimateViewFactory", 2, paramFragmentActivity);
+      return paramQQAppInterface;
+      paramQQAppInterface = new agxr(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
+      break;
+    }
   }
 }
 

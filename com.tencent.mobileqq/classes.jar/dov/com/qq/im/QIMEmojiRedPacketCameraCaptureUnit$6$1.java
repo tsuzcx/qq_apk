@@ -1,18 +1,18 @@
 package dov.com.qq.im;
 
-import anni;
-import bnbz;
-import bncg;
+import anzj;
+import bodh;
+import bodo;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class QIMEmojiRedPacketCameraCaptureUnit$6$1
   implements Runnable
 {
-  public QIMEmojiRedPacketCameraCaptureUnit$6$1(bncg parambncg) {}
+  public QIMEmojiRedPacketCameraCaptureUnit$6$1(bodo parambodo) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a(), anni.a(2131708560), 1).a();
+    QQToast.a(this.a.a.a(), anzj.a(2131708669), 1).a();
   }
 }
 

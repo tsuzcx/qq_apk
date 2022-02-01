@@ -5,6 +5,7 @@ import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.ttpic.filter.CosFunGroupItem;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTSegAttr;
+import com.tencent.ttpic.openapi.filter.stylizefilter.customFilter.StyleCustomFilterGroup;
 import com.tencent.ttpic.openapi.model.FaceActionCounter;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.model.cosfun.CosFun;
@@ -27,6 +28,9 @@ public class CosFunFilterGroup
   private List<CosFunGroupItem> cosFunGroupItemList = new ArrayList();
   private boolean countDownCalled = false;
   private int currentGroupItemIndex = -1;
+  private List<StyleCustomFilterGroup> customFilterGroupList;
+  private boolean enableGAN;
+  private StyleChildFilter ganFilter;
   private boolean isRestartGroup = false;
   private int lastFrameFaceCount = 1;
   private int randomItemIndex = -1;
@@ -36,7 +40,7 @@ public class CosFunFilterGroup
   private Set<Integer> triggeredExpression;
   private VideoMaterial videoMaterial;
   
-  public CosFunFilterGroup(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
+  public CosFunFilterGroup(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager, List<RenderItem> paramList, List<StyleCustomFilterGroup> paramList1, boolean paramBoolean)
   {
     this.videoMaterial = paramVideoMaterial;
     this.cosFun = paramVideoMaterial.getCosFun();
@@ -46,6 +50,13 @@ public class CosFunFilterGroup
       this.startInterval = this.cosFun.getStartInterval();
     }
     this.triggerManager = paramTriggerManager;
+    if ((paramList != null) && (paramList.size() > 0)) {
+      this.ganFilter = ((StyleChildFilter)((RenderItem)paramList.get(0)).filter);
+    }
+    if (paramList1 != null) {
+      this.customFilterGroupList = paramList1;
+    }
+    this.enableGAN = paramBoolean;
     initCosGroup();
   }
   
@@ -89,7 +100,7 @@ public class CosFunFilterGroup
         while (((Iterator)localObject).hasNext())
         {
           CosFun.CosFunGroupItem localCosFunGroupItem = (CosFun.CosFunGroupItem)((Iterator)localObject).next();
-          this.cosFunGroupItemList.add(new CosFunGroupItem(this.videoMaterial.getDataPath(), localCosFunGroupItem, this.randomItemIndex, this.triggerManager));
+          this.cosFunGroupItemList.add(new CosFunGroupItem(this.videoMaterial.getDataPath(), localCosFunGroupItem, this.randomItemIndex, this.triggerManager, this.ganFilter, this.customFilterGroupList, this.enableGAN));
         }
       }
     }

@@ -1,96 +1,36 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.LinearLayout.LayoutParams;
 
 public class bdps
+  extends Animation
 {
-  private String a;
-  private String b;
-  private String c;
+  int jdField_a_of_type_Int;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  public bdps a()
+  public bdps(ViewGroup paramViewGroup)
   {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    return a("999").a(localBaseApplication, "999_540", "999_540");
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
   }
   
-  public bdps a(Context paramContext, String paramString1, String paramString2)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    paramContext = a(paramContext);
-    this.b = (paramContext + paramString1 + ".zip");
-    this.c = (paramContext + paramString1 + File.separator + paramString2 + File.separator);
-    return this;
-  }
-  
-  public bdps a(String paramString)
-  {
-    this.a = paramString;
-    return this;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String a(Context paramContext)
-  {
-    paramContext = paramContext.getDir("theme_810", 0).getAbsolutePath();
-    StringBuilder localStringBuilder = afur.a().append(paramContext);
-    if (!paramContext.endsWith(File.separator)) {
-      localStringBuilder.append(File.separator);
+    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * (1.0F - paramFloat)));
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+    if (paramFloat == 1.0F)
+    {
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      paramTransformation.height = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
     }
-    return this.a + File.separator;
   }
   
-  public boolean a()
+  public boolean willChangeBounds()
   {
-    return new File(this.b).exists();
-  }
-  
-  public bdps b()
-  {
-    return a(BaseApplicationImpl.getContext(), "test", "test");
-  }
-  
-  public String b()
-  {
-    return ThemeUtil.getThemeConfigID(this.a);
-  }
-  
-  public String b(Context paramContext)
-  {
-    paramContext = a(paramContext);
-    return paramContext + "3_" + b() + ".cfg";
-  }
-  
-  public boolean b()
-  {
-    return new File(this.c).exists();
-  }
-  
-  public bdps c()
-  {
-    this.b = null;
-    this.c = null;
-    return this;
-  }
-  
-  public String c()
-  {
-    return this.b;
-  }
-  
-  public String d()
-  {
-    return this.c;
-  }
-  
-  public String toString()
-  {
-    return this.b;
+    return true;
   }
 }
 

@@ -1,7 +1,4 @@
-public abstract interface ajkv
-{
-  public abstract void c();
-}
+public class ajkv {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

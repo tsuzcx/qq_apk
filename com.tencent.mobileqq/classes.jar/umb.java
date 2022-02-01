@@ -1,44 +1,26 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import UserGrowth.stPublisherRsp;
 
-public class umb
+class umb
+  implements ukd
 {
-  public static uly a(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
+  umb(ulx paramulx) {}
+  
+  public void a(uko paramuko)
   {
-    if (paramWSRedDotPushMsg == null) {}
+    if (!paramuko.a()) {
+      uqf.d("WSHomeFragmentPresenter", "GetFeedDetailRequest onTaskResponse failed code:" + paramuko.jdField_a_of_type_Int + ", msg:" + paramuko.jdField_a_of_type_JavaLangString);
+    }
     do
     {
-      return null;
-      int i;
-      if (paramWSRedDotPushMsg.mStrategyInfo != null) {
-        i = paramWSRedDotPushMsg.mStrategyInfo.getType();
+      return;
+      if (!(paramuko.jdField_a_of_type_JavaLangObject instanceof stPublisherRsp)) {
+        break;
       }
-      while (paramInt == 2) {
-        if (i == 1)
-        {
-          return new umc(paramWSRedDotPushMsg);
-          i = 0;
-        }
-        else if (i == 5)
-        {
-          return new ulz(paramWSRedDotPushMsg);
-        }
-      }
-      if (i == 2) {
-        return new umd(paramWSRedDotPushMsg, paramInt, paramIntent);
-      }
-      if (i == 3) {
-        return new ume(paramWSRedDotPushMsg, paramInt, paramIntent);
-      }
-      if (i == 4) {
-        return new uma(paramWSRedDotPushMsg, paramInt);
-      }
-      if (paramInt == 2) {
-        return new umc(paramWSRedDotPushMsg);
-      }
-    } while (paramInt != 6);
-    return new umd(paramWSRedDotPushMsg, paramInt, paramIntent);
+      paramuko = (stPublisherRsp)paramuko.jdField_a_of_type_JavaLangObject;
+    } while (this.a.a() == null);
+    ((umk)this.a.a()).a(paramuko);
+    return;
+    uqf.d("WSHomeFragmentPresenter", "GetPublisherRequest onTaskResponse failed");
   }
 }
 

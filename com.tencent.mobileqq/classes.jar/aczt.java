@@ -1,33 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.C2C;
-import msf.msgsvc.msg_svc.RoutingHead;
+import java.util.Comparator;
 
-public class aczt
-  implements acxp
+class aczt
+  implements Comparator<MessageRecord>
 {
-  public int a()
-  {
-    return 0;
-  }
+  aczt(aczr paramaczr) {}
   
-  public boolean a()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = new msg_svc.C2C();
-    paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramRoutingHead.c2c.set(paramQQAppInterface);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
   }
 }
 

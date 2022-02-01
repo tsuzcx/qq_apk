@@ -142,7 +142,7 @@ public class a
           }
         }
       });
-      if (!bool) {
+      if ((!bool) || ("preload".equals(localObject1))) {
         return;
       }
       paramBundle = new Handler(Looper.getMainLooper());

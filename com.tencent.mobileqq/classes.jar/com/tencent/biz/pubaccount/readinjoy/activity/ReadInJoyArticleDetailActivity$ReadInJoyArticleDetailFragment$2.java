@@ -4,9 +4,9 @@ import android.os.Build.VERSION;
 import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
-import bhql;
+import birg;
 import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
-import ohv;
+import ojd;
 
 public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$2
   implements Runnable
@@ -22,7 +22,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$2
     {
       if (Build.VERSION.SDK_INT >= 14)
       {
-        this.this$0.a.animate().alpha(0.0F).setDuration(200L).setListener(new ohv(this));
+        this.this$0.a.animate().alpha(0.0F).setDuration(200L).setListener(new ojd(this));
         this.this$0.a.animate().start();
       }
     }

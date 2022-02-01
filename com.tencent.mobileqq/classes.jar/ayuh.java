@@ -1,15 +1,9 @@
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.openapi.OpenApiManager;
 
-public class ayuh
-  implements afyl
+public abstract interface ayuh
 {
-  public ayuh(OpenApiManager paramOpenApiManager) {}
-  
-  public void a(View paramView, bduk parambduk, int paramInt1, int paramInt2)
-  {
-    this.a.onFileTransStatusChanged(parambduk, paramInt1, paramInt2);
-  }
+  public abstract void a(Dialog paramDialog, View paramView, ayug paramayug);
 }
 
 

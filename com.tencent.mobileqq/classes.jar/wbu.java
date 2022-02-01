@@ -1,18 +1,17 @@
+import com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView;
+
 public class wbu
-  extends wbv
+  implements aqmj
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  public wbu(QCircleRecommendImageView paramQCircleRecommendImageView) {}
   
-  public wbu(int paramInt)
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void b()
   {
-    super(paramInt);
-    this.g = 6;
+    QCircleRecommendImageView.a(this.a);
   }
 }
 

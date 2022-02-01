@@ -1,21 +1,17 @@
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.storyHome.VideoEncodeActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.Stream;
+import java.util.List;
 
-public class ybc
-  implements RadioGroup.OnCheckedChangeListener
+class ybc
+  implements yaw<Bitmap>
 {
-  public ybc(VideoEncodeActivity paramVideoEncodeActivity) {}
+  ybc(yaz paramyaz, List paramList, String paramString) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  @NonNull
+  public Stream<Bitmap> a(yas paramyas)
   {
-    RadioButton localRadioButton = (RadioButton)paramRadioGroup.findViewById(paramInt);
-    VideoEncodeActivity.a(this.a, (String)localRadioButton.getTag());
-    yqp.d("Q.qqstory:VideoEncodeActivity", "select fake vid %s", new Object[] { VideoEncodeActivity.a(this.a) });
-    VideoEncodeActivity.a(this.a);
-    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+    return yaz.a(this.jdField_a_of_type_Yaz, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
   }
 }
 

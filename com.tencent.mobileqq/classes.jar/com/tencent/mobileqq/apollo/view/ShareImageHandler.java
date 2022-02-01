@@ -12,12 +12,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import anhc;
-import anhd;
-import anni;
-import bkho;
-import bkhw;
-import bltb;
+import ansx;
+import ansy;
+import anzj;
+import blir;
+import bliz;
+import bmud;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.widget.QQToast;
@@ -29,19 +29,19 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 
 public class ShareImageHandler
-  implements DialogInterface.OnDismissListener, Handler.Callback, AdapterView.OnItemClickListener, anhd, bkhw
+  implements DialogInterface.OnDismissListener, Handler.Callback, AdapterView.OnItemClickListener, ansy, bliz
 {
   private long jdField_a_of_type_Long;
-  private anhc jdField_a_of_type_Anhc;
-  private bkho jdField_a_of_type_Bkho;
+  private ansx jdField_a_of_type_Ansx;
+  private blir jdField_a_of_type_Blir;
   private WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private WeakReference<Activity> b;
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_Bkho != null) {
-      this.jdField_a_of_type_Bkho.dismiss();
+    if (this.jdField_a_of_type_Blir != null) {
+      this.jdField_a_of_type_Blir.dismiss();
     }
   }
   
@@ -73,10 +73,10 @@ public class ShareImageHandler
                     } while (this.jdField_a_of_type_Boolean);
                     paramMessage = (String)paramMessage.obj;
                   } while ((TextUtils.isEmpty(paramMessage)) || (this.b == null) || (this.b.get() == null));
-                  QQToast.a((Context)this.b.get(), anni.a(2131712710) + paramMessage, 1).a();
+                  QQToast.a((Context)this.b.get(), anzj.a(2131712819) + paramMessage, 1).a();
                   return false;
-                  if (this.jdField_a_of_type_Bkho != null) {
-                    this.jdField_a_of_type_Bkho.dismiss();
+                  if (this.jdField_a_of_type_Blir != null) {
+                    this.jdField_a_of_type_Blir.dismiss();
                   }
                 } while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.b == null) || (this.b.get() == null));
                 localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
@@ -94,10 +94,10 @@ public class ShareImageHandler
             {
               localArrayList.add(URLDecoder.decode(paramMessage));
               localBundle.putStringArrayList("images", localArrayList);
-              localBundle.putString("summary", anni.a(2131712709));
+              localBundle.putString("summary", anzj.a(2131712818));
               localBundle.putInt("req_type", 7);
               localBundle.putBoolean("key_need_save_draft", false);
-              bltb.a(localAppInterface, (Context)this.b.get(), localBundle, this, 15);
+              bmud.a(localAppInterface, (Context)this.b.get(), localBundle, this, 15);
               return false;
             }
             catch (Exception paramMessage)
@@ -105,8 +105,8 @@ public class ShareImageHandler
               QLog.d("ShareImageHandler", 2, "publishToQzone:" + paramMessage.getMessage());
               return false;
             }
-            if (this.jdField_a_of_type_Bkho != null) {
-              this.jdField_a_of_type_Bkho.dismiss();
+            if (this.jdField_a_of_type_Blir != null) {
+              this.jdField_a_of_type_Blir.dismiss();
             }
           } while (this.jdField_a_of_type_Boolean);
           paramMessage = (String)paramMessage.obj;
@@ -141,12 +141,12 @@ public class ShareImageHandler
       this.jdField_a_of_type_Long = l;
       if (paramLong == 1L)
       {
-        if (this.jdField_a_of_type_Anhc != null) {
-          this.jdField_a_of_type_Anhc.a(this, 16);
+        if (this.jdField_a_of_type_Ansx != null) {
+          this.jdField_a_of_type_Ansx.a(this, 16);
         }
       }
-      else if (this.jdField_a_of_type_Anhc != null) {
-        this.jdField_a_of_type_Anhc.a(this, 17);
+      else if (this.jdField_a_of_type_Ansx != null) {
+        this.jdField_a_of_type_Ansx.a(this, 17);
       }
     }
   }

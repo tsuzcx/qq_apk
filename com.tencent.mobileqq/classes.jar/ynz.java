@@ -1,18 +1,80 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 
-class ynz
-  extends yku
+public abstract class ynz
+  implements yoa
 {
-  ynz(ynm paramynm) {}
+  protected Activity a;
   
-  public void a(int paramInt, View paramView, Object paramObject, ynb paramynb)
+  public Activity a()
   {
-    switch (paramView.getId())
+    return this.a;
+  }
+  
+  public View a(int paramInt)
+  {
+    Activity localActivity = this.a;
+    if (localActivity != null) {
+      return localActivity.findViewById(paramInt);
+    }
+    yuk.e(getClass().getSimpleName(), "findViewById can not access after detach");
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    Activity localActivity = this.a;
+    if (localActivity != null)
     {
-    default: 
+      localActivity.setContentView(paramInt);
       return;
     }
-    this.a.l();
+    yuk.e(getClass().getSimpleName(), "setContentView can not access after detach");
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(int paramInt, Intent paramIntent)
+  {
+    Activity localActivity = this.a;
+    if (localActivity != null)
+    {
+      localActivity.setResult(paramInt, paramIntent);
+      return;
+    }
+    yuk.e(getClass().getSimpleName(), "finish can not access after detach");
+  }
+  
+  public void a(@NonNull Activity paramActivity)
+  {
+    this.a = paramActivity;
+  }
+  
+  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    this.a = null;
+  }
+  
+  public void e()
+  {
+    Activity localActivity = this.a;
+    if (localActivity != null)
+    {
+      localActivity.finish();
+      return;
+    }
+    yuk.e(getClass().getSimpleName(), "finish can not access after detach");
   }
 }
 

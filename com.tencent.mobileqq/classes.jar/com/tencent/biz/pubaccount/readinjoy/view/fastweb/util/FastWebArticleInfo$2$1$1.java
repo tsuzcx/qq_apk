@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import pmk;
-import tav;
+import pfd;
+import srr;
 
 public class FastWebArticleInfo$2$1$1
   implements Runnable
 {
-  public FastWebArticleInfo$2$1$1(tav paramtav) {}
+  public FastWebArticleInfo$2$1$1(srr paramsrr) {}
   
   public void run()
   {
-    pmk.a().c();
+    pfd.a().c();
   }
 }
 

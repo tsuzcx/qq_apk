@@ -1,32 +1,30 @@
-import com.tencent.biz.qqcircle.events.QCircleCloseBannerEvent;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCircleDitto.StSinglePicBanner;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class uyb
-  implements vuz
+final class uyb
+  implements bjig
 {
-  uyb(uya paramuya) {}
+  uyb(String paramString) {}
   
-  public void a()
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    QLog.d("QCircleInviteBannerBlock", 1, "clickBanner actionType" + uya.a(this.a).actionType.get() + "   actionUrl" + uya.a(this.a).actionUrl.get());
-    if ((uya.a(this.a).actionType.get() == 1) || (uya.a(this.a).actionType.get() == 2))
-    {
-      uxo.b(uya.a(this.a), uya.a(this.a).actionUrl.get());
+    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
       return;
     }
-    QLog.d("QCircleInviteBannerBlock", 1, "unDefined banner jump action:" + uya.a(this.a).actionType.get());
-    uxo.b(uya.b(this.a), uya.a(this.a).actionUrl.get());
-  }
-  
-  public void b()
-  {
-    uwz.a().f();
-    zwp.a().a(new QCircleCloseBannerEvent());
-    this.a.a(false);
-    QLog.d("QCircleInviteBannerBlock", 1, "clickClose");
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      zyx.a(1, 2131718139);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      zyx.a(2, 2131718157);
+    }
   }
 }
 

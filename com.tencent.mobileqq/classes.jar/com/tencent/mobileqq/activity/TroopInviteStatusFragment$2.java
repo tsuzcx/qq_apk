@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import anwd;
+import aoip;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 
@@ -11,7 +11,7 @@ class TroopInviteStatusFragment$2
   
   public void run()
   {
-    ((anwd)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(this.this$0.jdField_a_of_type_JavaLangString, this.this$0.c, this.this$0.jdField_a_of_type_Long);
+    ((aoip)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(this.this$0.jdField_a_of_type_JavaLangString, this.this$0.c, this.this$0.jdField_a_of_type_Long);
     TroopManager localTroopManager = (TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
     if (localTroopManager != null) {
       this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = localTroopManager.b(this.this$0.jdField_a_of_type_JavaLangString);

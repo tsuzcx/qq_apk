@@ -1,51 +1,13 @@
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahzn
-  extends ahus
+public class ahzn
+  implements ahyf
 {
-  static final String jdField_a_of_type_JavaLangString = ahzf.class.getSimpleName();
-  WeakReference<ahzf> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public ahzn(ahzf paramahzf)
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramahzf);
-  }
-  
-  public void a(CompressInfo paramCompressInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress success, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void b(CompressInfo paramCompressInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress fail, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void c(CompressInfo paramCompressInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress complete, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
-    }
-    ahzf localahzf = (ahzf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localahzf == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "onCompressComplete, error: activity is null");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "onCompressComplete, new path:" + paramCompressInfo.e);
-    }
-    localahzf.g(paramCompressInfo.e);
-    ahzf.a(localahzf).a();
+    paramahed.g(paramahfq.b);
   }
 }
 

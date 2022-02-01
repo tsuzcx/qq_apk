@@ -1,8 +1,21 @@
-public final class ayap<Params>
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
+
+public class ayap
+  implements Animation.AnimationListener
 {
-  public int a;
-  public Params a;
-  public boolean a;
+  public ayap(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    ChooseInterestTagActivity.a(this.a).fullScroll(66);
+  }
 }
 
 

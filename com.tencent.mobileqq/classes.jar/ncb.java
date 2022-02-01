@@ -1,40 +1,32 @@
-import com.tencent.avgame.gameroom.stage.guesspicture.GuessPictureStageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.avgame.gameroom.gamelist.GameListView;
 
 public class ncb
-  implements URLDrawable.URLDrawableListener
+  implements View.OnTouchListener
 {
-  public ncb(GuessPictureStageView paramGuessPictureStageView, mym parammym) {}
+  public ncb(GameListView paramGameListView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("GuessPictureStageView", 2, "urlDrawable load failed and throwable" + paramThrowable);
-    }
-    bcst.b(null, "dc00898", "", "", "0X800B0FA", "0X800B0FA", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.b();
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("GuessPictureStageView", 2, "urlDrawable load success");
-    }
-    bcst.b(null, "dc00898", "", "", "0X800B0F5", "0X800B0F5", 0, 0, "", "", "", "");
-    paramURLDrawable = ngh.a(paramURLDrawable.getCurrDrawable());
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.a = paramURLDrawable;
-    GuessPictureStageView localGuessPictureStageView = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView;
-    if (this.jdField_a_of_type_Mym.c == 0) {}
-    for (int i = 10;; i = this.jdField_a_of_type_Mym.c)
+    switch (paramMotionEvent.getAction() & 0xFF)
     {
-      GuessPictureStageView.a(localGuessPictureStageView, paramURLDrawable, i);
-      return;
+    }
+    for (;;)
+    {
+      return false;
+      paramView = nhs.a("avgame_start_game_owner_hl@3x.png");
+      if (paramView != null)
+      {
+        GameListView.a(this.a).setImageBitmap(paramView);
+        continue;
+        paramView = nhs.a("avgame_start_game_owner_normal@3x.png");
+        if (paramView != null) {
+          GameListView.a(this.a).setImageBitmap(paramView);
+        }
+      }
     }
   }
 }

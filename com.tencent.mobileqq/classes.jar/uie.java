@@ -1,33 +1,30 @@
-import UserGrowth.stH5OpInfo;
+import UserGrowth.stFeed;
+import UserGrowth.stMagicBrand;
+import UserGrowth.stSchema;
 import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
 class uie
-  implements upz
+  implements uwg
 {
-  uie(uid paramuid, Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed) {}
+  uie(uhz paramuhz) {}
   
-  public void a(String paramString, int paramInt)
+  public void a(Object paramObject)
   {
-    uid.a(this.jdField_a_of_type_Uid, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, paramString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 501);
-    umw.a(114, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
-    WSPublicAccReport.getInstance().reportOperationCard("gzh_click", 1000003, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    if ((paramObject instanceof stSchema))
+    {
+      upw.a(uhz.a(this.a).a(), (stSchema)paramObject, 700, uhz.a(this.a), "bottom_label");
+      uhz.a(this.a, "bottom_label", 2);
+    }
   }
   
-  public void b(String paramString, int paramInt)
+  public void b(Object paramObject)
   {
-    uid.a(this.jdField_a_of_type_Uid, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    if ((!(paramObject instanceof stSchema)) || (uhz.a(this.a).feed == null) || (uhz.a(this.a).feed.magicBrand == null)) {
+      return;
+    }
+    upw.a(uhz.a(this.a).a(), (stSchema)paramObject, 700, uhz.a(this.a), "bottom_label");
+    uhz.a(this.a, "bottom_label", uhz.a(this.a).feed.magicBrand.type);
   }
-  
-  public void c(String paramString, int paramInt)
-  {
-    uid.a(this.jdField_a_of_type_Uid, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-    umw.a(115, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
-    WSPublicAccReport.getInstance().reportOperationCard("gzh_click", 1000002, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-  }
-  
-  public void d(String paramString, int paramInt) {}
 }
 
 

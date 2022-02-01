@@ -1,33 +1,28 @@
-import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.asyncdb.BaseCache;
+import com.tencent.mobileqq.app.asyncdb.BaseCacheManager;
 
 public class aolf
-  extends aojt
+  extends BaseCacheManager
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  private QQAppInterface a;
+  
+  public aolf(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = new aolb(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "wallet";
-    paramQQAppInterface.c = "modify_pass";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
+    super(paramQQAppInterface);
+    this.a = paramQQAppInterface;
+  }
+  
+  public BaseCache createCacheByName(int paramInt)
+  {
+    switch (paramInt)
     {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
-      }
+    default: 
+      return null;
+    case 2: 
+      return new aoli(this.a, this.dbDelayManager);
     }
-    return paramQQAppInterface;
+    return new aolk(this.a, this.dbDelayManager);
   }
 }
 

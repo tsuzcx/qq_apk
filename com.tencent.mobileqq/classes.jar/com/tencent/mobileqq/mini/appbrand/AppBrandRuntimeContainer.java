@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
@@ -337,7 +337,7 @@ public final class AppBrandRuntimeContainer
         if (this.mDebugLayout.getParent() != null) {
           ((ViewGroup)this.mDebugLayout.getParent()).removeView(this.mDebugLayout);
         }
-        this.mDebugText.setText(anni.a(2131699402));
+        this.mDebugText.setText(anzj.a(2131699509));
         paramFrameLayout.addView(this.mDebugLayout, new ViewGroup.LayoutParams(-1, -1));
         this.mDebugLayout.setVisibility(4);
       }

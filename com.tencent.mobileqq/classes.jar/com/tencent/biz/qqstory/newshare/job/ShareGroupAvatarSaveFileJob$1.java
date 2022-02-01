@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.newshare.job;
 
-import xcg;
-import xww;
+import xgb;
+import yar;
 
 public class ShareGroupAvatarSaveFileJob$1
   implements Runnable
 {
-  public ShareGroupAvatarSaveFileJob$1(xcg paramxcg, xww paramxww) {}
+  public ShareGroupAvatarSaveFileJob$1(xgb paramxgb, yar paramyar) {}
   
   public void run()
   {
-    xcg.a(this.this$0, xcg.a(this.this$0, this.a));
+    xgb.a(this.this$0, xgb.a(this.this$0, this.a));
   }
 }
 

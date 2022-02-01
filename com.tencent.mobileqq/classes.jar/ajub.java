@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.TroopAdmin;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Friends;
+import mqq.app.QQPermissionCallback;
 
-public final class ajub
-  implements Parcelable.Creator<ChatHistoryTroopMemberFragment.TroopAdmin>
+class ajub
+  implements QQPermissionCallback
 {
-  public ChatHistoryTroopMemberFragment.TroopAdmin a(Parcel paramParcel)
+  ajub(ajtz paramajtz, View paramView, Friends paramFriends, BaseActivity paramBaseActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new ChatHistoryTroopMemberFragment.TroopAdmin(paramParcel, null);
+    bhlq.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
   }
   
-  public ChatHistoryTroopMemberFragment.TroopAdmin[] a(int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new ChatHistoryTroopMemberFragment.TroopAdmin[paramInt];
+    ajtz.a(this.jdField_a_of_type_Ajtz, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataFriends);
   }
 }
 

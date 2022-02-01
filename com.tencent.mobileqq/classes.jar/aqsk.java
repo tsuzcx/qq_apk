@@ -1,59 +1,46 @@
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.music.QQPlayerService;
 
 public class aqsk
+  implements aqsi
 {
-  public int a;
-  public String a;
-  public int b;
-  
-  public aqsk()
+  private void a(Intent paramIntent, ColorNote paramColorNote)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    String str = paramIntent.getStringExtra("url");
+    if ((!TextUtils.isEmpty(str)) && (str.matches("^https?://fm\\.qzone\\.qq\\.com/.*")))
+    {
+      paramColorNote = paramColorNote.getReserve();
+      if ((paramColorNote != null) && (paramColorNote.length > 0)) {
+        paramIntent.putExtra("url", new String(paramColorNote));
+      }
+    }
   }
   
-  public static aqsk a(aqlg[] paramArrayOfaqlg)
+  public void launch(Context paramContext, ColorNote paramColorNote)
   {
-    localaqsk = new aqsk();
-    int i = 0;
-    try
+    if (paramColorNote == null) {}
+    Intent localIntent;
+    do
     {
-      while (i < paramArrayOfaqlg.length)
+      do
       {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaqlg[i].jdField_a_of_type_JavaLangString);
-        if (localJSONObject.has("preloadSwitch"))
-        {
-          localaqsk.jdField_a_of_type_Int = localJSONObject.optInt("preloadSwitch");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGamePreloadConfBean", 2, "onParsed preloadswtich=" + localaqsk.jdField_a_of_type_Int);
-          }
-        }
-        if (localJSONObject.has("preloadInterval"))
-        {
-          localaqsk.b = localJSONObject.optInt("preloadInterval", 30);
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGamePreloadConfBean", 2, "onParsed swtich=" + localaqsk.b);
-          }
-        }
-        if (localJSONObject.has("preloadUrl"))
-        {
-          localaqsk.jdField_a_of_type_JavaLangString = localJSONObject.optString("preloadUrl");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGamePreloadConfBean", 2, "onParsed preload url=" + localaqsk.jdField_a_of_type_JavaLangString);
-          }
-        }
-        i += 1;
-      }
-      return localaqsk;
-    }
-    catch (Throwable paramArrayOfaqlg)
-    {
-      com.tencent.TMG.utils.QLog.e("QQGamePreloadConfBean", 1, "QQGameConfBean parse error e=" + paramArrayOfaqlg.toString());
-    }
+        return;
+      } while (paramColorNote.getServiceType() != 16973824);
+      localIntent = QQPlayerService.a();
+    } while (localIntent == null);
+    a(localIntent, paramColorNote);
+    localIntent.addFlags(268435456);
+    localIntent.addFlags(536870912);
+    localIntent.addFlags(67108864);
+    paramContext.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqsk
  * JD-Core Version:    0.7.0.1
  */

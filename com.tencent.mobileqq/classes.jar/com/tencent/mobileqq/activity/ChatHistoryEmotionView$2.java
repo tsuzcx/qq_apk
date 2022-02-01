@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import aduo;
+import aedq;
 import android.os.Message;
-import aseu;
-import bkgm;
+import asui;
+import blhq;
 
 public class ChatHistoryEmotionView$2
   implements Runnable
 {
-  public ChatHistoryEmotionView$2(aduo paramaduo) {}
+  public ChatHistoryEmotionView$2(aedq paramaedq) {}
   
   public void run()
   {
-    Object localObject = aduo.a(this.this$0).a(aduo.a(this.this$0), aduo.a(this.this$0), true);
-    localObject = aduo.a(this.this$0).obtainMessage(1, localObject);
-    aduo.a(this.this$0).sendMessage((Message)localObject);
+    Object localObject = aedq.a(this.this$0).a(aedq.a(this.this$0), aedq.a(this.this$0), true);
+    localObject = aedq.a(this.this$0).obtainMessage(1, localObject);
+    aedq.a(this.this$0).sendMessage((Message)localObject);
   }
 }
 

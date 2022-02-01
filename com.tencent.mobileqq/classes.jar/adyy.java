@@ -1,17 +1,26 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.AppRuntime;
 
-public class adyy
-  implements View.OnLongClickListener
+class adyy
+  implements DialogInterface.OnClickListener
 {
-  public adyy(Conversation paramConversation) {}
+  adyy(adyx paramadyx) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.a.b.performClick();
+    if (this.a.a.a() != null)
+    {
+      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
+      this.a.a.a().startActivity(localIntent);
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

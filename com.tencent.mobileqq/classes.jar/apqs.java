@@ -1,17 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-
-class apqs
-  implements DialogInterface.OnDismissListener
+public abstract interface apqs
 {
-  apqs(apqq paramapqq) {}
+  public abstract void a(int paramInt);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    apqq.a(this.a, false);
-    QLog.d("ark.download.ctrl", 1, "ark.dctrl [showDownloadDialog] onDismiss");
-  }
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
 }
 
 

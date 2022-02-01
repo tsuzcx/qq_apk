@@ -1,33 +1,22 @@
-import android.graphics.Bitmap;
-import android.net.Uri;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
-class bdjs
-  extends bdjv
+public final class bdjs
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  bdjs(bdjq parambdjq)
-  {
-    super(parambdjq);
-  }
+  public bdjs(bdho parambdho) {}
   
-  @Override
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
+    QLog.i("SplashMiniGameStarter", 1, "splash_logoerro+ errotype" + paramInt1 + "errcode =" + paramInt2);
+    this.a.a(15, 1, 0L);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdjs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,6 @@
-public final class blow
+public abstract interface blow
 {
-  public static String a = "tab_index";
-  public static String b = "url_params";
-  public static String c = "com.qqreader.redpoint_change";
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

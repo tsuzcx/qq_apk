@@ -1,63 +1,29 @@
-import android.graphics.PointF;
-import android.opengl.GLES20;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.mobileqq.shortvideo.ptvfilter.DoodleMagicAlgoHandler.RenderPoint;
-import com.tencent.view.RendererUtils;
-import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class zaw
-  extends zan
+class zaw
+  implements Animator.AnimatorListener
 {
-  Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-  public String a;
-  ArrayList<DoodleMagicAlgoHandler.RenderPoint> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  CopyOnWriteArrayList<PointF> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  volatile boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  volatile boolean jdField_b_of_type_Boolean;
-  int jdField_c_of_type_Int;
-  volatile boolean jdField_c_of_type_Boolean;
-  boolean d;
-  boolean e = false;
+  zaw(zau paramzau) {}
   
-  public zaw(int paramInt, String paramString)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramInt);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
+    this.a.a = false;
   }
   
-  public Frame a(int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_c_of_type_Int = RendererUtils.createTexture();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-    GLES20.glBindTexture(3553, this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.jdField_c_of_type_Int, paramInt1, paramInt2, 1.0D);
-    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO());
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-    GLES20.glClear(16640);
-    GLES20.glFlush();
-    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+    this.a.a = false;
   }
   
-  public void a()
+  public void onAnimationRepeat(Animator paramAnimator)
   {
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame != null) && (!this.e))
-    {
-      this.e = true;
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-      RendererUtils.clearTexture(this.jdField_c_of_type_Int);
-    }
+    this.a.a = true;
   }
   
-  public void b()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.b = true;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    this.a.a = true;
   }
 }
 

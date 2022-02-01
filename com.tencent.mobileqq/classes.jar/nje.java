@@ -1,61 +1,24 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RspBody;
-import tencent.im.oidb.cmd0x791.oidb_0x791.SetRedDotRes;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.mobileqq.data.TroopInfo;
 
 class nje
-  implements BusinessObserver
+  extends aojs
 {
-  nje(niz paramniz) {}
+  nje(njc paramnjc) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
   {
-    if (paramBoolean) {
-      try
-      {
-        Object localObject = paramBundle.getByteArray("data");
-        paramBundle = new oidb_sso.OIDBSSOPkg();
-        paramBundle.mergeFrom((byte[])localObject);
-        if ((paramBundle != null) && (paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()))
-        {
-          if (paramBundle.bytes_bodybuffer.get() == null) {
-            return;
-          }
-          localObject = new oidb_0x791.RspBody();
-          ((oidb_0x791.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
-          localObject = (oidb_0x791.SetRedDotRes)((oidb_0x791.RspBody)localObject).msg_set_reddot_res.get();
-          if (localObject != null)
-          {
-            paramBundle = "";
-            localObject = ((oidb_0x791.SetRedDotRes)localObject).rpt_uint64_failed_uin.get().iterator();
-            while (((Iterator)localObject).hasNext())
-            {
-              long l = ((Long)((Iterator)localObject).next()).longValue();
-              paramBundle = paramBundle + String.valueOf(l) + ",";
-            }
-            if ((!TextUtils.isEmpty(paramBundle)) && (QLog.isColorLevel()))
-            {
-              QLog.d("SplashActivityQ.qqstory.redPoint", 2, "setRedDotInfo failed result is:" + paramBundle);
-              return;
-            }
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
+    if (paramLong != this.a.jdField_a_of_type_Long) {
+      return;
     }
+    this.a.jdField_a_of_type_Long = 0L;
+    njc.a(this.a, false);
+    if (paramBoolean)
+    {
+      njc.a(this.a, paramTroopInfo);
+      return;
+    }
+    njc.a(this.a, 2131717877, 1);
+    this.a.jdField_a_of_type_Njf.a();
   }
 }
 

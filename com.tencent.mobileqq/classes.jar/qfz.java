@@ -1,18 +1,17 @@
-import android.content.Context;
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class qfz
+public class qfz
   implements View.OnClickListener
 {
-  qfz(qfx paramqfx, Context paramContext, ArticleInfo paramArticleInfo) {}
+  public qfz(PTSFragment paramPTSFragment) {}
   
   public void onClick(View paramView)
   {
-    pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2, false, 6, false);
-    snh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+    ((Activity)paramView.getContext()).finish();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

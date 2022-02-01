@@ -3,7 +3,7 @@ package com.tencent.mobileqq.imcore.constants;
 public abstract interface AppConstants$VALUE
 {
   public static final int UIN_TYPE_FRIEND = 0;
-  public static final int UIN_TYPE_Init = -1;
+  public static final int UIN_TYPE_INIT = -1;
   public static final int UIN_TYPE_TROOP = 1;
 }
 

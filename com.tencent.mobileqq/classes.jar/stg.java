@@ -1,62 +1,30 @@
-import android.annotation.TargetApi;
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.BaseMovementMethod;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.ViewPagerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
 
-@TargetApi(11)
 public class stg
-  extends BaseMovementMethod
+  extends Handler
 {
-  private static stg a;
-  
-  public static stg a()
+  public stg(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController, Looper paramLooper)
   {
-    if (a == null) {
-      a = new stg();
-    }
-    return a;
+    super(paramLooper);
   }
   
-  public void initialize(TextView paramTextView, Spannable paramSpannable)
+  public void handleMessage(Message paramMessage)
   {
-    Selection.removeSelection(paramSpannable);
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getActionMasked();
-    if ((i == 1) || (i == 0))
-    {
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramTextView.getTotalPaddingLeft();
-      int n = paramTextView.getTotalPaddingTop();
-      int i1 = paramTextView.getScrollX();
-      int i2 = paramTextView.getScrollY();
-      paramMotionEvent = paramTextView.getLayout();
-      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
-      if (j >= paramTextView.getText().length()) {
-        return true;
-      }
-      paramMotionEvent = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
-      if (paramMotionEvent.length > 0)
-      {
-        if (i == 1) {
-          paramMotionEvent[0].onClick(paramTextView);
-        }
-        for (;;)
-        {
-          return true;
-          Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(paramMotionEvent[0]), paramSpannable.getSpanEnd(paramMotionEvent[0]));
-        }
-      }
-      Selection.removeSelection(paramSpannable);
+    if (ReadInJoyDiandianHeaderController.a(this.a)) {}
+    while (ReadInJoyDiandianHeaderController.a(this.a).getCount() <= 1) {
+      return;
     }
-    return false;
+    paramMessage = this.a;
+    paramMessage.jdField_a_of_type_Int += 1;
+    this.a.jdField_a_of_type_Int %= ReadInJoyDiandianHeaderController.a(this.a).getCount();
+    ReadInJoyDiandianHeaderController.a(this.a).setCurrentItem(this.a.jdField_a_of_type_Int, true);
+    ocd.a(null, "", "0X8009827", "0X8009827", 0, 0, "", "", "", "", false);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 3000L);
   }
 }
 

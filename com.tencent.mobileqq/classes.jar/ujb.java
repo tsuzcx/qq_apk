@@ -1,33 +1,24 @@
-import android.view.View;
+import android.app.Activity;
 
-class ujb
-  extends ujc
+public class ujb
+  extends uiv
 {
-  ujb(uja paramuja) {}
-  
-  public void hide()
+  public ujb(uix paramuix)
   {
-    super.hide();
-    if (uja.a(this.a) != null)
-    {
-      uja.a(this.a).setVisibility(4);
-      uja.a(this.a, 0);
-    }
+    super(paramuix);
   }
   
-  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  public boolean a(uix paramuix)
   {
-    super.updateUnreadCount(paramInt, paramBoolean);
-    if (paramInt == 0) {
-      uja.a(this.a, 0);
+    if ((paramuix.a() instanceof Activity))
+    {
+      ugz.a((Activity)paramuix.a(), paramuix.a(), true);
+      if (paramuix.a() != null) {
+        paramuix.a().d();
+      }
+      return true;
     }
-    while ((paramInt <= uja.a(this.a)) || (uja.a(this.a) == null)) {
-      return;
-    }
-    if (uja.a(this.a)) {
-      uja.a(this.a).setVisibility(0);
-    }
-    uja.a(this.a, paramInt);
+    return false;
   }
 }
 

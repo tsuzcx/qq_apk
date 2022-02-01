@@ -1,42 +1,30 @@
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.model.GetVirtualListResult;
+import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-public class bimj
-  implements biyy
+class bimj
+  extends bimm
 {
-  public bimj(OpenAuthorityFragment paramOpenAuthorityFragment) {}
-  
-  public void a()
+  bimj(bimg parambimg)
   {
-    boolean bool = true;
-    GetVirtualListResult localGetVirtualListResult = OpenAuthorityFragment.a(this.a).a().a(OpenAuthorityFragment.a(this.a));
-    if (localGetVirtualListResult != null)
-    {
-      QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "getVirtualList onSuccess null != virtualResult");
-      bior localbior = this.a.a;
-      if (localGetVirtualListResult.a == 0) {}
-      for (;;)
-      {
-        localbior.a(bool, localGetVirtualListResult);
-        return;
-        bool = false;
-      }
-    }
-    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "getVirtualList onSuccess null == virtualResult");
-    this.a.a.a(false, null);
+    super(parambimg, null);
   }
   
-  public void a(int paramInt, String paramString)
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "getVirtualList onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
-    if (OpenAuthorityFragment.a(this.a, paramInt, true))
-    {
-      QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, "getVirtualList handle110537");
-      return;
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "old shouldInterceptRequest");
     }
-    this.a.a.a(false, null);
+    return a(paramWebView, paramString);
   }
 }
 

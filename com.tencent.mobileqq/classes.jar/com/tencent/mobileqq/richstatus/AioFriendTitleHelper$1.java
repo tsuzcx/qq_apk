@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richstatus;
 
 import android.support.v4.app.FragmentActivity;
-import bazp;
-import bbck;
+import bbsi;
+import bbvd;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -10,12 +10,12 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class AioFriendTitleHelper$1
   implements Runnable
 {
-  public AioFriendTitleHelper$1(bazp parambazp) {}
+  public AioFriendTitleHelper$1(bbsi parambbsi) {}
   
   public void run()
   {
-    RichStatus localRichStatus = ((bbck)bazp.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(15)).a(bazp.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, true);
-    bazp.a(this.this$0).jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new AioFriendTitleHelper.1.1(this, localRichStatus));
+    RichStatus localRichStatus = ((bbvd)bbsi.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(15)).a(bbsi.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, true);
+    bbsi.a(this.this$0).jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new AioFriendTitleHelper.1.1(this, localRichStatus));
   }
 }
 

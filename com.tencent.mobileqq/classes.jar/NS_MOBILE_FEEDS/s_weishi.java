@@ -12,9 +12,11 @@ public final class s_weishi
   static Map<String, String> cache_dc_report = new HashMap();
   public String cover_url = "";
   public Map<String, String> dc_report;
+  public boolean need_show_related;
   public String nick_name = "";
   public String pull_weishi_alg_id = "";
   public int pull_weishi_mask;
+  public String related_button_text = "";
   public String weishi_clipbrd = "";
   public String weishi_download_url = "";
   public String weishi_feedId = "";
@@ -35,7 +37,7 @@ public final class s_weishi
   
   public s_weishi() {}
   
-  public s_weishi(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, Map<String, String> paramMap, int paramInt, String paramString12, String paramString13, String paramString14, String paramString15)
+  public s_weishi(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, Map<String, String> paramMap, int paramInt, String paramString12, String paramString13, String paramString14, String paramString15, boolean paramBoolean, String paramString16)
   {
     this.weishi_feedId = paramString1;
     this.weishi_fileId = paramString2;
@@ -54,6 +56,8 @@ public final class s_weishi
     this.weishi_pull_schema = paramString13;
     this.weishi_clipbrd = paramString14;
     this.pull_weishi_alg_id = paramString15;
+    this.need_show_related = paramBoolean;
+    this.related_button_text = paramString16;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -75,6 +79,8 @@ public final class s_weishi
     this.weishi_pull_schema = paramJceInputStream.readString(14, false);
     this.weishi_clipbrd = paramJceInputStream.readString(15, false);
     this.pull_weishi_alg_id = paramJceInputStream.readString(16, false);
+    this.need_show_related = paramJceInputStream.read(this.need_show_related, 17, false);
+    this.related_button_text = paramJceInputStream.readString(18, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -127,6 +133,10 @@ public final class s_weishi
     }
     if (this.pull_weishi_alg_id != null) {
       paramJceOutputStream.write(this.pull_weishi_alg_id, 16);
+    }
+    paramJceOutputStream.write(this.need_show_related, 17);
+    if (this.related_button_text != null) {
+      paramJceOutputStream.write(this.related_button_text, 18);
     }
   }
 }

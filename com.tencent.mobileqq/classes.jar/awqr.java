@@ -1,7 +1,20 @@
-public class awqr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+
+final class awqr
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public boolean a;
+  awqr(BaseActivity paramBaseActivity, int paramInt, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
+    awpq.a(paramDialogInterface).a.a(3, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    awpk localawpk = new awpk(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    awpq.a(paramDialogInterface).a(localawpk, false);
+    bdll.b(null, "CliOper", "", "", "0X800A979", "0X800A979", 0, 0, "", "0", "0", "");
+  }
 }
 
 

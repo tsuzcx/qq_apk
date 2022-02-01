@@ -35,10 +35,10 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import bdzx;
-import bgnt;
-import bgsp;
-import bgtn;
+import beyq;
+import bhnv;
+import bhsr;
+import bhtq;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -422,7 +422,7 @@ public class MiniAppVideoPlayer
     this.mVideoPlayer.setXYaxis(0);
     if (!this.autoplay)
     {
-      if (bgsp.a(this.poster)) {
+      if (bhsr.a(this.poster)) {
         break label582;
       }
       setPoster();
@@ -475,7 +475,7 @@ public class MiniAppVideoPlayer
       paramContext = new FrameLayout.LayoutParams(DisplayUtil.dip2px(this.mContext, 100.0F), DisplayUtil.dip2px(this.mContext, 100.0F));
       paramContext.gravity = 17;
       this.video_container.addView(this.mVideoGestureLayout, paramContext);
-      if ((this.mCurrPos > 0L) && (bgnt.h(this.mContext)))
+      if ((this.mCurrPos > 0L) && (bhnv.h(this.mContext)))
       {
         if (QLog.isColorLevel()) {
           QLog.d("MiniAppVideoPlayer", 2, "play current pos is: " + this.mCurrPos);
@@ -495,7 +495,7 @@ public class MiniAppVideoPlayer
       }
       paramContext.setXYaxis(i);
       return;
-      if (!bgsp.a(this.mUrls)) {
+      if (!bhsr.a(this.mUrls)) {
         MediaUtils.getImageForVideo(this.mUrls, new MiniAppVideoPlayer.7(this));
       }
     }
@@ -598,7 +598,7 @@ public class MiniAppVideoPlayer
   {
     ImageView localImageView = this.barrageIv;
     if (this.isBarrageOpen) {}
-    for (int i = 2130847686;; i = 2130847685)
+    for (int i = 2130847705;; i = 2130847704)
     {
       localImageView.setImageResource(i);
       return;
@@ -609,12 +609,12 @@ public class MiniAppVideoPlayer
   {
     if (paramBoolean)
     {
-      this.controlIv.setImageResource(2130847687);
-      this.centerControlIv.setImageResource(2130847687);
+      this.controlIv.setImageResource(2130847706);
+      this.centerControlIv.setImageResource(2130847706);
       return;
     }
-    this.controlIv.setImageResource(2130847689);
-    this.centerControlIv.setImageResource(2130847689);
+    this.controlIv.setImageResource(2130847708);
+    this.centerControlIv.setImageResource(2130847708);
   }
   
   private void resetMuteImage()
@@ -627,7 +627,7 @@ public class MiniAppVideoPlayer
     }
     ImageView localImageView = this.muteIv;
     if (this.mVideoPlayer.getOutputMute()) {}
-    for (int i = 2130841258;; i = 2130841259)
+    for (int i = 2130841268;; i = 2130841269)
     {
       localImageView.setImageResource(i);
       this.muteIv.setVisibility(0);
@@ -647,7 +647,7 @@ public class MiniAppVideoPlayer
   {
     ImageView localImageView = this.windowIv;
     if (this.isFullScreen) {}
-    for (int i = 2130848616;; i = 2130848618)
+    for (int i = 2130848635;; i = 2130848637)
     {
       localImageView.setImageResource(i);
       return;
@@ -664,8 +664,8 @@ public class MiniAppVideoPlayer
   private void setPoster()
   {
     Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = bdzx.a;
-    ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = bdzx.a;
+    ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = beyq.a;
+    ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = beyq.a;
     try
     {
       if (URLUtil.isNetworkUrl(this.poster)) {}
@@ -711,28 +711,28 @@ public class MiniAppVideoPlayer
     this.hasSetUp = true;
     setTag("MiniAppVideoPlayer");
     this.mContext = paramContext;
-    this.view = LayoutInflater.from(paramContext).inflate(2131559406, null);
-    this.video_container = ((VideoGestureRelativeLayout)this.view.findViewById(2131369697));
+    this.view = LayoutInflater.from(paramContext).inflate(2131559407, null);
+    this.video_container = ((VideoGestureRelativeLayout)this.view.findViewById(2131369791));
     this.video_container.setContentDescription("video_container");
-    this.video_pop_container = ((FrameLayout)this.view.findViewById(2131380757));
-    this.video_img = ((ImageView)this.view.findViewById(2131380686));
-    this.play_status_img = ((ImageView)this.view.findViewById(2131372665));
+    this.video_pop_container = ((FrameLayout)this.view.findViewById(2131380934));
+    this.video_img = ((ImageView)this.view.findViewById(2131380864));
+    this.play_status_img = ((ImageView)this.view.findViewById(2131372776));
     this.play_status_img.setOnClickListener(this);
-    this.playingPopView = this.view.findViewById(2131380752);
-    this.nowTimeTv = ((TextView)this.view.findViewById(2131380754));
-    this.totalTimeTv = ((TextView)this.view.findViewById(2131380755));
-    this.controlIv = ((ImageView)this.view.findViewById(2131380747));
-    this.centerControlIv = ((ImageView)this.view.findViewById(2131380748));
-    this.controlBar = this.view.findViewById(2131380744);
-    this.windowIv = ((ImageView)this.view.findViewById(2131380750));
-    this.playerSeekBar = ((SeekBar)this.view.findViewById(2131380743));
-    this.loadingView = this.view.findViewById(2131380708);
-    this.barrageIv = ((ImageView)this.view.findViewById(2131380746));
-    this.seekTv = ((TextView)this.view.findViewById(2131380753));
-    this.backIv = ((ImageView)this.view.findViewById(2131380745));
-    this.titleTv = ((TextView)this.view.findViewById(2131380756));
-    this.muteIv = ((ImageView)this.view.findViewById(2131380749));
-    this.actionVg = ((FrameLayout)this.view.findViewById(2131380548));
+    this.playingPopView = this.view.findViewById(2131380929);
+    this.nowTimeTv = ((TextView)this.view.findViewById(2131380931));
+    this.totalTimeTv = ((TextView)this.view.findViewById(2131380932));
+    this.controlIv = ((ImageView)this.view.findViewById(2131380924));
+    this.centerControlIv = ((ImageView)this.view.findViewById(2131380925));
+    this.controlBar = this.view.findViewById(2131380921);
+    this.windowIv = ((ImageView)this.view.findViewById(2131380927));
+    this.playerSeekBar = ((SeekBar)this.view.findViewById(2131380920));
+    this.loadingView = this.view.findViewById(2131380886);
+    this.barrageIv = ((ImageView)this.view.findViewById(2131380923));
+    this.seekTv = ((TextView)this.view.findViewById(2131380930));
+    this.backIv = ((ImageView)this.view.findViewById(2131380922));
+    this.titleTv = ((TextView)this.view.findViewById(2131380933));
+    this.muteIv = ((ImageView)this.view.findViewById(2131380926));
+    this.actionVg = ((FrameLayout)this.view.findViewById(2131380735));
     paramContext = this.barrageIv;
     if (this.showDanmuBtn) {}
     for (int i = 0;; i = 4)
@@ -750,6 +750,7 @@ public class MiniAppVideoPlayer
       this.videoPlayerStatusObserver = new MiniAppVideoPlayer.VideoPlayerStatusObserver(this);
       this.mVideoGestureLayout = new VideoGestureLayout(this.mContext);
       this.mVideoGestureLayout.setContentDescription("VideoGestureLayout");
+      updateVideoGestureSetting();
       this.video_container.setVideoGestureListener(new MiniAppVideoPlayer.3(this));
       this.playerSeekBar.setOnSeekBarChangeListener(new MiniAppVideoPlayer.4(this));
       addView(this.view);
@@ -819,6 +820,16 @@ public class MiniAppVideoPlayer
       setPoster();
     }
     this.lastPoster = this.poster;
+  }
+  
+  private void updateVideoGestureSetting()
+  {
+    if (this.video_container != null)
+    {
+      this.video_container.setEnablePageGesture(this.pageGesture);
+      this.video_container.setEnableProgressGesture(this.enableProgressGesture);
+      this.video_container.setEnablePlayGesture(this.enablePlayGesture);
+    }
   }
   
   public void captureImage(TVK_IMediaPlayer.OnCaptureImageListener paramOnCaptureImageListener)
@@ -1019,18 +1030,19 @@ public class MiniAppVideoPlayer
         this.showPlayBtn = paramJSONObject.optBoolean("showPlayBtn", this.showPlayBtn);
         this.showFullScreenBtn = paramJSONObject.optBoolean("showFullScreenBtn", this.showFullScreenBtn);
         this.enableProgressGesture = paramJSONObject.optBoolean("enableProgressGesture", this.enableProgressGesture);
+        updateVideoGestureSetting();
         if (!this.isFullScreen)
         {
           localObject = paramJSONObject.optJSONObject("position");
           if (localObject == null) {
-            break label1012;
+            break label1016;
           }
           this.videoX = ((JSONObject)localObject).optInt("left", this.videoX);
           this.videoY = ((JSONObject)localObject).optInt("top", this.videoY);
           this.videoWidth = ((JSONObject)localObject).optInt("width", this.videoWidth);
           this.videoHeight = ((JSONObject)localObject).optInt("height", this.videoHeight);
         }
-        if (bgsp.a(this.poster)) {
+        if (bhsr.a(this.poster)) {
           this.poster = paramJSONObject.optString("poster", this.poster);
         }
         if (this.mVideoPlayer != null)
@@ -1046,17 +1058,17 @@ public class MiniAppVideoPlayer
         {
           paramJSONObject = this.barrageIv;
           if (!this.showDanmuBtn) {
-            break label1075;
+            break label1079;
           }
           i = 0;
           paramJSONObject.setVisibility(i);
         }
         if (!"center".equals(this.playBtnPosition)) {
-          break label1086;
+          break label1090;
         }
         paramJSONObject = this.centerControlIv;
         if (!this.showCenterPlayBtn) {
-          break label1080;
+          break label1084;
         }
         i = j;
         paramJSONObject.setVisibility(i);
@@ -1068,11 +1080,11 @@ public class MiniAppVideoPlayer
         if (!this.isFullScreen)
         {
           if (this.webviewContainer != null) {
-            break label1106;
+            break label1110;
           }
-          paramJSONObject = new RelativeLayout.LayoutParams(bgtn.b(this.videoWidth), bgtn.b(this.videoHeight));
-          paramJSONObject.leftMargin = bgtn.b(this.videoX);
-          paramJSONObject.topMargin = bgtn.b(this.videoY);
+          paramJSONObject = new RelativeLayout.LayoutParams(bhtq.b(this.videoWidth), bhtq.b(this.videoHeight));
+          paramJSONObject.leftMargin = bhtq.b(this.videoX);
+          paramJSONObject.topMargin = bhtq.b(this.videoY);
           ((CoverVideoView)getParent()).setLayoutParams(paramJSONObject);
         }
         return;
@@ -1092,27 +1104,27 @@ public class MiniAppVideoPlayer
           }
           this.objectFit = localJSONException;
           continue;
-          label1012:
+          label1016:
           this.videoX = paramJSONObject.optInt("x", this.videoX);
           this.videoY = paramJSONObject.optInt("y", this.videoY);
           this.videoWidth = paramJSONObject.optInt("width", this.videoWidth);
           this.videoHeight = paramJSONObject.optInt("height", this.videoHeight);
           continue;
-          label1075:
+          label1079:
           i = 4;
           continue;
-          label1080:
+          label1084:
           i = 8;
           continue;
-          label1086:
+          label1090:
           this.centerControlIv.setVisibility(8);
           this.controlIv.setVisibility(0);
         }
       }
-      label1106:
-      paramJSONObject = new FrameLayout.LayoutParams(bgtn.b(this.videoWidth), bgtn.b(this.videoHeight));
-      paramJSONObject.leftMargin = bgtn.b(this.videoX);
-      paramJSONObject.topMargin = bgtn.b(this.videoY);
+      label1110:
+      paramJSONObject = new FrameLayout.LayoutParams(bhtq.b(this.videoWidth), bhtq.b(this.videoHeight));
+      paramJSONObject.leftMargin = bhtq.b(this.videoX);
+      paramJSONObject.topMargin = bhtq.b(this.videoY);
       ((CoverVideoView)getParent()).setLayoutParams(paramJSONObject);
     }
   }
@@ -1153,7 +1165,7 @@ public class MiniAppVideoPlayer
       {
         EventCollector.getInstance().onViewClicked(paramView);
         return;
-        if (paramView.getId() != 2131372665) {
+        if (paramView.getId() != 2131372776) {
           break;
         }
         if (this.play_status_img.getVisibility() == 0) {
@@ -1284,7 +1296,7 @@ public class MiniAppVideoPlayer
     {
       return;
       Log.i("MiniAppVideoPlayer", "play: " + paramLong + " /" + this.mVideoPlayer.getDuration(), new Throwable());
-    } while (bgsp.a(this.mUrls));
+    } while (bhsr.a(this.mUrls));
     this.isBufferStart = true;
     updateBufferProgress(false);
     avoidLockScreen();

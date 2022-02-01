@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.magicface.model;
 
-import awfq;
-import awfv;
+import awyi;
+import awyn;
 import com.tencent.mobileqq.magicface.DecoderUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class MagicFaceSuperBigDecoder$1
   implements Runnable
 {
-  public MagicFaceSuperBigDecoder$1(awfq paramawfq) {}
+  public MagicFaceSuperBigDecoder$1(awyi paramawyi) {}
   
   public void run()
   {
@@ -44,10 +44,10 @@ public class MagicFaceSuperBigDecoder$1
         }
         this.this$0.i = this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.getWidthAlphaDecoder();
         this.this$0.j = this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.getHeightAlphaDecoder();
-        if (this.this$0.jdField_a_of_type_Awfv == null) {
+        if (this.this$0.jdField_a_of_type_Awyn == null) {
           continue;
         }
-        this.this$0.jdField_a_of_type_Awfv.a(this.this$0.jdField_c_of_type_ArrayOfByte, this.this$0.jdField_f_of_type_ArrayOfByte, this.this$0.jdField_e_of_type_Int, this.this$0.jdField_f_of_type_Int, 0.0F);
+        this.this$0.jdField_a_of_type_Awyn.a(this.this$0.jdField_c_of_type_ArrayOfByte, this.this$0.jdField_f_of_type_ArrayOfByte, this.this$0.jdField_e_of_type_Int, this.this$0.jdField_f_of_type_Int, 0.0F);
         l3 = System.currentTimeMillis() - l2;
         if (!QLog.isColorLevel()) {
           continue;

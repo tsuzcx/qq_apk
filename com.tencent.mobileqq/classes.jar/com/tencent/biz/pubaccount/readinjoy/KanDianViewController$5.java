@@ -2,16 +2,16 @@ package com.tencent.biz.pubaccount.readinjoy;
 
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 import java.util.Map;
-import ofx;
+import ohf;
 
 public class KanDianViewController$5
   implements Runnable
 {
-  public KanDianViewController$5(ofx paramofx, Map paramMap1, boolean paramBoolean, Map paramMap2, String paramString) {}
+  public KanDianViewController$5(ohf paramohf, Map paramMap1, boolean paramBoolean, Map paramMap2, String paramString) {}
   
   public void run()
   {
-    ((ReadInJoyListViewGroup)ofx.a(this.this$0)).a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
+    ((ReadInJoyListViewGroup)ohf.a(this.this$0)).a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

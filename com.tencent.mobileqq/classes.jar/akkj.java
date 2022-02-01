@@ -1,21 +1,17 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akkj
-  implements agkf
+  implements View.OnClickListener
 {
-  akkj(akki paramakki) {}
+  akkj(akkg paramakkg) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, new Intent());
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
-  }
-  
-  public void b()
-  {
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, new Intent());
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
+    this.a.a = null;
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

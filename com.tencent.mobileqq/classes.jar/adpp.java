@@ -1,99 +1,55 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.vas.avatar.AvatarLayout;
-import friendlist.GetOnlineInfoResp;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0xb6f.Identity;
+import tencent.im.oidb.oidb_0xb6f.ReportFreqRspBody;
+import tencent.im.oidb.oidb_0xb6f.RspBody;
 
-public class adpp
-  extends anmu
+class adpp
+  extends nkq
 {
-  public adpp(BaseChatPie paramBaseChatPie) {}
+  adpp(adpo paramadpo, String paramString1, String paramString2, int paramInt) {}
   
-  protected void onAddFriend(String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    BaseChatPie.c(this.a, paramString);
-  }
-  
-  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    BaseChatPie.b(this.a, paramBoolean, paramString1, paramString2);
-  }
-  
-  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
-  {
-    BaseChatPie.c(this.a, paramBoolean, paramObject);
-  }
-  
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
-  {
-    if (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
-      this.a.D();
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.report", 2, "onResult key=" + this.jdField_a_of_type_JavaLangString + ", api=" + this.b + ", count=" + this.jdField_a_of_type_Int + ", code=" + paramInt);
     }
-  }
-  
-  protected void onGetSigZanInfo(boolean paramBoolean, Object paramObject)
-  {
-    BaseChatPie.a(this.a, paramObject);
-  }
-  
-  protected void onGetStoreFace(boolean paramBoolean, HashSet<String> paramHashSet)
-  {
-    AvatarLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, paramHashSet);
-  }
-  
-  protected void onGetStrangerInfo(boolean paramBoolean, Object paramObject)
-  {
-    BaseChatPie.b(this.a, paramBoolean, paramObject);
-  }
-  
-  protected void onQueryUinSafetyFlag(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
-  {
-    BaseChatPie.a(this.a, paramBoolean, paramLong, paramInt1, paramInt2);
-  }
-  
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
-  {
-    BaseChatPie.a(this.a, paramBoolean, paramString1, paramString2);
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    BaseChatPie.b(this.a, paramBoolean);
-  }
-  
-  protected void onUpdateC2ChatStatus(boolean paramBoolean, HashMap<String, String> paramHashMap)
-  {
-    BaseChatPie.a(this.a, paramHashMap);
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if (paramString == null) {
-      return;
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.report", 2, "req error");
+      }
     }
-    AvatarLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, Arrays.asList(new String[] { paramString }));
+    do
+    {
+      for (;;)
+      {
+        return;
+        paramBundle = new oidb_0xb6f.RspBody();
+        try
+        {
+          paramBundle.mergeFrom(paramArrayOfByte);
+          if (paramBundle.report_freq_rsp.has()) {
+            break label146;
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.i("DoraemonOpenAPI.report", 2, "rsp invalid");
+            return;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("DoraemonOpenAPI.report", 2, "parse rsp error", paramArrayOfByte);
+    return;
+    label146:
+    adpo.a(this.jdField_a_of_type_Adpo, this.jdField_a_of_type_JavaLangString, paramBundle.report_freq_rsp.identity.apptype.get(), String.valueOf(paramBundle.report_freq_rsp.identity.appid.get()), paramBundle.report_freq_rsp.identity.apiName.get(), paramBundle.report_freq_rsp.remain_times.get(), paramBundle.report_freq_rsp.expire_time.get() * 1000L);
   }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    BaseChatPie.a(this.a, paramBoolean, paramObject);
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    BaseChatPie.a(this.a, paramString, paramBoolean);
-  }
-  
-  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    this.a.D();
-  }
-  
-  protected void onUpdateRecentList() {}
 }
 
 

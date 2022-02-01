@@ -1,21 +1,23 @@
+import android.content.Context;
+import android.view.View;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+
 class bdsc
-  implements bdsd
+  implements AdExposureChecker.ExposureCallback
 {
-  bdsc(bdsb parambdsb, bdse parambdse) {}
+  bdsc(bdsb parambdsb, akxs paramakxs, Context paramContext, GdtAd paramGdtAd) {}
   
-  public void a()
+  public void onExposure(WeakReference<View> paramWeakReference)
   {
-    this.jdField_a_of_type_Bdse.a.d();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bdse.a.c();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Bdse.a.f();
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletGdtAdManager_StructMsgItemLayout31", 2, "reportImpression...");
+    }
+    this.jdField_a_of_type_Akxs.a(this.jdField_a_of_type_AndroidContentContext, 1);
+    this.jdField_a_of_type_Akxs.a(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForImpression());
+    akxs.a("public.tailplace.show", "", "", "1", "");
   }
 }
 

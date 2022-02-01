@@ -1,71 +1,86 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import java.util.Map;
 
-public class apci
+final class apci
+  extends apcq
 {
-  protected static bdvv a;
-  private bdvu jdField_a_of_type_Bdvu;
-  public AppInterface a;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ArrayList<apcm> jdField_a_of_type_JavaUtilArrayList;
-  
-  static
+  apci(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, apck paramapck)
   {
-    jdField_a_of_type_Bdvv = new apck();
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public apci(AppInterface paramAppInterface)
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Bdvu = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public void a()
-  {
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-    int i = 0;
-    try
+    boolean bool = false;
+    for (;;)
     {
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      synchronized (apch.a())
       {
-        QLog.i("AREngine_ARResourceDownload", 1, "cancelDownloadTask. url = " + ((apcm)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Bdvu.b(((apcm)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Bdvs);
-        i += 1;
+        if (apch.b().containsKey(this))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("SOSO.LBS.LbsManagerService", 0, "onConsecutiveFailure reverseListenerMap contains. business id: " + this.tag + " fail count: " + paramInt2);
+          }
+          if (paramInt2 > 5)
+          {
+            localapck = (apck)apch.b().remove(this);
+            apch.a().remove(localapck);
+            if (paramInt2 > 5) {
+              SosoInterface.b(this);
+            }
+            return;
+          }
+          apck localapck = (apck)apch.b().get(this);
+          if (paramInt2 == 5) {
+            bool = true;
+          }
+          localapck.onConsecutiveFailure(paramInt1, paramInt2, bool);
+        }
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      if (QLog.isColorLevel()) {
+        QLog.i("SOSO.LBS.LbsManagerService", 0, "onConsecutiveFailure reverseListenerMap not contains. business id: " + this.tag + " fail count: " + paramInt2);
+      }
+    }
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    for (;;)
+    {
+      synchronized ()
+      {
+        if (apch.b().containsKey(this))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("SOSO.LBS.LbsManagerService", 0, "onLocationFinish reverseListenerMap contains. business id: " + this.tag);
+          }
+          if (this.goonListener)
+          {
+            localapck = (apck)apch.b().get(this);
+            localapck.onLocationFinish(paramInt, apch.a(paramSosoLbsInfo, this.a.businessId));
+            return;
+          }
+          apck localapck = (apck)apch.b().remove(this);
+          apch.a().remove(localapck);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("SOSO.LBS.LbsManagerService", 0, "onLocationFinish reverseListenerMap not contains. business id: " + this.tag + " this is: " + this);
+      }
+    }
+  }
+  
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2)
+  {
+    synchronized ()
+    {
+      if (apch.b().containsKey(this)) {
+        ((apck)apch.b().get(this)).onStatusUpdate(paramString1, paramInt, paramString2);
+      }
       return;
     }
-    finally {}
-  }
-  
-  public boolean a(apcm paramapcm, apcl arg2)
-  {
-    if ((paramapcm == null) || (??? == null)) {
-      return false;
-    }
-    ??? = new apcj(this, paramapcm, ???);
-    bdvs localbdvs = new bdvs();
-    localbdvs.jdField_a_of_type_Bdvw = ???;
-    localbdvs.jdField_a_of_type_JavaLangString = paramapcm.jdField_a_of_type_JavaLangString;
-    localbdvs.jdField_a_of_type_Int = 0;
-    localbdvs.c = paramapcm.c;
-    localbdvs.d = 1;
-    localbdvs.jdField_a_of_type_Bdvv = jdField_a_of_type_Bdvv;
-    this.jdField_a_of_type_Bdvu.a(localbdvs);
-    paramapcm.jdField_a_of_type_Bdvs = localbdvs;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramapcm);
-      QLog.i("AREngine_ARResourceDownload", 1, "submitDownloadTask. url = " + paramapcm.jdField_a_of_type_JavaLangString);
-      return true;
-    }
-  }
-  
-  public void b()
-  {
-    a();
   }
 }
 

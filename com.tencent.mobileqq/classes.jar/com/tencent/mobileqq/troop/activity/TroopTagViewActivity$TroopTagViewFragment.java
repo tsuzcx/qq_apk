@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bhmv;
+import binq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -31,7 +31,7 @@ public class TroopTagViewActivity$TroopTagViewFragment
     int i = super.doCreateLoopStep_Final(paramBundle);
     if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_Boolean))
     {
-      this.mSwiftTitleUI.c.setText(2131691679);
+      this.mSwiftTitleUI.c.setText(2131691682);
       this.mSwiftTitleUI.c.setVisibility(0);
       this.mSwiftTitleUI.a.setVisibility(8);
       this.mSwiftTitleUI.c.setOnClickListener(this);

@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.util;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import tya;
+import tyc;
 
 public class ProfileParams$CurLoginUsr
   implements Parcelable
 {
-  public static final Parcelable.Creator<CurLoginUsr> CREATOR = new tya();
+  public static final Parcelable.Creator<CurLoginUsr> CREATOR = new tyc();
   public final String a;
   public final String b;
   

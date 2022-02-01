@@ -1,12 +1,13 @@
 package com.tencent.biz.qqcircle.widgets;
 
+import aabn;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -15,15 +16,14 @@ import feedcloud.FeedCloudMeta.StUser;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import vys;
-import zxs;
+import wce;
 
 public class QCircleTagPageHeaderView
-  extends QCircleBaseWidgetView<zxs>
+  extends QCircleBaseWidgetView<aabn>
 {
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AvatarListView jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView;
+  private QCircleAvatarListView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarListView;
   private QCircleFollowTagView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView;
   private FeedCloudMeta.StTagInfo jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo;
   private TextView b;
@@ -36,7 +36,7 @@ public class QCircleTagPageHeaderView
   
   public int a()
   {
-    return 2131560785;
+    return 2131560811;
   }
   
   protected String a()
@@ -44,31 +44,31 @@ public class QCircleTagPageHeaderView
     return "QCircleTagPageHeaderView";
   }
   
-  public void a(Context paramContext, View paramView)
+  protected void a(aabn paramaabn)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView = ((AvatarListView)paramView.findViewById(2131363114));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379957));
-    this.b = ((TextView)paramView.findViewById(2131379808));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369056));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView = ((QCircleFollowTagView)paramView.findViewById(2131373941));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.setItemReportListener(new vys(this));
-  }
-  
-  protected void a(zxs paramzxs)
-  {
-    if ((paramzxs != null) && ((paramzxs.a instanceof FeedCloudMeta.StTagInfo)))
+    if ((paramaabn != null) && ((paramaabn.a instanceof FeedCloudMeta.StTagInfo)))
     {
-      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo = ((FeedCloudMeta.StTagInfo)paramzxs.a);
+      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo = ((FeedCloudMeta.StTagInfo)paramaabn.a);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get());
-      this.b.setText(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagTotalUser.get() + anni.a(2131697267));
-      paramzxs = new ArrayList();
+      this.b.setText(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagTotalUser.get() + anzj.a(2131697345));
+      paramaabn = new ArrayList();
       Iterator localIterator = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.userList.get().iterator();
       while (localIterator.hasNext()) {
-        paramzxs.add(((FeedCloudMeta.StUser)localIterator.next()).id.get());
+        paramaabn.add(((FeedCloudMeta.StUser)localIterator.next()).id.get());
       }
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView.setData(paramzxs);
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarListView.setData(paramaabn);
       this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.setTagInfo(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo);
     }
+  }
+  
+  public void a(Context paramContext, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarListView = ((QCircleAvatarListView)paramView.findViewById(2131363135));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380141));
+    this.b = ((TextView)paramView.findViewById(2131379988));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369145));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView = ((QCircleFollowTagView)paramView.findViewById(2131374079));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.setItemReportListener(new wce(this));
   }
 }
 

@@ -1,6 +1,28 @@
-public abstract interface xyu
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class xyu
+  extends QQUIEventReceiver<xyd, xas>
 {
-  public abstract boolean a(String paramString);
+  public xyu(@NonNull xyd paramxyd)
+  {
+    super(paramxyd);
+  }
+  
+  public void a(@NonNull xyd paramxyd, @NonNull xas paramxas)
+  {
+    if (paramxas.a.isSuccess())
+    {
+      yuk.a(paramxyd.b, "receive user info event. %s.", paramxas.toString());
+      paramxyd.i();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xas.class;
+  }
 }
 
 

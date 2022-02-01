@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class bbho
-  implements bkhy
+public abstract interface bbho
 {
-  bbho(bbhm parambbhm, QQAppInterface paramQQAppInterface) {}
-  
-  public void onDismiss()
-  {
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92E", "0X800A92E", bbhl.b(this.jdField_a_of_type_Bbhm.a), 0, "", "", "", "");
-  }
+  public abstract void a();
 }
 
 

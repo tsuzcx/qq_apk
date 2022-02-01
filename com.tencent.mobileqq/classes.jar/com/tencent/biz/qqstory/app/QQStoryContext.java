@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.app;
 
 import android.annotation.TargetApi;
 import android.text.TextUtils;
-import bguy;
+import bhvb;
 import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -14,15 +14,15 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 import mqq.app.AppRuntime;
-import wfg;
-import woc;
-import wpf;
-import wpm;
-import yqp;
+import wjb;
+import wrx;
+import wta;
+import wth;
+import yuk;
 
 @TargetApi(14)
 public class QQStoryContext
-  implements bguy
+  implements bhvb
 {
   protected static BaseApplicationImpl a;
   public static String a;
@@ -48,7 +48,7 @@ public class QQStoryContext
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
-      return ((wfg)BaseApplicationImpl.getApplication().getRuntime().getManager(181)).a;
+      return ((wjb)BaseApplicationImpl.getApplication().getRuntime().getManager(181)).a;
     }
     if ((localAppRuntime instanceof ToolAppRuntime))
     {
@@ -104,8 +104,8 @@ public class QQStoryContext
     {
       if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory == null)
       {
-        localObject1 = new woc((String)localObject1);
-        ((woc)localObject1).verifyAuthentication();
+        localObject1 = new wrx((String)localObject1);
+        ((wrx)localObject1).verifyAuthentication();
         this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = ((EntityManagerFactory)localObject1);
       }
       return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
@@ -135,18 +135,18 @@ public class QQStoryContext
     //   21: getstatic 63	com/tencent/biz/qqstory/app/QQStoryContext:jdField_a_of_type_Boolean	Z
     //   24: ifeq +25 -> 49
     //   27: getstatic 133	com/tencent/biz/qqstory/app/QQStoryContext:jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   30: new 156	wfk
+    //   30: new 156	wjf
     //   33: dup
     //   34: getstatic 133	com/tencent/biz/qqstory/app/QQStoryContext:jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   37: invokespecial 159	wfk:<init>	(Landroid/content/Context;)V
+    //   37: invokespecial 159	wjf:<init>	(Landroid/content/Context;)V
     //   40: invokestatic 165	com/tribe/async/async/Bosses:initWithBoss	(Landroid/content/Context;Lcom/tribe/async/async/Boss;)V
-    //   43: invokestatic 170	yqo:a	()Lyqo;
-    //   46: invokestatic 175	yqp:a	(Lyqn;)V
+    //   43: invokestatic 170	yuj:a	()Lyuj;
+    //   46: invokestatic 175	yuk:a	(Lyui;)V
     //   49: ldc 2
     //   51: monitorexit
     //   52: ldc 177
     //   54: ldc 179
-    //   56: invokestatic 182	yqp:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   56: invokestatic 182	yuk:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   59: aload_0
     //   60: new 184	com/tencent/biz/qqstory/channel/QQStoryCmdHandler
     //   63: dup
@@ -176,11 +176,11 @@ public class QQStoryContext
   
   public void a(String paramString)
   {
-    yqp.d("Q.qqstory.user.QQStoryRuntime", "update current unionId %s", new Object[] { paramString });
+    yuk.d("Q.qqstory.user.QQStoryRuntime", "update current unionId %s", new Object[] { paramString });
     if ((!this.d.equals(paramString)) && (!"0_1000".equals(paramString)) && (!TextUtils.isEmpty(paramString)))
     {
       this.d = paramString;
-      ((wpf)wpm.a(10)).b("qqstory_my_union_id", this.d);
+      ((wta)wth.a(10)).b("qqstory_my_union_id", this.d);
     }
   }
   
@@ -193,8 +193,8 @@ public class QQStoryContext
   {
     if (this.d.equals("0_1000"))
     {
-      this.d = ((String)((wpf)wpm.a(10)).b("qqstory_my_union_id", "0_1000"));
-      yqp.d("Q.qqstory.user.QQStoryRuntime", "get current unionId from sp %s", new Object[] { this.d });
+      this.d = ((String)((wta)wth.a(10)).b("qqstory_my_union_id", "0_1000"));
+      yuk.d("Q.qqstory.user.QQStoryRuntime", "get current unionId from sp %s", new Object[] { this.d });
     }
     return this.d;
   }

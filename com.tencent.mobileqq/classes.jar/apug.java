@@ -1,56 +1,115 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.Context;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.view.OCRScanEntryView;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.ar.view.ScanEntryProviderView;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x74b.oidb_0x74b.OneUinHeadInfo;
 
 public class apug
 {
-  public int a;
-  public long a;
-  public ArrayList<apuh> a;
-  public long b;
+  private int jdField_a_of_type_Int;
+  private ArrayList<apuh> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public boolean a;
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131374748, 2131372011, 2131362869 };
+  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { anzj.a(2131712389), anzj.a(2131717571), "AR" };
+  public boolean b;
+  private final int[] b;
+  public boolean c;
+  private final int[] c;
+  private final int[] d = { 2130844877, 2130844878, 2130844879, 2130844880, 2130844881, 2130844882, 2130844883, 2130844884 };
   
-  public static apug a(oidb_0x74b.OneUinHeadInfo paramOneUinHeadInfo)
+  public apug(int paramInt)
   {
-    Object localObject;
-    if (paramOneUinHeadInfo == null) {
-      localObject = null;
-    }
-    apug localapug;
-    do
-    {
-      return localObject;
-      localapug = new apug();
-      if (paramOneUinHeadInfo.uint64_uin.has()) {
-        localapug.jdField_a_of_type_Long = paramOneUinHeadInfo.uint64_uin.get();
-      }
-      if (paramOneUinHeadInfo.uint64_tinyid.has()) {
-        localapug.b = paramOneUinHeadInfo.uint64_tinyid.get();
-      }
-      localapug.jdField_a_of_type_Int = ((int)(System.currentTimeMillis() / 1000L));
-      localObject = localapug;
-    } while (!paramOneUinHeadInfo.rpt_msg_head_list.has());
-    localapug.jdField_a_of_type_JavaUtilArrayList = apuh.a(paramOneUinHeadInfo.rpt_msg_head_list.get());
-    return localapug;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_b_of_type_ArrayOfInt = new int[] { 2130844885, 2130844886, 2130844887, 2130844888, 2130844889, 2130844890, 2130844891, 2130844892 };
+    this.jdField_c_of_type_ArrayOfInt = new int[] { 2130844860, 2130844861, 2130844862, 2130844863, 2130844864, 2130844865, 2130844866, 2130844867 };
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static ArrayList<apug> a(List<oidb_0x74b.OneUinHeadInfo> paramList)
+  public int a()
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
+    return this.jdField_b_of_type_ArrayOfInt.length;
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = 1;
+    if (paramInt == 1) {
+      i = 0;
     }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    while (paramInt == 2) {
+      return i;
+    }
+    return 2;
+  }
+  
+  public apuh a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < b())) {
+      return (apuh)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public ScanEntryProviderView a(int paramInt, Context paramContext, apub paramapub)
+  {
+    switch (paramInt)
     {
-      apug localapug = a((oidb_0x74b.OneUinHeadInfo)paramList.next());
-      if (localapug != null) {
-        localArrayList.add(localapug);
+    default: 
+      return null;
+    case 1: 
+      return new QRScanEntryView(paramContext, paramapub);
+    case 3: 
+      return new ARScanEntryView(paramContext, paramapub);
+    }
+    return new OCRScanEntryView(paramContext, paramapub);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(new apuh(1, anzj.a(2131712390)));
+      }
+      if (this.jdField_c_of_type_Boolean) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(new apuh(2, "OCR"));
+      }
+      if (this.jdField_b_of_type_Boolean) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(new apuh(3, "AR"));
       }
     }
-    return localArrayList;
+  }
+  
+  public int[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public int[] a(int paramInt)
+  {
+    if (paramInt == 0) {
+      return this.jdField_b_of_type_ArrayOfInt;
+    }
+    if (paramInt == 1) {
+      return this.d;
+    }
+    if (paramInt == 2) {
+      return this.jdField_c_of_type_ArrayOfInt;
+    }
+    return null;
+  }
+  
+  public String[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
 }
 

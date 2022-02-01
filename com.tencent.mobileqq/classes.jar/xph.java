@@ -1,11 +1,29 @@
-public class xph
-  implements xpc
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
+
+final class xph
+  extends AnimatorListenerAdapter
 {
-  public void a(int paramInt) {}
+  xph(Animator.AnimatorListener paramAnimatorListener) {}
   
-  public void a(int paramInt1, float paramFloat, int paramInt2) {}
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    super.onAnimationCancel(paramAnimator);
+    this.a.onAnimationCancel(paramAnimator);
+  }
   
-  public void b(int paramInt) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    yuk.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation, onAnimationEnd");
+    this.a.onAnimationEnd(paramAnimator);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    this.a.onAnimationStart(paramAnimator);
+  }
 }
 
 

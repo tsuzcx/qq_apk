@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import atro;
-import atsu;
+import aujj;
+import aukp;
 import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 
 public class VideoFilePresenter$6
   implements Runnable
 {
-  public VideoFilePresenter$6(atro paramatro) {}
+  public VideoFilePresenter$6(aujj paramaujj) {}
   
   public void run()
   {
-    if (atro.a(this.this$0) != null) {
-      this.this$0.a.d(atro.a(this.this$0).isPlaying());
+    if (aujj.a(this.this$0) != null) {
+      this.this$0.a.d(aujj.a(this.this$0).isPlaying());
     }
     for (;;)
     {
-      atro.d(this.this$0);
+      aujj.d(this.this$0);
       return;
       this.this$0.a.d(false);
     }

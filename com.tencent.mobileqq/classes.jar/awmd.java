@@ -1,112 +1,37 @@
-import android.app.Activity;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForGrayTips;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class awmd
+  implements Handler.Callback
 {
-  public static awme a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return null;
-      paramString = Uri.parse(paramString);
-      if (paramString.isHierarchical())
-      {
-        paramString = paramString.getQueryParameter("_appinfo");
-        if (!TextUtils.isEmpty(paramString)) {
-          try
-          {
-            paramString = Base64.decode(paramString, 10);
-            if (paramString == null)
-            {
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.i("miniAppJump", 2, "appinfo decode error 2");
-              return null;
-            }
-          }
-          catch (Exception paramString)
-          {
-            QLog.e("miniAppJump", 1, "parse miniapp jump url error", paramString);
-            return null;
-          }
-        }
-      }
-    }
-    paramString = new JSONObject(new String(paramString, "UTF-8"));
-    awme localawme = new awme();
-    localawme.jdField_a_of_type_Int = paramString.getInt("type");
-    localawme.jdField_a_of_type_JavaLangString = paramString.getString("appid");
-    localawme.jdField_b_of_type_JavaLangString = paramString.optString("pageName");
-    localawme.jdField_b_of_type_Int = paramString.optInt("from");
-    localawme.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("param");
-    return localawme;
-  }
+  public awmd(ListenTogetherManager paramListenTogetherManager) {}
   
-  public static boolean a(Activity paramActivity, awme paramawme, Bundle paramBundle)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramawme == null) {}
-    while ((paramawme.jdField_a_of_type_Int == 4) || (paramawme.jdField_a_of_type_Int != 3)) {
-      return false;
-    }
-    awlu.a(paramActivity, paramawme.jdField_a_of_type_JavaLangString, paramawme.jdField_a_of_type_Int, null);
-    return true;
-  }
-  
-  public static boolean a(Activity paramActivity, String paramString, Bundle paramBundle)
-  {
-    return a(paramActivity, a(paramString), paramBundle);
-  }
-  
-  public static boolean a(BaseActivity paramBaseActivity, String paramString, MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
-      return false;
-    }
-    Bundle localBundle = new Bundle();
-    QQAppInterface localQQAppInterface = paramBaseActivity.app;
-    localBundle.putString("uin", localQQAppInterface.getCurrentAccountUin());
-    boolean bool;
-    if (paramMessageRecord.istroop == 1)
+    switch (paramMessage.what)
     {
-      localBundle.putString("gc", paramMessageRecord.frienduin);
-      if ((bfup.a(localQQAppInterface, paramMessageRecord.frienduin, localQQAppInterface.c())) || (bfup.b(localQQAppInterface, paramMessageRecord.frienduin, localQQAppInterface.c())))
-      {
-        bool = true;
-        localBundle.putBoolean("isAdmin", bool);
-      }
+    default: 
+      return true;
     }
-    else
+    paramMessage = this.a.a();
+    if (paramMessage != null)
     {
-      paramString = a(paramString);
-      bool = a(paramBaseActivity, paramString, localBundle);
-      if ((paramString != null) && (bool) && ((paramMessageRecord instanceof MessageForGrayTips)) && (paramString.jdField_a_of_type_Int == 4) && (paramString.jdField_a_of_type_JavaLangString.equals("101474665")))
-      {
-        if (paramString.jdField_b_of_type_Int != 1) {
-          break label186;
-        }
-        bcst.b(localQQAppInterface, "dc00899", "Grp_idol", "", "idol_follow", "follow_suc_clk", 0, 0, paramMessageRecord.frienduin, "", "", "");
-      }
+      paramMessage.a = (SystemClock.elapsedRealtime() - paramMessage.c + paramMessage.a);
+      paramMessage.c = SystemClock.elapsedRealtime();
+      boolean bool = ListenTogetherManager.a(this.a).a(paramMessage);
+      QLog.i("ListenTogether.Seek", 1, "MSG_TYPE_TIME_SYNC seek is: " + paramMessage.a + " currentTime: " + System.currentTimeMillis() + " result: " + bool);
     }
     for (;;)
     {
-      return bool;
-      bool = false;
-      break;
-      label186:
-      if (paramString.jdField_b_of_type_Int == 2) {
-        bgjt.a("Grp_idol", "Grp_AIO", "clk_renwu", 0, 0, new String[] { paramMessageRecord.frienduin });
-      }
+      ListenTogetherManager.a(this.a).removeMessages(1001);
+      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, awlq.a().a);
+      return true;
+      QLog.i("ListenTogether.Manager", 1, "MSG_TYPE_TIME_SYNC startPlay musicInfo is null.");
     }
   }
 }

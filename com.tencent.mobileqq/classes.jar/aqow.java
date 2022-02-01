@@ -1,93 +1,46 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class aqow
-  extends aqkz<aqov>
 {
-  @NonNull
-  public aqov a(int paramInt)
-  {
-    return new aqov();
-  }
+  @awfx(a="isShowAssistantEntrance")
+  public int a;
+  @awfx(a="kuolieAIOEnable")
+  public int b;
   
-  @Nullable
-  public aqov a(aqlg[] paramArrayOfaqlg)
+  public static aqow a(String paramString)
   {
+    aqow localaqow = (aqow)awfy.a(paramString, aqow.class);
     if (QLog.isColorLevel()) {
-      QLog.d("GameCenterConfProcessor", 2, "[onParsed]");
+      if ("parse: " + localaqow == null) {
+        break label52;
+      }
     }
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    label52:
+    for (paramString = localaqow.toString();; paramString = " C2CShortcutBarConfBean is null")
     {
-      aqov localaqov = new aqov();
-      localaqov.a = paramArrayOfaqlg[0].a;
-      return localaqov;
-    }
-    return null;
-  }
-  
-  public void a(aqov paramaqov)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterConfProcessor", 2, "[onUpdate]");
-    }
-    amhd localamhd = (amhd)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(153);
-    if (paramaqov != null) {}
-    for (paramaqov = paramaqov.a;; paramaqov = null)
-    {
-      localamhd.d(paramaqov);
-      return;
+      QLog.d("C2CShortcutBarConfBean", 2, paramString);
+      return localaqow;
     }
   }
   
-  public Class<aqov> clazz()
+  public boolean a()
   {
-    return aqov.class;
+    return this.a == 1;
   }
   
-  public boolean isNeedCompressed()
+  public boolean b()
   {
-    return true;
+    return this.b == 1;
   }
   
-  public boolean isNeedStoreLargeFile()
+  public String toString()
   {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void onReqNoReceive()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterConfProcessor", 2, "[onReqNoReceive]");
-    }
-    aqov localaqov = (aqov)aqlk.a().a(417);
-    if (localaqov != null) {
-      ((amhd)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(153)).d(localaqov.a);
-    }
-  }
-  
-  public int type()
-  {
-    return 417;
+    return "C2CShortcutBarConfBean{isShowAssistantEntrance = " + this.a + "kuolieAIOEnable = " + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqow
  * JD-Core Version:    0.7.0.1
  */

@@ -1,74 +1,48 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.Window;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogView;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.util.VersionUtils;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class scw
-  extends skd
+public class scw
+  extends Handler
 {
-  scw(sce paramsce) {}
+  public scw(BaseTabbar paramBaseTabbar) {}
   
-  public int a()
+  public void handleMessage(Message paramMessage)
   {
-    return 7;
-  }
-  
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    sce.b(this.a, true);
-    paramVideoInfo = new JSONObject();
-    try
+    switch (paramMessage.what)
     {
-      paramVideoInfo.put("channel_id", 409409);
-      paramVideoInfo.put("source", 2);
-      paramString = sce.a(this.a);
-      if ((paramString.b != null) && (paramString.b.size() > 0))
+    default: 
+    case 0: 
+      int i;
+      do
       {
-        sce.a(this.a, (bkho)bkif.a(sce.a(this.a), null));
-        paramActionSheetItem = new scx(this);
-        sce.a(this.a).a(paramActionSheetItem);
-        paramActionSheetItem = new ReadInJoyDisLikeDialogView(sce.a(this.a));
-        paramActionSheetItem.setOnUninterestConfirmListener(new scy(this, paramString, paramVideoInfo));
-        paramActionSheetItem.setUninterestData(paramString.b);
-        sce.a(this.a).a(paramActionSheetItem, null);
-      }
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
+        return;
+        BaseTabbar.a(this.a, 0.0F);
+        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
+        this.a.invalidate();
+        i = paramMessage.arg1;
+        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
+      } while (i == 1);
+      BaseTabbar.a(this.a, BaseTabbar.a(this.a), BaseTabbar.b(this.a));
+      return;
+    case 1: 
+      if (BaseTabbar.a(this.a) < 1.0F)
       {
-        try
-        {
-          if (!sce.a(this.a).isShowing())
-          {
-            if ((VersionUtils.isJellyBean()) && (!ShortVideoUtils.c()))
-            {
-              sce.a(this.a).getWindow().setFlags(8, 8);
-              sce.a(this.a).getWindow().getDecorView().setSystemUiVisibility(sce.a(this.a).getWindow().getDecorView().getSystemUiVisibility());
-              sce.a(this.a).setOnShowListener(new scz(this));
-            }
-            sce.a(this.a).show();
-            oat.b(null, null, "0X800913B", "0X800913B", 0, 0, null, null, null, new skc(och.a(null, null, null, null, paramVideoInfo)).h(paramString.g).a().a(), false);
-          }
-          return;
-        }
-        catch (Exception paramVideoInfo)
-        {
-          sce.a(this.a, "dislikeSheet.show exception=" + paramVideoInfo);
-          return;
-        }
-        paramString = paramString;
-        paramString.printStackTrace();
+        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
+        this.a.invalidate();
+        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
+        return;
       }
+      sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(2), 10L);
+      return;
     }
-    sce.a(this.a, "文章ID为：" + paramString.g + anni.a(2131714913));
+    BaseTabbar.a(this.a);
+    this.a.a(BaseTabbar.a(this.a), BaseTabbar.b(this.a));
+    BaseTabbar.a(this.a, 1.0F);
+    BaseTabbar.a(this.a, BaseTabbar.b(this.a));
+    this.a.invalidate();
+    BaseTabbar.a(this.a).set(false);
   }
 }
 

@@ -1,122 +1,128 @@
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.av.doodle.DoodleSurfaceView;
+import com.tencent.av.AVFunChat.AVFunChatMessage;
 
-public class lld
+public abstract interface lld
 {
-  public static boolean a;
+  public abstract void H();
   
-  public static int a(int paramInt1, int paramInt2, float paramFloat)
-  {
-    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
-  }
+  public abstract long a(long paramLong);
   
-  public static int a(int[] paramArrayOfInt, float paramFloat)
-  {
-    if (paramFloat <= 0.0F) {
-      return paramArrayOfInt[0];
-    }
-    if (paramFloat >= 1.0F) {
-      return paramArrayOfInt[(paramArrayOfInt.length - 1)];
-    }
-    paramFloat = (paramArrayOfInt.length - 1) * paramFloat;
-    int j = (int)paramFloat;
-    paramFloat -= j;
-    int i = paramArrayOfInt[j];
-    j = paramArrayOfInt[(j + 1)];
-    return Color.argb(a(Color.alpha(i), Color.alpha(j), paramFloat), a(Color.red(i), Color.red(j), paramFloat), a(Color.green(i), Color.green(j), paramFloat), a(Color.blue(i), Color.blue(j), paramFloat));
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public static DoodleSurfaceView a(ViewGroup paramViewGroup)
-  {
-    Object localObject2 = (DoodleSurfaceView)paramViewGroup.findViewById(2131373238);
-    Object localObject1 = localObject2;
-    View localView;
-    if (localObject2 == null)
-    {
-      localObject1 = new DoodleSurfaceView(paramViewGroup.getContext());
-      localObject2 = new ViewGroup.LayoutParams(-1, -1);
-      localView = paramViewGroup.findViewById(2131373534);
-      if (localView == null) {
-        break label67;
-      }
-    }
-    label67:
-    for (int i = paramViewGroup.indexOfChild(localView);; i = -1)
-    {
-      paramViewGroup.addView((View)localObject1, i, (ViewGroup.LayoutParams)localObject2);
-      return localObject1;
-    }
-  }
+  public abstract void a(int paramInt, long paramLong);
   
-  public static lky a(int paramInt)
-  {
-    Object localObject;
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      localObject = new lle();
-    }
-    for (;;)
-    {
-      ((lky)localObject).a = paramInt;
-      return localObject;
-      localObject = new lle();
-      continue;
-      localObject = new llj(2130968656);
-    }
-  }
+  public abstract void a(int paramInt, String paramString);
   
-  public static void a(ViewGroup paramViewGroup)
-  {
-    View localView = paramViewGroup.findViewById(2131373238);
-    if (localView != null) {
-      paramViewGroup.removeView(localView);
-    }
-  }
+  public abstract void a(int paramInt1, String paramString1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean, String paramString3, int paramInt2, int paramInt3);
   
-  public static void a(String paramString)
-  {
-    bcst.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
+  public abstract void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, long paramLong);
   
-  public static boolean a()
-  {
-    if (a) {
-      return true;
-    }
-    if (!b()) {
-      return false;
-    }
-    a = true;
-    return a;
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2, long paramLong);
   
-  public static boolean b()
-  {
-    int i = lkw.e();
-    if (i < 4)
-    {
-      lbc.c("DoodleUtils", "isSupportOfDevice error cpucount = " + i);
-      return false;
-    }
-    long l = lkw.d();
-    if (l < 1400000L)
-    {
-      lbc.c("DoodleUtils", "isSupportOfDevice error cpuFrequency = " + l);
-      return false;
-    }
-    l = bgln.d();
-    if (l < 1073741824L)
-    {
-      lbc.c("DoodleUtils", "isSupportOfDevice error memory = " + l);
-      return false;
-    }
-    return true;
-  }
+  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong);
+  
+  public abstract void a(String paramString, int paramInt, long paramLong);
+  
+  public abstract void a(String paramString, int paramInt, long paramLong, byte[] paramArrayOfByte);
+  
+  public abstract void a(String paramString, int paramInt, byte[] paramArrayOfByte);
+  
+  public abstract void a(String paramString, long paramLong, int paramInt);
+  
+  public abstract void a(String paramString, long paramLong1, long paramLong2, long paramLong3);
+  
+  public abstract void a(String paramString, AVFunChat.AVFunChatMessage paramAVFunChatMessage);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(String paramString, boolean paramBoolean);
+  
+  public abstract void a(String paramString, byte[] paramArrayOfByte, long paramLong);
+  
+  public abstract void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2);
+  
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  
+  public abstract void b(long paramLong1, long paramLong2, long paramLong3);
+  
+  public abstract void b(String paramString, int paramInt, long paramLong, byte[] paramArrayOfByte);
+  
+  public abstract void b(String paramString, int paramInt, byte[] paramArrayOfByte);
+  
+  public abstract void b(String paramString, long paramLong, byte[] paramArrayOfByte);
+  
+  public abstract void b(String paramString, byte[] paramArrayOfByte, long paramLong);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void b(byte[] paramArrayOfByte, long paramLong);
+  
+  public abstract void c(int paramInt, String paramString);
+  
+  public abstract void c(long paramLong1, long paramLong2, long paramLong3);
+  
+  public abstract void c(String paramString, int paramInt);
+  
+  public abstract void c(String paramString, byte[] paramArrayOfByte, long paramLong);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract int d();
+  
+  public abstract void d(int paramInt, String paramString);
+  
+  public abstract void d(String paramString);
+  
+  public abstract void d(String paramString, int paramInt);
+  
+  public abstract void d(String paramString, byte[] paramArrayOfByte, long paramLong);
+  
+  public abstract void d(byte[] paramArrayOfByte);
+  
+  public abstract int e(String paramString);
+  
+  public abstract void e(String paramString);
+  
+  public abstract void f(int paramInt);
+  
+  public abstract void f(String paramString);
+  
+  public abstract void f(String paramString, int paramInt);
+  
+  public abstract void g(int paramInt);
+  
+  public abstract void g(String paramString);
+  
+  public abstract void g(String paramString, int paramInt);
+  
+  public abstract void h(int paramInt);
+  
+  public abstract void h(String paramString);
+  
+  public abstract void i(String paramString);
+  
+  public abstract void j(String paramString);
+  
+  public abstract void k(String paramString);
+  
+  public abstract void l(String paramString);
+  
+  public abstract void m(String paramString);
+  
+  public abstract void n(String paramString);
+  
+  public abstract void o(String paramString);
+  
+  public abstract void p(String paramString);
+  
+  public abstract void q(String paramString);
+  
+  public abstract void r(String paramString);
+  
+  public abstract void s(String paramString);
+  
+  public abstract void t(String paramString);
+  
+  public abstract void u(String paramString);
 }
 
 

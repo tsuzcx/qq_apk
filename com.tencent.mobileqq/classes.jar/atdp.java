@@ -1,8 +1,10 @@
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
+
 public abstract interface atdp
 {
-  public abstract int a(long paramLong1, long paramLong2);
+  public abstract void a(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType);
   
-  public abstract void a();
+  public abstract void b(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType);
 }
 
 

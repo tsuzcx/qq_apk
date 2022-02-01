@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bcfy;
-import bcgb;
+import bcyq;
+import bcyt;
 
 public class VideoCompressProcessor$CompressTask$1
   implements Runnable
 {
-  public VideoCompressProcessor$CompressTask$1(bcfy parambcfy, boolean paramBoolean) {}
+  public VideoCompressProcessor$CompressTask$1(bcyq parambcyq, boolean paramBoolean) {}
   
   public void run()
   {
-    bcfy.a(this.this$0).a(this.this$0.a, this.a);
+    bcyq.a(this.this$0).a(this.this$0.a, this.a);
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
-import anmw;
-import bglj;
+import anyw;
+import bhlk;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 import java.util.List;
 
 class TroopMemberListActivity$2
   implements Runnable
 {
-  TroopMemberListActivity$2(TroopMemberListActivity paramTroopMemberListActivity, anmw paramanmw) {}
+  TroopMemberListActivity$2(TroopMemberListActivity paramTroopMemberListActivity, anyw paramanyw) {}
   
   public void run()
   {
-    Object localObject1 = bglj.a().a(this.this$0.app, this.this$0.b, this.this$0.v);
-    bglj.a().a(this.this$0.app, this.this$0.b, this.this$0.v);
+    Object localObject1 = bhlk.a().a(this.this$0.app, this.this$0.b, this.this$0.v);
+    bhlk.a().a(this.this$0.app, this.this$0.b, this.this$0.v);
     if ((localObject1 != null) && (this.a != null))
     {
       this.this$0.a(this.this$0.v);

@@ -1,21 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.util.HeadRequest;
-
-public final class bghc
-  implements Parcelable.Creator<HeadRequest>
+public class bghc
 {
-  public HeadRequest a(Parcel paramParcel)
-  {
-    HeadRequest localHeadRequest = new HeadRequest();
-    localHeadRequest.a(paramParcel);
-    return localHeadRequest;
-  }
+  String jdField_a_of_type_JavaLangString = "";
+  String b = "";
+  String c = "";
   
-  public HeadRequest[] a(int paramInt)
-  {
-    return new HeadRequest[paramInt];
-  }
+  public bghc(bghb parambghb) {}
 }
 
 

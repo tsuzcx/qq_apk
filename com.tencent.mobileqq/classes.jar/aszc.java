@@ -1,12 +1,23 @@
-abstract interface aszc
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+
+public final class aszc
+  implements Parcelable.Creator<ExtendFriendProfileEditFragment.ExtendFriendInfo>
 {
-  public abstract void a(int paramInt, String paramString);
+  public ExtendFriendProfileEditFragment.ExtendFriendInfo a(Parcel paramParcel)
+  {
+    return new ExtendFriendProfileEditFragment.ExtendFriendInfo(paramParcel);
+  }
   
-  public abstract void a(String paramString1, String paramString2);
+  public ExtendFriendProfileEditFragment.ExtendFriendInfo[] a(int paramInt)
+  {
+    return new ExtendFriendProfileEditFragment.ExtendFriendInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aszc
  * JD-Core Version:    0.7.0.1
  */

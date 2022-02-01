@@ -1,81 +1,75 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.viola.utils.ViolaLogUtils;
-import com.tencent.viola.vinstance.Precondition;
-import com.tencent.viola.vinstance.PreconditionAdapter;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import com.tencent.qphone.base.util.QLog;
 
 public class ttc
-  implements PreconditionAdapter, tss
+  extends NativeText
 {
-  private ViolaBaseView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView;
-  private Precondition jdField_a_of_type_ComTencentViolaVinstancePrecondition;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private Precondition b;
+  protected String a;
   
-  public ttc(String paramString)
+  public ttc(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramVafContext);
+    QLog.d("ReadInJoyIconText", 2, "ReadInJoyIconText create");
   }
   
-  public void a()
+  public boolean setAttribute(int paramInt, String paramString)
   {
-    ViolaLogUtils.d("Wormhole", "success");
-    if (this.jdField_a_of_type_ComTencentViolaVinstancePrecondition != null) {
-      this.jdField_a_of_type_ComTencentViolaVinstancePrecondition.setResult(true);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    ViolaLogUtils.d("Wormhole", paramString);
-    if ((this.b != null) && (!this.jdField_a_of_type_Boolean))
+    QLog.d("ReadInJoyIconText", 2, "key ->" + paramInt + " , value = " + paramString);
+    if (paramInt == 1085)
     {
-      this.b.setResult(true, paramString);
-      this.jdField_a_of_type_Boolean = true;
+      if (paramString != null)
+      {
+        this.a = paramString;
+        setDrawableLeft(null);
+      }
+      return true;
     }
-  }
-  
-  public void b()
-  {
-    ViolaLogUtils.d("Wormhole", "error");
-    if (this.jdField_a_of_type_ComTencentViolaVinstancePrecondition != null) {
-      this.jdField_a_of_type_ComTencentViolaVinstancePrecondition.setResult(false);
+    if (paramInt == 1086) {
+      if (paramString != null)
+      {
+        int i = Utils.dp2px(nzv.a(paramString, 0));
+        this.mNative.setCompoundDrawablePadding(i);
+      }
     }
-  }
-  
-  public void c()
-  {
-    ViolaLogUtils.d("Wormhole", "error");
-    if ((this.b != null) && (!this.jdField_a_of_type_Boolean))
+    for (;;)
     {
-      this.b.setResult(false, null);
-      this.jdField_a_of_type_Boolean = true;
+      return super.setAttribute(paramInt, paramString);
+      if (paramInt == 48)
+      {
+        Float localFloat = Utils.toFloat(paramString);
+        if (localFloat != null)
+        {
+          this.mAlpha = localFloat.floatValue();
+          getNativeView().setAlpha(this.mAlpha);
+        }
+        else
+        {
+          QLog.d("ReadInJoyIconText", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
+        }
+      }
     }
   }
   
-  public String getPageData()
+  public void setDrawableLeft(String paramString)
   {
-    return null;
+    QLog.d("ReadInJoyIconText", 2, "setDrawableLeft drawableLeftPath->" + this.drawableLeftPath + " , drawableRightPath = " + this.a);
+    if (this.drawableLeftPath != null) {}
+    for (paramString = DrawableUtil.getDrawable(this.mNative.getContext(), this.drawableLeftPath, null, null);; paramString = null)
+    {
+      if (this.a != null) {}
+      for (Drawable localDrawable = DrawableUtil.getDrawable(this.mNative.getContext(), this.a, null, null);; localDrawable = null)
+      {
+        this.mNative.setCompoundDrawablesWithIntrinsicBounds(paramString, null, localDrawable, null);
+        return;
+      }
+    }
   }
-  
-  public void init(Precondition paramPrecondition)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView = new ViolaBaseView(BaseApplicationImpl.getApplication());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(this.jdField_a_of_type_JavaLangString, null, null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.setBaseViewListener(this);
-    this.jdField_a_of_type_ComTencentViolaVinstancePrecondition = paramPrecondition;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void loadWormhole(Precondition paramPrecondition)
-  {
-    this.b = paramPrecondition;
-  }
-  
-  public void onInitError() {}
-  
-  public void onInitSuccess() {}
 }
 
 

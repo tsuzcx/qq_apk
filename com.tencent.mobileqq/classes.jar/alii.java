@@ -1,38 +1,28 @@
-import android.os.MessageQueue.IdleHandler;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.lang.reflect.Method;
 
 public class alii
-  implements MessageQueue.IdleHandler
 {
-  public alii(FlowCameraActivity2 paramFlowCameraActivity2) {}
-  
-  public boolean queueIdle()
+  public static void a(String paramString)
   {
-    if (bcif.d(bcif.b)) {
-      this.a.b(true);
-    }
-    for (;;)
+    try
     {
-      if ((this.a.f) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
+      ClassLoader localClassLoader = BaseApplicationImpl.sApplication.getClassLoader();
+      if (localClassLoader == null) {
+        return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-      this.a.c.setEnabled(false);
-      if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
-      }
-      return false;
-      this.a.i();
+      localClassLoader.loadClass("cooperation.qwallet.plugin.QWalletPluginProxyActivity").getMethod("handleNoCatchCrash", new Class[] { String.class }).invoke(null, new Object[] { paramString });
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alii
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import java.util.Observable;
 
 public class zji
-  implements View.OnLongClickListener
+  extends Observable
 {
-  public zji(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
-  
-  public boolean onLongClick(View paramView)
+  public void notifyObservers()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
-    }
-    return true;
+    setChanged();
+    super.notifyObservers();
+  }
+  
+  public void notifyObservers(Object paramObject)
+  {
+    setChanged();
+    super.notifyObservers(paramObject);
   }
 }
 

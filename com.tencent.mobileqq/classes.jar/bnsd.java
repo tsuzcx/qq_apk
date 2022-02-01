@@ -1,6 +1,16 @@
-public abstract interface bnsd
+import android.app.Activity;
+
+public final class bnsd
+  implements bmgq
 {
-  public abstract void a(bnpk parambnpk);
+  public bnsd(Activity paramActivity) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      this.a.finish();
+    }
+  }
 }
 
 

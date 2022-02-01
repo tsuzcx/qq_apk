@@ -1,24 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import android.net.wifi.WifiManager;
+import android.net.wifi.WifiManager.WifiLock;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import com.tencent.qapmsdk.battery.BatteryMonitor;
+import com.tencent.qapmsdk.battery.monitor.HookMethodCallback;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class adln
-  implements View.OnClickListener
+class adln
+  extends adlj
 {
-  public adln(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
-  
-  public void onClick(View paramView)
+  public HookMethodCallback a()
   {
-    if (ArkFullScreenAppActivity.a(this.a) != null) {
-      apok.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).a, null, apok.b, 0, 0);
+    return BatteryMonitor.getInstance().getWifiHook();
+  }
+  
+  public void a()
+  {
+    try
+    {
+      JavaHookBridge.findAndHookMethod(WifiManager.class, "startScan", new Object[] { this });
+      JavaHookBridge.findAndHookMethod(WifiManager.class, "createWifiLock", new Object[] { Integer.TYPE, String.class, this });
+      JavaHookBridge.findAndHookMethod(WifiManager.class, "createWifiLock", new Object[] { String.class, this });
+      JavaHookBridge.findAndHookMethod(WifiManager.WifiLock.class, "acquire", new Object[] { this });
+      JavaHookBridge.findAndHookMethod(WifiManager.WifiLock.class, "release", new Object[] { this });
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkFullScreenAppActivity", 2, "click to close");
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MagnifierSDK.QAPM.QAPMBatteryWrapper", 2, "", localThrowable);
     }
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,20 +1,20 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public class adyh
-  extends FlingGestureHandler
+  implements bivv
 {
-  public adyh(ContactBindedActivity paramContactBindedActivity, Activity paramActivity)
-  {
-    super(paramActivity);
-  }
+  public adyh(BaseChatPie paramBaseChatPie) {}
   
-  public void flingLToR()
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    if (!this.a.a) {
-      super.flingLToR();
-    }
+    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

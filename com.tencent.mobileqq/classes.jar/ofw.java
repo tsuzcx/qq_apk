@@ -1,22 +1,56 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class ofw
-  implements ViewBase.OnClickListener
+public class ofw
+  extends arac<ofu>
 {
-  ofw(ofu paramofu) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public static ofu a()
   {
-    if (paramViewBase.getEventAttachedData() == null) {
-      return;
+    return (ofu)aran.a().a(593);
+  }
+  
+  @NonNull
+  public ofu a(int paramInt)
+  {
+    return new ofu();
+  }
+  
+  @Nullable
+  public ofu a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length == 0)) {
+      return new ofu();
     }
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramViewBase.getEventAttachedData()));
-    paramViewBase.getNativeView().getContext().startActivity(localIntent);
+    return ofu.a(paramArrayOfaraj[0].a);
+  }
+  
+  public void a(ofu paramofu) {}
+  
+  public Class<ofu> clazz()
+  {
+    return ofu.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 593;
   }
 }
 

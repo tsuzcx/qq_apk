@@ -1,24 +1,17 @@
-public abstract interface aozj
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class aozj
+  extends aoxh
 {
-  public abstract long a();
-  
-  public abstract void a(int paramInt, apad paramapad);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(apbk paramapbk);
-  
-  public abstract long b();
-  
-  public abstract void b();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void c(boolean paramBoolean);
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  {
+    paramQQAppInterface = new aozc(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qzone";
+    paramQQAppInterface.c = "qzone_schema";
+    return paramQQAppInterface;
+  }
 }
 
 

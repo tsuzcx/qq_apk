@@ -1,25 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import org.apache.http.entity.ByteArrayEntity;
 
 public class bobp
-  implements View.OnClickListener
+  extends ByteArrayEntity
 {
-  public bobp(LyricWithBuoyView paramLyricWithBuoyView) {}
+  protected final int a;
+  protected final int b;
   
-  public void onClick(View paramView)
+  public bobp(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    bnzb.a("LyricWithBuoyView", "LyricWithBuoyView onClick()");
-    if (LyricWithBuoyView.a(this.a) != null) {
-      LyricWithBuoyView.a(this.a).a();
+    super(paramArrayOfByte);
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public InputStream getContent()
+  {
+    return new ByteArrayInputStream(this.content, this.a, this.b);
+  }
+  
+  public long getContentLength()
+  {
+    return this.b;
+  }
+  
+  public void writeTo(OutputStream paramOutputStream)
+  {
+    if (paramOutputStream == null) {
+      throw new IllegalArgumentException("Output stream may not be null");
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bnzb.a("LyricWithBuoyView", "onClick() mOnLyricWithBuoyViewOperationListener == null.");
-    }
+    paramOutputStream.write(this.content, this.a, this.b);
+    paramOutputStream.flush();
   }
 }
 

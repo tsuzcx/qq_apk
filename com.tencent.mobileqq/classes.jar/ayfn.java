@@ -1,21 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.OCRResultActivity.11.1;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayfn
-  implements aygv
+  implements View.OnClickListener
 {
-  public ayfn(OCRResultActivity paramOCRResultActivity) {}
+  public ayfn(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a() {}
-  
-  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
+  public void onClick(View paramView)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(OCRResultActivity.a(this.a)))) {
-      return;
-    }
-    this.a.runOnUiThread(new OCRResultActivity.11.1(this, paramInt, paramOcrRecogResult));
+    this.a.j();
+    ShortVideoCommentsView.a(this.a).setVisibility(8);
+    ShortVideoCommentsView.a(this.a, 2);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

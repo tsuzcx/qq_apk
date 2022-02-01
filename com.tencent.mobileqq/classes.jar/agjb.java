@@ -1,42 +1,39 @@
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONObject;
+import android.view.View;
 
-public final class agjb
+class agjb
+  implements bliz
 {
-  public HashMap<String, String> a = new HashMap();
+  agjb(agiq paramagiq, String paramString) {}
   
-  private void a(String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (!TextUtils.isEmpty(paramString))
+    agiq.a(this.jdField_a_of_type_Agiq).dismiss();
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ECommerceDataReportConfigProcessor", 2, "configText : " + paramString);
-      }
-      try
+    }
+    do
+    {
+      return;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
-        paramString = new JSONObject(paramString);
-        Iterator localIterator = paramString.keys();
-        while (localIterator.hasNext())
-        {
-          String str1 = (String)localIterator.next();
-          if (!TextUtils.isEmpty(str1))
-          {
-            String str2 = paramString.optString(str1, "");
-            if (!TextUtils.isEmpty(str2)) {
-              this.a.put(str1, str2);
-            }
-          }
-        }
+        agiq.a(this.jdField_a_of_type_Agiq, this.jdField_a_of_type_JavaLangString);
         return;
       }
-      catch (Throwable paramString)
+      if (agiq.a(this.jdField_a_of_type_Agiq))
       {
-        QLog.e("ECommerceDataReportConfigProcessor", 1, paramString, new Object[0]);
+        agiq.b(this.jdField_a_of_type_Agiq);
+        return;
       }
+      agiq.c(this.jdField_a_of_type_Agiq);
+      return;
+    } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+    if (agiq.a(this.jdField_a_of_type_Agiq))
+    {
+      agiq.b(this.jdField_a_of_type_Agiq);
+      return;
     }
+    agiq.c(this.jdField_a_of_type_Agiq);
   }
 }
 

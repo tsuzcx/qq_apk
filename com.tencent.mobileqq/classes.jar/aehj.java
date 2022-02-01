@@ -1,21 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aehj
-  implements bkhw
+public class aehj
+  implements Animation.AnimationListener
 {
-  aehj(aehi paramaehi, aehv paramaehv, bkho parambkho) {}
+  public aehj(ContactBindedActivity paramContactBindedActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim end");
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      this.jdField_a_of_type_Aehi.a.b(this.jdField_a_of_type_Aehv);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim start");
     }
   }
 }

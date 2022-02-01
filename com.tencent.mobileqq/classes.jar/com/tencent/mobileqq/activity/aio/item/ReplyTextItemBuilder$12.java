@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import bdsh;
+import beqz;
 import com.tencent.image.URLDrawable;
 
 public final class ReplyTextItemBuilder$12
@@ -10,7 +10,7 @@ public final class ReplyTextItemBuilder$12
   
   public void run()
   {
-    if ((bdsh.b(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1)) {}
+    if ((beqz.b(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1)) {}
     try
     {
       this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();

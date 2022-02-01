@@ -1,70 +1,46 @@
-import java.lang.ref.WeakReference;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import cooperation.qzone.QzoneVideoSoDownloadModule;
+import java.util.ArrayList;
 
 public class bmvy
+  implements bcxy
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static int jdField_b_of_type_Int;
-  private static bmvy jdField_b_of_type_Bmvy;
-  public int a;
-  private bmvy jdField_a_of_type_Bmvy;
-  public String a;
-  public WeakReference<bmvz> a;
-  public String b;
-  public String c;
-  public String d;
+  private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public bmvy(String paramString1, int paramInt, String paramString2, WeakReference<bmvz> paramWeakReference)
+  public bmvy(QzoneVideoSoDownloadModule paramQzoneVideoSoDownloadModule, QQAppInterface paramQQAppInterface, ResultReceiver paramResultReceiver)
   {
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + " " + paramString2);
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsResultReceiver = paramResultReceiver;
   }
   
-  public static bmvy a(String paramString1, int paramInt, String paramString2, WeakReference<bmvz> paramWeakReference)
+  public void a(int paramInt1, int paramInt2)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    VideoEnvironment.a("QzoneVideoSoDownloadModule", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
     {
-      if (jdField_b_of_type_Bmvy != null)
+      if (paramInt2 != 0)
       {
-        bmvy localbmvy = jdField_b_of_type_Bmvy;
-        jdField_b_of_type_Bmvy = localbmvy.jdField_a_of_type_Bmvy;
-        localbmvy.jdField_a_of_type_Bmvy = null;
-        localbmvy.jdField_b_of_type_JavaLangString = paramString1;
-        localbmvy.d = paramString2;
-        localbmvy.jdField_a_of_type_Int = paramInt;
-        localbmvy.jdField_a_of_type_JavaLangString = (paramString1 + " " + paramString2);
-        localbmvy.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-        jdField_b_of_type_Int -= 1;
-        return localbmvy;
+        QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -2, anzj.a(2131711388) + paramInt2 + "]");
+        bcwy.b(1, paramInt2);
+        return;
       }
-      return new bmvy(paramString1, paramInt, paramString2, paramWeakReference);
-    }
-  }
-  
-  private void b()
-  {
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.c = null;
-    this.d = null;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-  }
-  
-  public void a()
-  {
-    b();
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_b_of_type_Int < 100)
+      ArrayList localArrayList = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList);
+      if (paramInt1 == 0)
       {
-        this.jdField_a_of_type_Bmvy = jdField_b_of_type_Bmvy;
-        jdField_b_of_type_Bmvy = this;
-        jdField_b_of_type_Int += 1;
+        ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, new bmvz(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver));
+        return;
       }
+      QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -2, anzj.a(2131711472) + paramInt1 + "]");
+      bcwy.b(1, paramInt1);
       return;
     }
+    QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -2, anzj.a(2131711363) + paramInt2 + "]");
+    bcwy.b(1, paramInt2);
   }
 }
 

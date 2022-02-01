@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<animation-list android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="false" android:drawable="@drawable/bx3" />
-    <item android:state_checked="true" android:drawable="@drawable/bx5" />
-</selector>
+    <item android:duration="100" android:drawable="@drawable/fcp" />
+    <item android:duration="100" android:drawable="@drawable/ffp" />
+    <item android:duration="100" android:drawable="@drawable/fgx" />
+    <item android:duration="100" android:drawable="@drawable/fj0" />
+    <item android:duration="100" android:drawable="@drawable/fkw" />
+    <item android:duration="100" android:drawable="@drawable/fkx" />
+    <item android:duration="100" android:drawable="@drawable/fl0" />
+    <item android:duration="100" android:drawable="@drawable/fl1" />
+    <item android:duration="100" android:drawable="@drawable/fl2" />
+    <item android:duration="100" android:drawable="@drawable/fm7" />
+    <item android:duration="100" android:drawable="@drawable/fny" />
+    <item android:duration="100" android:drawable="@drawable/fnz" />
+    <item android:duration="100" android:drawable="@drawable/fo3" />
+    <item android:duration="100" android:drawable="@drawable/fo4" />
+    <item android:duration="100" android:drawable="@drawable/fo7" />
+</animation-list>

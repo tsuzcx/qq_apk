@@ -1,31 +1,37 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
+import android.os.Bundle;
+import android.text.TextUtils;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class awmi
-  extends anqd
+  implements EIPCResultCallback
 {
-  awmi(awmg paramawmg, QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, String paramString, int paramInt) {}
+  awmi(awmg paramawmg) {}
   
-  public void a(boolean paramBoolean, long paramLong, anqe paramanqe)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(6003, true, new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq + "" });
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData);
-    if (paramBoolean)
+    int i = 0;
+    JSONObject localJSONObject;
+    if (!TextUtils.isEmpty(awmg.a(this.a))) {
+      localJSONObject = new JSONObject();
+    }
+    try
     {
-      awmg.a(this.jdField_a_of_type_Awmg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true);
+      if (paramEIPCResult.data.getBoolean("result")) {}
+      for (;;)
+      {
+        localJSONObject.put("result", i);
+        this.a.callJs(awmg.a(this.a), new String[] { localJSONObject.toString() });
+        return;
+        i = 1;
+      }
       return;
     }
-    awmg localawmg = this.jdField_a_of_type_Awmg;
-    MessageForMixedMsg localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
-    StringBuilder localStringBuilder = new StringBuilder().append("sendStructLongMsg fail : errCode = ");
-    if (paramanqe != null) {}
-    for (paramanqe = Integer.valueOf(paramanqe.b);; paramanqe = "")
+    catch (JSONException paramEIPCResult)
     {
-      awmg.a(localawmg, localMessageForMixedMsg, true, paramanqe);
-      return;
+      paramEIPCResult.printStackTrace();
     }
   }
 }

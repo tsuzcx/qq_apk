@@ -1,32 +1,30 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
 import com.tencent.qphone.base.util.QLog;
 
-final class bgfs
-  implements DownloadParams.DecodeHandler
+class bgfs
+  implements View.OnFocusChangeListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  bgfs(bgfo parambgfo, bgep parambgep, bgfu parambgfu) {}
+  
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 2, "AVATAR_WALL_RECT__DECODER");
-    }
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
+    QLog.i("xmediaEditor", 1, "mData.position:" + this.jdField_a_of_type_Bgep.c + ", text:" + this.jdField_a_of_type_Bgep.jdField_a_of_type_JavaLangString + ",onFocusChange:" + paramBoolean);
+    if (paramBoolean)
     {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return bgmo.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1], paramDownloadParams[2]);
+      this.jdField_a_of_type_Bgfu.a.setCursorVisible(true);
+      this.jdField_a_of_type_Bgfo.a.c(this.jdField_a_of_type_Bgfu);
+      this.jdField_a_of_type_Bgep.jdField_a_of_type_Boolean = true;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bgfu.a.setFocusable(paramBoolean);
+      this.jdField_a_of_type_Bgfu.a.setFocusableInTouchMode(paramBoolean);
+      return;
+      this.jdField_a_of_type_Bgfu.a.setCursorVisible(false);
+      this.jdField_a_of_type_Bgfo.a.d(this.jdField_a_of_type_Bgfu);
+    }
   }
 }
 

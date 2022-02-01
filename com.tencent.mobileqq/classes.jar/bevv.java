@@ -1,228 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import java.util.Random;
-import mqq.app.AppRuntime;
+import android.os.Bundle;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.CheckConErroObserver;
 
 public class bevv
+  extends CheckConErroObserver
 {
-  public static int a(String paramString)
+  bevx jdField_a_of_type_Bevx;
+  bevy jdField_a_of_type_Bevy;
+  
+  public bevv(ProtoReqManager paramProtoReqManager, bevy parambevy, bevx parambevx)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        do
-        {
-          return 0;
-        } while (!paramString.startsWith("H_"));
-        i = paramString.indexOf("_");
-      } while (i == -1);
-      j = paramString.lastIndexOf("_");
-    } while (i == j);
-    paramString = paramString.substring(j);
-    try
-    {
-      i = Integer.valueOf(paramString).intValue();
-      return i;
-    }
-    catch (Exception paramString) {}
-    return 0;
+    this.jdField_a_of_type_Bevy = parambevy;
+    this.jdField_a_of_type_Bevx = parambevx;
   }
   
-  public static long a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return (int)(System.currentTimeMillis() / 1000L) << 32 | Math.abs(new Random().nextInt());
-  }
-  
-  public static bevw a(String paramString)
-  {
-    int i = 1;
-    bevw localbevw = new bevw();
-    if (TextUtils.isEmpty(paramString)) {
-      return localbevw;
-    }
-    for (;;)
+    if (paramBundle != null)
     {
-      try
+      Object localObject = paramBundle.getString("msf_con_erro");
+      paramBundle = (Bundle)localObject;
+      if (localObject == null) {
+        paramBundle = "";
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.richmedia.ProtoReqManager", 2, "CheckConErroObserverImp.onReceive -> msfConErro: " + paramBundle);
+      }
+      if (this.jdField_a_of_type_Bevy != null)
       {
-        int j = paramString.indexOf("://");
-        if (j == -1)
-        {
-          j = 0;
-          String str1 = paramString.substring(j);
-          int m = str1.indexOf("/");
-          int k = m;
-          if (-1 == m) {
-            k = str1.length() - 1;
-          }
-          m = paramString.indexOf("&bHost=");
-          if (-1 == m)
-          {
-            i = 0;
-            str1 = null;
-            str2 = str1;
-            if (str1 == null) {
-              str2 = paramString.substring(j, k + j);
-            }
-            if (str2 == null) {
-              break;
-            }
-            j = str2.indexOf(":");
-            if (j < 0) {
-              continue;
-            }
-            paramString = str2.substring(0, j);
-            str1 = str2.substring(j + 1);
-            localbevw.jdField_a_of_type_JavaLangString = paramString;
-            localbevw.jdField_a_of_type_Int = Integer.valueOf(str1).intValue();
-            if (i == 0) {
-              break;
-            }
-            localbevw.b = 1;
-            return localbevw;
-          }
-          int n = paramString.indexOf("&bPort=", m);
-          if (-1 == n)
-          {
-            i = 0;
-            str1 = null;
-            continue;
-          }
-          str1 = paramString.substring("&bHost=".length() + m, n);
-          String str2 = paramString.substring("&bPort=".length() + n);
-          str1 = str1 + ":" + str2;
-          continue;
-          localbevw.jdField_a_of_type_JavaLangString = str2;
-          localbevw.jdField_a_of_type_Int = 0;
-          continue;
+        localObject = this.jdField_a_of_type_Bevy.a;
+        if (localObject != null) {
+          ((FromServiceMsg)localObject).addAttribute("_tag_socket_connerror", paramBundle);
         }
-        j += 3;
-      }
-      catch (Exception paramString)
-      {
-        return localbevw;
       }
     }
-  }
-  
-  public static bfrm a(long paramLong)
-  {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      return null;
+    if (this.jdField_a_of_type_Bevx.a != null) {
+      this.jdField_a_of_type_Bevx.a.a(this.jdField_a_of_type_Bevy, this.jdField_a_of_type_Bevx);
     }
-    return bfrm.a(localQQAppInterface, paramLong);
-  }
-  
-  public static QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  public static String a()
-  {
-    if (!AppNetConnInfo.isNetSupport()) {
-      return "none";
-    }
-    if (AppNetConnInfo.isWifiConn()) {
-      return "wifi";
-    }
-    if (AppNetConnInfo.isMobileConn())
-    {
-      switch (AppNetConnInfo.getMobileInfo())
-      {
-      default: 
-        return "unkonw";
-      case -1: 
-        return "none";
-      case 0: 
-      case 1: 
-        return "2g";
-      case 2: 
-        return "3g";
-      }
-      return "4g";
-    }
-    return "none";
-  }
-  
-  public static String a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    if (paramString.startsWith("/")) {
-      return paramString.substring(1);
-    }
-    return "/" + paramString;
-  }
-  
-  public static int b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          return 0;
-          i = paramString.indexOf("User-ReturnCode=[");
-        } while (i == -1);
-        paramString = paramString.substring("User-ReturnCode=[".length() + i);
-      } while (TextUtils.isEmpty(paramString));
-      i = paramString.indexOf("]");
-    } while (i == -1);
-    paramString = paramString.substring(0, i);
-    try
-    {
-      i = Integer.valueOf(paramString).intValue();
-      return i;
-    }
-    catch (Exception paramString) {}
-    return 0;
-  }
-  
-  public static int c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        do
-        {
-          return 0;
-        } while (!paramString.startsWith("H_"));
-        i = paramString.indexOf("_");
-      } while (i == -1);
-      j = paramString.lastIndexOf("_");
-    } while (i == j);
-    paramString = paramString.substring(i, j - 1);
-    try
-    {
-      i = Integer.valueOf(paramString).intValue();
-      return i;
-    }
-    catch (Exception paramString) {}
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bevv
  * JD-Core Version:    0.7.0.1
  */

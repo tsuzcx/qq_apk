@@ -1,17 +1,30 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 class ampt
-  implements MediaPlayer.OnSeekCompleteListener
+  implements DialogInterface.OnClickListener
 {
-  ampt(ampr paramampr, JSONObject paramJSONObject, amqr paramamqr) {}
+  ampt(ampp paramampp) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
-      ampr.a(this.jdField_a_of_type_Ampr, this.jdField_a_of_type_Amqr, this.jdField_a_of_type_OrgJsonJSONObject);
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendMoreSysMsgAdapter", 2, "clear click");
     }
+    if (bhnv.d(ampp.a(this.a)))
+    {
+      bdll.b(this.a.a, "dc00898", "", "", "0X800A328", "0X800A328", 2, 0, "", "", "", "");
+      ampp.b(this.a);
+      this.a.a.a().a().f();
+      ((FriendListHandler)this.a.a.a(1)).k();
+      return;
+    }
+    QQToast.a(ampp.a(this.a), 2131693974, 0).a();
   }
 }
 

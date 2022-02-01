@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.widget.TextView;
-import bgtn;
+import bhtq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.CommonExposureData;
@@ -21,8 +21,8 @@ class SearchRecommendAdapter$LiveViewHolder
   public SearchRecommendAdapter$LiveViewHolder(View paramView)
   {
     super(paramView);
-    this.title = ((TextView)paramView.findViewById(2131371045));
-    this.sequenceNumberTextView = ((TextView)paramView.findViewById(2131371044));
+    this.title = ((TextView)paramView.findViewById(2131371150));
+    this.sequenceNumberTextView = ((TextView)paramView.findViewById(2131371149));
   }
   
   public void update(LiveInfo paramLiveInfo, int paramInt)
@@ -32,7 +32,7 @@ class SearchRecommendAdapter$LiveViewHolder
     this.sequenceNumberTextView.setText(String.valueOf(paramInt + 1));
     if (paramInt == 0)
     {
-      this.sequenceNumberTextView.setBackgroundResource(2130840973);
+      this.sequenceNumberTextView.setBackgroundResource(2130840983);
       this.sequenceNumberTextView.setTextColor(-1);
     }
     for (;;)
@@ -42,19 +42,19 @@ class SearchRecommendAdapter$LiveViewHolder
       return;
       if (paramInt == 1)
       {
-        this.sequenceNumberTextView.setBackgroundResource(2130840971);
+        this.sequenceNumberTextView.setBackgroundResource(2130840981);
         this.sequenceNumberTextView.setTextColor(-1);
       }
       else if (paramInt == 2)
       {
-        this.sequenceNumberTextView.setBackgroundResource(2130840972);
+        this.sequenceNumberTextView.setBackgroundResource(2130840982);
         this.sequenceNumberTextView.setTextColor(-1);
       }
       else
       {
         this.sequenceNumberTextView.setBackgroundDrawable(null);
-        this.sequenceNumberTextView.setPadding(bgtn.b(5.0F), 0, 0, 0);
-        this.sequenceNumberTextView.setTextColor(this.itemView.getContext().getResources().getColor(2131167064));
+        this.sequenceNumberTextView.setPadding(bhtq.b(5.0F), 0, 0, 0);
+        this.sequenceNumberTextView.setTextColor(this.itemView.getContext().getResources().getColor(2131167074));
       }
     }
   }

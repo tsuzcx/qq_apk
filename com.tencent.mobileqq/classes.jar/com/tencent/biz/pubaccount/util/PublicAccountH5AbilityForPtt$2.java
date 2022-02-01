@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.util;
 
-import anni;
+import anzj;
 import com.tencent.mobileqq.widget.QQToast;
-import tyj;
+import tyl;
 
 public class PublicAccountH5AbilityForPtt$2
   implements Runnable
 {
-  public PublicAccountH5AbilityForPtt$2(tyj paramtyj) {}
+  public PublicAccountH5AbilityForPtt$2(tyl paramtyl) {}
   
   public void run()
   {
-    QQToast.a(this.this$0.a, anni.a(2131707580), 0).a();
+    QQToast.a(this.this$0.a, anzj.a(2131707689), 0).a();
   }
 }
 

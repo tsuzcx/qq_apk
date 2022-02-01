@@ -1,43 +1,73 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.mobileqq.richstatus.EditActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.io.File;
+import mqq.app.MobileQQ;
+import org.json.JSONObject;
 
-public class anvb
-  implements Handler.Callback
+class anvb
+  extends biht
 {
-  public anvb(SignatureManager paramSignatureManager) {}
+  anvb(anva paramanva) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onDone(bihu parambihu)
   {
-    if (2 == paramMessage.what)
+    super.onDone(parambihu);
+    parambihu = parambihu.a();
+    if ((parambihu.containsKey("version")) && (parambihu.containsKey("json_name")))
     {
-      SignatureManager.jdField_a_of_type_ArrayOfBgyx = (bgyx[])paramMessage.obj;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      int i = parambihu.getInt("version", -1);
+      parambihu = parambihu.getString("json_name");
+      if (bhwl.e.d.equals(parambihu))
       {
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
-        if (paramMessage != null) {
-          paramMessage.sendEmptyMessageDelayed(2, 50L);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Signature", 2, "update sign tpl info...");
-        }
-      }
-    }
-    for (;;)
-    {
-      return true;
-      if ((3 == paramMessage.what) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-      {
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
-        if (paramMessage != null) {
-          paramMessage.sendEmptyMessageDelayed(7, 50L);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Signature", 2, "update sign tpl animation ...");
+        Object localObject = new File(this.a.a.getApplication().getApplicationContext().getFilesDir(), bhwl.e.a);
+        if ((((File)localObject).exists()) && (((File)localObject).isFile()))
+        {
+          localObject = bhmi.a((File)localObject);
+          try
+          {
+            localObject = new JSONObject((String)localObject);
+            long l = ((JSONObject)localObject).getLong("timestamp") / 1000L;
+            if (Math.abs(i - l) <= 5L)
+            {
+              bhwl.a(this.a.a.getApplication().getApplicationContext(), parambihu, i);
+              if (QLog.isColorLevel()) {
+                QLog.i("ClubContentUpdateHandler", 2, "json file update success!");
+              }
+              boolean bool1 = true;
+              if (((JSONObject)localObject).has("enableX5Report"))
+              {
+                boolean bool2 = ((JSONObject)localObject).getBoolean("enableX5Report");
+                bool1 = bool2;
+                if (QLog.isColorLevel())
+                {
+                  QLog.i("ClubContentUpdateHandler", 2, "json file got isEnableX5Report: " + bool2);
+                  bool1 = bool2;
+                }
+              }
+              parambihu = this.a.a.getApplication().getApplicationContext().getSharedPreferences("WebView_X5_Report", 4);
+              parambihu.edit().putBoolean("enableX5Report", bool1).commit();
+              parambihu.edit().putLong("read_vas_asyncCookie", 0L).commit();
+            }
+            for (;;)
+            {
+              anva.a(this.a, (JSONObject)localObject);
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.i("ClubContentUpdateHandler", 2, "json file update get old file!");
+              }
+            }
+            return;
+          }
+          catch (Exception parambihu)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("ClubContentUpdateHandler", 2, "Parse webview josn Exception:" + parambihu.toString());
+            }
+          }
         }
       }
     }

@@ -1,85 +1,161 @@
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.views.video.GdtVideoData;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import com.tencent.gdtad.aditem.GdtAppReceiver;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.api.GdtAd;
+import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
+import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
+import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGet;
 
-public class actv
+public abstract class actv
+  extends PublicBaseFragment
 {
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = -1L;
+  public LinearLayout a;
+  private GdtAppReceiver a;
   
-  public actv(int paramInt)
+  protected actv()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
   }
   
-  private void c(GdtVideoData paramGdtVideoData, long paramLong)
+  public static void a(Activity paramActivity, JSONObject paramJSONObject, Class<? extends actv> paramClass)
   {
-    if (paramGdtVideoData == null)
+    if ((paramActivity == null) || (paramJSONObject == null))
     {
-      acqy.d("GdtVideoStatistics", "return data == null error");
+      acvc.b("GdtBaseBannerFragment", "start error");
       return;
     }
-    if ((this.jdField_a_of_type_Long == -1L) || (paramLong == 0L))
-    {
-      acqy.d("GdtVideoStatistics", "return startPositionMillis =-1");
+    acvc.b("GdtBaseBannerFragment", "start");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("params", paramJSONObject.toString());
+    paramJSONObject = new Intent();
+    paramJSONObject.putExtra("public_fragment_window_feature", 1);
+    paramJSONObject.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
+    paramJSONObject.putExtras(localBundle);
+    afez.a(paramActivity, paramJSONObject, PublicFragmentActivityForTool.class, paramClass);
+  }
+  
+  protected abstract GdtAd a();
+  
+  protected abstract void a();
+  
+  protected abstract void a(String paramString, qq_ad_get.QQAdGet paramQQAdGet, GdtHandler.Params paramParams);
+  
+  public void initWindowStyleAndAnimation(Activity paramActivity)
+  {
+    super.initWindowStyleAndAnimation(paramActivity);
+    if (paramActivity == null) {
       return;
     }
-    if (this.jdField_a_of_type_Long > paramLong)
-    {
-      acqy.d("GdtVideoStatistics", "startPositionMillis > currentPositionMillis reset startPositionMillis = 0");
-      this.jdField_a_of_type_Long = 0L;
+    paramActivity.getWindow().addFlags(1024);
+  }
+  
+  public boolean isWrapContent()
+  {
+    return false;
+  }
+  
+  public boolean needImmersive()
+  {
+    return false;
+  }
+  
+  public boolean needStatusTrans()
+  {
+    return false;
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+  }
+  
+  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
+  {
+    paramLayoutInflater = null;
+    if (getArguments() == null) {
+      paramLayoutInflater = null;
     }
-    long l = this.jdField_a_of_type_Long;
-    if (paramLong == paramGdtVideoData.getDurationMillis()) {}
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      String str = acrj.a(l, paramLong, bool, this.jdField_a_of_type_Int);
-      acqy.b("GdtVideoStatistics", "report start:" + this.jdField_a_of_type_Long + " end:" + paramLong);
-      acrj.a((GdtAd)paramGdtVideoData.getAd(), str);
-      this.jdField_a_of_type_Long = -1L;
-      return;
+      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+      return paramLayoutInflater;
+      paramViewGroup = getArguments().getString("params");
+      try
+      {
+        Object localObject = new JSONObject(paramViewGroup);
+        paramBundle = ((JSONObject)localObject).getJSONObject("requestParams");
+        localObject = ((JSONObject)localObject).getJSONObject("clickParams");
+        boolean bool1 = ((JSONObject)localObject).getBoolean("reportForClick");
+        boolean bool2 = ((JSONObject)localObject).getBoolean("appAutoDownload");
+        boolean bool3 = ((JSONObject)localObject).optBoolean("videoCeilingSupported", false);
+        paramBundle = (qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(acvb.a(new qq_ad_get.QQAdGet(), paramBundle));
+        localObject = new GdtHandler.Params();
+        ((GdtHandler.Params)localObject).c = 1;
+        ((GdtHandler.Params)localObject).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(getActivity());
+        ((GdtHandler.Params)localObject).jdField_a_of_type_Boolean = bool1;
+        ((GdtHandler.Params)localObject).jdField_b_of_type_Boolean = bool2;
+        ((GdtHandler.Params)localObject).jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver);
+        if (bool3) {
+          paramLayoutInflater = GdtVideoCeilingFragmentForJS.class;
+        }
+        ((GdtHandler.Params)localObject).jdField_a_of_type_JavaLangClass = paramLayoutInflater;
+        ((GdtHandler.Params)localObject).jdField_b_of_type_JavaLangClass = GdtCanvasFragmentForJS.class;
+        a(paramViewGroup, paramBundle, (GdtHandler.Params)localObject);
+      }
+      catch (JSONException paramLayoutInflater)
+      {
+        for (;;)
+        {
+          acvc.d("GdtBaseBannerFragment", "createParams error", paramLayoutInflater);
+        }
+      }
+      paramLayoutInflater = new Button(getActivity());
+      paramLayoutInflater.setText("load");
+      paramLayoutInflater.setOnClickListener(new actw(this));
+      paramViewGroup = new Button(getActivity());
+      paramViewGroup.setText("show");
+      paramViewGroup.setOnClickListener(new actx(this));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getActivity());
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(Color.parseColor("#DBDBDB"));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramLayoutInflater);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramViewGroup);
+      paramLayoutInflater = new ScrollView(getActivity());
+      paramLayoutInflater.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+      this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(getActivity());
     }
   }
   
-  public void a(GdtVideoData paramGdtVideoData)
+  public void onDestroy()
   {
-    acqy.b("GdtVideoStatistics", "onError");
-    c(paramGdtVideoData, -1L);
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.unregister(getActivity());
+    super.onDestroy();
   }
   
-  public void a(GdtVideoData paramGdtVideoData, long paramLong)
+  public void onPause()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    acqy.b("GdtVideoStatistics", "onStarted start:" + this.jdField_a_of_type_Long);
+    super.onPause();
   }
   
-  public void b(GdtVideoData paramGdtVideoData)
+  public void onResume()
   {
-    acqy.b("GdtVideoStatistics", "onCompleted start:" + this.jdField_a_of_type_Long);
-    if (paramGdtVideoData == null) {}
-    do
-    {
-      return;
-      c(paramGdtVideoData, paramGdtVideoData.getDurationMillis());
-    } while (!paramGdtVideoData.isLoop());
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public void b(GdtVideoData paramGdtVideoData, long paramLong)
-  {
-    acqy.b("GdtVideoStatistics", "onStopped start:" + this.jdField_a_of_type_Long + " end:" + paramLong);
-    c(paramGdtVideoData, paramLong);
-  }
-  
-  public void c(GdtVideoData paramGdtVideoData)
-  {
-    if (paramGdtVideoData == null)
-    {
-      acqy.d("GdtVideoStatistics", "805 reportLoadError data == null return");
-      return;
-    }
-    acqy.b("GdtVideoStatistics", "reportLoadError:" + paramGdtVideoData.getPlayScene());
-    String str = acrj.a(paramGdtVideoData.getPlayScene());
-    acrj.a((GdtAd)paramGdtVideoData.getAd(), str);
+    super.onResume();
   }
 }
 

@@ -1,37 +1,39 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.redpacket.ui.RedPacketRollTextView;
+import java.lang.ref.WeakReference;
 
-class lvx
-  implements lvv
+public class lvx
+  extends Handler
 {
-  private IBinder a;
+  WeakReference<RedPacketRollTextView> a;
   
-  lvx(IBinder paramIBinder)
+  public lvx(RedPacketRollTextView paramRedPacketRollTextView)
   {
-    this.a = paramIBinder;
+    this.a = new WeakReference(paramRedPacketRollTextView);
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void handleMessage(Message paramMessage)
   {
-    Parcel localParcel = Parcel.obtain();
-    try
+    RedPacketRollTextView localRedPacketRollTextView = (RedPacketRollTextView)this.a.get();
+    if (localRedPacketRollTextView == null) {}
+    do
     {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceCallback");
-      localParcel.writeInt(paramInt1);
-      localParcel.writeInt(paramInt2);
-      localParcel.writeInt(paramInt3);
-      this.a.transact(1, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
+      Bundle localBundle;
+      do
+      {
+        return;
+        localBundle = paramMessage.getData();
+      } while (localBundle == null);
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      }
+      localRedPacketRollTextView.setText(localBundle.getString("content"));
+    } while (RedPacketRollTextView.a(localRedPacketRollTextView) == null);
+    RedPacketRollTextView.a(localRedPacketRollTextView).a(null);
   }
 }
 

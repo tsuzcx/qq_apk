@@ -1,33 +1,18 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.automator.step.RegisterProxy;
 
 public class aomv
-  extends aojs
+  extends antg
 {
-  public aomv(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  private aomv(RegisterProxy paramRegisterProxy) {}
   
-  public boolean a()
+  protected void a()
   {
-    try
-    {
-      uee.a(this.a, "from_search_rzh_ws", 2, false);
-      return true;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("WeishiPublicAccountAction", 1, "doAction error: " + localException.getMessage());
-      a("WeishiPublicAccountAction");
-    }
-    return false;
+    this.a.a(10000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomv
  * JD-Core Version:    0.7.0.1
  */

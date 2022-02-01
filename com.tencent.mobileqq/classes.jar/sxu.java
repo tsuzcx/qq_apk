@@ -1,12 +1,57 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.BaseAdapter;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-class sxu
-  implements View.OnClickListener
+public abstract class sxu<T>
+  extends BaseAdapter
+  implements sxw
 {
-  sxu(sxt paramsxt) {}
+  private int jdField_a_of_type_Int;
+  private HashMap<T, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void onClick(View paramView) {}
+  protected void a(T paramT)
+  {
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    localHashMap.put(paramT, Integer.valueOf(i));
+  }
+  
+  protected void a(List<T> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      a(paramList.next());
+    }
+  }
+  
+  protected void b()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public T getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public final long getItemId(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilHashMap.size())) {
+      return -1L;
+    }
+    Object localObject = getItem(paramInt);
+    if (this.jdField_a_of_type_JavaUtilHashMap.get(localObject) != null) {
+      return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
+    }
+    return paramInt;
+  }
+  
+  public final boolean hasStableIds()
+  {
+    return true;
+  }
 }
 
 

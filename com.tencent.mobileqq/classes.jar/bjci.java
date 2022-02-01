@@ -1,12 +1,55 @@
-public abstract interface bjci
+import com.tencent.mobileqq.data.MedalList;
+import com.tencent.mobileqq.data.MedalList.Info;
+import java.util.ArrayList;
+
+public class bjci
 {
-  public abstract void a();
+  private MedalList a;
   
-  public abstract void a(long paramLong1, long paramLong2, byte[] paramArrayOfByte);
+  public int a()
+  {
+    if (this.a != null) {
+      return this.a.infoList.size();
+    }
+    return 0;
+  }
   
-  public abstract void a(bjcg parambjcg);
+  public int a(int paramInt)
+  {
+    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+      return ((MedalList.Info)this.a.infoList.get(paramInt)).type;
+    }
+    return 0;
+  }
   
-  public abstract void a(byte[] paramArrayOfByte);
+  public String a(int paramInt)
+  {
+    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+      return ((MedalList.Info)this.a.infoList.get(paramInt)).value;
+    }
+    return null;
+  }
+  
+  public void a(MedalList paramMedalList)
+  {
+    this.a = paramMedalList;
+  }
+  
+  public int b(int paramInt)
+  {
+    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+      return ((MedalList.Info)this.a.infoList.get(paramInt)).isRemind;
+    }
+    return 0;
+  }
+  
+  public int c(int paramInt)
+  {
+    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+      return ((MedalList.Info)this.a.infoList.get(paramInt)).tipsTimes;
+    }
+    return 0;
+  }
 }
 
 

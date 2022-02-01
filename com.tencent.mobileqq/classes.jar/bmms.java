@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qqfav.widget.QfavJumpActivity;
 
-class bmms
-  implements QQPermissionCallback
+public class bmms
+  implements DialogInterface.OnDismissListener
 {
-  bmms(bmmr parambmmr) {}
+  public bmms(QfavJumpActivity paramQfavJumpActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bglp.b(this.a.a.mRuntime.a());
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bmmr.a(this.a);
+    if (QfavJumpActivity.a(this.a))
+    {
+      QfavJumpActivity.a(this.a, false);
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmms
  * JD-Core Version:    0.7.0.1
  */

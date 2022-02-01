@@ -1,63 +1,107 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.LikeSettingActivity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
 
 public class aent
-  implements CompoundButton.OnCheckedChangeListener
+  extends BaseAdapter
+  implements aoog
 {
-  public aent(LikeSettingActivity paramLikeSettingActivity) {}
+  private alno jdField_a_of_type_Alno;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public aent(FontSettingActivity paramFontSettingActivity, Context paramContext, QQAppInterface paramQQAppInterface, ListView paramListView)
   {
-    if (paramCompoundButton == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramFontSettingActivity.getLayoutInflater();
+    this.jdField_a_of_type_Alno = new alno(paramQQAppInterface, this);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Alno.a();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562813, paramViewGroup, false);
+    aens localaens = (aens)this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131368212);
+    localImageView.setImageDrawable(this.jdField_a_of_type_Alno.a(localaens.jdField_b_of_type_Int, localaens.d));
+    ((TextView)paramView.findViewById(16908308)).setText(localaens.jdField_a_of_type_JavaLangString);
+    ((TextView)paramView.findViewById(16908309)).setText(localaens.jdField_b_of_type_JavaLangString);
+    ((TextView)paramView.findViewById(2131369615)).setText(localaens.c);
+    aenu localaenu = new aenu(this);
+    localaenu.jdField_a_of_type_JavaLangString = localaens.d;
+    localaenu.jdField_a_of_type_AndroidWidgetImageView = localImageView;
+    localaenu.jdField_a_of_type_Aens = localaens;
+    paramView.setTag(localaenu);
+    if ((FontSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity)) && (paramInt == this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.size() - 1))
     {
-      ((axdv)this.a.app.a(66)).a(paramBoolean);
-      this.a.app.reportClickEvent("CliOper", "0X8006729");
+      this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.a();
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    Object localObject1 = null;
+    paramInt2 = this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_ComTencentWidgetListView.getChildCount();
+    Object localObject2;
+    if (paramBitmap != null)
+    {
+      paramInt1 = 0;
+      if (paramInt1 >= paramInt2) {
+        break label105;
+      }
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag();
+      if ((localObject2 == null) || (!(localObject2 instanceof aenu))) {
+        break label98;
+      }
+      localObject2 = (aenu)localObject2;
+      localObject1 = localObject2;
+      if (!((aenu)localObject2).jdField_a_of_type_JavaLangString.equals(paramString)) {
+        break label98;
+      }
     }
     for (;;)
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      if (localObject2 != null)
+      {
+        ((aenu)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+        notifyDataSetChanged();
+      }
       return;
-      if (paramCompoundButton == this.a.c.a())
-      {
-        this.a.app.e(true, paramBoolean);
-      }
-      else
-      {
-        QQAppInterface localQQAppInterface;
-        String str;
-        if (paramCompoundButton == this.a.b.a())
-        {
-          localQQAppInterface = this.a.app;
-          if (paramBoolean) {}
-          for (str = "1";; str = "0")
-          {
-            bcst.b(localQQAppInterface, "dc00898", "", "", "0X8007614", "0X8007614", 0, 0, str, "", "", "");
-            this.a.jdField_a_of_type_Anip.h(paramBoolean);
-            break;
-          }
-        }
-        if (paramCompoundButton == this.a.d.a())
-        {
-          localQQAppInterface = this.a.app;
-          if (paramBoolean) {}
-          for (str = "1";; str = "2")
-          {
-            bcst.b(localQQAppInterface, "dc00898", "", "", "0X800791B", "0X800791B", 0, 0, str, "", "", "");
-            this.a.jdField_a_of_type_Anip.f(paramBoolean);
-            if (paramBoolean) {
-              break label249;
-            }
-            this.a.b.setVisibility(8);
-            break;
-          }
-          label249:
-          this.a.b.setVisibility(0);
-        }
-      }
+      label98:
+      paramInt1 += 1;
+      break;
+      label105:
+      localObject2 = localObject1;
     }
   }
 }

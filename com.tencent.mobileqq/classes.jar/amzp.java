@@ -1,8 +1,15 @@
-import java.io.ByteArrayOutputStream;
-
-public abstract interface amzp
+public class amzp
 {
-  public abstract void a(boolean paramBoolean, ByteArrayOutputStream paramByteArrayOutputStream);
+  public String a;
+  public String b;
+  public String c;
+  
+  public amzp(String paramString1, String paramString2, String paramString3)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
 }
 
 

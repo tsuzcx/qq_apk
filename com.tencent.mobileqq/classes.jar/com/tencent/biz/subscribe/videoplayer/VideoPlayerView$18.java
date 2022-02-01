@@ -2,7 +2,7 @@ package com.tencent.biz.subscribe.videoplayer;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import aaxb;
+import abbe;
 import android.view.View;
 import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
 import com.tencent.image.URLImageView;
@@ -49,7 +49,7 @@ class VideoPlayerView$18
         this.this$0.b.setVisibility(0);
         if (VideoPlayerView.a(this.this$0) != null)
         {
-          aaxb.b(VideoPlayerView.a(this.this$0).poster.id.get(), "auth_video", "finish_exp", 0, 0, new String[] { "", "", VideoPlayerView.a(this.this$0).poster.nick.get(), VideoPlayerView.a(this.this$0).title.get() });
+          abbe.b(VideoPlayerView.a(this.this$0).poster.id.get(), "auth_video", "finish_exp", 0, 0, new String[] { "", "", VideoPlayerView.a(this.this$0).poster.nick.get(), VideoPlayerView.a(this.this$0).title.get() });
           continue;
           VideoPlayerView.f(this.this$0);
           this.this$0.e();

@@ -1,28 +1,36 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.CommTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adis
-  implements CompoundButton.OnCheckedChangeListener
+  implements adbw
 {
-  public adis(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public int a()
   {
-    SettingCloneUtil.writeValue(this.a, this.a.app.getCurrentAccountUin(), null, "qqsetting_subaccount_notify", paramBoolean);
-    ((bdeh)this.a.app.getManager(61)).a(this.a.app);
-    QQAppInterface localQQAppInterface = this.a.app;
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
-    {
-      bcst.b(localQQAppInterface, "dc00898", "", "", "0X800AC3A", "0X800AC3A", 0, 0, i + "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
+    return 1036;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = new msg_svc.CommTmp();
+    paramQQAppInterface.c2c_type.set(1);
+    paramQQAppInterface.svr_type.set(160);
+    paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.comm_tmp.set(paramQQAppInterface);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 3022;
   }
 }
 

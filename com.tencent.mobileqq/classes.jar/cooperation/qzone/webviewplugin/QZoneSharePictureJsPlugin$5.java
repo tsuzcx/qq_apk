@@ -1,19 +1,19 @@
 package cooperation.qzone.webviewplugin;
 
-import anni;
-import bhod;
-import bmlo;
+import anzj;
+import bioy;
+import bnmr;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class QZoneSharePictureJsPlugin$5
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$5(bmlo parambmlo, bhod parambhod) {}
+  public QZoneSharePictureJsPlugin$5(bnmr parambnmr, bioy parambioy) {}
   
   public void run()
   {
-    QQToast.a(this.a.a().getContext(), anni.a(2131711115), 0).a();
+    QQToast.a(this.a.a().getContext(), anzj.a(2131711224), 0).a();
   }
 }
 

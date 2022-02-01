@@ -1,13 +1,20 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ajzg
-  implements bkiz
+  implements DialogInterface.OnClickListener
 {
-  ajzg(ajzf paramajzf, View paramView) {}
+  ajzg(ajyt paramajyt, boolean paramBoolean, String paramString) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    bdll.b(null, "dc00898", "", "", "0X8009DCA", "0X8009DCA", 0, 0, ajyt.a(this.jdField_a_of_type_Ajyt), "", "", "");
+    if (this.jdField_a_of_type_Boolean)
+    {
+      ajyt.a(this.jdField_a_of_type_Ajyt, ajyt.a(this.jdField_a_of_type_Ajyt), Long.valueOf(ajyt.a(this.jdField_a_of_type_Ajyt)).longValue(), false);
+      return;
+    }
+    ajyt.a(this.jdField_a_of_type_Ajyt, ajyt.a(this.jdField_a_of_type_Ajyt), Long.valueOf(ajyt.a(this.jdField_a_of_type_Ajyt)).longValue(), false, this.jdField_a_of_type_JavaLangString);
   }
 }
 

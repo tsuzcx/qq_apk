@@ -1,33 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.net.URL;
 
 public class pit
-  implements AladdinConfigHandler
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("KandianOpenOptConfigHandler", 2, "[onReceiveConfig] " + paramString);
-    paramString = phv.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("KandianOpenOptConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "opt_open_cost")) {
-        bmqa.a("preload_controller", Boolean.valueOf("1".equals(str2)));
-      }
-    }
-    return true;
-  }
+  int jdField_a_of_type_Int;
+  URL jdField_a_of_type_JavaNetURL;
+  int b;
+  int c;
+  int d;
   
-  public void onWipeConfig(int paramInt)
+  public String toString()
   {
-    bmqa.a("preload_controller", Boolean.valueOf(true));
+    StringBuilder localStringBuilder = new StringBuilder().append("[WaterFallPic]--> url=");
+    if (this.jdField_a_of_type_JavaNetURL != null) {}
+    for (String str = this.jdField_a_of_type_JavaNetURL.toString();; str = "") {
+      return str + ",originWidth =" + this.jdField_a_of_type_Int + ",originHeight =" + this.b + ",calcHeight =" + this.c + ",scaleHeight =" + this.d;
+    }
   }
 }
 

@@ -1,28 +1,32 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class aowb
+  extends aoxh
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  bdvs jdField_a_of_type_Bdvs;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
-  String c;
-  
-  public String toString()
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
-    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", md5='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", fileName='").append(this.c).append('\'');
-    localStringBuffer.append(", fileSize=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append(", downloadSize=").append(this.jdField_b_of_type_Long);
-    localStringBuffer.append(", req=").append(this.jdField_a_of_type_Boolean);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    paramQQAppInterface = new aovz(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "avgame";
+    paramQQAppInterface.c = "join_room";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    int i = 0;
+    while (i < paramContext.length)
+    {
+      paramString = paramContext[i];
+      if (paramString.split("=").length == 2)
+      {
+        int j = paramString.indexOf("=");
+        paramQQAppInterface.a(paramString.substring(0, j), paramString.substring(j + 1));
+      }
+      i += 1;
+    }
+    return paramQQAppInterface;
   }
 }
 

@@ -1,26 +1,17 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
 
 public class aisd
-  implements View.OnClickListener
+  implements aisf
 {
-  public aisd(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public aisd(StickerBubbleListView paramStickerBubbleListView, int[] paramArrayOfInt) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) || (this.a.f == ClassificationSearchActivity.d)) {
-      ClassificationSearchActivity.a(this.a);
-    }
-    for (;;)
+    if ((paramView.getTag() instanceof Integer))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
+      paramView = (Integer)paramView.getTag();
+      this.jdField_a_of_type_ArrayOfInt[0] = paramView.intValue();
     }
   }
 }

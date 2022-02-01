@@ -10,8 +10,7 @@ class FriendProfileMoreInfoActivity$10
   
   public void run()
   {
-    this.this$0.a.scrollTo(0, FriendProfileMoreInfoActivity.a(this.this$0).getTop());
-    FriendProfileMoreInfoActivity.c(this.this$0);
+    this.this$0.a.scrollTo(0, FriendProfileMoreInfoActivity.b(this.this$0).getTop());
   }
 }
 

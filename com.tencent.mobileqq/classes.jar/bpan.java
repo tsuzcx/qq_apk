@@ -1,17 +1,18 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class bpan
-  extends bqfy
 {
-  public bpan(EditPicActivity paramEditPicActivity) {}
+  private static boolean a;
   
-  public void a()
+  public static void a()
   {
-    yqp.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
-    bozw localbozw = (bozw)this.a.a.a(bozw.class);
-    if (localbozw != null) {
-      localbozw.b();
-    }
+    a = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
+  }
+  
+  public static boolean a()
+  {
+    return false;
   }
 }
 

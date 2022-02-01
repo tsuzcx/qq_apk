@@ -1,12 +1,29 @@
-public abstract interface olq
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class olq
+  extends nkq
 {
-  public abstract void a();
+  private boolean b;
   
-  public abstract void a(int paramInt);
+  olq(ReadInJoySettingActivity paramReadInJoySettingActivity, boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
   
-  public abstract void a(orb paramorb, int paramInt1, int paramInt2);
-  
-  public abstract void b();
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt == 0) {
+      bnrf.a(bnrf.a(), this.b);
+    }
+    for (;;)
+    {
+      ReadInJoySettingActivity.a(this.a);
+      return;
+      QLog.d("ReadInJoySettingActivity", 1, "troopProtocolObserver fail!");
+    }
+  }
 }
 
 

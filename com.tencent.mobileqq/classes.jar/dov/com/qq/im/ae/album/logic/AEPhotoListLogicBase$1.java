@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.album.logic;
 
 import android.support.v7.widget.GridLayoutManager;
-import bnff;
-import bngd;
+import bogn;
+import bohl;
 import mqq.util.WeakReference;
 
 public class AEPhotoListLogicBase$1
   implements Runnable
 {
-  public AEPhotoListLogicBase$1(bngd parambngd, int paramInt) {}
+  public AEPhotoListLogicBase$1(bohl parambohl, int paramInt) {}
   
   public void run()
   {
-    ((bnff)this.this$0.a.get()).a.scrollToPositionWithOffset(this.a, 0);
+    ((bogn)this.this$0.a.get()).a.scrollToPositionWithOffset(this.a, 0);
   }
 }
 

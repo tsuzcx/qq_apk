@@ -1,9 +1,18 @@
-public class ajbc
-  extends ajax
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+public final class ajbc
+  implements DialogInterface.OnClickListener
 {
-  public boolean a()
+  public ajbc(boolean paramBoolean, Context paramContext) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    if (this.jdField_a_of_type_Boolean) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    }
   }
 }
 

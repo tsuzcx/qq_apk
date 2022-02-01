@@ -1,10 +1,12 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
+import NS_MINI_INTERFACE.INTERFACE.StSubscribeMessage;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
-import aqcb;
+import android.text.TextUtils;
+import aqre;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.MiniAppInterface;
@@ -24,11 +26,15 @@ import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,39 +65,39 @@ public class OtherJsPlugin
       this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString, null, paramInt);
       return;
     }
-    aqcb localaqcb;
+    aqre localaqre;
     if (isMiniGameRuntime())
     {
       if ((this.jsPluginEngine.appBrandRuntime.activity == null) || (!(this.jsPluginEngine.appBrandRuntime.activity instanceof GameActivity))) {
         break label297;
       }
-      localaqcb = ((GameActivity)this.jsPluginEngine.appBrandRuntime.activity).getColorNoteController();
+      localaqre = ((GameActivity)this.jsPluginEngine.appBrandRuntime.activity).getColorNoteController();
     }
     for (;;)
     {
-      if (localaqcb != null)
+      if (localaqre != null)
       {
-        if (!localaqcb.c())
+        if (!localaqre.c())
         {
-          if (localaqcb.b())
+          if (localaqre.b())
           {
             if (paramBoolean)
             {
-              AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.6(this, localaqcb, paramJsRuntime, paramString, paramInt));
+              AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.6(this, localaqre, paramJsRuntime, paramString, paramInt));
               return;
               if ((this.jsPluginEngine.appBrandRuntime != null) && ((this.jsPluginEngine.appBrandRuntime.activity instanceof AppBrandUI))) {
-                localaqcb = ((AppBrandUI)this.jsPluginEngine.appBrandRuntime.activity).getColorNoteController();
+                localaqre = ((AppBrandUI)this.jsPluginEngine.appBrandRuntime.activity).getColorNoteController();
               }
             }
             else
             {
-              AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.7(this, localaqcb));
+              AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.7(this, localaqre));
               this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString, null, paramInt);
             }
           }
           else
           {
-            AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.8(this, localaqcb));
+            AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.8(this, localaqre));
             this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString, null, paramInt);
           }
         }
@@ -107,7 +113,7 @@ public class OtherJsPlugin
         return;
       }
       label297:
-      localaqcb = null;
+      localaqre = null;
     }
   }
   
@@ -126,32 +132,34 @@ public class OtherJsPlugin
     }
   }
   
-  private void callbackSettingEvent(AuthorizeCenter paramAuthorizeCenter, String paramString, JsRuntime paramJsRuntime, int paramInt)
+  private void callbackSettingEvent(AuthorizeCenter paramAuthorizeCenter, String paramString, JsRuntime paramJsRuntime, int paramInt, boolean paramBoolean, Map<String, String> paramMap)
   {
     if (paramAuthorizeCenter == null) {
       return;
     }
-    Object localObject = paramAuthorizeCenter.getAuthorizeList(6);
-    JSONArray localJSONArray;
+    Object localObject2 = paramAuthorizeCenter.getAuthorizeList(6);
+    Object localObject1;
+    Object localObject3;
+    Object localObject4;
     for (;;)
     {
       try
       {
         paramAuthorizeCenter = new JSONObject();
-        localJSONArray = new JSONArray();
-        localObject = ((List)localObject).iterator();
-        if (!((Iterator)localObject).hasNext()) {
+        localObject1 = new JSONArray();
+        localObject2 = ((List)localObject2).iterator();
+        if (!((Iterator)localObject2).hasNext()) {
           break;
         }
-        AuthorizeCenter.AuthorizeInfo localAuthorizeInfo = (AuthorizeCenter.AuthorizeInfo)((Iterator)localObject).next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("scope", localAuthorizeInfo.scopeName);
+        localObject3 = (AuthorizeCenter.AuthorizeInfo)((Iterator)localObject2).next();
+        localObject4 = new JSONObject();
+        ((JSONObject)localObject4).put("scope", ((AuthorizeCenter.AuthorizeInfo)localObject3).scopeName);
         int i;
-        if (localAuthorizeInfo.authFlag == 2)
+        if (((AuthorizeCenter.AuthorizeInfo)localObject3).authFlag == 2)
         {
           i = 1;
-          localJSONObject.put("state", i);
-          localJSONArray.put(localJSONObject);
+          ((JSONObject)localObject4).put("state", i);
+          ((JSONArray)localObject1).put(localObject4);
         }
         else
         {
@@ -165,13 +173,50 @@ public class OtherJsPlugin
         return;
       }
     }
-    paramAuthorizeCenter.put("authSetting", localJSONArray);
+    paramAuthorizeCenter.put("authSetting", localObject1);
+    if (paramBoolean)
+    {
+      localObject1 = new JSONObject();
+      localObject2 = new JSONObject();
+      if ((paramMap != null) && (paramMap.size() > 0))
+      {
+        localObject3 = paramMap.keySet().iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          localObject4 = (String)((Iterator)localObject3).next();
+          ((JSONObject)localObject2).put((String)localObject4, paramMap.get(localObject4));
+        }
+      }
+      ((JSONObject)localObject1).put("itemSettings", localObject2);
+      paramAuthorizeCenter.put("subscriptionsSetting", localObject1);
+    }
     this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString, paramAuthorizeCenter, paramInt);
   }
   
-  private void callbackSettingEvent(String paramString, JsRuntime paramJsRuntime, int paramInt)
+  private void callbackSettingEvent(String paramString1, JsRuntime paramJsRuntime, int paramInt, String paramString2)
   {
-    callbackSettingEvent(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getAuthorizeCenter(this.jsPluginEngine.appBrandRuntime.appId), paramString, paramJsRuntime, paramInt);
+    AuthorizeCenter localAuthorizeCenter = AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getAuthorizeCenter(this.jsPluginEngine.appBrandRuntime.appId);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(paramString2)) {}
+    try
+    {
+      bool1 = new JSONObject(paramString2).optBoolean("withSubscriptions");
+      if (bool1)
+      {
+        requestAuthList(bool1, paramString1, paramJsRuntime, paramInt, localAuthorizeCenter);
+        return;
+      }
+    }
+    catch (JSONException paramString2)
+    {
+      for (;;)
+      {
+        QLog.e(TAG, 1, "getSetting parse jsonParams exception", paramString2);
+        bool1 = bool2;
+      }
+      callbackSettingEvent(localAuthorizeCenter, paramString1, paramJsRuntime, paramInt, bool1, null);
+    }
   }
   
   /* Error */
@@ -181,139 +226,139 @@ public class OtherJsPlugin
     //   0: iconst_0
     //   1: istore 5
     //   3: aload_1
-    //   4: invokestatic 290	alcp:a	(Lcom/tencent/mobileqq/app/BaseActivity;)Z
+    //   4: invokestatic 341	alof:a	(Lcom/tencent/mobileqq/app/BaseActivity;)Z
     //   7: ifne +21 -> 28
     //   10: aload_0
-    //   11: getfield 107	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
+    //   11: getfield 115	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
     //   14: aload_3
-    //   15: ldc_w 292
+    //   15: ldc_w 343
     //   18: aconst_null
-    //   19: ldc_w 294
+    //   19: ldc_w 345
     //   22: iload 4
-    //   24: invokevirtual 297	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
+    //   24: invokevirtual 348	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:callbackJsEventFail	(Lcom/tencent/mobileqq/mini/webview/JsRuntime;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;I)V
     //   27: return
-    //   28: new 299	java/util/ArrayList
+    //   28: new 350	java/util/ArrayList
     //   31: dup
-    //   32: invokespecial 300	java/util/ArrayList:<init>	()V
+    //   32: invokespecial 351	java/util/ArrayList:<init>	()V
     //   35: pop
     //   36: aload_2
-    //   37: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   37: invokestatic 319	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   40: ifne +204 -> 244
-    //   43: new 187	org/json/JSONObject
+    //   43: new 195	org/json/JSONObject
     //   46: dup
     //   47: aload_2
-    //   48: invokespecial 190	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   48: invokespecial 198	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   51: astore_2
     //   52: aload_2
     //   53: ifnull +13 -> 66
     //   56: aload_2
-    //   57: ldc_w 308
+    //   57: ldc_w 353
     //   60: iconst_0
-    //   61: invokevirtual 312	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   61: invokevirtual 356	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
     //   64: istore 5
-    //   66: new 314	android/content/Intent
+    //   66: new 358	android/content/Intent
     //   69: dup
     //   70: aload_1
-    //   71: ldc_w 316
-    //   74: invokespecial 319	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   71: ldc_w 360
+    //   74: invokespecial 363	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   77: astore_2
     //   78: aload_2
-    //   79: ldc_w 321
+    //   79: ldc_w 365
     //   82: aload_1
-    //   83: ldc_w 322
-    //   86: invokevirtual 328	com/tencent/mobileqq/app/BaseActivity:getString	(I)Ljava/lang/String;
-    //   89: invokevirtual 332	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   83: ldc_w 366
+    //   86: invokevirtual 372	com/tencent/mobileqq/app/BaseActivity:getString	(I)Ljava/lang/String;
+    //   89: invokevirtual 376	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   92: pop
     //   93: aload_2
-    //   94: ldc_w 334
+    //   94: ldc_w 378
     //   97: aload_1
-    //   98: ldc_w 322
-    //   101: invokevirtual 328	com/tencent/mobileqq/app/BaseActivity:getString	(I)Ljava/lang/String;
-    //   104: invokevirtual 332	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   98: ldc_w 366
+    //   101: invokevirtual 372	com/tencent/mobileqq/app/BaseActivity:getString	(I)Ljava/lang/String;
+    //   104: invokevirtual 376	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   107: pop
     //   108: aload_2
-    //   109: ldc_w 336
-    //   112: invokestatic 342	java/lang/System:currentTimeMillis	()J
-    //   115: invokevirtual 345	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
+    //   109: ldc_w 380
+    //   112: invokestatic 386	java/lang/System:currentTimeMillis	()J
+    //   115: invokevirtual 389	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
     //   118: pop
     //   119: aload_2
-    //   120: ldc_w 347
-    //   123: ldc_w 349
-    //   126: invokevirtual 332	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   120: ldc_w 391
+    //   123: ldc_w 393
+    //   126: invokevirtual 376	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   129: pop
     //   130: iload 5
     //   132: ifeq +12 -> 144
     //   135: aload_2
-    //   136: ldc_w 351
+    //   136: ldc_w 395
     //   139: iconst_1
-    //   140: invokevirtual 354	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   140: invokevirtual 398	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   143: pop
     //   144: aload_2
-    //   145: ldc_w 355
-    //   148: invokevirtual 359	android/content/Intent:setFlags	(I)Landroid/content/Intent;
+    //   145: ldc_w 399
+    //   148: invokevirtual 403	android/content/Intent:setFlags	(I)Landroid/content/Intent;
     //   151: pop
     //   152: aload_0
-    //   153: getfield 99	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin:scanResultReceiver	Landroid/content/BroadcastReceiver;
+    //   153: getfield 107	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin:scanResultReceiver	Landroid/content/BroadcastReceiver;
     //   156: ifnull +16 -> 172
     //   159: aload_1
     //   160: aload_0
-    //   161: getfield 99	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin:scanResultReceiver	Landroid/content/BroadcastReceiver;
-    //   164: invokevirtual 363	com/tencent/mobileqq/app/BaseActivity:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
+    //   161: getfield 107	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin:scanResultReceiver	Landroid/content/BroadcastReceiver;
+    //   164: invokevirtual 407	com/tencent/mobileqq/app/BaseActivity:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
     //   167: aload_0
     //   168: aconst_null
-    //   169: putfield 99	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin:scanResultReceiver	Landroid/content/BroadcastReceiver;
+    //   169: putfield 107	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin:scanResultReceiver	Landroid/content/BroadcastReceiver;
     //   172: aload_0
-    //   173: new 365	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin$10
+    //   173: new 409	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin$10
     //   176: dup
     //   177: aload_0
     //   178: aload_3
     //   179: iload 4
-    //   181: invokespecial 368	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin$10:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;I)V
-    //   184: putfield 99	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin:scanResultReceiver	Landroid/content/BroadcastReceiver;
-    //   187: new 370	android/content/IntentFilter
+    //   181: invokespecial 412	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin$10:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin;Lcom/tencent/mobileqq/mini/webview/JsRuntime;I)V
+    //   184: putfield 107	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin:scanResultReceiver	Landroid/content/BroadcastReceiver;
+    //   187: new 414	android/content/IntentFilter
     //   190: dup
     //   191: ldc 23
-    //   193: invokespecial 371	android/content/IntentFilter:<init>	(Ljava/lang/String;)V
+    //   193: invokespecial 415	android/content/IntentFilter:<init>	(Ljava/lang/String;)V
     //   196: astore_3
     //   197: aload_1
     //   198: aload_0
-    //   199: getfield 99	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin:scanResultReceiver	Landroid/content/BroadcastReceiver;
+    //   199: getfield 107	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin:scanResultReceiver	Landroid/content/BroadcastReceiver;
     //   202: aload_3
     //   203: ldc 17
     //   205: aconst_null
-    //   206: invokevirtual 375	com/tencent/mobileqq/app/BaseActivity:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;)Landroid/content/Intent;
+    //   206: invokevirtual 419	com/tencent/mobileqq/app/BaseActivity:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;)Landroid/content/Intent;
     //   209: pop
     //   210: aload_1
     //   211: aload_2
-    //   212: invokevirtual 379	com/tencent/mobileqq/app/BaseActivity:startActivity	(Landroid/content/Intent;)V
+    //   212: invokevirtual 423	com/tencent/mobileqq/app/BaseActivity:startActivity	(Landroid/content/Intent;)V
     //   215: return
     //   216: astore_2
     //   217: getstatic 49	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin:TAG	Ljava/lang/String;
     //   220: iconst_1
-    //   221: new 194	java/lang/StringBuilder
+    //   221: new 202	java/lang/StringBuilder
     //   224: dup
-    //   225: invokespecial 195	java/lang/StringBuilder:<init>	()V
-    //   228: ldc_w 381
-    //   231: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: invokespecial 203	java/lang/StringBuilder:<init>	()V
+    //   228: ldc_w 425
+    //   231: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   234: aload_2
-    //   235: invokevirtual 384	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   238: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   241: invokestatic 387	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   235: invokevirtual 428	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   238: invokevirtual 212	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   241: invokestatic 431	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   244: aconst_null
     //   245: astore_2
     //   246: goto -194 -> 52
     //   249: astore 6
     //   251: getstatic 49	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin:TAG	Ljava/lang/String;
     //   254: iconst_1
-    //   255: new 194	java/lang/StringBuilder
+    //   255: new 202	java/lang/StringBuilder
     //   258: dup
-    //   259: invokespecial 195	java/lang/StringBuilder:<init>	()V
-    //   262: ldc_w 389
-    //   265: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   259: invokespecial 203	java/lang/StringBuilder:<init>	()V
+    //   262: ldc_w 433
+    //   265: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   268: aload 6
-    //   270: invokevirtual 384	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   273: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   276: invokestatic 387	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   270: invokevirtual 428	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   273: invokevirtual 212	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   276: invokestatic 431	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   279: goto -112 -> 167
     // Local variable table:
     //   start	length	slot	name	signature
@@ -330,12 +375,37 @@ public class OtherJsPlugin
     //   159	167	249	java/lang/Exception
   }
   
-  private void insertColorNote(aqcb paramaqcb)
+  private Map<String, String> getInteractiveSubscribeList(List<INTERFACE.StSubscribeMessage> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return null;
+    }
+    HashMap localHashMap = new HashMap();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      INTERFACE.StSubscribeMessage localStSubscribeMessage = (INTERFACE.StSubscribeMessage)paramList.next();
+      if (localStSubscribeMessage.authState.get() != 0)
+      {
+        String str = localStSubscribeMessage.templateId.get();
+        if (localStSubscribeMessage.authState.get() == 1) {
+          localHashMap.put(str, "accept");
+        } else if (localStSubscribeMessage.authState.get() == 2) {
+          localHashMap.put(str, "reject");
+        } else if (localStSubscribeMessage.authState.get() == 3) {
+          localHashMap.put(str, "ban");
+        }
+      }
+    }
+    return localHashMap;
+  }
+  
+  private void insertColorNote(aqre paramaqre)
   {
     if ((!isMiniGameRuntime()) && (this.jsPluginEngine.appBrandRuntime != null) && ((this.jsPluginEngine.appBrandRuntime.activity instanceof AppBrandUI))) {
       ((AppBrandUI)this.jsPluginEngine.appBrandRuntime.activity).setColorNoteWithOutMoveTaskToBackThisTime();
     }
-    paramaqcb.e();
+    paramaqre.e();
   }
   
   private void launchChooseAddressH5(String paramString)
@@ -368,6 +438,11 @@ public class OtherJsPlugin
     this.receiverRegistered = true;
   }
   
+  private void requestAuthList(boolean paramBoolean, String paramString, JsRuntime paramJsRuntime, int paramInt, AuthorizeCenter paramAuthorizeCenter)
+  {
+    MiniAppCmdUtil.getInstance().getAuthList(null, getAppId(), new OtherJsPlugin.5(this, paramAuthorizeCenter, paramString, paramJsRuntime, paramInt, paramBoolean));
+  }
+  
   private void unregisterChooseAddressReceiver()
   {
     if ((!this.receiverRegistered) || (this.addressReceiver == null)) {
@@ -379,10 +454,12 @@ public class OtherJsPlugin
   
   public String handleNativeRequest(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
   {
+    boolean bool2 = false;
     QLog.d(TAG, 2, "handleNativeRequest event=" + paramString1 + ",jsonParams=" + paramString2 + ",callbackId=" + paramInt + ",webview=" + paramJsRuntime);
     this.mJsRunTime = paramJsRuntime;
     this.mCallBackId = paramInt;
     if ("saveAppToDesktop".equals(paramString1)) {}
+    label402:
     do
     {
       for (;;)
@@ -406,7 +483,7 @@ public class OtherJsPlugin
         }
         if ("openSetting".equals(paramString1))
         {
-          MiniAppController.getInstance().setActivityResultListener(new OtherJsPlugin.4(this, paramString1, paramJsRuntime, paramInt));
+          MiniAppController.getInstance().setActivityResultListener(new OtherJsPlugin.4(this, paramString1, paramJsRuntime, paramInt, paramString2));
           openSettingActivity(this.jsPluginEngine.getActivityContext(), this.jsPluginEngine.appBrandRuntime.getApkgInfo());
         }
         else
@@ -420,11 +497,29 @@ public class OtherJsPlugin
               QLog.e(TAG, 1, "getSetting, but authorizeCenter is null?!");
               return "";
             }
-            if (((AuthorizeCenter)localObject).isAuthorizeSynchronized()) {
-              callbackSettingEvent((AuthorizeCenter)localObject, paramString1, paramJsRuntime, paramInt);
-            } else {
-              MiniAppCmdUtil.getInstance().getAuthList(null, getAppId(), new OtherJsPlugin.5(this, (AuthorizeCenter)localObject, paramString1, paramJsRuntime, paramInt));
+            boolean bool1 = bool2;
+            if (!TextUtils.isEmpty(paramString2)) {}
+            try
+            {
+              bool1 = new JSONObject(paramString2).optBoolean("withSubscriptions");
+              if (!((AuthorizeCenter)localObject).isAuthorizeSynchronized()) {
+                break label402;
+              }
+              if (bool1) {
+                requestAuthList(bool1, paramString1, paramJsRuntime, paramInt, (AuthorizeCenter)localObject);
+              }
             }
+            catch (JSONException localJSONException)
+            {
+              for (;;)
+              {
+                QLog.e(TAG, 1, "getSetting parse jsonParams exception", localJSONException);
+                bool1 = bool2;
+              }
+              callbackSettingEvent((AuthorizeCenter)localObject, paramString1, paramJsRuntime, paramInt, bool1, null);
+            }
+            continue;
+            requestAuthList(bool1, paramString1, paramJsRuntime, paramInt, (AuthorizeCenter)localObject);
           }
           else if ("scanCode".equals(paramString1))
           {
@@ -455,7 +550,7 @@ public class OtherJsPlugin
     if (isMiniGameRuntime())
     {
       if ((this.jsPluginEngine.appBrandRuntime.activity == null) || (!(this.jsPluginEngine.appBrandRuntime.activity instanceof GameActivity))) {
-        break label627;
+        break label689;
       }
       paramString2 = ((GameActivity)this.jsPluginEngine.appBrandRuntime.activity).getColorNoteController();
     }
@@ -472,7 +567,7 @@ public class OtherJsPlugin
       {
         return ApiUtil.wrapCallbackFail(paramString1, null).toString();
       }
-      label627:
+      label689:
       paramString2 = null;
     }
   }

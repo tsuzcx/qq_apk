@@ -10,8 +10,14 @@
                 "name": "div",
                 "attrs": {
                     "class": "div_class",
-                    "style": "line-height: 24px; color: #aa0000;",
+                    "style": "line-height: 24px; width:351px;color: #aa0000;-webkit-line-clamp:${comment_text_line}",
                     "ratio": "$ratio"
+                },
+                "truncationAttrs": {
+                    "text": "更多",
+                    "href": "$comment_text_more_url",
+                    "color": "#376099",
+                    "font-size": "16px"
                 },
                 "children": [
                     {
@@ -67,7 +73,7 @@
                         "name": "text",
                         "attrs": {
                             "class": "div_class",
-                            "style": "line-height: 24px; color: #000000;width:351px;font-size:16px",
+                            "style": "line-height: 24px; color: #000000;width:351px;font-size:16px;",
                             "ratio": "$ratio"
                         },
                         "children": [

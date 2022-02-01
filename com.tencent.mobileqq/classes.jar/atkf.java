@@ -1,80 +1,54 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class atkf
-  extends atjj
+public class atkf
+  implements View.OnClickListener
 {
-  final String b = "ExcitingTransfer.UploadDataRP<FileAssistant>";
-  protected String c;
-  protected int d;
-  protected long d;
-  protected String d;
-  protected long e;
-  protected long f;
-  protected long g;
+  public atkf(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public atkf(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    super(paramQQAppInterface);
-  }
-  
-  protected abstract int a();
-  
-  protected HashMap<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_ReportVer", String.valueOf(1));
-    localHashMap.put("param_TransferType", String.valueOf(a()));
-    localHashMap.put("param_Platform", String.valueOf(2));
-    localHashMap.put("param_AppType", String.valueOf(0));
-    localHashMap.put("param_Result", String.valueOf(this.jdField_d_of_type_Int));
-    localHashMap.put("param_FileName", String.valueOf(this.c));
-    localHashMap.put("param_Suffix", String.valueOf(this.jdField_d_of_type_JavaLangString));
-    localHashMap.put("param_TargetUin", String.valueOf(this.e));
-    localHashMap.put("param_GroupCode", String.valueOf(this.f));
-    localHashMap.put("param_FileSize", String.valueOf(this.g));
-    return localHashMap;
-  }
-  
-  public void a()
-  {
-    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] reportNetError no implement. please check call");
-  }
-  
-  public void a(long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3)
-  {
-    this.e = paramLong1;
-    this.f = paramLong2;
-    this.c = paramString1;
-    this.jdField_d_of_type_JavaLangString = paramString2;
-    this.g = paramLong3;
-  }
-  
-  protected boolean a()
-  {
-    return false;
-  }
-  
-  protected HashMap<String, String> b()
-  {
-    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] getOldReportData no implement. please check call");
-    return null;
-  }
-  
-  public void b()
-  {
-    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] reportUserCancel no implement. please check call");
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-  }
-  
-  public void c(long paramLong)
-  {
-    this.jdField_d_of_type_Long = paramLong;
+    Object localObject = paramView.getTag();
+    int i;
+    if ((localObject instanceof atkr))
+    {
+      localObject = (atkr)paramView.getTag();
+      i = ((atkr)localObject).c;
+      localObject = (WeiYunFileInfo)((atkr)localObject).a;
+    }
+    for (;;)
+    {
+      QfileBaseCloudFileTabView localQfileBaseCloudFileTabView;
+      if (localObject != null)
+      {
+        if ((paramView.getId() == 2131366604) && (QfileBaseCloudFileTabView.c(this.a))) {
+          bdll.b(QfileBaseCloudFileTabView.c(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
+        }
+        localQfileBaseCloudFileTabView = this.a;
+        if (paramView.getId() != 2131366604) {
+          break label155;
+        }
+      }
+      label155:
+      for (boolean bool = true;; bool = false)
+      {
+        localQfileBaseCloudFileTabView.a((WeiYunFileInfo)localObject, i, bool);
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        if (!(localObject instanceof atjl)) {
+          break label160;
+        }
+        localObject = (WeiYunFileInfo)((atjl)paramView.getTag()).a;
+        i = -1;
+        break;
+      }
+      label160:
+      i = 0;
+      localObject = null;
+    }
   }
 }
 

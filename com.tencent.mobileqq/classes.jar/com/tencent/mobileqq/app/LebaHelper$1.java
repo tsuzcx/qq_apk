@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.app;
 
-import anov;
-import bhtx;
+import aoaw;
+import bius;
 
 public class LebaHelper$1
   implements Runnable
 {
-  public LebaHelper$1(anov paramanov) {}
+  public LebaHelper$1(aoaw paramaoaw) {}
   
   public void run()
   {
-    anov.a(this.this$0);
+    aoaw.a(this.this$0);
     this.this$0.f();
-    this.this$0.jdField_a_of_type_Bhtx = new bhtx(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.this$0.jdField_a_of_type_Bius = new bius(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.this$0.h();
   }
 }

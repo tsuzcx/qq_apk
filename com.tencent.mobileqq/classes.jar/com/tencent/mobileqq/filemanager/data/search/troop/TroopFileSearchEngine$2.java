@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.filemanager.data.search.troop;
 
-import atih;
-import atiz;
-import bewh;
+import auab;
+import auat;
+import bfwb;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopFileSearchEngine$2
   implements Runnable
 {
-  public TroopFileSearchEngine$2(atiz paramatiz) {}
+  public TroopFileSearchEngine$2(auat paramauat) {}
   
   public void run()
   {
-    bewh localbewh = bewh.a();
-    atiz.a(this.this$0, localbewh.a(atiz.a(this.this$0), atiz.a(this.this$0), 0));
-    if (atiz.b(this.this$0))
+    bfwb localbfwb = bfwb.a();
+    auat.a(this.this$0, localbfwb.a(auat.a(this.this$0), auat.a(this.this$0), 0));
+    if (auat.b(this.this$0))
     {
       QLog.i("TroopFileSearchEngine<QFile>", 4, "collectContactInfos. need do search. execSearch.");
-      atiz.a(this.this$0);
-      atiz.a(this.this$0, atiz.a(this.this$0).b());
-      atiz.a(this.this$0, atiz.a(this.this$0));
+      auat.a(this.this$0);
+      auat.a(this.this$0, auat.a(this.this$0).b());
+      auat.a(this.this$0, auat.a(this.this$0));
     }
   }
 }

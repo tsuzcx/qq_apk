@@ -98,7 +98,7 @@ public abstract class AbsAppBrandPage
   {
     this.keyBoardConfirmView = LayoutInflater.from(getContext().getApplicationContext()).inflate(2131559395, null);
     this.keyBoardConfirmView.setVisibility(8);
-    ((TextView)this.keyBoardConfirmView.findViewById(2131370968)).setOnClickListener(new AbsAppBrandPage.1(this));
+    ((TextView)this.keyBoardConfirmView.findViewById(2131371073)).setOnClickListener(new AbsAppBrandPage.1(this));
     addView(this.keyBoardConfirmView);
   }
   

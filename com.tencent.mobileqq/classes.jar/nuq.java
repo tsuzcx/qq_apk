@@ -1,50 +1,86 @@
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.3.1;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.3.2;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
 
 public class nuq
-  implements TVK_IMediaPlayer.OnCompletionListener
+  extends aoeg
 {
-  public nuq(VideoCoverFragment paramVideoCoverFragment) {}
+  public nuq(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  void a()
   {
-    VideoCoverFragment.a(this.a);
-    int i = this.a.a();
-    if ((i > 1) && (VideoCoverFragment.a(this.a) != null))
-    {
-      if (VideoCoverFragment.a(this.a) != i - 1) {
-        break label209;
-      }
-      ThreadManager.getUIHandler().post(new VideoCoverFragment.3.1(this));
+    if (this.a.jdField_j_of_type_Boolean) {
+      this.a.G();
     }
-    for (;;)
-    {
-      paramTVK_IMediaPlayer = ((num)VideoCoverFragment.a(this.a).jdField_a_of_type_JavaUtilArrayList.get(VideoCoverFragment.a(this.a))).b;
-      bcst.a(null, "dc00898", "", VideoCoverFragment.a(this.a).jdField_a_of_type_Nun.a, "0X8008F65", "0X8008F65", 0, 0, VideoCoverFragment.a(this.a).jdField_a_of_type_Nun.c, "", paramTVK_IMediaPlayer, VideoCoverFragment.a(this.a).jdField_a_of_type_Nun.b);
-      Integer localInteger = (Integer)PublicAccountAdvertisementActivity.a.get(paramTVK_IMediaPlayer);
-      i = (int)(((num)VideoCoverFragment.a(this.a).jdField_a_of_type_JavaUtilArrayList.get(VideoCoverFragment.a(this.a))).a.a / 1000L);
-      if (localInteger == null) {
-        break;
-      }
-      PublicAccountAdvertisementActivity.a.put(paramTVK_IMediaPlayer, Integer.valueOf(localInteger.intValue() + i));
+    this.a.jdField_j_of_type_Boolean = true;
+  }
+  
+  public void onDynamicListGet(boolean paramBoolean, int paramInt)
+  {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    super.onDynamicListGet(paramBoolean, paramInt);
+    if (this.a.jdField_a_of_type_Nrk == null) {
       return;
-      label209:
-      ThreadManager.getUIHandler().post(new VideoCoverFragment.3.2(this));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverFragment", 2, "current time = null");
+    this.a.q = true;
+    if (paramInt == 0)
+    {
+      nse localnse = nso.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.e);
+      if (localnse != null)
+      {
+        this.a.jdField_a_of_type_Nrk.a(localnse.b(), localnse.a);
+        this.a.jdField_a_of_type_Nrk.a(localnse.b());
+      }
     }
-    PublicAccountAdvertisementActivity.a.put(paramTVK_IMediaPlayer, Integer.valueOf(i));
+    if (paramBoolean) {
+      if (this.a.jdField_a_of_type_Nrk.a() == 0)
+      {
+        paramBoolean = bool1;
+        if (paramBoolean) {
+          this.a.v();
+        }
+        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.b(paramBoolean);
+        bool1 = paramBoolean;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "onDynamicListGet: --hasMoreData=" + paramBoolean);
+          bool1 = paramBoolean;
+        }
+        label172:
+        if (paramInt != 1) {
+          break label246;
+        }
+      }
+    }
+    for (this.a.l = AccountDetailActivity.jdField_j_of_type_Int;; this.a.l = AccountDetailActivity.k) {
+      label246:
+      do
+      {
+        this.a.jdField_a_of_type_Nrk.b(this.a.l);
+        this.a.jdField_a_of_type_Nrk.notifyDataSetChanged();
+        return;
+        paramBoolean = true;
+        break;
+        this.a.jdField_a_of_type_Nrk.notifyDataSetChanged();
+        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.b();
+        bool1 = bool2;
+        break label172;
+      } while ((paramInt != 4) && ((paramInt != 0) || (bool1)));
+    }
+  }
+  
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  {
+    super.onFollowPublicAccount(paramBoolean, paramString);
+    a();
+  }
+  
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    super.onUnfollowPublicAccount(paramInt, paramPublicAccountInfo);
+    a();
   }
 }
 

@@ -1,6 +1,15 @@
-public abstract interface boul
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+
+class boul
+  implements MediaPlayer.OnPreparedListener
 {
-  public abstract void U();
+  boul(bouf parambouf) {}
+  
+  public void onPrepared(MediaPlayer paramMediaPlayer)
+  {
+    paramMediaPlayer.start();
+  }
 }
 
 

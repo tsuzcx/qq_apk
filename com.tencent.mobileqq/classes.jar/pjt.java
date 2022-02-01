@@ -1,16 +1,14 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class pjt
-  extends AnimatorListenerAdapter
+  implements pks
 {
-  public pjt(DailyTipsFoldUtils.1 param1, View paramView) {}
+  public pjt(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    ReadInJoySelfFragment.a(this.a);
+    ocd.a(null, "", "0X8009925", "0X8009925", 0, 0, "", "", "", "", false);
   }
 }
 

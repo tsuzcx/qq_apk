@@ -1,92 +1,24 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.TbsDownloader.TbsDownloaderCallback;
 
 class birc
-  implements DownloadListener
+  implements TbsDownloader.TbsDownloaderCallback
 {
-  birc(bira parambira) {}
+  birc(birb parambirb) {}
   
-  public void installSucceed(String paramString1, String paramString2)
+  public void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
   {
-    Iterator localIterator = bira.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bird)localIterator.next()).installSucceed(paramString1, paramString2);
-    }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    Iterator localIterator = bira.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bird)localIterator.next()).onDownloadCancel(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    Iterator localIterator = bira.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bird)localIterator.next()).onDownloadError(paramDownloadInfo, paramInt1, paramString, paramInt2);
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if (avjp.a(paramDownloadInfo.l, paramDownloadInfo.c, paramDownloadInfo.e))
+    if (paramBoolean)
     {
-      if (!avjp.b().equals(paramDownloadInfo.l))
-      {
-        avjp.a(paramDownloadInfo.l);
-        paramDownloadInfo.l = avjp.b();
+      QbSdk.setUploadCode(BaseApplication.getContext(), 156);
+      if (QLog.isColorLevel()) {
+        QLog.d("TBS_update", 2, "tbs need download");
       }
-      bivr.a().e(paramDownloadInfo);
-    }
-    Iterator localIterator = bira.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bird)localIterator.next()).onDownloadFinish(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    Iterator localIterator = bira.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bird)localIterator.next()).onDownloadPause(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    Iterator localIterator = bira.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bird)localIterator.next()).onDownloadUpdate(paramList);
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    Iterator localIterator = bira.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bird)localIterator.next()).onDownloadWait(paramDownloadInfo);
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    Iterator localIterator = bira.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bird)localIterator.next()).packageReplaced(paramString1, paramString2);
-    }
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    Iterator localIterator = bira.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bird)localIterator.next()).uninstallSucceed(paramString1, paramString2);
+      this.a.a.browserApp.a(false);
     }
   }
 }

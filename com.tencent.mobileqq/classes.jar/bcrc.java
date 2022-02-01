@@ -1,61 +1,36 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.splashad.SplashADView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.CardProfile;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
-public final class bcrc
-  implements View.OnClickListener
+public class bcrc
 {
-  public bcrc(azvi paramazvi, bcow parambcow, SplashADView paramSplashADView, Activity paramActivity) {}
-  
-  public void onClick(View paramView)
+  public static ArrayList<CardProfile> a(List<CardProfile> paramList1, List<CardProfile> paramList2)
   {
-    int j = 0;
-    switch (paramView.getId())
+    HashSet localHashSet = new HashSet();
+    ArrayList localArrayList = new ArrayList();
+    paramList1 = paramList1.iterator();
+    paramList2 = paramList2.iterator();
+    while (paramList1.hasNext())
     {
+      CardProfile localCardProfile = (CardProfile)paramList1.next();
+      localHashSet.add(Long.valueOf(localCardProfile.lEctID));
+      localArrayList.add(localCardProfile);
     }
-    for (;;)
+    while (paramList2.hasNext())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.jdField_a_of_type_Azvi != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Azvi.b))) {
-        azvf.a(this.jdField_a_of_type_Azvi.b, null, 3);
+      paramList1 = (CardProfile)paramList2.next();
+      if (!localHashSet.contains(Long.valueOf(paramList1.lEctID))) {
+        localArrayList.add(paramList1);
       }
-      this.jdField_a_of_type_Bcow.a(15, 1, 0L);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.setOnClickListener(null);
-      azvf.a = true;
-      int i = j;
-      if (this.jdField_a_of_type_Azvi != null) {
-        if (this.jdField_a_of_type_Azvi.jdField_d_of_type_Int != 2)
-        {
-          i = j;
-          if (this.jdField_a_of_type_Azvi.jdField_d_of_type_Int != 3) {}
-        }
-        else
-        {
-          azvf.a = false;
-          i = 2000;
-          if ((this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.a) && (this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b) && (this.jdField_a_of_type_Azvi.a == 2)) {
-            this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.d();
-          }
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_Azvi.b)) {
-            azvf.a(this.jdField_a_of_type_Azvi.b, null, 2);
-          }
-          bmtq.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Azvi.jdField_d_of_type_JavaLangString);
-        }
-      }
-      QLog.i("QSplash@QbossSplashUtil", 1, "cover_layer =" + i);
-      this.jdField_a_of_type_Bcow.a(15, 1, i);
     }
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcrc
  * JD-Core Version:    0.7.0.1
  */

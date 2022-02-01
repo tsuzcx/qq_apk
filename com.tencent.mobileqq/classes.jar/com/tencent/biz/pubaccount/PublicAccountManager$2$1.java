@@ -3,19 +3,19 @@ package com.tencent.biz.pubaccount;
 import android.os.Bundle;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountMenuResponse;
 import mqq.observer.BusinessObserver;
-import nzz;
-import oag;
+import obj;
+import obq;
 
 public class PublicAccountManager$2$1
   implements Runnable
 {
-  public PublicAccountManager$2$1(oag paramoag, mobileqq_mp.GetPublicAccountMenuResponse paramGetPublicAccountMenuResponse, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public PublicAccountManager$2$1(obq paramobq, mobileqq_mp.GetPublicAccountMenuResponse paramGetPublicAccountMenuResponse, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Oag.jdField_a_of_type_Nzz.a(this.jdField_a_of_type_Oag.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Oag.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountMenuResponse);
-    if (this.jdField_a_of_type_Oag.jdField_a_of_type_MqqObserverBusinessObserver != null) {
-      this.jdField_a_of_type_Oag.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Obq.jdField_a_of_type_Obj.a(this.jdField_a_of_type_Obq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Obq.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountMenuResponse);
+    if (this.jdField_a_of_type_Obq.jdField_a_of_type_MqqObserverBusinessObserver != null) {
+      this.jdField_a_of_type_Obq.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
     }
   }
 }

@@ -1,27 +1,25 @@
-import java.util.Hashtable;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bhpu
-  extends bhou
+class bhpu
+  implements View.OnClickListener
 {
-  Hashtable<String, Boolean> a = new Hashtable();
+  bhpu(bhpr parambhpr, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.a.put(paramString, Boolean.valueOf(paramBoolean));
-  }
-  
-  public boolean a(String paramString, boolean paramBoolean)
-  {
-    paramString = (Boolean)this.a.get(paramString);
-    if (paramString == null) {
-      return paramBoolean;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bhpr, 0);
     }
-    return paramString.booleanValue();
+    this.jdField_a_of_type_Bhpr.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhpu
  * JD-Core Version:    0.7.0.1
  */

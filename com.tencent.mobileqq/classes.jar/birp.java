@@ -1,40 +1,113 @@
+import android.os.Looper;
+import android.os.MessageQueue;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.TbsDownloader;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Locale;
+
 public class birp
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public boolean e;
-  public boolean f;
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  private static birp jdField_a_of_type_Birp;
+  static WeakReference<BrowserAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private static final ArrayList<birs> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+  final MessageQueue.IdleHandler jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new birq(this);
+  boolean jdField_a_of_type_Boolean = false;
   
-  public birp(String paramString1, String paramString2)
+  public static birp a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    if (jdField_a_of_type_Birp == null) {}
+    try
+    {
+      if (jdField_a_of_type_Birp == null) {
+        jdField_a_of_type_Birp = new birp();
+      }
+      return jdField_a_of_type_Birp;
+    }
+    finally {}
   }
   
-  public birp(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
+  static void a()
   {
+    try
+    {
+      noe.a("downloadX5KernelIfNeeded");
+      BrowserAppInterface localBrowserAppInterface = (BrowserAppInterface)jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localBrowserAppInterface != null)
+      {
+        String str = WebAccelerateHelper.getInstance().getTBSDpcParam();
+        if ((str == null) || (str.charAt(0) != '1') || (!"CN".equals(Locale.getDefault().getCountry()))) {
+          break label91;
+        }
+        if (TbsDownloader.needDownload(BaseApplication.getContext(), false, false, new birr()))
+        {
+          localBrowserAppInterface.a(false);
+          QLog.i("SwiftBrowserIdleTaskHelper", 1, "call downloadX5Kernel on idle:download tbs.");
+        }
+      }
+      for (;;)
+      {
+        noe.b("downloadX5KernelIfNeeded");
+        return;
+        label91:
+        jdField_a_of_type_Int = 5;
+        QLog.i("SwiftBrowserIdleTaskHelper", 1, "call downloadX5Kernel on idle: no need download tbs.");
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("SwiftBrowserIdleTaskHelper", 1, "downloadX5Kernel error:" + localThrowable.getMessage());
+      noe.b("downloadX5KernelIfNeeded");
+    }
+  }
+  
+  public static void a(BrowserAppInterface paramBrowserAppInterface)
+  {
+    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBrowserAppInterface);
+  }
+  
+  public void a(birs parambirs)
+  {
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+      } while (((birs)localIterator.next()).jdField_a_of_type_Int != parambirs.jdField_a_of_type_Int);
+    }
+    do
+    {
+      return;
+      jdField_a_of_type_JavaUtilArrayList.add(parambirs);
+    } while ((jdField_a_of_type_JavaUtilArrayList.isEmpty()) || (this.jdField_a_of_type_Boolean));
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    Looper.myQueue().addIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      birs localbirs = (birs)localIterator.next();
+      if (localbirs.jdField_a_of_type_Int == paramInt)
+      {
+        jdField_a_of_type_JavaUtilArrayList.remove(localbirs);
+        return true;
+      }
+    }
+    return false;
   }
 }
 

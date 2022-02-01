@@ -1,65 +1,43 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import java.util.Comparator;
+import android.app.Activity;
+import android.content.res.Resources;
 
 class altm
-  implements Comparator<altk>
+  implements altn
 {
-  public int a(altk paramaltk)
+  altm(altj paramaltj, altn paramaltn) {}
+  
+  public void a()
   {
-    if (paramaltk.jdField_a_of_type_Int != -1) {
-      return paramaltk.jdField_a_of_type_Int;
-    }
-    Friends localFriends = paramaltk.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    int k = bglf.a(localFriends.detalStatusFlag, localFriends.iTermType);
-    int j;
-    int i;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label132;
-      }
-      i = 4096;
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        label64:
-        i = j | i | (int)localFriends.getLastLoginType();
-      }
-    }
-    for (;;)
-    {
-      paramaltk.jdField_a_of_type_Int = i;
-      return i;
-      j = 131072;
-      break;
-      label132:
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
-      {
-        i = 8192;
-        break label64;
-      }
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
-      {
-        i = 12288;
-        break label64;
-      }
-      i = 16384;
-      break label64;
-      i = j | i | 0x1;
-      continue;
-      i = j | i | 0x2;
-      continue;
-      i = j | i | 0x3;
+    altj.a(this.jdField_a_of_type_Altj, new bjbs(altj.a(this.jdField_a_of_type_Altj), altj.a(this.jdField_a_of_type_Altj).getResources().getDimensionPixelSize(2131299011)));
+    altj.a(this.jdField_a_of_type_Altj).c(2131716656);
+    altj.a(this.jdField_a_of_type_Altj).setCancelable(false);
+    altj.a(this.jdField_a_of_type_Altj).show();
+    if (this.jdField_a_of_type_Altn != null) {
+      this.jdField_a_of_type_Altn.a();
     }
   }
   
-  public int a(altk paramaltk1, altk paramaltk2)
+  public void a(String paramString)
   {
-    return a(paramaltk1) - a(paramaltk2);
+    if (altj.a(this.jdField_a_of_type_Altj) != null) {
+      altj.a(this.jdField_a_of_type_Altj).dismiss();
+    }
+    this.jdField_a_of_type_Altj.a(true);
+    altj.a(this.jdField_a_of_type_Altj, false);
+    if (this.jdField_a_of_type_Altn != null) {
+      this.jdField_a_of_type_Altn.a(paramString);
+    }
+  }
+  
+  public void b()
+  {
+    if (altj.a(this.jdField_a_of_type_Altj) != null) {
+      altj.a(this.jdField_a_of_type_Altj).dismiss();
+    }
+    altj.a(this.jdField_a_of_type_Altj, false);
+    if (this.jdField_a_of_type_Altn != null) {
+      this.jdField_a_of_type_Altn.b();
+    }
   }
 }
 

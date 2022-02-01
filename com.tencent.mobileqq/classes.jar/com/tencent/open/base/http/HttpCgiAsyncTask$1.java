@@ -1,14 +1,14 @@
 package com.tencent.open.base.http;
 
-import bitt;
-import bitu;
+import bjus;
+import bjut;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class HttpCgiAsyncTask$1
   implements Runnable
 {
-  public HttpCgiAsyncTask$1(bitt parambitt, HashMap paramHashMap) {}
+  public HttpCgiAsyncTask$1(bjus parambjus, HashMap paramHashMap) {}
   
   public void run()
   {

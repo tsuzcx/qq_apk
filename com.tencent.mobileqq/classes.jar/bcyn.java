@@ -1,16 +1,12 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.SingleLineTextView;
-
 public class bcyn
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public SingleLineTextView a;
-  
-  bcyn(bcym parambcym) {}
+  double jdField_a_of_type_Double = 0.15D;
+  int jdField_a_of_type_Int = 1280;
+  long jdField_a_of_type_Long = 754974720L;
+  double jdField_b_of_type_Double = 0.067D;
+  int jdField_b_of_type_Int = 30;
+  long jdField_b_of_type_Long = 1048576L;
+  long c = 4194304L;
 }
 
 

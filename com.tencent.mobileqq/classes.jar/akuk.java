@@ -1,29 +1,136 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.PhotoListAdapter;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import java.util.ArrayList;
 
 public class akuk
-  implements akun
+  extends aktf
 {
-  public akuk(DoodleLayout paramDoodleLayout) {}
-  
-  public void a()
+  akuk(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a();
+    super(paramNewPhotoListActivity);
+  }
+  
+  private boolean a()
+  {
+    if ((this.mActivity != null) && (((NewPhotoListActivity)this.mActivity).getIntent() != null)) {
+      return ((NewPhotoListActivity)this.mActivity).getIntent().getBooleanExtra("pic_back_type_result", false);
+    }
+    return false;
+  }
+  
+  private void b(Intent paramIntent)
+  {
+    ((NewPhotoListActivity)this.mActivity).setResult(-1, paramIntent);
+    ((NewPhotoListActivity)this.mActivity).finish();
+  }
+  
+  private void b(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.a.lastTimeShowToast >= 1000L)
+    {
+      this.a.lastTimeShowToast = l;
+      QQToast.a(this.mActivity, paramString, 0).b(((NewPhotoListActivity)this.mActivity).mTitleBarHeight);
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  private boolean b()
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
+    return this.mPhotoCommonData.selectedPhotoList.size() < this.mPhotoCommonData.maxSelectNum;
+  }
+  
+  public boolean addAndRemovePhotoByGesture(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  {
+    if (paramLocalMediaInfo == null) {
+      return false;
+    }
+    if ((paramLocalMediaInfo.selectStatus == 2) && (paramBoolean) && (!b()))
+    {
+      b(String.format(((NewPhotoListActivity)this.mActivity).getString(2131689730), new Object[] { Integer.valueOf(this.mPhotoCommonData.maxSelectNum) }));
+      return false;
+    }
+    return super.addAndRemovePhotoByGesture(paramLocalMediaInfo, paramBoolean);
+  }
+  
+  public void caseSingleModeImage(View paramView, int paramInt)
+  {
+    paramView = ((NewPhotoListActivity)this.mActivity).photoListAdapter.getItem(paramInt);
+    Intent localIntent = new Intent();
+    if (a())
+    {
+      if (paramView == null) {}
+      for (paramView = "";; paramView = paramView.path)
+      {
+        localIntent.putExtra("PhotoConst.SELECTED_PATHS", paramView);
+        b(localIntent);
+        return;
+      }
+    }
+    if (paramView == null) {}
+    for (paramView = "";; paramView = paramView.path)
+    {
+      localIntent.putExtra("PhotoConst.SELECTED_PATHS", paramView);
+      localIntent.putExtra("pic_choose_in_node_id", ((NewPhotoListActivity)this.mActivity).getIntent().getIntExtra("pic_choose_in_node_id", 0));
+      localIntent.putExtra("pic_result_back_type", 1);
+      AETemplateInfoFragment.a(this.mActivity, localIntent);
+      break;
     }
   }
   
-  public void b()
+  public void onCheckBoxClick(View paramView, int paramInt, CheckBox paramCheckBox)
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(this.a.a(true, false));
+    if ((!b()) && (((NewPhotoListActivity)this.mActivity).photoListAdapter.getItem(paramInt).selectStatus != 1))
+    {
+      b(String.format(((NewPhotoListActivity)this.mActivity).getString(2131689730), new Object[] { Integer.valueOf(this.mPhotoCommonData.maxSelectNum) }));
+      return;
     }
+    super.onCheckBoxClick(paramView, paramInt, paramCheckBox);
+  }
+  
+  public void onPreviewBtnClick(View paramView)
+  {
+    super.onPreviewBtnClick(paramView);
+  }
+  
+  public void onSendBtnClick(View paramView)
+  {
+    if (b())
+    {
+      b(String.format(((NewPhotoListActivity)this.mActivity).getString(2131689731), new Object[] { Integer.valueOf(this.mPhotoCommonData.maxSelectNum) }));
+      return;
+    }
+    ((NewPhotoListActivity)this.mActivity).sendBtn.setClickable(false);
+    paramView = new Intent();
+    paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.mPhotoCommonData.selectedPhotoList);
+    paramView.putExtra("pic_choose_in_node_id", ((NewPhotoListActivity)this.mActivity).getIntent().getIntExtra("pic_choose_in_node_id", 0));
+    paramView.putExtra("pic_result_back_type", 0);
+    AETemplateInfoFragment.a(this.mActivity, paramView);
+    bozr.a().S();
+    b(paramView);
+  }
+  
+  public void updateButton()
+  {
+    super.updateButton();
+    String str = ((NewPhotoListActivity)this.mActivity).getString(2131715854);
+    int i = this.mPhotoCommonData.selectedPhotoList.size();
+    str = str + " " + i + "/" + this.mPhotoCommonData.maxSelectNum;
+    ((NewPhotoListActivity)this.mActivity).sendBtn.setText(str);
+    ((NewPhotoListActivity)this.mActivity).sendBtn.setEnabled(true);
+    if (b())
+    {
+      ((NewPhotoListActivity)this.mActivity).sendBtn.setBackgroundResource(2130849769);
+      return;
+    }
+    ((NewPhotoListActivity)this.mActivity).sendBtn.setBackgroundResource(2130837960);
   }
 }
 

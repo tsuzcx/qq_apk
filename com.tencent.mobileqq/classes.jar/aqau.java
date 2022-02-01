@@ -1,6 +1,6 @@
 public abstract interface aqau
 {
-  public abstract void a(byte[] paramArrayOfByte, aqav paramaqav, int paramInt);
+  public abstract void a(boolean paramBoolean);
 }
 
 

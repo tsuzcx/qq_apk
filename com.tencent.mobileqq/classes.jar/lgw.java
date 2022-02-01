@@ -1,264 +1,87 @@
-import android.graphics.Rect;
-import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
-import com.tencent.av.business.manager.magicface.MagicfaceDataMultiResultJason;
-import com.tencent.av.business.manager.magicface.MagicfaceDataPendantJason;
-import com.tencent.av.business.manager.magicface.MagicfaceDataVideoJason;
-import java.nio.ByteBuffer;
-import java.util.BitSet;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.av.business.manager.filter.FilterItem;
+import com.tencent.beacon.event.UserAction;
+import java.util.HashMap;
+import java.util.Map;
 
 public class lgw
-  extends MagicFaceDataEntity
 {
-  Rect a;
-  protected MagicfaceDataMultiResultJason a;
-  int b;
+  static long jdField_a_of_type_Long;
+  static String jdField_a_of_type_JavaLangString = "EffectFilterTools";
+  static boolean jdField_a_of_type_Boolean;
   
-  public lgw(VideoAppInterface paramVideoAppInterface, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
+  public static void a(VideoAppInterface paramVideoAppInterface)
   {
-    super(paramVideoAppInterface, paramString1, paramString2, paramString3, paramBoolean, paramInt);
-    this.jdField_b_of_type_Int = 0;
+    if (paramVideoAppInterface.a(1))
+    {
+      paramVideoAppInterface = (FilterItem)((lgv)paramVideoAppInterface.a(1)).a();
+      a(paramVideoAppInterface);
+      lbj.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + paramVideoAppInterface + "|" + jdField_a_of_type_Boolean);
+      if (!jdField_a_of_type_Boolean) {
+        break label77;
+      }
+    }
+    label77:
+    for (paramVideoAppInterface = "0X80076B2";; paramVideoAppInterface = "0X80076B1")
+    {
+      a(paramVideoAppInterface);
+      return;
+    }
+  }
+  
+  static void a(FilterItem paramFilterItem)
+  {
+    long l1 = System.currentTimeMillis();
+    lbj.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + paramFilterItem + "|" + jdField_a_of_type_Long);
+    if ((paramFilterItem != null) && (!paramFilterItem.isEmptyFilter()))
+    {
+      if (jdField_a_of_type_Long != 0L)
+      {
+        long l2 = l1 - jdField_a_of_type_Long;
+        lbj.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + l2);
+        if (l2 > 5000L)
+        {
+          jdField_a_of_type_Boolean = true;
+          a(paramFilterItem, l2 / 1000L);
+        }
+      }
+      lbj.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter 33:" + jdField_a_of_type_Long);
+    }
+    jdField_a_of_type_Long = l1;
+  }
+  
+  public static void a(FilterItem paramFilterItem, long paramLong)
+  {
+    paramFilterItem = paramFilterItem.getId();
+    lbj.c(jdField_a_of_type_JavaLangString, "DataReport onStateReport:" + paramFilterItem + "|" + paramLong);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("filterName", paramFilterItem);
+    localHashMap.put("duration", String.valueOf(paramLong));
+    UserAction.onUserAction("actAVFunChatFilter", true, -1L, -1L, localHashMap, true);
     try
     {
-      paramVideoAppInterface = new JSONObject(paramString3);
-      if (paramVideoAppInterface.has("multiresult")) {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason = ((MagicfaceDataMultiResultJason)bghp.a(paramVideoAppInterface.getJSONObject("multiresult"), MagicfaceDataMultiResultJason.class));
-      }
-      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason == null) {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason = new MagicfaceDataMultiResultJason();
-      }
-      lbc.e("MagicFaceDataEntityMultiResult", "multi: " + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.toString());
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_x, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_y, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_x + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_wid, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_y + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_hei);
-      if (((paramBoolean) && (this.jdField_a_of_type_JavaUtilBitSet.get(1))) || ((!paramBoolean) && (this.jdField_a_of_type_JavaUtilBitSet.get(0))))
-      {
-        paramBoolean = true;
-        this.jdField_a_of_type_Boolean = paramBoolean;
-        lbc.c("MagicFaceDataEntityMultiResult", "MagicFaceDataEntityMultiResult constructor:");
-        return;
-      }
-    }
-    catch (JSONException paramVideoAppInterface)
-    {
-      for (;;)
-      {
-        paramVideoAppInterface.printStackTrace();
-        continue;
-        paramBoolean = false;
-      }
-    }
-  }
-  
-  private String a(int paramInt1, int paramInt2)
-  {
-    lbc.c("MagicFaceDataEntityMultiResult", " getResultString:" + paramInt2 + "|" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start);
-    switch (paramInt2)
-    {
-    default: 
-      return "";
-    case 1: 
-      return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_hit;
-    }
-    return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_miss;
-  }
-  
-  private String a(MagicfaceDataPendantJason paramMagicfaceDataPendantJason, String paramString)
-  {
-    String str = paramString;
-    if (paramMagicfaceDataPendantJason != null)
-    {
-      str = paramString;
-      if (paramMagicfaceDataPendantJason.mirror)
-      {
-        str = paramString;
-        if (!this.jdField_b_of_type_Boolean) {
-          str = paramString + "_mirror";
-        }
-      }
-    }
-    return str;
-  }
-  
-  private void a(byte[] paramArrayOfByte, boolean paramBoolean)
-  {
-    int i;
-    int j;
-    float f1;
-    if (paramBoolean)
-    {
-      i = 4;
-      j = i * 64 * 2;
-      if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= j) || (this.jdField_a_of_type_AndroidGraphicsRect == null)) {
-        break label291;
-      }
-      lbc.c("MagicFaceDataEntityMultiResult", "isShot:" + this.jdField_b_of_type_Int + "|" + this.d + "|" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start + "|" + this.jdField_a_of_type_AndroidGraphicsRect.toString() + "|" + paramArrayOfByte.length);
-      if ((this.jdField_b_of_type_Int == 0) && (this.d >= this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start - 2) && (this.d < this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start))
-      {
-        paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
-        if (!paramBoolean) {
-          break label265;
-        }
-        f1 = paramArrayOfByte.getInt(j) / 1000000;
-        label170:
-        if (!paramBoolean) {
-          break label276;
-        }
-      }
-    }
-    label265:
-    label276:
-    for (float f2 = paramArrayOfByte.getInt(j + i) / 1000000;; f2 = paramArrayOfByte.getShort(j + i))
-    {
-      lbc.c("MagicFaceDataEntityMultiResult", "onReceiveFaceFeature Kill is:|" + f1 + "|" + f2 + "|" + this.jdField_a_of_type_AndroidGraphicsRect.toString());
-      if (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f2)) {
-        this.jdField_b_of_type_Int = 1;
-      }
-      return;
-      i = 2;
-      break;
-      f1 = paramArrayOfByte.getShort(j);
-      break label170;
-    }
-    label291:
-    lbc.c("MagicFaceDataEntityMultiResult", "isShot ERROR");
-  }
-  
-  private int b()
-  {
-    switch (this.jdField_b_of_type_Int)
-    {
-    default: 
-      return 0;
-    case 1: 
-      return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_hit_frame;
-    }
-    return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_miss_frame;
-  }
-  
-  private String c()
-  {
-    switch (this.jdField_b_of_type_Int)
-    {
-    default: 
-      return null;
-    case 0: 
-      return "miss";
-    }
-    return "hit";
-  }
-  
-  private boolean d()
-  {
-    return (this.jdField_a_of_type_JavaUtilBitSet.get(1)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.tips));
-  }
-  
-  public int a()
-  {
-    return super.a() + b();
-  }
-  
-  protected String a()
-  {
-    String str = "";
-    StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.hasMirrorRes)
-    {
-      str = "" + "_";
-      localStringBuilder = new StringBuilder().append(str);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label118;
-      }
-    }
-    label118:
-    for (str = "mirror";; str = "normal")
-    {
-      str = str;
-      lbc.c("MagicFaceDataEntityMultiResult", "getMirrorPath:" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.hasMirrorRes + "|" + this.jdField_a_of_type_Boolean + "|" + str);
-      return str;
-    }
-  }
-  
-  public String a(int paramInt)
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.common_id))
-    {
-      int i = a();
-      lbc.c("MagicFaceDataEntityMultiResult", " getResPath:" + paramInt + "|" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start + "|" + i);
-      if ((paramInt >= this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start) && (paramInt < i)) {
-        return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.common_id + "_" + a(paramInt, this.jdField_b_of_type_Int) + a();
-      }
-      return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.common_id + a();
-    }
-    return super.a(paramInt);
-  }
-  
-  public String a(MagicfaceDataPendantJason paramMagicfaceDataPendantJason)
-  {
-    String str2 = super.a(paramMagicfaceDataPendantJason);
-    lbc.c("MagicFaceDataEntityMultiResult", "getDecorateName :" + paramMagicfaceDataPendantJason.toString());
-    String str1 = str2;
-    if (!TextUtils.isEmpty(str2))
-    {
-      if (TextUtils.isEmpty(paramMagicfaceDataPendantJason.trigger)) {
-        break label142;
-      }
-      str1 = c();
-      lbc.c("MagicFaceDataEntityMultiResult", "getDecorateName 2:" + paramMagicfaceDataPendantJason.trigger + "|" + str1);
-      if (!paramMagicfaceDataPendantJason.trigger.equals(str1)) {
-        break label137;
-      }
-      str1 = a(paramMagicfaceDataPendantJason, str2);
-    }
-    for (;;)
-    {
-      lbc.c("MagicFaceDataEntityMultiResult", "getDecorateName 3:" + str1);
-      return str1;
-      label137:
-      str1 = null;
-      continue;
-      label142:
-      str1 = a(paramMagicfaceDataPendantJason, str2);
-    }
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte, short paramShort1, short paramShort2, short paramShort3, short paramShort4, boolean paramBoolean)
-  {
-    super.a(paramString, paramArrayOfByte, paramShort1, paramShort2, paramShort3, paramShort4, paramBoolean);
-    if (this.jdField_a_of_type_JavaUtilBitSet.get(0)) {
-      if (!a(paramString)) {
-        a(paramArrayOfByte, paramBoolean);
-      }
-    }
-    while (!a(paramString)) {
+      UserAction.flushObjectsToDB(true);
       return;
     }
-    a(paramArrayOfByte, paramBoolean);
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_a_of_type_JavaUtilBitSet.get(0)) {
-      a(true);
-    }
-    lbc.c("MagicFaceDataEntityMultiResult", "processStart:" + this.jdField_a_of_type_JavaUtilBitSet.get(2));
-    if ((!this.jdField_a_of_type_JavaUtilBitSet.get(2)) && (d())) {
-      a(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.tips);
+    catch (Exception paramFilterItem)
+    {
+      lbj.e(jdField_a_of_type_JavaLangString, paramFilterItem.getMessage());
     }
   }
   
-  public void d()
+  public static void a(String paramString)
   {
-    super.d();
-    if (this.jdField_a_of_type_JavaUtilBitSet.get(0)) {
-      a(false);
-    }
-    b(0);
-    b(1);
-    if (d()) {
-      a(null);
+    bdll.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    lbj.c(jdField_a_of_type_JavaLangString, "DataReport onSupport:" + paramBoolean);
+    if (paramBoolean) {}
+    for (String str = "0X80076AF";; str = "0X80076B0")
+    {
+      a(str);
+      return;
     }
   }
 }

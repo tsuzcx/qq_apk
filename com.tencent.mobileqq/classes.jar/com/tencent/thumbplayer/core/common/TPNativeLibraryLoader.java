@@ -5,7 +5,7 @@ import android.text.TextUtils;
 
 public class TPNativeLibraryLoader
 {
-  private static final String DEFAULT_LIB_PLAYER_CORE_VERSION = "2.5.0.1085.full";
+  private static final String DEFAULT_LIB_PLAYER_CORE_VERSION = "2.5.0.1086.full";
   private static final String MAIN_PLAYER_CORE_VERSION = "2.5.0";
   private static boolean mIsLibLoaded = false;
   private static Object mIsLibLoadedLock = new Object();
@@ -29,9 +29,9 @@ public class TPNativeLibraryLoader
     }
     catch (Throwable localThrowable)
     {
-      TPNativeLog.printLog(2, "getPlayerCoreVersion: *.so is not loaded yet, return the hard-coded version number:2.5.0.1085.full");
+      TPNativeLog.printLog(2, "getPlayerCoreVersion: *.so is not loaded yet, return the hard-coded version number:2.5.0.1086.full");
     }
-    return "2.5.0.1085.full";
+    return "2.5.0.1086.full";
   }
   
   /* Error */
@@ -114,7 +114,7 @@ public class TPNativeLibraryLoader
     String str = "TPCore-master" + "";
     if (mLibLoader != null) {}
     boolean bool2;
-    for (boolean bool1 = mLibLoader.loadLib(str, "2.5.0.1085.full");; bool1 = loadLibDefault(str, paramContext))
+    for (boolean bool1 = mLibLoader.loadLib(str, "2.5.0.1086.full");; bool1 = loadLibDefault(str, paramContext))
     {
       bool2 = bool1;
       if (bool1)

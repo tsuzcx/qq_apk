@@ -1,15 +1,11 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
-
-public class xhd
-  implements View.OnTouchListener
+class xhd
+  extends xfv
 {
-  public xhd(StoryPlayerFragment paramStoryPlayerFragment) {}
+  xhd(xgp paramxgp, xhx paramxhx) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean b()
   {
+    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Xhx.d);
     return true;
   }
 }

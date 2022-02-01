@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import com.tencent.qphone.base.util.QLog;
-import zmu;
-import zmv;
+import zqp;
+import zqq;
 
 public class FFmpegExecuteAsyncTask$1
   implements Runnable
 {
-  public FFmpegExecuteAsyncTask$1(zmu paramzmu) {}
+  public FFmpegExecuteAsyncTask$1(zqp paramzqp) {}
   
   public void run()
   {

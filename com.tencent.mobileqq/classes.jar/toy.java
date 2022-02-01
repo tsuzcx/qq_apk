@@ -1,15 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.text.style.ReplacementSpan;
 
 class toy
-  extends BroadcastReceiver
+  extends ReplacementSpan
 {
-  toy(tox paramtox) {}
+  private int a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public toy(int paramInt)
   {
-    this.a.a(paramContext, paramIntent);
+    this.a = paramInt;
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    return this.a;
   }
 }
 

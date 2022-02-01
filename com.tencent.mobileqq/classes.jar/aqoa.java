@@ -1,53 +1,43 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.IOException;
 
 public class aqoa
+  extends AsyncTask<Void, Void, String>
 {
-  public long a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
+  public aqoa(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public aqoa()
+  protected String a(Void... paramVarArgs)
   {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public static aqoa a(String paramString)
-  {
-    if (paramString == null) {}
-    do
+    try
     {
-      return null;
-      try
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null)
       {
-        aqoa localaqoa = new aqoa();
-        paramString = new JSONObject(paramString);
-        localaqoa.jdField_a_of_type_Boolean = paramString.optBoolean("useParcelForBoot", true);
-        localaqoa.jdField_a_of_type_Long = paramString.optLong("delayPluginManageTimeInMills", 0L);
-        localaqoa.b = paramString.optBoolean("enableKernelServiceInVivo", false);
-        localaqoa.c = paramString.optBoolean("disableSimpleBreakStrategy", false);
-        localaqoa.d = paramString.optBoolean("isInitDTSDKAtStart", false);
-        localaqoa.e = paramString.optBoolean("enableSyslogPrint", false);
-        QLog.d("BootOptimizeConfProcessor", 2, "confBean = " + localaqoa.toString());
-        return localaqoa;
+        bhmq.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramVarArgs);
+        return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131694371) + " " + paramVarArgs;
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("BootOptimizeConfProcessor", 2, new Object[] { "parse e:", paramString.toString() });
-    return null;
+      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131694369);
+      return paramVarArgs;
+    }
+    catch (IOException paramVarArgs)
+    {
+      return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131694369);
+    }
+    catch (OutOfMemoryError paramVarArgs) {}
+    return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131694369);
   }
   
-  public String toString()
+  protected void a(String paramString)
   {
-    return "BootOptimizeConfigureBean{useParcelForBoot=" + this.jdField_a_of_type_Boolean + ", delayPluginManageTimeInMills=" + this.jdField_a_of_type_Long + ", enableKernelServiceInVivo=" + this.b + ", disableSimpleBreakStrategy=" + this.c + ", isInitDTSDKAtStart = " + this.d + ", enableSyslogPrint = " + this.e + '}';
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqoa
  * JD-Core Version:    0.7.0.1
  */

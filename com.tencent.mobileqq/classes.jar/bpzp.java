@@ -1,25 +1,30 @@
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
-import java.util.concurrent.ConcurrentHashMap;
-
 public class bpzp
-  implements Comparable<bpzp>
 {
-  public int a;
+  public static final int a = brkm.a(8.0F);
+  public static final int b = brkm.a(15.0F);
+  public static final int c = brkm.a(23.0F);
+  public float a;
   public long a;
-  public int b;
-  
-  public bpzp(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
-    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
-  }
-  
-  public int a(bpzp parambpzp)
-  {
-    return -(int)(this.jdField_a_of_type_Long - parambpzp.jdField_a_of_type_Long);
-  }
+  public boolean a;
+  public float b;
+  public long b;
+  public boolean b;
+  public float c;
+  public boolean c;
+  public float d;
+  public int d = 0;
+  public boolean d;
+  public float e;
+  public int e = 0;
+  public boolean e;
+  public float f;
+  public int f = 0;
+  public boolean f;
+  public float g;
+  public boolean g;
+  public float h;
+  public boolean h;
+  public boolean i;
 }
 
 

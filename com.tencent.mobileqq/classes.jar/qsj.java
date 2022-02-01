@@ -1,19 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.service.redpacket.RIJAidlClientRedPacketModule.requestShouldDoTaskTiming.1.onShouldDoTaskTimingCallback.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import kotlin.Metadata;
+import mqq.os.MqqHandler;
 
-class qsj
-  implements View.OnTouchListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/service/redpacket/RIJAidlClientRedPacketModule$requestShouldDoTaskTiming$1", "Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/IShouldDoTaskTimingCallback$Stub;", "onShouldDoTaskTimingCallback", "", "shouldDoTaskTiming", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qsj
+  extends qsg
 {
-  qsj(qsh paramqsh, RelativeLayout paramRelativeLayout) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(false);
-    }
-    return false;
+    ThreadManager.getUIHandler().post((Runnable)new RIJAidlClientRedPacketModule.requestShouldDoTaskTiming.1.onShouldDoTaskTimingCallback.1(this, paramBoolean));
   }
 }
 

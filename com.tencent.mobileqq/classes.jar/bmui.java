@@ -1,40 +1,71 @@
-import SWEET_NEW_BASE.sweet_req_comm;
-import SWEET_NEW_PAIR.sweet_pair_check_req;
-import android.content.Intent;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Pair;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.CaughtQZonePluginException;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneStartupMonitor.2.1;
+import cooperation.qzone.QzonePluginProxyActivity;
 
-class bmui
-  extends QzoneExternalRequest
+public class bmui
+  extends Handler
 {
-  bmui(bmuh parambmuh, Intent paramIntent) {}
-  
-  public String getCmdString()
+  bmui(bmug parambmug, Looper paramLooper)
   {
-    return "SweetQzoneService.getPairState";
+    super(paramLooper);
   }
   
-  public JceStruct getReq()
+  public void handleMessage(Message paramMessage)
   {
-    sweet_pair_check_req localsweet_pair_check_req = new sweet_pair_check_req();
-    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    int j = 1;
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
-      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
-      localsweet_req_comm.opuin = l;
-      localsweet_req_comm.uin = l;
-      localsweet_req_comm.loveuin = 0L;
-      localsweet_req_comm.qua = blru.a();
-      localsweet_req_comm.pf = 1;
-      localsweet_req_comm.src = 3;
-      localsweet_pair_check_req.req_comm = localsweet_req_comm;
+    default: 
+      break;
     }
-    return localsweet_pair_check_req;
-  }
-  
-  public String uniKey()
-  {
-    return "getPairState";
+    do
+    {
+      return;
+    } while (bmug.a(this.a));
+    if (QzonePluginProxyActivity.a())
+    {
+      QLog.i("QZoneStartupMonitor", 1, "超时，但是qzone 进程存在");
+      return;
+    }
+    QLog.e("QZoneStartupMonitor", 1, "启动超时认为启动失败，校验odex，并上报");
+    paramMessage = bmug.a(BaseApplicationImpl.getApplication(), "qzone_plugin.apk");
+    int i;
+    if (paramMessage != null)
+    {
+      i = ((Integer)paramMessage.first).intValue();
+      paramMessage = (Throwable)paramMessage.second;
+    }
+    for (;;)
+    {
+      int k = LocalMultiProcConfig.getInt("key_recovery_count", 0);
+      bmug.a(this.a, i, bmug.a(this.a), k);
+      StringBuilder localStringBuilder = new StringBuilder("qzone进程启动失败,elf valid errorcode: ").append(i).append(",recoveryCount:").append(k);
+      if (QzoneConfig.getInstance().getConfig("QZoneSetting", "exception_report_rdm", 0) == 1) {}
+      for (;;)
+      {
+        if (j != 0) {
+          bnkm.a(new CaughtQZonePluginException("start failed. " + paramMessage.getMessage()), localStringBuilder.toString());
+        }
+        if (i == 0) {
+          break;
+        }
+        ThreadManager.postImmediately(new QZoneStartupMonitor.2.1(this, k), null, false);
+        return;
+        j = 0;
+      }
+      paramMessage = null;
+      i = 0;
+    }
   }
 }
 

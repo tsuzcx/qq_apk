@@ -1,22 +1,22 @@
 package dov.com.qq.im;
 
 import android.widget.TextView;
-import anni;
-import bcst;
-import bnbz;
+import anzj;
+import bdll;
+import bodh;
 import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
 
 public class QIMEmojiRedPacketCameraCaptureUnit$9
   implements Runnable
 {
-  public QIMEmojiRedPacketCameraCaptureUnit$9(bnbz parambnbz) {}
+  public QIMEmojiRedPacketCameraCaptureUnit$9(bodh parambodh) {}
   
   public void run()
   {
     this.this$0.g();
-    this.this$0.c.setText(anni.a(2131708565));
+    this.this$0.c.setText(anzj.a(2131708674));
     this.this$0.a.B();
-    bcst.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.failure", 0, 0, "", "", "", "");
+    bdll.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.failure", 0, 0, "", "", "", "");
   }
 }
 

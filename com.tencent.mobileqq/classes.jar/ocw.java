@@ -1,48 +1,127 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.biz.pubaccount.VideoColumnSubscribeHandler.1;
+import com.tencent.biz.pubaccount.VideoColumnSubscribeHandler.2;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.ReqBody;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.RspBody;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.SubscribeVideoColumnReq;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.SubscribeVideoColumnRsp;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class ocw
-  implements TouchWebView.OnScrollChangedListener
+  extends anud
 {
-  public ocw(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
+  public static final String a = ocw.class.getSimpleName();
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public ocw(AppInterface paramAppInterface)
   {
-    paramInt1 = paramInt2 - paramInt4;
-    if (paramInt1 > 0)
+    super(paramAppInterface);
+  }
+  
+  private void b(int paramInt, boolean paramBoolean, String paramString)
+  {
+    Object localObject = new oidb_0xd4b.ReqBody();
+    oidb_0xd4b.SubscribeVideoColumnReq localSubscribeVideoColumnReq = new oidb_0xd4b.SubscribeVideoColumnReq();
+    localSubscribeVideoColumnReq.uint32_video_column_id.set(paramInt);
+    PBUInt32Field localPBUInt32Field = localSubscribeVideoColumnReq.uint32_oper_type;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
-      if (this.a.jdField_b_of_type_Int < 0) {
-        this.a.jdField_b_of_type_Int = 0;
-      }
-      paramView = this.a;
-      paramView.jdField_b_of_type_Int = (paramInt1 + paramView.jdField_b_of_type_Int);
-      if ((this.a.jdField_b_of_type_Int > this.a.jdField_c_of_type_Int) && (this.a.jdField_c_of_type_Boolean))
+      localPBUInt32Field.set(i);
+      ((oidb_0xd4b.ReqBody)localObject).msg_subscribe_video_column_req.set(localSubscribeVideoColumnReq);
+      localObject = super.makeOIDBPkg("OidbSvc.0xd4b", 3403, 1, ((oidb_0xd4b.ReqBody)localObject).toByteArray());
+      ((ToServiceMsg)localObject).addAttribute("columnId", Integer.valueOf(paramInt));
+      ((ToServiceMsg)localObject).addAttribute("columnIconUrl", paramString);
+      ((ToServiceMsg)localObject).addAttribute("isSubscribe", Boolean.valueOf(paramBoolean));
+      super.sendPbReq((ToServiceMsg)localObject);
+      return;
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean, String paramString)
+  {
+    ThreadManager.excute(new VideoColumnSubscribeHandler.1(this, paramInt, paramBoolean, paramString), 16, null, true);
+  }
+  
+  protected Class<? extends anui> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool3 = false;
+    int i;
+    if (paramToServiceMsg.getAttribute("columnId") != null) {
+      i = ((Integer)paramToServiceMsg.getAttribute("columnId")).intValue();
+    }
+    for (;;)
+    {
+      String str;
+      label46:
+      boolean bool1;
+      if (paramToServiceMsg.getAttribute("columnIconUrl") != null)
       {
-        this.a.jdField_c_of_type_Boolean = false;
-        if (this.a.jdField_a_of_type_AndroidViewView != null)
-        {
-          this.a.a(this.a.jdField_b_of_type_AndroidViewView, 0);
-          this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-          this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
+        str = (String)paramToServiceMsg.getAttribute("columnIconUrl");
+        if (paramToServiceMsg.getAttribute("isSubscribe") == null) {
+          break label303;
         }
+        bool1 = ((Boolean)paramToServiceMsg.getAttribute("isSubscribe")).booleanValue();
+        label69:
+        boolean bool2 = bool3;
+        if (paramFromServiceMsg.isSuccess())
+        {
+          bool2 = bool3;
+          if (paramObject != null) {
+            bool2 = true;
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(a, 2, "onReceive() isSuccess = " + bool2);
+        }
+        if (bool2) {
+          paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        }
+      }
+      try
+      {
+        oidb_0xd4b.RspBody localRspBody = new oidb_0xd4b.RspBody();
+        qfq.a(paramFromServiceMsg, paramObject, localRspBody);
+        int j = ((oidb_0xd4b.SubscribeVideoColumnRsp)((oidb_0xd4b.RspBody)localRspBody.get()).msg_subscribe_video_column_rsp.get()).uint32_guide_type.get();
+        QLog.i(a, 1, "onReceive() " + j);
+        ThreadManager.getUIHandler().post(new VideoColumnSubscribeHandler.2(this, j, bool1, str, i));
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        if (paramToServiceMsg.uint32_result.has()) {
+          if (QLog.isColorLevel()) {
+            QLog.d(a, 2, "onReceive() pkg.uint32_result = " + paramToServiceMsg.uint32_result.get());
+          }
+        }
+        label303:
+        while (!QLog.isColorLevel())
+        {
+          return;
+          i = 0;
+          break;
+          str = "";
+          break label46;
+          bool1 = false;
+          break label69;
+        }
+        QLog.d(a, 2, "onReceive() pkg.uint32_result is null ");
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d(a, 2, "onReceive() exception = " + paramToServiceMsg.getMessage());
       }
     }
-    do
-    {
-      do
-      {
-        return;
-        if (this.a.jdField_b_of_type_Int > 0) {
-          this.a.jdField_b_of_type_Int = 0;
-        }
-        paramView = this.a;
-        paramView.jdField_b_of_type_Int = (paramInt1 + paramView.jdField_b_of_type_Int);
-      } while ((-this.a.jdField_b_of_type_Int <= this.a.jdField_c_of_type_Int) || (this.a.jdField_c_of_type_Boolean));
-      this.a.jdField_c_of_type_Boolean = true;
-    } while (this.a.jdField_a_of_type_AndroidViewView == null);
-    this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
 }
 

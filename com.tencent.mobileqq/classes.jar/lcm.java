@@ -1,43 +1,31 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
+import android.media.MediaPlayer;
 import com.tencent.av.VideoController;
+import com.tencent.qphone.base.util.QLog;
 
 public class lcm
-  extends OrientationEventListener
+  extends lcw
 {
-  private long jdField_a_of_type_Long;
-  
-  public lcm(VideoController paramVideoController, Context paramContext, int paramInt)
+  public lcm(VideoController paramVideoController)
   {
-    super(paramContext, paramInt);
+    super(paramVideoController);
   }
   
-  public void onOrientationChanged(int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (paramInt == -1) {}
-    long l;
-    do
+    QLog.w(VideoController.a, 1, "onCompletion, onClose, mainSession[" + this.jdField_a_of_type_ComTencentAvVideoController.a() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
+    }
+    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().p())
     {
-      return;
-      l = System.currentTimeMillis();
-    } while (l - this.jdField_a_of_type_Long < 50L);
-    this.jdField_a_of_type_Long = l;
-    if ((paramInt > 315) || (paramInt <= 45))
-    {
-      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 1);
+      lbj.d(VideoController.a, "onCompletion onClose is not Closing2");
+      this.jdField_a_of_type_Long = 0L;
       return;
     }
-    if ((paramInt > 45) && (paramInt <= 135))
-    {
-      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 2);
-      return;
-    }
-    if ((paramInt > 135) && (paramInt <= 225))
-    {
-      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 3);
-      return;
-    }
-    VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 4);
+    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvVideoController.a().d, 217);
+    this.jdField_a_of_type_ComTencentAvVideoController.b(217);
+    this.jdField_a_of_type_ComTencentAvVideoController.b(this.jdField_a_of_type_ComTencentAvVideoController.a().d, this.jdField_a_of_type_ComTencentAvVideoController.a().z);
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 

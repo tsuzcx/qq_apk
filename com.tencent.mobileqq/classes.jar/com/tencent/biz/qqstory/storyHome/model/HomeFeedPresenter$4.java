@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
-import yjc;
-import yka;
+import ymx;
+import ynv;
 
 public final class HomeFeedPresenter$4
   implements Runnable
 {
-  public HomeFeedPresenter$4(yka paramyka) {}
+  public HomeFeedPresenter$4(ynv paramynv) {}
   
   public void run()
   {
-    yjc.a(this.a);
+    ymx.a(this.a);
   }
 }
 

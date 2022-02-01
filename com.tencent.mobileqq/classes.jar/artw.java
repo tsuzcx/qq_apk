@@ -1,35 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
 
-class artw
-  implements MiniAppLauncher.MiniAppLaunchListener
+public class artw
+  implements arua
 {
-  artw(arti paramarti, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public artw(DanmakuManager paramDanmakuManager) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void a(aruc paramaruc)
   {
-    Bundle localBundle;
-    if (paramBundle != null) {
-      localBundle = new Bundle();
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("ret", paramBundle.getLong("retCode", 0L));
-      if (!paramBoolean) {
-        localJSONObject.put("msg", paramBundle.getString("errMsg"));
-      }
-      localBundle.putString("result", localJSONObject.toString());
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    catch (Throwable paramBundle)
-    {
-      QLog.e("launchMiniAppById", 1, "launchMiniAppById error,", paramBundle);
+    DanmakuManager.a(this.a).b(paramaruc);
+    if (DanmakuManager.a(this.a) != null) {
+      DanmakuManager.a(this.a).f();
     }
   }
 }

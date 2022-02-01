@@ -1,30 +1,18 @@
-import android.annotation.TargetApi;
-import android.view.DragEvent;
-import android.view.View;
-import android.view.View.OnDragListener;
-import com.tencent.qphone.base.util.QLog;
-
-@TargetApi(11)
-class axwr
-  implements View.OnDragListener
+public class axwr
 {
-  private int jdField_a_of_type_Int;
+  public int a;
+  public long a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public axwr(axvz paramaxvz, int paramInt)
+  public String toString()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean onDrag(View paramView, DragEvent paramDragEvent)
-  {
-    switch (paramDragEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mTinyID:").append(this.jdField_a_of_type_Long).append(",mPosition:").append(this.jdField_a_of_type_Int).append(",mAlgotithmID:").append(this.b).append(",mEnterCount:").append(this.c).append(",mProfileCardDuration:").append(this.d).append(",mVisitPhotoCount:").append(this.e).append(",mOpflag:").append(this.f).append("|").append(Integer.toBinaryString(this.f));
+    return localStringBuilder.toString();
   }
 }
 

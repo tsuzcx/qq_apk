@@ -1,12 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
 
-class aibc
-  implements DialogInterface.OnClickListener
+public class aibc
+  implements aumz
 {
-  aibc(aiay paramaiay) {}
+  public aibc(AIOFileVideoData paramAIOFileVideoData, Context paramContext, aksn paramaksn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidContentContext != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.e = true;
+      this.jdField_a_of_type_Aksn.b();
+      this.jdField_a_of_type_Aksn.f();
+    }
+  }
+  
+  public void b() {}
 }
 
 

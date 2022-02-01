@@ -1,29 +1,13 @@
-import com.tencent.mobileqq.pic.CompressInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ayzd
-  extends ayzf
 {
-  ayzd(CompressInfo paramCompressInfo)
-  {
-    super(paramCompressInfo);
-  }
-  
-  protected int a()
-  {
-    return 80;
-  }
-  
-  protected final int[] a()
-  {
-    if (this.a.g == 2) {
-      return null;
-    }
-    int[] arrayOfInt = new int[2];
-    arrayOfInt[0] = 2560;
-    arrayOfInt[1] = (arrayOfInt[0] * 2);
-    ayxi.a("PicTypeNormal", "getScaleLargerSide", "PicType.SendPhotoMaxLongSide = " + arrayOfInt[0]);
-    return arrayOfInt;
-  }
+  public int a;
+  public String a;
+  public List<ayze> a = new ArrayList();
+  public String b;
+  public String c;
 }
 
 

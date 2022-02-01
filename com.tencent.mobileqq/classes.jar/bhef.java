@@ -1,41 +1,15 @@
-import android.graphics.Rect;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
 public class bhef
+  implements DialogInterface.OnClickListener
 {
-  private bhea jdField_a_of_type_Bhea;
-  private bhec jdField_a_of_type_Bhec;
+  public bhef(UpgradeActivity paramUpgradeActivity) {}
   
-  public bhef(bhea parambhea, bhec parambhec)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bhea = parambhea;
-    this.jdField_a_of_type_Bhec = parambhec;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bhea.a(new bheg(this));
-    b();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Bhec.a(new Rect(0, 0, paramInt1, paramInt2));
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bhea.a();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Bhea.b();
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Bhea.a(null);
-    this.jdField_a_of_type_Bhec.a();
+    this.a.finish();
   }
 }
 

@@ -1,38 +1,62 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.now.focusanchor.commonwidget.FrameAnimationView;
-import com.tencent.mobileqq.now.widget.CircleImageView;
-import com.tencent.mobileqq.now.widget.RoundedRectImageView;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.DelCommentResp;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class aycp
-  extends ayco
+class aycp
+  extends nkp
 {
-  public int a;
-  public View a;
-  public FrameLayout a;
-  public TextView a;
-  public FrameAnimationView a;
-  public CircleImageView a;
-  public RoundedRectImageView a;
-  public FrameLayout b;
-  public TextView b;
-  public TextView c;
+  aycp(aycm paramaycm, aycj paramaycj, Comments.Comment paramComment) {}
   
-  public aycp(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetRoundedRectImageView = ((RoundedRectImageView)paramView.findViewById(2131364166));
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView = ((CircleImageView)paramView.findViewById(2131362658));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362661));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362659));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362663));
-    this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView = ((FrameAnimationView)paramView.findViewById(2131362662));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381097));
-    this.c = ((TextView)paramView.findViewById(2131376786));
-    paramView.setTag(this);
+    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
+    if ((paramInt == 0) && (paramArrayOfByte != null))
+    {
+      paramBundle = new oidb_0xada.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        QLog.i("CommentsDataSource", 1, "err_msg:" + paramBundle.err_msg.get());
+        if (paramBundle.busi_buf.has())
+        {
+          paramArrayOfByte = new NowNearbyVideoCommentProto.DelCommentResp();
+          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+          if (QLog.isColorLevel()) {
+            QLog.i("CommentsDataSource", 1, "ret:" + paramArrayOfByte.result.get());
+          }
+          this.jdField_a_of_type_Aycj.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, (int)paramArrayOfByte.result.get());
+          paramArrayOfByte = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (paramArrayOfByte == null) {
+            return;
+          }
+          ((ayrf)paramArrayOfByte.getManager(263)).a(aycm.a(this.jdField_a_of_type_Aycm).a, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment.a);
+          return;
+        }
+        QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
+        this.jdField_a_of_type_Aycj.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.i("CommentsDataSource", 1, "merge delete resp data error");
+        this.jdField_a_of_type_Aycj.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+        return;
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Aycj.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+    }
   }
 }
 

@@ -1,46 +1,17 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.UploadTask;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahim
-  implements alvk
+class ahim
+  extends ahkx
 {
-  public ahim(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
-  
-  public void a(int paramInt)
+  ahim(ahgk paramahgk)
   {
-    ShortVideoRealItemBuilder localShortVideoRealItemBuilder = this.a;
-    if (ShortVideoRealItemBuilder.a(this.a) != null) {}
-    for (long l = ShortVideoRealItemBuilder.a(this.a).uniseq;; l = -1L)
-    {
-      ShortVideoRealItemBuilder.a(localShortVideoRealItemBuilder, l);
-      return;
-    }
+    super(paramahgk, null);
   }
   
-  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (QLog.isColorLevel())
-    {
-      paramArrayOfByte2 = new StringBuilder().append("onEncodeSuccess curMsg:");
-      if (ShortVideoRealItemBuilder.a(this.a) == null) {
-        break label120;
-      }
-    }
-    label120:
-    for (paramString2 = Long.valueOf(ShortVideoRealItemBuilder.a(this.a).uniseq);; paramString2 = "")
-    {
-      QLog.i("ShortVideoRealItemBuilder", 2, paramString2);
-      if (ShortVideoRealItemBuilder.a(this.a) == null) {
-        break;
-      }
-      ShortVideoRealItemBuilder.a(this.a).md5 = HexUtil.bytes2HexStr(paramArrayOfByte1);
-      new ShortVideoRealItemBuilder.UploadTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, ShortVideoRealItemBuilder.a(this.a), paramString1, this.a).run();
-      return;
-    }
-    baur.a(new RuntimeException("onMediaMessageSend failed"));
+    return new ahcx(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

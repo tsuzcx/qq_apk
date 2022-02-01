@@ -1,31 +1,23 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class axyg
-  implements URLDrawable.URLDrawableListener
+  implements DialogInterface.OnClickListener
 {
-  public axyg(NearbyMomentFragment paramNearbyMomentFragment) {}
+  public axyg(GameRoomInviteActivity paramGameRoomInviteActivity, oidb_0x8e4.RspBody paramRspBody) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (NearbyMomentFragment.a(this.a) == 0) {
-      NearbyMomentFragment.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (NearbyMomentFragment.a(this.a) == 0)
-    {
-      NearbyMomentFragment.a(this.a).setVisibility(0);
-      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
-    }
+    paramDialogInterface = this.jdField_a_of_type_TencentImOidbCmd0x8e4Oidb_0x8e4$RspBody.poi_info;
+    String str = paramDialogInterface.bytes_uid.get().toStringUtf8();
+    axzi.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity, HotChatInfo.createHotChat(paramDialogInterface, false, 0), paramDialogInterface.uint32_group_code.get(), str, paramDialogInterface.bytes_name.get().toStringUtf8());
   }
 }
 

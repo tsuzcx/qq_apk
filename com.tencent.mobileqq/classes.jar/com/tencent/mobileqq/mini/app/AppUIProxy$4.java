@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.mini.app;
 
-import android.app.Fragment;
 import android.view.ViewGroup;
 import android.view.Window;
-import biip;
+import bjjo;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -22,11 +21,11 @@ class AppUIProxy$4
   {
     DisplayUtil.setSystemUIVisible(this.val$activity, false);
     MiniProgramLpReportDC04239.reportMiniAppEvent(this.val$miniAppConfig, MiniProgramLpReportDC04239.getAppType(this.val$miniAppConfig), null, "ad", "ad_loading", "expo_call", null);
-    MiniLoadingAdLayout localMiniLoadingAdLayout = MiniLoadingAdManager.getInstance().getLoadingAdLayout(this.val$miniAppConfig, this.this$0.getAppBrandFragment().getActivity(), false, this.val$filePath, this.val$adInfo);
+    MiniLoadingAdLayout localMiniLoadingAdLayout = MiniLoadingAdManager.getInstance().getLoadingAdLayout(this.val$miniAppConfig, this.val$activity, false, this.val$filePath, this.val$adInfo);
     if (localMiniLoadingAdLayout != null)
     {
       ((ViewGroup)this.val$activity.getWindow().getDecorView()).addView(localMiniLoadingAdLayout);
-      MiniLoadingAdManager.getInstance().show(localMiniLoadingAdLayout, this.val$miniAppConfig.config.appId, String.valueOf(biip.a().a()), new AppUIProxy.4.1(this));
+      MiniLoadingAdManager.getInstance().show(localMiniLoadingAdLayout, this.val$miniAppConfig.config.appId, String.valueOf(bjjo.a().a()), new AppUIProxy.4.1(this));
       MiniProgramLpReportDC04239.reportMiniAppEvent(this.val$miniAppConfig, MiniProgramLpReportDC04239.getAppType(this.val$miniAppConfig), null, "ad", "ad_loading", "expo_success", null);
     }
   }

@@ -1,33 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.util.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.avgame.gameroom.stage.guessaction.GuessActionStageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ndj
-  extends anmu
+public class ndj
+  implements View.OnClickListener
 {
-  private final WeakReference<ndg> a;
-  private final WeakReference<QQAppInterface> b;
+  public ndj(GuessActionStageView paramGuessActionStageView) {}
   
-  public ndj(ndg paramndg, QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramndg);
-    this.b = new WeakReference(paramQQAppInterface);
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    ndg localndg = (ndg)this.a.get();
-    if ((paramBoolean) && (localndg != null) && (ndg.a(localndg, paramString, 0))) {
-      localndg.a(1, paramString, 200);
+    if (this.a.a != null) {
+      this.a.a.onClick(paramView);
     }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    ndg localndg = (ndg)this.a.get();
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    if ((paramBoolean) && (localndg != null) && (ndg.a(localndg, paramString, 1))) {
-      localndg.a(0, paramString, ndg.a(localndg, 0, paramString, localQQAppInterface));
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

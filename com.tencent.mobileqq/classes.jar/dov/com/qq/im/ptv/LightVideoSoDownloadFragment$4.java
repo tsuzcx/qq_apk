@@ -1,8 +1,8 @@
 package dov.com.qq.im.ptv;
 
-import bgpa;
-import bowq;
-import bowr;
+import bhpc;
+import bpyl;
+import bpym;
 
 public class LightVideoSoDownloadFragment$4
   implements Runnable
@@ -11,9 +11,9 @@ public class LightVideoSoDownloadFragment$4
   
   public void run()
   {
-    bowq localbowq = new bowq(this);
-    bowr localbowr = new bowr(this);
-    bgpa.showPermissionSettingDialog(this.this$0.getActivity(), null, this.a, localbowq, localbowq, localbowr);
+    bpyl localbpyl = new bpyl(this);
+    bpym localbpym = new bpym(this);
+    bhpc.showPermissionSettingDialog(this.this$0.getActivity(), null, this.a, localbpyl, localbpyl, localbpym);
   }
 }
 

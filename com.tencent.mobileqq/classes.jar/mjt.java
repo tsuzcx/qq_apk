@@ -1,31 +1,34 @@
-import android.widget.ImageButton;
-import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 public class mjt
-  implements bkhy
+  implements miy
 {
-  public mjt(VideoInviteActivity paramVideoInviteActivity, boolean paramBoolean) {}
+  public mjt(VideoControlUI paramVideoControlUI) {}
   
-  public void onDismiss()
+  public long a()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
-      for (str = "0X80043A4";; str = "0X80043B6")
-      {
-        bcst.b(null, "CliOper", "", "", str, str, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
-        if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton != null))
-        {
-          this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setEnabled(true);
-          this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton.setEnabled(true);
-        }
-        return;
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
-    for (String str = "0X80043AA";; str = "0X80043B0") {
-      break;
-    }
+    return this.a.a();
+  }
+  
+  public void a()
+  {
+    this.a.C(AudioHelper.b());
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.a.c(paramBoolean1, paramBoolean2);
+  }
+  
+  public boolean a()
+  {
+    return this.a.g();
+  }
+  
+  public boolean b()
+  {
+    return true;
   }
 }
 

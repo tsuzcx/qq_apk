@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanageraux.util;
 
-import auck;
-import aucl;
+import auuf;
+import auug;
 
 public class UniformDownloadUtil$3$1
   implements Runnable
 {
-  public UniformDownloadUtil$3$1(aucl paramaucl) {}
+  public UniformDownloadUtil$3$1(auug paramauug) {}
   
   public void run()
   {
-    auck.a(this.this$0.a, this.this$0.b);
+    auuf.a(this.this$0.a, this.this$0.b);
   }
 }
 

@@ -1,6 +1,10 @@
 package com.tencent.biz.qqcircle.fragments.person;
 
-import aauy;
+import aaak;
+import aaam;
+import aabn;
+import aabp;
+import aazb;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 import android.content.res.Resources;
@@ -8,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.SpannableString;
 import android.text.style.AbsoluteSizeSpan;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -16,7 +21,6 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import com.tencent.TMG.utils.QLog;
 import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
 import com.tencent.biz.qqcircle.events.QCircleTimeLineCreateTimeEvent;
 import com.tencent.biz.qqcircle.widgets.FrameAnimationView;
@@ -25,30 +29,30 @@ import com.tencent.biz.qqcircle.widgets.QCircleFolderTabViewPager;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.part.BasePartFragment;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import feedcloud.FeedCloudMeta.StUser;
 import java.util.ArrayList;
 import java.util.List;
-import uxx;
-import vnj;
-import vnk;
-import vnl;
-import vnm;
-import vnn;
-import vrf;
-import vuf;
-import zby;
-import zvg;
-import zvh;
-import zwp;
-import zwr;
-import zxs;
-import zxu;
+import uzg;
+import vpo;
+import vpp;
+import vpq;
+import vpr;
+import vps;
+import vtq;
+import vxe;
+import zft;
+import zzb;
+import zzc;
 
 public class QCirclePersonalBottomView
-  extends QCircleBaseWidgetView<zxs>
-  implements View.OnClickListener, zwr
+  extends QCircleBaseWidgetView<aabn>
+  implements aaam, View.OnClickListener
 {
   private int jdField_a_of_type_Int;
+  private aabp jdField_a_of_type_Aabp;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
   private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
@@ -58,10 +62,10 @@ public class QCirclePersonalBottomView
   private QCirclePersonalWorksFragment jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalWorksFragment;
   private FrameAnimationView jdField_a_of_type_ComTencentBizQqcircleWidgetsFrameAnimationView;
   private QCircleFolderTabViewPager jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFolderTabViewPager;
+  private FeedCloudMeta.StUser jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
   private String jdField_a_of_type_JavaLangString;
   private List<QCirclePersonalBaseBottomFragment> jdField_a_of_type_JavaUtilList;
-  private vnn jdField_a_of_type_Vnn;
-  private zxu jdField_a_of_type_Zxu;
+  private vps jdField_a_of_type_Vps;
   private int jdField_b_of_type_Int;
   private RadioButton jdField_b_of_type_AndroidWidgetRadioButton;
   private RadioButton c;
@@ -71,19 +75,19 @@ public class QCirclePersonalBottomView
     super(paramContext);
   }
   
-  public QCirclePersonalBottomView(Context paramContext, zxu paramzxu)
+  public QCirclePersonalBottomView(Context paramContext, aabp paramaabp)
   {
     this(paramContext);
     setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_Zxu = paramzxu;
-    setInteractor(paramzxu.getInteractor());
+    this.jdField_a_of_type_Aabp = paramaabp;
+    setInteractor(paramaabp.getInteractor());
     c();
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFolderTabViewPager.setOffscreenPageLimit(2);
-    this.jdField_a_of_type_Vnn = new vnn(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFolderTabViewPager.setAdapter(this.jdField_a_of_type_Vnn);
+    this.jdField_a_of_type_Vps = new vps(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFolderTabViewPager.setAdapter(this.jdField_a_of_type_Vps);
     d();
     a(this);
-    ((vuf)paramzxu.getViewModel(vuf.class)).a.observe((BasePartFragment)paramzxu.getParentFragment(), new vnj(this));
+    ((vxe)paramaabp.getViewModel(vxe.class)).a.observe((BasePartFragment)paramaabp.getParentFragment(), new vpo(this));
   }
   
   private void a(int paramInt)
@@ -106,10 +110,10 @@ public class QCirclePersonalBottomView
   private void a(int paramInt1, int paramInt2)
   {
     String str2 = this.jdField_a_of_type_JavaLangString;
-    if (uxx.a(this.jdField_a_of_type_JavaLangString)) {}
+    if (uzg.a(this.jdField_a_of_type_JavaLangString)) {}
     for (String str1 = "1";; str1 = "2")
     {
-      vrf.a(str2, 11, paramInt1, paramInt2, str1, "", "", "", "", d());
+      vtq.a(str2, 11, paramInt1, paramInt2, str1, "", "", "", "", d());
       return;
     }
   }
@@ -129,30 +133,39 @@ public class QCirclePersonalBottomView
     if (paramBoolean) {}
     for (Object localObject = "https://downv6.qq.com/video_story/qcircle/animation/list_to_grid.zip";; localObject = "https://downv6.qq.com/video_story/qcircle/animation/grid_to_list.zip")
     {
-      localObject = new zvg((String)localObject);
-      ((zvg)localObject).a(500);
-      ((zvg)localObject).a(500L);
-      ((zvg)localObject).a(true);
-      ((zvg)localObject).b(true);
-      zvh.a().a(hashCode(), ((zvg)localObject).a(), new vnk(this, paramBoolean));
+      localObject = new zzb((String)localObject);
+      ((zzb)localObject).a(500);
+      ((zzb)localObject).a(500L);
+      ((zzb)localObject).a(true);
+      ((zzb)localObject).b(true);
+      zzc.a().a(hashCode(), ((zzb)localObject).a(), new vpp(this, paramBoolean));
       return;
     }
   }
   
   private void b(int paramInt)
   {
+    String str;
     if (this.jdField_a_of_type_AndroidWidgetRadioButton != null)
     {
-      String str = getResources().getString(2131697217);
-      SpannableString localSpannableString = new SpannableString(str + " " + uxx.d(paramInt));
-      localSpannableString.setSpan(new AbsoluteSizeSpan(zby.b(getContext(), 10.0F)), str.length(), str.length() + 1, 34);
-      this.jdField_a_of_type_AndroidWidgetRadioButton.setText(localSpannableString);
+      str = getResources().getString(2131697286);
+      if ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser != null) && (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.blackState.get() != 0)) {
+        this.jdField_a_of_type_AndroidWidgetRadioButton.setText(str);
+      }
     }
+    else
+    {
+      return;
+    }
+    SpannableString localSpannableString = new SpannableString(str + " " + uzg.d(paramInt));
+    localSpannableString.setSpan(new AbsoluteSizeSpan(zft.b(getContext(), 10.0F)), str.length(), str.length() + 1, 34);
+    this.jdField_a_of_type_AndroidWidgetRadioButton.setText(localSpannableString);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_JavaLangString = uxx.a(getContext());
+    this.jdField_a_of_type_JavaLangString = uzg.a(getContext());
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser = uzg.a(getContext());
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalWorksFragment = new QCirclePersonalWorksFragment();
     this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalDynamicFragment = new QCirclePersonalDynamicFragment();
@@ -166,27 +179,27 @@ public class QCirclePersonalBottomView
   {
     if (paramInt == 2)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130844000));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130844020));
       return;
     }
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130843999));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130844019));
       return;
     }
     QLog.i("QCirclePersonalBottomView", 1, "unSupport layoutMode:" + paramInt);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130844000));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130844020));
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new vnl(this));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFolderTabViewPager.addOnPageChangeListener(new vnm(this));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new vpq(this));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFolderTabViewPager.addOnPageChangeListener(new vpr(this));
   }
   
   public int a()
   {
-    return 2131560742;
+    return 2131560765;
   }
   
   public String a()
@@ -211,7 +224,7 @@ public class QCirclePersonalBottomView
       label37:
       ((ImageView)localObject).setVisibility(j);
       if (i != 0) {
-        if (!uxx.a(getContext())) {
+        if (!uzg.a(getContext())) {
           break label88;
         }
       }
@@ -221,7 +234,7 @@ public class QCirclePersonalBottomView
     label88:
     for (Object localObject = String.valueOf(1);; localObject = String.valueOf(2))
     {
-      vrf.a("", 11, 18, 1, (String)localObject, d());
+      vtq.a("", 11, 18, 1, (String)localObject, d());
       return;
       i = 0;
       break;
@@ -230,21 +243,21 @@ public class QCirclePersonalBottomView
     }
   }
   
+  public void a(aabn paramaabn) {}
+  
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131376491));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131375955));
-    this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131375953));
-    this.c = ((RadioButton)paramView.findViewById(2131375954));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFolderTabViewPager = ((QCircleFolderTabViewPager)paramView.findViewById(2131372302));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369167));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379667));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131376623));
+    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131376095));
+    this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131376093));
+    this.c = ((RadioButton)paramView.findViewById(2131376094));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFolderTabViewPager = ((QCircleFolderTabViewPager)paramView.findViewById(2131372416));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369258));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379842));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_Int = 2;
     c(2);
   }
-  
-  public void a(zxs paramzxs) {}
   
   public int b()
   {
@@ -265,19 +278,19 @@ public class QCirclePersonalBottomView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    zwp.a().a(this);
+    aaak.a().a(this);
   }
   
   public void onClick(View paramView)
   {
     String str;
-    if ((!aauy.a(String.valueOf(paramView.getId()), 500L)) && (paramView.getId() == 2131369167))
+    if ((!aazb.a(String.valueOf(paramView.getId()), 500L)) && (paramView.getId() == 2131369258))
     {
-      if (!uxx.a(getContext())) {
+      if (!uzg.a(getContext())) {
         break label82;
       }
       str = String.valueOf(1);
-      vrf.a("", 11, 18, 2, str, d());
+      vtq.a("", 11, 18, 2, str, d());
       if (this.jdField_a_of_type_Int != 2) {
         break label90;
       }
@@ -300,7 +313,15 @@ public class QCirclePersonalBottomView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    zwp.a().b(this);
+    aaak.a().b(this);
+  }
+  
+  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
+  {
+    QLog.d("QCirclePersonalBottomView", 4, "NestScrollRecyclerView QCirclePersonalBottomView onInterceptTouchEvent hashCode" + hashCode());
+    boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
+    QLog.d("QCirclePersonalBottomView", 4, "NestScrollRecyclerView QCirclePersonalBottomView onInterceptTouchEvent handle" + bool);
+    return bool;
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
@@ -349,6 +370,11 @@ public class QCirclePersonalBottomView
       this.jdField_a_of_type_Int = paramInt;
     } while ((this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalWorksFragment == null) || (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalWorksFragment.a == null));
     this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalWorksFragment.b(paramInt);
+  }
+  
+  public void setUser(FeedCloudMeta.StUser paramStUser)
+  {
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser = paramStUser;
   }
 }
 

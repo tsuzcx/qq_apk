@@ -1,72 +1,164 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class bggr
+  extends WebViewPlugin
 {
-  public static int a(byte paramByte)
+  private boolean a(JSONObject paramJSONObject)
   {
-    return paramByte & 0xFF;
-  }
-  
-  public static int a(byte[] paramArrayOfByte)
-  {
-    int i = 0;
-    int j = 0;
-    while (i < 4)
-    {
-      j = j << 8 | a(paramArrayOfByte[i]);
-      i += 1;
+    String str1 = paramJSONObject.optString("callback");
+    String str2 = paramJSONObject.optString("grayType");
+    paramJSONObject = paramJSONObject.optString("gc");
+    if (!str2.equals("dragonPrivilege")) {
+      return false;
     }
-    return j;
-  }
-  
-  public static int a(byte[] paramArrayOfByte, int paramInt)
-  {
-    int j = 0;
-    int i = paramInt;
-    while (i < paramInt + 4)
+    agml localagml = (agml)aran.a().a(609);
+    if ((localagml != null) && (localagml.a(paramJSONObject))) {}
+    for (int i = 1;; i = 0)
     {
-      j = j << 8 | a(paramArrayOfByte[i]);
-      i += 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopInteractionIconPlugin", 2, "value" + i);
+      }
+      try
+      {
+        paramJSONObject = new JSONObject();
+        paramJSONObject.put(str2, i);
+        callJs(str1, new String[] { paramJSONObject.toString() });
+        return true;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return false;
+      }
     }
-    return j;
   }
   
-  public static short a(byte[] paramArrayOfByte)
+  private boolean b(JSONObject paramJSONObject)
   {
-    int i = 0;
-    short s = 0;
-    while (i < 2)
+    String str = paramJSONObject.optString("gc");
+    paramJSONObject = paramJSONObject.optString("text");
+    Activity localActivity = this.mRuntime.a();
+    Intent localIntent = agej.a(new Intent(localActivity, SplashActivity.class), new int[] { 2 });
+    localIntent.addFlags(4194304);
+    localIntent.putExtra("uin", str);
+    localIntent.putExtra("uintype", 1);
+    localIntent.putExtra("chat_inputBarContent", paramJSONObject);
+    localActivity.startActivity(localIntent);
+    localActivity.overridePendingTransition(2130771990, 2130772304);
+    return true;
+  }
+  
+  private boolean c(JSONObject paramJSONObject)
+  {
+    String str = paramJSONObject.optString("callback");
+    paramJSONObject = paramJSONObject.optString("gc");
+    if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramJSONObject)))
     {
-      s = (short)((short)(s << 8) | a(paramArrayOfByte[i]));
-      i += 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopInteractionIconPlugin", 2, "callback : " + str + ",troopUin : " + paramJSONObject);
+      }
+      return false;
     }
-    return s;
-  }
-  
-  public static byte[] a(int paramInt)
-  {
-    byte[] arrayOfByte = new byte[4];
-    int j = 0;
-    int i = paramInt;
-    paramInt = j;
-    while (paramInt < 4)
+    if (bgnm.a(paramJSONObject)) {}
+    for (int i = 1;; i = 0)
     {
-      arrayOfByte[paramInt] = Integer.valueOf(i >>> 24).byteValue();
-      i <<= 8;
-      paramInt += 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopInteractionIconPlugin", 2, "getIsQunLevelGray value" + i);
+      }
+      try
+      {
+        paramJSONObject = new JSONObject();
+        paramJSONObject.put("result", i);
+        callJs(str, new String[] { paramJSONObject.toString() });
+        return true;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
     }
-    return arrayOfByte;
+    return false;
   }
   
-  public static byte[] a(short paramShort)
+  private boolean d(JSONObject paramJSONObject)
   {
-    return new byte[] { (byte)(paramShort >>> 8), (byte)paramShort };
+    paramJSONObject = paramJSONObject.optString("gc");
+    if (TextUtils.isEmpty(paramJSONObject))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopInteractionIconPlugin", 2, "goToChat troopUin : " + paramJSONObject);
+      }
+      return false;
+    }
+    Activity localActivity = this.mRuntime.a();
+    Intent localIntent = agej.a(new Intent(localActivity, SplashActivity.class), new int[] { 2 });
+    localIntent.addFlags(4194304);
+    localIntent.putExtra("uin", paramJSONObject);
+    localIntent.putExtra("uintype", 1);
+    localActivity.startActivity(localIntent);
+    localActivity.overridePendingTransition(2130771990, 2130772304);
+    return true;
   }
   
-  public static byte[] b(int paramInt)
+  private boolean e(JSONObject paramJSONObject)
   {
-    int i = (byte)(paramInt & 0xFF);
-    int j = (byte)((0xFF00 & paramInt) >> 8);
-    int k = (byte)((0xFF0000 & paramInt) >> 16);
-    return new byte[] { (byte)((0xFF000000 & paramInt) >> 24), k, j, i };
+    paramJSONObject = paramJSONObject.optString("gc");
+    if (TextUtils.isEmpty(paramJSONObject))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopInteractionIconPlugin", 2, "goToSign troopUin : " + paramJSONObject);
+      }
+      return false;
+    }
+    paramJSONObject = "https://qun.qq.com/qqweb/m/qun/checkin/index.html?_bid=2485&_wv=67108867&gc=" + paramJSONObject + "&state=1";
+    Intent localIntent = new Intent(this.mRuntime.a(), QQBrowserActivity.class);
+    localIntent.putExtra("url", paramJSONObject);
+    this.mRuntime.a().startActivity(localIntent);
+    return true;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"groupInteractionIcon".equals(paramString2)) {
+      return false;
+    }
+    try
+    {
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+      if (paramJsBridgeListener == null) {
+        return true;
+      }
+    }
+    catch (JSONException paramJsBridgeListener)
+    {
+      paramJsBridgeListener.printStackTrace();
+      return false;
+    }
+    if (paramString3.equals("getGroupGrayFlag")) {
+      return a(paramJsBridgeListener);
+    }
+    if (paramString3.equals("jumpToAIOAndFillText")) {
+      return b(paramJsBridgeListener);
+    }
+    if (paramString3.equals("isQunLevelGray")) {
+      return c(paramJsBridgeListener);
+    }
+    if (paramString3.equals("gotoChat")) {
+      return d(paramJsBridgeListener);
+    }
+    if (paramString3.equals("gotoSign")) {
+      return e(paramJsBridgeListener);
+    }
+    return true;
   }
 }
 

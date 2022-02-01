@@ -1,59 +1,74 @@
-import SummaryCard.CondFitUser;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.widget.CircleProgress;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqik
-  implements anjn
+  implements View.OnTouchListener
 {
-  public aqik(SearchResultActivity paramSearchResultActivity) {}
+  public aqik(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = 1;
-    if (paramInt == 3) {
-      if (!paramBoolean1)
-      {
-        this.a.b = 3;
-        this.a.jdField_a_of_type_Aqim.notifyDataSetChanged();
-      }
+    boolean bool = true;
+    if (!this.a.jdField_c_of_type_Boolean) {
+      bool = false;
     }
-    while (paramInt != 2)
+    do
     {
-      return;
-      if ((paramList != null) && (!paramList.isEmpty())) {
-        this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      }
-      paramList = this.a;
-      if (paramBoolean2) {}
-      for (paramInt = i;; paramInt = 0)
+      return bool;
+      if ((paramView == this.a.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress)) {}
+      switch (paramMotionEvent.getAction())
       {
-        paramList.b = paramInt;
+      case 2: 
+      default: 
+        return false;
+      case 0: 
+        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(4);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("0\"");
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
+        this.a.d.setVisibility(4);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(0);
+        this.a.e.setVisibility(4);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a = System.currentTimeMillis();
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
+        if (this.a.jdField_b_of_type_Int == 1) {}
+        for (int i = 0;; i = 1)
+        {
+          bdll.b(null, "dc00898", "", "", "0X8007106", "0X8007106", i, 0, "", "", "", "");
+          return true;
+        }
+      }
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a()) {
         break;
       }
+    } while (!QLog.isColorLevel());
+    QLog.i("DynamicAvatarRecordActivity", 2, "ACTION_UP, current state is already preview!");
+    return true;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
     }
-    if (paramBoolean1)
+    if (System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a < 500L)
     {
-      bgjr.a(true);
-      if ((paramList != null) && (!paramList.isEmpty()))
-      {
-        this.a.jdField_a_of_type_JavaUtilList.clear();
-        this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      }
-      this.a.jdField_a_of_type_Aqim.notifyDataSetChanged();
-      bgjr.a(false);
-      SearchResultActivity.a(this.a).a(0);
-      paramList = Message.obtain();
-      paramList.what = 5;
-      SearchResultActivity.a(this.a).sendMessageDelayed(paramList, 1000L);
-      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b(false);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.d();
+      DynamicAvatarRecordActivity.a(this.a);
+      return true;
     }
-    SearchResultActivity.a(this.a).a(1);
-    paramList = Message.obtain();
-    paramList.what = 4;
-    SearchResultActivity.a(this.a).sendMessageDelayed(paramList, 1000L);
+    DynamicAvatarRecordActivity.b(this.a);
+    return true;
   }
 }
 

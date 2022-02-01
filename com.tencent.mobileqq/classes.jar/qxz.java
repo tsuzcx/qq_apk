@@ -1,38 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.PBEnumField;
+import tencent.im.oidb.articlesummary.articlesummary.ArticleBasicInfo;
+import tencent.im.oidb.articlesummary.articlesummary.LongContentInfo;
+import tencent.im.oidb.articlesummary.articlesummary.OutsideLinkInfo;
+import tencent.im.oidb.articlesummary.articlesummary.PGCVideoInfo;
 
 public class qxz
-  implements View.OnClickListener
 {
-  public qxz(ComponentJump paramComponentJump, ArticleInfo paramArticleInfo) {}
+  public int a;
+  public qxp a;
+  public qyf a;
+  public qyi a;
   
-  public void onClick(View paramView)
+  public qxz() {}
+  
+  public qxz(articlesummary.LongContentInfo paramLongContentInfo)
   {
-    int i = 0;
-    ohp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
-      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("feeds_channel_entrance", i);
-      oat.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", localJSONObject.toString(), false);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_Int = paramLongContentInfo.enum_long_content_card_type.get();
+    this.jdField_a_of_type_Qxp = new qxp(paramLongContentInfo.msg_article_basic_ingo);
+    this.jdField_a_of_type_Qyf = new qyf(paramLongContentInfo.msg_outside_link_info);
+    this.jdField_a_of_type_Qyi = new qyi(paramLongContentInfo.msg_pgc_video_info);
+  }
+  
+  public articlesummary.LongContentInfo a()
+  {
+    articlesummary.LongContentInfo localLongContentInfo = new articlesummary.LongContentInfo();
+    localLongContentInfo.enum_long_content_card_type.set(this.jdField_a_of_type_Int);
+    localLongContentInfo.msg_article_basic_ingo.set(this.jdField_a_of_type_Qxp.a());
+    localLongContentInfo.msg_outside_link_info.set(this.jdField_a_of_type_Qyf.a());
+    localLongContentInfo.msg_pgc_video_info.set(this.jdField_a_of_type_Qyi.a());
+    localLongContentInfo.setHasFlag(true);
+    return localLongContentInfo;
   }
 }
 

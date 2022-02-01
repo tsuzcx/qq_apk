@@ -1,44 +1,13 @@
-import java.io.File;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
-
-public final class bddn
-  implements bddq
+public class bddn
 {
-  private final File a;
-  
-  public bddn(String paramString)
-  {
-    this.a = new File(String.format("/data/local/tmp/%sPluginManager.apk", new Object[] { paramString }));
-  }
-  
-  public boolean a()
-  {
-    return this.a.exists();
-  }
-  
-  public File getLatest()
-  {
-    if (this.a.exists()) {
-      return this.a;
-    }
-    return null;
-  }
-  
-  public Future<Boolean> isAvailable(File paramFile)
-  {
-    return anvy.a(16).submit(new bddp(this, paramFile));
-  }
-  
-  public Future<File> update()
-  {
-    return anvy.a(16).submit(new bddo(this));
-  }
-  
-  public boolean wasUpdating()
-  {
-    return false;
-  }
+  public float a = 1.0F;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

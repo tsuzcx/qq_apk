@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import bfrm;
+import bgrn;
 
 class QQAppInterface$12
   implements Runnable

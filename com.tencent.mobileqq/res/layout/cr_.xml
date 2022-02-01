@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:background="@color/ajs" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/g03" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/jq6" android:layout_width="fill_parent" android:layout_height="0.0dip" />
-        <RelativeLayout android:gravity="center_vertical" android:id="@id/jp7" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
-            <TextView android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:background="@drawable/skin_header_bar_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@null" android:singleLine="true" android:layout_centerInParent="true" style="@style/TitleText" />
-            <TextView android:textSize="17.0dip" android:textColor="@color/a8u" android:gravity="center" android:id="@id/ivTitleBtnLeft" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="10.0dip" android:maxWidth="88.0dip" android:minWidth="55.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-            <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
-                <ImageView android:id="@id/ivTitleBtnRightImage" android:layout_width="29.0dip" android:layout_height="29.0dip" android:layout_marginRight="12.0dip" android:scaleType="center" android:includeFontPadding="false" />
-                <TextView android:textSize="17.0dip" android:textColor="@color/a8u" android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleBtnRightText" android:layout_width="wrap_content" android:layout_height="@dimen/title_bar_height" android:layout_marginRight="12.0dip" android:maxWidth="100.0dip" android:singleLine="true" android:includeFontPadding="false" />
-            </LinearLayout>
-        </RelativeLayout>
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/ed2" android:background="@drawable/k0" android:paddingLeft="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+            <ImageView android:layout_width="27.0dip" android:layout_height="27.0dip" android:src="@drawable/gt6" />
+            <TextView android:textSize="15.0sp" android:textColor="@color/skin_color_qq_screen_shot_gray_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:text="安全提醒" />
+        </LinearLayout>
+        <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@color/skin_chat_buble" android:id="@id/nuf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/skin_color_qq_screen_shot_gray_text" android:id="@id/k6s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginRight="23.0dip" />
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="15.0dip">
+            <TextView android:textSize="18.0sp" android:textColor="@color/skin_unite_search_text_black_000000_6991b8" android:gravity="center" android:id="@id/nst" android:background="@drawable/jc" android:layout_width="0.0dip" android:layout_height="45.0dip" android:text="更换手机号" android:layout_weight="1.0" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/ah5" android:gravity="center" android:id="@id/nse" android:background="@drawable/common_btn_blue" android:layout_width="0.0dip" android:layout_height="45.0dip" android:layout_marginLeft="7.0dip" android:text="还在使用" android:layout_weight="1.0" />
+        </LinearLayout>
     </LinearLayout>
-</merge>
+</FrameLayout>

@@ -1,30 +1,36 @@
+import android.annotation.TargetApi;
+import android.app.ActivityManager;
+import android.content.Context;
+import android.graphics.Paint;
+import android.os.PowerManager;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import java.lang.ref.WeakReference;
+import com.tencent.util.VersionUtils;
 
+@Deprecated
 public class bhim
-  extends bdzy
 {
-  private WeakReference<View> a;
-  
-  public bhim(View paramView)
+  public static int a(Context paramContext)
   {
-    this.a = new WeakReference(paramView);
+    return ((ActivityManager)paramContext.getSystemService("activity")).getMemoryClass();
   }
   
-  public static void a(URLDrawable paramURLDrawable, View paramView)
+  @TargetApi(11)
+  public static void a(View paramView, int paramInt, Paint paramPaint)
   {
-    if (paramURLDrawable.getStatus() != 1) {
-      paramURLDrawable.setURLDrawableListener(new bhim(paramView));
+    if (VersionUtils.isHoneycomb()) {
+      paramView.setLayerType(paramInt, paramPaint);
     }
   }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public static boolean a(Context paramContext)
   {
-    paramURLDrawable = (View)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.invalidate();
+    try
+    {
+      boolean bool = ((PowerManager)paramContext.getSystemService("power")).isScreenOn();
+      return bool;
     }
+    catch (Exception paramContext) {}
+    return false;
   }
 }
 

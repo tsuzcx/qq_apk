@@ -1,8 +1,6 @@
-public class ashv
+public abstract interface ashv
 {
-  public long a;
-  public String a;
-  public String b;
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

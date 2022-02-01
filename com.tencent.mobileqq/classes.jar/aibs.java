@@ -1,15 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.widget.Gallery;
 
 class aibs
-  implements DialogInterface.OnClickListener
+  implements aumz
 {
-  aibs(aiay paramaiay) {}
+  aibs(aibr paramaibr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.Z = true;
-    aiay.a(this.a, false);
+    try
+    {
+      this.a.a(true);
+      this.a.jdField_a_of_type_Aidz.a(this.a.jdField_a_of_type_Aicq.jdField_a_of_type_Long, this.a.jdField_a_of_type_Aicq.jdField_a_of_type_Int, 20);
+      aibr.a(this.a).b(true);
+      aibr.b(this.a).a(true);
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public void b()
+  {
+    this.a.a(false);
+    this.a.c(true);
   }
 }
 

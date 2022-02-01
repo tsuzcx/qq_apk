@@ -1,15 +1,12 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-
-public class txi
+public abstract interface txi
 {
-  private static boolean a = true;
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public static void a(FromServiceMsg paramFromServiceMsg) {}
+  public abstract void a(int paramInt1, int paramInt2, Object paramObject);
   
-  public static void a(ToServiceMsg paramToServiceMsg) {}
+  public abstract void b(int paramInt1, int paramInt2);
   
-  public static void a(byte[] paramArrayOfByte, String paramString) {}
+  public abstract void c(int paramInt1, int paramInt2);
 }
 
 

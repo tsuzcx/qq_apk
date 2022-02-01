@@ -1,38 +1,19 @@
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.13.1;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketPopupView;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nyt
-  extends pmn
+  implements View.OnClickListener
 {
-  public nyt(PublicAccountBrowser paramPublicAccountBrowser) {}
+  public nyt(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (PublicAccountBrowser.a(this.a) != null))
-    {
-      Object localObject = new int[2];
-      PublicAccountBrowser.a(this.a).getLocationInWindow((int[])localObject);
-      if (PublicAccountBrowser.b(this.a) == null)
-      {
-        PublicAccountBrowser.b(this.a, new RIJRedPacketPopupView(this.a));
-        localObject = new RelativeLayout.LayoutParams(-2, -2);
-        ((RelativeLayout)this.a.findViewById(2131363653)).addView(PublicAccountBrowser.b(this.a), (ViewGroup.LayoutParams)localObject);
-      }
-      PublicAccountBrowser.b(this.a).a(false);
-      PublicAccountBrowser.b(this.a).b(false);
-      PublicAccountBrowser.b(this.a).setText(paramString);
-      PublicAccountBrowser.b(this.a).setVisibility(4);
-      PublicAccountBrowser.b(this.a).post(new PublicAccountBrowser.13.1(this, paramString));
-      PublicAccountBrowser.b(this.a, true);
-      return;
-    }
-    QLog.i("PublicAccountBrowser", 1, " red packet task do not get Tips!");
+    ReadInJoyNativeAdFragment.a(this.a).dismiss();
+    ReadInJoyNativeAdFragment.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,25 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.connections.OverlappingImgLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ThemeImageView;
+import java.util.List;
 
-class ajjc
-  implements View.OnClickListener
+public class ajjc
+  implements aoog
 {
-  private WeakReference<ajiy> a;
+  public ajjc(OverlappingImgLayout paramOverlappingImgLayout) {}
   
-  public ajjc(ajiy paramajiy)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    this.a = new WeakReference(paramajiy);
-  }
-  
-  public void onClick(View paramView)
-  {
-    ajiy localajiy = (ajiy)this.a.get();
-    if (localajiy != null) {
-      localajiy.onClick(paramView);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
+    do
+    {
+      return;
+      paramInt1 = 0;
+      while (paramInt1 < OverlappingImgLayout.a(this.a).length)
+      {
+        if ((paramInt1 < 3) && (paramString.equals(OverlappingImgLayout.a(this.a)[paramInt1])))
+        {
+          ((ThemeImageView)OverlappingImgLayout.a(this.a).get(paramInt1)).setImageBitmap(paramBitmap);
+          if (QLog.isColorLevel()) {
+            QLog.d("OverlappingImgLayout", 2, "mDecodeTaskCompletionListener update");
+          }
+        }
+        paramInt1 += 1;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("OverlappingImgLayout", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
   }
 }
 

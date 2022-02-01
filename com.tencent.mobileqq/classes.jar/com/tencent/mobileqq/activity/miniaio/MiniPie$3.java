@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import afur;
-import akaj;
+import agej;
+import aklt;
 
 public class MiniPie$3
   implements Runnable
 {
-  public MiniPie$3(akaj paramakaj) {}
+  public MiniPie$3(aklt paramaklt) {}
   
   public void run()
   {
-    afur.a(this.this$0.a);
+    agej.a(this.this$0.a);
   }
 }
 

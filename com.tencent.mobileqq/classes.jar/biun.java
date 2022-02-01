@@ -1,64 +1,29 @@
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
-import android.database.sqlite.SQLiteOpenHelper;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
 
 public class biun
-  extends SQLiteOpenHelper
+  implements anui
 {
-  public biun(bium parambium, Context paramContext, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt)
-  {
-    super(paramContext, paramString, paramCursorFactory, paramInt);
-  }
+  public void a(int paramInt) {}
   
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean) {}
+  
+  public void a(submsgtype0xdd.MsgBody paramMsgBody) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    try
+    switch (paramInt)
     {
-      bisy.b("cgi_report_debug", "ReportDataModal onCreate sql1 = create table if not exists newdata_report(id integer primary key,apn text,frequency text,commandid text,resultcode text,tmcost text,reqsize text,rspsize text,touin text,deviceinfo text,detail text,appid text)");
-      paramSQLiteDatabase.execSQL("create table if not exists newdata_report(id integer primary key,apn text,frequency text,commandid text,resultcode text,tmcost text,reqsize text,rspsize text,touin text,deviceinfo text,detail text,appid text)");
-      bisy.b("cgi_report_debug", "ReportDataModal onCreate sql2 = create table if not exists olddata_report(id integer primary key,apn text,frequency text,commandid text,resultcode text,tmcost text,reqsize text,rspsize text,touin text,deviceinfo text,detail text,appid text)");
-      paramSQLiteDatabase.execSQL("create table if not exists olddata_report(id integer primary key,apn text,frequency text,commandid text,resultcode text,tmcost text,reqsize text,rspsize text,touin text,deviceinfo text,detail text,appid text)");
+    default: 
+      return;
+    case 1: 
+      a((submsgtype0xdd.MsgBody)paramObject);
+      return;
+    case 2: 
+      paramObject = (Object[])paramObject;
+      a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
       return;
     }
-    catch (Exception paramSQLiteDatabase)
-    {
-      bisy.e("cgi_report_debug", "ReportDataModal onCreate failed");
-    }
-  }
-  
-  public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      paramSQLiteDatabase.execSQL("drop table if exists newdata_report");
-      paramSQLiteDatabase.execSQL("drop table if exists olddata_report");
-      onCreate(paramSQLiteDatabase);
-      bisy.b("cgi_report_debug", "ReportDataModal onUpgrade success");
-      return;
-    }
-    catch (Exception paramSQLiteDatabase)
-    {
-      bisy.e("cgi_report_debug", "ReportDataModal onUpgrade failed");
-    }
-  }
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    bisy.b("cgi_report_debug", "ReportDataModal onUpgrade oldVersion=" + paramInt1 + "  newVersion=" + paramInt2 + "");
-    if (paramInt1 != paramInt2) {}
-    try
-    {
-      paramSQLiteDatabase.execSQL("drop table if exists newdata_report");
-      paramSQLiteDatabase.execSQL("drop table if exists olddata_report");
-      onCreate(paramSQLiteDatabase);
-      bisy.b("cgi_report_debug", "ReportDataModal onUpgrade success");
-      return;
-    }
-    catch (Exception paramSQLiteDatabase)
-    {
-      bisy.e("cgi_report_debug", "ReportDataModal onUpgrade failed");
-    }
+    a(((Integer)paramObject).intValue());
   }
 }
 

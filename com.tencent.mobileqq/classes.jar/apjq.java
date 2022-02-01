@@ -1,76 +1,31 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import org.json.JSONObject;
+import java.util.HashMap;
 
-public class apjq
-  implements apjp
+final class apjq
+  implements beup
 {
-  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
+  public void a(bevl parambevl, bevm parambevm)
   {
-    if (paramLong != 0L) {
-      return false;
-    }
-    paramString2 = BaseActivity.sTopActivity;
-    if (paramString2 == null) {
-      return false;
-    }
-    if (paramString1.startsWith("open/")) {
-      try
+    if ((parambevl == null) || (parambevm == null)) {}
+    do
+    {
+      do
       {
-        int j = Integer.parseInt(paramString1.substring("open/".length(), paramString1.indexOf("?")));
-        paramJSONObject = (String)bkgj.a(paramString1).get("url");
-        int i = j;
-        if (j != 1007)
-        {
-          i = j;
-          if (j != 1008)
-          {
-            i = j;
-            if (j != 1014)
-            {
-              i = j;
-              if (j != 1036)
-              {
-                i = j;
-                if (j != 2061)
-                {
-                  i = j;
-                  if (j != 2072)
-                  {
-                    i = j;
-                    if (j != 2075)
-                    {
-                      i = j;
-                      if (j != 2085)
-                      {
-                        i = j;
-                        if (j != 2105)
-                        {
-                          i = j;
-                          if (j != 4012) {
-                            i = 2059;
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        MiniAppLauncher.startMiniApp(paramString2, paramJSONObject, i, apjm.a(), null);
-        return true;
-      }
-      catch (Exception paramString2)
+        return;
+      } while (!(parambevl instanceof beum));
+      parambevl = (beum)parambevl;
+      parambevl.jdField_a_of_type_Long += parambevm.c;
+      parambevm.c = 0L;
+      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
+      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
+      parambevm = parambevl.jdField_a_of_type_JavaLangString;
+      if (parambevm.contains("range="))
       {
-        QLog.e("ArkApp", 1, "parse miniapp scheme failed:" + paramString1, paramString2);
-        return false;
+        String str = parambevm.substring(0, parambevm.lastIndexOf("range="));
+        parambevl.jdField_a_of_type_JavaLangString = (str + "range=" + parambevl.jdField_a_of_type_Long);
       }
-    }
-    return false;
+    } while (!QLog.isColorLevel());
+    QLog.i("ArConfig_ArResourceDownload", 2, "IBreakDownFix, " + parambevm + ", offset=" + parambevl.jdField_a_of_type_Long);
   }
 }
 

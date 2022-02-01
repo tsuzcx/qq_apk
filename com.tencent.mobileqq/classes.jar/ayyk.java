@@ -1,73 +1,56 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.mobileqq.pic.PresendPicMgr;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.Rect;
+import android.text.Spannable;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
 public class ayyk
-  extends Handler
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private final WeakReference<PresendPicMgr> a;
+  public ayyk(OCRResultActivity paramOCRResultActivity) {}
   
-  public ayyk(Looper paramLooper, PresendPicMgr paramPresendPicMgr)
+  public void onGlobalLayout()
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramPresendPicMgr);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    PresendPicMgr localPresendPicMgr = (PresendPicMgr)this.a.get();
-    if (localPresendPicMgr != null)
-    {
-      switch (paramMessage.what)
-      {
-      default: 
-        super.handleMessage(paramMessage);
-        return;
-      case 1: 
-        ayxi.a("PresendPicMgr", "PresendHandler", "handleMessage MSG_REGISTER_CLIENT_HANDLER");
-        localPresendPicMgr.a = paramMessage.replyTo;
-        paramMessage = Message.obtain(null, 2);
-        ArrayList localArrayList = new ArrayList();
-        Object localObject = PresendPicMgr.a(localPresendPicMgr).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          localArrayList.add(((ayyl)((Iterator)localObject).next()).a);
-        }
-        localObject = new Bundle();
-        ((Bundle)localObject).putParcelableArrayList("flag_compressinfolist", localArrayList);
-        paramMessage.setData((Bundle)localObject);
-        try
-        {
-          localPresendPicMgr.a.send(paramMessage);
-          localPresendPicMgr.a = null;
-          PresendPicMgr.a(localPresendPicMgr);
-          localPresendPicMgr.b();
-          return;
-        }
-        catch (RemoteException paramMessage)
-        {
-          for (;;)
-          {
-            localPresendPicMgr.a = null;
-            if (QLog.isColorLevel()) {
-              QLog.e("PresendPicMgr", 2, paramMessage.getMessage(), paramMessage);
-            }
-            paramMessage.printStackTrace();
-          }
-        }
-      }
-      ayxi.a("PresendPicMgr", "PresendHandler", "handleMessage MSG_UNREGISTER_CLIENT_HANDLER");
-      localPresendPicMgr.a = null;
+    int i = 0;
+    if (OCRResultActivity.d(this.a) != 0) {
       return;
     }
-    ayxi.b("PresendPicMgr", "handleMessage", "PresendPicMgr == null!");
+    Object localObject = new Rect();
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getWindowVisibleDisplayFrame((Rect)localObject);
+    int j = this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getRootView().getHeight();
+    if (j - ((Rect)localObject).bottom > j * 0.15D) {
+      try
+      {
+        localObject = this.a.jdField_a_of_type_AndroidWidgetEditText.getText();
+        begx[] arrayOfbegx = (begx[])((Spannable)localObject).getSpans(0, ((Spannable)localObject).length(), begx.class);
+        if ((arrayOfbegx != null) && (arrayOfbegx.length > 0))
+        {
+          j = arrayOfbegx.length;
+          while (i < j)
+          {
+            ((Spannable)localObject).removeSpan(arrayOfbegx[i]);
+            i += 1;
+          }
+        }
+        apsw.a(this.a, this.a.d, false, 0);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(OCRResultActivity.a(this.a).ocrContent);
+        return;
+      }
+    }
+    if (OCRResultActivity.a(this.a) != null)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(new begp(this.a.jdField_a_of_type_AndroidWidgetEditText.getText(), 8, 16));
+      this.a.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
+    }
+    apsw.a(this.a, this.a.d, true, 0);
   }
 }
 

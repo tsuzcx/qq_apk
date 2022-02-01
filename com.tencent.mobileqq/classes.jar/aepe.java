@@ -1,32 +1,24 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class aepe
-  implements View.OnLongClickListener
+  extends antg
 {
-  public aepe(MainFragment paramMainFragment) {}
+  public aepe(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public boolean onLongClick(View paramView)
+  protected void a(int paramInt)
   {
-    if (this.a.a() == MainFragment.b)
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainFragment", 2, "Mainfragment onLongClick");
-      }
-      paramView = (Conversation)this.a.a(Conversation.class);
-      if (paramView != null)
-      {
-        paramView = paramView.a().a();
-        if (paramView != null) {
-          awsf.a(this.a.getActivity(), paramView.getRecentUserUin(), paramView.getRecentUserType(), paramView.getTitleName(), "conversation_tab_bottom");
-        }
-      }
     }
-    return true;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
+      }
+    } while (this.a.a == null);
+    this.a.a.c();
   }
 }
 

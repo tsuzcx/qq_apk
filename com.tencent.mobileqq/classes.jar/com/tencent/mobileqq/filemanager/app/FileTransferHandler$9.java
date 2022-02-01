@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aszj;
-import atey;
+import atrd;
+import atws;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class FileTransferHandler$9
   implements Runnable
 {
-  public FileTransferHandler$9(aszj paramaszj, long paramLong, int paramInt, String paramString1, String paramString2) {}
+  public FileTransferHandler$9(atrd paramatrd, long paramLong, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {

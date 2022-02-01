@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahyk;
-import amoi;
+import aihy;
+import anac;
 import com.tencent.mobileqq.utils.VipUtils;
 
 public class CmGameChatPie$12
   implements Runnable
 {
-  public CmGameChatPie$12(ahyk paramahyk, int paramInt1, int paramInt2, String paramString) {}
+  public CmGameChatPie$12(aihy paramaihy, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
     int i = 2;
-    if (ahyk.a(this.this$0) == null) {
-      ahyk.a(this.this$0, new amoi(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    if (aihy.a(this.this$0) == null) {
+      aihy.a(this.this$0, new anac(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
     }
-    ahyk.a(this.this$0).a(this.this$0.b);
-    ahyk.a(this.this$0).a(ahyk.a(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
-    ahyk.a(this.this$0).show();
-    ahyk.a(this.this$0);
+    aihy.a(this.this$0).a(this.this$0.b);
+    aihy.a(this.this$0).a(aihy.a(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    aihy.a(this.this$0).show();
+    aihy.a(this.this$0);
     if (this.b == 2) {}
     for (;;)
     {

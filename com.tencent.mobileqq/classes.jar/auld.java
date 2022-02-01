@@ -1,44 +1,38 @@
-import android.graphics.Bitmap;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Pair;
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
 import java.util.List;
 
 class auld
-  implements aobv
+  implements aumz
 {
-  auld(aulb paramaulb) {}
+  auld(aukz paramaukz, List paramList, atqx paramatqx, aule paramaule) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void a()
   {
-    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "onDecodeTaskCompleted uin: " + paramString);
-    if (aulb.a(this.a) == null) {}
-    while (aulb.a(this.a).a()) {
-      return;
-    }
-    paramInt2 = aulb.a(this.a).findFirstVisibleItemPosition();
-    int i = aulb.a(this.a).getChildCount();
-    paramInt1 = 1;
-    label74:
-    if (paramInt1 < i) {
-      if (((String)((Pair)aulb.a(this.a).a.get(paramInt2 + paramInt1 - 1)).first).equals(paramString))
-      {
-        auli localauli = (auli)aulb.a(this.a).getChildViewHolder(aulb.a(this.a).getChildAt(paramInt1));
-        if (!(localauli instanceof aulh)) {
-          break label170;
+    auna.d(aukz.a(this.jdField_a_of_type_Aukz).getString(2131692445));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        if (bhmi.b(localFileManagerEntity.getFilePath())) {
+          this.jdField_a_of_type_Atqx.a(localFileManagerEntity.getFilePath(), "", aukz.a(this.jdField_a_of_type_Aukz).getCurrentAccountUin(), 0, false);
+        } else {
+          this.jdField_a_of_type_Atqx.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
         }
-        ((aulh)localauli).a.setImageBitmap(paramBitmap);
       }
     }
-    for (;;)
-    {
-      paramInt1 += 1;
-      break label74;
-      break;
-      label170:
-      QLog.e("ForwardTroopMemberControllerForMiniPie", 2, "onDecodeTaskCompleted viewHolder in wrong instance ! ");
+    if (this.jdField_a_of_type_Aule != null) {
+      this.jdField_a_of_type_Aule.a(4, 0);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aule != null) {
+      this.jdField_a_of_type_Aule.a(4, 1);
     }
   }
 }

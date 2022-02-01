@@ -1,12 +1,12 @@
 package com.tencent.widget;
 
-import bklj;
+import blmm;
 import com.tencent.qphone.base.util.QLog;
 
 public class KandianNegativeWindow$3
   implements Runnable
 {
-  public KandianNegativeWindow$3(bklj parambklj, StringBuilder paramStringBuilder, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  public KandianNegativeWindow$3(blmm paramblmm, StringBuilder paramStringBuilder, int paramInt1, int paramInt2, boolean paramBoolean) {}
   
   public void run()
   {

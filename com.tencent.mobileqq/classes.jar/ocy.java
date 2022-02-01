@@ -1,28 +1,18 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.AdTagInfo;
 
-public class ocy
-  extends anry
+public final class ocy
+  implements Parcelable.Creator<VideoInfo.AdTagInfo>
 {
-  public ocy(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
-  
-  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  public VideoInfo.AdTagInfo a(Parcel paramParcel)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      if ((paramBoolean) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramString)))
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131700075));
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131700054));
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130847080);
+    return new VideoInfo.AdTagInfo(paramParcel);
+  }
+  
+  public VideoInfo.AdTagInfo[] a(int paramInt)
+  {
+    return new VideoInfo.AdTagInfo[paramInt];
   }
 }
 

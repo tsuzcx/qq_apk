@@ -1,30 +1,16 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.qqcircle.bizparts.danmaku.text.TextCell;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class vgh
-  extends ClickableSpan
+class vgh
+  implements View.OnClickListener
 {
-  public vgh(TextCell paramTextCell) {}
+  vgh(vgg paramvgg) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.clickable())
-    {
-      Intent localIntent = this.a.getIntent();
-      if (localIntent != null) {
-        paramView.getContext().startActivity(localIntent);
-      }
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
+    this.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

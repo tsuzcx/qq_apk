@@ -1,32 +1,18 @@
-import Wallet.GetPasswordReq;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qwallet.plugin.PatternLockUtils;
 
 public class akme
+  extends aklt
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  public akme(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    if (PatternLockUtils.getSyncPatternLockState(paramQQAppInterface.getApp(), paramQQAppInterface.c()))
-    {
-      GetPasswordReq localGetPasswordReq = new GetPasswordReq();
-      localGetPasswordReq.MQOS = "Android";
-      localGetPasswordReq.MQVersion = bgln.a(paramQQAppInterface.getApp());
-      ((antg)paramQQAppInterface.a(42)).a(localGetPasswordReq);
-    }
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  protected void y()
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramLong < 1L)) {
-      return;
-    }
-    Intent localIntent = new Intent("com.tencent.qwallet.payer.notify");
-    localIntent.putExtra("sendUin", paramLong);
-    localIntent.putExtra("tokenId", paramString);
-    paramQQAppInterface.getApp().sendBroadcast(localIntent);
+    this.a = "MiniPieForNearby";
   }
 }
 

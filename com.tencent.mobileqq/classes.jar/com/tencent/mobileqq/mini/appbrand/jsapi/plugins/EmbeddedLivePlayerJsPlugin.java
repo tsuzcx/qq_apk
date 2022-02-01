@@ -169,62 +169,61 @@ public class EmbeddedLivePlayerJsPlugin
     for (;;)
     {
       if ("insertXWebLivePlayer".equals(paramString1)) {
-        if ((this.jsPluginEngine != null) && (localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleInsertEmbeddedWidgetEvent("insertXWebLivePlayer", paramString2, paramJsRuntime, this.jsPluginEngine.appBrandRuntime))) {
-          if (this.jsPluginEngine != null) {
-            this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
+        if (this.jsPluginEngine != null)
+        {
+          if ((localEmbeddedWidgetClientFactory == null) || (!localEmbeddedWidgetClientFactory.handleInsertEmbeddedWidgetEvent("insertXWebLivePlayer", paramString2, paramJsRuntime, this.jsPluginEngine.appBrandRuntime))) {
+            break label241;
           }
+          this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
         }
       }
       for (;;)
       {
         return "";
-        if (this.jsPluginEngine != null)
+        label241:
+        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
+        continue;
+        if ("updateXWebLivePlayer".equals(paramString1))
         {
-          this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
-          continue;
-          if ("updateXWebLivePlayer".equals(paramString1))
-          {
-            if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramJsRuntime, "updateXWebLivePlayer", paramString2, paramInt)))
-            {
-              if (this.jsPluginEngine != null) {
-                this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
-              }
-            }
-            else if (this.jsPluginEngine != null) {
+          if (this.jsPluginEngine != null) {
+            if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramJsRuntime, "updateXWebLivePlayer", paramString2, paramInt, this.jsPluginEngine.appBrandRuntime))) {
+              this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
+            } else {
               this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
             }
           }
-          else if ("operateXWebLivePlayer".equals(paramString1))
-          {
-            if (((localEmbeddedWidgetClientFactory == null) || (!localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramJsRuntime, "operateXWebLivePlayer", paramString2, paramInt))) && (this.jsPluginEngine != null)) {
-              this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
-            }
+        }
+        else if ("operateXWebLivePlayer".equals(paramString1))
+        {
+          if ((this.jsPluginEngine != null) && ((localEmbeddedWidgetClientFactory == null) || (!localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramJsRuntime, "operateXWebLivePlayer", paramString2, paramInt, this.jsPluginEngine.appBrandRuntime)))) {
+            this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
           }
-          else
+        }
+        else
+        {
+          if ("removeXWebLivePlayer".equals(paramString1))
           {
-            if ("removeXWebLivePlayer".equals(paramString1))
+            if (this.jsPluginEngine != null)
             {
-              if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramJsRuntime, "removeXWebLivePlayer", paramString2, paramInt))) {
-                if (this.jsPluginEngine != null) {
-                  this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
-                }
+              if ((localEmbeddedWidgetClientFactory == null) || (!localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramJsRuntime, "removeXWebLivePlayer", paramString2, paramInt, this.jsPluginEngine.appBrandRuntime))) {
+                break label488;
               }
-              for (;;)
-              {
-                QLog.e("EmbeddedLivePlayerJsPlugin", 1, "handleNativeRequest-removeXWebLivePlayer ,jsonParams=" + paramString2 + ",callbackId=" + paramInt + ",webview=" + paramJsRuntime);
-                break;
-                if (this.jsPluginEngine != null) {
-                  this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
-                }
-              }
-            }
-            if ("showVirtualBottomNavigationBar".equals(paramString1)) {
-              AppBrandTask.runTaskOnUiThread(new EmbeddedLivePlayerJsPlugin.2(this, paramJsRuntime, paramString1, paramInt));
-            } else if ("hideVirtualBottomNavigationBar".equals(paramString1)) {
-              AppBrandTask.runTaskOnUiThread(new EmbeddedLivePlayerJsPlugin.3(this, paramJsRuntime, paramString1, paramInt));
-            } else if (("insertPositioningContainer".equals(paramString1)) && (this.jsPluginEngine != null)) {
               this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
             }
+            for (;;)
+            {
+              QLog.e("EmbeddedLivePlayerJsPlugin", 1, "handleNativeRequest-removeXWebLivePlayer ,jsonParams=" + paramString2 + ",callbackId=" + paramInt + ",webview=" + paramJsRuntime);
+              break;
+              label488:
+              this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
+            }
+          }
+          if ("showVirtualBottomNavigationBar".equals(paramString1)) {
+            AppBrandTask.runTaskOnUiThread(new EmbeddedLivePlayerJsPlugin.2(this, paramJsRuntime, paramString1, paramInt));
+          } else if ("hideVirtualBottomNavigationBar".equals(paramString1)) {
+            AppBrandTask.runTaskOnUiThread(new EmbeddedLivePlayerJsPlugin.3(this, paramJsRuntime, paramString1, paramInt));
+          } else if (("insertPositioningContainer".equals(paramString1)) && (this.jsPluginEngine != null)) {
+            this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
           }
         }
       }

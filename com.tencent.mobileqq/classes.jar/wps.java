@@ -1,52 +1,59 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.model.TrimmableManager.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetCommentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCommentList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
 public class wps
-  implements wou
+  extends wri
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private CopyOnWriteArraySet<wov> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+  int jdField_a_of_type_Int;
+  public final String a;
+  String b;
   
-  public wps()
+  public wps(wpm paramwpm, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new wpt());
+    this.jdField_a_of_type_JavaLangString = wnu.a("StorySvc.get_comment_list");
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private void b(int paramInt)
+  public String a()
   {
-    yqp.d("TrimmableManager", "trimMemory : level = %d", new Object[] { Integer.valueOf(paramInt) });
-    switch (paramInt)
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public wrj a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetCommentList localRspGetCommentList = new qqstory_service.RspGetCommentList();
+    try
     {
-    default: 
-      return;
+      localRspGetCommentList.mergeFrom(paramArrayOfByte);
+      return new wpt(this.jdField_a_of_type_Wpm, localRspGetCommentList);
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-    while (localIterator.hasNext()) {
-      ((wov)localIterator.next()).a(paramInt);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yuk.d("Q.qqstory:GetCommentListRequest", "" + paramArrayOfByte);
     }
-    System.gc();
+    return null;
   }
   
-  public void a() {}
-  
-  public void a(int paramInt)
+  protected byte[] a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new TrimmableManager.1(this, paramInt));
+    qqstory_service.ReqGetCommentList localReqGetCommentList = new qqstory_service.ReqGetCommentList();
+    localReqGetCommentList.vid.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqGetCommentList.latest_comment_id.set(this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory:GetCommentListRequest", 2, "getCommentListData by latest_comment_id: " + this.jdField_a_of_type_Int);
+    }
+    return localReqGetCommentList.toByteArray();
   }
   
-  public void a(wov paramwov)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramwov);
-  }
-  
-  public void b() {}
-  
-  public void b(wov paramwov)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramwov);
+    return "GetCommentListRequest{ vid=" + this.b + ", startCommentID=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

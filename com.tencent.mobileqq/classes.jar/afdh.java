@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class afdh
-  implements DialogInterface.OnClickListener
+  extends azov
 {
-  afdh(afdc paramafdc) {}
+  afdh(afdg paramafdg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean)
   {
-    this.a.a.show();
-    this.a.b = false;
-    afdc.c(this.a);
+    super.a(paramBoolean);
+    PhoneUnityChangeActivity.a(this.a.a.a);
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
+    {
+      ((ajng)this.a.a.a.app.getManager(102)).a(null);
+      this.a.a.a.setResult(4001);
+      this.a.a.a.finish();
+    }
   }
 }
 

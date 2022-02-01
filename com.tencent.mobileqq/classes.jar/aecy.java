@@ -1,19 +1,17 @@
-import android.app.Dialog;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.activity.ChatHistory;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aecy
   implements View.OnClickListener
 {
-  public aecy(EditActivity paramEditActivity) {}
+  public aecy(ChatHistory paramChatHistory) {}
   
   public void onClick(View paramView)
   {
-    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
-      EditActivity.a(this.a).dismiss();
-    }
+    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

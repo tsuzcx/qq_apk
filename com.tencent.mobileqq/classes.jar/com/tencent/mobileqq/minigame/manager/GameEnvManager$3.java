@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.minigame.manager;
 
-import atwl;
+import auog;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.minigame.utils.GameLog;
-import com.tencent.mobileqq.triton.sdk.Version;
+import com.tencent.mobileqq.triton.model.Version;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -12,7 +12,7 @@ final class GameEnvManager$3
 {
   public void run()
   {
-    Object localObject = atwl.a(GameEnvManager.access$300(), false, 0);
+    Object localObject = auog.a(GameEnvManager.access$300(), false, 0);
     if (localObject == null) {}
     for (;;)
     {
@@ -29,7 +29,7 @@ final class GameEnvManager$3
           if (localVersion1.compareTo(localVersion2) >= 0)
           {
             GameLog.getInstance().i("GameEnvManager[MiniEng]", "deleteOldVersionTritonEngine delete:" + localVersion2);
-            atwl.c(localFileInfo.c());
+            auog.c(localFileInfo.c());
           }
         }
       }

@@ -1,31 +1,65 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.OfflineBridgeInvokeHandler.register.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.OfflineBridgeInvokeHandler.register.2;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function2;
-import org.jetbrains.annotations.NotNull;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyTelePhoneUtils.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.app.AppActivity;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/OfflineBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tql
-  extends tpt
+public class tql
 {
-  public static final tqm a = new tqm(null);
-  
-  public tql(@NotNull BridgeModule paramBridgeModule)
+  public static JSONObject a(int paramInt1, int paramInt2, String paramString, AdvertisementInfo paramAdvertisementInfo)
   {
-    super(paramBridgeModule);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("perstatus", paramInt1);
+      localJSONObject.put("callact", paramInt2);
+      localJSONObject.put("callnum", paramString);
+      if (paramAdvertisementInfo != null) {
+        localJSONObject.put("phone_cmpt_id", String.valueOf(paramAdvertisementInfo.mPhoneComponetId));
+      }
+      paramString = new JSONObject();
+      paramString.put("comp_stat_src", "");
+      paramString.put("phone_component_info", localJSONObject.toString());
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
-  @NotNull
-  public String a()
+  public static void a(Context paramContext, AdvertisementInfo paramAdvertisementInfo)
   {
-    return "offline";
+    if ((paramAdvertisementInfo == null) || (paramAdvertisementInfo.mAdRl == null)) {
+      return;
+    }
+    ThreadManager.excute(new ReadInJoyTelePhoneUtils.1(paramAdvertisementInfo, paramContext), 128, null, true);
   }
   
-  public void a()
+  public static void a(Context paramContext, String paramString, AdvertisementInfo paramAdvertisementInfo)
   {
-    a("updateIfNeed", (Function2)new OfflineBridgeInvokeHandler.register.1(this));
-    a("batchCheckUpdate", (Function2)new OfflineBridgeInvokeHandler.register.2(this));
+    if (!(paramContext instanceof AppActivity)) {
+      return;
+    }
+    b(paramContext, paramString, paramAdvertisementInfo);
+  }
+  
+  public static boolean a(AdvertisementInfo paramAdvertisementInfo)
+  {
+    return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.mPhoneComponetId != 0) && (tpz.e(paramAdvertisementInfo));
+  }
+  
+  public static void b(Context paramContext, String paramString, AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    paramContext.startActivity(new Intent("android.intent.action.DIAL", Uri.parse("tel:" + paramString)));
+    nzq.a(new tlx().a(paramContext).a(nzq.x).b(nzq.ah).a(paramAdvertisementInfo).e(a(2, 1, paramString, paramAdvertisementInfo)).a());
   }
 }
 

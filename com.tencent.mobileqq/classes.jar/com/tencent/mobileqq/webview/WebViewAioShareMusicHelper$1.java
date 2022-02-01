@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.webview;
 
-import bhme;
-import bhql;
+import bimz;
+import birg;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class WebViewAioShareMusicHelper$1
   implements Runnable
 {
-  public WebViewAioShareMusicHelper$1(bhme parambhme, boolean paramBoolean) {}
+  public WebViewAioShareMusicHelper$1(bimz parambimz, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((bhme.a(this.this$0) != null) && (bhme.a(this.this$0).mUIStyleHandler != null)) {
-      bhme.a(this.this$0).mUIStyleHandler.a(this.a, bhme.a(this.this$0));
+    if ((bimz.a(this.this$0) != null) && (bimz.a(this.this$0).mUIStyleHandler != null)) {
+      bimz.a(this.this$0).mUIStyleHandler.a(this.a, bimz.a(this.this$0));
     }
   }
 }

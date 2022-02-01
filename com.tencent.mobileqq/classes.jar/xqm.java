@@ -1,6 +1,22 @@
-public abstract interface xqm
+import android.content.Intent;
+import android.os.Bundle;
+
+public class xqm
+  implements xpd
 {
-  public abstract void b();
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

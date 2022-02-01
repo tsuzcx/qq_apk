@@ -1,32 +1,70 @@
-public class amlr
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.weather.webpage.WeatherArkNotify.viewModel.2;
+import com.tencent.mobileqq.mvvm.LifeCycleFragment;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Lazy;
+import kotlin.LazyKt;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherArkNotify;", "Lcom/tencent/mobileqq/ark/API/ArkAppNotifyCenter$INotifyReg;", "fragment", "Lcom/tencent/mobileqq/mvvm/LifeCycleFragment;", "(Lcom/tencent/mobileqq/mvvm/LifeCycleFragment;)V", "viewModel", "Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel;", "getViewModel", "()Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel;", "viewModel$delegate", "Lkotlin/Lazy;", "notify", "", "appName", "", "eventName", "params", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amlr
+  implements apwk
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public static final amls a;
+  private final Lazy a;
   
-  public boolean equals(Object paramObject)
+  static
   {
-    if ((paramObject == null) || (!(paramObject instanceof amlr))) {}
-    do
-    {
-      return false;
-      paramObject = (amlr)paramObject;
-    } while ((this.a != paramObject.a) || (this.b != paramObject.b) || (this.c != paramObject.c) || (this.d != paramObject.d) || (this.e != paramObject.e));
-    return true;
+    jdField_a_of_type_Amls = new amls(null);
   }
   
-  public String toString()
+  public amlr(@NotNull LifeCycleFragment paramLifeCycleFragment)
   {
-    StringBuilder localStringBuilder = new StringBuilder("{");
-    localStringBuilder.append("positionX:").append(this.a);
-    localStringBuilder.append(", positionY:").append(this.b);
-    localStringBuilder.append(", width:").append(this.c);
-    localStringBuilder.append(", height:").append(this.d);
-    localStringBuilder.append(", align:").append(this.e);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new WeatherArkNotify.viewModel.2(paramLifeCycleFragment));
+  }
+  
+  private final amma a()
+  {
+    return (amma)this.jdField_a_of_type_KotlinLazy.getValue();
+  }
+  
+  public boolean notify(@Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WeatherArkNotify", 2, "notify --->  appName: " + paramString1 + ", eventName: " + paramString2 + ", params: " + paramString3);
+    }
+    try
+    {
+      if (!TextUtils.equals((CharSequence)paramString1, (CharSequence)"com.tencent.weather_v2")) {
+        break label150;
+      }
+      if (paramString2 == null) {
+        return true;
+      }
+      switch (paramString2.hashCode())
+      {
+      case 6648771: 
+        if (!paramString2.equals("notify_client_msg")) {
+          break label150;
+        }
+        a().c(paramString3);
+        return true;
+      }
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.d("WeatherArkNotify", 1, paramString1, new Object[0]);
+      return true;
+    }
+    if (paramString2.equals("notify_web_msg")) {
+      a().b(paramString3);
+    }
+    label150:
+    return true;
+    return true;
   }
 }
 

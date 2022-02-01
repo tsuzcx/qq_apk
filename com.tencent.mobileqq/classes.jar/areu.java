@@ -1,119 +1,44 @@
-public abstract class areu<DATA, CONFIG extends arfh>
-  extends aren<DATA, CONFIG>
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
+public class areu
 {
-  private float[] a;
-  private float d;
-  private float e = -1.0F;
-  private float f;
+  private String a = "";
+  private String b = "";
   
-  public areu(arew paramarew)
+  public static areu a(String paramString)
   {
-    super(paramarew);
-  }
-  
-  public float a()
-  {
-    return -this.f;
-  }
-  
-  protected float a(long paramLong)
-  {
-    long l = this.jdField_a_of_type_Long;
-    return f() - (float)(paramLong - l) * this.f;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
-  {
-    if (!a(paramLong1))
+    if (paramString == null) {}
+    do
     {
-      argp.c("BaseDanmaku", "onLayout, Y = " + paramFloat2 + ", danmaku = " + toString());
-      this.d = a(paramLong2);
-      if (!c())
+      return null;
+      try
       {
-        this.e = paramFloat2;
-        a(true);
+        areu localareu = new areu();
+        paramString = new JSONObject(paramString);
+        localareu.a = paramString.optString("dest_icon", "");
+        localareu.b = paramString.optString("avatar_pendant", "");
+        return localareu;
       }
-      return;
-    }
-    a(false);
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("TogetherEntryConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  public void a(long paramLong)
+  public String a()
   {
-    this.d = a(paramLong);
+    return this.a;
   }
   
-  public float[] a(long paramLong)
+  public String b()
   {
-    if (!b()) {
-      return null;
-    }
-    float f1 = a(paramLong);
-    if (this.jdField_a_of_type_ArrayOfFloat == null) {
-      this.jdField_a_of_type_ArrayOfFloat = new float[4];
-    }
-    this.jdField_a_of_type_ArrayOfFloat[0] = (f1 - arew.a().b());
-    this.jdField_a_of_type_ArrayOfFloat[1] = this.e;
-    this.jdField_a_of_type_ArrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float + this.c);
-    this.jdField_a_of_type_ArrayOfFloat[3] = (this.e + this.b);
-    return this.jdField_a_of_type_ArrayOfFloat;
-  }
-  
-  public float b()
-  {
-    return this.d;
-  }
-  
-  public float[] b(long paramLong)
-  {
-    if (!b()) {
-      return null;
-    }
-    float f1 = a(paramLong);
-    if (this.jdField_a_of_type_ArrayOfFloat == null) {
-      this.jdField_a_of_type_ArrayOfFloat = new float[4];
-    }
-    this.jdField_a_of_type_ArrayOfFloat[0] = f1;
-    this.jdField_a_of_type_ArrayOfFloat[1] = this.e;
-    this.jdField_a_of_type_ArrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_ArrayOfFloat[3] = (this.e + this.b);
-    return this.jdField_a_of_type_ArrayOfFloat;
-  }
-  
-  public float c()
-  {
-    return this.e;
-  }
-  
-  public float d()
-  {
-    return this.d + this.jdField_a_of_type_Float;
-  }
-  
-  public float e()
-  {
-    return this.e + this.b;
-  }
-  
-  public void g()
-  {
-    super.g();
-    this.f = ((int)(f() + this.jdField_a_of_type_Float) / (float)this.jdField_a_of_type_Argf.a());
-  }
-  
-  public void g(float paramFloat)
-  {
-    this.d = paramFloat;
-  }
-  
-  public void h(float paramFloat)
-  {
-    this.e = paramFloat;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     areu
  * JD-Core Version:    0.7.0.1
  */

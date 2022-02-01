@@ -1,41 +1,56 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class xiw
-  extends xiy
 {
-  public ErrorMessage a;
+  public long a;
+  public StoryVideoItem a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
   
-  public xiw(xix paramxix, @Nullable ErrorMessage paramErrorMessage)
+  public JSONObject a()
   {
-    super(paramxix);
-    if (paramErrorMessage == null) {}
-    for (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(97000001, "loading");; this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage)
+    try
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("feedId", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("didRead", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("vid", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("videoIndex", this.jdField_a_of_type_Long);
+      localJSONObject.put("isLocal", this.jdField_b_of_type_Boolean);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return null;
+  }
+  
+  public void a(@NonNull JSONObject paramJSONObject)
+  {
+    try
+    {
+      this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("didRead");
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("feedId");
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("vid");
+      this.jdField_a_of_type_Long = paramJSONObject.optLong("videoIndex");
+      this.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("isLocal");
       return;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000000;
-  }
-  
-  public boolean b()
-  {
-    return (!a()) && (!c());
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000001;
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
   }
   
   public String toString()
   {
-    return "fg{g=" + this.jdField_a_of_type_Xix + ", em=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
+    return "MsgTabVideoData{didRead=" + this.jdField_a_of_type_Boolean + ", feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", videoIndex='" + this.jdField_a_of_type_Long + '\'' + ", storyVideoItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", isLocal=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 

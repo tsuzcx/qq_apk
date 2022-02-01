@@ -1,49 +1,11 @@
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+import java.util.Comparator;
 
-public final class txz
+public class txz
+  implements Comparator<txy>
 {
-  private ProfileParams a = new ProfileParams(null);
-  
-  public ProfileParams a()
+  public int a(txy paramtxy1, txy paramtxy2)
   {
-    return this.a;
-  }
-  
-  public txz a(int paramInt)
-  {
-    this.a.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public txz a(ProfileParams.CurLoginUsr paramCurLoginUsr)
-  {
-    this.a.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams$CurLoginUsr = paramCurLoginUsr;
-    return this;
-  }
-  
-  public txz a(String paramString)
-  {
-    this.a.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public txz b(String paramString)
-  {
-    this.a.b = paramString;
-    return this;
-  }
-  
-  public txz c(String paramString)
-  {
-    this.a.c = paramString;
-    return this;
-  }
-  
-  public txz d(String paramString)
-  {
-    this.a.d = paramString;
-    return this;
+    return paramtxy2.a - paramtxy1.a;
   }
 }
 

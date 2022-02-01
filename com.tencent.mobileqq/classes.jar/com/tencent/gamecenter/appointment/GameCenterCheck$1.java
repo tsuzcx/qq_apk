@@ -1,9 +1,9 @@
 package com.tencent.gamecenter.appointment;
 
-import aced;
-import aceh;
+import acig;
+import acik;
 import android.text.TextUtils;
-import bize;
+import bkad;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -12,60 +12,49 @@ final class GameCenterCheck$1
 {
   public void run()
   {
-    String str3 = aceh.a("APPOINTMENT_LIST");
-    String str4 = aceh.a("DELAY_LIST");
-    String str5 = aceh.a("APPOINTMENT_UPDATE_LIST");
-    String str2 = aceh.a("APPOINTMENT_TGPA_LIST");
-    String str1 = aceh.a("UNPACK_APK_LIST");
-    if ((TextUtils.isEmpty(str3)) && (TextUtils.isEmpty(str4)) && (TextUtils.isEmpty(str5)) && (TextUtils.isEmpty(str2)) && (TextUtils.isEmpty(str1)))
+    String str2 = acik.a("APPOINTMENT_LIST");
+    String str3 = acik.a("DELAY_LIST");
+    String str4 = acik.a("APPOINTMENT_UPDATE_LIST");
+    String str1 = acik.a("APPOINTMENT_TGPA_LIST");
+    if ((TextUtils.isEmpty(str2)) && (TextUtils.isEmpty(str3)) && (TextUtils.isEmpty(str4)) && (TextUtils.isEmpty(str1)))
     {
-      bize.c("GameCenterCheck", "checkGameCenter no task, unRegisterReceiver");
-      aced.b();
+      bkad.c("GameCenterCheck", "checkGameCenter no task, unRegisterReceiver");
+      acig.b();
     }
     for (;;)
     {
       return;
-      bize.c("GameCenterCheck", "checkGameCenter begin");
-      aceh.a();
-      if ((!TextUtils.isEmpty(str4)) && (aceh.a)) {
-        GameCenterCheck.a(str4.split("\\|"));
+      bkad.c("GameCenterCheck", "checkGameCenter begin");
+      acik.a();
+      if ((!TextUtils.isEmpty(str3)) && (acik.a)) {
+        GameCenterCheck.a(str3.split("\\|"));
       }
-      if ((!TextUtils.isEmpty(str3)) && (aceh.b)) {
-        GameCenterCheck.b(str3.split("\\|"));
+      if ((!TextUtils.isEmpty(str2)) && (acik.b)) {
+        GameCenterCheck.b(str2.split("\\|"));
       }
-      if ((!TextUtils.isEmpty(str5)) && (aceh.c)) {}
+      if ((!TextUtils.isEmpty(str4)) && (acik.c)) {}
       try
       {
-        GameCenterCheck.a(new JSONArray(str5));
-        if (TextUtils.isEmpty(str2)) {}
-      }
-      catch (JSONException localJSONException3)
-      {
+        GameCenterCheck.a(new JSONArray(str4));
+        if (TextUtils.isEmpty(str1)) {
+          continue;
+        }
         try
         {
-          GameCenterCheck.b(new JSONArray(str2));
-          if ((TextUtils.isEmpty(str1)) || (!aceh.d)) {
-            continue;
-          }
-          try
-          {
-            GameCenterCheck.c(new JSONArray(str1));
-            return;
-          }
-          catch (JSONException localJSONException1)
-          {
-            localJSONException1.printStackTrace();
-            return;
-          }
-          localJSONException3 = localJSONException3;
-          localJSONException3.printStackTrace();
+          GameCenterCheck.b(new JSONArray(str1));
+          return;
         }
-        catch (JSONException localJSONException2)
+        catch (JSONException localJSONException1)
         {
-          for (;;)
-          {
-            localJSONException2.printStackTrace();
-          }
+          localJSONException1.printStackTrace();
+          return;
+        }
+      }
+      catch (JSONException localJSONException2)
+      {
+        for (;;)
+        {
+          localJSONException2.printStackTrace();
         }
       }
     }

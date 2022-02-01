@@ -1,53 +1,64 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
 
 public class bimv
-  extends URLDrawableDownListener.Adapter
+  extends WebViewPlugin
 {
-  public bimv(OpenCardContainer paramOpenCardContainer) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public bimv()
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("SDK_LOGIN.OpenCardContainer", 2, "-->drawabel onLoadCancelled, view: " + paramView);
-    }
+    this.mPluginNameSpace = "forceHttps";
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  private boolean a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDK_LOGIN.OpenCardContainer", 2, "-->drawabel onLoadFailed, view: " + paramView);
+    boolean bool2 = false;
+    niz localniz = niz.a();
+    boolean bool1 = bool2;
+    if (localniz.e(paramString))
+    {
+      bool1 = bool2;
+      if (!localniz.f(paramString)) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  public boolean handleSchemaRequest(String paramString1, String paramString2)
   {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("SDK_LOGIN.OpenCardContainer", 2, "-->drawabel onLoadInterrupted, view: " + paramView);
+    if (!niz.a().d()) {
+      return false;
     }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    super.onLoadProgressed(paramView, paramURLDrawable, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("SDK_LOGIN.OpenCardContainer", 2, "-->drawabel onLoadProgressed, view: " + paramView);
+    if (("http".equals(paramString2)) && (a(paramString1)))
+    {
+      paramString2 = this.mRuntime.a();
+      if ((paramString2 != null) && (paramString2.mStatistics != null)) {
+        paramString2.mStatistics.C = true;
+      }
+      paramString2 = "https" + paramString1.substring("http".length());
+      CustomWebView localCustomWebView = this.mRuntime.a();
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("need switch url=").append(noe.b(paramString1, new String[0]));
+        if (localCustomWebView != null) {
+          break label155;
+        }
+      }
+      label155:
+      for (paramString1 = ", view==null";; paramString1 = "")
+      {
+        QLog.i("forceHttps", 2, paramString1);
+        if (localCustomWebView == null) {
+          break;
+        }
+        localCustomWebView.loadUrl(paramString2);
+        return true;
+      }
     }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDK_LOGIN.OpenCardContainer", 2, "-->drawabel onLoadSuccessed, view: " + paramView);
-    }
-    OpenCardContainer.a(this.a);
-    ((AnyScaleTypeImageView)paramView).setImageDrawable(paramURLDrawable);
+    return false;
   }
 }
 

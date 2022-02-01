@@ -1,14 +1,24 @@
-import android.content.Context;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public abstract interface aqcn
+class aqcn
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public abstract void a(int paramInt);
+  aqcn(aqcm paramaqcm, aqcq paramaqcq) {}
   
-  public abstract void a(Context paramContext, int paramInt1, int paramInt2);
-  
-  public abstract void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void stop();
+  public void callback(String paramString, Bitmap paramBitmap)
+  {
+    if (paramBitmap != null)
+    {
+      this.jdField_a_of_type_Aqcq.b.setVisibility(0);
+      this.jdField_a_of_type_Aqcq.a.setVisibility(0);
+      this.jdField_a_of_type_Aqcq.a.setImageBitmap(paramBitmap);
+      return;
+    }
+    this.jdField_a_of_type_Aqcq.a.setVisibility(8);
+  }
 }
 
 

@@ -1,68 +1,66 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.ImageCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableHelper;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcVideo;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-final class qmw
-  implements DrawableUtil.DrawableHelper
+public class qmw
+  extends qmu
 {
-  public Drawable getDrawable(Context paramContext, String paramString, Drawable paramDrawable1, Drawable paramDrawable2)
+  public qmw(Context paramContext, aoof paramaoof, sel paramsel)
   {
-    if (paramString == null) {
-      return null;
-    }
-    if (paramString.startsWith("http"))
-    {
-      paramContext = URLDrawable.URLDrawableOptions.obtain();
-      paramContext.mLoadingDrawable = paramDrawable1;
-      paramContext.mFailedDrawable = paramDrawable2;
-      return URLDrawable.getDrawable(tyc.a(paramString, 3), paramContext);
-    }
-    paramDrawable1 = ImageCommon.getDrawableResourceId(paramString);
-    if (paramDrawable1 != null) {
-      try
-      {
-        paramContext = paramContext.getResources().getDrawable(paramDrawable1.intValue());
-        return paramContext;
-      }
-      catch (Exception paramContext)
-      {
-        QLog.d("Q.readinjoy.proteus", 2, "getDrawable: cant find in resources dir, do nothing");
-        QLog.e("Q.readinjoy.proteus", 1, paramContext, new Object[0]);
-      }
-    }
-    QLog.e("Q.readinjoy.proteus", 2, "getDrawable: cant find path :" + paramString);
-    return null;
+    super(paramContext, paramaoof, paramsel);
   }
   
-  public Drawable getDrawableFromNet(Context paramContext, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, int paramInt1, int paramInt2, DrawableUtil.DrawableCallBack paramDrawableCallBack)
+  public qjh a()
   {
-    if (paramString.startsWith("http"))
-    {
-      paramContext = URLDrawable.URLDrawableOptions.obtain();
-      paramContext.mLoadingDrawable = paramDrawable1;
-      paramContext.mFailedDrawable = paramDrawable2;
-      paramContext.mRequestWidth = paramInt1;
-      paramContext.mRequestHeight = paramInt2;
-      paramContext = URLDrawable.getDrawable(tyc.a(paramString, 3), paramContext);
-      paramContext.setCallback(new qmx(this, paramDrawableCallBack, paramContext));
-      paramContext.setURLDrawableListener(new qmy(this, paramString, paramDrawableCallBack));
-      paramContext.setDownloadListener(new qmz(this, paramString, paramDrawableCallBack, paramContext));
-      QLog.i("Q.readinjoy.proteus", 1, "getDrawable: :" + paramString);
-      paramDrawableCallBack.onCallBack(true, paramContext);
-      if (paramContext.getStatus() != 1)
-      {
-        paramContext.startDownload();
-        QLog.i("Q.readinjoy.proteus", 1, "getDrawable: :" + paramString + "  startDownload ");
-      }
-      return paramContext;
+    this.jdField_a_of_type_Boolean = true;
+    return f(this.jdField_a_of_type_Sel, this.jdField_a_of_type_Aoof).g().q().l().n();
+  }
+  
+  public qjh d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("layoutComponent() must after buildComponent()!");
     }
-    return getDrawable(paramContext, paramString, paramDrawable1, paramDrawable2);
+    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout1.setOrientation(1);
+    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend);
+    }
+    if ((this.jdField_a_of_type_Qjg != null) && ((this.jdField_a_of_type_Qjg instanceof ComponentContentBigImageVideo)))
+    {
+      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      localLinearLayout2.setOrientation(1);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+      localLayoutParams.setMargins(agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLinearLayout2.setLayoutParams(localLayoutParams);
+      localLinearLayout2.addView((ComponentContentBigImageVideo)this.jdField_a_of_type_Qjg);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+        localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+      }
+      localLinearLayout2.setOnClickListener(new qmx(this));
+      localLinearLayout1.addView(localLinearLayout2);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout1);
+    return this;
+  }
+  
+  public qjh g()
+  {
+    this.jdField_a_of_type_Qjg = new ComponentContentUgcVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

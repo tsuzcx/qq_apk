@@ -1,10 +1,24 @@
-public abstract interface bmbj
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.webbundle.sdk.WebBundleH5OptionListner;
+import cooperation.comic.VipComicHelper.3.1;
+import mqq.os.MqqHandler;
+
+public final class bmbj
+  implements WebBundleH5OptionListner
 {
-  public abstract void a();
+  bmbj(SharedPreferences paramSharedPreferences) {}
   
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(float paramFloat1, float paramFloat2);
+  public void enableWebBundle(boolean paramBoolean)
+  {
+    QLog.d("WebBundle.Comic", 2, "handle enable webbundle. enable = " + paramBoolean);
+    this.a.edit().putBoolean("webbundle_enable", paramBoolean).apply();
+    if (!paramBoolean) {
+      ThreadManager.getUIHandler().post(new VipComicHelper.3.1(this));
+    }
+  }
 }
 
 

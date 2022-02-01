@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo.tag;
 
-import bpvm;
-import bpvn;
+import bqxh;
+import bqxi;
 import java.util.ArrayList;
 
 public class EditVideoTagPresenter$1$1
   implements Runnable
 {
-  public EditVideoTagPresenter$1$1(bpvn parambpvn, ArrayList paramArrayList) {}
+  public EditVideoTagPresenter$1$1(bqxi parambqxi, ArrayList paramArrayList) {}
   
   public void run()
   {
-    bpvm.a(bpvm.a(this.jdField_a_of_type_Bpvn.a), this.jdField_a_of_type_JavaUtilArrayList);
+    bqxh.a(bqxh.a(this.jdField_a_of_type_Bqxi.a), this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

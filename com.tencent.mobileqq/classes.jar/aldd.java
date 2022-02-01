@@ -1,20 +1,62 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadComDownloader.3;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
-final class aldd
-  implements Animation.AnimationListener
+public class aldd
 {
-  aldd(View paramView, Animation paramAnimation) {}
+  private static volatile aldd jdField_a_of_type_Aldd;
+  private bihw jdField_a_of_type_Bihw;
+  private bihz jdField_a_of_type_Bihz;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  private aldd()
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    if (this.jdField_a_of_type_Bihw == null)
+    {
+      this.jdField_a_of_type_Bihw = new bihw(null);
+      this.jdField_a_of_type_Bihz = this.jdField_a_of_type_Bihw.a(1);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public static aldd a()
+  {
+    if (jdField_a_of_type_Aldd == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aldd == null) {
+        jdField_a_of_type_Aldd = new aldd();
+      }
+      return jdField_a_of_type_Aldd;
+    }
+    finally {}
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  private void a(Bundle paramBundle, biht parambiht, DownloadParam paramDownloadParam)
+  {
+    ThreadManager.post(new PreloadComDownloader.3(this, paramDownloadParam, parambiht, paramBundle), 8, null, true);
+  }
+  
+  public void a(DownloadParam paramDownloadParam, biht parambiht, Bundle paramBundle)
+  {
+    if ((paramDownloadParam == null) || (TextUtils.isEmpty(paramDownloadParam.url)) || (TextUtils.isEmpty(paramDownloadParam.filePath))) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      if (!paramDownloadParam.isPreDownload) {
+        break;
+      }
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    } while (localQQAppInterface == null);
+    parambiht = new alde(this, parambiht);
+    parambiht = new aldf(this, localQQAppInterface, paramDownloadParam.url, paramBundle, parambiht, paramDownloadParam);
+    ((bezv)localQQAppInterface.getManager(193)).a(10069, "qqpay", paramDownloadParam.url, 0, paramDownloadParam.url, paramDownloadParam.filePath, 2, 0, true, parambiht);
+    return;
+    a(paramBundle, parambiht, paramDownloadParam);
+  }
 }
 
 

@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class toi
-  implements DialogInterface.OnCancelListener
+  implements pye
 {
-  public toi(BridgeModule paramBridgeModule, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    if ((this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 11)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.reportVideoShareClick(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, -1, -1, true, this.jdField_a_of_type_Int, this.c, this.d, this.e);
-    }
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return pue.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2) {}
+  
+  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

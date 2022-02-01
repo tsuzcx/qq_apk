@@ -1,17 +1,21 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import org.json.JSONObject;
 
 class ScreenJsPlugin$2
   implements ScreenJsPlugin.ScreenShotListenManager.OnScreenShotListener
 {
-  ScreenJsPlugin$2(ScreenJsPlugin paramScreenJsPlugin) {}
+  ScreenJsPlugin$2(ScreenJsPlugin paramScreenJsPlugin, BaseJsPluginEngine paramBaseJsPluginEngine) {}
   
   public void onShot(String paramString)
   {
-    paramString = new JSONObject();
-    this.this$0.jsPluginEngine.getServiceRuntime().evaluateSubcribeJS("onUserCaptureScreen", paramString.toString(), 0);
+    paramString = this.val$jsPluginEngine.getServiceRuntime();
+    if (this.this$0.isGameRuntime) {
+      paramString = ScreenJsPlugin.access$000(this.this$0);
+    }
+    if (paramString != null) {
+      paramString.evaluateSubcribeJS("onUserCaptureScreen", "{}", 0);
+    }
   }
 }
 

@@ -1,50 +1,37 @@
-import android.content.Context;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class qgq
-  implements ViewBase.OnClickListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  private sel jdField_a_of_type_Sel;
+  private HashMap<String, ArticleInfo> b;
   
-  public qgq(ArticleInfo paramArticleInfo, Context paramContext, int paramInt)
+  public qgo a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    qgo localqgo = new qgo(null);
+    qgo.a(localqgo, this.jdField_a_of_type_Sel);
+    qgo.a(localqgo, this.jdField_a_of_type_JavaUtilHashMap);
+    qgo.b(localqgo, this.b);
+    return localqgo;
   }
   
-  private void a()
+  public qgq a(HashMap<String, Integer> paramHashMap)
   {
-    oat.a(null, null, "0X80097D7", "0X80097D7", 0, 0, "", "", "", "", false);
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    return this;
   }
   
-  public void onClick(ViewBase paramViewBase)
+  public qgq a(sel paramsel)
   {
-    String str = "";
-    paramViewBase = str;
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      paramViewBase = str;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
-      {
-        paramViewBase = str;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null)
-        {
-          paramViewBase = str;
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.f != null)
-          {
-            paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.f;
-            pha.d(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
-          }
-        }
-      }
-    }
-    QLog.d("OnFriendsBiuClickListener", 1, "jump channel,  context:" + this.jdField_a_of_type_AndroidContentContext + "  url:" + paramViewBase);
-    a();
+    this.jdField_a_of_type_Sel = paramsel;
+    return this;
+  }
+  
+  public qgq b(HashMap<String, ArticleInfo> paramHashMap)
+  {
+    this.b = paramHashMap;
+    return this;
   }
 }
 

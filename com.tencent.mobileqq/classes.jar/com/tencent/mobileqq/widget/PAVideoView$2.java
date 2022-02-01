@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
 import android.view.View;
-import bdbg;
+import bdtz;
 
 class PAVideoView$2
   implements Runnable

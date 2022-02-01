@@ -1,16 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.7;
 
-class awra
+public class awra
   implements DialogInterface.OnClickListener
 {
-  awra(awqv paramawqv) {}
+  public awra(LocationDialogUtil.7 param7) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.e();
-    awqv.a(this.a).a(false, null, false);
+    this.a.a.finish();
   }
 }
 

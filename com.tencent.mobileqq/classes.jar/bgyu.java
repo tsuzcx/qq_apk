@@ -1,68 +1,54 @@
-import android.os.IBinder;
-import android.os.IBinder.DeathRecipient;
-import android.os.RemoteException;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.highway.transaction.Transaction;
 
 public class bgyu
-  implements IBinder.DeathRecipient, bgyv
+  extends bgyv
 {
-  private long jdField_a_of_type_Long;
-  private bdow jdField_a_of_type_Bdow;
-  private String jdField_a_of_type_JavaLangString;
-  
-  private bgyu(long paramLong, String paramString, bdow parambdow)
+  public bgyu(bgys parambgys, int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bdow = parambdow;
-    try
-    {
-      parambdow.asBinder().linkToDeath(this, 0);
+    super(parambgys, paramInt);
+  }
+  
+  public void a()
+  {
+    if (a(this.jdField_a_of_type_Bgys.a)) {
       return;
     }
-    catch (RemoteException paramString)
-    {
-      QLog.e("QuickUpdateIPCModule", 1, "linkToDeath fail: " + this, paramString);
+    e();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      c();
     }
   }
   
-  public void binderDied()
+  public void c()
   {
-    QLog.e("QuickUpdateIPCModule", 1, "binderDied: " + this);
-    bhcg.a(this.jdField_a_of_type_Long).removeListener(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this);
-  }
-  
-  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
-  {
-    QLog.e("QuickUpdateIPCModule", 1, "onCompleted: " + paramInt1 + ", " + this);
-    try
+    boolean bool = true;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("isVideo", 0);
+    if (this.b != null)
     {
-      this.jdField_a_of_type_Bdow.onComplete(paramString1, paramInt1);
+      localBundle.putInt("result", 1);
+      localBundle.putString("url", this.b);
+    }
+    for (;;)
+    {
+      bgyt.a().a(bool, this.jdField_a_of_type_Int, localBundle);
       return;
-    }
-    catch (RemoteException paramQQAppInterface)
-    {
-      QLog.e("QuickUpdateIPCModule", 1, "onCompleted: " + this, paramQQAppInterface);
-    }
-  }
-  
-  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
-  {
-    try
-    {
-      this.jdField_a_of_type_Bdow.onProgress(paramString1, paramLong2, paramLong3);
-      return;
-    }
-    catch (RemoteException paramQQAppInterface)
-    {
-      QLog.e("QuickUpdateIPCModule", 1, "onProgress: " + this, paramQQAppInterface);
+      localBundle.putInt("result", 0);
+      localBundle.putString("error", "");
+      bool = false;
     }
   }
   
-  public String toString()
+  public void d()
   {
-    return this.jdField_a_of_type_Long + "_" + this.jdField_a_of_type_JavaLangString + "," + super.toString();
+    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
+      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
+    }
   }
 }
 

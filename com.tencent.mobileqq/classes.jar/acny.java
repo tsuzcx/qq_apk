@@ -1,16 +1,20 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.ViewGroup;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import java.lang.ref.WeakReference;
 
 class acny
-  implements View.OnSystemUiVisibilityChangeListener
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  acny(acnw paramacnw, ViewGroup paramViewGroup) {}
+  acny(acnx paramacnx, AdQQMINIProgramAdapter.Params paramParams, GdtAd paramGdtAd) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramInt & 0x4) == 0) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setSystemUiVisibility(7942);
-    }
+    acvc.b("GdtQQMINIProgramAdapter", String.format("onLaunchResult %b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    AdReporterForAnalysis.reportForLaunchQQMINIProgramEND((Context)this.jdField_a_of_type_ComTencentAdTangramMiniAdQQMINIProgramAdapter$Params.context.get(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramBoolean);
   }
 }
 

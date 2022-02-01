@@ -1,56 +1,51 @@
-import android.graphics.Bitmap;
-
-public abstract interface lpx
+public class lpx
 {
-  public abstract float a();
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static lpx b;
+  private static int c;
+  public int a;
+  private lpx jdField_a_of_type_Lpx;
+  public int b;
   
-  public abstract int a();
+  private lpx(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
   
-  public abstract Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2);
+  public static lpx a(int paramInt1, int paramInt2)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_b_of_type_Lpx != null)
+      {
+        lpx locallpx = jdField_b_of_type_Lpx;
+        jdField_b_of_type_Lpx = locallpx.jdField_a_of_type_Lpx;
+        locallpx.jdField_a_of_type_Lpx = null;
+        locallpx.jdField_a_of_type_Int = paramInt1;
+        locallpx.jdField_b_of_type_Int = paramInt2;
+        c -= 1;
+        return locallpx;
+      }
+      return new lpx(paramInt1, paramInt2);
+    }
+  }
   
-  public abstract lqa a();
-  
-  public abstract void a();
-  
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(float paramFloat1, float paramFloat2);
-  
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
-  
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
-  
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt);
-  
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, lqb paramlqb);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(lra paramlra);
-  
-  public abstract void a(lra paramlra, int paramInt1, int paramInt2);
-  
-  public abstract void a(lra paramlra, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void a(lra paramlra, int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3, int paramInt4);
-  
-  public abstract void a(lra paramlra, Bitmap paramBitmap);
-  
-  public abstract boolean a(lra paramlra);
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(float paramFloat1, float paramFloat2, float paramFloat3);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void a()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (c < 4)
+      {
+        this.jdField_a_of_type_Lpx = jdField_b_of_type_Lpx;
+        jdField_b_of_type_Lpx = this;
+        c += 1;
+      }
+      return;
+    }
+  }
 }
 
 

@@ -1,15 +1,15 @@
-import com.tencent.image.URLDrawableHandler;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1.1.1;
 
-class bgze
-  implements EIPCResultCallback
+public class bgze
+  implements bdxo
 {
-  bgze(bgzd parambgzd, URLDrawableHandler paramURLDrawableHandler) {}
+  public bgze(TroopGiftAnimationController.1 param1) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a()
   {
-    this.jdField_a_of_type_Bgzd.a(this.jdField_a_of_type_ComTencentImageURLDrawableHandler, false);
+    this.a.this$0.a.post(new TroopGiftAnimationController.1.1.1(this));
   }
 }
 

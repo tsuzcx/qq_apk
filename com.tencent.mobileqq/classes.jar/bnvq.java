@@ -1,26 +1,40 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import dov.com.qq.im.ae.play.AEPlayShowPageView;
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_PAIR.sweet_pair_check_req;
+import android.content.Intent;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
-public class bnvq
-  extends RecyclerView.ItemDecoration
+class bnvq
+  extends QzoneExternalRequest
 {
-  public bnvq(AEPlayShowPageView paramAEPlayShowPageView, bnvk parambnvk) {}
+  bnvq(bnvp parambnvp, Intent paramIntent) {}
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public String getCmdString()
   {
-    if (AEPlayShowPageView.a(this.jdField_a_of_type_DovComQqImAePlayAEPlayShowPageView) != 1)
+    return "SweetQzoneService.getPairState";
+  }
+  
+  public JceStruct getReq()
+  {
+    sweet_pair_check_req localsweet_pair_check_req = new sweet_pair_check_req();
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
     {
-      paramRect.left = this.jdField_a_of_type_Bnvk.c;
-      paramRect.right = this.jdField_a_of_type_Bnvk.c;
-      paramRect.top = this.jdField_a_of_type_Bnvk.d;
-      paramRect.bottom = this.jdField_a_of_type_Bnvk.d;
-      return;
+      long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
+      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
+      localsweet_req_comm.opuin = l;
+      localsweet_req_comm.uin = l;
+      localsweet_req_comm.loveuin = 0L;
+      localsweet_req_comm.qua = bmsw.a();
+      localsweet_req_comm.pf = 1;
+      localsweet_req_comm.src = 3;
+      localsweet_pair_check_req.req_comm = localsweet_req_comm;
     }
-    paramRect.bottom = this.jdField_a_of_type_Bnvk.d;
+    return localsweet_pair_check_req;
+  }
+  
+  public String uniKey()
+  {
+    return "getPairState";
   }
 }
 

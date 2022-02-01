@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.recent.specialcare;
 
-import alfl;
+import alrd;
 import android.view.View;
 
 public class CareNotificationBar$4
   implements Runnable
 {
-  public CareNotificationBar$4(alfl paramalfl) {}
+  public CareNotificationBar$4(alrd paramalrd) {}
   
   public void run()
   {
-    if ((alfl.a(this.this$0) > 0) || (alfl.b(this.this$0) > 0))
+    if ((alrd.a(this.this$0) > 0) || (alrd.b(this.this$0) > 0))
     {
-      alfl.a(this.this$0);
+      alrd.a(this.this$0);
       this.this$0.c();
     }
-    while (alfl.a(this.this$0) == null) {
+    while (alrd.a(this.this$0) == null) {
       return;
     }
-    alfl.a(this.this$0).setVisibility(8);
+    alrd.a(this.this$0).setVisibility(8);
   }
 }
 

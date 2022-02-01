@@ -21,7 +21,7 @@ public class SPSeamlessHelper
 {
   public static ViewGroup.LayoutParams DEFAULT_LAYOUT_PARAM = WRAP_LAYOUT_PARAM;
   public static ViewGroup.LayoutParams MATCH_LAYOUT_PARAM;
-  private static final String TAG = "MediaPlayerMgr.SPSeamlessHelper";
+  private static final String TAG = "SPSeamlessHelper";
   public static ViewGroup.LayoutParams WRAP_LAYOUT_PARAM;
   private static SPSeamlessHelper mInstance = new SPSeamlessHelper();
   private Map<String, Set<SPSeamlessHelper.SeamlessCallback>> mCallbackMap = new HashMap();
@@ -36,7 +36,7 @@ public class SPSeamlessHelper
   {
     if (TextUtils.isEmpty(paramString))
     {
-      LogUtil.e("MediaPlayerMgr.SPSeamlessHelper", "addSeamlessCallback failed for token is empty.");
+      LogUtil.e("SPSeamlessHelper", "addSeamlessCallback failed for token is empty.");
       return;
     }
     Set localSet = (Set)this.mCallbackMap.get(paramString);
@@ -57,7 +57,7 @@ public class SPSeamlessHelper
   {
     if ((paramViewGroup == null) || (paramISPlayerVideoView == null))
     {
-      LogUtil.e("MediaPlayerMgr.SPSeamlessHelper", "innerAttachVideoView failed for containerView or videoView is null");
+      LogUtil.e("SPSeamlessHelper", "innerAttachVideoView failed for containerView or videoView is null");
       return;
     }
     View localView = (View)paramISPlayerVideoView;
@@ -74,7 +74,7 @@ public class SPSeamlessHelper
   {
     paramString = SuperPlayerSDKMgr.getPlayerPool().get(paramString);
     if ((paramString == null) || (paramViewGroup == null)) {
-      LogUtil.e("MediaPlayerMgr.SPSeamlessHelper", "attachBeforeAnimation failed for player or containerView is null.");
+      LogUtil.e("SPSeamlessHelper", "attachBeforeAnimation failed for player or containerView is null.");
     }
     do
     {
@@ -105,7 +105,7 @@ public class SPSeamlessHelper
     paramString = SuperPlayerSDKMgr.getPlayerPool().get(paramString);
     if ((paramString == null) || (paramString.getVideoView() == null) || (paramViewGroup == null))
     {
-      LogUtil.e("MediaPlayerMgr.SPSeamlessHelper", "attachBeforeAnimation failed for player/videoView or videoLayout is null.");
+      LogUtil.e("SPSeamlessHelper", "attachBeforeAnimation failed for player/videoView or videoLayout is null.");
       return;
     }
     attachVideoView(paramViewGroup, paramString.getVideoView(), paramLayoutParams);

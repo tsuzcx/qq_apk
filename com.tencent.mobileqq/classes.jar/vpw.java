@@ -1,15 +1,46 @@
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalDetailFragment;
+import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
 
-class vpw
-  implements zvn
+public class vpw
+  extends var
 {
-  vpw(vpu paramvpu) {}
+  public vpw(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment) {}
   
-  public void a(boolean paramBoolean, QQAnimationDrawable paramQQAnimationDrawable)
+  public int a()
   {
-    if ((paramBoolean) && (paramQQAnimationDrawable != null)) {
-      QLog.d("QCirclePolymorphicLikePopWindow", 1, "preload success");
+    if (QCirclePersonalDetailFragment.a(this.a) != null) {
+      return QCirclePersonalDetailFragment.a(this.a).a();
+    }
+    return -1;
+  }
+  
+  public QCirclePolyLikeAniView a()
+  {
+    if (QCirclePersonalDetailFragment.a(this.a) != null) {
+      return (QCirclePolyLikeAniView)QCirclePersonalDetailFragment.b(this.a).findViewById(2131374004);
+    }
+    return null;
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (this.a.a != null) {
+      this.a.a.a("share_action_show_share_sheet", paramObject);
+    }
+  }
+  
+  public void a(String paramString, vas paramvas)
+  {
+    if (this.a.a() != null) {
+      this.a.a().a(paramString, paramvas);
+    }
+  }
+  
+  public void a(vdq paramvdq)
+  {
+    if (QCirclePersonalDetailFragment.a(this.a) != null) {
+      QCirclePersonalDetailFragment.a(this.a).a("light_interact_list_show", paramvdq);
     }
   }
 }

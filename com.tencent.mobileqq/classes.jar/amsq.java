@@ -1,8 +1,15 @@
-public abstract interface amsq
+import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
+import com.tencent.TMG.utils.QLog;
+
+class amsq
+  extends AVVideoCtrl.EnableCameraCompleteCallback
 {
-  public abstract void a();
+  amsq(amsn paramamsn) {}
   
-  public abstract void d(String paramString);
+  public void onComplete(boolean paramBoolean, int paramInt)
+  {
+    QLog.d("AVCameraCaptureModel", 0, "EnableCameraCompleteCallback.OnComplete. result = " + paramInt);
+  }
 }
 
 

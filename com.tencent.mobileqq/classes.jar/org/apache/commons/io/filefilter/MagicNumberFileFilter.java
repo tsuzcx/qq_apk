@@ -84,13 +84,13 @@ public class MagicNumberFileFilter
     //   50: aload 6
     //   52: aload_1
     //   53: invokevirtual 91	java/io/RandomAccessFile:read	([B)I
-    //   56: istore_2
+    //   56: istore_3
     //   57: aload_0
     //   58: getfield 50	org/apache/commons/io/filefilter/MagicNumberFileFilter:magicNumbers	[B
     //   61: arraylength
-    //   62: istore_3
-    //   63: iload_2
-    //   64: iload_3
+    //   62: istore_2
+    //   63: iload_3
+    //   64: iload_2
     //   65: if_icmpeq +35 -> 100
     //   68: aload 6
     //   70: ifnull +12 -> 82
@@ -159,8 +159,8 @@ public class MagicNumberFileFilter
     //   start	length	slot	name	signature
     //   0	194	0	this	MagicNumberFileFilter
     //   0	194	1	paramFile	java.io.File
-    //   56	10	2	i	int
-    //   62	4	3	j	int
+    //   62	4	2	i	int
+    //   56	10	3	j	int
     //   108	17	4	bool	boolean
     //   31	1	5	localObject	java.lang.Object
     //   144	26	5	localThrowable1	java.lang.Throwable

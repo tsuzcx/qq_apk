@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Shader;
-import vft;
+import vhx;
 
 public class InnerOperateTextCell
   extends ColorTextCell
@@ -17,7 +17,7 @@ public class InnerOperateTextCell
   
   public void draw(Canvas paramCanvas, Paint paramPaint, int paramInt1, Rect paramRect, int paramInt2, int paramInt3, Bitmap paramBitmap)
   {
-    if (((paramPaint instanceof vft)) && (((vft)paramPaint).a()) && (!((vft)paramPaint).a)) {
+    if (((paramPaint instanceof vhx)) && (((vhx)paramPaint).a()) && (!((vhx)paramPaint).a)) {
       return;
     }
     Shader localShader = paramPaint.getShader();

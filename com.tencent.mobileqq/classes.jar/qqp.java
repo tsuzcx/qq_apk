@@ -1,24 +1,18 @@
-import android.support.annotation.NonNull;
-import java.util.HashSet;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qqp
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public Set<String> a;
-  public Set<String> b = new HashSet();
+  public qqp(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
   
-  public qqp()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "time:" + this.jdField_a_of_type_Long + "effectTime:" + this.jdField_a_of_type_Int + "  " + this.jdField_a_of_type_JavaUtilSet + "  " + this.b;
+    psx.a(2, this.jdField_a_of_type_JavaLangString);
+    ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

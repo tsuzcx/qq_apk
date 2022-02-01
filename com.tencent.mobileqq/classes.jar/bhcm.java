@@ -1,93 +1,200 @@
-import android.graphics.Color;
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
-import com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class bhcm
-  extends PagerAdapter
 {
-  private bhcm(QQVipFeedWedFragment paramQQVipFeedWedFragment) {}
+  private static volatile bhcm jdField_a_of_type_Bhcm;
+  public static final String a;
+  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  static
   {
-    paramViewGroup.removeView((View)paramObject);
-  }
-  
-  public int getCount()
-  {
-    return QQVipFeedWedFragment.a(this.a).size() + 1;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    Object localObject;
-    if ((QQVipFeedWedFragment.a(this.a) == null) || (QQVipFeedWedFragment.a(this.a).size() == 0))
-    {
-      localObject = this.a.a();
-      paramViewGroup.addView((View)localObject);
-      return localObject;
+    jdField_a_of_type_JavaLangString = BaseApplicationImpl.context.getCacheDir().getAbsolutePath() + "/tts_cache/";
+    if (QLog.isColorLevel()) {
+      QLog.d("TtsFileCache", 2, "tts_cache: " + jdField_a_of_type_JavaLangString);
     }
-    if (paramInt < QQVipFeedWedFragment.a(this.a).size()) {}
-    for (QQVipMsgInfo localQQVipMsgInfo = (QQVipMsgInfo)QQVipFeedWedFragment.a(this.a).get(paramInt);; localQQVipMsgInfo = null)
+  }
+  
+  public static bhcm a()
+  {
+    if (jdField_a_of_type_Bhcm == null) {}
+    synchronized (jdField_a_of_type_ArrayOfByte)
     {
-      bhcp localbhcp = bhct.a(localQQVipMsgInfo, this.a.getActivity());
-      if (localbhcp == null) {
+      if (jdField_a_of_type_Bhcm == null) {
+        jdField_a_of_type_Bhcm = new bhcm();
+      }
+      return jdField_a_of_type_Bhcm;
+    }
+  }
+  
+  public InputStream a(String paramString)
+  {
+    int k = 0;
+    Object localObject = new File(jdField_a_of_type_JavaLangString);
+    if (!((File)localObject).exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TtsFileCache", 1, "get: dir does not exist");
+      }
+      if (!((File)localObject).mkdirs())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TtsFileCache", 1, "get: mkdir failed");
+        }
         return null;
       }
-      this.a.a.add(localbhcp);
-      RelativeLayout localRelativeLayout = new RelativeLayout(paramViewGroup.getContext());
-      if (((View)localbhcp).getParent() != null) {
-        ((ViewGroup)((View)localbhcp).getParent()).removeView((View)localbhcp);
-      }
-      RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams2.addRule(13, ((View)localbhcp).getId());
-      TextView localTextView;
-      if (localQQVipMsgInfo != null)
+    }
+    localObject = ((File)localObject).listFiles();
+    int m = localObject.length;
+    int i = 0;
+    for (;;)
+    {
+      int j = k;
+      if (i < m)
       {
-        localTextView = new TextView(this.a.getActivity());
-        localTextView.setTextColor(-1);
-        localTextView.setTextSize(1, 10.0F);
-        localTextView.setBackgroundColor(Color.parseColor("#FFD69D5A"));
-        localTextView.setText(bgsu.a(this.a.getActivity(), 3, localQQVipMsgInfo.msgTime * 1000L));
-        localTextView.setPadding(12, 0, 12, 0);
-        localTextView.setId(2131378693);
-        RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
-        localObject = localLayoutParams1;
-        if (localLayoutParams1 == null) {
-          localObject = new RelativeLayout.LayoutParams(-2, afur.a(14.0F, this.a.getResources()));
+        if (localObject[i].getName().equals(paramString)) {
+          j = 1;
         }
-        localTextView.setGravity(17);
-        ((RelativeLayout.LayoutParams)localObject).topMargin = 25;
-        ((RelativeLayout.LayoutParams)localObject).addRule(14);
-        ((RelativeLayout.LayoutParams)localObject).addRule(10);
-        localTextView.bringToFront();
       }
-      for (;;)
-      {
-        localRelativeLayout.addView((View)localbhcp, localLayoutParams2);
-        if ((localTextView != null) && (localObject != null)) {
-          localRelativeLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject);
+      else {
+        if (j == 0) {
+          break;
         }
-        paramViewGroup.addView(localRelativeLayout, localLayoutParams2);
-        localbhcp.a(localQQVipMsgInfo, this.a.getActivity(), paramInt);
-        return localRelativeLayout;
-        localTextView = null;
-        localObject = null;
+      }
+      try
+      {
+        paramString = new BufferedInputStream(new FileInputStream(jdField_a_of_type_JavaLangString + paramString));
+        return paramString;
+        i += 1;
+      }
+      catch (IOException paramString)
+      {
+        for (;;)
+        {
+          QLog.e("TtsFileCache", 1, "get failed: ", paramString);
+          paramString = null;
+        }
       }
     }
   }
   
-  public boolean isViewFromObject(View paramView, Object paramObject)
+  public void a()
   {
-    return paramView == paramObject;
+    for (;;)
+    {
+      int i;
+      try
+      {
+        Object localObject = new File(jdField_a_of_type_JavaLangString);
+        if (!((File)localObject).exists()) {
+          return;
+        }
+        File[] arrayOfFile = ((File)localObject).listFiles();
+        int j = arrayOfFile.length;
+        i = 0;
+        if (i < j)
+        {
+          localObject = arrayOfFile[i];
+          boolean bool = ((File)localObject).delete();
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder().append("delete cache: ").append(((File)localObject).getName());
+            if (bool)
+            {
+              localObject = "succ";
+              QLog.d("TtsFileCache", 1, (String)localObject);
+            }
+            else
+            {
+              localObject = "failed";
+              continue;
+            }
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("TtsFileCache", 1, "clearCache Exception: ", localException);
+      }
+      i += 1;
+    }
+  }
+  
+  /* Error */
+  public void a(String paramString, java.io.ByteArrayOutputStream paramByteArrayOutputStream)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: invokevirtual 125	bhcm:a	()V
+    //   6: aload_1
+    //   7: invokestatic 131	com/tencent/commonsdk/util/MD5Coding:encodeHexStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   10: astore_1
+    //   11: aload_1
+    //   12: invokestatic 137	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   15: istore_3
+    //   16: iload_3
+    //   17: ifne +34 -> 51
+    //   20: aload_2
+    //   21: new 139	java/io/FileOutputStream
+    //   24: dup
+    //   25: new 12	java/lang/StringBuilder
+    //   28: dup
+    //   29: invokespecial 15	java/lang/StringBuilder:<init>	()V
+    //   32: getstatic 44	bhcm:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   35: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: aload_1
+    //   39: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokespecial 140	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   48: invokevirtual 146	java/io/ByteArrayOutputStream:writeTo	(Ljava/io/OutputStream;)V
+    //   51: aload_0
+    //   52: monitorexit
+    //   53: return
+    //   54: astore_1
+    //   55: ldc 52
+    //   57: iconst_1
+    //   58: ldc 148
+    //   60: aload_1
+    //   61: invokestatic 109	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   64: goto -13 -> 51
+    //   67: astore_1
+    //   68: aload_0
+    //   69: monitorexit
+    //   70: aload_1
+    //   71: athrow
+    //   72: astore_1
+    //   73: ldc 52
+    //   75: iconst_1
+    //   76: ldc 148
+    //   78: aload_1
+    //   79: invokestatic 109	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   82: goto -31 -> 51
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	85	0	this	bhcm
+    //   0	85	1	paramString	String
+    //   0	85	2	paramByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   15	2	3	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   20	51	54	java/io/IOException
+    //   2	16	67	finally
+    //   20	51	67	finally
+    //   55	64	67	finally
+    //   73	82	67	finally
+    //   20	51	72	java/lang/Exception
   }
 }
 

@@ -11,7 +11,7 @@ class PermissionSettingFragment$2
   
   public void onClick(View paramView)
   {
-    SubMsgPermissionSettingFragment.launch(this.this$0.getActivity(), this.this$0.appId);
+    SubscribePermissionSettingFragment.launch(this.this$0.getActivity(), this.this$0.appId);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

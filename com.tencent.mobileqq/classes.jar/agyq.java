@@ -1,17 +1,44 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
 
-class agyq
-  extends ahbl
+public class agyq
+  extends ImageSpan
 {
-  agyq(agwz paramagwz)
+  public agyq(Drawable paramDrawable)
   {
-    super(paramagwz, null);
+    super(paramDrawable);
   }
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    return new ahdn(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    paramCharSequence = getDrawable();
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    paramCharSequence = getDrawable().getBounds();
+    if (paramFontMetricsInt != null)
+    {
+      paramPaint = paramPaint.getFontMetricsInt();
+      paramInt2 = paramPaint.bottom - paramPaint.top;
+      int i = paramCharSequence.bottom - paramCharSequence.top;
+      paramInt1 = i / 2 - paramInt2 / 4;
+      i /= 2;
+      paramInt2 = paramInt2 / 4 + i;
+      paramFontMetricsInt.ascent = (-paramInt2);
+      paramFontMetricsInt.top = (-paramInt2);
+      paramFontMetricsInt.bottom = paramInt1;
+      paramFontMetricsInt.descent = paramInt1;
+    }
+    return paramCharSequence.right;
   }
 }
 

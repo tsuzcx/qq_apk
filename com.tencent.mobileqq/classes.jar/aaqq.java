@@ -1,61 +1,30 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.widget.Button;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 public class aaqq
-  extends aaqz
+  extends ClickableSpan
 {
-  public aaqq(MoveFileActivity paramMoveFileActivity) {}
+  private int jdField_a_of_type_Int;
+  private aaqr jdField_a_of_type_Aaqr;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  protected void a(boolean paramBoolean, int paramInt, besl parambesl)
+  public void onClick(View paramView)
   {
-    if (this.a.getActivity().isFinishing()) {
-      return;
+    if (this.jdField_a_of_type_Aaqr != null) {
+      this.jdField_a_of_type_Aaqr.a(this.jdField_a_of_type_JavaLangString, this.b);
     }
-    this.a.b();
-    int i = this.a.getActivity().getResources().getDimensionPixelSize(2131298998);
-    if (paramBoolean)
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    if (this.jdField_a_of_type_Int != -2147483648)
     {
-      MoveFileActivity.a(this.a).add(0, parambesl);
-      MoveFileActivity.c(this.a, 0);
-      MoveFileActivity.a(this.a).setEnabled(true);
-      MoveFileActivity.a(this.a).setBackgroundResource(2130839304);
-      MoveFileActivity.a(this.a).setTextAppearance(this.a.getActivity(), 2131755341);
-      MoveFileActivity.a(this.a).i(parambesl);
-      MoveFileActivity.a(this.a).notifyDataSetChanged();
-      bcst.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "new_suc", 0, 0, this.a.jdField_a_of_type_Long + "", parambesl.b, "", "");
-      QQToast.a(this.a.getActivity(), 2, anni.a(2131705685), 0).b(i);
+      paramTextPaint.setColor(this.jdField_a_of_type_Int);
       return;
     }
-    switch (paramInt)
-    {
-    default: 
-      parambesl = this.a.getString(2131695381);
-      QQToast.a(this.a.getActivity(), 1, parambesl, 0).b(i);
-      return;
-    case -313: 
-      parambesl = this.a.getString(2131696646);
-      bcst.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "repeat", 0, 0, this.a.jdField_a_of_type_Long + "", "1", "", "");
-    }
-    for (;;)
-    {
-      this.a.a(this.a.getResources().getString(2131696815), null, this.a.jdField_a_of_type_JavaLangString, parambesl);
-      return;
-      parambesl = this.a.getString(2131696651);
-      bcst.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "sensitive", 0, 0, this.a.jdField_a_of_type_Long + "", "1", "", "");
-      continue;
-      parambesl = this.a.getString(2131696649);
-      QQToast.a(this.a.getActivity(), 1, parambesl, 0).b(i);
-      return;
-      parambesl = this.a.getString(2131696648);
-      QQToast.a(this.a.getActivity(), 1, parambesl, 0).b(i);
-      return;
-      parambesl = this.a.getString(2131696652);
-      QQToast.a(this.a.getActivity(), 1, parambesl, 0).b(i);
-    }
+    super.updateDrawState(paramTextPaint);
   }
 }
 

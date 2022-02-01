@@ -1,16 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
 
-class bnlt
-  implements View.OnClickListener
+public final class bnlt
+  implements Parcelable.Creator<QzoneVerticalVideoTopicInfo>
 {
-  bnlt(bnls parambnls) {}
-  
-  public void onClick(View paramView)
+  public QzoneVerticalVideoTopicInfo a(Parcel paramParcel)
   {
-    bnls.a(this.a).a(655364, new Object[] { "热门玩法", "vt_pag_jiaopiangushi" });
-    EventCollector.getInstance().onViewClicked(paramView);
+    QzoneVerticalVideoTopicInfo localQzoneVerticalVideoTopicInfo = new QzoneVerticalVideoTopicInfo();
+    QzoneVerticalVideoTopicInfo.a(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.b(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.c(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.d(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.e(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.f(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.g(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.h(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    return localQzoneVerticalVideoTopicInfo;
+  }
+  
+  public QzoneVerticalVideoTopicInfo[] a(int paramInt)
+  {
+    return new QzoneVerticalVideoTopicInfo[paramInt];
   }
 }
 

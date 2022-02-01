@@ -1,20 +1,6 @@
-import android.media.AudioManager;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
-
-public class alxh
-  implements bhgm
+public abstract interface alxh
 {
-  public alxh(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
-  
-  public void a(bhgl parambhgl)
-  {
-    QLog.i("ShortVideoPreviewActivity", 1, "[onCompletion] ");
-    if (VersionUtils.isrFroyo()) {
-      ((AudioManager)this.a.getSystemService("audio")).abandonAudioFocus(null);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

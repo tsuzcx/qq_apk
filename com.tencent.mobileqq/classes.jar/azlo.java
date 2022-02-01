@@ -1,18 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class azlo
-  implements View.OnClickListener
+public abstract interface azlo
 {
-  azlo(azlk paramazlk) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void onClick(View paramView)
-  {
-    azlk.c(this.a).finish();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
 }
 
 

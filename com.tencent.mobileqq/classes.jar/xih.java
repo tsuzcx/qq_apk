@@ -1,46 +1,43 @@
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class xih
+final class xih
+  implements bjig
 {
-  private xiv jdField_a_of_type_Xiv;
-  private xix jdField_a_of_type_Xix;
-  private xiz jdField_a_of_type_Xiz = new xii(this);
-  public xjt a;
-  private xvy jdField_a_of_type_Xvy;
-  private xiz b = new xij(this);
+  xih(String paramString, xfq paramxfq, xhy paramxhy) {}
   
-  public void a(MsgTabPlayInfo paramMsgTabPlayInfo)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_Xjt = new xjt(new xjk(paramMsgTabPlayInfo));
-    this.jdField_a_of_type_Xvy = new xvy(this.jdField_a_of_type_Xjt);
-    this.jdField_a_of_type_Xvy.b();
-  }
-  
-  public void a(HomeFeedPlayInfo paramHomeFeedPlayInfo)
-  {
-    this.jdField_a_of_type_Xjt = new xjt(new xiq(paramHomeFeedPlayInfo));
-    this.jdField_a_of_type_Xvy = new xvy(this.jdField_a_of_type_Xjt);
-  }
-  
-  public void onClickTestDown(View paramView)
-  {
-    if (this.jdField_a_of_type_Xjt != null)
-    {
-      this.jdField_a_of_type_Xjt.a(this.b);
-      this.jdField_a_of_type_Xjt.b(this.jdField_a_of_type_Xiz);
-      this.jdField_a_of_type_Xjt.a(this.jdField_a_of_type_Xix, 2, 1, null);
+    if (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction)) {
+      return;
     }
-  }
-  
-  public void onClickTestUp(View paramView)
-  {
-    if (this.jdField_a_of_type_Xjt != null)
+    switch (paramBaseResp.errCode)
     {
-      this.jdField_a_of_type_Xjt.b(this.b);
-      this.jdField_a_of_type_Xjt.a(this.jdField_a_of_type_Xiz);
-      this.jdField_a_of_type_Xjt.a(this.jdField_a_of_type_Xix, 0, 1, null);
+    case -3: 
+    case -1: 
+    default: 
+      if (this.jdField_a_of_type_Xfq != null) {
+        this.jdField_a_of_type_Xfq.b(this.jdField_a_of_type_Xhy);
+      }
+      break;
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      if (this.jdField_a_of_type_Xfq != null)
+      {
+        this.jdField_a_of_type_Xfq.a(this.jdField_a_of_type_Xhy);
+        continue;
+        if (this.jdField_a_of_type_Xfq != null)
+        {
+          this.jdField_a_of_type_Xfq.c(this.jdField_a_of_type_Xhy);
+          continue;
+          if (this.jdField_a_of_type_Xfq != null) {
+            this.jdField_a_of_type_Xfq.b(this.jdField_a_of_type_Xhy);
+          }
+        }
+      }
     }
   }
 }

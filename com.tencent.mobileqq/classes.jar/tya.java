@@ -1,18 +1,21 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.util.ProfileParams;
 import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
 
 public final class tya
-  implements Parcelable.Creator<ProfileParams.CurLoginUsr>
+  implements Parcelable.Creator<ProfileParams>
 {
-  public ProfileParams.CurLoginUsr a(Parcel paramParcel)
+  public ProfileParams a(Parcel paramParcel)
   {
-    return new ProfileParams.CurLoginUsr(paramParcel.readString(), paramParcel.readString());
+    tyb localtyb = new tyb();
+    localtyb.a(paramParcel.readString()).a(paramParcel.readInt()).b(paramParcel.readString()).c(paramParcel.readString()).d(paramParcel.readString()).a((ProfileParams.CurLoginUsr)paramParcel.readParcelable(ProfileParams.CurLoginUsr.CREATOR.getClass().getClassLoader()));
+    return localtyb.a();
   }
   
-  public ProfileParams.CurLoginUsr[] a(int paramInt)
+  public ProfileParams[] a(int paramInt)
   {
-    return new ProfileParams.CurLoginUsr[paramInt];
+    return new ProfileParams[paramInt];
   }
 }
 

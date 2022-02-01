@@ -1,32 +1,11 @@
-import com.tencent.kwstudio.office.base.Log;
-import com.tencent.kwstudio.office.preview.IHostInterface.IHttpListener;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
 
-public final class aubi
-  implements bdvw
+class aubi
 {
-  private final IHostInterface.IHttpListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener;
-  private final String jdField_a_of_type_JavaLangString;
+  int jdField_a_of_type_Int = 201;
+  ExcitingTransferDownloadCompletedInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
   
-  private aubi(String paramString, IHostInterface.IHttpListener paramIHttpListener)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener = paramIHttpListener;
-  }
-  
-  public void onResp(bdwt parambdwt)
-  {
-    if ((parambdwt.c == 200) || (parambdwt.c == 206)) {}
-    for (String str = new String(parambdwt.a);; str = null)
-    {
-      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener != null) {
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener.onResponse(parambdwt.c, str);
-      }
-      Log.i("TdsReaderView_", "onResp url:" + this.jdField_a_of_type_JavaLangString + ", status=" + parambdwt.c + ", rsp=" + str);
-      return;
-    }
-  }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  aubi(aubh paramaubh) {}
 }
 
 

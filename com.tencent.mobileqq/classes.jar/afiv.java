@@ -1,22 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity.GetClassChoiceCallBack.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
 
 public class afiv
-  implements bgar
+  extends anvn
 {
-  public afiv(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
+  public afiv(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void a(boolean paramBoolean)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    if (paramBoolean)
-    {
-      this.a.a = bgap.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getContext(), TroopClassChoiceActivity.a(this.a));
-      this.a.runOnUiThread(new TroopClassChoiceActivity.GetClassChoiceCallBack.1(this));
-      return;
-    }
-    QLog.e("IphoneTitleBarActivity", 1, "getClassChoiceFromServer failed!");
+    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
+    QQSettingSettingActivity.c(this.a);
   }
 }
 

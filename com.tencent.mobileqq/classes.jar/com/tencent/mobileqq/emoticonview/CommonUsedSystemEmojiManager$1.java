@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emoticonview;
 
-import arwz;
+import asmn;
 
 public class CommonUsedSystemEmojiManager$1
   implements Runnable
 {
-  public CommonUsedSystemEmojiManager$1(arwz paramarwz) {}
+  public CommonUsedSystemEmojiManager$1(asmn paramasmn) {}
   
   public void run()
   {

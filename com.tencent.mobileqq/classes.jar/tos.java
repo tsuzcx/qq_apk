@@ -1,17 +1,88 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tos
-  extends tou
 {
-  public tos(BridgeModule paramBridgeModule)
+  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
   {
-    super(paramBridgeModule);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    BridgeModule.access$1000(this.a, paramInt2, paramIntent);
+    int k = 1;
+    for (;;)
+    {
+      try
+      {
+        if (paramAdData.a == null) {
+          return paramJSONObject;
+        }
+        paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_inner_game_cell");
+        if (!TextUtils.isEmpty(paramAdData.a.k)) {
+          paramJSONObject.put("id_inner_small_img", new JSONObject());
+        }
+        JSONObject localJSONObject;
+        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_JavaLangString))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_JavaLangString);
+          paramJSONObject.put("id_inner_title", localJSONObject);
+        }
+        if ((!tpp.c(paramAdData)) && (!TextUtils.isEmpty(paramAdData.a.h)))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("text", paramAdData.a.h);
+          paramJSONObject.put("id_inner_category", localJSONObject);
+        }
+        if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Tls.d)) {
+          break label424;
+        }
+        paramJSONObject.put("id_inner_game_img1", new JSONObject());
+        paramJSONObject.put("id_game_img1_container1", new JSONObject());
+        i = 1;
+        j = 1;
+        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Tls.e))
+        {
+          paramJSONObject.put("id_inner_game_img2", new JSONObject());
+          paramJSONObject.put("id_game_img2_container2", new JSONObject());
+          i = 1;
+          j = 1;
+        }
+        if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Tls.f)) {
+          break label421;
+        }
+        paramJSONObject.put("id_inner_game_img3", new JSONObject());
+        paramJSONObject.put("id_game_img3_container3", new JSONObject());
+        i = 0;
+        j = 1;
+        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Tls.g))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_Tls.g);
+          paramJSONObject.put("id_inner_ad_name", localJSONObject);
+          j = k;
+          if (j != 0) {
+            paramJSONObject.put("id_bottom_operation", new JSONObject());
+          }
+          if (i != 0) {
+            paramJSONObject.put("id_game_img_right_space", new JSONObject());
+          }
+          localJSONObject = new JSONObject();
+          localJSONObject.put("innerGameModel", paramAdData);
+          paramJSONObject.put("id_view_AdDownloadView", localJSONObject);
+          return paramJSONObject;
+        }
+      }
+      catch (JSONException paramAdData)
+      {
+        paramAdData.printStackTrace();
+        return paramJSONObject;
+      }
+      continue;
+      label421:
+      continue;
+      label424:
+      int i = 0;
+      int j = 0;
+    }
   }
 }
 

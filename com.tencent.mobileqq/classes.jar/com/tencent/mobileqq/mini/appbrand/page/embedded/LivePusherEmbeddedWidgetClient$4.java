@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.page.embedded;
 
 import android.text.TextUtils;
-import bgmg;
+import bhmi;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil;
@@ -100,7 +100,7 @@ class LivePusherEmbeddedWidgetClient$4
               if (localFile.length() > 0L)
               {
                 QLog.w("miniapp-embedded-live-pusher", 1, "download Succeed but target file not exists, try copy from download tmp file:" + str2 + ", length:" + localFile.length() + ", to:" + this.val$BGMFilePath);
-                localObject = bgmg.a(this.val$BGMFilePath);
+                localObject = bhmi.a(this.val$BGMFilePath);
                 paramString = (String)localObject;
               }
             }
@@ -113,7 +113,7 @@ class LivePusherEmbeddedWidgetClient$4
         }
         try
         {
-          if ((!bgmg.a(localFile, paramString)) || (!paramString.exists()) || (paramString.length() != localFile.length())) {
+          if ((!bhmi.a(localFile, paramString)) || (!paramString.exists()) || (paramString.length() != localFile.length())) {
             continue;
           }
           QLog.i("miniapp-embedded-live-pusher", 1, "copy from download tmp file:" + str2 + " success");

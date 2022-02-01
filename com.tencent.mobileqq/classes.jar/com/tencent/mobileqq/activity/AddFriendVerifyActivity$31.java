@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bcst;
+import bdll;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class AddFriendVerifyActivity$31
@@ -29,7 +29,7 @@ class AddFriendVerifyActivity$31
     label108:
     for (String str2 = "1";; str2 = String.valueOf(this.c))
     {
-      bcst.b(localQQAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", str1, 0, 0, str3, str2, "", "");
+      bdll.b(localQQAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", str1, 0, 0, str3, str2, "", "");
       return;
       str1 = "singleMode_send";
       break;

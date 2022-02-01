@@ -1,12 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyVideoTopicTextView;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ovr
+  implements View.OnClickListener
 {
-  ChannelCoverInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
-  ReadInJoyVideoTopicTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView;
+  ovr(ovq paramovq, otp paramotp, Context paramContext) {}
   
-  ovr(ovq paramovq) {}
+  public void onClick(View paramView)
+  {
+    QLog.d("GuideHelper", 1, "getBottomGuideView : " + ovq.a(this.jdField_a_of_type_Ovq));
+    ovq.a(this.jdField_a_of_type_Ovq, "0X8009FEA", this.jdField_a_of_type_Otp.a);
+    ozs.a(this.jdField_a_of_type_AndroidContentContext, ovq.a(this.jdField_a_of_type_Ovq));
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

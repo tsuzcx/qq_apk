@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.ocr.view.gesture.GestureFrameLayout;
+import android.content.Context;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
 public class ayjf
-  implements ayjg
+  extends ayjq
 {
-  public ayjf(GestureFrameLayout paramGestureFrameLayout) {}
-  
-  public void a(ayju paramayju)
+  public ayjf(Context paramContext, PicInfo paramPicInfo)
   {
-    this.a.a(paramayju);
-  }
-  
-  public void a(ayju paramayju1, ayju paramayju2)
-  {
-    this.a.a(paramayju2);
+    super(paramContext, paramPicInfo);
   }
 }
 

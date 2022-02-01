@@ -1,57 +1,20 @@
-import android.content.Intent;
-import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 public class aykm
-  extends MSFServlet
+  implements anvi
 {
-  public String[] getPreferSSOCommands()
-  {
-    return null;
-  }
+  public aykm(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    this.a.a();
+    if (!paramBoolean) {
+      this.a.b(this.a.getString(2131690905));
     }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("OlympicToolServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
-      }
-      ((OlympicToolAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
+    while ((this.a.e != 1) || (paramInt != 2)) {
       return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
     }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.i("OlympicToolServlet", 4, "send: " + paramIntent.getServiceCmd());
-        }
-      }
-    }
+    NearbyPeopleProfileActivity.a(this.a).c();
   }
 }
 

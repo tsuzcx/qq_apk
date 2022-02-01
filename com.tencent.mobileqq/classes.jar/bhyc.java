@@ -1,6 +1,12 @@
-public abstract interface bhyc
+import android.graphics.Rect;
+
+public class bhyc
+  extends bhye
 {
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
+  public int a;
+  public aghh a;
+  public Rect a;
+  public String a;
 }
 
 

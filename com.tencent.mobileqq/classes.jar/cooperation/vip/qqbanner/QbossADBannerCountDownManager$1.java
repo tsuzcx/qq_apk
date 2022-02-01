@@ -1,14 +1,14 @@
 package cooperation.vip.qqbanner;
 
-import alaw;
+import almm;
 import android.widget.TextView;
-import bmva;
-import bmvb;
+import bnwi;
+import bnwj;
 
 public class QbossADBannerCountDownManager$1
   implements Runnable
 {
-  public QbossADBannerCountDownManager$1(bmvb parambmvb, alaw paramalaw) {}
+  public QbossADBannerCountDownManager$1(bnwj parambnwj, almm paramalmm) {}
   
   public void run()
   {
@@ -18,17 +18,17 @@ public class QbossADBannerCountDownManager$1
       do
       {
         return;
-      } while (!(this.a instanceof bmva));
-      bmvb.a(this.this$0, (bmva)this.a);
-      bmvb.a(this.this$0).setText(bmvb.a(this.this$0, bmvb.a(this.this$0).c));
-      bmvb.b(this.this$0).setText(bmvb.b(this.this$0, bmvb.a(this.this$0).jdField_d_of_type_JavaLangString));
-      bmvb.a(this.this$0).setTextColor(bmvb.a(this.this$0, bmvb.a(this.this$0).e));
-      bmvb.b(this.this$0).setTextColor(bmvb.b(this.this$0, bmvb.a(this.this$0).e));
-      bmvb.a(this.this$0, bmvb.a(this.this$0));
-      bmvb.c(this.this$0).setBackgroundDrawable(bmvb.a(this.this$0, bmvb.a(this.this$0).f));
-      bmvb.c(this.this$0).setTextColor(bmvb.c(this.this$0, bmvb.a(this.this$0).g));
-    } while (bmvb.a(this.this$0).jdField_d_of_type_Int != 1);
-    bmvb.a(this.this$0);
+      } while (!(this.a instanceof bnwi));
+      bnwj.a(this.this$0, (bnwi)this.a);
+      bnwj.a(this.this$0).setText(bnwj.a(this.this$0, bnwj.a(this.this$0).e));
+      bnwj.b(this.this$0).setText(bnwj.b(this.this$0, bnwj.a(this.this$0).f));
+      bnwj.a(this.this$0).setTextColor(bnwj.a(this.this$0, bnwj.a(this.this$0).g));
+      bnwj.b(this.this$0).setTextColor(bnwj.b(this.this$0, bnwj.a(this.this$0).g));
+      bnwj.a(this.this$0, bnwj.a(this.this$0));
+      bnwj.c(this.this$0).setBackgroundDrawable(bnwj.a(this.this$0, bnwj.a(this.this$0).h));
+      bnwj.c(this.this$0).setTextColor(bnwj.c(this.this$0, bnwj.a(this.this$0).i));
+    } while (bnwj.a(this.this$0).d != 1);
+    bnwj.a(this.this$0);
   }
 }
 

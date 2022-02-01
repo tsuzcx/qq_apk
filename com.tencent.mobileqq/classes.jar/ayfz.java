@@ -1,29 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.OCRResultActivity.9.1;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayfz
-  extends ayfc
+  implements View.OnClickListener
 {
-  public ayfz(OCRResultActivity paramOCRResultActivity) {}
+  public ayfz(VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter, ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
+  public void onClick(View paramView)
   {
-    if (OCRResultActivity.a(this.a)) {
-      return;
-    }
-    this.a.runOnUiThread(new OCRResultActivity.9.1(this, paramBoolean, paramInt, paramTranslateResult));
-    HashMap localHashMap = new HashMap();
-    if (paramTranslateResult != null) {}
-    for (int i = paramTranslateResult.b;; i = 2000)
-    {
-      localHashMap.put("errCode", String.valueOf(i));
-      localHashMap.put("type", String.valueOf(paramInt));
-      bctj.a(BaseApplicationImpl.getContext()).a("", "SCAN_TRANSLATE_RESULT", paramBoolean, 0L, 0L, localHashMap, "", false);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.l();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

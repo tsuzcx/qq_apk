@@ -1,6 +1,9 @@
-public abstract interface vhp
+import com.tencent.biz.qqcircle.bizparts.danmaku.text.CellTextView;
+
+public class vhp
+  implements vhs
 {
-  public abstract void a();
+  public vhp(CellTextView paramCellTextView) {}
 }
 
 

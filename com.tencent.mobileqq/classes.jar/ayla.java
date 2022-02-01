@@ -1,6 +1,29 @@
-public abstract interface ayla
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
+
+class ayla
+  implements URLDrawable.URLDrawableListener
 {
-  public abstract void a();
+  ayla(aykx paramaykx) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = paramURLDrawable.getCurrDrawable();
+    if ((paramURLDrawable instanceof RegionDrawable))
+    {
+      paramURLDrawable = ((RegionDrawable)paramURLDrawable).getBitmap();
+      aykx.a(this.a).setImageBitmap(paramURLDrawable);
+      aykx.a(this.a).setVisibility(0);
+    }
+  }
 }
 
 

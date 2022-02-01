@@ -1,39 +1,81 @@
-import android.os.Handler;
-import android.util.SparseArray;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.4.1;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.os.SystemClock;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.HashMap;
+import pttcenterservice.PttShortVideo.PttShortVideoUploadResp;
 
-public class beuy
-  extends VasQuickUpdateManager.CallBacker
+class beuy
+  implements ITransactionCallback
 {
-  beuy(beuq parambeuq) {}
+  beuy(beuw parambeuw, String paramString, long paramLong) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    if ((paramLong == 25L) && (paramString1.startsWith("groupeffect_item_")) && (paramInt1 == 0))
+    this.jdField_a_of_type_Beuw.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Beuw.b);
+    this.jdField_a_of_type_Beuw.d();
+  }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  {
+    SystemClock.uptimeMillis();
+    try
     {
-      paramInt1 = beuq.a(paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopEnterEffect.Controller", 2, "download Res callback success id = " + paramInt1);
-      }
-      if (paramInt1 > 0)
+      paramArrayOfByte = (PttShortVideo.PttShortVideoUploadResp)new PttShortVideo.PttShortVideoUploadResp().mergeFrom(paramArrayOfByte);
+      if (paramArrayOfByte.str_fileid.has())
       {
-        paramString1 = (beuz)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
-        this.a.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt1);
-        if (paramString1 == null) {
-          break label154;
+        paramArrayOfByte = paramArrayOfByte.str_fileid.get();
+        if (paramArrayOfByte.length() > 0)
+        {
+          this.jdField_a_of_type_Beuw.f = paramArrayOfByte;
+          if (QLog.isColorLevel()) {
+            QLog.d("LightVideoUploadProcessor", 2, "set uuid from BDH ");
+          }
         }
-        if (bftg.a(new File(beuq.jdField_a_of_type_JavaLangString + paramInt1))) {
-          this.a.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.4.1(this, paramInt1, paramString1));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. ,fileSize:" + this.jdField_a_of_type_Beuw.jdField_a_of_type_Bete.jdField_a_of_type_Long);
+      }
+      this.jdField_a_of_type_Beuw.s = this.jdField_a_of_type_Beuw.jdField_q_of_type_Long;
+      this.jdField_a_of_type_Beuw.d(1007);
+      this.jdField_a_of_type_Beuw.b(false);
+      if (QLog.isColorLevel()) {
+        QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG> Transaction Success,delete combined file");
+      }
+      bhmi.d(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.e("LightVideoUploadProcessor", 2, "get uuid from BDH error", paramArrayOfByte);
         }
       }
     }
-    return;
-    label154:
-    QLog.e("TroopEnterEffect.Controller", 1, "mResDownloadCallback effectData = null id = " + paramInt1);
+  }
+  
+  public void onSwitch2BackupChannel()
+  {
+    long l = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_Beuw.d("<BDH_LOG> onSwitch2BackupChannel()");
+    this.jdField_a_of_type_Beuw.jdField_a_of_type_JavaUtilHashMap.put("param_switchChannel", String.valueOf(l - this.jdField_a_of_type_Long));
+  }
+  
+  public void onTransStart() {}
+  
+  public void onUpdateProgress(int paramInt)
+  {
+    beuw localbeuw = this.jdField_a_of_type_Beuw;
+    bete localbete = this.jdField_a_of_type_Beuw.jdField_a_of_type_Bete;
+    long l = paramInt;
+    localbete.e = l;
+    localbeuw.s = l;
+    if ((paramInt < this.jdField_a_of_type_Beuw.jdField_q_of_type_Long) && (!this.jdField_a_of_type_Beuw.jdField_q_of_type_Boolean) && (!this.jdField_a_of_type_Beuw.m)) {
+      this.jdField_a_of_type_Beuw.j();
+    }
   }
 }
 

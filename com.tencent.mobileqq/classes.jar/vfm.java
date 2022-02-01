@@ -1,22 +1,38 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqcircle.bizparts.danmaku.text.CellTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.requests.QCircleDoRecommendRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import feedcloud.FeedCloudMeta.StFeed;
+import qqcircle.QQCircleFeedBase.StFeedBusiReqData;
 
-public class vfm
-  implements View.OnLongClickListener
+class vfm
+  implements DialogInterface.OnClickListener
 {
-  public vfm(CellTextView paramCellTextView) {}
+  vfm(vfi paramvfi) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.postInvalidate();
-    boolean bool = false;
-    if (this.a.jdField_a_of_type_Vgs != null) {
-      bool = this.a.jdField_a_of_type_Vgs.a(this.a, this.a.jdField_a_of_type_Vfo);
+    Object localObject;
+    if (paramInt == 1)
+    {
+      localObject = new QQCircleFeedBase.StFeedBusiReqData();
+      paramDialogInterface = null;
     }
-    if (!bool) {}
-    return true;
+    try
+    {
+      ((QQCircleFeedBase.StFeedBusiReqData)localObject).mergeFrom(vfi.a(this.a).a.busiData.get().toByteArray());
+      localObject = ((QQCircleFeedBase.StFeedBusiReqData)localObject).pushList;
+      paramDialogInterface = (DialogInterface)localObject;
+    }
+    catch (Exception localException)
+    {
+      label46:
+      break label46;
+    }
+    paramDialogInterface = new QCircleDoRecommendRequest(vfi.a(this.a).a, 0, paramDialogInterface, 1);
+    VSNetworkHelper.a().a(paramDialogInterface, new vfn(this, paramDialogInterface));
   }
 }
 

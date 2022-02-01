@@ -1,28 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awuf
-  implements ValueAnimator.AnimatorUpdateListener
+class awuf
+  implements View.OnClickListener
 {
-  public awuf(MultiCardFragment paramMultiCardFragment, awur paramawur, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
+  awuf(awud paramawud) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    if (this.jdField_a_of_type_Awur == null) {
-      return;
-    }
-    float f2 = 1.0F - (1.0F - this.jdField_a_of_type_Float) * f1;
-    this.jdField_a_of_type_Awur.a.setScaleX(f2);
-    this.jdField_a_of_type_Awur.a.setScaleY(f2);
-    this.jdField_a_of_type_Awur.a.setTranslationX(0.0F);
-    this.jdField_a_of_type_Awur.a.setTranslationY(this.b * f1);
-    paramValueAnimator = this.jdField_a_of_type_Awur.a.getLayoutParams();
-    float f3 = this.c;
-    paramValueAnimator.height = ((int)((1.0F - f1 * (1.0F - this.d)) / f2 * f3));
-    this.jdField_a_of_type_Awur.a.requestLayout();
+    this.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

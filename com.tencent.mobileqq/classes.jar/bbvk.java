@@ -1,48 +1,17 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
-
 public class bbvk
-  implements bbvf
 {
-  protected View a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private List<bbvg> jdField_a_of_type_JavaUtilList;
+  public long a;
+  public bbvl a;
   
-  public bbvk(ViewGroup paramViewGroup, int paramInt)
+  public bbvk()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370012));
+    this.jdField_a_of_type_Long = 0L;
   }
   
-  public View a()
+  public bbvk(long paramLong, bbvl parambbvl)
   {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-  }
-  
-  public TextView a()
-  {
-    return a();
-  }
-  
-  public List<bbvg> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public TextView b()
-  {
-    return null;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Bbvl = parambbvl;
   }
 }
 

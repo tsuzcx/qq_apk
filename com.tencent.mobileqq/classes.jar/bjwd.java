@@ -1,39 +1,59 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.minigame.ui.GameActivity1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.ColorNotePlugin.1;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import android.content.Context;
+import java.util.HashMap;
 
 public class bjwd
-  implements DialogInterface.OnClickListener
 {
-  public bjwd(ColorNotePlugin.1 param1) {}
+  protected static bjwd a;
+  protected Context a;
+  protected bjwc a;
+  protected final HashMap<String, bjwa> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected bjwd(Context paramContext)
   {
-    if (paramDialogInterface != null) {}
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Bjwc = new bjwe(this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+  }
+  
+  public static bjwd a(Context paramContext)
+  {
+    if (jdField_a_of_type_Bjwd != null) {
+      return jdField_a_of_type_Bjwd;
+    }
     try
     {
-      paramDialogInterface.dismiss();
-      this.a.jdField_a_of_type_Aqcb.e();
-      if (bjwc.a(this.a.this$0))
-      {
-        paramDialogInterface = new bjwe(this);
-        if ((bjwc.b(this.a.this$0).getAttachedActivity() != null) && ((bjwc.c(this.a.this$0).getAttachedActivity() instanceof GameActivity1))) {
-          ((GameActivity1)bjwc.d(this.a.this$0).getAttachedActivity()).setColorSignAddListener(paramDialogInterface);
-        }
+      if (jdField_a_of_type_Bjwd == null) {
+        jdField_a_of_type_Bjwd = new bjwd(paramContext);
       }
-      else
-      {
-        this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok();
-        return;
+      paramContext = jdField_a_of_type_Bjwd;
+      return paramContext;
+    }
+    finally {}
+  }
+  
+  public bjwa a(Class<? extends bjvw> paramClass, long paramLong, String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      if (this.jdField_a_of_type_AndroidContentContext == null) {
+        throw new RuntimeException("call initiate(Context context) before this");
       }
     }
-    catch (Exception paramDialogInterface)
+    if (paramString == null) {
+      throw new RuntimeException("invalid table name");
+    }
+    Object localObject = bjwa.a(paramLong, paramString);
+    localObject = (bjwa)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+    if (localObject == null)
     {
-      QLog.e("ColorNotePlugin", 1, "show modalView error." + paramDialogInterface);
+      paramClass = new bjwa(this.jdField_a_of_type_AndroidContentContext, paramClass, paramLong, paramString);
+      paramClass.a(this.jdField_a_of_type_Bjwc);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramClass.a(), paramClass);
+    }
+    for (;;)
+    {
+      return paramClass;
+      paramClass = (Class<? extends bjvw>)localObject;
     }
   }
 }

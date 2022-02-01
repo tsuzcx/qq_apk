@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -16,9 +16,9 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import bkno;
-import bknp;
-import bknq;
+import blor;
+import blos;
+import blot;
 
 public class ProgressPieView
   extends View
@@ -31,9 +31,9 @@ public class ProgressPieView
   RectF jdField_a_of_type_AndroidGraphicsRectF;
   public Drawable a;
   DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics;
-  bkno jdField_a_of_type_Bkno = new bkno(this);
-  bknp jdField_a_of_type_Bknp = new bknp(this);
-  bknq jdField_a_of_type_Bknq;
+  blor jdField_a_of_type_Blor = new blor(this);
+  blos jdField_a_of_type_Blos = new blos(this);
+  blot jdField_a_of_type_Blot;
   public String a;
   public boolean a;
   public float b;
@@ -678,8 +678,8 @@ public class ProgressPieView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    paramInt1 = resolveSize(afur.a(this.jdField_d_of_type_Float, getResources()), paramInt1);
-    paramInt2 = resolveSize(afur.a(this.jdField_d_of_type_Float, getResources()), paramInt2);
+    paramInt1 = resolveSize(agej.a(this.jdField_d_of_type_Float, getResources()), paramInt1);
+    paramInt2 = resolveSize(agej.a(this.jdField_d_of_type_Float, getResources()), paramInt2);
     this.jdField_e_of_type_Float = Math.min(paramInt1, paramInt2);
     setMeasuredDimension(paramInt1, paramInt2);
   }
@@ -743,9 +743,9 @@ public class ProgressPieView
     invalidate();
   }
   
-  public void setOnProgressListener(bknq parambknq)
+  public void setOnProgressListener(blot paramblot)
   {
-    this.jdField_a_of_type_Bknq = parambknq;
+    this.jdField_a_of_type_Blot = paramblot;
   }
   
   public void setPregressPreColor(int paramInt)
@@ -761,16 +761,16 @@ public class ProgressPieView
     }
     this.jdField_b_of_type_Int = paramInt;
     invalidate();
-    if (this.jdField_a_of_type_Bknq != null)
+    if (this.jdField_a_of_type_Blot != null)
     {
       if (this.jdField_b_of_type_Int == this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_Bknq.b();
+        this.jdField_a_of_type_Blot.b();
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_Bknq.a(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Blot.a(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
   }
   
   public void setProgressColor(int paramInt)

@@ -1,17 +1,60 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aejq
-  implements View.OnClickListener
+  extends beyf
 {
-  public aejq(GroupManagerActivity paramGroupManagerActivity) {}
+  final WeakReference<Conversation> a;
   
-  public void onClick(View paramView)
+  public aejq(Conversation paramConversation)
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = new WeakReference(paramConversation);
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int j = 0;
+    Conversation localConversation = (Conversation)this.a.get();
+    if (localConversation == null) {}
+    do
+    {
+      bete localbete;
+      int k;
+      int i;
+      do
+      {
+        do
+        {
+          return;
+          localbete = (bete)paramMessage.obj;
+        } while ((Conversation.a(localConversation) == null) || (localbete == null) || (TextUtils.isEmpty(localbete.p)));
+        k = paramMessage.what;
+        if (localbete.b != 1)
+        {
+          i = j;
+          if (localbete.b != 2) {}
+        }
+        else if ((k != 1001) && (k != 1002) && (k != 1000) && (k != 1005))
+        {
+          i = j;
+          if (k != 1003) {}
+        }
+        else
+        {
+          i = 1;
+        }
+      } while ((i == 0) && (((k != 1003) && (k != 2003)) || ((localbete.b != 2) && (!localConversation.f))));
+      localConversation.a(8, localbete.p, -2147483648);
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.recent", 2, "refresh recent, from_transferListener2");
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.imaxad;
 
-import avfs;
-import avfu;
-import bcst;
+import avxv;
+import avxx;
+import bdll;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import nuk;
-import nun;
-import nve;
+import nwf;
+import nwh;
+import nwy;
 
 public class ImaxAdRecentUserManager$2
   implements Runnable
 {
-  public ImaxAdRecentUserManager$2(avfu paramavfu, QQAppInterface paramQQAppInterface, String paramString, int paramInt, nuk paramnuk) {}
+  public ImaxAdRecentUserManager$2(avxx paramavxx, QQAppInterface paramQQAppInterface, String paramString, int paramInt, nwf paramnwf) {}
   
   public void run()
   {
@@ -28,15 +28,15 @@ public class ImaxAdRecentUserManager$2
       {
         localMessage.saveExtInfoToExtStr("recent_list_advertisement_message_first_click", "true");
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessage.frienduin, localMessage.msgtype, localMessage.uniseq, "extStr", localMessage.extStr);
-        if (this.jdField_a_of_type_Nuk.a != null) {
-          bcst.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nuk.a.jdField_a_of_type_JavaLangString, "0X8008F5E", "0X8008F5E", 0, 0, this.jdField_a_of_type_Nuk.a.c, "", nve.a(), this.jdField_a_of_type_Nuk.a.b);
+        if (this.jdField_a_of_type_Nwf.a != null) {
+          bdll.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nwf.a.jdField_a_of_type_JavaLangString, "0X8008F5E", "0X8008F5E", 0, 0, this.jdField_a_of_type_Nwf.a.c, "", nwy.a(), this.jdField_a_of_type_Nwf.a.b);
         }
       }
-      if (this.jdField_a_of_type_Nuk.a != null)
+      if (this.jdField_a_of_type_Nwf.a != null)
       {
-        bcst.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nuk.a.jdField_a_of_type_JavaLangString, "0X8008F60", "0X8008F60", 0, 0, this.jdField_a_of_type_Nuk.a.c, "", "", this.jdField_a_of_type_Nuk.a.b);
-        if (this.jdField_a_of_type_Nuk.a.l == 2) {
-          avfs.a().b(this.jdField_a_of_type_Nuk);
+        bdll.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nwf.a.jdField_a_of_type_JavaLangString, "0X8008F60", "0X8008F60", 0, 0, this.jdField_a_of_type_Nwf.a.c, "", "", this.jdField_a_of_type_Nwf.a.b);
+        if (this.jdField_a_of_type_Nwf.a.l == 2) {
+          avxv.a().b(this.jdField_a_of_type_Nwf);
         }
       }
     }

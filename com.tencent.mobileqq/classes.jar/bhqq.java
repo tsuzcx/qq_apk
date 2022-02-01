@@ -1,10 +1,24 @@
-public abstract interface bhqq
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+
+class bhqq
+  implements View.OnTouchListener
 {
-  public abstract void a();
+  bhqq(bhqp parambhqp) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.a.a.setImageResource(2130847305);
+    this.a.a.setTag(Integer.valueOf(2130847305));
+    this.a.a();
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhqq
  * JD-Core Version:    0.7.0.1
  */

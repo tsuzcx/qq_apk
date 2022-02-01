@@ -1,112 +1,132 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.splashad.SplashADUtil.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import java.util.Set;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.widget.ThemeURLImageView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bcor
+  extends bcog
 {
-  public static long a;
-  private static boolean a;
-  private static long b;
+  public View a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public URLImageView a;
+  public ArrayList<bcos> a;
+  public LinearLayout b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  public static int a(Context paramContext)
+  public bcor(ViewGroup paramViewGroup, int paramInt)
   {
-    paramContext = (WindowManager)paramContext.getSystemService("window");
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
-    return paramContext.getDefaultDisplay().getWidth();
+    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public static long a(Context paramContext)
+  protected void a()
   {
-    if (b == 0L) {
-      b = PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("splash_ad_uin_long", 0L);
+    View localView = a(this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131366093));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368320));
+    if ((this.jdField_a_of_type_ComTencentImageURLImageView instanceof ThemeURLImageView)) {
+      ((ThemeURLImageView)this.jdField_a_of_type_ComTencentImageURLImageView).setSupportMaskView(false);
     }
-    return b;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378936));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378163));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378163));
+    this.d = ((TextView)localView.findViewById(2131365413));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131376675));
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131368715);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131378154));
   }
   
-  private static void a() {}
-  
-  public static void a(int paramInt, String paramString)
+  public void a(bcgl parambcgl)
   {
-    ThreadManager.excute(new SplashADUtil.1(paramInt, paramString), 128, null, false);
-  }
-  
-  public static void a(Context paramContext)
-  {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().remove("splash_ad_uin_long").apply();
-    b = 0L;
-  }
-  
-  public static void a(Context paramContext, long paramLong)
-  {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putLong("splash_ad_uin_long", paramLong).apply();
-    b = paramLong;
-  }
-  
-  public static boolean a(Activity paramActivity)
-  {
-    boolean bool2 = false;
-    Object localObject = paramActivity.getIntent();
-    paramActivity = ((Intent)localObject).getCategories();
-    localObject = ((Intent)localObject).getAction();
-    QLog.i("SplashAD", 1, "categories " + paramActivity + " action " + (String)localObject);
-    boolean bool1 = bool2;
-    if (paramActivity != null)
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#004080"));
+    }
+    if ((parambcgl.a == null) || (parambcgl.a.size() == 0))
     {
-      bool1 = bool2;
-      if (paramActivity.contains("android.intent.category.LAUNCHER"))
-      {
-        bool1 = bool2;
-        if (localObject != null)
-        {
-          bool1 = bool2;
-          if (((String)localObject).equals("android.intent.action.MAIN")) {
-            bool1 = true;
-          }
-        }
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    Context localContext = this.jdField_b_of_type_AndroidWidgetLinearLayout.getContext();
+    ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
+    int i = 0;
+    label116:
+    bcgw localbcgw;
+    bcos localbcos;
+    if ((i < parambcgl.a.size()) && (i < 6))
+    {
+      localbcgw = (bcgw)parambcgl.a.get(i);
+      localbcos = new bcos(this, localContext);
+      if (TextUtils.isEmpty(parambcgl.m)) {
+        break label410;
       }
-    }
-    bool2 = bool1;
-    if (!bool1)
-    {
-      bool2 = bool1;
-      if (paramActivity == null)
-      {
-        bool2 = bool1;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          bool2 = true;
-        }
+      Object localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = bhgr.a(localContext, 16.0F);
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = bhgr.a(localContext, 16.0F);
+      ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "subItemLeftIconUrl";
+      localObject = URLDrawable.getDrawable(parambcgl.m, (URLDrawable.URLDrawableOptions)localObject);
+      ((URLDrawable)localObject).setDecodeHandler(bhez.a);
+      localbcos.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+      if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
+        ((URLDrawable)localObject).restartDownload();
       }
+      localbcos.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+      label279:
+      localbcos.jdField_a_of_type_AndroidViewView.setTag(2131381109, parambcgl);
+      if (TextUtils.isEmpty(localbcgw.a)) {
+        break label423;
+      }
+      localbcos.jdField_a_of_type_AndroidWidgetTextView.setText(localbcgw.a);
+      localbcos.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      localbcos.jdField_a_of_type_AndroidViewView.setTag(2131378441, localbcgw.a);
     }
-    QLog.e("SplashAD", 1, "fromLaucher " + bool2);
-    return bool2;
-  }
-  
-  public static void b(Context paramContext)
-  {
-    if (!a)
+    for (;;)
     {
-      TVK_SDKMgr.initSdk(paramContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-      a();
-      a = true;
+      if (!TextUtils.isEmpty(localbcgw.b))
+      {
+        localbcos.jdField_a_of_type_AndroidViewView.setTag(2131378440, localbcgw.b);
+        localbcos.jdField_a_of_type_AndroidViewView.setTag(2131378410, Integer.valueOf(parambcgl.jdField_c_of_type_Int));
+      }
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(localbcos.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localbcos);
+      i += 1;
+      break label116;
+      break;
+      label410:
+      localbcos.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+      break label279;
+      label423:
+      localbcos.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcor
  * JD-Core Version:    0.7.0.1
  */

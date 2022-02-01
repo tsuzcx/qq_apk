@@ -1,59 +1,111 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
-import com.tencent.open.base.img.ImageCache;
+import android.annotation.SuppressLint;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.smtt.sdk.WebView;
 
-public class bipe
+class bipe
+  extends nxo
 {
-  protected static bipe a;
-  protected static byte[] a;
-  protected LruCache<String, Bitmap> a;
+  bipe(bipd parambipd) {}
   
-  static
+  @SuppressLint({"InflateParams"})
+  public View getVideoLoadingProgressView()
   {
-    jdField_a_of_type_ArrayOfByte = new byte[1];
+    if (this.a.a != null) {
+      return this.a.a.getVideoLoadingProgressView();
+    }
+    return null;
   }
   
-  protected bipe()
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(50);
-  }
-  
-  public static bipe a()
-  {
-    if (jdField_a_of_type_Bipe == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (jdField_a_of_type_Bipe == null) {
-        jdField_a_of_type_Bipe = new bipe();
-      }
-      return jdField_a_of_type_Bipe;
+    if (this.a.a != null) {
+      this.a.a.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
     }
   }
   
-  public Bitmap a(String arg1)
+  public void onHideCustomView()
   {
-    Object localObject1 = bita.b(???);
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      localObject1 = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localObject1);
-      return localObject1;
+    if (this.a.a != null) {
+      this.a.a.onHideCustomView();
     }
   }
   
-  public void a(String paramString)
+  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    String str = bita.b(paramString);
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(str);
-      ImageCache.a(paramString);
-      return;
+    if (this.a.a != null) {
+      this.a.a.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
+    }
+    return super.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
+  }
+  
+  @Override
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  {
+    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
+      return true;
+    }
+    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
+  }
+  
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewWrapper", 2, "onProgressChanged:" + paramInt);
+    }
+    if (this.a.a != null) {
+      this.a.a.onProgressChanged(paramWebView, paramInt);
+    }
+    if ((paramInt > 30) && (!paramWebView.getSettings().getLoadsImagesAutomatically())) {
+      paramWebView.getSettings().setLoadsImagesAutomatically(true);
     }
   }
   
-  public void a(String paramString, bipg parambipg)
+  public void onReceivedTitle(WebView paramWebView, String paramString)
   {
-    ImageCache.a("app", paramString, new bipf(this, parambipg, paramString));
+    if (this.a.a != null) {
+      this.a.a.onReceivedTitle(paramWebView, paramString);
+    }
+  }
+  
+  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    if (this.a.a != null) {
+      this.a.a.showCustomView(paramView, paramInt, paramCustomViewCallback);
+    }
+  }
+  
+  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    if (this.a.a != null) {
+      this.a.a.showCustomView(paramView, 10, paramCustomViewCallback);
+    }
+  }
+  
+  public boolean onShowFileChooser(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
+  {
+    if ((paramValueCallback != null) && (this.a.a != null)) {
+      return this.a.a.onShowFileChooser(paramValueCallback, paramFileChooserParams);
+    }
+    return super.onShowFileChooser(paramWebView, paramValueCallback, paramFileChooserParams);
+  }
+  
+  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
+  {
+    if (this.a.a != null) {
+      this.a.a.openFileChooser(paramValueCallback, paramString1, paramString2);
+    }
   }
 }
 

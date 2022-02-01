@@ -11,6 +11,7 @@ import com.tencent.mtt.abtestsdk.entity.ABTestConfig;
 import java.security.PublicKey;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import okhttp3.Call;
@@ -34,7 +35,7 @@ public class ABTestUtil
     try
     {
       PublicKey localPublicKey = RSAUtil.getPublicKey("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4G854SsPwzbBec9BTkDLHhpeiTI5mTZs4hJj6oe4/XzWULar+z5dc2VlU5wInSnHHEzzEJma8r5c4ON46iYkBCVs8EFabZ9TVnpzwrWlG3UhEWkM3FA/xIm4pSXvfX79IJy93sAy+H/ZfiCP8w72y4YwyCBdSwA5K5HOngCWDCQIDAQAB");
-      paramString = RSAUtil.encrypt(paramString.getBytes(), localPublicKey);
+      paramString = RSAUtil.encrypt(paramString.getBytes("UTF-8"), localPublicKey);
       return paramString;
     }
     catch (Exception paramString)
@@ -46,85 +47,74 @@ public class ABTestUtil
   
   public static String getABTestSDKAppId(Context paramContext, ABTestConfig paramABTestConfig)
   {
-    Object localObject;
-    if (paramContext == null)
+    Object localObject = "";
+    if ((paramContext == null) || (paramABTestConfig == null))
     {
       ABTestLog.error("please use init method firstly", new Object[0]);
-      localObject = "";
+      paramContext = (Context)localObject;
     }
     for (;;)
     {
-      return localObject;
-      if ((paramABTestConfig != null) && (!TextUtils.isEmpty(paramABTestConfig.getAppId()))) {
+      return paramContext;
+      if (!TextUtils.isEmpty(paramABTestConfig.getAppId())) {
         return paramABTestConfig.getAppId();
       }
       try
       {
-        int i = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData.getInt("ABTestSDK_appId");
-        paramContext = String.valueOf(i);
-        localObject = paramContext;
-        try
+        String str = String.valueOf(paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData.getInt("ABTestSDK_appId"));
+        paramContext = str;
+        localObject = str;
+        if (!TextUtils.isEmpty(str))
         {
-          if (!TextUtils.isEmpty(paramContext))
-          {
-            paramABTestConfig.setAppId(paramContext);
-            ABTestLog.debug("SDKAppId: " + paramContext, new Object[0]);
-            return paramContext;
-          }
+          localObject = str;
+          paramABTestConfig.setAppId(str);
+          localObject = str;
+          ABTestLog.debug("SDKAppId: " + str, new Object[0]);
+          return str;
         }
-        catch (PackageManager.NameNotFoundException paramABTestConfig) {}
       }
-      catch (PackageManager.NameNotFoundException paramABTestConfig)
+      catch (PackageManager.NameNotFoundException paramContext)
       {
-        for (;;)
-        {
-          paramContext = "";
-        }
+        ABTestLog.error(paramContext.getMessage(), new Object[0]);
       }
     }
-    ABTestLog.error(paramABTestConfig.getMessage(), new Object[0]);
-    return paramContext;
+    return localObject;
   }
   
   public static String getABTestSDKAppKey(Context paramContext, ABTestConfig paramABTestConfig)
   {
-    Object localObject;
-    if (paramContext == null)
+    Object localObject = "";
+    if ((paramContext == null) || (paramABTestConfig == null))
     {
       ABTestLog.error("please use init method firstly", new Object[0]);
-      localObject = "";
+      paramContext = (Context)localObject;
     }
     for (;;)
     {
-      return localObject;
-      if ((paramABTestConfig != null) && (!TextUtils.isEmpty(paramABTestConfig.getAppKey()))) {
+      return paramContext;
+      if (!TextUtils.isEmpty(paramABTestConfig.getAppKey())) {
         return paramABTestConfig.getAppKey();
       }
       try
       {
-        paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData.getString("ABTestSDK_appKey");
-        localObject = paramContext;
-        try
+        String str = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData.getString("ABTestSDK_appKey");
+        paramContext = str;
+        localObject = str;
+        if (!TextUtils.isEmpty(str))
         {
-          if (!TextUtils.isEmpty(paramContext))
-          {
-            paramABTestConfig.setAppKey(paramContext);
-            ABTestLog.debug("SDKAppKey: " + paramContext, new Object[0]);
-            return paramContext;
-          }
+          localObject = str;
+          paramABTestConfig.setAppKey(str);
+          localObject = str;
+          ABTestLog.debug("SDKAppKey: " + str, new Object[0]);
+          return str;
         }
-        catch (PackageManager.NameNotFoundException paramABTestConfig) {}
       }
-      catch (PackageManager.NameNotFoundException paramABTestConfig)
+      catch (PackageManager.NameNotFoundException paramContext)
       {
-        for (;;)
-        {
-          paramContext = "";
-        }
+        ABTestLog.error(paramContext.getMessage(), new Object[0]);
       }
     }
-    ABTestLog.error(paramABTestConfig.getMessage(), new Object[0]);
-    return paramContext;
+    return localObject;
   }
   
   public static void getRequest(String paramString, int paramInt, Callback paramCallback, OkHttpClient.Builder paramBuilder)
@@ -198,11 +188,11 @@ public class ABTestUtil
           return;
         }
         FormBody.Builder localBuilder = new FormBody.Builder();
-        Iterator localIterator = paramMap.keySet().iterator();
-        while (localIterator.hasNext())
+        paramMap = paramMap.entrySet().iterator();
+        while (paramMap.hasNext())
         {
-          String str = (String)localIterator.next();
-          localBuilder.add(str, (String)paramMap.get(str));
+          Map.Entry localEntry = (Map.Entry)paramMap.next();
+          localBuilder.add((String)localEntry.getKey(), (String)localEntry.getValue());
         }
         onCall(paramString, paramInt, paramCallback, paramBuilder, localBuilder.build());
       }

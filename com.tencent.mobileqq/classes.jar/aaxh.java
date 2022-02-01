@@ -1,64 +1,118 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.opengl.GLES20;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.troopgift.GridListViewPager;
+import com.tencent.biz.troopgift.RadioViewPager;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aaxh
+  extends bgst
 {
-  public static int a(int paramInt1, int paramInt2)
+  public aaxh(TroopGiftPanel paramTroopGiftPanel, aaxv paramaaxv) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    GLES20.glBindTexture(3553, arrayOfInt[0]);
-    GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
-    GLES20.glTexParameterf(3553, 10241, 9729.0F);
-    GLES20.glTexParameterf(3553, 10240, 9729.0F);
-    GLES20.glTexParameteri(3553, 10242, 33071);
-    GLES20.glTexParameteri(3553, 10243, 33071);
-    return arrayOfInt[0];
+    QLog.d("TroopGiftPanel", 1, "getPackGiftStorage, onError: errorCode = " + paramInt + ", errorMsg = " + paramString);
+    if (this.jdField_a_of_type_Aaxv != null) {
+      this.jdField_a_of_type_Aaxv.a(paramInt);
+    }
   }
   
-  public static Bitmap a(int paramInt1, int paramInt2, int paramInt3)
+  public void a(List<bgtf> paramList, aawq paramaawq)
   {
-    try
-    {
-      localBitmap = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
-      Object localObject;
-      localOutOfMemoryError1.printStackTrace();
+    boolean bool2 = true;
+    QLog.d("TroopGiftPanel", 1, "getPackGiftStorage, onGetPackageGiftList giveGifts.size=" + paramList.size());
+    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aawm == null) {
+      return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError1)
+    boolean bool1;
+    label170:
+    int i;
+    if (this.jdField_a_of_type_Aaxv != null)
+    {
+      this.jdField_a_of_type_Aaxv.a(paramList, paramaawq);
+      if ((this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfAndroidViewView[TroopGiftPanel.d] instanceof RadioViewPager))
+      {
+        if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aawm.a != null)
+        {
+          ((RadioViewPager)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfAndroidViewView[TroopGiftPanel.d]).setEmptyInfo(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aawm.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aawm.a.b);
+          paramList = (RadioViewPager)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfAndroidViewView[TroopGiftPanel.d];
+          if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aawm.a.jdField_a_of_type_Int != 1) {
+            break label412;
+          }
+          bool1 = true;
+          paramList.setIsShowJumpInfo(bool1, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aawm.a.c, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext);
+        }
+        if ((this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aawm.e == null) || (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aawm.e.size() <= 0)) {
+          break label418;
+        }
+        i = 1;
+        label227:
+        paramList = (RadioViewPager)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfAndroidViewView[TroopGiftPanel.d];
+        if (i != 0) {
+          break label423;
+        }
+        bool1 = true;
+        label249:
+        paramList.setIsListEmpty(bool1);
+        if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d())
+        {
+          paramList = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.i;
+          if (i == 0) {
+            break label429;
+          }
+          i = 0;
+          label279:
+          paramList.setVisibility(i);
+        }
+      }
+    }
+    for (;;)
     {
       try
       {
-        localObject = new int[1];
-        GLES20.glGenFramebuffers(1, (int[])localObject, 0);
-        GLES20.glBindFramebuffer(36160, localObject[0]);
-        GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
-        localObject = ByteBuffer.allocateDirect(paramInt2 * paramInt3 * 4);
-        ((ByteBuffer)localObject).order(ByteOrder.LITTLE_ENDIAN);
-        GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, (Buffer)localObject);
-        ((ByteBuffer)localObject).rewind();
-        localBitmap.copyPixelsFromBuffer((Buffer)localObject);
-        GLES20.glBindFramebuffer(36160, 0);
-        return localBitmap;
+        if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfComTencentBizTroopgiftGridListViewPager[TroopGiftPanel.d] != null)
+        {
+          this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfComTencentBizTroopgiftGridListViewPager[TroopGiftPanel.d].setData(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aawm.e);
+          this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfComTencentBizTroopgiftGridListViewPager[TroopGiftPanel.d].a();
+        }
+        if (!this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d()) {
+          break label440;
+        }
+        paramList = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel;
+        if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.f)) || (!TroopGiftPanel.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel))) {
+          break label434;
+        }
+        bool1 = bool2;
+        paramList.setSendGiftBtnEnabled(bool1);
+        return;
       }
-      catch (OutOfMemoryError localOutOfMemoryError2)
+      catch (Exception paramList)
       {
-        Bitmap localBitmap;
-        break label95;
+        return;
       }
-      localOutOfMemoryError1 = localOutOfMemoryError1;
-      localBitmap = null;
+      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aawm.b(paramList);
+      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aawm.a(paramaawq);
+      break;
+      label412:
+      bool1 = false;
+      break label170;
+      label418:
+      i = 0;
+      break label227;
+      label423:
+      bool1 = false;
+      break label249;
+      label429:
+      i = 4;
+      break label279;
+      label434:
+      bool1 = false;
     }
-    label95:
-    return localBitmap;
-  }
-  
-  public static void a(int paramInt)
-  {
-    GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
+    label440:
+    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setSendGiftBtnEnabled(TroopGiftPanel.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel));
   }
 }
 

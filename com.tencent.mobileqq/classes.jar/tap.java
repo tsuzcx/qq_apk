@@ -1,56 +1,28 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.LinkedList;
+import android.support.v4.view.ViewPager.PageTransformer;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.BannerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner;
 
 public class tap
+  implements ViewPager.PageTransformer
 {
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private LinkedList<tar> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private tap(ChannelTopBanner paramChannelTopBanner) {}
   
-  public tap(BaseActivity paramBaseActivity)
+  public void transformPage(View paramView, float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_JavaUtilLinkedList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilLinkedList.size();
-  }
-  
-  public tar a()
-  {
-    if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
-      return null;
-    }
-    return (tar)this.jdField_a_of_type_JavaUtilLinkedList.pop();
-  }
-  
-  public void a(taq paramtaq)
-  {
-    if (paramtaq == null) {}
-    for (;;)
-    {
+    if (paramView == null) {}
+    while ((this.a.a != null) && (this.a.a.getCount() == 1)) {
       return;
-      while (!a())
-      {
-        tar localtar = a();
-        if (localtar != null) {
-          paramtaq.a(localtar);
-        }
-      }
     }
-  }
-  
-  public void a(tar paramtar)
-  {
-    this.jdField_a_of_type_JavaUtilLinkedList.push(paramtar);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilLinkedList.isEmpty();
+    if ((paramFloat <= -1.1F) || (paramFloat >= 1.1F))
+    {
+      paramView.setScaleX(0.9F);
+      paramView.setScaleY(0.9F);
+      return;
+    }
+    paramFloat = Math.max(0.9F, 1.0F - Math.abs(0.2000001F * paramFloat));
+    paramView.setScaleX(paramFloat);
+    paramView.setScaleY(paramFloat);
   }
 }
 

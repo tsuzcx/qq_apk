@@ -1,88 +1,53 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.EmptyPackagePage;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.GetPackageShopRsp;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.RspBody;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.StockItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-class bfsv
-  extends niu
+public class bfsv
+  extends atvf
 {
-  bfsv(bfst parambfst, bfss parambfss) {}
+  long jdField_a_of_type_Long;
+  anua jdField_a_of_type_Anua = null;
+  bftf jdField_a_of_type_Bftf;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public bfsv(QQAppInterface paramQQAppInterface, long paramLong, bftf parambftf)
   {
-    if (paramInt != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Bfss);
-      }
-      this.jdField_a_of_type_Bfss.a(-1, "errorCode=" + paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Bftf = parambftf;
+    this.jdField_a_of_type_Long = paramLong;
+    b();
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Anua = new bfsw(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anua);
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Anua != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anua);
     }
-    do
-    {
-      return;
-      paramBundle = new Oidb_0xcd1.RspBody();
-      if (paramArrayOfByte != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult erro data=" + null);
-    return;
+  }
+  
+  public boolean a()
+  {
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    if (localTroopFileTransferManager == null) {
+      return false;
+    }
+    if (this.jdField_a_of_type_Bftf.a != null) {
+      localTroopFileTransferManager.e(this.jdField_a_of_type_Bftf.a);
+    }
     for (;;)
     {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (!paramBundle.get_pack_rsp.has()) {
-          break;
-        }
-        paramArrayOfByte = new Oidb_0xcd1.GetPackageShopRsp();
-        paramArrayOfByte.mergeFrom(((Oidb_0xcd1.GetPackageShopRsp)paramBundle.get_pack_rsp.get()).toByteArray());
-        paramBundle = new ArrayList();
-        if (paramArrayOfByte.msg_stock.has())
-        {
-          List localList = paramArrayOfByte.msg_stock.get();
-          paramInt = 0;
-          if (paramInt < localList.size())
-          {
-            Oidb_0xcd1.StockItem localStockItem = (Oidb_0xcd1.StockItem)localList.get(paramInt);
-            bfte localbfte = new bfte();
-            localbfte.a = localStockItem.int32_productid.get();
-            localbfte.b = localStockItem.int32_amount.get();
-            paramBundle.add(localbfte);
-            paramInt += 1;
-            continue;
-          }
-        }
-        if (paramArrayOfByte.empty_package_page.has())
-        {
-          paramArrayOfByte = (Oidb_0xcd1.EmptyPackagePage)paramArrayOfByte.empty_package_page.get();
-          if (paramArrayOfByte != null)
-          {
-            paramArrayOfByte = new aasn(paramArrayOfByte);
-            if (this.jdField_a_of_type_Bfss == null) {
-              break;
-            }
-            this.jdField_a_of_type_Bfss.a(paramBundle, paramArrayOfByte);
-            return;
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
-        }
-        this.jdField_a_of_type_Bfss.a(-1, "InvalidProtocolBufferMicroException");
-        return;
-      }
-      paramArrayOfByte = null;
+      return true;
+      localTroopFileTransferManager.a(this.jdField_a_of_type_Bftf.e, this.jdField_a_of_type_Bftf.g, this.jdField_a_of_type_Bftf.h);
     }
   }
 }

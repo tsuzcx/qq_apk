@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahhm;
+import ahqw;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -11,7 +11,7 @@ import java.util.Calendar;
 public class ShortVideoItemBuilder$8
   implements Runnable
 {
-  public ShortVideoItemBuilder$8(ahhm paramahhm) {}
+  public ShortVideoItemBuilder$8(ahqw paramahqw) {}
   
   public void run()
   {

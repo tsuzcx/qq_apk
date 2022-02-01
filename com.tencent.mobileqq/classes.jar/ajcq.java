@@ -1,29 +1,20 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
-public class ajcq
-  extends RecyclerView.OnScrollListener
+class ajcq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ajcq(TroopRecommendFriendFragment paramTroopRecommendFriendFragment) {}
+  ajcq(ajcn paramajcn) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    TroopRecommendFriendFragment.a(this.a, paramInt);
-    if (paramInt == 0)
-    {
-      paramRecyclerView = paramRecyclerView.getLayoutManager();
-      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopRecommendFriendFragment.a(this.a).getItemCount())) {
-        TroopRecommendFriendFragment.a(this.a);
-      }
-    }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (FrameLayout.LayoutParams)this.a.a.a.getLayoutParams();
+    paramValueAnimator.topMargin = i;
+    this.a.a.a.setLayoutParams(paramValueAnimator);
   }
 }
 

@@ -1,21 +1,55 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.widget.QQViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.widget.OverScrollRecyclerView;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.SwipListView;
+import java.util.ArrayList;
+import java.util.List;
 
-class ajqr
-  extends ViewPager.SimpleOnPageChangeListener
+public class ajqr
+  implements View.OnClickListener
 {
-  ajqr(ajqq paramajqq) {}
+  public ajqr(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1) {
-      this.a.b = this.a.a.getCurrentItem();
+    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_contacts_news", "", "notice", "todo_tab_clk", 0, 0, "", "", "", "");
+    ajqw.b(false);
+    this.a.a(false, 1);
+    TroopNotifyAndRecommendView.a(this.a).setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(0);
+    if (this.a.jdField_c_of_type_Int != 1)
+    {
+      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+      }
+      this.a.setType(1);
+      this.a.a(true);
+      ArrayList localArrayList = new ArrayList();
+      this.a.jdField_a_of_type_Ajpe.b(localArrayList);
+      this.a.jdField_a_of_type_Ajpe.notifyDataSetChanged();
+      this.a.jdField_a_of_type_Ajpe.a(ajqw.b());
+      this.a.jdField_a_of_type_Ajpe.a = 0;
+      this.a.jdField_a_of_type_Ajpe.notifyDataSetChanged();
     }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    ajqq.a(this.a, paramInt);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      }
+      this.a.setType(0);
+      this.a.a(false);
+      this.a.jdField_a_of_type_Ajpe.a(ajqw.c());
+      this.a.jdField_a_of_type_Ajpe.a = bdzi.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if ((this.a.jdField_c_of_type_JavaUtilList != null) && (this.a.jdField_c_of_type_JavaUtilList.size() > 0)) {
+        this.a.jdField_a_of_type_Ajpe.b(this.a.jdField_c_of_type_JavaUtilList);
+      }
+      this.a.jdField_a_of_type_Ajpe.notifyDataSetChanged();
+    }
   }
 }
 

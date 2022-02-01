@@ -1,16 +1,48 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
+import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
+import com.tencent.widget.GridView;
+import java.util.Collection;
+import java.util.Map;
 
 public class aymg
-  implements ValueAnimator.AnimatorUpdateListener
+  extends AvatarWallPagerAdapter<GridView>
 {
-  public aymg(ScanIconAnimateView paramScanIconAnimateView) {}
+  protected LinearLayout.LayoutParams a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public aymg(aykx paramaykx, AvatarWallViewPager paramAvatarWallViewPager)
   {
-    this.a.f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    super(paramAvatarWallViewPager);
+  }
+  
+  public View a(int paramInt, GridView paramGridView)
+  {
+    return aykx.a(this.jdField_a_of_type_Aykx, aykx.a(this.jdField_a_of_type_Aykx), paramInt);
+  }
+  
+  public View a(boolean paramBoolean, int paramInt)
+  {
+    View localView = new View(this.jdField_a_of_type_Aykx.jdField_a_of_type_AndroidContentContext);
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(zps.a(this.jdField_a_of_type_Aykx.jdField_a_of_type_AndroidContentContext, 30.0F), zps.a(this.jdField_a_of_type_Aykx.jdField_a_of_type_AndroidContentContext, 1.5F));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = zps.a(this.jdField_a_of_type_Aykx.jdField_a_of_type_AndroidContentContext, 2.0F);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.rightMargin = zps.a(this.jdField_a_of_type_Aykx.jdField_a_of_type_AndroidContentContext, 2.0F);
+    }
+    localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
+    if (paramBoolean)
+    {
+      localView.setBackgroundColor(-1);
+      return localView;
+    }
+    localView.setBackgroundColor(1728053247);
+    return localView;
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    this.jdField_a_of_type_Aykx.jdField_a_of_type_JavaUtilMap.values().remove(paramView);
   }
 }
 

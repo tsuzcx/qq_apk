@@ -1,15 +1,15 @@
 package dov.com.qq.im.aeeditor.module.filter;
 
-import bogd;
+import bphy;
 
 public class FiltersAdapter$1
   implements Runnable
 {
-  public FiltersAdapter$1(bogd parambogd, int paramInt) {}
+  public FiltersAdapter$1(bphy parambphy, int paramInt) {}
   
   public void run()
   {
-    bogd.a(bogd.a(this.this$0), this.a, false);
+    bphy.a(bphy.a(this.this$0), this.a, false);
   }
 }
 

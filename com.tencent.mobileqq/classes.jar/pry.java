@@ -1,23 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class pry
-  implements onn
+class pry
+  implements prp<BEAN>
 {
-  public pry(ReadInJoyVideoChannelFragment paramReadInJoyVideoChannelFragment) {}
+  pry(prw paramprw) {}
   
-  public void a()
+  public void a(boolean paramBoolean, List<BEAN> paramList, int paramInt, String paramString)
   {
-    seu localseu = this.a.a();
-    if ((localseu != null) && (localseu.a() != null))
+    if (prw.a(this.a) != null)
     {
-      if (localseu.a().a()) {
-        localseu.a().j();
+      if (!paramBoolean) {
+        break label69;
       }
-      localseu.a().d();
+      prw.a(this.a).setListData(paramList, true);
+      if (prw.a(this.a).a()) {
+        prw.a(this.a).setFooterHasMore();
+      }
     }
+    else
+    {
+      return;
+    }
+    prw.a(this.a).setFooterNoMore();
+    return;
+    label69:
+    QLog.i("ListPresenter", 2, "loadNextPage error, errorCode=" + paramInt + ", errorMsg= " + paramString);
+    prw.a(this.a).setFooterError(paramInt, paramString);
   }
-  
-  public void b() {}
 }
 
 

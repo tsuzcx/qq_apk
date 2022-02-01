@@ -1,15 +1,31 @@
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+
 class atfy
-  extends atfq
+  implements Animation.AnimationListener
 {
-  public atfy(atfe paramatfe)
+  atfy(atfx paramatfx) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramatfe);
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.removeView(this.a.jdField_a_of_type_AndroidViewView);
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getWindow().setBackgroundDrawable(null);
+    Face2FaceAddFriendActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity);
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.n = true;
+    if (atgp.a >= atgp.b)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(atgp.a, atgp.b);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(atgp.a, 0L);
   }
   
-  protected String a()
-  {
-    return "StateRefuseByPC";
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

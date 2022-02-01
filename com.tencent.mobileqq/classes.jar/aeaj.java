@@ -1,39 +1,26 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aeaj
-  extends aoqm
+final class aeaj
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<Conversation> a;
+  aeaj(QQAppInterface paramQQAppInterface, aeca paramaeca, long paramLong, Context paramContext, aebz paramaebz) {}
   
-  public aeaj(Conversation paramConversation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramConversation);
-  }
-  
-  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
-  {
-    if ((paramBoolean) && (paramList != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
-      }
-      Conversation localConversation = (Conversation)this.a.get();
-      if (localConversation != null)
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)paramList.next();
-          if (localAppletsAccountInfo != null) {
-            localConversation.a(9, localAppletsAccountInfo.uin, 1038);
-          }
-        }
-      }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_Aeca.jdField_a_of_type_Int, this.jdField_a_of_type_Aeca.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aeca.jdField_c_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_Aeca.jdField_a_of_type_Boolean) {
+      bdll.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
+    }
+    this.jdField_a_of_type_Aeca.b = false;
+    this.jdField_a_of_type_Aeca.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_Aeca.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aebz, this.jdField_a_of_type_Aeca);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

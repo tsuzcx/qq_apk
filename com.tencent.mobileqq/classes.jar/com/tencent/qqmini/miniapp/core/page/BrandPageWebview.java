@@ -497,6 +497,11 @@ public class BrandPageWebview
     }
   }
   
+  public int createNativeBuffer(byte[] paramArrayOfByte, long paramLong1, long paramLong2)
+  {
+    return 0;
+  }
+  
   public boolean doDispatchKeyEvent(KeyEvent paramKeyEvent)
   {
     boolean bool2 = false;
@@ -677,6 +682,11 @@ public class BrandPageWebview
       QMLog.e("BrandPageWebview", "getJsDefaultConfig failed: " + localException);
     }
     return "";
+  }
+  
+  public byte[] getNativeBuffer(int paramInt)
+  {
+    return new byte[0];
   }
   
   public PageEventListener getPageEventListener()

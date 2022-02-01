@@ -1,81 +1,34 @@
-import com.tencent.av.ui.ConferenceFlyTicketActivity;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class mbs
-  extends muk
+  implements URLDrawable.URLDrawableListener
 {
-  public mbs(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity)
+  public mbs(AVActivity paramAVActivity) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    SSLSocketFactory.getSocketFactory().setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
+    AVActivity.a(this.a, false);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadCanceled().");
   }
   
-  public void a(mun parammun)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    String str3 = "";
-    if (parammun.a.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      try
-      {
-        String str1 = new String(parammun.a.jdField_a_of_type_ArrayOfByte, "UTF-8");
-        if (str1 != null)
-        {
-          try
-          {
-            JSONObject localJSONObject = new JSONObject(str1);
-            i = localJSONObject.getInt("retcode");
-            if (QLog.isColorLevel()) {
-              QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "OnAfterCreateDiscussionAsyncTask.onPostDownloadComplete : retcode = " + i);
-            }
-            str1 = str3;
-            if (localJSONObject.has("result"))
-            {
-              localJSONObject = localJSONObject.getJSONObject("result");
-              str1 = str3;
-              if (localJSONObject.has("result_code")) {
-                str1 = localJSONObject.getString("result_code");
-              }
-            }
-          }
-          catch (JSONException localJSONException)
-          {
-            Object localObject;
-            if (!QLog.isColorLevel()) {
-              break label368;
-            }
-            QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onPostDownloadComplete : result_code = " + "" + ",retcode = " + -2);
-            str2 = "";
-            i = -2;
-            continue;
-            this.a.jdField_a_of_type_Anks.c(Long.parseLong(this.a.h));
-            this.a.a(1, 0);
-            return;
-          }
-          QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "OnAfterCreateDiscussionAsyncTask, IsSucc[" + parammun.a.jdField_a_of_type_Boolean + "], retcode[" + i + "], result_code[" + str1 + "], mDiscID[" + this.a.h + "]");
-          if ((i == 0) && (str1.equals("0")))
-          {
-            this.a.jdField_a_of_type_Anks.a(Long.parseLong(this.a.h), this.a.c);
-            this.a.a(this.a.h, this.a.c);
-            this.a.finish();
-            return;
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onPostDownloadComplete :" + localException.toString());
-        }
-        localObject = null;
-        continue;
-      }
-      label368:
-      String str2 = "";
-      int i = 1;
-    }
+    AVActivity.a(this.a, false);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadFialed().");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadProgressed(). i = " + paramInt);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    AVActivity.a(this.a, true);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadSuccessed().");
   }
 }
 

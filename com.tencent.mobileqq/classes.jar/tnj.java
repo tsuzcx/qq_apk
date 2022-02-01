@@ -1,36 +1,71 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class tnj
-  implements pea
+class tnj
+  implements ViewBase.OnClickListener
 {
-  public tnj(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
+  tnj(tni paramtni) {}
   
-  public void a(long paramLong, boolean paramBoolean1, int paramInt1, @Nullable String paramString1, @Nullable String paramString2, int paramInt2, boolean paramBoolean2)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (!paramBoolean1) {}
-    try
+    int j = 101;
+    boolean bool2 = false;
+    boolean bool1;
+    int i;
+    if ((this.a.jdField_a_of_type_Tnh.a instanceof ProteusItemData))
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", -2);
-      this.jdField_a_of_type_OrgJsonJSONObject.put("commentId", paramString1);
-      for (;;)
+      bool1 = bool2;
+      i = j;
+      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
-        return;
-        this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", 0);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("commentId", paramString1);
+      default: 
+        bool1 = true;
+        i = -1;
       }
     }
-    catch (JSONException paramString1)
+    while (((i == 4) || (i == 3) || (i == 1000) || (i == 8)) && (tpp.g((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)))
     {
-      for (;;)
-      {
-        QLog.e(BridgeModule.TAG, 1, "handleCommentEditorNativeResult put create comment result error.");
-      }
+      tpp.b(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+      return;
+      ssu.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+      return;
+      bool1 = true;
+      i = 4;
+      continue;
+      bool1 = true;
+      i = 3;
+      continue;
+      i = 5;
+      bool1 = bool2;
+      continue;
+      bool1 = true;
+      i = 8;
+      continue;
+      i = 1000;
+      bool1 = true;
+      continue;
+      i = 102;
+      bool1 = bool2;
+      continue;
+      i = 4;
+      bool1 = bool2;
+      continue;
+      i = 3;
+      bool1 = bool2;
+      continue;
+      bool1 = true;
+      i = j;
+      continue;
+      i = 102;
+      bool1 = true;
+      continue;
+      i = 2;
+      bool1 = true;
     }
+    ssa.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_Tnh.a, bool1, i);
   }
 }
 

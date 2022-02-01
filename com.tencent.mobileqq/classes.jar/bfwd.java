@@ -1,139 +1,243 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ThemeImageView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.ChnToSpell;
 import java.util.ArrayList;
 
 public class bfwd
 {
-  public final int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public final String a;
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int c;
+  public String a;
+  public ArrayList<bfvs> a;
+  public String b;
+  public ArrayList<bfvs> b;
+  public String c;
+  public ArrayList<bfvs> c;
+  public String d;
+  public ArrayList<bfvs> d;
+  public String e;
+  public String f;
+  public String g;
   
-  public bfwd(Context paramContext, String paramString)
+  public bfwd(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_JavaLangString = "RobotMemberFormItem";
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    b();
-    a(paramString);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131561585, null);
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.e = paramString3;
+    this.jdField_c_of_type_JavaLangString = ChnToSpell.a(paramString2, 1).toLowerCase();
+    this.jdField_d_of_type_JavaLangString = ChnToSpell.a(paramString2, 2).toLowerCase();
+    this.f = ChnToSpell.a(paramString3, 1).toLowerCase();
+    this.g = ChnToSpell.a(paramString3, 2).toLowerCase();
+    int j;
+    int i;
+    int k;
+    if (!TextUtils.isEmpty(paramString2))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369777));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376569));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363111));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376278));
-    }
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298759);
-    this.c = this.jdField_b_of_type_Int;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a() {}
-  
-  public void a(AppInterface paramAppInterface, ArrayList<bftw> paramArrayList)
-  {
-    QLog.d("RobotMemberFormItem", 2, "setMemberUinList!");
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      if (this.jdField_b_of_type_AndroidWidgetTextView != null)
+      paramString1 = paramString2.trim();
+      j = paramString1.length();
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(j);
+      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(j);
+      i = 0;
+      while (i < j)
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693993));
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-        if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        }
-      }
-    }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      }
-      int i = 0;
-      while ((i < paramArrayList.size()) && (i < 3))
-      {
-        bftw localbftw = (bftw)paramArrayList.get(i);
-        String str = String.valueOf(localbftw.a());
-        Object localObject = bgmo.a();
-        localObject = aoch.a(paramAppInterface, 1, str, 3, (Drawable)localObject, (Drawable)localObject, 4);
-        ThemeImageView localThemeImageView = new ThemeImageView(this.jdField_a_of_type_AndroidContentContext);
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, this.c);
-        localLayoutParams.leftMargin = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298760);
-        if (localbftw.b()) {
-          ((aoch)localObject).setAlpha(50);
-        }
-        localThemeImageView.setTag(localbftw);
-        localThemeImageView.setLayoutParams(localLayoutParams);
-        localThemeImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        localThemeImageView.setBackgroundDrawable((Drawable)localObject);
-        if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+        k = paramString1.charAt(i);
+        if ((k >= 19968) && (k <= 40869))
         {
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localThemeImageView);
-          QLog.d("RobotMemberFormItem", 2, "add AvatarViews task  " + str);
+          paramString2 = paramString1.substring(i, i + 1);
+          this.jdField_a_of_type_JavaUtilArrayList.add(new bfvs(paramContext, paramString2, ChnToSpell.a(paramString2, 1).toLowerCase()));
+          this.jdField_b_of_type_JavaUtilArrayList.add(new bfvs(paramContext, paramString2, ChnToSpell.a(paramString2, 2).toLowerCase()));
         }
         i += 1;
       }
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      }
-    } while (this.jdField_b_of_type_AndroidWidgetTextView == null);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      if (paramString != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      }
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (!TextUtils.isEmpty(paramString3))
     {
-      if (paramBoolean) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      }
-      for (;;)
+      paramString1 = paramString3.trim();
+      j = paramString1.length();
+      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(j);
+      this.jdField_d_of_type_JavaUtilArrayList = new ArrayList(j);
+      i = 0;
+      while (i < j)
       {
-        QLog.d("RobotMemberFormItem", 2, "setRobotRedDot" + paramBoolean);
-        return;
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        k = paramString1.charAt(i);
+        if ((k >= 19968) && (k <= 40869))
+        {
+          paramString2 = paramString1.substring(i, i + 1);
+          this.jdField_c_of_type_JavaUtilArrayList.add(new bfvs(paramContext, paramString2, ChnToSpell.a(paramString2, 1).toLowerCase()));
+          this.jdField_d_of_type_JavaUtilArrayList.add(new bfvs(paramContext, paramString2, ChnToSpell.a(paramString2, 2).toLowerCase()));
+        }
+        i += 1;
       }
     }
-    QLog.d("RobotMemberFormItem", 2, "mImgRobotRedDoterr");
+  }
+  
+  protected static final int a(int paramInt, String paramString, bfwd parambfwd)
+  {
+    int i = -1;
+    if (paramInt == 5) {
+      i = parambfwd.f.indexOf(paramString);
+    }
+    do
+    {
+      return i;
+      if (paramInt == 6) {
+        return parambfwd.g.indexOf(paramString);
+      }
+      if (paramInt == 2) {
+        return parambfwd.jdField_c_of_type_JavaLangString.indexOf(paramString);
+      }
+    } while (paramInt != 3);
+    return parambfwd.jdField_d_of_type_JavaLangString.indexOf(paramString);
+  }
+  
+  protected static int a(int paramInt, ArrayList<bfvs> paramArrayList)
+  {
+    int k = paramArrayList.size();
+    int i = 0;
+    int j = 0;
+    for (;;)
+    {
+      bfvs localbfvs;
+      if (i < k)
+      {
+        localbfvs = (bfvs)paramArrayList.get(i);
+        if (localbfvs.jdField_a_of_type_Int + j <= paramInt) {}
+      }
+      else
+      {
+        return j;
+      }
+      j += localbfvs.jdField_a_of_type_Int;
+      i += 1;
+    }
+  }
+  
+  protected static final int a(String paramString, bfwd parambfwd)
+  {
+    int j = 0;
+    int i;
+    if ((parambfwd.f != null) && (parambfwd.f.indexOf(paramString) > -1)) {
+      i = 5;
+    }
+    do
+    {
+      do
+      {
+        return i;
+        if ((parambfwd.g != null) && (parambfwd.g.indexOf(paramString) > -1)) {
+          return 6;
+        }
+        if ((parambfwd.jdField_c_of_type_JavaLangString != null) && (parambfwd.jdField_c_of_type_JavaLangString.indexOf(paramString) > -1)) {
+          return 2;
+        }
+        i = j;
+      } while (parambfwd.jdField_d_of_type_JavaLangString == null);
+      i = j;
+    } while (parambfwd.jdField_d_of_type_JavaLangString.indexOf(paramString) <= -1);
+    return 3;
+  }
+  
+  protected static final String a(int paramInt1, int paramInt2, String paramString, bfwd parambfwd)
+  {
+    String str = null;
+    if (paramInt1 == 5) {
+      parambfwd = parambfwd.jdField_c_of_type_JavaUtilArrayList;
+    }
+    for (;;)
+    {
+      if (parambfwd != null)
+      {
+        paramInt1 = paramString.length();
+        str = a(a(paramInt2, parambfwd), b(paramInt1 + paramInt2, parambfwd), parambfwd);
+      }
+      return str;
+      if (paramInt1 == 6) {
+        parambfwd = parambfwd.jdField_d_of_type_JavaUtilArrayList;
+      } else if (paramInt1 == 2) {
+        parambfwd = parambfwd.jdField_a_of_type_JavaUtilArrayList;
+      } else if (paramInt1 == 3) {
+        parambfwd = parambfwd.jdField_b_of_type_JavaUtilArrayList;
+      } else {
+        parambfwd = null;
+      }
+    }
+  }
+  
+  public static String a(int paramInt1, int paramInt2, ArrayList<bfvs> paramArrayList)
+  {
+    int m = paramArrayList.size();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    for (;;)
+    {
+      bfvs localbfvs;
+      if (i < m)
+      {
+        localbfvs = (bfvs)paramArrayList.get(i);
+        if (j == paramInt1) {
+          k = 1;
+        }
+        if (j != paramInt2) {}
+      }
+      else
+      {
+        return localStringBuilder.toString();
+      }
+      if (k != 0) {
+        localStringBuilder.append(localbfvs.jdField_a_of_type_JavaLangString);
+      }
+      j += localbfvs.jdField_a_of_type_Int;
+      i += 1;
+    }
+  }
+  
+  public static final String a(String paramString, bfwd parambfwd)
+  {
+    int i = a(paramString, parambfwd);
+    int j = a(i, paramString, parambfwd);
+    String str = null;
+    if (((j == 0) && (i == 5) && (paramString.equalsIgnoreCase(parambfwd.f))) || ((i == 6) && (paramString.equalsIgnoreCase(parambfwd.g)))) {
+      str = parambfwd.e;
+    }
+    do
+    {
+      return str;
+      if (((j == 0) && (i == 2) && (paramString.equalsIgnoreCase(parambfwd.jdField_c_of_type_JavaLangString))) || ((i == 3) && (paramString.equalsIgnoreCase(parambfwd.jdField_d_of_type_JavaLangString)))) {
+        return parambfwd.jdField_b_of_type_JavaLangString;
+      }
+    } while (j <= -1);
+    return a(i, j, paramString, parambfwd);
+  }
+  
+  protected static int b(int paramInt, ArrayList<bfvs> paramArrayList)
+  {
+    int k = paramArrayList.size();
+    int i = 0;
+    int j = 0;
+    while (i < k)
+    {
+      j = ((bfvs)paramArrayList.get(i)).jdField_a_of_type_Int + j;
+      if (j >= paramInt) {
+        return j;
+      }
+      i += 1;
+    }
+    return j;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      localStringBuilder.append("uin = " + this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_b_of_type_JavaLangString != null) {
+      localStringBuilder.append(", name = " + this.jdField_b_of_type_JavaLangString);
+    }
+    if (this.e != null) {
+      localStringBuilder.append(", remark = " + this.e);
+    }
+    return localStringBuilder.toString();
   }
 }
 

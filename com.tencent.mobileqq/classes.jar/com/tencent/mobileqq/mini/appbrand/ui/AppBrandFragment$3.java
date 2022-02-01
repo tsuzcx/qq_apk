@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import bgmo;
+import bhmq;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -33,7 +33,7 @@ class AppBrandFragment$3
         ((RoundedBitmapDrawable)localObject).setAntiAlias(true);
         if (Build.VERSION.SDK_INT >= 21)
         {
-          localObject = new ActivityManager.TaskDescription(this.val$miniConfig.config.name, bgmo.b((Drawable)localObject));
+          localObject = new ActivityManager.TaskDescription(this.val$miniConfig.config.name, bhmq.b((Drawable)localObject));
           this.val$activity.setTaskDescription((ActivityManager.TaskDescription)localObject);
         }
         if (!localBitmap.isRecycled()) {

@@ -1,8 +1,14 @@
-public abstract interface bphi
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+
+public class bphi
+  implements bphx
 {
-  public abstract void a(int paramInt);
+  public bphi(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public abstract void a(bphh parambphh);
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    return paramInt1 != paramInt2;
+  }
 }
 
 

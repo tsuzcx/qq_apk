@@ -1,22 +1,25 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-class osc
-  extends rux
+public class osc
+  implements ovw
 {
-  osc(osb paramosb) {}
+  public osc(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public void a(sfb paramsfb)
+  public void a(int paramInt)
   {
-    super.a(paramsfb);
-    QLog.d("KandianAdPandent", 2, "onCompletion");
-    osb.a(this.a).sendEmptyMessage(2);
-  }
-  
-  public void a(sfb paramsfb, Object paramObject)
-  {
-    QLog.d("KandianAdPandent", 2, "onVideoPrepared");
-    osb.a(this.a).d();
+    if (paramInt != 2) {
+      this.a.d();
+    }
+    paa localpaa1 = new paa();
+    paa localpaa2 = localpaa1.i().b("rowkey", ReadInJoyCommentListFragment.a(this.a).innerUniqueID).b("entry", "2");
+    if (paramInt == 2) {}
+    for (String str = "1";; str = "0")
+    {
+      localpaa2.b("result", str);
+      osp.a("0X800A00F", ReadInJoyCommentListFragment.a(this.a), localpaa1);
+      return;
+    }
   }
 }
 

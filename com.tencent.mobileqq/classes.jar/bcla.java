@@ -1,19 +1,16 @@
-import com.tencent.maxvideo.common.AVIOStruct;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.List;
 
-public class bcla
+class bcla
 {
-  public int a;
-  public bcjc a;
-  public bclv a;
-  public AVIOStruct a;
-  public AtomicReference<SVHwEncoder> a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  String jdField_a_of_type_JavaLangString;
+  List<bcfn> jdField_a_of_type_JavaUtilList;
+  
+  public bcla(String paramString, List<bcfn> paramList)
+  {
+    this.jdField_a_of_type_JavaLangString = paramList;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
 }
 
 

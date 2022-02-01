@@ -1,29 +1,18 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-abstract class ahbl<T extends afxi>
+class ahbl
+  extends agen
 {
-  private T a;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  View d;
   
-  private ahbl(agwz paramagwz) {}
-  
-  protected abstract T a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter);
-  
-  protected boolean a()
-  {
-    return true;
-  }
-  
-  protected T b(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    if (this.a == null) {
-      this.a = a(paramChatMessage, paramBaseAdapter);
-    }
-    if (a()) {
-      this.b.a(this.a, paramBaseAdapter);
-    }
-    return this.a;
-  }
+  ahbl(ahbk paramahbk) {}
 }
 
 

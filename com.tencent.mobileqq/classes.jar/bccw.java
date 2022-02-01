@@ -1,20 +1,17 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.servlet.QZoneManagerImp.1.1;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.search.fragment.SearchEntryFragment;
 
 public class bccw
-  extends ContentObserver
+  implements View.OnTouchListener
 {
-  bccw(bccv parambccv, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  public bccw(SearchEntryFragment paramSearchEntryFragment) {}
   
-  public void onChange(boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.onChange(paramBoolean);
-    ThreadManager.post(new QZoneManagerImp.1.1(this), 8, null, true);
+    SearchEntryFragment.a(this.a);
+    return false;
   }
 }
 

@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.part.QIMTemplateItem;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public final class bony
-  implements Parcelable.Creator<QIMTemplateItem>
+public class bony
+  extends RecyclerView.ViewHolder
 {
-  public QIMTemplateItem a(Parcel paramParcel)
-  {
-    return new QIMTemplateItem(paramParcel);
-  }
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView b;
   
-  public QIMTemplateItem[] a(int paramInt)
+  public bony(View paramView)
   {
-    return new QIMTemplateItem[paramInt];
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368212));
+    this.b = ((ImageView)paramView.findViewById(2131368606));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366659));
   }
 }
 

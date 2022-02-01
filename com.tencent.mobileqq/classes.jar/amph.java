@@ -1,15 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
 class amph
-  implements EIPCResultCallback
+  implements View.OnTouchListener
 {
-  amph(ampb paramampb) {}
+  amph(ampf paramampf) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow onDressChanged send!");
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramView instanceof ImageView))
+      {
+        ((ImageView)paramView).getDrawable().setColorFilter(855638016, PorterDuff.Mode.SRC_ATOP);
+        continue;
+        if ((paramView instanceof ImageView)) {
+          ((ImageView)paramView).getDrawable().clearColorFilter();
+        }
+      }
+    }
   }
 }
 

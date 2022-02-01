@@ -1,91 +1,99 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Paint;
+import android.text.TextUtils;
+import android.util.Pair;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class aqzc
-  extends aqkz<aqzb>
 {
-  @NonNull
-  public aqzb a(int paramInt)
+  public static int a;
+  private static Paint a;
+  public static Random a;
+  
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("TroopRobotConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new aqzb();
+    jdField_a_of_type_Int = 12;
+    jdField_a_of_type_JavaUtilRandom = new Random();
+    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   }
   
-  @Nullable
-  public aqzb a(aqlg[] paramArrayOfaqlg)
+  public static float a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopRobotConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    if (!TextUtils.isEmpty(paramString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopRobotConfProcessor", 2, "onParsed " + paramArrayOfaqlg.length);
-      }
-      return aqzb.a(paramArrayOfaqlg[0]);
+      jdField_a_of_type_AndroidGraphicsPaint.setTextSize(36.0F);
+      return jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString) / 36.0F;
     }
-    return null;
+    return 1.0F;
   }
   
-  public void a(aqzb paramaqzb)
+  private static boolean a(int paramInt)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    return ((paramInt >= 19968) && (paramInt <= 40959)) || (paramInt == 65292) || (paramInt == 12290) || (paramInt == 65281) || (paramInt == 8220) || (paramInt == 8221) || (paramInt == 65288) || (paramInt == 65289) || (paramInt == 126) || (paramInt == 65311);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    int i = 0;
+    for (;;)
     {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramaqzb == null) {
-        break label58;
+      if (i >= paramString.length()) {
+        break label37;
       }
-    }
-    label58:
-    for (String str = paramaqzb.toString();; str = " empty")
-    {
-      QLog.d("TroopRobotConfProcessor", 2, str);
-      if (paramaqzb != null) {
-        bfpx.a(paramaqzb.a(), paramaqzb.a());
+      if (!a(paramString.codePointAt(i))) {
+        break;
       }
-      return;
+      i += 1;
     }
-  }
-  
-  public Class<aqzb> clazz()
-  {
-    return aqzb.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
+    label37:
     return true;
   }
   
-  public boolean isNeedStoreLargeFile()
+  private static boolean b(String paramString, ArrayList<Pair<String, Float>> paramArrayList)
   {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TroopRobotConfProcessor", 2, "onReqFailed " + paramInt);
+    paramString = paramString.trim();
+    int j = -1;
+    boolean bool = true;
+    int i = 0;
+    if (i < paramString.length())
+    {
+      String str;
+      if (a(paramString.codePointAt(i)))
+      {
+        str = paramString.substring(i, i + 1);
+        paramArrayList.add(new Pair(str, Float.valueOf(a(str))));
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        int k = j;
+        if (j == -1) {
+          k = i;
+        }
+        if (i + 1 < paramString.length())
+        {
+          j = k;
+          if (!a(paramString.codePointAt(i + 1))) {}
+        }
+        else
+        {
+          str = paramString.substring(k, i + 1);
+          paramArrayList.add(new Pair(str, Float.valueOf(a(str))));
+          j = -1;
+        }
+        bool = false;
+      }
     }
-  }
-  
-  public int type()
-  {
-    return 460;
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqzc
  * JD-Core Version:    0.7.0.1
  */

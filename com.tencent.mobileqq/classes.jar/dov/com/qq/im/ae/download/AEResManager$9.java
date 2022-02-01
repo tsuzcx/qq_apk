@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.download;
 
-import bnpu;
+import borg;
 
 public class AEResManager$9
   implements Runnable
 {
-  public AEResManager$9(bnpu parambnpu) {}
+  public AEResManager$9(borg paramborg) {}
   
   public void run()
   {
-    bnpu.a(this.this$0, false);
+    borg.a(this.this$0, false);
   }
 }
 

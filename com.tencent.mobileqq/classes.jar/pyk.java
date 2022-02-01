@@ -1,44 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class pyk
+class pyk
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  pyk(pyi parampyi, Context paramContext, ArticleInfo paramArticleInfo) {}
   
-  public JSONObject a()
+  public void onClick(View paramView)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("businessId", this.jdField_a_of_type_Int);
-      localJSONObject.put("businessType", this.jdField_b_of_type_Int);
-      localJSONObject.put("businessName", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("jumpUrl", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("businessIconUrl", this.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("fansCount", this.jdField_c_of_type_Int);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("SelfInfoModule", 1, "toJson error. " + localJSONException);
-    }
-    return localJSONObject;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Int = paramJSONObject.getInt("businessId");
-    this.jdField_b_of_type_Int = paramJSONObject.getInt("businessType");
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("businessName");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("jumpUrl");
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("businessIconUrl");
-    this.jdField_c_of_type_Int = paramJSONObject.getInt("fansCount");
+    ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2, false, 6, false);
+    sel.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

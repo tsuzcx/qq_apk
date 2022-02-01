@@ -5,7 +5,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView.ScaleType;
-import bgtn;
+import bhtq;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -15,8 +15,8 @@ import java.util.ArrayList;
 public class QzoneMsgPagerAdapter
   extends PagerAdapter
 {
-  private static final int jdField_a_of_type_Int = bgtn.a() - bgtn.b(24.0F);
-  private static final int jdField_b_of_type_Int = bgtn.b(230.0F);
+  private static final int jdField_a_of_type_Int = bhtq.a() - bhtq.b(24.0F);
+  private static final int jdField_b_of_type_Int = bhtq.b(230.0F);
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
   private ArrayList<AnyScaleTypeImageView> jdField_b_of_type_JavaUtilArrayList;
   

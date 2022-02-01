@@ -1,31 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class bgaa
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public bgaa(TroopInteractGiftAnimationController.1.1 param1) {}
+  public bgaa(PublishHomeWorkFragment paramPublishHomeWorkFragment, FormSwitchItem paramFormSwitchItem, CompoundButton paramCompoundButton) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.this$0.b();
-    bfzz localbfzz = this.a.a.this$0;
-    localbfzz.jdField_a_of_type_Int += 1;
-    if (this.a.a.this$0.jdField_a_of_type_Boolean)
-    {
-      this.a.a.this$0.jdField_a_of_type_Boolean = false;
-      this.a.a.this$0.a(this.a.a.a, this.a.a.a.frienduin, this.a.a.a.interactId, this.a.a.a.animationPackageId, this.a.a.this$0.jdField_a_of_type_Int, false);
-    }
-    if (this.a.a.this$0.jdField_a_of_type_Int % 5 == 0) {
-      this.a.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a(this.a.a.a.animationPackageId + "");
-    }
-    bcst.b(null, "dc00899", "Grp_flower", "", "inter_gift", "clk_ball", 0, 0, this.a.a.a.frienduin, "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(false);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.e = false;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.d = false;
+    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
   }
 }
 

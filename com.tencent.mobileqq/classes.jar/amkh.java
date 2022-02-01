@@ -1,8 +1,31 @@
-public abstract interface amkh
+import android.view.View;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+
+public class amkh
+  implements Animation.AnimationListener
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  public amkh(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public abstract void a(int paramInt, String paramString);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.c.clearAnimation();
+    ((FrameLayout)this.a.getWindow().getDecorView()).removeView(this.a.c);
+    this.a.c = null;
+    if (this.a.a != null)
+    {
+      this.a.a.a();
+      this.a.a = null;
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

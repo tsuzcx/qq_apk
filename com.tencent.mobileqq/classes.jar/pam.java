@@ -1,21 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.config.AladdinListener;
+import java.util.ArrayList;
 
 public class pam
-  implements pco
 {
-  public pam(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
+  public static ArrayList<AladdinListener> a = new ArrayList();
   
-  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<pay> paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
-  
-  public void onCommentStateError(int paramInt)
+  public static void a(AladdinListener paramAladdinListener)
   {
-    if (paramInt == 1002) {
-      ReadInJoySecondCommentListFragment.a(this.a, true);
-    }
-    if (paramInt == 1003) {
-      zvc.a(1, 2131716930);
-    }
+    a.add(paramAladdinListener);
+  }
+  
+  public static void b(AladdinListener paramAladdinListener)
+  {
+    a.remove(paramAladdinListener);
   }
 }
 

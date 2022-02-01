@@ -1,11 +1,11 @@
 package com.tencent.biz.webviewplugin;
 
-import abdc;
+import abhf;
 
 public class UrlCheckPlugin$4
   implements Runnable
 {
-  public UrlCheckPlugin$4(abdc paramabdc) {}
+  public UrlCheckPlugin$4(abhf paramabhf) {}
   
   public void run()
   {

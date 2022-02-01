@@ -1,70 +1,89 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import tencent.im.oidb.cmd0x6b5.oidb_0x6b5.Player;
-import tencent.im.oidb.cmd0x6b5.oidb_0x6b5.RspBody;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody.Item;
+import tencent.im.cs.cmd0x383.cmd0x383.ApplyGetFileListRspBody.FileInfo;
 
-class bfsx
-  extends niu
+public class bfsx
 {
-  bfsx(bfst parambfst, bfss parambfss, String paramString1, String paramString2) {}
+  public long a;
+  public bfrs a;
+  public String a;
+  public ArrayList<String> a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public bfsx(QQAppInterface paramQQAppInterface, cmd0x383.ApplyFileSearchRspBody.Item paramItem)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null) || (this.jdField_a_of_type_Bfss == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_oidb_0x6b5. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Bfss);
-      }
-      if (this.jdField_a_of_type_Bfss != null) {
-        this.jdField_a_of_type_Bfss.a(paramInt, "sso request error or callback is null.");
-      }
+    if (paramItem == null) {
       return;
     }
-    oidb_0x6b5.RspBody localRspBody;
-    try
+    this.jdField_a_of_type_Long = paramItem.uint64_group_code.get();
+    this.jdField_a_of_type_JavaLangString = paramItem.bytes_group_name.get().toStringUtf8();
+    this.jdField_b_of_type_Long = paramItem.uint64_upload_uin.get();
+    this.jdField_b_of_type_JavaLangString = paramItem.bytes_uploader_nick_name.get().toStringUtf8();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    List localList = paramItem.bytes_match_word.get();
+    if (localList != null)
     {
-      localRspBody = new oidb_0x6b5.RspBody();
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramInt = localRspBody.uint32_result.get();
-      if ((paramInt != 0) || (paramBundle == null)) {
-        break label376;
-      }
-      paramInt = paramBundle.getInt("subCmd");
-      if ((paramInt == 0) && (localRspBody.msg_grab_result.has()))
+      int i = 0;
+      while (i < localList.size())
       {
-        paramArrayOfByte = (oidb_0x6b5.Player)localRspBody.msg_grab_result.get();
-        paramBundle = this.jdField_a_of_type_JavaLangString + "_" + this.b;
-        paramBundle = (TroopGiftBagInfo)this.jdField_a_of_type_Bfst.a.get(paramBundle);
-        if (paramBundle != null)
-        {
-          paramBundle.myGrabResult = new beub(paramArrayOfByte.uint64_uin.get(), paramArrayOfByte.uint64_time.get(), paramArrayOfByte.int32_amount.get(), paramArrayOfByte.int32_index.get(), paramArrayOfByte.bytes_tips.get().toStringUtf8());
-          this.jdField_a_of_type_Bfst.a(paramBundle);
-        }
-        this.jdField_a_of_type_Bfss.a(paramArrayOfByte.uint64_uin.get(), paramArrayOfByte.uint64_time.get(), paramArrayOfByte.int32_amount.get(), paramArrayOfByte.int32_index.get(), paramArrayOfByte.bytes_tips.get().toStringUtf8());
-        return;
+        this.jdField_a_of_type_JavaUtilArrayList.add(((ByteStringMicro)localList.get(i)).toStringUtf8());
+        i += 1;
       }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    this.jdField_c_of_type_Long = paramItem.uint64_match_uin.get();
+    if (this.jdField_c_of_type_Long > 0L)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_oidb_0x6b5. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
+      paramQQAppInterface = ((anyw)paramQQAppInterface.getManager(51)).e(String.valueOf(this.jdField_c_of_type_Long));
+      if (paramQQAppInterface != null)
+      {
+        this.jdField_c_of_type_JavaLangString = paramQQAppInterface.name;
+        this.d = paramQQAppInterface.remark;
       }
-      this.jdField_a_of_type_Bfss.a(-1, "InvalidProtocolBufferMicroException");
-      return;
     }
-    this.jdField_a_of_type_Bfss.a(-1, "Invalid RspData. subCmd:" + paramInt);
-    return;
-    label376:
-    paramArrayOfByte = localRspBody.bytes_errmsg.get().toStringUtf8();
-    this.jdField_a_of_type_Bfss.a(paramInt, paramArrayOfByte);
+    this.jdField_a_of_type_Bfrs = new bfrs((cmd0x383.ApplyGetFileListRspBody.FileInfo)paramItem.file_info.get());
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("groupCode = " + this.jdField_a_of_type_Long);
+    localStringBuilder.append(", groupName = " + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", uploaderUin = " + this.jdField_b_of_type_Long);
+    localStringBuilder.append(", uploaderNickName = " + this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", matchUin = " + this.jdField_c_of_type_Long);
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      localStringBuilder.append(", matchWord: = ");
+      int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+      int i = 0;
+      if (i < j)
+      {
+        if (i == j - 1) {
+          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i) + ", ");
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i)).append("、 ");
+        }
+      }
+    }
+    if (this.jdField_a_of_type_Bfrs != null) {
+      localStringBuilder.append(", fileInfo = " + this.jdField_a_of_type_Bfrs.toString());
+    }
+    return localStringBuilder.toString();
   }
 }
 

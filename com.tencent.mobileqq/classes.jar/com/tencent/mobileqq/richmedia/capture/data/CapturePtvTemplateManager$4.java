@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import bamd;
-import bcls;
-import bgnt;
+import bbew;
+import bdek;
+import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -10,13 +10,13 @@ import com.tencent.qphone.base.util.QLog;
 public class CapturePtvTemplateManager$4
   implements Runnable
 {
-  public CapturePtvTemplateManager$4(bamd parambamd) {}
+  public CapturePtvTemplateManager$4(bbew parambbew) {}
   
   public void run()
   {
     int i = 1;
-    boolean bool1 = bcls.a();
-    boolean bool2 = bgnt.d(BaseApplication.getContext());
+    boolean bool1 = bdek.a();
+    boolean bool2 = bhnv.d(BaseApplication.getContext());
     if (BaseApplicationImpl.sProcessId == 1) {
       i = 0;
     }

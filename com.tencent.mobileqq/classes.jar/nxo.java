@@ -1,194 +1,203 @@
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.log.VipWebViewReportLog;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage.MessageLevel;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
+import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.MobileQQ;
-import mqq.manager.Manager;
 
 public class nxo
-  implements Manager, tdu
+  extends WebChromeClient
 {
-  private int jdField_a_of_type_Int;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private tdw jdField_a_of_type_Tdw;
-  private int b;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  bhpc jdField_a_of_type_Bhpc;
+  String jdField_a_of_type_JavaLangString = "";
+  public boolean a;
   
-  public nxo(QQAppInterface paramQQAppInterface)
+  private String a(Context paramContext, String paramString)
   {
-    paramQQAppInterface = (WindowManager)paramQQAppInterface.getApplication().getSystemService("window");
-    if (paramQQAppInterface != null)
-    {
-      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-      paramQQAppInterface.getDefaultDisplay().getMetrics(localDisplayMetrics);
-      this.jdField_a_of_type_Int = localDisplayMetrics.widthPixels;
-      this.b = localDisplayMetrics.heightPixels;
-      if (QLog.isColorLevel()) {
-        QLog.d("NativeAdPreloadManager", 2, "createManager width:" + localDisplayMetrics.widthPixels + ", height:" + localDisplayMetrics.heightPixels);
-      }
+    if (paramString == null) {
+      return null;
     }
-    bivr.a();
-  }
-  
-  private void b()
-  {
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        String str1;
-        if ((this.jdField_a_of_type_Tdw == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-          str1 = (String)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-        }
-        try
-        {
-          Object localObject2 = new URL(str1);
-          if (tdv.a().a((URL)localObject2))
-          {
-            b();
-            if (QLog.isColorLevel()) {
-              QLog.d("NativeAdPreloadManager", 2, "startImageDownload url:" + str1 + ", file exist!");
-            }
-            return;
-          }
-          this.jdField_a_of_type_Tdw = new tdw();
-          this.jdField_a_of_type_Tdw.jdField_a_of_type_JavaNetURL = ((URL)localObject2);
-          this.jdField_a_of_type_Tdw.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-          this.jdField_a_of_type_Tdw.b = this.b;
-          localObject2 = tdv.a().a(this.jdField_a_of_type_Tdw);
-          if (localObject2 != null)
-          {
-            ((tds)localObject2).a();
-            this.jdField_a_of_type_Tdw = null;
-            b();
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("NativeAdPreloadManager", 2, "startImageDownload url:" + str1 + ", bitmap cached!");
-            continue;
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-          continue;
-        }
-      }
-      tdv.a().a(this.jdField_a_of_type_Tdw, this);
-      if (QLog.isColorLevel()) {
-        QLog.d("NativeAdPreloadManager", 2, "startImageDownload url:" + str2 + ", begin load!");
-      }
+    if (paramString.startsWith("data:")) {
+      return paramContext.getString(2131693169);
     }
+    try
+    {
+      paramContext = new URL(paramString).getHost();
+      return paramContext;
+    }
+    catch (MalformedURLException paramContext) {}
+    return paramString;
   }
   
   public void a()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList != null)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        if (QLog.isColorLevel()) {
-          QLog.d("NativeAdPreloadManager", 2, "clearPreloadList");
-        }
-      }
-      return;
+    if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {
+      this.jdField_a_of_type_Bhpc.cancel();
     }
   }
   
-  public void a(String paramString)
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!TextUtils.isEmpty(paramString)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)))
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        if (QLog.isColorLevel()) {
-          QLog.d("NativeAdPreloadManager", 2, "addImageToPreload url:" + paramString);
-        }
-        b();
-      }
-      while (!QLog.isColorLevel()) {
-        return;
-      }
-      QLog.d("NativeAdPreloadManager", 2, "addImageToPreload url:" + paramString + ", skip");
+    super.onConsoleMessage(paramConsoleMessage);
+    VipWebViewReportLog.a(paramConsoleMessage);
+    Object localObject2;
+    if (((this.jdField_a_of_type_Boolean) && (paramConsoleMessage.messageLevel() == ConsoleMessage.MessageLevel.ERROR)) || (QLog.isColorLevel())) {
+      localObject2 = "";
     }
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
     for (;;)
     {
-      String str;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      try
       {
-        if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramArrayList == null) || (paramArrayList.size() <= 0)) {
-          break label158;
+        if (paramConsoleMessage.messageLevel() != null) {
+          localObject2 = "" + "messageLevel =" + paramConsoleMessage.messageLevel().toString();
         }
-        paramArrayList = paramArrayList.iterator();
-        if (!paramArrayList.hasNext()) {
-          break;
+        localObject1 = localObject2;
+        if (paramConsoleMessage.sourceId() != null) {
+          localObject1 = (String)localObject2 + ", sourceId=" + paramConsoleMessage.sourceId();
         }
-        str = (String)paramArrayList.next();
-        if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(str)))
+        localObject2 = localObject1;
+        if (paramConsoleMessage.lineNumber() != 0) {
+          localObject2 = (String)localObject1 + ", lineNumber=" + paramConsoleMessage.lineNumber();
+        }
+        localObject1 = localObject2;
+        if (paramConsoleMessage.message() != null) {
+          localObject1 = (String)localObject2 + ", message=" + paramConsoleMessage.message();
+        }
+        if (paramConsoleMessage.messageLevel() != ConsoleMessage.MessageLevel.ERROR) {
+          continue;
+        }
+        if ((System.currentTimeMillis() - this.jdField_a_of_type_Long > 60000L) || (!((String)localObject1).equals(this.jdField_a_of_type_JavaLangString)))
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("NativeAdPreloadManager", 2, "addImagesToPreload url:" + str);
+          QLog.e("WEBVIEWCHECK", 1, "CustomWebChromeClient onConsoleMessage:" + (String)localObject1);
+          this.jdField_a_of_type_JavaLangString = ((String)localObject1);
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
         }
       }
+      catch (Exception paramConsoleMessage)
+      {
+        Object localObject1;
+        paramConsoleMessage.printStackTrace();
+        continue;
+      }
       if (QLog.isColorLevel()) {
-        QLog.d("NativeAdPreloadManager", 2, "addImagesToPreload url:" + str + ", skip");
+        break label357;
+      }
+      return true;
+      if ((System.currentTimeMillis() - this.jdField_a_of_type_Long > 180000L) || (!((String)localObject1).equals(this.jdField_a_of_type_JavaLangString)))
+      {
+        QLog.d("WEBVIEWCHECK", 2, "CustomWebChromeClient onConsoleMessage:" + (String)localObject1);
+        this.jdField_a_of_type_JavaLangString = ((String)localObject1);
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
       }
     }
-    b();
-    label158:
+    label357:
+    return false;
   }
   
-  public void a(tdw paramtdw, int paramInt) {}
-  
-  public void a(tdw paramtdw, Throwable paramThrowable)
+  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeAdPreloadManager", 2, "onFail url:" + paramtdw.jdField_a_of_type_JavaNetURL.toString());
-    }
-    if (paramtdw.equals(this.jdField_a_of_type_Tdw))
+    Context localContext = paramWebView.getContext();
+    if (((localContext instanceof Activity)) && (!((Activity)localContext).isFinishing()) && ((!(paramWebView instanceof CustomWebView)) || (!((CustomWebView)paramWebView).isPaused)))
     {
-      this.jdField_a_of_type_Tdw = null;
-      b();
-    }
-  }
-  
-  public void a(tdw paramtdw, tds paramtds)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeAdPreloadManager", 2, "onSuccess url:" + paramtdw.jdField_a_of_type_JavaNetURL.toString());
-    }
-    if (paramtdw.equals(this.jdField_a_of_type_Tdw))
-    {
-      this.jdField_a_of_type_Tdw = null;
-      b();
-    }
-  }
-  
-  public void onDestroy()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_Tdw = null;
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      if (QLog.isColorLevel()) {
-        QLog.d("NativeAdPreloadManager", 2, "onDestroy");
+      if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {
+        this.jdField_a_of_type_Bhpc.dismiss();
       }
-      return;
+      this.jdField_a_of_type_Bhpc = bhlq.a(localContext, 0);
+      this.jdField_a_of_type_Bhpc.setTitle(a(localContext, paramString1));
+      this.jdField_a_of_type_Bhpc.setMessage(paramString2);
+      this.jdField_a_of_type_Bhpc.setPositiveButton(2131694098, new nxp(this, paramJsResult));
+      if (this.jdField_a_of_type_Int > 2) {
+        this.jdField_a_of_type_Bhpc.setNegativeButton(localContext.getString(2131690550), localContext.getResources().getColor(2131165367), new nxs(this, paramJsResult, localContext));
+      }
+      this.jdField_a_of_type_Bhpc.setOnCancelListener(new nxt(this, paramJsResult, localContext));
+      this.jdField_a_of_type_Bhpc.show();
+      this.jdField_a_of_type_Int += 1;
+      return true;
     }
+    paramJsResult.cancel();
+    return true;
+  }
+  
+  public boolean onJsBeforeUnload(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    paramString1 = paramWebView.getContext();
+    if (((paramString1 instanceof Activity)) && (!((Activity)paramString1).isFinishing()) && ((!(paramWebView instanceof CustomWebView)) || (!((CustomWebView)paramWebView).isPaused)))
+    {
+      if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {
+        this.jdField_a_of_type_Bhpc.dismiss();
+      }
+      this.jdField_a_of_type_Bhpc = bhlq.a(paramString1, 0);
+      this.jdField_a_of_type_Bhpc.setTitle(2131693168);
+      this.jdField_a_of_type_Bhpc.setMessage(paramString2);
+      this.jdField_a_of_type_Bhpc.setPositiveButton(2131690485, new nxy(this, paramJsResult));
+      if (this.jdField_a_of_type_Int > 2) {
+        this.jdField_a_of_type_Bhpc.setNegativeButton(paramString1.getString(2131690550), paramString1.getResources().getColor(2131165367), new nxz(this, paramJsResult, paramString1));
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Bhpc.setOnCancelListener(new nxr(this, paramJsResult, paramString1));
+        this.jdField_a_of_type_Bhpc.show();
+        return true;
+        this.jdField_a_of_type_Bhpc.setNegativeButton(2131690484, new nxq(this, paramJsResult));
+      }
+    }
+    paramJsResult.cancel();
+    return true;
+  }
+  
+  public boolean onJsConfirm(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    Context localContext = paramWebView.getContext();
+    if (((localContext instanceof Activity)) && (!((Activity)localContext).isFinishing()) && ((!(paramWebView instanceof CustomWebView)) || (!((CustomWebView)paramWebView).isPaused)))
+    {
+      if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {
+        this.jdField_a_of_type_Bhpc.dismiss();
+      }
+      this.jdField_a_of_type_Bhpc = bhlq.a(localContext, 0);
+      this.jdField_a_of_type_Bhpc.setTitle(a(localContext, paramString1));
+      this.jdField_a_of_type_Bhpc.setMessage(paramString2);
+      this.jdField_a_of_type_Bhpc.setPositiveButton(2131694098, new nxu(this, paramJsResult));
+      if (this.jdField_a_of_type_Int > 2) {
+        this.jdField_a_of_type_Bhpc.setNegativeButton(localContext.getString(2131690550), localContext.getResources().getColor(2131165367), new nxv(this, paramJsResult, localContext));
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Bhpc.setOnCancelListener(new nxx(this, paramJsResult, localContext));
+        this.jdField_a_of_type_Bhpc.show();
+        return true;
+        this.jdField_a_of_type_Bhpc.setNegativeButton(2131690580, new nxw(this, paramJsResult));
+      }
+    }
+    paramJsResult.cancel();
+    return true;
+  }
+  
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  {
+    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
+      return true;
+    }
+    paramJsPromptResult.cancel();
+    return true;
+  }
+  
+  @Override
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
+    super.onProgressChanged(paramWebView, paramInt);
   }
 }
 

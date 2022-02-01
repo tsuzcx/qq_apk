@@ -1,21 +1,21 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.graphics.PointF;
-import android.widget.ImageView;
-import com.tencent.biz.qqcircle.manager.QCircleFuelAnimationManager.1;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.qqcircle.fragments.main.QCircleFolderRcmdTabFragment;
 
 public class voh
-  extends AnimatorListenerAdapter
+  extends RecyclerView.OnScrollListener
 {
-  public voh(QCircleFuelAnimationManager.1 param1, PointF paramPointF) {}
+  public voh(QCircleFolderRcmdTabFragment paramQCircleFolderRcmdTabFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.jdField_a_of_type_ComTencentBizQqcircleManagerQCircleFuelAnimationManager$1.b.setVisibility(4);
-    this.jdField_a_of_type_ComTencentBizQqcircleManagerQCircleFuelAnimationManager$1.b.setX(this.jdField_a_of_type_AndroidGraphicsPointF.x);
-    this.jdField_a_of_type_ComTencentBizQqcircleManagerQCircleFuelAnimationManager$1.b.setY(this.jdField_a_of_type_AndroidGraphicsPointF.y + bgtn.a(5.0F));
-    this.jdField_a_of_type_ComTencentBizQqcircleManagerQCircleFuelAnimationManager$1.b.clearAnimation();
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
+    {
+      adlb.a().a("qcircle_all_push_tab_page", false);
+      return;
+    }
+    adlb.a().a("qcircle_all_push_tab_page");
   }
 }
 

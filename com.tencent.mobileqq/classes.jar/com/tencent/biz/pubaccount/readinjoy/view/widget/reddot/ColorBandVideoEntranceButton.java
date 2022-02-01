@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.widget.reddot;
 
-import afur;
+import agej;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
@@ -24,8 +24,8 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bggq;
-import bmqa;
+import bhgr;
+import bnrf;
 import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
 import com.tencent.image.AbstractGifImage;
@@ -42,26 +42,25 @@ import java.net.URL;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import mqq.app.AppRuntime;
-import pha;
-import pmk;
-import pmn;
-import rcr;
-import rdd;
-import rdq;
-import tjz;
-import tka;
-import tkb;
-import tkc;
-import tkd;
-import tke;
-import tkf;
-import tkg;
-import txa;
-import uad;
+import ozs;
+import pfd;
+import pfh;
+import qtk;
+import qtw;
+import quj;
+import tat;
+import tau;
+import tav;
+import taw;
+import tax;
+import tay;
+import taz;
+import txc;
+import uaf;
 
 public class ColorBandVideoEntranceButton
   extends FrameLayout
-  implements View.OnClickListener, URLDrawable.URLDrawableListener2, rdq
+  implements View.OnClickListener, URLDrawable.URLDrawableListener2, quj
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
@@ -77,9 +76,9 @@ public class ColorBandVideoEntranceButton
   private ApngDrawable.OnPlayRepeatListener jdField_a_of_type_ComTencentImageApngDrawable$OnPlayRepeatListener;
   protected URLDrawable a;
   Runnable jdField_a_of_type_JavaLangRunnable = new ColorBandVideoEntranceButton.7(this);
-  private Function1<Canvas, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1 = new tkd(this);
-  pmn jdField_a_of_type_Pmn = new tkb(this);
-  private tkf jdField_a_of_type_Tkf;
+  private Function1<Canvas, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1 = new taw(this);
+  pfh jdField_a_of_type_Pfh = new tau(this);
+  private tay jdField_a_of_type_Tay;
   public boolean a;
   private int jdField_b_of_type_Int;
   Animator jdField_b_of_type_AndroidAnimationAnimator;
@@ -88,12 +87,13 @@ public class ColorBandVideoEntranceButton
   protected ImageView b;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private KanDianUrlRoundCornerImageView jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
+  protected KanDianUrlRoundCornerImageView b;
   private URLDrawable jdField_b_of_type_ComTencentImageURLDrawable;
-  private Function1<Canvas, Unit> jdField_b_of_type_KotlinJvmFunctionsFunction1 = new tke(this);
+  private Function1<Canvas, Unit> jdField_b_of_type_KotlinJvmFunctionsFunction1 = new tax(this);
   private boolean jdField_b_of_type_Boolean;
   Animator jdField_c_of_type_AndroidAnimationAnimator;
   private ImageView jdField_c_of_type_AndroidWidgetImageView;
+  private KanDianUrlRoundCornerImageView jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
   private boolean jdField_c_of_type_Boolean;
   Animator jdField_d_of_type_AndroidAnimationAnimator;
   private ImageView jdField_d_of_type_AndroidWidgetImageView;
@@ -117,7 +117,7 @@ public class ColorBandVideoEntranceButton
   private Drawable a()
   {
     if (!this.jdField_a_of_type_Boolean) {}
-    for (int i = RecommendFeedsDiandianEntranceManager.b();; i = 2130842739) {
+    for (int i = RecommendFeedsDiandianEntranceManager.b();; i = 2130842753) {
       return getResources().getDrawable(i);
     }
   }
@@ -173,7 +173,7 @@ public class ColorBandVideoEntranceButton
   private void a(ApngDrawable paramApngDrawable)
   {
     if (this.jdField_a_of_type_ComTencentImageApngDrawable$OnPlayRepeatListener == null) {
-      this.jdField_a_of_type_ComTencentImageApngDrawable$OnPlayRepeatListener = new tkc(this);
+      this.jdField_a_of_type_ComTencentImageApngDrawable$OnPlayRepeatListener = new tav(this);
     }
     paramApngDrawable.setOnPlayRepeatListener(this.jdField_a_of_type_ComTencentImageApngDrawable$OnPlayRepeatListener);
     paramApngDrawable.repaly();
@@ -185,7 +185,7 @@ public class ColorBandVideoEntranceButton
     if ((paramURLDrawable instanceof ApngDrawable))
     {
       this.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-      if ((this.jdField_a_of_type_Tkf instanceof tkg)) {
+      if ((this.jdField_a_of_type_Tay instanceof taz)) {
         this.jdField_d_of_type_Boolean = true;
       }
     }
@@ -204,7 +204,7 @@ public class ColorBandVideoEntranceButton
       return;
       this.jdField_e_of_type_Boolean = true;
       continue;
-      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setImageDrawable(paramURLDrawable);
+      this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setImageDrawable(paramURLDrawable);
       this.jdField_c_of_type_Boolean = true;
     }
   }
@@ -230,7 +230,7 @@ public class ColorBandVideoEntranceButton
     }
   }
   
-  private void a(tkg paramtkg)
+  private void a(taz paramtaz)
   {
     if (!this.jdField_a_of_type_Boolean) {}
     do
@@ -238,12 +238,12 @@ public class ColorBandVideoEntranceButton
       do
       {
         return;
-      } while (paramtkg == null);
-      if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(paramtkg.a))) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramtkg.a);
+      } while (paramtaz == null);
+      if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(paramtaz.a))) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramtaz.a);
       }
-    } while ((this.jdField_b_of_type_AndroidWidgetTextView == null) || (TextUtils.isEmpty(paramtkg.b)));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramtkg.a);
+    } while ((this.jdField_b_of_type_AndroidWidgetTextView == null) || (TextUtils.isEmpty(paramtaz.b)));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramtaz.a);
   }
   
   private void a(boolean paramBoolean)
@@ -261,12 +261,12 @@ public class ColorBandVideoEntranceButton
       if (!paramBoolean) {
         break label148;
       }
-      pmk.a().a(this.jdField_a_of_type_Pmn);
+      pfd.a().a(this.jdField_a_of_type_Pfh);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-      q();
-      a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView);
-      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(this.jdField_a_of_type_Int / 2);
+      p();
+      a(this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView);
+      this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(this.jdField_a_of_type_Int / 2);
     }
     for (;;)
     {
@@ -279,7 +279,7 @@ public class ColorBandVideoEntranceButton
       label148:
       a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(this.jdField_a_of_type_Int / 2);
-      pmk.a().b(this.jdField_a_of_type_Pmn);
+      pfd.a().b(this.jdField_a_of_type_Pfh);
     }
   }
   
@@ -326,8 +326,8 @@ public class ColorBandVideoEntranceButton
         int k = ((FrameLayout.LayoutParams)localObject).rightMargin;
         int j = ((FrameLayout.LayoutParams)localObject).width;
         localObject = (FrameLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
-        k -= bggq.a(getContext(), 12.0F);
-        i += j + (bggq.a(getContext(), 30.0F) - ((FrameLayout.LayoutParams)localObject).width);
+        k -= bhgr.a(getContext(), 12.0F);
+        i += j + (bhgr.a(getContext(), 30.0F) - ((FrameLayout.LayoutParams)localObject).width);
         ((FrameLayout.LayoutParams)localObject).bottomMargin = i;
         ((FrameLayout.LayoutParams)localObject).rightMargin = k;
         this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
@@ -354,9 +354,9 @@ public class ColorBandVideoEntranceButton
     return System.currentTimeMillis() - this.jdField_a_of_type_Long > 1000L;
   }
   
-  private void b(tkf paramtkf)
+  private void b(tay paramtay)
   {
-    post(new ColorBandVideoEntranceButton.4(this, paramtkf));
+    post(new ColorBandVideoEntranceButton.4(this, paramtay));
   }
   
   private void b(boolean paramBoolean)
@@ -368,7 +368,7 @@ public class ColorBandVideoEntranceButton
     {
       localImageView.setVisibility(i);
       a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, 0.0F);
-      a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, 0.0F);
+      a(this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, 0.0F);
       a(this.f, 0.0F);
       removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setClickable(false);
@@ -376,37 +376,37 @@ public class ColorBandVideoEntranceButton
     }
   }
   
-  private void c(tkf paramtkf)
+  private void c(tay paramtay)
   {
-    if (paramtkf == null) {
+    if (paramtay == null) {
       return;
     }
-    if (paramtkf.c())
+    if (paramtay.c())
     {
-      d(paramtkf);
+      d(paramtay);
       return;
     }
-    a(paramtkf.d());
+    a(paramtay.d());
   }
   
-  private void d(tkf paramtkf)
+  private void d(tay paramtay)
   {
-    if (paramtkf == null) {}
+    if (paramtay == null) {}
     do
     {
       return;
       if (!this.jdField_a_of_type_Boolean) {
         break;
       }
-    } while (!(paramtkf instanceof tkg));
-    a((tkg)paramtkf);
-    r();
-    a(true, tkg.g, true);
-    a(false, paramtkf.d(), true);
+    } while (!(paramtay instanceof taz));
+    a((taz)paramtay);
+    q();
+    a(true, taz.g, true);
+    a(false, paramtay.d(), true);
     return;
-    if (paramtkf.b())
+    if (paramtay.b())
     {
-      if (!TextUtils.isEmpty(paramtkf.c())) {}
+      if (!TextUtils.isEmpty(paramtay.c())) {}
       for (;;)
       {
         try
@@ -416,10 +416,10 @@ public class ColorBandVideoEntranceButton
           localURLDrawableOptions1.mRequestWidth = this.jdField_a_of_type_Int;
           localURLDrawableOptions1.mRequestHeight = this.jdField_b_of_type_Int;
           localURLDrawableOptions1.mPlayGifImage = true;
-          this.jdField_b_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramtkf.c(), localURLDrawableOptions1);
+          this.jdField_b_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramtay.c(), localURLDrawableOptions1);
           this.jdField_b_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
           this.jdField_b_of_type_ComTencentImageURLDrawable.startDownload();
-          a(paramtkf.d());
+          a(paramtay.d());
           return;
         }
         catch (Exception localException1)
@@ -435,13 +435,13 @@ public class ColorBandVideoEntranceButton
         }
       }
     }
-    Object localObject = paramtkf.d();
+    Object localObject = paramtay.d();
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ColorBandVideoEntranceButton", 2, "rawUrl: " + (String)localObject);
       }
-      localObject = pha.a((String)localObject, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      localObject = ozs.a((String)localObject, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       if (QLog.isColorLevel()) {
         QLog.d("ColorBandVideoEntranceButton", 2, "showCover(): startDownload smartCutUrl: " + (String)localObject + "，mWidth:" + this.jdField_a_of_type_Int + ", mHeight:" + this.jdField_b_of_type_Int);
       }
@@ -459,7 +459,7 @@ public class ColorBandVideoEntranceButton
           continue;
         }
         onLoadSuccessed(this.jdField_b_of_type_ComTencentImageURLDrawable);
-        paramtkf.a((String)localObject);
+        paramtay.b((String)localObject);
       }
       catch (Exception localException2)
       {
@@ -469,14 +469,14 @@ public class ColorBandVideoEntranceButton
         QLog.d("ColorBandVideoEntranceButton", 2, "url error: " + localException2.getMessage());
         continue;
       }
-      if ((!paramtkf.d()) || (TextUtils.isEmpty(paramtkf.e()))) {
+      if ((!paramtay.d()) || (TextUtils.isEmpty(paramtay.e()))) {
         break;
       }
       localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = a(false);
       ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_a_of_type_Int;
       ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.jdField_b_of_type_Int;
-      this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramtkf.e(), (URLDrawable.URLDrawableOptions)localObject);
+      this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramtay.e(), (URLDrawable.URLDrawableOptions)localObject);
       this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
       return;
       this.jdField_b_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
@@ -490,85 +490,61 @@ public class ColorBandVideoEntranceButton
   
   private void j()
   {
-    inflate(getContext(), 2131560079, this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131380872);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376048));
+    inflate(getContext(), 2131560091, this);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131381050);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376188));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369264));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)findViewById(2131376049));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369354));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)findViewById(2131376190));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setOnClickListener(this);
     a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(this.jdField_a_of_type_Int / 2);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131380914));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131380913));
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840393);
-    l();
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364701));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)findViewById(2131364695));
-    this.f = ((ImageView)findViewById(2131376278));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364705));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364704));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364709));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364708));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131381094));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131381093));
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840403);
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)findViewById(2131376189));
+    k();
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364747));
+    this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)findViewById(2131364741));
+    this.f = ((ImageView)findViewById(2131376418));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364751));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364750));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364755));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364754));
   }
   
   private void k()
   {
-    if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null)) {
-      return;
+    Object localObject = (qtw)ozs.a().getManager(261);
+    qtk localqtk = ((qtw)localObject).a(3);
+    if (localqtk != null) {
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(localqtk.a());
     }
-    this.jdField_a_of_type_AndroidViewView.setScaleX(0.2F);
-    this.jdField_a_of_type_AndroidViewView.setScaleY(0.2F);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setScaleX(0.2F);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setScaleY(0.2F);
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "translationX", new float[] { 0.0F, afur.a(21.0F, getResources()) });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "translationY", new float[] { 0.0F, afur.a(21.0F, getResources()) });
-    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleX", new float[] { 1.0F, 0.38F });
-    ObjectAnimator localObjectAnimator4 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleY", new float[] { 1.0F, 0.38F });
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, localObjectAnimator3, localObjectAnimator4 });
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.setDuration(333L);
-    this.jdField_b_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    this.jdField_b_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 0.2F, 1.1F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 0.2F, 1.1F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, "scaleX", new float[] { 0.2F, 1.1F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, "scaleY", new float[] { 0.2F, 1.1F, 1.0F }) });
-    this.jdField_b_of_type_AndroidAnimationAnimatorSet.setDuration(400L);
-    localObjectAnimator1.addUpdateListener(new tjz(this));
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
+    localObject = ((qtw)localObject).a(2);
+    if (localObject != null) {
+      this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(((qtk)localObject).a());
+    }
   }
   
   private void l()
   {
-    Object localObject = (rdd)pha.a().getManager(261);
-    rcr localrcr = ((rdd)localObject).a(3);
-    if (localrcr != null) {
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(localrcr.a());
-    }
-    localObject = ((rdd)localObject).a(2);
-    if (localObject != null) {
-      this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(((rcr)localObject).a());
-    }
+    n();
+    a();
   }
   
   private void m()
   {
-    o();
-    a();
-  }
-  
-  private void n()
-  {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setScaleX(0.3F);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setScaleY(0.3F);
     AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, "scaleX", new float[] { 0.3F, 1.1F, 0.8F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, "scaleY", new float[] { 0.3F, 1.1F, 0.8F, 1.0F }) });
+    localAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, "scaleX", new float[] { 0.2F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, "scaleY", new float[] { 0.2F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 0.2F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 0.2F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, "scaleX", new float[] { 0.2F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, "scaleY", new float[] { 0.2F, 1.0F }) });
     localAnimatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
     localAnimatorSet.setDuration(400L);
     localAnimatorSet.start();
   }
   
-  private void o()
+  private void n()
   {
     if ((this.jdField_a_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_a_of_type_AndroidAnimationAnimatorSet.isRunning())) {
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
@@ -578,14 +554,14 @@ public class ColorBandVideoEntranceButton
     }
   }
   
-  private void p()
+  private void o()
   {
-    if (bmqa.s()) {
+    if (bnrf.s()) {
       if (!this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_Boolean = true;
         a(this.jdField_a_of_type_Boolean);
-        this.jdField_a_of_type_Tkf = null;
+        this.jdField_a_of_type_Tay = null;
         this.jdField_e_of_type_Boolean = false;
       }
     }
@@ -596,7 +572,7 @@ public class ColorBandVideoEntranceButton
     a(this.jdField_a_of_type_Boolean);
   }
   
-  private void q()
+  private void p()
   {
     if (this.jdField_a_of_type_AndroidAnimationAnimator == null) {
       this.jdField_a_of_type_AndroidAnimationAnimator = AnimatorInflater.loadAnimator(getContext(), 2130903042);
@@ -612,11 +588,11 @@ public class ColorBandVideoEntranceButton
     }
   }
   
-  private void r()
+  private void q()
   {
     a(this.jdField_e_of_type_AndroidWidgetImageView, 1.0F);
     a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, 0.0F);
-    a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, 0.0F);
+    a(this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, 0.0F);
     a(this.f, 0.0F);
   }
   
@@ -635,9 +611,9 @@ public class ColorBandVideoEntranceButton
     return this.jdField_b_of_type_AndroidWidgetImageView;
   }
   
-  public tkf a()
+  public tay a()
   {
-    return this.jdField_a_of_type_Tkf;
+    return this.jdField_a_of_type_Tay;
   }
   
   public void a()
@@ -645,17 +621,13 @@ public class ColorBandVideoEntranceButton
     d();
     this.jdField_b_of_type_Boolean = false;
     a(this.jdField_a_of_type_Boolean, false);
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setVisibility(8);
   }
   
-  public void a(int paramInt, String paramString, boolean paramBoolean)
+  public void a(tay paramtay)
   {
-    l();
-  }
-  
-  public void a(tkf paramtkf)
-  {
-    if (paramtkf != null) {
-      b(paramtkf);
+    if (paramtay != null) {
+      b(paramtay);
     }
   }
   
@@ -687,7 +659,7 @@ public class ColorBandVideoEntranceButton
     setPivotY(arrayOfInt2[1] - arrayOfInt1[1] + this.jdField_b_of_type_Int / 2);
     localAnimatorSet.setDuration(600L);
     localAnimatorSet.setInterpolator(new OvershootInterpolator());
-    localAnimatorSet.addListener(new tka(this));
+    localAnimatorSet.addListener(new tat(this));
     localAnimatorSet.start();
   }
   
@@ -718,56 +690,56 @@ public class ColorBandVideoEntranceButton
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    uad.a.a(paramCanvas, true, this.jdField_b_of_type_KotlinJvmFunctionsFunction1);
+    uaf.a.a(paramCanvas, true, this.jdField_b_of_type_KotlinJvmFunctionsFunction1);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    uad.a.a(paramCanvas, true, this.jdField_a_of_type_KotlinJvmFunctionsFunction1);
+    uaf.a.a(paramCanvas, true, this.jdField_a_of_type_KotlinJvmFunctionsFunction1);
   }
   
   public void e()
   {
-    p();
-    if (this.jdField_a_of_type_Tkf == null)
+    o();
+    if (this.jdField_a_of_type_Tay == null)
     {
-      o();
+      n();
       d();
       if ((!this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Boolean)) {
-        a(true, tkg.h, true);
+        a(true, taz.h, true);
       }
     }
   }
   
   public void f()
   {
-    if ((this.jdField_a_of_type_Tkf != null) && (this.jdField_a_of_type_Tkf.b()))
+    if ((this.jdField_a_of_type_Tay != null) && (this.jdField_a_of_type_Tay.b()))
     {
       AbstractGifImage.pauseAll();
-      txa.b();
+      txc.b();
     }
   }
   
   public void g()
   {
-    if ((this.jdField_a_of_type_Tkf != null) && (this.jdField_a_of_type_Tkf.b()))
+    if ((this.jdField_a_of_type_Tay != null) && (this.jdField_a_of_type_Tay.b()))
     {
       AbstractGifImage.resumeAll();
-      txa.a();
+      txc.a();
     }
   }
   
   public void h()
   {
-    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && ((this.jdField_a_of_type_Tkf instanceof tkg)))
+    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && ((this.jdField_a_of_type_Tay instanceof taz)))
     {
-      q();
+      p();
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setClickable(true);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPivotX(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getWidth());
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPivotY(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight() / 2);
       this.jdField_a_of_type_AndroidAnimationAnimator.setTarget(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
       this.jdField_a_of_type_AndroidAnimationAnimator.start();
-      this.jdField_b_of_type_AndroidAnimationAnimator.setTarget(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView);
+      this.jdField_b_of_type_AndroidAnimationAnimator.setTarget(this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView);
       this.jdField_b_of_type_AndroidAnimationAnimator.start();
       this.jdField_c_of_type_AndroidAnimationAnimator.setTarget(this.f);
       this.jdField_c_of_type_AndroidAnimationAnimator.start();
@@ -777,7 +749,7 @@ public class ColorBandVideoEntranceButton
   
   public void i()
   {
-    pmk.a().b(this.jdField_a_of_type_Pmn);
+    pfd.a().b(this.jdField_a_of_type_Pfh);
   }
   
   public void onClick(View paramView)
@@ -791,7 +763,7 @@ public class ColorBandVideoEntranceButton
       return;
       a(paramView);
       continue;
-      paramView.setTag(Integer.valueOf(tkg.c));
+      paramView.setTag(Integer.valueOf(taz.c));
       a(paramView);
     }
   }
@@ -821,20 +793,18 @@ public class ColorBandVideoEntranceButton
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ColorBandVideoEntranceButton", 2, "loadSuccess, start setImage, dataSource=" + this.jdField_a_of_type_Tkf);
+      QLog.d("ColorBandVideoEntranceButton", 2, "loadSuccess, start setImage, dataSource=" + this.jdField_a_of_type_Tay);
     }
     if (this.jdField_a_of_type_Boolean) {
       a(paramURLDrawable);
     }
-    while (this.jdField_a_of_type_Tkf == null) {
+    while (this.jdField_a_of_type_Tay == null) {
       return;
     }
     if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0)) {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0)) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.getVisibility() != 0)) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setVisibility(0);
     }
@@ -842,27 +812,28 @@ public class ColorBandVideoEntranceButton
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setImageDrawable(paramURLDrawable);
       if (this.jdField_b_of_type_Boolean) {
-        break label221;
+        break label213;
       }
-      k();
+      m();
       this.jdField_b_of_type_Boolean = true;
     }
     for (;;)
     {
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setVisibility(0);
       a(this.jdField_a_of_type_Boolean, true);
-      if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Tkf.d()) && (!TextUtils.isEmpty(this.jdField_a_of_type_Tkf.e()))) {
+      if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Tay.d()) && (!TextUtils.isEmpty(this.jdField_a_of_type_Tay.e()))) {
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
       }
       this.jdField_b_of_type_ComTencentImageURLDrawable = null;
       return;
-      label221:
-      n();
+      label213:
+      m();
     }
   }
   
-  public void setDataSource(tkf paramtkf)
+  public void setDataSource(tay paramtay)
   {
-    this.jdField_a_of_type_Tkf = paramtkf;
+    this.jdField_a_of_type_Tay = paramtay;
   }
   
   public void setDefaultDrawable(Drawable paramDrawable)
@@ -874,8 +845,8 @@ public class ColorBandVideoEntranceButton
   public void setDefaultIconBigMode(int paramInt1, int paramInt2)
   {
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    localLayoutParams.width = afur.a(paramInt1, getContext().getResources());
-    localLayoutParams.height = afur.a(paramInt2, getContext().getResources());
+    localLayoutParams.width = agej.a(paramInt1, getContext().getResources());
+    localLayoutParams.height = agej.a(paramInt2, getContext().getResources());
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
   }
   

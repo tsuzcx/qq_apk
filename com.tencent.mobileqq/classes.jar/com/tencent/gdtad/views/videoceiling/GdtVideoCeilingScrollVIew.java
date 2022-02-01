@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.videoceiling;
 
-import acqy;
+import acvc;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -26,25 +26,25 @@ public class GdtVideoCeilingScrollVIew
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    acqy.b("GdtVideoCeilingScrollVIew", "dispatchTouchEvent");
+    acvc.b("GdtVideoCeilingScrollVIew", "dispatchTouchEvent");
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    acqy.b("GdtVideoCeilingScrollVIew", "onInterceptTouchEvent");
+    acvc.b("GdtVideoCeilingScrollVIew", "onInterceptTouchEvent");
     return false;
   }
   
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    acqy.b("GdtVideoCeilingScrollVIew", "onScrollChanged: t -> " + paramInt2 + ", oldt -> " + paramInt4 + ", l -> " + paramInt1 + ", oldl -> " + paramInt3);
+    acvc.b("GdtVideoCeilingScrollVIew", "onScrollChanged: t -> " + paramInt2 + ", oldt -> " + paramInt4 + ", l -> " + paramInt1 + ", oldl -> " + paramInt3);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    acqy.b("GdtVideoCeilingScrollVIew", "onTouchEvent");
+    acvc.b("GdtVideoCeilingScrollVIew", "onTouchEvent");
     return false;
   }
 }

@@ -1,274 +1,190 @@
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedDisplayInfo;
-import com.tencent.mobileqq.redtouch.RedTypeInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.support.v4.util.MQLruCache;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profile.view.ShakeImageView;
+import com.tencent.mobileqq.profilecard.vas.component.background.VasProfileWzBackgroundComponent.onVasDataUpdate.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.s2c.msgtype0x210.submsgtype0x89.Submsgtype0x89.NumRedBusiInfo;
+import java.util.Arrays;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.jvm.internal.StringCompanionObject;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class baij
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/component/background/VasProfileWzBackgroundComponent;", "Lcom/tencent/mobileqq/profilecard/vas/component/background/AbsVasProfileBackgroundComponent;", "componentCenter", "Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;", "cardInfo", "Lcom/tencent/mobileqq/profile/ProfileCardInfo;", "(Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;Lcom/tencent/mobileqq/profile/ProfileCardInfo;)V", "mCardData", "Lcom/tencent/mobileqq/profilecard/vas/VasCardData;", "mDefaultBackgroundView", "Landroid/widget/ImageView;", "mWzBg", "Landroid/graphics/Bitmap;", "mWzBgView", "Lcom/tencent/mobileqq/profile/view/ShakeImageView;", "mWzCharacter", "mWzCharacterView", "initWzryDynamicBgAndHero", "", "data", "onCreate", "", "activity", "Lcom/tencent/mobileqq/app/BaseActivity;", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onVasDataUpdate", "Lcom/tencent/mobileqq/profilecard/vas/VasProfileData;", "updateImage", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class baij
+  extends baic
 {
-  public static int a(String paramString1, String paramString2)
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private bahw jdField_a_of_type_Bahw;
+  private ShakeImageView jdField_a_of_type_ComTencentMobileqqProfileViewShakeImageView;
+  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  private ShakeImageView jdField_b_of_type_ComTencentMobileqqProfileViewShakeImageView;
+  
+  public baij(@Nullable baei parambaei, @Nullable azxr paramazxr)
   {
-    if ((paramString1 == null) && (paramString2 == null)) {
-      return 0;
-    }
-    if ((paramString1 != null) && (paramString2 == null)) {
-      return 1;
-    }
-    if ((paramString1 == null) && (paramString2 != null)) {
-      return -1;
-    }
-    String[] arrayOfString1 = paramString1.split("\\.");
-    String[] arrayOfString2 = paramString2.split("\\.");
-    int i = 0;
-    for (;;)
+    super("VasProfileWzryBackgroundComponent", parambaei, paramazxr);
+  }
+  
+  private final void a()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      int j;
-      int k;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileViewShakeImageView;
+      if (localObject != null) {
+        ((ShakeImageView)localObject).setImage(this.jdField_a_of_type_AndroidGraphicsBitmap, (int)(a().getWidth() * 1.1D), (int)(a().getHeight() * 1.1D), 1.0F);
+      }
+    }
+    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
+    {
+      localObject = this.jdField_b_of_type_ComTencentMobileqqProfileViewShakeImageView;
+      if (localObject != null) {
+        ((ShakeImageView)localObject).setImage(this.jdField_b_of_type_AndroidGraphicsBitmap, (int)(a().getWidth() * 1.1D), (int)(a().getHeight() * 1.1D), -1.0F);
+      }
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) && (this.jdField_b_of_type_AndroidGraphicsBitmap == null))
+    {
+      localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+      if (localObject != null) {
+        ((ImageView)localObject).setBackgroundResource(b());
+      }
+      a(false);
+      return;
+    }
+    a("card-wzry");
+    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localObject != null) {
+      ((ImageView)localObject).setImageDrawable(null);
+    }
+    a(true);
+  }
+  
+  private final boolean a(bahw parambahw)
+  {
+    Object localObject1;
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = b();
+      localObject2 = StringCompanionObject.INSTANCE;
+      localObject2 = new Object[3];
+      localObject2[0] = Long.valueOf(parambahw.b());
+      localObject2[1] = parambahw.a();
+      localObject2[2] = parambahw.c();
+      localObject2 = String.format("initWzryDynamicBgAndHero bgId=%s bgUrl=%s heroUrl=%s", Arrays.copyOf((Object[])localObject2, localObject2.length));
+      Intrinsics.checkExpressionValueIsNotNull(localObject2, "java.lang.String.format(format, *args)");
+      QLog.d((String)localObject1, 2, (String)localObject2);
+    }
+    if ((!TextUtils.isEmpty((CharSequence)parambahw.a())) || (!TextUtils.isEmpty((CharSequence)parambahw.c()))) {
       try
       {
-        if ((i < arrayOfString1.length) && (i < arrayOfString2.length))
+        parambahw = azxs.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, parambahw.b());
+        String str = parambahw + "wzBgImage.png";
+        localObject2 = parambahw + "wzMainImage.png";
+        localObject1 = BaseApplicationImpl.sImageCache.get(str);
+        parambahw = (bahw)localObject1;
+        if (!(localObject1 instanceof Bitmap)) {
+          parambahw = null;
+        }
+        localObject1 = (Bitmap)parambahw;
+        if (localObject1 != null)
         {
-          j = Integer.parseInt(arrayOfString1[i]);
-          k = Integer.parseInt(arrayOfString2[i]);
-          if (j < k) {
-            return -1;
-          }
+          parambahw = (bahw)localObject1;
+          if (!((Bitmap)localObject1).isRecycled()) {}
         }
         else
         {
-          if (arrayOfString1.length > i) {
-            return 1;
-          }
-          j = arrayOfString2.length;
-          if (j <= i) {
-            break;
-          }
-          return -1;
+          parambahw = bhgm.a(str);
         }
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        localNumberFormatException.printStackTrace();
-        return paramString1.compareTo(paramString2);
-      }
-      if (j > k) {
-        return 1;
-      }
-      i += 1;
-    }
-  }
-  
-  public static RedAppInfo a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
-  {
-    int j = 0;
-    if (paramAppInfo == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RedTouchUtils BusinessInfo2RedAppInfo", 2, "appInfo is null ");
-      }
-      return null;
-    }
-    RedAppInfo localRedAppInfo = new RedAppInfo();
-    localRedAppInfo.a(paramAppInfo.uiAppId.get());
-    localRedAppInfo.b(paramAppInfo.iNewFlag.get());
-    localRedAppInfo.c(paramAppInfo.type.get());
-    localRedAppInfo.a(paramAppInfo.buffer.get());
-    localRedAppInfo.b(paramAppInfo.path.get());
-    localRedAppInfo.d(paramAppInfo.modify_ts.get());
-    localRedAppInfo.e(paramAppInfo.appset.get());
-    localRedAppInfo.f(paramAppInfo.num.get());
-    localRedAppInfo.c(paramAppInfo.icon_url.get());
-    localRedAppInfo.h(paramAppInfo.icon_type.get());
-    localRedAppInfo.g(paramAppInfo.icon_flag.get());
-    localRedAppInfo.i(paramAppInfo.push_red_ts.get());
-    localRedAppInfo.j(paramAppInfo.mission_level.get());
-    localRedAppInfo.k(paramAppInfo.exposure_max.get());
-    Object localObject = new ArrayList();
-    int i;
-    if ((paramAppInfo.missions.get() != null) && (paramAppInfo.missions.get().size() > 0))
-    {
-      i = 0;
-      while (i < paramAppInfo.missions.get().size())
-      {
-        ((ArrayList)localObject).add(paramAppInfo.missions.get().get(i));
-        i += 1;
-      }
-    }
-    localRedAppInfo.a((ArrayList)localObject);
-    localObject = new RedDisplayInfo();
-    RedTypeInfo localRedTypeInfo = new RedTypeInfo();
-    ArrayList localArrayList = new ArrayList();
-    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo1 = (BusinessInfoCheckUpdate.RedTypeInfo)((BusinessInfoCheckUpdate.RedDisplayInfo)paramAppInfo.red_display_info.get()).tab_display_info.get();
-    paramAppInfo = ((BusinessInfoCheckUpdate.RedDisplayInfo)paramAppInfo.red_display_info.get()).red_type_info.get();
-    if (localRedTypeInfo1 != null)
-    {
-      localRedTypeInfo.setRedContent(localRedTypeInfo1.red_content.get());
-      localRedTypeInfo.setRedDesc(localRedTypeInfo1.red_desc.get());
-      localRedTypeInfo.setRedPriority(localRedTypeInfo1.red_priority.get());
-      localRedTypeInfo.setRedType(localRedTypeInfo1.red_type.get());
-    }
-    ((RedDisplayInfo)localObject).a(localRedTypeInfo);
-    if ((paramAppInfo != null) && (paramAppInfo.size() > 0))
-    {
-      i = j;
-      while (i < paramAppInfo.size())
-      {
-        localRedTypeInfo = new RedTypeInfo();
-        localRedTypeInfo.setRedContent(((BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i)).red_content.get());
-        localRedTypeInfo.setRedDesc(((BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i)).red_desc.get());
-        localRedTypeInfo.setRedPriority(((BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i)).red_priority.get());
-        localRedTypeInfo.setRedType(((BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i)).red_type.get());
-        localArrayList.add(localRedTypeInfo);
-        i += 1;
-      }
-    }
-    ((RedDisplayInfo)localObject).a(localArrayList);
-    localRedAppInfo.a((RedDisplayInfo)localObject);
-    return localRedAppInfo;
-  }
-  
-  public static BusinessInfoCheckUpdate.AppInfo a(RedAppInfo paramRedAppInfo)
-  {
-    if (paramRedAppInfo == null) {
-      return null;
-    }
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = new BusinessInfoCheckUpdate.AppInfo();
-    localAppInfo.uiAppId.set(paramRedAppInfo.a());
-    localAppInfo.iNewFlag.set(paramRedAppInfo.b());
-    localAppInfo.type.set(paramRedAppInfo.c());
-    localAppInfo.buffer.set(paramRedAppInfo.a());
-    localAppInfo.path.set(paramRedAppInfo.b());
-    localAppInfo.modify_ts.set(paramRedAppInfo.d());
-    localAppInfo.missions.set(paramRedAppInfo.a());
-    localAppInfo.appset.set(paramRedAppInfo.e());
-    localAppInfo.num.set(paramRedAppInfo.f());
-    localAppInfo.icon_url.set(paramRedAppInfo.c());
-    localAppInfo.icon_flag.set(paramRedAppInfo.g());
-    localAppInfo.icon_type.set(paramRedAppInfo.h());
-    localAppInfo.push_red_ts.set(paramRedAppInfo.i());
-    localAppInfo.mission_level.set(paramRedAppInfo.j());
-    localAppInfo.exposure_max.set(paramRedAppInfo.k());
-    BusinessInfoCheckUpdate.RedDisplayInfo localRedDisplayInfo = new BusinessInfoCheckUpdate.RedDisplayInfo();
-    Object localObject = paramRedAppInfo.a();
-    paramRedAppInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-    RedTypeInfo localRedTypeInfo;
-    if (localObject != null)
-    {
-      localRedTypeInfo = ((RedDisplayInfo)localObject).a();
-      paramRedAppInfo.red_content.set(localRedTypeInfo.getRedContent());
-      paramRedAppInfo.red_desc.set(localRedTypeInfo.getRedDesc());
-      paramRedAppInfo.red_priority.set(localRedTypeInfo.getRedPriority());
-      paramRedAppInfo.red_type.set(localRedTypeInfo.getRedType());
-    }
-    localRedDisplayInfo.tab_display_info.set(paramRedAppInfo);
-    paramRedAppInfo = new ArrayList();
-    if (localObject != null)
-    {
-      localObject = ((RedDisplayInfo)localObject).a();
-      if (localObject != null)
-      {
-        int i = 0;
-        while (i < ((List)localObject).size())
+        if ((parambahw != null) && ((Intrinsics.areEqual(this.jdField_a_of_type_AndroidGraphicsBitmap, parambahw) ^ true)))
         {
-          localRedTypeInfo = (RedTypeInfo)((List)localObject).get(i);
-          BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo1 = new BusinessInfoCheckUpdate.RedTypeInfo();
-          localRedTypeInfo1.red_content.set(localRedTypeInfo.getRedContent());
-          localRedTypeInfo1.red_desc.set(localRedTypeInfo.getRedDesc());
-          localRedTypeInfo1.red_priority.set(localRedTypeInfo.getRedPriority());
-          localRedTypeInfo1.red_type.set(localRedTypeInfo.getRedType());
-          paramRedAppInfo.add(localRedTypeInfo1);
-          i += 1;
+          this.jdField_a_of_type_AndroidGraphicsBitmap = parambahw;
+          BaseApplicationImpl.sImageCache.put(str, parambahw);
         }
+        localObject1 = BaseApplicationImpl.sImageCache.get(localObject2);
+        parambahw = (bahw)localObject1;
+        if (!(localObject1 instanceof Bitmap)) {
+          parambahw = null;
+        }
+        localObject1 = (Bitmap)parambahw;
+        if (localObject1 != null)
+        {
+          parambahw = (bahw)localObject1;
+          if (!((Bitmap)localObject1).isRecycled()) {}
+        }
+        else
+        {
+          parambahw = bhgm.a((String)localObject2);
+        }
+        if ((parambahw != null) && ((Intrinsics.areEqual(this.jdField_b_of_type_AndroidGraphicsBitmap, parambahw) ^ true)))
+        {
+          this.jdField_b_of_type_AndroidGraphicsBitmap = parambahw;
+          BaseApplicationImpl.sImageCache.put(localObject2, parambahw);
+        }
+        return true;
+      }
+      catch (Throwable parambahw)
+      {
+        QLog.e(b(), 1, "initWzryDynamicBgAndHero fail.", parambahw);
       }
     }
-    localRedDisplayInfo.red_type_info.set(paramRedAppInfo);
-    localAppInfo.red_display_info.set(localRedDisplayInfo);
-    return localAppInfo;
+    return false;
   }
   
-  public static Map<String, JSONObject> a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public void a(@NotNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
   {
-    if (paramAppInfo != null)
-    {
-      Object localObject = paramAppInfo.buffer.get();
-      if (!bgsp.a((String)localObject)) {
-        try
-        {
-          paramAppInfo = new HashMap();
-          localObject = new JSONObject((String)localObject).getJSONObject("msg");
-          Iterator localIterator = ((JSONObject)localObject).keys();
-          while (localIterator.hasNext())
-          {
-            String str = (String)localIterator.next();
-            if (!bgsp.a(str))
-            {
-              JSONObject localJSONObject = ((JSONObject)localObject).getJSONObject(str);
-              if (localJSONObject != null)
-              {
-                paramAppInfo.put(str, localJSONObject);
-                continue;
-                return null;
-              }
-            }
-          }
-        }
-        catch (JSONException paramAppInfo)
-        {
-          paramAppInfo.printStackTrace();
-        }
-      }
-    }
-    return paramAppInfo;
+    Intrinsics.checkParameterIsNotNull(paramBaseActivity, "activity");
+    super.a(paramBaseActivity, paramBundle);
+    paramBundle = new ImageView((Context)paramBaseActivity);
+    paramBundle.setContentDescription((CharSequence)"qqvip_bg");
+    a().addView((View)paramBundle);
+    this.jdField_a_of_type_AndroidWidgetImageView = paramBundle;
+    paramBundle = new ShakeImageView((Context)paramBaseActivity);
+    paramBundle.setContentDescription((CharSequence)"qqvip_wzry_bg");
+    a().addView((View)paramBundle);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewShakeImageView = paramBundle;
+    paramBaseActivity = new ShakeImageView((Context)paramBaseActivity);
+    paramBaseActivity.setContentDescription((CharSequence)"qqvip_wzry_character");
+    a().addView((View)paramBaseActivity);
+    this.jdField_b_of_type_ComTencentMobileqqProfileViewShakeImageView = paramBaseActivity;
   }
   
-  public static boolean a(Submsgtype0x89.NumRedBusiInfo paramNumRedBusiInfo)
+  public boolean a(@NotNull bahz parambahz)
   {
-    boolean bool = true;
-    String str = paramNumRedBusiInfo.str_client_ver_begin.get();
-    paramNumRedBusiInfo = paramNumRedBusiInfo.str_client_ver_end.get();
-    if ((str == null) && (paramNumRedBusiInfo == null)) {
-      return false;
-    }
-    int i = a(str, "8.4.1");
-    int j = a("8.4.1", paramNumRedBusiInfo);
-    if ((i == -1) || (i == 0))
+    Intrinsics.checkParameterIsNotNull(parambahz, "data");
+    if (parambahz.a() == null)
     {
-      i = 1;
-      if ((j != 1) && (j != 0) && (!paramNumRedBusiInfo.equals("0.0.0"))) {
-        break label94;
-      }
-      j = 1;
-      label79:
-      if ((i == 0) || (j == 0)) {
-        break label99;
+      parambahz = this.jdField_a_of_type_AndroidWidgetImageView;
+      if (parambahz != null) {
+        parambahz.setBackgroundResource(b());
       }
     }
-    for (;;)
-    {
-      return bool;
-      i = 0;
-      break;
-      label94:
-      j = 0;
-      break label79;
-      label99:
-      bool = false;
+    while ((parambahz.a().equals(this.jdField_a_of_type_Bahw)) && (b())) {
+      return true;
     }
+    this.jdField_a_of_type_Bahw = parambahz.a();
+    a(parambahz.a());
+    a().post((Runnable)new VasProfileWzBackgroundComponent.onVasDataUpdate.1(this));
+    return true;
+  }
+  
+  public void f()
+  {
+    super.f();
+    a().removeView((View)this.jdField_a_of_type_AndroidWidgetImageView);
+    a().removeView((View)this.jdField_a_of_type_ComTencentMobileqqProfileViewShakeImageView);
+    a().removeView((View)this.jdField_b_of_type_ComTencentMobileqqProfileViewShakeImageView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)null);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewShakeImageView = ((ShakeImageView)null);
+    this.jdField_b_of_type_ComTencentMobileqqProfileViewShakeImageView = ((ShakeImageView)null);
   }
 }
 

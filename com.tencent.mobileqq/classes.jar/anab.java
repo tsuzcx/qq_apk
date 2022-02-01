@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.2;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class anab
-  extends anau
+  implements View.OnClickListener
 {
-  anab(anaa paramanaa) {}
+  public anab(CmGameLoadingView.2 param2) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      ThreadManager.getUIHandler().post(new AVEngineWalper.1.1(this));
+    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    this.a.this$0.setProgressViewVisibility(true);
+    if (this.a.jdField_a_of_type_Amxj != null) {
+      this.a.jdField_a_of_type_Amxj.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
     }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.mLoadingOnMainProcess)) {
+      ApolloGameUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

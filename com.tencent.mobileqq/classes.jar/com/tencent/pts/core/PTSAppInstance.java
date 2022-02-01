@@ -22,9 +22,10 @@ public abstract class PTSAppInstance
   private float containerWidth;
   private Context context;
   private String frameTreeJson;
-  private PTSItemData itemData;
+  protected PTSItemData itemData;
   private String pageJs;
   private String pageName;
+  private PTSComposer ptsComposer;
   private PTSRootNode rootNode;
   private int rootNodeType;
   private ViewGroup rootView;
@@ -73,6 +74,11 @@ public abstract class PTSAppInstance
   public String getPageName()
   {
     return this.pageName;
+  }
+  
+  public PTSComposer getPtsComposer()
+  {
+    return this.ptsComposer;
   }
   
   public PTSRootNode getRootNode()
@@ -137,6 +143,11 @@ public abstract class PTSAppInstance
     this.itemData = paramPTSItemData;
   }
   
+  public void setPtsComposer(PTSComposer paramPTSComposer)
+  {
+    this.ptsComposer = paramPTSComposer;
+  }
+  
   public void setPtsLiteEventListener(IPTSLiteEventListener paramIPTSLiteEventListener)
   {
     if ((this instanceof PTSAppInstance.PTSLiteAppInstance))
@@ -157,13 +168,18 @@ public abstract class PTSAppInstance
       localObject = ((PTSNodeInfo)localObject).getAttributes().getEventPtsOnExposure();
       if (isLiteAppInstance())
       {
-        ((PTSAppInstance.PTSLiteAppInstance)this).triggerLiteEvent(2, (String)localObject, localHashMap, localPTSRootNode.getRootView());
+        ((PTSAppInstance.PTSLiteAppInstance)this).triggerLiteEvent(2, (String)localObject, localHashMap, localPTSRootNode.getRootView(), getPtsComposer());
         return;
       }
       PTSLog.e("PTSAppInstance", "[triggerExposureEvent] failed, is not PTSLiteAppInstance.");
       return;
     }
     PTSLog.e("PTSAppInstance", "[triggerExposureEvent], ptsRootNode or rootNodeInfo is null.");
+  }
+  
+  public String updateData(String paramString)
+  {
+    return "";
   }
 }
 

@@ -1,52 +1,229 @@
 import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
+import android.content.res.Resources;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.gamecenter.protocol.GetArkTailRsp;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.minigame.utils.DpUtil;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.util.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-final class auty
-  implements BusinessObserver
+public class auty
 {
-  auty(WeakReference paramWeakReference1, WeakReference paramWeakReference2, WeakReference paramWeakReference3, long paramLong1, long paramLong2, AIOImageData paramAIOImageData) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static int a(QQAppInterface paramQQAppInterface)
   {
-    paramBundle = (GetArkTailRsp)paramBundle.getSerializable("rsp");
-    if (QLog.isColorLevel()) {
-      QLog.d("GameShare.Util", 2, "GetArkTailRspFromGallery:" + paramBoolean + "|" + paramBundle);
+    if (paramQQAppInterface == null) {
+      return 106;
     }
-    if ((paramBoolean) && (paramBundle != null))
+    return DpUtil.dip2px(paramQQAppInterface.getApp(), 53.0F);
+  }
+  
+  private static int a(String paramString)
+  {
+    return Integer.decode(paramString).intValue() | 0xFF000000;
+  }
+  
+  public static List<arqd> a()
+  {
+    return (List)arqe.a().a().get("wording");
+  }
+  
+  private static List<arqd> a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    paramString = auog.a(paramString).toLowerCase().replace(".", "");
+    return (List)arqe.a().a().get(paramString);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, View paramView, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, auub paramauub)
+  {
+    if ((paramTeamWorkFileImportInfo == null) || (paramActivity == null)) {}
+    do
     {
-      Object localObject = (Context)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      TextView localTextView = (TextView)this.jdField_b_of_type_MqqUtilWeakReference.get();
-      ahte localahte = (ahte)this.c.get();
-      if (((localObject instanceof Activity)) && (!((Activity)localObject).isFinishing()) && (localTextView != null) && (localahte != null) && (localahte.a() != null) && (localahte.a().a != null) && (localahte.a().a.jdField_f_of_type_Long == this.jdField_a_of_type_Long) && (localahte.a().a.jdField_f_of_type_Int == this.jdField_b_of_type_Long))
+      return;
+      paramActivity = paramActivity.getResources();
+    } while (paramActivity == null);
+    Object localObject = a(paramTeamWorkFileImportInfo.b);
+    ArrayList localArrayList = new ArrayList();
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      if (paramTeamWorkFileImportInfo.a != 1)
       {
-        localTextView.setText(paramBundle.desc);
-        localTextView.setTag(-1, paramBundle.jump_url);
-        localTextView.setTag(-2, Integer.valueOf(paramBundle.type));
-        localTextView.setTag(-3, Integer.valueOf(paramBundle.sub_type));
+        paramTeamWorkFileImportInfo = ((List)localObject).iterator();
+        while (paramTeamWorkFileImportInfo.hasNext())
+        {
+          localObject = (arqd)paramTeamWorkFileImportInfo.next();
+          if (((arqd)localObject).b() != 2) {
+            localArrayList.add(localObject);
+          }
+        }
       }
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("game_source_pic_txt", paramBundle.desc);
-      ((Bundle)localObject).putString("game_source_pic_url", paramBundle.jump_url);
-      ((Bundle)localObject).putInt("game_source_type_pic", paramBundle.type);
-      ((Bundle)localObject).putInt("game_source_subtype_pic", paramBundle.sub_type);
-      ((Bundle)localObject).putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_f_of_type_Long);
-      ((Bundle)localObject).putInt("is_troop", this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.g);
-      ((Bundle)localObject).putString("friend_uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.l);
-      QIPCClientHelper.getInstance().callServer("QQGameIPCModule", "saveGalleryDataToMsg", (Bundle)localObject, null);
-      localObject = (StructMsgForImageShare)bcwd.a((byte[])this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.a);
-      autv.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, (StructMsgForImageShare)localObject, paramBundle.desc, paramBundle.jump_url, paramBundle.type, paramBundle.sub_type, true);
-      autv.a(((StructMsgForImageShare)localObject).mSourceAppid + "", paramBundle.sub_type, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData);
+      localArrayList.addAll((Collection)localObject);
     }
+    a(paramQQAppInterface, paramActivity, paramView, localArrayList, paramauub);
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, Resources paramResources, View paramView, List<arqd> paramList, auub paramauub)
+  {
+    if ((paramView == null) || (paramauub == null) || (paramList == null) || (paramList.size() == 0)) {}
+    for (;;)
+    {
+      return;
+      paramResources = (ViewGroup)paramView.findViewById(2131366807);
+      ViewGroup localViewGroup = (ViewGroup)paramView.findViewById(2131363606);
+      if ((paramResources != null) && (localViewGroup != null))
+      {
+        paramView.setVisibility(8);
+        paramResources.setVisibility(8);
+        localViewGroup.setVisibility(8);
+        LayoutInflater localLayoutInflater = (LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater");
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          arqd localarqd = (arqd)paramList.next();
+          switch (localarqd.a())
+          {
+          default: 
+            QLog.w("TencentDocConvertABTestUtil", 2, "can not show edit entrance");
+            break;
+          case 1: 
+            a(paramQQAppInterface, paramView, paramauub, paramResources, localLayoutInflater, localarqd);
+            break;
+          case 2: 
+            a(paramQQAppInterface, paramView, paramauub, paramResources, localViewGroup, localLayoutInflater, localarqd);
+          }
+        }
+      }
+    }
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, View paramView, auub paramauub, ViewGroup paramViewGroup, LayoutInflater paramLayoutInflater, arqd paramarqd)
+  {
+    paramView.setVisibility(0);
+    paramViewGroup.setVisibility(0);
+    paramView = paramLayoutInflater.inflate(2131560920, paramViewGroup, false);
+    paramLayoutInflater = (GradientDrawable)paramViewGroup.getBackground();
+    if (paramLayoutInflater != null)
+    {
+      paramLayoutInflater.setAlpha(Math.round(paramarqd.a() * 255.0F));
+      if (TextUtils.isEmpty(paramarqd.a())) {}
+    }
+    try
+    {
+      paramLayoutInflater.setColor(a(paramarqd.a()));
+      if (TextUtils.isEmpty(paramarqd.c())) {}
+    }
+    catch (NumberFormatException paramLayoutInflater)
+    {
+      try
+      {
+        ((TextView)paramView.findViewById(2131379707)).setTextColor(a(paramarqd.c()));
+        if (!TextUtils.isEmpty(paramarqd.b())) {
+          ((TextView)paramView.findViewById(2131379707)).setText(paramarqd.b());
+        }
+        if (!TextUtils.isEmpty(paramarqd.d()))
+        {
+          paramLayoutInflater = (URLImageView)paramView.findViewById(2131369143);
+          URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+          paramLayoutInflater.setImageDrawable(URLDrawable.getDrawable(paramarqd.d(), localURLDrawableOptions));
+        }
+        paramView.setOnClickListener(new auua(paramQQAppInterface, paramarqd.e(), paramauub, paramarqd));
+        if (paramarqd.b() == 2) {
+          paramauub.a((ImageView)paramView.findViewById(2131380393));
+        }
+        bdll.b(paramQQAppInterface, "dc00898", "", "", paramarqd.f(), paramarqd.f(), 0, 0, "", "", "", "");
+        paramViewGroup.addView(paramView);
+        return;
+        paramLayoutInflater = paramLayoutInflater;
+        QLog.e("TencentDocConvertABTestUtil", 1, "parse bg color fail", paramLayoutInflater);
+      }
+      catch (NumberFormatException paramLayoutInflater)
+      {
+        for (;;)
+        {
+          QLog.e("TencentDocConvertABTestUtil", 1, "parse text color fail", paramLayoutInflater);
+        }
+      }
+    }
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, View paramView, auub paramauub, ViewGroup paramViewGroup1, ViewGroup paramViewGroup2, LayoutInflater paramLayoutInflater, arqd paramarqd)
+  {
+    paramView.setVisibility(0);
+    paramViewGroup2.setVisibility(0);
+    paramView = paramLayoutInflater.inflate(2131560920, paramViewGroup1, false);
+    paramViewGroup1 = (LayerDrawable)paramViewGroup2.getBackground();
+    if (paramViewGroup1 != null)
+    {
+      paramViewGroup1 = (GradientDrawable)paramViewGroup1.findDrawableByLayerId(2131363243);
+      paramViewGroup1.setAlpha(Math.round(paramarqd.a() * 255.0F));
+      if (TextUtils.isEmpty(paramarqd.a())) {}
+    }
+    try
+    {
+      paramViewGroup1.setColor(a(paramarqd.a()));
+      if (TextUtils.isEmpty(paramarqd.c())) {}
+    }
+    catch (NumberFormatException paramViewGroup1)
+    {
+      try
+      {
+        ((TextView)paramView.findViewById(2131379707)).setTextColor(a(paramarqd.c()));
+        if (!TextUtils.isEmpty(paramarqd.b())) {
+          ((TextView)paramView.findViewById(2131379707)).setText(paramarqd.b());
+        }
+        if (!TextUtils.isEmpty(paramarqd.d()))
+        {
+          paramViewGroup1 = (URLImageView)paramView.findViewById(2131369143);
+          paramLayoutInflater = URLDrawable.URLDrawableOptions.obtain();
+          paramViewGroup1.setImageDrawable(URLDrawable.getDrawable(paramarqd.d(), paramLayoutInflater));
+        }
+        paramView.setOnClickListener(new autz(paramQQAppInterface, paramarqd.e(), paramauub, paramarqd));
+        if (paramarqd.b() == 2) {
+          paramauub.a((ImageView)paramView.findViewById(2131380393));
+        }
+        bdll.b(paramQQAppInterface, "dc00898", "", "", paramarqd.f(), paramarqd.f(), 0, 0, "", "", "", "");
+        paramViewGroup2.addView(paramView);
+        return;
+        paramViewGroup1 = paramViewGroup1;
+        QLog.e("TencentDocConvertABTestUtil", 1, "parse bg color fail", paramViewGroup1);
+      }
+      catch (NumberFormatException paramViewGroup1)
+      {
+        for (;;)
+        {
+          QLog.e("TencentDocConvertABTestUtil", 1, "parse text color fail", paramViewGroup1);
+        }
+      }
+    }
+  }
+  
+  public static boolean a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  {
+    return (paramTeamWorkFileImportInfo != null) && (a(paramTeamWorkFileImportInfo.b));
+  }
+  
+  public static boolean a(String paramString)
+  {
+    paramString = a(paramString);
+    return (paramString != null) && (paramString.size() > 0) && (((arqd)paramString.get(0)).a() != 0);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.qqcircle.bizparts.danmaku.text;
 
-import vgl;
+import vip;
 
 public class TextCellLayout$1
   implements Runnable
 {
-  public TextCellLayout$1(vgl paramvgl) {}
+  public TextCellLayout$1(vip paramvip) {}
   
   public void run()
   {

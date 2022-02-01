@@ -1,30 +1,14 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp;
-
-class atzx
-  implements bmyw<WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp>
+public class atzx
+  extends bcjf
 {
-  atzx(atzu paramatzu, auah paramauah) {}
-  
-  public void a(int paramInt, String paramString, WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp paramWeiyunShareAddFromMobileQQMsgRsp)
+  public atzx(aoof paramaoof)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink onFailed: errorCode[" + paramInt + "], errorMsg[" + paramString + "]");
-    }
-    if (this.jdField_a_of_type_Auah != null) {
-      this.jdField_a_of_type_Auah.a(paramInt, paramString);
-    }
+    super(paramaoof);
   }
   
-  public void a(WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp paramWeiyunShareAddFromMobileQQMsgRsp)
+  protected bcik<bcfr, bcnz> a(aoof paramaoof)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink succeed");
-    }
-    if (this.jdField_a_of_type_Auah != null) {
-      this.jdField_a_of_type_Auah.a(paramWeiyunShareAddFromMobileQQMsgRsp.raw_url.get());
-    }
+    return new atzy(paramaoof);
   }
 }
 

@@ -1,28 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.4.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class asof
-  implements View.OnClickListener
+public class asof
+  extends askq
 {
-  asof(asnz paramasnz) {}
+  asof(asoc paramasoc) {}
   
-  public final void onClick(View paramView)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    bcst.b(null, "dc00898", "", "", "0X800B08B", "0X800B08B", 1, 0, "", "", "", "");
-    this.a.dismiss();
-    if (asnz.a(this.a) != null)
+    if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {}
+    do
     {
-      asob localasob = asnz.a(this.a);
-      if (localasob == null) {
-        Intrinsics.throwNpe();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonPanelMallHelper", 2, "onPackageEnd resultCode = " + paramInt + ",ep = " + paramEmoticonPackage);
       }
-      localasob.a(asnz.a(this.a));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    } while (this.a.a.g);
+    ThreadManager.getUIHandler().post(new EmoticonPanelMallHelper.4.1(this, paramEmoticonPackage, paramInt));
   }
 }
 

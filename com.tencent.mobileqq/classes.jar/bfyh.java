@@ -1,34 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.widget.AdapterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
 
 public class bfyh
-  implements bkil
+  implements DialogInterface.OnClickListener
 {
-  public bfyh(WheelPickerLayout paramWheelPickerLayout) {}
+  public bfyh(TroopMoreDetailFragment paramTroopMoreDetailFragment, boolean paramBoolean) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    WheelPickerLayout.a(this.a, paramView, 1);
-    WheelPickerLayout.a(this.a, paramView, true);
-    if ((paramView != null) && (paramView.getTag() != null))
-    {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
-      {
-        if (i != paramInt)
-        {
-          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), false);
-        }
-        paramInt += 1;
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      bdll.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
     }
   }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

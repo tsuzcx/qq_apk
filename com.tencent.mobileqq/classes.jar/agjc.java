@@ -1,126 +1,70 @@
-import android.text.Spannable;
+import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ecommerce.ECommerceDataReportUtil.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
 
-public class agjc
+class agjc
+  extends BaseAdapter
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  private List<String> jdField_a_of_type_JavaUtilList;
   
-  private static String a(MessageRecord paramMessageRecord)
+  private agjc(agiq paramagiq) {}
+  
+  public void a(List<String> paramList)
   {
-    if ((paramMessageRecord instanceof MessageForText))
-    {
-      paramMessageRecord = (MessageForText)paramMessageRecord;
-      if ((paramMessageRecord.sb instanceof bdnt)) {
-        return ((bdnt)paramMessageRecord.sb).d;
-      }
-      if ((paramMessageRecord.sb instanceof Spannable)) {
-        return paramMessageRecord.sb.toString();
-      }
-    }
-    else
-    {
-      if ((paramMessageRecord instanceof MessageForMixedMsg)) {
-        return paramMessageRecord.msg;
-      }
-      if ((paramMessageRecord instanceof MessageForReplyText)) {
-        return ((MessageForReplyText)paramMessageRecord).getSummaryMsg();
-      }
-    }
-    return "";
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, int paramInt)
+  public int getCount()
   {
-    a(paramQQAppInterface, paramMessageRecord, paramInt, "");
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, int paramInt, String paramString)
+  public Object getItem(int paramInt)
   {
-    if (a(paramMessageRecord))
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @RequiresApi(api=16)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_Agiq.a).inflate(2131559272, null);
+    }
+    for (;;)
     {
-      paramMessageRecord = a(paramMessageRecord);
-      if (QLog.isColorLevel()) {
-        QLog.d("ECommerceDataReportUtil", 2, "reportECommerceData  reportConfig -> " + jdField_a_of_type_JavaUtilHashMap);
-      }
-      if (!a(paramQQAppInterface))
+      ImageView localImageView = (ImageView)paramView.findViewById(2131367246);
+      String str = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (!TextUtils.isEmpty(str)) {}
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ECommerceDataReportUtil", 2, "reportECommerceData load config from QConfigManager");
-        }
-        WeakReference localWeakReference = new WeakReference(paramQQAppInterface);
-        ThreadManager.getFileThreadHandler().post(new ECommerceDataReportUtil.1(paramQQAppInterface, localWeakReference, paramMessageRecord, paramInt, paramString));
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(str, null);
+        localURLDrawable.setDecodeHandler(bhez.z);
+        localImageView.setImageDrawable(localURLDrawable);
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
       }
-    }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ECommerceDataReportUtil", 2, "reportECommerceData hit cache");
-    }
-    b(paramQQAppInterface, paramMessageRecord, paramInt, paramString);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, List<ChatMessage> paramList, int paramInt)
-  {
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        a(paramQQAppInterface, (ChatMessage)paramList.next(), paramInt);
-      }
-    }
-  }
-  
-  private static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return (jdField_a_of_type_JavaUtilHashMap != null) && (!jdField_a_of_type_JavaUtilHashMap.isEmpty()) && (paramQQAppInterface != null) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_JavaLangString.equals(paramQQAppInterface.getCurrentAccountUin()));
-  }
-  
-  private static boolean a(MessageRecord paramMessageRecord)
-  {
-    if (((paramMessageRecord instanceof MessageForText)) || ((paramMessageRecord instanceof MessageForMixedMsg)) || ((paramMessageRecord instanceof MessageForReplyText))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ECommerceDataReportUtil", 2, "isMessageNeedReport : need -> " + bool);
-      }
-      return bool;
-    }
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2)
-  {
-    Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      String str = (String)localEntry.getKey();
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramString1)) && (paramString1.contains(str))) {
-        if ((paramInt != 5) || ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains(str))))
+      catch (Exception localException)
+      {
+        for (;;)
         {
-          paramString1 = (String)localEntry.getValue();
-          bcst.b(paramQQAppInterface, "dc00898", "", "", paramString1, paramString1, paramInt, 0, "", "", "", "");
-          if (QLog.isColorLevel()) {
-            QLog.d("ECommerceDataReportUtil", 2, "checkAndReport : doReport key -> " + str + ", type => " + paramInt + ", reportTag -> " + paramString1 + "， clickUrl -> " + paramString2);
-          }
+          QLog.e("intimate_relationship", 1, String.format("Url for friend gift:" + str, new Object[] { localException }));
         }
       }
     }

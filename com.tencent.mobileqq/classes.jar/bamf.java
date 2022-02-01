@@ -1,40 +1,8 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.view.MotionEvent;
 
-class bamf
-  implements bdvw
+public abstract interface bamf
 {
-  bamf(bamd parambamd, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
-  
-  public void onResp(bdwt parambdwt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + parambdwt.c);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_Bamd.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
-    try
-    {
-      nmk.a(new File(bamd.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5), bamd.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5));
-      if (this.jdField_a_of_type_Bamd.a != null) {
-        this.jdField_a_of_type_Bamd.a.a();
-      }
-      return;
-    }
-    catch (IOException parambdwt)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          parambdwt.printStackTrace();
-        }
-      }
-    }
-  }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

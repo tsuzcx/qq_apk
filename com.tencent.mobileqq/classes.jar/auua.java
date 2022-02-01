@@ -1,22 +1,20 @@
-import android.text.TextUtils;
-import java.util.HashMap;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class auua
+final class auua
+  implements View.OnClickListener
 {
-  public static void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  auua(QQAppInterface paramQQAppInterface, String paramString, auub paramauub, arqd paramarqd) {}
+  
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
-    {
-      HashMap localHashMap = new HashMap();
-      aceh.a(localHashMap, paramString1);
-      localHashMap.put(Integer.valueOf(1), paramString2);
-      localHashMap.put(Integer.valueOf(2), paramString1);
-      if (paramBoolean) {
-        localHashMap.put(Integer.valueOf(24), Integer.valueOf(1));
-      }
-      aceh.a(ampj.a(), "769", paramString3, paramString2, "76906", "1", "160", localHashMap);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
     }
+    this.jdField_a_of_type_Auub.a(this.jdField_a_of_type_Arqd.b());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

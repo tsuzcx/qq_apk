@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.msgTabNode.view.viewholder;
 
 import com.tencent.image.AbstractGifImage;
-import wvb;
+import wyw;
 
 public class MsgNodeViewHolder$1$1
   implements Runnable
 {
-  public MsgNodeViewHolder$1$1(wvb paramwvb) {}
+  public MsgNodeViewHolder$1$1(wyw paramwyw) {}
   
   public void run() {}
 }

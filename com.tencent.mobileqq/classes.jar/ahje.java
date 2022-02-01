@@ -1,26 +1,18 @@
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahje
+class ahje
+  extends ahkx
 {
-  public float a;
-  public int a;
-  public ahjc a;
-  public ValueAnimator a;
-  public boolean a;
-  public float b;
-  public int b;
-  public ValueAnimator b;
-  public boolean b;
-  public int c;
-  public ValueAnimator c;
-  public int d;
-  public ValueAnimator d;
-  public int e;
-  public int f;
-  public int g;
+  ahje(ahgk paramahgk)
+  {
+    super(paramahgk, null);
+  }
   
-  public ahje(SixCombolEffectView paramSixCombolEffectView) {}
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahss(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

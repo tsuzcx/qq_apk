@@ -1,60 +1,93 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqReportEvil;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.HotSortVideoEntry;
+import com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler.GetHotSortVideoResponse.1;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.HotVideoCard;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupHotRankVideo;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wzz
-  extends wlf<xbk>
+  extends wrj
 {
-  public static final String a = wjz.a("StorySvc.video_report_evil");
-  public long b;
-  public String b;
-  public final int c;
-  public String c;
+  qqstory_group.RspGetGroupHotRankVideo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public String a()
+  public wzz(wzx paramwzx, qqstory_group.RspGetGroupHotRankVideo paramRspGetGroupHotRankVideo, boolean paramBoolean)
   {
-    return a;
+    super(paramRspGetGroupHotRankVideo.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo = paramRspGetGroupHotRankVideo;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public xbk a(byte[] paramArrayOfByte)
+  public wzz(wzx paramwzx, boolean paramBoolean)
   {
-    qqstory_service.RspReportEvil localRspReportEvil = new qqstory_service.RspReportEvil();
-    try
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a()
+  {
+    Object localObject = this.jdField_a_of_type_Wzx;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.is_end.get() == 1) {}
+    xaa localxaa;
+    for (boolean bool = true;; bool = false)
     {
-      localRspReportEvil.mergeFrom(paramArrayOfByte);
-      return new xbk(localRspReportEvil);
+      ((wzx)localObject).jdField_a_of_type_Boolean = bool;
+      wzx.a(this.jdField_a_of_type_Wzx, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.next_cookie.get().toStringUtf8());
+      wzx.a(this.jdField_a_of_type_Wzx, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.seq.get());
+      localObject = new ArrayList();
+      localxaa = new xaa();
+      localxaa.jdField_a_of_type_Boolean = this.jdField_a_of_type_Wzx.jdField_a_of_type_Boolean;
+      localxaa.b = this.jdField_a_of_type_Boolean;
+      if ((!this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.has()) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.size() <= 0)) {
+        break label203;
+      }
+      Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.get().iterator();
+      while (localIterator.hasNext()) {
+        ((ArrayList)localObject).add(HotSortVideoEntry.convertFrom((qqstory_group.HotVideoCard)localIterator.next()));
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      paramArrayOfByte.printStackTrace();
+      ThreadManager.post(new GetHotSortVideoHandler.GetHotSortVideoResponse.1(this, (ArrayList)localObject, localxaa), 5, null, true);
+      return;
+      label203:
+      yuk.e("GetHotSortVideoHandler", "GetHotSortVideoResponse Success but video_card_list is empty。");
     }
-    return null;
+    localxaa.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    wjj.a().dispatch(localxaa);
   }
   
-  protected byte[] a()
+  public void a(int paramInt, Bundle paramBundle)
   {
-    qqstory_service.ReqReportEvil localReqReportEvil = new qqstory_service.ReqReportEvil();
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localReqReportEvil.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    paramBundle = new xaa();
+    paramBundle.c = true;
+    wjj.a().dispatch(paramBundle);
+    QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131704156), 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.e("GetHotSortVideoHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
     }
-    if (this.jdField_b_of_type_Long != 0L) {
-      localReqReportEvil.tuin.set(this.jdField_b_of_type_Long);
-    }
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      localReqReportEvil.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    }
-    localReqReportEvil.type.set(this.jdField_c_of_type_Int);
-    return localReqReportEvil.toByteArray();
   }
   
-  public String toString()
+  public void a(int paramInt, String paramString)
   {
-    return "ReportEvilRequest{impeachType=" + this.jdField_c_of_type_Int + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    xaa localxaa = new xaa();
+    localxaa.c = true;
+    wjj.a().dispatch(localxaa);
+    QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131704155), 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.e("GetHotSortVideoHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
+    }
   }
 }
 

@@ -1,66 +1,41 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.SpannableString;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.3;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.List;
 
-public class atvb
+class atvb
+  extends atrl
 {
-  public static void a(Context paramContext, int paramInt1, int paramInt2, atve paramatve)
+  atvb(atuv paramatuv) {}
+  
+  public void a(long paramLong1, long paramLong2)
   {
-    Object localObject = paramContext;
-    if (paramContext == null) {
-      localObject = BaseActivity.sTopActivity;
-    }
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
-      }
-      return;
-    }
-    a((Context)localObject, ((Context)localObject).getString(paramInt1), ((Context)localObject).getString(paramInt2), paramatve);
+    atuv.a(this.a, (float)paramLong1, (float)paramLong2);
   }
   
-  public static void a(Context paramContext, String paramString, int paramInt, atve paramatve)
+  protected void a(boolean paramBoolean1, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, boolean paramBoolean2, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
   {
-    Object localObject = paramContext;
-    if (paramContext == null) {
-      localObject = BaseActivity.sTopActivity;
-    }
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
-      }
-      return;
-    }
-    a((Context)localObject, paramString, ((Context)localObject).getString(paramInt), paramatve);
+    atuv.a(this.a, paramBoolean1, paramLong1, paramString1, paramString2, paramByteStringMicro, paramBoolean2, paramString3, paramShort, paramString4, paramList, paramInt, paramString5, paramString6, paramString7, paramLong2, paramBundle);
   }
   
-  public static void a(Context paramContext, String paramString, CharSequence paramCharSequence, atve paramatve)
+  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle)
   {
-    atvc localatvc = new atvc(paramatve);
-    paramatve = new atvd(paramatve);
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {}
-    do
-    {
-      new Handler(localLooper).post(new FMDialogUtil.3(paramContext, paramCharSequence, paramString, localatvc, paramatve));
-      do
-      {
-        return;
-      } while (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()));
-      if ((paramCharSequence instanceof String))
-      {
-        bglp.a(paramContext, 230, paramString, (String)paramCharSequence, 2131692060, 2131692064, localatvc, paramatve).show();
-        return;
-      }
-    } while (!(paramCharSequence instanceof SpannableString));
-    bglp.a(paramContext, 230, paramString, paramCharSequence, 2131692060, 2131692064, localatvc, paramatve).show();
+    atuv.a(this.a, paramBoolean, paramLong1, paramString1, paramString2, paramString3, paramInt1, paramString4, paramString5, paramInt2, paramLong2, paramBundle);
+  }
+  
+  public void aF_()
+  {
+    this.a.j();
+  }
+  
+  protected void b(boolean paramBoolean, atri paramatri, aock paramaock)
+  {
+    super.b(paramBoolean, paramatri, paramaock);
+    atuv.a(this.a, paramBoolean, paramatri);
+  }
+  
+  protected void b(boolean paramBoolean, atri paramatri, aock paramaock, List<String> paramList)
+  {
+    atuv.a(this.a, paramatri);
   }
 }
 

@@ -1,6 +1,10 @@
-public abstract interface oao
+public class oao
 {
-  public abstract void a();
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
 }
 
 

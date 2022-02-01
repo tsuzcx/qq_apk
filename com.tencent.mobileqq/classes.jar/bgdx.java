@@ -1,68 +1,77 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
-import protocol.KQQConfig.UpgradeInfo;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 
-public final class bgdx
-  implements Parcelable.Creator<UpgradeDetailWrapper>
+public class bgdx
+  implements bgfd
 {
-  public UpgradeDetailWrapper a(Parcel paramParcel)
+  public bgdx(XMediaEditor paramXMediaEditor) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    ApkUpdateDetail localApkUpdateDetail = null;
-    String str = "";
-    UpgradeInfo localUpgradeInfo;
-    if (paramParcel.readInt() == 1)
-    {
-      localUpgradeInfo = new UpgradeInfo();
-      localUpgradeInfo.iAppid = paramParcel.readInt();
-      localUpgradeInfo.bAppType = paramParcel.readByte();
-      localUpgradeInfo.iUpgradeType = paramParcel.readInt();
-      localUpgradeInfo.iUpgradeSdkId = paramParcel.readInt();
-      localUpgradeInfo.strTitle = paramParcel.readString();
-      localUpgradeInfo.strUpgradeDesc = paramParcel.readString();
-      localUpgradeInfo.strUrl = paramParcel.readString();
-      localUpgradeInfo.iActionType = paramParcel.readInt();
-      localUpgradeInfo.bNewSwitch = paramParcel.readByte();
-      localUpgradeInfo.iNewTimeStamp = paramParcel.readInt();
-      localUpgradeInfo.strUpgradePageUrl = paramParcel.readString();
-      localUpgradeInfo.iIncrementUpgrade = paramParcel.readInt();
-      localUpgradeInfo.iTipsType = paramParcel.readInt();
-      localUpgradeInfo.strBannerPicUrl = paramParcel.readString();
-      localUpgradeInfo.strNewUpgradeDescURL = paramParcel.readString();
-      localUpgradeInfo.iDisplayDay = paramParcel.readInt();
-      localUpgradeInfo.iTipsWaitDay = paramParcel.readInt();
-      localUpgradeInfo.strProgressName = paramParcel.readString();
-      localUpgradeInfo.strNewTipsDescURL = paramParcel.readString();
-      localUpgradeInfo.strNewSoftwareURL = paramParcel.readString();
-      str = paramParcel.readString();
+    if (paramInt1 == paramInt2) {
+      return;
     }
-    for (;;)
+    paramInt1 = paramInt2 - paramInt1;
+    if (XMediaEditor.a(this.a) != null) {
+      XMediaEditor.a(this.a).a(XMediaEditor.a(this.a), XMediaEditor.a(this.a) + paramInt1);
+    }
+    XMediaEditor.a(this.a, paramInt1 + XMediaEditor.a(this.a));
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder)
+  {
+    paramViewHolder = ((bgff)paramViewHolder).jdField_a_of_type_Bgeg;
+    this.a.a(paramViewHolder.c);
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean)
+  {
+    if (XMediaEditor.a(this.a) != this.a.a.a())
     {
-      if (paramParcel.readInt() == 1)
-      {
-        localApkUpdateDetail = new ApkUpdateDetail();
-        localApkUpdateDetail.fileMd5 = paramParcel.readString();
-        localApkUpdateDetail.newapksize = paramParcel.readInt();
-        localApkUpdateDetail.packageName = paramParcel.readString();
-        localApkUpdateDetail.patchsize = paramParcel.readInt();
-        localApkUpdateDetail.sigMd5 = paramParcel.readString();
-        localApkUpdateDetail.updatemethod = paramParcel.readInt();
-        localApkUpdateDetail.url = paramParcel.readString();
-        localApkUpdateDetail.versioncode = paramParcel.readInt();
-        localApkUpdateDetail.versionname = paramParcel.readString();
+      paramViewHolder = this.a;
+      if (XMediaEditor.a(this.a)) {
+        break label73;
       }
-      paramParcel = new UpgradeDetailWrapper(localUpgradeInfo, localApkUpdateDetail);
-      paramParcel.b = str;
-      paramParcel.a = anjo.a(localUpgradeInfo);
-      return paramParcel;
-      localUpgradeInfo = null;
+    }
+    label73:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      XMediaEditor.a(paramViewHolder, paramBoolean);
+      if (XMediaEditor.a(this.a) != null) {
+        XMediaEditor.a(this.a).a(XMediaEditor.a(this.a));
+      }
+      return;
     }
   }
   
-  public UpgradeDetailWrapper[] a(int paramInt)
+  public void b(RecyclerView.ViewHolder paramViewHolder)
   {
-    return new UpgradeDetailWrapper[paramInt];
+    int i = ((bgff)paramViewHolder).jdField_a_of_type_Bgeg.c;
+    if (i == 0) {}
+    while (this.a.a.a(i - 1).b() == -1) {
+      return;
+    }
+    this.a.a(i - 1);
+  }
+  
+  public void c(RecyclerView.ViewHolder paramViewHolder)
+  {
+    paramViewHolder = (bgfu)paramViewHolder;
+    if (XMediaEditor.a(this.a) != null) {
+      XMediaEditor.a(this.a).a = false;
+    }
+    XMediaEditor.a(this.a, (bgep)paramViewHolder.jdField_a_of_type_Bgeg);
+    if (XMediaEditor.a(this.a) != null) {
+      XMediaEditor.a(this.a).a(paramViewHolder.jdField_a_of_type_AndroidWidgetEditText, true);
+    }
+  }
+  
+  public void d(RecyclerView.ViewHolder paramViewHolder)
+  {
+    paramViewHolder = (bgfu)paramViewHolder;
+    if (XMediaEditor.a(this.a) != null) {
+      XMediaEditor.a(this.a).a(paramViewHolder.jdField_a_of_type_AndroidWidgetEditText, false);
+    }
   }
 }
 

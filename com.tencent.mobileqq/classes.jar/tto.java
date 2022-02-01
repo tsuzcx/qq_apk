@@ -1,28 +1,14 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class tto
-  implements TextWatcher
+  implements ViewBase.IBuilder
 {
-  public tto(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public ViewBase build(VafContext paramVafContext)
   {
-    if (TextUtils.isEmpty(ReadInJoyNewSearchActivity.a(this.a).getText().toString()))
-    {
-      ReadInJoyNewSearchActivity.a(this.a).setVisibility(8);
-      return;
-    }
-    ReadInJoyNewSearchActivity.a(this.a).setVisibility(0);
+    return new ttn(paramVafContext);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

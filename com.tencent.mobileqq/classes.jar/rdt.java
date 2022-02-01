@@ -1,8 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
-
 public abstract interface rdt
 {
-  public abstract void a(int paramInt, String paramString, BaseResData paramBaseResData);
+  public abstract void a(int paramInt1, int paramInt2, long paramLong);
 }
 
 

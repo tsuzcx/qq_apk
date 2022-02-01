@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.datareportviewer;
 
-import arki;
+import arzx;
 
 class DataReportViewer$8
   implements Runnable
@@ -9,8 +9,8 @@ class DataReportViewer$8
   
   public void run()
   {
-    if (arki.a) {
-      arki.a().b();
+    if (arzx.a) {
+      arzx.a().b();
     }
   }
 }

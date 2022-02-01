@@ -1,27 +1,13 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.nio.ByteBuffer;
 
 public class xuz
-  extends QQUIEventReceiver<xui, wwx>
 {
-  public xuz(@NonNull xui paramxui)
-  {
-    super(paramxui);
-  }
+  public long a;
+  public ByteBuffer a;
   
-  public void a(@NonNull xui paramxui, @NonNull wwx paramwwx)
+  xuz(int paramInt)
   {
-    if (paramwwx.a.isSuccess())
-    {
-      yqp.a(paramxui.b, "receive user info event. %s.", paramwwx.toString());
-      paramxui.i();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wwx.class;
+    this.a = ByteBuffer.allocate(paramInt);
   }
 }
 

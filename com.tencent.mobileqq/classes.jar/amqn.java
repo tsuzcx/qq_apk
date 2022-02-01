@@ -1,31 +1,12 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.SwitchCameraCompleteCallback;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.9;
-import org.json.JSONObject;
-
-public class amqn
-  extends AVVideoCtrl.SwitchCameraCompleteCallback
+class amqn
 {
-  public amqn(CmGameAvHandler.9 param9) {}
+  bgtx jdField_a_of_type_Bgtx;
+  Boolean jdField_a_of_type_JavaLangBoolean;
   
-  public void onComplete(int paramInt1, int paramInt2)
+  public amqn(amqh paramamqh, bgtx parambgtx)
   {
-    int i = 0;
-    if (paramInt2 == 0) {}
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("ret", i);
-        localJSONObject.put("cameraPos", paramInt1);
-        localJSONObject.put("errCode", paramInt2);
-        ampj.a().callbackFromRequest(this.a.a, 0, "cs.audioRoom_camera_switch.local", localJSONObject.toString());
-        return;
-      }
-      catch (Exception localException) {}
-      i = -1;
-    }
+    this.jdField_a_of_type_Bgtx = parambgtx;
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
   }
 }
 

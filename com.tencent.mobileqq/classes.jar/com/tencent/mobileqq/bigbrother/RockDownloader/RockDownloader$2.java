@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.bigbrother.RockDownloader;
 
 import android.text.TextUtils;
-import anni;
-import apvy;
-import apvz;
+import anzj;
+import aqjo;
+import aqjp;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 import com.tencent.mobileqq.persistence.Entity;
@@ -20,7 +20,7 @@ public final class RockDownloader$2
   
   public void run()
   {
-    Object localObject = apvz.a().query(RockDownloadInfo.class, true, "businessName=? AND packageName=?", new String[] { this.a.getDownloadInfo().businessName, this.a.getDownloadInfo().packageName }, null, null, null, null);
+    Object localObject = aqjp.a().query(RockDownloadInfo.class, true, "businessName=? AND packageName=?", new String[] { this.a.getDownloadInfo().businessName, this.a.getDownloadInfo().packageName }, null, null, null, null);
     ArrayList localArrayList = new ArrayList();
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
@@ -43,7 +43,7 @@ public final class RockDownloader$2
             if (QLog.isColorLevel()) {
               QLog.d("RockDownloader", 2, new Object[] { "File Removed: ", localEntity.toString() });
             }
-            apvz.a().remove(localRockDownloadInfo);
+            aqjp.a().remove(localRockDownloadInfo);
           }
         }
       }
@@ -57,7 +57,7 @@ public final class RockDownloader$2
     else {
       return;
     }
-    this.a.getQueryAPKListener().a(this.a.getDownloadInfo(), anni.a(2131712261), 10002);
+    this.a.getQueryAPKListener().a(this.a.getDownloadInfo(), anzj.a(2131712370), 10002);
   }
 }
 

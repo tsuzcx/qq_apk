@@ -1,19 +1,64 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bgep
-  implements DialogInterface.OnKeyListener
+  extends bgeg
 {
-  public bgep(UpgradeActivity paramUpgradeActivity) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public boolean c;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public bgep(String paramString)
   {
-    if (paramInt == 4) {
-      this.a.finish();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("type", "str");
+      this.jdField_a_of_type_OrgJsonJSONObject.put("text", paramString);
+      return;
     }
-    return false;
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public bgep(JSONObject paramJSONObject)
+  {
+    a(paramJSONObject);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaLangString.length();
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("text");
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaLangString.length();
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("text", paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

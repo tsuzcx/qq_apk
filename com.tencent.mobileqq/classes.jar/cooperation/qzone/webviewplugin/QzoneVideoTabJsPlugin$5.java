@@ -1,17 +1,17 @@
 package cooperation.qzone.webviewplugin;
 
-import bmfd;
-import bmfg;
-import bmnp;
+import bngf;
+import bngi;
+import bnos;
 
 public class QzoneVideoTabJsPlugin$5
   implements Runnable
 {
-  public QzoneVideoTabJsPlugin$5(bmnp parambmnp, String paramString) {}
+  public QzoneVideoTabJsPlugin$5(bnos parambnos, String paramString) {}
   
   public void run()
   {
-    bmfd.a().a().e(this.a);
+    bngf.a().a().e(this.a);
   }
 }
 

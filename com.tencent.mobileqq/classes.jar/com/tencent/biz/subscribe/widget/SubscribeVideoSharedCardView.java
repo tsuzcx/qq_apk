@@ -3,8 +3,8 @@ package com.tencent.biz.subscribe.widget;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import aabx;
-import aako;
+import aagc;
+import aaop;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
@@ -34,22 +34,22 @@ public class SubscribeVideoSharedCardView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a(aabx paramaabx, Bitmap paramBitmap, aako paramaako)
+  public void a(aagc paramaagc, Bitmap paramBitmap, aaop paramaaop)
   {
-    super.a(paramaabx, paramBitmap, paramaako);
-    paramaabx = paramaabx.a();
-    a(this.jdField_a_of_type_AndroidWidgetFrameLayout, paramaabx.cover.width.get(), paramaabx.cover.height.get());
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramaabx.poster.icon.get());
+    super.a(paramaagc, paramBitmap, paramaaop);
+    paramaagc = paramaagc.a();
+    a(this.jdField_a_of_type_AndroidWidgetFrameLayout, paramaagc.cover.width.get(), paramaagc.cover.height.get());
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramaagc.poster.icon.get());
     this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramaabx.cover.url.get());
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramaagc.cover.url.get());
     this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView);
-    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, paramaako);
+    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, paramaaop);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364289));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364334));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
 }

@@ -1,26 +1,26 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
+import java.util.HashMap;
 
 public class bbjy
-  implements ssu
+  extends bbjz
 {
-  public bbjy(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
+  public int a = -1;
   
-  public void a(String paramString)
+  public HashMap<String, String> a(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString))
+    if ("ShortVideo.Preview".equals(paramString))
     {
-      FragmentActivity localFragmentActivity = this.a.getActivity();
-      if ((localFragmentActivity instanceof ActiveEntitySearchActivity))
-      {
-        ((ActiveEntitySearchActivity)localFragmentActivity).b(paramString);
-        if (this.a.a != null) {
-          bbup.a("sub_result", "clk_hot", new String[] { paramString, bbup.a(this.a.a) });
-        }
-      }
+      paramString = new HashMap();
+      paramString.put("param_uinType", this.b + "");
+      paramString.put("param_GroupMemberCount", this.c + "");
+      paramString.put("param_age", this.d + "");
+      paramString.put("param_gender", this.e + "");
+      paramString.put("param_shortVideoType", this.f + "");
+      paramString.put("param_reportHour", this.g + "");
+      paramString.put("param_netType", this.h + "");
+      paramString.put("param_playAction", this.a + "");
+      return paramString;
     }
+    return null;
   }
 }
 

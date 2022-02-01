@@ -1,23 +1,34 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class afis
-  extends lmo
+  extends anuw
 {
-  public afis(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public afis(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  protected void a(int paramInt, long paramLong)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    this.a.c();
+    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
+      QQSettingSettingActivity.a(this.a, (Card)paramObject);
+    }
   }
   
-  protected void a(int paramInt, long paramLong1, long paramLong2)
+  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    this.a.c();
-  }
-  
-  protected void b(int paramInt, long paramLong)
-  {
-    this.a.c();
+    if ((paramString != null) && (paramString.equals(this.a.app.getCurrentAccountUin())))
+    {
+      if (paramBoolean1) {
+        this.a.a(this.a.app.getCurrentAccountUin());
+      }
+      return;
+    }
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    QLog.e("QQSetting2Activity", 2, "onGetAllowSeeLoginDays isSuccess " + paramBoolean1 + "isAllow:" + paramBoolean2 + "uin " + str);
   }
 }
 

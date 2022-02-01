@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import awnc;
-import bdps;
+import axfu;
+import beio;
 import org.json.JSONObject;
 
 class ThemeJsPlugin$3
-  implements awnc<bdps>
+  implements axfu<beio>
 {
   ThemeJsPlugin$3(ThemeJsPlugin paramThemeJsPlugin, JSONObject paramJSONObject, String paramString) {}
   
-  public void postQuery(bdps parambdps)
+  public void postQuery(beio parambeio)
   {
-    this.this$0.startDownload(this.val$json, this.val$callbackId, parambdps);
+    this.this$0.startDownload(this.val$json, this.val$callbackId, parambeio);
   }
 }
 

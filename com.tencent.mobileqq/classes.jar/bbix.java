@@ -1,12 +1,19 @@
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
-public class bbix
-  extends bbir
+public abstract interface bbix
 {
-  public bbix(ListView paramListView, aobu paramaobu, bkhe parambkhe, int paramInt)
-  {
-    super(paramListView, paramaobu, parambkhe, paramInt);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(FilterCategoryItem paramFilterCategoryItem);
+  
+  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo);
+  
+  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString);
+  
+  public abstract void b(FilterCategoryItem paramFilterCategoryItem);
 }
 
 

@@ -1,41 +1,37 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aaxa
+  extends bgst
 {
-  private static float a(int paramInt1, int paramInt2)
+  public aaxa(TroopGiftPanel paramTroopGiftPanel, aawl paramaawl) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    if (paramInt1 <= paramInt2) {
-      return 1.0F;
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
     }
-    return 1.0F * paramInt2 / paramInt1;
+    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
+    {
+      aocz.a("gift_store", "fail_all", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
+      return;
+    }
+    bdll.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forall_fail", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Aawl.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mvb.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
   
-  public static Bitmap a(Bitmap paramBitmap)
+  public void b(int paramInt)
   {
-    int i;
-    int j;
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
-    {
-      i = paramBitmap.getWidth();
-      j = paramBitmap.getHeight();
-      if ((i > 0) && (j > 0)) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult productId = " + paramInt);
     }
-    else
+    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
     {
-      return paramBitmap;
+      aocz.a("gift_store", "suc_all", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
+      return;
     }
-    int k = ((Long)aavz.a().a("SmartCutPicWidth", Long.valueOf(224L))).intValue();
-    if (i <= j) {}
-    for (float f = a(i, k);; f = a(j, k))
-    {
-      k = (int)f;
-      int m = (int)f;
-      ayxi.a("Q.videostory", "Q.videostory.capture", "resizeImage", k * i + " " + m * j);
-      Matrix localMatrix = new Matrix();
-      localMatrix.postScale(f, f);
-      return Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
-    }
+    bdll.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forall_suc", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Aawl.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mvb.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
 }
 

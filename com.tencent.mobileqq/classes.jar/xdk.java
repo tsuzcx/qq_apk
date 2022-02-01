@@ -1,15 +1,21 @@
-class xdk
-  extends xcc
+public class xdk
 {
-  xdk(xcu paramxcu, String paramString1, String paramString2, boolean paramBoolean, xea paramxea)
+  public final String a;
+  public final zld a;
+  public final zll a;
+  public final String b;
+  
+  public xdk(String paramString1, zll paramzll, zld paramzld, String paramString2)
   {
-    super(paramString1, paramString2, paramBoolean);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Zll = paramzll;
+    this.jdField_a_of_type_Zld = paramzld;
+    this.b = paramString2;
   }
   
-  public boolean b()
+  public String toString()
   {
-    this.jdField_a_of_type_Xea.h = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    return "TagInfoBaseVidList{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tagInfo=" + this.jdField_a_of_type_Zll + ", comInfo=" + this.jdField_a_of_type_Zld + ", extCfgInfo=" + this.b + '}';
   }
 }
 

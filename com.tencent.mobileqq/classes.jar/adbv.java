@@ -1,9 +1,19 @@
-public abstract interface adbv
-  extends adbu
+import java.util.List;
+
+public class adbv
+  implements adbs
 {
-  public abstract void a(String paramString);
+  private adbb<adbr> a = new adbc();
   
-  public abstract void b(String paramString);
+  public List<adbr> a()
+  {
+    return this.a.a();
+  }
+  
+  public void a(Class<? extends adbr> paramClass)
+  {
+    this.a.a(paramClass);
+  }
 }
 
 

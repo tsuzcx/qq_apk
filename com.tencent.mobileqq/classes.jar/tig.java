@@ -1,22 +1,10 @@
-import android.view.ViewTreeObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
-
-public class tig
-  implements tin
+public abstract interface tig
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public abstract void I_();
   
-  public tig(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView, int paramInt1, int paramInt2)
-  {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
+  public abstract void J_();
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new tih(this, paramInt1, paramInt2));
-  }
+  public abstract void K_();
 }
 
 

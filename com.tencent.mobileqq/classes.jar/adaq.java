@@ -1,42 +1,76 @@
+import OnlinePushPack.MsgInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.pb.PBStringField;
+import localpb.richMsg.SafeMsg.SafeMoreInfo;
 
-public class adaq
-  implements acxp
+class adaq
 {
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MsgInfo jdField_a_of_type_OnlinePushPackMsgInfo;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  
+  public adaq(adan paramadan, MsgInfo paramMsgInfo, long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_OnlinePushPackMsgInfo = paramMsgInfo;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+  }
+  
   public int a()
   {
-    return 10008;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public adaq a()
+  {
+    this.jdField_a_of_type_JavaLangString = new String(bcsa.a(this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg), "utf-8");
+    Object localObject = ((anyw)this.jdField_a_of_type_Adan.a.getManager(51)).e(this.jdField_b_of_type_Long + "");
+    if ((localObject != null) && (((Friends)localObject).isFriend())) {
+      this.jdField_a_of_type_Int = 0;
+    }
+    for (;;)
+    {
+      localObject = new SafeMsg.SafeMoreInfo();
+      ((SafeMsg.SafeMoreInfo)localObject).strFromMobile.set(this.jdField_a_of_type_OnlinePushPackMsgInfo.strFromMobile);
+      ((SafeMsg.SafeMoreInfo)localObject).strFromName.set(this.jdField_a_of_type_OnlinePushPackMsgInfo.strFromName);
+      ((SafeMsg.SafeMoreInfo)localObject).strMsgTxt.set(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ArrayOfByte = ((SafeMsg.SafeMoreInfo)localObject).toByteArray();
+      this.jdField_b_of_type_Int = -1002;
+      this.jdField_a_of_type_Boolean = true;
+      return this;
+      localObject = ((axfr)this.jdField_a_of_type_Adan.a.getManager(11)).b(String.valueOf(this.jdField_a_of_type_Long));
+      if ((localObject != null) && (((String)localObject).length() != 0)) {
+        this.jdField_a_of_type_Int = 1006;
+      } else {
+        this.jdField_a_of_type_Int = 1000;
+      }
+    }
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public boolean a()
   {
-    return false;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public byte[] a()
   {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(165);
-    paramQQAppInterface = paramQQAppInterface.a().f(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
-    if (paramQQAppInterface != null) {
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramQQAppInterface));
-    }
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
+    return this.jdField_a_of_type_ArrayOfByte;
   }
   
   public int b()
   {
-    return 0;
+    return this.jdField_b_of_type_Int;
   }
 }
 

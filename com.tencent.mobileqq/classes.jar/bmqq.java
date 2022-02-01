@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import cooperation.qqreader.ui.ReaderHomePageActivity;
 
-class bmqq
-  implements DialogInterface.OnShowListener
+public class bmqq
+  implements aqrn
 {
-  bmqq(bmqo parambmqo, biau parambiau) {}
+  public bmqq(ReaderHomePageActivity paramReaderHomePageActivity, String paramString1, String paramString2, String paramString3) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public ColorNote getColorNote()
   {
-    this.jdField_a_of_type_Biau.hide();
+    return new aqrv().d("https://qzonestyle.gtimg.cn/aoi/sola/20191105163912_ONRjyZUKh8.png").b(this.jdField_a_of_type_JavaLangString).c(this.b).a(16908289).a(this.c + "_PUPUReader").a();
   }
 }
 

@@ -1,6 +1,8 @@
+import android.view.MotionEvent;
+
 public abstract interface lsi
 {
-  public abstract void a();
+  public abstract boolean a(lsh paramlsh, MotionEvent paramMotionEvent);
 }
 
 

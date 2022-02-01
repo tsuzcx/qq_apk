@@ -1,25 +1,19 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.contacts.friend.SimpleTextView;
-import com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajjg
-  extends ajhg
+public abstract interface ajjg
 {
-  public ImageView a;
-  public LinearLayout a;
-  public URLImageView a;
-  public SimpleTextView a;
-  public MutualMarkIconsView a;
-  public OnlineStatusView a;
-  public StringBuilder a;
-  public boolean a;
-  public ImageView b;
-  public URLImageView b;
-  public boolean b;
-  public ImageView c;
+  public abstract QQAppInterface a();
+  
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract Activity getActivity();
 }
 
 

@@ -1,12 +1,22 @@
-import android.os.Bundle;
-
-public class bhou
+class bhou
+  implements agyz
 {
-  protected bhov a;
+  bhou(bhot parambhot) {}
   
-  public void a(int paramInt, Bundle paramBundle) {}
+  public boolean a(agyw paramagyw)
+  {
+    if (this.a.isShowing())
+    {
+      this.a.dismiss();
+      return true;
+    }
+    return false;
+  }
   
-  public void b() {}
+  public boolean a(agyw paramagyw, String paramString1, String paramString2)
+  {
+    return false;
+  }
 }
 
 

@@ -1,50 +1,77 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import com.tencent.mobileqq.emosm.Client;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class arpb
-  implements ServiceConnection
+  extends arac<arpc>
 {
-  public arpb(Client paramClient) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  @NonNull
+  public arpc a(int paramInt)
   {
-    try
+    return new arpc();
+  }
+  
+  @Nullable
+  public arpc a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
     {
-      this.a.mIsBound = true;
-      this.a.mService = new Messenger(paramIBinder);
+      arpc localarpc = arpc.a(paramArrayOfaraj[0].a);
       if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.Client", 2, "ServiceConnection Attached.");
+        QLog.i("UinSearchConfProcessor", 2, "onParsed: " + paramArrayOfaraj[0].a);
       }
-      arui.a().a();
-      paramComponentName = Message.obtain(null, 1);
-      paramComponentName.replyTo = this.a.mMessenger;
-      this.a.mService.send(paramComponentName);
-      return;
+      return localarpc;
     }
-    catch (Exception paramComponentName)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("Q.emoji.web.Client", 2, paramComponentName.getMessage());
+    return new arpc();
+  }
+  
+  public void a(arpc paramarpc)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("UinSearchConfProcessor", 2, "onUpdate");
     }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public Class<arpc> clazz()
   {
-    this.a.mService = null;
-    this.a.onDisconnectWithService();
+    return arpc.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.web.Client", 2, "Disconnected.");
+      QLog.i("UinSearchConfProcessor", 2, "onReqFailed: " + paramInt);
     }
+  }
+  
+  public int type()
+  {
+    return 589;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arpb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,48 @@
-import android.text.TextUtils;
-import android.view.View;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import java.util.List;
 
-class afzh
-  implements bkhw
+public class afzh
+  extends anyu
 {
-  afzh(afyw paramafyw, String paramString) {}
+  public afzh(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
   {
-    afyw.a(this.jdField_a_of_type_Afyw).dismiss();
-    switch (paramInt)
+    if (paramBoolean)
     {
-    }
-    do
-    {
-      return;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        afyw.a(this.jdField_a_of_type_Afyw, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (afyw.a(this.jdField_a_of_type_Afyw))
-      {
-        afyw.b(this.jdField_a_of_type_Afyw);
-        return;
-      }
-      afyw.c(this.jdField_a_of_type_Afyw);
-      return;
-    } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-    if (afyw.a(this.jdField_a_of_type_Afyw))
-    {
-      afyw.b(this.jdField_a_of_type_Afyw);
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
       return;
     }
-    afyw.c(this.jdField_a_of_type_Afyw);
+    this.a.a(2131717928, 1);
+  }
+  
+  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList)
+  {
+    if (paramBoolean)
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      this.a.a(2131691311, 2);
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if ((paramBoolean1) && (paramBoolean3))
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bega
-  implements QQPermissionCallback
+  extends begp
 {
-  public bega(AbsPublishActivity paramAbsPublishActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bega(CharSequence paramCharSequence, int paramInt1, int paramInt2, MessageRecord paramMessageRecord, Object paramObject)
   {
-    this.a.a(this.a, this.a);
+    super(paramCharSequence, paramInt1, paramInt2, paramMessageRecord);
+    a(paramObject);
+  }
+  
+  private void a(Object paramObject)
+  {
+    a(paramObject, 0, BaseApplication.getContext().getString(2131690195).length(), 33);
   }
 }
 

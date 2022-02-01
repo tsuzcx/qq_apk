@@ -1,38 +1,37 @@
+import android.app.Dialog;
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
-class asbs
-  implements awnc<EmoticonPackage>
+public class asbs
+  extends ReportDialog
+  implements View.OnClickListener
 {
-  asbs(asbq paramasbq, QQAppInterface paramQQAppInterface, int paramInt, Context paramContext, SessionInfo paramSessionInfo) {}
+  private asbt a;
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public asbs(@NonNull Context paramContext)
   {
-    int i = awfd.a(this.jdField_a_of_type_Asbq.a.magicValue);
-    if ((-1 != i) && (paramEmoticonPackage != null))
-    {
-      paramEmoticonPackage.rscType = i;
-      ((awmr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(paramEmoticonPackage);
+    super(paramContext, 2131755990);
+    super.setContentView(2131558754);
+    super.setCanceledOnTouchOutside(false);
+    super.setCancelable(false);
+    super.findViewById(2131364030).setOnClickListener(this);
+  }
+  
+  public void a(asbt paramasbt)
+  {
+    this.a = paramasbt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.a != null) {
+      this.a.a(this);
     }
-    paramEmoticonPackage = "rscType?" + i + ";value=" + this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Asbq.a.magicValue = paramEmoticonPackage;
-    if (QLog.isColorLevel()) {
-      QLog.d("PicEmoticonInfo", 2, "before play,magicvalue:" + paramEmoticonPackage);
-    }
-    awfj localawfj = awgb.a(this.jdField_a_of_type_Asbq.a, 0);
-    if ((localawfj != null) && (!localawfj.c))
-    {
-      adrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Asbq.a);
-      return;
-    }
-    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a().a(this.jdField_a_of_type_Asbq.a, new asbt(this, paramEmoticonPackage));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

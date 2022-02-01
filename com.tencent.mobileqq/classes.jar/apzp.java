@@ -1,100 +1,69 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import KQQ.BatchResponse;
+import KQQ.RespBatchProcess;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class apzp
-  implements TextWatcher
+class apzp
+  extends aojs
 {
-  int jdField_a_of_type_Int;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean = true;
-  int b;
-  public boolean b;
+  apzp(apzn paramapzn) {}
   
-  public apzp(BusinessCardEditActivity paramBusinessCardEditActivity, int paramInt, EditText paramEditText)
+  protected void a(boolean paramBoolean, long paramLong, RespBatchProcess paramRespBatchProcess, Bundle paramBundle)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  public apzp(BusinessCardEditActivity paramBusinessCardEditActivity, int paramInt1, EditText paramEditText, int paramInt2)
-  {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    int j = 1;
-    boolean bool;
-    label69:
-    int i;
-    if ((this.jdField_b_of_type_Int == 1) && (!this.jdField_a_of_type_JavaLangString.equals(paramEditable.toString())))
+    this.a.a().removeObserver(this);
+    paramBundle = new TroopInfoData();
+    paramBundle.isMember = true;
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      if (this.jdField_a_of_type_Boolean)
+      localObject = new StringBuilder().append("onBatchGetTroopInfoResp, isSucc=").append(paramBoolean).append(", resp IsNull=");
+      if (paramRespBatchProcess == null)
       {
-        bool = this.jdField_b_of_type_Boolean;
-        this.jdField_b_of_type_Boolean = bool;
+        paramBoolean = true;
+        QLog.d("ark.Troop", 2, paramBoolean);
       }
     }
     else
     {
-      this.jdField_a_of_type_Boolean = false;
-      if (!(this.jdField_a_of_type_AndroidWidgetEditText instanceof ClearEllipsisEditText)) {
-        break label155;
+      if ((paramRespBatchProcess != null) && (paramRespBatchProcess.batch_response_list != null) && (paramRespBatchProcess.batch_response_list.size() != 0)) {
+        break label121;
       }
-      paramEditable = ((ClearEllipsisEditText)this.jdField_a_of_type_AndroidWidgetEditText).a();
-      i = paramEditable.length();
-      if ((this.jdField_a_of_type_AndroidWidgetEditText.getTag() == null) || (!((String)this.jdField_a_of_type_AndroidWidgetEditText.getTag()).equals("name"))) {
-        break label197;
+      if (QLog.isColorLevel()) {
+        QLog.w("ark.Troop", 2, "onBatchGetTroopInfoResp, return");
       }
-      i = paramEditable.getBytes().length;
     }
-    for (;;)
+    label121:
+    int j;
+    do
     {
-      if (i > this.jdField_a_of_type_Int)
+      return;
+      paramBoolean = false;
+      break;
+      j = paramRespBatchProcess.batch_response_list.size();
+      int i = 0;
+      if (i < j)
       {
+        localObject = (BatchResponse)paramRespBatchProcess.batch_response_list.get(i);
+        if ((localObject == null) || (((BatchResponse)localObject).result != 0)) {}
         for (;;)
         {
-          if (i <= this.jdField_a_of_type_Int) {
-            break label177;
-          }
-          paramEditable = paramEditable.substring(0, paramEditable.length() - 1);
-          if (j != 0)
+          i += 1;
+          break;
+          if (((BatchResponse)localObject).type == 1)
           {
-            i = paramEditable.getBytes().length;
-            continue;
-            bool = true;
-            break;
-            label155:
-            paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-            break label69;
+            TroopInfo localTroopInfo = ((TroopManager)this.a.a().getManager(52)).b(this.a.a);
+            this.a.a((BatchResponse)localObject, paramBundle, localTroopInfo);
           }
-          i = paramEditable.length();
         }
-        label177:
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(paramEditable);
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramEditable.length());
       }
-      return;
-      label197:
-      j = 0;
-    }
+    } while (j <= 0);
+    apzn.a(this.a, this.a.a, paramBundle);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

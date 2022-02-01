@@ -1,38 +1,44 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.TroopGagActivity;
+import com.tencent.mobileqq.activity.TroopGagActivity.3.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class afsl
-  implements View.OnClickListener
+  extends aojs
 {
-  public afsl(ActivateFriendGrid paramActivateFriendGrid) {}
+  public afsl(TroopGagActivity paramTroopGagActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    ActivateFriendGridItem localActivateFriendGridItem = (ActivateFriendGridItem)paramView;
-    if (localActivateFriendGridItem.jdField_a_of_type_Boolean)
-    {
-      ActivateFriendGrid.a(this.a);
-      if (localActivateFriendGridItem.jdField_a_of_type_Boolean) {
-        break label108;
-      }
-    }
-    label108:
-    for (boolean bool = true;; bool = false)
-    {
-      localActivateFriendGridItem.setChecked(bool);
-      if (ActivateFriendGrid.a(this.a) != null) {
-        ActivateFriendGrid.a(this.a).a(ActivateFriendGrid.c(this.a));
-      }
-      if (ActivateFriendGrid.a(this.a) != null) {
-        ActivateFriendGrid.a(this.a).a(localActivateFriendGridItem.jdField_a_of_type_Int);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
+    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {
       return;
-      ActivateFriendGrid.b(this.a);
-      break;
+    }
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_Afsn.notifyDataSetChanged();
+      if (this.a.jdField_a_of_type_Afsn.getCount() != 0) {
+        break label209;
+      }
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    for (;;)
+    {
+      this.a.getSharedPreferences("last_update_time" + this.a.app.getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + this.a.jdField_a_of_type_JavaLangString, System.currentTimeMillis()).commit();
+      ThreadManager.post(new TroopGagActivity.3.1(this, (bgsl)this.a.app.getManager(48)), 8, null, false);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("TroopGagActivity", 2, "onUpdateTroopGetMemberList: isSuccess=" + paramBoolean);
+      return;
+      label209:
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
   }
 }

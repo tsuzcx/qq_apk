@@ -1,26 +1,37 @@
-import java.nio.channels.SocketChannel;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.activity.weather.webpage.WeatherArkViewWrapper;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class amlu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/activity/weather/webpage/WeatherArkViewWrapper$initArkView$1", "Lcom/tencent/ark/ArkViewImplement$LoadCallback;", "onLoadFailed", "", "state", "", "errCode", "msg", "", "canRetry", "", "onLoadState", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amlu
+  implements ArkViewImplement.LoadCallback
 {
-  public int a;
-  public long a;
-  public String a;
-  public SocketChannel a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  
-  public amlu(long paramLong, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, SocketChannel paramSocketChannel)
+  public void onLoadFailed(int paramInt1, int paramInt2, @Nullable String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_JavaNioChannelsSocketChannel = paramSocketChannel;
-    this.jdField_c_of_type_Int = 0;
+    onLoadState(paramInt1);
+  }
+  
+  public void onLoadState(int paramInt)
+  {
+    QLog.i("WeatherWebArkWrapper", 1, "initArkView onLoadState : state -> " + paramInt);
+    if (paramInt == 1) {
+      this.a.setArkLoaded(true);
+    }
+    amlv.a(4, "state = " + paramInt);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      WeatherArkViewWrapper.a(this.a);
+      return;
+    case -1: 
+      WeatherArkViewWrapper.b(this.a);
+      return;
+    }
+    WeatherArkViewWrapper.c(this.a);
   }
 }
 

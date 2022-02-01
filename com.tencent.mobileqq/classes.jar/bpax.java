@@ -1,18 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout;
 
-class bpax
-  implements bial
+public class bpax
+  extends Handler
 {
-  bpax(bpau parambpau) {}
-  
-  public void a(biaj parambiaj)
+  public bpax(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambiaj);
-    }
+    super(paramLooper);
   }
   
-  public void a(biaj parambiaj, int paramInt1, int paramInt2) {}
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    this.a.a(paramMessage);
+  }
 }
 
 

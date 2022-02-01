@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import awng;
-import awnr;
+import axfy;
+import axgj;
 import mqq.os.MqqHandler;
 
 class MsgBackupQRFragment$6
@@ -11,11 +11,11 @@ class MsgBackupQRFragment$6
   
   public void run()
   {
-    awnr localawnr = awnr.a();
-    String str = localawnr.a().a();
+    axgj localaxgj = axgj.a();
+    String str = localaxgj.a().a();
     if (str != null)
     {
-      localawnr.a(str);
+      localaxgj.a(str);
       this.this$0.b.postDelayed(this, 500L);
     }
   }

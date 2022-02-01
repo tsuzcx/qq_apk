@@ -1,18 +1,46 @@
-import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
 
-class agvs
-  implements atwb
+public class agvs
+  implements agvc
 {
-  agvs(agup paramagup) {}
+  private aiap jdField_a_of_type_Aiap;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   
-  public void onClick(View paramView)
+  public agvs(BaseChatPie paramBaseChatPie)
   {
-    paramView = bglp.a(this.a.a, 230);
-    paramView.setTitle(2131691361);
-    paramView.setMessage(2131691362);
-    paramView.setNegativeButton(2131690582, new agvt(this, paramView));
-    paramView.setPositiveButton(2131694081, new agvu(this));
-    paramView.show();
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+  }
+  
+  private PlusPanel a()
+  {
+    if (this.jdField_a_of_type_Aiap == null) {
+      this.jdField_a_of_type_Aiap = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+    }
+    return (PlusPanel)this.jdField_a_of_type_Aiap.b(8);
+  }
+  
+  public void a(int paramInt)
+  {
+    PlusPanel localPlusPanel = a();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (localPlusPanel == null);
+      localPlusPanel.e();
+      return;
+    } while (localPlusPanel == null);
+    localPlusPanel.f();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 5, 13 };
   }
 }
 

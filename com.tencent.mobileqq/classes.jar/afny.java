@@ -1,79 +1,26 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class afny
-  implements ajer
+class afny
+  implements View.OnClickListener
 {
-  public afny(TroopRequestActivity paramTroopRequestActivity) {}
+  afny(afnv paramafnv, int paramInt) {}
   
-  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
+  public void onClick(View paramView)
   {
-    int i;
-    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512)))
+    if (!afnr.a(this.jdField_a_of_type_Afnv.a)) {}
+    for (;;)
     {
-      i = 1;
-      if (i == 0) {
-        break label126;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.TroopRequestActivity", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
-      }
-      ajeq.a(this.a, paramString);
-      ajeq.a(this.a.app);
-      this.a.i();
-      bcst.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "pay_troop", "", "", "");
-    }
-    label126:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          i = 0;
-          break;
-          if (((this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 11) || (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.sub_type.get() != 3)) && (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 7)) {
-            break label250;
-          }
-        } while (this.a.jdField_a_of_type_Anwd == null);
-        try
-        {
-          long l = Long.parseLong(this.a.jdField_a_of_type_JavaLangString);
-          this.a.h();
-          this.a.jdField_a_of_type_Anwd.a(l, 8390784);
-          return;
-        }
-        catch (Exception paramString) {}
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.systemmsg.TroopRequestActivity", 2, paramString.toString());
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.a.h();
-      TroopRequestActivity.a(this.a, 1);
-    } while (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 2);
-    label250:
-    bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "agree_invite", 0, 0, paramString, "", "0", "0");
-    bcst.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "normal_troop", "", "", "");
-  }
-  
-  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.i();
-    paramStructMsg = this.a;
-    if (paramInt1 == 72) {}
-    for (paramInt1 = 2131689969;; paramInt1 = 2131689968)
-    {
-      QQToast.a(paramStructMsg, paramInt1, 1).a();
-      bcst.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "err", "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.systemmsg.TroopRequestActivity", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
+      String str = bdgb.a(this.jdField_a_of_type_Afnv.a(this.jdField_a_of_type_Int).jdField_a_of_type_Int);
+      if (!behm.a(afnr.a(this.jdField_a_of_type_Afnv.a), str, new afnz(this))) {
+        afnv.a(this.jdField_a_of_type_Afnv, this.jdField_a_of_type_Int);
       }
-      return;
+      bmzn.a().a(str, "4", "platform898", "4", "1", 102, 1, System.currentTimeMillis());
+      bdll.b(afnr.a(this.jdField_a_of_type_Afnv.a).app, "dc00898", "", "", "qq_vip", "0X800B15C", Integer.decode(str).intValue(), 0, "", "", "", "");
     }
   }
 }

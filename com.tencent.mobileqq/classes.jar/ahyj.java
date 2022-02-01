@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahyj
-  implements View.OnClickListener
+public class ahyj
+  implements ahyf
 {
-  ahyj(ahxt paramahxt) {}
-  
-  public void onClick(View paramView)
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    paramView.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramahed.b(paramagjk, paramahfq, paramString);
   }
 }
 

@@ -1,29 +1,39 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.8.1;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.8.2;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.8.3;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.content.res.Resources;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
 public class ajrw
-  extends aarc
+  extends MqqHandler
 {
-  public ajrw(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  public ajrw(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
-    while (!paramBoolean1) {
-      return;
-    }
-    ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryTroopFileFragment.8.1(this, paramInt1));
-    if (paramBoolean2)
+    switch (paramMessage.what)
     {
-      ThreadManagerV2.getUIHandlerV2().postDelayed(new ChatHistoryTroopFileFragment.8.2(this), 1000L);
+    case 1013: 
+    case 1015: 
+    case 1017: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (TroopWithCommonFriendsFragment.a(this.a) == null);
+      TroopWithCommonFriendsFragment.a(this.a).notifyDataSetChanged();
+      return;
+    case 1014: 
+      paramMessage = this.a.a.getResources().getString(2131718517);
+      QQToast.a(this.a.a, 1, paramMessage, 0).b(this.a.a());
+      return;
+    case 1016: 
+      QQToast.a(this.a.a, this.a.getString(2131717888), 0).b(this.a.a());
       return;
     }
-    ThreadManagerV2.getUIHandlerV2().postDelayed(new ChatHistoryTroopFileFragment.8.3(this), 1000L);
+    QQToast.a(this.a.a, this.a.getString(2131717877), 0).b(this.a.a());
   }
 }
 

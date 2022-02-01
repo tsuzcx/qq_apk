@@ -1,21 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.VideoLayerUI;
-import com.tencent.av.widget.RotateLayout;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public class mkx
-  implements Animation.AnimationListener
+class mkx
+  implements mif
 {
-  private mkx(VideoLayerUI paramVideoLayerUI) {}
+  mkx(mkv parammkv) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    VideoLayerUI.a(this.a).setVisibility(4);
+    if (this.a.a.a != null)
+    {
+      this.a.a.a.setViewEnable(2131373495, false);
+      this.a.a.a.setViewEnable(2131363092, false);
+      this.a.a.a.setViewEnable(2131363104, false);
+      this.a.a.a.setViewEnable(2131363103, false);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void b()
+  {
+    this.a.a.e = true;
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 2130772169);
+  }
 }
 
 

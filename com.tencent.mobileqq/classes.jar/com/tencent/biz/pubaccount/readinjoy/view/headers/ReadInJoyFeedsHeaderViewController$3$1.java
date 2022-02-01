@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.headers;
 
-import anxu;
-import tcx;
+import aokg;
+import stp;
 
 class ReadInJoyFeedsHeaderViewController$3$1
   implements Runnable
@@ -14,8 +14,8 @@ class ReadInJoyFeedsHeaderViewController$3$1
       return;
     }
     this.a.this$0.f();
-    this.a.this$0.jdField_a_of_type_Anxu = new anxu(this.a.a);
-    this.a.this$0.jdField_a_of_type_Anxu.a(this.a.a, 6);
+    this.a.this$0.jdField_a_of_type_Aokg = new aokg(this.a.a);
+    this.a.this$0.jdField_a_of_type_Aokg.a(this.a.a, 6);
   }
 }
 

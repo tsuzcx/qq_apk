@@ -1,36 +1,29 @@
 import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.widget.TipsBar;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adti
   implements View.OnClickListener
 {
-  public adti(ChatHistory paramChatHistory) {}
+  public adti(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
   
   public void onClick(View paramView)
   {
-    if (bgnt.d(BaseApplication.getContext()))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.isShowing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.getWindow() != null)) {}
+    try
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
-      if (this.a.jdField_a_of_type_Int == 0) {
-        this.a.l();
-      }
-    }
-    for (;;)
-    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.dismiss();
+      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, -1, this.jdField_a_of_type_JavaLangString);
+      label58:
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a = null;
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-      if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(0);
-      this.a.c.setText(this.a.getString(2131691985));
+    }
+    catch (Throwable localThrowable)
+    {
+      break label58;
     }
   }
 }

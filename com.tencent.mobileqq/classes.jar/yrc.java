@@ -1,9 +1,17 @@
-public abstract interface yrc
-  extends ytx
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryDownloadView.5.1;
+
+public class yrc
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void b(int paramInt);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.a) {
+      new Handler().postDelayed(new StoryDownloadView.5.1(this), 1200L);
+    }
+  }
 }
 
 

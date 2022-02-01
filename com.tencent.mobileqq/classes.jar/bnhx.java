@@ -1,12 +1,21 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-
-public abstract interface bnhx
+public abstract class bnhx<T, P>
 {
-  public abstract void onAETavSessionExportCompleted(String paramString, LocalMediaInfo paramLocalMediaInfo);
+  private volatile T a;
   
-  public abstract void onAETavSessionExportError(String paramString, int paramInt);
+  protected abstract T a(P paramP);
   
-  public abstract void onAETavSessionExporting(String paramString, float paramFloat);
+  public final T b(P paramP)
+  {
+    if (this.a == null) {}
+    try
+    {
+      if (this.a == null) {
+        this.a = a(paramP);
+      }
+      return this.a;
+    }
+    finally {}
+  }
 }
 
 

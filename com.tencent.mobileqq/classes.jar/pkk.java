@@ -1,10 +1,17 @@
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
 public class pkk
+  extends AnimatorListenerAdapter
 {
-  public String a;
-  public HashMap<String, String> a;
-  public String b;
+  public pkk(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ReadInJoySelfFragment.a(this.a).setVisibility(8);
+  }
 }
 
 

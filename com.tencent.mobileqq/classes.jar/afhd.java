@@ -1,26 +1,33 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.activity.QQMapActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afhd
   implements View.OnClickListener
 {
-  public afhd(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public afhd(QQMapActivity paramQQMapActivity) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.mSwiftTitleUI != null)
+    if (this.a.l) {
+      this.a.w();
+    }
+    for (;;)
     {
-      this.a.mSwiftTitleUI.jdField_a_of_type_Bhqo.d = false;
-      this.a.mSwiftTitleUI.jdField_a_of_type_Bhqo.a = Boolean.valueOf(true);
-      if (this.a.mUIStyleHandler != null) {
-        this.a.mUIStyleHandler.l();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ("group_activity".equals(this.a.o))
+      {
+        this.a.k();
+      }
+      else
+      {
+        this.a.setResult(-1, this.a.a());
+        this.a.finish();
+        this.a.d();
       }
     }
-    this.a.onClick(this.a.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView);
-    this.a.a(0);
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

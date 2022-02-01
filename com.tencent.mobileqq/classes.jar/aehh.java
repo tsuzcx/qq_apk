@@ -1,21 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
 
 public class aehh
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public aehh(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public aehh(ContactBindedActivity paramContactBindedActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.f = false;
-    this.a.finish();
+    ContactBindedActivity.a(this.a, null);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

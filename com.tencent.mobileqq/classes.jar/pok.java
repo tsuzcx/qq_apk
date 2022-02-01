@@ -1,37 +1,51 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspBody;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspChannelArticle;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspGetFollowTabData;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspTrace;
 
-public class pok
-  implements pae
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/model/AritcleInfoModuleUtils;", "", "()V", "handleRealStyle", "", "serviceKey", "stylePbData", "Lcom/tencent/mobileqq/pb/PBBytesField;", "isChannelDataExcludeFollowChannel", "", "clientSwitch", "", "resp", "Ltencent/im/oidb/cmd0x68b/oidb_cmd0x68b$RspBody;", "isFollowChannelClientSwitch", "isVideoRealtimeReplaceReq", "report68BTrace", "rspTrace", "Ltencent/im/oidb/cmd0x68b/oidb_cmd0x68b$RspTrace;", "CommonChannelDataHandle", "FollowChannelDataHandler", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pok
 {
-  public pok(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
+  public static final pok a = new pok();
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean)
+  public final void a(@Nullable Object paramObject, @NotNull PBBytesField paramPBBytesField)
   {
-    if (!paramBoolean)
-    {
-      this.a.onBackEvent();
-      return;
+    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "stylePbData");
+    paramPBBytesField = qfm.a(paramPBBytesField);
+    if ((paramPBBytesField != null) && ((paramObject instanceof String))) {
+      svl.a((String)paramObject, paramPBBytesField);
     }
-    this.a.a(this.a.a);
   }
   
-  public void onClick(View paramView)
+  public final void a(@NotNull oidb_cmd0x68b.RspTrace paramRspTrace)
   {
-    switch (paramView.getId())
-    {
+    Intrinsics.checkParameterIsNotNull(paramRspTrace, "rspTrace");
+    if (paramRspTrace.has()) {
+      ozs.a(ozs.a(), paramRspTrace.rpt_trace_record_list.get());
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.onBackEvent();
-    }
+  }
+  
+  public final boolean a(long paramLong)
+  {
+    return (paramLong >> 13 & 1L) == 1L;
+  }
+  
+  public final boolean a(long paramLong, @NotNull oidb_cmd0x68b.RspBody paramRspBody)
+  {
+    Intrinsics.checkParameterIsNotNull(paramRspBody, "resp");
+    return ((paramLong >> 9 & 1L) == 1L) && (paramRspBody.msg_rsp_get_follow_tab_data.has());
+  }
+  
+  public final boolean b(long paramLong, @NotNull oidb_cmd0x68b.RspBody paramRspBody)
+  {
+    Intrinsics.checkParameterIsNotNull(paramRspBody, "resp");
+    return (!a(paramLong, paramRspBody)) && (paramRspBody.rspChannelArticle.has()) && (paramRspBody.rspChannelArticle.get() != null);
   }
 }
 

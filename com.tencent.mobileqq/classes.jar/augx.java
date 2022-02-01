@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-
-public class augx
-  implements DialogInterface.OnClickListener
+class augx
+  implements auey
 {
-  public augx(ForwardFileOption paramForwardFileOption) {}
+  augx(augr paramaugr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    this.a.a(false, aumg.a(this.a.a.a()), this.a.c(), new augy(this));
+  }
+  
+  public void b()
+  {
+    this.a.v();
+  }
 }
 
 

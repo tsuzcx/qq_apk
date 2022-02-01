@@ -1,19 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
 
 public class alxj
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public alxj(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Intent paramIntent, ArrayList paramArrayList) {}
+  private int jdField_a_of_type_Int;
+  private alxk jdField_a_of_type_Alxk;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public alxj(VideoFilterViewPager paramVideoFilterViewPager, alxk paramalxk, int paramInt)
   {
-    PhotoUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, false);
+    this.jdField_a_of_type_Alxk = paramalxk;
+    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if ((this.jdField_a_of_type_Alxk != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getCurrentItem() == this.jdField_a_of_type_Int))
+    {
+      this.jdField_a_of_type_Alxk.a(1);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener animation dismiss state: 1");
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,38 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTencentDocFileTabView;
 
-class aton
-  implements View.OnClickListener
+public class aton
+  extends auoi
 {
-  aton(atoe paramatoe, int paramInt) {}
+  public aton(QfileRecentTencentDocFileTabView paramQfileRecentTencentDocFileTabView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.jdField_a_of_type_Atoe.a != null)
-    {
-      if (this.jdField_a_of_type_Int != 1) {
-        break label86;
-      }
-      bcst.b(null, "dc00898", "", "", "0X800A745", "0X800A745", atwt.c(this.jdField_a_of_type_Atoe.e()), 0, "", "", "", "");
-      if (this.jdField_a_of_type_Atoe.a.d()) {
-        this.jdField_a_of_type_Atoe.a.b();
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label86:
-      if (this.jdField_a_of_type_Int == 2) {
-        this.jdField_a_of_type_Atoe.a.g();
-      }
-    }
+    this.a.a.a().b();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().o();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().E();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aton
  * JD-Core Version:    0.7.0.1
  */

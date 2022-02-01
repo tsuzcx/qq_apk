@@ -1,29 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aebw
-  implements View.OnTouchListener
+public final class aebw
+  implements DialogInterface.OnClickListener
 {
-  public aebw(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aebw(long paramLong, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString, boolean paramBoolean1, aebz paramaebz, Bundle paramBundle, boolean paramBoolean2) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramMotionEvent != null) && (this.a.a != null))
+    boolean bool = false;
+    paramDialogInterface = ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext);
+    if (paramInt == 1)
     {
-      paramView = this.a.a;
-      if (paramMotionEvent.getAction() != 0) {
-        break label39;
-      }
+      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDialogInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Aebz, this.jdField_a_of_type_AndroidOsBundle);
+      return;
     }
-    label39:
-    for (float f = 0.5F;; f = 1.0F)
-    {
-      paramView.setAlpha(f);
-      return false;
+    if (!this.b) {
+      bool = true;
     }
+    ChatActivityUtils.a(paramDialogInterface, bool, null);
   }
 }
 

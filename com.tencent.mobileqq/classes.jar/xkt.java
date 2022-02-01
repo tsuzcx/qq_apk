@@ -1,33 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
 
 public class xkt
-  extends SimpleObserver<ycb>
+  extends AnimatorListenerAdapter
 {
-  public xkt(xko paramxko) {}
+  public xkt(StoryPlayerActivity paramStoryPlayerActivity) {}
   
-  public void a(ycb paramycb)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super.onNext(paramycb);
-    xko.a(this.a, paramycb, new ErrorMessage(), true);
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    yqp.d("Q.qqstory.player.CommentFloatDialogController", "refresh data cancel");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    if (((ErrorMessage)paramError).errorCode == 2223)
-    {
-      xko.a(this.a, xko.a(this.a), new ErrorMessage(), false);
-      return;
-    }
-    xko.a(this.a, xko.a(this.a), (ErrorMessage)paramError, false);
+    super.onAnimationEnd(paramAnimator);
+    StoryPlayerActivity.a(this.a);
+    StoryPlayerActivity.a(this.a, 0, 0);
   }
 }
 

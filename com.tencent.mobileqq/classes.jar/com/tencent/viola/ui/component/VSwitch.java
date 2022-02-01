@@ -32,11 +32,9 @@ public class VSwitch
   public VSwitch(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
     super(paramViolaInstance, paramDomObject, paramVComponentContainer);
-    paramViolaInstance = new int[] { 16842912 };
-    paramDomObject = new int[] { 0 };
     int i = this.mActiveColor;
     int j = this.mInActiveColor;
-    this.mColorStateList = new ColorStateList(new int[][] { paramViolaInstance, paramDomObject }, new int[] { i, j });
+    this.mColorStateList = new ColorStateList(new int[][] { { 16842912 }, { 0 } }, new int[] { i, j });
   }
   
   public void addEvent(String paramString)
@@ -126,18 +124,15 @@ public class VSwitch
     }
     this.mActiveColor = ColorParseUtils.parseColor(str);
     paramString = new int[] { 16842912 };
-    paramObject = new int[] { 0 };
     int i = this.mActiveColor;
     int j = this.mInActiveColor;
-    this.mColorStateList = new ColorStateList(new int[][] { paramString, paramObject }, new int[] { i, j });
+    this.mColorStateList = new ColorStateList(new int[][] { paramString, { 0 } }, new int[] { i, j });
     ((VSwitchView)getHostView()).setTrackTintList(this.mColorStateList);
     return true;
     this.mInActiveColor = ColorParseUtils.parseColor(str);
-    paramString = new int[] { 16842912 };
-    paramObject = new int[] { 0 };
     i = this.mActiveColor;
     j = this.mInActiveColor;
-    this.mColorStateList = new ColorStateList(new int[][] { paramString, paramObject }, new int[] { i, j });
+    this.mColorStateList = new ColorStateList(new int[][] { { 16842912 }, { 0 } }, new int[] { i, j });
     ((VSwitchView)getHostView()).setTrackTintList(this.mColorStateList);
     return true;
     ((VSwitchView)getHostView()).setThumbResource(ColorParseUtils.parseColor(str));

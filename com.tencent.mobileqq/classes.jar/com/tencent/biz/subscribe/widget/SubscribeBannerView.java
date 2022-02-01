@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.widget;
 
-import aakr;
+import aaos;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -62,7 +62,7 @@ public class SubscribeBannerView
     paramContext.bottomMargin = jdField_a_of_type_Int;
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setLayoutParams(paramContext);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOffscreenPageLimit(3);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new aakr(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new aaos(this));
     ((FrameLayout)paramView).addView(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
     a((FrameLayout)paramView);
   }

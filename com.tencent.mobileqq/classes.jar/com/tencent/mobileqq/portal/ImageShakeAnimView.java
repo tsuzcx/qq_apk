@@ -8,8 +8,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Transformation;
-import azbo;
-import bgta;
+import azub;
+import bhtd;
 
 public class ImageShakeAnimView
   extends View
@@ -19,7 +19,7 @@ public class ImageShakeAnimView
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   public Transformation a;
-  bgta<Float> jdField_a_of_type_Bgta = null;
+  bhtd<Float> jdField_a_of_type_Bhtd = null;
   public boolean a;
   public float b;
   int b;
@@ -64,15 +64,15 @@ public class ImageShakeAnimView
   public void a()
   {
     float f;
-    bgta localbgta;
+    bhtd localbhtd;
     if (this.jdField_a_of_type_Boolean)
     {
       f = 720.0F;
-      localbgta = new bgta(Float.valueOf(0.0F), Float.valueOf(f), new azbo(this));
-      if (this.jdField_a_of_type_Bgta != null) {
-        this.jdField_a_of_type_Bgta.cancel();
+      localbhtd = new bhtd(Float.valueOf(0.0F), Float.valueOf(f), new azub(this));
+      if (this.jdField_a_of_type_Bhtd != null) {
+        this.jdField_a_of_type_Bhtd.cancel();
       }
-      this.jdField_a_of_type_Bgta = localbgta;
+      this.jdField_a_of_type_Bhtd = localbhtd;
       if (!this.jdField_a_of_type_Boolean) {
         break label88;
       }
@@ -80,8 +80,8 @@ public class ImageShakeAnimView
     label88:
     for (long l = 720L;; l = 500L)
     {
-      localbgta.setDuration(l);
-      localbgta.start();
+      localbhtd.setDuration(l);
+      localbhtd.start();
       invalidate();
       return;
       f = 500.0F;
@@ -107,8 +107,8 @@ public class ImageShakeAnimView
       this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int * this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
       paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, null);
       paramCanvas.restore();
-    } while (this.jdField_a_of_type_Bgta == null);
-    return this.jdField_a_of_type_Bgta.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
+    } while (this.jdField_a_of_type_Bhtd == null);
+    return this.jdField_a_of_type_Bhtd.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
   }
   
   public void onDraw(Canvas paramCanvas)

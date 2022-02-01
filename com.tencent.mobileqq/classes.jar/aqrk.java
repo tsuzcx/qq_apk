@@ -1,41 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class aqrk
+class aqrk
+  extends BroadcastReceiver
 {
-  private int a;
+  aqrk(aqrj paramaqrj) {}
   
-  public static aqrk a(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramString == null) {}
-    do
+    if (paramIntent != null)
     {
-      return null;
-      try
+      paramContext = paramIntent.getAction();
+      if (paramContext != null)
       {
-        aqrk localaqrk = new aqrk();
-        localaqrk.a = new JSONObject(paramString).optInt("pttWithTextSwitch", -1);
-        return localaqrk;
+        if ((!paramContext.equals("com.tencent.mobileqq.intent.logout")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
+          break label57;
+        }
+        this.a.a();
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("PttWithTextSwitchBean", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
-  }
-  
-  public boolean a()
-  {
-    return this.a == 1;
-  }
-  
-  public String toString()
-  {
-    return "open:" + this.a;
+    }
+    label57:
+    while ((!paramContext.equals("mqq.intent.action.LOGIN")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))) {
+      return;
+    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqrk
  * JD-Core Version:    0.7.0.1
  */

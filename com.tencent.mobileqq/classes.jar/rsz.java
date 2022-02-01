@@ -1,31 +1,26 @@
-import android.app.Activity;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
-import java.util.ArrayList;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class rsz
-  extends FragmentPagerAdapter
+class rsz
+  implements sgw
 {
-  public rsz(SelectVideoTabFragment paramSelectVideoTabFragment, FragmentManager paramFragmentManager)
-  {
-    super(paramFragmentManager);
-  }
+  rsz(rsx paramrsx, VideoInfo paramVideoInfo) {}
   
-  public int getCount()
+  public void a()
   {
-    return SelectVideoTabFragment.a(this.a).size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    return (Fragment)SelectVideoTabFragment.a(this.a).get(paramInt);
-  }
-  
-  public CharSequence getPageTitle(int paramInt)
-  {
-    return SelectVideoTabFragment.a(this.a).getString(SelectVideoTabFragment.a()[paramInt]);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsShareController", 2, "onDislikeDialogViewForAdComplain");
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_from_type", 2);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) {
+      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
+    }
+    PublicFragmentActivity.a(rsx.a(this.jdField_a_of_type_Rsx), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    rsx.a(this.jdField_a_of_type_Rsx).dismiss();
   }
 }
 

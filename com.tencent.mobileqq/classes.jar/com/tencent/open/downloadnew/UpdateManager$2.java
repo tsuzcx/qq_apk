@@ -1,14 +1,14 @@
 package com.tencent.open.downloadnew;
 
-import bisy;
-import bivr;
-import biwx;
+import bjtx;
+import bjwq;
+import bjxw;
 import java.io.File;
 
 public class UpdateManager$2
   implements Runnable
 {
-  public UpdateManager$2(biwx parambiwx, String paramString, DownloadInfo paramDownloadInfo) {}
+  public UpdateManager$2(bjxw parambjxw, String paramString, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -19,15 +19,15 @@ public class UpdateManager$2
       {
         long l = localFile.length();
         this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c = l;
-        bivr.a().g(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+        bjwq.a().g(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
         return;
       }
-      bisy.c(biwx.jdField_a_of_type_JavaLangString, "patchNewApk file not exists");
+      bjtx.c(bjxw.jdField_a_of_type_JavaLangString, "patchNewApk file not exists");
       return;
     }
     catch (Exception localException)
     {
-      bisy.c(biwx.jdField_a_of_type_JavaLangString, "patchNewApk>>>", localException);
+      bjtx.c(bjxw.jdField_a_of_type_JavaLangString, "patchNewApk>>>", localException);
     }
   }
 }

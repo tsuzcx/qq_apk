@@ -1,35 +1,145 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.image.NativeGifImage;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.widget.FastAnimationDrawable;
-import dov.com.tencent.biz.qqstory.takevideo.EditGifImage;
+import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.common.config.AppSetting;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-class bozz
-  implements SeekBar.OnSeekBarChangeListener
+public class bozz
 {
-  bozz(bozy parambozy) {}
+  private static final List<Pair<String, Integer>> a = new LinkedList();
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  static
   {
-    if (paramBoolean)
+    a.add(new Pair("AEKIT_CAMERA_FIRST_LAUNCH", Integer.valueOf(0)));
+    a.add(new Pair("CameraModuleSvc.GetCompressedCategoryMaterialMqStoryCamera", Integer.valueOf(4)));
+    a.add(new Pair("CameraModuleSvc.GetCompressedCategoryMaterialMqEmoCamera", Integer.valueOf(4)));
+    a.add(new Pair("CameraModuleSvc.GetPlayShowCatMatTree", Integer.valueOf(4)));
+  }
+  
+  private bozz()
+  {
+    Object localObject = bpac.a("key_app_version", "");
+    if ((TextUtils.isEmpty((CharSequence)localObject)) || (!AppSetting.a().equals(localObject)))
     {
-      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
-      if (this.a.jdField_a_of_type_Bpep.a.a != null) {
-        this.a.jdField_a_of_type_Bpep.a.a.a(NativeGifImage.QZONE_DELAY);
+      localObject = a.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Pair localPair = (Pair)((Iterator)localObject).next();
+        if (4 == ((Integer)localPair.second).intValue()) {
+          bpac.a((String)localPair.first);
+        } else {
+          bpab.a((String)localPair.first);
+        }
       }
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.e = NativeGifImage.QZONE_DELAY;
-      this.a.d = paramInt;
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
-      }
+      bpac.a("key_app_version", AppSetting.a());
     }
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  public static bozz a()
+  {
+    return bpad.a();
+  }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
+  public int a(@NonNull String paramString, int paramInt1, int paramInt2)
+  {
+    if (4 == paramInt2) {
+      return bpac.a(paramString, paramInt1);
+    }
+    return bpab.a(paramString, paramInt1);
+  }
+  
+  public long a(@NonNull String paramString, long paramLong, int paramInt)
+  {
+    if (4 == paramInt) {
+      return bpac.a(paramString, paramLong);
+    }
+    return bpab.a(paramString, paramLong);
+  }
+  
+  @NonNull
+  public SharedPreferences a()
+  {
+    return bpab.a();
+  }
+  
+  @Nullable
+  public String a(@NonNull String paramString1, String paramString2, int paramInt)
+  {
+    if (4 == paramInt) {
+      return bpac.a(paramString1, paramString2);
+    }
+    return bpab.a(paramString1, paramString2);
+  }
+  
+  public void a(@NonNull String paramString, int paramInt)
+  {
+    if (4 == paramInt)
+    {
+      bpac.a(paramString);
+      return;
+    }
+    bpab.a(paramString);
+  }
+  
+  public void a(@NonNull String paramString, int paramInt1, int paramInt2)
+  {
+    if (4 == paramInt2)
+    {
+      bpac.a(paramString, paramInt1);
+      return;
+    }
+    bpab.a(paramString, paramInt1);
+  }
+  
+  public void a(@NonNull String paramString, long paramLong, int paramInt)
+  {
+    if (4 == paramInt)
+    {
+      bpac.a(paramString, paramLong);
+      return;
+    }
+    bpab.a(paramString, paramLong);
+  }
+  
+  public void a(@NonNull String paramString1, String paramString2, int paramInt)
+  {
+    if (4 == paramInt)
+    {
+      bpac.a(paramString1, paramString2);
+      return;
+    }
+    bpab.a(paramString1, paramString2);
+  }
+  
+  public void a(@NonNull String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (4 == paramInt)
+    {
+      bpac.a(paramString, paramBoolean);
+      return;
+    }
+    bpab.a(paramString, paramBoolean);
+  }
+  
+  public boolean a(@NonNull String paramString, int paramInt)
+  {
+    if (4 == paramInt) {
+      return bpac.a(paramString);
+    }
+    return bpab.a(paramString);
+  }
+  
+  public boolean a(@NonNull String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (4 == paramInt) {
+      return bpac.a(paramString, paramBoolean);
+    }
+    return bpab.a(paramString, paramBoolean);
+  }
 }
 
 

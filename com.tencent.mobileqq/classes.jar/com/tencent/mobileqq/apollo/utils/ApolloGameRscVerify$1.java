@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ancv;
+import anop;
 
 public class ApolloGameRscVerify$1
   implements Runnable
 {
-  public ApolloGameRscVerify$1(ancv paramancv) {}
+  public ApolloGameRscVerify$1(anop paramanop) {}
   
   public void run()
   {

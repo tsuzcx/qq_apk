@@ -1,66 +1,75 @@
-import android.app.Activity;
-import android.graphics.drawable.Drawable;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class atsy
-  implements bkjj
+  implements atqw
 {
-  atsy(atsu paramatsu) {}
+  atsy(atsx paramatsx, String paramString, atte paramatte) {}
   
-  public void F()
+  public void a(int paramInt, String paramString)
   {
-    atsu.a(this.a, false);
-    this.a.jdField_a_of_type_Atsk.o();
-    this.a.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
-  }
-  
-  public void G()
-  {
-    atsu.a(this.a, false);
-    if (atsu.a(this.a)) {
-      this.a.f(true);
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2TroopTaskExcuter onFaild：");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
     }
-    if (atsu.b(this.a)) {
-      this.a.g(true);
-    }
-    if (atsu.c(this.a)) {
-      this.a.b(true);
-    }
-  }
-  
-  public void H() {}
-  
-  public void a(float paramFloat)
-  {
-    atsu.a(this.a, true);
-    Drawable localDrawable;
-    if (atsu.a(this.a) != null)
+    for (;;)
     {
-      localDrawable = atsu.a(this.a).getBackground();
-      if (localDrawable != null) {
-        localDrawable.mutate().setAlpha(0);
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atsx.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send faild:" + paramInt);
+      }
+      this.jdField_a_of_type_Atte.a(atsi.a(this.jdField_a_of_type_Atsx.jdField_a_of_type_Long, bool2), bool1);
+      return;
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
       }
     }
-    if (atsu.b(this.a) != null)
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    paramString2 = new Bundle();
+    paramString2.putString("_m_ForwardFileType", "3");
+    paramString2.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    paramString2.putString("_m_ForwardFileName", this.jdField_a_of_type_Atsx.jdField_a_of_type_JavaLangString);
+    paramString2.putString("_m_ForwardSize", this.jdField_a_of_type_Atsx.jdField_a_of_type_Long + "");
+    paramString2.putString("_m_ForwardMd5", this.jdField_a_of_type_Atsx.c);
+    paramString2.putString("_m_ForwardDeadTime", "0");
+    paramString2.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Atsx.e);
+    paramString2.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Atsx.f);
+    paramString2.putString("_m_ForwardUuid", paramString1);
+    int i;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Atsx.e))
     {
-      localDrawable = atsu.b(this.a).getBackground();
-      if (localDrawable != null) {
-        localDrawable.mutate().setAlpha((int)(255.0F * paramFloat));
+      i = 0;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Atsx.f)) {
+        break label248;
       }
     }
-    if (paramFloat < 0.8F)
+    label248:
+    for (int j = 0;; j = Integer.parseInt(this.jdField_a_of_type_Atsx.f))
     {
-      atsu.a(this.a).setVisibility(8);
-      atsu.c(this.a).setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atsx.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send success send feeds");
+      }
+      atsi.a(atsi.a(this.jdField_a_of_type_Atsx.jdField_a_of_type_Atsi), Long.parseLong(this.jdField_a_of_type_JavaLangString), 102, paramString1, this.jdField_a_of_type_Atsx.jdField_a_of_type_Long, 0, i, j, 0, false, paramString2, this.jdField_a_of_type_Atte);
+      return;
+      i = Integer.parseInt(this.jdField_a_of_type_Atsx.e);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsy
  * JD-Core Version:    0.7.0.1
  */

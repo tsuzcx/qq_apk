@@ -1,12 +1,22 @@
-import android.view.View.OnClickListener;
+import org.json.JSONObject;
 
-public abstract interface tmp
+public class tmp
 {
-  public abstract void a(String paramString, View.OnClickListener paramOnClickListener);
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(String paramString, View.OnClickListener paramOnClickListener);
+  tmp(tmk paramtmk, JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("sActivityId");
+    this.b = paramJSONObject.optString("sGiftName");
+    this.c = paramJSONObject.optString("sNeedRole");
+    this.jdField_a_of_type_Long = paramJSONObject.optInt("iGiftId");
+  }
 }
 
 

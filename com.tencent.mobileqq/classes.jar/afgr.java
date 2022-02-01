@@ -1,19 +1,8 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
 
 public class afgr
-  extends BroadcastReceiver
 {
-  public afgr(SubLoginActivity paramSubLoginActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    QLog.d("Q.subaccount.SubLoginActivity", 1, "AutoLoginReceiver onReceive");
-    SubLoginActivity.b(this.a, true);
-  }
+  TextView a;
 }
 
 

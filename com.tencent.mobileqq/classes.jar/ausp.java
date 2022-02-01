@@ -1,29 +1,122 @@
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
-import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.kwstudio.office.preview.TdsReaderView;
+import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal;
+import com.tencent.qphone.base.util.QLog;
 
 public class ausp
-  implements View.OnClickListener
 {
-  public ausp(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  private static ausp jdField_a_of_type_Ausp;
+  private int jdField_a_of_type_Int = -1;
+  private TdsReaderView jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView;
   
-  public void onClick(View paramView)
+  public static ausp a()
   {
-    if (QQGamePubAccountFragment.a(this.a) != null)
+    if (jdField_a_of_type_Ausp == null) {
+      jdField_a_of_type_Ausp = new ausp();
+    }
+    return jdField_a_of_type_Ausp;
+  }
+  
+  private static boolean a(TdsReaderView paramTdsReaderView, String paramString)
+  {
+    String str = auog.a(paramString);
+    paramString = str;
+    if (str.startsWith(".")) {
+      paramString = str.replaceFirst(".", "");
+    }
+    return paramTdsReaderView.preOpen(paramString);
+  }
+  
+  public TdsReaderView a(Activity paramActivity, String paramString, ausr paramausr)
+  {
+    TdsReaderView localTdsReaderView = null;
+    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView != null) && (paramActivity.hashCode() == this.jdField_a_of_type_Int)) {
+      localTdsReaderView = this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView;
+    }
+    do
     {
-      QQGamePubAccountFragment.a(this.a).scrollToPosition(0);
-      QQGamePubAccountFragment.a(this.a).setVisibility(8);
-      if (QQGamePubAccountFragment.a(this.a) != null) {
-        QQGamePubAccountFragment.a(this.a).setCurrentItem(0);
+      return localTdsReaderView;
+      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView != null)
+      {
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.onStop();
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView = null;
+      }
+    } while (!auog.b(paramString));
+    if (!TdsReaderGlobal.a())
+    {
+      QLog.w("TdsReaderView_LocalTdsViewManager", 4, "openFile: tds disable for filePath=" + paramString);
+      return null;
+    }
+    QLog.w("TdsReaderView_LocalTdsViewManager", 4, "initVarView: new TdsReaderView");
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView = TdsReaderView.newInstance(new auss(paramActivity, false, paramausr, null));
+    if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView != null)
+    {
+      QLog.w("TdsReaderView_LocalTdsViewManager", 4, "initVarView: TbsReaderView openFile");
+      if (a(this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView, paramString))
+      {
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.openFile(paramString, ".pdf");
+        this.jdField_a_of_type_Int = paramActivity.hashCode();
+        return this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView;
+      }
+      this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.onStop();
+      this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView = null;
+      return null;
+    }
+    QLog.w("TdsReaderView_LocalTdsViewManager", 4, "openFile: tds instance failed for filePath=" + paramString);
+    return null;
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    int i = paramActivity.hashCode();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("TdsReaderView_LocalTdsViewManager", 4, "destroy hashCode[" + this.jdField_a_of_type_Int + "],activity[" + i + "]");
+    }
+    if (this.jdField_a_of_type_Int != i) {}
+    while (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.onStop();
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView = null;
+  }
+  
+  public boolean a(Activity paramActivity, String paramString, ausr paramausr, boolean paramBoolean)
+  {
+    boolean bool = false;
+    paramBoolean = bool;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (!TdsReaderGlobal.a())
+      {
+        QLog.w("TdsReaderView_LocalTdsViewManager", 4, "canOpenFile: tds disable for filePath=" + paramString);
+        paramBoolean = bool;
       }
     }
-    String str = (String)QQGamePubAccountFragment.a(this.a).getTag();
-    aceh.a(ampj.a(), "769", "205031", "", "76901", "1", "160", new String[] { str, "", "20" });
-    EventCollector.getInstance().onViewClicked(paramView);
+    else if (QLog.isColorLevel()) {
+      if (!paramBoolean) {
+        break label150;
+      }
+    }
+    label150:
+    for (paramActivity = "pre open file true! wait callback!";; paramActivity = "pre open file false! strPath=" + paramString)
+    {
+      QLog.i("TdsReaderView_LocalTdsViewManager", 1, paramActivity);
+      if (paramausr != null) {
+        paramausr.a(paramBoolean);
+      }
+      return paramBoolean;
+      paramActivity = TdsReaderView.newInstance(new auss(paramActivity, true, null, null));
+      if (paramActivity != null)
+      {
+        paramBoolean = a(paramActivity, paramString);
+        paramActivity.onStop();
+        break;
+      }
+      QLog.w("TdsReaderView_LocalTdsViewManager", 4, "canOpenFile: tds instance failed for filePath=" + paramString);
+      paramBoolean = bool;
+      break;
+    }
   }
 }
 

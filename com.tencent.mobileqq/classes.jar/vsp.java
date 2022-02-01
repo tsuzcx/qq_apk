@@ -1,17 +1,21 @@
-import android.widget.FrameLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.polylike.flowlayout.QCircleFlowLayoutItemView;
+import com.tencent.biz.qqcircle.polylike.flowlayout.QCircleTagFlowLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class vsp
-  implements vsz
+public class vsp
+  implements View.OnClickListener
 {
-  vsp(vsn paramvsn) {}
+  public vsp(QCircleTagFlowLayout paramQCircleTagFlowLayout, QCircleFlowLayoutItemView paramQCircleFlowLayoutItemView, int paramInt) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (vsn.a(this.a) != null) {
-      vsn.a(this.a).a(3);
+    QCircleTagFlowLayout.a(this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout, this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleFlowLayoutItemView, this.jdField_a_of_type_Int);
+    if (QCircleTagFlowLayout.a(this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout) != null) {
+      QCircleTagFlowLayout.a(this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout).a(this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleFlowLayoutItemView, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout);
     }
-    vsn.a(this.a).setAlpha(0.0F);
-    vsn.a(null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

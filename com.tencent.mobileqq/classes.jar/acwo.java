@@ -1,15 +1,16 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
+import android.graphics.Shader.TileMode;
+import android.graphics.drawable.ShapeDrawable.ShaderFactory;
 
-public class acwo
-  implements Comparator<MessageRecord>
+final class acwo
+  extends ShapeDrawable.ShaderFactory
 {
-  public acwo(QQMessageFacade paramQQMessageFacade) {}
+  acwo(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int[] paramArrayOfInt) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public Shader resize(int paramInt1, int paramInt2)
   {
-    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
+    return new LinearGradient(paramInt1 * this.jdField_a_of_type_Float, paramInt2 * this.b, paramInt1 * this.c, paramInt2 * this.d, this.jdField_a_of_type_ArrayOfInt, null, Shader.TileMode.CLAMP);
   }
 }
 

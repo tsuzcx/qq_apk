@@ -1,35 +1,29 @@
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
+import feedcloud.FeedCloudMeta.StNotice;
 
-class vpg
-  implements zwo
+public class vpg
+  extends von
 {
-  vpg(vpe paramvpe) {}
-  
-  public void a(boolean paramBoolean, Map<String, zwm> paramMap)
+  public vpg(int paramInt)
   {
-    if ((paramBoolean) && (paramMap != null))
-    {
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Object localObject = (zwm)paramMap.get(str);
-        if (!vpp.a.containsKey(str))
-        {
-          localObject = AnimationView.AnimationInfo.loadFromFolder(((zwm)localObject).b);
-          if (localObject != null)
-          {
-            ((AnimationView.AnimationInfo)localObject).mInterval = 50;
-            ((AnimationView.AnimationInfo)localObject).mCycle = 2147483647;
-            vpp.a.put(str, localObject);
-          }
-        }
-      }
-      vpe.a(this.a);
+    super(paramInt);
+  }
+  
+  protected String a()
+  {
+    return "QCircleUnsupportedMessagePresenter";
+  }
+  
+  void a() {}
+  
+  void b(Context paramContext, View paramView) {}
+  
+  void b(FeedCloudMeta.StNotice paramStNotice, int paramInt)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView != null) && (this.jdField_a_of_type_AndroidContentContext != null)) {
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131697262));
     }
   }
 }

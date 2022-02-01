@@ -4,12 +4,9 @@ import android.content.DialogInterface.OnClickListener;
 class aico
   implements DialogInterface.OnClickListener
 {
-  aico(aicl paramaicl) {}
+  aico(aicm paramaicm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bcst.b(this.a.a, "dc00898", "", "", "0X800ADCA", "0X800ADCA", 0, 0, "", "", "", "");
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

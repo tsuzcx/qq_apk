@@ -1,13 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-
 public class adax
 {
-  public static void a(String paramString1, String paramString2)
-  {
-    QLog.d(paramString1, 1, paramString2);
-  }
+  public int a;
+  public Object a;
+  public String a;
+  public int b;
   
-  public static void b(String paramString1, String paramString2) {}
+  public adax() {}
+  
+  public adax(String paramString, int paramInt1, int paramInt2, Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
 }
 
 

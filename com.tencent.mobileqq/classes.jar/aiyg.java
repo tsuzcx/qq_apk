@@ -1,15 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiyg
-  implements DialogInterface.OnDismissListener
 {
-  public aiyg(NewFriendActivity paramNewFriendActivity) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    this.a.a = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextBottomViewHelper", 2, "hideBottom");
+    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.bottomMargin = 0;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+  }
+  
+  public void a(VoiceTextPanel paramVoiceTextPanel)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramVoiceTextPanel.findViewById(2131363632));
+    this.jdField_a_of_type_AndroidViewView = paramVoiceTextPanel.findViewById(2131369944);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextBottomViewHelper", 2, "showBottom");
+    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.bottomMargin = bdep.a(75.0F);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+  }
+  
+  public void c()
+  {
+    b();
   }
 }
 

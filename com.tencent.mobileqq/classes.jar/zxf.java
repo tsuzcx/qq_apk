@@ -1,119 +1,226 @@
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.CallSuper;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.biz.richframework.network.servlet.VSBaseServlet.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
+import com.tencent.ims.devlock_verify_scheme.SchemePkg;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import org.json.JSONObject;
 
 public class zxf
-  extends MSFServlet
+  extends Handler
 {
-  private static final long a = QzoneConfig.getInstance().getConfig("qqcircle", "secondary_vs_time_out_time", 20000);
+  public zxf(QRLoginAuthActivity paramQRLoginAuthActivity) {}
   
-  private int a(InputStream paramInputStream, OutputStream paramOutputStream)
+  public void handleMessage(Message paramMessage)
   {
-    long l = a(paramInputStream, paramOutputStream);
-    if (l > 2147483647L) {
-      return -1;
-    }
-    return (int)l;
-  }
-  
-  private long a(InputStream paramInputStream, OutputStream paramOutputStream)
-  {
-    byte[] arrayOfByte = new byte[4096];
+    Object localObject = paramMessage.getData();
     int i;
-    for (long l = 0L;; l += i)
+    byte[] arrayOfByte1;
+    byte[] arrayOfByte2;
+    switch (paramMessage.what)
     {
-      i = paramInputStream.read(arrayOfByte);
-      if (-1 == i) {
-        break;
-      }
-      paramOutputStream.write(arrayOfByte, 0, i);
-    }
-    return l;
-  }
-  
-  private void a(VSBaseRequest paramVSBaseRequest)
-  {
-    if (paramVSBaseRequest.isEnableCache())
-    {
-      yqp.b("VSNetworkHelper| Protocol Cache", "start to response cache,CmdName:" + paramVSBaseRequest.getCmdName() + " Seq:" + paramVSBaseRequest.getCurrentSeq());
-      ThreadManagerV2.executeOnSubThread(new VSBaseServlet.1(this, paramVSBaseRequest));
-    }
-  }
-  
-  private byte[] a(InputStream paramInputStream)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    a(paramInputStream, localByteArrayOutputStream);
-    return localByteArrayOutputStream.toByteArray();
-  }
-  
-  @CallSuper
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    Bundle localBundle = new Bundle();
-    VSBaseRequest localVSBaseRequest = (VSBaseRequest)paramIntent.getSerializableExtra("key_request_data");
-    localBundle.putSerializable("key_request_data", localVSBaseRequest);
-    if (localVSBaseRequest == null)
-    {
-      QLog.e("VSNetworkHelper", 1, "onReceive. KEY_REQUEST_DATA is Null.");
+    default: 
       return;
+    case 1: 
+      i = ((Bundle)localObject).getInt("ret", 1);
+      arrayOfByte1 = ((Bundle)localObject).getByteArray("appName");
+      arrayOfByte2 = ((Bundle)localObject).getByteArray("tlv");
+      localObject = ((Bundle)localObject).getByteArray("errMsg");
+      paramMessage = (Message)localObject;
+      if (localObject == null) {
+        paramMessage = new byte[0];
+      }
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      if (i == 0) {
+        i = 0;
+      }
+      break;
     }
-    if (paramFromServiceMsg != null) {
+    for (;;)
+    {
+      int j;
+      int k;
+      int n;
       try
       {
-        long l = System.currentTimeMillis() - paramIntent.getLongExtra("key_send_timestamp", 0L);
-        if (VSNetworkHelper.b(localVSBaseRequest.getCmdName())) {
-          QLog.i("VSNetworkHelper", 2, "onReceive Info:CmdName:" + paramFromServiceMsg.getServiceCmd() + " | TraceId:" + localVSBaseRequest.getTraceId() + " | seqNum:" + localVSBaseRequest.getCurrentSeq() + " | network cost:" + l);
+        if (i < arrayOfByte2.length)
+        {
+          j = arrayOfByte2[i];
+          i += 1;
+          k = j << 8 & 0xFF00 | arrayOfByte2[i] & 0xFF;
+          j = i + 1;
+          i = arrayOfByte2[j];
+          j += 1;
+          n = arrayOfByte2[j] & 0xFF | i << 8 & 0xFF00;
+          if (k == 3)
+          {
+            i = j + 1;
+            new String(arrayOfByte2, i, n);
+          }
+          else if (k == 5)
+          {
+            paramMessage = this.a;
+            i = j + 1;
+            paramMessage.f = new String(arrayOfByte2, i, n);
+          }
         }
-        localBundle.putParcelable("key_response_msg", paramFromServiceMsg);
-        localBundle.putLong("key_send_timestamp", System.currentTimeMillis());
-        localBundle.putLong("key_network_time_cost", l);
-        VSNetworkHelper.a().onReceive(localVSBaseRequest.getContextHashCode(), paramFromServiceMsg.isSuccess(), localBundle);
-        return;
       }
-      catch (Throwable paramIntent)
+      catch (Exception paramMessage)
       {
-        QLog.e("VSNetworkHelper", 2, new Object[] { Integer.valueOf(1), paramIntent + "onReceive error" });
-        VSNetworkHelper.a().onReceive(localVSBaseRequest.getContextHashCode(), false, localBundle);
-        return;
+        QRLoginAuthActivity.a(this.a, arrayOfByte1);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getString(2131715940, new Object[] { this.a.e }));
+        if (TextUtils.isEmpty(this.a.f)) {
+          this.a.f = this.a.getString(2131719094);
+        }
+        this.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.getString(2131715946, new Object[] { this.a.f }));
+        if (!this.a.jdField_a_of_type_Boolean) {
+          break label730;
+        }
       }
+      this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
+      bdll.b(null, "dc00898", "", "", "0X800A46D", "0X800A46D", zyv.a(this.a.jdField_b_of_type_Int), 0, "", "", "", "");
+      return;
+      if (k == 32) {
+        i = j;
+      }
+      for (;;)
+      {
+        try
+        {
+          paramMessage = new byte[n];
+          j += 1;
+          i = j;
+          System.arraycopy(arrayOfByte2, j, paramMessage, 0, n);
+          i = j;
+          localObject = new devlock_verify_scheme.SchemePkg();
+          i = j;
+          ((devlock_verify_scheme.SchemePkg)localObject).mergeFrom(paramMessage);
+          i = j;
+          if (!((devlock_verify_scheme.SchemePkg)localObject).u32_button2_type.has()) {
+            break label1075;
+          }
+          i = j;
+          if (((devlock_verify_scheme.SchemePkg)localObject).u32_button2_type.get() == 0) {
+            break label1075;
+          }
+          k = 1;
+          i = j;
+          if (!((devlock_verify_scheme.SchemePkg)localObject).str_button2_caption.has()) {
+            break label1069;
+          }
+          i = j;
+          if (TextUtils.isEmpty(((devlock_verify_scheme.SchemePkg)localObject).str_button2_caption.get())) {
+            break label1069;
+          }
+          m = 1;
+          i = j;
+          if (((devlock_verify_scheme.SchemePkg)localObject).u32_button2_auth.has())
+          {
+            i = j;
+            this.a.jdField_a_of_type_Int = ((devlock_verify_scheme.SchemePkg)localObject).u32_button2_auth.get();
+          }
+          if ((k != 0) && (m != 0))
+          {
+            i = j;
+            if (this.a.jdField_a_of_type_Int == 2)
+            {
+              i = j;
+              this.a.jdField_a_of_type_Boolean = true;
+              i = j;
+            }
+          }
+        }
+        catch (Throwable paramMessage)
+        {
+          paramMessage.printStackTrace();
+        }
+        i = j;
+        this.a.jdField_a_of_type_Boolean = false;
+        i = j;
+        break label1081;
+        i = j;
+        if (k != 53) {
+          break label1081;
+        }
+        paramMessage = new byte[4];
+        j += 1;
+        System.arraycopy(arrayOfByte2, j, paramMessage, 0, n);
+        localObject = this.a;
+        i = paramMessage[3];
+        k = paramMessage[2];
+        int m = paramMessage[1];
+        ((QRLoginAuthActivity)localObject).jdField_b_of_type_Int = ((paramMessage[0] & 0xFF) << 24 | i & 0xFF | (k & 0xFF) << 8 | (m & 0xFF) << 16);
+        i = j;
+        if (!QLog.isColorLevel()) {
+          break label1081;
+        }
+        QLog.d("QRLoginAuthActivity", 2, new Object[] { "wtlogin apptype:", Integer.valueOf(this.a.jdField_b_of_type_Int) });
+        i = j;
+        break label1081;
+        label730:
+        this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
+        break;
+        this.a.a(new String(paramMessage));
+        break;
+        i = ((Bundle)localObject).getInt("ret", 1);
+        paramMessage = ((Bundle)localObject).getByteArray("errMsg");
+        localObject = ((Bundle)localObject).getByteArray("devInfo");
+        if (localObject != null) {}
+        for (;;)
+        {
+          try
+          {
+            localObject = new JSONObject(new String((byte[])localObject, "UTF-8"));
+            this.a.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("app_type");
+            this.a.h = ((JSONObject)localObject).optString("login_tips");
+            this.a.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("sub_appid");
+            if (QLog.isColorLevel()) {
+              QLog.d("QRLoginAuthActivity", 2, "ON CLOSE appType:" + this.a.jdField_b_of_type_Int + ",bannerTips:" + this.a.h + ",subappid:" + this.a.jdField_a_of_type_Long);
+            }
+            if (this.a.jdField_a_of_type_Bjbs.isShowing()) {
+              this.a.jdField_a_of_type_Bjbs.dismiss();
+            }
+            if (i != 0) {
+              break;
+            }
+            this.a.c();
+            return;
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+            continue;
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.d("QRLoginAuthActivity", 4, "ON CLOSE devInfo == null");
+          }
+        }
+        this.a.a(new String(paramMessage));
+        return;
+        if ((this.a.jdField_a_of_type_Bjbs != null) && (this.a.jdField_a_of_type_Bjbs.isShowing())) {
+          this.a.jdField_a_of_type_Bjbs.dismiss();
+        }
+        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.a.a(null);
+        return;
+        label1069:
+        m = 0;
+        continue;
+        label1075:
+        k = 0;
+      }
+      label1081:
+      i += n;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("VSNetworkHelper", 2, "onReceive Info:FromServiceMsg is null !! CmdName:null | TraceId:" + localVSBaseRequest.getTraceId() + " | seqNum:" + localVSBaseRequest.getCurrentSeq());
-    }
-    VSNetworkHelper.a().onReceive(localVSBaseRequest.getContextHashCode(), false, localBundle);
-  }
-  
-  @CallSuper
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    VSBaseRequest localVSBaseRequest = (VSBaseRequest)paramIntent.getSerializableExtra("key_request_data");
-    byte[] arrayOfByte2 = localVSBaseRequest.encode();
-    byte[] arrayOfByte1 = arrayOfByte2;
-    if (arrayOfByte2 == null) {
-      arrayOfByte1 = new byte[4];
-    }
-    if (VSNetworkHelper.b(localVSBaseRequest.getCmdName())) {
-      QLog.i("VSNetworkHelper", 2, "onSend Info:CmdName:" + localVSBaseRequest.getCmdName() + " | TraceId:" + localVSBaseRequest.getTraceId() + " | SeqNum:" + localVSBaseRequest.getCurrentSeq() + " | request encode size:" + arrayOfByte1.length);
-    }
-    paramIntent.putExtra("key_send_timestamp", System.currentTimeMillis());
-    paramPacket.setSSOCommand(localVSBaseRequest.getCmdName());
-    paramPacket.putSendData(bguc.a(arrayOfByte1));
-    paramPacket.setTimeout(a);
-    vrh.a(600, localVSBaseRequest.getCmdName(), localVSBaseRequest.getTraceId(), 0L, 0);
-    a(localVSBaseRequest);
   }
 }
 

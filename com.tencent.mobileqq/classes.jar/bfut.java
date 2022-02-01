@@ -1,24 +1,37 @@
-import java.util.List;
+import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class bfut
+class bfut
+  implements bfuu
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<String> a;
-  public boolean a;
-  public int b = 0;
-  public String b;
+  bfut(bfuo parambfuo, TroopEssenceMsgItem paramTroopEssenceMsgItem) {}
   
-  public String a(int paramInt)
+  public void a(long paramLong, HashMap<bful, bfum> paramHashMap)
   {
-    if ((this.a == null) || (this.a.size() == 0)) {
-      return "";
+    if (paramHashMap == null) {
+      return;
     }
-    if (paramInt < this.a.size()) {
-      return (String)this.a.get(paramInt);
+    bful localbful = new bful(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.troopUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.msgSeq, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.msgRandom);
+    bfum localbfum = (bfum)paramHashMap.get(localbful);
+    if (localbfum != null)
+    {
+      if (localbfum.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opType)
+      {
+        QLog.i("TroopEssenceMsgManager", 1, "updateEssenceMsgInfosBySet 本地已经存在且状态一致 直接丢弃");
+        QLog.i("TroopEssenceMsgManager", 1, "updateEssenceMsgInfosBySet key:" + localbful.toString() + " oldValue:" + localbfum.toString());
+        return;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opTime == 0L) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opTime = localbfum.jdField_a_of_type_Long;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.graytipuniseq = localbfum.b;
     }
-    return (String)this.a.get(this.a.size() - 1);
+    localbfum = new bfum(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opType, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.msgSenderUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opTime, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.graytipuniseq);
+    paramHashMap.put(localbful, localbfum);
+    QLog.i("TroopEssenceMsgManager", 1, "updateEssenceMsgInfosBySet key:" + localbful.toString() + " value:" + localbfum.toString());
+    bfuo.a(this.jdField_a_of_type_Bfuo, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.troopUin);
+    this.jdField_a_of_type_Bfuo.a(new TroopEssenceMsgItem(localbful, localbfum));
   }
 }
 

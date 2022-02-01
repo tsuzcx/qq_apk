@@ -1,33 +1,15 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.pts.nativemodule.IPTSAllInOneJump;
+import com.tencent.qphone.base.util.QLog;
 
 public class qhc
-  implements ViewBase.OnClickListener
+  implements IPTSAllInOneJump
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  snh jdField_a_of_type_Snh;
-  
-  public qhc(ArticleInfo paramArticleInfo, Context paramContext, snh paramsnh)
+  public void allInOneJump(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Snh = paramsnh;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if (snh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-      pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, false, 0, 4);
-    }
-    for (;;)
-    {
-      pfe.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Snh);
-      qhj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009441", "0X8009444");
-      return;
-      pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 0, 4);
+    QLog.i("PTSAllInOneJumpModule", 1, "[allInOneJump], url = " + paramString);
+    if (BaseActivity.sTopActivity != null) {
+      ozs.a(BaseActivity.sTopActivity, paramString);
     }
   }
 }

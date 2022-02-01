@@ -1,187 +1,297 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.RectF;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import java.nio.FloatBuffer;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class alyx
-  extends antn
-  implements arsw
+public abstract class alyx
 {
-  private volatile int jdField_a_of_type_Int;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private final int jdField_b_of_type_Int = 1;
-  private Bundle jdField_b_of_type_AndroidOsBundle;
-  private final int c = 90000;
+  private static int jdField_a_of_type_Int = -1;
+  private static final FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
+  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  public static final float[] a;
+  private static final FloatBuffer jdField_b_of_type_JavaNioFloatBuffer;
+  public static final float[] b;
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private long jdField_b_of_type_Long;
+  private float c;
+  private float d;
+  private float e;
+  private float f = 1.0F;
+  private float g = 1.0F;
   
-  public alyx()
+  static
   {
-    ThreadManager.post(new VipSpecialCareHandler.1(this), 8, null, true);
+    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+    jdField_b_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+    jdField_a_of_type_JavaNioFloatBuffer = GlUtil.createFloatBuffer(jdField_a_of_type_ArrayOfFloat);
+    jdField_b_of_type_JavaNioFloatBuffer = GlUtil.createFloatBuffer(jdField_b_of_type_ArrayOfFloat);
   }
   
-  private final void a(int paramInt)
+  public alyx(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    int i = this.jdField_a_of_type_Int - 1;
-    this.jdField_a_of_type_Int = i;
-    if (i != 0)
-    {
-      a("-->warning:special care set,uncorrect state,seq=" + this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Boolean) {
+      e();
     }
+  }
+  
+  public static int a()
+  {
+    return jdField_a_of_type_Int;
+  }
+  
+  public static Bitmap a(float paramFloat1, float paramFloat2)
+  {
+    if ((paramFloat1 <= 0.0F) || (paramFloat2 <= 0.0F)) {
+      return null;
+    }
+    int i = (int)paramFloat1;
+    int j = (int)paramFloat2;
     try
     {
-      Bundle localBundle = this.jdField_b_of_type_AndroidOsBundle;
-      i = paramInt;
-      if (paramInt == 0) {
-        i = 0;
-      }
-      localBundle.putInt("error", i);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", this.jdField_b_of_type_AndroidOsBundle);
-      a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
+      Bitmap localBitmap = Bitmap.createBitmap(i + 1, j + 1, Bitmap.Config.ARGB_8888);
+      Paint localPaint = new Paint();
+      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+      new Canvas(localBitmap).drawPaint(localPaint);
+      return localBitmap;
     }
-    catch (NullPointerException localNullPointerException)
+    catch (Exception localException)
     {
-      localNullPointerException.printStackTrace();
+      QLog.e("ItemBase", 2, "createcache exception:" + localException);
+      return null;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e("ItemBase", 2, "createcache OOM:");
+    }
+    return null;
+  }
+  
+  public static void a(RenderBuffer paramRenderBuffer, int paramInt, float paramFloat1, float paramFloat2, RectF paramRectF, float paramFloat3, float paramFloat4)
+  {
+    if ((paramRenderBuffer == null) || (paramInt <= 0)) {}
+    int j;
+    int k;
+    do
+    {
+      return;
+      j = paramRenderBuffer.getWidth();
+      k = paramRenderBuffer.getHeight();
+    } while ((k <= 0) || (j <= 0));
+    b("onDrawFrame start");
+    int i = a();
+    float f2;
+    float f1;
+    if (paramRectF != null)
+    {
+      f2 = paramRectF.width();
+      f1 = paramRectF.height();
+    }
+    for (;;)
+    {
+      paramRenderBuffer = new float[16];
+      Matrix.setIdentityM(paramRenderBuffer, 0);
+      if (paramRectF != null)
+      {
+        Matrix.translateM(paramRenderBuffer, 0, paramRectF.left / paramFloat1, paramRectF.top / paramFloat2, 0.0F);
+        Matrix.scaleM(paramRenderBuffer, 0, f2 / paramFloat1, f1 / paramFloat2, 0.0F);
+      }
+      paramRectF = new float[16];
+      Matrix.setIdentityM(paramRectF, 0);
+      Matrix.translateM(paramRectF, 0, (2.0F * paramFloat3 + f2) / j - 1.0F, (2.0F * paramFloat4 + f1) / k - 1.0F, 0.0F);
+      Matrix.scaleM(paramRectF, 0, f2 / j, f1 / k, 1.0F);
+      GLES20.glUseProgram(i);
+      b("glUseProgram");
+      j = GLES20.glGetAttribLocation(i, "aPosition");
+      k = GLES20.glGetAttribLocation(i, "aTextureCoord");
+      int m = GLES20.glGetUniformLocation(i, "uMVPMatrix");
+      i = GLES20.glGetUniformLocation(i, "uTextureMatrix");
+      GLES20.glVertexAttribPointer(j, 2, 5126, false, 8, jdField_a_of_type_JavaNioFloatBuffer);
+      b("glVertexAttribPointer aPosition");
+      GLES20.glEnableVertexAttribArray(j);
+      b("glEnableVertexAttribArray mPositionHandle");
+      GLES20.glVertexAttribPointer(k, 2, 5126, false, 8, jdField_b_of_type_JavaNioFloatBuffer);
+      b("glVertexAttribPointer mTextureHandle");
+      GLES20.glEnableVertexAttribArray(k);
+      b("glEnableVertexAttribArray mTextureHandle");
+      GLES20.glUniformMatrix4fv(m, 1, false, paramRectF, 0);
+      GLES20.glUniformMatrix4fv(i, 1, false, paramRenderBuffer, 0);
+      GLES20.glActiveTexture(33984);
+      GLES20.glBindTexture(3553, paramInt);
+      GLES20.glEnable(3042);
+      GLES20.glBlendFunc(770, 771);
+      GLES20.glDrawArrays(5, 0, 4);
+      b("glDrawArrays");
+      GLES20.glActiveTexture(33984);
+      GLES20.glBindTexture(3553, 0);
+      return;
+      f1 = paramFloat2;
+      f2 = paramFloat1;
     }
   }
   
-  private void a(String paramString)
+  public static void b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipSpecialCareHandler", 2, paramString);
+    for (;;)
+    {
+      int i = GLES20.glGetError();
+      if (i == 0) {
+        break;
+      }
+      QLog.e("ItemBase", 2, paramString + ": glError " + i);
     }
+  }
+  
+  public static void e()
+  {
+    try
+    {
+      if (jdField_a_of_type_Int > 0) {
+        break label56;
+      }
+      jdField_a_of_type_Int = GlUtil.createProgram("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", "precision mediump float;\n\nvarying vec2 vTextureCoord;\nuniform sampler2D uTexture;\n\nvoid main() {\n    gl_FragColor = texture2D(uTexture, vTextureCoord);\n}\n");
+      if (jdField_a_of_type_Int == 0) {
+        throw new RuntimeException("ItemBase: failed to creating program ");
+      }
+    }
+    finally {}
+    if (QLog.isColorLevel()) {
+      QLog.d("ItemBase", 2, "initOpenGL, program OK");
+    }
+    label56:
+    int i = 0;
+    if (jdField_a_of_type_Int > 0) {
+      i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ItemBase", 2, "supportOpenGL, current refcount: " + i);
+    }
+  }
+  
+  public static void f()
+  {
+    try
+    {
+      int i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
+      if ((i <= 0) && (jdField_a_of_type_Int > 0))
+      {
+        GLES20.glDeleteProgram(jdField_a_of_type_Int);
+        jdField_a_of_type_Int = -1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ItemBase", 2, "program deleted. ");
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ItemBase", 2, "unInitOpenGL, current refcount: " + i);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public float a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      throw new IllegalArgumentException();
+    case 6: 
+      return this.jdField_a_of_type_Float;
+    case 7: 
+      return this.jdField_b_of_type_Float;
+    case 4: 
+      return this.d;
+    case 3: 
+      return this.c;
+    case 5: 
+      return this.e;
+    case 8: 
+      return this.f;
+    }
+    return this.g;
+  }
+  
+  public long a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      throw new IllegalArgumentException();
+    case 2: 
+      return this.jdField_b_of_type_Long;
+    }
+    return this.jdField_a_of_type_Long;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    }
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null) {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-    }
+    this.jdField_a_of_type_Float -= this.e;
   }
   
-  public void a(Bundle paramBundle) {}
-  
-  public final void a(Bundle paramBundle1, Bundle paramBundle2)
+  public void a(int paramInt, float paramFloat)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle1;
-    this.jdField_b_of_type_AndroidOsBundle = paramBundle2;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle1, Bundle paramBundle2)
-  {
-    if (this.jdField_a_of_type_Int != 0)
+    switch (paramInt)
     {
-      a("-->current request is ongoing,can't do request yet");
-      paramBundle2.putInt("error", -1);
-      paramBundle1.putBundle("response", paramBundle2);
-      a(paramBundle1);
+    default: 
+      return;
+    case 6: 
+      this.jdField_a_of_type_Float = paramFloat;
+      return;
+    case 7: 
+      this.jdField_b_of_type_Float = paramFloat;
+      return;
+    case 4: 
+      this.d = paramFloat;
+      return;
+    case 3: 
+      this.c = paramFloat;
+      return;
+    case 5: 
+      this.e = paramFloat;
+      return;
+    case 8: 
+      this.f = paramFloat;
       return;
     }
-    this.jdField_a_of_type_Int += 1;
-    a("-->do request,seq=" + this.jdField_a_of_type_Int);
-    ArrayList localArrayList;
-    for (;;)
-    {
-      try
-      {
-        a(paramBundle1, paramBundle2);
-        if ((!"sepcial_care_delete_ring".equals(paramString)) && (!"special_care_set_ring".equals(paramString))) {
-          break;
-        }
-        paramBundle1 = paramBundle1.getBundle("request");
-        int i = paramBundle1.getInt("id", 1);
-        paramBundle2 = paramBundle1.getString("uin");
-        paramBundle1 = paramBundle2;
-        if (paramBundle2 == null) {
-          paramBundle1 = "";
-        }
-        paramBundle2 = new ArrayList();
-        paramBundle2.add(paramBundle1);
-        localArrayList = new ArrayList();
-        localArrayList.add(String.valueOf(i));
-        if (this.jdField_a_of_type_AndroidOsHandler != null) {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 90000L);
-        }
-        if (!"special_care_set_ring".equals(paramString)) {
-          break label288;
-        }
-        if (i == 1)
-        {
-          alxx.a(paramBundle2, 2, localArrayList, paramQQAppInterface);
-          paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-          paramString = "specialcare_already_set" + paramBundle1;
-          paramQQAppInterface.edit().putBoolean(paramString, true).commit();
-          return;
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-        this.jdField_a_of_type_Int = 0;
-        return;
-      }
-      alxx.a(paramBundle2, 3, localArrayList, paramQQAppInterface);
-    }
-    label288:
-    alxx.a(paramBundle2, 4, localArrayList, paramQQAppInterface);
+    this.g = paramFloat;
   }
   
-  public void a(Object paramObject)
+  public void a(RenderBuffer paramRenderBuffer) {}
+  
+  public boolean a()
   {
-    if (paramObject != null) {
-      switch (((Integer)paramObject).intValue())
-      {
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      }
-      a(0);
-      return;
-      a("-->method_type_open_switch");
-      continue;
-      a("-->method_type_set_sound");
-      continue;
-      a("-->method_type_delete_sound");
-    }
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public void b(Object paramObject)
+  public void b() {}
+  
+  public void d()
   {
-    int i = -1;
-    if (paramObject != null)
-    {
-      i = ((Integer)paramObject).intValue();
-      if (i != 10010) {
-        break label48;
-      }
-      a("-->error:set quota limit");
+    this.jdField_a_of_type_Boolean = true;
+    e();
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      f();
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      }
-      a(i);
-      return;
-      label48:
-      a("-->error:" + i);
-    }
+    b();
   }
 }
 

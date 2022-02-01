@@ -1,21 +1,81 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadLogInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadLogListener;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.util.StateSet;
+import android.view.MotionEvent;
+import android.view.View;
 
-class bivw
-  implements ITMAssistantDownloadLogListener
+public class bivw
+  extends bizo
 {
-  SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842919 };
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private bivx jdField_a_of_type_Bivx;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  bivw(bivr parambivr) {}
-  
-  public void onLog(ArrayList<TMAssistantDownloadLogInfo> paramArrayList)
+  public bivw(Drawable paramDrawable1, Drawable paramDrawable2)
   {
-    if ((paramArrayList == null) && (QLog.isColorLevel())) {
-      QLog.i("DownloadManager_", 2, "logList is null");
+    super(null, 0);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(jdField_a_of_type_ArrayOfInt, paramDrawable2);
+    localStateListDrawable.addState(StateSet.WILD_CARD, paramDrawable1);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, paramDrawable2.getBounds().right, paramDrawable2.getBounds().bottom);
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(StateSet.WILD_CARD);
+    paramView.invalidate();
+  }
+  
+  public void a(bivx parambivx)
+  {
+    this.jdField_a_of_type_Bivx = parambivx;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    int i;
+    do
+    {
+      return false;
+      i = paramMotionEvent.getAction();
+    } while (i == 2);
+    if (i == 0) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(jdField_a_of_type_ArrayOfInt);
     }
+    for (;;)
+    {
+      if ((i == 1) && (this.jdField_a_of_type_Bivx != null)) {
+        this.jdField_a_of_type_Bivx.a(this);
+      }
+      paramView.invalidate();
+      return true;
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(StateSet.WILD_CARD);
+    }
+  }
+  
+  public void b(View paramView)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(jdField_a_of_type_ArrayOfInt);
+    paramView.invalidate();
+  }
+  
+  public Drawable getDrawable()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
 }
 

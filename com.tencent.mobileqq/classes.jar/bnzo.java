@@ -1,61 +1,44 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import dov.com.qq.im.aeeditor.AEEditorActivity;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.weiyun.WeiyunAIOUtils.WeiyunCallbackImpl.1;
+import cooperation.weiyun.WeiyunAIOUtils.WeiyunCallbackImpl.2;
+import mqq.os.MqqHandler;
 
 public class bnzo
+  implements ausc
 {
-  public static void a(Activity paramActivity, int paramInt1, Bundle paramBundle, int paramInt2)
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public MqqHandler a;
+  
+  public bnzo(MqqHandler paramMqqHandler, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    int i;
-    Intent localIntent;
-    if (paramInt1 == 0)
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
     {
-      i = 10000;
-      localIntent = new Intent(paramActivity, AEEditorActivity.class);
-      if (paramBundle == null) {
-        break label121;
-      }
-    }
-    label121:
-    for (paramBundle = new Bundle(paramBundle);; paramBundle = new Bundle())
-    {
-      paramBundle.putInt("editorType", paramInt1);
-      paramBundle.putInt("editorFrom", paramInt2);
-      if (paramActivity.getIntent() != null)
-      {
-        paramBundle.putString("editor_filter_id", paramActivity.getIntent().getStringExtra("editor_filter_id"));
-        paramActivity.getIntent().putExtra("editor_filter_id", "");
-      }
-      localIntent.putExtras(paramBundle);
-      paramActivity.startActivityForResult(localIntent, i);
+      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(101, paramInt, 0, paramString), 1500L);
       return;
-      if (paramInt1 == 1)
-      {
-        i = 10001;
-        break;
-      }
-      throw new IllegalArgumentException("wrong editor type");
     }
+    ThreadManager.getUIHandler().post(new WeiyunAIOUtils.WeiyunCallbackImpl.2(this, paramString));
   }
   
-  public static boolean a(Bundle paramBundle)
+  public void a(Object paramObject)
   {
-    return a(paramBundle, 0);
-  }
-  
-  private static boolean a(Bundle paramBundle, int paramInt)
-  {
-    if (paramBundle == null) {}
-    while ((!paramBundle.containsKey("editorType")) || (paramBundle.getInt("editorType") != paramInt)) {
-      return false;
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
+    {
+      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(100, 1500L);
+      return;
     }
-    return true;
-  }
-  
-  public static boolean b(Bundle paramBundle)
-  {
-    return a(paramBundle, 1);
+    ThreadManager.getUIHandler().post(new WeiyunAIOUtils.WeiyunCallbackImpl.1(this));
   }
 }
 

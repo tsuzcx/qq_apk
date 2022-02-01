@@ -1,10 +1,20 @@
-public abstract interface bmit<V>
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bmit
+  implements DialogInterface.OnClickListener
 {
-  public abstract boolean a(V paramV1, V paramV2);
+  bmit(bmim parambmim, zyf paramzyf) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Zyf.a();
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmit
  * JD-Core Version:    0.7.0.1
  */

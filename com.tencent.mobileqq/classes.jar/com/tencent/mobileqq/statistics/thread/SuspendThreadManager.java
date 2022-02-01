@@ -4,8 +4,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.HandlerThread;
 import android.os.Message;
-import bcow;
-import bcvg;
+import bdho;
+import bdnz;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class SuspendThreadManager
   public static int a;
   private static long jdField_a_of_type_Long = 20L;
   private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private static bcvg jdField_a_of_type_Bcvg;
+  private static bdnz jdField_a_of_type_Bdnz;
   private static volatile SuspendThreadManager jdField_a_of_type_ComTencentMobileqqStatisticsThreadSuspendThreadManager;
   private static ArrayList<Thread> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private static Map<Integer, Thread> jdField_a_of_type_JavaUtilMap;
@@ -47,7 +47,7 @@ public class SuspendThreadManager
   {
     jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread(paramString);
     jdField_a_of_type_AndroidOsHandlerThread.start();
-    jdField_a_of_type_Bcvg = new bcvg(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    jdField_a_of_type_Bdnz = new bdnz(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
   }
   
   private int a(Thread paramThread, int paramInt)
@@ -319,9 +319,9 @@ public class SuspendThreadManager
   
   public void a()
   {
-    if ((!this.jdField_c_of_type_Boolean) && (jdField_a_of_type_Bcvg != null) && (jdField_a_of_type_AndroidOsHandlerThread != null))
+    if ((!this.jdField_c_of_type_Boolean) && (jdField_a_of_type_Bdnz != null) && (jdField_a_of_type_AndroidOsHandlerThread != null))
     {
-      jdField_a_of_type_Bcvg.obtainMessage(1).sendToTarget();
+      jdField_a_of_type_Bdnz.obtainMessage(1).sendToTarget();
       this.jdField_c_of_type_Boolean = true;
     }
   }
@@ -333,7 +333,7 @@ public class SuspendThreadManager
   
   public void b()
   {
-    Object localObject = bcow.a();
+    Object localObject = bdho.a();
     int i = ((SharedPreferences)localObject).getInt("suspendCrashCount", 0);
     localObject = ((SharedPreferences)localObject).edit();
     i += 1;
@@ -351,7 +351,7 @@ public class SuspendThreadManager
     }
     Message localMessage = Message.obtain();
     localMessage.what = 2;
-    jdField_a_of_type_Bcvg.sendMessage(localMessage);
+    jdField_a_of_type_Bdnz.sendMessage(localMessage);
   }
   
   public void d()
@@ -363,7 +363,7 @@ public class SuspendThreadManager
     }
     Message localMessage = Message.obtain();
     localMessage.what = 3;
-    jdField_a_of_type_Bcvg.sendMessage(localMessage);
+    jdField_a_of_type_Bdnz.sendMessage(localMessage);
   }
 }
 

@@ -1,20 +1,20 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeje
-  implements CompoundButton.OnCheckedChangeListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public aeje(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public aeje(Conversation paramConversation) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    bdoq.a(paramBoolean);
-    if (paramBoolean) {
-      bdoq.a(new aejf(this.a.jdField_a_of_type_Afen, this.a.jdField_a_of_type_AndroidViewView));
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, " gestureDetector onDoubleTap");
     }
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    Conversation.p(this.a);
+    return super.onDoubleTap(paramMotionEvent);
   }
 }
 

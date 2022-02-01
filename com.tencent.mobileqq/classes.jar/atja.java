@@ -1,151 +1,101 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.1;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.2;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.3;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.4;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
-import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody;
-import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody.Item;
-import tencent.im.cs.cmd0x383.cmd0x383.RspBody;
 
-class atja
-  extends anif
+public class atja
+  implements DownloadListener
 {
-  atja(atiz paramatiz) {}
+  public atja(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  protected void i(boolean paramBoolean, Object paramObject)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    ArrayList localArrayList = new ArrayList();
-    atiz.a(this.a, true);
-    if ((paramObject == null) || (!paramBoolean)) {}
-    Object localObject;
-    int i;
-    for (;;)
+    if ("1101070898".equals(paramString1))
     {
-      try
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("TroopFileSearchEngine<QFile>", 4, "data = " + paramObject + ", isSuccess = " + paramBoolean);
-        }
-        QLog.i("TroopFileSearchEngine<QFile>", 1, "error, can not handle search response, return a empty list.");
-        atiz.a(this.a, false, localArrayList);
-        return;
-        paramObject = (byte[])paramObject;
-        localObject = new cmd0x383.RspBody();
-        try
-        {
-          paramObject = (cmd0x383.RspBody)((cmd0x383.RspBody)localObject).mergeFrom(paramObject);
-          if (paramObject != null) {
-            continue;
-          }
-          if (!QLog.isDevelopLevel()) {
-            continue;
-          }
-          QLog.d("TroopFileSearchEngine<QFile>", 4, "bigRsp is null !!!");
-        }
-        catch (InvalidProtocolBufferMicroException paramObject) {}
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.d("TroopFileSearchEngine<QFile>", 4, QLog.getStackTraceString(paramObject));
-        continue;
+      paramString1 = UniformDownloadActivity.a(this.a);
+      UniformDownloadActivity.a(this.a, paramString1);
+      paramString1 = UniformDownloadActivity.a(this.a, paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.d(UniformDownloadActivity.a, 2, "tmastUrl=" + paramString1);
       }
-      catch (Exception paramObject)
-      {
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.d("TroopFileSearchEngine<QFile>", 4, QLog.getStackTraceString(paramObject));
-        continue;
-        i = paramObject.int32_ret_code.get();
-        if (i < 0)
-        {
-          if (!QLog.isDevelopLevel()) {
-            continue;
-          }
-          QLog.d("TroopFileSearchEngine<QFile>", 4, String.format("onRspTroopFileSearch - retCode: %d", new Object[] { Integer.valueOf(i) }));
-          continue;
-        }
-        paramObject = (cmd0x383.ApplyFileSearchRspBody)paramObject.msg_file_search_rsp_body.get();
-        if (paramObject == null)
-        {
-          if (!QLog.isDevelopLevel()) {
-            continue;
-          }
-          QLog.d("TroopFileSearchEngine<QFile>", 4, "rsp = " + paramObject);
-          continue;
-        }
-        localObject = paramObject.bytes_key_word.get().toStringUtf8();
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals(atiz.a(this.a))))
-        {
-          QLog.i("TroopFileSearchEngine<QFile>", 1, "keyword is update, current result is old");
-          return;
-        }
-        atiz.b(this.a, paramObject.bytes_sync_cookie.get().toStringUtf8());
-        localObject = this.a;
-        if (paramObject.uint32_is_end.get() != 1) {
-          break;
-        }
-      }
-      paramBoolean = true;
-      atiz.b((atiz)localObject, paramBoolean);
-      if (QLog.isDevelopLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("onRspTroopFileSearch cookie = " + atiz.b(this.a));
-        ((StringBuilder)localObject).append(", isEnd = " + atiz.c(this.a));
-        ((StringBuilder)localObject).append(", keyWord = " + paramObject.bytes_key_word.get().toStringUtf8());
-        ((StringBuilder)localObject).append(", totalCount = " + paramObject.uint32_total_match_count.get());
-        QLog.d("TroopFileSearchEngine<QFile>", 4, ((StringBuilder)localObject).toString());
-      }
-      paramObject = paramObject.item_list.get();
-      if ((paramObject != null) && (paramObject.size() != 0)) {
-        break label747;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("TroopFileSearchEngine<QFile>", 4, "filelist is empty--------");
-      }
-    }
-    for (;;)
-    {
-      if (i < paramObject.size())
-      {
-        localObject = new bewg(atiz.a(this.a), (cmd0x383.ApplyFileSearchRspBody.Item)paramObject.get(i));
-        bfrm localbfrm;
-        besl localbesl;
-        if (((bewg)localObject).jdField_a_of_type_Besl != null)
-        {
-          localbfrm = bfrm.a(atiz.a(this.a), ((bewg)localObject).jdField_a_of_type_Long);
-          localbesl = localbfrm.a(((bewg)localObject).jdField_a_of_type_Besl.b);
-          if (localbesl == null) {
-            break label717;
-          }
-        }
-        label717:
-        for (((bewg)localObject).jdField_a_of_type_Besl.a = localbesl.a;; ((bewg)localObject).jdField_a_of_type_Besl.a = UUID.randomUUID())
-        {
-          localbfrm.a(((bewg)localObject).jdField_a_of_type_Besl.b, ((bewg)localObject).jdField_a_of_type_Besl);
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopFileSearchEngine<QFile>", 4, "fileList[" + i + "]: " + ((bewg)localObject).toString());
-          }
-          localArrayList.add(localObject);
-          i += 1;
-          break;
-        }
-      }
-      atiz.a(this.a, true, localArrayList);
-      return;
-      paramBoolean = false;
-      break;
-      label747:
-      i = 0;
+      UniformDownloadActivity.a(this.a, paramString1);
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
     }
   }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "onDownloadCancel " + paramDownloadInfo.e);
+    }
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "onDownloadError " + paramDownloadInfo.e);
+    }
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "onDownloadFinish " + paramDownloadInfo.e);
+    }
+    bdll.b(null, "dc00898", "", "", "0X8008F88", "0X8008F88", 1, 0, "", "", "", "");
+    this.a.runOnUiThread(new UniformDownloadActivity.10.4(this));
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "onDownloadPause " + paramDownloadInfo.e);
+    }
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898"))) {
+      this.a.runOnUiThread(new UniformDownloadActivity.10.3(this));
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+      if (QLog.isColorLevel()) {
+        QLog.d(UniformDownloadActivity.a, 2, "onDownloadUpdate " + localDownloadInfo.e);
+      }
+      if ((localDownloadInfo != null) && (localDownloadInfo.c.equals("1101070898"))) {
+        this.a.runOnUiThread(new UniformDownloadActivity.10.2(this, localDownloadInfo));
+      }
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    this.a.runOnUiThread(new UniformDownloadActivity.10.1(this));
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

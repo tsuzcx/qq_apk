@@ -1,20 +1,17 @@
 class wtw
-  implements wth
+  implements wvd
 {
-  private long jdField_a_of_type_Long;
+  wtw(wtv paramwtv) {}
   
-  wtw(wtu paramwtu) {}
-  
-  public void a()
+  public void a(boolean paramBoolean, wuz paramwuz)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Long != 0L) {
-      yqu.b("msgtab", "preload_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
+    yuk.b("WeatherDataProvider", "WeatherLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramwuz != null))
+    {
+      this.a.a(paramwuz.b, paramwuz.a);
+      return;
     }
+    this.a.a(false, null);
   }
 }
 

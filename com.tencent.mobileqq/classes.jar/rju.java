@@ -1,19 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.8.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
 
 public class rju
-  implements DialogInterface.OnDismissListener
+  extends pfh
 {
-  public rju(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  public rju(SelectVideoTabFragment paramSelectVideoTabFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void i(int paramInt)
   {
-    ReadInJoyDeliverUGCActivity.b(this.a, false);
-    ThreadManager.getUIHandler().postDelayed(new ReadInJoyDeliverUGCActivity.8.1(this), 300L);
+    super.i(paramInt);
+    if ((SelectVideoTabFragment.a(this.a) != null) && (paramInt != 0) && (!SelectVideoTabFragment.a(this.a).isEmpty()))
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_column_id", paramInt);
+      localIntent.putExtra("arg_callback", SelectVideoTabFragment.a(this.a));
+      SelectVideoTabFragment.a(this.a).setResult(3, localIntent);
+      SelectVideoTabFragment.a(this.a).finish();
+    }
   }
 }
 

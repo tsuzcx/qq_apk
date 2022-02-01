@@ -1,15 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.qphone.base.util.QLog;
 
 class mpy
-  implements View.OnTouchListener
+  implements mqz
 {
-  mpy(mpw parammpw) {}
+  mpy(mpv parammpv) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    return true;
+    QLog.w("AVRedBag", 1, "mResultUI 关闭了");
+    this.a.a = null;
+    ltr.a().b(8);
   }
 }
 

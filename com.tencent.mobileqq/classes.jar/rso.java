@@ -1,13 +1,19 @@
-import android.text.TextUtils;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
-class rso
-  implements rsh<riw>
+public class rso
+  implements View.OnLayoutChangeListener
 {
-  rso(rsn paramrsn) {}
+  public rso(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
   
-  public boolean a(riw paramriw)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    return TextUtils.equals("video/mp4", paramriw.a);
+    this.a.removeOnLayoutChangeListener(this);
+    if (VideoFeedsRecyclerView.a(this.a) != null) {
+      VideoFeedsRecyclerView.a(this.a).a(VideoFeedsRecyclerView.a(this.a).itemView);
+    }
   }
 }
 

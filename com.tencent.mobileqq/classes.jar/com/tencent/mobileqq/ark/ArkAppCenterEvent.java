@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark;
 
-import apog;
+import aqbw;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -19,7 +19,7 @@ public class ArkAppCenterEvent
       {
         Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
         if (localEntry.getValue() != null) {
-          ((apog)localEntry.getValue()).a(paramInt, paramString, paramObject);
+          ((aqbw)localEntry.getValue()).a(paramInt, paramString, paramObject);
         }
       }
     }

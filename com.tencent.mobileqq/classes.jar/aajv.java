@@ -1,28 +1,16 @@
-import android.widget.TextView;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aajv
-  extends vuq
+  implements View.OnClickListener
 {
-  aajv(aajt paramaajt, agrp paramagrp) {}
+  aajv(aaju paramaaju, int paramInt) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    super.a();
-    aajt.a(this.jdField_a_of_type_Aajt, this.jdField_a_of_type_Agrp, true);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    Integer localInteger = (Integer)aajt.b(this.jdField_a_of_type_Aajt).get(Integer.valueOf(this.jdField_a_of_type_Agrp.b));
-    if ((localInteger != null) && (localInteger.intValue() > paramInt2) && (paramInt1 != localInteger.intValue()) && (Math.abs(paramInt1 - localInteger.intValue()) > 100))
-    {
-      this.jdField_a_of_type_Agrp.a.setText((CharSequence)aajt.c(this.jdField_a_of_type_Aajt).get(Integer.valueOf(this.jdField_a_of_type_Agrp.b)));
-      return;
-    }
-    aajt.b(this.jdField_a_of_type_Aajt).put(Integer.valueOf(this.jdField_a_of_type_Agrp.b), Integer.valueOf(paramInt2));
-    aajt.c(this.jdField_a_of_type_Aajt).put(Integer.valueOf(this.jdField_a_of_type_Agrp.b), paramString);
-    this.jdField_a_of_type_Agrp.a.setText(paramString);
+    this.jdField_a_of_type_Aaju.a.a(this.jdField_a_of_type_Int, aaju.a(this.jdField_a_of_type_Aaju));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

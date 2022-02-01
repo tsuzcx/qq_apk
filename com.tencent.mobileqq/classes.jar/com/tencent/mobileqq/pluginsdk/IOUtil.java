@@ -11,7 +11,7 @@ import java.util.zip.ZipFile;
 public class IOUtil
 {
   public static final long CRC32_VALUE_INVALID = -1L;
-  private static final String TAG = "IOUtil";
+  public static final String TAG = "IOUtil";
   
   public static void closeStream(Closeable paramCloseable)
   {

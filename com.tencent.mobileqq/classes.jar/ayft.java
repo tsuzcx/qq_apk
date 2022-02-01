@@ -1,23 +1,19 @@
 import android.view.View;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayft
-  implements bkhw
+  implements View.OnClickListener
 {
-  public ayft(OCRResultActivity paramOCRResultActivity) {}
+  public ayft(StuffContainerView paramStuffContainerView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((OCRResultActivity.a(this.a) != null) && (paramInt < OCRResultActivity.a(this.a).size()))
-    {
-      paramView = (String)OCRResultActivity.a(this.a).get(paramInt);
-      OCRResultActivity.a(this.a, OCRResultActivity.a(this.a), paramView, false, true);
+    if (this.a.a != null) {
+      this.a.a.a(0);
     }
-    if ((OCRResultActivity.a(this.a) != null) && (OCRResultActivity.a(this.a).isShowing())) {
-      OCRResultActivity.a(this.a).dismiss();
-    }
-    OCRResultActivity.a(this.a, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

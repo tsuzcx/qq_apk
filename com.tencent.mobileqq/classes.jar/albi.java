@@ -1,45 +1,20 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
-class albi
-  implements View.OnClickListener
+public class albi
+  implements akxk
 {
-  albi(albc paramalbc) {}
+  public albi(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void a(Object paramObject)
   {
-    if (paramView == null) {}
-    label109:
-    for (;;)
+    if ((paramObject instanceof Bitmap))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      int i = paramView.getId();
-      if ((i >= 0) && (i < this.a.getCount()))
-      {
-        Object localObject = this.a.getItem(i);
-        if ((localObject != null) && ((localObject instanceof RecentBaseData)))
-        {
-          RecentBaseData localRecentBaseData = (RecentBaseData)localObject;
-          if ((paramView instanceof TextView))
-          {
-            localObject = ((TextView)paramView).getText();
-            if (localObject == null) {}
-          }
-          for (localObject = ((CharSequence)localObject).toString();; localObject = null)
-          {
-            if (TextUtils.isEmpty((CharSequence)localObject)) {
-              break label109;
-            }
-            this.a.a(localRecentBaseData, (String)localObject, "1");
-            break;
-          }
-        }
-      }
+      paramObject = QzoneHbFragment.a(this.a).obtainMessage();
+      paramObject.what = 102;
+      QzoneHbFragment.a(this.a).sendMessage(paramObject);
     }
   }
 }

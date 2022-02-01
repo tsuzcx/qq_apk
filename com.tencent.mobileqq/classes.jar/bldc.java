@@ -1,75 +1,39 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class bldc
+  extends Handler
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static bldc jdField_a_of_type_Bldc;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<blde> jdField_a_of_type_JavaLangRefWeakReference;
-  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  String b;
-  String c;
-  String d;
-  String e = "https://sqimg.qq.com/qq_product_operations/gme_sdk/GME_SDK_V1.zip";
-  String f = "105d1e43c456bc800b4adacd57ac1199";
-  
-  public static bldc a()
+  public bldc(QSecFramework paramQSecFramework, Looper paramLooper)
   {
-    if (jdField_a_of_type_Bldc == null) {}
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
     try
     {
-      if (jdField_a_of_type_Bldc == null) {
-        jdField_a_of_type_Bldc = new bldc();
+      if ((paramMessage.what == 1) && (!TextUtils.isEmpty((CharSequence)paramMessage.obj)))
+      {
+        long l = Long.parseLong((String)paramMessage.obj);
+        if (l != 0L)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QSecFramework", 2, "handle native msg for cookie:" + l);
+          }
+          QSecFramework.a(6L, l, 0L, 0L, null, null, null, null);
+        }
       }
-      return jdField_a_of_type_Bldc;
+      return;
     }
-    finally {}
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    jdField_a_of_type_Bldc = null;
-  }
-  
-  public void a(blde paramblde)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramblde);
-  }
-  
-  public void a(String paramString)
-  {
-    blck.a().a(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.e = paramString1;
-    this.f = paramString2;
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    blck.a().a(1, this.e, this.f);
-    blck.a().a(BaseApplicationImpl.getContext(), this.b, this.jdField_a_of_type_JavaLangString, "0", this.c);
-    blck.a().a(new bldd(this, paramBoolean1, paramBoolean2));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    blck.a().a(paramBoolean);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    blck.a().b(paramBoolean);
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
+    }
   }
 }
 

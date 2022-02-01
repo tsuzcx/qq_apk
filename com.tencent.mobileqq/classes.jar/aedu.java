@@ -1,35 +1,15 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
-public abstract class aedu
-  extends ClickableSpan
+class aedu
+  implements axpu
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  aedu(aedt paramaedt) {}
   
-  public aedu(EditInfoActivity paramEditInfoActivity, int paramInt1, int paramInt2)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.b;; i = this.jdField_a_of_type_Int)
-    {
-      paramTextPaint.setColor(i);
-      paramTextPaint.setUnderlineText(false);
-      return;
-    }
+    this.a.jdField_a_of_type_Axqb.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Axqb.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
   }
 }
 

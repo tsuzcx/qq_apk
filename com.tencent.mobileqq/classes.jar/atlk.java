@@ -1,34 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
-final class atlk
-  implements View.OnClickListener
+public class atlk
+  implements Cloneable
 {
-  atlk(FileManagerEntity paramFileManagerEntity, atmk paramatmk) {}
+  public int a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public int b;
+  public TextView b;
+  public int c;
+  public TextView c;
   
-  public void onClick(View paramView)
-  {
-    try
-    {
-      if (blni.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity)) {
-        blni.a().a(this.jdField_a_of_type_Atmk.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), false);
-      }
-      for (;;)
-      {
-        label36:
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        QLog.e("FileOperaterUtils-PUPU", 2, "Should not open the file with pupu: " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
-      }
-    }
-    catch (Exception localException)
-    {
-      break label36;
-    }
-  }
+  public atlk(atlj paramatlj) {}
 }
 
 

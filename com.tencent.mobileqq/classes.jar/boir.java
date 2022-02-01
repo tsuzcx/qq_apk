@@ -1,20 +1,12 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.aeeditor.module.toolbar.VideoEditToolBar;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public class boir
-  implements Animation.AnimationListener
+public abstract interface boir
 {
-  public boir(VideoEditToolBar paramVideoEditToolBar) {}
+  public abstract void a(bojl parambojl);
   
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public abstract void a(VideoMaterial paramVideoMaterial);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.setVisibility(0);
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

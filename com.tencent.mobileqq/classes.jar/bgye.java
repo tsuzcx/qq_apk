@@ -1,15 +1,10 @@
-public class bgye
+import android.view.MotionEvent;
+
+public abstract interface bgye
 {
-  public String a;
-  public String b;
-  public String c;
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("BannerConfig: ").append("backgroudImgUrl=").append(this.a).append(";").append("cornerMarkLevel=").append(this.b).append(";").append("linkUrl=").append(this.c);
-    return localStringBuilder.toString();
-  }
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

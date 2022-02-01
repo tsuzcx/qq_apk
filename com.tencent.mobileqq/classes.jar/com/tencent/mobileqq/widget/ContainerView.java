@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.widget;
 
-import afur;
-import agar;
-import agas;
-import alqs;
-import alqt;
+import agej;
+import agkl;
+import agkm;
+import amck;
+import amcl;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -21,10 +21,10 @@ import android.view.View.MeasureSpec;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bcst;
-import bgtn;
-import bhvl;
-import bhvm;
+import bdll;
+import bhtq;
+import biwj;
+import biwk;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ScrollView;
 
@@ -32,14 +32,14 @@ import com.tencent.widget.ScrollView;
 @TargetApi(11)
 public class ContainerView
   extends LinearLayout
-  implements agas, alqs
+  implements agkm, amck
 {
   public static float a;
-  private static final int l = bgtn.b(5.0F);
-  private static final int m = bgtn.b(2.0F);
-  private static final int n = bgtn.b(28.0F);
+  private static final int l = bhtq.b(5.0F);
+  private static final int m = bhtq.b(2.0F);
+  private static final int n = bhtq.b(28.0F);
   public int a;
-  private alqt jdField_a_of_type_Alqt;
+  private amcl jdField_a_of_type_Amcl;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   protected Handler a;
@@ -133,7 +133,7 @@ public class ContainerView
   
   private void a()
   {
-    if (this.jdField_a_of_type_Alqt == null) {
+    if (this.jdField_a_of_type_Amcl == null) {
       throw new IllegalStateException("Has no bound delegate!");
     }
   }
@@ -169,11 +169,11 @@ public class ContainerView
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setHighlightColor(1722605812);
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setTextSize(1, 32.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setTextColor(-16777216);
-    int i1 = afur.a(10.0F, getResources());
+    int i1 = agej.a(10.0F, getResources());
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setPadding(i1, i1, i1, i1);
     paramContext = new LinearLayout.LayoutParams(-2, -2);
     addView(this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView, paramContext);
-    getViewTreeObserver().addOnGlobalLayoutListener(new bhvl(this));
+    getViewTreeObserver().addOnGlobalLayoutListener(new biwj(this));
   }
   
   private void c(int paramInt1, int paramInt2, int paramInt3)
@@ -183,12 +183,12 @@ public class ContainerView
     if (this.g == 1)
     {
       i2 = this.h;
-      i1 = this.jdField_a_of_type_Alqt.a(paramInt1, paramInt2);
+      i1 = this.jdField_a_of_type_Amcl.a(paramInt1, paramInt2);
       if (QLog.isColorLevel()) {
         QLog.d("BaseChatItemLayout", 2, "updateCursorLocation, touchIndex=" + i1 + ", type=" + this.g);
       }
       if (paramInt3 == -1) {
-        this.jdField_a_of_type_Alqt.a(this.g, false);
+        this.jdField_a_of_type_Amcl.a(this.g, false);
       }
       if (i1 != -1) {
         break label107;
@@ -219,15 +219,15 @@ public class ContainerView
             if (QLog.isColorLevel()) {
               QLog.d("BaseChatItemLayout", 2, "update selection, s=" + i1 + ", e=" + paramInt3);
             }
-            this.jdField_a_of_type_Alqt.a(i1, paramInt3);
-            this.jdField_a_of_type_Alqt.b(paramInt1, paramInt2);
+            this.jdField_a_of_type_Amcl.a(i1, paramInt3);
+            this.jdField_a_of_type_Amcl.b(paramInt1, paramInt2);
             if (this.g != 1) {
               break label527;
             }
             if (this.j == -1) {
               break;
             }
-            this.jdField_a_of_type_Alqt.a(paramInt1, this.j, true);
+            this.jdField_a_of_type_Amcl.a(paramInt1, this.j, true);
             return;
             if ((i1 > this.h) && (i1 < this.i))
             {
@@ -250,7 +250,7 @@ public class ContainerView
               this.h = this.i;
               this.i = i1;
               this.g = 2;
-              this.jdField_a_of_type_Alqt.a(this.g);
+              this.jdField_a_of_type_Amcl.a(this.g);
               paramInt3 = i1;
               i1 = i2;
               continue;
@@ -284,24 +284,24 @@ public class ContainerView
                 this.i = this.h;
                 this.h = i1;
                 this.g = 1;
-                this.jdField_a_of_type_Alqt.a(this.g);
+                this.jdField_a_of_type_Amcl.a(this.g);
               }
             }
           }
         } while ((this.g != 2) || (this.k == -1));
-        this.jdField_a_of_type_Alqt.a(paramInt1, this.k, true);
+        this.jdField_a_of_type_Amcl.a(paramInt1, this.k, true);
         return;
         if (this.g != 1) {
           break label591;
         }
       } while (this.j == -1);
-      this.jdField_a_of_type_Alqt.a(paramInt1, this.j, false);
+      this.jdField_a_of_type_Amcl.a(paramInt1, this.j, false);
       return;
     } while ((this.g != 2) || (this.k == -1));
     label527:
     label559:
     label591:
-    this.jdField_a_of_type_Alqt.a(paramInt1, this.k, false);
+    this.jdField_a_of_type_Amcl.a(paramInt1, this.k, false);
   }
   
   public int a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
@@ -309,7 +309,7 @@ public class ContainerView
     if ((!this.jdField_c_of_type_Boolean) && (!this.jdField_d_of_type_Boolean)) {
       return -1;
     }
-    return new agar(this, this.jdField_a_of_type_Alqt).a(paramFloat1, paramFloat2, paramInt1, paramInt2);
+    return new agkl(this, this.jdField_a_of_type_Amcl).a(paramFloat1, paramFloat2, paramInt1, paramInt2);
   }
   
   public int a(int paramInt)
@@ -354,9 +354,9 @@ public class ContainerView
     this.i = (paramInt1 + paramInt2);
   }
   
-  public void a(alqt paramalqt)
+  public void a(amcl paramamcl)
   {
-    this.jdField_a_of_type_Alqt = paramalqt;
+    this.jdField_a_of_type_Amcl = paramamcl;
   }
   
   public boolean a()
@@ -491,7 +491,7 @@ public class ContainerView
     if (((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) && (a(paramMotionEvent.getX(), paramMotionEvent.getY()) != -1))
     {
       a();
-      this.jdField_a_of_type_Alqt.c();
+      this.jdField_a_of_type_Amcl.c();
       requestDisallowInterceptTouchEvent(true);
       return true;
     }
@@ -559,13 +559,13 @@ public class ContainerView
         a();
         this.jdField_e_of_type_Boolean = true;
         this.g = i1;
-        this.h = this.jdField_a_of_type_Alqt.b();
-        this.i = this.jdField_a_of_type_Alqt.c();
+        this.h = this.jdField_a_of_type_Amcl.b();
+        this.i = this.jdField_a_of_type_Amcl.c();
         if (paramMotionEvent.getSource() != -1) {
-          this.jdField_a_of_type_Alqt.a(this.g, false);
+          this.jdField_a_of_type_Amcl.a(this.g, false);
         }
-        if (this.jdField_a_of_type_Alqt.a()) {
-          this.jdField_a_of_type_Alqt.b();
+        if (this.jdField_a_of_type_Amcl.a()) {
+          this.jdField_a_of_type_Amcl.b();
         }
       }
       do
@@ -580,13 +580,13 @@ public class ContainerView
           this.jdField_e_of_type_Boolean = false;
           this.j = -1;
           this.k = -1;
-          this.jdField_a_of_type_Alqt.a(-1, true);
-          this.jdField_a_of_type_Alqt.a();
+          this.jdField_a_of_type_Amcl.a(-1, true);
+          this.jdField_a_of_type_Amcl.a();
         } while (i2 != 1);
         if (paramMotionEvent.getSource() == -1) {}
         for (;;)
         {
-          bcst.b(null, "dc00898", "", "", "0X800AE7B", "0X800AE7B", i1, 0, "", "", "", "");
+          bdll.b(null, "dc00898", "", "", "0X800AE7B", "0X800AE7B", i1, 0, "", "", "", "");
           return true;
           i1 = 1;
         }
@@ -682,7 +682,7 @@ public class ContainerView
   public void setOutScrollView(ScrollView paramScrollView)
   {
     this.jdField_a_of_type_ComTencentWidgetScrollView = paramScrollView;
-    this.jdField_a_of_type_ComTencentWidgetScrollView.setOnScrollStateChangedListener(new bhvm(this));
+    this.jdField_a_of_type_ComTencentWidgetScrollView.setOnScrollStateChangedListener(new biwk(this));
   }
   
   public void setText(CharSequence paramCharSequence)

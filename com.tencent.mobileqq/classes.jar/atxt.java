@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-
-public class atxt
-  implements atve
+class atxt
+  extends atxl
 {
-  public atxt(QfileEditBottomBar paramQfileEditBottomBar) {}
-  
-  public void a()
+  public atxt(atwy paramatwy)
   {
-    QfileEditBottomBar.a(this.a);
+    super(paramatwy);
   }
   
-  public void b() {}
+  protected String a()
+  {
+    return "StateRefuseByPC";
+  }
 }
 
 

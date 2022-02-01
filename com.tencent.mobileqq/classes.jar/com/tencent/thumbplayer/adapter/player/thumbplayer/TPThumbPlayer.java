@@ -453,6 +453,14 @@ public class TPThumbPlayer
     return this.mPlayer.getDurationMs();
   }
   
+  public int getNativePlayerId()
+  {
+    if (this.mPlayer != null) {
+      return this.mPlayer.getNativePlayerId();
+    }
+    return 0;
+  }
+  
   public long getPlayableDurationMs()
   {
     if (this.mPlayer == null)

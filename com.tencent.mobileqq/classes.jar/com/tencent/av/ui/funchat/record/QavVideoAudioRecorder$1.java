@@ -2,20 +2,20 @@ package com.tencent.av.ui.funchat.record;
 
 import android.os.HandlerThread;
 import android.os.Looper;
-import batk;
+import bbmd;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
-import mnr;
+import moo;
 
 public class QavVideoAudioRecorder$1
   implements Runnable
 {
-  public QavVideoAudioRecorder$1(mnr parammnr, batk parambatk, HandlerThread paramHandlerThread) {}
+  public QavVideoAudioRecorder$1(moo parammoo, bbmd parambbmd, HandlerThread paramHandlerThread) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Batk != null) {
-      this.jdField_a_of_type_Batk.a();
+    if (this.jdField_a_of_type_Bbmd != null) {
+      this.jdField_a_of_type_Bbmd.a();
     }
     try
     {

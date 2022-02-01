@@ -1,100 +1,59 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.observer.QZoneObserver.1;
-import com.tencent.mobileqq.observer.QZoneObserver.2;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.LocationInfo;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayev
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  public ayev(ShortVideoCommentsView paramShortVideoCommentsView, LocationInfo paramLocationInfo) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong) {}
-  
-  public void b(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void c(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void d(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void e(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void f(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void g(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void h(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void i(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void j(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1000)
+    Object localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.getContext(), QQBrowserActivity.class);
+    String str3 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.lng;
+    String str4 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.lat;
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.name;
+    String str1;
+    if (TextUtils.isEmpty(str2))
     {
-      boolean bool = paramBundle.getBoolean("new");
-      long l = paramBundle.getLong("notify_type", 0L);
-      if (QLog.isColorLevel())
-      {
-        if ((l >>> 17 & 1L) != 0L) {
-          QLog.d("ZebraAlbum.UndealCount.QZoneObserver", 2, "onReceive QZONE_GET_UNREAD hasNew: " + bool + "type:" + l + "and then call onGetQZoneFeedCountFin");
-        }
-        QLog.d("UndealCount.UndealCount.QZoneObserver", 2, "qzone redtypeinfo:onReceive QZONE_GET_UNREAD hasNew: " + bool + ",type:" + l + " and then call onGetQZoneFeedCountFin");
+      str1 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.getCity();
+      str1 = String.format("https://3gimg.qq.com/lightmap/v1/marker/?key=%s&referer=qqnearby&marker=coord:%s,%s;title:%s;addr:%s", new Object[] { "25TBZ-W4HCP-2BKDM-LBYH3-L4QRT-G3BDP", str4, str3, str1, str2 });
+      ((Intent)localObject).putExtra("url", str1);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.getContext().startActivity((Intent)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.i("ShortVideoComments", 2, "when click location label ; the url is :" + str1);
       }
-      a(paramBoolean, bool, l);
+      localObject = new bdlq(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a).a("dc00899").b("grp_lbs").c("data_card").d("clk_lbs").e(String.valueOf(ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_Long));
+      if (!TextUtils.equals(String.valueOf(ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a.getCurrentAccountUin())) {
+        break label292;
+      }
+      str1 = "1";
+      label228:
+      if (ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView) == null) {
+        break label298;
+      }
     }
-    do
+    label292:
+    label298:
+    for (str2 = ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_JavaLangString;; str2 = "0")
     {
+      ((bdlq)localObject).a(new String[] { str1, "", "", str2 }).a();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramInt == 1001)
-      {
-        ThreadManagerV2.executeOnSubThread(new QZoneObserver.1(this, paramBoolean, paramBundle));
-        return;
-      }
-      if (paramInt == 1002)
-      {
-        c(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1003)
-      {
-        d(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1004)
-      {
-        e(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1005)
-      {
-        f(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1006)
-      {
-        g(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1007)
-      {
-        ThreadManagerV2.executeOnSubThread(new QZoneObserver.2(this, paramBoolean, paramBundle));
-        return;
-      }
-      if (paramInt == 1008)
-      {
-        i(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1009)
-      {
-        j(paramBoolean, paramBundle);
-        return;
-      }
-    } while (paramInt != 1010);
-    a(paramBoolean, paramBundle);
+      str1 = str2;
+      break;
+      str1 = "2";
+      break label228;
+    }
   }
 }
 

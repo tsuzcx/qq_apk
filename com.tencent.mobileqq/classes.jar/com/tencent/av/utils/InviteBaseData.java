@@ -3,12 +3,12 @@ package com.tencent.av.utils;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import mrt;
+import msr;
 
 public class InviteBaseData
   implements Parcelable
 {
-  public static final Parcelable.Creator<InviteBaseData> CREATOR = new mrt();
+  public static final Parcelable.Creator<InviteBaseData> CREATOR = new msr();
   public int a;
   public String a;
   public int b;

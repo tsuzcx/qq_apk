@@ -6,12 +6,12 @@ import android.os.Bundle;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ScrollView;
-import bgmp;
-import bgng;
-import bgpa;
+import bhmr;
+import bhni;
+import bhpc;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.qphone.base.util.QLog;
-import yqu;
+import yup;
 
 public class ForwardQQStoryMsgOption
   extends ForwardStructingMsgOption
@@ -29,7 +29,7 @@ public class ForwardQQStoryMsgOption
     int i = 3;
     try
     {
-      paramString2 = bgng.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, paramString2);
+      paramString2 = bhni.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, paramString2);
       paramContext = "";
       str = "";
       for (;;)
@@ -70,7 +70,7 @@ public class ForwardQQStoryMsgOption
           j = -1;
         }
       }
-      yqu.a("share", paramString1, i, j, new String[] { paramContext, paramString2, "", "" });
+      yup.a("share", paramString1, i, j, new String[] { paramContext, paramString2, "", "" });
       if (QLog.isColorLevel())
       {
         QLog.d("ForwardOption.ForwardQQStoryMsgOption", 2, "reportClickEvent: opName=" + paramString1 + ", fromType=" + i + ", result=" + j + ", extra1=" + paramContext + ", extra2=" + paramString2);
@@ -104,11 +104,11 @@ public class ForwardQQStoryMsgOption
   }
   
   /* Error */
-  public boolean a(bgpa parambgpa)
+  public boolean a(bhpc parambhpc)
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 126	bgpa:getWindow	()Landroid/view/Window;
+    //   1: invokevirtual 126	bhpc:getWindow	()Landroid/view/Window;
     //   4: bipush 19
     //   6: invokevirtual 132	android/view/Window:setSoftInputMode	(I)V
     //   9: aload_0
@@ -117,27 +117,27 @@ public class ForwardQQStoryMsgOption
     //   16: aload_0
     //   17: getfield 138	com/tencent/mobileqq/forward/ForwardQQStoryMsgOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   20: ldc 139
-    //   22: invokestatic 144	bggq:a	(Landroid/content/Context;F)I
+    //   22: invokestatic 144	bhgr:a	(Landroid/content/Context;F)I
     //   25: istore_2
     //   26: aload_0
     //   27: getfield 138	com/tencent/mobileqq/forward/ForwardQQStoryMsgOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   30: ldc 145
-    //   32: invokestatic 144	bggq:a	(Landroid/content/Context;F)I
+    //   32: invokestatic 144	bhgr:a	(Landroid/content/Context;F)I
     //   35: istore_3
     //   36: aload_0
     //   37: getfield 138	com/tencent/mobileqq/forward/ForwardQQStoryMsgOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   40: ldc 146
-    //   42: invokestatic 144	bggq:a	(Landroid/content/Context;F)I
+    //   42: invokestatic 144	bhgr:a	(Landroid/content/Context;F)I
     //   45: istore 4
     //   47: aload_0
     //   48: getfield 138	com/tencent/mobileqq/forward/ForwardQQStoryMsgOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   51: ldc 147
-    //   53: invokestatic 144	bggq:a	(Landroid/content/Context;F)I
+    //   53: invokestatic 144	bhgr:a	(Landroid/content/Context;F)I
     //   56: istore 5
     //   58: aload_0
     //   59: getfield 138	com/tencent/mobileqq/forward/ForwardQQStoryMsgOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   62: ldc 148
-    //   64: invokestatic 144	bggq:a	(Landroid/content/Context;F)I
+    //   64: invokestatic 144	bhgr:a	(Landroid/content/Context;F)I
     //   67: istore 6
     //   69: ldc 150
     //   71: invokestatic 155	android/graphics/Color:parseColor	(Ljava/lang/String;)I
@@ -215,7 +215,7 @@ public class ForwardQQStoryMsgOption
     //   227: aload_0
     //   228: getfield 138	com/tencent/mobileqq/forward/ForwardQQStoryMsgOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   231: ldc 201
-    //   233: invokestatic 144	bggq:a	(Landroid/content/Context;F)I
+    //   233: invokestatic 144	bhgr:a	(Landroid/content/Context;F)I
     //   236: putfield 204	android/widget/RelativeLayout$LayoutParams:topMargin	I
     //   239: new 206	android/widget/TextView
     //   242: dup
@@ -240,7 +240,7 @@ public class ForwardQQStoryMsgOption
     //   282: aload_0
     //   283: getfield 138	com/tencent/mobileqq/forward/ForwardQQStoryMsgOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   286: ldc 216
-    //   288: invokestatic 144	bggq:a	(Landroid/content/Context;F)I
+    //   288: invokestatic 144	bhgr:a	(Landroid/content/Context;F)I
     //   291: putfield 217	android/widget/LinearLayout$LayoutParams:topMargin	I
     //   294: aload 17
     //   296: iconst_3
@@ -264,7 +264,7 @@ public class ForwardQQStoryMsgOption
     //   336: aload_1
     //   337: aload 8
     //   339: aload 9
-    //   341: invokevirtual 225	bgpa:addView	(Landroid/view/View;Landroid/widget/LinearLayout$LayoutParams;)Lbgpa;
+    //   341: invokevirtual 225	bhpc:addView	(Landroid/view/View;Landroid/widget/LinearLayout$LayoutParams;)Lbhpc;
     //   344: pop
     //   345: aload 16
     //   347: aload_0
@@ -378,7 +378,7 @@ public class ForwardQQStoryMsgOption
     //   598: invokevirtual 260	com/tencent/image/URLImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   601: aload_0
     //   602: aload_1
-    //   603: invokevirtual 126	bgpa:getWindow	()Landroid/view/Window;
+    //   603: invokevirtual 126	bhpc:getWindow	()Landroid/view/Window;
     //   606: invokevirtual 297	android/view/Window:getDecorView	()Landroid/view/View;
     //   609: ldc_w 298
     //   612: invokevirtual 304	android/view/View:findViewById	(I)Landroid/view/View;
@@ -460,7 +460,7 @@ public class ForwardQQStoryMsgOption
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	785	0	this	ForwardQQStoryMsgOption
-    //   0	785	1	parambgpa	bgpa
+    //   0	785	1	parambhpc	bhpc
     //   25	197	2	i	int
     //   35	441	3	j	int
     //   45	437	4	k	int
@@ -497,7 +497,7 @@ public class ForwardQQStoryMsgOption
     int i = c();
     String str = "";
     if (i != 0) {
-      str = this.jdField_a_of_type_Bgpa.getInputValue();
+      str = this.jdField_a_of_type_Bhpc.getInputValue();
     }
     this.jdField_a_of_type_AndroidOsBundle.putString("share_comment_message", str);
     e();
@@ -522,7 +522,7 @@ public class ForwardQQStoryMsgOption
     }
   }
   
-  public boolean i()
+  public boolean j()
   {
     return false;
   }
@@ -534,9 +534,9 @@ public class ForwardQQStoryMsgOption
     }
   }
   
-  public void r()
+  public void s()
   {
-    super.r();
+    super.s();
     e();
     if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null) {
       a("cancel", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgAction, this.jdField_a_of_type_AndroidAppActivity);

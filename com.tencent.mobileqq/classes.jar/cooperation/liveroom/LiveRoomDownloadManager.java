@@ -1,9 +1,9 @@
 package cooperation.liveroom;
 
 import android.os.Bundle;
-import bhhf;
-import bhhh;
-import bhhk;
+import bihu;
+import bihw;
+import bihz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import java.io.File;
@@ -27,8 +27,8 @@ public class LiveRoomDownloadManager
   
   public void download(List<String> paramList, Map<String, File> paramMap, boolean paramBoolean, LiveRoomDownloadManager.DownloadCallback paramDownloadCallback)
   {
-    bhhk localbhhk = ((bhhh)((BrowserAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web")).getManager(47)).a(1);
-    if (localbhhk != null)
+    bihz localbihz = ((bihw)((BrowserAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web")).getManager(47)).a(1);
+    if (localbihz != null)
     {
       Bundle localBundle = new Bundle();
       paramDownloadCallback = new LiveRoomDownloadManager.1(this, paramDownloadCallback);
@@ -38,16 +38,16 @@ public class LiveRoomDownloadManager
         while (paramList.hasNext())
         {
           Object localObject = (String)paramList.next();
-          localObject = new bhhf((String)localObject, (File)paramMap.get(localObject));
-          ((bhhf)localObject).j = true;
-          ((bhhf)localObject).p = false;
-          localbhhk.a((bhhf)localObject, paramDownloadCallback, localBundle);
+          localObject = new bihu((String)localObject, (File)paramMap.get(localObject));
+          ((bihu)localObject).j = true;
+          ((bihu)localObject).p = false;
+          localbihz.a((bihu)localObject, paramDownloadCallback, localBundle);
         }
       }
-      paramList = new bhhf(paramList, paramMap, "LiveRoomDownloadManager");
+      paramList = new bihu(paramList, paramMap, "LiveRoomDownloadManager");
       paramList.j = true;
       paramList.p = false;
-      localbhhk.a(paramList, paramDownloadCallback, localBundle);
+      localbihz.a(paramList, paramDownloadCallback, localBundle);
     }
   }
 }

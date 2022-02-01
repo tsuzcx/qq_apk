@@ -1,52 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCountTimeLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
 
-public class bqdn
-  extends AnimatorListenerAdapter
+public final class bqdn
+  implements Parcelable.Creator<EditTakeVideoSource>
 {
-  public bqdn(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public EditTakeVideoSource a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
-    }
+    return new EditTakeVideoSource(paramParcel);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public EditTakeVideoSource[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", mActionUpAnimator:" + this.a.b.get());
-    }
-    if (!this.a.b.get())
-    {
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-      this.a.i();
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-    }
-    for (;;)
-    {
-      this.a.b.set(false);
-      this.a.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCountTimeLayout.setVisibility(0);
-      return;
-      this.a.j();
-      this.a.a(1.0F);
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+    return new EditTakeVideoSource[paramInt];
   }
 }
 

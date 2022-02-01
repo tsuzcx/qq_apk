@@ -1,26 +1,36 @@
 import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.portal.FormalView;
-import com.tencent.mobileqq.portal.StrokeTextView;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.ocr.ui.SearchSougouResultItemBuilder.UrlDownloadListener.1;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 public class azbf
-  extends bkfi
+  implements URLDrawable.URLDrawableListener
 {
-  public azbf(FormalView paramFormalView, View paramView) {}
+  azbf(azbe paramazbe) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.c();
-    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a = true;
+    if ((this.a.a == null) || (paramURLDrawable == null) || (paramURLDrawable.getURL() == null)) {}
+    do
+    {
+      return;
+      paramThrowable = this.a.a.findViewWithTag(paramURLDrawable.getURL().toString());
+      if ((paramThrowable != null) && ((paramThrowable instanceof ImageView))) {
+        paramThrowable.post(new SearchSougouResultItemBuilder.UrlDownloadListener.1(this, paramThrowable));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, "UrlDownloadListener image fail," + paramURLDrawable.getURL());
   }
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView) != null) {
-      FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView).setVisibility(0);
-    }
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

@@ -1,266 +1,187 @@
-import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
-import android.annotation.TargetApi;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.automator.step.GetQZoneFeeds;
-import com.tencent.mobileqq.qzonestatus.QzoneContactsFeedManager.1;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.lifeachivement.LifeAchivementPanelView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import common.qzone.component.util.SecurityUtil;
 import java.util.ArrayList;
-import mqq.app.NewIntent;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import java.util.Iterator;
 
 public class bafv
-  implements Manager
+  extends badd
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static int b = -1;
-  private static int c = -1;
-  private static int d = -1;
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
-  private int e = 0;
-  private int f;
-  private int g;
+  private anuw a;
   
-  public bafv(QQAppInterface paramQQAppInterface)
+  public bafv(baei parambaei, azxr paramazxr)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(parambaei, paramazxr);
+    this.jdField_a_of_type_Anuw = new bafw(this);
   }
   
-  private SharedPreferences a()
+  private void a(Card paramCard, boolean paramBoolean, LifeAchivementPanelView paramLifeAchivementPanelView)
   {
-    String str = SecurityUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) + "GetQZoneFeeds";
-    return BaseApplication.getContext().getSharedPreferences(str, 0);
-  }
-  
-  private void a(ArrayList<Long> paramArrayList, int paramInt)
-  {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty()) || (paramInt >= paramArrayList.size()))
+    a(paramLifeAchivementPanelView, true);
+    if (paramBoolean)
     {
-      e();
+      i = paramCard.lifeAchievementTotalCount;
+      String str = String.format(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698141), new Object[] { Integer.valueOf(i) });
+      TextView localTextView = new TextView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+      localTextView.setText(str);
+      paramLifeAchivementPanelView.d.removeAllViews();
+      paramLifeAchivementPanelView.d.addView(localTextView);
+      paramLifeAchivementPanelView.d.setVisibility(0);
+      paramLifeAchivementPanelView.a(paramCard.lifeAchivementList, paramCard.lifeAchievementTotalCount);
+      a(null, localTextView);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "refreshAllInner(" + paramInt + ")...");
-    }
-    int j = c() + paramInt;
-    int i = j;
-    if (j >= paramArrayList.size()) {
-      i = paramArrayList.size();
-    }
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), bafx.class);
-    paramArrayList = new ArrayList(paramArrayList.subList(paramInt, i));
-    bafy.a(localNewIntent, bafy.a(1, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), paramArrayList, 0L, null));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-  }
-  
-  @TargetApi(9)
-  private void b(long paramLong, String paramString)
-  {
-    SharedPreferences.Editor localEditor = a().edit();
-    localEditor.putLong("last_request_time", paramLong);
-    localEditor.putString("last_attach_info", paramString);
-    if (Build.VERSION.SDK_INT < 9)
+    paramLifeAchivementPanelView.d.removeAllViews();
+    paramLifeAchivementPanelView.d.setVisibility(8);
+    paramLifeAchivementPanelView.b();
+    paramBoolean = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (((azxr)this.b).jdField_a_of_type_Azxy != null) {}
+    for (int i = 1;; i = 0)
     {
-      localEditor.commit();
+      if ((paramBoolean) || (i != 0)) {
+        ((URLImageView)paramLifeAchivementPanelView.findViewById(2131369595)).setVisibility(4);
+      }
+      paramCard = (TextView)paramLifeAchivementPanelView.findViewById(2131379638);
+      paramLifeAchivementPanelView = (TextView)paramLifeAchivementPanelView.findViewById(2131379639);
+      a(paramCard, null);
+      a(paramLifeAchivementPanelView, null);
       return;
     }
-    localEditor.apply();
   }
   
-  private static int c()
+  private void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (jdField_a_of_type_Int < 0) {
-      jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("QZoneSetting", "NewestFeedsUinNum", 100);
+    Object localObject;
+    azzn localazzn;
+    if (!paramBoolean) {
+      if ((((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard != null) && (((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard.lifeAchivementList != null))
+      {
+        localObject = ((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard.lifeAchivementList.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          localazzn = (azzn)((Iterator)localObject).next();
+          if (localazzn.b == paramInt2)
+          {
+            if (paramInt1 != 1) {
+              break label151;
+            }
+            localazzn.c -= 1;
+            localazzn.a = false;
+          }
+        }
+      }
     }
-    return jdField_a_of_type_Int;
-  }
-  
-  private static int d()
-  {
-    if (b < 0) {
-      b = QzoneConfig.getInstance().getConfig("QZoneSetting", "NewestFeedsRetryNum", 2);
-    }
-    return b;
-  }
-  
-  private static int e()
-  {
-    if (c < 0)
+    for (;;)
     {
-      c = QzoneConfig.getInstance().getConfig("QZoneSetting", "NewestFeedsMinTimeCell", 900);
-      c *= 1000;
+      localObject = BaseApplicationImpl.getApplication();
+      QQToast.a((Context)localObject, ((Context)localObject).getString(2131694175), 0).a();
+      if (this.jdField_a_of_type_JavaLangObject != null) {
+        a(((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard, false);
+      }
+      return;
+      label151:
+      if (paramInt1 == 2)
+      {
+        localazzn.c += 1;
+        localazzn.a = true;
+      }
     }
-    return c;
   }
   
-  private static int f()
+  private boolean a(Card paramCard, boolean paramBoolean)
   {
-    if (d < 0)
+    int i = 2;
+    if (((azxr)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0)
     {
-      d = QzoneConfig.getInstance().getConfig("QZoneSetting", "NewestFeedsMinRefreshTimeCell", 604800);
-      d *= 1000;
+      paramBoolean = true;
+      if ((paramCard == null) || (paramCard.lifeAchivementList == null) || (paramCard.lifeAchivementList.size() <= 0)) {
+        break label125;
+      }
     }
-    return d;
+    label125:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      bool2 = azzo.a(paramCard, this.jdField_a_of_type_Bjaz, paramBoolean, bool1);
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileAchievementComponent", 2, String.format("makeOrRefreshLifeAchievement isSelf=%s hasLifeAchievement=%s showLifeAchievement=%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      }
+      if (bool2) {
+        break label131;
+      }
+      if (this.jdField_a_of_type_JavaLangObject == null) {
+        break label263;
+      }
+      this.jdField_a_of_type_JavaLangObject = null;
+      return true;
+      paramBoolean = false;
+      break;
+    }
+    label131:
+    LifeAchivementPanelView localLifeAchivementPanelView;
+    if (this.jdField_a_of_type_JavaLangObject == null)
+    {
+      localLifeAchivementPanelView = new LifeAchivementPanelView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+      localLifeAchivementPanelView.setCardHandler((anum)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2));
+      localLifeAchivementPanelView.setTitle(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131691032));
+      this.jdField_a_of_type_JavaLangObject = localLifeAchivementPanelView;
+    }
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      localLifeAchivementPanelView = (LifeAchivementPanelView)this.jdField_a_of_type_JavaLangObject;
+      localLifeAchivementPanelView.a(paramCard, (azxr)this.b);
+      a(paramCard, bool1, localLifeAchivementPanelView);
+      if (paramBoolean) {
+        i = 1;
+      }
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "", "", "0X800AE53", "0X800AE53", i, 0, "", "", "", "");
+      return bool2;
+    }
+    label263:
+    return false;
   }
   
-  public long a()
+  public int a()
   {
-    return a().getLong("last_request_time", 0L);
+    return 1007;
   }
   
   public String a()
   {
-    return a().getString("last_attach_info", "");
+    return "ProfileAchievementComponent";
   }
   
-  @TargetApi(9)
-  public void a()
+  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
   {
-    if (!GetQZoneFeeds.a) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneContactsFeedManager", 2, "GetQZoneFeeds 此step尚未执行，此次调用就此返回，等待自动机中GetQZoneFeeds执行此方法");
-      }
-    }
-    while (!bgnt.g(BaseApplication.getContext())) {
-      return;
-    }
-    ThreadManager.getSubThreadHandler().post(new QzoneContactsFeedManager.1(this));
+    super.a(paramBaseActivity, paramBundle);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anuw);
   }
   
-  public void a(long paramLong)
+  public boolean a(azxr paramazxr)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "updateFriend(" + this.e + ")...");
-    }
-    if (this.e != 0) {
-      return;
-    }
-    this.e = 3;
-    this.f = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
-    a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
+    boolean bool = super.a(paramazxr);
+    return a(((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard, ((azxr)this.b).d) | bool;
   }
   
-  public void a(long paramLong, String paramString)
+  public String a_()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "updateAll(" + this.e + ")...");
-    }
-    if (this.e != 0) {
-      return;
-    }
-    this.e = 2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), bafx.class);
-    bafy.a(localNewIntent, bafy.a(2, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), null, paramLong, paramString));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+    return "map_key_life_achievement";
   }
   
-  public void a(newest_feeds_rsp paramnewest_feeds_rsp)
+  public void f()
   {
-    if (paramnewest_feeds_rsp == null) {}
-    while ((this.e == 3) || (((this.e != 1) || (this.f != 0)) && (this.e != 2))) {
-      return;
-    }
-    b(paramnewest_feeds_rsp.last_feed_time, paramnewest_feeds_rsp.str_attach);
-  }
-  
-  public void b()
-  {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "refreshAll(" + this.e + ")...");
-    }
-    if (this.e != 0) {
-      return;
-    }
-    this.e = 1;
-    this.f = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = bafy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (QLog.isColorLevel())
-    {
-      anmw localanmw = (anmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        i = this.jdField_a_of_type_JavaUtilArrayList.size();
-      }
-      QLog.d("QzoneContactsFeedManager", 2, new Object[] { "allFriends.size:", Integer.valueOf(i), ",getAllFreindsCount:", Integer.valueOf(localanmw.a()) });
-    }
-    a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "retry(" + this.g + ")...");
-    }
-    this.g += 1;
-    if (this.g >= d())
-    {
-      this.g = 0;
-      if (this.e == 1) {
-        b(0L, null);
-      }
-      d();
-      return;
-    }
-    if ((this.e == 1) || (this.e == 3))
-    {
-      a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
-      return;
-    }
-    if (this.e == 2)
-    {
-      this.e = 0;
-      a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    e();
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "doNextRequest(" + this.f + ")...");
-    }
-    if ((this.e != 1) && (this.e != 3))
-    {
-      e();
-      return;
-    }
-    this.f += c();
-    a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "close...");
-    }
-    this.e = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.f = 0;
-    this.g = 0;
-  }
-  
-  public void onDestroy()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "onDestroy...");
-    }
-    e();
-    GetQZoneFeeds.a = false;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anuw);
+    super.f();
   }
 }
 

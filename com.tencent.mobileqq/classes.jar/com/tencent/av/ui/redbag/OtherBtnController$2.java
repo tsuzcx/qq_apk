@@ -1,12 +1,12 @@
 package com.tencent.av.ui.redbag;
 
 import com.tencent.av.app.VideoAppInterface;
-import mpr;
+import mqo;
 
 public class OtherBtnController$2
   implements Runnable
 {
-  public OtherBtnController$2(mpr parammpr) {}
+  public OtherBtnController$2(mqo parammqo) {}
   
   public void run()
   {
@@ -16,10 +16,10 @@ public class OtherBtnController$2
       return;
       this.this$0.a();
     } while (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null);
-    if (this.this$0.jdField_a_of_type_Mbx != null)
+    if (this.this$0.jdField_a_of_type_Mct != null)
     {
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.this$0.jdField_a_of_type_Mbx);
-      this.this$0.jdField_a_of_type_Mbx = null;
+      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.this$0.jdField_a_of_type_Mct);
+      this.this$0.jdField_a_of_type_Mct = null;
     }
     this.this$0.a(true);
   }

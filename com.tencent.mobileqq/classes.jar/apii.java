@@ -1,127 +1,33 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.API.ArkAppModuleBase.APIAuthority.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.util.ArrayList;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public class apii
+  extends aphs
 {
-  public static int a(String paramString1, String paramString2, String paramString3)
+  public ArCloudConfigInfo a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public apii(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0).getInt("key_ark_authority_info" + "_" + paramString1 + "_" + paramString2 + "_" + paramString3, 0);
+    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
   }
   
-  public static ArrayList<String> a(String paramString)
+  public String toString()
   {
-    int i = 0;
-    ArrayList localArrayList = new ArrayList();
-    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0).getString("key_ark_authority_app_list_" + paramString, "");
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split(";");
-      if ((paramString != null) && (paramString.length > 0))
-      {
-        int j = paramString.length;
-        while (i < j)
-        {
-          CharSequence localCharSequence = paramString[i];
-          if (!TextUtils.isEmpty(localCharSequence)) {
-            localArrayList.add(localCharSequence);
-          }
-          i += 1;
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    ArrayList localArrayList = a(paramString2);
-    StringBuilder localStringBuilder = new StringBuilder("");
-    int j = 0;
-    int n = 0;
-    int m;
-    for (int i = 0; j < localArrayList.size(); i = m)
-    {
-      String str = (String)localArrayList.get(j);
-      int k = n;
-      m = i;
-      if (!TextUtils.isEmpty(str))
-      {
-        if (n > 0) {
-          localStringBuilder.append(";");
-        }
-        localStringBuilder.append(str);
-        n += 1;
-        k = n;
-        m = i;
-        if (str.equals(paramString1))
-        {
-          m = 1;
-          k = n;
-        }
-      }
-      j += 1;
-      n = k;
-    }
-    if (i == 0)
-    {
-      if (n > 0) {
-        localStringBuilder.append(";");
-      }
-      localStringBuilder.append(paramString1);
-    }
-    BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0).edit().putString("key_ark_authority_app_list_" + paramString2, localStringBuilder.toString()).commit();
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0).edit().putInt("key_ark_authority_info" + "_" + paramString1 + "_" + paramString2 + "_" + paramString3, paramInt).commit();
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, apim paramapim)
-  {
-    Object localObject2 = ArkAppCacheMgr.getApplicationDesc(paramString2);
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = paramString2;
-    }
-    localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0);
-    String str = "key_ark_authority_show_dialog" + "_" + (String)localObject1 + "_" + paramString3 + "_" + paramString1;
-    boolean bool = ((SharedPreferences)localObject2).getBoolean(str, false);
-    if (TextUtils.isEmpty(paramString1)) {
-      if (paramapim != null) {
-        paramapim.a();
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if ((!bool) && (apih.a))
-        {
-          ArkAppCenter.a().postToMainThread(new ArkAppModuleBase.APIAuthority.1((String)localObject1, paramString4, paramString2, paramapim, paramString3, paramString1));
-          ((SharedPreferences)localObject2).edit().putBoolean(str, true).apply();
-          a((String)localObject1, paramString1);
-          return;
-        }
-        if (1 != a((String)localObject1, paramString3, paramString1)) {
-          break;
-        }
-      } while (paramapim == null);
-      paramapim.a();
-      return;
-    } while (paramapim == null);
-    paramapim.b();
+    StringBuilder localStringBuilder = new StringBuilder("GeneralAR_3D_ResourceInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mLuaScriptPath=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", mResourceDirPath='").append(this.c).append('\'');
+    localStringBuilder.append(", mMusicPath='").append(this.d).append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

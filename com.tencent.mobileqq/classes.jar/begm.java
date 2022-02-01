@@ -1,22 +1,27 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
-public class begm
-  implements InputFilter
+class begm
+  extends bego
 {
-  public begm(AbsPublishActivity paramAbsPublishActivity) {}
+  private begw a;
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  begm(@NonNull String paramString, int paramInt1, int paramInt2)
   {
-    if (paramCharSequence != null)
-    {
-      paramCharSequence = paramCharSequence.toString();
-      if (bfqu.a(paramCharSequence, '\n') + bfqu.a(paramSpanned.toString(), '\n') > 100) {
-        return paramCharSequence.replaceAll("\n", "");
-      }
+    super(2, paramString);
+    this.a = new begw(paramInt1, paramInt2, 1);
+  }
+  
+  float a(@NonNull Paint paramPaint)
+  {
+    float f = this.a.a().getBounds().width();
+    if (QLog.isColorLevel()) {
+      QLog.d("NickWrapper", 2, "getWidth normal span width " + f);
     }
-    return null;
+    return f;
   }
 }
 

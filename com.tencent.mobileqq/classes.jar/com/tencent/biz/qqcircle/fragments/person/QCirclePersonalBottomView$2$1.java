@@ -3,18 +3,18 @@ package com.tencent.biz.qqcircle.fragments.person;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import vnk;
+import vpp;
 
 public class QCirclePersonalBottomView$2$1
   implements Runnable
 {
-  public QCirclePersonalBottomView$2$1(vnk paramvnk) {}
+  public QCirclePersonalBottomView$2$1(vpp paramvpp) {}
   
   public void run()
   {
     Object localObject = this.a.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView.getResources();
     if (this.a.jdField_a_of_type_Boolean) {}
-    for (int i = 2130843999;; i = 2130844000)
+    for (int i = 2130844019;; i = 2130844020)
     {
       localObject = ((Resources)localObject).getDrawable(i);
       QCirclePersonalBottomView.a(this.a.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView).setImageDrawable((Drawable)localObject);

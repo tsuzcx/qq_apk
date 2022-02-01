@@ -52,15 +52,15 @@ public class NearbyGrayTipsManager$GrayTipStatisticData
   {
     boolean bool2 = true;
     boolean bool1;
-    if (paramGrayTipsConfig.singleTask_maxTipsCount > 0) {
-      if (this.mTotalCount >= paramGrayTipsConfig.singleTask_maxTipsCount) {
+    if (paramGrayTipsConfig.singleTaskMaxTipsCount > 0) {
+      if (this.mTotalCount >= paramGrayTipsConfig.singleTaskMaxTipsCount) {
         bool1 = true;
       }
     }
     for (;;)
     {
-      if ((!bool1) && (paramGrayTipsConfig.singleTask_MaxTipsCountPerDay > 0) && (NearbyGrayTipsManager.a(paramLong, this.mLastMarkDay))) {
-        if (this.mOneDayCount >= paramGrayTipsConfig.singleTask_MaxTipsCountPerDay) {
+      if ((!bool1) && (paramGrayTipsConfig.singleTaskMaxTipsCountPerDay > 0) && (NearbyGrayTipsManager.a(paramLong, this.mLastMarkDay))) {
+        if (this.mOneDayCount >= paramGrayTipsConfig.singleTaskMaxTipsCountPerDay) {
           bool1 = bool2;
         }
       }

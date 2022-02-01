@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class auhc
-  implements View.OnClickListener
+class auhc
+  implements aauy
 {
-  public auhc(ForwardFileOption paramForwardFileOption) {}
+  auhc(auhb paramauhb, boolean paramBoolean, String paramString, short paramShort) {}
   
-  public void onClick(View paramView)
+  public void a(List<aujx> paramList)
   {
-    this.a.E();
-    ForwardFileOption.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.jdField_a_of_type_Auhb.a.jdField_a_of_type_Augq != null) {
+      this.jdField_a_of_type_Auhb.a.jdField_a_of_type_Augq.a(paramList, this.jdField_a_of_type_Auhb.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Auhb.a.b, this.jdField_a_of_type_Auhb.a.c, this.jdField_a_of_type_Auhb.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
+    }
   }
 }
 

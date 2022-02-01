@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import afmp;
-import afnc;
+import afvt;
+import afwg;
 import java.util.List;
 
 public class TroopMemberListActivity$40$7
   implements Runnable
 {
-  public TroopMemberListActivity$40$7(afmp paramafmp, List paramList) {}
+  public TroopMemberListActivity$40$7(afvt paramafvt, List paramList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Afmp.a.isFinishing()) {}
-    while (this.jdField_a_of_type_Afmp.a.a == null) {
+    if (this.jdField_a_of_type_Afvt.a.isFinishing()) {}
+    while (this.jdField_a_of_type_Afvt.a.a == null) {
       return;
     }
-    this.jdField_a_of_type_Afmp.a.a.e = this.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_Afmp.a.a.a();
+    this.jdField_a_of_type_Afvt.a.a.e = this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Afvt.a.a.a();
   }
 }
 

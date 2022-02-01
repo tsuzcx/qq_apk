@@ -1,84 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.media.AudioManager;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeController.VolumeReceiver.1;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
 
 public class sgk
-  extends BroadcastReceiver
+  implements sgg
 {
-  private sgk(sgg paramsgg) {}
+  public sgk(ReadInJoyBaseListView paramReadInJoyBaseListView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if ((BaseApplicationImpl.getApplication().getRuntime().isBackground_Stop) || (BaseApplicationImpl.getApplication().getRuntime().isBackground_Pause)) {}
+    if (ozk.a(ozk.a()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", Integer.valueOf(this.a.c) });
+      }
+      if ((this.a.c == 0) && ((!ubg.a(this.a.d)) || (!this.a.b)))
+      {
+        this.a.a(4);
+        QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch ON, loadingMore()");
+      }
+    }
     do
     {
-      for (;;)
-      {
-        return;
-        if (sgg.a(this.a) == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("VideoVolumeController", 2, "VolumeReceiver onReceive null");
-          }
-        }
-        else if (sgg.b(this.a)) {
-          if (sgg.c(this.a))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("VideoVolumeController", 2, "dynamicPauseReceive true");
-            }
-          }
-          else
-          {
-            int i;
-            try
-            {
-              if (!paramIntent.getAction().equals("android.media.VOLUME_CHANGED_ACTION")) {
-                break;
-              }
-              i = sgg.a(this.a).getStreamVolume(3);
-              if (QLog.isColorLevel()) {
-                QLog.d("VideoVolumeController", 2, "volume change:" + i);
-              }
-              if (sgg.d(this.a))
-              {
-                QLog.d("VideoVolumeController", 2, "volume change shield ");
-                return;
-              }
-            }
-            catch (Exception paramContext)
-            {
-              QLog.d("VideoVolumeController", 1, "VolumeReceiver", paramContext);
-              return;
-            }
-            paramContext = sgg.a(this.a).iterator();
-            while (paramContext.hasNext()) {
-              ((sgh)paramContext.next()).onSystemVolumeChanged(i);
-            }
-          }
-        }
-      }
-    } while (!paramIntent.getAction().equals("android.intent.action.HEADSET_PLUG"));
-    boolean bool = sgg.a(this.a).isWiredHeadsetOn();
-    if (sgg.e(this.a))
-    {
-      sgg.a(this.a, false);
       return;
-    }
-    sgg.b(this.a, true);
-    paramContext = sgg.a(this.a).iterator();
-    while (paramContext.hasNext()) {
-      ((sgh)paramContext.next()).onHeadsetStateChanged(bool);
-    }
-    sgg.a(this.a).postDelayed(new VideoVolumeController.VolumeReceiver.1(this), 200L);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch OFF, mCurrentStatus = ", Integer.valueOf(this.a.c) });
+      }
+    } while ((ubg.a(this.a.d)) && ((this.a.c != 0) || (this.a.b)));
+    this.a.a(4);
+    QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch OFF, loadingMore()");
   }
 }
 

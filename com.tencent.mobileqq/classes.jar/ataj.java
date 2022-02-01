@@ -1,21 +1,29 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.filemanager.app.QFileAppStorePromoteManager.FetchAppInfoCallback.1;
-import com.tencent.tmassistant.appinfo.aidl.GetAppInfoCallback;
-import com.tencent.tmassistant.appinfo.data.AppDetail;
-import java.util.List;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class ataj
-  extends GetAppInfoCallback
+class ataj
+  implements DialogInterface.OnClickListener
 {
-  ataj(atae paramatae) {}
+  ataj(atag paramatag, Context paramContext) {}
   
-  public void onGetAppInfoResponse(int paramInt1, int paramInt2, List<AppDetail> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
+    if (this.jdField_a_of_type_AndroidContentContext != null) {}
+    try
+    {
+      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramDialogInterface.putExtra("url", atag.a(this.jdField_a_of_type_Atag));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+      if (QLog.isColorLevel()) {
+        QLog.i("ExtendFriendLimitChatManager", 2, "showRealNameAuthDialog click confirm " + atag.a(this.jdField_a_of_type_Atag));
+      }
       return;
     }
-    ThreadManagerV2.getUIHandlerV2().post(new QFileAppStorePromoteManager.FetchAppInfoCallback.1(this, paramInt1, paramInt2, paramList));
+    catch (Exception paramDialogInterface) {}
   }
 }
 

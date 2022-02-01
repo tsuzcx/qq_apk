@@ -1,17 +1,21 @@
-import com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader.3;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqcircle.widgets.QCircleRocketView;
 
 public class wbz
-  implements nkm
+  implements Animation.AnimationListener
 {
-  public wbz(StoryAlbumResourceDownloader.3 param3) {}
+  public wbz(QCircleRocketView paramQCircleRocketView, View paramView) {}
   
-  public void loaded(int paramInt, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    wbw.a(this.a.this$0);
-    wbw.a(this.a.this$0, false);
-    wbw.a(this.a.this$0, false);
-    yqp.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "unzip success , code = %d", Integer.valueOf(paramInt));
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

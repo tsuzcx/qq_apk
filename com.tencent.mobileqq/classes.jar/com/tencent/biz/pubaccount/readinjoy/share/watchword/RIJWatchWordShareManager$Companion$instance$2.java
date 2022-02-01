@@ -4,12 +4,12 @@ import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
-import rbw;
+import qsp;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager;", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJWatchWordShareManager$Companion$instance$2
   extends Lambda
-  implements Function0<rbw>
+  implements Function0<qsp>
 {
   public static final 2 INSTANCE = new 2();
   
@@ -19,9 +19,9 @@ public final class RIJWatchWordShareManager$Companion$instance$2
   }
   
   @NotNull
-  public final rbw invoke()
+  public final qsp invoke()
   {
-    return new rbw();
+    return new qsp();
   }
 }
 

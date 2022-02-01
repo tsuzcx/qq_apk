@@ -1,8 +1,17 @@
-public abstract interface bbrs
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+
+class bbrs
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(bbrr parambbrr);
+  bbrs(bbrp parambbrp) {}
   
-  public abstract void a(bbrr parambbrr, String paramString1, String paramString2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "showSaveFileTips cancel");
+  }
 }
 
 

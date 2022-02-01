@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
-import tlk;
-import tlm;
+import tcd;
+import tcf;
 
 public class ViolaAccessHelper$4$1
   implements Runnable
 {
-  public ViolaAccessHelper$4$1(tlk paramtlk, long paramLong) {}
+  public ViolaAccessHelper$4$1(tcd paramtcd, long paramLong) {}
   
   public void run()
   {

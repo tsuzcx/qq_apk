@@ -1,6 +1,23 @@
-public abstract interface aozr
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class aozr
+  extends aoxg
 {
-  public abstract byte[] a();
+  public aozr(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    return true;
+  }
+  
+  public boolean a()
+  {
+    return C();
+  }
 }
 
 

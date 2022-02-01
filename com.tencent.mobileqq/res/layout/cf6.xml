@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/aa_" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/ee7" android:background="@drawable/bim" android:layout_width="65.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="fragment" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/nwo" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="极慢" />
+    <View android:background="#ffebecee" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/nvn" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="慢" />
+    <View android:background="#ffebecee" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/nvp" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="标准" />
+    <View android:background="#ffebecee" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/nv0" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="快" />
+    <View android:background="#ffebecee" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/nwn" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="极快" />
+</LinearLayout>

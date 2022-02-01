@@ -1,56 +1,78 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment.3.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.util.Map;
 
 public class aszr
-  extends MSFServlet
+  extends RecyclerView.OnScrollListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public aszr(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  
+  public void onScrollStateChanged(RecyclerView arg1, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("FileTransferServlet<FileAssistant>", 2, "onReceive called");
+      QLog.d("ExtendFriendSquareFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
     }
-    if (paramIntent == null)
+    if (this.a.jdField_a_of_type_Aoof != null)
     {
-      QLog.e("FileTransferServlet<FileAssistant>", 1, "onReceive : req is null");
-      return;
+      if (paramInt != 0) {
+        break label94;
+      }
+      this.a.c = false;
+      this.a.jdField_a_of_type_Aoof.b();
+      this.a.av_();
     }
-    paramIntent.getExtras().putParcelable("response", paramFromServiceMsg);
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-    paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    localQQAppInterface.a().a(paramIntent, paramFromServiceMsg);
+    for (;;)
+    {
+      if (paramInt == 0)
+      {
+        ExtendFriendSquareFragment.c(this.a);
+        this.a.g();
+        this.a.b(false);
+      }
+      return;
+      label94:
+      this.a.c = true;
+      this.a.jdField_a_of_type_Aoof.c();
+      this.a.jdField_a_of_type_Aoof.a();
+      synchronized (ExtendFriendBaseFragment.a)
+      {
+        if (this.a.jdField_a_of_type_JavaUtilMap != null) {
+          this.a.jdField_a_of_type_JavaUtilMap.clear();
+        }
+      }
+    }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileTransferServlet<FileAssistant>", 2, "onSend called");
-    }
-    if (paramIntent == null) {
-      QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : req is null");
-    }
-    do
+    this.a.h = this.a.d();
+    float f2 = 0.0F;
+    float f1 = f2;
+    if (this.a.e != -1L)
     {
-      return;
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent == null) {
-        break;
+      long l = System.currentTimeMillis() - this.a.e;
+      f1 = f2;
+      if (l > 0L)
+      {
+        f1 = f2;
+        if (l < 2000L) {
+          f1 = paramInt2 * 1.0F / (float)l;
+        }
       }
-      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-      paramPacket.putSendData(paramIntent.getWupBuffer());
-      paramPacket.setTimeout(paramIntent.getTimeout());
-      paramPacket.addAttribute("fastresend", Boolean.valueOf(true));
-    } while (paramIntent.isNeedCallback());
-    paramPacket.setNoResponse();
-    return;
-    QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : toMsg is null");
+    }
+    this.a.e = System.currentTimeMillis();
+    ExtendFriendSquareFragment.a(this.a, this.a.h, f1);
+    if ((!ExtendFriendSquareFragment.a(this.a)) && (!ExtendFriendSquareFragment.b(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_Aszx != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_Aszx.getItemCount() - 2) != null))
+    {
+      this.a.a(true);
+      ExtendFriendSquareFragment.a(this.a).post(new ExtendFriendSquareFragment.3.1(this));
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
+    }
   }
 }
 

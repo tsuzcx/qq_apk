@@ -1,1219 +1,659 @@
+import android.media.MediaPlayer;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 
 public class amzq
+  implements agfs, Handler.Callback, bhrh, bmeh
 {
-  public static int a;
+  public static String a;
   public static boolean a;
-  private static final String[] a;
-  public static int b;
+  public static String b;
+  public static boolean b;
+  public static String c;
+  public static String d;
+  private int jdField_a_of_type_Int;
+  public long a;
+  private amzs jdField_a_of_type_Amzs;
+  private amzu jdField_a_of_type_Amzu;
+  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QQRecorder jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  public WeakReference<amzt> a;
+  private int b;
+  public WeakReference<amzv> b;
+  private WeakReference<aihy> jdField_c_of_type_JavaLangRefWeakReference;
+  boolean jdField_c_of_type_Boolean = false;
+  private boolean d;
+  private String jdField_e_of_type_JavaLangString = "";
+  private volatile boolean jdField_e_of_type_Boolean;
+  private String jdField_f_of_type_JavaLangString;
+  private boolean jdField_f_of_type_Boolean;
+  private String g;
+  private String h;
   
   static
   {
-    jdField_a_of_type_Int = 1;
-    b = 2;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "/def/role/0/sayhi/1/action/action.json", "/def/role/0/friendcard/1/action/action.json", "/def/role/0/3D/sayhi/1/action.bin", "/def/role/0/3D/3DConfig.json" };
+    jdField_a_of_type_JavaLangString = "1400035750";
+    jdField_b_of_type_JavaLangString = "5d3728db75adf458";
+    jdField_c_of_type_JavaLangString = "https://sqimg.qq.com/qq_product_operations/gme_sdk/GME_SDK_V1.zip";
+    jdField_d_of_type_JavaLangString = "105d1e43c456bc800b4adacd57ac1199";
   }
   
-  public static int a(int paramInt, String paramString)
+  public amzq(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, "[getRandomActionId], roleId:" + paramInt);
-    }
-    paramString = new File(ancb.g, paramInt + "/" + paramString + "/");
-    if (!paramString.exists()) {}
-    for (;;)
+    this.jdField_b_of_type_Int = 5;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new blhq(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Amzs = new amzs(paramQQAppInterface);
+    ((amsx)paramQQAppInterface.getManager(153)).a().a(this.jdField_a_of_type_Amzs);
+    bmef.a().a(this);
+    a();
+  }
+  
+  private void b(int paramInt)
+  {
+    if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null))
     {
-      return -1;
-      Object localObject = paramString.list();
-      if ((localObject == null) || (localObject.length == 0))
+      if (paramInt == 0)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("CmGameTemp_CmGameAudioManager", 0, "[onReportRecordInfoResp] upload record succ.");
         }
-        QLog.d("ApolloActionHelper", 2, "no any action file.");
-        return -1;
+        ((amzv)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a();
       }
-      int i = awfd.a(localObject.length);
-      if ((i >= localObject.length) || (i < 0)) {
-        continue;
-      }
-      localObject = localObject[i];
-      try
+    }
+    else {
+      return;
+    }
+    ((amzv)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a(paramInt);
+    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[onReportRecordInfoResp] uploadError,retcode:" + paramInt);
+  }
+  
+  public int a()
+  {
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderStart");
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((amzt)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
+    }
+    return 250;
+  }
+  
+  public int a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
+  {
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onBeginReceiveData");
+    return this.jdField_b_of_type_Int * 1000;
+  }
+  
+  public String a()
+  {
+    return this.jdField_e_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onInitSuccess");
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CmGameTemp_CmGameAudioManager", 0, "[QQRecorder] onRecorderVolumeStateChanged");
+    }
+  }
+  
+  public void a(int paramInt, amzt paramamzt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramamzt);
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = new QQRecorder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
+      paramamzt = new QQRecorder.RecorderParam(bhrp.jdField_a_of_type_Int, 0, 0);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(paramamzt);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(this);
+    }
+    paramamzt = new File(annv.p);
+    if (!paramamzt.exists()) {
+      paramamzt.mkdirs();
+    }
+    paramamzt = b();
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a()) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.c();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(paramamzt, true);
+    QLog.i("CmGameTemp_CmGameAudioManager", 0, "[startRecord] start record");
+  }
+  
+  public void a(aihy paramaihy)
+  {
+    this.jdField_c_of_type_JavaLangRefWeakReference = new WeakReference(paramaihy);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    int i = 2;
+    String str = paramBundle.getString("gmesdk_event_key");
+    int j = paramBundle.getInt("gmesdk_event_ret");
+    QLog.e("CmGameTemp_CmGameAudioManager", 1, "key:" + str + ",ret:" + j);
+    if ("gmesdk_event_key_enterroom".equals(str))
+    {
+      QLog.e("CmGameTemp_CmGameAudioManager", 1, "key:" + str + ",ret:" + j + ",roomId:" + this.h);
+      if ((j == 0) || (j == 1003))
       {
-        int j = Integer.parseInt((String)localObject);
-        if (paramInt >= ancb.jdField_a_of_type_Int) {
-          if (!ApolloUtil.c(paramString.getAbsolutePath() + "/" + (String)localObject + "/action/" + ancb.R)) {
-            continue;
-          }
+        this.jdField_e_of_type_Boolean = true;
+        this.jdField_e_of_type_JavaLangString = this.g;
+        this.jdField_f_of_type_JavaLangString = this.h;
+        ((amsx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.jdField_e_of_type_JavaLangString, true, this.jdField_a_of_type_Int);
+        a(true, this.jdField_e_of_type_JavaLangString);
+        if (this.jdField_a_of_type_Int == 319) {
+          i = 1;
         }
-        for (;;)
-        {
-          return j;
-          if ((!ApolloUtil.c(paramString.getAbsolutePath() + "/" + (String)localObject + "/" + ancb.x)) || (!ApolloUtil.c(paramString.getAbsolutePath() + "/" + (String)localObject + "/" + ancb.w)) || (!ApolloUtil.c(paramString.getAbsolutePath() + "/" + (String)localObject + "/" + ancb.y))) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloActionHelper", 2, "value:" + i + ",actionId:" + (String)localObject);
-          }
-        }
-        return -1;
+        VipUtils.a(null, "cmshow", "Apollo", "turnOnAudio", i, 0, new String[0]);
       }
-      catch (NumberFormatException paramString) {}
     }
-  }
-  
-  public static int a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, "[getApolloFuncSwitch], uin:" + paramString);
-    }
-    paramString = ((amhd)paramQQAppInterface.getManager(153)).a(paramString);
-    if (paramString == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionHelper", 2, "apolloBaseInfo is null. ret closed status");
-      }
-      return 2;
-    }
-    return paramString.apolloStatus;
-  }
-  
-  public static String a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, "[getTickerPauseString]");
-    }
-    return "BK.Director.tickerPause();";
-  }
-  
-  public static String a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, new Object[] { "[getApolloRsc],  rscType", Integer.valueOf(paramInt1), ",id:" + paramInt2 });
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionHelper", 2, "rsc:" + localStringBuilder);
-      }
-      return localStringBuilder.toString();
-      if (paramInt2 < 21) {
-        localStringBuilder.append("def/basic/dress/");
-      }
-      localStringBuilder.append(paramInt2);
-      localStringBuilder.append("/dress");
-      continue;
-      if (paramInt2 == 0) {
-        localStringBuilder.append("def/basic/skeleton/");
-      }
-      localStringBuilder.append(paramInt2);
-      localStringBuilder.append("/role");
-    }
-  }
-  
-  public static String a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if ((paramInt1 == 0) || (!ApolloUtil.e(paramInt1, paramInt2)))
-    {
-      localStringBuilder.append("def/role/");
-      localStringBuilder.append(0);
-    }
-    for (;;)
-    {
-      localStringBuilder.append("/");
-      localStringBuilder.append(ancb.F);
-      localStringBuilder.append("/");
-      localStringBuilder.append(paramInt2);
-      localStringBuilder.append("/dress");
-      return localStringBuilder.toString();
-      localStringBuilder.append("role/");
-      localStringBuilder.append(paramInt1);
-    }
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    paramString = new StringTokenizer(paramString, "@$");
-    int i = awfd.a(paramString.countTokens());
-    while (paramString.hasMoreTokens())
-    {
-      i -= 1;
-      if (i < 0) {
-        return paramString.nextToken();
-      }
-      paramString.nextToken();
-    }
-    return "";
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      localObject = null;
-    }
-    do
-    {
-      return localObject;
-      localObject = paramString;
-    } while (paramString.contains("def"));
-    Object localObject = new StringBuilder();
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ((StringBuilder)localObject).append("//").append(paramString);
-      return ((StringBuilder)localObject).toString();
-      ((StringBuilder)localObject).append("ActionRes:");
-      continue;
-      ((StringBuilder)localObject).append("Dress:");
-      continue;
-      ((StringBuilder)localObject).append("Role:");
-    }
-  }
-  
-  public static String a(String paramString, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, new Object[] { "[getRoleLuaString] apolloId=", paramString, ", roleId=", Integer.valueOf(paramInt) });
-    }
-    String str = a(0, paramInt);
-    float f = 0.0F;
-    if ("friend".equals(paramString)) {
-      f = 180.0F;
-    }
-    paramString = String.format("var %s = loadAnimation('%s', '%s', '%s', %f, %f, %f, %f, %f, '%s','%s');if(%s){%s.openAABBCallback()}", new Object[] { paramString, paramString, str, str, Float.valueOf(1.0F), Float.valueOf(paramFloat1), Float.valueOf(f), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3), "null", "null", paramString, paramString });
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, new Object[] { "[getRoleLuaString] scriptStr=", paramString });
-    }
-    return paramString;
-  }
-  
-  public static String a(String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, "[getBubbleLuaString], apolloId:" + paramString1 + ",bubbleId" + paramInt1 + ",roleId:" + paramInt2);
-    }
-    String str = b(paramInt2, paramInt1);
-    paramString1 = String.format("setAccessoryWithInfo(%s, '%s', '%s', '%s');", new Object[] { paramString1, str, str, paramString2 });
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, paramString1);
-    }
-    return paramString1;
-  }
-  
-  public static String a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, "[getModelByUin], uin:" + paramString);
-    }
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionHelper", 2, "errInfo->null param.");
-      }
-      return null;
-    }
-    if (amhd.a(paramQQAppInterface, paramString) == 2) {
-      return "3D";
-    }
-    return "2D";
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, "[getRemoveBubbleLuaString], apolloId:" + paramString1 + ",bubbleName" + paramString2);
-    }
-    paramString1 = String.format("if(%s) {%s.removeAccessory('%s')};", new Object[] { paramString1, paramString1, paramString2 });
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, paramString1);
-    }
-    return paramString1;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, SpriteTaskParam paramSpriteTaskParam, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, "[doActionReport], isHasUsrText:" + paramBoolean1 + ",isBarrage:" + paramBoolean2);
-    }
-    if ((paramSpriteTaskParam == null) || (paramQQAppInterface == null)) {}
-    Object localObject;
-    do
+    while (!"gmesdk_event_key_exit_room".equals(str))
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionHelper", 2, "taskParam:" + paramSpriteTaskParam.toString());
+      ((amsx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.jdField_e_of_type_JavaLangString, false, this.jdField_a_of_type_Int);
+      a(false, this.jdField_e_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Int == 319) {
+        i = 1;
       }
-      localObject = ((ancd)paramQQAppInterface.getManager(155)).a(paramSpriteTaskParam.f);
-    } while (localObject == null);
-    int i = 0;
-    int j = paramSpriteTaskParam.j;
-    String str5 = Integer.toString(paramSpriteTaskParam.f);
-    if (paramBoolean1) {
-      if (!paramBoolean2) {}
+      VipUtils.a(null, "cmshow", "Apollo", "turnOnAudio", i, 1, new String[0]);
+      return;
     }
-    for (String str3 = "2";; str3 = "0")
-    {
-      label141:
-      if (paramSpriteTaskParam.h == 0) {}
-      label769:
-      for (String str2 = "action_play";; str2 = "")
-      {
-        label153:
-        label171:
-        String str4;
-        if (paramSpriteTaskParam.g == 2) {
-          if (paramSpriteTaskParam.a)
-          {
-            i = 2;
-            if ((((ApolloActionData)localObject).hasSound) || (paramSpriteTaskParam.i > 0)) {
-              break label514;
-            }
-            str4 = "0";
-            label191:
-            if ((8 != paramSpriteTaskParam.c) || (TextUtils.isEmpty(paramSpriteTaskParam.d))) {
-              break label686;
-            }
-          }
-        }
-        for (;;)
-        {
-          label514:
-          String str1;
-          try
-          {
-            localObject = new JSONObject(paramSpriteTaskParam.d).optString("subActionId", "0");
-            VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "actionnewuser_play", paramSpriteTaskParam.b, i, j, new String[] { str5, "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
-            VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", str2, i, j, new String[] { str5, str3, str4, localObject });
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ApolloActionHelper", 2, "actionName:" + str2 + ",entry:" + i + ",result:" + j + ",r2:" + str5 + ",r3:" + str3 + ",r4:" + str4 + ",r5:" + (String)localObject);
-            return;
-            str3 = "1";
-            break label141;
-            if (paramSpriteTaskParam.h == 1)
-            {
-              str2 = "g_action_play";
-              break label153;
-            }
-            if (paramSpriteTaskParam.h != 3000) {
-              break label769;
-            }
-            str2 = "d_action_play";
-            break label153;
-            i = 3;
-            break label171;
-            if (paramSpriteTaskParam.g == 0)
-            {
-              i = 0;
-              break label171;
-            }
-            if (paramSpriteTaskParam.g == 1)
-            {
-              i = 1;
-              break label171;
-            }
-            if (paramSpriteTaskParam.g != 4) {
-              break label171;
-            }
-            i = 4;
-            break label171;
-            if ((1 == paramQQAppInterface.c()) && (((paramSpriteTaskParam.h != 1) && (paramSpriteTaskParam.h != 3000)) || (((1 == paramQQAppInterface.a()) || (paramSpriteTaskParam.h == 0)) && (!paramQQAppInterface.q()) && (!paramQQAppInterface.r()) && (paramQQAppInterface.s()) && (!MediaPlayerManager.a(paramQQAppInterface).a()) && ((paramQQAppInterface.a() == null) || (!paramQQAppInterface.a().k())) && (!paramQQAppInterface.d()) && ((paramQQAppInterface.a() == null) || (!paramQQAppInterface.a().l())))))
-            {
-              str4 = "1";
-              break label191;
-            }
-            str4 = "2";
-          }
-          catch (Exception localException)
-          {
-            QLog.e("ApolloActionHelper", 1, "[random] the json is not right," + paramSpriteTaskParam.d);
-            str1 = "-1";
-            continue;
-          }
-          label686:
-          if (a(str1.vibrate) == null) {
-            str1 = "0";
-          } else if ((1 == paramQQAppInterface.d()) && (((paramSpriteTaskParam.h != 1) && (paramSpriteTaskParam.h != 3000)) || (((1 == paramQQAppInterface.b()) || (paramSpriteTaskParam.h == 0)) && (!paramQQAppInterface.r())))) {
-            str1 = "1";
-          } else {
-            str1 = "2";
-          }
-        }
-      }
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      Object localObject = arrayOfString[i];
-      localObject = new File(ancb.c + (String)localObject);
-      if (!((File)localObject).exists())
-      {
-        QLog.d("ApolloActionHelper", 1, new Object[] { "[checkBasicActionExit] rsc file not exist:", ((File)localObject).toString() });
-        amxb.a(paramQQAppInterface, paramQQAppInterface.c(), null, 0, null, -1, -1, true);
-        return false;
-      }
-      i += 1;
-    }
-    return true;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    return a(paramQQAppInterface);
-  }
-  
-  public static boolean a(String paramString, int paramInt, int[] paramArrayOfInt, QQAppInterface paramQQAppInterface)
-  {
-    return a(paramString, paramInt, paramArrayOfInt, paramQQAppInterface, null);
-  }
-  
-  public static boolean a(String paramString, int paramInt, int[] paramArrayOfInt, QQAppInterface paramQQAppInterface, amxk paramamxk)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, "[isRscValid], roleId:" + paramInt + ",dressId:" + paramArrayOfInt);
-    }
-    if (paramArrayOfInt == null) {
-      return false;
-    }
-    int[] arrayOfInt = null;
-    ArrayList localArrayList = new ArrayList();
-    boolean bool = true;
-    if (!ApolloUtil.d(paramInt))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionHelper", 2, "need download role id:" + paramInt);
-      }
-      bool = false;
-    }
-    for (;;)
-    {
-      int i = 0;
-      if (i < paramArrayOfInt.length)
-      {
-        if (ApolloUtil.c(paramArrayOfInt[i])) {
-          break label328;
-        }
-        localArrayList.add(Integer.valueOf(paramArrayOfInt[i]));
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloActionHelper", 2, "need download dress id:" + paramArrayOfInt[i]);
-        }
-        bool = false;
-      }
-      label325:
-      label328:
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (!bool)
-        {
-          paramArrayOfInt = arrayOfInt;
-          if (localArrayList.size() > 0)
-          {
-            arrayOfInt = new int[localArrayList.size()];
-            i = 0;
-            for (;;)
-            {
-              paramArrayOfInt = arrayOfInt;
-              if (i >= localArrayList.size()) {
-                break;
-              }
-              arrayOfInt[i] = ((Integer)localArrayList.get(i)).intValue();
-              i += 1;
-            }
-          }
-          if (paramQQAppInterface != null)
-          {
-            if (paramamxk != null) {
-              break label325;
-            }
-            paramamxk = ((amhd)paramQQAppInterface.getManager(153)).a();
-          }
-        }
-        for (;;)
-        {
-          amxb.a(paramQQAppInterface, paramString, paramamxk, paramInt, paramArrayOfInt, -1, -1, false);
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloActionHelper", 2, "ret:" + bool);
-          }
-          return bool;
-        }
-      }
-      paramInt = -1;
-    }
-  }
-  
-  public static boolean a(String paramString1, QQAppInterface paramQQAppInterface, JSONObject paramJSONObject, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, "[attach3DInfoToJson], uin:" + paramString1);
-    }
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString1)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionHelper", 2, "errInfo->null param.");
-      }
-      return false;
-    }
-    ApolloBaseInfo localApolloBaseInfo = ((amhd)paramQQAppInterface.getManager(153)).b(paramString1);
-    if (localApolloBaseInfo != null)
-    {
-      String str = paramString2;
-      try
-      {
-        if (TextUtils.isEmpty(paramString2)) {
-          str = a(paramString1, paramQQAppInterface);
-        }
-        paramJSONObject.put("model", str);
-        paramString1 = new JSONObject();
-        paramString2 = localApolloBaseInfo.getFaceModel(true, paramQQAppInterface);
-        if (paramString2 != null) {
-          paramString1.put("faceModel", paramString2);
-        }
-        paramString2 = localApolloBaseInfo.getDress3D(true, paramQQAppInterface);
-        int i = localApolloBaseInfo.getRole3D(true, paramQQAppInterface);
-        if ((paramString2 != null) && (i > 0))
-        {
-          paramString1.put("dress", paramString2);
-          paramString1.put("role", String.valueOf(i));
-        }
-        paramJSONObject.put("3DObject", paramString1);
-        if (QLog.isColorLevel()) {
-          QLog.d("cmshow_scripted_ApolloActionHelper", 2, "attach3DInfoToJson: obj3D:" + paramString1.toString());
-        }
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          QLog.e("ApolloActionHelper", 1, "attach3DInfoToJson e=" + paramString1.toString());
-        }
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public static long[] a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    long[] arrayOfLong;
-    for (;;)
-    {
-      return null;
-      paramString = paramString.split(",");
-      if ((paramString != null) && (paramString.length != 0))
-      {
-        arrayOfLong = new long[paramString.length];
-        i = 0;
-        try
-        {
-          while (i < paramString.length)
-          {
-            arrayOfLong[i] = Integer.parseInt(paramString[i].trim());
-            i += 1;
-          }
-          if (!QLog.isColorLevel()) {}
-        }
-        catch (NumberFormatException paramString) {}
-      }
-    }
-    QLog.d("ApolloActionHelper", 2, "errInfo->NumberFormatException, e:" + paramString.getMessage());
-    return null;
-    int i = paramString.length - 2;
-    while (i >= 2)
-    {
-      arrayOfLong[i] = (arrayOfLong[i] - arrayOfLong[(i - 1)] - arrayOfLong[(i - 2)]);
-      i -= 2;
-    }
-    return arrayOfLong;
-  }
-  
-  public static Object[] a(String paramString, int paramInt, QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString)) || (paramInt != 2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionHelper", 2, new Object[] { "get3DRoleIdByUin errInfo->null param, userStatus:", Integer.valueOf(paramInt) });
-      }
-      return new Object[] { Integer.valueOf(-1), null };
-    }
-    Object localObject = ((amhd)paramQQAppInterface.getManager(153)).b(paramString);
-    if (localObject != null)
-    {
-      localObject = ((ApolloBaseInfo)localObject).getApolloDress3D();
-      if (localObject != null)
-      {
-        paramInt = ((amls)localObject).jdField_a_of_type_Int;
-        localObject = ((amls)localObject).a();
-        if ((paramInt > ancb.jdField_a_of_type_Int) && (localObject != null) && (localObject.length > 0) && ((!paramBoolean) || (a(paramString, paramInt, (int[])localObject, paramQQAppInterface))))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloActionHelper", 2, new Object[] { "get3DRoleDressIdByUin valid role and dress RSC, needVerify:", Boolean.valueOf(paramBoolean) });
-          }
-          paramString = (String)localObject;
-        }
-      }
-    }
-    for (;;)
-    {
-      return new Object[] { Integer.valueOf(paramInt), paramString };
-      paramString = null;
-      paramInt = 0;
-    }
-  }
-  
-  public static Object[] a(String paramString, QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, "[getRoldIdByUin], uin:" + paramString);
-    }
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionHelper", 2, "errInfo->null param.");
-      }
-      return null;
-    }
-    Object localObject2 = amxb.a(0);
-    Object localObject1;
-    int i;
-    if (("-1".equals(paramString)) || ("-2".equals(paramString)))
-    {
-      localObject1 = paramString;
-      if (!"-1".equals(localObject1)) {
-        break label248;
-      }
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    ((amsx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.jdField_e_of_type_JavaLangString, false, this.jdField_a_of_type_Int);
+    a(false, this.jdField_e_of_type_JavaLangString);
+    this.jdField_e_of_type_JavaLangString = "";
+    if (this.jdField_a_of_type_Int == 319) {
       i = 1;
-      label102:
-      localObject3 = amxb.a(i);
-      if (!a((String)localObject1, i, (int[])localObject3, paramQQAppInterface)) {
-        break label253;
-      }
-      localObject1 = localObject3;
     }
-    for (;;)
+    VipUtils.a(null, "cmshow", "Apollo", "turnOffAudio", i, 0, new String[0]);
+  }
+  
+  public void a(AudioPlayerBase paramAudioPlayerBase) {}
+  
+  public void a(AudioPlayerBase paramAudioPlayerBase, int paramInt)
+  {
+    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[AudioPlayerListener] onError:" + paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderNotReady");
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[audioSwitch] friUin:" + paramString + ",from:" + paramInt + ",mCurrentFriUin:" + this.jdField_e_of_type_JavaLangString);
+    }
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      localObject2 = ((amhd)paramQQAppInterface.getManager(153)).b(paramString);
-      if (localObject2 == null) {
-        break label715;
-      }
-      j = ((ApolloBaseInfo)localObject2).apolloStatus;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionHelper", 2, "uin: " + ((ApolloBaseInfo)localObject2).uin + ", funcSwitch:" + j);
-      }
-      if (amhd.a((ApolloBaseInfo)localObject2)) {
-        break label301;
-      }
-      return new Object[] { Integer.valueOf(i), localObject1 };
-      if (amuh.b(paramQQAppInterface, paramString))
+      do
       {
-        localObject1 = "-2";
+        return;
+      } while (!a());
+      if (!this.jdField_e_of_type_Boolean) {
         break;
       }
-      localObject1 = "-1";
-      break;
-      label248:
-      i = 2;
-      break label102;
-      label253:
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionHelper", 2, new Object[] { "role and dress is not ready,uin:", paramString, ",roleId:", Integer.valueOf(0) });
+      if (paramString.equals(this.jdField_e_of_type_JavaLangString))
+      {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+        return;
       }
-      localObject1 = localObject2;
+      if (paramInt == 318)
+      {
+        paramString = new Bundle();
+        paramString.putString("key_game_friUin", this.jdField_e_of_type_JavaLangString);
+        paramString.putString("key_dialog_type", "dialog_type_confirm");
+        QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "cm_game_client_module", "action_show_audio_dialog", paramString, null);
+        return;
+      }
+    } while ((this.jdField_c_of_type_JavaLangRefWeakReference == null) || (this.jdField_c_of_type_JavaLangRefWeakReference.get() == null));
+    ((aihy)this.jdField_c_of_type_JavaLangRefWeakReference.get()).h("dialog_type_confirm");
+    return;
+    b(paramString, paramInt);
+  }
+  
+  public void a(String paramString, amzv paramamzv)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[uploadFile] uploadFile:" + paramString);
+    }
+    if (this.jdField_a_of_type_Amzu == null) {
+      this.jdField_a_of_type_Amzu = new amzu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+    beyb localbeyb = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramamzv);
+    if (localbeyb != null)
+    {
+      if (!this.jdField_c_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Amzu.addFilter(new Class[] { berh.class });
+        localbeyb.a(this.jdField_a_of_type_Amzu);
+        this.jdField_c_of_type_Boolean = true;
+      }
+      paramamzv = new beyg();
+      paramamzv.jdField_b_of_type_Int = 24;
+      paramamzv.jdField_c_of_type_Int = 36;
+      paramamzv.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+      paramamzv.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+      paramamzv.jdField_a_of_type_Boolean = true;
+      paramamzv.j = ((int)new File(paramString).length());
+      paramamzv.i = paramString;
+      localbeyb.a(paramamzv);
+    }
+  }
+  
+  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
+  {
+    int i = 1;
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderPrepare");
+    byte[] arrayOfByte = bhrp.a(paramRecorderParam.jdField_c_of_type_Int, paramRecorderParam.jdField_a_of_type_Int);
+    if (paramRecorderParam.jdField_a_of_type_JavaLangObject == null) {}
+    while (i == 0)
+    {
+      bdoc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecorderParam.jdField_c_of_type_Int, paramString, 0, (int)(System.currentTimeMillis() / 1000L));
+      bdoc.a(paramString, arrayOfByte, arrayOfByte.length, (short)0);
+      return;
       i = 0;
     }
-    label301:
-    if ((paramBoolean) && (((ApolloBaseInfo)localObject2).apolloLocalTS != ((ApolloBaseInfo)localObject2).apolloServerTS))
-    {
-      QLog.i("ApolloActionHelper", 1, "dress changed, uin:" + ApolloUtil.d(paramString));
-      amhd.a(paramQQAppInterface, paramString, "getRoleDressIdByUin");
+    balu.a(paramString);
+    balu.a(paramString, arrayOfByte, arrayOfByte.length);
+  }
+  
+  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble)
+  {
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderEnd,totalTime:" + paramDouble);
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((amzt)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b();
     }
-    Object localObject3 = ((ApolloBaseInfo)localObject2).getApolloDress(false);
-    if ((localObject3 != null) && (localObject3.length > 0))
+    int i;
+    if (paramRecorderParam != null)
     {
-      int k = localObject3.length;
-      j = 0;
-      if (j >= k) {
-        break label798;
+      if (paramRecorderParam.jdField_a_of_type_JavaLangObject != null) {
+        break label107;
       }
-      Object localObject4 = localObject3[j];
-      localObject2 = localObject4.a();
-      if (a(paramString, localObject4.jdField_a_of_type_Int, (int[])localObject2, paramQQAppInterface))
+      i = 1;
+      if (i != 0) {
+        break label113;
+      }
+      bdoc.a(paramString, false);
+      bdoc.a(paramString);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Long = (paramDouble);
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a();
+      }
+      return;
+      label107:
+      i = 0;
+      break;
+      label113:
+      balu.b(paramString);
+    }
+  }
+  
+  public void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2)
+  {
+    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderError");
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((amzt)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(-2);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[enterRoom] friUin:" + paramString1 + ",roomId:" + paramString2 + ",from:" + paramString1);
+    }
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    {
+      QLog.e("CmGameTemp_CmGameAudioManager", 1, "[enterRoom] uin or roomId is empty");
+      return;
+    }
+    Bundle localBundle;
+    if ((Build.VERSION.SDK_INT >= 23) && (BaseActivity.sTopActivity != null) && (BaseActivity.sTopActivity.checkSelfPermission("android.permission.RECORD_AUDIO") != 0))
+    {
+      if (paramInt != 318) {
+        break label225;
+      }
+      localBundle = new Bundle();
+      localBundle.putString("key_dialog_type", "dialog_type_permission");
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "cm_game_client_module", "action_show_audio_dialog", localBundle, null);
+    }
+    for (;;)
+    {
+      localBundle = new Bundle();
+      localBundle.putString("uin", paramString1);
+      localBundle.putString("friUin", paramString1);
+      localBundle.putString("roomId", paramString2);
+      localBundle.putInt("from", paramInt);
+      paramString1 = Message.obtain();
+      paramString1.setData(localBundle);
+      paramString1.what = 2;
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString1);
+      return;
+      label225:
+      if ((this.jdField_c_of_type_JavaLangRefWeakReference != null) && (this.jdField_c_of_type_JavaLangRefWeakReference.get() != null)) {
+        ((aihy)this.jdField_c_of_type_JavaLangRefWeakReference.get()).h("dialog_type_permission");
+      }
+    }
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CmGameTemp_CmGameAudioManager", 0, "[QQRecorder] onRecorderSilceEnd size：" + paramInt1);
+    }
+    if (paramRecorderParam.jdField_a_of_type_JavaLangObject == null) {}
+    for (paramInt2 = 1; paramInt2 == 0; paramInt2 = 0)
+    {
+      bdoc.a(paramString, paramArrayOfByte, paramInt1, (short)0);
+      return;
+    }
+    balu.a(paramString, paramArrayOfByte, paramInt1);
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (this.jdField_c_of_type_JavaLangRefWeakReference != null)
+    {
+      aihy localaihy = (aihy)this.jdField_c_of_type_JavaLangRefWeakReference.get();
+      if ((localaihy != null) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(localaihy.a()))) {
+        localaihy.v(paramBoolean);
+      }
+    }
+    anav.a().a(paramBoolean, paramString);
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    if (this.jdField_f_of_type_Boolean) {
+      return true;
+    }
+    boolean bool1;
+    if (annu.d != null)
+    {
+      jdField_a_of_type_JavaLangString = annu.d.optString("appid", "1400035750");
+      jdField_b_of_type_JavaLangString = annu.d.optString("key", "5d3728db75adf458");
+      jdField_c_of_type_JavaLangString = annu.d.optString("url", "https://sqimg.qq.com/qq_product_operations/gme_sdk/GME_SDK_V1.zip");
+      jdField_d_of_type_JavaLangString = annu.d.optString("md5", "105d1e43c456bc800b4adacd57ac1199");
+      if (annu.d.optInt("openAudio", 0) != 0)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloActionHelper", 2, "valid role and dress RSC.");
+        bool1 = true;
+        jdField_a_of_type_Boolean = bool1;
+        bool1 = bool2;
+        if (annu.d.optInt("display", 0) != 0) {
+          bool1 = true;
         }
-        i = localObject4.jdField_a_of_type_Int;
-        localObject1 = localObject2;
+        jdField_b_of_type_Boolean = bool1;
+        QLog.i("CmGameTemp_CmGameAudioManager", 1, "[initParams] appId:" + jdField_a_of_type_JavaLangString + ",key:" + jdField_b_of_type_JavaLangString + ",url:" + jdField_c_of_type_JavaLangString + ",md5:" + jdField_d_of_type_JavaLangString + ",OPEN_AUDIO:" + jdField_a_of_type_Boolean + ",sDISPLAY:" + jdField_b_of_type_Boolean);
+        bmef.a().a(jdField_c_of_type_JavaLangString, jdField_d_of_type_JavaLangString);
       }
     }
-    label532:
-    label537:
-    label798:
-    for (int j = 1;; j = 0)
+    for (this.jdField_f_of_type_Boolean = true;; this.jdField_f_of_type_Boolean = false)
     {
-      if (j == 0)
+      return this.jdField_f_of_type_Boolean;
+      bool1 = false;
+      break;
+      QLog.e("CmGameTemp_CmGameAudioManager", 1, "[initParams] gameAudioConfig is null");
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) && (this.jdField_e_of_type_JavaLangString.equals(paramString)) && (this.jdField_e_of_type_Boolean);
+  }
+  
+  public String b()
+  {
+    return annv.p + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + ".amr";
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+  }
+  
+  public void b(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  
+  public void b(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[queryRoomAndEnter] friUin:" + paramString + ",currentRoom:" + this.jdField_f_of_type_JavaLangString);
+    }
+    if (!a()) {
+      return;
+    }
+    amsx localamsx = (amsx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+    if (this.jdField_e_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    }
+    localamsx.a().b(paramString, paramInt);
+  }
+  
+  public void b(String paramString, QQRecorder.RecorderParam paramRecorderParam)
+  {
+    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderAbnormal");
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_e_of_type_Boolean;
+  }
+  
+  public boolean b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[playUserRecord] play record:" + paramString);
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {
+        this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+      }
+      try
       {
-        localObject2 = amxb.a(localObject3[0].jdField_a_of_type_Int);
-        if (a(paramString, localObject3[0].jdField_a_of_type_Int, (int[])localObject2, paramQQAppInterface))
+        if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying())
         {
           if (QLog.isColorLevel()) {
-            QLog.d("ApolloActionHelper", 2, "valid basic dress.");
+            QLog.i("CmGameTemp_CmGameAudioManager", 0, "record is playing");
           }
-          j = localObject3[0].jdField_a_of_type_Int;
-          paramString = (String)localObject2;
-          i = j;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ApolloActionHelper", 2, "current dress NOT downloaded, check basic dress");
-            i = j;
-            paramString = (String)localObject2;
-          }
-          j = i;
-          paramQQAppInterface = paramString;
+          this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
         }
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel())
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
+        if (TextUtils.isEmpty(paramString))
         {
-          paramString = new StringBuilder();
-          paramString.append("******roleId:[");
-          paramString.append(j);
-          paramString.append("],");
-          paramString.append("dress:[");
-          i = 0;
-          for (;;)
+          if (!new File(b()).exists())
           {
-            if (i < paramQQAppInterface.length)
-            {
-              if (i != 0) {
-                paramString.append(",");
-              }
-              paramString.append(paramQQAppInterface[i]);
-              i += 1;
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.d("ApolloActionHelper", 2, "try to get history dress ....");
-              }
-              j += 1;
-              break;
-              amuo.a(110, new Object[] { "basicDresses is not vaild" });
-              paramString = (String)localObject1;
-              break label532;
-              paramQQAppInterface = (QQAppInterface)localObject1;
-              j = i;
-              if (!QLog.isColorLevel()) {
-                break label537;
-              }
-              QLog.d("ApolloActionHelper", 2, "uin: " + paramString + " dress is null");
-              paramQQAppInterface = (QQAppInterface)localObject1;
-              j = i;
-              break label537;
-              label715:
-              paramQQAppInterface = (QQAppInterface)localObject1;
-              j = i;
-              if (!QLog.isColorLevel()) {
-                break label537;
-              }
-              QLog.d("ApolloActionHelper", 2, "warning: apolloBaseInfo or apolloBaseInfo.apolloDress is NULL, fail to get role info. apolloBaseInfo:" + localObject2);
-              paramQQAppInterface = (QQAppInterface)localObject1;
-              j = i;
-              break label537;
-            }
+            QLog.e("CmGameTemp_CmGameAudioManager", 1, "audio file not exist.");
+            return false;
           }
-          paramString.append("]****");
-          QLog.d("ApolloActionHelper", 2, paramString.toString());
+          this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(b());
+          this.jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
+          this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+          return true;
         }
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+        return true;
       }
-      return new Object[] { Integer.valueOf(j), paramQQAppInterface };
+      catch (IOException paramString)
+      {
+        QLog.e("CmGameTemp_CmGameAudioManager", 1, paramString.getMessage());
+        return false;
+      }
     }
   }
   
-  public static String[] a(int paramInt)
+  public void c()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("action/");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("/action_background/action");
-    String str1 = "background__" + Integer.toString(paramInt);
-    String str2 = localStringBuilder.toString();
+    ((amsx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().b(this.jdField_a_of_type_Amzs);
+    bmef.a().a();
+    beyb localbeyb = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if (localbeyb != null)
+    {
+      localbeyb.b(this.jdField_a_of_type_Amzu);
+      this.jdField_a_of_type_Amzu = null;
+      this.jdField_c_of_type_Boolean = false;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.c();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = null;
+    }
+  }
+  
+  public void c(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  
+  public void c(String paramString, int paramInt)
+  {
+    int i = 0;
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, "action rsc path:" + localStringBuilder.toString() + ",actionName:" + str1);
+      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[exitRoom] uin:" + paramString + ",from:" + paramInt + ",mCurrentUin:" + this.jdField_e_of_type_JavaLangString + ",mCurrentRoomId:" + this.jdField_f_of_type_JavaLangString);
     }
-    return new String[] { str2, str1 };
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) || (!paramString.equals(this.jdField_e_of_type_JavaLangString)));
+      if (paramInt != 318) {
+        break;
+      }
+      paramInt = i;
+      if (this.jdField_c_of_type_JavaLangRefWeakReference != null)
+      {
+        paramInt = i;
+        if (this.jdField_c_of_type_JavaLangRefWeakReference.get() != null) {
+          paramInt = 1;
+        }
+      }
+    } while ((paramInt != 0) && (this.jdField_e_of_type_JavaLangString.equals(((aihy)this.jdField_c_of_type_JavaLangRefWeakReference.get()).a())));
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    return;
+    if (anbd.a(BaseApplicationImpl.getContext()))
+    {
+      paramString = new amzr(this);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("key_game_friUin", this.jdField_e_of_type_JavaLangString);
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "cm_game_client_module", "action_check_game_running", localBundle, paramString);
+      return;
+    }
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[exitRoom] game is not exist. exit room");
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
   }
   
-  public static String[] a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public void c(String paramString, QQRecorder.RecorderParam paramRecorderParam)
   {
-    return a(paramInt1, paramInt2, paramInt3, paramBoolean, 1);
-  }
-  
-  public static String[] a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, new Object[] { "[getActionRscPath], bid:" + paramInt1 + ",activeId:" + paramInt2 + ",roleId:" + paramInt3 + ",isActionMaker:" + paramBoolean, ",userStatus:", Integer.valueOf(paramInt4) });
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramInt4 == 2)
-    {
-      paramInt4 = 1;
-      switch (paramInt1)
-      {
-      case 3: 
-      case 8: 
-      case 9: 
-      default: 
-        paramInt3 = 1;
-        paramInt4 = paramInt2;
-        label177:
-        if (paramInt3 != 0) {
-          localStringBuilder.append("/");
-        }
-        localStringBuilder.append(paramInt4);
-        if ((paramBoolean) || (paramInt2 < 21)) {
-          if (localStringBuilder.indexOf(ancb.u) > -1) {
-            localStringBuilder.append("/action");
-          }
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      String str1 = localStringBuilder.toString();
-      String str2 = Integer.toString(paramInt1) + "_" + Integer.toString(paramInt4);
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionHelper", 2, "action rsc path:" + localStringBuilder.toString() + ",actionId:" + paramInt4);
-      }
-      return new String[] { str1, str2 };
-      paramInt4 = 0;
-      break;
-      paramInt3 = 0;
-      paramInt4 = paramInt2;
-      break label177;
-      localStringBuilder.append("action");
-      paramInt3 = 1;
-      paramInt4 = paramInt2;
-      break label177;
-      if (paramInt4 != 0)
-      {
-        localStringBuilder.append(ancb.u);
-        paramInt3 = 1;
-        paramInt4 = paramInt2;
-        break label177;
-      }
-      localStringBuilder.append("def/basic/action");
-      paramInt3 = 1;
-      paramInt4 = paramInt2;
-      break label177;
-      if (paramInt4 != 0) {
-        localStringBuilder.append(ancb.u).append(ancb.G);
-      }
-      for (;;)
-      {
-        paramInt3 = 1;
-        paramInt4 = 1;
-        break;
-        localStringBuilder.append("def/basic/").append(ancb.G);
-      }
-      localStringBuilder.append(ancb.u).append(ancb.G);
-      paramInt3 = 1;
-      paramInt4 = 1;
-      break label177;
-      int i = a(paramInt3, ancb.G);
-      if (-1 != i)
-      {
-        localStringBuilder.append("role/");
-        localStringBuilder.append(paramInt3).append("/").append(ancb.G);
-        paramInt4 = i;
-        paramInt3 = 1;
-        break label177;
-      }
-      if (paramInt4 != 0)
-      {
-        localStringBuilder.append(ancb.u).append(ancb.G);
-        paramInt3 = 1;
-        paramInt4 = 1;
-        break label177;
-      }
-      localStringBuilder.append("def/basic/").append(ancb.G);
-      paramInt3 = 1;
-      paramInt4 = 1;
-      break label177;
-      localStringBuilder.append("drawer_action/");
-      paramInt3 = 1;
-      paramInt4 = paramInt2;
-      break label177;
-      if (paramInt4 != 0)
-      {
-        localStringBuilder.append(ancb.u).append(ancb.I);
-        paramInt3 = 1;
-        paramInt4 = paramInt2;
-        break label177;
-      }
-      localStringBuilder.append("def/role/").append(0).append("/").append(ancb.I);
-      paramInt3 = 1;
-      paramInt4 = paramInt2;
-      break label177;
-      if (paramInt4 != 0)
-      {
-        localStringBuilder.append(ancb.u).append(ancb.K);
-        paramInt3 = 1;
-        paramInt4 = paramInt2;
-        break label177;
-      }
-      localStringBuilder.append("def/role/").append(0).append("/").append(ancb.K);
-      paramInt3 = 1;
-      paramInt4 = paramInt2;
-      break label177;
-      i = a(paramInt3, ancb.H);
-      if (-1 != i)
-      {
-        localStringBuilder.append("role/");
-        localStringBuilder.append(paramInt3).append("/").append(ancb.H);
-        paramInt4 = i;
-        paramInt3 = 1;
-        break label177;
-      }
-      if (paramInt4 != 0) {
-        localStringBuilder.append(ancb.u).append(ancb.G);
-      }
-      for (;;)
-      {
-        paramInt3 = 1;
-        paramInt4 = 1;
-        break;
-        localStringBuilder.append("def/basic/").append(ancb.G);
-      }
-      localStringBuilder.append("/action/action");
-      continue;
-      localStringBuilder.append("/action_peer/action");
+    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onInitFailed");
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((amzt)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(-1);
     }
   }
   
-  public static String[] a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4, CmShowRenderView.PlayActionConfig paramPlayActionConfig)
+  public boolean c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, new Object[] { "[getActionRscPath], bid:" + paramInt1 + ",activeId:" + paramInt2 + ",roleId:" + paramInt3 + ",isActionMaker:" + paramBoolean, ",userStatus:", Integer.valueOf(paramInt4) });
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramInt4 == 2)
+    boolean bool = false;
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null)
     {
-      paramInt4 = 1;
-      switch (paramInt1)
-      {
-      case 3: 
-      case 8: 
-      case 9: 
-      default: 
-        paramInt3 = 1;
-        paramInt4 = paramInt2;
-        label177:
-        if (paramInt3 != 0) {
-          localStringBuilder.append("/");
-        }
-        localStringBuilder.append(paramInt4);
-        if ((paramBoolean) || (paramInt2 < 21)) {
-          if (localStringBuilder.indexOf(ancb.u) > -1) {
-            localStringBuilder.append("/action");
-          }
-        }
-        break;
+      QLog.i("CmGameTemp_CmGameAudioManager", 0, "[startRecord] stop record");
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a()) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.c();
       }
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a();
+      bool = true;
     }
-    for (;;)
+    return bool;
+  }
+  
+  public void d(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
+  
+  public boolean d()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      paramPlayActionConfig = localStringBuilder.toString();
-      String str = Integer.toString(paramInt1) + "_" + Integer.toString(paramInt4);
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionHelper", 2, "action rsc path:" + localStringBuilder.toString() + ",actionId:" + paramInt4);
-      }
-      return new String[] { paramPlayActionConfig, str };
-      paramInt4 = 0;
-      break;
-      paramInt3 = 0;
-      paramInt4 = paramInt2;
-      break label177;
-      localStringBuilder.append("action");
-      paramInt3 = 1;
-      paramInt4 = paramInt2;
-      break label177;
-      if (paramInt4 != 0)
+      if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
       {
-        localStringBuilder.append(ancb.u);
-        paramInt3 = 1;
-        paramInt4 = paramInt2;
-        break label177;
-      }
-      localStringBuilder.append("def/basic/action");
-      paramInt3 = 1;
-      paramInt4 = paramInt2;
-      break label177;
-      if (paramInt4 != 0) {
-        localStringBuilder.append(ancb.u).append(ancb.G);
-      }
-      for (;;)
-      {
-        paramInt3 = 1;
-        paramInt4 = 1;
-        break;
-        localStringBuilder.append("def/basic/").append(ancb.G);
-      }
-      localStringBuilder.append(ancb.u).append(ancb.G);
-      paramInt3 = 1;
-      paramInt4 = 1;
-      break label177;
-      int i = a(paramInt3, ancb.G);
-      if (-1 != i)
-      {
-        localStringBuilder.append("role/");
-        localStringBuilder.append(paramInt3).append("/").append(ancb.G);
-        paramInt4 = i;
-        paramInt3 = 1;
-        break label177;
-      }
-      if (paramInt4 != 0)
-      {
-        localStringBuilder.append(ancb.u).append(ancb.G);
-        paramInt3 = 1;
-        paramInt4 = 1;
-        break label177;
-      }
-      localStringBuilder.append("def/basic/").append(ancb.G);
-      paramInt3 = 1;
-      paramInt4 = 1;
-      break label177;
-      localStringBuilder.append("drawer_action/");
-      paramInt3 = 1;
-      paramInt4 = paramInt2;
-      break label177;
-      if (paramInt4 != 0)
-      {
-        localStringBuilder.append(ancb.u).append(ancb.I);
-        paramInt3 = 1;
-        paramInt4 = paramInt2;
-        break label177;
-      }
-      localStringBuilder.append("def/role/").append(0).append("/").append(ancb.I);
-      paramInt3 = 1;
-      paramInt4 = paramInt2;
-      break label177;
-      if (paramInt4 != 0)
-      {
-        localStringBuilder.append(ancb.u).append(ancb.K);
-        paramInt3 = 1;
-        paramInt4 = paramInt2;
-        break label177;
-      }
-      localStringBuilder.append("def/role/").append(0).append("/").append(ancb.K);
-      paramInt3 = 1;
-      paramInt4 = paramInt2;
-      break label177;
-      i = a(paramInt3, ancb.H);
-      if (-1 != i)
-      {
-        localStringBuilder.append("role/");
-        localStringBuilder.append(paramInt3).append("/").append(ancb.H);
-        paramInt4 = i;
-        paramInt3 = 1;
-        break label177;
-      }
-      if (paramInt4 != 0) {
-        localStringBuilder.append(ancb.u).append(ancb.G);
-      }
-      for (;;)
-      {
-        paramInt3 = 1;
-        paramInt4 = 1;
-        break;
-        localStringBuilder.append("def/basic/").append(ancb.G);
-      }
-      if ((paramPlayActionConfig == null) || (paramPlayActionConfig.c == 0))
-      {
-        localStringBuilder.append("/action/action");
-      }
-      else if (paramPlayActionConfig.c == 1)
-      {
-        localStringBuilder.append("/action/pre/action/action");
-      }
-      else if (paramPlayActionConfig.c == 2)
-      {
-        localStringBuilder.append("/action/main/action/action");
-      }
-      else if (paramPlayActionConfig.c == 3)
-      {
-        localStringBuilder.append("/action/post/action/action");
-      }
-      else
-      {
-        localStringBuilder.append("/action/action");
-        continue;
-        if ((paramPlayActionConfig == null) || (paramPlayActionConfig.c == 0)) {
-          localStringBuilder.append("/action_peer/action");
-        } else if (paramPlayActionConfig.c == 1) {
-          localStringBuilder.append("/action/pre/action_peer/action");
-        } else if (paramPlayActionConfig.c == 2) {
-          localStringBuilder.append("/action/main/action_peer/action");
-        } else if (paramPlayActionConfig.c == 3) {
-          localStringBuilder.append("/action/post/action_peer/action");
-        } else {
-          localStringBuilder.append("/action_peer/action");
+        if (QLog.isColorLevel()) {
+          QLog.d("CmGameTemp_CmGameAudioManager", 0, "[stopUserRecord] stop record:");
         }
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+        this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+        return true;
       }
+      return false;
     }
   }
   
-  public static String[] a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  public boolean handleMessage(Message paramMessage)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt1).append("/action");
-    if (paramBoolean2) {
-      localStringBuilder.append("/group");
-    }
-    switch (paramInt2)
+    switch (paramMessage.what)
     {
     default: 
-      if (paramBoolean1) {
-        localStringBuilder.append("/action/action");
-      }
-      break;
+      return false;
+    case 1: 
+      QLog.i("CmGameTemp_CmGameAudioManager", 0, "[handleMessage] exitRoom,roomId:" + this.jdField_f_of_type_JavaLangString);
+      bmef.a().a(false);
+      bmef.a().b(false);
+      bmef.a().a(this.jdField_f_of_type_JavaLangString);
+      return false;
     }
-    for (;;)
+    paramMessage = paramMessage.getData();
+    String str1 = paramMessage.getString("uin");
+    String str2 = paramMessage.getString("roomId");
+    int i = paramMessage.getInt("from");
+    QLog.i("CmGameTemp_CmGameAudioManager", 0, "[handleMessage] enterRoom,uin:" + str1 + ",roomId:" + str2 + ",from:" + i);
+    this.g = str1;
+    this.h = str2;
+    this.jdField_a_of_type_Int = i;
+    bmef.a().a(this.jdField_f_of_type_JavaLangString);
+    if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)))
     {
-      String str1 = localStringBuilder.toString();
-      String str2 = "whiteface_" + Integer.toString(paramInt2) + "_" + Integer.toString(paramInt1);
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionHelper", 2, "[whiteface] path:" + localStringBuilder.toString() + ",actionId:" + paramInt1);
-      }
-      return new String[] { str1, str2 };
-      localStringBuilder.append("/pre");
-      break;
-      localStringBuilder.append("/main");
-      break;
-      localStringBuilder.append("/post");
-      break;
-      localStringBuilder.append("/action_peer/action");
+      bmef.a().a(jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), jdField_b_of_type_JavaLangString, str2, true, true);
+      return false;
     }
-  }
-  
-  public static String[] a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, new Object[] { "[getActionLuaString] apolloId=", paramString1, ", actionId=", Integer.valueOf(paramInt1), ", taskId=", Integer.valueOf(paramInt2), ", animName=", paramString3, ", actionRscName=", paramString2 });
-    }
-    String[] arrayOfString = new String[2];
-    String str = paramString3;
-    if (paramString2.contains("_peer")) {
-      str = paramString3 + "_peer";
-    }
-    paramString3 = paramString2;
-    if (paramString2.startsWith("action")) {
-      paramString3 = paramString2.substring("action/".length());
-    }
-    arrayOfString[0] = String.format("setAccessoryAnimation(%s, '%s', '%s', '%s');", new Object[] { paramString1, paramString3, paramString3, str });
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, arrayOfString[0]);
-    }
-    arrayOfString[1] = String.format("if(%s){%s.setAnimation(%d, '%s', false);}", new Object[] { paramString1, paramString1, Integer.valueOf(paramInt2), str });
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, arrayOfString[1]);
-    }
-    return arrayOfString;
-  }
-  
-  public static String[] a(String paramString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionHelper", 2, new Object[] { "[getDressLuaString] apolloId=", paramString });
-    }
-    if (paramArrayOfInt == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionHelper", 2, "[getDressLuaString] no dressId, abort");
-      }
-      return null;
-    }
-    String[] arrayOfString = new String[paramArrayOfInt.length];
-    int i = 0;
-    while (i < paramArrayOfInt.length)
-    {
-      String str = a(1, paramArrayOfInt[i]);
-      arrayOfString[i] = String.format("setAccessory(%s, '%s', '%s');", new Object[] { paramString, str, str });
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionHelper", 2, new Object[] { "[getDressLuaString] scriptStr", Integer.valueOf(i), "=", arrayOfString[i] });
-      }
-      i += 1;
-    }
-    return arrayOfString;
-  }
-  
-  public static String b()
-  {
-    return "if(\"undefined\" != typeof addFrame){addFrame();}else{if(renderTicker.paused){if(BK.Director.root){BK.Render.clear(0,0,0,0);BK.Render.treeRender( BK.Director.root,0);BK.Render.commit();}}}";
-  }
-  
-  public static String b(int paramInt1, int paramInt2)
-  {
-    return a(paramInt1, paramInt2, 1);
-  }
-  
-  public static String b(int paramInt1, int paramInt2, int paramInt3)
-  {
-    return "if(\"undefined\" != typeof comGlobalParam) { comGlobalParam.width=" + paramInt1 + ";comGlobalParam.vWidth=" + paramInt1 + ";comGlobalParam.vHeight=" + paramInt2 + ";if(comGlobalParam.height==0){comGlobalParam.height=" + paramInt3 + ";}}";
-  }
-  
-  public static String b(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      return null;
-    }
-    paramString = ((amhd)paramQQAppInterface.getManager(153)).b(paramString);
-    if (paramString != null)
-    {
-      paramString = paramString.getApolloDress3D();
-      if (paramString != null) {
-        return paramString.jdField_a_of_type_JavaLangString;
-      }
-    }
-    return null;
+    QLog.e("CmGameTemp_CmGameAudioManager", 0, "[handleMessage] appid or key is null!enter room failed");
+    return false;
   }
 }
 

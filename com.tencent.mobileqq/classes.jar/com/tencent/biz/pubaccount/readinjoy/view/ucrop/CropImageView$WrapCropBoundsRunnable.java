@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.view.ucrop;
 
 import android.graphics.RectF;
 import java.lang.ref.WeakReference;
-import tgl;
+import sxf;
 
 class CropImageView$WrapCropBoundsRunnable
   implements Runnable
@@ -47,9 +47,9 @@ class CropImageView$WrapCropBoundsRunnable
         return;
         long l = System.currentTimeMillis();
         f1 = (float)Math.min(this.jdField_a_of_type_Long, l - this.jdField_b_of_type_Long);
-        f2 = tgl.a(f1, 0.0F, this.c, (float)this.jdField_a_of_type_Long);
-        f3 = tgl.a(f1, 0.0F, this.d, (float)this.jdField_a_of_type_Long);
-        f4 = tgl.b(f1, 0.0F, this.f, (float)this.jdField_a_of_type_Long);
+        f2 = sxf.a(f1, 0.0F, this.c, (float)this.jdField_a_of_type_Long);
+        f3 = sxf.a(f1, 0.0F, this.d, (float)this.jdField_a_of_type_Long);
+        f4 = sxf.b(f1, 0.0F, this.f, (float)this.jdField_a_of_type_Long);
       } while (f1 >= (float)this.jdField_a_of_type_Long);
       localCropImageView.a(f2 - (localCropImageView.b[0] - this.jdField_a_of_type_Float), f3 - (localCropImageView.b[1] - this.jdField_b_of_type_Float));
       if (!this.jdField_a_of_type_Boolean) {

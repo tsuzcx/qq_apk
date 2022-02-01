@@ -1,17 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
 public class adnd
-  implements View.OnClickListener
 {
-  public adnd(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  public void onClick(View paramView)
+  public static adnc a(Class<? extends adnc> paramClass, adnb paramadnb)
   {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramClass == adoc.class) {
+      paramClass = new adoc();
+    }
+    for (;;)
+    {
+      if (paramClass != null) {
+        paramClass.a(paramadnb);
+      }
+      return paramClass;
+      if (paramClass == adoi.class) {
+        paramClass = new adoi();
+      } else {
+        try
+        {
+          adnc localadnc = (adnc)paramClass.newInstance();
+          paramClass = localadnc;
+        }
+        catch (Exception localException)
+        {
+          QLog.e("DoraemonOpenAPI.moduleFactory", 1, "newInstance error module=" + paramClass, localException);
+          paramClass = null;
+        }
+      }
+    }
   }
 }
 

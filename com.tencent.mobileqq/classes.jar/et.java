@@ -19,7 +19,7 @@ class et
     Object localObject = (PrinterItemMsgRecord)((ek)paramView.getTag()).a();
     if (localObject != null)
     {
-      FileManagerEntity localFileManagerEntity = atvo.a((PrinterItemMsgRecord)localObject);
+      FileManagerEntity localFileManagerEntity = aunj.a((PrinterItemMsgRecord)localObject);
       ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
       localForwardFileInfo.b(10009);
       localForwardFileInfo.d(6);

@@ -1,96 +1,19 @@
-import org.jetbrains.annotations.NotNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class rao
-  implements rae
+  implements DialogInterface.OnDismissListener
 {
-  public int a()
-  {
-    return rbo.a().a();
-  }
+  public rao(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public String a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return rbo.a().a();
-  }
-  
-  public void a(int paramInt)
-  {
-    rbo.a().a(paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    rbo.a().a(paramString);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    rbo.a().a(paramString, paramInt1, paramInt2, new rap(this));
-  }
-  
-  public boolean a()
-  {
-    return rbo.a().c();
-  }
-  
-  public boolean a(@NotNull String paramString)
-  {
-    return rbo.a().a(paramString);
-  }
-  
-  public int b()
-  {
-    return rbo.a().b();
-  }
-  
-  public String b()
-  {
-    return rbo.a().b();
-  }
-  
-  public void b(int paramInt)
-  {
-    rbo.a().b(paramInt);
-  }
-  
-  public int c()
-  {
-    return rbo.a().c();
-  }
-  
-  public void c(int paramInt)
-  {
-    rbo.a().d(paramInt);
-  }
-  
-  public int d()
-  {
-    return rbo.a().d();
-  }
-  
-  public void d(int paramInt)
-  {
-    rbo.a().c(paramInt);
-  }
-  
-  public int e()
-  {
-    return rbo.a().h();
-  }
-  
-  public int f()
-  {
-    return rbo.a().e();
-  }
-  
-  public int g()
-  {
-    return rbo.a().f();
-  }
-  
-  public int h()
-  {
-    return rbo.a().g();
+    ReadInJoyDeliverUGCActivity.b(this.a, false);
+    ThreadManager.getUIHandler().postDelayed(new ReadInJoyDeliverUGCActivity.8.1(this), 300L);
   }
 }
 

@@ -1,36 +1,39 @@
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import com.tencent.pts.core.itemview.PTSItemData;
+import com.tencent.pts.core.lite.IPTSLiteEventListener;
+import com.tencent.pts.core.lite.PTSLiteItemViewManager;
 
+@Deprecated
 public class qgi
-  implements ViewBase.OnClickListener
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+  private PTSLiteItemViewManager a;
   
-  public qgi(BaseArticleInfo paramBaseArticleInfo, Context paramContext)
+  public qgi(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = new PTSLiteItemViewManager(paramContext);
   }
   
-  public void onClick(ViewBase paramViewBase)
+  public View a(View paramView, PTSItemData paramPTSItemData)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo instanceof AdvertisementInfo))
-    {
-      paramViewBase = (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-      if (paramViewBase.mLocalInfo != null)
-      {
-        String str = paramViewBase.mLocalInfo.b;
-        if (!TextUtils.isEmpty(str))
-        {
-          pha.d(this.jdField_a_of_type_AndroidContentContext, str);
-          nxw.a(new omp().a(this.jdField_a_of_type_AndroidContentContext).a(nxw.a).b(nxw.ab).a(paramViewBase).d(nxw.aR).a());
-        }
-      }
+    Object localObject = paramView;
+    if (this.a != null) {
+      localObject = this.a.getView(paramView, paramPTSItemData);
+    }
+    return localObject;
+  }
+  
+  public void a()
+  {
+    if (this.a != null) {
+      this.a.destroy();
+    }
+  }
+  
+  public void a(IPTSLiteEventListener paramIPTSLiteEventListener)
+  {
+    if (this.a != null) {
+      this.a.setLiteEventListener(paramIPTSLiteEventListener);
     }
   }
 }

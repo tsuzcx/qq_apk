@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.comment;
 
-import aagq;
+import aakr;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Handler;
@@ -19,7 +19,7 @@ public class WorkSpaceView
   private static final double jdField_a_of_type_Double = Math.tan(Math.toRadians(30.0D));
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = 0;
-  private aagq jdField_a_of_type_Aagq;
+  private aakr jdField_a_of_type_Aakr;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
@@ -76,8 +76,8 @@ public class WorkSpaceView
       }
       paramInt = getWidth() * i - getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt, 0, Math.abs(paramInt) * 2);
-      if (this.jdField_a_of_type_Aagq != null) {
-        this.jdField_a_of_type_Aagq.a(i);
+      if (this.jdField_a_of_type_Aakr != null) {
+        this.jdField_a_of_type_Aakr.a(i);
       }
       invalidate();
       return;
@@ -299,9 +299,9 @@ public class WorkSpaceView
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
   }
   
-  public void setOnScreenChangeListener(aagq paramaagq)
+  public void setOnScreenChangeListener(aakr paramaakr)
   {
-    this.jdField_a_of_type_Aagq = paramaagq;
+    this.jdField_a_of_type_Aakr = paramaakr;
   }
 }
 

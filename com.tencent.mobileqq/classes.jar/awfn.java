@@ -1,22 +1,50 @@
-import java.math.BigDecimal;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
 
-public class awfn
+class awfn
+  implements HookMethodCallback
 {
-  public String a;
-  public String b;
-  public String c;
+  private int a;
   
-  public String a(int paramInt, float paramFloat)
+  public awfn(int paramInt)
   {
-    String str = null;
-    if (this.c != null)
-    {
-      str = this.c.replaceFirst("%param%", "" + paramInt);
-      paramFloat = new BigDecimal(paramFloat).setScale(1, 4).floatValue();
-      str = str.replaceFirst("%param%", "" + paramFloat);
-    }
-    return str;
+    this.a = paramInt;
   }
+  
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  {
+    if (paramMethodHookParam.throwable == null) {
+      return;
+    }
+    Throwable localThrowable;
+    if (paramMethodHookParam.throwable.getCause() != null) {
+      localThrowable = paramMethodHookParam.throwable.getCause();
+    }
+    while ((localThrowable instanceof OutOfMemoryError))
+    {
+      awfm.b();
+      try
+      {
+        paramMethodHookParam.result = JavaHookBridge.invokeOriginMethod(paramMethodHookParam.method, paramMethodHookParam.thisObject, paramMethodHookParam.args);
+        paramMethodHookParam.throwable = null;
+        awfm.a(true, this.a);
+        return;
+      }
+      catch (Exception paramMethodHookParam)
+      {
+        awfm.a(false, this.a);
+        return;
+        localThrowable = paramMethodHookParam.throwable;
+      }
+      catch (Error paramMethodHookParam)
+      {
+        awfm.a(false, this.a);
+      }
+    }
+  }
+  
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

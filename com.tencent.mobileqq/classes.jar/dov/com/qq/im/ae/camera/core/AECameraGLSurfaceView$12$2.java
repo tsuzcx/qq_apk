@@ -1,8 +1,8 @@
 package dov.com.qq.im.ae.camera.core;
 
 import android.app.Activity;
-import banu;
-import bnhh;
+import bbgn;
+import boip;
 
 public class AECameraGLSurfaceView$12$2
   implements Runnable
@@ -11,7 +11,7 @@ public class AECameraGLSurfaceView$12$2
   
   public void run()
   {
-    new banu((Activity)this.a.this$0.getContext(), new bnhh(this)).a();
+    new bbgn((Activity)this.a.this$0.getContext(), new boip(this)).a();
   }
 }
 

@@ -1,167 +1,77 @@
-import SummaryCard.RespCondSearch;
-import SummaryCard.RespHead;
-import SummaryCard.RespSearch;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import pb.unite.search.DynamicSearch.ResultItemGroup;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowListReq;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetUserFollowListRequest;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class aoef
-  extends aods
+  implements bcuc
 {
-  public aoef(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
+  public aoef(PublicAccountHandler paramPublicAccountHandler) {}
+  
+  public int a()
   {
-    super(paramQQAppInterface, paramFriendListHandler);
+    return 1;
   }
   
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public ReqItem a(int paramInt)
   {
-    int i = paramToServiceMsg.extraData.getInt("search_version");
-    Object localObject2 = paramToServiceMsg.extraData.getIntArray("search_list");
-    boolean bool1;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    ReqItem localReqItem = new ReqItem();
+    localReqItem.cOperType = 0;
+    localReqItem.eServiceID = 102;
+    boolean bool = tyi.c();
+    long l1 = PublicAccountHandler.a(this.a, bool);
+    long l2 = PublicAccountHandler.b(this.a, bool);
+    Object localObject2 = PublicAccountHandler.a(this.a);
+    if (bool)
     {
-      bool1 = true;
-      if (i != 2) {
-        break label334;
+      localObject1 = new CertifiedAccountRead.StGetFollowListReq();
+      ((CertifiedAccountRead.StGetFollowListReq)localObject1).seq.set(bhjx.a(l1));
+      ((CertifiedAccountRead.StGetFollowListReq)localObject1).count.set(bhjx.a(1L));
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        ((CertifiedAccountRead.StGetFollowListReq)localObject1).attach_info.set((String)localObject2);
       }
-      bool1 &= paramObject instanceof RespSearch;
-      i = 87;
+      localObject2 = new PROTOCAL.StQWebReq();
+      ((PROTOCAL.StQWebReq)localObject2).Seq.set(-1L);
+      ((PROTOCAL.StQWebReq)localObject2).qua.set(bmsw.a());
+      ((PROTOCAL.StQWebReq)localObject2).deviceInfo.set(bmsv.a().c());
+      ((PROTOCAL.StQWebReq)localObject2).busiBuff.set(ByteStringMicro.copyFrom(((CertifiedAccountRead.StGetFollowListReq)localObject1).toByteArray()));
+      localObject1 = aalx.a();
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        ((PROTOCAL.StQWebReq)localObject2).traceid.set((String)localObject1);
+      }
+      localObject2 = ((PROTOCAL.StQWebReq)localObject2).toByteArray();
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new byte[4];
+      }
+      localReqItem.vecParam = bhuf.a((byte[])localObject1);
+      return localReqItem;
     }
-    for (;;)
-    {
-      label55:
-      int m = 0;
-      Object localObject1;
-      int j;
-      label107:
-      boolean bool2;
-      int k;
-      if (bool1)
-      {
-        localObject1 = (RespHead)this.a.decodePacket(paramFromServiceMsg.getWupBuffer(), "RespHead", new RespHead());
-        if (localObject1 != null)
-        {
-          j = ((RespHead)localObject1).iResult;
-          localObject1 = ((RespHead)localObject1).strErrorMsg;
-          bool2 = paramToServiceMsg.extraData.getBoolean("search_decode");
-          k = j;
-        }
-      }
-      for (;;)
-      {
-        paramFromServiceMsg = (RespSearch)this.a.decodePacket(paramFromServiceMsg.getWupBuffer(), "RespSearch", new RespSearch());
-        j = m;
-        if (paramFromServiceMsg != null)
-        {
-          m = paramFromServiceMsg.result;
-          j = m;
-          if (m == 1) {
-            if (localObject2 == aiso.a)
-            {
-              QLog.d("FriendListHandler.BaseHandlerReceiver", 1, "handleSearchFriend search troop and hit TwiLight");
-              j = 0;
-            }
-          }
-        }
-        for (paramFromServiceMsg = null;; paramFromServiceMsg = null) {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleSearchFriend  searchType = " + i + " isSuccess = " + bool1 + " subId = " + j + " data =" + paramObject);
-            }
-            a(49, bool1, new Object[] { Integer.valueOf(i), paramObject, Integer.valueOf(k), localObject1, Boolean.valueOf(bool2), Long.valueOf(paramToServiceMsg.extraData.getLong("session_id")), Integer.valueOf(j), paramFromServiceMsg });
-            return;
-            bool1 = false;
-            break;
-            label334:
-            if (i != 3) {
-              break label483;
-            }
-            bool1 &= paramObject instanceof ArrayList;
-            i = 88;
-            break label55;
-            j = 0;
-            bool1 = false;
-            localObject1 = null;
-            break label107;
-            localObject2 = new DynamicSearch.ResultItemGroup();
-            try
-            {
-              ((DynamicSearch.ResultItemGroup)localObject2).mergeFrom(paramFromServiceMsg.weiguang);
-              paramFromServiceMsg = new ArrayList();
-              paramFromServiceMsg.add(localObject2);
-              paramFromServiceMsg = new bbou().a(new Object[] { paramToServiceMsg.extraData.getString("param_keyword"), paramFromServiceMsg, Integer.valueOf(paramToServiceMsg.extraData.getInt("fromType")) });
-              j = m;
-            }
-            catch (Exception paramFromServiceMsg)
-            {
-              paramFromServiceMsg.printStackTrace();
-              j = m;
-            }
-          }
-        }
-        k = 0;
-        localObject1 = null;
-        bool2 = false;
-      }
-      label483:
-      i = -1;
-    }
+    Object localObject1 = new mobileqq_mp.GetUserFollowListRequest();
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).follow_seqno.set((int)l1);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).public_account_seqno.set((int)l2);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).begin.set(0);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).limit.set(1);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).version.set(1);
+    ((mobileqq_mp.GetUserFollowListRequest)localObject1).is_increment.set(true);
+    localReqItem.vecParam = bhuf.a(((mobileqq_mp.GetUserFollowListRequest)localObject1).toByteArray());
+    return localReqItem;
   }
   
-  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void a(RespItem paramRespItem)
   {
-    boolean bool;
-    int i;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null) && ((paramObject instanceof RespCondSearch)))
-    {
-      bool = true;
-      if (!bool) {
-        break label135;
-      }
-      paramFromServiceMsg = (RespHead)this.a.decodePacket(paramFromServiceMsg.getWupBuffer(), "RespHead", new RespHead());
-      if (paramFromServiceMsg == null) {
-        break label126;
-      }
-      i = paramFromServiceMsg.iResult;
-      paramFromServiceMsg = paramFromServiceMsg.strErrorMsg;
+    if ((paramRespItem.eServiceID == 102) && (paramRespItem.cResult == 0)) {
+      this.a.b();
     }
-    for (;;)
-    {
-      a(73, bool, new Object[] { Long.valueOf(paramToServiceMsg.extraData.getLong("search_seq")), paramObject, Integer.valueOf(i), Integer.valueOf(paramToServiceMsg.extraData.getInt("param_search_from")) });
-      return;
-      bool = false;
-      break;
-      label126:
-      i = 0;
-      bool = false;
-      continue;
-      label135:
-      i = 0;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return ("SummaryCard.ReqSearch".equals(paramString)) || ("SummaryCard.ReqCondSearch".equals(paramString));
-  }
-  
-  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if ("SummaryCard.ReqSearch".equals(str)) {
-      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-    while (!"SummaryCard.ReqCondSearch".equals(str)) {
-      return;
-    }
-    d(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

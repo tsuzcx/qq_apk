@@ -3,12 +3,12 @@ package com.tencent.biz.qqcircle.fragments.message.presenter;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import com.tencent.TMG.utils.QLog;
-import vms;
+import vow;
 
 public class QCircleReplyMessagePresenter$6
   implements Runnable
 {
-  public QCircleReplyMessagePresenter$6(vms paramvms, View paramView, int[] paramArrayOfInt, int paramInt) {}
+  public QCircleReplyMessagePresenter$6(vow paramvow, View paramView, int[] paramArrayOfInt, int paramInt) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class QCircleReplyMessagePresenter$6
     arrayOfInt[1] += this.jdField_a_of_type_AndroidViewView.getHeight();
     if (this.jdField_a_of_type_ArrayOfInt[1] > this.jdField_a_of_type_Int)
     {
-      vms.a(this.this$0).scrollBy(0, this.jdField_a_of_type_ArrayOfInt[1] - this.jdField_a_of_type_Int);
+      vow.a(this.this$0).scrollBy(0, this.jdField_a_of_type_ArrayOfInt[1] - this.jdField_a_of_type_Int);
       QLog.i("QCircleReplyMessagePresenter", 1, "scrollItemToVisbleAboveInputLayout  postDelayed scrollBy: " + (this.jdField_a_of_type_ArrayOfInt[1] - this.jdField_a_of_type_Int));
     }
   }

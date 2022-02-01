@@ -1,15 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import org.json.JSONObject;
 
-public class bgeg
-  implements DialogInterface.OnClickListener
+public abstract class bgeg
 {
-  public bgeg(UpgradeActivity paramUpgradeActivity) {}
+  protected JSONObject a;
+  protected boolean b = true;
+  public int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public abstract int a();
+  
+  public JSONObject a()
   {
-    this.a.finish();
+    return this.a;
+  }
+  
+  public void a(String paramString) {}
+  
+  public boolean a()
+  {
+    return this.b;
+  }
+  
+  public abstract int b();
+  
+  public String toString()
+  {
+    if (this.a != null) {
+      return this.a.toString();
+    }
+    return "";
   }
 }
 

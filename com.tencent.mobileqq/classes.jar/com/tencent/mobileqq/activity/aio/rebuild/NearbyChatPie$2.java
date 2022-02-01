@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aidf;
+import aimx;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.persistence.EntityManager;
 public class NearbyChatPie$2
   implements Runnable
 {
-  public NearbyChatPie$2(aidf paramaidf) {}
+  public NearbyChatPie$2(aimx paramaimx) {}
   
   public void run()
   {

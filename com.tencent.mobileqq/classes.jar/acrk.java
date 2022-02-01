@@ -1,37 +1,7 @@
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.gdtad.statistics.GdtReportForAntiSpam.1;
-import org.json.JSONObject;
+import kotlin.Metadata;
 
-public final class acrk
-{
-  public static void a(JSONObject paramJSONObject)
-  {
-    JSONObject localJSONObject;
-    if (paramJSONObject != null)
-    {
-      localJSONObject = paramJSONObject;
-      if (!JSONObject.NULL.equals(paramJSONObject)) {}
-    }
-    else
-    {
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("ct", System.currentTimeMillis());
-      paramJSONObject = localJSONObject.toString().getBytes();
-      AdThreadManager.INSTANCE.post(new GdtReportForAntiSpam.1(paramJSONObject), 4);
-      return;
-    }
-    catch (Throwable paramJSONObject)
-    {
-      for (;;)
-      {
-        acqy.d("GdtReportForAntiSpam", "reportAntiSpamForClick", paramJSONObject);
-      }
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/MotiveBrowsingData$Companion;", "", "()V", "EVENT_CALL_BACK_JS", "", "EVENT_COUNT_DOWN", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class acrk {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

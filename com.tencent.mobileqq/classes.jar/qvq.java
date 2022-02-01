@@ -1,6 +1,19 @@
-public abstract interface qvq
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseVideoArticleInfo;
+
+public final class qvq
+  implements Parcelable.Creator<BaseVideoArticleInfo>
 {
-  public abstract void a();
+  public BaseVideoArticleInfo a(Parcel paramParcel)
+  {
+    return new BaseVideoArticleInfo(paramParcel);
+  }
+  
+  public BaseVideoArticleInfo[] a(int paramInt)
+  {
+    return new BaseVideoArticleInfo[paramInt];
+  }
 }
 
 

@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.app.NearbyGrayTipsManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2;
+import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2.1.1;
 
 public class anqu
-  implements Comparator<MessageRecord>
+  implements Animation.AnimationListener
 {
-  public anqu(NearbyGrayTipsManager paramNearbyGrayTipsManager) {}
+  public anqu(ApolloGameViewBinder.GameListAdapter.2 param2) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramMessageRecord1.time < paramMessageRecord2.time) {
-      return 1;
-    }
-    if (paramMessageRecord1.time > paramMessageRecord2.time) {
-      return -1;
-    }
-    return 0;
+    this.a.a.setVisibility(8);
+    this.a.a.postDelayed(new ApolloGameViewBinder.GameListAdapter.2.1.1(this), 300L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

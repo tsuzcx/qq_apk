@@ -1,17 +1,13 @@
-import android.os.Bundle;
+import android.os.IInterface;
 
-public abstract class aplq
-  implements aple
+public abstract interface aplq
+  extends IInterface
 {
-  public Bundle a()
-  {
-    return new Bundle();
-  }
+  public abstract void a(int paramInt);
   
-  public String a()
-  {
-    return "QQ.GetSKey";
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

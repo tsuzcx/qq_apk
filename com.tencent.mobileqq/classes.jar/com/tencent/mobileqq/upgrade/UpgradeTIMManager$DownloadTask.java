@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.upgrade;
 
 import android.os.Handler;
-import bcst;
-import bgnt;
+import bdll;
+import bhnv;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import nkl;
-import nlf;
+import nmg;
+import nna;
 
 class UpgradeTIMManager$DownloadTask
-  implements Runnable, nkl
+  implements Runnable, nmg
 {
   int jdField_a_of_type_Int;
   String jdField_a_of_type_JavaLangString;
@@ -79,7 +79,7 @@ class UpgradeTIMManager$DownloadTask
     if (QLog.isColorLevel()) {
       QLog.d("UpgradeTIMManager", 2, "start download...");
     }
-    if (!bgnt.h(BaseApplication.getContext()))
+    if (!bhnv.h(BaseApplication.getContext()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("UpgradeTIMManager", 2, "run download, wifi not connected...");
@@ -87,7 +87,7 @@ class UpgradeTIMManager$DownloadTask
       UpgradeTIMManager.a(this.this$0);
       return;
     }
-    bcst.b(UpgradeTIMManager.a(this.this$0), "CliOper", "", "", "0X8008A47", "0X8008A47", 0, 0, "", "", "", "");
+    bdll.b(UpgradeTIMManager.a(this.this$0), "CliOper", "", "", "0X8008A47", "0X8008A47", 0, 0, "", "", "", "");
     UpgradeTIMManager.a(this.this$0).a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, this.b, this);
   }
 }

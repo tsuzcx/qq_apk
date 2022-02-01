@@ -1,25 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public final class adyi
-  implements Comparator<PhoneContact>
+public class adyi
+  implements DialogInterface.OnClickListener
 {
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public adyi(BaseChatPie paramBaseChatPie) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool1 = TextUtils.isEmpty(paramPhoneContact1.pinyinFirst);
-    boolean bool2 = TextUtils.isEmpty(paramPhoneContact2.pinyinFirst);
-    if ((bool1) || (bool2))
-    {
-      if ((bool1) && (bool2)) {
-        return 0;
-      }
-      if (bool2) {
-        return -1;
-      }
-      return 1;
-    }
-    return paramPhoneContact1.pinyinFirst.toLowerCase().charAt(0) - paramPhoneContact2.pinyinFirst.toLowerCase().charAt(0);
+    paramDialogInterface.dismiss();
   }
 }
 

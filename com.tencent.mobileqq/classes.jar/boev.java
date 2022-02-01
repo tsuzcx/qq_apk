@@ -1,34 +1,13 @@
-import android.util.SparseArray;
-import com.tencent.tavcut.session.TAVCutImageSession;
-import dov.com.qq.im.ae.view.AECompoundButton;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import java.io.File;
 
 public class boev
-  implements bogm
 {
-  public boev(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
-  
-  public void a()
-  {
-    if (AEEditorImageEditFragment.a(this.a) != null)
-    {
-      AEEditorImageEditFragment.a(this.a).put(AEEditorImageEditFragment.a(this.a), null);
-      AEEditorImageEditFragment.a(this.a).removeFrame(AEEditorImageEditFragment.a(this.a));
-    }
-    AEEditorImageEditFragment.a(this.a).setForegroundResource(2130837723);
-    bnyh.a().c(null);
-  }
-  
-  public void a(String paramString)
-  {
-    if (AEEditorImageEditFragment.a(this.a) != null)
-    {
-      AEEditorImageEditFragment.a(this.a).put(AEEditorImageEditFragment.a(this.a), paramString);
-      AEEditorImageEditFragment.a(this.a).addFrame(AEEditorImageEditFragment.a(this.a), bofw.d, paramString);
-    }
-    AEEditorImageEditFragment.a(this.a).setForegroundResource(2130837724);
-    bnyh.a().c(paramString);
-  }
+  public static final String a = bofe.a + File.separator + "camera";
+  public static final String b = bofe.a + File.separator + "sv_config_resources" + File.separator;
+  public static final String c = a + File.separator + "capture";
+  public static final String d = a + File.separator + "material_zip_download";
+  public static final String e = a + File.separator + "material_usable";
+  public static final String f = a + File.separator + "material_config";
 }
 
 

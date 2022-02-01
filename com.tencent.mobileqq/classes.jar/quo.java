@@ -1,65 +1,245 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentDivider;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class quo
-  extends qus
 {
-  public quo(Context paramContext, aobu paramaobu, snh paramsnh)
+  private static int jdField_a_of_type_Int = 0;
+  private static long jdField_a_of_type_Long;
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static List<String> jdField_a_of_type_JavaUtilList;
+  private static int jdField_b_of_type_Int = -1;
+  private static String jdField_b_of_type_JavaLangString;
+  private static int jdField_c_of_type_Int = -1;
+  private static String jdField_c_of_type_JavaLangString;
+  
+  static
   {
-    super(paramContext, paramaobu, paramsnh);
+    jdField_a_of_type_Long = -1L;
   }
   
-  public qqt g()
+  public static int a()
   {
-    this.jdField_a_of_type_Qqs = new ComponentContentGridImage(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    if (jdField_a_of_type_Int == 0) {
+      a();
+    }
+    return jdField_a_of_type_Int;
   }
   
-  public qqt o()
+  public static String a()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null)
+    return bigv.a(antf.ba + ".readInjoy/refresh_res/");
+  }
+  
+  public static String a(String paramString)
+  {
+    return bigv.a(antf.ba + ".readInjoy/refresh_res/" + paramString);
+  }
+  
+  public static List<String> a()
+  {
+    Object localObject3 = null;
+    Object localObject2;
+    if (jdField_a_of_type_JavaUtilList != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(this.jdField_a_of_type_JavaLangObject);
-      if ((this.jdField_a_of_type_JavaLangObject instanceof pxk))
+      localObject2 = jdField_a_of_type_JavaUtilList;
+      return localObject2;
+    }
+    if (jdField_a_of_type_Int == 0) {
+      a();
+    }
+    Object localObject1;
+    if ((jdField_a_of_type_Int == 1) || (jdField_a_of_type_Int == 3)) {
+      localObject1 = new File(c() + "refreshAnimatePictures" + "/");
+    }
+    for (;;)
+    {
+      localObject2 = localObject3;
+      if (localObject1 == null) {
+        break;
+      }
+      localObject2 = localObject3;
+      if (!((File)localObject1).exists()) {
+        break;
+      }
+      localObject2 = localObject3;
+      if (!((File)localObject1).isDirectory()) {
+        break;
+      }
+      localObject1 = ((File)localObject1).listFiles();
+      localObject2 = localObject3;
+      if (localObject1 == null) {
+        break;
+      }
+      localObject2 = new ArrayList();
+      int i = 0;
+      for (;;)
       {
-        pxk localpxk = (pxk)this.jdField_a_of_type_JavaLangObject;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.setReadedStatus(this.jdField_a_of_type_Snh.a(localpxk.e(), localpxk.a().mArticleID));
+        if (i < localObject1.length)
+        {
+          if (localObject1[i].getName().endsWith(".png")) {
+            ((List)localObject2).add(localObject1[i].getName());
+          }
+          i += 1;
+          continue;
+          if (jdField_a_of_type_Int != 2) {
+            break label206;
+          }
+          localObject1 = new File(c() + "refreshRandomPictures" + "/");
+          break;
+        }
       }
+      jdField_a_of_type_JavaUtilList = (List)localObject2;
+      return localObject2;
+      label206:
+      localObject1 = null;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_Qqs != null)
+  }
+  
+  public static void a()
+  {
+    JSONObject localJSONObject = null;
+    String str2 = null;
+    String str1 = str2;
+    Object localObject = localJSONObject;
+    try
     {
-      if ((this.jdField_a_of_type_Qqs instanceof ComponentContentGridImage)) {
-        ((ComponentContentGridImage)this.jdField_a_of_type_Qqs).setMIReadInJoyModel(this.jdField_a_of_type_JavaLangObject);
+      File localFile = new File(c() + "refreshConfig.json");
+      str1 = str2;
+      localObject = localJSONObject;
+      if (localFile.exists())
+      {
+        str1 = str2;
+        localObject = localJSONObject;
+        str2 = bhmi.b(localFile);
+        str1 = str2;
+        localObject = str2;
+        localJSONObject = new JSONObject(str2);
+        if (localJSONObject != null)
+        {
+          str1 = str2;
+          localObject = str2;
+          jdField_a_of_type_Int = localJSONObject.optInt("refresh_type");
+          str1 = str2;
+          localObject = str2;
+          jdField_b_of_type_JavaLangString = localJSONObject.optString("voice_path");
+          str1 = str2;
+          localObject = str2;
+          jdField_c_of_type_JavaLangString = localJSONObject.optString("rain_animate_path");
+          str1 = str2;
+          localObject = str2;
+          jdField_b_of_type_Int = localJSONObject.optInt("refresh_sub_type");
+          str1 = str2;
+          localObject = str2;
+          jdField_c_of_type_Int = localJSONObject.optInt("refresh_length_type", 0);
+        }
       }
-      this.jdField_a_of_type_Qqs.a(ComponentContentGridImage.a(((pxk)this.jdField_a_of_type_JavaLangObject).a()));
+      else
+      {
+        str1 = str2;
+        localObject = localJSONObject;
+        QLog.e("RefreshRes", 1, "parseRefreshParaJson error refreshConfig not exist ");
+        return;
+      }
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(this.jdField_a_of_type_JavaLangObject);
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
+    catch (JSONException localJSONException)
+    {
+      QLog.e("RefreshRes", 1, "parseRefreshParaJson JSONException json = " + localIOException);
+      localJSONException.printStackTrace();
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
+    catch (Exception localException)
+    {
+      QLog.e("RefreshRes", 1, localException, new Object[] { "parseRefreshParaJson error json = " + localJSONException });
+      localException.printStackTrace();
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.a(this.jdField_a_of_type_JavaLangObject);
+  }
+  
+  static void a(String paramString, long paramLong)
+  {
+    if ((!jdField_a_of_type_JavaLangString.equals(paramString)) || (jdField_a_of_type_Long != paramLong))
+    {
+      jdField_a_of_type_JavaLangString = paramString;
+      b();
     }
-    return this;
+  }
+  
+  public static boolean a()
+  {
+    if (jdField_c_of_type_Int < 0) {
+      a();
+    }
+    return jdField_c_of_type_Int > 0;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return bdxx.a(new File(a(paramString)));
+  }
+  
+  public static int b()
+  {
+    return jdField_b_of_type_Int;
+  }
+  
+  public static String b()
+  {
+    return bigv.a(antf.ba + ".readInjoy/refresh_res/" + jdField_a_of_type_JavaLangString);
+  }
+  
+  private static void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RefreshRes", 2, "clearDataAfterSetRefreshInfo()");
+    }
+    jdField_a_of_type_Int = 0;
+    jdField_b_of_type_JavaLangString = null;
+    jdField_c_of_type_JavaLangString = null;
+    jdField_a_of_type_JavaUtilList = null;
+    jdField_b_of_type_Int = -1;
+    jdField_a_of_type_Long = -1L;
+  }
+  
+  public static String c()
+  {
+    return b() + "/" + "refresh" + "/";
+  }
+  
+  public static String d()
+  {
+    return c() + "refreshGuideConfig";
+  }
+  
+  public static String e()
+  {
+    if ((TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) && (jdField_a_of_type_Int == 0)) {
+      a();
+    }
+    if (!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) {
+      return c() + jdField_b_of_type_JavaLangString;
+    }
+    return null;
+  }
+  
+  public static String f()
+  {
+    if ((TextUtils.isEmpty(jdField_c_of_type_JavaLangString)) && (jdField_a_of_type_Int == 0)) {
+      a();
+    }
+    if (!TextUtils.isEmpty(jdField_c_of_type_JavaLangString)) {
+      return c() + jdField_c_of_type_JavaLangString;
+    }
+    return null;
   }
 }
 

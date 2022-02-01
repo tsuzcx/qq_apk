@@ -1,260 +1,125 @@
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
 import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-final class zue
-  implements BusinessObserver
+public class zue<T extends RecyclerView.Adapter>
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  zue(AppActivity paramAppActivity, String paramString, QQAppInterface paramQQAppInterface, ScannerParams paramScannerParams, View paramView, zuk paramzuk) {}
+  private final T jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
+  private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private zui jdField_a_of_type_Zui;
+  private final List<View> b = new ArrayList();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public zue(T paramT)
   {
-    if (!this.jdField_a_of_type_MqqAppAppActivity.isResume()) {
-      return;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramT;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.registerAdapterDataObserver(new zuf(this));
+  }
+  
+  private boolean a(int paramInt)
+  {
+    return (paramInt >= -1000) && (paramInt < this.jdField_a_of_type_JavaUtilList.size() - 1000);
+  }
+  
+  private boolean b(int paramInt)
+  {
+    return (paramInt >= -2000) && (paramInt < this.b.size() - 2000);
+  }
+  
+  public zue a(zui paramzui)
+  {
+    this.jdField_a_of_type_Zui = paramzui;
+    return this;
+  }
+  
+  public void a(@NonNull View paramView)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramView);
+  }
+  
+  public void b(@NonNull View paramView)
+  {
+    this.b.add(paramView);
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount() + this.b.size();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+      return paramInt - 1000;
     }
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
-    Uri localUri = Uri.parse((String)localObject1);
-    Object localObject2;
-    label32:
-    int j;
-    Object localObject3;
-    zrs localzrs;
-    label172:
-    label236:
-    Bundle localBundle;
-    int i;
-    if (localUri == null)
-    {
-      localObject2 = null;
-      if (QLog.isColorLevel()) {
-        QLog.i("ScannerUtils", 2, String.format("JumpUrl requestUrlDecode authSig=%s url=%s", new Object[] { localObject2, localObject1 }));
-      }
-      j = 0;
-      if ((!paramBoolean) || (paramBundle == null)) {
-        break label878;
-      }
-      paramBundle = paramBundle.getString("result");
-      paramInt = j;
-      boolean bool;
-      try
-      {
-        localObject3 = new JSONObject(paramBundle);
-        paramInt = j;
-        if (((JSONObject)localObject3).getInt("r") != 0) {
-          break label875;
-        }
-        paramInt = j;
-        if (!((JSONObject)localObject3).has("d")) {
-          break label608;
-        }
-        paramInt = j;
-        localzrs = new zrs(((JSONObject)localObject3).getString("d"));
-        paramInt = j;
-        if (!((JSONObject)localObject3).has("wpa")) {
-          break label583;
-        }
-        paramInt = j;
-        if (!"1".equals(((JSONObject)localObject3).getString("wpa"))) {
-          break label583;
-        }
-        paramBoolean = true;
-        paramInt = j;
-        bool = ((JSONObject)localObject3).has("extvalue");
-        paramInt = j;
-        if (!((JSONObject)localObject3).has("exttype")) {
-          break label588;
-        }
-        paramInt = j;
-        if ("2".equals(((JSONObject)localObject3).getString("exttype"))) {
-          break label883;
-        }
-        paramInt = j;
-        if (!"1".equals(((JSONObject)localObject3).getString("exttype"))) {
-          break label588;
-        }
-      }
-      catch (Exception paramBundle) {}
-      paramInt = j;
-      localBundle = new Bundle();
-      if (paramBoolean)
-      {
-        paramInt = j;
-        localBundle.putBoolean("issupportwpa", paramBoolean);
-      }
-      if ((i != 0) && (bool))
-      {
-        paramInt = j;
-        paramBundle = ((JSONObject)localObject3).getString("exttype");
-        paramInt = j;
-        localObject3 = ((JSONObject)localObject3).getString("extvalue");
-        paramInt = j;
-        localBundle.putString("exttype", paramBundle);
-        paramInt = j;
-        localBundle.putString("extvalue", (String)localObject3);
-      }
-      paramInt = j;
-      localBundle.putString("authSig", (String)localObject2);
-      if (localUri != null) {
-        break label594;
-      }
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount()) {
+      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemViewType(paramInt - this.jdField_a_of_type_JavaUtilList.size());
     }
-    for (paramBundle = null;; paramBundle = localUri.getQueryParameter("jump_from"))
+    return paramInt - 2000 - this.jdField_a_of_type_JavaUtilList.size() - this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
     {
-      if (paramBundle != null)
+      if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
+        localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
+      }
+      localObject2 = localObject1;
+      if (localObject1 == null)
       {
-        paramInt = j;
-        if ("webapi".equalsIgnoreCase(paramBundle))
-        {
-          paramInt = j;
-          localBundle.putString("sourceId", "3_40002");
-        }
+        localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
+        paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
       }
-      paramInt = j;
-      i = zrw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_MqqAppAppActivity, localzrs, this.jdField_a_of_type_JavaLangString, localBundle);
-      paramInt = i;
-      if (this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.b)
-      {
-        paramInt = i;
-        this.jdField_a_of_type_MqqAppAppActivity.finish();
-      }
-      paramInt = i;
-      zuc.a(i, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      paramInt = i;
-      if (!this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e) {
-        break;
-      }
-      paramInt = i;
-      this.jdField_a_of_type_MqqAppAppActivity.finish();
-      return;
-      label458:
-      QLog.e("ScannerUtils", 1, "handle url error: " + paramBundle.getMessage());
-      label486:
-      paramBundle = bglp.a(this.jdField_a_of_type_MqqAppAppActivity, 230);
-      paramBundle.setTitle(2131715853);
-      paramBundle.setMessage((CharSequence)localObject1);
-      localObject2 = new zuf(this);
-      paramBundle.setPositiveButton(2131694081, new zug(this, (String)localObject1));
-      paramBundle.setNegativeButton(2131690582, (DialogInterface.OnClickListener)localObject2);
-      paramBundle.setOnCancelListener((DialogInterface.OnCancelListener)localObject2);
-      paramBundle.show();
-      zuc.a(paramInt, (String)localObject1, this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
-      localObject2 = localUri.getQueryParameter("authKey");
-      break label32;
-      label583:
-      paramBoolean = false;
-      break label172;
-      label588:
-      i = 0;
-      break label236;
-      label594:
-      paramInt = j;
-    }
-    label608:
-    paramInt = j;
-    if (((JSONObject)localObject3).has("a_a"))
-    {
-      paramInt = j;
-      paramBundle = ((JSONObject)localObject3).getString("a_a");
-      paramInt = j;
-      paramBundle = bgng.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_MqqAppAppActivity, paramBundle);
-      if (paramBundle != null)
-      {
-        paramInt = j;
-        paramBundle.a();
-      }
-    }
-    else
-    {
-      paramInt = j;
-      if (((JSONObject)localObject3).has("url"))
-      {
-        paramInt = j;
-        i = ((JSONObject)localObject3).getInt("url_level");
-        paramInt = j;
-        paramBundle = ((JSONObject)localObject3).getString("url");
-        paramInt = j;
-        if (TextUtils.isEmpty(paramBundle)) {
-          break label913;
-        }
-        if (i != 2) {
-          break label907;
-        }
-        paramInt = j;
-        paramBundle = Uri.parse(paramBundle).toString();
-        paramInt = i;
-      }
+      ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
     }
     for (;;)
     {
-      for (;;)
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+      return;
+      if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount())
       {
-        if (paramInt != 1)
-        {
-          localObject1 = paramBundle;
-          if (paramInt != 2) {
-            break label889;
-          }
-        }
-        try
-        {
-          localObject1 = new Intent(this.jdField_a_of_type_MqqAppAppActivity, PublicAccountBrowser.class);
-          ((Intent)localObject1).putExtra("key_isReadModeEnabled", true);
-          ((Intent)localObject1).putExtra("fromQrcode", true);
-          ((Intent)localObject1).putExtra("url", paramBundle);
-          ((Intent)localObject1).putExtra("big_brother_source_key", "biz_src_jc_sacan_qr");
-          if (this.jdField_a_of_type_MqqAppAppActivity.getIntent().getBooleanExtra("QRDecode", false) == true)
-          {
-            this.jdField_a_of_type_MqqAppAppActivity.startActivity((Intent)localObject1);
-            this.jdField_a_of_type_MqqAppAppActivity.finish();
-          }
-          for (;;)
-          {
-            zuc.a(0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-            if (!this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.b) {
-              break;
-            }
-            this.jdField_a_of_type_MqqAppAppActivity.finish();
-            return;
-            this.jdField_a_of_type_MqqAppAppActivity.startActivity((Intent)localObject1);
-          }
-          label875:
-          break label889;
-          label878:
-          paramInt = 0;
-          break label486;
-          label883:
-          i = 1;
-          break label236;
-          label889:
-          paramInt = 0;
-        }
-        catch (Exception localException)
-        {
-          paramInt = 0;
-          localObject1 = paramBundle;
-          paramBundle = localException;
-        }
+        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - this.jdField_a_of_type_JavaUtilList.size());
       }
-      break label458;
-      label907:
-      paramInt = i;
-      continue;
-      label913:
-      paramBundle = (Bundle)localObject1;
-      paramInt = 0;
+      else
+      {
+        localObject1 = localObject2;
+        if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
+          localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
+        }
+        localObject2 = localObject1;
+        if (localObject1 == null)
+        {
+          localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
+          paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        }
+        ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
+      }
     }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (a(paramInt))
+    {
+      paramInt = Math.abs(paramInt + 1000);
+      return new zug(this, (View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    }
+    if (b(paramInt))
+    {
+      paramInt = Math.abs(paramInt + 2000);
+      return new zuh(this, (View)this.b.get(paramInt));
+    }
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
   }
 }
 

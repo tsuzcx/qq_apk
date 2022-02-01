@@ -1,22 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class awtf
-  implements Comparator<View>
+class awtf
+  implements DialogInterface.OnDismissListener
 {
-  public int a(View paramView1, View paramView2)
+  awtf(awte paramawte) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
-    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
-    if (paramView1.a != paramView2.a)
-    {
-      if (paramView1.a) {
-        return 1;
-      }
-      return -1;
-    }
-    return paramView1.b - paramView2.b;
+    this.a.a.finish();
   }
 }
 

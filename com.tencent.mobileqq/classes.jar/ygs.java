@@ -1,8 +1,16 @@
-import android.view.View;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
 public abstract interface ygs
 {
-  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(CommentEntry paramCommentEntry);
+  
+  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void b(CommentEntry paramCommentEntry);
+  
+  public abstract void c(CommentEntry paramCommentEntry);
 }
 
 

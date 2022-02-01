@@ -1,20 +1,49 @@
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class adoe
-  extends anut
+class adoe
+  extends adod
 {
-  public adoe(AuthDevRenameActivity paramAuthDevRenameActivity) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
+  public adoe(admy paramadmy, long paramLong)
   {
-    AuthDevRenameActivity.a(this.a);
-    if (!paramBoolean)
-    {
-      QQToast.a(this.a, this.a.getString(2131691854), 0).b(this.a.getTitleBarHeight());
+    super(paramadmy, 3, paramLong);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onLocationFinish: errCode=" + paramInt + ", info=" + paramSosoLbsInfo + ", isActive=" + this.jdField_a_of_type_Boolean);
+    }
+    if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    this.a.finish();
+    this.jdField_a_of_type_Boolean = false;
+    if (paramInt == 0)
+    {
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("nation", paramSosoLbsInfo.a.c);
+        localJSONObject.put("province", paramSosoLbsInfo.a.d);
+        localJSONObject.put("city", paramSosoLbsInfo.a.e);
+        localJSONObject.put("district", paramSosoLbsInfo.a.g);
+        adqf.a(this.jdField_a_of_type_Admy, localJSONObject);
+        return;
+      }
+      catch (JSONException paramSosoLbsInfo)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("DoraemonOpenAPI.sensor", 2, paramSosoLbsInfo.getMessage(), paramSosoLbsInfo);
+          }
+        }
+      }
+    }
+    adqf.a(this.jdField_a_of_type_Admy, paramInt, "error " + paramInt);
   }
 }
 

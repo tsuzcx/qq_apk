@@ -1,40 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-final class bfuq
-  implements bgcd
+class bfuq
+  implements bfuu
 {
-  bfuq(TroopInfoData paramTroopInfoData) {}
+  bfuq(bfuo parambfuo, bful parambful) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(long paramLong, HashMap<bful, bfum> paramHashMap)
   {
-    String str1;
-    if (this.a.isMember)
-    {
-      str1 = "";
-      switch (paramInt)
-      {
-      }
-    }
-    while (TextUtils.isEmpty(str1))
+    if (paramHashMap == null) {}
+    do
     {
       return;
-      str1 = "share_circle";
-      continue;
-      str1 = "share_qq";
-      continue;
-      str1 = "share_qzone";
-      continue;
-      str1 = "share_wechat";
+      paramHashMap = (bfum)paramHashMap.get(this.jdField_a_of_type_Bful);
+    } while ((paramHashMap == null) || (paramHashMap.a != 1));
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopEssenceMsgManager", 2, "isEssenceMsg refreshAio key:" + paramLong);
     }
-    String str3 = this.a.troopUin;
-    String str4 = bgjt.a(this.a);
-    if (paramBoolean) {}
-    for (String str2 = "0";; str2 = "1")
-    {
-      bgjt.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, str4, str2 });
-      return;
-    }
+    bfuo.a(this.jdField_a_of_type_Bfuo, paramLong);
   }
 }
 

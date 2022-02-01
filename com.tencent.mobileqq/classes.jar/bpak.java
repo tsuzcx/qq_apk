@@ -1,18 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import android.util.LruCache;
+import android.view.View;
+import androidx.annotation.NonNull;
 
 public final class bpak
-  implements Parcelable.Creator<EditLocalVideoSource>
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
+  private static final LruCache<String, Long> a = new LruCache(10);
+  
+  public static boolean a(View paramView)
   {
-    return new EditLocalVideoSource(paramParcel);
+    Object localObject = paramView.getTag(2131362284);
+    long l = System.currentTimeMillis();
+    paramView.setTag(2131362284, Long.valueOf(l));
+    return ((localObject instanceof Long)) && (Math.abs(l - ((Long)localObject).longValue()) <= 500L);
   }
   
-  public EditLocalVideoSource[] a(int paramInt)
+  public static boolean a(@NonNull String paramString)
   {
-    return new EditLocalVideoSource[paramInt];
+    Long localLong1 = (Long)a.get(paramString);
+    Long localLong2 = Long.valueOf(System.currentTimeMillis());
+    if (localLong1 == null)
+    {
+      a.put(paramString, localLong2);
+      return false;
+    }
+    if (Math.abs(localLong2.longValue() - localLong1.longValue()) >= 500L)
+    {
+      a.put(paramString, localLong2);
+      return false;
+    }
+    return true;
   }
 }
 

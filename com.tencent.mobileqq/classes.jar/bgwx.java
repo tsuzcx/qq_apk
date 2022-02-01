@@ -1,22 +1,13 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 
-class bgwx
-  extends arvd
+public class bgwx
 {
-  bgwx(bgwv parambgwv) {}
+  akps jdField_a_of_type_Akps;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNick", 2, "emotion onJsonComplete id = " + paramEmoticonPackage.epId + " resultCode = " + paramInt);
-    }
-    if (this.a.a != null) {
-      this.a.a.sendEmptyMessage(257);
-    }
-  }
+  protected bgwx(bgwv parambgwv) {}
 }
 
 

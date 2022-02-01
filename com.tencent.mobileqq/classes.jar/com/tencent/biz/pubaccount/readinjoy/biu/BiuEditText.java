@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import tfp;
-import tfq;
+import swi;
+import swj;
 
 public class BiuEditText
   extends EditText
@@ -25,7 +25,7 @@ public class BiuEditText
   
   private void a()
   {
-    addTextChangedListener(new tfq());
+    addTextChangedListener(new swj());
   }
   
   public boolean onPrivateIMECommand(String paramString, Bundle paramBundle)
@@ -44,16 +44,16 @@ public class BiuEditText
     {
       return;
       Editable localEditable = getEditableText();
-      tfp[] arrayOftfp = (tfp[])localEditable.getSpans(paramInt1, paramInt2, tfp.class);
-      if ((arrayOftfp != null) && (arrayOftfp.length > 0))
+      swi[] arrayOfswi = (swi[])localEditable.getSpans(paramInt1, paramInt2, swi.class);
+      if ((arrayOfswi != null) && (arrayOfswi.length > 0))
       {
-        int i = arrayOftfp.length;
+        int i = arrayOfswi.length;
         paramInt2 = 0;
         while (paramInt2 < i)
         {
-          tfp localtfp = arrayOftfp[paramInt2];
-          int j = localEditable.getSpanStart(localtfp);
-          int k = localEditable.getSpanEnd(localtfp);
+          swi localswi = arrayOfswi[paramInt2];
+          int j = localEditable.getSpanStart(localswi);
+          int k = localEditable.getSpanEnd(localswi);
           if ((j >= 0) && (k >= j) && (paramInt1 > j) && (paramInt1 < k))
           {
             setSelection(k);

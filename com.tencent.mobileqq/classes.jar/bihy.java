@@ -1,10 +1,16 @@
-public abstract interface bihy
+public class bihy
 {
-  public abstract bihz getCodec(String paramString);
+  public boolean a;
   
-  public abstract int send(Object paramObject);
+  public bihy()
+  {
+    this.a = false;
+  }
   
-  public abstract void setNetTransportEventListener(String paramString, biia parambiia);
+  public bihy(boolean paramBoolean)
+  {
+    this.a = paramBoolean;
+  }
 }
 
 

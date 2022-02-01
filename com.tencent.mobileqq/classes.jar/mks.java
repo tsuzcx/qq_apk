@@ -1,22 +1,26 @@
-import com.tencent.av.ui.VideoLayerUI;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 public class mks
-  implements lcb
+  implements DialogInterface.OnClickListener
 {
-  public mks(VideoLayerUI paramVideoLayerUI, int paramInt, boolean paramBoolean) {}
+  public mks(VideoInviteActivity paramVideoInviteActivity, long paramLong, boolean paramBoolean) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMdt != null) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMdt.length > this.jdField_a_of_type_Int))
-    {
-      mqn.a("switch_camera", "onSwitchCameraFirstFrame", 3, new Object[0]);
-      VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMdt[this.jdField_a_of_type_Int], this.jdField_a_of_type_Boolean);
-    }
-    while (!QLog.isColorLevel()) {
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isFinishing()) {}
+    while ((Build.VERSION.SDK_INT >= 17) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isDestroyed())) {
       return;
     }
-    QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onSwitchCameraFirstFrame Error : Index = " + this.jdField_a_of_type_Int);
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c(this.jdField_a_of_type_Long);
+      return;
+    }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity, this.jdField_a_of_type_Boolean, new mkt(this));
   }
 }
 

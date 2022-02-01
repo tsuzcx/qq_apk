@@ -1,16 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
 public class aiqs
-  implements bkhw
+  extends BroadcastReceiver
 {
-  public aiqs(TroopAIOEmotionFragment paramTroopAIOEmotionFragment, bkho parambkho) {}
+  public aiqs(TroopChatPie paramTroopChatPie) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOEmotionFragment.b();
-    if (this.jdField_a_of_type_Bkho.isShowing()) {
-      this.jdField_a_of_type_Bkho.dismiss();
+    if ("com.tencent.mobileqq.action.ACTION_CONFESS_START_EVENT".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "Confess action! ");
+      }
+      if (TroopChatPie.a(this.a) != null)
+      {
+        TroopChatPie.b(this.a).a(35);
+        aqzo.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+      }
     }
   }
 }

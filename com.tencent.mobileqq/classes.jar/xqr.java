@@ -1,21 +1,136 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupAdapter;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import java.util.List;
+import java.util.Map;
 
-public class xqr
-  implements TVK_IMediaPlayer.OnCompletionListener
+class xqr
+  implements xpy
 {
-  xqr(xqp paramxqp) {}
+  private xqr(xqp paramxqp) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a(int paramInt1, int paramInt2)
   {
-    xqp.a(this.a).d = paramTVK_IMediaPlayer.getDuration();
-    xqp.a(this.a).e = paramTVK_IMediaPlayer.getCurrentPostion();
-    paramTVK_IMediaPlayer = this.a.a;
-    if (paramTVK_IMediaPlayer != null) {
-      ThreadManager.getUIHandler().post(new VideoViewTVKImpl.2.1(this, paramTVK_IMediaPlayer));
+    StoryPlayerGroupHolder localStoryPlayerGroupHolder = this.a.a(paramInt1);
+    if (localStoryPlayerGroupHolder == null) {
+      yuk.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, find vertical holder is null");
+    }
+    do
+    {
+      return;
+      if (xqp.a(this.a) == null)
+      {
+        yuk.d("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, mCurrentSelectedGroupId is null");
+        return;
+      }
+      yuk.a("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, verticalPosition=%d, currentGroup=%s, onSelectedGroup=%s", Integer.valueOf(paramInt1), xqp.a(this.a), localStoryPlayerGroupHolder.jdField_a_of_type_Xms);
+    } while ((xqp.a(this.a) != localStoryPlayerGroupHolder.jdField_a_of_type_Xms) && (!xqp.a(this.a).equals(localStoryPlayerGroupHolder.jdField_a_of_type_Xms)));
+    Object localObject = localStoryPlayerGroupHolder.a();
+    if ((localObject instanceof xrh))
+    {
+      localObject = (VideoViewVideoHolder)((xrh)localObject).b(VideoViewVideoHolder.class);
+      if (localObject != null)
+      {
+        if (paramInt2 != 1) {
+          break label168;
+        }
+        yuk.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, pause because of dragging");
+        ((VideoViewVideoHolder)localObject).e();
+      }
+    }
+    label143:
+    while (xqp.a(this.a) != null)
+    {
+      xqp.a(this.a).a(paramInt1, paramInt2);
+      return;
+      label168:
+      if (paramInt2 == 0)
+      {
+        if ((!localStoryPlayerGroupHolder.d()) || (!localStoryPlayerGroupHolder.c())) {
+          break label229;
+        }
+        yuk.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, no need start");
+      }
+    }
+    for (;;)
+    {
+      yup.a("play_video", "slide_up_down", 0, 0, new String[] { "2", "", "", "" });
+      break label143;
+      break;
+      label229:
+      yuk.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, start because of idle");
+      ((VideoViewVideoHolder)localObject).d();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3)
+  {
+    StoryPlayerGroupHolder localStoryPlayerGroupHolder = this.a.a(paramInt1);
+    if (localStoryPlayerGroupHolder == null) {
+      yuk.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrolled, Video, find vertical holder is null");
+    }
+    do
+    {
+      return;
+      if (xqp.a(this.a) == null)
+      {
+        yuk.d("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrolled, Video, mCurrentSelectedGroupId is null");
+        return;
+      }
+    } while (((xqp.a(this.a) != localStoryPlayerGroupHolder.jdField_a_of_type_Xms) && (!xqp.a(this.a).equals(localStoryPlayerGroupHolder.jdField_a_of_type_Xms))) || (xqp.a(this.a) == null));
+    xqp.a(this.a).a(paramInt1, paramInt2, paramFloat, paramInt3);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    StoryPlayerGroupHolder localStoryPlayerGroupHolder = (StoryPlayerGroupHolder)xqp.a(this.a).a.get(Integer.valueOf(paramInt1));
+    if (localStoryPlayerGroupHolder == null) {
+      yuk.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Video, find vertical holder is null");
+    }
+    do
+    {
+      return;
+      if (xqp.a(this.a) == null)
+      {
+        yuk.d("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Video, mCurrentSelectedGroupId is null");
+        return;
+      }
+      yuk.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Video, verticalPosition=%d, oldHorizontalPosition=%d, horizontalPosition=%d, currentGroup=%s, onSelectedGroup=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), xqp.a(this.a), localStoryPlayerGroupHolder.jdField_a_of_type_Xms });
+    } while ((xqp.a(this.a) != localStoryPlayerGroupHolder.jdField_a_of_type_Xms) && (!xqp.a(this.a).equals(localStoryPlayerGroupHolder.jdField_a_of_type_Xms)));
+    boolean bool1;
+    if (localStoryPlayerGroupHolder.a(paramInt3) != null)
+    {
+      if (xqp.a(this.a) != null) {
+        xqp.a(this.a).a(paramInt1, paramInt2, paramInt3);
+      }
+      if (localStoryPlayerGroupHolder.b != localStoryPlayerGroupHolder.jdField_a_of_type_JavaUtilList.size() - 1) {
+        break label257;
+      }
+      bool1 = true;
+      label195:
+      if (localStoryPlayerGroupHolder.b != 0) {
+        break label263;
+      }
+    }
+    label257:
+    label263:
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      boolean bool3 = bool1;
+      if (bool1)
+      {
+        bool3 = bool1;
+        if (localStoryPlayerGroupHolder.d()) {
+          bool3 = false;
+        }
+      }
+      this.a.a.setEnableScrollDirection(bool3, bool2, true, true);
+      return;
+      yuk.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Video, getPageHolderOfPosition return null. onSelected true failed");
+      break;
+      bool1 = false;
+      break label195;
     }
   }
 }

@@ -1,67 +1,63 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 public class ter
-  implements teq
+  implements rgw
 {
-  private File jdField_a_of_type_JavaIoFile;
-  private String jdField_a_of_type_JavaLangString;
-  private tep jdField_a_of_type_Tep;
+  public ter(BridgeModule paramBridgeModule, String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString2) {}
   
-  public ter(Context paramContext, String paramString1, String paramString2)
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      throw new IllegalArgumentException("" + paramString1 + " : " + paramString2);
-    }
-    this.jdField_a_of_type_Tep = new tep(paramContext, paramString2);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaIoFile = new File(paramString1);
-  }
-  
-  public InputStream a(String paramString)
-  {
-    Object localObject = new File(this.jdField_a_of_type_JavaLangString + "/" + paramString);
-    if (((File)localObject).exists()) {
-      try
-      {
-        localObject = new FileInputStream((File)localObject);
-        return localObject;
-      }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        QLog.e("ReadMergeFile", 2, "getFile:" + paramString, localFileNotFoundException);
-      }
-    }
-    InputStream localInputStream = this.jdField_a_of_type_Tep.a(paramString);
-    QLog.d("TemplateFactory", 1, "使用兜底 file: " + paramString);
-    return localInputStream;
-  }
-  
-  public List<String> a()
-  {
-    Object localObject2 = this.jdField_a_of_type_Tep.a();
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new ArrayList();
-    }
-    localObject2 = this.jdField_a_of_type_JavaIoFile.list();
-    if (localObject2 != null)
+    Object localObject = paramList.iterator();
+    UgcVideo localUgcVideo;
+    do
     {
-      int j = localObject2.length;
-      int i = 0;
-      while (i < j)
-      {
-        ((List)localObject1).add(localObject2[i]);
-        i += 1;
+      if (!((Iterator)localObject).hasNext()) {
+        break;
       }
+      localUgcVideo = (UgcVideo)((Iterator)localObject).next();
+    } while (!TextUtils.equals(localUgcVideo.seqId, this.jdField_a_of_type_JavaLangString));
+    for (;;)
+    {
+      if (localUgcVideo != null)
+      {
+        localObject = rab.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, localUgcVideo.publicType).a();
+        if (localUgcVideo.status == UgcVideo.STATUS_PAUSE) {
+          ocd.a("0X800AC62", (String)localObject);
+        }
+        while ((bhnv.b(BaseApplicationImpl.getContext())) && (BaseActivity.sTopActivity != null))
+        {
+          long l = rab.a(localUgcVideo);
+          if (l > 0L)
+          {
+            rab.a(BaseActivity.sTopActivity, l, new tes(this, localUgcVideo, paramList), null);
+            return;
+            if (localUgcVideo.status == UgcVideo.STATUS_FAILED) {
+              ocd.a("0X800AC63", (String)localObject);
+            }
+          }
+          else
+          {
+            rgo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localUgcVideo, true);
+            BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, 0, "");
+            return;
+          }
+        }
+        rgo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localUgcVideo, true);
+        BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, 0, "");
+        return;
+      }
+      BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, -1, "ugcVideo not exist");
+      return;
+      localUgcVideo = null;
     }
-    return localObject1;
   }
 }
 

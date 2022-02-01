@@ -1,69 +1,63 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetPOIList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetPOIList;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class wcp
-  extends wlf<wcq>
 {
-  private static final String jdField_a_of_type_JavaLangString = wjz.a("StorySvc.batch_get_poi_list");
-  private List<wdq> jdField_a_of_type_JavaUtilList;
+  private int jdField_a_of_type_Int;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private View jdField_a_of_type_AndroidViewView;
+  private List<Long> jdField_a_of_type_JavaUtilList;
+  private wcr jdField_a_of_type_Wcr;
+  private wcs jdField_a_of_type_Wcs;
   
-  public int a()
+  public void a(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public wcq a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspBatchGetPOIList localRspBatchGetPOIList = new qqstory_service.RspBatchGetPOIList();
-    try
+    if (paramView != null)
     {
-      localRspBatchGetPOIList.mergeFrom(paramArrayOfByte);
-      return new wcq(localRspBatchGetPOIList);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131374082));
+      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131381120);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
+      paramView = new LinearLayoutManager(paramView.getContext());
+      paramView.setOrientation(0);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
+      this.jdField_a_of_type_Wcs = new wcs(this, null);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Wcs);
+      this.jdField_a_of_type_Int = paramInt;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+  }
+  
+  public void a(Object paramObject)
+  {
+    if ((paramObject instanceof ArrayList))
     {
-      paramArrayOfByte.printStackTrace();
+      this.jdField_a_of_type_JavaUtilList = ((ArrayList)paramObject);
+      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
+        break label69;
+      }
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+      if (this.jdField_a_of_type_Wcs != null) {
+        this.jdField_a_of_type_Wcs.a(this.jdField_a_of_type_JavaUtilList);
+      }
     }
-    return null;
+    label69:
+    do
+    {
+      return;
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
+    } while (this.jdField_a_of_type_AndroidViewView == null);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
   
-  public void a(@NonNull List<wdq> paramList)
+  public void a(wcr paramwcr)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  protected byte[] a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      throw new QQStoryCmdHandler.IllegalUinException("req gps list is null");
-    }
-    if ((QLog.isDebugVersion()) && (this.jdField_a_of_type_JavaUtilList.size() > 100)) {
-      throw new QQStoryCmdHandler.IllegalUinException("over LIMIT_MX data to send LIMIT_MX=100");
-    }
-    qqstory_service.ReqBatchGetPOIList localReqBatchGetPOIList = new qqstory_service.ReqBatchGetPOIList();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(((wdq)localIterator.next()).a());
-    }
-    localReqBatchGetPOIList.gps.addAll(localArrayList);
-    return localReqBatchGetPOIList.toByteArray();
+    this.jdField_a_of_type_Wcr = paramwcr;
   }
 }
 

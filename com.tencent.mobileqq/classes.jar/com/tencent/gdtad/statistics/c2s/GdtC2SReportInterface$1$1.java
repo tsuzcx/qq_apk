@@ -1,29 +1,29 @@
 package com.tencent.gdtad.statistics.c2s;
 
-import acrn;
-import acro;
-import bcst;
+import acvr;
+import acvs;
+import bdll;
 
 public class GdtC2SReportInterface$1$1
   implements Runnable
 {
-  public GdtC2SReportInterface$1$1(acro paramacro) {}
+  public GdtC2SReportInterface$1$1(acvs paramacvs) {}
   
   public void run()
   {
-    bcst.a(null, "dc00898", "", "", "0X8009EBE", "0X8009EBE", this.a.a.a, 0, "", "", acrn.a(this.a.a), "");
+    bdll.a(null, "dc00898", "", "", "0X8009EBE", "0X8009EBE", this.a.a.a, 0, "", "", acvr.a(this.a.a), "");
     switch (this.a.a.a)
     {
     default: 
       return;
     case 0: 
-      acrn.a(this.a.a, acrn.a(this.a.a));
+      acvr.a(this.a.a, acvr.a(this.a.a));
       return;
     case 1: 
-      acrn.a(this.a.a, acrn.b(this.a.a));
+      acvr.a(this.a.a, acvr.b(this.a.a));
       return;
     }
-    acrn.a(this.a.a, acrn.c(this.a.a));
+    acvr.a(this.a.a, acvr.c(this.a.a));
   }
 }
 

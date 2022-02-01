@@ -1,12 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class avdk
-  implements DialogInterface.OnClickListener
+public abstract interface avdk
 {
-  avdk(avdh paramavdh) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a();
 }
 
 

@@ -1,37 +1,22 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
 public class bfde
-  implements TextWatcher
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bfde(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  public bfde(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramEditable.length() == 0)
-    {
-      this.a.e();
-      this.a.a(false);
-      return;
-    }
-    this.a.jdField_a_of_type_Bfdn.a();
-    this.a.jdField_a_of_type_Bfdn.notifyDataSetChanged();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.a.a(false);
-    this.a.b = 0;
-    this.a.a(true);
-    paramEditable = paramEditable.toString();
-    this.a.b(paramEditable);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.setAlpha(f);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfde
  * JD-Core Version:    0.7.0.1
  */

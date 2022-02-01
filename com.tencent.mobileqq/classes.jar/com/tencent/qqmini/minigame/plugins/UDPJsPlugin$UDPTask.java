@@ -3,6 +3,7 @@ package com.tencent.qqmini.minigame.plugins;
 import com.tencent.qqmini.sdk.core.utils.NativeBuffer;
 import com.tencent.qqmini.sdk.core.utils.thread.NioSelectorThread;
 import com.tencent.qqmini.sdk.core.utils.thread.NioSelectorThread.NioHandler;
+import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.Inet4Address;
@@ -20,12 +21,14 @@ class UDPJsPlugin$UDPTask
   implements NioSelectorThread.NioHandler
 {
   private final DatagramChannel channel;
+  private final IJsService jsService;
   private final ByteBuffer receiveBuffer;
   private final byte[] receiveByteArray;
   final int taskId;
   
-  UDPJsPlugin$UDPTask(UDPJsPlugin paramUDPJsPlugin)
+  UDPJsPlugin$UDPTask(UDPJsPlugin paramUDPJsPlugin, IJsService paramIJsService)
   {
+    this.jsService = paramIJsService;
     try
     {
       this.taskId = UDPJsPlugin.access$000().getAndIncrement();
@@ -134,7 +137,7 @@ class UDPJsPlugin$UDPTask
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("udpTaskId", this.taskId);
       localJSONObject.put("event", "message");
-      NativeBuffer.packNativeBuffer(UDPJsPlugin.access$400(this.this$0), paramArrayOfByte, 0, paramInt, NativeBuffer.TYPE_BUFFER_NATIVE, "message", localJSONObject);
+      NativeBuffer.packNativeBuffer(this.jsService, paramArrayOfByte, 0, paramInt, NativeBuffer.TYPE_BUFFER_NATIVE, "message", localJSONObject);
       paramArrayOfByte = new JSONObject();
       InetAddress localInetAddress;
       if ((paramSocketAddress instanceof InetSocketAddress))
@@ -142,7 +145,7 @@ class UDPJsPlugin$UDPTask
         paramSocketAddress = (InetSocketAddress)paramSocketAddress;
         localInetAddress = paramSocketAddress.getAddress();
         if (!(localInetAddress instanceof Inet4Address)) {
-          break label149;
+          break label146;
         }
         paramArrayOfByte.put("family", "IPv4");
       }
@@ -152,9 +155,9 @@ class UDPJsPlugin$UDPTask
         paramArrayOfByte.put("port", paramSocketAddress.getPort());
         paramArrayOfByte.put("size", paramInt);
         localJSONObject.put("remoteInfo", paramArrayOfByte);
-        UDPJsPlugin.access$500(this.this$0, "onUDPTaskEventCallback", localJSONObject.toString());
+        UDPJsPlugin.access$400(this.this$0, "onUDPTaskEventCallback", localJSONObject.toString());
         return;
-        label149:
+        label146:
         paramArrayOfByte.put("family", "IPv6");
       }
       return;

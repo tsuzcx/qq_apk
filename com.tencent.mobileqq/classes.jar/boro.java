@@ -1,37 +1,47 @@
-import android.graphics.Canvas;
-import android.graphics.RectF;
-import android.text.TextPaint;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.app.MobileQQ;
 
 public class boro
-  extends bopy
+  extends QIPCModule
 {
-  protected float a;
-  protected String a;
-  
-  public boro(int paramInt1, int paramInt2, TextPaint paramTextPaint, String paramString, RectF paramRectF, float paramFloat)
+  private boro()
   {
-    super(paramInt1, paramInt2, paramTextPaint, paramRectF);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
+    super("AECameraLaunchServer");
   }
   
-  public void a(Canvas paramCanvas, int paramInt1, int paramInt2)
+  public static boro a()
   {
-    if (paramCanvas == null) {
-      return;
+    return borq.a();
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    QLog.d("AECameraLaunchServer", 1, "in launch ae camera onCall.");
+    if (MobileQQ.sMobileQQ != null)
+    {
+      if (Build.VERSION.SDK_INT < 21)
+      {
+        QQToast.a(MobileQQ.sMobileQQ, MobileQQ.sMobileQQ.getResources().getString(2131716429), 1).a();
+        return null;
+      }
+      paramInt = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", born.a.a());
+      if (paramInt == born.a.a()) {
+        paramBundle.putInt("VIDEO_STORY_JUMP_TO_TYPE", 1);
+      }
+      paramBundle.putInt("AECAMERA_MODE", 200);
+      paramBundle.putInt("VIDEO_STORY_FROM_TYPE", paramInt);
+      paramBundle.putString("KEY_CURRENT_SELECT_ID", paramBundle.getString("widgetid"));
+      borr.a(MobileQQ.sMobileQQ, paramBundle);
+      return null;
     }
-    String str = this.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_JavaLangString.length();
-    float f1 = paramInt1;
-    float f2 = this.jdField_a_of_type_AndroidGraphicsRectF.left;
-    float f3 = paramInt2;
-    float f4 = this.jdField_a_of_type_Float;
-    paramCanvas.drawText(str, 0, i, f2 + f1, this.jdField_a_of_type_AndroidGraphicsRectF.top + (f3 + f4), this.jdField_a_of_type_AndroidTextTextPaint);
-  }
-  
-  public void a(Canvas paramCanvas, bopw parambopw, int paramInt1, int paramInt2)
-  {
-    parambopw.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRectF, paramInt1, paramInt2);
+    QLog.e("AECameraLaunchServer", 1, "no mobile qq.");
+    return null;
   }
 }
 

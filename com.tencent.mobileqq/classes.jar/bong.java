@@ -1,8 +1,17 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bong
+class bong
+  implements View.OnClickListener
 {
-  public abstract void a(MusicItemInfo paramMusicItemInfo);
+  bong(bonf parambonf) {}
+  
+  public void onClick(View paramView)
+  {
+    bonf.a(this.a).a(655364, new Object[] { "热门玩法", "vt_pag_jiaopiangushi" });
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,12 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
 
-class awca
-  implements View.OnClickListener
+public class awca
+  extends anyu
 {
-  awca(awbw paramawbw) {}
+  public awca(ShareToQQActivity paramShareToQQActivity) {}
   
-  public void onClick(View paramView) {}
+  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  {
+    if ((paramLong != 0L) && (this.a.a != null) && (this.a.a.equals(paramLong + "")))
+    {
+      paramString = new Intent();
+      paramString.putExtra("isSuccess", paramBoolean2);
+      paramString.putExtra("isCancelShield", false);
+      this.a.setResult(-1, paramString);
+    }
+    this.a.finish();
+  }
 }
 
 

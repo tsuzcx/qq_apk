@@ -15,7 +15,7 @@ class PageWebview$5
   {
     try
     {
-      String str = StorageUtil.getPreference().getString("version", "1.17.0.00206");
+      String str = StorageUtil.getPreference().getString("version", "1.18.0.00132");
       MiniAppRealTimeLogReporter.getInstance().flush(this.this$0.mRouteUrl, this.this$0.pageWebviewId, str, this.this$0.appBrandRuntime.appId);
       return;
     }

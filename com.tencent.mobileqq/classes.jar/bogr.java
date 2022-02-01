@@ -1,24 +1,32 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.aeeditor.module.music.AEEditorLyricPanelDialog.3.1;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bogr
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  bogr(bogo parambogo) {}
+  int jdField_a_of_type_Int;
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public bogr(bogn parambogn) {}
+  
+  public void a(int paramInt)
   {
-    bogo.a(this.a, false);
-    bogo.a(this.a).post(new AEEditorLyricPanelDialog.3.1(this));
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(CheckBox paramCheckBox)
   {
-    bogo.a(this.a, true);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = paramCheckBox;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Bogn.a.a != null) {
+      this.jdField_a_of_type_Bogn.a.a.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetCheckBox);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

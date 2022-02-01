@@ -1,37 +1,31 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bhpw
-  implements aaob
+  implements View.OnClickListener
 {
-  bhpw(bhpv parambhpv) {}
+  int jdField_a_of_type_Int;
   
-  public void callback(Bundle paramBundle)
+  public bhpw(bhpr parambhpr, int paramInt)
   {
-    boolean bool;
-    if (paramBundle.getInt("type") == 73)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Bhpr.a != null)
     {
-      bool = paramBundle.getBoolean("isSuccess");
-      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.isDestroyed)) {}
+      this.jdField_a_of_type_Bhpr.a.onClick(this.jdField_a_of_type_Bhpr, this.jdField_a_of_type_Bhpr.a(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_Bhpr.dismiss();
     }
-    else
-    {
-      return;
-    }
-    if (Boolean.valueOf(bool).booleanValue())
-    {
-      QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131718680, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131718677, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getTitleBarHeight());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhpw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,12 @@
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Comparator;
-
-public class bilm
-  implements Comparator<Friend>
+public abstract interface bilm
 {
-  public bilm(FriendChooser paramFriendChooser) {}
+  public abstract int getRenderHeight();
   
-  public int a(Friend paramFriend1, Friend paramFriend2)
-  {
-    return paramFriend1.g.compareToIgnoreCase(paramFriend2.g);
-  }
+  public abstract int getRenderWidth();
+  
+  public abstract void onDrawBegin();
+  
+  public abstract void onSetRenderer(biln parambiln);
 }
 
 

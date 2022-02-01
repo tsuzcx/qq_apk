@@ -1,28 +1,31 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-public class bolq
-  extends QQUIEventReceiver<boln, wii>
+class bolq
+  implements Animation.AnimationListener
 {
-  boolean a = false;
+  bolq(boll paramboll, int paramInt) {}
   
-  public bolq(@NonNull boln paramboln)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramboln);
-  }
-  
-  public void a(@NonNull boln paramboln, @NonNull wii paramwii)
-  {
-    if (!this.a)
+    if ((this.jdField_a_of_type_Boll.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView != null) && (!boll.a(this.jdField_a_of_type_Boll)))
     {
-      paramboln.b();
-      this.a = true;
+      this.jdField_a_of_type_Boll.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView.setAlpha(1.0F);
+      this.jdField_a_of_type_Boll.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView.setVisibility(4);
+    }
+    if (boll.b(this.jdField_a_of_type_Boll) != null)
+    {
+      boll.c(this.jdField_a_of_type_Boll).a(this.jdField_a_of_type_Int, new Object[0]);
+      boll.d(this.jdField_a_of_type_Boll).a(196612, new Object[0]);
     }
   }
   
-  public Class acceptEventClass()
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return wii.class;
+    this.jdField_a_of_type_Boll.jdField_a_of_type_Bofh.a().a(true, 150);
   }
 }
 

@@ -1,27 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.BaseVMPeakActivity;
+import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.1.1;
+import java.util.List;
 
-final class botx
-  implements ValueAnimator.AnimatorUpdateListener
+public class botx
+  implements bovq
 {
-  float jdField_a_of_type_Float = 1.0F;
-  final View jdField_a_of_type_AndroidViewView;
+  botx(botw parambotw) {}
   
-  botx(View paramView)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_Float = f;
-    this.jdField_a_of_type_AndroidViewView.invalidate();
-    if (QLog.isColorLevel()) {
-      QLog.d("PressScaleAnimDelegate ", 2, "do scale animtion, scale=" + f);
+    if (paramInt == 0) {
+      botw.a(this.a, paramString);
     }
+    ((bosw)botw.a(this.a).get(paramInt)).c = paramString;
+    ((bosw)botw.a(this.a).get(paramInt)).a = 13;
+    botw.a(this.a).runOnUiThread(new AEGIFChunkPreviewFragment.1.1(this, paramInt));
   }
 }
 

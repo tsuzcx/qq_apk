@@ -1,50 +1,71 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import java.util.ArrayList;
 
 public class bdpt
 {
-  public static final String a = String.valueOf(153);
-  public static final String b = String.valueOf(153);
-  
-  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5, String paramString6)
+  public static AbsStructMsg a(ArrayList<String> paramArrayList)
   {
-    if (paramInt2 < 0) {
-      paramInt2 = bgnt.a(null);
+    if (paramArrayList != null) {}
+    for (int i = paramArrayList.size(); i <= 0; i = 0) {
+      return null;
+    }
+    StructMsgForGeneralShare localStructMsgForGeneralShare = new StructMsgForGeneralShare();
+    localStructMsgForGeneralShare.setFlag(1);
+    localStructMsgForGeneralShare.mMsgTemplateID = 1;
+    localStructMsgForGeneralShare.mMsgServiceID = 19;
+    localStructMsgForGeneralShare.mMsgBrief = anzj.a(2131713420);
+    localStructMsgForGeneralShare.mMsgAction = "plugin";
+    localStructMsgForGeneralShare.mMsgActionData = "mqqapi://qzone/to_publish_queue";
+    localStructMsgForGeneralShare.mMsg_A_ActionData = "";
+    localStructMsgForGeneralShare.mMsg_I_ActionData = "";
+    localStructMsgForGeneralShare.mMsgUrl = "";
+    if (i == 1)
+    {
+      localbdom1 = bdov.a(2);
+      localbdom1.a(new bdqo((String)paramArrayList.get(0)));
+      localbdom1.a(new StructMsgItemTitle(""));
+      localbdom1.a(new bdtj(anzj.a(2131713410)));
+      paramArrayList = bdov.a(0);
+      paramArrayList.a(new bdth(0));
+      localStructMsgForGeneralShare.addItem(localbdom1);
+      localStructMsgForGeneralShare.addItem(paramArrayList);
+      return localStructMsgForGeneralShare;
+    }
+    bdom localbdom1 = bdov.a(3);
+    if (i == 2)
+    {
+      localbdom1.a(new bdqo((String)paramArrayList.get(0)));
+      localbdom1.a(new bdqo((String)paramArrayList.get(1)));
     }
     for (;;)
     {
-      int i = paramInt2;
-      if (paramInt2 <= 0) {
-        i = 10;
-      }
-      paramAppRuntime = paramString4;
-      try
-      {
-        if (TextUtils.isEmpty(paramString4)) {
-          paramAppRuntime = "1";
-        }
-        VasWebviewUtil.reportVasStatus(paramString1, paramString2, paramString3, i, paramInt1, paramInt3, Integer.parseInt(paramAppRuntime), paramString5, "");
-        if ((QLog.isColorLevel()) && (paramInt3 < 0))
-        {
-          paramString4 = new StringBuilder();
-          paramString4.append(paramString1).append("|step:");
-          paramString4.append(paramInt1).append("|from:");
-          paramString4.append(paramString2).append("|resultCode:");
-          paramString4.append(paramInt3).append("|id:");
-          paramString4.append(paramString3).append("|version:");
-          paramString4.append(paramAppRuntime);
-          QLog.i("ThemeReporter", 2, "ThemeReporterreportTheme Error data::" + paramString4.toString());
-        }
-        return;
-      }
-      catch (Exception paramAppRuntime)
-      {
-        QLog.e("ThemeReporter", 1, "ThemeReporter reportTheme Exception:" + paramAppRuntime.getMessage());
-        return;
-      }
+      paramArrayList = bdov.a(0);
+      paramArrayList.a(new bdth(0));
+      bdom localbdom2 = bdov.a(0);
+      localbdom2.a(new bdtj(anzj.a(2131713401)));
+      localStructMsgForGeneralShare.addItem(localbdom1);
+      localStructMsgForGeneralShare.addItem(paramArrayList);
+      localStructMsgForGeneralShare.addItem(localbdom2);
+      break;
+      localbdom1.a(new bdqo((String)paramArrayList.get(0)));
+      localbdom1.a(new bdqo((String)paramArrayList.get(1)));
+      localbdom1.a(new bdqo((String)paramArrayList.get(2)));
     }
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord == null) || (paramMessageRecord.msgtype != -2011)) {}
+    do
+    {
+      return false;
+      paramMessageRecord = ((MessageForStructing)paramMessageRecord).structingMsg;
+    } while ((paramMessageRecord == null) || (paramMessageRecord.mMsgServiceID != 19));
+    return true;
   }
 }
 

@@ -1,101 +1,142 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
 public class azoh
-  extends azkr
+  extends OGAbstractDao
 {
-  public azoh(azlw paramazlw, azfe paramazfe)
+  public azoh()
   {
-    super(paramazlw, paramazfe);
+    this.columnLen = 9;
   }
   
-  public int a()
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    return 1017;
-  }
-  
-  public String a()
-  {
-    return "ProfileMusicBoxComponent";
-  }
-  
-  public boolean a(azfe paramazfe)
-  {
-    boolean bool2 = super.a(paramazfe);
-    if (azhq.a((azfe)this.b)) {
-      return a(((azfe)this.b).a) | bool2;
-    }
-    if (this.jdField_a_of_type_JavaLangObject != null) {}
-    for (boolean bool1 = true;; bool1 = false)
+    paramEntity = (Setting)paramEntity;
+    if (paramNoColumnErrorHandler == null)
     {
-      this.jdField_a_of_type_JavaLangObject = null;
-      return bool1 | bool2;
+      paramEntity.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
+      paramEntity.headImgTimestamp = paramCursor.getLong(paramCursor.getColumnIndex("headImgTimestamp"));
+      paramEntity.systemHeadID = paramCursor.getShort(paramCursor.getColumnIndex("systemHeadID"));
+      paramEntity.bFaceFlags = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("bFaceFlags")));
+      paramEntity.bUsrType = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("bUsrType")));
+      paramEntity.bHeadType = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("bHeadType")));
+      paramEntity.url = paramCursor.getString(paramCursor.getColumnIndex("url"));
+      paramEntity.bSourceType = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("bSourceType")));
+      paramEntity.updateTimestamp = paramCursor.getLong(paramCursor.getColumnIndex("updateTimestamp"));
+      return paramEntity;
     }
-  }
-  
-  public boolean a(Card paramCard)
-  {
-    if (azfl.a(((azfe)this.b).a.lCurrentStyleId)) {
-      return true;
-    }
-    Object localObject;
-    boolean bool;
-    if (0 == 0)
+    int i = paramCursor.getColumnIndex("uin");
+    if (i == -1)
     {
-      localObject = this.jdField_a_of_type_Azqi.a("map_key_music_box");
-      if (localObject != null) {
-        bool = true;
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uin", String.class));
+      i = paramCursor.getColumnIndex("headImgTimestamp");
+      if (i != -1) {
+        break label508;
       }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("headImgTimestamp", Long.TYPE));
+      label247:
+      i = paramCursor.getColumnIndex("systemHeadID");
+      if (i != -1) {
+        break label523;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("systemHeadID", Short.TYPE));
+      label282:
+      i = paramCursor.getColumnIndex("bFaceFlags");
+      if (i != -1) {
+        break label538;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("bFaceFlags", Byte.TYPE));
+      label317:
+      i = paramCursor.getColumnIndex("bUsrType");
+      if (i != -1) {
+        break label554;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("bUsrType", Byte.TYPE));
+      label352:
+      i = paramCursor.getColumnIndex("bHeadType");
+      if (i != -1) {
+        break label570;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("bHeadType", Byte.TYPE));
+      label387:
+      i = paramCursor.getColumnIndex("url");
+      if (i != -1) {
+        break label586;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("url", String.class));
+      label421:
+      i = paramCursor.getColumnIndex("bSourceType");
+      if (i != -1) {
+        break label601;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("bSourceType", Byte.TYPE));
     }
     for (;;)
     {
-      if (localObject == null)
-      {
-        localObject = new azhq(false);
-        paramCard = ((azhq)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramCard.uin);
-        paramCard.setTag(2131562069, localObject);
-        bool = true;
+      i = paramCursor.getColumnIndex("updateTimestamp");
+      if (i != -1) {
+        break label617;
       }
-      for (;;)
-      {
-        if (paramCard.getTag(2131562069) != null) {
-          ((azhq)paramCard.getTag(2131562069)).a((azfe)this.b);
-        }
-        this.jdField_a_of_type_JavaLangObject = paramCard;
-        a((TextView)paramCard.findViewById(2131378600), null, (ImageView)paramCard.findViewById(2131368286));
-        return bool;
-        paramCard = (Card)localObject;
-      }
-      bool = false;
-      continue;
-      localObject = null;
-      bool = false;
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("updateTimestamp", Long.TYPE));
+      return paramEntity;
+      paramEntity.uin = paramCursor.getString(i);
+      break;
+      label508:
+      paramEntity.headImgTimestamp = paramCursor.getLong(i);
+      break label247;
+      label523:
+      paramEntity.systemHeadID = paramCursor.getShort(i);
+      break label282;
+      label538:
+      paramEntity.bFaceFlags = ((byte)paramCursor.getShort(i));
+      break label317;
+      label554:
+      paramEntity.bUsrType = ((byte)paramCursor.getShort(i));
+      break label352;
+      label570:
+      paramEntity.bHeadType = ((byte)paramCursor.getShort(i));
+      break label387;
+      label586:
+      paramEntity.url = paramCursor.getString(i);
+      break label421;
+      label601:
+      paramEntity.bSourceType = ((byte)paramCursor.getShort(i));
     }
+    label617:
+    paramEntity.updateTimestamp = paramCursor.getLong(i);
+    return paramEntity;
   }
   
-  public String a_()
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
   {
-    return "map_key_music_box";
+    paramEntity = (Setting)paramEntity;
+    paramContentValues.put("uin", paramEntity.uin);
+    paramContentValues.put("headImgTimestamp", Long.valueOf(paramEntity.headImgTimestamp));
+    paramContentValues.put("systemHeadID", Short.valueOf(paramEntity.systemHeadID));
+    paramContentValues.put("bFaceFlags", Byte.valueOf(paramEntity.bFaceFlags));
+    paramContentValues.put("bUsrType", Byte.valueOf(paramEntity.bUsrType));
+    paramContentValues.put("bHeadType", Byte.valueOf(paramEntity.bHeadType));
+    paramContentValues.put("url", paramEntity.url);
+    paramContentValues.put("bSourceType", Byte.valueOf(paramEntity.bSourceType));
+    paramContentValues.put("updateTimestamp", Long.valueOf(paramEntity.updateTimestamp));
   }
   
-  public void f()
+  public String getCreateTableSql(String paramString)
   {
-    super.f();
-    azhr localazhr = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
-    if (localazhr != null) {
-      localazhr.a(null);
-    }
-    this.jdField_a_of_type_Azqi.a();
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT UNIQUE ,headImgTimestamp INTEGER ,systemHeadID INTEGER ,bFaceFlags INTEGER ,bUsrType INTEGER ,bHeadType INTEGER ,url TEXT ,bSourceType INTEGER ,updateTimestamp INTEGER)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azoh
  * JD-Core Version:    0.7.0.1
  */

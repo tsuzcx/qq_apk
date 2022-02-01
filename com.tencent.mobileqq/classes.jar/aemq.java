@@ -1,32 +1,18 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.Leba.29.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class aemq
-  extends ayes
+  extends Editable.Factory
 {
-  public aemq(Leba paramLeba) {}
+  public aemq(EditInfoActivity paramEditInfoActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if ((!paramBoolean1) || (paramInt == 2)) {}
-    for (;;)
-    {
-      return;
-      if (Leba.b(this.a))
-      {
-        ArrayList localArrayList = new ArrayList();
-        anoy.a(localArrayList, ajvi.a().a(this.a.a));
-        this.a.a(new Leba.29.1(this, localArrayList));
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.i("Q.lebatab.leba", 2, "onGameCenterMsgReceive, " + Leba.c(this.a));
-        return;
-        ajvi.a |= 0x2;
-      }
+    if ((paramCharSequence instanceof begz)) {
+      return (Editable)paramCharSequence;
     }
+    return new begz(paramCharSequence, 3, 20);
   }
 }
 

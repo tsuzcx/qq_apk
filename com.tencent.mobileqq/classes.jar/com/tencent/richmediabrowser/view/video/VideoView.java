@@ -110,7 +110,7 @@ public class VideoView
     this.bufferPanel.setVisibility(8);
     this.mErrLayout.setVisibility(8);
     this.mCenterPlayBtn.setVisibility(0);
-    this.playButton.setImageResource(2130846116);
+    this.playButton.setImageResource(2130846131);
   }
   
   private void realPlayVideo(VideoData paramVideoData) {}
@@ -131,7 +131,7 @@ public class VideoView
     showPlayPanel(true);
     this.mErrLayout.setVisibility(8);
     this.mCenterPlayBtn.setVisibility(8);
-    this.playButton.setImageResource(2130846117);
+    this.playButton.setImageResource(2130846132);
     Object localObject = this.videoPresenter.getItem(paramInt);
     if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null) && (((RichMediaBrowserInfo)localObject).baseData.getType() == 2))
     {
@@ -225,25 +225,25 @@ public class VideoView
   {
     if (this.contentView == null)
     {
-      this.contentView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559189, null));
-      RelativeLayout localRelativeLayout = (RelativeLayout)this.contentView.findViewById(2131372031);
-      this.playPanel = localRelativeLayout.findViewById(2131371784);
-      this.playBar = ((SeekBar)this.playPanel.findViewById(2131377106));
-      this.playButton = ((ImageView)this.playPanel.findViewById(2131372032));
-      this.progressTime = ((TextView)this.playPanel.findViewById(2131372933));
-      this.totalTime = ((TextView)this.playPanel.findViewById(2131379074));
+      this.contentView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559188, null));
+      RelativeLayout localRelativeLayout = (RelativeLayout)this.contentView.findViewById(2131372145);
+      this.playPanel = localRelativeLayout.findViewById(2131371891);
+      this.playBar = ((SeekBar)this.playPanel.findViewById(2131377245));
+      this.playButton = ((ImageView)this.playPanel.findViewById(2131372146));
+      this.progressTime = ((TextView)this.playPanel.findViewById(2131373046));
+      this.totalTime = ((TextView)this.playPanel.findViewById(2131379238));
       this.playButton.setOnClickListener(this);
       this.playBar.setMax(10000);
       this.playBar.setOnSeekBarChangeListener(this);
-      this.loadPanel = ((RelativeLayout)localRelativeLayout.findViewById(2131380281));
-      this.loadBar = ((SeekBar)this.loadPanel.findViewById(2131380283));
+      this.loadPanel = ((RelativeLayout)localRelativeLayout.findViewById(2131380467));
+      this.loadBar = ((SeekBar)this.loadPanel.findViewById(2131380469));
       this.loadBar.setMax(10000);
-      this.loadProTxt = ((TextView)this.loadPanel.findViewById(2131380282));
-      this.closeBtn = ((ImageView)this.loadPanel.findViewById(2131364540));
+      this.loadProTxt = ((TextView)this.loadPanel.findViewById(2131380468));
+      this.closeBtn = ((ImageView)this.loadPanel.findViewById(2131364585));
       this.closeBtn.setOnClickListener(this);
-      this.bufferPanel = ((RelativeLayout)this.contentView.findViewById(2131363985));
-      this.rateText = ((TextView)this.contentView.findViewById(2131375937));
-      this.closeVideoBtn = ((ImageButton)this.contentView.findViewById(2131374221));
+      this.bufferPanel = ((RelativeLayout)this.contentView.findViewById(2131364011));
+      this.rateText = ((TextView)this.contentView.findViewById(2131376077));
+      this.closeVideoBtn = ((ImageButton)this.contentView.findViewById(2131374360));
       this.closeVideoBtn.setOnClickListener(this);
     }
     if (!this.isInExitAnim) {
@@ -254,7 +254,7 @@ public class VideoView
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131372032) {
+    if (i == 2131372146) {
       if (this.isPlay)
       {
         pauseVideo();
@@ -267,7 +267,7 @@ public class VideoView
       return;
       tryPlayVideo(this.videoPresenter.getCurrentPosition());
       continue;
-      if (i == 2131364540)
+      if (i == 2131364585)
       {
         Object localObject = this.videoPresenter.getSelectedItem();
         if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null))
@@ -341,7 +341,7 @@ public class VideoView
       showPlayPanel(false);
       this.mErrLayout.setVisibility(8);
       this.mCenterPlayBtn.setVisibility(0);
-      this.playButton.setImageResource(2130846116);
+      this.playButton.setImageResource(2130846131);
     }
   }
   
@@ -369,12 +369,12 @@ public class VideoView
       this.mVideoView.resume();
       showPlayPanel(true);
       this.mCenterPlayBtn.setVisibility(8);
-      this.playButton.setImageResource(2130846117);
+      this.playButton.setImageResource(2130846132);
       return;
     }
     showPlayPanel(false);
     this.mCenterPlayBtn.setVisibility(0);
-    this.playButton.setImageResource(2130846116);
+    this.playButton.setImageResource(2130846131);
   }
   
   public void onScrollHalfScreenWidth()
@@ -504,7 +504,7 @@ public class VideoView
     for (;;)
     {
       localImageView.setVisibility(i);
-      this.playButton.setImageResource(2130846116);
+      this.playButton.setImageResource(2130846131);
       this.progressTime.setText(FileUtils.stringForTime(0L));
       this.playBar.setProgress(0);
       return;

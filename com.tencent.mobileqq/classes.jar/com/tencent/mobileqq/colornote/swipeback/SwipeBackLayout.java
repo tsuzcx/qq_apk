@@ -17,11 +17,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import aqgb;
-import aqgc;
-import aqgd;
-import aqgg;
-import bggq;
+import aqve;
+import aqvf;
+import aqvg;
+import aqvj;
+import bhgr;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -39,9 +39,9 @@ public class SwipeBackLayout
   protected GestureDetector a;
   protected View a;
   protected Scroller a;
-  private aqgc jdField_a_of_type_Aqgc;
-  public final aqgd a;
-  public aqgg a;
+  private aqvf jdField_a_of_type_Aqvf;
+  public final aqvg a;
+  public aqvj a;
   private List<ViewPager> jdField_a_of_type_JavaUtilList = new LinkedList();
   public boolean a;
   protected int b;
@@ -62,13 +62,13 @@ public class SwipeBackLayout
     super(paramContext);
     this.jdField_e_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_Aqgd = new aqgd(this);
+    this.jdField_a_of_type_Aqvg = new aqvg(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_b_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
     this.jdField_f_of_type_Int = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new aqgb(this));
-    jdField_g_of_type_Int = bggq.a(paramContext, 90.0F);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new aqve(this));
+    jdField_g_of_type_Int = bhgr.a(paramContext, 90.0F);
   }
   
   private void a(View paramView)
@@ -163,7 +163,7 @@ public class SwipeBackLayout
       if (QLog.isColorLevel()) {
         QLog.i("SwipeBackLayout", 2, "SwipeBackLayout scrollRight viewwithd=" + this.jdField_a_of_type_Int + "  startx+ " + this.jdField_a_of_type_AndroidViewView.getScrollX() + "  left width = " + -i + "  duration=" + j);
       }
-      this.jdField_a_of_type_Aqgd.sendEmptyMessageDelayed(1, 200L);
+      this.jdField_a_of_type_Aqvg.sendEmptyMessageDelayed(1, 200L);
       postInvalidate();
       return;
     }
@@ -190,8 +190,8 @@ public class SwipeBackLayout
       int i = this.jdField_a_of_type_AndroidViewView.getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(this.jdField_a_of_type_AndroidViewView.getScrollX(), 0, -i, 0, Math.abs(i));
       postInvalidate();
-      if (this.jdField_a_of_type_Aqgg != null) {
-        this.jdField_a_of_type_Aqgg.b();
+      if (this.jdField_a_of_type_Aqvj != null) {
+        this.jdField_a_of_type_Aqvj.b();
       }
       return;
     }
@@ -205,8 +205,8 @@ public class SwipeBackLayout
       int i = this.jdField_a_of_type_AndroidViewView.getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, -i, 0, Math.abs(i) / 2);
       postInvalidate();
-      if (this.jdField_a_of_type_Aqgg != null) {
-        this.jdField_a_of_type_Aqgg.b();
+      if (this.jdField_a_of_type_Aqvj != null) {
+        this.jdField_a_of_type_Aqvj.b();
       }
       return;
     }
@@ -267,8 +267,8 @@ public class SwipeBackLayout
         int j = this.jdField_e_of_type_Int - i;
         if ((i - this.c > this.jdField_b_of_type_Int) && (Math.abs((int)paramMotionEvent.getRawY() - this.jdField_d_of_type_Int) < this.jdField_b_of_type_Int))
         {
-          if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Aqgc != null)) {
-            this.jdField_a_of_type_Aqgc.a(true);
+          if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Aqvf != null)) {
+            this.jdField_a_of_type_Aqvf.a(true);
           }
           this.jdField_b_of_type_Boolean = true;
         }
@@ -298,8 +298,8 @@ public class SwipeBackLayout
                 if (this.jdField_a_of_type_AndroidViewView.getScrollX() != 0) {
                   d();
                 }
-                if (this.jdField_a_of_type_Aqgc != null) {
-                  this.jdField_a_of_type_Aqgc.a(false);
+                if (this.jdField_a_of_type_Aqvf != null) {
+                  this.jdField_a_of_type_Aqvf.a(false);
                 }
               }
               else
@@ -320,9 +320,9 @@ public class SwipeBackLayout
     this.jdField_a_of_type_AndroidViewGestureDetector = paramGestureDetector;
   }
   
-  public void setOnSwipeListener(aqgc paramaqgc)
+  public void setOnSwipeListener(aqvf paramaqvf)
   {
-    this.jdField_a_of_type_Aqgc = paramaqgc;
+    this.jdField_a_of_type_Aqvf = paramaqvf;
   }
   
   public void setReadyToSlide(boolean paramBoolean)

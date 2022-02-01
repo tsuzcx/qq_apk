@@ -1,12 +1,18 @@
-public abstract interface uos
+import UserGrowth.stNotificationReq;
+import UserGrowth.stNotificationRsp;
+
+public class uos
+  extends ukl<stNotificationRsp>
 {
-  public abstract void a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public uos(String paramString)
+  {
+    super("Notification", 4);
+    stNotificationReq localstNotificationReq = new stNotificationReq();
+    localstNotificationReq.linkStrategyArgs = uqg.a();
+    localstNotificationReq.push_info = paramString;
+    this.a = localstNotificationReq;
+    uqf.b("NotificationRequest", "stNotificationReq = " + localstNotificationReq.toString());
+  }
 }
 
 

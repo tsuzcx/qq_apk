@@ -1,58 +1,22 @@
-import com.tencent.biz.qqcircle.events.QCircleCommentPraiseUpdateEvent;
-import com.tencent.biz.qqcircle.widgets.QCircleCommentPraiseLayout;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StLike;
-import feedcloud.FeedCloudMeta.StReply;
-import feedcloud.FeedCloudWrite.StDoLikeRsp;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqcircle.transition.QCircleTransitionLayout;
 
 public class vvt
-  implements zxa<FeedCloudWrite.StDoLikeRsp>
+  implements Animator.AnimatorListener
 {
-  public vvt(QCircleCommentPraiseLayout paramQCircleCommentPraiseLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public vvt(QCircleTransitionLayout paramQCircleTransitionLayout) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoLikeRsp paramStDoLikeRsp)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if ((paramBoolean) && (paramLong == 0L)) {
-      if (QCircleCommentPraiseLayout.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout) != null)
-      {
-        paramString = QCircleCommentPraiseLayout.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout).id.get();
-        if (QCircleCommentPraiseLayout.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout) == null) {
-          break label183;
-        }
-        paramStDoLikeRsp = QCircleCommentPraiseLayout.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout).id.get();
-        label60:
-        if ((QCircleCommentPraiseLayout.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout) != 1) || (QCircleCommentPraiseLayout.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout) == null)) {
-          break label190;
-        }
-        QCircleCommentPraiseLayout.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout).likeInfo.status.set(this.jdField_a_of_type_Int);
-        QCircleCommentPraiseLayout.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout).likeInfo.count.set(this.b);
-        label121:
-        zwp.a().a(new QCircleCommentPraiseUpdateEvent(QCircleCommentPraiseLayout.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout), this.jdField_a_of_type_Int, QCircleCommentPraiseLayout.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout).id.get(), paramString, paramStDoLikeRsp, this.b));
-      }
-    }
-    for (;;)
-    {
-      QCircleCommentPraiseLayout.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout, true);
-      return;
-      paramString = "";
-      break;
-      label183:
-      paramStDoLikeRsp = "";
-      break label60;
-      label190:
-      if ((QCircleCommentPraiseLayout.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout) != 2) || (QCircleCommentPraiseLayout.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout) == null)) {
-        break label121;
-      }
-      QCircleCommentPraiseLayout.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout).likeInfo.status.set(this.jdField_a_of_type_Int);
-      QCircleCommentPraiseLayout.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout).likeInfo.count.set(this.b);
-      break label121;
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout.a(this.c, this.d);
-      vtt.a(paramLong, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout.getContext(), paramString, 0);
-      QLog.d("QCircleCommentPraiseLay", 4, "zan failed");
+    if (QCircleTransitionLayout.a(this.a) != null) {
+      QCircleTransitionLayout.a(this.a).b();
     }
   }
 }

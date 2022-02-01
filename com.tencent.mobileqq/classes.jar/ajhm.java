@@ -1,14 +1,6 @@
-import mqq.os.MqqHandler;
-
 class ajhm
-  implements ajlb
 {
-  ajhm(ajhk paramajhk) {}
-  
-  public void a()
-  {
-    this.a.a.sendEmptyMessageDelayed(7, 100L);
-  }
+  private static final ajhj a = new ajhj(null);
 }
 
 

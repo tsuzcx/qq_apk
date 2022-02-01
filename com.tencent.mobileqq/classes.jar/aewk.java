@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity.3.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class aewk
-  implements DialogInterface.OnDismissListener
+public class aewk
+  extends ayxl
 {
-  aewk(aewi paramaewi) {}
+  public aewk(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    QQIdentiferActivity.a(this.a.a, 205, anni.a(2131709131));
-    this.a.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.mgr", 2, "onGameCenterMsgReceive. notifyData.");
+    }
+    if ((this.a.isResume()) && (paramBoolean1) && (paramInt != 2) && (LebaListMgrActivity.a(this.a) != null))
+    {
+      List localList = akgr.a().a();
+      this.a.runOnUiThread(new LebaListMgrActivity.3.1(this, localList));
+    }
   }
 }
 

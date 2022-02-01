@@ -1,15 +1,29 @@
-import com.tencent.mobileqq.activity.Leba;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class aems
-  extends anry
+  implements ActionMode.Callback
 {
-  public aems(Leba paramLeba) {}
+  public aems(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onPublicAccountNotification(boolean paramBoolean1, boolean paramBoolean2)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (Leba.a(this.a) != null)) {
-      Leba.a(this.a).b();
-    }
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

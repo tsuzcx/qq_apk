@@ -1,6 +1,15 @@
-public class azgt
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+class azgt
 {
-  public static final String a = bhgg.a(new StringBuilder().append(anhk.ba).append(".profilecard/").toString()) + "diyCardFonts/";
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
+  View c;
+  View d;
 }
 
 

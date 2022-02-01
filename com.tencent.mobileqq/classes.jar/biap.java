@@ -1,10 +1,9 @@
-import android.os.Bundle;
-
 public abstract interface biap
+  extends biaj
 {
-  public abstract void a(Bundle paramBundle);
+  public abstract String a();
   
-  public abstract void b(Bundle paramBundle);
+  public abstract boolean a();
 }
 
 

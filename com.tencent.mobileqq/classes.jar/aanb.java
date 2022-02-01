@@ -1,15 +1,21 @@
-import android.text.SpannableStringBuilder;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 
-public class aanb
-  extends SpannableStringBuilder
+final class aanb
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  aanb(Window paramWindow) {}
   
-  public aanb(CharSequence paramCharSequence)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    super(paramCharSequence);
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 5894;; paramInt = 1799)
+    {
+      this.a.getDecorView().setSystemUiVisibility(paramInt);
+      return;
+    }
   }
 }
 

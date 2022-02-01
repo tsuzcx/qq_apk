@@ -1,63 +1,67 @@
-import com.tencent.av.gameplay.GPNativeSoLoader.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.os.MqqHandler;
+import java.util.Random;
 
-public class llu
+public final class llu
 {
-  public static boolean a;
-  private static boolean b;
+  private static final float jdField_a_of_type_Float;
+  static final int jdField_a_of_type_Int = (int)Math.sqrt(16384.0D);
+  public static Random a;
   
-  public static byte a(String paramString)
+  static
   {
-    byte b1 = 0;
-    if (paramString == null) {
-      return -1;
-    }
-    llv localllv = llv.a();
-    String str = lmd.a() + "lib" + paramString + ".so";
-    if (QLog.isColorLevel()) {
-      QLog.i("Qav_GamePlayNativeSoLoader", 2, "start arNativeSo: " + str);
-    }
-    Object localObject = new File(str);
-    if ((!a) && (((File)localObject).exists())) {}
-    for (;;)
-    {
-      try
-      {
-        System.load(str);
-        b = true;
-        localObject = "null";
-        if (localllv != null) {
-          localObject = localllv.b;
-        }
-        QLog.w("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo, libPath[" + str + "], libName[" + paramString + "], md5[" + (String)localObject + "], isLoadSo[" + b + "], result[" + b1 + "]");
-        return b1;
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        b1 = -3;
-        QLog.i("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo load fail", localUnsatisfiedLinkError);
-        continue;
-      }
-      b1 = -2;
-    }
+    jdField_a_of_type_Float = 1.0F / (jdField_a_of_type_Int - 1);
+    jdField_a_of_type_JavaUtilRandom = new Random();
   }
   
-  public static boolean a()
+  public static final float a()
   {
-    if (b) {}
-    do
-    {
-      return true;
-      if (!llw.a().b()) {
-        break;
-      }
-    } while (a("qavgameplayengine") == 0);
-    return false;
-    ThreadManager.getUIHandler().post(new GPNativeSoLoader.1());
-    return false;
+    return jdField_a_of_type_JavaUtilRandom.nextFloat();
+  }
+  
+  public static final float a(float paramFloat)
+  {
+    return llv.a[((int)(45.511112F * paramFloat) & 0x3FFF)];
+  }
+  
+  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (paramFloat1 < paramFloat2) {
+      return paramFloat2;
+    }
+    if (paramFloat1 > paramFloat3) {
+      return paramFloat3;
+    }
+    return paramFloat1;
+  }
+  
+  public static final int a(int paramInt)
+  {
+    return jdField_a_of_type_JavaUtilRandom.nextInt(paramInt + 1);
+  }
+  
+  public static int a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt1 < paramInt2) {
+      return paramInt2;
+    }
+    if (paramInt1 > paramInt3) {
+      return paramInt3;
+    }
+    return paramInt1;
+  }
+  
+  public static final boolean a()
+  {
+    return jdField_a_of_type_JavaUtilRandom.nextBoolean();
+  }
+  
+  public static final float b(float paramFloat)
+  {
+    return llv.a[((int)((90.0F + paramFloat) * 45.511112F) & 0x3FFF)];
+  }
+  
+  public static final float c(float paramFloat)
+  {
+    return jdField_a_of_type_JavaUtilRandom.nextFloat() * paramFloat;
   }
 }
 

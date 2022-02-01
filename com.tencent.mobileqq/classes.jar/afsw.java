@@ -1,33 +1,17 @@
-import android.widget.TextView;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class afsw
-  implements ArkViewImplement.LoadCallback
+  implements DialogInterface.OnDismissListener
 {
-  public afsw(BirthdayActivatePageArkView paramBirthdayActivatePageArkView) {}
+  public afsw(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    onLoadState(paramInt1);
-  }
-  
-  public void onLoadState(int paramInt)
-  {
-    if (paramInt == 1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  SUCCESS");
-      }
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
-    while (paramInt != -1) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  failed");
-    }
-    this.a.a(false);
-    BirthdayActivatePageArkView.a(this.a).setText(anni.a(2131699957));
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pyq;
-import qps;
-import qpt;
+import pra;
+import qig;
+import qih;
 
 public class UserOperationModule$2
   implements Runnable
 {
-  public UserOperationModule$2(pyq parampyq, String paramString) {}
+  public UserOperationModule$2(pra parampra, String paramString) {}
   
   public void run()
   {
-    qps.a.a().a(true, this.a);
+    qig.a.a().a(true, this.a);
   }
 }
 

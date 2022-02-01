@@ -1,10 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-
 public abstract interface syg
 {
-  public abstract BaseData a();
-  
-  public abstract void a();
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

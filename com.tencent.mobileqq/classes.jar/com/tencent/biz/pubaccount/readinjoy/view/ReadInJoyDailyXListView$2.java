@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import pfr;
+import oyj;
 
 class ReadInJoyDailyXListView$2
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyDailyXListView$2
   
   public void run()
   {
-    pfr.a(ReadInJoyDailyXListView.a(this.this$0), null, this.a);
+    oyj.a(ReadInJoyDailyXListView.a(this.this$0), null, this.a);
   }
 }
 

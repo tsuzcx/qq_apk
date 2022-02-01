@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.data.search.selector;
 
 import android.view.View;
-import atim;
+import auag;
 
 public class FileSelectorSearchFragment$FileSelectorSearchAdapter$3
   implements Runnable
 {
-  public FileSelectorSearchFragment$FileSelectorSearchAdapter$3(atim paramatim) {}
+  public FileSelectorSearchFragment$FileSelectorSearchAdapter$3(auag paramauag) {}
   
   public void run()
   {
-    FileSelectorSearchFragment.b(this.a.a).findViewById(2131367877).setVisibility(8);
+    FileSelectorSearchFragment.b(this.a.a).findViewById(2131367946).setVisibility(8);
   }
 }
 

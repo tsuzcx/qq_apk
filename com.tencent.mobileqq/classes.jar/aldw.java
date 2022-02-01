@@ -1,40 +1,23 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.qphone.base.util.QLog;
 
 public class aldw
-  extends AbsRecentStatus
+  implements nmg
 {
-  public int[] declareStatus()
-  {
-    return new int[4];
-  }
+  public aldw(PreloadModule paramPreloadModule) {}
   
-  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  public void loaded(String paramString, int paramInt)
   {
-    return true;
-  }
-  
-  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
-  {
-    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadModule", 2, "checkUpByBusinessId loaded, code:" + paramInt);
     }
-    paramIMCoreAppRuntime = ((QQAppInterface)paramIMCoreAppRuntime).a();
-    if ((paramIMCoreAppRuntime != null) && (paramIMCoreAppRuntime.f(paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getRecentUserType())))
-    {
-      paramRecentBaseData.mStatus = 4;
-      return false;
-    }
-    paramRecentBaseData.mStatus = 0;
-    return false;
   }
   
-  public int priority()
+  public void progress(int paramInt)
   {
-    return AbsRecentStatus.PRIORITY_DRAFT;
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadModule", 2, "checkUpByBusinessId progress:" + paramInt);
+    }
   }
 }
 

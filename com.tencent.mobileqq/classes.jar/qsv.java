@@ -1,16 +1,7 @@
-class qsv
-  implements qvq
-{
-  qsv(qsu paramqsu) {}
-  
-  public void a()
-  {
-    spb localspb = this.a.jdField_a_of_type_Snh.a();
-    if (localspb != null) {
-      localspb.a(null, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
-  }
-}
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJWriteWatchWordShareContract;", "", "IModel", "IPresenter", "IView", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface qsv {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

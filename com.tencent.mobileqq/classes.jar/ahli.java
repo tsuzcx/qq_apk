@@ -1,19 +1,9 @@
-import android.view.View;
 import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
-import com.tencent.mobileqq.tofumsg.DrawCircleCornerImageView;
 
 class ahli
-  extends afuv
+  extends aggl
 {
-  public long a;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  DrawCircleCornerImageView jdField_a_of_type_ComTencentMobileqqTofumsgDrawCircleCornerImageView;
-  public String a;
-  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View c;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
   ahli(ahlh paramahlh) {}
 }

@@ -1,44 +1,31 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
 class tuc
-  extends aoqo
+  implements bliz
 {
-  tuc(ttz paramttz, tty paramtty) {}
+  tuc(tub paramtub, tua paramtua, int paramInt, blir paramblir) {}
   
-  public int a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return 5;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderFeedAdapter", 2, "unfollow success");
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
     }
-    ttz.b(this.jdField_a_of_type_Ttz, this.jdField_a_of_type_Tty);
-    StructLongMessageDownloadProcessor.a(ttz.a(this.jdField_a_of_type_Ttz), this.jdField_a_of_type_Tty.a);
-    ((bfrd)ttz.a(this.jdField_a_of_type_Ttz).getManager(132)).a(this.jdField_a_of_type_Tty.a);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderFeedAdapter", 2, "do unfollow->uin:" + this.jdField_a_of_type_Tty.a + ", success:" + String.valueOf(paramBoolean));
+    tub.a(this.jdField_a_of_type_Tub, this.jdField_a_of_type_Tua);
+    paramInt = this.jdField_a_of_type_Tua.b;
+    int i = this.jdField_a_of_type_Tua.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Tua.jdField_a_of_type_Int != 1) {
+      paramInt = 0;
     }
-    if ((ttz.a(this.jdField_a_of_type_Ttz) != null) && (ttz.a(this.jdField_a_of_type_Ttz).isResume())) {
-      ttz.a(this.jdField_a_of_type_Ttz).b(false);
+    for (;;)
+    {
+      long l = tug.a().a(this.jdField_a_of_type_Tua);
+      bdll.b(tub.a(this.jdField_a_of_type_Tub), "dc01160", "Pb_account_lifeservice", "" + this.jdField_a_of_type_Tua.jdField_a_of_type_JavaLangString, "0X80067F2", "0X80067F2", 0, 0, "" + (this.jdField_a_of_type_Int + 1), "" + l, "" + i, "" + paramInt);
+      break;
     }
   }
-  
-  public void b(Object paramObject)
-  {
-    ttz.a(this.jdField_a_of_type_Ttz);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

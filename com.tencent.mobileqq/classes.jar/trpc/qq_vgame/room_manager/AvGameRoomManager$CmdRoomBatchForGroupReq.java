@@ -9,9 +9,11 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class AvGameRoomManager$CmdRoomBatchForGroupReq
   extends MessageMicro<CmdRoomBatchForGroupReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "groupid", "uin", "start", "batch_num" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, CmdRoomBatchForGroupReq.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48 }, new String[] { "groupid", "uin", "start", "batch_num", "req_from", "req_platform" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, CmdRoomBatchForGroupReq.class);
   public final PBUInt32Field batch_num = PBField.initUInt32(0);
   public final PBUInt64Field groupid = PBField.initUInt64(0L);
+  public final PBUInt32Field req_from = PBField.initUInt32(0);
+  public final PBUInt32Field req_platform = PBField.initUInt32(0);
   public final PBUInt32Field start = PBField.initUInt32(0);
   public final PBUInt64Field uin = PBField.initUInt64(0L);
 }

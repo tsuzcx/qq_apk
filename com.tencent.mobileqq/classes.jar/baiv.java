@@ -1,29 +1,45 @@
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipV5View;
 
-class baiv
-  extends anmu
+public class baiv
+  extends baik
 {
-  baiv(baiu parambaiu) {}
+  private boolean a;
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public baiv(baei parambaei, azxr paramazxr)
   {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a(1, paramString);
+    super(parambaei, paramazxr);
+  }
+  
+  public String a()
+  {
+    return "VasProfileHeaderV5Component";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
+    {
+      VasProfileQVipV5View localVasProfileQVipV5View = new VasProfileQVipV5View(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azxr)this.b);
+      localVasProfileQVipV5View.setProfileArgs(this.jdField_a_of_type_Boolean);
+      localVasProfileQVipV5View.setClickListener(this);
+      localVasProfileQVipV5View.a();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileQVipV5View;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
     }
   }
   
-  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
   {
-    if (paramBoolean) {
-      this.a.a(1, paramString);
+    Intent localIntent = paramBaseActivity.getIntent();
+    if (localIntent != null) {
+      this.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("key_from_ark_babyq", false);
     }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a(2, null);
-    }
+    super.a(paramBaseActivity, paramBundle);
   }
 }
 

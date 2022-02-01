@@ -1,30 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-class atfz
-  extends atfi
+public class atfz
+  implements Animation.AnimationListener
 {
-  public atfz(atfe paramatfe)
+  public atfz(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, View paramView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramatfe);
+    paramAnimation = new AlphaAnimation(0.2F, 0.0F);
+    paramAnimation.setDuration(500L);
+    paramAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
   }
   
-  protected String a()
-  {
-    return "StateRefuseByPCWhenPause";
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    atfe.b(this.jdField_a_of_type_Atfe, 11, 6);
-    atfe.c(this.jdField_a_of_type_Atfe, 11, 6);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateRefuseByPC)");
-    this.jdField_a_of_type_Atfi = new atfy(this.jdField_a_of_type_Atfe);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,28 +1,23 @@
-import com.tencent.mobileqq.data.TroopInfo;
+import android.content.Context;
 
-class begu
-  extends anxg
+final class begu
+  implements blhm<Integer>
 {
-  begu(begt parambegt) {}
+  begu(Context paramContext, String paramString, blir paramblir) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void a(Integer paramInteger)
   {
-    begt.a(this.a, false, paramInt1, paramInt2, null);
-  }
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    begt.a(this.a, true, paramInt1, paramInt2, paramString);
-  }
-  
-  protected void a(String paramString)
-  {
-    begt.a(this.a, paramString);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    begt.a(this.a, paramBoolean, paramLong, paramTroopInfo);
+    switch (paramInteger.intValue())
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      begp.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+      continue;
+      begp.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

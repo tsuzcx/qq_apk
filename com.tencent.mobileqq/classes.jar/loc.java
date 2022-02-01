@@ -1,45 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Notification;
+import android.os.IInterface;
 
-public class loc
+public abstract interface loc
+  extends IInterface
 {
-  private static loc a;
+  public abstract int a(long paramLong, int paramInt);
   
-  public static loc a()
-  {
-    if (a != null) {
-      return a;
-    }
-    try
-    {
-      a = new loc();
-      loc localloc = a;
-      return localloc;
-    }
-    catch (Exception localException) {}
-    return null;
-  }
+  public abstract void a();
   
-  public float a()
-  {
-    float f;
-    try
-    {
-      f = Float.parseFloat(lfh.a(BaseApplicationImpl.getContext()).a("sharp/beauty_3/ratio", "1.0"));
-      if (f <= 0.0F) {
-        return 1.0F;
-      }
-    }
-    catch (Exception localException)
-    {
-      return 1.0F;
-    }
-    return f;
-  }
+  public abstract void a(lwr paramlwr);
   
-  public boolean a()
-  {
-    return lfh.a(BaseApplicationImpl.getContext()).a("sharp/beauty_3/flag", 0) == 1;
-  }
+  public abstract void a(boolean paramBoolean, Notification paramNotification);
+  
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 

@@ -1,15 +1,16 @@
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tav.coremedia.CMTimeRange;
+import android.app.Activity;
+import android.content.Intent;
 
-public abstract interface bodq
+class bodq
+  extends boee
 {
-  public abstract void a();
+  bodq(bodp parambodp, Activity paramActivity, Intent paramIntent) {}
   
-  public abstract void a(CMTime paramCMTime);
-  
-  public abstract void a(CMTimeRange paramCMTimeRange);
-  
-  public abstract void a(boolean paramBoolean);
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, this.jdField_a_of_type_AndroidContentIntent);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+  }
 }
 
 

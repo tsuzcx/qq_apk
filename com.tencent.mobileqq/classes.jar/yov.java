@@ -1,17 +1,11 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.util.List;
-
 public class yov
+  extends wip
 {
-  public final int a;
-  public final List<LocalMediaInfo> a;
-  public final wcl a;
+  public int a;
   
-  public yov(List<LocalMediaInfo> paramList, int paramInt, wcl paramwcl)
+  public yov(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Wcl = paramwcl;
+    this.a = paramInt;
   }
 }
 

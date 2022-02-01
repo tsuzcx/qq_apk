@@ -1,15 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
 
 public class plg
+  implements Animation.AnimationListener
 {
-  public void a(int paramInt, List<DynamicChannelDataModel> paramList) {}
+  public plg(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, TranslateAnimation paramTranslateAnimation) {}
   
-  public void a(int paramInt1, boolean paramBoolean, List<pln> paramList, int paramInt2) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    ReadInjoyIMAXAdFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+  }
   
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

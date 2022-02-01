@@ -1,39 +1,72 @@
-import android.os.Bundle;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
+import tencent.im.s2c.msgtype0x210.submsgtype0x54.submsgtype0x54.MsgBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0x54.submsgtype0x54.MsgBody.TaskInfo;
 
 public class adec
+  implements adci
 {
-  public static final JSONObject a = new JSONObject();
-  
-  public static JSONObject a(Bundle paramBundle)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBundle == null) {
-      return a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQOperateVoIP", 2, "get voip_tips from handleC2COnlinePushMsg0x210Resp");
     }
-    Iterator localIterator = paramBundle.keySet().iterator();
-    while (localIterator.hasNext())
+    paramQQAppInterface = (anvl)paramQQAppInterface.a(4);
+    long l;
+    if (paramQQAppInterface != null)
     {
-      String str = (String)localIterator.next();
-      Object localObject2 = paramBundle.get(str);
-      Object localObject1 = localObject2;
-      if ((localObject2 instanceof Bundle)) {
-        localObject1 = a((Bundle)localObject2);
-      }
+      submsgtype0x54.MsgBody localMsgBody = new submsgtype0x54.MsgBody();
       try
       {
-        localJSONObject.put(str, localObject1);
+        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+        i = localMsgBody.peer_type.get();
+        Object localObject = localMsgBody.task_list.get();
+        paramMsgType0x210 = new ArrayList();
+        if ((localObject != null) && (((List)localObject).size() > 0))
+        {
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            submsgtype0x54.MsgBody.TaskInfo localTaskInfo = (submsgtype0x54.MsgBody.TaskInfo)((Iterator)localObject).next();
+            QQOperationViopTipTask localQQOperationViopTipTask = new QQOperationViopTipTask();
+            localQQOperationViopTipTask.taskid = localTaskInfo.task_id.get();
+            paramMsgType0x210.add(localQQOperationViopTipTask);
+          }
+        }
       }
-      catch (JSONException localJSONException) {}
-      if (QLog.isColorLevel()) {
-        QLog.e("APIParam", 2, localJSONException.getMessage(), localJSONException);
+      catch (InvalidProtocolBufferMicroException paramMsgType0x210)
+      {
+        for (;;)
+        {
+          paramMsgType0x210.printStackTrace();
+        }
+        l = localMsgBody.peer_uin.get();
+        if (i != 1) {}
       }
     }
-    return localJSONObject;
+    for (int i = 0;; i = 3000)
+    {
+      paramQQAppInterface.a(String.valueOf(l), i, paramMsgType0x210);
+      return;
+    }
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

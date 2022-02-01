@@ -1,58 +1,36 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.coupon.CouponActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.biz.common.offline.HtmlOffline.6;
 
 public class nmm
-  extends WebViewPlugin
+  implements nmg
 {
-  public nmm()
-  {
-    this.mPluginNameSpace = "coupon";
-  }
+  public nmm(HtmlOffline.6 param6) {}
   
-  public void a(String paramString)
+  public void loaded(String paramString, int paramInt)
   {
-    Activity localActivity = this.mRuntime.a();
-    int i;
-    if ((localActivity instanceof CouponActivity))
-    {
-      localObject = (CouponActivity)localActivity;
-      i = ((CouponActivity)localObject).a;
-      if ((i & 0x8) != 0)
-      {
-        paramString = new Intent();
-        paramString.putExtra("toPage", 2);
-        ((CouponActivity)localObject).setResult(-1, paramString);
-        ((CouponActivity)localObject).superFinish();
+    long l = System.currentTimeMillis() - this.a.jdField_a_of_type_Long;
+    if (nmj.a.a()) {
+      nmj.a.a("HtmlCheckUpdate", 2, "js call downloadUpdate callback:" + paramInt + ", time:" + l);
+    }
+    if (paramInt == 0) {
+      if (nmj.b(this.a.b)) {
+        this.a.jdField_a_of_type_Nmg.loaded(null, 0);
       }
     }
-    else
+    for (;;)
     {
+      BidDownloader.b(this.a.b);
+      nmj.a(this.a.b, paramInt, l, nny.a(this.a.jdField_a_of_type_AndroidContentContext));
       return;
+      this.a.jdField_a_of_type_Nmg.loaded(null, 6);
+      continue;
+      this.a.jdField_a_of_type_Nmg.loaded(null, 2);
     }
-    Object localObject = new Intent(localActivity, CouponActivity.class);
-    ((Intent)localObject).putExtra("from", (i | 0xA) & 0xE);
-    if (!TextUtils.isEmpty(paramString)) {
-      ((Intent)localObject).putExtra("jsonParams", paramString);
-    }
-    localActivity.startActivity((Intent)localObject);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void progress(int paramInt)
   {
-    if ("coupon".equals(paramString2))
-    {
-      if (("goToCouponHomePage".equals(paramString3)) && (paramVarArgs.length == 1))
-      {
-        a(paramVarArgs[0]);
-        paramJsBridgeListener.a(null);
-      }
-      return true;
-    }
-    return false;
+    this.a.jdField_a_of_type_Nmg.progress(paramInt);
   }
 }
 

@@ -1,14 +1,14 @@
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
-import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
-import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
+import com.tencent.biz.qqcircle.bizparts.QCircleAggregationFragmentsPart;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseAggregationFragment;
 import java.util.ArrayList;
 
 public class vbh
   implements ViewPager.OnPageChangeListener
 {
-  public vbh(QCircleFolderFragmentsPart paramQCircleFolderFragmentsPart) {}
+  public vbh(QCircleAggregationFragmentsPart paramQCircleAggregationFragmentsPart) {}
   
   public void onPageScrollStateChanged(int paramInt) {}
   
@@ -16,21 +16,21 @@ public class vbh
   
   public void onPageSelected(int paramInt)
   {
-    QCircleFolderFragmentsPart.a(this.a, paramInt, 2);
-    uxh.a();
-    if ((QCircleFolderFragmentsPart.a(this.a) != null) && (QCircleFolderFragmentsPart.a(this.a).getChildCount() > paramInt)) {
-      QCircleFolderFragmentsPart.a(this.a).getChildAt(paramInt).performClick();
+    QCircleAggregationFragmentsPart.a(this.a, paramInt, 2);
+    uys.a();
+    if ((QCircleAggregationFragmentsPart.a(this.a) != null) && (QCircleAggregationFragmentsPart.a(this.a).getChildCount() > paramInt)) {
+      QCircleAggregationFragmentsPart.a(this.a).getChildAt(paramInt).performClick();
     }
-    if ((QCircleFolderFragmentsPart.a(this.a) != null) && (QCircleFolderFragmentsPart.a(this.a).size() > paramInt))
+    if ((QCircleAggregationFragmentsPart.a(this.a) != null) && (QCircleAggregationFragmentsPart.a(this.a).size() > paramInt))
     {
-      ((QCircleBaseTabFragment)QCircleFolderFragmentsPart.a(this.a).get(paramInt)).a(paramInt);
-      uzo localuzo = ((QCircleBaseTabFragment)QCircleFolderFragmentsPart.a(this.a).get(paramInt)).a();
-      if (localuzo != null) {
-        QCircleFolderFragmentsPart.a(this.a, localuzo.a());
+      ((QCircleBaseAggregationFragment)QCircleAggregationFragmentsPart.a(this.a).get(paramInt)).a(paramInt);
+      vbe localvbe = ((QCircleBaseAggregationFragment)QCircleAggregationFragmentsPart.a(this.a).get(paramInt)).a();
+      if (localvbe != null) {
+        QCircleAggregationFragmentsPart.a(this.a, localvbe.a());
       }
     }
-    this.a.b("tab_changed", Integer.valueOf(QCircleFolderFragmentsPart.a(this.a)));
-    QCircleFolderFragmentsPart.a(this.a, QCircleFolderFragmentsPart.a(this.a));
+    this.a.b("tab_changed", Integer.valueOf(QCircleAggregationFragmentsPart.a(this.a)));
+    QCircleAggregationFragmentsPart.a(this.a, QCircleAggregationFragmentsPart.a(this.a));
   }
 }
 

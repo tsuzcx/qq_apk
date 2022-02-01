@@ -1,93 +1,72 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Notification;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class lod
+public abstract class lod
+  extends Binder
+  implements loc
 {
-  private static lod jdField_a_of_type_Lod;
-  int jdField_a_of_type_Int = 0;
-  
-  public static lod a()
+  public static loc a(IBinder paramIBinder)
   {
-    try
-    {
-      lod locallod;
-      if (jdField_a_of_type_Lod != null)
-      {
-        locallod = jdField_a_of_type_Lod;
-        return locallod;
-      }
+    if (paramIBinder == null) {
       return null;
     }
-    finally
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+    if ((localIInterface != null) && ((localIInterface instanceof loc))) {
+      return (loc)localIInterface;
+    }
+    return new loe(paramIBinder);
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      try
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.av.gvideo.IGVServiceForQQ");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+      a(lws.a(paramParcel1.readStrongBinder()));
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+      a(paramParcel1.createByteArray());
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+      boolean bool;
+      if (paramParcel1.readInt() != 0)
       {
-        jdField_a_of_type_Lod = new lod();
-        locallod = jdField_a_of_type_Lod;
-        return locallod;
+        bool = true;
+        if (paramParcel1.readInt() == 0) {
+          break label168;
+        }
       }
-      catch (Exception localException) {}
-      localObject = finally;
+      for (paramParcel1 = (Notification)Notification.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+      {
+        a(bool, paramParcel1);
+        paramParcel2.writeNoException();
+        return true;
+        bool = false;
+        break;
+      }
+    case 4: 
+      label168:
+      paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+      paramInt1 = a(paramParcel1.readLong(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
     }
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    if (lfh.a(BaseApplicationImpl.getContext()).a("sharp/EffectFilterDeviceConfig/isClose", 0) == 0) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public boolean b()
-  {
-    boolean bool = false;
-    if (lfh.a(BaseApplicationImpl.getContext()).a("sharp/qavGestureConfig/isClose", 0) == 0) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public boolean c()
-  {
-    boolean bool = false;
-    if (lfh.a(BaseApplicationImpl.getContext()).a("sharp/qavRedbagConfig/isClose", 0) == 0) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public boolean d()
-  {
-    boolean bool = false;
-    if (lfh.a(BaseApplicationImpl.getContext()).a("sharp/qavScreenRecoder/isClose", 0) == 0) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public boolean e()
-  {
-    boolean bool = false;
-    if (lfh.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDeviceConfig/isClose", 0) == 0) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public boolean f()
-  {
-    return lfh.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDeviceConfig/enable", 0) == 1;
-  }
-  
-  public boolean g()
-  {
-    return lfh.a(BaseApplicationImpl.getContext()).a("sharp/CameraFocusMethod/isUseSelfDev", 0) == 1;
-  }
-  
-  public boolean h()
-  {
-    return 1 == lfh.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDetectInversion/Inversion", 0);
+    paramParcel1.enforceInterface("com.tencent.av.gvideo.IGVServiceForQQ");
+    a();
+    return true;
   }
 }
 

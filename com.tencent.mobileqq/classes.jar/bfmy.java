@@ -1,40 +1,16 @@
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ListView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
 
-public class bfmy
-  extends anxg
+class bfmy
+  implements bfom
 {
-  public bfmy(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  bfmy(bfmw parambfmw) {}
   
-  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VisitorTroopCardFragment.Activity", 2, "onQueryJoinTroopCanNoVerify result:" + paramBoolean);
+    if ((paramBoolean) && (paramInt > 0)) {
+      this.a.a.a.a.smoothScrollBy(paramInt, 200);
     }
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VisitorTroopCardFragment.Activity", 2, "onQueryJoinTroopCanNoVerify noVerify:" + paramInt);
-      }
-      this.a.b = paramInt;
-      if (this.a.b == 1)
-      {
-        if (this.a.a.isHomeworkTroop())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("VisitorTroopCardFragment.Activity", 2, "onQueryJoinTroopCanNoVerify isHomeworkTroop true");
-          }
-          this.a.a(1);
-          return;
-        }
-        this.a.e();
-        return;
-      }
-      VisitorTroopCardFragment.b(this.a);
-      return;
-    }
-    VisitorTroopCardFragment.b(this.a);
   }
 }
 

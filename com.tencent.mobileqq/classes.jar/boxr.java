@@ -1,32 +1,37 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tavcut.player.MoviePlayer;
+import dov.com.qq.im.ae.play.AEVideoPreviewFragment;
 
 public class boxr
-  extends AnimatorListenerAdapter
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public boxr(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public boxr(AEVideoPreviewFragment paramAEVideoPreviewFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim  140ms end");
+    float f = paramInt / 1000.0F / 1000.0F;
+    if (paramBoolean)
+    {
+      paramSeekBar = new CMTime(f);
+      this.a.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.seekToTime(paramSeekBar);
     }
-    avsp.a();
-    this.a.a.setImageResource(2130844459);
-    this.a.a.setOnTouchListener(null);
-    this.a.a.setOnTouchListener(new boxs(this));
-    this.a.b.setStateful(true);
-    this.a.b.setOnClickListener(new boxt(this));
+    paramSeekBar = bpkx.a((f * 1000.0F));
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramSeekBar);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim start");
-    }
+    AEVideoPreviewFragment.a(this.a);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    AEVideoPreviewFragment.b(this.a);
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

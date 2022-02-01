@@ -1,61 +1,29 @@
-import android.graphics.ColorFilter;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import android.hardware.camera2.CameraCaptureSession;
+import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
+import android.hardware.camera2.CaptureFailure;
+import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.TotalCaptureResult;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
 
-class bcze
-  implements afwq
+public class bcze
+  extends CameraCaptureSession.CaptureCallback
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  boolean jdField_a_of_type_Boolean;
-  TextView b;
+  public bcze(Camera2Control paramCamera2Control) {}
   
-  private void a(boolean paramBoolean)
+  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
   {
-    Drawable localDrawable = this.a.getBackground();
-    if (localDrawable != null) {
-      if (!paramBoolean) {
-        break label28;
-      }
-    }
-    label28:
-    for (ColorFilter localColorFilter = null;; localColorFilter = BaseBubbleBuilder.a)
-    {
-      localDrawable.setColorFilter(localColorFilter);
-      localDrawable.invalidateSelf();
-      return;
-    }
+    bczm.a(1, "[Camera2]captureStillPicture completed!");
+    Camera2Control.a(this.a, 0L);
+    Camera2Control.e(this.a, false);
+    Camera2Control.a(this.a).a(0);
+    Camera2Control.b(this.a);
   }
   
-  public void a(View paramView, MotionEvent paramMotionEvent)
+  public void onCaptureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureFailure paramCaptureFailure)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-    case 1: 
-    case 3: 
-      do
-      {
-        return;
-        paramView = this.a.getBackground();
-      } while (paramView == null);
-      paramView.setColorFilter(null);
-      paramView.invalidateSelf();
-      return;
-    }
-    a(false);
-  }
-  
-  public void a(View paramView, boolean paramBoolean)
-  {
-    a(paramBoolean);
+    bczm.a(1, "[Camera2]captureStillPicture failed!");
+    Camera2Control.a(this.a, 0L);
   }
 }
 

@@ -1,21 +1,28 @@
 package com.tencent.ttpic.filter;
 
+import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.filter.BaseFilter;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.fps.BenchUtil;
+import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTSegAttr;
 import com.tencent.ttpic.openapi.filter.CosFunHelper;
 import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
 import com.tencent.ttpic.openapi.filter.CosFunTransitionFilter;
+import com.tencent.ttpic.openapi.filter.StyleChildFilter;
+import com.tencent.ttpic.openapi.filter.stylizefilter.customFilter.StyleCustomFilterGroup;
 import com.tencent.ttpic.openapi.model.cosfun.CosFun.CosFunItem;
 import com.tencent.ttpic.openapi.model.cosfun.CosFun.PagIndexList;
 import com.tencent.ttpic.trigger.TriggerManager;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FrameUtil;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class CosFunFilter
@@ -31,14 +38,38 @@ public class CosFunFilter
   private CosFun.CosFunItem cosFunItem;
   private CosFunTransitionFilter cosFunTransitionFilter;
   private CosFunFilter.CosTransTime cosTransTime;
+  private StyleCustomFilterGroup customFilterGroup;
+  private boolean enableGAN;
   private boolean firstPagFrameRenderTriggered = false;
   private FreezeFilter freezeFilter;
+  private StyleChildFilter ganFilter;
   private long initStartTime;
   private boolean isCosTransInit = false;
   private BaseFilter mCopyFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   private PagFilter pagFilter;
+  private List<Bitmap> textureMaterials = new ArrayList();
   private TriggerManager triggerManager;
   private long triggerStartTime;
+  
+  private void decodeTextureMaterials(String paramString)
+  {
+    if (this.cosFunItem != null)
+    {
+      Object localObject1 = this.cosFunItem.getTextureMaterialsForGAN();
+      if (localObject1 != null)
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          Object localObject2 = (String)((Iterator)localObject1).next();
+          localObject2 = BitmapUtils.decodeBitmap(FileUtils.genSeperateFileDir(paramString) + (String)localObject2, true);
+          if (BitmapUtils.isLegal((Bitmap)localObject2)) {
+            this.textureMaterials.add(localObject2);
+          }
+        }
+      }
+    }
+  }
   
   private Frame fillBlackFrame(Frame paramFrame, int paramInt1, int paramInt2)
   {
@@ -54,6 +85,13 @@ public class CosFunFilter
     this.mCopyFilter.setPositions(arrayOfFloat);
     this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramInt1, paramInt2, -1, 0.0D, this.copyFrame);
     return this.copyFrame;
+  }
+  
+  private void initCustomFilterGroup()
+  {
+    if (this.customFilterGroup != null) {
+      this.customFilterGroup.apply();
+    }
   }
   
   private CosFunFilter.TimeSection judgeTimeSection(long paramLong)
@@ -100,6 +138,17 @@ public class CosFunFilter
     this.pagFilter.init();
   }
   
+  private void recyleTextureMaterials()
+  {
+    if (this.textureMaterials != null)
+    {
+      Iterator localIterator = this.textureMaterials.iterator();
+      while (localIterator.hasNext()) {
+        BitmapUtils.recycle((Bitmap)localIterator.next());
+      }
+    }
+  }
+  
   public boolean durationComplete(long paramLong)
   {
     return paramLong - this.triggerStartTime > this.cosFunItem.getDuration();
@@ -110,12 +159,15 @@ public class CosFunFilter
     return this.cosFunItem.getDuration();
   }
   
-  public void init(String paramString, CosFun.CosFunItem paramCosFunItem, TriggerManager paramTriggerManager)
+  public void init(String paramString, CosFun.CosFunItem paramCosFunItem, TriggerManager paramTriggerManager, StyleCustomFilterGroup paramStyleCustomFilterGroup)
   {
     this.cosFunItem = paramCosFunItem;
     this.mCopyFilter.apply();
     this.triggerManager = paramTriggerManager;
     parseFreeze(paramCosFunItem);
+    this.customFilterGroup = paramStyleCustomFilterGroup;
+    initCustomFilterGroup();
+    decodeTextureMaterials(paramString);
     parseCosTransition(paramString, paramCosFunItem);
     parsePagFilter(paramString, paramCosFunItem);
   }
@@ -137,6 +189,9 @@ public class CosFunFilter
       this.cosFunTransitionFilter.destroy();
       this.cosFunTransitionFilter = null;
     }
+    if (this.customFilterGroup != null) {
+      this.customFilterGroup.destroy();
+    }
     this.copyFrame.clear();
     if (this.cosTransTime != null) {
       this.cosTransTime = null;
@@ -148,6 +203,7 @@ public class CosFunFilter
       this.pagFilter = null;
     }
     this.mCopyFilter.ClearGLSL();
+    recyleTextureMaterials();
   }
   
   public Frame render(Frame paramFrame, PTFaceAttr paramPTFaceAttr, PTSegAttr paramPTSegAttr, AIAttr paramAIAttr)
@@ -193,7 +249,16 @@ public class CosFunFilter
         paramPTSegAttr = paramAIAttr;
         if (paramPTFaceAttr.getFaceCount() > 0)
         {
-          this.cosFunTransitionFilter.init(paramAIAttr.getTextureId(), paramAIAttr.width, paramAIAttr.height, (List)paramPTFaceAttr.getAllFacePoints().get(0), paramPTFaceAttr.getFaceDetectScale());
+          if ((this.ganFilter != null) && (this.customFilterGroup != null))
+          {
+            paramPTSegAttr = this.ganFilter.getTextureBitmapList();
+            this.ganFilter.setTextureBitmapList(this.textureMaterials);
+            this.ganFilter.updateAndRender(paramFrame, paramPTFaceAttr, paramPTFaceAttr.getFaceDetectScale());
+            this.customFilterGroup.updateVideoSize(paramFrame.width, paramFrame.height);
+            this.cosFunTransitionFilter.setMaterialFrame(this.customFilterGroup.render(this.ganFilter.render(paramAIAttr)));
+            this.ganFilter.setTextureBitmapList(paramPTSegAttr);
+          }
+          this.cosFunTransitionFilter.init(paramAIAttr.getTextureId(), paramAIAttr.width, paramAIAttr.height, (List)paramPTFaceAttr.getAllFacePoints().get(0), paramPTFaceAttr.getFaceDetectScale(), this.enableGAN);
           this.isCosTransInit = true;
           paramPTSegAttr = paramAIAttr;
           continue;
@@ -215,6 +280,16 @@ public class CosFunFilter
   public void reset()
   {
     this.triggerStartTime = 0L;
+  }
+  
+  public void setEnableGAN(boolean paramBoolean)
+  {
+    this.enableGAN = paramBoolean;
+  }
+  
+  public void setGanFilter(StyleChildFilter paramStyleChildFilter)
+  {
+    this.ganFilter = paramStyleChildFilter;
   }
   
   public void updateParams(PTFaceAttr paramPTFaceAttr)

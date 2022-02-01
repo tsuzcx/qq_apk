@@ -1,45 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqcircle.QCircleInitBean;
-import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StTagInfo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.graphics.PointF;
+import android.widget.ImageView;
+import com.tencent.biz.qqcircle.manager.QCircleFuelAnimationManager.1;
 
 public class vqp
-  extends zzj
+  extends AnimatorListenerAdapter
 {
-  private QCircleInitBean a;
-  private boolean b;
+  public vqp(QCircleFuelAnimationManager.1 param1, PointF paramPointF) {}
   
-  public vqp(QCircleInitBean paramQCircleInitBean, boolean paramBoolean)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = paramQCircleInitBean;
-    this.b = paramBoolean;
-  }
-  
-  public void a() {}
-  
-  public void a(zzp paramzzp)
-  {
-    QCircleGetFeedListRequest localQCircleGetFeedListRequest;
-    if ((this.a != null) && (this.a.getTagInfo() != null) && ((!TextUtils.isEmpty(this.a.getTagInfo().tagId.get())) || (!TextUtils.isEmpty(this.a.getTagInfo().tagName.get()))))
-    {
-      localQCircleGetFeedListRequest = new QCircleGetFeedListRequest(this.a.getTagInfo().tagId.get(), this.a.getTagInfo().tagName.get(), this.b, null, null);
-      paramzzp = new vqq(this, localQCircleGetFeedListRequest, paramzzp);
-      if (!this.b) {
-        break label179;
-      }
-      localQCircleGetFeedListRequest.setEnableCache(false);
-    }
-    for (;;)
-    {
-      VSNetworkHelper.a().a(localQCircleGetFeedListRequest, paramzzp);
-      QLog.d("QCircleTagPreLoaderTask", 1, "QCircleTagPreLoaderTask->sendQCircleRequest: CmdName:" + localQCircleGetFeedListRequest.getCmdName() + "| TraceId:" + localQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + localQCircleGetFeedListRequest.getCurrentSeq());
-      return;
-      label179:
-      localQCircleGetFeedListRequest.setEnableCache(true);
-    }
+    super.onAnimationEnd(paramAnimator);
+    this.jdField_a_of_type_ComTencentBizQqcircleManagerQCircleFuelAnimationManager$1.b.setVisibility(4);
+    this.jdField_a_of_type_ComTencentBizQqcircleManagerQCircleFuelAnimationManager$1.b.setX(this.jdField_a_of_type_AndroidGraphicsPointF.x);
+    this.jdField_a_of_type_ComTencentBizQqcircleManagerQCircleFuelAnimationManager$1.b.setY(this.jdField_a_of_type_AndroidGraphicsPointF.y + bhtq.a(5.0F));
+    this.jdField_a_of_type_ComTencentBizQqcircleManagerQCircleFuelAnimationManager$1.b.clearAnimation();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import anwd;
+import aoip;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.WeakReference;
 
@@ -15,7 +15,7 @@ class MessageForQQWalletTips$1$1
     if (localQQAppInterface == null) {
       return;
     }
-    ((anwd)localQQAppInterface.a(20)).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips$1.jdField_a_of_type_JavaLangString), Long.parseLong(this.jdField_a_of_type_JavaLangString));
+    ((aoip)localQQAppInterface.a(20)).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips$1.jdField_a_of_type_JavaLangString), Long.parseLong(this.jdField_a_of_type_JavaLangString));
   }
 }
 

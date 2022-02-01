@@ -1,17 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.app.proxy.GroupActionResp;
+import com.tencent.qphone.base.util.QLog;
 
 public class aesx
-  implements View.OnClickListener
+  extends anyu
 {
-  public aesx(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public aesx(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onClick(View paramView)
+  protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    bgtv.a(this.a.app, this.a, "setting");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onAddGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onDeleteGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onRenameGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onResortGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(true);
+    GroupManagerActivity.c(this.a, true);
   }
 }
 

@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.emoticonview;
 
-import arxr;
-import asaf;
+import asnf;
+import aspt;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class EmoticonPanelCameraHelper$3
   implements Runnable
 {
-  public EmoticonPanelCameraHelper$3(arxr paramarxr) {}
+  public EmoticonPanelCameraHelper$3(asnf paramasnf) {}
   
   public void run()
   {
     List localList = this.this$0.a.b;
     int i;
-    asaf localasaf;
+    aspt localaspt;
     if (localList != null)
     {
       i = 0;
       if (i < localList.size())
       {
-        localasaf = (asaf)localList.get(i);
-        if ((localasaf == null) || (localasaf.a != 11)) {}
+        localaspt = (aspt)localList.get(i);
+        if ((localaspt == null) || (localaspt.a != 11)) {}
       }
     }
     for (;;)
     {
-      if ((localasaf != null) && (this.this$0.a.a != null)) {
-        this.this$0.a.a.a(localasaf);
+      if ((localaspt != null) && (this.this$0.a.a != null)) {
+        this.this$0.a.a.a(localaspt);
       }
       while (!QLog.isColorLevel())
       {
@@ -37,7 +37,7 @@ public class EmoticonPanelCameraHelper$3
       }
       QLog.d("EmoticonPanelCameraHelper", 2, "updateCameraEmoticonPanel cameraInfo can not find");
       return;
-      localasaf = null;
+      localaspt = null;
     }
   }
 }

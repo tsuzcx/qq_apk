@@ -1,12 +1,8 @@
 public class lji
 {
-  public int a;
-  public byte[] a;
-  
-  public lji(ljh paramljh)
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  int a;
+  int b;
+  int c;
 }
 
 

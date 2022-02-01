@@ -1,15 +1,26 @@
-import android.graphics.ColorMatrixColorFilter;
-import com.tencent.mobileqq.identification.IdentificationPoseReflect.3.1;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYTReflectListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avfi
-  implements YtSDKKitFramework.IYTReflectListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  avfi(avfh paramavfh) {}
+  public avfi(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
   
-  public void onReflectEvent(ColorMatrixColorFilter paramColorMatrixColorFilter)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    avfh.a(this.a, new IdentificationPoseReflect.3.1(this, paramColorMatrixColorFilter));
+    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131694443), "qqsetting_auto_receive_magic_face_key", paramBoolean);
+    QQAppInterface localQQAppInterface = QQSettingAutoDownloadAndSaveFragment.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      bdll.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.adapter;
 
-import amdv;
+import ampp;
 
 class NewFriendMoreSysMsgAdapter$10$1
   implements Runnable
@@ -9,7 +9,7 @@ class NewFriendMoreSysMsgAdapter$10$1
   
   public void run()
   {
-    amdv.c(this.a.this$0);
+    ampp.c(this.a.this$0);
   }
 }
 

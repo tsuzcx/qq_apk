@@ -1,59 +1,13 @@
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
 
-public class ozu
-  implements bkhe
+final class ozu
+  implements tch
 {
-  private List<bkhe> a = new ArrayList();
+  ozu(Context paramContext, String paramString) {}
   
-  public void a(bkhe parambkhe)
+  public void a()
   {
-    if ((this.a != null) && (!this.a.contains(parambkhe))) {
-      this.a.add(parambkhe);
-    }
-  }
-  
-  public void b(bkhe parambkhe)
-  {
-    if (this.a != null) {
-      this.a.remove(parambkhe);
-    }
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((this.a == null) || (this.a.size() <= 0)) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        bkhe localbkhe = (bkhe)localIterator.next();
-        if (localbkhe != null) {
-          localbkhe.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-        }
-      }
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((this.a == null) || (this.a.size() <= 0)) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        bkhe localbkhe = (bkhe)localIterator.next();
-        if (localbkhe != null) {
-          localbkhe.onScrollStateChanged(paramAbsListView, paramInt);
-        }
-      }
-    }
+    ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
   }
 }
 

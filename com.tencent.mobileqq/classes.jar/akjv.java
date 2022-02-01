@@ -1,23 +1,33 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.XListView;
 
 class akjv
-  implements MediaScanner.OnMediaInfoScannerListener
+  implements bljn
 {
-  akjv(akju paramakju, Intent paramIntent, ArrayList paramArrayList) {}
+  akjv(akjn paramakjn) {}
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    ((NewPhotoListActivity)this.jdField_a_of_type_Akju.mActivity).cancleProgressDailog();
-    if (bpwu.a(this.jdField_a_of_type_Akju.mActivity, paramLocalMediaInfo))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-      PhotoUtils.a(this.jdField_a_of_type_Akju.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
+    if (QLog.isColorLevel()) {
+      QLog.i(akjn.jdField_a_of_type_JavaLangString, 2, "onLongClick, position = " + paramInt);
     }
+    paramAdapterView = this.a.jdField_a_of_type_ComTencentWidgetXListView.getAdapter();
+    if (paramAdapterView == this.a.jdField_a_of_type_Akjm)
+    {
+      this.a.jdField_a_of_type_Akjl = ((akjl)this.a.jdField_a_of_type_Akjm.getItem(paramInt));
+      paramView.setSelected(true);
+      paramAdapterView = new bhuk();
+      paramAdapterView.a(2131365191, anzj.a(2131705554), 2130838930);
+      paramAdapterView.a(2131367078, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692400), 2130838939);
+      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bhkx.a(paramView, paramAdapterView, akjn.a(this.a), new akjw(this, paramView));
+    }
+    while (paramAdapterView != this.a.jdField_a_of_type_Akjx) {
+      return true;
+    }
+    return true;
   }
 }
 

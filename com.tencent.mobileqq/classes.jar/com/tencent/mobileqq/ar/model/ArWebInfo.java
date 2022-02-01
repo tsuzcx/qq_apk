@@ -3,12 +3,12 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apej;
+import aprz;
 
 public class ArWebInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArWebInfo> CREATOR = new apej();
+  public static final Parcelable.Creator<ArWebInfo> CREATOR = new aprz();
   public String a;
   public boolean a;
   public String b;

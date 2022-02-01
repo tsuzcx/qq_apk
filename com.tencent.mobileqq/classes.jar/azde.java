@@ -1,12 +1,46 @@
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Random;
+
 public class azde
+  extends bcpv
 {
-  public int a;
-  public Object a;
+  OlympicToolAppInterface jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
+  Random jdField_a_of_type_JavaUtilRandom = new Random();
   
-  public azde(int paramInt, Object paramObject)
+  public azde(OlympicToolAppInterface paramOlympicToolAppInterface)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    if (QLog.isColorLevel()) {
+      QLog.i("OlympicToolService", 2, "new OlympicToolService");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface = paramOlympicToolAppInterface;
+    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
+  }
+  
+  public AppInterface a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
+  }
+  
+  protected void a()
+  {
+    try
+    {
+      super.a();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    super.b(paramToServiceMsg, null, azdf.class);
   }
 }
 

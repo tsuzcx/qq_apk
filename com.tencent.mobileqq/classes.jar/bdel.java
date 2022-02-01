@@ -1,7 +1,22 @@
+import com.tencent.qphone.base.util.QLog;
+
 public class bdel
 {
-  public int a;
-  public bdem[] a;
+  private static final String[] a = { "libgnustl_shared.so", "libSNPE.so", "libQMCF_snpe.so" };
+  
+  private static boolean b()
+  {
+    String str = bdek.b();
+    synchronized (bdek.a())
+    {
+      boolean bool1 = bhmi.a(str + "libQMCF.so");
+      boolean bool2 = bhmi.a(str + a[2]);
+      if (QLog.isColorLevel()) {
+        QLog.i("SVAF_SoLoad", 2, String.format("isArtFilterSoExist, qmcfso[%s], snpeso[%s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      }
+      return bool1;
+    }
+  }
 }
 
 

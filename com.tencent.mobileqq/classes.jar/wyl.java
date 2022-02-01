@@ -1,33 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.MessageMicro;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.widget.ARMapHongBaoListView;
 
-public class wyl<REQ extends MessageMicro>
-  extends wlf<xaj>
+class wyl
+  implements View.OnLayoutChangeListener
 {
-  public final Bundle a;
-  public final REQ a;
-  public final String a;
+  wyl(wyd paramwyd, wta paramwta) {}
   
-  public wyl(String paramString, REQ paramREQ, Bundle paramBundle)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramREQ;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public wla a(byte[] paramArrayOfByte)
-  {
-    return new xaj(paramArrayOfByte);
-  }
-  
-  protected byte[] a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro.toByteArray();
+    yuk.b(wyd.b(), "onLayoutChange");
+    if ((paramInt4 - paramInt2 > 0) && (paramInt3 - paramInt1 > 0) && ((this.jdField_a_of_type_Wyd.d) || (this.jdField_a_of_type_Wyd.e)) && (!this.jdField_a_of_type_Wyd.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.mForStory))
+    {
+      yuk.b(wyd.b(), "first show node, showStoryNode");
+      if (this.jdField_a_of_type_Wyd.d)
+      {
+        this.jdField_a_of_type_Wyd.d = false;
+        this.jdField_a_of_type_Wta.b("first_show_node", Boolean.valueOf(false));
+      }
+      this.jdField_a_of_type_Wyd.e = false;
+      if (this.jdField_a_of_type_Wyd.a()) {
+        this.jdField_a_of_type_Wyd.jdField_a_of_type_Wxp.a("exp_story", 4);
+      }
+    }
   }
 }
 

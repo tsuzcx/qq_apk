@@ -4,7 +4,7 @@ import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import feedcloud.FeedCloudMeta.StComment;
 import feedcloud.FeedCloudMeta.StReply;
 import java.util.List;
-import uxx;
+import uzg;
 
 public class QCircleCommentUpdateEvent
   extends SimpleBaseEvent
@@ -34,7 +34,7 @@ public class QCircleCommentUpdateEvent
   {
     this.eventStatus = paramInt1;
     this.feedId = paramString;
-    this.comment = uxx.b(paramStComment);
+    this.comment = uzg.b(paramStComment);
     this.commentTotalNum = paramInt2;
     this.contextHashCode = paramInt3;
   }
@@ -43,8 +43,8 @@ public class QCircleCommentUpdateEvent
   {
     this.eventStatus = paramInt1;
     this.feedId = paramString;
-    this.comment = uxx.b(paramStComment);
-    this.reply = uxx.a(paramStReply);
+    this.comment = uzg.b(paramStComment);
+    this.reply = uzg.a(paramStReply);
     this.contextHashCode = paramInt2;
   }
   
@@ -52,8 +52,8 @@ public class QCircleCommentUpdateEvent
   {
     this.eventStatus = paramInt1;
     this.feedId = paramString;
-    this.comment = uxx.b(paramStComment);
-    this.reply = uxx.a(paramStReply);
+    this.comment = uzg.b(paramStComment);
+    this.reply = uzg.a(paramStReply);
     this.commentTotalNum = paramInt2;
     this.contextHashCode = paramInt3;
   }

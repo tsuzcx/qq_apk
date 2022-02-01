@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import aeav;
-import uwz;
+import aejz;
+import uyk;
 
 public class ConversationTitleBtnCtrl$6
   implements Runnable
 {
-  public ConversationTitleBtnCtrl$6(aeav paramaeav) {}
+  public ConversationTitleBtnCtrl$6(aejz paramaejz) {}
   
   public void run()
   {
-    uwz.a().c();
+    uyk.a().c();
   }
 }
 

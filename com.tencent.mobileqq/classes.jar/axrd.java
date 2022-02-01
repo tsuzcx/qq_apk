@@ -1,62 +1,66 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class axrd
-  extends axrc
+public final class axrd
+  extends Handler
 {
-  protected View a;
-  
-  protected int a()
+  public axrd(QQPlayerService paramQQPlayerService, Looper paramLooper)
   {
-    return 2131561261;
+    super(paramLooper);
   }
   
-  protected LabelContainer a(View paramView, int paramInt1, axid paramaxid, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    paramaxid = (ImageView)paramView.findViewById(2131380151);
-    if (paramInt1 == 7) {
-      paramaxid.setVisibility(8);
+    switch (paramMessage.what)
+    {
+    default: 
+      QQPlayerService.a(this.a, (Intent)paramMessage.obj);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != 0)
+      return;
+      try
       {
-        paramaxid = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-        paramaxid.topMargin = zby.b(this.jdField_a_of_type_AndroidContentContext, 16.0F);
-        paramView.setLayoutParams(paramaxid);
+        BaseApplicationImpl.getContext().unregisterReceiver(QQPlayerService.a(this.a));
+        paramMessage = (axrc)paramMessage.obj;
+        if (paramMessage == null) {
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("QQPlayerService", 2, "release player");
+        }
+        if (paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+        {
+          paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+          if (QQPlayerService.a() == paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer) {
+            QQPlayerService.a(null);
+          }
+        }
+        if (paramMessage.jdField_a_of_type_AndroidOsLooper != null) {
+          paramMessage.jdField_a_of_type_AndroidOsLooper.quit();
+        }
+        if (QQPlayerService.d() != paramMessage.jdField_a_of_type_ComTencentMobileqqMusicSongInfo) {
+          continue;
+        }
+        QQPlayerService.a(null);
+        return;
       }
-      paramInt1 = zby.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
-      paramInt2 = zby.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
-      paramView = (LabelContainer)paramView.findViewById(2131369508);
-      paramView.setSpace(paramInt1, paramInt2);
-      return paramView;
-      paramaxid.setImageResource(b[paramInt1]);
-    }
-  }
-  
-  public void a(Context paramContext, LinearLayout paramLinearLayout, View paramView)
-  {
-    super.a(paramContext, paramLinearLayout);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public boolean a(axid[] paramArrayOfaxid)
-  {
-    if (super.a(paramArrayOfaxid))
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QQPlayerService", 2, "onDestroy unregisterReceiver exception ");
+          }
+        }
+      }
     }
   }
 }

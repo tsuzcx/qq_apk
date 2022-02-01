@@ -1,13 +1,10 @@
-class bnik
-  extends bolh
+import cooperation.qzone.statistic.access.concept.Collector;
+
+public abstract class bnik
 {
-  bnik(bnii parambnii) {}
+  public static bnik a = new bnil();
   
-  public void a()
-  {
-    super.a();
-    this.a.j();
-  }
+  public abstract boolean a(Collector paramCollector);
 }
 
 

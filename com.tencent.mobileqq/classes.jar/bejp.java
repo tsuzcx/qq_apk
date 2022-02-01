@@ -1,21 +1,35 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.app.MobileQQ;
+import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfoResult;
 
-public class bejp
-  implements wiw
+class bejp
+  extends bejr
 {
-  public bejp(TroopBarPublishActivity paramTroopBarPublishActivity, String paramString1, long paramLong, String paramString2) {}
+  bejp(bejo parambejo) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, List<oidb_0xe61.BeancurdCubeInfoResult> paramList)
   {
-    zkr.f(this.jdField_a_of_type_JavaLangString);
-    if (paramInt != 0)
+    String str;
+    if (QLog.isColorLevel())
     {
-      QLog.i("tribe_publish_TroopBarPublishActivity", 1, "merge music failed. merge file path:" + this.jdField_a_of_type_JavaLangString + " merge result:" + paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(null, this.jdField_a_of_type_Long);
+      str = MobileQQ.getShortUinStr(paramString2);
+      if (paramList != null) {
+        break label111;
+      }
+    }
+    label111:
+    for (int i = 0;; i = paramList.size())
+    {
+      QLog.i("Tofu_TofuManager", 2, String.format("onPullTofuMsgData suc=%b selfUin=%s frdUin=%s size=%d", new Object[] { Boolean.valueOf(paramBoolean), paramString1, str, Integer.valueOf(i) }));
+      if (paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+        this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, new Object[] { Boolean.valueOf(paramBoolean), paramString2, paramList }).sendToTarget();
+      }
       return;
     }
-    TroopBarPublishActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, this.b, this.jdField_a_of_type_Long);
   }
 }
 

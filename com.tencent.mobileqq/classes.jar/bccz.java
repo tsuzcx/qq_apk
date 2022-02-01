@@ -1,90 +1,90 @@
-import QMF_PROTOCAL.QmfDownstream;
-import QzoneCombine.ClientOnlineNotfiyRsp;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.WNSStream;
-import java.io.IOException;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
 
 public class bccz
-  extends MSFServlet
+  extends bimg
+  implements bine
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public bccz(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {
-    if (paramFromServiceMsg == null) {
-      QLog.e("NotifyQZoneServer", 1, "fromServiceMsg==null");
-    }
-    for (;;)
-    {
-      return;
-      if (paramFromServiceMsg.getResultCode() != 1000) {
-        break label192;
-      }
-      Object localObject = new WNSStream();
-      paramFromServiceMsg = bguc.b(paramFromServiceMsg.getWupBuffer());
-      try
-      {
-        paramFromServiceMsg = ((WNSStream)localObject).unpack(paramFromServiceMsg);
-        if (paramFromServiceMsg != null)
-        {
-          paramFromServiceMsg = (ClientOnlineNotfiyRsp)bkze.a(ClientOnlineNotfiyRsp.class, paramFromServiceMsg.BusiBuff);
-          if (paramFromServiceMsg != null)
-          {
-            localObject = paramFromServiceMsg.AttachInfo;
-            paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).edit();
-            localObject = bgmj.a((byte[])localObject);
-            paramIntent = paramIntent.getStringExtra("key_uin");
-            paramFromServiceMsg.putString("key_attach_info" + paramIntent, (String)localObject);
-            if (QLog.isDevelopLevel()) {
-              QLog.d("NotifyQZoneServer", 4, "onReceive attachinfo:" + (String)localObject);
-            }
-            if (Build.VERSION.SDK_INT >= 9)
-            {
-              paramFromServiceMsg.apply();
-              return;
-            }
-          }
-        }
-      }
-      catch (IOException paramIntent)
-      {
-        QLog.e("NotifyQZoneServer", 1, paramIntent, new Object[0]);
-        return;
-      }
-    }
-    paramFromServiceMsg.commit();
-    return;
-    label192:
-    QLog.e("NotifyQZoneServer", 1, "onReceive fromServiceMsg.getResultCode():" + paramFromServiceMsg.getResultCode());
+    super(paramContext, paramActivity, paramAppInterface);
+    this.mWebview = paramTouchWebView;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a()
   {
-    long l = paramIntent.getLongExtra("lastPushMsgTime", 0L);
-    paramIntent = paramIntent.getStringExtra("key_uin");
-    paramIntent = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).getString("key_attach_info" + paramIntent, "");
-    byte[] arrayOfByte = bgmj.a(paramIntent);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("NotifyQZoneServer", 4, "onSend lastPushMsgTime:" + l + ",attachinfo:" + paramIntent);
-    }
-    blrc localblrc = new blrc(l, arrayOfByte);
-    arrayOfByte = localblrc.encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null)
-    {
-      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localblrc.uniKey());
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(30000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localblrc.uniKey());
-    paramPacket.putSendData(paramIntent);
+    super.doOnResume();
   }
+  
+  public void b()
+  {
+    super.doOnPause();
+  }
+  
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    super.bindJavaScript(paramArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.i("KDSearchResultBuilder", 2, "[bindJavaScript]");
+    }
+    paramArrayList.add(new tyo());
+    paramArrayList.add(new awhh());
+    paramArrayList.add(new UiApiPlugin());
+    paramArrayList.add(new SensorAPIJavaScript());
+    paramArrayList.add(new awgf());
+    paramArrayList.add(new MediaApiPlugin());
+    paramArrayList.add(new VasCommonJsPlugin());
+  }
+  
+  public void buildBottomBar() {}
+  
+  public void buildContentView(Bundle paramBundle) {}
+  
+  public void buildData() {}
+  
+  public void buildLayout() {}
+  
+  public void buildTitleBar() {}
+  
+  public void buildWebView(AppInterface paramAppInterface)
+  {
+    super.buildBaseWebView(paramAppInterface);
+    this.mWebview.setWebViewClient(new bcda(this, this.mWebview.getPluginEngine()));
+  }
+  
+  public void c()
+  {
+    super.doOnDestroy();
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public void onWebViewReady()
+  {
+    super.onWebViewReady();
+  }
+  
+  public void preInitWebviewPlugin() {}
 }
 
 

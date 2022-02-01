@@ -1,58 +1,12 @@
-import android.os.RemoteException;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import cooperation.qqfav.QfavHelper.4;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 
-public class bljr
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public abstract interface bljr
 {
-  public bljr(QfavHelper.4 param4) {}
+  public abstract View a(ViewGroup paramViewGroup, AdapterView paramAdapterView, int paramInt);
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
-  {
-    try
-    {
-      if (!paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
-      {
-        if (this.a.a == null)
-        {
-          paramPluginManagerClient.installPlugin("qqfav.apk");
-          return;
-        }
-        paramPluginManagerClient.installPlugin("qqfav.apk", this.a.a);
-        return;
-      }
-    }
-    catch (Exception paramPluginManagerClient)
-    {
-      if (this.a.a != null)
-      {
-        try
-        {
-          this.a.a.onInstallError("qqfav.apk", -1);
-          return;
-        }
-        catch (RemoteException paramPluginManagerClient)
-        {
-          paramPluginManagerClient.printStackTrace();
-          return;
-        }
-        paramPluginManagerClient = this.a.a;
-        if (paramPluginManagerClient != null) {
-          try
-          {
-            this.a.a.onInstallFinish("qqfav.apk");
-            return;
-          }
-          catch (RemoteException paramPluginManagerClient)
-          {
-            paramPluginManagerClient.printStackTrace();
-          }
-        }
-      }
-    }
-  }
+  public abstract void a(ViewGroup paramViewGroup, View paramView, int paramInt);
 }
 
 

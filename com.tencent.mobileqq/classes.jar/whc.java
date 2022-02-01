@@ -1,23 +1,19 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-
 public class whc
 {
-  public int a;
-  public final long a;
-  public final String a;
-  public boolean a;
-  public String b = "";
-  
-  public whc(String paramString)
+  public static int a(int paramInt)
   {
-    this.jdField_a_of_type_Int = 1000;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public ErrorMessage a()
-  {
-    return new ErrorMessage(this.jdField_a_of_type_Int, this.b);
+    switch (paramInt)
+    {
+    case 1: 
+    case 2: 
+    case 5: 
+    case 6: 
+    default: 
+      return 6;
+    case 4: 
+      return 10;
+    }
+    return 10;
   }
 }
 

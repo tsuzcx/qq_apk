@@ -1,28 +1,27 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr;
-import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr.DragViewIcon;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 
-public class bqde
-  extends AnimatorListenerAdapter
+class bqde
+  extends bpor
 {
-  public bqde(DragAnimationMgr paramDragAnimationMgr, DragAnimationMgr.DragViewIcon paramDragViewIcon) {}
+  bqde(bqdc parambqdc) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.b = false;
-    DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr);
-    if (DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr) != null) {
-      DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr).b();
-    }
+    bjuh.a().a(anzj.a(2131702591) + bqdc.a(this.a));
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.b = false;
-    DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr);
-    if (DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr) != null) {
-      DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr).b();
+    if ((paramBoolean) && (bqdc.a(this.a).getLocalPath().equals(paramString)))
+    {
+      bqdc.a(this.a).sendEmptyMessage(2);
+      bqdc.a(this.a, bqdc.a(this.a));
     }
   }
 }

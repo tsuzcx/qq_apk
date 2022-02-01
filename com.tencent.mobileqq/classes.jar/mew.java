@@ -1,19 +1,50 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.MultiMembersVideoUI;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiIncomingCallUICtr.1.1;
 
 public class mew
-  implements View.OnTouchListener
+  extends BroadcastReceiver
 {
-  public mew(MultiMembersVideoUI paramMultiMembersVideoUI) {}
+  mew(mev parammev) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    paramContext = paramIntent.getAction();
+    long l = muk.a(paramIntent);
+    if (paramContext.equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION")) {
+      if (this.a.b == 1) {
+        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new MultiIncomingCallUICtr.1.1(this), 500L);
+      }
     }
-    return paramMotionEvent.getAction() == 2;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramContext = lcb.a().a();
+          this.a.a(l, paramContext);
+          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
+        } while (this.a.jdField_a_of_type_Mlb == null);
+        this.a.jdField_a_of_type_Mlb.a();
+        return;
+        if (paramContext.equals("tencent.video.invite.multiaccept"))
+        {
+          paramContext = lcb.a().a();
+          this.a.a(l, paramContext);
+          return;
+        }
+        if (!paramContext.equals("tencent.video.invite.multirefuse")) {
+          break;
+        }
+      } while (this.a.b(0));
+      this.a.a(l, true, null);
+      return;
+    } while (!paramContext.equals("tencent.video.destroyService"));
   }
 }
 

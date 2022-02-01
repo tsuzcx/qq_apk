@@ -1,43 +1,16 @@
-import android.view.View;
-import com.tencent.biz.qqcircle.QCircleInitBean;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqcircle.widgets.QCircleTitleFollowView;
 
 class vdz
-  extends uzb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  vdz(vdt paramvdt) {}
+  vdz(vdr paramvdr) {}
   
-  public int a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return 0;
-  }
-  
-  public QCircleInitBean a()
-  {
-    return vdt.a(this.a);
-  }
-  
-  public QCirclePolyLikeAniView a()
-  {
-    if (vdt.a(this.a) != null) {
-      return (QCirclePolyLikeAniView)vdt.a(this.a).findViewById(2131373871);
-    }
-    return null;
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.a.b("share_action_show_share_sheet", paramObject);
-  }
-  
-  public void a(String paramString, uzc paramuzc)
-  {
-    this.a.a().a(paramString, paramuzc);
-  }
-  
-  public void a(vca paramvca)
-  {
-    this.a.a().a("light_interact_list_show", paramvca);
+    vdr.a(this.a).getLayoutParams().width = (((Integer)paramValueAnimator.getAnimatedValue()).intValue() + bhtq.a(50.0F));
+    vdr.a(this.a).requestLayout();
   }
 }
 

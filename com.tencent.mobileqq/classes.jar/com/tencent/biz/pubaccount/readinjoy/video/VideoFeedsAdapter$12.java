@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rwy;
+import rnu;
 
 public class VideoFeedsAdapter$12
   implements Runnable
 {
-  public VideoFeedsAdapter$12(rwy paramrwy, String paramString) {}
+  public VideoFeedsAdapter$12(rnu paramrnu) {}
   
   public void run()
   {
-    this.this$0.b(this.a);
+    rnu.a(this.this$0, rnu.a(this.this$0), rnu.a(this.this$0));
   }
 }
 

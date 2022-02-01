@@ -1,21 +1,11 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.image.URLImageView;
-
 class abbx
-  implements Animation.AnimationListener
 {
-  abbx(abbt paramabbt, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  public long a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public abbx(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    this.a = paramLong;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

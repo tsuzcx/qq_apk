@@ -1,10 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class aipv
-  implements DialogInterface.OnClickListener
+public class aipv
+  extends Handler
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public aipv(TroopChatPie paramTroopChatPie, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    case 3: 
+    default: 
+    case 1: 
+    case 2: 
+    case 4: 
+      do
+      {
+        do
+        {
+          return;
+          this.a.a(null, false);
+          return;
+          paramMessage = paramMessage.obj;
+        } while (!(paramMessage instanceof bgsr));
+        this.a.a((bgsr)paramMessage);
+        return;
+        paramMessage = (PlusPanel)TroopChatPie.f(this.a).b(8);
+      } while (paramMessage == null);
+      paramMessage.a();
+      return;
+    }
+    String str = (String)paramMessage.obj;
+    int i = paramMessage.arg1;
+    QQToast.a(this.a.a, str, i).b(this.a.a.getTitleBarHeight());
+  }
 }
 
 

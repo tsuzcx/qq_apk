@@ -1,21 +1,21 @@
 package dov.com.qq.im;
 
-import bglp;
-import bnbf;
-import bnbi;
-import bnbj;
-import boyn;
+import bhlq;
+import bocn;
+import bocq;
+import bocr;
+import bqai;
 
 public class QIMCameraCaptureUnit$13
   implements Runnable
 {
-  public QIMCameraCaptureUnit$13(bnbf parambnbf, String paramString) {}
+  public QIMCameraCaptureUnit$13(bocn parambocn, String paramString) {}
   
   public void run()
   {
-    bnbi localbnbi = new bnbi(this);
-    bnbj localbnbj = new bnbj(this);
-    bglp.a(this.this$0.a.a(), null, this.a, localbnbi, localbnbi, localbnbj);
+    bocq localbocq = new bocq(this);
+    bocr localbocr = new bocr(this);
+    bhlq.a(this.this$0.a.a(), null, this.a, localbocq, localbocq, localbocr);
   }
 }
 

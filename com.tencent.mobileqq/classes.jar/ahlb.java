@@ -1,12 +1,19 @@
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class ahlb
-  extends afuv
+  implements bizc
 {
-  public TextView b;
-  public TextView c;
+  public ahlb(LightVideoItemBuilder paramLightVideoItemBuilder, ahld paramahld) {}
   
-  public ahlb(ahkz paramahkz) {}
+  public void a(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahld.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahld.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Ahld.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
+    }
+  }
 }
 
 

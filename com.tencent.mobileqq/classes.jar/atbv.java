@@ -1,13 +1,4 @@
-import android.os.Bundle;
-
-public abstract interface atbv
-{
-  public abstract void a(long paramLong, int paramInt, String paramString);
-  
-  public abstract void a(long paramLong, String paramString);
-  
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
-}
+public class atbv {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

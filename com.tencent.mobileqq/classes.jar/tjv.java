@@ -1,28 +1,23 @@
-import android.support.v4.view.ViewPager.PageTransformer;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.BannerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner;
+import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.NativeVueLoaderManager;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.nativevue.NativeVuePreconditionAdapter.LoadSoResult;
+import com.tencent.qphone.base.util.QLog;
 
 public class tjv
-  implements ViewPager.PageTransformer
+  implements bdgt
 {
-  private tjv(ChannelTopBanner paramChannelTopBanner) {}
+  public tjv(NativeVueLoaderManager paramNativeVueLoaderManager, NativeVuePreconditionAdapter.LoadSoResult paramLoadSoResult) {}
   
-  public void transformPage(View paramView, float paramFloat)
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    if (paramView == null) {}
-    while ((this.a.a != null) && (this.a.a.getCount() == 1)) {
-      return;
-    }
-    if ((paramFloat <= -1.1F) || (paramFloat >= 1.1F))
+    if (paramInt == 0)
     {
-      paramView.setScaleX(0.9F);
-      paramView.setScaleY(0.9F);
+      this.jdField_a_of_type_ComTencentNativevueNativeVuePreconditionAdapter$LoadSoResult.onLoadSuccess();
+      QLog.d("NativeVueLoaderManager", 1, "load NativeVue Success");
       return;
     }
-    paramFloat = Math.max(0.9F, 1.0F - Math.abs(0.2000001F * paramFloat));
-    paramView.setScaleX(paramFloat);
-    paramView.setScaleY(paramFloat);
+    this.jdField_a_of_type_ComTencentNativevueNativeVuePreconditionAdapter$LoadSoResult.onLoadError();
+    QLog.e("NativeVueLoaderManager", 1, "load NativeVue Error: " + paramInt);
   }
 }
 

@@ -1,24 +1,8 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class akkq
-  implements View.OnClickListener
+public abstract interface akkq
 {
-  akkq(akkp paramakkp) {}
+  public abstract void setFrom(boolean paramBoolean);
   
-  public void onClick(View paramView)
-  {
-    if (akkp.a(this.a) == null)
-    {
-      akkp.a(this.a, bglp.a(this.a.mActivity, 0, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131716984), null, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131716982), ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131716983), new akkr(this), new akks(this)));
-      akkp.a(this.a).setCanceledOnTouchOutside(false);
-    }
-    akkp.a(this.a).show();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void setIsShieldTouchForItem(boolean paramBoolean);
 }
 
 

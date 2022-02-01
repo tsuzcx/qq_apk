@@ -1,54 +1,64 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-public abstract class bbkn
-  extends bbmz
+public class bbkn
 {
-  public int a;
-  protected QQAppInterface a;
-  protected CharSequence a;
-  protected String a;
-  protected ArrayList<String> a;
-  protected List<? extends FTSEntity> a;
-  public int b;
-  protected CharSequence b;
-  protected String b;
-  public int c = -1;
-  protected CharSequence c;
-  public int d = -1;
-  protected CharSequence d;
+  protected int a;
+  protected PublishVideoEntry a;
+  protected int b;
+  protected int c;
+  protected int d = -1;
+  protected int e = -1;
   
-  public bbkn(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ArrayList<String> paramArrayList, List<? extends FTSEntity> paramList)
+  public bbkn(int paramInt, PublishVideoEntry paramPublishVideoEntry)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.copy(paramPublishVideoEntry);
+    a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode);
   }
   
-  public String a()
+  private int b(int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 7: 
+      return 5;
+    case 8: 
+      return 6;
+    case 9: 
+      return 7;
+    }
+    return 4;
   }
   
-  public boolean a()
+  public int a(int paramInt)
   {
-    return false;
+    switch (paramInt)
+    {
+    case 3: 
+    case 4: 
+    default: 
+      return 0;
+    case 1: 
+      return 1;
+    case 2: 
+      return 2;
+    }
+    return 3;
   }
   
-  public CharSequence d()
+  public void a(int paramInt)
   {
-    return null;
+    this.b = b(paramInt);
+    this.c = a(paramInt);
   }
   
-  public abstract CharSequence e();
-  
-  public abstract CharSequence f();
+  public void b(int paramInt)
+  {
+    this.d = paramInt;
+  }
 }
 
 

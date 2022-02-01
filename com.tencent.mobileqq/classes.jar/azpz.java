@@ -1,40 +1,84 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class azpz
-  implements DialogInterface.OnClickListener
+public abstract class azpz
+  extends azqg
 {
-  azpz(azpu paramazpu, String paramString, int paramInt) {}
+  public int a;
+  public long a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public azpz()
   {
-    QLog.e("QVipProfileCard.AbsVasProfileHeaderComponent", 1, "set friend profile card click and aid=" + this.jdField_a_of_type_JavaLangString + " pay type=" + this.jdField_a_of_type_Int);
-    switch (this.jdField_a_of_type_Int)
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_d_of_type_Int = 5;
+  }
+  
+  public File a()
+  {
+    return beqz.a(b());
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Int == -1)
     {
-    case 3: 
-    default: 
-      Toast.makeText(azpu.o(this.jdField_a_of_type_Azpu), 2131694541, 0).show();
+      a("PicBaseInfo.check", "busiType invalid,busiType:" + this.jdField_a_of_type_Int);
+      return false;
     }
-    for (;;)
+    if (this.jdField_b_of_type_Int == -1)
     {
-      bcst.b(azpu.u(this.jdField_a_of_type_Azpu), "dc00898", "", "", "", "0X800A4C2", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Azpu.i();
-      return;
-      VipUtils.a(azpu.i(this.jdField_a_of_type_Azpu), 1, this.jdField_a_of_type_JavaLangString);
-      continue;
-      VipUtils.b(azpu.j(this.jdField_a_of_type_Azpu), 1, this.jdField_a_of_type_JavaLangString);
-      continue;
-      VipUtils.a(azpu.k(this.jdField_a_of_type_Azpu), false, 12, false, this.jdField_a_of_type_JavaLangString);
-      continue;
-      VipUtils.a(azpu.l(this.jdField_a_of_type_Azpu), true, 12, false, this.jdField_a_of_type_JavaLangString);
-      continue;
-      bgzo.a(azpu.m(this.jdField_a_of_type_Azpu), this.jdField_a_of_type_JavaLangString, "SVHHZLH", 0, false, false);
-      continue;
-      bgzo.a(azpu.n(this.jdField_a_of_type_Azpu), this.jdField_a_of_type_JavaLangString, "SVHHZLH", 12, false, false);
+      a("PicBaseInfo.check", "uinType invalid,uinType:" + this.jdField_b_of_type_Int);
+      return false;
     }
+    if (this.c == null)
+    {
+      a("PicBaseInfo.check", "peerUin invalid,peerUin:" + this.c);
+      return false;
+    }
+    return true;
+  }
+  
+  abstract String b();
+  
+  public boolean b()
+  {
+    return a() != null;
+  }
+  
+  public String c()
+  {
+    return beqz.d(b());
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nPicBaseInfo");
+    localStringBuilder.append("\n |-").append("localUUID:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("uniseq:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("\n |-").append("busiType:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("\n |-").append("selfUin:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("peerUin:").append(this.c);
+    localStringBuilder.append("\n |-").append("secondId:").append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("md5:").append(this.f);
+    localStringBuilder.append("\n |-").append("errInfo:").append(this.jdField_a_of_type_Azqh);
+    return localStringBuilder.toString();
   }
 }
 

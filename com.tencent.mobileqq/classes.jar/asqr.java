@@ -1,38 +1,18 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import java.util.List;
 
-public class asqr
-  implements Animation.AnimationListener
+class asqr
+  implements asps
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
+  asqr(asqo paramasqo) {}
   
-  public asqr(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt, View paramView)
+  public void a(List<aspq> paramList)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {}
-    do
+    if (paramList != null)
     {
-      return;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 1);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.a.a(paramList);
+      this.a.notifyDataSetChanged();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

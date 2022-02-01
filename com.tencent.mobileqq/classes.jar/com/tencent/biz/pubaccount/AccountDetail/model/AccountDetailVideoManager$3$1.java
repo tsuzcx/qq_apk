@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.AccountDetail.model;
 
-import nqt;
-import nqw;
-import nqz;
+import nsr;
+import nsu;
+import nsx;
 
 public class AccountDetailVideoManager$3$1
   implements Runnable
 {
-  public AccountDetailVideoManager$3$1(nqw paramnqw) {}
+  public AccountDetailVideoManager$3$1(nsu paramnsu) {}
   
   public void run()
   {

@@ -1,36 +1,64 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import android.annotation.TargetApi;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.app.QQAppInterface;
 
+@TargetApi(14)
 public class wnd
-  implements View.OnTouchListener
+  extends wnf
 {
-  public wnd(StoryInputBarView paramStoryInputBarView) {}
+  public String a;
+  public wmj a;
+  public String b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public wnd(String paramString1, String paramString2)
   {
-    if (paramMotionEvent.getAction() == 0)
+    this.jdField_a_of_type_Wmj = new wmj();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+  }
+  
+  private void c()
+  {
+    beyg localbeyg = new beyg();
+    localbeyg.jdField_a_of_type_Azrg = new wne(this);
+    localbeyg.i = this.jdField_b_of_type_JavaLangString;
+    localbeyg.jdField_a_of_type_Boolean = true;
+    localbeyg.jdField_b_of_type_Int = 196609;
+    QQStoryContext.a();
+    localbeyg.jdField_b_of_type_JavaLangString = QQStoryContext.a().c();
+    localbeyg.c = "";
+    localbeyg.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+    QQStoryContext.a();
+    QQStoryContext.a().a().a(localbeyg);
+  }
+  
+  protected void a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (!zom.c(this.jdField_b_of_type_JavaLangString)))
     {
-      StoryInputBarView.a(this.a);
-      if (this.a.jdField_a_of_type_Boolean) {
-        break label94;
+      Object localObject = ((wms)wth.a(14)).a(this.jdField_a_of_type_JavaLangString);
+      if (((wmv)localObject).a.isSuccess())
+      {
+        this.jdField_b_of_type_JavaLangString = ((wmv)localObject).jdField_b_of_type_JavaLangString;
+        if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (!zom.c(this.jdField_b_of_type_JavaLangString)))
+        {
+          yuk.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "end composite success but file not exist:%s", new Object[] { this.jdField_b_of_type_JavaLangString });
+          localObject = new ErrorMessage(940006, String.format("end composite success but file not exist:%s", new Object[] { this.jdField_b_of_type_JavaLangString }));
+          ((ErrorMessage)localObject).extraMsg = "composite";
+          super.notifyResult(localObject);
+        }
       }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Ybd.jdField_a_of_type_Boolean);
-      paramView = this.a;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
-        break label89;
+      else
+      {
+        ((wmv)localObject).a.extraMsg = "composite";
+        super.notifyResult(((wmv)localObject).a);
+        return;
       }
     }
-    label89:
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.jdField_a_of_type_Boolean = bool;
-      return false;
-    }
-    label94:
-    this.a.a();
-    return false;
+    wmf.a().b(this.jdField_a_of_type_JavaLangString);
+    c();
   }
 }
 

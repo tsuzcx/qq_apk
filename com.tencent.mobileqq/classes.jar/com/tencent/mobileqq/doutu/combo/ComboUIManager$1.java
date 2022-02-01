@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import arng;
+import ascw;
 
 public class ComboUIManager$1
   implements Runnable
 {
-  public ComboUIManager$1(arng paramarng) {}
+  public ComboUIManager$1(ascw paramascw) {}
   
   public void run()
   {

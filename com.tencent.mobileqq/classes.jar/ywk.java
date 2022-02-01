@@ -1,42 +1,15 @@
-public class ywk
-  implements Comparable<ywk>
+import android.os.Handler;
+
+class ywk
+  implements bbgo
 {
-  public int a;
-  public String a;
-  int b;
-  public String b;
-  public String c;
+  ywk(ywh paramywh) {}
   
-  public ywk()
+  public void a()
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public ywk(int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-  }
-  
-  public int a(ywk paramywk)
-  {
-    if (paramywk == null) {}
-    do
-    {
-      return -1;
-      if (this.jdField_b_of_type_Int < paramywk.jdField_b_of_type_Int) {
-        return 1;
-      }
-    } while (this.jdField_b_of_type_Int != paramywk.jdField_b_of_type_Int);
-    return 0;
-  }
-  
-  public String toString()
-  {
-    return "FilterTemplate{id='" + this.jdField_a_of_type_Int + '\'' + ", thumbPath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", priority=" + this.jdField_b_of_type_Int + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", pron='" + this.c + '\'' + '}';
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 10000L);
+    ((zbz)wth.a(8)).a(zos.a(this.a.jdField_a_of_type_Yxt.a), this.a.jdField_a_of_type_Zcm);
   }
 }
 

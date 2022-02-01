@@ -1,13 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ThreadPoolExecutor;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaGifView;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaVideoView;
 
 public class pmf
-  implements RejectedExecutionHandler
 {
-  public void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
+  public static pme a(int paramInt, Context paramContext)
   {
-    QLog.e("MonitorTimeExecutor", 1, "[rejectedExecution] r: " + paramRunnable + " executor: " + paramThreadPoolExecutor);
+    switch (paramInt)
+    {
+    default: 
+      return new MediaGifView(paramContext);
+    case 0: 
+      return new MediaGifView(paramContext);
+    }
+    return new MediaVideoView(paramContext);
   }
 }
 

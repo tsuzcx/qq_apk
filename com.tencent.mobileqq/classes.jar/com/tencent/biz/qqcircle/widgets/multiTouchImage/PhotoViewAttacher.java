@@ -18,22 +18,22 @@ import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.qphone.base.util.QLog;
-import way;
-import wba;
-import wbb;
-import wbc;
-import wbd;
-import wbe;
-import wbf;
-import wbg;
-import wbh;
-import wbi;
-import wbj;
-import wbk;
-import wbl;
-import wbm;
-import wbn;
-import wbp;
+import wep;
+import wer;
+import wes;
+import wet;
+import weu;
+import wev;
+import wew;
+import wex;
+import wey;
+import wez;
+import wfa;
+import wfb;
+import wfc;
+import wfd;
+import wfe;
+import wfg;
 
 public class PhotoViewAttacher
   implements View.OnLayoutChangeListener, View.OnTouchListener
@@ -54,18 +54,18 @@ public class PhotoViewAttacher
   private ImageView.ScaleType jdField_a_of_type_AndroidWidgetImageView$ScaleType = ImageView.ScaleType.FIT_CENTER;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private PhotoViewAttacher.FlingRunnable jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImagePhotoViewAttacher$FlingRunnable;
-  private way jdField_a_of_type_Way;
-  private wba jdField_a_of_type_Wba;
-  private wbb jdField_a_of_type_Wbb = new wbl(this);
-  private wbc jdField_a_of_type_Wbc;
-  private wbd jdField_a_of_type_Wbd;
-  private wbe jdField_a_of_type_Wbe;
-  private wbf jdField_a_of_type_Wbf;
-  private wbg jdField_a_of_type_Wbg;
-  private wbh jdField_a_of_type_Wbh;
-  private wbi jdField_a_of_type_Wbi;
-  private wbj jdField_a_of_type_Wbj;
-  private wbk jdField_a_of_type_Wbk;
+  private wep jdField_a_of_type_Wep;
+  private wer jdField_a_of_type_Wer;
+  private wes jdField_a_of_type_Wes = new wfc(this);
+  private wet jdField_a_of_type_Wet;
+  private weu jdField_a_of_type_Weu;
+  private wev jdField_a_of_type_Wev;
+  private wew jdField_a_of_type_Wew;
+  private wex jdField_a_of_type_Wex;
+  private wey jdField_a_of_type_Wey;
+  private wez jdField_a_of_type_Wez;
+  private wfa jdField_a_of_type_Wfa;
+  private wfb jdField_a_of_type_Wfb;
   private boolean jdField_a_of_type_Boolean = true;
   private final float[] jdField_a_of_type_ArrayOfFloat = new float[9];
   private final Matrix jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
@@ -91,9 +91,9 @@ public class PhotoViewAttacher
       return;
     }
     this.i = 0.0F;
-    this.jdField_a_of_type_Way = new way(paramImageView.getContext(), this.jdField_a_of_type_Wbb);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramImageView.getContext(), new wbm(this));
-    this.jdField_a_of_type_AndroidViewGestureDetector.setOnDoubleTapListener(new wbn(this));
+    this.jdField_a_of_type_Wep = new wep(paramImageView.getContext(), this.jdField_a_of_type_Wes);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramImageView.getContext(), new wfd(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector.setOnDoubleTapListener(new wfe(this));
   }
   
   private float a(Matrix paramMatrix, int paramInt)
@@ -122,11 +122,11 @@ public class PhotoViewAttacher
   private void a(Matrix paramMatrix)
   {
     this.jdField_a_of_type_AndroidWidgetImageView.setImageMatrix(paramMatrix);
-    if (this.jdField_a_of_type_Wbc != null)
+    if (this.jdField_a_of_type_Wet != null)
     {
       paramMatrix = a(paramMatrix);
       if (paramMatrix != null) {
-        this.jdField_a_of_type_Wbc.a(paramMatrix);
+        this.jdField_a_of_type_Wet.a(paramMatrix);
       }
     }
   }
@@ -170,7 +170,7 @@ public class PhotoViewAttacher
         if ((int)this.i % 180 != 0) {
           paramDrawable = new RectF(0.0F, 0.0F, n, m);
         }
-        switch (wbo.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()])
+        switch (wff.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()])
         {
         default: 
           break;
@@ -201,7 +201,7 @@ public class PhotoViewAttacher
     float f3 = localRectF.width();
     int m = b(this.jdField_a_of_type_AndroidWidgetImageView);
     if (f1 <= m) {
-      switch (wbo.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()])
+      switch (wff.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()])
       {
       default: 
         f1 = (m - f1) / 2.0F - localRectF.top;
@@ -209,7 +209,7 @@ public class PhotoViewAttacher
         label103:
         m = a(this.jdField_a_of_type_AndroidWidgetImageView);
         if (f3 <= m) {
-          switch (wbo.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()])
+          switch (wff.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()])
           {
           default: 
             f2 = (m - f3) / 2.0F - localRectF.left;
@@ -339,7 +339,7 @@ public class PhotoViewAttacher
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    wbp.a(paramFloat1, paramFloat2, paramFloat3);
+    wfg.a(paramFloat1, paramFloat2, paramFloat3);
     this.f = paramFloat1;
     this.g = paramFloat2;
     this.h = paramFloat3;
@@ -386,67 +386,67 @@ public class PhotoViewAttacher
   
   public void a(ImageView.ScaleType paramScaleType)
   {
-    if ((wbp.a(paramScaleType)) && (paramScaleType != this.jdField_a_of_type_AndroidWidgetImageView$ScaleType))
+    if ((wfg.a(paramScaleType)) && (paramScaleType != this.jdField_a_of_type_AndroidWidgetImageView$ScaleType))
     {
       this.jdField_a_of_type_AndroidWidgetImageView$ScaleType = paramScaleType;
       a();
     }
   }
   
-  public void a(wba paramwba)
+  public void a(wer paramwer)
   {
-    this.jdField_a_of_type_Wba = paramwba;
+    this.jdField_a_of_type_Wer = paramwer;
   }
   
-  public void a(wbc paramwbc)
+  public void a(wet paramwet)
   {
-    this.jdField_a_of_type_Wbc = paramwbc;
+    this.jdField_a_of_type_Wet = paramwet;
   }
   
-  public void a(wbd paramwbd)
+  public void a(weu paramweu)
   {
-    this.jdField_a_of_type_Wbd = paramwbd;
+    this.jdField_a_of_type_Weu = paramweu;
   }
   
-  public void a(wbe paramwbe)
+  public void a(wev paramwev)
   {
-    this.jdField_a_of_type_Wbe = paramwbe;
+    this.jdField_a_of_type_Wev = paramwev;
   }
   
-  public void a(wbf paramwbf)
+  public void a(wew paramwew)
   {
-    this.jdField_a_of_type_Wbf = paramwbf;
-    if (this.jdField_a_of_type_Way != null) {
-      this.jdField_a_of_type_Way.a(paramwbf);
+    this.jdField_a_of_type_Wew = paramwew;
+    if (this.jdField_a_of_type_Wep != null) {
+      this.jdField_a_of_type_Wep.a(paramwew);
     }
   }
   
-  public void a(wbg paramwbg)
+  public void a(wex paramwex)
   {
-    this.jdField_a_of_type_Wbg = paramwbg;
+    this.jdField_a_of_type_Wex = paramwex;
   }
   
-  public void a(wbh paramwbh)
+  public void a(wey paramwey)
   {
-    this.jdField_a_of_type_Wbh = paramwbh;
-    if (this.jdField_a_of_type_Way != null) {
-      this.jdField_a_of_type_Way.a(paramwbh);
+    this.jdField_a_of_type_Wey = paramwey;
+    if (this.jdField_a_of_type_Wep != null) {
+      this.jdField_a_of_type_Wep.a(paramwey);
     }
   }
   
-  public void a(wbi paramwbi)
+  public void a(wez paramwez)
   {
-    this.jdField_a_of_type_Wbi = paramwbi;
+    this.jdField_a_of_type_Wez = paramwez;
   }
   
-  public void a(wbj paramwbj)
+  public void a(wfa paramwfa)
   {
-    this.jdField_a_of_type_Wbj = paramwbj;
+    this.jdField_a_of_type_Wfa = paramwfa;
   }
   
-  public void a(wbk paramwbk)
+  public void a(wfb paramwfb)
   {
-    this.jdField_a_of_type_Wbk = paramwbk;
+    this.jdField_a_of_type_Wfb = paramwfb;
   }
   
   public void a(boolean paramBoolean)
@@ -456,7 +456,7 @@ public class PhotoViewAttacher
   
   public boolean a(float paramFloat1, float paramFloat2)
   {
-    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_Way.a()) && (!this.jdField_b_of_type_Boolean))
+    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_Wep.a()) && (!this.jdField_b_of_type_Boolean))
     {
       int m;
       if ((Math.abs(paramFloat2) > 8.0F) && (Math.abs(paramFloat2) > Math.abs(paramFloat1)))
@@ -472,7 +472,7 @@ public class PhotoViewAttacher
         if ((m == 0) || (Math.abs(paramFloat2) * 0.6F <= Math.abs(paramFloat1)) || ((this.jdField_e_of_type_Int != 2) && ((this.jdField_e_of_type_Int != 0) || (paramFloat2 < 8.0F)) && ((this.jdField_e_of_type_Int != 1) || (paramFloat2 > 0.0F - 8.0F)))) {
           break label265;
         }
-        QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent vertical solp false mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Way.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
+        QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent vertical solp false mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Wep.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
         return false;
         m = 0;
         break;
@@ -480,21 +480,21 @@ public class PhotoViewAttacher
       label265:
       if ((n != 0) && (Math.abs(paramFloat1) * 0.6F > Math.abs(paramFloat2)) && ((this.jdField_d_of_type_Int == 2) || ((this.jdField_d_of_type_Int == 0) && (paramFloat1 >= 8.0F)) || ((this.jdField_d_of_type_Int == 1) && (paramFloat1 <= 0.0F - 8.0F))))
       {
-        QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent horizontal solp false mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Way.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
+        QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent horizontal solp false mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Wep.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
         return false;
       }
       if (((this.jdField_e_of_type_Int == 0) && (this.jdField_d_of_type_Int == 0) && (paramFloat2 >= 8.0F) && (paramFloat1 >= 8.0F)) || ((this.jdField_e_of_type_Int == 0) && (this.jdField_d_of_type_Int == 1) && (paramFloat2 >= 8.0F) && (paramFloat1 <= 0.0F - 8.0F)) || ((this.jdField_e_of_type_Int == 1) && (this.jdField_d_of_type_Int == 0) && (paramFloat2 <= 0.0F - 8.0F) && (paramFloat1 >= 8.0F)) || ((this.jdField_e_of_type_Int == 1) && (this.jdField_d_of_type_Int == 1) && (paramFloat2 <= 0.0F - 8.0F) && (paramFloat1 <= 0.0F - 8.0F)))
       {
-        QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent corner slop false mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Way.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
+        QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent corner slop false mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Wep.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
         return false;
       }
     }
     else
     {
-      QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent true mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Way.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
+      QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent true mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Wep.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
       return true;
     }
-    QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent default:true mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Way.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
+    QLog.d("PhotoViewAttacher", 4, "isNeedToDisAllowInterceptEvent default:true mAllowParentInterceptOnEdge:" + this.jdField_a_of_type_Boolean + " isScaling:" + this.jdField_a_of_type_Wep.a() + " mBlockParentIntercept:" + this.jdField_b_of_type_Boolean + " getScale:" + a() + " mHorizontalScrollEdge:" + this.jdField_d_of_type_Int + " mVerticalScrollEdge:" + this.jdField_e_of_type_Int + " dx:" + paramFloat1 + " dy:" + paramFloat2);
     return true;
   }
   
@@ -517,19 +517,19 @@ public class PhotoViewAttacher
   
   public void c(float paramFloat)
   {
-    wbp.a(paramFloat, this.g, this.h);
+    wfg.a(paramFloat, this.g, this.h);
     this.f = paramFloat;
   }
   
   public void d(float paramFloat)
   {
-    wbp.a(this.f, paramFloat, this.h);
+    wfg.a(this.f, paramFloat, this.h);
     this.g = paramFloat;
   }
   
   public void e(float paramFloat)
   {
-    wbp.a(this.f, this.g, paramFloat);
+    wfg.a(this.f, this.g, paramFloat);
     this.h = paramFloat;
   }
   
@@ -548,7 +548,7 @@ public class PhotoViewAttacher
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     boolean bool3 = false;
-    if ((this.jdField_c_of_type_Boolean) && (wbp.a((ImageView)paramView)))
+    if ((this.jdField_c_of_type_Boolean) && (wfg.a((ImageView)paramView)))
     {
       boolean bool1;
       label59:
@@ -560,17 +560,17 @@ public class PhotoViewAttacher
       case 2: 
       default: 
         bool1 = false;
-        if (this.jdField_a_of_type_Way != null)
+        if (this.jdField_a_of_type_Wep != null)
         {
-          bool5 = this.jdField_a_of_type_Way.a();
-          bool6 = this.jdField_a_of_type_Way.b();
-          bool4 = this.jdField_a_of_type_Way.a(paramMotionEvent);
-          if ((bool5) || (this.jdField_a_of_type_Way.a())) {
+          bool5 = this.jdField_a_of_type_Wep.a();
+          bool6 = this.jdField_a_of_type_Wep.b();
+          bool4 = this.jdField_a_of_type_Wep.a(paramMotionEvent);
+          if ((bool5) || (this.jdField_a_of_type_Wep.a())) {
             break label611;
           }
           bool1 = true;
           label112:
-          if ((bool6) || (this.jdField_a_of_type_Way.b())) {
+          if ((bool6) || (this.jdField_a_of_type_Wep.b())) {
             break label617;
           }
         }

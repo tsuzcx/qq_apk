@@ -1,27 +1,53 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public abstract class bdlb
+public class bdlb
+  extends arac<bdlc>
 {
-  protected Context a;
-  protected BaseAdapter a;
-  protected QQAppInterface a;
-  protected int b;
-  
-  public bdlb(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
+  @NonNull
+  public bdlc a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
-    this.b = paramInt;
+    return new bdlc();
   }
   
-  public abstract View a(int paramInt1, bdmc parambdmc, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2);
+  @Nullable
+  public bdlc a(araj[] paramArrayOfaraj)
+  {
+    bdlc localbdlc = new bdlc();
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null)) {
+      bdlc.a(localbdlc, paramArrayOfaraj[0].a);
+    }
+    return localbdlc;
+  }
+  
+  public void a(bdlc parambdlc) {}
+  
+  public Class<bdlc> clazz()
+  {
+    return bdlc.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 577;
+  }
 }
 
 

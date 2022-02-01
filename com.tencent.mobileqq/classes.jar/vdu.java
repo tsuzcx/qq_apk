@@ -1,15 +1,31 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import feedcloud.FeedCloudMeta.StTagInfo;
+import android.view.View;
 
 class vdu
-  implements Observer<vup<FeedCloudMeta.StTagInfo>>
+  implements bliz
 {
-  vdu(vdt paramvdt) {}
+  vdu(vdr paramvdr, int[] paramArrayOfInt, blir paramblir) {}
   
-  public void a(@Nullable vup<FeedCloudMeta.StTagInfo> paramvup)
+  public void OnClick(View paramView, int paramInt)
   {
-    vdt.a(this.a, paramvup);
+    if (!aazb.a("showMoreActionSheetClick")) {
+      switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
+      {
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      vdr.d(this.jdField_a_of_type_Vdr);
+      continue;
+      vqu.a().a(vdr.a(this.jdField_a_of_type_Vdr), true);
+      continue;
+      vqu.a().a(vdr.a(this.jdField_a_of_type_Vdr), false);
+      continue;
+      this.jdField_a_of_type_Vdr.b();
+      continue;
+      vdr.e(this.jdField_a_of_type_Vdr);
+    }
   }
 }
 

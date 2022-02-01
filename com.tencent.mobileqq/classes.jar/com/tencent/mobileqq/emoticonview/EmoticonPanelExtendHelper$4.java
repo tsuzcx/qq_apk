@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emoticonview;
 
-import aryb;
+import asnp;
 
 public class EmoticonPanelExtendHelper$4
   implements Runnable
 {
-  public EmoticonPanelExtendHelper$4(aryb paramaryb) {}
+  public EmoticonPanelExtendHelper$4(asnp paramasnp) {}
   
   public void run()
   {

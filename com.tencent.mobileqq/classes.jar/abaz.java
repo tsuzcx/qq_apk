@@ -1,59 +1,20 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.Calendar;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 
-public class abaz
-  implements aqiw
+class abaz
+  implements Downloader.DownloadListener
 {
-  private int jdField_a_of_type_Int;
+  abaz(abay paramabay, abag paramabag, String paramString) {}
   
-  public abaz(NewerGuidePlugin paramNewerGuidePlugin, int paramInt)
-  {
-    if (paramInt < 1897)
-    {
-      paramNewerGuidePlugin = Calendar.getInstance();
-      paramNewerGuidePlugin.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
-      this.jdField_a_of_type_Int = paramNewerGuidePlugin.get(1);
-      return;
-    }
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public void onDownloadCanceled(String paramString) {}
   
-  public int a()
-  {
-    return 3;
-  }
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult) {}
   
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return this.jdField_a_of_type_Int - 1897 + 1;
-    case 1: 
-      return 12;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1897);
-    localCalendar.set(2, NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
   
-  public String a(int paramInt1, int paramInt2)
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1897 + anni.a(2131706215);
-    case 1: 
-      return paramInt2 + 1 + anni.a(2131706216);
-    }
-    return paramInt2 + 1 + anni.a(2131706210);
+    abay.a(this.jdField_a_of_type_Abay, this.jdField_a_of_type_Abag, abav.a().b(this.jdField_a_of_type_JavaLangString));
   }
 }
 

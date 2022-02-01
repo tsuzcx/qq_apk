@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import java.util.Comparator;
 
 public class atno
-  extends atnl
+  implements Comparator<OfflineFileInfo>
 {
-  public atno(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
-  {
-    super(paramQQAppInterface, paramFileManagerEntity);
-  }
+  public atno(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a(atds paramatds)
+  public int a(OfflineFileInfo paramOfflineFileInfo1, OfflineFileInfo paramOfflineFileInfo2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType = 1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, new atnp(this, paramatds));
+    return Long.valueOf(paramOfflineFileInfo1.c).compareTo(Long.valueOf(paramOfflineFileInfo2.c));
   }
 }
 

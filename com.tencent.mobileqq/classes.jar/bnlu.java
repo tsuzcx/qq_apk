@@ -1,23 +1,29 @@
-import android.support.v7.widget.RecyclerView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import cooperation.qzone.util.QZLog;
+import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bnlu
-  implements CompoundButton.OnCheckedChangeListener
+public class bnlu
+  extends JSONObject
 {
-  bnlu(bnls parambnls) {}
+  public bnlu(QzoneVerticalVideoTopicInfo paramQzoneVerticalVideoTopicInfo) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public bnlu a(String paramString1, String paramString2)
   {
-    RecyclerView localRecyclerView = bnls.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localRecyclerView.setVisibility(i);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return this;
     }
+    try
+    {
+      put(paramString1, paramString2);
+      return this;
+    }
+    catch (JSONException paramString1)
+    {
+      QZLog.d(QzoneVerticalVideoTopicInfo.a(this.a), 2, "put JSON error", paramString1);
+    }
+    return this;
   }
 }
 

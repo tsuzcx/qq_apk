@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.search.mostused;
 
-import bbok;
-import bbop;
+import bchd;
+import bchi;
 import com.tencent.qphone.base.util.QLog;
 
 public class MostUsedSearchResultManager$1
   implements Runnable
 {
-  public MostUsedSearchResultManager$1(bbop parambbop, MostUsedSearchItem paramMostUsedSearchItem) {}
+  public MostUsedSearchResultManager$1(bchi parambchi, MostUsedSearchItem paramMostUsedSearchItem) {}
   
   public void run()
   {
-    if (bbop.a(this.this$0) != null)
+    if (bchi.a(this.this$0) != null)
     {
-      bbop.a(this.this$0).a(bbop.a(this.this$0), this.a);
-      bbop.a(this.this$0).a(bbop.a(this.this$0));
+      bchi.a(this.this$0).a(bchi.a(this.this$0), this.a);
+      bchi.a(this.this$0).a(bchi.a(this.this$0));
       return;
     }
     QLog.e("MostUsedSearchResultManager", 2, "UpdateItemUsed NULL cache");

@@ -1,6 +1,19 @@
-public abstract interface bqca
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+
+public final class bqca
+  implements Parcelable.Creator<EditLocalPhotoSource>
 {
-  public abstract void a();
+  public EditLocalPhotoSource a(Parcel paramParcel)
+  {
+    return new EditLocalPhotoSource(paramParcel);
+  }
+  
+  public EditLocalPhotoSource[] a(int paramInt)
+  {
+    return new EditLocalPhotoSource[paramInt];
+  }
 }
 
 

@@ -1,51 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Message;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
 
-class xjs
-  implements wld<wyp, xan>
+public class xjs
+  implements wlh
 {
-  xjs(xjr paramxjr, xjf paramxjf) {}
+  public xjs(FollowCaptureLauncher paramFollowCaptureLauncher) {}
   
-  public void a(@NonNull wyp paramwyp, @Nullable xan paramxan, @NonNull ErrorMessage paramErrorMessage)
+  public void a(String paramString, int paramInt)
   {
-    if ((paramxan == null) || (paramErrorMessage.isFail()))
-    {
-      this.jdField_a_of_type_Xjf.a(paramErrorMessage, Collections.singletonList(this.jdField_a_of_type_Xjr.jdField_a_of_type_Xix));
-      return;
-    }
-    paramxan.jdField_a_of_type_JavaUtilList = ((wpj)wpm.a(5)).a(paramxan.jdField_a_of_type_JavaUtilList);
-    paramwyp = paramxan.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramwyp.hasNext()) {
-      ((StoryVideoItem)paramwyp.next()).mOwnerUid = xjq.a(this.jdField_a_of_type_Xjr.jdField_a_of_type_Xjq).uid;
-    }
-    ((wfy)wpm.a(28)).a(paramxan.b);
-    paramwyp = paramxan.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramwyp.hasNext())
-    {
-      paramErrorMessage = (StoryVideoItem)paramwyp.next();
-      xjr.a(this.jdField_a_of_type_Xjr).add(paramErrorMessage.mVid);
-    }
-    if ((paramxan.jdField_a_of_type_Boolean) || (paramxan.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      paramwyp = new xiy(this.jdField_a_of_type_Xjr.jdField_a_of_type_Xix);
-      paramwyp.jdField_a_of_type_JavaUtilList = xjr.a(this.jdField_a_of_type_Xjr);
-      paramwyp.a(xjq.a(this.jdField_a_of_type_Xjr.jdField_a_of_type_Xjq).feedId);
-      this.jdField_a_of_type_Xjf.a(Collections.singletonList(paramwyp), true);
-      return;
-    }
-    xjr.a(this.jdField_a_of_type_Xjr);
-    if (xjr.b(this.jdField_a_of_type_Xjr) > 50)
-    {
-      this.jdField_a_of_type_Xjf.a(new ErrorMessage(940001, "too much times"), Collections.singletonList(this.jdField_a_of_type_Xjr.jdField_a_of_type_Xix));
-      return;
-    }
-    this.jdField_a_of_type_Xjr.a(paramxan.c, this.jdField_a_of_type_Xjf);
+    Message localMessage = Message.obtain();
+    localMessage.obj = paramString;
+    localMessage.what = 65543;
+    FollowCaptureLauncher.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
+  {
+    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
   }
 }
 

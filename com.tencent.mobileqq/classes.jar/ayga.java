@@ -1,33 +1,24 @@
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.OperationView;
+import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
 
 public class ayga
-  extends ayjm
 {
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public int a;
+  public View a;
+  public ViewGroup a;
+  public RelativeLayout a;
+  public VideoData a;
+  public OperationView a;
+  public QQStoryVideoPlayerErrorView a;
+  public ImageDisplayView a;
   
-  public ayga(OCRResultFragmentNew paramOCRResultFragmentNew) {}
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    super.a(paramMotionEvent);
-    if ((this.jdField_a_of_type_Boolean) || (this.b)) {
-      ayfi.a("0X800AC97", 0);
-    }
-  }
-  
-  public void a(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    this.b = true;
-    return super.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
+  public ayga(VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter) {}
 }
 
 

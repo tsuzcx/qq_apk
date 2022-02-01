@@ -1,70 +1,38 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.app.Activity;
-import android.graphics.Rect;
-import android.view.View;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import java.util.ArrayList;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aaiw
-  extends FlingGestureHandler
+class aaiw
+  implements AbsListView.OnScrollListener
 {
-  private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-  private CertifiedAccountMeta.StUser jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser;
-  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public aaiw(Activity paramActivity)
+  aaiw(aaiu paramaaiu) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramActivity);
-    paramActivity = new TopGestureLayout(paramActivity);
-    paramActivity.setInterceptScrollRLFlag(true);
-    setTopLayout(paramActivity);
-    if (this.mTopLayout != null)
+    if ((paramInt3 > 0) && (paramAbsListView.getFirstVisiblePosition() + paramInt2 >= paramInt3))
     {
-      paramActivity = new Rect();
-      this.mTopLayout.setInterceptTouchEventListener(new aaix(this, paramActivity));
-    }
-    onStart();
-  }
-  
-  public void a(CertifiedAccountMeta.StUser paramStUser)
-  {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = paramStUser;
-  }
-  
-  public void a(View paramView)
-  {
-    if (paramView == null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-    } while (this.jdField_a_of_type_JavaUtilArrayList.contains(paramView));
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public void flingRToL()
-  {
-    if (this.mTopLayout != null)
-    {
-      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser == null) {
-        break label29;
-      }
-      aaae.a(this.mTopLayout.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
-    }
-    label29:
-    while (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) {
+      this.jdField_a_of_type_Boolean = true;
       return;
     }
-    aaae.a(this.mTopLayout.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
+    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0) && (!aaiu.a(this.jdField_a_of_type_Aaiu)) && (!aaiu.b(this.jdField_a_of_type_Aaiu)))
+    {
+      QLog.i(aaiu.a(), 1, "onLastItemVisible");
+      aaiu.a(this.jdField_a_of_type_Aaiu, aaiu.a(this.jdField_a_of_type_Aaiu).a(aaiu.a(this.jdField_a_of_type_Aaiu)));
+      if (aaiu.a(this.jdField_a_of_type_Aaiu) != null)
+      {
+        aaiu.a(this.jdField_a_of_type_Aaiu).a(aaiu.a(this.jdField_a_of_type_Aaiu), true);
+        aaiu.a(this.jdField_a_of_type_Aaiu, true);
+      }
+    }
   }
 }
 

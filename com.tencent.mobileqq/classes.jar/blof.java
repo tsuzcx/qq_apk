@@ -1,19 +1,12 @@
-import cooperation.qqreader.VipProxyRreLoadReaderProcess.1;
+import android.view.View;
+import android.widget.ExpandableListAdapter;
 
-public class blof
-  implements nkl
+public abstract interface blof
+  extends ExpandableListAdapter
 {
-  public blof(VipProxyRreLoadReaderProcess.1 param1) {}
+  public abstract int a();
   
-  public void loaded(String paramString, int paramInt)
-  {
-    blpu.d("VipProxyRreLoadReaderProcess", "Load offline package finish, code = " + paramInt);
-    if (paramInt != 0) {
-      blpu.a("VipProxyRreLoadReaderProcess", "offline update failed.");
-    }
-  }
-  
-  public void progress(int paramInt) {}
+  public abstract void a(View paramView, int paramInt);
 }
 
 

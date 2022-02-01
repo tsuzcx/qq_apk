@@ -15,7 +15,7 @@ class MiniAppVideoPlayer$16
   
   public void run()
   {
-    if ((!MiniAppVideoPlayer.access$2800(this.this$0)) && (MiniAppVideoPlayer.access$5800(this.this$0) == 0)) {}
+    if ((!MiniAppVideoPlayer.access$2800(this.this$0)) && (MiniAppVideoPlayer.access$5900(this.this$0) == 0)) {}
     label225:
     do
     {
@@ -29,7 +29,7 @@ class MiniAppVideoPlayer$16
           if (!MiniAppVideoPlayer.access$2800(this.this$0)) {
             continue;
           }
-          i = MiniAppVideoPlayer.access$5800(this.this$0);
+          i = MiniAppVideoPlayer.access$5900(this.this$0);
           localJSONObject.put("buffered", i);
           localJSONObject.put("videoId", this.this$0.videoId);
           if (this.this$0.mMiniAppContext == null) {
@@ -52,24 +52,24 @@ class MiniAppVideoPlayer$16
         if (MiniAppVideoPlayer.access$2800(this.this$0)) {
           break label225;
         }
-        MiniAppVideoPlayer.access$5802(this.this$0, 0);
+        MiniAppVideoPlayer.access$5902(this.this$0, 0);
         return;
         i = 100;
         continue;
         localIMiniAppContext = null;
       }
-    } while (MiniAppVideoPlayer.access$5800(this.this$0) > 98);
-    if (MiniAppVideoPlayer.access$5800(this.this$0) < 60) {
-      MiniAppVideoPlayer.access$5802(this.this$0, MiniAppVideoPlayer.access$5800(this.this$0) + 10);
+    } while (MiniAppVideoPlayer.access$5900(this.this$0) > 98);
+    if (MiniAppVideoPlayer.access$5900(this.this$0) < 60) {
+      MiniAppVideoPlayer.access$5902(this.this$0, MiniAppVideoPlayer.access$5900(this.this$0) + 10);
     }
     for (;;)
     {
       MiniAppVideoPlayer.access$2900(this.this$0, true);
       return;
-      if (MiniAppVideoPlayer.access$5800(this.this$0) < 90) {
-        MiniAppVideoPlayer.access$5802(this.this$0, MiniAppVideoPlayer.access$5800(this.this$0) + 5);
+      if (MiniAppVideoPlayer.access$5900(this.this$0) < 90) {
+        MiniAppVideoPlayer.access$5902(this.this$0, MiniAppVideoPlayer.access$5900(this.this$0) + 5);
       } else {
-        MiniAppVideoPlayer.access$5808(this.this$0);
+        MiniAppVideoPlayer.access$5908(this.this$0);
       }
     }
   }

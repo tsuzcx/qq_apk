@@ -10,8 +10,8 @@ import android.os.Parcelable;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bgmp;
-import bgng;
+import bhmr;
+import bhni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -68,11 +68,11 @@ public class AppBrandLaunchUI
     {
       localObject1 = ((Intent)localObject3).getStringExtra("scheme");
       localObject2 = (ResultReceiver)((Intent)localObject3).getParcelableExtra("result_receiver");
-      localObject3 = bgng.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this, (String)localObject1);
+      localObject3 = bhni.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this, (String)localObject1);
       localObject4 = new Bundle();
       if (localObject3 != null)
       {
-        boolean bool = ((bgmp)localObject3).a();
+        boolean bool = ((bhmr)localObject3).a();
         if (bool)
         {
           i = 1;

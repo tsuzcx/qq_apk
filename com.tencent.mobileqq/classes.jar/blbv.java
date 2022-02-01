@@ -1,70 +1,112 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import android.util.Xml;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.utils.QQComicPluginBridge.1;
+import com.tencent.util.Pair;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.security.Key;
+import java.security.spec.AlgorithmParameterSpec;
+import java.util.Iterator;
+import java.util.List;
+import javax.crypto.Cipher;
+import javax.crypto.CipherOutputStream;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import org.xmlpull.v1.XmlSerializer;
 
-public class blbv
-  implements OnPluginInstallListener
+final class blbv
+  extends blbx
 {
-  public blbv(QQComicPluginBridge.1 param1) {}
+  File jdField_a_of_type_JavaIoFile;
+  private OutputStream jdField_a_of_type_JavaIoOutputStream;
+  private XmlSerializer jdField_a_of_type_OrgXmlpullV1XmlSerializer;
   
-  public IBinder asBinder()
+  public blbv(blbs paramblbs, File paramFile)
   {
-    return null;
+    super(null);
+    this.jdField_a_of_type_JavaIoFile = paramFile;
   }
   
-  public void onInstallBegin(String paramString)
+  public void a()
   {
-    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Blbw != null)) {
-      this.a.a.jdField_a_of_type_Blbw.a(98, "载入中,（我会越来越快的>_<）");
-    }
-  }
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
-  {
-    if ((this.a.a != null) && (paramInt1 > 0) && (paramInt2 > 0))
+    try
     {
-      this.a.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (this.a.a.jdField_a_of_type_Blbw != null)
+      Object localObject1;
+      Object localObject2;
+      if (this.jdField_a_of_type_OrgXmlpullV1XmlSerializer == null)
       {
-        paramInt1 = (int)(paramInt1 / paramInt2 * 95.0F);
-        this.a.a.jdField_a_of_type_Blbw.a(paramInt1, "加载中,（别紧张啊我很小的>_<）");
+        localObject1 = new IvParameterSpec(blbs.a());
+        localObject2 = new SecretKeySpec(blbs.b(), "AES");
+        Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+        localCipher.init(1, (Key)localObject2, (AlgorithmParameterSpec)localObject1);
+        this.jdField_a_of_type_JavaIoOutputStream = new CipherOutputStream(new BufferedOutputStream(new FileOutputStream(this.jdField_a_of_type_JavaIoFile)), localCipher);
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = Xml.newSerializer();
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(this.jdField_a_of_type_JavaIoOutputStream, "UTF-8");
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startDocument("UTF-8", Boolean.valueOf(true));
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startTag(null, "AVCloudCache");
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.attribute(null, "Ver", Integer.toString(1));
       }
-    }
-  }
-  
-  public void onInstallError(String arg1, int paramInt)
-  {
-    synchronized ()
-    {
-      blbu.a().notifyAll();
-      if (this.a.a != null) {
-        this.a.a.jdField_a_of_type_Int = paramInt;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicPluginBridge", 2, "QQComic install error");
-      }
-      return;
-    }
-  }
-  
-  public void onInstallFinish(String arg1)
-  {
-    synchronized ()
-    {
-      blbu.a().notifyAll();
-      if (this.a.a != null)
+      if (blbs.a(this.jdField_a_of_type_Blbs).size() > 0)
       {
-        this.a.a.b = System.currentTimeMillis();
-        if (this.a.a.jdField_a_of_type_Blbw != null) {
-          this.a.a.jdField_a_of_type_Blbw.a(99, "载入中,（我会越来越快的>_<）");
+        localObject1 = blbs.a(this.jdField_a_of_type_Blbs).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (Pair)((Iterator)localObject1).next();
+          if (QLog.isColorLevel()) {
+            QLog.d("QSec.AVEngine", 2, "Add new cache entry: " + ((blcq)((Pair)localObject2).second).toString());
+          }
+          blbs.a(this.jdField_a_of_type_Blbs, (String)((Pair)localObject2).first, (blcq)((Pair)localObject2).second, this.jdField_a_of_type_OrgXmlpullV1XmlSerializer);
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicPluginBridge", 2, "QQComic is installed");
-      }
       return;
     }
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      for (;;)
+      {
+        if (this.jdField_a_of_type_JavaIoOutputStream != null) {}
+        try
+        {
+          this.jdField_a_of_type_JavaIoOutputStream.close();
+          return;
+        }
+        catch (Exception localException2) {}
+        blbs.a(this.jdField_a_of_type_Blbs).clear();
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endTag(null, "AVCloudCache");
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endDocument();
+        blbs.a(this.jdField_a_of_type_Blbs).delete();
+      }
+    }
+  }
+  
+  public boolean a(String paramString, blcq paramblcq)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_OrgXmlpullV1XmlSerializer == null)
+      {
+        IvParameterSpec localIvParameterSpec = new IvParameterSpec(blbs.a());
+        SecretKeySpec localSecretKeySpec = new SecretKeySpec(blbs.b(), "AES");
+        Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+        localCipher.init(1, localSecretKeySpec, localIvParameterSpec);
+        this.jdField_a_of_type_JavaIoOutputStream = new CipherOutputStream(new BufferedOutputStream(new FileOutputStream(this.jdField_a_of_type_JavaIoFile)), localCipher);
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = Xml.newSerializer();
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(this.jdField_a_of_type_JavaIoOutputStream, "UTF-8");
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startDocument("UTF-8", Boolean.valueOf(true));
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startTag(null, "AVCloudCache");
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.attribute(null, "Ver", Integer.toString(1));
+      }
+      blbs.a(this.jdField_a_of_type_Blbs, paramString, paramblcq, this.jdField_a_of_type_OrgXmlpullV1XmlSerializer);
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = null;
+    }
+    return false;
   }
 }
 

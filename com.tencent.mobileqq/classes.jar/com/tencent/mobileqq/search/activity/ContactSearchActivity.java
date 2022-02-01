@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import anni;
-import bcst;
-import bfup;
+import anzj;
+import bdll;
+import bguq;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -52,9 +52,9 @@ public class ContactSearchActivity
     switch (this.d)
     {
     default: 
-      return anni.a(2131701354);
+      return anzj.a(2131701461);
     }
-    return anni.a(2131701337);
+    return anzj.a(2131701444);
   }
   
   @Override
@@ -72,8 +72,8 @@ public class ContactSearchActivity
       paramIntent = paramIntent.getStringExtra("roomId");
       if (paramIntent != null)
       {
-        bfup.a(this, paramIntent, true);
-        bcst.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
+        bguq.a(this, paramIntent, true);
+        bdll.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
       }
     }
   }

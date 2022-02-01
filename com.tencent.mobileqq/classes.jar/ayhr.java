@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.TranslateResult.Record;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public final class ayhr
-  implements Parcelable.Creator<TranslateResult.Record>
+class ayhr
+  implements DialogInterface.OnDismissListener
 {
-  public TranslateResult.Record a(Parcel paramParcel)
-  {
-    return new TranslateResult.Record(paramParcel);
-  }
+  ayhr(ayhj paramayhj) {}
   
-  public TranslateResult.Record[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new TranslateResult.Record[paramInt];
+    this.a.a = false;
   }
 }
 

@@ -1,19 +1,10 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-
-public class akcs
-  extends anmu
+public abstract interface akcs
 {
-  public akcs(ContactListView paramContactListView) {}
+  public abstract void a();
   
-  protected void onAddFriend(String paramString) {}
+  public abstract void b();
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
-  {
-    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
-      this.a.j();
-    }
-  }
+  public abstract void c();
 }
 
 

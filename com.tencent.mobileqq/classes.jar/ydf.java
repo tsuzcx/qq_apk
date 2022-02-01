@@ -1,14 +1,15 @@
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class ydf
-  extends zpq
+  implements zto
 {
-  public ydf(StoryDetailFragment paramStoryDetailFragment) {}
+  public ydf(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public boolean a(boolean paramBoolean)
+  public void a()
   {
-    this.a.d();
-    return true;
+    if (this.a.a != null) {
+      this.a.a.d();
+    }
   }
 }
 

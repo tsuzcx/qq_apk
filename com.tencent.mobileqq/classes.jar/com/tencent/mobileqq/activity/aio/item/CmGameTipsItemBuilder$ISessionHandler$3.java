@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agrz;
-import agse;
+import ahbn;
+import ahbs;
 
 public class CmGameTipsItemBuilder$ISessionHandler$3
   implements Runnable
 {
-  public CmGameTipsItemBuilder$ISessionHandler$3(agse paramagse, agrz paramagrz) {}
+  public CmGameTipsItemBuilder$ISessionHandler$3(ahbs paramahbs, ahbn paramahbn) {}
   
   public void run()
   {
-    agrz.a(this.a);
+    ahbn.a(this.a);
   }
 }
 

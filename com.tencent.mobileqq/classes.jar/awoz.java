@@ -1,51 +1,18 @@
-import android.text.TextUtils;
-import android.widget.LinearLayout;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
-public class awoz
-  implements RadioGroup.OnCheckedChangeListener
+class awoz
+  implements awmo
 {
-  public awoz(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  awoz(awow paramawow, int paramInt, String paramString) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void a()
   {
-    switch (paramInt)
-    {
-    default: 
-      if (MsgBackupDateFragment.a(this.a)) {
-        if ((MsgBackupDateFragment.b(this.a)) && (MsgBackupDateFragment.c(this.a))) {
-          this.a.setRightButtonEnable(true);
-        }
-      }
-      break;
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
-      return;
-      MsgBackupDateFragment.a(this.a, false);
-      MsgBackupDateFragment.a(this.a, 0L);
-      MsgBackupDateFragment.b(this.a, 0L);
-      MsgBackupDateFragment.a(this.a).setVisibility(8);
-      break;
-      MsgBackupDateFragment.a(this.a, true);
-      MsgBackupDateFragment.a(this.a).setVisibility(0);
-      break;
-      if ((!TextUtils.isEmpty(MsgBackupDateFragment.a(this.a))) && (!TextUtils.isEmpty(MsgBackupDateFragment.b(this.a))))
-      {
-        this.a.setRightButtonEnable(true);
-      }
-      else
-      {
-        this.a.setRightButtonEnable(false);
-        continue;
-        this.a.setRightButtonEnable(true);
-      }
-    }
+    ListenTogetherManager.a(this.jdField_a_of_type_Awow.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a).a(this.jdField_a_of_type_Awow.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1000);
+    bdll.b(null, "dc00899", this.jdField_a_of_type_Awow.jdField_a_of_type_Awpb.jdField_a_of_type_JavaLangString, "", "music_tab", "clk_join", 0, 0, this.jdField_a_of_type_Awow.jdField_a_of_type_Awpb.b, "", this.jdField_a_of_type_Awow.jdField_a_of_type_Awpb.jdField_a_of_type_Int + "", "");
   }
+  
+  public void b() {}
 }
 
 

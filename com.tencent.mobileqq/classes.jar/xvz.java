@@ -1,15 +1,14 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 
 class xvz
-  implements xfa
+  implements MediaPlayer.OnPreparedListener
 {
-  xvz(xvy paramxvy) {}
+  xvz(xvy paramxvy, xvt paramxvt) {}
   
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    return (!paramStoryVideoItem.isBasicInfoOK()) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
+    this.jdField_a_of_type_Xvt.a_(this.jdField_a_of_type_Xvy);
   }
 }
 

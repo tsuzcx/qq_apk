@@ -1,13 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
-
 public class peg
-  implements ViewBase.IBuilder
 {
-  public ViewBase build(VafContext paramVafContext)
+  public int a;
+  public String a;
+  public String b;
+  
+  public String toString()
   {
-    return new pef(paramVafContext);
+    return "styleID = " + this.jdField_a_of_type_JavaLangString + ", proteusData = " + this.b + ", rankWeight = " + this.jdField_a_of_type_Int;
   }
 }
 

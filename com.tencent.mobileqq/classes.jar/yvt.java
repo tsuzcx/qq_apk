@@ -1,31 +1,28 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.EditPicSave.1.1;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 
 public class yvt
-  extends ywd
+  implements ThreadExcutor.IThreadListener
 {
-  public final long a;
-  public final long b;
-  public final long c;
-  public final long d;
+  yvt(yvs paramyvs) {}
   
-  public yvt(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Bitmap paramBitmap)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    super(paramInt, paramBitmap);
-    this.a = paramLong1;
-    this.b = paramLong2;
-    this.jdField_c_of_type_Long = paramLong3;
-    this.d = paramLong4;
+    int i = 1;
+    this.a.a.a().postDelayed(new EditPicSave.1.1(this), 500L);
+    if (bday.a().a == 1) {}
+    for (;;)
+    {
+      bbgf.h(i);
+      return;
+      i = 2;
+    }
   }
   
-  public yvt a(Bitmap paramBitmap)
-  {
-    return new yvt(this.jdField_c_of_type_Int, this.a, this.b, this.jdField_c_of_type_Long, this.d, paramBitmap);
-  }
-  
-  public String toString()
-  {
-    return "RecordVideoBlockInfo{index:" + this.jdField_c_of_type_Int + ", vfFrame: " + this.a + " ~ " + this.b + ", afTime: " + this.jdField_c_of_type_Long + " ~ " + this.d + '}';
-  }
+  public void onPreRun() {}
 }
 
 

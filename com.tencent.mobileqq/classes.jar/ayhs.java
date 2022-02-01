@@ -1,17 +1,43 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ocr.ui.BaseOCRTextSearchFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class ayhs
-  implements View.OnTouchListener
+class ayhs
+  implements aydt
 {
-  public ayhs(BaseOCRTextSearchFragment paramBaseOCRTextSearchFragment) {}
+  ayhs(ayhj paramayhj) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.a.a(paramView);
-    return false;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new oidb_0xada.RspBody();
+    }
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + ayhj.c(this.a));
+      }
+      if (paramBundle.busi_buf.has())
+      {
+        paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
+        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+        if (QLog.isColorLevel()) {
+          QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + ayhj.c(this.a));
+        }
+      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
 }
 

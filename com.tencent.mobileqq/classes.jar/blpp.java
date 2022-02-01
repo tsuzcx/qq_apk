@@ -1,40 +1,10 @@
-import android.support.annotation.NonNull;
-import cooperation.qqreader.ui.ReaderHomePageActivity;
-import org.json.JSONObject;
+import android.view.View;
 
-public class blpp
-  extends blpb
+public abstract interface blpp
 {
-  public blpp(ReaderHomePageActivity paramReaderHomePageActivity) {}
+  public abstract void a(View paramView);
   
-  public void a(@NonNull blpa paramblpa)
-  {
-    paramblpa = paramblpa.a();
-    if (paramblpa == null) {
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        int i = paramblpa.getJSONObject("data").getInt("identity");
-        paramblpa = this.a;
-        if (i == 2)
-        {
-          bool = true;
-          blps.e(paramblpa, bool);
-          blpu.d("ReaderHomePageActivity", "queryUserIdentityForTabSwitch: identity = " + i);
-          return;
-        }
-      }
-      catch (Exception paramblpa)
-      {
-        blpu.a("ReaderHomePageActivity", "queryUserIdentityForTabSwitch:", paramblpa);
-        return;
-      }
-      boolean bool = false;
-    }
-  }
+  public abstract void b(View paramView);
 }
 
 

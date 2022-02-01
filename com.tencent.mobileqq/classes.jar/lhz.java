@@ -1,146 +1,73 @@
+import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.qphone.base.util.QLog;
 
 public class lhz
-  extends lgb
+  extends lhs
 {
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private lib jdField_a_of_type_Lib;
-  private lia[] jdField_a_of_type_ArrayOfLia = new lia[15];
+  public static final String[] b = { "params.dat" };
   
   public lhz(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_Lib = new lib(paramVideoAppInterface);
+    this.c = b;
   }
   
-  private lia a(int paramInt)
+  public int a()
   {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfLia[paramInt];
-    if (localObject1 != null) {
-      return localObject1;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      lia locallia = this.jdField_a_of_type_ArrayOfLia[paramInt];
-      localObject1 = locallia;
-      if (locallia == null)
-      {
-        locallia = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt);
-        localObject1 = locallia;
-        if (locallia != null)
-        {
-          this.jdField_a_of_type_ArrayOfLia[paramInt] = locallia;
-          localObject1 = locallia;
-        }
-      }
-      return localObject1;
-    }
+    return 623;
   }
   
-  private lia a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  public lhu a(int paramInt1, int paramInt2)
   {
-    long l1 = System.currentTimeMillis();
-    Object localObject = null;
-    switch (paramInt)
-    {
-    default: 
-      localObject = this.jdField_a_of_type_Lib;
+    lhu locallhu = super.a(paramInt1, paramInt2);
+    if ((locallhu != null) && (locallhu.a != null) && (!locallhu.a.needHMirror)) {
+      locallhu.a.needHMirror = true;
     }
-    for (;;)
-    {
-      if (localObject != null) {
-        ((lia)localObject).a();
-      }
-      long l2 = System.currentTimeMillis();
-      lbc.c("EffectSupportManager", "create Manager,cost time:" + (l2 - l1));
-      return localObject;
-      localObject = new lie(paramVideoAppInterface);
-      continue;
-      localObject = new lic(paramVideoAppInterface);
-      continue;
-      localObject = new lid(paramVideoAppInterface);
-    }
+    return locallhu;
   }
   
-  public int a(int paramInt, String paramString)
+  public void a(int paramInt, String paramString)
   {
-    int i = 1;
-    lia locallia = a(paramInt);
-    paramInt = i;
-    if (locallia != null) {
-      paramInt = locallia.a(paramString);
+    if (QLog.isDevelopLevel()) {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 4, "MuteByOthers, fromMuteKey[" + paramInt + "], data[" + paramString + "]");
     }
-    return paramInt;
-  }
-  
-  protected void a() {}
-  
-  public void a(int paramInt)
-  {
-    int i = 0;
-    while (i < 15)
-    {
-      if ((paramInt == 255) || (paramInt == i))
-      {
-        lia locallia = a(i);
-        if (locallia != null) {
-          locallia.b();
-        }
-      }
-      i += 1;
+    if (paramInt == b()) {
+      return;
     }
+    a(0L, null);
   }
   
   protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
   {
-    lbc.c("EffectSupportManager", "EffectFaceSupportManager onSessionStatusChanged " + paramInt);
     switch (paramInt)
     {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      a(255);
-      return;
     }
-    b();
+    do
+    {
+      return;
+      paramString1 = (PendantItem)a();
+    } while ((paramString1 == null) || (TextUtils.isEmpty(paramString1.getId())));
+    a(paramLong, null);
   }
   
-  public boolean a(int paramInt1, int paramInt2, String paramString)
+  public boolean a(long paramLong, PendantItem paramPendantItem)
   {
-    lia locallia = a(paramInt1);
-    if (locallia != null) {
-      return locallia.a(paramInt2, paramString);
-    }
-    return false;
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    boolean bool = true;
-    lia locallia = a(paramInt);
-    if (locallia != null) {
-      bool = locallia.a(paramString);
+    boolean bool = super.a(paramLong, paramPendantItem);
+    if ((bool) && (paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())) && (!TextUtils.equals("0", paramPendantItem.getId())))
+    {
+      lgt locallgt = (lgt)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+      if (locallgt != null) {
+        locallgt.a(3005, paramPendantItem.getId());
+      }
     }
     return bool;
   }
   
-  protected boolean a(String paramString)
+  public int b()
   {
-    return true;
-  }
-  
-  public void b()
-  {
-    int i = 0;
-    while (i < 15)
-    {
-      lia locallia = a(i);
-      if (locallia != null) {
-        locallia.c();
-      }
-      i += 1;
-    }
+    return 3005;
   }
 }
 

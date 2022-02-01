@@ -1,21 +1,14 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import tencent.im.oidb.cmd0x9ae.cmd0x9ae.RspBody;
 
 class aorj
-  implements View.OnClickListener
+  extends ayxn
 {
-  aorj(aorh paramaorh) {}
+  aorj(aori paramaori, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void a(cmd0x9ae.RspBody paramRspBody)
   {
-    this.a.dismiss();
-    Intent localIntent = new Intent(paramView.getContext(), PoiMapActivity.class).putExtra("lat", Double.toString(this.a.jdField_a_of_type_Aozm.a * 1.0D / 1000000.0D)).putExtra("lon", Double.toString(this.a.jdField_a_of_type_Aozm.b * 1.0D / 1000000.0D));
-    this.a.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    aori.a(this.jdField_a_of_type_Aori, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRspBody, this);
   }
 }
 

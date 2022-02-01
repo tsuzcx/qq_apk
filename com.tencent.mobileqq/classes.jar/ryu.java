@@ -1,21 +1,9 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo;
 
-public class ryu
-  extends Handler
+public abstract interface ryu
 {
-  private ryu(VideoFeedsGuideView paramVideoFeedsGuideView) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    VideoFeedsGuideView.a(this.a);
-  }
+  public abstract void a(View paramView, DiscoveryBannerInfo paramDiscoveryBannerInfo);
 }
 
 

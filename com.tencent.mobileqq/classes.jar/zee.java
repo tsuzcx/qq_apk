@@ -1,12 +1,8 @@
-class zee
+public class zee
 {
-  final int jdField_a_of_type_Int;
-  final zef jdField_a_of_type_Zef;
-  
-  public zee(zef paramzef, int paramInt)
+  public static boolean a(int paramInt)
   {
-    this.jdField_a_of_type_Zef = paramzef;
-    this.jdField_a_of_type_Int = paramInt;
+    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6);
   }
 }
 

@@ -1,13 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class ome
-  implements olv
+  implements View.OnClickListener
 {
-  ome(omb paramomb) {}
+  ome(omc paramomc, omf paramomf) {}
   
-  public void a(orb paramorb, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (this.a.a.a(paramorb)) {
-      this.a.a.a(omb.a(this.a), omb.a(this.a), paramInt1, paramInt2);
-    }
+    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Omc.a, omf.c(this.jdField_a_of_type_Omf));
+    ocd.a(null, "CliOper", "", omf.c(this.jdField_a_of_type_Omf), "0X80078A8", "0X80078A8", 0, 0, "", "", "", ozs.e(), false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

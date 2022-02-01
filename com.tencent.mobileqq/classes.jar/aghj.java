@@ -1,6 +1,8 @@
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+
 public abstract interface aghj
 {
-  public abstract void a(aghh paramaghh, int paramInt);
+  public abstract void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo);
 }
 
 

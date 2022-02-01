@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import bgjw;
+import bhjx;
 import com.tencent.qphone.base.util.QLog;
 
 public class NearbyPeopleProfileActivity$CloseReceiver
@@ -16,7 +16,7 @@ public class NearbyPeopleProfileActivity$CloseReceiver
     {
       paramContext = (NearbyPeopleProfileActivity)paramContext;
       paramIntent = paramIntent.getStringExtra("uin");
-      if ((!TextUtils.isEmpty(paramIntent)) && (bgjw.a(paramIntent, paramContext.d)))
+      if ((!TextUtils.isEmpty(paramIntent)) && (bhjx.a(paramIntent, paramContext.d)))
       {
         if (QLog.isColorLevel()) {
           QLog.i("Q.nearby_people_card.", 2, "onReceive,close on uin:" + paramIntent);

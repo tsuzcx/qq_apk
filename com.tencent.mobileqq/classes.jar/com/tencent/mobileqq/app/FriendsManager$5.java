@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import anmw;
+import anyw;
 
 public class FriendsManager$5
   implements Runnable
 {
-  public FriendsManager$5(anmw paramanmw) {}
+  public FriendsManager$5(anyw paramanyw) {}
   
   public void run()
   {

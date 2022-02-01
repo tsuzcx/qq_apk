@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zlq
+  implements AdapterView.OnItemClickListener
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  public zlq(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      return;
-      paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
-    } while (paramQQAppInterface == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("StoryAIOUtils", 2, "refreshAIOStoryMessages");
-    }
-    paramQQAppInterface.removeMessages(267387141);
-    paramQQAppInterface.sendMessageDelayed(paramQQAppInterface.obtainMessage(267387141), 500L);
+    HorizontalSelectColorLayout.a(this.a, paramInt);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

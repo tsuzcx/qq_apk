@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.richmedia.capture.view;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -13,11 +13,11 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import anni;
-import bqcn;
-import bqco;
-import bqcp;
-import bqcq;
+import anzj;
+import brdy;
+import brdz;
+import brea;
+import breb;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
 
@@ -28,13 +28,13 @@ public class BeautyBar
   public static long a;
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bqcn(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new brdy(this);
   private AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   public SeekBar.OnSeekBarChangeListener a;
   private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bqcq jdField_a_of_type_Bqcq;
+  private breb jdField_a_of_type_Breb;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   
@@ -47,19 +47,19 @@ public class BeautyBar
   public BeautyBar(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new bqco(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new brdz(this);
   }
   
   public BeautyBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new bqco(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new brdz(this);
   }
   
   public BeautyBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new bqco(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new brdz(this);
   }
   
   private void a()
@@ -68,13 +68,13 @@ public class BeautyBar
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2131363357));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2131363381));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new bqcp(this));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845706);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363359));
+    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new brea(this));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845721);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363383));
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = null;
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0);
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
@@ -89,7 +89,7 @@ public class BeautyBar
     if ((this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetSeekBar == null)) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131699887) + paramInt + "%");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131699994) + paramInt + "%");
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = ((LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams());
     }
@@ -102,7 +102,7 @@ public class BeautyBar
       int m = this.jdField_a_of_type_AndroidWidgetSeekBar.getWidth();
       this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = (i - k / 2 + (m - j) * paramInt / 100);
       if (paramInt < 50) {}
-      for (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = ((int)(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin - (50.0F - paramInt) / 50.0F * afur.a(7.0F, getResources())));; this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = ((int)(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin + (paramInt - 50.0F) / 50.0F * afur.a(5.0F, getResources()))))
+      for (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = ((int)(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin - (50.0F - paramInt) / 50.0F * agej.a(7.0F, getResources())));; this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = ((int)(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin + (paramInt - 50.0F) / 50.0F * agej.a(5.0F, getResources()))))
       {
         this.jdField_a_of_type_AndroidWidgetTextView.requestLayout();
         if ((paramBoolean) || (this.jdField_a_of_type_AndroidWidgetSeekBar.getVisibility() == 0)) {
@@ -120,9 +120,9 @@ public class BeautyBar
     a();
   }
   
-  public void setBeautyBarListener(bqcq parambqcq)
+  public void setBeautyBarListener(breb parambreb)
   {
-    this.jdField_a_of_type_Bqcq = parambqcq;
+    this.jdField_a_of_type_Breb = parambreb;
   }
 }
 

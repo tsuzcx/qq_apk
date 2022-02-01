@@ -1,62 +1,214 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Message;
+import android.support.annotation.NonNull;
+import android.view.View;
+import com.tribe.async.dispatch.IEventReceiver;
+import org.json.JSONObject;
+
 public abstract class bqgi
-  extends bqgo
+  implements IEventReceiver
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  @NonNull
+  public final bqgk a;
+  public bqhs a;
+  protected long d;
+  public boolean j;
   
-  public bqgi()
+  public bqgi(@NonNull bqgk parambqgk)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_Bqgk = parambqgk;
   }
   
-  public String a()
+  private void d()
   {
-    return null;
+    if (this.jdField_a_of_type_Bqhs == null) {
+      bbnk.a(new IllegalStateException("have not attached ui"));
+    }
   }
+  
+  @NonNull
+  public Context a()
+  {
+    d();
+    return this.jdField_a_of_type_Bqhs.a();
+  }
+  
+  @NonNull
+  public Resources a()
+  {
+    d();
+    return this.jdField_a_of_type_Bqhs.a().getResources();
+  }
+  
+  @NonNull
+  public View a(int paramInt)
+  {
+    d();
+    View localView = this.jdField_a_of_type_Bqhs.a().findViewById(paramInt);
+    if (localView == null) {
+      throw new IllegalArgumentException("can not find view by id " + paramInt);
+    }
+    return localView;
+  }
+  
+  public bqgj a(Class<? extends bqgj> paramClass)
+  {
+    d();
+    return this.jdField_a_of_type_Bqgk.a(paramClass);
+  }
+  
+  @NonNull
+  public bqhs a()
+  {
+    d();
+    return this.jdField_a_of_type_Bqhs;
+  }
+  
+  protected String a(int paramInt)
+  {
+    d();
+    return a().getString(paramInt);
+  }
+  
+  public void a()
+  {
+    d();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    d();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    a_(paramInt2, paramObject);
+  }
+  
+  public void a(int paramInt, @NonNull bqua parambqua)
+  {
+    a(parambqua);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    d();
+  }
+  
+  public void a(bqhs parambqhs)
+  {
+    if (this.jdField_a_of_type_Bqhs != null) {
+      throw new IllegalStateException("attach context duplicate");
+    }
+    if (parambqhs == null) {
+      throw new IllegalArgumentException("ui should not be null");
+    }
+    this.jdField_a_of_type_Bqhs = parambqhs;
+  }
+  
+  @Deprecated
+  public void a(@NonNull bqua parambqua) {}
+  
+  public void a(Class<? extends bqgj> paramClass, bqgj parambqgj)
+  {
+    d();
+    this.jdField_a_of_type_Bqgk.a(paramClass, parambqgj);
+  }
+  
+  public void a(@NonNull Error paramError) {}
+  
+  public void a(JSONObject paramJSONObject) {}
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Int == -1)
-    {
-      a("ShortVideoBaseInfo.check", "reqBusiType invalid, reqBusiType:" + this.jdField_a_of_type_Int);
-      return false;
-    }
-    if (this.jdField_b_of_type_Int == -1)
-    {
-      a("ShortVideoBaseInfo.check", "uinType invalid,uinType:" + this.jdField_b_of_type_Int);
-      return false;
-    }
-    if (this.c == null)
-    {
-      a("ShortVideoBaseInfo.check", "peerUin invalid,peerUin:" + this.c);
-      return false;
-    }
-    return true;
+    d();
+    return false;
   }
   
-  public String toString()
+  protected boolean a(Message paramMessage)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nShortVideoBaseInfo");
-    localStringBuilder.append("\n |-").append("localUUID:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("uniseq:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n |-").append("reqBusiType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\n |-").append("selfUin:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("peerUin:").append(this.c);
-    localStringBuilder.append("\n |-").append("secondId:").append(this.d);
-    localStringBuilder.append("\n |-").append("md5:").append(this.e);
-    localStringBuilder.append("\n |-").append("thumbMD5:").append(this.g);
-    localStringBuilder.append("\n |-").append("errInfo:").append(this.jdField_a_of_type_Ayxt);
-    return localStringBuilder.toString();
+    return false;
+  }
+  
+  public void aT_() {}
+  
+  public void aU_()
+  {
+    d();
+  }
+  
+  public void aY_()
+  {
+    d();
+  }
+  
+  public void a_(int paramInt, Object paramObject) {}
+  
+  public void ad_() {}
+  
+  public void b(Bundle paramBundle)
+  {
+    d();
+  }
+  
+  public void b(@NonNull bqua parambqua)
+  {
+    ((bpmw)bplq.a(5)).a(this.jdField_a_of_type_Bqhs.getActivity());
+  }
+  
+  public final boolean b(@NonNull Message paramMessage)
+  {
+    boolean bool = a(paramMessage);
+    paramMessage.recycle();
+    return bool;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Bqgk.i();
+  }
+  
+  public boolean d()
+  {
+    return (this.jdField_a_of_type_Bqhs == null) || (this.jdField_a_of_type_Bqhs.getActivity() == null) || (this.jdField_a_of_type_Bqhs.getActivity().isFinishing()) || ((Build.VERSION.SDK_INT > 16) && (this.jdField_a_of_type_Bqhs.getActivity().isDestroyed()));
+  }
+  
+  public void f()
+  {
+    d();
+  }
+  
+  public void g()
+  {
+    this.j = true;
+    u();
+  }
+  
+  public void h_(boolean paramBoolean)
+  {
+    d();
+  }
+  
+  public boolean isValidate()
+  {
+    return this.jdField_a_of_type_Bqgk.isValidate();
+  }
+  
+  public void m() {}
+  
+  public void u()
+  {
+    this.jdField_a_of_type_Bqhs = null;
+  }
+  
+  public void y_()
+  {
+    d();
   }
 }
 

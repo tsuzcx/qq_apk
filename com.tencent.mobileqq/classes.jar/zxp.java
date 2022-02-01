@@ -1,19 +1,16 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 
-class zxp
-  extends GridLayoutManager.SpanSizeLookup
+public class zxp
+  implements DialogInterface.OnClickListener
 {
-  zxp(zxo paramzxo) {}
+  public zxp(QRLoginMgrActivity paramQRLoginMgrActivity, zyr paramzyr) {}
   
-  public int getSpanSize(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramInt = zxo.a(this.a, paramInt);
-    zxu localzxu = this.a.a(paramInt);
-    if (localzxu != null) {
-      return localzxu.getSpanCount(localzxu.getLocalPosition(paramInt));
-    }
-    return ((GridLayoutManager)zxo.a(this.a)).getSpanCount();
+    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, false, this.jdField_a_of_type_Zyr.a);
+    bdll.b(null, "dc00898", "", "", "0X800A474", "0X800A474", this.jdField_a_of_type_Zyr.c, 0, "", "", "", "");
   }
 }
 

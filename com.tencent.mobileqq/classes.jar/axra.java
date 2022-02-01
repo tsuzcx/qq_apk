@@ -1,18 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.qphone.base.util.QLog;
 
-public final class axra
-  implements Parcelable.Creator<PicInfo>
+public class axra
+  extends BroadcastReceiver
 {
-  public PicInfo a(Parcel paramParcel)
-  {
-    return new PicInfo(paramParcel);
-  }
+  public axra(QQPlayerService paramQQPlayerService) {}
   
-  public PicInfo[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new PicInfo[paramInt];
+    if (QQPlayerService.c(this.a)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("QQPlayerService", 2, "received broadcast after service destroy");
+      }
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQPlayerService", 2, "QQPlayerBroadcastReceiverReceiver onReceive,action:" + paramIntent.getAction());
+      }
+    } while ((!"com.tencent.mobileqq.intent.logout".equals(paramIntent.getAction())) && (!"qqplayer_exit_action".equals(paramIntent.getAction())));
+    if ((paramIntent.getBooleanExtra("musicplayer.isDelFileOnDonwloadThreadOver", false)) && (this.a.a != null)) {
+      this.a.a.b = true;
+    }
+    QQPlayerService.c(this.a.getApplicationContext());
   }
 }
 

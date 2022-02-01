@@ -8,11 +8,11 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import aqfv;
-import bies;
-import blfh;
-import blfq;
-import bmkp;
+import aquy;
+import bjfr;
+import bmgk;
+import bmgt;
+import bnls;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyFragmentActivity;
@@ -27,25 +27,25 @@ public class QzoneVerticalVideoPluginProxyActivity
   
   public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
   {
-    Class localClass = bmkp.a("com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity");
+    Class localClass = bnls.a("com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity");
     paramIntent.putExtra("userQqResources", 2);
     paramIntent.putExtra("useSkinEngine", false);
     paramIntent.putExtra("param_plugin_gesturelock", false);
-    blfq localblfq = new blfq(0);
-    localblfq.jdField_a_of_type_JavaLangString = paramString;
-    localblfq.e = "com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity";
-    localblfq.jdField_a_of_type_JavaLangClass = localClass;
-    localblfq.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localblfq.jdField_b_of_type_Int = paramInt;
-    localblfq.c = 15000;
-    localblfq.f = null;
-    localblfq.jdField_b_of_type_Boolean = false;
-    localblfq.jdField_b_of_type_JavaLangString = "qzone_vertical_video_plugin.apk";
-    localblfq.d = "QZoneVerticalVideo";
+    bmgt localbmgt = new bmgt(0);
+    localbmgt.jdField_a_of_type_JavaLangString = paramString;
+    localbmgt.e = "com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity";
+    localbmgt.jdField_a_of_type_JavaLangClass = localClass;
+    localbmgt.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbmgt.jdField_b_of_type_Int = paramInt;
+    localbmgt.c = 15000;
+    localbmgt.f = null;
+    localbmgt.jdField_b_of_type_Boolean = false;
+    localbmgt.jdField_b_of_type_JavaLangString = "qzone_vertical_video_plugin.apk";
+    localbmgt.d = "QZoneVerticalVideo";
     if (QLog.isColorLevel()) {
       QLog.d("PluginDebug", 2, "加载原始插件");
     }
-    blfh.a(paramActivity, localblfq);
+    bmgk.a(paramActivity, localbmgt);
     if (QLog.isColorLevel()) {
       QLog.d("PluginDebug", 2, "QzoneVerticalVideoPluginProxyActivity.launchPluginActivityForResult");
     }
@@ -94,7 +94,7 @@ public class QzoneVerticalVideoPluginProxyActivity
   
   public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
-    return bmkp.a(paramString);
+    return bnls.a(paramString);
   }
   
   public int getThemeResId()
@@ -117,13 +117,13 @@ public class QzoneVerticalVideoPluginProxyActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bies.a(BaseApplicationImpl.getContext(), false, 5);
-    aqfv.a(BaseApplicationImpl.getContext(), 2, false);
+    bjfr.a(BaseApplicationImpl.getContext(), false, 5);
+    aquy.a(BaseApplicationImpl.getContext(), 2, false);
   }
   
   public void onDestroy()
   {
-    aqfv.a(BaseApplicationImpl.getContext(), 2, true);
+    aquy.a(BaseApplicationImpl.getContext(), 2, true);
     super.onDestroy();
   }
 }

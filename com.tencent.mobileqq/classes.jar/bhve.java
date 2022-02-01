@@ -1,44 +1,93 @@
-import android.text.Spanned;
-import android.text.style.CharacterStyle;
-import java.util.Comparator;
+import android.annotation.TargetApi;
+import android.net.SSLCertificateSocketFactory;
+import android.os.Build.VERSION;
+import java.lang.reflect.Method;
+import java.net.InetAddress;
+import java.net.Socket;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLPeerUnverifiedException;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 
 public class bhve
-  implements Comparator<CharacterStyle>
+  extends SSLSocketFactory
 {
-  Spanned a;
+  private final String jdField_a_of_type_JavaLangString = "SniSSLSocketFactory";
+  HostnameVerifier jdField_a_of_type_JavaxNetSslHostnameVerifier;
+  private String b;
   
-  public int a(CharacterStyle paramCharacterStyle1, CharacterStyle paramCharacterStyle2)
+  public bhve(String paramString, HostnameVerifier paramHostnameVerifier)
   {
-    int i = 1;
-    if (this.a == null) {
-      i = 0;
-    }
-    int j;
-    int k;
-    do
-    {
-      do
-      {
-        return i;
-        j = this.a.getSpanStart(paramCharacterStyle1);
-        k = this.a.getSpanStart(paramCharacterStyle2);
-        if (j != k) {
-          break;
-        }
-        j = this.a.getSpanEnd(paramCharacterStyle1);
-        k = this.a.getSpanEnd(paramCharacterStyle2);
-        if (j == k) {
-          return 0;
-        }
-      } while (j > k);
-      return -1;
-    } while (j > k);
-    return -1;
+    this.b = paramString;
+    this.jdField_a_of_type_JavaxNetSslHostnameVerifier = paramHostnameVerifier;
   }
   
-  public void a(Spanned paramSpanned)
+  public Socket createSocket()
   {
-    this.a = paramSpanned;
+    return null;
+  }
+  
+  public Socket createSocket(String paramString, int paramInt)
+  {
+    return null;
+  }
+  
+  public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
+  {
+    return null;
+  }
+  
+  public Socket createSocket(InetAddress paramInetAddress, int paramInt)
+  {
+    return null;
+  }
+  
+  public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
+  {
+    return null;
+  }
+  
+  @TargetApi(17)
+  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
+  {
+    paramString = paramSocket.getInetAddress();
+    if (paramBoolean) {
+      paramSocket.close();
+    }
+    SSLCertificateSocketFactory localSSLCertificateSocketFactory = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getDefault(0);
+    paramSocket = (SSLSocket)localSSLCertificateSocketFactory.createSocket(paramString, paramInt);
+    paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
+    if (Build.VERSION.SDK_INT >= 17) {
+      localSSLCertificateSocketFactory.setHostname(paramSocket, this.b);
+    }
+    for (;;)
+    {
+      paramString = paramSocket.getSession();
+      if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier == null) {
+        this.jdField_a_of_type_JavaxNetSslHostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
+      }
+      if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier.verify(this.b, paramString)) {
+        break;
+      }
+      throw new SSLPeerUnverifiedException("Cannot verify hostname: " + this.b);
+      try
+      {
+        paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.b });
+      }
+      catch (Exception paramString) {}
+    }
+    return paramSocket;
+  }
+  
+  public String[] getDefaultCipherSuites()
+  {
+    return new String[0];
+  }
+  
+  public String[] getSupportedCipherSuites()
+  {
+    return new String[0];
   }
 }
 

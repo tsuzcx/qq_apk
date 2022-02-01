@@ -1,17 +1,53 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class afvn
-  implements afvp
+public class afvn
+  implements View.OnClickListener
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  public afvn(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public void onClick(View paramView)
   {
-    paramString = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 21);
-    paramString.l = 11;
-    paramString.h = bglf.h(paramQQAppInterface, paramSessionInfo.b, paramMessageRecord.senderuin);
-    return paramString;
+    Object localObject = paramView.getTag();
+    if ((localObject == null) || (!(localObject instanceof Integer))) {}
+    int i;
+    do
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      i = ((Integer)localObject).intValue();
+    } while (i < 0);
+    localObject = paramView.findViewById(2131379943);
+    if ((((View)localObject).getTag() != null) && ((((View)localObject).getTag() instanceof Boolean))) {}
+    for (boolean bool = ((Boolean)((View)localObject).getTag()).booleanValue();; bool = false)
+    {
+      if (bool)
+      {
+        localObject = (afwe)this.a.jdField_a_of_type_Afwi.getItem(i);
+        this.a.a((afwe)localObject);
+        if ((this.a.jdField_b_of_type_AndroidAppDialog != null) && (this.a.jdField_b_of_type_AndroidAppDialog.isShowing())) {
+          this.a.jdField_b_of_type_AndroidAppDialog.dismiss();
+        }
+        if (this.a.d != 11) {
+          break;
+        }
+        bdll.b(this.a.app, "CliOper", "", "", "0X8006218", "0X8006218", 0, 0, "", "", "", "");
+        break;
+      }
+      localObject = (afwe)this.a.jdField_a_of_type_Afwg.getItem(i);
+      this.a.a((afwe)localObject);
+      if (this.a.d == 11) {
+        bdll.b(this.a.app, "CliOper", "", "", "0X8006219", "0X8006219", 0, 0, "", "", "", "");
+      }
+      if (this.a.d != 18) {
+        break;
+      }
+      bdll.b(this.a.app, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "mber_clk", 0, 0, this.a.jdField_b_of_type_JavaLangString, "", "", "");
+      break;
+    }
   }
 }
 

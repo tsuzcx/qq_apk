@@ -1,26 +1,12 @@
-import android.graphics.Rect;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aqkf
-  implements Comparator<Rect>
+  implements DialogInterface.OnClickListener
 {
-  aqkf(aqkc paramaqkc) {}
+  aqkf(aqkd paramaqkd) {}
   
-  public int a(Rect paramRect1, Rect paramRect2)
-  {
-    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
-    do
-    {
-      return -1;
-      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
-        return 1;
-      }
-    } while (paramRect1.width() > paramRect2.width());
-    if (paramRect1.width() < paramRect2.width()) {
-      return 1;
-    }
-    return 0;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

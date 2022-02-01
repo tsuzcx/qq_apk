@@ -1,33 +1,17 @@
-import android.view.View;
-import android.view.ViewGroup;
-import java.lang.ref.SoftReference;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahke
+class ahke
+  extends ahkx
 {
-  public String a;
-  SoftReference<View> a;
-  SoftReference<ViewGroup> b;
-  
-  public ahke(String paramString, View paramView, ViewGroup paramViewGroup)
+  ahke(ahgk paramahgk)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
-    this.b = new SoftReference(paramViewGroup);
+    super(paramahgk, null);
   }
   
-  public View a()
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-  }
-  
-  public ViewGroup a()
-  {
-    return (ViewGroup)this.b.get();
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    this.b = new SoftReference(paramViewGroup);
+    return new agzv(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

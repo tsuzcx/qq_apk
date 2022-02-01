@@ -1,15 +1,8 @@
+import com.tencent.av.VideoController;
+
 public abstract interface ljb
-  extends liz
 {
-  public abstract int a(long paramLong, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(long paramLong, boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public abstract VideoController a();
 }
 
 

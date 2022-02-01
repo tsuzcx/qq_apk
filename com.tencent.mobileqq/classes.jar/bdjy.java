@@ -1,94 +1,80 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.startup.step.CheckPermission;
+import com.tencent.mobileqq.startup.step.InitMemoryCache;
+import com.tencent.mobileqq.startup.step.LoadDex;
+import com.tencent.mobileqq.startup.step.OldApplication;
+import com.tencent.mobileqq.startup.step.SetSplash;
+import com.tencent.mobileqq.startup.step.StartService;
+import com.tencent.mobileqq.startup.step.Step;
+import com.tencent.mobileqq.startup.step.Update;
 
 public class bdjy
-  extends bdix
+  implements bdjz
 {
-  public bdjy(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
+  private static bdjz a;
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public static void a()
   {
-    this.a.stopTitleProgress();
-    if (!paramBoolean) {
-      atvf.a(anni.a(2131713495));
-    }
-    while ((this.a.jdField_a_of_type_Int != paramInt) && (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    if ((0 == 0) && (QLog.isDevelopLevel())) {
-      QLog.i("TeamWorkAuthorizeSettingFragment", 1, "padInfo is null, maybe is newpad");
-    }
-    this.a.jdField_a_of_type_JavaUtilList.clear();
-    if (0 != 0) {
-      throw new NullPointerException();
+    a = (bdjz)BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.startup.step.Step$AfterDexStepFactory").newInstance();
+  }
+  
+  public static Step b(int paramInt, bdho parambdho, int[] paramArrayOfInt)
+  {
+    Object localObject;
+    switch (paramInt)
+    {
+    case 5: 
+    case 6: 
+    case 7: 
+    case 11: 
+    case 12: 
+    case 14: 
+    case 15: 
+    case 16: 
+    case 17: 
+    case 18: 
+    case 19: 
+    case 20: 
+    default: 
+      if (a != null) {
+        localObject = a.a(paramInt, parambdho, paramArrayOfInt);
+      }
+      break;
     }
     for (;;)
     {
-      TeamWorkAuthorizeSettingFragment.a(this.a, this.a.b);
-      TeamWorkAuthorizeSettingFragment.a(this.a);
-      TeamWorkAuthorizeSettingFragment.a(this.a, true);
-      return;
-      this.a.b = 2;
+      ((Step)localObject).mId = paramInt;
+      ((Step)localObject).mDirector = parambdho;
+      if (paramInt == 0) {
+        Step.access$002((Step)localObject, paramArrayOfInt);
+      }
+      return localObject;
+      localObject = new LoadDex();
+      continue;
+      localObject = new InitMemoryCache();
+      continue;
+      localObject = new OldApplication();
+      continue;
+      localObject = new SetSplash();
+      continue;
+      localObject = new CheckPermission();
+      continue;
+      localObject = new Update();
+      continue;
+      localObject = new StartService();
+      continue;
+      localObject = new Step();
     }
   }
   
-  public void a(boolean paramBoolean, String paramString, int paramInt, List<TimDocSSOMsg.UinRightInfo> paramList)
+  public Step a(int paramInt, bdho parambdho, int[] paramArrayOfInt)
   {
-    this.a.stopTitleProgress();
-    if (!paramBoolean) {
-      atvf.a(anni.a(2131713483));
-    }
-    while (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    this.a.jdField_a_of_type_JavaUtilList.clear();
-    paramString = paramList.iterator();
-    while (paramString.hasNext())
-    {
-      paramList = (TimDocSSOMsg.UinRightInfo)paramString.next();
-      bdhm localbdhm = new bdhm();
-      localbdhm.jdField_a_of_type_JavaLangString = String.valueOf(paramList.uint64_uin.get());
-      localbdhm.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo = paramList;
-      this.a.jdField_a_of_type_Bdhk.a(localbdhm);
-    }
-    this.a.b = paramInt;
-    TeamWorkAuthorizeSettingFragment.a(this.a, this.a.b);
-    TeamWorkAuthorizeSettingFragment.a(this.a);
-    TeamWorkAuthorizeSettingFragment.a(this.a, true);
-  }
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt)
-  {
-    TeamWorkAuthorizeSettingFragment.a(this.a, true);
-    this.a.getRightTextView().setEnabled(true);
-    this.a.stopTitleProgress();
-    if (!paramBoolean) {
-      atvf.a(anni.a(2131713438));
-    }
-    Intent localIntent;
-    do
-    {
-      return;
-      atvf.b(anni.a(2131713440));
-      this.a.stopTitleProgress();
-      localIntent = new Intent();
-      localIntent.putExtra("url", paramString);
-      localIntent.putExtra("type", paramInt);
-    } while (!this.a.isAdded());
-    this.a.getActivity().setResult(1122, localIntent);
-    this.a.getActivity().finish();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdjy
  * JD-Core Version:    0.7.0.1
  */

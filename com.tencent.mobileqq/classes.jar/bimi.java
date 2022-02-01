@@ -1,39 +1,32 @@
-import android.os.Bundle;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.agent.OpenCardContainer;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-public class bimi
-  implements biyx
+class bimi
+  extends bimm
 {
-  public bimi(OpenAuthorityFragment paramOpenAuthorityFragment) {}
-  
-  public void a(biyc parambiyc)
+  bimi(bimg parambimg)
   {
-    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "refreshTicket success info.uin=" + bipr.a(parambiyc.a));
-    if (OpenAuthorityFragment.i(this.a))
-    {
-      QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "refreshTicket success Activity Finishing");
-      return;
-    }
-    OpenAuthorityFragment.a(this.a).a().a(OpenAuthorityFragment.a(this.a), parambiyc);
-    long l = OpenAuthorityFragment.a(this.a).a();
-    parambiyc = OpenAuthorityFragment.a(this.a);
-    OpenAuthorityFragment.a(this.a).a(OpenAuthorityFragment.f(this.a), OpenAuthorityFragment.f(this.a), OpenAuthorityFragment.c(this.a), parambiyc, l, this.a.a, bipr.a(this.a.getActivity()), this.a.getActivity());
+    super(parambimg, null);
   }
   
-  public void a(String paramString, Bundle paramBundle)
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, "refreshTicket onFail");
-    if (OpenAuthorityFragment.i(this.a))
-    {
-      QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "refreshTicket onFail Activity Finishing");
-      return;
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "new shouldInterceptRequest");
     }
-    boolean bool = aobl.a().a(paramBundle);
-    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "refreshTicket checkIMBlockByBundle uin: " + paramString + " isIMBlock: " + bool);
-    this.a.c(paramString);
+    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
   }
 }
 

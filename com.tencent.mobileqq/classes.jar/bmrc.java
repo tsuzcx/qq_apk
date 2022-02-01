@@ -1,31 +1,36 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.troop.TroopPluginManager.InstallRunable;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
-public class bmrc
-  extends Handler
+final class bmrc
+  extends bmqb
 {
-  public bmrc(TroopPluginManager.InstallRunable paramInstallRunable, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bmrc(Context paramContext) {}
   
-  public void handleMessage(Message paramMessage)
+  public void b(@NonNull bmqc parambmqc)
   {
-    switch (paramMessage.what)
-    {
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.e("Utility", 2, "-->getEntryControl:connection recv data!");
     }
-    do
+    parambmqc = parambmqc.a();
+    boolean bool1 = bool2;
+    if (parambmqc != null)
     {
-      do
-      {
-        return;
-      } while (this.a.a == null);
-      this.a.a.a(0);
+      parambmqc = bmrb.a("on_off", parambmqc);
+      if (parambmqc == null) {
+        bool1 = bool2;
+      }
+    }
+    else
+    {
+      bmra.a(this.a, bool1);
       return;
-    } while (this.a.a == null);
-    this.a.a.a(2);
+    }
+    if (((Integer)parambmqc).intValue() == 1) {}
+    for (bool1 = true;; bool1 = false) {
+      break;
+    }
   }
 }
 

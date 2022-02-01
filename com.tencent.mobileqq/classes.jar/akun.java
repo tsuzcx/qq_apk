@@ -1,10 +1,14 @@
-public abstract interface akun
+class akun
+  implements bjhv
 {
-  public abstract void a();
+  akun(akum paramakum, Runnable paramRunnable) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void b();
+  public void a(int paramInt)
+  {
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
+  }
 }
 
 

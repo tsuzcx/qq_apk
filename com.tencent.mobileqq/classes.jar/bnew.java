@@ -1,6 +1,10 @@
-public abstract interface bnew
+import cooperation.qzone.plugin.PluginRecord;
+
+abstract interface bnew
 {
-  public abstract void a();
+  public abstract void a(boolean paramBoolean, PluginRecord paramPluginRecord);
+  
+  public abstract void d(PluginRecord paramPluginRecord);
 }
 
 

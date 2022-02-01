@@ -3,20 +3,20 @@ package com.tencent.mobileqq.forward;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aufw;
-import bcwd;
-import bfup;
-import bgjw;
-import bgmp;
-import bgng;
+import auxr;
+import bdow;
+import bguq;
+import bhjx;
+import bhmr;
+import bhni;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nmp;
-import yqu;
+import nok;
+import yup;
 
 public class ForwardQQStoryAccountMsgOption
   extends ForwardPluginShareStructMsgOption
@@ -34,7 +34,7 @@ public class ForwardQQStoryAccountMsgOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!bgjw.a(localRecentUser.uin)) && (localRecentUser.getType() != 1020) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && ((localRecentUser.getType() != 1006) || (a(aufw.h))) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 1001) && (localRecentUser.getType() != 10002) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1022) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 0) || (!nmp.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
+      if ((localRecentUser != null) && (!bhjx.a(localRecentUser.uin)) && (localRecentUser.getType() != 1020) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && ((localRecentUser.getType() != 1006) || (a(auxr.h))) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 1001) && (localRecentUser.getType() != 10002) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1022) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 0) || (!nok.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
         localArrayList.add(localRecentUser);
       }
     }
@@ -49,24 +49,24 @@ public class ForwardQQStoryAccountMsgOption
   
   public void e()
   {
-    Object localObject1 = bcwd.a(this.jdField_a_of_type_AndroidOsBundle);
+    Object localObject1 = bdow.a(this.jdField_a_of_type_AndroidOsBundle);
     if ((localObject1 == null) || (TextUtils.isEmpty(((AbsStructMsg)localObject1).mMsg_A_ActionData))) {}
     for (;;)
     {
       return;
-      Object localObject2 = bgng.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, ((AbsStructMsg)localObject1).mMsg_A_ActionData);
+      Object localObject2 = bhni.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, ((AbsStructMsg)localObject1).mMsg_A_ActionData);
       if (localObject2 == null) {
         continue;
       }
-      localObject1 = ((bgmp)localObject2).b("usertype");
-      localObject2 = ((bgmp)localObject2).b("unionid");
+      localObject1 = ((bhmr)localObject2).b("usertype");
+      localObject2 = ((bhmr)localObject2).b("unionid");
       if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2))) {
         continue;
       }
       try
       {
         i = Integer.parseInt((String)localObject1);
-        yqu.a("share_uin", "qq_suc", bfup.b(this.jdField_a_of_type_AndroidOsBundle.getInt("uintype")), i, new String[] { localObject2 });
+        yup.a("share_uin", "qq_suc", bguq.b(this.jdField_a_of_type_AndroidOsBundle.getInt("uintype")), i, new String[] { localObject2 });
         if (!QLog.isColorLevel()) {
           continue;
         }

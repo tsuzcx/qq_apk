@@ -1,27 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqcircle.widgets.QCircleDoublePraiseView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class vvy
-  implements Animation.AnimationListener
+final class vvy
+  implements DialogInterface.OnClickListener
 {
-  public vvy(QCircleDoublePraiseView paramQCircleDoublePraiseView) {}
+  vvy(Context paramContext) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QCircleDoublePraiseView.a(this.a).setVisibility(8);
-    QCircleDoublePraiseView.a(this.a, false);
-    QLog.d("QCircleDoublePraiseView", 1, "onAnimationEnd");
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    QCircleDoublePraiseView.a(this.a, true);
-    QLog.d("QCircleDoublePraiseView", 1, "onAnimationStart");
+    vvw.a(false);
+    if (paramInt == 1)
+    {
+      paramDialogInterface = uyk.a();
+      if (paramDialogInterface != null)
+      {
+        paramDialogInterface = paramDialogInterface.a();
+        uyx.a(this.a, paramDialogInterface, null, -1);
+      }
+      vtq.a("", 53, 2, 0);
+      return;
+    }
+    vtq.a("", 53, 3, 0);
   }
 }
 

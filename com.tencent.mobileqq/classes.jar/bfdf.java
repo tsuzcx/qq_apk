@@ -1,23 +1,35 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import android.os.Handler;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.20.1;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.20.2;
 
 public class bfdf
-  implements bfdk
+  implements INetInfoHandler
 {
-  public bfdf(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  public bfdf(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void a(View paramView, int paramInt)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
   {
-    paramView = this.a.jdField_a_of_type_Bfdj.a(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramView.length());
-    bgjt.a("Grp_edu", "Grp_recite", "Recommend_Clk", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramView });
+    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.20.1(this));
   }
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.20.2(this));
+  }
+  
+  public void onNetWifi2None() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfdf
  * JD-Core Version:    0.7.0.1
  */

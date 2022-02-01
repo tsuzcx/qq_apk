@@ -33,7 +33,7 @@ public class QQDebugWebSocket$ProfileJsPlugin
         localObject2 = new JSONObject();
         ((JSONObject)localObject2).put("id", i);
         ((JSONObject)localObject2).put("result", localObject1);
-        localObject1 = QQDebugWebSocket.access$800(this.this$0, ((JSONObject)localObject2).toString());
+        localObject1 = QQDebugWebSocket.access$900(this.this$0, ((JSONObject)localObject2).toString());
         this.this$0.sendQQDebugMethodMsg("DebugMessageClient", (String)localObject1);
       }
       return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);

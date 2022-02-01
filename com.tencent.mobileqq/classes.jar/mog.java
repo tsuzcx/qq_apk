@@ -1,29 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.funchat.zimu.ZimuViewMotion;
-import java.lang.ref.WeakReference;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.funchat.record.QavRecordButtonView;
 
-public final class mog
-  extends Handler
+public class mog
+  implements View.OnTouchListener
 {
-  WeakReference<ZimuViewMotion> a;
+  public mog(QavRecordButtonView paramQavRecordButtonView) {}
   
-  public mog(ZimuViewMotion paramZimuViewMotion)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = new WeakReference(paramZimuViewMotion);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
+    if (QavRecordButtonView.a(this.a) != 1) {
+      switch (paramMotionEvent.getAction())
+      {
+      }
     }
-    do
+    for (;;)
     {
-      return;
-      paramMessage = (ZimuViewMotion)this.a.get();
-    } while (paramMessage == null);
-    paramMessage.e();
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

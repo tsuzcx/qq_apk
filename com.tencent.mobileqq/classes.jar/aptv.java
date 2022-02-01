@@ -1,26 +1,28 @@
-class aptv
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+
+public class aptv
+  extends AnimatorListenerAdapter
 {
-  static final float[] a;
+  public aptv(QRScanEntryView paramQRScanEntryView, View paramView, boolean paramBoolean) {}
   
-  static
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int k = 0;
-    a = new float[8192];
-    int i = 0;
-    int j;
-    for (;;)
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      j = k;
-      if (i >= 8192) {
-        break;
+      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
       }
-      a[i] = ((float)Math.sin((i + 0.5F) / 8192.0F * 6.283186F));
-      i += 1;
     }
-    while (j < 360)
-    {
-      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.sin(j * 0.01745329F));
-      j += 90;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
   }
 }

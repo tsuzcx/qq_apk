@@ -1,40 +1,38 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.MessageForVIPDonate;
-import com.tencent.mobileqq.data.VIPDonateMsg;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ahnw
-  implements View.OnClickListener
+final class ahnw
+  implements DialogInterface.OnClickListener
 {
-  ahnw(ahnv paramahnv) {}
+  ahnw(QQAppInterface paramQQAppInterface, int paramInt1, Activity paramActivity, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Object localObject1 = (MessageForVIPDonate)((ahnx)afur.a(paramView)).a;
-      Object localObject2 = ((MessageForVIPDonate)localObject1).donateMsg;
-      if ((localObject2 != null) && (!TextUtils.isEmpty(((VIPDonateMsg)localObject2).jumpUrl)))
-      {
-        localObject1 = ((MessageForVIPDonate)localObject1).donateMsg.jumpUrl;
-        localObject2 = new Intent(ahnv.a(this.a), QQBrowserActivity.class);
-        ((Intent)localObject2).putExtra("url", (String)localObject1);
-        ahnv.a(this.a).startActivity((Intent)localObject2);
-      }
-      else
-      {
-        QLog.e("VIPDonateMsgItemBuilder", 1, "donatemsg jumpurl empty");
-      }
+    if (true == ahnt.a) {
+      ahnt.a = false;
     }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      QLog.d("vaspoke", 4, "dialogInterfaceOnClick mApp is null.");
+    }
+    while (((2 != this.jdField_a_of_type_Int) && (4 != this.jdField_a_of_type_Int)) || (paramInt != 1)) {
+      return;
+    }
+    if (2 == this.jdField_a_of_type_Int)
+    {
+      bhzu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000515", "LTMCLUB", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694534), "");
+      VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "vip", "", "", "", "", 0, 0, 0, 0);
+      return;
+    }
+    bhzu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131718497), "");
+    VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "svip", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

@@ -1,35 +1,22 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aevb
-  extends anry
+  extends aeuk
 {
-  public aevb(PublicAccountListActivity paramPublicAccountListActivity) {}
-  
-  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public aevb(JumpActivity paramJumpActivity)
   {
-    if (paramInt == 0) {
-      this.a.c();
-    }
+    super(paramJumpActivity);
   }
   
-  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramInt == 0) {
-      this.a.c();
-    }
-  }
-  
-  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
+    this.b.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aevb
  * JD-Core Version:    0.7.0.1
  */

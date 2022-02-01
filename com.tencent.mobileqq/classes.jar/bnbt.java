@@ -1,21 +1,6 @@
-import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-
-public class bnbt
-  implements CosFunHelper.CountDownListener
+public abstract interface bnbt
 {
-  public bnbt(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void onCountDownEnd()
-  {
-    QIMEffectCameraCaptureUnit.a(this.a);
-  }
-  
-  public void onCountDownStart(VideoMaterial paramVideoMaterial)
-  {
-    QIMEffectCameraCaptureUnit.a(this.a, paramVideoMaterial.getTipsDrawable());
-  }
+  public abstract void a();
 }
 
 

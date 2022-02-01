@@ -9,12 +9,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import anni;
-import aufz;
-import awyr;
-import bcvp;
-import bcvt;
-import bcwc;
+import anzj;
+import auxu;
+import axrk;
+import bdoi;
+import bdom;
+import bdov;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
@@ -30,7 +30,7 @@ public class MusicGeneQQBrowserActivity
   
   public MusicGeneQQBrowserActivity()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new awyr(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new axrk(this);
     this.jdField_a_of_type_JavaLangClass = MusicGeneQQBrowserActivity.MusicGeneQQBrowserFragment.class;
   }
   
@@ -52,7 +52,7 @@ public class MusicGeneQQBrowserActivity
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong)
   {
-    paramString6 = new bcvp(StructMsgForAudioShare.class).c(2).a(anni.a(2131705808)).a();
+    paramString6 = new bdoi(StructMsgForAudioShare.class).c(2).a(anzj.a(2131705915)).a();
     paramString6.mContentSrc = paramString3;
     paramString6.mContentTitle = paramString5;
     paramString6.mContentCover = paramString1;
@@ -61,7 +61,7 @@ public class MusicGeneQQBrowserActivity
     paramString6.mSourceName = "QQ音乐";
     paramString6.mSourceAction = "app";
     paramString6.mSourceAppid = paramLong;
-    paramString2 = bcwc.a(2);
+    paramString2 = bdov.a(2);
     paramString2.a(paramString1, paramString5, paramString4);
     paramString6.addItem(paramString2);
     paramString1 = new Bundle();
@@ -71,7 +71,7 @@ public class MusicGeneQQBrowserActivity
     }
     for (;;)
     {
-      paramString1.putString("app_name", anni.a(2131705807));
+      paramString1.putString("app_name", anzj.a(2131705914));
       paramString1.putString("detail_url", paramString6.mMsgUrl);
       paramString1.putString("audio_url", paramString6.mContentSrc);
       paramString1.putString("image_url_remote", paramString6.mContentCover);
@@ -89,7 +89,7 @@ public class MusicGeneQQBrowserActivity
       paramString2 = new Intent();
       paramString2.putExtra("refuse_show_share_result_dialog", true);
       paramString2.putExtras(paramString1);
-      aufz.a(this, paramString2);
+      auxu.a(this, paramString2);
       return;
       paramString1.putInt("req_type", 1);
     }

@@ -1,22 +1,18 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.view.View;
 
-public class ahfg
-  extends ahfe
+class ahfg
+  implements aunx
 {
-  public ProgressBar a;
-  public RelativeLayout a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public int e;
+  ahfg(ahed paramahed) {}
   
-  public ahfg(ahff paramahff)
+  public void onClick(View paramView)
   {
-    super(paramahff);
+    paramView = bhlq.a(this.a.a, 230);
+    paramView.setTitle(2131691364);
+    paramView.setMessage(2131691365);
+    paramView.setNegativeButton(2131690580, new ahfh(this, paramView));
+    paramView.setPositiveButton(2131694098, new ahfi(this));
+    paramView.show();
   }
 }
 

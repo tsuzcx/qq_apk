@@ -2,9 +2,9 @@ package com.tencent.mobileqq.hiboom;
 
 import android.os.Handler;
 import android.os.Message;
-import anuk;
-import auyq;
-import avah;
+import aogu;
+import avqr;
+import avsi;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -12,17 +12,17 @@ import com.tencent.qphone.base.util.QLog;
 public class FontBubbleManager$2
   implements Runnable
 {
-  public FontBubbleManager$2(auyq paramauyq, BaseChatPie paramBaseChatPie) {}
+  public FontBubbleManager$2(avqr paramavqr, BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    avah localavah = auyq.a(this.this$0);
-    if (localavah != null)
+    avsi localavsi = avqr.a(this.this$0);
+    if (localavsi != null)
     {
-      anuk localanuk = (anuk)auyq.a(this.this$0).a(13);
-      localanuk.a(localavah.a.bubbleId);
-      localanuk.a(localavah.a.fontId, localavah.a.engine);
-      auyq.a(this.this$0).obtainMessage(1001, this.a).sendToTarget();
+      aogu localaogu = (aogu)avqr.a(this.this$0).a(13);
+      localaogu.a(localavsi.a.bubbleId);
+      localaogu.a(localavsi.a.fontId, localavsi.a.engine);
+      avqr.a(this.this$0).obtainMessage(1001, this.a).sendToTarget();
       return;
     }
     QLog.e("FontBubbleManager", 1, "auth ok but mClick is null");

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import ajfm;
-import anhk;
+import ajqv;
+import antf;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -33,7 +33,7 @@ class TroopNotifyAndRecommendView$9$3$1
     try
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView$9$3.a.a.a != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView$9$3.a.a.a.a().a(anhk.N, 0, this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.toByteArray());
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView$9$3.a.a.a.a().a(antf.N, 0, this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.toByteArray());
       }
       return;
     }

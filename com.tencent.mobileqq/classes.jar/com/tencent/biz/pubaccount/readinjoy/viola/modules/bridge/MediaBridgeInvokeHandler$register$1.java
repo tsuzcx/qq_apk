@@ -7,14 +7,14 @@ import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import tqh;
+import thd;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "param", "Lorg/json/JSONObject;", "callback", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class MediaBridgeInvokeHandler$register$1
   extends Lambda
   implements Function2<JSONObject, String, Unit>
 {
-  public MediaBridgeInvokeHandler$register$1(tqh paramtqh)
+  public MediaBridgeInvokeHandler$register$1(thd paramthd)
   {
     super(2);
   }

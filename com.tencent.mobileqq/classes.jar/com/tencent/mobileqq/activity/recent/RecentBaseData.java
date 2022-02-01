@@ -50,6 +50,7 @@ public abstract class RecentBaseData
   public static final int STATUS_MUTILTALK_NOTJOUIN = 3;
   public static final int STATUS_SHARE_LOCATION = 8;
   public static final int STATUS_SING_TOGETHER = 9;
+  public static final int STATUS_STUDY_ROOM = 11;
   public static final int STATUS_WATCH_TOGETHER = 7;
   public static final int UNREAD_MSG_FALG_NUM_VIP = 4;
   public static final int UNREAD_MSG_FLAG_NONE = 0;
@@ -65,8 +66,8 @@ public abstract class RecentBaseData
   public CharSequence mExtraInfo;
   public int mExtraInfoColor;
   public int mExtraType;
-  public boolean mIsGroupVideo;
-  public boolean mIsGroupVideoNotify;
+  public boolean mIsGroupVideo = false;
+  public boolean mIsGroupVideoNotify = false;
   public CharSequence mLastMsg;
   public int mMenuFlag = 0;
   public CharSequence mMsgExtroInfo;
@@ -76,7 +77,7 @@ public abstract class RecentBaseData
   public String mShowTime;
   public int mStatus;
   public String mTitleName;
-  public CharSequence mTitleName_cs;
+  public CharSequence mTitleNameCs;
   public int mUnreadFlag = 1;
   public int mUnreadNum;
   protected MsgSummary msgSummary;

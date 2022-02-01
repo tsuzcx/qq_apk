@@ -1,94 +1,168 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import android.os.Build;
+import android.text.TextUtils;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Locale;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class abdx
-  extends ReportDialog
+  extends WebViewPlugin
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
-  private TextView c;
+  private static abdx jdField_a_of_type_Abdx;
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static boolean jdField_a_of_type_Boolean;
+  private static boolean b;
+  protected final byte a;
+  protected abdy a;
+  protected SensorManager a;
+  private float[] jdField_a_of_type_ArrayOfFloat = new float[4];
   
-  public abdx(Context paramContext)
+  public abdx()
   {
-    super(paramContext, 2131755823);
-    super.setContentView(2131560410);
-    super.getWindow().setWindowAnimations(2131755129);
-    a();
+    this.jdField_a_of_type_Byte = 3;
+    if (QLog.isColorLevel()) {
+      QLog.d("ARTransparentWebviewPlugin", 2, "init");
+    }
+    jdField_a_of_type_Abdx = this;
+  }
+  
+  public static final void b()
+  {
+    b = true;
+    QLog.d("ARTransparentWebviewPlugin", 1, "WebViewTime startRender. isStartRender = " + b);
+    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+      jdField_a_of_type_Abdx.callJs(jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true) });
+    }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365464));
-    this.b = ((TextView)super.findViewById(2131365470));
-    this.c = ((TextView)super.findViewById(2131378785));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131378786));
-    this.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(-7745469, PorterDuff.Mode.MULTIPLY);
-  }
-  
-  public void a(DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (adrl.R)
-    {
-      Resources localResources = getContext().getResources();
-      this.b.setContentDescription(localResources.getString(2131690562, new Object[] { localResources.getString(2131717866) }));
+    if (QLog.isColorLevel()) {
+      QLog.d("ARTransparentWebviewPlugin", 1, "stop motion");
     }
-    this.b.setOnClickListener(new abdz(this, paramOnClickListener));
+    if ((this.jdField_a_of_type_AndroidHardwareSensorManager != null) && (this.jdField_a_of_type_Abdy != null))
+    {
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Abdy);
+      this.jdField_a_of_type_Abdy = null;
+    }
+    jdField_a_of_type_Boolean = false;
+    b = false;
   }
   
   public void a(String paramString)
   {
-    if (this.c != null) {
-      this.c.setText(paramString);
+    jdField_a_of_type_JavaLangString = paramString;
+    QLog.d("ARTransparentWebviewPlugin", 1, "WebViewTime notifyRenderReady. callbackStartRender = " + jdField_a_of_type_JavaLangString);
+    paramString = this.mRuntime.a();
+    if ((paramString != null) && ((paramString instanceof ScanTorchActivity))) {
+      ((ScanTorchActivity)paramString).i();
     }
   }
   
-  public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  public final boolean a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    if (adrl.R)
+    if (QLog.isColorLevel()) {
+      QLog.d("ARTransparentWebviewPlugin", 1, "start motion");
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
+      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)BaseApplication.getContext().getSystemService("sensor"));
+    }
+    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager;
+    int i;
+    if (apir.a())
     {
-      Resources localResources = getContext().getResources();
-      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      String str = paramString;
-      if (paramString == null) {
-        str = "";
+      i = 15;
+      localObject = ((SensorManager)localObject).getSensorList(i);
+      Sensor localSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(4);
+      if ((((List)localObject).size() <= 0) || (localSensor == null)) {
+        break label211;
       }
-      localTextView.setContentDescription(localResources.getString(2131690562, new Object[] { str }));
+      localObject = (Sensor)((List)localObject).get(0);
+      if (this.jdField_a_of_type_Abdy != null) {
+        a();
+      }
+      this.jdField_a_of_type_Abdy = new abdy(this, (byte)3, paramString);
+      if (!Build.MODEL.equalsIgnoreCase("Nexus 5X")) {
+        break label194;
+      }
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Abdy, (Sensor)localObject, 3);
+      label141:
+      if (QLog.isColorLevel()) {
+        QLog.d("ARTransparentWebviewPlugin", 2, "support gyroscope");
+      }
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new abdy(this, paramOnClickListener));
+    for (;;)
+    {
+      jdField_a_of_type_Boolean = true;
+      QLog.d("ARTransparentWebviewPlugin", 1, "WebViewTime startMotion. isRenderReady = " + jdField_a_of_type_Boolean);
+      return true;
+      i = 11;
+      break;
+      label194:
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Abdy, (Sensor)localObject, 1);
+      break label141;
+      label211:
+      callJs(paramString, new String[] { "false" });
+      if (QLog.isColorLevel()) {
+        QLog.d("ARTransparentWebviewPlugin", 2, "not support gyroscope");
+      }
+    }
   }
   
-  public void a(boolean paramBoolean)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ARTransparentWebviewPlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
-  public void dismiss()
-  {
-    try
+    if ("sensor".equals(paramString2))
     {
-      super.dismiss();
-      return;
+      if ("startMotion".equals(paramString3)) {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          QLog.d("ARTransparentWebviewPlugin", 2, "handleJsRequest jsonobject is " + paramJsBridgeListener.toString());
+          return a(paramJsBridgeListener.optString("callback"));
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          return false;
+        }
+      }
+      if ("stopMotion".equals(paramString3))
+      {
+        a();
+        return true;
+      }
+      if ("notifyRenderReady".equals(paramString3)) {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          QLog.d("ARTransparentWebviewPlugin", 2, "handleJsRequest jsonobject is " + paramJsBridgeListener.toString());
+          a(paramJsBridgeListener.optString("callback"));
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          return false;
+        }
+      }
+      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
     }
-    catch (Exception localException) {}
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abdx
  * JD-Core Version:    0.7.0.1
  */

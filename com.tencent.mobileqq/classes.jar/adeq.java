@@ -1,35 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class adeq
-  extends SimpleObserver<awlp>
+public class adeq
+  implements adci
 {
-  adeq(adep paramadep, adez paramadez) {}
-  
-  public void a(awlp paramawlp)
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    adez localadez = this.jdField_a_of_type_Adez;
-    if (paramawlp.c == 1) {}
-    for (int i = 2;; i = 3)
-    {
-      localadez.a(paramawlp, i);
-      return;
-    }
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
-    }
-    if ((paramError instanceof AppInfoError)) {}
-    for (int i = ((AppInfoError)paramError).type;; i = 0)
-    {
-      this.jdField_a_of_type_Adez.a(null, i);
-      return;
-    }
+    bcto.a(paramMsgInfo.shMsgSeq, paramMsgInfo.shMsgType, paramadan.a(), paramMsgType0x210.vProtobuf);
+    return null;
   }
 }
 

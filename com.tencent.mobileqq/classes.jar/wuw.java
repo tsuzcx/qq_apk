@@ -1,105 +1,168 @@
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tribe.async.dispatch.Dispatcher;
+import android.webkit.URLUtil;
+import com.tencent.biz.qqstory.utils.JsonORM;
+import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class wuw
-  extends wva
 {
-  public static final String a;
-  public QQUserUIItem a;
-  private boolean a;
+  @zoq(a="type")
+  public int a;
+  @zoq(a="linkUrl")
+  public String a;
+  @zoq(a="capture")
+  public wus a;
+  @zoq(a="comp")
+  public wut a;
+  @zoq(a="gameinfo")
+  public wuu a;
+  @zoq(a="game")
+  public wuv a;
+  @zoq(a="videoShare")
+  public wux a;
+  @zoq(a="parseState")
+  public int b;
+  @zoq(a="title")
+  public String b;
+  @zoq(a="body")
+  public String c;
+  @zoq(a="picUrl")
+  public String d;
+  @zoq(a="app")
+  public String e;
   
-  static
+  @Nullable
+  public static wuw a(String paramString)
   {
-    jdField_a_of_type_JavaLangString = wjz.a(2131698492);
-  }
-  
-  public wuw(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup, 2131561744);
-  }
-  
-  protected String a(QQUserUIItem paramQQUserUIItem)
-  {
-    if ((paramQQUserUIItem == null) || (!paramQQUserUIItem.isAvailable())) {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
-      return paramQQUserUIItem.nickName;
-    }
-    return paramQQUserUIItem.getDisplayName();
-  }
-  
-  protected void a(String paramString)
-  {
-    b(zlu.b(paramString));
-  }
-  
-  protected void a(String paramString, boolean paramBoolean, wrs paramwrs)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramString, paramBoolean);
-  }
-  
-  public void a(wrs paramwrs)
-  {
-    super.a(paramwrs);
-    yqp.a("FollowNodeViewHolder", "bindData %s", paramwrs);
-    this.itemView.setTag(paramwrs.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((wpy)wpm.a(2)).a(paramwrs.jdField_a_of_type_JavaLangString, false);
-    this.jdField_a_of_type_Boolean = true;
-    boolean bool;
-    Object localObject2;
-    Object localObject1;
-    if (wui.h)
+    try
     {
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVipButNoFriend()))
+      paramString = (wuw)JsonORM.a(new JSONObject(paramString), wuw.class);
+      return paramString;
+    }
+    catch (JsonORM.JsonParseException paramString)
+    {
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
       {
-        bool = true;
-        this.jdField_a_of_type_Boolean = bool;
+        paramString.printStackTrace();
       }
     }
-    else
+  }
+  
+  public static wuw a(String paramString1, String paramString2, String paramString3, @Nullable String paramString4, @Nullable String paramString5)
+  {
+    wuw localwuw = new wuw();
+    localwuw.jdField_a_of_type_JavaLangString = paramString1;
+    localwuw.jdField_b_of_type_JavaLangString = paramString2;
+    localwuw.c = paramString3;
+    localwuw.d = paramString4;
+    localwuw.e = paramString5;
+    localwuw.jdField_a_of_type_Int = 1;
+    localwuw.jdField_b_of_type_Int = 2;
+    return localwuw;
+  }
+  
+  public static wuw a(String paramString1, boolean paramBoolean, @Nullable String paramString2, @Nullable String paramString3)
+  {
+    wuw localwuw = new wuw();
+    localwuw.jdField_a_of_type_JavaLangString = paramString1;
+    localwuw.d = paramString2;
+    localwuw.e = paramString3;
+    if (paramBoolean) {}
+    for (localwuw.jdField_b_of_type_Int = 0;; localwuw.jdField_b_of_type_Int = 2)
     {
-      localObject2 = a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label194;
+      localwuw.jdField_a_of_type_Int = 1;
+      return localwuw;
+    }
+  }
+  
+  public String a()
+  {
+    String str3 = this.jdField_a_of_type_JavaLangString;
+    String str2 = str3;
+    if (bhoa.d.matcher(str3).find())
+    {
+      String str1 = null;
+      int i = str3.lastIndexOf("#");
+      if (i > 0) {
+        str1 = str3.substring(i);
       }
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = anni.a(2131703460);
+      str3 = URLUtil.guessUrl(str3);
+      str2 = str3;
+      if (str1 != null) {
+        return str3 + str1;
       }
     }
-    for (;;)
+    return str2;
+  }
+  
+  public String a(boolean paramBoolean)
+  {
+    try
     {
-      localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        localObject1 = jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(paramwrs.c)) {
-          localObject1 = paramwrs.c;
-        }
-        yqp.a("FollowNodeViewHolder", "bindData() with fallback nickname %s, unionId = %s", localObject1, paramwrs.jdField_a_of_type_JavaLangString);
-        wfo.a().dispatch(new wrr(paramwrs.jdField_a_of_type_JavaLangString));
-        localObject2 = localObject1;
+      Object localObject = JsonORM.a(this);
+      if (paramBoolean) {
+        ((JSONObject)localObject).remove("parseState");
       }
-      a((String)localObject2, this.jdField_a_of_type_Boolean, paramwrs);
-      a(paramwrs.g);
-      return;
-      bool = false;
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JsonORM.JsonParseException localJsonParseException)
+    {
+      yuk.b("Q.qqstory.tag", "VideoLinkInfo", localJsonParseException);
+    }
+    return "";
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_Wux != null);
+  }
+  
+  public String b()
+  {
+    String str1;
+    String str2;
+    label30:
+    String str3;
+    if (this.jdField_b_of_type_JavaLangString != null)
+    {
+      str1 = this.jdField_b_of_type_JavaLangString.trim();
+      if (this.c == null) {
+        break label57;
+      }
+      str2 = this.c.trim();
+      if ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str2))) {
+        break label63;
+      }
+      str3 = this.jdField_a_of_type_JavaLangString;
+    }
+    label57:
+    label63:
+    do
+    {
+      return str3;
+      str1 = "";
       break;
-      label194:
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)
-      {
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq;
-        }
+      str2 = "";
+      break label30;
+      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
+        return String.format("%s-%s", new Object[] { str1, str2 });
       }
-    }
+      str3 = str1;
+    } while (!TextUtils.isEmpty(str1));
+    return str2;
   }
 }
 

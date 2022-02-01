@@ -1,39 +1,16 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import com.tencent.biz.PoiMapActivity;
 
-class nkk
-  extends bhhe
+public class nkk
+  extends nkj
 {
-  nkk(nkj paramnkj) {}
+  public String a;
+  public String b;
+  public String c;
+  public int d;
   
-  public void onDone(bhhf parambhhf)
+  public nkk(PoiMapActivity paramPoiMapActivity)
   {
-    if (parambhhf.a == 0) {
-      parambhhf = parambhhf.a().getString("file_path");
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        File localFile = new File(parambhhf);
-        String str = bgmg.b(localFile);
-        if (QLog.isColorLevel()) {
-          QLog.d("CommonConfigBase", 2, "onDone() content =  " + str + ", filePath = " + parambhhf);
-        }
-        localFile.delete();
-        this.a.b(str);
-        this.a.a(str);
-        return;
-      }
-      catch (IOException parambhhf)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("CommonConfigBase", 2, QLog.getStackTraceString(parambhhf));
-        return;
-      }
-    }
-    QLog.d("CommonConfigBase", 2, "onError(), errorCode = " + parambhhf.a);
+    super(paramPoiMapActivity);
   }
 }
 

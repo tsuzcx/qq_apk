@@ -1,24 +1,24 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.troop.widget.AddedRobotView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import java.util.UUID;
 
-public class bfuz
-  extends RecyclerView.OnScrollListener
+class bfuz
+  implements ProxyListener
 {
-  public bfuz(AddedRobotView paramAddedRobotView) {}
+  bfuz(bfuw parambfuw, UUID paramUUID) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onDeleteFinish(String paramString, int paramInt)
   {
-    QLog.i("AddedRobotView", 1, "onScrollStateChanged state: " + paramInt);
-    if (paramInt != 0) {
-      AddedRobotView.a(this.a).c();
-    }
-    while (!AddedRobotView.a(this.a).a()) {
-      return;
-    }
-    AddedRobotView.a(this.a).b();
-    AddedRobotView.a(this.a).notifyDataSetChanged();
+    bfvr.d("TroopFileDataBaseProxy", bfvr.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish. table:" + paramString);
+  }
+  
+  public void onInsertFinish(String paramString)
+  {
+    bfvr.d("TroopFileDataBaseProxy", bfvr.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[add]. table:" + paramString);
+  }
+  
+  public void onUpdateFinish(String paramString, int paramInt)
+  {
+    bfvr.d("TroopFileDataBaseProxy", bfvr.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[up]. table:" + paramString);
   }
 }
 

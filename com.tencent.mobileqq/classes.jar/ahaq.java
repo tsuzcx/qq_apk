@@ -1,67 +1,32 @@
-import android.widget.BaseAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.ArkAppMessage.Config;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.data.ArkFlashChatMessage;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
 
 class ahaq
-  extends ahbl
+  implements DialogInterface.OnClickListener
 {
-  private agpz jdField_a_of_type_Agpz;
-  private agqi jdField_a_of_type_Agqi;
-  private agqr jdField_a_of_type_Agqr;
+  ahaq(aham paramaham, MessageForArkFlashChat paramMessageForArkFlashChat) {}
   
-  ahaq(agwz paramagwz)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramagwz, null);
-  }
-  
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return null;
-  }
-  
-  protected afxi b(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    int j = 1;
-    int i = j;
-    if ((paramChatMessage instanceof MessageForArkApp))
-    {
-      paramChatMessage = (MessageForArkApp)paramChatMessage;
-      ArkAppMessage.Config localConfig = new ArkAppMessage.Config();
-      i = j;
-      if (paramChatMessage.ark_app_message != null)
-      {
-        localConfig.fromString(paramChatMessage.ark_app_message.config);
-        i = j;
-        if (localConfig.showSender != null)
-        {
-          i = j;
-          if (localConfig.showSender.intValue() == 0) {
-            i = 0;
-          }
-        }
+    paramDialogInterface = (MessageForArkFlashChat)bcry.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat);
+    if (paramDialogInterface.msgData == null) {
+      if (paramDialogInterface.ark_app_message == null) {
+        ArkAppCenter.c("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
       }
     }
-    if ((this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1008) || (this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1038))
+    while (this.jdField_a_of_type_Aham.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)
     {
-      if (this.jdField_a_of_type_Agqr == null) {
-        this.jdField_a_of_type_Agqr = new agqr(this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_Agwz.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-      }
-      return this.jdField_a_of_type_Agwz.a(this.jdField_a_of_type_Agqr, paramBaseAdapter);
+      return;
+      paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
     }
-    if ((i == 0) || (this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 9501))
-    {
-      if (this.jdField_a_of_type_Agqi == null) {
-        this.jdField_a_of_type_Agqi = new agqi(this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_Agwz.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-      }
-      return this.jdField_a_of_type_Agwz.a(this.jdField_a_of_type_Agqi, paramBaseAdapter);
-    }
-    if (this.jdField_a_of_type_Agpz == null) {
-      this.jdField_a_of_type_Agpz = new agpz(this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_Agwz.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-    }
-    return this.jdField_a_of_type_Agwz.a(this.jdField_a_of_type_Agpz, paramBaseAdapter);
+    this.jdField_a_of_type_Aham.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Aham.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aham.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.uniseq);
+    this.jdField_a_of_type_Aham.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
   }
 }
 

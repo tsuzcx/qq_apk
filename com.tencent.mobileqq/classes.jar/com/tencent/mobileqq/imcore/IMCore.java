@@ -7,7 +7,7 @@ import mqq.app.AppRuntime;
 public class IMCore
 {
   private static final String TAG = "IMCore";
-  private static boolean isInit;
+  private static boolean isInit = false;
   private static IMCoreProxyRoute.GetStaticProxy<AppRuntime> runtimeGetStaticProxy;
   
   public static AppRuntime getAppRuntime()

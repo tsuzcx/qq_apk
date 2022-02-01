@@ -1,25 +1,25 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.app.Activity;
-import bglp;
-import bgpa;
-import bjys;
-import bjyu;
+import bhlq;
+import bhpc;
+import bkzw;
+import bkzy;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ShareProxyImpl$5$2
   implements Runnable
 {
-  public ShareProxyImpl$5$2(bjys parambjys, long paramLong, String paramString) {}
+  public ShareProxyImpl$5$2(bkzw parambkzw, long paramLong, String paramString) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_Long == -100070004L) || (this.jdField_a_of_type_Long == -1000710003L))
     {
-      bglp.a(this.jdField_a_of_type_Bjys.a, 233, this.jdField_a_of_type_Bjys.a.getString(2131718010), this.jdField_a_of_type_JavaLangString, new bjyu(this), null).show();
+      bhlq.a(this.jdField_a_of_type_Bkzw.a, 233, this.jdField_a_of_type_Bkzw.a.getString(2131718142), this.jdField_a_of_type_JavaLangString, new bkzy(this), null).show();
       return;
     }
-    QQToast.a(this.jdField_a_of_type_Bjys.a, 1, 2131693704, 1).a();
+    QQToast.a(this.jdField_a_of_type_Bkzw.a, 1, 2131693721, 1).a();
   }
 }
 

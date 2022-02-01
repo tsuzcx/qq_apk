@@ -1,8 +1,32 @@
-public abstract interface alpj
+import com.tencent.mobileqq.activity.recent.config.RecentConfig;
+import com.tencent.mobileqq.activity.recent.config.menu.RecentMenuFlagDispatch;
+import com.tencent.mobileqq.activity.recent.config.statusIcon.RecentStatusIconDispatch;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class alpj
+  extends RecentConfig<QQAppInterface, RecentUserBaseData>
 {
-  public abstract int a(CharSequence paramCharSequence, int paramInt1, int paramInt2);
+  public void recentMenuFlagDispatchRegister()
+  {
+    this.recentMenuFlagDispatch = new RecentMenuFlagDispatch();
+    this.recentMenuFlagDispatch.register(alpk.class);
+    this.recentMenuFlagDispatch.register(alpl.class);
+    this.recentMenuFlagDispatch.prepare();
+  }
   
-  public abstract int b(CharSequence paramCharSequence, int paramInt1, int paramInt2);
+  public void recentStatusIconRegister()
+  {
+    this.recentStatusIconDispatch = new RecentStatusIconDispatch();
+    this.recentStatusIconDispatch.register(alps.class);
+    this.recentStatusIconDispatch.register(alpn.class);
+    this.recentStatusIconDispatch.register(alpp.class);
+    this.recentStatusIconDispatch.register(alpq.class);
+    this.recentStatusIconDispatch.register(alpo.class);
+    this.recentStatusIconDispatch.register(alpr.class);
+    this.recentStatusIconDispatch.register(alpm.class);
+    this.recentStatusIconDispatch.prepare();
+  }
 }
 
 

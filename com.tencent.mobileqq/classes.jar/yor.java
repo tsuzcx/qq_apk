@@ -1,346 +1,504 @@
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment.1;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment.2;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment.5;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.ThumbSlideShowView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
+import com.tencent.image.RegionDrawable;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tribe.async.dispatch.Dispatcher;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import mqq.os.MqqHandler;
+import java.util.Locale;
+import java.util.Map;
+import java.util.TimeZone;
 
 public class yor
-  extends zpa
 {
-  public static final String KEY = "LocalVideoPushSegment";
-  private final int jdField_a_of_type_Int = 1;
-  private ArrayList<LocalMediaInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private wca jdField_a_of_type_Wca = (wca)wpm.a(30);
-  private wcl jdField_a_of_type_Wcl;
-  protected wpf a;
-  public ykh a;
-  private ynb jdField_a_of_type_Ynb;
-  private you jdField_a_of_type_You;
-  private final int jdField_b_of_type_Int = 2;
-  private boolean jdField_b_of_type_Boolean;
-  private final int c = 3;
-  private final int d = 4;
-  private int e = 4;
-  private int f;
+  public static String a;
+  public static final int[] a;
   
-  public yor(Context paramContext)
+  static
   {
-    super(paramContext);
-    this.jdField_a_of_type_Wpf = ((wpf)wpm.a(10));
-    this.jdField_a_of_type_Ykh = new ykh(zlx.a(paramContext, 3.0F), 0, 1.351351F, null, null);
+    jdField_a_of_type_ArrayOfInt = new int[] { 120, 200, 320, 512, 640, 750, 1000 };
+    jdField_a_of_type_JavaLangString = Integer.toString(jdField_a_of_type_ArrayOfInt[0]);
   }
   
-  private String a(int paramInt)
+  public static float a(long paramLong)
   {
-    if (paramInt == 1) {
-      return "1";
-    }
-    if (paramInt == 2) {
-      return "2";
-    }
-    if (paramInt == 3) {
-      return "3";
-    }
-    return "";
+    return (float)(NetConnInfoCenter.getServerTimeMillis() - paramLong) / 3600000.0F;
   }
   
-  private yov a()
+  public static int a(int paramInt)
   {
-    yqp.d("Q.qqstory.home.LocalVideoPushSegment", "realLoadAlbums...");
-    List localList = this.jdField_a_of_type_Wca.a();
-    if ((localList != null) && (!localList.isEmpty()))
+    switch (paramInt)
     {
-      wcl localwcl = (wcl)localList.get(0);
-      Object localObject2 = localwcl.a();
-      Object localObject1 = new ArrayList();
-      if (localObject2 != null)
-      {
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          wcm localwcm = (wcm)((Iterator)localObject2).next();
-          if (localwcm.a()) {
-            ((List)localObject1).add(localwcm);
-          }
-        }
-      }
-      if (!((List)localObject1).isEmpty())
-      {
-        localObject2 = new ArrayList();
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext()) {
-          ((List)localObject2).add(((wcm)((Iterator)localObject1).next()).a());
-        }
-        yqp.d("Q.qqstory.home.LocalVideoPushSegment", "realLoadAlbums, load album success.");
-        return new yov((List)localObject2, localList.size(), localwcl);
-      }
-    }
-    return null;
-  }
-  
-  private yow a()
-  {
-    yqp.d("Q.qqstory.home.LocalVideoPushSegment", "realLoadPhotos...");
-    Object localObject = this.jdField_a_of_type_Wca.a(this.jdField_a_of_type_AndroidContentContext);
-    if ((localObject != null) && (((List)localObject).size() >= 10))
-    {
-      ArrayList localArrayList = new ArrayList();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        localArrayList.add(((wcm)((Iterator)localObject).next()).a());
-      }
-      yqp.d("Q.qqstory.home.LocalVideoPushSegment", "realLoadPhotos, load photo success.");
-      return new yow(localArrayList, null);
-    }
-    return null;
-  }
-  
-  private void a(ImageView paramImageView, String paramString)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = zlx.a(this.jdField_a_of_type_AndroidContentContext, 74.0F);
-    localURLDrawableOptions.mRequestHeight = zlx.a(this.jdField_a_of_type_AndroidContentContext, 100.0F);
-    localURLDrawableOptions.mLoadingDrawable = bdzx.a;
-    localURLDrawableOptions.mFailedDrawable = bdzx.a;
-    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    paramString.setTag(bgey.b(zlx.a(this.jdField_a_of_type_AndroidContentContext, 74.0F), zlx.a(this.jdField_a_of_type_AndroidContentContext, 100.0F), zlx.a(this.jdField_a_of_type_AndroidContentContext, 3.0F)));
-    paramString.setDecodeHandler(bgey.j);
-    paramImageView.setImageDrawable(paramString);
-  }
-  
-  private void a(LocalMediaInfo paramLocalMediaInfo, yox paramyox)
-  {
-    if ((paramLocalMediaInfo == null) || (paramyox == null)) {
-      return;
-    }
-    ThreadManager.getSubThreadHandler().post(new LocalVideoPushSegment.5(this, paramLocalMediaInfo, paramyox));
-  }
-  
-  private void a(yov paramyov)
-  {
-    yqp.d("Q.qqstory.home.LocalVideoPushSegment", "onLoadAlbumCompleted, firstAlbum = %s, albumCount = %s, mediaInfos = %s", new Object[] { paramyov.jdField_a_of_type_Wcl, Integer.valueOf(paramyov.jdField_a_of_type_Int), paramyov.jdField_a_of_type_JavaUtilList });
-    this.f = paramyov.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Wcl = paramyov.jdField_a_of_type_Wcl;
-    a(paramyov.jdField_a_of_type_JavaUtilList, 2);
-    this.jdField_a_of_type_Wpf.b("has_scan_success", Boolean.valueOf(true));
-  }
-  
-  private void a(yow paramyow)
-  {
-    yqp.d("Q.qqstory.home.LocalVideoPushSegment", "onLoadPhotoCompleted");
-    a(paramyow.jdField_a_of_type_JavaUtilList, 3);
-    this.jdField_a_of_type_Wpf.b("has_scan_success", Boolean.valueOf(true));
-  }
-  
-  private void f()
-  {
-    long l = TimeUnit.DAYS.toMillis(1L);
-    if (!this.jdField_a_of_type_Wca.b(this.jdField_a_of_type_AndroidContentContext))
-    {
-      a(null, 4);
-      yqp.d("Q.qqstory.home.LocalVideoPushSegment", "LocalVideoPushSegment <init>, no album config.");
-      return;
-    }
-    if (((Boolean)this.jdField_a_of_type_Wpf.b("first_enter_home_page", Boolean.valueOf(true))).booleanValue())
-    {
-      a(null, 1);
-      this.jdField_a_of_type_Wpf.b("first_enter_home_page", Boolean.valueOf(false));
-      yqp.d("Q.qqstory.home.LocalVideoPushSegment", "LocalVideoPushSegment <init>, first enter.");
-      return;
-    }
-    if (NetConnInfoCenter.getServerTimeMillis() - ((Long)this.jdField_a_of_type_Wpf.b("last_cancel_time", Long.valueOf(0L))).longValue() < l)
-    {
-      a(null, 4);
-      yqp.d("Q.qqstory.home.LocalVideoPushSegment", "LocalVideoPushSegment <init>, close.");
-      return;
-    }
-    if (!this.jdField_a_of_type_Wca.a())
-    {
-      i();
-      yqp.d("Q.qqstory.home.LocalVideoPushSegment", "LocalVideoPushSegment <init>, user close album function.");
-      return;
-    }
-    h();
-    yqp.d("Q.qqstory.home.LocalVideoPushSegment", "LocalVideoPushSegment <init>, start load album.");
-  }
-  
-  private void h()
-  {
-    ThreadManager.getSubThreadHandler().post(new LocalVideoPushSegment.1(this));
-  }
-  
-  private void i()
-  {
-    ThreadManager.getSubThreadHandler().post(new LocalVideoPushSegment.2(this));
-  }
-  
-  private void j()
-  {
-    long l = TimeUnit.DAYS.toMillis(1L);
-    if (NetConnInfoCenter.getServerTimeMillis() - ((Long)this.jdField_a_of_type_Wpf.b("last_cancel_time", Long.valueOf(0L))).longValue() < l)
-    {
-      yqp.d("Q.qqstory.home.LocalVideoPushSegment", "onLoadFailed, user close album function in 24Hs.");
-      a(null, 4);
-      return;
-    }
-    if (!((Boolean)this.jdField_a_of_type_Wpf.b("has_scan_success", Boolean.valueOf(false))).booleanValue())
-    {
-      yqp.d("Q.qqstory.home.LocalVideoPushSegment", "onLoadFailed, return back STATE_FIRST_ENTER.");
-      a(null, 1);
-      return;
-    }
-    yqp.d("Q.qqstory.home.LocalVideoPushSegment", "onLoadFailed, close album.");
-    a(null, 4);
-  }
-  
-  public int a()
-  {
-    if (this.e == 4) {
+    default: 
+      return 5;
+    case 0: 
       return 0;
+    case 1: 
+    case 2: 
+    case 4: 
+      return 1;
+    case 3: 
+    case 6: 
+      return 2;
     }
-    return 1;
+    return 3;
   }
   
-  public View a(int paramInt, ynb paramynb, ViewGroup paramViewGroup)
+  public static int a(View paramView)
   {
-    if (this.jdField_a_of_type_Ynb == null) {
-      this.jdField_a_of_type_Ynb = paramynb;
-    }
-    paramynb = (TextView)this.jdField_a_of_type_Ynb.a(2131374499);
-    paramViewGroup = (TextView)this.jdField_a_of_type_Ynb.a(2131374498);
-    Button localButton = (Button)this.jdField_a_of_type_Ynb.a(2131374500);
-    ThumbSlideShowView localThumbSlideShowView = (ThumbSlideShowView)this.jdField_a_of_type_Ynb.a(2131374496);
-    ImageView localImageView1 = (ImageView)this.jdField_a_of_type_Ynb.a(2131374495);
-    ImageView localImageView2 = (ImageView)this.jdField_a_of_type_Ynb.a(2131374497);
-    if (this.e == 1)
+    if ((paramView == null) || (!paramView.isShown())) {}
+    int[] arrayOfInt;
+    int j;
+    do
     {
-      paramynb.setText(anni.a(2131705092));
-      paramViewGroup.setText("用音乐MV智能记录你的回忆");
-      localButton.setText(anni.a(2131705100));
-      localThumbSlideShowView.setVisibility(8);
-      localThumbSlideShowView.a();
-      localImageView2.setVisibility(0);
-      a(localImageView2, "https://pub.idqqimg.com/pc/misc/files/20181016/d91be2ee357b436ab11546ac5cff21bc.jpg");
-    }
-    for (;;)
+      return 2147483647;
+      arrayOfInt = new int[2];
+      paramView.getLocationOnScreen(arrayOfInt);
+      i = paramView.getHeight();
+      j = zps.d(paramView.getContext()) / 2;
+    } while (i <= 0);
+    int i = Math.min(Math.abs(j - arrayOfInt[1]), Math.abs(j - (arrayOfInt[1] + i)));
+    yuk.b("Q.qqstory.home.StoryListUtils", "getDistanceToCenterY=" + i);
+    return i;
+  }
+  
+  public static Bitmap a(Drawable paramDrawable, int paramInt1, int paramInt2, Map<String, Bitmap> paramMap, yod paramyod)
+  {
+    long l = System.currentTimeMillis();
+    if (paramDrawable == null)
     {
-      localButton.setOnClickListener(this.jdField_a_of_type_Ynb);
-      localImageView1.setOnClickListener(this.jdField_a_of_type_Ynb);
-      localThumbSlideShowView.setOnClickListener(this.jdField_a_of_type_Ynb);
-      localImageView2.setOnClickListener(this.jdField_a_of_type_Ynb);
-      if (this.jdField_a_of_type_Ynb.a == null) {
-        this.jdField_a_of_type_Ynb.a(new yot(this));
-      }
-      if (this.e != 4) {
-        yqu.a("home_page", "exp_smartalbum", 0, 0, new String[] { a(this.e) });
-      }
-      return this.jdField_a_of_type_Ynb.a();
-      if (this.e == 2)
+      paramDrawable = null;
+      return paramDrawable;
+    }
+    Object localObject;
+    float f2;
+    float f1;
+    if ((paramDrawable instanceof RegionDrawable))
+    {
+      localObject = (RegionDrawable)paramDrawable;
+      if ((((RegionDrawable)localObject).getBitmap() != null) && (!((RegionDrawable)localObject).getBitmap().isRecycled()))
       {
-        paramynb.setText(String.format(anni.a(2131705090), new Object[] { Integer.valueOf(this.f) }));
-        paramViewGroup.setText(anni.a(2131705089));
-        localButton.setText(anni.a(2131705093));
-        localThumbSlideShowView.setVisibility(0);
-        localThumbSlideShowView.a(this.jdField_a_of_type_JavaUtilArrayList);
-        localImageView2.setVisibility(8);
-      }
-      else if (this.e == 3)
-      {
-        paramynb.setText(String.format(anni.a(2131705099), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
-        paramViewGroup.setText(anni.a(2131705098));
-        localButton.setText(anni.a(2131705097));
-        localThumbSlideShowView.setVisibility(8);
-        localThumbSlideShowView.a();
-        if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-        {
-          localImageView2.setVisibility(0);
-          a((LocalMediaInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0), new yos(this, localImageView2));
+        f2 = ((RegionDrawable)localObject).getBitmap().getWidth();
+        f1 = ((RegionDrawable)localObject).getBitmap().getHeight();
+        label67:
+        if ((paramInt1 > 0) && (paramInt2 > 0)) {
+          break label347;
+        }
+        paramInt1 = (int)f2;
+        paramInt2 = (int)f1;
+        label83:
+        if (paramMap == null) {
+          break label414;
         }
       }
-      else if (this.e != 4) {}
     }
-  }
-  
-  public String a()
-  {
-    return "LocalVideoPushSegment";
-  }
-  
-  public ynb a(int paramInt, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_Ynb = new ynb(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561723, paramViewGroup, false));
-    return this.jdField_a_of_type_Ynb;
-  }
-  
-  public yor a(you paramyou)
-  {
-    this.jdField_a_of_type_You = paramyou;
-    return this;
-  }
-  
-  public void a(List<LocalMediaInfo> paramList, int paramInt)
-  {
-    int i = a();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.e = paramInt;
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    }
-    int j = a();
-    if (i != j)
+    label414:
+    for (Bitmap localBitmap = (Bitmap)paramMap.get("w=" + paramInt1 + "h=" + paramInt2);; localBitmap = null)
     {
-      c(true);
-      yqp.a("Q.qqstory.home.LocalVideoPushSegment", "refreshViewByData, count has changed, state = %s", Integer.valueOf(paramInt));
+      for (;;)
+      {
+        if (localBitmap != null) {
+          localObject = localBitmap;
+        }
+        try
+        {
+          if (localBitmap.isRecycled())
+          {
+            yoq.b("Q.qqstory.home.StoryListUtils", new Object[] { "drawable2Bitmap need create width=", Integer.valueOf(paramInt1), ",height=", Integer.valueOf(paramInt2) });
+            localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+            localObject = localBitmap;
+            if (paramMap != null)
+            {
+              paramMap.put("w=" + paramInt1 + "h=" + paramInt2, localBitmap);
+              localObject = localBitmap;
+            }
+          }
+          if (localObject != null)
+          {
+            ((Bitmap)localObject).eraseColor(0);
+            paramMap = new Canvas((Bitmap)localObject);
+            paramDrawable.setBounds(0, 0, paramInt1, paramInt2);
+            paramDrawable.draw(paramMap);
+          }
+          yuk.a("Q.qqstory.home.StoryListUtils", "drawable2Bitmap:width=%d,height=%d,cost time=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(System.currentTimeMillis() - l));
+          paramDrawable = (Drawable)localObject;
+          if (paramyod == null) {
+            break;
+          }
+          return paramyod.a((Bitmap)localObject);
+        }
+        catch (OutOfMemoryError paramDrawable)
+        {
+          label347:
+          yuk.e("Q.qqstory.home.StoryListUtils", "drawable2Bitmap out off memory width=" + paramInt1 + ",height=" + paramInt2);
+          return null;
+        }
+      }
+      f2 = ((RegionDrawable)localObject).getIntrinsicWidth();
+      f1 = ((RegionDrawable)localObject).getIntrinsicHeight();
+      break label67;
+      f2 = paramDrawable.getIntrinsicWidth();
+      f1 = paramDrawable.getIntrinsicHeight();
+      break label67;
+      if (paramInt1 > paramInt2)
+      {
+        paramInt1 = (int)(f2 / f1 * paramInt2);
+        break label83;
+      }
+      paramInt2 = (int)(f1 / f2 * paramInt1);
+      break label83;
+    }
+  }
+  
+  public static String a(int paramInt, boolean paramBoolean)
+  {
+    Object localObject1 = null;
+    Object localObject2;
+    switch (paramInt)
+    {
+    default: 
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject2 = anzj.a(2131713255);
+      }
+      break;
     }
     do
     {
-      return;
-      if (j == 0)
-      {
-        yqp.b("Q.qqstory.home.LocalVideoPushSegment", "refreshViewByData, count == 0");
-        return;
-      }
-      paramList = a(0);
-    } while ((paramList == null) || (!a(paramList)));
-    a(0, paramList, a());
-    yqp.b("Q.qqstory.home.LocalVideoPushSegment", "refreshViewByData, isOnScreen bindView");
+      return localObject2;
+      localObject1 = anzj.a(2131713256);
+      break;
+      localObject1 = anzj.a(2131713254);
+      break;
+      localObject1 = anzj.a(2131713283);
+      break;
+      localObject1 = anzj.a(2131713247);
+      break;
+      localObject1 = anzj.a(2131713244);
+      break;
+      localObject1 = anzj.a(2131713280);
+      break;
+      localObject1 = anzj.a(2131713258);
+      break;
+      localObject1 = anzj.a(2131713248);
+      break;
+      localObject1 = anzj.a(2131713269);
+      break;
+      localObject1 = anzj.a(2131713270);
+      break;
+      localObject1 = anzj.a(2131713285);
+      break;
+      localObject1 = anzj.a(2131713265);
+      break;
+      localObject1 = anzj.a(2131713284);
+      break;
+      localObject1 = anzj.a(2131713278);
+      break;
+      localObject1 = anzj.a(2131713263);
+      break;
+      localObject1 = anzj.a(2131713262);
+      break;
+      localObject1 = anzj.a(2131713252);
+      break;
+      localObject1 = anzj.a(2131713279);
+      break;
+      localObject1 = anzj.a(2131713243);
+      break;
+      localObject1 = anzj.a(2131713249);
+      break;
+      localObject1 = anzj.a(2131713257);
+      break;
+      localObject1 = anzj.a(2131713266);
+      break;
+      localObject1 = anzj.a(2131713277);
+      break;
+      localObject1 = anzj.a(2131713261);
+      break;
+      localObject1 = anzj.a(2131713274);
+      break;
+      localObject1 = anzj.a(2131713245);
+      break;
+      localObject2 = localObject1;
+    } while (!paramBoolean);
+    return anzj.a(2131713267) + (String)localObject1;
   }
   
-  protected void c() {}
-  
-  public void d()
+  public static String a(long paramLong)
   {
-    super.d();
-    if (this.jdField_a_of_type_Ynb != null)
+    return a(paramLong, TimeZone.getDefault().getRawOffset(), false);
+  }
+  
+  public static String a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    if (paramLong1 == -1L) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((paramBoolean) && (TimeZone.getDefault().getRawOffset() / 3600000 != (int)(paramLong2 / 3600000L))) {
+      localStringBuilder.append("当地 ");
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    if ((l - paramLong1) / 1000L < 60L) {
+      localStringBuilder.append("刚刚");
+    }
+    for (;;)
     {
-      ThumbSlideShowView localThumbSlideShowView = (ThumbSlideShowView)this.jdField_a_of_type_Ynb.a(2131374496);
-      if (localThumbSlideShowView != null) {
-        localThumbSlideShowView.a();
+      return localStringBuilder.toString();
+      localCalendar.setTimeInMillis(l);
+      int i = localCalendar.get(1);
+      int j = localCalendar.get(6);
+      localCalendar.setTimeInMillis(paramLong1);
+      int k = localCalendar.get(1);
+      int m = localCalendar.get(6);
+      localCalendar.add(6, 1);
+      int n = localCalendar.get(6);
+      if (paramBoolean)
+      {
+        TimeZone localTimeZone = TimeZone.getDefault();
+        localTimeZone.setRawOffset((int)paramLong2);
+        localCalendar.setTimeZone(localTimeZone);
       }
-      this.jdField_a_of_type_Ynb = null;
+      localCalendar.setTimeInMillis(paramLong1);
+      int i1 = localCalendar.get(1);
+      int i2 = localCalendar.get(2) + 1;
+      int i3 = localCalendar.get(5);
+      int i4 = localCalendar.get(11);
+      int i5 = localCalendar.get(12);
+      if (m == j) {
+        localStringBuilder.append(String.format(Locale.getDefault(), "%02d:%02d", new Object[] { Integer.valueOf(i4), Integer.valueOf(i5) }));
+      } else if (n == j) {
+        localStringBuilder.append("昨天 ").append(String.format(Locale.getDefault(), "%02d:%02d", new Object[] { Integer.valueOf(i4), Integer.valueOf(i5) }));
+      } else if (k == i) {
+        localStringBuilder.append(String.format(Locale.getDefault(), "%d月%d日 %02d:%02d", new Object[] { Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(i5) }));
+      } else {
+        localStringBuilder.append(String.format(Locale.getDefault(), "%d年%d月%d日", new Object[] { Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3) }));
+      }
     }
   }
   
-  protected void e()
+  public static String a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.jdField_b_of_type_Boolean = false;
-    f();
+    if (paramLong1 == -1L) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((paramBoolean2) && (paramBoolean1))
+    {
+      i = TimeZone.getDefault().getRawOffset() / 3600000;
+      j = (int)(paramLong2 / 3600000L);
+      if (i != j)
+      {
+        localObject = a(j, false);
+        localStringBuilder.append((String)localObject + "·");
+      }
+    }
+    Object localObject = Calendar.getInstance();
+    ((Calendar)localObject).setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
+    int i = ((Calendar)localObject).get(1);
+    int j = ((Calendar)localObject).get(6);
+    ((Calendar)localObject).setTimeInMillis(paramLong1);
+    int k = ((Calendar)localObject).get(1);
+    int m = ((Calendar)localObject).get(6);
+    ((Calendar)localObject).add(6, 1);
+    int n = ((Calendar)localObject).get(6);
+    if (paramBoolean1)
+    {
+      TimeZone localTimeZone = TimeZone.getDefault();
+      localTimeZone.setRawOffset((int)paramLong2);
+      ((Calendar)localObject).setTimeZone(localTimeZone);
+    }
+    ((Calendar)localObject).setTimeInMillis(paramLong1);
+    int i1 = ((Calendar)localObject).get(1);
+    int i2 = ((Calendar)localObject).get(2) + 1;
+    int i3 = ((Calendar)localObject).get(5);
+    int i4 = ((Calendar)localObject).get(11);
+    int i5 = ((Calendar)localObject).get(12);
+    if (paramBoolean2)
+    {
+      if ((k != i) || (m != j)) {
+        break label308;
+      }
+      localStringBuilder.append("今天");
+    }
+    for (;;)
+    {
+      if (paramBoolean3) {
+        localStringBuilder.append(String.format(Locale.getDefault(), " %02d:%02d", new Object[] { Integer.valueOf(i4), Integer.valueOf(i5) }));
+      }
+      return localStringBuilder.toString();
+      label308:
+      if ((k == i) && (n == j)) {
+        localStringBuilder.append("昨天 ");
+      } else if (k == i) {
+        localStringBuilder.append(String.format(Locale.getDefault(), "%d月%d日", new Object[] { Integer.valueOf(i2), Integer.valueOf(i3) }));
+      } else {
+        localStringBuilder.append(String.format(Locale.getDefault(), "%d年%d月%d日", new Object[] { Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3) }));
+      }
+    }
+  }
+  
+  public static void a(Bitmap paramBitmap1, Bitmap paramBitmap2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, Matrix paramMatrix, boolean paramBoolean)
+  {
+    if (paramInt1 + paramInt3 > paramBitmap1.getWidth()) {
+      throw new IllegalArgumentException("x + width must be <= bitmap.width()");
+    }
+    if (paramInt2 + paramInt4 > paramBitmap1.getHeight()) {
+      throw new IllegalArgumentException("y + height must be <= bitmap.height()");
+    }
+    if ((!paramBitmap1.isMutable()) && (paramInt1 == 0) && (paramInt2 == 0) && (paramInt3 == paramBitmap1.getWidth()) && (paramInt4 == paramBitmap1.getHeight()) && ((paramMatrix == null) || (paramMatrix.isIdentity()))) {
+      return;
+    }
+    Canvas localCanvas = new Canvas();
+    Rect localRect = new Rect(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
+    RectF localRectF1 = new RectF(0.0F, 0.0F, paramInt3, paramInt4);
+    if ((paramMatrix == null) || (paramMatrix.isIdentity()))
+    {
+      paramMatrix = null;
+      localCanvas.setBitmap(paramBitmap2);
+      localCanvas.drawBitmap(paramBitmap1, localRect, localRectF1, paramMatrix);
+      localCanvas.setBitmap(null);
+      return;
+    }
+    if (!paramMatrix.rectStaysRect()) {}
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      RectF localRectF2 = new RectF();
+      paramMatrix.mapRect(localRectF2, localRectF1);
+      localCanvas.translate(-localRectF2.left, -localRectF2.top);
+      localCanvas.concat(paramMatrix);
+      paramMatrix = new Paint();
+      paramMatrix.setFilterBitmap(paramBoolean);
+      if (paramInt1 != 0) {
+        paramMatrix.setAntiAlias(true);
+      }
+      break;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    Object localObject = ((wjb)paramQQAppInterface.getManager(181)).a(false);
+    paramQQAppInterface = new ArrayList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      QQStoryUserInfo localQQStoryUserInfo = (QQStoryUserInfo)((Iterator)localObject).next();
+      if (localQQStoryUserInfo != null) {
+        paramQQAppInterface.add(localQQStoryUserInfo.uin);
+      }
+    }
+    a(paramQQAppInterface);
+  }
+  
+  public static void a(ArrayList<String> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+      return;
+    }
+    yuk.b("Q.qqstory.home.StoryListUtils", "reportShieldFriendStory:" + paramArrayList.size());
+    ypb localypb = new ypb();
+    localypb.a = paramArrayList;
+    wjj.a().dispatch(localypb);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    String str;
+    if (paramString.startsWith("file://")) {
+      str = paramString.replaceFirst("file://", "");
+    }
+    for (;;)
+    {
+      return new File(str).exists();
+      str = paramString;
+      if (paramString.startsWith("file:")) {
+        str = paramString.replaceFirst("file:", "");
+      }
+    }
+  }
+  
+  public static int b(View paramView)
+  {
+    if ((paramView == null) || (!paramView.isShown())) {}
+    int[] arrayOfInt;
+    do
+    {
+      return 2147483647;
+      arrayOfInt = new int[2];
+      paramView.getLocationOnScreen(arrayOfInt);
+      i = paramView.getHeight();
+    } while (i <= 0);
+    int i = Math.min(Math.abs(0 - arrayOfInt[1]), Math.abs(0 - (arrayOfInt[1] + i)));
+    yuk.b("Q.qqstory.home.StoryListUtils", "getDistanceToTop=" + i);
+    return i;
+  }
+  
+  public static String b(long paramLong)
+  {
+    if (paramLong == -1L) {
+      return "(Unknown Time)";
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    if ((l - paramLong) / 1000L < 60L) {
+      return anzj.a(2131713259);
+    }
+    localCalendar.setTimeInMillis(paramLong);
+    int i = localCalendar.get(1);
+    int j = localCalendar.get(2) + 1;
+    int k = localCalendar.get(5);
+    int m = localCalendar.get(6);
+    int n = localCalendar.get(11);
+    int i1 = localCalendar.get(12);
+    localCalendar.setTimeInMillis(l);
+    int i2 = localCalendar.get(1);
+    int i3 = localCalendar.get(6);
+    if (m == i3) {
+      return String.format(Locale.getDefault(), anzj.a(2131713264), new Object[] { Integer.valueOf(n), Integer.valueOf(i1) });
+    }
+    localCalendar.setTimeInMillis(paramLong);
+    localCalendar.add(6, 1);
+    if (localCalendar.get(6) == i3) {
+      return String.format(Locale.getDefault(), anzj.a(2131713253), new Object[] { Integer.valueOf(n), Integer.valueOf(i1) });
+    }
+    if (i != i2) {
+      return String.format(Locale.getDefault(), "%d年%d月%d日", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+    }
+    return String.format(Locale.getDefault(), "%d月%d日 %02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(n), Integer.valueOf(i1) });
+  }
+  
+  public static int c(View paramView)
+  {
+    if ((paramView == null) || (!paramView.isShown())) {}
+    int[] arrayOfInt;
+    int j;
+    do
+    {
+      return 2147483647;
+      arrayOfInt = new int[2];
+      paramView.getLocationOnScreen(arrayOfInt);
+      i = paramView.getHeight();
+      j = zps.d(paramView.getContext());
+    } while (i <= 0);
+    int i = Math.min(Math.abs(j - arrayOfInt[1]), Math.abs(j - (arrayOfInt[1] + i)));
+    yuk.b("Q.qqstory.home.StoryListUtils", "getDistanceToBottom=" + i);
+    return i;
   }
 }
 

@@ -1,14 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ajnq
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  ajnq(ajnk paramajnk, int paramInt) {}
+  ajnq(ajno paramajno) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ajnk.a(this.jdField_a_of_type_Ajnk, this.jdField_a_of_type_Int);
+    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
+    bguq.a(ajno.a(this.a), localRecommendTroopItem, this.a.b(), this.a.c());
+    this.a.a(localRecommendTroopItem);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

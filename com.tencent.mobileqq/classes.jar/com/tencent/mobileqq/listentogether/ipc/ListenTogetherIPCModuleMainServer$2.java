@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.listentogether.ipc;
 
-import avuk;
-import azhr;
+import awnf;
+import baad;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
@@ -9,13 +9,13 @@ import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 public class ListenTogetherIPCModuleMainServer$2
   implements Runnable
 {
-  public ListenTogetherIPCModuleMainServer$2(avuk paramavuk) {}
+  public ListenTogetherIPCModuleMainServer$2(awnf paramawnf) {}
   
   public void run()
   {
-    azhr localazhr = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
-    if ((localazhr != null) && (localazhr.a())) {
-      localazhr.d(false);
+    baad localbaad = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    if ((localbaad != null) && (localbaad.a())) {
+      localbaad.d(false);
     }
   }
 }

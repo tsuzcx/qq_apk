@@ -1,22 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
 class bepe
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bepm<UserState>
 {
-  bepe(bepb parambepb, benn parambenn) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  bepe(beoy parambeoy, UserState paramUserState, List paramList)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    float f = 1.0F * (100 - i) / 100.0F;
-    this.jdField_a_of_type_Benn.jdField_b_of_type_AndroidWidgetTextView.setAlpha(f);
-    f = this.jdField_a_of_type_Benn.jdField_b_of_type_AndroidWidgetTextView.getHeight() / 2.0F * i / 100.0F;
-    this.jdField_a_of_type_Benn.jdField_b_of_type_AndroidViewView.setTranslationY(f);
-    f = i * -180.0F / 100.0F;
-    this.jdField_a_of_type_Benn.c.setRotation(f);
+    super(paramUserState, paramList);
+  }
+  
+  public void a(UserState paramUserState)
+  {
+    beoy.a(this.a).i();
+    beoy.a(this.a).b();
   }
 }
 

@@ -1,41 +1,33 @@
-import com.tencent.mobileqq.matchchat.MatchChatSettingFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class awif
-  extends asgf
+public final class awif
+  implements EIPCResultCallback
 {
-  public awif(MatchChatSettingFragment paramMatchChatSettingFragment) {}
+  public awif(JSONObject paramJSONObject, tfg paramtfg, String paramString) {}
   
-  protected void a(boolean paramBoolean1, ArrayList<ashw> paramArrayList, boolean paramBoolean2, int paramInt, ArrayList<String> paramArrayList1, boolean paramBoolean3)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MatchChatSettingFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean1 + " chatSwitchOpen:" + paramBoolean2);
-    }
-    if (paramBoolean1) {
-      MatchChatSettingFragment.a(this.a, paramBoolean2);
-    }
-  }
-  
-  protected void f(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MatchChatSettingFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean);
-    }
-    MatchChatSettingFragment localMatchChatSettingFragment;
-    if (!paramBoolean)
-    {
-      localMatchChatSettingFragment = this.a;
-      if (MatchChatSettingFragment.a(this.a).a()) {
-        break label61;
+    if ((paramEIPCResult != null) && (paramEIPCResult.data != null)) {}
+    for (boolean bool = paramEIPCResult.data.getBoolean("action_update_biu_and_comment_switch");; bool = false) {
+      try
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("isGrayscaleUser", bool);
+        QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig is " + bool);
+        this.jdField_a_of_type_Tfg.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
+        return;
       }
-    }
-    label61:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      MatchChatSettingFragment.a(localMatchChatSettingFragment, paramBoolean);
-      return;
+      catch (JSONException paramEIPCResult)
+      {
+        for (;;)
+        {
+          QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig error " + paramEIPCResult.getMessage());
+        }
+      }
     }
   }
 }

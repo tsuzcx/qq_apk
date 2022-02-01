@@ -5,27 +5,27 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bnht;
-import bnpt;
-import bnzb;
+import bojb;
+import borf;
+import bpam;
 
 public class AECircleBroadcastReceiver
   extends BroadcastReceiver
 {
-  private bnht jdField_a_of_type_Bnht;
+  private bojb jdField_a_of_type_Bojb;
   private boolean jdField_a_of_type_Boolean;
   
-  public AECircleBroadcastReceiver(bnht parambnht)
+  public AECircleBroadcastReceiver(bojb parambojb)
   {
-    this.jdField_a_of_type_Bnht = parambnht;
+    this.jdField_a_of_type_Bojb = parambojb;
   }
   
   private IntentFilter a()
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
-    localIntentFilter.addAction(bnpt.jdField_b_of_type_Bnpt.jdField_b_of_type_JavaLangString);
-    localIntentFilter.addAction(bnpt.c.jdField_b_of_type_JavaLangString);
+    localIntentFilter.addAction(borf.jdField_b_of_type_Borf.jdField_b_of_type_JavaLangString);
+    localIntentFilter.addAction(borf.c.jdField_b_of_type_JavaLangString);
     return localIntentFilter;
   }
   
@@ -51,10 +51,10 @@ public class AECircleBroadcastReceiver
   {
     paramContext = paramIntent.getAction();
     paramIntent = paramIntent.getStringExtra("ae_camera_res_downloadfinish_path");
-    if ((bnpt.jdField_b_of_type_Bnpt.jdField_b_of_type_JavaLangString.equals(paramContext)) && (this.jdField_a_of_type_Bnht != null))
+    if ((borf.jdField_b_of_type_Borf.jdField_b_of_type_JavaLangString.equals(paramContext)) && (this.jdField_a_of_type_Bojb != null))
     {
-      this.jdField_a_of_type_Bnht.a(paramIntent);
-      bnzb.a("AECircleBroadcastReceiver", "[onReceive]");
+      this.jdField_a_of_type_Bojb.a(paramIntent);
+      bpam.a("AECircleBroadcastReceiver", "[onReceive]");
     }
   }
 }

@@ -1,57 +1,60 @@
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.gamecenter.view.ScrollTextView;
 
 public class avng
+  extends Animation
 {
-  private static int jdField_a_of_type_Int;
-  private static avni jdField_a_of_type_Avni = new avni(null);
+  private float jdField_a_of_type_Float;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private final boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private final boolean jdField_b_of_type_Boolean;
   
-  public static void a()
+  public avng(ScrollTextView paramScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (Build.VERSION.SDK_INT < 17) {
-      return;
-    }
-    try
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.jdField_b_of_type_Float;
+    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
+    int i;
+    if (this.jdField_b_of_type_Boolean)
     {
-      JavaHookBridge.findAndReplaceMethod(Class.forName("java.lang.Daemons$FinalizerWatchdogDaemon"), "finalizerTimedOut", new Object[] { Object.class, jdField_a_of_type_Avni });
-      return;
+      i = 1;
+      paramTransformation = paramTransformation.getMatrix();
+      localCamera.save();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label99;
+      }
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
     }
-    catch (ClassNotFoundException localClassNotFoundException)
+    for (;;)
     {
-      localClassNotFoundException.printStackTrace();
+      localCamera.getMatrix(paramTransformation);
+      localCamera.restore();
+      paramTransformation.preTranslate(-f1, -f2);
+      paramTransformation.postTranslate(f1, f2);
       return;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      localNoSuchMethodException.printStackTrace();
+      i = -1;
+      break;
+      label99:
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
     }
   }
   
-  private static void b(boolean paramBoolean)
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    String str = null;
-    try
-    {
-      Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-      if (localObject != null) {
-        str = ((AppRuntime)localObject).getAccount();
-      }
-      long l1 = Runtime.getRuntime().totalMemory();
-      long l2 = Runtime.getRuntime().freeMemory();
-      long l3 = Runtime.getRuntime().maxMemory();
-      localObject = new HashMap();
-      ((HashMap)localObject).put("heapSize", String.valueOf(l1 - l2));
-      ((HashMap)localObject).put("maxMemory", String.valueOf(l3));
-      int i = jdField_a_of_type_Int + 1;
-      jdField_a_of_type_Int = i;
-      ((HashMap)localObject).put("count", String.valueOf(i));
-      bctj.a(BaseApplicationImpl.getApplication()).a(str, "TimeoutExceptionHooker", paramBoolean, 0L, 0L, (HashMap)localObject, "", true);
-      return;
-    }
-    catch (Throwable localThrowable) {}
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.getHeight();
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.getWidth();
   }
 }
 

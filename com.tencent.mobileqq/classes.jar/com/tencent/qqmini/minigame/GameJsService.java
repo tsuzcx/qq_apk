@@ -1,77 +1,64 @@
 package com.tencent.qqmini.minigame;
 
 import android.webkit.ValueCallback;
-import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
+import com.tencent.mobileqq.triton.script.Argument;
+import com.tencent.mobileqq.triton.script.ScriptContextType;
+import com.tencent.qqmini.minigame.utils.PluginLogger;
 import com.tencent.qqmini.sdk.launcher.core.IJsService;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class GameJsService
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qqmini/minigame/GameJsService;", "Lcom/tencent/qqmini/sdk/launcher/core/IJsService;", "arguments", "Lcom/tencent/mobileqq/triton/script/Argument;", "logger", "Lcom/tencent/qqmini/minigame/utils/PluginLogger;", "(Lcom/tencent/mobileqq/triton/script/Argument;Lcom/tencent/qqmini/minigame/utils/PluginLogger;)V", "createNativeBuffer", "", "buffer", "", "offset", "", "length", "evaluateCallbackJs", "", "callbackId", "result", "", "evaluateJs", "js", "valueCallback", "Landroid/webkit/ValueCallback;", "evaluateSubscribeJS", "eventName", "data", "webviweId", "getContextType", "Lcom/tencent/mobileqq/triton/script/ScriptContextType;", "getNativeBuffer", "bufferId", "lib_minigame_internalRelease"}, k=1, mv={1, 1, 16})
+public final class GameJsService
   implements IJsService
 {
-  private final String TAG;
-  private int mContextType;
-  private volatile boolean mIsDestroyed;
-  public ITTJSRuntime realJsRuntime;
+  private final Argument arguments;
+  private final PluginLogger logger;
   
-  public GameJsService(ITTJSRuntime paramITTJSRuntime, int paramInt)
+  public GameJsService(@NotNull Argument paramArgument, @NotNull PluginLogger paramPluginLogger)
   {
-    this.TAG = ("[minigame] " + this + "[" + paramInt + "]");
-    this.realJsRuntime = paramITTJSRuntime;
-    this.mContextType = paramInt;
+    this.arguments = paramArgument;
+    this.logger = paramPluginLogger;
   }
   
-  public void clearUp()
+  public int createNativeBuffer(@NotNull byte[] paramArrayOfByte, long paramLong1, long paramLong2)
   {
-    this.mIsDestroyed = true;
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "buffer");
+    return this.arguments.createBuffer(paramArrayOfByte, paramLong1, paramLong2);
   }
   
-  public void evaluateCallbackJs(int paramInt, String paramString)
+  public void evaluateCallbackJs(int paramInt, @NotNull String paramString)
   {
-    if (isDestroyed()) {
-      return;
-    }
-    if (this.realJsRuntime != null)
-    {
-      this.realJsRuntime.evaluateCallbackJs(paramInt, paramString);
-      return;
-    }
-    QMLog.e(this.TAG, "evaluateCallbackJs on null realJsRuntime");
+    Intrinsics.checkParameterIsNotNull(paramString, "result");
+    this.logger.printEndLog(paramInt, paramString);
+    this.arguments.callback(paramString);
   }
   
-  public void evaluateJs(String paramString, ValueCallback paramValueCallback)
+  public void evaluateJs(@NotNull String paramString, @Nullable ValueCallback<?> paramValueCallback)
   {
-    if (isDestroyed()) {
-      return;
-    }
-    if (this.realJsRuntime != null)
-    {
-      this.realJsRuntime.evaluateJs(paramString);
-      return;
-    }
-    QMLog.e(this.TAG, "evaluateJs on null realJsRuntime");
+    Intrinsics.checkParameterIsNotNull(paramString, "js");
   }
   
-  public void evaluateSubscribeJS(String paramString1, String paramString2, int paramInt)
+  public void evaluateSubscribeJS(@NotNull String paramString1, @NotNull String paramString2, int paramInt)
   {
-    if (isDestroyed()) {
-      return;
-    }
-    if (this.realJsRuntime != null)
-    {
-      this.realJsRuntime.evaluateSubscribeJs(paramString1, paramString2);
-      return;
-    }
-    QMLog.e(this.TAG, "evaluateSubscribeJS on null realJsRuntime");
+    Intrinsics.checkParameterIsNotNull(paramString1, "eventName");
+    Intrinsics.checkParameterIsNotNull(paramString2, "data");
+    this.logger.printEndLog(paramString1, paramString2);
+    this.arguments.subscribe(paramString1, paramString2);
   }
   
-  public int getTargetContextType()
+  @NotNull
+  public final ScriptContextType getContextType()
   {
-    return this.mContextType;
+    return this.arguments.getContextType();
   }
   
-  public boolean isDestroyed()
+  @Nullable
+  public byte[] getNativeBuffer(int paramInt)
   {
-    return this.mIsDestroyed;
+    return this.arguments.getBuffer(paramInt);
   }
 }
 

@@ -1,37 +1,45 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.util.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
+import com.tencent.viola.ui.view.VRefreshLayout;
+import com.tencent.viola.ui.view.VRefreshLayout.onRefreshStateChangeListener;
 
 class tdg
-  implements GifDrawable.OnGIFPlayOnceListener
+  implements VRefreshLayout.onRefreshStateChangeListener
 {
-  AbstractGifImage a;
+  tdg(tdf paramtdf, RefreshAnimView paramRefreshAnimView, VRefreshLayout paramVRefreshLayout) {}
   
-  tdg(AbstractGifImage paramAbstractGifImage)
+  public void onRefreshMove(int paramInt)
   {
-    this.a = paramAbstractGifImage;
+    int i = this.jdField_a_of_type_ComTencentViolaUiViewVRefreshLayout.getHeaderHeight();
+    if ((paramInt <= i) && (!tdf.a(this.jdField_a_of_type_Tdf)))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramInt / i);
+    }
   }
   
-  public void onPlayOnce()
+  public void onStateEnd()
   {
-    Object localObject = (List)tdf.a().get(this.a);
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
-        if (localWeakReference.get() != null) {
-          ((tdh)localWeakReference.get()).a();
-        }
-      }
-    }
-    this.a.setGIFPlayOnceListener(null);
-    tdf.b().remove(this.a);
-    tdf.a().remove(this.a);
+    tdf.a(this.jdField_a_of_type_Tdf, false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(1000L);
+  }
+  
+  public void onStateFinish(boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramBoolean, paramString);
+  }
+  
+  public void onStateIdel()
+  {
+    tdf.a(this.jdField_a_of_type_Tdf, false);
+  }
+  
+  public void onStatePulling() {}
+  
+  public void onStateRefreshing()
+  {
+    tdf.a(this.jdField_a_of_type_Tdf, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.b();
   }
 }
 

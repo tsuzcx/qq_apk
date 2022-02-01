@@ -1,66 +1,27 @@
-import android.content.Context;
-import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedFeature;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Set;
-import mqq.os.MqqHandler;
+import java.util.List;
 
 public class xen
+  extends wov
 {
-  public static void a(Context paramContext, String paramString, xep paramxep, biau parambiau)
-  {
-    ThreadManager.getUIHandler().post(new StoryShareEncryptHelper.2(paramString, parambiau, paramContext, paramxep));
-  }
+  public List<wuk> a = new ArrayList();
   
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  public xen(qqstory_service.RspGetBatchFeedFeature paramRspGetBatchFeedFeature)
   {
-    paramString = paramString.split("&");
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
+    if ((paramRspGetBatchFeedFeature.feed_feature_list.has()) && (!paramRspGetBatchFeedFeature.feed_feature_list.isEmpty()))
     {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length == 2) {
-        paramHashMap.put(arrayOfString[0], arrayOfString[1]);
-      }
-      i += 1;
-    }
-  }
-  
-  public static void a(HashMap<String, String> paramHashMap)
-  {
-    HashMap<String, String> localHashMap = null;
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    paramHashMap = localHashMap;
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if ((!str.equals("src_type")) && (!str.equals("version")) && (!str.equals("from_leba")) && (!str.equals("leba_resid")) && (!str.equals("config_res_plugin_item_name")) && (!str.equals("redtouch_click_timestamp")) && (!str.equals("lebaVersion")) && (!str.equals("redid")))
+      paramRspGetBatchFeedFeature = paramRspGetBatchFeedFeature.feed_feature_list.get().iterator();
+      while (paramRspGetBatchFeedFeature.hasNext())
       {
-        localHashMap = paramHashMap;
-        if (QLog.isColorLevel())
-        {
-          if (paramHashMap != null) {
-            break label144;
-          }
-          paramHashMap = new StringBuilder();
-        }
-        for (;;)
-        {
-          paramHashMap.append(str);
-          localHashMap = paramHashMap;
-          localIterator.remove();
-          paramHashMap = localHashMap;
-          break;
-          label144:
-          paramHashMap.append('|');
-        }
+        qqstory_struct.FeedFeature localFeedFeature = (qqstory_struct.FeedFeature)paramRspGetBatchFeedFeature.next();
+        wuk localwuk = new wuk();
+        localwuk.a(localFeedFeature);
+        this.a.add(localwuk);
       }
-    }
-    if ((paramHashMap != null) && (QLog.isColorLevel())) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "remove attrs:" + paramHashMap);
     }
   }
 }

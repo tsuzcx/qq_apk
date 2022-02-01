@@ -1,18 +1,21 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.hippy.QCircleHippyFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import feedcloud.FeedCloudCommon.Entry;
+import java.util.Arrays;
 
-class vqk
-  implements zxa<FeedCloudRead.StGetBusiInfoRsp>
+public class vqk
+  implements View.OnClickListener
 {
-  vqk(vqj paramvqj, QCircleGetTabListRequest paramQCircleGetTabListRequest, zzp paramzzp) {}
+  public vqk(QCircleHippyFragment paramQCircleHippyFragment) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
+  public void onClick(View paramView)
   {
-    QLog.d("QCircleFolderPreLoaderTask", 1, "QCircleFolderPreLoaderTask->onReceive: dispatch Success:" + paramBoolean + " |CmdName:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCmdName() + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
-    if (this.jdField_a_of_type_Zzp != null) {
-      this.jdField_a_of_type_Zzp.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetBusiInfoRsp });
-    }
+    this.a.mViolaUiDelegate.d();
+    QCircleHippyFragment.a(this.a);
+    vts.a("key_open_hippy_page", Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("ret_code", "-1"), vtt.a("attach_info", "network error,module name:" + QCircleHippyFragment.a(this.a)) }), false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

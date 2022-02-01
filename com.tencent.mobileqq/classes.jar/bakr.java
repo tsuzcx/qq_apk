@@ -1,109 +1,29 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
 
 public class bakr
-  extends bakt
+  implements azxx
 {
-  public bakr(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public bakr(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  private HashMap<String, ArrayList<MessageRecord>> a(List<MessageRecord> paramList, ArrayList<ChatMessage> paramArrayList)
+  public void a(int paramInt, String paramString)
   {
-    HashMap localHashMap = new HashMap(1);
-    ArrayList localArrayList = new ArrayList(1);
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      MessageRecord localMessageRecord1 = (MessageRecord)paramList.next();
-      if ((localMessageRecord1 instanceof MessageForMixedMsg))
+    if (paramInt == 0) {
+      if (ProfileActivity.AllInOne.b(this.a.a))
       {
-        Iterator localIterator = ((MessageForMixedMsg)localMessageRecord1).msgElemList.iterator();
-        while (localIterator.hasNext())
-        {
-          MessageRecord localMessageRecord2 = (MessageRecord)localIterator.next();
-          if (((localMessageRecord2 instanceof MessageForReplyText)) && (((MessageForReplyText)localMessageRecord2).getSourceMessage() != null))
-          {
-            localArrayList.add(localMessageRecord2);
-            localHashMap.put(String.valueOf(localMessageRecord1.uniseq), localArrayList);
-          }
-        }
-        paramArrayList.add((ChatMessage)localMessageRecord1);
+        paramInt = 1;
+        bdll.b(this.a.app, "CliOper", "", "", "0X80050E7", "0X80050E7", paramInt, 0, "", "", "", "");
+        bdll.b(null, "dc00898", "", "", "0X800A4FD", "0X800A4FD", 0, 0, "", "0", "0", "");
       }
     }
-    return localHashMap;
-  }
-  
-  private void h(awws paramawws)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = paramawws.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+    while (paramInt != 2) {
+      for (;;)
       {
-        ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-        if ((localChatMessage instanceof MessageForMixedMsg)) {
-          ((awmg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(174)).a(paramawws.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForMixedMsg)localChatMessage, false, ((MessageForMixedMsg)localChatMessage).forwardID);
-        }
+        return;
+        paramInt = 2;
       }
     }
-  }
-  
-  protected void c(awws paramawws)
-  {
-    h(paramawws);
-  }
-  
-  protected void d(awws paramawws)
-  {
-    int i = 0;
-    Object localObject1 = paramawws.jdField_a_of_type_JavaUtilList;
-    ArrayList localArrayList = new ArrayList(1);
-    Object localObject2 = (HashMap)paramawws.jdField_a_of_type_JavaUtilMap;
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (paramawws.jdField_a_of_type_Int != 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramawws.jdField_a_of_type_JavaUtilHashMap = a(a((QQAppInterface)localObject2, (List)localObject1, bool), localArrayList);
-      paramawws.jdField_a_of_type_JavaUtilList = localArrayList;
-      if (paramawws.jdField_a_of_type_JavaUtilHashMap.size() != 0) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReplyMsgController", 2, "preHandleData dstMsgMap is empty");
-      }
-      h(paramawws);
-      return;
-    }
-    if (paramawws.jdField_a_of_type_Int == 0) {}
-    for (;;)
-    {
-      localObject1 = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(i);
-      ((Message)localObject1).obj = paramawws;
-      ((Message)localObject1).sendToTarget();
-      return;
-      if (paramawws.jdField_a_of_type_Int == 2) {
-        i = 1;
-      }
-    }
-  }
-  
-  protected void g(awws paramawws)
-  {
-    h(paramawws);
+    bdll.b(null, "dc00898", "", "", "0X800A4FE", "0X800A4FE", 0, 0, "", "0", "0", "");
   }
 }
 

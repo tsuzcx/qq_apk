@@ -1,13 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import java.lang.ref.WeakReference;
 
-public class ahfu
-  implements DialogInterface.OnClickListener
+class ahfu
+  extends ClickableSpan
 {
-  public ahfu(QQStoryItemBuilder paramQQStoryItemBuilder) {}
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Context> b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  ahfu(ahed paramahed, QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramContext);
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Context localContext = (Context)this.b.get();
+    if ((paramView == null) || (localContext == null)) {}
+    while (!(localContext instanceof Activity)) {
+      return;
+    }
+    if (!bhnv.d(localContext))
+    {
+      QQToast.a(localContext, 2131691989, 0).b(localContext.getResources().getDimensionPixelSize(2131299011));
+      return;
+    }
+    Intent localIntent = new Intent(localContext, QQSpecialCareSettingActivity.class);
+    localIntent.putExtra("key_friend_uin", this.jdField_a_of_type_Ahed.a.a);
+    localContext.startActivity(localIntent);
+    VipUtils.a(paramView, "Vip_SpecialRemind", "0X8005057", "0X8005057", 0, 1, new String[0]);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint) {}
 }
 
 

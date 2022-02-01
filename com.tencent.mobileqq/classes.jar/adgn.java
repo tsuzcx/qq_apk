@@ -1,36 +1,46 @@
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.apollo_push_msgInfo.STPushMsgElem;
+import tencent.im.s2c.msgtype0x210.submsgtype0xe8.submsgtype0xe8.MsgBody;
 
-public final class adgn
+public class adgn
+  implements adci
 {
-  private static Map<String, adeb> a;
-  
-  public static Map<String, adeb> a()
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    if (a == null) {}
+    QLog.d("ApolloPushManager", 1, "recv action push message 0x210_0xe8, [C2C.OnlinePush]");
     try
     {
-      if (a == null)
+      submsgtype0xe8.MsgBody localMsgBody = new submsgtype0xe8.MsgBody();
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      if (localMsgBody.msg_item.has())
       {
-        HashMap localHashMap = new HashMap();
-        localHashMap.putAll(adgm.a());
-        localHashMap.put("config", new adeb("config", 3, 0, adgi.class));
-        localHashMap.put("setShareInfo", new adeb("setShareInfo", 25, 0, adgj.class));
-        localHashMap.put("closeWebview", new adeb("closeWebview", 2, 0, adgj.class));
-        localHashMap.put("refreshTitle", new adeb("refreshTitle", 22, 0, adgj.class));
-        localHashMap.put("setShareListener", new adeb("setShareListener", 26, 0, adgj.class));
-        localHashMap.put("lightappGetSDKVersion", new adeb("lightappGetSDKVersion", 13, 0, appw.class));
-        localHashMap.put("lightappShareCallback", new adeb("lightappShareCallback", 15, 0, appw.class));
-        localHashMap.put("lightappShareMessage", new adeb("lightappShareMessage", 16, 0, appw.class));
-        localHashMap.put("lightappOpenApp", new adeb("lightappOpenApp", 14, 0, appw.class));
-        localHashMap.put("lightappDisableLongPress", new adeb("lightappDisableLongPress", 11, 0, appw.class));
-        localHashMap.put("lightappDisableWebViewLongPress", new adeb("lightappDisableWebViewLongPress", 12, 0, appw.class));
-        a = Collections.unmodifiableMap(localHashMap);
+        paramMsgType0x210 = (apollo_push_msgInfo.STPushMsgElem)localMsgBody.msg_item.get();
+        if (paramQQAppInterface != null)
+        {
+          paramQQAppInterface = (amts)paramQQAppInterface.getManager(227);
+          paramQQAppInterface.a(0, paramMsgType0x210);
+          paramQQAppInterface.c(paramMsgType0x210);
+          paramQQAppInterface.b(paramMsgType0x210);
+          paramQQAppInterface.a(paramMsgType0x210);
+        }
       }
-      return a;
+      return;
     }
-    finally {}
+    catch (Exception paramQQAppInterface)
+    {
+      paramQQAppInterface.printStackTrace();
+      QLog.e("ApolloPushManager", 1, "[msg0x210.uSubMsgType == 0xe8], errInfo->" + paramQQAppInterface.getMessage());
+    }
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

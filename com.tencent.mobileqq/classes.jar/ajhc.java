@@ -1,30 +1,37 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ajhc
+  implements ajto
 {
-  public static ajhd a(int paramInt, Entity paramEntity, QQAppInterface paramQQAppInterface, Context paramContext)
+  public ajhc(TroopView paramTroopView) {}
+  
+  public void a(int paramInt)
   {
-    if (paramInt == 0) {
-      return new ajjf(paramQQAppInterface, paramContext, paramEntity);
+    if (QLog.isColorLevel()) {
+      QLog.i("addContacts.TroopView", 2, "onRepeatClick. position:" + paramInt);
     }
-    if (paramInt == 5) {
-      return new ajio(paramQQAppInterface, paramContext, paramEntity);
+    if (paramInt != -1)
+    {
+      TroopView.a(this.a).setCurrentPosition(-1, false);
+      int i = TroopView.a(this.a).getCurrentItem();
+      if (QLog.isColorLevel()) {
+        QLog.i("addContacts.TroopView", 2, "onCurrentTabClick. position:" + paramInt + " currentClassifyPos:" + i);
+      }
+      Object localObject = TroopView.a(this.a).a(i, false);
+      if (localObject != null)
+      {
+        localObject = (AddContactViewPagerTroopFragment)localObject;
+        ajgb localajgb = (ajgb)this.a.a.get(i);
+        localajgb.b = -1;
+        ((AddContactViewPagerTroopFragment)localObject).a(localajgb.d, "");
+      }
     }
-    if (paramInt == 1) {
-      return new ajka(paramQQAppInterface, paramContext, paramEntity);
-    }
-    if (paramInt == 2) {
-      return new ajma(paramQQAppInterface, paramContext, paramEntity, 2);
-    }
-    if (paramInt == 3) {
-      return new ajma(paramQQAppInterface, paramContext, paramEntity, 3);
-    }
-    if (paramInt == 4) {
-      return new ajjf(paramQQAppInterface, paramContext, paramEntity);
-    }
-    return null;
   }
 }
 

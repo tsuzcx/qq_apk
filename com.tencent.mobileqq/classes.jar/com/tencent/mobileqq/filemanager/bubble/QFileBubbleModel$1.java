@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.bubble;
 
-import atcc;
+import attx;
 
 public class QFileBubbleModel$1
   implements Runnable
 {
-  public QFileBubbleModel$1(atcc paramatcc) {}
+  public QFileBubbleModel$1(attx paramattx) {}
   
   public void run()
   {

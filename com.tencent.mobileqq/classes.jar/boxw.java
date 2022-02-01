@@ -1,12 +1,17 @@
-public abstract interface boxw
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+
+public class boxw
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void i();
+  public boxw(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
   
-  public abstract void j();
-  
-  public abstract void k();
-  
-  public abstract void l();
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    AEVideoShelfEditFragment.a(this.a).cancelSave();
+  }
 }
 
 

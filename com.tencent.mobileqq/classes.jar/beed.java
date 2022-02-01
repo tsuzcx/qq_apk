@@ -1,21 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class beed
-  implements Animation.AnimationListener
+class beed
+  implements View.OnClickListener
 {
-  public beed(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  beed(beec parambeec) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.b.setVisibility(8);
+    if ((paramView.getTag() instanceof bedx))
+    {
+      bedx localbedx = (bedx)paramView.getTag();
+      if ((this.a.a != null) && (localbedx.a.isClickable())) {
+        this.a.a.onClick(paramView);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

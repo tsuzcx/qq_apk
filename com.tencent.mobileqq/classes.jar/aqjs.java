@@ -1,35 +1,102 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.confess.ConfessPlugin;
+import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.1;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.manager.Manager;
 
 public class aqjs
-  implements View.OnTouchListener
+  implements Manager
 {
-  public aqjs(ConfessPlugin paramConfessPlugin) {}
+  private QQAppInterface a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aqjs(QQAppInterface paramQQAppInterface)
   {
-    switch (paramMotionEvent.getAction())
+    this.a = paramQQAppInterface;
+    ThreadManagerV2.executeOnFileThread(new RockDownloaderManager.1(this));
+  }
+  
+  private void a()
+  {
+    long l = System.currentTimeMillis();
+    Object localObject1 = aqjp.a().query(RockDownloadInfo.class);
+    RockDownloadInfo localRockDownloadInfo;
+    int i;
+    if (localObject1 != null)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramView instanceof TextView))
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        int i = ((TextView)paramView).getCurrentTextColor();
-        ((TextView)paramView).setTextColor(Color.argb(128, Color.red(i), Color.green(i), Color.blue(i)));
-        continue;
-        if ((paramView instanceof TextView))
+        localRockDownloadInfo = (RockDownloadInfo)((Iterator)localObject1).next();
+        Object localObject2;
+        if (localRockDownloadInfo.endTime + 604800L < l / 1000L)
         {
-          i = ((TextView)paramView).getCurrentTextColor();
-          ((TextView)paramView).setTextColor(Color.argb(255, Color.red(i), Color.green(i), Color.blue(i)));
+          localObject2 = new VFSFile(localRockDownloadInfo.localPath);
+          if (((VFSFile)localObject2).exists()) {
+            ((VFSFile)localObject2).delete();
+          }
+          aqjp.a().remove(localRockDownloadInfo);
+          if (QLog.isColorLevel()) {
+            QLog.d("RockDownloaderManager", 2, new Object[] { "remove info because has overdue", localRockDownloadInfo });
+          }
+        }
+        else
+        {
+          localObject2 = bhny.d(this.a.getApp(), localRockDownloadInfo.getPackageName());
+          try
+          {
+            i = Integer.parseInt((String)localObject2);
+            if ((localRockDownloadInfo.realVersionCode <= 0) || (i < localRockDownloadInfo.realVersionCode)) {
+              continue;
+            }
+            localObject2 = new VFSFile(localRockDownloadInfo.localPath);
+            if (((VFSFile)localObject2).exists()) {
+              ((VFSFile)localObject2).delete();
+            }
+            aqjp.a().remove(localRockDownloadInfo);
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("RockDownloaderManager", 2, new Object[] { "remove info because has install", localRockDownloadInfo });
+          }
+          catch (NumberFormatException localNumberFormatException) {}
+          if (QLog.isColorLevel()) {
+            QLog.d("RockDownloaderManager", 2, new Object[] { "get install info error", localRockDownloadInfo, " error=", localNumberFormatException.getMessage() });
+          }
         }
       }
     }
+    localObject1 = new VFSFile(aqjp.a());
+    if (((VFSFile)localObject1).exists())
+    {
+      localObject1 = ((VFSFile)localObject1).listFiles();
+      if ((localObject1 != null) && (localObject1.length > 0))
+      {
+        int j = localObject1.length;
+        i = 0;
+        while (i < j)
+        {
+          localRockDownloadInfo = localObject1[i];
+          if (localRockDownloadInfo.lastModified() + 604800000L < l)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("RockDownloaderManager", 2, new Object[] { "remove file", localRockDownloadInfo.getAbsolutePath() });
+            }
+            localRockDownloadInfo.delete();
+          }
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public void onDestroy()
+  {
+    this.a = null;
   }
 }
 

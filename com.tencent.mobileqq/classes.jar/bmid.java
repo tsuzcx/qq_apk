@@ -1,59 +1,53 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.io.File;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.SendMsg;
 
-class bmid
-  implements Downloader.DownloadListener
+public abstract class bmid
+  extends Binder
+  implements bmic
 {
-  bmid(bmic parambmic, String paramString1, Downloader.DownloadListener paramDownloadListener, String paramString2) {}
-  
-  public void onDownloadCanceled(String paramString)
+  public bmid()
   {
-    File localFile = new File(bmic.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadCanceled(paramString);
-    }
-    if (bmic.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Bmic.jdField_a_of_type_ArrayOfBoolean[bmic.a(this.jdField_a_of_type_Bmic)] = false;
-    }
+    attachInterface(this, "cooperation.qappcenter.remote.IServiceHandler");
   }
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public static bmic a(IBinder paramIBinder)
   {
-    File localFile = new File(bmic.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
+    if (paramIBinder == null) {
+      return null;
     }
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadFailed(paramString, paramDownloadResult);
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IServiceHandler");
+    if ((localIInterface != null) && ((localIInterface instanceof bmic))) {
+      return (bmic)localIInterface;
     }
-    if (bmic.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Bmic.jdField_a_of_type_ArrayOfBoolean[bmic.a(this.jdField_a_of_type_Bmic)] = false;
-    }
+    return new bmie(paramIBinder);
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public IBinder asBinder()
   {
-    File localFile = new File(bmic.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qappcenter.remote.IServiceHandler");
+      return true;
     }
-    localFile = new File(bmic.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.renameTo(new File(bmic.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/" + this.jdField_a_of_type_JavaLangString));
-    }
-    LocalMultiProcConfig.putBool(this.b, true);
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadSucceed(paramString, paramDownloadResult);
-    }
-    if (bmic.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Bmic.jdField_a_of_type_ArrayOfBoolean[bmic.a(this.jdField_a_of_type_Bmic)] = false;
+    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IServiceHandler");
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
     }
   }
 }

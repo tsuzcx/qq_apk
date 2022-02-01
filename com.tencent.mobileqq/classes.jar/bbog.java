@@ -1,77 +1,49 @@
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.media.MediaCodec.BufferInfo;
+import java.util.ArrayList;
 
 public class bbog
-  implements bbmx
 {
-  public int a;
-  public int b;
-  public int c;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private String jdField_b_of_type_JavaLangString;
+  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  
+  public bbog(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "segment" + paramInt + ".mp4");
+  }
   
   public int a()
   {
-    return 0;
+    return this.jdField_a_of_type_Int;
   }
   
-  public int a(int paramInt)
+  public long a()
   {
-    int i = -1;
-    switch (paramInt)
-    {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+      return ((Long)this.jdField_a_of_type_JavaUtilArrayList.get(0)).longValue();
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.uniteSearch.SearchResultGroupModelImpl", 2, "getPosition(). type=" + paramInt + "  position=" + i);
-      }
-      return i;
-      i = this.a;
-      continue;
-      i = this.b;
-      continue;
-      i = this.c;
-    }
+    return 0L;
   }
   
   public String a()
   {
-    return null;
+    return this.jdField_b_of_type_JavaLangString;
   }
   
-  public List<bbmy> a()
+  public void a(bbmf parambbmf)
   {
-    return null;
+    parambbmf = parambbmf.a;
+    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(parambbmf.presentationTimeUs));
+    this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(parambbmf.flags));
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public String toString()
   {
-    switch (paramInt1)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a = paramInt2;
-      return;
-    case 2: 
-      this.b = paramInt2;
-      return;
-    }
-    this.c = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    a(2, paramInt1);
-    a(1, paramInt2);
-    a(3, paramInt3);
-  }
-  
-  public void a(View paramView) {}
-  
-  public String b()
-  {
-    return null;
+    return "SegmentInfo{mSegmentPath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mFrames=" + this.jdField_a_of_type_JavaUtilArrayList + ", mFlags=" + this.jdField_b_of_type_JavaUtilArrayList + '}';
   }
 }
 

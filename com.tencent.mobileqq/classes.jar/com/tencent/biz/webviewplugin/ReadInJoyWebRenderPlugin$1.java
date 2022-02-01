@@ -1,18 +1,18 @@
 package com.tencent.biz.webviewplugin;
 
-import abck;
+import abgn;
 import android.text.TextUtils;
-import bhqz;
+import biru;
 
 public class ReadInJoyWebRenderPlugin$1
   implements Runnable
 {
-  public ReadInJoyWebRenderPlugin$1(abck paramabck) {}
+  public ReadInJoyWebRenderPlugin$1(abgn paramabgn) {}
   
   public void run()
   {
-    if (!TextUtils.isEmpty(abck.a(this.this$0))) {
-      bhqz.a(abck.a(this.this$0));
+    if (!TextUtils.isEmpty(abgn.a(this.this$0))) {
+      biru.a(abgn.a(this.this$0));
     }
   }
 }

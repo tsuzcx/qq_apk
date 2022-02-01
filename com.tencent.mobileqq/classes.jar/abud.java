@@ -1,62 +1,35 @@
-import android.view.View;
-import com.tencent.device.msg.data.MessageForDevLittleVideo;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.MobileQQ;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.device.qfind.BluetoothLeService;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class abud
-  implements bkhw
+  implements ServiceConnection
 {
-  abud(abua paramabua, MessageForDevLittleVideo paramMessageForDevLittleVideo, ahin paramahin, bkho parambkho) {}
+  abud(abub paramabub) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    int i = 1;
-    switch (paramInt)
-    {
+    abub.a(this.a, ((acak)paramIBinder).a());
+    if ((!abub.a(this.a).a()) && (QLog.isColorLevel())) {
+      QLog.e("DeviceBLE2", 2, "Unable to initialize Bluetooth");
     }
-    boolean bool;
-    label64:
-    do
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      bool = bgnt.g(this.jdField_a_of_type_Abua.a.getApplication().getApplicationContext());
-      paramView = this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo;
-      if (!bool) {
-        break;
-      }
-      paramInt = 2002;
-      paramView.videoFileStatus = paramInt;
-      this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileProgress = 0;
-      this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.serial();
-      this.jdField_a_of_type_Abua.a.a().a(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.frienduin, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.istroop, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.uniseq, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.msgData);
-    } while (!bool);
-    if (!bgmg.b(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.mThumbFilePath)) {
-      this.jdField_a_of_type_Abua.c(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
+    if (QLog.isColorLevel()) {
+      QLog.i("DeviceBLE2", 2, "ServiceConnection onServiceConnected ");
     }
-    for (paramInt = 1;; paramInt = 0)
+    if (!abub.a(this.a).isEmpty())
     {
-      if (!bgmg.b(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileName))
-      {
-        this.jdField_a_of_type_Abua.b(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
-        paramInt = i;
-      }
-      for (;;)
-      {
-        if (paramInt == 0) {
-          break label235;
-        }
-        this.jdField_a_of_type_Ahin.a.setFailedIconVisable(false, this.jdField_a_of_type_Abua);
-        abua.b(this.jdField_a_of_type_Abua, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo, this.jdField_a_of_type_Ahin, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileProgress, false);
-        break;
-        paramInt = 2005;
-        break label64;
-      }
-      label235:
-      break;
+      this.a.a = ((acap)abub.a(this.a).get(0));
+      abub.a(this.a).remove(0);
+      abub.a(this.a).a(this.a.a.a, this.a.a.b);
     }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    abub.a(this.a, null);
   }
 }
 

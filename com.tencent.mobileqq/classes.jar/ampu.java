@@ -1,14 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class ampu
-  implements MediaPlayer.OnCompletionListener
+  implements DialogInterface.OnClickListener
 {
-  ampu(ampr paramampr) {}
+  ampu(ampp paramampp) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(10);
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendMoreSysMsgAdapter", 2, "cancel click");
+    }
+    bdll.b(this.a.a, "dc00898", "", "", "0X800A328", "0X800A328", 1, 0, "", "", "", "");
   }
 }
 

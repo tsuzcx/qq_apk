@@ -1,70 +1,30 @@
 import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BinderWarpper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ahrr
-  extends abgc
+  implements View.OnClickListener
 {
-  ahuo jdField_a_of_type_Ahuo = new ahrs(this);
+  public ahrr(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, boolean paramBoolean1, boolean paramBoolean2, QQAppInterface paramQQAppInterface) {}
   
-  public ahrr(AIOGalleryActivity paramAIOGalleryActivity) {}
-  
-  public abfl a(Activity paramActivity, abfp paramabfp)
+  public void onClick(View paramView)
   {
-    return new ahte(paramActivity, paramabfp, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Ahul, AIOGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity));
-  }
-  
-  public abfp a(Activity paramActivity)
-  {
-    return new ahtj(true);
-  }
-  
-  public abfq a(Activity paramActivity, abfp paramabfp)
-  {
-    ahtj localahtj = (ahtj)paramabfp;
-    localahtj.e = paramActivity.getIntent().getBooleanExtra("extra.IS_FROM_NEW_TROOP_CHAT_HISTORY", false);
-    if (localahtj.e) {
-      bcst.b(null, "dc00899", "Grp_chatRecord", "", "chatRecor_pic", "pic_exp", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_JavaLangString, "", "", "");
-    }
-    localahtj.d(4);
-    localahtj.a();
-    return new ahtk(paramActivity, paramabfp, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Ahul, AIOGalleryActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity));
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Ahul == null)
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c != 0L) && (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c <= 300L)) {}
+    for (;;)
     {
-      BinderWarpper localBinderWarpper = (BinderWarpper)paramActivity.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
-      if (localBinderWarpper == null) {
-        break label160;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Ahul = ahum.a(localBinderWarpper.a);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Ahul.a(this.jdField_a_of_type_Ahuo);
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOGalleryActivity", 2, "IAIOImageProvider is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Ahul);
-      }
-    }
-    boolean bool = paramActivity.getIntent().getBooleanExtra("extra.IS_GOTO_IMAGELIST", false);
-    super.a(paramActivity);
-    if (bool)
-    {
-      this.jdField_a_of_type_Boolean = paramActivity.getIntent().getBooleanExtra("extra.NO_FIRST_ENTER_ANIMATION", false);
-      super.a();
-      if ((this.jdField_a_of_type_Abfq != null) && ((this.jdField_a_of_type_Abfq instanceof ahtk))) {
-        ((ahtk)this.jdField_a_of_type_Abfq).p();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c = System.currentTimeMillis();
+      if ((this.jdField_a_of_type_Boolean) && (this.b)) {
+        bczv.a().a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      } else {
+        QLog.d("ShortVideoRealItemBuilder", 1, String.format("not support dance Pendant, codec[%s], entry[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b) }));
       }
     }
-    return;
-    label160:
-    throw new IllegalArgumentException("can't find Binder in Intent..");
-  }
-  
-  public boolean a()
-  {
-    return true;
   }
 }
 

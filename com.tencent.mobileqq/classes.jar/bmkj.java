@@ -1,43 +1,35 @@
-import android.os.Handler;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-public class bmkj
-  implements bmki
+class bmkj
+  implements ServiceConnection
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static ConcurrentHashMap<String, bmkj> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private int jdField_a_of_type_Int = -1;
-  private bmki jdField_a_of_type_Bmki;
-  private String jdField_a_of_type_JavaLangString;
+  bmkj(bmkd parambmkd) {}
   
-  private bmkj(String paramString)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bmki = bmko.a(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public static bmkj a(String paramString)
-  {
-    Object localObject1 = (bmkj)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localObject1 == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        bmkj localbmkj = (bmkj)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-        localObject1 = localbmkj;
-        if (localbmkj == null)
-        {
-          localObject1 = new bmkj(paramString);
-          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject1);
-        }
-        return localObject1;
-      }
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_Bmkk = bmkl.a(paramIBinder);
+    if (QLog.isColorLevel()) {
+      QLog.d("DatalineRemoteManager", 2, "mDatalineService connected");
     }
-    return localObject1;
+    paramComponentName = (aogj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(10);
+    this.a.a(paramComponentName.a(), paramComponentName.d(), paramComponentName.e(), paramComponentName.f(), paramComponentName.a());
+    bmkd.d(this.a);
   }
   
-  public void a(Handler paramHandler)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    this.jdField_a_of_type_Bmki.a(paramHandler);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unbindService(bmkd.a(this.a));
+    this.a.jdField_a_of_type_Bmkk = null;
+    this.a.jdField_a_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("DatalineRemoteManager", 2, "mDatalineService disconnected");
+    }
   }
 }
 

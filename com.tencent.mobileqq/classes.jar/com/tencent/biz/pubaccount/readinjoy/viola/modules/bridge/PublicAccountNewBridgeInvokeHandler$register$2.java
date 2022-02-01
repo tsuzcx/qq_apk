@@ -7,14 +7,14 @@ import kotlin.jvm.internal.FunctionReference;
 import kotlin.reflect.KDeclarationContainer;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import tqn;
+import thj;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "p1", "Lorg/json/JSONObject;", "Lkotlin/ParameterName;", "name", "param", "p2", "", "callbackId", "invoke"}, k=3, mv={1, 1, 16})
 public final class PublicAccountNewBridgeInvokeHandler$register$2
   extends FunctionReference
   implements Function2<JSONObject, String, Unit>
 {
-  public PublicAccountNewBridgeInvokeHandler$register$2(tqn arg1) {}
+  public PublicAccountNewBridgeInvokeHandler$register$2(thj arg1) {}
   
   public final String getName() {}
   

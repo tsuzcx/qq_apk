@@ -1,81 +1,32 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
-
 public class pgg
-  extends RecyclerView.Adapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<pxs> jdField_a_of_type_JavaUtilList = new ArrayList();
-  tgs jdField_a_of_type_Tgs;
-  private List<pxs> b = new ArrayList();
+  public int a;
+  public long a;
+  float[] a;
+  public int b;
+  long jdField_b_of_type_Long;
+  float[] jdField_b_of_type_ArrayOfFloat;
+  public int c;
+  public int d;
+  int e;
+  int f;
+  int g;
+  int h;
+  int i;
   
-  public pgg(Context paramContext, List<pxs> paramList1, List<pxs> paramList2)
+  public String a()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList1;
-    this.b = paramList2;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void a(int paramInt, pxs parampxs)
-  {
-    if (paramInt == 0) {
-      bmqa.a("readinjoy_show_recommend_reason_in_title_b", parampxs.c);
+    double d1 = this.g * 1.0D / this.h;
+    double d2 = 1000.0D * d1 / this.jdField_a_of_type_Long;
+    double d3 = this.jdField_a_of_type_ArrayOfFloat[0] / this.i;
+    double d4 = this.jdField_a_of_type_ArrayOfFloat[1] / this.h;
+    double d5 = this.b[0] / this.i;
+    double d6 = this.b[1] / this.h;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (int j = 0;; j = 1) {
+      return j + "_" + String.format("%.2f", new Object[] { Double.valueOf(d1) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d2) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d4) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d3) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d6) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d5) });
     }
-  }
-  
-  public int getItemCount()
-  {
-    int j = 0;
-    if (this.jdField_a_of_type_JavaUtilList != null) {}
-    for (int i = this.jdField_a_of_type_JavaUtilList.size();; i = 0)
-    {
-      if (this.b != null) {
-        j = this.b.size();
-      }
-      return i + 0 + j;
-    }
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt < this.b.size()) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    pgj localpgj = (pgj)paramViewHolder;
-    pxs localpxs;
-    if (paramInt >= this.b.size())
-    {
-      paramInt -= this.b.size();
-      localpxs = (pxs)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      localpgj.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
-    {
-      localpgj.jdField_a_of_type_AndroidWidgetTextView.setText(localpxs.b);
-      localpgj.b.setText(localpxs.d);
-      localpgj.itemView.setOnClickListener(new pgh(this, localpgj, localpxs, paramInt));
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
-      localpxs = (pxs)this.b.get(paramInt);
-      localpgj.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new pgj(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560194, null));
   }
 }
 

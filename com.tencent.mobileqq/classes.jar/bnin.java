@@ -1,14 +1,12 @@
-public class bnin
+final class bnin
   extends bnim
 {
-  public int a(int paramInt)
+  public int a(String paramString, int paramInt)
   {
-    return paramInt;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return paramInt > 0;
+    if ((paramString == null) || (paramString.length() == 0) || (paramInt < 1)) {
+      return -1;
+    }
+    return 0;
   }
 }
 

@@ -1,1088 +1,1219 @@
-import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.preference.PreferenceManager;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import android.util.Base64;
-import android.util.Xml;
+import android.webkit.URLUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.apollo.store.ApolloFloatActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.net.URLEncoder;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import mqq.manager.Manager;
-import oicq.wlogin_sdk.tools.MD5;
-import org.xmlpull.v1.XmlPullParser;
+import mqq.app.MobileQQ;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anog
-  implements Manager
 {
-  static boolean jdField_a_of_type_Boolean = true;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  Comparator<anok> jdField_a_of_type_JavaUtilComparator = null;
-  HashMap<String, anol> jdField_a_of_type_JavaUtilHashMap = new HashMap(1);
-  List<WeakReference<anoj>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  public boolean b;
+  public static long a;
+  public static String[] a;
+  public static String[] b = { "14.17.42.125", "59.37.96.212", "180.163.32.167", "101.226.90.166" };
+  public static String[] c = { "58.250.137.13", "163.177.90.55", "140.206.160.112", "140.207.123.182" };
   
-  public anog(QQAppInterface paramQQAppInterface)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "117.144.242.75", "117.144.245.207" };
   }
   
-  @TargetApi(11)
-  private void a(Set<String> paramSet)
+  public static int a()
   {
-    try
-    {
-      localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit();
-      if (Build.VERSION.SDK_INT < 11) {
-        break label73;
-      }
-      localEditor.putStringSet("hotchat_scene_config", paramSet);
-      localEditor.commit();
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        SharedPreferences.Editor localEditor;
-        label73:
-        Iterator localIterator;
-        int i;
-        localThrowable.printStackTrace();
-        continue;
-        paramSet = Integer.valueOf(paramSet.size());
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      if (paramSet == null)
-      {
-        paramSet = "null";
-        axei.a("HotchatSCMng", new Object[] { "saveConfigs", paramSet });
-      }
-    }
-    else
-    {
-      return;
-      localEditor.putInt("hotchat_scene_config_count", paramSet.size());
-      localIterator = paramSet.iterator();
-      i = 0;
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localEditor.putString("hotchat_scene_config_" + i, str);
-        i += 1;
-      }
-    }
-  }
-  
-  @TargetApi(11)
-  private String[] a()
-  {
-    label126:
-    do
-    {
-      try
-      {
-        localObject4 = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-        if (Build.VERSION.SDK_INT < 11) {
-          break label126;
-        }
-        localObject1 = ((SharedPreferences)localObject4).getStringSet("hotchat_scene_config", new HashSet());
-        if ((localObject1 == null) || (((Set)localObject1).size() <= 0)) {
-          break label237;
-        }
-        localObject1 = (String[])((Set)localObject1).toArray(new String[((Set)localObject1).size()]);
-      }
-      catch (Throwable localThrowable1)
-      {
-        for (;;)
-        {
-          try
-          {
-            Object localObject2;
-            int j;
-            int i;
-            localObject2[i] = ((SharedPreferences)localObject4).getString("hotchat_scene_config_" + i, "");
-            i += 1;
-          }
-          catch (Throwable localThrowable2)
-          {
-            Object localObject4;
-            localObject1 = localObject3;
-            Object localObject3 = localThrowable2;
-            continue;
-          }
-          localThrowable1 = localThrowable1;
-          Object localObject1 = null;
-          localThrowable1.printStackTrace();
-          continue;
-          localObject3 = Integer.valueOf(localObject1.length);
-          continue;
-          localObject4 = "";
-          continue;
-          localObject1 = null;
-        }
-      }
-      if (QLog.isColorLevel())
-      {
-        if (localObject1 != null) {
-          break label208;
-        }
-        localObject2 = "null";
-        if ((localObject1 == null) || (localObject1.length <= 0)) {
-          break label218;
-        }
-        localObject4 = localObject1[0];
-        axei.a("HotchatSCMng", new Object[] { "getConfigs", localObject2, localObject4 });
-      }
-      return localObject1;
-      j = ((SharedPreferences)localObject4).getInt("hotchat_scene_config_count", 0);
-      if (j <= 0) {
-        break label237;
-      }
-      localObject2 = new String[j];
-      i = 0;
-      localObject1 = localObject2;
-    } while (i >= j);
-  }
-  
-  public anok a(String paramString, int paramInt, long paramLong)
-  {
-    Object localObject3 = null;
-    Object localObject1 = null;
-    Object localObject2;
-    if (TextUtils.isEmpty(paramString))
-    {
-      localObject2 = localObject1;
-      if (QLog.isDevelopLevel())
-      {
-        axei.a("HotchatSCMng", "getHotchatNote", new Object[] { "id is null or empty" });
-        localObject2 = localObject1;
-      }
-    }
-    anol localanol;
-    label267:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return localObject2;
-              localanol = (anol)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-              localObject2 = localObject1;
-            } while (localanol == null);
-            localObject2 = localObject1;
-          } while (localanol.jdField_a_of_type_JavaUtilArrayList.size() <= 0);
-          if (localanol.jdField_a_of_type_Int < 0)
-          {
-            if (this.jdField_a_of_type_JavaUtilComparator == null) {
-              this.jdField_a_of_type_JavaUtilComparator = new anoh(this);
-            }
-            Collections.sort(localanol.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
-            if (QLog.isDevelopLevel()) {
-              axei.a("HotchatSCMng", "sort start", new Object[] { paramString });
-            }
-            i = 0;
-            if (i < localanol.jdField_a_of_type_JavaUtilArrayList.size())
-            {
-              localObject2 = (anok)localanol.jdField_a_of_type_JavaUtilArrayList.get(i);
-              if (localObject2 == null) {}
-              for (;;)
-              {
-                i += 1;
-                break;
-                if ((localanol.jdField_a_of_type_Int < 0) && (paramLong <= ((anok)localObject2).jdField_b_of_type_Long)) {}
-                for (localanol.jdField_a_of_type_Int = i;; localanol.jdField_a_of_type_Int = i) {
-                  do
-                  {
-                    if (!QLog.isDevelopLevel()) {
-                      break label267;
-                    }
-                    axei.a("HotchatSCMng", String.valueOf(i), new Object[] { localObject2 });
-                    break;
-                  } while ((paramLong > ((anok)localObject2).jdField_b_of_type_Long) || (!((anok)localObject2).jdField_a_of_type_Boolean));
-                }
-              }
-            }
-            if (localanol.jdField_a_of_type_Int < 0) {
-              localanol.jdField_a_of_type_Int = localanol.jdField_a_of_type_JavaUtilArrayList.size();
-            }
-            if (QLog.isDevelopLevel()) {
-              axei.a("HotchatSCMng", "sort end", new Object[] { paramString });
-            }
-            if (QLog.isDevelopLevel()) {
-              axei.a("HotchatSCMng", "getHotchatNote", new Object[] { Integer.valueOf(localanol.jdField_a_of_type_Int) });
-            }
-          }
-          localObject2 = localObject1;
-        } while (localanol.jdField_a_of_type_Int < 0);
-        localObject2 = localObject1;
-      } while (localanol.jdField_a_of_type_Int >= localanol.jdField_a_of_type_JavaUtilArrayList.size());
-      switch (paramInt)
-      {
-      default: 
-        localObject1 = localObject3;
-        localObject2 = localObject1;
-      }
-    } while (!QLog.isDevelopLevel());
-    axei.a("HotchatSCMng", "getHotchatNote", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(localanol.jdField_a_of_type_Int), localObject1 });
-    return localObject1;
-    int i = localanol.jdField_a_of_type_Int;
-    if (i < localanol.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      localObject1 = (anok)localanol.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (localObject1 == null) {}
-      while ((((anok)localObject1).jdField_a_of_type_Boolean) || (paramLong < ((anok)localObject1).jdField_a_of_type_Long) || (paramLong > ((anok)localObject1).jdField_b_of_type_Long) || (!a((anok)localObject1)))
-      {
-        i += 1;
-        break;
-      }
-      localanol.jdField_a_of_type_Int = i;
-    }
-    for (;;)
-    {
-      break;
-      localObject2 = (anok)localanol.jdField_a_of_type_JavaUtilArrayList.get(localanol.jdField_a_of_type_Int);
-      localObject1 = localObject3;
-      if (paramLong < ((anok)localObject2).jdField_a_of_type_Long) {
-        break;
-      }
-      localObject1 = localObject3;
-      if (paramLong > ((anok)localObject2).jdField_b_of_type_Long) {
-        break;
-      }
-      localObject1 = localObject3;
-      if (!a((anok)localObject2)) {
-        break;
-      }
-      localObject1 = localObject2;
-      break;
-      i = localanol.jdField_a_of_type_Int;
-      localObject1 = localObject3;
-      if (i >= localanol.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break;
-      }
-      localObject1 = (anok)localanol.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (localObject1 == null) {}
-      while (((anok)localObject1).jdField_a_of_type_Boolean)
-      {
-        i += 1;
-        break;
-      }
-      break;
-      localObject1 = null;
-    }
-  }
-  
-  /* Error */
-  public String a()
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 42	anog:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   8: astore_2
-    //   9: aload_2
-    //   10: ifnonnull +7 -> 17
-    //   13: aload_0
-    //   14: monitorexit
-    //   15: aload_1
-    //   16: areturn
-    //   17: aload_2
-    //   18: invokevirtual 54	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   21: astore_2
-    //   22: aload_2
-    //   23: ifnull -10 -> 13
-    //   26: aload_0
-    //   27: getfield 248	anog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   30: ifnull +13 -> 43
-    //   33: aload_0
-    //   34: getfield 248	anog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   37: invokevirtual 251	java/lang/String:length	()I
-    //   40: ifgt +105 -> 145
-    //   43: aload_0
-    //   44: aload_2
-    //   45: invokevirtual 257	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   48: invokevirtual 262	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   51: putfield 248	anog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   54: aload_0
-    //   55: getfield 248	anog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   58: ldc_w 264
-    //   61: invokevirtual 268	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   64: ifne +30 -> 94
-    //   67: aload_0
-    //   68: new 129	java/lang/StringBuilder
-    //   71: dup
-    //   72: invokespecial 130	java/lang/StringBuilder:<init>	()V
-    //   75: aload_0
-    //   76: getfield 248	anog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   79: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: ldc_w 264
-    //   85: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   91: putfield 248	anog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   94: aload_0
-    //   95: new 129	java/lang/StringBuilder
-    //   98: dup
-    //   99: invokespecial 130	java/lang/StringBuilder:<init>	()V
-    //   102: aload_0
-    //   103: getfield 248	anog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   106: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: ldc 74
-    //   111: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   114: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   117: putfield 248	anog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   120: getstatic 21	anog:jdField_a_of_type_Boolean	Z
-    //   123: ifeq +22 -> 145
-    //   126: ldc 93
-    //   128: ldc_w 270
-    //   131: iconst_1
-    //   132: anewarray 4	java/lang/Object
-    //   135: dup
-    //   136: iconst_0
-    //   137: aload_0
-    //   138: getfield 248	anog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   141: aastore
-    //   142: invokestatic 202	axei:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   145: aload_0
-    //   146: getfield 248	anog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   149: astore_1
-    //   150: goto -137 -> 13
-    //   153: astore_1
-    //   154: aload_0
-    //   155: monitorexit
-    //   156: aload_1
-    //   157: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	158	0	this	anog
-    //   1	149	1	str	String
-    //   153	4	1	localObject1	Object
-    //   8	37	2	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	9	153	finally
-    //   17	22	153	finally
-    //   26	43	153	finally
-    //   43	94	153	finally
-    //   94	145	153	finally
-    //   145	150	153	finally
-  }
-  
-  public void a()
-  {
-    if (this.b) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      if (this.b) {
-        return;
-      }
-    }
-    String[] arrayOfString = a();
+    int i = 10060;
     if (QLog.isColorLevel()) {
-      if (arrayOfString != null) {
-        break label103;
-      }
+      QLog.d("ApolloGameBasicEventUtil", 2, "[getRecommendIp]");
     }
-    label103:
-    for (Object localObject2 = "null";; localObject2 = Integer.valueOf(arrayOfString.length))
-    {
-      axei.a("HotchatSCMng", new Object[] { "initCache", localObject2 });
-      if ((arrayOfString == null) || (arrayOfString.length <= 0)) {
-        break label365;
-      }
-      localObject2 = a();
-      if (localObject2 != null) {
-        break;
-      }
-      return;
-    }
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        String str = arrayOfString[i];
-        if ((str != null) && (str.length() > 0))
-        {
-          anoi localanoi = anoi.a(str);
-          if (localanoi != null)
-          {
-            for (;;)
-            {
-              try
-              {
-                if (new File((String)localObject2 + "/" + localanoi.c).exists()) {
-                  break label290;
-                }
-                bool = a(localanoi, (String)localObject2);
-                if (!bool) {
-                  break;
-                }
-                a((String)localObject2 + "/" + localanoi.c);
-              }
-              catch (Exception localException)
-              {
-                if (!QLog.isColorLevel()) {
-                  break label408;
-                }
-              }
-              axei.a("HotchatSCMng", new Object[] { "initCache", "parse config xml fail", localException.toString() });
-              break label408;
-              label290:
-              boolean bool = true;
-            }
-            if (QLog.isColorLevel()) {
-              axei.a("HotchatSCMng", new Object[] { "initCache", "download config xml fail", localanoi });
-            }
-          }
-          else if (QLog.isColorLevel())
-          {
-            axei.a("HotchatSCMng", new Object[] { "initCache", "parse ConfigData fail", localException });
-          }
-        }
-      }
-      else
-      {
-        label365:
-        this.b = true;
-        if (QLog.isColorLevel()) {
-          axei.a("HotchatSCMng", new Object[] { "initCache", Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()) });
-        }
-        return;
-      }
-      label408:
-      i += 1;
-    }
-  }
-  
-  public void a(anoj paramanoj)
-  {
-    if (paramanoj == null) {
-      return;
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-        {
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-          if (!localIterator.hasNext()) {
-            break label105;
-          }
-          WeakReference localWeakReference = (WeakReference)localIterator.next();
-          if ((localWeakReference == null) || (localWeakReference.get() != paramanoj)) {
-            continue;
-          }
-          i = 1;
-          if (i == 0)
-          {
-            paramanoj = new WeakReference(paramanoj);
-            this.jdField_a_of_type_JavaUtilList.add(paramanoj);
-          }
-        }
-        return;
-      }
-      label105:
-      int i = 0;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      axei.a("HotchatSCMng", "parse", new Object[] { paramString });
-    }
-    BufferedInputStream localBufferedInputStream;
-    String str2;
-    for (;;)
-    {
-      XmlPullParser localXmlPullParser;
-      try
-      {
-        paramString = new FileInputStream(paramString);
-      }
-      catch (FileNotFoundException localFileNotFoundException1)
-      {
-        Object localObject1;
-        paramString = null;
-      }
-      for (;;)
-      {
-        try
-        {
-          localBufferedInputStream = new BufferedInputStream(paramString);
-          str2 = paramString;
-          if (localBufferedInputStream == null) {
-            continue;
-          }
-        }
-        catch (FileNotFoundException localFileNotFoundException2)
-        {
-          Object localObject2;
-          boolean bool;
-          Object localObject6;
-          Object localObject5;
-          continue;
-          continue;
-          if (i == 1) {
-            continue;
-          }
-          switch (i)
-          {
-          }
-          String str1 = paramString;
-          paramString = localFileNotFoundException2;
-          Object localObject3 = str1;
-          break;
-          str1 = paramString;
-          paramString = localObject3;
-          localObject3 = str1;
-          break;
-          str1 = paramString;
-          paramString = localObject3;
-          localObject3 = str1;
-          break;
-          str1 = paramString;
-          paramString = localObject3;
-          localObject3 = str1;
-          break;
-          str1 = "not null";
-          continue;
-        }
-        try
-        {
-          localXmlPullParser = Xml.newPullParser();
-          localXmlPullParser.setInput(localBufferedInputStream, "UTF-8");
-          i = localXmlPullParser.getEventType();
-          localObject1 = null;
-          paramString = null;
-        }
-        catch (Exception paramString)
-        {
-          paramString.printStackTrace();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          axei.a("HotchatSCMng", new Object[] { "parseNotice exception", paramString.toString() });
-        }
-      }
-      i = localXmlPullParser.next();
-      Object localObject4 = paramString;
-      paramString = localObject1;
-      localObject1 = localObject4;
-      break label913;
-      localFileNotFoundException1.printStackTrace();
-      localBufferedInputStream = null;
-      str2 = paramString;
-      continue;
-      localObject4 = paramString;
-      paramString = localFileNotFoundException1;
-      localObject2 = localObject4;
-      continue;
-      localObject4 = localXmlPullParser.getName();
-      if ("activity".equals(localObject4))
-      {
-        if (paramString == null)
-        {
-          localObject4 = new anol();
-          paramString = (String)localObject2;
-          localObject2 = localObject4;
-        }
-        else
-        {
-          paramString.a();
-          localObject4 = paramString;
-          paramString = (String)localObject2;
-          localObject2 = localObject4;
-        }
-      }
-      else if ("note".equals(localObject4))
-      {
-        localObject4 = new anok();
-        localObject2 = paramString;
-        paramString = (String)localObject4;
-      }
-      else if ("activityid".equals(localObject4))
-      {
-        if (paramString == null) {
-          break label948;
-        }
-        paramString.jdField_a_of_type_JavaLangString = localXmlPullParser.nextText();
-        localObject4 = paramString;
-        paramString = (String)localObject2;
-        localObject2 = localObject4;
-      }
-      else if ("stime".equals(localObject4))
-      {
-        localObject4 = localXmlPullParser.nextText();
-        if (localObject2 == null) {
-          break label948;
-        }
-        ((anok)localObject2).jdField_a_of_type_Long = anok.a((String)localObject4);
-        localObject4 = paramString;
-        paramString = (String)localObject2;
-        localObject2 = localObject4;
-      }
-      else
-      {
-        bool = "content".equals(localObject4);
-        if (bool)
-        {
-          try
-          {
-            localObject6 = localXmlPullParser.nextText();
-            localObject4 = localObject6;
-            if (localObject6 != null) {
-              localObject4 = ((String)localObject6).trim();
-            }
-            if (localObject2 != null) {
-              ((anok)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject4);
-            }
-            localObject4 = paramString;
-            paramString = (String)localObject2;
-            localObject2 = localObject4;
-          }
-          catch (Exception localException1)
-          {
-            localException1.printStackTrace();
-            if (!QLog.isColorLevel()) {
-              break label961;
-            }
-          }
-          axei.a("HotchatSCMng", new Object[] { "parseNotice exception", localException1.toString() });
-          break label961;
-        }
-        else if ("endtime".equals(localException1))
-        {
-          localObject5 = localXmlPullParser.nextText();
-          if (localObject2 == null) {
-            break label948;
-          }
-          ((anok)localObject2).jdField_b_of_type_Long = anok.a((String)localObject5);
-          localObject5 = paramString;
-          paramString = (String)localObject2;
-          localObject2 = localObject5;
-        }
-        else
-        {
-          bool = "url".equals(localObject5);
-          if (!bool) {
-            break label948;
-          }
-          try
-          {
-            localObject6 = localXmlPullParser.nextText();
-            localObject5 = localObject6;
-            if (localObject6 != null) {
-              localObject5 = ((String)localObject6).trim();
-            }
-            if ((localObject5 == null) || (((String)localObject5).startsWith("http://")) || (((String)localObject5).contains("&"))) {
-              break label910;
-            }
-            localObject5 = new String(Base64.decode(((String)localObject5).getBytes(), 0));
-            if (localObject2 != null) {
-              ((anok)localObject2).jdField_b_of_type_JavaLangString = ((String)localObject5);
-            }
-            localObject5 = paramString;
-            paramString = (String)localObject2;
-            localObject2 = localObject5;
-          }
-          catch (Exception localException2)
-          {
-            localException2.printStackTrace();
-            if (!QLog.isColorLevel()) {
-              break label974;
-            }
-          }
-          axei.a("HotchatSCMng", new Object[] { "parseNotice exception", localException2.toString() });
-          break label974;
-          if ("activity".equals(localXmlPullParser.getName()))
-          {
-            if ((paramString == null) || (TextUtils.isEmpty(paramString.jdField_a_of_type_JavaLangString))) {
-              break label948;
-            }
-            localObject6 = (anol)this.jdField_a_of_type_JavaUtilHashMap.get(paramString.jdField_a_of_type_JavaLangString);
-            if (jdField_a_of_type_Boolean)
-            {
-              if (localObject6 != null) {
-                break label1000;
-              }
-              str1 = "null";
-              axei.a("HotchatSCMng", "parse", new Object[] { str1, paramString });
-            }
-            if (localObject6 == null)
-            {
-              this.jdField_a_of_type_JavaUtilHashMap.put(paramString.jdField_a_of_type_JavaLangString, paramString);
-              paramString = null;
-              break label987;
-            }
-            ((anol)localObject6).jdField_a_of_type_Int = -1;
-            ((anol)localObject6).jdField_a_of_type_JavaUtilArrayList.addAll(paramString.jdField_a_of_type_JavaUtilArrayList);
-            paramString.a();
-            break label987;
-          }
-          if ((!"note".equals(localXmlPullParser.getName())) || (localObject2 == null) || (paramString == null)) {
-            break label948;
-          }
-          paramString.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-          localObject2 = paramString;
-          paramString = null;
-        }
-      }
-    }
-    if (localBufferedInputStream != null) {}
-    try
-    {
-      localBufferedInputStream.close();
-      if (str2 == null) {}
-    }
-    catch (Exception paramString)
-    {
-      try
-      {
-        do
-        {
-          str2.close();
-          return;
-          paramString = paramString;
-          paramString.printStackTrace();
-        } while (!QLog.isColorLevel());
-        axei.a("HotchatSCMng", new Object[] { "parseNotice exception", paramString.toString() });
-      }
-      catch (Exception paramString)
-      {
-        do
-        {
-          paramString.printStackTrace();
-        } while (!QLog.isColorLevel());
-        axei.a("HotchatSCMng", new Object[] { "parseNotice exception", paramString.toString() });
-        return;
-      }
-    }
-  }
-  
-  public boolean a(anoi paramanoi, String paramString)
-  {
-    boolean bool1 = false;
-    boolean bool2 = bool1;
-    if (paramanoi != null)
-    {
-      if (TextUtils.isEmpty(paramanoi.jdField_a_of_type_JavaLangString)) {
-        bool2 = bool1;
-      }
-    }
-    else {
-      return bool2;
-    }
-    if (QLog.isColorLevel()) {
-      axei.a("HotchatSCMng", new Object[] { "download", paramanoi });
-    }
-    paramString = new File(paramString + "/" + paramanoi.c);
-    String str;
-    if (paramString.exists()) {
-      if (!TextUtils.isEmpty(paramanoi.jdField_b_of_type_JavaLangString))
-      {
-        str = MD5.getFileMD5(paramString);
-        bool2 = paramanoi.jdField_b_of_type_JavaLangString.equals(str);
-        bool1 = bool2;
-        if (!bool2)
-        {
-          bool1 = bool2;
-          if (QLog.isColorLevel())
-          {
-            axei.a("download", new Object[] { "cache md5 confilict", str, paramanoi.jdField_b_of_type_JavaLangString });
-            bool1 = bool2;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      label167:
-      if (!bool1)
-      {
-        bool2 = HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramanoi.jdField_a_of_type_JavaLangString, paramString);
-        bool1 = bool2;
-        if (bool2)
-        {
-          bool1 = bool2;
-          if (!TextUtils.isEmpty(paramanoi.jdField_b_of_type_JavaLangString))
-          {
-            str = MD5.getFileMD5(paramString);
-            bool2 = paramanoi.jdField_b_of_type_JavaLangString.equals(str);
-            bool1 = bool2;
-            if (!bool2)
-            {
-              bool1 = bool2;
-              if (QLog.isColorLevel())
-              {
-                axei.a("download", new Object[] { "md5 conflict", paramanoi.jdField_b_of_type_JavaLangString, str });
-                bool1 = bool2;
-              }
-            }
-          }
-        }
-      }
-      for (;;)
-      {
-        for (;;)
-        {
-          bool2 = bool1;
-          if (bool1) {
-            break;
-          }
-          bool2 = bool1;
-          try
-          {
-            if (!paramString.exists()) {
-              break;
-            }
-            paramString.delete();
-            return bool1;
-          }
-          catch (Exception paramanoi)
-          {
-            paramanoi.printStackTrace();
-            return bool1;
-          }
-        }
-        bool1 = true;
-        break label167;
-      }
-      bool1 = false;
-    }
-  }
-  
-  public boolean a(anok paramanok)
-  {
-    boolean bool;
-    if ((paramanok == null) || (TextUtils.isEmpty(paramanok.jdField_b_of_type_JavaLangString))) {
-      bool = true;
-    }
+    int j = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0).getInt("game_rec_port", 10060);
+    if (j <= 0) {}
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        axei.a("HotchatSCMng", new Object[] { "checkHasGrabHbTask", paramanok, Boolean.valueOf(bool) });
+        QLog.d("ApolloGameBasicEventUtil", 2, "recom_port:" + i);
       }
-      return bool;
-      PortalManager localPortalManager = (PortalManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(79);
-      if ((localPortalManager != null) && (localPortalManager.b())) {
-        bool = true;
-      } else {
-        bool = false;
-      }
+      return i;
+      i = j;
     }
   }
   
-  public boolean a(ConfigurationService.Config paramConfig)
+  public static String a()
   {
-    if (paramConfig == null) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, "[getRecommendIp]");
     }
-    String str1;
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    String str2 = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0).getString("game_rec_ip", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, "recom_ip:" + str2);
+    }
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2))
     {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      str1 = a();
-      if (str1 == null) {
-        return false;
+      str2 = b();
+      str1 = str2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ApolloGameBasicEventUtil", 2, "random_ip:" + str2);
+        str1 = str2;
       }
     }
-    Object localObject1 = null;
+    return str1;
+  }
+  
+  public static String a(String[] paramArrayOfString)
+  {
+    String str1 = "14.17.42.125";
+    if (paramArrayOfString != null) {}
     for (;;)
     {
       try
       {
-        localObject3 = new File(str1);
-        if (((File)localObject3).exists())
+        int i = paramArrayOfString.length;
+        if (i != 0) {
+          continue;
+        }
+        paramArrayOfString = str1;
+        if (QLog.isColorLevel())
         {
-          localObject4 = ((File)localObject3).list();
-          if ((localObject4 != null) && (localObject4.length > 0)) {
-            localObject3 = new ArrayList(localObject4.length);
+          QLog.d("ApolloGameBasicEventUtil", 2, "[getRandomIp], retIp:" + "14.17.42.125");
+          paramArrayOfString = str1;
+        }
+      }
+      catch (Exception paramArrayOfString)
+      {
+        String str2;
+        QLog.e("ApolloGameBasicEventUtil", 1, "[getRandomIp], errInfo->" + paramArrayOfString.getMessage());
+        return "14.17.42.125";
+      }
+      finally
+      {
+        paramArrayOfString = str1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ApolloGameBasicEventUtil", 2, "[getRandomIp], retIp:" + "14.17.42.125");
+      }
+      return paramArrayOfString;
+      str2 = paramArrayOfString[awxv.a(paramArrayOfString.length)];
+      paramArrayOfString = str2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ApolloGameBasicEventUtil", 2, "[getRandomIp], retIp:" + str2);
+        return str2;
+      }
+    }
+    return "14.17.42.125";
+  }
+  
+  public static JSONObject a(int paramInt, int[] paramArrayOfInt)
+  {
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+      return null;
+    }
+    for (;;)
+    {
+      try
+      {
+        localJSONObject1 = new JSONObject();
+        try
+        {
+          Object localObject = new JSONObject();
+          if (paramInt == 0)
+          {
+            ((JSONObject)localObject).put("atlas", "def/basic/skeleton/role");
+            ((JSONObject)localObject).put("json", "def/basic/skeleton/role");
+            localJSONObject1.put("skltPath", localObject);
+            localObject = new JSONArray();
+            int j = paramArrayOfInt.length;
+            int i = 0;
+            if (i >= j) {
+              continue;
+            }
+            localInteger = Integer.valueOf(paramArrayOfInt[i]);
+            localJSONObject2 = new JSONObject();
+            if (paramInt != 0) {
+              continue;
+            }
+            localJSONObject2.put("atlas", "def/basic/dress/" + localInteger + "/dress");
+            localJSONObject2.put("json", "def/basic/dress/" + localInteger + "/dress");
+            ((JSONArray)localObject).put(localJSONObject2);
+            i += 1;
+            continue;
           }
+          ((JSONObject)localObject).put("atlas", anlk.a(paramInt + "/role", 1));
+          ((JSONObject)localObject).put("json", anlk.a(paramInt + "/role", 1));
+          continue;
+          QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + localException1.getMessage());
+        }
+        catch (Exception localException1)
+        {
+          paramArrayOfInt = localJSONObject1;
         }
       }
       catch (Exception localException2)
       {
-        Object localObject3;
-        Object localObject4;
-        int j;
-        int i;
-        String str2;
-        anoi localanoi;
-        boolean bool3;
-        Object localObject2;
-        continue;
-        if (bool2) {
-          continue;
-        }
-        boolean bool1 = false;
-        continue;
-        boolean bool2 = false;
-        continue;
-        bool2 = true;
+        JSONObject localJSONObject1;
+        Integer localInteger;
+        JSONObject localJSONObject2;
+        paramArrayOfInt = null;
         continue;
       }
+      return paramArrayOfInt;
+      localJSONObject2.put("atlas", anlk.a(localInteger + "/dress", 2));
+      localJSONObject2.put("json", anlk.a(localInteger + "/dress", 2));
+    }
+    localJSONObject1.put("dressPath", localException1);
+    return localJSONObject1;
+  }
+  
+  public static void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt2, String paramString3, anom paramanom)
+  {
+    amsx localamsx = (amsx)paramQQAppInterface.getManager(153);
+    Object localObject = localamsx.b(paramString1);
+    if (localObject != null)
+    {
+      paramInt2 = ((ApolloBaseInfo)localObject).apolloStatus;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameBasicEventUtil", 2, "uin: " + ((ApolloBaseInfo)localObject).uin + ", funcSwitch:" + paramInt2);
+      }
+      localObject = ((ApolloBaseInfo)localObject).getApolloDress(false);
+      int i;
+      if ((localObject != null) && (localObject.length > 0))
+      {
+        int j = localObject.length;
+        paramInt2 = 0;
+        i = 0;
+        if (paramInt2 < j)
+        {
+          amxm localamxm = localObject[paramInt2];
+          i = localamxm.jdField_b_of_type_Int;
+          int[] arrayOfInt = localamxm.a();
+          if ((anlk.a(paramString1, localamxm.jdField_a_of_type_Int, arrayOfInt, paramQQAppInterface, new anok(paramanom, paramInt1, paramQQAppInterface, paramString2, paramString3, localamxm, arrayOfInt))) && (localamxm.jdField_a_of_type_Int != 0))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloGameBasicEventUtil", 2, "valid role and dress RSC.");
+            }
+            if (paramanom != null) {
+              paramanom.a(paramInt1, paramQQAppInterface, paramString1, paramString2, paramString3, localamxm.jdField_a_of_type_Int, arrayOfInt, 3);
+            }
+          }
+        }
+      }
+      label282:
+      label419:
+      label423:
+      for (;;)
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloGameBasicEventUtil", 2, "try to get history dress ....");
+        }
+        paramInt2 += 1;
+        break;
+        if (paramanom != null)
+        {
+          if (i == 2)
+          {
+            paramInt2 = 2;
+            paramanom.a(paramInt1, paramQQAppInterface, paramString1, paramString2, paramString3, paramInt2, aniv.a(paramInt2), 1);
+          }
+        }
+        else
+        {
+          amsx.a(paramQQAppInterface, paramString1, "apllo_game");
+          paramQQAppInterface = (anyw)paramQQAppInterface.getManager(51);
+          if ((paramQQAppInterface == null) || (paramQQAppInterface.b(paramString1))) {
+            continue;
+          }
+          paramQQAppInterface = localamsx.b(paramString1);
+          if (paramQQAppInterface == null) {
+            break label419;
+          }
+        }
+        for (long l = paramQQAppInterface.apolloUpdateTime;; l = 0L)
+        {
+          if (NetConnInfoCenter.getServerTime() - l <= 300L) {
+            break label423;
+          }
+          localamsx.a(paramString1, 2);
+          return;
+          paramInt2 = 1;
+          break;
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloGameBasicEventUtil", 2, "uin: " + paramString1 + " dress is null,try to pull player's dress info.");
+          }
+          amsx.a(paramQQAppInterface, paramString1, "apllo_game");
+          if (paramanom == null) {
+            break label282;
+          }
+          paramanom.a(paramInt1, paramQQAppInterface, paramString1, paramString2, paramString3, 1, aniv.a(1), 1);
+          break label282;
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, "warning: apolloBaseInfo or apolloBaseInfo.apolloDress is NULL, fail to get role info. apolloBaseInfo:" + localObject);
+    }
+    if (paramanom != null) {
+      paramanom.a(paramInt1, paramQQAppInterface, paramString1, paramString2, paramString3, paramInt2, aniv.a(paramInt2), 1);
+    }
+    amsx.a(paramQQAppInterface, paramString1, "apllo_game");
+  }
+  
+  public static void a(int paramInt, String paramString, Activity paramActivity)
+  {
+    if ((paramActivity == null) || (TextUtils.isEmpty(paramString))) {}
+    int i;
+    ansi localansi;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame.sendmsg", 2, new Object[] { "[sendGameShareMsg],json:", paramString });
+      }
+      long l;
       try
       {
-        j = localObject4.length;
-        i = 0;
-        localObject1 = localObject3;
-        if (i < j)
+        paramString = new JSONObject(paramString);
+        i = paramString.optInt("gameMode");
+        l = paramString.optLong("roomId");
+        localansi = new ansi();
+        localObject1 = anbd.a(paramInt);
+        if (localObject1 != null)
         {
-          localObject1 = localObject4[i];
-          if ((localObject1 != null) && (((String)localObject1).length() > 0)) {
-            ((List)localObject3).add(localObject1);
-          }
-          i += 1;
-          continue;
-          localObject1 = null;
-        }
-        localObject3 = new HashSet();
-        if (!paramConfig.content_list.has()) {
-          continue;
-        }
-        localObject4 = paramConfig.content_list.get();
-        if ((localObject4 == null) || (((List)localObject4).size() <= 0)) {
-          continue;
-        }
-        bool1 = true;
-        i = 0;
-      }
-      catch (Exception localException3)
-      {
-        localObject2 = localObject3;
-        localObject3 = localException3;
-        continue;
-        i += 1;
-        continue;
-      }
-      bool2 = bool1;
-      if (i >= ((List)localObject4).size()) {
-        continue;
-      }
-      str2 = (String)((List)localObject4).get(i);
-      if (QLog.isColorLevel()) {
-        QLog.d("SPLASH_ConfigServlet", 2, "receiveAllConfigs|type: 49,content: " + str2 + ",version: " + paramConfig.version.get());
-      }
-      if (str2 == null) {
-        continue;
-      }
-      if (str2.length() != 0) {
-        continue;
-      }
-      continue;
-      ((Exception)localObject3).printStackTrace();
-    }
-    localanoi = anoi.a(str2);
-    if (localanoi != null)
-    {
-      ((Set)localObject3).add(str2);
-      bool3 = a(localanoi, str1);
-      if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
-        ((List)localObject1).remove(localanoi.c);
-      }
-      bool2 = bool3;
-      if (this.b)
-      {
-        a(str1 + "/" + localanoi.c);
-        bool2 = bool3;
-        break label619;
-        if (!QLog.isColorLevel()) {
-          break label636;
-        }
-        QLog.d("SPLASH_ConfigServlet", 2, "receiveAllConfigs|type: 49,content_list is empty ,version: " + paramConfig.version.get());
-        break label636;
-        a((Set)localObject3);
-        if ((localObject1 != null) && (((List)localObject1).size() > 0))
-        {
-          paramConfig = ((List)localObject1).iterator();
-          while (paramConfig.hasNext())
+          localObject1 = ((ande)localObject1).a();
+          if ((localObject1 != null) && (((CmGameStartChecker.StartCheckParam)localObject1).game != null))
           {
-            localObject1 = (String)paramConfig.next();
-            try
-            {
-              new File(str1 + "/" + (String)localObject1).delete();
-            }
-            catch (Exception localException1)
-            {
-              localException1.printStackTrace();
-            }
+            localansi.jdField_b_of_type_Int = ((CmGameStartChecker.StartCheckParam)localObject1).game.actionId;
+            localansi.jdField_b_of_type_JavaLangString = ((CmGameStartChecker.StartCheckParam)localObject1).game.name;
           }
         }
-        if (QLog.isDevelopLevel()) {
-          axei.a("HotchatSCMng", "updateHotChatSceneConfig", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(this.b) });
+        if (localansi.jdField_b_of_type_Int <= 0) {
+          localansi.jdField_b_of_type_Int = 439;
         }
-        return bool2;
+        localansi.jdField_a_of_type_Int = paramInt;
+        localansi.jdField_a_of_type_JavaLangString = anzj.a(2131699283);
+        localansi.jdField_c_of_type_Int = i;
+        localansi.jdField_a_of_type_Long = l;
+        localansi.d = 4;
+        Object localObject2 = paramString.optString("extendInfo");
+        localObject1 = new JSONObject();
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          ((JSONObject)localObject1).put("extendInfo", localObject2);
+        }
+        localObject2 = paramString.optString("summary");
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          ((JSONObject)localObject1).put("summary", localObject2);
+        }
+        localObject2 = paramString.optString("picUrl");
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          ((JSONObject)localObject1).put("picUrl", localObject2);
+        }
+        ((JSONObject)localObject1).put("xyRootSrc", amzf.a(paramInt));
+        i = paramString.optInt("activityId");
+        int j = paramString.optInt("reqCode");
+        localObject2 = anbd.a(paramInt);
+        if (localObject2 != null)
+        {
+          ((ande)localObject2).jdField_b_of_type_Int = i;
+          ((ande)localObject2).jdField_c_of_type_Int = j;
+        }
+        localansi.jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).toString();
+        if (localansi.jdField_c_of_type_JavaLangString.length() >= 500)
+        {
+          QLog.w("cmgame.sendmsg", 1, "extendInfo is too long, len:" + localansi.jdField_c_of_type_JavaLangString.length() + ",content:" + localansi.jdField_c_of_type_JavaLangString);
+          return;
+        }
       }
+      catch (Throwable paramString)
+      {
+        QLog.e("cmgame.sendmsg", 1, paramString, new Object[0]);
+        return;
+      }
+      i = paramString.optInt("isSelectFriend");
+      if (!paramString.has("isSelectFriend")) {
+        i = 1;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame.sendmsg", 2, new Object[] { "isSelectFriend:", Integer.valueOf(i) });
+      }
+      Object localObject1 = andl.a();
+      if ((localObject1 != null) && (((andl)localObject1).a != null) && (0L != l)) {
+        ((andl)localObject1).a.roomId = l;
+      }
+      if (i == 0)
+      {
+        paramString.put("msgType", 4);
+        anct.a("cs.send_game_msg.local", paramString.toString(), true, null, paramInt);
+        return;
+      }
+    } while (1 != i);
+    a(localansi, paramActivity, 3);
+  }
+  
+  public static void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    Object localObject1 = (amsx)paramQQAppInterface.getManager(153);
+    Object localObject2 = amsx.jdField_c_of_type_JavaLangString;
+    localObject1 = amsx.jdField_b_of_type_JavaLangString;
+    paramString = a(((String)localObject2).getBytes(), paramString.getBytes());
+    try
+    {
+      localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("data", paramString.toString());
+      ((JSONObject)localObject2).put("st", localObject1);
+      ApolloCmdChannel.getChannel(paramQQAppInterface).callbackFromRequest(paramLong, 0, "cs.encrypt_data.local", ((JSONObject)localObject2).toString());
+      return;
+    }
+    catch (JSONException paramQQAppInterface)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 2, "doEncrypt fail e:" + paramQQAppInterface.toString());
     }
   }
   
-  public void b(anoj paramanoj)
+  public static void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    if (paramanoj == null) {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString2))) {
+      return;
+    }
+    try
+    {
+      paramString2 = new JSONObject(paramString2).optString("uin");
+      if (!TextUtils.isEmpty(paramString2)) {
+        QLog.i("ApolloGameBasicEventUtil", 1, "pass uin.");
+      }
+      for (;;)
+      {
+        a(paramLong, paramQQAppInterface, paramString2, "", 1, paramString1, new anoh());
+        return;
+        QLog.w("ApolloGameBasicEventUtil", 1, "This branch cann't be reached. If so, something illegal must have been happening.");
+        paramString2 = "";
+      }
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[getUsrDressInfo], errInfo->" + paramQQAppInterface.getMessage());
+    }
+  }
+  
+  public static void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3, anol paramanol)
+  {
+    amsx localamsx = (amsx)paramQQAppInterface.getManager(153);
+    Object localObject = localamsx.b(paramString1);
+    if (localObject != null)
+    {
+      paramInt = ((ApolloBaseInfo)localObject).apolloStatus;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameBasicEventUtil", 2, "uin: " + ((ApolloBaseInfo)localObject).uin + ", funcSwitch:" + paramInt);
+      }
+      localObject = ((ApolloBaseInfo)localObject).getApolloDress(false);
+      int i;
+      if ((localObject != null) && (localObject.length > 0))
+      {
+        int j = localObject.length;
+        paramInt = 0;
+        i = 0;
+        if (paramInt < j)
+        {
+          amxm localamxm = localObject[paramInt];
+          i = localamxm.jdField_b_of_type_Int;
+          int[] arrayOfInt = localamxm.a();
+          if ((anlk.a(paramString1, localamxm.jdField_a_of_type_Int, arrayOfInt, paramQQAppInterface, new anoj(paramanol, paramLong, paramQQAppInterface, paramString2, paramString3, localamxm, arrayOfInt))) && (localamxm.jdField_a_of_type_Int != 0))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloGameBasicEventUtil", 2, "valid role and dress RSC.");
+            }
+            if (paramanol != null) {
+              paramanol.a(paramLong, paramQQAppInterface, paramString1, paramString2, paramString3, localamxm.jdField_a_of_type_Int, arrayOfInt, 3);
+            }
+          }
+        }
+      }
+      label285:
+      label421:
+      label424:
+      for (;;)
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloGameBasicEventUtil", 2, "try to get history dress ....");
+        }
+        paramInt += 1;
+        break;
+        if (paramanol != null)
+        {
+          if (i == 2)
+          {
+            paramInt = 2;
+            paramanol.a(paramLong, paramQQAppInterface, paramString1, paramString2, paramString3, paramInt, aniv.a(paramInt), 1);
+          }
+        }
+        else
+        {
+          amsx.a(paramQQAppInterface, paramString1, "apllo_game");
+          paramQQAppInterface = (anyw)paramQQAppInterface.getManager(51);
+          if ((paramQQAppInterface == null) || (paramQQAppInterface.b(paramString1))) {
+            continue;
+          }
+          paramQQAppInterface = localamsx.b(paramString1);
+          if (paramQQAppInterface == null) {
+            break label421;
+          }
+        }
+        for (paramLong = paramQQAppInterface.apolloUpdateTime;; paramLong = 0L)
+        {
+          if (NetConnInfoCenter.getServerTime() - paramLong <= 300L) {
+            break label424;
+          }
+          localamsx.a(paramString1, 2);
+          return;
+          paramInt = 1;
+          break;
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloGameBasicEventUtil", 2, "uin: " + paramString1 + " dress is null,try to pull player's dress info.");
+          }
+          amsx.a(paramQQAppInterface, paramString1, "apllo_game");
+          if (paramanol == null) {
+            break label285;
+          }
+          paramanol.a(paramLong, paramQQAppInterface, paramString1, paramString2, paramString3, 1, aniv.a(1), 1);
+          break label285;
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, "warning: apolloBaseInfo or apolloBaseInfo.apolloDress is NULL, fail to get role info. apolloBaseInfo:" + localObject);
+    }
+    if (paramanol != null) {
+      paramanol.a(paramLong, paramQQAppInterface, paramString1, paramString2, paramString3, paramInt, aniv.a(paramInt), 1);
+    }
+    amsx.a(paramQQAppInterface, paramString1, "apllo_game");
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, new Object[] { "[openFloatTransparentView] context=", paramContext, ", jsonStr=", paramString });
+    }
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    JSONObject localJSONObject1;
+    try
+    {
+      localJSONObject1 = new JSONObject(paramString);
+      paramString = localJSONObject1.getString("url");
+      if (TextUtils.isEmpty(paramString))
+      {
+        QLog.e("ApolloGameBasicEventUtil", 1, "[openFloatTransparentView] openUrl null");
+        return;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[openFloatTransparentView] exception=", paramContext);
+      return;
+    }
+    Object localObject = paramString;
+    if (localJSONObject1.has("param"))
+    {
+      JSONObject localJSONObject2 = localJSONObject1.getJSONObject("param");
+      localObject = paramString;
+      if (localJSONObject2 != null)
+      {
+        localObject = localJSONObject2.keys();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str = (String)((Iterator)localObject).next();
+          paramString = blhn.a(paramString, str, localJSONObject2.getString(str));
+        }
+      }
+    }
+    for (;;)
+    {
+      int i = localJSONObject1.optInt("closeBtn");
+      int j = localJSONObject1.optInt("fullScreen");
+      paramString = new Intent(paramContext, ApolloFloatActivity.class);
+      paramString.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+      paramString.putExtra("extra_key_click_time", System.currentTimeMillis());
+      paramString.putExtra("extra_key_weburl", (String)localObject);
+      if (i == 1)
+      {
+        bool = true;
+        paramString.putExtra("extra_key_close_btn", bool);
+        if (j != 1) {
+          break label284;
+        }
+      }
+      label284:
+      for (boolean bool = true;; bool = false)
+      {
+        paramString.putExtra("extra_key_fullscreen", bool);
+        paramContext.startActivity(paramString);
+        return;
+        bool = false;
+        break;
+      }
+      localObject = paramString;
+    }
+  }
+  
+  public static void a(ansi paramansi, Activity paramActivity, int paramInt)
+  {
+    if (paramansi == null)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[forwardGameMsg], Fail to forward gameMsg, msgInfo is null.");
+      return;
+    }
+    paramansi.a();
+    Bundle localBundle = new Bundle();
+    Intent localIntent = new Intent();
+    localBundle.putInt("apollo.game.invite.from", paramInt);
+    localBundle.putInt("forward.apollo.gameid", paramansi.jdField_a_of_type_Int);
+    localBundle.putInt("forward.apollo.gameMode", paramansi.jdField_c_of_type_Int);
+    localBundle.putInt("forward_type", 34);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, "[forwardGameMsg] gameId:" + paramansi.jdField_a_of_type_Int + ";fromtype:" + paramInt);
+    }
+    if (paramInt == 2)
+    {
+      localIntent.putExtras(localBundle);
+      auxu.a(paramActivity, localIntent, 99999);
+      return;
+    }
+    localBundle.putInt("forward.apollo.actionid", paramansi.jdField_b_of_type_Int);
+    localBundle.putLong("forward.apollo.roomid", paramansi.jdField_a_of_type_Long);
+    localBundle.putString("forward.apollo.gamename", paramansi.jdField_b_of_type_JavaLangString);
+    localBundle.putString("forward.apollo.actionname", paramansi.jdField_a_of_type_JavaLangString);
+    localBundle.putInt("forward.apollo.msgtype", paramansi.d);
+    localBundle.putString("forward.apollo.sharejson", paramansi.jdField_c_of_type_JavaLangString);
+    localIntent.putExtras(localBundle);
+    auxu.a(paramActivity, localIntent, 20180426);
+  }
+  
+  public static void a(AppInterface paramAppInterface, String paramString)
+  {
+    int j = 0;
+    if ((paramAppInterface == null) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    paramAppInterface = "";
+    for (;;)
+    {
+      try
+      {
+        localObject = new JSONObject(paramString);
+        if (!((JSONObject)localObject).has("enter")) {
+          break label360;
+        }
+        i = ((JSONObject)localObject).getInt("enter");
+        if (((JSONObject)localObject).has("result")) {
+          j = ((JSONObject)localObject).getInt("result");
+        }
+        if (((JSONObject)localObject).has("actionName")) {
+          paramAppInterface = ((JSONObject)localObject).getString("actionName");
+        }
+        if (!((JSONObject)localObject).has("r2")) {
+          break label354;
+        }
+        paramString = ((JSONObject)localObject).getString("r2");
+        if (!((JSONObject)localObject).has("r3")) {
+          break label347;
+        }
+        str1 = ((JSONObject)localObject).getString("r3");
+        if (!((JSONObject)localObject).has("r4")) {
+          break label340;
+        }
+        str2 = ((JSONObject)localObject).getString("r4");
+        if (((JSONObject)localObject).has("r5"))
+        {
+          localObject = ((JSONObject)localObject).getString("r5");
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloGameBasicEventUtil", 2, "[reportData2Compass],entry:" + i + ",result:" + j + ",actionName:" + paramAppInterface + ",r2:" + paramString + ",r3:" + str1 + ",r4:" + str2 + ",r5:" + (String)localObject);
+          }
+          VipUtils.a(null, "cmshow", "Apollo", paramAppInterface, i, j, new String[] { paramString, str1, str2, localObject });
+          return;
+        }
+      }
+      catch (Exception paramAppInterface)
+      {
+        QLog.e("ApolloGameBasicEventUtil", 1, "[reportData2Compass], errInfo->" + paramAppInterface.getMessage());
+        return;
+      }
+      Object localObject = "";
+      continue;
+      label340:
+      String str2 = "";
+      continue;
+      label347:
+      String str1 = "";
+      continue;
+      label354:
+      paramString = "";
+      continue;
+      label360:
+      int i = 0;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    int i = 0;
+    try
+    {
+      SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0);
+      paramString = new JSONObject(paramString);
+      paramQQAppInterface = "";
+      if (paramString.has("ip")) {
+        paramQQAppInterface = paramString.getString("ip");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameBasicEventUtil", 2, "[saveRecommendIp], ip:" + paramQQAppInterface);
+      }
+      if (TextUtils.isEmpty(paramQQAppInterface)) {
+        return;
+      }
+      localSharedPreferences.edit().putString("game_rec_ip", paramQQAppInterface).commit();
+      if (paramString.has("port")) {
+        i = paramString.getInt("port");
+      }
+      localSharedPreferences.edit().putInt("game_rec_port", i).commit();
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[saveRecommendIp], errInfo->" + paramQQAppInterface.getMessage());
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, Activity paramActivity)
+  {
+    if ((paramActivity == null) || (paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
+    while (System.currentTimeMillis() - jdField_a_of_type_Long <= 1000L) {
+      return;
+    }
+    jdField_a_of_type_Long = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame.sendmsg", 2, new Object[] { "[sendCmGameMsg],jsonParam:", paramString });
+    }
+    label427:
+    label436:
+    label446:
+    label499:
+    for (;;)
+    {
+      JSONObject localJSONObject;
+      ansi localansi;
+      try
+      {
+        Object localObject = (annx)paramQQAppInterface.getManager(155);
+        localJSONObject = new JSONObject(paramString);
+        int j = localJSONObject.optInt("gameMode");
+        int k = localJSONObject.optInt("gameId");
+        long l = localJSONObject.optLong("roomId");
+        localansi = new ansi();
+        ApolloGameData localApolloGameData = ((annx)localObject).a(k);
+        paramString = anzj.a(2131699265);
+        if ((localApolloGameData != null) && (!TextUtils.isEmpty(localApolloGameData.name)))
+        {
+          localObject = ((annx)localObject).a(localApolloGameData.actionId);
+          if (localObject == null) {
+            break label499;
+          }
+          paramString = ((ApolloActionData)localObject).actionName;
+          i = localApolloGameData.actionId;
+          localansi.jdField_b_of_type_JavaLangString = localApolloGameData.name;
+          if (0L == l) {
+            QLog.w("cmgame.sendmsg", 1, "[sendCmGameMsg] roomId is invalid. gameId:" + k + ",gameMode:" + j);
+          }
+          localansi.jdField_a_of_type_JavaLangString = paramString;
+          localansi.jdField_b_of_type_Int = i;
+          localansi.jdField_c_of_type_Int = j;
+          localansi.jdField_a_of_type_Long = l;
+          localansi.jdField_a_of_type_Int = k;
+          i = localJSONObject.optInt("msgType");
+          if (i == 0) {
+            break label427;
+          }
+          localansi.d = i;
+          paramString = andl.a();
+          if ((paramString != null) && (paramString.a != null) && (0L != l)) {
+            paramString.a.roomId = l;
+          }
+          paramString = localJSONObject.optString("extendInfo");
+          localJSONObject = new JSONObject();
+          if (TextUtils.isEmpty(paramString)) {
+            break label446;
+          }
+          localJSONObject.put("extendInfo", paramString);
+          if (paramString.length() < 500) {
+            break label436;
+          }
+          QLog.w("cmgame.sendmsg", 1, "[sendCmGameMsg],extendInfo is too long, extendInfo:" + paramString);
+          return;
+        }
+      }
+      catch (Throwable paramQQAppInterface)
+      {
+        QLog.e("cmgame.sendmsg", 1, paramQQAppInterface, new Object[0]);
+        return;
+      }
+      localansi.jdField_b_of_type_JavaLangString = anzj.a(2131699284);
+      int i = 0;
+      continue;
+      localansi.d = 3;
+      continue;
+      localansi.jdField_c_of_type_JavaLangString = localJSONObject.toString();
+      paramString = ((FragmentActivity)paramActivity).getChatFragment().a();
+      if ((paramString == null) || (paramString.h() >= 7))
+      {
+        QLog.i("cmgame.sendmsg", 1, "aio is closed, choose a friend to send msg.");
+        a(localansi, paramActivity, 3);
+        return;
+      }
+      ApolloGameUtil.a(paramQQAppInterface, localansi, paramString.a());
+      return;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString2))) {
       return;
     }
     for (;;)
     {
-      int i;
-      synchronized (this.jdField_a_of_type_JavaUtilList)
+      try
       {
-        if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+        JSONObject localJSONObject = new JSONObject(paramString2);
+        paramString2 = localJSONObject.optString("uin");
+        String str = localJSONObject.optString("openId");
+        int i = localJSONObject.optInt("gameId");
+        if (!TextUtils.isEmpty(paramString2))
         {
-          i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-          if (i >= 0)
-          {
-            WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilList.get(i);
-            if ((localWeakReference == null) || (localWeakReference.get() != paramanoj)) {
-              break label91;
-            }
-            this.jdField_a_of_type_JavaUtilList.remove(i);
-            break label91;
-          }
+          QLog.i("ApolloGameBasicEventUtil", 1, "pass uin.");
+          a(paramInt, paramQQAppInterface, paramString2, str, 1, paramString1, new anoi(i));
+          return;
         }
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        QLog.e("ApolloGameBasicEventUtil", 1, "[getUsrDressInfo], errInfo->" + paramQQAppInterface.getMessage());
         return;
       }
-      label91:
-      i -= 1;
+      paramString2 = "";
     }
   }
   
-  public void onDestroy()
+  public static void a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, new Object[] { "[sendEventToPage] jsonStr=", paramString });
+    }
+    Intent localIntent = new Intent("action_apollo_game_event_notify");
+    if (!TextUtils.isEmpty(paramString)) {
+      localIntent.putExtra("data", paramString);
+    }
+    try
+    {
+      localIntent.setPackage(BaseApplicationImpl.getContext().getPackageName());
+      BaseApplicationImpl.getContext().sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, paramString, new Object[] { "[sendEventToPage] failed to send cast" });
+    }
+  }
+  
+  public static boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, new Object[] { "[openWebViewWithoutUrl] context=", paramContext, ", jsonStr=", paramString, "gameId:", Integer.valueOf(paramInt1), ",taskId:", Integer.valueOf(paramInt2) });
+    }
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
+      return false;
+    }
+    for (;;)
+    {
+      int i;
+      Intent localIntent;
+      ande localande;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        i = paramString.optInt("businessType");
+        localIntent = new Intent(paramContext, ApolloFloatActivity.class);
+        localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+        localande = anbd.a();
+        if ((localande == null) || (localande.a() == null)) {
+          break label724;
+        }
+        if (localande.a().game != null) {
+          break label726;
+        }
+      }
+      catch (Throwable paramContext)
+      {
+        QLog.e("ApolloGameBasicEventUtil", 1, paramContext, new Object[] { "[openWebViewWithoutUrl]" });
+        return false;
+      }
+      QLog.e("ApolloGameBasicEventUtil", 1, new Object[] { "[openWebViewWithoutUrl] not bustype", Integer.valueOf(i) });
+      localIntent.putExtra("game_busid", "Android.H5");
+      if ((paramContext instanceof Activity)) {
+        ((Activity)paramContext).startActivityForResult(localIntent, 9999);
+      }
+      paramInt2 = paramString.optInt("gameOrientation");
+      paramInt1 = paramInt2;
+      if (paramInt2 == 0) {
+        paramInt1 = 1;
+      }
+      if (paramInt1 == 2)
+      {
+        ApolloUtil.a(paramContext, 0, 0);
+        break;
+        int j = paramString.optInt("gameOrientation");
+        i = j;
+        if (j == 0) {
+          i = 1;
+        }
+        String str = String.format("https://cmshow.qq.com/apollo/html/game-platform/buy-props.html?_wv=3&adtag=inside_game&gameId=%s&gameOrientation=%s&itemList=%s", new Object[] { Integer.valueOf(localande.a()), Integer.valueOf(i), URLEncoder.encode(paramString.optString("itemList"), "UTF-8") });
+        localIntent.putExtra("extra_key_weburl", str);
+        localIntent.putExtra("url", str);
+        localIntent.putExtra("extra_key_transparent", paramString.optInt("transparent"));
+        localIntent.putExtra("extra_key_fullscreen", true);
+        localIntent.putExtra("extra_key_close_btn", true);
+        localIntent.putExtra("extra_key_entratation", i);
+        localIntent.putExtra("extra_key_from", 1);
+        localIntent.putExtra("extra_key_gameid", paramInt1);
+        localIntent.putExtra("extra_key_taskid", paramInt2);
+        VipUtils.a(null, "cmshow", "Apollo", "open_webpage", 0, 0, new String[] { localande.a().mGameName });
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ApolloGameBasicEventUtil", 2, new Object[] { "[openWebViewWithoutUrl] url ", str });
+          continue;
+          str = paramString.optString("url");
+          if ((TextUtils.isEmpty(str)) || (!URLUtil.isNetworkUrl(str)))
+          {
+            QLog.e("ApolloGameBasicEventUtil", 1, "[openWebViewWithoutUrl] ill url " + str);
+            return false;
+          }
+          j = paramString.optInt("gameOrientation");
+          i = j;
+          if (j == 0) {
+            i = 1;
+          }
+          localIntent.putExtra("url", str);
+          localIntent.putExtra("extra_key_weburl", str);
+          localIntent.putExtra("extra_key_transparent", paramString.optInt("transparent"));
+          localIntent.putExtra("extra_key_fullscreen", true);
+          localIntent.putExtra("extra_key_close_btn", false);
+          localIntent.putExtra("extra_key_entratation", i);
+          localIntent.putExtra("extra_key_from", 1);
+          localIntent.putExtra("extra_key_gameid", paramInt1);
+          localIntent.putExtra("extra_key_taskid", paramInt2);
+          localIntent.addFlags(65536);
+          VipUtils.a(null, "cmshow", "Apollo", "open_webpage", 1, 0, new String[] { localande.a().mGameName });
+        }
+      }
+      else
+      {
+        if (paramInt1 == 3)
+        {
+          ApolloUtil.a(paramContext, 4, 4);
+          break;
+        }
+        ApolloUtil.a(paramContext, 1, 1);
+        break;
+        label724:
+        return false;
+        label726:
+        switch (i)
+        {
+        }
+      }
+    }
+    return true;
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    return new Cryptor().encrypt(paramArrayOfByte2, paramArrayOfByte1);
+  }
+  
+  public static int b()
+  {
+    switch (HwNetworkUtil.getCarrierOperatorType(BaseApplicationImpl.getContext()))
+    {
+    default: 
+      return 0;
+    case 2: 
+      return 3;
+    case 3: 
+      return 2;
+    }
+    return 1;
+  }
+  
+  private static String b()
+  {
+    String str = ((TelephonyManager)BaseApplicationImpl.getContext().getSystemService("phone")).getNetworkOperatorName();
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, "[selectProperSvrAddr], opratorName:" + str);
+    }
+    if (!TextUtils.isEmpty(str))
+    {
+      if ((anzj.a(2131699292).equals(str)) || (str.contains(anzj.a(2131699277)))) {
+        return a(b);
+      }
+      if ((anzj.a(2131699290).equals(str)) || (str.contains(anzj.a(2131699251)))) {
+        return a(c);
+      }
+      if ((anzj.a(2131699263).equals(str)) || (str.contains(anzj.a(2131699257)))) {
+        return a(jdField_a_of_type_ArrayOfJavaLangString);
+      }
+      return a(b);
+    }
+    return a(b);
+  }
+  
+  public static void b(long paramLong, QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    paramString = b(amsx.jdField_c_of_type_JavaLangString.getBytes(), paramString.getBytes());
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("data", paramString.toString());
+      ApolloCmdChannel.getChannel(paramQQAppInterface).callbackFromRequest(paramLong, 0, "cs.decrypt_data.local", localJSONObject.toString());
+      return;
+    }
+    catch (JSONException paramQQAppInterface)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 2, "doEncrypt fail e:" + paramQQAppInterface.toString());
+    }
+  }
+  
+  public static void b(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString2))) {
+      return;
+    }
+    paramString2 = b();
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("ip", paramString2);
+      localJSONObject.put("port", 10060);
+      ApolloCmdChannel.getChannel(paramQQAppInterface).callbackFromRequest(paramLong, 0, paramString1, localJSONObject.toString());
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[getSvrIpPort], errInfo->" + paramQQAppInterface.getMessage());
+    }
+  }
+  
+  public static void b(Context paramContext, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, new Object[] { "[openWebView] context=", paramContext, ", jsonStr=", paramString });
+    }
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    JSONObject localJSONObject;
+    try
+    {
+      localJSONObject = new JSONObject(paramString);
+      paramString = localJSONObject.getString("url");
+      if (TextUtils.isEmpty(paramString))
+      {
+        QLog.e("ApolloGameBasicEventUtil", 1, "[openWebView] openUrl null");
+        return;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[openWebView] exception=", paramContext);
+      return;
+    }
+    String str = paramString;
+    if (localJSONObject.has("param"))
+    {
+      localJSONObject = localJSONObject.getJSONObject("param");
+      str = paramString;
+      if (localJSONObject != null)
+      {
+        Iterator localIterator = localJSONObject.keys();
+        for (;;)
+        {
+          str = paramString;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          str = (String)localIterator.next();
+          paramString = blhn.a(paramString, str, localJSONObject.getString(str));
+        }
+      }
+    }
+    paramString = new Intent(paramContext, QQBrowserActivity.class);
+    paramString.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+    VasWebviewUtil.openQQBrowserActivity(paramContext, str, -1L, paramString, false, -1);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    int i = 0;
+    long l1 = 0L;
+    long l2 = 0L;
+    long l3 = 0L;
+    long l4 = 0L;
+    boolean bool = false;
+    String str4 = "";
+    String str1 = "";
+    String str2 = "";
+    String str3 = "";
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramString);
+      if (localJSONObject.has("tvalue")) {
+        i = localJSONObject.getInt("tvalue");
+      }
+      if (localJSONObject.has("uintp1")) {
+        l1 = localJSONObject.getLong("uintp1");
+      }
+      if (localJSONObject.has("uintp2")) {
+        l2 = localJSONObject.getLong("uintp2");
+      }
+      if (localJSONObject.has("uintp3")) {
+        l3 = localJSONObject.getLong("uintp3");
+      }
+      if (localJSONObject.has("uintp4")) {
+        l4 = localJSONObject.getLong("uintp4");
+      }
+      if (localJSONObject.has("isNeedMac")) {
+        bool = localJSONObject.getBoolean("isNeedMac");
+      }
+      paramString = str4;
+      if (localJSONObject.has("puin")) {
+        paramString = localJSONObject.getString("puin");
+      }
+      if (localJSONObject.has("strp1")) {
+        str1 = localJSONObject.getString("strp1");
+      }
+      if (localJSONObject.has("strp2")) {
+        str2 = localJSONObject.getString("strp2");
+      }
+      if (localJSONObject.has("strp3")) {
+        str3 = localJSONObject.getString("strp3");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameBasicEventUtil", 2, "[reportData2BackStage],tValue:" + i + ",uintp1:" + l1 + ",uintp2:" + l2 + ",uintp3:" + l3 + ",uintp4:" + l4 + ",isNeedMac:" + bool + ",puin:" + paramString + ",strp1:" + str1 + ",strp2:" + str2 + ",strp3:" + str3);
+      }
+      ((ofe)paramQQAppInterface.a(88)).a(i, paramString, str1, str2, str3, l1, l2, l3, l4, bool);
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[reportData2BackStage], errInfo->" + paramQQAppInterface.getMessage());
+    }
+  }
+  
+  public static byte[] b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    return new Cryptor().decrypt(paramArrayOfByte2, paramArrayOfByte1);
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    String str = paramQQAppInterface.getAccount();
+    int j = bhnv.b(paramQQAppInterface.getApp());
+    long l1 = 0L;
+    label199:
+    label204:
+    label210:
+    for (;;)
+    {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (!paramString.has("isUp")) {
+          break label204;
+        }
+        if (paramString.getInt("isUp") == 1)
+        {
+          bool = true;
+          break label210;
+          if (paramString.has("byteSize")) {
+            l1 = paramString.getLong("byteSize");
+          }
+          if (!paramString.has("aioType")) {
+            break label199;
+          }
+          i = paramString.getInt("aioType");
+          long l2 = System.currentTimeMillis();
+          paramQQAppInterface.sendAppDataIncerment(str, bool, j, 0, i, l1);
+          l1 = System.currentTimeMillis();
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("ApolloGameBasicEventUtil", 2, "flowReport cost:" + (l1 - l2));
+          return;
+        }
+        bool = false;
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        QLog.e("ApolloGameBasicEventUtil", 1, "[reportFlowData], errInfo->" + paramQQAppInterface.getMessage());
+        return;
+      }
+      int i = 0;
+      continue;
+      boolean bool = false;
+    }
   }
 }
 

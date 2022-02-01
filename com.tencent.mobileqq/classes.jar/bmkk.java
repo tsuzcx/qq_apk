@@ -1,23 +1,12 @@
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.video.QzoneLiveVideoInterface;
+import android.os.Bundle;
+import android.os.IInterface;
 
-public final class bmkk
-  implements bmec
+public abstract interface bmkk
+  extends IInterface
 {
-  public bmkk(String paramString) {}
+  public abstract Bundle a(String paramString, Bundle paramBundle);
   
-  public void a(bmcj parambmcj)
-  {
-    if (parambmcj == null) {
-      bmea.a(QzoneLiveVideoInterface.getContext(), this);
-    }
-    do
-    {
-      return;
-      parambmcj = parambmcj.a(this.a);
-    } while (parambmcj == null);
-    QzoneLiveVideoInterface.access$002(parambmcj.ver);
-  }
+  public abstract void a(String paramString, Bundle paramBundle);
 }
 
 

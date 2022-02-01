@@ -1,99 +1,260 @@
+import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bdsf
-  extends bdvl
+  extends bdom
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  private final int s = 16;
+  
+  private LinearLayout.LayoutParams a(Resources paramResources, boolean paramBoolean)
   {
-    URL localURL = paramDownloadParams.url;
-    String str = paramDownloadParams.urlStr;
-    paramDownloadParams.url = new URL(paramDownloadParams.url.getFile());
-    paramDownloadParams.urlStr = paramDownloadParams.url.toString();
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AIOFlowerImgDownloader", 4, paramDownloadParams.urlStr);
+    if (paramBoolean) {}
+    for (int i = 50;; i = 58) {
+      return new LinearLayout.LayoutParams(agej.a(i, paramResources), agej.a(i, paramResources));
     }
-    paramOutputStream = super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
-    paramDownloadParams.url = localURL;
-    paramDownloadParams.urlStr = str;
-    return paramOutputStream;
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  private LinearLayout a(Context paramContext)
   {
-    Canvas localCanvas = null;
-    paramURLDrawableHandler = null;
-    paramDownloadParams = new BitmapFactory.Options();
-    paramDownloadParams.inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramDownloadParams);
-    float f = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density;
-    paramDownloadParams.inSampleSize = ((int)Math.min(paramDownloadParams.outWidth / (115.0F * f + 0.5F), paramDownloadParams.outHeight / (f * 105.0F + 0.5F)));
-    paramDownloadParams.inJustDecodeBounds = false;
-    label234:
+    Resources localResources = paramContext.getResources();
+    paramContext = new LinearLayout(paramContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    a(paramContext);
+    d(paramContext);
+    int k = localResources.getDimensionPixelSize(2131298913);
+    int m = localResources.getDimensionPixelSize(2131298914);
+    int i;
+    if (a(1))
+    {
+      i = agej.a(15.0F, localResources);
+      if (!a(2)) {
+        break label121;
+      }
+    }
+    label121:
+    for (int j = agej.a(15.0F, localResources);; j = agej.a(6.0F, localResources))
+    {
+      paramContext.setPadding(k, i, m, j);
+      paramContext.setLayoutParams(localLayoutParams);
+      paramContext.setOrientation(0);
+      return paramContext;
+      i = agej.a(6.0F, localResources);
+      break;
+    }
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 2) {}
+    int k;
+    int j;
     do
     {
-      int i;
-      int j;
-      try
+      return;
+      k = -1;
+      j = -1;
+      int i = 0;
+      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        paramDownloadParams = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramDownloadParams);
-        if (paramDownloadParams == null) {
-          return paramURLDrawableHandler;
+        localbdol = (bdol)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        int m;
+        if ("title".equals(localbdol.jdField_a_of_type_JavaLangString)) {
+          m = i;
         }
-      }
-      catch (OutOfMemoryError paramFile)
-      {
         for (;;)
         {
-          paramDownloadParams = null;
+          i += 1;
+          j = m;
+          break;
+          m = j;
+          if ("picture".equals(localbdol.jdField_a_of_type_JavaLangString))
+          {
+            k = i;
+            m = j;
+          }
         }
-        i = paramDownloadParams.getWidth();
-        j = paramDownloadParams.getHeight();
-        paramFile = localCanvas;
       }
+    } while ((j < 0) || (k < 0) || (j >= k));
+    bdol localbdol = (bdol)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+    this.jdField_a_of_type_JavaUtilArrayList.set(j, this.jdField_a_of_type_JavaUtilArrayList.get(k));
+    this.jdField_a_of_type_JavaUtilArrayList.set(k, localbdol);
+  }
+  
+  protected int b()
+  {
+    return 4;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    boolean bool = paramBundle.getBoolean("NAIOSub", false);
+    int j;
+    Object localObject2;
+    Object localObject3;
+    label79:
+    Object localObject1;
+    Object localObject4;
+    if (paramBundle.getInt("accostType") == AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA)
+    {
+      j = 1;
+      if ((paramView == null) || (!(paramView instanceof LinearLayout)) || (((LinearLayout)paramView).getChildCount() != this.jdField_a_of_type_JavaUtilArrayList.size())) {
+        break label281;
+      }
+      localObject2 = (LinearLayout)paramView;
+      if (j != 0) {
+        a();
+      }
+      localObject3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      j = 0;
+      localObject1 = localObject2;
+      if (!((Iterator)localObject3).hasNext()) {
+        break label800;
+      }
+      localObject1 = (bdol)((Iterator)localObject3).next();
+      ((bdol)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      localObject4 = ((bdol)localObject1).jdField_a_of_type_JavaLangString;
+      if (("title".equals(localObject4)) || ("picture".equals(localObject4)) || ("video".equals(localObject4)))
+      {
+        ((bdol)localObject1).a(paramContext, ((LinearLayout)localObject2).getChildAt(j), paramBundle);
+        if ((localObject1 instanceof StructMsgItemTitle))
+        {
+          ((StructMsgItemTitle)localObject1).a(a(), this.p);
+          if ((((StructMsgItemTitle)localObject1).c() == null) || (((StructMsgItemTitle)localObject1).c().equals(""))) {
+            break label809;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
       try
       {
-        paramURLDrawableHandler = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-        paramFile = paramURLDrawableHandler;
-        paramURLDrawableHandler.setDensity(160);
-        paramFile = paramURLDrawableHandler;
-        localCanvas = new Canvas(paramURLDrawableHandler);
-        paramFile = paramURLDrawableHandler;
-        Paint localPaint = new Paint(1);
-        paramFile = paramURLDrawableHandler;
-        localPaint.setColor(-16777216);
-        paramFile = paramURLDrawableHandler;
-        BaseApplicationImpl.getApplication();
-        paramFile = paramURLDrawableHandler;
-        Rect localRect = new Rect(0, 0, i, j - (int)(5.0F * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density));
-        paramFile = paramURLDrawableHandler;
-        localCanvas.drawBitmap(paramDownloadParams, localRect, new RectF(localRect), localPaint);
-        paramFile = paramURLDrawableHandler;
+        i = Integer.parseInt(((StructMsgItemTitle)localObject1).c()) / 2;
+        localObject1 = (TextView)paramView.findViewById(2131380141);
+        if (localObject1 != null) {
+          ((TextView)localObject1).setTextSize(2, i);
+        }
+        j += 1;
+        break label79;
+        j = 0;
       }
-      catch (OutOfMemoryError paramURLDrawableHandler)
+      catch (Exception localException1)
       {
-        break label234;
+        i = 16;
+        continue;
       }
-      paramURLDrawableHandler = paramFile;
-    } while (paramDownloadParams.isRecycled());
-    paramDownloadParams.recycle();
-    return paramFile;
+      label281:
+      paramView = paramContext.getResources();
+      LinearLayout localLinearLayout = a(paramContext);
+      if (j != 0)
+      {
+        i = localLinearLayout.getPaddingTop();
+        int k = localLinearLayout.getPaddingBottom();
+        localLinearLayout.setPadding(paramView.getDimensionPixelSize(2131296393), i, paramView.getDimensionPixelOffset(2131296394), k);
+        a();
+      }
+      localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (((Iterator)localObject2).hasNext())
+      {
+        localObject4 = (bdol)((Iterator)localObject2).next();
+        ((bdol)localObject4).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+        localObject3 = ((bdol)localObject4).jdField_a_of_type_JavaLangString;
+        if ("title".equals(localObject3))
+        {
+          localObject3 = ((bdol)localObject4).a(paramContext, null, paramBundle);
+          if (((localObject3 instanceof TextView)) && (!TextUtils.isEmpty(((TextView)localObject3).getText()))) {
+            localLinearLayout.setContentDescription(((TextView)localObject3).getText());
+          }
+          if (!(localObject4 instanceof StructMsgItemTitle)) {
+            break label803;
+          }
+          ((StructMsgItemTitle)localObject4).a(a(), this.p);
+          if ((((StructMsgItemTitle)localObject4).c() == null) || (((StructMsgItemTitle)localObject4).c().equals(""))) {
+            break label803;
+          }
+        }
+      }
+      for (;;)
+      {
+        try
+        {
+          i = Integer.parseInt(((StructMsgItemTitle)localObject4).c()) / 2;
+          localObject4 = new LinearLayout.LayoutParams(-1, -2);
+          ((LinearLayout.LayoutParams)localObject4).gravity = 16;
+          ((LinearLayout.LayoutParams)localObject4).weight = 1.0F;
+          if (localLinearLayout.getChildCount() == 0)
+          {
+            ((LinearLayout.LayoutParams)localObject4).leftMargin = 0;
+            ((LinearLayout.LayoutParams)localObject4).rightMargin = agej.a(15.0F, paramView);
+            localTextView = (TextView)((View)localObject3).findViewById(2131380141);
+            if (localTextView != null)
+            {
+              localTextView.setEllipsize(TextUtils.TruncateAt.END);
+              if (i == 0) {
+                continue;
+              }
+              localTextView.setTextSize(2, i);
+            }
+            localLinearLayout.addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
+          }
+        }
+        catch (Exception localException2)
+        {
+          TextView localTextView;
+          i = 0;
+          continue;
+          localException2.leftMargin = agej.a(15.0F, paramView);
+          localException2.rightMargin = 0;
+          if (j == 0) {
+            continue;
+          }
+          localException2.leftMargin = agej.a(10.0F, paramView);
+          ((TextView)localObject3).setLineSpacing(agej.a(2.5F, paramView), 1.0F);
+          ((TextView)localObject3).setMaxLines(2);
+          continue;
+          localTextView.setTextSize(2, 16.0F);
+          continue;
+        }
+        if (("picture".equals(localObject3)) || ("video".equals(localObject3)))
+        {
+          localLinearLayout.addView(localException2.a(paramContext, null, paramBundle), a(paramView, bool));
+          break;
+        }
+        if (!"hr".equals(localObject3)) {
+          break;
+        }
+        localObject3 = localException2.a(paramContext, null, paramBundle);
+        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, 1);
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() == 1) {
+          localLinearLayout.setPadding(localLinearLayout.getPaddingLeft(), 0, localLinearLayout.getPaddingRight(), 0);
+        }
+        localLinearLayout.addView((View)localObject3, localLayoutParams);
+        break;
+        label800:
+        return localLinearLayout;
+        label803:
+        i = 0;
+      }
+      label809:
+      int i = 16;
+    }
+  }
+  
+  public String b()
+  {
+    return "Layout4";
   }
 }
 

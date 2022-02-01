@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import alrw;
-import alrx;
-import alry;
-import alth;
+import amdo;
+import amdp;
+import amdq;
+import amez;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,7 +20,7 @@ public class FriendTabView
   extends TroopDiscussionBaseV
   implements View.OnClickListener
 {
-  private alth jdField_a_of_type_Alth;
+  private amez jdField_a_of_type_Amez;
   private PinnedFooterExpandableListView jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView;
   public boolean a;
   boolean b = false;
@@ -58,8 +58,8 @@ public class FriendTabView
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    a(2131560404);
-    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView = ((PinnedFooterExpandableListView)findViewById(2131366114));
+    a(2131560419);
+    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView = ((PinnedFooterExpandableListView)findViewById(2131366163));
     this.jdField_a_of_type_Boolean = false;
     if (QLog.isColorLevel()) {
       QLog.d("FriendTabView", 2, "firstUserClicked is " + this.jdField_a_of_type_Boolean);
@@ -69,16 +69,16 @@ public class FriendTabView
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setListener(new alrw(this));
-      paramBundle = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2131562996, null);
+      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setListener(new amdo(this));
+      paramBundle = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2131563031, null);
       this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.addHeaderView(paramBundle);
-      paramBundle.findViewById(2131363949).setOnClickListener(new alrx(this));
+      paramBundle.findViewById(2131363973).setOnClickListener(new amdp(this));
       QLog.d("FriendTabView", 2, "----->onCreate");
-      this.jdField_a_of_type_Alth = new alth(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView, new alry(this), true);
-      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setAdapter(this.jdField_a_of_type_Alth);
-      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setSelector(2131167224);
-      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setGroupIndicator(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getResources().getDrawable(2130839482));
-      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setOnScrollListener(this.jdField_a_of_type_Alth);
+      this.jdField_a_of_type_Amez = new amez(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView, new amdq(this), true);
+      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setAdapter(this.jdField_a_of_type_Amez);
+      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setSelector(2131167247);
+      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setGroupIndicator(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getResources().getDrawable(2130839490));
+      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setOnScrollListener(this.jdField_a_of_type_Amez);
       paramBundle = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
       if ((paramBundle != null) && (!paramBundle.d()) && (paramBundle.d() == 8)) {}
       return;
@@ -89,8 +89,8 @@ public class FriendTabView
   public void b()
   {
     super.b();
-    if (this.jdField_a_of_type_Alth != null) {
-      this.jdField_a_of_type_Alth.b();
+    if (this.jdField_a_of_type_Amez != null) {
+      this.jdField_a_of_type_Amez.b();
     }
   }
   
@@ -102,8 +102,8 @@ public class FriendTabView
   
   public void c()
   {
-    if (this.jdField_a_of_type_Alth != null) {
-      this.jdField_a_of_type_Alth.a();
+    if (this.jdField_a_of_type_Amez != null) {
+      this.jdField_a_of_type_Amez.a();
     }
   }
   

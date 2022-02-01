@@ -1,11 +1,14 @@
-import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 
-public class kzq
-  extends kzt
+class kzq
+  extends Handler
 {
-  public static void a(Context paramContext, kzi paramkzi)
+  kzq(kzp paramkzp) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    a().a(paramContext, "https://passport.imqq.com/App/MobileQQ/ChangeTrans.html", null, null, new kzr(paramkzi));
+    this.a.a(paramMessage);
   }
 }
 

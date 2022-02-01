@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import alnu;
-import bgmg;
+import alzm;
+import bhmi;
 
 public class SubtitleDataManager$2
   implements Runnable
 {
-  public SubtitleDataManager$2(alnu paramalnu, String paramString) {}
+  public SubtitleDataManager$2(alzm paramalzm, String paramString) {}
   
   public void run()
   {
-    bgmg.d(this.a);
+    bhmi.d(this.a);
   }
 }
 

@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.MutableContextWrapper;
 import android.net.Uri;
 import android.os.Bundle;
-import bgnt;
-import bhne;
-import bhos;
-import bhoy;
-import bhqc;
+import bhnv;
+import binz;
+import bipn;
+import bipt;
+import biqx;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
@@ -97,7 +97,7 @@ public class SonicClientImpl
     if (QLog.isColorLevel()) {
       QLog.d("sonicSdkImpl_SonicClientImpl", 2, "destroy");
     }
-    int i = bgnt.a(BaseApplication.getContext());
+    int i = bhnv.a(BaseApplication.getContext());
     int j = i;
     if (i == 0) {
       j = -1;
@@ -112,17 +112,17 @@ public class SonicClientImpl
       if ((localContext instanceof MutableContextWrapper)) {
         localObject = ((MutableContextWrapper)localContext).getBaseContext();
       }
-      if (!(localObject instanceof bhoy)) {
+      if (!(localObject instanceof bipt)) {
         break label226;
       }
-      localObject = (bhqc)((bhoy)localObject).getComponentProvider().a(-2);
+      localObject = (biqx)((bipt)localObject).getComponentProvider().a(-2);
     }
     for (;;)
     {
       i = k;
       if (localObject != null)
       {
-        if (!((bhqc)localObject).w) {
+        if (!((biqx)localObject).w) {
           break label269;
         }
         i = 2;
@@ -135,17 +135,17 @@ public class SonicClientImpl
         this.webView = null;
         return;
         label226:
-        if (!(localObject instanceof bhne)) {
+        if (!(localObject instanceof binz)) {
           break label285;
         }
-        localObject = ((bhne)localObject).a();
+        localObject = ((binz)localObject).a();
         if (localObject == null) {
           break label285;
         }
-        localObject = (bhqc)((WebViewFragment)localObject).getComponentProvider().a(-2);
+        localObject = (biqx)((WebViewFragment)localObject).getComponentProvider().a(-2);
         break;
         label269:
-        if (bhqc.s) {
+        if (biqx.s) {
           i = 1;
         } else {
           i = 0;

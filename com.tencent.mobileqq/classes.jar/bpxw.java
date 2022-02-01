@@ -1,19 +1,32 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
 class bpxw
-  implements wiw
+  implements EIPCOnGetConnectionListener
 {
-  bpxw(bpxv parambpxv, PeakActivity paramPeakActivity, String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry) {}
+  bpxw(bpxu parambpxu) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    if (paramInt == 0)
-    {
-      bpxv.a(this.jdField_a_of_type_Bpxv, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-      return;
+    if (paramEIPCConnection != null) {
+      bpxu.a(this.a, paramEIPCConnection.procName);
     }
-    bpxv.a(this.jdField_a_of_type_Bpxv, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    bpxu.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakIpcModuleClient", 2, "onConnectBind!");
+    }
+  }
+  
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      bpxu.a(this.a, paramEIPCConnection.procName);
+    }
+    bpxu.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakIpcModuleClient", 2, "onConnectUnbind:" + bpxu.a(this.a));
+    }
   }
 }
 

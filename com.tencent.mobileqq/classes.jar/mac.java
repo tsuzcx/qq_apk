@@ -1,91 +1,60 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.widget.TextView;
+import com.tencent.av.so.DownloadInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class mac
+public class mac
 {
-  int jdField_a_of_type_Int = -1;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
-  SpannableString jdField_a_of_type_AndroidTextSpannableString = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = -1;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int = -1;
-  boolean jdField_c_of_type_Boolean = false;
-  int d = -1;
+  private static volatile mac jdField_a_of_type_Mac;
+  mae jdField_a_of_type_Mae = null;
+  mah jdField_a_of_type_Mah = null;
   
-  static mac a(Resources paramResources, mah parammah, lzz paramlzz)
+  public static mac a()
   {
-    mac localmac = new mac();
-    if (!TextUtils.isEmpty(parammah.a())) {
-      localmac.jdField_a_of_type_AndroidTextSpannableString = new SpannableString(parammah.a());
-    }
-    localmac.jdField_a_of_type_Int = paramlzz.d;
-    localmac.jdField_b_of_type_Int = paramlzz.jdField_a_of_type_Int;
-    localmac.jdField_c_of_type_Int = paramlzz.jdField_b_of_type_Int;
-    localmac.d = paramlzz.jdField_c_of_type_Int;
-    switch (parammah.a())
+    if (jdField_a_of_type_Mac == null) {}
+    try
     {
-    }
-    do
-    {
-      return localmac;
-      parammah = (maj)parammah;
-      if ((parammah.a() instanceof BitmapDrawable)) {
-        localmac.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)parammah.a()).getBitmap();
-      }
-      for (;;)
+      if (jdField_a_of_type_Mac == null)
       {
-        switch (parammah.k())
-        {
-        default: 
-          return localmac;
-        case 1: 
-          localmac.jdField_a_of_type_Boolean = true;
-          return localmac;
-          paramlzz = parammah.b();
-          if (!TextUtils.isEmpty(paramlzz)) {
-            localmac.jdField_a_of_type_AndroidGraphicsBitmap = mpu.a(paramResources, paramlzz);
-          }
-          break;
-        }
+        mac localmac = new mac();
+        localmac.b();
+        jdField_a_of_type_Mac = localmac;
       }
-      localmac.jdField_b_of_type_Boolean = true;
-      return localmac;
-      localmac.jdField_c_of_type_Boolean = ((mak)parammah).b();
-      return localmac;
-      paramResources = (mai)parammah;
-      if (paramResources.h() != -1) {
-        localmac.jdField_a_of_type_Int = paramResources.h();
-      }
-      if (paramResources.j() != -1) {
-        localmac.jdField_c_of_type_Int = paramResources.j();
-      }
-      if (paramResources.i() != -1) {
-        localmac.d = paramResources.i();
-      }
-    } while (localmac.jdField_a_of_type_AndroidTextSpannableString == null);
-    int j = paramResources.f();
-    if (paramResources.g() == -1) {}
-    for (int i = parammah.a().length() + j;; i = paramResources.g() + j)
-    {
-      localmac.jdField_a_of_type_AndroidTextSpannableString.setSpan(new mad(paramResources), j, i, 33);
-      paramResources = new ForegroundColorSpan(localmac.jdField_c_of_type_Int);
-      localmac.jdField_a_of_type_AndroidTextSpannableString.setSpan(paramResources, j, i, 17);
-      return localmac;
+      return jdField_a_of_type_Mac;
+    }
+    finally {}
+  }
+  
+  public static void a()
+  {
+    mac localmac = a();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavSo", 4, String.format("onDownloadRequest, mStatusSo[%s]", new Object[] { Integer.valueOf(localmac.jdField_a_of_type_Mah.a) }));
+    }
+    mae.a();
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Mah = new mah();
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      this.jdField_a_of_type_Mae = new mae();
     }
   }
   
-  static void a(TextView paramTextView, int paramInt1, int paramInt2)
+  public DownloadInfo a()
   {
-    paramTextView.setTag(2131378262, Integer.valueOf(paramInt2));
-    paramTextView.setTag(2131378263, Integer.valueOf(paramInt1));
-    paramTextView.setMovementMethod((ltn)ltn.a());
-    paramTextView.setHighlightColor(0);
+    return this.jdField_a_of_type_Mah.a();
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Mah.a();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Mah.c();
   }
 }
 

@@ -1,8 +1,28 @@
-public abstract interface vzb
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqcircle.widgets.QCircleDoublePraiseView;
+import com.tencent.qphone.base.util.QLog;
+
+public class vzb
+  implements Animation.AnimationListener
 {
-  public abstract void a(long paramLong);
+  public vzb(QCircleDoublePraiseView paramQCircleDoublePraiseView) {}
   
-  public abstract void b(long paramLong);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    QCircleDoublePraiseView.a(this.a).setVisibility(8);
+    QCircleDoublePraiseView.a(this.a, false);
+    QLog.d("QCircleDoublePraiseView", 1, "onAnimationEnd");
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    QCircleDoublePraiseView.a(this.a, true);
+    QLog.d("QCircleDoublePraiseView", 1, "onAnimationStart");
+  }
 }
 
 

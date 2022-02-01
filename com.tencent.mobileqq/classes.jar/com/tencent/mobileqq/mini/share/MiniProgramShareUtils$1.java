@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.share;
 
-import aevv;
+import afez;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
-import aufz;
-import bgou;
+import auxu;
+import bhow;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -53,7 +53,7 @@ final class MiniProgramShareUtils$1
       {
         paramBundle.putBoolean("miniAppNeedOnlyPreview", paramBoolean);
         paramBundle.putInt("miniAppShareFrom", this.val$miniAppShareFrom);
-        paramBundle.putAll(bgou.a(this.val$arkAppName, this.val$arkViewId, this.val$arkAppVersion, (String)localObject, this.val$activity.getResources().getDisplayMetrics().scaledDensity, null, null));
+        paramBundle.putAll(bhow.a(this.val$arkAppName, this.val$arkViewId, this.val$arkAppVersion, (String)localObject, this.val$activity.getResources().getDisplayMetrics().scaledDensity, null, null));
         paramBundle.putInt("forward_type", 27);
         paramBundle.putBoolean("forwardDirect", true);
         paramBundle.putString("miniAppShareAppid", this.val$appid);
@@ -66,7 +66,7 @@ final class MiniProgramShareUtils$1
         localObject = new Intent();
         ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
         ((Intent)localObject).putExtras(paramBundle);
-        aevv.a(this.val$activity, (Intent)localObject, PublicTransFragmentActivity.class, MiniShareQuicklySendPanelFragment.class);
+        afez.a(this.val$activity, (Intent)localObject, PublicTransFragmentActivity.class, MiniShareQuicklySendPanelFragment.class);
         return;
       }
       if (this.val$entryModel != null)
@@ -89,10 +89,10 @@ final class MiniProgramShareUtils$1
       ((Intent)localObject).putExtras(paramBundle);
       if (this.val$miniAppShareFrom == 12)
       {
-        aufz.a(this.val$activity, (Intent)localObject, 100500, "applet");
+        auxu.a(this.val$activity, (Intent)localObject, 100500, "applet");
         return;
       }
-      aufz.a(this.val$activity, (Intent)localObject);
+      auxu.a(this.val$activity, (Intent)localObject);
       return;
     }
     if (this.val$shareType == 5)

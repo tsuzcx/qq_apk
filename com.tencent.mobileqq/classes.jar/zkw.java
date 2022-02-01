@@ -1,18 +1,8 @@
-import java.lang.reflect.Field;
-
-public final class zkw
+public class zkw
 {
-  public final int a;
-  public final String a;
-  public final Field a;
-  
-  public zkw(String paramString, int paramInt, Field paramField)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangReflectField = paramField;
-    paramField.setAccessible(true);
-  }
+  public zkv a;
+  public long b;
+  public boolean d;
 }
 
 

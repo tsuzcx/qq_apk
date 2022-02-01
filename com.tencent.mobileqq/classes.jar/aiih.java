@@ -1,22 +1,12 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiih
-  implements aiie
+class aiih
+  implements DialogInterface.OnClickListener
 {
-  aiih(aiif paramaiif) {}
+  aiih(aihy paramaihy) {}
   
-  public void a()
-  {
-    aiif.a(this.a, aiif.b(this.a));
-    ThreadManager.getUIHandler().post(new StickerBubbleAnimationViewHolder.2.1(this));
-  }
-  
-  public void b()
-  {
-    aiif.b(this.a, aiif.b(this.a));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

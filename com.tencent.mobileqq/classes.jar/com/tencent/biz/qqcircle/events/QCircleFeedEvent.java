@@ -23,7 +23,7 @@ import java.util.Iterator;
 import java.util.List;
 import qqcircle.QQCircleFeedBase.StSimulateData;
 import qqcircle.QQCircleFeedBase.StVideoBusiData;
-import uxc;
+import uyn;
 
 public class QCircleFeedEvent
   extends SimpleBaseEvent
@@ -123,10 +123,11 @@ public class QCircleFeedEvent
     {
       localStFeed.poiInfo.address.set(paramQCircleFakeFeed.a().address);
       localStFeed.poiInfo.defaultName.set(paramQCircleFakeFeed.a().poiDefaultName);
+      localStFeed.poiInfo.name.set(paramQCircleFakeFeed.a().poiName);
     }
-    localStFeed.poster.set(uxc.a());
-    if (!TextUtils.isEmpty(uxc.b())) {
-      localStFeed.poster.nick.set(uxc.b());
+    localStFeed.poster.set(uyn.a());
+    if (!TextUtils.isEmpty(uyn.b())) {
+      localStFeed.poster.nick.set(uyn.b());
     }
     localStFeed.cover.picUrl.set(paramQCircleFakeFeed.e());
     Object localObject1 = paramQCircleFakeFeed.a();
@@ -150,7 +151,9 @@ public class QCircleFeedEvent
       paramQCircleFakeFeed.filter_id.set((String)((ArrayList)localObject2).get(0));
       paramQCircleFakeFeed.simulate_name.set((String)((ArrayList)localObject3).get(0));
       paramQCircleFakeFeed.simulate_schema.set((String)((ArrayList)localObject4).get(0));
-      paramQCircleFakeFeed.is_show_button.set(1);
+      if ((!TextUtils.isEmpty(paramQCircleFakeFeed.material_id.get())) && (!TextUtils.isEmpty(paramQCircleFakeFeed.simulate_name.get()))) {
+        paramQCircleFakeFeed.is_show_button.set(1);
+      }
       localObject1 = new QQCircleFeedBase.StVideoBusiData();
       ((QQCircleFeedBase.StVideoBusiData)localObject1).simulate_date.set(paramQCircleFakeFeed);
       localStFeed.video.busiData.set(ByteStringMicro.copyFrom(((QQCircleFeedBase.StVideoBusiData)localObject1).toByteArray()));
@@ -176,7 +179,9 @@ public class QCircleFeedEvent
           ((QQCircleFeedBase.StSimulateData)localObject5).filter_id.set((String)((ArrayList)localObject2).get(paramInt));
           ((QQCircleFeedBase.StSimulateData)localObject5).simulate_name.set((String)((ArrayList)localObject3).get(paramInt));
           ((QQCircleFeedBase.StSimulateData)localObject5).simulate_schema.set((String)((ArrayList)localObject4).get(paramInt));
-          ((QQCircleFeedBase.StSimulateData)localObject5).is_show_button.set(1);
+          if ((!TextUtils.isEmpty(((QQCircleFeedBase.StSimulateData)localObject5).material_id.get())) && (!TextUtils.isEmpty(((QQCircleFeedBase.StSimulateData)localObject5).simulate_name.get()))) {
+            ((QQCircleFeedBase.StSimulateData)localObject5).is_show_button.set(1);
+          }
           QQCircleFeedBase.StVideoBusiData localStVideoBusiData = new QQCircleFeedBase.StVideoBusiData();
           localStVideoBusiData.simulate_date.set((MessageMicro)localObject5);
           localStImage.busiData.set(ByteStringMicro.copyFrom(localStVideoBusiData.toByteArray()));

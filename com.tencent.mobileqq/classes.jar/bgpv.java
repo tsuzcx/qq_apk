@@ -1,14 +1,21 @@
-import android.widget.TextView;
-
-class bgpv
+public class bgpv
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  private bgpv(bgpp parambgpp) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgpv
  * JD-Core Version:    0.7.0.1
  */

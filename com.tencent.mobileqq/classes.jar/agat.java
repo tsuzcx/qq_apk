@@ -1,18 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.os.Handler;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-public final class agat
-  implements Parcelable.Creator<SessionInfo>
+public class agat
+  extends blgm
 {
-  public SessionInfo a(Parcel paramParcel)
+  public agat(VisitorsActivity paramVisitorsActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new SessionInfo(paramParcel);
+    if (this.a.c > 0)
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
+      return;
+    }
+    this.a.f.setVisibility(4);
   }
   
-  public SessionInfo[] a(int paramInt)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return new SessionInfo[paramInt];
+    paramAnimation = this.a;
+    paramAnimation.c -= 1;
+    this.a.f.setVisibility(0);
   }
 }
 

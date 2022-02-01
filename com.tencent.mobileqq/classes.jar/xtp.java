@@ -1,30 +1,29 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
-
-public class xtp
-  extends wfr<xto, wwl>
+class xtp
+  implements xtk
 {
-  public xtp(xto paramxto)
-  {
-    super(paramxto);
-  }
+  public xtk a;
   
-  public void a(@NonNull xto paramxto, @NonNull wwl paramwwl)
+  private xtp(xtm paramxtm) {}
+  
+  public boolean a(xtg paramxtg, int paramInt, Object paramObject)
   {
-    if ((xto.a(paramxto) != null) && (paramwwl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwwl.jdField_a_of_type_JavaUtilList.contains(xto.a(paramxto).a)))
+    if (xtm.a(this.jdField_a_of_type_Xtm) != null)
     {
-      yqp.a("CaptureTogetherBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramwwl.b.toString());
-      paramxto.a.i();
+      if (paramInt != 2) {
+        break label54;
+      }
+      xtm.a(this.jdField_a_of_type_Xtm).c(xtm.a(this.jdField_a_of_type_Xtm));
     }
+    while (this.jdField_a_of_type_Xtk != null)
+    {
+      return this.jdField_a_of_type_Xtk.a(paramxtg, paramInt, paramObject);
+      label54:
+      if (paramInt == 3) {
+        xtm.a(this.jdField_a_of_type_Xtm).b(xtm.a(this.jdField_a_of_type_Xtm));
+      }
+    }
+    return false;
   }
-  
-  public Class acceptEventClass()
-  {
-    return wwl.class;
-  }
-  
-  public void b(@NonNull xto paramxto, @NonNull wwl paramwwl) {}
 }
 
 

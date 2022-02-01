@@ -1,30 +1,46 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class pzw
-  implements aaob
+public class pzw
+  implements ViewBase.OnClickListener
 {
-  pzw(pzs parampzs, String paramString) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public void callback(Bundle paramBundle)
+  public pzw(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReadInJoyWebviewPlugin", 4, "receive cancelLoadSkin callback resp:" + paramBundle.toString());
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {}
+    String str;
+    do
     {
-      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId"));
-      this.jdField_a_of_type_Pzs.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
       return;
-    }
-    catch (JSONException paramBundle)
-    {
-      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
-      this.jdField_a_of_type_Pzs.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
-    }
+      str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessUrl;
+      if (QLog.isColorLevel()) {
+        QLog.d("OnTopicCapsuleClickListener", 2, "business url is " + str);
+      }
+    } while ((TextUtils.isEmpty(str)) || (this.jdField_a_of_type_AndroidContentContext == null));
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
+    localIntent.putExtra("url", str);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    ocd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    sel.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    a();
   }
 }
 

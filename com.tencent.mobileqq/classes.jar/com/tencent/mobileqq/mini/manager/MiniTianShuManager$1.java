@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.manager;
 
-import bmvh;
+import bnwp;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 import java.util.List;
 
 final class MiniTianShuManager$1
-  implements bmvh
+  implements bnwp
 {
-  MiniTianShuManager$1(bmvh parambmvh) {}
+  MiniTianShuManager$1(bnwp parambnwp) {}
   
   public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {

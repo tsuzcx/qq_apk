@@ -1,15 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class aknq
   implements DialogInterface.OnClickListener
 {
-  public aknq(RedPacketPopFragment paramRedPacketPopFragment) {}
+  public aknq(BindNumberActivity paramBindNumberActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
+    BindNumberActivity.b(this.a);
   }
 }
 

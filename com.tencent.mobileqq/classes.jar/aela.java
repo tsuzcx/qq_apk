@@ -1,184 +1,29 @@
-import QQService.DiscussMemberInfo;
-import QQService.InteRemarkInfo;
-import QQService.RespGetDiscussInfo;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity.MyDiscussionObserver.1;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
 
 public class aela
-  extends ankx
+  implements View.OnTouchListener
 {
-  private aela(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  public aela(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt, RespGetDiscussInfo paramRespGetDiscussInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBoolean)
+    if ((paramMotionEvent != null) && (this.a.a != null))
     {
-      this.a.stopTitleProgress();
-      this.a.d = String.valueOf(paramRespGetDiscussInfo.DiscussUin);
-      this.a.c = paramRespGetDiscussInfo.Name;
-      this.a.jdField_a_of_type_JavaUtilList = paramRespGetDiscussInfo.Members;
-      this.a.jdField_a_of_type_Long = paramRespGetDiscussInfo.OwnerUin;
-      this.a.jdField_b_of_type_Long = (paramRespGetDiscussInfo.CreateTime * 1000L);
-      HashMap localHashMap = new HashMap();
-      if (this.a.jdField_a_of_type_JavaUtilList != null)
-      {
-        Object localObject3 = this.a.jdField_a_of_type_JavaUtilList.iterator();
-        Object localObject2;
-        if (((Iterator)localObject3).hasNext())
-        {
-          localObject2 = (DiscussMemberInfo)((Iterator)localObject3).next();
-          if (((DiscussMemberInfo)localObject2).Uin == this.a.jdField_a_of_type_Long) {
-            this.a.e = ((DiscussMemberInfo)localObject2).StInteRemark.StrValue;
-          }
-          l = ((DiscussMemberInfo)localObject2).Uin;
-          localObject1 = null;
-          if (0 == 0)
-          {
-            localObject1 = new DiscussionMemberInfo();
-            ((DiscussionMemberInfo)localObject1).discussionUin = this.a.d;
-            ((DiscussionMemberInfo)localObject1).memberUin = String.valueOf(l);
-          }
-          ((DiscussionMemberInfo)localObject1).flag = ((DiscussMemberInfo)localObject2).Flag;
-          if ((((DiscussMemberInfo)localObject2).StInteRemark != null) && (!TextUtils.isEmpty(((DiscussMemberInfo)localObject2).StInteRemark.StrValue)))
-          {
-            ((DiscussionMemberInfo)localObject1).inteRemark = ((DiscussMemberInfo)localObject2).StInteRemark.StrValue;
-            ((DiscussionMemberInfo)localObject1).inteRemarkSource = ((DiscussMemberInfo)localObject2).StInteRemark.Source;
-          }
-          for (;;)
-          {
-            localHashMap.put(((DiscussionMemberInfo)localObject1).memberUin, localObject1);
-            break;
-            if (TextUtils.isEmpty(((DiscussionMemberInfo)localObject1).inteRemark))
-            {
-              localObject2 = ((anmw)this.a.app.getManager(51)).b(((DiscussionMemberInfo)localObject1).memberUin);
-              if ((localObject2 != null) && (((Friends)localObject2).isFriend()))
-              {
-                ((DiscussionMemberInfo)localObject1).memberName = ((Friends)localObject2).name;
-                if (TextUtils.isEmpty(((Friends)localObject2).remark)) {}
-                for (localObject2 = ((Friends)localObject2).name;; localObject2 = ((Friends)localObject2).remark)
-                {
-                  ((DiscussionMemberInfo)localObject1).inteRemark = ((String)localObject2);
-                  ((DiscussionMemberInfo)localObject1).inteRemarkSource = 129L;
-                  break;
-                }
-              }
-              ((DiscussionMemberInfo)localObject1).inteRemarkSource = 0L;
-            }
-          }
-        }
-        Object localObject1 = new ArrayList();
-        if (this.a.jdField_a_of_type_JavaUtilList != null)
-        {
-          l = Long.parseLong(this.a.app.getCurrentAccountUin());
-          paramInt = 0;
-          while (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
-          {
-            if (((DiscussMemberInfo)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).Uin != l) {
-              ((ArrayList)localObject1).add(Long.valueOf(((DiscussMemberInfo)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).Uin));
-            }
-            paramInt += 1;
-          }
-        }
-        this.a.jdField_b_of_type_Int = Math.min(((ArrayList)localObject1).size(), 4);
-        this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-        this.a.f = "";
-        paramInt = 0;
-        while (paramInt < this.a.jdField_b_of_type_Int)
-        {
-          localObject2 = String.valueOf(((ArrayList)localObject1).get(paramInt));
-          if (aoch.a(this.a.app, 1, (String)localObject2) != null)
-          {
-            this.a.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-            localObject2 = new StringBuilder();
-            localObject3 = this.a;
-            ((JoinDiscussionActivity)localObject3).f = (((JoinDiscussionActivity)localObject3).f + String.valueOf(((ArrayList)localObject1).get(paramInt)) + ";");
-          }
-          paramInt += 1;
-        }
-      }
-      long l = paramRespGetDiscussInfo.DiscussFlag;
-      this.a.c = bglf.a(this.a.app, this.a.d, String.valueOf(this.a.jdField_a_of_type_Long), l | 0x20000000, paramRespGetDiscussInfo.Name, localHashMap);
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() == this.a.jdField_b_of_type_Int) {
-        ThreadManager.post(new JoinDiscussionActivity.MyDiscussionObserver.1(this), 8, null, true);
-      }
-      JoinDiscussionActivity.a(this.a);
-      if (TextUtils.isEmpty(this.a.e)) {
-        ((FriendListHandler)this.a.app.a(1)).a(this.a.jdField_a_of_type_Long + "", false);
-      }
-      return;
-    }
-    this.a.a(0, paramInt);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt)
-  {
-    String str;
-    if (paramBoolean)
-    {
-      bcst.b(this.a.app, "CliOper", "", this.a.app.getCurrentAccountUin(), "discuss", "discuss_QR_join", 0, 0, "", "", "", "");
-      this.a.stopTitleProgress();
-      str = String.valueOf(paramLong);
-      if ((str != null) && (str.length() > 0))
-      {
-        if (this.a.jdField_a_of_type_JavaUtilList == null) {
-          break label290;
-        }
-        paramLong = Long.parseLong(this.a.app.getCurrentAccountUin());
-        paramInt = 0;
-        if (paramInt >= this.a.jdField_a_of_type_JavaUtilList.size()) {
-          break label290;
-        }
-        if (((DiscussMemberInfo)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).Uin != paramLong) {
-          break label270;
-        }
+      paramView = this.a.a;
+      if (paramMotionEvent.getAction() != 0) {
+        break label39;
       }
     }
-    label270:
-    label290:
-    for (paramInt = 1;; paramInt = 0)
+    label39:
+    for (float f = 0.5F;; f = 1.0F)
     {
-      if (paramInt != 0) {
-        QQToast.a(this.a, anni.a(2131704668), 0).b(this.a.getTitleBarHeight());
-      }
-      Intent localIntent = afur.a(new Intent(this.a, SplashActivity.class), null);
-      localIntent.putExtra("uin", str);
-      localIntent.putExtra("uintype", 3000);
-      localIntent.putExtra("uinname", this.a.c);
-      localIntent.putExtra("isBack2Root", true);
-      localIntent.putExtra("isFromDiscussionFlyTicket", true);
-      this.a.startActivity(localIntent);
-      this.a.finish();
-      return;
-      paramInt += 1;
-      break;
-      this.a.a(1, paramInt);
-      return;
+      paramView.setAlpha(f);
+      return false;
     }
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_JavaLangString = paramString;
-      this.a.jdField_a_of_type_Anks.c(this.a.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    this.a.a(0, -161);
   }
 }
 

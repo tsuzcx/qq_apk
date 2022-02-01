@@ -1,0 +1,35 @@
+package com.tencent.mobileqq.together.writetogether.websocket;
+
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseToWriteTogetherMsg;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class WriteTogetherWebSocketAlarm
+{
+  private volatile Handler jdField_a_of_type_AndroidOsHandler;
+  private WriteTogetherWebSocketSender jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketWriteTogetherWebSocketSender;
+  private ConcurrentHashMap<Integer, WriteTogetherWebSocketAlarm.TimeoutChecker> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  public WriteTogetherWebSocketAlarm(WriteTogetherWebSocketSender paramWriteTogetherWebSocketSender)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketWriteTogetherWebSocketSender = paramWriteTogetherWebSocketSender;
+    paramWriteTogetherWebSocketSender = new HandlerThread("WriteTogetherWebSocketAlarm", 5);
+    paramWriteTogetherWebSocketSender.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramWriteTogetherWebSocketSender.getLooper());
+  }
+  
+  public void a(@NonNull BaseToWriteTogetherMsg paramBaseToWriteTogetherMsg, long paramLong)
+  {
+    WriteTogetherWebSocketAlarm.TimeoutChecker localTimeoutChecker = new WriteTogetherWebSocketAlarm.TimeoutChecker(this, paramBaseToWriteTogetherMsg);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramBaseToWriteTogetherMsg.getSeq()), localTimeoutChecker);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(localTimeoutChecker, paramLong);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.mobileqq.together.writetogether.websocket.WriteTogetherWebSocketAlarm
+ * JD-Core Version:    0.7.0.1
+ */

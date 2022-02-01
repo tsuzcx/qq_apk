@@ -1,28 +1,61 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import dov.com.qq.im.aeeditor.AEEditorActivity;
 
-class bpbj
-  extends bomw
+public class bpbj
 {
-  bpbj(bpbh parambpbh) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public static void a(Activity paramActivity, int paramInt1, Bundle paramBundle, int paramInt2)
   {
-    biti.a().a(anni.a(2131702484) + bpbh.a(this.a));
+    int i;
+    Intent localIntent;
+    if (paramInt1 == 0)
+    {
+      i = 10000;
+      localIntent = new Intent(paramActivity, AEEditorActivity.class);
+      if (paramBundle == null) {
+        break label121;
+      }
+    }
+    label121:
+    for (paramBundle = new Bundle(paramBundle);; paramBundle = new Bundle())
+    {
+      paramBundle.putInt("editorType", paramInt1);
+      paramBundle.putInt("editorFrom", paramInt2);
+      if (paramActivity.getIntent() != null)
+      {
+        paramBundle.putString("editor_filter_id", paramActivity.getIntent().getStringExtra("editor_filter_id"));
+        paramActivity.getIntent().putExtra("editor_filter_id", "");
+      }
+      localIntent.putExtras(paramBundle);
+      paramActivity.startActivityForResult(localIntent, i);
+      return;
+      if (paramInt1 == 1)
+      {
+        i = 10001;
+        break;
+      }
+      throw new IllegalArgumentException("wrong editor type");
+    }
   }
   
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public static boolean a(Bundle paramBundle)
   {
-    if ((paramBoolean) && (bpbh.a(this.a).getLocalPath().equals(paramString)))
-    {
-      bpbh.a(this.a).sendEmptyMessage(2);
-      bpbh.a(this.a, bpbh.a(this.a));
+    return a(paramBundle, 0);
+  }
+  
+  private static boolean a(Bundle paramBundle, int paramInt)
+  {
+    if (paramBundle == null) {}
+    while ((!paramBundle.containsKey("editorType")) || (paramBundle.getInt("editorType") != paramInt)) {
+      return false;
     }
+    return true;
+  }
+  
+  public static boolean b(Bundle paramBundle)
+  {
+    return a(paramBundle, 1);
   }
 }
 

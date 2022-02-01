@@ -1,50 +1,41 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders.StyleLoaderHelper.DummyCallback.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 public class teo
-  implements nkl
+  implements rgw
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final String b;
+  public teo(BridgeModule paramBridgeModule, String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString2) {}
   
-  public teo(ten paramten, String paramString1, String paramString2)
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    QLog.d("TemplateFactory", 1, "loaded: bid : " + this.jdField_a_of_type_JavaLangString + " param " + paramString + " code : " + paramInt);
-    if ((paramInt != 0) || (paramString == null)) {}
-    try
+    Iterator localIterator = paramList.iterator();
+    UgcVideo localUgcVideo;
+    do
     {
-      QLog.d("TemplateFactory", 2, "下载离线样式包完成 : " + this.jdField_a_of_type_JavaLangString);
-      tez.a(ten.a(this.jdField_a_of_type_Ten));
-      if ((paramString == null) && (tez.a(this.jdField_a_of_type_JavaLangString).a))
-      {
-        QLog.d("TemplateFactory", 1, "加载离线包 : " + this.jdField_a_of_type_JavaLangString);
-        tyb.a(2, ten.a(this.jdField_a_of_type_Ten));
-        this.jdField_a_of_type_Ten.b(this.jdField_a_of_type_JavaLangString);
-        bmqa.a("kandian_pts_style_update", Boolean.valueOf(true));
-        tek.a().b();
+      if (!localIterator.hasNext()) {
+        break;
       }
-      return;
-    }
-    catch (Exception paramString)
+      localUgcVideo = (UgcVideo)localIterator.next();
+    } while (!TextUtils.equals(localUgcVideo.seqId, this.jdField_a_of_type_JavaLangString));
+    for (;;)
     {
-      QLog.e("TemplateFactory", 1, "loaded: bid : " + this.jdField_a_of_type_JavaLangString, paramString);
+      if (localUgcVideo != null)
+      {
+        ocd.a("0X800AC61", rab.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, localUgcVideo.publicType).a());
+        rgo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(localUgcVideo);
+        BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, 0, "");
+        return;
+      }
+      BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, -1, "ugcVideo not exist");
+      return;
+      localUgcVideo = null;
     }
   }
-  
-  public void loaded(String paramString, int paramInt)
-  {
-    ThreadManager.getFileThreadHandler().post(new StyleLoaderHelper.DummyCallback.1(this, paramString, paramInt));
-  }
-  
-  public void progress(int paramInt) {}
 }
 
 

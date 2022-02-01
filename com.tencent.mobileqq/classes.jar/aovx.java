@@ -1,47 +1,50 @@
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aovx
-  implements apcd
+public class aovx
+  extends aoxg
 {
-  aovx(aovw paramaovw, String paramString, apcd paramapcd) {}
-  
-  public void a()
+  public aovx(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (this.jdField_a_of_type_Apcd != null) {
-      this.jdField_a_of_type_Apcd.a();
-    }
+    super(paramQQAppInterface, paramContext);
   }
   
-  public void a(long paramLong1, long paramLong2)
+  public boolean a()
   {
-    if (this.jdField_a_of_type_Apcd != null) {
-      this.jdField_a_of_type_Apcd.a(paramLong1, paramLong2);
-    }
-  }
-  
-  public void a(boolean paramBoolean, apce paramapce)
-  {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + paramapce.d + ", filename = " + paramapce.c + ", url = " + paramapce.jdField_a_of_type_JavaLangString);
-    if (paramBoolean) {
-      if (!aovw.a(this.jdField_a_of_type_Aovw, paramapce.c, paramapce.b))
-      {
-        aovw.a(this.jdField_a_of_type_Aovw, paramapce.c);
-        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
-      }
-    }
-    while (this.jdField_a_of_type_Apcd == null)
+    try
     {
-      return;
-      if ((!paramapce.d.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Aovw.a(paramapce.d, paramapce.c, paramapce.b) != 0)) {}
+      Intent localIntent = aono.a().a(this.jdField_a_of_type_AndroidContentContext);
+      if (localIntent == null)
+      {
+        QLog.e("AVGameShareCreateRoomAction", 1, "doAction error: intent is null");
+        return true;
+      }
+      localIntent.putExtra("thridparty_av_game_type_key", "thridparty_av_game_type_create_room");
+      String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("gameType");
+      String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromType");
+      String str1 = str2;
+      if ("0".equals(str2)) {
+        str1 = String.valueOf(1);
+      }
+      localIntent.putExtra("avgame_create_game_type_key", Integer.valueOf(str1));
+      int i = 4;
+      if (!TextUtils.isEmpty(str3)) {
+        i = Integer.valueOf(str3).intValue();
+      }
+      localIntent.putExtra("avgame_from_type_key", i);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      return true;
     }
-    this.jdField_a_of_type_Apcd.a(paramBoolean, paramapce);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Apcd != null) {
-      this.jdField_a_of_type_Apcd.b();
+    catch (Exception localException)
+    {
+      QLog.e("AVGameShareCreateRoomAction", 1, "doAction error: " + localException.getMessage());
+      a("AVGameShareCreateRoomAction");
     }
+    return true;
   }
 }
 

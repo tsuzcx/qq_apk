@@ -1,20 +1,6 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
-
-class bnli
-  implements Observer<Boolean>
+public abstract interface bnli
 {
-  bnli(bnlc parambnlc) {}
-  
-  public void a(@Nullable Boolean paramBoolean)
-  {
-    if (paramBoolean == null) {}
-    while (bnlc.a(this.a) == null) {
-      return;
-    }
-    bnlc.a(this.a).a(paramBoolean.booleanValue());
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

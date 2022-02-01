@@ -1,25 +1,38 @@
-import android.support.v7.widget.RecyclerView;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.LocalMediaInfo;
 
-class aycy
-  extends GestureDetector.SimpleOnGestureListener
+public final class aycy
+  implements Parcelable.Creator<LocalMediaInfo>
 {
-  aycy(aycx paramaycx, aycz paramaycz) {}
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
+  public LocalMediaInfo a(Parcel paramParcel)
   {
-    if ((aycx.a(this.jdField_a_of_type_Aycx) != null) && (this.jdField_a_of_type_Aycz != null)) {
-      this.jdField_a_of_type_Aycz.b(aycx.a(this.jdField_a_of_type_Aycx), aycx.a(this.jdField_a_of_type_Aycx).getChildPosition(aycx.a(this.jdField_a_of_type_Aycx)));
-    }
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    localLocalMediaInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localLocalMediaInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_d_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.jdField_e_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.h = paramParcel.readInt();
+    localLocalMediaInfo.i = paramParcel.readInt();
+    localLocalMediaInfo.j = paramParcel.readInt();
+    localLocalMediaInfo.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramParcel.readInt());
+    localLocalMediaInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localLocalMediaInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localLocalMediaInfo.jdField_c_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.jdField_d_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.g = paramParcel.readInt();
+    localLocalMediaInfo.f = paramParcel.readInt();
+    return localLocalMediaInfo;
   }
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public LocalMediaInfo[] a(int paramInt)
   {
-    if ((aycx.a(this.jdField_a_of_type_Aycx) != null) && (this.jdField_a_of_type_Aycz != null)) {
-      this.jdField_a_of_type_Aycz.a(aycx.a(this.jdField_a_of_type_Aycx), aycx.a(this.jdField_a_of_type_Aycx).getChildPosition(aycx.a(this.jdField_a_of_type_Aycx)));
-    }
-    return true;
+    return new LocalMediaInfo[0];
   }
 }
 

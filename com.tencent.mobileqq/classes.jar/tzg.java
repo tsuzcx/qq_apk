@@ -1,46 +1,33 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.7;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class tzg
-  implements rzn
+class tzg
+  implements qii
 {
-  public tzg(PublicAccountH5AbilityPlugin.7 param7, biau parambiau, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8) {}
+  tzg(tyo paramtyo, String paramString) {}
   
-  public void a(String paramString, Bundle paramBundle)
+  public void a(int paramInt1, int paramInt2)
   {
-    int i;
-    if ("CMD_CAMERA_CAPTURE_SO_DOWNLOAD".equals(paramString))
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      this.jdField_a_of_type_Biau.dismiss();
-      i = paramBundle.getInt("VALUE_CAMERA_CAPTURE_SO_DOWNLOAD_STATUS");
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.pubaccount.video.cameracapture", 2, "showUGCVideoRecordPage VideoFeedsIPCClient.callback downloadResult=" + i);
-      }
-    }
-    switch (i)
-    {
-    default: 
-      return;
-    case 3: 
-      QQToast.a(BaseApplicationImpl.getContext(), 2131717374, 0).a();
-      return;
-    case 1: 
-      boolean bool = this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$7.this$0.jdField_a_of_type_Rzl.a("CMD_CAMERA_CAPTURE_CHECK_SO_READY", null).getBoolean("VALUE_CAMERA_CAPTURE_IS_SO_READY");
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.pubaccount.video.cameracapture", 2, "showUGCVideoRecordPage() isSoReady:" + bool);
-      }
-      tym.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$7.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.e, this.f, this.g, this.h);
+      localJSONObject.put("button", paramInt1);
+      localJSONObject.put("result", paramInt2);
+      this.jdField_a_of_type_Tyo.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
       return;
     }
-    bglp.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$7.this$0.jdField_a_of_type_AndroidAppActivity, 230).setMessage(anni.a(2131707555)).setNegativeButton(2131690582, new bgmc()).setPositiveButton(2131694081, new tzh(this)).show();
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tzg
  * JD-Core Version:    0.7.0.1
  */

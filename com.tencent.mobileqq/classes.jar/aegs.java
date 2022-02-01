@@ -1,38 +1,16 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aegs
-  implements azkz
+class aegs
+  implements DialogInterface.OnClickListener
 {
-  public aegs(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  aegs(aegr paramaegr, boolean paramBoolean) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(0L, null, null, false);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.b(paramInt);
-  }
-  
-  public void a(bkhe parambkhe)
-  {
-    this.a.a(parambkhe);
-  }
-  
-  public void b()
-  {
-    this.a.a(this.a.a.a, false, 8);
-  }
-  
-  public void b(bkhe parambkhe)
-  {
-    this.a.b(parambkhe);
-  }
-  
-  public void c()
-  {
-    FriendProfileCardActivity.a(this.a);
+    if (this.jdField_a_of_type_Boolean) {
+      bdll.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    }
   }
 }
 

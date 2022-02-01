@@ -1,129 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 import com.tencent.qphone.base.util.QLog;
 
 class atgj
-  extends atfi
+  implements Animation.AnimationListener
 {
-  public atgj(atfe paramatfe)
+  atgj(atgi paramatgi, atha paramatha1, int paramInt1, double paramDouble, boolean paramBoolean1, boolean paramBoolean2, atha paramatha2, boolean paramBoolean3, boolean paramBoolean4, Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt2) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramatfe);
+    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Atgi.a).b(this.jdField_b_of_type_Atha, this.c, this.d);
+    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.setStatusWithAnimation(this.jdField_b_of_type_Int);
   }
   
-  protected String a()
-  {
-    return "StateUploadingWhenPause";
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected void a()
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation currentUin ( " + this.jdField_a_of_type_Atha.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " ) Animation Start  ");
     }
-    atfe.c(this.jdField_a_of_type_Atfe, 9, 14);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateUploadingWhenRecv)");
-    this.jdField_a_of_type_Atfi = new atgk(this.jdField_a_of_type_Atfe);
-  }
-  
-  protected void a(int paramInt1, int paramInt2)
-  {
-    b(paramInt1, paramInt2);
-  }
-  
-  protected void a(int paramInt, String paramString)
-  {
-    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    double d2 = Math.atan(this.jdField_a_of_type_Double) * 180.0D / 3.141592653589793D * this.jdField_a_of_type_Atgi.jdField_b_of_type_Int;
+    double d1 = d2;
+    if (this.jdField_a_of_type_Boolean) {
+      d1 = 180.0D - d2;
     }
-    atfe.b(this.jdField_a_of_type_Atfe, 10, 12);
-    atfe.c(this.jdField_a_of_type_Atfe, 10, 12);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateExcepInvalidWhenPause)");
-    this.jdField_a_of_type_Atfi = new atfs(this.jdField_a_of_type_Atfe);
-  }
-  
-  protected void a(long paramLong)
-  {
-    b(paramLong);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    this.jdField_a_of_type_Atgi.jdField_b_of_type_Float = ((float)d1);
+    if (QLog.isColorLevel()) {
+      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation uinToHoleIndex add( " + this.jdField_a_of_type_Atha.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " )");
     }
-    if (paramBoolean == true)
-    {
-      atfe.a(this.jdField_a_of_type_Atfe);
-      atfe.b(this.jdField_a_of_type_Atfe, 10, 11);
-      atfe.c(this.jdField_a_of_type_Atfe, 10, 14);
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateUploadingWhenPause)");
-      this.jdField_a_of_type_Atfi = new atgj(this.jdField_a_of_type_Atfe);
-      return;
-    }
-    atfe.b(this.jdField_a_of_type_Atfe, 10, 10);
-    atfe.c(this.jdField_a_of_type_Atfe, 10, 10);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateChangeToOffFailedWhenPause)");
-    this.jdField_a_of_type_Atfi = new atfm(this.jdField_a_of_type_Atfe);
-    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfile session[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]  recv failed!!");
-  }
-  
-  protected boolean a(int paramInt, String paramString, long paramLong)
-  {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
-    }
-    localFileManagerEntity.Uuid = new String(paramString);
-    localFileManagerEntity.fProgress = 0.0F;
-    if ((atvo.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
-      this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
-    }
-    this.jdField_a_of_type_Atfe.a(paramLong, localFileManagerEntity.peerUin);
-    localFileManagerEntity.setCloudType(1);
-    atfe.b(this.jdField_a_of_type_Atfe, 1, 3);
-    atfe.c(this.jdField_a_of_type_Atfe, 1, 3);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateUploadoneWhenPause)");
-    this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
-    this.jdField_a_of_type_Atfi = new atgm(this.jdField_a_of_type_Atfe);
-    return true;
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    atfe.b(this.jdField_a_of_type_Atfe, 10, 9);
-    atfe.c(this.jdField_a_of_type_Atfe, 10, 9);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateCancelUploadWhenPause)");
-    this.jdField_a_of_type_Atfi = new atfk(this.jdField_a_of_type_Atfe);
-  }
-  
-  protected void f()
-  {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. doSomeThingOnUploadDone entity is null");
-      return;
-    }
-    localFileManagerEntity.fProgress = 0.0F;
-    localFileManagerEntity.setCloudType(1);
-    atfe.b(this.jdField_a_of_type_Atfe, 1, 3);
-    atfe.c(this.jdField_a_of_type_Atfe, 1, 3);
-    this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateGotoOffFileProcess)");
-    this.jdField_a_of_type_Atfi = new atfu(this.jdField_a_of_type_Atfe);
+    this.jdField_a_of_type_Atgi.a(2, this.jdField_b_of_type_Boolean);
   }
 }
 

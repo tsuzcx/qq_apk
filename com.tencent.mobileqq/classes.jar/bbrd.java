@@ -1,49 +1,27 @@
-import android.text.TextUtils;
-import android.widget.Button;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
-public class bbrd
-  extends bbph
+class bbrd
+  implements DialogInterface.OnClickListener
 {
-  public bbrd(aobu paramaobu, bbpl parambbpl)
-  {
-    super(paramaobu, parambbpl);
-  }
+  bbrd(bbrb parambbrb, int paramInt, Object paramObject) {}
   
-  public void b(bbmy parambbmy, bbvg parambbvg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.b(parambbmy, parambbvg);
-    if (TextUtils.isEmpty(parambbmy.c()))
+    switch (this.jdField_a_of_type_Int)
     {
-      parambbvg.c().setVisibility(8);
-      ((bbwz)parambbvg).a().setVisibility(0);
-      if (parambbvg.b() != null)
-      {
-        parambbmy = ((bboi)parambbmy).d();
-        if (!TextUtils.isEmpty(parambbmy)) {
-          break label127;
-        }
-        parambbvg.b().setVisibility(8);
-      }
+    default: 
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 4, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
     }
-    for (;;)
+    do
     {
-      parambbvg.d().setVisibility(8);
       return;
-      parambbvg.c().setVisibility(0);
-      parambbvg.c().setText(parambbmy.c());
-      ((bbwz)parambbvg).a().setVisibility(8);
-      break;
-      label127:
-      parambbvg.b().setVisibility(0);
-      parambbvg.b().setText(parambbmy);
-    }
-  }
-  
-  protected void c(bbmy parambbmy, bbvg parambbvg)
-  {
-    super.c(parambbmy, parambbvg);
-    ((bbwz)parambbvg).a().setOnClickListener(new bbre(this, parambbmy));
+    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOPictureData));
+    bbrb.a(this.jdField_a_of_type_Bbrb).a((AIOPictureData)this.jdField_a_of_type_JavaLangObject);
+    this.jdField_a_of_type_Bbrb.updateUI();
   }
 }
 

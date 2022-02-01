@@ -1,13 +1,6 @@
-import android.graphics.Canvas;
-
-public abstract interface bozx
-  extends bpeo
+class bozx
 {
-  public abstract int a(int paramInt);
-  
-  public abstract boolean a(int paramInt);
-  
-  public abstract boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3);
+  private static bozv a = new bozv(null);
 }
 
 

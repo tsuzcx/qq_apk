@@ -1,17 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-final class afut
-  implements bhlk
+public class afut
+  implements View.OnClickListener
 {
-  public void a(boolean paramBoolean)
+  public afut(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    znw.a(this.a.a);
+    znw.a(this.a.a.a);
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.a.a.a.size())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebAccelerator", 2, "preStart QWeb Process");
-      }
-      afuh.a();
+      localArrayList.add(((afwe)this.a.a.a.get(i)).a);
+      i += 1;
     }
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", localArrayList);
+    this.a.setResult(-1, localIntent);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,22 +1,20 @@
 import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class agst
-  implements bkhw
+  implements View.OnClickListener
 {
-  agst(agss paramagss, MessageForDeviceFile paramMessageForDeviceFile, bkho parambkho) {}
+  agst(agss paramagss) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      this.jdField_a_of_type_Agss.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
+    agss.a(this.a).dismissDialog(230);
+    aber.a(agss.a(this.a), agss.a(this.a).jdField_a_of_type_Int, agss.a(this.a).jdField_a_of_type_JavaLangString, agss.a(this.a).getAccount());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

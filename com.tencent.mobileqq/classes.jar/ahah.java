@@ -1,18 +1,6 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
-
-class ahah
-  extends ahbl
+public abstract interface ahah
 {
-  ahah(agwz paramagwz)
-  {
-    super(paramagwz, null);
-  }
-  
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new agta(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
+  public abstract boolean a(int paramInt);
 }
 
 

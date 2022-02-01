@@ -1,23 +1,54 @@
-import java.io.File;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONObject;
 
 class amyy
-  implements amxk
+  implements EIPCResultCallback
 {
-  amyy(amyl paramamyl, File paramFile, String paramString) {}
+  amyy(amyx paramamyx) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (paramBoolean)
-    {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
+    paramEIPCResult = paramEIPCResult.data;
+    int i = paramEIPCResult.getInt("type");
+    if (i == 1) {
+      paramEIPCResult = paramEIPCResult.getString("nickName");
+    }
+    JSONObject localJSONObject;
+    while (i != 2) {
+      try
       {
-        this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 0, paramInt2 + anni.a(2131699316));
+        localJSONObject = new JSONObject();
+        localJSONObject.put("nickname", 1);
+        localJSONObject.put("data", paramEIPCResult);
+        localJSONObject.put("openId", this.a.jdField_a_of_type_JavaLangString);
+        ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy, "cs.get_userInfo.local", "" + localJSONObject.toString() + "");
         return;
       }
-      this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 2, paramInt2 + anni.a(2131699292));
+      catch (Throwable paramEIPCResult)
+      {
+        QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
+        return;
+      }
+    }
+    paramEIPCResult = amzf.a((Bitmap)paramEIPCResult.getParcelable("head"), 100);
+    try
+    {
+      localJSONObject = new JSONObject();
+      localJSONObject.put("avatar", 1);
+      localJSONObject.put("data", paramEIPCResult);
+      localJSONObject.put("openId", this.a.jdField_a_of_type_JavaLangString);
+      ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy, "cs.get_userInfo.local", "" + localJSONObject.toString() + "");
       return;
     }
-    this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 2, paramInt2 + anni.a(2131699313));
+    catch (Throwable paramEIPCResult)
+    {
+      QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
+    }
   }
 }
 

@@ -1,18 +1,8 @@
-import android.os.SystemClock;
+import com.tencent.aekit.openrender.internal.Frame;
 
-public class lrk
+public abstract interface lrk
 {
-  private static volatile long a;
-  
-  public static long a()
-  {
-    return a;
-  }
-  
-  public static void a()
-  {
-    a = SystemClock.uptimeMillis();
-  }
+  public abstract void a(Frame paramFrame, lrh paramlrh);
 }
 
 

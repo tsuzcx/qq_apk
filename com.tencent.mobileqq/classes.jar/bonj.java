@@ -1,25 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bonj
-  implements zmv
+class bonj
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public void onFailure(String paramString)
+  bonj(bonf parambonf) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onFailure: invoked. info: Failed showFFmpegFormats. message = " + paramString);
-    }
-  }
-  
-  public void onFinish(boolean paramBoolean) {}
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart() {}
-  
-  public void onSuccess(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onSuccess: invoked. Message: message: showFFmpegFormats ok. " + paramString);
+    RecyclerView localRecyclerView = bonf.c(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      localRecyclerView.setVisibility(i);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
     }
   }
 }

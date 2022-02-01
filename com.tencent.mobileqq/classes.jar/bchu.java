@@ -1,41 +1,47 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bchu
-  extends AsyncTask<Void, Void, Integer>
+class bchu
+  implements View.OnClickListener
 {
-  public bchu(SVHwEncoder.HwEncode paramHwEncode) {}
+  bchu(bchs parambchs, bcep parambcep) {}
   
-  protected Integer a(Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    long l = System.currentTimeMillis();
-    paramVarArgs = SVHwEncoder.HwEncode.a(this.a) + "shortvideo_thumb.jpg";
-    int j = this.a.a.a(SVHwEncoder.HwEncode.b(this.a), SVHwEncoder.f(this.a.this$0), SVHwEncoder.g(this.a.this$0), SVHwEncoder.a(this.a.this$0), SVHwEncoder.b(this.a.this$0), paramVarArgs);
-    int i = j;
-    String str;
-    if (j == 0)
+    Object localObject;
+    if (this.jdField_a_of_type_Bcep.o == 1)
     {
-      str = ShortVideoUtils.a(this.a.a.jdField_a_of_type_JavaLangString, "jpg");
-      if (!bgmg.c(paramVarArgs, str)) {
-        break label177;
+      bdll.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 0, 0, "", "", "", "");
+      bdll.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 2, 0, "", "", "", "");
+      localObject = (anyw)bchs.a(this.jdField_a_of_type_Bchs).getManager(51);
+      if ((((anyw)localObject).b(this.jdField_a_of_type_Bcep.b)) || (((anyw)localObject).d(this.jdField_a_of_type_Bcep.b))) {
+        break label210;
       }
-      this.a.a.b = str;
-      i = j;
+      localObject = AddFriendLogicActivity.a(paramView.getContext(), 1, this.jdField_a_of_type_Bcep.b, null, 3020, 3, this.jdField_a_of_type_Bcep.c, null, null, paramView.getContext().getString(2131689551), null);
+      paramView.getContext().startActivity((Intent)localObject);
     }
     for (;;)
     {
-      this.a.a.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-      this.a.a.jdField_a_of_type_Int = i;
-      SVHwEncoder.HwEncode.a(this.a, true);
-      return Integer.valueOf(i);
-      label177:
-      i = j;
-      if (!bgmg.b(str))
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bdll.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 0, 0, "", "", "", "");
+      bdll.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 1, 0, "", "", "", "");
+      break;
+      label210:
+      if (((anyw)localObject).b(this.jdField_a_of_type_Bcep.b))
       {
-        this.a.this$0.a("doInBackground()", "rename failure, mThumbFilePath = " + paramVarArgs + ",thumbPath=" + str);
-        i = -3;
+        this.jdField_a_of_type_Bcep.n = 2;
+        bchs.a(this.jdField_a_of_type_Bchs).notifyDataSetChanged();
+      }
+      else
+      {
+        this.jdField_a_of_type_Bcep.n = 1;
+        bchs.a(this.jdField_a_of_type_Bchs).notifyDataSetChanged();
       }
     }
   }

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.equipmentlock;
 
-import asfr;
+import asvf;
 import com.tencent.qphone.base.util.QLog;
 
 public class EquipmentLockImpl$1
   implements Runnable
 {
-  public EquipmentLockImpl$1(asfr paramasfr) {}
+  public EquipmentLockImpl$1(asvf paramasvf) {}
   
   public void run()
   {

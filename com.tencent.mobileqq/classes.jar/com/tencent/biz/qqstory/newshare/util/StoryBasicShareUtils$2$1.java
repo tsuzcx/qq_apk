@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.newshare.util;
 
-import xbv;
+import xfq;
 
 class StoryBasicShareUtils$2$1
   implements Runnable
@@ -9,8 +9,8 @@ class StoryBasicShareUtils$2$1
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Xbv != null) {
-      this.this$0.jdField_a_of_type_Xbv.a(this.this$0.jdField_a_of_type_Xec);
+    if (this.this$0.jdField_a_of_type_Xfq != null) {
+      this.this$0.jdField_a_of_type_Xfq.a(this.this$0.jdField_a_of_type_Xhx);
     }
   }
 }

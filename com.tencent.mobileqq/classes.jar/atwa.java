@@ -1,159 +1,27 @@
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Stack;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-public class atwa
-  extends DefaultHandler
+class atwa
+  implements atwh
 {
-  private Object jdField_a_of_type_JavaLangObject;
-  private String jdField_a_of_type_JavaLangString;
-  Stack<Object> jdField_a_of_type_JavaUtilStack = new Stack();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  atwa(atvy paramatvy, FileManagerEntity paramFileManagerEntity) {}
   
-  public HashMap<String, Object> a()
+  public void a(int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle)
   {
-    return (HashMap)this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    System.out.println("characters:");
-    if (paramInt2 > 0)
+    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] onCheckResult. nSessionId=" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + " errCode:" + paramInt1);
+    if ((paramInt1 == 0) && (paramInt2 != 0) && (paramInt2 != 4))
     {
-      if (this.b)
-      {
-        this.jdField_a_of_type_JavaLangString = new String(paramArrayOfChar, paramInt1, paramInt2);
-        System.out.println("key:" + this.jdField_a_of_type_JavaLangString);
-      }
-      if (this.c)
-      {
-        if (!HashMap.class.equals(this.jdField_a_of_type_JavaUtilStack.peek().getClass())) {
-          break label157;
-        }
-        HashMap localHashMap = (HashMap)this.jdField_a_of_type_JavaUtilStack.peek();
-        String str = new String(paramArrayOfChar, paramInt1, paramInt2);
-        localHashMap.put(this.jdField_a_of_type_JavaLangString, str);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.apkSafeLevel = paramInt2;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.apkSafeMsg = paramString1;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.apkSafeDetailUrl = paramString2;
+      if (this.jdField_a_of_type_Atvy.a != null) {
+        this.jdField_a_of_type_Atvy.a.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
       }
     }
-    for (;;)
-    {
-      System.out.println("value:" + new String(paramArrayOfChar, paramInt1, paramInt2));
-      return;
-      label157:
-      if (ArrayList.class.equals(this.jdField_a_of_type_JavaUtilStack.peek().getClass())) {
-        ((ArrayList)this.jdField_a_of_type_JavaUtilStack.peek()).add(new String(paramArrayOfChar, paramInt1, paramInt2));
-      }
-    }
-  }
-  
-  public void endDocument()
-  {
-    System.out.println(anni.a(2131703340));
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    if ((!"plist".equals(paramString3)) || ("key".equals(paramString3))) {
-      this.b = false;
-    }
-    if ("string".equals(paramString3)) {
-      this.c = false;
-    }
-    if ("integer".equals(paramString3)) {
-      this.c = false;
-    }
-    if ("array".equals(paramString3)) {
-      this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaUtilStack.pop();
-    }
-    if ("dict".equals(paramString3)) {
-      this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaUtilStack.pop();
-    }
-  }
-  
-  public void startDocument()
-  {
-    System.out.println(anni.a(2131703329));
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    boolean bool2 = false;
-    if ("plist".equals(paramString3)) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    boolean bool1;
-    if ("dict".equals(paramString3))
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label228;
-      }
-      this.jdField_a_of_type_JavaUtilStack.push(new HashMap());
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        bool1 = true;
-        this.jdField_a_of_type_Boolean = bool1;
-      }
-    }
-    else
-    {
-      if ("key".equals(paramString3)) {
-        this.b = true;
-      }
-      if ("true".equals(paramString3)) {
-        ((HashMap)this.jdField_a_of_type_JavaUtilStack.peek()).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
-      }
-      if ("false".equals(paramString3)) {
-        ((HashMap)this.jdField_a_of_type_JavaUtilStack.peek()).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
-      }
-      if ("array".equals(paramString3))
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          break label295;
-        }
-        paramString1 = new ArrayList();
-        this.jdField_a_of_type_JavaUtilStack.push(paramString1);
-        bool1 = bool2;
-        if (!this.jdField_a_of_type_Boolean) {
-          bool1 = true;
-        }
-        this.jdField_a_of_type_Boolean = bool1;
-      }
-    }
-    for (;;)
-    {
-      if ("string".equals(paramString3)) {
-        this.c = true;
-      }
-      if ("integer".equals(paramString3)) {
-        this.c = true;
-      }
-      return;
-      bool1 = false;
-      break;
-      label228:
-      paramString1 = this.jdField_a_of_type_JavaUtilStack.peek();
-      paramString2 = new HashMap();
-      if ((paramString1 instanceof ArrayList)) {
-        ((ArrayList)paramString1).add(paramString2);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaUtilStack.push(paramString2);
-        break;
-        if ((paramString1 instanceof HashMap)) {
-          ((HashMap)paramString1).put(this.jdField_a_of_type_JavaLangString, paramString2);
-        }
-      }
-      label295:
-      paramString1 = (HashMap)this.jdField_a_of_type_JavaUtilStack.peek();
-      paramString2 = new ArrayList();
-      this.jdField_a_of_type_JavaUtilStack.push(paramString2);
-      paramString1.put(this.jdField_a_of_type_JavaLangString, paramString2);
+    if (this.jdField_a_of_type_Atvy.a != null) {
+      this.jdField_a_of_type_Atvy.a.a().a(true, 200, new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, paramString2, paramBundle });
     }
   }
 }

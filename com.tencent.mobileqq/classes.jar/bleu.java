@@ -1,230 +1,176 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningServiceInfo;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.ilive.IliveLaunchFragment;
-import cooperation.ilive.util.IliveEntranceUtil.1;
-import java.util.List;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
+import android.content.res.XmlResourceParser;
+import java.lang.reflect.Method;
 
 public class bleu
 {
-  private static long a;
-  public static boolean a;
-  private static long b;
-  public static boolean b;
-  
-  public static void a(Context paramContext, String paramString)
+  /* Error */
+  public static int a(Context paramContext, String paramString)
   {
-    QLog.e("IliveEntranceUtil", 1, "liveAnchorEntranceJump source = " + paramString);
-    Intent localIntent = new Intent();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("page_type", 1);
-    localBundle.putString("source", paramString);
-    localBundle.putBoolean("isDebugVersion", false);
-    localBundle.putString("qqVersion", AppSetting.jdField_a_of_type_JavaLangString);
-    localBundle.putLong("start_time", System.currentTimeMillis());
-    localIntent.putExtra("KEY_EXTRAS", localBundle);
-    localIntent.putExtra("KEY_IS_START_LIVE", true);
-    IliveLaunchFragment.startSelf(paramContext, localIntent);
-    bhak.a("anchor_enter_count", null, 0L);
+    // Byte code:
+    //   0: aload_0
+    //   1: aload_1
+    //   2: iconst_0
+    //   3: invokevirtual 18	android/content/Context:createPackageContext	(Ljava/lang/String;I)Landroid/content/Context;
+    //   6: astore_1
+    //   7: aload_1
+    //   8: ifnonnull +15 -> 23
+    //   11: iconst_0
+    //   12: ireturn
+    //   13: astore_1
+    //   14: aload_1
+    //   15: invokevirtual 22	android/content/pm/PackageManager$NameNotFoundException:printStackTrace	()V
+    //   18: aconst_null
+    //   19: astore_1
+    //   20: goto -13 -> 7
+    //   23: aload_1
+    //   24: invokevirtual 26	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   27: astore 5
+    //   29: new 28	android/content/res/Resources
+    //   32: dup
+    //   33: aload 5
+    //   35: aload_0
+    //   36: invokevirtual 32	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   39: invokevirtual 36	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   42: aconst_null
+    //   43: invokespecial 40	android/content/res/Resources:<init>	(Landroid/content/res/AssetManager;Landroid/util/DisplayMetrics;Landroid/content/res/Configuration;)V
+    //   46: astore 4
+    //   48: aload_1
+    //   49: aload 5
+    //   51: invokestatic 43	bleu:a	(Landroid/content/Context;Landroid/content/res/AssetManager;)Landroid/content/res/XmlResourceParser;
+    //   54: astore_0
+    //   55: aload_0
+    //   56: ifnull -45 -> 11
+    //   59: aload_0
+    //   60: invokeinterface 49 1 0
+    //   65: istore_2
+    //   66: iload_2
+    //   67: iconst_1
+    //   68: if_icmpeq -57 -> 11
+    //   71: iload_2
+    //   72: tableswitch	default:+20 -> 92, 2:+52->124
+    //   93: invokeinterface 52 1 0
+    //   98: istore_3
+    //   99: iload_3
+    //   100: istore_2
+    //   101: goto -35 -> 66
+    //   104: astore_0
+    //   105: aload_0
+    //   106: invokevirtual 53	java/io/IOException:printStackTrace	()V
+    //   109: aconst_null
+    //   110: astore_0
+    //   111: goto -56 -> 55
+    //   114: astore_1
+    //   115: aload_1
+    //   116: invokevirtual 54	org/xmlpull/v1/XmlPullParserException:printStackTrace	()V
+    //   119: iconst_0
+    //   120: istore_2
+    //   121: goto -55 -> 66
+    //   124: aload_0
+    //   125: invokeinterface 58 1 0
+    //   130: astore_1
+    //   131: aload_1
+    //   132: invokestatic 64	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   135: ifne -43 -> 92
+    //   138: aload_1
+    //   139: ldc 66
+    //   141: invokevirtual 72	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   144: ifeq -52 -> 92
+    //   147: aload_0
+    //   148: aload 4
+    //   150: ldc 74
+    //   152: invokestatic 77	bleu:a	(Landroid/content/res/XmlResourceParser;Landroid/content/res/Resources;Ljava/lang/String;)Ljava/lang/String;
+    //   155: astore_0
+    //   156: aload_0
+    //   157: invokestatic 64	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   160: ifne -149 -> 11
+    //   163: aload_0
+    //   164: invokestatic 83	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   167: ireturn
+    //   168: astore_1
+    //   169: aload_1
+    //   170: invokevirtual 54	org/xmlpull/v1/XmlPullParserException:printStackTrace	()V
+    //   173: goto -107 -> 66
+    //   176: astore_1
+    //   177: aload_1
+    //   178: invokevirtual 53	java/io/IOException:printStackTrace	()V
+    //   181: goto -115 -> 66
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	184	0	paramContext	Context
+    //   0	184	1	paramString	String
+    //   65	56	2	i	int
+    //   98	2	3	j	int
+    //   46	103	4	localResources	Resources
+    //   27	23	5	localAssetManager	AssetManager
+    // Exception table:
+    //   from	to	target	type
+    //   0	7	13	android/content/pm/PackageManager$NameNotFoundException
+    //   48	55	104	java/io/IOException
+    //   59	66	114	org/xmlpull/v1/XmlPullParserException
+    //   92	99	168	org/xmlpull/v1/XmlPullParserException
+    //   92	99	176	java/io/IOException
   }
   
-  public static void a(blej paramblej)
+  protected static XmlResourceParser a(Context paramContext, AssetManager paramAssetManager)
   {
-    if (paramblej == null) {
-      return;
-    }
-    if (!TextUtils.isEmpty(paramblej.c)) {}
+    int j = 1;
     try
     {
-      paramblej.c = Uri.decode(paramblej.c);
-      if (TextUtils.isEmpty(paramblej.d)) {}
-    }
-    catch (Exception localException1)
-    {
-      try
+      String str2 = (String)Context.class.getMethod("getPackageResourcePath", new Class[0]).invoke(paramContext, new Object[0]);
+      Method localMethod = AssetManager.class.getMethod("getCookieName", new Class[] { Integer.TYPE });
+      String str1 = str2;
+      int i = j;
+      if (str2 == null)
       {
-        paramblej.d = Uri.decode(paramblej.d);
-        QLog.e("IliveEntranceUtil", 1, "liveWatchEntranceJump source = " + paramblej.jdField_a_of_type_JavaLangString + " roomID = " + paramblej.b + " retain = " + paramblej.jdField_a_of_type_Boolean + " sIsAnchorIsLive = " + jdField_a_of_type_Boolean + " sIsAudienceIsLive = " + jdField_b_of_type_Boolean);
-        if (QLog.isColorLevel()) {
-          QLog.i("IliveEntranceUtil", 2, " rtmp = " + paramblej.c + " closeJump = " + paramblej.d);
-        }
-        if (TextUtils.isEmpty(paramblej.b)) {
-          paramblej.b = "-1";
-        }
-        if ((jdField_a_of_type_Boolean) && (b(paramblej.jdField_a_of_type_AndroidContentContext)))
+        str1 = str2;
+        i = j;
+        if (paramContext.getPackageName().equals("android"))
         {
-          QLog.e("IliveEntranceUtil", 1, "sIsAnchorIsLive current anchor is live stop jump");
-          return;
-          localException1 = localException1;
-          localException1.printStackTrace();
+          str1 = "/system/framework/framework-res.apk";
+          i = j;
         }
       }
-      catch (Exception localException2)
+      while (i < 20)
       {
-        for (;;)
-        {
-          localException2.printStackTrace();
+        if (str1 != null) {
+          if (str1.equals(localMethod.invoke(paramAssetManager, new Object[] { Integer.valueOf(i) })))
+          {
+            paramContext = paramAssetManager.openXmlResourceParser(i, "AndroidManifest.xml");
+            return paramContext;
+          }
         }
-        jdField_a_of_type_Boolean = false;
-        bhak.a("watch_enter_count", null, 0L);
-        Intent localIntent = new Intent();
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("page_type", 3);
-        localBundle.putString("source", paramblej.jdField_a_of_type_JavaLangString);
-        localBundle.putString("room_id", paramblej.b);
-        localBundle.putString("rtmp_Url", paramblej.c);
-        localBundle.putLong("start_time", System.currentTimeMillis());
-        localBundle.putStringArrayList("playlist", paramblej.jdField_a_of_type_JavaUtilArrayList);
-        localBundle.putBoolean("retaion", paramblej.jdField_a_of_type_Boolean);
-        localBundle.putString("close_jump", paramblej.d);
-        localBundle.putBoolean("isDebugVersion", false);
-        localBundle.putString("qqVersion", AppSetting.jdField_a_of_type_JavaLangString);
-        localIntent.putExtra("KEY_EXTRAS", localBundle);
-        localIntent.putExtra("KEY_IS_START_LIVE", false);
-        IliveLaunchFragment.startSelf(paramblej.jdField_a_of_type_AndroidContentContext, localIntent);
-      }
-    }
-  }
-  
-  public static boolean a()
-  {
-    return (b(BaseApplicationImpl.getContext())) && ((jdField_a_of_type_Boolean) || (jdField_b_of_type_Boolean));
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    boolean bool = true;
-    jdField_b_of_type_Long = System.currentTimeMillis();
-    QLog.i("IliveEntranceUtil", 1, " offest = " + (jdField_b_of_type_Long - jdField_a_of_type_Long));
-    if (jdField_b_of_type_Long - jdField_a_of_type_Long > paramInt) {}
-    for (;;)
-    {
-      jdField_a_of_type_Long = jdField_b_of_type_Long;
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    if (c())
-    {
-      a(paramContext, "qzone");
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
-  {
-    try
-    {
-      blet.a("IliveEntranceUtilisServiceExisted");
-      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningServices(2147483647);
-      if ((paramContext == null) || (paramContext.size() > 0)) {
-        break label97;
-      }
-      return false;
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        Object localObject;
-        paramContext.printStackTrace();
-        continue;
-        label97:
-        int i = 0;
-        continue;
         i += 1;
       }
+      return paramAssetManager.openXmlResourceParser("AndroidManifest.xml");
     }
-    if (i < paramContext.size())
+    catch (Exception paramContext) {}
+  }
+  
+  protected static String a(XmlResourceParser paramXmlResourceParser, Resources paramResources, String paramString)
+  {
+    return a(paramXmlResourceParser.getAttributeValue("http://schemas.android.com/apk/res/android", paramString), paramResources);
+  }
+  
+  protected static String a(String paramString, Resources paramResources)
+  {
+    if ((paramString == null) || (!paramString.startsWith("@")) || (paramResources == null)) {
+      return paramString;
+    }
+    try
     {
-      localObject = (ActivityManager.RunningServiceInfo)paramContext.get(i);
-      if (localObject != null)
-      {
-        localObject = ((ActivityManager.RunningServiceInfo)localObject).service;
-        if ((localObject != null) && (((ComponentName)localObject).getClassName().equals(paramString))) {
-          return true;
-        }
-      }
+      paramResources = paramResources.getString(Integer.parseInt(paramString.substring(1)));
+      return paramResources;
     }
-    else
+    catch (Resources.NotFoundException paramResources)
     {
-      blet.b("IliveEntranceUtilisServiceExisted");
-      return false;
+      return paramString;
     }
-  }
-  
-  public static boolean a(boolean paramBoolean)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)localObject;
-      localObject = (mwd)localQQAppInterface.getManager(373);
-      if ((localObject != null) && (((mwd)localObject).a()))
-      {
-        b(localQQAppInterface.getApp().getBaseContext(), "进入直播间失败");
-        return false;
-      }
-      if (paramBoolean) {}
-      for (localObject = "通话中，不可发起直播"; localQQAppInterface.a().a(); localObject = "通话中，不可进入直播间")
-      {
-        b(localQQAppInterface.getApp().getBaseContext(), (String)localObject);
-        QLog.e("IliveEntranceUtil", 2, "isBusinessEnableEnterLive isPhoneCalling");
-        return false;
-      }
-      if (localQQAppInterface.a().b())
-      {
-        b(localQQAppInterface.getApp().getBaseContext(), (String)localObject);
-        QLog.e("IliveEntranceUtil", 2, "isBusinessEnableEnterLive isAvChating");
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  private static void b(Context paramContext, String paramString)
-  {
-    ThreadManagerV2.getUIHandlerV2().post(new IliveEntranceUtil.1(paramContext, paramString));
-  }
-  
-  public static boolean b()
-  {
-    return Build.VERSION.SDK_INT >= aqyj.c().a();
-  }
-  
-  private static boolean b(Context paramContext)
-  {
-    boolean bool = a(paramContext, "com.tencent.proxyinner.plugin.loader.PluginToolProcessService");
-    QLog.e("IliveEntranceUtil", 1, "isIlivePluginsServiceExisted : " + bool);
-    return bool;
-  }
-  
-  public static boolean c()
-  {
-    return blen.a(1) == 1;
-  }
-  
-  public static boolean d()
-  {
-    return blen.a(2) == 1;
+    catch (NumberFormatException paramResources) {}
+    return paramString;
   }
 }
 

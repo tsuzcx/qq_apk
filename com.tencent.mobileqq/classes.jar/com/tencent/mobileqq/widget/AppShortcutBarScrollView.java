@@ -7,7 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.HorizontalScrollView;
-import bhuj;
+import bive;
 
 public class AppShortcutBarScrollView
   extends HorizontalScrollView
@@ -15,7 +15,7 @@ public class AppShortcutBarScrollView
   protected float a;
   protected Rect a;
   protected View a;
-  protected bhuj a;
+  protected bive a;
   protected boolean a;
   protected boolean b = true;
   
@@ -113,8 +113,8 @@ public class AppShortcutBarScrollView
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Bhuj != null) {
-      this.jdField_a_of_type_Bhuj.a();
+    if (this.jdField_a_of_type_Bive != null) {
+      this.jdField_a_of_type_Bive.a();
     }
   }
   
@@ -132,9 +132,9 @@ public class AppShortcutBarScrollView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnScrollChangedListener(bhuj parambhuj)
+  public void setOnScrollChangedListener(bive parambive)
   {
-    this.jdField_a_of_type_Bhuj = parambhuj;
+    this.jdField_a_of_type_Bive = parambive;
   }
 }
 

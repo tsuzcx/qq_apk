@@ -1,31 +1,26 @@
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.VideoMsgTools;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
 
 public class aokq
-  extends aojt
+  implements DialogInterface.OnClickListener
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  public aokq(VideoBroadcastReceiver paramVideoBroadcastReceiver, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramQQAppInterface = new aokp(paramQQAppInterface, paramContext);
-    paramQQAppInterface.b = "qqreg";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
+    mru.e(false, false);
+    if (this.jdField_a_of_type_Int == 3000)
     {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
-      }
+      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false, null, true, new Object[0]);
+      VideoBroadcastReceiver.a(this.jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver, 3, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, this.d);
     }
-    return paramQQAppInterface;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    mru.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause);
   }
 }
 

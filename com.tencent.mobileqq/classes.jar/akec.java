@@ -1,15 +1,18 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akec
-  implements bkhw
+  implements View.OnClickListener
 {
-  public akec(SettingActivity2 paramSettingActivity2, bkho parambkho) {}
+  public akec(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bkho.cancel();
-    bglp.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2, 230, anni.a(2131712623), anni.a(2131712620), anni.a(2131712621), anni.a(2131712619), new aked(this), new akee(this)).show();
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

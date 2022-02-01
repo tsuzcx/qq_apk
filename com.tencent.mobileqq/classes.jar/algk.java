@@ -1,14 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class algk
-  implements DialogInterface.OnClickListener
+public class algk
+  implements View.OnClickListener
 {
-  algk(algi paramalgi) {}
+  public algk(DrawHbFragment paramDrawHbFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    if (this.a.a != null) {
+      this.a.a.a(DrawHbFragment.a(this.a).getText().toString());
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

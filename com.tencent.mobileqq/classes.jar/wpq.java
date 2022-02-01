@@ -1,44 +1,51 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDelFeedComment;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class wpq
-  implements wld<wyw, wyy>
+public class wpq
+  extends wri
 {
-  wpq(wpp paramwpp) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  wrk jdField_a_of_type_Wrk;
   
-  public void a(@NonNull wyw paramwyw, @Nullable wyy paramwyy, @NonNull ErrorMessage paramErrorMessage)
+  public wpq(CommentEntry paramCommentEntry, wrk paramwrk)
   {
-    paramwyw = paramwyw.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramwyw.hasNext())
+    this.jdField_a_of_type_JavaLangString = paramCommentEntry.feedId;
+    this.jdField_a_of_type_Int = paramCommentEntry.commentId;
+    this.jdField_a_of_type_Wrk = paramwrk;
+  }
+  
+  public String a()
+  {
+    return wpm.b;
+  }
+  
+  public wrj a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspDelFeedComment localRspDelFeedComment = new qqstory_service.RspDelFeedComment();
+    try
     {
-      localObject = (String)paramwyw.next();
-      wpp.a(this.a).remove(localObject);
+      localRspDelFeedComment.mergeFrom(paramArrayOfByte);
+      return new wpr(localRspDelFeedComment, this.jdField_a_of_type_Wrk);
     }
-    paramwyw = new wpr();
-    paramwyw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    if ((paramErrorMessage.isFail()) || (paramwyy == null))
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      yqp.d("Q.qqstory:TagManager", "request fail for get tag request");
-      wfo.a().dispatch(paramwyw);
-      return;
+      yuk.d("Q.qqstory:FeedCommentDataProvider", "" + paramArrayOfByte);
     }
-    paramErrorMessage = paramwyw.jdField_a_of_type_JavaUtilMap;
-    Object localObject = (wpp)wpm.a(27);
-    paramwyy = paramwyy.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramwyy.hasNext())
-    {
-      wyx localwyx = (wyx)paramwyy.next();
-      ((wpp)localObject).a(localwyx.jdField_a_of_type_JavaLangString, localwyx.jdField_a_of_type_JavaUtilList);
-      paramErrorMessage.put(localwyx.jdField_a_of_type_JavaLangString, localwyx);
-      yqp.a("Q.qqstory:TagManager", "save feedId :%s , %s", localwyx.jdField_a_of_type_JavaLangString, localwyx.jdField_a_of_type_JavaUtilList);
-    }
-    wfo.a().dispatch(paramwyw);
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqDelFeedComment localReqDelFeedComment = new qqstory_service.ReqDelFeedComment();
+    localReqDelFeedComment.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localReqDelFeedComment.comment_id.set(this.jdField_a_of_type_Int);
+    return localReqDelFeedComment.toByteArray();
   }
 }
 

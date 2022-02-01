@@ -1,32 +1,40 @@
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import android.app.Activity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.forward.ForwardShareCardOption;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class avcs
-  implements avcv
+  extends bkia
 {
-  public avcs(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
+  public avcs(ForwardShareCardOption paramForwardShareCardOption) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
-    if ((this.a.jdField_a_of_type_Int == 2) && (this.a.jdField_a_of_type_Avcy != null))
+    this.a.z();
+    if (ForwardShareCardOption.a(this.a) != -1)
     {
-      this.a.jdField_a_of_type_Avcy.a(0, paramView);
-      return;
-    }
-    if ((this.a.jdField_a_of_type_Int == 3) && (this.a.jdField_a_of_type_Avcy != null)) {
-      this.a.jdField_a_of_type_Avcy.a(4, paramView);
+      if ((!paramBoolean) || (paramHashMap == null)) {
+        break label151;
+      }
+      String str = (String)paramHashMap.get("uin");
+      paramHashMap = (String)paramHashMap.get("url");
+      ForwardShareCardOption.a(this.a, paramHashMap);
+      ForwardShareCardOption.b(this.a, paramHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + ForwardShareCardOption.a(this.a) + " mTroopNotNeedVefifyLink=" + ForwardShareCardOption.b(this.a));
+      }
+      if ((str != null) && (str.equals(ForwardShareCardOption.c(this.a)))) {
+        ForwardShareCardOption.a(this.a);
+      }
     }
     for (;;)
     {
-      QLog.d("HotVideoRelativeLayout", 2, "click base view");
+      ForwardShareCardOption.a(this.a, -1);
       return;
-      if ((this.a.jdField_a_of_type_Int == 4) && (this.a.jdField_a_of_type_Avcy != null)) {
-        this.a.jdField_a_of_type_Avcy.a(1, paramView);
-      } else if ((this.a.jdField_a_of_type_Int == 6) && (this.a.jdField_a_of_type_Avcy != null)) {
-        this.a.jdField_a_of_type_Avcy.a(2, paramView);
-      }
+      label151:
+      QQToast.a(this.a.a, 1, this.a.a.getString(2131692671), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
     }
   }
 }

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aouh;
-import aouj;
-import bcst;
+import aphx;
+import aphz;
+import bdll;
 
 class ARTransferPromotionRenderable$17$1
   implements Runnable
@@ -11,7 +11,7 @@ class ARTransferPromotionRenderable$17$1
   
   public void run()
   {
-    bcst.b(null, "dc00898", "", "", "0X80098CF", "0X80098CF", 0, 0, aouh.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARTransferPromotionRenderable$17.this$0).a, Integer.toString((int)this.jdField_a_of_type_Float), "", "");
+    bdll.b(null, "dc00898", "", "", "0X80098CF", "0X80098CF", 0, 0, aphx.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARTransferPromotionRenderable$17.this$0).a, Integer.toString((int)this.jdField_a_of_type_Float), "", "");
   }
 }
 

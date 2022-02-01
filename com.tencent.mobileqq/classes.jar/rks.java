@@ -1,42 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
-public class rks
-  extends pmn
+class rks
+  implements rkm
 {
-  public rks(ReadInJoyPrivacyListFragment paramReadInJoyPrivacyListFragment) {}
+  rks(rkr paramrkr) {}
   
-  public void a(int paramInt1, long paramLong, List<Long> paramList, int paramInt2, int paramInt3, boolean paramBoolean)
+  public void a() {}
+  
+  public void a(float paramFloat) {}
+  
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetPrivacyList | retcode ").append(paramInt1).append(" | feedsId ").append(paramLong).append("| totalCnt ").append(paramInt3).append(" | nextPageStartIndex ").append(paramInt2).append(" | hasNextPage ").append(paramBoolean).append("| uinList size ");
-    int i;
-    if (paramList != null)
+    switch (paramInt)
     {
-      i = paramList.size();
-      QLog.d("ReadInJoyPrivacyListFragment", 1, i);
-      if (paramInt1 != 0) {
-        break label180;
-      }
-      ReadInJoyPrivacyListFragment.a(this.a, paramInt2);
-      ReadInJoyPrivacyListFragment.b(this.a, paramInt3);
-      ReadInJoyPrivacyListFragment.a(this.a, paramBoolean);
-      if (paramList != null) {
-        ReadInJoyPrivacyListFragment.a(this.a).addAll(paramList);
-      }
-      if (ReadInJoyPrivacyListFragment.a(this.a) != null) {
-        ReadInJoyPrivacyListFragment.a(this.a).a(ReadInJoyPrivacyListFragment.a(this.a));
-      }
-    }
-    label180:
-    while (ReadInJoyPrivacyListFragment.a(this.a) == null)
-    {
+    default: 
       return;
-      i = 0;
-      break;
+    case 0: 
+      rkr.a(this.a, paramString1);
+      rkr.b(this.a, paramString2);
+      rkr.a(this.a, 3);
+      return;
+    case 1001: 
+      rkr.b(this.a, 10);
+      return;
+    case 1002: 
+      rkr.b(this.a, 9);
+      return;
+    case 1003: 
+      rkr.b(this.a, 11);
+      return;
     }
-    ReadInJoyPrivacyListFragment.a(this.a).a();
+    rkr.b(this.a, 13);
+    rkr.c(this.a, 1002);
   }
 }
 

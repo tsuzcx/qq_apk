@@ -1,15 +1,20 @@
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
-import rx.Observable.OnSubscribe;
-import rx.Subscriber;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class urr
-  implements Observable.OnSubscribe<urs>
+class urr
+  implements View.OnClickListener
 {
-  public urr(WSVerticalDataManager paramWSVerticalDataManager, uju paramuju, boolean paramBoolean1, ure paramure, boolean paramBoolean2, Object paramObject, String paramString) {}
+  urr(urq paramurq) {}
   
-  public void a(Subscriber<? super urs> paramSubscriber)
+  public void onClick(View paramView)
   {
-    WSVerticalDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager, this.jdField_a_of_type_Uju, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Ure, this.b, this.jdField_a_of_type_JavaLangObject, paramSubscriber, this.jdField_a_of_type_JavaLangString);
+    if (urq.a(this.a).getActivity() != null) {
+      urq.a(this.a).getActivity().doOnBackPressed();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

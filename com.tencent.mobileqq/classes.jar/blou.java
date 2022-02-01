@@ -1,22 +1,12 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.view.animation.Interpolator;
 
-class blou
-  extends Handler
+public final class blou
+  implements Interpolator
 {
-  blou(blos paramblos, Looper paramLooper)
+  public float getInterpolation(float paramFloat)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 100001)
-    {
-      blos.b(this.a);
-      blos.a(this.a).sendEmptyMessageDelayed(100001, 1000L);
-    }
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

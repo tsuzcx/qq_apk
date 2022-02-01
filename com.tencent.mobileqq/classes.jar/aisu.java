@@ -1,10 +1,44 @@
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public abstract interface aisu
+class aisu
+  implements URLDrawable.URLDrawableListener
 {
-  public abstract void a();
+  aisu(aiss paramaiss) {}
   
-  public abstract void a(ReadInJoySearchHistoryEntity paramReadInJoySearchHistoryEntity);
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  {
+    aiss.a(this.a).remove(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener onLoadCanceled");
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    aiss.a(this.a, paramURLDrawable);
+    aiss.a(this.a).remove(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener onLoadFialed");
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = aiss.a(this.a);
+    aiss.a(this.a, paramURLDrawable, l1 - l2);
+    aiss.a(this.a, true);
+    aiss.a(this.a).remove(paramURLDrawable);
+    this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener downloadSuccess");
+    }
+  }
 }
 
 

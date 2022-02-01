@@ -1,50 +1,50 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import apcf;
-import bctj;
-import bgnt;
+import appv;
+import bdmc;
+import bhnv;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARReport$3
   implements Runnable
 {
-  public ARReport$3(apcf paramapcf, long paramLong1, long paramLong2, long paramLong3, int paramInt1, String paramString, int paramInt2, long paramLong4, long paramLong5, long paramLong6, int paramInt3) {}
+  public ARReport$3(appv paramappv, long paramLong1, long paramLong2, long paramLong3, int paramInt1, String paramString, int paramInt2, long paramLong4, long paramLong5, long paramLong6, int paramInt3) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    if (apcf.a(this.this$0, this.jdField_a_of_type_Long)) {
+    if (appv.a(this.this$0, this.jdField_a_of_type_Long)) {
       localHashMap.put("cloud_choose_time", String.valueOf(this.jdField_a_of_type_Long));
     }
-    if (apcf.a(this.this$0, this.jdField_b_of_type_Long)) {
+    if (appv.a(this.this$0, this.jdField_b_of_type_Long)) {
       localHashMap.put("cloud_upload_time", String.valueOf(this.jdField_b_of_type_Long));
     }
-    if (apcf.a(this.this$0, this.jdField_c_of_type_Long)) {
+    if (appv.a(this.this$0, this.jdField_c_of_type_Long)) {
       localHashMap.put("cloud_upload_size", String.valueOf(this.jdField_c_of_type_Long));
     }
-    if (apcf.a(this.this$0, this.jdField_a_of_type_Int)) {
+    if (appv.a(this.this$0, this.jdField_a_of_type_Int)) {
       localHashMap.put("cloud_upload_times", String.valueOf(this.jdField_a_of_type_Int));
     }
     if (this.jdField_a_of_type_JavaLangString != null) {
       localHashMap.put("cloud_upload_imgid", this.jdField_a_of_type_JavaLangString);
     }
-    if (apcf.a(this.this$0, this.jdField_b_of_type_Int)) {
+    if (appv.a(this.this$0, this.jdField_b_of_type_Int)) {
       localHashMap.put("cloud_recognize_time", String.valueOf(this.jdField_b_of_type_Int));
     }
-    if (apcf.a(this.this$0, this.d)) {
+    if (appv.a(this.this$0, this.d)) {
       localHashMap.put("cloud_all_size", String.valueOf(this.d));
     }
-    if (apcf.a(this.this$0, this.e)) {
+    if (appv.a(this.this$0, this.e)) {
       localHashMap.put("cloud_time", String.valueOf(this.e));
     }
-    localHashMap.put("cloud_net_type", String.valueOf(bgnt.a(BaseApplication.getContext())));
-    if (apcf.a(this.this$0, this.f)) {
+    localHashMap.put("cloud_net_type", String.valueOf(bhnv.a(BaseApplication.getContext())));
+    if (appv.a(this.this$0, this.f)) {
       localHashMap.put("cloud_all_time", String.valueOf(this.f));
     }
     localHashMap.put("cloud_all_result", String.valueOf(this.jdField_c_of_type_Int));
     localHashMap.put("cloud_type", "0");
-    bctj.a(BaseApplication.getContext()).a("", "AndroidactARCloud", true, 0L, 0L, localHashMap, "", true);
+    bdmc.a(BaseApplication.getContext()).a("", "AndroidactARCloud", true, 0L, 0L, localHashMap, "", true);
   }
 }
 

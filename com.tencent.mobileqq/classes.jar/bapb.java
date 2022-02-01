@@ -1,10 +1,9 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import com.tencent.mobileqq.data.QCallRecent;
+import java.util.List;
 
 public abstract interface bapb
 {
-  public abstract void a(FilterCategoryItem paramFilterCategoryItem);
-  
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(List<QCallRecent> paramList);
 }
 
 

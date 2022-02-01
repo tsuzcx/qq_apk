@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class afvc
-  implements afvp
+public class afvc
+  implements View.OnClickListener
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  public afvc(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public void onClick(View paramView)
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.frienduin, 34);
-    paramQQAppInterface.h = paramSessionInfo.d;
-    return paramQQAppInterface;
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

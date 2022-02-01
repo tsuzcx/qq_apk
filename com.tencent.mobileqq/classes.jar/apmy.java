@@ -1,11 +1,25 @@
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import mqq.app.QQPermissionCallback;
+
 class apmy
-  implements apne
+  implements QQPermissionCallback
 {
-  apmy(apms paramapms, apne paramapne) {}
+  apmy(apmt paramapmt) {}
   
-  public void a(boolean paramBoolean)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Apne.a(paramBoolean);
+    paramArrayOfString = new apnb();
+    paramArrayOfString.a = 2;
+    apnt.a(this.a.a.recognitions, apmt.a(this.a), paramArrayOfString);
+    if (apmt.a(this.a) != null) {
+      apmt.a(this.a).a(0, apmt.a(this.a));
+    }
+    apmt.a(this.a, null);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.grant();
   }
 }
 

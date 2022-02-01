@@ -1,24 +1,107 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import java.util.List;
+import java.util.Set;
 
 public class akps
-  implements View.OnClickListener
 {
-  public akps(LingHbFragment paramLingHbFragment) {}
+  public static int a;
+  public static String a;
+  public long a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
   
-  public void onClick(View paramView)
+  static
   {
-    QLog.i("LingHbFragment", 2, "change others...");
-    if (this.a.channel == 65536) {}
-    for (String str = "yyhongbao.word.change";; str = "klhongbao.word.change")
-    {
-      this.a.addUploadData(str, "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    jdField_a_of_type_JavaLangString = "-5";
+    jdField_a_of_type_Int = -5;
+  }
+  
+  public akps()
+  {
+    this.jdField_d_of_type_Int = 0;
+  }
+  
+  public static final akps a(TroopClipPic paramTroopClipPic, Set<String> paramSet)
+  {
+    akps localakps = new akps();
+    localakps.jdField_c_of_type_JavaLangString = paramTroopClipPic.id;
+    localakps.jdField_d_of_type_JavaLangString = paramTroopClipPic.clipInfo;
+    localakps.jdField_d_of_type_Int = paramTroopClipPic.type;
+    localakps.jdField_b_of_type_Int = 1;
+    if (paramSet != null) {
+      localakps.jdField_c_of_type_Boolean = paramSet.contains(paramTroopClipPic.id);
     }
+    return localakps;
+  }
+  
+  public static final boolean a(List<akps> paramList1, List<akps> paramList2)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramList1 == paramList2) {
+      bool1 = true;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return bool1;
+          bool1 = bool2;
+        } while (paramList1 == null);
+        bool1 = bool2;
+      } while (paramList2 == null);
+      bool1 = bool2;
+    } while (paramList1.size() != paramList2.size());
+    int i = 0;
+    for (;;)
+    {
+      if (i >= paramList1.size()) {
+        break label89;
+      }
+      bool1 = bool2;
+      if (!((akps)paramList1.get(i)).equals(paramList2.get(i))) {
+        break;
+      }
+      i += 1;
+    }
+    label89:
+    return true;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof akps))) {}
+    do
+    {
+      return false;
+      paramObject = (akps)paramObject;
+    } while ((!bhjx.a(this.jdField_c_of_type_JavaLangString, paramObject.jdField_c_of_type_JavaLangString)) || (!bhjx.a(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) || (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int) || (this.jdField_a_of_type_Boolean != paramObject.jdField_a_of_type_Boolean) || (this.jdField_c_of_type_Boolean != paramObject.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean != paramObject.jdField_d_of_type_Boolean) || (!bhjx.a(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString)) || (this.jdField_d_of_type_Int != paramObject.jdField_d_of_type_Int) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
+    return true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AvatarInfo=[").append("seq").append("=").append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(" ").append("fromType").append("=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(" ").append("type").append("=").append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(" ").append("isUploading").append("=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" ").append("isVerifying").append("=").append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(" ").append("clipInfo").append("=").append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(" ").append("ts").append("=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" ").append("localFile").append("=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

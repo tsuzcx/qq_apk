@@ -1,55 +1,62 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity.14.1;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import android.os.Bundle;
+import android.os.Process;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import mqq.os.MqqHandler;
+import eipc.EIPCResult;
 
 public class admx
-  implements bkmq
+  extends QIPCModule
 {
-  public admx(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  private static admx a;
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public admx(String paramString)
   {
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.aq_();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
+    super(paramString);
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public static admx a()
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return true;
+    if (a == null) {}
+    try
+    {
+      a = new admx("HardCoderModule");
+      return a;
     }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    EIPCResult localEIPCResult = null;
     if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "onViewCompleteVisableAndReleased begin refresh");
+      QLog.d("HardCoder.QQManager", 2, "onCall action = " + paramString);
     }
-    if (this.a.c())
+    if (paramString.equals("start"))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
-      this.a.b = true;
-      AssociatedAccountActivity.b(this.a, false, true);
-      return true;
+      paramInt = paramBundle.getInt("key_delay");
+      i = paramBundle.getInt("key_cpu");
+      j = paramBundle.getInt("key_io");
+      k = paramBundle.getInt("key_bind");
+      m = paramBundle.getInt("key_timeout");
+      n = paramBundle.getInt("key_scene");
+      l = paramBundle.getLong("key_action");
+      paramString = paramBundle.getString("key_tag");
+      localEIPCResult = EIPCResult.createResult(adms.a().a(paramInt, i, j, k, m, n, l, Process.myTid(), paramString), null);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
-    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new AssociatedAccountActivity.14.1(this), 800L);
-    return true;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
+    while (!paramString.equals("stop"))
+    {
+      int i;
+      int j;
+      int k;
+      int m;
+      int n;
+      long l;
+      return localEIPCResult;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
+    paramInt = paramBundle.getInt("key_code");
+    adms.a().a(paramInt);
+    return null;
   }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

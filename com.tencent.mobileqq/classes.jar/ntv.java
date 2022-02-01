@@ -1,39 +1,21 @@
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.view.DragFrameLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public class ntv
-  implements nvh
+class ntv
+  implements View.OnClickListener
 {
-  public ntv(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  ntv(ntc paramntc, String paramString) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public void onClick(View paramView)
   {
-    if (paramInt1 - paramInt3 > bggq.a(this.a, 60.0F))
-    {
-      PublicAccountAdvertisementActivity.a(this.a);
-      PublicAccountAdvertisementActivity.b(this.a);
-      this.a.finish();
-      return;
-    }
-    PublicAccountAdvertisementActivity.a(this.a).a();
-  }
-  
-  public boolean a()
-  {
-    return (!PublicAccountAdvertisementActivity.a(this.a)) && (!PublicAccountAdvertisementActivity.b(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    Intent localIntent = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    ((BaseActivity)this.jdField_a_of_type_Ntc.a.get()).startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

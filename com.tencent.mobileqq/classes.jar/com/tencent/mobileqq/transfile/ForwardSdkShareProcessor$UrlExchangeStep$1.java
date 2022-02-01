@@ -2,12 +2,12 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import aukw;
-import bdup;
-import bduz;
-import bdzn;
-import bipi;
-import bitd;
+import avcw;
+import betj;
+import bett;
+import beyg;
+import bjqh;
+import bjuc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -17,47 +17,47 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-import nlw;
+import nnr;
 
 public class ForwardSdkShareProcessor$UrlExchangeStep$1
   implements Runnable
 {
-  public ForwardSdkShareProcessor$UrlExchangeStep$1(bduz parambduz) {}
+  public ForwardSdkShareProcessor$UrlExchangeStep$1(bett parambett) {}
   
   public void run()
   {
-    this.a.a("UrlExchangeStep|run,retry=" + bduz.a(this.a));
+    this.a.a("UrlExchangeStep|run,retry=" + bett.a(this.a));
     if (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
       this.a.f();
       return;
     }
     Object localObject = new Bundle();
-    String str = this.a.jdField_b_of_type_Bdup.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+    String str = this.a.jdField_b_of_type_Betj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
     int i;
     long l;
     boolean bool;
-    if ((!bdup.a(this.a.jdField_b_of_type_Bdup).get()) && (TextUtils.isEmpty(bdup.a(this.a.jdField_b_of_type_Bdup))))
+    if ((!betj.a(this.a.jdField_b_of_type_Betj).get()) && (TextUtils.isEmpty(this.a.jdField_b_of_type_Betj.e)))
     {
       i = 0;
       ((Bundle)localObject).putString("report_type", "102");
       ((Bundle)localObject).putString("act_type", "52");
       ((Bundle)localObject).putString("intext_3", "0");
-      ((Bundle)localObject).putString("stringext_1", bdup.e(this.a.jdField_b_of_type_Bdup));
+      ((Bundle)localObject).putString("stringext_1", this.a.jdField_b_of_type_Betj.jdField_a_of_type_JavaLangString);
       ((Bundle)localObject).putString("intext_4", "" + i);
-      bipi.a().a((Bundle)localObject, "", str, false);
+      bjqh.a().a((Bundle)localObject, "", str, false);
       l = System.currentTimeMillis();
-      aukw.a("batch_url_exchange");
+      avcw.a("batch_url_exchange");
       localObject = new Bundle();
-      HashMap localHashMap = nlw.a(this.a.jdField_b_of_type_Bdup.jdField_a_of_type_AndroidContentContext, str, bdup.f(this.a.jdField_b_of_type_Bdup), 1, bdup.a(this.a.jdField_b_of_type_Bdup), (Bundle)localObject);
+      HashMap localHashMap = nnr.a(this.a.jdField_b_of_type_Betj.jdField_a_of_type_AndroidContentContext, str, betj.a(this.a.jdField_b_of_type_Betj), 1, this.a.jdField_b_of_type_Betj.b, (Bundle)localObject);
       l = System.currentTimeMillis() - l;
       bool = ((Bundle)localObject).getBoolean("isSuccess");
       i = ((Bundle)localObject).getInt("retcode", -1);
-      bduz.b(this.a).set(i);
+      bett.b(this.a).set(i);
       localObject = new HashMap();
       ((HashMap)localObject).put("param_ret_code", Integer.toString(i));
-      aukw.a("batch_url_exchange", str, (HashMap)localObject, bool);
-      this.a.a("UrlExchangeStep|run,suc=" + bool + ",ret=" + bduz.b(this.a) + ",cost=" + l);
+      avcw.a("batch_url_exchange", str, (HashMap)localObject, bool);
+      this.a.a("UrlExchangeStep|run,suc=" + bool + ",ret=" + bett.b(this.a) + ",cost=" + l);
       Bundle localBundle = new Bundle();
       localBundle.putString("report_type", "102");
       localBundle.putString("act_type", "12");
@@ -68,24 +68,24 @@ public class ForwardSdkShareProcessor$UrlExchangeStep$1
       localObject = "0";
       label415:
       localBundle.putString("intext_1", (String)localObject);
-      localBundle.putString("intext_2", "" + bduz.b(this.a));
+      localBundle.putString("intext_2", "" + bett.b(this.a));
       localBundle.putString("intext_5", "" + l);
       if (!bool) {
-        localBundle.putString("stringext_1", bdup.e(this.a.jdField_b_of_type_Bdup));
+        localBundle.putString("stringext_1", this.a.jdField_b_of_type_Betj.jdField_a_of_type_JavaLangString);
       }
-      bipi.a().a(localBundle, "", str, false);
+      bjqh.a().a(localBundle, "", str, false);
       if (!bool) {
         break label1107;
       }
-      bdup.a(this.a.jdField_b_of_type_Bdup).putAll(localHashMap);
-      bdup.c(this.a.jdField_b_of_type_Bdup).set(true);
-      this.a.a("UrlExchangeStep|run,url=" + bdup.a(this.a.jdField_b_of_type_Bdup).toString());
-      localObject = (String)bdup.a(this.a.jdField_b_of_type_Bdup).get("imageUrl");
+      this.a.jdField_b_of_type_Betj.b.putAll(localHashMap);
+      this.a.jdField_b_of_type_Betj.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.a.a("UrlExchangeStep|run,url=" + this.a.jdField_b_of_type_Betj.b.toString());
+      localObject = (String)this.a.jdField_b_of_type_Betj.b.get("imageUrl");
       if (localObject != null)
       {
-        aukw.a("reuse_image_for_aio");
-        bitd.a(false, bdup.a(this.a.jdField_b_of_type_Bdup), bdup.a(this.a.jdField_b_of_type_Bdup), (String)localObject);
-        aukw.a("reuse_image_for_aio", str, true);
+        avcw.a("reuse_image_for_aio");
+        bjuc.a(false, this.a.jdField_b_of_type_Betj.e, this.a.jdField_b_of_type_Betj.e, (String)localObject);
+        avcw.a("reuse_image_for_aio", str, true);
       }
     }
     label1099:
@@ -93,54 +93,54 @@ public class ForwardSdkShareProcessor$UrlExchangeStep$1
     do
     {
       if (!bool) {
-        QLog.i("Q.share.ForwardSdkShareProcessor", 1, "UrlExchangeStep|ret=" + bduz.b(this.a) + ",cost=" + l + ",url=" + bdup.a(this.a.jdField_b_of_type_Bdup).toString());
+        QLog.i("Q.share.ForwardSdkShareProcessor", 1, "UrlExchangeStep|ret=" + bett.b(this.a) + ",cost=" + l + ",url=" + this.a.jdField_b_of_type_Betj.b.toString());
       }
-      localObject = this.a.jdField_b_of_type_Bdup.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_b_of_type_Bdup.jdField_a_of_type_Bdzn.c, this.a.jdField_b_of_type_Bdup.jdField_a_of_type_Bdzn.jdField_a_of_type_Int, this.a.jdField_b_of_type_Bdup.jdField_a_of_type_Bdzn.jdField_a_of_type_Long);
+      localObject = this.a.jdField_b_of_type_Betj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.c, this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.jdField_a_of_type_Int, this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.jdField_a_of_type_Long);
       if ((localObject != null) && ((localObject instanceof MessageForStructing)) && ((((MessageForStructing)localObject).structingMsg instanceof AbsShareMsg)))
       {
         localObject = (AbsShareMsg)((MessageForStructing)localObject).structingMsg;
-        str = (String)bdup.a(this.a.jdField_b_of_type_Bdup).get("targetUrl");
+        str = (String)this.a.jdField_b_of_type_Betj.b.get("targetUrl");
         if (str != null) {
           ((AbsShareMsg)localObject).mMsgUrl = str;
         }
-        str = (String)bdup.a(this.a.jdField_b_of_type_Bdup).get("sourceUrl");
+        str = (String)this.a.jdField_b_of_type_Betj.b.get("sourceUrl");
         if (str != null) {
           ((AbsShareMsg)localObject).mSourceUrl = str;
         }
-        str = (String)bdup.a(this.a.jdField_b_of_type_Bdup).get("sourceIcon");
+        str = (String)this.a.jdField_b_of_type_Betj.b.get("sourceIcon");
         if (str != null) {
           ((AbsShareMsg)localObject).mSourceIcon = str;
         }
-        str = (String)bdup.a(this.a.jdField_b_of_type_Bdup).get("audioUrl");
+        str = (String)this.a.jdField_b_of_type_Betj.b.get("audioUrl");
         if (str != null) {
           ((AbsShareMsg)localObject).mContentSrc = str;
         }
-        str = (String)bdup.a(this.a.jdField_b_of_type_Bdup).get("imageUrl");
+        str = (String)this.a.jdField_b_of_type_Betj.b.get("imageUrl");
         if (str != null)
         {
           ((AbsShareMsg)localObject).shareData.imageUrlStatus = 1;
           ((AbsShareMsg)localObject).updateCover(str);
         }
-        if (bdup.c(this.a.jdField_b_of_type_Bdup).get()) {
+        if (this.a.jdField_b_of_type_Betj.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
           ((AbsShareMsg)localObject).shareData.shortUrlStatus = 1;
         }
-        this.a.jdField_b_of_type_Bdup.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Bdup.jdField_a_of_type_Bdzn.c, this.a.jdField_b_of_type_Bdup.jdField_a_of_type_Bdzn.jdField_a_of_type_Int, this.a.jdField_b_of_type_Bdup.jdField_a_of_type_Bdzn.jdField_a_of_type_Long, ((AbsShareMsg)localObject).getBytes());
+        this.a.jdField_b_of_type_Betj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.c, this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.jdField_a_of_type_Int, this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.jdField_a_of_type_Long, ((AbsShareMsg)localObject).getBytes());
       }
       this.a.b();
       return;
-      i = bdup.a(this.a.jdField_b_of_type_Bdup).length();
+      i = this.a.jdField_b_of_type_Betj.e.length();
       break;
       localObject = "1";
       break label415;
-      if ((bduz.b(this.a).get() == 100000) && (bdup.c(this.a.jdField_b_of_type_Bdup) < 2))
+      if ((bett.b(this.a).get() == 100000) && (betj.b(this.a.jdField_b_of_type_Betj) < 2))
       {
-        bdup.d(this.a.jdField_b_of_type_Bdup);
-        bdup.d(this.a.jdField_b_of_type_Bdup, null);
-        bdup.a(this.a.jdField_b_of_type_Bdup, true);
-        bdup.a(this.a.jdField_b_of_type_Bdup);
+        betj.c(this.a.jdField_b_of_type_Betj);
+        betj.a(this.a.jdField_b_of_type_Betj, null);
+        betj.a(this.a.jdField_b_of_type_Betj, true);
+        betj.a(this.a.jdField_b_of_type_Betj);
         return;
       }
-    } while ((bduz.b(this.a).get() != -1) || (bduz.a(this.a).getAndIncrement() >= 2));
+    } while ((bett.b(this.a).get() != -1) || (bett.a(this.a).getAndIncrement() >= 2));
     ThreadManager.post(this, 8, null, true);
   }
 }

@@ -1,131 +1,570 @@
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.PointF;
+import android.os.SystemClock;
+import com.tencent.av.AVFunDrawing.DrawingInfo;
+import com.tencent.av.AVFunDrawing.MessageBody;
+import com.tencent.av.AVFunDrawing.PointInfo;
+import com.tencent.av.AVFunDrawing.VersionInfo;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.doodle.DoodleLogic.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBFloatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.locks.ReentrantLock;
+import mqq.os.MqqHandler;
 
 public class lln
-  extends BitmapDrawable
 {
-  protected float a;
-  protected int a;
-  private Matrix a = new Matrix();
-  protected float[] a;
-  protected float b;
-  protected int b;
-  protected float c;
-  protected float d;
-  protected float e;
-  protected float f;
-  protected float g;
-  protected float h;
-  protected float i;
-  protected float j;
-  protected float k;
-  protected float l;
-  protected float m;
-  protected float n;
-  protected float o;
-  protected float p;
-  private float q;
-  private float r;
-  private float s;
-  private float t = 1.0F;
-  private float u;
-  private float v;
-  private float w;
-  private float x;
+  private static lln jdField_a_of_type_Lln;
+  static int f;
+  public float a;
+  public int a;
+  public VideoController a;
+  public ConcurrentLinkedQueue<llm> a;
+  public ReentrantLock a;
+  private llo jdField_a_of_type_Llo;
+  public llq a;
+  public boolean a;
+  public llm[] a;
+  public boolean[] a;
+  public int b;
+  ConcurrentLinkedQueue<llp> b;
+  public boolean b;
+  public int c;
+  public int d;
+  public int e;
   
-  public lln(BitmapDrawable paramBitmapDrawable)
+  public lln()
   {
-    super(paramBitmapDrawable.getBitmap());
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+    this.jdField_a_of_type_ArrayOfLlm = new llm[2];
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -65536;
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_Float = -1.0F;
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+    this.jdField_a_of_type_ArrayOfBoolean = new boolean[2];
+    this.jdField_a_of_type_ComTencentAvVideoController = VideoController.a();
+    this.jdField_a_of_type_Llq = new llq(this);
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   }
   
-  private void a()
+  public static lln a()
   {
-    this.a.reset();
-    this.a.preRotate(this.s, this.q, this.r);
-    this.a.preScale(this.t, this.t, this.q, this.r);
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (this.s != paramFloat)
+    try
     {
-      this.s = paramFloat;
-      a();
+      if (jdField_a_of_type_Lln == null) {
+        jdField_a_of_type_Lln = new lln();
+      }
+      return jdField_a_of_type_Lln;
     }
+    finally {}
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  private void a(int paramInt)
   {
-    a(this.u + paramFloat1, this.v + paramFloat2, this.w, this.x);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    Rect localRect1 = getBounds();
-    Rect localRect2 = new Rect();
-    this.u = paramFloat1;
-    this.v = paramFloat2;
-    this.w = paramFloat3;
-    this.x = paramFloat4;
-    localRect2.left = ((int)this.u);
-    localRect2.top = ((int)this.v);
-    localRect2.right = ((int)(this.u + this.w));
-    localRect2.bottom = ((int)(this.v + this.x));
-    if (!localRect1.equals(localRect2)) {
-      setBounds(localRect2);
-    }
-  }
-  
-  public void b(float paramFloat)
-  {
-    if (this.t != paramFloat)
+    llm localllm1 = this.jdField_a_of_type_ArrayOfLlm[paramInt];
+    if (localllm1 != null)
     {
-      this.t = paramFloat;
-      a();
+      localllm1.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      if (this.jdField_a_of_type_Llo != null) {
+        this.jdField_a_of_type_Llo.a(paramInt);
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+      while (localIterator.hasNext())
+      {
+        llm localllm2 = (llm)localIterator.next();
+        if (localllm1.jdField_a_of_type_Long - localllm2.jdField_a_of_type_Long <= 1200L) {
+          localllm2.jdField_a_of_type_Long = localllm1.jdField_a_of_type_Long;
+        }
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(localllm1);
     }
+    this.jdField_a_of_type_ArrayOfLlm[paramInt] = null;
+    QLog.w("DoodleLogic", 1, "offerDoodle, index[" + paramInt + "], item[" + localllm1 + "], size[" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() + "]");
   }
   
-  public void b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  private void b(int paramInt)
   {
-    setColorFilter(Color.argb(255, (int)(paramFloat1 * 255.0F), (int)(paramFloat2 * 255.0F), (int)(paramFloat3 * 255.0F)), PorterDuff.Mode.SRC_ATOP);
-    setAlpha((int)(paramFloat4 * 255.0F));
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    paramCanvas.save();
-    paramCanvas.concat(this.a);
-    super.draw(paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    int i1 = 1;
-    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-    float f1 = (paramInt1 + paramInt3) / 2;
-    float f2 = (paramInt2 + paramInt4) / 2;
-    paramInt1 = 0;
-    if (this.q != f1)
+    int i = 0;
+    llm localllm = this.jdField_a_of_type_ArrayOfLlm[0];
+    AVFunDrawing.PointInfo localPointInfo = new AVFunDrawing.PointInfo();
+    localPointInfo.uint32_type.set(paramInt);
+    AVFunDrawing.MessageBody localMessageBody = new AVFunDrawing.MessageBody();
+    localMessageBody.uint32_msg_type.set(2);
+    AVFunDrawing.DrawingInfo localDrawingInfo = new AVFunDrawing.DrawingInfo();
+    if (localllm != null) {
+      i = 1;
+    }
+    if (i != 0)
     {
-      this.q = f1;
-      paramInt1 = 1;
+      float f1 = localllm.jdField_a_of_type_AndroidGraphicsPointF.x;
+      float f2 = localllm.jdField_a_of_type_AndroidGraphicsPointF.y;
+      localPointInfo.float_x.set(f1);
+      localPointInfo.float_y.set(f2);
+      localDrawingInfo.uint32_pen_type.set(localllm.jdField_a_of_type_Int);
+      localDrawingInfo.str_pen_name.set(localllm.jdField_b_of_type_JavaLangString);
+      localDrawingInfo.str_pen_color.set("#" + Integer.toHexString(localllm.e));
+      localDrawingInfo.uint32_pen_width.set(localllm.jdField_b_of_type_Int);
+      localDrawingInfo.uint32_screen_width.set(localllm.c);
+      localDrawingInfo.uint32_screen_height.set(localllm.d);
+      localDrawingInfo.msg_point_info.add(localPointInfo);
+      localMessageBody.drawingInfo.set(localDrawingInfo);
+      i = a();
+      localMessageBody.uint32_seq.set(i);
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(new llp(localMessageBody));
+      if (paramInt != 3) {
+        break label290;
+      }
+      if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() == 1) {
+        a(100L);
+      }
     }
-    if (this.r != f2)
+    label290:
+    while (this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() != 1)
     {
-      this.r = f2;
-      paramInt1 = i1;
+      return;
+      lzq.a("没有doodleItem");
+      break;
     }
+    b();
+  }
+  
+  int a()
+  {
+    try
+    {
+      f += 1;
+      int i = f;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public int a(byte[] paramArrayOfByte)
+  {
+    Object localObject1 = new AVFunDrawing.MessageBody();
+    int j = 0;
+    int i = 0;
+    int n = i;
+    int i1 = j;
+    try
+    {
+      paramArrayOfByte = (AVFunDrawing.MessageBody)((AVFunDrawing.MessageBody)localObject1).mergeFrom(paramArrayOfByte);
+      n = i;
+      i1 = j;
+      j = paramArrayOfByte.uint32_msg_type.get();
+      switch (j)
+      {
+      case 1: 
+        n = j;
+        i1 = j;
+        localObject1 = paramArrayOfByte.versionInfo;
+        n = j;
+        i1 = j;
+        this.e = ((AVFunDrawing.VersionInfo)localObject1).uint32_version.get();
+        n = j;
+        i1 = j;
+        if (((AVFunDrawing.VersionInfo)localObject1).uint32_support_drawing.get() == 0) {
+          break label245;
+        }
+        bool = true;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        QLog.w("DoodleLogic", 1, "receiveDoodle, InvalidProtocolBufferMicroException", paramArrayOfByte);
+        return n;
+        boolean bool = false;
+      }
+      n = j;
+      i1 = j;
+      localObject1 = paramArrayOfByte.drawingInfo;
+      n = j;
+      i1 = j;
+      l1 = paramArrayOfByte.uint64_time.get();
+      n = j;
+      i1 = j;
+      l2 = AudioHelper.a();
+      if (l2 <= l1) {
+        break label837;
+      }
+      k = (int)(l2 - l1);
+      n = j;
+      i1 = j;
+      if (((AVFunDrawing.DrawingInfo)localObject1).msg_point_info.size() <= 0) {
+        break label977;
+      }
+      n = j;
+      i1 = j;
+      localObject2 = (AVFunDrawing.PointInfo)((AVFunDrawing.DrawingInfo)localObject1).msg_point_info.get(0);
+      n = j;
+      i1 = j;
+      m = ((AVFunDrawing.PointInfo)localObject2).uint32_type.get();
+      n = j;
+      i1 = j;
+      f1 = ((AVFunDrawing.PointInfo)localObject2).float_x.get();
+      n = j;
+      i1 = j;
+      f2 = ((AVFunDrawing.PointInfo)localObject2).float_y.get();
+      n = j;
+      i1 = j;
+      localObject2 = this.jdField_a_of_type_ArrayOfLlm[1];
+      if (m != 1) {
+        break label850;
+      }
+      n = j;
+      i1 = j;
+      this.jdField_a_of_type_ArrayOfLlm[1] = llr.a(((AVFunDrawing.DrawingInfo)localObject1).uint32_pen_type.get());
+      i = m;
+      n = j;
+      i1 = j;
+      QLog.w("DoodleLogic", 1, "receiveDoodle, point_type[" + m + "->" + i + "], pt[" + f1 + ", " + f2 + "], uint32_seq[" + paramArrayOfByte.uint32_seq.get() + "], offset[" + k + " = " + l2 + " - " + l1 + "], old[" + localObject2 + "], new[" + this.jdField_a_of_type_ArrayOfLlm[1] + "]");
+      n = j;
+      i1 = j;
+      if (this.jdField_a_of_type_ArrayOfLlm[1] == null) {
+        break label1058;
+      }
+      n = j;
+      i1 = j;
+      this.jdField_a_of_type_ArrayOfLlm[1].jdField_b_of_type_JavaLangString = ((AVFunDrawing.DrawingInfo)localObject1).str_pen_name.get();
+      n = j;
+      i1 = j;
+      this.jdField_a_of_type_ArrayOfLlm[1].e = Color.parseColor(((AVFunDrawing.DrawingInfo)localObject1).str_pen_color.get());
+      n = j;
+      i1 = j;
+      this.jdField_a_of_type_ArrayOfLlm[1].jdField_b_of_type_Int = ((AVFunDrawing.DrawingInfo)localObject1).uint32_pen_width.get();
+      n = j;
+      i1 = j;
+      this.jdField_a_of_type_ArrayOfLlm[1].c = ((AVFunDrawing.DrawingInfo)localObject1).uint32_screen_width.get();
+      n = j;
+      i1 = j;
+      this.jdField_a_of_type_ArrayOfLlm[1].d = ((AVFunDrawing.DrawingInfo)localObject1).uint32_screen_height.get();
+      switch (i)
+      {
+      case 1: 
+        n = j;
+        i1 = j;
+        QLog.w("DoodleLogic", 1, "receiveDoodle, after[" + this.jdField_a_of_type_ArrayOfLlm[1] + "]");
+      }
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QLog.w("DoodleLogic", 1, "receiveDoodle, Exception", paramArrayOfByte);
+      return i1;
+    }
+    n = j;
+    i1 = j;
+    this.jdField_b_of_type_Boolean = bool;
+    n = j;
+    i1 = j;
+    QLog.w("DoodleLogic", 1, "receiveDoodle, mPeerVersion[" + this.e + "], mIsPeerSupport[" + this.jdField_b_of_type_Boolean + "], uint32_seq[" + paramArrayOfByte.uint32_seq.get() + "]");
+    n = j;
+    i1 = j;
+    lzq.a();
+    label1058:
     for (;;)
     {
-      if (paramInt1 != 0) {
-        a();
+      label245:
+      long l1;
+      long l2;
+      Object localObject2;
+      int m;
+      float f1;
+      float f2;
+      label837:
+      int k = 0 - (int)(l1 - l2);
+      continue;
+      label850:
+      if (localObject2 == null)
+      {
+        n = j;
+        i1 = j;
+        this.jdField_a_of_type_ArrayOfLlm[1] = llr.a(((AVFunDrawing.DrawingInfo)localObject1).uint32_pen_type.get());
+        if (m == 2)
+        {
+          i = 1;
+          continue;
+          n = j;
+          i1 = j;
+          this.jdField_a_of_type_ComTencentAvVideoController.a.a(new Object[] { Integer.valueOf(161) });
+          n = j;
+          i1 = j;
+          a(1, f1, f2);
+          continue;
+          n = j;
+          i1 = j;
+          b(1, f1, f2);
+          continue;
+          n = j;
+          i1 = j;
+          c(1, f1, f2);
+          continue;
+          n = j;
+          i1 = j;
+          QLog.w("DoodleLogic", 1, "receiveDoodle, msg_point_info[null], uint32_seq[" + paramArrayOfByte.uint32_seq.get() + "], offset[" + k + " = " + l2 + " - " + l1 + "]");
+          return j;
+          continue;
+        }
+        if (m != 3) {}
       }
+      label977:
+      i = m;
+    }
+  }
+  
+  public llo a()
+  {
+    return this.jdField_a_of_type_Llo;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+    this.jdField_a_of_type_ArrayOfLlm[0] = null;
+    this.jdField_a_of_type_ArrayOfLlm[1] = null;
+    this.jdField_b_of_type_Boolean = false;
+    this.e = 0;
+    this.jdField_a_of_type_Int = -65536;
+    this.jdField_a_of_type_Float = -1.0F;
+    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
+    this.jdField_a_of_type_ArrayOfBoolean[1] = false;
+    int i = this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size();
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+    QLog.w("DoodleLogic", 1, "resetDoodle, mSendQuene[" + i + "]", new Throwable("打印调用栈"));
+  }
+  
+  public void a(int paramInt, float paramFloat1, float paramFloat2)
+  {
+    boolean bool = true;
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    if (paramInt == 0) {}
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Boolean = bool;
+        this.jdField_a_of_type_ArrayOfBoolean[paramInt] = true;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_ArrayOfLlm[0] = llr.a(this.jdField_b_of_type_Int);
+          this.jdField_a_of_type_ArrayOfLlm[0].e = this.jdField_a_of_type_Int;
+          this.jdField_a_of_type_ArrayOfLlm[0].jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+          this.jdField_a_of_type_ArrayOfLlm[0].c = this.c;
+          this.jdField_a_of_type_ArrayOfLlm[0].d = this.d;
+        }
+        QLog.w("DoodleLogic", 1, "touch_start, index[" + paramInt + "], item[" + this.jdField_a_of_type_ArrayOfLlm[paramInt] + "], pt[" + paramFloat1 + ", " + paramFloat2 + "]");
+        this.jdField_a_of_type_ArrayOfLlm[paramInt].a(paramFloat1, paramFloat2);
+        if (this.jdField_a_of_type_Boolean) {
+          b(1);
+        }
+        if (this.jdField_a_of_type_Llo != null) {
+          this.jdField_a_of_type_Llo.invalidate();
+        }
+        return;
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      }
+      bool = false;
+    }
+  }
+  
+  void a(long paramLong)
+  {
+    if (AudioHelper.f()) {
+      QLog.w("DoodleLogic", 1, "startSendDoodleHandle, delayMillis[" + paramLong + "]");
+    }
+    ThreadManager.getUIHandler().postDelayed(new DoodleLogic.1(this), paramLong);
+  }
+  
+  public void a(llo paramllo)
+  {
+    this.jdField_a_of_type_Llo = paramllo;
+  }
+  
+  public boolean a()
+  {
+    return this.e > 0;
+  }
+  
+  public void b()
+  {
+    llp localllp = (llp)this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+    if (localllp == null) {
+      QLog.w("DoodleLogic", 1, "sendDoodle, 结束");
+    }
+    do
+    {
       return;
+      AVFunDrawing.MessageBody localMessageBody = localllp.jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody;
+      long l = AudioHelper.a();
+      localMessageBody.uint64_time.set(l);
+      Object localObject = localMessageBody.toByteArray();
+      this.jdField_a_of_type_ComTencentAvVideoController.a(2, (byte[])localObject);
+      localObject = (AVFunDrawing.PointInfo)((AVFunDrawing.DrawingInfo)localMessageBody.drawingInfo.get()).msg_point_info.get(0);
+      float f1 = ((AVFunDrawing.PointInfo)localObject).float_x.get();
+      float f2 = ((AVFunDrawing.PointInfo)localObject).float_y.get();
+      int i = ((AVFunDrawing.PointInfo)localObject).uint32_type.get();
+      QLog.w("DoodleLogic", 1, "sendDoodle, sendtime[" + l + "], offset[" + (l - localllp.jdField_a_of_type_Long) + "], pt[" + f1 + ", " + f2 + "], uint32_type[" + i + "], uint32_seq[" + localMessageBody.uint32_seq.get() + "], size[" + this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() + "]");
+    } while (this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() <= 0);
+    a(1L);
+  }
+  
+  /* Error */
+  public void b(int paramInt, float paramFloat1, float paramFloat2)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 51	lln:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   4: invokevirtual 416	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   7: aload_0
+    //   8: getfield 36	lln:jdField_a_of_type_ArrayOfLlm	[Lllm;
+    //   11: iload_1
+    //   12: aaload
+    //   13: ifnull +58 -> 71
+    //   16: aload_0
+    //   17: getfield 36	lln:jdField_a_of_type_ArrayOfLlm	[Lllm;
+    //   20: iload_1
+    //   21: aaload
+    //   22: fload_2
+    //   23: fload_3
+    //   24: invokevirtual 479	llm:a	(FF)Z
+    //   27: ifeq +44 -> 71
+    //   30: iload_1
+    //   31: ifne +48 -> 79
+    //   34: iconst_1
+    //   35: istore 4
+    //   37: aload_0
+    //   38: iload 4
+    //   40: putfield 38	lln:jdField_a_of_type_Boolean	Z
+    //   43: aload_0
+    //   44: getfield 38	lln:jdField_a_of_type_Boolean	Z
+    //   47: ifeq +8 -> 55
+    //   50: aload_0
+    //   51: iconst_2
+    //   52: invokespecial 425	lln:b	(I)V
+    //   55: aload_0
+    //   56: getfield 86	lln:jdField_a_of_type_Llo	Lllo;
+    //   59: ifnull +12 -> 71
+    //   62: aload_0
+    //   63: getfield 86	lln:jdField_a_of_type_Llo	Lllo;
+    //   66: invokeinterface 428 1 0
+    //   71: aload_0
+    //   72: getfield 51	lln:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   75: invokevirtual 431	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   78: return
+    //   79: iconst_0
+    //   80: istore 4
+    //   82: goto -45 -> 37
+    //   85: astore 5
+    //   87: aload_0
+    //   88: getfield 51	lln:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   91: invokevirtual 431	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   94: aload 5
+    //   96: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	97	0	this	lln
+    //   0	97	1	paramInt	int
+    //   0	97	2	paramFloat1	float
+    //   0	97	3	paramFloat2	float
+    //   35	46	4	bool	boolean
+    //   85	10	5	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   7	30	85	finally
+    //   37	55	85	finally
+    //   55	71	85	finally
+  }
+  
+  public void b(long paramLong)
+  {
+    llm[] arrayOfllm = this.jdField_a_of_type_ArrayOfLlm;
+    int j = arrayOfllm.length;
+    int i = 0;
+    while (i < j)
+    {
+      llm localllm = arrayOfllm[i];
+      if (localllm != null) {
+        localllm.a(paramLong);
+      }
+      i += 1;
+    }
+  }
+  
+  public void c()
+  {
+    boolean bool = llr.a();
+    Object localObject = new AVFunDrawing.MessageBody();
+    ((AVFunDrawing.MessageBody)localObject).uint32_msg_type.set(1);
+    AVFunDrawing.VersionInfo localVersionInfo = new AVFunDrawing.VersionInfo();
+    localVersionInfo.uint32_version.set(1);
+    PBUInt32Field localPBUInt32Field = localVersionInfo.uint32_support_drawing;
+    if (bool) {}
+    for (int i = 1;; i = 0)
+    {
+      localPBUInt32Field.set(i);
+      ((AVFunDrawing.MessageBody)localObject).versionInfo.set(localVersionInfo);
+      i = a();
+      ((AVFunDrawing.MessageBody)localObject).uint32_seq.set(i);
+      localObject = ((AVFunDrawing.MessageBody)localObject).toByteArray();
+      this.jdField_a_of_type_ComTencentAvVideoController.a(2, (byte[])localObject);
+      QLog.w("DoodleLogic", 1, "sendSelfIsSupport, isSelfSupport[" + bool + "], uint32_seq[" + i + "]");
+      lzq.a();
+      return;
+    }
+  }
+  
+  public void c(int paramInt, float paramFloat1, float paramFloat2)
+  {
+    boolean bool = true;
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_ArrayOfLlm[paramInt] == null) {
+          break label170;
+        }
+        this.jdField_a_of_type_ArrayOfLlm[paramInt].c(paramFloat1, paramFloat2);
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      }
+      this.jdField_a_of_type_Boolean = bool;
+      if (this.jdField_a_of_type_Boolean) {
+        b(3);
+      }
+      QLog.w("DoodleLogic", 1, "touch_up, index[" + paramInt + "], item[" + this.jdField_a_of_type_ArrayOfLlm[paramInt] + "], pt[" + paramFloat1 + ", " + paramFloat2 + "]");
+      a(paramInt);
+      if (this.jdField_a_of_type_Llo != null) {
+        this.jdField_a_of_type_Llo.invalidate();
+      }
+      this.jdField_a_of_type_ArrayOfBoolean[paramInt] = false;
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      return;
+      bool = false;
+      continue;
+      label170:
+      if (paramInt != 0) {}
     }
   }
 }

@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
-import xmu;
-import xmv;
+import xqp;
+import xqq;
 
 public class StoryPlayerGlobalHolder$1
   implements Runnable
 {
-  public StoryPlayerGlobalHolder$1(xmu paramxmu) {}
+  public StoryPlayerGlobalHolder$1(xqp paramxqp) {}
   
   public void run()
   {
-    xmu.a(this.this$0).a(this.this$0.a.c());
+    xqp.a(this.this$0).a(this.this$0.a.c());
   }
 }
 

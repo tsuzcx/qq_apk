@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.camera.core;
 
 import android.app.Activity;
-import bnho;
+import boiw;
 
 class AECameraGLSurfaceView$8
   implements Runnable

@@ -235,7 +235,7 @@ public class PTSSwiperView
       localPTSLiteItemViewManager = ((PTSAppInstance.PTSLiteAppInstance)localPTSAppInstance).getLiteItemViewManager();
       if (localIPTSLiteEventListener != null)
       {
-        ((PTSAppInstance.PTSLiteAppInstance)localPTSAppInstance).triggerLiteEvent(4, (String)localObject, localHashMap, this.mRecyclerView.getChildAt(i));
+        ((PTSAppInstance.PTSLiteAppInstance)localPTSAppInstance).triggerLiteEvent(4, (String)localObject, localHashMap, this.mRecyclerView.getChildAt(i), localPTSAppInstance.getPtsComposer());
         return;
       }
     } while (localPTSLiteItemViewManager == null);
@@ -277,7 +277,7 @@ public class PTSSwiperView
       localPTSLiteItemViewManager = ((PTSAppInstance.PTSLiteAppInstance)localPTSAppInstance).getLiteItemViewManager();
       if (localIPTSLiteEventListener != null)
       {
-        ((PTSAppInstance.PTSLiteAppInstance)localPTSAppInstance).triggerLiteEvent(3, (String)localObject, localHashMap, this.mRecyclerView.getChildAt(paramInt));
+        ((PTSAppInstance.PTSLiteAppInstance)localPTSAppInstance).triggerLiteEvent(3, (String)localObject, localHashMap, this.mRecyclerView.getChildAt(paramInt), localPTSAppInstance.getPtsComposer());
         return;
       }
     } while (localPTSLiteItemViewManager == null);

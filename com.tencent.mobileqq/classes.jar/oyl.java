@@ -1,22 +1,20 @@
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-final class oyl
-  implements ViewFactory.FoundClickableViewListener
+class oyl
+  implements ViewBase.OnClickListener
 {
-  oyl(Container paramContainer, pan parampan, pay parampay) {}
+  oyl(oyk paramoyk) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onClick(ViewBase paramViewBase)
   {
-    if ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null)) {
-      return;
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity() != null)
+    {
+      oyj.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity().finish();
     }
-    SparseArray localSparseArray = new SparseArray();
-    int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
-    owo.a.a(i, localSparseArray).a(i, localSparseArray).a(i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Pan, this.jdField_a_of_type_Pay, paramViewBase);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.task;
 
-import amzv;
+import anlp;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import mqq.app.AppRuntime;
@@ -9,7 +9,7 @@ import mqq.app.MobileQQ;
 public class ApolloMsgPlayController$2
   implements Runnable
 {
-  public ApolloMsgPlayController$2(amzv paramamzv, MessageRecord paramMessageRecord) {}
+  public ApolloMsgPlayController$2(anlp paramanlp, MessageRecord paramMessageRecord) {}
   
   public void run()
   {

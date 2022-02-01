@@ -13,7 +13,7 @@ class ChannelProxyDefault$5
   
   public boolean onReply(int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    QMLog.w("ChannelProxyDefault", "recvData " + this.val$request + ",retCode = " + paramInt);
+    QMLog.w("ChannelProxyDefault", "useHttpDirectly recvData " + this.val$request + ",retCode = " + paramInt);
     if (paramInt == 0) {
       if (this.val$result != null)
       {
@@ -43,7 +43,7 @@ class ChannelProxyDefault$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault.5
  * JD-Core Version:    0.7.0.1
  */

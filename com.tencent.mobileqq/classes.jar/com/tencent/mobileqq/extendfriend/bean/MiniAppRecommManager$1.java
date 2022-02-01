@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.extendfriend.bean;
 
-import ashl;
+import aswz;
 
 public class MiniAppRecommManager$1
   implements Runnable
 {
   public void run()
   {
-    ashl.a(this.this$0, this.a);
+    aswz.a(this.this$0, this.a);
   }
 }
 

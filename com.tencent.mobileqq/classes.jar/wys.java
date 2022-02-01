@@ -1,68 +1,47 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetEmoticonPackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetEmoticonPackList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.biz.qqstory.msgTabNode.view.viewholder.FriendNodeViewHolder.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class wys
-  extends wlf<xaq>
+  extends wyv
 {
-  public final String a;
-  public final int c;
-  public final int d;
-  public final int e;
-  
-  public wys(String paramString, int paramInt)
+  public wys(ViewGroup paramViewGroup)
   {
-    this(paramString, paramInt, 0, 0);
+    super(paramViewGroup, 2131561785);
   }
   
-  public wys(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public void a(wvn paramwvn)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("mCookie should not be null");
-    }
-    if (paramInt1 <= 0) {
-      throw new IllegalArgumentException("mCount should not be less than 0 : " + paramInt1);
-    }
-    this.a = paramString;
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
-  }
-  
-  public String a()
-  {
-    return wjz.a("StorySvc.video_emoticon_get");
-  }
-  
-  public wla a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetEmoticonPackList localRspGetEmoticonPackList = new qqstory_service.RspGetEmoticonPackList();
-    try
+    yuk.a("FriendNodeViewHolder", "bindData %s", paramwvn);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    QQAppInterface localQQAppInterface;
+    String str;
+    if ((localObject instanceof QQAppInterface))
     {
-      localRspGetEmoticonPackList.mergeFrom(paramArrayOfByte);
-      return new xaq(localRspGetEmoticonPackList, paramArrayOfByte, System.currentTimeMillis());
+      localQQAppInterface = (QQAppInterface)localObject;
+      str = String.valueOf(paramwvn.b);
+      b(zpp.b(paramwvn.g));
+      if (!wyd.h) {
+        break label180;
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    label180:
+    for (localObject = bhlg.m(localQQAppInterface, str);; localObject = str)
     {
-      yqp.e("GetEmojiPackInfoListRequest", "GetEmojiPackInfoListRequest error : " + paramArrayOfByte);
+      this.a.setNodeName((String)localObject, false);
+      ThreadManager.post(new FriendNodeViewHolder.1(this, localQQAppInterface, str), 8, null, true);
+      if (QLog.isColorLevel())
+      {
+        QLog.e("FriendNodeViewHolder", 2, new Object[] { "userItem = " + paramwvn.b + ", name = " + (String)localObject, " list: ", String.valueOf(paramwvn.a) });
+        QLog.e("FriendNodeViewHolder", 2, new Object[] { "data: ", String.valueOf(paramwvn) });
+      }
+      super.a(paramwvn);
+      return;
     }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetEmoticonPackList localReqGetEmoticonPackList = new qqstory_service.ReqGetEmoticonPackList();
-    localReqGetEmoticonPackList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    localReqGetEmoticonPackList.count.set(this.c);
-    return localReqGetEmoticonPackList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetEmojiPackInfoListRequest{mCookie='" + this.a + '\'' + ", mCount=" + this.c + ", latitude=" + this.d + ", longitude=" + this.e + '}';
   }
 }
 

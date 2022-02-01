@@ -1,23 +1,23 @@
 package com.tencent.gdtad.api.interstitial;
 
-import aclu;
-import aclw;
-import acqy;
+import acpw;
+import acpy;
+import acvc;
 import java.lang.ref.WeakReference;
 
 public class GdtArkPreDownloadTask$2
   implements Runnable
 {
-  public GdtArkPreDownloadTask$2(aclu paramaclu) {}
+  public GdtArkPreDownloadTask$2(acpw paramacpw) {}
   
   public void run()
   {
     boolean bool;
-    if ((aclu.a(this.this$0) != null) && (aclu.a(this.this$0).get() != null))
+    if ((acpw.a(this.this$0) != null) && (acpw.a(this.this$0).get() != null))
     {
       bool = true;
-      acqy.b("GdtArkPreDownloadTask", String.format("notifySuccess listener:%b status:%d notified:%b", new Object[] { Boolean.valueOf(bool), Integer.valueOf(aclu.a(this.this$0)), Boolean.valueOf(aclu.b(this.this$0)) }));
-      if (!aclu.b(this.this$0)) {
+      acvc.b("GdtArkPreDownloadTask", String.format("notifySuccess listener:%b status:%d notified:%b", new Object[] { Boolean.valueOf(bool), Integer.valueOf(acpw.a(this.this$0)), Boolean.valueOf(acpw.b(this.this$0)) }));
+      if (!acpw.b(this.this$0)) {
         break label88;
       }
     }
@@ -27,9 +27,9 @@ public class GdtArkPreDownloadTask$2
       return;
       bool = false;
       break;
-      aclu.a(this.this$0, true);
-    } while ((aclu.a(this.this$0) == null) || (aclu.a(this.this$0).get() == null));
-    ((aclw)aclu.a(this.this$0).get()).a(aclu.a(this.this$0));
+      acpw.a(this.this$0, true);
+    } while ((acpw.a(this.this$0) == null) || (acpw.a(this.this$0).get() == null));
+    ((acpy)acpw.a(this.this$0).get()).a(acpw.a(this.this$0));
   }
 }
 

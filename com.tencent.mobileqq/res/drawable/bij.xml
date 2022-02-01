@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="false" android:drawable="@drawable/eoe" />
-    <item android:state_selected="true" android:drawable="@drawable/eof" />
-</selector>
+    <size android:height="20.0dip" android:width="20.0dip" />
+    <solid android:color="@android:color/white" />
+</shape>

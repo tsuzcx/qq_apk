@@ -1,71 +1,32 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import android.content.Context;
+import android.widget.ListView;
+import java.util.List;
 
 public class bfes
-  extends JobSegment<bfer, bfer>
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
+  private static String jdField_a_of_type_JavaLangString = "TribeTitlePrefixPanelView";
+  private ListView jdField_a_of_type_AndroidWidgetListView;
+  private bfew jdField_a_of_type_Bfew;
   
-  public bfes(int paramInt)
+  public bfes(Context paramContext, ListView paramListView)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidWidgetListView = paramListView;
+    this.jdField_a_of_type_Bfew = new bfew(paramContext);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Bfew);
   }
   
-  protected void a(JobContext paramJobContext, bfer parambfer)
+  public void a(bfev parambfev)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment start. info status=", Integer.valueOf(parambfer.g) });
-    }
-    bfer.b();
-    try
-    {
-      String str = TroopHWJsPlugin.a(-1, parambfer.a, this.jdField_a_of_type_Int, null);
-      if (atwl.b(str)) {}
-      for (parambfer.c = str;; parambfer.c = parambfer.a)
-      {
-        QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment. in path=", parambfer.a, ", out path=", parambfer.c });
-        if (isCanceled()) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment notifyResult. info status=", Integer.valueOf(parambfer.g) });
-        }
-        notifyResult(parambfer);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.e("CompressImageSegment", 2, "CompressImageSegment failed.");
-        }
-      }
-      return;
-    }
-    catch (Exception paramJobContext)
-    {
-      QLog.e("CompressImageSegment", 1, "CompressImageSegment Exception: ", paramJobContext);
-      notifyError(new Error("101"));
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e("CompressImageSegment", 1, "CompressImageSegment error. OutOfMemoryError");
-      URLDrawable.clearMemoryCache();
-      System.gc();
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        a(paramJobContext, parambfer);
-        return;
-      }
-      notifyError(new Error("-1"));
+    if (this.jdField_a_of_type_Bfew != null) {
+      this.jdField_a_of_type_Bfew.a(parambfev);
     }
   }
   
-  public void onCancel()
+  public void a(List<bfex> paramList)
   {
-    notifyError(new Error("c_1000"));
+    if (this.jdField_a_of_type_Bfew != null) {
+      this.jdField_a_of_type_Bfew.a(paramList);
+    }
   }
 }
 

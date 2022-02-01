@@ -16,7 +16,7 @@ class InternalJSPlugin$8
   
   public void installSucceed(String paramString1, String paramString2)
   {
-    if ((InternalJSPlugin.access$400(this.this$0) != null) && (InternalJSPlugin.access$500(this.this$0) != null) && (InternalJSPlugin.access$400(this.this$0).equals(paramString1)) && (InternalJSPlugin.access$500(this.this$0).equals(paramString2)))
+    if ((InternalJSPlugin.access$500(this.this$0) != null) && (InternalJSPlugin.access$600(this.this$0) != null) && (InternalJSPlugin.access$500(this.this$0).equals(paramString1)) && (InternalJSPlugin.access$600(this.this$0).equals(paramString2)))
     {
       QLog.d("InternalJSPlugin", 1, "installSucceed: " + paramString1 + "; pkgname : " + paramString2);
       InnerAppReportDc4239.innerAppReport(this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "installapp", "qqdownload");
@@ -25,21 +25,21 @@ class InternalJSPlugin$8
   
   public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    if ((InternalJSPlugin.access$300(this.this$0) != null) && (paramDownloadInfo != null) && (InternalJSPlugin.access$300(this.this$0).equals(paramDownloadInfo.d))) {
+    if ((InternalJSPlugin.access$400(this.this$0) != null) && (paramDownloadInfo != null) && (InternalJSPlugin.access$400(this.this$0).equals(paramDownloadInfo.d))) {
       QLog.d("InternalJSPlugin", 1, "onDownloadCancel");
     }
   }
   
   public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    if ((InternalJSPlugin.access$300(this.this$0) != null) && (paramDownloadInfo != null) && (InternalJSPlugin.access$300(this.this$0).equals(paramDownloadInfo.d))) {
+    if ((InternalJSPlugin.access$400(this.this$0) != null) && (paramDownloadInfo != null) && (InternalJSPlugin.access$400(this.this$0).equals(paramDownloadInfo.d))) {
       QLog.d("InternalJSPlugin", 1, "onDownloadError");
     }
   }
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    if ((InternalJSPlugin.access$300(this.this$0) != null) && (paramDownloadInfo != null) && (InternalJSPlugin.access$300(this.this$0).equals(paramDownloadInfo.d)))
+    if ((InternalJSPlugin.access$400(this.this$0) != null) && (paramDownloadInfo != null) && (InternalJSPlugin.access$400(this.this$0).equals(paramDownloadInfo.d)))
     {
       QLog.d("InternalJSPlugin", 1, "onDownloadFinish");
       AppBrandTask.runTaskOnUiThread(new InternalJSPlugin.8.1(this));
@@ -49,7 +49,7 @@ class InternalJSPlugin$8
   
   public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
-    if ((InternalJSPlugin.access$300(this.this$0) != null) && (paramDownloadInfo != null) && (InternalJSPlugin.access$300(this.this$0).equals(paramDownloadInfo.d)))
+    if ((InternalJSPlugin.access$400(this.this$0) != null) && (paramDownloadInfo != null) && (InternalJSPlugin.access$400(this.this$0).equals(paramDownloadInfo.d)))
     {
       QLog.d("InternalJSPlugin", 1, "onDownloadPause");
       InnerAppReportDc4239.innerAppReport(this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapppause", "qqdownload");
@@ -60,7 +60,7 @@ class InternalJSPlugin$8
   
   public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
-    if ((InternalJSPlugin.access$300(this.this$0) != null) && (paramDownloadInfo != null) && (InternalJSPlugin.access$300(this.this$0).equals(paramDownloadInfo.d))) {
+    if ((InternalJSPlugin.access$400(this.this$0) != null) && (paramDownloadInfo != null) && (InternalJSPlugin.access$400(this.this$0).equals(paramDownloadInfo.d))) {
       QLog.d("InternalJSPlugin", 1, "onDownloadWait");
     }
   }

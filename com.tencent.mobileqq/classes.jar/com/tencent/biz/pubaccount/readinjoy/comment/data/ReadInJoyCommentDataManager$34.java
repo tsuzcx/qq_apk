@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
-import pbe;
-import pcm;
-import pcp;
+import otv;
+import ovd;
+import ovg;
 
 public class ReadInJoyCommentDataManager$34
   implements Runnable
 {
-  public ReadInJoyCommentDataManager$34(pbe parampbe, pcm parampcm, pcp parampcp) {}
+  public ReadInJoyCommentDataManager$34(otv paramotv, ovd paramovd, ovg paramovg) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Pcm.a(this.jdField_a_of_type_Pcp);
+    this.jdField_a_of_type_Ovd.a(this.jdField_a_of_type_Ovg);
   }
 }
 

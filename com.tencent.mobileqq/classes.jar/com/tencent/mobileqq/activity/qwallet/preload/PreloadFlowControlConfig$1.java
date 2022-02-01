@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import akww;
+import alil;
 
 class PreloadFlowControlConfig$1
   implements Runnable
@@ -9,7 +9,7 @@ class PreloadFlowControlConfig$1
   
   public void run()
   {
-    akww.a(this.this$0, PreloadFlowControlConfig.access$000(this.this$0));
+    alil.a(this.this$0, PreloadFlowControlConfig.access$000(this.this$0));
   }
 }
 

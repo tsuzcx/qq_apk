@@ -1,49 +1,32 @@
-import android.support.v4.util.SparseArrayCompat;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.1;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.2;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.music.SongInfo;
 
-public class apwh
+public final class apwh
+  implements axrb
 {
-  private static final apwh jdField_a_of_type_Apwh = new apwh();
-  private int jdField_a_of_type_Int;
-  private final SparseArrayCompat<apvt> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
+  private String a;
   
-  public static apwh a()
+  public apwh(String paramString)
   {
-    return jdField_a_of_type_Apwh;
+    this.a = paramString;
   }
   
-  public int a(apvt paramapvt)
+  public String getToken()
   {
-    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
-    {
-      do
-      {
-        this.jdField_a_of_type_Int += 1;
-      } while ((this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(this.jdField_a_of_type_Int) != null) || (this.jdField_a_of_type_Int == 0));
-      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(this.jdField_a_of_type_Int, paramapvt);
-      int i = this.jdField_a_of_type_Int;
-      return i;
-    }
+    return apwg.a();
   }
   
-  public void a(int paramInt)
+  public void onPlaySongChanged(SongInfo paramSongInfo)
   {
-    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
-    {
-      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.delete(paramInt);
-      return;
-    }
+    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.2(this, paramSongInfo));
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onPlayStateChanged(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
-    {
-      apvt localapvt = (apvt)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt1);
-      if (localapvt != null) {
-        localapvt.a(paramInt1, paramInt2);
-      }
-      return;
-    }
+    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.1(this, paramInt));
   }
 }
 

@@ -1,20 +1,16 @@
 package com.tencent.mobileqq.pic;
 
-import ayxi;
-import java.util.concurrent.atomic.AtomicBoolean;
+import azqw;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class PicPreDownloader$1
   implements Runnable
 {
-  PicPreDownloader$1(PicPreDownloader paramPicPreDownloader) {}
+  PicPreDownloader$1(PicPreDownloader paramPicPreDownloader, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if (!this.this$0.a.get())
-    {
-      this.this$0.a.set(true);
-      ayxi.b("PIC_TAG_PRELOAD", "timer count off,picPreDownload set on", "mIsPicPreloadSuitable" + this.this$0.a.get());
-    }
+    this.this$0.a.a(this.a);
   }
 }
 

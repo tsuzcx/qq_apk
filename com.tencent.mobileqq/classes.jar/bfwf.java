@@ -1,14 +1,79 @@
-import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfwf
-  implements bfuf
 {
-  public bfwf(RobotPanelLayoutBase paramRobotPanelLayoutBase, bfwi parambfwi) {}
+  public Context a;
+  public Handler a;
+  private aojs jdField_a_of_type_Aojs = new bfwg(this);
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public String a;
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public bfwf(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, Handler paramHandler)
   {
-    if (paramInt == 0) {}
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_AndroidOsHandler = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+  }
+  
+  private String a(String paramString)
+  {
+    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+    if (localTroopManager != null)
+    {
+      paramString = localTroopManager.b(paramString);
+      if (paramString != null) {
+        return paramString.troopcode;
+      }
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aojs);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QLog.e("RefreshMemberList", 4, "Prepare refreshMemberListFromServer");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    String str;
+    do
+    {
+      return;
+      str = a(this.jdField_a_of_type_JavaLangString);
+    } while (TextUtils.isEmpty(str));
+    long l1 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("last_update_time", 4).getLong("key_last_update_time" + str, 0L);
+    long l2 = System.currentTimeMillis();
+    if ((paramBoolean) || (l1 == 0L) || ((l1 > 0L) && (l2 - l1 > 300000L)))
+    {
+      ((aoip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(true, this.jdField_a_of_type_JavaLangString, str, 5);
+      if (l1 == 0L)
+      {
+        QLog.e("RefreshMemberList", 4, "Not refresh now, will refresh.");
+        return;
+      }
+      QLog.e("RefreshMemberList", 4, "> 5min, will refresh.");
+      return;
+    }
+    QLog.e("RefreshMemberList", 4, "< 5min, Will not refresh.");
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aojs);
   }
 }
 

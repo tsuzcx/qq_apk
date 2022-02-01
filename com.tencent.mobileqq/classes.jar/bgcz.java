@@ -1,55 +1,18 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
 
 public class bgcz
-  extends MSFServlet
+  implements bgde
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UnifiedDebugReportServlet", 2, "onReceive");
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bgva.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
-      localBundle.putString("extra_cmd", paramIntent.getStringExtra("extra_cmd"));
-      localBundle.putByteArray("extra_data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
-      arrayOfByte = null;
-    }
-  }
+  public bgcz(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UnifiedDebugReportServlet", 2, "onSend");
-    }
-    Object localObject = paramIntent.getStringExtra("extra_cmd");
-    if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    do
-    {
-      return;
-      paramIntent = paramIntent.getByteArrayExtra("extra_data");
-      paramPacket.setSSOCommand((String)localObject);
-    } while (paramIntent == null);
-    localObject = new byte[paramIntent.length + 4];
-    bgva.a((byte[])localObject, 0, paramIntent.length + 4);
-    bgva.a((byte[])localObject, 4, paramIntent, paramIntent.length);
-    paramPacket.putSendData((byte[])localObject);
+    paramView = this.a.jdField_a_of_type_Bgdd.a(paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramView.length());
+    bhju.a("Grp_edu", "Grp_recite", "Recommend_Clk", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramView });
   }
 }
 

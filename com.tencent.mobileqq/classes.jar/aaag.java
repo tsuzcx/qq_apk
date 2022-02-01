@@ -1,28 +1,38 @@
-import com.tencent.biz.subscribe.SubscribeUtils.1;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.util.WeakReference;
 
-public class aaag
-  implements bdvw
+class aaag
+  implements aaad
 {
-  public aaag(SubscribeUtils.1 param1) {}
+  aaag(aaaf paramaaaf, aaai paramaaai, int paramInt) {}
   
-  public void onResp(bdwt parambdwt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    QLog.i("DownLoadZipFile", 1, "download  onResp url:  resultcode: " + parambdwt.c);
-    try
+    paramString = new aaah(this.jdField_a_of_type_Aaai.a, paramBoolean, paramString);
+    aaaf.a(this.jdField_a_of_type_Aaaf).put(this.jdField_a_of_type_Aaai.a, paramString);
+    if (paramBoolean)
     {
-      QLog.d("DownLoadZipFile", 4, "start unzip file to folderPath:" + this.a.jdField_a_of_type_JavaLangString);
-      nmk.a(this.a.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_JavaLangString);
-      bgmg.a(this.a.jdField_a_of_type_JavaIoFile);
-      return;
+      aaaf.a(this.jdField_a_of_type_Aaaf).incrementAndGet();
+      if ((aaaf.a(this.jdField_a_of_type_Aaaf).get() + aaaf.b(this.jdField_a_of_type_Aaaf).get() == this.jdField_a_of_type_Int) && (aaaf.a(this.jdField_a_of_type_Aaaf) != null))
+      {
+        paramString = (aaaj)aaaf.a(this.jdField_a_of_type_Aaaf).get();
+        if (paramString != null) {
+          if (aaaf.b(this.jdField_a_of_type_Aaaf).get() != 0) {
+            break label153;
+          }
+        }
+      }
     }
-    catch (Exception parambdwt)
+    label153:
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      QLog.i("DownLoadZipFile", 1, "unzip file failed" + parambdwt);
+      paramString.a(paramBoolean, aaaf.a(this.jdField_a_of_type_Aaaf));
+      return;
+      aaaf.b(this.jdField_a_of_type_Aaaf).incrementAndGet();
+      break;
     }
   }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

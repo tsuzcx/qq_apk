@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.QZoneShareData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class blta
-  implements Parcelable.Creator<QZoneShareData>
+class blta
+  implements View.OnClickListener
 {
-  public QZoneShareData a(Parcel paramParcel)
-  {
-    return new QZoneShareData(paramParcel, null);
-  }
+  blta(blsz paramblsz, blsy paramblsy) {}
   
-  public QZoneShareData[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new QZoneShareData[paramInt];
+    int i = this.jdField_a_of_type_Blsy.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Blsz.a.a(this.jdField_a_of_type_Blsy.itemView, i);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

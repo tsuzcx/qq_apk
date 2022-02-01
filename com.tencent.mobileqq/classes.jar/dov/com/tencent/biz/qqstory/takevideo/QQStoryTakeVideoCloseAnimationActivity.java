@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.ImageView;
-import anhk;
+import antf;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -23,7 +23,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
   
   static
   {
-    jdField_a_of_type_JavaLangString = anhk.br + "qqstory/animation_cover.jpg";
+    jdField_a_of_type_JavaLangString = antf.br + "qqstory/animation_cover.jpg";
   }
   
   @Override

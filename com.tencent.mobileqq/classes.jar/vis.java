@@ -1,17 +1,4 @@
-public class vis
-  extends zwd
-{
-  public String a()
-  {
-    return "QCircleStrategy";
-  }
-  
-  public String b()
-  {
-    return uxb.e;
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vis

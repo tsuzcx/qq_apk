@@ -1,34 +1,21 @@
-import java.lang.reflect.Method;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.qphone.base.util.QLog;
 
 public class bhtc
 {
-  public static Class a(ClassLoader paramClassLoader, String paramString)
+  public static void a(Activity paramActivity, long paramLong)
   {
-    try
-    {
-      paramClassLoader = paramClassLoader.loadClass(paramString);
-      return paramClassLoader;
+    if (QLog.isColorLevel()) {
+      QLog.d("troopbar_share", 2, "notifySDKCanceled:" + paramLong);
     }
-    catch (ClassNotFoundException paramClassLoader)
-    {
-      paramClassLoader.printStackTrace();
-    }
-    return null;
+    ForwardSdkShareOption.a(paramActivity, false, "shareToTroopBar", paramLong);
   }
   
-  public static Method a(Class paramClass, String paramString, Class[] paramArrayOfClass)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    try
-    {
-      paramClass = paramClass.getDeclaredMethod(paramString, paramArrayOfClass);
-      paramClass.setAccessible(true);
-      return paramClass;
-    }
-    catch (NoSuchMethodException paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
+    bdll.b(paramQQAppInterface, "P_CliOper", "Grp_share", "", "to_tribe", paramString1, 0, 0, paramString2, "1", null, null);
   }
 }
 

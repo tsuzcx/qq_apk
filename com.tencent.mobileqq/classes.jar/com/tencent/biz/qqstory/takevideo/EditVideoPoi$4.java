@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import com.tencent.widget.XListView;
-import yul;
+import yyg;
 
 public class EditVideoPoi$4
   implements Runnable
 {
-  public EditVideoPoi$4(yul paramyul) {}
+  public EditVideoPoi$4(yyg paramyyg) {}
   
   public void run()
   {

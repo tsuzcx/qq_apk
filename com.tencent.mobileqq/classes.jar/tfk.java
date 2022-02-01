@@ -1,28 +1,17 @@
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class tfk
-  implements Comparable<tfk>
+  extends tfp
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  
-  public tfk(String paramString, int paramInt, Drawable paramDrawable)
+  public tfk(BridgeModule paramBridgeModule)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    super(paramBridgeModule);
   }
   
-  public int a(tfk paramtfk)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Int < paramtfk.jdField_a_of_type_Int) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_Int > paramtfk.jdField_a_of_type_Int) {
-      return 1;
-    }
-    return 0;
+    BridgeModule.access$300(this.a, paramInt1, paramInt2, paramIntent);
   }
 }
 

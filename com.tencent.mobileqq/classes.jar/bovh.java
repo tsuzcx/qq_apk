@@ -1,98 +1,158 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.media.MediaPlayer;
+import android.opengl.GLES20;
+import android.opengl.GLSurfaceView;
+import android.opengl.GLSurfaceView.Renderer;
+import android.util.Log;
+import android.view.Surface;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+import com.tencent.filter.SurfaceTextureFilter;
+import com.tencent.ttpic.openapi.filter.SpaceFilter;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public class bovh
-  implements View.OnClickListener
+  implements SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  private static final String jdField_a_of_type_JavaLangString = bovh.class.getSimpleName();
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
+  private final GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
+  private bovf jdField_a_of_type_Bovf = new bovf();
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new SurfaceTextureFilter();
+  private SpaceFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter = new SpaceFilter();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private final float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  private float jdField_b_of_type_Float;
+  private Frame jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
   
-  public bovh(View paramView, String paramString)
+  public bovh(GLSurfaceView paramGLSurfaceView)
   {
-    a(paramView);
-    this.b = paramString;
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
   }
   
-  private void a(View paramView)
+  private void a(Frame paramFrame)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131381173));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363764));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379754));
-    paramView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131381285);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131381286);
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ColorDrawable localColorDrawable = new ColorDrawable(-16777216);
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-    localObject = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20180423/4c3ece054ae044eb85797d31fa487ce7.jpg", (URLDrawable.URLDrawableOptions)localObject);
-    ((URLDrawable)localObject).setURLDrawableListener(new bovi(this.jdField_a_of_type_AndroidWidgetTextView));
-    paramView.setBackgroundDrawable((Drawable)localObject);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glClearColor(0.92F, 0.93F, 0.96F, 1.0F);
+    GLES20.glClear(16384);
+    GLES20.glEnable(3042);
+    GLES20.glBlendFunc(770, 771);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.RenderProcess(paramFrame.getTextureId(), (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, 0, 0.0D, this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame);
+    GLES20.glDisable(3042);
   }
   
-  public RelativeLayout a()
+  private void b()
   {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    Object localObject = new int[1];
+    GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
+    this.jdField_a_of_type_Int = localObject[0];
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+    localObject = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.setSurface((Surface)localObject);
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
   }
   
-  public void a(View.OnClickListener paramOnClickListener)
+  private void c()
   {
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
+    int[] arrayOfInt = new int[1];
+    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
   }
   
-  public void a(String paramString)
+  private void d()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.apply();
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.setRotationAndFlip(0, 0, 1);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.apply();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.setRotationAndFlip(0, 0, 1);
+    this.jdField_a_of_type_Bovf.a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.ClearGLSL();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.ClearGLSL();
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    c();
+    this.jdField_a_of_type_Bovf.b();
+  }
+  
+  public void a(MediaPlayer paramMediaPlayer)
+  {
+    this.jdField_a_of_type_AndroidMediaMediaPlayer = paramMediaPlayer;
+  }
+  
+  public void a(bovg parambovg)
+  {
+    if (this.jdField_a_of_type_Bovf != null) {
+      this.jdField_a_of_type_Bovf.a(parambovg);
+    }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidWidgetButton.setText(anni.a(2131715573));
-      }
+    if (this.jdField_a_of_type_Bovf != null) {
+      this.jdField_a_of_type_Bovf.a(paramBoolean);
     }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetButton.setText(anni.a(2131715575));
   }
   
-  public void onClick(View paramView)
+  public void onDrawFrame(GL10 paramGL10)
   {
-    switch (paramView.getId())
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
     {
-    default: 
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
+      this.jdField_a_of_type_ComTencentFilterBaseFilter.updateMatrix(this.jdField_a_of_type_ArrayOfFloat);
+      this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(this.jdField_a_of_type_Int, (int)(2.0F * this.jdField_a_of_type_Float), (int)this.jdField_b_of_type_Float, -1, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+    }
+    if (GLES20.glIsTexture(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId()))
+    {
+      a(this.jdField_a_of_type_Bovf.a(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float));
       return;
     }
-    if (this.jdField_a_of_type_Boolean) {
-      zmi.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), this.b, this.jdField_a_of_type_JavaLangString);
-    }
-    for (String str = "clk_open";; str = "clk_download")
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glClearColor(1.0F, 1.0F, 1.0F, 1.0F);
+    GLES20.glClear(16384);
+  }
+  
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  {
+    try
     {
-      yqu.a("weishi_share", str, 0, 0, new String[0]);
-      break;
-      QQToast.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), anni.a(2131715572), 0).a();
-      zmi.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), this.b);
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.requestRender();
+      return;
     }
+    finally
+    {
+      paramSurfaceTexture = finally;
+      throw paramSurfaceTexture;
+    }
+  }
+  
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
+  {
+    Log.d(jdField_a_of_type_JavaLangString, "onSurfaceChanged width = " + paramInt1 + "  height = " + paramInt2);
+    this.jdField_a_of_type_Float = paramInt1;
+    this.jdField_b_of_type_Float = paramInt2;
+    this.jdField_a_of_type_Bovf.a(paramInt1, paramInt2);
+  }
+  
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    b();
+    d();
   }
 }
 

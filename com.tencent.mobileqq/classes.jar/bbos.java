@@ -1,24 +1,22 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
 public class bbos
-  extends bbor
+  extends BroadcastReceiver
 {
-  bbmx a(aitt paramaitt, List<bbmy> paramList, String paramString1, boolean paramBoolean, String paramString2)
-  {
-    bbuo.a(70);
-    return new bblz(paramaitt, paramList, paramString1);
-  }
+  public bbos(AIOGalleryActivity paramAIOGalleryActivity) {}
   
-  bbmy a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return null;
-  }
-  
-  bbmy a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
-  {
-    return new bbma(paramrecord, paramString, paramCharSequence);
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    {
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryActivity", 4, "receive videochat in aiogallery");
+      this.a.finish();
+    }
   }
 }
 

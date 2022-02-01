@@ -1,42 +1,242 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import Wallet.AcsMsg;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper.ConvertParam;
+import com.tencent.mobileqq.activity.qwallet.utils.ComIPCUtils.2;
+import com.tencent.mobileqq.activity.qwallet.utils.ComIPCUtils.3;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.microapp.apkg.AppInfo;
+import com.tencent.mobileqq.microapp.sdk.LaunchParam;
+import com.tencent.mobileqq.microapp.sdk.OnUpdateListener;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.soload.LoadParam;
+import com.tencent.mobileqq.soload.LoadParam.LoadItem;
+import com.tencent.mobileqq.soload.SoLoadInfo;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 import java.io.File;
-import java.util.ArrayList;
 
 public class alib
-  implements View.OnClickListener
 {
-  public alib(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile, Button paramButton) {}
-  
-  public void onClick(View paramView)
+  public static int a(String paramString)
   {
-    if (new File(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.b).exists())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(this.jdField_a_of_type_JavaIoFile)));
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.l();
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.b);
-      alio.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2, localArrayList);
-      this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.setResult(1001);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.finish();
-      if (alin.a != 1) {
-        break label127;
+    int i = 1;
+    if ((BaseApplicationImpl.getApplication().peekAppRuntime() instanceof QQAppInterface)) {
+      try
+      {
+        boolean bool = new File(paramString).exists();
+        if (bool) {
+          i = 2;
+        }
+        return i;
       }
-      alio.b("", "0X8005F5C", "0");
+      catch (Throwable paramString)
+      {
+        QLog.e("getFileExistStatus", 1, paramString, new Object[0]);
+        return 3;
+      }
     }
-    for (;;)
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 18);
+    localBundle.putString("path", paramString);
+    paramString = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "ComIPCUtils", localBundle);
+    if ((paramString != null) && (paramString.isSuccess()) && (paramString.data != null)) {
+      try
+      {
+        if (paramString.data.containsKey("res"))
+        {
+          i = paramString.data.getInt("res");
+          return i;
+        }
+        return 4;
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("getFileExistStatus IPC", 1, paramString, new Object[0]);
+        return 5;
+      }
+    }
+    return 6;
+  }
+  
+  @NonNull
+  public static SoLoadInfo a(LoadParam paramLoadParam, LoadParam.LoadItem paramLoadItem)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 17);
+    localBundle.putBoolean("is_sync", true);
+    localBundle.putSerializable("load_param", paramLoadParam);
+    localBundle.putSerializable("load_item", paramLoadItem);
+    paramLoadParam = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "ComIPCUtils", localBundle);
+    if ((paramLoadParam != null) && (paramLoadParam.isSuccess()) && (paramLoadParam.data != null)) {
+      try
+      {
+        paramLoadItem = (SoLoadInfo)paramLoadParam.data.getSerializable("res");
+        paramLoadParam = paramLoadItem;
+        if (paramLoadItem == null) {
+          paramLoadParam = SoLoadInfo.sDefault;
+        }
+        return paramLoadParam;
+      }
+      catch (Throwable paramLoadParam)
+      {
+        QLog.e("SoLoadWidget.IPC", 1, paramLoadParam, new Object[0]);
+      }
+    }
+    return SoLoadInfo.sDefault;
+  }
+  
+  public static String a(String paramString)
+  {
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("oper_type", 0);
+    ((Bundle)localObject).putString("uin", paramString);
+    EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "ComIPCUtils", (Bundle)localObject);
+    localObject = paramString;
+    if (localEIPCResult != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label127:
-      alio.b("", "0X8005F5C", "1");
+      localObject = paramString;
+      if (localEIPCResult.isSuccess())
+      {
+        localObject = paramString;
+        if (localEIPCResult.data != null) {
+          localObject = localEIPCResult.data.getString("res");
+        }
+      }
     }
+    return localObject;
+  }
+  
+  public static void a(int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 8);
+    localBundle.putInt("req_id", paramInt);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static void a(AcsMsg paramAcsMsg)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 11);
+    localBundle.putSerializable("req_param", paramAcsMsg);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static void a(EmojiGifHelper.ConvertParam paramConvertParam, EIPCResultCallback paramEIPCResultCallback)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 7);
+    localBundle.putSerializable("req_param", paramConvertParam);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, paramEIPCResultCallback);
+  }
+  
+  public static void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 4);
+    localBundle.putSerializable("req_param", paramStartCheckParam);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static void a(AppInfo paramAppInfo)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 3);
+    localBundle.putSerializable("req_param", paramAppInfo);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static void a(LaunchParam paramLaunchParam, int paramInt, OnUpdateListener paramOnUpdateListener)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 2);
+    localBundle.putSerializable("mini_launch_param", paramLaunchParam);
+    localBundle.putInt("version", paramInt);
+    localBundle.putParcelable("receiver", aldt.a(new ComIPCUtils.2(null, paramOnUpdateListener)));
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static void a(LaunchParam paramLaunchParam, EIPCResultCallback paramEIPCResultCallback)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 1);
+    localBundle.putSerializable("mini_launch_param", paramLaunchParam);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, paramEIPCResultCallback);
+  }
+  
+  public static void a(LoadParam paramLoadParam, LoadParam.LoadItem paramLoadItem, bdgs parambdgs)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 17);
+    localBundle.putBoolean("is_sync", false);
+    localBundle.putSerializable("load_param", paramLoadParam);
+    localBundle.putSerializable("load_item", paramLoadItem);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, new alic(parambdgs));
+  }
+  
+  public static void a(String paramString, alas paramalas)
+  {
+    if (paramalas == null) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 15);
+    localBundle.putString("key", paramString);
+    localBundle.putInt("code", paramalas.hashCode());
+    localBundle.putParcelable("receiver", aldt.a(new ComIPCUtils.3(null, paramalas, paramString)));
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 10);
+    localBundle.putBoolean("req_param", paramBoolean);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static boolean a()
+  {
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("oper_type", 9);
+    localObject = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "ComIPCUtils", (Bundle)localObject);
+    if ((localObject != null) && (((EIPCResult)localObject).isSuccess()) && (((EIPCResult)localObject).data != null)) {
+      return ((EIPCResult)localObject).data.getBoolean("res");
+    }
+    return false;
+  }
+  
+  public static void b(AcsMsg paramAcsMsg)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 12);
+    localBundle.putSerializable("req_param", paramAcsMsg);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static void b(String paramString, alas paramalas)
+  {
+    if (paramalas == null) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 16);
+    localBundle.putString("key", paramString);
+    localBundle.putInt("code", paramalas.hashCode());
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+  }
+  
+  public static void c(AcsMsg paramAcsMsg)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("oper_type", 13);
+    localBundle.putSerializable("req_param", paramAcsMsg);
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
   }
 }
 

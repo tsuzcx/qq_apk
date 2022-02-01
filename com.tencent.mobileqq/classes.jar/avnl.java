@@ -1,104 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gamecenter.activities.GameCenterActivity;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.Map;
 
-@Deprecated
 public class avnl
+  implements View.OnClickListener
 {
-  public void call(String paramString, List<String> paramList, avnk paramavnk)
-  {
-    Object localObject2 = null;
-    Method[] arrayOfMethod = getClass().getDeclaredMethods();
-    int j = arrayOfMethod.length;
-    int i = 0;
-    for (;;)
-    {
-      Object localObject1 = localObject2;
-      if (i < j)
-      {
-        localObject1 = arrayOfMethod[i];
-        if ((!((Method)localObject1).getName().equals(paramString)) || (((Method)localObject1).getParameterTypes().length != paramList.size())) {}
-      }
-      else
-      {
-        if (localObject1 != null) {}
-        try
-        {
-          if (paramList.size() == 0) {}
-          for (localObject2 = ((Method)localObject1).invoke(this, new Object[0]);; localObject2 = ((Method)localObject1).invoke(this, paramList.toArray()))
-          {
-            localObject1 = ((Method)localObject1).getReturnType();
-            if ((localObject1 != Void.TYPE) && (localObject1 != Void.class)) {
-              break;
-            }
-            if (paramavnk == null) {
-              break label276;
-            }
-            paramavnk.a(null);
-            return;
-          }
-          if (paramavnk != null) {
-            if (customCallback())
-            {
-              paramavnk.a(localObject2.toString());
-              return;
-            }
-          }
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          if (paramavnk != null) {
-            paramavnk.a();
-          }
-          if (QLog.isDevelopLevel()) {
-            QLog.d("JB", 4, "cannot found match method,maybe your method using args type is NO String? request method:class:" + getClass().getSimpleName() + paramString + " args:" + paramList);
-          }
-          if (paramavnk != null)
-          {
-            paramavnk.a();
-            return;
-            paramavnk.a(localObject2);
-            return;
-          }
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          for (;;)
-          {
-            if (paramavnk != null) {
-              paramavnk.a();
-            }
-          }
-        }
-        catch (InvocationTargetException localInvocationTargetException)
-        {
-          for (;;)
-          {
-            if (paramavnk != null) {
-              paramavnk.a();
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            if (paramavnk != null) {
-              paramavnk.a();
-            }
-          }
-        }
-        label276:
-        return;
-      }
-      i += 1;
-    }
-  }
+  public avnl(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public boolean customCallback()
+  public void onClick(View paramView)
   {
-    return false;
+    String str = "";
+    Object localObject1 = "";
+    Object localObject2 = QQGameFeedWebFragment.a(this.a);
+    if (localObject2 != null)
+    {
+      str = ((QQGameMsgInfo)localObject2).gameAppId;
+      if (!TextUtils.isEmpty(((QQGameMsgInfo)localObject2).paMsgid)) {
+        break label189;
+      }
+    }
+    label189:
+    for (localObject1 = "";; localObject1 = ((QQGameMsgInfo)localObject2).paMsgid)
+    {
+      localObject2 = new HashMap();
+      ((Map)localObject2).put(Integer.valueOf(2), localObject1);
+      ((Map)localObject2).put(Integer.valueOf(3), "1");
+      ((Map)localObject2).put(Integer.valueOf(4), "20");
+      ((Map)localObject2).put(Integer.valueOf(24), "1");
+      acik.a(anbd.a(), "769", "205037", str, "76901", "1", "160", (Map)localObject2);
+      localObject1 = new Intent(BaseApplication.getContext(), GameCenterActivity.class);
+      ((Intent)localObject1).putExtra("url", avmc.b());
+      ((Intent)localObject1).addFlags(268435456);
+      ((Intent)localObject1).putExtra("startOpenPageTime", System.currentTimeMillis());
+      ((Intent)localObject1).putExtra("big_brother_source_key", "biz_src_zf_games");
+      this.a.startActivity((Intent)localObject1);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

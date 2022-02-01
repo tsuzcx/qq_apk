@@ -1,53 +1,30 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class rba
-  extends Binder
-  implements raz
+class rba
+  implements View.OnClickListener
 {
-  public rba()
-  {
-    attachInterface(this, "com.tencent.biz.pubaccount.readinjoy.service.IRIJAidlInterface");
-  }
+  rba(raz paramraz, ReadInJoyDraftboxItem paramReadInJoyDraftboxItem) {}
   
-  public static raz a(IBinder paramIBinder)
+  public void onClick(View paramView)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.biz.pubaccount.readinjoy.service.IRIJAidlInterface");
-    if ((localIInterface != null) && ((localIInterface instanceof raz))) {
-      return (raz)localIInterface;
-    }
-    return new rbb(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    Intent localIntent = new Intent(raz.a(this.jdField_a_of_type_Raz), ReadInJoyDeliverUGCActivity.class);
+    localIntent.putExtra("readinjoy_draftbox_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem.getId());
+    localIntent.putExtra("is_from_kan_dian", true);
+    localIntent.putExtra("support_topic", true);
+    if ((raz.a(this.jdField_a_of_type_Raz) instanceof BaseActivity))
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.biz.pubaccount.readinjoy.service.IRIJAidlInterface");
-      return true;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem.type == 0) {
+        ((BaseActivity)raz.a(this.jdField_a_of_type_Raz)).startActivityForResult(localIntent, 1000);
+      }
+      ocd.a(null, "", "0X80096DF", "0X80096DF", 0, 0, raz.a(this.jdField_a_of_type_Raz, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem) + "", "", "", "", false);
     }
-    paramParcel1.enforceInterface("com.tencent.biz.pubaccount.readinjoy.service.IRIJAidlInterface");
-    paramParcel1 = a();
-    paramParcel2.writeNoException();
-    if (paramParcel1 != null) {}
-    for (paramParcel1 = paramParcel1.asBinder();; paramParcel1 = null)
-    {
-      paramParcel2.writeStrongBinder(paramParcel1);
-      return true;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,11 +1,11 @@
 package dov.com.tencent.mobileqq.activity.richmedia.view;
 
-import bpzr;
+import brbm;
 
 class CameraGLSurfaceView$1
   implements Runnable
 {
-  CameraGLSurfaceView$1(CameraGLSurfaceView paramCameraGLSurfaceView, bpzr parambpzr) {}
+  CameraGLSurfaceView$1(CameraGLSurfaceView paramCameraGLSurfaceView, brbm parambrbm) {}
   
   public void run()
   {

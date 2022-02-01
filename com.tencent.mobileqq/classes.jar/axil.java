@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import java.util.HashSet;
 
-public final class axil
-  implements Parcelable.Creator<BasicTypeDataParcel>
+public class axil
+  implements axhy
 {
-  public BasicTypeDataParcel a(Parcel paramParcel)
-  {
-    return new BasicTypeDataParcel(paramParcel);
-  }
+  public axil(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
-  public BasicTypeDataParcel[] a(int paramInt)
+  public void a(boolean paramBoolean, RecentBaseData paramRecentBaseData)
   {
-    return new BasicTypeDataParcel[paramInt];
+    if (paramBoolean) {
+      MsgBackupSelectionFragment.a(this.a).a.add(paramRecentBaseData);
+    }
+    for (;;)
+    {
+      int i = MsgBackupSelectionFragment.a(this.a).a.size();
+      MsgBackupSelectionFragment.a(this.a, i);
+      return;
+      MsgBackupSelectionFragment.a(this.a).a.remove(paramRecentBaseData);
+    }
   }
 }
 

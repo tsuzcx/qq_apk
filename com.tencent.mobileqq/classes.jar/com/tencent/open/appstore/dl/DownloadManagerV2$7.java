@@ -1,11 +1,11 @@
 package com.tencent.open.appstore.dl;
 
 import android.text.TextUtils;
-import bgdt;
-import bisa;
-import bisp;
-import bisy;
-import bisz;
+import bhdu;
+import bjsz;
+import bjto;
+import bjtx;
+import bjty;
 import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
@@ -15,7 +15,7 @@ import protocol.KQQConfig.UpgradeInfo;
 public class DownloadManagerV2$7
   implements Runnable
 {
-  public DownloadManagerV2$7(bisa parambisa, DownloadInfo paramDownloadInfo) {}
+  public DownloadManagerV2$7(bjsz parambjsz, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -28,45 +28,45 @@ public class DownloadManagerV2$7
         if ((this.a.jdField_e_of_type_Boolean) && ("com.tencent.mobileqq".equals(this.a.jdField_e_of_type_JavaLangString)))
         {
           File localFile = new File(this.a.l);
-          UpgradeDetailWrapper localUpgradeDetailWrapper = bgdt.a().a();
+          UpgradeDetailWrapper localUpgradeDetailWrapper = bhdu.a().a();
           if ((localFile.exists()) && (localUpgradeDetailWrapper != null))
           {
-            String str = bisz.a(localFile);
+            String str = bjty.a(localFile);
             if (!TextUtils.equals(localUpgradeDetailWrapper.a.strNewSoftwareMD5.toUpperCase(), str.toUpperCase()))
             {
-              bisa.a(this.this$0, this.a, -51, "download file md5 check failed(not patche)");
+              bjsz.a(this.this$0, this.a, -51, "download file md5 check failed(not patche)");
               localFile.delete();
               return;
             }
           }
         }
         this.a.c = localTMAssistantDownloadTaskInfo.mTotalDataLen;
-        bisy.b("DownloadManagerV2", "onDownload complete, info.filePath = " + this.a.l);
+        bjtx.b("DownloadManagerV2", "onDownload complete, info.filePath = " + this.a.l);
         if ((!"com.tencent.mobileqq".equals(this.a.jdField_e_of_type_JavaLangString)) || (!this.this$0.a())) {
           break label388;
         }
-        bisy.b("DownloadManagerV2", "QQ Download complete begin write code ......");
-        this.a.j = bisa.a(this.this$0, this.a);
+        bjtx.b("DownloadManagerV2", "QQ Download complete begin write code ......");
+        this.a.j = bjsz.a(this.this$0, this.a);
         if (this.a.j == 0) {
           break label338;
         }
-        bisy.b("DownloadManagerV2", "QQ apk write code fail......");
+        bjtx.b("DownloadManagerV2", "QQ apk write code fail......");
         this.a.a(-2);
         this.this$0.c(this.a);
-        bisa.a(this.this$0, this.a, this.a.j, null);
+        bjsz.a(this.this$0, this.a, this.a.j, null);
       }
     }
     catch (Exception localException)
     {
-      bisy.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
-      bisy.b("AppCenterReporter", "from:[doMd5CheckAndWriteCode]");
-      bisp.b(this.a);
+      bjtx.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
+      bjtx.b("AppCenterReporter", "from:[doMd5CheckAndWriteCode]");
+      bjto.b(this.a);
       if (this.a.a)
       {
         this.this$0.a(this.a, false);
         return;
         label338:
-        bisy.b("DownloadManagerV2", "QQ apk code suc......");
+        bjtx.b("DownloadManagerV2", "QQ apk code suc......");
         label388:
         do
         {
@@ -76,8 +76,8 @@ public class DownloadManagerV2$7
           this.this$0.a(this.a, l);
           break;
         } while (TextUtils.isEmpty(this.a.jdField_e_of_type_JavaLangString));
-        bisy.b("DownloadManagerV2", this.a.jdField_e_of_type_JavaLangString + " Download complete begin write code ......");
-        bisa.b(this.this$0, this.a);
+        bjtx.b("DownloadManagerV2", this.a.jdField_e_of_type_JavaLangString + " Download complete begin write code ......");
+        bjsz.b(this.this$0, this.a);
       }
     }
   }

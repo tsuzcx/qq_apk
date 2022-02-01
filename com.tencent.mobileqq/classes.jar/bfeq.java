@@ -1,6 +1,16 @@
-public abstract interface bfeq
+import com.tencent.mobileqq.tribe.videoupload.TribeVideoUploadTask;
+
+public class bfeq
+  implements wng
 {
-  public abstract int d();
+  public bfeq(TribeVideoUploadTask paramTribeVideoUploadTask, bfep parambfep) {}
+  
+  public void a(wnf paramwnf)
+  {
+    paramwnf = (bfen)paramwnf;
+    this.jdField_a_of_type_Bfep.b = paramwnf.a.c;
+    this.jdField_a_of_type_Bfep.c = paramwnf.a.a;
+  }
 }
 
 

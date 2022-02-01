@@ -4,13 +4,13 @@ import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.media.AudioRecord;
-import bjcd;
-import bjce;
-import bjch;
-import bjcm;
-import bjcp;
-import bjcq;
-import bjcs;
+import bkdc;
+import bkdd;
+import bkdg;
+import bkdl;
+import bkdo;
+import bkdp;
+import bkdr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qav.QavDef.MultiUserInfo;
@@ -40,7 +40,7 @@ public class VoIPManager
   private boolean mQAvHasEnterRoom;
   private boolean mQAvHasInitSDK;
   private AtomicBoolean mQAvRealEnterRoom = new AtomicBoolean(false);
-  private bjcp mQavMultiObserver = new VoIPManager.3(this);
+  private bkdo mQavMultiObserver = new VoIPManager.3(this);
   private final BroadcastReceiver mReceiver = new VoIPManager.1(this);
   private Map<Long, VoIPManager.UserModel> mRoomUserModelList = new ConcurrentHashMap();
   private int mSelfMicStat = -1;
@@ -50,9 +50,9 @@ public class VoIPManager
   private void doExitRoom()
   {
     QLog.i("VoIPManager", 1, "exitRoom!");
-    bjcm localbjcm = bjce.a().a();
-    if (localbjcm != null) {
-      localbjcm.e();
+    bkdl localbkdl = bkdd.a().a();
+    if (localbkdl != null) {
+      localbkdl.e();
     }
     qavDeInitSDK();
     this.mQAvHasInitSDK = false;
@@ -176,9 +176,9 @@ public class VoIPManager
   {
     QLog.i("VoIPManager", 1, "qavDeInitSDK");
     ((PushManager)BaseApplicationImpl.getApplication().getRuntime().getManager(5)).unregistProxyMessagePush(AppSetting.a(), BaseApplicationImpl.getApplication().getQQProcessName());
-    bjce localbjce = bjce.a();
-    localbjce.b(this.mQavMultiObserver);
-    localbjce.a();
+    bkdd localbkdd = bkdd.a();
+    localbkdd.b(this.mQavMultiObserver);
+    localbkdd.a();
   }
   
   private void qavInitSDK(long paramLong)
@@ -186,13 +186,13 @@ public class VoIPManager
     QLog.i("VoIPManager", 1, "qavInitSDK");
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     ((PushManager)((AppRuntime)localObject).getManager(5)).registProxyMessagePush(AppSetting.a(), BaseApplicationImpl.getApplication().getQQProcessName(), "", new String[] { "MultiVideo.c2sack", "MultiVideo.s2c" });
-    bjcq.a(new bjcs());
-    bjch localbjch = bjch.a();
-    localbjch.a((AppRuntime)localObject);
-    localbjch.a(new VoIPManager.2(this));
-    localObject = bjce.a();
-    ((bjce)localObject).a(BaseApplicationImpl.getApplication().getApplicationContext(), paramLong, localbjch);
-    ((bjce)localObject).a(this.mQavMultiObserver);
+    bkdp.a(new bkdr());
+    bkdg localbkdg = bkdg.a();
+    localbkdg.a((AppRuntime)localObject);
+    localbkdg.a(new VoIPManager.2(this));
+    localObject = bkdd.a();
+    ((bkdd)localObject).a(BaseApplicationImpl.getApplication().getApplicationContext(), paramLong, localbkdg);
+    ((bkdd)localObject).a(this.mQavMultiObserver);
   }
   
   private int qavOpMic(boolean paramBoolean)
@@ -202,10 +202,10 @@ public class VoIPManager
       QLog.e("VoIPManager", 1, "cant op mic currently");
       return -1;
     }
-    Object localObject = bjce.a().a();
+    Object localObject = bkdd.a().a();
     if (localObject != null)
     {
-      ((bjcm)localObject).a(paramBoolean);
+      ((bkdl)localObject).a(paramBoolean);
       if (paramBoolean) {}
       for (int i = 1;; i = 2)
       {
@@ -229,14 +229,14 @@ public class VoIPManager
       QLog.e("VoIPManager", 1, "cant op mute currently");
       return -1;
     }
-    bjcm localbjcm = bjce.a().a();
-    if (localbjcm != null)
+    bkdl localbkdl = bkdd.a().a();
+    if (localbkdl != null)
     {
       boolean bool;
       if (!paramBoolean)
       {
         bool = true;
-        localbjcm.b(bool);
+        localbkdl.b(bool);
         if (!paramBoolean) {
           break label92;
         }
@@ -267,11 +267,11 @@ public class VoIPManager
   private void switchAudioRoute()
   {
     QLog.d("VoIPManager", 1, String.format("switchAudioRoute isHeadsetPlugged=%s isBluetoothOn=%s", new Object[] { Boolean.valueOf(isHeadsetPlugged()), Boolean.valueOf(isBluetoothOn()) }));
-    bjcm localbjcm = bjce.a().a();
-    if (localbjcm != null)
+    bkdl localbkdl = bkdd.a().a();
+    if (localbkdl != null)
     {
       if (isHeadsetPlugged()) {
-        localbjcm.b(0);
+        localbkdl.b(0);
       }
     }
     else {
@@ -279,18 +279,18 @@ public class VoIPManager
     }
     if (isBluetoothOn())
     {
-      localbjcm.b(2);
+      localbkdl.b(2);
       return;
     }
-    localbjcm.b(1);
+    localbkdl.b(1);
   }
   
   private void switchAudioRoute(int paramInt)
   {
     QLog.d("VoIPManager", 1, String.format("switchAudioRoute route=%s isHeadsetPlugged=%s isBluetoothOn=%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(isHeadsetPlugged()), Boolean.valueOf(isBluetoothOn()) }));
-    bjcm localbjcm = bjce.a().a();
-    if (localbjcm != null) {
-      localbjcm.b(paramInt);
+    bkdl localbkdl = bkdd.a().a();
+    if (localbkdl != null) {
+      localbkdl.b(paramInt);
     }
   }
   
@@ -452,20 +452,20 @@ public class VoIPManager
         {
           this.mJoinRoomListener = paramJoinRoomListener;
           this.mSelfUin = paramIdResult.tinyId;
-          bjcm localbjcm = bjce.a().a();
-          if (localbjcm == null) {
+          bkdl localbkdl = bkdd.a().a();
+          if (localbkdl == null) {
             break label271;
           }
-          bjcd localbjcd = new bjcd();
-          localbjcd.jdField_a_of_type_Int = 11;
-          localbjcd.b = 14;
-          localbjcd.c = 1;
-          localbjcd.d = paramIdResult.roomId;
-          localbjcd.jdField_a_of_type_Long = paramIdResult.tinyId;
-          localbjcd.jdField_a_of_type_JavaLangString = paramIdResult.openId;
-          localbjcd.e = 1;
-          localbjcd.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-          int i = localbjcm.a(localbjcd);
+          bkdc localbkdc = new bkdc();
+          localbkdc.jdField_a_of_type_Int = 11;
+          localbkdc.b = 14;
+          localbkdc.c = 1;
+          localbkdc.d = paramIdResult.roomId;
+          localbkdc.jdField_a_of_type_Long = paramIdResult.tinyId;
+          localbkdc.jdField_a_of_type_JavaLangString = paramIdResult.openId;
+          localbkdc.e = 1;
+          localbkdc.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+          int i = localbkdl.a(localbkdc);
           if (i != 0) {
             paramJoinRoomListener.onError(i);
           }

@@ -1,80 +1,60 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.NegativeChildrenLayout;
 
-public class blmo
-  extends ReportDialog
+class blmo
+  implements View.OnClickListener
 {
-  Context jdField_a_of_type_AndroidContentContext = null;
-  Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = null;
+  blmo(blmm paramblmm) {}
   
-  public blmo(Context paramContext)
+  public void onClick(View paramView)
   {
-    super(paramContext, 2131755826);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560831, null);
-    setContentView(paramContext);
-    Object localObject = getWindow();
-    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
-    localLayoutParams.width = -1;
-    localLayoutParams.height = -1;
-    ((Window)localObject).setAttributes(localLayoutParams);
-    setCanceledOnTouchOutside(false);
-    localObject = (TextView)paramContext.findViewById(2131368947);
-    if (localObject != null)
+    switch (paramView.getId())
     {
-      ((TextView)localObject).setVisibility(0);
-      ((TextView)localObject).setText(2131690563);
+    default: 
+      this.a.dismiss();
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131368994));
-    try
+    for (;;)
     {
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131712896));
-      }
-      label143:
-      if (QLog.isColorLevel()) {
-        QLog.d("SignatureLoadingDialog", 2, "enter into SignatureLoading");
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (Exception paramContext)
-    {
-      break label143;
-    }
-  }
-  
-  public void dismiss()
-  {
-    super.dismiss();
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
-    }
-  }
-  
-  public void onWindowFocusChanged(boolean paramBoolean)
-  {
-    super.onWindowFocusChanged(paramBoolean);
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839406));
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds((Drawable)this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable, null, null, null);
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
+      this.a.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.a.jdField_a_of_type_JavaUtilArrayList, anzj.a(2131704827), this.a.jdField_a_of_type_Blmr);
+      this.a.a(true);
+      this.a.r = 1;
+      this.a.c = anzj.a(2131704832);
+      blmm.a(this.a, paramView.getTag(), false);
+      continue;
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getParent();
+      this.a.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.a.jdField_b_of_type_JavaUtilArrayList, anzj.a(2131704826), this.a.jdField_a_of_type_Blmr);
+      this.a.a(true);
+      this.a.r = 2;
+      this.a.c = anzj.a(2131704835);
+      blmm.a(this.a, paramView.getTag(), false);
+      continue;
+      this.a.c(paramView);
+      this.a.c();
+      this.a.r = 3;
+      this.a.c = anzj.a(2131704831);
+      blmm.a(this.a, paramView.getTag(), true);
+      continue;
+      this.a.c(paramView);
+      this.a.c();
+      this.a.r = 4;
+      this.a.c = this.a.jdField_b_of_type_JavaLangString;
+      blmm.a(this.a, paramView.getTag(), false);
+      continue;
+      this.a.c(paramView);
+      this.a.c();
+      this.a.r = 5;
+      this.a.c = BaseApplicationImpl.getContext().getString(2131717169);
+      blmm.a(this.a, paramView.getTag(), false);
+      continue;
+      this.a.a(false);
     }
   }
 }

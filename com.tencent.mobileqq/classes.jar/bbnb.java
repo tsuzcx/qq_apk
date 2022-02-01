@@ -1,98 +1,41 @@
-import android.text.TextUtils;
-import android.view.View;
+import android.opengl.GLES20;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import java.text.SimpleDateFormat;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 
 public class bbnb
-  extends bbmz
+  extends bbna
 {
-  private static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy/MM/dd");
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  private RecentUser jdField_a_of_type_ComTencentMobileqqDataRecentUser;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString;
-  private CharSequence b;
-  private CharSequence c;
+  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230751);
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
   
-  public bbnb(QQAppInterface paramQQAppInterface, String paramString, RecentUser paramRecentUser, MessageRecord paramMessageRecord)
+  public bbnb()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqDataRecentUser = paramRecentUser;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this(0.5F);
   }
   
-  public CharSequence a()
+  public bbnb(float paramFloat)
   {
-    if (this.b == null) {
-      if (!njo.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
-        break label60;
-      }
-    }
-    label60:
-    SessionInfo localSessionInfo;
-    for (this.b = (BaseApplicationImpl.sApplication.getString(2131696514) + njo.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).b);; this.b = bglf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin))
-    {
-      return this.b;
-      localSessionInfo = new SessionInfo();
-      localSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType();
-      localSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin;
-    }
+    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public String a()
+  public void a(float paramFloat)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public void a(View paramView)
+  public void onDrawTexture()
   {
-    aldk.jdField_a_of_type_Boolean = true;
-    aldk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    aldk.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType(), bglf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType()), false);
-    anuq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-    bbup.a(this.jdField_a_of_type_JavaLangString, 40, paramView, true);
+    super.onDrawTexture();
+    GLES20.glUniform1f(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float);
   }
   
-  public boolean a()
+  public void onInitialized()
   {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    if (this.c == null) {
-      this.c = bbup.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg, this.jdField_a_of_type_JavaLangString);
-    }
-    return this.c;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public CharSequence c()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
-      this.jdField_a_of_type_JavaLangCharSequence = bgsu.a(BaseApplicationImpl.sApplication, 3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time * 1000L);
-    }
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public CharSequence d()
-  {
-    return null;
+    super.onInitialized();
+    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "brightness");
+    a(this.jdField_a_of_type_Float);
   }
 }
 

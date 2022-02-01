@@ -1,7 +1,35 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/FirstCommentStickyHandler$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pdq {}
+public class pdq
+  implements bltz
+{
+  public pdq(ReadInJoyCGIDynamicChannelFragment paramReadInJoyCGIDynamicChannelFragment) {}
+  
+  public void a()
+  {
+    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "endOfRefresh.");
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  {
+    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "startLoadMore.");
+    paramXRecyclerView = pea.a();
+    if (paramXRecyclerView != null) {
+      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.f(this.a), ReadInJoyCGIDynamicChannelFragment.a(this.a).a(), 10);
+    }
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "startTopRefresh.");
+    paramXRecyclerView = pea.a();
+    if (paramXRecyclerView != null) {
+      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.e(this.a));
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

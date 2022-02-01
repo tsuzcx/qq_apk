@@ -1,97 +1,157 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.SharedPreferences;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aqqi
-  extends aqkz<aqqh>
 {
-  @NonNull
-  public aqqh a(int paramInt)
+  private static aqqi jdField_a_of_type_Aqqi;
+  public int a;
+  public String a;
+  private final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public final boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f;
+  public boolean f;
+  public int g;
+  public boolean g;
+  public int h = -1;
+  public int i = -1;
+  
+  public aqqi()
   {
-    return new aqqh();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_d_of_type_Int = -1;
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_f_of_type_Int = -1;
+    this.jdField_g_of_type_Int = -1;
   }
   
-  @Nullable
-  public aqqh a(aqlg[] paramArrayOfaqlg)
+  public static aqqi a()
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
+    if (jdField_a_of_type_Aqqi == null) {}
+    try
     {
-      aqqh localaqqh = aqqh.a(paramArrayOfaqlg[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("OnlineAutoStatusConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
+      if (jdField_a_of_type_Aqqi == null) {
+        jdField_a_of_type_Aqqi = new aqqi();
       }
-      return localaqqh;
+      return jdField_a_of_type_Aqqi;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineAutoStatusConfProcessor", 2, "onParsed is null");
-    }
-    return new aqqh();
+    finally {}
   }
   
-  public void a(aqqh paramaqqh)
+  private void a(SharedPreferences paramSharedPreferences)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (localQQAppInterface == null) {
+    QLog.i("Q.camera.adapter.CameraAttrs", 1, "[loadValueFromPref] + BEGIN");
+    this.jdField_b_of_type_Boolean = paramSharedPreferences.getBoolean("sysCameraOn", false);
+    this.jdField_a_of_type_JavaLangString = paramSharedPreferences.getString("str_sysMinVersion", "1.0.0");
+    this.jdField_b_of_type_JavaLangString = paramSharedPreferences.getString("str_sysMaxVersion", "1000.0.0");
+    this.jdField_c_of_type_Boolean = paramSharedPreferences.getBoolean("disableCameraSDK", true);
+    this.jdField_d_of_type_Boolean = paramSharedPreferences.getBoolean("readCamNumException", false);
+    this.jdField_e_of_type_Boolean = paramSharedPreferences.getBoolean("disableFrontCamera", false);
+    this.jdField_f_of_type_Boolean = paramSharedPreferences.getBoolean("beBlurredPreviewAfterTakePic", false);
+    this.jdField_b_of_type_Int = paramSharedPreferences.getInt("int_frontCamRotate0", -1);
+    this.jdField_c_of_type_Int = paramSharedPreferences.getInt("int_frontCamRotate90", -1);
+    this.jdField_d_of_type_Int = paramSharedPreferences.getInt("int_frontCamRotate180", -1);
+    this.jdField_e_of_type_Int = paramSharedPreferences.getInt("int_frontCamRotate270", -1);
+    this.jdField_f_of_type_Int = paramSharedPreferences.getInt("int_backCamRotate0", -1);
+    this.jdField_g_of_type_Int = paramSharedPreferences.getInt("int_backCamRotate90", -1);
+    this.h = paramSharedPreferences.getInt("int_backCamRotate180", -1);
+    this.i = paramSharedPreferences.getInt("int_backCamRotate270", -1);
+    this.jdField_g_of_type_Boolean = paramSharedPreferences.getBoolean("frontCamFlipH", false);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.camera.adapter.CameraAttrs", 2, "[loadValueFromPref] + END");
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains("sysCameraOn")) {
       return;
     }
-    aypj localaypj = (aypj)localQQAppInterface.getManager(369);
-    ayqb localayqb = localaypj.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineAutoStatusConfProcessor", 2, "[status][parser] onUpdate try startDetector conf: " + paramaqqh.toString());
-    }
-    if (aypi.a(localQQAppInterface.getOnlineStatus(), localQQAppInterface.getExtOnlineStatus())) {
-      localayqb.a("configUpdate");
-    }
-    localaypj.c(localQQAppInterface.getExtOnlineStatus());
-    localaypj.b(localQQAppInterface.getExtOnlineStatus());
+    SharedPreferences localSharedPreferences = aqql.a(BaseApplicationImpl.getContext());
+    this.jdField_b_of_type_Boolean = localSharedPreferences.getBoolean("sysCameraOn", false);
+    this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString("str_sysMinVersion", "1.0.0");
+    this.jdField_b_of_type_JavaLangString = localSharedPreferences.getString("str_sysMaxVersion", "1000.0.0");
+    this.jdField_a_of_type_JavaUtilArrayList.add("sysCameraOn");
   }
   
-  public Class<aqqh> clazz()
-  {
-    return aqqh.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    QLog.d("OnlineAutoStatusConfProcessor", 1, "isNeedUpgradeReset ");
-    return true;
-  }
-  
-  public int migrateOldVersion()
+  public void a(SharedPreferences paramSharedPreferences, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("OnlineAutoStatusConfProcessor", 2, "migrateOldVersion");
+      QLog.i("Q.camera.adapter.CameraAttrs", 4, "[loadConfigAndSave] + BEGIN");
     }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
+    int j = paramSharedPreferences.getInt("qcamera_conf_version", 0);
+    if ((j != this.jdField_a_of_type_Int) && (paramBoolean))
+    {
+      this.jdField_a_of_type_Int = j;
+      a(paramSharedPreferences);
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("OnlineAutoStatusConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+      QLog.i("Q.camera.adapter.CameraAttrs", 4, "[loadConfigAndSave] + END");
     }
   }
   
-  public int type()
+  public void b()
   {
-    return 652;
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains("disableCameraSDK")) {
+      return;
+    }
+    this.jdField_c_of_type_Boolean = aqql.a(BaseApplicationImpl.getContext()).getBoolean("disableCameraSDK", true);
+    this.jdField_a_of_type_JavaUtilArrayList.add("disableCameraSDK");
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains("readCamNumException")) {
+      return;
+    }
+    SharedPreferences localSharedPreferences = aqql.a(BaseApplicationImpl.getContext());
+    this.jdField_d_of_type_Boolean = localSharedPreferences.getBoolean("readCamNumException", false);
+    this.jdField_e_of_type_Boolean = localSharedPreferences.getBoolean("disableFrontCamera", false);
+    this.jdField_a_of_type_JavaUtilArrayList.add("readCamNumException");
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains("int_frontCamRotate0")) {
+      return;
+    }
+    SharedPreferences localSharedPreferences = aqql.a(BaseApplicationImpl.getContext());
+    this.jdField_b_of_type_Int = localSharedPreferences.getInt("int_frontCamRotate0", -1);
+    this.jdField_c_of_type_Int = localSharedPreferences.getInt("int_frontCamRotate90", -1);
+    this.jdField_d_of_type_Int = localSharedPreferences.getInt("int_frontCamRotate180", -1);
+    this.jdField_e_of_type_Int = localSharedPreferences.getInt("int_frontCamRotate270", -1);
+    this.jdField_f_of_type_Int = localSharedPreferences.getInt("int_backCamRotate0", -1);
+    this.jdField_g_of_type_Int = localSharedPreferences.getInt("int_backCamRotate90", -1);
+    this.h = localSharedPreferences.getInt("int_backCamRotate180", -1);
+    this.i = localSharedPreferences.getInt("int_backCamRotate270", -1);
+    this.jdField_a_of_type_JavaUtilArrayList.add("int_frontCamRotate0");
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains("frontCamFlipH")) {
+      return;
+    }
+    this.jdField_g_of_type_Boolean = aqql.a(BaseApplicationImpl.getContext()).getBoolean("frontCamFlipH", false);
+    this.jdField_a_of_type_JavaUtilArrayList.add("frontCamFlipH");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqqi
  * JD-Core Version:    0.7.0.1
  */

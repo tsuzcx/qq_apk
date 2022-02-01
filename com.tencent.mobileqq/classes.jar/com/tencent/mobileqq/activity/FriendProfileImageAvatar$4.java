@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aehr;
+import aeqv;
 import android.os.Message;
-import arul;
-import atwl;
-import axei;
-import bghy;
+import asjz;
+import auog;
+import axxb;
+import bhhz;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -17,14 +17,14 @@ import mqq.os.MqqHandler;
 public class FriendProfileImageAvatar$4
   implements Runnable
 {
-  public FriendProfileImageAvatar$4(aehr paramaehr, String paramString1, byte paramByte, String paramString2) {}
+  public FriendProfileImageAvatar$4(aeqv paramaeqv, String paramString1, byte paramByte, String paramString2) {}
   
   public void run()
   {
-    Object localObject2 = bghy.b(String.valueOf(this.jdField_a_of_type_JavaLangString));
-    if (atwl.a((String)localObject2)) {
-      if (axei.a()) {
-        axei.a("Q.profilecard.Avatar", "downloadHDAvatar hd avatar file exist 2", new Object[0]);
+    Object localObject2 = bhhz.b(String.valueOf(this.jdField_a_of_type_JavaLangString));
+    if (auog.a((String)localObject2)) {
+      if (axxb.a()) {
+        axxb.a("Q.profilecard.Avatar", "downloadHDAvatar hd avatar file exist 2", new Object[0]);
       }
     }
     for (;;)
@@ -32,10 +32,10 @@ public class FriendProfileImageAvatar$4
       return;
       if (this.this$0.b)
       {
-        if (!axei.a()) {
+        if (!axxb.a()) {
           continue;
         }
-        axei.a("Q.profilecard.Avatar", "downloadHDAvatar is downloading and return 2", new Object[0]);
+        axxb.a("Q.profilecard.Avatar", "downloadHDAvatar is downloading and return 2", new Object[0]);
         return;
       }
       this.this$0.b = true;
@@ -55,7 +55,7 @@ public class FriendProfileImageAvatar$4
         }
         localObject2 = new File((String)localObject2);
         File localFile = new File(((File)localObject2).getPath() + Long.toString(System.currentTimeMillis()));
-        if (HttpDownloadUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new arul(MsfSdkUtils.insertMtype("friendlist", (String)localObject1), localFile, 0), this.this$0) == 0)
+        if (HttpDownloadUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new asjz(MsfSdkUtils.insertMtype("friendlist", (String)localObject1), localFile, 0), this.this$0) == 0)
         {
           bool1 = true;
           boolean bool2 = bool1;
@@ -74,10 +74,10 @@ public class FriendProfileImageAvatar$4
             this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject1);
           }
           this.this$0.b = false;
-          if (!axei.a()) {
+          if (!axxb.a()) {
             continue;
           }
-          axei.a("Q.profilecard.Avatar", "downloadHDAvatar end of downloading", new Object[0]);
+          axxb.a("Q.profilecard.Avatar", "downloadHDAvatar end of downloading", new Object[0]);
           return;
           if ((this.jdField_a_of_type_Byte & 0x10) != 0)
           {

@@ -22,12 +22,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import anni;
-import bbhv;
-import bbhw;
-import bbhx;
-import bbuo;
-import bcst;
+import anzj;
+import bcap;
+import bcaq;
+import bcar;
+import bcnh;
+import bdll;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -59,7 +59,7 @@ public abstract class BaseSearchActivity
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText = ((QuickPinyinEditText)super.findViewById(2131366102));
+    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText = ((QuickPinyinEditText)super.findViewById(2131366151));
     this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setHint(a());
     this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setImeOptions(3);
     this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setOnEditorActionListener(this);
@@ -72,15 +72,15 @@ public abstract class BaseSearchActivity
       if (this.jdField_a_of_type_Boolean) {
         this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getInputExtras(true).putInt("QUICK_SEARCH", 1);
       }
-      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)super.findViewById(2131368135));
-      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new bbhv(this));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363719));
+      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)super.findViewById(2131368209));
+      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new bcap(this));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363745));
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131690582);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bbhw(this));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131369045));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131690580);
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bcaq(this));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131369134));
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bbhx(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bcar(this));
       return;
       this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setInputType(524289);
     }
@@ -88,22 +88,22 @@ public abstract class BaseSearchActivity
   
   protected int a()
   {
-    return 2131561484;
+    return 2131561525;
   }
   
   protected abstract BaseSearchFragment a();
   
   protected String a()
   {
-    return anni.a(2131699866);
+    return anzj.a(2131699973);
   }
   
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("searchUtils", 2, "cancelType-3 ResultModule:" + bbuo.a());
+      QLog.d("searchUtils", 2, "cancelType-3 ResultModule:" + bcnh.a());
     }
-    bcst.b(null, "CliOper", "", "", "0X8005E13", "0X8005E13", 0, 0, "3", "", bbuo.a(), "");
+    bdll.b(null, "CliOper", "", "", "0X8005E13", "0X8005E13", 0, 0, "3", "", bcnh.a(), "");
     a(this, new Intent("com.tencent.mobileqq.search.cancel"));
     b = 0;
     finish();
@@ -128,7 +128,7 @@ public abstract class BaseSearchActivity
     {
       paramEditable = paramEditable.trim();
       if (!paramEditable.equals(this.jdField_a_of_type_JavaLangString)) {
-        bbup.b = 0L;
+        bcni.b = 0L;
       }
       a(paramEditable);
       return;
@@ -158,7 +158,7 @@ public abstract class BaseSearchActivity
     b = -1;
     super.doOnCreate(paramBundle);
     super.setContentView(a());
-    paramBundle = super.findViewById(2131376788);
+    paramBundle = super.findViewById(2131376925);
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
       paramBundle.setFitsSystemWindows(true);
     }
@@ -168,7 +168,7 @@ public abstract class BaseSearchActivity
     paramBundle = super.getSupportFragmentManager();
     this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment = a();
     paramBundle = paramBundle.beginTransaction();
-    paramBundle.replace(2131377025, this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment);
+    paramBundle.replace(2131377164, this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment);
     paramBundle.commit();
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
@@ -219,7 +219,7 @@ public abstract class BaseSearchActivity
           localError.printStackTrace();
         }
       }
-      bbup.a = null;
+      bcni.a = null;
       b = -1;
       return;
     }
@@ -235,7 +235,7 @@ public abstract class BaseSearchActivity
   public void doOnStart()
   {
     super.doOnStart();
-    bgur.jdField_a_of_type_Boolean = false;
+    bhuu.jdField_a_of_type_Boolean = false;
   }
   
   @Override

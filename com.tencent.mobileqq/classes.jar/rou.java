@@ -1,14 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.EditColumnFragment;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
 
 public class rou
-  implements ttm
+  implements Animation.AnimationListener
 {
-  public rou(EditColumnFragment paramEditColumnFragment) {}
+  public rou(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
   
-  public void a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    this.a.g();
+    VideoFeedsAioGuideView.a(this.a).setStartOffset(360L);
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,56 +1,167 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.confess.BaseMsgListFragment;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Build.VERSION;
+import android.preference.PreferenceManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.bgprobe.BackgroundException;
+import com.tencent.mobileqq.bgprobe.BackgroundProbeManager.1;
+import com.tencent.mobileqq.bgprobe.BackgroundProbeManager.2;
+import com.tencent.mobileqq.bgprobe.BackgroundService;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Locale;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class aqjg
-  implements Handler.Callback
 {
-  public aqjg(BaseMsgListFragment paramBaseMsgListFragment) {}
+  private static final long jdField_a_of_type_Long = TimeUnit.DAYS.toMillis(1L);
+  private static boolean jdField_a_of_type_Boolean;
+  private static boolean jdField_b_of_type_Boolean;
+  private static boolean c;
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.context;
+  private long jdField_b_of_type_Long = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getLong("KEY_LAST_PROBE_SERVICE_START_TIME_MS", 0L);
   
-  public boolean handleMessage(Message paramMessage)
+  private aqjg()
   {
-    switch (paramMessage.what)
+    if (new Random(System.currentTimeMillis()).nextInt(100000) == 0) {}
+    for (boolean bool = true;; bool = false)
     {
+      c = bool;
+      return;
     }
-    label196:
-    for (;;)
+  }
+  
+  private static int a()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getPackageManager();
+    try
     {
-      return false;
-      if ((this.a.a()) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() != -1)) {
-        break;
-      }
-      this.a.jdField_a_of_type_Albc.a(this.a.jdField_c_of_type_JavaUtilList);
-      this.a.jdField_a_of_type_Albc.a(17);
-      this.a.c();
-      if ((this.a.jdField_c_of_type_Boolean) || (this.a.jdField_c_of_type_JavaUtilList.size() == 0)) {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
-      for (;;)
+      localObject = ((PackageManager)localObject).getApplicationInfo("com.tencent.mobileqq", 128);
+      if (localObject != null)
       {
-        if (this.a.jdField_a_of_type_Boolean) {
-          break label196;
-        }
-        this.a.jdField_a_of_type_Boolean = true;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("BaseMsgListFragment", 2, String.format(Locale.getDefault(), "init ui cost time : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) }));
-        return false;
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        int i = ((ApplicationInfo)localObject).targetSdkVersion;
+        return i;
       }
     }
-    this.a.b = true;
+    catch (Throwable localThrowable) {}
+    return 0;
+  }
+  
+  public static aqjg a()
+  {
+    return aqjh.a();
+  }
+  
+  public static void a()
+  {
+    aqjg localaqjg = a();
+    BackgroundProbeManager.1 local1 = new BackgroundProbeManager.1(localaqjg);
+    BackgroundProbeManager.2 local2 = new BackgroundProbeManager.2(localaqjg);
+    boolean bool = localaqjg.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("BackgroundProbeManager", 2, "onRunningBackground: invoked.  probeEnabled: " + bool);
+    }
+    if (bool) {
+      bfmb.a(local1, 180000L);
+    }
+    bfmb.a(local2, 181000L);
+  }
+  
+  public static void a(Intent paramIntent)
+  {
+    if (new Random(System.currentTimeMillis()).nextInt(400) == 0) {}
+    for (int i = 1;; i = 0)
+    {
+      if ((c) && (b()) && (!jdField_b_of_type_Boolean) && (i != 0) && (paramIntent.getComponent() == null))
+      {
+        BackgroundException localBackgroundException = new BackgroundException("Implicit Broadcast");
+        bdkh.a(localBackgroundException, "intent: " + paramIntent.toString());
+        jdField_b_of_type_Boolean = true;
+        if (QLog.isColorLevel()) {
+          QLog.i("BackgroundProbeManager", 2, "reportImplicitBroadcast: invoked.  exception: " + localBackgroundException);
+        }
+      }
+      return;
+    }
+  }
+  
+  private boolean a()
+  {
+    if (System.currentTimeMillis() - this.jdField_b_of_type_Long > jdField_a_of_type_Long) {}
+    for (int i = 1; (b()) && (i != 0); i = 0) {
+      return true;
+    }
     return false;
+  }
+  
+  private void b()
+  {
+    try
+    {
+      if (!jdField_a_of_type_Boolean)
+      {
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, BackgroundService.class);
+        this.jdField_a_of_type_AndroidContentContext.startService(localIntent);
+        this.jdField_b_of_type_Long = System.currentTimeMillis();
+        jdField_a_of_type_Boolean = true;
+        PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).edit().putLong("KEY_LAST_PROBE_SERVICE_START_TIME_MS", this.jdField_b_of_type_Long).apply();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      bdkh.a(new BackgroundException("startProbeService failed"));
+    }
+  }
+  
+  private static boolean b()
+  {
+    int i;
+    if (a() >= 26)
+    {
+      i = 1;
+      if (Build.VERSION.SDK_INT < 24) {
+        break label35;
+      }
+    }
+    label35:
+    for (int j = 1;; j = 0)
+    {
+      if ((i == 0) || (j == 0)) {
+        break label40;
+      }
+      return true;
+      i = 0;
+      break;
+    }
+    label40:
+    return false;
+  }
+  
+  private void c()
+  {
+    try
+    {
+      if (jdField_a_of_type_Boolean)
+      {
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, BackgroundService.class);
+        this.jdField_a_of_type_AndroidContentContext.stopService(localIntent);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("BackgroundProbeManager", 2, "stopProbeService: failed. ", localThrowable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqjg
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.troop.widget;
 
 import android.util.Pair;
 import android.widget.ImageView;
-import bfvu;
+import bgvv;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.freshnews.feed.NearbyImgLoader;
 import java.util.HashMap;
@@ -12,7 +12,7 @@ import mqq.os.MqqHandler;
 public class HotChatPostItemView$1$1
   implements Runnable
 {
-  public HotChatPostItemView$1$1(bfvu parambfvu) {}
+  public HotChatPostItemView$1$1(bgvv parambgvv) {}
   
   public void run()
   {

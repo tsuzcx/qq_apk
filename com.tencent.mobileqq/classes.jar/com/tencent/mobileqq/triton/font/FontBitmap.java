@@ -1,15 +1,17 @@
 package com.tencent.mobileqq.triton.font;
 
 import android.graphics.Bitmap;
-import com.tencent.mobileqq.triton.jni.TTNativeCall;
+import com.tencent.mobileqq.triton.utils.TritonKeep;
 
+@TritonKeep
 public class FontBitmap
 {
-  @TTNativeCall
+  static final String NAME = "FontBitmap";
+  @TritonKeep
   public float ascent;
-  @TTNativeCall
+  @TritonKeep
   public Bitmap bitmap;
-  @TTNativeCall
+  @TritonKeep
   public float descent;
 }
 

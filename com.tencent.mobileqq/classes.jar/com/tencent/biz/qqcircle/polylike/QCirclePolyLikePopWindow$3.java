@@ -9,29 +9,30 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 import qqcircle.QQCircleFeedBase.StPolyLike;
-import vpp;
-import vpu;
+import vry;
+import vsd;
 
 public class QCirclePolyLikePopWindow$3
   implements Runnable
 {
-  public QCirclePolyLikePopWindow$3(vpu paramvpu) {}
+  public QCirclePolyLikePopWindow$3(vsd paramvsd) {}
   
   public void run()
   {
-    Iterator localIterator = vpu.a(this.this$0).keySet().iterator();
+    Iterator localIterator = vsd.a(this.this$0).keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (QCirclePolyBaseLikeView)vpu.a(this.this$0).get(localObject);
-      if (vpp.a.containsKey(((QCirclePolyBaseLikeView)localObject).a().polySource.get()))
+      localObject = (QCirclePolyBaseLikeView)vsd.a(this.this$0).get(localObject);
+      if (vry.a.containsKey(((QCirclePolyBaseLikeView)localObject).a().polySource.get()))
       {
-        AnimationView.AnimationInfo localAnimationInfo = (AnimationView.AnimationInfo)vpp.a.get(((QCirclePolyBaseLikeView)localObject).a().polySource.get());
+        AnimationView.AnimationInfo localAnimationInfo = (AnimationView.AnimationInfo)vry.a.get(((QCirclePolyBaseLikeView)localObject).a().polySource.get());
         ((QCirclePolyBaseLikeView)localObject).jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setImageDrawable(null);
         ((QCirclePolyBaseLikeView)localObject).jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setAnimationFromInfo(localAnimationInfo);
         ((QCirclePolyBaseLikeView)localObject).jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setVisibility(0);
         ((QCirclePolyBaseLikeView)localObject).jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
         ((QCirclePolyBaseLikeView)localObject).jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.play();
+        QLog.d("QCirclePolymorphicLikePopWindow", 1, "AnimationView play");
       }
       QLog.d("QCirclePolymorphicLikePopWindow", 1, "showAnimations");
     }

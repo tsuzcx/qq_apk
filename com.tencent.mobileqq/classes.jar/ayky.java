@@ -1,6 +1,22 @@
-public abstract interface ayky
+import android.os.Handler.Callback;
+import android.os.Message;
+
+class ayky
+  implements Handler.Callback
 {
-  public abstract void a(boolean paramBoolean);
+  ayky(aykx paramaykx) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      aykx.a(this.a);
+    }
+  }
 }
 
 

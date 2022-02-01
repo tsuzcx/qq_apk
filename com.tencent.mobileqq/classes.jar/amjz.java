@@ -1,13 +1,26 @@
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-public abstract interface amjz
+public class amjz
+  implements Animation.AnimationListener
 {
-  public abstract EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig);
+  public amjz(SpecailCareListActivity paramSpecailCareListActivity, amkn paramamkn) {}
   
-  public abstract void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    paramAnimation = new RelativeLayout.LayoutParams(this.jdField_a_of_type_Amkn.a.getLayoutParams());
+    paramAnimation.addRule(15);
+    paramAnimation.setMargins((int)(12.0F * SpecailCareListActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, (int)(10.0F * SpecailCareListActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0);
+    this.jdField_a_of_type_Amkn.a.setLayoutParams(paramAnimation);
+    this.jdField_a_of_type_Amkn.a.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

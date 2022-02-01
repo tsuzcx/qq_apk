@@ -16,18 +16,18 @@ import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import anhk;
-import anni;
+import antf;
+import anzj;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.AutoPlayImageView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tribe.async.dispatch.Dispatcher;
-import wfo;
-import ykv;
-import yqp;
-import yvw;
-import yvx;
-import zlx;
+import wjj;
+import yoq;
+import yuk;
+import yzr;
+import yzs;
+import zps;
 
 public class QQStoryTakeVideoCloseAnimationActivity
   extends QQStoryBaseActivity
@@ -37,7 +37,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
   public static boolean a;
   private float a;
   protected ImageView a;
-  protected yvx a;
+  protected yzs a;
   private float jdField_b_of_type_Float;
   private Handler jdField_b_of_type_AndroidOsHandler;
   private float c;
@@ -45,16 +45,16 @@ public class QQStoryTakeVideoCloseAnimationActivity
   
   static
   {
-    jdField_a_of_type_JavaLangString = anhk.br + "qqstory/animation_cover.jpg";
+    jdField_a_of_type_JavaLangString = antf.br + "qqstory/animation_cover.jpg";
   }
   
   @TargetApi(14)
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    ykv.b("Q.qqstory.home:FeedSegment_animation", new Object[] { anni.a(2131709823), Float.valueOf(paramFloat1), ",bottom:", Float.valueOf(paramFloat4) });
+    yoq.b("Q.qqstory.home:FeedSegment_animation", new Object[] { anzj.a(2131709932), Float.valueOf(paramFloat1), ",bottom:", Float.valueOf(paramFloat4) });
     this.jdField_b_of_type_AndroidOsHandler.removeMessages(1);
-    float f3 = zlx.d(this);
-    float f4 = zlx.a(this);
+    float f3 = zps.d(this);
+    float f4 = zps.a(this);
     float f1 = (paramFloat4 - paramFloat1) / f3;
     float f2 = (paramFloat3 - paramFloat2) / f4;
     paramFloat3 = (paramFloat3 - paramFloat2) / 2.0F;
@@ -62,7 +62,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
     paramFloat4 = (paramFloat4 - paramFloat1) / 2.0F;
     f3 /= 2.0F;
     ViewPropertyAnimator localViewPropertyAnimator = this.jdField_a_of_type_AndroidWidgetImageView.animate().setDuration(250L).scaleXBy(1.0F).scaleX(f2).scaleYBy(1.0F).scaleY(f1).x(paramFloat3 + paramFloat2 - f4).y(paramFloat4 + paramFloat1 - f3);
-    localViewPropertyAnimator.setListener(new yvw(this));
+    localViewPropertyAnimator.setListener(new yzr(this));
     localViewPropertyAnimator.start();
   }
   
@@ -90,10 +90,10 @@ public class QQStoryTakeVideoCloseAnimationActivity
     this.jdField_b_of_type_Float = paramBundle.getIntExtra("target_right", 0);
     this.c = paramBundle.getIntExtra("target_left", 0);
     this.d = paramBundle.getIntExtra("target_bottom", 0);
-    yqp.b("Q.qqstory.home:FeedSegment_animation", "动画activity终于 OnCreate 了！！！");
+    yuk.b("Q.qqstory.home:FeedSegment_animation", "动画activity终于 OnCreate 了！！！");
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_Yvx = new yvx(this);
-    wfo.a().registerSubscriber(this.jdField_a_of_type_Yvx);
+    this.jdField_a_of_type_Yzs = new yzs(this);
+    wjj.a().registerSubscriber(this.jdField_a_of_type_Yzs);
     try
     {
       paramBundle = BitmapFactory.decodeFile(str);
@@ -125,8 +125,8 @@ public class QQStoryTakeVideoCloseAnimationActivity
   {
     super.doOnDestroy();
     jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Yvx != null) {
-      wfo.a().unRegisterSubscriber(this.jdField_a_of_type_Yvx);
+    if (this.jdField_a_of_type_Yzs != null) {
+      wjj.a().unRegisterSubscriber(this.jdField_a_of_type_Yzs);
     }
   }
   
@@ -159,7 +159,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
     for (;;)
     {
       return true;
-      yqp.b("Q.qqstory:QQStoryTakeVideoCloseAnimationActivity", "动画等超时了");
+      yuk.b("Q.qqstory:QQStoryTakeVideoCloseAnimationActivity", "动画等超时了");
       a(0.0F, 0.0F, 0.0F, 0.0F);
     }
   }

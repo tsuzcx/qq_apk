@@ -1,13 +1,13 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class ahog
-  implements ahor
+class ahog
+  implements aaga
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  ahog(ahoe paramahoe) {}
+  
+  public void a()
   {
-    paramagup.c(paramagwc.b);
+    vtq.a(this.a.a.a, 45, 2, 3);
   }
 }
 

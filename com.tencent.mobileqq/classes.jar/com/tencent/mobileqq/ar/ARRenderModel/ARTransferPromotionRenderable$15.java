@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aouh;
-import aoyx;
+import aphx;
+import apmn;
 
 public class ARTransferPromotionRenderable$15
   implements Runnable
 {
-  public ARTransferPromotionRenderable$15(aouh paramaouh) {}
+  public ARTransferPromotionRenderable$15(aphx paramaphx) {}
   
   public void run()
   {
-    aouh.a(this.this$0).a(aouh.a(this.this$0));
+    aphx.a(this.this$0).a(aphx.a(this.this$0));
   }
 }
 

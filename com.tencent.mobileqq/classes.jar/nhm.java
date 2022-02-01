@@ -1,34 +1,12 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.JoinGroupTransitActivity;
-import java.lang.ref.WeakReference;
-
-public class nhm
-  extends Handler
+public abstract interface nhm
 {
-  private WeakReference<JoinGroupTransitActivity> a;
+  public abstract boolean a();
   
-  public nhm(JoinGroupTransitActivity paramJoinGroupTransitActivity)
-  {
-    this.a = new WeakReference(paramJoinGroupTransitActivity);
-  }
+  public abstract void b();
   
-  public void handleMessage(Message paramMessage)
-  {
-    JoinGroupTransitActivity localJoinGroupTransitActivity = (JoinGroupTransitActivity)this.a.get();
-    if ((paramMessage == null) || (localJoinGroupTransitActivity == null) || (localJoinGroupTransitActivity.isFinishing())) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      JoinGroupTransitActivity.a(localJoinGroupTransitActivity).a(JoinGroupTransitActivity.a(localJoinGroupTransitActivity));
-      return;
-    }
-    localJoinGroupTransitActivity.finish();
-  }
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

@@ -1,9 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public abstract interface pwe
+class pwe
+  implements ViewBase.OnClickListener
 {
-  public abstract List<ArticleInfo> a(int paramInt, List<ArticleInfo> paramList1, List<ArticleInfo> paramList2);
+  pwe(pwa parampwa, int paramInt, ppu paramppu, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    int i;
+    sel localsel;
+    if (this.jdField_a_of_type_Int == 1162)
+    {
+      i = 1;
+      localsel = this.jdField_a_of_type_Ppu.a();
+      if (i == 0) {
+        break label42;
+      }
+    }
+    label42:
+    for (paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;; paramViewBase = this.b)
+    {
+      localsel.b(paramViewBase);
+      return;
+      i = 0;
+      break;
+    }
+  }
 }
 
 

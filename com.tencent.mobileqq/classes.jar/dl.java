@@ -1,5 +1,5 @@
 class dl
-  extends anke
+  extends anwb
 {
   dl(dk paramdk) {}
   

@@ -1,26 +1,77 @@
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.redpacket.AVRedPacketManager.2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.random.RandomWebProtocol;
+import java.util.Random;
+import org.json.JSONObject;
 
 public class lth
-  implements ltq
+  extends ltg
 {
-  public lth(AVRedPacketManager.2 param2, long paramLong) {}
+  int c;
+  int d;
+  int e;
+  String f;
   
-  public void a()
+  public lth(RandomWebProtocol paramRandomWebProtocol, ltg paramltg, String paramString, int paramInt1, int paramInt2, int paramInt3, String... paramVarArgs)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    QLog.d("AVRedPacketManager", 1, "preloadCountDownRes, music load finish,cost =" + (l1 - l2));
-    l1 = System.currentTimeMillis();
-    if (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$2.this$0.jdField_a_of_type_Lti != null)
-    {
-      this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$2.this$0.jdField_a_of_type_Lti.a(1, this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$2.this$0.jdField_a_of_type_Ltj);
-      l2 = System.currentTimeMillis();
-      QLog.d("AVRedPacketManager", 1, "preloadCountDownRes, preloadRes finish,cost =" + (l2 - l1));
-      return;
+    super(paramRandomWebProtocol, paramltg);
+    this.a = 1;
+    this.c = paramString;
+    this.d = paramInt1;
+    this.c = paramInt2;
+    this.e = paramInt3;
+    if ((this.e == 2) && (paramVarArgs != null) && (paramVarArgs.length == 1)) {
+      this.f = paramVarArgs[0];
     }
-    QLog.d("AVRedPacketManager", 1, "preloadCountDownRes,  mRedPacketGameShower is null");
+    this.d = "[d] RequestDouble";
+  }
+  
+  String a()
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    Object localObject = localJSONObject1;
+    for (;;)
+    {
+      try
+      {
+        this.a = new JSONObject().put("peer_gender", this.c).put("session_type", this.d).put("reqtype", this.e);
+        localObject = localJSONObject1;
+        if (this.e == 2)
+        {
+          localObject = localJSONObject1;
+          if (this.f != null)
+          {
+            localObject = localJSONObject1;
+            this.a.put("uniqkey", this.f);
+            localObject = localJSONObject1;
+            JSONObject localJSONObject2 = new JSONObject(super.a());
+            localObject = localJSONObject1;
+            if (this.e != 1) {
+              break label178;
+            }
+            localObject = localJSONObject1;
+            i = this.b.a;
+            localObject = localJSONObject1;
+            localJSONObject1 = localJSONObject2.put("rand", i);
+            localObject = localJSONObject1;
+            return localJSONObject1.toString();
+          }
+        }
+        localObject = localJSONObject1;
+        if (this.e != 1) {
+          continue;
+        }
+        localObject = localJSONObject1;
+        this.b.a = new Random().nextInt();
+        continue;
+        localObject = localException;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return ((JSONObject)localObject).toString();
+      }
+      label178:
+      int i = new Random().nextInt();
+    }
   }
 }
 

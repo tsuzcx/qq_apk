@@ -1,16 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.teamwork.spread.TroopFileAIOMsgTips.1;
+import com.tencent.qphone.base.util.QLog;
 
-class bedp
-  implements ValueAnimator.AnimatorUpdateListener
+public class bedp
+  extends bedd
 {
-  bedp(bedo parambedo) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bedp(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, bedj parambedj)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    bedo.a(this.a).setPadding(bggq.a(bedo.a(this.a).getContext(), 8.0F), i, 0, 0);
+    super(paramQQAppInterface, paramChatMessage, parambedj);
+  }
+  
+  protected String a()
+  {
+    return ((MessageForTroopFile)this.a).fileName;
+  }
+  
+  protected void a(bede parambede)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopFileAIOMsgTips", 1, "getWordsList by TroopFile[" + System.currentTimeMillis() + "]");
+    }
+    ThreadManager.post(new TroopFileAIOMsgTips.1(this, parambede), 8, null, true);
   }
 }
 

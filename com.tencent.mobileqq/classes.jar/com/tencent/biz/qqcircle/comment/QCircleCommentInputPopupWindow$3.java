@@ -2,18 +2,18 @@ package com.tencent.biz.qqcircle.comment;
 
 import android.widget.ImageButton;
 import com.tencent.biz.subscribe.comment.CommentEditText;
-import vih;
+import vkl;
 
 public class QCircleCommentInputPopupWindow$3
   implements Runnable
 {
-  public QCircleCommentInputPopupWindow$3(vih paramvih) {}
+  public QCircleCommentInputPopupWindow$3(vkl paramvkl) {}
   
   public void run()
   {
-    vih.a(this.this$0).setVisibility(8);
-    vih.b(this.this$0).setVisibility(0);
-    vih.a(this.this$0, true);
+    vkl.a(this.this$0).setVisibility(8);
+    vkl.b(this.this$0).setVisibility(0);
+    vkl.a(this.this$0, true);
     this.this$0.a.requestFocus();
   }
 }

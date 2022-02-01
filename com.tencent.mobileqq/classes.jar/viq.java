@@ -1,17 +1,37 @@
-import com.tencent.biz.qqcircle.comment.QCircleReplyItemView;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StReply;
-import feedcloud.FeedCloudMeta.StUser;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import android.view.View;
 
-public class viq
-  implements vux
+class viq
+  implements Drawable.Callback
 {
-  public viq(QCircleReplyItemView paramQCircleReplyItemView, FeedCloudMeta.StReply paramStReply) {}
+  viq(vip paramvip) {}
   
-  public void a()
+  public void invalidateDrawable(Drawable paramDrawable)
   {
-    uxo.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.targetUser.id.get(), this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyItemView.a().clone().setElementIdStr("portrait"));
+    this.a.e();
+  }
+  
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
+  {
+    if (vip.a(this.a) != null)
+    {
+      View localView = vip.a(this.a).a();
+      if (localView != null) {
+        localView.scheduleDrawable(paramDrawable, paramRunnable, paramLong);
+      }
+    }
+  }
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
+  {
+    if (vip.a(this.a) != null)
+    {
+      View localView = vip.a(this.a).a();
+      if (localView != null) {
+        localView.unscheduleDrawable(paramDrawable, paramRunnable);
+      }
+    }
   }
 }
 

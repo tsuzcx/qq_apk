@@ -1,23 +1,13 @@
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.widget.TextView;
-import com.tencent.mobileqq.now.widget.CircleImageView;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class aycr
+public abstract interface aycr
 {
-  public static void a(FragmentActivity paramFragmentActivity, RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = (aycs)paramViewHolder;
-    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(aydf.a());
-    paramViewHolder.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView.setImageDrawable(aydf.a(paramFragmentActivity));
-    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(paramFragmentActivity);
-    localLinearLayoutManager.setOrientation(0);
-    paramViewHolder.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-    paramFragmentActivity = new aycv(paramFragmentActivity, aydd.a().a());
-    paramViewHolder.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(paramFragmentActivity);
-  }
+  @Deprecated
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(VideoData paramVideoData);
 }
 
 

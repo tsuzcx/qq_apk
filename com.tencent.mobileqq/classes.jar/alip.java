@@ -1,17 +1,38 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public abstract interface alip
+final class alip
+  implements View.OnTouchListener
 {
-  public abstract String a();
+  private float b = 1.0F;
   
-  public abstract void a(Activity paramActivity);
+  alip(float paramFloat) {}
   
-  public abstract void a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(Activity paramActivity, Intent paramIntent);
-  
-  public abstract void c_(String paramString);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.b = paramView.getAlpha();
+      paramView.setAlpha(this.a);
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      {
+        paramView.setAlpha(this.b);
+      }
+      else if (paramMotionEvent.getAction() == 2)
+      {
+        int i = (int)paramMotionEvent.getRawX();
+        int j = (int)paramMotionEvent.getRawY();
+        if (!alil.a(paramView, i, j)) {
+          paramView.setAlpha(1.0F);
+        }
+      }
+    }
+  }
 }
 
 

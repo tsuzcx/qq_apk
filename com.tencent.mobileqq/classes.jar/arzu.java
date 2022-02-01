@@ -1,24 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.LinearLayout;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-public class arzu
-  implements ValueAnimator.AnimatorUpdateListener
+class arzu
+  implements Animation.AnimationListener
 {
-  public arzu(EmotionKeywordLayout paramEmotionKeywordLayout) {}
+  arzu(arzt paramarzt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionKeywordLayout", 2, "show:offset=" + f);
-    }
-    if (EmotionKeywordLayout.a(this.a) != null) {
-      EmotionKeywordLayout.a(this.a).setTranslationY(f);
-    }
+    this.a.a.a.setVisibility(8);
+    this.a.a.d();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

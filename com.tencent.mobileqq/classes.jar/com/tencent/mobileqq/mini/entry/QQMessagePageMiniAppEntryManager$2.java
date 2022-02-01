@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry;
 
-import aoql;
+import apeb;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class QQMessagePageMiniAppEntryManager$2
@@ -11,14 +11,14 @@ class QQMessagePageMiniAppEntryManager$2
   public void run()
   {
     if (this.val$app == null) {}
-    aoql localaoql;
+    apeb localapeb;
     do
     {
       return;
-      localaoql = (aoql)this.val$app.a(148);
-    } while (localaoql == null);
-    localaoql.a();
-    localaoql.c();
+      localapeb = (apeb)this.val$app.a(148);
+    } while (localapeb == null);
+    localapeb.a();
+    localapeb.c();
   }
 }
 

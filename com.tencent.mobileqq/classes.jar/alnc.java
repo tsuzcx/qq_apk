@@ -1,129 +1,23 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Typeface;
-import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 
-class alnc
+public class alnc
+  extends alnt
 {
-  public int a;
-  public alnx a;
-  public Bitmap a;
-  public boolean a;
-  public alnx b;
-  
-  public alnc(String paramString, float paramFloat1, int paramInt, float paramFloat2, float paramFloat3, Typeface paramTypeface)
+  public View a(int paramInt, Object paramObject, alno paramalno, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, alpv paramalpv)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Alnx = new alnx(paramString, paramFloat1, paramInt, paramFloat2, -1.0F, 1, -1.0F, paramTypeface);
-    this.b = new alnx(paramString, paramFloat1, -1, paramFloat2, -1.0F, 1, paramFloat3, paramTypeface);
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      b(paramString);
-      return;
+    paramObject = paramView;
+    if (paramView == null) {
+      paramObject = LayoutInflater.from(paramContext).inflate(2131558926, null);
     }
-  }
-  
-  private boolean a(String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) && (paramString2 == null)) {}
-    do
-    {
-      return true;
-      if ((paramString1 == null) || (paramString2 == null)) {
-        return false;
-      }
-    } while (paramString1.equals(paramString2));
-    return false;
-  }
-  
-  private void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      if (this.jdField_a_of_type_Int != -1)
-      {
-        GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Int = -1;
-      }
-    }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      }
-      if (this.jdField_a_of_type_Int != -1)
-      {
-        GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Int = -1;
-      }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = alnf.a(this.b.jdField_a_of_type_Float + 5.0F, this.b.b);
-    } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
-    paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.b.a(paramString, 0.0F, 0.0F);
-    this.jdField_a_of_type_Alnx.a(paramString, 0.0F, 0.0F);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Int != -1)
-    {
-      GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = -1;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    }
-  }
-  
-  public void a(Canvas paramCanvas, float paramFloat1, float paramFloat2)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-    {
-      this.b.a(paramCanvas, paramFloat1, paramFloat2);
-      this.jdField_a_of_type_Alnx.a(paramCanvas, paramFloat1, paramFloat2);
-      return;
-    }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramFloat1, paramFloat2, null);
-  }
-  
-  public void a(RenderBuffer paramRenderBuffer, float paramFloat1, float paramFloat2)
-  {
-    if ((paramRenderBuffer == null) || (!this.jdField_a_of_type_Boolean)) {}
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_Int < 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
-        this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-    } while (this.jdField_a_of_type_Int < 0);
-    alnf.a(paramRenderBuffer, this.jdField_a_of_type_Int, this.b.jdField_a_of_type_Float, this.b.b, null, paramFloat1, paramFloat2);
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      if (!a(paramString, this.jdField_a_of_type_Alnx.jdField_a_of_type_JavaLangString))
-      {
-        this.jdField_a_of_type_Alnx.a(paramString);
-        this.b.a(paramString);
-        b(paramString);
-      }
-      return;
-    }
+    paramObject.setOnClickListener(paramOnClickListener);
+    paramObject.setOnLongClickListener(paramOnLongClickListener);
+    paramObject.setTag(-1, Integer.valueOf(paramInt));
+    return paramObject;
   }
 }
 

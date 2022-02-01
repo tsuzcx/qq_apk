@@ -1,82 +1,155 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.ArrayList;
 
-class onu
-  implements ViewBase.OnClickListener
+public class onu
+  implements bcxw, bcxy, bori
 {
-  onu(ont paramont) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private onv jdField_a_of_type_Onv;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
+  private boolean c;
   
-  public void onClick(ViewBase paramViewBase)
+  public onu(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    int m = 8;
-    int n;
-    int k;
-    if ((this.a.jdField_a_of_type_Ons.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData instanceof ProteusItemData))
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (bork.a(borf.jdField_b_of_type_Borf) != 0) {}
+    for (;;)
     {
-      n = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
-      k = 0;
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+      bool = false;
     }
-    int j;
-    switch (n)
+  }
+  
+  private void a(int paramInt)
+  {
+    c();
+    if (this.jdField_a_of_type_Onv != null) {
+      this.jdField_a_of_type_Onv.a(paramInt);
+    }
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-    default: 
-      i = -1;
-      j = k;
-    case 1001: 
-    case 1070: 
-    case 1087: 
-    case 1088: 
-      for (;;)
+      ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+      borg.a().a(this);
+    }
+  }
+  
+  private void d()
+  {
+    if ((this.b) && ((this.c) || (!this.jdField_a_of_type_Boolean))) {
+      a(1);
+    }
+  }
+  
+  public void B_()
+  {
+    VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "onNetWorkNone", null);
+  }
+  
+  public void a()
+  {
+    ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int j = 0;
+    int k = 1;
+    VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
+    int i;
+    if (paramInt1 != 1)
+    {
+      i = k;
+      if (paramInt1 != 0) {}
+    }
+    else
+    {
+      if (paramInt2 == 0) {
+        break label69;
+      }
+      i = k;
+    }
+    if (i != 0) {
+      a(3);
+    }
+    return;
+    label69:
+    ArrayList localArrayList = new ArrayList(1);
+    if (ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList) == 0)
+    {
+      ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this);
+      if (bork.a(borf.jdField_b_of_type_Borf) == 2)
       {
-        if ((j != 0) && (n != -1)) {
-          tbe.a(this.a.jdField_a_of_type_AndroidContentContext, oqk.a((AdData)this.a.jdField_a_of_type_Ons.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData), true, i);
-        }
-        return;
-        j = k;
-        i = m;
-        if (this.a.jdField_a_of_type_AndroidContentContext != null)
-        {
-          tby.a(this.a.jdField_a_of_type_Ons.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
-          j = k;
-          i = m;
-          continue;
-          i = 5;
-          j = 1;
-          continue;
-          i = 4;
-          j = 1;
-        }
-      }
-    case 1089: 
-      if (opz.g((AdData)this.a.jdField_a_of_type_Ons.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData))
-      {
-        opz.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_Ons.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, 8);
-        return;
-      }
-      if (!opz.h((AdData)this.a.jdField_a_of_type_Ons.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)) {
-        break;
+        borg.a().a(borf.jdField_b_of_type_Borf, this, false);
+        paramInt1 = j;
       }
     }
-    for (int i = 1;; i = 8)
+    for (;;)
     {
-      j = 1;
+      i = paramInt1;
       break;
-      j = 1;
-      i = 1;
-      break;
-      i = 3;
-      j = 1;
-      break;
-      i = 1000;
-      j = 1;
-      break;
-      j = 1;
-      i = 1;
-      break;
+      this.c = true;
+      VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "onConfigResult| getFilterSoState != 2", null);
+      paramInt1 = j;
+      continue;
+      paramInt1 = 1;
     }
+  }
+  
+  public void a(borf paramborf, long paramLong1, long paramLong2) {}
+  
+  public void a(borf paramborf, String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (paramborf.jdField_b_of_type_JavaLangString.equals(borf.jdField_b_of_type_Borf.jdField_b_of_type_JavaLangString))
+    {
+      if (paramInt != 0)
+      {
+        bpam.d("ReadInJoyCameraCaptureSoManager", "[onAEDownloadFinish] error :" + paramInt);
+        a(3);
+      }
+    }
+    else {
+      return;
+    }
+    bpam.d("ReadInJoyCameraCaptureSoManager", "[onAEDownloadFinish] success");
+    this.c = true;
+    d();
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    if (paramString1.startsWith("new_qq_android_native_short_video_"))
+    {
+      if (paramInt == 0) {
+        break label62;
+      }
+      a(3);
+    }
+    for (;;)
+    {
+      VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
+      return;
+      label62:
+      this.b = true;
+      d();
+    }
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2) {}
+  
+  public void a(onv paramonv)
+  {
+    this.jdField_a_of_type_Onv = paramonv;
   }
 }
 

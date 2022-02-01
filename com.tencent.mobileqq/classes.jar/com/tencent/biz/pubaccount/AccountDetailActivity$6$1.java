@@ -1,11 +1,14 @@
 package com.tencent.biz.pubaccount;
 
+import ahnc;
+import ammh;
 import android.text.TextUtils;
-import anhk;
-import ayck;
+import antf;
+import ayvd;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountHelper;
+import com.tencent.qphone.base.util.QLog;
 
 class AccountDetailActivity$6$1
   implements Runnable
@@ -15,7 +18,7 @@ class AccountDetailActivity$6$1
   public void run()
   {
     this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.k();
-    if (TextUtils.equals(anhk.aP, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e)) {
+    if (TextUtils.equals(antf.aP, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e)) {
       AccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0);
     }
     do
@@ -26,13 +29,18 @@ class AccountDetailActivity$6$1
         AccountDetailActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0);
         return;
       }
-      if (TextUtils.equals(ayck.a, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e))
+      if (TextUtils.equals(ayvd.a, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e))
       {
         AccountDetailActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0);
         return;
       }
+      if ((ahnc.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e)) && (ammh.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
+      {
+        QLog.i("com.tencent.biz.pubaccount.AccountDetailActivity", 1, "updateFollowInfo startNewWeatherWebPageActivity");
+        return;
+      }
     } while ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.l));
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e, 1008, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.a.name, ChatActivity.class, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e, 1008, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, ChatActivity.class, true);
   }
 }
 

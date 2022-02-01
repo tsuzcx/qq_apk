@@ -14,13 +14,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
-import aoch;
-import axgz;
-import axha;
-import axhb;
-import axhe;
-import bggq;
+import anzj;
+import aoot;
+import axzs;
+import axzt;
+import axzu;
+import axzx;
+import bhgr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Iterator;
@@ -30,8 +30,8 @@ public class RecentUserInvitePanel
   extends HorizontalScrollView
 {
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  public axhb a;
-  List<axhe> jdField_a_of_type_JavaUtilList;
+  public axzu a;
+  List<axzx> jdField_a_of_type_JavaUtilList;
   boolean jdField_a_of_type_Boolean = false;
   
   public RecentUserInvitePanel(Context paramContext, AttributeSet paramAttributeSet)
@@ -49,36 +49,36 @@ public class RecentUserInvitePanel
   private View a()
   {
     int i = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    View localView = inflate(getContext(), 2131561266, null);
-    ((ImageView)localView.findViewById(2131367877)).setImageResource(2130841313);
-    ((ImageView)localView.findViewById(2131367908)).setVisibility(8);
-    TextView localTextView = (TextView)localView.findViewById(2131371539);
+    View localView = inflate(getContext(), 2131561304, null);
+    ((ImageView)localView.findViewById(2131367946)).setImageResource(2130841323);
+    ((ImageView)localView.findViewById(2131367978)).setVisibility(8);
+    TextView localTextView = (TextView)localView.findViewById(2131371647);
     if (i == 0) {
-      localTextView.setText(anni.a(2131711985));
+      localTextView.setText(anzj.a(2131712094));
     }
     for (;;)
     {
       localTextView.setMaxLines(2);
       localTextView.setSingleLine(false);
       localTextView.setGravity(1);
-      ((Button)localView.findViewById(2131368727)).setVisibility(8);
-      localView.setOnClickListener(new axha(this));
+      ((Button)localView.findViewById(2131368801)).setVisibility(8);
+      localView.setOnClickListener(new axzt(this));
       return localView;
-      localTextView.setText(anni.a(2131711986));
+      localTextView.setText(anzj.a(2131712095));
     }
   }
   
-  private View a(axhe paramaxhe)
+  private View a(axzx paramaxzx)
   {
     Object localObject1 = null;
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    View localView = inflate(getContext(), 2131561266, null);
-    Object localObject2 = (ImageView)localView.findViewById(2131367877);
-    ImageView localImageView = (ImageView)localView.findViewById(2131367908);
+    View localView = inflate(getContext(), 2131561304, null);
+    Object localObject2 = (ImageView)localView.findViewById(2131367946);
+    ImageView localImageView = (ImageView)localView.findViewById(2131367978);
     int i;
-    if (paramaxhe.jdField_a_of_type_Int == 0)
+    if (paramaxzx.jdField_a_of_type_Int == 0)
     {
-      localObject1 = aoch.a(localQQAppInterface, 1, paramaxhe.jdField_a_of_type_JavaLangString);
+      localObject1 = aoot.a(localQQAppInterface, 1, paramaxzx.jdField_a_of_type_JavaLangString);
       i = -1;
     }
     for (;;)
@@ -89,22 +89,22 @@ public class RecentUserInvitePanel
       }
       for (;;)
       {
-        localObject2 = (TextView)localView.findViewById(2131371539);
+        localObject2 = (TextView)localView.findViewById(2131371647);
         localObject1 = "";
-        if (paramaxhe.b != null) {
-          localObject1 = (String)TextUtils.ellipsize(paramaxhe.b, ((TextView)localObject2).getPaint(), bggq.a(getContext(), 65.0F), TextUtils.TruncateAt.END);
+        if (paramaxzx.b != null) {
+          localObject1 = (String)TextUtils.ellipsize(paramaxzx.b, ((TextView)localObject2).getPaint(), bhgr.a(getContext(), 65.0F), TextUtils.TruncateAt.END);
         }
         ((TextView)localObject2).setText((CharSequence)localObject1);
-        localObject1 = (Button)localView.findViewById(2131368727);
-        ((Button)localObject1).setOnClickListener(new axgz(this, paramaxhe));
-        a((View)localObject1, paramaxhe.jdField_a_of_type_Boolean);
-        localView.setTag(paramaxhe);
+        localObject1 = (Button)localView.findViewById(2131368801);
+        ((Button)localObject1).setOnClickListener(new axzs(this, paramaxzx));
+        a((View)localObject1, paramaxzx.jdField_a_of_type_Boolean);
+        localView.setTag(paramaxzx);
         return localView;
-        if (paramaxhe.jdField_a_of_type_Int != 1) {
+        if (paramaxzx.jdField_a_of_type_Int != 1) {
           break label220;
         }
-        localObject1 = aoch.a(localQQAppInterface, 4, paramaxhe.jdField_a_of_type_JavaLangString);
-        i = 2130841311;
+        localObject1 = aoot.a(localQQAppInterface, 4, paramaxzx.jdField_a_of_type_JavaLangString);
+        i = 2130841321;
         break;
         localImageView.setVisibility(8);
       }
@@ -129,7 +129,7 @@ public class RecentUserInvitePanel
       paramView = (Button)paramView;
       if (paramBoolean)
       {
-        paramView.setText(anni.a(2131711988));
+        paramView.setText(anzj.a(2131712097));
         paramView.setAlpha(0.5F);
       }
     }
@@ -137,27 +137,27 @@ public class RecentUserInvitePanel
     {
       return;
     }
-    paramView.setText(anni.a(2131711987));
+    paramView.setText(anzj.a(2131712096));
   }
   
-  public void a(axhe paramaxhe)
+  public void a(axzx paramaxzx)
   {
     int i = 0;
     while (i < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
     {
       View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if ((localView.getTag() instanceof axhe))
+      if ((localView.getTag() instanceof axzx))
       {
-        axhe localaxhe = (axhe)localView.getTag();
-        if ((localaxhe.jdField_a_of_type_Int == paramaxhe.jdField_a_of_type_Int) && (localaxhe.jdField_a_of_type_JavaLangString.equals(paramaxhe.jdField_a_of_type_JavaLangString))) {
-          a((Button)localView.findViewById(2131368727), paramaxhe.jdField_a_of_type_Boolean);
+        axzx localaxzx = (axzx)localView.getTag();
+        if ((localaxzx.jdField_a_of_type_Int == paramaxzx.jdField_a_of_type_Int) && (localaxzx.jdField_a_of_type_JavaLangString.equals(paramaxzx.jdField_a_of_type_JavaLangString))) {
+          a((Button)localView.findViewById(2131368801), paramaxzx.jdField_a_of_type_Boolean);
         }
       }
       i += 1;
     }
   }
   
-  public void a(List<axhe> paramList, boolean paramBoolean)
+  public void a(List<axzx> paramList, boolean paramBoolean)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_Boolean = paramBoolean;
@@ -166,24 +166,24 @@ public class RecentUserInvitePanel
     Object localObject;
     while (paramList.hasNext())
     {
-      localObject = a((axhe)paramList.next());
+      localObject = a((axzx)paramList.next());
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      localLayoutParams.leftMargin = bggq.a(getContext(), 16.0F);
+      localLayoutParams.leftMargin = bhgr.a(getContext(), 16.0F);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject, localLayoutParams);
     }
     if (paramBoolean)
     {
       paramList = a();
       localObject = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject).leftMargin = bggq.a(getContext(), 16.0F);
-      ((LinearLayout.LayoutParams)localObject).rightMargin = bggq.a(getContext(), 16.0F);
+      ((LinearLayout.LayoutParams)localObject).leftMargin = bhgr.a(getContext(), 16.0F);
+      ((LinearLayout.LayoutParams)localObject).rightMargin = bhgr.a(getContext(), 16.0F);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramList, (ViewGroup.LayoutParams)localObject);
     }
   }
   
-  public void setOnClickListener(axhb paramaxhb)
+  public void setOnClickListener(axzu paramaxzu)
   {
-    this.jdField_a_of_type_Axhb = paramaxhb;
+    this.jdField_a_of_type_Axzu = paramaxzu;
   }
 }
 

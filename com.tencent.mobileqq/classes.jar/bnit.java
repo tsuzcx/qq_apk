@@ -1,14 +1,9 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-
-class bnit
-  implements Observer<Boolean>
+final class bnit
+  extends bnhx<bnis, Void>
 {
-  bnit(bniq parambniq) {}
-  
-  public void a(@Nullable Boolean paramBoolean)
+  protected bnis a(Void paramVoid)
   {
-    bniq.b(this.a);
+    return new bnis();
   }
 }
 

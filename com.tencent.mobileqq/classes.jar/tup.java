@@ -1,24 +1,88 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.FolderRecommendHeadItemView;
-import cooperation.vip.pb.TianShuAccess.AdItem;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.view.PagerAdapter;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.BannerPagerAdapter.2;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class tup
-  implements ViewPager.OnPageChangeListener
+  extends PagerAdapter
 {
-  public tup(FolderRecommendTabFragment.FolderRecommendHeadItemView paramFolderRecommendHeadItemView) {}
+  private List<beke> a = new ArrayList();
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  private void a()
   {
-    bdri localbdri = (bdri)FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.a).a().get(paramInt);
-    if (localbdri != null) {
-      FolderRecommendTabFragment.a("227", "227", localbdri.a.iAdId + "", 101, 1);
+    ThreadManager.getUIHandler().post(new FolderRecommendTabFragment.BannerPagerAdapter.2(this));
+  }
+  
+  public List<beke> a()
+  {
+    return this.a;
+  }
+  
+  public void a(beke parambeke, Context paramContext)
+  {
+    if (parambeke != null)
+    {
+      if ((!"1".equals(parambeke.a)) || (TextUtils.isEmpty(parambeke.b))) {
+        break label62;
+      }
+      localIntent = new Intent(paramContext, QQBrowserDelegationActivity.class);
+      localIntent.putExtra("url", parambeke.b);
+      localIntent.putExtra("fromOneCLickCLose", true);
+      paramContext.startActivity(localIntent);
     }
+    label62:
+    while ((!"2".equals(parambeke.a)) || (TextUtils.isEmpty(parambeke.b))) {
+      return;
+    }
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.setData(Uri.parse(parambeke.b));
+    paramContext.startActivity(localIntent);
+  }
+  
+  public void a(List<beke> paramList)
+  {
+    this.a.clear();
+    this.a.addAll(paramList);
+    a();
+  }
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    if ((paramObject instanceof View)) {
+      paramViewGroup.removeView((View)paramObject);
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.a.size();
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    View localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559643, null);
+    ImageView localImageView = (ImageView)localView.findViewById(2131363288);
+    localImageView.setImageDrawable(URLDrawable.getDrawable(((beke)this.a.get(paramInt)).c));
+    localImageView.setOnClickListener(new tuq(this, paramInt));
+    paramViewGroup.addView(localView);
+    return localView;
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

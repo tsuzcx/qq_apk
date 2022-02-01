@@ -1,27 +1,27 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
 import com.tencent.qphone.base.util.QLog;
 
-class uxg
-  extends aoou
+public class uxg
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  uxg(uxf paramuxf, String paramString, boolean paramBoolean)
-  {
-    super(paramString, paramBoolean);
-  }
+  public uxg(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onGlobalLayout()
   {
-    if (paramInt == 0)
-    {
-      if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-      {
-        uxf.a(this.a, paramSosoLbsInfo);
-        return;
-      }
-      QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request: location is null");
+    int i = PublicAccountImageCollectionCommentActivity.a(this.a).getRootView().getHeight() - PublicAccountImageCollectionCommentActivity.a(this.a).getHeight();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ImageCollectionCommentActivity", 2, "heightDiff:" + i);
+    }
+    if (i > 150) {
+      PublicAccountImageCollectionCommentActivity.a(this.a, true);
+    }
+    while (!PublicAccountImageCollectionCommentActivity.a(this.a)) {
       return;
     }
-    QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request: failed");
+    PublicAccountImageCollectionCommentActivity.a(this.a, false);
+    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
   }
 }
 

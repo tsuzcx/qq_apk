@@ -1,74 +1,79 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.WebpSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.mobileqq.util.WebpSoLoader;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class arou
-  extends arnz
 {
-  QQAppInterface b = null;
+  private int a;
+  private int b = 1;
+  private int c = 1;
   
-  public arou(QQAppInterface paramQQAppInterface)
+  public arou()
   {
-    super("qq.android.pic.webp.so", paramQQAppInterface);
-    this.b = paramQQAppInterface;
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public int a()
+  public static arou a(araj paramaraj)
   {
-    return 10056;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return WebpSoData.class;
-  }
-  
-  public String a()
-  {
-    return "QWebpSoDownloadDuration";
-  }
-  
-  public void a(String paramString)
-  {
+    arou localarou = new arou();
+    if (paramaraj != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchBusinessConfBean", 2, "parse taskid->" + paramaraj.jdField_a_of_type_Int + " content->" + paramaraj.jdField_a_of_type_JavaLangString);
+      }
+    }
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QWebpSoDownloadHandler", 2, "onDownload success: " + paramString);
-      }
-      String str = WebpSoLoader.a(BaseApplicationImpl.getContext());
-      if (!TextUtils.isEmpty(str)) {
-        bgmg.a(paramString, str, false);
-      }
+      paramaraj = new JSONObject(paramaraj.jdField_a_of_type_JavaLangString);
+      localarou.a(paramaraj.optInt("business_switch_message", 1));
+      localarou.b(paramaraj.optInt("business_switch_contact", 1));
+      localarou.c(paramaraj.optInt("business_switch_dongtai", 1));
+      return localarou;
     }
-    catch (Exception localException)
+    catch (Exception paramaraj)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QWebpSoDownloadHandler", 2, localException.getMessage());
-        }
-      }
+      while (!QLog.isColorLevel()) {}
+      QLog.d("SearchBusinessConfBean", 2, "parse error->" + paramaraj.toString());
     }
-    super.a(paramString);
+    return localarou;
+  }
+  
+  void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public boolean a()
   {
-    return true;
+    return this.jdField_a_of_type_Int == 1;
   }
   
-  public String b()
+  void b(int paramInt)
   {
-    return null;
+    this.b = paramInt;
+  }
+  
+  public boolean b()
+  {
+    return this.b == 1;
+  }
+  
+  void c(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public boolean c()
+  {
+    return this.c == 1;
+  }
+  
+  public String toString()
+  {
+    return String.format("mBusinessSwitchTabMessage:%d, mBusinessSwitchTabContact:%d, mBusinessSwitchTabDongtai:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arou
  * JD-Core Version:    0.7.0.1
  */

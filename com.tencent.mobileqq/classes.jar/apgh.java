@@ -1,57 +1,98 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class apgh
-  implements View.OnClickListener
+class apgh
+  implements aqgu
 {
-  public apgh(QRScanEntryView paramQRScanEntryView) {}
+  int jdField_a_of_type_Int = 0;
+  final long jdField_a_of_type_Long = AudioHelper.b();
+  long jdField_b_of_type_Long = System.currentTimeMillis();
   
-  public void onClick(View paramView)
+  apgh(apgg paramapgg, AppInterface paramAppInterface, String paramString, int paramInt) {}
+  
+  public void a(String paramString1, String paramString2, int paramInt)
   {
     boolean bool2 = false;
-    boolean bool1;
-    if (QRScanEntryView.a(this.a))
+    if ((paramInt == 100) || (paramInt == 0) || (Math.abs(paramInt - this.jdField_a_of_type_Int) >= 10)) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      Object localObject = apek.a();
-      if (!QRScanEntryView.b(this.a))
+      long l = System.currentTimeMillis();
+      if (l - this.jdField_b_of_type_Long >= 1000L) {
+        bool2 = true;
+      }
+      if ((QLog.isDevelopLevel()) && ((bool2) || (bool1))) {
+        QLog.w(this.jdField_a_of_type_Apgg.jdField_a_of_type_JavaLangString, 1, "onDownloadUpdate, md5[" + paramString2 + "], activityid[" + this.jdField_a_of_type_JavaLangString + "], index[" + this.jdField_b_of_type_Int + "], curPercent[" + paramInt + "], lastPercent[" + this.jdField_a_of_type_Int + "], needNotify[" + bool1 + "], needNotify2[" + bool2 + "]");
+      }
+      if (bool1) {
+        this.jdField_a_of_type_Int = paramInt;
+      }
+      if (bool2) {
+        this.jdField_b_of_type_Long = l;
+      }
+      if ((bool1) || (bool2)) {
+        this.jdField_a_of_type_Apgg.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, paramInt);
+      }
+      return;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject)
+  {
+    int i;
+    if ((paramObject instanceof apga))
+    {
+      paramString1 = (apga)paramObject;
+      paramString1.c = System.currentTimeMillis();
+      paramObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
+      boolean bool = false;
+      if (paramInt == 0) {
+        bool = apgg.a(paramString1);
+      }
+      QLog.w(this.jdField_a_of_type_Apgg.jdField_a_of_type_JavaLangString, 1, "onDownloadFinish, md5[" + paramString2 + "], errCode[" + paramInt + "], check[" + bool + "], path[" + paramString3 + "], id[" + paramString1.e + "], request[" + paramString1.jdField_a_of_type_Long + "], Begin[" + paramString1.jdField_b_of_type_Long + "], End[" + paramString1.c + "], 调度耗时[" + (paramString1.jdField_b_of_type_Long - paramString1.jdField_a_of_type_Long) + "], 下载耗时[" + (paramString1.c - paramString1.jdField_b_of_type_Long) + "], fromPreCover[" + paramString1.d + "], seq[" + this.jdField_a_of_type_Long + "], Uin[" + paramObject + "], zipItem[" + paramString1 + "]");
+      if (paramString1.jdField_a_of_type_Aqgu == this) {
+        paramString1.jdField_a_of_type_Aqgu = null;
+      }
+      i = paramInt;
+      if (paramInt == 0)
       {
-        bool1 = true;
-        if (((apek)localObject).a(bool1))
-        {
-          localObject = this.a;
-          if (QRScanEntryView.b(this.a)) {
-            break label131;
-          }
-          bool1 = true;
-          label56:
-          QRScanEntryView.a((QRScanEntryView)localObject, bool1);
-          localObject = (apep)this.a.a;
-          bool1 = bool2;
-          if (!QRScanEntryView.b(this.a)) {
-            bool1 = true;
-          }
-          ((apep)localObject).a(bool1, 0L);
-          QRScanEntryView.a(this.a, true);
-          QRScanEntryView.b(this.a, QRScanEntryView.b(this.a));
+        i = paramInt;
+        if (!bool) {
+          i = -5;
         }
       }
+      if (i != 0) {
+        break label339;
+      }
+      paramString1.a(2);
+      bhui.a(paramObject, paramString1.e, paramString1.jdField_a_of_type_Int, paramString1.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_Apgg.a(paramString1.e, paramString1.jdField_a_of_type_Int, 100);
+      paramString1.d = -1;
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.jdField_a_of_type_Apgg.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString1.jdField_a_of_type_Boolean, paramString1.e, paramString1.jdField_a_of_type_Int + 1);
       return;
-      bool1 = false;
-      break;
-      label131:
-      bool1 = false;
-      break label56;
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_QRScanEntryView", 2, "initView click mFlashLightTips when view invisble.");
+      label339:
+      if (i == 100)
+      {
+        paramString1.a(2);
+        this.jdField_a_of_type_Apgg.a(paramString1.e, paramString1.jdField_a_of_type_Int, 100);
+      }
+      else
+      {
+        paramString1.a(-1);
+        this.jdField_a_of_type_Apgg.a(paramString1.e, paramString1.jdField_a_of_type_Int, -1);
       }
     }
+  }
+  
+  public void b() {}
+  
+  protected void finalize()
+  {
+    super.finalize();
+    QLog.w(this.jdField_a_of_type_Apgg.jdField_a_of_type_JavaLangString, 1, "ZipItem.finalize, activityid[" + this.jdField_a_of_type_JavaLangString + "], index[" + this.jdField_b_of_type_Int + "], seq[" + this.jdField_a_of_type_Long + "]");
   }
 }
 

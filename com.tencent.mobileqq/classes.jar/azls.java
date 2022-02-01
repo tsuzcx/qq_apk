@@ -1,24 +1,14 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import android.view.View.AccessibilityDelegate;
 
 class azls
-  implements bkhw
+  extends View.AccessibilityDelegate
 {
-  azls(azlk paramazlk, PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean, bkho parambkho) {}
+  azls(azlq paramazlq) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.e();
-      return;
-      azlk.c(this.jdField_a_of_type_Azlk);
-      continue;
-      azlk.a(this.jdField_a_of_type_Azlk, this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp, this.jdField_a_of_type_Boolean);
-    }
+    super.sendAccessibilityEvent(paramView, paramInt);
   }
 }
 

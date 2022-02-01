@@ -1,6 +1,13 @@
-public abstract interface apgp
+public class apgp
 {
-  public abstract void a(int paramInt);
+  public int a;
+  public long a;
+  
+  public apgp(long paramLong, int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+  }
 }
 
 

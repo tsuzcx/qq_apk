@@ -13,8 +13,8 @@ public class JsErrorGuard$LoadingDialog
 {
   JsErrorGuard$LoadingDialog(Context paramContext)
   {
-    super(paramContext, 2131755676);
-    setContentView(2131562279);
+    super(paramContext, 2131755677);
+    setContentView(2131562319);
     getWindow().setFlags(1024, 2048);
   }
   
@@ -43,7 +43,7 @@ public class JsErrorGuard$LoadingDialog
   
   public void setTitle(String paramString)
   {
-    ((TextView)findViewById(2131378776)).setText(paramString);
+    ((TextView)findViewById(2131378936)).setText(paramString);
   }
   
   public void show()

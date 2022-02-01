@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import acvy;
+import adab;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import bcst;
-import bdnf;
-import bdnt;
-import bftr;
-import bfup;
-import bfus;
-import bglf;
-import bgwv;
+import bdll;
+import begb;
+import begp;
+import bgts;
+import bguq;
+import bgut;
+import bhlg;
+import bhwz;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -28,11 +28,12 @@ import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import njo;
+import nlj;
 
 public class RecentTroopAssistantItem
   extends RecentBaseData
 {
+  private static String TAG = "RecentTroopAssistantItem";
   private TroopAssistantData mData;
   public long mTroopCreditLevel = 5L;
   
@@ -97,15 +98,15 @@ public class RecentTroopAssistantItem
     for (Object localObject = (String)str.subSequence(paramMsgSummary.strPrefix.length() + 2, paramMsgSummary.strContent.length());; localObject = paramMsgSummary.suffix.toString())
     {
       if (!TextUtils.isEmpty(paramMsgSummary.strPrefix)) {
-        localSpannableString = new bdnf(paramMsgSummary.strPrefix, 16).a();
+        localSpannableString = new begb(paramMsgSummary.strPrefix, 16).a();
       }
-      paramMessage = bgwv.a((String)localObject, paramMessage, 16, 3);
+      paramMessage = bhwz.a((String)localObject, paramMessage, 16, 3);
       localObject = new SpannableStringBuilder();
       if (localSpannableString != null) {
         ((SpannableStringBuilder)localObject).append(localSpannableString).append(": ");
       }
       ((SpannableStringBuilder)localObject).append(paramMessage);
-      paramMsgSummary.strContent = new bdnt((CharSequence)localObject, 3, 16);
+      paramMsgSummary.strContent = new begp((CharSequence)localObject, 3, 16);
       return;
     }
   }
@@ -115,20 +116,20 @@ public class RecentTroopAssistantItem
     Object localObject;
     if (this.mIsGroupVideoNotify)
     {
-      localObject = (bfus)paramQQAppInterface.getManager(164);
-      if ((localObject != null) && (((bfus)localObject).a(getRecentUserUin()) == 2)) {
+      localObject = (bgut)paramQQAppInterface.getManager(164);
+      if ((localObject != null) && (((bgut)localObject).a(getRecentUserUin()) == 2)) {
         this.mIsGroupVideoNotify = false;
       }
     }
     if ((this.mIsGroupVideoNotify) && (TextUtils.isEmpty(this.mMsgExtroInfo)))
     {
-      this.mMsgExtroInfo = paramQQAppInterface.getApp().getString(2131697082);
-      this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131167092);
+      this.mMsgExtroInfo = paramQQAppInterface.getApp().getString(2131697131);
+      this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131167102);
     }
     if ((this.mIsGroupVideoNotify) && (!paramBoolean))
     {
       localObject = String.valueOf(paramLong);
-      bcst.b(null, "dc00899", "Grp_video", "", "notice", "exp", 0, 0, (String)localObject, "" + bfup.a(paramQQAppInterface, (String)localObject), "", "");
+      bdll.b(null, "dc00899", "Grp_video", "", "notice", "exp", 0, 0, (String)localObject, "" + bguq.a(paramQQAppInterface, (String)localObject), "", "");
     }
   }
   
@@ -136,7 +137,7 @@ public class RecentTroopAssistantItem
   {
     if (TextUtils.isEmpty(paramString2))
     {
-      this.mTitleName = bglf.a(paramQQAppInterface, paramString1, true);
+      this.mTitleName = bhlg.a(paramQQAppInterface, paramString1, true);
       return;
     }
     this.mTitleName = paramString2;
@@ -161,20 +162,23 @@ public class RecentTroopAssistantItem
         localObject1 = paramQQAppInterface.a();
         if (localObject1 != null)
         {
-          this.mUnreadNum = ((acvy)localObject1).a(localMessage.frienduin, localMessage.istroop);
-          if ((bftr.a(str)) || (bftr.c(str)))
+          this.mUnreadNum = ((adab)localObject1).a(localMessage.frienduin, localMessage.istroop);
+          if ((bgts.a(str)) || (bgts.c(str)))
           {
-            this.mMsgExtroInfo = BaseApplicationImpl.getContext().getString(2131718575);
-            this.mExtraInfoColor = paramContext.getResources().getColor(2131167092);
+            if (QLog.isColorLevel()) {
+              QLog.d(TAG, 2, "show TroopNotification orange mark.");
+            }
+            this.mMsgExtroInfo = BaseApplicationImpl.getContext().getString(2131718711);
+            this.mExtraInfoColor = paramContext.getResources().getColor(2131167102);
           }
           j = this.mMenuFlag;
           localObject1 = (TroopManager)paramQQAppInterface.getManager(52);
           if (localObject1 == null) {
-            break label585;
+            break label601;
           }
         }
       }
-      label585:
+      label601:
       for (TroopInfo localTroopInfo = ((TroopManager)localObject1).b(str);; localTroopInfo = null)
       {
         if (localTroopInfo != null) {
@@ -210,8 +214,8 @@ public class RecentTroopAssistantItem
               boolean bool = this.mIsGroupVideoNotify;
               this.mIsGroupVideoNotify = paramQQAppInterface.a().b(l);
               a(paramQQAppInterface, l, bool);
-              if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (localMessage != null) && (localMsgSummary != null) && (njo.a(localMessage))) {
-                this.mLastMsg = localMsgSummary.parseMsgWithExtraInfo(paramContext, paramContext.getResources().getString(2131696514), -1);
+              if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (localMessage != null) && (localMsgSummary != null) && (nlj.a(localMessage))) {
+                this.mLastMsg = localMsgSummary.parseMsgWithExtraInfo(paramContext, paramContext.getResources().getString(2131696557), -1);
               }
               if (localTroopInfo != null)
               {

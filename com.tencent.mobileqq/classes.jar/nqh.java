@@ -1,193 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-public class nqh
+public final class nqh
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public nqi a;
-  public nqj a;
-  public nqk a;
-  public boolean a;
-  public String b;
-  public String c;
+  public nqh(int paramInt, QQAppInterface paramQQAppInterface, long paramLong, Handler paramHandler) {}
   
-  private void a(JSONObject paramJSONObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramJSONObject.has("title")) {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("title");
-    }
-    if (paramJSONObject.has("video")) {
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("video");
-    }
-    if (paramJSONObject.has("picture")) {
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("picture");
-    }
-    if (paramJSONObject.has("picture_attr")) {
-      c(paramJSONObject.getJSONObject("picture_attr"));
-    }
-    if (paramJSONObject.has("video_attr")) {
-      d(paramJSONObject.getJSONObject("video_attr"));
-    }
-  }
-  
-  private void b(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Nqi = null;
-    if (paramJSONObject != null)
+    if (this.jdField_a_of_type_Int == 1)
     {
-      this.jdField_a_of_type_Nqi = new nqi();
-      if (paramJSONObject.has("articleid")) {
-        this.jdField_a_of_type_Nqi.jdField_a_of_type_Long = paramJSONObject.getLong("articleid");
-      }
-      if (paramJSONObject.has("id")) {
-        this.jdField_a_of_type_Nqi.jdField_b_of_type_Long = paramJSONObject.getLong("id");
-      }
-      if (paramJSONObject.has("jumpurl")) {
-        this.jdField_a_of_type_Nqi.jdField_a_of_type_JavaLangString = paramJSONObject.getString("jumpurl");
-      }
-      if (paramJSONObject.has("msgtype")) {
-        this.jdField_a_of_type_Nqi.jdField_a_of_type_Int = paramJSONObject.getInt("msgtype");
-      }
-      if (paramJSONObject.has("tasktype")) {
-        this.jdField_a_of_type_Nqi.jdField_b_of_type_Int = paramJSONObject.getInt("tasktype");
-      }
-      if (paramJSONObject.has("time")) {
-        this.jdField_a_of_type_Nqi.c = paramJSONObject.getLong("time");
-      }
-      if (paramJSONObject.has("uniqueid")) {
-        this.jdField_a_of_type_Nqi.d = paramJSONObject.getLong("uniqueid");
-      }
-      if (paramJSONObject.has("rowkey")) {
-        this.jdField_a_of_type_Nqi.jdField_b_of_type_JavaLangString = paramJSONObject.getString("rowkey");
-      }
-    }
-  }
-  
-  private void c(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Nqj = null;
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_Nqj = new nqj();
-      if (paramJSONObject.has("cover")) {
-        this.jdField_a_of_type_Nqj.jdField_a_of_type_JavaLangString = paramJSONObject.getString("cover");
-      }
-      if (paramJSONObject.has("cover_orig")) {
-        this.jdField_a_of_type_Nqj.jdField_b_of_type_JavaLangString = paramJSONObject.getString("cover_orig");
-      }
-      if (paramJSONObject.has("large")) {
-        this.jdField_a_of_type_Nqj.jdField_a_of_type_Int = paramJSONObject.getInt("large");
-      }
-    }
-  }
-  
-  private void d(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Nqk = null;
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_Nqk = new nqk();
-      if (paramJSONObject.has("busitype")) {
-        this.jdField_a_of_type_Nqk.jdField_a_of_type_Int = paramJSONObject.getInt("busitype");
-      }
-      if (paramJSONObject.has("cover")) {
-        this.jdField_a_of_type_Nqk.jdField_a_of_type_JavaLangString = paramJSONObject.getString("cover");
-      }
-      if (paramJSONObject.has("cover_orig")) {
-        this.jdField_a_of_type_Nqk.jdField_d_of_type_JavaLangString = paramJSONObject.getString("cover_orig");
-      }
-      if (paramJSONObject.has("fulltime")) {
-        this.jdField_a_of_type_Nqk.jdField_b_of_type_Int = paramJSONObject.getInt("fulltime");
-      }
-      if (paramJSONObject.has("h5url")) {
-        this.jdField_a_of_type_Nqk.jdField_b_of_type_JavaLangString = paramJSONObject.getString("h5url");
-      }
-      if (paramJSONObject.has("preheight")) {
-        this.jdField_a_of_type_Nqk.jdField_c_of_type_Int = paramJSONObject.getInt("preheight");
-      }
-      if (paramJSONObject.has("prewidth")) {
-        this.jdField_a_of_type_Nqk.jdField_d_of_type_Int = paramJSONObject.getInt("prewidth");
-      }
-      if (paramJSONObject.has("vid")) {
-        this.jdField_a_of_type_Nqk.jdField_c_of_type_JavaLangString = paramJSONObject.getString("vid");
-      }
-      if (paramJSONObject.has("large")) {
-        this.jdField_a_of_type_Nqk.e = paramJSONObject.getInt("large");
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
+      akgr.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      l = NetConnInfoCenter.getServerTimeMillis();
+      ((aogd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(this.jdField_a_of_type_Long), true, l);
       return;
     }
-    for (;;)
-    {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("msg"))
-        {
-          Object localObject = paramString.getJSONObject("msg");
-          if (((JSONObject)localObject).has("item"))
-          {
-            localObject = ((JSONObject)localObject).getJSONArray("item");
-            int i;
-            JSONArray localJSONArray;
-            if (localObject == null)
-            {
-              i = 0;
-              break label189;
-              if (j >= i) {
-                continue;
-              }
-              localJSONArray = ((JSONArray)localObject).getJSONArray(j);
-              if (localJSONArray == null)
-              {
-                k = 0;
-                break label194;
-                if (m >= k) {
-                  break label200;
-                }
-                a(localJSONArray.getJSONObject(m));
-                m += 1;
-                continue;
-              }
-            }
-            else
-            {
-              i = ((JSONArray)localObject).length();
-              break label189;
-            }
-            int k = localJSONArray.length();
-            break label194;
-          }
-        }
-        if (!paramString.has("msg_attr")) {
-          break;
-        }
-        b(paramString.getJSONObject("msg_attr"));
-        return;
-      }
-      catch (JSONException paramString) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("DynamicInfo", 2, "DynamicInfo Exception:" + paramString.getMessage());
-      return;
-      label189:
-      int j = 0;
-      continue;
-      label194:
-      int m = 0;
-      continue;
-      label200:
-      j += 1;
-    }
+    akgr.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, false, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    ((aogd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(this.jdField_a_of_type_Long), false, l);
   }
 }
 

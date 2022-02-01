@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahlc;
-import blsb;
+import ahum;
+import bmtd;
 
 public class TofuAioMiniProfileItemBuilder$5
   implements Runnable
 {
-  public TofuAioMiniProfileItemBuilder$5(ahlc paramahlc) {}
+  public TofuAioMiniProfileItemBuilder$5(ahum paramahum) {}
   
   public void run()
   {
-    blsb.a(this.this$0.a, "aio_mini_profile");
+    bmtd.a(this.this$0.a, "aio_mini_profile");
   }
 }
 

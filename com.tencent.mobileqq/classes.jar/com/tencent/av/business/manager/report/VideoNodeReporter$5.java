@@ -3,13 +3,13 @@ package com.tencent.av.business.manager.report;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import lhw;
-import lhy;
+import lie;
+import lig;
 
 public class VideoNodeReporter$5
   implements Runnable
 {
-  public VideoNodeReporter$5(lhw paramlhw, String paramString) {}
+  public VideoNodeReporter$5(lie paramlie, String paramString) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class VideoNodeReporter$5
     {
       Iterator localIterator = this.this$0.a.iterator();
       while (localIterator.hasNext()) {
-        ((lhy)localIterator.next()).d = this.a;
+        ((lig)localIterator.next()).d = this.a;
       }
     }
   }

@@ -2,21 +2,21 @@ package com.tencent.mobileqq.ocr.view.gesture.animation;
 
 import android.os.Build.VERSION;
 import android.view.View;
-import ayji;
+import azcb;
 
 public abstract class AnimationEngine
   implements Runnable
 {
   private final View jdField_a_of_type_AndroidViewView;
-  private final ayji jdField_a_of_type_Ayji;
+  private final azcb jdField_a_of_type_Azcb;
   
   public AnimationEngine(View paramView)
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
-    if (ayji.a()) {}
-    for (paramView = new ayji();; paramView = null)
+    if (azcb.a()) {}
+    for (paramView = new azcb();; paramView = null)
     {
-      this.jdField_a_of_type_Ayji = paramView;
+      this.jdField_a_of_type_Azcb = paramView;
       return;
     }
   }
@@ -34,8 +34,8 @@ public abstract class AnimationEngine
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Ayji != null) {
-      this.jdField_a_of_type_Ayji.a(paramInt);
+    if (this.jdField_a_of_type_Azcb != null) {
+      this.jdField_a_of_type_Azcb.a(paramInt);
     }
     a();
   }
@@ -45,11 +45,11 @@ public abstract class AnimationEngine
   public final void run()
   {
     boolean bool = a();
-    if (this.jdField_a_of_type_Ayji != null)
+    if (this.jdField_a_of_type_Azcb != null)
     {
-      this.jdField_a_of_type_Ayji.b();
+      this.jdField_a_of_type_Azcb.b();
       if (!bool) {
-        this.jdField_a_of_type_Ayji.a();
+        this.jdField_a_of_type_Azcb.a();
       }
     }
     if (bool) {

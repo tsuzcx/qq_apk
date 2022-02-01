@@ -1,97 +1,16 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.SystemClock;
-import android.view.animation.AccelerateInterpolator;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-public class azkk
-  extends BitmapDrawable
+class azkk
+  implements azkr
 {
-  private static int d;
-  private static int e;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private AccelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator = new AccelerateInterpolator(1.5F);
-  private float jdField_b_of_type_Float = 0.5F;
-  private int jdField_b_of_type_Int = 50;
-  private int c;
+  azkk(azkj paramazkj, LatLng paramLatLng, int paramInt, PoiBean paramPoiBean) {}
   
-  public azkk(Resources paramResources, Bitmap paramBitmap)
+  public void a(PoiBean paramPoiBean)
   {
-    super(paramResources, paramBitmap);
-  }
-  
-  public static azkk[] a(int paramInt, Resources paramResources, Bitmap paramBitmap)
-  {
-    if ((paramBitmap != null) && (paramResources != null))
-    {
-      azkk[] arrayOfazkk2 = new azkk[paramInt];
-      e = paramBitmap.getWidth() / 2;
-      d = paramBitmap.getHeight() / 2;
-      int i = 0;
-      for (;;)
-      {
-        arrayOfazkk1 = arrayOfazkk2;
-        if (i >= paramInt) {
-          break;
-        }
-        arrayOfazkk2[i] = new azkk(paramResources, paramBitmap);
-        i += 1;
-      }
-    }
-    azkk[] arrayOfazkk1 = null;
-    return arrayOfazkk1;
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    this.jdField_a_of_type_Float = ((float)paramLong);
-    this.jdField_a_of_type_Int = paramInt;
-    this.c = 1;
-    invalidateSelf();
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    int j = 1;
-    int i = j;
-    switch (this.c)
-    {
-    default: 
-      i = j;
-    }
-    float f2;
-    for (;;)
-    {
-      if (i == 0) {
-        invalidateSelf();
-      }
-      return;
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      this.c = 2;
-      i = 0;
-      continue;
-      f2 = (float)(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / this.jdField_a_of_type_Float;
-      if (f2 <= 1.0F) {
-        break;
-      }
-      this.c = 3;
-      i = j;
-    }
-    paramCanvas.save();
-    float f3 = this.jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator.getInterpolation(f2);
-    if (f3 > 0.5F) {}
-    for (float f1 = -f3 * this.jdField_b_of_type_Int;; f1 = -(1.0F - f3) * this.jdField_b_of_type_Int)
-    {
-      paramCanvas.translate(f1, this.jdField_a_of_type_Int - f3 * this.jdField_a_of_type_Int);
-      paramCanvas.scale(this.jdField_b_of_type_Float * f2, this.jdField_b_of_type_Float * f2, e, d);
-      setAlpha((int)(255.0F - f2 * 255.0F));
-      super.draw(paramCanvas);
-      paramCanvas.restore();
-      i = 0;
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.e(azki.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_Azkj.b + "] memPut [fail already exist]. latLng: " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " acceptAccuracy: " + this.jdField_a_of_type_Int + " put: " + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean + " cache: " + paramPoiBean);
     }
   }
 }

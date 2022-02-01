@@ -1,12 +1,13 @@
-public abstract interface yyz
+class yyz
+  implements zto
 {
-  public abstract void a();
+  yyz(yyy paramyyy) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(boolean paramBoolean, yyb paramyyb);
-  
-  public abstract void b(int paramInt);
+  public void a()
+  {
+    yzb localyzb = yyy.a(this.a);
+    yyy.a(this.a, yyy.a(this.a)).a(localyzb);
+  }
 }
 
 

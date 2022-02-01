@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.soload.config;
 
 import android.text.TextUtils;
-import aqlg;
-import bcoi;
-import bcon;
+import araj;
+import bdha;
+import bdhf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
@@ -59,7 +59,7 @@ public class SoConfig
     //   25: aload_3
     //   26: monitorenter
     //   27: aload 4
-    //   29: invokestatic 80	akww:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   29: invokestatic 80	alil:a	(Ljava/lang/String;)Ljava/lang/Object;
     //   32: checkcast 2	com/tencent/mobileqq/soload/config/SoConfig
     //   35: astore_0
     //   36: aload_3
@@ -146,16 +146,16 @@ public class SoConfig
     return "SoConfig{mSoInfos=" + this.mSoInfos + '}';
   }
   
-  public void update(bcon parambcon)
+  public void update(bdhf parambdhf)
   {
     HashMap localHashMap = new HashMap();
-    if ((parambcon != null) && (parambcon.a != null))
+    if ((parambdhf != null) && (parambdhf.a != null))
     {
       try
       {
-        localObject = new LinkedList(Arrays.asList(parambcon.a));
-        Collections.sort((List)localObject, new bcoi(this));
-        parambcon = (bcon)localObject;
+        localObject = new LinkedList(Arrays.asList(parambdhf.a));
+        Collections.sort((List)localObject, new bdha(this));
+        parambdhf = (bdhf)localObject;
       }
       catch (Throwable localThrowable1)
       {
@@ -165,7 +165,7 @@ public class SoConfig
           try
           {
             Object localObject;
-            JSONArray localJSONArray = new JSONObject(((aqlg)localObject).jdField_a_of_type_JavaLangString).optJSONArray("so_info_list");
+            JSONArray localJSONArray = new JSONObject(((araj)localObject).jdField_a_of_type_JavaLangString).optJSONArray("so_info_list");
             if (localJSONArray == null) {
               continue;
             }
@@ -189,7 +189,7 @@ public class SoConfig
               i += 1;
               continue;
               localThrowable1 = localThrowable1;
-              parambcon = new LinkedList(Arrays.asList(parambcon.a));
+              parambdhf = new LinkedList(Arrays.asList(parambdhf.a));
               continue;
             }
             SoConfig.SoInfo localSoInfo2 = localSoInfo2.merge(localSoInfo1);
@@ -204,14 +204,14 @@ public class SoConfig
           localHashMap.put(localSoInfo1.name, localSoInfo1);
         }
       }
-      parambcon = parambcon.iterator();
+      parambdhf = parambdhf.iterator();
       do
       {
-        if (!parambcon.hasNext()) {
+        if (!parambdhf.hasNext()) {
           break;
         }
-        localObject = (aqlg)parambcon.next();
-      } while (TextUtils.isEmpty(((aqlg)localObject).jdField_a_of_type_JavaLangString));
+        localObject = (araj)parambdhf.next();
+      } while (TextUtils.isEmpty(((araj)localObject).jdField_a_of_type_JavaLangString));
     }
     label295:
     this.mSoInfos = localHashMap;

@@ -1,20 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.QQLogo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class mgu
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public mgu(QQLogo paramQQLogo) {}
+  public mgu(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.setVisibility(8);
+    bhoo.c();
+    bdll.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_call", 0, 0, this.a.b, "", "", "");
+    this.a.d(10);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

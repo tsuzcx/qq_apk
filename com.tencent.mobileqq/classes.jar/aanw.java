@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
+import android.widget.TextView;
+import java.util.Map;
 
-public class aanw
-  implements DialogInterface.OnClickListener
+class aanw
+  extends vxr
 {
-  public aanw(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  aanw(aanu paramaanu, ahbd paramahbd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    EditUniqueTitleActivity.a(this.a);
+    super.a();
+    aanu.a(this.jdField_a_of_type_Aanu, this.jdField_a_of_type_Ahbd, true);
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    Integer localInteger = (Integer)aanu.b(this.jdField_a_of_type_Aanu).get(Integer.valueOf(this.jdField_a_of_type_Ahbd.b));
+    if ((localInteger != null) && (localInteger.intValue() > paramInt2) && (paramInt1 != localInteger.intValue()) && (Math.abs(paramInt1 - localInteger.intValue()) > 100))
+    {
+      this.jdField_a_of_type_Ahbd.a.setText((CharSequence)aanu.c(this.jdField_a_of_type_Aanu).get(Integer.valueOf(this.jdField_a_of_type_Ahbd.b)));
+      return;
+    }
+    aanu.b(this.jdField_a_of_type_Aanu).put(Integer.valueOf(this.jdField_a_of_type_Ahbd.b), Integer.valueOf(paramInt2));
+    aanu.c(this.jdField_a_of_type_Aanu).put(Integer.valueOf(this.jdField_a_of_type_Ahbd.b), paramString);
+    this.jdField_a_of_type_Ahbd.a.setText(paramString);
   }
 }
 

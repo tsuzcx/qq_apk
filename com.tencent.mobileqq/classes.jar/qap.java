@@ -1,45 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CustomMethodsRegister.CustomMethodInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
-class qap
-  implements View.OnClickListener
+public class qap
+  implements CustomMethodsRegister.CustomMethodInterface
 {
-  qap(qam paramqam) {}
+  private Map<String, CustomMethodsRegister.CustomMethodInterface> a = new HashMap();
   
-  public void onClick(View paramView)
+  public qap()
   {
-    RefreshData localRefreshData = rcx.b(qam.a(this.a), 0);
-    ube.a(false);
-    phi localphi = new phi();
-    localphi.h().b().e().a(qam.a(this.a).e()).f().g().d();
-    if ((qam.a(this.a).e() != 0) || (localRefreshData != null)) {}
-    for (;;)
-    {
-      try
-      {
-        if (!localRefreshData.isAD) {
-          continue;
-        }
-        i = 1;
-        localphi.a("ad_page", i);
-      }
-      catch (JSONException localJSONException)
-      {
-        int i;
-        localJSONException.printStackTrace();
-        continue;
-      }
-      oat.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, bmqa.a("default_feeds_proteus_offline_bid"), "", "", localphi.a(), false);
-      if (qam.a(this.a) != null) {
-        qam.a(this.a).c();
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
+    a();
+  }
+  
+  private void a()
+  {
+    a("decodeEmotion", new qar(null));
+    a("HyperLinkClick", new qas(null));
+  }
+  
+  public void a(String paramString, CustomMethodsRegister.CustomMethodInterface paramCustomMethodInterface)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramCustomMethodInterface == null)) {
       return;
-      i = 0;
     }
+    this.a.put(paramString, paramCustomMethodInterface);
+  }
+  
+  public Object invoke(String paramString, Object... paramVarArgs)
+  {
+    QLog.d("RIJProteusMethod", 1, "invoke,s=" + paramString);
+    if (this.a.containsKey(paramString)) {
+      return ((CustomMethodsRegister.CustomMethodInterface)this.a.get(paramString)).invoke(paramString, paramVarArgs);
+    }
+    return null;
   }
 }
 

@@ -1,16 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.video.decode.ShortVideoSoLoad;
 
-public class zrb
-  implements ValueAnimator.AnimatorUpdateListener
+class zrb
 {
-  public zrb(RotateCircleImageView paramRotateCircleImageView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  static String a(Context paramContext)
   {
-    RotateCircleImageView.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    if (Build.VERSION.SDK_INT >= 16) {}
+    for (String str = "trim_process_pie";; str = "trim_process_pic") {
+      return ShortVideoSoLoad.getShortVideoSoPath(paramContext) + str;
+    }
+  }
+  
+  static String b(Context paramContext)
+  {
+    paramContext = ShortVideoSoLoad.getShortVideoSoPath(paramContext);
+    String str = VideoEnvironment.a();
+    return paramContext + str;
   }
 }
 

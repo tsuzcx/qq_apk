@@ -1,22 +1,18 @@
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+
 class avwa
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  avwa(avvx paramavvx) {}
   
-  public avwa(String paramString1, String paramString2)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = bita.d(paramString2);
-    this.d = avvw.a(paramString1);
-  }
-  
-  public String toString()
-  {
-    return "MusicReqInfo{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", url='" + this.b + '\'' + ", md5='" + this.c + '\'' + ", status=" + this.jdField_a_of_type_Int + ", cachePath='" + this.d + '\'' + '}';
+    this.a.c = 7;
+    if (avvx.a(this.a) != null) {
+      avvx.a(this.a).a(this.a.b, paramTVK_IMediaPlayer, paramInt1, paramInt2, paramInt3, paramString, paramObject);
+    }
+    return false;
   }
 }
 

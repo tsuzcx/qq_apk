@@ -8,14 +8,14 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import anhk;
-import arpd;
-import arph;
-import arpm;
-import bglp;
-import bgnt;
-import bgpp;
-import bhod;
+import antf;
+import aser;
+import asev;
+import asfa;
+import bhlq;
+import bhnv;
+import bhpr;
+import bioy;
 import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -58,7 +58,7 @@ public class ThemeAndBubbleCommonJsPlugin
   
   public void getNetwork(JSONObject paramJSONObject, String paramString)
   {
-    int i = bgnt.a(this.mRuntime.a());
+    int i = bhnv.a(this.mRuntime.a());
     try
     {
       paramJSONObject = new JSONObject();
@@ -143,7 +143,7 @@ public class ThemeAndBubbleCommonJsPlugin
     {
       paramString2 = new Bundle();
       paramString2.putString("jumpTo", paramJsBridgeListener.optString("jumpto"));
-      super.sendRemoteReq(arph.a("ipc_open_settings", paramString1, this.mOnRemoteResp.key, paramString2), false, true);
+      super.sendRemoteReq(asev.a("ipc_open_settings", paramString1, this.mOnRemoteResp.key, paramString2), false, true);
       return true;
     }
     if ("isWhiteName".equals(paramString3))
@@ -243,16 +243,16 @@ public class ThemeAndBubbleCommonJsPlugin
       paramString = new StringBuilder();
       paramString.append(paramJSONObject);
       paramString.append("?client=androidQQ");
-      paramString.append("&version=8.4.1.4680");
+      paramString.append("&version=8.4.5.4745");
       paramString.append("&system=" + Build.VERSION.RELEASE);
       paramString.append("&device=" + Build.DEVICE);
       paramString.append("&uin=" + ((AppActivity)this.mRuntime.a()).getAppRuntime().getAccount());
-      paramJSONObject = arpm.a("VIP_xingying", paramString.toString());
+      paramJSONObject = asfa.a("VIP_xingying", paramString.toString());
       if (QLog.isColorLevel()) {
         QLog.i("CommonJsHandler", 2, "CommonJsHandler saveImage imageUrl=" + paramJSONObject);
       }
       paramString = System.currentTimeMillis() + ".jpg";
-      ThreadManager.executeOnNetWorkThread(new ThemeAndBubbleCommonJsPlugin.5(this, paramJSONObject, new File(anhk.bg, paramString)));
+      ThreadManager.executeOnNetWorkThread(new ThemeAndBubbleCommonJsPlugin.5(this, paramJSONObject, new File(antf.bg, paramString)));
       return;
     }
     catch (Exception paramJSONObject)
@@ -274,19 +274,19 @@ public class ThemeAndBubbleCommonJsPlugin
       }
       if (paramJSONObject.length >= 1)
       {
-        localObject = bglp.a(this.mRuntime.a(), 230);
-        ((bgpp)localObject).a(str2);
-        ((bgpp)localObject).b(str1);
-        ((bgpp)localObject).a(paramJSONObject[0], new ThemeAndBubbleCommonJsPlugin.1(this, paramString));
+        localObject = bhlq.a(this.mRuntime.a(), 230);
+        ((bhpr)localObject).a(str2);
+        ((bhpr)localObject).b(str1);
+        ((bhpr)localObject).a(paramJSONObject[0], new ThemeAndBubbleCommonJsPlugin.1(this, paramString));
         if (paramJSONObject.length >= 2) {
-          ((bgpp)localObject).b(paramJSONObject[1], new ThemeAndBubbleCommonJsPlugin.2(this, paramString));
+          ((bhpr)localObject).b(paramJSONObject[1], new ThemeAndBubbleCommonJsPlugin.2(this, paramString));
         }
         if (paramJSONObject.length >= 3) {
-          ((bgpp)localObject).c(paramJSONObject[2], new ThemeAndBubbleCommonJsPlugin.3(this, paramString));
+          ((bhpr)localObject).c(paramJSONObject[2], new ThemeAndBubbleCommonJsPlugin.3(this, paramString));
         }
-        ((bgpp)localObject).setCanceledOnTouchOutside(false);
-        ((bgpp)localObject).setOnKeyListener(new ThemeAndBubbleCommonJsPlugin.4(this, (bgpp)localObject, paramString));
-        ((bgpp)localObject).show();
+        ((bhpr)localObject).setCanceledOnTouchOutside(false);
+        ((bhpr)localObject).setOnKeyListener(new ThemeAndBubbleCommonJsPlugin.4(this, (bhpr)localObject, paramString));
+        ((bhpr)localObject).show();
         return;
       }
       super.callJsOnError(paramString, "Button no found - " + (String)localObject);

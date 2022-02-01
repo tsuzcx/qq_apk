@@ -1,27 +1,36 @@
-import android.graphics.Rect;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyCardViewCostBall;
 
 public class oyt
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnTouchListener
 {
-  public oyt(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
   
-  public void onGlobalLayout()
+  private oyt(ReadInJoyCardViewCostBall paramReadInJoyCardViewCostBall) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Rect localRect = new Rect();
-    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.getWindowVisibleDisplayFrame(localRect);
-    int j = localRect.bottom;
-    int i = j;
-    if (!this.a.e) {
-      i = j - this.a.g;
-    }
-    if (i != this.a.f)
+    switch (paramMotionEvent.getAction())
     {
-      this.a.f = i;
-      this.a.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = this.a.f;
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.requestLayout();
+    }
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_Int = ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).x;
+      this.jdField_b_of_type_Int = ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).y;
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
+      continue;
+      ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).x = (this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float - paramMotionEvent.getRawX()));
+      ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).y = (this.jdField_b_of_type_Int + (int)(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float));
+      ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).updateViewLayout(paramView, ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall));
     }
   }
 }

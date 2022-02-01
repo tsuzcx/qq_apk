@@ -1,74 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aijh
-  extends aqkz<aijg>
+class aijh
+  implements DialogInterface.OnClickListener
 {
-  @NonNull
-  public aijg a(int paramInt)
-  {
-    return new aijg();
-  }
+  aijh(aijg paramaijg, Context paramContext) {}
   
-  @Nullable
-  public aijg a(aqlg[] paramArrayOfaqlg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
-    {
-      aijg localaijg = aijg.a(paramArrayOfaqlg[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecConfigProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
-      }
-      return localaijg;
-    }
-    return null;
-  }
-  
-  public void a(aijg paramaijg)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (QQAppInterface)localObject;
-      String str = ((QQAppInterface)localObject).c();
-      aijp.a(BaseApplicationImpl.getApplication(), str, paramaijg.a());
-      aijp.a((QQAppInterface)localObject, paramaijg.a());
-    }
-  }
-  
-  public Class<aijg> clazz()
-  {
-    return aijg.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return super.isAccountRelated();
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 410;
+    paramDialogInterface = agej.a(new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class), null);
+    paramDialogInterface.putExtra("uin", this.jdField_a_of_type_Aijg.a.a.a);
+    paramDialogInterface.putExtra("uintype", 3000);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
 }
 

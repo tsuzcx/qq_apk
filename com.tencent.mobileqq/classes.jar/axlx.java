@@ -1,23 +1,11 @@
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-
-public abstract interface axlx
+public class axlx
+  implements axlt
 {
-  public abstract void a();
+  public void a(int paramInt) {}
   
-  public abstract void a(Comments.Comment paramComment);
+  public void a(int paramInt1, float paramFloat, int paramInt2) {}
   
-  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
-  
-  public abstract void a(Comments paramComments);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void b(Comments.Comment paramComment);
-  
-  public abstract void c();
+  public void b(int paramInt) {}
 }
 
 

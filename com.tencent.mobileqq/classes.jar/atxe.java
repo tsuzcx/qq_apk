@@ -1,30 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class atxe
-  implements View.OnClickListener
+class atxe
+  extends atxd
 {
-  private long a;
-  
-  public abstract void a(View paramView);
-  
-  public void b(View paramView) {}
-  
-  public void onClick(View paramView)
+  public atxe(atwy paramatwy)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.a >= 500L)
+    super(paramatwy);
+  }
+  
+  protected String a()
+  {
+    return "StateCancelUploadWhenChangeToOff";
+  }
+  
+  protected boolean a()
+  {
+    if (this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      a(paramView);
-      this.a = l;
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      b(paramView);
-    }
+    atwy.b(this.jdField_a_of_type_Atwy, 11, 9);
+    atwy.c(this.jdField_a_of_type_Atwy, 11, 9);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateCancelUploadWhenRecv)");
+    this.jdField_a_of_type_Atxd = new atxg(this.jdField_a_of_type_Atwy);
+    return true;
   }
 }
 

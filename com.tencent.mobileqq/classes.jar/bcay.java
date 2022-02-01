@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgType0x210;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class bcay
-  implements bcba
+  extends Handler
 {
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbyn parambbyn, MessageHandler paramMessageHandler)
+  public bcay(UniteSearchActivity paramUniteSearchActivity) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    ((bdbq)paramMessageHandler.app.getManager(17)).a(paramMsgType0x210.msg_content.get().toByteArray());
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      UniteSearchActivity.a(this.a, 3);
+      this.a.h();
+    }
   }
 }
 

@@ -1,45 +1,153 @@
+import QQWalletPay.ReqCheckChangePwdAuth;
+import Wallet.AuthCodeReq;
+import Wallet.GetPasswordReq;
+import Wallet.GetPasswordRsp;
+import Wallet.PfaFriendRqt;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.PatternLockUtils;
+import cooperation.qwallet.plugin.QWalletHelper;
 
-class aofq
-  implements acvn
+public class aofq
+  extends anud
 {
-  aofq(aofp paramaofp, String paramString, FMTransC2CMsgInfo paramFMTransC2CMsgInfo, int paramInt, byte[] paramArrayOfByte) {}
+  private boolean a;
   
-  public ToServiceMsg a()
+  protected aofq(QQAppInterface paramQQAppInterface)
   {
-    ToServiceMsg localToServiceMsg = aofp.a(this.jdField_a_of_type_Aofp).createToServiceMsg("MessageSvc.PbSendMsg");
-    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putLong("msgsize", 0L);
-    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.uniseq);
-    localToServiceMsg.extraData.putInt("SEND_MSG_CMD_MSG_TYPE", 1);
-    localToServiceMsg.extraData.putString("uuid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.uuid);
-    localToServiceMsg.extraData.putByte("cmd", (byte)0);
-    localToServiceMsg.extraData.putByte("keyType", (byte)0);
-    localToServiceMsg.extraData.putInt("busiType", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.busiType);
-    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putLong("queueSeq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.queueSeq);
-    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.sessionId);
-    localToServiceMsg.extraData.putInt("random", bbzj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgUid));
-    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgSeq));
-    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 13);
-    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_a_of_type_Int);
-    bbzm localbbzm = new bbzm();
-    localbbzm.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.subCmd;
-    localbbzm.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    msg_svc.PbSendMsgReq localPbSendMsgReq = bbzf.a(aofp.a(this.jdField_a_of_type_Aofp), 13, this.jdField_a_of_type_JavaLangString, localbbzm, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgSeq, bbzj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgUid));
-    aofp.a(this.jdField_a_of_type_Aofp, localPbSendMsgReq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo);
-    aofp.a(this.jdField_a_of_type_Aofp, localPbSendMsgReq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo, localbbzm);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.entity != null) {
-      localToServiceMsg.extraData.putLong("tmpSessionType", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.entity.tmpSessionType);
+    super(paramQQAppInterface);
+  }
+  
+  public void a(ReqCheckChangePwdAuth paramReqCheckChangePwdAuth)
+  {
+    if (paramReqCheckChangePwdAuth == null) {}
+    do
+    {
+      return;
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "QQWalletPayAuthServer.checkChangePwdAuth");
+      localToServiceMsg.extraData.putSerializable("ReqCheckChangePwdAuth", paramReqCheckChangePwdAuth);
+      super.send(localToServiceMsg);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qwallet.auth.AuthHandler", 2, "sendCheckModifyPassReq: on send--cmd=QQWalletPayAuthServer.checkChangePwdAuth");
+  }
+  
+  public void a(AuthCodeReq paramAuthCodeReq)
+  {
+    if (paramAuthCodeReq == null) {}
+    do
+    {
+      return;
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "VacThirdCodeSvc.fetchCodes");
+      localToServiceMsg.extraData.putSerializable("AuthCodeReq", paramAuthCodeReq);
+      super.send(localToServiceMsg);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qwallet.auth.AuthHandler", 2, "sendGetAuthCode: on send--cmd=VacThirdCodeSvc.fetchCodes");
+  }
+  
+  public void a(GetPasswordReq paramGetPasswordReq)
+  {
+    if (paramGetPasswordReq == null) {}
+    do
+    {
+      return;
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "WalletGestureSvc.GetPassword");
+      localToServiceMsg.extraData.putSerializable("GetPasswordReq", paramGetPasswordReq);
+      super.send(localToServiceMsg);
+      this.a = true;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qwallet.auth.AuthHandler", 2, "sendGetPasswordReq: on send--cmd=WalletGestureSvc.GetPassword");
+  }
+  
+  public void a(PfaFriendRqt paramPfaFriendRqt)
+  {
+    if (paramPfaFriendRqt == null) {}
+    do
+    {
+      return;
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "QWalletPfa.RecFriend");
+      localToServiceMsg.extraData.putSerializable("PfaFriendRqt", paramPfaFriendRqt);
+      super.send(localToServiceMsg);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qwallet.auth.AuthHandler", 2, "sendGetRecentList: on send--cmd=QWalletPfa.RecFriend");
+  }
+  
+  protected Class<? extends anui> observerClass()
+  {
+    return aofr.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
+    boolean bool;
+    do
+    {
+      return;
+      bool = paramFromServiceMsg.isSuccess();
+      paramToServiceMsg = paramToServiceMsg.getServiceCmd();
+    } while (TextUtils.isEmpty(paramToServiceMsg));
+    if (paramToServiceMsg.compareTo("QQWalletPayAuthServer.checkChangePwdAuth") == 0)
+    {
+      super.notifyUI(1, bool, paramObject);
+      return;
     }
-    localToServiceMsg.putWupBuffer(localPbSendMsgReq.toByteArray());
-    localToServiceMsg.extraData.putLong(aszq.class.getName(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.observerSeq);
-    return localToServiceMsg;
+    if (paramToServiceMsg.compareTo("WalletGestureSvc.GetPassword") == 0) {
+      if ((paramObject == null) || (!(paramObject instanceof GetPasswordRsp))) {
+        break label402;
+      }
+    }
+    label402:
+    for (paramToServiceMsg = (GetPasswordRsp)paramObject;; paramToServiceMsg = null)
+    {
+      if ((bool) && (paramToServiceMsg != null) && (paramToServiceMsg.ret == 0))
+      {
+        PatternLockUtils.setSyncPatternLockState(this.app.getApp(), this.app.getCurrentAccountUin(), false);
+        paramFromServiceMsg = "";
+        if (!TextUtils.isEmpty(paramToServiceMsg.password))
+        {
+          paramFromServiceMsg = QWalletHelper.getQWDevId();
+          paramFromServiceMsg = MD5.toMD5(paramFromServiceMsg + paramToServiceMsg.password);
+        }
+        PatternLockUtils.setPWD(this.app.getApp(), this.app.getCurrentAccountUin(), paramFromServiceMsg);
+        PatternLockUtils.setPWDType(this.app.getApp(), this.app.getCurrentAccountUin(), paramToServiceMsg.passwordType);
+        PatternLockUtils.setCheckIntervalTime(this.app.getApp(), this.app.getCurrentAccountUin(), paramToServiceMsg.checkInterval);
+        PatternLockUtils.setForgroundIntervalTime(this.app.getApp(), this.app.getCurrentAccountUin(), paramToServiceMsg.passInterval);
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("Q.qwallet.auth.AuthHandler", 2, "sendGetPasswordReq: onReceive isSuccess:" + bool);
+        return;
+        if ((this.a) && (bhnv.d(this.app.getApp())))
+        {
+          this.a = false;
+          paramToServiceMsg = new GetPasswordReq();
+          paramToServiceMsg.MQOS = "Android";
+          paramToServiceMsg.MQVersion = bhlo.a(this.app.getApp());
+          paramFromServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "WalletGestureSvc.GetPassword");
+          paramFromServiceMsg.extraData.putSerializable("GetPasswordReq", paramToServiceMsg);
+          super.send(paramFromServiceMsg);
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.qwallet.auth.AuthHandler", 2, "RetrySendGetPasswordReq: on send--cmd=WalletGestureSvc.GetPassword");
+          }
+        }
+      }
+      break;
+      if (paramToServiceMsg.compareTo("VacThirdCodeSvc.fetchCodes") == 0)
+      {
+        super.notifyUI(4, bool, paramObject);
+        return;
+      }
+      if (paramToServiceMsg.compareTo("QWalletPfa.RecFriend") != 0) {
+        break;
+      }
+      super.notifyUI(5, bool, paramObject);
+      return;
+    }
   }
 }
 

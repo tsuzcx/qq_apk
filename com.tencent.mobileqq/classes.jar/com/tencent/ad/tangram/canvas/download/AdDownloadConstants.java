@@ -27,6 +27,7 @@ public final class AdDownloadConstants
   public static final int DOWNLOAD_TYPE_DOWNLOADSDK = 0;
   public static String KEY = "big_brother_source_key";
   public static String KEY_REF_ID;
+  public static final String PARAMS_HIDE_INSTALL_SUCCESS_PAGE = "hideInstallSuccessPage";
   public static String PARAM_ACTIONCODE;
   public static String PARAM_APPNAME;
   public static String PARAM_AUTO_DOWNLOAD;

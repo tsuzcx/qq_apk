@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import ampj;
-import amqf;
-import amqh;
-import amry;
-import anai;
+import anbd;
+import anbz;
+import ancb;
 import android.text.TextUtils;
+import ands;
+import anmc;
 import com.tencent.TMG.sdk.AVContext;
 import com.tencent.TMG.sdk.AVRoomMulti;
 import com.tencent.common.app.AppInterface;
@@ -16,37 +16,37 @@ import org.json.JSONArray;
 public class CmGameAvHandler$12
   implements Runnable
 {
-  public CmGameAvHandler$12(amqf paramamqf, JSONArray paramJSONArray) {}
+  public CmGameAvHandler$12(anbz paramanbz, JSONArray paramJSONArray) {}
   
   public void run()
   {
     if (this.a.length() <= 0)
     {
-      amqf.a(this.this$0).clear();
-      anai.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new amqh(this));
+      anbz.a(this.this$0).clear();
+      anmc.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new ancb(this));
     }
     for (;;)
     {
       return;
-      amqf.a(this.this$0).clear();
+      anbz.a(this.this$0).clear();
       String[] arrayOfString = new String[this.a.length()];
-      String str3 = ampj.a().getCurrentAccountUin();
+      String str3 = anbd.a().getCurrentAccountUin();
       int i = 0;
       while (i < this.a.length())
       {
         try
         {
-          amry localamry = ampj.a(amqf.a(this.this$0));
-          if (localamry != null)
+          ands localands = anbd.a(anbz.a(this.this$0));
+          if (localands != null)
           {
-            String str2 = localamry.c(this.a.get(i).toString());
+            String str2 = localands.c(this.a.get(i).toString());
             String str1 = str2;
             if (TextUtils.isEmpty(str2)) {
-              str1 = localamry.a(this.a.get(i).toString());
+              str1 = localands.a(this.a.get(i).toString());
             }
             arrayOfString[i] = str1;
-            amqf.a(this.this$0).add(str1);
-            amqf.a(this.this$0, arrayOfString, str3);
+            anbz.a(this.this$0).add(str1);
+            anbz.a(this.this$0, arrayOfString, str3);
           }
         }
         catch (Exception localException)

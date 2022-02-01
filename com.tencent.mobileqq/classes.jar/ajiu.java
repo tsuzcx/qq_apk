@@ -1,40 +1,73 @@
-import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-public class ajiu
-  extends anqd
+class ajiu
+  extends anyu
 {
-  public ajiu(DeviceFragment paramDeviceFragment) {}
+  ajiu(ajis paramajis) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    if (this.a.a == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectsExplorationFriendAdapter", 2, "onCancelMayKnowRecommend isSuccess = " + paramBoolean);
     }
-    DeviceFragment localDeviceFragment = this.a;
-    if (paramInt1 != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localDeviceFragment.c = bool;
-      this.a.a.d();
-      this.a.a.notifyDataSetChanged();
-      return;
+    if (paramBoolean) {
+      this.a.a(false);
     }
   }
   
-  protected void b(int paramInt1, int paramInt2)
+  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.a == null) {
-      return;
+    if (paramInt2 == ajis.a(this.a)) {
+      this.a.a(false);
     }
-    DeviceFragment localDeviceFragment = this.a;
-    if (paramInt1 != 0) {}
-    for (boolean bool = true;; bool = false)
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if ((paramBoolean) && (ajis.a(this.a) == 23)) {
+      this.a.a(false);
+    }
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayKnowListPushAdd isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.a.a(false);
+    }
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayKnowListPushDel isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.a.a(false);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayknowStateChanged isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      localDeviceFragment.d = bool;
-      this.a.a.e();
-      this.a.a.a(this.a.d, anhk.A);
-      this.a.a.notifyDataSetChanged();
-      return;
+      this.a.notifyDataSetChanged();
+      if (ajis.a(this.a) != null)
+      {
+        ajis.a(this.a).removeCallbacks(this.a.a);
+        ajis.a(this.a).postDelayed(this.a.a, 1600L);
+      }
     }
   }
 }

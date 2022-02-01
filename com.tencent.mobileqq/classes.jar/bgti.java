@@ -1,95 +1,66 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.text.TextUtils;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.mobileqq.widget.QQToast;
-import java.io.File;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bgti
 {
-  public static Handler.Callback a;
-  public static Handler a;
-  public static final String a;
-  
-  static
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, List<String> paramList, long paramLong)
   {
-    jdField_a_of_type_JavaLangString = anhk.ba + ".VasResourceCheck/temp.json";
-    jdField_a_of_type_AndroidOsHandler$Callback = new bgtk();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    Object localObject = (BubbleManager)paramQQAppInterface.getManager(44);
-    if (localObject != null)
+    long l = LocalMultiProcConfig.getLong4Uin("aio_qzone_troop_gray_tips", 0L, Long.parseLong(paramString2));
+    if (System.currentTimeMillis() <= l * 1000L) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopGrayTipUtils", 2, "Unable to display gray tips during cool down");
+      }
+    }
+    do
     {
-      bgmg.a(((BubbleManager)localObject).a().getAbsolutePath(), false);
-      ((BubbleManager)localObject).a();
-    }
-    localObject = (gc)paramQQAppInterface.getManager(42);
-    if (localObject != null)
+      return;
+      i = QzoneConfig.getInstance().getConfig("aio_qzone_troop_gray_tips", "troop_gray_tips_min_photo_count", 9);
+      if (paramList.size() >= i) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopGrayTipUtils", 2, "Unable to display gray tips, current photos count: " + paramList.size() + " required min photos count: " + i);
+    return;
+    Object localObject = anzj.a(2131718938);
+    String str2 = anzj.a(2131718936);
+    String str1 = anzj.a(2131718937);
+    str2 = (String)localObject + " " + str2 + " " + str1;
+    paramString1 = new avpd(paramString1, paramString2, str2, 1, -5040, 131086, System.currentTimeMillis() / 1000L);
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    if (i < paramList.size())
     {
-      bgmg.a(((gc)localObject).a().getAbsolutePath(), false);
-      ((gc)localObject).a();
+      if (i != paramList.size() - 1) {
+        localStringBuilder.append((String)paramList.get(i)).append(",");
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localStringBuilder.append((String)paramList.get(i));
+      }
     }
-    localObject = (AvatarPendantManager)paramQQAppInterface.getManager(46);
-    if (localObject != null)
-    {
-      bgmg.a(((AvatarPendantManager)localObject).a().getAbsolutePath(), false);
-      ((AvatarPendantManager)localObject).a();
-      bgmg.a(((AvatarPendantManager)localObject).b().getAbsolutePath(), false);
-      ((AvatarPendantManager)localObject).b();
-    }
-    localObject = new File(bhgg.a(anhk.ba + ".emotionsm"));
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    bgmg.a(((File)localObject).getAbsolutePath(), false);
-    ((File)localObject).mkdirs();
-    paramQQAppInterface = new File(paramQQAppInterface.getApplication().getApplicationContext().getFilesDir().getParentFile(), "app_mobileqq_theme");
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    bgmg.a(paramQQAppInterface.getAbsolutePath(), false);
-    paramQQAppInterface.mkdirs();
-    paramQQAppInterface = new File(anhk.bZ);
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    bgmg.a(paramQQAppInterface.getAbsolutePath(), false);
-    paramQQAppInterface.mkdirs();
-    paramQQAppInterface = new File(anhk.cg + "resource");
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    bgmg.a(paramQQAppInterface.getAbsolutePath(), false);
-    paramQQAppInterface.mkdirs();
-    paramQQAppInterface = new File(bgxd.jdField_a_of_type_JavaLangString);
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    bgmg.a(paramQQAppInterface.getAbsolutePath(), false);
-    paramQQAppInterface.mkdirs();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
-  {
-    QQToast.a(paramActivity, anni.a(2131714721), 0).a();
-    paramActivity.finish();
-    if (jdField_a_of_type_AndroidOsHandler == null) {
-      jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandler$Callback);
-    }
-    paramActivity = new bhhf(paramString, new File(jdField_a_of_type_JavaLangString));
-    ((bhhh)paramQQAppInterface.getManager(47)).a(1).a(paramActivity, new bgtj(paramQQAppInterface), null);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.startsWith("https://gxh.vip.qq.com")) && (paramString.endsWith("secret.json"));
+    paramList = new ArrayList();
+    i = BaseApplicationImpl.getApplication().getResources().getColor(2131167275);
+    localObject = new MessageForGrayTips.HightlightItem(0, ((String)localObject).length(), Long.parseLong(paramString2), 0, 50, localStringBuilder.toString(), "", "", "", i);
+    paramString2 = new MessageForGrayTips.HightlightItem(str2.length() - str1.length(), str2.length(), Long.parseLong(paramString2), 0, 51, "", "", "", "", i);
+    paramList.add(localObject);
+    paramList.add(paramString2);
+    paramString1.a = paramList;
+    paramString2 = new MessageForUniteGrayTip();
+    paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
+    paramString2.saveExtInfoToExtStr("grayLastUniseq", paramLong + "");
+    avpe.a(paramQQAppInterface, paramString2);
+    LpReportInfo_pf00064.allReport(40, 3, 1);
   }
 }
 

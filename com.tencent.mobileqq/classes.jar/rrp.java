@@ -1,19 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.BaseSelectView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment.1.1;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "BEAN", "HOLDER", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter$BaseSelectViewHolder;", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-public final class rrp
-  implements View.OnClickListener
+public class rrp
+  implements tra
 {
-  public rrp(BaseSelectView paramBaseSelectView) {}
+  public rrp(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public final void onClick(View paramView)
+  public void a()
   {
-    BaseSelectView.a(this.a).b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((VideoFeedsRecommendFragment.a(this.a)) && (VideoFeedsRecommendFragment.a(this.a) != null) && (VideoFeedsRecommendFragment.a(this.a).a != null) && (VideoFeedsRecommendFragment.a(this.a).a.a != null) && (VideoFeedsRecommendFragment.a(this.a).a.a.a != null) && (VideoFeedsRecommendFragment.a(this.a) != null)) {
+      if ((tpz.e(VideoFeedsRecommendFragment.a(this.a).a.a.a)) && (!VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).c)))
+      {
+        localVideoInfo = VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).c);
+        if (localVideoInfo != null)
+        {
+          i = VideoFeedsRecommendFragment.a(this.a).getAdapterPosition() - 1;
+          j = VideoFeedsRecommendFragment.a(this.a).c;
+          VideoFeedsRecommendFragment.a(this.a).a(i, j, localVideoInfo);
+          tpn.a(this.a.getActivity(), 50, true);
+        }
+      }
+    }
+    while ((VideoFeedsRecommendFragment.a(this.a) == null) || (VideoFeedsRecommendFragment.a(this.a) == null))
+    {
+      VideoInfo localVideoInfo;
+      int i;
+      int j;
+      VideoFeedsRecommendFragment.a(this.a).postDelayed(new VideoFeedsRecommendFragment.1.1(this, i + 1), 0L);
+      do
+      {
+        return;
+      } while (VideoFeedsRecommendFragment.a(this.a) == null);
+      VideoFeedsRecommendFragment.a(this.a).c();
+      return;
+    }
+    VideoFeedsRecommendFragment.a(this.a).c(VideoFeedsRecommendFragment.a(this.a).a);
   }
 }
 

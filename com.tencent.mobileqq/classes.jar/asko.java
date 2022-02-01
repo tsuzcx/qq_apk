@@ -1,12 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class asko
-  implements DialogInterface.OnClickListener
+public abstract interface asko
 {
-  asko(askk paramaskk) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(boolean paramBoolean);
 }
 
 

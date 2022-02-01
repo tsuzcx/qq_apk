@@ -16,7 +16,7 @@ public class ak
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getIntExtra("forward_type", -1) == 11) {
-      bipi.a().a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), "", String.valueOf(this.jdField_a_of_type_Long), "1000", "51", "0", false);
+      bjqh.a().a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), "", String.valueOf(this.jdField_a_of_type_Long), "1000", "51", "0", false);
     }
     if (QLog.isColorLevel()) {
       QLog.i(LiteActivity.a, 2, "qbShowShareResultDialog back");
@@ -28,7 +28,7 @@ public class ak
     }
     for (;;)
     {
-      nmj.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
+      noe.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
       this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.finish();
       if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getBooleanExtra("show_share_result_dialog_return_thirdapp", true)) {}
       try

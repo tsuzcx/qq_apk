@@ -1,25 +1,19 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
 public class alxw
-  extends antn
+  extends alxy
 {
-  public alxw(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
-  
-  public void a(Object paramObject)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (localRMVideoStateMgr.a != null) {
+      localRMVideoStateMgr.a.q();
     }
-    if (paramObject != null) {
-      this.a.stopTitleProgress();
-    }
-    switch (((Integer)paramObject).intValue())
-    {
-    default: 
-      return;
-    }
-    QQSpecialFriendSettingActivity.a(this.a);
+  }
+  
+  public void b()
+  {
+    RMVideoStateMgr.a().a(2);
   }
 }
 

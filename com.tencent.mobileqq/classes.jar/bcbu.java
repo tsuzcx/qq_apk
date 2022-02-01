@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.qzone.QZoneTitleTabManager.TabInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bcbu
-  implements Parcelable.Creator<QZoneTitleTabManager.TabInfo>
+class bcbu
+  implements View.OnClickListener
 {
-  public QZoneTitleTabManager.TabInfo a(Parcel paramParcel)
-  {
-    return new QZoneTitleTabManager.TabInfo(paramParcel);
-  }
+  bcbu(bcbs parambcbs) {}
   
-  public QZoneTitleTabManager.TabInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new QZoneTitleTabManager.TabInfo[paramInt];
+    this.a.a.b(this.a.a.b);
+    this.a.a.e.setVisibility(0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

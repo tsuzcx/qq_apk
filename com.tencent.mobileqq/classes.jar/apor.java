@@ -1,34 +1,14 @@
-import com.tencent.ark.ArkAppPreloader.PreloadAppCallback;
-import com.tencent.ark.open.ArkAppMgr;
-import com.tencent.qphone.base.util.QLog;
-
-class apor
-  implements ArkAppPreloader.PreloadAppCallback
+public class apor
 {
-  apor(apop paramapop) {}
+  public float a;
+  public boolean a;
+  public float b = 0.0F;
+  public float c = 0.0F;
   
-  public void beginAppload(String paramString, int paramInt)
+  public apor()
   {
-    if (paramInt == 1) {
-      apoj.a(paramString);
-    }
-  }
-  
-  public void onAppLoaded(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      apoj.b(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preload app appname=", paramString, ",success=", Boolean.valueOf(paramBoolean) });
-      }
-    }
-  }
-  
-  public void onReleaseAndReload(String paramString, int paramInt)
-  {
-    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload begin app = " + paramString);
-    ArkAppMgr.getInstance().getAppPathByName(paramString, "", "0.0.0.1", null, new apos(this, paramString));
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

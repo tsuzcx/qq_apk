@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aidf;
+import aimx;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import aybt;
-import bcst;
+import ayun;
+import bdll;
 
 public class NearbyChatPie$9
   implements Runnable
 {
-  public NearbyChatPie$9(aidf paramaidf) {}
+  public NearbyChatPie$9(aimx paramaimx) {}
   
   public void run()
   {
-    String[] arrayOfString = aybt.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    String[] arrayOfString = ayun.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     String str = this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-    bcst.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80055FE", "0X80055FE", 0, 0, arrayOfString[0], str, "", "");
+    bdll.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80055FE", "0X80055FE", 0, 0, arrayOfString[0], str, "", "");
     this.this$0.S = false;
   }
 }

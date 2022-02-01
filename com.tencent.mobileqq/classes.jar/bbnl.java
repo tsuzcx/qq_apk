@@ -1,133 +1,51 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import android.graphics.Bitmap.CompressFormat;
+import android.opengl.GLES20;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.ThumbnailUtil.1;
+import java.nio.Buffer;
+import java.nio.IntBuffer;
 
 public class bbnl
-  extends bbnh
 {
-  public double a;
-  public int a;
-  public CharSequence a;
-  public String a;
-  public List<bbna> a;
-  public double b;
-  public int b;
-  public CharSequence b;
-  public String b;
-  public boolean b;
-  public CharSequence c;
-  public List<String> c;
-  public boolean c;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  
-  public bbnl(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public static String a(String paramString)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    return paramString + ".thumb.png";
   }
   
-  public bbnl(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, bbmc parambbmc, bbnn parambbnn)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = paramInt;
-    switch (paramInt)
+    int[] arrayOfInt1 = new int[paramInt2 * paramInt3];
+    int[] arrayOfInt2 = new int[paramInt2 * paramInt3];
+    Object localObject1 = IntBuffer.wrap(arrayOfInt1);
+    ((IntBuffer)localObject1).position(0);
+    Object localObject2;
+    if (paramInt1 != 0)
     {
-    default: 
-      i = 1;
+      localObject2 = new int[1];
+      GLES20.glGenFramebuffers(1, (int[])localObject2, 0);
+      GLES20.glBindFramebuffer(36160, localObject2[0]);
+      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
+      GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, (Buffer)localObject1);
+      GLES20.glBindFramebuffer(36160, 0);
+      GLES20.glDeleteFramebuffers(1, (int[])localObject2, 0);
+      localObject2[0] = 0;
+      localObject2 = parambbmc.jdField_a_of_type_Bbnm;
+      if (localObject2 == null) {
+        break label169;
+      }
+      parambbmc = ((bbnm)localObject2).jdField_a_of_type_JavaLangString;
+      localObject1 = ((bbnm)localObject2).jdField_a_of_type_AndroidGraphicsBitmap$CompressFormat;
     }
-    return i;
-  }
-  
-  public void a(String paramString)
-  {
-    boolean bool2 = true;
-    int n = 0;
-    for (;;)
+    for (paramInt1 = ((bbnm)localObject2).jdField_a_of_type_Int;; paramInt1 = 100)
     {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        this.i = paramString.optString("leftImageURL");
-        this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
-        this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_JavaLangCharSequence = bbup.a(paramString.optString("headText"));
-        this.jdField_a_of_type_JavaLangString = paramString.optString("headLineIconURL");
-        this.jdField_b_of_type_JavaLangCharSequence = bbup.a(paramString.optString("descLineText"));
-        this.jdField_c_of_type_JavaLangCharSequence = bbup.a(paramString.optString("firstLineText"));
-        JSONArray localJSONArray = paramString.optJSONArray("imageList");
-        int i;
-        Object localObject;
-        if (localJSONArray != null)
-        {
-          this.jdField_a_of_type_JavaUtilList = new ArrayList(localJSONArray.length());
-          i = 0;
-          if (i < localJSONArray.length())
-          {
-            localObject = localJSONArray.optJSONObject(i);
-            localObject = new bbna(((JSONObject)localObject).optString("url"), ((JSONObject)localObject).optInt("type"));
-            this.jdField_a_of_type_JavaUtilList.add(localObject);
-            i += 1;
-            continue;
-          }
-        }
-        this.jdField_a_of_type_Double = paramString.optDouble("imageAspectRatio", 1.0D);
-        this.jdField_b_of_type_Double = paramString.optDouble("singleImageScale", 1.0D);
-        this.jdField_b_of_type_Int = paramString.optInt("imageTotalCount");
-        if (paramString.optInt("topNeedHigherMargin", 0) == 1)
-        {
-          bool1 = true;
-          this.jdField_b_of_type_Boolean = bool1;
-          if (paramString.optInt("needCornerRadius", 0) != 1) {
-            break label394;
-          }
-          bool1 = bool2;
-          this.jdField_c_of_type_Boolean = bool1;
-          localJSONArray = paramString.optJSONArray("dynamicLineImageList");
-          if (localJSONArray != null)
-          {
-            this.jdField_c_of_type_JavaUtilList = new ArrayList(localJSONArray.length());
-            i = n;
-            if (i < localJSONArray.length())
-            {
-              localObject = localJSONArray.optJSONObject(i).optString("url");
-              this.jdField_c_of_type_JavaUtilList.add(localObject);
-              i += 1;
-              continue;
-            }
-          }
-          this.jdField_b_of_type_JavaLangString = paramString.optString("dynamicLineLeftText");
-          this.j = paramString.optString("dynamicLineZanIconUrl");
-          this.k = paramString.optString("dynamicLineZanText");
-          this.l = paramString.optString("dynamicLineCommentIconUrl");
-          this.m = paramString.optString("dynamicLineCommentText");
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      boolean bool1 = false;
-      continue;
-      label394:
-      bool1 = false;
+      ThreadManager.executeOnFileThread(new ThumbnailUtil.1(paramInt3, paramInt2, arrayOfInt1, arrayOfInt2, parambbmc, (Bitmap.CompressFormat)localObject1, paramInt1, parambbnn));
+      return;
+      GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, (Buffer)localObject1);
+      break;
+      label169:
+      parambbmc = a(parambbmc.jdField_a_of_type_JavaLangString);
+      localObject1 = Bitmap.CompressFormat.PNG;
     }
-  }
-  
-  public boolean b()
-  {
-    return super.b();
   }
 }
 

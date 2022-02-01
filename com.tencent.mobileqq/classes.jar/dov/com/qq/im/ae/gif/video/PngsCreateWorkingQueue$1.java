@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.gif.video;
 
-import bntz;
-import bnuc;
+import bovl;
+import bovo;
 
 public class PngsCreateWorkingQueue$1
   implements Runnable
 {
-  public PngsCreateWorkingQueue$1(bnuc parambnuc, bntz parambntz) {}
+  public PngsCreateWorkingQueue$1(bovo parambovo, bovl parambovl) {}
   
   public void run()
   {
-    bnuc.a(this.this$0, this.a);
+    bovo.a(this.this$0, this.a);
   }
 }
 

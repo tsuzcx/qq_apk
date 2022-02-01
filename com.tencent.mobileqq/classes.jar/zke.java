@@ -1,11 +1,7 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
-
-abstract interface zke
+public class zke
 {
-  public abstract void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public int a;
+  public int b;
 }
 
 

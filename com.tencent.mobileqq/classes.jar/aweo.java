@@ -1,20 +1,18 @@
-import android.util.Log;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
-class aweo
-  implements aweq
+final class aweo
+  implements DialogInterface.OnClickListener
 {
-  aweo(awen paramawen) {}
+  aweo(Context paramContext) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = true;
-    this.a.c(paramInt);
-  }
-  
-  public void b(int paramInt)
-  {
-    Log.d("ModuleController", "onScrollStop -> top:" + paramInt);
-    this.a.b(paramInt);
+    bjfq.c();
+    FloatingScreenPermission.requestPermission(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

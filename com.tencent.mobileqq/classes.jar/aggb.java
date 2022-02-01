@@ -1,46 +1,20 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
-class aggb
+public class aggb
+  extends View.AccessibilityDelegate
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
+  public aggb(BaseBubbleBuilder paramBaseBubbleBuilder) {}
   
-  aggb(agfz paramagfz) {}
-  
-  public void a()
+  @TargetApi(16)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null)
-    {
-      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("DoodleDrawerThread", 0);
-      localHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
-    }
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if ((paramRunnable == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.getLooper().quit();
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    if (Build.VERSION.SDK_INT >= 16) {
+      paramAccessibilityNodeInfo.setVisibleToUser(false);
     }
   }
 }

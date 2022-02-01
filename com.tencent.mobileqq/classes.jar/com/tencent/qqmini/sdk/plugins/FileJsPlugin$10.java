@@ -23,7 +23,7 @@ class FileJsPlugin$10
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l, this.val$dirPath);
       return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "invalid path");
     }
-    String str = ((MiniAppFileManager)FileJsPlugin.access$5000(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(this.val$dirPath);
+    String str = ((MiniAppFileManager)FileJsPlugin.access$4800(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(this.val$dirPath);
     if (TextUtils.isEmpty(str))
     {
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l, this.val$dirPath);

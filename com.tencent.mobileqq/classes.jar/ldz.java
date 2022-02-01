@@ -1,4 +1,3 @@
-import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -6,38 +5,45 @@ import mqq.app.MobileQQ;
 
 public class ldz
 {
-  private static String jdField_a_of_type_JavaLangString = "GBatteryMonitor";
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lea(this);
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private boolean jdField_a_of_type_Boolean;
+  public static String a;
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  lea jdField_a_of_type_Lea;
+  boolean jdField_a_of_type_Boolean = false;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = "AccountReceiver";
+  }
   
   public ldz(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_Lea = new lea(paramVideoAppInterface);
   }
   
   public void a()
   {
-    IntentFilter localIntentFilter = new IntentFilter("android.intent.action.BATTERY_CHANGED");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Lea);
+      this.jdField_a_of_type_Boolean = false;
     }
   }
   
   public void b()
   {
-    try
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        this.jdField_a_of_type_Boolean = false;
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQ Account Receiver, Declare permissions");
     }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "video exit IllegalArgumentException ", localIllegalArgumentException);
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
+    localIntentFilter.addAction("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName());
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
+    localIntentFilter.addAction("tencent.video.q2v.membersChange");
+    localIntentFilter.addAction("mqq.intent.action.LOGOUT");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Lea, localIntentFilter, "com.tencent.msg.permission.pushnotify", null) != null) {
+      this.jdField_a_of_type_Boolean = true;
     }
   }
 }

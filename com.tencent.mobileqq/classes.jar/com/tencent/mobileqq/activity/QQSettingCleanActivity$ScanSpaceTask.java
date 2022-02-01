@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aeyi;
-import aeyk;
-import bcvc;
-import bgru;
+import afhn;
+import afhp;
+import bdnv;
+import bhrw;
 import com.tencent.mobileqq.widget.CircleProgressBar;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,17 +14,17 @@ public class QQSettingCleanActivity$ScanSpaceTask
   
   public void run()
   {
-    long l1 = bgru.a();
-    long l2 = bgru.a(this.this$0);
-    long l3 = bgru.b();
-    long l4 = bgru.b(this.this$0);
+    long l1 = bhrw.a();
+    long l2 = bhrw.a(this.this$0);
+    long l3 = bhrw.b();
+    long l4 = bhrw.b(this.this$0);
     this.this$0.b = (l1 + l2);
     this.this$0.e = (l3 + l4);
-    aeyk localaeyk = new aeyk(this);
-    this.this$0.c = bcvc.a().a(localaeyk, 0, 98);
-    this.this$0.d = bcvc.a().a(QQSettingCleanActivity.jdField_a_of_type_JavaUtilArrayList);
+    afhp localafhp = new afhp(this);
+    this.this$0.c = bdnv.a().a(localafhp, 0, 98);
+    this.this$0.d = bdnv.a().a(QQSettingCleanActivity.jdField_a_of_type_JavaUtilArrayList);
     this.this$0.c -= this.this$0.d;
-    localaeyk.a(100);
+    localafhp.a(100);
     QLog.d("QQCleanActivity", 1, "SpaceInfo total: " + this.this$0.b + " ava: " + this.this$0.e + " qq: " + this.this$0.c + " file: " + this.this$0.d);
     QLog.d("QQCleanActivity", 1, "SpaceInfo totalIner: " + l1 + " totalExter: " + l2 + " avaInter: " + l3 + " avaExter: " + l4);
     this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressBar.setFinish(this.this$0.c, this.this$0.d, this.this$0.b - this.this$0.c - this.this$0.d - this.this$0.e, this.this$0.e, 3.0F);

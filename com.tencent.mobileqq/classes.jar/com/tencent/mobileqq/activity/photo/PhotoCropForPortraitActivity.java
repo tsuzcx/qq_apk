@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.photo;
 
 import Override;
-import afur;
-import akff;
-import akfg;
-import akfh;
+import agej;
+import akqq;
+import akqr;
+import akqs;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -18,8 +18,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anmw;
-import bgsg;
+import anyw;
+import bhsi;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -39,17 +39,17 @@ public class PhotoCropForPortraitActivity
   private void d()
   {
     boolean bool = true;
-    Object localObject = (RelativeLayout)findViewById(2131363570);
+    Object localObject = (RelativeLayout)findViewById(2131363594);
     if (localObject == null) {
       return;
     }
-    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(2131559561, null);
+    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(2131559566, null);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(9);
     localLayoutParams.addRule(12);
-    localLayoutParams.bottomMargin = afur.a(20.0F, getResources());
+    localLayoutParams.bottomMargin = agej.a(20.0F, getResources());
     ((RelativeLayout)localObject).addView(localViewGroup, localLayoutParams);
-    int i = bgsg.ae(this, getCurrentAccountUin());
+    int i = bhsi.ae(this, getCurrentAccountUin());
     if (i == -1)
     {
       try
@@ -80,13 +80,13 @@ public class PhotoCropForPortraitActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131378154));
+      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131378311));
       if (i != 0) {}
       for (;;)
       {
         this.d = bool;
         this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.d);
-        localViewGroup.setOnClickListener(new akfh(this));
+        localViewGroup.setOnClickListener(new akqs(this));
         return;
         this.i = 3;
         break;
@@ -99,11 +99,11 @@ public class PhotoCropForPortraitActivity
   
   void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    Object localObject = (anmw)this.app.getManager(51);
+    Object localObject = (anyw)this.app.getManager(51);
     String str = this.app.getCurrentAccountUin();
-    localObject = ((anmw)localObject).a(str);
+    localObject = ((anyw)localObject).a(str);
     if ((localObject != null) && (((ExtensionInfo)localObject).isPendantValid()) && (this.e)) {
-      this.jdField_a_of_type_AndroidOsHandler = new akfg(this, (ExtensionInfo)localObject, str);
+      this.jdField_a_of_type_AndroidOsHandler = new akqr(this, (ExtensionInfo)localObject, str);
     }
     super.a(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
     if (100 == this.jdField_a_of_type_Int) {
@@ -128,9 +128,9 @@ public class PhotoCropForPortraitActivity
     {
       if (getIntent().getBooleanExtra("open_chat_from_avator", false))
       {
-        this.c = ((Button)super.findViewById(2131367290));
+        this.c = ((Button)super.findViewById(2131367344));
         this.c.setVisibility(0);
-        this.c.setOnClickListener(new akff(this));
+        this.c.setOnClickListener(new akqq(this));
       }
       return bool;
       getWindow().setFlags(16777216, 16777216);

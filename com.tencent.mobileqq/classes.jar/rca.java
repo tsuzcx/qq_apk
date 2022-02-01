@@ -1,7 +1,20 @@
-import kotlin.Metadata;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IModel;", "", "requestWatchWordUrl", "", "watchWord", "", "callback", "Lkotlin/Function5;", "Lkotlin/ParameterName;", "name", "jumpUrl", "", "type", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordModel$UserInfo;", "userInfo", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordModel$VideoInfo;", "videoInfo", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordModel$TopicInfo;", "topicInfo", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface rca {}
+public class rca
+  implements View.OnClickListener
+{
+  public rca(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

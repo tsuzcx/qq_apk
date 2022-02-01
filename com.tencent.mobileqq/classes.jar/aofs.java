@@ -1,44 +1,120 @@
-import android.annotation.SuppressLint;
-import android.util.Pair;
-import java.util.HashMap;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.cmd0x438.oidb_0x438.ReqBody;
+import tencent.im.oidb.cmd0x438.oidb_0x438.ReqInfo;
+import tencent.im.oidb.cmd0x438.oidb_0x438.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class aofs
+  extends anud
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static Map<Integer, Pair<String, Integer>> jdField_a_of_type_JavaUtilMap;
-  
-  public static int a(int paramInt)
+  protected aofs(QQAppInterface paramQQAppInterface)
   {
-    return ((Integer)((Pair)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).second).intValue();
+    super(paramQQAppInterface);
   }
   
-  public static String a(int paramInt)
+  private static oidb_sso.OIDBSSOPkg a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    return (String)((Pair)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).first;
-  }
-  
-  public static Map<Integer, Pair<String, Integer>> a()
-  {
-    if (jdField_a_of_type_JavaUtilMap == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000)) {
+      paramToServiceMsg = null;
+    }
+    for (;;)
     {
-      if (jdField_a_of_type_JavaUtilMap == null) {
-        a();
+      return paramToServiceMsg;
+      paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
+      try
+      {
+        paramFromServiceMsg.mergeFrom((byte[])paramObject);
+        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.uint32_result.get() == 0))
+        {
+          paramToServiceMsg = paramFromServiceMsg;
+          if (paramFromServiceMsg.bytes_bodybuffer.get() != null) {
+            continue;
+          }
+        }
+        return null;
       }
-      return jdField_a_of_type_JavaUtilMap;
+      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QWalletHandler", 2, "parseSSOPkg: oidb_sso parseFrom byte InvalidProtocolBufferMicroException ");
+          }
+        }
+      }
     }
   }
   
-  @SuppressLint({"UseSparseArrays"})
-  private static void a()
+  public void a(int paramInt, List<oidb_0x438.ReqInfo> paramList)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(193), Pair.create("video_processor", Integer.valueOf(9002)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(734), Pair.create("video_processor", Integer.valueOf(9003)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(524), Pair.create("discuss_update_processor", Integer.valueOf(9010)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(736), Pair.create("info_update_processor", Integer.valueOf(9011)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(526), Pair.create("slave_master_processor", Integer.valueOf(9012)));
+    Object localObject = new oidb_0x438.ReqBody();
+    ((oidb_0x438.ReqBody)localObject).stReqInfo.set(paramList);
+    paramList = new oidb_sso.OIDBSSOPkg();
+    paramList.uint32_command.set(1080);
+    paramList.uint32_result.set(0);
+    paramList.uint32_service_type.set(paramInt);
+    paramList.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x438.ReqBody)localObject).toByteArray()));
+    localObject = createToServiceMsg("OidbSvc.0x438");
+    ((ToServiceMsg)localObject).putWupBuffer(paramList.toByteArray());
+    sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  protected Class<? extends anui> observerClass()
+  {
+    return aoft.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("QWalletHandler", 4, "onReceive");
+    }
+    String str = paramToServiceMsg.getServiceCmd();
+    if (QLog.isDevelopLevel())
+    {
+      QLog.i("QWalletHandler", 4, "cmd=" + str);
+      QLog.i("QWalletHandler", 4, "data length =" + ((byte[])paramObject).length);
+    }
+    if (TextUtils.isEmpty(str)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (str.compareTo("OidbSvc.0x438") != 0);
+      paramToServiceMsg = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      if (paramToServiceMsg != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("QWalletHandler", 2, "onReceive: ssoPkg parse failed");
+    return;
+    paramFromServiceMsg = new oidb_0x438.RspBody();
+    try
+    {
+      paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+      paramFromServiceMsg = paramFromServiceMsg.PasswdRedBag.get();
+      if (paramFromServiceMsg != null)
+      {
+        notifyUI(paramToServiceMsg.uint32_service_type.get(), true, paramFromServiceMsg);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+    {
+      paramFromServiceMsg.printStackTrace();
+      notifyUI(paramToServiceMsg.uint32_service_type.get(), false, null);
+    }
   }
 }
 

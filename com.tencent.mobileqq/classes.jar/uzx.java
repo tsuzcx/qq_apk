@@ -1,43 +1,63 @@
-import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.fragments.message.item.QCircleMessageReplyItemView;
 import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public abstract class uzx
-  extends zyu
-  implements zxl<QCircleReportBean>
+public class uzx
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+  implements aabg<QCircleReportBean>
 {
-  protected QCircleReportBean a;
-  
-  public uzx(Bundle paramBundle)
-  {
-    super(paramBundle);
-  }
+  private QCircleReportBean jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean;
+  private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+  private List<vba> jdField_a_of_type_JavaUtilList;
+  private vom jdField_a_of_type_Vom;
   
   public QCircleReportBean a()
   {
-    if (this.a == null) {
-      this.a = new QCircleReportBean();
-    }
-    return QCircleReportBean.getReportBean(a(), this.a.setModuleIdStr(b()));
+    return QCircleReportBean.getReportBean("QCircleMessageReplyAdapter", this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
   }
-  
-  protected abstract String a();
   
   public void a(QCircleReportBean paramQCircleReportBean)
   {
-    this.a = QCircleReportBean.setReportBean(a(), paramQCircleReportBean);
+    this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean = QCircleReportBean.setReportBean("QCircleMessageReplyAdapter", paramQCircleReportBean);
   }
   
-  protected int b()
+  public void a(List<vba> paramList)
   {
-    return QCircleReportBean.getPageId(a(), this.a);
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  protected String b()
+  public void a(vom paramvom)
   {
-    if (this.a != null) {
-      return this.a.getModuleIdStr();
+    this.jdField_a_of_type_Vom = paramvom;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    return null;
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      ((uzy)paramViewHolder).a(this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = new QCircleMessageReplyItemView(paramViewGroup.getContext());
+    paramViewGroup.setReplyItemListener(this.jdField_a_of_type_Vom);
+    paramViewGroup.setReportBean(a());
+    return new uzy(paramViewGroup);
   }
 }
 

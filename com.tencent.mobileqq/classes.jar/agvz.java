@@ -1,15 +1,33 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.QWalletAIOLifeCycleHelper.2.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-class agvz
-  implements atwb
+public class agvz
+  implements View.OnClickListener
 {
-  agvz(agup paramagup) {}
+  agvz(agvx paramagvx) {}
   
   public void onClick(View paramView)
   {
-    paramView = atgz.a();
-    atvo.c(this.a.a, paramView);
-    atvm.a("0X8007FA2");
+    try
+    {
+      bdll.b(agvx.a(this.a), "P_CliOper", "Vip_pay_mywallet", "", "500", "idiom.tips.click", 0, 0, "", "", "", "");
+      agvx.a(this.a).a().postDelayed(new QWalletAIOLifeCycleHelper.2.1(this), 200L);
+      this.a.a();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("QWalletAIOLifeCycleHelper", 1, "onclick  IdiomRedBagTips throw an exception: " + localThrowable);
+      }
+    }
   }
 }
 

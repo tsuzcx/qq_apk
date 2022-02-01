@@ -1,12 +1,19 @@
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-public abstract interface altf
+public class altf
+  implements bliz
 {
-  public abstract void a(ResultRecord paramResultRecord, boolean paramBoolean);
+  public altf(EditLocalVideoActivity paramEditLocalVideoActivity, Bundle paramBundle) {}
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b(String paramString);
+  public void OnClick(View paramView, int paramInt)
+  {
+    paramView = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + anzj.a(2131702559);
+    bmwa.a().c(paramView);
+    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).dismiss();
+    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, this.jdField_a_of_type_AndroidOsBundle);
+  }
 }
 
 

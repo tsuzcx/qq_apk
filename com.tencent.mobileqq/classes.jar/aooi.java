@@ -1,12 +1,8 @@
-import com.tencent.ark.ArkViewModel;
+import android.graphics.Bitmap;
 
-public abstract interface aooi
+abstract interface aooi
 {
-  public abstract void a();
-  
-  public abstract void a(String paramString, int paramInt, boolean paramBoolean, ArkViewModel paramArkViewModel);
-  
-  public abstract void b();
+  public abstract void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap);
 }
 
 

@@ -1,80 +1,30 @@
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
 import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Iterator;
 
 public class zhn
-  extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<zhp> jdField_a_of_type_JavaUtilList = new ArrayList();
-  @Nullable
-  private zhp jdField_a_of_type_Zhp;
-  
-  public zhn(Context paramContext)
+  public static zhr a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  @Nullable
-  public zhp a()
-  {
-    return this.jdField_a_of_type_Zhp;
-  }
-  
-  public void a(List<zhp> paramList)
-  {
-    if (paramList == null)
+    paramContext = zhr.a(paramContext);
+    if (paramContext != null)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext())
+      {
+        zhr localzhr = (zhr)paramContext.next();
+        if (TextUtils.equals(paramString, localzhr.a)) {
+          return localzhr;
+        }
+      }
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    return null;
   }
   
-  public void a(@Nullable zhp paramzhp)
+  public static boolean a(Context paramContext)
   {
-    this.jdField_a_of_type_Zhp = paramzhp;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561822, null);
-      localObject = new zho(paramView);
-      paramView.setTag(localObject);
-    }
-    for (;;)
-    {
-      ((zho)localObject).a((zhp)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_Zhp);
-      localObject = ((zho)localObject).a;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
-      localObject = (zho)paramView.getTag();
-    }
+    return !TextUtils.isEmpty(bhjc.a(paramContext, "qqstory_savedMusicList"));
   }
 }
 

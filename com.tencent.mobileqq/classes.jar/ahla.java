@@ -1,23 +1,23 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.AppGuideTipsConfig;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
+import com.tencent.mobileqq.data.MessageForLightVideo;
 
-class ahla
-  implements View.OnClickListener
+public class ahla
+  implements bliz
 {
-  ahla(ahkz paramahkz, AppGuideTipsConfig paramAppGuideTipsConfig) {}
+  public ahla(LightVideoItemBuilder paramLightVideoItemBuilder, MessageForLightVideo paramMessageForLightVideo, ahld paramahld, blir paramblir) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Ahkz.a, QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.tipsUrl);
-    this.jdField_a_of_type_Ahkz.a.startActivity(localIntent);
-    bcst.b(null, "dc00898", "", "", this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.opkey, this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.opkey, 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      LightVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo, this.jdField_a_of_type_Ahld);
+    }
   }
 }
 

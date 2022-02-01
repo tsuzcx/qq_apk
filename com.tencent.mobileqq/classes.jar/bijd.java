@@ -1,17 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Path.FillType;
+import android.graphics.Rect;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
 public class bijd
-  implements DialogInterface.OnClickListener
+  implements DownloadParams.DecodeHandler
 {
-  public bijd(AuthorityActivity paramAuthorityActivity, int paramInt, JSONObject paramJSONObject) {}
+  private int jdField_a_of_type_Int;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    Bitmap localBitmap;
+    Path localPath;
+    Canvas localCanvas;
+    do
+    {
+      return paramDownloadParams;
+      paramBitmap.setDensity((int)bhtq.c());
+      localBitmap = bhjg.a(paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, Bitmap.Config.ARGB_8888);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int * 2);
+      localPath = new Path();
+      localCanvas = new Canvas(localBitmap);
+      localCanvas.save();
+      localPath.moveTo(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+      localPath.lineTo(localBitmap.getWidth() - this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+      localPath.lineTo(localBitmap.getWidth() - this.jdField_a_of_type_Int, localBitmap.getHeight() - this.jdField_a_of_type_Int);
+      localPath.lineTo(this.jdField_a_of_type_Int, localBitmap.getHeight() - this.jdField_a_of_type_Int);
+      localPath.close();
+      localPath.setFillType(Path.FillType.EVEN_ODD);
+      localCanvas.clipPath(localPath);
+      localCanvas.drawBitmap(paramBitmap, new Rect(0, (paramBitmap.getHeight() - paramBitmap.getWidth()) / 2, paramBitmap.getWidth(), (paramBitmap.getWidth() + paramBitmap.getHeight()) / 2), new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight()), this.jdField_a_of_type_AndroidGraphicsPaint);
+      localCanvas.restore();
+      paramDownloadParams = localBitmap;
+    } while (this.jdField_a_of_type_Boolean);
+    localCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    return localBitmap;
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import anni;
-import atut;
-import atvg;
-import atxz;
+import anzj;
+import aumo;
+import aunb;
+import aupu;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,20 +27,20 @@ class QfileLocalFileOtherTabView$1
     {
       localObject1 = this.this$0.d.iterator();
       while (((Iterator)localObject1).hasNext()) {
-        atvg.a(bool, ((atxz)((Iterator)localObject1).next()).a(), "", ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|.swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|.mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|.apk|.jpg|.bmp|.jpeg|.gif|.png|.ico|", (HashMap)localObject2, null);
+        aunb.a(bool, ((aupu)((Iterator)localObject1).next()).a(), "", ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|.swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|.mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|.apk|.jpg|.bmp|.jpeg|.gif|.png|.ico|", (HashMap)localObject2, null);
       }
     }
     if (this.this$0.f) {}
-    for (Object localObject1 = atut.a().a();; localObject1 = null)
+    for (Object localObject1 = aumo.a().a();; localObject1 = null)
     {
       if (localObject1 != null) {
-        atvg.a(bool, (String)localObject1, "", ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|.swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|.mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|.apk|.jpg|.bmp|.jpeg|.gif|.png|.ico|", (HashMap)localObject2, null);
+        aunb.a(bool, (String)localObject1, "", ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|.swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|.mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|.apk|.jpg|.bmp|.jpeg|.gif|.png|.ico|", (HashMap)localObject2, null);
       }
-      atvg.a((Map)localObject2);
+      aunb.a((Map)localObject2);
       localObject1 = new LinkedHashMap();
-      ((LinkedHashMap)localObject1).put(anni.a(2131708452), new ArrayList());
-      ((LinkedHashMap)localObject1).put(anni.a(2131708457), new ArrayList());
-      ((LinkedHashMap)localObject1).put(anni.a(2131708444), new ArrayList());
+      ((LinkedHashMap)localObject1).put(anzj.a(2131708561), new ArrayList());
+      ((LinkedHashMap)localObject1).put(anzj.a(2131708566), new ArrayList());
+      ((LinkedHashMap)localObject1).put(anzj.a(2131708553), new ArrayList());
       Iterator localIterator = ((HashMap)localObject2).keySet().iterator();
       while (localIterator.hasNext())
       {

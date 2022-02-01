@@ -1,23 +1,23 @@
 package com.tencent.gamecenter.common.util;
 
-import aceh;
-import acex;
-import acez;
+import acik;
+import aciy;
+import acja;
 
 public class ScreenshotManager$2
   implements Runnable
 {
-  public ScreenshotManager$2(acex paramacex, String paramString, acez paramacez) {}
+  public ScreenshotManager$2(aciy paramaciy, String paramString, acja paramacja) {}
   
   public void run()
   {
-    if (this.this$0.a(acex.a(this.this$0), this.jdField_a_of_type_JavaLangString))
+    if (this.this$0.a(aciy.a(this.this$0), this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Acez.a(0, "succ");
-      aceh.a("gamecenter_shot_key", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Acja.a(0, "succ");
+      acik.a("gamecenter_shot_key", this.jdField_a_of_type_JavaLangString);
       return;
     }
-    this.jdField_a_of_type_Acez.a(-200, "save file fail");
+    this.jdField_a_of_type_Acja.a(-200, "save file fail");
   }
 }
 

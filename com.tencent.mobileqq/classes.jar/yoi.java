@@ -1,7 +1,103 @@
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.lang.ref.WeakReference;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class yoi
-  extends weu
+  extends zsk
+  implements URLDrawable.URLDrawableListener
 {
-  public String a;
+  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private yoh jdField_a_of_type_Yoh;
+  
+  public yoi(ImageView paramImageView, yoh paramyoh)
+  {
+    super(paramImageView);
+    this.jdField_a_of_type_Yoh = paramyoh;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_Yoh.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    yoq.c("Q.qqstory.newImageLoader", new Object[] { "runOnBackGround url= ", this.jdField_a_of_type_Yoh.jdField_a_of_type_JavaLangString });
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    try
+    {
+      new URL(this.jdField_a_of_type_Yoh.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_Yoh.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
+      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
+      if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1)
+      {
+        yoq.c("Q.qqstory.newImageLoader", new Object[] { "drawable have urlDrawable cache" });
+        onLoadSuccessed(this.jdField_a_of_type_ComTencentImageURLDrawable);
+        return;
+      }
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      localMalformedURLException.printStackTrace();
+      yoq.a("Q.qqstory.newImageLoader", new Object[] { localMalformedURLException.getMessage() });
+      a(this.jdField_a_of_type_Yoh.jdField_a_of_type_AndroidGraphicsDrawableDrawable, "url is error:" + localMalformedURLException);
+      return;
+    }
+    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 2) || (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 3))
+    {
+      yoq.c("Q.qqstory.newImageLoader", new Object[] { "drawable restartDownload" });
+      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+      return;
+    }
+    yoq.c("Q.qqstory.newImageLoader", new Object[] { "drawable startDownload" });
+    this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload(true);
+  }
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  {
+    yoq.c("Q.qqstory.newImageLoader", new Object[] { "onLoadCanceled url= ", paramURLDrawable.getURL() });
+    super.a(paramURLDrawable, "task have been cancel!");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    yoq.c("Q.qqstory.newImageLoader", new Object[] { "onLoadFialed url= ", paramURLDrawable.getURL() });
+    super.a(paramURLDrawable, paramThrowable.getMessage());
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    yoq.c("Q.qqstory.newImageLoader", new Object[] { "onLoadSuccessed url= ", paramURLDrawable.getURL() });
+    if (this.jdField_a_of_type_Boolean)
+    {
+      super.a(paramURLDrawable);
+      return;
+    }
+    if (this.jdField_a_of_type_Yoh.jdField_a_of_type_Yod != null)
+    {
+      Bitmap localBitmap = yor.a(paramURLDrawable.getCurrDrawable(), this.jdField_a_of_type_Yoh.jdField_a_of_type_Int, this.jdField_a_of_type_Yoh.b, zps.a, this.jdField_a_of_type_Yoh.jdField_a_of_type_Yod);
+      if ((localBitmap == null) || (localBitmap.isRecycled()))
+      {
+        super.a(paramURLDrawable, "drawable transform failed!");
+        return;
+      }
+      paramURLDrawable = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramURLDrawable != null) {
+        paramURLDrawable.setTag(2131369566, localBitmap);
+      }
+      super.a(new BitmapDrawable(localBitmap));
+      return;
+    }
+    super.a(paramURLDrawable);
+  }
 }
 
 

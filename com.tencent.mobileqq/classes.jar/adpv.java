@@ -1,14 +1,29 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.Emoticon;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-class adpv
-  implements awnc<Emoticon>
+public class adpv
+  implements DialogInterface.OnClickListener
 {
-  adpv(adpu paramadpu, int paramInt1, int paramInt2, String paramString) {}
+  public adpv(TestAppFragment paramTestAppFragment, EditText paramEditText1, EditText paramEditText2) {}
   
-  public void a(Emoticon paramEmoticon)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ahch.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Adpu.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adpu.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adpu.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    String str = this.b.getText().toString();
+    if ((TextUtils.isEmpty(paramDialogInterface)) || (TextUtils.isEmpty(str)))
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getActivity(), anzj.a(2131713652), 1).a();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.c = paramDialogInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Int = Integer.parseInt(str);
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Adnb = adng.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Int, paramDialogInterface);
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getActivity(), "appid切换为:" + paramDialogInterface, 1).a();
   }
 }
 

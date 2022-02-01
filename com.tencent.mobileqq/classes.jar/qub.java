@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.drawable.Drawable;
 
 class qub
-  implements View.OnClickListener
+  extends qtl
 {
-  qub(qua paramqua) {}
+  qub(qtw paramqtw) {}
   
-  public void onClick(View paramView)
+  public Drawable a()
   {
-    spb localspb = this.a.jdField_a_of_type_Snh.a();
-    if (localspb != null) {
-      localspb.a(null, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return a("readinjoy_diandian_icon_background");
   }
 }
 

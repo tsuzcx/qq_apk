@@ -1,9 +1,17 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
 
-public abstract interface bgwb
+public class bgwb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract URLDrawable a(Drawable paramDrawable);
+  public bgwb(RedDotAnimateView paramRedDotAnimateView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.b = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.a / 2.0F);
+    this.a.invalidate();
+  }
 }
 
 

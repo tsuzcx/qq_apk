@@ -1,16 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
-class axos
-  implements View.OnClickListener
+public class axos
+  implements anui
 {
-  axos(axop paramaxop) {}
+  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap) {}
   
-  public void onClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.h(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.obsever", 2, " onUpdate() type =" + paramInt + " isSuccess = " + paramBoolean);
+    }
+    switch (paramInt)
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberRecommend.obsever", 2, " default type =" + paramInt);
+      }
+      break;
+    }
+    do
+    {
+      return;
+    } while (!(paramObject instanceof Object[]));
+    paramObject = (Object[])paramObject;
+    Map localMap = (Map)paramObject[0];
+    a(paramBoolean, (String)paramObject[1], ((Integer)paramObject[2]).intValue(), localMap);
   }
 }
 

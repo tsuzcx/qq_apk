@@ -2,9 +2,12 @@ package com.tencent.biz.richframework.network.request;
 
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import aoor;
-import blrt;
-import blru;
+import aaap;
+import aaar;
+import apch;
+import bmsv;
+import bmsw;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
 import com.tencent.biz.richframework.widget.BaseVideoView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
@@ -16,6 +19,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.api.ISPBandwidthPredictor;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,8 +28,6 @@ import java.util.TimeZone;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import org.jetbrains.annotations.NotNull;
-import zwu;
-import zww;
 
 public abstract class VSBaseRequest
   implements Serializable
@@ -54,7 +56,7 @@ public abstract class VSBaseRequest
   
   private String b()
   {
-    Object localObject2 = blrt.a().c();
+    Object localObject2 = bmsv.a().c();
     Object localObject1 = localObject2;
     StringBuilder localStringBuilder;
     if (localObject2 != null)
@@ -65,7 +67,7 @@ public abstract class VSBaseRequest
         localObject2 = new StringBuilder((String)localObject2);
         ((StringBuilder)localObject2).append('&');
         ((StringBuilder)localObject2).append("timezone=").append(TimeZone.getDefault().getID());
-        localObject1 = aoor.a("qqcircle");
+        localObject1 = apch.a("qqcircle");
         if ((localObject1 != null) && (((SosoInterface.SosoLbsInfo)localObject1).a != null))
         {
           ((StringBuilder)localObject2).append('&');
@@ -76,14 +78,15 @@ public abstract class VSBaseRequest
         ((StringBuilder)localObject2).append('&');
         localStringBuilder = ((StringBuilder)localObject2).append("vh265=");
         if (!BaseVideoView.a.equals("")) {
-          break label168;
+          break label186;
         }
       }
     }
-    label168:
+    label186:
     for (localObject1 = Integer.valueOf(0);; localObject1 = BaseVideoView.a)
     {
       localStringBuilder.append(localObject1);
+      ((StringBuilder)localObject2).append("videospeed=").append(QCircleBaseFragment.a.getCurrentPrediction());
       localObject1 = ((StringBuilder)localObject2).toString();
       return localObject1;
     }
@@ -99,7 +102,7 @@ public abstract class VSBaseRequest
     if ((paramVSBaseRequest == null) || (paramVSBaseRequest.getRequestByteData() == null)) {
       return false;
     }
-    return zww.a().a(paramVSBaseRequest.getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + blru.a() + new String(paramVSBaseRequest.getRequestByteKey()));
+    return aaar.a().a(paramVSBaseRequest.getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + bmsw.a() + new String(paramVSBaseRequest.getRequestByteKey()));
   }
   
   public static void reMoveCache(VSBaseRequest paramVSBaseRequest)
@@ -107,7 +110,7 @@ public abstract class VSBaseRequest
     if ((paramVSBaseRequest == null) || (paramVSBaseRequest.getRequestByteData() == null)) {
       return;
     }
-    zww.a().a(paramVSBaseRequest.getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + blru.a() + new String(paramVSBaseRequest.getRequestByteKey()));
+    aaar.a().a(paramVSBaseRequest.getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + bmsw.a() + new String(paramVSBaseRequest.getRequestByteKey()));
   }
   
   public abstract MessageMicro decode(byte[] paramArrayOfByte);
@@ -116,7 +119,7 @@ public abstract class VSBaseRequest
   {
     byte[] arrayOfByte = getRequestByteData();
     if (isEnableCache()) {
-      this.mRequestKey = (getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + blru.a() + new String(getRequestByteKey()));
+      this.mRequestKey = (getCmdName() + BaseApplicationImpl.sApplication.getRuntime().getAccount() + bmsw.a() + new String(getRequestByteKey()));
     }
     return getRequestWrapper(ByteStringMicro.copyFrom(arrayOfByte)).toByteArray();
   }
@@ -158,7 +161,7 @@ public abstract class VSBaseRequest
   {
     PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
     localStQWebReq.Seq.set(getCurrentSeq());
-    localStQWebReq.qua.set(blru.a());
+    localStQWebReq.qua.set(bmsw.a());
     localStQWebReq.deviceInfo.set(b());
     localStQWebReq.busiBuff.set(paramByteStringMicro);
     localStQWebReq.traceid.set(this.mTraceId);

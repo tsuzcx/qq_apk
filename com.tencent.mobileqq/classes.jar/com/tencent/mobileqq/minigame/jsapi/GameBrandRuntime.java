@@ -11,11 +11,13 @@ import com.tencent.mobileqq.mini.apkg.NetworkTimeoutInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime.ShareScreenshotCallback;
 import com.tencent.mobileqq.mini.sdk.ShareChatModel;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
-import com.tencent.mobileqq.triton.sdk.callback.ScreenShotCallback;
+import com.tencent.mobileqq.triton.TritonEngine;
+import com.tencent.mobileqq.triton.engine.EngineState;
+import com.tencent.mobileqq.triton.engine.ScreenShotCallback;
 
 public class GameBrandRuntime
   extends BaseAppBrandRuntime
@@ -27,6 +29,7 @@ public class GameBrandRuntime
   public int shareCallbackId = -1;
   public ShareChatModel shareChatModel;
   public String shareEvent;
+  public JsRuntime shareJsRuntime;
   public String shareJson;
   public String shareOpenid;
   public boolean showRestart = true;
@@ -56,8 +59,13 @@ public class GameBrandRuntime
   public void getScreenShot(ScreenShotCallback paramScreenShotCallback)
   {
     GameRuntimeLoader localGameRuntimeLoader = GameRuntimeLoaderManager.g().getBindRuntimeLoader(this.activity);
-    if (localGameRuntimeLoader != null) {
-      localGameRuntimeLoader.getGameEngine().getScreenShot(paramScreenShotCallback);
+    if (localGameRuntimeLoader != null) {}
+    for (TritonEngine localTritonEngine = localGameRuntimeLoader.getGameEngine();; localTritonEngine = null)
+    {
+      if ((localTritonEngine != null) && (localTritonEngine.getState() != EngineState.DESTROYED)) {
+        localGameRuntimeLoader.getGameEngine().takeScreenShot(paramScreenShotCallback);
+      }
+      return;
     }
   }
   

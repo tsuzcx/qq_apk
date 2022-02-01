@@ -1,28 +1,27 @@
+import android.text.Editable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StUser;
-import feedcloud.FeedCloudRead.StGetMainPageRsp;
+import android.text.TextWatcher;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-final class uxd
-  implements zxa<FeedCloudRead.StGetMainPageRsp>
+public class uxd
+  implements TextWatcher
 {
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public uxd(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((paramBoolean) && (paramLong == 0L))
-    {
-      if (paramStGetMainPageRsp == null) {
-        break label54;
-      }
-      uxc.a((FeedCloudMeta.StUser)paramStGetMainPageRsp.user.get());
-      if (TextUtils.isEmpty(uxc.c().nick.get())) {
-        QLog.w("QCircleGlobalInfo", 1, "qCircle get nick empty");
-      }
-    }
-    return;
-    label54:
-    QLog.w("QCircleGlobalInfo", 1, "getPuinUser empty");
+    PublicAccountImageCollectionCommentActivity.a(this.a, paramEditable.toString());
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((!TextUtils.isEmpty(paramCharSequence)) && (paramCharSequence.length() - paramInt2 + paramInt3 > 100)) {
+      QQToast.a(this.a, 0, this.a.getString(2131694648), 0).b(this.a.getTitleBarHeight());
+    }
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

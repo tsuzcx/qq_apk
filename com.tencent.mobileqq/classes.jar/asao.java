@@ -1,63 +1,63 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class asao
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends aied
 {
-  public asao(EmotionSearchPanel paramEmotionSearchPanel) {}
+  public asao(HotChatFlashPicActivity paramHotChatFlashPicActivity) {}
   
-  public void onGlobalLayout()
+  public void a() {}
+  
+  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
   {
-    if (this.a.jdField_b_of_type_Boolean) {}
-    Rect localRect;
-    int j;
-    boolean bool;
-    do
-    {
-      return;
-      localRect = new Rect();
-      this.a.jdField_b_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-      int i = localRect.bottom - localRect.top;
-      j = this.a.jdField_b_of_type_AndroidViewView.getHeight();
-      if (i / j >= 0.8D) {
-        break;
-      }
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionSearchPanel", 2, "visible" + bool + " isVisiableForLast=" + this.a.jdField_a_of_type_Boolean + " displayHight=" + i + " hight=" + j);
-      }
-    } while (bool == this.a.jdField_a_of_type_Boolean);
-    if (bool)
-    {
-      EmotionSearchPanel.jdField_a_of_type_Int = j - localRect.bottom;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionSearchPanel", 2, "keyboardHeight=" + EmotionSearchPanel.jdField_a_of_type_Int);
-      }
-      EmotionSearchPanel.c(this.a, EmotionSearchPanel.jdField_a_of_type_Int);
-      this.a.a(2);
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(0.71F);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.hotchat", 4, "notifyImageProgress progress:" + paramInt3);
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = bool;
-      return;
-      bool = false;
-      break;
-      if (this.a.c == 2) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.t(12);
-      }
-      this.a.b();
-      if (!bgsp.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString())) {
-        arze.a("0X800AE25", 0);
-      }
+    if ((HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Long == paramLong1) && (HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Int == paramInt1)) {
+      HotChatFlashPicActivity.a(this.a, paramInt3 / 100);
     }
   }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.hotchat", 4, "notifyImageResult type:" + paramInt2 + ",resultStr:" + paramString + ",result:" + paramInt3 + ",isPart:" + paramBoolean);
+    }
+    if ((HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Long == paramLong) && (HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Int == paramInt1) && (paramInt2 == 2))
+    {
+      HotChatFlashPicActivity.a(this.a, false);
+      if (paramInt3 != 1) {
+        break label228;
+      }
+      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_JavaLangString = paramString;
+      HotChatFlashPicActivity.a(this.a).d = paramBoolean;
+      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_Boolean = false;
+      HotChatFlashPicActivity.a(this.a, HotChatFlashPicActivity.a(this.a));
+      if ((HotChatFlashPicActivity.b(this.a) == null) || (HotChatFlashPicActivity.b(this.a).equals("I:E"))) {
+        break label242;
+      }
+      bhln.b(HotChatFlashPicActivity.b(this.a), HotChatFlashPicActivity.c(this.a));
+      HotChatFlashPicActivity.b(this.a, true);
+      HotChatFlashPicActivity.a(this.a, HotChatFlashPicActivity.b(this.a));
+    }
+    label228:
+    label242:
+    while (HotChatFlashPicActivity.b(this.a) == null)
+    {
+      return;
+      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_Boolean = true;
+      break;
+    }
+    HotChatFlashPicActivity.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3, Bundle paramBundle) {}
+  
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
 }
 
 

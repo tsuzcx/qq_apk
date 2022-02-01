@@ -1,31 +1,38 @@
-import android.content.Context;
-import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.data.Friends;
 
-public final class afyn
-  implements atve
+public class afyn
+  extends anyu
 {
-  public afyn(ArrayList paramArrayList, Context paramContext, int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, int paramInt2, String paramString2) {}
+  public afyn(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void a()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (Uri)localIterator.next();
-      localObject = ForwardFileBaseOption.a(this.jdField_a_of_type_AndroidContentContext, (Uri)localObject);
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.jdField_a_of_type_JavaLangString, 0L, this.jdField_b_of_type_Int);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, 0L, this.jdField_b_of_type_Int);
-      }
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a.a(paramString) != null)) {
+      this.a.a.notifyDataSetChanged();
     }
   }
   
-  public void b() {}
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      paramString = this.a.a.a(paramString);
+      if (paramString != null) {
+        break label28;
+      }
+    }
+    label28:
+    Friends localFriends;
+    do
+    {
+      return;
+      localFriends = ((anyw)this.a.app.getManager(51)).e(paramString.a);
+    } while (localFriends == null);
+    this.a.a(paramString, localFriends);
+  }
 }
 
 

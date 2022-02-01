@@ -1,249 +1,186 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.IntimateInfo;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.jetbrains.annotations.NotNull;
+import tencent.im.oidb.location.qq_lbs_share.C2CRelationInfo;
+import tencent.im.oidb.location.qq_lbs_share.ResultInfo;
+import tencent.im.oidb.location.qq_lbs_share.RoomKey;
 
 public class awua
 {
-  public QQAppInterface a;
-  private String jdField_a_of_type_JavaLangString;
-  private List<awtx> jdField_a_of_type_JavaUtilList;
-  private Map<String, awtw> jdField_a_of_type_JavaUtilMap;
-  private Map<String, String> b;
-  
-  public int a()
+  @NotNull
+  public static qq_lbs_share.RoomKey a(QQAppInterface paramQQAppInterface, int paramInt, long paramLong)
   {
-    try
+    qq_lbs_share.RoomKey localRoomKey = new qq_lbs_share.RoomKey();
+    if (paramInt == 0)
     {
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        return 0;
-      }
-      int i = this.jdField_a_of_type_JavaUtilList.size();
-      return i;
+      localRoomKey.aio_type.set(2);
+      localRoomKey.id1.set(Math.min(paramLong, paramQQAppInterface.getLongAccountUin()));
+      localRoomKey.id2.set(Math.max(paramLong, paramQQAppInterface.getLongAccountUin()));
     }
-    finally {}
+    for (;;)
+    {
+      localRoomKey.setHasFlag(true);
+      return localRoomKey;
+      if (paramInt == 1)
+      {
+        localRoomKey.aio_type.set(1);
+        localRoomKey.id1.set(paramLong);
+        localRoomKey.id2.set(0L);
+      }
+    }
   }
   
-  public awtw a(int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    try
+    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.sendEmptyMessage(1009);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, boolean paramBoolean)
+  {
+    if (paramInt == 0)
     {
-      if ((this.jdField_a_of_type_JavaUtilMap == null) || (paramInt < 0) || (this.jdField_a_of_type_JavaUtilList == null) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-        return null;
-      }
-      awtx localawtx = (awtx)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if (localawtx != null)
+      paramQQAppInterface = (anyw)paramQQAppInterface.getManager(51);
+      paramString = paramQQAppInterface.a(paramString);
+      if (paramString != null)
       {
-        awtw localawtw = (awtw)this.jdField_a_of_type_JavaUtilMap.get(localawtx.a());
-        if ((localawtw != null) && (TextUtils.isEmpty(localawtw.b()))) {
-          localawtw.a((String)this.b.get(localawtx.a()));
+        if (!paramBoolean) {
+          break label77;
         }
-        return localawtw;
+        paramInt = 1;
+        paramString.isSharingLocation = paramInt;
+        paramQQAppInterface.a(paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d("LocationProtoUtil", 2, new Object[] { "updateShareLocationProfileFlag: invoked. saved share state. ", " ei.isSharingLocation: ", Integer.valueOf(paramString.isSharingLocation) });
+        }
       }
     }
-    finally {}
-    return null;
+    label77:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramInt = 0;
+          break;
+        } while (paramInt != 1);
+        paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
+        paramString = paramQQAppInterface.c(paramString);
+      } while (paramString == null);
+      paramString.setIsSharingLocation(paramBoolean);
+      paramQQAppInterface.b(paramString);
+    } while (!QLog.isColorLevel());
+    QLog.d("LocationProtoUtil", 2, "updateShareLocationProfileFlag: invoked. saved TroopInfo & lastShareLbsMsgUniseq");
   }
   
-  public awtx a(int paramInt)
+  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
+    if (paramInt == 0) {
+      return a(paramQQAppInterface, paramString);
+    }
+    if (paramInt == 1) {
+      return b(paramQQAppInterface, paramString);
+    }
+    return false;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, PBBytesField paramPBBytesField)
+  {
+    boolean bool = true;
+    paramPBBytesField = paramPBBytesField.get().toByteArray();
+    qq_lbs_share.C2CRelationInfo localC2CRelationInfo = new qq_lbs_share.C2CRelationInfo();
     try
     {
-      if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaUtilList.size())) {
-        return null;
+      localC2CRelationInfo.mergeFrom(paramPBBytesField);
+      long l1 = localC2CRelationInfo.id1.get();
+      long l2 = localC2CRelationInfo.id2.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationProtoUtil", 2, new Object[] { "isC2cSharingLocation: invoked. C2C profile flag [uin不为0即可说明正在分享]", " id1: ", Long.valueOf(l1), " id2: ", Long.valueOf(l2) });
       }
-      awtx localawtx = (awtx)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      return localawtx;
-    }
-    finally {}
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String a(String paramString)
-  {
-    try
-    {
-      paramString = (String)this.b.get(paramString);
-      return paramString;
-    }
-    finally {}
-  }
-  
-  /* Error */
-  public ArrayList<Long> a(int paramInt1, int paramInt2)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 16	awua:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   6: ifnull +24 -> 30
-    //   9: aload_0
-    //   10: getfield 16	awua:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   13: invokeinterface 21 1 0
-    //   18: iload_1
-    //   19: if_icmple +11 -> 30
-    //   22: iload_1
-    //   23: iflt +7 -> 30
-    //   26: iload_2
-    //   27: ifgt +7 -> 34
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aconst_null
-    //   33: areturn
-    //   34: iload_2
-    //   35: istore_3
-    //   36: iload_1
-    //   37: iload_2
-    //   38: iadd
-    //   39: aload_0
-    //   40: getfield 16	awua:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   43: invokeinterface 21 1 0
-    //   48: if_icmple +15 -> 63
-    //   51: aload_0
-    //   52: getfield 16	awua:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   55: invokeinterface 21 1 0
-    //   60: iload_1
-    //   61: isub
-    //   62: istore_3
-    //   63: new 65	java/util/ArrayList
-    //   66: dup
-    //   67: invokespecial 69	java/util/ArrayList:<init>	()V
-    //   70: astore 4
-    //   72: iload_1
-    //   73: istore_2
-    //   74: iload_2
-    //   75: iload_1
-    //   76: iload_3
-    //   77: iadd
-    //   78: if_icmpge +45 -> 123
-    //   81: aload_0
-    //   82: getfield 16	awua:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   85: iload_2
-    //   86: invokeinterface 29 2 0
-    //   91: checkcast 31	awtx
-    //   94: invokevirtual 34	awtx:a	()Ljava/lang/String;
-    //   97: astore 5
-    //   99: aload 4
-    //   101: aload 5
-    //   103: invokestatic 75	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   106: invokevirtual 79	java/lang/Long:longValue	()J
-    //   109: invokestatic 82	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   112: invokevirtual 86	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   115: pop
-    //   116: iload_2
-    //   117: iconst_1
-    //   118: iadd
-    //   119: istore_2
-    //   120: goto -46 -> 74
-    //   123: aload_0
-    //   124: monitorexit
-    //   125: aload 4
-    //   127: areturn
-    //   128: astore 4
-    //   130: aload_0
-    //   131: monitorexit
-    //   132: aload 4
-    //   134: athrow
-    //   135: astore 5
-    //   137: goto -21 -> 116
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	140	0	this	awua
-    //   0	140	1	paramInt1	int
-    //   0	140	2	paramInt2	int
-    //   35	43	3	i	int
-    //   70	56	4	localArrayList	ArrayList
-    //   128	5	4	localObject	Object
-    //   97	5	5	str	String
-    //   135	1	5	localException	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   2	22	128	finally
-    //   30	32	128	finally
-    //   36	63	128	finally
-    //   63	72	128	finally
-    //   81	99	128	finally
-    //   99	116	128	finally
-    //   123	125	128	finally
-    //   130	132	128	finally
-    //   99	116	135	java/lang/Exception
-  }
-  
-  public List<awtx> a(List<Long> paramList)
-  {
-    if (paramList != null)
-    {
-      ArrayList localArrayList = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      if (paramQQAppInterface.getLongAccountUin() == l1)
       {
-        String str = String.valueOf((Long)paramList.next());
-        localArrayList.add(new awtx(str, bglf.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, str)));
+        if (l2 <= 0L) {
+          break label147;
+        }
+        return true;
       }
-      return localArrayList;
-    }
-    return null;
-  }
-  
-  public Map<String, awtw> a(Map<Long, IntimateInfo> paramMap)
-  {
-    if (paramMap != null)
-    {
-      HashMap localHashMap = new HashMap();
-      paramMap = paramMap.entrySet().iterator();
-      while (paramMap.hasNext())
+      long l3 = paramQQAppInterface.getLongAccountUin();
+      if (l3 == l2)
       {
-        Map.Entry localEntry = (Map.Entry)paramMap.next();
-        localHashMap.put(String.valueOf(localEntry.getKey()), new awtw((IntimateInfo)localEntry.getValue()));
+        if (l1 <= 0L) {
+          return false;
+        }
       }
-      return localHashMap;
+      else {
+        return false;
+      }
     }
-    return null;
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("LocationProtoUtil", 1, "isC2cSharingLocation: failed. ", paramQQAppInterface);
+      bool = false;
+    }
+    return bool;
+    label147:
+    return false;
   }
   
-  public void a(List<awtx> paramList, Map<String, awtw> paramMap, Map<String, String> paramMap1)
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (paramList != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      if (paramMap != null) {
-        this.jdField_a_of_type_JavaUtilMap.putAll(paramMap);
-      }
-      if (paramMap1 != null) {
-        this.b.putAll(paramMap1);
-      }
-      return;
+    paramQQAppInterface = ((anyw)paramQQAppInterface.getManager(51)).a(paramString);
+    if (paramQQAppInterface == null) {
+      return false;
     }
-    finally {}
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationProtoUtil", 2, new Object[] { "isC2cSharingLocation: invoked. ", " isSharingLocation: ", Integer.valueOf(paramQQAppInterface.isSharingLocation), " friendUin: ", paramString });
+    }
+    if (paramQQAppInterface.isSharingLocation == 1) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
   }
   
-  public Map<String, String> b(Map<Long, String> paramMap)
+  public static boolean a(qq_lbs_share.ResultInfo paramResultInfo)
   {
-    if (paramMap != null)
-    {
-      HashMap localHashMap = new HashMap();
-      paramMap = paramMap.entrySet().iterator();
-      while (paramMap.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)paramMap.next();
-        localHashMap.put(String.valueOf(localEntry.getKey()), localEntry.getValue());
-      }
-      return localHashMap;
+    boolean bool = true;
+    if (paramResultInfo == null) {
+      return false;
     }
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationProtoUtil", 2, new Object[] { "rspSuccess: invoked. ", " resultInfo.uint32_result: ", Integer.valueOf(paramResultInfo.uint32_result.get()), " resultInfo.bytes_errmsg: ", paramResultInfo.bytes_errmsg.get().toStringUtf8(), " resultInfo.uint64_svr_time: ", Long.valueOf(paramResultInfo.uint64_svr_time.get()) });
+    }
+    if (paramResultInfo.uint32_result.get() == 0) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(52)).c(paramString);
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationProtoUtil", 2, new Object[] { "isGroupSharingLocation: invoked. ", " ti: ", Boolean.valueOf(paramQQAppInterface.isSharingLocation()) });
+    }
+    return paramQQAppInterface.isSharingLocation();
   }
 }
 

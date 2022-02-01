@@ -5,10 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import atae;
-import atlp;
-import atwl;
-import atzq;
+import atrz;
+import audj;
+import auog;
+import aurl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.QbSdk;
@@ -37,25 +37,25 @@ public class UniformDownloadPkgInstallReceiver
     }
   }
   
-  public void a(Context paramContext, atzq paramatzq)
+  public void a(Context paramContext, aurl paramaurl)
   {
-    if (paramatzq == null) {}
+    if (paramaurl == null) {}
     do
     {
       return;
-      if (atwl.b(paramatzq.b))
+      if (auog.b(paramaurl.b))
       {
-        QbSdk.openFileWithQB(paramContext, paramatzq.b, "biz_src_jc_file");
+        QbSdk.openFileWithQB(paramContext, paramaurl.b, "biz_src_jc_file");
         if (QLog.isDevelopLevel()) {
-          QLog.i("UniformDownloadPkgInstallReceiver<FileAssistant>", 1, "浏览器安装成功，准备打开文件:" + paramatzq.b);
+          QLog.i("UniformDownloadPkgInstallReceiver<FileAssistant>", 1, "浏览器安装成功，准备打开文件:" + paramaurl.b);
         }
       }
-      if (paramatzq.a.containsKey("params_open_with_yyb")) {
-        atae.a(paramatzq.a.getString("params_open_with_yyb", ""), 2);
+      if (paramaurl.a.containsKey("params_open_with_yyb")) {
+        atrz.a(paramaurl.a.getString("params_open_with_yyb", ""), 2);
       }
-    } while (!paramatzq.a.getBoolean("tbs_new_report", false));
-    atlp.a().a("stat_download_installed_success");
-    atlp.a().a("stat_open_qb_success");
+    } while (!paramaurl.a.getBoolean("tbs_new_report", false));
+    audj.a().a("stat_download_installed_success");
+    audj.a().a("stat_open_qb_success");
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)

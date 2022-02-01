@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.conditionsearch.data;
 
 import android.text.TextUtils;
-import anni;
-import bgsp;
+import anzj;
+import bhsr;
 import com.tencent.common.app.AppInterface;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -14,7 +14,7 @@ public class AddressData
   
   static
   {
-    jdField_a_of_type_JavaLangString = anni.a(2131698686);
+    jdField_a_of_type_JavaLangString = anzj.a(2131698793);
   }
   
   public AddressData()
@@ -79,7 +79,7 @@ public class AddressData
     if (paramString.startsWith(jdField_a_of_type_JavaLangString)) {
       return false;
     }
-    Object localObject2 = bgsp.a(paramString, '|');
+    Object localObject2 = bhsr.a(paramString, '|');
     if ((paramString.startsWith("#")) || (localObject2.length < 2)) {
       return true;
     }

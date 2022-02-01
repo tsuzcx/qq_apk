@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.forward;
 
-import adrm;
+import aean;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anni;
-import aplu;
-import apoe;
-import aufx;
-import bbxc;
-import bbzh;
-import bcwd;
-import bgpa;
-import bipi;
+import anzj;
+import apzk;
+import aqbu;
+import auxs;
+import bcpt;
+import bcry;
+import bdow;
+import bhpc;
+import bjqh;
 import com.tencent.ark.open.ArkAppCacheMgr;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
@@ -39,24 +39,24 @@ public class ForwardArkH5StructOption
     String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_h5_from_normal");
     String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_view");
     if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
-      aplu.a(str1, str3, str2, new aufx(this));
+      apzk.a(str1, str3, str2, new auxs(this));
     }
   }
   
   public boolean a()
   {
     e();
-    m();
+    n();
     return super.a();
   }
   
-  public boolean a(bgpa parambgpa)
+  public boolean a(bhpc parambhpc)
   {
     if ((this.jdField_a_of_type_AndroidOsBundle.getBoolean("is_ark_display_share")) && (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_from_h5_parse_meta_success"))) {}
     for (;;)
     {
       return true;
-      super.a(parambgpa);
+      super.a(parambhpc);
     }
   }
   
@@ -69,7 +69,7 @@ public class ForwardArkH5StructOption
     if ((localSessionInfo.jdField_a_of_type_Int < 0) || (TextUtils.isEmpty(localSessionInfo.jdField_a_of_type_JavaLangString)))
     {
       if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-        bipi.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
+        bjqh.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
       }
       return false;
     }
@@ -97,11 +97,11 @@ public class ForwardArkH5StructOption
       }
       for (;;)
       {
-        String str3 = String.format(anni.a(2131703516), new Object[] { paramString1 });
+        String str3 = String.format(anzj.a(2131703623), new Object[] { paramString1 });
         if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)))
         {
           if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-            bipi.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
+            bjqh.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
           }
           return false;
           paramString1 = "";
@@ -111,14 +111,14 @@ public class ForwardArkH5StructOption
           break label188;
         }
         if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-          bipi.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "0", false);
+          bjqh.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "0", false);
         }
         paramString1 = new ArkAppMessage(str3, (String)localObject1, paramString1, (String)localObject2, paramString2, str1, str2, "");
-        paramString2 = (ArkAppMessage)apoe.a(2, (String)localObject1, this.jdField_a_of_type_AndroidOsBundle, paramString1);
+        paramString2 = (ArkAppMessage)aqbu.a(2, (String)localObject1, this.jdField_a_of_type_AndroidOsBundle, paramString1);
         if (paramString2 == null) {}
         for (;;)
         {
-          localObject1 = bcwd.a(this.jdField_a_of_type_AndroidOsBundle);
+          localObject1 = bdow.a(this.jdField_a_of_type_AndroidOsBundle);
           paramString2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_appId_ark_from_sdk");
           localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_name");
           str1 = this.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_action_data");
@@ -143,10 +143,10 @@ public class ForwardArkH5StructOption
             str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
             str2 = localSessionInfo.jdField_a_of_type_JavaLangString;
             paramInt = localSessionInfo.jdField_a_of_type_Int;
-            int i = bbxc.jdField_a_of_type_Int;
-            bbxc.jdField_a_of_type_Int = i + 1;
-            paramString1.containStructMsg = bbzh.a((QQAppInterface)localObject2, str1, str2, paramString2, paramInt, i, (AbsStructMsg)localObject1);
-            adrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString1);
+            int i = bcpt.jdField_a_of_type_Int;
+            bcpt.jdField_a_of_type_Int = i + 1;
+            paramString1.containStructMsg = bcry.a((QQAppInterface)localObject2, str1, str2, paramString2, paramInt, i, (AbsStructMsg)localObject1);
+            aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString1);
             return true;
           }
           paramString1 = paramString2;
@@ -166,7 +166,7 @@ public class ForwardArkH5StructOption
       Iterator localIterator;
       if ((bool1) && (bool2))
       {
-        F();
+        G();
         localIterator = b().iterator();
       }
       while (localIterator.hasNext())
@@ -180,14 +180,14 @@ public class ForwardArkH5StructOption
     }
     if ((bool1) && (bool2))
     {
-      F();
-      k_();
+      G();
+      l_();
       return;
     }
     super.d();
   }
   
-  protected boolean k_()
+  protected boolean l_()
   {
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
     boolean bool = a(this.jdField_a_of_type_AndroidOsBundle.getString("uin"), this.jdField_a_of_type_AndroidOsBundle.getString("troop_uin"), i);

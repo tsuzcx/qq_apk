@@ -1,22 +1,17 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.qflutter.utils.FLog;
+import java.lang.ref.WeakReference;
 
 class usz
-  extends AnimatorListenerAdapter
+  implements AdExposureChecker.ExposureCallback
 {
-  usz(usx paramusx) {}
+  usz(usy paramusy) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onExposure(WeakReference<View> paramWeakReference)
   {
-    super.onAnimationStart(paramAnimator);
-    StringBuilder localStringBuilder = new StringBuilder().append("collection animator start: ");
-    if (usx.a(this.a) == null) {}
-    for (paramAnimator = "null";; paramAnimator = usx.a(this.a).feed_desc)
-    {
-      upe.b("AbsWsUIGroup", paramAnimator);
-      return;
-    }
+    FLog.e("AdExposureChecker", "onExposure");
+    usw.a(usy.a(this.a), (usv)this.a.a());
   }
 }
 

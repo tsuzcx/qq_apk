@@ -1,21 +1,78 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import android.os.Bundle;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bbto
-  extends aopa
+  extends aoho
 {
-  public bbto(NetSearchEngine paramNetSearchEngine, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  private bbto(SignTextEditFragment paramSignTextEditFragment) {}
+  
+  protected void e(boolean paramBoolean, Object paramObject)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if (paramObject == null) {
+      SignTextEditFragment.a(this.a, 2);
+    }
+    for (;;)
+    {
+      return;
+      paramObject = (Bundle)paramObject;
+      int i = paramObject.getInt("param_searchResult", 0);
+      paramObject = (ArrayList)paramObject.getSerializable("param_topicInfoList");
+      if ((paramObject == null) || (paramObject.size() <= 0)) {
+        if (i == 0) {
+          SignTextEditFragment.a(this.a, 3);
+        }
+      }
+      while (this.a.jdField_a_of_type_Amrb.a(paramObject, true))
+      {
+        this.a.jdField_a_of_type_Amrb.notifyDataSetChanged();
+        return;
+        SignTextEditFragment.a(this.a, 2);
+        continue;
+        SignTextEditFragment.a(this.a, 4);
+      }
+    }
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected void f(boolean paramBoolean, Object paramObject)
   {
-    if (paramInt == 0)
+    if (paramObject == null)
     {
-      NetSearchEngine.a = paramSosoLbsInfo.a.a;
-      NetSearchEngine.b = paramSosoLbsInfo.a.b;
+      SignTextEditFragment.a(this.a, 2);
+      return;
+    }
+    Object localObject = (Bundle)paramObject;
+    int j = ((Bundle)localObject).getInt("param_atIndex");
+    int k = ((Bundle)localObject).getInt("param_atKeyLen");
+    paramObject = ((Bundle)localObject).getString("param_atKey");
+    long l = ((Bundle)localObject).getLong("param_reqTs");
+    localObject = (ArrayList)((Bundle)localObject).getSerializable("param_topicInfoList");
+    int i;
+    if (localObject == null)
+    {
+      i = 0;
+      if (QLog.isColorLevel()) {
+        QLog.i("SignTextEditFragment", 2, String.format("onGetTopicWithKey[%b,%d] key=[%s] [atIndex=%d, keyLen=%d],reqTs=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), paramObject, Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l) }));
+      }
+      if ((localObject != null) && (((List)localObject).size() > 0)) {
+        break label240;
+      }
+      SignTextEditFragment.a(this.a, 3);
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Amrb.a((List)localObject, false)) {
+        this.a.jdField_a_of_type_Amrb.notifyDataSetChanged();
+      }
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setTag(new Object[] { Integer.valueOf(j), Integer.valueOf(k), paramObject, Long.valueOf(l) });
+      return;
+      i = ((List)localObject).size();
+      break;
+      label240:
+      SignTextEditFragment.a(this.a, 4);
     }
   }
 }

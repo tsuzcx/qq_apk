@@ -1,17 +1,24 @@
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bmhm
+class bmhm
+  implements DialogInterface.OnClickListener
 {
-  public static Context a;
+  private String jdField_a_of_type_JavaLangString;
   
-  public static Context a()
+  private bmhm(bmhk parambmhk, String paramString)
   {
-    return a;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static void a(Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a = paramContext;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.jdField_a_of_type_Bmhk.cancelInstall(this.jdField_a_of_type_JavaLangString);
   }
 }
 

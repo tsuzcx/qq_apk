@@ -1,32 +1,13 @@
-class aocb
-  extends anmu
+public class aocb
 {
-  private aocb(aoby paramaoby) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(paramBoolean, 1, paramString, 0);
-  }
-  
-  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(paramBoolean, 11, paramString, 0);
-  }
-  
-  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(paramBoolean1, 16, paramString, paramInt);
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(paramBoolean1, 32, paramString, paramInt);
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(paramBoolean, 4, paramString, 0);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
 }
 
 

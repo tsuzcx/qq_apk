@@ -1,22 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.biz.qqcircle.widgets.QCircleFuelRankItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StRankingItem;
+import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
 
-public class vxf
-  implements View.OnClickListener
+class vxf
+  implements aaav<FeedCloudRead.StGetMainPageRsp>
 {
-  public vxf(QCircleFuelRankItemView paramQCircleFuelRankItemView, FeedCloudMeta.StRankingItem paramStRankingItem) {}
+  vxf(vxe paramvxe, QCircleGetMainPageRequest paramQCircleGetMainPageRequest, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    if (QCircleFuelRankItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView) != null) {
-      vrg.a(89, 1, ((vdq)QCircleFuelRankItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView)).a(), this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView.e());
-    }
-    uxo.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StRankingItem.user, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView.a().clone().setElementIdStr("portrait"));
-    EventCollector.getInstance().onViewClicked(paramView);
+    boolean bool = VSNetworkHelper.a(paramString);
+    QLog.d("QCirclePersonalDetailViewModel", 1, "requestData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + bool);
+    this.jdField_a_of_type_Vxe.a(paramBoolean, paramLong, paramString, paramStGetMainPageRsp, Boolean.valueOf(this.jdField_a_of_type_Boolean));
   }
 }
 

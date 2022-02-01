@@ -1,44 +1,58 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
-import java.io.File;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
+import com.tencent.qqprotect.qsec.IQSecRuntime;
+import com.tencent.qqprotect.qsec.IRuntimeInterface;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
 public class blds
-  implements PluginManagerUpdater
+  implements IQSecRuntime
 {
-  private final File a;
+  public static IQSecRuntime a;
+  private HashMap<String, IRuntimeInterface> a;
   
   public blds()
   {
-    String str = bldz.a().b();
-    if (QLog.isColorLevel()) {
-      QLog.i("IliveCdnPmUpdater", 2, "new IliveCdnPmUpdater file = " + str);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_ComTencentQqprotectQsecIQSecRuntime = this;
+  }
+  
+  public void a(IRuntimeInterface paramIRuntimeInterface)
+  {
+    String str = paramIRuntimeInterface.getInterfaceName();
+    if ((str != null) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))) {
+      this.jdField_a_of_type_JavaUtilHashMap.put(str, paramIRuntimeInterface);
     }
-    this.a = new File(str);
   }
   
-  public File getLatest()
+  public Object getApplicationContext()
   {
-    if (this.a.exists()) {
-      return this.a;
+    return MobileQQ.sMobileQQ;
+  }
+  
+  public Object getQQAppInterface()
+  {
+    return MobileQQ.sMobileQQ.waitAppRuntime(null);
+  }
+  
+  public int getRuntimeVersion()
+  {
+    return 1;
+  }
+  
+  public IRuntimeInterface queryRuntimeInterface(String paramString)
+  {
+    if (paramString == null) {
+      return null;
     }
-    return null;
-  }
-  
-  public Future<Boolean> isAvailable(File paramFile)
-  {
-    return anvy.a(16).submit(new bldu(this, paramFile));
-  }
-  
-  public Future<File> update()
-  {
-    return anvy.a(16).submit(new bldt(this));
-  }
-  
-  public boolean wasUpdating()
-  {
-    return false;
+    IRuntimeInterface localIRuntimeInterface2 = (IRuntimeInterface)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    IRuntimeInterface localIRuntimeInterface1 = localIRuntimeInterface2;
+    if (localIRuntimeInterface2 != null)
+    {
+      localIRuntimeInterface1 = localIRuntimeInterface2;
+      if (!paramString.equals(localIRuntimeInterface2.getInterfaceName())) {
+        localIRuntimeInterface1 = null;
+      }
+    }
+    return localIRuntimeInterface1;
   }
 }
 

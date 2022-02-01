@@ -1,35 +1,34 @@
-import android.content.ContentValues;
+import android.content.Context;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public final class bljt
+class bljt
+  extends blir
 {
-  public long a;
-  public Object a;
-  public String a;
-  public long b = -1L;
-  
-  public bljt(long paramLong1, long paramLong2, ContentValues paramContentValues)
+  bljt(Context paramContext)
   {
-    this.jdField_a_of_type_Long = 1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = paramLong1;
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_a_of_type_JavaLangObject = paramContentValues;
-    try
-    {
-      this.jdField_a_of_type_JavaLangString = paramContentValues.getAsString("entityNickName");
-      return;
-    }
-    catch (Exception paramContentValues) {}
+    super(paramContext);
+    f();
   }
   
-  public bljt(long paramLong1, long paramLong2, Object paramObject, String paramString)
+  private void f()
   {
-    this.jdField_a_of_type_Long = 1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = paramLong1;
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131559081, null);
+    localLinearLayout.findViewById(2131369134).setOnClickListener(new blju(this));
+    String str = getContext().getString(2131690180);
+    TextView localTextView = (TextView)localLinearLayout.findViewById(2131379761);
+    SpannableString localSpannableString = new SpannableString(str);
+    localSpannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#1B90EE")), str.length() - 3, str.length() - 1, 33);
+    localSpannableString.setSpan(new bljv(getContext(), null), str.length() - 3, str.length() - 1, 33);
+    localTextView.setText(localSpannableString);
+    localTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    a(localLinearLayout);
   }
 }
 

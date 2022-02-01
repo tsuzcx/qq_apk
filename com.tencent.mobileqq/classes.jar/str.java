@@ -1,21 +1,32 @@
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class str
-  extends LinkMovementMethod
+class str
+  extends aoki
 {
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  str(stp paramstp) {}
+  
+  public void handleSearchDiscoveryError(int paramInt1, String paramString, int paramInt2)
   {
-    boolean bool = super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0)) {
-      Selection.removeSelection(paramSpannable);
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadInJoyFeedsHeaderVie", 2, "handleKandianSearchHotwordError, resultCode = " + paramInt1 + "， errorMsg = " + paramString + ", fromType = " + paramInt2);
     }
-    paramTextView.setPressed(false);
-    paramTextView.setFocusable(false);
-    return bool;
+  }
+  
+  public void handleSearchDiscoveryResult(List<bcgy> paramList, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyFeedsHeaderVie", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
+    }
+    if (paramInt != 6) {}
+    while (((this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel != null) && (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.size() != 0)) || (paramList == null) || (paramList.size() <= 0) || (!(paramList.get(0) instanceof HotWordSearchEntryDataModel))) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)paramList.get(0));
+    stp.jdField_a_of_type_Int = 0;
+    this.a.f();
   }
 }
 

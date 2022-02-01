@@ -1,13 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.face.FaceDownloader;
-import com.tencent.mobileqq.app.face.FaceInfo;
-
 public class aocg
 {
-  public Bitmap a;
-  public FaceInfo a;
-  
-  public aocg(FaceDownloader paramFaceDownloader) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public long c;
+  public boolean c;
+  public long d;
+  public long e;
 }
 
 

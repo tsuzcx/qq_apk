@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bann;
-import bpye;
+import bbgg;
+import bqzz;
 
 class EditVideoActivity$6
   implements Runnable
@@ -10,8 +10,8 @@ class EditVideoActivity$6
   
   public void run()
   {
-    bann.b();
-    bpye.a().a(this.this$0.getApplicationContext(), this.this$0, true);
+    bbgg.b();
+    bqzz.a().a(this.this$0.getApplicationContext(), this.this$0, true);
   }
 }
 

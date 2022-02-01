@@ -1,106 +1,86 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
+import java.net.URL;
 
 public class bfic
-  extends bfhp
+  extends AsyncTask<Void, Void, Bundle>
 {
-  public bfic(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  protected URLDrawable a;
+  protected String a;
+  protected WeakReference<TroopAvatarWallPreviewActivity> a;
+  protected boolean a;
+  protected String b;
+  
+  public bfic(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, String paramString1, boolean paramBoolean, URLDrawable paramURLDrawable, String paramString2)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = 11;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTroopAvatarWallPreviewActivity);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+    this.b = paramString2;
   }
   
-  @Nullable
-  public bfhr a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  protected Bundle a(Void... paramVarArgs)
   {
-    paramObject = bepx.a(paramInt1, paramLong1, paramInt2);
-    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131697837);
-    paramList = "";
-    boolean bool2 = false;
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
-    if (localMessageRecord != null) {
-      paramList = localMessageRecord.senderuin;
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_ComTencentImageURLDrawable == null)) {
+      return null;
     }
-    boolean bool1 = bool2;
-    if (paramLong2 != bfhz.a)
-    {
-      bool1 = bool2;
-      if (paramLong1 < paramLong2) {
-        bool1 = true;
-      }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("forward_type", 1);
+    paramVarArgs = new File(antf.cb);
+    if (!paramVarArgs.exists()) {
+      paramVarArgs.mkdirs();
     }
-    String str2;
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    String str = antf.cb + this.jdField_a_of_type_JavaLangString + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    paramVarArgs = str;
+    if (!new File(str).exists()) {}
+    try
     {
-      str2 = this.jdField_a_of_type_JavaLangString + ".troop.special_msg.confess_to_me";
-      localStringBuilder = new StringBuilder().append("需要定位的第一条消息是否已经拉到本地：");
-      if (localMessageRecord == null) {
-        break label188;
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
+      localBundle.putBoolean("forward_urldrawable", true);
+      localBundle.putString("forward_urldrawable_thumb_url", this.b);
+      localBundle.putString("forward_filepath", paramVarArgs);
+      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+      localBundle.putString("forward_extra", paramVarArgs);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        localBundle.putString("forward_thumb", paramVarArgs);
+        localBundle.putBoolean("key_flag_from_plugin", true);
       }
+      return localBundle;
     }
-    label188:
-    for (bool2 = true;; bool2 = false)
+    catch (IOException paramVarArgs)
     {
-      QLog.d(str2, 2, bool2 + ", isShow = " + bool1);
-      if (!bool1) {
-        break;
-      }
-      return new bfhr(true, str1, paramObject, paramList);
+      QLog.e("foward", 2, "IOException", paramVarArgs);
     }
     return null;
   }
   
-  public void a(int paramInt, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView, String paramString)
+  protected void a(Bundle paramBundle)
   {
-    paramTextView1.setText(anni.a(2131713836));
-    paramTextView2.setText(anni.a(2131713847));
-    paramTextView1.setTextSize(1, 13.0F);
-    paramTextView2.setTextSize(1, 13.0F);
-  }
-  
-  public void a(int paramInt1, bepx parambepx, String paramString, int paramInt2, TextView paramTextView1, TextView paramTextView2, long paramLong)
-  {
-    super.a(paramInt1, parambepx, paramString, paramInt2, paramTextView1, paramTextView2, paramLong);
-    paramString = null;
-    if (paramLong != bfhz.a) {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong);
-    }
-    if (paramString != null) {
-      paramTextView1.setText(anni.a(2131713841));
-    }
-    if (((paramString instanceof MessageForQQWalletMsg)) && (MessageForQQWalletMsg.isRedPacketMsg(paramString)))
-    {
-      paramString = (MessageForQQWalletMsg)paramString;
-      if ((paramString.messageType == 7) || (paramString.messageType == 8))
-      {
-        paramTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131717763));
-        parambepx.b = true;
-      }
-    }
-    while (paramInt2 <= 0)
-    {
-      return;
-      paramTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131717749));
-      parambepx.a = true;
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
       return;
     }
-    parambepx.a = false;
-    paramTextView2.setText(anni.a(2131713839));
+    TroopAvatarWallPreviewActivity localTroopAvatarWallPreviewActivity = (TroopAvatarWallPreviewActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramBundle == null)
+    {
+      QQToast.a(localTroopAvatarWallPreviewActivity, anzj.a(2131713996), 0).b(localTroopAvatarWallPreviewActivity.getTitleBarHeight());
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramBundle);
+    auxu.a(localTroopAvatarWallPreviewActivity, localIntent, 21);
+    TroopAvatarWallPreviewActivity.a(localTroopAvatarWallPreviewActivity, "0X8006A81", "0X8006A95");
   }
-  
-  public void a(int paramInt, Object paramObject, String paramString) {}
-  
-  public void b(int paramInt, Object paramObject, String paramString) {}
 }
 
 

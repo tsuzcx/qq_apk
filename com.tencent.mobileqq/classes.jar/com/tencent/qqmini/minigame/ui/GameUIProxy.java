@@ -11,13 +11,13 @@ import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
-import com.tencent.mobileqq.triton.sdk.ITTEngine.OnGetTraceRecordCallback;
+import com.tencent.mobileqq.triton.TritonEngine;
+import com.tencent.mobileqq.triton.statistic.GetTraceInfoCallback;
+import com.tencent.mobileqq.triton.statistic.StatisticsManager;
 import com.tencent.qqmini.minigame.GameRuntime;
 import com.tencent.qqmini.minigame.GameRuntimeLoader;
 import com.tencent.qqmini.minigame.gpkg.GpkgManager;
 import com.tencent.qqmini.minigame.manager.GameInfoManager;
-import com.tencent.qqmini.minigame.utils.CPUUtil;
 import com.tencent.qqmini.minigame.utils.GameActivityStatusWatcher;
 import com.tencent.qqmini.sdk.action.AppStateEvent;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
@@ -25,13 +25,13 @@ import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.NetworkUtil;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
-import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.shell.IAppBrandProxy;
+import com.tencent.qqmini.sdk.launcher.utils.CPUUtil;
 import com.tencent.qqmini.sdk.manager.MiniLoadingAdManager;
 import com.tencent.qqmini.sdk.report.MiniAppReportManager2;
 import com.tencent.qqmini.sdk.report.MiniReportManager;
@@ -52,7 +52,7 @@ public class GameUIProxy
   private long mActivityStartDuration = 0L;
   private long mBeginOnCreate;
   private GameActivityStatusWatcher mBroadcastWatcher;
-  private GameRuntimeStateObserver mGameRuntimeStateObserver;
+  private final GameRuntimeStateObserver mGameRuntimeStateObserver = new GameRuntimeStateObserver(this);
   private boolean mHasReportStepOnResume = false;
   private LoadingUI mLoadingUI;
   private MiniAppInfo mMiniAppInfo;
@@ -65,12 +65,6 @@ public class GameUIProxy
     this.mBroadcastWatcher = new GameActivityStatusWatcher(paramActivity);
     this.mBroadcastWatcher.setOnHomePressedListener(new GameUIProxy.1(this));
     this.mBroadcastWatcher.startWatch();
-  }
-  
-  private void createGameRuntimeStateObserver()
-  {
-    this.mGameRuntimeStateObserver = new GameRuntimeStateObserver(this);
-    this.mGameRuntimeStateObserver.setOnCreateTimeStamp();
   }
   
   private void createLoadingUI(Activity paramActivity)
@@ -189,14 +183,6 @@ public class GameUIProxy
     return null;
   }
   
-  IJsService getJsService()
-  {
-    if (this.mRuntime != null) {
-      return this.mRuntime.getJsService();
-    }
-    return null;
-  }
-  
   public String getLaunchMsg()
   {
     if (this.mPkgDownloadFlag) {
@@ -231,13 +217,13 @@ public class GameUIProxy
     }
   }
   
-  public void getTraceStatistics(ITTEngine.OnGetTraceRecordCallback paramOnGetTraceRecordCallback)
+  public void getTraceStatistics(GetTraceInfoCallback paramGetTraceInfoCallback)
   {
     if (this.mRuntime != null)
     {
-      ITTEngine localITTEngine = ((GameRuntime)this.mRuntime).getGameEngine();
-      if (localITTEngine != null) {
-        localITTEngine.getTraceRecord(paramOnGetTraceRecordCallback);
+      TritonEngine localTritonEngine = ((GameRuntime)this.mRuntime).getGameEngine();
+      if (localTritonEngine != null) {
+        localTritonEngine.getStatisticsManager().getTraceInfo(paramGetTraceInfoCallback);
       }
     }
   }
@@ -302,7 +288,7 @@ public class GameUIProxy
       break label36;
       localMiniAppInfo = null;
       break label54;
-      createGameRuntimeStateObserver();
+      this.mGameRuntimeStateObserver.setOnCreateTimeStamp();
       createGameActivityStatusWatcher(paramActivity);
       createLoadingUI(paramActivity);
       super.onAttachActivity(paramActivity, paramBundle, paramViewGroup);

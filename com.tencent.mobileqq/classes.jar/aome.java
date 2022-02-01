@@ -1,38 +1,57 @@
-import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.EcShopFirstRunMsgConfigs;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aome
-  extends aojt
+  extends biht
 {
-  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
+  public aome(EcShopFirstRunMsgConfigs paramEcShopFirstRunMsgConfigs) {}
+  
+  public void onDone(bihu parambihu)
   {
-    paramQQAppInterface = new aomd(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "schedule";
-    paramQQAppInterface.c = "showDetail";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
+    super.onDone(parambihu);
+    if ((parambihu.a == 0) && (this.a.a.app != null))
     {
-      int i = 0;
-      while (i < paramContext.length)
+      str = parambihu.a().getString("path");
+      if ((this.a.a.app != null) && (!TextUtils.isEmpty(str)))
       {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
+        if (!oek.e.equals(str)) {
+          break label142;
         }
-        i += 1;
+        this.a.a.app.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_report_json", parambihu.i).commit();
+        ((ofe)this.a.a.app.a(88)).a();
+        if (QLog.isColorLevel()) {
+          QLog.i("Ecshop", 2, "download report json success.");
+        }
       }
     }
-    return paramQQAppInterface;
+    label142:
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        String str;
+        do
+        {
+          return;
+        } while (!oek.f.equals(str));
+        this.a.a.app.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_behaviors_json", parambihu.i).commit();
+      } while (!QLog.isColorLevel());
+      QLog.i("Ecshop", 2, "download behaviors json success.");
+      return;
+    }
+    QLog.i("Ecshop", 2, "download json failed.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aome
  * JD-Core Version:    0.7.0.1
  */

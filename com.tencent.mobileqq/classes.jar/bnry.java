@@ -1,113 +1,122 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class bnry
-  extends RecyclerView.Adapter<bnsa>
+class bnry
+  implements bnrw
 {
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private bnrn jdField_a_of_type_Bnrn;
-  private ArrayList<bnrj> jdField_a_of_type_JavaUtilArrayList;
+  private IBinder a;
   
-  public bnry(Context paramContext, bnrn parambnrn)
+  bnry(IBinder paramIBinder)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bnrn = parambnrn;
-    a(this.jdField_a_of_type_Bnrn.a());
-    a(this.jdField_a_of_type_Bnrn.a());
+    this.a = paramIBinder;
   }
   
-  private void a(RecyclerView paramRecyclerView)
+  public Bundle a(String paramString, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-  }
-  
-  private void a(ArrayList<bnrj> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-  }
-  
-  public bnsa a(@NonNull ViewGroup paramViewGroup, int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
-      this.jdField_a_of_type_AndroidContentContext = paramViewGroup.getContext();
-    }
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558573, paramViewGroup, false);
-    if (paramInt != 0) {
-      paramViewGroup.setVisibility(4);
-    }
-    return new bnsa(paramViewGroup);
-  }
-  
-  public void a()
-  {
-    bnsa localbnsa = (bnsa)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForLayoutPosition(this.jdField_a_of_type_Int);
-    if (localbnsa != null) {
-      localbnsa.a(false);
-    }
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     for (;;)
     {
-      if (this.jdField_a_of_type_Int >= 0) {
-        ((bnrj)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int - 1)).a(false);
+      try
+      {
+        localParcel1.writeInterfaceToken("cooperation.smartdevice.ipc.ISmartDeviceService");
+        localParcel1.writeString(paramString);
+        if (paramBundle != null)
+        {
+          localParcel1.writeInt(1);
+          paramBundle.writeToParcel(localParcel1, 0);
+          this.a.transact(1, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          if (localParcel2.readInt() != 0)
+          {
+            paramString = (Bundle)Bundle.CREATOR.createFromParcel(localParcel2);
+            return paramString;
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        paramString = null;
       }
-      this.jdField_a_of_type_Int = -1;
-      return;
-      if (this.jdField_a_of_type_Int >= 0) {
-        notifyItemChanged(this.jdField_a_of_type_Int);
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
       }
     }
   }
   
-  public void a(bnsa parambnsa, int paramInt)
+  /* Error */
+  public void a(String paramString, Bundle paramBundle)
   {
-    if (parambnsa.getLayoutPosition() == 0)
-    {
-      localObject = new FrameLayout.LayoutParams(bggq.a(this.jdField_a_of_type_AndroidContentContext, 33.0F), bggq.a(this.jdField_a_of_type_AndroidContentContext, 33.0F));
-      ((FrameLayout.LayoutParams)localObject).setMargins(0, 0, bggq.a(this.jdField_a_of_type_AndroidContentContext, 51.0F), 0);
-      parambnsa.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      EventCollector.getInstance().onRecyclerBindViewHolder(parambnsa, paramInt, getItemId(paramInt));
-      return;
-    }
-    Object localObject = ((bnrj)this.jdField_a_of_type_JavaUtilArrayList.get(parambnsa.getLayoutPosition() - 1)).a;
-    parambnsa.a.setText((CharSequence)localObject);
-    if (this.jdField_a_of_type_Int == parambnsa.getLayoutPosition()) {
-      parambnsa.a(true);
-    }
-    for (;;)
-    {
-      parambnsa.itemView.setOnClickListener(new bnrz(this, parambnsa, (String)localObject));
-      break;
-      parambnsa.a(false);
-    }
+    // Byte code:
+    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_3
+    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   7: astore 4
+    //   9: aload_3
+    //   10: ldc 25
+    //   12: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   15: aload_3
+    //   16: aload_1
+    //   17: invokevirtual 32	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   20: aload_2
+    //   21: ifnull +44 -> 65
+    //   24: aload_3
+    //   25: iconst_1
+    //   26: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   29: aload_2
+    //   30: aload_3
+    //   31: iconst_0
+    //   32: invokevirtual 42	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
+    //   35: aload_0
+    //   36: getfield 15	bnry:a	Landroid/os/IBinder;
+    //   39: iconst_2
+    //   40: aload_3
+    //   41: aload 4
+    //   43: iconst_0
+    //   44: invokeinterface 48 5 0
+    //   49: pop
+    //   50: aload 4
+    //   52: invokevirtual 51	android/os/Parcel:readException	()V
+    //   55: aload 4
+    //   57: invokevirtual 68	android/os/Parcel:recycle	()V
+    //   60: aload_3
+    //   61: invokevirtual 68	android/os/Parcel:recycle	()V
+    //   64: return
+    //   65: aload_3
+    //   66: iconst_0
+    //   67: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   70: goto -35 -> 35
+    //   73: astore_1
+    //   74: aload 4
+    //   76: invokevirtual 68	android/os/Parcel:recycle	()V
+    //   79: aload_3
+    //   80: invokevirtual 68	android/os/Parcel:recycle	()V
+    //   83: aload_1
+    //   84: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	85	0	this	bnry
+    //   0	85	1	paramString	String
+    //   0	85	2	paramBundle	Bundle
+    //   3	77	3	localParcel1	Parcel
+    //   7	68	4	localParcel2	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   9	20	73	finally
+    //   24	35	73	finally
+    //   35	55	73	finally
+    //   65	70	73	finally
   }
   
-  public int getItemCount()
+  public IBinder asBinder()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() + 1;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt != 0) {
-      return 0;
-    }
-    return 1;
+    return this.a;
   }
 }
 

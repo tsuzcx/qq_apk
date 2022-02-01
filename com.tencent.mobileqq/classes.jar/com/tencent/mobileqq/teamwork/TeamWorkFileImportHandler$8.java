@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.teamwork;
 
 import android.text.TextUtils;
-import bdia;
-import bdit;
+import beav;
+import bebo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class TeamWorkFileImportHandler$8
   implements Runnable
 {
-  public TeamWorkFileImportHandler$8(bdia parambdia, String paramString) {}
+  public TeamWorkFileImportHandler$8(beav parambeav, String paramString) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class TeamWorkFileImportHandler$8
     do
     {
       return;
-      localObject = bdit.a(this.a, this.this$0.app.getCurrentAccountUin());
+      localObject = bebo.a(this.a, this.this$0.app.getCurrentAccountUin());
     } while (TextUtils.isEmpty((CharSequence)localObject));
     try
     {

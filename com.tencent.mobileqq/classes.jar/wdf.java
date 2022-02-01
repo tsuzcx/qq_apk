@@ -1,19 +1,48 @@
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
 
 class wdf
-  implements Comparator<wcm>
+  implements wbl
 {
-  wdf(wde paramwde) {}
+  wdf(wdb paramwdb) {}
   
-  public int a(wcm paramwcm1, wcm paramwcm2)
+  public void a()
   {
-    if (paramwcm1.b == paramwcm2.b) {
-      return 0;
+    vtn.a("", this.a.a(), this.a.jdField_a_of_type_Int, 43, this.a.b());
+    if ((this.a.jdField_a_of_type_Var != null) && ((this.a.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
+    {
+      vdq localvdq = new vdq();
+      localvdq.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = ((FeedCloudMeta.StFeed)this.a.jdField_a_of_type_JavaLangObject);
+      localvdq.jdField_a_of_type_Int = this.a.jdField_a_of_type_Int;
+      localvdq.b = 1;
+      this.a.jdField_a_of_type_Var.a(localvdq);
     }
-    if (paramwcm1.b > paramwcm2.b) {
-      return 1;
+  }
+  
+  public void a(FeedCloudMeta.StUser paramStUser)
+  {
+    vtn.a(paramStUser.id.get(), this.a.a(), this.a.jdField_a_of_type_Int, 41, this.a.b());
+    QCircleInitBean localQCircleInitBean = new QCircleInitBean();
+    localQCircleInitBean.setUser(paramStUser);
+    localQCircleInitBean.setFromReportBean(this.a.a().clone().setElementIdStr("portrait"));
+    uyx.b(this.a.jdField_a_of_type_AndroidViewView.getContext(), localQCircleInitBean);
+  }
+  
+  public void b()
+  {
+    vtn.a("", this.a.a(), this.a.jdField_a_of_type_Int, 42, this.a.b());
+    if ((this.a.jdField_a_of_type_Var != null) && ((this.a.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
+    {
+      vdq localvdq = new vdq();
+      localvdq.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = ((FeedCloudMeta.StFeed)this.a.jdField_a_of_type_JavaLangObject);
+      localvdq.jdField_a_of_type_Int = this.a.jdField_a_of_type_Int;
+      localvdq.b = 1;
+      this.a.jdField_a_of_type_Var.a(localvdq);
     }
-    return -1;
   }
 }
 

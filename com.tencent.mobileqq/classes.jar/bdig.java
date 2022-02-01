@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.qq.effect.engine.QEffectEngine.JsonConvert;
 
 public class bdig
-  extends bdid
+  implements QEffectEngine.JsonConvert
 {
-  public bdig(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  public <T> T parseArray(String paramString, Class paramClass)
   {
-    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
+    return awfy.a(paramString, new bdih(this).getClass().getGenericSuperclass());
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public <T> T parseObject(String paramString, Class paramClass)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
-    {
-      this.jdField_a_of_type_Bdia.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_Bdia.g(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-    }
+    return awfy.a(paramString, paramClass);
   }
 }
 

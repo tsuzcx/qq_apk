@@ -1,47 +1,133 @@
-import android.hardware.camera2.CameraCaptureSession;
-import android.hardware.camera2.CameraCaptureSession.StateCallback;
-import android.hardware.camera2.CaptureRequest;
-import android.hardware.camera2.CaptureRequest.Builder;
-import android.support.annotation.NonNull;
-import com.samsung.android.sdk.camera.SCameraCaptureProcessor;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
-import java.util.concurrent.Semaphore;
+import android.graphics.Color;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.List;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bcgi
-  extends CameraCaptureSession.StateCallback
+  extends bcgg
 {
-  public bcgi(Camera2Control paramCamera2Control) {}
+  public static final String k = bcgi.class.getSimpleName();
+  public boolean b;
+  public boolean c;
+  public String l;
+  public String m;
+  public String n;
   
-  public void onConfigureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession)
+  protected bcgi(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, UnifySearchCommon.ResultItem paramResultItem)
   {
-    bcgu.a(2, "[Camera2]startPreview onConfigureFailed!");
-    Camera2Control.c(this.a, false);
-    Camera2Control.a(this.a).release();
-    if (this.a.jdField_a_of_type_Bcgp != null) {
-      this.a.jdField_a_of_type_Bcgp.a(-202);
-    }
+    super(paramString, paramLong, paramList, paramInt1, paramJSONObject, paramInt2, paramResultItem);
   }
   
-  public void onConfigured(@NonNull CameraCaptureSession paramCameraCaptureSession)
+  protected bcgi(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, DynamicSearch.ResultItem paramResultItem)
   {
-    bcgu.a(1, "[Camera2]startPreview onConfigured!");
-    Camera2Control.c(this.a, true);
-    Camera2Control.a(this.a, paramCameraCaptureSession);
-    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(4));
-    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AE_MODE, Integer.valueOf(1));
-    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AE_TARGET_FPS_RANGE, Camera2Control.a(this.a));
-    if (this.a.jdField_a_of_type_Boolean)
+    super(paramString, paramLong, paramList, paramInt1, paramJSONObject, paramInt2, paramResultItem);
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    bcni.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), this.n);
+  }
+  
+  public void a(bcol parambcol)
+  {
+    if (!(parambcol instanceof bcon)) {
+      return;
+    }
+    int i = parambcol.a().getLayoutParams().width - bhgr.a(parambcol.a().getContext(), 3.0F);
+    if (this.jdField_a_of_type_Bcgb != null) {
+      bcjk.a(this, parambcol, true, i);
+    }
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
-      Camera2Control.a(this.a, Camera2Control.a(this.a).buildCaptureRequest(Camera2Control.a(this.a)));
-      this.a.jdField_a_of_type_AndroidHardwareCamera2CameraCaptureSession$CaptureCallback = Camera2Control.a(this.a).createCaptureCallback(Camera2Control.a(this.a), Camera2Control.a(this.a));
+      parambcol.a().setTextColor(Color.parseColor("#737373"));
+      parambcol.c().setTextColor(Color.parseColor("#4A4A4A"));
+      if (!TextUtils.isEmpty(this.l)) {
+        break label192;
+      }
+      parambcol.a().setVisibility(8);
+      label104:
+      if (!TextUtils.isEmpty(this.m)) {
+        break label254;
+      }
+      parambcol.c().setVisibility(8);
+      label123:
+      if (!this.jdField_b_of_type_Boolean) {
+        break label276;
+      }
+      parambcol.a().setGravity(1);
+      parambcol.c().setGravity(1);
     }
     for (;;)
     {
-      Camera2Control.a(this.a);
-      Camera2Control.a(this.a).release();
+      if (!TextUtils.isEmpty(this.n)) {
+        break label295;
+      }
+      parambcol.a().setOnClickListener(null);
       return;
-      Camera2Control.b(this.a, Camera2Control.a(this.a).build());
+      parambcol.a().setTextColor(Color.parseColor("#262626"));
+      parambcol.c().setTextColor(Color.parseColor("#737373"));
+      break;
+      label192:
+      parambcol.a().setVisibility(0);
+      if (this.c)
+      {
+        parambcol.a().setText(bcni.a(parambcol.a(), i, 2, this.l, this.jdField_a_of_type_Bcmx.a, false, false));
+        break label104;
+      }
+      parambcol.a().setText(this.l);
+      break label104;
+      label254:
+      parambcol.c().setVisibility(0);
+      parambcol.c().setText(this.m);
+      break label123;
+      label276:
+      parambcol.a().setGravity(3);
+      parambcol.c().setGravity(3);
     }
+    label295:
+    parambcol.a().setOnClickListener(this);
+  }
+  
+  public void b(JSONObject paramJSONObject)
+  {
+    boolean bool2 = true;
+    this.l = paramJSONObject.optString("title");
+    this.m = paramJSONObject.optString("desc");
+    if (paramJSONObject.optInt("needCenter") == 1)
+    {
+      bool1 = true;
+      this.jdField_b_of_type_Boolean = bool1;
+      this.n = paramJSONObject.optString("jumpUrl");
+      if (paramJSONObject.optInt("highlightTitle", 1) != 1) {
+        break label109;
+      }
+    }
+    label109:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.c = bool1;
+      this.j = paramJSONObject.optString("result_id");
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("extra_report_info");
+      paramJSONObject = paramJSONObject.optJSONObject("imageInfo");
+      if (paramJSONObject == null) {
+        break label114;
+      }
+      a(paramJSONObject);
+      return;
+      bool1 = false;
+      break;
+    }
+    label114:
+    this.jdField_a_of_type_Bcgb = null;
   }
 }
 

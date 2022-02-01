@@ -1,11 +1,19 @@
-import com.tencent.mobileqq.data.MessageForPtt;
-import java.util.ArrayList;
+import com.tencent.mobileqq.portal.PortalManager.ComboNumber;
+import java.util.Comparator;
 
-class aztv
+public class aztv
+  implements Comparator<PortalManager.ComboNumber>
 {
-  public int a;
-  public final ArrayList<MessageForPtt> a = new ArrayList(100);
-  public final int b = 99;
+  public int a(PortalManager.ComboNumber paramComboNumber1, PortalManager.ComboNumber paramComboNumber2)
+  {
+    if (paramComboNumber1.number > paramComboNumber2.number) {
+      return 1;
+    }
+    if (paramComboNumber1.number < paramComboNumber2.number) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

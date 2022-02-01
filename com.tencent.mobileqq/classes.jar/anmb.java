@@ -1,31 +1,82 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class anmb
-  implements Animation.AnimationListener
+class anmb
+  implements anmg
 {
-  public anmb(FrameHelperActivity paramFrameHelperActivity, View paramView) {}
+  anmb(anlu paramanlu) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    paramAnimation = new AnimationSet(true);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.3F, 1.2F, 1.3F, 1.2F, 1, 0.5F, 1, 0.5F);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.6F, 0.5F);
-    paramAnimation.addAnimation(localScaleAnimation);
-    paramAnimation.addAnimation(localAlphaAnimation);
-    paramAnimation.setDuration(30L);
-    paramAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    QLog.e("AVEngineWalper", 1, "onExitRoomComplete");
+    if (this.a.jdField_a_of_type_Bkti != null) {
+      this.a.jdField_a_of_type_Bkti.a();
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(int paramInt, String paramString)
+  {
+    QLog.e("AVEngineWalper", 1, "onRoomDisconnect   result=" + paramInt + ", errinfo=" + paramString);
+    if (this.a.jdField_a_of_type_Bkti != null) {
+      this.a.jdField_a_of_type_Bkti.c(paramInt, paramString);
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(int paramInt, String[] paramArrayOfString)
+  {
+    int k = paramArrayOfString.length;
+    int j = 0;
+    String str;
+    if (j < k)
+    {
+      str = paramArrayOfString[j];
+      QLog.i("AVEngineWalper", 1, String.format("onEndpointsUpdateInfo|eventid=%d, id=%s", new Object[] { Integer.valueOf(paramInt), str }));
+      if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+        break label237;
+      }
+    }
+    label237:
+    for (int i = ((Integer)this.a.jdField_a_of_type_JavaUtilMap.get(str)).intValue();; i = 0)
+    {
+      switch (paramInt)
+      {
+      default: 
+        label116:
+        if (i != 0) {
+          this.a.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
+        }
+        break;
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        i |= 0x20;
+        break label116;
+        i &= 0xFFFFFFDF;
+        break label116;
+        i |= 0x1;
+        break label116;
+        i &= 0xFFFFFFFE;
+        break label116;
+        if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+          this.a.jdField_a_of_type_JavaUtilMap.remove(str);
+        }
+      }
+      if (this.a.jdField_a_of_type_Bkti != null) {
+        this.a.jdField_a_of_type_Bkti.a(paramInt, paramArrayOfString);
+      }
+      return;
+    }
+  }
+  
+  public void a(String[] paramArrayOfString)
+  {
+    QLog.e("AVEngineWalper", 1, "onSemiAutoRecvCameraVideo");
+    if (this.a.jdField_a_of_type_Bkti != null) {
+      this.a.jdField_a_of_type_Bkti.a(paramArrayOfString);
+    }
+  }
 }
 
 

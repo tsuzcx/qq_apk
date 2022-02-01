@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ark.API;
 
-import apix;
-import apjh;
+import apwn;
+import apwx;
 
 public class ArkAppQQModule$8$1
   implements Runnable
 {
-  public ArkAppQQModule$8$1(apjh paramapjh) {}
+  public ArkAppQQModule$8$1(apwx paramapwx) {}
   
   public void run()
   {
-    apix.a(this.a.jdField_a_of_type_Apix, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_JavaLangString, 1);
+    apwn.a(this.a.jdField_a_of_type_Apwn, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_JavaLangString, 1);
   }
 }
 

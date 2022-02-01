@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.OldBigDataChannelManager.1.1;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
+import java.util.Map;
 
-public class axen
-  extends AccountObserver
+class axen
+  extends axek<axem>
 {
-  axen(axem paramaxem) {}
-  
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
+  public axen(axem paramaxem)
   {
-    ThreadManager.getFileThreadHandler().post(new OldBigDataChannelManager.1.1(this));
+    super(paramaxem);
+  }
+  
+  public void a(axem paramaxem, boolean paramBoolean, axeh paramaxeh)
+  {
+    if (paramaxem == null) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      axem.a(paramaxem, (axee)axem.a(paramaxem).get(paramaxeh.h));
+      return;
+    }
+    axem.a(paramaxem, paramaxeh.jdField_a_of_type_JavaLangString, paramaxeh.jdField_a_of_type_Int, 1001);
   }
 }
 

@@ -1,220 +1,54 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.CodedInputStreamMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentDivider;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
 
 public class qnb
+  extends qnd
 {
-  public static int a(PBEnumField paramPBEnumField)
+  public qnb(Context paramContext, aoof paramaoof, sel paramsel)
   {
-    if (paramPBEnumField.has()) {
-      return paramPBEnumField.get();
-    }
-    return 0;
+    super(paramContext, paramaoof, paramsel);
   }
   
-  public static int a(PBInt32Field paramPBInt32Field, int paramInt)
+  public qjh g()
   {
-    if (paramPBInt32Field.has()) {
-      paramInt = paramPBInt32Field.get();
-    }
-    return paramInt;
+    this.jdField_a_of_type_Qjg = new ComponentContentGridImage(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
   
-  public static int a(PBUInt32Field paramPBUInt32Field)
+  public qjh o()
   {
-    if (paramPBUInt32Field.has()) {
-      return paramPBUInt32Field.get();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(this.jdField_a_of_type_JavaLangObject);
     }
-    return 0;
-  }
-  
-  public static int a(PBUInt32Field paramPBUInt32Field, int paramInt)
-  {
-    if (paramPBUInt32Field.has()) {
-      paramInt = paramPBUInt32Field.get();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
     }
-    return paramInt;
-  }
-  
-  public static long a(PBInt64Field paramPBInt64Field)
-  {
-    if (paramPBInt64Field.has()) {
-      return paramPBInt64Field.get();
-    }
-    return 0L;
-  }
-  
-  public static long a(PBUInt64Field paramPBUInt64Field)
-  {
-    if (paramPBUInt64Field.has()) {
-      return paramPBUInt64Field.get();
-    }
-    return 0L;
-  }
-  
-  public static long a(PBUInt64Field paramPBUInt64Field, long paramLong)
-  {
-    if (paramPBUInt64Field.has()) {
-      paramLong = paramPBUInt64Field.get();
-    }
-    return paramLong;
-  }
-  
-  public static <T extends MessageMicro<T>> T a(T paramT)
-  {
-    if (paramT.has()) {
-      return paramT.get();
-    }
-    return null;
-  }
-  
-  public static <T extends MessageMicro<T>> T a(byte[] paramArrayOfByte, T paramT)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      paramArrayOfByte = null;
-    }
-    do
+    if (this.jdField_a_of_type_Qjg != null)
     {
-      return paramArrayOfByte;
-      try
-      {
-        paramT.mergeFrom(paramArrayOfByte);
-        return paramT;
+      if ((this.jdField_a_of_type_Qjg instanceof ComponentContentGridImage)) {
+        ((ComponentContentGridImage)this.jdField_a_of_type_Qjg).setMIReadInJoyModel(this.jdField_a_of_type_JavaLangObject);
       }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        paramArrayOfByte = paramT;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.readinjoy.RIJPBFieldUtils", 2, "postRead_mergeFrom" + QLog.getStackTraceString(localInvalidProtocolBufferMicroException));
-    return paramT;
-  }
-  
-  public static <T extends MessageMicro<T>> PBRepeatMessageField<T> a(byte[] paramArrayOfByte, Class<T> paramClass)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      paramArrayOfByte = null;
+      this.jdField_a_of_type_Qjg.a(ComponentContentGridImage.a(((ppu)this.jdField_a_of_type_JavaLangObject).a()));
     }
-    for (;;)
-    {
-      return paramArrayOfByte;
-      CodedInputStreamMicro localCodedInputStreamMicro = CodedInputStreamMicro.newInstance(paramArrayOfByte);
-      paramClass = PBField.initRepeatMessage(paramClass);
-      paramArrayOfByte = paramClass;
-      try
-      {
-        if (!localCodedInputStreamMicro.isAtEnd())
-        {
-          localCodedInputStreamMicro.readTag();
-          paramClass.readFrom(localCodedInputStreamMicro);
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.readinjoy.RIJPBFieldUtils", 2, "postRead_readFromStream" + QLog.getStackTraceString(paramArrayOfByte));
-        }
-      }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider.a(this.jdField_a_of_type_JavaLangObject);
     }
-    return null;
-  }
-  
-  public static String a(PBBytesField paramPBBytesField)
-  {
-    if ((paramPBBytesField.has()) && (paramPBBytesField.get() != null)) {
-      return paramPBBytesField.get().toStringUtf8();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
     }
-    return null;
-  }
-  
-  public static String a(PBBytesField paramPBBytesField, String paramString)
-  {
-    String str = paramString;
-    if (paramPBBytesField.has())
-    {
-      str = paramString;
-      if (paramPBBytesField.get() != null) {
-        str = paramPBBytesField.get().toStringUtf8();
-      }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(this.jdField_a_of_type_JavaLangObject);
     }
-    return str;
-  }
-  
-  public static String a(PBStringField paramPBStringField)
-  {
-    if (paramPBStringField.has()) {
-      return paramPBStringField.get();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.a(this.jdField_a_of_type_JavaLangObject);
     }
-    return null;
-  }
-  
-  public static String a(PBStringField paramPBStringField, String paramString)
-  {
-    if (paramPBStringField.has()) {
-      paramString = paramPBStringField.get();
-    }
-    return paramString;
-  }
-  
-  public static <T extends MessageMicro<T>> List<T> a(PBRepeatMessageField<T> paramPBRepeatMessageField)
-  {
-    if (paramPBRepeatMessageField.has()) {
-      return paramPBRepeatMessageField.get();
-    }
-    return null;
-  }
-  
-  public static <T extends MessageMicro<T>> List<T> a(byte[] paramArrayOfByte, Class<T> paramClass)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {}
-    do
-    {
-      return null;
-      paramArrayOfByte = a(paramArrayOfByte, paramClass);
-    } while ((paramArrayOfByte == null) || (!paramArrayOfByte.has()));
-    return paramArrayOfByte.get();
-  }
-  
-  public static void a(PBBytesField paramPBBytesField, String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      paramPBBytesField.set(ByteStringMicro.copyFromUtf8(paramString));
-    }
-  }
-  
-  public static void a(PBUInt32Field paramPBUInt32Field, int paramInt)
-  {
-    if (paramInt != -1) {
-      paramPBUInt32Field.set(paramInt);
-    }
-  }
-  
-  public static void a(PBUInt64Field paramPBUInt64Field, long paramLong)
-  {
-    if (paramLong != -1L) {
-      paramPBUInt64Field.set(paramLong);
-    }
-  }
-  
-  public static byte[] a(PBBytesField paramPBBytesField)
-  {
-    if ((paramPBBytesField.has()) && (paramPBBytesField.get() != null)) {
-      return paramPBBytesField.get().toByteArray();
-    }
-    return null;
+    return this;
   }
 }
 

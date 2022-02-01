@@ -1,25 +1,21 @@
-import android.view.ViewGroup;
-import java.util.concurrent.ArrayBlockingQueue;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
 public class snb
+  implements InvocationHandler
 {
-  private int jdField_a_of_type_Int;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public ArrayBlockingQueue a;
-  private snc jdField_a_of_type_Snc;
-  private int b;
+  public snb(FastWebActivity.1 param1) {}
   
-  public snb(int paramInt1, int paramInt2, ViewGroup paramViewGroup, snc paramsnc)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_Snc = paramsnc;
-  }
-  
-  public snb(int paramInt, ViewGroup paramViewGroup, snc paramsnc)
-  {
-    this(paramInt, 1, paramViewGroup, paramsnc);
+    this.a.this$0.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    FastWebActivity.a(this.a.this$0).setMaskBackGroundDrawable(new ColorDrawable(0));
+    return null;
   }
 }
 

@@ -1,53 +1,38 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+import com.tencent.widget.AdapterView;
 
 public class aqyc
+  implements bljo
 {
-  private static String jdField_a_of_type_JavaLangString = "https://club.vip.qq.com/official?_wv=16778247&_wwv=68&_nav_alpha=0&pay_src=10&_wvx=10&_proxy=1";
-  private boolean jdField_a_of_type_Boolean;
+  public aqyc(TimeSelectView paramTimeSelectView) {}
   
-  @NonNull
-  public static aqyc a(String paramString)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    aqyc localaqyc = new aqyc();
-    if (TextUtils.isEmpty(paramString))
+    TimeSelectView.a(this.a, paramView, 1);
+    TimeSelectView.a(this.a, paramView, true);
+    if ((paramView != null) && (paramView.getTag() != null))
     {
-      localaqyc.jdField_a_of_type_Boolean = false;
-      return localaqyc;
-    }
-    a(paramString);
-    localaqyc.jdField_a_of_type_Boolean = true;
-    return localaqyc;
-  }
-  
-  public static String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  private static void a(String paramString)
-  {
-    try
-    {
-      jdField_a_of_type_JavaLangString = new JSONObject(paramString).getString("qqvip_vip_account");
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt)
+        {
+          TimeSelectView.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+          TimeSelectView.a(this.a, paramAdapterView.getChildAt(paramInt), false);
+        }
+        paramInt += 1;
+      }
     }
   }
   
-  public Boolean a()
-  {
-    return Boolean.valueOf(this.jdField_a_of_type_Boolean);
-  }
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqyc
  * JD-Core Version:    0.7.0.1
  */

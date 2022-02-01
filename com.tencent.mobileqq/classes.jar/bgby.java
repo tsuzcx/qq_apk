@@ -1,22 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 class bgby
-  implements DialogInterface.OnDismissListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bgby(bgbw parambgbw) {}
+  bgby(bgbw parambgbw, boolean paramBoolean) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onGlobalLayout()
   {
-    if ((this.a.jdField_a_of_type_Int == -1) && ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)))
-    {
-      ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopShareUtility", 2, "mShareActionSheet noItemClick, onDismiss");
-      }
-    }
+    bgbw.a(this.jdField_a_of_type_Bgbw).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    bgbw.b(this.jdField_a_of_type_Bgbw).setVisibility(4);
+    bgbw.a(this.jdField_a_of_type_Bgbw, this.jdField_a_of_type_Boolean, bgbw.a(this.jdField_a_of_type_Bgbw), bgbw.c(this.jdField_a_of_type_Bgbw));
   }
 }
 

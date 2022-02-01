@@ -1,46 +1,104 @@
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.avgame.gameroom.stage.guessaction.GuessActionStageView;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.gamelogic.data.Player;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class nbx
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements ncg
 {
-  public nbx(GuessActionStageView paramGuessActionStageView, String paramString) {}
+  protected nbp a;
+  protected nch a;
   
-  public void onGlobalLayout()
+  public nbx(nch paramnch)
   {
-    int i = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionGuessActionStageView.jdField_a_of_type_AndroidWidgetTextView.getWidth() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionGuessActionStageView.jdField_a_of_type_AndroidWidgetTextView.getPaddingLeft() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionGuessActionStageView.jdField_a_of_type_AndroidWidgetTextView.getPaddingRight();
-    if (QLog.isColorLevel())
+    this.jdField_a_of_type_Nch = paramnch;
+  }
+  
+  public int a()
+  {
+    return myk.a().a().jdField_a_of_type_Int;
+  }
+  
+  public List<mzj> a()
+  {
+    return myk.a().a().jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+  }
+  
+  public void a()
+  {
+    mze localmze = myk.a().a();
+    myk.a().a(localmze.a(), myk.a().a().getAccount(), 0, 3);
+  }
+  
+  public void a(mze parammze)
+  {
+    this.jdField_a_of_type_Nch.a(parammze);
+  }
+  
+  public void a(mzj parammzj, int paramInt)
+  {
+    if (parammzj != null)
     {
-      QLog.d("GuessActionStageView", 2, "onUpdateCurTopic content = " + this.jdField_a_of_type_JavaLangString);
-      QLog.d("GuessActionStageView", 2, "onUpdateCurTopic contentWidth  = " + this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionGuessActionStageView.jdField_a_of_type_AndroidWidgetTextView.getWidth());
-      QLog.d("GuessActionStageView", 2, "onUpdateCurTopic caluWidth  = " + i);
+      myk.a().b(parammzj.jdField_a_of_type_Int);
+      bdll.b(null, "dc00898", "", "", "0X800B06D", "0X800B06D", parammzj.jdField_a_of_type_Int, 0, "", "" + myk.a().a().a().players.size(), "", "");
     }
-    if (i > 0)
-    {
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionGuessActionStageView.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      if (ngk.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionGuessActionStageView.jdField_a_of_type_AndroidWidgetTextView) > 1)
-      {
-        this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionGuessActionStageView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionGuessActionStageView.jdField_a_of_type_Nbl.a().b());
-        localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionGuessActionStageView.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-        localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionGuessActionStageView.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth();
-        localLayoutParams.height = (localLayoutParams.width * 130 / 478);
-        this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionGuessActionStageView.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
-      }
-    }
-    else
-    {
+  }
+  
+  public void a(nbp paramnbp)
+  {
+    this.jdField_a_of_type_Nbp = paramnbp;
+  }
+  
+  public boolean a()
+  {
+    return myk.a().a();
+  }
+  
+  public void b()
+  {
+    mze localmze = myk.a().a();
+    myk.a().a(localmze.a(), myk.a().a().getAccount(), 1, 3);
+  }
+  
+  public void b(mzj parammzj, int paramInt)
+  {
+    int j = 0;
+    Object localObject1 = this.jdField_a_of_type_Nbp.c();
+    QLog.i("GameListPresenterImp", 1, "clickBeginGame players:" + localObject1);
+    if (((List)localObject1).size() <= 1) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionGuessActionStageView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionGuessActionStageView.jdField_a_of_type_Nbl.a().a());
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionGuessActionStageView.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionGuessActionStageView.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth();
-    localLayoutParams.height = (localLayoutParams.width * 110 / 478);
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionGuessActionStageView.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
+    paramInt = 0;
+    for (;;)
+    {
+      int i = j;
+      if (paramInt < ((List)localObject1).size())
+      {
+        if ((((List)localObject1).get(paramInt) != null) && (((Player)((List)localObject1).get(paramInt)).status == 0)) {
+          i = 1;
+        }
+      }
+      else
+      {
+        if ((i != 0) || (parammzj == null)) {
+          break;
+        }
+        Object localObject2 = myk.a().a();
+        localObject1 = ((mze)localObject2).a(parammzj.jdField_a_of_type_Int);
+        String str = ((mze)localObject2).jdField_a_of_type_JavaLangString;
+        localObject2 = ((mze)localObject2).b;
+        if ((localObject1 == null) || (((mzk)localObject1).a == null) || (((mzk)localObject1).a.size() <= 0) || (str == null) || (localObject2 == null)) {
+          break label206;
+        }
+        ngq.a(this.jdField_a_of_type_Nch.a(), parammzj.jdField_a_of_type_Int, ((mzk)localObject1).a, str, (String)localObject2);
+        return;
+      }
+      paramInt += 1;
+    }
+    label206:
+    myk.a().a(parammzj.jdField_a_of_type_Int, null);
   }
 }
 

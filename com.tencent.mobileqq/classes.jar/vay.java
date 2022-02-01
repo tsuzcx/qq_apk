@@ -1,39 +1,18 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.subscribe.comment.CommentEditText;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqcircle.beans.QCircleFakeFeed;
 
-class vay
-  implements TextWatcher
+public final class vay
+  implements Parcelable.Creator<QCircleFakeFeed>
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  
-  vay(vax paramvax) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public QCircleFakeFeed a(Parcel paramParcel)
   {
-    if (paramEditable == null) {
-      return;
-    }
-    vax.a(this.jdField_a_of_type_Vax).removeTextChangedListener(this);
-    if ((paramEditable.toString().length() > 80) && (this.jdField_a_of_type_Int + this.b <= paramEditable.toString().length()))
-    {
-      int i = this.jdField_a_of_type_Int + this.b - (paramEditable.toString().length() - 80);
-      paramEditable = paramEditable.toString().substring(0, i) + paramEditable.toString().substring(this.jdField_a_of_type_Int + this.b);
-      vax.a(this.jdField_a_of_type_Vax).setText(paramEditable);
-      vax.a(this.jdField_a_of_type_Vax).setSelection(i);
-      vtt.a(-1L, BaseApplicationImpl.getContext(), 1, anni.a(2131697133), 1);
-    }
-    vax.a(this.jdField_a_of_type_Vax).addTextChangedListener(this);
+    return new QCircleFakeFeed(paramParcel);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public QCircleFakeFeed[] a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt3;
+    return new QCircleFakeFeed[paramInt];
   }
 }
 

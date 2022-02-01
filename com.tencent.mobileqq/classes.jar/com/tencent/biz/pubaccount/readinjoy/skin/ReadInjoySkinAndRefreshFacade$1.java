@@ -1,68 +1,45 @@
 package com.tencent.biz.pubaccount.readinjoy.skin;
 
 import com.tencent.common.app.AppInterface;
-import rcs;
-import rcw;
-import rcx;
-import rda;
-import rdd;
-import rdr;
-import rdv;
+import qtp;
+import qtq;
+import qtt;
+import qtw;
+import quk;
+import quo;
 
 public class ReadInjoySkinAndRefreshFacade$1
   implements Runnable
 {
-  public ReadInjoySkinAndRefreshFacade$1(rdr paramrdr) {}
+  public ReadInjoySkinAndRefreshFacade$1(quk paramquk) {}
   
   public void run()
   {
-    Object localObject = (rcx)this.this$0.a.getManager(270);
-    int i = rdr.a(this.this$0);
-    RefreshData localRefreshData = ((rcx)localObject).a(this.this$0.a.getApp(), i);
+    Object localObject = (qtq)this.this$0.a.getManager(270);
+    int i = quk.a(this.this$0);
+    RefreshData localRefreshData = ((qtq)localObject).a(this.this$0.a.getApp(), i);
     int j = (int)(System.currentTimeMillis() / 1000L);
-    boolean bool;
-    rdd localrdd;
-    SkinData localSkinData;
-    if ((localRefreshData != null) && (localRefreshData.isShowInSource(rdr.a(this.this$0))) && (j >= localRefreshData.beginTime) && (j <= localRefreshData.endTime)) {
-      if (rdv.a(localRefreshData.id)) {
+    if ((localRefreshData != null) && (localRefreshData.isShowInSource(quk.a(this.this$0))) && (j >= localRefreshData.beginTime) && (j <= localRefreshData.endTime)) {
+      if (quo.a(localRefreshData.id)) {
         if (localRefreshData.isShown)
         {
-          ((rcx)localObject).a(1, localRefreshData.id, localRefreshData.seq, i);
-          ((rcx)localObject).a(true);
-          bool = true;
-          localObject = (GuideData)((rcw)this.this$0.a.getManager(271)).a("operation_guide");
-          localrdd = (rdd)this.this$0.a.getManager(261);
-          localSkinData = localrdd.a(this.this$0.a.getApp());
-          if ((localSkinData == null) || (j < localSkinData.beginTime) || (j > localSkinData.endTime)) {
-            break label361;
-          }
-          if (!rcs.a(localSkinData.id)) {
-            break label341;
-          }
-          localrdd.a(1, localSkinData.id, bool);
+          ((qtq)localObject).a(1, localRefreshData.id, localRefreshData.seq, i);
+          ((qtq)localObject).a(true);
         }
       }
     }
     for (;;)
     {
-      ((rda)this.this$0.a.getBusinessHandler(121)).a(localSkinData, null, localRefreshData, (GuideData)localObject, rdr.a(this.this$0));
+      localObject = (GuideData)((qtp)this.this$0.a.getManager(271)).a("operation_guide");
+      SkinData localSkinData = ((qtw)this.this$0.a.getManager(261)).a(this.this$0.a.getApp());
+      ((qtt)this.this$0.a.getBusinessHandler(121)).a(localSkinData, null, localRefreshData, (GuideData)localObject, quk.a(this.this$0));
       return;
-      ((rcx)localObject).a(0, "", -1L, i);
-      bool = false;
-      break;
-      ((rcx)localObject).a(0, "", -1L, i);
-      ((rcx)localObject).a(localRefreshData, rdr.a(this.this$0));
-      bool = false;
-      break;
-      ((rcx)localObject).a(0, "", -1L, i);
-      bool = false;
-      break;
-      label341:
-      localrdd.a(0, "", bool);
-      localrdd.a(localSkinData);
+      ((qtq)localObject).a(0, "", -1L, i);
       continue;
-      label361:
-      localrdd.a(0, "", bool);
+      ((qtq)localObject).a(0, "", -1L, i);
+      ((qtq)localObject).a(localRefreshData, quk.a(this.this$0));
+      continue;
+      ((qtq)localObject).a(0, "", -1L, i);
     }
   }
 }

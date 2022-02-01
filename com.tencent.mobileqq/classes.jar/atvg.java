@@ -1,854 +1,666 @@
-import android.annotation.TargetApi;
-import android.content.ContentResolver;
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
-import android.database.Cursor;
-import android.graphics.drawable.AdaptiveIconDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.os.Environment;
-import android.provider.MediaStore.Audio.Media;
-import android.provider.MediaStore.Images.Media;
-import android.provider.MediaStore.Video.Media;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
 import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileBaseTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil.4;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil.5;
-import com.tencent.mobileqq.filemanager.util.ReflectBuilder;
-import com.tencent.mobileqq.filemanager.util.ReflectBuilder.WrongParamException;
+import com.tencent.mobileqq.filemanager.core.FileUploader.1;
+import com.tencent.mobileqq.filemanager.core.FileUploader.2;
+import com.tencent.mobileqq.filemanager.core.FileUploader.3;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.SkinnableBitmapDrawable;
-import com.tencent.theme.SkinnableNinePatchDrawable;
-import java.io.File;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.concurrent.Executor;
+import mqq.os.MqqHandler;
 
 public class atvg
+  implements atvs, atvw
 {
-  private static Comparator<FileInfo> a = new atvh();
+  private int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
+  private atvi jdField_a_of_type_Atvi;
+  private atvj jdField_a_of_type_Atvj = new atvh(this);
+  private final atvr jdField_a_of_type_Atvr;
+  private atvx jdField_a_of_type_Atvx;
+  private InputStream jdField_a_of_type_JavaIoInputStream;
+  private final String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private final long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
+  private long jdField_c_of_type_Long;
+  private boolean jdField_c_of_type_Boolean;
+  private int jdField_d_of_type_Int;
+  private long jdField_d_of_type_Long;
+  private int jdField_e_of_type_Int;
+  private long jdField_e_of_type_Long;
+  private long f;
+  private long g;
   
-  public static int a(Context paramContext)
+  private atvg(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5)
   {
-    localObject = null;
-    localContext = null;
-    int j = 0;
-    try
-    {
-      paramContext = b(paramContext, "1=1 )GROUP BY (_data", null, 0);
-      localContext = paramContext;
-      localObject = paramContext;
-      int i = paramContext.getCount();
-      j = i;
-      if (paramContext != null)
-      {
-        paramContext.close();
-        j = i;
-      }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Long = new VFSFile(paramString1).length();
+    this.jdField_a_of_type_Atvr = new atvr(paramQQAppInterface, paramString4);
+    this.jdField_a_of_type_Atvr.a(paramBoolean);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Atvr.a();
+    this.jdField_a_of_type_Atvx = atvo.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2, paramString2, paramString3, this.jdField_b_of_type_Long, paramBoolean, paramString5);
+    if (this.jdField_a_of_type_Atvx != null) {
+      this.jdField_a_of_type_Atvx.a(this);
     }
-    catch (Exception paramContext)
-    {
-      do
-      {
-        localObject = localContext;
-        paramContext.printStackTrace();
-      } while (localContext == null);
-      localContext.close();
-      return 0;
-    }
-    finally
-    {
-      if (localObject == null) {
-        break label77;
-      }
-      ((Cursor)localObject).close();
-    }
-    return j;
   }
   
-  private static Cursor a(Context paramContext, String paramString, String[] paramArrayOfString, int paramInt)
+  private atvg(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, List<String> paramList, String paramString4, boolean paramBoolean, String paramString5)
   {
-    return paramContext.getContentResolver().query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, new String[] { "_id", "bucket_display_name", "_data", "bucket_id", "bucket_display_name" }, paramString, paramArrayOfString, "date_added desc");
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Long = new VFSFile(paramString1).length();
+    this.jdField_a_of_type_Atvr = new atvr(paramQQAppInterface, paramList, paramString4);
+    this.jdField_a_of_type_Atvr.a(paramBoolean);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Atvr.a();
+    this.jdField_a_of_type_Atvx = atvo.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2, paramString2, paramString3, this.jdField_b_of_type_Long, paramBoolean, paramString5);
+    if (this.jdField_a_of_type_Atvx != null) {
+      this.jdField_a_of_type_Atvx.a(this);
+    }
   }
   
-  public static Drawable a(Context paramContext, String paramString)
+  private atvg(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2, String paramString1, List<String> paramList, String paramString2)
   {
-    try
-    {
-      Object localObject = paramContext.getPackageManager().getPackageArchiveInfo(paramString, 1);
-      if ((localObject != null) && (((PackageInfo)localObject).applicationInfo != null))
-      {
-        localObject = ((PackageInfo)localObject).applicationInfo;
-        AssetManager localAssetManager = (AssetManager)AssetManager.class.newInstance();
-        new ReflectBuilder().a(8192).a(true).a("addAssetPath").a(AssetManager.class, localAssetManager).a(new Class[] { String.class }).a(new Object[] { paramString }).a();
-        paramContext = new Resources(localAssetManager, paramContext.getResources().getDisplayMetrics(), paramContext.getResources().getConfiguration()).getDrawable(((ApplicationInfo)localObject).icon);
-      }
-      boolean bool;
-      label181:
-      label190:
-      label199:
-      label208:
-      label217:
-      paramString = null;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Long = new VFSFile(paramString1).length();
+    this.jdField_a_of_type_Atvr = new atvr(paramQQAppInterface, paramList, paramString2);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Atvr.a();
+    this.jdField_a_of_type_Atvx = atwk.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Atvx != null) {
+      this.jdField_a_of_type_Atvx.a(this);
     }
-    catch (InstantiationException paramString)
-    {
-      try
-      {
-        if (a(paramContext)) {
-          return null;
-        }
-        paramString = paramContext;
-        if (Build.VERSION.SDK_INT < 26) {
-          return paramString;
-        }
-        paramString = paramContext;
-        if (!(paramContext instanceof AdaptiveIconDrawable)) {
-          return paramString;
-        }
-        paramString = (AdaptiveIconDrawable)paramContext;
-        bool = a(paramString.getForeground(), paramString.getBackground());
-        paramString = paramContext;
-        if (!bool) {
-          return paramString;
-        }
-        return null;
-      }
-      catch (NoSuchMethodException paramString)
-      {
-        break label217;
-      }
-      catch (InvocationTargetException paramString)
-      {
-        break label208;
-      }
-      catch (ReflectBuilder.WrongParamException paramString)
-      {
-        break label199;
-      }
-      catch (IllegalAccessException paramString)
-      {
-        break label190;
-      }
-      catch (InstantiationException paramString)
-      {
-        break label181;
-      }
-      paramString = paramString;
-      paramContext = null;
-      paramString.printStackTrace();
-      return paramContext;
-    }
-    catch (IllegalAccessException paramString)
-    {
-      paramContext = null;
-      paramString.printStackTrace();
-      return paramContext;
-    }
-    catch (ReflectBuilder.WrongParamException paramString)
-    {
-      paramContext = null;
-      paramString.printStackTrace();
-      return paramContext;
-    }
-    catch (InvocationTargetException paramString)
-    {
-      paramContext = null;
-      paramString.printStackTrace();
-      return paramContext;
-    }
-    catch (NoSuchMethodException paramString)
-    {
-      paramContext = null;
-      paramString.printStackTrace();
-      return paramContext;
-    }
-    return paramString;
   }
   
-  public static String a(String paramString)
+  public static atvg a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5)
   {
-    if (paramString == null) {
+    if (paramString1 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader strFilePath is null");
+      }
       return null;
     }
-    PackageManager localPackageManager = BaseApplicationImpl.getContext().getPackageManager();
-    PackageInfo localPackageInfo = localPackageManager.getPackageArchiveInfo(paramString, 1);
-    if (localPackageInfo != null) {
-      return localPackageInfo.applicationInfo.loadLabel(localPackageManager).toString();
-    }
-    return atvo.a(paramString);
-  }
-  
-  private static String a(String paramString, int paramInt)
-  {
-    String str = anni.a(2131703284);
-    switch (paramInt)
+    if (paramString1.length() == 0)
     {
-    default: 
-      return str;
-    case 3: 
-      return b(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader strFilePath is empty");
+      }
+      return null;
     }
-    return c(paramString);
-  }
-  
-  public static List<PackageInfo> a(Context paramContext)
-  {
-    localArrayList = new ArrayList();
-    paramContext = paramContext.getPackageManager();
-    try
+    if (paramString2 == null)
     {
-      paramContext = paramContext.getInstalledPackages(1024);
-      int i = 0;
-      while (i < paramContext.size())
-      {
-        PackageInfo localPackageInfo = (PackageInfo)paramContext.get(i);
-        int j = localPackageInfo.applicationInfo.flags;
-        ApplicationInfo localApplicationInfo = localPackageInfo.applicationInfo;
-        if (((j & 0x1) <= 0) && (atwl.a(localPackageInfo.applicationInfo.publicSourceDir))) {
-          localArrayList.add(localPackageInfo);
-        }
-        i += 1;
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader strCheckSum is null");
       }
-      return localArrayList;
+      return null;
     }
-    catch (Exception paramContext) {}
-  }
-  
-  @TargetApi(9)
-  public static List<FileInfo> a(Context paramContext, QfileBaseTabView paramQfileBaseTabView)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = a(paramContext);
-    paramContext = paramContext.getPackageManager();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    if (paramString3 == null)
     {
-      PackageInfo localPackageInfo = (PackageInfo)((Iterator)localObject).next();
-      try
-      {
-        FileInfo localFileInfo = new FileInfo(localPackageInfo.applicationInfo.publicSourceDir);
-        localFileInfo.b(5);
-        localFileInfo.d(localPackageInfo.applicationInfo.loadLabel(paramContext).toString());
-        localFileInfo.c(localPackageInfo.applicationInfo.packageName + ".apk");
-        if (Build.VERSION.SDK_INT >= 9) {
-          localFileInfo.b(localPackageInfo.lastUpdateTime);
-        }
-        localFileInfo.a(anni.a(2131703286));
-        localArrayList.add(localFileInfo);
-        if (paramQfileBaseTabView != null) {
-          paramQfileBaseTabView.a(localFileInfo);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader strSHA is null");
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+      return null;
     }
-    Collections.sort(localArrayList, a);
-    return localArrayList;
+    if (paramString4 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader strUrl is null");
+      }
+      return null;
+    }
+    if (paramString4.length() == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader strUrl is empty");
+      }
+      return null;
+    }
+    return new atvg(paramQQAppInterface, paramLong, paramInt1, paramInt2, paramString1, paramString2, paramString3, paramString4, paramBoolean, paramString5);
   }
   
-  public static Map<String, List<FileInfo>> a(Context paramContext)
+  public static atvg a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, List<String> paramList, String paramString4, boolean paramBoolean, String paramString5)
   {
-    paramContext = a(paramContext, null, 0);
-    if (paramContext != null) {
-      a(paramContext);
+    if (paramString1 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader strFilePath is null");
+      }
+      return null;
     }
-    return paramContext;
+    if (paramString1.length() == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader strFilePath is empty");
+      }
+      return null;
+    }
+    if (paramString2 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader strCheckSum is null");
+      }
+      return null;
+    }
+    if (paramString3 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader strSHA is null");
+      }
+      return null;
+    }
+    if (paramList == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader lstUrl is null");
+      }
+      return null;
+    }
+    if (paramList.size() == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader lstUrl is empty");
+      }
+      return null;
+    }
+    if (paramString4 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader urlParams is null");
+      }
+      return null;
+    }
+    if (paramString4.length() == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader urlParams is empty");
+      }
+      return null;
+    }
+    return new atvg(paramQQAppInterface, paramLong, paramInt1, paramInt2, paramString1, paramString2, paramString3, paramList, paramString4, paramBoolean, paramString5);
+  }
+  
+  public static atvg a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2, String paramString1, List<String> paramList, String paramString2)
+  {
+    if (paramString1 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader strFilePath is null");
+      }
+      return null;
+    }
+    if (paramString1.length() == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader strFilePath is empty");
+      }
+      return null;
+    }
+    if (paramList == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader lstUrl is null");
+      }
+      return null;
+    }
+    if (paramList.size() == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader lstUrl is empty");
+      }
+      return null;
+    }
+    if (paramString2 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader urlParams is null");
+      }
+      return null;
+    }
+    if (paramString2.length() == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFileUploader urlParams is empty");
+      }
+      return null;
+    }
+    return new atvg(paramQQAppInterface, paramLong, paramInt1, paramInt2, paramString1, paramList, paramString2);
+  }
+  
+  private void a(int paramInt)
+  {
+    String str = null;
+    if (this.jdField_a_of_type_Atvr != null) {
+      str = this.jdField_a_of_type_Atvr.a();
+    }
+    if ((str == null) || (str.length() == 0))
+    {
+      QLog.i("FtnHttpUploader<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] need chang Ip ,but can not get next ip errCode[" + paramInt + "]");
+      return;
+    }
+    this.jdField_b_of_type_JavaLangString = str;
+    this.jdField_c_of_type_Int += 1;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Atvi.a(this.jdField_b_of_type_JavaLangString);
   }
   
   /* Error */
-  public static Map<String, List<FileInfo>> a(Context paramContext, String paramString, int paramInt)
+  private byte[] a(long paramLong)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aload_0
-    //   4: aload_1
-    //   5: aconst_null
-    //   6: iload_2
-    //   7: invokestatic 26	atvg:b	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
-    //   10: astore_0
-    //   11: aload_0
-    //   12: astore_1
-    //   13: aload_0
-    //   14: iconst_0
-    //   15: invokestatic 330	atvg:a	(Landroid/database/Cursor;I)Ljava/util/Map;
-    //   18: astore_3
-    //   19: aload_3
-    //   20: astore_1
-    //   21: aload_0
-    //   22: ifnull +11 -> 33
-    //   25: aload_0
-    //   26: invokeinterface 35 1 0
-    //   31: aload_3
-    //   32: astore_1
-    //   33: aload_1
-    //   34: areturn
-    //   35: astore_3
-    //   36: aconst_null
-    //   37: astore_0
-    //   38: aload_0
-    //   39: astore_1
-    //   40: aload_3
-    //   41: invokevirtual 38	java/lang/Exception:printStackTrace	()V
-    //   44: aload 4
-    //   46: astore_1
+    //   0: lload_1
+    //   1: lconst_0
+    //   2: lcmp
+    //   3: ifne +12 -> 15
+    //   6: aload_0
+    //   7: invokespecial 203	atvg:b	()Z
+    //   10: ifne +32 -> 42
+    //   13: aconst_null
+    //   14: areturn
+    //   15: aload_0
+    //   16: getfield 205	atvg:g	J
+    //   19: lstore 4
+    //   21: lload_1
+    //   22: lload 4
+    //   24: lcmp
+    //   25: ifle +82 -> 107
+    //   28: aload_0
+    //   29: getfield 155	atvg:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   32: lload_1
+    //   33: aload_0
+    //   34: getfield 205	atvg:g	J
+    //   37: lsub
+    //   38: invokevirtual 211	java/io/InputStream:skip	(J)J
+    //   41: pop2
+    //   42: aload_0
+    //   43: lload_1
+    //   44: putfield 205	atvg:g	J
     //   47: aload_0
-    //   48: ifnull -15 -> 33
+    //   48: getfield 36	atvg:jdField_a_of_type_Atvj	Latvj;
     //   51: aload_0
-    //   52: invokeinterface 35 1 0
-    //   57: aconst_null
-    //   58: areturn
-    //   59: astore_0
-    //   60: aconst_null
-    //   61: astore_1
-    //   62: aload_1
-    //   63: ifnull +9 -> 72
-    //   66: aload_1
-    //   67: invokeinterface 35 1 0
-    //   72: aload_0
-    //   73: athrow
-    //   74: astore_0
-    //   75: goto -13 -> 62
-    //   78: astore_3
-    //   79: goto -41 -> 38
+    //   52: getfield 95	atvg:f	J
+    //   55: aload_0
+    //   56: getfield 51	atvg:jdField_b_of_type_Long	J
+    //   59: invokeinterface 216 5 0
+    //   64: istore_3
+    //   65: iload_3
+    //   66: newarray byte
+    //   68: astore 7
+    //   70: aload_0
+    //   71: getfield 155	atvg:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   74: aload 7
+    //   76: iconst_0
+    //   77: iload_3
+    //   78: invokevirtual 220	java/io/InputStream:read	([BII)I
+    //   81: pop
+    //   82: aload_0
+    //   83: getfield 205	atvg:g	J
+    //   86: lstore_1
+    //   87: aload_0
+    //   88: iload_3
+    //   89: i2l
+    //   90: lload_1
+    //   91: ladd
+    //   92: putfield 205	atvg:g	J
+    //   95: aload 7
+    //   97: areturn
+    //   98: astore 7
+    //   100: aload 7
+    //   102: invokevirtual 223	java/io/IOException:printStackTrace	()V
+    //   105: aconst_null
+    //   106: areturn
+    //   107: lload_1
+    //   108: aload_0
+    //   109: getfield 205	atvg:g	J
+    //   112: lcmp
+    //   113: ifge -71 -> 42
+    //   116: aload_0
+    //   117: invokespecial 203	atvg:b	()Z
+    //   120: istore 6
+    //   122: iload 6
+    //   124: ifeq +71 -> 195
+    //   127: aload_0
+    //   128: getfield 155	atvg:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   131: lload_1
+    //   132: invokevirtual 211	java/io/InputStream:skip	(J)J
+    //   135: pop2
+    //   136: goto -94 -> 42
+    //   139: astore 7
+    //   141: aload_0
+    //   142: aconst_null
+    //   143: putfield 155	atvg:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   146: aload 7
+    //   148: invokevirtual 223	java/io/IOException:printStackTrace	()V
+    //   151: aconst_null
+    //   152: areturn
+    //   153: astore 7
+    //   155: aload 7
+    //   157: invokevirtual 224	java/lang/Exception:printStackTrace	()V
+    //   160: ldc 105
+    //   162: iconst_1
+    //   163: new 158	java/lang/StringBuilder
+    //   166: dup
+    //   167: invokespecial 159	java/lang/StringBuilder:<init>	()V
+    //   170: ldc 226
+    //   172: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   175: aload 7
+    //   177: invokevirtual 227	java/lang/Exception:toString	()Ljava/lang/String;
+    //   180: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   183: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   186: invokestatic 110	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   189: aconst_null
+    //   190: astore 7
+    //   192: goto -97 -> 95
+    //   195: aconst_null
+    //   196: areturn
+    //   197: astore 7
+    //   199: aconst_null
+    //   200: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	82	0	paramContext	Context
-    //   0	82	1	paramString	String
-    //   0	82	2	paramInt	int
-    //   18	14	3	localMap	Map
-    //   35	6	3	localException1	Exception
-    //   78	1	3	localException2	Exception
-    //   1	44	4	localObject	Object
+    //   0	201	0	this	atvg
+    //   0	201	1	paramLong	long
+    //   64	25	3	i	int
+    //   19	4	4	l	long
+    //   120	3	6	bool	boolean
+    //   68	28	7	arrayOfByte	byte[]
+    //   98	3	7	localIOException1	IOException
+    //   139	8	7	localIOException2	IOException
+    //   153	23	7	localException1	Exception
+    //   190	1	7	localObject	Object
+    //   197	1	7	localException2	Exception
     // Exception table:
     //   from	to	target	type
-    //   3	11	35	java/lang/Exception
-    //   3	11	59	finally
-    //   13	19	74	finally
-    //   40	44	74	finally
-    //   13	19	78	java/lang/Exception
+    //   28	42	98	java/io/IOException
+    //   127	136	139	java/io/IOException
+    //   70	95	153	java/lang/Exception
+    //   6	13	197	java/lang/Exception
+    //   15	21	197	java/lang/Exception
+    //   28	42	197	java/lang/Exception
+    //   42	70	197	java/lang/Exception
+    //   100	105	197	java/lang/Exception
+    //   107	122	197	java/lang/Exception
+    //   127	136	197	java/lang/Exception
+    //   141	151	197	java/lang/Exception
+    //   155	189	197	java/lang/Exception
   }
   
-  private static Map<String, List<FileInfo>> a(Cursor paramCursor, int paramInt)
+  private void b(int paramInt)
   {
-    if (paramCursor.getCount() <= 0) {
-      return null;
-    }
-    HashMap localHashMap = new HashMap();
-    int i;
-    int j;
-    int k;
-    int m;
-    String str2;
-    switch (paramInt)
+    this.jdField_a_of_type_Atvj = new atvh(this);
+    ThreadManager.getFileThreadHandler().postDelayed(new FileUploader.3(this), paramInt);
+  }
+  
+  private void b(long paramLong, String paramString)
+  {
+    String str = "RangSizeError_rangError tSize[" + paramLong + "]<=mSize[" + this.f + "], lastRoolbackSize[" + this.jdField_e_of_type_Long + "], retry[" + this.jdField_e_of_type_Int + "]";
+    if (paramLong <= this.jdField_e_of_type_Long)
     {
-    default: 
-      i = 0;
-      j = 0;
-      k = 0;
-      m = 0;
-      if (bgjq.a()) {
-        str2 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath() + "/" + "Camera";
-      }
-      break;
-    }
-    for (;;)
-    {
-      label100:
-      if (paramCursor.moveToNext())
+      int i = this.jdField_e_of_type_Int + 1;
+      this.jdField_e_of_type_Int = i;
+      if (i > 6)
       {
-        Object localObject = paramCursor.getString(m);
-        int n = paramCursor.getInt(k);
-        paramCursor.getInt(j);
-        String str1;
-        if (paramInt != 1) {
-          if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((((String)localObject).contains(str2)) || (((String)localObject).contains("/storage/sdcard1/DCIM/Camera")))) {
-            str1 = "camera";
-          }
-        }
-        for (;;)
-        {
-          if (localObject == null) {
-            break label100;
-          }
-          localObject = FileInfo.a((String)localObject);
-          if (localObject == null) {
-            break label100;
-          }
-          ((FileInfo)localObject).a(n);
-          ((FileInfo)localObject).b(paramInt);
-          ((FileInfo)localObject).a(str1);
-          if (!localHashMap.containsKey(str1)) {
-            localHashMap.put(str1, new ArrayList());
-          }
-          ((List)localHashMap.get(str1)).add(localObject);
-          break label100;
-          m = paramCursor.getColumnIndexOrThrow("_data");
-          k = paramCursor.getColumnIndexOrThrow("_id");
-          i = 0;
-          j = 0;
-          break;
-          m = paramCursor.getColumnIndexOrThrow("_data");
-          k = paramCursor.getColumnIndexOrThrow("_id");
-          j = paramCursor.getColumnIndexOrThrow("bucket_id");
-          i = paramCursor.getColumnIndexOrThrow("bucket_display_name");
-          break;
-          m = paramCursor.getColumnIndexOrThrow("_data");
-          k = paramCursor.getColumnIndexOrThrow("_id");
-          j = paramCursor.getColumnIndexOrThrow("bucket_id");
-          i = paramCursor.getColumnIndexOrThrow("bucket_display_name");
-          break;
-          str1 = paramCursor.getString(i);
-          continue;
-          str1 = anni.a(2131703291);
-        }
+        this.jdField_a_of_type_Atvi.a(true, paramLong, str, paramString);
+        return;
       }
-      return localHashMap;
-      str2 = "/storage/emulated/0/DCIM/Camera";
     }
+    this.jdField_e_of_type_Long = paramLong;
+    this.f = paramLong;
+    new Handler().postDelayed(new FileUploader.2(this), 6000L);
+    this.jdField_a_of_type_Atvi.a(false, paramLong, str, paramString);
   }
   
-  public static void a(FileManagerEntity paramFileManagerEntity)
+  private boolean b()
   {
-    if (paramFileManagerEntity == null) {}
-    while ((paramFileManagerEntity.nFileType != 5) || (paramFileManagerEntity.getCloudType() != 3)) {
-      return;
-    }
-    ThreadManager.post(new FileCategoryUtil.4(paramFileManagerEntity), 8, null, false);
-  }
-  
-  public static void a(Map<String, List<FileInfo>> paramMap)
-  {
-    if (paramMap == null) {}
-    for (;;)
+    if (this.jdField_a_of_type_JavaIoInputStream != null) {}
+    try
     {
-      return;
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext()) {
-        Collections.sort((List)paramMap.get((String)localIterator.next()), a);
-      }
+      this.jdField_a_of_type_JavaIoInputStream.close();
+      this.jdField_a_of_type_JavaIoInputStream = null;
     }
-  }
-  
-  public static void a(TreeMap<Long, FileInfo> paramTreeMap, int paramInt, LinkedHashMap<String, List<FileInfo>> paramLinkedHashMap1, LinkedHashMap<String, List<FileInfo>> paramLinkedHashMap2, List<FileInfo> paramList)
-  {
-    if (paramTreeMap == null) {}
-    for (;;)
-    {
-      return;
-      HashMap localHashMap = new HashMap();
-      LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-      paramTreeMap = paramTreeMap.entrySet().iterator();
-      if (paramTreeMap.hasNext())
-      {
-        FileInfo localFileInfo = (FileInfo)((Map.Entry)paramTreeMap.next()).getValue();
-        if (localFileInfo != null)
-        {
-          paramList.add(0, localFileInfo);
-          if (paramLinkedHashMap2 != null)
-          {
-            str = a(atvo.f(localFileInfo.d()), paramInt);
-            if (!paramLinkedHashMap2.containsKey(str)) {
-              paramLinkedHashMap2.put(str, new ArrayList());
-            }
-            ((List)paramLinkedHashMap2.get(str)).add(localFileInfo);
-          }
-          long l = localFileInfo.b();
-          String str = atxd.a(l);
-          if (!localHashMap.containsValue(str)) {
-            localHashMap.put(str, Integer.valueOf((int)(l / 1000L)));
-          }
-          for (;;)
-          {
-            if (!localLinkedHashMap.containsKey(str)) {
-              localLinkedHashMap.put(str, new ArrayList());
-            }
-            ((List)localLinkedHashMap.get(str)).add(localFileInfo);
-            break;
-            if (((Integer)localHashMap.get(str)).intValue() > l) {
-              localHashMap.put(str, Integer.valueOf((int)(l / 1000L)));
-            }
-          }
-        }
-      }
-      else
-      {
-        paramTreeMap = new ArrayList(localHashMap.entrySet());
-        Collections.sort(paramTreeMap, new atvi());
-        paramTreeMap = paramTreeMap.iterator();
-        while (paramTreeMap.hasNext())
-        {
-          paramLinkedHashMap2 = (Map.Entry)paramTreeMap.next();
-          paramList = (List)localLinkedHashMap.get(paramLinkedHashMap2.getKey());
-          if (paramList.size() > 0)
-          {
-            Collections.sort(paramList, new atvj());
-            paramLinkedHashMap1.put(paramLinkedHashMap2.getKey(), paramList);
-          }
-        }
-      }
-    }
-  }
-  
-  public static void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, HashMap<String, List<FileInfo>> paramHashMap, QfileBaseTabView paramQfileBaseTabView)
-  {
-    if (paramString1 == null) {}
-    do
+    catch (IOException localIOException)
     {
       for (;;)
       {
-        return;
-        if ((paramQfileBaseTabView == null) || (!paramQfileBaseTabView.d())) {
-          try
-          {
-            Thread.sleep(0L);
-            VFSFile localVFSFile = new VFSFile(paramString1);
-            if (localVFSFile.isDirectory())
-            {
-              if (localVFSFile.getName().indexOf(".") == 0) {
-                continue;
-              }
-              paramString1 = localVFSFile.listFiles();
-              if (paramString1 == null) {
-                continue;
-              }
-              int i = 0;
-              while (i < paramString1.length)
-              {
-                if ((!new VFSFile(paramString1[i].getAbsolutePath()).isDirectory()) || (paramBoolean)) {
-                  a(paramBoolean, paramString1[i].getAbsolutePath(), paramString2, paramString3, paramHashMap, paramQfileBaseTabView);
-                }
-                i += 1;
-              }
-            }
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            for (;;)
-            {
-              localInterruptedException.printStackTrace();
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("scanFileList", 2, "inFilter[" + paramString2 + "],outOfFilter[" + paramString3 + "],path[" + paramString1 + "]");
-            }
-            String str = atwl.a(paramString1);
-            Object localObject = str;
-            if (paramString2 != null)
-            {
-              localObject = str;
-              if (paramString2.length() > 0)
-              {
-                if ((str == null) || (str.length() <= 1)) {
-                  continue;
-                }
-                localObject = str.toLowerCase();
-                if (paramString2.indexOf((String)localObject) < 0) {
-                  continue;
-                }
-              }
-            }
-            paramString2 = (String)localObject;
-            if (localObject != null)
-            {
-              paramString2 = (String)localObject;
-              if (((String)localObject).length() > 1)
-              {
-                paramString2 = (String)localObject;
-                if (paramString3 != null)
-                {
-                  paramString2 = (String)localObject;
-                  if (paramString3.length() > 0)
-                  {
-                    paramString2 = ((String)localObject).toLowerCase();
-                    if (paramString3.indexOf(paramString2) >= 0) {
-                      continue;
-                    }
-                  }
-                }
-              }
-            }
-            paramString1 = FileInfo.a(paramString1);
-          }
+        try
+        {
+          this.jdField_a_of_type_JavaIoInputStream = new FileInputStream(this.jdField_a_of_type_JavaLangString);
+          return true;
         }
+        catch (FileNotFoundException localFileNotFoundException)
+        {
+          this.jdField_a_of_type_JavaIoInputStream = null;
+          localFileNotFoundException.printStackTrace();
+        }
+        localIOException = localIOException;
+        localIOException.printStackTrace();
       }
-    } while (paramString1 == null);
-    if (!paramHashMap.containsKey(paramString2)) {
-      paramHashMap.put(paramString2, new ArrayList());
-    }
-    if (paramQfileBaseTabView != null) {
-      paramQfileBaseTabView.a(paramString1);
-    }
-    ((List)paramHashMap.get(paramString2)).add(paramString1);
-  }
-  
-  private static boolean a(Drawable paramDrawable)
-  {
-    if (paramDrawable == null) {}
-    while (((paramDrawable instanceof SkinnableBitmapDrawable)) || ((paramDrawable instanceof SkinnableNinePatchDrawable))) {
-      return true;
     }
     return false;
   }
   
-  private static boolean a(Drawable paramDrawable1, Drawable paramDrawable2)
+  private boolean b(long paramLong)
   {
-    if ((paramDrawable1 == null) || (paramDrawable2 == null)) {}
-    while (((paramDrawable1 instanceof SkinnableBitmapDrawable)) || ((paramDrawable1 instanceof SkinnableNinePatchDrawable)) || ((paramDrawable2 instanceof SkinnableNinePatchDrawable)) || ((paramDrawable2 instanceof SkinnableBitmapDrawable))) {
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString, atvk paramatvk)
-  {
-    if (paramString == null) {
+    byte[] arrayOfByte = a(paramLong);
+    if (arrayOfByte == null)
+    {
+      QLog.e("FtnHttpUploader<FileAssistant>", 1, "getSendStreamSlice return null");
+      ThreadManager.post(new FileUploader.1(this), 5, null, true);
       return false;
     }
-    atvy.a().execute(new FileCategoryUtil.5(paramString, paramatvk));
-    return true;
+    this.jdField_a_of_type_Boolean = false;
+    return this.jdField_a_of_type_Atvx.a(this.jdField_b_of_type_JavaLangString, paramLong, arrayOfByte);
   }
   
-  public static int b(Context paramContext)
+  public int a()
   {
-    return a(paramContext).size();
+    return this.jdField_c_of_type_Int;
   }
   
-  private static Cursor b(Context paramContext, String paramString, String[] paramArrayOfString, int paramInt)
+  public long a()
   {
-    return paramContext.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_id", "_data", "bucket_id", "bucket_display_name" }, paramString, paramArrayOfString, "date_added desc");
+    return this.f;
   }
   
-  private static String b(String paramString)
+  public String a()
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return anni.a(2131703288);
-    }
-    paramString = paramString.toLowerCase();
-    if (".doc|.docx|.wps|.pages|".indexOf(paramString) >= 0) {
-      return "WORD";
-    }
-    if (".ppt|.pptx.|.dps|.keynote|".indexOf(paramString) >= 0) {
-      return "PPT";
-    }
-    if (".xls|.xlsx|.et|.numbers|".indexOf(paramString) >= 0) {
-      return "EXCEL";
-    }
-    if (".pdf|".indexOf(paramString) >= 0) {
-      return "PDF";
-    }
-    return anni.a(2131703290);
+    return this.jdField_b_of_type_JavaLangString;
   }
   
-  public static Map<String, List<FileInfo>> b(Context paramContext)
+  public void a()
   {
-    paramContext = b(paramContext, null, 0);
-    if (paramContext != null) {
-      a(paramContext);
+    try
+    {
+      this.jdField_a_of_type_JavaIoInputStream.close();
+      this.jdField_a_of_type_JavaIoInputStream = null;
+      label12:
+      this.jdField_a_of_type_Atvx.a();
+      this.jdField_a_of_type_Boolean = true;
+      return;
     }
-    return paramContext;
+    catch (Exception localException)
+    {
+      break label12;
+    }
   }
   
-  /* Error */
-  public static Map<String, List<FileInfo>> b(Context paramContext, String paramString, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aload_0
-    //   4: aload_1
-    //   5: aconst_null
-    //   6: iload_2
-    //   7: invokestatic 604	atvg:a	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
-    //   10: astore_0
-    //   11: aload_0
-    //   12: astore_1
-    //   13: aload_0
-    //   14: iconst_2
-    //   15: invokestatic 330	atvg:a	(Landroid/database/Cursor;I)Ljava/util/Map;
-    //   18: astore_3
-    //   19: aload_3
-    //   20: astore_1
-    //   21: aload_0
-    //   22: ifnull +11 -> 33
-    //   25: aload_0
-    //   26: invokeinterface 35 1 0
-    //   31: aload_3
-    //   32: astore_1
-    //   33: aload_1
-    //   34: areturn
-    //   35: astore_3
-    //   36: aconst_null
-    //   37: astore_0
-    //   38: aload_0
-    //   39: astore_1
-    //   40: aload_3
-    //   41: invokevirtual 38	java/lang/Exception:printStackTrace	()V
-    //   44: aload 4
-    //   46: astore_1
-    //   47: aload_0
-    //   48: ifnull -15 -> 33
-    //   51: aload_0
-    //   52: invokeinterface 35 1 0
-    //   57: aconst_null
-    //   58: areturn
-    //   59: astore_0
-    //   60: aconst_null
-    //   61: astore_1
-    //   62: aload_1
-    //   63: ifnull +9 -> 72
-    //   66: aload_1
-    //   67: invokeinterface 35 1 0
-    //   72: aload_0
-    //   73: athrow
-    //   74: astore_0
-    //   75: goto -13 -> 62
-    //   78: astore_3
-    //   79: goto -41 -> 38
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	82	0	paramContext	Context
-    //   0	82	1	paramString	String
-    //   0	82	2	paramInt	int
-    //   18	14	3	localMap	Map
-    //   35	6	3	localException1	Exception
-    //   78	1	3	localException2	Exception
-    //   1	44	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	11	35	java/lang/Exception
-    //   3	11	59	finally
-    //   13	19	74	finally
-    //   40	44	74	finally
-    //   13	19	78	java/lang/Exception
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Atvi.a(true, this.f, 9343, "parseDataErr", null);
   }
   
-  private static Cursor c(Context paramContext, String paramString, String[] paramArrayOfString, int paramInt)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    return paramContext.getContentResolver().query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, new String[] { "_id", "_display_name", "_data" }, paramString, paramArrayOfString, "date_added desc");
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (-9527 == paramInt)
+    {
+      if (paramString1.indexOf("-29602") > 0)
+      {
+        this.jdField_a_of_type_Atvi.a(true, this.f, -29602, paramString1, paramString2);
+        return;
+      }
+      if (paramString1.indexOf("-6101") > 0)
+      {
+        this.jdField_a_of_type_Atvi.a(true, this.f, 9042, paramString1, paramString2);
+        return;
+      }
+      if (paramString1.indexOf("-29120") > 0)
+      {
+        this.jdField_a_of_type_Atvi.h();
+        return;
+      }
+    }
+    if ((paramString1 != null) && (paramString1.contains("SSLPeerUnverifiedException")))
+    {
+      this.jdField_a_of_type_Atvi.a(true, this.f, paramInt, paramString1, paramString2);
+      return;
+    }
+    if (!bhnv.d(BaseApplication.getContext()))
+    {
+      this.jdField_a_of_type_Atvi.a(true, this.f, paramInt, paramString1, paramString2);
+      return;
+    }
+    if (aubb.a(paramInt)) {
+      a(paramInt);
+    }
+    if (this.jdField_a_of_type_Int < 8)
+    {
+      this.jdField_d_of_type_Int += 1;
+      if ((this.jdField_b_of_type_Int < 3) && (9056 == paramInt))
+      {
+        this.jdField_b_of_type_Int += 1;
+        if (paramInt != 9056) {
+          break label280;
+        }
+      }
+    }
+    label280:
+    for (int i = 0;; i = 6000)
+    {
+      this.jdField_a_of_type_Atvi.a(false, this.f, paramInt, paramString1, paramString2);
+      b(i);
+      return;
+      this.jdField_b_of_type_Int = 0;
+      this.jdField_a_of_type_Int += 1;
+      break;
+      this.jdField_a_of_type_Atvi.a(true, this.f, paramInt, paramString1, paramString2);
+      return;
+    }
   }
   
-  private static String c(String paramString)
+  public void a(long paramLong, String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return anni.a(2131703287);
+    if (this.jdField_a_of_type_Boolean) {
+      return;
     }
-    paramString = paramString.toLowerCase();
-    if (".rar|.zip|.7z|.iso|.tar|.gz|".indexOf(paramString) >= 0) {
-      return anni.a(2131703285);
+    this.jdField_a_of_type_Atvj.a();
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_b_of_type_Boolean = false;
+      if (paramLong != this.jdField_d_of_type_Long) {
+        break label59;
+      }
     }
-    if (".txt|.html|.lit|.wdl|.ceb|.pdg|.epub|.caj|.umd|.jar|.mobi|".indexOf(paramString) >= 0) {
-      return anni.a(2131703289);
+    label59:
+    for (this.jdField_c_of_type_Long = 0L; paramLong <= this.f; this.jdField_c_of_type_Long = paramLong)
+    {
+      b(paramLong, paramString);
+      return;
     }
-    if (".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|".indexOf(paramString) >= 0) {
-      return anni.a(2131703283);
+    if ((this.f == 0L) && (paramLong == this.jdField_b_of_type_Long))
+    {
+      this.jdField_c_of_type_Long = this.jdField_b_of_type_Long;
+      this.jdField_c_of_type_Boolean = true;
+      this.jdField_a_of_type_Atvi.f();
+      return;
     }
-    return anni.a(2131703282);
+    this.f = paramLong;
+    if (QLog.isColorLevel()) {
+      QLog.i("FtnHttpUploader<FileAssistant>", 2, "send http data size[" + String.valueOf(this.f) + "] fileSize[" + this.jdField_b_of_type_Long + "] success!");
+    }
+    if (paramLong < this.jdField_b_of_type_Long)
+    {
+      this.jdField_a_of_type_Atvi.a(paramLong);
+      this.jdField_b_of_type_Int = 0;
+      this.jdField_a_of_type_Int = 0;
+      b(this.f);
+      return;
+    }
+    this.jdField_a_of_type_Atvi.g();
   }
   
-  public static Map<String, List<FileInfo>> c(Context paramContext)
+  public void a(atvi paramatvi)
   {
-    paramContext = c(paramContext, "1=1 )GROUP BY (_data", 0);
-    if (paramContext != null) {
-      a(paramContext);
-    }
-    return paramContext;
+    this.jdField_a_of_type_Atvi = paramatvi;
   }
   
-  /* Error */
-  public static Map<String, List<FileInfo>> c(Context paramContext, String paramString, int paramInt)
+  public void a(bhva parambhva) {}
+  
+  public void a(String paramString)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aload_0
-    //   4: aload_1
-    //   5: aconst_null
-    //   6: iload_2
-    //   7: invokestatic 624	atvg:c	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
-    //   10: astore_0
-    //   11: aload_0
-    //   12: astore_1
-    //   13: aload_0
-    //   14: iconst_1
-    //   15: invokestatic 330	atvg:a	(Landroid/database/Cursor;I)Ljava/util/Map;
-    //   18: astore_3
-    //   19: aload_3
-    //   20: astore_1
-    //   21: aload_0
-    //   22: ifnull +11 -> 33
-    //   25: aload_0
-    //   26: invokeinterface 35 1 0
-    //   31: aload_3
-    //   32: astore_1
-    //   33: aload_1
-    //   34: areturn
-    //   35: astore_3
-    //   36: aconst_null
-    //   37: astore_0
-    //   38: aload_0
-    //   39: astore_1
-    //   40: aload_3
-    //   41: invokevirtual 38	java/lang/Exception:printStackTrace	()V
-    //   44: aload 4
-    //   46: astore_1
-    //   47: aload_0
-    //   48: ifnull -15 -> 33
-    //   51: aload_0
-    //   52: invokeinterface 35 1 0
-    //   57: aconst_null
-    //   58: areturn
-    //   59: astore_0
-    //   60: aconst_null
-    //   61: astore_1
-    //   62: aload_1
-    //   63: ifnull +9 -> 72
-    //   66: aload_1
-    //   67: invokeinterface 35 1 0
-    //   72: aload_0
-    //   73: athrow
-    //   74: astore_0
-    //   75: goto -13 -> 62
-    //   78: astore_3
-    //   79: goto -41 -> 38
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	82	0	paramContext	Context
-    //   0	82	1	paramString	String
-    //   0	82	2	paramInt	int
-    //   18	14	3	localMap	Map
-    //   35	6	3	localException1	Exception
-    //   78	1	3	localException2	Exception
-    //   1	44	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	11	35	java/lang/Exception
-    //   3	11	59	finally
-    //   13	19	74	finally
-    //   40	44	74	finally
-    //   13	19	78	java/lang/Exception
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Atvi.a(true, this.f, 9062, "UrlOver", null);
+  }
+  
+  public void a(byte[] paramArrayOfByte) {}
+  
+  public boolean a()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    QLog.i("FtnHttpUploader<FileAssistant>", 1, "interSendFile url:" + this.jdField_b_of_type_JavaLangString + " pos:" + paramLong);
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = false;
+    boolean bool = b(paramLong);
+    if ((bool) && (this.g > paramLong))
+    {
+      this.jdField_d_of_type_Long = (this.g - paramLong);
+      return bool;
+    }
+    this.jdField_d_of_type_Long = 0L;
+    return bool;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long b()
+  {
+    return this.jdField_c_of_type_Long;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_c_of_type_Long = this.jdField_b_of_type_Long;
+      this.jdField_c_of_type_Boolean = true;
+    }
+    this.jdField_a_of_type_Atvi.f();
   }
 }
 

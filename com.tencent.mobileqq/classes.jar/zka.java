@@ -1,20 +1,18 @@
-public class zka
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class zka
+  implements View.OnClickListener
 {
-  public static String a(int[] paramArrayOfInt)
+  zka(zjy paramzjy, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
-      return null;
+    if (zjy.a(this.jdField_a_of_type_Zjy) != null) {
+      zjy.a(this.jdField_a_of_type_Zjy).a(this.jdField_a_of_type_Int);
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramArrayOfInt[0]);
-    int i = 1;
-    while (i < paramArrayOfInt.length)
-    {
-      localStringBuilder.append(",");
-      localStringBuilder.append(paramArrayOfInt[i]);
-      i += 1;
-    }
-    return localStringBuilder.toString();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,34 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.DisTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import java.util.Comparator;
 
-public class adaa
-  implements acxp
+class adaa
+  implements Comparator<MessageRecord>
 {
-  public int a()
-  {
-    return 1004;
-  }
+  adaa(aczw paramaczw) {}
   
-  public boolean a()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = new msg_svc.DisTmp();
-    paramQQAppInterface.dis_uin.set(Long.valueOf(paramMessageRecord.senderuin).longValue());
-    paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramRoutingHead.dis_tmp.set(paramQQAppInterface);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
+    return (int)(paramMessageRecord2.time - paramMessageRecord1.time);
   }
 }
 

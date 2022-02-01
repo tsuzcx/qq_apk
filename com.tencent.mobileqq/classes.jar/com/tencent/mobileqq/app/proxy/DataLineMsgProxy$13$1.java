@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.proxy;
 
-import aonc;
-import aond;
+import apas;
+import apat;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSetList;
 import java.util.Iterator;
@@ -19,14 +19,14 @@ class DataLineMsgProxy$13$1
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
       i = j;
-      if (aonc.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0) != null)
+      if (apas.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0) != null)
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
         i = 0;
         if (localIterator.hasNext())
         {
           DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
-          if (!aonc.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0).insertFrontToList(localDataLineMsgRecord)) {
+          if (!apas.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$13.this$0).insertFrontToList(localDataLineMsgRecord)) {
             break label107;
           }
           i += 1;

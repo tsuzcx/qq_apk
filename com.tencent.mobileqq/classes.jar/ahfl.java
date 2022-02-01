@@ -1,36 +1,33 @@
-import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageForQQStoryComment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class ahfl
-  implements View.OnClickListener
+  implements bliz
 {
-  long jdField_a_of_type_Long = 0L;
+  ahfl(ahfk paramahfk, blir paramblir) {}
   
-  ahfl(ahfk paramahfk) {}
-  
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 50L) {}
-    for (;;)
+    this.jdField_a_of_type_Blir.dismiss();
+    switch (paramInt)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Long = l;
-      MessageForQQStoryComment localMessageForQQStoryComment = (MessageForQQStoryComment)((afwr)afur.a(paramView)).a;
-      if (zjb.a(localMessageForQQStoryComment.vid))
-      {
-        xho.a(this.jdField_a_of_type_Ahfk.a, localMessageForQQStoryComment.vid, "CommentItemBuilder_Feed_Id", 1004);
-        yqu.a("story_grp", "aio_obj", 0, 0, new String[] { "", "", "", "" });
-      }
-      else
-      {
-        xho.b((Activity)this.jdField_a_of_type_Ahfk.a, localMessageForQQStoryComment.vid, "CommentItemBuilder_Feed_Id_NOT_GS", 7);
-      }
     }
+    do
+    {
+      return;
+    } while (this.jdField_a_of_type_Ahfk.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000);
+    try
+    {
+      long l = Long.valueOf(this.jdField_a_of_type_Ahfk.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
+      paramView = (antz)this.jdField_a_of_type_Ahfk.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
+      if (paramView != null) {
+        paramView.a(l);
+      }
+      bdll.b(this.jdField_a_of_type_Ahfk.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_discuss", "", "grey", "Clk", 0, 0, "", String.valueOf(this.jdField_a_of_type_Ahfk.jdField_a_of_type_Int), "", "");
+      return;
+    }
+    catch (NumberFormatException paramView) {}
   }
 }
 

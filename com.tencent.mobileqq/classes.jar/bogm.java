@@ -1,8 +1,10 @@
+import com.tencent.mobileqq.data.QQAlbumInfo;
+
 public abstract interface bogm
 {
-  public abstract void a();
+  public abstract void a(QQAlbumInfo paramQQAlbumInfo, int paramInt, boolean paramBoolean);
   
-  public abstract void a(String paramString);
+  public abstract void b();
 }
 
 

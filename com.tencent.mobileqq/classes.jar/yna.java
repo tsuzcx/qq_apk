@@ -1,13 +1,35 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
 
 class yna
-  implements ymj
+  extends wjd
 {
-  yna(ymo paramymo) {}
+  yna(ymx paramymx) {}
   
-  public void a(ErrorMessage paramErrorMessage)
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    yqp.e("Q.qqstory.home.StoryListPresenter", "step %s error occur when requestAllDataFromNet error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
+    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
+    {
+      yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new comment push: %s", new Object[] { paramStoryPushMsg });
+      this.a.a(paramStoryPushMsg.d);
+    }
+    do
+    {
+      return;
+      if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 18))
+      {
+        yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new like push: %s", new Object[] { paramStoryPushMsg });
+        this.a.b(paramStoryPushMsg.d);
+        return;
+      }
+      if (paramStoryPushMsg.a == 17)
+      {
+        yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete comment push: %s", new Object[] { paramStoryPushMsg });
+        ((wse)wth.a(17)).a(paramStoryPushMsg.d, paramStoryPushMsg.c);
+        return;
+      }
+    } while (paramStoryPushMsg.a != 16);
+    yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete like push: %s", new Object[] { paramStoryPushMsg });
+    this.a.b(paramStoryPushMsg.d);
   }
 }
 

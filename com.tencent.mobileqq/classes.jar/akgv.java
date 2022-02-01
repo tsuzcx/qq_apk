@@ -1,14 +1,6 @@
 public abstract interface akgv
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(akeh paramakeh);
-  
-  public abstract void a(akeh paramakeh, bfuo parambfuo);
-  
-  public abstract void b(akeh paramakeh);
+  public abstract void am_();
 }
 
 

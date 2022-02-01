@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-
-class awlj
-  implements DialogInterface.OnClickListener
+public abstract interface awlj
 {
-  awlj(awlf paramawlf, BaseActivity paramBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    awlf.a(this.jdField_a_of_type_Awlf, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

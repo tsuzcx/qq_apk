@@ -1,13 +1,15 @@
-class avll
-  extends avln
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.qphone.base.util.QLog;
+
+public class avll
+  extends adai
 {
-  avll(avlk paramavlk) {}
-  
-  public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
+  public avll(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager, adah paramadah)
   {
-    super.a(paramBoolean, paramInt, paramLong, paramString1, paramString2);
-    if (paramBoolean) {
-      this.a.a(paramInt, paramLong, paramString1);
+    super(paramQQAppInterface, paramProxyManager, paramadah);
+    if (QLog.isColorLevel()) {
+      QLog.d("TinyIdMsgProxy", 2, "TinyIdMsgProxy() called with: _app = [" + paramQQAppInterface + "], pm = [" + paramProxyManager + "], msgPool = [" + paramadah + "]");
     }
   }
 }

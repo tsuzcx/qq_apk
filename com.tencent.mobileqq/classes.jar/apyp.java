@@ -1,35 +1,33 @@
-import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.manager.TicketManager;
 
-class apyp
-  implements bkhw
+public class apyp
+  implements apyw
 {
-  apyp(apyo paramapyo, Context paramContext, bkho parambkho) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public EIPCResult a(Bundle paramBundle)
   {
-    switch (paramInt)
+    Object localObject = apxv.a();
+    if (localObject == null)
     {
+      QLog.e("ArkApp.GetPSKeyHandler", 1, "GetPSKeyHandler.onCall, qq app is null");
+      return EIPCResult.createResult(-102, new Bundle());
+    }
+    paramBundle = paramBundle.getString("Domain", "");
+    localObject = ((TicketManager)((QQAppInterface)localObject).getManager(2)).getPskey(((QQAppInterface)localObject).getCurrentAccountUin(), paramBundle);
+    Bundle localBundle = new Bundle();
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      QLog.e("ArkApp.GetPSKeyHandler", 1, "GetPSKeyHandler.onCall, pskey is empty, domain=" + paramBundle);
+      localBundle.putString("PSKey", "");
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bkho.dismiss();
-      do
-      {
-        return;
-        paramView = this.jdField_a_of_type_Apyo.b + this.jdField_a_of_type_Apyo.jdField_a_of_type_JavaLangString;
-      } while ((TextUtils.isEmpty(paramView)) || ((!paramView.startsWith("http://")) && (!paramView.startsWith("https://"))));
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      if ((this.jdField_a_of_type_Apyo.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Apyo.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-        bcst.b((QQAppInterface)this.jdField_a_of_type_Apyo.jdField_a_of_type_JavaLangRefWeakReference.get(), "P_CliOper", "aio_search", "", "aio_hotword", "search_hotword", 0, 0, "", "", this.jdField_a_of_type_Apyo.jdField_a_of_type_JavaLangString, "");
-      }
+      return EIPCResult.createResult(0, localBundle);
+      localBundle.putString("PSKey", (String)localObject);
     }
   }
 }

@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.datepicker.CalendarDay;
-import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.QueryItemVersionCallback;
+import java.lang.ref.WeakReference;
 
 public abstract interface bidp
 {
-  public abstract CalendarDay a();
+  public abstract void cancelDwonloadItem(long paramLong, String paramString);
   
-  public abstract void a(CalendarDay paramCalendarDay, MessageRecord paramMessageRecord);
+  public abstract void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2);
   
-  public abstract void a(SimpleMonthView paramSimpleMonthView, int paramInt1, int paramInt2);
+  public abstract void downloadItem(long paramLong, String paramString1, String paramString2);
   
-  public abstract CalendarDay b();
+  public abstract void onDestory();
+  
+  public abstract void onPbMsgRecv(int paramInt, String paramString1, String paramString2);
+  
+  public abstract void queryItemVersion(int paramInt, String paramString, boolean paramBoolean, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback);
+  
+  public abstract void setWeakHandler(WeakReference<VasExtensionHandler> paramWeakReference);
+  
+  public abstract void startUpdateAllItem();
 }
 
 

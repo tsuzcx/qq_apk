@@ -4,19 +4,19 @@ import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.mobileqq.widget.SquareImageView;
-import tcs;
-import tcu;
+import stk;
+import stm;
 
 public class ReadInJoyDiandianHeaderController$OnCommunityItemListener$1
   implements Runnable
 {
-  public ReadInJoyDiandianHeaderController$OnCommunityItemListener$1(tcu paramtcu, View paramView) {}
+  public ReadInJoyDiandianHeaderController$OnCommunityItemListener$1(stm paramstm, View paramView) {}
   
   public void run()
   {
-    tcs localtcs = (tcs)this.jdField_a_of_type_AndroidViewView.getTag();
-    localtcs.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(Color.parseColor("#00000000"));
-    localtcs.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    stk localstk = (stk)this.jdField_a_of_type_AndroidViewView.getTag();
+    localstk.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(Color.parseColor("#00000000"));
+    localstk.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

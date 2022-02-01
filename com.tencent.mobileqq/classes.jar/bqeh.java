@@ -1,6 +1,17 @@
-public abstract interface bqeh
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.widget.EditText;
+
+class bqeh
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(String paramString);
+  bqeh(bqeb parambqeb, bqrv parambqrv) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.jdField_a_of_type_Bqeb.a.a(0);
+    bqeb.a(this.jdField_a_of_type_Bqeb).setText(this.jdField_a_of_type_Bqrv.a());
+  }
 }
 
 

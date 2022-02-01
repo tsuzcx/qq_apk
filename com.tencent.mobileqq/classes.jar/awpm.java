@@ -1,39 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCTransportFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 
-public class awpm
-  implements biea
+abstract class awpm<T extends anud>
 {
-  public awpm(MsgBackupPCTransportFragment paramMsgBackupPCTransportFragment) {}
+  protected final QQAppInterface a;
   
-  public void onItemSelect(View paramView, int paramInt)
+  public awpm(QQAppInterface paramQQAppInterface)
   {
-    int i = awng.a().a();
-    switch (paramInt)
-    {
+    this.a = paramQQAppInterface;
+  }
+  
+  protected final boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseProto", 2, new Object[] { "ssoLinkOk: invoked. ", " req: ", paramToServiceMsg, " res: ", paramFromServiceMsg, " data: ", paramObject });
     }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "page is in pc Link page! click cancel! bizType = " + i + ", pcHandler = " + this.a.e);
-      }
-      this.a.aG_();
-      return;
-      awnr.a = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "backup is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + awnr.a + ", curSpeed = " + this.a.a + ", hasFinishedCount = " + this.a.d);
-      }
-      awnr.a().a().a(null);
-      awnr.a().a(this.a.a, this.a.d, i, this.a.getActivity());
-      if (this.a.b != 1) {
-        break;
-      }
-    } while (!this.a.e);
-    awqs.a("0X800A260");
-    return;
-    awqs.a("0X800A284");
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null) || (!paramFromServiceMsg.isSuccess())) {}
+    for (int i = 1; i == 0; i = 0) {
+      return true;
+    }
+    return false;
   }
 }
 

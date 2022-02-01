@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import amdc;
+import amow;
 import java.util.List;
 
 class LebaListMgrActivity$1$1

@@ -1,19 +1,6 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.avgame.ui.AVGameRoomListFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class nff
-  implements View.OnClickListener
+public abstract interface nff
 {
-  public nff(AVGameRoomListFragment paramAVGameRoomListFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void b(int paramInt);
 }
 
 

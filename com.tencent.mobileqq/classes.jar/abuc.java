@@ -1,40 +1,25 @@
-import android.view.View;
-import com.tencent.device.msg.data.MessageForDevLittleVideo;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.MobileQQ;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class abuc
-  implements bkhw
+  extends MqqHandler
 {
-  abuc(abua paramabua, MessageForDevLittleVideo paramMessageForDevLittleVideo, ahin paramahin, bkho parambkho) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  abuc(abub paramabub, Looper paramLooper)
   {
-    switch (paramInt)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 100)
     {
-    case 1: 
-    default: 
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-    }
-    boolean bool = bgnt.g(this.jdField_a_of_type_Abua.a.getApplication().getApplicationContext());
-    paramView = this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo;
-    if (bool) {}
-    for (paramInt = 1002;; paramInt = 1005)
-    {
-      paramView.videoFileStatus = paramInt;
-      this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileProgress = 0;
-      this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.serial();
-      this.jdField_a_of_type_Abua.a.a().a(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.frienduin, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.istroop, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.uniseq, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.msgData);
-      if (!bool) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.i("DeviceBLE2", 2, "QFindGattManager write data timeout bleSN " + (String)paramMessage.obj);
       }
-      this.jdField_a_of_type_Abua.a(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
-      this.jdField_a_of_type_Ahin.a.setFailedIconVisable(false, this.jdField_a_of_type_Abua);
-      abua.a(this.jdField_a_of_type_Abua, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo, this.jdField_a_of_type_Ahin, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileProgress, false);
-      break;
+      abub.a(this.a, paramMessage.arg1);
+      this.a.a((String)paramMessage.obj);
     }
   }
 }

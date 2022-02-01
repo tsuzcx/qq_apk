@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.out.activity;
 
-import bkhe;
+import blih;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 
 class MapActivity$5
-  implements bkhe
+  implements blih
 {
   MapActivity$5(MapActivity paramMapActivity) {}
   

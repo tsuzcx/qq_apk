@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.qphone.base.util.QLog;
-import nbj;
+import ncw;
 
 public class TalkingEffectLayout
   extends RelativeLayout
@@ -58,9 +58,9 @@ public class TalkingEffectLayout
       setLayerType(1, null);
     }
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838714));
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838735));
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838715));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838736));
     addView(this.jdField_a_of_type_AndroidWidgetImageView, new RelativeLayout.LayoutParams(-1, -1));
     addView(this.jdField_b_of_type_AndroidWidgetImageView, new RelativeLayout.LayoutParams(-1, -1));
   }
@@ -80,7 +80,7 @@ public class TalkingEffectLayout
     localObjectAnimator3.setDuration(1000L);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, localObjectAnimator3 });
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new nbj(this));
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new ncw(this));
   }
   
   public void a()

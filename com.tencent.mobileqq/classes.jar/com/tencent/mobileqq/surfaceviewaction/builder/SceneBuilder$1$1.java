@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.surfaceviewaction.builder;
 
-import bdeo;
-import bdfc;
-import bdfl;
+import bdxj;
+import bdxx;
+import bdyg;
 
 class SceneBuilder$1$1
   implements Runnable
@@ -11,8 +11,8 @@ class SceneBuilder$1$1
   
   public void run()
   {
-    bdeo localbdeo = bdfc.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.this$0, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Bdeq, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Bdfl.a(localbdeo);
+    bdxj localbdxj = bdxx.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.this$0, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Bdxl, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Bdyg.a(localbdxj);
   }
 }
 

@@ -1,75 +1,42 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionChecker.OnlineStatusPermissionItem;
-import kotlin.Pair;
+import android.content.Context;
+import android.view.animation.Interpolator;
+import android.widget.Scroller;
+import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
+import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollViewPager;
+import java.lang.reflect.Field;
 
 public class aytt
-  extends ayoo
+  extends Scroller
 {
-  aysj a;
-  private String e = "";
-  private String f = "";
-  
-  public aytt(long paramLong, ayop paramayop, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  public aytt(AvatarWallViewPager paramAvatarWallViewPager, Context paramContext, Interpolator paramInterpolator)
   {
-    super(paramLong, paramayop, paramQQAppInterface, paramBaseActivity);
-    this.jdField_a_of_type_Aysj = new aytu(this);
-    paramQQAppInterface.registObserver(this.jdField_a_of_type_Aysj);
-    this.e = bght.c(bghy.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin()).constellation);
+    super(paramContext, paramInterpolator);
   }
   
-  protected void a()
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131697632);
-    this.jdField_a_of_type_Boolean = false;
-    this.d = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131697619);
-    if (!TextUtils.isEmpty(this.f))
+    try
     {
-      this.jdField_b_of_type_JavaLangString = (this.e + " | " + this.f);
+      Field localField = AvatarWallViewPager.RollViewPager.class.getDeclaredField("mScroller");
+      localField.setAccessible(true);
+      localField.set(this.a.a, this);
+      localField.setAccessible(false);
       return;
     }
-    this.jdField_b_of_type_JavaLangString = this.e;
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    this.e = ((String)ayts.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramIntent, this.e).getSecond());
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      ayph.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.e);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
   
-  public void a(boolean paramBoolean, OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem)
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    aysi.a.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1040);
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
   }
   
-  public void b()
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    Friends localFriends = ((anmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    aysf.a.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localFriends.constellationJumpUrl, 4015);
-    aypy.a("0X800AF4D");
-  }
-  
-  public void c()
-  {
-    aysf.a.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "VAL_FROM_STATUS_SETTING");
-    aypy.a("0X800AF97");
-  }
-  
-  public void d()
-  {
-    super.d();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Aysj);
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
   }
 }
 

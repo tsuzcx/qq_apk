@@ -1,26 +1,26 @@
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
-import com.tencent.biz.qqcircle.transition.QCircleTransitionImageView;
+import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class vsw
-  implements Interpolator
+  extends aadf
 {
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
+  private String a;
   
-  private vsw(QCircleTransitionImageView paramQCircleTransitionImageView) {}
-  
-  public void a(Interpolator paramInterpolator)
+  public vsw(String paramString)
   {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
+    this.a = paramString;
   }
   
-  public float getInterpolation(float paramFloat)
+  public void a() {}
+  
+  public void a(aadl paramaadl)
   {
-    float f = paramFloat;
-    if (this.jdField_a_of_type_AndroidViewAnimationInterpolator != null) {
-      f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(paramFloat);
-    }
-    return f;
+    QCircleGetMainPageRequest localQCircleGetMainPageRequest = new QCircleGetMainPageRequest(this.a, null);
+    paramaadl = new vsx(this, localQCircleGetMainPageRequest, paramaadl);
+    localQCircleGetMainPageRequest.setEnableCache(true);
+    VSNetworkHelper.a().a(localQCircleGetMainPageRequest, paramaadl);
+    QLog.d("QCirclePersonalDetailPreLoaderTask", 1, "QCirclePersonalDetailPreLoaderTask->sendQCircleRequest: CmdName:" + localQCircleGetMainPageRequest.getCmdName() + "| TraceId:" + localQCircleGetMainPageRequest.getTraceId() + " | SeqId:" + localQCircleGetMainPageRequest.getCurrentSeq());
   }
 }
 

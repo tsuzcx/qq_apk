@@ -1,32 +1,9 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import mqq.util.WeakReference;
+import eipc.EIPCModule;
+import eipc.EIPCResultCallback;
 
-class bidj
-  extends Handler
+public abstract interface bidj
 {
-  final WeakReference<bidh> a;
-  
-  public bidj(bidh parambidh)
-  {
-    super(Looper.getMainLooper());
-    this.a = new WeakReference(parambidh);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    bidh localbidh = (bidh)this.a.get();
-    if (localbidh == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    localbidh.e();
-  }
+  public abstract void a(String paramString1, String paramString2, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback);
 }
 
 

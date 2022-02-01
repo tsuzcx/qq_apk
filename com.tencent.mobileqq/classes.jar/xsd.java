@@ -1,198 +1,90 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.view.Surface;
-import java.util.Map;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-@TargetApi(14)
 public class xsd
-  implements xrt
+  extends JobSegment<StoryVideoItem, StoryVideoItem>
+  implements wlh
 {
-  MediaPlayer a = new MediaPlayer();
+  private StoryVideoItem jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+  private xsc jdField_a_of_type_Xsc;
+  private boolean jdField_a_of_type_Boolean;
   
-  public int a()
+  public xsd(VideoViewVideoHolder paramVideoViewVideoHolder, xsc paramxsc, boolean paramBoolean)
   {
-    return this.a.getDuration();
+    this.jdField_a_of_type_Xsc = paramxsc;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  protected void a(StoryVideoItem paramStoryVideoItem)
   {
-    this.a.setVolume(paramFloat1, paramFloat2);
+    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 6);
+    super.notifyResult(paramStoryVideoItem);
   }
   
-  public void a(int paramInt)
+  protected void a(JobContext paramJobContext, StoryVideoItem paramStoryVideoItem)
   {
-    this.a.seekTo(paramInt);
-  }
-  
-  public void a(Context paramContext, Uri paramUri, Map<String, String> paramMap)
-  {
-    this.a.setDataSource(paramContext, paramUri, paramMap);
-  }
-  
-  public void a(Surface paramSurface)
-  {
-    this.a.setSurface(paramSurface);
-  }
-  
-  public void a(xru paramxru)
-  {
-    MediaPlayer localMediaPlayer = this.a;
-    if (paramxru == null) {}
-    for (paramxru = null;; paramxru = new xsg(this, paramxru))
+    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 5);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    if (this.jdField_a_of_type_Boolean)
     {
-      localMediaPlayer.setOnBufferingUpdateListener(paramxru);
+      a(paramStoryVideoItem);
       return;
     }
+    yuk.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully");
+    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 5);
+    this.jdField_a_of_type_Xsc.a().a(paramStoryVideoItem.mVid, 0, true, this);
   }
   
-  public void a(xrv paramxrv)
+  public void a(String paramString, int paramInt)
   {
-    MediaPlayer localMediaPlayer = this.a;
-    if (paramxrv == null) {}
-    for (paramxrv = null;; paramxrv = new xsf(this, paramxrv))
+    if (!isCanceled())
     {
-      localMediaPlayer.setOnCompletionListener(paramxrv);
+      yuk.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully, onSuccess");
+      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, "VD", SystemClock.uptimeMillis());
+      a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
       return;
     }
+    yuk.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully, onSuccess. stream canceled");
   }
   
-  public void a(xrw paramxrw)
+  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
   {
-    MediaPlayer localMediaPlayer = this.a;
-    if (paramxrw == null) {}
-    for (paramxrw = null;; paramxrw = new xsj(this, paramxrw))
+    if (!isCanceled())
     {
-      localMediaPlayer.setOnErrorListener(paramxrw);
+      yuk.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, paramErrorMessage, "showVideo, start download video fully, onError", new Object[0]);
+      VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 3);
+      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
+      VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, paramErrorMessage.errorCode);
+      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), paramErrorMessage.getErrorMessage()));
       return;
     }
+    yuk.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, paramErrorMessage, "showVideo, start download video fully, onError. stream canceled", new Object[0]);
   }
   
-  public void a(xrx paramxrx)
+  public void b(String paramString, int paramInt)
   {
-    MediaPlayer localMediaPlayer = this.a;
-    if (paramxrx == null) {}
-    for (paramxrx = null;; paramxrx = new xsk(this, paramxrx))
+    if (!isCanceled())
     {
-      localMediaPlayer.setOnInfoListener(paramxrx);
+      yuk.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully, onCancel");
+      VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 3);
+      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
+      VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 1234);
+      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), "Download video cancel"));
       return;
     }
+    yuk.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully, onCancel. stream canceled");
   }
   
-  public void a(xry paramxry)
+  public void onCancel()
   {
-    MediaPlayer localMediaPlayer = this.a;
-    if (paramxry == null) {}
-    for (paramxry = null;; paramxry = new xse(this, paramxry))
-    {
-      localMediaPlayer.setOnPreparedListener(paramxry);
-      return;
-    }
-  }
-  
-  public void a(xrz paramxrz)
-  {
-    MediaPlayer localMediaPlayer = this.a;
-    if (paramxrz == null) {}
-    for (paramxrz = null;; paramxrz = new xsh(this, paramxrz))
-    {
-      localMediaPlayer.setOnSeekCompleteListener(paramxrz);
-      return;
-    }
-  }
-  
-  public void a(xsb paramxsb)
-  {
-    MediaPlayer localMediaPlayer = this.a;
-    if (paramxsb == null) {}
-    for (paramxsb = null;; paramxsb = new xsi(this, paramxsb))
-    {
-      localMediaPlayer.setOnVideoSizeChangedListener(paramxsb);
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.setLooping(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return this.a.isPlaying();
-  }
-  
-  public int b()
-  {
-    return this.a.getCurrentPosition();
-  }
-  
-  public void b()
-  {
-    this.a.prepareAsync();
-  }
-  
-  public void b(int paramInt)
-  {
-    this.a.setAudioSessionId(paramInt);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.a.setScreenOnWhilePlaying(paramBoolean);
-  }
-  
-  public int c()
-  {
-    return this.a.getVideoWidth();
-  }
-  
-  public void c()
-  {
-    this.a.start();
-  }
-  
-  public void c(int paramInt)
-  {
-    this.a.setAudioStreamType(paramInt);
-  }
-  
-  public int d()
-  {
-    return this.a.getVideoHeight();
-  }
-  
-  public void d()
-  {
-    this.a.pause();
-  }
-  
-  public int e()
-  {
-    return this.a.getAudioSessionId();
-  }
-  
-  public void e()
-  {
-    this.a.stop();
-  }
-  
-  public void f()
-  {
-    this.a.release();
-  }
-  
-  public void g()
-  {
-    try
-    {
-      this.a.reset();
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      bcrp.a(localIllegalStateException);
+    super.onCancel();
+    yuk.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "VideoFileSegment onCancel");
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) {
+      this.jdField_a_of_type_Xsc.a().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0);
     }
   }
 }

@@ -1,17 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.PubGroupTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adjk
-  implements DialogInterface.OnClickListener
+  implements adbw
 {
-  public adjk(AddFriendLogicActivity paramAddFriendLogicActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    bcst.b(this.a.app, "P_CliOper", "Safe_AntiFraud", this.a.app.getCurrentAccountUin(), "AlertDialog", "UserClick", 0, AddFriendLogicActivity.d(this.a), "", "", "", "");
-    this.a.finish();
+    return 1020;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = new msg_svc.PubGroupTmp();
+    paramQQAppInterface.group_uin.set(Long.valueOf(paramMessageRecord.senderuin).longValue());
+    paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.pub_group_tmp.set(paramQQAppInterface);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 6009;
   }
 }
 

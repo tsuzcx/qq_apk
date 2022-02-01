@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 import android.app.Activity;
 import android.view.animation.AnimationSet;
 import android.widget.TextView;
-import tas;
+import sro;
 
 class FastWebAnimationUtils$2$1
   implements Runnable
@@ -12,7 +12,7 @@ class FastWebAnimationUtils$2$1
   
   public void run()
   {
-    AnimationSet localAnimationSet = tas.a(this.this$0.jdField_a_of_type_AndroidWidgetTextView, this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext());
+    AnimationSet localAnimationSet = sro.a(this.this$0.jdField_a_of_type_AndroidWidgetTextView, this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext());
     this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.this$0.jdField_a_of_type_AndroidWidgetTextView.startAnimation(localAnimationSet);
   }

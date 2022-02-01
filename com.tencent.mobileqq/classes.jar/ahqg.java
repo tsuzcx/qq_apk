@@ -1,9 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.MessageForPic;
 
-public abstract interface ahqg
+class ahqg
 {
-  public abstract void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord);
+  int jdField_a_of_type_Int;
+  MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  
+  public ahqg(MessageForPic paramMessageForPic, String paramString, int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
 }
 
 

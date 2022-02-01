@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bcfe;
+import bcxw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
 final class ShortVideoResourceManager$7
   implements Runnable
 {
-  ShortVideoResourceManager$7(QQAppInterface paramQQAppInterface, List paramList, bcfe parambcfe) {}
+  ShortVideoResourceManager$7(QQAppInterface paramQQAppInterface, List paramList, bcxw parambcxw) {}
   
   public void run()
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bcfe, "new_qq_android_native_object_tracking_");
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bcxw, "new_qq_android_native_object_tracking_");
   }
 }
 

@@ -3,8 +3,8 @@ package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.Set;
-import tdu;
-import tdv;
+import sum;
+import sun;
 
 class RunningJob$5
   implements Runnable
@@ -17,8 +17,8 @@ class RunningJob$5
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
-      if ((localWeakReference.get() != null) && (this.this$0.jdField_a_of_type_Tdv != null)) {
-        this.this$0.jdField_a_of_type_Tdv.a(this.this$0.jdField_a_of_type_Tdw, (tdu)localWeakReference.get());
+      if ((localWeakReference.get() != null) && (this.this$0.jdField_a_of_type_Sun != null)) {
+        this.this$0.jdField_a_of_type_Sun.a(this.this$0.jdField_a_of_type_Suo, (sum)localWeakReference.get());
       }
     }
   }

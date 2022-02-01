@@ -1,28 +1,32 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.style.ImageSpan;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class aegl
-  implements asms
+  extends ImageSpan
 {
-  public aegl(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void a()
+  public aegl(ChatSettingForTroop paramChatSettingForTroop, Drawable paramDrawable, int paramInt)
   {
-    asml.a(this.a);
+    super(paramDrawable, paramInt);
   }
   
-  public void a(int paramInt)
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
   {
-    asml.a(this.a, this.a.getString(paramInt));
+    paramCanvas.save();
+    paramCanvas.translate(bdep.a(9.0F), 0.0F);
+    super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
+    paramCanvas.restore();
   }
   
-  public void a(String paramString1, String paramString2)
+  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
   {
-    asml.a(this.a, paramString1, paramString2);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
-  {
-    asml.a(this.a, paramBoolean, paramInt, paramString1, paramString2);
+    return getDrawable().getBounds().right + bdep.a(9.0F);
   }
 }
 

@@ -1,17 +1,21 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
 class agzn
-  extends ahbl
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  agzn(agwz paramagwz)
-  {
-    super(paramagwz, null);
-  }
+  agzn(agzm paramagzm) {}
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    return new ahhh(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (paramBitmap != null)
+    {
+      this.a.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    }
   }
 }
 

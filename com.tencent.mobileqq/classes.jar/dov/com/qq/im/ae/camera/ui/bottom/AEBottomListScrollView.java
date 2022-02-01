@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import aavy;
+import abab;
 import android.content.Context;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
@@ -10,23 +10,23 @@ import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.AttributeSet;
 import android.view.View;
-import bnkc;
-import bnkp;
-import bnku;
-import bnkv;
-import bnkw;
-import bnkx;
-import bnky;
-import bnla;
-import bnpf;
+import bolk;
+import bolx;
+import bomc;
+import bomd;
+import bome;
+import bomf;
+import boml;
+import bomn;
+import boqu;
 
 public class AEBottomListScrollView
   extends RecyclerView
 {
   private static final String jdField_a_of_type_JavaLangString = AEBottomListScrollView.class.getSimpleName();
-  private bnkp jdField_a_of_type_Bnkp;
-  private bnkv jdField_a_of_type_Bnkv;
-  private bnkw jdField_a_of_type_Bnkw;
+  private bolx jdField_a_of_type_Bolx;
+  private bomd jdField_a_of_type_Bomd;
+  private bome jdField_a_of_type_Bome;
   private boolean jdField_a_of_type_Boolean;
   
   public AEBottomListScrollView(Context paramContext)
@@ -49,24 +49,24 @@ public class AEBottomListScrollView
   
   private void a()
   {
-    if (this.jdField_a_of_type_Bnkv == null) {
+    if (this.jdField_a_of_type_Bomd == null) {
       return;
     }
-    int i = this.jdField_a_of_type_Bnkp.b();
+    int i = this.jdField_a_of_type_Bolx.b();
     c(a(i), i);
   }
   
   private void a(float paramFloat, int paramInt1, int paramInt2, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
   {
-    if (this.jdField_a_of_type_Bnkw != null) {
-      this.jdField_a_of_type_Bnkw.a(paramFloat, paramInt1, paramInt2, paramViewHolder1, paramViewHolder2);
+    if (this.jdField_a_of_type_Bome != null) {
+      this.jdField_a_of_type_Bome.a(paramFloat, paramInt1, paramInt2, paramViewHolder1, paramViewHolder2);
     }
   }
   
   private void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (this.jdField_a_of_type_Bnkw != null) {
-      this.jdField_a_of_type_Bnkw.c(paramViewHolder, paramInt);
+    if (this.jdField_a_of_type_Bome != null) {
+      this.jdField_a_of_type_Bome.c(paramViewHolder, paramInt);
     }
   }
   
@@ -76,57 +76,57 @@ public class AEBottomListScrollView
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Bnkp = new bnkp(getContext(), new bnkx(this, null), new bnla());
-      setLayoutManager(this.jdField_a_of_type_Bnkp);
+      this.jdField_a_of_type_Bolx = new bolx(getContext(), new bomf(this, null), new bomn());
+      setLayoutManager(this.jdField_a_of_type_Bolx);
       return;
     }
   }
   
   private void b(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (this.jdField_a_of_type_Bnkv != null) {
-      this.jdField_a_of_type_Bnkv.a(paramViewHolder, true);
+    if (this.jdField_a_of_type_Bomd != null) {
+      this.jdField_a_of_type_Bomd.a(paramViewHolder, true);
     }
-    if (this.jdField_a_of_type_Bnkw != null) {
-      this.jdField_a_of_type_Bnkw.b(paramViewHolder, paramInt);
+    if (this.jdField_a_of_type_Bome != null) {
+      this.jdField_a_of_type_Bome.b(paramViewHolder, paramInt);
     }
   }
   
   private void c(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (this.jdField_a_of_type_Bnkv != null) {
-      this.jdField_a_of_type_Bnkv.a(paramViewHolder, paramInt);
+    if (this.jdField_a_of_type_Bomd != null) {
+      this.jdField_a_of_type_Bomd.a(paramViewHolder, paramInt);
     }
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Bnkp.b();
+    return this.jdField_a_of_type_Bolx.b();
   }
   
   @Nullable
   public RecyclerView.ViewHolder a(int paramInt)
   {
-    View localView = this.jdField_a_of_type_Bnkp.findViewByPosition(paramInt);
+    View localView = this.jdField_a_of_type_Bolx.findViewByPosition(paramInt);
     if (localView != null) {
       return getChildViewHolder(localView);
     }
     return null;
   }
   
-  public void a(int paramInt, bnpf parambnpf)
+  public void a(int paramInt, boqu paramboqu)
   {
-    bnkc localbnkc = (bnkc)a(this.jdField_a_of_type_Bnkp.b());
-    if (localbnkc != null) {
-      localbnkc.a(4);
+    bolk localbolk = (bolk)a(this.jdField_a_of_type_Bolx.b());
+    if (localbolk != null) {
+      localbolk.a(4);
     }
-    localbnkc = (bnkc)a(paramInt);
-    if (localbnkc != null)
+    localbolk = (bolk)a(paramInt);
+    if (localbolk != null)
     {
-      localbnkc.b(parambnpf);
-      localbnkc.a(3);
-      if ((parambnpf != null) && (parambnpf.e)) {
-        localbnkc.a(2);
+      localbolk.b(paramboqu);
+      localbolk.a(3);
+      if ((paramboqu != null) && (paramboqu.e)) {
+        localbolk.a(2);
       }
       scrollToPosition(paramInt);
     }
@@ -137,17 +137,17 @@ public class AEBottomListScrollView
     boolean bool = super.fling(paramInt1, paramInt2);
     if (bool)
     {
-      this.jdField_a_of_type_Bnkp.a(paramInt1, paramInt2);
+      this.jdField_a_of_type_Bolx.a(paramInt1, paramInt2);
       return bool;
     }
-    this.jdField_a_of_type_Bnkp.c();
+    this.jdField_a_of_type_Bolx.c();
     return bool;
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Bnkp.a(null);
+    this.jdField_a_of_type_Bolx.a(null);
   }
   
   public void setClampTransformProgressAfter(@IntRange(from=1L) int paramInt)
@@ -155,29 +155,29 @@ public class AEBottomListScrollView
     if (paramInt <= 1) {
       throw new IllegalArgumentException("must be >= 1");
     }
-    this.jdField_a_of_type_Bnkp.c(paramInt);
+    this.jdField_a_of_type_Bolx.c(paramInt);
   }
   
-  public void setItemTransformer(aavy paramaavy)
+  public void setItemTransformer(abab paramabab)
   {
-    this.jdField_a_of_type_Bnkp.a(paramaavy);
+    this.jdField_a_of_type_Bolx.a(paramabab);
   }
   
   public void setItemTransitionTimeMillis(@IntRange(from=10L) int paramInt)
   {
-    this.jdField_a_of_type_Bnkp.a(paramInt);
+    this.jdField_a_of_type_Bolx.a(paramInt);
   }
   
-  public void setLayoutCallback(bnku parambnku)
+  public void setLayoutCallback(bomc parambomc)
   {
-    if (this.jdField_a_of_type_Bnkp != null) {
-      this.jdField_a_of_type_Bnkp.a(parambnku);
+    if (this.jdField_a_of_type_Bolx != null) {
+      this.jdField_a_of_type_Bolx.a(parambomc);
     }
   }
   
   public void setLayoutManager(RecyclerView.LayoutManager paramLayoutManager)
   {
-    if ((paramLayoutManager instanceof bnkp))
+    if ((paramLayoutManager instanceof bolx))
     {
       super.setLayoutManager(paramLayoutManager);
       return;
@@ -187,17 +187,17 @@ public class AEBottomListScrollView
   
   public void setOffscreenItems(int paramInt)
   {
-    this.jdField_a_of_type_Bnkp.b(paramInt);
+    this.jdField_a_of_type_Bolx.b(paramInt);
   }
   
-  public void setOnItemChangedListener(@NonNull bnkv<?> parambnkv)
+  public void setOnItemChangedListener(@NonNull bomd<?> parambomd)
   {
-    this.jdField_a_of_type_Bnkv = parambnkv;
+    this.jdField_a_of_type_Bomd = parambomd;
   }
   
-  public void setOrientation(bnky parambnky)
+  public void setOrientation(boml paramboml)
   {
-    this.jdField_a_of_type_Bnkp.a(parambnky);
+    this.jdField_a_of_type_Bolx.a(paramboml);
   }
   
   public void setOverScrollEnabled(boolean paramBoolean)
@@ -206,19 +206,19 @@ public class AEBottomListScrollView
     setOverScrollMode(2);
   }
   
-  public void setScrollStateChangeListener(@NonNull bnkw<?> parambnkw)
+  public void setScrollStateChangeListener(@NonNull bome<?> parambome)
   {
-    this.jdField_a_of_type_Bnkw = parambnkw;
+    this.jdField_a_of_type_Bome = parambome;
   }
   
   public void setSlideOnFling(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bnkp.a(paramBoolean);
+    this.jdField_a_of_type_Bolx.a(paramBoolean);
   }
   
   public void setSlideOnFlingThreshold(int paramInt)
   {
-    this.jdField_a_of_type_Bnkp.d(paramInt);
+    this.jdField_a_of_type_Bolx.d(paramInt);
   }
 }
 

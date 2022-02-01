@@ -1,59 +1,21 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.upgrade.UpgradeTIMManager;
+import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
 
-public abstract class aeht
+public class aeht
+  implements DialogInterface.OnClickListener
 {
-  protected aehu a;
-  protected aehv a;
-  public QQAppInterface a;
-  protected int b = -1;
-  public String b;
+  public aeht(Conversation paramConversation, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
   
-  public aeht(QQAppInterface paramQQAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public abstract int a();
-  
-  public aehv a()
-  {
-    return this.jdField_a_of_type_Aehv;
-  }
-  
-  public abstract aehv a(int paramInt);
-  
-  public Drawable a()
-  {
-    return null;
-  }
-  
-  public abstract void a(int paramInt);
-  
-  public void a(aehu paramaehu)
-  {
-    this.jdField_a_of_type_Aehu = paramaehu;
-  }
-  
-  public abstract void a(aehv paramaehv);
-  
-  public abstract void a(BaseActivity paramBaseActivity);
-  
-  public abstract void a(BaseActivity paramBaseActivity, aehv paramaehv);
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public abstract void b(BaseActivity paramBaseActivity);
-  
-  public void c(aehv paramaehv)
-  {
-    if ((paramaehv == this.jdField_a_of_type_Aehv) && (this.jdField_a_of_type_Aehu != null)) {
-      this.jdField_a_of_type_Aehu.a(paramaehv);
-    }
+    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
+    ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(256)).a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper.c);
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X800815D", "0X800815D", 0, 0, "", "", "", "");
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X8008657", "0X8008657", 0, 0, "", "", "", "");
   }
 }
 

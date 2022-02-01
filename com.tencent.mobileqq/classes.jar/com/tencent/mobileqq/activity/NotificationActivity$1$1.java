@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aeqf;
+import aezi;
 
 public class NotificationActivity$1$1
   implements Runnable
 {
-  public NotificationActivity$1$1(aeqf paramaeqf) {}
+  public NotificationActivity$1$1(aezi paramaezi) {}
   
   public void run()
   {

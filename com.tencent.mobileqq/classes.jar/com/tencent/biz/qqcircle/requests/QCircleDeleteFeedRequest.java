@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudWrite.StDelFeedReq;
 import feedcloud.FeedCloudWrite.StDelFeedRsp;
-import uxx;
+import uzg;
 
 public class QCircleDeleteFeedRequest
   extends QCircleBaseRequest
@@ -22,7 +22,7 @@ public class QCircleDeleteFeedRequest
     }
     this.req = new FeedCloudWrite.StDelFeedReq();
     this.req.from.set(0);
-    this.req.feed.set(uxx.a(paramStFeed));
+    this.req.feed.set(uzg.a(paramStFeed));
   }
   
   public MessageMicro decode(byte[] paramArrayOfByte)

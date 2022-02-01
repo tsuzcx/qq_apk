@@ -1,35 +1,59 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class osj
-  implements Animator.AnimatorListener
+public class osj
+  implements blih
 {
-  osj(osg paramosg) {}
+  private List<blih> a = new ArrayList();
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(blih paramblih)
   {
-    osg.a(this.a, false);
+    if ((this.a != null) && (!this.a.contains(paramblih))) {
+      this.a.add(paramblih);
+    }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void b(blih paramblih)
   {
-    osg.a(this.a, false);
+    if (this.a != null) {
+      this.a.remove(paramblih);
+    }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    osg.a(this.a, true);
+    if ((this.a == null) || (this.a.size() <= 0)) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        blih localblih = (blih)localIterator.next();
+        if (localblih != null) {
+          localblih.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+        }
+      }
+    }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    osg.a(this.a, true);
-    osg.a(this.a).setAlpha(0.0F);
-    osg.b(this.a).setAlpha(0.0F);
-    osg.c(this.a).setAlpha(0.0F);
-    osg.a(this.a).setVisibility(0);
+    if ((this.a == null) || (this.a.size() <= 0)) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        blih localblih = (blih)localIterator.next();
+        if (localblih != null) {
+          localblih.onScrollStateChanged(paramAbsListView, paramInt);
+        }
+      }
+    }
   }
 }
 

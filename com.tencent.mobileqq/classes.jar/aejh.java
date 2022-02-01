@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aejh
-  implements View.OnClickListener
+  implements bduz
 {
-  public aejh(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
+  public aejh(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
   }
 }
 

@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import java.util.UUID;
 
-public class bfwq
-  implements bfuf
+public abstract interface bfwq
 {
-  public bfwq(TroopAIORobotLayout paramTroopAIORobotLayout) {}
-  
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
-  {
-    if (paramInt == 0) {}
-  }
+  public abstract void a(UUID paramUUID, boolean paramBoolean, int paramInt, bfwo parambfwo);
 }
 
 

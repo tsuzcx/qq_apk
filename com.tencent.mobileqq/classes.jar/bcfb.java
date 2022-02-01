@@ -1,45 +1,82 @@
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.2;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.utils.quic.QuicResDownload;
-import java.util.Properties;
-import mqq.app.MobileQQ;
+import android.view.View;
+import com.tencent.mobileqq.search.activity.ContactSearchActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
+import java.util.List;
 
 public class bcfb
-  implements bcfe
+  implements bcfq
 {
-  public bcfb(ShortVideoResourceManager.2 param2) {}
+  public static final String a;
+  private int jdField_a_of_type_Int;
+  private bcfr jdField_a_of_type_Bcfr;
+  public List<bcfr> a;
+  private String b;
   
-  public void B_()
+  static
   {
-    VideoEnvironment.a("QuicResDownload", "doUserDownloadQuicResourceAsync: [onNetWorkNone]", null);
+    jdField_a_of_type_JavaLangString = anzj.a(2131704264);
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public bcfb(List<bcfr> paramList, String paramString, int paramInt)
   {
-    VideoEnvironment.a("QuicResDownload", "doUserDownloadQuicResourceAsync: [onDownloadFinish]name=" + paramString1 + " filepath=" + paramString2, null);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(String paramString, long paramLong1, long paramLong2)
+  public int a()
   {
-    if ((paramLong1 == paramLong2) && (!QuicResDownload.a)) {
-      QuicResDownload.a = true;
-    }
-    try
+    return bbzo.a("fts_native_contactor_maxnum", 3);
+  }
+  
+  public bcfr a()
+  {
+    return this.jdField_a_of_type_Bcfr;
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<bcfr> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    if (SearchConfigManager.needSeparate) {}
+    for (int i = 1;; i = 0)
     {
-      Properties localProperties = new Properties();
-      localProperties.put("version", "8.4.1.4680");
-      localProperties.put("appid", String.valueOf(AppSetting.a()));
-      localProperties.put("release", String.valueOf(true));
-      localProperties.put("name", paramString);
-      bcsi.a(this.a.a.getApplication().getApplicationContext()).reportKVEvent("msf_quic_resdown", localProperties);
+      ContactSearchActivity.a(paramView.getContext(), this.b, this.jdField_a_of_type_Int, 197437, i);
+      bcni.a(this.b, 20, 0, paramView);
+      if ((paramView.getContext() instanceof UniteSearchActivity))
+      {
+        bcni.a("all_result", "more_contact", new String[] { "" + this.b });
+        if (SearchConfigManager.needSeparate) {
+          bcni.a("search", "contact", "more", 0, 0, new String[] { bcni.a(this.jdField_a_of_type_Int) });
+        }
+        bcjy.a(null, 0, this.jdField_a_of_type_Int, "0X8009D39", 0, 0, null, null);
+      }
       return;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+  }
+  
+  public void a(bcfr parambcfr)
+  {
+    this.jdField_a_of_type_Bcfr = parambcfr;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

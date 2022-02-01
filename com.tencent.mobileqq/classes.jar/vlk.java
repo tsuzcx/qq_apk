@@ -1,6 +1,20 @@
-public abstract interface vlk
+import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
+
+public class vlk
+  implements aabr<uzt>
 {
-  public abstract void a();
+  public vlk(QCircleBaseTabFragment paramQCircleBaseTabFragment) {}
+  
+  public void a(aabu paramaabu, uzt paramuzt)
+  {
+    if (paramaabu.e()) {
+      this.a.f();
+    }
+    while (!paramaabu.d()) {
+      return;
+    }
+    this.a.a(false);
+  }
 }
 
 

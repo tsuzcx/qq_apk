@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import akwo;
-import akws;
+import alid;
+import alih;
 import android.app.Activity;
 import android.os.Build.VERSION;
 import android.view.View;
@@ -50,7 +50,7 @@ public class ImmersionBar
           break;
         }
         int i = 256;
-        if ((Build.VERSION.SDK_INT >= 21) && (!akws.d()))
+        if ((Build.VERSION.SDK_INT >= 21) && (!alih.d()))
         {
           if (this.statusBarView != null) {
             i = 1280;
@@ -87,7 +87,7 @@ public class ImmersionBar
   
   public static boolean isSupportStatusBarDarkFont()
   {
-    return (akws.b()) || (akws.f()) || (Build.VERSION.SDK_INT >= 23);
+    return (alih.b()) || (alih.f()) || (Build.VERSION.SDK_INT >= 23);
   }
   
   private static void setMIUIStatusBarDarkFont(Window paramWindow, boolean paramBoolean)
@@ -149,11 +149,11 @@ public class ImmersionBar
       if (isSupportStatusBarDarkFont())
       {
         initStateBar(this.statusBarViewColor);
-        if (akws.b()) {
+        if (alih.b()) {
           setMIUIStatusBarDarkFont(this.mWindow, paramBoolean);
         }
-        if (akws.f()) {
-          akwo.a(this.mActivity, paramBoolean);
+        if (alih.f()) {
+          alid.a(this.mActivity, paramBoolean);
         }
       }
       return;

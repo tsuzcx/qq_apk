@@ -1,6 +1,9 @@
 package com.tencent.biz.richframework.part;
 
-import aaaf;
+import aabb;
+import aabe;
+import aabf;
+import aaek;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.Lifecycle.Event;
 import android.arch.lifecycle.LifecycleOwner;
@@ -27,24 +30,23 @@ import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.List;
-import uxx;
-import zxg;
-import zxj;
-import zxk;
+import uzg;
+import vuc;
 
 public abstract class BasePartFragment
   extends PublicBaseFragment
   implements LifecycleOwner, ViewModelStoreOwner
 {
+  private aabf jdField_a_of_type_Aabf;
   private LifecycleRegistry jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry(this);
   private ViewModelStore jdField_a_of_type_AndroidArchLifecycleViewModelStore;
   public View a;
   protected TopGestureLayout a;
-  private zxk jdField_a_of_type_Zxk;
   
   private void a()
   {
@@ -56,6 +58,13 @@ public abstract class BasePartFragment
   
   private void b()
   {
+    VideoReport.addToDetectionWhitelist(getActivity());
+    VideoReport.setPageId(this.jdField_a_of_type_AndroidViewView, "small_world_base");
+    VideoReport.setPageParams(this.jdField_a_of_type_AndroidViewView, new vuc().a(c()).a());
+  }
+  
+  private void c()
+  {
     if ((getActivity() != null) && (getActivity().getIntent() != null))
     {
       long l = getActivity().getIntent().getLongExtra("key_bundle_open_page_time", 0L);
@@ -66,6 +75,33 @@ public abstract class BasePartFragment
   }
   
   protected abstract int a();
+  
+  public <T extends aabb> T a(BasePartFragment paramBasePartFragment, String paramString, Class<T> paramClass)
+  {
+    ViewModelProvider localViewModelProvider = new ViewModelProvider(paramBasePartFragment, ViewModelProvider.AndroidViewModelFactory.getInstance(BaseApplicationImpl.getApplication()));
+    if (paramString == null) {}
+    for (paramString = "android.arch.lifecycle.ViewModelProvider.DefaultKey";; paramString = paramString + paramClass.getCanonicalName())
+    {
+      paramString = (aabb)localViewModelProvider.get(paramString, paramClass);
+      paramString.a(paramBasePartFragment.getActivity().hashCode());
+      return paramString;
+    }
+  }
+  
+  public <T extends aabb> T a(Class<T> paramClass)
+  {
+    return a(null, paramClass);
+  }
+  
+  public <T extends aabb> T a(String paramString, Class<T> paramClass)
+  {
+    return a(this, paramString, paramClass);
+  }
+  
+  public aabf a()
+  {
+    return this.jdField_a_of_type_Aabf;
+  }
   
   protected TopGestureLayout a()
   {
@@ -89,43 +125,16 @@ public abstract class BasePartFragment
     return this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   }
   
-  protected abstract List<zxj> a();
-  
-  public <T extends zxg> T a(BasePartFragment paramBasePartFragment, String paramString, Class<T> paramClass)
-  {
-    ViewModelProvider localViewModelProvider = new ViewModelProvider(paramBasePartFragment, ViewModelProvider.AndroidViewModelFactory.getInstance(BaseApplicationImpl.getApplication()));
-    if (paramString == null) {}
-    for (paramString = "android.arch.lifecycle.ViewModelProvider.DefaultKey";; paramString = paramString + paramClass.getCanonicalName())
-    {
-      paramString = (zxg)localViewModelProvider.get(paramString, paramClass);
-      paramString.b(paramBasePartFragment.getActivity().hashCode());
-      return paramString;
-    }
-  }
-  
-  public <T extends zxg> T a(Class<T> paramClass)
-  {
-    return a(null, paramClass);
-  }
-  
-  public <T extends zxg> T a(String paramString, Class<T> paramClass)
-  {
-    return a(this, paramString, paramClass);
-  }
-  
-  public zxk a()
-  {
-    return this.jdField_a_of_type_Zxk;
-  }
+  protected abstract List<aabe> a();
   
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Zxk != null)
+    if (this.jdField_a_of_type_Aabf != null)
     {
-      this.jdField_a_of_type_Zxk.a(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Zxk.onActivityCreated(getActivity(), paramBundle);
+      this.jdField_a_of_type_Aabf.a(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Aabf.onActivityCreated(getActivity(), paramBundle);
     }
-    if (c())
+    if (f_())
     {
       paramLayoutInflater = getActivity().mSystemBarComp;
       if (paramLayoutInflater != null)
@@ -134,18 +143,19 @@ public abstract class BasePartFragment
         paramLayoutInflater.setStatusBarVisible(2, 0);
       }
       if (!e_()) {
-        break label87;
+        break label91;
       }
       getActivity().getWindow().setFlags(1024, 1024);
     }
     for (;;)
     {
+      c();
       b();
       return;
-      label87:
+      label91:
       if (((getActivity() instanceof QCircleFragmentActivity)) && (ImmersiveUtils.isSupporImmersive() == 1))
       {
-        uxx.a(getActivity(), b());
+        uzg.a(getActivity(), b());
         ImmersiveUtils.a(true, getActivity().getWindow());
       }
     }
@@ -158,7 +168,9 @@ public abstract class BasePartFragment
   
   protected abstract int b();
   
-  public void b(boolean paramBoolean)
+  public abstract String c();
+  
+  public void c(boolean paramBoolean)
   {
     try
     {
@@ -177,14 +189,14 @@ public abstract class BasePartFragment
     }
   }
   
-  protected boolean c()
-  {
-    return true;
-  }
-  
   protected boolean e_()
   {
     return false;
+  }
+  
+  protected boolean f_()
+  {
+    return true;
   }
   
   public Lifecycle getLifecycle()
@@ -207,7 +219,7 @@ public abstract class BasePartFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    if ((aaaf.a()) && (a())) {
+    if ((aaek.a()) && (a())) {
       a();
     }
   }
@@ -215,8 +227,8 @@ public abstract class BasePartFragment
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (this.jdField_a_of_type_Zxk != null) {
-      this.jdField_a_of_type_Zxk.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Aabf != null) {
+      this.jdField_a_of_type_Aabf.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
@@ -231,8 +243,8 @@ public abstract class BasePartFragment
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if (this.jdField_a_of_type_Zxk != null) {
-      this.jdField_a_of_type_Zxk.a(paramConfiguration);
+    if (this.jdField_a_of_type_Aabf != null) {
+      this.jdField_a_of_type_Aabf.a(paramConfiguration);
     }
   }
   
@@ -240,8 +252,8 @@ public abstract class BasePartFragment
   {
     super.onCreate(paramBundle);
     this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry(this);
-    this.jdField_a_of_type_Zxk = new zxk(this, getView());
-    this.jdField_a_of_type_Zxk.a(a());
+    this.jdField_a_of_type_Aabf = new aabf(this, getView());
+    this.jdField_a_of_type_Aabf.a(a());
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
@@ -279,7 +291,7 @@ public abstract class BasePartFragment
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
-      this.jdField_a_of_type_Zxk.onActivityDestroyed(getActivity());
+      this.jdField_a_of_type_Aabf.onActivityDestroyed(getActivity());
       if (this.jdField_a_of_type_AndroidArchLifecycleViewModelStore != null) {
         this.jdField_a_of_type_AndroidArchLifecycleViewModelStore.clear();
       }
@@ -300,7 +312,7 @@ public abstract class BasePartFragment
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
-      this.jdField_a_of_type_Zxk.onActivityPaused(getActivity());
+      this.jdField_a_of_type_Aabf.onActivityPaused(getActivity());
       return;
     }
     catch (Throwable localThrowable)
@@ -315,7 +327,7 @@ public abstract class BasePartFragment
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
-      this.jdField_a_of_type_Zxk.onActivityResumed(getActivity());
+      this.jdField_a_of_type_Aabf.onActivityResumed(getActivity());
       return;
     }
     catch (Throwable localThrowable)
@@ -330,7 +342,7 @@ public abstract class BasePartFragment
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
-      this.jdField_a_of_type_Zxk.onActivityStarted(getActivity());
+      this.jdField_a_of_type_Aabf.onActivityStarted(getActivity());
       return;
     }
     catch (Throwable localThrowable)
@@ -345,7 +357,7 @@ public abstract class BasePartFragment
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
-      this.jdField_a_of_type_Zxk.onActivityStopped(getActivity());
+      this.jdField_a_of_type_Aabf.onActivityStopped(getActivity());
       return;
     }
     catch (Throwable localThrowable)

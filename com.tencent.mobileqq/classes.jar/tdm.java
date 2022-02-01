@@ -1,18 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 
 class tdm
-  extends BroadcastReceiver
+  implements tdn
 {
-  tdm(tdi paramtdi) {}
+  tdm(tdl paramtdl) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(String paramString, View.OnClickListener paramOnClickListener)
   {
-    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.a.a);
-    this.a.b(false, -1, -1);
+    tdl.a(this.a).setRightButtonText(paramString, paramOnClickListener);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    tdl.a(this.a).setTitleTransparent(paramBoolean);
+  }
+  
+  public void b(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    tdl.a(this.a).setLeftButtonText(paramString, paramOnClickListener);
   }
 }
 

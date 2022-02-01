@@ -1,26 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.random.RandomController;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.opengl.texture.YUVTexture;
 
 public class lsd
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public lsd(RandomController paramRandomController) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public lsd(YUVTexture paramYUVTexture, Looper paramLooper)
   {
-    if (RandomController.a(this.a) == 1) {
-      bcst.b(null, "CliOper", "", "", "0X80053B4", "0X80053B4", 0, 0, "", "", "", "");
-    }
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.what;
+    this.a.d = true;
+    switch (i)
     {
-      this.a.c();
-      RandomController.d(this.a, false);
-      return;
-      if (RandomController.a(this.a) == 2) {
-        bcst.b(null, "CliOper", "", "", "0X80053C0", "0X80053C0", 0, 0, "", "", "", "");
-      }
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+          } while (YUVTexture.a(this.a) == null);
+          YUVTexture.a(this.a).c();
+          return;
+        } while (YUVTexture.a(this.a) == null);
+        YUVTexture.a(this.a).b();
+        return;
+      } while (YUVTexture.a(this.a) == null);
+      YUVTexture.a(this.a).a();
+      return;
+    } while (YUVTexture.a(this.a) == null);
+    if (YUVTexture.a(this.a) == null) {
+      YUVTexture.a(this.a, new lom('=', ';'));
+    }
+    paramMessage = (String)paramMessage.obj;
+    YUVTexture.a(this.a).a(paramMessage);
+    i = YUVTexture.a(this.a).a("width");
+    int j = YUVTexture.a(this.a).a("height");
+    int k = YUVTexture.a(this.a).a("angle");
+    int m = YUVTexture.a(this.a).a("rotation", -1);
+    YUVTexture.a(this.a).a(i, j, k, m);
   }
 }
 

@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
 
 public class akol
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public akol(TransactionActivity paramTransactionActivity) {}
+  public akol(CountryActivity paramCountryActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a(TransactionActivity.b(this.a), 128, "transfer.amount.go", "", "", TransactionActivity.b(this.a), "");
-    this.a.b();
+    if (!this.a.isFinishing())
+    {
+      this.a.jdField_a_of_type_Akor.show();
+      this.a.b.setAnimation(null);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

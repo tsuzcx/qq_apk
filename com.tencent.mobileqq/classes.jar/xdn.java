@@ -1,17 +1,24 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class xdn
-  extends xbw
+public class xdn
+  extends wou
 {
-  xdn(xcu paramxcu, StoryVideoItem paramStoryVideoItem, xed paramxed)
-  {
-    super(paramStoryVideoItem);
-  }
+  public List<ylw> a = new ArrayList();
   
-  public boolean b()
+  public xdn(qqstory_group.RspGroupStoryFeedIdList paramRspGroupStoryFeedIdList)
   {
-    this.jdField_a_of_type_Xed.e = ((String)a("result"));
-    return true;
+    super(paramRspGroupStoryFeedIdList.result, paramRspGroupStoryFeedIdList.is_end, paramRspGroupStoryFeedIdList.next_cookie);
+    paramRspGroupStoryFeedIdList = paramRspGroupStoryFeedIdList.feed_seq_info_list.get().iterator();
+    while (paramRspGroupStoryFeedIdList.hasNext())
+    {
+      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspGroupStoryFeedIdList.next();
+      this.a.add(new ylw(localFeedSeqInfo));
+    }
   }
 }
 

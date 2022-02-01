@@ -1,26 +1,44 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import qqcircle.QQCirclePrivateMsgShow.UserPMGiftInfo;
 
-class vlp
-  implements Observer<uzp>
+public class vlp
 {
-  vlp(vll paramvll) {}
+  private static volatile vlp jdField_a_of_type_Vlp;
+  private ConcurrentHashMap<String, QQCirclePrivateMsgShow.UserPMGiftInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void a(@Nullable uzp paramuzp)
+  public static vlp a()
   {
-    if ((paramuzp != null) && (vll.a(this.a) != null))
+    if (jdField_a_of_type_Vlp == null) {}
+    try
     {
-      vll.a(this.a, paramuzp);
-      if (vll.a(this.a)) {
-        break label41;
+      if (jdField_a_of_type_Vlp == null) {
+        jdField_a_of_type_Vlp = new vlp();
       }
-      vll.b(this.a, paramuzp);
+      return jdField_a_of_type_Vlp;
     }
-    label41:
-    while (vll.a(this.a) == null) {
-      return;
+    finally {}
+  }
+  
+  public QQCirclePrivateMsgShow.UserPMGiftInfo a(String paramString)
+  {
+    return (QQCirclePrivateMsgShow.UserPMGiftInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+  }
+  
+  public void a(List<QQCirclePrivateMsgShow.UserPMGiftInfo> paramList)
+  {
+    QLog.d("QCircleChatGiftManager", 1, "updateGiftInfo");
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      QQCirclePrivateMsgShow.UserPMGiftInfo localUserPMGiftInfo = (QQCirclePrivateMsgShow.UserPMGiftInfo)paramList.next();
+      if (localUserPMGiftInfo != null) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localUserPMGiftInfo.uid.get(), localUserPMGiftInfo);
+      }
     }
-    vll.a(this.a).clearData();
   }
 }
 

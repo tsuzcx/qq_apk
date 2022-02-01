@@ -1,26 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
-public class aasz
-  implements DialogInterface.OnClickListener
+class aasz
+  implements bcxy
 {
-  public aasz(TroopGiftPanel paramTroopGiftPanel) {}
+  aasz(aast paramaast, AppRuntime paramAppRuntime, Bundle paramBundle) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (paramInt == 1)
+    VideoEnvironment.a("TroopMemberApiService", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
     {
-      bgzo.a(this.a.a, "mvip.n.a.qlw_forsvip", "CJCLUBT", 3, false, true);
-      bcst.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_sure_click", 0, 0, "", "", "", "");
-    }
-    while (paramInt != 0) {
+      if (paramInt2 != 0)
+      {
+        VideoEnvironment.a("TroopMemberApiService", anzj.a(2131714386) + paramInt2 + "]", null);
+        ShortVideoResourceManager.a(anzj.a(2131714356));
+        bcwy.a(1, paramInt2);
+        this.jdField_a_of_type_Aast.a.b = false;
+        return;
+      }
+      ArrayList localArrayList = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList);
+      if (paramInt1 == 0)
+      {
+        VideoEnvironment.a("TroopMemberApiService", anzj.a(2131714347), null);
+        ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList, new aata(this));
+        return;
+      }
+      VideoEnvironment.a("TroopMemberApiService", anzj.a(2131714348) + paramInt1 + "]", null);
+      ShortVideoResourceManager.a(anzj.a(2131714385));
+      bcwy.a(1, paramInt1);
       return;
     }
-    bcst.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_cancel_click", 0, 0, "", "", "", "");
+    VideoEnvironment.a("TroopMemberApiService", anzj.a(2131714436) + paramInt2 + "]", null);
+    ShortVideoResourceManager.a(anzj.a(2131714393));
+    bcwy.a(1, paramInt2);
+    this.jdField_a_of_type_Aast.a.b = false;
   }
 }
 

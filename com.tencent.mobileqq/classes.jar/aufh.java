@@ -1,23 +1,28 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class aufh
-  implements aufb
+  extends atrl
 {
-  aufh(aufg paramaufg, String paramString1, String paramString2) {}
+  aufh(aufg paramaufg, atvm paramatvm) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  protected void a(boolean paramBoolean1, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, boolean paramBoolean2, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
   {
-    QLog.d("FlutterMainQIPCModule", 1, String.format("onResult, isSuccess: %s, installDir: %s, isEngineExist: %s, isAppExist: %s", new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("KEY_INSTALL_RESULT", paramBoolean1);
-    localBundle.putString("KEY_INSTALL_DIR", paramString);
-    localBundle.putBoolean("KEY_IS_APP_EXIST", paramBoolean3);
-    localBundle.putBoolean("KEY_IS_ENGINE_EXIST", paramBoolean2);
-    QIPCServerHelper.getInstance().callClient(this.jdField_a_of_type_JavaLangString, "FlutterSubQIPCModule", this.b, localBundle, new aufi(this));
+    if (paramBoolean2) {}
+    for (paramString1 = paramString4 + "&isthumb=0";; paramString1 = paramString4)
+    {
+      QLog.i("VideoForC2C<QFile>XOXO", 2, "[" + this.jdField_a_of_type_Aufg.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "],[getOnlinePlay]  ID[" + paramLong2 + "]onUpdateGetOfflineDownloadInfo");
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_Aufg.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5)) && (!TextUtils.isEmpty(paramString6))) {
+        this.jdField_a_of_type_Aufg.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5 = paramString6;
+      }
+      this.jdField_a_of_type_Aufg.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bUseMediaPlatform = paramBoolean2;
+      aunj.a(this.jdField_a_of_type_Aufg.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_Aufg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new aufi(this, paramLong1, paramBoolean1, paramString3, paramBundle, paramShort, paramBoolean2, paramString2, paramString1));
+      return;
+    }
   }
 }
 

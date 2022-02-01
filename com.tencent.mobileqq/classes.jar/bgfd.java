@@ -1,14 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-final class bgfd
-  implements DownloadParams.DecodeHandler
+public abstract interface bgfd
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    return bgey.a(paramBitmap);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder);
+  
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean);
+  
+  public abstract void b(RecyclerView.ViewHolder paramViewHolder);
+  
+  public abstract void c(RecyclerView.ViewHolder paramViewHolder);
+  
+  public abstract void d(RecyclerView.ViewHolder paramViewHolder);
 }
 
 

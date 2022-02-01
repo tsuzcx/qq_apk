@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.StateListDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 class ahdv
-  extends ayyr
+  implements URLDrawable.URLDrawableListener
 {
-  ahdv(ahdu paramahdu, BaseChatItemLayout paramBaseChatItemLayout) {}
+  ahdv(ahdk paramahdk, StateListDrawable paramStateListDrawable) {}
   
-  public void a(int paramInt, ayxy paramayxy)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "2g diy gif onDownload");
-    }
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void a_(int paramInt, boolean paramBoolean)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "2g diy gif onUpdateProgress");
-    }
+    this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable.invalidateSelf();
   }
 }
 

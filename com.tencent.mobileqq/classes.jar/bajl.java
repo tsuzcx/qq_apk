@@ -1,49 +1,50 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import java.lang.ref.WeakReference;
+import android.graphics.PointF;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout.LayoutParams;
 
-class bajl
-  extends anmu
+public class bajl
+  implements babz
 {
-  bajl(bajk parambajk) {}
+  public bajl(VasProfileTagView paramVasProfileTagView) {}
   
-  protected void onReqLastChatTime(boolean paramBoolean, String paramString1, String paramString2, Long paramLong)
+  public void a()
   {
-    int j = 1;
-    anmw localanmw;
-    int i;
-    Object localObject;
-    if (paramBoolean)
+    Object localObject1;
+    if (VasProfileTagView.a(this.a) != null)
     {
-      localanmw = (anmw)this.a.a.getManager(51);
-      ExtensionInfo localExtensionInfo = localanmw.a(paramString2, true);
-      i = 0;
-      localObject = localExtensionInfo;
-      if (localExtensionInfo == null)
+      localObject1 = VasProfileTagView.a(this.a);
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
       {
-        localObject = new ExtensionInfo();
-        ((ExtensionInfo)localObject).uin = paramString2;
-        i = 1;
-      }
-      if (((ExtensionInfo)localObject).lastIceBreakChatTs >= paramLong.longValue()) {
-        break label152;
-      }
-      ((ExtensionInfo)localObject).lastIceBreakChatTs = paramLong.longValue();
-      i = j;
-    }
-    label152:
-    for (;;)
-    {
-      if (i != 0) {
-        localanmw.a((ExtensionInfo)localObject);
-      }
-      if (bajk.a(this.a) == null) {}
-      for (localObject = null;; localObject = (bajo)bajk.a(this.a).get())
-      {
-        if (localObject != null) {
-          ((bajo)localObject).a(paramBoolean, paramString1, paramString2, paramLong);
+        Object localObject2 = localObject1[i];
+        if ((localObject2 != null) && (localObject2.getVisibility() != 8))
+        {
+          RatioLayout.LayoutParams localLayoutParams = (RatioLayout.LayoutParams)localObject2.getLayoutParams();
+          if (localLayoutParams != null)
+          {
+            localLayoutParams.a = VasProfileTagView.a(this.a).x;
+            localLayoutParams.b = VasProfileTagView.a(this.a).y;
+            localObject2.setLayoutParams(localLayoutParams);
+          }
         }
-        return;
+        i += 1;
+      }
+      this.a.f();
+    }
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      localObject1 = (FrameLayout)VasProfileTagView.c(this.a).findViewById(16908290);
+      if (localObject1 != null)
+      {
+        VasProfileTagView.a(this.a, ((FrameLayout)localObject1).getBackground());
+        if (!bicd.a(VasProfileTagView.a(this.a))) {
+          ((FrameLayout)localObject1).setBackgroundDrawable(null);
+        }
       }
     }
   }

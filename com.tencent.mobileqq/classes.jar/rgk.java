@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.SimpleChannelInfo;
-
-public final class rgk
-  implements Parcelable.Creator<SimpleChannelInfo>
+public abstract interface rgk
 {
-  public SimpleChannelInfo a(Parcel paramParcel)
-  {
-    return new SimpleChannelInfo(paramParcel);
-  }
-  
-  public SimpleChannelInfo[] a(int paramInt)
-  {
-    return new SimpleChannelInfo[paramInt];
-  }
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString);
 }
 
 

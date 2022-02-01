@@ -1,19 +1,28 @@
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class yyp
-  extends weu
+class yyp
+  implements TextWatcher
 {
-  public final int a;
-  @NonNull
-  public final List<wqr> a;
+  yyp(yym paramyym) {}
   
-  public yyp(int paramInt, @NonNull List<wqr> paramList)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
+    yxt localyxt = this.a.a;
+    if (this.a.a.a()) {}
+    for (paramEditable = "2";; paramEditable = "1")
+    {
+      localyxt.a("search_poi", 0, 0, new String[] { paramEditable });
+      yuq.a("0X80076D1");
+      yuq.b("0X80075E6");
+      yym.a(this.a);
+      return;
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

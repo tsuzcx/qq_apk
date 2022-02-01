@@ -1,19 +1,43 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class sqh
-  implements bkhe
+class sqh
+  implements ViewBase.OnClickListener
 {
-  public sqh(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  sqh(sqg paramsqg) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.a.a(new sqj(this, "onListViewScroll", paramAbsListView, paramInt1, paramInt2, paramInt3));
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    this.a.a(new sqi(this, "onScrollStateChanged", paramAbsListView, paramInt));
+    int i;
+    if ((sqf.a(this.a.jdField_a_of_type_Sqf) instanceof AdData)) {
+      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+      {
+      default: 
+        i = -1;
+      }
+    }
+    for (;;)
+    {
+      ssa.a(this.a.jdField_a_of_type_AndroidContentContext, tqb.a((AdData)sqf.a(this.a.jdField_a_of_type_Sqf)), true, true, i);
+      return;
+      ssu.a(sqf.a(this.a.jdField_a_of_type_Sqf), paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+      return;
+      i = 4;
+      continue;
+      i = 3;
+      continue;
+      i = 5;
+      continue;
+      i = 8;
+      continue;
+      i = 1;
+      continue;
+      i = 1000;
+      continue;
+      i = 2;
+    }
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo.game;
 
-import abcr;
-import amnf;
-import amnh;
-import amnm;
+import abgu;
+import amyz;
+import amzb;
+import amzg;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import anni;
-import bhod;
-import bhst;
-import biau;
+import anzj;
+import bioy;
+import bito;
+import bjbs;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
@@ -33,7 +33,7 @@ public class ApolloGamePlugin
 {
   private static int jdField_a_of_type_Int;
   public static List<WeakReference<ApolloGamePlugin>> a;
-  private amnm jdField_a_of_type_Amnm;
+  private amzg jdField_a_of_type_Amzg;
   protected BroadcastReceiver a;
   private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean;
@@ -123,14 +123,14 @@ public class ApolloGamePlugin
       try
       {
         Object localObject1 = this.mRuntime.a(this.mRuntime.a());
-        if ((localObject1 != null) && ((localObject1 instanceof bhst)))
+        if ((localObject1 != null) && ((localObject1 instanceof bito)))
         {
-          localObject1 = (bhst)localObject1;
+          localObject1 = (bito)localObject1;
           if (localObject1 != null)
           {
-            localObject1 = ((bhst)localObject1).getShare().a();
-            if ((localObject1 != null) && (((biau)localObject1).isShowing())) {
-              ((biau)localObject1).dismiss();
+            localObject1 = ((bito)localObject1).getShare().a();
+            if ((localObject1 != null) && (((bjbs)localObject1).isShowing())) {
+              ((bjbs)localObject1).dismiss();
             }
           }
           return;
@@ -147,8 +147,8 @@ public class ApolloGamePlugin
   
   public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Amnm != null) {
-      this.jdField_a_of_type_Amnm.a(paramInt, paramString1, paramString2);
+    if (this.jdField_a_of_type_Amzg != null) {
+      this.jdField_a_of_type_Amzg.a(paramInt, paramString1, paramString2);
     }
   }
   
@@ -180,8 +180,8 @@ public class ApolloGamePlugin
   
   public void a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Amnm != null) {
-      this.jdField_a_of_type_Amnm.a(0, paramString1, paramString2);
+    if (this.jdField_a_of_type_Amzg != null) {
+      this.jdField_a_of_type_Amzg.a(0, paramString1, paramString2);
     }
   }
   
@@ -205,16 +205,16 @@ public class ApolloGamePlugin
           }
           if (((String)localObject).trim().equals(this.jdField_a_of_type_JavaLangString))
           {
-            localObject = amnf.a().a(paramString, this.jdField_a_of_type_JavaLangString);
+            localObject = amyz.a().a(paramString, this.jdField_a_of_type_JavaLangString);
             if (localObject == null)
             {
-              b(anni.a(2131699168) + paramString);
+              b(anzj.a(2131699275) + paramString);
               if (!bool) {
                 break;
               }
               return new WebResourceResponse();
             }
-            return ((amnh)localObject).a();
+            return ((amzb)localObject).a();
           }
           paramString = new WebResourceResponse();
           return paramString;
@@ -229,7 +229,7 @@ public class ApolloGamePlugin
       do
       {
         return null;
-        b(anni.a(2131699189) + paramString);
+        b(anzj.a(2131699296) + paramString);
         if (bool)
         {
           paramString = new WebResourceResponse();
@@ -245,13 +245,13 @@ public class ApolloGamePlugin
   {
     if (8589934593L == paramLong)
     {
-      if ((this.jdField_a_of_type_Amnm == null) && (this.mRuntime != null))
+      if ((this.jdField_a_of_type_Amzg == null) && (this.mRuntime != null))
       {
-        this.jdField_a_of_type_Amnm = new amnm(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Amnm.a(this.mRuntime.a());
+        this.jdField_a_of_type_Amzg = new amzg(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Amzg.a(this.mRuntime.a());
       }
-      if (this.jdField_a_of_type_Amnm != null) {
-        this.jdField_a_of_type_Amnm.a(this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_Amzg != null) {
+        this.jdField_a_of_type_Amzg.a(this.jdField_a_of_type_Boolean);
       }
     }
     for (;;)
@@ -259,8 +259,8 @@ public class ApolloGamePlugin
       return super.handleEvent(paramString, paramLong, paramMap);
       if (8589934594L == paramLong)
       {
-        if (this.jdField_a_of_type_Amnm != null) {
-          this.jdField_a_of_type_Amnm.b(this.jdField_a_of_type_Boolean);
+        if (this.jdField_a_of_type_Amzg != null) {
+          this.jdField_a_of_type_Amzg.b(this.jdField_a_of_type_Boolean);
         } else {
           QLog.e("ApolloGamePlugin", 1, "[handleEvent] jscontext is null");
         }
@@ -289,13 +289,13 @@ public class ApolloGamePlugin
           }
           if (paramString3.equals("send"))
           {
-            if (this.jdField_a_of_type_Amnm == null) {
+            if (this.jdField_a_of_type_Amzg == null) {
               continue;
             }
             String str = ((JSONObject)localObject).optString("cmd");
             localObject = ((JSONObject)localObject).optString("dataStr");
-            if (this.jdField_a_of_type_Amnm != null) {
-              this.jdField_a_of_type_Amnm.a(str, (String)localObject);
+            if (this.jdField_a_of_type_Amzg != null) {
+              this.jdField_a_of_type_Amzg.a(str, (String)localObject);
             }
           }
         }
@@ -321,12 +321,12 @@ public class ApolloGamePlugin
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Amnm != null) {
-      this.jdField_a_of_type_Amnm.b();
+    if (this.jdField_a_of_type_Amzg != null) {
+      this.jdField_a_of_type_Amzg.b();
     }
     jdField_a_of_type_Int -= 1;
     if (jdField_a_of_type_Int == 0) {
-      amnf.a().a();
+      amyz.a().a();
     }
     try
     {
@@ -355,10 +355,10 @@ public class ApolloGamePlugin
       if (!TextUtils.isEmpty(str))
       {
         a(str);
-        if ((this.jdField_a_of_type_Amnm == null) && (paramCustomWebView != null))
+        if ((this.jdField_a_of_type_Amzg == null) && (paramCustomWebView != null))
         {
-          this.jdField_a_of_type_Amnm = new amnm(str);
-          this.jdField_a_of_type_Amnm.a(this.mRuntime.a());
+          this.jdField_a_of_type_Amzg = new amzg(str);
+          this.jdField_a_of_type_Amzg.a(this.mRuntime.a());
           this.b = localIntent.getStringExtra("url");
           this.jdField_a_of_type_Boolean = true;
         }

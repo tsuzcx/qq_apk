@@ -15,7 +15,7 @@ import android.os.Handler;
 import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
-import nlw;
+import nnr;
 
 class QRCardActivity$2
   implements Runnable
@@ -29,7 +29,7 @@ class QRCardActivity$2
     int n;
     try
     {
-      localObject1 = nlw.a(this.this$0, this.this$0.l, "GET", null, null);
+      localObject1 = nnr.a(this.this$0, this.this$0.l, "GET", null, null);
       if (localObject1 == null) {
         return;
       }

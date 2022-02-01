@@ -1,24 +1,62 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import android.view.View;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import com.tencent.mobileqq.pb.PBStringField;
+import acor;
+import acos;
+import com.tencent.ad.tangram.util.AdExposureChecker;
+import com.tencent.gdtad.api.GdtAd;
+import com.tencent.mobileqq.mini.util.AdUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 
 class GameActivity$38
-  implements AdExposureChecker.ExposureCallback
+  implements acos
 {
   GameActivity$38(GameActivity paramGameActivity) {}
   
-  public void onExposure(WeakReference<View> paramWeakReference)
+  public void onAdClicked(GdtAd paramGdtAd)
   {
-    QLog.i("[minigame] GameActivity", 1, "bannerad onExposure");
-    if ((this.this$0.mBannerAdOpInfo != null) && (this.this$0.mBannerAdOpInfo.report_info != null) && (this.this$0.mBannerAdOpInfo.report_info.exposure_url != null)) {
-      GameActivity.access$5400(this.this$0, this.this$0.mBannerAdOpInfo.report_info.exposure_url.get(), System.currentTimeMillis());
+    QLog.i("[minigame] GameActivity", 1, "bannerad onAdClicked");
+    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null) && (AdUtils.isHitReport50ViewAndOneSecond(paramGdtAd.getAd())))
+    {
+      AdExposureChecker.onClick(this.this$0, paramGdtAd.getAd(), new WeakReference(this.this$0.mAdExposureCheckerCallback));
+      return;
     }
+    QLog.i("[minigame] GameActivity", 1, "ad null");
+  }
+  
+  public void onAdClosed(GdtAd paramGdtAd)
+  {
+    QLog.i("[minigame] GameActivity", 1, "bannerad onAdClosed");
+  }
+  
+  public void onAdFailedToLoad(GdtAd paramGdtAd, acor paramacor)
+  {
+    int i;
+    if (paramacor != null)
+    {
+      i = paramacor.a();
+      if (paramacor == null) {
+        break label58;
+      }
+    }
+    label58:
+    for (paramGdtAd = paramacor.a();; paramGdtAd = "")
+    {
+      QLog.i("[minigame] GameActivity", 1, "bannerad onAdFailedToLoad code=" + i + ", msg=" + paramGdtAd);
+      return;
+      i = -1;
+      break;
+    }
+  }
+  
+  public void onAdImpression(GdtAd paramGdtAd)
+  {
+    QLog.i("[minigame] GameActivity", 1, "bannerad onAdImpression");
+  }
+  
+  public void onAdLoaded(GdtAd paramGdtAd)
+  {
+    QLog.i("[minigame] GameActivity", 1, "bannerad onAdLoaded");
   }
 }
 

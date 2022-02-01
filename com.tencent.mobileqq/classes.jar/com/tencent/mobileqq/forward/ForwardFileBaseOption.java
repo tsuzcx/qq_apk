@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.forward;
 
-import abqn;
-import afur;
-import ahzf;
+import abur;
+import agej;
+import aiit;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anni;
-import aufz;
-import augu;
-import augv;
-import augw;
-import auxw;
-import bgpa;
-import bmqo;
+import anzj;
+import auxu;
+import auyr;
+import auys;
+import auyt;
+import avpx;
+import bhpc;
+import bnrt;
 import com.tencent.device.file.DeviceFileHandler;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -33,22 +33,23 @@ import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
-import nzz;
+import obj;
 
 public abstract class ForwardFileBaseOption
-  extends aufz
+  extends auxu
 {
   protected static String h;
-  auxw jdField_a_of_type_Auxw;
+  avpx a;
   public ForwardFileInfo a;
-  ArrayList<ForwardFileInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   protected long b;
+  ArrayList<ForwardFileInfo> b;
   public String i = "";
   protected String j = "";
   
   public ForwardFileBaseOption(Intent paramIntent)
   {
     super(paramIntent);
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
   
   public static String a(Context paramContext, Uri paramUri)
@@ -64,7 +65,7 @@ public abstract class ForwardFileBaseOption
     }
     for (;;)
     {
-      return this.jdField_a_of_type_AndroidContentContext.getString(2131692222) + paramString + "\n" + this.jdField_a_of_type_AndroidContentContext.getString(2131692239) + (String)localObject;
+      return this.jdField_a_of_type_AndroidContentContext.getString(2131692227) + paramString + "\n" + this.jdField_a_of_type_AndroidContentContext.getString(2131692244) + (String)localObject;
       if (paramLong < 1048576L)
       {
         localObject = paramLong / 1024L + " KB";
@@ -92,10 +93,10 @@ public abstract class ForwardFileBaseOption
     paramUri = a((Uri)localObject1);
     if (TextUtils.isEmpty(paramUri))
     {
-      if (this.jdField_a_of_type_Auxw != null)
+      if (this.jdField_a_of_type_Avpx != null)
       {
-        paramUri = this.jdField_a_of_type_Auxw;
-        h = auxw.jdField_a_of_type_JavaLangString;
+        paramUri = this.jdField_a_of_type_Avpx;
+        h = avpx.jdField_a_of_type_JavaLangString;
       }
       f(e());
       return false;
@@ -104,13 +105,13 @@ public abstract class ForwardFileBaseOption
     long l = ((File)localObject2).length();
     boolean bool1;
     boolean bool2;
-    if (this.jdField_a_of_type_Auxw != null)
+    if (this.jdField_a_of_type_Avpx != null)
     {
-      bool1 = this.jdField_a_of_type_Auxw.jdField_a_of_type_Boolean;
-      if (this.jdField_a_of_type_Auxw == null) {
+      bool1 = this.jdField_a_of_type_Avpx.jdField_a_of_type_Boolean;
+      if (this.jdField_a_of_type_Avpx == null) {
         break label228;
       }
-      bool2 = this.jdField_a_of_type_Auxw.b;
+      bool2 = this.jdField_a_of_type_Avpx.b;
     }
     for (;;)
     {
@@ -118,7 +119,7 @@ public abstract class ForwardFileBaseOption
       {
         if (((Uri)localObject1).toString().contains("mms/part"))
         {
-          f(this.jdField_a_of_type_AndroidContentContext.getString(2131692226));
+          f(this.jdField_a_of_type_AndroidContentContext.getString(2131692231));
           return false;
           bool1 = false;
           break;
@@ -126,19 +127,19 @@ public abstract class ForwardFileBaseOption
           bool2 = false;
           continue;
         }
-        f(this.jdField_a_of_type_AndroidContentContext.getString(2131692201));
+        f(this.jdField_a_of_type_AndroidContentContext.getString(2131692206));
         return false;
       }
     }
     if ((true == this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_from_jump")) && (true == this.jdField_a_of_type_AndroidOsBundle.getBoolean("isFromShare")) && (b(paramUri)))
     {
-      paramUri = new bgpa(this.jdField_a_of_type_AndroidAppActivity, 2131755823);
-      paramUri.setContentView(2131559009);
-      paramUri.setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131718563));
-      paramUri.setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131692203));
+      paramUri = new bhpc(this.jdField_a_of_type_AndroidAppActivity, 2131755824);
+      paramUri.setContentView(2131559008);
+      paramUri.setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131718699));
+      paramUri.setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131692208));
       paramUri.setCanceledOnTouchOutside(false);
       paramUri.setCancelable(false);
-      paramUri.setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131690563), new augv(this));
+      paramUri.setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131690559), new auys(this));
       paramUri.show();
       return false;
     }
@@ -155,7 +156,7 @@ public abstract class ForwardFileBaseOption
     this.jdField_a_of_type_JavaLangString = a((String)localObject1, l);
     this.j = ((String)localObject1);
     this.i = paramUri;
-    this.b = l;
+    this.jdField_b_of_type_Long = l;
     return true;
   }
   
@@ -170,15 +171,15 @@ public abstract class ForwardFileBaseOption
   
   private void f(String paramString)
   {
-    bgpa localbgpa = new bgpa(this.jdField_a_of_type_AndroidAppActivity, 2131755823);
-    localbgpa.setContentView(2131559009);
-    localbgpa.setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131718563));
-    localbgpa.setMessage(paramString);
-    localbgpa.setCanceledOnTouchOutside(false);
-    localbgpa.setCancelable(false);
-    localbgpa.setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131690563), new augu(this));
+    bhpc localbhpc = new bhpc(this.jdField_a_of_type_AndroidAppActivity, 2131755824);
+    localbhpc.setContentView(2131559008);
+    localbhpc.setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131718699));
+    localbhpc.setMessage(paramString);
+    localbhpc.setCanceledOnTouchOutside(false);
+    localbhpc.setCancelable(false);
+    localbhpc.setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131690559), new auyr(this));
     if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      localbgpa.show();
+      localbhpc.show();
     }
   }
   
@@ -187,10 +188,10 @@ public abstract class ForwardFileBaseOption
     if (QLog.isColorLevel()) {
       QLog.d("ForwardOption.ForwardFileBaseOption", 2, "uri= " + paramUri);
     }
-    if (this.jdField_a_of_type_Auxw == null) {
-      this.jdField_a_of_type_Auxw = new auxw(this.jdField_a_of_type_AndroidAppActivity, true, new augw(this));
+    if (this.jdField_a_of_type_Avpx == null) {
+      this.jdField_a_of_type_Avpx = new avpx(this.jdField_a_of_type_AndroidAppActivity, true, new auyt(this));
     }
-    return this.jdField_a_of_type_Auxw.a(paramUri);
+    return this.jdField_a_of_type_Avpx.a(paramUri);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -201,7 +202,7 @@ public abstract class ForwardFileBaseOption
       str = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
       if (!((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(50)).a(Long.parseLong(str)))
       {
-        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, anni.a(2131703537), 2000).a();
+        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, anzj.a(2131703644), 2000).a();
         this.jdField_a_of_type_AndroidAppActivity.finish();
       }
     }
@@ -218,7 +219,7 @@ public abstract class ForwardFileBaseOption
         localArrayList.add(((FileInfo)((Iterator)localObject).next()).c());
       }
       paramIntent = paramIntent.getStringExtra("sPrintParam");
-      ahzf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, localArrayList, paramIntent);
+      aiit.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, localArrayList, paramIntent);
     }
     this.jdField_a_of_type_AndroidAppActivity.finish();
   }
@@ -227,7 +228,7 @@ public abstract class ForwardFileBaseOption
   {
     try
     {
-      paramString2 = ((abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(paramString2));
+      paramString2 = ((abur)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(paramString2));
       Object localObject = new FileInfo(paramString1);
       paramString1 = new ArrayList();
       paramString1.add(localObject);
@@ -237,7 +238,7 @@ public abstract class ForwardFileBaseOption
       ((Intent)localObject).putExtra("device_info", paramString2);
       ((Intent)localObject).putExtra("url", "https://qzs.qq.com/open/mobile/iot_print/html/printOpt.html");
       ((Intent)localObject).putExtra("filetype", paramString3);
-      bmqo.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (Intent)localObject, "com.tencent.device.activities.LightPinterOptionActivity", 102, null, SmartDevicePluginProxyActivity.class);
+      bnrt.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (Intent)localObject, "com.tencent.device.activities.LightPinterOptionActivity", 102, null, SmartDevicePluginProxyActivity.class);
       return;
     }
     catch (FileNotFoundException paramString1) {}
@@ -252,16 +253,16 @@ public abstract class ForwardFileBaseOption
       a(localUri);
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo = ((ForwardFileInfo)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("fileinfo"));
-    this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_AndroidContentIntent.getParcelableArrayListExtra("fileinfo_array");
+    this.jdField_b_of_type_JavaUtilArrayList = this.jdField_a_of_type_AndroidContentIntent.getParcelableArrayListExtra("fileinfo_array");
     return true;
   }
   
   public void b()
   {
     super.b();
-    this.jdField_a_of_type_Bgpa.adjustMessageBottomMargin(17.0F);
-    this.jdField_a_of_type_Bgpa.setMessageTextColor(2131165687);
-    this.jdField_a_of_type_Bgpa.setMessageTextSize(14.0F);
+    this.jdField_a_of_type_Bhpc.adjustMessageBottomMargin(17.0F);
+    this.jdField_a_of_type_Bhpc.setMessageTextColor(2131165687);
+    this.jdField_a_of_type_Bhpc.setMessageTextSize(14.0F);
   }
   
   public boolean c()
@@ -271,10 +272,10 @@ public abstract class ForwardFileBaseOption
     if (this.jdField_a_of_type_AndroidOsBundle.getInt("uintype") == 1008)
     {
       localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, ChatActivity.class);
-      localIntent.putExtra("chat_subType", nzz.a(this.jdField_a_of_type_AndroidOsBundle.getString("uin"), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+      localIntent.putExtra("chat_subType", obj.a(this.jdField_a_of_type_AndroidOsBundle.getString("uin"), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
       if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("sendMultiple", false))
       {
-        this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", anni.a(2131703543));
+        this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", anzj.a(2131703650));
         localIntent.addFlags(268435456);
         localIntent.addFlags(67108864);
         localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
@@ -291,7 +292,7 @@ public abstract class ForwardFileBaseOption
       this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
       this.jdField_a_of_type_AndroidAppActivity.finish();
       return false;
-      localIntent = afur.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
+      localIntent = agej.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
       break;
       label181:
       if (!bool) {
@@ -303,7 +304,7 @@ public abstract class ForwardFileBaseOption
   protected String e()
   {
     if (h == null) {
-      return this.jdField_a_of_type_AndroidContentContext.getString(2131718011);
+      return this.jdField_a_of_type_AndroidContentContext.getString(2131718143);
     }
     return h;
   }

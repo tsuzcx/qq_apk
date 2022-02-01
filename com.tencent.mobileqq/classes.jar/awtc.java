@@ -1,19 +1,22 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awtc
-  extends DataSetObserver
+class awtc
+  implements View.OnClickListener
 {
-  public awtc(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
+  awtc(awta paramawta) {}
   
-  public void onChanged()
+  public void onClick(View paramView)
   {
-    this.a.b();
-  }
-  
-  public void onInvalidated()
-  {
-    this.a.b();
+    if (this.a.a.a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      awsk.a(this.a.a, null);
+      bdll.b(null, "CliOper", "", "", "0X800A96B", "0X800A96B", 0, 0, "0", "0", "0", "");
+    }
   }
 }
 

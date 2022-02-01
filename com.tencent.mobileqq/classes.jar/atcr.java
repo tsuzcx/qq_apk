@@ -1,18 +1,12 @@
-public class atcr
+public abstract interface atcr
 {
-  public int a;
-  public String a;
+  public abstract void a();
   
-  public atcr(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void a(int paramInt);
   
-  public String toString()
-  {
-    return "" + this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int;
-  }
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2);
 }
 
 

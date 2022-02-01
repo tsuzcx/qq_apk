@@ -1,21 +1,8 @@
-import android.app.Activity;
 import android.view.View;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import cooperation.qqreader.ReaderSplashImpl.3.1;
 
-public class bloc
-  implements EnterCallback
+public abstract interface bloc
 {
-  bloc(blnz paramblnz) {}
-  
-  public void onCloseLoadingView() {}
-  
-  public void onEnterComplete() {}
-  
-  public void onShowLoadingView(View paramView)
-  {
-    blnz.a(this.a).runOnUiThread(new ReaderSplashImpl.3.1(this, paramView));
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

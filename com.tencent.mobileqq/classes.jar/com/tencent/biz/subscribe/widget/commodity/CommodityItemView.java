@@ -3,17 +3,17 @@ package com.tencent.biz.subscribe.widget.commodity;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanGood;
-import aakz;
-import aalk;
-import aall;
-import aaxb;
+import aapa;
+import aapl;
+import aapm;
+import abbe;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import bdzx;
+import beyq;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.media.image.ImageLoader;
@@ -54,26 +54,26 @@ public class CommodityItemView
   
   public int a()
   {
-    return 2131558768;
+    return 2131558766;
   }
   
   public View.OnClickListener a()
   {
-    return new aall(this);
+    return new aapm(this);
   }
   
   public View a()
   {
-    return this;
+    return this.jdField_b_of_type_AndroidViewView;
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131369092));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379581));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379582));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379545);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369101);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131369182));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379754));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379755));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379716);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369191);
     this.jdField_a_of_type_Int = (ImmersiveUtils.a() * 5 / 6);
     if (getLayoutParams() == null) {
       setLayoutParams(new FrameLayout.LayoutParams(this.jdField_a_of_type_Int, ImmersiveUtils.a(132.0F)));
@@ -104,8 +104,8 @@ public class CommodityItemView
       try
       {
         localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = bdzx.b();
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = bdzx.a();
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = beyq.b();
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = beyq.a();
         paramObject = URLDrawable.getDrawable(paramObject, (URLDrawable.URLDrawableOptions)localObject);
         if (paramObject != null) {
           this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageDrawable(paramObject);
@@ -119,7 +119,7 @@ public class CommodityItemView
         }
       }
       if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) {
-        aaxb.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + aakz.a(a()), "exp_goods", 0, 0, new String[0]);
+        abbe.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + aapa.a(a()), "exp_goods", 0, 0, new String[0]);
       }
       return;
       localObject = ((CertifiedAccountMeta.StYouZanGood)paramObject).title.get();
@@ -128,12 +128,12 @@ public class CommodityItemView
       break;
     }
     label261:
-    ImageLoader.getInstance().loadImageAsync(paramObject, new aalk(this));
+    ImageLoader.getInstance().loadImageAsync(paramObject, new aapl(this));
   }
   
   public View b()
   {
-    return this.jdField_b_of_type_AndroidViewView;
+    return this;
   }
   
   public void setCurrentFeed(CertifiedAccountMeta.StFeed paramStFeed)

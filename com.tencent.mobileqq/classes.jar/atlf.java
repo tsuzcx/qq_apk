@@ -1,39 +1,24 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileBaseFavFileTabView;
 
-final class atlf
-  implements View.OnClickListener
+public class atlf
+  extends atlp
 {
-  atlf(Activity paramActivity, String paramString) {}
+  public atlf(QfileBaseFavFileTabView paramQfileBaseFavFileTabView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    bcst.b(null, "dc00898", "", "", "0X800AEE0", "0X800AEE0", 0, 0, "", "", "", "");
-    if (this.jdField_a_of_type_AndroidAppActivity == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      long l = atwl.a(this.jdField_a_of_type_JavaLangString);
-      WXShareHelper localWXShareHelper = WXShareHelper.a();
-      if (l <= 10485760L)
-      {
-        int i = atvo.b(this.jdField_a_of_type_JavaLangString);
-        Bitmap localBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidAppActivity.getResources(), i);
-        localWXShareHelper.a(this.jdField_a_of_type_JavaLangString, localBitmap);
-        bcst.b(null, "dc00898", "", "", "0X800AEE1", "0X800AEE1", 0, 0, "", "", "", "");
-      }
-      else
-      {
-        bcst.b(null, "dc00898", "", "", "0X800AEE2", "0X800AEE2", 0, 0, "", "", "", "");
-        atvb.a(this.jdField_a_of_type_AndroidAppActivity, "", 2131697406, new atlg(this));
-      }
-    }
+    this.a.b(paramInt);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.a.a(paramBundle);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    this.a.a(paramBoolean, paramBundle);
   }
 }
 

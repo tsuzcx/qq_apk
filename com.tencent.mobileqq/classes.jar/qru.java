@@ -1,81 +1,53 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGallery;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class qru
-  extends qqt
+public abstract class qru
+  extends Binder
+  implements qrt
 {
-  public qru(Context paramContext, aobu paramaobu, snh paramsnh)
+  public qru()
   {
-    super(paramContext, paramaobu, paramsnh);
+    attachInterface(this, "com.tencent.biz.pubaccount.readinjoy.service.IRIJAidlInterface");
   }
   
-  public qqt a()
+  public static qrt a(IBinder paramIBinder)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return b();
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.biz.pubaccount.readinjoy.service.IRIJAidlInterface");
+    if ((localIInterface != null) && ((localIInterface instanceof qrt))) {
+      return (qrt)localIInterface;
+    }
+    return new qrv(paramIBinder);
   }
   
-  public qqt d()
+  public IBinder asBinder()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend);
-    }
-    if ((this.jdField_a_of_type_Qqs != null) && ((this.jdField_a_of_type_Qqs instanceof ComponentContentGallery))) {
-      localLinearLayout.addView((ComponentContentGallery)this.jdField_a_of_type_Qqs);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
     return this;
   }
   
-  public qqt e()
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    return null;
-  }
-  
-  public qqt g()
-  {
-    this.jdField_a_of_type_Qqs = new ComponentContentGallery(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-  
-  public qqt o()
-  {
-    super.o();
-    if ((this.jdField_a_of_type_Qqs != null) && ((this.jdField_a_of_type_Qqs instanceof ComponentContentGallery)))
+    switch (paramInt1)
     {
-      ((ComponentContentGallery)this.jdField_a_of_type_Qqs).setAdapter(this.jdField_a_of_type_Snh);
-      ((ComponentContentGallery)this.jdField_a_of_type_Qqs).setPosition(this.jdField_a_of_type_Int);
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.biz.pubaccount.readinjoy.service.IRIJAidlInterface");
+      return true;
     }
-    return this;
+    paramParcel1.enforceInterface("com.tencent.biz.pubaccount.readinjoy.service.IRIJAidlInterface");
+    paramParcel1 = a();
+    paramParcel2.writeNoException();
+    if (paramParcel1 != null) {}
+    for (paramParcel1 = paramParcel1.asBinder();; paramParcel1 = null)
+    {
+      paramParcel2.writeStrongBinder(paramParcel1);
+      return true;
+    }
   }
 }
 

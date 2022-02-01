@@ -1,26 +1,12 @@
-import android.util.Property;
-
-class bpuk
-  extends Property<bpuh, Integer>
+public class bpuk
 {
-  bpuk(bpuh parambpuh, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public int a;
+  public int b;
   
-  public Integer a(bpuh parambpuh)
+  public bpuk(int paramInt1, int paramInt2)
   {
-    if (parambpuh != null) {
-      return Integer.valueOf(bpuh.a(parambpuh));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(bpuh parambpuh, Integer paramInteger)
-  {
-    if (parambpuh != null) {
-      bpuh.a(parambpuh, paramInteger.intValue());
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

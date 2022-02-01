@@ -1,6 +1,6 @@
 package com.tencent.av;
 
-import bctj;
+import bdmc;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -10,7 +10,7 @@ public final class VideoRecoveryReporter$4
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    bctj.a(BaseApplication.getContext()).a("", "av_fullscreen_notification_request", true, 0L, 0L, localHashMap, "");
+    bdmc.a(BaseApplication.getContext()).a("", "av_fullscreen_notification_request", true, 0L, 0L, localHashMap, "");
   }
 }
 

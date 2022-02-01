@@ -11,7 +11,7 @@ class SPlayerTextureView$1
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    LogUtil.i(SPlayerTextureView.access$000(), "SPlayerTextureView = " + System.identityHashCode(this.this$0) + ", onSurfaceTextureAvailable() surface = " + paramSurfaceTexture.toString() + " width = " + paramInt1 + ", height=" + paramInt2);
+    LogUtil.i(SPlayerTextureView.access$000(this.this$0), "SPlayerTextureView = " + System.identityHashCode(this.this$0) + ", onSurfaceTextureAvailable() surface = " + paramSurfaceTexture.toString() + " width = " + paramInt1 + ", height=" + paramInt2);
     if (SPlayerTextureView.access$100(this.this$0) != null) {
       SPlayerTextureView.access$100(this.this$0).onViewCreated(paramSurfaceTexture, paramInt1, paramInt2);
     }
@@ -19,13 +19,13 @@ class SPlayerTextureView$1
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    LogUtil.i(SPlayerTextureView.access$000(), "SPlayerTextureView = " + System.identityHashCode(this.this$0) + ", onSurfaceTextureDestroyed() surface = " + paramSurfaceTexture.toString());
+    LogUtil.i(SPlayerTextureView.access$000(this.this$0), "SPlayerTextureView = " + System.identityHashCode(this.this$0) + ", onSurfaceTextureDestroyed() surface = " + paramSurfaceTexture.toString());
     return (SPlayerTextureView.access$100(this.this$0) == null) || (SPlayerTextureView.access$100(this.this$0).onViewDestroyed(paramSurfaceTexture));
   }
   
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    LogUtil.i(SPlayerTextureView.access$000(), "SPlayerTextureView = " + System.identityHashCode(this.this$0) + ", onSurfaceTextureSizeChanged() surface = " + paramSurfaceTexture.toString() + " width = " + paramInt1 + ", height=" + paramInt2);
+    LogUtil.i(SPlayerTextureView.access$000(this.this$0), "SPlayerTextureView = " + System.identityHashCode(this.this$0) + ", onSurfaceTextureSizeChanged() surface = " + paramSurfaceTexture.toString() + " width = " + paramInt1 + ", height=" + paramInt2);
     if (SPlayerTextureView.access$100(this.this$0) != null) {
       SPlayerTextureView.access$100(this.this$0).onViewChanged(paramSurfaceTexture, paramInt1, paramInt2);
     }

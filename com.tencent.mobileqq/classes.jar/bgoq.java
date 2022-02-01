@@ -1,28 +1,21 @@
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutFragment;
 
 public class bgoq
-  extends PipedInputStream
+  extends TroopAppShortcutContainer
 {
-  private int a = 1024;
-  
-  public bgoq(PipedOutputStream paramPipedOutputStream, int paramInt)
+  public bgoq(TroopAppShortcutFragment paramTroopAppShortcutFragment, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, SessionInfo paramSessionInfo, String paramString, int paramInt)
   {
-    super(paramPipedOutputStream);
-    this.a = paramInt;
+    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramSessionInfo, paramString, paramInt);
   }
   
-  protected void receive(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    try
-    {
-      if (this.buffer.length != this.a) {
-        this.buffer = new byte[this.a];
-      }
-      super.receive(paramInt);
-      return;
-    }
-    finally {}
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
   }
 }
 

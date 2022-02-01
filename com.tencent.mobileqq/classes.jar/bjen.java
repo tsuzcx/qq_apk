@@ -1,24 +1,16 @@
-import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.datepicker.CalendarDay;
+import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
 
-class bjen
-  implements URLDrawableHandler
+public abstract interface bjen
 {
-  bjen(bjem parambjem) {}
+  public abstract CalendarDay a();
   
-  public void doCancel() {}
+  public abstract void a(CalendarDay paramCalendarDay, MessageRecord paramMessageRecord);
   
-  public boolean isCancelled()
-  {
-    return false;
-  }
+  public abstract void a(SimpleMonthView paramSimpleMonthView, int paramInt1, int paramInt2);
   
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
-  
-  public void publishProgress(int paramInt) {}
+  public abstract CalendarDay b();
 }
 
 

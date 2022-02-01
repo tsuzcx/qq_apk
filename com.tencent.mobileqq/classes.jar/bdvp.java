@@ -1,83 +1,48 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.HttpInterfaceForTVK;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.security.InvalidParameterException;
-import java.util.HashMap;
+import com.tencent.jungle.videohub.proto.CommProtocolProto.commRequest;
+import com.tencent.jungle.videohub.proto.CommProtocolProto.commResponse;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import tencent.im.troop.studyroom.self_study_room_troop.StudyRoomMemberInfoReq;
+import tencent.im.troop.studyroom.self_study_room_troop.StudyRoomMenberInfoRsp;
 
 public class bdvp
-  extends HttpInterfaceForTVK
+  implements anui
 {
-  public int a;
-  private bdvr jdField_a_of_type_Bdvr = new bdvr(this, null);
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c;
+  public void a(String paramString1, int paramInt, String paramString2) {}
   
-  public int a(String arg1, String paramString2)
+  public void a(String paramString, self_study_room_troop.StudyRoomMenberInfoRsp paramStudyRoomMenberInfoRsp) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Boolean = false;
-    if ((??? == null) || (paramString2 == null)) {
-      return -1;
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("HttpInterfaceForTVKImp", 0, "downLoadSync, url = " + ??? + ", filePath = " + paramString2);
-    }
-    bdvs localbdvs;
+    paramObject = (Object[])paramObject;
+    Object localObject = (CommProtocolProto.commRequest)paramObject[0];
+    paramObject = (FromServiceMsg)paramObject[1];
+    self_study_room_troop.StudyRoomMemberInfoReq localStudyRoomMemberInfoReq = new self_study_room_troop.StudyRoomMemberInfoReq();
     try
     {
-      localbdvs = new bdvs();
-      localbdvs.jdField_a_of_type_Bdvw = this.jdField_a_of_type_Bdvr;
-      localbdvs.jdField_a_of_type_JavaLangString = ???;
-      localbdvs.jdField_a_of_type_Int = 0;
-      localbdvs.c = paramString2;
-      localbdvs.e = String.valueOf(System.currentTimeMillis());
-      ??? = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(??? instanceof QQAppInterface)) {
-        throw new InvalidParameterException("can't get AppInterface");
-      }
-    }
-    catch (Exception ???)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("HttpInterfaceForTVKImp", 0, "downLoadSync, setp 1", ???);
-      }
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      localStudyRoomMemberInfoReq.mergeFrom(((CommProtocolProto.commRequest)localObject).body.get().toByteArray());
+      if ((paramObject.isSuccess()) && (paramObject.getWupBuffer() != null))
       {
-        try
-        {
-          if (!this.jdField_a_of_type_Boolean)
-          {
-            this.jdField_a_of_type_JavaLangObject.wait(600000L);
-            continue;
-          }
-          ???.put("param_isSuccess", "1");
-        }
-        catch (InterruptedException paramString2)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("HttpInterfaceForTVKImp", 0, "downLoadSync, setp 2", paramString2);
-          }
-          ??? = new HashMap();
-          if (this.b != 0) {
-            break label289;
-          }
-        }
-        ???.put("param_ErrorCode", String.valueOf(this.c));
-        ???.put("param_ErrDesc", this.jdField_a_of_type_JavaLangString);
-        ???.put("param_HttpCode", String.valueOf(this.jdField_a_of_type_Int));
-        bctj.a(BaseApplication.getContext()).a(null, "HttpInterfaceForTVKImp", true, 0L, 0L, ???, "");
-        return this.b;
-        ((QQAppInterface)???).getNetEngine(0).a(localbdvs);
+        localObject = new CommProtocolProto.commResponse();
+        ((CommProtocolProto.commResponse)localObject).mergeFrom(paramObject.getWupBuffer());
+        self_study_room_troop.StudyRoomMenberInfoRsp localStudyRoomMenberInfoRsp = new self_study_room_troop.StudyRoomMenberInfoRsp();
+        localStudyRoomMenberInfoRsp.mergeFrom(((CommProtocolProto.commResponse)localObject).body.get().toByteArray());
+        a(localStudyRoomMemberInfoReq.troop_uin.get(), localStudyRoomMenberInfoRsp);
+        return;
       }
-      label289:
-      ???.put("param_isSuccess", "0");
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      localInvalidProtocolBufferMicroException.printStackTrace();
+      a(localStudyRoomMemberInfoReq.troop_uin.get(), paramObject.getResultCode(), paramObject.getBusinessFailMsg());
     }
   }
 }

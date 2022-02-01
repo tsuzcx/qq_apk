@@ -1,60 +1,72 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.RequestProxy.RequestListener;
-import java.io.IOException;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Headers;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.export.js.VipDownloadInterface;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bjym
-  implements Callback
+public class bjym
+  implements bjxx
 {
-  private volatile boolean jdField_a_of_type_Boolean;
+  protected final String a;
   
-  bjym(bjyl parambjyl, String paramString, RequestProxy.RequestListener paramRequestListener) {}
-  
-  public void onFailure(Call paramCall, IOException paramIOException)
+  public bjym(VipDownloadInterface paramVipDownloadInterface, String paramString)
   {
-    QLog.e("RequestProxyImpl", 1, "httpConnect err url:" + this.jdField_a_of_type_JavaLangString, paramIOException);
-    if ("Canceled".equals(paramIOException.getLocalizedMessage()))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestFailed(-5, "request error:cancel");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjyl.a.remove(this.jdField_a_of_type_JavaLangString);
-      return;
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestFailed(bjwi.a(paramIOException, -1), "request error:network");
-    }
+    bjtx.b(paramVipDownloadInterface.jdField_a_of_type_JavaLangString, "new  JsCheckUpdateCallback");
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onResponse(Call paramCall, Response paramResponse)
+  public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (!this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.hasRight()) {
       return;
     }
-    int i = paramResponse.code();
-    Map localMap = paramResponse.headers().toMultimap();
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestHeadersReceived(i, localMap);
-    paramCall = null;
+    bjtx.e(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "JsCheckUpdateCallback onException >>> " + paramString);
+    paramString = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
+    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramString);
+  }
+  
+  public void a(ArrayList<ApkUpdateDetail> paramArrayList)
+  {
+    if (!this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.hasRight()) {
+      return;
+    }
+    bjtx.a(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "JsCheckUpdateCallback onResult >>> " + paramArrayList.size());
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONArray localJSONArray = new JSONArray();
+    int i = 0;
     try
     {
-      paramResponse = paramResponse.body().bytes();
-      paramCall = paramResponse;
+      while (i < paramArrayList.size())
+      {
+        ApkUpdateDetail localApkUpdateDetail = (ApkUpdateDetail)paramArrayList.get(i);
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("packageName", localApkUpdateDetail.packageName);
+        localJSONObject2.put("newapksize", localApkUpdateDetail.newapksize);
+        localJSONObject2.put("patchsize", localApkUpdateDetail.patchsize);
+        localJSONObject2.put("updatemethod", localApkUpdateDetail.updatemethod);
+        localJSONObject2.put("versioncode", localApkUpdateDetail.versioncode);
+        localJSONObject2.put("versionname", localApkUpdateDetail.versionname);
+        localJSONObject2.put("fileMd5", localApkUpdateDetail.fileMd5);
+        localJSONObject2.put("sigMd5", localApkUpdateDetail.sigMd5);
+        localJSONObject2.put("url", localApkUpdateDetail.url);
+        localJSONArray.put(localJSONObject2);
+        i += 1;
+      }
+      localJSONObject1.put("guid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject1.put("content", localJSONArray.toString());
+      localJSONObject1.put("resultCode", "0");
+      paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'" + localJSONArray.toString() + "'});}void(0);";
     }
-    catch (IOException paramResponse)
+    catch (JSONException paramArrayList)
     {
       for (;;)
       {
-        paramResponse.printStackTrace();
+        paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
       }
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestSucceed(i, paramCall, localMap);
-    this.jdField_a_of_type_Bjyl.a.remove(this.jdField_a_of_type_JavaLangString);
+    bjtx.b(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, ">>checkUpdate jsUrl:" + paramArrayList);
+    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramArrayList);
   }
 }
 

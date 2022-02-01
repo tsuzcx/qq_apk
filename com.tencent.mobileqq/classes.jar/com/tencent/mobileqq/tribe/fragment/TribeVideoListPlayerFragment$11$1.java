@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.tribe.fragment;
 
 import android.os.Handler;
-import bedx;
-import befg;
+import bfcw;
+import bfef;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
-import nlw;
+import nnr;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
 
 public class TribeVideoListPlayerFragment$11$1
   implements Runnable
 {
-  public TribeVideoListPlayerFragment$11$1(bedx parambedx) {}
+  public TribeVideoListPlayerFragment$11$1(bfcw parambfcw) {}
   
   public void run()
   {
     try
     {
-      HttpResponse localHttpResponse = nlw.a(BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_Befg.h, null, "GET", null, null);
+      HttpResponse localHttpResponse = nnr.a(BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_Bfef.h, null, "GET", null, null);
       if ((localHttpResponse != null) && (localHttpResponse.getStatusLine().getStatusCode() == 200))
       {
         TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.11.1.1(this));
-        TribeVideoListPlayerFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment, this.a.jdField_a_of_type_Befg, "ad_dislike_suc", "negative ad report error: e= ");
+        TribeVideoListPlayerFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment, this.a.jdField_a_of_type_Bfef, "ad_dislike_suc", "negative ad report error: e= ");
       }
       return;
     }

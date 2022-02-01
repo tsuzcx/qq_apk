@@ -1,16 +1,16 @@
 package cooperation.qzone.plugin;
 
-import bmcy;
-import bmcz;
+import bnea;
+import bneb;
 
 public class QZoneConnectProcessor$1
   implements Runnable
 {
-  public QZoneConnectProcessor$1(bmcy parambmcy, bmcz parambmcz) {}
+  public QZoneConnectProcessor$1(bnea parambnea, bneb parambneb) {}
   
   public void run()
   {
-    bmcy.a(this.this$0, this.a);
+    bnea.a(this.this$0, this.a);
   }
 }
 

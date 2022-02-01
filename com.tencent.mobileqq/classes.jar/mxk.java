@@ -1,6 +1,12 @@
-public abstract interface mxk
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class mxk
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, Object paramObject);
+  mxk(mxc parammxc) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

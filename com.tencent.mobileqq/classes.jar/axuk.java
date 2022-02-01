@@ -1,50 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.ProgressButton;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.manager.Manager;
 
-class axuk
-  implements DialogInterface.OnClickListener
+public class axuk
+  implements Manager
 {
-  axuk(axtp paramaxtp) {}
+  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  boolean jdField_a_of_type_Boolean = true;
+  boolean b = true;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public axuk(QQAppInterface paramQQAppInterface)
   {
-    if (paramInt == 1)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("NearbyGeneralConfig", 0);
+    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null)
     {
-      if (this.a.jdField_a_of_type_Axxf != null) {
-        this.a.jdField_a_of_type_Axxf.a(2);
-      }
-      if (axtp.a(this.a) != null)
-      {
-        if (!this.a.n) {
-          break label88;
-        }
-        bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_trigger", 0, 0, axtp.a(this.a).uin, "", "yes", "android");
-      }
+      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("Notify_on_like", true);
+      this.b = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_allow_nearby_like", true);
     }
-    label88:
-    do
-    {
-      do
-      {
-        return;
-        bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_goon", 0, 0, axtp.a(this.a).uin, "", "yes", "android");
-        return;
-      } while (paramInt != 0);
-      if (this.a.jdField_a_of_type_Axxf != null) {
-        this.a.jdField_a_of_type_Axxf.a(10);
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131697879);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(0);
-      }
-      this.a.jdField_a_of_type_Int = 2;
-    } while (axtp.a(this.a) == null);
-    bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_cancel", 0, 0, axtp.a(this.a).uin, "", "yes", "android");
   }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null) {
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("Notify_on_like", paramBoolean).commit();
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((this.b != paramBoolean) && (this.jdField_a_of_type_AndroidContentSharedPreferences != null))
+    {
+      this.b = paramBoolean;
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("key_allow_nearby_like", paramBoolean).commit();
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
+  
+  public void onDestroy() {}
 }
 
 

@@ -1,193 +1,353 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.opengl.GLES20;
-import android.util.Log;
-import android.view.Surface;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.concurrent.TimeoutException;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewStub;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.XListView;
+import dov.com.qq.im.capture.poi.FacePoiUI.2;
+import dov.com.qq.im.capture.poi.FacePoiUI.4;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-@TargetApi(14)
 public class bpre
-  implements SurfaceTexture.OnFrameAvailableListener
+  implements View.OnClickListener, bljm, bpqy
 {
-  int jdField_a_of_type_Int;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private Surface jdField_a_of_type_AndroidViewSurface;
-  private bprf jdField_a_of_type_Bprf;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = EGL10.EGL_NO_CONTEXT;
-  private EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = EGL10.EGL_NO_DISPLAY;
-  private EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = EGL10.EGL_NO_SURFACE;
-  private boolean jdField_a_of_type_Boolean;
-  int b;
+  long jdField_a_of_type_Long = 0L;
+  View jdField_a_of_type_AndroidViewView;
+  ViewStub jdField_a_of_type_AndroidViewViewStub;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  private bpqv jdField_a_of_type_Bpqv = new bpqv(this);
+  private bprh jdField_a_of_type_Bprh;
+  bqtw jdField_a_of_type_Bqtw = null;
+  PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
+  public XListView a;
+  View jdField_b_of_type_AndroidViewView = null;
+  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  View c = null;
+  View d = null;
+  View e;
   
-  public bpre(int paramInt1, int paramInt2)
+  public bpre()
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      throw new IllegalArgumentException();
-    }
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = ((EGL10)EGLContext.getEGL());
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    f();
-    b();
-    e();
+    this.jdField_a_of_type_ComTencentWidgetXListView = null;
   }
   
-  private void a(String paramString)
+  private void a(int paramInt)
   {
-    int i = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError();
-    if (i != 12288) {
-      throw new RuntimeException(paramString + ": EGL error: 0x" + Integer.toHexString(i));
-    }
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_Bprf = new bprf();
-    this.jdField_a_of_type_Bprf.a();
-    Log.d("CodecOutputSurface", "textureID=" + this.jdField_a_of_type_Bprf.a());
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Bprf.a());
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(this.jdField_a_of_type_Int * this.b * 4);
-    this.jdField_a_of_type_JavaNioByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay == EGL10.EGL_NO_DISPLAY) {
-      throw new RuntimeException("unable to get EGL14 display");
-    }
-    Object localObject = new int[2];
-    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglInitialize(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (int[])localObject))
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader != null)
     {
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
-      throw new RuntimeException("unable to initialize EGL14");
-    }
-    localObject = new EGLConfig[1];
-    int[] arrayOfInt = new int[1];
-    EGL10 localEGL10 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-    EGLDisplay localEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-    int i = localObject.length;
-    if (!localEGL10.eglChooseConfig(localEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12339, 1, 12344 }, (EGLConfig[])localObject, i, arrayOfInt)) {
-      throw new RuntimeException("unable to find RGB888+recordable ES2 EGL config");
-    }
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreateContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, localObject[0], EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
-    a("eglCreateContext");
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext == null) {
-      throw new RuntimeException("null context");
-    }
-    i = this.jdField_a_of_type_Int;
-    int j = this.b;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreatePbufferSurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, localObject[0], new int[] { 12375, i, 12374, j, 12344 });
-    a("eglCreatePbufferSurface");
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface == null) {
-      throw new RuntimeException("surface was null");
+      ajss localajss = (ajss)this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.getTag();
+      if (localajss != null)
+      {
+        localajss.a = false;
+        new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.4(this), 800L);
+        if (paramInt == 0) {
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+        }
+        this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(paramInt);
+      }
     }
   }
   
-  public Bitmap a()
+  private void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaNioByteBuffer.rewind();
-    GLES20.glReadPixels(0, 0, this.jdField_a_of_type_Int, this.b, 6408, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
-    Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.b, Bitmap.Config.ARGB_8888);
-    this.jdField_a_of_type_JavaNioByteBuffer.rewind();
-    localBitmap.copyPixelsFromBuffer(this.jdField_a_of_type_JavaNioByteBuffer);
-    Log.d("CodecOutputSurface", "getFrameBitmap() finish...");
-    return localBitmap;
+    if (paramBoolean1)
+    {
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(4);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
+    if (paramBoolean2)
+    {
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(4);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
   }
   
-  public Surface a()
+  public bpqv a()
   {
-    return this.jdField_a_of_type_AndroidViewSurface;
+    return this.jdField_a_of_type_Bpqv;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay != EGL10.EGL_NO_DISPLAY)
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglTerminate(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369042));
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377156);
+      this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131377184);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366050));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366051));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+      this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+      this.c.setOnClickListener(this);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369088)).setText(anzj.a(2131703195));
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372838));
+      b();
+      c();
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new bprf(this));
+      this.jdField_a_of_type_Bqtw = new bqtw(this.e.getContext());
+      this.jdField_a_of_type_Bqtw.a(this.jdField_a_of_type_Bpqv.a(), this.jdField_a_of_type_Bpqv.a());
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bqtw);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
     }
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = EGL10.EGL_NO_DISPLAY;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = EGL10.EGL_NO_CONTEXT;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = EGL10.EGL_NO_SURFACE;
-    this.jdField_a_of_type_AndroidViewSurface.release();
-    this.jdField_a_of_type_Bprf = null;
-    this.jdField_a_of_type_AndroidViewSurface = null;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
   
-  public void a(boolean paramBoolean)
+  public void a(int paramInt, String... paramVarArgs)
   {
-    this.jdField_a_of_type_Bprf.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, paramBoolean);
-  }
-  
-  public void b()
-  {
-    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
-      throw new RuntimeException("eglMakeCurrent failed");
-    }
-  }
-  
-  public void c()
-  {
-    Log.e("CodecOutputSurface", "awaitNewImage");
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    switch (paramInt)
     {
-      for (;;)
+    default: 
+    case 0: 
+    case 3: 
+      do
       {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (!bool) {
-          try
-          {
-            this.jdField_a_of_type_JavaLangObject.wait(1L);
-            if (!this.jdField_a_of_type_Boolean) {
-              throw new TimeoutException("frame wait timed out");
-            }
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            throw new RuntimeException(localInterruptedException);
-          }
+        return;
+        this.e.getContext().getString(2131716585);
+        return;
+        this.e.getContext().getString(2131716586);
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+          QQToast.a(this.e.getContext(), paramVarArgs[0], 1).a();
+        }
+      } while ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0));
+      a(false, false);
+      return;
+    case 2: 
+      this.e.getContext().getString(2131716587);
+      return;
+    }
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0) && (!TextUtils.isEmpty(paramVarArgs[0])))
+    {
+      if (TextUtils.isEmpty(paramVarArgs[0]))
+      {
+        a(3, new String[0]);
+        return;
+      }
+      paramVarArgs = paramVarArgs[0];
+      return;
+    }
+    a(0, new String[0]);
+  }
+  
+  public void a(View paramView)
+  {
+    if (paramView == null) {
+      throw new IllegalStateException("FacePoiUI rootView can't be null");
+    }
+    this.e = paramView;
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)this.e.findViewById(2131374688));
+  }
+  
+  public void a(bprh parambprh)
+  {
+    this.jdField_a_of_type_Bprh = parambprh;
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (this.d == null) {
+      return;
+    }
+    TextView localTextView = (TextView)this.d.findViewById(2131376444);
+    if (paramBoolean)
+    {
+      localTextView.setText(2131718369);
+      return;
+    }
+    localTextView.setText(2131718364);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      b(paramBoolean1, paramBoolean2);
+      return;
+    }
+    ThreadManager.getUIHandler().post(new FacePoiUI.2(this, paramBoolean1, paramBoolean2));
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, ArrayList<TroopBarPOI> paramArrayList, TroopBarPOI paramTroopBarPOI)
+  {
+    if (paramBoolean1)
+    {
+      a(paramBoolean2);
+      if (this.jdField_a_of_type_Bqtw != null)
+      {
+        this.jdField_a_of_type_Bqtw.a(paramArrayList, paramTroopBarPOI);
+        this.jdField_a_of_type_Bqtw.notifyDataSetChanged();
+        if (paramArrayList.isEmpty()) {
+          a(false, false);
         }
       }
+      else
+      {
+        if (paramTroopBarPOI == null) {
+          break label100;
+        }
+        if (!TextUtils.isEmpty(paramTroopBarPOI.c)) {
+          break label91;
+        }
+      }
+      label91:
+      for (paramArrayList = paramTroopBarPOI.d;; paramArrayList = paramTroopBarPOI.c)
+      {
+        a(1, new String[] { paramArrayList });
+        return;
+        a(true, false);
+        break;
+      }
+      label100:
+      a(0, new String[0]);
+      return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    a(3, new String[0]);
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0);
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader == null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this.e.getContext()).inflate(2131559652, null, false));
+    }
+    ajss localajss = new ajss();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setTag(localajss);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "setOverScrollHeader----------------------");
+    }
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new bprg(this));
+  }
+  
+  protected void c()
+  {
+    if (this.d == null)
+    {
+      this.d = LayoutInflater.from(this.e.getContext()).inflate(2131559652, null);
+      ImageView localImageView = (ImageView)this.d.findViewById(2131376442);
+      TextView localTextView1 = (TextView)this.d.findViewById(2131376444);
+      TextView localTextView2 = (TextView)this.d.findViewById(2131376450);
+      ProgressBar localProgressBar = (ProgressBar)this.d.findViewById(2131376445);
+      localTextView1.setTextColor(-8355712);
+      localTextView1.setText(2131718364);
+      localTextView2.setVisibility(8);
+      localImageView.setVisibility(8);
+      localProgressBar.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_ComTencentWidgetXListView.getFooterViewsCount() > 0) {
+      this.jdField_a_of_type_ComTencentWidgetXListView.removeFooterView(this.d);
+    }
+    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.d);
   }
   
   public void d()
   {
-    this.jdField_a_of_type_Bprf.a("before updateTexImage");
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
   
-  public void onFrameAvailable(SurfaceTexture arg1)
+  public void e()
   {
-    Log.e("CodecOutputSurface", "onFrameAvailable new frame available");
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (this.jdField_a_of_type_Bqtw != null)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
+      this.jdField_a_of_type_Bqtw.a(this.jdField_a_of_type_Bpqv.a(), this.jdField_a_of_type_Bpqv.a());
+      this.jdField_a_of_type_Bqtw.notifyDataSetChanged();
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Bpqv.c();
+      if (this.jdField_a_of_type_Bprh != null)
+      {
+        this.jdField_a_of_type_Bprh.aV_();
+      }
+      else
+      {
+        d();
+        continue;
+        if (this.jdField_a_of_type_Bprh != null)
+        {
+          this.jdField_a_of_type_Bprh.b();
+          continue;
+          this.jdField_a_of_type_Bpqv.a();
+          a(false, true);
+        }
       }
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangObject.notifyAll();
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if ((this.jdField_a_of_type_Bpqv.a(paramInt)) || (this.jdField_a_of_type_Bqtw == null)) {
+      return;
+    }
+    paramView = (TroopBarPOI)this.jdField_a_of_type_Bpqv.a().get(paramInt);
+    this.jdField_a_of_type_Bpqv.a(paramView);
+    e();
+    bqgw localbqgw = this.jdField_a_of_type_Bpqv.a();
+    if (paramView != null) {
+      if (TextUtils.isEmpty(paramView.c))
+      {
+        paramAdapterView = paramView.d;
+        a(1, new String[] { paramAdapterView });
+        if (localbqgw != null) {
+          localbqgw.a(paramView);
+        }
+      }
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bprh == null) {
+        break label150;
+      }
+      this.jdField_a_of_type_Bprh.c();
+      return;
+      paramAdapterView = paramView.c;
+      break;
+      a(0, new String[0]);
+      if (localbqgw != null) {
+        localbqgw.a(null);
+      }
+    }
+    label150:
+    d();
   }
 }
 

@@ -1,25 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryListLoadMoreView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 public class xyq
-  implements View.OnClickListener
+  extends wjm<xyd, wqm>
 {
-  public xyq(MyMemoriesListView paramMyMemoriesListView) {}
-  
-  public void onClick(View paramView)
+  public xyq(xyd paramxyd)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 4) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 1))
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a(1);
-      if (this.a.jdField_a_of_type_Xyr != null) {
-        this.a.jdField_a_of_type_Xyr.c();
-      }
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramxyd);
   }
+  
+  public void a(@NonNull xyd paramxyd, @NonNull wqm paramwqm)
+  {
+    if ((paramxyd.a != null) && (TextUtils.equals(paramxyd.a.b, paramwqm.a)))
+    {
+      yuk.a(this.TAG, "receive feed info change event. %s.", paramwqm.toString());
+      paramxyd.i();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wqm.class;
+  }
+  
+  public void b(@NonNull xyd paramxyd, @NonNull wqm paramwqm) {}
 }
 
 

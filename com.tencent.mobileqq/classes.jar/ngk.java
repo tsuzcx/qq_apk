@@ -1,43 +1,39 @@
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 
 public class ngk
 {
-  public static int a()
+  private static final ngk jdField_a_of_type_Ngk = new ngk();
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private Handler b;
+  
+  private ngk()
   {
-    return (int)(0.64F * bgtn.a());
+    HandlerThread localHandlerThread = new HandlerThread("avgame_chat_thread");
+    localHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+    this.b = new Handler(Looper.getMainLooper());
   }
   
-  public static int a(TextView paramTextView)
+  public static ngk a()
   {
-    if ((paramTextView != null) && (paramTextView.getText() != null))
-    {
-      TextPaint localTextPaint = paramTextView.getPaint();
-      return new StaticLayout(paramTextView.getText().toString(), localTextPaint, paramTextView.getWidth() - paramTextView.getPaddingLeft() - paramTextView.getPaddingRight(), Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false).getLineCount();
-    }
-    return -1;
+    return jdField_a_of_type_Ngk;
   }
   
-  public static int b()
+  public Handler a()
   {
-    return (int)(bgtn.a() * 0.045F);
+    return this.jdField_a_of_type_AndroidOsHandler;
   }
   
-  public static int c()
+  public Handler b()
   {
-    return (int)(bgtn.a() * 0.058F);
-  }
-  
-  public static int d()
-  {
-    return (int)(bgtn.a() * 0.048F);
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ngk
  * JD-Core Version:    0.7.0.1
  */

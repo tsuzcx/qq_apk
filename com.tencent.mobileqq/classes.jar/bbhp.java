@@ -1,15 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.hardware.Camera;
 
-class bbhp
-  implements DialogInterface.OnDismissListener
+public abstract interface bbhp
 {
-  bbhp(bbhl parambbhl) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    bbhl.a(this.a);
-  }
+  public abstract void a(byte[] paramArrayOfByte, Camera paramCamera);
 }
 
 

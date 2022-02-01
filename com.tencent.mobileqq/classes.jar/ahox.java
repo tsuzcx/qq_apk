@@ -1,13 +1,36 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForQQStoryComment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahox
-  implements ahor
+class ahox
+  implements View.OnClickListener
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  long jdField_a_of_type_Long = 0L;
+  
+  ahox(ahow paramahow) {}
+  
+  public void onClick(View paramView)
   {
-    paramagup.d(paramagwc.b, paramString);
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 50L) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Long = l;
+      MessageForQQStoryComment localMessageForQQStoryComment = (MessageForQQStoryComment)((aggl)agej.a(paramView)).a;
+      if (zmw.a(localMessageForQQStoryComment.vid))
+      {
+        xlj.a(this.jdField_a_of_type_Ahow.a, localMessageForQQStoryComment.vid, "CommentItemBuilder_Feed_Id", 1004);
+        yup.a("story_grp", "aio_obj", 0, 0, new String[] { "", "", "", "" });
+      }
+      else
+      {
+        xlj.b((Activity)this.jdField_a_of_type_Ahow.a, localMessageForQQStoryComment.vid, "CommentItemBuilder_Feed_Id_NOT_GS", 7);
+      }
+    }
   }
 }
 

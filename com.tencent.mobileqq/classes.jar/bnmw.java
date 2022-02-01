@@ -1,31 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-public class bnmw
-  implements View.OnClickListener
+final class bnmw
+  implements bnhn
 {
-  public bnmw(AEProviderContainerView paramAEProviderContainerView) {}
-  
-  public void onClick(View paramView)
+  public void a(BaseResp paramBaseResp)
   {
-    switch (paramView.getId())
-    {
+    if ((!TextUtils.isEmpty(bnmv.jdField_a_of_type_JavaLangString)) && (bnmv.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null)) {
+      bnmv.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.callJs(bnmv.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(paramBaseResp.errCode) });
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      bnmv.jdField_a_of_type_JavaLangString = null;
+      bnmv.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = null;
+      bnhm.a().b(this);
       return;
-      yqu.a("clk_filter", yqu.b(banm.a), 0, false, new String[0]);
-      if (AEProviderContainerView.a(this.a) != 0)
+      switch (paramBaseResp.errCode)
       {
-        AEProviderContainerView.a(this.a);
-        continue;
-        yqu.a("clk_beauty", yqu.b(banm.a), 0, false, new String[0]);
-        if (AEProviderContainerView.a(this.a) != 1) {
-          AEProviderContainerView.b(this.a);
-        }
+      case -2: 
+      case -1: 
+      default: 
+        zyx.a(1, 2131718139);
+        break;
+      case 0: 
+        zyx.a(2, 2131718157);
       }
     }
   }

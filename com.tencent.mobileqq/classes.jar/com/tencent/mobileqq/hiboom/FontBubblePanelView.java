@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hiboom;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -16,17 +16,17 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
-import anuk;
-import anun;
-import auyq;
-import auyv;
-import auyw;
-import auyx;
-import auyy;
-import auyz;
-import auza;
-import avad;
+import anzj;
+import aogu;
+import aogx;
+import avqr;
+import avqw;
+import avqx;
+import avqy;
+import avqz;
+import avra;
+import avrb;
+import avse;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -50,24 +50,24 @@ public class FontBubblePanelView<T extends JceStruct>
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private anun jdField_a_of_type_Anun = new auyx(this);
-  private auyq jdField_a_of_type_Auyq;
-  private auyy<T> jdField_a_of_type_Auyy;
-  private FontBubblePanelView<T>.auyz jdField_a_of_type_Auyz;
-  private avad jdField_a_of_type_Avad;
+  private aogx jdField_a_of_type_Aogx = new avqy(this);
+  private avqr jdField_a_of_type_Avqr;
+  private avqz<T> jdField_a_of_type_Avqz;
+  private FontBubblePanelView<T>.avra jdField_a_of_type_Avra;
+  private avse jdField_a_of_type_Avse;
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   private RichTextPanelRecyclerView jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelRecyclerView;
   private List<FontBubble> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public FontBubblePanelView(Context paramContext, BaseChatPie paramBaseChatPie, avad paramavad, auyy<T> paramauyy)
+  public FontBubblePanelView(Context paramContext, BaseChatPie paramBaseChatPie, avse paramavse, avqz<T> paramavqz)
   {
     super(paramContext);
-    this.jdField_a_of_type_Auyy = paramauyy;
-    this.jdField_a_of_type_Int = paramauyy.a();
+    this.jdField_a_of_type_Avqz = paramavqz;
+    this.jdField_a_of_type_Int = paramavqz.a();
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_Auyq = auyq.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130847140);
-    this.jdField_a_of_type_Avad = paramavad;
+    this.jdField_a_of_type_Avqr = avqr.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130847157);
+    this.jdField_a_of_type_Avse = paramavse;
     d();
   }
   
@@ -84,7 +84,7 @@ public class FontBubblePanelView<T extends JceStruct>
     switch (paramInt)
     {
     default: 
-      paramInt = 2130847146;
+      paramInt = 2130847163;
     }
     for (;;)
     {
@@ -95,24 +95,24 @@ public class FontBubblePanelView<T extends JceStruct>
       int i = localDrawable.getIntrinsicHeight();
       paramImageView.setImageDrawable(localDrawable);
       paramImageView = paramImageView.getLayoutParams();
-      paramImageView.height = afur.a(10.0F, localResources);
+      paramImageView.height = agej.a(10.0F, localResources);
       paramImageView.width = (paramImageView.height * paramInt / i);
       return;
-      paramInt = 2130846921;
+      paramInt = 2130846938;
       continue;
-      paramInt = 2130850763;
+      paramInt = 2130850782;
       continue;
-      paramInt = 2130850473;
+      paramInt = 2130850486;
       continue;
-      paramInt = 2130847447;
+      paramInt = 2130847464;
       continue;
-      paramInt = 2130847446;
+      paramInt = 2130847463;
     }
   }
   
   private void a(T paramT)
   {
-    new QueryTask(new auyv(this), new auyw(this)).a(paramT);
+    new QueryTask(new avqw(this), new avqx(this)).a(paramT);
   }
   
   public static void b()
@@ -136,14 +136,14 @@ public class FontBubblePanelView<T extends JceStruct>
     this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelRecyclerView.setOverScrollMode(2);
     localObject2 = new GridLayoutManager((Context)localObject2, 4);
     this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelRecyclerView.setLayoutManager((RecyclerView.LayoutManager)localObject2);
-    this.jdField_a_of_type_Auyz = new auyz(this);
-    this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelRecyclerView.setAdapter(this.jdField_a_of_type_Auyz);
-    this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelRecyclerView.setPanelExtendHelper(this.jdField_a_of_type_Avad);
+    this.jdField_a_of_type_Avra = new avra(this);
+    this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelRecyclerView.setAdapter(this.jdField_a_of_type_Avra);
+    this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelRecyclerView.setPanelExtendHelper(this.jdField_a_of_type_Avse);
     setClipToPadding(false);
     localObject2 = new RelativeLayout.LayoutParams(-1, -1);
-    int i = afur.a(8.0F, (Resources)localObject1);
-    int j = afur.a(8.0F, (Resources)localObject1);
-    int k = afur.a(3.0F, (Resources)localObject1);
+    int i = agej.a(8.0F, (Resources)localObject1);
+    int j = agej.a(8.0F, (Resources)localObject1);
+    int k = agej.a(3.0F, (Resources)localObject1);
     this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelRecyclerView.setPadding(j, i, k, 0);
     addView(this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelRecyclerView, (ViewGroup.LayoutParams)localObject2);
   }
@@ -151,9 +151,9 @@ public class FontBubblePanelView<T extends JceStruct>
   public String a()
   {
     if (this.jdField_a_of_type_Int == 3) {
-      return anni.a(2131703466);
+      return anzj.a(2131703573);
     }
-    return anni.a(2131703465);
+    return anzj.a(2131703572);
   }
   
   public void a()
@@ -161,7 +161,7 @@ public class FontBubblePanelView<T extends JceStruct>
     VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "aio_iconA", "PanelPageView", "", 1, 0, 0, "", "", a(this.jdField_a_of_type_Int));
   }
   
-  public void a(FontBubblePanelView<T>.auza paramFontBubblePanelView, FontBubble paramFontBubble)
+  public void a(FontBubblePanelView<T>.avrb paramFontBubblePanelView, FontBubble paramFontBubble)
   {
     if (paramFontBubble.viewType == 1)
     {
@@ -170,7 +170,7 @@ public class FontBubblePanelView<T extends JceStruct>
         if (!TextUtils.isEmpty(paramFontBubble.picUrl)) {
           break label207;
         }
-        localObject1 = this.jdField_a_of_type_Auyy.a(paramFontBubble);
+        localObject1 = this.jdField_a_of_type_Avqz.a(paramFontBubble);
         localObject1 = new URL("protocol_vas_extension_image", "FONT_BUBBLE", (String)localObject1);
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
         Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
@@ -192,7 +192,7 @@ public class FontBubblePanelView<T extends JceStruct>
       paramFontBubblePanelView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setScaleType(ImageView.ScaleType.FIT_XY);
       paramFontBubblePanelView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageDrawable((Drawable)localObject1);
       a(paramFontBubblePanelView.jdField_a_of_type_AndroidWidgetImageView, paramFontBubble.feeType);
-      i = afur.a(0.7F, getResources());
+      i = agej.a(0.7F, getResources());
       paramFontBubblePanelView.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, i, 0, 0);
       paramFontBubblePanelView.jdField_a_of_type_AndroidWidgetTextView.setText(paramFontBubble.name);
     }
@@ -202,14 +202,14 @@ public class FontBubblePanelView<T extends JceStruct>
       paramFontBubblePanelView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setTag(paramFontBubble);
       paramFontBubblePanelView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       paramFontBubblePanelView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setOnClickListener(this);
-      paramFontBubblePanelView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setRoundRect(afur.a(5.0F, getResources()));
+      paramFontBubblePanelView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setRoundRect(agej.a(5.0F, getResources()));
       return;
       label207:
       localObject1 = paramFontBubble.picUrl;
       break;
       Object localObject2;
       paramFontBubblePanelView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-      paramFontBubblePanelView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageResource(2130847147);
+      paramFontBubblePanelView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageResource(2130847164);
       paramFontBubblePanelView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       paramFontBubblePanelView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
@@ -219,16 +219,16 @@ public class FontBubblePanelView<T extends JceStruct>
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anun);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aogx);
       if (jdField_a_of_type_ArrayOfBoolean[this.jdField_a_of_type_Int] == 0)
       {
         jdField_a_of_type_ArrayOfBoolean[this.jdField_a_of_type_Int] = true;
-        anuk localanuk = (anuk)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13);
-        this.jdField_a_of_type_Auyy.a(localanuk);
+        aogu localaogu = (aogu)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13);
+        this.jdField_a_of_type_Avqz.a(localaogu);
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anun);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aogx);
   }
   
   public void onClick(View paramView)
@@ -246,7 +246,7 @@ public class FontBubblePanelView<T extends JceStruct>
       {
         l = SystemClock.uptimeMillis();
         if (this.jdField_a_of_type_Long + 1000L < l) {
-          this.jdField_a_of_type_Auyq.a((FontBubble)localObject);
+          this.jdField_a_of_type_Avqr.a((FontBubble)localObject);
         }
         this.jdField_a_of_type_Long = l;
       }
@@ -258,7 +258,7 @@ public class FontBubblePanelView<T extends JceStruct>
       }
     }
     localObject = getContext();
-    String str = this.jdField_a_of_type_Auyy.a((Context)localObject);
+    String str = this.jdField_a_of_type_Avqz.a((Context)localObject);
     if (this.jdField_a_of_type_Int == 3) {}
     for (long l = 4096L;; l = 64L)
     {

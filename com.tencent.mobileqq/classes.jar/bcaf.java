@@ -1,137 +1,132 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.MessageHandler;
+import android.app.Activity;
+import android.content.Context;
+import android.view.Window;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import tencent.im.cs.head.ContentHead;
-import tencent.im.cs.head.Head;
-import tencent.im.cs.head.MsgHead;
-import tencent.im.msg.im_msg_body.MsgBody;
+import mqq.util.WeakReference;
 
 public class bcaf
-  implements bbzr
 {
-  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbyn parambbyn)
+  private int jdField_a_of_type_Int;
+  private aoke jdField_a_of_type_Aoke;
+  private aokf jdField_a_of_type_Aokf = new bcag(this);
+  private bjbs jdField_a_of_type_Bjbs;
+  private ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
+  private long[] jdField_a_of_type_ArrayOfLong = { 1001L, 1002L, 8001L };
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString = "";
+  private WeakReference<Context> jdField_b_of_type_MqqUtilWeakReference;
+  private String c;
+  private String d;
+  
+  public bcaf(String paramString)
   {
-    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has())) {
-      if (QLog.isColorLevel()) {
-        QLog.e("VideoQCallDecoder", 2, "<---decodeC2CMsgPkg_QCall return null:hasBody:" + paramMsg.msg_body.has() + ",hasMsgContent" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has());
-      }
-    }
-    do
+    this.d = paramString;
+  }
+  
+  public static int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      for (;;)
+    default: 
+      return 0;
+    case 0: 
+      return 1;
+    case 1: 
+      return 2;
+    case 3000: 
+      return 3;
+    }
+    return 4;
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    if (ChatActivityUtils.a(paramQQAppInterface, paramInt, paramString)) {
+      return 5;
+    }
+    if (ChatActivityUtils.a(paramInt)) {
+      return 3;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return -1;
+    case 3000: 
+      return 4;
+    case 1: 
+      return 2;
+    }
+    return 1;
+  }
+  
+  private void a()
+  {
+    this.jdField_b_of_type_JavaLangString = "0";
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localQQAppInterface != null) {
+      localQQAppInterface.removeObserver(this.jdField_a_of_type_Aokf);
+    }
+    if (this.jdField_a_of_type_Bjbs != null) {
+      this.jdField_a_of_type_Bjbs = null;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, ChatMessage paramChatMessage)
+  {
+    if (this.jdField_a_of_type_Bjbs != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("UinSearcher", 2, "searching, skip");
+      }
+      return;
+    }
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramContext);
+    if (this.jdField_a_of_type_Aoke == null) {
+      this.jdField_a_of_type_Aoke = ((aoke)paramQQAppInterface.a(152));
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    paramString = paramChatMessage.selfuin;
+    if ((!paramChatMessage.isSend()) && (!paramChatMessage.senderuin.equals(paramQQAppInterface.getCurrentAccountUin()))) {}
+    for (this.c = paramChatMessage.senderuin;; this.c = paramChatMessage.frienduin)
+    {
+      this.jdField_a_of_type_Int = paramChatMessage.istroop;
+      this.jdField_b_of_type_JavaLangString = (System.currentTimeMillis() + "");
+      paramQQAppInterface.addObserver(this.jdField_a_of_type_Aokf);
+      paramQQAppInterface = (anum)paramQQAppInterface.a(2);
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.a(paramString, this.c, 1, 0L, (byte)1, 0L, 0L, null, "", 8192L, 10004, null, (byte)0);
+      }
+      try
       {
-        return;
-        long l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
-        long l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
-        long l4 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
-        long l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
-        ((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get();
-        paramList = l4 + "-" + l3;
-        if (QLog.isColorLevel()) {
-          QLog.d("decodeC2CMsgPkg_QCall", 2, "<---decodeC2CMsgPkg_QCall :  key:" + paramList);
+        this.jdField_a_of_type_Bjbs = new bjbs(paramContext);
+        this.jdField_a_of_type_Bjbs.e(17);
+        this.jdField_a_of_type_Bjbs.a(null);
+        this.jdField_a_of_type_Bjbs.f(2130839414);
+        if (this.jdField_a_of_type_Bjbs.getWindow() != null) {
+          this.jdField_a_of_type_Bjbs.getWindow().setDimAmount(0.0F);
         }
-        if (paramMessageHandler.app.a().a(l2, paramList))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("decodeC2CMsgPkg_QCall", 2, "msg has been pulled");
-          }
-        }
-        else
-        {
-          l3 = bbyp.a();
-          l4 = Long.valueOf(paramMessageHandler.app.getCurrentAccountUin()).longValue();
-          paramMsg = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
-          paramList = new byte[4];
-          Object localObject = new byte[4];
-          System.arraycopy(paramMsg, 0, paramList, 0, 4);
-          System.arraycopy(paramMsg, 4, localObject, 0, 4);
-          int i = lcr.a(paramList, 4);
-          int j = lcr.a((byte[])localObject, 4);
-          if ((i <= 0) || (j <= 0))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("decodeC2CMsgPkg_QCall", 2, "invalid head length:" + i + " or body length:" + j);
-            }
-          }
-          else
-          {
-            paramList = null;
-            try
-            {
-              localObject = new head.Head();
-              byte[] arrayOfByte = new byte[i];
-              System.arraycopy(paramMsg, 8, arrayOfByte, 0, i);
-              ((head.Head)localObject).mergeFrom(arrayOfByte);
-              int k = ((head.Head)localObject).msg_msg_head.msg_content_head.uint32_type.get();
-              int m = ((head.Head)localObject).msg_msg_head.msg_content_head.uint32_subtype.get();
-              if ((k == 562) && (m == 17))
-              {
-                localObject = new im_msg_body.MsgBody();
-                arrayOfByte = new byte[j];
-                System.arraycopy(paramMsg, i + 8, arrayOfByte, 0, j);
-                ((im_msg_body.MsgBody)localObject).mergeFrom(arrayOfByte);
-                paramMsg = ((im_msg_body.MsgBody)localObject).msg_content.get().toByteArray();
-                if (paramMsg == null)
-                {
-                  if (!QLog.isColorLevel()) {
-                    continue;
-                  }
-                  QLog.d("decodeC2CMsgPkg_QCall", 2, "msg sharp content null, return;");
-                }
-              }
-              else
-              {
-                if (!QLog.isColorLevel()) {
-                  continue;
-                }
-                QLog.d("decodeC2CMsgPkg_QCall", 2, "error msgType:" + k + ", or subType:" + m);
-                return;
-              }
-            }
-            catch (Exception localException)
-            {
-              for (;;)
-              {
-                paramMsg = paramList;
-                if (QLog.isColorLevel())
-                {
-                  QLog.d("decodeC2CMsgPkg_QCall", 2, "error when process qcall offline msg", localException);
-                  paramMsg = paramList;
-                }
-              }
-              boolean bool = lkm.a(paramMsg);
-              if (((!parambbyn.jdField_a_of_type_Boolean) && (!parambbyn.f)) || ((parambbyn.jdField_a_of_type_Long != parambbyn.b) || ((parambbyn.jdField_a_of_type_Long == parambbyn.b) && (!bool))))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.e("decodeC2CMsgPkg_QCall", 2, "<---decodeC2CMsgPkg_QCall return null:,isReaded:" + parambbyn.jdField_a_of_type_Boolean + "syncOther:" + parambbyn.f + ",isSharpRequest" + bool);
-                }
-              }
-              else
-              {
-                mqu.a(l2);
-                mqu.a(l4);
-                try
-                {
-                  new lxd(BaseApplicationImpl.getContext()).a(new bcag(this, paramMsg, l3 - l1, paramMessageHandler, l4, l2, l1, bool));
-                  return;
-                }
-                catch (Exception paramMessageHandler) {}
-              }
-            }
-          }
+        this.jdField_a_of_type_Bjbs.setOnDismissListener(new bcaj(this));
+        if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing())) {
+          this.jdField_a_of_type_Bjbs.show();
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("decodeC2CMsgPkg_QCall", 2, "exception when process qcall offline msg", paramMessageHandler);
+      catch (RuntimeException paramQQAppInterface)
+      {
+        for (;;)
+        {
+          QLog.e("UinSearcher", 1, paramQQAppInterface, new Object[0]);
+        }
+      }
+      this.jdField_a_of_type_Aoke.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 20, bbzx.a(this.jdField_a_of_type_ArrayOfLong), null, null, 0, 0.0D, 0.0D, null, "{ \"search_by_id_only\": 1 }");
+      return;
+    }
   }
 }
 

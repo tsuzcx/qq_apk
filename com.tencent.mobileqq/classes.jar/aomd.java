@@ -1,27 +1,26 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
 public class aomd
-  extends aojs
+  implements Comparator<File>
 {
-  public aomd(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  public aomd(CleanCache paramCleanCache) {}
   
-  private boolean C()
+  public int a(File paramFile1, File paramFile2)
   {
-    return true;
-  }
-  
-  public boolean a()
-  {
-    return C();
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    if (paramFile2.lastModified() - paramFile1.lastModified() < 0L) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomd
  * JD-Core Version:    0.7.0.1
  */

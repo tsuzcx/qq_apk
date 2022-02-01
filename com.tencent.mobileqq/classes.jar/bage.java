@@ -1,42 +1,81 @@
-import android.text.TextUtils;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent;
+import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent.ColorScreenLoader;
+import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent.ColorScreenLoader.ColorScreenListener.1;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class bage
+  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
   public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public long a;
+  private boolean a;
+  public long b;
   
-  public static bage a(String paramString)
+  public bage(ProfileColorScreenComponent.ColorScreenLoader paramColorScreenLoader, long paramLong)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    bage localbage = new bage();
-    try
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = ((ProfileColorScreenComponent.ColorScreenLoader.a(paramColorScreenLoader).jdField_a_of_type_Int + 1) * paramLong);
+    if (Build.VERSION.SDK_INT == 15) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramString = new JSONObject(paramString);
-      localbage.jdField_a_of_type_Int = paramString.optInt("animationType");
-      localbage.jdField_a_of_type_JavaLangString = paramString.optString("boxZipUrl", null);
-      localbage.b = paramString.optString("giftZipUrl", null);
-      localbage.c = paramString.optString("giftParticleUrl", null);
-      localbage.d = paramString.optString("lottieUrl", null);
-      return localbage;
+      this.jdField_a_of_type_Boolean = bool;
+      return;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      QLog.e("QzoneGiftManager", 1, "handleFlashChatConfig failed" + paramString);
-    }
-    return localbage;
   }
   
-  public String toString()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return " mBoxZipUrl = " + this.jdField_a_of_type_JavaLangString + " mGiftZipUrl = " + this.b + " mGiftUrl = " + this.c;
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorScreenManager", 2, "onAnimationEnd: " + ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader));
+    }
+    ProfileColorScreenComponent.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader.this$0).setVisibility(8);
+    ProfileColorScreenComponent.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader.this$0).post(new ProfileColorScreenComponent.ColorScreenLoader.ColorScreenListener.1(this));
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Int += 1;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileColorScreenComponent", 2, "onAnimationStart: " + ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader));
+    }
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      try
+      {
+        float f = (paramValueAnimator.getAnimatedFraction() + this.jdField_a_of_type_Int) * (float)this.jdField_a_of_type_Long;
+        if (f <= (float)ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader).jdField_a_of_type_Long)
+        {
+          ProfileColorScreenComponent.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader.this$0).setAlpha(f / (float)ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader).jdField_a_of_type_Long);
+          return;
+        }
+        if ((this.b > 0L) && ((float)this.b - f <= (float)ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader).b))
+        {
+          ProfileColorScreenComponent.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader.this$0).setAlpha(((float)this.b - f) / (float)ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader).b);
+          return;
+        }
+      }
+      catch (Exception paramValueAnimator)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        QLog.e("ProfileColorScreenComponent", 1, "onAnimationUpdate: ", paramValueAnimator);
+      }
+    }
   }
 }
 

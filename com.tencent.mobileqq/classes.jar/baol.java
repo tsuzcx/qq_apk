@@ -1,10 +1,17 @@
-import android.support.annotation.NonNull;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.CircleProgress;
-
-public abstract interface baol
+public class baol
+  implements anui
 {
-  public abstract boolean a(@NonNull TextView paramTextView, @NonNull CircleProgress paramCircleProgress, long paramLong, float paramFloat);
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, paramObject);
+  }
 }
 
 

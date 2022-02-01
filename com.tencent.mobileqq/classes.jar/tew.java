@@ -1,95 +1,46 @@
-import android.support.v4.util.ArrayMap;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.realtime.RealTimeTemplateFactoryCache;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.protofile.cmd0xe36.cmd0xe36.RspBody;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONObject;
 
 public class tew
-  extends teh
+  extends nkq
 {
-  private static RealTimeTemplateFactoryCache jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache = new RealTimeTemplateFactoryCache();
-  private Map<String, tex> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  public tew(BridgeModule paramBridgeModule, String paramString) {}
   
-  public tew()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.nameTemplateMap = new ConcurrentHashMap();
-  }
-  
-  public static tew a(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.getAutoCreate(BaseApplicationImpl.getContext(), paramString);
+    QLog.i(BridgeModule.TAG, 1, "yyy_0xe36 error code: " + paramInt);
+    if (paramInt == 0) {
+      paramBundle = new cmd0xe36.RspBody();
     }
-    return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.get(paramString);
-  }
-  
-  public static void b()
-  {
-    QLog.d("RealTimeTemplateFactory", 2, "reset: ");
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.clear();
-  }
-  
-  public Map<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext())
+    try
     {
-      tex localtex = (tex)localIterator.next();
-      localHashMap.put(localtex.a, localtex.b);
-    }
-    return localHashMap;
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramInt = 0;
+      paramArrayOfByte = "";
+      if (paramBundle.code.has()) {
+        paramInt = paramBundle.code.get();
+      }
+      if (paramBundle.wording.has()) {
+        paramArrayOfByte = paramBundle.wording.get();
+      }
+      QLog.i(BridgeModule.TAG, 1, "yyy_0xe36 code: " + paramInt + "\nwording: " + paramArrayOfByte);
+      if ((paramInt != 0) && (!TextUtils.isEmpty(paramArrayOfByte)))
+      {
+        paramBundle = new JSONObject();
+        paramBundle.put("wording", paramArrayOfByte);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramBundle);
+      }
       return;
     }
-    paramString2 = new tex(paramString1, paramString2, paramString3);
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
-  }
-  
-  public boolean a(TemplateBean paramTemplateBean)
-  {
-    if (paramTemplateBean == null) {}
-    while ((paramTemplateBean.getId() != getTemplateId()) || (!a().equals(paramTemplateBean.getStyleSource()))) {
-      return true;
-    }
-    return false;
-  }
-  
-  public void d(String paramString)
-  {
-    paramString = (tex)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    if (paramString != null)
+    catch (Exception paramArrayOfByte)
     {
-      paramString = (TemplateBean)this.nameTemplateMap.remove(paramString.c);
-      QLog.d("RealTimeTemplateFactory", 1, "deleteStyle: " + paramString);
-    }
-  }
-  
-  public Map<String, TemplateBean> getNameTemplateMap()
-  {
-    ArrayMap localArrayMap = new ArrayMap();
-    localArrayMap.putAll(this.nameTemplateMap);
-    return localArrayMap;
-  }
-  
-  public TemplateBean getTemplate(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    paramString = (TemplateBean)this.nameTemplateMap.get(paramString);
-    if (paramString == null) {}
-    for (paramString = null;; paramString = paramString.clone()) {
-      return paramString;
+      QLog.i(BridgeModule.TAG, 1, "yyy_0xe36 error: " + paramArrayOfByte.toString());
     }
   }
 }

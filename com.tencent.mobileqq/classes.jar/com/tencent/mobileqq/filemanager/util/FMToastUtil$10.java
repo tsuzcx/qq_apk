@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import atvf;
+import auna;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -10,10 +10,10 @@ public final class FMToastUtil$10
   public void run()
   {
     QQToast localQQToast = new QQToast(BaseApplicationImpl.getContext());
-    localQQToast.a(2130839546);
+    localQQToast.a(2130839555);
     localQQToast.d(3000);
     localQQToast.c(this.a);
-    localQQToast.b(atvf.a());
+    localQQToast.b(auna.a());
   }
 }
 

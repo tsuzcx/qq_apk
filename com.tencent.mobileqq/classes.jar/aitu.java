@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
-
-public final class aitu
-  implements Parcelable.Creator<SearchResultItem>
+public class aitu
 {
-  public SearchResultItem a(Parcel paramParcel)
-  {
-    return new SearchResultItem(paramParcel);
-  }
-  
-  public SearchResultItem[] a(int paramInt)
-  {
-    return new SearchResultItem[paramInt];
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

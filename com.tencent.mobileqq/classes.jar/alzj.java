@@ -1,30 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class alzj
-  implements View.OnClickListener
+final class alzj
+  implements alzk
 {
-  public alzj(SessionClearFragment paramSessionClearFragment) {}
+  alzj(QQAppInterface paramQQAppInterface, int paramInt, String paramString) {}
   
-  public void onClick(View paramView)
+  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    if (SessionClearFragment.a(this.a) == 0)
-    {
-      SessionClearFragment.a(this.a).setText(anni.a(2131712607));
-      SessionClearFragment.a(this.a, 1);
-      SessionClearFragment.a(this.a).b();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      SessionClearFragment.a(this.a).setText(anni.a(2131712605));
-      SessionClearFragment.a(this.a, 0);
-      SessionClearFragment.a(this.a).c();
-    }
+    alzi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, paramString);
+    return true;
   }
 }
 

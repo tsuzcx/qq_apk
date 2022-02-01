@@ -1,24 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-class aryl
-  implements View.OnClickListener
+public class aryl
+  implements CompoundButton.OnCheckedChangeListener
 {
-  aryl(aryk paramaryk, Button paramButton) {}
+  public aryl(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidWidgetButton.getText() == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      String str = this.jdField_a_of_type_AndroidWidgetButton.getText().toString();
-      this.jdField_a_of_type_Aryk.a.d(str);
-      bcst.b(this.jdField_a_of_type_Aryk.a.a(), "dc00898", "", "", "0X800AE1F", "0X800AE1F", 0, 0, "2", "", str, "");
-    }
+    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(aove.a, 0).edit().putBoolean(aove.c, paramBoolean).commit();
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

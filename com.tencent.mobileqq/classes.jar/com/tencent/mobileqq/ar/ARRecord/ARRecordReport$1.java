@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import aotb;
-import bctj;
+import apgr;
+import bdmc;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARRecordReport$1
   implements Runnable
 {
-  public ARRecordReport$1(aotb paramaotb) {}
+  public ARRecordReport$1(apgr paramapgr) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    bctj.a(BaseApplication.getContext()).a("", "ar_record_pre_record_start", true, 0L, 0L, localHashMap, "");
+    bdmc.a(BaseApplication.getContext()).a("", "ar_record_pre_record_start", true, 0L, 0L, localHashMap, "");
   }
 }
 

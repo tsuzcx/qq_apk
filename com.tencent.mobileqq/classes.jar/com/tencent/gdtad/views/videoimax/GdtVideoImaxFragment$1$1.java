@@ -1,13 +1,13 @@
 package com.tencent.gdtad.views.videoimax;
 
-import acuf;
+import acyj;
 import android.os.ResultReceiver;
 import com.tencent.gdtad.views.video.GdtVideoCommonView;
 
 public class GdtVideoImaxFragment$1$1
   implements Runnable
 {
-  public GdtVideoImaxFragment$1$1(acuf paramacuf) {}
+  public GdtVideoImaxFragment$1$1(acyj paramacyj) {}
   
   public void run()
   {

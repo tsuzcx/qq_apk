@@ -1,18 +1,17 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.data.MessageForPic;
 
-class agys
-  extends ahbl
+public class agys
+  extends aggl
 {
-  agys(agwz paramagwz)
-  {
-    super(paramagwz, null);
-  }
+  public TextView a;
+  public URLDrawable a;
+  public ChatThumbView a;
+  public MessageForPic a;
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new qzi(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
+  public agys(agyr paramagyr) {}
 }
 
 

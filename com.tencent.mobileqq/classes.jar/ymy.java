@@ -1,17 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.Nullable;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class ymy
-  implements View.OnClickListener
+  implements wvd
 {
-  ymy(ymo paramymo, ypv paramypv) {}
+  ymy(ymx paramymx, wva paramwva) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, @Nullable wuz paramwuz)
   {
-    yqu.a("home_page", "guide_close", 0, 0, new String[0]);
-    this.jdField_a_of_type_Ypv.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    yuk.e("Q.qqstory.home.data.HomeFeedPresenter", "lbs update %b %s", new Object[] { Boolean.valueOf(paramBoolean), paramwuz });
+    this.jdField_a_of_type_Wva.b(this);
+    if (this.jdField_a_of_type_Ymx.a.get())
+    {
+      yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "is destroy");
+      return;
+    }
+    ymx.a(this.jdField_a_of_type_Ymx).a = paramwuz;
+    ymx.a(this.jdField_a_of_type_Ymx).a(null, 0);
+    ((yme)wth.a(11)).a = paramwuz;
   }
 }
 

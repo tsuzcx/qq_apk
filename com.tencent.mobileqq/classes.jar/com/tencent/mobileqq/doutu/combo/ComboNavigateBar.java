@@ -10,9 +10,9 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import arnd;
-import arne;
-import arnf;
+import asct;
+import ascu;
+import ascv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -22,7 +22,7 @@ public class ComboNavigateBar
 {
   protected Animation a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  arnd jdField_a_of_type_Arnd;
+  asct jdField_a_of_type_Asct;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean = true;
@@ -36,47 +36,47 @@ public class ComboNavigateBar
     super(paramContext, paramAttributeSet);
   }
   
-  private Drawable a(View paramView, arnf paramarnf)
+  private Drawable a(View paramView, ascv paramascv)
   {
     paramView = paramView.getLayoutParams();
-    paramView.width = paramarnf.jdField_a_of_type_Int;
-    paramView.height = paramarnf.b;
-    return paramarnf.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    paramView.width = paramascv.jdField_a_of_type_Int;
+    paramView.height = paramascv.b;
+    return paramascv.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
   
   private boolean a()
   {
-    arnf localarnf = arne.a();
-    if (localarnf == null)
+    ascv localascv = ascu.a();
+    if (localascv == null)
     {
       this.jdField_a_of_type_Boolean = false;
       return false;
     }
-    this.e.setImageDrawable(a(this.e, localarnf));
+    this.e.setImageDrawable(a(this.e, localascv));
     return true;
   }
   
   private boolean a(ImageView paramImageView, int paramInt)
   {
-    arnf localarnf = arne.a(paramInt);
-    if (localarnf == null)
+    ascv localascv = ascu.a(paramInt);
+    if (localascv == null)
     {
       this.jdField_a_of_type_Boolean = false;
       return false;
     }
-    paramImageView.setImageDrawable(a(paramImageView, localarnf));
+    paramImageView.setImageDrawable(a(paramImageView, localascv));
     return true;
   }
   
   private boolean b()
   {
-    arnf localarnf = arne.b();
-    if (localarnf == null)
+    ascv localascv = ascu.b();
+    if (localascv == null)
     {
       this.jdField_a_of_type_Boolean = false;
       return false;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(this.jdField_a_of_type_AndroidWidgetImageView, localarnf));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(this.jdField_a_of_type_AndroidWidgetImageView, localascv));
     return true;
   }
   
@@ -92,11 +92,11 @@ public class ComboNavigateBar
   public void a(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.e = ((ImageView)findViewById(2131362341));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362335));
-    this.b = ((ImageView)findViewById(2131362336));
-    this.c = ((ImageView)findViewById(2131362337));
-    this.d = ((ImageView)findViewById(2131362338));
+    this.e = ((ImageView)findViewById(2131362353));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362347));
+    this.b = ((ImageView)findViewById(2131362348));
+    this.c = ((ImageView)findViewById(2131362349));
+    this.d = ((ImageView)findViewById(2131362350));
     setVisibility(8);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(500L);
@@ -122,7 +122,7 @@ public class ComboNavigateBar
   
   public void setCountNum()
   {
-    int k = this.jdField_a_of_type_Arnd.jdField_a_of_type_Int;
+    int k = this.jdField_a_of_type_Asct.jdField_a_of_type_Int;
     int j = k / 10;
     int i;
     if (j != 0)
@@ -165,12 +165,12 @@ public class ComboNavigateBar
     }
   }
   
-  public void setInfo(arnd paramarnd)
+  public void setInfo(asct paramasct)
   {
-    this.jdField_a_of_type_Arnd = paramarnd;
+    this.jdField_a_of_type_Asct = paramasct;
     this.jdField_a_of_type_Boolean = true;
-    String str = paramarnd.jdField_a_of_type_JavaLangString;
-    int i = paramarnd.jdField_a_of_type_Int;
+    String str = paramasct.jdField_a_of_type_JavaLangString;
+    int i = paramasct.jdField_a_of_type_Int;
     setCountNum();
     if (this.jdField_a_of_type_Boolean == true)
     {

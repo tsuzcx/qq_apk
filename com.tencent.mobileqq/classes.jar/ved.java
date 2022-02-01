@@ -1,16 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqcircle.widgets.QCircleTitleFollowView;
 
 class ved
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  ved(vec paramvec) {}
+  ved(vdr paramvdr) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.onAnimationEnd(paramAnimator);
+    vdr.a(this.a, false);
+    vdr.a(this.a).setVisibility(8);
+    vdr.a(this.a).getLayoutParams().width = bhtq.a(80.0F);
+    vdr.a(this.a).setAlpha(1.0F);
   }
 }
 

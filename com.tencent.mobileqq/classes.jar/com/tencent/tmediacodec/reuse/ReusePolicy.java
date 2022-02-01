@@ -7,6 +7,7 @@ public final class ReusePolicy
   public static final ReusePolicy DEFAULT = new ReusePolicy(1920, 1920);
   public static final int DEFAULT_INIT_HEIGHT = 1920;
   public static final int DEFAULT_INIT_WIDTH = 1920;
+  public ReusePolicy.EraseType eraseType;
   public int initHeight;
   public int initWidth;
   public boolean reConfigByRealFormat;
@@ -16,6 +17,7 @@ public final class ReusePolicy
     this.initWidth = paramInt1;
     this.initHeight = paramInt2;
     this.reConfigByRealFormat = true;
+    this.eraseType = ReusePolicy.EraseType.First;
   }
   
   @NonNull

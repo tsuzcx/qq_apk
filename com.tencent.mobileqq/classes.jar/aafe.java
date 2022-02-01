@@ -1,26 +1,30 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aafe
-  implements View.OnClickListener
+public class aafe
+  extends RecyclerView.ItemDecoration
 {
-  aafe(aafd paramaafd, CertifiedAccountMeta.StComment paramStComment) {}
-  
-  public void onClick(View paramView)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    ClipboardManager localClipboardManager = (ClipboardManager)aaet.c(this.jdField_a_of_type_Aafd.a).getSystemService("clipboard");
-    if (localClipboardManager != null)
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    int i = paramRecyclerView.getChildAdapterPosition(paramView);
+    if (i == 0)
     {
-      localClipboardManager.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.content.get()));
-      aaet.a(this.jdField_a_of_type_Aafd.a).dismiss();
+      paramRect.left = bhgr.a(paramView.getContext(), 3.0F);
+      paramRect.right = 0;
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramRecyclerView = paramRecyclerView.getAdapter();
+    if ((paramRecyclerView != null) && (i == paramRecyclerView.getItemCount() - 1)) {}
+    for (paramRect.right = bhgr.a(paramView.getContext(), 3.0F);; paramRect.right = 0)
+    {
+      paramRect.left = (-bhgr.a(paramView.getContext(), 6.0F));
+      return;
+    }
   }
 }
 

@@ -1,25 +1,22 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import java.util.ArrayList;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-final class apkh
-  extends apls
+public abstract interface apkh
 {
-  apkh(String paramString, ArrayList paramArrayList)
-  {
-    super(paramString);
-  }
+  public abstract void a();
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getString("userInfo", null);
-      if (!TextUtils.isEmpty(paramBundle)) {
-        this.a.add(paramBundle);
-      }
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(ARCommonConfigInfo paramARCommonConfigInfo);
+  
+  public abstract void a(ArConfigInfo paramArConfigInfo);
+  
+  public abstract void a(ArEffectConfig paramArEffectConfig);
+  
+  public abstract void b();
 }
 
 

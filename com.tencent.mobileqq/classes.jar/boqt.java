@@ -1,14 +1,28 @@
-import android.support.annotation.NonNull;
-
 class boqt
-  implements boqp
+  implements borc
 {
-  boqt(boqs paramboqs) {}
+  boqt(boqr paramboqr, borc paramborc) {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public void a(boqu paramboqu, int paramInt)
   {
-    return bfsj.b(paramString);
+    if (this.jdField_a_of_type_Borc != null) {
+      this.jdField_a_of_type_Borc.a(paramboqu, paramInt);
+    }
+  }
+  
+  public void a(boqu paramboqu, boolean paramBoolean)
+  {
+    boqu localboqu = boqr.a(this.jdField_a_of_type_Boqr, paramboqu);
+    if (localboqu != null) {
+      localboqu.e = boqr.a(paramboqu);
+    }
+    if (this.jdField_a_of_type_Borc != null)
+    {
+      this.jdField_a_of_type_Borc.a(paramboqu, paramBoolean);
+      if (localboqu != null) {
+        bpam.b("AEMaterialManager", "【END】onDownloadFinish :" + localboqu.a);
+      }
+    }
   }
 }
 

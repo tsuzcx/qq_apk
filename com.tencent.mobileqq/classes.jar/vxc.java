@@ -1,27 +1,55 @@
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
+import android.arch.lifecycle.MutableLiveData;
+import android.content.Context;
+import com.tencent.biz.qqcircle.viewmodels.QCircleMessageNoticeViewModel.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class vxc
-  implements bkhw
+  extends aabb
 {
-  public vxc(QCircleFollowView paramQCircleFollowView, bkho parambkho) {}
+  private MutableLiveData<vbb> a = new MutableLiveData();
   
-  public void OnClick(View paramView, int paramInt)
+  private void a(List<String> paramList1, int paramInt1, List<String> paramList2, int paramInt2)
   {
-    if (!aauy.a("showUnFollowUserActionSheetClick")) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
+    Object localObject = new StringBuilder().append("setNoticeTipValue ");
+    int i;
+    StringBuilder localStringBuilder;
+    if (paramList1 == null)
     {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView) != null) {
-        QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView).a();
+      i = 0;
+      localStringBuilder = ((StringBuilder)localObject).append(i).append(", messageUnRead:").append(paramInt1).append(" chatUinList");
+      if (paramList2 != null) {
+        break label103;
       }
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.b(false);
     }
+    label103:
+    for (localObject = Integer.valueOf(0);; localObject = paramList2.size() + ", chatUnReadNum:" + paramInt2)
+    {
+      QLog.d("QCircleMessageNoticeViewModel", 1, localObject);
+      paramList1 = new vbb(paramList1, paramInt1, paramList2, paramInt2);
+      this.a.postValue(paramList1);
+      return;
+      i = paramList1.size();
+      break;
+    }
+  }
+  
+  public MutableLiveData<vbb> a()
+  {
+    return this.a;
+  }
+  
+  public String a()
+  {
+    return "QCircleMessageNoticeViewModel";
+  }
+  
+  public void a(Context paramContext)
+  {
+    QLog.i("QCircleMessageNoticeViewModel", 1, "pullLastestInfo");
+    ThreadManager.getSubThreadHandler().post(new QCircleMessageNoticeViewModel.1(this, paramContext));
   }
 }
 

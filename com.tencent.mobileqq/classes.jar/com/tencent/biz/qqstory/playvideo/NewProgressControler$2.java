@@ -2,30 +2,30 @@ package com.tencent.biz.qqstory.playvideo;
 
 import android.os.Handler;
 import java.lang.ref.WeakReference;
-import xgq;
-import xpl;
+import xkl;
+import xtg;
 
 public class NewProgressControler$2
   implements Runnable
 {
-  public NewProgressControler$2(xgq paramxgq) {}
+  public NewProgressControler$2(xkl paramxkl) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {}
-    xpl localxpl;
+    xtg localxtg;
     do
     {
       do
       {
         return;
       } while (this.this$0.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localxpl = (xpl)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localxpl == null);
-    if (localxpl.b() > 0L)
+      localxtg = (xtg)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localxtg == null);
+    if (localxtg.b() > 0L)
     {
-      xgq.a(this.this$0, localxpl.a(), localxpl.b());
-      xgq.a(this.this$0);
+      xkl.a(this.this$0, localxtg.a(), localxtg.b());
+      xkl.a(this.this$0);
       return;
     }
     this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);

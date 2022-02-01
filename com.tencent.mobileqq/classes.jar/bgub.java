@@ -1,10 +1,40 @@
-public abstract interface bgub
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+
+class bgub
+  extends anyu
 {
-  public abstract void a(int paramInt1, String paramString, int paramInt2);
+  bgub(bgty parambgty) {}
   
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  {
+    if (!this.a.b(paramString)) {}
+    while (!paramBoolean1) {
+      return;
+    }
+    bgty.a(this.a, paramString);
+  }
   
-  public abstract void b(String paramString, int paramInt1, int paramInt2);
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = "" + paramObject;
+    if (!this.a.b(paramObject)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!paramBoolean);
+      bgty.a(this.a, paramObject);
+    } while (!(this.a.a instanceof QQAppInterface));
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a;
+    ((anyw)this.a.a.getManager(51)).d(paramObject);
+    bbcg.a(localQQAppInterface, paramObject);
+    bejn.a(localQQAppInterface, paramObject);
+    localQQAppInterface.a().a().a(paramObject, true);
+  }
 }
 
 

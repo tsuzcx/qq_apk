@@ -1,27 +1,19 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.gdtad.views.halfScreen.GdtBaseHalfScreenFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.statistics.GdtReporter;
 
-public class actf
-  implements View.OnClickListener
+class actf
+  implements acvm
 {
-  public actf(GdtBaseHalfScreenFragment paramGdtBaseHalfScreenFragment) {}
+  actf(acsz paramacsz) {}
   
-  public void onClick(View paramView)
+  public void reportImpression(View paramView)
   {
-    if ((GdtBaseHalfScreenFragment.a(this.a) != null) && (GdtBaseHalfScreenFragment.a(this.a).canGoBack())) {
-      GdtBaseHalfScreenFragment.a(this.a).goBack();
-    }
-    for (;;)
+    paramView = paramView.getTag(2131381107);
+    if ((paramView != null) && ((paramView instanceof GdtAd)))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.a.getActivity() != null) {
-        this.a.getActivity().finish();
-      }
+      paramView = (GdtAd)paramView;
+      GdtReporter.doCgiReport(new acrv().a(paramView.getUrlForImpression()));
     }
   }
 }

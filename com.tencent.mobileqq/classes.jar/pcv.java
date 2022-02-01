@@ -1,82 +1,52 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.annotation.Nullable;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import java.io.File;
 
-class pcv
-  implements BusinessObserver
+public class pcv
+  implements ImageAssetDelegate
 {
-  pcv(pcu parampcu, BaseCommentData paramBaseCommentData) {}
+  public pcv(ReadInJoyLottieDrawable.3 param3) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  @Nullable
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    int i = 1;
-    if (paramBoolean) {}
+    Object localObject = paramLottieImageAsset.getFileName();
+    paramLottieImageAsset = pcs.a(this.a.this$0, this.a.a, "images");
+    if (paramLottieImageAsset != null) {}
     for (;;)
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label253;
-        }
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        paramInt = localWebSsoResponseBody.ret.get();
-        paramBundle = localWebSsoResponseBody.data.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyCommentSSOModule", 2, "deleteComment ret=" + paramBundle);
-        }
-        paramBundle = new JSONObject(paramBundle);
-        if (paramInt != 0)
-        {
-          paramBundle.optString("msg");
-          paramInt = 0;
-          i = paramInt;
-          if ((i == 0) && (pcu.a(this.jdField_a_of_type_Pcu) != null)) {
-            pcu.a(this.jdField_a_of_type_Pcu).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
-          }
-          return;
-        }
-        paramInt = paramBundle.optInt("ret");
-        if (paramInt != 0) {
-          break label253;
-        }
-        paramInt = i;
-        try
-        {
-          if (pcu.a(this.jdField_a_of_type_Pcu) == null) {
-            continue;
-          }
-          pcu.a(this.jdField_a_of_type_Pcu).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
-          paramInt = i;
-        }
-        catch (Exception paramBundle)
-        {
-          paramInt = 1;
-        }
+      paramLottieImageAsset = paramLottieImageAsset.getAbsolutePath() + "/" + (String)localObject;
+      localObject = (Bitmap)pcs.b().get(paramLottieImageAsset);
+      if (localObject == null) {
+        break;
       }
-      catch (Exception paramBundle)
-      {
-        paramInt = 0;
-        continue;
-      }
-      paramBundle.getLocalizedMessage();
-      paramBundle.printStackTrace();
-      i = paramInt;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ReadInJoyCommentSSOModule", 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
-        i = paramInt;
-        continue;
-        label253:
-        paramInt = 0;
-      }
+      return localObject;
+      paramLottieImageAsset = this.a.a[0];
     }
+    ThreadManager.excute(new ReadInJoyLottieDrawable.3.1.1(this, paramLottieImageAsset), 64, null, true);
+    try
+    {
+      localObject = BitmapFactory.decodeFile(paramLottieImageAsset);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation path: " + paramLottieImageAsset);
+      return null;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation oom: " + paramLottieImageAsset);
+    }
+    return null;
   }
 }
 

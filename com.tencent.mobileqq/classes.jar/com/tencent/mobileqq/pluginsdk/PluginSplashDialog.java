@@ -13,7 +13,7 @@ public class PluginSplashDialog
   private Handler mHandler = new PluginSplashDialog.InternalHandler(this);
   private String mPluginApk;
   private String mPluginName;
-  private BroadcastReceiver mReceiver;
+  private BroadcastReceiver mReceiver = null;
   private int mTimeOut;
   
   public PluginSplashDialog(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2)

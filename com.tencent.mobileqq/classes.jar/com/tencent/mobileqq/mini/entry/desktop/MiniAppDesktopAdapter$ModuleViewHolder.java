@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
 import android.app.Activity;
-import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
@@ -16,7 +14,6 @@ import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppModuleExpos
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopAppModuleInfo;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.qphone.base.util.BaseApplication;
 import java.lang.ref.WeakReference;
 
 class MiniAppDesktopAdapter$ModuleViewHolder
@@ -31,19 +28,14 @@ class MiniAppDesktopAdapter$ModuleViewHolder
   {
     super(paramView);
     this.mActivityReference = new WeakReference(paramActivity);
-    this.mModuleText = ((TextView)paramView.findViewById(2131370972));
-    this.mMoreMiniApp = ((ImageView)paramView.findViewById(2131370971));
+    this.mModuleText = ((TextView)paramView.findViewById(2131371077));
+    this.mMoreMiniApp = ((ImageView)paramView.findViewById(2131371076));
   }
   
   public void update(DesktopAppModuleInfo paramDesktopAppModuleInfo)
   {
     this.mModuleText.setText(paramDesktopAppModuleInfo.moduleTitle);
     AppInterface localAppInterface = MiniAppUtils.getAppInterface();
-    if (localAppInterface != null)
-    {
-      this.mModuleText.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131167064));
-      this.mMoreMiniApp.setImageResource(2130850137);
-    }
     int j = paramDesktopAppModuleInfo.getModuleType();
     if ((j == 1) || (j == 2))
     {

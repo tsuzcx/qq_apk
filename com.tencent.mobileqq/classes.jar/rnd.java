@@ -1,23 +1,20 @@
-import android.view.ViewGroup;
-import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public abstract interface rnd
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class rnd
+  implements View.OnClickListener
 {
-  public abstract long a();
+  rnd(rmt paramrmt, VideoInfo paramVideoInfo, roq paramroq) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt, ISuperPlayer.OnSeekCompleteListener paramOnSeekCompleteListener);
-  
-  public abstract void a(String paramString, ViewGroup paramViewGroup);
-  
-  public abstract void a(rmy paramrmy);
-  
-  public abstract void a(rmz paramrmz, rnb paramrnb);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public final void onClick(View paramView)
+  {
+    rmt.a(this.jdField_a_of_type_Rmt, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_Roq);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

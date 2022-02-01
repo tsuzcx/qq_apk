@@ -1,63 +1,120 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Iterator;
 import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype2;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class adhv
-  implements View.OnClickListener
+  extends adic
 {
-  public adhv(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void onClick(View paramView)
+  private void a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder)
   {
-    bcst.b(this.a.app, "CliOper", "", "", "0X8004038", "0X8004038", 0, 0, String.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), "", "", "");
-    if (!aywm.a().a(this.a.app, this.a)) {}
-    for (;;)
+    if (QLog.isColorLevel()) {
+      paramStringBuilder.append("elemType:PokeMsg;\n");
+    }
+    paramList = paramList.iterator();
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      AccountManageActivity.a(this.a, bddy.a(this.a.app));
-      if (this.a.c)
+      if (!paramList.hasNext()) {
+        break;
+      }
+      paramStringBuilder = (im_msg_body.Elem)paramList.next();
+    } while (!paramStringBuilder.common_elem.has());
+    for (paramList = (im_msg_body.CommonElem)paramStringBuilder.common_elem.get();; paramList = null)
+    {
+      if (paramList == null)
       {
         if (QLog.isColorLevel()) {
-          QLog.i("AccountManage", 2, "onClick v.hashCode()" + paramView.hashCode());
+          QLog.d("PokeMsg", 2, "decodePBMsgElems_PokeMsg null commomElem!");
         }
+        return;
       }
-      else
+      paramStringBuilder = new MessageForPoke();
+      paramStringBuilder.msgtype = -5012;
+      if (paramList.uint32_business_type.has()) {
+        paramStringBuilder.interactType = paramList.uint32_business_type.get();
+      }
+      hummer_commelem.MsgElemInfo_servtype2 localMsgElemInfo_servtype2;
+      if (paramList.bytes_pb_elem.has()) {
+        localMsgElemInfo_servtype2 = new hummer_commelem.MsgElemInfo_servtype2();
+      }
+      for (;;)
       {
-        Object localObject = paramView.getTag();
-        if (localObject == null)
+        try
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("Switch_Account", 2, "switch a non-existing account");
+          localMsgElemInfo_servtype2.mergeFrom(paramList.bytes_pb_elem.get().toByteArray());
+          paramStringBuilder.msg = localMsgElemInfo_servtype2.bytes_poke_summary.get().toStringUtf8();
+          paramStringBuilder.doubleHitState = localMsgElemInfo_servtype2.uint32_double_hit.get();
+          if (!localMsgElemInfo_servtype2.uint32_vaspoke_id.has()) {
+            continue;
+          }
+          i = localMsgElemInfo_servtype2.uint32_vaspoke_id.get();
+          paramStringBuilder.subId = i;
+          if (!localMsgElemInfo_servtype2.bytes_vaspoke_name.has()) {
+            continue;
+          }
+          paramList = localMsgElemInfo_servtype2.bytes_vaspoke_name.get().toStringUtf8();
+          paramStringBuilder.name = paramList;
+          if (!localMsgElemInfo_servtype2.bytes_vaspoke_minver.has()) {
+            continue;
+          }
+          paramList = localMsgElemInfo_servtype2.bytes_vaspoke_minver.get().toStringUtf8();
+          paramStringBuilder.minVersion = paramList;
+          paramStringBuilder.strength = localMsgElemInfo_servtype2.uint32_poke_strength.get();
+          if (!localMsgElemInfo_servtype2.uint32_poke_flag.has()) {
+            continue;
+          }
+          i = localMsgElemInfo_servtype2.uint32_poke_flag.get();
+          paramStringBuilder.flag = i;
+          if (paramStringBuilder.interactType == 126) {
+            VasWebviewUtil.reportCommercialDrainage("", "poke", "receive", "", 0, 0, 0, "", String.valueOf(paramStringBuilder.subId), "none", "", "", "", "", 0, 0, 0, 0);
           }
         }
-        else
+        catch (Exception paramList)
         {
-          int i = ((Integer)localObject).intValue();
-          localObject = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(i);
-          if (QLog.isColorLevel()) {
-            QLog.d("Switch_Account", 2, "switch uin:" + ((SimpleAccount)localObject).getUin());
-          }
-          if ((localObject != null) && (!((SimpleAccount)localObject).getUin().equals(this.a.app.getCurrentAccountUin())))
-          {
-            bcst.b(this.a.app, "CliOper", "", "", "0X8009C05", "0X8009C05", 0, 0, "", "", "", "");
-            this.a.f();
-            this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = ((SimpleAccount)localObject);
-            AccountManageActivity.b(this.a, true);
-            AccountManageActivity.c(this.a, true);
-            bcst.b(this.a.app, "dc00898", "", "", "0X800AC38", "0X800AC38", 0, 0, "", "", "", "");
-            this.a.app.switchAccount((SimpleAccount)localObject, null);
-            bddx.a(this.a.app, this.a);
-          }
-          bgkc.b();
+          int i;
+          QLog.d("PokeMsg", 1, "decodePBMsgElems_PokeMsg exception!", paramList);
+          continue;
         }
+        paramList1.add(paramStringBuilder);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("PokeMsg", 2, "decodePbElems, common_elem type 2, interactType:" + paramStringBuilder.interactType + " ,doubleHitState:" + paramStringBuilder.doubleHitState);
+        return;
+        i = -1;
+        continue;
+        paramList = anzj.a(2131705546);
+        continue;
+        paramList = "";
+        continue;
+        i = 0;
       }
     }
+  }
+  
+  public int a()
+  {
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  {
+    a(paramList, paramList1, paramStringBuilder);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (2 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

@@ -1,8 +1,6 @@
-public class bbzm
-{
-  public int a;
-  public byte[] a;
-}
+public abstract interface bbzm
+  extends aoog
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

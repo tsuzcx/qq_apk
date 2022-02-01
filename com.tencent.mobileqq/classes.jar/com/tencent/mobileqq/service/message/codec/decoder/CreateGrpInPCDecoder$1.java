@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.service.message.codec.decoder;
 
-import anwd;
-import bbzq;
+import aoip;
+import bcsh;
 
 public class CreateGrpInPCDecoder$1
   implements Runnable
 {
-  public CreateGrpInPCDecoder$1(bbzq parambbzq, anwd paramanwd, String paramString) {}
+  public CreateGrpInPCDecoder$1(bcsh parambcsh, aoip paramaoip, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Anwd.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+    this.jdField_a_of_type_Aoip.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
   }
 }
 

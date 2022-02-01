@@ -1,23 +1,41 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.Response;
+
 class aaac
-  implements aajp
+  implements Callback
 {
-  aaac(aaab paramaaab, String paramString1, String paramString2) {}
+  aaac(zzz paramzzz, String paramString1, zzv paramzzv, boolean paramBoolean, String paramString2) {}
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public void onFailure(Call paramCall, IOException paramIOException)
   {
-    if (!paramBoolean2)
+    QLog.d("RFWDownloader", 1, "checkResource:" + this.jdField_a_of_type_JavaLangString + " onFailure");
+    this.jdField_a_of_type_Zzv.a(false, this.jdField_a_of_type_Boolean, false, this.b);
+  }
+  
+  public void onResponse(Call paramCall, Response paramResponse)
+  {
+    try
     {
-      this.jdField_a_of_type_Aaab.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0}" });
-      if (aaab.a(this.jdField_a_of_type_Aaab) == null)
+      paramCall = paramResponse.headers().get("X-COS-META-MD5");
+      if ((TextUtils.isEmpty(paramCall)) || (this.b.equals(paramCall)))
       {
-        aaab.a(this.jdField_a_of_type_Aaab, aanz.a());
-        aaab.a(this.jdField_a_of_type_Aaab).a();
+        QLog.d("RFWDownloader", 1, "checkResource:" + this.jdField_a_of_type_JavaLangString + " is up to date");
+        this.jdField_a_of_type_Zzv.a(true, this.jdField_a_of_type_Boolean, false, paramCall);
+        return;
       }
-      aaab.a(this.jdField_a_of_type_Aaab).i(paramString, this.b);
-      aaxb.a(paramString, "auth_follow", "clk_unfollow", 0, 0, new String[] { "", "", this.b });
+      QLog.d("RFWDownloader", 1, "checkResource:" + this.jdField_a_of_type_JavaLangString + " need update");
+      this.jdField_a_of_type_Zzv.a(true, this.jdField_a_of_type_Boolean, true, paramCall);
       return;
     }
-    aaxb.a(paramString, "auth_follow", "clk_cancel", 0, 0, new String[] { "", "", this.b });
+    catch (Throwable paramCall)
+    {
+      paramCall.printStackTrace();
+    }
   }
 }
 

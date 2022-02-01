@@ -1,6 +1,10 @@
 public abstract interface bhmo
 {
-  public abstract String[] getMultiNameSpace();
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString, long paramLong1, long paramLong2);
+  
+  public abstract void b(String paramString, int paramInt);
 }
 
 

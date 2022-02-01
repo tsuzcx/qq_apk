@@ -1,28 +1,71 @@
-import android.media.MediaFormat;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.ViewGroup;
 
 public class zga
+  extends zfy
 {
-  public int a;
-  public long a;
-  public MediaFormat a;
-  public String a;
-  public boolean a;
-  public int b = 1;
-  public String b;
-  public String c;
+  public final int c;
+  @NonNull
+  public final String c;
+  public final int d;
+  @NonNull
+  public final String d;
+  public final int e;
+  public final String e;
+  public final String f;
+  public final String g;
+  public final String h;
+  public final String i;
   
-  public zga()
+  public zga(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
+    super(paramInt1, paramString1, paramInt2);
+    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.jdField_d_of_type_JavaLangString = paramString3;
+    this.jdField_e_of_type_JavaLangString = paramString4;
+    this.f = paramString5;
+    this.g = paramString6;
+    this.h = paramString7;
+    this.i = paramString8;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_d_of_type_Int = paramInt4;
+    this.jdField_e_of_type_Int = paramInt5;
   }
   
-  public String toString()
+  @NonNull
+  public Class<? extends zfz> a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(128);
-    localStringBuilder.append("Image2result.result ").append("src: ").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("result ").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    return zgb.class;
+  }
+  
+  public String a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))) {
+      return "";
+    }
+    if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))) {
+      return this.jdField_c_of_type_JavaLangString + "，" + this.jdField_d_of_type_JavaLangString;
+    }
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      return this.jdField_c_of_type_JavaLangString;
+    }
+    if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
+      return this.jdField_d_of_type_JavaLangString;
+    }
+    return this.jdField_e_of_type_JavaLangString;
+  }
+  
+  @NonNull
+  public zfz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new zgb(this, paramContext, paramViewGroup);
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

@@ -1,18 +1,39 @@
-import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-class sny
-  implements PopupWindow.OnDismissListener
+public class sny
+  implements INetInfoHandler
 {
-  sny(snh paramsnh) {}
+  public sny(FastWebActivity paramFastWebActivity) {}
   
-  public void onDismiss()
+  public void onNetMobile2None()
   {
-    snh.a(this.a).a(1.0F);
-    if (this.a.b)
-    {
-      this.a.a.c();
-      this.a.b = false;
-    }
+    FastWebActivity.m(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    FastWebActivity.m(this.a);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    FastWebActivity.m(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    FastWebActivity.m(this.a);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    FastWebActivity.m(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    FastWebActivity.m(this.a);
   }
 }
 

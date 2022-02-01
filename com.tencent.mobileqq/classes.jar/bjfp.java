@@ -1,20 +1,67 @@
-import android.view.View;
-import com.tencent.qidian.PhotoWallViewForQiDianProfile;
-import com.tencent.widget.AdapterView;
-import java.util.List;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class bjfp
-  implements bkij
+  extends WebViewPlugin
 {
-  public bjfp(PhotoWallViewForQiDianProfile paramPhotoWallViewForQiDianProfile) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public bjfp()
   {
-    paramAdapterView = (bjhe)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (this.a.jdField_a_of_type_Bjfs == null) {
-      return;
+    this.mPluginNameSpace = "floatingWindow";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenPlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
     }
-    this.a.jdField_a_of_type_Bjfs.a(paramAdapterView);
+    if ("floatingWindow".equals(paramString2))
+    {
+      if ("show".equals(paramString3))
+      {
+        bjfr.a(BaseApplication.getContext(), true, 16);
+        return true;
+      }
+      if ("hide".equals(paramString3))
+      {
+        bjfr.a(BaseApplication.getContext(), false, 16);
+        return true;
+      }
+      if ("close".equals(paramString3))
+      {
+        bjfr.a(BaseApplicationImpl.getContext(), 16);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenPlugin", 2, "onActivityResult requestCode=" + paramByte + "  resultCode=" + paramInt);
+    }
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenPlugin", 2, "onCreate");
+    }
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenPlugin", 2, "onDestroy");
+    }
   }
 }
 

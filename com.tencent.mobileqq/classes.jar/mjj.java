@@ -1,28 +1,93 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.ui.VideoControlUI;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class mjj
-  extends Handler
+public abstract class mjj
 {
-  public mjj(VideoControlUI paramVideoControlUI, Looper paramLooper)
+  Context a;
+  public VideoAppInterface a;
+  
+  protected mjj(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    QLog.d("ScreenLayout", 1, "ScreenLayout. onCreate." + this);
   }
   
-  public void handleMessage(Message paramMessage)
+  public static mjj a(Context paramContext, VideoAppInterface paramVideoAppInterface, int paramInt, boolean paramBoolean)
   {
-    String str = (String)paramMessage.obj;
-    switch (paramMessage.what)
+    Object localObject = null;
+    switch (paramInt)
     {
     default: 
-      return;
-    case 256: 
-      maf.a(this.a.a, 1037, str);
-      return;
+      paramContext = localObject;
     }
-    maf.a(this.a.a, 1036, str);
+    for (;;)
+    {
+      return paramContext;
+      if (paramBoolean)
+      {
+        try
+        {
+          paramContext = new mjp(paramContext, paramVideoAppInterface);
+          continue;
+        }
+        finally {}
+      }
+      else
+      {
+        paramContext = new mjm(paramContext, paramVideoAppInterface);
+        continue;
+        if (paramBoolean)
+        {
+          paramContext = new mjo(paramContext, paramVideoAppInterface);
+        }
+        else
+        {
+          paramContext = new mjk(paramContext, paramVideoAppInterface);
+          continue;
+          if (paramBoolean)
+          {
+            paramContext = new mjp(paramContext, paramVideoAppInterface);
+          }
+          else
+          {
+            paramContext = new mjl(paramContext, paramVideoAppInterface);
+            continue;
+            if (paramBoolean) {
+              paramContext = new mjp(paramContext, paramVideoAppInterface);
+            } else {
+              paramContext = new mjn(paramContext, paramVideoAppInterface);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public abstract int a();
+  
+  public void a()
+  {
+    QLog.d("ScreenLayout", 1, "ScreenLayout. onDestroy." + this);
+    this.jdField_a_of_type_AndroidContentContext = null;
+  }
+  
+  public void a(int paramInt, Rect paramRect1, Rect paramRect2, ConcurrentHashMap<Long, mma> paramConcurrentHashMap) {}
+  
+  public void a(lff paramlff, mep[] paramArrayOfmep, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4) {}
+  
+  public void a(mep[] paramArrayOfmep, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
+  
+  public void a(mep[] paramArrayOfmep, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public abstract boolean a();
+  
+  public boolean b()
+  {
+    return a() == 2;
   }
 }
 

@@ -1,30 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
 
 class bdsa
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bdsa(bdry parambdry) {}
+  bdsa(bdrz parambdrz, LinearLayout paramLinearLayout) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    switch (((bdrj)paramView.getTag()).b)
-    {
-    }
-    for (;;)
-    {
-      this.a.dismiss();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.d();
-      continue;
-      this.a.e();
-      continue;
-      this.a.f();
-      continue;
-      this.a.g();
-    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    bdrz.a(this.jdField_a_of_type_Bdrz, this.jdField_a_of_type_AndroidWidgetLinearLayout);
   }
 }
 

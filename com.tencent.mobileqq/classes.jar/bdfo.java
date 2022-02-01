@@ -1,4 +1,7 @@
-public class bdfo {}
+public abstract interface bdfo
+{
+  public abstract void a(int paramInt);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

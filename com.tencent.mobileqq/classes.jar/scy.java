@@ -1,29 +1,32 @@
-import android.app.Activity;
-import android.content.res.Resources;
 import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class scy
-  implements spt
+public class scy
+  implements View.OnClickListener
 {
-  scy(scw paramscw, VideoInfo paramVideoInfo, JSONObject paramJSONObject) {}
+  long jdField_a_of_type_Long = 0L;
   
-  public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public scy(BaseTabbar paramBaseTabbar, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    paramView = pha.a();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) {
-      pmh.a().a(Long.valueOf(paramView).longValue(), sce.a(this.jdField_a_of_type_Scw.a).a.makeDislikeParam(paramArrayList, sce.a(this.jdField_a_of_type_Scw.a).g));
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 300L)
+    {
+      this.jdField_a_of_type_Long = 0L;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a.a(this.jdField_a_of_type_Int);
+      }
     }
-    QQToast.a(sce.a(this.jdField_a_of_type_Scw.a), -1, sce.a(this.jdField_a_of_type_Scw.a).getString(2131698480), 0).b(sce.a(this.jdField_a_of_type_Scw.a).getResources().getDimensionPixelSize(2131298998));
-    sce.a(this.jdField_a_of_type_Scw.a).dismiss();
-    sce.b(this.jdField_a_of_type_Scw.a, false);
-    oat.b(null, null, "0X800913C", "0X800913C", 0, 0, null, null, null, new skc(och.a(null, null, null, null, this.jdField_a_of_type_OrgJsonJSONObject)).h(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g).a(paramArrayList).a().a(), false);
-    return true;
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.setSelectedTab(this.jdField_a_of_type_Int, true);
+    }
   }
 }
 

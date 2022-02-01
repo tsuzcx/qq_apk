@@ -1,8 +1,12 @@
 public abstract interface bhuq
 {
-  public abstract void a(float paramFloat1, float paramFloat2);
+  public abstract bhur a(float paramFloat1, float paramFloat2);
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void a(bhur parambhur, float paramFloat1, float paramFloat2);
+  
+  public abstract void a(bhus parambhus, bhur parambhur, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean a(bhur parambhur, float paramFloat1, float paramFloat2);
 }
 
 

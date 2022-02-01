@@ -1,43 +1,62 @@
-public class lka
+import java.util.Comparator;
+
+class lka
+  implements Comparator<lkb>
 {
-  public static String a;
-  private lkb jdField_a_of_type_Lkb = new lkb(this);
-  private lkj jdField_a_of_type_Lkj = new lkj(this);
+  lka(ljz paramljz) {}
   
-  static
+  public int a(lkb paramlkb1, lkb paramlkb2)
   {
-    jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public int a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Lkj != null) {
-      return this.jdField_a_of_type_Lkj.a(paramArrayOfByte);
+    int j = -1;
+    int i;
+    if (paramlkb1 == paramlkb2) {
+      i = 0;
     }
-    return -1;
-  }
-  
-  public lkc a()
-  {
-    lkc locallkc = null;
-    if (this.jdField_a_of_type_Lkj != null) {
-      locallkc = this.jdField_a_of_type_Lkj.a();
-    }
-    return locallkc;
-  }
-  
-  public void a(long paramLong, lkk paramlkk)
-  {
-    this.jdField_a_of_type_Lkb.a(paramLong, paramlkk);
-  }
-  
-  public byte[] a()
-  {
-    byte[] arrayOfByte = null;
-    if (this.jdField_a_of_type_Lkb != null) {
-      arrayOfByte = this.jdField_a_of_type_Lkb.a();
-    }
-    return arrayOfByte;
+    label99:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return i;
+              i = j;
+            } while (paramlkb1 == null);
+            if (paramlkb2 == null) {
+              return 1;
+            }
+            if ((!paramlkb1.a()) || (!paramlkb2.a())) {
+              break label99;
+            }
+            if (paramlkb1.d == paramlkb2.d) {
+              break;
+            }
+            i = j;
+          } while (paramlkb2.d > paramlkb1.d);
+          return 1;
+          if (paramlkb1.b == paramlkb2.b) {
+            break;
+          }
+          i = j;
+        } while (paramlkb2.b > paramlkb1.b);
+        return 1;
+        return 0;
+        i = j;
+      } while (paramlkb1.a());
+      if (paramlkb2.a()) {
+        return 1;
+      }
+      if (paramlkb1.b == paramlkb2.b) {
+        break;
+      }
+      i = j;
+    } while (paramlkb2.b > paramlkb1.b);
+    return 1;
+    return 0;
   }
 }
 

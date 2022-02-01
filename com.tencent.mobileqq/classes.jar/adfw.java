@@ -1,82 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class adfw
-  implements DialogInterface.OnCancelListener, DialogInterface.OnClickListener
+public class adfw
+  implements adci
 {
-  adea a;
-  
-  public adfw(adea paramadea)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    this.a = paramadea;
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    paramDialogInterface = new JSONObject();
-    try
-    {
-      paramDialogInterface.put("confirm", false);
-      paramDialogInterface.put("cancel", true);
-      adhh.a(this.a, paramDialogInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("qqprotect.alert.push", 2, "get a push message for sec svc handler, 0xc6");
+    }
+    paramQQAppInterface = (aohe)paramQQAppInterface.a(34);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(paramMsgType0x210.uSubMsgType, paramMsgType0x210.vProtobuf);
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    catch (JSONException paramDialogInterface)
-    {
-      String str = paramDialogInterface.getMessage();
-      if (QLog.isColorLevel()) {
-        QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
-      }
-      adea localadea = this.a;
-      paramDialogInterface = str;
-      if (str == null) {
-        paramDialogInterface = "";
-      }
-      adhh.a(localadea, -1, paramDialogInterface);
-    }
+    QLog.d("qqprotect.alert.push", 2, "failed to get sec svc handler, 0xc6");
   }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    boolean bool2 = true;
-    paramDialogInterface = new JSONObject();
-    boolean bool1;
-    if (paramInt == 1) {
-      bool1 = true;
-    }
-    try
-    {
-      paramDialogInterface.put("confirm", bool1);
-      if (paramInt != 1) {}
-      for (bool1 = bool2;; bool1 = false)
-      {
-        paramDialogInterface.put("cancel", bool1);
-        adhh.a(this.a, paramDialogInterface);
-        return;
-        bool1 = false;
-        break;
-      }
-      String str;
-      adea localadea;
-      return;
-    }
-    catch (JSONException paramDialogInterface)
-    {
-      str = paramDialogInterface.getMessage();
-      if (QLog.isColorLevel()) {
-        QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
-      }
-      localadea = this.a;
-      paramDialogInterface = str;
-      if (str == null) {
-        paramDialogInterface = "";
-      }
-      adhh.a(localadea, -1, paramDialogInterface);
-    }
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

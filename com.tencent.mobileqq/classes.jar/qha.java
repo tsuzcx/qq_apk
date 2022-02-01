@@ -1,115 +1,111 @@
-import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class qha
-  implements ViewBase.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private pxk jdField_a_of_type_Pxk;
-  private int b;
-  private int c;
+  private static volatile qha jdField_a_of_type_Qha;
+  private boolean jdField_a_of_type_Boolean;
   
-  public qha(pxk parampxk, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  private List<Integer> a(String paramString)
   {
-    this.jdField_a_of_type_Pxk = parampxk;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
-  }
-  
-  private int a(int paramInt)
-  {
-    switch (paramInt)
+    if (TextUtils.isEmpty(paramString))
     {
-    case 1112: 
-    default: 
-      return 0;
-    case 1113: 
-      return 1;
+      paramString = new ArrayList();
+      return paramString;
     }
-    return 2;
-  }
-  
-  public void a()
-  {
-    int k = this.jdField_a_of_type_Int;
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pxk.a();
-    int i;
-    if (localArticleInfo != null)
+    String[] arrayOfString = paramString.split("\\.");
+    ArrayList localArrayList = new ArrayList();
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
     {
-      if (!localArticleInfo.hasChannelInfo()) {
-        break label142;
+      paramString = localArrayList;
+      if (i >= j) {
+        break;
       }
-      i = localArticleInfo.mChannelInfoId;
-      if (!TextUtils.isEmpty(localArticleInfo.mArticleFriendLikeText)) {
-        break label147;
-      }
-    }
-    label142:
-    label147:
-    for (int j = 0;; j = 1)
-    {
-      String str = pha.d(localArticleInfo);
-      oat.a(null, "CliOper", "", localArticleInfo.mSubscribeID, "0X8007625", "0X8007625", 0, 0, Long.toString(localArticleInfo.mFeedId), Long.toString(localArticleInfo.mArticleID), Integer.toString(localArticleInfo.mStrategyId), pha.a(localArticleInfo.mAlgorithmID, pha.a(localArticleInfo), k, i, j, bgnt.h(this.jdField_a_of_type_AndroidContentContext), str, localArticleInfo.mStrCircleId, localArticleInfo.innerUniqueID, pha.f(localArticleInfo), localArticleInfo), false);
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if ((this.jdField_a_of_type_Pxk == null) || (this.jdField_a_of_type_Pxk.a() == null) || (this.jdField_a_of_type_Pxk.a().mSmallMiniGameInfo == null)) {
-      return;
-    }
-    String str = "";
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pxk.a();
-    switch (this.c)
-    {
-    default: 
-      paramViewBase = "";
-    case 1115: 
-    case 1112: 
-    case 1113: 
-    case 1114: 
-      for (;;)
+      paramString = arrayOfString[i];
+      try
       {
-        if ((!TextUtils.isEmpty(paramViewBase)) && (!TextUtils.isEmpty(str)) && (!MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidContentContext, paramViewBase, 2103, null)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("OnSmallGameCardClickListener", 0, "mini game url error jump by appid url = " + paramViewBase);
-          }
-          MiniAppLauncher.launchMiniAppById(this.jdField_a_of_type_AndroidContentContext, str, null, null, null, null, 2103);
-        }
-        a();
-        return;
-        nxw.a(this.jdField_a_of_type_AndroidContentContext, localArticleInfo, this.jdField_a_of_type_Pxk.h(), this.b, nxw.jdField_a_of_type_Int);
-        paramViewBase = localArticleInfo.mSmallMiniGameInfo.b(this.b);
-        str = localArticleInfo.mSmallMiniGameInfo.a(this.b);
-        continue;
-        int i = a(this.c);
-        nxw.a(this.jdField_a_of_type_AndroidContentContext, localArticleInfo, this.jdField_a_of_type_Pxk.h(), i, nxw.jdField_a_of_type_Int);
-        paramViewBase = localArticleInfo.mSmallMiniGameInfo.b(i);
-        str = localArticleInfo.mSmallMiniGameInfo.a(i);
+        localArrayList.add(Integer.valueOf(Integer.parseInt(paramString)));
+        i += 1;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("PTSSoLoader", 1, "[getVersionList] error, e = " + paramString);
       }
     }
-    nwu localnwu = new nwu().a(501L).b(50101L).c(5010105L).d(9L);
-    if (localArticleInfo.mSmallMiniGameInfo.a()) {}
-    for (paramViewBase = "3";; paramViewBase = "2")
+    return new ArrayList();
+  }
+  
+  public static qha a()
+  {
+    if (jdField_a_of_type_Qha == null) {}
+    try
     {
-      paramViewBase = localnwu.h(paramViewBase).i(String.valueOf(this.b)).a();
-      nxw.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
-      pha.d(this.jdField_a_of_type_AndroidContentContext, localArticleInfo.mSmallMiniGameInfo.a);
-      paramViewBase = "";
-      break;
+      if (jdField_a_of_type_Qha == null) {
+        jdField_a_of_type_Qha = new qha();
+      }
+      return jdField_a_of_type_Qha;
     }
+    finally {}
+  }
+  
+  private void a(String paramString1, int paramInt, String paramString2)
+  {
+    paramString1 = new qhz().a("name", paramString1).a("resCode", "" + paramInt).a("version", paramString2).a();
+    if (paramInt == 0)
+    {
+      qhy.a("0X800A832", "", "", "", paramString1);
+      return;
+    }
+    qhy.a("0X800A833", "", "", "", paramString1);
+  }
+  
+  private boolean a(String paramString1, String paramString2)
+  {
+    QLog.i("PTSSoLoader", 1, "[isVersionValid], currentVersion = " + paramString1 + ", supportMinVersion = " + paramString2);
+    List localList = a(paramString1);
+    paramString2 = a(paramString2);
+    if (paramString1.length() <= 0)
+    {
+      QLog.i("PTSSoLoader", 1, "[isVersionValid] false, currentVersion = " + paramString1);
+      return false;
+    }
+    int j = Math.min(localList.size(), paramString2.size());
+    int i = 0;
+    while (i < j)
+    {
+      if (((Integer)localList.get(i)).intValue() < ((Integer)paramString2.get(i)).intValue())
+      {
+        QLog.i("PTSSoLoader", 1, "[isVersionValid] = false");
+        return false;
+      }
+      if (((Integer)localList.get(i)).intValue() > ((Integer)paramString2.get(i)).intValue())
+      {
+        QLog.i("PTSSoLoader", 1, "[isVersionValid] = true");
+        return true;
+      }
+      i += 1;
+    }
+    if (localList.size() >= paramString2.size()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("PTSSoLoader", 1, "[isVersionValid] = " + bool);
+      return bool;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.i("PTSSoLoader", 1, "[load], name = " + paramString);
+    bdgx.a().a(paramString, new qhb(this, paramString));
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

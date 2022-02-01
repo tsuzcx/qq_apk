@@ -1,37 +1,18 @@
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
-import com.tencent.widget.FadeIconImageView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nyx
-  implements qyx
+  implements View.OnClickListener
 {
-  public nyx(PublicAccountBrowser paramPublicAccountBrowser) {}
+  public nyx(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    this.a.a = paramBoolean;
-    PublicAccountBrowser.a(this.a);
-    if (paramBoolean)
-    {
-      this.a.b = paramString;
-      if ((PublicAccountBrowser.a(this.a) == null) || (PublicAccountBrowser.a(this.a).getVisibility() != 0))
-      {
-        PublicAccountBrowser.a(this.a).setImageResource(2130849435);
-        PublicAccountBrowser.a(this.a).setVisibility(0);
-        PublicAccountBrowser.a(this.a).setVisibility(8);
-      }
-      for (;;)
-      {
-        PublicAccountBrowser.b(this.a);
-        return;
-        PublicAccountBrowser.a(this.a).setImageResource(2130849520);
-        PublicAccountBrowser.a(this.a).setVisibility(0);
-        PublicAccountBrowser.a(this.a).setVisibility(0);
-      }
-    }
-    PublicAccountBrowser.a(this.a).setVisibility(8);
-    PublicAccountBrowser.a(this.a).setVisibility(0);
+    ReadInJoyNativeAdFragment.a(this.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

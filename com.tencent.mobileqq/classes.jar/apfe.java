@@ -1,7 +1,19 @@
-public class apfe
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.qphone.base.util.QLog;
+
+class apfe
+  implements MediaPlayer.OnErrorListener
 {
-  public static int a = bclx.a;
-  public static int b = bclx.b;
+  apfe(apfb paramapfb) {}
+  
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ARMusicController", 2, "ARMusicController, onError, what=" + paramInt1 + ", extra=" + paramInt2);
+    }
+    return false;
+  }
 }
 
 

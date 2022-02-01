@@ -1,10 +1,36 @@
-import android.graphics.Bitmap;
+import java.util.Random;
 
-public abstract interface bnif
+public class bnif
+  extends bnip
 {
-  public abstract void a(Bitmap paramBitmap);
+  protected int a;
+  protected Random a;
   
-  public abstract void b(int paramInt);
+  public bnif(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
+    this.jdField_a_of_type_Int = 1;
+    a(paramInt);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt < 1) {
+      i = 1;
+    }
+    this.jdField_a_of_type_Int = i;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_Int) < 1;
+  }
 }
 
 

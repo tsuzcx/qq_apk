@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history.tendoc;
 
-import bend;
+import bfmb;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
@@ -24,7 +24,7 @@ public class TencentDocItem
     }
     try
     {
-      paramArrayOfByte = bend.a(paramArrayOfByte);
+      paramArrayOfByte = bfmb.a(paramArrayOfByte);
       if (paramArrayOfByte == null) {
         break label32;
       }

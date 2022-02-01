@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import anks;
-import ankv;
-import ankw;
+import anwo;
+import anwr;
+import anws;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +19,10 @@ class DiscussionInfoCardActivity$5
     if (this.a) {}
     try
     {
-      ankv localankv = new ankv();
-      localankv.a = String.valueOf(DiscussionInfoCardActivity.a(this.this$0));
-      localankv.b = localArrayList.size();
-      DiscussionInfoCardActivity.a(this.this$0).a(localankv);
+      anwr localanwr = new anwr();
+      localanwr.a = String.valueOf(DiscussionInfoCardActivity.a(this.this$0));
+      localanwr.b = localArrayList.size();
+      DiscussionInfoCardActivity.a(this.this$0).a(localanwr);
       return;
     }
     catch (Exception localException)

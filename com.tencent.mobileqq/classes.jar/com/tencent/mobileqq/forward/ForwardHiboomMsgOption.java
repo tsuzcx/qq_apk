@@ -4,14 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import aufz;
-import auzk;
-import bgpa;
+import auxu;
+import avrl;
+import bhpc;
 import com.tencent.mobileqq.hiboom.HiBoomTextView;
 import java.util.Set;
 
 public class ForwardHiboomMsgOption
-  extends aufz
+  extends auxu
 {
   public ForwardHiboomMsgOption(Intent paramIntent)
   {
@@ -22,22 +22,22 @@ public class ForwardHiboomMsgOption
   {
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("key_hiboom_id");
     HiBoomTextView localHiBoomTextView = new HiBoomTextView(this.jdField_a_of_type_AndroidAppActivity);
-    localHiBoomTextView.setHiBoom(i, 0, auzk.jdField_a_of_type_Auzd);
+    localHiBoomTextView.setHiBoom(i, 0, avrl.jdField_a_of_type_Avre);
     localHiBoomTextView.setText(this.jdField_a_of_type_JavaLangString);
-    localHiBoomTextView.setMaxSize(auzk.jdField_a_of_type_Int);
+    localHiBoomTextView.setMaxSize(avrl.jdField_a_of_type_Int);
     localHiBoomTextView.setLayoutParams(new RelativeLayout.LayoutParams(500, 500));
     return localHiBoomTextView;
   }
   
   public void a()
   {
-    if (l()) {
+    if (m()) {
       this.jdField_a_of_type_JavaUtilSet.add(d);
     }
-    if (m()) {
+    if (n()) {
       this.jdField_a_of_type_JavaUtilSet.add(c);
     }
-    if (n()) {
+    if (o()) {
       this.jdField_a_of_type_JavaUtilSet.add(b);
     }
   }
@@ -50,7 +50,7 @@ public class ForwardHiboomMsgOption
   
   public void b()
   {
-    this.jdField_a_of_type_Bgpa.setMessage(null);
+    this.jdField_a_of_type_Bhpc.setMessage(null);
   }
   
   public boolean b()
@@ -58,7 +58,7 @@ public class ForwardHiboomMsgOption
     return true;
   }
   
-  public boolean i()
+  public boolean j()
   {
     return true;
   }

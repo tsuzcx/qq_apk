@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.scribble;
 
-import bbep;
-import bbeq;
-import bber;
+import bbxi;
+import bbxj;
+import bbxk;
 import com.tencent.mobileqq.data.MessageForScribble;
 
 public class ScribbleDownloader$1
   implements Runnable
 {
-  public ScribbleDownloader$1(bber parambber, bbeq parambbeq) {}
+  public ScribbleDownloader$1(bbxk parambbxk, bbxj parambbxj) {}
   
   public void run()
   {
-    bber.a(this.this$0, "dowmthreak", "start download ,uniseq:" + this.a.a.uniseq);
-    new bbep(this.this$0.a).a(this.a.a, null);
+    bbxk.a(this.this$0, "dowmthreak", "start download ,uniseq:" + this.a.a.uniseq);
+    new bbxi(this.this$0.a).a(this.a.a, null);
   }
 }
 

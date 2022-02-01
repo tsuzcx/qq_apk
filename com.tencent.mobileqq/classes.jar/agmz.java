@@ -1,54 +1,113 @@
 import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.support.annotation.IntRange;
+import android.support.annotation.Nullable;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.base.FriendShipLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public class agmz
-  implements agma
+public abstract class agmz
+  implements agne
 {
-  private BaseChatPie a;
+  private agnb jdField_a_of_type_Agnb = new agna(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
+  private FriendShipLayout jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout;
   
-  public agmz(BaseChatPie paramBaseChatPie)
+  public agmz(Context paramContext)
   {
-    this.a = paramBaseChatPie;
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseDirector", 2, "BaseDirector init");
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
+  }
+  
+  @Nullable
+  public static agne a(@IntRange(from=0L, to=3L) int paramInt, Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseDirector", 2, "makeDirector type = " + paramInt);
+    }
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return null;
+    case 1: 
+      return new agmo(paramActivity);
+    case 2: 
+      return new agmq(paramActivity);
+    }
+    return new agmu(paramActivity);
+  }
+  
+  public Context a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext;
+  }
+  
+  public FriendShipLayout a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseDirector", 2, "BaseDirector play");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout = new FriendShipLayout(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout.setBackListener(this.jdField_a_of_type_Agnb);
+      if (Build.VERSION.SDK_INT < 19) {
+        break label101;
+      }
+    }
+    label101:
+    for (int i = 67109888;; i = 1024)
+    {
+      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -1, 2, i, -2);
+      new FrameLayout.LayoutParams(-1, -1).gravity = 51;
+      this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout, localLayoutParams);
+      return;
+    }
   }
   
   public void a(int paramInt)
   {
-    switch (paramInt)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout.setVisibility(paramInt);
+    }
+  }
+  
+  public void a(agnf paramagnf) {}
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseDirector", 2, "BaseDirector cancel");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout.removeAllViews();
+    }
+    try
     {
-    default: 
+      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipLayout = null;
       return;
     }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.a != null)
+    catch (IllegalArgumentException localIllegalArgumentException)
     {
-      BaseActivity localBaseActivity = this.a.a();
-      localObject1 = localObject2;
-      if (localBaseActivity != null) {
-        localObject1 = localBaseActivity.getIntent();
+      for (;;)
+      {
+        QLog.e("BaseDirector", 1, "cancel anim error");
       }
     }
-    a((Intent)localObject1);
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    if ((paramIntent == null) || (this.a == null)) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = this.a.a;
-    } while ((localQQAppInterface == null) || (!paramIntent.getBooleanExtra("key_reactive_push_tip", false)));
-    bcst.b(localQQAppInterface, "dc00898", "", "", "0X800A1BF", "0X800A1BF", 0, 0, "", "", "", "");
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 3, 13 };
   }
 }
 

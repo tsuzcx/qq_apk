@@ -1,27 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfoTitle;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class rge
-  implements Parcelable.Creator<RecommendFollowInfoTitle>
+class rge
+  implements rft
 {
-  public RecommendFollowInfoTitle a(Parcel paramParcel)
-  {
-    boolean bool = true;
-    RecommendFollowInfoTitle localRecommendFollowInfoTitle = new RecommendFollowInfoTitle();
-    localRecommendFollowInfoTitle.title = paramParcel.readString();
-    if (paramParcel.readInt() == 1) {}
-    for (;;)
-    {
-      localRecommendFollowInfoTitle.isAllFollowed = bool;
-      return localRecommendFollowInfoTitle;
-      bool = false;
-    }
-  }
+  rge(rgb paramrgb, ColumnInfo paramColumnInfo) {}
   
-  public RecommendFollowInfoTitle[] a(int paramInt)
+  public void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    return new RecommendFollowInfoTitle[paramInt];
+    QLog.i("RIJUGC.ManageColumnPresenter", 2, "createTopic response errorCode = " + paramInt1 + ", errorMsg = " + paramString + ", bizCode = " + paramInt2 + ", topicId = " + paramInt3);
+    if (rgb.a(this.jdField_a_of_type_Rgb) == null) {
+      return;
+    }
+    rgb.a(this.jdField_a_of_type_Rgb).d();
+    if (paramInt1 == 0)
+    {
+      if (paramInt2 == 0)
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo.columnID = paramInt3;
+        rgb.a(this.jdField_a_of_type_Rgb).b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, true);
+        rgb.a(this.jdField_a_of_type_Rgb).a(2131717130);
+        rgb.a(this.jdField_a_of_type_Rgb).a();
+        return;
+      }
+      rgb.a(this.jdField_a_of_type_Rgb).b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, false);
+      if (!paramString.isEmpty())
+      {
+        rgb.a(this.jdField_a_of_type_Rgb).a(paramString);
+        return;
+      }
+      rgb.a(this.jdField_a_of_type_Rgb).a(2131717129);
+      return;
+    }
+    rgb.a(this.jdField_a_of_type_Rgb).b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, false);
+    rgb.a(this.jdField_a_of_type_Rgb).a(2131717129);
   }
 }
 

@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class awbm
-  implements View.OnClickListener
+public abstract interface awbm
 {
-  awbm(awbl paramawbl) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.a.b();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(long paramLong1, long paramLong2, int paramInt);
 }
 
 

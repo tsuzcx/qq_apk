@@ -1,39 +1,33 @@
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import java.io.File;
 
 class aiby
-  implements bkhw
+  implements bliz
 {
-  aiby(aibv paramaibv, bkho parambkho, ChatMessage paramChatMessage, String paramString) {}
+  aiby(aibr paramaibr, blir paramblir, AIOImageData paramAIOImageData, File paramFile) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Bkho.dismiss();
-    switch (paramInt)
+    if (paramView == null)
     {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
     }
-    do
+    paramView = this.jdField_a_of_type_Blir.a(paramInt);
+    if (paramView == null)
     {
+      this.jdField_a_of_type_Blir.dismiss();
       return;
-      this.jdField_a_of_type_Aibv.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.jdField_a_of_type_JavaLangString, false, 1);
+    }
+    if (TextUtils.isEmpty(paramView))
+    {
+      this.jdField_a_of_type_Blir.dismiss();
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i(this.jdField_a_of_type_Aibv.jdField_a_of_type_JavaLangString, 2, "del hot chat member onClick, uin=" + this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin);
-      }
-      if (!bgnt.d(BaseApplication.getContext()))
-      {
-        QQToast.a(this.jdField_a_of_type_Aibv.a(), this.jdField_a_of_type_Aibv.a().getString(2131693948), 0).b(this.jdField_a_of_type_Aibv.a().getTitleBarHeight());
-        return;
-      }
-    } while ((anno)this.jdField_a_of_type_Aibv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35) == null);
-    paramView = bglp.a(this.jdField_a_of_type_Aibv.a(), 230).setMessage(2131692884).setNegativeButton(2131690564, new aica(this)).setPositiveButton(2131690566, new aibz(this));
-    paramView.setTitle(2131692885);
-    paramView.show();
+    }
+    if (this.jdField_a_of_type_Aibr.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_JavaIoFile)) {}
+    this.jdField_a_of_type_Blir.dismiss();
   }
 }
 

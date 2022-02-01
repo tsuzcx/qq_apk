@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.subscribe.event.SharePanelShowStateEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aala
-  implements DialogInterface.OnDismissListener
+public class aala
+  implements View.OnClickListener
 {
-  aala(aakz paramaakz) {}
+  public aala(SubscribeHybirdFragment paramSubscribeHybirdFragment, aagc paramaagc) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    zwp.a().a(new SharePanelShowStateEvent(false));
+    this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeHybirdFragment.a(this.jdField_a_of_type_Aagc);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

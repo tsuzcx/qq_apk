@@ -1,44 +1,17 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class afsx
+  implements DialogInterface.OnClickListener
 {
-  public static long a(long paramLong)
-  {
-    Calendar localCalendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
-    localCalendar.setTimeInMillis(paramLong);
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    return localCalendar.getTimeInMillis();
-  }
+  public afsx(TroopInfoActivity paramTroopInfoActivity, boolean paramBoolean) {}
   
-  public static String a(long paramLong, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE).format(new Date(paramLong));
-      return paramString;
+    if (this.jdField_a_of_type_Boolean) {
+      bdll.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
     }
-    catch (Exception paramString) {}
-    return "";
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return a(paramLong, "yyyy-MM-dd");
-  }
-  
-  private static boolean a(long paramLong, String paramString)
-  {
-    Date localDate = new Date(paramLong);
-    paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE);
-    return paramString.format(localDate).equals(paramString.format(new Date(NetConnInfoCenter.getServerTimeMillis())));
   }
 }
 

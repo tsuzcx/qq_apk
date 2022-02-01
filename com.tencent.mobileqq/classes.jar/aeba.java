@@ -1,91 +1,18 @@
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
-public class aeba
-  extends WtloginObserver
+public final class aeba
+  implements DialogInterface.OnClickListener
 {
-  public aeba(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
+  public aeba(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, Map paramMap) {}
   
-  public void OnCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt + " time=" + paramLong);
-      if (paramArrayOfByte2 == null) {}
-    }
-    try
-    {
-      paramString = new String(paramArrayOfByte2, "utf-8");
-      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode errMsg=" + paramString);
-      this.a.c();
-      if (DevlockQuickLoginActivity.a(this.a)) {
-        return;
-      }
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-      if (paramInt == 0)
-      {
-        QQToast.a(this.a.getApplicationContext(), 2, 2131691851, 0).b(DevlockQuickLoginActivity.a(this.a));
-        DevlockQuickLoginActivity.a(this.a);
-        DevlockQuickLoginActivity.a(this.a, 0, 2130772001);
-        return;
-      }
-      if (paramInt == 21)
-      {
-        paramString = this.a.getString(2131691848);
-        paramArrayOfByte1 = this.a.getString(2131718286);
-        this.a.a(null, paramString, paramArrayOfByte1, new aebb(this));
-        return;
-      }
-      paramString = DevlockQuickLoginActivity.a(this.a, 2131691849);
-      QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(DevlockQuickLoginActivity.b(this.a));
-    }
-  }
-  
-  public void OnException(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DevlockQuickLoginActivity", 2, "OnException e=" + paramString);
-    }
-    this.a.c();
-    QQToast.a(DevlockQuickLoginActivity.b(this.a), 1, this.a.getString(2131691850), 0).b(DevlockQuickLoginActivity.d(this.a));
-  }
-  
-  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DevlockQuickLoginActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
-    }
-    if (DevlockQuickLoginActivity.b(this.a))
-    {
-      this.a.c();
-      return;
-    }
-    if (paramInt == 0)
-    {
-      this.a.b();
-      return;
-    }
-    this.a.c();
-    if (paramInt == 21)
-    {
-      paramString = this.a.getString(2131691848);
-      paramArrayOfByte1 = this.a.getString(2131718286);
-      this.a.a(null, paramString, paramArrayOfByte1, new aebc(this));
-      return;
-    }
-    paramString = this.a.getString(2131691849);
-    QQToast.a(DevlockQuickLoginActivity.a(this.a), 1, paramString, 0).b(DevlockQuickLoginActivity.c(this.a));
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilMap);
   }
 }
 

@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import anmw;
-import anni;
-import aufw;
-import aufz;
-import bgjw;
-import bgpa;
+import anyw;
+import anzj;
+import auxr;
+import auxu;
+import bhjx;
+import bhpc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
@@ -18,10 +18,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import nmp;
+import nok;
 
 public class ForwardH5PTVOption
-  extends aufz
+  extends auxu
 {
   protected ResultReceiver a;
   
@@ -34,16 +34,16 @@ public class ForwardH5PTVOption
   public List<RecentUser> a(List<RecentUser> paramList)
   {
     ArrayList localArrayList = new ArrayList();
-    anmw localanmw = (anmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    anyw localanyw = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
     int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("choose_friend_h5_type", 0);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && ((localRecentUser.getType() != 1006) || (a(aufw.h))) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 7000)) {
-        if ((localRecentUser.getType() == 0) && (!bgjw.a(localRecentUser.uin)) && (!bgjw.c(localRecentUser.uin)) && (!nmp.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))
+      if ((localRecentUser != null) && ((localRecentUser.getType() != 1006) || (a(auxr.h))) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 7000)) {
+        if ((localRecentUser.getType() == 0) && (!bhjx.a(localRecentUser.uin)) && (!bhjx.c(localRecentUser.uin)) && (!nok.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))
         {
-          if ((localanmw != null) && (localanmw.b(localRecentUser.uin)) && ((i == 1) || (i == 13))) {
+          if ((localanyw != null) && (localanyw.b(localRecentUser.uin)) && ((i == 1) || (i == 13))) {
             localArrayList.add(localRecentUser);
           }
         }
@@ -69,7 +69,7 @@ public class ForwardH5PTVOption
     if (QLog.isColorLevel()) {
       QLog.d("h5ptv", 2, "bType=" + i);
     }
-    if ((i == 1) && (n())) {
+    if ((i == 1) && (o())) {
       this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
     }
     if (i == 4) {
@@ -93,7 +93,7 @@ public class ForwardH5PTVOption
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_Bgpa != null) && (this.jdField_a_of_type_Bgpa.isShowing())) {
+    if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {
       return;
     }
     ArrayList localArrayList1 = new ArrayList();
@@ -161,7 +161,7 @@ public class ForwardH5PTVOption
     String str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("choose_friend_title");
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = anni.a(2131703550);
+      str1 = anzj.a(2131703657);
     }
     return str1;
   }

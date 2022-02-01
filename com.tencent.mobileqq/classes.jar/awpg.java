@@ -1,8 +1,15 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface awpg
+class awpg
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, RecentBaseData paramRecentBaseData);
+  awpg(awpf paramawpf, bhpc parambhpc) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bhpc.dismiss();
+  }
 }
 
 

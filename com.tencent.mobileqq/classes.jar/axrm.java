@@ -1,101 +1,58 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.13.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import org.json.JSONObject;
 
-public class axrm
-  extends anmu
+class axrm
+  implements ServiceConnection
 {
-  public axrm(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  axrm(axrl paramaxrl) {}
   
-  public void a()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    boolean bool = this.a.g;
-    anmw localanmw = (anmw)this.a.app.getManager(51);
-    if (localanmw != null) {
-      bool = localanmw.b(NearbyPeopleProfileActivity.a(this.a).uin);
-    }
-    for (;;)
+    axrl.a(this.a, axqt.a(paramIBinder));
+    try
     {
-      if (bool != this.a.g)
+      axrl.a(this.a).a(axrl.a(this.a));
+      if (axrl.a(this.a) != null)
       {
-        this.a.g = bool;
-        this.a.runOnUiThread(new NearbyPeopleProfileActivity.13.1(this));
+        paramComponentName = new JSONObject();
+        paramComponentName.put("code", "0");
+        axrl.a(this.a).a(paramComponentName);
+        axrl.a(this.a, null);
       }
       return;
     }
-  }
-  
-  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
-  {
-    if ((paramSetting == null) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!NearbyPeopleProfileActivity.a(this.a).uin.equals(paramSetting.uin))) {
-      return;
-    }
-    if ((paramSetting.bFaceFlags & 0x20) != 0) {
-      this.a.l = 0;
-    }
-    for (;;)
+    catch (Exception paramComponentName)
     {
-      this.a.b = paramSetting.url;
-      if (NearbyPeopleProfileActivity.a(this.a) != null) {
-        NearbyPeopleProfileActivity.a(this.a).k();
+      paramComponentName.printStackTrace();
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    try
+    {
+      if (axrl.a(this.a) != null) {
+        axrl.a(this.a).b(axrl.a(this.a));
       }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("Q.nearby_people_card.", 2, "onGetHeadInfo mheadSize is: " + this.a.l + " mGetHeadUrl is: " + this.a.b);
-      return;
-      if ((paramSetting.bFaceFlags & 0x10) != 0) {
-        this.a.l = 640;
-      } else if ((paramSetting.bFaceFlags & 0x8) != 0) {
-        this.a.l = 140;
-      } else if ((paramSetting.bFaceFlags & 0x4) != 0) {
-        this.a.l = 100;
-      } else {
-        this.a.l = 40;
+      if (axrl.a(this.a) != null)
+      {
+        paramComponentName = new JSONObject();
+        paramComponentName.put("code", "1");
+        axrl.a(this.a).a(paramComponentName);
+        axrl.a(this.a, null);
       }
     }
-  }
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
-  {
-    if ((!paramBoolean1) || (!paramBoolean2) || (!paramBoolean3) || (TextUtils.isEmpty(paramString))) {}
-    while ((this.a.e != 3) || (this.a.g) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin))) {
-      return;
+    catch (Exception paramComponentName)
+    {
+      for (;;)
+      {
+        paramComponentName.printStackTrace();
+      }
     }
-    a();
-  }
-  
-  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    while ((this.a.e != 3) || (this.a.g) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin))) {
-      return;
-    }
-    a();
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((!paramBoolean1) || (!paramBoolean2)) {}
-    while ((this.a.e != 3) || (NearbyPeopleProfileActivity.a(this.a) == null) || (TextUtils.isEmpty(NearbyPeopleProfileActivity.a(this.a).uin))) {
-      return;
-    }
-    a();
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onUpdateStangerHead: " + paramBoolean1 + "isStrangerHead: " + paramBoolean2);
-    }
-    if ((paramBoolean1) && (!TextUtils.isEmpty(paramString)) && (NearbyPeopleProfileActivity.a(this.a) != null) && (paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin)) && (paramBoolean2) && ((this.a.l == 640) || (this.a.l == 0)) && (!TextUtils.isEmpty(this.a.b)) && (!this.a.h)) {
-      this.a.a(paramString, this.a.l, this.a.b, true);
-    }
+    axrl.a(this.a, null);
   }
 }
 

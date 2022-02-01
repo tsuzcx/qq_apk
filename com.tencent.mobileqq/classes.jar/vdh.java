@@ -1,16 +1,18 @@
+import mqq.app.QQPermissionCallback;
+
 class vdh
-  implements vix
+  implements QQPermissionCallback
 {
-  vdh(vde paramvde) {}
+  vdh(vda paramvda) {}
   
-  public void a(int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.b("rich_meida_download_progress", Integer.valueOf(paramInt));
+    vda.a(this.a);
   }
   
-  public void a(boolean paramBoolean)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.b("rich_media_download_status", Boolean.valueOf(paramBoolean));
+    vda.d(this.a);
   }
 }
 

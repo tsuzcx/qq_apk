@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
-import bgnt;
-import bluv;
-import bluw;
+import bhnv;
+import bmvx;
+import bmvy;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -26,14 +26,14 @@ public class QzoneVideoSoDownloadModule
     super(paramString);
   }
   
-  public static ResultReceiver a(bluv parambluv)
+  public static ResultReceiver a(bmvx parambmvx)
   {
-    Object localObject = new QzoneVideoSoDownloadModule.QzoneVideoSoDownloadResultReceiver(parambluv);
-    parambluv = Parcel.obtain();
-    ((QzoneVideoSoDownloadModule.QzoneVideoSoDownloadResultReceiver)localObject).writeToParcel(parambluv, 0);
-    parambluv.setDataPosition(0);
-    localObject = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(parambluv);
-    parambluv.recycle();
+    Object localObject = new QzoneVideoSoDownloadModule.QzoneVideoSoDownloadResultReceiver(parambmvx);
+    parambmvx = Parcel.obtain();
+    ((QzoneVideoSoDownloadModule.QzoneVideoSoDownloadResultReceiver)localObject).writeToParcel(parambmvx, 0);
+    parambmvx.setDataPosition(0);
+    localObject = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(parambmvx);
+    parambmvx.recycle();
     return localObject;
   }
   
@@ -77,7 +77,7 @@ public class QzoneVideoSoDownloadModule
     if ("action_download_avcodec".equals(paramString))
     {
       QLog.i("QzoneVideoSoDownloadModule", 1, "try download libavcodec");
-      if ((bgnt.g(null)) && (paramBundle != null))
+      if ((bhnv.g(null)) && (paramBundle != null))
       {
         paramString = (ResultReceiver)paramBundle.getParcelable("key_download_result_receiver");
         if (paramString == null)
@@ -85,7 +85,7 @@ public class QzoneVideoSoDownloadModule
           QLog.e("QzoneVideoSoDownloadModule", 1, "receiver == null");
           return EIPCResult.createResult(-1, null);
         }
-        ShortVideoResourceManager.b((QQAppInterface)localObject, new bluw(this, (QQAppInterface)localObject, paramString));
+        ShortVideoResourceManager.b((QQAppInterface)localObject, new bmvy(this, (QQAppInterface)localObject, paramString));
         return EIPCResult.createResult(0, new Bundle());
       }
       return EIPCResult.createResult(-1, null);

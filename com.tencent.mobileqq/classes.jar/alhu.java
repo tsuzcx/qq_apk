@@ -1,42 +1,24 @@
-import android.app.Activity;
-import android.content.res.Resources;
+import VACDReport.ReportRsp;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 class alhu
-  implements alhv
+  implements BusinessObserver
 {
-  alhu(alhr paramalhr, alhv paramalhv) {}
+  alhu(alhs paramalhs) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    alhr.a(this.jdField_a_of_type_Alhr, new biau(alhr.a(this.jdField_a_of_type_Alhr), alhr.a(this.jdField_a_of_type_Alhr).getResources().getDimensionPixelSize(2131298998)));
-    alhr.a(this.jdField_a_of_type_Alhr).c(2131716540);
-    alhr.a(this.jdField_a_of_type_Alhr).setCancelable(false);
-    alhr.a(this.jdField_a_of_type_Alhr).show();
-    if (this.jdField_a_of_type_Alhv != null) {
-      this.jdField_a_of_type_Alhv.a();
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if (alhr.a(this.jdField_a_of_type_Alhr) != null) {
-      alhr.a(this.jdField_a_of_type_Alhr).dismiss();
-    }
-    this.jdField_a_of_type_Alhr.a(true);
-    alhr.a(this.jdField_a_of_type_Alhr, false);
-    if (this.jdField_a_of_type_Alhv != null) {
-      this.jdField_a_of_type_Alhv.a(paramString);
-    }
-  }
-  
-  public void b()
-  {
-    if (alhr.a(this.jdField_a_of_type_Alhr) != null) {
-      alhr.a(this.jdField_a_of_type_Alhr).dismiss();
-    }
-    alhr.a(this.jdField_a_of_type_Alhr, false);
-    if (this.jdField_a_of_type_Alhv != null) {
-      this.jdField_a_of_type_Alhv.b();
+    if (paramBundle.containsKey("rsp")) {}
+    for (paramBundle = ((ReportRsp)paramBundle.getSerializable("rsp")).headers;; paramBundle = null)
+    {
+      alhs.a(this.a, paramBundle);
+      return;
     }
   }
 }

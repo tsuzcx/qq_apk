@@ -1,363 +1,168 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.tribe.async.reactive.StreamFunction;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
 public class ziq
-  extends StreamFunction<Void, Bitmap>
+  extends ziu<RMVideoStateMgr, Void>
 {
-  private Context a;
-  
-  public ziq(Context paramContext)
-  {
-    if (paramContext == null) {
-      throw new NullPointerException("context should not be null");
-    }
-    this.a = paramContext;
-  }
-  
   /* Error */
-  public Bitmap a()
+  protected void a(com.tribe.async.async.JobContext paramJobContext, RMVideoStateMgr paramRMVideoStateMgr)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 9
-    //   3: aload_0
-    //   4: getfield 21	ziq:a	Landroid/content/Context;
-    //   7: invokevirtual 31	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   10: astore 13
-    //   12: aload 13
-    //   14: getstatic 37	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
-    //   17: aconst_null
-    //   18: aconst_null
-    //   19: aconst_null
-    //   20: aconst_null
-    //   21: invokevirtual 43	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   24: astore 10
-    //   26: aload 10
-    //   28: astore 9
-    //   30: aload 9
-    //   32: ifnull +569 -> 601
-    //   35: aload 9
-    //   37: invokeinterface 49 1 0
-    //   42: istore_2
-    //   43: iload_2
-    //   44: ifeq +557 -> 601
-    //   47: lconst_0
-    //   48: lstore_3
-    //   49: aconst_null
-    //   50: astore 12
-    //   52: lload_3
-    //   53: lstore 7
-    //   55: aload 12
-    //   57: astore 11
-    //   59: aload 9
-    //   61: aload 9
-    //   63: ldc 51
-    //   65: invokeinterface 55 2 0
-    //   70: invokeinterface 59 2 0
-    //   75: istore_1
-    //   76: lload_3
-    //   77: lstore 7
-    //   79: aload 12
-    //   81: astore 11
-    //   83: aload 9
-    //   85: aload 9
-    //   87: ldc 61
-    //   89: invokeinterface 55 2 0
-    //   94: invokeinterface 65 2 0
-    //   99: aload 9
-    //   101: aload 9
-    //   103: ldc 67
-    //   105: invokeinterface 55 2 0
-    //   110: invokeinterface 65 2 0
-    //   115: invokestatic 73	java/lang/Math:max	(JJ)J
-    //   118: lstore 5
-    //   120: lload 5
-    //   122: lstore 7
-    //   124: aload 12
-    //   126: astore 11
-    //   128: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   131: ifeq +36 -> 167
-    //   134: lload 5
-    //   136: lstore 7
-    //   138: aload 12
-    //   140: astore 11
-    //   142: ldc 80
-    //   144: iconst_2
-    //   145: new 82	java/lang/StringBuilder
-    //   148: dup
-    //   149: invokespecial 83	java/lang/StringBuilder:<init>	()V
-    //   152: ldc 85
-    //   154: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   157: iload_1
-    //   158: invokevirtual 92	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   161: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   164: invokestatic 100	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   167: lload 5
-    //   169: lstore 7
-    //   171: aload 12
-    //   173: astore 11
-    //   175: aload 13
-    //   177: iload_1
-    //   178: i2l
-    //   179: iconst_3
-    //   180: aconst_null
-    //   181: invokestatic 106	android/provider/MediaStore$Video$Thumbnails:getThumbnail	(Landroid/content/ContentResolver;JILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   184: astore 10
-    //   186: aload 10
-    //   188: ifnull +202 -> 390
-    //   191: lload 5
-    //   193: lstore_3
-    //   194: aload 9
-    //   196: ifnull +402 -> 598
-    //   199: aload 9
-    //   201: invokeinterface 109 1 0
-    //   206: aload 13
-    //   208: getstatic 112	android/provider/MediaStore$Images$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
-    //   211: aconst_null
-    //   212: aconst_null
-    //   213: aconst_null
-    //   214: aconst_null
-    //   215: invokevirtual 43	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   218: astore 11
-    //   220: aload 11
-    //   222: astore 9
-    //   224: aload 9
-    //   226: ifnull +265 -> 491
-    //   229: aload 9
-    //   231: astore 11
-    //   233: aload 9
-    //   235: invokeinterface 49 1 0
-    //   240: ifeq +251 -> 491
-    //   243: aload 9
-    //   245: astore 11
-    //   247: aload 9
-    //   249: aload 9
-    //   251: ldc 51
-    //   253: invokeinterface 55 2 0
-    //   258: invokeinterface 59 2 0
-    //   263: istore_1
-    //   264: aload 9
-    //   266: astore 11
-    //   268: aload 9
-    //   270: aload 9
-    //   272: ldc 61
-    //   274: invokeinterface 55 2 0
-    //   279: invokeinterface 65 2 0
-    //   284: aload 9
-    //   286: aload 9
-    //   288: ldc 67
-    //   290: invokeinterface 55 2 0
-    //   295: invokeinterface 65 2 0
-    //   300: invokestatic 73	java/lang/Math:max	(JJ)J
-    //   303: lstore 5
-    //   305: aload 9
-    //   307: astore 11
-    //   309: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   312: ifeq +32 -> 344
-    //   315: aload 9
-    //   317: astore 11
-    //   319: ldc 80
-    //   321: iconst_2
-    //   322: new 82	java/lang/StringBuilder
-    //   325: dup
-    //   326: invokespecial 83	java/lang/StringBuilder:<init>	()V
-    //   329: ldc 114
-    //   331: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   334: iload_1
-    //   335: invokevirtual 92	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   338: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   341: invokestatic 100	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   344: aload 9
-    //   346: astore 11
-    //   348: aload 13
-    //   350: iload_1
-    //   351: i2l
-    //   352: iconst_3
-    //   353: aconst_null
-    //   354: invokestatic 117	android/provider/MediaStore$Images$Thumbnails:getThumbnail	(Landroid/content/ContentResolver;JILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   357: astore 12
-    //   359: aload 12
-    //   361: ifnull +114 -> 475
-    //   364: lload 5
-    //   366: lload_3
-    //   367: lcmp
-    //   368: ifle +123 -> 491
-    //   371: aload 12
-    //   373: astore 10
-    //   375: aload 9
-    //   377: ifnull +10 -> 387
-    //   380: aload 9
-    //   382: invokeinterface 109 1 0
-    //   387: aload 10
-    //   389: areturn
-    //   390: lload 5
-    //   392: lstore 7
-    //   394: aload 10
-    //   396: astore 11
-    //   398: aload 9
-    //   400: invokeinterface 120 1 0
-    //   405: istore_2
-    //   406: lload 5
-    //   408: lstore_3
-    //   409: aload 10
-    //   411: astore 12
-    //   413: iload_2
-    //   414: ifne -362 -> 52
-    //   417: lload 5
-    //   419: lstore_3
-    //   420: goto -226 -> 194
-    //   423: astore 12
-    //   425: lconst_0
-    //   426: lstore_3
-    //   427: aconst_null
-    //   428: astore 10
-    //   430: ldc 80
-    //   432: iconst_2
-    //   433: ldc 122
-    //   435: aload 12
-    //   437: invokestatic 126	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   440: aload 9
-    //   442: ifnull +153 -> 595
-    //   445: aload 9
-    //   447: invokeinterface 109 1 0
-    //   452: goto -246 -> 206
-    //   455: astore 10
-    //   457: aconst_null
-    //   458: astore 9
-    //   460: aload 9
-    //   462: ifnull +10 -> 472
-    //   465: aload 9
-    //   467: invokeinterface 109 1 0
-    //   472: aload 10
-    //   474: athrow
-    //   475: aload 9
-    //   477: astore 11
-    //   479: aload 9
-    //   481: invokeinterface 120 1 0
-    //   486: istore_2
-    //   487: iload_2
-    //   488: ifne -245 -> 243
-    //   491: goto -116 -> 375
-    //   494: astore 12
-    //   496: aload 9
-    //   498: astore 11
-    //   500: ldc 80
-    //   502: iconst_2
-    //   503: ldc 128
-    //   505: aload 12
-    //   507: invokestatic 126	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   510: aload 9
-    //   512: ifnull +80 -> 592
-    //   515: aload 9
-    //   517: invokeinterface 109 1 0
-    //   522: aload 10
-    //   524: areturn
-    //   525: astore 10
-    //   527: aload 9
-    //   529: astore 11
-    //   531: aload 10
-    //   533: astore 9
-    //   535: aload 11
-    //   537: ifnull +10 -> 547
-    //   540: aload 11
-    //   542: invokeinterface 109 1 0
-    //   547: aload 9
-    //   549: athrow
-    //   550: astore 9
-    //   552: goto -17 -> 535
-    //   555: astore 12
-    //   557: goto -61 -> 496
-    //   560: astore 10
-    //   562: goto -102 -> 460
-    //   565: astore 10
-    //   567: goto -107 -> 460
-    //   570: astore 12
-    //   572: lconst_0
-    //   573: lstore_3
-    //   574: aconst_null
-    //   575: astore 10
-    //   577: goto -147 -> 430
-    //   580: astore 12
-    //   582: lload 7
-    //   584: lstore_3
-    //   585: aload 11
-    //   587: astore 10
-    //   589: goto -159 -> 430
-    //   592: aload 10
-    //   594: areturn
-    //   595: goto -389 -> 206
-    //   598: goto -392 -> 206
-    //   601: lconst_0
-    //   602: lstore_3
-    //   603: aconst_null
-    //   604: astore 10
-    //   606: goto -412 -> 194
+    //   0: ldc 18
+    //   2: ldc 20
+    //   4: invokestatic 26	yuk:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   7: invokestatic 32	com/tencent/mobileqq/shortvideo/VideoEnvironment:d	()Z
+    //   10: ifeq +185 -> 195
+    //   13: ldc 34
+    //   15: iconst_0
+    //   16: invokestatic 40	cooperation/qzone/thread/QzoneHandlerThreadFactory:getHandlerThread	(Ljava/lang/String;Z)Lcooperation/qzone/thread/QzoneBaseThread;
+    //   19: new 42	com/tencent/biz/qqstory/takevideo/publish/GenerateVideoManifestSegment$1
+    //   22: dup
+    //   23: aload_0
+    //   24: aload_2
+    //   25: invokespecial 45	com/tencent/biz/qqstory/takevideo/publish/GenerateVideoManifestSegment$1:<init>	(Lziq;Lcom/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr;)V
+    //   28: invokevirtual 51	cooperation/qzone/thread/QzoneBaseThread:post	(Ljava/lang/Runnable;)V
+    //   31: invokestatic 32	com/tencent/mobileqq/shortvideo/VideoEnvironment:d	()Z
+    //   34: ifeq +155 -> 189
+    //   37: lconst_0
+    //   38: lstore 6
+    //   40: aload_2
+    //   41: getfield 56	com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:a	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   44: astore_1
+    //   45: aload_1
+    //   46: monitorenter
+    //   47: aload_2
+    //   48: getfield 56	com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:a	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   51: invokevirtual 61	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   54: istore 10
+    //   56: lload 6
+    //   58: lstore 4
+    //   60: iload 10
+    //   62: ifne +82 -> 144
+    //   65: lload 6
+    //   67: lstore 4
+    //   69: ldc 18
+    //   71: ldc 63
+    //   73: invokestatic 26	yuk:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   76: lload 6
+    //   78: lstore 4
+    //   80: invokestatic 69	android/os/SystemClock:elapsedRealtime	()J
+    //   83: lstore 8
+    //   85: lload 6
+    //   87: lstore 4
+    //   89: aload_2
+    //   90: getfield 56	com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:a	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   93: ldc2_w 70
+    //   96: invokevirtual 77	java/lang/Object:wait	(J)V
+    //   99: lload 6
+    //   101: lstore 4
+    //   103: invokestatic 69	android/os/SystemClock:elapsedRealtime	()J
+    //   106: lload 8
+    //   108: lsub
+    //   109: lstore 6
+    //   111: lload 6
+    //   113: lstore 4
+    //   115: ldc 18
+    //   117: new 79	java/lang/StringBuilder
+    //   120: dup
+    //   121: invokespecial 80	java/lang/StringBuilder:<init>	()V
+    //   124: ldc 82
+    //   126: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: lload 6
+    //   131: invokevirtual 89	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   134: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   137: invokestatic 26	yuk:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   140: lload 6
+    //   142: lstore 4
+    //   144: aload_1
+    //   145: monitorexit
+    //   146: ldc 18
+    //   148: ldc 95
+    //   150: invokestatic 26	yuk:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   153: lload 4
+    //   155: ldc2_w 96
+    //   158: lcmp
+    //   159: ifge +30 -> 189
+    //   162: bipush 30
+    //   164: lload 4
+    //   166: l2i
+    //   167: isub
+    //   168: istore_3
+    //   169: ldc 18
+    //   171: ldc 99
+    //   173: iload_3
+    //   174: invokestatic 105	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   177: invokestatic 108	yuk:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
+    //   180: iload_3
+    //   181: i2l
+    //   182: lstore 4
+    //   184: lload 4
+    //   186: invokestatic 113	java/lang/Thread:sleep	(J)V
+    //   189: aload_0
+    //   190: aconst_null
+    //   191: invokespecial 117	ziu:notifyResult	(Ljava/lang/Object;)V
+    //   194: return
+    //   195: invokestatic 122	bdby:a	()Lbdby;
+    //   198: invokevirtual 125	bdby:a	()Lcom/tencent/maxvideo/mediadevice/AVCodec;
+    //   201: invokevirtual 131	com/tencent/maxvideo/mediadevice/AVCodec:recordSubmit	()I
+    //   204: pop
+    //   205: ldc 18
+    //   207: ldc 133
+    //   209: invokestatic 26	yuk:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   212: goto -181 -> 31
+    //   215: astore_1
+    //   216: ldc 18
+    //   218: ldc 135
+    //   220: aload_1
+    //   221: invokestatic 138	yuk:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   224: goto -193 -> 31
+    //   227: astore_2
+    //   228: ldc 18
+    //   230: new 79	java/lang/StringBuilder
+    //   233: dup
+    //   234: invokespecial 80	java/lang/StringBuilder:<init>	()V
+    //   237: ldc 140
+    //   239: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: aload_2
+    //   243: invokevirtual 143	java/lang/InterruptedException:getMessage	()Ljava/lang/String;
+    //   246: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   249: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   252: invokestatic 26	yuk:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   255: goto -111 -> 144
+    //   258: astore_2
+    //   259: aload_1
+    //   260: monitorexit
+    //   261: aload_2
+    //   262: athrow
+    //   263: astore_1
+    //   264: goto -75 -> 189
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	609	0	this	ziq
-    //   75	276	1	i	int
-    //   42	446	2	bool	boolean
-    //   48	555	3	l1	long
-    //   118	300	5	l2	long
-    //   53	530	7	l3	long
-    //   1	547	9	localObject1	java.lang.Object
-    //   550	1	9	localObject2	java.lang.Object
-    //   24	405	10	localObject3	java.lang.Object
-    //   455	68	10	localBitmap	Bitmap
-    //   525	7	10	localObject4	java.lang.Object
-    //   560	1	10	localObject5	java.lang.Object
-    //   565	1	10	localObject6	java.lang.Object
-    //   575	30	10	localObject7	java.lang.Object
-    //   57	529	11	localObject8	java.lang.Object
-    //   50	362	12	localObject9	java.lang.Object
-    //   423	13	12	localException1	java.lang.Exception
-    //   494	12	12	localException2	java.lang.Exception
-    //   555	1	12	localException3	java.lang.Exception
-    //   570	1	12	localException4	java.lang.Exception
-    //   580	1	12	localException5	java.lang.Exception
-    //   10	339	13	localContentResolver	android.content.ContentResolver
+    //   0	267	0	this	ziq
+    //   0	267	1	paramJobContext	com.tribe.async.async.JobContext
+    //   0	267	2	paramRMVideoStateMgr	RMVideoStateMgr
+    //   168	13	3	i	int
+    //   58	127	4	l1	long
+    //   38	103	6	l2	long
+    //   83	24	8	l3	long
+    //   54	7	10	bool	boolean
     // Exception table:
     //   from	to	target	type
-    //   12	26	423	java/lang/Exception
-    //   12	26	455	finally
-    //   206	220	494	java/lang/Exception
-    //   206	220	525	finally
-    //   233	243	550	finally
-    //   247	264	550	finally
-    //   268	305	550	finally
-    //   309	315	550	finally
-    //   319	344	550	finally
-    //   348	359	550	finally
-    //   479	487	550	finally
-    //   500	510	550	finally
-    //   233	243	555	java/lang/Exception
-    //   247	264	555	java/lang/Exception
-    //   268	305	555	java/lang/Exception
-    //   309	315	555	java/lang/Exception
-    //   319	344	555	java/lang/Exception
-    //   348	359	555	java/lang/Exception
-    //   479	487	555	java/lang/Exception
-    //   35	43	560	finally
-    //   59	76	560	finally
-    //   83	120	560	finally
-    //   128	134	560	finally
-    //   142	167	560	finally
-    //   175	186	560	finally
-    //   398	406	560	finally
-    //   430	440	565	finally
-    //   35	43	570	java/lang/Exception
-    //   59	76	580	java/lang/Exception
-    //   83	120	580	java/lang/Exception
-    //   128	134	580	java/lang/Exception
-    //   142	167	580	java/lang/Exception
-    //   175	186	580	java/lang/Exception
-    //   398	406	580	java/lang/Exception
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    notifyResult(a());
+    //   195	212	215	java/lang/UnsatisfiedLinkError
+    //   69	76	227	java/lang/InterruptedException
+    //   80	85	227	java/lang/InterruptedException
+    //   89	99	227	java/lang/InterruptedException
+    //   103	111	227	java/lang/InterruptedException
+    //   115	140	227	java/lang/InterruptedException
+    //   47	56	258	finally
+    //   69	76	258	finally
+    //   80	85	258	finally
+    //   89	99	258	finally
+    //   103	111	258	finally
+    //   115	140	258	finally
+    //   144	146	258	finally
+    //   228	255	258	finally
+    //   259	261	258	finally
+    //   184	189	263	java/lang/InterruptedException
   }
 }
 

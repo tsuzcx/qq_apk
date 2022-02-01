@@ -1,31 +1,24 @@
-import android.text.TextUtils;
-
 public class apnc
 {
   public int a;
   public String a;
+  public int b;
   public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public int c = 0;
   
-  public void a()
+  public apnc()
   {
-    this.e = null;
-    this.f = null;
-    this.g = null;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public boolean a()
+  public String toString()
   {
-    return (this.jdField_a_of_type_Int >= 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.d));
-  }
-  
-  public boolean b()
-  {
-    return (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g));
+    return "POIInfo{latitude = " + this.jdField_a_of_type_Int + ", longitude = " + this.jdField_b_of_type_Int + ", name = " + this.jdField_a_of_type_JavaLangString + ", addr = " + this.jdField_b_of_type_JavaLangString + ", dist = " + this.c + '}';
   }
 }
 

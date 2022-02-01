@@ -1,26 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.app.Activity;
+import android.content.Intent;
 
 public class xya
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wwf>
+  extends xqm
 {
-  public xya(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  public xya(xxz paramxxz) {}
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wwf paramwwf)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (!paramQQStoryShareGroupProfileActivity.g) {
-      return;
+    if ((paramInt1 == 66666) && (paramInt2 == -1)) {
+      this.a.a.b().finish();
     }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwwf);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wwf.class;
   }
 }
 

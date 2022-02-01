@@ -13,12 +13,12 @@ class SensorJsPlugin$3
   {
     try
     {
-      SensorJsPlugin.access$300(this.this$0);
+      SensorJsPlugin.access$000(this.this$0);
       if (new JSONObject(this.val$jsonParams).optBoolean("enable"))
       {
-        if (this.this$0.startAccelerometer(3))
+        if (this.this$0.startAccelerometer(this.val$webview, 3))
         {
-          SensorJsPlugin.access$402(this.this$0, true);
+          SensorJsPlugin.access$102(this.this$0, true);
           this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$eventName, null, this.val$callbackId);
           return;
         }
@@ -32,7 +32,7 @@ class SensorJsPlugin$3
       return;
     }
     this.this$0.stopAccelerometer();
-    if (!SensorJsPlugin.access$400(this.this$0)) {
+    if (!SensorJsPlugin.access$100(this.this$0)) {
       this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$eventName, null, ":fail to disable, not enable?", this.val$callbackId);
     }
     for (;;)
@@ -41,7 +41,7 @@ class SensorJsPlugin$3
       localJSONObject.put("errMsg", this.val$eventName + ":cancel");
       this.val$webview.evaluateCallbackJs(this.val$callbackId, localJSONObject.toString());
       return;
-      SensorJsPlugin.access$402(this.this$0, false);
+      SensorJsPlugin.access$102(this.this$0, false);
       this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$eventName, null, this.val$callbackId);
     }
   }

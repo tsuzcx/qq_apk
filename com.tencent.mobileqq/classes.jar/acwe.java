@@ -1,59 +1,108 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import org.jetbrains.annotations.NotNull;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.device.AdCarrier;
+import com.tencent.ad.tangram.device.AdDeviceIdBuilder;
+import com.tencent.ad.tangram.device.AdDeviceIdentifier;
+import com.tencent.ad.tangram.device.AdMacAddressBuilder;
+import com.tencent.common.config.AppSetting;
+import com.tencent.gdtad.qqproxy.GdtLocationUtil;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
+import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo.Location;
 
 public class acwe
 {
-  protected ConcurrentHashMap<String, Lock> a;
-  private ConcurrentHashMap<String, List<MessageRecord>> b;
-  private ConcurrentHashMap<String, List<MessageRecord>> c;
+  private static String a = "GdtDeviceUtil";
   
-  public acwe()
+  @Deprecated
+  public static final int a(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgPool", 2, "MsgPool() called " + this);
-    }
-    this.c = new ConcurrentHashMap();
-    this.a = new ConcurrentHashMap();
-    this.b = a();
+    return AdCarrier.getType(paramContext);
   }
   
-  public Map<String, List<MessageRecord>> a()
+  @Deprecated
+  public static String a(Context paramContext)
   {
-    return this.c;
+    return new AdDeviceIdBuilder().build(paramContext, false, null).idHash;
   }
   
-  @NotNull
-  protected ConcurrentHashMap<String, List<MessageRecord>> a()
+  @Deprecated
+  public static qq_ad_get.QQAdGet.DeviceInfo a(Context paramContext)
   {
-    return new ConcurrentHashMap();
-  }
-  
-  public Lock a(String paramString)
-  {
-    if (!this.a.containsKey(paramString)) {}
-    synchronized (this.a)
+    if (paramContext == null)
     {
-      if (!this.a.containsKey(paramString)) {
-        this.a.put(paramString, new ReentrantLock());
+      acvc.d(a, "getDeviceInfo error");
+      paramContext = null;
+    }
+    for (;;)
+    {
+      return paramContext;
+      qq_ad_get.QQAdGet.DeviceInfo localDeviceInfo = new qq_ad_get.QQAdGet.DeviceInfo();
+      Object localObject = a(paramContext);
+      String str = b(paramContext);
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localDeviceInfo.muid.set((String)localObject);
+        localDeviceInfo.muid_type.set(1);
+        label58:
+        localDeviceInfo.conn.set(acve.a(paramContext));
+        localObject = c(paramContext);
+        if (TextUtils.isEmpty((CharSequence)localObject)) {}
       }
-      return (Lock)this.a.get(paramString);
+      try
+      {
+        int i = Integer.parseInt((String)localObject);
+        localDeviceInfo.carrier_code.set(i);
+        localDeviceInfo.os_ver.set(Build.VERSION.RELEASE);
+        localDeviceInfo.qq_ver.set(acvf.a());
+        localDeviceInfo.os_type.set(2);
+        localDeviceInfo.app_version_id.set(AppSetting.a());
+        localObject = GdtLocationUtil.INSTANCE.getLocation(paramContext);
+        paramContext = localDeviceInfo;
+        if (localObject == null) {
+          continue;
+        }
+        paramContext = localDeviceInfo;
+        if (localObject.length != 2) {
+          continue;
+        }
+        paramContext = new qq_ad_get.QQAdGet.DeviceInfo.Location();
+        paramContext.coordinates_type.set(0);
+        paramContext.latitude.set(localObject[0]);
+        paramContext.longitude.set(localObject[1]);
+        localDeviceInfo.location.set(paramContext);
+        return localDeviceInfo;
+        if (!TextUtils.isEmpty(str))
+        {
+          localDeviceInfo.muid.set(str);
+          localDeviceInfo.muid_type.set(3);
+          break label58;
+        }
+        localDeviceInfo.muid_type.set(0);
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          acvc.d(a, "initDeviceInfo", localThrowable);
+        }
+      }
     }
   }
   
-  public Lock a(String paramString, int paramInt)
+  @Deprecated
+  public static String b(Context paramContext)
   {
-    return a(acwh.a(paramString, paramInt));
+    return new AdMacAddressBuilder().build(paramContext, false, null).idHash;
   }
   
-  public ConcurrentHashMap<String, List<MessageRecord>> b()
+  @Deprecated
+  public static final String c(Context paramContext)
   {
-    return this.b;
+    return AdCarrier.getCode(paramContext);
   }
 }
 

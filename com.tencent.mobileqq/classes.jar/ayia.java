@@ -1,22 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class ayia
-  implements TextWatcher
+class ayia
+  implements View.OnTouchListener
 {
-  private ayia(OCRTextSearchActivity paramOCRTextSearchActivity) {}
+  ayia(ayhj paramayhj) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramEditable = this.a.a.getText().toString();
-    this.a.b(paramEditable);
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131364801).setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.findViewById(2131364801).setAlpha(1.0F);
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

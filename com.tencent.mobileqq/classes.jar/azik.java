@@ -1,14 +1,22 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-public final class azik
-  implements arxk
+public class azik
+  implements BusinessObserver
 {
-  public List<asaf> a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void b(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new asaf(7, 7, null));
-    return localArrayList;
+    if (paramInt == 1) {
+      b(paramBoolean, paramBundle);
+    }
+    while (paramInt != 2) {
+      return;
+    }
+    a(paramBoolean, paramBundle);
   }
 }
 

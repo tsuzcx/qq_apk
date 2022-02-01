@@ -1,25 +1,22 @@
-class bpje
-  implements wri
+import android.support.annotation.Nullable;
+
+public abstract interface bpje
 {
-  bpje(bpja parambpja) {}
+  public abstract void a(float paramFloat);
   
-  public void a(boolean paramBoolean, wre paramwre)
-  {
-    yqp.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
-    if ((paramBoolean) && (paramwre != null) && (this.a.a != null)) {
-      this.a.a(paramwre.b, paramwre.a, this.a.a);
-    }
-    for (;;)
-    {
-      paramwre = (wrf)wpm.a(9);
-      if (paramwre != null) {
-        paramwre.b(this);
-      }
-      this.a.a = null;
-      return;
-      yqp.e("DoodleEmojiManager", "onLbsUpdate failed.");
-    }
-  }
+  public abstract void a(@Nullable bpis parambpis, int paramInt);
+  
+  public abstract void b(float paramFloat);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d(boolean paramBoolean);
+  
+  public abstract void x();
+  
+  public abstract void y();
 }
 
 

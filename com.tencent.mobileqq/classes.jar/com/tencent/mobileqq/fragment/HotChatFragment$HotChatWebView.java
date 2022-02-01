@@ -6,11 +6,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
-import auoj;
-import axei;
-import bgsg;
-import bhll;
-import bhta;
+import avgj;
+import axxb;
+import bhsi;
+import bimg;
+import bitv;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 import com.tencent.common.app.AppInterface;
@@ -21,10 +21,10 @@ import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
-import nhe;
+import niz;
 
 public final class HotChatFragment$HotChatWebView
-  extends bhll
+  extends bimg
   implements TouchWebView.OnScrollChangedListener
 {
   public int a;
@@ -47,8 +47,8 @@ public final class HotChatFragment$HotChatWebView
     for (long l = System.currentTimeMillis();; l = 0L)
     {
       this.jdField_a_of_type_Boolean = true;
-      nhe.a();
-      this.mUrl = bgsg.e(this.mContext, this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin());
+      niz.a();
+      this.mUrl = bhsi.e(this.mContext, this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin());
       this.mWebview = new HotChatFragment.HotChatWebView.HotChatTouchWebView(this, this.mContext);
       buildBaseWebView(this.mInterface);
       this.c = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
@@ -59,11 +59,11 @@ public final class HotChatFragment$HotChatWebView
       this.mWebview.setOnScrollChangedListener(this);
       setmTimeBeforeLoadUrl(System.currentTimeMillis());
       if (QLog.isDevelopLevel()) {
-        axei.a("WebSpeedTrace", "mTimeBeforeLoadUrl", new Object[] { Long.valueOf(this.mTimeBeforeLoadUrl) });
+        axxb.a("WebSpeedTrace", "mTimeBeforeLoadUrl", new Object[] { Long.valueOf(this.mTimeBeforeLoadUrl) });
       }
       this.mWebview.loadUrl(this.mUrl);
       if (QLog.isColorLevel()) {
-        axei.a("AbsWebView", new Object[] { "HotChatWebView.init", this.mUrl });
+        axxb.a("AbsWebView", new Object[] { "HotChatWebView.init", this.mUrl });
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k != 0L)) {
         break;
@@ -72,7 +72,7 @@ public final class HotChatFragment$HotChatWebView
       if (!QLog.isDevelopLevel()) {
         break;
       }
-      axei.a("WebSpeedTrace", "mInitWebViewTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k) });
+      axxb.a("WebSpeedTrace", "mInitWebViewTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k) });
       return;
     }
   }
@@ -90,7 +90,7 @@ public final class HotChatFragment$HotChatWebView
   public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
   {
     if (paramArrayList != null) {
-      paramArrayList.add(new bhta());
+      paramArrayList.add(new bitv());
     }
   }
   
@@ -106,20 +106,20 @@ public final class HotChatFragment$HotChatWebView
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_Auoj != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_Avgj != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_Auoj.b(false).a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_Auoj.a();
+      this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_Avgj.b(false).a(true);
+      this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_Avgj.a();
     }
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     this.b = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_Auoj != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_Avgj != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_Auoj.b(true).a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_Auoj.a();
+      this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_Avgj.b(true).a(true);
+      this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.jdField_a_of_type_Avgj.a();
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.b != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.b.getVisibility() != 8)) {
       this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.b.setVisibility(8);

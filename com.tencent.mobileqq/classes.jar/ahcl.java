@@ -1,10 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-final class ahcl
-  implements DialogInterface.OnClickListener
+class ahcl
+  implements bliz
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  ahcl(ahcj paramahcj, MessageForDeviceFile paramMessageForDeviceFile, blir paramblir) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    if ("device_groupchat".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.extStr)) {
+      ((abzb)this.jdField_a_of_type_Ahcj.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Ahcj.b();
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      this.jdField_a_of_type_Ahcj.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
+  }
 }
 
 

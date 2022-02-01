@@ -1,44 +1,45 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class apyi
-  extends Handler
+  implements apyw
 {
-  private QQAnimationDrawable b;
-  
-  public apyi(QQAnimationDrawable paramQQAnimationDrawable1, QQAnimationDrawable paramQQAnimationDrawable2)
+  private int a()
   {
-    this.b = paramQQAnimationDrawable2;
+    int i = -1;
+    if (lfm.a(BaseApplicationImpl.getContext())) {
+      i = 1;
+    }
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return i;
+      if (AudioHelper.a(BaseApplicationImpl.getContext())) {
+        return 2;
+      }
+      localQQAppInterface = apxv.a();
+    } while (localQQAppInterface == null);
+    if (localQQAppInterface.z()) {
+      return 4;
+    }
+    return 3;
   }
   
-  public void handleMessage(Message paramMessage)
+  public EIPCResult a(Bundle paramBundle)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("InternalHandler handleMessage msg.what:").append(paramMessage.what).append(" main:");
-    if (Looper.myLooper() == Looper.getMainLooper()) {}
-    for (boolean bool = true;; bool = false)
+    if (apxv.a() == null)
     {
-      QLog.d("QQAnimationDrawable", 2, bool);
-      if (!(paramMessage.obj instanceof Long)) {
-        break label170;
-      }
-      QLog.d("QQAnimationDrawable", 2, "InternalHandler handleMessage msg.obj:" + paramMessage.obj + " android.os.SystemClock.uptimeMillis():" + SystemClock.uptimeMillis());
-      paramMessage = (Long)paramMessage.obj;
-      if (paramMessage.longValue() >= SystemClock.uptimeMillis()) {
-        break;
-      }
-      QLog.d("QQAnimationDrawable", 2, "time < android.os.SystemClock.uptimeMillis()");
-      this.a.scheduleSelf(this.b, SystemClock.uptimeMillis());
-      return;
+      QLog.e("ArkApp.GetAudioOutputModeHandler", 1, "GetAudioOutputModeHandler.onCall, qq app is null");
+      return EIPCResult.createResult(-102, new Bundle());
     }
-    QLog.d("QQAnimationDrawable", 2, "time > android.os.SystemClock.uptimeMillis()");
-    this.a.scheduleSelf(this.b, paramMessage.longValue());
-    return;
-    label170:
-    QLog.d("QQAnimationDrawable", 2, "InternalHandler handleMessage msg.obj:" + paramMessage.obj);
+    int i = a();
+    paramBundle = new Bundle();
+    paramBundle.putInt("mode", i);
+    return EIPCResult.createResult(0, paramBundle);
   }
 }
 

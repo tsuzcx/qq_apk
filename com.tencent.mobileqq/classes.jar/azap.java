@@ -1,17 +1,38 @@
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+
 public class azap
+  extends ayxv
 {
-  int jdField_a_of_type_Int;
-  int[] jdField_a_of_type_ArrayOfInt;
+  public azap(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  private azap(int[] paramArrayOfInt, int paramInt)
+  public void a(int paramInt, String paramString, ayzf paramayzf)
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  static azap a(int[] paramArrayOfInt, int paramInt)
-  {
-    return new azap(paramArrayOfInt, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, errorCode=" + paramInt + ", sessionID=" + paramString + ", mSessionId=" + this.a.c);
+    }
+    if ((paramString == null) || (this.a.c == null) || (!this.a.c.equals(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, session error");
+      }
+      return;
+    }
+    this.a.a(false);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment == null) {
+      this.a.b(1);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), paramInt, paramayzf);
+    this.a.a(1);
+    if ((paramInt == 0) && (paramayzf.a != null) && (paramayzf.a.size() > 0))
+    {
+      bdll.b(null, "dc00898", "", "", "0X80082E8", "0X80082E8", 0, 0, "", "", "", "");
+      return;
+    }
+    bdll.b(null, "dc00898", "", "", "0X80082E7", "0X80082E7", 0, 0, "", "", "", "");
   }
 }
 

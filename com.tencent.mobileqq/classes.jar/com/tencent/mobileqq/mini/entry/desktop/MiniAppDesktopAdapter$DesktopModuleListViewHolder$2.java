@@ -16,7 +16,7 @@ class MiniAppDesktopAdapter$DesktopModuleListViewHolder$2
     {
       MiniAppUtils.updateMiniAppList(12);
       if ((this.this$1.mModuleInfo != null) && (this.this$1.mModuleInfo.getModuleType() == 2)) {
-        MiniAppDesktopAdapter.access$3500(this.this$1.this$0);
+        MiniAppDesktopAdapter.access$3600(this.this$1.this$0);
       }
     }
     while (paramInt != 1) {

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import bdfm;
-import bdfz;
+import bdyh;
+import bdyu;
 import java.util.LinkedList;
 
 class FrameSprite$1$1
@@ -16,26 +16,26 @@ class FrameSprite$1$1
       int j;
       synchronized (this.a.this$0)
       {
-        bdfz[] arrayOfbdfz = bdfm.a(this.a.this$0);
-        if ((arrayOfbdfz == null) || (bdfm.a(this.a.this$0))) {
+        bdyu[] arrayOfbdyu = bdyh.a(this.a.this$0);
+        if ((arrayOfbdyu == null) || (bdyh.a(this.a.this$0))) {
           return;
         }
-        bdfm.a(this.a.this$0, new bdfz[bdfm.a(this.a.this$0).length / 2]);
+        bdyh.a(this.a.this$0, new bdyu[bdyh.a(this.a.this$0).length / 2]);
         j = 0;
         int i = 0;
-        if (j < bdfm.a(this.a.this$0).length)
+        if (j < bdyh.a(this.a.this$0).length)
         {
           if (j % 2 == 0)
           {
-            bdfm localbdfm2 = this.a.this$0;
+            bdyh localbdyh2 = this.a.this$0;
             int k = i + 1;
-            bdfm.a(localbdfm2, i, arrayOfbdfz[j]);
+            bdyh.a(localbdyh2, i, arrayOfbdyu[j]);
             i = k;
           }
           else
           {
-            bdfm.a(this.a.this$0).remove(arrayOfbdfz[j]);
-            arrayOfbdfz[j].c();
+            bdyh.a(this.a.this$0).remove(arrayOfbdyu[j]);
+            arrayOfbdyu[j].c();
           }
         }
         else {

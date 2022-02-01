@@ -11,10 +11,10 @@ import com.tencent.mobileqq.startup.step.AVSoUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import lbf;
-import lkw;
-import lnr;
-import lnt;
+import lbm;
+import llk;
+import lof;
+import loh;
 
 public class SDKConfigInfo
 {
@@ -22,7 +22,7 @@ public class SDKConfigInfo
   private boolean isDebugVersion = false;
   private boolean isGrayVersion = false;
   private boolean isPublicVersion = true;
-  private String logDir = lbf.k();
+  private String logDir = lbm.k();
   private String logFilePrefix = "com.tencent.mobileqq";
   private String processName = "";
   private int terminalType = 4;
@@ -45,7 +45,7 @@ public class SDKConfigInfo
     localObject1 = (String)localObject1 + "ID=" + Build.ID + ";";
     localObject1 = (String)localObject1 + "MANUFACTURER=" + Build.MANUFACTURER + ";";
     localObject1 = (String)localObject1 + "USER=" + Build.USER + ";";
-    Object localObject2 = lnr.a("SDKConfigInfo", paramContext);
+    Object localObject2 = lof.a("SDKConfigInfo", paramContext);
     if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
     {
       Iterator localIterator = ((ArrayList)localObject2).iterator();
@@ -53,34 +53,34 @@ public class SDKConfigInfo
       if (!localIterator.hasNext()) {
         break label1009;
       }
-      localObject2 = (lnt)localIterator.next();
-      if ((((lnt)localObject2).jdField_a_of_type_Int == 1) && (((lnt)localObject2).jdField_a_of_type_Boolean))
+      localObject2 = (loh)localIterator.next();
+      if ((((loh)localObject2).jdField_a_of_type_Int == 1) && (((loh)localObject2).jdField_a_of_type_Boolean))
       {
         localObject1 = (String)localObject1 + "HWAVCDEC=1;";
-        localObject1 = (String)localObject1 + "HWAVCDEC_MAXW=" + ((lnt)localObject2).b + ";";
-        localObject1 = (String)localObject1 + "HWAVCDEC_MAXH=" + ((lnt)localObject2).c + ";";
+        localObject1 = (String)localObject1 + "HWAVCDEC_MAXW=" + ((loh)localObject2).b + ";";
+        localObject1 = (String)localObject1 + "HWAVCDEC_MAXH=" + ((loh)localObject2).c + ";";
       }
     }
     for (;;)
     {
       break;
-      if ((((lnt)localObject2).jdField_a_of_type_Int == 2) && (((lnt)localObject2).jdField_a_of_type_Boolean))
+      if ((((loh)localObject2).jdField_a_of_type_Int == 2) && (((loh)localObject2).jdField_a_of_type_Boolean))
       {
         localObject1 = (String)localObject1 + "HWAVCENC=1;";
-        localObject1 = (String)localObject1 + "HWAVCENC_MAXW=" + ((lnt)localObject2).b + ";";
-        localObject1 = (String)localObject1 + "HWAVCENC_MAXH=" + ((lnt)localObject2).c + ";";
+        localObject1 = (String)localObject1 + "HWAVCENC_MAXW=" + ((loh)localObject2).b + ";";
+        localObject1 = (String)localObject1 + "HWAVCENC_MAXH=" + ((loh)localObject2).c + ";";
       }
-      else if ((((lnt)localObject2).jdField_a_of_type_Int == 4) && (((lnt)localObject2).jdField_a_of_type_Boolean))
+      else if ((((loh)localObject2).jdField_a_of_type_Int == 4) && (((loh)localObject2).jdField_a_of_type_Boolean))
       {
         localObject1 = (String)localObject1 + "HWHEVCDEC=1;";
-        localObject1 = (String)localObject1 + "HWHEVCDEC_MAXW=" + ((lnt)localObject2).b + ";";
-        localObject1 = (String)localObject1 + "HWHEVCDEC_MAXH=" + ((lnt)localObject2).c + ";";
+        localObject1 = (String)localObject1 + "HWHEVCDEC_MAXW=" + ((loh)localObject2).b + ";";
+        localObject1 = (String)localObject1 + "HWHEVCDEC_MAXH=" + ((loh)localObject2).c + ";";
       }
-      else if ((((lnt)localObject2).jdField_a_of_type_Int == 8) && (((lnt)localObject2).jdField_a_of_type_Boolean))
+      else if ((((loh)localObject2).jdField_a_of_type_Int == 8) && (((loh)localObject2).jdField_a_of_type_Boolean))
       {
         localObject1 = (String)localObject1 + "HWHEVCENC=1;";
-        localObject1 = (String)localObject1 + "HWHEVCENC_MAXW=" + ((lnt)localObject2).b + ";";
-        localObject1 = (String)localObject1 + "HWHEVCENC_MAXH=" + ((lnt)localObject2).c + ";";
+        localObject1 = (String)localObject1 + "HWHEVCENC_MAXW=" + ((loh)localObject2).b + ";";
+        localObject1 = (String)localObject1 + "HWHEVCENC_MAXH=" + ((loh)localObject2).c + ";";
         continue;
         localObject1 = (String)localObject1 + "HWAVCENC=0;";
         localObject1 = (String)localObject1 + "HWAVCDEC=0;";
@@ -95,7 +95,7 @@ public class SDKConfigInfo
           AVSoUtils.c();
           localObject1 = (String)localObject1 + "HEVC_ENC_SO_DIR=" + AVSoUtils.c() + ";";
           localObject1 = (String)localObject1 + "HEVC_DEC_SO_DIR=" + AVSoUtils.d() + ";";
-          if (lkw.f() <= 2) {
+          if (llk.f() <= 2) {
             break label1345;
           }
         }

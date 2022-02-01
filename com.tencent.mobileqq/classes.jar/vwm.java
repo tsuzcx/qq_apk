@@ -1,15 +1,15 @@
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import android.view.animation.Interpolator;
+import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
 
 public class vwm
-  implements vux
+  implements Interpolator
 {
-  public vwm(QCircleFeedCommentWidget paramQCircleFeedCommentWidget, String paramString) {}
+  public vwm(QCircleSlidBottomView paramQCircleSlidBottomView) {}
   
-  public void a()
+  public float getInterpolation(float paramFloat)
   {
-    vrc.a(this.jdField_a_of_type_JavaLangString, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget), 44, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.d());
-    uxo.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.a().clone().setElementIdStr("portrait"));
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

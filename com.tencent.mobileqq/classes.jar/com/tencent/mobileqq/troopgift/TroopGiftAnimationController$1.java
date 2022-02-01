@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troopgift;
 
-import bfzc;
-import bfzd;
+import bgzd;
+import bgze;
 
 public class TroopGiftAnimationController$1
   implements Runnable
 {
-  public TroopGiftAnimationController$1(bfzc parambfzc) {}
+  public TroopGiftAnimationController$1(bgzd parambgzd) {}
   
   public void run()
   {
     if ((this.this$0.a instanceof TroopGiftToAllSurfaceView)) {
-      ((TroopGiftToAllSurfaceView)this.this$0.a).a(new bfzd(this));
+      ((TroopGiftToAllSurfaceView)this.this$0.a).a(new bgze(this));
     }
   }
 }

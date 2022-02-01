@@ -21,7 +21,7 @@ public class EngineVersion
   
   public EngineVersion(String paramString)
   {
-    this.mMajor = "8.4.1.4680";
+    this.mMajor = "8.4.5.4745";
     this.mMinor = paramString;
   }
   

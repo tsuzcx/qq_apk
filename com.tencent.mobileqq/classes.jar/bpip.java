@@ -1,9 +1,4 @@
-import android.view.MotionEvent;
-
-public abstract interface bpip<T extends bpio>
-{
-  public abstract boolean a(T paramT, MotionEvent paramMotionEvent);
-}
+class bpip {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

@@ -1,19 +1,34 @@
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class bear
+class bear
+  implements WtTicketPromise
 {
-  private Map<String, String> a = new HashMap();
+  bear(beaq parambeaq, Runnable paramRunnable) {}
   
-  public String a(String paramString)
+  public void Done(Ticket paramTicket)
   {
-    paramString = beap.a(paramString);
-    return (String)this.a.get(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("TeamWorkFileExportHandler", 2, "--- pskey invalid retry ---  ");
+    }
+    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public void a(String paramString1, String paramString2)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    this.a.put(paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.e("TeamWorkFileExportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
+    }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TeamWorkFileExportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
+    }
   }
 }
 

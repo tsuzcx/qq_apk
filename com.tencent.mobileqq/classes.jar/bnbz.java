@@ -1,493 +1,255 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.hardware.Camera;
-import android.hardware.Camera.Parameters;
-import android.hardware.Camera.Size;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper;
-import com.tencent.mobileqq.activity.qwallet.emoj.EmojiRedPackPreviewFragment;
-import com.tencent.mobileqq.activity.qwallet.emoj.HandRecognizer;
-import com.tencent.mobileqq.activity.qwallet.emoj.IBaseRecognizer;
-import com.tencent.mobileqq.activity.qwallet.emoj.QWalletFaceTracker;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager.ChainBuilder;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.qq.im.QIMEmojiRedPacketCameraCaptureUnit.11;
-import dov.com.qq.im.QIMEmojiRedPacketCameraCaptureUnit.12;
-import dov.com.qq.im.QIMEmojiRedPacketCameraCaptureUnit.13;
-import dov.com.qq.im.QIMEmojiRedPacketCameraCaptureUnit.7;
-import dov.com.qq.im.QIMEmojiRedPacketCameraCaptureUnit.8;
-import dov.com.qq.im.QIMEmojiRedPacketCameraCaptureUnit.9;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCountTimeLayout;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.networkedmodule.QzoneModuleConst;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import dalvik.system.DexClassLoader;
+import java.io.File;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bnbz
-  extends QIMEffectCameraCaptureUnit
-  implements baow
+public final class bnbz
+  implements Handler.Callback
 {
-  public static long d;
-  public long a;
-  private bole jdField_a_of_type_Bole = new bncb(this);
-  IBaseRecognizer jdField_a_of_type_ComTencentMobileqqActivityQwalletEmojIBaseRecognizer = new bncg(this);
-  protected AnimationQIMCircleProgress a;
-  public TextView c;
-  public int d;
-  public Button d;
-  public TextView d;
-  public int e;
-  private long e;
-  public int f;
-  public View f;
-  public int g = 90;
-  int h;
-  public int i = 0;
-  private int j;
-  public String l = "https://i.gtimg.cn/channel/static/expression/aEModel_1558597938237.zip";
-  public String m;
-  public String n;
+  private static String jdField_a_of_type_JavaLangString = "QzoneModuleDownloadManager";
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bmvo jdField_a_of_type_Bmvo;
+  private Downloader.DownloadListener jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = new bnca(this);
+  private Map<String, bncb> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  static
+  public bnbz(Context paramContext)
   {
-    jdField_d_of_type_Long = 200L;
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.jdField_a_of_type_Bmvo = bmvo.a();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(QzoneHandlerThreadFactory.getHandlerThreadLooper("Normal_HandlerThread"), this);
   }
   
-  public bnbz(boyn paramboyn, boym paramboym)
+  private void a(bncb parambncb)
   {
-    super(paramboyn, paramboym);
-    this.jdField_a_of_type_Boyf = new boyf(10022, 100, 13);
+    String str1 = parambncb.jdField_a_of_type_Bnbx.d;
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(str1)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilMap.put(str1, parambncb);
+    Object localObject = parambncb.jdField_a_of_type_Bnbx;
+    String str2 = QzoneModuleConst.getModuleSavePath(this.jdField_a_of_type_AndroidContentContext, (bnbx)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "----------savePath--" + str2);
+    }
+    File localFile = new File(str2);
+    if (localFile.exists())
+    {
+      String str3 = ((bnbx)localObject).e;
+      if ((TextUtils.isEmpty(str3)) || ((((bnbx)localObject).jdField_a_of_type_Long != 0L) && (((bnbx)localObject).jdField_a_of_type_Long == localFile.length())))
+      {
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "download succeed: from cache.");
+        bnbw.a().a((bnbx)localObject);
+        if (parambncb.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null)
+        {
+          parambncb.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener.onDownloadSucceed(parambncb.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_JavaUtilMap.remove(str1);
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 1, "before download-- orgMD5: " + str3 + " , downloadFilePath: " + localFile.getPath());
+        }
+        localObject = new File(str2);
+        if (((File)localObject).exists()) {
+          ((File)localObject).delete();
+        }
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "check download cache failed: md5 verify is not passed.");
+      }
+    }
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "start download--" + parambncb.jdField_a_of_type_JavaLangString + ",priority: " + parambncb.jdField_a_of_type_Boolean + " ,startImmediately: " + parambncb.b);
+    parambncb.jdField_a_of_type_Long = System.nanoTime();
+    this.jdField_a_of_type_Bmvo.a(str1, str2, parambncb.jdField_a_of_type_Boolean, parambncb.b, this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener);
   }
   
-  private String a(bolr parambolr)
+  private void c(String paramString)
   {
-    Object localObject = null;
-    if (parambolr != null) {}
+    bncb localbncb = (bncb)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    String str2;
+    bnbx localbnbx;
+    String str3;
+    long l;
+    if (localbncb != null)
+    {
+      str2 = QzoneModuleConst.getModuleSavePath(this.jdField_a_of_type_AndroidContentContext, localbncb.jdField_a_of_type_Bnbx);
+      localbnbx = localbncb.jdField_a_of_type_Bnbx;
+      if (QLog.isDevelopLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 1, "download complete: " + str2);
+      }
+      str3 = localbnbx.e;
+      String str1 = "";
+      if (!TextUtils.isEmpty(str3)) {
+        str1 = bjtz.a(str2);
+      }
+      l = (System.nanoTime() - localbncb.jdField_a_of_type_Long) / 1000000L;
+      if ((!TextUtils.isEmpty(str3)) && (!str3.equalsIgnoreCase(str1))) {
+        break label253;
+      }
+      bnbw.a().a(localbnbx);
+    }
     for (;;)
     {
       try
       {
-        parambolr = parambolr.b.iterator();
-        if (!parambolr.hasNext()) {
-          break label76;
+        if (QzoneModuleConst.QZONE_MODULES_NEED_INSTALL.contains(localbnbx.jdField_a_of_type_JavaLangString)) {
+          new DexClassLoader(str2, this.jdField_a_of_type_AndroidContentContext.getApplicationContext().getDir("dex", 0).getAbsolutePath(), str2, this.jdField_a_of_type_AndroidContentContext.getApplicationContext().getClassLoader());
         }
-        localObject = (bokw)parambolr.next();
-        if (!(localObject instanceof boof)) {
-          continue;
+        if (localbncb.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null) {
+          localbncb.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener.onDownloadSucceed(localbncb.jdField_a_of_type_JavaLangString);
         }
-        parambolr = (boof)localObject;
-        if (parambolr != null)
-        {
-          parambolr = Uri.parse(parambolr.b()).getPath();
-          localObject = parambolr;
-          return localObject;
-        }
-      }
-      catch (Throwable parambolr)
-      {
-        parambolr.printStackTrace();
-        return null;
-      }
-      parambolr = null;
-      continue;
-      label76:
-      parambolr = null;
-    }
-  }
-  
-  private void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, Camera paramCamera)
-  {
-    if (this.jdField_f_of_type_Int == 0) {
-      HandRecognizer.getInstance().onPreviewFrameHandler(paramArrayOfByte, paramInt1, paramInt2, paramCamera, paramInt3, new bnce(this));
-    }
-    while (this.jdField_f_of_type_Int != 1) {
-      return;
-    }
-    QWalletFaceTracker.getInstance().onPreviewFrameHandler(paramArrayOfByte, this.g, paramInt1, paramInt2, paramInt3, new bncf(this));
-  }
-  
-  private void ae()
-  {
-    this.jdField_c_of_type_AndroidWidgetTextView.setText("根据提示做动作 \n 识别成功即可领取红包~");
-  }
-  
-  private void af()
-  {
-    ae();
-    this.jdField_e_of_type_Int = a().getIntent().getIntExtra("emoji_feeds_id", 0);
-    if ((this.jdField_e_of_type_Int < 0) || (this.jdField_e_of_type_Int >= 200)) {
-      this.jdField_e_of_type_Int = 0;
-    }
-    if (this.jdField_e_of_type_Int < 100)
-    {
-      this.jdField_f_of_type_Int = 0;
-      if (this.jdField_f_of_type_Int != 0) {
-        break label318;
-      }
-    }
-    label318:
-    for (int k = 90;; k = 50)
-    {
-      this.g = a().getIntent().getIntExtra("emoji_threshold", k);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setMaxDuration(3000.0F);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.b.setContentDescription(anni.a(2131708562));
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setUseVideoOrientation(true);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setPreviewCallback(this);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setFunctionFlag(3);
-      this.jdField_d_of_type_Int = a().getIntent().getIntExtra("emoji_combo_id", 0);
-      this.h = a().getIntent().getIntExtra("emoji_capture_tag", 0);
-      this.m = a().getIntent().getStringExtra("emoji_face_config_path");
-      this.n = a().getIntent().getStringExtra("emoji_hand_res_folder_path");
-      this.jdField_f_of_type_AndroidViewView.setOnTouchListener(new bncc(this));
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setOnTouchListener(new bncd(this));
-      this.jdField_b_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.d(false);
-      if (QLog.isColorLevel()) {
-        QLog.i("QIMEmojiRedPacketCameraCapture", 2, "init setting mFeedsId=" + this.jdField_e_of_type_Int + ",threshold=" + this.g + ",mComboId=" + this.jdField_d_of_type_Int);
-      }
-      return;
-      this.jdField_f_of_type_Int = 1;
-      this.jdField_e_of_type_Int -= 100;
-      break;
-    }
-  }
-  
-  private void ag()
-  {
-    try
-    {
-      if (this.jdField_f_of_type_Int == 0)
-      {
-        HandRecognizer.getInstance().unInit();
+        bnci.a(localbnbx, true, l);
+        this.jdField_a_of_type_JavaUtilMap.remove(paramString);
         return;
       }
-      if (this.jdField_f_of_type_Int == 1)
+      catch (Throwable localThrowable)
       {
-        QWalletFaceTracker.getInstance().unInit();
-        return;
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "after download,new DexClassLoader error: ", localThrowable);
+        continue;
       }
-    }
-    catch (Throwable localThrowable) {}
-  }
-  
-  private boolean i()
-  {
-    return (this.j >= 3) && (System.currentTimeMillis() - this.jdField_e_of_type_Long >= 1000L);
-  }
-  
-  private void o(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "initRecognizer  mRecogType=" + this.jdField_f_of_type_Int);
-    }
-    if (this.jdField_f_of_type_Int == 0) {
-      HandRecognizer.getInstance().init(a(), this.n, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletEmojIBaseRecognizer);
-    }
-    while ((this.jdField_f_of_type_Int != 1) || (!paramBoolean)) {
-      return;
-    }
-    QWalletFaceTracker.getInstance().init(a(), this.m, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletEmojIBaseRecognizer);
-  }
-  
-  public void F()
-  {
-    g();
-    L();
-    QQToast.a(BaseApplicationImpl.getContext(), anni.a(2131708564), 0).a();
-  }
-  
-  public void I() {}
-  
-  public void L()
-  {
-    super.L();
-    bcst.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.short", 0, 0, "", "", "", "");
-  }
-  
-  public void V()
-  {
-    int k = 100;
-    super.V();
-    this.jdField_a_of_type_Bojo.b(100);
-    bojo localbojo = this.jdField_a_of_type_Bojo;
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.k) {}
-    for (;;)
-    {
-      localbojo.c(k);
-      return;
-      k = -1;
+      label253:
+      if (QLog.isDevelopLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 1, "download complete-- orgMD5: " + str3 + " , downloadMD5: " + localThrowable);
+      }
+      File localFile = new File(str2);
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "download failed: md5 verify is not passed.");
+      if (localbncb.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null) {
+        localbncb.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener.onDownloadFailed(localbncb.jdField_a_of_type_JavaLangString);
+      }
+      bnci.a(localbnbx, false, l);
     }
   }
   
-  public int a()
+  public void a(String paramString)
   {
-    return 2131560947;
-  }
-  
-  public View a()
-  {
-    View localView = super.a();
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    ac();
-    af();
-    return localView;
-  }
-  
-  protected baou a()
-  {
-    baou localbaou = super.a();
-    localbaou.a(0.33F);
-    localbaou.a(false);
-    localbaou.b(false);
-    localbaou.i(1);
-    return localbaou;
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    if (paramInt2 == -1)
-    {
-      a().setResult(-1, paramIntent);
-      a().finish();
-      return;
-    }
-    EmojiGifHelper.removeTask(this.h);
-    ae();
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-  }
-  
-  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
-  {
-    super.a(paramVideoCaptureResult, paramLocalMediaInfo);
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onVideoCaptured isSuccReg()=" + i() + "，mSuccRecogs=" + this.j);
-    }
-    if (i())
-    {
-      EmojiRedPackPreviewFragment.start(a(), 1, this.h, paramVideoCaptureResult, paramLocalMediaInfo);
-      bcst.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.success", 0, 0, "", "", "", "");
-      return;
-    }
-    if (System.currentTimeMillis() - this.jdField_e_of_type_Long < 1000L)
-    {
-      ThreadManager.getUIHandler().post(new QIMEmojiRedPacketCameraCaptureUnit.8(this));
-      return;
-    }
-    ThreadManager.getUIHandler().post(new QIMEmojiRedPacketCameraCaptureUnit.9(this));
-  }
-  
-  public void a(QQFilterRenderManager.ChainBuilder paramChainBuilder)
-  {
-    super.a(paramChainBuilder);
-    if (paramChainBuilder != null) {
-      paramChainBuilder.addFilter(185, null);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    int k = 100;
-    super.a(paramBoolean, paramString);
-    this.jdField_a_of_type_Bojo.b(100);
-    paramString = this.jdField_a_of_type_Bojo;
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.k) {}
-    for (;;)
-    {
-      paramString.c(k);
-      return;
-      k = -1;
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.f()) {}
+    paramString = bnbw.a().a(paramString);
+    if ((paramString == null) || (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString.d))) {}
     do
     {
       return;
-      if (i())
-      {
-        ad();
-        return;
-      }
-    } while (System.currentTimeMillis() - this.jdField_a_of_type_Long <= jdField_d_of_type_Long);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a(paramArrayOfByte, paramCamera.getParameters().getPreviewSize().width, paramCamera.getParameters().getPreviewSize().height, this.jdField_e_of_type_Int, paramCamera);
+      paramString = (bncb)this.jdField_a_of_type_JavaUtilMap.get(paramString.d);
+    } while (paramString == null);
+    Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler);
+    localMessage.what = 4;
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
   }
   
-  public void a_(boolean paramBoolean)
+  public boolean a(bnbx parambnbx, ModuleDownloadListener paramModuleDownloadListener)
   {
-    super.a_(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onSoLoad" + paramBoolean);
+    return a(parambnbx, false, paramModuleDownloadListener);
+  }
+  
+  public boolean a(bnbx parambnbx, boolean paramBoolean, ModuleDownloadListener paramModuleDownloadListener)
+  {
+    return a(parambnbx, paramBoolean, false, paramModuleDownloadListener);
+  }
+  
+  public boolean a(bnbx parambnbx, boolean paramBoolean1, boolean paramBoolean2, ModuleDownloadListener paramModuleDownloadListener)
+  {
+    if (parambnbx == null) {
+      return false;
     }
-    ThreadManager.getUIHandler().post(new QIMEmojiRedPacketCameraCaptureUnit.12(this));
-    o(paramBoolean);
+    bncb localbncb = new bncb(null);
+    localbncb.jdField_a_of_type_JavaLangString = parambnbx.jdField_a_of_type_JavaLangString;
+    localbncb.jdField_a_of_type_Bnbx = parambnbx;
+    localbncb.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener = paramModuleDownloadListener;
+    localbncb.jdField_a_of_type_Boolean = paramBoolean1;
+    localbncb.b = paramBoolean2;
+    parambnbx = Message.obtain(this.jdField_a_of_type_AndroidOsHandler);
+    parambnbx.what = 1;
+    parambnbx.obj = localbncb;
+    parambnbx.sendToTarget();
+    return true;
   }
   
-  public void ac()
+  public void b(String paramString)
   {
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380100));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380053));
-    this.jdField_f_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131380874);
-    this.jdField_d_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363741));
-    akww.a(this.jdField_d_of_type_AndroidWidgetButton, 0.3F);
-    this.jdField_d_of_type_AndroidWidgetButton.setOnClickListener(new bnca(this));
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
-    this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress = ((AnimationQIMCircleProgress)this.jdField_a_of_type_AndroidViewView.findViewById(2131365143));
-    Object localObject = (QIMCameraCountTimeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364160);
-    ((QIMCameraCountTimeLayout)localObject).setDotView(2130847257);
-    ((QIMCameraCountTimeLayout)localObject).setTextColor(7829367);
-    localObject = (AnimationQIMCircleProgress)this.jdField_a_of_type_AndroidViewView.findViewById(2131365143);
-    ((AnimationQIMCircleProgress)localObject).setProgressColor(-1694379);
-    ((AnimationQIMCircleProgress)localObject).setCenterCircleColor(-1694379);
-    this.jdField_a_of_type_JavaLangString = anni.a(2131708563);
-  }
-  
-  public void ad()
-  {
-    ThreadManager.getUIHandler().post(new QIMEmojiRedPacketCameraCaptureUnit.7(this));
-  }
-  
-  public void d(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "initCombo begin comboId:" + paramInt);
-    }
-    bolb localbolb = (bolb)bojv.a(5);
-    localbolb.a(this.jdField_a_of_type_Bole);
-    localbolb.a().a(this.i);
-    localbolb.j();
-    localbolb.a(false);
-    QIMFilterCategoryItem localQIMFilterCategoryItem = localbolb.a(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "initCombo:" + localQIMFilterCategoryItem);
-    }
-    if (localQIMFilterCategoryItem == null) {}
+    paramString = bnbw.a().a(paramString);
+    if ((paramString == null) || (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString.d))) {}
     do
     {
       return;
-      localObject = localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString;
-      if (!localbolb.a().a((String)localObject, a())) {
-        break;
+      paramString = (bncb)this.jdField_a_of_type_JavaUtilMap.get(paramString.d);
+    } while (paramString == null);
+    Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler);
+    localMessage.what = 7;
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    bncb localbncb;
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 1: 
+      a((bncb)paramMessage.obj);
+      return true;
+    case 2: 
+      c((String)paramMessage.obj);
+      return true;
+    case 3: 
+      paramMessage = (String)paramMessage.obj;
+      localbncb = (bncb)this.jdField_a_of_type_JavaUtilMap.get(paramMessage);
+      if (localbncb != null)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "download failed: " + localbncb.jdField_a_of_type_JavaLangString);
+        if (localbncb.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null) {
+          localbncb.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener.onDownloadFailed(localbncb.jdField_a_of_type_JavaLangString);
+        }
+        long l = (System.nanoTime() - localbncb.jdField_a_of_type_Long) / 1000000L;
+        bnci.a(localbncb.jdField_a_of_type_Bnbx, false, l);
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("QIMEmojiRedPacketCameraCapture", 2, "initCombo lock return");
-    return;
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("apply_source", 1);
-    ((Bundle)localObject).putInt("capture_scene", this.i);
-    bolr localbolr = localbolb.a(localQIMFilterCategoryItem);
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "combo.outState=" + localbolr.a);
+      this.jdField_a_of_type_JavaUtilMap.remove(paramMessage);
+      return true;
+    case 4: 
+      paramMessage = (bncb)paramMessage.obj;
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "cancel download: " + paramMessage.jdField_a_of_type_JavaLangString);
+      paramMessage = paramMessage.jdField_a_of_type_Bnbx.d;
+      this.jdField_a_of_type_Bmvo.a(paramMessage, this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener);
+      return true;
+    case 5: 
+      paramMessage = (String)paramMessage.obj;
+      localbncb = (bncb)this.jdField_a_of_type_JavaUtilMap.get(paramMessage);
+      if (localbncb != null)
+      {
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "download canceled: " + localbncb.jdField_a_of_type_JavaLangString);
+        if (localbncb.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null) {
+          localbncb.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener.onDownloadCanceled(localbncb.jdField_a_of_type_JavaLangString);
+        }
+      }
+      this.jdField_a_of_type_JavaUtilMap.remove(paramMessage);
+      return true;
+    case 6: 
+      paramMessage = (bncb)paramMessage.obj;
+      if ((paramMessage != null) && (paramMessage.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null))
+      {
+        float f = ((Float)paramMessage.jdField_a_of_type_JavaLangObject).floatValue();
+        paramMessage.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener.onDownloadProgress(paramMessage.jdField_a_of_type_JavaLangString, f);
+      }
+      return true;
     }
-    if ((localbolr.a == 1) || (localbolr.a == 2)) {
-      boud.a(localbolr).a();
-    }
-    ThreadManager.getUIHandler().post(new QIMEmojiRedPacketCameraCaptureUnit.13(this, localbolb, localQIMFilterCategoryItem, (Bundle)localObject));
-  }
-  
-  public void e()
-  {
-    super.e();
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onDestroy@" + hashCode());
-    }
-    bolb localbolb = (bolb)bojv.a(5);
-    if (localbolb != null) {
-      localbolb.b(this.jdField_a_of_type_Bole);
-    }
-  }
-  
-  public void g()
-  {
-    super.g();
-    this.jdField_a_of_type_Bojo.a(8);
-    if (this.jdField_e_of_type_AndroidViewView != null) {
-      this.jdField_e_of_type_AndroidViewView.setVisibility(8);
-    }
-    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    ae();
-  }
-  
-  public void h()
-  {
-    super.h();
-    this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  public void j()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onCaptureButtonVideoStart");
-    }
-    super.j();
-    this.j = 0;
-    this.jdField_e_of_type_Long = System.currentTimeMillis();
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(anni.a(2131708561));
-    bcst.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.click", 0, 0, "", "", "", "");
-  }
-  
-  public void l(boolean paramBoolean)
-  {
-    if (this.jdField_d_of_type_Int != 0) {
-      ThreadManager.getUIHandler().post(new QIMEmojiRedPacketCameraCaptureUnit.11(this));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onResourceDownload" + paramBoolean);
-    }
-  }
-  
-  public void m()
-  {
-    super.m();
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onDestroyFilters@" + hashCode());
-    }
-    ag();
-  }
-  
-  public void o()
-  {
-    super.o();
-    this.u = false;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
+    paramMessage = (bncb)paramMessage.obj;
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "abort download: " + paramMessage.jdField_a_of_type_JavaLangString);
+    paramMessage = paramMessage.jdField_a_of_type_Bnbx.d;
+    this.jdField_a_of_type_Bmvo.b(paramMessage, this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener);
     return true;
   }
 }

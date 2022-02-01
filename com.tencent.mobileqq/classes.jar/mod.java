@@ -1,36 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
-import com.tencent.qphone.base.util.QLog;
-
-public class mod
-  implements mgs
+class mod
 {
-  public mod(ZimuToolbar paramZimuToolbar) {}
+  public String a;
+  public byte[] a;
   
-  public void a(long paramLong)
+  public mod(String paramString, byte[] paramArrayOfByte)
   {
-    EffectSettingUi.a(ZimuToolbar.access$400(this.a), paramLong);
-  }
-  
-  public void a(long paramLong, mhm parammhm)
-  {
-    EffectSettingUi.a(ZimuToolbar.access$000(this.a), paramLong);
-    QLog.w("ZimuToolbar", 1, "onEffectClick, 自己点击了字幕, id[" + parammhm.a + "], seq[" + paramLong + "]");
-    ZimuToolbar.access$100(this.a, paramLong, parammhm.a);
-    if ((!TextUtils.isEmpty(parammhm.a)) && (!"0".equalsIgnoreCase(parammhm.a)))
-    {
-      liq.a("0X80085CD", parammhm.a);
-      if (lio.a(parammhm.a))
-      {
-        parammhm = ZimuToolbar.access$200(this.a).a().a().d;
-        String str = ZimuToolbar.access$300(this.a).getCurrentAccountUin();
-        liq.a("0X8009191", str, parammhm);
-        liq.a("0X8009192", str, parammhm);
-      }
+    byte[] arrayOfByte = paramArrayOfByte;
+    if (paramArrayOfByte == null) {
+      arrayOfByte = new byte[0];
     }
+    this.jdField_a_of_type_ArrayOfByte = arrayOfByte;
+    paramArrayOfByte = paramString;
+    if (paramString == null) {
+      paramArrayOfByte = "";
+    }
+    this.jdField_a_of_type_JavaLangString = paramArrayOfByte;
   }
 }
 

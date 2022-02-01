@@ -1,17 +1,73 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.content.Context;
+import android.util.Log;
+import com.tencent.mobileqq.emoticonview.EmotionPanelListView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aspw
-  implements DialogInterface.OnClickListener
 {
-  public aspw(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  private static aspw jdField_a_of_type_Aspw;
+  private List<EmotionPanelListView> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static aspw a()
   {
-    this.a.a = false;
-    this.a.l = false;
-    this.a.doOnBackPressed();
+    if (jdField_a_of_type_Aspw == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aspw == null) {
+        jdField_a_of_type_Aspw = new aspw();
+      }
+      return jdField_a_of_type_Aspw;
+    }
+    finally {}
+  }
+  
+  public EmotionPanelListView a(Context paramContext)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      paramContext = (EmotionPanelListView)this.jdField_a_of_type_JavaUtilList.remove(0);
+      if (QLog.isColorLevel()) {
+        Log.d("EmotionPanelListViewPool", "from listview pool and poolSize = " + this.jdField_a_of_type_JavaUtilList.size());
+      }
+      return paramContext;
+    }
+    return new EmotionPanelListView(paramContext);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      Log.d("EmotionPanelListViewPool", "destory");
+    }
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList = null;
+    }
+  }
+  
+  public void a(EmotionPanelListView paramEmotionPanelListView)
+  {
+    if (paramEmotionPanelListView == null) {}
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilList == null)
+      {
+        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+        this.jdField_a_of_type_JavaUtilList.add(paramEmotionPanelListView);
+      }
+      while (QLog.isColorLevel())
+      {
+        Log.d("EmotionPanelListViewPool", "relase listview");
+        return;
+        if (!this.jdField_a_of_type_JavaUtilList.contains(paramEmotionPanelListView)) {
+          this.jdField_a_of_type_JavaUtilList.add(0, paramEmotionPanelListView);
+        }
+      }
+    }
   }
 }
 

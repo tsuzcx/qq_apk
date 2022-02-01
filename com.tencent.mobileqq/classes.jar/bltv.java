@@ -1,6 +1,8 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
+
 public abstract interface bltv
 {
-  public abstract void a();
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
 }
 
 

@@ -1,30 +1,36 @@
 package com.tencent.qqmini.minigame;
 
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
-import com.tencent.mobileqq.triton.sdk.debug.JankTraceLevel;
-import com.tencent.mobileqq.triton.sdk.game.GameLaunchParam.Builder;
-import com.tencent.mobileqq.triton.sdk.game.IGameLauncher;
-import com.tencent.qqmini.sdk.report.MiniAppReportManager2;
-import com.tencent.qqmini.sdk.report.MiniGamePerformanceStatics;
-import com.tencent.qqmini.sdk.report.MiniReportManager;
-import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239;
+import com.tencent.qqmini.minigame.debug.DebugWebSocket.DebuggerStateListener;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
 class GameRuntime$6
-  implements Runnable
+  implements DebugWebSocket.DebuggerStateListener
 {
   GameRuntime$6(GameRuntime paramGameRuntime) {}
   
-  public void run()
+  public void onDebuggerBreakPointPaused()
   {
-    GameRuntime.access$000(this.this$0).recordInitialMemory();
-    SDKMiniProgramLpReportDC04239.reportPageView(GameRuntime.access$300(this.this$0), "1", null, "load", null);
-    MiniAppReportManager2.reportPageView("2load", null, null, GameRuntime.access$300(this.this$0));
-    MiniReportManager.reportEventType(GameRuntime.access$300(this.this$0), 1007, "1");
-    if (GameRuntime.access$400(this.this$0)) {
-      GameRuntime.access$500(this.this$0).setJankTraceLevel(JankTraceLevel.BRIEF);
-    }
-    GameRuntime.access$500(this.this$0).getGameLauncher().launchGame(new GameLaunchParam.Builder().setGameInfo(GameRuntime.access$100(this.this$0).getGameInfo()).setGameLaunchCallback(new GameRuntime.6.1(this)).build());
-    GameRuntime.access$500(this.this$0).setEngineListener(new GameRuntime.6.2(this));
+    QMLog.e("GameRuntime DebugSocket", "launchGame debugger BreakPointPaused");
+    GameRuntime.access$100(this.this$0).updateDebuggerStatus("断点中", null, true);
+  }
+  
+  public void onDebuggerConnectedNormal()
+  {
+    QMLog.e("GameRuntime DebugSocket", "launchGame debugger connected ");
+    GameRuntime.access$100(this.this$0).updateDebuggerStatus("已连接", null, false);
+    this.this$0.launchGame();
+  }
+  
+  public void onDebuggerDisconnect(String paramString)
+  {
+    QMLog.e("GameRuntime DebugSocket", "launchGame debugger Disconnect");
+    GameRuntime.access$100(this.this$0).updateDebuggerStatus("连接断开", "关闭调试连接", false);
+  }
+  
+  public void onDebuggerReconnecting(String paramString)
+  {
+    QMLog.e("GameRuntime DebugSocket", "launchGame debugger Reconnecting");
+    GameRuntime.access$100(this.this$0).updateDebuggerStatus("连接断开", "重新建立调试连接...", false);
   }
 }
 

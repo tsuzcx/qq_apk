@@ -1,9 +1,19 @@
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aecr
-  extends amcl
+  implements DialogInterface.OnClickListener
 {
-  public TextView a;
+  public aecr(ChatHistory paramChatHistory) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.setEnabled(true);
+    this.a.c.dismiss();
+  }
 }
 
 

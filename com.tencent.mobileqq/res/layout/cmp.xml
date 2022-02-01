@@ -1,23 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.qqcircle.transition.QCircleTransitionLayout android:orientation="vertical" android:id="@id/idg" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.biz.qqcircle.transition.QCircleTransitionInnerLayout android:id="@id/mlk" android:background="@color/agj" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.widget.pull2refresh.RecyclerViewCompat android:id="@id/ngg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <com.tencent.biz.qqcircle.widgets.QCircleLayerStatusView android:id="@id/nj_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ProgressBar android:layout_gravity="center" android:id="@id/n6k" android:layout_width="30.0dip" android:layout_height="30.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading5" />
-        <RelativeLayout android:gravity="center_vertical" android:id="@id/lqn" android:paddingLeft="9.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="42.0dip">
-            <ImageView android:id="@id/ln8" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/gf1" android:scaleType="centerCrop" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/dy1" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/gej" android:scaleType="fitCenter" android:layout_toLeftOf="@id/ln8" android:layout_centerVertical="true" />
-        </RelativeLayout>
-        <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cmn" />
-        <com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView android:id="@id/n_t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <FrameLayout android:id="@id/mm5" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ViewStub android:id="@id/nuz" android:layout="@layout/cpf" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <ViewStub android:id="@id/nuy" android:layout="@layout/cnq" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </FrameLayout>
-        <LinearLayout android:layout_gravity="bottom|center|right" android:orientation="horizontal" android:id="@id/nae" android:background="@drawable/eeg" android:layout_width="78.0dip" android:layout_height="72.0dip" android:layout_marginBottom="164.0dip">
-            <ImageView android:layout_gravity="center_vertical" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="24.0dip" android:src="@drawable/eef" />
-            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/al3" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:text="发布" />
-        </LinearLayout>
-    </com.tencent.biz.qqcircle.transition.QCircleTransitionInnerLayout>
-</com.tencent.biz.qqcircle.transition.QCircleTransitionLayout>
+<RelativeLayout android:id="@id/mtj" android:background="#fff6f6f6" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="45.0dip">
+        <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/mth" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/h4b" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/wkc" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:gravity="center_vertical" android:id="@id/mtk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/xes" android:layout_toRightOf="@id/mth" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:gravity="center_vertical" android:id="@id/mti" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/xer" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,50 +1,19 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.observer.SSOAccountObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import kotlin.Metadata;
 
-class bduu
-  extends SSOAccountObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
+final class bduu
+  implements DialogInterface.OnClickListener
 {
-  bduu(bdut parambdut) {}
+  bduu(bdup parambdup, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean) {}
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.w("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onFailed|account=" + paramString + ",ret=" + paramInt2);
-    if (bdup.b(this.a.b) == 11) {
-      aukw.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, false);
+    if ((paramDialogInterface instanceof bhpc)) {
+      ((bhpc)paramDialogInterface).setOnDismissListener(null);
     }
-    this.a.b.b(9401, "get sKey failed");
-    this.a.c();
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    QLog.i("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onGetTicketNoPasswd|account=" + bipr.a(paramString) + ",type=" + paramInt);
-    if (bdup.b(this.a.b) == 11) {
-      aukw.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, true);
-    }
-    long l = System.currentTimeMillis();
-    if (paramInt == 4096)
-    {
-      bdup.d(this.a.b, new String(paramArrayOfByte));
-      bdut.a(this.a).set(true);
-      bivh.a(paramString, l);
-      this.a.b();
-      return;
-    }
-    this.a.b.b(9401, "get sKey failed");
-    this.a.c();
-  }
-  
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
-  {
-    QLog.w("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onUserCancel|action=" + paramInt);
-    if (bdup.b(this.a.b) == 11) {
-      aukw.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, false);
-    }
-    this.a.b.b(9401, "onUserCancel");
-    this.a.c();
+    bdup.a(this.jdField_a_of_type_Bdup, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean);
   }
 }
 

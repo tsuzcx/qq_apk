@@ -1,11 +1,11 @@
 package dov.com.tencent.mobileqq.activity.shortvideo;
 
-import bqah;
+import brcc;
 
 public class ShortVideoPlayActivity$11$1
   implements Runnable
 {
-  public ShortVideoPlayActivity$11$1(bqah parambqah) {}
+  public ShortVideoPlayActivity$11$1(brcc parambrcc) {}
   
   public void run()
   {

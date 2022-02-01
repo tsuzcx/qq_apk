@@ -1,13 +1,13 @@
 package cooperation.photoplus;
 
-import anhk;
-import bgjw;
-import bgmg;
-import bhhf;
-import bhhh;
-import bhhk;
-import bkfv;
-import blez;
+import antf;
+import bhjx;
+import bhmi;
+import bihu;
+import bihw;
+import bihz;
+import blha;
+import bmgc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -26,16 +26,16 @@ public class PhotoPlusManager
   implements Manager
 {
   public static final String a;
-  private bkfv jdField_a_of_type_Bkfv;
+  private blha jdField_a_of_type_Blha;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private List<Sticker> jdField_a_of_type_JavaUtilList;
-  private ConcurrentHashMap<String, bhhf> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, bihu> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private volatile boolean jdField_a_of_type_Boolean;
   private volatile boolean b;
   
   static
   {
-    jdField_a_of_type_JavaLangString = anhk.ba + "PhotoPlus/";
+    jdField_a_of_type_JavaLangString = antf.ba + "PhotoPlus/";
   }
   
   public PhotoPlusManager(AppInterface paramAppInterface)
@@ -47,16 +47,16 @@ public class PhotoPlusManager
     paramAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
     this.jdField_a_of_type_JavaUtilList = paramAppInterface.query(Sticker.class, new Sticker().getTableName(), false, null, null, null, null, null, null);
     paramAppInterface.close();
-    this.jdField_a_of_type_Bkfv = new bkfv(ThreadManager.getFileThreadLooper(), null);
+    this.jdField_a_of_type_Blha = new blha(ThreadManager.getFileThreadLooper(), null);
     a(false);
   }
   
   private void a(String paramString1, String paramString2, String paramString3)
   {
-    bhhf localbhhf = (bhhf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString2);
-    if (localbhhf != null)
+    bihu localbihu = (bihu)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString2);
+    if (localbihu != null)
     {
-      if ((localbhhf.a() == 2) || (localbhhf.a() == 3))
+      if ((localbihu.a() == 2) || (localbihu.a() == 3))
       {
         if (QLog.isColorLevel()) {
           QLog.d("PhotoPlusManager", 2, "[download] duplicated " + paramString2);
@@ -66,16 +66,16 @@ public class PhotoPlusManager
       if (QLog.isColorLevel()) {
         QLog.d("PhotoPlusManager", 2, "[download] task status error, cancel it " + paramString2);
       }
-      localbhhf.a(true);
+      localbihu.a(true);
     }
-    localbhhf = new bhhf(paramString1, new File(paramString2));
-    localbhhf.n = true;
-    bhhk localbhhk = ((bhhh)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(47)).a(1);
+    localbihu = new bihu(paramString1, new File(paramString2));
+    localbihu.n = true;
+    bihz localbihz = ((bihw)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(47)).a(1);
     if (QLog.isColorLevel()) {
       QLog.d("PhotoPlusManager", 2, "[download] startDownload: " + paramString1 + " path=" + paramString2);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString2, localbhhf);
-    localbhhk.a(localbhhf, new blez(this, paramString2, paramString1, paramString3), null);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString2, localbihu);
+    localbihz.a(localbihu, new bmgc(this, paramString2, paramString1, paramString3), null);
   }
   
   private void a(List<Sticker> paramList)
@@ -92,7 +92,7 @@ public class PhotoPlusManager
       if (paramList != null) {
         break label53;
       }
-      bgmg.a(jdField_a_of_type_JavaLangString);
+      bhmi.a(jdField_a_of_type_JavaLangString);
     }
     label53:
     do
@@ -135,7 +135,7 @@ public class PhotoPlusManager
                     if (QLog.isColorLevel()) {
                       QLog.d("PhotoPlusManager", 2, "[updateStickerResource] delete old dir: " + localObject2.getName() + File.separator + localSticker.getName());
                     }
-                    bgmg.a(localSticker.getAbsolutePath());
+                    bhmi.a(localSticker.getAbsolutePath());
                   }
                 }
                 for (;;)
@@ -163,7 +163,7 @@ public class PhotoPlusManager
         if (QLog.isColorLevel()) {
           QLog.d("PhotoPlusManager", 2, "[updateStickerResource] delete old dir: " + localObject2.getName());
         }
-        bgmg.a(localObject2.getAbsolutePath());
+        bhmi.a(localObject2.getAbsolutePath());
       }
       for (;;)
       {
@@ -198,7 +198,7 @@ public class PhotoPlusManager
     String str = paramString.substring(0, paramString.indexOf(".zip")) + File.separator;
     try
     {
-      bgmg.a(paramString, str, false);
+      bhmi.a(paramString, str, false);
       if (QLog.isColorLevel()) {
         QLog.d("PhotoPlusManager", 2, "[unzip] success: " + paramString);
       }
@@ -211,8 +211,8 @@ public class PhotoPlusManager
         if (QLog.isColorLevel()) {
           QLog.d("PhotoPlusManager", 2, "[unzip]", localException);
         }
-      } while (bgjw.b() <= 40960L);
-      bgmg.d(paramString);
+      } while (bhjx.b() <= 40960L);
+      bhmi.d(paramString);
     }
   }
   
@@ -224,7 +224,7 @@ public class PhotoPlusManager
     if (QLog.isColorLevel()) {
       QLog.d("PhotoPlusManager", 2, "[updateStickerResource] isDelete=" + paramBoolean);
     }
-    this.jdField_a_of_type_Bkfv.post(new PhotoPlusManager.UpdateTask(this, this.jdField_a_of_type_JavaUtilList, paramBoolean));
+    this.jdField_a_of_type_Blha.post(new PhotoPlusManager.UpdateTask(this, this.jdField_a_of_type_JavaUtilList, paramBoolean));
   }
   
   /* Error */

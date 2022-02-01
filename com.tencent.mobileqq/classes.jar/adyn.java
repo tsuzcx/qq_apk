@@ -1,29 +1,19 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class adyn
-  extends aywi
+  implements agpv
 {
-  public adyn(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  public adyn(BaseChatPie paramBaseChatPie) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(Bitmap paramBitmap, agpd paramagpd, int paramInt)
   {
-    if (paramBoolean1)
-    {
-      int i = ContactSyncJumpActivity.a(this.a).d();
-      if ((i == 1) || (i == 5))
-      {
-        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
-        this.a.finish();
-      }
-    }
+    this.a.ar();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyn
  * JD-Core Version:    0.7.0.1
  */

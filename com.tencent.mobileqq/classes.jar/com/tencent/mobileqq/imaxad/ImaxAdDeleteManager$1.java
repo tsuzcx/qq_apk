@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.imaxad;
 
-import avfr;
-import avfw;
+import avxu;
+import avxz;
 import com.tencent.mobileqq.app.QQAppInterface;
-import nuk;
+import nwf;
 
 public class ImaxAdDeleteManager$1
   implements Runnable
 {
-  public ImaxAdDeleteManager$1(avfr paramavfr, nuk paramnuk, QQAppInterface paramQQAppInterface, String paramString) {}
+  public ImaxAdDeleteManager$1(avxu paramavxu, nwf paramnwf, QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {
-    nuk localnuk2 = this.jdField_a_of_type_Nuk;
-    nuk localnuk1 = localnuk2;
-    if (localnuk2 == null) {
-      localnuk1 = nuk.a(avfw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_a_of_type_JavaLangString));
+    nwf localnwf2 = this.jdField_a_of_type_Nwf;
+    nwf localnwf1 = localnwf2;
+    if (localnwf2 == null) {
+      localnwf1 = nwf.a(avxz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_a_of_type_JavaLangString));
     }
-    avfr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), localnuk1, this.jdField_a_of_type_JavaLangString);
+    avxu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), localnwf1, this.jdField_a_of_type_JavaLangString);
   }
 }
 

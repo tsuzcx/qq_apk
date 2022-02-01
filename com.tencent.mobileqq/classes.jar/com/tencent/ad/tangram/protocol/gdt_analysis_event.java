@@ -6,6 +6,9 @@ import android.support.annotation.Keep;
 public final class gdt_analysis_event
 {
   public static final int ACTIVITY_STATUS_UNKNOWN = 0;
+  public static final int CACHE_FILE = 2;
+  public static final int CACHE_MEMORY = 1;
+  public static final int CACHE_NOT_EXISTS = 0;
   public static final int EVENT_ACTIVITY_ACTIVITY_STATUS_CHANGED = 1102;
   public static final int EVENT_APP_INSATLLED = 1062;
   public static final int EVENT_CLICK_END = 1017;
@@ -15,15 +18,16 @@ public final class gdt_analysis_event
   public static final int EVENT_CLOSE_INTERSTITIAL_END_AT_FIRST = 1096;
   public static final int EVENT_CLOSE_INTERSTITIAL_INVOKED = 1091;
   public static final int EVENT_CLOSE_INTERSTITIAL_START = 1092;
-  public static final int EVENT_CONSISTENCY_BETWEEN_DEVICE_ID_AND_IMEI = 1074;
   public static final int EVENT_EXPOSURE_API_INVOKE = 1103;
   public static final int EVENT_EXPOSURE_CALL_BACK = 1104;
+  public static final int EVENT_GET_BSSID = 1123;
   public static final int EVENT_GET_DEVICE_AID_TICKET = 1049;
   public static final int EVENT_GET_DEVICE_ANDROID_ID = 1042;
   public static final int EVENT_GET_DEVICE_CARRIER = 1039;
   public static final int EVENT_GET_DEVICE_ID = 1040;
   public static final int EVENT_GET_DEVICE_IDFA = 1043;
-  public static final int EVENT_GET_DEVICE_IMEI = 1073;
+  public static final int EVENT_GET_DEVICE_ID_0 = 1114;
+  public static final int EVENT_GET_DEVICE_ID_1 = 1115;
   public static final int EVENT_GET_DEVICE_INFO_END = 1037;
   public static final int EVENT_GET_DEVICE_INFO_START = 1036;
   public static final int EVENT_GET_DEVICE_IPV4 = 1045;
@@ -34,6 +38,15 @@ public final class gdt_analysis_event
   public static final int EVENT_GET_DEVICE_MAC_ADDRESS = 1041;
   public static final int EVENT_GET_DEVICE_QADID = 1044;
   public static final int EVENT_GET_DEVICE_TAID_TICKET = 1050;
+  public static final int EVENT_GET_IMEI = 1116;
+  public static final int EVENT_GET_IMEI_0 = 1117;
+  public static final int EVENT_GET_IMEI_1 = 1118;
+  public static final int EVENT_GET_MEID = 1119;
+  public static final int EVENT_GET_MEID_0 = 1120;
+  public static final int EVENT_GET_MEID_1 = 1121;
+  public static final int EVENT_GET_SUBSCRIBER_ID = 1122;
+  public static final int EVENT_GET_USER_AGENT = 1125;
+  public static final int EVENT_GET_UUID = 1124;
   public static final int EVENT_INTERSTITIAL_ACTIVITY_STATUS_CHANGED = 1094;
   public static final int EVENT_INTERSTITIAL_ACTIVITY_STATUS_CHANGED_AT_FIRST = 1095;
   public static final int EVENT_LAUNCH_APP_MARKET = 1061;
@@ -51,7 +64,6 @@ public final class gdt_analysis_event
   public static final int EVENT_METHOD_ARK_SEND_NOTIFICATION = 1072;
   public static final int EVENT_METHOD_INVOKE = 1051;
   public static final int EVENT_METHOD_JSBRIDGE = 1052;
-  public static final int EVENT_MUID_SOURCE_TYPE = 1075;
   public static final int EVENT_OFFLINE = 1106;
   public static final int EVENT_PRELOAD = 1105;
   public static final int EVENT_PRELOAD_INTERSTITIAL_END = 1082;
@@ -75,6 +87,9 @@ public final class gdt_analysis_event
   public static final int EVENT_THIRD_PARTY_MONITOR_STATISTICS_HTTP = 1060;
   public static final int EVENT_THIRD_PARTY_MONITOR_STATISTICS_LOCAL_VALIDATION = 1058;
   public static final int EVENT_THIRD_PARTY_MONITOR_STATISTICS_QBOSS_VALICATION = 1059;
+  public static final int EVENT_UUID = 1126;
+  public static final int EVENT_UUID_BACKUP = 1127;
+  public static final int EVENT_UUID_EQUAL = 1128;
   public static final int FRAGMENT_STATUS_BEFORE_FINISH = 4;
   public static final int FRAGMENT_STATUS_ON_ACTIVITY_CREATED = 6;
   public static final int FRAGMENT_STATUS_ON_ATTACH = 7;

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ark.API;
 
-import aphx;
-import aphz;
-import apib;
+import apvn;
+import apvp;
+import apvr;
 
 public class ArkAppEventObserverManager$ArkConnectionHandler$6
   implements Runnable
 {
-  public ArkAppEventObserverManager$ArkConnectionHandler$6(aphz paramaphz) {}
+  public ArkAppEventObserverManager$ArkConnectionHandler$6(apvp paramapvp) {}
   
   public void run()
   {
-    if ((aphx.a(this.a.a) != null) && (!"none".equals(aphx.b(this.a.a))))
+    if ((apvn.a(this.a.a) != null) && (!"none".equals(apvn.b(this.a.a))))
     {
-      aphx.a(this.a.a).a(true, "none");
-      aphx.a(this.a.a, "none");
+      apvn.a(this.a.a).a(true, "none");
+      apvn.a(this.a.a, "none");
     }
   }
 }

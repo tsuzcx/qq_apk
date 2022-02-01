@@ -1,43 +1,67 @@
-import android.location.Location;
-import android.location.LocationListener;
-import android.os.Bundle;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoi.2.1;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoi.2.2;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
-class yyi
-  implements LocationListener
+public class yyi
+  implements blnt
 {
-  yyi(yye paramyye) {}
+  yyi(yyg paramyyg) {}
   
-  public void onLocationChanged(Location paramLocation)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    if (paramLocation != null)
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
     {
-      yqp.a("DoodleEmojiManager", "onLocationChanged, location : %s", paramLocation);
-      if (this.a.b.size() >= 10)
-      {
-        this.a.b.remove(0);
-        yqp.b("DoodleEmojiManager", "onLocationChanged, LocationList size > 5, remove the first location.");
-      }
-      this.a.b.add(new Location(paramLocation));
+      paramView.c(l);
       return;
     }
-    yqp.d("DoodleEmojiManager", "onLocationChanged, location is null.");
   }
   
-  public void onProviderDisabled(String paramString)
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    yqp.a("DoodleEmojiManager", "onProviderDisabled, provider: %s .", paramString);
+    paramListView = (PullRefreshHeader)paramView;
+    long l;
+    if (this.a.jdField_a_of_type_Long == 0L)
+    {
+      l = System.currentTimeMillis();
+      paramListView.a(l);
+      if (!bhnv.g(this.a.a())) {
+        break label118;
+      }
+      if (this.a.jdField_a_of_type_Wvg != null) {
+        this.a.jdField_a_of_type_Wvg.a();
+      }
+      this.a.f();
+      new Handler(Looper.getMainLooper()).postDelayed(new EditVideoPoi.2.1(this), 300L);
+    }
+    for (;;)
+    {
+      ((ajss)paramView.getTag()).a = true;
+      return true;
+      l = this.a.jdField_a_of_type_Long;
+      break;
+      label118:
+      new Handler(Looper.getMainLooper()).postDelayed(new EditVideoPoi.2.2(this), 300L);
+    }
   }
   
-  public void onProviderEnabled(String paramString)
+  public void b(int paramInt, View paramView, ListView paramListView)
   {
-    yqp.a("DoodleEmojiManager", "onProviderEnabled, provider: %s .", paramString);
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.b(l);
+      return;
+    }
   }
   
-  public void onStatusChanged(String paramString, int paramInt, Bundle paramBundle)
-  {
-    yqp.a("DoodleEmojiManager", "onStatusChanged, provider: %s , status: %s .", paramString, Integer.valueOf(paramInt));
-  }
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

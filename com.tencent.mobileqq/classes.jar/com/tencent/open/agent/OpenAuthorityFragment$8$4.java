@@ -1,10 +1,10 @@
 package com.tencent.open.agent;
 
-import abcw;
+import abgz;
 import android.graphics.Bitmap;
 import android.os.Message;
-import aukw;
-import bimq;
+import avcw;
+import bjnp;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 import cooperation.qqfav.util.HandlerPlus;
@@ -12,20 +12,20 @@ import cooperation.qqfav.util.HandlerPlus;
 public class OpenAuthorityFragment$8$4
   implements Runnable
 {
-  public OpenAuthorityFragment$8$4(bimq parambimq, abcw paramabcw) {}
+  public OpenAuthorityFragment$8$4(bjnp parambjnp, abgz paramabgz) {}
   
   public void run()
   {
-    aukw.a("KEY_GET_APP_ICON");
-    Bitmap localBitmap = OpenAuthorityFragment.a(this.jdField_a_of_type_Abcw.a.get());
-    aukw.a("KEY_GET_APP_ICON", OpenAuthorityFragment.a(this.jdField_a_of_type_Bimq.a));
-    OpenAuthorityFragment.a(this.jdField_a_of_type_Bimq.a).a(OpenAuthorityFragment.a(this.jdField_a_of_type_Bimq.a), localBitmap);
+    avcw.a("KEY_GET_APP_ICON");
+    Bitmap localBitmap = OpenAuthorityFragment.a(this.jdField_a_of_type_Abgz.a.get());
+    avcw.a("KEY_GET_APP_ICON", OpenAuthorityFragment.a(this.jdField_a_of_type_Bjnp.a));
+    OpenAuthorityFragment.a(this.jdField_a_of_type_Bjnp.a).a(OpenAuthorityFragment.a(this.jdField_a_of_type_Bjnp.a), localBitmap);
     if (localBitmap != null)
     {
       Message localMessage = new Message();
       localMessage.obj = localBitmap;
       localMessage.what = 4;
-      this.jdField_a_of_type_Bimq.a.a.sendMessage(localMessage);
+      this.jdField_a_of_type_Bjnp.a.a.sendMessage(localMessage);
     }
   }
 }

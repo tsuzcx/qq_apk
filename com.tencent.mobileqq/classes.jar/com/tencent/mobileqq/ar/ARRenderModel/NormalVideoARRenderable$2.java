@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aoua;
-import aouv;
+import aphq;
+import apil;
 
 public class NormalVideoARRenderable$2
   implements Runnable
@@ -10,7 +10,7 @@ public class NormalVideoARRenderable$2
   {
     this.this$0.f();
     if (this.this$0.a != null) {
-      this.this$0.a.b(1, aouv.c(this.this$0) - aouv.d(this.this$0));
+      this.this$0.a.b(1, apil.c(this.this$0) - apil.d(this.this$0));
     }
   }
 }

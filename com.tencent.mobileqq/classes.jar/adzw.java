@@ -1,30 +1,21 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adzw
-  extends annz
+final class adzw
+  implements DialogInterface.OnClickListener
 {
-  public adzw(Conversation paramConversation) {}
+  adzw(aebz paramaebz, aeca paramaeca) {}
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, Long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onGetUserCreateHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", troopOwner=" + paramLong);
+    if (this.jdField_a_of_type_Aebz != null) {
+      this.jdField_a_of_type_Aebz.a();
     }
-    if ((paramBoolean) && (paramInt == 0)) {
-      this.a.a(0L);
+    mru.e(true, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, int paramInt, String paramString2, String paramString3, List<Long> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onGetHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", jumpurl=" + paramString3);
-    }
-    if ((paramBoolean) && (paramInt == 0)) {
-      this.a.a(0L);
-    }
+    mru.b(this.jdField_a_of_type_Aeca.a);
   }
 }
 

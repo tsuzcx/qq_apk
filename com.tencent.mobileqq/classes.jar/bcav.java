@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import msf.msgcomm.msg_comm.MsgType0x210;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bcav
-  implements bcba
+  implements View.OnClickListener
 {
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbyn parambbyn, MessageHandler paramMessageHandler)
+  public bcav(MixSearchWebFragment paramMixSearchWebFragment) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TurnBrand", 2, "decode recv msg0x210.Submsgtype0x6e");
-    }
-    paramMsgType0x210 = (antq)paramMessageHandler.app.getManager(22);
-    if (paramMsgType0x210 != null) {
-      paramMsgType0x210.a();
-    }
-    bbzf.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
+    this.a.a(3);
+    this.a.doOnBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

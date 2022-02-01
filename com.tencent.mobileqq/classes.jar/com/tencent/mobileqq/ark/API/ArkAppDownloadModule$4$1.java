@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ark.API;
 
-import aphi;
-import apho;
+import apuy;
+import apve;
 
 public class ArkAppDownloadModule$4$1
   implements Runnable
 {
-  public ArkAppDownloadModule$4$1(apho paramapho) {}
+  public ArkAppDownloadModule$4$1(apve paramapve) {}
   
   public void run()
   {
-    aphi.a(this.a.jdField_a_of_type_Aphi, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Double, this.a.jdField_a_of_type_CooperationWadlIpcWadlParams);
+    apuy.a(this.a.jdField_a_of_type_Apuy, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Double, this.a.jdField_a_of_type_CooperationWadlIpcWadlParams);
   }
 }
 

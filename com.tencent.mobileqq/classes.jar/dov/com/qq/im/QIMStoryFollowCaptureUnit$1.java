@@ -1,11 +1,11 @@
 package dov.com.qq.im;
 
-import bnco;
+import bodw;
 
 public class QIMStoryFollowCaptureUnit$1
   implements Runnable
 {
-  public QIMStoryFollowCaptureUnit$1(bnco parambnco) {}
+  public QIMStoryFollowCaptureUnit$1(bodw parambodw) {}
   
   /* Error */
   public void run()
@@ -17,8 +17,8 @@ public class QIMStoryFollowCaptureUnit$1
     //   7: astore_2
     //   8: aload_2
     //   9: aload_0
-    //   10: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
-    //   13: invokestatic 28	bnco:a	(Lbnco;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
+    //   10: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
+    //   13: invokestatic 28	bodw:a	(Lbodw;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
     //   16: getfield 34	com/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam:videoPath	Ljava/lang/String;
     //   19: invokevirtual 38	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
     //   22: aload_2
@@ -31,38 +31,38 @@ public class QIMStoryFollowCaptureUnit$1
     //   34: iload_1
     //   35: ifne +185 -> 220
     //   38: aload_0
-    //   39: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
-    //   42: invokestatic 28	bnco:a	(Lbnco;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
+    //   39: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
+    //   42: invokestatic 28	bodw:a	(Lbodw;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
     //   45: aload_3
     //   46: invokestatic 54	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   49: putfield 58	com/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam:duration	J
     //   52: aload_0
-    //   53: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
-    //   56: getfield 61	bnco:a	Ldov/com/tencent/mobileqq/richmedia/capture/view/QIMCameraCaptureButtonLayout;
+    //   53: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
+    //   56: getfield 61	bodw:a	Ldov/com/tencent/mobileqq/richmedia/capture/view/QIMCameraCaptureButtonLayout;
     //   59: aload_0
-    //   60: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
-    //   63: invokestatic 28	bnco:a	(Lbnco;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
+    //   60: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
+    //   63: invokestatic 28	bodw:a	(Lbodw;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
     //   66: getfield 58	com/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam:duration	J
     //   69: l2f
     //   70: invokevirtual 67	dov/com/tencent/mobileqq/richmedia/capture/view/QIMCameraCaptureButtonLayout:setMaxDuration	(F)V
     //   73: aload_0
-    //   74: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
-    //   77: invokestatic 70	bnco:a	(Lbnco;)Lcom/tencent/mobileqq/richmedia/capture/view/FollowCaptureView;
+    //   74: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
+    //   77: invokestatic 70	bodw:a	(Lbodw;)Lcom/tencent/mobileqq/richmedia/capture/view/FollowCaptureView;
     //   80: aload_0
-    //   81: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
-    //   84: invokestatic 28	bnco:a	(Lbnco;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
+    //   81: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
+    //   84: invokestatic 28	bodw:a	(Lbodw;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
     //   87: invokevirtual 76	com/tencent/mobileqq/richmedia/capture/view/FollowCaptureView:setData	(Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;)V
     //   90: aload_0
-    //   91: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
+    //   91: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
     //   94: iconst_0
-    //   95: invokestatic 79	bnco:a	(Lbnco;Z)Z
+    //   95: invokestatic 79	bodw:a	(Lbodw;Z)Z
     //   98: pop
     //   99: new 81	java/lang/StringBuilder
     //   102: dup
     //   103: invokespecial 82	java/lang/StringBuilder:<init>	()V
     //   106: aload_0
-    //   107: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
-    //   110: invokestatic 70	bnco:a	(Lbnco;)Lcom/tencent/mobileqq/richmedia/capture/view/FollowCaptureView;
+    //   107: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
+    //   110: invokestatic 70	bodw:a	(Lbodw;)Lcom/tencent/mobileqq/richmedia/capture/view/FollowCaptureView;
     //   113: invokevirtual 85	com/tencent/mobileqq/richmedia/capture/view/FollowCaptureView:a	()Ljava/lang/String;
     //   116: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   119: getstatic 94	java/io/File:separator	Ljava/lang/String;
@@ -71,42 +71,42 @@ public class QIMStoryFollowCaptureUnit$1
     //   127: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   130: getstatic 94	java/io/File:separator	Ljava/lang/String;
     //   133: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   136: invokestatic 99	bcmk:a	()Ljava/lang/String;
+    //   136: invokestatic 99	bdfc:a	()Ljava/lang/String;
     //   139: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   142: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   145: astore_3
     //   146: aload_0
-    //   147: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
-    //   150: invokestatic 28	bnco:a	(Lbnco;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
+    //   147: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
+    //   150: invokestatic 28	bodw:a	(Lbodw;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
     //   153: aload_3
     //   154: putfield 105	com/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam:audioPath	Ljava/lang/String;
     //   157: aload_0
-    //   158: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
-    //   161: invokestatic 28	bnco:a	(Lbnco;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
+    //   158: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
+    //   161: invokestatic 28	bodw:a	(Lbodw;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
     //   164: getfield 34	com/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam:videoPath	Ljava/lang/String;
     //   167: aload_0
-    //   168: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
-    //   171: invokestatic 28	bnco:a	(Lbnco;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
+    //   168: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
+    //   171: invokestatic 28	bodw:a	(Lbodw;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
     //   174: getfield 58	com/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam:duration	J
     //   177: aload_0
-    //   178: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
-    //   181: invokestatic 28	bnco:a	(Lbnco;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
+    //   178: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
+    //   181: invokestatic 28	bodw:a	(Lbodw;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
     //   184: getfield 105	com/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam:audioPath	Ljava/lang/String;
     //   187: invokestatic 110	dov/com/tencent/mobileqq/richmedia/mediacodec/AudioDecoder:a	(Ljava/lang/String;JLjava/lang/String;)V
     //   190: aload_0
-    //   191: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
+    //   191: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
     //   194: iconst_1
-    //   195: invokestatic 79	bnco:a	(Lbnco;Z)Z
+    //   195: invokestatic 79	bodw:a	(Lbodw;Z)Z
     //   198: pop
     //   199: aload_0
-    //   200: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
+    //   200: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
     //   203: aload_0
-    //   204: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
-    //   207: invokestatic 113	bnco:a	(Lbnco;)Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$VideoCaptureResult;
+    //   204: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
+    //   207: invokestatic 113	bodw:a	(Lbodw;)Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$VideoCaptureResult;
     //   210: aload_0
-    //   211: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
-    //   214: invokestatic 116	bnco:a	(Lbnco;)Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
-    //   217: invokevirtual 119	bnco:a	(Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$VideoCaptureResult;Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;)V
+    //   211: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
+    //   214: invokestatic 116	bodw:a	(Lbodw;)Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;
+    //   217: invokevirtual 119	bodw:a	(Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$VideoCaptureResult;Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;)V
     //   220: aload_2
     //   221: invokevirtual 122	android/media/MediaMetadataRetriever:release	()V
     //   224: return
@@ -124,8 +124,8 @@ public class QIMStoryFollowCaptureUnit$1
     //   243: ldc 126
     //   245: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   248: aload_0
-    //   249: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbnco;
-    //   252: invokestatic 28	bnco:a	(Lbnco;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
+    //   249: getfield 12	dov/com/qq/im/QIMStoryFollowCaptureUnit$1:this$0	Lbodw;
+    //   252: invokestatic 28	bodw:a	(Lbodw;)Lcom/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam;
     //   255: getfield 34	com/tencent/mobileqq/richmedia/capture/data/FollowCaptureParam:videoPath	Ljava/lang/String;
     //   258: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   261: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;

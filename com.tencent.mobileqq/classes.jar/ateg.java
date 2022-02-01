@@ -1,27 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.jvm.internal.StringCompanionObject;
 
-class ateg
-  implements aten
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/extendfriend/wiget/FillBirthdayDialog$init$1", "Lcom/tencent/mobileqq/activity/BirthdayPickHelper$BirthdayChangeListener;", "onBirthdayChange", "", "newYear", "", "newMonth", "newDay", "onConfirmBtClicked", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ateg
+  implements adzs
 {
-  ateg(atee paramatee, FileManagerEntity paramFileManagerEntity) {}
+  public void a() {}
   
-  public void a(int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] onCheckResult. nSessionId=" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + " errCode:" + paramInt1);
-    if ((paramInt1 == 0) && (paramInt2 != 0) && (paramInt2 != 4))
+    ated.a(this.a, paramInt1);
+    ated.b(this.a, paramInt2);
+    ated.c(this.a, paramInt3);
+    ated.d(this.a, paramInt1 << 16 | paramInt2 << 8 | paramInt3);
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.apkSafeLevel = paramInt2;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.apkSafeMsg = paramString1;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.apkSafeDetailUrl = paramString2;
-      if (this.jdField_a_of_type_Atee.a != null) {
-        this.jdField_a_of_type_Atee.a.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      }
-    }
-    if (this.jdField_a_of_type_Atee.a != null) {
-      this.jdField_a_of_type_Atee.a.a().a(true, 200, new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, paramString2, paramBundle });
+      Object localObject = StringCompanionObject.INSTANCE;
+      localObject = new Object[3];
+      localObject[0] = Integer.valueOf(paramInt1);
+      localObject[1] = Integer.valueOf(paramInt2);
+      localObject[2] = Integer.valueOf(paramInt3);
+      localObject = String.format("onBirthdayChange newYear:%d,newMonth:%d,newDay:%d", Arrays.copyOf((Object[])localObject, localObject.length));
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "java.lang.String.format(format, *args)");
+      QLog.d("FillBirthdayDialog", 2, (String)localObject);
     }
   }
 }

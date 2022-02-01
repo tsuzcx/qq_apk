@@ -1,8 +1,18 @@
-import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import android.os.Bundle;
 
-public class auun
+public abstract interface auun
 {
-  public void a(GameCenterSessionInfo paramGameCenterSessionInfo) {}
+  public abstract void a(int paramInt, Bundle paramBundle);
+  
+  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
+  
+  public abstract void a(String paramString, long paramLong, Bundle paramBundle);
+  
+  public abstract void b(int paramInt, Bundle paramBundle);
+  
+  public abstract void c(int paramInt, Bundle paramBundle);
+  
+  public abstract void d(int paramInt, Bundle paramBundle);
 }
 
 

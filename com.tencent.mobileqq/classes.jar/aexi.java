@@ -1,14 +1,22 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class aexi
-  extends afwr
+  implements Animation.AnimationListener
 {
-  public ImageView a;
-  public BreathAnimationLayout a;
-  public StringBuilder a;
-  public TextView c;
+  public aexi(LoginInfoActivity paramLoginInfoActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    LoginInfoActivity.b(this.a).setVisibility(4);
+    LoginInfoActivity.b(this.a).clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

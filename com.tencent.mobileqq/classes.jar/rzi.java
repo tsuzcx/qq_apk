@@ -1,18 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-
-final class rzi
-  extends AnimatorListenerAdapter
+public abstract class rzi
 {
-  rzi(View paramView) {}
+  abstract void a();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.setAlpha(1.0F);
-    this.a.setLayerType(0, null);
-    this.a.setVisibility(8);
-  }
+  abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  abstract void a(int paramInt, Object paramObject);
+  
+  abstract void a(String paramString);
+  
+  abstract void a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2);
+  
+  abstract void a(rwf paramrwf);
+  
+  abstract void a(rwf paramrwf, int paramInt);
+  
+  abstract void a(boolean paramBoolean);
+  
+  abstract void b(rwf paramrwf);
 }
 
 

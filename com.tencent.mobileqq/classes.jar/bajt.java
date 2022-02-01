@@ -1,25 +1,28 @@
-import androidx.annotation.NonNull;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class bajt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$ActionSheetPrivacySelectBean;", "", "state", "", "privacySelectDes", "", "(ILjava/lang/String;)V", "getPrivacySelectDes", "()Ljava/lang/String;", "setPrivacySelectDes", "(Ljava/lang/String;)V", "getState", "()I", "setState", "(I)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bajt
 {
-  public int a;
-  public String a;
-  public String b = "";
+  private int jdField_a_of_type_Int;
+  @NotNull
+  private String jdField_a_of_type_JavaLangString;
   
-  public bajt()
+  public bajt(int paramInt, @NotNull String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  @NonNull
-  public String toString()
+  public final int a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("actionId").append("=").append(this.jdField_a_of_type_Int).append("|");
-    localStringBuilder.append("actionAndData").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuilder.append("plainText").append("=").append(this.b).append("|");
-    return localStringBuilder.toString();
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @NotNull
+  public final String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

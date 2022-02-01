@@ -1,27 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.animation.Transformation;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class bhmz
-  implements bgtg<Integer>
+  extends axud
 {
-  bhmz(bhmv parambhmv, View paramView, int paramInt) {}
+  bhmz(bhmr parambhmr, long paramLong) {}
   
-  public void a(bgta<Integer> parambgta, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void a(long paramLong1, long paramLong2)
   {
-    if (!this.jdField_a_of_type_Bhmv.a.x) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
-      this.jdField_a_of_type_Bhmv.a.d = paramInteger.intValue();
-    } while (this.jdField_a_of_type_Bhmv.a.d != this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bhmv.a.x = false;
+    if ((this.jdField_a_of_type_Long == paramLong1) && (paramLong2 > 0L)) {
+      bhhz.a((BaseActivity)this.jdField_a_of_type_Bhmr.a, paramLong2, this.jdField_a_of_type_Long + "", null, 20003);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhmz
  * JD-Core Version:    0.7.0.1
  */

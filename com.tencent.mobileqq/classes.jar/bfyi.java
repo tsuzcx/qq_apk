@@ -1,15 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import java.lang.ref.WeakReference;
 
 public class bfyi
-  implements bkpq
 {
-  public bfyi(WheelPickerLayout paramWheelPickerLayout) {}
+  protected ImageView a;
+  protected SessionInfo a;
+  protected QQAppInterface a;
+  protected RedDotAnimateView a;
+  protected WeakReference<BaseActivity> a;
   
-  public void a(View paramView, int paramInt)
-  {
-    WheelPickerLayout.a(this.a, paramView, 1);
-  }
+  public void a() {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean1, TroopChatPie paramTroopChatPie, boolean paramBoolean2) {}
+  
+  public void b() {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c() {}
 }
 
 

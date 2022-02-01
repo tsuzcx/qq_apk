@@ -1,12 +1,8 @@
-import android.view.animation.Interpolator;
+import java.util.Map;
 
-public class alar
-  implements Interpolator
+public abstract interface alar
 {
-  public float getInterpolation(float paramFloat)
-  {
-    return (float)(Math.pow(paramFloat - 1.0D, 3.0D) + 1.0D);
-  }
+  public abstract void a(String paramString, Map<String, String> paramMap);
 }
 
 

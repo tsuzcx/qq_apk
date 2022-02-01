@@ -1,40 +1,18 @@
-import android.content.Context;
 import android.support.annotation.NonNull;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import java.util.ArrayList;
+import java.util.List;
 
 public class zck
-  extends zcd
+  extends wip
 {
-  protected EditVideoParams a;
-  public String c;
-  
-  public zck(int paramInt1, String paramString, int paramInt2)
-  {
-    super(paramInt1, paramString, paramInt2);
-  }
-  
-  public zck(int paramInt1, String paramString, int paramInt2, EditVideoParams paramEditVideoParams)
-  {
-    super(paramInt1, paramString, paramInt2);
-    this.a = paramEditVideoParams;
-  }
-  
+  public final int a;
   @NonNull
-  public Class<? extends zce> a()
-  {
-    return zcm.class;
-  }
+  public final List<wum> a;
   
-  @NonNull
-  public zce a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public zck(int paramInt, @NonNull List<wum> paramList)
   {
-    return new zcm(this, paramContext, paramViewGroup, null);
-  }
-  
-  public boolean a()
-  {
-    return true;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
   }
 }
 

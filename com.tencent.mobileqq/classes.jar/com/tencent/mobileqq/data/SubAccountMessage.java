@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import bgjw;
+import bhjx;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
@@ -149,7 +149,7 @@ public class SubAccountMessage
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("SubAccountMessage");
-    localStringBuilder.append(",subUin:").append(this.subUin).append(",selfUin:").append(this.selfuin).append(",friendUin:").append(this.frienduin).append(",senderUin:").append(this.senderuin).append(",senderName:").append(this.sendername).append(",time:").append(this.time).append(",isRead:").append(this.isread).append(",msgType:").append(this.msgtype).append(",subExtr:").append(this.subExtr).append(",msg:").append(bgjw.a(this.msg));
+    localStringBuilder.append(",subUin:").append(this.subUin).append(",selfUin:").append(this.selfuin).append(",friendUin:").append(this.frienduin).append(",senderUin:").append(this.senderuin).append(",senderName:").append(this.sendername).append(",time:").append(this.time).append(",isRead:").append(this.isread).append(",msgType:").append(this.msgtype).append(",subExtr:").append(this.subExtr).append(",msg:").append(bhjx.a(this.msg));
     return localStringBuilder.toString();
   }
 }

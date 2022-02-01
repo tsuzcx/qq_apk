@@ -1,128 +1,165 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.widget.FileWebView;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class asrv
-  extends WebViewClient
+  extends asmu
 {
-  long jdField_a_of_type_Long = 0L;
+  public int a;
+  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable();
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  public Emoticon a;
+  private String jdField_a_of_type_JavaLangString = "SmallEmoticonInfo";
+  private int jdField_b_of_type_Int;
+  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  private String jdField_b_of_type_JavaLangString;
+  public boolean b;
+  private int h;
   
-  public asrv(FilePreviewActivity paramFilePreviewActivity) {}
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public asrv(String paramString)
   {
-    String str = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_Boolean)
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "currentAccountUin:" + paramString);
+    }
+    this.jdField_b_of_type_JavaLangString = paramString;
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)) {}
+    try
     {
-      super.onPageFinished(paramWebView, paramString);
+      paramString = BaseApplication.getContext().getResources();
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130838010);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130843719);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_Boolean = true;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Int == 0)
-      {
-        str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.getInitString(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.h, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.b, Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.i), this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.g, null);
-        QLog.i("<FileAssistant>FilePreviewActivity", 1, "finish load run javascript![" + str + "]");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(str);
-        str = "javascript:qpreview.onClientResponse('showFileList', {})";
-        QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:qpreview.onClientResponse('showFileList', {})");
-      }
-    }
-    for (;;)
+    catch (Exception paramString)
     {
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "mWebView.loadUrl(" + str + ")");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(str);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_Boolean = true;
-      super.onPageFinished(paramWebView, paramString);
+      while (!QLog.isColorLevel()) {}
+      QLog.e(this.jdField_a_of_type_JavaLangString, 2, paramString.getMessage());
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Int == 1)
-      {
-        str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.getInitString(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.h, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.b, Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.i), this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.g, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.d);
-        break;
-      }
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      throw new NullPointerException(anni.a(2131703357));
-      str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.getInitString(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.h, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.b, Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.i), this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.g, null);
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "finish load run javascript![" + str + "]");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(str);
-      str = "javascript:qpreview.onClientResponse('addMorePage',{})";
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:qpreview.onClientResponse('addMorePage',{})");
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(this.jdField_a_of_type_JavaLangString, 2, paramString.getMessage());
     }
   }
   
-  @Override
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public Drawable a(Context paramContext, float paramFloat)
   {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    for (;;)
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null) {
       try
       {
-        String str = URLDecoder.decode(paramString, "UTF-8");
-        paramString = str;
+        paramContext = new URL("emotion_pic", "fromPanel", a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon));
+        paramContext = URLDrawable.getDrawable(paramContext, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, false);
+        paramContext.setTag(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+        paramContext.addHeader("my_uin", this.jdField_b_of_type_JavaLangString);
+        return paramContext;
       }
-      catch (Exception localException)
-      {
-        boolean bool;
-        long l;
-        continue;
-      }
-      try
+      catch (MalformedURLException paramContext)
       {
         if (QLog.isColorLevel()) {
-          QLog.i("<FileAssistant>FilePreviewActivity", 1, "URLDecoder.decode, url:" + paramString);
+          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getDrawable ,", paramContext);
         }
-        bool = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.a(paramWebView, paramString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Atxf);
-        if (!bool) {
-          continue;
-        }
-      }
-      catch (Exception paramWebView)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("<FileAssistant>FilePreviewActivity", 2, "parseUrl error,exception:" + paramWebView.toString());
-        if ((paramString != null) && (!"".equals(paramString)) && (!"about:blank;".equals(paramString)) && (!"about:blank".equals(paramString))) {
-          continue;
-        }
-        QLog.e("<FileAssistant>FilePreviewActivity", 1, "request url is null,or about:blank! return");
-        return true;
-        l = System.currentTimeMillis();
-        if (l - this.jdField_a_of_type_Long < 1500L) {
-          continue;
-        }
-        this.jdField_a_of_type_Long = l;
-        QLog.i("<FileAssistant>FilePreviewActivity", 1, "start load new[" + paramString + "]");
-        paramWebView = FilePreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity, paramString);
-        try
-        {
-          URLDecoder.decode(paramWebView, "UTF-8");
-          return true;
-        }
-        catch (UnsupportedEncodingException paramWebView)
-        {
-          paramWebView.printStackTrace();
-          return true;
-        }
+        return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
       }
     }
-    return true;
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  }
+  
+  public String a(Emoticon paramEmoticon)
+  {
+    if (paramEmoticon == null) {
+      return null;
+    }
+    return paramEmoticon.epId + "_" + paramEmoticon.eId;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon == null)
+    {
+      biah.a("emotionType", "emotionActionSend", "1", "", "", "", "", "", "", "");
+      QLog.e(this.jdField_a_of_type_JavaLangString, 1, "fail to send small_emotion.");
+      return;
+    }
+    try
+    {
+      int i = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+      int j = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
+      ((axfj)paramQQAppInterface.getManager(14)).a(String.valueOf(j), new asrw(this, j, i, paramEditText, paramQQAppInterface));
+      return;
+    }
+    catch (NumberFormatException paramQQAppInterface)
+    {
+      biah.a("emotionType", "emotionActionSend", "4", "", "", "", "", "", "", "");
+      QLog.e(this.jdField_a_of_type_JavaLangString, 1, "fail to send small_emotion. id is not Int.");
+    }
+  }
+  
+  public Drawable b(Context paramContext, float paramFloat)
+  {
+    paramContext = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon == null) {}
+    do
+    {
+      for (;;)
+      {
+        return paramContext;
+        try
+        {
+          Object localObject = new URL("emotion_pic", "fromAIO", a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon));
+          paramContext = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+          paramContext = BaseApplicationImpl.getApplication().waitAppRuntime(null);
+          if ((paramContext instanceof QQAppInterface)) {
+            paramContext = (QQAppInterface)paramContext;
+          }
+          paramContext = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+          URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+          localURLDrawableOptions.mFailedDrawable = paramContext;
+          localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+          localURLDrawableOptions.mPlayGifImage = true;
+          if (this.jdField_b_of_type_Boolean)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getBigDrawable: APNG so loaded use apng image");
+            }
+            localURLDrawableOptions.mUseApngImage = true;
+            localURLDrawableOptions.mPlayGifImage = false;
+            localURLDrawableOptions.mMemoryCacheKeySuffix = "useAPNG";
+          }
+          localURLDrawableOptions.mRequestWidth = this.jdField_b_of_type_Int;
+          localURLDrawableOptions.mRequestHeight = this.h;
+          localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
+          paramContext = (Context)localObject;
+          if (((URLDrawable)localObject).getStatus() != 1)
+          {
+            ((URLDrawable)localObject).setTag(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+            ((URLDrawable)localObject).addHeader("my_uin", this.jdField_b_of_type_JavaLangString);
+            ((URLDrawable)localObject).addHeader("emo_big", "true");
+            paramContext = (Context)localObject;
+            if (QLog.isColorLevel())
+            {
+              QLog.d(this.jdField_a_of_type_JavaLangString, 2, "b.getStatus=" + ((URLDrawable)localObject).getStatus() + " e.epId=" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId + " e.eId=" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+              return localObject;
+            }
+          }
+        }
+        catch (MalformedURLException localMalformedURLException) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getDrawable ,", localMalformedURLException);
+    return null;
   }
 }
 

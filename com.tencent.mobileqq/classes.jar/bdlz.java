@@ -1,22 +1,33 @@
-import com.tencent.mobileqq.teamwork.PadInfo;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdlz
-  implements Comparator<PadInfo>
 {
-  public bdlz(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
-  
-  public int a(PadInfo paramPadInfo1, PadInfo paramPadInfo2)
+  private static String a(bdma parambdma)
   {
-    long l = paramPadInfo2.lastEditTime - paramPadInfo1.lastEditTime;
-    if (l > 0L) {
-      return 1;
+    return parambdma.a();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, long paramLong9, String paramString1, String paramString2)
+  {
+    bdma localbdma = new bdma();
+    localbdma.jdField_a_of_type_Long = paramLong9;
+    localbdma.b = paramLong1;
+    localbdma.c = paramLong2;
+    localbdma.jdField_d_of_type_Long = paramLong3;
+    localbdma.e = paramLong4;
+    localbdma.jdField_f_of_type_Long = paramLong5;
+    localbdma.jdField_a_of_type_JavaLangString = paramQQAppInterface.c();
+    localbdma.g = paramLong6;
+    localbdma.m = paramLong7;
+    localbdma.h = paramLong8;
+    localbdma.jdField_d_of_type_JavaLangString = paramString1;
+    localbdma.jdField_f_of_type_JavaLangString = paramString2;
+    paramString1 = a(localbdma);
+    if (QLog.isColorLevel()) {
+      QLog.i("ScoreReportController", 1, "getReportingDetail=" + paramString1);
     }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
+    bdll.b(paramQQAppInterface, "dc02653", paramString1, 1);
   }
 }
 

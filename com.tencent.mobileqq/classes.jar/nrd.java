@@ -1,23 +1,15 @@
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 
-class nrd
-  implements bkij
+public class nrd
+  implements DialogInterface.OnDismissListener
 {
-  nrd(nrb paramnrb) {}
+  public nrd(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "onItemClick!");
-    }
-    paramAdapterView = (nyl)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (this.a.jdField_a_of_type_Nql != null) {
-      this.a.jdField_a_of_type_Nql.a(paramAdapterView);
-    }
-    this.a.a(paramAdapterView);
+    this.a.b = false;
   }
 }
 

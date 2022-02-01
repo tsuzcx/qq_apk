@@ -1,38 +1,30 @@
-import android.os.Handler;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView.15.1;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView.15.2;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.superplayer.api.ISuperPlayer;
+import android.app.Activity;
+import android.content.Context;
+import java.lang.ref.WeakReference;
 
 public class aake
-  implements aalg
+  extends aahu
 {
-  public aake(VideoPlayerView paramVideoPlayerView) {}
+  protected WeakReference<Context> a;
   
-  public void a(boolean paramBoolean)
+  public aake(Context paramContext, int paramInt)
   {
-    VideoPlayerView.d(this.a, paramBoolean);
-    if (VideoPlayerView.d(this.a)) {
-      this.a.a().post(new VideoPlayerView.15.1(this));
+    super(paramContext, paramInt);
+    this.a = new WeakReference(paramContext);
+  }
+  
+  public boolean b()
+  {
+    Context localContext = (Context)this.a.get();
+    return ((localContext instanceof Activity)) && (((Activity)localContext).isFinishing());
+  }
+  
+  public void show()
+  {
+    if (b()) {
+      return;
     }
-    do
-    {
-      do
-      {
-        return;
-        if (VideoPlayerView.b(this.a))
-        {
-          this.a.a().post(new VideoPlayerView.15.2(this));
-          return;
-        }
-      } while (!VideoPlayerView.e(this.a));
-      if (this.a.a() != null) {
-        this.a.a().setLoopback(true);
-      }
-      this.a.e();
-    } while (VideoPlayerView.a(this.a) == null);
-    VideoPlayerView.a(this.a).onVideoStart((int)this.a.a().getDurationMs());
+    super.show();
   }
 }
 

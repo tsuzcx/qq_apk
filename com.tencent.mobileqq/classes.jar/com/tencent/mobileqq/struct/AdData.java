@@ -45,18 +45,18 @@ public class AdData
     switch (paramInt)
     {
     default: 
-      paramString = BaseApplicationImpl.getContext().getString(2131695348);
+      paramString = BaseApplicationImpl.getContext().getString(2131695391);
     }
     for (;;)
     {
       return paramString;
-      paramString = BaseApplicationImpl.getContext().getString(2131697863);
+      paramString = BaseApplicationImpl.getContext().getString(2131697947);
       continue;
       paramString = BaseApplicationImpl.getContext().getString(2131690950);
       continue;
-      paramString = BaseApplicationImpl.getContext().getString(2131698076);
+      paramString = BaseApplicationImpl.getContext().getString(2131698177);
       continue;
-      paramString = BaseApplicationImpl.getContext().getString(2131692876);
+      paramString = BaseApplicationImpl.getContext().getString(2131692884);
     }
   }
   

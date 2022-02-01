@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.realtime;
 
 import android.content.Context;
-import bmqa;
+import bnrf;
 import com.tencent.commonsdk.cache.QQHashMap;
-import tet;
-import tew;
+import svl;
+import svo;
 
 public class RealTimeTemplateFactoryCache
-  extends QQHashMap<String, tew>
+  extends QQHashMap<String, svo>
 {
   public RealTimeTemplateFactoryCache()
   {
@@ -30,16 +30,16 @@ public class RealTimeTemplateFactoryCache
   
   public void clearMemory()
   {
-    if (!bmqa.o()) {
+    if (!bnrf.o()) {
       clear();
     }
   }
   
-  public tew get(String paramString)
+  public svo get(String paramString)
   {
     try
     {
-      paramString = (tew)super.get(paramString);
+      paramString = (svo)super.get(paramString);
       return paramString;
     }
     finally
@@ -49,13 +49,13 @@ public class RealTimeTemplateFactoryCache
     }
   }
   
-  public tew getAutoCreate(Context paramContext, String paramString)
+  public svo getAutoCreate(Context paramContext, String paramString)
   {
     paramContext = get(paramString);
     if (paramContext != null) {
       return paramContext;
     }
-    paramContext = tet.a(paramString);
+    paramContext = svl.a(paramString);
     if (paramContext != null)
     {
       paramContext.b(paramString);
@@ -65,11 +65,11 @@ public class RealTimeTemplateFactoryCache
     return null;
   }
   
-  public tew put(String paramString, tew paramtew)
+  public svo put(String paramString, svo paramsvo)
   {
     try
     {
-      paramString = (tew)super.put(paramString, paramtew);
+      paramString = (svo)super.put(paramString, paramsvo);
       return paramString;
     }
     finally
@@ -79,11 +79,11 @@ public class RealTimeTemplateFactoryCache
     }
   }
   
-  public tew remove(String paramString)
+  public svo remove(String paramString)
   {
     try
     {
-      paramString = (tew)super.remove(paramString);
+      paramString = (svo)super.remove(paramString);
       return paramString;
     }
     finally

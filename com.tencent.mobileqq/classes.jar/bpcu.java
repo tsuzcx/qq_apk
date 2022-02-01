@@ -1,9 +1,8 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-
 public abstract interface bpcu
-  extends bpeo
 {
-  public abstract void a(DoodleLayout paramDoodleLayout);
+  public abstract void a(long paramLong);
+  
+  public abstract void a(long paramLong1, long paramLong2);
 }
 
 

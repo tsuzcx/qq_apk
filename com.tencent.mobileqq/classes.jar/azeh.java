@@ -1,56 +1,34 @@
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class azeh
-  implements bkhw
+  implements ImageAssetDelegate
 {
-  azeh(azeg paramazeg, azdl paramazdl) {}
+  azeh(azeg paramazeg) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    switch (paramInt)
+    Object localObject = null;
+    paramLottieImageAsset = paramLottieImageAsset.getFileName();
+    String str = this.a.jdField_a_of_type_JavaLangString + "guide_images" + File.separator + paramLottieImageAsset;
+    try
     {
-    default: 
-    case 0: 
-      for (;;)
+      paramLottieImageAsset = mqr.a(str, this.a.jdField_a_of_type_Int, this.a.b);
+      return paramLottieImageAsset;
+    }
+    catch (Exception localException)
+    {
+      do
       {
-        this.jdField_a_of_type_Azeg.a.jdField_a_of_type_Bkho.e();
-        return;
-        this.jdField_a_of_type_Azeg.a.jdField_a_of_type_Azdk.a(azeg.a(this.jdField_a_of_type_Azeg), this.jdField_a_of_type_Azdl.a);
-      }
+        paramLottieImageAsset = localObject;
+      } while (!AudioHelper.f());
+      QLog.w(azef.jdField_a_of_type_JavaLangString, 1, "PromotionGuide Exception, imagePath[" + str + "]", localException);
     }
-    paramView = (PersonalityLabelInfo)PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Azeg.a).get(Long.valueOf(azeg.a(this.jdField_a_of_type_Azeg)));
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Azeg.a.jdField_a_of_type_Bkho.e();
-      return;
-    }
-    paramInt = 0;
-    label115:
-    if (paramInt < paramView.personalityLabelPhotos.size()) {
-      if (((PersonalityLabelPhoto)paramView.personalityLabelPhotos.get(paramInt)).uniseq == this.jdField_a_of_type_Azdl.a.uniseq) {
-        paramView.personalityLabelPhotos.remove(paramInt);
-      }
-    }
-    for (;;)
-    {
-      if (paramInt < 0)
-      {
-        this.jdField_a_of_type_Azeg.a.jdField_a_of_type_Bkho.e();
-        return;
-        paramInt += 1;
-        break label115;
-      }
-      paramView.photoCount -= 1;
-      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Azeg.a, azeg.a(this.jdField_a_of_type_Azeg), paramView);
-      this.jdField_a_of_type_Azeg.a.jdField_a_of_type_Azdk.b(azeg.a(this.jdField_a_of_type_Azeg), this.jdField_a_of_type_Azdl.a);
-      break;
-      paramInt = -1;
-    }
+    return null;
   }
 }
 

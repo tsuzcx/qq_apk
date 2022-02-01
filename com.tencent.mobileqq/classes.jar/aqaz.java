@@ -1,20 +1,23 @@
-import android.annotation.TargetApi;
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusMoveCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.AFMoveCallbackForward.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-@TargetApi(16)
-public class aqaz
-  implements Camera.AutoFocusMoveCallback
+class aqaz
+  implements anui
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final aqaq jdField_a_of_type_Aqaq;
-  private final aqav jdField_a_of_type_Aqav;
-  
-  public void onAutoFocusMoving(boolean paramBoolean, Camera paramCamera)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.AFMoveCallbackForward.1(this, paramBoolean));
+    if (!paramBoolean)
+    {
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkTemp.queryAppInfoByAppNameBatch, sso request failed");
+      paramObject = null;
+    }
+    for (;;)
+    {
+      paramObject = aqay.a(this.jdField_a_of_type_Aqay, (String)paramObject);
+      if (this.jdField_a_of_type_Aqbg != null) {
+        this.jdField_a_of_type_Aqbg.a(paramObject, this.jdField_a_of_type_JavaLangObject);
+      }
+      return;
+    }
   }
 }
 

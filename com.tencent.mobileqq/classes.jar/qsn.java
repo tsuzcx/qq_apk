@@ -1,19 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-class qsn
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "isFinish", "", "wording", "", "kotlin.jvm.PlatformType", "onRedPacketTaskFinish"}, k=3, mv={1, 1, 16})
+final class qsn
+  implements qrg
 {
-  qsn(qsh paramqsh) {}
+  qsn(qsc paramqsc) {}
   
-  public void onClick(View paramView)
+  public final void a(boolean paramBoolean, String paramString)
   {
-    spb localspb = this.a.jdField_a_of_type_Snh.a();
-    if (localspb != null) {
-      localspb.a(null, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    qsc localqsc = this.a;
+    if (localqsc != null) {
+      localqsc.a(paramBoolean, paramString);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

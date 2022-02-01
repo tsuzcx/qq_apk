@@ -1,12 +1,9 @@
-import java.util.Comparator;
+import android.view.View;
+import android.widget.TextView;
 
-final class bgvn
-  implements Comparator<bgvo>
+public abstract interface bgvn
 {
-  public int a(bgvo parambgvo1, bgvo parambgvo2)
-  {
-    return parambgvo2.a() - parambgvo1.a();
-  }
+  public abstract void a(TextView paramTextView, View paramView, boolean paramBoolean);
 }
 
 

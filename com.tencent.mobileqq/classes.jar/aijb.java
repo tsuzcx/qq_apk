@@ -1,43 +1,51 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.pic.CompressInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.widget.XPanelContainer;
+import java.lang.ref.WeakReference;
 
 class aijb
-  implements URLDrawable.URLDrawableListener
+  extends aieg
 {
-  aijb(aiiz paramaiiz) {}
+  static final String jdField_a_of_type_JavaLangString = aiit.class.getSimpleName();
+  WeakReference<aiit> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public aijb(aiit paramaiit)
   {
-    aiiz.a(this.a).remove(paramURLDrawable);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaiit);
+  }
+  
+  public void a(CompressInfo paramCompressInfo)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener onLoadCanceled");
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress success, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void b(CompressInfo paramCompressInfo)
   {
-    aiiz.a(this.a, paramURLDrawable);
-    aiiz.a(this.a).remove(paramURLDrawable);
     if (QLog.isColorLevel()) {
-      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener onLoadFialed");
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress fail, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void c(CompressInfo paramCompressInfo)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = aiiz.a(this.a);
-    aiiz.a(this.a, paramURLDrawable, l1 - l2);
-    aiiz.a(this.a, true);
-    aiiz.a(this.a).remove(paramURLDrawable);
-    this.a.a();
     if (QLog.isColorLevel()) {
-      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener downloadSuccess");
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress complete, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
     }
+    aiit localaiit = (aiit)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localaiit == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "onCompressComplete, error: activity is null");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "onCompressComplete, new path:" + paramCompressInfo.e);
+    }
+    localaiit.g(paramCompressInfo.e);
+    aiit.a(localaiit).a();
   }
 }
 

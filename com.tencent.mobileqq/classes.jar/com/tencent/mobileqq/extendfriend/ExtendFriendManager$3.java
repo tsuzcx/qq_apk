@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.extendfriend;
 
-import asfu;
+import asvi;
 
 public class ExtendFriendManager$3
   implements Runnable
 {
-  public ExtendFriendManager$3(asfu paramasfu) {}
+  public ExtendFriendManager$3(asvi paramasvi) {}
   
   public void run()
   {
     this.this$0.b();
-    asfu.b(this.this$0);
-    asfu.c(this.this$0);
-    asfu.d(this.this$0);
+    asvi.b(this.this$0);
+    asvi.c(this.this$0);
+    asvi.d(this.this$0);
   }
 }
 

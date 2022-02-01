@@ -1,41 +1,24 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileYearNodeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class wzf
-  extends wlf
+  extends wzd
 {
-  public String a;
+  protected TextView c = (TextView)a(2131380438);
   
-  public String a()
+  public wzf(ViewGroup paramViewGroup, int paramInt)
   {
-    return wjz.a("StorySvc.get_profile_year_node_info");
+    super(paramViewGroup, paramInt);
   }
   
-  public wla a(byte[] paramArrayOfByte)
+  public void a(wvn paramwvn)
   {
-    qqstory_service.RspProfileYearNodeList localRspProfileYearNodeList = new qqstory_service.RspProfileYearNodeList();
-    try
+    if (paramwvn.b > 99)
     {
-      localRspProfileYearNodeList.mergeFrom(paramArrayOfByte);
-      return new wzg(localRspProfileYearNodeList);
+      this.c.setText("99+");
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqProfileYearNodeList localReqProfileYearNodeList = new qqstory_service.ReqProfileYearNodeList();
-    localReqProfileYearNodeList.union_id.set(ByteStringMicro.copyFromUtf8(this.a));
-    return localReqProfileYearNodeList.toByteArray();
+    this.c.setText(String.valueOf(paramwvn.b));
   }
 }
 

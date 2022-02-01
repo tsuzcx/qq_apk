@@ -1,23 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Pair;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bhbm
-  extends bhbs
+class bhbm
+  implements DialogInterface.OnClickListener
 {
-  public void a(String paramString)
-  {
-    QLog.i("GLDrawable", 1, paramString);
-  }
+  bhbm(bhbk parambhbk) {}
   
-  public void a(String paramString, Exception paramException)
-  {
-    QLog.e("GLDrawable", 1, paramString, paramException);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, long paramLong)
-  {
-    bhak.a(paramString1, paramLong, new Pair[] { new Pair("status_code", paramString2), new Pair("status_msg", paramString3) });
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

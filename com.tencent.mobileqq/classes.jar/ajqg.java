@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
 
-class ajqg
-  implements View.OnClickListener
+public class ajqg
+  implements DialogInterface.OnClickListener
 {
-  ajqg(ajqf paramajqf, ajqi paramajqi) {}
+  public ajqg(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void onClick(View paramView)
-  {
-    String str = String.valueOf(this.jdField_a_of_type_Ajqi.a.getText());
-    ajqf.a(this.jdField_a_of_type_Ajqf, str);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

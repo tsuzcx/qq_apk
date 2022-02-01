@@ -1,34 +1,24 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.SystemClock;
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.WifiInfo;
 
-class bmss
-  extends View
+public final class bmss
+  implements Parcelable.Creator<LbsDataV2.WifiInfo>
 {
-  private View jdField_a_of_type_AndroidViewView;
-  
-  public bmss(bmsr parambmsr, Context paramContext, View paramView, Drawable paramDrawable)
+  public LbsDataV2.WifiInfo a(Parcel paramParcel)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    setBackgroundDrawable(paramDrawable);
+    LbsDataV2.WifiInfo localWifiInfo = new LbsDataV2.WifiInfo();
+    if (paramParcel != null)
+    {
+      localWifiInfo.mac = paramParcel.readString();
+      localWifiInfo.rssi = paramParcel.readInt();
+    }
+    return localWifiInfo;
   }
   
-  public void invalidateDrawable(Drawable paramDrawable)
+  public LbsDataV2.WifiInfo[] a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.invalidate();
-  }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
-  {
-    long l = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_AndroidViewView.postDelayed(paramRunnable, paramLong - l);
-  }
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_AndroidViewView.removeCallbacks(paramRunnable);
+    return null;
   }
 }
 

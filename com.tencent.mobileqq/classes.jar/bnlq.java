@@ -1,28 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import cooperation.qzone.video.QzoneLiveVideoGpuProxyActivity;
+import cooperation.qzone.video.QzoneLiveVideoPluginProxyActivity;
+import cooperation.qzone.video.QzoneLiveVideoTransparentActivity;
 
 public class bnlq
 {
-  public String a;
-  public String b = "null";
-  public String c = "null";
-  
-  public bnlq(@NonNull String paramString)
+  public static Class<? extends PluginProxyActivity> a(String paramString)
   {
-    this.a = paramString;
-  }
-  
-  public bnlq(@NonNull String paramString1, @Nullable String paramString2, @Nullable String paramString3)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "cmd=" + this.a + ", state=" + this.b + ", result=" + this.c;
+    if (QzoneLiveVideoPluginProxyActivity.a(QzoneLiveVideoPluginProxyActivity.a(), paramString)) {
+      return QzoneLiveVideoTransparentActivity.class;
+    }
+    return QzoneLiveVideoGpuProxyActivity.class;
   }
 }
 

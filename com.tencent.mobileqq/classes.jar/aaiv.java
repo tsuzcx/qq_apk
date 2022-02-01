@@ -1,6 +1,17 @@
-public abstract interface aaiv
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aaiv
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  aaiv(aaiu paramaaiu) {}
+  
+  public void onClick(View paramView)
+  {
+    aaiu.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

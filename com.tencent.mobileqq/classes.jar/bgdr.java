@@ -1,100 +1,225 @@
-import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
+import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bgdr
 {
-  public static String a(String paramString1, String paramString2)
+  private static final String a;
+  protected int a;
+  protected long a;
+  protected bgbv a;
+  protected List<ParagraphInfo> a;
+  protected JSONArray a;
+  protected JSONObject a;
+  
+  static
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
+    jdField_a_of_type_JavaLangString = bgdr.class.getSimpleName();
+  }
+  
+  public bgdr(List<ParagraphInfo> paramList, bgbv parambgbv, String paramString)
+  {
+    this.jdField_a_of_type_Bgbv = parambgbv;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONArray = new JSONArray(paramString);
+      return;
+    }
+    catch (JSONException paramList)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, paramList.toString());
+    }
+  }
+  
+  public String a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_OrgJsonJSONArray == null)) {
+      return null;
+    }
+    return this.jdField_a_of_type_OrgJsonJSONArray.toString();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_OrgJsonJSONArray == null) {
+      return;
+    }
+    int i = this.jdField_a_of_type_Int;
     for (;;)
     {
-      return null;
-      try
+      if (i < this.jdField_a_of_type_OrgJsonJSONArray.length())
       {
-        paramString1 = bgmg.a(new File(new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config"), paramString1 + paramString2));
-        if ((paramString1 == null) || (paramString1.length <= 0)) {
-          continue;
-        }
-        if (Build.VERSION.SDK_INT <= 8)
+        int j;
+        try
         {
-          paramString1 = new String(paramString1);
-          return paramString1;
+          JSONObject localJSONObject = (JSONObject)this.jdField_a_of_type_OrgJsonJSONArray.get(i);
+          j = localJSONObject.optInt("p");
+          int k = localJSONObject.optInt("w");
+          if ((j < 0) || (j >= this.jdField_a_of_type_JavaUtilList.size())) {
+            break label224;
+          }
+          Object localObject = ((ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(j)).generateOrGetWordInfoList(j);
+          if ((k >= 0) && (k < ((List)localObject).size()))
+          {
+            localObject = (WordInfo)((List)localObject).get(k);
+            ((WordInfo)localObject).setColor(localJSONObject.optInt("s"));
+            if (this.jdField_a_of_type_Bgbv != null) {
+              this.jdField_a_of_type_Bgbv.a((WordInfo)localObject);
+            }
+          }
+          else if (QLog.isColorLevel())
+          {
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "w error:" + k);
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          if (!QLog.isColorLevel()) {
+            break label270;
+          }
+        }
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "JSONException:" + localJSONException.toString());
+        break label270;
+        label224:
+        if (QLog.isColorLevel()) {
+          QLog.e(jdField_a_of_type_JavaLangString, 2, "p error:" + j);
         }
       }
-      catch (Exception paramString1)
+      else
+      {
+        this.jdField_a_of_type_Int = 0;
+        this.jdField_a_of_type_OrgJsonJSONObject = null;
+        return;
+      }
+      label270:
+      i += 1;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_OrgJsonJSONArray == null)) {}
+    for (;;)
+    {
+      return;
+      float f;
+      if (this.jdField_a_of_type_Int < this.jdField_a_of_type_OrgJsonJSONArray.length()) {
+        f = paramInt / 1000.0F;
+      }
+      try
+      {
+        if (this.jdField_a_of_type_OrgJsonJSONObject != null)
+        {
+          long l = this.jdField_a_of_type_OrgJsonJSONObject.getLong("t");
+          if (f <= (float)l) {
+            continue;
+          }
+        }
+      }
+      catch (JSONException localJSONException1)
       {
         for (;;)
         {
-          if (QLog.isColorLevel()) {
-            paramString1.printStackTrace();
+          if (QLog.isColorLevel())
+          {
+            QLog.e(jdField_a_of_type_JavaLangString, 2, localJSONException1.toString());
+            continue;
+            if (QLog.isColorLevel()) {
+              QLog.e(jdField_a_of_type_JavaLangString, 2, "w error:" + j);
+            }
           }
-          paramString1 = null;
-          continue;
+        }
+      }
+      paramInt = this.jdField_a_of_type_Int;
+      while (paramInt < this.jdField_a_of_type_OrgJsonJSONArray.length())
+      {
+        for (;;)
+        {
           try
           {
-            paramString1 = new String(paramString1, "UTF-8");
+            localJSONObject = (JSONObject)this.jdField_a_of_type_OrgJsonJSONArray.get(paramInt);
+            localObject = localJSONObject.optString("t");
           }
-          catch (Exception paramString1)
+          catch (JSONException localJSONException2)
           {
-            if (QLog.isDevelopLevel()) {
-              paramString1.printStackTrace();
+            JSONObject localJSONObject;
+            Object localObject;
+            int i;
+            int j;
+            if (!QLog.isColorLevel()) {
+              continue;
             }
-            paramString1 = null;
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "JSONException:" + localJSONException2.toString());
+            continue;
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "p error:" + i);
+            continue;
+            this.jdField_a_of_type_OrgJsonJSONObject = localJSONException2;
+          }
+          try
+          {
+            if (f <= Float.valueOf((String)localObject).floatValue()) {
+              continue;
+            }
+            i = localJSONObject.optInt("p");
+            j = localJSONObject.optInt("w");
+            if ((i < 0) || (i >= this.jdField_a_of_type_JavaUtilList.size())) {
+              continue;
+            }
+            localObject = ((ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(i)).generateOrGetWordInfoList(i);
+            if ((j < 0) || (j >= ((List)localObject).size())) {
+              continue;
+            }
+            localObject = (WordInfo)((List)localObject).get(j);
+            ((WordInfo)localObject).setColor(localJSONObject.optInt("s"));
+            if (this.jdField_a_of_type_Bgbv != null) {
+              this.jdField_a_of_type_Bgbv.a((WordInfo)localObject);
+            }
+          }
+          catch (NumberFormatException localNumberFormatException)
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "NumberFormatException:" + localNumberFormatException.toString());
           }
         }
+        paramInt += 1;
       }
     }
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("UpgradeConfigManager", 2, "save Config to file failed，content is empty----" + paramString1);
-      }
+    float f = (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F;
+    if (this.jdField_a_of_type_OrgJsonJSONArray == null) {
+      this.jdField_a_of_type_OrgJsonJSONArray = new JSONArray();
     }
-    do
+    try
     {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("p", paramInt1);
+      localJSONObject.put("s", paramInt3);
+      localJSONObject.put("t", f);
+      localJSONObject.put("w", paramInt2);
+      this.jdField_a_of_type_OrgJsonJSONArray.put(localJSONObject);
       return;
-      File localFile = new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config");
-      bgmg.a(localFile.getAbsolutePath() + "/", paramString1 + paramString2, paramString3);
-    } while (!QLog.isColorLevel());
-    QLog.i("UpgradeConfigManager", 2, "save Config to file finish.");
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fileName=%s uin=%s", new Object[] { paramString1, paramString2 }));
     }
-    File localFile;
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    catch (JSONException localJSONException)
     {
-      localFile = new File(new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config"), paramString1 + paramString2);
-      if (!localFile.exists()) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        bool = localFile.delete();
-        if (QLog.isColorLevel()) {
-          QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fileName=%s uin=%s result=%s", new Object[] { paramString1, paramString2, Boolean.valueOf(bool) }));
-        }
-        return bool;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fail! fileName=%s uin=%s", new Object[] { paramString1, paramString2 }), localException);
-        }
-        bool = false;
-        continue;
-      }
-      boolean bool = false;
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "addWordResult:" + localJSONException.toString());
     }
   }
 }

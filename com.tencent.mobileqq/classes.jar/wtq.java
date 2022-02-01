@@ -1,55 +1,33 @@
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.model.TroopNickNameManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class wtq
+  extends aojs
 {
-  public static int a(long paramLong1, long paramLong2)
-  {
-    if (paramLong1 < paramLong2) {
-      return -1;
-    }
-    if (paramLong1 == paramLong2) {
-      return 0;
-    }
-    return 1;
-  }
+  wtq(wtp paramwtp) {}
   
-  public static wrs a(@NonNull List<wrs> paramList1, @NonNull List<wrs> paramList2, @NonNull String paramString)
+  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
   {
-    paramList2.clear();
-    wrs localwrs = null;
-    Iterator localIterator = paramList1.iterator();
-    paramList1 = localwrs;
-    if (localIterator.hasNext())
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      localwrs = (wrs)localIterator.next();
-      if (a(localwrs)) {
-        paramList2.add(localwrs);
+      localStringBuilder = new StringBuilder().append("onGetTroopMemberCardInfoResult suc=").append(paramBoolean).append(" size=");
+      if (paramArrayList != null) {
+        break label78;
       }
-      if ((paramList1 != null) || (!TextUtils.equals(paramString, localwrs.jdField_a_of_type_JavaLangString))) {
-        break label76;
-      }
-      paramList1 = localwrs;
     }
-    label76:
-    for (;;)
+    label78:
+    for (int i = 0;; i = paramArrayList.size())
     {
-      break;
-      return paramList1;
+      QLog.d("TroopNickNameManager", 2, i);
+      if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+        ThreadManager.executeOnSubThread(new TroopNickNameManager.1.1(this, paramArrayList));
+      }
+      return;
     }
-  }
-  
-  public static boolean a()
-  {
-    return Build.VERSION.SDK_INT > 19;
-  }
-  
-  public static boolean a(wrs paramwrs)
-  {
-    return (paramwrs.jdField_a_of_type_Int == 5) || (paramwrs.jdField_a_of_type_Int == 6) || (paramwrs.jdField_a_of_type_Int == 7) || (paramwrs.jdField_a_of_type_Int == 8) || (paramwrs.jdField_a_of_type_Int == 9) || (paramwrs.jdField_a_of_type_Int == 12) || (paramwrs.jdField_a_of_type_Int == 13);
   }
 }
 

@@ -1,21 +1,34 @@
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
-import org.jetbrains.annotations.Nullable;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$showGuideRootView$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sho
+public class sho
   extends AnimatorListenerAdapter
 {
-  sho(shi paramshi, Function0 paramFunction0) {}
+  public sho(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void onAnimationEnd(@Nullable Animator paramAnimator)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (shi.a(this.jdField_a_of_type_Shi)) {
-      return;
+    super.onAnimationEnd(paramAnimator);
+    ReadInJoyListViewGroup.a(this.a).setLayerType(0, null);
+    ReadInJoyListViewGroup.a(this.a).setVisibility(8);
+    this.a.a.setAlpha(1.0F);
+    if (ReadInJoyListViewGroup.a(this.a) != null) {
+      ReadInJoyListViewGroup.a(this.a).i();
     }
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction0.invoke();
+    ReadInJoyListViewGroup.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "trans animation end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
   }
 }
 

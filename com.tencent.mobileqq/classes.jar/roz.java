@@ -1,19 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public abstract interface roz
+class roz
+  implements Animation.AnimationListener
 {
-  @Nullable
-  public abstract ColumnInfo a();
+  roz(roy paramroy) {}
   
-  public abstract void a();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (roy.a(this.a) != null) {
+      roy.a(this.a).setVisibility(8);
+    }
+  }
   
-  public abstract void a(@NotNull ColumnInfo paramColumnInfo);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void a(@NotNull ColumnInfo paramColumnInfo, rox paramrox);
-  
-  public abstract void b(@NotNull ColumnInfo paramColumnInfo, rox paramrox);
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

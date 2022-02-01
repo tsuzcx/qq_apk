@@ -13,24 +13,24 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anni;
-import bamc;
-import bkgm;
-import bojv;
-import bomw;
-import bone;
-import bong;
-import bonh;
-import bonk;
-import bonl;
-import bonm;
-import bonn;
-import bono;
-import bonp;
-import bonq;
-import bonr;
-import bonu;
-import bonv;
+import anzj;
+import bbev;
+import blhq;
+import bplq;
+import bpor;
+import bpoz;
+import bppb;
+import bppc;
+import bppf;
+import bppg;
+import bpph;
+import bppi;
+import bppj;
+import bppk;
+import bppl;
+import bppm;
+import bppp;
+import bppq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -43,7 +43,7 @@ import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 
 public class HummingActivity
   extends IphoneTitleBarActivity
-  implements Handler.Callback, bong
+  implements Handler.Callback, bppb
 {
   private int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler;
@@ -51,11 +51,11 @@ public class HummingActivity
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bkgm jdField_a_of_type_Bkgm = new bkgm(Looper.getMainLooper(), this);
-  public bomw a;
-  private bone jdField_a_of_type_Bone = (bone)bojv.a().c(8);
-  private bonr jdField_a_of_type_Bonr;
-  private bonv jdField_a_of_type_Bonv = (bonv)bojv.a().c(10);
+  private blhq jdField_a_of_type_Blhq = new blhq(Looper.getMainLooper(), this);
+  public bpor a;
+  private bpoz jdField_a_of_type_Bpoz = (bpoz)bplq.a().c(8);
+  private bppm jdField_a_of_type_Bppm;
+  private bppq jdField_a_of_type_Bppq = (bppq)bplq.a().c(10);
   private AudioCapture jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture;
   private MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
   private Runnable jdField_a_of_type_JavaLangRunnable;
@@ -68,7 +68,7 @@ public class HummingActivity
   
   public HummingActivity()
   {
-    this.jdField_a_of_type_Bomw = new bonk(this);
+    this.jdField_a_of_type_Bpor = new bppf(this);
   }
   
   private void a()
@@ -91,7 +91,7 @@ public class HummingActivity
     if (paramBoolean)
     {
       i();
-      QQToast.a(this, 2131697513, 0).a();
+      QQToast.a(this, 2131697595, 0).a();
       if (this.jdField_b_of_type_Int == 1) {
         a(3000L);
       }
@@ -107,22 +107,22 @@ public class HummingActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364269));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bonl(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363926));
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839283);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363961));
-    this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130839322);
-    this.c = ((Button)findViewById(2131363811));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378623));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697500);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378628));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131697503);
-    setTitle(2131697510);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364314));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bppg(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363950));
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839291);
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363985));
+    this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130839330);
+    this.c = ((Button)findViewById(2131363835));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378782));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697582);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378787));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131697585);
+    setTitle(2131697592);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130772229);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bonm(this));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new bonn(this));
-    this.c.setOnClickListener(new bono(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bpph(this));
+    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new bppi(this));
+    this.c.setOnClickListener(new bppj(this));
   }
   
   private void b(MusicItemInfo paramMusicItemInfo)
@@ -133,7 +133,7 @@ public class HummingActivity
     if ((paramMusicItemInfo == null) || (paramMusicItemInfo.mType == 7)) {
       return;
     }
-    ((QIMMusicConfigManager)bojv.a().c(2)).a(paramMusicItemInfo, true);
+    ((QIMMusicConfigManager)bplq.a().c(2)).a(paramMusicItemInfo, true);
   }
   
   private void c()
@@ -148,10 +148,10 @@ public class HummingActivity
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-      if ((this.jdField_a_of_type_Bonr instanceof bonp))
+      if ((this.jdField_a_of_type_Bppm instanceof bppk))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697501);
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131697504);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697583);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131697586);
         label56:
         if (this.jdField_a_of_type_Boolean) {
           break label116;
@@ -163,13 +163,13 @@ public class HummingActivity
     {
       this.jdField_a_of_type_Boolean = bool;
       return;
-      if (!(this.jdField_a_of_type_Bonr instanceof bonq)) {
+      if (!(this.jdField_a_of_type_Bppm instanceof bppl)) {
         break;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697502);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697584);
       break;
       this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131697503);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131697585);
       break label56;
     }
   }
@@ -184,7 +184,7 @@ public class HummingActivity
     }
     this.jdField_a_of_type_JavaLangRunnable = null;
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131697503);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131697585);
   }
   
   private void f()
@@ -220,11 +220,11 @@ public class HummingActivity
     g();
     if (this.jdField_b_of_type_Int == 1)
     {
-      this.jdField_a_of_type_Bonr = new bonp();
-      setTitle(2131697510);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697501);
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839283);
-      this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130839322);
+      this.jdField_a_of_type_Bppm = new bppk();
+      setTitle(2131697592);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697583);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839291);
+      this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130839330);
     }
     for (;;)
     {
@@ -232,11 +232,11 @@ public class HummingActivity
       return;
       if (this.jdField_b_of_type_Int == 2)
       {
-        this.jdField_a_of_type_Bonr = new bonq();
-        setTitle(2131697511);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697502);
-        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839322);
-        this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130839283);
+        this.jdField_a_of_type_Bppm = new bppl();
+        setTitle(2131697593);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697584);
+        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839330);
+        this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130839291);
       }
     }
   }
@@ -258,16 +258,16 @@ public class HummingActivity
     if (paramMusicItemInfo.mType != 7)
     {
       this.jdField_b_of_type_Boolean = true;
-      Message localMessage = this.jdField_a_of_type_Bkgm.obtainMessage();
+      Message localMessage = this.jdField_a_of_type_Blhq.obtainMessage();
       localMessage.what = 1;
       localMessage.obj = paramMusicItemInfo;
-      this.jdField_a_of_type_Bkgm.sendMessage(localMessage);
-      QQToast.a(BaseApplicationImpl.getContext(), anni.a(2131704458) + paramMusicItemInfo, 0).a();
+      this.jdField_a_of_type_Blhq.sendMessage(localMessage);
+      QQToast.a(BaseApplicationImpl.getContext(), anzj.a(2131704565) + paramMusicItemInfo, 0).a();
       b(paramMusicItemInfo);
       return;
     }
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Bkgm.sendEmptyMessage(2);
+    this.jdField_a_of_type_Blhq.sendEmptyMessage(2);
   }
   
   @Override
@@ -282,9 +282,9 @@ public class HummingActivity
   {
     super.doOnCreate(paramBundle);
     setContentView(2131558450);
-    this.jdField_a_of_type_Bonv.a(this);
-    this.jdField_a_of_type_Bonr = new bonp();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture = new AudioCapture(bonu.a, 1, 8000, 16, 2, null, null);
+    this.jdField_a_of_type_Bppq.a(this);
+    this.jdField_a_of_type_Bppm = new bppk();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture = new AudioCapture(bppp.a, 1, 8000, 16, 2, null, null);
     b();
     return true;
   }
@@ -292,9 +292,9 @@ public class HummingActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Bonv.b(this);
+    this.jdField_a_of_type_Bppq.b(this);
     e();
-    this.jdField_a_of_type_Bomw = null;
+    this.jdField_a_of_type_Bpor = null;
   }
   
   public void doOnResume()
@@ -335,11 +335,11 @@ public class HummingActivity
       return false;
       if (!paramMessage.mHasCopyright)
       {
-        QQToast.a(this, 0, anni.a(2131704460) + paramMessage.mMusicName + anni.a(2131704461), 0).a();
+        QQToast.a(this, 0, anzj.a(2131704567) + paramMessage.mMusicName + anzj.a(2131704568), 0).a();
         return false;
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      this.c.setText(anni.a(2131704462) + bonh.a(paramMessage));
+      this.c.setText(anzj.a(2131704569) + bppc.a(paramMessage));
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = paramMessage;
       this.c.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -347,7 +347,7 @@ public class HummingActivity
       e();
       return false;
     case 2: 
-      paramMessage = anni.a(2131704457);
+      paramMessage = anzj.a(2131704564);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMessage);
       return false;
     case 4: 
@@ -355,7 +355,7 @@ public class HummingActivity
       return false;
     }
     e();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131704456));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131704563));
     this.jdField_a_of_type_Boolean = true;
     return false;
   }

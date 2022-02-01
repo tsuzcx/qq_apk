@@ -1,20 +1,70 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.widget.XListView;
+import java.util.List;
 
 class amqd
-  extends anmu
+  extends anyu
 {
-  amqd(amqc paramamqc) {}
+  amqd(amqb paramamqb) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("qwe", 2, "onUpdateFriendInfo:" + paramString);
+      QLog.d("RecommendFriendAdapter", 2, "onCancelMayKnowRecommend isSuccess = " + paramBoolean);
     }
-    if ((amqc.a(this.a) != null) && (amqc.a(this.a).get(paramString + "nick") != null))
+    if (paramBoolean)
     {
-      int i = ((Integer)amqc.a(this.a).remove(paramString + "nick")).intValue();
-      this.a.a(i, paramString, 1);
+      if ((this.a.jdField_a_of_type_Ampn != null) && ((this.a.jdField_a_of_type_Ampn instanceof ampo))) {
+        ((ampo)this.a.jdField_a_of_type_Ampn).a(paramString);
+      }
+      amqb.a(this.a);
+    }
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBoolean) {
+      amqb.a(this.a);
+    }
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onMayKnowListPushAdd isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      amqb.a(this.a);
+    }
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onMayKnowListPushDel isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      amqb.a(this.a);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onMayknowStateChanged isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      this.a.notifyDataSetChanged();
+      if (amqb.a(this.a) != null)
+      {
+        amqb.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        amqb.a(this.a).postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1600L);
+      }
     }
   }
 }

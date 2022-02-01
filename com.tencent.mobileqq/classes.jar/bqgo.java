@@ -1,25 +1,20 @@
-public class bqgo
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+
+class bqgo
+  extends SimpleJob<Object>
 {
-  public ayxt a;
-  
-  public String a()
+  bqgo(bqgk parambqgk, String paramString)
   {
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    yuq.a("0X80076BC");
     return null;
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if (this.a == null) {
-      this.a = new ayxt();
-    }
-    this.a.a = paramString1;
-    this.a.b = paramString2;
-    ayxi.b(this, paramString1, paramString2);
-  }
-  
-  protected boolean a()
-  {
-    return false;
   }
 }
 

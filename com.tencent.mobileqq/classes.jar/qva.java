@@ -1,196 +1,100 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.Pair;
+import kotlin.TuplesKt;
+import kotlin.collections.MapsKt;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class qva
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "", "()V", "feedsInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo;", "getFeedsInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo;", "setFeedsInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo;)V", "info", "Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;", "getInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;", "setInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)V", "longContentInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo$LongContentInfo;", "getLongContentInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo$LongContentInfo;", "setLongContentInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo$LongContentInfo;)V", "pgcFeedsInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo$PGCFeedsInfo;", "getPgcFeedsInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo$PGCFeedsInfo;", "setPgcFeedsInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo$PGCFeedsInfo;)V", "process", "", "update", "articleInfo", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract class qva
 {
-  public pxk a;
-  public qrb a;
+  private static final Map<Integer, qva> jdField_a_of_type_JavaUtilMap = (Map)MapsKt.hashMapOf(new Pair[] { TuplesKt.to(Integer.valueOf(1), new qvc()), TuplesKt.to(Integer.valueOf(3), new qvg()), TuplesKt.to(Integer.valueOf(4), new qve()), TuplesKt.to(Integer.valueOf(2), new qvf()), TuplesKt.to(Integer.valueOf(5), new qvd()) });
+  public static final qvb a;
+  @NotNull
+  protected BaseArticleInfo a;
+  @Nullable
+  private SocializeFeedsInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo;
+  @Nullable
+  private qxz jdField_a_of_type_Qxz;
+  @Nullable
+  private qyg jdField_a_of_type_Qyg;
   
-  public static boolean a(ArticleInfo paramArticleInfo)
+  static
   {
-    return qyo.a(paramArticleInfo);
+    jdField_a_of_type_Qvb = new qvb(null);
   }
   
-  public static boolean a(pxk parampxk)
+  @JvmStatic
+  @Nullable
+  public static final qva a(@NotNull BaseArticleInfo paramBaseArticleInfo)
   {
-    return (parampxk.a() == 49) || (parampxk.a() == 62) || (parampxk.a() == 63);
+    return jdField_a_of_type_Qvb.a(paramBaseArticleInfo);
   }
   
-  public static boolean b(ArticleInfo paramArticleInfo)
+  @NotNull
+  protected final BaseArticleInfo a()
   {
-    return qyo.b(paramArticleInfo);
-  }
-  
-  public static boolean b(pxk parampxk)
-  {
-    return (parampxk.a() == 39) || (parampxk.a() == 116) || (parampxk.a() == 66) || (parampxk.a() == 115) || (parampxk.a() == 122);
-  }
-  
-  public static boolean c(ArticleInfo paramArticleInfo)
-  {
-    int i = snh.c(paramArticleInfo);
-    return (i == 23) || (i == 26) || (i == 56) || (i == 59);
-  }
-  
-  public static boolean c(pxk parampxk)
-  {
-    switch (parampxk.a())
-    {
-    default: 
-      return false;
+    BaseArticleInfo localBaseArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+    if (localBaseArticleInfo == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("info");
     }
-    return true;
+    return localBaseArticleInfo;
   }
   
-  public static boolean d(pxk parampxk)
+  @Nullable
+  protected final SocializeFeedsInfo a()
   {
-    return parampxk.c() == 3;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo;
   }
   
-  public static boolean e(pxk parampxk)
+  @Nullable
+  protected final qxz a()
   {
-    return parampxk.a() == 10;
+    return this.jdField_a_of_type_Qxz;
   }
   
-  public static boolean f(pxk parampxk)
+  @Nullable
+  protected final qyg a()
   {
-    return parampxk.a() == 11;
+    return this.jdField_a_of_type_Qyg;
   }
   
-  public static boolean g(pxk parampxk)
-  {
-    return parampxk.a() == 12;
-  }
+  protected abstract void a();
   
-  public static boolean h(pxk parampxk)
+  public final void a(@NotNull BaseArticleInfo paramBaseArticleInfo)
   {
-    return parampxk.a() == 27;
-  }
-  
-  public static boolean i(pxk parampxk)
-  {
-    return parampxk.a() == 28;
-  }
-  
-  public static boolean j(pxk parampxk)
-  {
-    return qyo.b(parampxk.a());
-  }
-  
-  public static boolean k(pxk parampxk)
-  {
-    return qyo.a(parampxk.a());
-  }
-  
-  public int a()
-  {
-    if ((m()) && ((this.jdField_a_of_type_Pxk.a() instanceof AdvertisementInfo))) {
-      return AdvertisementInfo.getBigAppAdStyle((AdvertisementInfo)this.jdField_a_of_type_Pxk.a());
+    Object localObject = null;
+    Intrinsics.checkParameterIsNotNull(paramBaseArticleInfo, "articleInfo");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+    paramBaseArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+    if (paramBaseArticleInfo == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("info");
     }
-    return 0;
-  }
-  
-  public long a()
-  {
-    if ((this.jdField_a_of_type_Pxk != null) && (this.jdField_a_of_type_Pxk.a() != null) && (this.jdField_a_of_type_Pxk.a().mSocialFeedInfo != null) && (this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.a != null)) {}
-    try
-    {
-      long l = this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.a.a;
-      return l;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo = paramBaseArticleInfo.mSocialFeedInfo;
+    paramBaseArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo;
+    if (paramBaseArticleInfo != null) {}
+    for (paramBaseArticleInfo = paramBaseArticleInfo.jdField_a_of_type_Qxz; paramBaseArticleInfo == null; paramBaseArticleInfo = null) {
+      return;
     }
-    catch (NumberFormatException localNumberFormatException)
+    paramBaseArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo;
+    if (paramBaseArticleInfo != null) {}
+    for (paramBaseArticleInfo = paramBaseArticleInfo.jdField_a_of_type_Qxz;; paramBaseArticleInfo = null)
     {
-      localNumberFormatException.printStackTrace();
-      return 0L;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
+      this.jdField_a_of_type_Qxz = paramBaseArticleInfo;
+      SocializeFeedsInfo localSocializeFeedsInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo;
+      paramBaseArticleInfo = localObject;
+      if (localSocializeFeedsInfo != null) {
+        paramBaseArticleInfo = localSocializeFeedsInfo.jdField_a_of_type_Qyg;
       }
+      this.jdField_a_of_type_Qyg = paramBaseArticleInfo;
+      a();
+      return;
     }
-  }
-  
-  public pxk a()
-  {
-    return this.jdField_a_of_type_Pxk;
-  }
-  
-  public void a(pxk parampxk)
-  {
-    this.jdField_a_of_type_Pxk = parampxk;
-  }
-  
-  public void a(qrb paramqrb)
-  {
-    this.jdField_a_of_type_Qrb = paramqrb;
-  }
-  
-  public boolean a()
-  {
-    return d(this.jdField_a_of_type_Pxk);
-  }
-  
-  public boolean b()
-  {
-    return e(this.jdField_a_of_type_Pxk);
-  }
-  
-  public boolean c()
-  {
-    return f(this.jdField_a_of_type_Pxk);
-  }
-  
-  public boolean d()
-  {
-    return g(this.jdField_a_of_type_Pxk);
-  }
-  
-  public boolean e()
-  {
-    return h(this.jdField_a_of_type_Pxk);
-  }
-  
-  public boolean f()
-  {
-    return (this.jdField_a_of_type_Pxk.a() == 50) || (this.jdField_a_of_type_Pxk.a() == 51) || (this.jdField_a_of_type_Pxk.a() == 52);
-  }
-  
-  public boolean g()
-  {
-    return i(this.jdField_a_of_type_Pxk);
-  }
-  
-  public boolean h()
-  {
-    return a(this.jdField_a_of_type_Pxk);
-  }
-  
-  public boolean i()
-  {
-    return j(this.jdField_a_of_type_Pxk);
-  }
-  
-  public boolean j()
-  {
-    return k(this.jdField_a_of_type_Pxk);
-  }
-  
-  public boolean k()
-  {
-    return c(this.jdField_a_of_type_Pxk);
-  }
-  
-  public boolean l()
-  {
-    return this.jdField_a_of_type_Pxk.a() == 16;
-  }
-  
-  public boolean m()
-  {
-    return b(this.jdField_a_of_type_Pxk);
   }
 }
 

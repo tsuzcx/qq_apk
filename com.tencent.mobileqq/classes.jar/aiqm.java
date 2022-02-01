@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class aiqm
-  implements aiqt
+  implements ViewPager.OnPageChangeListener
 {
-  public aiqm(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment) {}
+  public aiqm(TroopChatPie paramTroopChatPie) {}
   
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if ((paramArrayOfAIORichMediaData != null) && (paramArrayOfAIORichMediaData.length > 0))
-    {
-      this.a.a = paramArrayOfAIORichMediaData[(paramArrayOfAIORichMediaData.length - 1)];
-      if (QLog.isColorLevel()) {
-        QLog.i("chatHistory.troop.portal", 2, "get the first media data");
-      }
-    }
-    do
-    {
-      return;
-      this.a.a = null;
-    } while (!QLog.isColorLevel());
-    QLog.i("chatHistory.troop.portal", 2, "no media data found");
+    TroopChatPie.a(this.a, paramInt);
   }
 }
 

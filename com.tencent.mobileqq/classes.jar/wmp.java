@@ -1,26 +1,51 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.annotation.TargetApi;
+import android.os.SystemClock;
 
-class wmp
-  extends xbu
+@TargetApi(14)
+public class wmp
+  extends zqh
 {
-  wmp(wmm paramwmm) {}
+  private int jdField_a_of_type_Int = 941000;
+  private long jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  private String jdField_a_of_type_JavaLangString;
+  private wmr jdField_a_of_type_Wmr;
+  private String b;
   
-  public void a()
+  public wmp(String paramString1, String paramString2, wmr paramwmr)
   {
-    super.a();
-    wml.a(this.a.a, null);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Wmr = paramwmr;
   }
   
   public void a(int paramInt)
   {
-    super.a(paramInt);
-    yqu.a("home_page", "suc_share", 1, paramInt, new String[] { yqu.b(this.a.a.a) + "", yqu.a(this.a.a.a) + "", this.a.a.a.feedId });
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void b(int paramInt)
+  public void onFailure(String paramString)
   {
-    super.b(paramInt);
-    yqu.a("home_page", "share_chanel", 1, paramInt, new String[] { yqu.b(this.a.a.a) + "", yqu.a(this.a.a.a) + "", this.a.a.a.feedId });
+    if (paramString.equals(String.valueOf(941001))) {
+      this.jdField_a_of_type_Wmr.a(941001, paramString, "");
+    }
+    for (;;)
+    {
+      yuk.d(wmk.jdField_a_of_type_JavaLangString, "combine audio fail %s, %d", new Object[] { paramString, Integer.valueOf(this.jdField_a_of_type_Int) });
+      zom.g(this.jdField_a_of_type_JavaLangString);
+      return;
+      if (paramString.equals(String.valueOf(941002))) {
+        this.jdField_a_of_type_Wmr.a(941002, paramString, "");
+      } else {
+        this.jdField_a_of_type_Wmr.a(this.jdField_a_of_type_Int, paramString, "");
+      }
+    }
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    yuk.a(wmk.jdField_a_of_type_JavaLangString, "combine music success take time:%d", Long.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_Wmr.a(0, "", this.b);
+    zom.g(this.jdField_a_of_type_JavaLangString);
   }
 }
 

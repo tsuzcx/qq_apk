@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app;
 
 import android.util.Pair;
-import anqg;
+import aocm;
 import java.util.Calendar;
 import java.util.List;
 
 public class MessageRoamManager$3
   implements Runnable
 {
-  public MessageRoamManager$3(anqg paramanqg, int paramInt) {}
+  public MessageRoamManager$3(aocm paramaocm, int paramInt) {}
   
   public void run()
   {

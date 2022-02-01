@@ -1,35 +1,15 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator;
+import android.os.Bundle;
 
-public class ajie
-  implements Handler.Callback
+class ajie
+  extends anyu
 {
-  public ajie(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
+  ajie(ajic paramajic) {}
   
-  public boolean handleMessage(Message paramMessage)
+  protected void onAddFriendSecCheck(boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if (paramMessage.what == SimpleCheckableSlidingIndicator.d)
-    {
-      if (this.a.getScrollX() == SimpleCheckableSlidingIndicator.a(this.a))
-      {
-        SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.a);
-        if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
-          SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
-        }
-        SimpleCheckableSlidingIndicator.a(this.a).removeMessages(SimpleCheckableSlidingIndicator.d);
-      }
-    }
-    else {
-      return false;
-    }
-    SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.c);
-    if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
-      SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
-    }
-    SimpleCheckableSlidingIndicator.b(this.a, this.a.getScrollX());
-    SimpleCheckableSlidingIndicator.a(this.a).sendEmptyMessageDelayed(SimpleCheckableSlidingIndicator.d, 50L);
-    return false;
+    ajic.a(this.a, paramBoolean2, paramBundle);
   }
 }
 

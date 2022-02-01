@@ -1,26 +1,82 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.utils.JsonORM;
+import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import java.io.File;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class xuq
-  implements DialogInterface.OnClickListener
+  implements TVK_IMediaPlayer.OnDownloadCallbackListener
 {
-  xuq(xui paramxui, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem) {}
+  xuq(xuk paramxuk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnDownloadCallback(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
-    switch (paramInt)
+    yuk.a(this.a.jdField_a_of_type_JavaLangString, "on tvk download callback. %s", paramString);
+    do
     {
-    case 0: 
-    default: 
+      do
+      {
+        Object localObject2;
+        try
+        {
+          xtw localxtw = (xtw)JsonORM.a(new JSONObject(paramString), xtw.class);
+          if (localxtw == null)
+          {
+            yuk.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback fail. %s", new Object[] { paramString });
+            return;
+          }
+        }
+        catch (JsonORM.JsonParseException localJsonParseException)
+        {
+          for (;;)
+          {
+            localJsonParseException.printStackTrace();
+            Object localObject1 = null;
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          do
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+              localObject2 = null;
+            }
+            switch (localObject2.d)
+            {
+            default: 
+              yuk.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 未知. %s", new Object[] { paramString });
+              return;
+            case 1: 
+              yuk.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 文件大小. %s", new Object[] { paramString });
+              return;
+            case 2: 
+              yuk.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 下载 progress. offset = %d / %d, speedKBS = %d, clipNo = %d", new Object[] { Integer.valueOf(localObject2.c), Long.valueOf(localObject2.jdField_a_of_type_Long), Integer.valueOf(localObject2.b), Integer.valueOf(localObject2.jdField_a_of_type_Int) });
+              xuk.a(this.a).jdField_a_of_type_Long = localObject2.jdField_a_of_type_Long;
+              xuk.a(this.a).jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(localObject2.b));
+            }
+          } while ((TextUtils.isEmpty(this.a.c)) || (this.a.jdField_a_of_type_Xti == null));
+          this.a.jdField_a_of_type_Xti.a(this.a.d, new File(this.a.c), localObject2.c, null);
+          return;
+          yuk.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 下载 DONE.");
+          return;
+        }
+        yuk.e(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 下载出错. errorCode=%d, errorDetailCode=%d, errorMsg=%s", new Object[] { Integer.valueOf(localObject2.e), Integer.valueOf(localObject2.f), localObject2.jdField_a_of_type_JavaLangString });
+        this.a.jdField_a_of_type_Xti.a(this.a.b, this.a.d, localObject2.e);
+        return;
+        yuk.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 存储文件完整下载完成.");
+        if (TextUtils.isEmpty(this.a.c)) {
+          break;
+        }
+      } while (this.a.jdField_a_of_type_Xti == null);
+      this.a.jdField_a_of_type_Xti.a(this.a.b, this.a.d, new File(this.a.c));
       return;
-    }
-    why.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-    yqu.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    } while (this.a.jdField_a_of_type_Xti == null);
+    this.a.jdField_a_of_type_Xti.a(this.a.b, this.a.d, null);
   }
 }
 

@@ -1,36 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 
-public class ooy
-  implements qft
+public final class ooy
+  implements pql
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public ooy(CommentInfo paramCommentInfo) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    return qbr.a(paramBaseArticleInfo);
-  }
+  public void onLoadUserInfoFailed(String paramString1, String paramString2) {}
   
-  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2)
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    if (parampxk.a() == null) {}
-    do
-    {
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.authorUin)) || (paramReadInJoyUserInfo == null)) {
       return;
-      paramContainer = (qly)paramContainer.getVirtualView().findViewBaseByName("id_small_game_proteus_collection_view");
-    } while (paramContainer == null);
-    paramContainer.a(parampxk);
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
-  {
-    return false;
+    }
+    this.a.authorNickName = paramReadInJoyUserInfo.nick;
   }
 }
 

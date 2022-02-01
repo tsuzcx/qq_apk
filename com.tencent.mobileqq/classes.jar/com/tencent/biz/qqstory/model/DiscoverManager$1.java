@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.model;
 
-import wos;
+import wsn;
 
 public class DiscoverManager$1
   implements Runnable
 {
   public void run()
   {
-    wos.a(this.this$0, this.a);
+    wsn.a(this.this$0, this.a);
   }
 }
 

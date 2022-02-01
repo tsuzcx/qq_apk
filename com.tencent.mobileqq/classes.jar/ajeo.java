@@ -1,27 +1,17 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
 public class ajeo
-  extends ajdf
+  extends anyu
 {
-  public int a;
-  public long a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public String a;
-  public LinearLayout b;
-  public TextView b;
-  public String b;
+  public ajeo(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public ajeo(Context paramContext, View paramView)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    super(paramContext, paramView);
+    if ((paramBoolean) && (paramObject != null) && (SearchBaseFragment.a(this.a) != null) && (SearchBaseFragment.a(this.a).uin.get() == ((Long)paramObject).longValue())) {
+      SearchBaseFragment.a(this.a).relation.set(SearchBaseFragment.a(this.a).relation.get() & 0x10);
+    }
   }
 }
 

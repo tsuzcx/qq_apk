@@ -1,42 +1,49 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingView;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class acua
-  extends acuc
+class acua
+  implements acun
 {
-  public acua(GdtVideoCeilingView paramGdtVideoCeilingView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
+  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
   {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-    acqy.b("GdtVideoCeilingView", "onPageFinished:" + paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-    acqy.b("GdtVideoCeilingView", "onPageStarted:" + paramString);
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    super.onReceivedTitle(paramWebView, paramString);
-    acqy.b("GdtVideoCeilingView", "onReceivedTitle: " + paramString);
-    GdtVideoCeilingView.a(this.a).setWebBarTitle(paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    return a(paramWebView, paramString);
+    Object localObject = null;
+    if (paramacts != null) {}
+    for (paramVarArgs = paramacts.a(); (paramacts == null) || (paramVarArgs == null); paramVarArgs = null)
+    {
+      acvc.d("GdtCarrierJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("carrier", acwe.a(paramVarArgs));
+    }
+    catch (JSONException localJSONException)
+    {
+      try
+      {
+        for (;;)
+        {
+          paramacts.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramacts != null) {
+            paramString = paramacts.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getCarrier", paramString);
+          return true;
+          localJSONException = localJSONException;
+          acvc.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", localJSONException);
+        }
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          acvc.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", paramString);
+        }
+      }
+    }
   }
 }
 

@@ -1,126 +1,65 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForSafeGrayTips;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aihm
+class aihm
+  implements BusinessObserver
 {
-  public static MessageForReplyText.SourceMsgInfo a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, int paramInt, long paramLong, String paramString)
+  aihm(aihh paramaihh) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramChatMessage == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
     }
-    paramQQAppInterface = new MessageForReplyText.SourceMsgInfo();
-    paramQQAppInterface.origUid = paramChatMessage.msgUid;
-    paramQQAppInterface.mSourceMsgSeq = paramChatMessage.shmsgseq;
-    paramQQAppInterface.mSourceMsgSenderUin = Long.parseLong(paramChatMessage.senderuin);
-    paramQQAppInterface.setUniSeq(paramChatMessage.uniseq, true);
-    paramQQAppInterface.mSourceMsgTime = ((int)paramChatMessage.time);
-    paramQQAppInterface.mSourceSummaryFlag = 1;
-    paramQQAppInterface.mType = paramInt;
-    paramQQAppInterface.mAtInfoStr = paramChatMessage.getExtInfoFromExtStr(bbyw.i);
-    Object localObject = njo.a(paramChatMessage);
-    if (!TextUtils.isEmpty(((njp)localObject).b)) {
-      paramQQAppInterface.mAnonymousNickName = ((njp)localObject).b;
+    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
+    if (paramBoolean)
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
+      }
     }
     for (;;)
     {
-      if (((paramChatMessage instanceof MessageForFile)) && (paramQQAppInterface.mSourceMsgSenderUin == 0L) && (paramChatMessage.issend != 1) && (!TextUtils.isEmpty(paramChatMessage.frienduin))) {
-        paramQQAppInterface.mSourceMsgSenderUin = Long.parseLong(paramChatMessage.frienduin);
-      }
-      paramQQAppInterface.mSourceMsgToUin = paramLong;
-      paramQQAppInterface.mSourceMsgTroopName = paramString;
       try
       {
-        if (!(paramChatMessage instanceof MessageForMixedMsg)) {
-          break;
+        localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get();
+        if (paramInt == 0)
+        {
+          paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
+          nok.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
+          this.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount(paramBundle, 0L);
+          aihh.a(this.a, paramBundle);
+          this.a.b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
+          return;
         }
-        paramQQAppInterface.mSourceMsgText = MessageForMixedMsg.getReplySummary(paramChatMessage);
-        return paramQQAppInterface;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail ret code error: " + paramInt);
+        return;
       }
-      catch (Exception paramChatMessage)
+      catch (InvalidProtocolBufferMicroException paramBundle) {}
+      if (QLog.isColorLevel())
       {
-        paramQQAppInterface.mSourceMsgText = "";
-        return paramQQAppInterface;
-      }
-      if ((paramQQAppInterface.mSourceMsgSenderUin == 50000000L) || (paramQQAppInterface.mSourceMsgSenderUin == 1000000L))
-      {
-        localObject = bfre.a(paramChatMessage);
-        if (localObject != null) {
-          paramQQAppInterface.mAnonymousNickName = ((bfrf)localObject).c;
+        QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail data is null");
+        return;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail isSuccess is null");
+          return;
         }
       }
     }
-    if ((paramChatMessage instanceof MessageForStructing))
-    {
-      paramQQAppInterface.mSourceMsgText = MessageForStructing.getReplySummary(paramChatMessage);
-      return paramQQAppInterface;
-    }
-    if ((paramChatMessage instanceof MessageForArkApp))
-    {
-      paramQQAppInterface.mSourceMsgText = MessageForArkApp.getReplySummary(paramChatMessage);
-      return paramQQAppInterface;
-    }
-    paramQQAppInterface.mSourceMsgText = paramChatMessage.getSummaryMsg();
-    return paramQQAppInterface;
-  }
-  
-  public static MessageRecord a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
-  {
-    paramQQAppInterface = paramQQAppInterface.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramSourceMsgInfo.mSourceMsgSeq, 0L);
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
-    {
-      int i = 0;
-      while (i < paramQQAppInterface.size())
-      {
-        paramSessionInfo = (MessageRecord)paramQQAppInterface.get(i);
-        if ((!acwh.a(paramSessionInfo)) && (!(paramSessionInfo instanceof MessageForSafeGrayTips))) {
-          return paramSessionInfo;
-        }
-        i += 1;
-      }
-    }
-    return null;
-  }
-  
-  public static MessageRecord a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong1, long paramLong2)
-  {
-    paramQQAppInterface = paramQQAppInterface.a().b(paramString, paramInt, paramLong1, paramLong2);
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
-    {
-      paramInt = 0;
-      while (paramInt < paramQQAppInterface.size())
-      {
-        paramString = (MessageRecord)paramQQAppInterface.get(paramInt);
-        if ((!acwh.b(paramString)) && (!(paramString instanceof MessageForSafeGrayTips))) {
-          return paramString;
-        }
-        paramInt += 1;
-      }
-    }
-    return null;
-  }
-  
-  public static MessageRecord b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
-  {
-    return a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramSourceMsgInfo.mSourceMsgTime, paramSourceMsgInfo.origUid);
-  }
-  
-  public static MessageRecord c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
-  {
-    if (paramSessionInfo.jdField_a_of_type_Int == 0) {
-      return b(paramQQAppInterface, paramSessionInfo, paramSourceMsgInfo);
-    }
-    return a(paramQQAppInterface, paramSessionInfo, paramSourceMsgInfo);
   }
 }
 

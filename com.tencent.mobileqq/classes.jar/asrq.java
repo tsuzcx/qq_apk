@@ -1,25 +1,21 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
-public class asrq
-  implements aucg
+class asrq
+  implements axfv<Void, List<aspq>>
 {
-  public asrq(FilePreviewActivity paramFilePreviewActivity) {}
+  asrq(asro paramasro) {}
   
-  public void a(int paramInt)
+  public List<aspq> a(Void paramVoid)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      FilePreviewActivity.a(this.a, bdho.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131718487), false));
-      return;
+    paramVoid = ((axfj)this.a.a.getManager(14)).a(false, asro.a(this.a), false);
+    ArrayList localArrayList = new ArrayList();
+    if (paramVoid != null) {
+      localArrayList.addAll(paramVoid);
     }
-    bdho.a(this.a.app, this.a, "<FileAssistant>FilePreviewActivity", FilePreviewActivity.a(this.a));
+    return localArrayList;
   }
-  
-  public void a(ImageView paramImageView) {}
 }
 
 

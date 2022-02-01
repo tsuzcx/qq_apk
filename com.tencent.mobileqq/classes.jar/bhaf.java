@@ -1,16 +1,17 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 
 class bhaf
-  extends bhhe
+  implements bdyi
 {
   bhaf(bhae parambhae) {}
   
-  @TargetApi(9)
-  public void onDone(bhhf parambhhf)
+  public void a()
   {
-    super.onDone(parambhhf);
-    bhae.a(this.a).sendMessage(bhae.a(this.a).obtainMessage(10002, parambhhf.a(), 0, parambhhf.a()));
+    this.a.a.a.a.this$0.a();
+    if (this.a.a.a.a.a != null) {
+      this.a.a.a.a.a.a();
+    }
   }
 }
 

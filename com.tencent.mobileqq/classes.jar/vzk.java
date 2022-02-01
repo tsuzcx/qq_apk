@@ -1,14 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
-class vzk
-  extends voy
+public class vzk
+  implements blkc
 {
-  vzk(vzj paramvzj) {}
+  public vzk(QCircleFeedCommentWidget paramQCircleFeedCommentWidget) {}
   
-  public void a(int paramInt, vou paramvou)
+  public void a()
   {
-    super.a(paramInt, paramvou);
-    QLog.d(this.a.a(), 1, paramvou.a() + "\n , state callback:" + paramInt);
+    QCircleFeedCommentWidget.a(this.a, 63);
   }
 }
 

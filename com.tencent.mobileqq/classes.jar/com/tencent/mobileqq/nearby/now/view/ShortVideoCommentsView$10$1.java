@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.nearby.now.view;
 
-import axmc;
+import ayew;
 
 public class ShortVideoCommentsView$10$1
   implements Runnable
 {
-  public ShortVideoCommentsView$10$1(axmc paramaxmc) {}
+  public ShortVideoCommentsView$10$1(ayew paramayew) {}
   
   public void run()
   {

@@ -1,37 +1,233 @@
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.richmedia.capture.data.FollowCaptureParam;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import com.tencent.tavcut.timeline.TimelineView.SpeedChangeCallback;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMStoryFollowCaptureUnit.1;
+import dov.com.qq.im.capture.mode.CaptureModeController;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import dov.com.qq.im.capture.view.StoryImageToastView;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraStoryCaptureButtonLayout;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
-class bodw
-  implements TimelineView.SpeedChangeCallback
+@TargetApi(18)
+public class bodw
+  extends bodv
 {
-  bodw(bodv parambodv, float paramFloat) {}
+  private static int d;
+  private static int e;
+  private volatile boolean A;
+  private FollowCaptureParam jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam;
+  private FollowCaptureView jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewFollowCaptureView;
+  private Stack<Integer> jdField_a_of_type_JavaUtilStack = new Stack();
+  private LocalMediaInfo b;
+  private CameraCaptureView.VideoCaptureResult c;
   
-  public void onChangeFailed(int paramInt)
+  static
   {
-    bnyh.a().a(this.jdField_a_of_type_Float);
-    if (paramInt == 1000) {
-      QQToast.a(this.jdField_a_of_type_Bodv.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorVideoClipFragment.getActivity(), 2131689779, 0).a();
-    }
-    for (;;)
+    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+    ((WindowManager)BaseApplicationImpl.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
+    jdField_d_of_type_Int = localDisplayMetrics.widthPixels;
+    e = localDisplayMetrics.heightPixels;
+  }
+  
+  public bodw(bqai parambqai, bqah parambqah)
+  {
+    super(parambqai, parambqah);
+  }
+  
+  private void af()
+  {
+    if (bdax.e())
     {
-      this.jdField_a_of_type_Bodv.jdField_a_of_type_Bodz.a(this.jdField_a_of_type_Bodv.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorVideoClipFragment.jdField_a_of_type_Float);
-      return;
-      if (paramInt == 1001) {
-        QQToast.a(this.jdField_a_of_type_Bodv.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorVideoClipFragment.getActivity(), 2131689778, 0).a();
+      localObject = bbgg.a(this.jdField_a_of_type_Bqai.a());
+      if (localObject != null)
+      {
+        jdField_d_of_type_Int = ((DisplayMetrics)localObject).widthPixels;
+        e = ((DisplayMetrics)localObject).heightPixels;
       }
+    }
+    Object localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).height = (e / 2);
+    int j = bhtq.a(48.0F);
+    int i = bhtq.a(44.0F);
+    int k = bhtq.a(118.0F);
+    k = e - k - i - j;
+    i = k;
+    if (this.jdField_d_of_type_Boolean) {
+      i = k - (this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams().height + this.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams().height);
+    }
+    if (i - ((RelativeLayout.LayoutParams)localObject).height > 0) {}
+    for (i = (i - ((RelativeLayout.LayoutParams)localObject).height) / 2 + j;; i = j)
+    {
+      ((RelativeLayout.LayoutParams)localObject).topMargin = i;
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.e(false);
+      return;
     }
   }
   
-  public void onChangeSucc(float paramFloat)
+  public void A()
   {
-    this.jdField_a_of_type_Bodv.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorVideoClipFragment.jdField_a_of_type_JavaLangFloat = Float.valueOf(paramFloat);
-    AEEditorVideoClipFragment.a(this.jdField_a_of_type_Bodv.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorVideoClipFragment).setSpeed(paramFloat, true);
-    AEEditorVideoClipFragment.a(this.jdField_a_of_type_Bodv.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorVideoClipFragment).a(AEEditorVideoClipFragment.a(this.jdField_a_of_type_Bodv.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorVideoClipFragment).getTAVSource());
-    bnyl.a().a().a = paramFloat;
-    bnyh.a().a(this.jdField_a_of_type_Float);
+    super.A();
+    this.jdField_a_of_type_JavaUtilStack.pop();
+    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().b(false);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewFollowCaptureView.e(((Integer)this.jdField_a_of_type_JavaUtilStack.peek()).intValue());
+  }
+  
+  protected void B()
+  {
+    e(false);
+  }
+  
+  public void H()
+  {
+    super.H();
+    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().b(true);
+  }
+  
+  public void L()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.B();
+    if ((this.jdField_a_of_type_JavaUtilList.size() == 0) || (this.jdField_b_of_type_JavaUtilList.size() == 0))
+    {
+      e(false);
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout.setSegment(true);
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout.setEnableSegment(false);
+    }
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout.setLockStatus(false);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout.h(false);
+    this.jdField_a_of_type_DovComQqImCaptureViewStoryImageToastView.b();
+  }
+  
+  public void T()
+  {
+    super.T();
+    af();
+  }
+  
+  public int a()
+  {
+    return 2131560986;
+  }
+  
+  public View a()
+  {
+    View localView = super.a();
+    af();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout.setSegment(true);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout.setEnableSegment(false);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout.setFunctionFlag(3);
+    return localView;
+  }
+  
+  protected bbft a()
+  {
+    return new bodx(this, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView);
+  }
+  
+  protected bbhn a()
+  {
+    bbhn localbbhn = super.a();
+    localbbhn.g(jdField_d_of_type_Int);
+    localbbhn.h(e);
+    localbbhn.a(false);
+    return localbbhn;
+  }
+  
+  public ArrayList<Integer> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Integer.valueOf(0));
+    return localArrayList;
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMStoryFollowCaptureUnit", 2, "onCreate");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam = ((FollowCaptureParam)this.jdField_a_of_type_Bqai.a().getIntent().getSerializableExtra("extra_follow_capture_param"));
+    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam.videoPath)))
+    {
+      QQToast.a(BaseApplicationImpl.getContext(), anzj.a(2131708723), 0).a();
+      this.jdField_a_of_type_Bqai.a().finish();
+      return;
+    }
+    this.jdField_a_of_type_Bqaa.b = 108;
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.b(true);
+    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.b(true);
+    d(true);
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewFollowCaptureView = ((FollowCaptureView)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView);
+    paramBundle = BaseApplicationImpl.getContext().getResources().getString(2131698408);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setIsFollowCaptureTips();
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setRecordTipsWording(paramBundle);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.e();
+    ThreadManagerV2.excute(new QIMStoryFollowCaptureUnit.1(this), 16, null, true);
+    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().b(false);
+    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().b();
+    this.jdField_a_of_type_JavaUtilStack.push(Integer.valueOf(0));
+    bqzz.a().b(false);
+  }
+  
+  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
+  {
+    this.jdField_c_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult = paramVideoCaptureResult;
+    this.jdField_b_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
+    if ((!this.A) || (this.jdField_c_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult == null) || (paramLocalMediaInfo == null)) {
+      return;
+    }
+    this.jdField_a_of_type_Bqai.a().getIntent().putExtra("extra_follow_capture_param", this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam);
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam != null) {
+      paramVideoCaptureResult.audioDataFilePath = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam.audioPath;
+    }
+    super.a(paramVideoCaptureResult, paramLocalMediaInfo);
+  }
+  
+  protected void b(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
+  {
+    super.b(paramVideoCaptureResult, paramLocalMediaInfo);
+    this.jdField_a_of_type_JavaUtilStack.push(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewFollowCaptureView.f()));
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMStoryFollowCaptureUnit", 2, "onSegmentVideoOneCaptured: localMediaInfo.duration = " + paramLocalMediaInfo.mDuration + " ; playPosition = " + this.jdField_a_of_type_JavaUtilStack.peek());
+    }
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public void f(boolean paramBoolean)
+  {
+    super.f(paramBoolean);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout.setEnableSegment(false);
   }
 }
 

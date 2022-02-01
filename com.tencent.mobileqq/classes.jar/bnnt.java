@@ -1,23 +1,22 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class bnnt
-  implements Observer<Boolean>
+  implements bmzb
 {
-  bnnt(bnnl parambnnl) {}
+  bnnt(bnns parambnns) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (paramBoolean == null) {
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzonePersonalizeJsPlugin", 4, "FontInterface.TrueTypeResult font:" + paramInt + ", fontPath:" + paramString1);
     }
-    bnnl localbnnl = this.a;
-    if (!paramBoolean.booleanValue()) {}
-    for (boolean bool = true;; bool = false)
+    if (TextUtils.isEmpty(paramString1))
     {
-      bnnl.a(localbnnl, bool);
+      bnns.a(this.a, paramString2, -2, "font download failed.");
       return;
     }
+    bnns.a(this.a, paramString2, 0, "success");
   }
 }
 

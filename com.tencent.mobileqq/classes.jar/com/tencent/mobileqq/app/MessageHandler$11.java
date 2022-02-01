@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import awqv;
-import bgmg;
+import axjo;
+import bhmi;
 
 class MessageHandler$11
   implements Runnable
@@ -10,7 +10,7 @@ class MessageHandler$11
   
   public void run()
   {
-    bgmg.a(awqv.a, true);
+    bhmi.a(axjo.a, true);
   }
 }
 

@@ -1,7 +1,7 @@
 package cooperation.qzone.share;
 
-import bltb;
-import bmgj;
+import bmud;
+import bnhl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +20,7 @@ class QZoneShareActivity$7$1$1
   {
     Object localObject = this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7$1.a.this$0.app.getAccount();
     String str = ((TicketManager)this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7$1.a.this$0.app.getManager(2)).getSkey((String)localObject);
-    if (new ArrayList(this.jdField_a_of_type_JavaUtilArrayList).equals(bltb.a(this.jdField_a_of_type_JavaUtilArrayList, (String)localObject, str, "1"))) {
+    if (new ArrayList(this.jdField_a_of_type_JavaUtilArrayList).equals(bmud.a(this.jdField_a_of_type_JavaUtilArrayList, (String)localObject, str, "1"))) {
       QLog.e("QZoneShare", 1, "imageChangeError!");
     }
     try
@@ -30,7 +30,7 @@ class QZoneShareActivity$7$1$1
       if (l1 <= 0L) {
         l2 = this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7$1.a.this$0.app.getLongAccountUin();
       }
-      localObject = new NewIntent(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7$1.a.this$0, bmgj.class);
+      localObject = new NewIntent(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7$1.a.this$0, bnhl.class);
       ((NewIntent)localObject).putExtra("reason", this.jdField_a_of_type_JavaLangString);
       ((NewIntent)localObject).putExtra("uin", l2);
       ((NewIntent)localObject).putExtra("sharedata", QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7$1.a.this$0));

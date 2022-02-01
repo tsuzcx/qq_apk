@@ -1,38 +1,18 @@
-import com.tencent.image.NativeGifImage;
-import java.io.File;
+import com.tencent.image.AbstractGifImage.DoAccumulativeRunnable;
 
 public class txc
-  extends NativeGifImage
 {
-  private int jdField_a_of_type_Int = 3;
-  private txd jdField_a_of_type_Txd;
+  private static int a;
   
-  public txc(File paramFile, boolean paramBoolean, int paramInt)
+  public static void a()
   {
-    super(paramFile, paramBoolean, false, 0, 0, 0.0F);
-    this.jdField_a_of_type_Int = paramInt;
+    a = AbstractGifImage.DoAccumulativeRunnable.DELAY;
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
   }
   
-  public void a()
+  public static void b()
   {
-    this.jdField_a_of_type_Txd = null;
-  }
-  
-  public void a(txd paramtxd)
-  {
-    this.jdField_a_of_type_Txd = paramtxd;
-  }
-  
-  public void executeNewTask()
-  {
-    if (this.mCurrentLoop == this.jdField_a_of_type_Int)
-    {
-      if (this.jdField_a_of_type_Txd != null) {
-        this.jdField_a_of_type_Txd.a();
-      }
-      return;
-    }
-    super.executeNewTask();
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = a;
   }
 }
 

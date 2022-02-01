@@ -1,16 +1,15 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.AsyncTask;
 
-class auow
-  extends niv
+final class auow
+  extends df
 {
-  auow(auov paramauov) {}
+  auow(Context paramContext) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, String.format("sendFriendRelationRedpointClickEvent, errorCode: %d", new Object[] { Integer.valueOf(paramInt) }));
-    }
+    super.a(paramAsyncTask, paramInt);
+    dc.a(this.a, paramAsyncTask, paramInt, new auox(this));
   }
 }
 

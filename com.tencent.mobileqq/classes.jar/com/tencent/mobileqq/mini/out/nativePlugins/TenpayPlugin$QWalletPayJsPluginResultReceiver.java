@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
-import akwr;
+import alig;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
@@ -31,7 +31,7 @@ public class TenpayPlugin$QWalletPayJsPluginResultReceiver
     do
     {
       return;
-      paramBundle = akwr.a(paramInt, paramBundle, this.mJsPlugin.getActivity());
+      paramBundle = alig.a(paramInt, paramBundle, this.mJsPlugin.getActivity());
     } while (paramBundle == null);
     this.mJsPlugin.evaluateCallback(true, paramBundle, "");
   }

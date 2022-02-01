@@ -1,7 +1,8 @@
 package com.tencent.biz.pubaccount.weishi_new.player;
 
-import ukb;
-import upe;
+import mqq.util.WeakReference;
+import ukz;
+import uqf;
 
 class WSPlayerManager$2$1
   implements Runnable
@@ -10,13 +11,17 @@ class WSPlayerManager$2$1
   
   public void run()
   {
-    upe.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][createVideoPlayerAndPlay] innerPlayVideo miss cache.");
-    if ((this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Ukb.a != null))
-    {
-      upe.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][createVideoPlayerAndPlay] set videoView null !!!");
-      this.a.jdField_a_of_type_Ukb.a = null;
+    ukz localukz = (ukz)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localukz == null) {
+      return;
     }
-    WSPlayerManager.b(this.a.this$0, this.a.jdField_a_of_type_Ukb, this.a.b);
+    uqf.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][createVideoPlayerAndPlay] innerPlayVideo miss cache.");
+    if ((this.a.jdField_a_of_type_Boolean) && (localukz.a != null))
+    {
+      uqf.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][createVideoPlayerAndPlay] set videoView null !!!");
+      localukz.a = null;
+    }
+    WSPlayerManager.b(this.a.this$0, localukz, this.a.b);
   }
 }
 

@@ -1,23 +1,20 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qqcircle.bizparts.danmaku.core.PhotoDanmakuDrawer;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.ImageLoader.Options;
+import com.tencent.biz.qqcircle.events.QCircleGoToCardSettingEvent;
+import qqcircle.QQCircleProfile.SetUserSwitchRsp;
 
-public class veq
-  implements ImageLoader.ImageLoadListener
+class veq
+  implements aaav<QQCircleProfile.SetUserSwitchRsp>
 {
-  public veq(PhotoDanmakuDrawer paramPhotoDanmakuDrawer, vex paramvex) {}
+  veq(vep paramvep, boolean paramBoolean) {}
   
-  public void onImageCanceled(String paramString, ImageLoader.Options paramOptions) {}
-  
-  public void onImageFailed(String paramString, ImageLoader.Options paramOptions) {}
-  
-  public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleProfile.SetUserSwitchRsp paramSetUserSwitchRsp)
   {
-    this.jdField_a_of_type_Vex.f(true);
+    if ((!paramBoolean) || (paramLong != 0L))
+    {
+      vws.a(paramLong, this.jdField_a_of_type_Vep.a.a(), paramString, 0);
+      return;
+    }
+    aaak.a().a(new QCircleGoToCardSettingEvent(this.jdField_a_of_type_Boolean));
   }
-  
-  public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions) {}
 }
 
 

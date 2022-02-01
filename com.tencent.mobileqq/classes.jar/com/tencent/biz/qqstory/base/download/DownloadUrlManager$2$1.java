@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.base.download;
 
-import wga;
-import wgg;
-import wgi;
+import wjv;
+import wkb;
+import wkd;
 
 public class DownloadUrlManager$2$1
   implements Runnable
 {
-  public DownloadUrlManager$2$1(wga paramwga, wgg paramwgg) {}
+  public DownloadUrlManager$2$1(wjv paramwjv, wkb paramwkb) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Wga.a != null) {
-      this.jdField_a_of_type_Wga.a.a(this.jdField_a_of_type_Wgg);
+    if (this.jdField_a_of_type_Wjv.a != null) {
+      this.jdField_a_of_type_Wjv.a.a(this.jdField_a_of_type_Wkb);
     }
   }
 }

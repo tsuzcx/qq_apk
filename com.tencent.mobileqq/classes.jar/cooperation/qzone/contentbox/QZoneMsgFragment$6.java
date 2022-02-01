@@ -1,7 +1,7 @@
 package cooperation.qzone.contentbox;
 
 import android.widget.RelativeLayout.LayoutParams;
-import bgtn;
+import bhtq;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ class QZoneMsgFragment$6
     for (int i = 44;; i = 0)
     {
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)QZoneMsgFragment.a(this.this$0).getLayoutParams();
-      localLayoutParams.bottomMargin = bgtn.b(i);
+      localLayoutParams.bottomMargin = bhtq.b(i);
       QZoneMsgFragment.a(this.this$0).setLayoutParams(localLayoutParams);
       QZoneMsgFragment.a(this.this$0).a(this.a);
       return;

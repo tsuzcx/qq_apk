@@ -23,7 +23,7 @@ class RewardedVideoAdPlugin$3
       for (String str = "ok";; str = "error")
       {
         localJSONObject.put("status", str);
-        RewardedVideoAdPlugin.access$1400(this.this$0, this.val$req, localJSONObject, "onRewardedVideoShowDone");
+        RewardedVideoAdPlugin.access$1500(this.this$0, this.val$req, localJSONObject, "onRewardedVideoShowDone");
         return;
       }
       return;

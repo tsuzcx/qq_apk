@@ -1,23 +1,17 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
-public abstract interface ykf
+public class ykf
 {
-  public abstract void a();
+  public static boolean a(QQUserUIItem paramQQUserUIItem)
+  {
+    return (paramQQUserUIItem != null) && (paramQQUserUIItem.isVip()) && (!paramQQUserUIItem.isMe()) && (!paramQQUserUIItem.isFriend()) && (!paramQQUserUIItem.isSubscribe());
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(@NonNull Activity paramActivity);
-  
-  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public static boolean a(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && (!TextUtils.equals("0_1000", paramString));
+  }
 }
 
 

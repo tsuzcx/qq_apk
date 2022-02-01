@@ -1,59 +1,88 @@
-import com.tencent.ad.tangram.canvas.download.AdCanvasDownloadListenerAdapter;
-import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
-import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppDownloadManager;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class acjb
-  implements AdCanvasDownloadListenerAdapter
 {
-  private List<IAdDownloader.Callback> a = new CopyOnWriteArrayList();
+  private static AppInterface a;
   
-  public IAdDownloader.Callback getDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
+  private static void a(String paramString, long paramLong)
   {
-    if ((this.a != null) && (this.a.size() > 0))
+    String[] arrayOfString;
+    if (bhnv.b(BaseApplication.getContext()) == 1)
     {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
-        if (((localCallback instanceof acja)) && (((acja)localCallback).a() == paramAdAppDownloadManager)) {
-          return localCallback;
-        }
-      }
+      arrayOfString = new String[3];
+      arrayOfString[0] = "param_WIFIGameCenterDownloadFlow";
+      arrayOfString[1] = "param_WIFIFlow";
+      arrayOfString[2] = "param_Flow";
     }
-    return null;
+    for (;;)
+    {
+      a(paramString, arrayOfString, paramLong);
+      return;
+      arrayOfString = new String[3];
+      arrayOfString[0] = "param_XGGameCenterDownloadFlow";
+      arrayOfString[1] = "param_XGFlow";
+      arrayOfString[2] = "param_Flow";
+    }
   }
   
-  public void removeDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
+  public static void a(String paramString, long paramLong, short paramShort)
   {
-    if ((this.a == null) || (paramAdAppDownloadManager == null)) {}
+    if (paramShort == 0) {
+      a(paramString, paramLong);
+    }
+    while (paramShort != 1) {
+      return;
+    }
+    b(paramString, paramLong);
+  }
+  
+  private static void a(String paramString, String[] paramArrayOfString, long paramLong)
+  {
+    if ((a == null) || (paramArrayOfString == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TrafficStatistics", 2, "application or tags is null, return.");
+      }
+    }
     for (;;)
     {
       return;
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
+      try
       {
-        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
-        if ((localCallback instanceof acja))
+        String str = a.getCurrentAccountUin();
+        a.sendAppDataIncerment(str, paramArrayOfString, paramLong);
+        if (QLog.isColorLevel())
         {
-          AdAppDownloadManager localAdAppDownloadManager = ((acja)localCallback).a();
-          if ((localAdAppDownloadManager != null) && (localAdAppDownloadManager == paramAdAppDownloadManager)) {
-            this.a.remove(localCallback);
-          }
+          QLog.d("TrafficStatistics", 2, paramString + " fileSize: " + paramLong);
+          return;
         }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
       }
     }
   }
   
-  public void setDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
+  private static void b(String paramString, long paramLong)
   {
-    if ((this.a != null) && (paramAdAppDownloadManager != null))
+    String[] arrayOfString;
+    if (bhnv.b(BaseApplication.getContext()) == 1)
     {
-      acja localacja = new acja();
-      localacja.a(paramAdAppDownloadManager);
-      this.a.add(localacja);
+      arrayOfString = new String[3];
+      arrayOfString[0] = "param_WIFIGameCenterUploadFlow";
+      arrayOfString[1] = "param_WIFIFlow";
+      arrayOfString[2] = "param_Flow";
+    }
+    for (;;)
+    {
+      a(paramString, arrayOfString, paramLong);
+      return;
+      arrayOfString = new String[3];
+      arrayOfString[0] = "param_XGGameCenterUploadFlow";
+      arrayOfString[1] = "param_XGFlow";
+      arrayOfString[2] = "param_Flow";
     }
   }
 }

@@ -1,38 +1,37 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.TranslucentActivity;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class apjs
-  implements apjp
+  extends bezs
 {
-  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
+  apjp jdField_a_of_type_Apjp;
+  apjr jdField_a_of_type_Apjr;
+  
+  public apjs(QQAppInterface paramQQAppInterface, apjr paramapjr, apjp paramapjp)
   {
-    if (paramLong != 0L) {}
-    do
-    {
-      return false;
-      paramJSONObject = BaseActivity.sTopActivity;
-    } while (paramJSONObject == null);
-    paramString3 = new Intent(paramJSONObject, TranslucentActivity.class);
-    paramString3.addFlags(268435456);
-    QzonePluginProxyActivity.a(paramString3, "com.qzone.misc.web.QZoneTranslucentActivity");
-    paramString3.setAction("action_js2qzone");
-    paramString3.putExtra("cmd", "Schema");
-    paramString2 = paramString1;
-    if (paramString1.startsWith("arouse/detailbyurl?base64url"))
-    {
-      paramString2 = paramString1;
-      if (!paramString1.contains("from")) {
-        paramString2 = paramString1 + "&from=aio";
-      }
+    super(paramQQAppInterface, paramapjr.b);
+    this.jdField_a_of_type_Apjr = paramapjr;
+    this.jdField_a_of_type_Apjp = paramapjp;
+  }
+  
+  protected void realCancel()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realCancel");
     }
-    paramString3.putExtra("schema", "mqzone://" + paramString2);
-    paramString3.putExtra("from", 2);
-    paramJSONObject.startActivity(paramString3);
-    return true;
+  }
+  
+  protected void realStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realStart");
+    }
+    apjp.a(this.jdField_a_of_type_Apjp, this.jdField_a_of_type_Apjr);
+  }
+  
+  public String toString()
+  {
+    return "[DownloadTask] mInfo=" + this.jdField_a_of_type_Apjr + ", mDownloader=" + this.jdField_a_of_type_Apjp;
   }
 }
 

@@ -1,8 +1,36 @@
-public abstract interface tsb
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+class tsb
+  implements Animator.AnimatorListener
 {
-  public abstract void a();
+  tsb(try paramtry) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    try.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    try.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    try.a(this.a, true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    try.a(this.a, true);
+    try.a(this.a).setAlpha(0.0F);
+    try.b(this.a).setAlpha(0.0F);
+    try.c(this.a).setAlpha(0.0F);
+    try.a(this.a).setVisibility(0);
+  }
 }
 
 

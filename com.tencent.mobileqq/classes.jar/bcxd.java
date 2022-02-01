@@ -1,70 +1,89 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.io.File;
 
-class bcxd
-  implements View.OnClickListener
+public class bcxd
 {
-  bcxd(bcxb parambcxb) {}
-  
-  public void onClick(View paramView)
+  public static String a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ((!TextUtils.isEmpty(this.a.a.mMsgActionData)) && (this.a.a.mMsgActionData.startsWith("story:"))) {
-      localObject1 = this.a.a.mMsgActionData.substring("story:".length(), this.a.a.mMsgActionData.length() - 1);
+    String str = BaseApplicationImpl.getApplication().getSharedPreferences("other_res_short_video_mgr_sp", 4).getString("other_res_sv_md5_version_soname_key", "other_res000_0");
+    boolean bool = bcwi.a(str, 1);
+    VideoEnvironment.a("ShortVideoOtherResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
+    if (bool) {
+      return str;
     }
-    for (int i = 1;; i = 2)
+    return "other_res000_0";
+  }
+  
+  static boolean a()
+  {
+    return true;
+  }
+  
+  static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  {
+    return false;
+  }
+  
+  static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    paramQQAppInterface = b();
+    paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
+    File localFile = new File(paramQQAppInterface);
+    if (localFile.exists()) {
+      if ((a().equals(paramString1)) && (bcwi.a(paramQQAppInterface, "other_res_config_file"))) {
+        VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[checkUnzipFileListSizeIsOK]success=true", null);
+      }
+    }
+    for (;;)
     {
-      bgng.a(localQQAppInterface, paramView.getContext(), (String)localObject1).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsgQ.qqstory.TAG_NOW_ENTRANCE_ACTION_CONFIG", 2, "actionType:" + i + "|uri:" + (String)localObject1);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localObject1 = "0";
-      localObject2 = "-1";
-      String[] arrayOfString1 = this.a.ac.substring(this.a.ac.indexOf("?") + 1).split("&");
-      i = 0;
-      while (i < arrayOfString1.length)
+      return false;
+      bhmi.a(paramQQAppInterface);
+      VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
+      boolean bool = localFile.mkdirs();
+      VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[exists]mkOK=" + bool, null);
+      try
       {
-        String[] arrayOfString2 = arrayOfString1[i].split("=");
-        localObject5 = localObject2;
-        Object localObject3 = localObject1;
-        if (arrayOfString2.length == 2)
+        bhmi.a(paramString2, paramQQAppInterface, false);
+        bool = bcwi.a(paramQQAppInterface, "other_res_config_file");
+        VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK success=" + bool, null);
+        if (bool)
         {
-          if ("roomid".equals(arrayOfString2[0])) {
-            localObject1 = arrayOfString2[1];
+          bool = a(paramString1);
+          VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK saveOK=" + bool, null);
+          if (bool) {
+            continue;
           }
-          localObject5 = localObject2;
-          localObject3 = localObject1;
+          bool = a(paramString1);
+          VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool, null);
+          return false;
         }
-        try
-        {
-          if ("from".equals(arrayOfString2[0]))
-          {
-            localObject5 = arrayOfString2[1];
-            localObject3 = localObject1;
-          }
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          for (;;)
-          {
-            localObject5 = localObject2;
-            Object localObject4 = localObject1;
-          }
-        }
-        i += 1;
-        localObject2 = localObject5;
-        localObject1 = localObject3;
       }
-      localObject1 = String.format("nowmqqapi://now/openroom?src_type=app&version=1&roomid=%s&fromid=%s", new Object[] { localObject1, localObject2 });
+      catch (Exception paramQQAppInterface)
+      {
+        paramQQAppInterface.printStackTrace();
+        return true;
+      }
     }
+    return true;
+  }
+  
+  private static boolean a(String paramString)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("other_res_short_video_mgr_sp", 4).edit();
+    localEditor.putString("other_res_sv_md5_version_soname_key", paramString);
+    return localEditor.commit();
+  }
+  
+  public static String b()
+  {
+    String str = bdek.a();
+    return str + "other_res_cache" + File.separator;
   }
 }
 

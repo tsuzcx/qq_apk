@@ -1,17 +1,9 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import mqq.app.QQPermissionCallback;
-
 class agmp
-  implements QQPermissionCallback
+  implements bdym
 {
   agmp(agmo paramagmo) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bglp.b(agmo.a(this.a).a);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(bdyr parambdyr)
   {
     this.a.b();
   }

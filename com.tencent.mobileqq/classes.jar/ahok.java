@@ -1,13 +1,14 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahok
-  implements ahor
+class ahok
+  extends vrh
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  ahok(ahoi paramahoi) {}
+  
+  public void a(int paramInt, vrd paramvrd)
   {
-    paramagup.d(paramMessageRecord, paramagwc);
+    super.a(paramInt, paramvrd);
+    QLog.d("QCircleFeedItemBuilder", 1, paramvrd.a() + ", \nstate callback:" + paramInt);
   }
 }
 

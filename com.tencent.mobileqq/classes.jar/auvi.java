@@ -1,33 +1,75 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class auvi
-  implements View.OnClickListener
+  implements arae<String>
 {
-  public auvi(TextHeaderView paramTextHeaderView, Activity paramActivity, MessageRecord paramMessageRecord, MessageForStructing paramMessageForStructing) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public String h = "1";
+  public String i = "";
   
-  public void onClick(View paramView)
+  public auvi()
   {
-    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
+    this.jdField_a_of_type_JavaLangString = "1";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_f_of_type_JavaLangString = "";
+    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_b_of_type_Int = 2;
+    this.jdField_c_of_type_Int = 2;
+    this.jdField_d_of_type_Int = 3;
+    this.jdField_e_of_type_Int = 3;
+    this.jdField_f_of_type_Int = 60;
+    this.jdField_g_of_type_Int = 60;
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
-      Object localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult((Intent)localObject, 0);
-      localObject = auud.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 0);
-      aceh.a(ampj.a(), "769", "205019", (String)localObject, "76901", "1", "160", new String[] { auud.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "", "20" });
-      ((VasExtensionHandler)ampj.a().getBusinessHandler(71)).a(3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("pa_msgId"), TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_JavaLangString = paramString.optString("entry", "1");
+      this.jdField_b_of_type_JavaLangString = paramString.optString("name", null);
+      this.jdField_d_of_type_JavaLangString = paramString.optString("icon", null);
+      this.jdField_f_of_type_JavaLangString = paramString.optString("actionI", null);
+      this.jdField_g_of_type_JavaLangString = paramString.optString("actionA", null);
+      this.jdField_c_of_type_JavaLangString = paramString.optString("url", null);
+      this.jdField_a_of_type_Int = paramString.optInt("scC", 2);
+      this.jdField_b_of_type_Int = paramString.optInt("hiC", 2);
+      this.jdField_c_of_type_Int = paramString.optInt("flC", 2);
+      this.jdField_d_of_type_Int = paramString.optInt("piC", 3);
+      this.jdField_e_of_type_Int = paramString.optInt("tvC", 3);
+      this.h = paramString.optString("recordRule", "1");
+      this.jdField_f_of_type_Int = paramString.optInt("pIn", 60);
+      this.jdField_g_of_type_Int = paramString.optInt("tvI", 60);
+      this.jdField_a_of_type_Boolean = "1".equals(paramString.optString("qimNotifyEnable", "0"));
+      this.jdField_b_of_type_Boolean = "1".equals(paramString.optString("qimPopUpEnable", "0"));
+      this.i = paramString.optString("qimNotifySource", "");
+      this.jdField_e_of_type_JavaLangString = paramString.optString("qimNotifyLogo", "");
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Exception paramString)
+    {
+      QLog.e("FlashChat", 1, "handleFlashChatConfig failed" + paramString);
+    }
   }
 }
 

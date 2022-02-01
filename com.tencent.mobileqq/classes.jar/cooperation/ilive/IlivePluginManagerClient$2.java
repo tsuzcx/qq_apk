@@ -1,6 +1,6 @@
 package cooperation.ilive;
 
-import blee;
+import bmfh;
 
 public class IlivePluginManagerClient$2
   implements Runnable

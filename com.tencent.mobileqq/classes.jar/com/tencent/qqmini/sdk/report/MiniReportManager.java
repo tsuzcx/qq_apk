@@ -3,10 +3,12 @@ package com.tencent.qqmini.sdk.report;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.SparseArray;
+import com.tencent.qqmini.sdk.cache.MiniCacheFreeManager;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.manager.LoginManager;
 import com.tencent.qqmini.sdk.runtime.AppRuntimeLoaderManager;
 import com.tencent.qqmini.sdk.runtime.AppStateManager;
 import com.tencent.qqmini.sdk.runtime.BaseRuntimeLoader;
@@ -301,6 +303,11 @@ public class MiniReportManager
       {
         QMLog.e("MiniReportManager", "detect white_screen. after routedone time:" + l2);
         MiniProgramLpReportDC04266.report(paramMiniAppInfo, 150, paramString1, paramString2, "", 0, paramString3, 0L, "", paramLong, "route_done", String.valueOf(l2), "", "", paramString4);
+        if (WnsConfig.getConfig("qqminiapp", "mini_app_report_white_screen_enable_clear_apkg_cache", 1) == 1)
+        {
+          QMLog.e("MiniReportManager", "detect white_screen. clear apkg:" + paramMiniAppInfo);
+          MiniCacheFreeManager.freeCache(LoginManager.getInstance().getAccount(), paramMiniAppInfo, true, null);
+        }
       }
     }
   }
@@ -392,7 +399,7 @@ public class MiniReportManager
         QMLog.e("MiniReportManager", "create performance result failed", localException);
       }
     }
-    QMLog.e("MiniReportManager", "wesley: getformance: " + paramString.toString());
+    QMLog.e("MiniReportManager", "getformance: " + paramString.toString());
     return paramString;
   }
   
@@ -443,10 +450,10 @@ public class MiniReportManager
     {
       localLong = (Long)paramMiniAppLaunchState.eventTime.get(Integer.valueOf(((MiniReportManager.CostTimeRecord)localObject).eventStart));
       if (localLong == null) {
-        break label190;
+        break label191;
       }
     }
-    label190:
+    label191:
     for (long l = localLong.longValue();; l = 0L)
     {
       if (l > 0L)
@@ -462,13 +469,121 @@ public class MiniReportManager
           paramLong1 = MAX_TIME_COST;
         }
         if (QMLog.isColorLevel()) {
-          QMLog.e("MiniReportManager", "timeCostEvent;eventId:" + paramInt1 + ";costTime:" + paramLong1 + "ms");
+          QMLog.e("MiniReportManager", "timeCostEvent  event:" + (String)localObject + ";costTime:" + paramLong1 + "ms");
         }
         MiniProgramLpReportDC04266.reportCostTimeEvent(paramMiniAppInfo, (String)localObject, paramMiniAppLaunchState, paramInt2, paramLong1, paramLong2, paramString1, paramString2, paramString3, paramString4, paramString5);
       }
       return;
     }
     QMLog.e("MiniReportManager", "costTime < 0 " + l);
+  }
+  
+  public static void reportEventType(MiniAppInfo paramMiniAppInfo, int paramInt1, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, long paramLong2, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
+  {
+    long l3 = System.currentTimeMillis();
+    Object localObject = "0000000000";
+    if (paramMiniAppInfo != null) {
+      localObject = paramMiniAppInfo.appId;
+    }
+    String str = "";
+    if (paramMiniAppInfo != null) {
+      str = String.valueOf(paramMiniAppInfo.renderMode);
+    }
+    MiniReportManager.MiniAppLaunchState localMiniAppLaunchState = getLaunchState((String)localObject);
+    long l2 = paramLong1;
+    int i;
+    long l1;
+    if (paramInt1 == 1)
+    {
+      QMLog.d("MiniReportManager", "launch start  uptimeMillis:" + SystemClock.uptimeMillis() + "  currentTimeMillis :" + l3);
+      if ((paramMiniAppInfo.isEngineTypeMiniApp()) && (paramMiniAppInfo.supportNativeRenderMode()))
+      {
+        i = 1;
+        if (i == 0) {
+          MiniAppStartState.reset((String)localObject);
+        }
+        l1 = paramLong1;
+        if (paramMiniAppInfo != null)
+        {
+          l1 = paramLong1;
+          if (paramMiniAppInfo.launchParam != null)
+          {
+            l1 = paramLong1;
+            if (paramMiniAppInfo.launchParam.launchClickTimeMillis != 0L)
+            {
+              l1 = paramMiniAppInfo.launchParam.launchClickTimeMillis;
+              QMLog.d("MiniReportManager", "reportEventType: fix onlaunch timestamp to " + paramMiniAppInfo.launchParam.launchClickTimeMillis);
+              paramMiniAppInfo.launchParam.launchClickTimeMillis = 0L;
+            }
+          }
+        }
+        localMiniAppLaunchState.hasOnloaded = false;
+        if (localMiniAppLaunchState.firstRender) {
+          break label346;
+        }
+        localObject = getLaunchState("0000000000");
+        if ((localObject != null) && (((MiniReportManager.MiniAppLaunchState)localObject).eventTime.size() > 0))
+        {
+          localMiniAppLaunchState.eventTime.putAll(((MiniReportManager.MiniAppLaunchState)localObject).eventTime);
+          ((MiniReportManager.MiniAppLaunchState)localObject).eventTime.clear();
+        }
+        label263:
+        if ((paramInt1 != 611) || (localMiniAppLaunchState.hasOnloaded)) {
+          break label615;
+        }
+        paramInt1 = 2;
+      }
+    }
+    label346:
+    label615:
+    for (;;)
+    {
+      if (paramInt1 == 2)
+      {
+        QMLog.d("MiniReportManager", "launch end  uptimeMillis:" + SystemClock.uptimeMillis() + "  currentTimeMillis :" + l3);
+        if (localMiniAppLaunchState.hasOnloaded)
+        {
+          QMLog.d("MiniReportManager", "has report apponloaded. ignore apponloaed ");
+          return;
+          i = 0;
+          break;
+          l2 = l1;
+          if (localMiniAppLaunchState.eventTime_first.size() == 0)
+          {
+            localMiniAppLaunchState.eventTime_first.putAll(localMiniAppLaunchState.eventTime);
+            localMiniAppLaunchState.launchId_first = localMiniAppLaunchState.launchId;
+            localMiniAppLaunchState.launchId = "";
+            l2 = l1;
+          }
+          l1 = l2;
+          break label263;
+        }
+        localMiniAppLaunchState.hasOnloaded = true;
+        localMiniAppLaunchState.firstRender = true;
+        localMiniAppLaunchState.launchId = MiniProgramReportHelper.launchIdForMiniAppConfig(paramMiniAppInfo);
+      }
+      detectWhiteScreen(paramMiniAppInfo, paramInt1, paramString1, paramString2, paramString4, l1, str, localMiniAppLaunchState);
+      if (eventNeedRecordTime.contains(Integer.valueOf(paramInt1))) {
+        localMiniAppLaunchState.eventTime.put(Integer.valueOf(paramInt1), Long.valueOf(l1));
+      }
+      localObject = getAppStateManager(paramMiniAppInfo);
+      if (localObject != null) {
+        if (((AppStateManager)localObject).isFlutter) {
+          str = "1";
+        }
+      }
+      for (;;)
+      {
+        MiniProgramLpReportDC04266.report(paramMiniAppInfo, paramInt1, paramString1, paramString2, paramString3, paramInt2, paramString4, paramLong2, paramString5, l1, paramString6, paramString7, paramString8, paramString9, str);
+        reportCostTimeEvent(paramMiniAppInfo, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9, l3, l1, localMiniAppLaunchState, str);
+        if ((paramInt1 != 2) || (!"0".equals(paramString4))) {
+          break;
+        }
+        MiniProgramLpReportDC04266.report(paramMiniAppInfo, 630, paramString1, "0", null, 0, paramString4, 0L, null, l1, "", "", "", "", str);
+        return;
+        str = "";
+      }
+    }
   }
   
   public static void reportEventType(MiniAppInfo paramMiniAppInfo, int paramInt, String paramString)
@@ -498,103 +613,7 @@ public class MiniReportManager
   
   public static void reportEventType(MiniAppInfo paramMiniAppInfo, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, long paramLong, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    long l2 = System.currentTimeMillis();
-    Object localObject = "0000000000";
-    if (paramMiniAppInfo != null) {
-      localObject = paramMiniAppInfo.appId;
-    }
-    String str = "";
-    if (paramMiniAppInfo != null) {
-      str = String.valueOf(paramMiniAppInfo.renderMode);
-    }
-    MiniReportManager.MiniAppLaunchState localMiniAppLaunchState = getLaunchState((String)localObject);
-    int i;
-    long l1;
-    if (paramInt1 == 1)
-    {
-      QMLog.d("MiniReportManager", "launch start  uptimeMillis:" + SystemClock.uptimeMillis() + "  currentTimeMillis :" + l2);
-      if ((paramMiniAppInfo.isEngineTypeMiniApp()) && (paramMiniAppInfo.supportNativeRenderMode()))
-      {
-        i = 1;
-        if (i == 0) {
-          MiniAppStartState.reset((String)localObject);
-        }
-        if ((paramMiniAppInfo == null) || (paramMiniAppInfo.launchParam == null) || (paramMiniAppInfo.launchParam.launchClickTimeMillis == 0L)) {
-          break label589;
-        }
-        l1 = paramMiniAppInfo.launchParam.launchClickTimeMillis;
-        QMLog.d("MiniReportManager", "reportEventType: fix onlaunch timestamp to " + paramMiniAppInfo.launchParam.launchClickTimeMillis);
-        paramMiniAppInfo.launchParam.launchClickTimeMillis = 0L;
-        label186:
-        localMiniAppLaunchState.hasOnloaded = false;
-        if (localMiniAppLaunchState.firstRender) {
-          break label334;
-        }
-        localObject = getLaunchState("0000000000");
-        if ((localObject != null) && (((MiniReportManager.MiniAppLaunchState)localObject).eventTime.size() > 0))
-        {
-          localMiniAppLaunchState.eventTime.putAll(((MiniReportManager.MiniAppLaunchState)localObject).eventTime);
-          ((MiniReportManager.MiniAppLaunchState)localObject).eventTime.clear();
-        }
-      }
-    }
-    for (;;)
-    {
-      label251:
-      if ((paramInt1 == 611) && (!localMiniAppLaunchState.hasOnloaded)) {
-        paramInt1 = 2;
-      }
-      for (;;)
-      {
-        if (paramInt1 == 2)
-        {
-          QMLog.d("MiniReportManager", "launch end  uptimeMillis:" + SystemClock.uptimeMillis() + "  currentTimeMillis :" + l2);
-          if (localMiniAppLaunchState.hasOnloaded)
-          {
-            QMLog.d("MiniReportManager", "has report apponloaded. ignore apponloaed ");
-            return;
-            i = 0;
-            break;
-            label334:
-            if (localMiniAppLaunchState.eventTime_first.size() == 0)
-            {
-              localMiniAppLaunchState.eventTime_first.putAll(localMiniAppLaunchState.eventTime);
-              localMiniAppLaunchState.launchId_first = localMiniAppLaunchState.launchId;
-              localMiniAppLaunchState.launchId = "";
-            }
-            break label251;
-          }
-          localMiniAppLaunchState.hasOnloaded = true;
-          localMiniAppLaunchState.firstRender = true;
-          localMiniAppLaunchState.launchId = MiniProgramReportHelper.launchIdForMiniAppConfig(paramMiniAppInfo);
-        }
-        detectWhiteScreen(paramMiniAppInfo, paramInt1, paramString1, paramString2, paramString4, l1, str, localMiniAppLaunchState);
-        if (eventNeedRecordTime.contains(Integer.valueOf(paramInt1))) {
-          localMiniAppLaunchState.eventTime.put(Integer.valueOf(paramInt1), Long.valueOf(l1));
-        }
-        localObject = getAppStateManager(paramMiniAppInfo);
-        if (localObject != null) {
-          if (((AppStateManager)localObject).isFlutter) {
-            str = "1";
-          }
-        }
-        for (;;)
-        {
-          MiniProgramLpReportDC04266.report(paramMiniAppInfo, paramInt1, paramString1, paramString2, paramString3, paramInt2, paramString4, paramLong, paramString5, l1, paramString6, paramString7, paramString8, paramString9, str);
-          reportCostTimeEvent(paramMiniAppInfo, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9, l2, l1, localMiniAppLaunchState, str);
-          if ((paramInt1 != 2) || (!"0".equals(paramString4))) {
-            break;
-          }
-          MiniProgramLpReportDC04266.report(paramMiniAppInfo, 630, paramString1, "0", null, 0, paramString4, 0L, null, l1, "", "", "", "", str);
-          return;
-          str = "";
-        }
-      }
-      label589:
-      l1 = l2;
-      break label186;
-      l1 = l2;
-    }
+    reportEventType(paramMiniAppInfo, paramInt1, System.currentTimeMillis(), paramString1, paramString2, paramString3, paramInt2, paramString4, paramLong, paramString5, paramString6, paramString7, paramString8, paramString9);
   }
   
   public static void reportEventType(MiniAppInfo paramMiniAppInfo, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7)

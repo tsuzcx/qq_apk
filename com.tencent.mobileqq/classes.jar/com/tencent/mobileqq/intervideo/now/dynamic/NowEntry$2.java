@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.intervideo.now.dynamic;
 
-import avko;
+import awcz;
 import com.tencent.image.URLDrawable;
 
 public class NowEntry$2
   implements Runnable
 {
-  public NowEntry$2(avko paramavko, URLDrawable paramURLDrawable) {}
+  public NowEntry$2(awcz paramawcz, URLDrawable paramURLDrawable) {}
   
   public void run()
   {

@@ -1,101 +1,62 @@
-import android.app.Notification;
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.RemoteViews;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 
 public class mrz
 {
-  float jdField_a_of_type_Float = 14.0F;
-  Context jdField_a_of_type_AndroidContentContext;
-  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
-  Integer jdField_a_of_type_JavaLangInteger = null;
-  String jdField_a_of_type_JavaLangString = "NotificationStyleDiscover";
-  float jdField_b_of_type_Float = 16.0F;
-  Integer jdField_b_of_type_JavaLangInteger = null;
-  final String jdField_b_of_type_JavaLangString = "SearchForText";
-  final String c = "SearchForTitle";
-  
-  public mrz(Context paramContext)
+  public static Drawable a(Resources paramResources, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
-    if ((this.jdField_a_of_type_JavaLangInteger != null) && (this.jdField_b_of_type_JavaLangInteger != null)) {
-      return;
-    }
-    try
+    return a(paramResources, paramInt, 2131166000, true, 2130841966, 2131166003, null);
+  }
+  
+  private static Drawable a(Resources paramResources, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4, Drawable paramDrawable)
+  {
+    Drawable localDrawable = paramResources.getDrawable(paramInt1);
+    Object localObject;
+    if (paramBoolean)
     {
-      Object localObject = new Notification();
-      ((Notification)localObject).setLatestEventInfo(this.jdField_a_of_type_AndroidContentContext, "SearchForTitle", "SearchForText", null);
-      paramContext = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      localObject = (ViewGroup)((Notification)localObject).contentView.apply(this.jdField_a_of_type_AndroidContentContext, paramContext);
-      a((ViewGroup)localObject);
-      b((ViewGroup)localObject);
-      paramContext.removeAllViews();
-      return;
+      localObject = muq.a(paramResources, paramInt1, paramInt2);
+      ((Drawable)localObject).setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      localDrawable = paramResources.getDrawable(paramInt3);
+      paramResources = muq.a(paramResources, paramInt3, paramInt4);
+      paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      if (paramDrawable != null) {
+        break label138;
+      }
+      paramResources = new LayerDrawable(new Drawable[] { paramResources, localObject });
+      paramResources.setLayerInset(0, 0, 0, 0, 0);
+      paramResources.setLayerInset(1, 0, 0, 0, 0);
     }
-    catch (Exception paramContext)
+    for (;;)
     {
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "erro");
+      paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      return paramResources;
+      localObject = localDrawable;
+      break;
+      label138:
+      paramResources = new LayerDrawable(new Drawable[] { paramResources, localObject, paramDrawable });
+      paramResources.setLayerInset(0, 0, 0, 0, 0);
+      paramResources.setLayerInset(1, 0, 0, 0, 0);
+      paramResources.setLayerInset(2, 0, 0, 0, 0);
     }
   }
   
-  boolean a(ViewGroup paramViewGroup)
+  public static Drawable a(Resources paramResources, int paramInt, Drawable paramDrawable, boolean paramBoolean)
   {
-    int j = paramViewGroup.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      if ((paramViewGroup.getChildAt(i) instanceof TextView))
-      {
-        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
-        if ("SearchForTitle".equals(localTextView.getText().toString()))
-        {
-          this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_b_of_type_Float = localTextView.getTextSize();
-          this.jdField_b_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
-          return true;
-        }
-      }
-      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (a((ViewGroup)paramViewGroup.getChildAt(i))))
-      {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
+    return a(paramResources, paramInt, 2131166000, paramBoolean, 2130841966, 2131166003, paramDrawable);
   }
   
-  boolean b(ViewGroup paramViewGroup)
+  public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
   {
-    int j = paramViewGroup.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      if ((paramViewGroup.getChildAt(i) instanceof TextView))
-      {
-        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
-        if ("SearchForText".equals(localTextView.getText().toString()))
-        {
-          this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_a_of_type_Float = localTextView.getTextSize();
-          this.jdField_a_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
-          return true;
-        }
-      }
-      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (b((ViewGroup)paramViewGroup.getChildAt(i))))
-      {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
+    return a(paramResources, paramInt, 2131166000, paramBoolean, 2130841966, 2131166003, null);
+  }
+  
+  public static Drawable b(Resources paramResources, int paramInt)
+  {
+    Drawable localDrawable = paramResources.getDrawable(paramInt);
+    paramResources = muq.a(paramResources, paramInt, 2131166000);
+    paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+    return paramResources;
   }
 }
 

@@ -1,147 +1,58 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-import java.util.regex.Pattern;
-
 public class aqrd
-  extends aqkz<aqrc>
 {
-  @NonNull
-  public aqrc a(int paramInt)
+  public static final int a(int paramInt)
   {
-    return new aqrc();
-  }
-  
-  @Nullable
-  public aqrc a(aqlg[] paramArrayOfaqlg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicPreDownloadConfProcessor", 2, "onParsed " + paramArrayOfaqlg.length);
-    }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfaqlg != null)
+    switch (paramInt)
     {
-      localObject1 = localObject2;
-      if (paramArrayOfaqlg.length > 0) {
-        localObject1 = aqrc.a(paramArrayOfaqlg);
-      }
+    default: 
+      return 0;
+    case 16842752: 
+      return 3;
+    case 16908288: 
+      return 1;
+    case 17039360: 
+      return 2;
+    case 16908290: 
+      return 4;
+    case 16908289: 
+      return 5;
+    case 16973824: 
+      return 6;
+    case 17104896: 
+      return 7;
+    case 16908292: 
+      return 8;
+    case 16908291: 
+      return 9;
+    case 17170432: 
+      return 10;
     }
-    return localObject1;
+    return 11;
   }
   
-  public void a(aqrc paramaqrc)
+  public static int b(int paramInt)
   {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("PicPreDownloadConfProcessor", 2, "onUpdate " + paramaqrc.toString());
-    }
-    if (Pattern.matches("(\\d+?\\|){7}\\d+", paramaqrc.jdField_a_of_type_JavaLangString)) {
-      ayxu.a("flowCombination", paramaqrc.jdField_a_of_type_JavaLangString, true);
-    }
-    if (Pattern.matches("(\\d+?\\|){3}\\d+", paramaqrc.jdField_b_of_type_JavaLangString)) {
-      ayxu.a("troopCombination", paramaqrc.jdField_b_of_type_JavaLangString, true);
-    }
-    if (paramaqrc.g > 0L) {
-      ayxu.a("maxRequest", paramaqrc.g, true);
-    }
-    if ((paramaqrc.jdField_a_of_type_Long == 0L) || (paramaqrc.jdField_a_of_type_Long == 1L)) {
-      if (paramaqrc.jdField_a_of_type_Long != 1L) {
-        break label447;
-      }
-    }
-    label447:
-    for (boolean bool1 = true;; bool1 = false)
+    switch (paramInt)
     {
-      ayxu.a("PicPreDownSwitch", bool1, true);
-      if ((paramaqrc.jdField_b_of_type_Long == 0L) || (paramaqrc.jdField_b_of_type_Long == 1L) || (paramaqrc.jdField_b_of_type_Long == 2L) || (paramaqrc.jdField_b_of_type_Long == 3L)) {
-        ayxu.a("PicAuDownTimePoint", paramaqrc.jdField_b_of_type_Long, true);
-      }
-      if (paramaqrc.jdField_c_of_type_Long > 0L) {
-        ayxu.a("MaxWifiFlow", paramaqrc.jdField_c_of_type_Long, true);
-      }
-      if (paramaqrc.jdField_d_of_type_Long > 0L) {
-        ayxu.a("Max4GFlow", paramaqrc.jdField_d_of_type_Long, true);
-      }
-      if (paramaqrc.e > 0L) {
-        ayxu.a("Max3GFlow", paramaqrc.e, true);
-      }
-      if (paramaqrc.f > 0L) {
-        ayxu.a("Max2GFlow", paramaqrc.f, true);
-      }
-      if (Pattern.matches("^[0-9A-Fa-f]+$", paramaqrc.jdField_c_of_type_JavaLangString)) {
-        ayxu.a("xGPreDownPolicy", Long.valueOf(paramaqrc.jdField_c_of_type_JavaLangString, 16).longValue(), true);
-      }
-      if (paramaqrc.h > 0L) {
-        ayxu.a("AFBFlowHitXG", paramaqrc.h, true);
-      }
-      if (paramaqrc.i > 0L) {
-        ayxu.a("AFBFlowMissXG", paramaqrc.i, true);
-      }
-      if (paramaqrc.j > 0L) {
-        ayxu.a("APicAvgSize", paramaqrc.j, true);
-      }
-      if (paramaqrc.k > 0L) {
-        ayxu.a("APicMaxSize", paramaqrc.k, true);
-      }
-      if ((paramaqrc.l == 0L) || (paramaqrc.l == 1L))
-      {
-        bool1 = bool2;
-        if (paramaqrc.l == 1L) {
-          bool1 = true;
-        }
-        ayxu.a("enablePeakFlow", bool1, true);
-      }
-      if (Pattern.matches("^((([01]?[0-9]|2[01234])-([01]?[0-9]|2[01234]);)*+([01]?[0-9]|2[01234])-([01]?[0-9]|2[01234]))$", paramaqrc.jdField_d_of_type_JavaLangString)) {
-        ayxu.a("PeakFlowTimePeriod", paramaqrc.jdField_d_of_type_JavaLangString, true);
-      }
-      if (paramaqrc.m > 0L) {
-        ayxu.a("PeakFlowMaxPicSize", paramaqrc.m, true);
-      }
-      return;
+    default: 
+      return 0;
+    case 16908288: 
+      return 1;
+    case 17039360: 
+      return 2;
+    case 16908290: 
+      return 3;
+    case 16908289: 
+      return 4;
+    case 16842752: 
+      return 5;
     }
-  }
-  
-  public Class<aqrc> clazz()
-  {
-    return aqrc.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicPreDownloadConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 616;
+    return 6;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqrd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mutualmark.oldlogic;
 
-import anmw;
-import axav;
+import anyw;
+import axtp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,13 +13,13 @@ public final class OldMutualMarkLogicHelper$2
   
   public void run()
   {
-    anmw localanmw = (anmw)this.a.getManager(51);
-    if (localanmw != null)
+    anyw localanyw = (anyw)this.a.getManager(51);
+    if (localanyw != null)
     {
-      HashSet localHashSet = axav.a();
+      HashSet localHashSet = axtp.a();
       if ((localHashSet != null) && (localHashSet.size() > 0))
       {
-        localanmw.b(new ArrayList(localHashSet));
+        localanyw.b(new ArrayList(localHashSet));
         localHashSet.clear();
       }
     }

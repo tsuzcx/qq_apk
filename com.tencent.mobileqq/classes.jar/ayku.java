@@ -1,20 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ayku
-  implements ValueAnimator.AnimatorUpdateListener
+public class ayku
+  implements View.OnClickListener
 {
-  ayku(ayko paramayko) {}
+  public ayku(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (ayko.a(this.a) != null)
+    if ((this.a.b != null) && (!this.a.isFinishing()))
     {
-      ayko.a(this.a).setAlpha(f);
-      ayko.a(this.a).setTranslationY((1.0F - f) * afur.a(25.0F, ayko.a(this.a)));
+      this.a.b.dismiss();
+      this.a.b = null;
     }
+    this.a.a(300L);
+    bdll.b(this.a.app, "CliOper", "", "", "0X8004BB0", "0X8004BB0", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

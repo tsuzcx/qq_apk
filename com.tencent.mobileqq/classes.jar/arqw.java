@@ -1,77 +1,61 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.ListView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class arqw
-  extends aryi
+  extends arac<arqv>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private avad jdField_a_of_type_Avad;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String b;
-  
-  public arqw(QQAppInterface paramQQAppInterface, Context paramContext, avad paramavad)
+  public static arqv a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Avad = paramavad;
+    return (arqv)aran.a().a(437);
   }
   
-  public int a()
+  @NonNull
+  public arqv a(int paramInt)
   {
-    return 2;
+    return new arqv();
   }
   
-  public Context a()
+  @Nullable
+  public arqv a(araj[] paramArrayOfaraj)
   {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  public String a()
-  {
-    return "RichTextPanelEmoticonSearchLayoutHelper";
-  }
-  
-  public void a() {}
-  
-  public void a(ListView paramListView, arwf paramarwf)
-  {
-    b(paramListView, paramarwf);
-    paramarwf = b();
-    if (paramarwf.getParent() == null) {
-      paramListView.addFooterView(paramarwf);
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return arqv.a(paramArrayOfaraj);
     }
+    return null;
   }
   
-  public void a(String paramString)
+  public void a(arqv paramarqv) {}
+  
+  public Class<arqv> clazz()
   {
-    this.b = paramString;
+    return arqv.class;
   }
   
-  public String b()
+  public boolean isNeedCompressed()
   {
-    return this.b;
+    return true;
   }
   
-  public void b()
+  public boolean isNeedStoreLargeFile()
   {
-    this.jdField_a_of_type_Avad.n();
+    return false;
   }
   
-  public void c()
+  public int migrateOldVersion()
   {
-    this.b = null;
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 437;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arqw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.biz.ui;
 
-import aauv;
+import aayy;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;

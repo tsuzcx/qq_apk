@@ -1,23 +1,34 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-class apox
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class apox
+  extends apoz
 {
-  apox(apow paramapow, appa paramappa) {}
+  public float a;
+  public int a;
+  public long a;
+  public ArCloudConfigInfo a;
+  public String a;
+  public float[] a;
+  public float b;
+  public int b;
+  public float c = 0.0F;
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public apox()
   {
-    if (paramBitmap != null)
-    {
-      this.jdField_a_of_type_Appa.b.setVisibility(0);
-      this.jdField_a_of_type_Appa.a.setVisibility(0);
-      this.jdField_a_of_type_Appa.a.setImageBitmap(paramBitmap);
-      return;
-    }
-    this.jdField_a_of_type_Appa.a.setVisibility(8);
+    this.jdField_b_of_type_Long = 1L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_a_of_type_ArrayOfFloat = null;
+    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
+  }
+  
+  public String toString()
+  {
+    return "ARLocalMarkerRecogResult{recogType = " + this.jdField_b_of_type_Long + ", frameIdx = " + this.jdField_a_of_type_Long + ", state = " + this.jdField_a_of_type_Int + ", markerName = " + this.jdField_a_of_type_JavaLangString + ", markerType = " + this.jdField_b_of_type_Int + ", markerWidth = " + this.jdField_a_of_type_Float + ", markerHeight = " + this.jdField_b_of_type_Float + ", markerDiameter = " + this.c + ", pose = " + this.jdField_a_of_type_ArrayOfFloat + ", arResourceInfo = " + this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo + '}';
   }
 }
 

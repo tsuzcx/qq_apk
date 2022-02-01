@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import bgsp;
+import bhsr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -13,7 +13,7 @@ class NearbyPeopleProfileActivity$22
   
   public void run()
   {
-    if (!bgsp.a(NearbyPeopleProfileActivity.a(this.this$0).uin)) {
+    if (!bhsr.a(NearbyPeopleProfileActivity.a(this.this$0).uin)) {
       this.this$0.app.a(NearbyPeopleProfileActivity.a(this.this$0).uin, 200, false);
     }
     if (this.this$0.a > 0L) {
@@ -25,7 +25,7 @@ class NearbyPeopleProfileActivity$22
       do
       {
         return;
-      } while (bgsp.a(NearbyPeopleProfileActivity.a(this.this$0).uin));
+      } while (bhsr.a(NearbyPeopleProfileActivity.a(this.this$0).uin));
       localEntityManager = this.this$0.app.a().createEntityManager();
     } while (localEntityManager == null);
     NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { NearbyPeopleProfileActivity.a(this.this$0).uin });

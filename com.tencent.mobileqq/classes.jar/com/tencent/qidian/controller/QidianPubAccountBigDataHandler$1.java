@@ -1,15 +1,15 @@
 package com.tencent.qidian.controller;
 
-import bjhd;
+import bkid;
 
 public class QidianPubAccountBigDataHandler$1
   implements Runnable
 {
-  public QidianPubAccountBigDataHandler$1(bjhd parambjhd) {}
+  public QidianPubAccountBigDataHandler$1(bkid parambkid) {}
   
   public void run()
   {
-    bjhd.a(this.this$0);
+    bkid.a(this.this$0);
   }
 }
 

@@ -1,44 +1,33 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioTransitionAnimManager.1;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import java.util.Set;
 
 public class agny
-  implements agma
+  implements OnCompositionLoadedListener
 {
-  public void a(int paramInt)
+  public agny(AudioTransitionAnimManager.1 param1) {}
+  
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    switch (paramInt)
+    if (paramLottieComposition == null)
     {
-    default: 
-      return;
-    case 5: 
-      aajt.a().a();
-      return;
-    case 10: 
-      aajt.a().b();
+      QLog.e("AudioTransitionAnimManager", 2, "getDrawable onCompositionLoaded lottieComposition is null or mIsDestroyed:");
       return;
     }
-    aajt.a().c();
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
-  {
-    aajt.a().a(paramAbsListView, paramInt);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    aajt.a().a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (agrp.class.isInstance(paramObject)) {
-      aajt.a().a((agrp)paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel getDrawable finish type" + this.a.jdField_a_of_type_Int);
     }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 13, 7, 5, 10 };
+    agnx.a(this.a.this$0).remove(Integer.valueOf(this.a.jdField_a_of_type_Int));
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    agod localagod = new agod(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_JavaLangString);
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.setImageAssetDelegate(localagod);
+    agnx.a(this.a.this$0).put(this.a.jdField_a_of_type_JavaLangString, localLottieDrawable);
+    agnx.a(this.a.this$0, localLottieDrawable, this.a.jdField_a_of_type_Int);
   }
 }
 

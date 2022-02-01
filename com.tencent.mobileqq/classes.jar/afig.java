@@ -1,28 +1,59 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import mqq.os.MqqHandler;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class afig
-  extends anxg
+  implements beik
 {
-  public afig(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public afig(QQSettingMe paramQQSettingMe) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void a(Bundle paramBundle)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.a.sendEmptyMessage(1);
-      }
-    }
-    while ((paramInt1 != 2) || (paramInt2 != 0)) {
-      return;
-    }
-    awhv.a().b(paramString, this.a.app);
-    this.a.c();
+    this.a.n();
   }
   
-  protected void b(String paramString)
+  public void b(Bundle paramBundle)
   {
-    this.a.c();
+    int i = paramBundle.getInt("start_status");
+    if (i == 1) {
+      this.a.n();
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (i == 2)
+        {
+          this.a.n();
+          return;
+        }
+      } while (i != 3);
+      if (!(this.a.jdField_c_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
+        break;
+      }
+      i = paramBundle.getInt("percent");
+      paramBundle = String.valueOf(i) + "%";
+      this.a.jdField_c_of_type_AndroidWidgetTextView.setText(paramBundle);
+    } while (!QLog.isDevelopLevel());
+    QLog.d("QQSettingRedesign", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
+    return;
+    if (QQSettingMe.f(this.a)) {}
+    for (Drawable localDrawable = this.a.a.getResources().getDrawable(2130846070);; localDrawable = this.a.a.getResources().getDrawable(2130846071))
+    {
+      this.a.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
+      if (!(localDrawable instanceof Animatable)) {
+        break;
+      }
+      ((Animatable)localDrawable).start();
+      break;
+    }
   }
 }
 

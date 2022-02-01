@@ -1,6 +1,16 @@
-public abstract interface awcg
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedRecord;
+import com.tencent.qqinterface.CommonCallback;
+
+class awcg
+  implements CustomizedRecord
 {
-  public abstract void a();
+  awcg(awcc paramawcc) {}
+  
+  public void getRecordInfo(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback)
+  {
+    awde.a().b(paramBundle, paramCommonCallback);
+  }
 }
 
 

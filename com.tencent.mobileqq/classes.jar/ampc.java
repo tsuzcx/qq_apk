@@ -1,20 +1,15 @@
-import android.os.Bundle;
-import eipc.EIPCResult;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.widget.Switch;
 
-class ampc
-  implements ovi
+public class ampc
 {
-  ampc(ampb paramampb, int paramInt) {}
-  
-  public void a(int paramInt)
-  {
-    ampb.b = false;
-    if (paramInt == 1)
-    {
-      EIPCResult localEIPCResult = EIPCResult.createResult(0, new Bundle());
-      this.jdField_a_of_type_Ampb.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
-    }
-  }
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public arsh a;
+  public Switch a;
 }
 
 

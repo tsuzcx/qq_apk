@@ -1,53 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgListHeadNode;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class xbi
-  extends wla
+  extends wip
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List<wrs> jdField_a_of_type_JavaUtilList;
+  public final String a;
   
-  public xbi(@NonNull qqstory_service.RspMsgListHeadNode paramRspMsgListHeadNode)
+  public xbi(ErrorMessage paramErrorMessage, String paramString)
   {
-    super(paramRspMsgListHeadNode.result);
-    this.jdField_a_of_type_JavaLangString = paramRspMsgListHeadNode.list_seq.get().toStringUtf8();
-    this.jdField_a_of_type_JavaUtilList = a(paramRspMsgListHeadNode.node_list.get());
-  }
-  
-  private static List<wrs> a(List<qqstory_service.MsgTabNodeInfo> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      qqstory_service.MsgTabNodeInfo localMsgTabNodeInfo = (qqstory_service.MsgTabNodeInfo)paramList.next();
-      wrs localwrs = new wrs();
-      localwrs.a(localMsgTabNodeInfo);
-      localArrayList.add(localwrs);
-    }
-    return localArrayList;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<wrs> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public String toString()
   {
-    return "RecentTabHaloResponse{mSeq='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mMsgTabNodeInfos=" + this.jdField_a_of_type_JavaUtilList + ", errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + '}';
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + "} ";
   }
 }
 

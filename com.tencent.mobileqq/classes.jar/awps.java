@@ -1,34 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
-
-public class awps
-  implements biea
+class awps
+  extends anyu
 {
-  public awps(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
+  awps(awpq paramawpq) {}
   
-  public void onItemSelect(View paramView, int paramInt)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    int i = 2;
-    if (paramInt == 1)
-    {
-      awqu.a("MsgBackup.MsgBackupSelectionFragment", "click cancel btn mfrom = %d,  pcHandler = %b", new Object[] { Integer.valueOf(MsgBackupSelectionFragment.a(this.a)), Boolean.valueOf(awnr.c) });
-      if (MsgBackupSelectionFragment.a(this.a) != 0) {
-        break label79;
-      }
-      paramInt = i;
-      if (MsgBackupSelectionFragment.a(this.a)) {
-        paramInt = 3;
-      }
-      awqs.a("0X800A242", paramInt);
-    }
-    for (;;)
-    {
-      this.a.onBackEvent();
-      return;
-      label79:
-      if ((awnr.c) && (awng.a().a() == 1)) {
-        awqs.a("0X800A266", 5);
-      }
+    super.onUpdateDelFriend(paramBoolean, paramObject);
+    if ((paramBoolean) && ((paramObject instanceof Long))) {
+      awsk.a(this.a.app, 0, String.valueOf(paramObject));
     }
   }
 }

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.navigatebar;
 
-import bfhz;
+import bgia;
 
 public class TroopAioMsgNavigateBar$2
   implements Runnable
 {
-  public TroopAioMsgNavigateBar$2(bfhz parambfhz) {}
+  public TroopAioMsgNavigateBar$2(bgia parambgia) {}
   
   public void run()
   {
-    bfhz.a(this.this$0);
+    bgia.a(this.this$0);
   }
 }
 

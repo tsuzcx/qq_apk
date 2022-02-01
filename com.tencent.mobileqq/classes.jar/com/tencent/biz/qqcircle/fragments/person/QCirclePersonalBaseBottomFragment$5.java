@@ -1,9 +1,9 @@
 package com.tencent.biz.qqcircle.fragments.person;
 
+import aabf;
 import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
 import com.tencent.biz.richframework.part.BasePartFragment;
 import java.util.ArrayList;
-import zxk;
 
 class QCirclePersonalBaseBottomFragment$5
   implements Runnable
@@ -12,7 +12,7 @@ class QCirclePersonalBaseBottomFragment$5
   
   public void run()
   {
-    if ((this.this$0.a == null) || (this.this$0.a.getDataList() == null) || (this.this$0.a.getDataList().size() == 0)) {
+    if (((this.this$0.a == null) || (this.this$0.a.getDataList() == null) || (this.this$0.a.getDataList().size() == 0)) && (this.this$0.a() != null) && (this.this$0.a().a() != null)) {
       this.this$0.a().a().a("publish_show_or_hide", Boolean.valueOf(false));
     }
   }

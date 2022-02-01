@@ -1,23 +1,18 @@
-import android.annotation.TargetApi;
-import android.hardware.Camera;
-import android.hardware.Camera.Face;
-import android.hardware.Camera.FaceDetectionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.FaceDetectionCallbackForward.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-@TargetApi(14)
-public class aqbc
-  implements Camera.FaceDetectionListener
+class aqbc
+  implements anui
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final aqar jdField_a_of_type_Aqar;
-  private final aqav jdField_a_of_type_Aqav;
+  aqbc(aqay paramaqay) {}
   
-  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    QLog.d("Q.camera.CameraManagerImpl", 2, "[onFaceDetection] faces = " + paramArrayOfFace + ", length = " + paramArrayOfFace.length);
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.FaceDetectionCallbackForward.1(this, paramArrayOfFace));
+    if (!paramBoolean)
+    {
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkSafe,doReport, sso request failed");
+      return;
+    }
+    ArkAppCenter.b("ArkApp.ArkAppCGI", "ArkSafe.doReport.server.back=" + paramObject);
   }
 }
 

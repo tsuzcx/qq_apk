@@ -1,126 +1,103 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.statistics.fdcount.FdTrie.1;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class bcup
 {
-  static final List<String> jdField_a_of_type_JavaUtilList = new FdTrie.1(10);
-  private bcuo jdField_a_of_type_Bcuo = new bcuo();
-  private HashMap<bcuo, String> jdField_a_of_type_JavaUtilHashMap = new HashMap(100);
-  private HashMap<bcuo, String> b = new HashMap(jdField_a_of_type_JavaUtilList.size());
-  
-  static String a(String paramString)
+  public static String a(Map<Integer, String> paramMap)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = paramMap.keySet().iterator();
+    if (localIterator.hasNext())
     {
-      String str = (String)localIterator.next();
-      if ((paramString != null) && (paramString.contains(str))) {
-        return str;
+      Object localObject = (Integer)localIterator.next();
+      if (localStringBuilder.length() > 0) {
+        localStringBuilder.append("&");
       }
-    }
-    return null;
-  }
-  
-  private static List<String> a(String paramString)
-  {
-    paramString = paramString.split("/");
-    ArrayList localArrayList = new ArrayList(paramString.length);
-    localArrayList.addAll(Arrays.asList(paramString));
-    return localArrayList;
-  }
-  
-  private void a(bcuo parambcuo, String paramString)
-  {
-    if (parambcuo == null) {
-      return;
-    }
-    Object localObject = a(paramString);
-    if (localObject != null) {
-      this.b.put(parambcuo, localObject);
-    }
-    localObject = parambcuo.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    bcuo localbcuo;
-    do
-    {
-      if (!((Iterator)localObject).hasNext()) {
-        break;
-      }
-      localbcuo = (bcuo)((Iterator)localObject).next();
-    } while ((localbcuo == null) || (localbcuo.a()));
-    for (int i = 0;; i = 1)
-    {
-      if ((i != 0) && (!parambcuo.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
+      String str = (String)paramMap.get(localObject);
+      if (localObject != null) {}
+      for (;;)
       {
-        this.jdField_a_of_type_JavaUtilHashMap.put(parambcuo, paramString);
-        return;
-      }
-      localObject = parambcuo.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      label117:
-      while (((Iterator)localObject).hasNext())
-      {
-        localbcuo = (bcuo)((Iterator)localObject).next();
-        if (localbcuo != null) {
-          if (paramString == null) {
-            break label186;
+        try
+        {
+          localObject = URLEncoder.encode(localObject + "", "UTF-8");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append("=");
+          if (str == null) {
+            break label147;
           }
+          localObject = URLEncoder.encode(str, "UTF-8");
+          localStringBuilder.append((String)localObject);
+        }
+        catch (UnsupportedEncodingException paramMap)
+        {
+          throw new RuntimeException("This method requires UTF-8 encoding support", paramMap);
+        }
+        localObject = "";
+        continue;
+        label147:
+        localObject = "";
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static Map<Integer, String> a(String paramString)
+  {
+    int i = 0;
+    HashMap localHashMap = new HashMap();
+    paramString = paramString.split("&");
+    int j = paramString.length;
+    if (i < j)
+    {
+      String[] arrayOfString = paramString[i].split("=");
+      if (arrayOfString.length != 2) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        try
+        {
+          localHashMap.put(Integer.valueOf(URLDecoder.decode(arrayOfString[0], "UTF-8")), URLDecoder.decode(arrayOfString[1], "UTF-8"));
+        }
+        catch (UnsupportedEncodingException paramString)
+        {
+          throw new RuntimeException("This method requires UTF-8 encoding support", paramString);
         }
       }
-      label186:
-      for (parambcuo = paramString + "/" + localbcuo.jdField_a_of_type_JavaLangString;; parambcuo = localbcuo.jdField_a_of_type_JavaLangString)
-      {
-        a(localbcuo, parambcuo);
-        break label117;
-        break;
-      }
     }
+    return localHashMap;
   }
   
-  private void b(bcuo parambcuo, String paramString)
+  public static Map<String, String> b(String paramString)
   {
-    Iterator localIterator = a(paramString).iterator();
-    while (localIterator.hasNext())
+    int i = 0;
+    HashMap localHashMap = new HashMap();
+    paramString = paramString.split("&");
+    int j = paramString.length;
+    if (i < j)
     {
-      String str = (String)localIterator.next();
-      paramString = parambcuo.a(str);
-      if (paramString != null)
+      String[] arrayOfString = paramString[i].split("=");
+      if (arrayOfString.length != 2) {}
+      for (;;)
       {
-        paramString.jdField_a_of_type_Int += 1;
-        parambcuo = paramString;
-      }
-      else
-      {
-        paramString = new bcuo(str);
-        paramString.jdField_a_of_type_Int = 1;
-        parambcuo.jdField_a_of_type_JavaUtilHashMap.put(paramString.jdField_a_of_type_JavaLangString, paramString);
-        parambcuo = paramString;
+        i += 1;
+        break;
+        try
+        {
+          localHashMap.put(URLDecoder.decode(arrayOfString[0], "UTF-8"), URLDecoder.decode(arrayOfString[1], "UTF-8"));
+        }
+        catch (UnsupportedEncodingException paramString)
+        {
+          throw new RuntimeException("This method requires UTF-8 encoding support", paramString);
+        }
       }
     }
-  }
-  
-  public HashMap<bcuo, String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  public void a()
-  {
-    a(this.jdField_a_of_type_Bcuo, null);
-  }
-  
-  public void a(@NonNull String paramString)
-  {
-    b(this.jdField_a_of_type_Bcuo, paramString);
-  }
-  
-  public HashMap<bcuo, String> b()
-  {
-    return this.b;
+    return localHashMap;
   }
 }
 

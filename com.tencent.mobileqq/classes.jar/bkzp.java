@@ -1,125 +1,33 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Random;
+import com.tencent.mobileqq.mini.network.http.MiniOkHttpClientFactory;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.RequestProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.RequestProxy.RequestListener;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
 
+@ProxyService(proxy=RequestProxy.class)
 public class bkzp
+  extends RequestProxy
 {
-  private static final int jdField_a_of_type_Int = new Random().nextInt(1000) + 1;
-  private static final ConcurrentHashMap<Integer, bkzq> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public ConcurrentHashMap<String, Call> a = new ConcurrentHashMap();
   
-  public static bkzq a(int paramInt)
+  public void abort(String paramString)
   {
-    return (bkzq)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    Call localCall = (Call)this.a.get(paramString);
+    if (localCall != null) {
+      localCall.cancel();
+    }
+    this.a.remove(paramString);
   }
   
-  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, int paramInt5, String... paramVarArgs)
+  public boolean request(String paramString1, byte[] paramArrayOfByte, Map<String, String> paramMap, String paramString2, int paramInt, RequestProxy.RequestListener paramRequestListener)
   {
-    int i = 0;
-    if ((paramInt1 != 0) && (jdField_a_of_type_Int > 1)) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt1 + "|");
-    localStringBuilder.append(paramInt2 + "|");
-    localStringBuilder.append(paramInt3 + "|");
-    localStringBuilder.append(paramInt4 + "|");
-    localStringBuilder.append(paramString + "|");
-    localStringBuilder.append(paramInt5);
-    paramString = new String[6];
-    System.arraycopy(paramVarArgs, 0, paramString, 0, Math.min(6, paramVarArgs.length));
-    paramInt1 = i;
-    if (paramInt1 < paramString.length)
-    {
-      if (paramString[paramInt1] == null) {
-        localStringBuilder.append("|");
-      }
-      for (;;)
-      {
-        paramInt1 += 1;
-        break;
-        localStringBuilder.append("|" + paramString[paramInt1]);
-      }
-    }
-    if ((paramAppRuntime instanceof QQAppInterface)) {}
-    for (paramAppRuntime = (QQAppInterface)paramAppRuntime;; paramAppRuntime = null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PluginPreloadReportUtils", 2, "preload: " + localStringBuilder.toString());
-      }
-      bcrt.a(paramAppRuntime, "sendtdbank|b_sng_qqvip_qqcomic|preload", localStringBuilder.toString(), true);
-      return;
-    }
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, String... paramVarArgs)
-  {
-    int i = 0;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt1 + "|");
-    localStringBuilder.append(paramInt2 + "|");
-    localStringBuilder.append(paramInt3 + "|");
-    localStringBuilder.append(paramInt4 + "|");
-    localStringBuilder.append(paramString);
-    paramString = new String[6];
-    System.arraycopy(paramVarArgs, 0, paramString, 0, Math.min(6, paramVarArgs.length));
-    paramInt1 = i;
-    if (paramInt1 < paramString.length)
-    {
-      if (paramString[paramInt1] == null) {
-        localStringBuilder.append("|");
-      }
-      for (;;)
-      {
-        paramInt1 += 1;
-        break;
-        localStringBuilder.append("|" + paramString[paramInt1]);
-      }
-    }
-    if ((paramAppRuntime instanceof QQAppInterface)) {}
-    for (paramAppRuntime = (QQAppInterface)paramAppRuntime;; paramAppRuntime = null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PluginPreloadReportUtils", 2, "hitrate: " + localStringBuilder.toString());
-      }
-      bcrt.a(paramAppRuntime, "sendtdbank|b_sng_qqvip_qqcomic|preloadhitrate", localStringBuilder.toString(), true);
-      return;
-    }
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, int paramInt3, long paramLong, String... paramVarArgs)
-  {
-    int i = 0;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt1 + "|");
-    localStringBuilder.append(paramInt2 + "|");
-    localStringBuilder.append(paramInt3 + "|");
-    localStringBuilder.append(paramLong);
-    String[] arrayOfString = new String[6];
-    System.arraycopy(paramVarArgs, 0, arrayOfString, 0, Math.min(6, paramVarArgs.length));
-    paramInt1 = i;
-    if (paramInt1 < arrayOfString.length)
-    {
-      if (arrayOfString[paramInt1] == null) {
-        localStringBuilder.append("|");
-      }
-      for (;;)
-      {
-        paramInt1 += 1;
-        break;
-        localStringBuilder.append("|" + arrayOfString[paramInt1]);
-      }
-    }
-    if ((paramAppRuntime instanceof QQAppInterface)) {}
-    for (paramAppRuntime = (QQAppInterface)paramAppRuntime;; paramAppRuntime = null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PluginPreloadReportUtils", 2, "procbekilled: " + localStringBuilder.toString());
-      }
-      bcrt.a(paramAppRuntime, "sendtdbank|b_sng_qqvip_qqcomic|procbekilled", localStringBuilder.toString(), true);
-      return;
-    }
+    paramArrayOfByte = MiniOkHttpClientFactory.getRequestClient().newCall(bkxi.a(paramString1, paramMap, paramString2.toUpperCase(), null, paramArrayOfByte));
+    paramArrayOfByte.enqueue(new bkzq(this, paramString1, paramRequestListener));
+    this.a.put(paramString1, paramArrayOfByte);
+    return true;
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.kingkong;
 
-import adax;
-import adbb;
-import adbh;
-import adbi;
-import adbk;
+import adjv;
+import adjz;
+import adkf;
+import adkg;
+import adki;
 import android.content.Context;
 import java.io.File;
 import java.util.ArrayList;
@@ -18,18 +18,18 @@ public class PatchManager
   private static String b = "";
   private static String c = "/";
   
-  private static ArrayList<adbh> a()
+  private static ArrayList<adkf> a()
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    Object localObject1 = adbb.a(jdField_a_of_type_AndroidContentContext).a().iterator();
+    Object localObject1 = adjz.a(jdField_a_of_type_AndroidContentContext).a().iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (adbi)((Iterator)localObject1).next();
-      if (((adbi)localObject2).g.equals("READY"))
+      localObject2 = (adkg)((Iterator)localObject1).next();
+      if (((adkg)localObject2).g.equals("READY"))
       {
-        localObject2 = adbh.b(b, (adbi)localObject2);
+        localObject2 = adkf.b(b, (adkg)localObject2);
         if (localObject2 != null) {
           localArrayList1.add(localObject2);
         }
@@ -44,21 +44,21 @@ public class PatchManager
         localObject2 = localArrayList1.iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          adbh localadbh = (adbh)((Iterator)localObject2).next();
-          if (!localArrayList2.contains(localadbh))
+          adkf localadkf = (adkf)((Iterator)localObject2).next();
+          if (!localArrayList2.contains(localadkf))
           {
-            String str1 = localadbh.a.k;
-            String str2 = localadbh.a.jdField_a_of_type_JavaLangString;
+            String str1 = localadkf.a.k;
+            String str2 = localadkf.a.jdField_a_of_type_JavaLangString;
             if (str1.equals(""))
             {
-              adax.a("KingKongPatchManager", "Patch is ready -->" + str2);
-              localArrayList2.add(localadbh);
+              adjv.a("KingKongPatchManager", "Patch is ready -->" + str2);
+              localArrayList2.add(localadkf);
               ((ArrayList)localObject1).add(str2);
             }
             else if (((ArrayList)localObject1).contains(str1))
             {
-              adax.a("KingKongPatchManager", "Patch is ready -->" + str2 + ", previous patch is " + str1);
-              localArrayList2.add(localadbh);
+              adjv.a("KingKongPatchManager", "Patch is ready -->" + str2 + ", previous patch is " + str1);
+              localArrayList2.add(localadkf);
               ((ArrayList)localObject1).add(str2);
             }
           }
@@ -82,19 +82,19 @@ public class PatchManager
     localObject1 = ((ArrayList)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      adbh localadbh = (adbh)((Iterator)localObject1).next();
-      Object localObject2 = localadbh.a;
-      String str = ((adbi)localObject2).k;
-      localObject2 = ((adbi)localObject2).jdField_a_of_type_JavaLangString;
+      adkf localadkf = (adkf)((Iterator)localObject1).next();
+      Object localObject2 = localadkf.a;
+      String str = ((adkg)localObject2).k;
+      localObject2 = ((adkg)localObject2).jdField_a_of_type_JavaLangString;
       if ((!str.equals("")) && ((!localHashMap.containsKey(str)) || (((Integer)localHashMap.get(str)).intValue() != 0)))
       {
-        adax.a("KingKongPatchManager", "Previouse patch " + str + " of " + (String)localObject2 + " failed");
+        adjv.a("KingKongPatchManager", "Previouse patch " + str + " of " + (String)localObject2 + " failed");
       }
       else
       {
-        int i = localadbh.a(jdField_a_of_type_AndroidContentContext);
+        int i = localadkf.a(jdField_a_of_type_AndroidContentContext);
         localHashMap.put(localObject2, Integer.valueOf(i));
-        Common.a(i, localadbh.c, localadbh.e, localadbh.d, "");
+        Common.a(i, localadkf.c, localadkf.e, localadkf.d, "");
       }
     }
   }
@@ -110,7 +110,7 @@ public class PatchManager
       if (!((File)localObject).exists())
       {
         if (((File)localObject).mkdirs()) {
-          adax.a("KingKongPatchManager", "Create patch download folder : " + jdField_a_of_type_JavaLangString + " OK");
+          adjv.a("KingKongPatchManager", "Create patch download folder : " + jdField_a_of_type_JavaLangString + " OK");
         }
       }
       else
@@ -121,42 +121,42 @@ public class PatchManager
           if (!((File)localObject).mkdirs()) {
             break label212;
           }
-          adax.a("KingKongPatchManager", "Create patch folder : " + b + " OK");
+          adjv.a("KingKongPatchManager", "Create patch folder : " + b + " OK");
         }
         localObject = new File(jdField_a_of_type_JavaLangString + c + "KingkongPatch.apk");
         if ((!((File)localObject).exists()) || (((File)localObject).delete())) {
           break label245;
         }
-        adax.a("KingKongPatchManager", "Delete asset file failed");
+        adjv.a("KingKongPatchManager", "Delete asset file failed");
         return false;
       }
-      adax.a("KingKongPatchManager", "Create patch download folder : " + jdField_a_of_type_JavaLangString + " failed");
+      adjv.a("KingKongPatchManager", "Create patch download folder : " + jdField_a_of_type_JavaLangString + " failed");
       return false;
       label212:
-      adax.a("KingKongPatchManager", "Create patch folder : " + b + " failed");
+      adjv.a("KingKongPatchManager", "Create patch folder : " + b + " failed");
       return false;
       label245:
       if (!((File)localObject).exists())
       {
-        if (!adbk.a(jdField_a_of_type_AndroidContentContext, "KingkongPatch.apk", ((File)localObject).getAbsolutePath()))
+        if (!adki.a(jdField_a_of_type_AndroidContentContext, "KingkongPatch.apk", ((File)localObject).getAbsolutePath()))
         {
-          adax.a("KingKongPatchManager", "Copy KingkongPatch.apk from asset failed");
+          adjv.a("KingKongPatchManager", "Copy KingkongPatch.apk from asset failed");
           return false;
         }
-        adax.a("KingKongPatchManager", "Copy KingkongPatch.apk from asset OK");
+        adjv.a("KingKongPatchManager", "Copy KingkongPatch.apk from asset OK");
       }
       localObject = jdField_a_of_type_JavaLangString + c + "KingkongPatch.apk";
-      if (!adbk.a(b + c + "libkkfixerdriver.so", (String)localObject, "libkkfixerdriver.so", false)) {
+      if (!adki.a(b + c + "libkkfixerdriver.so", (String)localObject, "libkkfixerdriver.so", false)) {
         return false;
       }
       localObject = jdField_a_of_type_JavaLangString + c + "KingkongPatch.apk";
-      if (!adbk.a(b + c + "libPatchDispatcher.so", (String)localObject, "libPatchDispatcher.so", false)) {
+      if (!adki.a(b + c + "libPatchDispatcher.so", (String)localObject, "libPatchDispatcher.so", false)) {
         return false;
       }
       localObject = new File(jdField_a_of_type_JavaLangString + c + "KingkongPatch.apk");
       if ((((File)localObject).exists()) && (!((File)localObject).delete()))
       {
-        adax.a("KingKongPatchManager", "Delete asset file failed");
+        adjv.a("KingKongPatchManager", "Delete asset file failed");
         return false;
       }
       Common.a(1);
@@ -206,17 +206,17 @@ public class PatchManager
     {
       System.load(str2);
       System.load(str1);
-      adax.a("KingKongPatchManager", "Load library " + str1 + " OK");
+      adjv.a("KingKongPatchManager", "Load library " + str1 + " OK");
       return true;
     }
     catch (Exception localException)
     {
-      adax.a("KingKongPatchManager", "Load library " + str1 + " failed : " + localException);
+      adjv.a("KingKongPatchManager", "Load library " + str1 + " failed : " + localException);
       return false;
     }
     catch (Throwable localThrowable)
     {
-      adax.a("KingKongPatchManager", "Load library " + str1 + " failed : " + localThrowable);
+      adjv.a("KingKongPatchManager", "Load library " + str1 + " failed : " + localThrowable);
     }
     return false;
   }

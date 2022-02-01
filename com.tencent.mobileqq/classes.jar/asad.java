@@ -1,148 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.1;
+import android.content.Intent;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
 public class asad
+  implements bjdq
 {
-  private static asad a;
+  public asad(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
   
-  public static asad a()
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new asad();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public List<asac> a(QQAppInterface paramQQAppInterface, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    if (paramQQAppInterface == null) {
-      return null;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("EmotionPanelDataBuilder", 2, "getEmotionPanelData panelType = " + paramInt1);
+      QLog.d("nearby.msgbox.tab", 2, "BaseMsgBoxActivity, onTabSelected: old=" + paramInt1 + ", cur=" + paramInt2 + ", msgTabIdx=" + this.a.b + ", unReadMsgNum=" + this.a.c);
     }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = (awmr)paramQQAppInterface.getManager(14);
-    switch (paramInt1)
+    Intent localIntent;
+    if ((paramInt1 == this.a.b) && (paramInt2 != this.a.b))
     {
-    }
-    Emoticon localEmoticon;
-    label603:
-    for (;;)
-    {
-      return localArrayList;
-      return ascv.a(paramQQAppInterface, paramInt3);
-      localArrayList.add(new asac());
-      return localArrayList;
-      paramQQAppInterface = ((arro)paramQQAppInterface.getManager(149)).b();
-      paramEmoticonPackage = new arxg();
-      paramEmoticonPackage.i = "favEdit";
-      localArrayList.add(paramEmoticonPackage);
-      if (paramInt2 != 1024)
-      {
-        paramEmoticonPackage = new arxg();
-        paramEmoticonPackage.i = "funny_pic";
-        localArrayList.add(paramEmoticonPackage);
-      }
-      if (paramQQAppInterface != null)
-      {
-        if (paramQQAppInterface.size() > arrm.jdField_a_of_type_Int)
-        {
-          localArrayList.addAll(new ArrayList(paramQQAppInterface.subList(0, arrm.jdField_a_of_type_Int)));
-          return localArrayList;
-        }
-        localArrayList.addAll(paramQQAppInterface);
-        return localArrayList;
-        paramQQAppInterface = ((arqr)paramQQAppInterface.getManager(333)).b();
-        paramEmoticonPackage = new arws();
-        paramEmoticonPackage.i = "cameraEdit";
-        localArrayList.add(paramEmoticonPackage);
-        paramEmoticonPackage = new arws();
-        paramEmoticonPackage.i = "cameraJump";
-        localArrayList.add(paramEmoticonPackage);
-        if (paramQQAppInterface != null)
-        {
-          if (paramQQAppInterface.size() > arqh.jdField_a_of_type_Int)
-          {
-            localArrayList.addAll(new ArrayList(paramQQAppInterface.subList(0, arqh.jdField_a_of_type_Int)));
-            return localArrayList;
-          }
-          localArrayList.addAll(paramQQAppInterface);
-          return localArrayList;
-          paramQQAppInterface = new asbq(paramQQAppInterface.getCurrentAccountUin());
-          paramQQAppInterface.i = "push";
-          paramEmoticonPackage = ((awmr)localObject1).b(0);
-          localArrayList.add(paramQQAppInterface);
-          localArrayList.addAll(paramEmoticonPackage);
-          return localArrayList;
-          paramQQAppInterface = ((awmr)localObject1).a(true, paramInt3, paramBoolean);
-          if (paramQQAppInterface != null)
-          {
-            localArrayList.addAll(paramQQAppInterface);
-            return localArrayList;
-            if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {
-              return null;
-            }
-            localObject1 = ((awmr)localObject1).a(paramEmoticonPackage.epId, true);
-            if (paramEmoticonPackage.jobType == 4) {}
-            for (paramInt1 = 1;; paramInt1 = 0)
-            {
-              if (localObject1 == null) {
-                break label603;
-              }
-              paramInt3 = ((List)localObject1).size();
-              paramInt2 = 0;
-              while (paramInt2 < paramInt3)
-              {
-                localEmoticon = (Emoticon)((List)localObject1).get(paramInt2);
-                if (paramInt1 == 0) {
-                  break label605;
-                }
-                localObject2 = new asch(paramQQAppInterface.getCurrentAccountUin());
-                ((asch)localObject2).jdField_c_of_type_Int = 10;
-                ((asch)localObject2).jdField_a_of_type_Int = paramEmoticonPackage.type;
-                ((asch)localObject2).jdField_a_of_type_ComTencentMobileqqDataEmoticon = localEmoticon;
-                localArrayList.add(localObject2);
-                paramInt2 += 1;
-              }
-              break;
-            }
-          }
-        }
+      localIntent = new Intent();
+      localIntent.putExtra("curIndex", paramInt2);
+      if (!this.a.e) {
+        break label176;
       }
     }
-    label605:
-    Object localObject2 = new asbq(paramQQAppInterface.getCurrentAccountUin());
-    ((asbq)localObject2).jdField_c_of_type_Int = 6;
-    ((asbq)localObject2).j = paramEmoticonPackage.type;
-    ((asbq)localObject2).jdField_a_of_type_ComTencentMobileqqDataEmoticon = localEmoticon;
-    if (paramEmoticonPackage.isAPNG == 2) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    label176:
+    for (paramInt1 = this.a.c;; paramInt1 = 0)
     {
-      ((asbq)localObject2).jdField_c_of_type_Boolean = paramBoolean;
-      localArrayList.add(localObject2);
-      break;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean, asae paramasae)
-  {
-    if (paramasae == null) {
+      localIntent.putExtra("unReadMsgNum", paramInt1);
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
+      this.a.overridePendingTransition(2130772236, 2130772236);
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.msgbox.tab", 2, "finish");
+      }
       return;
     }
-    ThreadManager.post(new EmotionPanelDataBuilder.1(this, paramQQAppInterface, paramInt1, paramEmoticonPackage, paramInt2, paramInt3, paramBoolean, paramasae), 5, null, true);
   }
 }
 

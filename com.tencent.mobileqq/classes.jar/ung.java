@@ -1,180 +1,44 @@
-import android.text.TextUtils;
-import com.google.gson.Gson;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.Context;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
 
 public class ung
+  extends blsv<uho, blsy<uho>>
 {
-  private String jdField_a_of_type_JavaLangString;
-  private unc jdField_a_of_type_Unc;
-  private String b;
+  private ucr a;
   
-  ung(unc paramunc)
+  public ung(Context paramContext, ucr paramucr)
   {
-    this.jdField_a_of_type_Unc = paramunc;
+    super(paramContext);
+    this.a = paramucr;
   }
   
-  private String a()
+  public int a(int paramInt)
   {
-    Map localMap = a();
-    if (localMap == null) {
-      return "";
-    }
-    return new Gson().toJson(localMap);
+    return 0;
   }
   
-  private boolean a(int paramInt)
+  public blsy<uho> a(ViewGroup paramViewGroup, int paramInt)
   {
-    return (paramInt == 100) || (paramInt == 104) || (paramInt == 103) || (paramInt == 102) || (paramInt == 101) || (paramInt == 300) || (paramInt == 501) || (paramInt == 601) || (paramInt == 602) || (paramInt == 603);
+    return unh.a(paramViewGroup);
   }
   
-  private void g()
+  public void a(blsy<uho> paramblsy)
   {
-    if (this.jdField_a_of_type_Unc == null) {
-      this.jdField_a_of_type_Unc = new und(2);
+    super.onViewAttachedToWindow(paramblsy);
+    if (((paramblsy instanceof unh)) && (this.a != null) && (this.a.a().getUserVisibleHint()) && (this.a.a().isResumed())) {
+      ((unh)paramblsy).a();
     }
   }
   
-  public String a(int paramInt)
+  public void a(blsy<uho> paramblsy, int paramInt)
   {
-    Map localMap = a();
-    if (localMap == null) {
-      return String.valueOf(paramInt);
-    }
-    localMap.put("op_id", String.valueOf(paramInt));
-    return new Gson().toJson(localMap);
-  }
-  
-  public Map<String, String> a()
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b))) {
-      return null;
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("play_scene", this.jdField_a_of_type_JavaLangString);
-    localHashMap.put("sop_name", this.b);
-    return localHashMap;
-  }
-  
-  public void a()
-  {
-    b("videoplay_close", 0, 0, 0L, 0L, a());
-  }
-  
-  public void a(int paramInt)
-  {
-    String str = "";
-    if (!a(paramInt)) {
-      str = a();
-    }
-    a(umw.a(paramInt, true), 0, 0, 0L, 0L, str);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    a("videolay_tag_entry_exp", paramInt1, 0, 0L, 0L, a(paramInt2));
-  }
-  
-  public void a(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    String str = a(paramInt2);
-    a("videolay_tag_clk", paramInt1, 0, 0L, 0L, str);
-    a(paramString, paramInt1, 0, 0L, 0L, str);
-  }
-  
-  public void a(String paramString1, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString2)
-  {
-    g();
-    umw.a(this.jdField_a_of_type_Unc.b(), paramString1, paramInt1, paramInt2, paramLong1, paramLong2, paramString2, this.jdField_a_of_type_Unc.c());
-  }
-  
-  public void a(Map<String, String> paramMap)
-  {
-    Map localMap = a();
-    if (localMap != null) {
-      localMap.putAll(paramMap);
-    }
-    for (paramMap = new Gson().toJson(localMap);; paramMap = new Gson().toJson(paramMap))
-    {
-      b("video_play", 0, 0, 0L, 0L, paramMap);
+    uho localuho = (uho)a(paramInt);
+    if (localuho == null) {}
+    while (!(paramblsy instanceof unh)) {
       return;
     }
-  }
-  
-  public void b()
-  {
-    b("videoplay_more_clk", 0, 0, 0L, 0L, a());
-  }
-  
-  public void b(int paramInt)
-  {
-    String str = "";
-    if (!a(paramInt)) {
-      str = a();
-    }
-    a(umw.a(paramInt, false), 0, 0, 0L, 0L, str);
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void b(String paramString, int paramInt1, int paramInt2)
-  {
-    a(paramString, paramInt1, 0, 0L, 0L, a(paramInt2));
-  }
-  
-  public void b(String paramString1, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString2)
-  {
-    g();
-    umw.a(this.jdField_a_of_type_Unc.a(), paramString1, paramInt1, paramInt2, paramLong1, paramLong2, paramString2, this.jdField_a_of_type_Unc.c());
-  }
-  
-  public void c()
-  {
-    a("follow_entry_clk", 0, 0, 0L, 0L, a());
-  }
-  
-  public void c(String paramString)
-  {
-    a(paramString, 0, 0, 0L, 0L, a());
-  }
-  
-  public void c(String paramString, int paramInt1, int paramInt2)
-  {
-    Map localMap = a();
-    localMap.put("url", paramString);
-    paramString = new Gson().toJson(localMap);
-    b("blockpage_exp", paramInt1, 0, 0L, paramInt2, paramString);
-  }
-  
-  public void d()
-  {
-    b("profpic_clkc", 0, 0, 0L, 0L, a());
-  }
-  
-  public void e()
-  {
-    String str2 = a();
-    a("videoplay_title_clk", 0, 0, 0L, 0L, str2);
-    if (zmi.a(BaseApplicationImpl.sApplication)) {}
-    for (String str1 = "videoplay_title_clk_ws";; str1 = "videoplay_title_dl_ws")
-    {
-      a(str1, 0, 0, 0L, 0L, str2);
-      return;
-    }
-  }
-  
-  public void f()
-  {
-    b("fullscreen_exp", 0, 0, 0L, 0L, a());
+    ((unh)paramblsy).a(localuho, paramInt);
   }
 }
 

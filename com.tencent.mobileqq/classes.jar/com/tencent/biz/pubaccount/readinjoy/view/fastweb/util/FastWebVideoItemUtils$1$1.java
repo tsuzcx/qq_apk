@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import pmk;
-import tbq;
+import pfd;
+import ssm;
 
 public class FastWebVideoItemUtils$1$1
   implements Runnable
 {
-  public FastWebVideoItemUtils$1$1(tbq paramtbq, String paramString, int paramInt1, int paramInt2) {}
+  public FastWebVideoItemUtils$1$1(ssm paramssm, String paramString, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    pmk.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    pfd.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
   }
 }
 

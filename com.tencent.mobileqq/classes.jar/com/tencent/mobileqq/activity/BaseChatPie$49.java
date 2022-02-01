@@ -10,7 +10,7 @@ class BaseChatPie$49
   
   public void run()
   {
-    QQToast.a(this.this$0.a.getApp(), 2131689966, 1).b(this.this$0.a());
+    QQToast.a(this.this$0.a.getApp(), 2131689973, 1).b(this.this$0.a());
   }
 }
 

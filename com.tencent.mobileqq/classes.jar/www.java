@@ -1,6 +1,17 @@
-public abstract interface www
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
+
+public class www
+  extends wov
 {
-  public abstract void a(wwx paramwwx);
+  public www(qqstory_service.RspMsgTabNodeWatched paramRspMsgTabNodeWatched)
+  {
+    super(paramRspMsgTabNodeWatched.result);
+  }
+  
+  public String toString()
+  {
+    return "MsgTabNodeWatchedResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
+  }
 }
 
 

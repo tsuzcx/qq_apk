@@ -1,22 +1,8 @@
-import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
 
-class osu
-  implements View.OnSystemUiVisibilityChangeListener
+public abstract interface osu
 {
-  osu(ost paramost) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
-  {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 4866;; paramInt = 771)
-    {
-      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
-      return;
-    }
-  }
+  public abstract void a(View paramView);
 }
 
 

@@ -1,49 +1,58 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
 
-public class apku
-  implements aplg
+class apku
+  extends aplr
 {
-  public EIPCResult a(Bundle paramBundle)
+  apku(apkr paramapkr) {}
+  
+  public void a(int paramInt)
   {
-    QQAppInterface localQQAppInterface = apkf.a();
-    if (localQQAppInterface == null)
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download success " + paramInt);
+    }
+    if (apkr.a(this.a) == null)
     {
-      QLog.e("ArkApp.GetNicknameHandler", 1, "Handler_GetNickName.onCall, qq app is null");
-      return EIPCResult.createResult(-102, new Bundle());
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadSuccess error mHandler is null ");
+      return;
     }
-    String str = paramBundle.getString("Uin", localQQAppInterface.getCurrentAccountUin());
-    Object localObject = null;
-    if (!TextUtils.isEmpty(agpq.a)) {
-      localObject = bglf.h(localQQAppInterface, agpq.a, str);
+    Message localMessage = Message.obtain();
+    localMessage.what = 6;
+    localMessage.arg1 = paramInt;
+    apkr.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download process " + paramInt1 + " : " + paramInt2);
     }
-    if (localObject != null)
+    if (apkr.a(this.a) == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 7;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    apkr.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download error " + paramInt1 + " : " + paramInt2);
+    }
+    if (apkr.a(this.a) == null)
     {
-      paramBundle = (Bundle)localObject;
-      if (!TextUtils.equals((CharSequence)localObject, str)) {}
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadError error mHandler is null ");
+      return;
     }
-    else
-    {
-      localObject = bglf.q(localQQAppInterface, str);
-      paramBundle = (Bundle)localObject;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        paramBundle = bglf.a(localQQAppInterface, str, 0);
-      }
-    }
-    localObject = new Bundle();
-    if (TextUtils.isEmpty(paramBundle))
-    {
-      QLog.i("ArkApp.GetNicknameHandler", 1, "GetNicknameHandler.onCall, nickname is empty");
-      ((Bundle)localObject).putString("Nickname", "");
-    }
-    for (;;)
-    {
-      return EIPCResult.createResult(0, (Bundle)localObject);
-      ((Bundle)localObject).putString("Nickname", paramBundle);
-    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 8;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    apkr.a(this.a).sendMessage(localMessage);
   }
 }
 

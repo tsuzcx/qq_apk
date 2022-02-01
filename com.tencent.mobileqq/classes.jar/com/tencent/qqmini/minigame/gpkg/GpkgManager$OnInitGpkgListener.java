@@ -16,6 +16,7 @@ public abstract interface GpkgManager$OnInitGpkgListener
   public static final int PKG_FOLD_NOT_EXIST = 2007;
   public static final int RES_SUCC = 0;
   public static final int SUB_PKG_DOWNLOAD_URL_NULL = 2008;
+  public static final int UNKNOWN_SUB_PKG_ERROR = 2012;
   public static final int UNPACK_PKG_FAIL = 2005;
   public static final int UNPACK_SUB_PKG_FAIL = 2011;
   

@@ -1,93 +1,76 @@
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_ICON.lighting_sweet_key_req;
+import SWEET_NEW_ICON.lighting_sweet_key_rsp;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
-class apbz
-  implements beav
+public class apbz
+  extends QzoneExternalRequest
 {
-  apbz(apby paramapby, apce paramapce) {}
+  private lighting_sweet_key_req jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(beau parambeau)
+  public apbz() {}
+  
+  public apbz(long paramLong)
   {
-    QLog.i("AREngine_ARPreSoResourceDownload", 1, "onPreDownloadStart");
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    this.needCompress = false;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req = new lighting_sweet_key_req();
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm = new sweet_req_comm();
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.opuin = paramLong;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.uin = paramLong;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.loveuin = 0L;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.qua = bmsw.a();
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.pf = 1;
+    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.src = 3;
+    this.jdField_a_of_type_JavaLangString = a();
   }
   
-  public void onResp(bdwt parambdwt)
+  public static lighting_sweet_key_rsp a(byte[] paramArrayOfByte, String paramString)
   {
-    if (parambdwt.jdField_a_of_type_Int == 3) {
-      QLog.i("AREngine_ARPreSoResourceDownload", 1, "Download init. url = " + ((bdvs)parambdwt.jdField_a_of_type_Bdws).jdField_a_of_type_JavaLangString);
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    for (;;)
+    try
     {
-      return;
-      int i;
-      synchronized (apby.a(this.jdField_a_of_type_Apby))
-      {
-        if (apby.a(this.jdField_a_of_type_Apby) != null)
-        {
-          i = 0;
-          label67:
-          if (i < apby.a(this.jdField_a_of_type_Apby).size())
-          {
-            if (!((apce)apby.a(this.jdField_a_of_type_Apby).get(i)).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Apce.jdField_a_of_type_JavaLangString)) {
-              break label342;
-            }
-            apby.a(this.jdField_a_of_type_Apby).remove(i);
-          }
-        }
-      }
-      synchronized (apby.a(this.jdField_a_of_type_Apby))
-      {
-        ??? = (apcd)apby.a(this.jdField_a_of_type_Apby).get(this.jdField_a_of_type_Apce.b);
-        if (parambdwt.jdField_a_of_type_Int == 0)
-        {
-          if (apby.a(this.jdField_a_of_type_Apby) != null) {
-            apby.a(this.jdField_a_of_type_Apby).a(this.jdField_a_of_type_Apce.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apce.jdField_a_of_type_Long);
-          }
-          ??? = new File(((bdvs)parambdwt.jdField_a_of_type_Bdws).c);
-          String str = azby.a(((File)???).getAbsolutePath());
-          if (((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_Apce.b))) && (this.jdField_a_of_type_Apce.jdField_a_of_type_Int != 1))
-          {
-            QLog.i("AREngine_ARPreSoResourceDownload", 1, "Download end. MD5 check error. url = " + ((bdvs)parambdwt.jdField_a_of_type_Bdws).jdField_a_of_type_JavaLangString + ", fileName = " + ((File)???).getAbsolutePath() + ", fileMD5 = " + str);
-            if (??? == null) {
-              continue;
-            }
-            ((apcd)???).a(false, this.jdField_a_of_type_Apce);
-            return;
-            label342:
-            i += 1;
-            break label67;
-            parambdwt = finally;
-            throw parambdwt;
-          }
-        }
-      }
-      for (boolean bool = true; ??? != null; bool = false)
-      {
-        ((apcd)???).a(bool, this.jdField_a_of_type_Apce);
-        return;
-        if (apby.a(this.jdField_a_of_type_Apby) != null) {
-          apby.a(this.jdField_a_of_type_Apby).a(this.jdField_a_of_type_Apce.jdField_a_of_type_JavaLangString, -1L);
-        }
-      }
+      paramArrayOfByte = (lighting_sweet_key_rsp)decode(paramArrayOfByte, paramString);
+      return paramArrayOfByte;
     }
+    catch (Throwable paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
   }
   
-  public void onUpdateProgeress(bdws arg1, long paramLong1, long paramLong2)
+  public static String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARPreSoResourceDownload", 2, "onUpdateProgeress. url = " + ((bdvs)???).jdField_a_of_type_JavaLangString + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
-    }
-    synchronized (apby.a(this.jdField_a_of_type_Apby))
+    if (TextUtils.isEmpty("SweetQzoneService.lightingSweetKey")) {}
+    String[] arrayOfString;
+    do
     {
-      apcd localapcd = (apcd)apby.a(this.jdField_a_of_type_Apby).get(this.jdField_a_of_type_Apce.b);
-      if (localapcd != null) {
-        localapcd.a(paramLong1, paramLong2);
-      }
-      return;
-    }
+      return null;
+      arrayOfString = "SweetQzoneService.lightingSweetKey".split("\\.");
+    } while ((arrayOfString == null) || (arrayOfString.length <= 0));
+    return arrayOfString[(arrayOfString.length - 1)];
+  }
+  
+  public String getCmdString()
+  {
+    return "SweetQzoneService.lightingSweetKey";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req;
+  }
+  
+  public String uniKey()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

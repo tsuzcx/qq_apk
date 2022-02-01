@@ -1,17 +1,39 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mfsdk.MagnifierSDK;
+import com.tencent.mfsdk.collector.ResultObject;
+import com.tencent.mfsdk.reporter.ReporterMachine;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Observable;
+import java.util.Observer;
+import org.json.JSONObject;
 
 public class admq
-  implements CompoundButton.OnCheckedChangeListener
+  implements Observer
 {
-  public admq(AssistantSettingActivity paramAssistantSettingActivity, anmw paramanmw) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    this.jdField_a_of_type_Anmw.a(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    Object localObject = ((admp)paramObservable).a;
+    if ("t_held_thread".equals((String)((HashMap)localObject).get("key_type"))) {}
+    try
+    {
+      paramObservable = new JSONObject();
+      paramObject = new JSONObject();
+      paramObject.put("fileObj1", ((HashMap)localObject).get("filePath"));
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("p_id", MagnifierSDK.b());
+      paramObservable.put("fileObj", paramObject);
+      paramObservable.put("clientinfo", localObject);
+      paramObservable.put("newplugin", 123);
+      ReporterMachine.a(new ResultObject(0, "testcase", true, 1L, 1L, paramObservable, true, true, MagnifierSDK.a));
+      if (QLog.isColorLevel()) {
+        QLog.d("StackObserver", 2, "report apm suc");
+      }
+      return;
+    }
+    catch (Exception paramObservable)
+    {
+      QLog.e("StackObserver", 1, "report apm fail", paramObservable);
+    }
   }
 }
 

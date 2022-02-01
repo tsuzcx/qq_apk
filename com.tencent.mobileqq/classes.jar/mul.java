@@ -1,12 +1,27 @@
-class mul<Data>
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+
+public class mul
 {
-  final muk jdField_a_of_type_Muk;
-  final Data[] jdField_a_of_type_ArrayOfJavaLangObject;
+  public static String a = "ShareUtils";
   
-  mul(muk parammuk, Data... paramVarArgs)
+  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_Muk = parammuk;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramString1);
+    Bundle localBundle = new Bundle();
+    localBundle.putStringArrayList("image_url", localArrayList);
+    localBundle.putString("title", paramString2);
+    localBundle.putString("desc", paramString3);
+    localBundle.putLong("req_share_id", 0L);
+    localBundle.putString("detail_url", paramString4);
+    bmud.a(paramAppInterface, paramContext, localBundle, null);
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, "shareToQzone. title:" + paramString2 + " desc:" + paramString3 + " shareLink:" + paramString4 + " icon:" + paramString1);
+    }
   }
 }
 

@@ -1,48 +1,102 @@
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
 
 public class ngj
 {
-  public static nfz a()
+  public final int a;
+  public final long a;
+  public final String a;
+  public final String b;
+  
+  private ngj(String paramString1, int paramInt, String paramString2, long paramLong)
   {
-    return a(1);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public static nfz a(int paramInt)
+  public static ngj a(Intent paramIntent)
   {
-    Object localObject = aqnx.a().a();
-    if (localObject != null)
+    String str1 = paramIntent.getStringExtra("key_from");
+    long l = paramIntent.getLongExtra("key_msg_seq", 0L);
+    int i = paramIntent.getIntExtra("uintype", 0);
+    String str2 = paramIntent.getStringExtra("uin");
+    Object localObject = null;
+    paramIntent = localObject;
+    if (!TextUtils.isEmpty(str1))
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        nfz localnfz = (nfz)((Iterator)localObject).next();
-        if (localnfz.a == paramInt) {
-          return localnfz;
-        }
+      paramIntent = localObject;
+      if (!TextUtils.isEmpty(str2)) {
+        paramIntent = new ngj(str1, i, str2, l);
       }
     }
-    return new nfz(0, 10, 15);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("AVGameBackAction", 4, "parseAction, action[" + paramIntent + "]");
+    }
+    return paramIntent;
   }
   
-  public static nfz b()
+  public static void a(Intent paramIntent, QQMessageFacade.Message paramMessage)
   {
-    return a(2);
+    if ((paramIntent != null) && (paramMessage != null))
+    {
+      paramIntent.putExtra("key_from", "MsgPush");
+      paramIntent.putExtra("key_msg_seq", paramMessage.uniseq);
+      paramIntent.putExtra("uintype", paramMessage.istroop);
+      paramIntent.putExtra("uin", paramMessage.frienduin);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("AVGameBackAction", 4, "addAction, action[MsgPush," + paramMessage.istroop + "," + paramMessage.frienduin + "," + paramMessage.uniseq + "]");
+      }
+    }
   }
   
-  public static nfz c()
+  public static void a(Intent paramIntent, ngj paramngj)
   {
-    return a(3);
+    if ((paramIntent != null) && (paramngj != null))
+    {
+      paramIntent.putExtra("key_from", paramngj.jdField_a_of_type_JavaLangString);
+      paramIntent.putExtra("key_msg_seq", paramngj.jdField_a_of_type_Long);
+      paramIntent.putExtra("uintype", paramngj.jdField_a_of_type_Int);
+      paramIntent.putExtra("uin", paramngj.b);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("AVGameBackAction", 4, "addAction, action[" + paramngj + "]");
+      }
+    }
   }
   
-  public static nfz d()
+  public void a(Context paramContext)
   {
-    return a(4);
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = BaseApplicationImpl.getContext();
+    }
+    paramContext = new Intent((Context)localObject, SplashActivity.class);
+    if (this.jdField_a_of_type_Int == 1024) {
+      paramContext.putExtra("chat_subType", 1);
+    }
+    paramContext.putExtra("uin", this.b);
+    paramContext.putExtra("uintype", this.jdField_a_of_type_Int);
+    paramContext = agej.a(paramContext, new int[] { 2 });
+    paramContext.setAction("com.tencent.mobileqq.action.MAINACTIVITY");
+    ((Context)localObject).startActivity(paramContext);
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "{" + this.jdField_a_of_type_JavaLangString + "," + this.jdField_a_of_type_Int + "," + this.b + "," + this.jdField_a_of_type_Long + "}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ngj
  * JD-Core Version:    0.7.0.1
  */

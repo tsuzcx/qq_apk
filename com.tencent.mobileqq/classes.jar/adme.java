@@ -1,27 +1,48 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.config.AppSetting;
+import com.tencent.qapmsdk.base.listener.IInspectorListener;
+import com.tencent.qapmsdk.common.util.InspectUUID;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
-public class adme
-  implements CompoundButton.OnCheckedChangeListener
+class adme
+  implements IInspectorListener
 {
-  public adme(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public void onCheckingLeaked(int paramInt, @NotNull String paramString) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public boolean onFilter(@NotNull Object paramObject)
   {
-    AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean);
-    AssistantSettingActivity.a(this.a).a(paramBoolean, true);
-    if (paramBoolean) {
-      bcst.b(this.a.app, "dc00898", "", "", "0X8009C0C", "0X8009C0C", 0, 0, "", "", "", "");
-    }
-    for (;;)
+    return false;
+  }
+  
+  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2)
+  {
+    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "finishDump" + paramString1 + paramString2);
+  }
+  
+  public void onHprofDumped(@NotNull String paramString) {}
+  
+  public boolean onLeaked(@NotNull InspectUUID paramInspectUUID)
+  {
+    if (paramInspectUUID == null) {}
+    do
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bcst.b(this.a.app, "dc00898", "", "", "0X8009C0D", "0X8009C0D", 0, 0, "", "", "", "");
-    }
+      return false;
+      paramInspectUUID.toString();
+    } while (AppSetting.d);
+    return false;
+  }
+  
+  @NotNull
+  public List<String> onPrepareDump(@NotNull String paramString)
+  {
+    ArrayList localArrayList = new ArrayList(4);
+    localArrayList.add(adlr.b());
+    localArrayList.add(adlr.a());
+    localArrayList.addAll(adlr.b());
+    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "leakDump" + paramString);
+    return localArrayList;
   }
 }
 

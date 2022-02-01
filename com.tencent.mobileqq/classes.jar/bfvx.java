@@ -1,14 +1,17 @@
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bfvx
+class bfvx
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public URLImageView a;
-  public ImageProgressCircle a;
+  bfvx(bfvu parambfvu) {}
   
-  protected bfvx(bfvv parambfvv) {}
+  public void onClick(View paramView)
+  {
+    this.a.b(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

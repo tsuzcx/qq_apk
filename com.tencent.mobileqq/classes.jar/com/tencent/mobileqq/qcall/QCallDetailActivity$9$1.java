@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.qcall;
 
-import azwc;
+import baos;
 
 public class QCallDetailActivity$9$1
   implements Runnable
 {
-  public QCallDetailActivity$9$1(azwc paramazwc) {}
+  public QCallDetailActivity$9$1(baos parambaos) {}
   
   public void run()
   {

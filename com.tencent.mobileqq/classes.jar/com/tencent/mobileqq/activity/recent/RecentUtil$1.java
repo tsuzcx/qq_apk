@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.recent;
 
-import bcst;
+import bdll;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
-import twi;
+import twk;
 
 public final class RecentUtil$1
   implements Runnable
@@ -12,8 +12,8 @@ public final class RecentUtil$1
   
   public void run()
   {
-    int i = twi.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).size();
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", "0", "0X80064CB", "0X80064CB", 0, 0, "" + this.jdField_a_of_type_Int, "" + i, "", "");
+    int i = twk.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).size();
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", "0", "0X80064CB", "0X80064CB", 0, 0, "" + this.jdField_a_of_type_Int, "" + i, "", "");
   }
 }
 

@@ -1,14 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.widget.EditText;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class adpy
-  implements DialogInterface.OnClickListener
+  extends adpz
 {
-  adpy(adpw paramadpw) {}
+  adpy(adpx paramadpx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onSuccess(JSONObject paramJSONObject)
   {
-    paramDialogInterface.dismiss();
+    super.onSuccess(paramJSONObject);
+    try
+    {
+      paramJSONObject = paramJSONObject.getJSONArray("appfriends");
+      JSONObject localJSONObject1 = new JSONObject();
+      localJSONObject1.put("rankingID", 11001);
+      JSONArray localJSONArray1 = new JSONArray();
+      int i = 0;
+      int j = paramJSONObject.length();
+      while (i < j)
+      {
+        Object localObject = paramJSONObject.getJSONObject(i).getString("openid");
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("openid", localObject);
+        localJSONObject2.put("score", (int)Math.floor(Math.random() * 1000.0D));
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("key", "test_key");
+        ((JSONObject)localObject).put("value", (int)Math.floor(Math.random() * 100.0D));
+        ((JSONObject)localObject).put("type", 1);
+        JSONArray localJSONArray2 = new JSONArray();
+        localJSONArray2.put(localObject);
+        localJSONObject2.put("extraList", localJSONArray2);
+        localJSONArray1.put(localJSONObject2);
+        i += 1;
+      }
+      localJSONObject1.put("scoreList", localJSONArray1);
+      this.a.a.jdField_a_of_type_Adnb.a("reportScore", localJSONObject1, new adpz(this.a.a.jdField_a_of_type_AndroidWidgetEditText));
+      if (this.a.a.jdField_a_of_type_AndroidWidgetEditText != null) {
+        new AlertDialog.Builder(this.a.a.jdField_a_of_type_AndroidWidgetEditText.getContext()).setTitle("reportScore").setMessage(localJSONObject1.toString()).setNegativeButton("知道了", null).create().show();
+      }
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
   }
 }
 

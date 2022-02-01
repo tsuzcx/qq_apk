@@ -1,14 +1,10 @@
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+
 public abstract interface aocl
 {
-  public abstract void a(boolean paramBoolean, String paramString);
-  
-  public abstract void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2);
-  
-  public abstract void b(boolean paramBoolean, String paramString);
-  
-  public abstract void b(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2);
-  
-  public abstract void c(boolean paramBoolean, String paramString);
+  public static final String a = asfa.a("VIP_roam_msg_search_cfg", "https://i.gtimg.cn/qqshow/admindata/comdata/searchStrategy/xydata.json");
+  public static final String b = BaseApplication.getContext().getFilesDir() + File.separator + "searchInCloudConfig.json";
 }
 
 

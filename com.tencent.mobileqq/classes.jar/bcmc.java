@@ -1,18 +1,24 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import java.util.List;
 
-public class bcmc
-  implements FileFilter
+public abstract interface bcmc<T extends bcfp>
 {
-  public boolean accept(File paramFile)
-  {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
-  }
+  public abstract List<T> a(bcmq parambcmq);
+  
+  public abstract void a();
+  
+  public abstract void a(bcmq parambcmq, bcmd<T> parambcmd);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcmc
  * JD-Core Version:    0.7.0.1
  */

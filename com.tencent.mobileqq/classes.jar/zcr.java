@@ -1,65 +1,27 @@
-import android.text.SpannableString;
-import android.text.style.AbsoluteSizeSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.widget.XEditTextEx;
-import com.tribe.async.dispatch.IEventReceiver;
+import android.support.annotation.NonNull;
+import android.widget.EditText;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-public class zcr
-  implements IEventReceiver
+class zcr
+  implements zlt
 {
-  public View.OnClickListener a;
-  public final View a;
-  public ImageButton a;
-  public TextView a;
-  public XEditTextEx a;
-  public String a;
-  public zcu a;
+  zcr(zcn paramzcn) {}
   
-  public zcr(View paramView)
+  public void a(@NonNull zma paramzma)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a(paramView);
-  }
-  
-  private void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131363226));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364879));
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)paramView.findViewById(2131365835));
-    paramView = new SpannableString(anni.a(2131709568));
-    paramView.setSpan(new AbsoluteSizeSpan(14, true), 0, paramView.length(), 33);
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setHint(paramView);
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(new zct(this));
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnEditorActionListener(new zcs(this));
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_AndroidViewView.getVisibility();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(paramInt);
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(paramOnClickListener);
-  }
-  
-  public void b(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-  }
-  
-  public boolean isValidate()
-  {
-    return true;
+    switch (paramzma.a)
+    {
+    }
+    do
+    {
+      return;
+      int i = paramzma.b;
+      this.a.jdField_a_of_type_Zbw.a = i;
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(i);
+      yuq.b("0X80075D8");
+    } while ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a != 3));
+    LpReportInfo_pf00064.allReport(615, 3, 2);
   }
 }
 

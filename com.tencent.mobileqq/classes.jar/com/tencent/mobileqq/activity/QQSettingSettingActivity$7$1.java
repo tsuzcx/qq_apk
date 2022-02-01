@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aezo;
-
-public class QQSettingSettingActivity$7$1
+class QQSettingSettingActivity$7$1
   implements Runnable
 {
-  public QQSettingSettingActivity$7$1(aezo paramaezo, String paramString) {}
+  QQSettingSettingActivity$7$1(QQSettingSettingActivity.7 param7, String paramString) {}
   
   public void run()
   {
-    QQSettingSettingActivity.a(this.jdField_a_of_type_Aezo.a, this.jdField_a_of_type_JavaLangString);
+    QQSettingSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingSettingActivity$7.this$0, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,33 +1,23 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import android.animation.TypeEvaluator;
 
-final class bagi
-  implements Downloader.DownloadListener
+class bagi
+  implements TypeEvaluator
 {
-  bagi(QzoneZipCacheHelperCallBack paramQzoneZipCacheHelperCallBack) {}
+  bagi(bagf parambagf) {}
   
-  public void onDownloadCanceled(String paramString)
+  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
   {
-    if (this.a != null) {
-      this.a.onResult(false);
+    paramFloat = 3.0F * paramFloat;
+    if (paramFloat <= 0.45F) {
+      return Float.valueOf(1.0F - paramFloat / 0.45F * 0.6F);
     }
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    if (this.a != null) {
-      this.a.onResult(false);
+    if (paramFloat <= 1.3F) {
+      return Double.valueOf((paramFloat - 0.45F) / 0.85F * 0.6F + 0.4D);
     }
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    if (this.a != null) {
-      this.a.onResult(true);
+    if (paramFloat <= 2.45F) {
+      return Float.valueOf(1.0F - (paramFloat - 1.3F) / 1.15F * 0.6F);
     }
+    return Double.valueOf((paramFloat - 2.45F) / 0.55F * 0.6F + 0.4D);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.apollo.game;
 
 import android.app.Activity;
 import android.view.View;
-import bhql;
+import birg;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 class ApolloWebViewFragment$2

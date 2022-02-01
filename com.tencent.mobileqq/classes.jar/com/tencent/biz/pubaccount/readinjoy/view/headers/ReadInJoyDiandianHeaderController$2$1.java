@@ -1,17 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.view.headers;
 
-import ohk;
-import org.json.JSONObject;
-import tcl;
+import ois;
+import sth;
 
 public class ReadInJoyDiandianHeaderController$2$1
   implements Runnable
 {
-  public ReadInJoyDiandianHeaderController$2$1(tcl paramtcl, JSONObject paramJSONObject) {}
-  
   public void run()
   {
-    ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_Tcl.a).a(this.jdField_a_of_type_OrgJsonJSONObject);
+    ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_Sth.a).a(this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

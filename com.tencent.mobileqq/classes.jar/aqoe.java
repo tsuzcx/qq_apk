@@ -1,72 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
 
-public class aqoe
-  extends aqkz<aqod>
+public final class aqoe
+  implements Parcelable.Creator<CardOCRInfo>
 {
-  public static aqod a()
+  public CardOCRInfo a(Parcel paramParcel)
   {
-    return (aqod)aqlk.a().a(452);
+    return new CardOCRInfo(paramParcel);
   }
   
-  @NonNull
-  public aqod a(int paramInt)
+  public CardOCRInfo[] a(int paramInt)
   {
-    return new aqod().b("0");
-  }
-  
-  @Nullable
-  public aqod a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
-    {
-      aqod localaqod = aqod.a(paramArrayOfaqlg[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("C2CLovePushGrayProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
-      }
-      return localaqod;
-    }
-    return null;
-  }
-  
-  public void a(aqod paramaqod) {}
-  
-  public Class<aqod> clazz()
-  {
-    return aqod.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CLovePushGrayProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 452;
+    return new CardOCRInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqoe
  * JD-Core Version:    0.7.0.1
  */

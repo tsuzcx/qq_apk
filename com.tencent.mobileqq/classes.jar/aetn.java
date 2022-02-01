@@ -1,16 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aetn
-  implements DialogInterface.OnClickListener
+public class aetn
+  implements View.OnClickListener
 {
-  aetn(aetm paramaetm) {}
+  public aetn(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.setResult(4003);
-    this.a.a.finish();
+    boolean bool = HongbaoShowerActivity.a(this.a).isChecked();
+    CheckBox localCheckBox = HongbaoShowerActivity.a(this.a);
+    if (!bool) {}
+    for (bool = true;; bool = false)
+    {
+      localCheckBox.setChecked(bool);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

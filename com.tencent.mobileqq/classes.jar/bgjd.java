@@ -1,35 +1,31 @@
-import android.util.Pair;
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bgjd
+class bgjd
+  implements View.OnClickListener
 {
-  public static ArrayList<Pair<String, Long>> a(ArrayList<Pair<String, Long>> paramArrayList)
+  bgjd(bgjb parambgjb) {}
+  
+  public void onClick(View paramView)
   {
-    Object[] arrayOfObject = new Object[paramArrayList.size()];
-    int i = 0;
-    Object localObject;
-    while (i < paramArrayList.size())
-    {
-      localObject = (Pair)paramArrayList.get(i);
-      arrayOfObject[i] = { (String)((Pair)localObject).first, String.valueOf(((Pair)localObject).second) };
-      i += 1;
-    }
-    Arrays.sort(arrayOfObject, new bgje());
-    paramArrayList.clear();
-    i = 0;
-    while (i < arrayOfObject.length)
-    {
-      localObject = (String[])arrayOfObject[i];
-      paramArrayList.add(Pair.create(localObject[0], Long.valueOf(Long.parseLong(localObject[1]))));
-      i += 1;
-    }
-    return paramArrayList;
+    Bundle localBundle = new Bundle();
+    localBundle.putString(bhzu.e, anzj.a(2131699140));
+    localBundle.putString(bhzu.f, "CJCLUBT");
+    localBundle.putString(bhzu.d, "1450000516");
+    localBundle.putInt(bhzu.b, 3);
+    localBundle.putString(bhzu.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
+    localBundle.putString(bhzu.g, "svip");
+    localBundle.putString(bhzu.a, bgjb.a(this.a).getCurrentAccountUin());
+    bhzu.a(bgjb.a(this.a), bgjb.a(this.a), localBundle);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgjd
  * JD-Core Version:    0.7.0.1
  */

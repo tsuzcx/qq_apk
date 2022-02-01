@@ -1,51 +1,70 @@
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.atvideo.view.StoryAtVideoFragment;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import java.util.List;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class ybf
-  extends wfr<StoryAtVideoFragment, ycp>
+class ybf
+  implements URLDrawable.URLDrawableListener
 {
-  public ybf(StoryAtVideoFragment paramStoryAtVideoFragment)
+  private final int jdField_a_of_type_Int;
+  private final URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private final String jdField_a_of_type_JavaLangString;
+  private final int b;
+  
+  public ybf(ybe paramybe, @NonNull String paramString, int paramInt1, int paramInt2, URLDrawable paramURLDrawable)
   {
-    super(paramStoryAtVideoFragment);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
   }
   
-  public void a(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull ycp paramycp)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if ((!paramycp.jdField_a_of_type_JavaLangString.equals(paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString)) || (paramycp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramStoryAtVideoFragment.jdField_a_of_type_Ycb == null))
-    {
-      yqp.b(this.TAG, "ignore this comment list event. %s.", paramycp.toString());
-      return;
-    }
-    if (!paramStoryAtVideoFragment.jdField_a_of_type_Ycb.c())
-    {
-      yqp.e(this.TAG, "this feed does not support video list.ignore this comment list event. %s.", new Object[] { paramycp.toString() });
-      return;
-    }
-    yqp.a(this.TAG, "receive comment list event. %s.", paramycp.toString());
-    paramStoryAtVideoFragment.jdField_a_of_type_Ycb.a(paramycp.jdField_a_of_type_JavaUtilList, paramycp.c);
-    paramStoryAtVideoFragment.jdField_a_of_type_Ycb.a().updateVideoInfo(paramycp.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
-    if (paramStoryAtVideoFragment.jdField_a_of_type_Ycb.a().size() < 1)
-    {
-      paramStoryAtVideoFragment.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-      paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(8);
-      paramStoryAtVideoFragment.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      return;
-    }
-    paramStoryAtVideoFragment.a(paramStoryAtVideoFragment.jdField_a_of_type_Ycb);
+    ybe.a(this.jdField_a_of_type_Ybe).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
   
-  public Class acceptEventClass()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return ycp.class;
+    ybe.a(this.jdField_a_of_type_Ybe).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    yuk.d("story.icon.ShareGroupIconManager", "download url failed. %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    paramURLDrawable = (HashSet)ybe.a(this.jdField_a_of_type_Ybe).remove(this.jdField_a_of_type_JavaLangString);
+    if (paramURLDrawable != null)
+    {
+      paramURLDrawable = paramURLDrawable.iterator();
+      while (paramURLDrawable.hasNext()) {
+        ((ybi)paramURLDrawable.next()).a(this.jdField_a_of_type_JavaLangString, paramThrowable);
+      }
+    }
   }
   
-  public void b(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull ycp paramycp) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    ybe.a(this.jdField_a_of_type_Ybe).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    yuk.a("story.icon.ShareGroupIconManager", "download url success. %s", this.jdField_a_of_type_JavaLangString);
+    Bitmap localBitmap = ybe.a(this.jdField_a_of_type_Ybe, paramURLDrawable, this.jdField_a_of_type_Int, this.b);
+    if (localBitmap != null)
+    {
+      paramURLDrawable = (HashSet)ybe.a(this.jdField_a_of_type_Ybe).remove(this.jdField_a_of_type_JavaLangString);
+      if (paramURLDrawable != null)
+      {
+        paramURLDrawable = paramURLDrawable.iterator();
+        while (paramURLDrawable.hasNext()) {
+          ((ybi)paramURLDrawable.next()).a(this.jdField_a_of_type_JavaLangString, localBitmap);
+        }
+      }
+    }
+    else
+    {
+      yuk.e("story.icon.ShareGroupIconManager", "download url success directly. but OOM occur !");
+      onLoadFialed(paramURLDrawable, new Throwable("getBitmapFromDrawable failed"));
+    }
+  }
 }
 
 

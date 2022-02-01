@@ -1,159 +1,117 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.FeedBasePlayInfo;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.app.ActivityManager.RunningTaskInfo;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-class xin
-  implements xje
+public class xin
 {
-  private int jdField_a_of_type_Int;
-  private final FeedBasePlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo;
-  private final xim jdField_a_of_type_Xim;
-  private xjf jdField_a_of_type_Xjf;
-  private ycm jdField_a_of_type_Ycm;
-  protected final yip a;
-  
-  public xin(xim paramxim, FeedBasePlayInfo paramFeedBasePlayInfo)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo = paramFeedBasePlayInfo;
-    this.jdField_a_of_type_Xim = paramxim;
-    this.jdField_a_of_type_Yip = ((yip)wpm.a(12));
-  }
-  
-  private void a(ErrorMessage paramErrorMessage, xix paramxix)
+  protected static List<String> a(Context paramContext)
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramxix);
-    this.jdField_a_of_type_Xjf.a(paramErrorMessage, localArrayList);
+    paramContext = paramContext.getPackageManager();
+    Intent localIntent = new Intent("android.intent.action.MAIN");
+    localIntent.addCategory("android.intent.category.HOME");
+    paramContext = paramContext.queryIntentActivities(localIntent, 65536).iterator();
+    while (paramContext.hasNext()) {
+      localArrayList.add(((ResolveInfo)paramContext.next()).activityInfo.packageName);
+    }
+    return localArrayList;
   }
   
-  private void a(List<StoryVideoItem> paramList, FeedVideoInfo paramFeedVideoInfo)
+  protected static void a(int paramInt, QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_Xim.a == null)
-    {
-      a(new ErrorMessage(940001, "group info is null"), this.jdField_a_of_type_Xim);
-      return;
+    if ((paramQQAppInterface != null) && (paramInt != 0)) {
+      paramQQAppInterface.t();
     }
-    if (paramFeedVideoInfo == null) {}
-    for (this.jdField_a_of_type_Ycm = new ycm(1, this.jdField_a_of_type_Xim.a.jdField_a_of_type_JavaLangString, 0, -1);; this.jdField_a_of_type_Ycm = new ycm(1, paramFeedVideoInfo))
-    {
-      this.jdField_a_of_type_Ycm.a(new xio(this, paramList));
-      this.jdField_a_of_type_Ycm.c();
-      yqp.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "request from net, count:%d, %s", Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_Xim);
-      return;
-      paramList.addAll(paramFeedVideoInfo.mVideoItemList);
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.qqstory.protocol", 2, "playSound ringType = " + paramInt);
     }
   }
   
-  private void a(List<StoryVideoItem> paramList, String paramString)
+  protected static boolean a(Context paramContext)
   {
-    paramList = xil.a(paramList, paramString, this.jdField_a_of_type_Xim);
-    paramString = new ArrayList();
-    paramString.add(paramList);
-    this.jdField_a_of_type_Xjf.a(paramString, true);
+    List localList = ((ActivityManager)paramContext.getSystemService("activity")).getRunningTasks(1);
+    if (localList == null) {
+      return false;
+    }
+    return a(paramContext).contains(((ActivityManager.RunningTaskInfo)localList.get(0)).topActivity.getPackageName());
   }
   
-  private void a(List<StoryVideoItem> paramList, ycp paramycp)
+  public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    if (!paramycp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      b(paramList, paramycp);
-      return;
+    Object localObject1 = BaseApplicationImpl.getApplication();
+    if (localObject1 == null) {
+      return false;
     }
-    if (paramycp.c) {
-      paramList.clear();
+    boolean bool = GesturePWDUtils.getGestureLocking((Context)localObject1);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.protocol", 2, "isQQForeground isQQLock=" + bool);
     }
-    paramList.addAll(paramycp.jdField_a_of_type_JavaUtilList);
-    yqp.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "add video size:%d", Integer.valueOf(paramycp.jdField_a_of_type_JavaUtilList.size()));
-    if ((!paramycp.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int < 20))
-    {
-      this.jdField_a_of_type_Int += 1;
-      yqp.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "request from net, count:%d", Integer.valueOf(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_Ycm.c();
-      return;
+    if ((paramQQAppInterface == null) || (bool)) {
+      return false;
     }
-    b(paramList, paramycp);
-  }
-  
-  private void b(List<StoryVideoItem> paramList, ycp paramycp)
-  {
-    if (this.jdField_a_of_type_Xim.a == null)
-    {
-      a(new ErrorMessage(940001, "group info is null"), this.jdField_a_of_type_Xim);
-      return;
+    if (a((Context)localObject1)) {
+      return false;
     }
-    if (paramycp.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo == null)
-    {
-      a(paramList, paramycp.jdField_a_of_type_JavaLangString);
-      return;
+    if (!paramQQAppInterface.isBackgroundPause) {
+      return true;
     }
-    Iterator localIterator;
-    StoryVideoItem localStoryVideoItem;
-    if (QQStoryContext.a().a(this.jdField_a_of_type_Xim.a.b))
+    try
     {
-      if (xil.a() == null) {
-        xil.c(((wpj)wpm.a(5)).a(true));
+      Object localObject2 = (ActivityManager)((Context)localObject1).getApplicationContext().getSystemService("activity");
+      if (localObject2 == null) {
+        return false;
       }
-      if (xil.a().size() != 0)
+      paramQQAppInterface = ((Context)localObject1).getApplicationContext().getPackageName();
+      if (TextUtils.isEmpty(paramQQAppInterface)) {
+        return false;
+      }
+      localObject1 = ((ActivityManager)localObject2).getRunningAppProcesses();
+      if (localObject1 == null) {
+        return false;
+      }
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localIterator = xil.a().iterator();
-        while (localIterator.hasNext())
+        localObject2 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
+        if ((((ActivityManager.RunningAppProcessInfo)localObject2).importance == 100) && (((ActivityManager.RunningAppProcessInfo)localObject2).processName != null))
         {
-          localStoryVideoItem = (StoryVideoItem)localIterator.next();
-          if (localStoryVideoItem.mPublishDate.equals(this.jdField_a_of_type_Xim.a.c))
+          if (((ActivityManager.RunningAppProcessInfo)localObject2).processName.equals(paramQQAppInterface + ":video")) {
+            return false;
+          }
+          if (!((ActivityManager.RunningAppProcessInfo)localObject2).processName.equals(paramQQAppInterface))
           {
-            yqp.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "add fail video %s", localStoryVideoItem);
-            paramList.add(localStoryVideoItem);
+            bool = ((ActivityManager.RunningAppProcessInfo)localObject2).processName.startsWith(paramQQAppInterface + ":");
+            if (!bool) {
+              break;
+            }
+          }
+          else
+          {
+            return true;
           }
         }
-        if (paramycp.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo.mVideoPullType != 1) {
-          break label264;
-        }
       }
     }
-    label264:
-    for (boolean bool = true;; bool = false)
+    catch (Exception paramQQAppInterface)
     {
-      Collections.sort(paramList, new ykd(bool));
-      localIterator = paramList.iterator();
-      paramList = new ArrayList(paramList.size());
-      while (localIterator.hasNext())
-      {
-        localStoryVideoItem = (StoryVideoItem)localIterator.next();
-        if (!paramList.contains(localStoryVideoItem)) {
-          paramList.add(localStoryVideoItem);
-        }
-      }
+      paramQQAppInterface.printStackTrace();
+      return false;
     }
-    paramycp.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo = ((yip)wpm.a(12)).a(1, paramycp.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo.feedId, paramycp.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo.mVideoSeq, paramList, paramycp.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo.mVideoNextCookie, paramycp.jdField_a_of_type_Boolean, paramycp.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo.mVideoPullType, true);
-    a(paramList, paramycp.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a(xjf paramxjf)
-  {
-    if (this.jdField_a_of_type_Xim.a == null)
-    {
-      a(new ErrorMessage(940001, "group info is null"), this.jdField_a_of_type_Xim);
-      return;
-    }
-    this.jdField_a_of_type_Xjf = paramxjf;
-    int i = xil.a(this.jdField_a_of_type_Xim, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo);
-    Object localObject = new ArrayList();
-    paramxjf = this.jdField_a_of_type_Yip.a(this.jdField_a_of_type_Xim.a.jdField_a_of_type_JavaLangString, i);
-    if ((paramxjf != null) && (paramxjf.mIsVideoEnd) && (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mForceNotUseVidCache))
-    {
-      localObject = paramxjf.mVideoItemList;
-      paramxjf = paramxjf.feedId;
-      yqp.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "return from cache %s", paramxjf);
-      a((List)localObject, paramxjf);
-      return;
-    }
-    a((List)localObject, paramxjf);
+    return false;
   }
 }
 

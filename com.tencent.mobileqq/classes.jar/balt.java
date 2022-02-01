@@ -1,36 +1,39 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.SystemClock;
 
 public class balt
 {
-  public ConcurrentHashMap<String, bali> a = new ConcurrentHashMap(10);
+  public long a;
+  private int[] a;
   
-  public bali a(SVHwEncoder paramSVHwEncoder, SessionInfo paramSessionInfo, int paramInt)
+  public balt()
   {
-    paramSVHwEncoder = new bali(paramSVHwEncoder, paramSessionInfo, paramInt);
-    this.a.put(paramSVHwEncoder.a, paramSVHwEncoder);
-    baln.a("VideoCompoundController", "newProcessor, key = " + paramSVHwEncoder.a);
-    return paramSVHwEncoder;
+    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 500, 700, 1000, 1500, 2100, 2800, 3500, 4200, 4800, 5000 };
   }
   
-  public bali a(String paramString)
+  public int a(int paramInt)
   {
-    baln.a("VideoCompoundController", "findProcessor, key = " + paramString);
-    if ((!this.a.isEmpty()) && (paramString != null) && (this.a.containsKey(paramString))) {
-      return (bali)this.a.get(paramString);
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfInt.length)
+    {
+      if (paramInt < this.jdField_a_of_type_ArrayOfInt[i]) {
+        return i;
+      }
+      i += 1;
     }
-    return null;
+    return 1;
   }
   
-  public boolean a(String paramString)
+  public boolean a()
   {
-    baln.a("VideoCompoundController", "removeProcessor, key = " + paramString);
-    if (paramString == null) {}
-    while (this.a.remove(paramString) == null) {
-      return false;
+    if (this.jdField_a_of_type_Long == 0L) {
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
     }
-    return true;
+    while (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long >= 75L)
+    {
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      return true;
+    }
+    return false;
   }
 }
 

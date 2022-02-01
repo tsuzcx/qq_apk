@@ -1,19 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class bhpz
-  implements DialogInterface.OnClickListener
+  implements bhso
 {
-  bhpz(bhpv parambhpv, int paramInt, String paramString) {}
+  bhpz(bhpy parambhpy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    bhpv.a(this.jdField_a_of_type_Bhpv, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    bhpy.a(this.a, bhsm.a(paramInt));
+    this.a.a.height = bhpy.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhpz
  * JD-Core Version:    0.7.0.1
  */

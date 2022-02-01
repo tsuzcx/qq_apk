@@ -1,14 +1,20 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
 
-final class bggb
-  extends View.AccessibilityDelegate
+public class bggb
+  extends BroadcastReceiver
 {
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public bggb(HWReciteItem paramHWReciteItem) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    paramAccessibilityNodeInfo.setVisibleToUser(false);
+    if (("com.tnecnet.mobileqq.homework.recite.stopAudio".equals(paramIntent.getAction())) && (HWReciteItem.a(this.a)) && (this.a.a != null) && (this.a.a.a != null))
+    {
+      this.a.b();
+      this.a.a.a.a();
+    }
   }
 }
 

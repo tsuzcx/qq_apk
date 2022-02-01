@@ -1,87 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.PopupWindow;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.qphone.base.util.QLog;
 
-public class auhb
-  implements View.OnClickListener
+class auhb
+  extends aavh
 {
-  public auhb(ForwardFileOption paramForwardFileOption, EditText paramEditText, String paramString1, String paramString2, String paramString3, ForwardFileInfo paramForwardFileInfo) {}
+  auhb(auha paramauha) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle)
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)localObject1);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(((String)localObject1).length());
-    if ((localObject1 == null) || (((String)localObject1).length() <= 0)) {
-      ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption, -6);
+    this.a.e = aunj.a(paramByteStringMicro1);
+    short s;
+    if ((paramBoolean) && (!TextUtils.isEmpty(this.a.e)))
+    {
+      QLog.d("TroopFileModel<FileAssistant>", 2, "downURL:" + this.a.e);
+      this.a.jdField_a_of_type_JavaLangString = paramString3;
+      this.a.b = ("" + paramInt3);
+      this.a.c = aunj.a(paramByteStringMicro1);
+      this.a.d = paramString4;
+      this.a.c = aunj.a(paramByteStringMicro1);
+      if ((!bgsk.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (!bgsk.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (paramBundle == null)) {
+        break label418;
+      }
+      paramString1 = paramBundle.getString("strHttpsDomain");
+      if (TextUtils.isEmpty(paramString1)) {
+        break label418;
+      }
+      s = (short)paramBundle.getInt("httpsPort", 0);
+      if (s != 0) {
+        break label413;
+      }
+      paramBoolean = true;
+      s = 443;
     }
-    String str;
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      aauw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString3, "" + paramInt3, this.a.c, aunj.c(this.a.jdField_a_of_type_Auei.a()), "/", paramString4, this.a.jdField_a_of_type_Auei.a(), new auhc(this, paramBoolean, paramString1, s));
+      do
+      {
+        return;
+        QLog.e("TroopFileModel<FileAssistant>", 1, "get preview url failed for troop, retCode[" + paramInt1 + "], retMeg[" + paramString1 + "]");
+        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.a.jdField_a_of_type_Auei.a().TroopUin, "-1", aunj.f(this.a.c()), "1");
+      } while (this.a.jdField_a_of_type_Augq == null);
+      this.a.jdField_a_of_type_Augq.a(paramInt1);
       return;
-      if (!((String)localObject1).matches("[^/\\\\\\\\<>*:?|\\\"]+"))
-      {
-        ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption, -7);
-      }
-      else
-      {
-        str = (String)localObject1 + this.jdField_a_of_type_JavaLangString;
-        if (!str.equals(this.b)) {
-          break;
-        }
-        bcst.b(null, "dc00898", "", "", "0X800AEEB", "0X800AEEB", 0, 0, "", "", "", "");
-        ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption).dismiss();
-      }
-    }
-    int i;
-    if (!str.equals(this.c)) {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo != null)
-      {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a();
-        i = ((String)localObject1).lastIndexOf('/');
-        if ((i <= -1) || (i >= ((String)localObject1).length())) {
-          break label395;
-        }
-      }
-    }
-    label395:
-    for (localObject1 = ((String)localObject1).substring(0, i + 1);; localObject1 = "")
-    {
-      localObject1 = new File((String)localObject1).listFiles();
-      if ((localObject1 != null) && (localObject1.length > 0))
-      {
-        int j = localObject1.length;
-        i = 0;
-        label253:
-        if (i < j)
-        {
-          Object localObject2 = localObject1[i];
-          if (localObject2.isDirectory()) {}
-          while (!localObject2.getName().toLowerCase().equals(str.toLowerCase()))
-          {
-            i += 1;
-            break label253;
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption.i;
-            break;
-          }
-          ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption, -3);
-          break;
-          this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption.l = false;
-        }
-      }
-      ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption).setText(str);
-      ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption, 1);
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption.l = true;
-      bcst.b(null, "dc00898", "", "", "0X800AEEB", "0X800AEEB", 0, 0, "", "", "", "");
-      ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption).dismiss();
-      break;
+      label413:
+      paramBoolean = true;
+      continue;
+      label418:
+      s = 0;
+      paramString1 = null;
+      paramBoolean = false;
     }
   }
 }

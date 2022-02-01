@@ -1,16 +1,16 @@
 package com.tencent.avgame.gameroom.seat;
 
-import mxl;
-import nbf;
+import myk;
+import ncs;
 
 public class SeatPresenterImp$1
   implements Runnable
 {
-  public SeatPresenterImp$1(nbf paramnbf) {}
+  public SeatPresenterImp$1(ncs paramncs) {}
   
   public void run()
   {
-    this.this$0.a(mxl.a().a());
+    this.this$0.a(myk.a().a());
   }
 }
 

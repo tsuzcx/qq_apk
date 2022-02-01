@@ -1,19 +1,18 @@
-import android.graphics.Rect;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-public class apcu
+public final class apcu
+  implements Parcelable.Creator<SosoInterface.SosoLocation>
 {
-  public float a;
-  public int a;
-  public Rect a;
-  
-  public apcu()
+  public SosoInterface.SosoLocation a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    return new SosoInterface.SosoLocation(paramParcel);
   }
   
-  public String toString()
+  public SosoInterface.SosoLocation[] a(int paramInt)
   {
-    return String.format("AIRect[%d,%.2f,%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Float.valueOf(this.jdField_a_of_type_Float), this.jdField_a_of_type_AndroidGraphicsRect });
+    return new SosoInterface.SosoLocation[paramInt];
   }
 }
 

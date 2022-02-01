@@ -1,49 +1,25 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-
-class aphs
-  implements INetInfoHandler
+public abstract class aphs
 {
-  aphs(aphi paramaphi) {}
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
   
-  public void onNetMobile2None()
+  public aphs(String paramString, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    QLog.e("ark.download.module", 1, "onNetMobile2None");
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    QLog.e("ark.download.module", 1, new Object[] { "onNetMobile2Wifi", paramString });
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    QLog.e("ark.download.module", 1, new Object[] { "ark.dctrl.onNetNone2Mobile", paramString });
-    paramString = BaseActivity.sTopActivity;
-    if ((aphi.a(this.a)) && (!aphi.b(this.a)) && (paramString != null))
-    {
-      paramString = paramString.getString(2131690118);
-      if (aphi.a(this.a, paramString)) {
-        aphi.b(this.a, true);
-      }
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    QLog.e("ark.download.module", 1, new Object[] { "onNetNone2Wifi", paramString });
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    QLog.e("ark.download.module", 1, new Object[] { "onNetWifi2Mobile", paramString });
-  }
-  
-  public void onNetWifi2None()
-  {
-    QLog.e("ark.download.module", 1, "onNetWifi2None");
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = paramFloat3;
   }
 }
 

@@ -1,6 +1,6 @@
 package dov.com.qq.im;
 
-import bojo;
+import bplj;
 import com.tencent.qphone.base.util.QLog;
 
 class QIMEffectCameraCaptureUnit$4

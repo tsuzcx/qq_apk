@@ -12,7 +12,7 @@ public class TracerouteProbe
   public static final String PROBE_NAME = "Traceroute_Probe";
   private TracerouteProbe.TraceroutCallback cb;
   private String mHost = "";
-  private String mIp;
+  private String mIp = null;
   private int mMaxTTL = 30;
   private int mTimeout = 10;
   
@@ -90,7 +90,7 @@ public class TracerouteProbe
     //   10: ldc 109
     //   12: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   15: aload_0
-    //   16: getfield 37	com/tencent/mobileqq/highway/netprobe/TracerouteProbe:mTimeout	I
+    //   16: getfield 39	com/tencent/mobileqq/highway/netprobe/TracerouteProbe:mTimeout	I
     //   19: invokevirtual 116	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   22: ldc 118
     //   24: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;

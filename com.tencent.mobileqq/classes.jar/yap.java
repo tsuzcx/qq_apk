@@ -1,20 +1,36 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 public class yap
-  extends Handler
+  extends JobSegment<List<Bitmap>, Bitmap>
 {
-  private yap(QQStoryMainController paramQQStoryMainController) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString = "story.icon.BitmapListToIconSegment";
   
-  public void handleMessage(Message paramMessage)
+  public yap(Context paramContext, String paramString, int paramInt)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "[" + paramString + "]");
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected void a(JobContext paramJobContext, List<Bitmap> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-    default: 
+      notifyError(new ErrorMessage(-1, "bitmap list should not be empty"));
       return;
     }
-    this.a.a.a(false);
+    paramJobContext = (Bitmap[])paramList.toArray(new Bitmap[paramList.size()]);
+    paramList = bhib.a(this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888, paramJobContext);
+    yaq.b(this.jdField_a_of_type_JavaLangString, "result bitmap = %s, child count = %d", paramList, Integer.valueOf(paramJobContext.length));
+    notifyResult(paramList);
   }
 }
 

@@ -1,6 +1,8 @@
-public abstract interface aslo
+class aslo
 {
-  public abstract void a(int paramInt, ashh paramashh, String paramString1, String paramString2);
+  public int a;
+  public String a;
+  public String b;
 }
 
 

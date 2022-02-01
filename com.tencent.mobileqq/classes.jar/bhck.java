@@ -1,45 +1,25 @@
-import android.animation.ObjectAnimator;
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.SystemClock;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment;
-import com.tencent.mobileqq.vas.qvip.view.QQVipWebview;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Handler;
 
-public class bhck
-  extends bhcw
+class bhck
+  implements bhci
 {
-  public bhck(QQVipFeedWedFragment paramQQVipFeedWedFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
+  bhck(bhcj parambhcj) {}
+  
+  public void a()
   {
-    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView);
+    bhcj.a(this.a).sendEmptyMessage(1);
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void b()
   {
-    super.onPageFinished(paramWebView, paramString);
-    QQVipFeedWedFragment.a(this.a).onPageFinish(paramString);
-    paramWebView = ObjectAnimator.ofFloat(QQVipFeedWedFragment.a(this.a), "alpha", new float[] { 0.0F, 1.0F });
-    paramWebView.setDuration(300L);
-    paramWebView.start();
-    QLog.d("QQVipFeedWedFragment", 1, "onPageFinished : " + (SystemClock.elapsedRealtime() - this.a.b));
+    bhcj.a(this.a).sendEmptyMessage(0);
   }
   
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public void c()
   {
-    this.a.b = SystemClock.elapsedRealtime();
-    this.a.c = (this.a.b - this.a.a);
-    QLog.d("QQVipFeedWedFragment", 1, "loadUrlTime : " + this.a.c);
-    QQVipFeedWedFragment.a(this.a).setVisibility(0);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    return super.shouldOverrideUrlLoading(paramWebView, paramString);
+    if (bhcj.a(this.a) != null) {
+      bhcj.a(this.a).b();
+    }
   }
 }
 

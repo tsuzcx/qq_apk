@@ -1,42 +1,126 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.util.DisplayMetrics;
 import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import qqcircle.QQCirclePrivateMsgShow.UserPMGiftInfo;
+import java.util.LinkedList;
 
 public class vjl
 {
-  private static volatile vjl jdField_a_of_type_Vjl;
-  private ConcurrentHashMap<String, QQCirclePrivateMsgShow.UserPMGiftInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private final int jdField_a_of_type_Int;
+  private final LinkedList<Bitmap> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private int b;
+  private int c;
+  private int d;
   
-  public static vjl a()
+  public vjl(Context paramContext)
   {
-    if (jdField_a_of_type_Vjl == null) {}
+    paramContext = paramContext.getResources().getDisplayMetrics();
+    int i = paramContext.widthPixels;
+    this.jdField_a_of_type_Int = (paramContext.heightPixels * i * 8);
+  }
+  
+  private void b(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_JavaUtilLinkedList.remove(paramBitmap);
+    if (paramBitmap != null)
+    {
+      this.b -= paramBitmap.getRowBytes() * paramBitmap.getHeight();
+      if (!paramBitmap.isRecycled()) {
+        paramBitmap.recycle();
+      }
+    }
+  }
+  
+  public Bitmap a(int paramInt1, int paramInt2)
+  {
+    this.c += 1;
+    Object localObject1 = null;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+    Object localObject2;
+    if (localIterator.hasNext())
+    {
+      Bitmap localBitmap = (Bitmap)localIterator.next();
+      if ((localBitmap.getWidth() >= paramInt1) && (localBitmap.getHeight() >= paramInt2)) {
+        if (localObject1 == null) {
+          localObject2 = localBitmap;
+        }
+      }
+      for (;;)
+      {
+        localObject1 = localObject2;
+        break;
+        localObject2 = localBitmap;
+        if (localObject1.getHeight() * localObject1.getWidth() < localBitmap.getHeight() * localBitmap.getWidth()) {
+          localObject2 = localObject1;
+        }
+      }
+    }
+    if (localObject1 != null)
+    {
+      this.jdField_a_of_type_JavaUtilLinkedList.remove(localObject1);
+      this.b -= localObject1.getRowBytes() * localObject1.getHeight();
+      return localObject1;
+    }
     try
     {
-      if (jdField_a_of_type_Vjl == null) {
-        jdField_a_of_type_Vjl = new vjl();
-      }
-      return jdField_a_of_type_Vjl;
+      this.d += 1;
+      localObject2 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+      return localObject2;
     }
-    finally {}
+    catch (OutOfMemoryError localOutOfMemoryError) {}
+    return localObject1;
   }
   
-  public QQCirclePrivateMsgShow.UserPMGiftInfo a(String paramString)
+  public void a()
   {
-    return (QQCirclePrivateMsgShow.UserPMGiftInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-  }
-  
-  public void a(List<QQCirclePrivateMsgShow.UserPMGiftInfo> paramList)
-  {
-    QLog.d("QCircleChatGiftManager", 1, "updateGiftInfo");
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+    while (localIterator.hasNext())
     {
-      QQCirclePrivateMsgShow.UserPMGiftInfo localUserPMGiftInfo = (QQCirclePrivateMsgShow.UserPMGiftInfo)paramList.next();
-      if (localUserPMGiftInfo != null) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localUserPMGiftInfo.uid.get(), localUserPMGiftInfo);
+      Bitmap localBitmap = (Bitmap)localIterator.next();
+      if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+        localBitmap.recycle();
+      }
+    }
+    this.jdField_a_of_type_JavaUtilLinkedList.clear();
+    this.b = 0;
+    this.c = 0;
+    this.d = 0;
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {}
+    for (;;)
+    {
+      return;
+      this.b += paramBitmap.getRowBytes() * paramBitmap.getHeight();
+      this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramBitmap);
+      while (this.b > this.jdField_a_of_type_Int)
+      {
+        paramBitmap = null;
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        if (localIterator.hasNext())
+        {
+          Bitmap localBitmap2 = (Bitmap)localIterator.next();
+          Bitmap localBitmap1;
+          if (paramBitmap == null) {
+            localBitmap1 = localBitmap2;
+          }
+          for (;;)
+          {
+            paramBitmap = localBitmap1;
+            break;
+            localBitmap1 = localBitmap2;
+            if (paramBitmap.getHeight() * paramBitmap.getWidth() < localBitmap2.getHeight() * localBitmap2.getWidth()) {
+              localBitmap1 = paramBitmap;
+            }
+          }
+        }
+        if (paramBitmap != null) {
+          b(paramBitmap);
+        }
       }
     }
   }

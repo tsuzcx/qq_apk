@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import anqv;
+import aodb;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
 class NearbyActivity$2
@@ -11,7 +11,7 @@ class NearbyActivity$2
   public void run()
   {
     this.this$0.a.c();
-    ((anqv)this.this$0.a.a(3)).b(this.this$0.a.getCurrentAccountUin());
+    ((aodb)this.this$0.a.a(3)).b(this.this$0.a.getCurrentAccountUin());
   }
 }
 

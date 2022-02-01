@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import dov.com.qq.im.ae.view.TabLayout;
 
-class bpbd
-  implements bpfb
+public class bpbd
+  implements ViewPager.OnPageChangeListener
 {
-  bpbd(bpaz parambpaz) {}
+  public bpbd(TabLayout paramTabLayout) {}
   
-  public void a() {}
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public void a(TroopBarPOI paramTroopBarPOI)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditProviderPart", 2, "onSelectLocation " + paramTroopBarPOI);
-    }
-    bpaz.a(this.a).setLocation(paramTroopBarPOI);
+    this.a.a(paramInt);
   }
 }
 

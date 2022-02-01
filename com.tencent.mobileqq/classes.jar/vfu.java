@@ -1,286 +1,247 @@
-import android.graphics.Paint;
-import com.etrump.mixlayout.ETEngine;
-import com.etrump.mixlayout.ETFont;
+import android.animation.ObjectAnimator;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewStub;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
+import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
+import com.tencent.biz.qqcircle.requests.QCircleGetRankingListRequest;
+import com.tencent.biz.qqcircle.widgets.QCircleFuelTopView;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.subscribe.event.TagDescPublishEvent;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import feedcloud.FeedCloudMeta.StRankingItem;
+import feedcloud.FeedCloudMeta.StTagInfo;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudRead.StGetRankingListRsp;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vfu
+  extends vbk
+  implements aaam, View.OnClickListener
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static vfu jdField_a_of_type_Vfu;
-  private ETEngine jdField_a_of_type_ComEtrumpMixlayoutETEngine;
-  public AtomicBoolean a;
-  private ETEngine b;
-  public AtomicBoolean b;
-  private ETEngine c;
-  public AtomicBoolean c;
-  public AtomicBoolean d = new AtomicBoolean(false);
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private QCircleFuelTopView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelTopView;
+  private List<FeedCloudMeta.StRankingItem> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private TextView b;
   
-  public vfu()
+  private void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    aaak.a().a(this);
   }
   
-  public static vfu a()
+  private void a(View paramView, FeedCloudMeta.StTagInfo paramStTagInfo)
   {
-    if (jdField_a_of_type_Vfu == null) {
-      jdField_a_of_type_Vfu = new vfu();
-    }
-    return jdField_a_of_type_Vfu;
+    paramView = ((ViewStub)paramView.findViewById(2131381256)).inflate();
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369343));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370259));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380119));
+    this.b = ((TextView)paramView.findViewById(2131380120));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376860));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelTopView = new QCircleFuelTopView(a());
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelTopView.setReportBean(a());
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelTopView.setParentPart(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStTagInfo.tagName.get());
   }
   
-  private ETEngine d()
+  private void a(FeedCloudMeta.StTagInfo paramStTagInfo)
   {
-    if (d()) {
-      return ETEngine.getInstance();
+    paramStTagInfo = new QCircleGetRankingListRequest(paramStTagInfo.tagName.get());
+    VSNetworkHelper.a().a(paramStTagInfo, new vfv(this, paramStTagInfo));
+  }
+  
+  private void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetRankingListRsp paramStGetRankingListRsp)
+  {
+    if ((paramBoolean) && (paramLong == 0L))
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramStGetRankingListRsp.items.get());
+      if (paramStGetRankingListRsp.items.size() >= 3)
+      {
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelTopView.a(paramStGetRankingListRsp);
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
+      }
     }
+  }
+  
+  private void b()
+  {
+    vtr.a(89, 1, a(), b());
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FeedCloudMeta.StRankingItem localStRankingItem = (FeedCloudMeta.StRankingItem)localIterator.next();
+      vtr.a(89, 8, a(), b(), localStRankingItem.user.id.get());
+      if (localStRankingItem.user.followState.get() != 1) {
+        vtr.a(89, 9, a(), b(), localStRankingItem.user.id.get());
+      }
+    }
+    g();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow == null) {
+      d();
+    }
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAsDropDown(this.b, 0, vwt.a(20.0F));
+    e();
+  }
+  
+  private void c()
+  {
+    h();
+    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing())) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    }
+    f();
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelTopView, -1, -2);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131755895);
+  }
+  
+  private void e()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "alpha", new float[] { 0.0F, 1.0F }).setDuration(250L).start();
+    }
+  }
+  
+  private void f()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+    {
+      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "alpha", new float[] { 1.0F, 0.0F }).setDuration(200L);
+      localObjectAnimator.addListener(new vfw(this));
+      localObjectAnimator.start();
+    }
+  }
+  
+  private void g()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "rotation", new float[] { 0.0F, 180.0F }).setDuration(250L).start();
+    }
+  }
+  
+  private void h()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "rotation", new float[] { 180.0F, 0.0F }).setDuration(200L).start();
+    }
+  }
+  
+  public ReportExtraTypeInfo a()
+  {
+    return (ReportExtraTypeInfo)b("get_report_extra_type_info", "");
+  }
+  
+  public String a()
+  {
     return null;
   }
   
-  private boolean d()
+  protected void a(View paramView)
   {
-    boolean bool = true;
-    if ((!gk.b()) && (gk.a())) {
-      bool = gk.c();
-    }
-    while (gk.a()) {
-      return bool;
-    }
-    blya.a().a(null);
-    QLog.d("ETSpace", 1, "initEngine but libvipfont.so didn't download, start download.");
-    return false;
-  }
-  
-  /* Error */
-  public float a(String paramString, int paramInt1, int paramInt2, ETFont paramETFont, Paint paramPaint)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 74	vfu:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   6: ifnull +27 -> 33
-    //   9: aload_0
-    //   10: getfield 74	vfu:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   13: aload_1
-    //   14: iload_2
-    //   15: iload_3
-    //   16: aload 4
-    //   18: aload 5
-    //   20: invokevirtual 78	com/etrump/mixlayout/ETEngine:native_spaceMeasureText	(Ljava/lang/String;IILcom/etrump/mixlayout/ETFont;Landroid/graphics/Paint;)I
-    //   23: istore_2
-    //   24: iload_2
-    //   25: i2f
-    //   26: fstore 6
-    //   28: aload_0
-    //   29: monitorexit
-    //   30: fload 6
-    //   32: freturn
-    //   33: fconst_0
-    //   34: fstore 6
-    //   36: goto -8 -> 28
-    //   39: astore_1
-    //   40: aload_0
-    //   41: monitorexit
-    //   42: aload_1
-    //   43: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	44	0	this	vfu
-    //   0	44	1	paramString	String
-    //   0	44	2	paramInt1	int
-    //   0	44	3	paramInt2	int
-    //   0	44	4	paramETFont	ETFont
-    //   0	44	5	paramPaint	Paint
-    //   26	9	6	f	float
-    // Exception table:
-    //   from	to	target	type
-    //   2	24	39	finally
-  }
-  
-  public int a(String paramString, int paramInt1, int paramInt2, ETFont paramETFont, Paint paramPaint, float[] paramArrayOfFloat, boolean paramBoolean)
-  {
-    int j = 0;
-    if (paramBoolean) {}
-    int[] arrayOfInt;
-    int i;
-    try
+    super.a(paramView);
+    FeedCloudMeta.StTagInfo localStTagInfo = ((QCircleInitBean)a().getIntent().getSerializableExtra("key_bundle_common_init_bean")).getTagInfo();
+    if (localStTagInfo.has())
     {
-      for (ETEngine localETEngine = this.jdField_b_of_type_ComEtrumpMixlayoutETEngine; localETEngine != null; localETEngine = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine)
-      {
-        arrayOfInt = new int[paramArrayOfFloat.length];
-        i = localETEngine.native_spaceGetTextWidths(paramString, paramInt1, paramInt2, paramETFont, paramPaint, arrayOfInt);
-        paramInt2 = j;
-        break label70;
-      }
-      paramInt1 = 0;
-      return paramInt1;
+      a(paramView, localStTagInfo);
+      a();
+      a(localStTagInfo);
     }
-    finally {}
-    for (;;)
-    {
-      label70:
-      paramInt1 = i;
-      if (paramInt2 >= i) {
-        break;
-      }
-      paramArrayOfFloat[paramInt2] = arrayOfInt[paramInt2];
-      paramInt2 += 1;
-    }
-  }
-  
-  /* Error */
-  public android.graphics.Paint.FontMetrics a(ETFont paramETFont)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 74	vfu:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   6: ifnull +35 -> 41
-    //   9: aload_1
-    //   10: ifnull +31 -> 41
-    //   13: new 88	android/graphics/Paint$FontMetrics
-    //   16: dup
-    //   17: invokespecial 89	android/graphics/Paint$FontMetrics:<init>	()V
-    //   20: astore_3
-    //   21: aload_0
-    //   22: getfield 74	vfu:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   25: aload_3
-    //   26: aload_1
-    //   27: invokevirtual 93	com/etrump/mixlayout/ETEngine:native_getFontMetrics	(Landroid/graphics/Paint$FontMetrics;Lcom/etrump/mixlayout/ETFont;)Z
-    //   30: istore_2
-    //   31: iload_2
-    //   32: ifeq +9 -> 41
-    //   35: aload_3
-    //   36: astore_1
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: aload_1
-    //   40: areturn
-    //   41: aconst_null
-    //   42: astore_1
-    //   43: goto -6 -> 37
-    //   46: astore_1
-    //   47: aload_0
-    //   48: monitorexit
-    //   49: aload_1
-    //   50: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	51	0	this	vfu
-    //   0	51	1	paramETFont	ETFont
-    //   30	2	2	bool	boolean
-    //   20	16	3	localFontMetrics	android.graphics.Paint.FontMetrics
-    // Exception table:
-    //   from	to	target	type
-    //   2	9	46	finally
-    //   13	31	46	finally
-  }
-  
-  public ETEngine a()
-  {
-    return this.jdField_a_of_type_ComEtrumpMixlayoutETEngine;
   }
   
   public boolean a()
   {
-    return (b()) && (c());
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_ComEtrumpMixlayoutETEngine != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
-      return true;
-    }
-    boolean bool;
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
     {
-      if (this.jdField_a_of_type_ComEtrumpMixlayoutETEngine == null) {
-        this.jdField_a_of_type_ComEtrumpMixlayoutETEngine = d();
-      }
-      ETEngine localETEngine = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine;
-      if (localETEngine == null) {}
-    }
-    return false;
-  }
-  
-  public ETEngine b()
-  {
-    b();
-    return this.jdField_b_of_type_ComEtrumpMixlayoutETEngine;
-  }
-  
-  public boolean b()
-  {
-    if ((this.jdField_b_of_type_ComEtrumpMixlayoutETEngine != null) && (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
+      c();
       return true;
+    }
+    return super.a();
+  }
+  
+  protected String b()
+  {
+    return "fuellist";
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(TagDescPublishEvent.class);
+    return localArrayList;
+  }
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    super.onActivityDestroyed(paramActivity);
+    aaak.a().b(this);
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    int i = paramView.getId();
+    QLog.d("QCircleTagHeaderPart", 1, "onClick , view id: " + i);
+    switch (i)
+    {
     }
     for (;;)
     {
-      boolean bool;
-      synchronized (jdField_a_of_type_JavaLangObject)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      vtr.a(88, 2, a(), b());
+      if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
       {
-        ETEngine localETEngine;
-        if (this.jdField_b_of_type_ComEtrumpMixlayoutETEngine == null)
-        {
-          if (d())
-          {
-            localETEngine = ETEngine.getInstanceForSpace();
-            this.jdField_b_of_type_ComEtrumpMixlayoutETEngine = localETEngine;
-          }
-        }
-        else
-        {
-          localETEngine = this.jdField_b_of_type_ComEtrumpMixlayoutETEngine;
-          if (localETEngine == null) {
-            break;
-          }
+        c();
+      }
+      else
+      {
+        b();
+        continue;
+        if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing())) {
+          c();
         }
       }
-      Object localObject2 = null;
     }
-    return false;
   }
   
-  public ETEngine c()
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    c();
-    return this.jdField_c_of_type_ComEtrumpMixlayoutETEngine;
-  }
-  
-  public boolean c()
-  {
-    if ((this.jdField_c_of_type_ComEtrumpMixlayoutETEngine != null) && (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
-      return true;
-    }
-    for (;;)
+    if ((paramSimpleBaseEvent instanceof TagDescPublishEvent))
     {
-      boolean bool;
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        ETEngine localETEngine;
-        if (this.jdField_c_of_type_ComEtrumpMixlayoutETEngine == null)
-        {
-          if (d())
-          {
-            localETEngine = ETEngine.getInstanceForAnimation();
-            this.jdField_c_of_type_ComEtrumpMixlayoutETEngine = localETEngine;
-          }
-        }
-        else
-        {
-          localETEngine = this.jdField_c_of_type_ComEtrumpMixlayoutETEngine;
-          if (localETEngine == null) {
-            break;
-          }
-        }
+      paramSimpleBaseEvent = (TagDescPublishEvent)paramSimpleBaseEvent;
+      if (!TextUtils.isEmpty(paramSimpleBaseEvent.mTagDesc)) {
+        this.b.setText(paramSimpleBaseEvent.mTagDesc);
       }
-      Object localObject2 = null;
     }
-    return false;
   }
 }
 

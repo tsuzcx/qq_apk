@@ -35,13 +35,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import mqq.util.WeakReference;
-import nmb;
-import oat;
+import nnw;
+import ocd;
 import org.json.JSONException;
 import org.json.JSONObject;
-import phr;
-import phs;
-import zvc;
+import paj;
+import pak;
+import zyx;
 
 public class WxShareHelperFromReadInjoy
   extends BroadcastReceiver
@@ -52,7 +52,7 @@ public class WxShareHelperFromReadInjoy
   private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), "wxeaef4303c20f3dea", true);
   private Long jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
   private String jdField_a_of_type_JavaLangString = "";
-  private ArrayList<phs> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+  private ArrayList<pak> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
   private WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference;
   
   private WxShareHelperFromReadInjoy()
@@ -94,7 +94,7 @@ public class WxShareHelperFromReadInjoy
     {
       localJSONObject.put("from_source", paramString);
       localJSONObject.put("from_rowkey", localObject);
-      oat.a(null, "CliOper", "", "", "0X800A7BF", "0X800A7BF", 0, 0, "", "", "", localJSONObject.toString(), false);
+      ocd.a(null, "CliOper", "", "", "0X800A7BF", "0X800A7BF", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (JSONException paramString)
@@ -105,8 +105,8 @@ public class WxShareHelperFromReadInjoy
   
   private boolean a(SendMessageToWX.Req paramReq)
   {
-    phr localphr = new phr(this);
-    WXShareHelper.a().a(localphr);
+    paj localpaj = new paj(this);
+    WXShareHelper.a().a(localpaj);
     return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(paramReq);
   }
   
@@ -124,7 +124,7 @@ public class WxShareHelperFromReadInjoy
     if (paramBoolean2)
     {
       Bitmap localBitmap = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, 100, 100);
-      localObject1 = nmb.a(localBitmap);
+      localObject1 = nnw.a(localBitmap);
       localBitmap.recycle();
     }
     for (;;)
@@ -136,7 +136,7 @@ public class WxShareHelperFromReadInjoy
       }
       paramBitmap.recycle();
       return localObject1;
-      localObject1 = nmb.a((Bitmap)localObject2);
+      localObject1 = nnw.a((Bitmap)localObject2);
     }
   }
   
@@ -184,7 +184,7 @@ public class WxShareHelperFromReadInjoy
   {
     if (TextUtils.isEmpty(paramString))
     {
-      zvc.a(1, 2131695773);
+      zyx.a(1, 2131695816);
       return;
     }
     WXImageObject localWXImageObject = new WXImageObject();
@@ -240,12 +240,12 @@ public class WxShareHelperFromReadInjoy
     }
   }
   
-  public void a(phs paramphs)
+  public void a(pak parampak)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramphs)) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramphs);
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parampak)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(parampak);
       }
       return;
     }
@@ -285,11 +285,11 @@ public class WxShareHelperFromReadInjoy
     c(paramString1, paramString2, paramBitmap, paramString3, paramString4, "/pages/index/index?share=1&share_type=1&channel_id=10&rowkey=" + paramString5);
   }
   
-  public void b(phs paramphs)
+  public void b(pak parampak)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramphs);
+      this.jdField_a_of_type_JavaUtilArrayList.remove(parampak);
       return;
     }
   }
@@ -359,7 +359,7 @@ public class WxShareHelperFromReadInjoy
         int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
         while (i >= 0)
         {
-          ((phs)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramBaseResp);
+          ((pak)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramBaseResp);
           i -= 1;
         }
         return;

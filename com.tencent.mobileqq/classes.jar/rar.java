@@ -1,99 +1,86 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketPopupTips.1;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketPopupView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 
 public class rar
-  extends PopupWindow
-  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 17;
-  private RIJRedPacketPopupView jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView = (RIJRedPacketPopupView)getContentView();
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b;
+  private long[] jdField_a_of_type_ArrayOfLong = new long[9];
+  private long[] b = new long[9];
+  private long[] c = new long[9];
+  private long[] d = new long[9];
+  private long[] e = new long[9];
+  private long[] f = new long[9];
   
-  public rar(Context paramContext)
-  {
-    super(new RIJRedPacketPopupView(paramContext), -2, -2);
-    a();
-  }
+  public rar(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void a()
+  public void a(int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView.b(false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView.a(false);
-    setAnimationStyle(2131755844);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView.setText(paramString);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView.b(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView.a(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView.setOnCloseIconClickListener(this);
-    setAnimationStyle(2131755845);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean isShowing()
-  {
-    return super.isShowing();
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      dismiss();
+    if (paramInt < 9) {
+      this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
     }
   }
   
-  public void showAsDropDown(View paramView)
+  public long[] a()
   {
-    showAsDropDown(paramView, 0, 0);
+    return this.c;
   }
   
-  public void showAsDropDown(View paramView, int paramInt1, int paramInt2)
+  public void b(int paramInt, long paramLong)
   {
-    int i = 0;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView.measure(0, 0);
-    if (this.jdField_a_of_type_Int == 17) {
-      i = (-this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView.getMeasuredWidth() + paramView.getWidth()) / 2;
+    if (paramInt < 9) {
+      this.b[paramInt] = paramLong;
     }
-    for (;;)
-    {
-      super.showAsDropDown(paramView, i + paramInt1, paramInt2);
-      if (this.jdField_a_of_type_Boolean) {
-        ThreadManager.getUIHandler().postDelayed(new RIJRedPacketPopupTips.1(this), this.b);
-      }
-      return;
-      if (this.jdField_a_of_type_Int == 3) {
-        i = -this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView.getMeasuredWidth() + paramView.getWidth();
-      }
+  }
+  
+  public long[] b()
+  {
+    return this.d;
+  }
+  
+  public void c(int paramInt, long paramLong)
+  {
+    if (paramInt < 9) {
+      this.c[paramInt] = paramLong;
     }
+  }
+  
+  public long[] c()
+  {
+    return this.b;
+  }
+  
+  public void d(int paramInt, long paramLong)
+  {
+    if (paramInt < 9) {
+      this.d[paramInt] = paramLong;
+    }
+  }
+  
+  public long[] d()
+  {
+    return this.jdField_a_of_type_ArrayOfLong;
+  }
+  
+  public void e(int paramInt, long paramLong)
+  {
+    if (paramInt < 9) {
+      this.e[paramInt] = paramLong;
+    }
+  }
+  
+  public long[] e()
+  {
+    return this.f;
+  }
+  
+  public void f(int paramInt, long paramLong)
+  {
+    if (paramInt < 9) {
+      this.f[paramInt] = paramLong;
+    }
+  }
+  
+  public long[] f()
+  {
+    return this.e;
   }
 }
 

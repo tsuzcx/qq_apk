@@ -1,20 +1,10 @@
-import android.text.TextUtils;
-
-public class bbod
+public abstract interface bbod
 {
-  public String a;
-  public String b;
+  public abstract void a(long paramLong);
   
-  public bbod(String paramString1, String paramString2)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
+  public abstract void a(long paramLong, int paramInt1, int paramInt2);
   
-  public boolean a()
-  {
-    return !TextUtils.isEmpty(this.a);
-  }
+  public abstract void a(Object paramObject);
 }
 
 

@@ -1,31 +1,32 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.util.Log;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 
-public class ugw
-  implements DownloadListener
+final class ugw
+  implements DialogInterface.OnClickListener
 {
-  public void installSucceed(String paramString1, String paramString2) {}
+  ugw(Activity paramActivity, WSDownloadParams paramWSDownloadParams) {}
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2) {}
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList) {}
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo) {}
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if ((paramDialogInterface instanceof ugs)) {
+      ugs.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams);
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      ugs.a(125, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams);
+      unx.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, false, true);
+      return;
+      Log.e("weishi-808", "dialog type is error");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ugw
  * JD-Core Version:    0.7.0.1
  */

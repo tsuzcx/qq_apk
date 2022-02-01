@@ -1,39 +1,13 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class ajsv
-  extends bfss
+class ajsv
+  implements ajwk
 {
-  public ajsv(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ajsv(ajst paramajst) {}
   
-  public void a(int paramInt, String paramString)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList error");
-    }
-    ChatHistoryTroopMemberFragment.a(this.a, true);
-    if (ChatHistoryTroopMemberFragment.b(this.a))
-    {
-      paramString = this.a.b.obtainMessage(12, null);
-      this.a.b.sendMessage(paramString);
-    }
-  }
-  
-  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList");
-    }
-    ChatHistoryTroopMemberFragment.a(this.a, paramArrayOfLong1);
-    ChatHistoryTroopMemberFragment.b(this.a, paramArrayOfLong2);
-    ChatHistoryTroopMemberFragment.c(this.a, paramArrayOfLong3);
-    ChatHistoryTroopMemberFragment.a(this.a, true);
-    if (ChatHistoryTroopMemberFragment.b(this.a))
-    {
-      paramArrayOfLong1 = this.a.b.obtainMessage(12, null);
-      this.a.b.sendMessage(paramArrayOfLong1);
-    }
+    this.a.a.sendEmptyMessageDelayed(7, 100L);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.open.agent;
 
 import android.graphics.Bitmap;
-import biyc;
+import bjzb;
 
 class OpenAuthorityFragment$9
   implements Runnable

@@ -1,36 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.ChatSettingForTroop.51;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class adxt
-  implements DialogInterface.OnClickListener
+class adxt
+  implements bikc
 {
-  public adxt(ChatSettingForTroop.51 param51) {}
+  private final WeakReference<adxp> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  adxt(adxp paramadxp)
   {
-    if (paramInt == 1)
-    {
-      this.a.this$0.a.cancel();
-      return;
-    }
-    try
-    {
-      ForwardSdkShareOption.a(this.a.this$0, true, "action_game_join_group", Long.valueOf(this.a.this$0.d).longValue(), -1, this.a.a);
-      this.a.this$0.a.cancel();
-      this.a.this$0.finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        QLog.e("Q.chatopttroop", 1, "showAlertDlg error = " + paramDialogInterface);
+    this.a = new WeakReference(paramadxp);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+      if (QLog.isColorLevel()) {
+        QLog.i("AutoLoginHelper", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
       }
     }
+    adxp localadxp;
+    do
+    {
+      return;
+      localadxp = (adxp)this.a.get();
+    } while (localadxp == null);
+    localadxp.a(paramString, paramBoolean);
   }
 }
 

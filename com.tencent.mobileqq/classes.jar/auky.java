@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardStructingMsgOption;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class auky
-  implements View.OnClickListener
+public abstract interface auky<M>
 {
-  public auky(ForwardStructingMsgOption paramForwardStructingMsgOption) {}
-  
-  public void onClick(View paramView)
-  {
-    ForwardStructingMsgOption.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(List<M> paramList, int paramInt, aule paramaule);
 }
 
 

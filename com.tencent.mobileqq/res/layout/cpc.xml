@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.subscribe.widget.ShadowCardView android:layout_gravity="center" android:id="@id/n8q" android:layout_width="100.0dip" android:layout_height="36.0dip" app:shadowBlur="8.0dip" app:shadowBottomHeight="0.0dip" app:shadowCardColor="#b3000000" app:shadowCardOffsetX="0.0dip" app:shadowCardOffsetY="0.0dip" app:shadowRightHeight="0.0dip" app:shadowRound="8.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="14.0dip" android:textColor="#e6ffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/mk1" android:layout_width="100.0dip" android:layout_height="36.0dip" android:text="@string/wqn" />
-</com.tencent.biz.subscribe.widget.ShadowCardView>
+<LinearLayout android:id="@id/nkw" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="52.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <ImageView android:id="@id/du6" android:background="@drawable/gnv" android:padding="14.0dip" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/gmt" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="@color/bp" android:id="@id/kbs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="咖啡瘾者" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/mxa" android:background="@drawable/gnv" android:padding="14.0dip" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/gnl" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

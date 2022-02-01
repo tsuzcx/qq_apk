@@ -1,31 +1,52 @@
-import android.graphics.Canvas;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bcnb
 {
-  public boolean d = true;
-  public boolean e = true;
-  public int f;
-  public boolean f;
-  public int g;
+  static bcnb jdField_a_of_type_Bcnb;
+  public String a;
+  ArrayList<Entity> jdField_a_of_type_JavaUtilArrayList = null;
+  HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public boolean a;
+  public boolean b = true;
+  public boolean c = false;
   
-  bcnb(TCProgressBar paramTCProgressBar)
+  bcnb()
   {
-    this.jdField_f_of_type_Boolean = false;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = "0";
   }
   
-  void a(Canvas paramCanvas)
+  public static bcnb a()
   {
-    this.jdField_f_of_type_Boolean = false;
-  }
-  
-  boolean a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
+    try
+    {
+      if (jdField_a_of_type_Bcnb == null) {
+        jdField_a_of_type_Bcnb = new bcnb();
+      }
+      bcnb localbcnb = jdField_a_of_type_Bcnb;
+      return localbcnb;
     }
-    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
+    finally {}
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
   }
 }
 

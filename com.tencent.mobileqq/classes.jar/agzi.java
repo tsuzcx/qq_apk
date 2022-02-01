@@ -1,13 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class agzi
-  implements ahbm
+class agzi
+  implements DialogInterface.OnClickListener
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    return atcb.a(paramQQAppInterface, paramChatMessage);
-  }
+  agzi(agzf paramagzf) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

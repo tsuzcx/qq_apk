@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import qqcircle.QQCircleReport.SingleDcData;
-import vrf;
-import vri;
-import vrl;
+import vtq;
+import vtt;
+import vtw;
 
 public final class QCircleLpReportDc05504$1
   implements Runnable
@@ -17,26 +17,26 @@ public final class QCircleLpReportDc05504$1
   
   public void run()
   {
-    Object localObject = new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { vri.a("touin", this.jdField_a_of_type_JavaLangString), vri.a("actiontype", String.valueOf(this.jdField_a_of_type_Int)), vri.a("subactiontype", String.valueOf(this.b)), vri.a("thr_action", String.valueOf(this.c)) }));
+    Object localObject = new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("touin", this.jdField_a_of_type_JavaLangString), vtt.a("actiontype", String.valueOf(this.jdField_a_of_type_Int)), vtt.a("subactiontype", String.valueOf(this.b)), vtt.a("thr_action", String.valueOf(this.c)) }));
     if (this.d > -1) {
-      ((List)localObject).add(vri.a("page_id", String.valueOf(this.d)));
+      ((List)localObject).add(vtt.a("page_id", String.valueOf(this.d)));
     }
     for (;;)
     {
       if (this.jdField_a_of_type_JavaUtilList != null) {
         ((List)localObject).addAll(this.jdField_a_of_type_JavaUtilList);
       }
-      ((List)localObject).addAll(vri.a().a());
-      localObject = vri.a(vrf.a(), (List)localObject, null, vri.a().a(this.d, this.jdField_a_of_type_ArrayOfByte));
-      if (!vri.a().a()) {
+      ((List)localObject).addAll(vtt.a().a());
+      localObject = vtt.a(vtq.a(), (List)localObject, null, vtt.a().a(this.d, this.jdField_a_of_type_ArrayOfByte));
+      if (!vtt.a().a()) {
         break;
       }
-      vrl.a().a((QQCircleReport.SingleDcData)localObject, false);
+      vtw.a().a((QQCircleReport.SingleDcData)localObject, false);
       return;
-      ((List)localObject).add(vri.a("page_id", "0"));
+      ((List)localObject).add(vtt.a("page_id", "0"));
     }
     QLog.w("QCircleReporter", 1, "QCircleLpReportDc05504 report miss Session: actiontype:" + this.jdField_a_of_type_Int + ",subActionType:" + this.b + ",add Miss Session report cache list");
-    vrl.a().b((QQCircleReport.SingleDcData)localObject);
+    vtw.a().b((QQCircleReport.SingleDcData)localObject);
   }
 }
 

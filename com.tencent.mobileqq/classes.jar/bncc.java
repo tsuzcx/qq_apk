@@ -1,16 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-class bncc
-  implements View.OnTouchListener
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.METHOD})
+public @interface bncc
 {
-  bncc(bnbz parambnbz) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  String a();
 }
 
 

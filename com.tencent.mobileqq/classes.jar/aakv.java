@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
 
 public class aakv
-  implements View.OnClickListener
+  implements aqvd
 {
-  public aakv(SubscribeQRCodeShareHelper.3 param3) {}
+  public aakv(SubscribeBaseFragment paramSubscribeBaseFragment) {}
   
-  public void onClick(View paramView)
+  public void onColorNoteAnimFinish()
   {
-    aakt.a(this.a.this$0).dismiss();
-    aakt.a(this.a.this$0, null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
   }
 }
 

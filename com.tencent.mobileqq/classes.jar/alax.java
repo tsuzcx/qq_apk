@@ -1,25 +1,21 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.QZLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.KuaKuaHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alax
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
+  public alax(KuaKuaHbFragment paramKuaKuaHbFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QZLog.isColorLevel()) {
-      QZLog.i("QbossADBannerConfigInfo", 2, " qboss resources down response resUrl = " + this.a + " isSuccess = " + paramBoolean);
+    if (KuaKuaHbFragment.a(this.a) != null) {
+      KuaKuaHbFragment.a(this.a).a(KuaKuaHbFragment.a(this.a).getText().toString());
     }
-  }
-  
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.c)) {
-      return false;
-    }
-    return atwl.a(this.c);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

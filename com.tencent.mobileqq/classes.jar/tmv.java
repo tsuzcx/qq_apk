@@ -1,26 +1,47 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import java.lang.ref.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class tmv
-  implements bkhy
+public class tmv
+  implements AladdinConfigHandler
 {
-  tmv(tmt paramtmt, String paramString) {}
-  
-  public void onDismiss()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    QLog.d("VideoSoftAdConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = pan.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      localJSONObject.put("index", -1);
-      localJSONObject.put("type", 1);
-      if (tmt.a(this.jdField_a_of_type_Tmt) != null) {
-        ((BridgeModule)tmt.a(this.jdField_a_of_type_Tmt).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("VideoSoftAdConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (paramInt1 == 200)
+      {
+        if ((TextUtils.equals(str1, "ad_guide_area")) && (!TextUtils.isEmpty(str2))) {
+          bnrf.a("sp_key_ad_soft_total_area", str2.trim());
+        }
+        if ((TextUtils.equals(str1, "ad_max_num")) && (!TextUtils.isEmpty(str2))) {
+          bnrf.a("sp_key_ad_soft_ad_max", str2.trim());
+        }
+        if ((TextUtils.equals(str1, "kd_max_num")) && (!TextUtils.isEmpty(str2))) {
+          bnrf.a("sp_key_ad_soft_kd_max", str2.trim());
+        }
       }
-      return;
     }
-    catch (JSONException localJSONException) {}
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    if (paramInt == 200)
+    {
+      bnrf.a("sp_key_ad_soft_total_area", "0");
+      bnrf.a("sp_key_ad_soft_ad_max", "25");
+      bnrf.a("sp_key_ad_soft_kd_max", "25");
+    }
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.activity;
 
-import awma;
+import axes;
 import com.tencent.mobileqq.mini.tfs.BaseTask;
 
 class LoadingFragment$2
-  implements awma
+  implements axes
 {
   LoadingFragment$2(LoadingFragment paramLoadingFragment) {}
   

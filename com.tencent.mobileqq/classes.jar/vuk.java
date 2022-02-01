@@ -1,21 +1,20 @@
-import android.arch.lifecycle.MutableLiveData;
+import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
+import com.tencent.biz.qqcircle.scrollers.QCircleFeedPicPreloadScroller.1;
 import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCirclePrivateMsgShow.StChangePMSettingRsp;
+import java.util.concurrent.ConcurrentHashMap;
 
-class vuk
-  implements zxa<QQCirclePrivateMsgShow.StChangePMSettingRsp>
+public class vuk
+  extends vrh
 {
-  vuk(vui paramvui) {}
+  public vuk(QCircleFeedPicPreloadScroller.1 param1) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCirclePrivateMsgShow.StChangePMSettingRsp paramStChangePMSettingRsp)
+  public void a(int paramInt, vrd paramvrd)
   {
-    QLog.d("QCirclePrivateMessageSettingViewModel", 1, "setProfileRequest isSuccess:" + paramBoolean + " retCode:" + paramLong + " errorMsg:" + paramString);
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStChangePMSettingRsp == null))
+    if ((paramInt == QCircleFeedPicLoader.f) || (paramInt == QCircleFeedPicLoader.c))
     {
-      this.a.b.setValue(vup.a(paramString).a(paramLong));
-      return;
+      vuj.a(this.a.this$0).put(paramvrd.b(), Boolean.valueOf(true));
+      QLog.d(vuj.a, 4, "preload time lin video success");
     }
-    this.a.b.setValue(vup.a(false).a(false, paramStChangePMSettingRsp));
   }
 }
 

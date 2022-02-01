@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 import com.tencent.qphone.base.util.QLog;
 
 public class avbt
-  implements DialogInterface.OnClickListener
+  implements auyo
 {
-  public avbt(HotPicPageView paramHotPicPageView, avbz paramavbz, int paramInt) {}
+  public avbt(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.jdField_a_of_type_Avbz, this.jdField_a_of_type_Int);
-    QLog.d("HotPicManagerHotPicPageView", 2, "User allowed downd");
+    QLog.d("ForwardOption.ForwardSdkShareOption", 1, "--> mD55ResultListener onResult");
+    ((avcd)this.a.a.getManager(350)).a().a(null);
+    this.a.z();
+    this.a.a();
   }
 }
 

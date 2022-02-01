@@ -1,24 +1,19 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class asns
-  implements ValueAnimator.AnimatorUpdateListener
+class asns
+  implements TextWatcher
 {
-  public asns(ExtendFriendSearchBarView paramExtendFriendSearchBarView, FrameLayout.LayoutParams paramLayoutParams, View paramView) {}
+  asns(asnp paramasnp) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {
-      return;
-    }
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-    int i = (int)(-ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView) * f);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.topMargin = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
+    this.a.a(paramEditable.toString());
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

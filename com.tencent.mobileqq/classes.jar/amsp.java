@@ -1,16 +1,24 @@
-public abstract interface amsp
+import com.tencent.TMG.sdk.AVVideoCtrl.RemoteVideoPreviewCallback;
+import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
+import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.2.1;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+
+public class amsp
+  extends AVVideoCtrl.RemoteVideoPreviewCallback
 {
-  public abstract String a(int paramInt, String paramString);
+  amsp(amsn paramamsn) {}
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(amlp paramamlp, long paramLong);
-  
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void c(int paramInt, String paramString);
+  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
+  {
+    Object localObject = anbd.a(amsm.a(this.a.a));
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = ((ande)localObject).a();
+    } while (localObject == null);
+    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.2.1(this, paramVideoFrame, (ApolloSurfaceView)localObject));
+  }
 }
 
 

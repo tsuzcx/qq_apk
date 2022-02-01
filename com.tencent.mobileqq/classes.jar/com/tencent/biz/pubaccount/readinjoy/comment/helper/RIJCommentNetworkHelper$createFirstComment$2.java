@@ -6,15 +6,15 @@ import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
-import pdz;
-import pea;
+import owr;
+import ows;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJCommentNetworkHelper$createFirstComment$2
   extends Lambda
   implements Function2<Integer, String, Unit>
 {
-  public RIJCommentNetworkHelper$createFirstComment$2(pea parampea, long paramLong1, String paramString, int paramInt, boolean paramBoolean, long paramLong2)
+  public RIJCommentNetworkHelper$createFirstComment$2(ows paramows, long paramLong1, String paramString, int paramInt, boolean paramBoolean, long paramLong2)
   {
     super(2);
   }
@@ -23,7 +23,7 @@ public final class RIJCommentNetworkHelper$createFirstComment$2
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<anonymous parameter 1>");
     this.$callback.a(this.$commentSeq, false, 1, "", this.$commentJsonStr, this.$feedsType, this.$isFeeds);
-    pdz.a(pdz.a, -1, System.currentTimeMillis() - this.$requestTime);
+    owr.a(owr.a, -1, System.currentTimeMillis() - this.$requestTime);
   }
 }
 

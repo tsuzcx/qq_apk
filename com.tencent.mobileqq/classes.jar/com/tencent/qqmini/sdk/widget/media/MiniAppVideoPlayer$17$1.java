@@ -14,7 +14,7 @@ class MiniAppVideoPlayer$17$1
   public void onCaptureImageSucceed(AbsVideoPlayer paramAbsVideoPlayer, Bitmap paramBitmap)
   {
     if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-      MiniAppVideoPlayer.access$5902(this.this$1.this$0, Bitmap.createBitmap(paramBitmap));
+      MiniAppVideoPlayer.access$6002(this.this$1.this$0, Bitmap.createBitmap(paramBitmap));
     }
   }
 }

@@ -1,49 +1,74 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.36.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.RoundRectBitmap;
+import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.image.downloader.GalleryDecoder;
+import com.tencent.widget.Gallery;
+import java.io.File;
+import java.util.HashMap;
 
 public class aiem
-  implements BusinessObserver
+  extends GalleryDecoder
 {
-  aiem(aidp paramaidp) {}
+  private BaseApplicationImpl a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aiem(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "success:" + String.valueOf(paramBoolean));
+    super(BaseApplicationImpl.getContext());
+    this.a = paramBaseApplicationImpl;
+  }
+  
+  public Object decodeVideo(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    int i = 0;
+    if (paramDownloadParams.tag != null) {
+      i = ((Integer)paramDownloadParams.tag).intValue();
     }
-    if (!paramBoolean) {}
-    for (;;)
+    if (i == 3)
     {
-      return;
-      try
-      {
-        byte[] arrayOfByte = paramBundle.getByteArray("data");
-        paramInt = paramBundle.getInt("type", 0);
-        if (arrayOfByte == null) {
-          continue;
-        }
-        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-        oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
-        if (paramInt == 0) {
-          paramBundle.mergeFrom(arrayOfByte);
-        }
-        for (paramBoolean = true; (paramBoolean) && (paramBundle.ret_info.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() == 0); paramBoolean = tzo.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle))
-        {
-          ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountChatPie.36.1(this, paramBundle), 10L);
-          return;
-        }
-        return;
-      }
-      catch (Exception paramBundle) {}
+      paramURLDrawableHandler = ThumbnailUtils.createVideoThumbnail(paramFile.getAbsolutePath(), 1);
+      int j = paramURLDrawableHandler.getWidth();
+      i = paramURLDrawableHandler.getHeight();
+      float f = Gallery.a(j, i, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, null);
+      j = (int)(j * f);
+      i = (int)(i * f);
+      return ThumbnailUtils.createVideoThumbnail(paramFile.getAbsolutePath(), 1);
     }
+    return null;
+  }
+  
+  public String getLogTag()
+  {
+    return "PEAK";
+  }
+  
+  public void reportSafeDecode(SafeBitmapFactory.SafeDecodeOption paramSafeDecodeOption)
+  {
+    if ((!paramSafeDecodeOption.isInJustDecodeBounds) && (paramSafeDecodeOption.needRegionDecode))
+    {
+      HashMap localHashMap = paramSafeDecodeOption.getInfo();
+      localHashMap.put("from", "GalleryDecoder");
+      bdmc.a(BaseApplicationImpl.getApplication()).a(null, "safeDecode", paramSafeDecodeOption.isGetBitmap, paramSafeDecodeOption.runTime, paramSafeDecodeOption.rawHeight * paramSafeDecodeOption.rawWidth, localHashMap, "");
+    }
+  }
+  
+  public RoundRectBitmap resizeAndClipBitmap(Bitmap paramBitmap, int paramInt)
+  {
+    try
+    {
+      RoundRectBitmap localRoundRectBitmap = new RoundRectBitmap(paramBitmap, paramInt);
+      return localRoundRectBitmap;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError) {}
+    return new RoundRectBitmap(paramBitmap, 12.0F);
+  }
+  
+  public boolean useJpegTurbo()
+  {
+    return azru.b();
   }
 }
 

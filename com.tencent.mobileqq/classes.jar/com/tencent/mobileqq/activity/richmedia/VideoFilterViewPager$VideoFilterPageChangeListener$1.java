@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import allr;
-import allt;
+import alxj;
+import alxl;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 
 public class VideoFilterViewPager$VideoFilterPageChangeListener$1
   implements Runnable
 {
-  public VideoFilterViewPager$VideoFilterPageChangeListener$1(allt paramallt, int paramInt, View paramView) {}
+  public VideoFilterViewPager$VideoFilterPageChangeListener$1(alxl paramalxl, int paramInt, View paramView) {}
   
   public void run()
   {
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(1000L);
     localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new allr(this.jdField_a_of_type_Allt.a, VideoFilterViewPager.a(this.jdField_a_of_type_Allt.a), this.jdField_a_of_type_Int));
+    localAlphaAnimation.setAnimationListener(new alxj(this.jdField_a_of_type_Alxl.a, VideoFilterViewPager.a(this.jdField_a_of_type_Alxl.a), this.jdField_a_of_type_Int));
     this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
   }
 }

@@ -3,8 +3,8 @@ package com.tencent.biz.subscribe.widget;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import aaae;
-import aalg;
+import aaej;
+import aaph;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -16,7 +16,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bgmo;
+import bhmq;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.widget.CircleProgress;
@@ -24,14 +24,14 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import cooperation.qzone.util.QZLog;
 import java.util.List;
 import java.util.Timer;
-import zlx;
+import zps;
 
 public class VideoNextFeedsView
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int = zlx.a(getContext(), 18.0F);
+  private int jdField_a_of_type_Int = zps.a(getContext(), 18.0F);
   private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-  private aalg jdField_a_of_type_Aalg;
+  private aaph jdField_a_of_type_Aaph;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -40,10 +40,10 @@ public class VideoNextFeedsView
   private List<CertifiedAccountMeta.StFeed> jdField_a_of_type_JavaUtilList;
   private Timer jdField_a_of_type_JavaUtilTimer;
   private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = zlx.a(getContext(), 331.0F);
+  private int jdField_b_of_type_Int = zps.a(getContext(), 331.0F);
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int jdField_c_of_type_Int = zlx.a(getContext(), 75.0F);
+  private int jdField_c_of_type_Int = zps.a(getContext(), 75.0F);
   private TextView jdField_c_of_type_AndroidWidgetTextView;
   private int d;
   private int e;
@@ -80,7 +80,7 @@ public class VideoNextFeedsView
         break;
       }
       localStFeed = (CertifiedAccountMeta.StFeed)this.jdField_a_of_type_JavaUtilList.get(this.g);
-    } while ((localStFeed == null) || (!aaae.a(localStFeed.type.get())));
+    } while ((localStFeed == null) || (!aaej.a(localStFeed.type.get())));
     for (;;)
     {
       if (localStFeed == null)
@@ -90,14 +90,14 @@ public class VideoNextFeedsView
       }
       ImageView localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
       String str = localStFeed.poster.icon.get();
-      int i = zlx.a(getContext(), this.jdField_a_of_type_Int);
-      int j = zlx.a(getContext(), this.jdField_a_of_type_Int);
+      int i = zps.a(getContext(), this.jdField_a_of_type_Int);
+      int j = zps.a(getContext(), this.jdField_a_of_type_Int);
       Context localContext = getContext();
       if (this.jdField_a_of_type_Boolean) {}
       for (float f1 = 10.0F;; f1 = 9.0F)
       {
-        zlx.a(localImageView, str, i, j, zlx.a(localContext, f1), bgmo.b(), null);
-        zlx.a(this.jdField_a_of_type_AndroidWidgetImageView, localStFeed.cover.url.get(), this.d, this.e, getResources().getDrawable(2130839551), null);
+        zps.a(localImageView, str, i, j, zps.a(localContext, f1), bhmq.b(), null);
+        zps.a(this.jdField_a_of_type_AndroidWidgetImageView, localStFeed.cover.url.get(), this.d, this.e, getResources().getDrawable(2130839560), null);
         this.jdField_b_of_type_AndroidWidgetTextView.setText(localStFeed.title.get());
         this.jdField_a_of_type_AndroidWidgetTextView.setText(localStFeed.poster.nick.get());
         this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = localStFeed;
@@ -110,16 +110,16 @@ public class VideoNextFeedsView
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558810, null);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558808, null);
     addView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369204));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379780));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379781));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379592));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369205));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)this.jdField_a_of_type_AndroidViewView.findViewById(2131365141));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369295));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379959));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379960));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379765));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369296));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)this.jdField_a_of_type_AndroidViewView.findViewById(2131365185));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(30, Color.parseColor("#ffffff"), 100, Color.parseColor("#ffffff"));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(zlx.a(getContext(), 1.0F));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(zps.a(getContext(), 1.0F));
     setVisibility(8);
   }
   
@@ -140,8 +140,8 @@ public class VideoNextFeedsView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Aalg != null) {
-      this.jdField_a_of_type_Aalg.a(b());
+    if (this.jdField_a_of_type_Aaph != null) {
+      this.jdField_a_of_type_Aaph.a(b());
     }
   }
   
@@ -201,9 +201,9 @@ public class VideoNextFeedsView
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public void setOnCounterListener(aalg paramaalg)
+  public void setOnCounterListener(aaph paramaaph)
   {
-    this.jdField_a_of_type_Aalg = paramaalg;
+    this.jdField_a_of_type_Aaph = paramaaph;
   }
   
   public void setUIState(boolean paramBoolean1, boolean paramBoolean2)

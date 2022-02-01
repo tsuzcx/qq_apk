@@ -1,24 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
-import java.util.ArrayList;
+import com.tencent.widget.HorizontalListView;
 
-class blmk
-  extends bbcp
+public class blmk
 {
-  private blmk(blmg paramblmg) {}
+  private int a;
   
-  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RichStatus> paramArrayList, boolean paramBoolean3)
+  private blmk(HorizontalListView paramHorizontalListView) {}
+  
+  public void a()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSuccess", paramBoolean1);
-    localBundle.putInt("start", paramInt1);
-    localBundle.putInt("end", paramInt2);
-    localBundle.putBoolean("over", paramBoolean2);
-    localBundle.putSerializable("data", paramArrayList);
-    localBundle.putBoolean("isAddFromCard", paramBoolean3);
-    localBundle.putInt("which_method", 0);
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 5, localBundle);
+    this.a = HorizontalListView.access$900(this.this$0);
+  }
+  
+  public boolean a()
+  {
+    return (this.this$0.hasWindowFocus()) && (HorizontalListView.access$1000(this.this$0) == this.a);
   }
 }
 

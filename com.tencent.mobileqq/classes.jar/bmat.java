@@ -1,78 +1,69 @@
-import android.os.Build;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 
 public class bmat
 {
-  private static int a = -1;
+  private final int jdField_a_of_type_Int;
+  public avsk a;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private int c = 0;
+  private int d;
   
-  public static boolean a()
+  public bmat(int paramInt1, int paramInt2)
   {
-    boolean bool = true;
-    for (;;)
-    {
-      try
-      {
-        int i;
-        if (a != -1)
-        {
-          i = a;
-          if (i == 1) {
-            return bool;
-          }
-          bool = false;
-          continue;
-        }
-        Object localObject1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "qzone_module_black_list", "");
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          if (TextUtils.isEmpty(""))
-          {
-            if (TextUtils.isEmpty((CharSequence)localObject1))
-            {
-              a = 0;
-              bool = false;
-            }
-          }
-          else
-          {
-            localObject1 = "" + "," + (String)localObject1;
-            continue;
-          }
-          try
-          {
-            localObject1 = ((String)localObject1).split(",");
-            String str2 = Build.MODEL.toLowerCase();
-            String str3 = Build.MANUFACTURER.toLowerCase();
-            QLog.i("QzoneModuleCompat", 1, "Device info -- model: " + str2 + ", manufacturer: " + str3 + ", platform: " + System.getProperty("ro.board.platform"));
-            int j = localObject1.length;
-            i = 0;
-            if (i < j)
-            {
-              Object localObject3 = localObject1[i];
-              if ((!localObject3.contains(str2)) && (!localObject3.equals(str3))) {
-                continue;
-              }
-              a = 1;
-            }
-          }
-          catch (Throwable localThrowable)
-          {
-            QLog.e("QzoneModuleCompat", 1, "catch an exception:", localThrowable);
-            a = 0;
-            bool = false;
-          }
-          continue;
-          i += 1;
-        }
-        else
-        {
-          String str1 = "";
-        }
-      }
-      finally {}
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    c();
+  }
+  
+  private void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
     }
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (this.jdField_b_of_type_Boolean) {}
+    for (int i = 0;; i = 1)
+    {
+      bmas.a(localAppRuntime, i, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(this.d) });
+      c();
+      return;
+    }
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.c = 0;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.d = 0;
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_b_of_type_Boolean = true;
+    b();
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    bmat localbmat = (bmat)bmas.a().get(Integer.valueOf(this.jdField_a_of_type_Int));
+    if ((localbmat != null) && (localbmat.jdField_a_of_type_Boolean)) {
+      localbmat.b();
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.c = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramInt2;
+    bmas.a().put(Integer.valueOf(this.jdField_a_of_type_Int), this);
   }
 }
 

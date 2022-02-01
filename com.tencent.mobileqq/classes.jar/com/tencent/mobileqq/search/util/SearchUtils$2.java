@@ -2,11 +2,11 @@ package com.tencent.mobileqq.search.util;
 
 import android.text.TextUtils;
 import android.view.View;
-import bblk;
-import bbln;
-import bbmu;
-import bbup;
-import bctj;
+import bced;
+import bceg;
+import bcfn;
+import bcni;
+import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -17,36 +17,36 @@ import java.util.HashMap;
 public final class SearchUtils$2
   implements Runnable
 {
-  public SearchUtils$2(View paramView, bbmu parambbmu) {}
+  public SearchUtils$2(View paramView, bcfn parambcfn) {}
   
   public void run()
   {
     int j = -1;
     HashMap localHashMap = new HashMap();
-    Object localObject = (Integer)this.jdField_a_of_type_AndroidViewView.getTag(2131380930);
+    Object localObject = (Integer)this.jdField_a_of_type_AndroidViewView.getTag(2131381110);
     int i;
     if (localObject != null)
     {
       i = ((Integer)localObject).intValue();
       localHashMap.put("itemLinePosition", String.valueOf(i + 1));
-      localHashMap.put("matchDegree", String.valueOf(this.jdField_a_of_type_Bbmu.b()));
-      localHashMap.put("className", this.jdField_a_of_type_Bbmu.getClass().getSimpleName());
-      localHashMap.put("keyword", this.jdField_a_of_type_Bbmu.a());
-      if (this.jdField_a_of_type_Bbmu.jdField_a_of_type_JavaUtilHashMap != null) {
-        localHashMap.putAll(this.jdField_a_of_type_Bbmu.jdField_a_of_type_JavaUtilHashMap);
+      localHashMap.put("matchDegree", String.valueOf(this.jdField_a_of_type_Bcfn.b()));
+      localHashMap.put("className", this.jdField_a_of_type_Bcfn.getClass().getSimpleName());
+      localHashMap.put("keyword", this.jdField_a_of_type_Bcfn.a());
+      if (this.jdField_a_of_type_Bcfn.jdField_a_of_type_JavaUtilHashMap != null) {
+        localHashMap.putAll(this.jdField_a_of_type_Bcfn.jdField_a_of_type_JavaUtilHashMap);
       }
-      if (!(this.jdField_a_of_type_Bbmu instanceof bbln)) {
+      if (!(this.jdField_a_of_type_Bcfn instanceof bceg)) {
         break label339;
       }
-      localObject = ((bbln)this.jdField_a_of_type_Bbmu).a;
+      localObject = ((bceg)this.jdField_a_of_type_Bcfn).a;
     }
     for (;;)
     {
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.jdField_a_of_type_Bbmu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.jdField_a_of_type_Bcfn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
       {
-        int k = this.jdField_a_of_type_Bbmu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject);
-        localHashMap.put("troopMask", String.valueOf(this.jdField_a_of_type_Bbmu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject)));
-        TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_Bbmu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+        int k = this.jdField_a_of_type_Bcfn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject);
+        localHashMap.put("troopMask", String.valueOf(this.jdField_a_of_type_Bcfn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject)));
+        TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_Bcfn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
         i = j;
         if (localTroopManager != null)
         {
@@ -62,13 +62,13 @@ public final class SearchUtils$2
           QLog.d("searchUtils", 2, "Report troop member click, troopMask:" + k + " troopMemberNum:" + i);
         }
       }
-      bctj.a(BaseApplicationImpl.getApplication()).a(null, "ContactSearchMatchDegree", true, 0L, 0L, bbup.a(localHashMap), "", false);
+      bdmc.a(BaseApplicationImpl.getApplication()).a(null, "ContactSearchMatchDegree", true, 0L, 0L, bcni.a(localHashMap), "", false);
       return;
       i = -1;
       break;
       label339:
-      if ((this.jdField_a_of_type_Bbmu instanceof bblk)) {
-        localObject = ((bblk)this.jdField_a_of_type_Bbmu).a;
+      if ((this.jdField_a_of_type_Bcfn instanceof bced)) {
+        localObject = ((bced)this.jdField_a_of_type_Bcfn).a;
       } else {
         localObject = "";
       }

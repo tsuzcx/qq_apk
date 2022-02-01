@@ -1,16 +1,20 @@
-import java.util.concurrent.CountDownLatch;
+import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-final class bodb
-  implements bocb
+public class bodb
+  implements CosFunHelper.CountDownListener
 {
-  bodb(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
+  public bodb(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean)
+  public void onCountDownEnd()
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = paramBoolean;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    QIMEffectCameraCaptureUnit.a(this.a);
+  }
+  
+  public void onCountDownStart(VideoMaterial paramVideoMaterial)
+  {
+    QIMEffectCameraCaptureUnit.a(this.a, paramVideoMaterial.getTipsDrawable());
   }
 }
 

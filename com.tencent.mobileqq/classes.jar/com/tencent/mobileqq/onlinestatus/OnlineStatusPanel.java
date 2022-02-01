@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aypn;
+import azig;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup;
@@ -18,7 +18,7 @@ import mqq.os.MqqHandler;
 public class OnlineStatusPanel
   extends RelativeLayout
 {
-  private aypn jdField_a_of_type_Aypn;
+  private azig jdField_a_of_type_Azig;
   EmoticonPagerRadioGroup jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup;
   public OnlineStatusPagerAdapter a;
   public QQViewPager a;
@@ -43,15 +43,15 @@ public class OnlineStatusPanel
     int j = getResources().getDisplayMetrics().widthPixels;
     int i = j;
     if (paramInt == 3) {
-      i = j - afur.a(26.0F, getResources());
+      i = j - agej.a(26.0F, getResources());
     }
-    return (i - afur.a(14.0F, getResources()) * 2 - a(paramInt, getResources()) * 3) / 4;
+    return (i - agej.a(14.0F, getResources()) * 2 - a(paramInt, getResources()) * 3) / 4;
   }
   
   private int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = afur.a(9.0F, getResources());
-    int j = afur.a(39.0F, getResources());
+    int i = agej.a(9.0F, getResources());
+    int j = agej.a(39.0F, getResources());
     return i + (paramInt2 * paramInt1 + a(paramInt3, getResources()) * (paramInt1 - 1)) + j;
   }
   
@@ -59,7 +59,7 @@ public class OnlineStatusPanel
   {
     if (paramInt == 3) {}
     for (paramInt = 5;; paramInt = 9) {
-      return afur.a(paramInt, paramResources);
+      return agej.a(paramInt, paramResources);
     }
   }
   
@@ -90,10 +90,10 @@ public class OnlineStatusPanel
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131371953));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131372067));
     this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter = new OnlineStatusPagerAdapter(BaseApplicationImpl.getContext(), paramInt1, paramInt2, paramBoolean, this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)findViewById(2131368161));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)findViewById(2131368235));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setViewPager(this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.getLayoutParams();
     if (paramInt2 == 1) {
@@ -113,9 +113,9 @@ public class OnlineStatusPanel
     ThreadManager.getFileThreadHandler().post(new OnlineStatusPanel.2(this, paramBoolean));
   }
   
-  public void setListener(aypn paramaypn)
+  public void setListener(azig paramazig)
   {
-    this.jdField_a_of_type_Aypn = paramaypn;
+    this.jdField_a_of_type_Azig = paramazig;
   }
 }
 

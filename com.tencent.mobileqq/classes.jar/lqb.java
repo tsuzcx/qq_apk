@@ -1,33 +1,11 @@
-public class lqb
+public abstract interface lqb
+  extends lpu
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int;
+  public abstract int a();
   
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
+  public abstract void a(lpq paramlpq, lpc paramlpc, lpx paramlpx, lpp paramlpp, lqi paramlqi);
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (paramFloat >= 0.0F) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bkfk.a(bool);
-      this.jdField_a_of_type_Float = paramFloat;
-      return;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract byte[] a();
 }
 
 

@@ -1,29 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment.4.1;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class ajgr
-  implements bkhw
+public class ajgr
+  extends apck
 {
-  ajgr(ajgp paramajgp, boolean paramBoolean, Friends paramFriends, bkho parambkho) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ajgr(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment, String paramString)
   {
-    if (!bgnt.g(ajgp.a(this.jdField_a_of_type_Ajgp))) {
-      QQToast.a(ajgp.a(this.jdField_a_of_type_Ajgp), 1, 2131691985, 0).a();
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "getview onLocationFinish info = " + paramSosoLbsInfo);
     }
-    for (;;)
+    if (paramInt != 0)
     {
-      this.jdField_a_of_type_Bkho.e();
-      return;
-      paramView = (FriendListHandler)ajgp.a(this.jdField_a_of_type_Ajgp).a(1);
-      if (this.jdField_a_of_type_Boolean) {
-        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
-      } else {
-        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
-      }
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "getview onLocationFinish, errorCode=" + paramInt);
+      this.a.a.post(new AddContactViewPagerTroopFragment.4.1(this));
     }
   }
 }

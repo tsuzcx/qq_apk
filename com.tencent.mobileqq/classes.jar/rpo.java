@@ -1,7 +1,7 @@
-public abstract interface rpo
-{
-  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString);
-}
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsGuideProxy$Companion;", "", "()V", "COLUMN_VIDEO_GUIDE_SHOW_PERCENT", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rpo {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

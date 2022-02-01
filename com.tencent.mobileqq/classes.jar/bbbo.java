@@ -1,21 +1,28 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.os.Bundle;
 
-public class bbbo
-  implements View.OnLayoutChangeListener
+class bbbo
+  extends anyu
 {
-  public bbbo(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  bbbo(bbbn parambbbn) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if ((paramInt2 < paramInt6) && (this.a.a != null))
-    {
-      paramInt1 = SignatureHistoryFragment.a(this.a, this.a.a);
-      paramInt3 = this.a.a.getHeight();
-      if (paramInt1 + paramInt3 > paramInt2) {
-        SignatureHistoryFragment.a(this.a, paramInt1, paramInt3, false);
-      }
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(1, paramString);
+    }
+  }
+  
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (paramBoolean) {
+      this.a.a(1, paramString);
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(2, null);
     }
   }
 }

@@ -1,28 +1,49 @@
-import org.xmlpull.v1.XmlSerializer;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-final class anwg
-  extends bcxv
+public class anwg
+  extends BroadcastReceiver
 {
-  anwg(String paramString)
-  {
-    super(paramString);
-  }
+  public anwg(DeviceProfileManager paramDeviceProfileManager) {}
   
-  public void a(XmlSerializer paramXmlSerializer)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramXmlSerializer.startTag(null, "picture");
-    if (this.aa == null) {}
-    for (String str = "";; str = this.aa)
-    {
-      paramXmlSerializer.attribute(null, "cover", str);
-      paramXmlSerializer.endTag(null, "picture");
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.e("DeviceProfileManager", 4, "onReceive");
     }
+    if (paramIntent == null) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramContext = paramIntent.getExtras();
+          if (paramContext != null)
+          {
+            DeviceProfileManager.a(this.a, (HashMap)paramContext.getSerializable("featureMapLV2"));
+            if (DeviceProfileManager.a() != null)
+            {
+              DeviceProfileManager.a().a = ((HashMap)paramContext.getSerializable("featureAccountMapLV2"));
+              return;
+            }
+          }
+        }
+        catch (Exception paramContext) {}
+      }
+    } while (!QLog.isDevelopLevel());
+    paramContext.printStackTrace();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anwg
  * JD-Core Version:    0.7.0.1
  */

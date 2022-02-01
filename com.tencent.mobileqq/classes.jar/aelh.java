@@ -1,15 +1,16 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public abstract class aelh
+public class aelh
 {
-  public aelh(JumpActivity paramJumpActivity) {}
-  
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  public int a = 1;
+  public ImageView a;
+  TextView a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelh
  * JD-Core Version:    0.7.0.1
  */

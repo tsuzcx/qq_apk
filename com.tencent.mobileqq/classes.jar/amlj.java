@@ -1,16 +1,25 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
-public abstract interface amlj
+class amlj
+  implements View.OnClickListener
 {
-  public abstract int a();
+  amlj(amli paramamli, amlh paramamlh, int paramInt) {}
   
-  public abstract amle a();
-  
-  public abstract void a(List<amli> paramList, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract int b();
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Amlh.a.isChecked()) {}
+    for (((aoui)this.jdField_a_of_type_Amli.a.get(this.jdField_a_of_type_Int)).a = false;; ((aoui)this.jdField_a_of_type_Amli.a.get(this.jdField_a_of_type_Int)).a = true)
+    {
+      this.jdField_a_of_type_Amli.notifyItemChanged(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Amli.a();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+  }
 }
 
 

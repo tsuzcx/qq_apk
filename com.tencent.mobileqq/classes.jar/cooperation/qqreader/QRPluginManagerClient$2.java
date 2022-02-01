@@ -1,12 +1,12 @@
 package cooperation.qqreader;
 
-import blnn;
-import blno;
+import bmop;
+import bmoq;
 
 public class QRPluginManagerClient$2
   implements Runnable
 {
-  public QRPluginManagerClient$2(blnn paramblnn, blno paramblno) {}
+  public QRPluginManagerClient$2(bmop parambmop, bmoq parambmoq) {}
   
   public void run()
   {

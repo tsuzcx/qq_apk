@@ -1,37 +1,54 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aahj
-  implements View.OnClickListener
+  extends aacq
 {
-  public aahj(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, aagr paramaagr) {}
+  private aabn jdField_a_of_type_Aabn;
+  private RelativePersonalBottomView jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
   
-  public void onClick(View paramView)
+  public aahj(Bundle paramBundle)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("postUin", this.jdField_a_of_type_Aagr.a.poster.id.get());
-    if (this.jdField_a_of_type_Aagr.a.poster.youZhan.size() > 0) {
-      if (((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_Aagr.a.poster.youZhan.get(0)).type.get() <= 1) {
-        break label139;
-      }
+    super(paramBundle);
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
+      return this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.b();
     }
-    label139:
-    for (boolean bool = true;; bool = false)
-    {
-      localIntent.putExtra("has_shop", bool);
-      blsb.a(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment.getActivity(), localIntent, 0);
-      aaxb.b(this.jdField_a_of_type_Aagr.a.poster.id.get(), "auth_person", "blank_post", 0, 0, new String[0]);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    return 0;
+  }
+  
+  protected BaseWidgetView a(ViewGroup paramViewGroup, aabp paramaabp)
+  {
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView = new RelativePersonalBottomView(paramViewGroup.getContext(), paramaabp);
+    return this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
+  }
+  
+  public void loadData(aabu paramaabu) {}
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.a(this.jdField_a_of_type_Aabn);
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+  }
+  
+  public void onInitBlock(Bundle paramBundle) {}
+  
+  public void setShareData(String paramString, aabn paramaabn)
+  {
+    super.setShareData(paramString, paramaabn);
+    this.jdField_a_of_type_Aabn = paramaabn;
+    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.a(paramaabn);
     }
   }
 }

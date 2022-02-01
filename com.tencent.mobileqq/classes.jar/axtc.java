@@ -1,50 +1,204 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.ProgressButton;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.VipUtils;
+import java.util.ArrayList;
 
-class axtc
-  implements DialogInterface.OnClickListener
+public class axtc
 {
-  axtc(axsd paramaxsd) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static int a(QQAppInterface paramQQAppInterface, String paramString, long paramLong1, long paramLong2)
   {
-    if (paramInt == 1)
+    switch ((int)paramLong1)
     {
-      if (this.a.jdField_a_of_type_Axxf != null) {
-        this.a.jdField_a_of_type_Axxf.a(2);
-      }
-      if (axsd.a(this.a) != null)
-      {
-        if (!this.a.m) {
-          break label88;
-        }
-        bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_trigger", 0, 0, axsd.a(this.a).uin, "", "yes", "android");
-      }
     }
-    label88:
+    int i;
     do
     {
       do
       {
-        return;
-        bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_goon", 0, 0, axsd.a(this.a).uin, "", "yes", "android");
-        return;
-      } while (paramInt != 0);
-      if (this.a.jdField_a_of_type_Axxf != null) {
-        this.a.jdField_a_of_type_Axxf.a(10);
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            do
+                            {
+                              do
+                              {
+                                do
+                                {
+                                  return 0;
+                                } while (VipUtils.a(paramQQAppInterface, paramString, 2) <= 0);
+                                if (paramLong2 == 0L) {
+                                  return 2130850178;
+                                }
+                                if (paramLong2 == 1L) {
+                                  return 2130850179;
+                                }
+                              } while (paramLong2 != 2L);
+                              return 2130850180;
+                              i = VipUtils.a(paramQQAppInterface, paramString, 3);
+                              if (i != 1) {
+                                break;
+                              }
+                              if (paramLong2 == 0L) {
+                                return 2130840306;
+                              }
+                              if (paramLong2 == 1L) {
+                                return 2130840307;
+                              }
+                            } while (paramLong2 != 2L);
+                            return 2130840308;
+                          } while (i != 2);
+                          if (paramLong2 == 0L) {
+                            return 2130840309;
+                          }
+                          if (paramLong2 == 1L) {
+                            return 2130840310;
+                          }
+                        } while (paramLong2 != 2L);
+                        return 2130840311;
+                        i = VipUtils.a(paramQQAppInterface, paramString, 4);
+                        if (i != 1) {
+                          break;
+                        }
+                        if (paramLong2 == 0L) {
+                          return 2130840312;
+                        }
+                        if (paramLong2 == 1L) {
+                          return 2130840313;
+                        }
+                      } while (paramLong2 != 2L);
+                      return 2130840314;
+                    } while (i != 2);
+                    if (paramLong2 == 0L) {
+                      return 2130840315;
+                    }
+                    if (paramLong2 == 1L) {
+                      return 2130840316;
+                    }
+                  } while (paramLong2 != 2L);
+                  return 2130840317;
+                  i = VipUtils.a(paramQQAppInterface, paramString, 0);
+                  if (i != 1) {
+                    break;
+                  }
+                  if (paramLong2 == 1L) {
+                    return 2130850194;
+                  }
+                } while (paramLong2 != 2L);
+                return 2130850153;
+              } while (i != 2);
+              if (paramLong2 == 1L) {
+                return 2130850195;
+              }
+            } while (paramLong2 != 2L);
+            return 2130850154;
+            i = VipUtils.a(paramQQAppInterface, paramString, 1);
+            if (i != 1) {
+              break;
+            }
+            if (paramLong2 == 1L) {
+              return 2130850198;
+            }
+          } while (paramLong2 != 2L);
+          return 2130850157;
+        } while (i != 2);
+        if (paramLong2 == 1L) {
+          return 2130850199;
+        }
+      } while (paramLong2 != 2L);
+      return 2130850158;
+      i = VipUtils.a(paramQQAppInterface, paramString, 5);
+      if ((i == 1) && (paramLong2 == 1L)) {
+        return 2130850187;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131697879);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(0);
+      if ((i == 2) && (paramLong2 == 1L)) {
+        return 2130850188;
       }
-      this.a.jdField_a_of_type_Int = 2;
-    } while (axsd.a(this.a) == null);
-    bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_cancel", 0, 0, axsd.a(this.a).uin, "", "yes", "android");
+      if ((i == 3) && (paramLong2 == 1L)) {
+        return 2130850189;
+      }
+    } while ((i != 4) || (paramLong2 != 1L));
+    return 2130850186;
   }
+  
+  public static String a(QQAppInterface paramQQAppInterface, String paramString1, long paramLong1, long paramLong2, long paramLong3, String paramString2)
+  {
+    String str = paramString2;
+    if (paramLong2 == 2L)
+    {
+      str = paramString2;
+      if (paramLong3 > 0L)
+      {
+        int i = VipUtils.a(paramQQAppInterface, paramString1, 0);
+        str = paramString2;
+        if (i > 0) {
+          str = axte.a(paramString2, i, false);
+        }
+      }
+    }
+    return str;
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString2)) {}
+    int i;
+    do
+    {
+      Object localObject;
+      arfi localarfi;
+      do
+      {
+        do
+        {
+          return paramString2;
+          localObject = paramString2.split("/");
+        } while (localObject.length < 2);
+        localObject = localObject[(localObject.length - 2)];
+        localarfi = arfj.a();
+      } while ((localarfi == null) || (localarfi.a((String)localObject) <= 0));
+      i = VipUtils.a(paramQQAppInterface, paramString1, 0);
+    } while (i <= 0);
+    return axte.a(paramString2, i, false);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, anyw paramanyw, Friends paramFriends, String paramString, byte[] paramArrayOfByte, boolean paramBoolean)
+  {
+    if ((paramFriends == null) || (paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {}
+    for (;;)
+    {
+      return;
+      if (paramArrayOfByte.length > 1) {}
+      for (paramFriends.relationIconFlag = (paramArrayOfByte[1] << 8 | paramArrayOfByte[0]); paramBoolean; paramFriends.relationIconFlag = paramArrayOfByte[0])
+      {
+        paramanyw.a(paramFriends);
+        paramQQAppInterface.a(1).notifyUI(3, true, paramString);
+        return;
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, ExtensionInfo paramExtensionInfo, aghx paramaghx, String paramString, avpd paramavpd, ArrayList<axsn> paramArrayList) {}
+  
+  public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, ExtensionInfo paramExtensionInfo, aghx paramaghx, StringBuilder paramStringBuilder) {}
 }
 
 

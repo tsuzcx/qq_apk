@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import ryx;
+import rpt;
 
 public final class VideoFeedsHelper$8
   implements Runnable
 {
   public void run()
   {
-    ryx.a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_Sfb, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    rpt.a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_Rwf, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
 import android.os.Looper;
-import anvw;
-import anvx;
+import aoii;
+import aoij;
 import mqq.os.MqqHandler;
 
 public class ThreadManager
@@ -18,7 +18,7 @@ public class ThreadManager
     try
     {
       if (FILE_Mqq_HANDLER == null) {
-        FILE_Mqq_HANDLER = new anvx(getFileThreadLooper());
+        FILE_Mqq_HANDLER = new aoij(getFileThreadLooper());
       }
       return FILE_Mqq_HANDLER;
     }
@@ -31,7 +31,7 @@ public class ThreadManager
     try
     {
       if (SUB_Mqq_HANDLER == null) {
-        SUB_Mqq_HANDLER = new anvw(getSubThreadLooper());
+        SUB_Mqq_HANDLER = new aoii(getSubThreadLooper());
       }
       return SUB_Mqq_HANDLER;
     }

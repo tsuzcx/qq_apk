@@ -1,20 +1,19 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.UiThread;
 
-public abstract interface uck<V extends uch>
+public abstract interface uck<V extends ucj, P extends ucm<V>>
 {
-  @UiThread
-  public abstract void a();
+  public abstract V a();
   
-  @UiThread
-  public abstract void a(@NonNull V paramV);
+  @NonNull
+  public abstract P a();
   
-  @UiThread
-  public abstract void b();
+  public abstract void a(P paramP);
+  
+  public abstract P b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uck
  * JD-Core Version:    0.7.0.1
  */

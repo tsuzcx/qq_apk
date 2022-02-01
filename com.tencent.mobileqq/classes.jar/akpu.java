@@ -1,27 +1,27 @@
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class akpu
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
-  public akpu(LingHbFragment paramLingHbFragment) {}
+  public akpu(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      LingHbFragment.a(this.a).a(this.a.c.getText().toString(), false);
-    }
+    if (CameraPreviewActivity.a(this.a, (String)CameraPreviewActivity.a(this.a).get(0))) {}
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("LingHbFragment", 2, "onFocusChange:" + paramBoolean);
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      LingHbFragment.a(this.a).a();
+      if (this.a.b) {
+        bdll.b(this.a.app, "CliOper", "", "", "0X8004D96", "0X8004D96", 0, 0, "", "", "", "");
+      }
+      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 2, true);
+      paramView.setClickable(false);
     }
   }
 }

@@ -20,10 +20,10 @@ public abstract class EIPCModuleManager
   public static final int INTERVAL = 1000000;
   static final String MODULE_EVENT = "__event_module";
   public static final int MSG_CALL_MODULE_AYSNC = 1;
-  static Handler sHandler;
+  static Handler sHandler = null;
   int callbackIdStart;
   public EIPCChannel channel;
-  public EIPCModuleFactory ipcModuleFactory;
+  public EIPCModuleFactory ipcModuleFactory = null;
   public final AtomicInteger mCallbackId = new AtomicInteger(1000);
   public SparseArray<EIPCResultCallback> mCallbackMap = new SparseArray();
   SparseArray<ArrayList<WeakReference<EIPCModule>>> mCareMessageModule = new SparseArray();

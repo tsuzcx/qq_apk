@@ -1,14 +1,19 @@
-import android.content.Intent;
-import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class azmh
-  implements azmj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class azmh
+  implements View.OnClickListener
 {
-  public azmh(ComponentCenter paramComponentCenter, int paramInt1, int paramInt2, Intent paramIntent) {}
+  azmh(azmg paramazmg) {}
   
-  public void a(azlv paramazlv)
+  public final void onClick(View paramView)
   {
-    paramazlv.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
+    this.a.dismiss();
+    this.a.a().a(1040);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

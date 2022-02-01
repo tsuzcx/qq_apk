@@ -1,20 +1,57 @@
+import android.view.View;
 import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
 import java.util.List;
 
-class yhy
-  extends JobSegment<yia, ybk>
+public class yhy
+  extends yop
 {
-  private int jdField_a_of_type_Int;
-  private List<CommentEntry> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private ybh jdField_a_of_type_Ybh;
+  public yhy(yhv paramyhv) {}
   
-  protected void a(JobContext paramJobContext, yia paramyia)
+  public void a(int paramInt, View paramView, Object paramObject, yqw paramyqw)
   {
-    this.jdField_a_of_type_Ybh = new ybh(paramyia, new yhz(this, paramJobContext, paramyia));
-    this.jdField_a_of_type_Ybh.c();
+    if ((paramInt < 0) || (paramInt > this.a.a.a(yhv.a(this.a)).size())) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramObject = (CommentEntry)this.a.a.a(yhv.a(this.a)).get(paramInt);
+          switch (paramView.getId())
+          {
+          default: 
+            return;
+          }
+        } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
+        wnu.a(paramView.getContext(), 12, paramObject.authorUnionId);
+        return;
+      } while (yhv.a(this.a) == null);
+      yhv.a(this.a).a(paramObject, paramInt);
+      return;
+    } while (yhv.a(this.a) == null);
+    yhv.a(this.a).N_();
+  }
+  
+  public void b(int paramInt, View paramView, Object paramObject, yqw paramyqw)
+  {
+    if ((paramInt < 0) || (paramInt > this.a.a.a(yhv.a(this.a)).size())) {}
+    do
+    {
+      do
+      {
+        return;
+        paramObject = (CommentEntry)this.a.a.a(yhv.a(this.a)).get(paramInt);
+        switch (paramView.getId())
+        {
+        default: 
+          return;
+        }
+      } while (yhv.a(this.a) == null);
+      yhv.a(this.a).b(paramObject, paramInt);
+      return;
+    } while (yhv.a(this.a) == null);
+    yhv.a(this.a).N_();
   }
 }
 

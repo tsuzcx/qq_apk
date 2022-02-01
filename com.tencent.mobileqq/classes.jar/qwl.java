@@ -1,64 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.articlesummary.articlesummary.LocalInfo;
 
 public class qwl
-  implements View.OnClickListener
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  rfj jdField_a_of_type_Rfj;
-  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
-  RelativeLayout[] jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout;
-  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView;
-  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView[] jdField_b_of_type_ArrayOfAndroidWidgetImageView;
-  ImageView[] c;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  private qwl(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
+  public qwl() {}
   
-  public void onClick(View paramView)
+  public qwl(articlesummary.LocalInfo paramLocalInfo)
   {
-    boolean bool = true;
-    switch (paramView.getId())
-    {
-    default: 
-      EventCollector.getInstance().onViewClicked(paramView);
+    if (paramLocalInfo == null) {
       return;
-    case 2131366911: 
-      i = 0;
-      label50:
-      if (i < this.jdField_a_of_type_Rfj.a.size()) {
-        if (((RecommendFollowInfo)this.jdField_a_of_type_Rfj.a.get(i)).isFollowed) {
-          break;
-        }
-      }
-      break;
     }
-    for (int i = 0;; i = 1)
-    {
-      ComponentContentRecommendFollowGroup localComponentContentRecommendFollowGroup = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup;
-      List localList = this.jdField_a_of_type_Rfj.a;
-      if (i == 0) {}
-      for (;;)
-      {
-        localComponentContentRecommendFollowGroup.a(localList, bool);
-        break;
-        i += 1;
-        break label50;
-        bool = false;
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup.a((RecommendFollowInfo)paramView.getTag());
-      break;
-    }
+    this.a = paramLocalInfo.bytes_store_url.get().toStringUtf8();
+    this.b = paramLocalInfo.bytes_store_url.get().toStringUtf8();
+    this.c = paramLocalInfo.bytes_store_address.get().toStringUtf8();
+    this.d = paramLocalInfo.bytes_store_longitude.get().toStringUtf8();
+    this.e = paramLocalInfo.bytes_store_latitude.get().toStringUtf8();
+    this.f = paramLocalInfo.bytes_distance_description.get().toStringUtf8();
+    this.g = paramLocalInfo.bytes_corporate_image_name.get().toStringUtf8();
+    this.h = paramLocalInfo.bytes_distance_limit.get().toStringUtf8();
   }
 }
 

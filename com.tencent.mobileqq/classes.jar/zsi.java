@@ -1,13 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.lang.ref.WeakReference;
 
 public class zsi
-  implements DialogInterface.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  public zsi(QRDisplayActivity paramQRDisplayActivity) {}
+  private final WeakReference<TextView> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public zsi(TextView paramTextView)
+  {
+    this.a = new WeakReference(paramTextView);
+  }
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = (TextView)this.a.get();
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setVisibility(8);
+    }
+  }
 }
 
 

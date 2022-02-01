@@ -1,4 +1,7 @@
-public abstract interface bpeo {}
+public abstract interface bpeo
+{
+  public abstract void a();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

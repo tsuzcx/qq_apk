@@ -1,22 +1,74 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
 public class avqe
-  implements Animation.AnimationListener
+  implements agvc
 {
-  public avqe(UiApiPlugin paramUiApiPlugin, View paramView, int paramInt1, int paramInt2) {}
+  private blrd jdField_a_of_type_Blrd = new avqf(this);
+  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  public boolean a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public avqe(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getRight(), this.b);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public static avqe a(BaseChatPie paramBaseChatPie)
+  {
+    return (avqe)paramBaseChatPie.a(6);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  private void b(XEditTextEx paramXEditTextEx)
+  {
+    try
+    {
+      paramXEditTextEx.b(this.jdField_a_of_type_Blrd);
+      return;
+    }
+    catch (Throwable paramXEditTextEx) {}
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 3) {
+      a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    }
+    do
+    {
+      return;
+      if (paramInt == 13)
+      {
+        b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+        return;
+      }
+    } while (paramInt != 5);
+    blhw.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
+  
+  public void a(XEditTextEx paramXEditTextEx)
+  {
+    try
+    {
+      paramXEditTextEx.a(this.jdField_a_of_type_Blrd);
+      return;
+    }
+    catch (Throwable paramXEditTextEx)
+    {
+      paramXEditTextEx.printStackTrace();
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 3, 13, 5 };
+  }
+  
+  public void b(int paramInt)
+  {
+    if (paramInt >= 30) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
 }
 
 

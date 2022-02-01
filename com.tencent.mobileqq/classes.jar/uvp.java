@@ -1,26 +1,34 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
-public class uvp
+class uvp
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public VideoFeedsAlphaMaskView a;
-  ZImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
-  TextView b;
-  TextView c;
-  TextView d;
-  TextView e;
-  TextView f;
+  private WSVideoPreDownloadManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager;
+  private String jdField_a_of_type_JavaLangString;
+  
+  uvp(WSVideoPreDownloadManager paramWSVideoPreDownloadManager, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager = paramWSVideoPreDownloadManager;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  {
+    uqf.a("WSVerticalForHomePresenter", "onPreLoadFailed");
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager.a();
+  }
+  
+  public void onPreLoadSucess(String paramString1, String paramString2)
+  {
+    uqf.a("WSVerticalForHomePresenter", "onPreLoadSucess");
+    if (TextUtils.equals(paramString1, ulb.a(this.jdField_a_of_type_JavaLangString)))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager.a();
+      uqf.a("WSVerticalForHomePresenter", "videoPreDownloadManager destroy");
+    }
+  }
 }
 
 

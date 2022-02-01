@@ -5,8 +5,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
-import tdv;
-import tdw;
+import sun;
+import suo;
 
 class PublicAccountImageCollectionPreloadManager$5
   implements Runnable
@@ -31,9 +31,9 @@ class PublicAccountImageCollectionPreloadManager$5
             localObject1 = new URL((String)localObject1);
             if (localObject1 != null)
             {
-              tdw localtdw = new tdw();
-              localtdw.a = ((URL)localObject1);
-              tdv.a().a(localtdw, null);
+              suo localsuo = new suo();
+              localsuo.a = ((URL)localObject1);
+              sun.a().a(localsuo, null);
             }
           }
           catch (MalformedURLException localMalformedURLException)

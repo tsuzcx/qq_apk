@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aszv;
-import atdm;
+import atrq;
+import atvg;
 
 public class NewFileUploader$1
   implements Runnable
 {
-  public NewFileUploader$1(aszv paramaszv) {}
+  public NewFileUploader$1(atrq paramatrq) {}
   
   public void run()
   {
-    if (aszv.a(this.this$0) != null) {
-      aszv.a(this.this$0).a(0L);
+    if (atrq.a(this.this$0) != null) {
+      atrq.a(this.this$0).a(0L);
     }
   }
 }

@@ -1,18 +1,39 @@
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class aonx
+  implements EIPCResultCallback
 {
-  long jdField_a_of_type_Long;
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  aonx(aonw paramaonw, String paramString) {}
   
-  aonx(aons paramaons) {}
+  private void a(EIPCResult paramEIPCResult)
+  {
+    switch (paramEIPCResult.code)
+    {
+    default: 
+      aonw.a(this.jdField_a_of_type_Aonw).a();
+      return;
+    }
+    aonw.a(this.jdField_a_of_type_Aonw).a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  private boolean a(EIPCResult paramEIPCResult)
+  {
+    return (paramEIPCResult == null) || (paramEIPCResult.data == null) || (aonw.a(this.jdField_a_of_type_Aonw) == null);
+  }
+  
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    if (a(paramEIPCResult))
+    {
+      QLog.e("ThirdPartyLoginUtilImpl", 1, "toWtLoginOnOpenSdk callback params error");
+      return;
+    }
+    QLog.d("ThirdPartyLoginUtilImpl", 1, "code=" + paramEIPCResult.code + " ssoResult=" + paramEIPCResult.data.getInt("key_sso_ret"));
+    a(paramEIPCResult);
+  }
 }
 
 

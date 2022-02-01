@@ -1,16 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.ShortcutUtils.4;
+import com.tencent.open.model.AppInfo;
+import java.util.List;
 
 public class bjza
-  implements DialogInterface.OnClickListener
+  implements anui
 {
-  public bjza(ShortcutUtils.4 param4) {}
+  protected void a(boolean paramBoolean, List<AppInfo> paramList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, List<AppInfo> paramList, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    QLog.e("Shortcut", 2, "cancel");
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      if (paramBoolean)
+      {
+        a(paramBoolean, (List)paramObject, null);
+        return;
+      }
+      a(paramBoolean, null, (String)paramObject);
+      return;
+    }
+    if (paramBoolean)
+    {
+      a(paramBoolean, (List)paramObject);
+      return;
+    }
+    a(paramBoolean, null);
   }
 }
 

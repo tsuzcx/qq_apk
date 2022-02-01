@@ -1,209 +1,92 @@
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService.1;
-import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService.2;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.lang.ref.WeakReference;
-import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qnd
+  extends qjh
 {
-  private static qnd jdField_a_of_type_Qnd;
-  private int jdField_a_of_type_Int;
-  private DecimalFormat jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("0.00");
-  private ConcurrentHashMap<Integer, WeakReference<pxz>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  
-  public static qnd a()
+  public qnd(Context paramContext, aoof paramaoof, sel paramsel)
   {
-    if (jdField_a_of_type_Qnd == null) {
-      jdField_a_of_type_Qnd = new qnd();
-    }
-    return jdField_a_of_type_Qnd;
+    super(paramContext, paramaoof, paramsel);
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public qjh a()
   {
-    Object localObject = (Integer)paramToServiceMsg.getAttributes().get("seq");
-    if (localObject == null) {}
-    do
+    this.jdField_a_of_type_Boolean = true;
+    return d(this.jdField_a_of_type_Sel, this.jdField_a_of_type_Aoof).q().g().l().j().n().h();
+  }
+  
+  public qjh d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout1.setOrientation(1);
+    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc);
+    }
+    if (this.jdField_a_of_type_Qjg != null)
     {
-      do
-      {
-        return;
-        localObject = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-      } while (localObject == null);
-      localObject = (pxz)((WeakReference)localObject).get();
-    } while (localObject == null);
-    ((pxz)localObject).a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+      localLayoutParams.setMargins(agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLinearLayout2.setLayoutParams(localLayoutParams);
+      localLinearLayout2.addView((View)this.jdField_a_of_type_Qjg);
+      localLinearLayout1.addView(localLinearLayout2);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout1);
+    return this;
   }
   
-  private boolean a(ToServiceMsg paramToServiceMsg)
+  public qjh e()
   {
-    int i;
-    int k;
-    if (paramToServiceMsg.getAttribute(pxz.f) != null)
-    {
-      i = ((Integer)paramToServiceMsg.getAttribute(pxz.f)).intValue();
-      if (i == 2)
-      {
-        k = 1;
-        QLog.d("ReadInJoyMSFService", 1, new Object[] { "is68bRetryReq = ", Boolean.valueOf(k), ", retryTimes = ", Integer.valueOf(i) });
-      }
-    }
-    for (;;)
-    {
-      int n = k;
-      int j;
-      if (paramToServiceMsg.getAttribute("retryIndex") != null)
-      {
-        j = ((Integer)paramToServiceMsg.getAttribute("retryIndex")).intValue();
-        if (j <= 0) {
-          break label162;
-        }
-      }
-      label162:
-      for (i = 1;; i = 0)
-      {
-        n = k | i;
-        QLog.d("ReadInJoyMSFService", 1, new Object[] { "is68bRetryReq = ", Boolean.valueOf(n), ", fastResendRetryIndex = ", Integer.valueOf(j) });
-        if (n != 0) {
-          QLog.d("ReadInJoyMSFService", 1, " isRetryRequest | 68b Retry");
-        }
-        return n;
-        m = 0;
-        break;
-      }
-      int m = 0;
-    }
+    return null;
   }
   
-  public void a()
+  public qjh g()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.jdField_a_of_type_Qjg = new ComponentContentUgcImage(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
   
-  public void a(ToServiceMsg paramToServiceMsg)
+  public qjh o()
   {
-    paramToServiceMsg = new ReadInJoyMSFService.2(this, paramToServiceMsg);
-    pha.a().post(paramToServiceMsg);
+    super.o();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    return this;
   }
   
-  public final void a(ToServiceMsg paramToServiceMsg, pxz parampxz)
+  public qjh p()
   {
-    if ((paramToServiceMsg == null) || (parampxz == null)) {
-      return;
+    super.p();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(this.jdField_a_of_type_Qjp);
     }
-    paramToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
-    parampxz = new WeakReference(parampxz);
-    pha.a().post(new ReadInJoyMSFService.1(this, paramToServiceMsg, parampxz));
-    a(paramToServiceMsg);
-  }
-  
-  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Exception paramException)
-  {
-    Object localObject = null;
-    if (paramToServiceMsg == null) {
-      return;
-    }
-    float f = (float)(System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey")) / 1000.0F;
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyMSFService", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + " app seq:" + paramFromServiceMsg.getAppSeq() + " during " + this.jdField_a_of_type_JavaTextDecimalFormat.format(f) + "sec.");
-      }
-      boolean bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("ReadInJoy", 4, "bPbResp:" + bool);
-      }
-      paramException = localObject;
-      if (paramBoolean)
-      {
-        if (!bool) {
-          break label477;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyMSFService", 2, "PB cmd: recv cmd: " + paramFromServiceMsg.getServiceCmd());
-        }
-        paramException = localObject;
-        if (paramFromServiceMsg.getWupBuffer() != null)
-        {
-          int i = paramFromServiceMsg.getWupBuffer().length - 4;
-          paramException = new byte[i];
-          bgva.a(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-          paramFromServiceMsg.putWupBuffer(paramException);
-          paramException = paramFromServiceMsg.getWupBuffer();
-        }
-      }
-    }
-    for (;;)
-    {
-      a(paramToServiceMsg, paramFromServiceMsg, paramException);
-      return;
-      if (paramFromServiceMsg.getResultCode() == 2008)
-      {
-        paramFromServiceMsg = BaseActivity.sTopActivity;
-        paramToServiceMsg = paramFromServiceMsg;
-        if (paramFromServiceMsg == null) {
-          paramToServiceMsg = pha.a().getApplication();
-        }
-        paramFromServiceMsg = new Intent(paramToServiceMsg, NotificationActivity.class);
-        paramFromServiceMsg.setFlags(872415232);
-        paramFromServiceMsg.putExtra("type", 2);
-        paramToServiceMsg.startActivity(paramFromServiceMsg);
-        return;
-      }
-      if (paramException != null)
-      {
-        ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-        paramException.printStackTrace(new PrintStream(localByteArrayOutputStream));
-        paramException = new String(localByteArrayOutputStream.toByteArray());
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("ReadInJoyMSFService", 2, "[NOT SEND]cmd=" + paramFromServiceMsg.getServiceCmd() + ", " + paramException);
-        break;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.w("ReadInJoyMSFService", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + ",CODE=" + paramFromServiceMsg.getResultCode() + " during " + this.jdField_a_of_type_JavaTextDecimalFormat.format(f) + "sec.");
-      break;
-      label477:
-      if (0 != 0) {}
-      try
-      {
-        throw new NullPointerException();
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        paramException = localObject;
-      }
-      paramException = localObject;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ReadInJoyMSFService", 2, "bpc null");
-        paramException = localObject;
-        continue;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ReadInJoyMSFService", 2, "", localException);
-          paramException = localObject;
-        }
-      }
-    }
+    return this;
   }
 }
 

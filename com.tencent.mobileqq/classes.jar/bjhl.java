@@ -1,22 +1,44 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
+import MWIFI.SCGet3rdCloudCheck;
 import android.content.Context;
-import android.content.Intent;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class bjhl
-  extends BroadcastReceiver
+final class bjhl
+  extends bjhw
 {
-  bjhl(bjhk parambjhk) {}
+  bjhl(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, aola paramaola) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt)
   {
-    if ((paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.qidian.openactionsheet")) && (this.a.mRuntime.a() != null))
+    if ((1 == paramInt) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aola);
+    }
+  }
+  
+  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, result: " + paramSCGet3rdCloudCheck);
+    }
+    if (paramSCGet3rdCloudCheck != null)
     {
-      paramContext = (bkho)bkif.a((Activity)paramContext, null);
-      paramContext.b(2131697470);
-      paramContext.c(2131690582);
-      paramContext.a(new bjhm(this, paramIntent, paramContext));
-      paramContext.show();
+      if (paramSCGet3rdCloudCheck.delayHour > 24) {
+        bjia.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramSCGet3rdCloudCheck.delayHour);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, tips: " + paramSCGet3rdCloudCheck.tips + " tipsType: " + paramSCGet3rdCloudCheck.tipsType + " delayHour: " + paramSCGet3rdCloudCheck.delayHour + " URL: " + paramSCGet3rdCloudCheck.h5);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+        Message localMessage = localMqqHandler.obtainMessage(1134063);
+        localMessage.obj = paramSCGet3rdCloudCheck;
+        localMqqHandler.sendMessage(localMessage);
+        bjhk.b(this.jdField_a_of_type_AndroidContentContext, 398677);
+      }
     }
   }
 }

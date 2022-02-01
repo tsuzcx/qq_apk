@@ -1,32 +1,84 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import eipc.EIPCResult;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.WebSocketProxyImpl.1;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy.WebSocketListener;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
+import okhttp3.MediaType;
+import okhttp3.WebSocket;
+import okio.ByteString;
 
-class blaz
-  extends VasQuickUpdateManager.CallBacker
+@ProxyService(proxy=WebSocketProxy.class)
+public class blaz
+  extends WebSocketProxy
 {
-  int jdField_a_of_type_Int;
+  public ConcurrentHashMap<Integer, blba> a = new ConcurrentHashMap();
   
-  blaz(blay paramblay, int paramInt)
+  public boolean closeSocket(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
-  {
-    if ((paramInt1 == 0) && (paramLong == 1000L) && ("vipComic_config_v2.json".equals(paramString1)))
+    blba localblba = (blba)this.a.get(Integer.valueOf(paramInt1));
+    if ((localblba != null) && (localblba.a != null)) {}
+    try
     {
-      paramString1 = VasQuickUpdateManager.getJSONFromLocal(BaseApplicationImpl.getApplication().getRuntime(), paramString1, false, null);
-      if (paramString1 != null)
+      localblba.a.close(paramInt2, paramString);
+      ThreadManager.getSubThreadHandler().postDelayed(new WebSocketProxyImpl.1(this, localblba, paramInt1, paramInt2, paramString), 1000L);
+      this.a.remove(Integer.valueOf(paramInt1));
+      return false;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
       {
-        paramString2 = new Bundle();
-        paramString2.putString("config_json", paramString1.toString());
-        this.jdField_a_of_type_Blay.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramString2));
+        QLog.e("WebSocketProxyImpl", 1, "closeSocket error:", paramString);
       }
     }
+  }
+  
+  public boolean connectSocket(int paramInt1, String paramString1, Map<String, String> paramMap, String paramString2, int paramInt2, WebSocketProxy.WebSocketListener paramWebSocketListener)
+  {
+    paramString1 = new blba(this, paramInt1, paramString1, paramMap, paramInt2, paramWebSocketListener);
+    this.a.put(Integer.valueOf(paramInt1), paramString1);
+    return true;
+  }
+  
+  public boolean send(int paramInt, String paramString)
+  {
+    blba localblba = (blba)this.a.get(Integer.valueOf(paramInt));
+    if ((localblba != null) && (localblba.a != null)) {
+      try
+      {
+        MediaType.parse("application/vnd.okhttp.websocket+text; charset=utf-8");
+        localblba.a.send(paramString);
+        return true;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("WebSocketProxyImpl", 1, "sendStringMessage error:", paramString);
+        return false;
+      }
+    }
+    return false;
+  }
+  
+  public boolean send(int paramInt, byte[] paramArrayOfByte)
+  {
+    blba localblba = (blba)this.a.get(Integer.valueOf(paramInt));
+    if ((localblba != null) && (localblba.a != null)) {
+      try
+      {
+        localblba.a.send(ByteString.of(paramArrayOfByte));
+        return true;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        QLog.e("WebSocketProxyImpl", 1, "sendBinaryMessage error:", paramArrayOfByte);
+        return false;
+      }
+    }
+    return false;
   }
 }
 

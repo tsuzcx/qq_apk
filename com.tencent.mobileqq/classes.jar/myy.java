@@ -1,6 +1,24 @@
+import android.os.Handler;
+import android.os.Message;
+
 class myy
+  extends Handler
 {
-  public static myw a = new myw(null);
+  myy(myx parammyx) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      myx.a(this.a, myx.a(this.a), myx.a(this.a));
+      myx.a(this.a);
+      return;
+    }
+    myx.b(this.a);
+  }
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atee;
+import atvy;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class MMApkFileSafeChecker$2
   implements Runnable
 {
-  public MMApkFileSafeChecker$2(atee paramatee, FileManagerEntity paramFileManagerEntity) {}
+  public MMApkFileSafeChecker$2(atvy paramatvy, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    atee.a(this.this$0, this.a);
+    atvy.a(this.this$0, this.a);
   }
 }
 

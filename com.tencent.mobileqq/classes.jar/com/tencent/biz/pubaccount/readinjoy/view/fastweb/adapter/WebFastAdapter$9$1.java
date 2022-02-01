@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import sxt;
+import sop;
 
 class WebFastAdapter$9$1
   implements Runnable
@@ -12,12 +12,12 @@ class WebFastAdapter$9$1
   
   public void run()
   {
-    Intent localIntent = sxt.a(this.a.this$0).getPackageManager().getLaunchIntentForPackage("com.tencent.reading");
+    Intent localIntent = sop.a(this.a.this$0).getPackageManager().getLaunchIntentForPackage("com.tencent.reading");
     if (localIntent != null)
     {
       localIntent.setFlags(268435456);
       localIntent.putExtra("big_brother_source_key", "biz_src_kandian_read");
-      sxt.a(this.a.this$0).startActivity(localIntent);
+      sop.a(this.a.this$0).startActivity(localIntent);
     }
   }
 }

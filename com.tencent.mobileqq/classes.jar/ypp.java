@@ -1,45 +1,38 @@
-import android.view.View;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-class ypp
-  extends yku
+public class ypp
+  extends wpa<ypq>
 {
-  ypp(ypb paramypb) {}
+  public static final String a = wnu.a("StorySvc.get_user_guide");
   
-  public void a(int paramInt, View paramView, Object paramObject, ynb paramynb)
+  public String a()
   {
-    boolean bool;
-    switch (paramView.getId())
+    return a;
+  }
+  
+  public ypq a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetUserGuide localRspGetUserGuide = new qqstory_service.RspGetUserGuide();
+    try
     {
-    default: 
-      if (ypb.a(this.a).a().size() <= 0) {
-        break label149;
-      }
-      paramView = this.a;
-      if (!ypb.a(this.a))
+      localRspGetUserGuide.mergeFrom(paramArrayOfByte);
+      return new ypq(localRspGetUserGuide);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
       {
-        bool = true;
-        ypb.a(paramView, bool);
-        ypb.a(this.a);
-        if (!ypb.a(this.a)) {
-          break label143;
-        }
+        paramArrayOfByte.printStackTrace();
+        yuk.c("Q.qqstory.home.GetUserGuideInfoStep", "decodeResponse error=%s", paramArrayOfByte);
       }
-      break;
     }
-    label143:
-    for (paramView = "1";; paramView = "2")
-    {
-      yqu.a("mystory", "clk_fold", 0, 0, new String[] { paramView, "2" });
-      yqu.a("home_page", "exp_share_day", 0, 0, new String[0]);
-      return;
-      ypb.a(this.a, ypb.a(this.a), paramView);
-      return;
-      bool = false;
-      break;
-    }
-    label149:
-    ypb.a(this.a, ypb.a(this.a), paramView);
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetUserGuide().toByteArray();
   }
 }
 

@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import biax;
+import bjbv;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.nearby.NearbyTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -15,7 +15,7 @@ public class DatingBaseActivity
 {
   public static final boolean a;
   protected int a;
-  protected biax a;
+  protected bjbv a;
   public boolean b;
   public boolean c;
   
@@ -36,11 +36,11 @@ public class DatingBaseActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_Int = getTitleBarHeight();
-    this.jdField_a_of_type_Biax = new biax(this);
+    this.jdField_a_of_type_Bjbv = new bjbv(this);
     this.b = getIntent().getBooleanExtra("abp_flag", false);
     this.c = getIntent().getBooleanExtra("is_from_web", false);
     if ((this.c) && (!this.b)) {
-      setLeftViewName(2131690389);
+      setLeftViewName(2131690384);
     }
     return true;
   }
@@ -48,8 +48,8 @@ public class DatingBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Biax != null) {
-      this.jdField_a_of_type_Biax.b();
+    if (this.jdField_a_of_type_Bjbv != null) {
+      this.jdField_a_of_type_Bjbv.b();
     }
   }
   

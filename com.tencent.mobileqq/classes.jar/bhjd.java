@@ -1,17 +1,38 @@
-class bhjd
-  implements bhjp
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.theme.SkinnableBitmapDrawable;
+import com.tencent.theme.SkinnableNinePatchDrawable;
+
+public class bhjd
 {
-  bhjd(bhjb parambhjb) {}
-  
-  public void a(int paramInt, String paramString) {}
-  
-  public void a(bhjg parambhjg)
+  public static int a(Drawable paramDrawable)
   {
-    if (parambhjg.a)
+    if (paramDrawable == null) {}
+    do
     {
-      bhjb.a(this.a, parambhjg);
-      bhjb.a(this.a);
-    }
+      return -1;
+      if ((paramDrawable instanceof BitmapDrawable)) {
+        return bhjx.a(((BitmapDrawable)paramDrawable).getBitmap());
+      }
+      if ((paramDrawable instanceof SkinnableBitmapDrawable)) {
+        return bhjx.a(((SkinnableBitmapDrawable)paramDrawable).getBitmap());
+      }
+    } while (!(paramDrawable instanceof SkinnableNinePatchDrawable));
+    return bhjx.a(((SkinnableNinePatchDrawable)paramDrawable).getBitmap());
+  }
+  
+  public static final Bitmap a(Drawable paramDrawable)
+  {
+    if (paramDrawable == null) {}
+    do
+    {
+      return null;
+      if ((paramDrawable instanceof BitmapDrawable)) {
+        return ((BitmapDrawable)paramDrawable).getBitmap();
+      }
+    } while (!(paramDrawable instanceof SkinnableBitmapDrawable));
+    return ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
   }
 }
 

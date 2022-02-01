@@ -1,40 +1,40 @@
 package dov.com.qq.im.ae.camera.ui;
 
-import bnip;
-import bojv;
-import bolb;
-import bpyf;
-import bpyg;
+import bojx;
+import bplq;
+import bpmw;
+import braa;
+import brab;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
 public class FilterPagerViewStubHolder$3
   implements Runnable
 {
-  public FilterPagerViewStubHolder$3(bnip parambnip, boolean paramBoolean) {}
+  public FilterPagerViewStubHolder$3(bojx parambojx, boolean paramBoolean) {}
   
   public void run()
   {
-    Object localObject = ((bolb)bojv.a(5)).a;
-    VideoFilterViewPager localVideoFilterViewPager = bnip.a(this.this$0);
+    Object localObject = ((bpmw)bplq.a(5)).a;
+    VideoFilterViewPager localVideoFilterViewPager = bojx.a(this.this$0);
     if ((localVideoFilterViewPager != null) && (localObject != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("FilterPagerViewStubHolder", 2, "onResourceDownload - updateAndSelectFilter() - comboFilterData not null");
       }
       localVideoFilterViewPager.setCaptureScene(0);
-      localObject = ((bpyf)localObject).a(0);
+      localObject = ((braa)localObject).a(0);
       if (localObject != null) {
-        localVideoFilterViewPager.a(((bpyg)localObject).c);
+        localVideoFilterViewPager.a(((brab)localObject).c);
       }
       if (!this.a) {
-        bnip.a(this.this$0).a(0);
+        bojx.a(this.this$0).a(0);
       }
     }
     while (!QLog.isColorLevel())
     {
       return;
-      bnip.a(this.this$0).a();
+      bojx.a(this.this$0).a();
       return;
     }
     QLog.d("FilterPagerViewStubHolder", 2, "onResourceDownload - updateAndSelectFilter() - filterPager is null or comboFilterData is null");

@@ -1,18 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 
 public class aerq
   implements DialogInterface.OnClickListener
 {
-  public aerq(NotifyPCActiveActivity paramNotifyPCActiveActivity, anip paramanip) {}
+  public aerq(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bhpc parambhpc) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Anip.b(true);
-    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity.finish();
+    this.jdField_a_of_type_Bhpc.dismiss();
   }
 }
 

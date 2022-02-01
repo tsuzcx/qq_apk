@@ -1,30 +1,16 @@
-import android.app.Activity;
-import com.tencent.mobileqq.mini.share.MiniProgramShareUtils.OnShareListener;
-import com.tencent.qqmini.sdk.launcher.model.InnerShareData;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
+import com.tencent.open.filedownload.ApkFileDownloadFragment.3.1;
+import mqq.os.MqqHandler;
 
-class bjyp
-  implements MiniProgramShareUtils.OnShareListener
+public class bjyp
+  extends bjyy
 {
-  bjyp(bjyo parambjyo, InnerShareData paramInnerShareData) {}
+  public bjyp(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
   
-  public void onShared(boolean paramBoolean1, boolean paramBoolean2)
+  public void a()
   {
-    InnerShareData localInnerShareData;
-    Activity localActivity;
-    if (paramBoolean1)
-    {
-      localInnerShareData = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData;
-      localActivity = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.fromActivity;
-      if (!paramBoolean2) {
-        break label35;
-      }
-    }
-    label35:
-    for (int i = 0;; i = 1)
-    {
-      localInnerShareData.notifyShareResult(localActivity, i, true);
-      return;
-    }
+    ThreadManager.getUIHandler().post(new ApkFileDownloadFragment.3.1(this));
   }
 }
 

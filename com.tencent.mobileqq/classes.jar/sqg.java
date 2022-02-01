@@ -1,6 +1,16 @@
-public abstract interface sqg
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+
+class sqg
+  implements ViewFactory.FoundClickableViewListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  sqg(sqf paramsqf, Context paramContext) {}
+  
+  public void onFound(ViewBase paramViewBase)
+  {
+    paramViewBase.setOnClickListener(new sqh(this));
+  }
 }
 
 

@@ -1,96 +1,108 @@
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaExtractor;
-import android.media.MediaMuxer;
-import android.support.annotation.RequiresApi;
-import java.io.File;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import javax.annotation.Nullable;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.util.QZLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bnor
+  extends bnnn
 {
-  @Nullable
-  @RequiresApi(api=18)
-  public static String a(String paramString1, String paramString2, String paramString3)
+  public static String a;
+  
+  static
   {
-    int j;
-    ByteBuffer localByteBuffer2;
-    MediaCodec.BufferInfo localBufferInfo1;
-    MediaCodec.BufferInfo localBufferInfo2;
+    jdField_a_of_type_JavaLangString = "Qzone";
+  }
+  
+  private void a(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
+  {
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
+    Activity localActivity;
+    do
+    {
+      return;
+      localActivity = paramWebViewPlugin.mRuntime.a();
+    } while ((localActivity == null) || (localActivity.isFinishing()));
+    paramWebViewPlugin = "";
+    try
+    {
+      paramArrayOfString = new JSONObject(paramArrayOfString[0]).optString("text", "");
+      paramWebViewPlugin = paramArrayOfString;
+    }
+    catch (JSONException paramArrayOfString)
+    {
+      for (;;)
+      {
+        QZLog.e("QzoneUserHomePageJsPlugin", "handleSetMessageBoardGate: parse json data error", paramArrayOfString);
+      }
+    }
+    paramArrayOfString = new Intent("QzoneUserHome.ACTION_openKapuHostMsg");
+    paramArrayOfString.putExtra("text", paramWebViewPlugin);
+    localActivity.sendBroadcast(paramArrayOfString);
+    QZLog.i("QzoneUserHomePageJsPlugin", 2, "handleSetKapuHostMessage: sendBroadcast,text:" + paramWebViewPlugin);
+  }
+  
+  private boolean a(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
+  {
+    boolean bool = false;
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {
+      return false;
+    }
+    Activity localActivity = paramWebViewPlugin.mRuntime.a();
+    if ((localActivity == null) || (localActivity.isFinishing())) {
+      return false;
+    }
     for (;;)
     {
       try
       {
-        new File(paramString3).createNewFile();
-        localMediaExtractor = new MediaExtractor();
-        localMediaExtractor.setDataSource(paramString2);
-        paramString2 = new MediaExtractor();
-        paramString2.setDataSource(paramString1);
-        paramString1 = new MediaMuxer(paramString3, 0);
-        localMediaExtractor.selectTrack(0);
-        k = paramString1.addTrack(localMediaExtractor.getTrackFormat(0));
-        paramString2.selectTrack(0);
-        j = paramString1.addTrack(paramString2.getTrackFormat(0));
-        i = 0;
-        localByteBuffer1 = ByteBuffer.allocate(1048576);
-        localByteBuffer2 = ByteBuffer.allocate(1048576);
-        localBufferInfo1 = new MediaCodec.BufferInfo();
-        localBufferInfo2 = new MediaCodec.BufferInfo();
-        localMediaExtractor.seekTo(0L, 2);
-        paramString2.seekTo(0L, 2);
-        paramString1.start();
+        paramWebViewPlugin = new JSONObject(paramArrayOfString[0]);
+        i = paramWebViewPlugin.optInt("open_msg_board", 0);
+        if (i == 0) {
+          bool = false;
+        }
       }
-      catch (IOException paramString1)
+      catch (JSONException paramWebViewPlugin) {}
+      try
       {
-        MediaExtractor localMediaExtractor;
-        int k;
-        ByteBuffer localByteBuffer1;
-        bnzb.a("AEVoiceVideoMergeUtil", "Mixer Error 1 " + paramString1.toString(), paramString1);
-        return null;
-        localBufferInfo1.presentationTimeUs = localMediaExtractor.getSampleTime();
-        localBufferInfo1.flags = localMediaExtractor.getSampleFlags();
-        paramString1.writeSampleData(k, localByteBuffer1, localBufferInfo1);
-        localMediaExtractor.advance();
-        continue;
+        i = paramWebViewPlugin.optInt("update_msg_board", 1);
+        paramWebViewPlugin = new Intent("QzoneUserHome.ACTION_openMsgBoard");
+        paramWebViewPlugin.putExtra("openMsgBoard", bool);
+        paramWebViewPlugin.putExtra("updateMsgBoard", i);
+        localActivity.sendBroadcast(paramWebViewPlugin);
+        QZLog.i("QzoneUserHomePageJsPlugin", 2, "handleSetMessageBoardGate: sendBroadcast,isOpenMsgBoard:" + bool + " ,updateType：" + i);
+        return true;
       }
-      catch (Exception paramString1)
+      catch (JSONException paramWebViewPlugin)
       {
-        bnzb.a("AEVoiceVideoMergeUtil", "Mixer Error 2 " + paramString1.toString(), paramString1);
-        return null;
+        break label149;
       }
-      if (i != 0) {
-        break label286;
-      }
-      localBufferInfo1.offset = 0;
-      localBufferInfo1.size = localMediaExtractor.readSampleData(localByteBuffer1, 0);
-      if ((localBufferInfo1.size >= 0) && (localBufferInfo2.size >= 0)) {
-        continue;
-      }
-      i = 1;
-      localBufferInfo1.size = 0;
+      bool = true;
+      continue;
+      label149:
+      QZLog.e("QzoneUserHomePageJsPlugin", "handleSetMessageBoardGate: parse json data error", paramWebViewPlugin);
+      int i = 1;
     }
-    label286:
-    int i = 0;
-    while (i == 0)
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!paramString2.equals(jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
+      return false;
+    }
+    if (bnmg.g.equalsIgnoreCase(paramString3))
     {
-      localBufferInfo2.offset = 0;
-      localBufferInfo2.size = paramString2.readSampleData(localByteBuffer2, 0);
-      if ((localBufferInfo1.size < 0) || (localBufferInfo2.size < 0))
-      {
-        i = 1;
-        localBufferInfo2.size = 0;
-      }
-      else
-      {
-        localBufferInfo2.presentationTimeUs = paramString2.getSampleTime();
-        localBufferInfo2.flags = paramString2.getSampleFlags();
-        paramString1.writeSampleData(j, localByteBuffer2, localBufferInfo2);
-        paramString2.advance();
-      }
+      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
+      return true;
     }
-    paramString1.stop();
-    paramString1.release();
-    return paramString3;
+    if (bnmg.h.equalsIgnoreCase(paramString3))
+    {
+      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, paramVarArgs);
+      return true;
+    }
+    return false;
   }
 }
 

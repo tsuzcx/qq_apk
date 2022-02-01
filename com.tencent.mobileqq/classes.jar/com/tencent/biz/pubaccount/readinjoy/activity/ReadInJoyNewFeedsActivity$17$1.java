@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import oje;
+import okm;
 
 public class ReadInJoyNewFeedsActivity$17$1
   implements Runnable
 {
-  public ReadInJoyNewFeedsActivity$17$1(oje paramoje) {}
+  public ReadInJoyNewFeedsActivity$17$1(okm paramokm) {}
   
   public void run()
   {

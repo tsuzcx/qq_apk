@@ -1,16 +1,11 @@
-import com.tencent.mobileqq.data.MessageForTofuIntimateAnniversary;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class bcbh
-  implements acwy
 {
-  public MessageRecord a(int paramInt)
-  {
-    if (paramInt == -7009) {
-      return new MessageForTofuIntimateAnniversary();
-    }
-    return null;
-  }
+  public volatile long a;
+  public volatile String a;
+  
+  public bcbh(UniteSearchActivity paramUniteSearchActivity) {}
 }
 
 

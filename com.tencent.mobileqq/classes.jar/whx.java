@@ -1,79 +1,25 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import java.io.File;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.album.view.AlbumImageView;
 
-public class whx
-  extends who
+class whx
+  implements Animation.AnimationListener
 {
-  public whx(@NonNull String[] paramArrayOfString)
-  {
-    super(paramArrayOfString);
-  }
+  whx(whw paramwhw) {}
   
-  protected void a(String[] paramArrayOfString, whp paramwhp)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int k = paramArrayOfString.length;
-    int i = 0;
-    for (;;)
+    if (whs.a(this.a.a) == 1)
     {
-      if (i < k)
-      {
-        paramwhp = new File(paramArrayOfString[i]).listFiles();
-        if (paramwhp == null)
-        {
-          i += 1;
-        }
-        else
-        {
-          int m = paramwhp.length;
-          int j = 0;
-          while (j < m)
-          {
-            if (j % 150 == 0) {}
-            try
-            {
-              Thread.sleep(100L);
-              File localFile = paramwhp[j];
-              if (a(localFile)) {
-                a(localFile);
-              }
-              j += 1;
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              for (;;)
-              {
-                yqp.e("Q.qqstory.cleaner:UploadTmpVideoCleanStep", "sleep error ,InterruptedException");
-              }
-            }
-          }
-        }
-      }
+      this.a.a.b.setVisibility(8);
+      whs.a(this.a.a).sendEmptyMessage(1);
     }
   }
   
-  protected boolean a(File paramFile)
-  {
-    if (!paramFile.isDirectory()) {}
-    while (System.currentTimeMillis() - paramFile.lastModified() <= 86400000L) {
-      return false;
-    }
-    paramFile = paramFile.listFiles();
-    int j = paramFile.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= j) {
-        break label60;
-      }
-      if (TextUtils.equals(paramFile[i].getName(), "dont_delete.txt")) {
-        break;
-      }
-      i += 1;
-    }
-    label60:
-    return true;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

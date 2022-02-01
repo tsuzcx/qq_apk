@@ -1,20 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView.4.2;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class avbs
-  implements DialogInterface.OnClickListener
+class avbs
+  implements View.OnClickListener
 {
-  public avbs(HotPicPageView.4.2 param2) {}
+  avbs(avbr paramavbr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
-    if (this.a.a.jdField_a_of_type_Avbz.a == 1) {
-      this.a.a.jdField_a_of_type_Avbz.a(0);
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      String str = this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl.trim();
+      if (QLog.isColorLevel()) {
+        QLog.e("ForwardOption.ForwardSdkBaseOption", 2, "gotoWeb " + str);
+      }
+      Intent localIntent = new Intent(this.a.a.jdField_a_of_type_AndroidAppActivity, QQBrowserDelegationActivity.class);
+      localIntent.putExtra("param_force_internal_browser", true);
+      localIntent.putExtra("reqType", 7);
+      localIntent.putExtra("hide_more_button", true);
+      localIntent.putExtra("url", str);
+      agbh.a(this.a.a.jdField_a_of_type_AndroidAppActivity, localIntent, str);
+      this.a.a.F();
     }
-    QLog.d("HotPicManagerHotPicPageView", 2, "user click button");
   }
 }
 

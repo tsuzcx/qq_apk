@@ -23,7 +23,7 @@
             "setRemoteInfo:": "$jump_report_info"
         },
         "subviews": [
-            {
+            {   
                 "$includeComponet": "componet/RIJ_feeds_social_header.geojson"
             },
             {

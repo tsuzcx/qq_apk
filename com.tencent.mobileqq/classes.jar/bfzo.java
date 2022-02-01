@@ -1,47 +1,43 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class bfzo
-  implements bdfn
+public class bfzo
+  extends Handler
 {
-  public int a;
-  public long a;
-  public long b;
-  public long c;
+  private WeakReference<BeginnerGuideFragment> a;
   
-  bfzo(bfzc parambfzc)
+  public bfzo(BeginnerGuideFragment paramBeginnerGuideFragment, Looper paramLooper)
   {
-    this.jdField_a_of_type_Int = 0;
+    super(paramLooper);
+    this.a = new WeakReference(paramBeginnerGuideFragment);
   }
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    this.c = NetConnInfoCenter.getServerTimeMillis();
-    switch (this.jdField_a_of_type_Int)
+    super.handleMessage(paramMessage);
+    BeginnerGuideFragment localBeginnerGuideFragment = (BeginnerGuideFragment)this.a.get();
+    if (localBeginnerGuideFragment == null) {}
+    do
     {
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_giftTroopGiftAnimationController", 2, "animation frame end. requestState:" + this.jdField_a_of_type_Int);
-      }
       return;
-      this.jdField_a_of_type_Bfzc.a(0L);
-      continue;
-      this.jdField_a_of_type_Bfzc.a(3000L);
-      continue;
-      long l = this.c - this.b;
-      if (l >= 2000L)
+      switch (paramMessage.what)
       {
-        this.jdField_a_of_type_Bfzc.a(0L);
+      default: 
+        return;
+      case 1110: 
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideFragment", 2, "parse config from network success");
+        }
+        break;
       }
-      else
-      {
-        this.jdField_a_of_type_Bfzc.a(2000L - l);
-        continue;
-        this.jdField_a_of_type_Bfzc.a(3000L);
-      }
-    }
+    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String)));
+    BeginnerGuideFragment.a(localBeginnerGuideFragment, (String)paramMessage.obj, paramMessage.arg1);
+    return;
+    BeginnerGuideFragment.a(localBeginnerGuideFragment, paramMessage.what);
   }
 }
 

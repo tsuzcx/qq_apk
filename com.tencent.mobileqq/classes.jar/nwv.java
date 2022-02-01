@@ -1,25 +1,66 @@
-public class nwv
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+
+class nwv
+  implements INetInfoHandler
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
+  nws a;
   
-  public boolean a()
+  public nwv(nws paramnws1, nws paramnws2)
   {
-    return this.b == 1;
+    this.a = paramnws2;
   }
   
-  public String toString()
+  public void a()
   {
-    return "materialId = " + this.jdField_a_of_type_Int + " ,repeatedReqFlag=" + this.b + " kdPos=" + this.c + ",adPosID=" + this.jdField_a_of_type_Long;
+    this.a = null;
+  }
+  
+  public void onNetMobile2None()
+  {
+    nws.c("onNetMobile2None");
+    if (this.a != null) {
+      nws.b(this.a);
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    nws.c("onNetMobile2Wifi");
+    if (this.a != null) {
+      nws.b(this.a);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    nws.c("onNetNone2Mobile");
+    if (this.a != null) {
+      nws.b(this.a);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    nws.c("onNetNone2Wifi");
+    if (this.a != null) {
+      nws.b(this.a);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    nws.c("onNetWifi2Mobile");
+    if (this.a != null) {
+      nws.b(this.a);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    nws.c("onNetWifi2None");
+    if (this.a != null) {
+      nws.b(this.a);
+    }
   }
 }
 

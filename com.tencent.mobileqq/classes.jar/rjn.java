@@ -1,19 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import mqq.app.QQPermissionCallback;
-
-public class rjn
-  implements QQPermissionCallback
+class rjn
+  implements rjd<qzp>
 {
-  public rjn(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  rjn(rjj paramrjj) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public boolean a(qzp paramqzp)
   {
-    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.p();
+    return paramqzp.b <= scm.b();
   }
 }
 

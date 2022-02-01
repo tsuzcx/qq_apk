@@ -1,185 +1,292 @@
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.media.SoundPool;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.util.LRULinkedHashMap;
+import java.util.Collections;
+import java.util.Map;
+import org.json.JSONObject;
 
 public class anbs
-  implements anbl
+  implements anbv
 {
-  public static int a;
-  private static int jdField_b_of_type_Int = 3;
-  private static int c = 10000;
-  private long jdField_a_of_type_Long;
-  private anax jdField_a_of_type_Anax;
-  private List<TraceData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private long jdField_b_of_type_Long = System.currentTimeMillis() - 540000L;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int d;
-  private int e;
+  private int jdField_a_of_type_Int = 1;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private SoundPool jdField_a_of_type_AndroidMediaSoundPool;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new LRULinkedHashMap(20));
+  private int b;
   
-  static
+  public anbs(int paramInt)
   {
-    jdField_a_of_type_Int = 30000;
+    QLog.i("cmgame_process.CmGameSoudPoolPlayer", 1, "[CmGameSoudPoolPlayer]");
+    this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(20, 3, 0);
+    this.b = paramInt;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = anbd.a();
+    this.jdField_a_of_type_AndroidContentSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
+    d();
   }
   
-  private void a(TraceData paramTraceData)
+  private void a(amwx paramamwx, int paramInt, long paramLong)
   {
-    if ((paramTraceData == null) || (paramTraceData.result == null)) {}
-    do
-    {
-      return;
-      l1 = System.currentTimeMillis();
-      if (l1 - this.jdField_b_of_type_Long < 1000L)
-      {
-        paramTraceData.result.c = this.d;
-        paramTraceData.result.d = this.e;
-        return;
-      }
-    } while ((l1 - this.jdField_b_of_type_Long <= 600000L) && ((!paramTraceData.isSampleFocus) || (l1 - this.jdField_b_of_type_Long <= 300000L)));
-    this.jdField_b_of_type_Long = l1;
-    long l1 = System.currentTimeMillis();
-    this.d = anbg.b();
-    this.e = anbg.a();
-    long l2 = System.currentTimeMillis();
-    QLog.i("TraceReport", 1, "samplingCpuAndMemory cpu:" + this.e + ",memory:" + this.d + ",isSampleFocus:" + paramTraceData.isSampleFocus + ",cost:" + (l2 - l1));
-    paramTraceData.result.c = this.d;
-    paramTraceData.result.d = this.e;
-  }
-  
-  private void c(List<TraceData> paramList)
-  {
-    anbm localanbm = this.jdField_a_of_type_Anax.a();
-    if (localanbm != null) {
-      localanbm.b(paramList);
+    ApolloCmdChannel localApolloCmdChannel = anbd.a();
+    if (localApolloCmdChannel != null) {
+      localApolloCmdChannel.playMusicInner(paramamwx, paramInt, paramLong);
     }
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {}
+    while (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
+      return;
+    }
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("apollo_game_music_switch" + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin() + "_" + this.b, 1);
+  }
+  
+  public int a(int paramInt)
+  {
+    return 0;
+  }
+  
+  public int a(amwx paramamwx, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat)
+  {
+    if ((this.b > 0) && ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) || (!anbd.d()) || (paramamwx == null)))
+    {
+      QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "[playMusic], DO NOT play. switch:" + this.jdField_a_of_type_Int);
+      return -1;
+    }
+    label283:
+    label330:
+    for (Object localObject = null;; localObject = null)
+    {
+      try
+      {
+        if ((paramamwx instanceof ApolloSurfaceView)) {
+          localObject = ((ApolloSurfaceView)paramamwx).getRender();
+        }
+        for (;;)
+        {
+          if (localObject == null) {
+            break label330;
+          }
+          localObject = ((ApolloRender)localObject).getRscPath(paramString, "mp3");
+          if (!TextUtils.isEmpty((CharSequence)localObject)) {
+            break;
+          }
+          QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "audioPath is null.");
+          return -1;
+          if ((paramamwx instanceof ApolloTextureView)) {
+            localObject = ((ApolloTextureView)paramamwx).getRender();
+          }
+        }
+        if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {
+          break label283;
+        }
+      }
+      catch (Throwable paramamwx)
+      {
+        QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, paramamwx, new Object[0]);
+        return -1;
+      }
+      if (this.jdField_a_of_type_JavaUtilMap != null)
+      {
+        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new anbu(this, paramFloat, paramInt2, paramString, paramamwx, paramLong));
+        paramString = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+        if (paramString != null) {
+          if (-1.0F == paramFloat)
+          {
+            paramFloat = 1.0F;
+            paramInt1 = this.jdField_a_of_type_AndroidMediaSoundPool.play(paramString.intValue(), paramFloat, paramFloat, 0, paramInt2, 1.0F);
+            if (paramInt1 != 0) {
+              a(paramamwx, paramInt1, paramLong);
+            }
+          }
+        }
+        for (;;)
+        {
+          return 0;
+          break;
+          paramInt1 = this.jdField_a_of_type_AndroidMediaSoundPool.load((String)localObject, 1);
+          this.jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(paramInt1));
+        }
+      }
+      paramamwx = new StringBuilder().append("pool or cache is null ");
+      if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {}
+      for (boolean bool = true;; bool = false)
+      {
+        QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, bool);
+        break;
+      }
+    }
+  }
+  
+  public int a(AppInterface paramAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameSoudPoolPlayer", 2, new Object[] { "[getMusicSwitch], gameId:", Integer.valueOf(this.b) });
+    }
+    d();
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public JSONObject a(ancl paramancl, JSONObject paramJSONObject)
+  {
+    if ((this.b > 0) && ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) || (!anbd.d())))
+    {
+      QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "[playMusic], DO NOT play. switch:" + this.jdField_a_of_type_Int);
+      return paramJSONObject;
+    }
+    JSONObject localJSONObject;
+    int i;
+    String str2;
+    float f;
+    String str1;
+    if (paramJSONObject != null) {
+      try
+      {
+        localJSONObject = new JSONObject(paramJSONObject.toString());
+        paramJSONObject.optInt("type");
+        i = paramJSONObject.optInt("loop");
+        str2 = paramJSONObject.optString("src");
+        f = (float)paramJSONObject.optDouble("volume");
+        str1 = amzf.a(str2, this.b, "", false);
+        if (!TextUtils.isEmpty(str1)) {
+          break label151;
+        }
+        QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "audioPath is null.");
+        return paramJSONObject;
+      }
+      catch (Throwable paramancl)
+      {
+        QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, paramancl, new Object[0]);
+      }
+    } else {
+      return null;
+    }
+    label151:
+    if ((this.jdField_a_of_type_AndroidMediaSoundPool != null) && (this.jdField_a_of_type_JavaUtilMap != null))
+    {
+      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new anbt(this, f, i, str2, paramancl, localJSONObject));
+      paramJSONObject = (Integer)this.jdField_a_of_type_JavaUtilMap.get(str1);
+      if (paramJSONObject != null)
+      {
+        if (-1.0F != f) {
+          break label357;
+        }
+        f = 1.0F;
+      }
+    }
+    label357:
+    for (;;)
+    {
+      for (;;)
+      {
+        i = this.jdField_a_of_type_AndroidMediaSoundPool.play(paramJSONObject.intValue(), f, f, 0, i, 1.0F);
+        if ((i == 0) || (paramancl == null)) {
+          break;
+        }
+        try
+        {
+          localJSONObject.put("id", i);
+          paramancl.a(localJSONObject);
+        }
+        catch (Throwable paramancl)
+        {
+          QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, paramancl, new Object[0]);
+        }
+      }
+      break;
+      i = this.jdField_a_of_type_AndroidMediaSoundPool.load(str1, 1);
+      this.jdField_a_of_type_JavaUtilMap.put(str1, Integer.valueOf(i));
+      break;
+      paramancl = new StringBuilder().append("pool or cache is null ");
+      if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {}
+      for (boolean bool = true;; bool = false)
+      {
+        QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, bool);
+        break;
+      }
+    }
+  }
+  
+  public JSONObject a(JSONObject paramJSONObject)
+  {
+    if ((this.jdField_a_of_type_AndroidMediaSoundPool != null) && (paramJSONObject != null) && (paramJSONObject.has("id"))) {
+      this.jdField_a_of_type_AndroidMediaSoundPool.unload(paramJSONObject.optInt("id"));
+    }
+    return paramJSONObject;
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_Anax.a();
-    if (localObject != null)
-    {
-      localObject = ((anbm)localObject).a();
-      if (localObject != null) {
-        this.jdField_a_of_type_JavaUtilList = ((List)localObject);
-      }
+    if (this.jdField_a_of_type_AndroidMediaSoundPool != null) {
+      this.jdField_a_of_type_AndroidMediaSoundPool.autoPause();
     }
   }
   
-  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt, AppInterface paramAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TraceReport", 2, new Object[] { "onReportStrategyChange reportInterval:", Integer.valueOf(paramInt1), ",reportNum:", Integer.valueOf(paramInt2), ", isFailReport:", Boolean.valueOf(paramBoolean) });
+    if ((this.jdField_a_of_type_AndroidContentSharedPreferences == null) || (paramAppInterface == null)) {
+      return;
     }
-    if (paramInt1 > 0) {
-      jdField_a_of_type_Int = paramInt1 * 1000;
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("apollo_game_music_switch" + paramAppInterface.getCurrentAccountUin() + "_" + this.b, paramInt).commit();
+    if (paramInt == 0) {
+      a();
     }
-    if (paramInt2 > 0) {
-      jdField_b_of_type_Int = paramInt2;
-    }
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(anax paramanax)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Anax = paramanax;
-    paramanax = this.jdField_a_of_type_Anax.a();
-    if (paramanax != null) {
-      paramanax.a(this);
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(List<TraceData> paramList)
-  {
-    anbk localanbk = this.jdField_a_of_type_Anax.a();
-    if (localanbk != null)
-    {
-      localanbk.a(paramList);
-      localanbk.b(paramList);
+    if (this.jdField_a_of_type_AndroidMediaSoundPool != null) {
+      this.jdField_a_of_type_AndroidMediaSoundPool.pause(paramInt);
     }
   }
   
-  public boolean a(TraceData paramTraceData)
+  public int b(int paramInt)
   {
-    long l1 = System.currentTimeMillis();
-    a(paramTraceData);
-    this.jdField_a_of_type_JavaUtilList.add(paramTraceData);
-    if (this.jdField_b_of_type_Boolean)
-    {
-      boolean bool2 = bgnt.g(null);
-      long l2 = l1 - this.jdField_a_of_type_Long;
-      int i = this.jdField_a_of_type_JavaUtilList.size();
-      if ((paramTraceData.result != null) && (paramTraceData.result.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Boolean))
-      {
-        bool1 = true;
-        if (((i < jdField_b_of_type_Int) || (l2 <= c)) && (((l2 <= jdField_a_of_type_Int) && (!bool1)) || (!bool2))) {
-          break label254;
-        }
-        a(this.jdField_a_of_type_JavaUtilList);
-        c(this.jdField_a_of_type_JavaUtilList);
-        this.jdField_a_of_type_JavaUtilList.clear();
-        long l3 = System.currentTimeMillis();
-        this.jdField_a_of_type_Long = l3;
-        if (QLog.isColorLevel()) {
-          QLog.d("TraceReport", 2, new Object[] { "handleAddTraceReporting interval:", Long.valueOf(l2), ",reportSize:", Integer.valueOf(i), ",report all cost:", Long.valueOf(l3 - l1), ",isFailReport:", Boolean.valueOf(bool1) });
-        }
-      }
-      for (boolean bool1 = false;; bool1 = true)
-      {
-        if ((!bool2) && (QLog.isColorLevel())) {
-          QLog.d("TraceReport", 2, "handleAddTraceReporting not network and save");
-        }
-        return bool1;
-        bool1 = false;
-        break;
-        label254:
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(paramTraceData);
-        b(localArrayList);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TraceReport", 2, "handleAddTraceReporting not active and save");
-    }
-    b(this.jdField_a_of_type_JavaUtilList);
-    return false;
+    return 0;
   }
   
   public void b()
   {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    boolean bool = bgnt.g(null);
-    if ((i <= 0) || (!bool) || (!this.jdField_b_of_type_Boolean)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TraceReport", 2, new Object[] { "flushDelayReport reportSize:", Integer.valueOf(i), ", net:", Boolean.valueOf(bool), ",mActive:", Boolean.valueOf(this.jdField_b_of_type_Boolean) });
-      }
+    if (this.jdField_a_of_type_AndroidMediaSoundPool != null) {
+      this.jdField_a_of_type_AndroidMediaSoundPool.autoResume();
     }
-    do
-    {
-      return;
-      a(this.jdField_a_of_type_JavaUtilList);
-      c(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-    } while (!QLog.isColorLevel());
-    QLog.d("TraceReport", 2, new Object[] { "handleAddTraceReporting flushDelayReport reportSize:", Integer.valueOf(i) });
   }
   
-  public void b(List<TraceData> paramList)
+  public void b(int paramInt, String paramString)
   {
-    anbm localanbm = this.jdField_a_of_type_Anax.a();
-    if (localanbm != null) {
-      localanbm.a(paramList);
+    if (this.jdField_a_of_type_AndroidMediaSoundPool != null) {
+      this.jdField_a_of_type_AndroidMediaSoundPool.resume(paramInt);
     }
   }
   
   public void c()
   {
-    this.jdField_b_of_type_Boolean = false;
-    b(this.jdField_a_of_type_JavaUtilList);
+    QLog.i("cmgame_process.CmGameSoudPoolPlayer", 1, "[onDestroy]");
+    if (this.jdField_a_of_type_AndroidMediaSoundPool != null)
+    {
+      this.jdField_a_of_type_AndroidMediaSoundPool.release();
+      this.jdField_a_of_type_AndroidMediaSoundPool = null;
+    }
+  }
+  
+  public void c(int paramInt, String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidMediaSoundPool != null) {
+      this.jdField_a_of_type_AndroidMediaSoundPool.stop(paramInt);
+    }
   }
 }
 

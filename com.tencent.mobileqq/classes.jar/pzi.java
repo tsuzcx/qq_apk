@@ -1,29 +1,29 @@
-import android.support.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
 
 class pzi
-  implements pzk<BEAN, COOKIE>
+  implements View.OnAttachStateChangeListener
 {
-  pzi(pzf parampzf, pze parampze) {}
+  pzi(pzh parampzh) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, ArrayList<BEAN> paramArrayList, @Nullable COOKIE paramCOOKIE, int paramInt2, String paramString)
+  public void onViewAttachedToWindow(View paramView) {}
+  
+  public void onViewDetachedFromWindow(View paramView)
   {
-    this.jdField_a_of_type_Pzf.a.addAll(paramArrayList);
-    if (paramBoolean1)
+    if (pzh.a(this.a) != null)
     {
-      pzf.a(this.jdField_a_of_type_Pzf, paramCOOKIE);
-      paramArrayList = this.jdField_a_of_type_Pzf;
-      if (paramBoolean2) {
-        break label68;
-      }
+      pzh.a(this.a).b();
+      pzh.a(this.a, null);
     }
-    label68:
-    for (paramBoolean2 = true;; paramBoolean2 = false)
+    if (pzh.a(this.a) != null)
     {
-      pzf.a(paramArrayList, paramBoolean2);
-      this.jdField_a_of_type_Pze.a(paramBoolean1, this.jdField_a_of_type_Pzf.a, paramInt2, paramString);
-      return;
+      pzh.a(this.a).a();
+      pzh.a(this.a, null);
+    }
+    if (pzh.a(this.a) != null)
+    {
+      pzh.a(this.a).a();
+      pzh.a(this.a, null);
     }
   }
 }

@@ -5,14 +5,14 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.biz.pubaccount.VideoInfo;
-import ruq;
-import sby;
+import rlm;
+import rsr;
 
 public class VideoFeedsNormalFollowBtn
   extends TextView
-  implements ruq
+  implements rlm
 {
   public VideoFeedsNormalFollowBtn(Context paramContext)
   {
@@ -43,13 +43,13 @@ public class VideoFeedsNormalFollowBtn
   {
     if (paramBoolean)
     {
-      setText(anni.a(2131714877));
-      setBackgroundDrawable(sby.a(getContext(), 2130843091));
+      setText(anzj.a(2131714986));
+      setBackgroundDrawable(rsr.a(getContext(), 2130843111));
       setCompoundDrawables(null, null, null, null);
       return;
     }
-    setText(anni.a(2131714899));
-    setBackgroundDrawable(sby.a(getContext(), 2130842932));
+    setText(anzj.a(2131715008));
+    setBackgroundDrawable(rsr.a(getContext(), 2130842952));
   }
 }
 

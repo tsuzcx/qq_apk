@@ -1,7 +1,7 @@
 package cooperation.qqreader.ui;
 
 import android.content.Intent;
-import blpu;
+import bmqw;
 
 class ForceUserUpdateActivity$8
   implements Runnable
@@ -14,7 +14,7 @@ class ForceUserUpdateActivity$8
     if (localIntent1 != null)
     {
       localIntent1 = (Intent)localIntent1.getParcelableExtra("origin_intent");
-      blpu.d("ForceUserUpdateActivity", "finishForceUpdateIfNeeded: finish");
+      bmqw.d("ForceUserUpdateActivity", "finishForceUpdateIfNeeded: finish");
       Intent localIntent2 = new Intent();
       if (localIntent1 != null) {
         localIntent2.putExtras(localIntent1);
@@ -29,7 +29,7 @@ class ForceUserUpdateActivity$8
     {
       this.this$0.finish();
       return;
-      blpu.a("ForceUserUpdateActivity", "finishForceUpdateIfNeeded: currentIntent = null");
+      bmqw.a("ForceUserUpdateActivity", "finishForceUpdateIfNeeded: currentIntent = null");
     }
   }
 }

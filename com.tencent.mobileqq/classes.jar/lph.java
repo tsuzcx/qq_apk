@@ -1,26 +1,40 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
 
 class lph
-  extends Handler
+  implements beuq
 {
-  WeakReference<lpg> a;
-  
-  lph(Looper paramLooper, lpg paramlpg)
+  public void onResp(bevm parambevm)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramlpg);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    lpg locallpg = (lpg)this.a.get();
-    if (locallpg != null) {
-      locallpg.a(paramMessage);
+    Object localObject = (lpi)parambevm.jdField_a_of_type_Bevl.a();
+    lbj.c("EffectBeautyTools", "download file call back. file = " + ((lpi)localObject).a);
+    if (parambevm.jdField_a_of_type_Int != 0)
+    {
+      lbj.c("EffectBeautyTools", "download file faild. errcode = " + parambevm.b);
+      return;
+    }
+    if (!((lpi)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(parambevm.jdField_a_of_type_Bevl.c)))
+    {
+      lbj.c("EffectBeautyTools", "download file faild : md5 is not match.");
+      bhmi.d(parambevm.jdField_a_of_type_Bevl.c);
+      return;
+    }
+    lbj.c("EffectBeautyTools", "download file successed.");
+    try
+    {
+      localObject = lbm.h();
+      bhmi.a(parambevm.jdField_a_of_type_Bevl.c, (String)localObject, false);
+      bhmi.d(parambevm.jdField_a_of_type_Bevl.c);
+      return;
+    }
+    catch (IOException parambevm)
+    {
+      parambevm.printStackTrace();
+      lbj.c("EffectBeautyTools", "unzip file faild.");
     }
   }
+  
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

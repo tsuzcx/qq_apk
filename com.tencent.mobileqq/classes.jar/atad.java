@@ -1,31 +1,21 @@
-class atad
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
+final class atad
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private aszx jdField_a_of_type_Aszx;
+  atad(atay paramatay) {}
   
-  public atad(atab paramatab, aszx paramaszx)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Aszx = paramaszx;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public aszx a()
-  {
-    return this.jdField_a_of_type_Aszx;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atad
  * JD-Core Version:    0.7.0.1
  */

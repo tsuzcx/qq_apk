@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.weishi_new.download;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import apwe;
+import aqju;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 import mqq.util.WeakReference;
-import ugb;
-import ugq;
-import ugx;
-import umw;
-import upe;
-import ups;
+import ugd;
+import ugs;
+import ugz;
+import unx;
+import uqf;
+import uqt;
 
 public class RockDownloadPresenter
 {
@@ -34,8 +34,8 @@ public class RockDownloadPresenter
   
   public RockDownloadInfo a()
   {
-    int i = ugb.a().e();
-    String str2 = ugb.a().c();
+    int i = ugd.a().c();
+    String str2 = ugd.a().c();
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = a();
@@ -46,11 +46,11 @@ public class RockDownloadPresenter
   public void a(Activity paramActivity, RockDownloadInfo paramRockDownloadInfo, int paramInt, WSDownloadParams paramWSDownloadParams, RockDownloadListenerWrapper paramRockDownloadListenerWrapper)
   {
     if ((paramActivity != null) && (paramInt == 3)) {
-      ugq.a(paramActivity);
+      ugs.a(paramActivity);
     }
-    if (ugx.c())
+    if (ugz.c())
     {
-      upe.d("RockDownloader", "已有正在下载的任务，不响应");
+      uqf.d("RockDownloader", "已有正在下载的任务，不响应");
       return;
     }
     WSDownloadParams localWSDownloadParams = paramWSDownloadParams;
@@ -58,48 +58,48 @@ public class RockDownloadPresenter
       localWSDownloadParams = new WSDownloadParams();
     }
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams = localWSDownloadParams;
-    umw.a(localWSDownloadParams, 1);
+    unx.a(localWSDownloadParams, 1);
     WSPublicAccReport.getInstance().reportDownload(localWSDownloadParams.mEventId, paramInt, 1, 1, 0);
     if (paramInt == 1)
     {
-      apwe.a(paramRockDownloadInfo, a(paramActivity, paramRockDownloadListenerWrapper));
-      upe.d("RockDownloader", "执行预下载Rock下载 " + paramRockDownloadInfo.toString());
+      aqju.a(paramRockDownloadInfo, a(paramActivity, paramRockDownloadListenerWrapper));
+      uqf.d("RockDownloader", "执行预下载Rock下载 " + paramRockDownloadInfo.toString());
       return;
     }
-    ups.b(localWSDownloadParams.mScheme);
-    apwe.a(paramRockDownloadInfo, a(paramActivity, paramRockDownloadListenerWrapper));
-    upe.d("RockDownloader", "执行可call起安装Rock下载 " + paramRockDownloadInfo.toString());
+    uqt.b(localWSDownloadParams.mScheme);
+    aqju.a(paramRockDownloadInfo, a(paramActivity, paramRockDownloadListenerWrapper));
+    uqf.d("RockDownloader", "执行可call起安装Rock下载 " + paramRockDownloadInfo.toString());
   }
   
   public boolean a(RockDownloadInfo paramRockDownloadInfo)
   {
-    boolean bool = apwe.a(paramRockDownloadInfo);
+    boolean bool = aqju.a(paramRockDownloadInfo);
     if (bool)
     {
-      upe.b("RockDownloader", "rockdownload deleteSuccess");
+      uqf.b("RockDownloader", "rockdownload deleteSuccess");
       return bool;
     }
     if (paramRockDownloadInfo.realVersionCode == 333)
     {
-      upe.b("RockDownloader", "rockdownload 模拟 deleteFail");
+      uqf.b("RockDownloader", "rockdownload 模拟 deleteFail");
       return bool;
     }
-    upe.b("RockDownloader", "rockdownload deleteFail");
+    uqf.b("RockDownloader", "rockdownload deleteFail");
     return bool;
   }
   
   public boolean a(RockDownloadInfo paramRockDownloadInfo, int paramInt)
   {
-    boolean bool = apwe.b(paramRockDownloadInfo);
-    int i = ugx.b();
+    boolean bool = aqju.b(paramRockDownloadInfo);
+    int i = ugz.b();
     if (bool)
     {
-      upe.d("RockDownloader", "rockdownload installSuccess,eventType = " + i);
-      umw.a(paramInt, 1);
-      WSPublicAccReport.getInstance().reportDownload(ugx.a(), i, 2, 1, 1);
+      uqf.d("RockDownloader", "rockdownload installSuccess,eventType = " + i);
+      unx.a(paramInt, 1);
+      WSPublicAccReport.getInstance().reportDownload(ugz.a(), i, 2, 1, 1);
       return bool;
     }
-    upe.d("RockDownloader", "rockdownload installFail,eventType = " + i);
+    uqf.d("RockDownloader", "rockdownload installFail,eventType = " + i);
     return bool;
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agml;
-import awsf;
+import agvn;
+import axky;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -10,17 +10,17 @@ import com.tencent.qphone.base.util.QLog;
 public class MultiWindowAIOHelper$1
   implements Runnable
 {
-  public MultiWindowAIOHelper$1(agml paramagml) {}
+  public MultiWindowAIOHelper$1(agvn paramagvn) {}
   
   public void run()
   {
-    AIOLongShotHelper localAIOLongShotHelper = (AIOLongShotHelper)agml.a(this.this$0).a(15);
+    AIOLongShotHelper localAIOLongShotHelper = (AIOLongShotHelper)agvn.a(this.this$0).a(15);
     if ((!BaseChatItemLayout.a) && (!localAIOLongShotHelper.a()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("MultiWindowAIOHelper", 2, "AIO start multi window!");
       }
-      awsf.a(agml.a(this.this$0).jdField_a_of_type_AndroidSupportV4AppFragmentActivity, agml.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, agml.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, agml.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, "open_from_aio");
+      axky.a(agvn.a(this.this$0).jdField_a_of_type_AndroidSupportV4AppFragmentActivity, agvn.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, agvn.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, agvn.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, "open_from_aio");
     }
   }
 }

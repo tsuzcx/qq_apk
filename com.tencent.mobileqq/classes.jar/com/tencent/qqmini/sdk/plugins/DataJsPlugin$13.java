@@ -48,7 +48,7 @@ class DataJsPlugin$13
           paramJSONObject.put("data", localJSONObject2.toString());
           if (i != -1)
           {
-            this.val$req.fail(paramJSONObject, (String)MiniSDKConst.AdConst.CodeMsgMap.get(Integer.valueOf(i)));
+            this.val$req.fail(paramJSONObject, (String)MiniSDKConst.AdConst.CODE_MSG_MAP.get(Integer.valueOf(i)));
             return;
           }
         }

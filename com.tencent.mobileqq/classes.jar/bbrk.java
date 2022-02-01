@@ -1,45 +1,17 @@
-public class bbrk
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+
+class bbrk
+  implements DialogInterface.OnCancelListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  bbrk(bbrb parambbrb) {}
   
-  public bbrk(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString3;
-    this.c = paramString2;
-    this.d = paramString4;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.e = paramString5;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.e;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String d()
-  {
-    return this.b;
+    if (this.a.b) {
+      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
+    }
   }
 }
 

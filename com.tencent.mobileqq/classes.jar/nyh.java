@@ -1,24 +1,43 @@
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class nyh
-  implements atve
+class nyh
+  extends nyi
 {
-  public nyh(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  nyh(nyg paramnyg) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle)
   {
-    acqy.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
-    if (ReadInJoyNativeAdAppVideoView.a(this.a) == 6)
+    if ((paramBoolean) && (paramList != null) && (!paramList.isEmpty()))
     {
-      ReadInJoyNativeAdAppVideoView.a(this.a).start();
-      ReadInJoyNativeAdAppVideoView.e(this.a, 5);
-      ReadInJoyNativeAdAppVideoView.a(this.a);
-      ReadInJoyNativeAdAppVideoView.f(this.a, 2);
+      paramList = (EncryptUinInfo)paramList.get(0);
+      if ((paramList.jdField_a_of_type_Int != 0) || (paramList.jdField_a_of_type_Long != this.a.mApp.getLongAccountUin()) || (TextUtils.isEmpty(paramList.jdField_a_of_type_JavaLangString))) {
+        break label113;
+      }
+      nyg.a(this.a, paramList.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: " + nyg.a(this.a));
+      }
     }
+    label113:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: failed，code=" + paramList.jdField_a_of_type_Int);
   }
   
-  public void b() {}
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt == 1)
+    {
+      super.onUpdate(paramInt, paramBoolean, paramObject);
+      this.a.mApp.removeObserver(nyg.a(this.a));
+    }
+  }
 }
 
 

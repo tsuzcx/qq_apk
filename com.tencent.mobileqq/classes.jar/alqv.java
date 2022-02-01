@@ -1,19 +1,28 @@
-import android.support.annotation.Nullable;
-import android.view.View;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public abstract interface alqv
+public class alqv
+  extends alqi
 {
-  public abstract int a();
+  public alqv(Context paramContext)
+  {
+    this.jdField_a_of_type_JavaLangString = anzj.a(2131697018);
+  }
   
-  public abstract void a();
-  
-  public abstract void a(@Nullable alqt paramalqt);
-  
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
+  public Object a(int paramInt, bfoy parambfoy, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramObject instanceof alqv))
+    {
+      paramObject = (alqv)paramObject;
+      paramObject.jdField_a_of_type_Bfoz.a(parambfoy.jdField_a_of_type_Bfoz);
+      return paramObject;
+    }
+    paramObject = new alqv(BaseApplication.getContext());
+    paramObject.jdField_a_of_type_Bfoz = new bfoz(parambfoy.jdField_a_of_type_Bfoz);
+    return paramObject;
+  }
 }
 
 

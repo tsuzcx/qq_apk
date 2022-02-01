@@ -1,15 +1,28 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public abstract interface bkil
+class bkil
+  extends BroadcastReceiver
 {
-  public abstract void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  bkil(bkik parambkik) {}
   
-  public abstract void onNothingSelected(AdapterView<?> paramAdapterView);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.qidian.openactionsheet")) && (this.a.mRuntime.a() != null))
+    {
+      paramContext = (blir)blji.a((Activity)paramContext, null);
+      paramContext.b(2131697552);
+      paramContext.c(2131690580);
+      paramContext.a(new bkim(this, paramIntent, paramContext));
+      paramContext.show();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkil
  * JD-Core Version:    0.7.0.1
  */

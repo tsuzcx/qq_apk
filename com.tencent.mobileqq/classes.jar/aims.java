@@ -1,18 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
-
-public class aims
-  implements DialogInterface.OnClickListener
+class aims
+  extends aojs
 {
-  public aims(VideoStatusTipsBar paramVideoStatusTipsBar) {}
+  aims(aimn paramaimn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    mqw.e(false, false);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    aimn.a(this.a, paramBoolean, paramObject);
   }
 }
 

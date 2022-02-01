@@ -1,23 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
 public class wud
-  extends QQUIEventReceiver<wtu, wii>
 {
-  public wud(@NonNull wtu paramwtu)
-  {
-    super(paramwtu);
-  }
-  
-  public void a(@NonNull wtu paramwtu, @NonNull wii paramwii)
-  {
-    paramwtu.a.b(paramwii);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wii.class;
-  }
+  @zoq(a="align")
+  public int a;
+  @zoq(a="image")
+  public String a;
+  @zoq(a="picture_margin")
+  public int[] a;
+  @zoq(a="picture_width")
+  public int b;
+  @zoq(a="picture_height")
+  public int c;
+  @zoq(a="standard_width")
+  public int d;
 }
 
 

@@ -1,52 +1,33 @@
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.view.View.OnTouchListener;
 
-class bgqt
-  implements View.OnClickListener
+final class bgqt
+  implements View.OnTouchListener
 {
-  bgqt(bgqn parambgqn, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    String str = this.jdField_a_of_type_Bgqn.getInputValue();
-    if (TextUtils.isEmpty(str)) {}
+    switch (paramMotionEvent.getAction())
+    {
+    }
     for (;;)
     {
-      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+      return false;
+      if (Build.VERSION.SDK_INT >= 11)
       {
-        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgqn, 1);
-        this.jdField_a_of_type_Bgqn.a();
-      }
-      try
-      {
-        if (this.jdField_a_of_type_Bgqn.isShowing()) {
-          this.jdField_a_of_type_Bgqn.dismiss();
+        paramView.setAlpha(0.5F);
+        continue;
+        if (Build.VERSION.SDK_INT >= 11) {
+          paramView.setAlpha(1.0F);
         }
-        label60:
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if ((this.jdField_a_of_type_Bgqn.a == null) || (this.jdField_a_of_type_Bgqn.a.size() <= 0)) {
-          continue;
-        }
-        int i = 0;
-        while ((i < this.jdField_a_of_type_Bgqn.a.size()) && (!str.equals(this.jdField_a_of_type_Bgqn.a.get(i)))) {
-          i += 1;
-        }
-      }
-      catch (Exception localException)
-      {
-        break label60;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgqt
  * JD-Core Version:    0.7.0.1
  */

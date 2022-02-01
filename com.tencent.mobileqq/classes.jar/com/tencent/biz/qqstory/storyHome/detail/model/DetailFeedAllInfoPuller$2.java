@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.detail.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import ybw;
-import ybz;
-import ycb;
+import yfr;
+import yfu;
+import yfw;
 
 public class DetailFeedAllInfoPuller$2
   implements Runnable
 {
-  public DetailFeedAllInfoPuller$2(ybw paramybw, ycb paramycb, boolean paramBoolean, ErrorMessage paramErrorMessage) {}
+  public DetailFeedAllInfoPuller$2(yfr paramyfr, yfw paramyfw, boolean paramBoolean, ErrorMessage paramErrorMessage) {}
   
   public void run()
   {
-    ybw.a(this.this$0).a(this.jdField_a_of_type_Ycb, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    yfr.a(this.this$0).a(this.jdField_a_of_type_Yfw, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
   }
 }
 

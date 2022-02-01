@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import bdwl;
+import beve;
 
 public class MultiMsgUpProcessor$2
   implements Runnable
 {
-  public MultiMsgUpProcessor$2(bdwl parambdwl) {}
+  public MultiMsgUpProcessor$2(beve parambeve) {}
   
   public void run()
   {

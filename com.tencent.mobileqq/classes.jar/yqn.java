@@ -1,24 +1,21 @@
-public abstract interface yqn
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class yqn
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString1, String paramString2);
+  public yqn(StoryListPresenter.4.1 param1) {}
   
-  public abstract void a(String paramString1, String paramString2, Throwable paramThrowable);
-  
-  public abstract boolean a(int paramInt);
-  
-  public abstract void b(String paramString1, String paramString2);
-  
-  public abstract void b(String paramString1, String paramString2, Throwable paramThrowable);
-  
-  public abstract void c(String paramString1, String paramString2);
-  
-  public abstract void c(String paramString1, String paramString2, Throwable paramThrowable);
-  
-  public abstract void d(String paramString1, String paramString2);
-  
-  public abstract void d(String paramString1, String paramString2, Throwable paramThrowable);
-  
-  public abstract void e(String paramString1, String paramString2);
+  public void onClick(View paramView)
+  {
+    yup.a("home_page", "clk_up_shoot", 0, 0, new String[0]);
+    this.a.a.this$0.jdField_a_of_type_Yqx.a(false, true, 13, null);
+    this.a.a.this$0.jdField_a_of_type_Ytq.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

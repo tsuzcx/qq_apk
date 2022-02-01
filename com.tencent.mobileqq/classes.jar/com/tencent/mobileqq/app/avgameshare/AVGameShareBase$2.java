@@ -2,9 +2,9 @@ package com.tencent.mobileqq.app.avgameshare;
 
 import android.graphics.Bitmap;
 import android.text.TextUtils;
-import aoaw;
-import bcst;
-import biau;
+import aong;
+import bdll;
+import bjbs;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
@@ -12,48 +12,59 @@ import java.util.Map;
 public class AVGameShareBase$2
   implements Runnable
 {
-  public AVGameShareBase$2(aoaw paramaoaw, Map paramMap, int paramInt, String paramString) {}
+  public AVGameShareBase$2(aong paramaong, Map paramMap, int paramInt, String paramString) {}
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Biau != null) && (this.this$0.jdField_a_of_type_Biau.isShowing())) {
-      this.this$0.jdField_a_of_type_Biau.dismiss();
+    if ((this.this$0.jdField_a_of_type_Bjbs != null) && (this.this$0.jdField_a_of_type_Bjbs.isShowing())) {
+      this.this$0.jdField_a_of_type_Bjbs.dismiss();
     }
     this.this$0.jdField_a_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
     Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
-    String str1 = this.this$0.c();
-    String str2;
-    if (TextUtils.isEmpty(str1))
+    Object localObject1 = this.this$0.c();
+    Object localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      str1 = "派对已开始，你在等什么";
-      str2 = "快来QQ，加入我的派对";
+      localObject1 = "派对已开始，你在等什么";
+      localObject2 = "快来QQ，加入我的派对";
       if (this.jdField_a_of_type_Int != 9) {
-        break label252;
+        break label297;
       }
-      str2 = "QQ一起派对";
+      localObject2 = "QQ一起派对";
     }
-    label252:
+    label297:
     for (int i = 0;; i = 1)
     {
-      WXShareHelper.a().b(this.this$0.jdField_a_of_type_JavaLangString, str2, localBitmap, str1, this.jdField_a_of_type_JavaLangString, i);
-      QLog.d("AVGameShareBase", 1, "shareLinkToWeChat success");
-      if (this.this$0.a() == 0)
+      if (this.this$0.a())
       {
-        if (this.jdField_a_of_type_Int == 9) {}
-        for (str1 = "3";; str1 = "4")
-        {
-          bcst.b(null, "dc00898", "", "", "0X800B068", "0X800B068", 0, 0, str1, "", "", "");
-          return;
-          str1 = str1 + "的派对已开始，你在等什么";
-          break;
-        }
+        localObject2 = this.this$0.b(this.jdField_a_of_type_Int);
+        localObject1 = this.this$0.a(this.jdField_a_of_type_Int);
       }
-      i = this.this$0.a();
-      if (this.jdField_a_of_type_Int == 9) {}
-      for (str1 = "3";; str1 = "4")
+      for (;;)
       {
-        bcst.b(null, "dc00898", "", "", "0X800B064", "0X800B064", i, 0, str1, "", "", "");
-        return;
+        WXShareHelper.a().b(this.this$0.jdField_a_of_type_JavaLangString, (String)localObject1, localBitmap, (String)localObject2, this.jdField_a_of_type_JavaLangString, i);
+        QLog.d("AVGameShareBase", 1, "shareLinkToWeChat success");
+        if (this.this$0.a() == 0)
+        {
+          if (this.jdField_a_of_type_Int == 9) {}
+          for (localObject1 = "3";; localObject1 = "4")
+          {
+            bdll.b(null, "dc00898", "", "", "0X800B068", "0X800B068", 0, 0, (String)localObject1, "", "", "");
+            return;
+            localObject1 = (String)localObject1 + "的派对已开始，你在等什么";
+            break;
+          }
+        }
+        i = this.this$0.a();
+        if (this.jdField_a_of_type_Int == 9) {}
+        for (localObject1 = "3";; localObject1 = "4")
+        {
+          bdll.b(null, "dc00898", "", "", "0X800B064", "0X800B064", i, 0, (String)localObject1, "", "", "");
+          return;
+        }
+        Object localObject3 = localObject1;
+        localObject1 = localObject2;
+        localObject2 = localObject3;
       }
     }
   }

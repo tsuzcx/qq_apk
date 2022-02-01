@@ -7,7 +7,7 @@ import feedcloud.FeedCloudMeta.StComment;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudWrite.StDoTopReq;
 import feedcloud.FeedCloudWrite.StDoTopRsp;
-import uxx;
+import uzg;
 
 public class QCircleDoStickyRequest
   extends QCircleBaseRequest
@@ -25,8 +25,8 @@ public class QCircleDoStickyRequest
     {
       return;
       this.mReq = new FeedCloudWrite.StDoTopReq();
-      this.mReq.feed.set(uxx.a(paramStFeed));
-      this.mReq.comment.set(uxx.a(paramStComment));
+      this.mReq.feed.set(uzg.a(paramStFeed));
+      this.mReq.comment.set(uzg.a(paramStComment));
       this.mReq.topType.set(paramInt);
     } while (paramStComment == null);
     this.mReq.comment.set(paramStComment);

@@ -21,8 +21,8 @@ public class ReadInJoySkinGuideView
   {
     super(paramContext);
     this.jdField_a_of_type_Int = 2;
-    LayoutInflater.from(getContext()).inflate(2131562766, this);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = ((SpriteNativeView)findViewById(2131377622));
+    LayoutInflater.from(getContext()).inflate(2131562800, this);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = ((SpriteNativeView)findViewById(2131377777));
     setClickable(true);
     if (261 == paramInt2) {
       this.jdField_a_of_type_Int = 1;

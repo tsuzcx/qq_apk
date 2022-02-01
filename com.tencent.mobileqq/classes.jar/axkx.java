@@ -1,14 +1,19 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import com.tencent.widget.ListView;
 
-class axkx
-  extends niu
+public class axkx
+  implements View.OnLayoutChangeListener
 {
-  axkx(axks paramaxks, axkz paramaxkz) {}
+  public axkx(MultiAIOItemFragment paramMultiAIOItemFragment, ListView paramListView) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (this.jdField_a_of_type_Axkz != null) {
-      this.jdField_a_of_type_Axkz.a(paramInt, paramArrayOfByte, paramBundle);
+    if ((this.jdField_a_of_type_ComTencentWidgetListView.getWidth() > 0) && (this.jdField_a_of_type_ComTencentWidgetListView.getHeight() > 0))
+    {
+      this.jdField_a_of_type_ComTencentWidgetListView.removeOnLayoutChangeListener(this);
+      MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment, this.jdField_a_of_type_ComTencentWidgetListView.getWidth(), this.jdField_a_of_type_ComTencentWidgetListView.getHeight());
     }
   }
 }

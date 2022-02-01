@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.webviewplugin;
 
-import bhta;
-import blyl;
+import bitv;
+import bmzn;
 
 public class WebViewJumpPlugin$4
   implements Runnable
 {
-  public WebViewJumpPlugin$4(bhta parambhta, String paramString1, String paramString2) {}
+  public WebViewJumpPlugin$4(bitv parambitv, String paramString1, String paramString2) {}
   
   public void run()
   {
-    blyl.a().a(this.a, this.b);
+    bmzn.a().a(this.a, this.b);
   }
 }
 

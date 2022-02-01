@@ -1,77 +1,81 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertUinAndUnionId;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tribe.async.reactive.SimpleObserver;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
 
-public class wym
-  extends wlf<xak>
+class wym
+  extends SimpleObserver<List<xiw>>
 {
-  public String a;
-  public List<wqt> a;
-  public boolean a;
-  public boolean b;
-  public int c;
-  public boolean c;
+  wym(wyd paramwyd, wvn paramwvn, View paramView, Activity paramActivity) {}
   
-  public wym()
+  private void a(String paramString1, String paramString2, ArrayList<String> paramArrayList, HashMap<String, String> paramHashMap)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public String a()
-  {
-    return wjz.a("StorySvc.convert_uid_and_union_id");
-  }
-  
-  public xak a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspConvertUinAndUnionId localRspConvertUinAndUnionId = new qqstory_service.RspConvertUinAndUnionId();
-    try
-    {
-      localRspConvertUinAndUnionId.mergeFrom(paramArrayOfByte);
-      return new xak(localRspConvertUinAndUnionId);
+    if ((!TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(paramString1))) {
+      paramString1 = "NO_SUCH_FEED_ID";
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    for (;;)
     {
-      yqp.d("Q.qqstory.user:ConvertUinAndUnionIdRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    int j = 1;
-    qqstory_service.ReqConvertUinAndUnionId localReqConvertUinAndUnionId = new qqstory_service.ReqConvertUinAndUnionId();
-    localReqConvertUinAndUnionId.convert_from.set(this.c);
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      wqt localwqt = (wqt)((Iterator)localObject).next();
-      localReqConvertUinAndUnionId.user_id_list.add(localwqt.a());
-    }
-    localObject = localReqConvertUinAndUnionId.need_medal;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = 1;
-      ((PBUInt32Field)localObject).set(i);
-      localObject = localReqConvertUinAndUnionId.need_grade_speed;
-      if (!this.b) {
-        break label121;
+      paramString1 = new OpenPlayerBuilder(new MsgTabPlayInfo(this.jdField_a_of_type_Wvn.a, 0, null, paramString1, paramString2, paramArrayList, paramHashMap), 106);
+      paramString1.a(this.jdField_a_of_type_Wyd.a());
+      paramString1 = paramString1.a();
+      paramString1.mUIStyle.bottomWidgetShowFlag = 3;
+      if ((this.jdField_a_of_type_AndroidViewView instanceof StoryMsgNodeFrameLayout))
+      {
+        xlj.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, ((StoryMsgNodeFrameLayout)this.jdField_a_of_type_AndroidViewView).a);
+        return;
       }
+      xlj.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, this.jdField_a_of_type_AndroidViewView);
+      return;
     }
-    label121:
-    for (int i = j;; i = 0)
+  }
+  
+  public void a(List<xiw> paramList)
+  {
+    Object localObject = xnf.a(paramList);
+    String str1;
+    if (localObject != null)
     {
-      ((PBUInt32Field)localObject).set(i);
-      return localReqConvertUinAndUnionId.toByteArray();
-      i = 0;
-      break;
+      str1 = ((xiw)localObject).a;
+      localObject = ((xiw)localObject).b;
     }
+    for (;;)
+    {
+      ArrayList localArrayList = new ArrayList();
+      HashMap localHashMap = new HashMap();
+      int i = 0;
+      for (;;)
+      {
+        String str2;
+        if (i < paramList.size())
+        {
+          str2 = ((xiw)paramList.get(i)).b;
+          if (!TextUtils.isEmpty(str2)) {}
+        }
+        else
+        {
+          a(str1, (String)localObject, localArrayList, localHashMap);
+          return;
+        }
+        localArrayList.add(str2);
+        localHashMap.put(str2, ((xiw)paramList.get(i)).a);
+        i += 1;
+      }
+      localObject = null;
+      str1 = null;
+    }
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    a("", "", null, null);
   }
 }
 

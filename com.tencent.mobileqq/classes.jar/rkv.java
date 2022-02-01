@@ -1,24 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyTopicSelectionFragment;
-import java.util.List;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
-public class rkv
-  extends pmn
+class rkv
+  implements bcxw
 {
-  public rkv(ReadInJoyTopicSelectionFragment paramReadInJoyTopicSelectionFragment) {}
+  rkv(rkr paramrkr) {}
   
-  public void a(List<String> paramList, List<TopicInfo> paramList1)
+  public void B_()
   {
-    if (paramList.size() == 0)
+    VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", anzj.a(2131706485), null);
+    bcwy.a(3, -1500);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    if (paramString1.startsWith("new_qq_android_native_short_video_"))
     {
-      ReadInJoyTopicSelectionFragment.a(this.a).clear();
-      ReadInJoyTopicSelectionFragment.a(this.a).addAll(paramList1);
-      this.a.a.clear();
-      this.a.a.addAll(ReadInJoyTopicSelectionFragment.a(paramList1));
-      ReadInJoyTopicSelectionFragment.a(this.a).notifyDataSetChanged();
-      pha.a(ReadInJoyTopicSelectionFragment.a(this.a), ReadInJoyTopicSelectionFragment.a(this.a), "0");
+      if (paramInt == 0) {
+        break label95;
+      }
+      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", anzj.a(2131706488) + paramInt + "]", null);
+      bcwy.a(2, paramInt);
+    }
+    for (;;)
+    {
+      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", "onDownloadFinish name=" + paramString1 + ", result=" + paramInt + ", filePath=" + paramString2, null);
+      return;
+      label95:
+      rkr.a(this.a, true);
+      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", anzj.a(2131706487) + paramInt + "]", null);
     }
   }
+  
+  public void a(String paramString, long paramLong1, long paramLong2) {}
 }
 
 

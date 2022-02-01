@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class bqay
-  implements DialogInterface.OnClickListener
+class bqay
+  implements Animation.AnimationListener
 {
-  public bqay(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bqay(bqav parambqav) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    bqav.b(this.a).setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

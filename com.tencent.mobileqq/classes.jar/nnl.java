@@ -1,25 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class nnl
-  implements nkl
+class nnl
+  implements DialogInterface.OnCancelListener
 {
-  public nnl(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  nnl(nnj paramnnj) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("forceUpdate", 2, "loaded code:" + paramInt);
-    }
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.notifyCacheReady(paramInt);
+    nnj.a(this.a);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

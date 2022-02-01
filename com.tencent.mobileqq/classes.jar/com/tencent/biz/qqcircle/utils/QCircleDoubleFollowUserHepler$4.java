@@ -2,16 +2,16 @@ package com.tencent.biz.qqcircle.utils;
 
 import com.tencent.biz.qqcircle.beans.Friend;
 import com.tencent.mobileqq.persistence.EntityManager;
-import vtj;
+import vwh;
 
 public class QCircleDoubleFollowUserHepler$4
   implements Runnable
 {
-  public QCircleDoubleFollowUserHepler$4(vtj paramvtj, Friend paramFriend) {}
+  public QCircleDoubleFollowUserHepler$4(vwh paramvwh, Friend paramFriend) {}
   
   public void run()
   {
-    vtj.a(this.this$0).persistOrReplace(this.a);
+    vwh.a(this.this$0).persistOrReplace(this.a);
   }
 }
 

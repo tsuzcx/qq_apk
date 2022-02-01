@@ -1,23 +1,10 @@
-import android.os.Bundle;
-
-final class apkj
-  extends aplp
+public abstract interface apkj
 {
-  apkj(String paramString, apky paramapky)
-  {
-    super(paramString);
-  }
+  public abstract void b(int paramInt);
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    String str = null;
-    if (paramBoolean) {
-      str = paramBundle.getString("pskey", null);
-    }
-    if (this.a != null) {
-      this.a.a(str);
-    }
-  }
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

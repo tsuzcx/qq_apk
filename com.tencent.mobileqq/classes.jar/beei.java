@@ -1,21 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.22.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 
 public class beei
-  implements ISuperPlayer.OnCompletionListener
+  implements DialogInterface.OnClickListener
 {
-  public beei(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public beei(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void onCompletion(ISuperPlayer paramISuperPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "onCompletion");
-    }
-    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.22.1(this));
+    GroupTeamWorkListActivity.a(this.a);
   }
 }
 

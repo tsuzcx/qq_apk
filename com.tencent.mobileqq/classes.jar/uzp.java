@@ -1,19 +1,32 @@
-import com.tencent.mobileqq.pb.MessageMicro;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.qqcircle.comment.QCircleMoreReplyItemView;
+import com.tencent.biz.qqcircle.comment.QCircleReplyItemView;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
 
-public class uzp
+class uzp
+  extends RecyclerView.ViewHolder
 {
-  public long a;
-  public MessageMicro a;
-  public String a;
-  public boolean a;
-  
-  public uzp(long paramLong, String paramString, MessageMicro paramMessageMicro, boolean paramBoolean)
+  private uzp(BaseWidgetView paramBaseWidgetView)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramMessageMicro;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super(paramBaseWidgetView);
+  }
+  
+  public void a(vbc paramvbc, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, int paramInt1, int paramInt2, aakb paramaakb)
+  {
+    if ((this.itemView instanceof QCircleReplyItemView))
+    {
+      ((QCircleReplyItemView)this.itemView).setPreData(paramStFeed, paramStComment, paramInt1);
+      ((QCircleReplyItemView)this.itemView).setOnCommentElementClickListener(paramaakb);
+      ((QCircleReplyItemView)this.itemView).a(paramvbc, paramInt2);
+    }
+    while (!(this.itemView instanceof QCircleMoreReplyItemView)) {
+      return;
+    }
+    ((QCircleMoreReplyItemView)this.itemView).setPreData(paramStFeed, paramStComment, paramInt1);
+    ((QCircleMoreReplyItemView)this.itemView).setOnCommentElementClickListener(paramaakb);
+    ((QCircleMoreReplyItemView)this.itemView).a(paramvbc, paramInt2);
   }
 }
 

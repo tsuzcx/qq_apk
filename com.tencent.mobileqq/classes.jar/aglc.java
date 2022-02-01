@@ -1,13 +1,27 @@
-class aglc
-  implements anfe
+import android.view.View;
+
+public class aglc
 {
-  aglc(aglb paramaglb) {}
+  public float a;
+  public int a;
+  public long a;
+  public aglb a;
+  public View a;
+  public boolean a;
+  public float b;
+  public int b;
+  public boolean b;
+  public float c = 0.0F;
+  public float d = 1.0F;
+  public float e = 1.0F;
+  public float f = 1.0F;
   
-  public void a(boolean paramBoolean, amrr paramamrr)
+  public aglc()
   {
-    if ((paramBoolean) && (paramamrr != null)) {
-      paramamrr.f();
-    }
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 

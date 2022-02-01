@@ -1,28 +1,32 @@
-import android.view.ViewGroup;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 
-public abstract class uif<T>
-  extends bkrv<T>
+class uif
+  implements ura
 {
-  public ujv a;
-  public ukb a;
-  public ukf a;
+  uif(uhz paramuhz) {}
   
-  public uif(ViewGroup paramViewGroup, int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    super(paramViewGroup, paramInt);
+    uqh.a(uhz.a(this.a), "biz_src_jc_gzh_weishi", paramString);
+    uhz.a(this.a, "content", unz.c);
   }
   
-  public abstract ViewGroup a();
+  public void b(String paramString, int paramInt) {}
   
-  public boolean a()
+  public void c(String paramString, int paramInt)
   {
-    return (this.a != null) && (this.a.a != null) && (this.a.a.b());
+    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
+    localWSDownloadParams.mScene = 1;
+    localWSDownloadParams.mLinkStrategyType = 0;
+    localWSDownloadParams.mEventId = 700;
+    localWSDownloadParams.mTestId = uqt.a(9);
+    localWSDownloadParams.mScheme = paramString;
+    ugz.a((Activity)uhz.b(this.a), localWSDownloadParams, false);
+    uhz.a(this.a, "content", unz.b);
   }
   
-  public boolean b()
-  {
-    return (this.a != null) && (this.a.a != null) && (this.a.a.c());
-  }
+  public void d(String paramString, int paramInt) {}
 }
 
 

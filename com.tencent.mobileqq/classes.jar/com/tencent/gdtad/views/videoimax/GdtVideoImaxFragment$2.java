@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.videoimax;
 
-import acqy;
+import acvc;
 import android.os.ResultReceiver;
 import com.tencent.gdtad.views.video.GdtVideoCommonView;
 
@@ -11,7 +11,7 @@ class GdtVideoImaxFragment$2
   
   public void run()
   {
-    acqy.a("GdtVideoImaxFragment", "run() mTimeoutRunnable");
+    acvc.a("GdtVideoImaxFragment", "run() mTimeoutRunnable");
     if (GdtVideoImaxFragment.a(this.this$0))
     {
       GdtVideoImaxFragment.a(this.this$0).setBackgroundColor(-16777216);

@@ -1,18 +1,18 @@
 package com.tencent.open.appcommon.now.download.js;
 
-import biqb;
-import bire;
-import bisy;
+import bjra;
+import bjsd;
+import bjtx;
 import com.tencent.smtt.sdk.WebView;
 
 public class DownloadCallbackWebImpl$1
   implements Runnable
 {
-  public DownloadCallbackWebImpl$1(bire parambire, WebView paramWebView, String paramString) {}
+  public DownloadCallbackWebImpl$1(bjsd parambjsd, WebView paramWebView, String paramString) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (this.jdField_a_of_type_JavaLangString != null) && (biqb.a().a())) {}
+    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (this.jdField_a_of_type_JavaLangString != null) && (bjra.a().a())) {}
     try
     {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
@@ -20,7 +20,7 @@ public class DownloadCallbackWebImpl$1
     }
     catch (Exception localException)
     {
-      bisy.a("DownloadCallbackWebImpl", "doJsCallBack >>> ", localException);
+      bjtx.a("DownloadCallbackWebImpl", "doJsCallBack >>> ", localException);
     }
   }
 }

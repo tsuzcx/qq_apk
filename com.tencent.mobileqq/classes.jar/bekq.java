@@ -1,25 +1,33 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import android.support.v4.util.ArrayMap;
+import android.support.v4.util.SparseArrayCompat;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.tencent.util.Pair;
+import java.lang.reflect.Type;
 
-public final class bekq
-  implements DialogInterface.OnClickListener
+final class bekq
+  implements JsonDeserializer<beko>
 {
-  public bekq(Activity paramActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public beko a(JsonElement paramJsonElement, Type paramType, JsonDeserializationContext paramJsonDeserializationContext)
   {
-    switch (paramInt)
+    paramType = paramJsonElement.getAsJsonObject();
+    paramJsonElement = new beko();
+    paramJsonElement.jdField_a_of_type_Int = paramType.get("nextNum").getAsInt();
+    paramType = paramType.get("numToAttrib").getAsJsonObject();
+    int i = 0;
+    while (i < paramJsonElement.jdField_a_of_type_Int)
     {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface.dismiss();
-      return;
+      Object localObject = paramType.get(i + "").getAsJsonArray();
+      paramJsonDeserializationContext = ((JsonArray)localObject).get(0).getAsString();
+      localObject = ((JsonArray)localObject).get(1).getAsString();
+      paramJsonElement.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(i, new Pair(paramJsonDeserializationContext, localObject));
+      paramJsonElement.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(beko.a(paramJsonDeserializationContext, (String)localObject), Integer.valueOf(i));
+      i += 1;
     }
-    TroopBarPublishUtils.c(this.a);
-    paramDialogInterface.dismiss();
+    return paramJsonElement;
   }
 }
 

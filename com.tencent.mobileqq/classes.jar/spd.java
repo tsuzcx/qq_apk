@@ -1,17 +1,18 @@
-import android.util.Pair;
-import java.net.URL;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class spd
+class spd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public Pair<Integer, Integer> a;
-  public URL a;
+  spd(spc paramspc, int paramInt, View paramView) {}
   
-  public static spd a(URL paramURL, Pair<Integer, Integer> paramPair)
+  public void onGlobalLayout()
   {
-    spd localspd = new spd();
-    localspd.jdField_a_of_type_JavaNetURL = paramURL;
-    localspd.jdField_a_of_type_AndroidUtilPair = paramPair;
-    return localspd;
+    this.jdField_a_of_type_Spc.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getHeight());
+    QLog.d("Q.readinjoy.fast_web", 2, " position : " + this.jdField_a_of_type_Int + "   height:" + this.jdField_a_of_type_AndroidViewView.getHeight());
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

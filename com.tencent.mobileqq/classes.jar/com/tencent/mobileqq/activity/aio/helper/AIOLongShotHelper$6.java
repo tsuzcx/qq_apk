@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afur;
+import agej;
 import android.content.Context;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -15,7 +15,7 @@ class AIOLongShotHelper$6
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mPlayGifImage = true;
-    int i = afur.a(248.0F, AIOLongShotHelper.a(this.this$0).a.getResources());
+    int i = agej.a(248.0F, AIOLongShotHelper.a(this.this$0).a.getResources());
     int j = (int)(i * 420.0F / 472.0F);
     localURLDrawableOptions.mRequestWidth = i;
     localURLDrawableOptions.mRequestHeight = j;

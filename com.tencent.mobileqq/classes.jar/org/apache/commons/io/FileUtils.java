@@ -267,17 +267,17 @@ public class FileUtils
     //   0: aconst_null
     //   1: astore 4
     //   3: iconst_0
-    //   4: istore_3
+    //   4: istore_2
     //   5: aload_0
     //   6: invokevirtual 124	java/io/File:exists	()Z
-    //   9: istore_2
-    //   10: iload_2
+    //   9: istore_3
+    //   10: iload_3
     //   11: aload_1
     //   12: invokevirtual 124	java/io/File:exists	()Z
     //   15: if_icmpeq +5 -> 20
-    //   18: iload_3
+    //   18: iload_2
     //   19: ireturn
-    //   20: iload_2
+    //   20: iload_3
     //   21: ifne +5 -> 26
     //   24: iconst_1
     //   25: ireturn
@@ -319,22 +319,22 @@ public class FileUtils
     //   98: aload 5
     //   100: aload 6
     //   102: invokestatic 233	org/apache/commons/io/IOUtils:contentEquals	(Ljava/io/InputStream;Ljava/io/InputStream;)Z
-    //   105: istore_2
+    //   105: istore_3
     //   106: aload 6
     //   108: ifnull +12 -> 120
     //   111: iconst_0
     //   112: ifeq +64 -> 176
     //   115: aload 6
     //   117: invokevirtual 184	java/io/InputStream:close	()V
-    //   120: iload_2
-    //   121: istore_3
+    //   120: iload_3
+    //   121: istore_2
     //   122: aload 5
     //   124: ifnull -106 -> 18
     //   127: iconst_0
     //   128: ifeq +63 -> 191
     //   131: aload 5
     //   133: invokevirtual 184	java/io/InputStream:close	()V
-    //   136: iload_2
+    //   136: iload_3
     //   137: ireturn
     //   138: astore_0
     //   139: new 143	java/lang/NullPointerException
@@ -367,7 +367,7 @@ public class FileUtils
     //   188: goto -28 -> 160
     //   191: aload 5
     //   193: invokevirtual 184	java/io/InputStream:close	()V
-    //   196: iload_2
+    //   196: iload_3
     //   197: ireturn
     //   198: astore_1
     //   199: aload_1
@@ -405,8 +405,8 @@ public class FileUtils
     //   start	length	slot	name	signature
     //   0	262	0	paramFile1	File
     //   0	262	1	paramFile2	File
-    //   9	188	2	bool1	boolean
-    //   4	118	3	bool2	boolean
+    //   4	118	2	bool1	boolean
+    //   9	188	3	bool2	boolean
     //   1	185	4	localObject	Object
     //   237	4	4	localThrowable1	Throwable
     //   86	163	5	localFileInputStream1	FileInputStream
@@ -540,17 +540,17 @@ public class FileUtils
     //   185: invokespecial 255	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
     //   188: astore_1
     //   189: goto -69 -> 120
-    //   192: astore_1
-    //   193: aload_1
+    //   192: astore_2
+    //   193: aload_2
     //   194: athrow
-    //   195: astore_2
+    //   195: astore_1
     //   196: aload_0
     //   197: ifnull +11 -> 208
-    //   200: aload_1
-    //   201: ifnull +88 -> 289
+    //   200: aload_2
+    //   201: ifnull +86 -> 287
     //   204: aload_0
     //   205: invokevirtual 252	java/io/Reader:close	()V
-    //   208: aload_2
+    //   208: aload_1
     //   209: athrow
     //   210: astore_1
     //   211: new 143	java/lang/NullPointerException
@@ -568,79 +568,79 @@ public class FileUtils
     //   235: aload_0
     //   236: invokevirtual 252	java/io/Reader:close	()V
     //   239: goto -89 -> 150
-    //   242: astore 6
-    //   244: aload 6
-    //   246: athrow
-    //   247: astore_2
-    //   248: aload_1
-    //   249: ifnull +12 -> 261
-    //   252: aload 6
-    //   254: ifnull +19 -> 273
-    //   257: aload_1
-    //   258: invokevirtual 252	java/io/Reader:close	()V
-    //   261: aload_2
-    //   262: athrow
-    //   263: astore_1
-    //   264: aload 6
-    //   266: aload_1
-    //   267: invokevirtual 189	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   270: goto -9 -> 261
-    //   273: aload_1
-    //   274: invokevirtual 252	java/io/Reader:close	()V
-    //   277: goto -16 -> 261
-    //   280: astore_0
-    //   281: aload_1
-    //   282: aload_0
-    //   283: invokevirtual 189	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   286: goto -78 -> 208
-    //   289: aload_0
-    //   290: invokevirtual 252	java/io/Reader:close	()V
-    //   293: goto -85 -> 208
-    //   296: astore_2
-    //   297: aconst_null
-    //   298: astore 6
-    //   300: goto -52 -> 248
-    //   303: astore_2
-    //   304: aload 7
-    //   306: astore_1
-    //   307: goto -111 -> 196
+    //   242: astore_2
+    //   243: aload_2
+    //   244: athrow
+    //   245: astore 6
+    //   247: aload_1
+    //   248: ifnull +11 -> 259
+    //   251: aload_2
+    //   252: ifnull +19 -> 271
+    //   255: aload_1
+    //   256: invokevirtual 252	java/io/Reader:close	()V
+    //   259: aload 6
+    //   261: athrow
+    //   262: astore_1
+    //   263: aload_2
+    //   264: aload_1
+    //   265: invokevirtual 189	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   268: goto -9 -> 259
+    //   271: aload_1
+    //   272: invokevirtual 252	java/io/Reader:close	()V
+    //   275: goto -16 -> 259
+    //   278: astore_0
+    //   279: aload_2
+    //   280: aload_0
+    //   281: invokevirtual 189	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   284: goto -76 -> 208
+    //   287: aload_0
+    //   288: invokevirtual 252	java/io/Reader:close	()V
+    //   291: goto -83 -> 208
+    //   294: astore 6
+    //   296: aconst_null
+    //   297: astore_2
+    //   298: goto -51 -> 247
+    //   301: astore_1
+    //   302: aload 7
+    //   304: astore_2
+    //   305: goto -109 -> 196
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	310	0	paramFile1	File
-    //   0	310	1	paramFile2	File
-    //   0	310	2	paramString	String
+    //   0	308	0	paramFile1	File
+    //   0	308	1	paramFile2	File
+    //   0	308	2	paramString	String
     //   22	129	3	bool1	boolean
     //   4	54	4	bool2	boolean
     //   10	19	5	bool3	boolean
-    //   242	23	6	localThrowable	Throwable
-    //   298	1	6	localObject1	Object
-    //   1	304	7	localObject2	Object
+    //   245	15	6	localObject1	Object
+    //   294	1	6	localObject2	Object
+    //   1	302	7	localObject3	Object
     // Exception table:
     //   from	to	target	type
     //   101	120	192	java/lang/Throwable
     //   172	189	192	java/lang/Throwable
     //   211	219	192	java/lang/Throwable
     //   219	223	192	java/lang/Throwable
-    //   261	263	192	java/lang/Throwable
-    //   264	270	192	java/lang/Throwable
-    //   273	277	192	java/lang/Throwable
+    //   259	262	192	java/lang/Throwable
+    //   263	268	192	java/lang/Throwable
+    //   271	275	192	java/lang/Throwable
     //   193	195	195	finally
     //   134	138	210	java/lang/Throwable
     //   146	150	226	java/lang/Throwable
     //   120	126	242	java/lang/Throwable
-    //   244	247	247	finally
-    //   257	261	263	java/lang/Throwable
-    //   204	208	280	java/lang/Throwable
-    //   120	126	296	finally
-    //   101	120	303	finally
-    //   134	138	303	finally
-    //   172	189	303	finally
-    //   211	219	303	finally
-    //   219	223	303	finally
-    //   257	261	303	finally
-    //   261	263	303	finally
-    //   264	270	303	finally
-    //   273	277	303	finally
+    //   243	245	245	finally
+    //   255	259	262	java/lang/Throwable
+    //   204	208	278	java/lang/Throwable
+    //   120	126	294	finally
+    //   101	120	301	finally
+    //   134	138	301	finally
+    //   172	189	301	finally
+    //   211	219	301	finally
+    //   219	223	301	finally
+    //   255	259	301	finally
+    //   259	262	301	finally
+    //   263	268	301	finally
+    //   271	275	301	finally
   }
   
   public static File[] convertFileCollectionToFileArray(Collection<File> paramCollection)
@@ -922,24 +922,24 @@ public class FileUtils
     //   46: dup
     //   47: invokespecial 185	java/lang/NullPointerException:<init>	()V
     //   50: athrow
-    //   51: astore_2
-    //   52: aload_2
+    //   51: astore_1
+    //   52: aload_1
     //   53: athrow
-    //   54: astore_1
+    //   54: astore_2
     //   55: aload_0
     //   56: ifnull +11 -> 67
-    //   59: aload_2
+    //   59: aload_1
     //   60: ifnull +85 -> 145
     //   63: aload_0
     //   64: invokevirtual 184	java/io/InputStream:close	()V
-    //   67: aload_1
+    //   67: aload_2
     //   68: athrow
     //   69: aload 4
     //   71: invokevirtual 397	java/io/OutputStream:close	()V
     //   74: goto -45 -> 29
-    //   77: astore_1
+    //   77: astore_2
     //   78: aload_3
-    //   79: astore_2
+    //   79: astore_1
     //   80: goto -25 -> 55
     //   83: astore_1
     //   84: aload_1
@@ -970,7 +970,7 @@ public class FileUtils
     //   132: invokevirtual 184	java/io/InputStream:close	()V
     //   135: return
     //   136: astore_0
-    //   137: aload_2
+    //   137: aload_1
     //   138: aload_0
     //   139: invokevirtual 189	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   142: goto -75 -> 67
@@ -985,13 +985,13 @@ public class FileUtils
     //   start	length	slot	name	signature
     //   0	158	0	paramInputStream	InputStream
     //   0	158	1	paramFile	File
-    //   51	9	2	localThrowable1	Throwable
-    //   79	1	2	localObject1	Object
-    //   86	52	2	localObject2	Object
-    //   152	1	2	localObject3	Object
-    //   1	78	3	localObject4	Object
+    //   54	14	2	localObject1	Object
+    //   77	1	2	localObject2	Object
+    //   86	16	2	localObject3	Object
+    //   152	1	2	localObject4	Object
+    //   1	78	3	localObject5	Object
     //   6	91	4	localFileOutputStream	FileOutputStream
-    //   103	12	4	localThrowable2	Throwable
+    //   103	12	4	localThrowable	Throwable
     // Exception table:
     //   from	to	target	type
     //   24	29	42	java/lang/Throwable
@@ -1338,17 +1338,17 @@ public class FileUtils
     //   258: dup
     //   259: invokespecial 185	java/lang/NullPointerException:<init>	()V
     //   262: athrow
-    //   263: astore_0
-    //   264: aload_0
+    //   263: astore_1
+    //   264: aload_1
     //   265: athrow
-    //   266: astore_1
+    //   266: astore_0
     //   267: aload 13
     //   269: ifnull +12 -> 281
-    //   272: aload_0
+    //   272: aload_1
     //   273: ifnull +131 -> 404
     //   276: aload 13
     //   278: invokevirtual 549	java/io/FileOutputStream:close	()V
-    //   281: aload_1
+    //   281: aload_0
     //   282: athrow
     //   283: astore_1
     //   284: aload_1
@@ -1377,24 +1377,24 @@ public class FileUtils
     //   323: aload 14
     //   325: invokevirtual 548	java/nio/channels/FileChannel:close	()V
     //   328: goto -201 -> 127
-    //   331: astore_1
+    //   331: astore_0
     //   332: aconst_null
-    //   333: astore_0
+    //   333: astore_1
     //   334: goto -67 -> 267
-    //   337: astore_1
-    //   338: aload_1
+    //   337: astore_0
+    //   338: aload_0
     //   339: athrow
-    //   340: astore_0
+    //   340: astore_1
     //   341: aload 14
     //   343: ifnull +12 -> 355
-    //   346: aload_1
+    //   346: aload_0
     //   347: ifnull +21 -> 368
     //   350: aload 14
     //   352: invokevirtual 548	java/nio/channels/FileChannel:close	()V
-    //   355: aload_0
+    //   355: aload_1
     //   356: athrow
     //   357: astore 14
-    //   359: aload_1
+    //   359: aload_0
     //   360: aload 14
     //   362: invokevirtual 189	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   365: goto -10 -> 355
@@ -1410,7 +1410,7 @@ public class FileUtils
     //   387: invokevirtual 549	java/io/FileOutputStream:close	()V
     //   390: goto -249 -> 141
     //   393: astore 13
-    //   395: aload_0
+    //   395: aload_1
     //   396: aload 13
     //   398: invokevirtual 189	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   401: goto -120 -> 281
@@ -1457,9 +1457,9 @@ public class FileUtils
     //   493: invokevirtual 530	java/io/File:setLastModified	(J)Z
     //   496: pop
     //   497: return
-    //   498: astore_0
+    //   498: astore_1
     //   499: aconst_null
-    //   500: astore_1
+    //   500: astore_0
     //   501: goto -160 -> 341
     //   504: lload_3
     //   505: lload 9
@@ -2039,82 +2039,85 @@ public class FileUtils
     // Byte code:
     //   0: aload_0
     //   1: invokestatic 669	org/apache/commons/io/FileUtils:openInputStream	(Ljava/io/File;)Ljava/io/FileInputStream;
-    //   4: astore 4
+    //   4: astore 5
     //   6: aconst_null
-    //   7: astore_3
-    //   8: aload_0
-    //   9: invokevirtual 222	java/io/File:length	()J
-    //   12: lstore_1
-    //   13: lload_1
-    //   14: lconst_0
-    //   15: lcmp
-    //   16: ifle +26 -> 42
-    //   19: aload 4
-    //   21: lload_1
-    //   22: invokestatic 794	org/apache/commons/io/IOUtils:toByteArray	(Ljava/io/InputStream;J)[B
-    //   25: astore_0
-    //   26: aload 4
-    //   28: ifnull +12 -> 40
-    //   31: iconst_0
-    //   32: ifeq +28 -> 60
-    //   35: aload 4
-    //   37: invokevirtual 184	java/io/InputStream:close	()V
-    //   40: aload_0
-    //   41: areturn
-    //   42: aload 4
-    //   44: invokestatic 797	org/apache/commons/io/IOUtils:toByteArray	(Ljava/io/InputStream;)[B
-    //   47: astore_0
-    //   48: goto -22 -> 26
-    //   51: astore_0
-    //   52: new 143	java/lang/NullPointerException
-    //   55: dup
-    //   56: invokespecial 185	java/lang/NullPointerException:<init>	()V
-    //   59: athrow
-    //   60: aload 4
-    //   62: invokevirtual 184	java/io/InputStream:close	()V
-    //   65: aload_0
-    //   66: areturn
-    //   67: astore_3
-    //   68: aload_3
-    //   69: athrow
-    //   70: astore_0
-    //   71: aload 4
-    //   73: ifnull +12 -> 85
-    //   76: aload_3
-    //   77: ifnull +21 -> 98
-    //   80: aload 4
-    //   82: invokevirtual 184	java/io/InputStream:close	()V
-    //   85: aload_0
-    //   86: athrow
-    //   87: astore 4
-    //   89: aload_3
-    //   90: aload 4
-    //   92: invokevirtual 189	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   95: goto -10 -> 85
-    //   98: aload 4
-    //   100: invokevirtual 184	java/io/InputStream:close	()V
-    //   103: goto -18 -> 85
-    //   106: astore_0
-    //   107: goto -36 -> 71
+    //   7: astore 4
+    //   9: aload_0
+    //   10: invokevirtual 222	java/io/File:length	()J
+    //   13: lstore_1
+    //   14: lload_1
+    //   15: lconst_0
+    //   16: lcmp
+    //   17: ifle +26 -> 43
+    //   20: aload 5
+    //   22: lload_1
+    //   23: invokestatic 794	org/apache/commons/io/IOUtils:toByteArray	(Ljava/io/InputStream;J)[B
+    //   26: astore_0
+    //   27: aload 5
+    //   29: ifnull +12 -> 41
+    //   32: iconst_0
+    //   33: ifeq +28 -> 61
+    //   36: aload 5
+    //   38: invokevirtual 184	java/io/InputStream:close	()V
+    //   41: aload_0
+    //   42: areturn
+    //   43: aload 5
+    //   45: invokestatic 797	org/apache/commons/io/IOUtils:toByteArray	(Ljava/io/InputStream;)[B
+    //   48: astore_0
+    //   49: goto -22 -> 27
+    //   52: astore_0
+    //   53: new 143	java/lang/NullPointerException
+    //   56: dup
+    //   57: invokespecial 185	java/lang/NullPointerException:<init>	()V
+    //   60: athrow
+    //   61: aload 5
+    //   63: invokevirtual 184	java/io/InputStream:close	()V
+    //   66: aload_0
+    //   67: areturn
+    //   68: astore_0
+    //   69: aload_0
+    //   70: athrow
+    //   71: astore_3
+    //   72: aload 5
+    //   74: ifnull +12 -> 86
+    //   77: aload_0
+    //   78: ifnull +21 -> 99
+    //   81: aload 5
+    //   83: invokevirtual 184	java/io/InputStream:close	()V
+    //   86: aload_3
+    //   87: athrow
+    //   88: astore 4
+    //   90: aload_0
+    //   91: aload 4
+    //   93: invokevirtual 189	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   96: goto -10 -> 86
+    //   99: aload 5
+    //   101: invokevirtual 184	java/io/InputStream:close	()V
+    //   104: goto -18 -> 86
+    //   107: astore_3
+    //   108: aload 4
+    //   110: astore_0
+    //   111: goto -39 -> 72
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	110	0	paramFile	File
-    //   12	10	1	l	long
-    //   7	1	3	localObject	Object
-    //   67	23	3	localThrowable1	Throwable
-    //   4	77	4	localFileInputStream	FileInputStream
-    //   87	12	4	localThrowable2	Throwable
+    //   0	114	0	paramFile	File
+    //   13	10	1	l	long
+    //   71	16	3	localObject1	Object
+    //   107	1	3	localObject2	Object
+    //   7	1	4	localObject3	Object
+    //   88	21	4	localThrowable	Throwable
+    //   4	96	5	localFileInputStream	FileInputStream
     // Exception table:
     //   from	to	target	type
-    //   35	40	51	java/lang/Throwable
-    //   8	13	67	java/lang/Throwable
-    //   19	26	67	java/lang/Throwable
-    //   42	48	67	java/lang/Throwable
-    //   68	70	70	finally
-    //   80	85	87	java/lang/Throwable
-    //   8	13	106	finally
-    //   19	26	106	finally
-    //   42	48	106	finally
+    //   36	41	52	java/lang/Throwable
+    //   9	14	68	java/lang/Throwable
+    //   20	27	68	java/lang/Throwable
+    //   43	49	68	java/lang/Throwable
+    //   69	71	71	finally
+    //   81	86	88	java/lang/Throwable
+    //   9	14	107	finally
+    //   20	27	107	finally
+    //   43	49	107	finally
   }
   
   @Deprecated
@@ -2213,59 +2216,62 @@ public class FileUtils
     // Byte code:
     //   0: aload_0
     //   1: invokestatic 669	org/apache/commons/io/FileUtils:openInputStream	(Ljava/io/File;)Ljava/io/FileInputStream;
-    //   4: astore_2
+    //   4: astore_3
     //   5: aconst_null
-    //   6: astore_0
-    //   7: aload_2
+    //   6: astore_2
+    //   7: aload_3
     //   8: aload_1
     //   9: invokestatic 814	org/apache/commons/io/Charsets:toCharset	(Ljava/nio/charset/Charset;)Ljava/nio/charset/Charset;
     //   12: invokestatic 828	org/apache/commons/io/IOUtils:readLines	(Ljava/io/InputStream;Ljava/nio/charset/Charset;)Ljava/util/List;
-    //   15: astore_1
-    //   16: aload_2
+    //   15: astore_0
+    //   16: aload_3
     //   17: ifnull +11 -> 28
     //   20: iconst_0
     //   21: ifeq +18 -> 39
-    //   24: aload_2
+    //   24: aload_3
     //   25: invokevirtual 184	java/io/InputStream:close	()V
-    //   28: aload_1
+    //   28: aload_0
     //   29: areturn
     //   30: astore_0
     //   31: new 143	java/lang/NullPointerException
     //   34: dup
     //   35: invokespecial 185	java/lang/NullPointerException:<init>	()V
     //   38: athrow
-    //   39: aload_2
+    //   39: aload_3
     //   40: invokevirtual 184	java/io/InputStream:close	()V
-    //   43: aload_1
+    //   43: aload_0
     //   44: areturn
-    //   45: astore_0
-    //   46: aload_0
+    //   45: astore_1
+    //   46: aload_1
     //   47: athrow
-    //   48: astore_1
-    //   49: aload_2
+    //   48: astore_0
+    //   49: aload_3
     //   50: ifnull +11 -> 61
-    //   53: aload_0
+    //   53: aload_1
     //   54: ifnull +18 -> 72
-    //   57: aload_2
+    //   57: aload_3
     //   58: invokevirtual 184	java/io/InputStream:close	()V
-    //   61: aload_1
+    //   61: aload_0
     //   62: athrow
     //   63: astore_2
-    //   64: aload_0
+    //   64: aload_1
     //   65: aload_2
     //   66: invokevirtual 189	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   69: goto -8 -> 61
-    //   72: aload_2
+    //   72: aload_3
     //   73: invokevirtual 184	java/io/InputStream:close	()V
     //   76: goto -15 -> 61
-    //   79: astore_1
-    //   80: goto -31 -> 49
+    //   79: astore_0
+    //   80: aload_2
+    //   81: astore_1
+    //   82: goto -33 -> 49
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	83	0	paramFile	File
-    //   0	83	1	paramCharset	Charset
-    //   4	54	2	localFileInputStream	FileInputStream
-    //   63	10	2	localThrowable	Throwable
+    //   0	85	0	paramFile	File
+    //   0	85	1	paramCharset	Charset
+    //   6	1	2	localObject	Object
+    //   63	18	2	localThrowable	Throwable
+    //   4	69	3	localFileInputStream	FileInputStream
     // Exception table:
     //   from	to	target	type
     //   24	28	30	java/lang/Throwable

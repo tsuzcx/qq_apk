@@ -1,28 +1,6 @@
-import com.tencent.av.business.handler.NetAddr;
-import java.util.List;
-
-public class lfs
+public abstract interface lfs
 {
-  private static lfs a;
-  public int a;
-  public long a;
-  public List<NetAddr> a;
-  public int b;
-  
-  static
-  {
-    jdField_a_of_type_Lfs = new lfs();
-  }
-  
-  public static lfs a()
-  {
-    return jdField_a_of_type_Lfs;
-  }
-  
-  public String toString()
-  {
-    return "mChannelType[" + this.jdField_a_of_type_Int + "], mSessionId[" + this.jdField_a_of_type_Long + "], mTransType[" + this.b + "]";
-  }
+  public abstract boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
 }
 
 

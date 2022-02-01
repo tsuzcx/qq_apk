@@ -1,72 +1,17 @@
-import android.content.Context;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.ArrayList;
 
-public abstract class aiiy
-  implements aiit
+class aiiy
+  implements DialogInterface.OnClickListener
 {
-  public URLDrawable.URLDrawableOptions a()
+  aiiy(aiit paramaiit, ArrayList paramArrayList, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mExtraInfo = this;
-    return localURLDrawableOptions;
-  }
-  
-  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
-  {
-    if (paramURL == null) {
-      return null;
-    }
-    paramURL = URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
-    paramURL.setTag(new int[] { 0, 0, (int)paramURLDrawableOptions.mGifRoundCorner });
-    return paramURL;
-  }
-  
-  public URL a()
-  {
-    try
-    {
-      URL localURL1 = new URL("sticker_recommended_pic", "fromAIO", ((aijj)this).k());
-      if (localURL1 == null)
-      {
-        QLog.e("SimpleRemoteEmoticon", 1, "getURL url = null");
-        return null;
-      }
-    }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      URL localURL2;
-      for (;;)
-      {
-        QLog.e("SimpleRemoteEmoticon", 1, "getURL create url exception e = " + localMalformedURLException.getMessage());
-        localURL2 = null;
-      }
-      return localURL2;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt) {}
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public String d()
-  {
-    return "z-";
+    paramDialogInterface.dismiss();
+    aiit.a(this.jdField_a_of_type_Aiit.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aiit.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString);
   }
 }
 

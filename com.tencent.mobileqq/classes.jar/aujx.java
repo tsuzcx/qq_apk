@@ -1,20 +1,9 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.DirectForwardActivity;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-
 public class aujx
-  implements DialogInterface.OnDismissListener
 {
-  public aujx(ForwardSdkShareOption paramForwardSdkShareOption) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if ((this.a.a instanceof DirectForwardActivity)) {
-      this.a.a.finish();
-    }
-  }
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
 }
 
 

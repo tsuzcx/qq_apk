@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.database;
 
 import com.tencent.mobileqq.persistence.Entity;
-import wev;
+import wiq;
 
 public class TagEntry
   extends Entity
-  implements wev
+  implements wiq
 {
   public String desc;
   public String feedId;

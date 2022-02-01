@@ -1,28 +1,76 @@
-import com.tencent.gdtad.jsbridge.GdtBannerFragmentForJS;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.Color;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 
-public class acpr
-  implements acqj
+public final class acpr
+  extends LinearLayout
+  implements acpm
 {
-  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
+  private int jdField_a_of_type_Int = -2147483648;
+  private acpo jdField_a_of_type_Acpo;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private int b = -2147483648;
+  
+  public acpr(Context paramContext, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    if (paramacpp != null) {}
-    for (paramString = paramacpp.a(); (paramacpp == null) || (paramString == null); paramString = null)
+    super(paramContext);
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)) || (paramInt1 < 0) || (paramInt2 < 0))
     {
-      acqy.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
-      return true;
+      acvc.d("GdtBannerViewWithPictureText", "constructor");
+      return;
     }
-    try
+    setOrientation(0);
+    setGravity(16);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Acpo = new acpo(paramContext, paramString1);
+    this.jdField_a_of_type_Acpo.setId(2131367431);
+    addView(this.jdField_a_of_type_Acpo);
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367434);
+    this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(4);
+    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#333333"));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString2);
+    addView(this.jdField_a_of_type_AndroidWidgetTextView);
+  }
+  
+  public View a()
+  {
+    return this;
+  }
+  
+  public void a(Context paramContext) {}
+  
+  public View b()
+  {
+    return null;
+  }
+  
+  public void b(Context paramContext) {}
+  
+  public void c(Context paramContext) {}
+  
+  public void setSize(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int <= 0) || (this.b <= 0) || (this.jdField_a_of_type_Acpo == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
     {
-      GdtBannerFragmentForJS.a(paramString, new JSONObject(paramVarArgs[0]), GdtBannerFragmentForJS.class);
-      return true;
+      acvc.d("GdtBannerViewWithPictureText", "setSize error");
+      return;
     }
-    catch (JSONException paramacpp)
-    {
-      acqy.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramacpp);
-    }
-    return true;
+    acpq localacpq = new acpq(getContext(), paramInt1, paramInt2);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(Double.valueOf(1.0D * (paramInt2 - localacpq.b * 2) / this.b * this.jdField_a_of_type_Int + localacpq.b * 2).intValue(), paramInt2);
+    this.jdField_a_of_type_Acpo.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_Acpo.setPadding(localacpq.b, localacpq.b, localacpq.b, localacpq.b);
+    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    localLayoutParams.leftMargin = localacpq.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, localacpq.d);
   }
 }
 

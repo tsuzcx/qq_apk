@@ -1,36 +1,46 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGDownloadListener.1;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGDownloadListener.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.util.HashMap;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class rvl
-  extends Handler
+public class rvl
+  implements DownloadListener
 {
-  rvl(rvk paramrvk, Looper paramLooper)
+  private HashMap<String, rvm> a = new HashMap();
+  
+  public void a(String paramString, rvm paramrvm)
   {
-    super(paramLooper);
+    this.a.remove(paramString);
+    this.a.put(paramString, paramrvm);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      return;
-      paramMessage = this.a.a(false);
-    } while (paramMessage == null);
-    rvk.a(this.a).remove(Integer.valueOf(paramMessage.jdField_a_of_type_Int));
-    AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramMessage.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-    if (localAdvertisementInfo != null) {
-      localAdvertisementInfo.isShowingGuide = false;
-    }
-    this.a.a(null, paramMessage);
+    ThreadManager.getUIHandler().postDelayed(new VideoFeedsUGDownloadListener.2(this, paramString2), 1000L);
   }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2) {}
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    ThreadManager.getUIHandler().post(new VideoFeedsUGDownloadListener.1(this, paramDownloadInfo));
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList) {}
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo) {}
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

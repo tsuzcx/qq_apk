@@ -1,23 +1,30 @@
-import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import mqq.app.AppRuntime;
 
 class awyu
-  extends awxx
+  implements awyz
 {
-  awyu(awys paramawys) {}
+  awyu(awyt paramawyt) {}
   
-  public void onPlaySongChanged(SongInfo paramSongInfo)
+  public void a()
   {
-    if (awys.a(this.a) != null) {
-      awys.a(this.a, awys.a(this.a).a());
+    AppRuntime localAppRuntime;
+    if (this.a.jdField_a_of_type_Int == 1)
+    {
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+        bdll.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbJieshou", "MbWanchengXiaochu", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+      }
     }
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    awys.a(this.a, paramInt);
-    if (paramInt == 2) {
-      awys.a(this.a, awys.a(this.a).c());
-    }
+    do
+    {
+      return;
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    } while ((localAppRuntime == null) || (!(localAppRuntime instanceof QQAppInterface)));
+    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+    bdll.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbFasong", "MbZhudongChaozuo", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
   }
 }
 

@@ -1,16 +1,21 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.together.ui.RoundRectView;
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qwallet.plugin.QWalletHelper;
 
-public class bdse
+class bdse
+  implements View.OnClickListener
 {
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  bdrr jdField_a_of_type_Bdrr;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  RoundRectView jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView;
-  TextView b;
+  bdse(bdsb parambdsb, Context paramContext) {}
+  
+  public void onClick(View paramView)
+  {
+    QWalletHelper.gotoQWalletHome((Activity)this.jdField_a_of_type_AndroidContentContext);
+    akxs.a("public.tailplace.click", "", "", "2", "");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

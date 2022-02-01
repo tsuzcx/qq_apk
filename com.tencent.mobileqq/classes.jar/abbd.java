@@ -1,52 +1,42 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 
-class abbd
-  implements nkl
+public class abbd
 {
-  abbd(abbc paramabbc) {}
-  
-  public void loaded(String paramString, int paramInt)
+  private static float a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflinePluginQQ", 2, "-->offline:checkOfflineUp. result: " + paramString + ", code: " + paramInt);
+    if (paramInt1 <= paramInt2) {
+      return 1.0F;
     }
-    if (paramInt == 9)
-    {
-      try
-      {
-        localObject = new JSONObject(paramString);
-        paramString = (String)localObject;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          Object localObject;
-          localJSONException.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.i("OfflinePluginQQ", 2, "-->offline:checkUp loaded err:" + paramString);
-          }
-          paramString = null;
-        }
-      }
-      localObject = this.a.a.obtainMessage();
-      ((Message)localObject).arg1 = 3;
-      ((Message)localObject).obj = paramString;
-      this.a.a.sendMessage((Message)localObject);
-    }
-    while (paramInt != -1) {
-      return;
-    }
-    paramString = this.a.a.obtainMessage();
-    paramString.arg1 = 2;
-    this.a.a.sendMessage(paramString);
+    return 1.0F * paramInt2 / paramInt1;
   }
   
-  public void progress(int paramInt) {}
+  public static Bitmap a(Bitmap paramBitmap)
+  {
+    int i;
+    int j;
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+    {
+      i = paramBitmap.getWidth();
+      j = paramBitmap.getHeight();
+      if ((i > 0) && (j > 0)) {}
+    }
+    else
+    {
+      return paramBitmap;
+    }
+    int k = ((Long)abac.a().a("SmartCutPicWidth", Long.valueOf(224L))).intValue();
+    if (i <= j) {}
+    for (float f = a(i, k);; f = a(j, k))
+    {
+      k = (int)f;
+      int m = (int)f;
+      azpw.a("Q.videostory", "Q.videostory.capture", "resizeImage", k * i + " " + m * j);
+      Matrix localMatrix = new Matrix();
+      localMatrix.postScale(f, f);
+      return Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
+    }
+  }
 }
 
 

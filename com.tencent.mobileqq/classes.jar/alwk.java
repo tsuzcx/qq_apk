@@ -1,49 +1,28 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
 
-public class alwk
-  extends blle
+class alwk
+  implements blmh
 {
-  public alwk(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  alwk(alwg paramalwg) {}
   
-  public int a()
+  public void onScrollStateChanged(int paramInt)
   {
-    return ShortVideoPlayActivity.d(this.a);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    Intent localIntent = this.a.a();
-    localIntent.putExtras(paramBundle);
-    aufz.a((Activity)this.a.a, localIntent, ForwardRecentTranslucentActivity.class, 21, 100500, "biz_src_jc_shoucang");
-  }
-  
-  public void b()
-  {
-    ShortVideoPlayActivity.e(this.a);
-  }
-  
-  public void e()
-  {
-    this.a.v();
-  }
-  
-  public void f()
-  {
-    ShortVideoPlayActivity.g(this.a);
-  }
-  
-  public void g()
-  {
-    this.a.u();
-  }
-  
-  public void m()
-  {
-    ShortVideoPlayActivity.f(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state: " + paramInt);
+    }
+    if (paramInt == 4097)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state is idle.");
+      }
+      this.a.b = this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 400L);
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
   }
 }
 

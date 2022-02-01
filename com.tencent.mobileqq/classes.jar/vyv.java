@@ -1,47 +1,86 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StTagInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
+import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StReply;
+import feedcloud.FeedCloudMeta.StUser;
 
-class vyv
-  extends RecyclerView.Adapter<vyw>
+public class vyv
+  implements vwd
 {
-  public List<FeedCloudMeta.StTagInfo> a;
+  public vyv(QCircleCommentListView paramQCircleCommentListView, FeedCloudMeta.StComment paramStComment) {}
   
-  private vyv(vyt paramvyt)
+  private void a(boolean paramBoolean, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    vud localvud;
+    Object localObject;
+    if (QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView))
+    {
+      vtr.a(QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView), 3, QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView), this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView.e());
+      localvud = vud.a();
+      vuf localvuf = new vuf().a("commentbox");
+      if (!paramBoolean) {
+        break label200;
+      }
+      localObject = "comment";
+      label62:
+      localvuf = localvuf.b((String)localObject).a(QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView).jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed);
+      QCircleReportBean localQCircleReportBean = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView.a().clone();
+      if (QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView).jdField_a_of_type_JavaLangString != null) {
+        break label207;
+      }
+      localObject = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView.a().getModuleIdStr();
+      label121:
+      localObject = localvuf.a(localQCircleReportBean.setModuleIdStr((String)localObject)).a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView.b());
+      if (!paramBoolean) {
+        break label222;
+      }
+    }
+    label200:
+    label207:
+    label222:
+    for (paramStComment = paramStComment.postUser.id.get();; paramStComment = paramStReply.id.get())
+    {
+      localvud.a(((vuf)localObject).c(paramStComment));
+      return;
+      vtn.a(QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView), 3, QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView), this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView.d());
+      break;
+      localObject = "reply";
+      break label62;
+      localObject = QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView).jdField_a_of_type_JavaLangString;
+      break label121;
+    }
   }
   
-  public vyw a(ViewGroup paramViewGroup, int paramInt)
+  public void a(FeedCloudMeta.StComment paramStComment)
   {
-    return new vyw(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560704, paramViewGroup, false));
+    if (QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView) != null)
+    {
+      QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView).a(paramStComment);
+      QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView);
+    }
+    if (QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView) != null)
+    {
+      QLog.d("QCircleCommentPanelPart", 1, "mNeedShowCommentList1");
+      QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView).a().scrollToPosition(0);
+    }
+    a(true, paramStComment, null);
   }
   
-  public void a(List<FeedCloudMeta.StTagInfo> paramList)
+  public void a(FeedCloudMeta.StReply paramStReply)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public void a(vyw paramvyw, int paramInt)
-  {
-    paramvyw.a((FeedCloudMeta.StTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramvyw, paramInt, getItemId(paramInt));
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
+    if (QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView) != null)
+    {
+      int i = QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get());
+      QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView).a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get(), paramStReply);
+      if ((i != -1) && (QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView) != null)) {
+        QCircleCommentListView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView).a().scrollBy(0, i);
+      }
+    }
+    a(false, null, paramStReply);
   }
 }
 

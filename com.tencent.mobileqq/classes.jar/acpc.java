@@ -1,20 +1,16 @@
-import android.view.View;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.statistics.GdtReporter;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
 
 class acpc
-  implements acri
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  acpc(acow paramacow) {}
+  acpc(acox paramacox, ImageView paramImageView) {}
   
-  public void reportImpression(View paramView)
+  public void onGlobalLayout()
   {
-    paramView = paramView.getTag(2131380927);
-    if ((paramView != null) && ((paramView instanceof GdtAd)))
-    {
-      paramView = (GdtAd)paramView;
-      GdtReporter.doCgiReport(new acnt().a(paramView.getUrlForImpression()));
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    acvl.a().a(this.jdField_a_of_type_AndroidWidgetImageView);
   }
 }
 

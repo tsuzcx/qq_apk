@@ -2,21 +2,21 @@ package com.tencent.biz.pubaccount.readinjoy.automator;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import oub;
-import ouc;
+import omo;
+import omp;
 
 public class Automator$1
   implements Runnable
 {
-  public Automator$1(oub paramoub, ouc[] paramArrayOfouc, boolean paramBoolean) {}
+  public Automator$1(omo paramomo, omp[] paramArrayOfomp, boolean paramBoolean) {}
   
   public void run()
   {
-    oub.a(this.this$0).clear();
-    Collections.addAll(oub.a(this.this$0), this.jdField_a_of_type_ArrayOfOuc);
-    Collections.addAll(oub.a(this.this$0), this.jdField_a_of_type_ArrayOfOuc);
+    omo.a(this.this$0).clear();
+    Collections.addAll(omo.a(this.this$0), this.jdField_a_of_type_ArrayOfOmp);
+    Collections.addAll(omo.a(this.this$0), this.jdField_a_of_type_ArrayOfOmp);
     if (this.jdField_a_of_type_Boolean) {
-      oub.a(this.this$0);
+      omo.a(this.this$0);
     }
   }
 }

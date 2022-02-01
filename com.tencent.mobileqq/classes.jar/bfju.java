@@ -1,33 +1,46 @@
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.ThemeLabelTextView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.AudioUploadTask;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.troop.data.AudioInfo;
+import java.io.File;
 
 public class bfju
-  extends amcl
+  extends Handler
 {
-  int jdField_a_of_type_Int;
-  final View jdField_a_of_type_AndroidViewView;
-  final CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  final RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public final TextView a;
-  private final ThemeLabelTextView jdField_a_of_type_ComTencentWidgetThemeLabelTextView;
-  TextView b;
+  public bfju(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  bfju(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.c = ((ImageView)paramView.findViewById(2131369143));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131368835));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379779));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131371423));
-    this.jdField_a_of_type_ComTencentWidgetThemeLabelTextView = ((ThemeLabelTextView)paramView.findViewById(2131379764));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379878);
-    this.b = ((TextView)paramView.findViewById(2131379911));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362624));
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 3: 
+      TroopBarReplyActivity.b(this.a, false);
+      return;
+    }
+    paramMessage = paramMessage.obj.toString();
+    File localFile = new File(paramMessage);
+    if (localFile.exists()) {}
+    for (long l = localFile.length();; l = 0L)
+    {
+      TroopBarReplyActivity.b(this.a, true);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
+      TroopBarReplyActivity.a(this.a, new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l));
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = TroopBarReplyActivity.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$AudioUploadTask = new TroopBarPublishUtils.AudioUploadTask(this.a, this.a.jdField_a_of_type_AndroidOsHandler, "https://upload.buluo.qq.com/cgi-bin/bar/upload/meida", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path);
+      ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$AudioUploadTask, 5, null, true);
+      this.a.a(2, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo);
+      TroopBarReplyActivity.a(this.a, 0);
+      if (!this.a.k) {
+        break;
+      }
+      bgqv.a(this.a.m, this.a.n, "sure_record", this.a.o, "", "", "");
+      return;
+    }
   }
 }
 

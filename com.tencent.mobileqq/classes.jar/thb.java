@@ -1,105 +1,41 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.GDTBridgeInvokeHandler.register.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.GDTBridgeInvokeHandler.register.2;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.GDTBridgeInvokeHandler.register.3;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.GDTBridgeInvokeHandler.register.4;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.GDTBridgeInvokeHandler.register.5;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.GDTBridgeInvokeHandler.register.6;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.GDTBridgeInvokeHandler.register.7;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import org.jetbrains.annotations.NotNull;
 
-public abstract class thb<T>
-  extends tha<T>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/GDTBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class thb
+  extends tgo
 {
-  protected Context a;
-  protected List<T> a;
-  protected int b;
+  public static final thc a = new thc(null);
   
-  protected thb(Context paramContext, int paramInt)
+  public thb(@NotNull BridgeModule paramBridgeModule)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.b = paramInt;
+    super(paramBridgeModule);
   }
   
-  private void c(List<T> paramList)
+  @NotNull
+  public String a()
   {
-    a(paramList);
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    return "gdt";
   }
   
-  public int a()
+  public void a()
   {
-    return this.b;
-  }
-  
-  protected Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public List<T> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(int paramInt, T paramT)
-  {
-    a(paramT);
-    this.jdField_a_of_type_JavaUtilList.add(paramInt, paramT);
-    notifyDataSetChanged();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return true;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (paramInt < getCount())
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramInt);
-      notifyDataSetChanged();
-    }
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 < getCount())
-    {
-      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_JavaUtilList, paramInt1, paramInt2);
-      notifyDataSetChanged();
-    }
-  }
-  
-  public void b(T paramT)
-  {
-    a(paramT);
-    this.jdField_a_of_type_JavaUtilList.add(paramT);
-    notifyDataSetChanged();
-  }
-  
-  public void b(List<T> paramList)
-  {
-    c();
-    c(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public void c()
-  {
-    b();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public T getItem(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    a("getDeviceInfo", (Function2)new GDTBridgeInvokeHandler.register.1(this));
+    a("handleClick", (Function2)new GDTBridgeInvokeHandler.register.2(this));
+    a("c2sReport", (Function2)new GDTBridgeInvokeHandler.register.3(this));
+    a("dwellTimeMillisReport", (Function2)new GDTBridgeInvokeHandler.register.4(this));
+    a("getMotiveAd", (Function2)new GDTBridgeInvokeHandler.register.5(this));
+    a("showMotiveAd", (Function2)new GDTBridgeInvokeHandler.register.6(this));
+    a("openMiniApp", (Function2)new GDTBridgeInvokeHandler.register.7(this));
   }
 }
 

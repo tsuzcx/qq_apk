@@ -1,18 +1,19 @@
+import android.app.Activity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class agou
-  extends afuv
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  agou(agot paramagot) {}
   
-  agou(agos paramagos) {}
+  public void onClick(View paramView)
+  {
+    this.a.a.getHostActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

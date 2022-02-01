@@ -1,27 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajse
-  implements View.OnClickListener
+  extends anuw
 {
-  public ajse(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  private ajse(AlphabetFriendFragment paramAlphabetFriendFragment) {}
   
-  public void onClick(View paramView)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    this.a.g = true;
-    this.a.d.setVisibility(8);
-    this.a.d = ((TextView)ChatHistoryTroopMemberFragment.a(this.a, 2131368949));
-    this.a.d.setVisibility(0);
-    this.a.d.setText(anni.a(2131700466));
-    this.a.d.setOnClickListener(new ajsf(this));
-    ChatHistoryTroopMemberFragment.a(this.a);
-    if (this.a.a != null) {
-      this.a.a.a();
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      AlphabetFriendFragment.a(this.a, 1400L, false);
+    }
   }
 }
 

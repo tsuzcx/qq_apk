@@ -1,23 +1,66 @@
-class bojt
-  implements bopm
+import android.view.View;
+import android.view.ViewStub;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public abstract class bojt
 {
-  bojt(bojo parambojo) {}
+  private final ViewStub jdField_a_of_type_AndroidViewViewStub;
+  private Queue<Runnable> jdField_a_of_type_JavaUtilQueue;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void aV_()
+  public bojt(ViewStub paramViewStub)
   {
-    bojo.a(this.a).d();
+    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
+    this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
   }
   
-  public void b()
+  private void b()
   {
-    bojo.a(this.a).d();
-    bojo.a(this.a).a();
-    bojo.a(this.a).a(bojo.a(this.a));
+    for (;;)
+    {
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
+      if (localRunnable != null) {
+        try
+        {
+          localRunnable.run();
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+          throw new RuntimeException("doPendingActions encounter an error", localException);
+        }
+      }
+    }
   }
   
-  public void c()
+  protected final void a()
   {
-    bojo.a(this.a).d();
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    View localView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
+    this.jdField_a_of_type_Boolean = true;
+    a(localView);
+    b();
+  }
+  
+  protected abstract void a(View paramView);
+  
+  protected void a(Runnable paramRunnable)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      paramRunnable.run();
+    }
+    while (paramRunnable == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilQueue.add(paramRunnable);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

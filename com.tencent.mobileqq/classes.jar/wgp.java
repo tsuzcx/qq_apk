@@ -1,43 +1,18 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckBlackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.List;
 
-class wgp
-  implements wgu
+public class wgp
+  extends wov
 {
-  private wgp(wgm paramwgm) {}
+  public List<qqstory_struct.GpsMsg> a;
   
-  public void a(wgv paramwgv)
+  public wgp(qqstory_service.RspCheckBlackList paramRspCheckBlackList)
   {
-    QQStoryContext.a();
-    QQAppInterface localQQAppInterface = QQStoryContext.a();
-    bcev localbcev = bcec.a(2, 2);
-    MessageForShortVideo localMessageForShortVideo = paramwgv.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-    bcef localbcef = localMessageForShortVideo.getDownloadInfo(localbcev.b);
-    if (paramwgv.jdField_a_of_type_Int == 2)
-    {
-      localbcef.i = ShortVideoUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
-      localbcef.a(localMessageForShortVideo.istroop, 1);
-    }
-    for (;;)
-    {
-      localbcev.a(localbcef);
-      localbcev.a(new wgq(this, paramwgv.jdField_a_of_type_JavaLangString));
-      bcec.a(localbcev, localQQAppInterface);
-      yqp.b("AsyncFileDownloader", String.format("start download with shortvideo downloader, task = %s", new Object[] { paramwgv }));
-      return;
-      localbcef.h = ShortVideoUtils.a(localMessageForShortVideo, "mp4");
-      localbcef.a(localMessageForShortVideo.istroop, 0);
-    }
+    super(paramRspCheckBlackList.result);
+    this.a = paramRspCheckBlackList.black_gps_list.get();
   }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public void b(wgv paramwgv) {}
 }
 
 

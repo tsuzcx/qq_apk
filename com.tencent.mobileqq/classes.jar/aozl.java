@@ -1,21 +1,16 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class aozl
+  extends aoxh
 {
-  public int a;
-  public aozm a;
-  public String a;
-  
-  public aozl()
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Aozm = null;
-  }
-  
-  public String toString()
-  {
-    return "ARCloudLBSLocationCheckResult{retCode = " + this.jdField_a_of_type_Int + ", imageId = " + this.jdField_a_of_type_JavaLangString + ", nearestPOIInfo = " + this.jdField_a_of_type_Aozm + '}';
+    paramQQAppInterface = new aozk(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qzone";
+    paramQQAppInterface.c = "qzone_publicaccount";
+    return paramQQAppInterface;
   }
 }
 

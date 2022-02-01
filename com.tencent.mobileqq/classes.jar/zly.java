@@ -1,28 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
-final class zly
-  implements DownloadParams.DecodeHandler
+public class zly
+  implements zlz
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public void a(@NonNull ArrayList<zma> paramArrayList, @NonNull Context paramContext)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
+    int i = 0;
+    while (i < zma.a.length)
     {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return zlx.a(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+      paramArrayList.add(new zma(paramContext.getResources().getDrawable(zma.b[i]), 0, zma.a[i]));
+      i += 1;
+    }
   }
 }
 

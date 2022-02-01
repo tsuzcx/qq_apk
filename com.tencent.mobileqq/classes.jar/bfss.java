@@ -1,39 +1,28 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
-import java.util.List;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.Map;
 
-public abstract class bfss
+class bfss
+  implements DialogInterface.OnClickListener
 {
-  public void a(int paramInt) {}
+  bfss(bfsf parambfsf, bfrs parambfrs) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString, List<bftd> paramList) {}
-  
-  public void a(int paramInt, String paramString) {}
-  
-  public void a(int paramInt, oidb_0x962.RspBody paramRspBody) {}
-  
-  public void a(long paramLong) {}
-  
-  public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString) {}
-  
-  public void a(SparseArray<bftf> paramSparseArray) {}
-  
-  public void a(TroopGiftBagInfo paramTroopGiftBagInfo) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString1, int paramInt, String paramString2) {}
-  
-  public void a(List<bfte> paramList, aasn paramaasn) {}
-  
-  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3) {}
-  
-  public void b(int paramInt) {}
-  
-  public void b(int paramInt, String paramString) {}
-  
-  public void c(int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    }
+    TroopFileTransferManager.a(this.jdField_a_of_type_Bfsf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bfsf.jdField_a_of_type_Long).a(this.jdField_a_of_type_Bfrs.jdField_a_of_type_JavaUtilUUID);
+    paramDialogInterface = (bfrs)bgrn.a(this.jdField_a_of_type_Bfsf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bfsf.jdField_a_of_type_Long).c.get(this.jdField_a_of_type_Bfrs.f);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_Bfrs.b);
+    }
+    bdll.b(this.jdField_a_of_type_Bfsf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Cancel_pause_download", 0, 0, "", this.jdField_a_of_type_Bfsf.jdField_a_of_type_Long + "", "", "");
+  }
 }
 
 

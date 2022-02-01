@@ -7,11 +7,11 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bddy;
-import bglp;
-import bgnt;
-import bgpa;
-import biau;
+import bdwt;
+import bhlq;
+import bhnv;
+import bhpc;
+import bjbs;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
@@ -22,27 +22,27 @@ public class SubAccountBaseActivity
   extends IphoneTitleBarActivity
   implements DialogInterface.OnClickListener
 {
-  private bgpa jdField_a_of_type_Bgpa;
-  private biau jdField_a_of_type_Biau;
+  private bhpc jdField_a_of_type_Bhpc;
+  private bjbs jdField_a_of_type_Bjbs;
   public String b;
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Biau == null)
+    if (this.jdField_a_of_type_Bjbs == null)
     {
-      this.jdField_a_of_type_Biau = new biau(this, getTitleBarHeight());
-      this.jdField_a_of_type_Biau.c(true);
+      this.jdField_a_of_type_Bjbs = new bjbs(this, getTitleBarHeight());
+      this.jdField_a_of_type_Bjbs.c(true);
     }
     if (paramInt > 0) {
-      this.jdField_a_of_type_Biau.c(paramInt);
+      this.jdField_a_of_type_Bjbs.c(paramInt);
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_Biau != null) && (!this.jdField_a_of_type_Biau.isShowing()) && (!isFinishing())) {
-        this.jdField_a_of_type_Biau.show();
+      if ((this.jdField_a_of_type_Bjbs != null) && (!this.jdField_a_of_type_Bjbs.isShowing()) && (!isFinishing())) {
+        this.jdField_a_of_type_Bjbs.show();
       }
       return;
-      this.jdField_a_of_type_Biau.c(2131694158);
+      this.jdField_a_of_type_Bjbs.c(2131694176);
     }
   }
   
@@ -53,11 +53,11 @@ public class SubAccountBaseActivity
       localObject = this;
     }
     f();
-    this.jdField_a_of_type_Bgpa = bglp.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_Bgpa.setPositiveButton(2131690912, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_Bgpa.setNegativeButton(2131690582, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_Bgpa.setCancelable(false);
-    this.jdField_a_of_type_Bgpa.show();
+    this.jdField_a_of_type_Bhpc = bhlq.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_Bhpc.setPositiveButton(2131690912, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bhpc.setNegativeButton(2131690580, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bhpc.setCancelable(false);
+    this.jdField_a_of_type_Bhpc.show();
   }
   
   public void b(String paramString)
@@ -72,15 +72,15 @@ public class SubAccountBaseActivity
       localObject = this;
     }
     f();
-    this.jdField_a_of_type_Bgpa = bglp.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_Bgpa.setPositiveButton(2131690912, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_Bgpa.setCancelable(false);
-    this.jdField_a_of_type_Bgpa.show();
+    this.jdField_a_of_type_Bhpc = bhlq.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_Bhpc.setPositiveButton(2131690912, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bhpc.setCancelable(false);
+    this.jdField_a_of_type_Bhpc.show();
   }
   
   public boolean b()
   {
-    return bgnt.d(BaseApplication.getContext());
+    return bhnv.d(BaseApplication.getContext());
   }
   
   public void c(String paramString)
@@ -92,7 +92,7 @@ public class SubAccountBaseActivity
   {
     boolean bool = b();
     if (!bool) {
-      b(getString(2131691985));
+      b(getString(2131691989));
     }
     return bool;
   }
@@ -115,18 +115,18 @@ public class SubAccountBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bddy localbddy = (bddy)this.app.getManager(62);
-    if (localbddy != null) {
-      localbddy.a(this);
+    bdwt localbdwt = (bdwt)this.app.getManager(62);
+    if (localbdwt != null) {
+      localbdwt.a(this);
     }
   }
   
   public void e()
   {
-    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {}
+    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Biau.dismiss();
+      this.jdField_a_of_type_Bjbs.dismiss();
       return;
     }
     catch (Exception localException) {}
@@ -134,12 +134,12 @@ public class SubAccountBaseActivity
   
   public void f()
   {
-    if ((this.jdField_a_of_type_Bgpa != null) && (this.jdField_a_of_type_Bgpa.isShowing())) {}
+    if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bgpa.dismiss();
+      this.jdField_a_of_type_Bhpc.dismiss();
       label24:
-      this.jdField_a_of_type_Bgpa = null;
+      this.jdField_a_of_type_Bhpc = null;
       return;
     }
     catch (Exception localException)

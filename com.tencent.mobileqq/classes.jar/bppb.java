@@ -1,23 +1,8 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 
-class bppb
-  implements Animator.AnimatorListener
+public abstract interface bppb
 {
-  bppb(bpoz parambpoz) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (bpoz.a(this.a) != null) {
-      bpoz.a(this.a).a();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void a(MusicItemInfo paramMusicItemInfo);
 }
 
 

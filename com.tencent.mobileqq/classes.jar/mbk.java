@@ -1,20 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.av.ui.BaseToolbar;
+import com.tencent.av.ui.AVActivity;
+import java.util.Comparator;
 
 public class mbk
-  extends AnimatorListenerAdapter
+  implements Comparator<lob>
 {
-  public mbk(BaseToolbar paramBaseToolbar) {}
+  public mbk(AVActivity paramAVActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public int a(lob paramlob1, lob paramlob2)
   {
-    super.onAnimationEnd(paramAnimator);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
+    if (paramlob1.a) {}
+    while (paramlob2.a) {
+      return 1;
+    }
+    return 0;
   }
 }
 

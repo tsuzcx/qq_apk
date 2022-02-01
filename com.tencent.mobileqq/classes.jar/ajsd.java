@@ -1,19 +1,24 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import java.lang.ref.WeakReference;
 
-public class ajsd
-  implements ajul
+class ajsd
+  implements View.OnLongClickListener
 {
-  public ajsd(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  private WeakReference<ajry> a;
   
-  public void a()
+  public ajsd(ajry paramajry)
   {
-    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(1);
+    this.a = new WeakReference(paramajry);
   }
   
-  public void b()
+  public boolean onLongClick(View paramView)
   {
-    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(2);
+    ajry localajry = (ajry)this.a.get();
+    if (localajry != null) {
+      return localajry.onLongClick(paramView);
+    }
+    return false;
   }
 }
 

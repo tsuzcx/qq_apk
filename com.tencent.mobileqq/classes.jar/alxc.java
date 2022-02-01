@@ -1,50 +1,82 @@
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
-
-public class alxc
-  implements SeekBar.OnSeekBarChangeListener
+public final class alxc
 {
-  public alxc(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public final int a;
+  public final int b;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public alxc(int paramInt1, int paramInt2)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public static alxc a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return null;
     }
-    this.a.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onStartTrackingTouch: progress = " + i);
+    int i = paramString.indexOf('*');
+    if (i < 0) {
+      i = paramString.indexOf('x');
+    }
+    for (;;)
+    {
+      if (i < 0) {
+        throw a(paramString);
+      }
+      try
+      {
+        alxc localalxc = new alxc(Integer.parseInt(paramString.substring(0, i)), Integer.parseInt(paramString.substring(i + 1)));
+        return localalxc;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        throw a(paramString);
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        throw a(paramString);
+      }
     }
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  private static NumberFormatException a(String paramString)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onStopTrackingTouch: 当前位置为 = " + i);
-    }
-    if (this.a.jdField_a_of_type_Bhgl != null)
+    throw new NumberFormatException("Invalid SizeF: \"" + paramString + "\"");
+  }
+  
+  public int a()
+  {
+    return this.a;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool = true;
+    if (paramObject == null) {}
+    do
     {
-      if (this.a.a() == 2) {
-        this.a.b();
+      return false;
+      if (this == paramObject) {
+        return true;
       }
-      this.a.c.setImageResource(2130846117);
-      this.a.jdField_a_of_type_Bhgl.a();
-      this.a.jdField_a_of_type_Bhgl.a(i);
-      this.a.jdField_a_of_type_MqqOsMqqHandler.post(this.a.jdField_a_of_type_JavaLangRunnable);
-      this.a.b.setEnabled(false);
-      this.a.b.setTextColor(-2130706433);
+    } while (!(paramObject instanceof alxc));
+    paramObject = (alxc)paramObject;
+    if ((this.a == paramObject.a) && (this.b == paramObject.b)) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
     }
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+  }
+  
+  public String toString()
+  {
+    return this.a + "x" + this.b;
   }
 }
 

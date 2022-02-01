@@ -1,15 +1,12 @@
-import android.support.annotation.NonNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class awqq
+final class awqq
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public int b;
-  public int c;
-  
-  @NonNull
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "[errorCode = " + this.a + ", fileType = " + this.b + ", fileTrivial = " + this.c + "]";
+    bdll.b(null, "CliOper", "", "", "0X800A97A", "0X800A97A", 0, 0, "", "0", "0", "");
   }
 }
 

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.activity.shortvideo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bcjb;
-import bdyq;
-import bgmg;
+import bdbt;
+import bexj;
+import bhmi;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -35,19 +35,19 @@ class SendVideoActivity$SendTask
       QLog.d("SendVideoActivity", 2, "#SendTask# run(): start");
     }
     SendVideoActivity.a(this.jdField_a_of_type_AndroidContentIntent);
-    bcjb.z = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_frame_count", 0);
-    bcjb.y = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_record_time", 0);
+    bdbt.z = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_frame_count", 0);
+    bdbt.y = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_record_time", 0);
     long l1 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("ab_test_send_btn_click_time", 0L);
     long l2 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("ab_test_generate_thumb_cost_time", 0L);
-    if (bdyq.a())
+    if (bexj.a())
     {
-      bdyq.a = l1;
-      bdyq.b = bcjb.y;
-      bdyq.c = l2;
+      bexj.a = l1;
+      bexj.b = bdbt.y;
+      bexj.c = l2;
     }
-    bdyo.b = l1;
+    bexh.b = l1;
     String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("thumbfile_send_path");
-    if (bgmg.b(str))
+    if (bhmi.b(str))
     {
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
       localObject = URLDrawable.getDrawable(new File(str), (URLDrawable.URLDrawableOptions)localObject);

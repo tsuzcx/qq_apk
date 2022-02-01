@@ -1,12 +1,17 @@
-import org.jetbrains.annotations.NotNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
-public abstract interface rtb
+class rtb
+  implements DialogInterface.OnShowListener
 {
-  public abstract void a(float paramFloat);
+  rtb(rsx paramrsx, blir paramblir) {}
   
-  public abstract void a(int paramInt, @NotNull String paramString);
-  
-  public abstract void a(String paramString);
+  public void onShow(DialogInterface paramDialogInterface)
+  {
+    rsx.a(this.jdField_a_of_type_Rsx, "mShareActionSheet onShow()");
+    this.jdField_a_of_type_Blir.getWindow().clearFlags(8);
+  }
 }
 
 

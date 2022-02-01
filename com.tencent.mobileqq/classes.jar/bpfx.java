@@ -1,33 +1,46 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
+import android.widget.TextView;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
-public abstract interface bpfx
+public class bpfx
 {
-  @NonNull
-  public abstract Context a();
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
   
-  public abstract Intent a(bpsf parambpsf);
+  private String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("调试信息：\n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localStringBuilder.append(str + "：" + (String)this.jdField_a_of_type_JavaUtilHashMap.get(str) + "\n");
+    }
+    return localStringBuilder.toString();
+  }
   
-  @NonNull
-  public abstract View a();
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(a());
+    }
+  }
   
-  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3);
-  
-  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3, boolean paramBoolean);
-  
-  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong);
-  
-  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong, DialogInterface.OnDismissListener paramOnDismissListener);
-  
-  public abstract void b();
-  
-  @Nullable
-  public abstract Activity getActivity();
+  public void a(String[] paramArrayOfString)
+  {
+    int i = 0;
+    while (i < paramArrayOfString.length / 2)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramArrayOfString[(i * 2)], paramArrayOfString[(i * 2 + 1)]);
+      i += 1;
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(a());
+    }
+  }
 }
 
 

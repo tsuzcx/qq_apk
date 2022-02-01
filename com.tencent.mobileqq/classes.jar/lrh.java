@@ -1,52 +1,177 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.opengl.texture.YUVTexture;
+import android.util.Log;
+import android.util.Pair;
+import com.tencent.aekit.openrender.internal.Frame;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Vector;
+import org.jetbrains.annotations.NotNull;
 
-public class lrh
-  extends Handler
+public abstract class lrh
+  extends lro
 {
-  public lrh(YUVTexture paramYUVTexture, Looper paramLooper)
+  private String jdField_a_of_type_JavaLangString = getClass().getSimpleName() + "-" + Integer.toHexString(hashCode());
+  private List<Pair<lrh, Integer>> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private Vector<lrl> jdField_a_of_type_JavaUtilVector;
+  private lrj jdField_a_of_type_Lrj;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public lrh(int paramInt)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaUtilVector = new Vector(paramInt);
+    this.jdField_a_of_type_JavaUtilVector.setSize(paramInt);
   }
   
-  public void handleMessage(Message paramMessage)
+  private void a(lrl paramlrl, int paramInt, long paramLong)
   {
-    int i = paramMessage.what;
-    this.a.d = true;
-    switch (i)
+    if (a(paramlrl, paramInt))
     {
+      a(this.jdField_a_of_type_JavaUtilVector, paramLong);
+      this.jdField_a_of_type_JavaUtilVector.clear();
+      this.jdField_a_of_type_JavaUtilVector.setSize(this.jdField_a_of_type_JavaUtilVector.capacity());
     }
-    do
+  }
+  
+  private boolean a(lrl paramlrl, int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilVector.set(paramInt, paramlrl);
+    paramInt = 0;
+    while (paramInt < this.jdField_a_of_type_JavaUtilVector.size())
     {
-      do
+      if (this.jdField_a_of_type_JavaUtilVector.get(paramInt) == null) {
+        return false;
+      }
+      paramInt += 1;
+    }
+    return true;
+  }
+  
+  @NotNull
+  protected abstract Frame a(List<lrl> paramList, long paramLong);
+  
+  public lrh a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilVector.clear();
+    this.jdField_a_of_type_JavaUtilVector.setSize(this.jdField_a_of_type_JavaUtilVector.capacity());
+    return this;
+  }
+  
+  public lrh a(lrh paramlrh, int paramInt)
+  {
+    Log.d(this.jdField_a_of_type_JavaLangString, "addTarget: " + paramlrh);
+    if (paramInt >= paramlrh.jdField_a_of_type_JavaUtilVector.size())
+    {
+      Log.e(this.jdField_a_of_type_JavaLangString, "addTarget: targetIndex=" + paramInt + ", target inputCount=" + this.jdField_a_of_type_JavaUtilVector.size() + ", out of bounds");
+      return this;
+    }
+    this.jdField_a_of_type_JavaUtilList.add(new Pair(paramlrh, Integer.valueOf(paramInt)));
+    paramlrh.a(this.jdField_a_of_type_Lrn);
+    return this;
+  }
+  
+  protected abstract void a();
+  
+  public void a(List<lrl> paramList, long paramLong)
+  {
+    int j = 0;
+    Object localObject = a(paramList, paramLong);
+    lrl locallrl = null;
+    int i = 0;
+    if (i < paramList.size())
+    {
+      if (((lrl)paramList.get(i)).jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame == localObject) {
+        locallrl = (lrl)paramList.get(i);
+      }
+      for (;;)
       {
-        do
-        {
-          do
-          {
-            return;
-          } while (YUVTexture.a(this.a) == null);
-          YUVTexture.a(this.a).c();
-          return;
-        } while (YUVTexture.a(this.a) == null);
-        YUVTexture.a(this.a).b();
-        return;
-      } while (YUVTexture.a(this.a) == null);
-      YUVTexture.a(this.a).a();
-      return;
-    } while (YUVTexture.a(this.a) == null);
-    if (YUVTexture.a(this.a) == null) {
-      YUVTexture.a(this.a, new lny('=', ';'));
+        i += 1;
+        break;
+        ((lrl)paramList.get(i)).a();
+      }
     }
-    paramMessage = (String)paramMessage.obj;
-    YUVTexture.a(this.a).a(paramMessage);
-    i = YUVTexture.a(this.a).a("width");
-    int j = YUVTexture.a(this.a).a("height");
-    int k = YUVTexture.a(this.a).a("angle");
-    int m = YUVTexture.a(this.a).a("rotation", -1);
-    YUVTexture.a(this.a).a(i, j, k, m);
+    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+      if (this.jdField_a_of_type_Lrn.a.a != null) {
+        this.jdField_a_of_type_Lrn.a.a.a((Frame)localObject, this);
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (locallrl != null)
+      {
+        locallrl.a();
+        return;
+        if (locallrl == null)
+        {
+          locallrl = lrl.a((Frame)localObject);
+          locallrl.a(this.jdField_a_of_type_JavaUtilList.size());
+        }
+        for (;;)
+        {
+          localObject = new ArrayList();
+          i = j;
+          while (i < paramList.size())
+          {
+            if (((lrl)paramList.get(i)).jdField_a_of_type_JavaUtilList != null) {
+              ((List)localObject).addAll(((lrl)paramList.get(i)).jdField_a_of_type_JavaUtilList);
+            }
+            i += 1;
+          }
+          locallrl.a(this.jdField_a_of_type_JavaUtilList.size());
+          locallrl.a();
+        }
+        locallrl.jdField_a_of_type_JavaUtilList = ((List)localObject);
+        paramList = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramList.hasNext())
+        {
+          localObject = (Pair)paramList.next();
+          ((lrh)((Pair)localObject).first).a(locallrl, ((Integer)((Pair)localObject).second).intValue(), paramLong);
+        }
+      }
+    }
+  }
+  
+  public void a(lrn paramlrn)
+  {
+    super.a(paramlrn);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      Log.d(this.jdField_a_of_type_JavaLangString, "init: ");
+      a();
+      if (this.jdField_a_of_type_Lrj != null)
+      {
+        this.jdField_a_of_type_Lrj.a();
+        this.jdField_a_of_type_Lrj = null;
+      }
+      this.jdField_a_of_type_Boolean = true;
+    }
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      ((lrh)((Pair)this.jdField_a_of_type_JavaUtilList.get(i)).first).a(this.jdField_a_of_type_Lrn);
+      i += 1;
+    }
+  }
+  
+  protected abstract void b();
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      Log.d(this.jdField_a_of_type_JavaLangString, "destroy: ");
+      b();
+      this.jdField_a_of_type_Boolean = false;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((lrh)((Pair)localIterator.next()).first).c();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilVector.clear();
+    this.jdField_a_of_type_JavaUtilVector.setSize(this.jdField_a_of_type_JavaUtilVector.capacity());
   }
 }
 

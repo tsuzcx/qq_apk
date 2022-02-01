@@ -2,12 +2,12 @@ package com.tencent.mobileqq.filemanager.activity;
 
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import assx;
+import atjb;
 
 public class UniformDownloadActivity$11$2
   implements Runnable
 {
-  public UniformDownloadActivity$11$2(assx paramassx) {}
+  public UniformDownloadActivity$11$2(atjb paramatjb) {}
   
   public void run()
   {

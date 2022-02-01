@@ -1,78 +1,47 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.view.View;
 
-public class aqoi
-  extends aqkz<aqoh>
+@TargetApi(11)
+final class aqoi
 {
-  @NonNull
-  public aqoh a(int paramInt)
+  static void a(View paramView, float paramFloat)
   {
-    return new aqoh();
+    paramView.setPivotX(paramFloat);
   }
   
-  @Nullable
-  public aqoh a(aqlg[] paramArrayOfaqlg)
+  static void b(View paramView, float paramFloat)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
-    {
-      aqoh localaqoh = aqoh.a(paramArrayOfaqlg[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceManageConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
-      }
-      return localaqoh;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "onParsed is null");
-    }
-    return null;
+    paramView.setPivotY(paramFloat);
   }
   
-  public void a(aqoh paramaqoh)
+  static void c(View paramView, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "onUpdate " + paramaqoh.toString());
-    }
+    paramView.setAlpha(paramFloat);
   }
   
-  public Class<aqoh> clazz()
+  static void d(View paramView, float paramFloat)
   {
-    return aqoh.class;
+    paramView.setScaleX(paramFloat);
   }
   
-  public boolean isNeedCompressed()
+  static void e(View paramView, float paramFloat)
   {
-    return true;
+    paramView.setScaleY(paramFloat);
   }
   
-  public boolean isNeedStoreLargeFile()
+  static void f(View paramView, float paramFloat)
   {
-    return false;
+    paramView.setTranslationY(paramFloat);
   }
   
-  public int migrateOldVersion()
+  static void g(View paramView, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 528;
+    paramView.setX(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqoi
  * JD-Core Version:    0.7.0.1
  */

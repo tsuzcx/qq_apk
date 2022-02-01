@@ -1,29 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
-public abstract class wno
+public class wno
+  implements wng
 {
-  public int a;
-  public String a;
+  public wno(StoryVideoUploadTask paramStoryVideoUploadTask, wnm paramwnm) {}
   
-  public wno() {}
-  
-  public wno(qqstory_struct.ErrorInfo paramErrorInfo)
+  public void a(wnf paramwnf)
   {
-    this.jdField_a_of_type_Int = paramErrorInfo.error_code.get();
-    this.jdField_a_of_type_JavaLangString = paramErrorInfo.error_desc.get().toStringUtf8();
+    this.jdField_a_of_type_Wnm.l = ((wna)paramwnf).b;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
   }
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt, Bundle paramBundle);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

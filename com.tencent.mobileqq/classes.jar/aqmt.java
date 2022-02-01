@@ -1,22 +1,12 @@
-public class aqmt
-  extends aqmp
+import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
+
+public abstract interface aqmt
 {
-  private aqnn a;
-  
-  public aqmt(String paramString, aqnn paramaqnn)
-  {
-    super(paramString);
-    this.a = paramaqnn;
-  }
-  
-  public aqnn a()
-  {
-    return this.a;
-  }
+  public abstract void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqmt
  * JD-Core Version:    0.7.0.1
  */

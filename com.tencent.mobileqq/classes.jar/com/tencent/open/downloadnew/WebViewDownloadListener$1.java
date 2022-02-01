@@ -1,34 +1,34 @@
 package com.tencent.open.downloadnew;
 
 import android.os.Build.VERSION;
-import biqb;
-import bisy;
-import biwz;
-import bixa;
+import bjra;
+import bjtx;
+import bjxy;
+import bjxz;
 import com.tencent.smtt.sdk.WebView;
 
 public class WebViewDownloadListener$1
   implements Runnable
 {
-  public WebViewDownloadListener$1(biwz parambiwz, WebView paramWebView, String paramString) {}
+  public WebViewDownloadListener$1(bjxy parambjxy, WebView paramWebView, String paramString) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (this.jdField_a_of_type_JavaLangString != null) && (biqb.a().a())) {
+    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (this.jdField_a_of_type_JavaLangString != null) && (bjra.a().a())) {
       try
       {
-        bisy.a("WebViewDownloadListener", "wb.loadUrl(loadJs):" + this.jdField_a_of_type_JavaLangString);
+        bjtx.a("WebViewDownloadListener", "wb.loadUrl(loadJs):" + this.jdField_a_of_type_JavaLangString);
         if (Build.VERSION.SDK_INT < 19)
         {
           this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
           return;
         }
-        this.jdField_a_of_type_ComTencentSmttSdkWebView.evaluateJavascript(this.jdField_a_of_type_JavaLangString, new bixa(this));
+        this.jdField_a_of_type_ComTencentSmttSdkWebView.evaluateJavascript(this.jdField_a_of_type_JavaLangString, new bjxz(this));
         return;
       }
       catch (Exception localException)
       {
-        bisy.a("WebViewDownloadListener", "doJsCallBack >>> ", localException);
+        bjtx.a("WebViewDownloadListener", "doJsCallBack >>> ", localException);
       }
     }
   }

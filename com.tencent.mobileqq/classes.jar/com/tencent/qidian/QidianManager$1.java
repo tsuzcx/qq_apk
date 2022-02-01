@@ -1,15 +1,15 @@
 package com.tencent.qidian;
 
-import bjft;
+import bkgt;
 
 public class QidianManager$1
   implements Runnable
 {
-  public QidianManager$1(bjft parambjft) {}
+  public QidianManager$1(bkgt parambkgt) {}
   
   public void run()
   {
-    bjft.a(this.this$0);
+    bkgt.a(this.this$0);
   }
 }
 

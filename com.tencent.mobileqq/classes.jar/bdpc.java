@@ -1,35 +1,16 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class bdpc
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
-  private JSONObject a;
+  public bdpc(StructMsgForGeneralShare paramStructMsgForGeneralShare, agjk paramagjk) {}
   
-  public bdpc(int paramInt, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("result", this.jdField_a_of_type_Int);
-      localJSONObject.put("message", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("data", this.jdField_a_of_type_OrgJsonJSONObject);
-      return localJSONObject.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    return this.jdField_a_of_type_Agjk.onTouch(paramView, paramMotionEvent);
   }
 }
 

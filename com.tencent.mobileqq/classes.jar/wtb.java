@@ -1,16 +1,20 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wtb
-  extends wla
+class wtb
+  implements woy<xcj, xeh>
 {
-  public wtb(qqstory_service.RspMsgTabNodeWatched paramRspMsgTabNodeWatched)
-  {
-    super(paramRspMsgTabNodeWatched.result);
-  }
+  wtb(wta paramwta, long paramLong) {}
   
-  public String toString()
+  public void a(@NonNull xcj paramxcj, @Nullable xeh paramxeh, @NonNull ErrorMessage paramErrorMessage)
   {
-    return "MsgTabNodeWatchedResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
+    if (paramxeh != null)
+    {
+      this.jdField_a_of_type_Wta.b("qqstory_black_status", Integer.valueOf(paramxeh.b));
+      this.jdField_a_of_type_Wta.b("qqstory_black_status_update_interval", Integer.valueOf(paramxeh.c));
+      this.jdField_a_of_type_Wta.b("qqstory_black_status_last_update_time", Integer.valueOf((int)this.jdField_a_of_type_Long));
+    }
   }
 }
 

@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
-
-class bdym
-  implements ITransCallbackForReport
+public abstract interface bdym
 {
-  bdym(bdyk parambdyk) {}
-  
-  public void onFailed(int paramInt, String paramString1, String paramString2)
-  {
-    this.a.a(false, paramInt, paramString1, paramString2);
-  }
+  public abstract void a(bdyr parambdyr);
 }
 
 

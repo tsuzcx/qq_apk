@@ -1,17 +1,55 @@
-import android.view.View;
-import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class akfq
-  implements bkhg
+public class akfq
 {
-  akfq(akfp paramakfp) {}
+  ArrayList<Object> a = new ArrayList();
   
-  public void b(View paramView)
+  private boolean a()
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof akfr))) {
-      ((akfr)paramView).a.setImageDrawable(null);
+    boolean bool = false;
+    if (this.a != null) {}
+    for (int i = this.a.size() + 0;; i = 0)
+    {
+      if (i >= 20) {
+        bool = true;
+      }
+      if ((bool) && (QLog.isColorLevel())) {
+        QLog.d("Q.history.", 2, "isOverLimit");
+      }
+      return bool;
     }
+  }
+  
+  public List<Object> a()
+  {
+    return this.a;
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (a(paramObject))
+    {
+      this.a.remove(paramObject);
+      return;
+    }
+    if (a())
+    {
+      auna.a(2131692232);
+      return;
+    }
+    this.a.add(paramObject);
+  }
+  
+  public boolean a(Object paramObject)
+  {
+    return this.a.contains(paramObject);
   }
 }
 

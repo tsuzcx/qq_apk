@@ -1,8 +1,17 @@
-import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 
-public abstract interface beag
+public class beag
 {
-  public abstract Bitmap a(Bitmap paramBitmap);
+  public ImageView a;
+  public TextView a;
+  public URLImageView a;
+  public TimDocSSOMsg.UinRightInfo a;
+  public TextView b;
+  
+  public beag(beaf parambeaf) {}
 }
 
 

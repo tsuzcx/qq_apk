@@ -1,38 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.10;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlParams;
-
 public class aphk
-  implements DialogInterface.OnClickListener
 {
-  public aphk(ArkAppDownloadModule.10 param10) {}
+  private aphl jdField_a_of_type_Aphl = new aphl();
+  private aphm jdField_a_of_type_Aphm = new aphm();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aphk()
   {
-    boolean bool = false;
-    bmxh.a().a(this.a.jdField_a_of_type_CooperationWadlIpcWadlParams);
-    aphi.a(this.a.this$0, true);
-    bcst.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "7", "", this.a.jdField_a_of_type_CooperationWadlIpcWadlParams.a, "");
-    if ((paramDialogInterface instanceof bgpa))
+    this.jdField_a_of_type_Aphl.a();
+    this.jdField_a_of_type_Aphm.a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Aphl.c();
+    this.jdField_a_of_type_Aphm.c();
+  }
+  
+  public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    if (paramInt1 == 36197)
     {
-      if (!((bgpa)paramDialogInterface).getCheckBoxState()) {
-        bool = true;
-      }
-      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences == null) {}
-    }
-    try
-    {
-      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.b, bool).apply();
+      this.jdField_a_of_type_Aphm.a(paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
       return;
     }
-    catch (Exception paramDialogInterface)
+    if (paramInt1 == 3553)
     {
-      QLog.e("ark.download.module", 1, "start download sp error : ", paramDialogInterface);
+      this.jdField_a_of_type_Aphl.a(paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
+      return;
     }
+    throw new RuntimeException("textureType must be GLES11Ext.GL_TEXTURE_EXTERNAL_OES or GLES20.GL_TEXTURE_2D.");
   }
 }
 

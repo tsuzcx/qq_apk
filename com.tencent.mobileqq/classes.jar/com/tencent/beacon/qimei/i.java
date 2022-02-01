@@ -17,7 +17,7 @@ public class i
 {
   public static Map<String, String> a(String paramString)
   {
-    if (j.c(paramString)) {
+    if (j.b(paramString)) {
       return null;
     }
     localHashMap = new HashMap(10);
@@ -53,7 +53,7 @@ public class i
   
   public static void a(Context paramContext, String paramString)
   {
-    if (j.c(paramString)) {
+    if (j.b(paramString)) {
       return;
     }
     if (com.tencent.beacon.core.info.f.a() != 1) {

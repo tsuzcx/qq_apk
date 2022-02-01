@@ -1,14 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-
 class xhc
-  extends AnimatorListenerAdapter
+  extends xgd
 {
-  xhc(xhb paramxhb) {}
+  xhc(xgp paramxgp, xhx paramxhx) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean b()
   {
-    super.onAnimationEnd(paramAnimator);
+    this.jdField_a_of_type_Xhx.e = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 

@@ -1,39 +1,153 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.manager.Manager;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class auke
-  implements Manager
+public abstract class auke
 {
-  private augp jdField_a_of_type_Augp;
-  private Map<String, Map<String, Object>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public Activity a;
+  protected Bundle a;
+  public View a;
+  protected ViewGroup a;
+  protected ProgressBar a;
+  protected RelativeLayout a;
+  protected TextView a;
+  protected aukf a;
+  protected View b;
+  protected TextView b;
+  protected TextView c;
   
-  public auke()
+  public auke(Activity paramActivity)
   {
-    QLog.d("SDK_SHARE.ForwardSdkStatusManager", 1, "--> init");
-    this.jdField_a_of_type_Augp = new augp();
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public augp a()
+  public Rect a()
   {
-    return this.jdField_a_of_type_Augp;
+    if (this.jdField_a_of_type_AndroidOsBundle != null) {
+      return (Rect)this.jdField_a_of_type_AndroidOsBundle.getParcelable("file_browser_params_thumb_bound");
+    }
+    return null;
   }
   
-  public Map<String, Object> a(String paramString)
+  public View a()
   {
-    return (Map)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public void a(String paramString, Map<String, Object> paramMap)
+  public abstract void a();
+  
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramMap);
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+    }
   }
   
-  public void onDestroy()
+  public void a(Bundle paramBundle)
   {
-    QLog.d("SDK_SHARE.ForwardSdkStatusManager", 1, "--> onDestroy");
-    this.jdField_a_of_type_Augp.a();
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null))
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379287));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131379253));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379263));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366164));
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379251);
+    }
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
+  }
+  
+  public void a(aukf paramaukf)
+  {
+    this.jdField_a_of_type_Aukf = paramaukf;
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+  }
+  
+  public void a(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    if (this.c == null) {
+      this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372080));
+    }
+    if (this.c != null)
+    {
+      this.c.setText(paramString);
+      this.c.setOnClickListener(paramOnClickListener);
+      this.c.setVisibility(0);
+      a(true);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    TextView localTextView;
+    if (this.c != null)
+    {
+      localTextView = this.c;
+      if (!paramBoolean) {
+        break label24;
+      }
+    }
+    label24:
+    for (int i = 0;; i = 8)
+    {
+      localTextView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_b_of_type_AndroidViewView != null) {
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    RelativeLayout localRelativeLayout;
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    {
+      localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      if (!paramBoolean) {
+        break label24;
+      }
+    }
+    label24:
+    for (int i = 0;; i = 8)
+    {
+      localRelativeLayout.setVisibility(i);
+      return;
+    }
   }
 }
 

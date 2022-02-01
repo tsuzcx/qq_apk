@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bgnt;
+import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -9,7 +9,6 @@ import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.util.JSONUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.utils.NativeBuffer;
-import com.tencent.mobileqq.triton.sdk.bridge.ITNativeBufferPool;
 import com.tencent.qphone.base.util.QLog;
 import javax.annotation.Nullable;
 import okhttp3.Headers;
@@ -100,7 +99,7 @@ public class RequestPlugin$MiniAppWebsocketListener
         Object localObject1 = new JSONObject();
         ((JSONObject)localObject1).put("socketTaskId", this.currSocketId);
         ((JSONObject)localObject1).put("state", "error");
-        if ((bgnt.b(BaseApplicationImpl.getContext()) == 0) || (bgnt.b(BaseApplicationImpl.getContext()) == -1))
+        if ((bhnv.b(BaseApplicationImpl.getContext()) == 0) || (bhnv.b(BaseApplicationImpl.getContext()) == -1))
         {
           paramWebSocket = "network is down";
           ((JSONObject)localObject1).put("errMsg", "network is down");
@@ -164,7 +163,7 @@ public class RequestPlugin$MiniAppWebsocketListener
       paramWebSocket.put("errMsg", "ok");
       paramWebSocket.put("isBuffer", true);
       if (this.this$0.isGameRuntime) {
-        NativeBuffer.packNativeBuffer(paramByteString.toByteArray(), NativeBuffer.TYPE_BUFFER_NATIVE, "data", paramWebSocket, (ITNativeBufferPool)this.this$0.jsPluginEngine.getNativeBufferPool());
+        NativeBuffer.packNativeBuffer(paramByteString.toByteArray(), NativeBuffer.TYPE_BUFFER_NATIVE, "data", paramWebSocket, RequestPlugin.access$000(this.this$0));
       }
       while (RequestPlugin.access$000(this.this$0) != null)
       {

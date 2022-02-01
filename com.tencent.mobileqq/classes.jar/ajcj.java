@@ -1,46 +1,36 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Calendar;
 
 public class ajcj
-  extends ajcf
 {
-  public ajcj(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  long jdField_a_of_type_Long;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  CharSequence jdField_a_of_type_JavaLangCharSequence;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  long jdField_b_of_type_Long;
+  CharSequence jdField_b_of_type_JavaLangCharSequence;
+  
+  public ajcj(TroopMemberHistoryFragment paramTroopMemberHistoryFragment, String paramString, long paramLong1, CharSequence paramCharSequence, long paramLong2, MessageRecord paramMessageRecord)
   {
-    super(paramContext, paramQQAppInterface, paramBoolean);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  protected int a()
+  public CharSequence a()
   {
-    return 10028;
-  }
-  
-  protected void a(RecommendTroopItem paramRecommendTroopItem)
-  {
-    super.a(paramRecommendTroopItem);
-    bcst.b(null, "dc00899", "Grp_find_new", "", "grptab", "Clk_join", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
-  }
-  
-  protected int b()
-  {
-    return 21;
-  }
-  
-  protected void b(RecommendTroopItem paramRecommendTroopItem)
-  {
-    super.b(paramRecommendTroopItem);
-    bcst.b(null, "dc00899", "Grp_recom", "", "search", "recom_clk_add", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
-  }
-  
-  protected int c()
-  {
-    return 10003;
-  }
-  
-  protected void c(RecommendTroopItem paramRecommendTroopItem)
-  {
-    super.c(paramRecommendTroopItem);
-    bcst.b(null, "dc00899", "Grp_find_new", "", "grptab", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+    if (this.jdField_b_of_type_JavaLangCharSequence == null)
+    {
+      Calendar.getInstance().setTimeInMillis(this.jdField_a_of_type_Long * 1000L);
+      this.jdField_b_of_type_JavaLangCharSequence = bhsw.a(BaseApplicationImpl.getApplication().getApplicationContext(), 3, this.jdField_a_of_type_Long * 1000L);
+    }
+    return this.jdField_b_of_type_JavaLangCharSequence;
   }
 }
 

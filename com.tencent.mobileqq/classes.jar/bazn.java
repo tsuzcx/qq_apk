@@ -1,34 +1,30 @@
-import com.tencent.mobileqq.richstatus.ActionUrlActivity;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import java.lang.ref.WeakReference;
 
 public class bazn
-  extends WebChromeClient
+  implements View.OnLongClickListener
 {
-  private bazn(ActionUrlActivity paramActionUrlActivity) {}
+  private WeakReference<ReceiptMessageDetailFragment> a;
   
-  @Override
-  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  private bazn(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
-      return true;
+    this.a = new WeakReference(paramReceiptMessageDetailFragment);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    paramView = (ReceiptMessageDetailFragment)this.a.get();
+    if ((paramView == null) || (!paramView.isAdded())) {
+      return false;
     }
-    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
-  }
-  
-  public void onProgressChanged(WebView paramWebView, int paramInt)
-  {
-    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
-    super.onProgressChanged(paramWebView, paramInt);
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    this.a.setTitle(paramString);
-    this.a.a();
+    blir localblir = blir.a(paramView.getActivity());
+    localblir.b(2131691137);
+    localblir.c(2131690580);
+    localblir.a(new bazo(this, paramView, localblir));
+    localblir.show();
+    return true;
   }
 }
 

@@ -1,28 +1,65 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
 
-class bneb
-  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
+public class bneb
+  implements ServiceConnection
 {
-  bneb(bndy parambndy) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection;
   
-  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
+  public bneb(bnea parambnea, ServiceConnection paramServiceConnection, Context paramContext, int paramInt)
   {
-    bnzb.b("AEPituCameraUnit", "mCurrentRatio---onChanged: ratio=" + paramRatio);
-    if (paramRatio == null) {}
+    this.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
+  {
     do
     {
-      do
+      try
       {
-        return;
-      } while (bndy.a(this.a) == paramRatio);
-      bndy.a(this.a, paramRatio);
-      bnyp.a().a("sp_key_ae_camera_ratio", paramRatio.code, 0);
-    } while (bndy.b(this.a) != AECaptureMode.NORMAL);
-    bndy.f(this.a);
-    bndy.g(this.a);
+        this.jdField_a_of_type_AndroidContentContext.getApplicationContext().unbindService(this);
+        if (QLog.isColorLevel()) {
+          QLog.i("QZonePluginManger", 2, "onServiceConnected, " + this);
+        }
+        this.jdField_a_of_type_AndroidContentServiceConnection.onServiceConnected(???, paramIBinder);
+      }
+      catch (Exception localException)
+      {
+        synchronized (bnea.a(this.jdField_a_of_type_Bnea))
+        {
+          do
+          {
+            paramIBinder = (bneb)bnea.a(this.jdField_a_of_type_Bnea).poll();
+            if (paramIBinder == null) {
+              break;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("QZonePluginManger", 2, "continue process");
+            }
+            bnea.a(this.jdField_a_of_type_Bnea, paramIBinder, 300);
+            return;
+            localException = localException;
+          } while (!QLog.isColorLevel());
+          QLog.i("QZonePluginManger", 2, "unbindService, " + this);
+        }
+      }
+      bnea.a(this.jdField_a_of_type_Bnea, false);
+    } while (!QLog.isColorLevel());
+    QLog.i("QZonePluginManger", 2, "queue empty");
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginManger", 2, "onServiceDisconnected, " + this);
+    }
+    this.jdField_a_of_type_AndroidContentServiceConnection.onServiceDisconnected(paramComponentName);
   }
 }
 

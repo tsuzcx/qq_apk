@@ -1,19 +1,34 @@
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import java.util.ArrayList;
 
-class aenq
+public class aenq
+  extends PagerAdapter
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
+  public aenq(FontSettingActivity paramFontSettingActivity) {}
   
-  aenq(aeno paramaeno) {}
+  public void destroyItem(View paramView, int paramInt, Object paramObject)
+  {
+    ((ViewPager)paramView).removeView((View)this.a.a.get(paramInt));
+  }
+  
+  public int getCount()
+  {
+    return this.a.a.size();
+  }
+  
+  public Object instantiateItem(View paramView, int paramInt)
+  {
+    ((ViewPager)paramView).addView((View)this.a.a.get(paramInt), 0);
+    return this.a.a.get(paramInt);
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
+  }
 }
 
 

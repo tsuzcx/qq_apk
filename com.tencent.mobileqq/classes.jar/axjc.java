@@ -1,50 +1,56 @@
-import com.tencent.mobileqq.nearby.now.view.SplitedProgressBar;
-import java.security.InvalidParameterException;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadPoolParams;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class axjc
 {
-  private SplitedProgressBar a;
+  private static axjc jdField_a_of_type_Axjc;
+  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
-  public axjc(SplitedProgressBar paramSplitedProgressBar)
+  private axjc()
   {
-    if (paramSplitedProgressBar == null) {
-      throw new InvalidParameterException("ProgressControler: progressBar is null");
-    }
-    this.a = paramSplitedProgressBar;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return;
-    }
-    this.a.setTotalCount(paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 < this.a.b) {
-      this.a.setProgress(paramInt1, paramInt2);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    SplitedProgressBar localSplitedProgressBar = this.a;
-    if (paramBoolean) {}
-    for (int i = 8;; i = 0)
+    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null)
     {
-      localSplitedProgressBar.setVisibility(i);
-      return;
+      int i = Runtime.getRuntime().availableProcessors();
+      ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
+      localThreadPoolParams.corePoolsize = i;
+      localThreadPoolParams.maxPooolSize = i;
+      localThreadPoolParams.priority = 5;
+      localThreadPoolParams.poolThreadName = "msgbackup_Tranport_Executor";
+      this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool(localThreadPoolParams);
     }
   }
   
-  public void b(int paramInt)
+  public static axjc a()
   {
-    if (paramInt == 0) {
+    try
+    {
+      if (jdField_a_of_type_Axjc == null) {
+        jdField_a_of_type_Axjc = new axjc();
+      }
+      axjc localaxjc = jdField_a_of_type_Axjc;
+      return localaxjc;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    axjn.a("MsgBackupMsgBackupTransportExecutor", "msgbackup destroy-------------> destroyed = " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get(), new Object[0]);
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       return;
     }
-    this.a.setShowMaxCount(paramInt);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null) {
+      axjn.a("MsgBackupMsgBackupTransportExecutor", "thread pool is destroyed!", new Object[0]);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(paramRunnable);
   }
 }
 

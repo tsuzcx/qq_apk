@@ -1,32 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
 public class awex
-  implements View.OnClickListener
+  implements axcc
 {
-  public awex(PngFrameManager.1 param1) {}
+  private WeakReference<IVideoOuterStatusListener> a;
   
-  public void onClick(View paramView)
+  public awex(WeakReference<IVideoOuterStatusListener> paramWeakReference)
   {
-    if (this.a.a.jdField_a_of_type_Ahcu.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() == 0) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramWeakReference;
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if ((this.a == null) || (this.a.get() == null)) {
       return;
-      if (this.a.a.jdField_a_of_type_Ahcu.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0)
-      {
-        this.a.a.jdField_a_of_type_Boolean = true;
-        this.a.a.jdField_a_of_type_Ahcu.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        this.a.this$0.e(this.a.a);
-        if (this.a.a.jdField_a_of_type_Awfa != null) {
-          this.a.a.jdField_a_of_type_Awfa.a(this.a.a.jdField_a_of_type_Ahcu);
-        }
-      }
     }
+    IVideoOuterStatusListener localIVideoOuterStatusListener = (IVideoOuterStatusListener)this.a.get();
+    if (paramBoolean)
+    {
+      localIVideoOuterStatusListener.onVideoStop();
+      return;
+    }
+    localIVideoOuterStatusListener.onVideoStart(-1);
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_GAIN");
+      awet.a().a(false);
+      a(false);
+      return;
+    }
+    QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_LOSS");
+    awet.a().a(true);
+    a(true);
+  }
+  
+  public void a(WeakReference<IVideoOuterStatusListener> paramWeakReference)
+  {
+    this.a = paramWeakReference;
   }
 }
 

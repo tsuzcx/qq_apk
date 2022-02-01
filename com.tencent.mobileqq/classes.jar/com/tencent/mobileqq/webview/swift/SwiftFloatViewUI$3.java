@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bhmq;
-import bhql;
+import binl;
+import birg;
 
 public class SwiftFloatViewUI$3
   implements Runnable
 {
-  public SwiftFloatViewUI$3(bhmq parambhmq) {}
+  public SwiftFloatViewUI$3(binl parambinl) {}
   
   public void run()
   {

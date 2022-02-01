@@ -1,50 +1,25 @@
-public class bcky
+import java.util.Comparator;
+
+final class bcky
+  implements Comparator<bcfn>
 {
-  public static long a()
+  public int a(bcfn parambcfn1, bcfn parambcfn2)
   {
-    return b(1) - c(1);
-  }
-  
-  public static long a(int paramInt)
-  {
-    long l = Runtime.getRuntime().maxMemory() - a() * 1024L;
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return l;
-    case 1: 
-      return l / 1024L;
+    int i;
+    if (parambcfn2.a() == null) {
+      i = -1;
     }
-    return l / 1048576L;
-  }
-  
-  private static long b(int paramInt)
-  {
-    switch (paramInt)
+    int j;
+    do
     {
-    default: 
-      return Runtime.getRuntime().totalMemory();
-    case 0: 
-      return Runtime.getRuntime().totalMemory();
-    case 1: 
-      return Runtime.getRuntime().totalMemory() / 1024L;
-    }
-    return Runtime.getRuntime().totalMemory() / 1024L / 1024L;
-  }
-  
-  private static long c(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return Runtime.getRuntime().freeMemory();
-    case 0: 
-      return Runtime.getRuntime().freeMemory();
-    case 1: 
-      return Runtime.getRuntime().freeMemory() / 1024L;
-    }
-    return Runtime.getRuntime().freeMemory() / 1024L / 1024L;
+      return i;
+      if (parambcfn1.a() == null) {
+        return 1;
+      }
+      j = Integer.signum(parambcfn2.a().c - parambcfn1.a().c);
+      i = j;
+    } while (j != 0);
+    return bckx.a(parambcfn1, parambcfn2);
   }
 }
 

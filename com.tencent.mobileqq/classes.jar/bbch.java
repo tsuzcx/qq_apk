@@ -1,9 +1,10 @@
-import java.util.ArrayList;
-
-public class bbch
+public abstract interface bbch
 {
-  public String a;
-  public ArrayList<Integer> a;
+  public abstract void a(String paramString, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, Long paramLong);
+  
+  public abstract void b(String paramString, boolean paramBoolean);
 }
 
 

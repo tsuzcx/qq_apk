@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.limitchat;
 
 import android.support.v4.app.FragmentActivity;
-import anmw;
+import anyw;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ExtendFriendLimitChatMatchFragment$8
@@ -13,8 +13,8 @@ class ExtendFriendLimitChatMatchFragment$8
   {
     if (ExtendFriendLimitChatMatchFragment.a(this.this$0) != null)
     {
-      anmw localanmw = (anmw)ExtendFriendLimitChatMatchFragment.a(this.this$0).app.getManager(51);
-      ExtendFriendLimitChatMatchFragment.a(this.this$0, localanmw.b(ExtendFriendLimitChatMatchFragment.a(this.this$0).app.getCurrentAccountUin()));
+      anyw localanyw = (anyw)ExtendFriendLimitChatMatchFragment.a(this.this$0).app.getManager(51);
+      ExtendFriendLimitChatMatchFragment.a(this.this$0, localanyw.b(ExtendFriendLimitChatMatchFragment.a(this.this$0).app.getCurrentAccountUin()));
     }
   }
 }

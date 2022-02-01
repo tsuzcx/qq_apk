@@ -1,16 +1,41 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class aefv
-  implements View.OnClickListener
+public class aefv
+  implements bliz
 {
-  aefv(aeft paramaeft) {}
+  public aefv(ChatSettingForTroop paramChatSettingForTroop, blir paramblir) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    aeft.a(this.a).a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bjbv == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bjbv = new bjbv(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+    }
+    paramView = (aoip)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.a(20);
+    if ((bhnv.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getApp().getApplicationContext())) && (paramView != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bjbv.b(0, 2131691900, 0);
+      paramView.k(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+    }
+    for (;;)
+    {
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Blir.cancel();
+      return;
+      if (paramView != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bjbv.b(2, 2131694008, 1500);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bjbv.b(2, 2131691899, 1500);
+      }
+    }
   }
 }
 

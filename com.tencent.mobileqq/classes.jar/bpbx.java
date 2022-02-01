@@ -1,123 +1,59 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import java.util.ArrayList;
-import java.util.List;
+import android.util.Log;
+import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 public class bpbx
-  extends BaseAdapter
+  extends ScheduledThreadPoolExecutor
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  List<ywk> jdField_a_of_type_JavaUtilList;
-  int b;
-  public int c = -1;
-  
-  public bpbx(EditVideoArtFilter paramEditVideoArtFilter, Context paramContext)
+  public bpbx(TimerTaskManager paramTimerTaskManager, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = bppm.b(this.jdField_a_of_type_AndroidContentContext, 120.0F);
-    this.b = bppm.b(this.jdField_a_of_type_AndroidContentContext, 90.0F);
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(20);
+    super(paramInt);
   }
   
-  public ywk a(int paramInt)
+  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return (ywk)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a(List<ywk> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    ywk localywk = new ywk();
-    this.jdField_a_of_type_JavaUtilList.add(localywk);
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.c = 0;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    bpby localbpby;
-    View localView1;
-    if (paramView == null)
+    super.afterExecute(paramRunnable, paramThrowable);
+    Throwable localThrowable1 = paramThrowable;
+    if (paramThrowable == null)
     {
-      localbpby = new bpby(this);
-      localView1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559316, null);
-      localbpby.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131378663));
-      localbpby.jdField_a_of_type_AndroidViewView = localView1.findViewById(2131377160);
-      localView1.setTag(localbpby);
+      localThrowable1 = paramThrowable;
+      if (!(paramRunnable instanceof Future)) {}
     }
-    ywk localywk;
-    for (;;)
+    try
     {
-      localywk = a(paramInt);
-      if (localywk != null) {
-        break;
-      }
-      EventCollector.getInstance().onListGetView(paramInt, localView1, paramViewGroup, getItemId(paramInt));
-      return localView1;
-      localbpby = (bpby)paramView.getTag();
-      localView1 = paramView;
-    }
-    paramView = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localywk.jdField_a_of_type_Int + localywk.b);
-    View localView2 = paramView;
-    if (paramView == null)
-    {
-      if (paramInt != 0) {
-        break label272;
-      }
-      paramView = bggl.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_AndroidContentContext.getResources(), 2130841477, this.b, this.jdField_a_of_type_Int);
-      label180:
-      localView2 = paramView;
-      if (paramView != null)
+      paramRunnable = (Future)paramRunnable;
+      localThrowable1 = paramThrowable;
+      if (paramRunnable.isDone())
       {
-        this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(localywk.jdField_a_of_type_Int + localywk.b, paramView);
-        localView2 = paramView;
+        paramRunnable.get();
+        localThrowable1 = paramThrowable;
       }
     }
-    localbpby.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localView2);
-    if (paramInt == 0)
+    catch (CancellationException localCancellationException)
     {
-      localbpby.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anni.a(2131702608));
-      label252:
-      if (paramInt != this.c) {
-        break label329;
-      }
-      localbpby.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      break label46;
     }
-    for (;;)
+    catch (ExecutionException paramRunnable)
     {
-      break;
-      label272:
-      paramView = bggl.a(localywk.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
-      break label180;
-      localbpby.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anni.a(2131702711) + localywk.c);
-      break label252;
-      label329:
-      localbpby.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      for (;;)
+      {
+        localThrowable2 = paramRunnable.getCause();
+      }
+    }
+    catch (InterruptedException paramRunnable)
+    {
+      for (;;)
+      {
+        label46:
+        paramRunnable.printStackTrace();
+        Throwable localThrowable2 = paramThrowable;
+      }
+    }
+    if (localThrowable1 != null) {
+      Log.e("LyricTimerTaskManager", "Exception happen when execute task! : " + localThrowable1.toString());
     }
   }
 }

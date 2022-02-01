@@ -1,8 +1,16 @@
-public abstract interface auvb
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+
+class auvb
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(int paramInt);
+  auvb(auva paramauva) {}
   
-  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a.setVisibility(8);
+  }
 }
 
 

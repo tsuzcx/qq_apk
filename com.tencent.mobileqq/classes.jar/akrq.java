@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class akrq
+class akrq
+  extends nkq
 {
-  public int a;
-  public MessageRecord a;
-  public String a;
+  akrq(akrp paramakrp, long paramLong) {}
   
-  public akrq(int paramInt, String paramString, MessageRecord paramMessageRecord)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    if (QLog.isColorLevel()) {
+      QLog.d("SdkDynamicAvatarSettingHelper", 2, new Object[] { "checkOpenidDiff, onResult, errorCode=", Integer.valueOf(paramInt) });
+    }
+    if ((this.jdField_a_of_type_Akrp.a.isFinishing()) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L)) {}
+    while (paramInt != 16) {
+      return;
+    }
+    akrn.b(this.jdField_a_of_type_Akrp.a);
   }
 }
 

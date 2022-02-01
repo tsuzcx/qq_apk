@@ -1,43 +1,18 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.dataline.util.widget.AsyncImageView;
-import java.net.URL;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class rmm
-  extends rmj
+class rmm
+  implements DialogInterface.OnDismissListener
 {
-  public TextView a;
-  public View b;
+  rmm(rmj paramrmj) {}
   
-  public rmm(rmi paramrmi, ViewGroup paramViewGroup, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramrmi, paramViewGroup, paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379627));
-    this.jdField_b_of_type_AndroidViewView = a(2131380206);
-  }
-  
-  protected URL a(String paramString)
-  {
-    return AsyncImageView.a(paramString, this.jdField_a_of_type_AndroidWidgetImageView.getWidth(), this.jdField_a_of_type_AndroidWidgetImageView.getHeight(), false);
-  }
-  
-  public void a(int paramInt, riw paramriw)
-  {
-    super.a(paramInt, paramriw);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(pgk.a((int)(paramriw.d / 1000L)));
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    if (paramBoolean)
-    {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      return;
+    if (rmj.a(this.a) != null) {
+      rmj.a(this.a).a(rmj.a(this.a), rmj.b(this.a), false, false);
     }
-    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    rmj.a(this.a, true);
+    rmj.b(this.a, false);
   }
 }
 

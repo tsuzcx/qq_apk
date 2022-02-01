@@ -1,11 +1,6 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-
-public abstract class beqn
+public abstract interface beqn
 {
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo) {}
-  
-  public void a(String paramString, Integer paramInteger) {}
+  public abstract void d();
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.theme;
 
-import bdoq;
+import behm;
 
 public final class DarkModeManager$3
   implements Runnable
@@ -9,7 +9,7 @@ public final class DarkModeManager$3
   
   public void run()
   {
-    bdoq.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    behm.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
   }
 }
 

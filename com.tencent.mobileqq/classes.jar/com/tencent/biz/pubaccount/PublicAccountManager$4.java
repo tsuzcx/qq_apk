@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import java.lang.ref.WeakReference;
-import nzz;
-import oai;
+import obj;
+import obs;
 
 public class PublicAccountManager$4
   implements Runnable
 {
-  public PublicAccountManager$4(nzz paramnzz) {}
+  public PublicAccountManager$4(obj paramobj) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class PublicAccountManager$4
     String str = this.this$0.jdField_b_of_type_JavaLangString;
     boolean bool = this.this$0.jdField_b_of_type_Boolean;
     if ((this.this$0.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.this$0.jdField_b_of_type_JavaLangRefWeakReference.get() != null) && (localQQAppInterface != null)) {
-      SosoInterface.a(new oai(this, 1, true, true, 0L, true, false, "PublicAccountManager", str, bool));
+      SosoInterface.a(new obs(this, 1, true, true, 0L, true, false, "PublicAccountManager", str, bool));
     }
   }
 }

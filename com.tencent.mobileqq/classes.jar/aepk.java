@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
 public class aepk
-  implements DialogInterface.OnDismissListener
+  extends aocj
 {
-  public aepk(MainFragment paramMainFragment) {}
+  public aepk(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a()
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
-    }
+    this.a.a();
   }
 }
 

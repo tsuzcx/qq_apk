@@ -1,10 +1,26 @@
-import com.tencent.mobileqq.data.TroopInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class ajdh
+  implements View.OnTouchListener
 {
-  public int a;
-  public TroopInfo a;
-  public String a;
+  public ajdh(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
+    if (paramMotionEvent.isActive()) {
+      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    }
+    this.a.a.clearFocus();
+    paramView = this.a.a.getText().toString();
+    this.a.a.setSelection(paramView.length());
+    return false;
+  }
 }
 
 

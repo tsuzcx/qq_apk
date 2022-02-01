@@ -1,33 +1,42 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.text.Layout;
+import android.text.SpannedString;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-public class bfdv
-  extends Handler
+class bfdv
+  implements View.OnTouchListener
 {
-  public bfdv(bfdt parambfdt, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bfdv(bfdt parambfdt) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    for (;;)
+    int i = paramMotionEvent.getAction();
+    TextView localTextView = (TextView)paramView;
+    CharSequence localCharSequence = localTextView.getText();
+    if (((localCharSequence instanceof SpannedString)) && (i == 1))
     {
-      try
-      {
-        switch (paramMessage.what)
-        {
-        case 2: 
-          return;
-        }
+      i = (int)paramMotionEvent.getX();
+      int j = (int)paramMotionEvent.getY();
+      int k = localTextView.getTotalPaddingLeft();
+      int m = localTextView.getTotalPaddingTop();
+      int n = localTextView.getScrollX();
+      int i1 = localTextView.getScrollY();
+      paramMotionEvent = localTextView.getLayout();
+      i = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(j - m + i1), i - k + n);
+      paramMotionEvent = (ClickableSpan[])((SpannedString)localCharSequence).getSpans(i, i, ClickableSpan.class);
+      if (paramMotionEvent.length != 0) {
+        paramMotionEvent[0].onClick(localTextView);
       }
-      finally {}
-      paramMessage = paramMessage.getData();
-      this.a.b(paramMessage.getDouble("startTime"), paramMessage.getStringArray("pinyins"));
-      this.a.a(0);
     }
+    else
+    {
+      return true;
+    }
+    paramView.performClick();
+    return true;
   }
 }
 

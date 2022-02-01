@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae;
 
 import android.content.Context;
-import bndy;
+import bofh;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class AEPituCameraUnit$11
   implements Runnable
 {
-  public AEPituCameraUnit$11(bndy parambndy, Context paramContext) {}
+  public AEPituCameraUnit$11(bofh parambofh, Context paramContext) {}
   
   public void run()
   {
-    QQToast.a(this.a, this.a.getString(2131697873), 0).a();
+    QQToast.a(this.a, this.a.getString(2131697957), 0).a();
     this.this$0.o();
   }
 }

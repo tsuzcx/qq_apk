@@ -28,6 +28,7 @@ public class ITPEventID
   public static final int PLAYER_State_Switch_Definition_End = 121;
   public static final int PROXY_State_Cdn_Url_Update = 201;
   public static final int PROXY_State_Download_Progress_Update = 200;
+  public static final int SPLAYER_State_Create_Native_Player = 501;
 }
 
 

@@ -1,28 +1,21 @@
-import android.util.LruCache;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StVideo;
-import qqcircle.QQCircleVideourlexchange.StGetVideoAdaptRsp;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.qqcircle.fragments.main.QCircleAggregationFragment;
 
-class voa
-  implements zxa<QQCircleVideourlexchange.StGetVideoAdaptRsp>
+public class voa
+  extends RecyclerView.OnScrollListener
 {
-  voa(vnz paramvnz, FeedCloudMeta.StVideo paramStVideo, vob paramvob) {}
+  public voa(QCircleAggregationFragment paramQCircleAggregationFragment) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleVideourlexchange.StGetVideoAdaptRsp paramStGetVideoAdaptRsp)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if ((paramBoolean) && (paramLong == 0L) && (paramStGetVideoAdaptRsp.videos.size() > 0))
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
     {
-      paramString = (FeedCloudMeta.StVideo)paramStGetVideoAdaptRsp.videos.get(0);
-      paramString.fileId.set(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StVideo.fileId.get());
-      this.jdField_a_of_type_Vob.a(paramString, false);
-      vnz.a(this.jdField_a_of_type_Vnz).put(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StVideo.fileId.get(), paramString);
-      QLog.i("QCircleVideoUrlExchangeHelper", 1, String.format("exchangeVideoUrl: success fileId:%s ,videoExchange url %s:", new Object[] { paramString.fileId.get(), paramString.playUrl.get() }));
+      adlb.a().a("qcircle_follow_tab_page", false);
       return;
     }
-    this.jdField_a_of_type_Vob.a(paramLong, paramString);
-    QLog.e("QCircleVideoUrlExchangeHelper", 1, String.format("exchangeVideoUrl: failed fileId:%s ,final url:%s, retCode:%d, errMsg:%s", new Object[] { this.jdField_a_of_type_FeedcloudFeedCloudMeta$StVideo.fileId.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StVideo.playUrl.get(), Long.valueOf(paramLong), paramString }));
+    adlb.a().a("qcircle_follow_tab_page");
   }
 }
 

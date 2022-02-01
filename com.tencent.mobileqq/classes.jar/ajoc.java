@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajoc
-  implements DialogInterface.OnClickListener
+public class ajoc
+  implements View.OnClickListener
 {
-  ajoc(ajnk paramajnk) {}
+  public ajoc(TroopRecommendFriendFragment paramTroopRecommendFriendFragment, ajnn paramajnn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      ajnk.a(this.a);
-    }
+    TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactRecommendtroopTroopRecommendFriendFragment, TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactRecommendtroopTroopRecommendFriendFragment), this.jdField_a_of_type_Ajnn.a, TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactRecommendtroopTroopRecommendFriendFragment));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

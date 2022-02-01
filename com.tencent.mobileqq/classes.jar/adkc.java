@@ -1,56 +1,32 @@
-import android.graphics.drawable.Animatable;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.io.File;
-import java.net.MalformedURLException;
+import org.json.JSONObject;
 
 public class adkc
-  extends Handler
 {
-  public adkc(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void handleMessage(Message paramMessage)
+  public adkc(adka paramadka) {}
+  
+  public boolean a(JSONObject paramJSONObject)
   {
-    switch (paramMessage.what)
+    try
     {
+      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("hookpoint_type"));
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("hookpoint_lib_name").trim();
+      this.b = paramJSONObject.getString("hookpoint_func_name").trim();
+      return true;
     }
-    for (;;)
+    catch (Exception paramJSONObject)
     {
-      return;
-      if ((this.a.isFinishing()) || (AddFriendVerifyActivity.a(this.a) == null)) {
-        continue;
-      }
-      AddFriendVerifyActivity.a(this.a).setVisibility(0);
-      ((Animatable)AddFriendVerifyActivity.a(this.a).getDrawable()).start();
-      return;
-      if (this.a.isFinishing()) {
-        continue;
-      }
-      if (!TextUtils.isEmpty(AddFriendVerifyActivity.c(this.a))) {}
-      try
-      {
-        paramMessage = new File(AddFriendVerifyActivity.d(this.a)).toURL();
-        AddFriendVerifyActivity.a(this.a).setImageDrawable(URLDrawable.getDrawable(paramMessage, 100, 100));
-        label142:
-        if (AddFriendVerifyActivity.a(this.a) == null) {
-          continue;
-        }
-        AddFriendVerifyActivity.a(this.a).setVisibility(8);
-        return;
-        QQToast.a(this.a.getApplicationContext(), 1, 2131718973, 0).b(this.a.getTitleBarHeight());
-        return;
-      }
-      catch (MalformedURLException paramMessage)
-      {
-        break label142;
-      }
+      adjv.a("KingKongNativePatch", "Parse HookPoint error!");
     }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b;
   }
 }
 

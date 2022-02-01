@@ -1,11 +1,22 @@
-import android.view.View;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
 public class bffn
-  extends bffl<bfev>
+  implements InputFilter
 {
-  public bffn(View paramView)
+  public bffn(AbsPublishActivity paramAbsPublishActivity) {}
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    super(paramView);
+    if (paramCharSequence != null)
+    {
+      paramCharSequence = paramCharSequence.toString();
+      if (bgqv.a(paramCharSequence, '\n') + bgqv.a(paramSpanned.toString(), '\n') > 100) {
+        return paramCharSequence.replaceAll("\n", "");
+      }
+    }
+    return null;
   }
 }
 

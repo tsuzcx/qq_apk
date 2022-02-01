@@ -1,57 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyJumpActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyJumpActivity.2.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.5;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class oks
-  extends pmn
+  implements View.OnClickListener
 {
-  public oks(ReadinjoyJumpActivity paramReadinjoyJumpActivity) {}
+  public oks(ReadInJoyNewFeedsActivity.5 param5, FrameLayout paramFrameLayout) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    super.a(paramString);
-    QLog.d("ReadinjoyJumpActivity", 1, "webCallback : " + paramString);
-    ThreadManager.getUIHandler().post(new ReadinjoyJumpActivity.2.1(this));
-  }
-  
-  public void a(boolean paramBoolean, List<Long> paramList, List<ArticleInfo> paramList1)
-  {
-    QLog.d("ReadinjoyJumpActivity", 1, "68b resp, succ : " + paramBoolean + ", ids : " + paramList + ", articles : " + paramList1);
-    if ((paramList == null) || (!paramList.contains(Long.valueOf(ReadinjoyJumpActivity.a(this.a))))) {}
-    do
-    {
-      return;
-      ThreadManager.getUIHandler().removeCallbacks(ReadinjoyJumpActivity.a(this.a));
-    } while ((ReadinjoyJumpActivity.a(this.a)) || (ReadinjoyJumpActivity.b(this.a)));
-    if ((paramBoolean) && (paramList1 != null) && (!paramList1.isEmpty()))
-    {
-      int i = 0;
-      while (i < paramList1.size())
-      {
-        paramList = (ArticleInfo)paramList1.get(i);
-        if (paramList.mArticleID == ReadinjoyJumpActivity.a(this.a))
-        {
-          ReadinjoyJumpActivity.a(this.a, paramList);
-          if ((phk.a(ReadinjoyJumpActivity.a(this.a)) == 0) && (pha.a(ReadinjoyJumpActivity.a(this.a).mArticleContentUrl, 0L, ReadinjoyJumpActivity.a(this.a))))
-          {
-            paramList = pmh.a().a();
-            if (paramList != null)
-            {
-              paramList.a(ReadinjoyJumpActivity.a(this.a).mArticleContentUrl, ReadinjoyJumpActivity.a(this.a).innerUniqueID, ReadinjoyJumpActivity.a(this.a).publishUin + "", 1, this.a);
-              return;
-            }
-          }
-          ReadinjoyJumpActivity.b(this.a);
-          return;
-        }
-        i += 1;
-      }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.a.a();
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.a);
+    if (261 == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.a) {
+      bhsi.s(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.app.getCurrentAccountUin(), null);
     }
-    ReadinjoyJumpActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

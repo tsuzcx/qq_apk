@@ -1,6 +1,6 @@
 package dov.com.qq.im;
 
-import bojo;
+import bplj;
 
 class QIMEffectCameraCaptureUnit$22
   implements Runnable

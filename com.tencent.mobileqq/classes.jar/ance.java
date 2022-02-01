@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.data.ApolloFavActionData;
-import java.util.Comparator;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
 class ance
-  implements Comparator<ApolloFavActionData>
+  implements QQPermissionCallback
 {
-  ance(ancd paramancd) {}
+  ance(anbz paramanbz, AppActivity paramAppActivity) {}
   
-  public int a(ApolloFavActionData paramApolloFavActionData1, ApolloFavActionData paramApolloFavActionData2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramApolloFavActionData2.favId == paramApolloFavActionData1.favId) {
-      return 0;
-    }
-    if (paramApolloFavActionData2.favId > paramApolloFavActionData1.favId) {
-      return 1;
-    }
-    return -1;
+    bhlq.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_Anbz.grant();
   }
 }
 

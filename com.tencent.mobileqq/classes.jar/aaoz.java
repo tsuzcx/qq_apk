@@ -1,16 +1,25 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.widget.QQToast;
 
 class aaoz
-  implements bhlz
+  implements bjig
 {
-  aaoz(aaor paramaaor, int paramInt, String paramString) {}
+  aaoz(aaou paramaaou) {}
   
-  public void a(Bundle paramBundle)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    paramBundle.putInt("seq", this.jdField_a_of_type_Int);
-    paramBundle.putString("processName", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Aaor.a.a(121, paramBundle);
+    if ((aaou.c(this.a) == null) || (!aaou.c(this.a).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      QQToast.a(aaou.a(this.a), 1, "分享失败", 0).a();
+      return;
+    }
+    QQToast.a(aaou.a(this.a), 2, "分享成功", 0).a();
   }
 }
 

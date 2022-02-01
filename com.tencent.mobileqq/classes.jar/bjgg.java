@@ -1,15 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
 
-public class bjgg
-  implements DialogInterface.OnClickListener
+class bjgg
+  implements IVideoInnerStatusListener
 {
-  public bjgg(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  bjgg(bjgf parambjgf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void notifyVideoClose(int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.a.b();
+  }
+  
+  public void notifyVideoSeek(int paramInt)
+  {
+    if (bjgf.a(this.a) != null)
+    {
+      paramInt = (int)(paramInt * bjgf.a(this.a).c() / 100.0D);
+      bjgf.a(this.a, paramInt);
+    }
+  }
+  
+  public void notifyVideoStart()
+  {
+    bjgf.a(this.a);
+  }
+  
+  public void notifyVideoStop()
+  {
+    bjgf.b(this.a);
   }
 }
 

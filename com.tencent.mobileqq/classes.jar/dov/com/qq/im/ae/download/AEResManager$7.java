@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.download;
 
-import bnpu;
+import borg;
 
 public class AEResManager$7
   implements Runnable
 {
-  public AEResManager$7(bnpu parambnpu, String paramString1, int paramInt, String paramString2) {}
+  public AEResManager$7(borg paramborg, String paramString1, int paramInt, String paramString2) {}
   
   public void run()
   {
-    bnpu.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    borg.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
   }
 }
 

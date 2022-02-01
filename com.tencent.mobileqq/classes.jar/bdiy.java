@@ -1,43 +1,38 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.TableBuilder.Proxy;
+import com.tencent.mobileqq.persistence.Entity;
 
-public class bdiy
-  extends ReportDialog
+public final class bdiy
+  implements IMCoreProxyRoute.TableBuilder.Proxy
 {
-  public bdiy(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  public String createIndexSQLStatement(Entity paramEntity)
   {
-    super(paramContext, 2131755823);
-    setContentView(2131562969);
-    paramContext = (TextView)findViewById(2131378776);
-    if (!TextUtils.isEmpty(paramString1))
+    if ((paramEntity instanceof MessageRecord))
     {
-      paramContext.setVisibility(0);
-      paramContext.setText(paramString1);
-      paramContext = (TextView)findViewById(2131364999);
-      if (TextUtils.isEmpty(paramString2)) {
-        break label142;
+      MessageRecord localMessageRecord = (MessageRecord)paramEntity;
+      paramEntity = localMessageRecord.getTableName();
+      StringBuilder localStringBuilder = new StringBuilder("CREATE INDEX IF NOT EXISTS ");
+      localStringBuilder.append(paramEntity).append("_idx");
+      localStringBuilder.append(" ON ");
+      localStringBuilder.append(paramEntity);
+      paramEntity = "time";
+      switch (localMessageRecord.istroop)
+      {
       }
-      paramContext.setVisibility(0);
-      paramContext.setMovementMethod(LinkMovementMethod.getInstance());
-      paramContext.setText(new bdhh(paramString2, 8));
+      for (;;)
+      {
+        localStringBuilder.append("(").append(paramEntity).append(", _id)");
+        return localStringBuilder.toString();
+        paramEntity = "shmsgseq";
+      }
     }
-    for (;;)
-    {
-      ((Button)findViewById(2131364914)).setOnClickListener(new bdiz(this, paramOnClickListener1));
-      ((ImageView)findViewById(2131364548)).setOnClickListener(new bdja(this, paramOnClickListener2));
-      setCanceledOnTouchOutside(false);
-      return;
-      paramContext.setVisibility(8);
-      break;
-      label142:
-      paramContext.setVisibility(8);
-    }
+    return null;
+  }
+  
+  public Class[] getNeedPrivateFieldsClass()
+  {
+    return new Class[] { RecentUser.class };
   }
 }
 

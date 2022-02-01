@@ -1,7 +1,14 @@
-public class bhks
-  implements anil
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+
+final class bhks
+  implements MediaPlayer.OnCompletionListener
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    paramMediaPlayer.release();
+    bhkm.a = null;
+  }
 }
 
 

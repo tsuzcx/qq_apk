@@ -15,13 +15,16 @@ public final class stTroopNum
   public byte cIsModifyConfGroupName;
   public long dwAdditionalFlag;
   public long dwAppPrivilegeFlag;
+  public long dwAppealDeadline;
   public long dwCertificationType;
   public long dwCmdUinGroupMask;
   public long dwCmdUinUinFlag;
   public long dwCmduinJoinTime;
   public long dwGroupClassExt;
+  public long dwGroupFlag;
   public long dwGroupFlagExt;
   public long dwGroupFlagExt3;
+  public long dwGroupFlagExt4;
   public long dwGroupInfoSeq;
   public long dwGroupOwnerUin;
   public long dwGroupRankSeq;
@@ -82,6 +85,9 @@ public final class stTroopNum
     this.udwHLGuildSubType = paramLong27;
     this.udwCmdUinRingtoneID = paramLong28;
     this.udwCmdUinFlagEx2 = paramLong29;
+    this.dwGroupFlagExt4 = this.dwGroupFlagExt4;
+    this.dwAppealDeadline = this.dwAppealDeadline;
+    this.dwGroupFlag = this.dwGroupFlag;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -121,6 +127,9 @@ public final class stTroopNum
     this.udwHLGuildSubType = paramJceInputStream.read(this.udwHLGuildSubType, 32, false);
     this.udwCmdUinRingtoneID = paramJceInputStream.read(this.udwCmdUinRingtoneID, 33, false);
     this.udwCmdUinFlagEx2 = paramJceInputStream.read(this.udwCmdUinFlagEx2, 34, false);
+    this.dwGroupFlagExt4 = paramJceInputStream.read(this.dwGroupFlagExt4, 35, false);
+    this.dwAppealDeadline = paramJceInputStream.read(this.dwAppealDeadline, 36, false);
+    this.dwGroupFlag = paramJceInputStream.read(this.dwGroupFlag, 37, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -164,6 +173,9 @@ public final class stTroopNum
     paramJceOutputStream.write(this.udwHLGuildSubType, 32);
     paramJceOutputStream.write(this.udwCmdUinRingtoneID, 33);
     paramJceOutputStream.write(this.udwCmdUinFlagEx2, 34);
+    paramJceOutputStream.write(this.dwGroupFlagExt4, 35);
+    paramJceOutputStream.write(this.dwAppealDeadline, 36);
+    paramJceOutputStream.write(this.dwGroupFlag, 37);
   }
 }
 

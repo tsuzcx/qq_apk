@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.upgrade;
 
-import nlf;
+import nna;
 
 class UpgradeTIMManager$DownloadTask$2
   implements Runnable

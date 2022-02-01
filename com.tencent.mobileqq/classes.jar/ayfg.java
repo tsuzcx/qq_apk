@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ocr.OCRPerformFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class ayfg
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ayfg(OCRPerformFragment paramOCRPerformFragment) {}
+  public ayfg(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ayfi.a("0X800AADF", 0);
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 

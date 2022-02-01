@@ -16,7 +16,7 @@ public class TemplatePhotoWall
   
   public int a()
   {
-    return 2131562068;
+    return 2131562108;
   }
 }
 

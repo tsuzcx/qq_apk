@@ -1,109 +1,71 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class asss
-  implements bfpo
+  extends asol
 {
-  public asss(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, List paramList, String paramString1, FileManagerEntity paramFileManagerEntity, boolean paramBoolean1, String paramString2, boolean paramBoolean2, String paramString3, String paramString4, short paramShort, String paramString5, int paramInt, String paramString6, aaqv paramaaqv) {}
+  private asmr jdField_a_of_type_Asmr;
+  protected asmx a;
+  private List<asmu> jdField_a_of_type_JavaUtilList;
+  protected int[] a;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public asss(Context paramContext, asmr paramasmr, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramJSONObject != null) {}
-    try
-    {
-      atsc localatsc;
-      if (!paramJSONObject.isNull("dirs"))
-      {
-        paramBundle = paramJSONObject.getJSONArray("dirs");
-        paramInt = 0;
-        while (paramInt < paramBundle.length())
-        {
-          localatsc = new atsc();
-          localatsc.jdField_a_of_type_Boolean = true;
-          localatsc.jdField_a_of_type_JavaLangString = paramBundle.getString(paramInt);
-          this.jdField_a_of_type_JavaUtilList.add(localatsc);
-          paramInt += 1;
-        }
-      }
-      if ((paramJSONObject != null) && (!paramJSONObject.isNull("files")))
-      {
-        paramBundle = paramJSONObject.getJSONArray("files");
-        paramInt = 0;
-        if (paramInt < paramBundle.length())
-        {
-          localatsc = new atsc();
-          paramJSONObject = paramBundle.getJSONObject(paramInt);
-          localatsc.jdField_a_of_type_JavaLangString = paramJSONObject.getString("filename");
-          localatsc.jdField_a_of_type_Long = paramJSONObject.getLong("size");
-          label186:
-          FileManagerEntity localFileManagerEntity;
-          if (this.jdField_a_of_type_JavaLangString.equals("/"))
-          {
-            paramJSONObject = "/" + localatsc.jdField_a_of_type_JavaLangString;
-            localFileManagerEntity = new FileManagerEntity();
-            localFileManagerEntity.fileName = localatsc.jdField_a_of_type_JavaLangString;
-            localFileManagerEntity.nRelatedSessionId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-            localFileManagerEntity.fileSize = localatsc.jdField_a_of_type_Long;
-            localFileManagerEntity.mContext = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-            localFileManagerEntity.nSessionId = atvo.a().longValue();
-            if (this.jdField_a_of_type_Boolean)
-            {
-              localFileManagerEntity.WeiYunFileId = this.jdField_b_of_type_JavaLangString;
-              localFileManagerEntity.mContext = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
-              localFileManagerEntity.nRelatedSessionId = atvo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
-            }
-            localFileManagerEntity.zipFileId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
-            if (localFileManagerEntity.mContext == null) {
-              QLog.i("IphoneTitleBarActivity", 1, "zip list file content is empty. zipSessionId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] zipIsWeiyunFile[" + this.jdField_a_of_type_Boolean + "] zipCouldType[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType + "] fileSessionId[" + localFileManagerEntity.nSessionId + "]");
-            }
-            if ((this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean) || (TextUtils.isEmpty(this.c))) {
-              break label691;
-            }
-            localFileManagerEntity.strServerPath = ("https://" + this.d + ":" + this.jdField_a_of_type_Short + "/ftn_compress_getfile/rkey=" + this.e + "&filetype=" + this.jdField_a_of_type_Int + "&path=" + bkgj.a(paramJSONObject) + "&");
-            localFileManagerEntity.httpsDomain = this.c;
-          }
-          for (;;)
-          {
-            localFileManagerEntity.zipFileId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
-            localFileManagerEntity.zipInnerPath = paramJSONObject;
-            localFileManagerEntity.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
-            localFileManagerEntity.peerUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-            localFileManagerEntity.peerType = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType;
-            localFileManagerEntity.busId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId;
-            localFileManagerEntity.cloudType = 1;
-            localFileManagerEntity.isZipInnerFile = true;
-            localFileManagerEntity.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
-            localFileManagerEntity.zipType = this.jdField_a_of_type_Int;
-            localFileManagerEntity.TroopUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin;
-            localatsc.b = localFileManagerEntity.nSessionId;
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.app.a().a(localFileManagerEntity);
-            this.jdField_a_of_type_JavaUtilList.add(localatsc);
-            paramInt += 1;
-            break;
-            paramJSONObject = this.jdField_a_of_type_JavaLangString + "/" + localatsc.jdField_a_of_type_JavaLangString;
-            break label186;
-            label691:
-            localFileManagerEntity.strServerPath = ("http://" + this.d + ":" + this.f + "/ftn_compress_getfile/rkey=" + this.e + "&filetype=" + this.jdField_a_of_type_Int + "&path=" + bkgj.a(paramJSONObject) + "&");
-          }
-        }
-      }
+    super(paramContext, 1, paramInt);
+    this.jdField_a_of_type_Asmr = paramasmr;
+    this.jdField_a_of_type_ArrayOfInt = assp.a();
+  }
+  
+  protected int a(int paramInt)
+  {
+    return 2007;
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_Asmr = null;
+  }
+  
+  protected void a(View paramView, int paramInt)
+  {
+    if (paramView == null) {}
+    while ((a(paramInt) != 2007) || (paramInt >= b())) {
       return;
     }
-    catch (JSONException paramJSONObject)
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = assp.a(this.jdField_a_of_type_ArrayOfInt);
+    }
+    if (this.jdField_a_of_type_Asmx == null)
     {
-      paramJSONObject.printStackTrace();
-      if (this.jdField_a_of_type_Aaqv != null) {
-        this.jdField_a_of_type_Aaqv.a(this.jdField_a_of_type_JavaUtilList);
-      }
+      this.jdField_a_of_type_Asmx = new asom(this, 2007);
+      this.jdField_a_of_type_Asmx.a(true);
+      this.jdField_a_of_type_Asmx.c(false);
+      this.jdField_a_of_type_Asmx.b(false);
+      asmu localasmu = new asmu();
+      localasmu.i = "delete";
+      this.jdField_a_of_type_Asmx.a(localasmu);
+    }
+    paramView = (EmoticonLinearLayout)paramView;
+    paramView.setCallBack(this.jdField_a_of_type_Asmr);
+    paramView.setAdapter(this.jdField_a_of_type_Asmx);
+    c();
+    this.jdField_a_of_type_Asmx.a(paramInt);
+    this.jdField_a_of_type_Asmx.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Asmx.a();
+  }
+  
+  public int b()
+  {
+    return assj.a(this.jdField_a_of_type_ArrayOfInt);
+  }
+  
+  protected void c()
+  {
+    if (this.jdField_a_of_type_Asmx != null) {
+      this.jdField_a_of_type_Asmx.a(3, 7);
     }
   }
 }

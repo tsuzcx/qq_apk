@@ -1,80 +1,65 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.articlesummary.articlesummary.GameLiveInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
 
-public class rhc
+class rhc
+  implements rjz<String>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  rhc(rhb paramrhb, UgcVideo paramUgcVideo) {}
   
-  private static rhc b(articlesummary.GameLiveInfo paramGameLiveInfo)
+  public void a(float paramFloat)
   {
-    rhc localrhc = new rhc();
-    if (paramGameLiveInfo.bytes_play_bill_id.has()) {
-      localrhc.jdField_a_of_type_JavaLangString = paramGameLiveInfo.bytes_play_bill_id.get().toStringUtf8();
+    if ((paramFloat > this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.videoProgress) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.status != UgcVideo.STATUS_PAUSE))
+    {
+      long l1 = System.currentTimeMillis();
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.lastUploadSizeUpdateTime != 0L) && (l1 - this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.lastUploadSizeUpdateTime > 500L))
+      {
+        long l2 = ((paramFloat / 100.0F * (float)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.fileSize) - this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.lastUploadSize) * 1000L / (l1 - this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.lastUploadSizeUpdateTime);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.uploadSpeed = (rab.a(l2) + "/S");
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.lastUploadSizeUpdateTime = l1;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.lastUploadSize = ((paramFloat / 100.0F * (float)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.fileSize));
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.videoProgress = ((int)paramFloat);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.status = UgcVideo.STATUS_UPLOADING;
+      if (QLog.isColorLevel()) {
+        QLog.i("RIJUGC.UploadVideoTaskStep", 2, "videoProgress = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.videoProgress + ", speed=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.uploadSpeed);
+      }
     }
-    if (paramGameLiveInfo.uint32_status.has()) {
-      localrhc.jdField_a_of_type_Int = paramGameLiveInfo.uint32_status.get();
-    }
-    if (paramGameLiveInfo.uint32_audience_count.has()) {
-      localrhc.jdField_b_of_type_Int = paramGameLiveInfo.uint32_audience_count.get();
-    }
-    if (paramGameLiveInfo.bytes_game_name.has()) {
-      localrhc.d = paramGameLiveInfo.bytes_game_name.get().toStringUtf8();
-    }
-    if (paramGameLiveInfo.bytes_play_url.has()) {
-      localrhc.c = paramGameLiveInfo.bytes_play_url.get().toStringUtf8();
-    }
-    if (paramGameLiveInfo.bytes_tips_wording.has()) {
-      localrhc.e = paramGameLiveInfo.bytes_tips_wording.get().toStringUtf8();
-    }
-    if (paramGameLiveInfo.bytes_status.has()) {
-      localrhc.f = paramGameLiveInfo.bytes_status.get().toStringUtf8();
-    }
-    if (paramGameLiveInfo.bytes_status_icon_url.has()) {
-      localrhc.g = paramGameLiveInfo.bytes_status_icon_url.get().toStringUtf8();
-    }
-    return localrhc;
   }
   
-  private static articlesummary.GameLiveInfo b(rhc paramrhc)
+  public void a(int paramInt, @NotNull String paramString)
   {
-    articlesummary.GameLiveInfo localGameLiveInfo = new articlesummary.GameLiveInfo();
-    if (!TextUtils.isEmpty(paramrhc.jdField_a_of_type_JavaLangString)) {
-      localGameLiveInfo.bytes_play_bill_id.set(ByteStringMicro.copyFromUtf8(paramrhc.jdField_a_of_type_JavaLangString));
-    }
-    localGameLiveInfo.uint32_status.set(paramrhc.jdField_a_of_type_Int);
-    localGameLiveInfo.uint32_audience_count.set(paramrhc.jdField_b_of_type_Int);
-    if (!TextUtils.isEmpty(paramrhc.d)) {
-      localGameLiveInfo.bytes_game_name.set(ByteStringMicro.copyFromUtf8(paramrhc.d));
-    }
-    if (!TextUtils.isEmpty(paramrhc.c)) {
-      localGameLiveInfo.bytes_play_url.set(ByteStringMicro.copyFromUtf8(paramrhc.c));
-    }
-    if (!TextUtils.isEmpty(paramrhc.e)) {
-      localGameLiveInfo.bytes_tips_wording.set(ByteStringMicro.copyFromUtf8(paramrhc.e));
-    }
-    if (!TextUtils.isEmpty(paramrhc.f)) {
-      localGameLiveInfo.bytes_status.set(ByteStringMicro.copyFromUtf8(paramrhc.f));
-    }
-    if (!TextUtils.isEmpty(paramrhc.g)) {
-      localGameLiveInfo.bytes_status_icon_url.set(ByteStringMicro.copyFromUtf8(paramrhc.g));
-    }
-    return localGameLiveInfo;
+    rab.a("fail", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo);
+    ocd.a("0X800AC66", rab.a(ozs.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo).a("errMsg", paramString).a());
+    QLog.e("RIJUGC.UploadVideoTaskStep", 1, "onFailed, errCode=" + paramInt + ", errMsg=" + paramString);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.status = UgcVideo.STATUS_FAILED;
+    rhb.a(this.jdField_a_of_type_Rhb).d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo);
+    this.jdField_a_of_type_Rhb.d();
+    rhb.a(this.jdField_a_of_type_Rhb, false);
   }
   
-  public String toString()
+  public void a(@NotNull String paramString)
   {
-    return "GameLiveInfo{playBillId=" + this.jdField_a_of_type_JavaLangString + ", status=" + this.jdField_a_of_type_Int + ", audienceCount=" + this.jdField_b_of_type_Int + ", audiences=" + this.jdField_b_of_type_JavaLangString + ", playUrl=" + this.c + ", gameName=" + this.d + ", tipsWording=" + this.e + ", liveStatus=" + this.f + ", statusIconUrl=" + this.g + '}';
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.videoUploadKey = paramString;
+    rhb.a(this.jdField_a_of_type_Rhb).d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo);
+  }
+  
+  public void b(String paramString)
+  {
+    rab.a("success", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo);
+    ocd.a("0X800AC67", rab.a(ozs.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo).a("from", Integer.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.fromForReport)).a("compress_time", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.compressTime)).a("upload_time", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.uploadTotalCostTime)).a("wait_time", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.userWaitingTotalCostTime)).a());
+    QLog.i("RIJUGC.UploadVideoTaskStep", 1, "upload success");
+    if (QLog.isColorLevel()) {
+      QLog.i("RIJUGC.UploadVideoTaskStep", 2, "url=" + paramString);
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.url = paramString;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.compressProgress = 100;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.videoProgress = 100;
+    if (rhb.a(this.jdField_a_of_type_Rhb) != null) {
+      rhb.a(this.jdField_a_of_type_Rhb).a(2, true, true, null);
+    }
+    rhb.a(this.jdField_a_of_type_Rhb).d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo);
+    this.jdField_a_of_type_Rhb.d();
   }
 }
 

@@ -1,18 +1,36 @@
-public class aopo
+import com.tencent.mobileqq.app.face.FaceInfo;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
+class aopo
+  extends aopi
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
+  aopo(aopn paramaopn) {}
   
-  public aopo(String paramString, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, FaceInfo paramFaceInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onUpdateStrangerHead.faceInfo=" + paramFaceInfo + ", isSuccess=" + paramBoolean);
+    }
+    if ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo == null) || (paramFaceInfo == null)) {}
+    while ((paramFaceInfo.b != this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b) || (!this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.a.equals(paramFaceInfo.a))) {
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Aopi != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.a.jdField_a_of_type_Aopi);
+    }
+    if (paramBoolean)
+    {
+      paramFaceInfo = this.a.a();
+      if (paramFaceInfo != null)
+      {
+        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo, paramFaceInfo);
+        return;
+      }
+      this.a.a();
+      return;
+    }
+    this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo, null);
   }
 }
 

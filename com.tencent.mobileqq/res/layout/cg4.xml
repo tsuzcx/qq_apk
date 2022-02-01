@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/lvq" android:layout_width="fill_parent" android:layout_height="70.0px" android:minHeight="70.0px"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/mhf" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:gravity="center" android:id="@id/lvv" android:layout_width="fill_parent" android:layout_height="24.0dip" android:contentDescription="@string/wfl" />
-        <TextView android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/lvx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="24.0dip" android:text="@string/wfl" android:contentDescription="@string/wfl" />
-        <FrameLayout android:layout_gravity="center_horizontal" android:layout_width="312.0dip" android:layout_height="350.0dip" android:layout_marginTop="22.5dip">
-            <android.support.v7.widget.RecyclerView android:id="@id/lfy" android:scrollbars="none" android:clipToPadding="false" android:layout_width="312.0dip" android:layout_height="350.0dip" />
-            <View android:layout_gravity="bottom" android:background="@drawable/bjr" android:layout_width="fill_parent" android:layout_height="30.0dip" />
-        </FrameLayout>
-        <Button android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/lgr" android:background="@drawable/bji" android:focusable="false" android:duplicateParentState="false" android:layout_width="296.0dip" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" />
-    </LinearLayout>
-</FrameLayout>
+    <TextView android:textSize="28.0px" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/lvj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/lvk" android:visibility="gone" android:layout_width="43.0px" android:layout_height="43.0px" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/lvw" android:background="@drawable/bjs" android:padding="3.0px" android:layout_width="50.0px" android:layout_height="50.0px" android:layout_marginLeft="63.0px" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="28.0px" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/lvr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignBaseline="@id/lvj" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="28.0px" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/lvv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="141.0px" android:layout_marginRight="10.0px" android:singleLine="true" android:layout_toLeftOf="@id/lvr" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+</RelativeLayout>

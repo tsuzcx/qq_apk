@@ -1,6 +1,14 @@
-public abstract interface mxr
+public class mxr
+  implements anui
 {
-  public abstract int g_();
+  public void a(int paramInt, boolean paramBoolean, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (((paramObject instanceof String)) || (paramObject == null)) {
+      a(paramInt, paramBoolean, (String)paramObject);
+    }
+  }
 }
 
 

@@ -1,18 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
-public class akcl
-  implements DialogInterface.OnClickListener
+class akcl
+  implements axpu
 {
-  public akcl(BindNumberActivity paramBindNumberActivity) {}
+  akcl(akck paramakck) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (this.a.a != null) {
-      this.a.a.setText("");
-    }
+    this.a.jdField_a_of_type_Axqb.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Axqb.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.w();
   }
 }
 

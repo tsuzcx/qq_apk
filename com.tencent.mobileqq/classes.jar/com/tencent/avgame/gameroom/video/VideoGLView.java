@@ -7,7 +7,7 @@ import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
 import javax.microedition.khronos.opengles.GL10;
-import nal;
+import nbp;
 
 public class VideoGLView
   extends GLRootView
@@ -24,7 +24,7 @@ public class VideoGLView
     super(paramContext, paramAttributeSet);
   }
   
-  public void a(nal paramnal) {}
+  public void a(nbp paramnbp) {}
   
   public void onPause()
   {

@@ -1,12 +1,11 @@
-import org.json.JSONObject;
+import android.util.Property;
+import android.view.View;
 
-public abstract interface zuk
+public class zuk
 {
-  public abstract JSONObject a();
-  
-  public abstract void a();
-  
-  public abstract void b();
+  public float a;
+  public Property<View, Float> a;
+  public float b;
 }
 
 

@@ -1,10 +1,10 @@
 package com.tencent.biz.subscribe.widget;
 
-import aaaf;
-import aakt;
+import aaek;
+import aaou;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import bclx;
+import bdep;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -12,11 +12,11 @@ import mqq.os.MqqHandler;
 public class SubscribeQRCodeShareHelper$2
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$2(aakt paramaakt) {}
+  public SubscribeQRCodeShareHelper$2(aaou paramaaou) {}
   
   public void run()
   {
-    Bitmap localBitmap = aaaf.a(aakt.b(this.this$0), bclx.a(50.0F), -16777216, -1, Bitmap.Config.ARGB_8888);
+    Bitmap localBitmap = aaek.a(aaou.b(this.this$0), bdep.a(50.0F), -16777216, -1, Bitmap.Config.ARGB_8888);
     if ((localBitmap == null) || (localBitmap.isRecycled()))
     {
       QLog.d("SubscribeQRCodeShareHelper", 4, "failed to create card code");

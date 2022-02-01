@@ -1,255 +1,112 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-
-public class mbd
+public abstract class mbd
 {
-  public static void a()
+  protected int a;
+  protected String a;
+  protected int b = 0;
+  protected int c = 3;
+  protected int d;
+  protected int e = 1;
+  
+  protected mbd(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
   {
-    bcst.b(null, "dc00898", "", "", "0X8006F88", "0X8006F88", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.c = paramInt3;
+    this.e = paramInt4;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  static void a(int paramInt1, int paramInt2, long paramLong, String paramString, int paramInt3)
+  public static boolean a(mbd parammbd1, mbd parammbd2)
   {
-    String str2;
-    Object localObject;
-    String str1;
-    switch (paramInt1)
-    {
-    default: 
-      str2 = "0X8008395";
-      localObject = str2;
-      if (PtvTemplateManager.PtvTemplateInfo.isGesture(paramInt3))
-      {
-        str1 = "0X8008396";
-        localObject = str2;
-      }
-      break;
+    boolean bool2 = true;
+    boolean bool1;
+    if (parammbd2 == null) {
+      bool1 = false;
     }
-    for (;;)
+    do
     {
-      str2 = String.valueOf(paramInt3);
-      String str3 = String.valueOf(paramLong);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        bcst.b(null, "dc00898", "", "", (String)localObject, (String)localObject, paramInt2, 0, str2, "", str3, paramString);
-      }
-      if (!TextUtils.isEmpty(str1)) {
-        bcst.b(null, "dc00898", "", "", str1, str1, paramInt2, 0, str2, "", str3, paramString);
-      }
-      return;
-      str1 = "0X8007F37";
-      localObject = str1;
-      if (PtvTemplateManager.PtvTemplateInfo.isGesture(paramInt3))
+      do
       {
-        str2 = "0X80083AA";
-        localObject = str1;
-        str1 = str2;
-        continue;
-        str1 = "0X8007F31";
-        localObject = str1;
-        if (PtvTemplateManager.PtvTemplateInfo.isGesture(paramInt3))
+        int i;
+        int j;
+        do
         {
-          str2 = "0X8008398";
-          localObject = str1;
-          str1 = str2;
-          continue;
-        }
-      }
-      str1 = null;
-    }
-  }
-  
-  public static void a(int paramInt, long paramLong)
-  {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "0X8006F87";
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(str)) {
-        bcst.b(null, "dc00898", "", "", str, str, 0, 0, "", "", String.valueOf(paramLong), "");
-      }
-      return;
-      str = "0X8007F2B";
-      continue;
-      str = "0X8007F25";
-    }
-  }
-  
-  static void a(long paramLong, boolean paramBoolean)
-  {
-    Object localObject = lkz.a();
-    if (!lld.a()) {
-      localObject = "0X80077BF";
-    }
-    for (;;)
-    {
-      a((String)localObject, paramBoolean, paramLong);
-      return;
-      if (!((lkz)localObject).a()) {
-        localObject = "0X80077C0";
-      } else if (!((lkz)localObject).b) {
-        localObject = "0X80077BE";
-      } else {
-        localObject = "0X80077BD";
-      }
-    }
-  }
-  
-  static void a(Context paramContext, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
-  {
-    String str = null;
-    switch (paramInt1)
-    {
-    default: 
-      if (paramBoolean) {
-        str = "0X8006F8D";
-      }
-      break;
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(str)) {
-        a(str, paramBoolean, paramLong);
-      }
-      return;
-      if (paramInt2 == 4) {
-        if (lgn.a(paramContext))
-        {
-          str = "0X8007F2E";
-        }
-        else
-        {
-          str = "0X8007F2F";
-          continue;
-          if (paramInt2 == 4) {
-            if (lgn.a(paramContext))
-            {
-              str = "0X8007F28";
-            }
-            else
-            {
-              str = "0X8007F29";
-              continue;
-              str = "0X8006F8E";
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  static void a(VideoAppInterface paramVideoAppInterface, long paramLong, boolean paramBoolean)
-  {
-    boolean bool;
-    if (paramVideoAppInterface != null)
-    {
-      paramVideoAppInterface = (lhz)paramVideoAppInterface.a(5);
-      bool = paramVideoAppInterface.a(3, "normal");
-      if (!paramVideoAppInterface.a(3, "interact")) {
-        break label42;
-      }
-      paramVideoAppInterface = "0X8008023";
-    }
-    for (;;)
-    {
-      a(paramVideoAppInterface, paramBoolean, paramLong);
-      return;
-      label42:
-      if (bool) {
-        paramVideoAppInterface = "0X8008024";
-      } else {
-        paramVideoAppInterface = "0X8008132";
-      }
-    }
-  }
-  
-  public static void a(String paramString, boolean paramBoolean, long paramLong)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    if (paramBoolean) {}
-    for (int i = 1;; i = -1)
-    {
-      bcst.b(null, "dc00898", "", "", paramString, paramString, 0, i, "", "", String.valueOf(paramLong), "");
-      return;
-    }
-  }
-  
-  static void b()
-  {
-    bcst.b(null, "dc00898", "", "", "0X8006F8F", "0X8006F8F", 0, 0, "", "", "", "");
-  }
-  
-  static void b(Context paramContext, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
-  {
-    int j = 0;
-    Object localObject = "";
-    int i = j;
-    if (paramBoolean)
-    {
-      i = j;
-      if (lgn.a(paramContext))
-      {
-        i = j;
-        if (bchg.a().c()) {
-          i = 1;
-        }
-      }
-    }
-    switch (paramInt1)
-    {
-    default: 
-      if (paramBoolean)
-      {
-        localObject = "0X8006F89";
-        paramContext = (Context)localObject;
-        if (i == 0) {
-          break label163;
-        }
-        paramContext = "0X8008394";
-      }
-      break;
-    }
-    for (;;)
-    {
-      a((String)localObject, paramBoolean, paramLong);
-      a(paramContext, paramBoolean, paramLong);
-      return;
-      paramContext = (Context)localObject;
-      if (paramInt2 == 4)
-      {
-        paramContext = "0X8007F2C";
-        if (i != 0)
-        {
-          paramContext = "0X80083A9";
-          localObject = "0X8007F2C";
-          continue;
-          paramContext = (Context)localObject;
-          if (paramInt2 == 4)
+          do
           {
-            paramContext = "0X8007F26";
-            if (i != 0)
-            {
-              paramContext = "0X8008397";
-              localObject = "0X8007F26";
-              continue;
-              localObject = "0X8006F8A";
-              break;
-            }
-          }
+            return bool1;
+            bool1 = bool2;
+          } while (parammbd1 == null);
+          i = parammbd2.e();
+          j = parammbd1.e();
+          lin.a("CheckAvTipsItemLevelCanShow, lvNew[" + i + "], lvOld[" + j + "], idNew[" + parammbd2.b() + "], idOld[" + parammbd1.b() + "]");
+          bool1 = bool2;
+        } while (i < j);
+        if (i > j) {
+          return false;
         }
+        bool1 = bool2;
+      } while (parammbd1.a());
+      if (parammbd2.a()) {
+        return false;
       }
-      label163:
-      String str = "";
-      localObject = paramContext;
-      paramContext = str;
+      bool1 = bool2;
+    } while (parammbd2.c() <= parammbd1.c());
+    return false;
+  }
+  
+  public abstract int a();
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_a_of_type_JavaLangString = paramString;
     }
+  }
+  
+  public boolean a()
+  {
+    return this.c == 0;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public int d()
+  {
+    return this.e;
+  }
+  
+  public int e()
+  {
+    return this.d;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof mbd))) {}
+    do
+    {
+      return false;
+      paramObject = (mbd)paramObject;
+    } while (b() != paramObject.b());
+    return true;
   }
 }
 

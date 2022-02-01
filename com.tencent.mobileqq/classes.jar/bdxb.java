@@ -1,311 +1,279 @@
-import android.graphics.BitmapFactory.Options;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SubAccountMessage;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import mqq.observer.SubAccountObserver;
+import tencent.im.oidb.cmd0xe34.cmd0xe34.BindUinInfo;
+import tencent.im.oidb.cmd0xe34.cmd0xe34.GroupMsgUnreadNumInfo;
+import tencent.im.oidb.cmd0xe34.cmd0xe34.LoginSig;
+import tencent.im.oidb.cmd0xe34.cmd0xe34.ReqBody;
+import tencent.im.oidb.cmd0xe34.cmd0xe34.RspBody;
+import tencent.im.oidb.cmd0xe34.cmd0xe34.UnReadInfo;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class bdxb
-  extends bdsh
+  extends MSFServlet
 {
-  public static int b(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
+  public static NewIntent a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    int i = 1;
-    int j = 1;
-    int m = j;
-    if (paramInt1 != 0)
+    NewIntent localNewIntent = null;
+    if (paramQQAppInterface == null)
     {
-      m = j;
-      if (paramInt2 != 0)
-      {
-        m = j;
-        if (paramInt1 != -1)
-        {
-          if (paramInt2 != -1) {
-            break label42;
-          }
-          m = j;
-        }
-      }
+      QLog.d("SubAccountServlet", 2, "app is null");
+      paramQQAppInterface = localNewIntent;
+      return paramQQAppInterface;
     }
-    label42:
-    int k;
-    label54:
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("SubAccountServlet", 2, "fetchOneTroopNewMsg TIME=" + System.currentTimeMillis());
+    }
+    Object localObject = (bdxc)paramQQAppInterface.getManager(61);
+    if (localObject != null) {}
+    for (localObject = ((bdxc)localObject).a(paramString);; localObject = null)
     {
-      return m;
-      j = paramOptions.outHeight;
-      k = paramOptions.outWidth;
-      if (j > paramInt2) {
+      if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+      {
+        localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), bdxb.class);
+        localNewIntent.putExtra("key_type", 1);
+        localNewIntent.putExtra("key_appid", AppSetting.a());
+        ArrayList localArrayList1 = new ArrayList(1);
+        localArrayList1.add(paramString);
+        ArrayList localArrayList2 = new ArrayList(1);
+        localArrayList2.add(localObject);
+        localNewIntent.putStringArrayListExtra("key_sub_account", localArrayList1);
+        localNewIntent.putStringArrayListExtra("key_sub_acc_sig", localArrayList2);
+        paramQQAppInterface.startServlet(localNewIntent);
+        paramQQAppInterface = localNewIntent;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("SubAccountServlet", 2, new Object[] { "fetchOneTroopNewMsg uin:", paramString });
+        return localNewIntent;
+      }
+      paramQQAppInterface = localNewIntent;
+      if (!QLog.isColorLevel()) {
         break;
       }
-      m = i;
-    } while (k <= paramInt1);
-    int n = Math.round(j / paramInt2);
-    m = Math.round(k / paramInt1);
-    if (n > m) {}
-    for (;;)
-    {
-      m = i;
-      if (n < 2) {
-        break;
-      }
-      k /= 2;
-      j /= 2;
-      i *= 2;
-      break label54;
-      n = m;
+      QLog.d("SubAccountServlet", 2, new Object[] { "fetchOneTroopNewMsg uin:", paramString, " no login sig" });
+      return null;
     }
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
+    boolean bool3 = paramFromServiceMsg.isSuccess();
     boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.i("ProfileImgDownloader", 2, "downloadImage() url = " + paramDownloadParams.url);
-    }
-    paramURLDrawableHandler = paramDownloadParams.url.getProtocol();
-    paramOutputStream = paramDownloadParams.url.getHost();
-    paramDownloadParams = paramDownloadParams.url.getFile();
+    Bundle localBundle = new Bundle();
+    boolean bool1 = bool2;
+    Object localObject2;
     int i;
     int j;
-    if ((paramOutputStream != null) && ((paramOutputStream.startsWith("[")) || (paramOutputStream.endsWith("]")))) {
-      if (paramOutputStream.startsWith("["))
-      {
-        i = 1;
-        if (!paramOutputStream.endsWith("]")) {
-          break label205;
-        }
-        j = paramOutputStream.length() - 1;
-        label112:
-        if (i >= j) {
-          break label435;
-        }
-        paramOutputStream = paramOutputStream.substring(i, j);
-      }
-    }
-    label408:
-    label435:
-    for (;;)
+    if (bool3)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("ProfileImgDownloader", 2, "downloadImage() [" + paramURLDrawableHandler + "," + paramOutputStream + "," + paramDownloadParams + "]");
-      }
-      if (TextUtils.isEmpty(paramDownloadParams))
-      {
-        throw new RuntimeException("downloadImage() path is null");
-        i = 0;
-        break;
-        label205:
-        j = paramOutputStream.length();
-        break label112;
-      }
-      File localFile1 = new File(paramDownloadParams);
-      File localFile2;
-      if (!localFile1.exists())
-      {
-        if (!"profile_img_icon".equals(paramURLDrawableHandler)) {
-          break label408;
-        }
-        paramURLDrawableHandler = paramDownloadParams + "_temp";
-        localFile2 = new File(paramURLDrawableHandler);
-        if (localFile2.exists()) {
-          localFile2.delete();
-        }
-        File localFile3 = localFile2.getParentFile();
-        if ((localFile3 != null) && (!localFile3.exists())) {
-          localFile3.mkdirs();
-        }
-      }
       try
       {
-        bool1 = HttpDownloadUtil.a(null, MsfSdkUtils.insertMtype("qzone", paramOutputStream), localFile2);
-        if (bool1)
-        {
-          bgmg.d(paramURLDrawableHandler, paramDownloadParams);
-          localFile2.delete();
-          return localFile1;
+        Object localObject1 = bhuf.b(paramFromServiceMsg.getWupBuffer());
+        localObject2 = new oidb_sso.OIDBSSOPkg();
+        ((oidb_sso.OIDBSSOPkg)localObject2).mergeFrom((byte[])localObject1);
+        bool1 = bool2;
+        if (localObject2 == null) {
+          break label628;
         }
+        i = ((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.get();
+        if ((i != 0) || (!((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.has()) || (((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.get() == null)) {
+          break label649;
+        }
+        localObject1 = ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.get().toByteArray();
+        localObject2 = new cmd0xe34.RspBody();
+        ((cmd0xe34.RspBody)localObject2).mergeFrom((byte[])localObject1);
+        bdwt.a = ((cmd0xe34.RspBody)localObject2).ReqInterval.get();
+        localObject1 = ((cmd0xe34.RspBody)localObject2).rpt_unread_info.get();
+        if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
+          break label631;
+        }
+        i = 0;
+        if (i >= ((List)localObject1).size()) {
+          break label625;
+        }
+        localObject2 = (cmd0xe34.UnReadInfo)((List)localObject1).get(i);
+        l = ((cmd0xe34.UnReadInfo)localObject2).uint64_uin.get();
+        j = ((cmd0xe34.UnReadInfo)localObject2).retcode.get();
+        localObject3 = (cmd0xe34.GroupMsgUnreadNumInfo)((cmd0xe34.UnReadInfo)localObject2).group_info.get();
+        localBundle.putInt("key_new_msg_time", ((cmd0xe34.GroupMsgUnreadNumInfo)localObject3).last_msg_time.get());
+        if (!QLog.isColorLevel()) {
+          break label709;
+        }
+        QLog.d("SubAccountServlet", 2, new Object[] { "subAccount:", Long.valueOf(l), " msg_num:", Integer.valueOf(((cmd0xe34.GroupMsgUnreadNumInfo)localObject3).msg_num.get()), " group_num:", Integer.valueOf(((cmd0xe34.GroupMsgUnreadNumInfo)localObject3).group_num.get()), " last_msg_time:", Integer.valueOf(((cmd0xe34.GroupMsgUnreadNumInfo)localObject3).last_msg_time.get()), " fetchTroopMsgInterval:", Long.valueOf(bdwt.a), " retCode:", Integer.valueOf(j) });
       }
-      catch (Exception paramOutputStream)
+      catch (Exception paramFromServiceMsg)
       {
-        for (;;)
+        long l;
+        Object localObject3;
+        label364:
+        QLog.d("SubAccountServlet", 2, paramFromServiceMsg.toString());
+        bool1 = false;
+      }
+      localObject2 = new SubAccountMessage();
+      ((SubAccountMessage)localObject2).frienduin = String.valueOf(13002L);
+      if (((cmd0xe34.GroupMsgUnreadNumInfo)localObject3).msg_num.get() > 0) {}
+      for (j = 1;; j = 0)
+      {
+        ((SubAccountMessage)localObject2).unreadNum = j;
+        ((SubAccountMessage)localObject2).msgtype = -1000;
+        ((SubAccountMessage)localObject2).time = ((cmd0xe34.GroupMsgUnreadNumInfo)localObject3).last_msg_time.get();
+        ((SubAccountMessage)localObject2).senderuin = String.valueOf(13002L);
+        ((SubAccountMessage)localObject2).subUin = String.valueOf(l);
+        ((SubAccountMessage)localObject2).istroop = 1;
+        ((SubAccountMessage)localObject2).sendername = "群聊消息";
+        ((SubAccountMessage)localObject2).msg = "";
+        localObject3 = (bdxc)getAppRuntime().getManager(61);
+        if (localObject3 != null)
         {
-          boolean bool1 = bool2;
-          if (QLog.isColorLevel())
+          ((bdxc)localObject3).a((SubAccountMessage)localObject2);
+          ((bdxc)localObject3).b((SubAccountMessage)localObject2);
+          ((bdxc)localObject3).c(((SubAccountMessage)localObject2).subUin);
+        }
+        localObject2 = new bdxd();
+        ((bdxd)localObject2).b = paramFromServiceMsg.getUin();
+        ((bdxd)localObject2).jdField_c_of_type_JavaLangString = String.valueOf(l);
+        ((bdxd)localObject2).jdField_c_of_type_Boolean = true;
+        ((bdxd)localObject2).d = true;
+        ((bdxd)localObject2).a = 0;
+        if (!(getAppRuntime() instanceof QQAppInterface)) {
+          break;
+        }
+        ((QQAppInterface)getAppRuntime()).a().notifyUI(8003, true, localObject2);
+        break;
+        label605:
+        notifyObserver(paramIntent, 1, bool1, localBundle, SubAccountObserver.class);
+        return;
+      }
+      label625:
+      bool1 = true;
+    }
+    for (;;)
+    {
+      label628:
+      break label605;
+      label631:
+      if (QLog.isColorLevel())
+      {
+        QLog.d("SubAccountServlet", 2, "unReadInfos is empty");
+        break label721;
+        bool1 = bool2;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("SubAccountServlet", 2, new Object[] { "result:", Integer.valueOf(i), " hasBody:", Boolean.valueOf(((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.has()) });
+        bool1 = bool2;
+        continue;
+        if (j == 0) {
+          break label364;
+        }
+        i += 1;
+        break;
+      }
+      label649:
+      label709:
+      label721:
+      bool1 = false;
+    }
+  }
+  
+  public void a(Intent paramIntent, Packet paramPacket)
+  {
+    Object localObject1 = paramIntent.getStringArrayListExtra("key_sub_account");
+    ArrayList localArrayList = paramIntent.getStringArrayListExtra("key_sub_acc_sig");
+    if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0) || (localArrayList == null) || (localArrayList.size() == 0)) {
+      QLog.e("SubAccountServlet", 2, "subaccountuins is empty");
+    }
+    do
+    {
+      return;
+      if (localArrayList.size() != ((ArrayList)localObject1).size())
+      {
+        QLog.e("SubAccountServlet", 2, "uin and sig size not right");
+        return;
+      }
+      int j = paramIntent.getIntExtra("key_appid", -1);
+      paramIntent = new cmd0xe34.ReqBody();
+      int i = 0;
+      for (;;)
+      {
+        if (i < ((ArrayList)localObject1).size())
+        {
+          Object localObject2 = (String)((ArrayList)localObject1).get(i);
+          cmd0xe34.BindUinInfo localBindUinInfo = new cmd0xe34.BindUinInfo();
+          localBindUinInfo.uint32_app_id.set(1001);
+          localBindUinInfo.uint32_instance_id.set(j);
+          try
           {
-            QLog.i("Q.profilecard.FrdProfileCard", 2, "downloadQzonePic() " + paramOutputStream.toString());
-            bool1 = bool2;
-            continue;
-            if (QLog.isColorLevel()) {
-              QLog.i("Q.profilecard.FrdProfileCard", 2, "downloadQzonePic() fail");
+            long l = Long.parseLong((String)localObject2);
+            localBindUinInfo.uint64_uin.set(l);
+            localObject2 = new cmd0xe34.LoginSig();
+            ((cmd0xe34.LoginSig)localObject2).uint32_appid.set(16);
+            ((cmd0xe34.LoginSig)localObject2).uint32_type.set(8);
+            if (!TextUtils.isEmpty((CharSequence)localArrayList.get(i))) {
+              ((cmd0xe34.LoginSig)localObject2).bytes_sig.set(ByteStringMicro.copyFrom(bhvd.a((String)localArrayList.get(i))));
+            }
+            localBindUinInfo.msg_login_sig.set((MessageMicro)localObject2);
+            paramIntent.rpt_bind_uin_info.add(localBindUinInfo);
+            i += 1;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              QLog.e("SubAccountServlet", 2, localException.toString());
             }
           }
         }
       }
-      throw new RuntimeException("downloadImage() file not exist, path = " + paramDownloadParams);
+      localObject1 = new oidb_sso.OIDBSSOPkg();
+      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(3636);
+      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(1);
+      ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent.toByteArray()));
+      paramPacket.setSSOCommand("OidbSvc.0xe34_1");
+      paramPacket.putSendData(bhuf.a(((oidb_sso.OIDBSSOPkg)localObject1).toByteArray()));
+    } while (!QLog.isColorLevel());
+    QLog.d("SubAccountServlet", 2, "onSendFetchTroopNewMsg");
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    switch (paramIntent.getIntExtra("key_type", 0))
+    {
+    default: 
+      return;
     }
+    a(paramIntent, paramFromServiceMsg);
   }
   
-  public boolean a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return false;
-  }
-  
-  /* Error */
-  public java.lang.Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: invokestatic 36	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   6: ifeq +43 -> 49
-    //   9: ldc 38
-    //   11: iconst_2
-    //   12: new 40	java/lang/StringBuilder
-    //   15: dup
-    //   16: invokespecial 41	java/lang/StringBuilder:<init>	()V
-    //   19: ldc 173
-    //   21: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: aload_2
-    //   25: getfield 53	com/tencent/image/DownloadParams:url	Ljava/net/URL;
-    //   28: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   31: ldc 175
-    //   33: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: aload_1
-    //   37: invokevirtual 178	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   40: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   46: invokestatic 64	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   49: ldc 180
-    //   51: aload_2
-    //   52: getfield 53	com/tencent/image/DownloadParams:url	Ljava/net/URL;
-    //   55: invokevirtual 69	java/net/URL:getProtocol	()Ljava/lang/String;
-    //   58: invokevirtual 125	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   61: ifeq +155 -> 216
-    //   64: new 13	android/graphics/BitmapFactory$Options
-    //   67: dup
-    //   68: invokespecial 181	android/graphics/BitmapFactory$Options:<init>	()V
-    //   71: astore 6
-    //   73: aload 6
-    //   75: iconst_1
-    //   76: putfield 185	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   79: aload_1
-    //   80: invokevirtual 178	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   83: aload 6
-    //   85: invokestatic 190	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   88: pop
-    //   89: aload 6
-    //   91: aload 6
-    //   93: sipush 160
-    //   96: sipush 160
-    //   99: invokestatic 192	bdxb:b	(Landroid/graphics/BitmapFactory$Options;II)I
-    //   102: putfield 195	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   105: aload 6
-    //   107: iconst_0
-    //   108: putfield 185	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   111: new 197	java/io/BufferedInputStream
-    //   114: dup
-    //   115: new 199	java/io/FileInputStream
-    //   118: dup
-    //   119: aload_1
-    //   120: invokevirtual 178	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   123: invokespecial 200	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   126: invokespecial 203	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   129: astore 5
-    //   131: aload 5
-    //   133: astore 4
-    //   135: aload 5
-    //   137: aconst_null
-    //   138: aload 6
-    //   140: invokestatic 207	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   143: astore 6
-    //   145: aload 5
-    //   147: ifnull +8 -> 155
-    //   150: aload 5
-    //   152: invokevirtual 212	java/io/InputStream:close	()V
-    //   155: aload 6
-    //   157: areturn
-    //   158: astore 6
-    //   160: aconst_null
-    //   161: astore 5
-    //   163: aload 5
-    //   165: astore 4
-    //   167: invokestatic 36	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   170: ifeq +36 -> 206
-    //   173: aload 5
-    //   175: astore 4
-    //   177: ldc 38
-    //   179: iconst_2
-    //   180: new 40	java/lang/StringBuilder
-    //   183: dup
-    //   184: invokespecial 41	java/lang/StringBuilder:<init>	()V
-    //   187: ldc 214
-    //   189: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   192: aload 6
-    //   194: invokevirtual 217	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   197: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   200: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   203: invokestatic 220	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   206: aload 5
-    //   208: ifnull +8 -> 216
-    //   211: aload 5
-    //   213: invokevirtual 212	java/io/InputStream:close	()V
-    //   216: aload_0
-    //   217: aload_1
-    //   218: aload_2
-    //   219: aload_3
-    //   220: invokespecial 222	bdsh:decodeFile	(Ljava/io/File;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/lang/Object;
-    //   223: areturn
-    //   224: astore_1
-    //   225: aload 4
-    //   227: astore_2
-    //   228: aload_2
-    //   229: ifnull +7 -> 236
-    //   232: aload_2
-    //   233: invokevirtual 212	java/io/InputStream:close	()V
-    //   236: aload_1
-    //   237: athrow
-    //   238: astore_1
-    //   239: aload 6
-    //   241: areturn
-    //   242: astore 4
-    //   244: goto -28 -> 216
-    //   247: astore_2
-    //   248: goto -12 -> 236
-    //   251: astore_1
-    //   252: aload 4
-    //   254: astore_2
-    //   255: goto -27 -> 228
-    //   258: astore 6
-    //   260: goto -97 -> 163
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	263	0	this	bdxb
-    //   0	263	1	paramFile	File
-    //   0	263	2	paramDownloadParams	DownloadParams
-    //   0	263	3	paramURLDrawableHandler	URLDrawableHandler
-    //   1	225	4	localObject1	java.lang.Object
-    //   242	11	4	localIOException	java.io.IOException
-    //   129	83	5	localBufferedInputStream	java.io.BufferedInputStream
-    //   71	85	6	localObject2	java.lang.Object
-    //   158	82	6	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   258	1	6	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    // Exception table:
-    //   from	to	target	type
-    //   64	131	158	java/lang/OutOfMemoryError
-    //   64	131	224	finally
-    //   150	155	238	java/io/IOException
-    //   211	216	242	java/io/IOException
-    //   232	236	247	java/io/IOException
-    //   135	145	251	finally
-    //   167	173	251	finally
-    //   177	206	251	finally
-    //   135	145	258	java/lang/OutOfMemoryError
+    switch (paramIntent.getIntExtra("key_type", 0))
+    {
+    default: 
+      return;
+    }
+    a(paramIntent, paramPacket);
   }
 }
 

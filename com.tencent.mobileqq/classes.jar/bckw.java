@@ -1,65 +1,118 @@
-import android.os.Build;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.search.rich.RichNodeRootLayout;
 
-public class bckw
+public abstract class bckw
+  implements bckm
 {
-  public static String[] a = { "Le X620", "Nexus 5X", "ZTE A2017", "PRA-AL00X", "SM-W2015", "Redmi Note 3", "R7Plus", "vivo X6Plus A" };
+  private View jdField_a_of_type_AndroidViewView;
+  public bckk a;
+  private RichNodeRootLayout jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout;
+  private View b;
   
-  public static boolean a()
+  public bckw(bckk parambckk, Context paramContext)
   {
-    boolean bool2 = false;
-    String str = Build.MODEL;
-    String[] arrayOfString = a;
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (arrayOfString[i].contains(str)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FaceDanceEntryUtil", 2, "isPhoneInBlackList ： phone = " + str + ", result=" + bool1);
-        }
-        return bool1;
-      }
-      i += 1;
+    this.jdField_a_of_type_Bckk = parambckk;
+    a(paramContext);
+  }
+  
+  public final View a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout;
+  }
+  
+  public abstract View a(Context paramContext);
+  
+  public View a(String paramString)
+  {
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return null;
+  }
+  
+  public TextView a()
+  {
+    return null;
+  }
+  
+  public bckk a()
+  {
+    return this.jdField_a_of_type_Bckk;
+  }
+  
+  public String a()
+  {
+    bckk localbckk = a();
+    if (localbckk != null) {
+      return localbckk.a();
+    }
+    return null;
+  }
+  
+  public void a(Context paramContext)
+  {
+    View localView = LayoutInflater.from(paramContext).inflate(2131561535, null, false);
+    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout = ((RichNodeRootLayout)localView.findViewById(2131376935));
+    this.b = localView.findViewById(2131365632);
+    this.jdField_a_of_type_AndroidViewView = a(paramContext);
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout.addView(this.jdField_a_of_type_AndroidViewView);
     }
   }
   
-  public static boolean b()
+  public void a(boolean paramBoolean)
   {
-    boolean bool3 = false;
-    boolean bool2 = false;
-    boolean bool1 = bool3;
-    if (bclh.g())
+    if (this.b != null)
     {
-      bool1 = bool3;
-      if (!a())
-      {
-        if (!loz.a(8, 1400000L))
-        {
-          bool1 = bool2;
-          if (!loz.a(4, 2150000L)) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-        QLog.d("FaceDanceEntryUtil", 2, "FaceDanceEntryUtil check condition 2 +cpuNumber is" + bool1);
+      if (paramBoolean) {
+        this.b.setVisibility(0);
       }
     }
-    return bool1;
+    else {
+      return;
+    }
+    this.b.setVisibility(8);
   }
   
-  public static boolean c()
+  public ImageView b()
   {
-    return (b()) && (bchg.a().e());
+    return null;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public void b(boolean paramBoolean) {}
+  
+  public TextView c()
+  {
+    return null;
+  }
+  
+  public TextView d()
+  {
+    return null;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Bckk = null;
+    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout = null;
+    this.jdField_a_of_type_AndroidViewView = null;
+    this.b = null;
+  }
+  
+  public void f()
+  {
+    d();
   }
 }
 

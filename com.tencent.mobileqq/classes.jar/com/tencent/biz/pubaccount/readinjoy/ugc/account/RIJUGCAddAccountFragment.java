@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.account;
 
-import afur;
+import agej;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -22,13 +22,13 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.net.MalformedURLException;
 import java.net.URL;
-import oat;
+import ocd;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pgk;
-import pha;
-import rlu;
-import rlv;
+import ozc;
+import ozs;
+import rco;
+import rcp;
 
 public class RIJUGCAddAccountFragment
   extends ViolaLazyFragment
@@ -39,7 +39,7 @@ public class RIJUGCAddAccountFragment
   public static int b;
   private static boolean b;
   public static int c = 3;
-  private rlv jdField_a_of_type_Rlv;
+  private rcp jdField_a_of_type_Rcp;
   
   static
   {
@@ -54,24 +54,39 @@ public class RIJUGCAddAccountFragment
   
   public static String a()
   {
-    ReadInJoyUserInfo localReadInJoyUserInfo = a(pha.a());
+    ReadInJoyUserInfo localReadInJoyUserInfo = a(ozs.a());
     String str = ReadInJoyUserInfoModule.a();
     if (localReadInJoyUserInfo == null)
     {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "RIJUGCAddAccountFragment getNickName getReadInJoyUserInfoByUin is null! ");
-      return pha.e(str);
+      return ozs.e(str);
     }
-    return pha.e(localReadInJoyUserInfo.nick);
+    return ozs.e(localReadInJoyUserInfo.nick);
+  }
+  
+  static void a()
+  {
+    try
+    {
+      JSONObject localJSONObject = ozs.a();
+      localJSONObject.put("uin", ozs.a());
+      ocd.a(null, "CliOper", "", "", "0X800AD87", "0X800AD87", 0, 0, "", "", "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "RIJUGCAddAccountFragment ugcAddAccountExposureReport exception: " + localJSONException.getMessage());
+    }
   }
   
   public static void a(int paramInt)
   {
     try
     {
-      JSONObject localJSONObject = pha.a();
-      localJSONObject.put("uin", pha.a());
+      JSONObject localJSONObject = ozs.a();
+      localJSONObject.put("uin", ozs.a());
       localJSONObject.put("click_area", paramInt);
-      oat.a(null, "CliOper", "", "", "0X800AD89", "0X800AD89", 0, 0, "", "", "", localJSONObject.toString(), false);
+      ocd.a(null, "CliOper", "", "", "0X800AD89", "0X800AD89", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (JSONException localJSONException)
@@ -82,7 +97,7 @@ public class RIJUGCAddAccountFragment
   
   public static void a(Context paramContext)
   {
-    if (a(pha.a()) != null) {}
+    if (a(ozs.a()) != null) {}
     for (boolean bool = true;; bool = false)
     {
       jdField_a_of_type_Boolean = bool;
@@ -93,22 +108,22 @@ public class RIJUGCAddAccountFragment
   
   private void a(ViewGroup paramViewGroup)
   {
-    ViewGroup localViewGroup1 = (ViewGroup)paramViewGroup.findViewById(2131380160);
-    ViewGroup localViewGroup2 = (ViewGroup)paramViewGroup.findViewById(2131380161);
-    KandianUrlImageView localKandianUrlImageView = (KandianUrlImageView)paramViewGroup.findViewById(2131369338);
-    paramViewGroup = (KandianUrlImageView)paramViewGroup.findViewById(2131369339);
+    ViewGroup localViewGroup1 = (ViewGroup)paramViewGroup.findViewById(2131380345);
+    ViewGroup localViewGroup2 = (ViewGroup)paramViewGroup.findViewById(2131380346);
+    KandianUrlImageView localKandianUrlImageView = (KandianUrlImageView)paramViewGroup.findViewById(2131369428);
+    paramViewGroup = (KandianUrlImageView)paramViewGroup.findViewById(2131369429);
     ViewGroup.LayoutParams localLayoutParams = paramViewGroup.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
     {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).topMargin = (ImmersiveUtils.getStatusBarHeight(getActivity()) + (getResources().getDimensionPixelSize(2131298998) - afur.a(19.5F, getResources())) / 2);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).topMargin = (ImmersiveUtils.getStatusBarHeight(getActivity()) + (getResources().getDimensionPixelSize(2131299011) - agej.a(19.5F, getResources())) / 2);
       paramViewGroup.setLayoutParams(localLayoutParams);
     }
     try
     {
-      pgk.a(localKandianUrlImageView, new URL("https://pub.idqqimg.com/pc/misc/files/20200430/21b88f2ba3bd43919173a767982d649d.png"), getActivity());
-      pgk.a(paramViewGroup, new URL("https://pub.idqqimg.com/pc/misc/files/20200430/eb40275894c9455f9ab438dd91081678.png"), getActivity());
-      this.jdField_a_of_type_Rlv = new rlv(getActivity(), localViewGroup2);
-      localViewGroup1.setOnClickListener(new rlu(this));
+      ozc.a(localKandianUrlImageView, new URL("https://pub.idqqimg.com/pc/misc/files/20200430/21b88f2ba3bd43919173a767982d649d.png"), getActivity());
+      ozc.a(paramViewGroup, new URL("https://pub.idqqimg.com/pc/misc/files/20200430/eb40275894c9455f9ab438dd91081678.png"), getActivity());
+      this.jdField_a_of_type_Rcp = new rcp(getActivity(), localViewGroup2);
+      localViewGroup1.setOnClickListener(new rco(this));
       return;
     }
     catch (MalformedURLException paramViewGroup)
@@ -120,24 +135,14 @@ public class RIJUGCAddAccountFragment
     }
   }
   
-  static void b()
+  public static void b()
   {
-    try
-    {
-      JSONObject localJSONObject = pha.a();
-      localJSONObject.put("uin", pha.a());
-      oat.a(null, "CliOper", "", "", "0X800AD87", "0X800AD87", 0, 0, "", "", "", localJSONObject.toString(), false);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "RIJUGCAddAccountFragment ugcAddAccountExposureReport exception: " + localJSONException.getMessage());
-    }
+    ThreadManager.executeOnFileThread(new RIJUGCAddAccountFragment.2());
   }
   
   public static void b(Context paramContext)
   {
-    if (TextUtils.isEmpty(pha.a()))
+    if (TextUtils.isEmpty(ozs.a()))
     {
       QLog.e(jdField_a_of_type_JavaLangString, 2, "editUGCAccount , but uin is empty !");
       jdField_b_of_type_Boolean = false;
@@ -157,9 +162,11 @@ public class RIJUGCAddAccountFragment
     ((Activity)paramContext).startActivityForResult(localIntent, 10000);
   }
   
-  public static void c()
+  private void c()
   {
-    ThreadManager.executeOnFileThread(new RIJUGCAddAccountFragment.2());
+    a(jdField_a_of_type_Int);
+    a(getActivity());
+    getActivity().finish();
   }
   
   private static void c(@NonNull Context paramContext)
@@ -172,34 +179,27 @@ public class RIJUGCAddAccountFragment
     }
   }
   
-  private void d()
-  {
-    a(jdField_a_of_type_Int);
-    a(getActivity());
-    getActivity().finish();
-  }
-  
-  public int a()
-  {
-    return 2131560278;
-  }
-  
-  public void a()
+  public void doOnBackPressed()
   {
     if (getActivity() != null) {
-      d();
+      c();
     }
   }
   
-  public void a(Bundle paramBundle) {}
-  
-  public void a(Bundle paramBundle, ViewGroup paramViewGroup)
+  public int getContentViewId()
   {
-    q();
-    m();
-    a(paramViewGroup);
-    b();
+    return 2131560290;
   }
+  
+  public void initAfterVisible(Bundle paramBundle, ViewGroup paramViewGroup)
+  {
+    hideTitleBar();
+    setStatusBarImmersive();
+    a(paramViewGroup);
+    a();
+  }
+  
+  public void initBeforeVisible(Bundle paramBundle) {}
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
@@ -219,7 +219,7 @@ public class RIJUGCAddAccountFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Rlv.a();
+    this.jdField_a_of_type_Rcp.a();
   }
 }
 

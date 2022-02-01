@@ -1,76 +1,72 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.support.v4.app.FragmentActivity;
-import android.widget.ImageView;
-import com.tencent.mobileqq.location.ui.LocationMapWidget;
-import com.tencent.mobileqq.onlinestatus.location.OnlineStatusLocationFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class aysu
-  implements avym
 {
-  private long jdField_a_of_type_Long;
+  public static HashMap<Integer, Integer> a;
+  public int a;
+  public String a;
+  public List<String> a;
+  public int b;
+  public String b;
+  public int c;
+  public String c = "";
+  public int d;
   
-  public aysu(OnlineStatusLocationFragment paramOnlineStatusLocationFragment) {}
-  
-  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList) {}
-  
-  public void a(LatLng paramLatLng, List<String> paramList)
+  static
   {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L) {}
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("OnlineStatusLocationFragment", 2, "onMapStable onClick: invoked. center: " + paramLatLng);
-      }
-      OnlineStatusLocationFragment.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment, paramLatLng);
-      if (paramList != null)
-      {
-        paramLatLng = paramList.iterator();
-        while (paramLatLng.hasNext())
-        {
-          paramList = (String)paramLatLng.next();
-          Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.a(paramList);
-          if (localBitmap != null)
-          {
-            localBitmap = bgmo.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
-            OnlineStatusLocationFragment.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment).a(paramList, localBitmap);
-          }
-        }
-      }
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(11), Integer.valueOf(20));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(3), Integer.valueOf(40));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(5), Integer.valueOf(60));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(0), Integer.valueOf(80));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-1), Integer.valueOf(100));
+  }
+  
+  public aysu()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public void a(int paramInt)
+  {
+    if (((Integer)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).intValue() < ((Integer)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int))).intValue()) {
+      this.jdField_a_of_type_Int = paramInt;
     }
   }
   
-  public void a(boolean paramBoolean, Point paramPoint)
+  public void a(String paramString)
   {
-    if (paramBoolean)
+    int i = 0;
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.a.setClickable(false);
-      if (bkpg.a()) {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.a.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.getActivity().getResources().getDrawable(2130840541));
+      int j = Integer.valueOf(paramString).intValue();
+      i = j;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        QLog.e("NearbyRedInfo", 1, localNumberFormatException, new Object[0]);
+        this.jdField_a_of_type_JavaLangString = paramString;
       }
     }
-    Rect localRect;
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.a.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.getActivity().getResources().getDrawable(2130840540));
-      return;
-      if (paramPoint == null) {
-        break;
-      }
-      localRect = new Rect();
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.a.getGlobalVisibleRect(localRect);
-    } while (localRect.contains(paramPoint.x, paramPoint.y));
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.a.setClickable(true);
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.a.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationOnlineStatusLocationFragment.getActivity().getResources().getDrawable(2130840542));
+    this.jdField_b_of_type_Int = (i + this.jdField_b_of_type_Int);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int += paramInt;
+  }
+  
+  public String toString()
+  {
+    return "[redType=" + this.jdField_a_of_type_Int + ", redNum=" + this.jdField_b_of_type_Int + ", redTxt=" + this.jdField_a_of_type_JavaLangString + ", redAppIdType=" + this.d + ", url=" + this.jdField_a_of_type_JavaUtilList + "]";
   }
 }
 

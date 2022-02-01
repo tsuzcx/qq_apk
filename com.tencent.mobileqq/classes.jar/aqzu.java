@@ -1,57 +1,8 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aqzu
-  extends aqkz<aqzt>
+public abstract interface aqzu
 {
-  public static aqzt a()
-  {
-    return (aqzt)aqlk.a().a(486);
-  }
-  
-  @NonNull
-  public aqzt a(int paramInt)
-  {
-    return new aqzt();
-  }
-  
-  @Nullable
-  public aqzt a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return aqzt.a(paramArrayOfaqlg);
-    }
-    return null;
-  }
-  
-  public void a(aqzt paramaqzt) {}
-  
-  public Class<aqzt> clazz()
-  {
-    return aqzt.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 486;
-  }
+  public abstract void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, aqzt paramaqzt);
 }
 
 

@@ -1,19 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
+import android.view.MotionEvent;
+import android.view.View;
 
-public final class zun
-  implements Parcelable.Creator<ScannerParams>
+public abstract interface zun
 {
-  public ScannerParams a(Parcel paramParcel)
-  {
-    return new ScannerParams(paramParcel);
-  }
+  public abstract void a(int paramInt);
   
-  public ScannerParams[] a(int paramInt)
-  {
-    return new ScannerParams[paramInt];
-  }
+  public abstract void a(View paramView, float paramFloat);
+  
+  public abstract void a(View paramView, float paramFloat, MotionEvent paramMotionEvent);
+  
+  public abstract void a(View paramView, zuk paramzuk);
+  
+  public abstract boolean a(View paramView);
+  
+  public abstract boolean a(View paramView, zuq paramzuq, MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(View paramView);
 }
 
 

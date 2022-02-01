@@ -3,7 +3,7 @@ package com.tencent.mobileqq.app.automator.step;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import awnb;
+import axft;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -16,10 +16,10 @@ public class NotifyQZoneServer
 {
   public int a()
   {
-    if (!this.a.app.isBackground_Pause)
+    if (!this.a.app.isBackgroundPause)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("NotifyQZoneServer", 2, "isBackground_Pause:" + this.a.app.isBackground_Pause);
+        QLog.d("NotifyQZoneServer", 2, "isBackground_Pause:" + this.a.app.isBackgroundPause);
       }
       return super.a();
     }
@@ -46,9 +46,9 @@ public class NotifyQZoneServer
     }
     for (;;)
     {
-      localObject1 = (awnb)this.a.app.getManager(10);
+      localObject1 = (axft)this.a.app.getManager(10);
       if (localObject1 != null) {
-        ((awnb)localObject1).a();
+        ((axft)localObject1).a();
       }
       return super.a();
       label328:

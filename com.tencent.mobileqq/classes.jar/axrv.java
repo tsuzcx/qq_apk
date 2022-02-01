@@ -1,25 +1,44 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import java.util.HashMap;
 
 public class axrv
-  implements aulk
+  extends axqq
 {
-  public axrv(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public axrv(MusicPlayerActivity paramMusicPlayerActivity) {}
   
-  public void a()
+  public void onPlaySongChanged(SongInfo paramSongInfo)
   {
-    bkfx localbkfx = bkfx.a;
-    if ((localbkfx != null) && (localbkfx.a()))
+    if (paramSongInfo != null)
     {
-      if (!localbkfx.a(1)) {
-        localbkfx.b(1);
+      localObject = MusicPlayerActivity.a(this.a, paramSongInfo);
+      if (!MusicPlayerActivity.b().containsKey(localObject)) {
+        break label64;
       }
-      if ((!localbkfx.a(8)) && (localbkfx.a(5))) {
-        localbkfx.b(8);
-      }
-      if ((!localbkfx.a(9)) && (localbkfx.a(6))) {
-        localbkfx.b(9);
-      }
+      localObject = (axsb)MusicPlayerActivity.b().get(localObject);
+      paramSongInfo = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, ((axsb)localObject).a);
+      MusicPlayerActivity.a(this.a, (axsb)localObject, paramSongInfo);
     }
+    label64:
+    while (MusicPlayerActivity.a().containsKey(localObject)) {
+      return;
+    }
+    Object localObject = MusicPlayerActivity.a(this.a);
+    if (localObject != null) {}
+    for (int i = ((axqs)localObject).c();; i = 0)
+    {
+      localObject = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, -1L);
+      MusicPlayerActivity.a(this.a, paramSongInfo.c, paramSongInfo.h, paramSongInfo.e, (String)localObject, false, false);
+      MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramSongInfo.c, paramSongInfo.h, paramSongInfo.g, String.valueOf(paramSongInfo.a), paramSongInfo.d, i);
+      return;
+    }
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    Message.obtain(MusicPlayerActivity.a(this.a), 50, paramInt, 0).sendToTarget();
   }
 }
 

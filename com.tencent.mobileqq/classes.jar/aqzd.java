@@ -1,79 +1,49 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.graphics.Rect;
+import java.util.ArrayList;
 
 public class aqzd
 {
-  private int a;
-  private int b = 1;
-  private int c = 1;
+  public int a;
+  public Rect a;
+  public aqzk a;
+  public ArrayList<aqze> a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c = 0;
+  public int d = 0;
+  public int e = 1;
   
-  public aqzd()
+  public aqzd(aqzk paramaqzk, int paramInt1, Rect paramRect, int paramInt2, boolean paramBoolean, int paramInt3)
   {
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public static aqzd a(aqlg paramaqlg)
-  {
-    aqzd localaqzd = new aqzd();
-    if (paramaqlg != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchBusinessConfBean", 2, "parse taskid->" + paramaqlg.jdField_a_of_type_Int + " content->" + paramaqlg.jdField_a_of_type_JavaLangString);
-      }
-    }
-    try
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = 24;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Aqzk = paramaqzk;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    this.e = paramInt3;
+    if (paramaqzk.jdField_a_of_type_Int > 0) {}
+    for (paramBoolean = bool;; paramBoolean = false)
     {
-      paramaqlg = new JSONObject(paramaqlg.jdField_a_of_type_JavaLangString);
-      localaqzd.a(paramaqlg.optInt("business_switch_message", 1));
-      localaqzd.b(paramaqlg.optInt("business_switch_contact", 1));
-      localaqzd.c(paramaqlg.optInt("business_switch_dongtai", 1));
-      return localaqzd;
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      paramaqzk.jdField_a_of_type_Int += 1;
+      return;
     }
-    catch (Exception paramaqlg)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SearchBusinessConfBean", 2, "parse error->" + paramaqlg.toString());
-    }
-    return localaqzd;
-  }
-  
-  void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  void b(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public boolean b()
-  {
-    return this.b == 1;
-  }
-  
-  void c(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public boolean c()
-  {
-    return this.c == 1;
   }
   
   public String toString()
   {
-    return String.format("mBusinessSwitchTabMessage:%d, mBusinessSwitchTabContact:%d, mBusinessSwitchTabDongtai:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("text: ").append(this.jdField_a_of_type_Aqzk.jdField_a_of_type_JavaLangString).append("; size: ").append(this.jdField_b_of_type_Int).append("; line_count: ").append(this.e).append("; container: ").append(this.jdField_a_of_type_AndroidGraphicsRect).append("; algin: ").append(this.c).append("; v_algin: ").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqzd
  * JD-Core Version:    0.7.0.1
  */

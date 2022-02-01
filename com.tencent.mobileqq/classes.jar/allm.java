@@ -1,49 +1,28 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import MWIFI.SCGet3rdCloudCheck;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 class allm
-  implements bdvw
+  implements View.OnClickListener
 {
-  allm(alll paramalll) {}
+  allm(aljw paramaljw, SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
   
-  public void onResp(bdwt parambdwt)
+  public void onClick(View paramView)
   {
-    Object localObject = (FilterDesc)parambdwt.jdField_a_of_type_Bdws.a();
-    if (parambdwt.jdField_a_of_type_Int != 0) {
-      lbc.c("VideoFilterTools", "download file failed. errorCode: " + parambdwt.b + ", errorMsg: " + parambdwt.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "updateWiFiSecurityBanner, onClick");
     }
-    for (;;)
-    {
-      return;
-      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(parambdwt.jdField_a_of_type_Bdws.c)))
-      {
-        lbc.c("VideoFilterTools", "download file failed: md5 is not match.");
-        bgmg.d(parambdwt.jdField_a_of_type_Bdws.c);
-        return;
-      }
-      lbc.c("VideoFilterTools", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
-      try
-      {
-        localObject = alll.b;
-        bgmg.a(parambdwt.jdField_a_of_type_Bdws.c, (String)localObject, false);
-        bgmg.d(parambdwt.jdField_a_of_type_Bdws.c);
-        if ((alll.a(this.a).decrementAndGet() == 0) && (alll.a(this.a) != null))
-        {
-          alll.a(this.a).a(true);
-          return;
-        }
-      }
-      catch (IOException parambdwt)
-      {
-        parambdwt.printStackTrace();
-        lbc.c("VideoFilterTools", "unzip file failed.");
-      }
-    }
+    bjhk.a(aljw.a(this.jdField_a_of_type_Aljw), this.jdField_a_of_type_MWIFISCGet3rdCloudCheck);
+    aljw.a(this.jdField_a_of_type_Aljw).removeMessages(202);
+    aljw.a(this.jdField_a_of_type_Aljw).obtainMessage(202).sendToTarget();
+    bdll.a(aljw.a(this.jdField_a_of_type_Aljw).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 6, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

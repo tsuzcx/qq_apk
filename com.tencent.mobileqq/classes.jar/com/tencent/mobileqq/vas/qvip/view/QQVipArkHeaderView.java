@@ -6,15 +6,14 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import bhcn;
-import bhcp;
-import bhcs;
-import blyl;
+import bicz;
+import bidb;
+import bide;
 import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
 
 public class QQVipArkHeaderView
   extends RelativeLayout
-  implements bhcp
+  implements bidb
 {
   private int jdField_a_of_type_Int;
   private QQVipMsgInfo jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo;
@@ -23,10 +22,10 @@ public class QQVipArkHeaderView
   public QQVipArkHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(getContext()).inflate(2131559592, this);
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQvipArkView = ((QvipArkView)findViewById(2131374371));
+    LayoutInflater.from(getContext()).inflate(2131559597, this);
+    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQvipArkView = ((QvipArkView)findViewById(2131374508));
     this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQvipArkView.setmQqVipArkHeaderView(this);
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQvipArkView.addOnLayoutChangeListener(new bhcs(this));
+    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQvipArkView.addOnLayoutChangeListener(new bide(this));
   }
   
   public void a(QQVipMsgInfo paramQQVipMsgInfo, Activity paramActivity, int paramInt)
@@ -39,7 +38,7 @@ public class QQVipArkHeaderView
     }
     try
     {
-      bhcn.a(117, paramQQVipMsgInfo, paramInt);
+      bicz.a(117, paramQQVipMsgInfo, paramInt);
       return;
     }
     catch (Throwable paramQQVipMsgInfo)
@@ -50,21 +49,7 @@ public class QQVipArkHeaderView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      blyl.a().a("QQVipAccount", "1", "1", this.jdField_a_of_type_Int + 1 + "", "", "1", 102, 1);
-    }
-    try
-    {
-      bhcn.a(118, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo, this.jdField_a_of_type_Int);
-      return super.onTouchEvent(paramMotionEvent);
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    return super.onTouchEvent(paramMotionEvent);
   }
 }
 

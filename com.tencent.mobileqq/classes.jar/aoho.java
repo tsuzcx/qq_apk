@@ -1,36 +1,62 @@
-import com.tencent.mobileqq.data.MessageRecord;
-
 public class aoho
+  implements anui
 {
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == -2000) || (paramInt == -20000) || (paramInt == -3004) || (paramInt == -3005) || (paramInt == -3000) || (paramInt == -3001) || (paramInt == -1032);
-  }
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    int i = paramMessageRecord.msgtype;
-    return (i == -2011) || (i == -2060) || (i == -2065) || (i == -5008) || (i == -5010) || (i == -2050) || (i == -1051) || (i == -2021) || (i == -2018) || (i == -4502);
-  }
+  protected void b(boolean paramBoolean, Object paramObject) {}
   
-  public static boolean b(int paramInt)
-  {
-    return paramInt == -2022;
-  }
+  protected void c(boolean paramBoolean, Object paramObject) {}
   
-  public static boolean c(int paramInt)
-  {
-    return (paramInt == -2005) || (paramInt == -2014) || (paramInt == -2017);
-  }
+  protected void d(boolean paramBoolean, Object paramObject) {}
   
-  public static boolean d(int paramInt)
-  {
-    return paramInt == -1035;
-  }
+  protected void e(boolean paramBoolean, Object paramObject) {}
   
-  public static boolean e(int paramInt)
+  protected void f(boolean paramBoolean, Object paramObject) {}
+  
+  protected void g(boolean paramBoolean, Object paramObject) {}
+  
+  protected void h(boolean paramBoolean, Object paramObject) {}
+  
+  protected void i(boolean paramBoolean, Object paramObject) {}
+  
+  protected void j(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return paramInt == -2011;
+    switch (paramInt)
+    {
+    case 4: 
+    default: 
+      return;
+    case 7: 
+      b(paramBoolean, paramObject);
+      return;
+    case 5: 
+      c(paramBoolean, paramObject);
+      return;
+    case 6: 
+      a(paramBoolean, paramObject);
+      return;
+    case 3: 
+      d(paramBoolean, paramObject);
+      return;
+    case 8: 
+      e(paramBoolean, paramObject);
+      return;
+    case 9: 
+      f(paramBoolean, paramObject);
+      return;
+    case 10: 
+      g(paramBoolean, paramObject);
+      return;
+    case 11: 
+      h(paramBoolean, paramObject);
+      return;
+    case 12: 
+      i(paramBoolean, paramObject);
+      return;
+    }
+    j(paramBoolean, paramObject);
   }
 }
 

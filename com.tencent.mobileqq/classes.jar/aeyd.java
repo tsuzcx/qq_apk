@@ -1,99 +1,166 @@
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.map.lib.basemap.data.GeoPoint;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.activity.QQMapActivity.9.1;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
+import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import com.tencent.tencentmap.mapsdk.maps.model.Marker;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aeyd
-  extends aoou
+  extends WtloginObserver
 {
-  public aeyd(QQMapActivity paramQQMapActivity, String paramString, boolean paramBoolean)
-  {
-    super(paramString, paramBoolean);
-  }
+  public aeyd(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    String str;
-    GeoPoint localGeoPoint;
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null) && (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null))
+    if (QLog.isColorLevel())
     {
-      str = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
-      if (QLog.isColorLevel()) {
-        QLog.d("get_location", 2, "onLocationFinish errCode=" + paramInt);
+      QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
       }
-      if ((paramInt != 0) || (paramSosoLbsInfo == null) || (paramSosoLbsInfo.a == null)) {
-        break label546;
-      }
-      localGeoPoint = new GeoPoint((int)(paramSosoLbsInfo.a.jdField_a_of_type_Double * 1000000.0D), (int)(paramSosoLbsInfo.a.jdField_b_of_type_Double * 1000000.0D));
-      if (this.a.s)
+    }
+    if (paramInt2 == 0)
+    {
+      QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  login success ret =  " + paramInt2);
+      if ((LoginVerifyCodeActivity2.c(this.a) == 2) || (LoginVerifyCodeActivity2.c(this.a) == 3))
       {
-        if (!this.a.k) {
-          break label181;
-        }
-        label129:
-        this.a.h();
-        this.a.s = false;
+        this.a.c();
+        paramArrayOfByte = new Intent();
+        paramArrayOfByte.putExtra("last_account", paramString);
+        this.a.setResult(-1, paramArrayOfByte);
+        this.a.finish();
       }
-      if (this.a.k) {
-        break label253;
-      }
-      this.a.a(localGeoPoint, str);
     }
     for (;;)
     {
-      label181:
-      label253:
-      try
+      return;
+      LoginVerifyCodeActivity2.a(this.a).ssoGetTicketNoPasswd(paramString, 4096, this.a.a);
+      return;
+      this.a.c();
+      if (paramInt2 == -20160326)
       {
-        this.a.dismissDialog(0);
+        this.a.finish();
         return;
       }
-      catch (IllegalArgumentException paramSosoLbsInfo) {}
-      str = "";
-      break;
-      this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localGeoPoint.getLatitudeE6() / 1000000.0D, localGeoPoint.getLongitudeE6() / 1000000.0D)));
-      this.a.g = str;
-      this.a.c.setVisibility(0);
-      this.a.a(localGeoPoint);
-      break label129;
-      this.a.z();
-      long l = System.currentTimeMillis();
-      if (l - this.a.jdField_a_of_type_Long > 5000L)
+      if (paramInt2 == 2008)
       {
-        if ((this.a.e != null) && (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline == null))
+        this.a.a(2131692737, 0);
+        this.a.finish();
+        return;
+      }
+      Object localObject2 = null;
+      Object localObject3 = null;
+      Object localObject1 = localObject3;
+      if (paramErrMsg != null)
+      {
+        String str = paramErrMsg.getMessage();
+        localObject1 = localObject3;
+        localObject2 = str;
+        if (paramErrMsg.getType() == 1)
         {
-          double d = abdo.a(localGeoPoint.getLongitudeE6() / 1000000.0D, localGeoPoint.getLatitudeE6() / 1000000.0D, this.a.jdField_b_of_type_Double, this.a.jdField_a_of_type_Double);
-          this.a.m();
-          this.a.e.setText(abdo.a(d));
+          localObject1 = paramErrMsg.getOtherinfo();
+          localObject2 = str;
         }
-        this.a.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint = localGeoPoint;
-        this.a.p = str;
-        this.a.q = paramSosoLbsInfo.a.jdField_a_of_type_JavaLangString;
-        if (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker != null)
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        paramErrMsg = new Intent(this.a, NotificationActivity.class);
+        paramErrMsg.putExtra("type", 8);
+        if (paramInt2 == 40) {
+          paramErrMsg.putExtra("msg", localObject2);
+        }
+        for (;;)
         {
-          this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker.setPosition(new LatLng(this.a.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D, this.a.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D));
-          this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker.setSnippet("");
-          awao.a(this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker);
+          paramErrMsg.putExtra("loginalias", paramString);
+          paramErrMsg.putExtra("loginret", paramInt2);
+          paramErrMsg.putExtra("expiredSig", paramArrayOfByte);
+          if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+            break;
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.i("LoginVerifyCodeActivity", 4, "OnGetStViaSMSVerifyLogin, goto Notification");
+          }
+          paramErrMsg.putExtra("lh_is_from_login_verify_code", true);
+          this.a.startActivityForResult(paramErrMsg, 1);
+          return;
+          paramErrMsg.putExtra("msg", localObject2 + " " + (String)localObject1);
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("get_location", 2, "onLocationFinish, mSelfPoint=" + this.a.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint + ",addr=" + str + ",poiName=" + this.a.q);
-        }
-        this.a.jdField_a_of_type_Long = l;
-        continue;
-        label546:
-        this.a.y();
-        new Handler().post(new QQMapActivity.9.1(this));
+        this.a.startActivity(paramErrMsg);
+        return;
+      }
+      if (TextUtils.isEmpty(localObject2)) {
+        this.a.a();
+      }
+      while (paramInt2 == 155)
+      {
+        this.a.finish();
+        return;
+        this.a.a(localObject2, 0);
       }
     }
+  }
+  
+  public void onRefreshSMSVerifyLoginAccount(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.mobile=" + paramString1 + " msg=" + paramString2 + " timeLimit=" + paramInt2);
+      QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.ret=" + paramInt3);
+      if (paramErrMsg != null) {
+        QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.errMsg=" + paramErrMsg);
+      }
+    }
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.c();
+    if (paramInt3 != 0)
+    {
+      paramString1 = null;
+      if (paramErrMsg != null) {
+        paramString1 = paramErrMsg.getMessage();
+      }
+      if (TextUtils.isEmpty(paramString1))
+      {
+        this.a.a();
+        return;
+      }
+      this.a.a(paramString1, 0);
+      return;
+    }
+    LoginVerifyCodeActivity2.a(this.a, 60);
+  }
+  
+  public void onVerifySMSVerifyLoginAccount(String paramString1, String paramString2, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("LoginVerifyCodeActivity", 2, "OnVerifySMSVerifyLoginAccount mobile=" + paramString1 + " msgCode=" + paramString2 + " ret=" + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("LoginVerifyCodeActivity", 2, "OnVerifySMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
+      }
+    }
+    if (this.a.isFinishing()) {
+      return;
+    }
+    if (paramInt != 0)
+    {
+      this.a.c();
+      paramString1 = null;
+      if (paramErrMsg != null) {
+        paramString1 = paramErrMsg.getMessage();
+      }
+      if (TextUtils.isEmpty(paramString1))
+      {
+        this.a.a();
+        return;
+      }
+      this.a.a(paramString1, 0);
+      return;
+    }
+    LoginVerifyCodeActivity2.a(this.a);
   }
 }
 

@@ -1,49 +1,13 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
 
 public class amxz
-  implements Comparable<amxz>
+  implements amyf
 {
-  public int a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public short b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public int e = -1;
-  public long e;
-  public String e;
-  public int f;
-  public String f;
-  public int g = 0;
-  public String g;
-  public int h;
+  public amxz(CmGameDebugView paramCmGameDebugView) {}
   
-  public int a(amxz paramamxz)
+  public void a()
   {
-    if (paramamxz == null) {}
-    do
-    {
-      return -1;
-      if (this.jdField_a_of_type_Boolean == paramamxz.jdField_a_of_type_Boolean) {
-        return -(int)(this.c - paramamxz.c);
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    return 0;
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (this.jdField_a_of_type_Long == this.b) || ((!TextUtils.isEmpty(paramString)) && (paramString.equals(String.valueOf(this.jdField_a_of_type_Long))));
+    this.a.b();
   }
 }
 

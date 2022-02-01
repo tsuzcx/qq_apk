@@ -1,18 +1,18 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import bode;
-import boen;
+import bpez;
+import bpgi;
 import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
 public class AEEditorImageEditFragment$16$1
   implements Runnable
 {
-  public AEEditorImageEditFragment$16$1(boen paramboen, bode parambode) {}
+  public AEEditorImageEditFragment$16$1(bpgi parambpgi, bpez parambpez) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Boen.a.a(this.jdField_a_of_type_Bode);
-    this.jdField_a_of_type_Boen.a.a.setShowResult(true);
+    this.jdField_a_of_type_Bpgi.a.a(this.jdField_a_of_type_Bpez);
+    this.jdField_a_of_type_Bpgi.a.a.setShowResult(true);
   }
 }
 

@@ -1,10 +1,11 @@
-import com.google.gson.reflect.TypeToken;
-import dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
 
-class bofy
-  extends TypeToken<AEEditorEffectGroupListBean>
+public class bofy
+  extends ViewModel
 {
-  bofy(bofx parambofx) {}
+  public final MutableLiveData<boom> a = new MutableLiveData();
+  public final MutableLiveData<bojx> b = new MutableLiveData();
 }
 
 

@@ -16,20 +16,20 @@ import com.tencent.util.VersionUtils;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
-import zkh;
-import zmn;
-import zmv;
+import zoc;
+import zqi;
+import zqq;
 
 public class ShortVideoUtils$WatermarkVideoRunnable
   implements Runnable
 {
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static zmn jdField_a_of_type_Zmn;
+  private static zqi jdField_a_of_type_Zqi;
   private int jdField_a_of_type_Int;
   String jdField_a_of_type_JavaLangString;
   private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private zmv jdField_a_of_type_Zmv;
+  private zqq jdField_a_of_type_Zqq;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString;
@@ -77,8 +77,8 @@ public class ShortVideoUtils$WatermarkVideoRunnable
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoUtils", 2, "watermark task measure, w=" + this.jdField_b_of_type_Int + ", h=" + this.jdField_c_of_type_Int + ",r=" + i);
       }
-      if (jdField_a_of_type_Zmn == null) {
-        jdField_a_of_type_Zmn = zmn.a(BaseApplicationImpl.getContext());
+      if (jdField_a_of_type_Zqi == null) {
+        jdField_a_of_type_Zqi = zqi.a(BaseApplicationImpl.getContext());
       }
       this.jdField_a_of_type_JavaLangString = ShortVideoUtils.b();
       localObject5 = new File(this.jdField_a_of_type_JavaLangString);
@@ -106,7 +106,7 @@ public class ShortVideoUtils$WatermarkVideoRunnable
         {
           try
           {
-            localObject1 = BitmapFactory.decodeResource(((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources(), 2130845996);
+            localObject1 = BitmapFactory.decodeResource(((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources(), 2130846011);
             if (this.jdField_b_of_type_Int != 576)
             {
               float f = this.jdField_b_of_type_Int / 576.0F;
@@ -134,14 +134,14 @@ public class ShortVideoUtils$WatermarkVideoRunnable
                 if (j != 0) {
                   ((Canvas)localObject6).restore();
                 }
-                if (zkh.a((Bitmap)localObject3, Bitmap.CompressFormat.PNG, 100, ((File)localObject5).getAbsolutePath())) {
+                if (zoc.a((Bitmap)localObject3, Bitmap.CompressFormat.PNG, 100, ((File)localObject5).getAbsolutePath())) {
                   break;
                 }
                 if (QLog.isColorLevel()) {
                   QLog.d("ShortVideoUtils", 2, "compress watermark to file failed");
                 }
-                zkh.a((Bitmap)localObject3);
-                zkh.a((Bitmap)localObject1);
+                zoc.a((Bitmap)localObject3);
+                zoc.a((Bitmap)localObject1);
                 a(10001);
               }
             }
@@ -171,9 +171,9 @@ public class ShortVideoUtils$WatermarkVideoRunnable
           label631:
           int k = this.jdField_c_of_type_Int - 20 - localException1.getHeight();
         }
-        zkh.a((Bitmap)localObject3);
-        zkh.a(localException1);
-        if (jdField_a_of_type_Zmn.a()) {
+        zoc.a((Bitmap)localObject3);
+        zoc.a(localException1);
+        if (jdField_a_of_type_Zqi.a()) {
           if (QLog.isColorLevel()) {
             QLog.d("ShortVideoUtils", 2, "generate files mFFmpeg is running!");
           }
@@ -185,8 +185,8 @@ public class ShortVideoUtils$WatermarkVideoRunnable
             jdField_a_of_type_JavaLangObject.wait();
             try
             {
-              jdField_a_of_type_Zmn.a(this.jdField_c_of_type_JavaLangString);
-              jdField_a_of_type_Zmn.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Zmv);
+              jdField_a_of_type_Zqi.a(this.jdField_c_of_type_JavaLangString);
+              jdField_a_of_type_Zqi.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Zqq);
               return;
             }
             catch (Exception localException2) {}

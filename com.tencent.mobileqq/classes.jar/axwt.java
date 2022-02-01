@@ -1,32 +1,44 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.Random;
 
 public class axwt
-  implements View.OnClickListener
+  extends bcpv
 {
-  public axwt(NearbyProfileFragment paramNearbyProfileFragment, String paramString, int paramInt) {}
+  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  Random jdField_a_of_type_JavaUtilRandom = new Random();
   
-  public void onClick(View paramView)
+  public axwt(NearbyAppInterface paramNearbyAppInterface)
   {
-    Object localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.startActivity((Intent)localObject);
-    bcsy localbcsy = new bcsy(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.app).a("dc00899").b("grp_lbs").c("face_score_vip").d("expert_click");
-    String str1 = "" + (NearbyProfileFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment).gender + 1);
-    String str2 = "" + this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.e == 3) {}
-    for (localObject = "2";; localObject = "1")
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
+    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
+  }
+  
+  public AppInterface a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  }
+  
+  protected void a()
+  {
+    try
     {
-      localbcsy.a(new String[] { "", str1, str2, localObject }).a();
-      EventCollector.getInstance().onViewClicked(paramView);
+      super.a();
+      super.a(new bcrd(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface));
+      super.d();
       return;
     }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    super.b(paramToServiceMsg, null, axwu.class);
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import java.util.ArrayList;
-import zmn;
+import zqi;
 
 public class FFmpeg$5
   extends ArrayList<Object>
 {
-  public FFmpeg$5(zmn paramzmn, ArrayList paramArrayList, String paramString)
+  public FFmpeg$5(zqi paramzqi, ArrayList paramArrayList, String paramString)
   {
     add(this.val$tsList);
     add(this.val$outMedia);

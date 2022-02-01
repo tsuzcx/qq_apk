@@ -1,8 +1,16 @@
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class awfo
 {
-  public int a;
-  public int b;
-  public int c;
+  static HookMethodCallback jdField_a_of_type_ComTencentMobileqqJavahooksdkHookMethodCallback = new awfp();
+  private static ConcurrentHashMap<Long, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  static HookMethodCallback b = new awfq();
+  
+  public static void a()
+  {
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(Thread.currentThread().getId()), Long.valueOf(0L));
+  }
 }
 
 

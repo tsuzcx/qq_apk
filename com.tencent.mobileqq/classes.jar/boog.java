@@ -1,33 +1,20 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
 
-final class boog
-  implements URLDrawable.URLDrawableListener
+public class boog
+  extends bpop
 {
-  boog(String paramString1, String paramString2, bpnl parambpnl, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper, bolv parambolv, int paramInt3) {}
+  public boog(AEMaterialProviderView paramAEMaterialProviderView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    boof.a.remove(this.jdField_b_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QComboNPaster", 2, "applyNormalPaster onLoadFialed");
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QComboNPaster", 2, "urlDrawableListener onLoadSuccessed");
+      QLog.d("AEMaterialProviderView", 2, "material list updated!");
     }
-    boof.a(paramURLDrawable, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bpnl, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper, this.jdField_a_of_type_Bolv, this.jdField_c_of_type_Int);
-    boof.a.remove(this.jdField_b_of_type_JavaLangString);
+    if (AEMaterialProviderView.a(this.a)) {
+      return;
+    }
+    this.a.a(true);
   }
 }
 

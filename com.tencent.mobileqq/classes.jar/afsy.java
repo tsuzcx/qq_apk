@@ -1,23 +1,17 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class afsy
-  implements afso
+  implements DialogInterface.OnClickListener
 {
-  public afsy(PositionActivatePage paramPositionActivatePage) {}
+  public afsy(TroopInfoActivity paramTroopInfoActivity, boolean paramBoolean) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt > 0) {
-      this.a.a.setEnabled(true);
+    if (this.jdField_a_of_type_Boolean) {
+      bdll.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
     }
-    while (paramInt > 1)
-    {
-      this.a.a.setText(2131689523);
-      return;
-      this.a.a.setEnabled(false);
-    }
-    this.a.a.setText(2131689524);
   }
 }
 

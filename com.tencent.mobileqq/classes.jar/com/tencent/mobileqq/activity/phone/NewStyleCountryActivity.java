@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.phone;
 
 import Override;
-import akdo;
-import akdp;
-import akdq;
-import akdr;
-import akds;
-import akdu;
+import akoz;
+import akpa;
+import akpb;
+import akpc;
+import akpd;
+import akpf;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -21,12 +21,12 @@ import android.view.animation.TranslateAnimation;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bgfz;
-import bgjw;
-import bgme;
-import bgoc;
-import bgod;
-import bhxy;
+import bhga;
+import bhjx;
+import bhmg;
+import bhoe;
+import bhof;
+import biyw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 import com.tencent.mobileqq.minigame.utils.AssetsUtil;
@@ -38,15 +38,15 @@ import java.util.LinkedHashMap;
 
 public class NewStyleCountryActivity
   extends RegisterNewBaseActivity
-  implements View.OnClickListener, bhxy
+  implements View.OnClickListener, biyw
 {
-  private akdr jdField_a_of_type_Akdr;
-  public akdu a;
+  private akpc jdField_a_of_type_Akpc;
+  public akpf a;
   public View a;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   public IndexView a;
   private PinnedDividerListView jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView;
-  public ArrayList<bgod> a;
+  public ArrayList<bhof> a;
   public LinkedHashMap<String, Integer> a;
   public View b;
   private View c;
@@ -60,40 +60,40 @@ public class NewStyleCountryActivity
   
   private View a(ViewGroup paramViewGroup, LayoutInflater paramLayoutInflater, boolean paramBoolean)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2131562811, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2131562845, paramViewGroup, false);
     if (paramBoolean) {
-      paramViewGroup.setPadding(paramViewGroup.getPaddingLeft(), paramViewGroup.getPaddingTop(), (int)bgme.a(BaseApplicationImpl.sApplication, 40.0F), paramViewGroup.getPaddingBottom());
+      paramViewGroup.setPadding(paramViewGroup.getPaddingLeft(), paramViewGroup.getPaddingTop(), (int)bhmg.a(BaseApplicationImpl.sApplication, 40.0F), paramViewGroup.getPaddingBottom());
     }
-    paramLayoutInflater = new akds(null);
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131365112));
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131364460));
+    paramLayoutInflater = new akpd(null);
+    paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131365158));
+    paramLayoutInflater.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131364505));
     paramViewGroup.setTag(paramLayoutInflater);
     return paramViewGroup;
   }
   
   public void a(View paramView)
   {
-    paramView = (akds)paramView.getTag();
-    if (paramView.jdField_a_of_type_Bgod != null)
+    paramView = (akpd)paramView.getTag();
+    if (paramView.jdField_a_of_type_Bhof != null)
     {
-      if ((this.jdField_a_of_type_Akdu != null) && (this.jdField_a_of_type_Akdu.isShowing()) && (!super.isFinishing())) {
-        this.jdField_a_of_type_Akdu.dismiss();
+      if ((this.jdField_a_of_type_Akpf != null) && (this.jdField_a_of_type_Akpf.isShowing()) && (!super.isFinishing())) {
+        this.jdField_a_of_type_Akpf.dismiss();
       }
-      this.jdField_b_of_type_JavaLangString = paramView.jdField_a_of_type_Bgod.c;
+      this.jdField_b_of_type_JavaLangString = paramView.jdField_a_of_type_Bhof.c;
       Intent localIntent = new Intent();
-      localIntent.putExtra("k_name", paramView.jdField_a_of_type_Bgod.jdField_b_of_type_JavaLangString);
-      localIntent.putExtra("k_code", paramView.jdField_a_of_type_Bgod.c);
+      localIntent.putExtra("k_name", paramView.jdField_a_of_type_Bhof.jdField_b_of_type_JavaLangString);
+      localIntent.putExtra("k_code", paramView.jdField_a_of_type_Bhof.c);
       setResult(-1, localIntent);
       finish();
     }
   }
   
-  public void a(View paramView, bgod parambgod)
+  public void a(View paramView, bhof parambhof)
   {
     int j = 0;
-    paramView = (akds)paramView.getTag();
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(parambgod.jdField_b_of_type_JavaLangString);
-    if ((bgjw.a(parambgod.c, this.jdField_b_of_type_JavaLangString)) && (bgjw.a(parambgod.jdField_b_of_type_JavaLangString, this.d)))
+    paramView = (akpd)paramView.getTag();
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(parambhof.jdField_b_of_type_JavaLangString);
+    if ((bhjx.a(parambhof.c, this.jdField_b_of_type_JavaLangString)) && (bhjx.a(parambhof.jdField_b_of_type_JavaLangString, this.d)))
     {
       i = 1;
       if (i == 0) {
@@ -106,7 +106,7 @@ public class NewStyleCountryActivity
       if (paramView.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != i) {
         paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(i);
       }
-      paramView.jdField_a_of_type_Bgod = parambgod;
+      paramView.jdField_a_of_type_Bhof = parambhof;
       return;
       i = 0;
       break;
@@ -136,41 +136,41 @@ public class NewStyleCountryActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131562809);
+    setContentView(2131562843);
     getWindow().setBackgroundDrawableResource(2131165781);
-    c(2131715789);
+    c(2131715898);
     b();
     a(false);
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("k_code");
     this.d = getIntent().getStringExtra("k_name");
     String[] arrayOfString = getResources().getStringArray(2130968653);
-    Object localObject = bgoc.a(AssetsUtil.getContentFromAssets(this, "internationalCode.json"));
+    Object localObject = bhoe.a(AssetsUtil.getContentFromAssets(this, "internationalCode.json"));
     paramBundle = (Bundle)localObject;
     if (localObject == null) {
       paramBundle = this.jdField_a_of_type_JavaUtilArrayList;
     }
     this.jdField_a_of_type_JavaUtilArrayList = paramBundle;
-    localObject = bgoc.a(arrayOfString, this.jdField_a_of_type_JavaUtilArrayList);
+    localObject = bhoe.a(arrayOfString, this.jdField_a_of_type_JavaUtilArrayList);
     paramBundle = (Bundle)localObject;
     if (localObject == null) {
       paramBundle = this.jdField_a_of_type_JavaUtilLinkedHashMap;
     }
     this.jdField_a_of_type_JavaUtilLinkedHashMap = paramBundle;
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131378856);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131379018);
     this.jdField_b_of_type_AndroidViewView = ((View)this.jdField_a_of_type_AndroidViewView.getParent());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131365113));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131365159));
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setDivider(null);
-    this.c = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2131561472, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
-    this.c.findViewById(2131363719).setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.c.findViewById(2131366102));
+    this.c = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2131561513, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
+    this.c.findViewById(2131363745).setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.c.findViewById(2131366151));
     this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
     this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
     this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
-    bgfz.b(this.c);
+    bhga.b(this.c);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.addHeaderView(this.c);
-    this.jdField_a_of_type_Akdr = new akdr(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Akdr);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131368550));
+    this.jdField_a_of_type_Akpc = new akpc(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Akpc);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131368623));
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(arrayOfString, true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setOnIndexChangedListener(this);
     return true;
@@ -180,17 +180,17 @@ public class NewStyleCountryActivity
   {
     if (paramView == this.jdField_a_of_type_AndroidWidgetEditText)
     {
-      this.jdField_a_of_type_Akdu = new akdu(this, this);
-      this.jdField_a_of_type_Akdu.setCanceledOnTouchOutside(true);
+      this.jdField_a_of_type_Akpf = new akpf(this, this);
+      this.jdField_a_of_type_Akpf.setCanceledOnTouchOutside(true);
       int i = this.jdField_a_of_type_AndroidViewView.getHeight();
       TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -i);
       localTranslateAnimation1.setDuration(300L);
       localTranslateAnimation1.setFillAfter(true);
-      localTranslateAnimation1.setAnimationListener(new akdo(this));
+      localTranslateAnimation1.setAnimationListener(new akoz(this));
       TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, -i, 0.0F);
       localTranslateAnimation2.setDuration(300L);
-      localTranslateAnimation2.setAnimationListener(new akdp(this, i));
-      this.jdField_a_of_type_Akdu.setOnDismissListener(new akdq(this, i, localTranslateAnimation2));
+      localTranslateAnimation2.setAnimationListener(new akpa(this, i));
+      this.jdField_a_of_type_Akpf.setOnDismissListener(new akpb(this, i, localTranslateAnimation2));
       this.jdField_b_of_type_AndroidViewView.startAnimation(localTranslateAnimation1);
     }
     for (;;)

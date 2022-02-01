@@ -1,17 +1,35 @@
-import android.graphics.Canvas;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
+import android.app.Activity;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAnimationUtils.3;
+import com.tencent.qphone.base.util.QLog;
 
 public class srp
-  implements Function1<Canvas, Unit>
+  implements Animation.AnimationListener
 {
-  public srp(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public srp(FastWebAnimationUtils.3 param3) {}
   
-  public Unit a(Canvas paramCanvas)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ReadInJoyListViewGroup.a(this.a, paramCanvas);
-    return null;
+    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationEnd");
+    paramAnimation = (AlphaAnimation)AnimationUtils.loadAnimation(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2130772186);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationRepeat");
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationStart");
   }
 }
 

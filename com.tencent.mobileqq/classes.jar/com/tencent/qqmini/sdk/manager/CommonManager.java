@@ -69,6 +69,11 @@ public class CommonManager
     }
   }
   
+  public void addActivityResultListener(IActivityResultListener paramIActivityResultListener)
+  {
+    ActivityResultManager.g().addActivityResultListener(paramIActivityResultListener);
+  }
+  
   public void fetchPeriodicCacheIfNeed(MiniAppInfo paramMiniAppInfo)
   {
     if (AppLoaderFactory.g().isMainProcess()) {

@@ -1,62 +1,89 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.vip.jsoninflate.model.AlumBasicData;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.IntentFilter;
+import android.view.KeyEvent;
+import cooperation.qzone.util.QZLog;
 
-class bmwo
-  implements AdapterView.OnItemClickListener
+public class bmwo
 {
-  bmwo(bmwn parambmwn, bmwe parambmwe) {}
+  public static String a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  public bmwq a;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
+  private boolean d;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  static
   {
-    Object localObject;
-    if (this.jdField_a_of_type_Bmwe != null)
+    jdField_a_of_type_JavaLangString = "WatchActivityManager";
+  }
+  
+  public bmwo()
+  {
+    this.jdField_a_of_type_Bmwq = new bmwq(this, null);
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.c = false;
+    this.d = false;
+  }
+  
+  private void e()
+  {
+    if (this.jdField_a_of_type_AndroidAppActivity != null)
     {
-      this.jdField_a_of_type_Bmwe.dismiss();
-      if ((this.jdField_a_of_type_Bmwe.a != null) && (paramInt < this.jdField_a_of_type_Bmwe.a.size()))
-      {
-        localObject = (bmwk)this.jdField_a_of_type_Bmwe.a.get(paramInt);
-        if (((bmwk)localObject).a != 1) {
-          break label148;
-        }
-        if ((!TextUtils.isEmpty(((bmwk)localObject).c)) && (bmwm.a(this.jdField_a_of_type_Bmwn.a) != null))
-        {
-          Intent localIntent = new Intent(bmwm.a(this.jdField_a_of_type_Bmwn.a), QQBrowserActivity.class);
-          localIntent.putExtra("url", ((bmwk)localObject).c);
-          bmwm.a(this.jdField_a_of_type_Bmwn.a).startActivity(localIntent);
-        }
-      }
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_Bmwq, localIntentFilter);
     }
-    for (;;)
+  }
+  
+  private void f()
+  {
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_Bmwq);
+    }
+  }
+  
+  public void a()
+  {
+    d();
+  }
+  
+  public void a(int paramInt, KeyEvent paramKeyEvent)
+  {
+    switch (paramInt)
     {
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    default: 
       return;
-      label148:
-      if (((bmwk)localObject).a == 2)
-      {
-        if (bmwm.a(this.jdField_a_of_type_Bmwn.a) != null)
-        {
-          if (!TextUtils.isEmpty(bmwm.a(this.jdField_a_of_type_Bmwn.a).f))
-          {
-            localObject = bmwm.a(this.jdField_a_of_type_Bmwn.a).f.replace("__ACT_TYPE__", "2001");
-            this.jdField_a_of_type_Bmwn.a.a((String)localObject);
-          }
-          if (bmwm.a(this.jdField_a_of_type_Bmwn.a) != null) {
-            this.jdField_a_of_type_Bmwn.a.a(3, bmwm.a(this.jdField_a_of_type_Bmwn.a).a, bmwm.a(this.jdField_a_of_type_Bmwn.a) + 1);
-          }
-        }
-        if (this.jdField_a_of_type_Bmwn.a.a != null) {
-          this.jdField_a_of_type_Bmwn.a.a.a();
-        }
-      }
     }
+    this.c = true;
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    e();
+  }
+  
+  public boolean a()
+  {
+    QZLog.i(jdField_a_of_type_JavaLangString, 4, "ljh, mActivityStopped = " + this.d + ", mPressScreenOff = " + this.jdField_a_of_type_Boolean + ", mPressMenuKey = " + this.c + ", mPressHomeKey = " + this.b);
+    return (this.d) && (!this.jdField_a_of_type_Boolean) && (!this.c) && (!this.b);
+  }
+  
+  public void b()
+  {
+    this.d = true;
+  }
+  
+  public void c()
+  {
+    f();
   }
 }
 

@@ -1,49 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.ThemeNoviceGuideActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class afqy
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public afqy(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public afqy(ThemeNoviceGuideActivity paramThemeNoviceGuideActivity, Looper paramLooper)
   {
-    this.a.l();
-    if (VipUtils.b(this.a.app))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    paramMessage = this.a.findViewById(2131378806);
+    if (paramMessage != null) {}
+    try
     {
-      if (this.a.jdField_a_of_type_Long != 0L) {
-        break label144;
-      }
-      paramDialogInterface = (String)this.a.jdField_a_of_type_JavaUtilHashMap.get(this.a.d);
-      if (!TextUtils.isEmpty(paramDialogInterface)) {
-        this.a.a(this.a.d, paramDialogInterface, false);
-      }
-    }
-    else
-    {
-      if ((this.a.jdField_a_of_type_Long != 0L) && (this.a.jdField_a_of_type_Long != 160L)) {
-        break label222;
-      }
-    }
-    label144:
-    label222:
-    for (paramDialogInterface = "3";; paramDialogInterface = "4")
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, nlw.a(), paramDialogInterface, "0");
+      paramMessage.setBackgroundResource(2130850582);
+      bdll.b(this.a.app, "CliOper", "", this.a.app.getCurrentAccountUin(), "theme_mall", "theme_popup", 0, 0, "", "", "", "");
       return;
-      this.a.a(this.a.d, false);
-      break;
-      if (((this.a.jdField_a_of_type_Long != 160L) && (this.a.jdField_a_of_type_Long != 1600L)) || (TextUtils.isEmpty(this.a.b))) {
-        break;
+    }
+    catch (OutOfMemoryError paramMessage)
+    {
+      for (;;)
+      {
+        QLog.e("ThemeNoviceGuideActivity", 1, "handleMessage oom e = " + paramMessage);
       }
-      paramDialogInterface = azff.a(this.a, azfl.n, this.a.jdField_a_of_type_Long);
-      this.a.a(paramDialogInterface, this.a.b, false);
-      break;
     }
   }
 }

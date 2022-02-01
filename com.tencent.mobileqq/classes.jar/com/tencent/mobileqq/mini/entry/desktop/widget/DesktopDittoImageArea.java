@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.entry.desktop.widget;
 
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import bdzx;
+import beyq;
 import com.tencent.ditto.area.DittoHost;
 import com.tencent.ditto.shell.LayoutAttrSet;
 import com.tencent.ditto.widget.DittoImageArea;
@@ -36,8 +36,8 @@ public class DesktopDittoImageArea
       return;
     }
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mFailedDrawable = bdzx.a;
-    localURLDrawableOptions.mLoadingDrawable = bdzx.a;
+    localURLDrawableOptions.mFailedDrawable = beyq.a;
+    localURLDrawableOptions.mLoadingDrawable = beyq.a;
     localURLDrawableOptions.mRequestWidth = getWidth();
     localURLDrawableOptions.mRequestHeight = getHeight();
     if (((String)localObject).endsWith(".gif")) {

@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import bowj;
+import bpye;
 import com.tencent.theme.SkinnableBitmapDrawable;
 import java.util.HashMap;
 
@@ -21,11 +21,11 @@ class AIOBusinessOperation$2$1
       for (Object localObject = new SkinnableBitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);; localObject = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap))
       {
         this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-        bowj.a().put(this.this$0.jdField_a_of_type_JavaLangString, localObject);
+        bpye.a().put(this.this$0.jdField_a_of_type_JavaLangString, localObject);
         return;
       }
     }
-    bowj.a().put(this.this$0.jdField_a_of_type_JavaLangString, null);
+    bpye.a().put(this.this$0.jdField_a_of_type_JavaLangString, null);
   }
 }
 

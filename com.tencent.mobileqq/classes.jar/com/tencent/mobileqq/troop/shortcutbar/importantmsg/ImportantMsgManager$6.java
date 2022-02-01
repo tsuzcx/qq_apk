@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.shortcutbar.importantmsg;
 
-import bfle;
-import bfli;
+import bglf;
+import bglj;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -9,7 +9,7 @@ import mqq.os.MqqHandler;
 public class ImportantMsgManager$6
   implements Runnable
 {
-  public ImportantMsgManager$6(bfle parambfle, long paramLong, bfli parambfli) {}
+  public ImportantMsgManager$6(bglf parambglf, long paramLong, bglj parambglj) {}
   
   public void run()
   {

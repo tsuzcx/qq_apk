@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aiga;
+import aipt;
 import mqq.os.MqqHandler;
-import njo;
-import njt;
+import nlj;
+import nlo;
 
 public class TroopChatPie$12$2
   implements Runnable
 {
-  public TroopChatPie$12$2(aiga paramaiga) {}
+  public TroopChatPie$12$2(aipt paramaipt) {}
   
   public void run()
   {
-    if (this.a.a.jdField_a_of_type_Njt != null) {
-      this.a.a.jdField_a_of_type_Njt.dismiss();
+    if (this.a.a.jdField_a_of_type_Nlo != null) {
+      this.a.a.jdField_a_of_type_Nlo.dismiss();
     }
     this.a.a.w(true);
     TroopChatPie.d(this.a.a).postDelayed(new TroopChatPie.12.2.1(this), 100L);
-    if (!njo.a(this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+    if (!nlj.a(this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
       TroopChatPie.e(this.a.a).postDelayed(new TroopChatPie.12.2.2(this), 200L);
     }
   }

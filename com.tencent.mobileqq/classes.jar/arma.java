@@ -1,31 +1,19 @@
 import android.content.Context;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class arma
-  extends lyi
+class arma
+  implements arlb
 {
-  public static int a(Context paramContext, String paramString)
-  {
-    return a(paramContext, "TencentDocGrayTips_ShowTimes_" + paramString, 0);
-  }
+  arma(arlz paramarlz) {}
   
-  public static long a(Context paramContext, String paramString)
+  public void a(Context paramContext)
   {
-    return a(paramContext, "TencentDocGrayTips_LastShowTime_" + paramString, 0L);
-  }
-  
-  public static void b(Context paramContext, String paramString, int paramInt)
-  {
-    a(paramContext, "TencentDocGrayTips_ShowTimes_" + paramString, paramInt);
-  }
-  
-  public static void b(Context paramContext, String paramString, long paramLong)
-  {
-    a(paramContext, "TencentDocGrayTips_LastShowTime_" + paramString, paramLong);
+    VasWebviewUtil.openQQBrowserWithoutAD(paramContext, arlz.a(this.a), -1L, null, false, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arma
  * JD-Core Version:    0.7.0.1
  */

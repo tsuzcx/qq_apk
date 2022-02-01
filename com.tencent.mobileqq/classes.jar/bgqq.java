@@ -1,28 +1,30 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-class bgqq
-  implements TextWatcher
+public abstract class bgqq
+  extends nkq
 {
-  bgqq(bgqn parambgqn, int paramInt) {}
-  
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public bgqq()
   {
-    if ((this.jdField_a_of_type_Bgqn.a.getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
+    super(false);
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    QLog.i(".troop.troop_app", 2, "clickReport errorCode = " + paramInt);
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Bgqn.a.setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
-      this.jdField_a_of_type_Bgqn.a.setSelection(this.jdField_a_of_type_Int - 1);
+      a(bool);
+      return;
     }
   }
+  
+  protected abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgqq
  * JD-Core Version:    0.7.0.1
  */

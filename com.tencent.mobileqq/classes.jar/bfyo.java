@@ -1,8 +1,7 @@
-import android.view.KeyEvent;
-
-public abstract interface bfyo
+public class bfyo
 {
-  public abstract boolean a(int paramInt, KeyEvent paramKeyEvent);
+  public static final String a = antf.ba + "troop/homework/";
+  public static final String b = a + "upload/";
 }
 
 

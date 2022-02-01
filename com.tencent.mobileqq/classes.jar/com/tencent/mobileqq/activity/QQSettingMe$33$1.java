@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aeyz;
+import afie;
 
 public class QQSettingMe$33$1
   implements Runnable
 {
-  public QQSettingMe$33$1(aeyz paramaeyz) {}
+  public QQSettingMe$33$1(afie paramafie) {}
   
   public void run()
   {

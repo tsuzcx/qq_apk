@@ -1,38 +1,52 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
 
 class bnqr
-  implements Observer<bnpn>
+  extends Handler
 {
-  bnqr(bnqm parambnqm) {}
-  
-  public void a(@Nullable bnpn parambnpn)
+  bnqr(bnqp parambnqp, Looper paramLooper)
   {
-    if (parambnpn == null) {
-      return;
-    }
-    bnpk localbnpk;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int j = 0;
+    if (this.a.getCallback() == null) {}
     do
     {
-      Iterator localIterator;
       do
       {
-        localIterator = bnqm.a(this.a).iterator();
-      } while (!localIterator.hasNext());
-      localbnpk = (bnpk)localIterator.next();
-      if (!localbnpk.jdField_a_of_type_JavaLangString.equals(parambnpn.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id)) {
-        break;
+        return;
+      } while ((paramMessage.what != 1000) || (!bnqp.a(this.a).jdField_a_of_type_Boolean) || (!bnqp.a(this.a)));
+      int k = (int)((float)(SystemClock.uptimeMillis() - this.a.jdField_a_of_type_Long) / (1000.0F / bnqp.a(this.a).jdField_a_of_type_Int));
+      int i;
+      if ((bnqp.b(this.a)) && (bnqp.a(this.a).jdField_a_of_type_Bnqv.a() != 0)) {
+        i = k % bnqp.a(this.a).jdField_a_of_type_Bnqv.a();
       }
-      if (localbnpk.jdField_a_of_type_Int != parambnpn.jdField_a_of_type_Int)
+      for (;;)
       {
-        localbnpk.jdField_a_of_type_Int = parambnpn.jdField_a_of_type_Int;
-        bnqm.a(this.a).notifyItemChanged(bnqm.a(this.a).indexOf(localbnpk) + 1);
+        bnqp.a(this.a).jdField_a_of_type_Bnqv.a(i);
+        if (j != 0) {
+          break;
+        }
+        long l = 1000 / bnqp.a(this.a).jdField_a_of_type_Int;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, (int)l);
+        this.a.invalidateSelf();
+        return;
+        i = k;
+        if (k >= bnqp.a(this.a).jdField_a_of_type_Bnqv.a())
+        {
+          j = 1;
+          i = k;
+        }
       }
-    } while ((localbnpk.jdField_a_of_type_Int != 2) || (!localbnpk.jdField_a_of_type_JavaLangString.equals(bnqm.a(this.a))));
-    bnqm.a(this.a).b(localbnpk);
+      this.a.stop();
+      this.a.invalidateSelf();
+    } while (this.a.jdField_a_of_type_Bnqs == null);
+    this.a.jdField_a_of_type_Bnqs.onAnimationFinished();
   }
 }
 

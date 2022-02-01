@@ -1,22 +1,54 @@
-import android.text.TextUtils;
-import java.util.HashMap;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.ArConfigService.6.1;
+import com.tencent.mobileqq.ar.ArConfigService.6.2;
+import com.tencent.mobileqq.ar.ArConfigService.6.3;
+import com.tencent.qphone.base.util.QLog;
 
-class apjd
-  implements aplk
+public class apjd
+  implements appt
 {
-  apjd(apix paramapix, long paramLong) {}
+  public apjd(ArConfigService paramArConfigService) {}
   
-  public void a(String paramString1, long paramLong, String paramString2, String paramString3)
+  public void a()
   {
-    if ((paramLong > 0L) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
-    {
-      paramString1 = this.jdField_a_of_type_Apix.a + "_" + paramLong + "_" + paramString1;
-      apix.a(this.jdField_a_of_type_Apix).put(paramString1, paramString2);
-      apix.b(this.jdField_a_of_type_Apix).put(paramString1, paramString3);
-      apix.c(this.jdField_a_of_type_Apix).put(this.jdField_a_of_type_Apix.a, String.valueOf(paramLong));
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, "mARCloudResourceDownloadCallback");
     }
-    apix.a(this.jdField_a_of_type_Apix, paramString2, paramString3, this.jdField_a_of_type_Long);
   }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    }
+    ArConfigService.c(this.a, (int)(100L * paramLong1 / paramLong2));
+    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
+    if (!ArConfigService.e(this.a)) {
+      ArConfigService.a(this.a).post(new ArConfigService.6.1(this, i));
+    }
+  }
+  
+  public void a(boolean paramBoolean, appu paramappu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete mARCloudResourceDownloadCallback result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean)
+    {
+      ArConfigService.d(this.a, true);
+      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
+        ArConfigService.a(this.a).post(new ArConfigService.6.2(this));
+      }
+    }
+    while (ArConfigService.e(this.a)) {
+      return;
+    }
+    ArConfigService.a(this.a).post(new ArConfigService.6.3(this));
+    ArConfigService.a(this.a, true);
+  }
+  
+  public void b() {}
 }
 
 

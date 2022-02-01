@@ -1,24 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.subtitles.EncodeRunnable;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-class alzr
-  implements View.OnClickListener
+public class alzr
 {
-  alzr(alzq paramalzq, alzp paramalzp, int paramInt) {}
+  public int a;
+  public long a;
+  public Handler a;
+  public bbjl a;
+  public EncodeRunnable a;
+  public INetInfoHandler a;
+  public Thread a;
+  public WeakReference<alyl> a;
+  public HashMap<Integer, alzq> a;
+  public boolean a;
+  public int b = 0;
+  public long b;
+  public boolean b;
+  public int c;
+  public long c;
+  public boolean c;
+  public int d;
+  public int e;
   
-  public void onClick(View paramView)
+  alzr()
   {
-    if (this.jdField_a_of_type_Alzp.a.isChecked()) {}
-    for (((aohd)this.jdField_a_of_type_Alzq.a.get(this.jdField_a_of_type_Int)).a = false;; ((aohd)this.jdField_a_of_type_Alzq.a.get(this.jdField_a_of_type_Int)).a = true)
-    {
-      this.jdField_a_of_type_Alzq.notifyItemChanged(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Alzq.a();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
 }
 

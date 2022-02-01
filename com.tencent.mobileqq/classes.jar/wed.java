@@ -1,8 +1,16 @@
-public abstract interface wed
+import com.tencent.biz.qqcircle.widgets.feed.QCircleGridFeedItemView;
+import com.tencent.qphone.base.util.QLog;
+
+public class wed
+  extends vrh
 {
-  public abstract void a(wcl paramwcl);
+  public wed(QCircleGridFeedItemView paramQCircleGridFeedItemView, int paramInt) {}
   
-  public abstract void b(wcl paramwcl);
+  public void a(int paramInt, vrd paramvrd)
+  {
+    super.a(paramInt, paramvrd);
+    QLog.d("QCircleGridFeedItemView1", 4, "pos:" + this.jdField_a_of_type_Int + "state callback:" + paramInt);
+  }
 }
 
 

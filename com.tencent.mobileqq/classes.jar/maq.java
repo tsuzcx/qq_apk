@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.av.ui.AVActivity;
+import android.graphics.PointF;
+import java.util.ArrayList;
 
-public class maq
-  implements DialogInterface.OnDismissListener
+class maq
 {
-  public maq(AVActivity paramAVActivity) {}
+  int jdField_a_of_type_Int;
+  ArrayList<PointF> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  mep jdField_a_of_type_Mep;
+  byte[] jdField_a_of_type_ArrayOfByte;
+  int b;
+  int c;
+  int d;
+  int e;
+  int f;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.i();
-  }
+  maq(map parammap) {}
 }
 
 

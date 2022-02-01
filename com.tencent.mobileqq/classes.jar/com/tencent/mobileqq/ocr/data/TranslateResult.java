@@ -8,7 +8,7 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.Pair;
-import ayhq;
+import azaj;
 import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImageRecord;
 import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImageTranslateRspResult;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -24,7 +24,7 @@ import java.util.List;
 public class TranslateResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<TranslateResult> CREATOR = new ayhq();
+  public static final Parcelable.Creator<TranslateResult> CREATOR = new azaj();
   public int a;
   public String a;
   public List<TranslateResult.Record> a;

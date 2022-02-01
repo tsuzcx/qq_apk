@@ -1,28 +1,22 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import tencent.im.qqwallet.QWalletPubAdReport.QueryReq;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class akmj
-  implements blqq
+public class akmj
+  extends anuw
 {
-  akmj(akmh paramakmh, BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, long paramLong) {}
+  public akmj(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void a(int paramInt, String... paramVarArgs)
+  protected void onUpdateAvatar(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null)) {
-      return;
+    if (!paramBoolean)
+    {
+      int i = 2131717917;
+      if (paramInt == 1503) {
+        i = 2131698292;
+      }
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, i, 0).b(this.a.getTitleBarHeight());
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("QWalletGdtAdManager", 2, "get getPskeyAsync success");
-    }
-    paramVarArgs = akmh.a(this.jdField_a_of_type_Akmh, paramVarArgs[0], this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), aklf.class);
-    localNewIntent.putExtra("cmd", "ReportSvc.Query");
-    localNewIntent.putExtra("data", bguc.a(paramVarArgs.toByteArray()));
-    localNewIntent.setObserver(new akmk(this));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
   }
 }
 

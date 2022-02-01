@@ -2,14 +2,14 @@ package com.tencent.biz.pubaccount.readinjoy.rebuild;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import pxk;
-import qqt;
-import snh;
+import ppu;
+import qjh;
+import sel;
 
 public class FeedItemCell$8
   implements Runnable
 {
-  public FeedItemCell$8(qqt paramqqt, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt, Object paramObject, boolean paramBoolean) {}
+  public FeedItemCell$8(qjh paramqjh, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt, Object paramObject, boolean paramBoolean) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class FeedItemCell$8
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      localArrayList.add(((pxk)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
+      localArrayList.add(((ppu)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
       i += 1;
     }
     StringBuilder localStringBuilder;

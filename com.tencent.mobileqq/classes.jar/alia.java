@@ -1,27 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
 
-public class alia
-  implements View.OnClickListener
+class alia
+  extends BroadcastReceiver
 {
-  public alia(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
-  
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.l();
-    if (((!QLog.isColorLevel()) || (!bgmg.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()))) || (alin.a == 1)) {
-      alio.b("", "0X8005F5B", "0");
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkPubicEventWrap", 2, "--VolumeReceiver---" + paramIntent.getAction());
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      alio.b("", "0X8005F5B", "1");
-    }
+    alhw.b(alhw.a());
   }
 }
 

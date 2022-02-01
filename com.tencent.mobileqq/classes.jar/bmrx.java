@@ -1,34 +1,51 @@
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import org.json.JSONObject;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-class bmrx
-  implements bmry
+public class bmrx
 {
-  bmrx(bmrw parambmrw) {}
+  public static final List<String> a = new ArrayList(Arrays.asList(new String[] { "4", "5", "7" }));
+  public static final List<String> b = new ArrayList(Arrays.asList(new String[] { "1", "4", "5", "7" }));
+  public static final List<String> c = new ArrayList(Arrays.asList(new String[] { "2", "3", "6", "", null }));
+  public static final List<String> d = new ArrayList(Arrays.asList(new String[] { "2", "3", "", null }));
+  public static final List<String> e = new ArrayList(Arrays.asList(new String[] { "2", "3" }));
+  public static final List<String> f = new ArrayList(Arrays.asList(new String[] { "6" }));
   
-  public void a(boolean paramBoolean, String paramString)
+  public static void a(Bundle paramBundle, bmry parambmry)
   {
-    if (paramBoolean)
+    ArrayList localArrayList = new ArrayList();
+    for (Object localObject = parambmry.getClass(); localObject != null; localObject = ((Class)localObject).getSuperclass()) {
+      localArrayList.addAll(Arrays.asList(((Class)localObject).getDeclaredFields()));
+    }
+    int i = 0;
+    if (i < localArrayList.size())
     {
-      JSONObject localJSONObject = this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.a.jdField_a_of_type_Bmru.c, this.a.a.jdField_a_of_type_Int, this.a.a.b, "uploaded", this.a.a.jdField_a_of_type_JavaLangString, 0);
-      try
+      localObject = (Field)localArrayList.get(i);
+      String str1 = ((Field)localObject).getName();
+      String str2 = ((Field)localObject).getType().getSimpleName();
+      QLog.i("HbInfo", 2, "key = " + str1 + " tname = " + str2);
+      String str3 = paramBundle.getString(str1);
+      if (str3 == null) {}
+      for (;;)
       {
-        localJSONObject.put("result", 0);
-        localJSONObject.put("progress", 1.0D);
-        localJSONObject.put("coverurl", paramString);
-        QLog.e("TroopHWJsPlugin", 2, "upload thumb success:" + localJSONObject.toString());
-        this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.a.jdField_a_of_type_Bmru.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("TroopHWJsPlugin", 2, "upload thumb exception:", paramString);
-        return;
+        i += 1;
+        break;
+        try
+        {
+          QLog.i("HbInfo", 2, "set " + str1 + " = " + str3);
+          if (str2.equals("String")) {
+            ((Field)localObject).set(parambmry, str3);
+          }
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
       }
     }
-    QLog.e("TroopHWJsPlugin", 1, "upload thumb failed!");
-    this.a.b(-1);
   }
 }
 

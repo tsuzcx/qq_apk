@@ -1,12 +1,10 @@
-import android.view.View;
-
-public abstract interface anxl
+class anxl
 {
-  public abstract void a(View paramView, long paramLong, int paramInt1, int paramInt2);
+  private static final anxi a = new anxi(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anxl
  * JD-Core Version:    0.7.0.1
  */

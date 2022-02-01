@@ -1,47 +1,25 @@
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
-class book
-  implements bqfz
+public class book
+  implements Animator.AnimatorListener
 {
-  book(booj parambooj) {}
+  public book(AEProviderContainerView paramAEProviderContainerView) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    synchronized (booj.a(this.a))
-    {
-      if (paramPtvTemplateInfo.id.equals(booj.a(this.a).id))
-      {
-        booj.a(this.a).downloading = true;
-        booj.a(this.a, 1.0F * paramInt / 100.0F);
-        booj.a(this.a, 1);
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AEProviderContainerView", 2, "panel closed");
     }
   }
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    synchronized (booj.a(this.a))
-    {
-      if (paramPtvTemplateInfo.id.equals(booj.a(this.a).id))
-      {
-        booj.a(this.a).downloading = false;
-        booj.a(this.a).usable = paramBoolean;
-      }
-      if (paramBoolean)
-      {
-        if (booj.a(this.a).id.equals(paramPtvTemplateInfo.id))
-        {
-          booj.a(this.a, 3);
-          booj.a(this.a, 1.0F);
-          this.a.b();
-        }
-        return;
-      }
-      this.a.a(4);
-      booj.a(this.a, 2);
-    }
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

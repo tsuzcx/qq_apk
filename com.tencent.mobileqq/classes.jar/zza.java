@@ -1,9 +1,4 @@
-import java.util.List;
-
-public abstract interface zza<E>
-{
-  public abstract void a(List<E> paramList);
-}
+class zza {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

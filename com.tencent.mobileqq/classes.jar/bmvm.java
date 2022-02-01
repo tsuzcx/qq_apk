@@ -1,32 +1,17 @@
-import android.graphics.drawable.Drawable;
-import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
-import cooperation.vip.vipcomponent.util.VipResourcesListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qzone.QzonePluginProxyActivity.4.1;
 
 public class bmvm
+  implements DialogInterface.OnDismissListener
 {
-  public static bmvm a;
+  public bmvm(QzonePluginProxyActivity.4.1 param1) {}
   
-  public static bmvm a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new bmvm();
-      }
-      return a;
+    if (this.a.this$0.a != null) {
+      this.a.this$0.a.onDismiss(paramDialogInterface);
     }
-    finally {}
-  }
-  
-  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, VipResourcesListener paramVipResourcesListener)
-  {
-    return QzoneHuangzuanVipIconShow.getInstance().getLayers(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString1, paramInt3, paramInt4, paramString2, paramVipResourcesListener, 0);
-  }
-  
-  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt3, VipResourcesListener paramVipResourcesListener)
-  {
-    return a(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString, paramInt3, 100, null, paramVipResourcesListener);
   }
 }
 

@@ -86,7 +86,7 @@ public class TPCodecUtils
     mIsLocalCacheEnabled = false;
     mNeedToReprobeDecoderCapability = true;
     mNeedToReprobeHDRCapability = true;
-    mCapabilityVersion = "2.5.0.1085.full";
+    mCapabilityVersion = "2.5.0.1086.full";
     mHWCodecCapList = new ArrayList();
     mSoftCodecCapList = new ArrayList();
     mffmpegVCodecCapList = new ArrayList();

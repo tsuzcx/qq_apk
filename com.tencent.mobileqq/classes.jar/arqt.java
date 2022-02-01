@@ -1,38 +1,41 @@
-import com.tencent.mobileqq.emosm.emosearch.EmotionSearchItem;
-import java.util.List;
+import com.tencent.TMG.utils.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arqt
 {
-  int jdField_a_of_type_Int;
-  arqu jdField_a_of_type_Arqu;
-  List<EmotionSearchItem> jdField_a_of_type_JavaUtilList;
+  public String a = anzj.a(2131713625);
+  public String b = anzj.a(2131713632);
+  public String c = anzj.a(2131713628);
+  public String d = anzj.a(2131713630);
+  public String e = anzj.a(2131713623);
   
-  public arqt(int paramInt)
+  public static arqt a(araj[] paramArrayOfaraj)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public List<EmotionSearchItem> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Arqu == null) {
-      return false;
+    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0)) {
+      return null;
     }
-    return this.jdField_a_of_type_Arqu.a;
+    arqt localarqt = new arqt();
+    try
+    {
+      paramArrayOfaraj = new JSONObject(paramArrayOfaraj[0].a).optJSONObject("MyFileNameConfig");
+      localarqt.a = paramArrayOfaraj.optString("tdfileTabName");
+      localarqt.b = paramArrayOfaraj.optString("wyfileTabName");
+      localarqt.c = paramArrayOfaraj.optString("tdlistTabviewName");
+      localarqt.d = paramArrayOfaraj.optString("createTXDocTitle");
+      localarqt.e = paramArrayOfaraj.optString("safeShareToastWording");
+      return localarqt;
+    }
+    catch (JSONException paramArrayOfaraj)
+    {
+      QLog.e("TencentDocMyFileNameBean", 1, paramArrayOfaraj.getLocalizedMessage(), paramArrayOfaraj);
+    }
+    return localarqt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arqt
  * JD-Core Version:    0.7.0.1
  */

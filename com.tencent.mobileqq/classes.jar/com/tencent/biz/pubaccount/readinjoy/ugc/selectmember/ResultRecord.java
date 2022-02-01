@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.selectmember;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import rqt;
+import rhp;
 
 public class ResultRecord
   implements Parcelable
 {
-  public static final Parcelable.Creator<ResultRecord> CREATOR = new rqt();
+  public static final Parcelable.Creator<ResultRecord> CREATOR = new rhp();
   private int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString;
   private String b;

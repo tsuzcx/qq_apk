@@ -1,19 +1,13 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
 
 public class ojw
-  implements bkhw
+  implements pff
 {
-  public ojw(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public ojw(ReadInJoyChannelActivity paramReadInJoyChannelActivity, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(pfh parampfh)
   {
-    ReadInJoySettingActivity.c(this.a).d(paramInt);
-    ((TextView)this.a.findViewById(2131372559)).setText(ReadInJoySettingActivity.a(this.a)[paramInt]);
-    pha.a(Integer.toString(paramInt));
-    oat.a(null, "", "0X8007416", "0X8007416", 0, 0, Integer.toString(paramInt), "", "", "", false);
-    ReadInJoySettingActivity.c(this.a).cancel();
+    parampfh.h(this.jdField_a_of_type_Int);
   }
 }
 

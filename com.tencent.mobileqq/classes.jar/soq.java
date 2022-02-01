@@ -1,15 +1,12 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParserWithHotReload.IHotReloadChangedObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class soq
-  implements ProteusParserWithHotReload.IHotReloadChangedObserver
+  implements View.OnClickListener
 {
-  soq(snh paramsnh) {}
+  soq(sop paramsop) {}
   
-  public void onHotReloadChanged(Context paramContext, String paramString1, String paramString2)
-  {
-    this.a.notifyDataSetChanged();
-  }
+  public void onClick(View paramView) {}
 }
 
 

@@ -1,11 +1,23 @@
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.AppRuntime;
+
 class sft
-  implements spk
+  extends aohg
 {
-  sft(sfq paramsfq) {}
+  sft(sel paramsel) {}
   
-  public void a()
+  protected void a()
   {
-    this.a.g();
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    if (prz.a(this.a.a(), str) < qxc.d)
+    {
+      this.a.a.c(6);
+      return;
+    }
+    QQToast.a(this.a.a(), 0, this.a.a().getString(2131717314), 0).a();
   }
 }
 

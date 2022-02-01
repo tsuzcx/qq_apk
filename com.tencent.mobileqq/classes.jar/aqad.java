@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardMobileInfo;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
-public final class aqad
-  implements Parcelable.Creator<CardMobileInfo>
+public class aqad
 {
-  public CardMobileInfo a(Parcel paramParcel)
-  {
-    return new CardMobileInfo(paramParcel);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   
-  public CardMobileInfo[] a(int paramInt)
-  {
-    return new CardMobileInfo[paramInt];
-  }
+  public aqad(aqab paramaqab) {}
 }
 
 

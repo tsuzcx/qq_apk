@@ -1,47 +1,42 @@
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.app.MobileQQ;
+import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qzone.webviewwrapper.QzoneWebViewRuntime;
 
 public class bnqc
-  extends QIPCModule
 {
-  private bnqc()
-  {
-    super("AECameraLaunchServer");
-  }
+  private static bnqc jdField_a_of_type_Bnqc;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private QzoneWebViewRuntime jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime;
   
   public static bnqc a()
   {
-    return bnqe.a();
+    if (jdField_a_of_type_Bnqc == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Bnqc == null) {
+        jdField_a_of_type_Bnqc = new bnqc();
+      }
+      return jdField_a_of_type_Bnqc;
+    }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public QzoneWebViewRuntime a()
   {
-    QLog.d("AECameraLaunchServer", 1, "in launch ae camera onCall.");
-    if (MobileQQ.sMobileQQ != null)
+    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (Build.VERSION.SDK_INT < 21)
+      if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime == null)
       {
-        QQToast.a(MobileQQ.sMobileQQ, MobileQQ.sMobileQQ.getResources().getString(2131716315), 1).a();
-        return null;
+        QzoneWebViewRuntime localQzoneWebViewRuntime = new QzoneWebViewRuntime(BaseApplicationImpl.getApplication(), "qzonelive");
+        localQzoneWebViewRuntime.onCreate(null);
+        this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime = localQzoneWebViewRuntime;
       }
-      paramInt = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", bnqb.a.a());
-      if (paramInt == bnqb.a.a()) {
-        paramBundle.putInt("VIDEO_STORY_JUMP_TO_TYPE", 1);
-      }
-      paramBundle.putInt("AECAMERA_MODE", 200);
-      paramBundle.putInt("VIDEO_STORY_FROM_TYPE", paramInt);
-      paramBundle.putString("KEY_CURRENT_SELECT_ID", paramBundle.getString("widgetid"));
-      bnqf.a(MobileQQ.sMobileQQ, paramBundle);
-      return null;
+      return this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime;
     }
-    QLog.e("AECameraLaunchServer", 1, "no mobile qq.");
-    return null;
+  }
+  
+  public void a(QzoneWebViewRuntime paramQzoneWebViewRuntime)
+  {
+    this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime = paramQzoneWebViewRuntime;
   }
 }
 

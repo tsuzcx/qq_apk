@@ -3,16 +3,16 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import bcst;
-import bdia;
-import bdit;
-import bdkv;
+import bdll;
+import beav;
+import bebo;
+import bedq;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class TeamWorkFileImportHandler$2
   implements Runnable
 {
-  public TeamWorkFileImportHandler$2(bdia parambdia, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  public TeamWorkFileImportHandler$2(beav parambeav, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
@@ -21,23 +21,23 @@ public class TeamWorkFileImportHandler$2
     for (;;)
     {
       return;
-      Object localObject = bdit.a(this.a, this.this$0.app.getCurrentAccountUin());
+      Object localObject = bebo.a(this.a, this.this$0.app.getCurrentAccountUin());
       if (localObject != null)
       {
-        bool = bdia.a(this.this$0, (String)localObject, this.a);
+        bool = beav.a(this.this$0, (String)localObject, this.a);
         if (!bool) {
           break label163;
         }
-        bcst.b(this.this$0.app, "dc00898", "", "", "0X80098F9", "0X80098F9", 0, 0, "", "", "", "");
+        bdll.b(this.this$0.app, "dc00898", "", "", "0X80098F9", "0X80098F9", 0, 0, "", "", "", "");
       }
       label163:
-      while ((!bool) && (bdia.a(this.this$0) != null))
+      while ((!bool) && (beav.a(this.this$0) != null))
       {
-        localObject = bdia.a(this.this$0).obtainMessage(8002);
+        localObject = beav.a(this.this$0).obtainMessage(8002);
         ((Message)localObject).obj = this.a;
-        bdia.a(this.this$0).sendMessage((Message)localObject);
+        beav.a(this.this$0).sendMessage((Message)localObject);
         return;
-        bdkv.a("TeamWorkFileImportHandler", "import fail", "local file dataLine parse no result string", this.a.k);
+        bedq.a("TeamWorkFileImportHandler", "import fail", "local file dataLine parse no result string", this.a.k);
       }
     }
   }

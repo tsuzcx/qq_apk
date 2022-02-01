@@ -1,33 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
+import java.net.URL;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
-public class aoop
-  extends pmn
-  implements plz, pma, pmb
+public final class aoop
+  implements HostnameVerifier
 {
-  public void a() {}
+  public aoop(boolean paramBoolean, URL paramURL) {}
   
-  public void a(MessageRecord paramMessageRecord)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    c();
+    return (this.jdField_a_of_type_Boolean) || (HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaNetURL.getHost(), paramSSLSession));
   }
-  
-  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
-  {
-    c();
-  }
-  
-  public void ar_()
-  {
-    c();
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    c();
-  }
-  
-  public void c() {}
 }
 
 

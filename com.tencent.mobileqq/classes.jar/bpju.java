@@ -1,19 +1,28 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.TextView;
+import dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel;
 
-class bpju
-  implements View.OnFocusChangeListener
+public class bpju
+  implements Animator.AnimatorListener
 {
-  bpju(bpjo parambpjo) {}
+  public bpju(AEEditorTextControlPanel paramAEEditorTextControlPanel, TextView paramTextView) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.a(this.a.a.b(), true);
-    }
-    yqp.b("EditTextDialog", "onFocusChange:" + paramBoolean);
+    AEEditorTextControlPanel.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel).c();
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    AEEditorTextControlPanel.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel).c();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

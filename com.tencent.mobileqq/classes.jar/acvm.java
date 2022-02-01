@@ -1,19 +1,8 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
+import android.view.View;
 
-class acvm
-  implements acvn
+public abstract interface acvm
 {
-  acvm(acvl paramacvl, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq) {}
-  
-  public ToServiceMsg a()
-  {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Acvl.a.createToServiceMsg("PbMessageSvc.PbMsgReadedReport");
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray());
-    localToServiceMsg.setEnableFastResend(true);
-    return localToServiceMsg;
-  }
+  public abstract void reportImpression(View paramView);
 }
 
 

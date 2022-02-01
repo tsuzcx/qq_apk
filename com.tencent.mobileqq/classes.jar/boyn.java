@@ -1,13 +1,19 @@
-import android.app.Activity;
-import com.tencent.common.app.AppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface boyn
+class boyn
+  implements View.OnClickListener
 {
-  public abstract Activity a();
+  boyn(boyk paramboyk) {}
   
-  public abstract AppInterface a();
-  
-  public abstract void a();
+  public void onClick(View paramView)
+  {
+    boyk.a(this.a).setText(null);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

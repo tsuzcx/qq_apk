@@ -1,30 +1,42 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import android.location.Location;
+import android.location.LocationListener;
+import android.os.Bundle;
+import java.util.List;
 
-public abstract class zcd
+class zcd
+  implements LocationListener
 {
-  public final int a;
-  public final String a;
-  public final int b;
-  public String b;
+  zcd(zbz paramzbz) {}
   
-  public zcd(int paramInt1, String paramString, int paramInt2)
+  public void onLocationChanged(Location paramLocation)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
+    if (paramLocation != null)
+    {
+      yuk.a("DoodleEmojiManager", "onLocationChanged, location : %s", paramLocation);
+      if (this.a.b.size() >= 10)
+      {
+        this.a.b.remove(0);
+        yuk.b("DoodleEmojiManager", "onLocationChanged, LocationList size > 5, remove the first location.");
+      }
+      this.a.b.add(new Location(paramLocation));
+      return;
+    }
+    yuk.d("DoodleEmojiManager", "onLocationChanged, location is null.");
   }
   
-  @NonNull
-  public abstract Class<? extends zce> a();
-  
-  @NonNull
-  public abstract zce a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  public boolean a()
+  public void onProviderDisabled(String paramString)
   {
-    return false;
+    yuk.a("DoodleEmojiManager", "onProviderDisabled, provider: %s .", paramString);
+  }
+  
+  public void onProviderEnabled(String paramString)
+  {
+    yuk.a("DoodleEmojiManager", "onProviderEnabled, provider: %s .", paramString);
+  }
+  
+  public void onStatusChanged(String paramString, int paramInt, Bundle paramBundle)
+  {
+    yuk.a("DoodleEmojiManager", "onStatusChanged, provider: %s , status: %s .", paramString, Integer.valueOf(paramInt));
   }
 }
 

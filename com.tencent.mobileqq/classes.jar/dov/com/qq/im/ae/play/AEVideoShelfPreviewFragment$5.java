@@ -1,9 +1,9 @@
 package dov.com.qq.im.ae.play;
 
 import android.text.TextUtils;
-import bnqb;
-import bnzb;
-import bpgu;
+import born;
+import bpam;
+import bqip;
 import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
 import java.io.File;
 import java.util.Timer;
@@ -24,7 +24,7 @@ class AEVideoShelfPreviewFragment$5
         if (localFile.exists())
         {
           localFile.delete();
-          bnzb.b(AEVideoShelfPreviewFragment.b(), "onCompletion---delete temp silent file because user cancel generation: " + (String)localObject);
+          bpam.b(AEVideoShelfPreviewFragment.b(), "onCompletion---delete temp silent file because user cancel generation: " + (String)localObject);
         }
       }
       if (!TextUtils.isEmpty(AEVideoShelfPreviewFragment.a(this.this$0)))
@@ -33,7 +33,7 @@ class AEVideoShelfPreviewFragment$5
         if (((File)localObject).exists())
         {
           ((File)localObject).delete();
-          bnzb.b(AEVideoShelfPreviewFragment.b(), "onCompletion---delete final file because user cancel generation: " + AEVideoShelfPreviewFragment.a(this.this$0));
+          bpam.b(AEVideoShelfPreviewFragment.b(), "onCompletion---delete final file because user cancel generation: " + AEVideoShelfPreviewFragment.a(this.this$0));
         }
       }
       AEVideoShelfPreviewFragment.b(this.this$0, false);
@@ -53,7 +53,7 @@ class AEVideoShelfPreviewFragment$5
         AEVideoShelfPreviewFragment.c(this.this$0, false);
         AEVideoShelfPreviewFragment.a(this.this$0.getActivity(), false);
       }
-      bpgu.a(this.this$0.getActivity(), AEVideoShelfPreviewFragment.a(this.this$0), this.this$0.a(), bnqb.b(this.this$0.getActivity()), "caller_aecamera");
+      bqip.a(this.this$0.getActivity(), AEVideoShelfPreviewFragment.a(this.this$0), this.this$0.a(), born.b(this.this$0.getActivity()), "caller_aecamera");
       return;
       AEVideoShelfPreviewFragment.b(this.this$0);
     }

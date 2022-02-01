@@ -1,8 +1,32 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.launchbean.QCirclePolymerizationBean;
+import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter;
+import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter.MultiPicAdapter;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import qqcircle.QQCircleFeedBase.StImageBusiData;
+import qqcircle.QQCircleFeedBase.StSimulateData;
 
-public abstract interface wds
+public class wds
+  implements View.OnClickListener
 {
-  public abstract void a(ArrayList<wcm> paramArrayList);
+  public wds(QCircleFeedItemPicPresenter.MultiPicAdapter paramMultiPicAdapter, QQCircleFeedBase.StImageBusiData paramStImageBusiData) {}
+  
+  public void onClick(View paramView)
+  {
+    QQCircleFeedBase.StSimulateData localStSimulateData = new QQCircleFeedBase.StSimulateData();
+    localStSimulateData.material_id.set(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StImageBusiData.simulate_date.material_id.get());
+    localStSimulateData.simulate_name.set(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StImageBusiData.simulate_date.simulate_name.get());
+    localStSimulateData.simulate_schema.set(brdx.a(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StImageBusiData.simulate_date.material_id.get(), ""));
+    QCirclePolymerizationBean localQCirclePolymerizationBean = new QCirclePolymerizationBean();
+    localQCirclePolymerizationBean.setSimulateData(localStSimulateData);
+    localQCirclePolymerizationBean.setPolymerizationType(20);
+    localQCirclePolymerizationBean.setExt1From(1);
+    uyx.a(paramView.getContext(), localQCirclePolymerizationBean);
+    vtn.a(86, 2, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.a, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsChildViewPresentQCircleFeedItemPicPresenter$MultiPicAdapter.a.b());
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

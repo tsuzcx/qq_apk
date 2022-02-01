@@ -1,19 +1,19 @@
 package com.tencent.biz.qqcircle.fragments.content;
 
 import android.support.v7.widget.RecyclerView;
-import vjn;
-import vjr;
-import vkb;
+import vlr;
+import vlv;
+import vmf;
 
 public class QCircleContentHorizontalAdapter$4$1
   implements Runnable
 {
-  public QCircleContentHorizontalAdapter$4$1(vjr paramvjr) {}
+  public QCircleContentHorizontalAdapter$4$1(vlv paramvlv) {}
   
   public void run()
   {
-    if (vjn.a(this.a.jdField_a_of_type_Vjn) != null) {
-      vjn.a(this.a.jdField_a_of_type_Vjn).a(vjn.a(this.a.jdField_a_of_type_Vjn).findViewHolderForLayoutPosition(this.a.jdField_a_of_type_Int));
+    if (vlr.a(this.a.jdField_a_of_type_Vlr) != null) {
+      vlr.a(this.a.jdField_a_of_type_Vlr).a(vlr.a(this.a.jdField_a_of_type_Vlr).findViewHolderForLayoutPosition(this.a.jdField_a_of_type_Int));
     }
   }
 }

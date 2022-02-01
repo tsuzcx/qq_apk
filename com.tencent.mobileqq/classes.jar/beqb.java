@@ -1,13 +1,16 @@
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class beqb
+class beqb
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  public List<Integer> a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  beqb(bepz parambepz) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    bepz.a(this.a, false);
+  }
 }
 
 

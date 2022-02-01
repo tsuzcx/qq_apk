@@ -1,99 +1,50 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.13.1;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
 public class amhq
+  implements TVK_SDKMgr.InstallListener
 {
-  public static int a;
-  public static String a;
-  public static boolean a;
-  public static int b;
-  public static String b;
-  public static String c;
-  public static String d;
-  public static String e;
-  public static String f;
-  public static String g;
-  public static String h;
-  public static String i;
-  public static String j;
+  public amhq(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  static {}
+  public void onInstallProgress(float paramFloat) {}
   
-  private static void a()
+  public void onInstalledFailed(int paramInt)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_app3d_config", 0);
-    if (localSharedPreferences.getInt("show", 0) == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      jdField_a_of_type_JavaLangString = localSharedPreferences.getString("packageName", null);
-      jdField_b_of_type_JavaLangString = localSharedPreferences.getString("downloadUrl", "");
-      c = localSharedPreferences.getString("iconUrl", "");
-      d = localSharedPreferences.getString("progressUrl", "");
-      e = localSharedPreferences.getString("md5", "");
-      f = localSharedPreferences.getString("apkSize", "");
-      jdField_a_of_type_Int = localSharedPreferences.getInt("versionCode", 0);
-      h = localSharedPreferences.getString("apkSign", "");
-      i = localSharedPreferences.getString("appName", "");
-      g = localSharedPreferences.getString("appId", "");
-      jdField_b_of_type_Int = localSharedPreferences.getInt("adId", 0);
-      j = localSharedPreferences.getString("traceInfo", "");
-      QLog.d("ApolloManager", 1, new Object[] { "App3DConfig init, sShow=", Boolean.valueOf(jdField_a_of_type_Boolean) });
-      return;
+    ShortVideoPlayActivity.a(this.a, false);
+    ShortVideoPlayActivity.d(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.c(this.a));
+    this.a.a(this.a.a.getResources().getString(2131697058));
+    ShortVideoPlayActivity.c(this.a, 3000);
+    ShortVideoPlayActivity.d(this.a, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onInstalledFailed:" + paramInt);
     }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "ShortVideoPlayActivity");
+    localHashMap.put("param_erroCode", String.valueOf(paramInt));
+    localHashMap.put("param_result", "0");
+    bdmc.a(BaseApplication.getContext()).a(null, "actInstallTVK", false, 0L, 0L, localHashMap, "");
   }
   
-  private static void b(Map<String, String> paramMap, int paramInt, String paramString)
+  public void onInstalledSuccessed()
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_app3d_config", 0);
-    try
-    {
-      boolean bool;
-      if (Integer.parseInt((String)paramMap.get("show")) == 1)
-      {
-        bool = true;
-        jdField_a_of_type_Boolean = bool;
-        jdField_a_of_type_JavaLangString = (String)paramMap.get("packageName");
-        jdField_b_of_type_JavaLangString = (String)paramMap.get("downloadUrl");
-        c = (String)paramMap.get("iconUrl");
-        d = (String)paramMap.get("progressUrl");
-        e = (String)paramMap.get("md5");
-        f = (String)paramMap.get("apkSize");
-        jdField_a_of_type_Int = Integer.parseInt((String)paramMap.get("versionCode"));
-        h = (String)paramMap.get("apkSign");
-        i = (String)paramMap.get("appName");
-        g = (String)paramMap.get("appId");
-        jdField_b_of_type_Int = paramInt;
-        j = paramString;
-        if ((TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(c)) || (TextUtils.isEmpty(g)))
-        {
-          jdField_a_of_type_Boolean = false;
-          QLog.w("ApolloManager", 1, "App3DConfig parse invalid param");
-        }
-        paramMap = localSharedPreferences.edit();
-        if (!jdField_a_of_type_Boolean) {
-          break label415;
-        }
-      }
-      label415:
-      for (paramInt = 1;; paramInt = 0)
-      {
-        paramMap.putInt("show", paramInt).putString("packageName", jdField_a_of_type_JavaLangString).putString("downloadUrl", jdField_b_of_type_JavaLangString).putString("md5", e).putString("iconUrl", c).putString("progressUrl", d).putString("apkSize", f).putInt("versionCode", jdField_a_of_type_Int).putString("apkSign", h).putString("appName", i).putString("appId", g).putInt("adId", jdField_b_of_type_Int).putString("traceInfo", j).commit();
-        QLog.d("ApolloManager", 1, new Object[] { "App3DConfig parse, sShow=", Boolean.valueOf(jdField_a_of_type_Boolean) });
-        return;
-        bool = false;
-        break;
-      }
-      return;
+    ShortVideoPlayActivity.a(this.a, true);
+    ShortVideoPlayActivity.d(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.c(this.a));
+    if (this.a.b.get() != null) {
+      ((MqqHandler)this.a.b.get()).post(new ShortVideoPlayActivity.13.1(this));
     }
-    catch (Throwable paramMap)
-    {
-      QLog.e("ApolloManager", 1, "App3DConfig parse error:", paramMap);
-    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "ShortVideoPlayActivity");
+    localHashMap.put("param_erroCode", "0");
+    localHashMap.put("param_result", "1");
+    bdmc.a(BaseApplication.getContext()).a(null, "actInstallTVK", true, 0L, 0L, localHashMap, "");
   }
 }
 

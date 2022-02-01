@@ -1,6 +1,13 @@
-public abstract interface amib
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+
+public class amib
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, Object paramObject);
+  public amib(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

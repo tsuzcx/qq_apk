@@ -1,44 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileBatchDownloadMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskSimpleFileItem;
-import cooperation.weiyun.sdk.download.DownloadType;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.contentbox.FootNavigationLayout;
+import cooperation.qzone.report.lp.LpReportInfo_dc02880;
+import cooperation.qzone.report.lp.LpReportManager;
 
-final class bmxv
-  implements bmzt
+public class bmxv
+  implements View.OnClickListener
 {
-  public void a(bmyy parambmyy, DownloadType paramDownloadType, bmzq parambmzq)
+  public bmxv(FootNavigationLayout paramFootNavigationLayout, bmyn parambmyn, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    Object localObject2 = new WeiyunPB.DiskSimpleFileItem();
-    ((WeiyunPB.DiskSimpleFileItem)localObject2).file_id.set(parambmyy.a);
-    if (parambmyy.e != null) {
-      ((WeiyunPB.DiskSimpleFileItem)localObject2).pdir_key.set(bnau.a(parambmyy.e));
+    Object localObject = bhni.a(((BaseActivity)this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext()).app, this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext(), this.jdField_a_of_type_Bmyn.b);
+    if (localObject != null) {
+      ((bhmr)localObject).a();
     }
-    ((WeiyunPB.DiskSimpleFileItem)localObject2).filename.set(parambmyy.b);
-    Object localObject1 = new ArrayList(1);
-    ((List)localObject1).add(localObject2);
-    localObject2 = new WeiyunPB.DiskFileBatchDownloadMsgReq();
-    ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).file_list.set((List)localObject1);
-    ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).download_type.set(paramDownloadType.ordinal());
-    localObject1 = ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).need_thumb;
-    if (paramDownloadType == DownloadType.FILE_THUMB) {}
     for (;;)
     {
-      ((PBBoolField)localObject1).set(bool);
-      if ((!TextUtils.isEmpty(parambmyy.d)) && (TextUtils.isDigitsOnly(parambmyy.d))) {
-        ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).file_owner.set(Long.parseLong(parambmyy.d));
-      }
-      bmyx.a((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2, new bmxw(this, parambmyy, parambmzq, paramDownloadType));
+      localObject = new LpReportInfo_dc02880(7, FootNavigationLayout.a()[this.jdField_a_of_type_Int]);
+      LpReportManager.getInstance().reportToDC02880((LpReportInfo_dc02880)localObject, false, true);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bool = false;
+      localObject = new Intent(this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext(), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", this.jdField_a_of_type_Bmyn.b);
+      bmtd.c((Intent)localObject);
+      this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext().startActivity((Intent)localObject);
     }
   }
 }

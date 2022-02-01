@@ -3,12 +3,12 @@ package com.tencent.mobileqq.mini.reuse;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import anip;
-import aniz;
-import aqpu;
-import aqpv;
-import bfup;
-import bjxn;
+import anum;
+import anuw;
+import arfc;
+import arfd;
+import bguq;
+import bkyr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -20,6 +20,8 @@ import com.tencent.mobileqq.mini.report.MiniAppReportManager;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.report.MiniProgramReporter;
+import com.tencent.mobileqq.mini.sdk.LaunchParam;
+import com.tencent.mobileqq.mini.share.WXShareHelperFromQQMiniApp;
 import com.tencent.mobileqq.mini.utils.ReportLogUtil;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.qipc.QIPCModule;
@@ -29,7 +31,7 @@ import eipc.EIPCResult;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import nlw;
+import nnr;
 import org.json.JSONObject;
 
 public class MiniAppTransferModule
@@ -43,6 +45,8 @@ public class MiniAppTransferModule
   public static final String ACTION_LAUNCH_REPORT_APP_RESUME = "launch_report_app_resume";
   public static final String ACTION_LAUNCH_REPORT_JS_ERROR = "launch_report_js_error";
   public static final String ACTION_LAUNCH_REPORT_SDK_4239 = "launch_report_sdk_4239";
+  public static final String ACTION_MINI_RECORD_WX_SHARE_MINIAPP_FOR_QQ = "mini_record_wx_share_miniapp_for_qq";
+  public static final String ACTION_MINI_RECORD_WX_SHARE_MINIAPP_FOR_SDK = "mini_record_wx_share_miniapp_for_sdk";
   public static final String ACTION_PRELOAD_LOADING_AD = "preload_loading_ad";
   public static final String ACTION_QUERY_MINI_APP_DATA = "query_mini_app_data";
   public static final String ACTION_QUERY_USER_TROOP_INFO = "query_user_troop_info";
@@ -56,7 +60,7 @@ public class MiniAppTransferModule
   public static final int RESULT_CODE_SUCCESS = 0;
   private static final String TAG = "MiniAppTransferModule";
   private static MiniAppTransferModule sInstance;
-  private aniz cardObserver = new MiniAppTransferModule.3(this);
+  private anuw cardObserver = new MiniAppTransferModule.3(this);
   private AtomicBoolean mSendingRequest = new AtomicBoolean(false);
   private int noDisturbModeCallbackId = -1;
   
@@ -94,7 +98,7 @@ public class MiniAppTransferModule
       return;
       localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     } while (localObject == null);
-    int j = nlw.a();
+    int j = nnr.a();
     int i = j;
     if (j == -1) {
       i = 2;
@@ -121,10 +125,10 @@ public class MiniAppTransferModule
     if (paramBoolean)
     {
       long l = NetConnInfoCenter.getServerTime();
-      ((anip)((QQAppInterface)localObject).a(2)).a((int)(l + 3600L), "", "not_disturb_from_miniapp");
+      ((anum)((QQAppInterface)localObject).a(2)).a((int)(l + 3600L), "", "not_disturb_from_miniapp");
       return;
     }
-    ((anip)((QQAppInterface)localObject).a(2)).a(0, "", "not_disturb_from_miniapp");
+    ((anum)((QQAppInterface)localObject).a(2)).a(0, "", "not_disturb_from_miniapp");
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -148,7 +152,7 @@ public class MiniAppTransferModule
           {
             paramString = new JSONObject(paramString);
             paramBundle = paramString.optString("command");
-            if (aqpv.c())
+            if (arfd.c())
             {
               ((DesktopDataManager)((AppRuntime)localObject).getManager(336)).updateEntryList(paramString);
               return null;
@@ -173,7 +177,7 @@ public class MiniAppTransferModule
             paramString = paramBundle.getString("appid");
             i = paramBundle.getInt("topType");
             int j = paramBundle.getInt("verType");
-            if (aqpv.c())
+            if (arfd.c())
             {
               ThreadManager.getUIHandler().post(new MiniAppTransferModule.1(this, (AppRuntime)localObject, paramString, i, paramInt, j));
               return null;
@@ -204,7 +208,7 @@ public class MiniAppTransferModule
           {
             paramString = paramBundle.getString("appid");
             i = paramBundle.getInt("verType");
-            if (aqpv.c())
+            if (arfd.c())
             {
               paramBundle = (DesktopDataManager)((AppRuntime)localObject).getManager(336);
               if ((paramBundle != null) && (!TextUtils.isEmpty(paramString))) {
@@ -219,7 +223,7 @@ public class MiniAppTransferModule
                     {
                       paramString.putParcelable("miniappinfo", paramBundle);
                       paramString.putInt("topType", 1);
-                      paramBundle = aqpv.a().a();
+                      paramBundle = arfd.a().a();
                       if (paramBundle != null) {
                         paramString.putIntegerArrayList("backHomeSceneList", paramBundle);
                       }
@@ -251,7 +255,7 @@ public class MiniAppTransferModule
                     {
                       paramString.putParcelable("miniappinfo", paramBundle);
                       paramString.putInt("topType", 1);
-                      paramBundle = aqpv.a().a();
+                      paramBundle = arfd.a().a();
                       if (paramBundle != null) {
                         paramString.putIntegerArrayList("backHomeSceneList", paramBundle);
                       }
@@ -335,7 +339,7 @@ public class MiniAppTransferModule
                 str1 = paramBundle.getString("reserves");
                 String str2 = paramBundle.getString("app_type");
                 boolean bool = paramBundle.getBoolean("x5_enable");
-                paramBundle = bjxn.a(localMiniAppInfo);
+                paramBundle = bkyr.a(localMiniAppInfo);
                 if (paramBundle == null) {
                   continue;
                 }
@@ -352,7 +356,7 @@ public class MiniAppTransferModule
                 paramBundle.setClassLoader(SDKMiniProgramLpReportDC04239.class.getClassLoader());
                 paramString = (com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramBundle.getParcelable("app_config");
                 long l = paramBundle.getLong("add_duration_ms");
-                paramString = bjxn.a(paramString);
+                paramString = bkyr.a(paramString);
                 if (paramString != null)
                 {
                   MiniAppReportManager.recordDuration(paramString, l);
@@ -367,17 +371,46 @@ public class MiniAppTransferModule
           }
         }
       }
-    } while (!"query_user_troop_info".equals(paramString));
+      if ("query_user_troop_info".equals(paramString)) {
+        try
+        {
+          paramString = new Bundle();
+          paramString.putBoolean("hasCreateOrManageTroop", bguq.a());
+          callbackResult(paramInt, EIPCResult.createResult(0, paramString));
+          return null;
+        }
+        catch (Exception paramString)
+        {
+          callbackResult(paramInt, EIPCResult.createResult(-102, null));
+          return null;
+        }
+      }
+      if ("mini_record_wx_share_miniapp_for_sdk".equals(paramString)) {
+        try
+        {
+          paramBundle.setClassLoader(MiniProgramLpReportDC04239.class.getClassLoader());
+          paramString = (com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramBundle.getParcelable("MiniAppInfoForSDK");
+          WXShareHelperFromQQMiniApp.getInstance().recordMiniAppInfoFromSDK(paramString);
+          return null;
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("MiniAppTransferModule", 1, "ACTION_MINI_RECORD_WX_SHARE_MINIAPP_FOR_SDK get an exception:" + paramString.toString());
+          return null;
+        }
+      }
+    } while (!"mini_record_wx_share_miniapp_for_qq".equals(paramString));
     try
     {
-      paramString = new Bundle();
-      paramString.putBoolean("hasCreateOrManageTroop", bfup.a());
-      callbackResult(paramInt, EIPCResult.createResult(0, paramString));
+      paramBundle.setClassLoader(MiniProgramLpReportDC04239.class.getClassLoader());
+      paramString = (com.tencent.mobileqq.mini.apkg.MiniAppInfo)paramBundle.getParcelable("MiniAppInfoForQQ");
+      paramBundle = (LaunchParam)paramBundle.getParcelable("MiniAppLaunchParamForQQ");
+      WXShareHelperFromQQMiniApp.getInstance().recordMiniAppInfoFromQQ(paramString, paramBundle);
       return null;
     }
     catch (Exception paramString)
     {
-      callbackResult(paramInt, EIPCResult.createResult(-102, null));
+      QLog.e("MiniAppTransferModule", 1, "ACTION_MINI_RECORD_WX_SHARE_MINIAPP_FOR_QQ get an exception:" + paramString.toString());
     }
     return null;
   }

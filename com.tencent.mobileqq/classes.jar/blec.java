@@ -1,34 +1,41 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import mqq.app.AppRuntime;
-
 public class blec
 {
-  private static int a = -1;
-  
-  public static void a(Context paramContext)
+  public static String a(String paramString)
   {
-    QLog.i("IlivePluginHelper", 1, "Ilive start preloadOdexPlugin");
-    blef.a().enter(paramContext, 1002L, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "", new Bundle(), null);
+    String str = paramString;
+    int i;
+    if (a(paramString)) {
+      i = paramString.length() - 1;
+    }
+    for (;;)
+    {
+      if ((i < 0) || (paramString.charAt(i) == '\\') || (paramString.charAt(i) == '/'))
+      {
+        str = paramString.substring(i + 1);
+        return str;
+      }
+      i -= 1;
+    }
   }
   
-  public static void a(Context paramContext, Intent paramIntent, String paramString, EnterCallback paramEnterCallback)
+  public static boolean a(String paramString)
   {
-    if (paramIntent != null) {}
-    for (paramIntent = paramIntent.getExtras();; paramIntent = null)
+    boolean bool2 = false;
+    int j = paramString.length();
+    int i = 0;
+    for (;;)
     {
-      Object localObject = paramIntent;
-      if (paramIntent == null) {
-        localObject = new Bundle();
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if ((paramString.charAt(i) == '\\') || (paramString.charAt(i) == '/')) {
+          bool1 = true;
+        }
       }
-      ((Bundle)localObject).putString("KEY_ACTIVITY_CLASSNAME", paramString);
-      ((Bundle)localObject).putLong("start_plugin_act_begin_time", System.currentTimeMillis());
-      blef.a().enter(paramContext, 1003L, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "", (Bundle)localObject, paramEnterCallback);
-      return;
+      else {
+        return bool1;
+      }
+      i += 1;
     }
   }
 }

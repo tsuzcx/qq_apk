@@ -1,35 +1,50 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afay
-  implements TextWatcher
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public afay(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
+  public afay(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramEditable == null) {}
-    for (;;)
+    int i = 1;
+    if (AppSetting.c) {
+      NotifyPushSettingActivity.c(this.a).setContentDescription(anzj.a(2131717558));
+    }
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131717558), "qqsetting_notify_blncontrol_key", paramBoolean);
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
     {
-      return;
-      if (TextUtils.isEmpty(paramEditable.toString())) {
-        RegisterPersonalInfoActivity.a(this.a).setEnabled(false);
+      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 1);
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label157;
       }
-      while (RegisterPersonalInfoActivity.a(this.a) != null)
-      {
-        RegisterPersonalInfoActivity.a(this.a).b(RegisterPersonalInfoActivity.a(this.a).isEnabled());
-        return;
-        RegisterPersonalInfoActivity.a(this.a).setEnabled(true);
+      label89:
+      if (!paramBoolean) {
+        break label162;
       }
     }
+    label157:
+    label162:
+    for (String str = "1";; str = "0")
+    {
+      bdll.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Led_blinking", 0, i, str, "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 0);
+      break;
+      i = 0;
+      break label89;
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,86 +1,27 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.SendMessageHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aiaa
-  extends anqd
+  implements View.OnClickListener
 {
-  aiaa(ahzy paramahzy) {}
+  aiaa(ahzx paramahzx) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public void onClick(View paramView)
   {
-    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
+    if (ahzx.a(this.a) != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+        QLog.d("NavigateBarManager", 2, String.format("onClick barId: %s", new Object[] { Integer.valueOf(ahzx.a(this.a).a) }));
       }
-      paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramInt1, paramLong2);
-      if ((paramString1 != null) && (paramString1.msgtype == -2058) && ((paramString1.extraflag == 32768) || (paramString1.sendFailCode == 41)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError, sticker msg is failed!, now remove!");
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, false);
-      }
-      return;
-    }
-    ahzy.a(this.a, paramString1, paramInt1, paramLong2);
-    this.a.f(196608);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.m();
+      ahzw localahzw = ahzx.a(this.a);
+      ahzx.a(this.a);
+      if (localahzw != null) {
+        localahzw.a();
       }
     }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    a(paramBoolean, paramString, paramLong, null);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong, anqa paramanqa)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    this.a.t = true;
-    this.a.a(262144, paramanqa, paramLong);
-    ((awhj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(308)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, awhj.jdField_a_of_type_Int);
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
-    }
-    this.a.f(131072);
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.m();
-      }
-    }
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    this.a.f(65536);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

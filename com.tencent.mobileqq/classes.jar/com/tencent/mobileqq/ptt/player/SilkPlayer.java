@@ -7,11 +7,11 @@ import android.os.Build.VERSION;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import aztq;
-import aztr;
-import azts;
-import bctj;
-import bkgm;
+import bamg;
+import bamh;
+import bami;
+import bdmc;
+import blhq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -20,16 +20,16 @@ import java.util.Iterator;
 import java.util.Set;
 
 public final class SilkPlayer
-  implements Handler.Callback, aztr
+  implements Handler.Callback, bamh
 {
   private byte jdField_a_of_type_Byte = -1;
   private float jdField_a_of_type_Float = 1.0F;
   private int jdField_a_of_type_Int = 3;
   private long jdField_a_of_type_Long = -1L;
   private Application jdField_a_of_type_AndroidAppApplication = BaseApplicationImpl.sApplication;
-  private aztq jdField_a_of_type_Aztq;
-  private azts jdField_a_of_type_Azts;
-  private bkgm jdField_a_of_type_Bkgm = new bkgm(Looper.getMainLooper(), this);
+  private bamg jdField_a_of_type_Bamg;
+  private bami jdField_a_of_type_Bami;
+  private blhq jdField_a_of_type_Blhq = new blhq(Looper.getMainLooper(), this);
   private SilkPlayer.SilkPlayerThread jdField_a_of_type_ComTencentMobileqqPttPlayerSilkPlayer$SilkPlayerThread;
   private String jdField_a_of_type_JavaLangString;
   private int b = -1;
@@ -73,14 +73,14 @@ public final class SilkPlayer
     this.jdField_a_of_type_Byte = paramByte;
   }
   
-  public void a(aztq paramaztq)
+  public void a(bamg parambamg)
   {
-    this.jdField_a_of_type_Aztq = paramaztq;
+    this.jdField_a_of_type_Bamg = parambamg;
   }
   
-  public void a(azts paramazts)
+  public void a(bami parambami)
   {
-    this.jdField_a_of_type_Azts = paramazts;
+    this.jdField_a_of_type_Bami = parambami;
   }
   
   void a(Exception paramException, AudioTrack paramAudioTrack, int paramInt1, int paramInt2)
@@ -122,7 +122,7 @@ public final class SilkPlayer
       QLog.e("SilkPlayer", 1, "reportIllegalStateException error.", paramException);
     }
     QLog.e("SilkPlayer", 1, "reportIllegalStateException, " + paramException.toString());
-    bctj.a(BaseApplication.getContext()).a(null, "PttSilkPlayerStateError", true, 0L, 0L, localHashMap, null);
+    bdmc.a(BaseApplication.getContext()).a(null, "PttSilkPlayerStateError", true, 0L, 0L, localHashMap, null);
   }
   
   public void a(String paramString)
@@ -143,8 +143,8 @@ public final class SilkPlayer
   public void b()
   {
     this.jdField_a_of_type_ComTencentMobileqqPttPlayerSilkPlayer$SilkPlayerThread = null;
-    if (this.jdField_a_of_type_Azts != null) {
-      this.jdField_a_of_type_Bkgm.sendEmptyMessage(2);
+    if (this.jdField_a_of_type_Bami != null) {
+      this.jdField_a_of_type_Blhq.sendEmptyMessage(2);
     }
   }
   
@@ -172,36 +172,36 @@ public final class SilkPlayer
   public void c(int paramInt)
   {
     this.jdField_a_of_type_ComTencentMobileqqPttPlayerSilkPlayer$SilkPlayerThread = null;
-    if (this.jdField_a_of_type_Azts != null) {
-      this.jdField_a_of_type_Bkgm.sendEmptyMessage(1);
+    if (this.jdField_a_of_type_Bami != null) {
+      this.jdField_a_of_type_Blhq.sendEmptyMessage(1);
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_succ_flag", "0");
     localHashMap.put("errCode", paramInt + "");
     localHashMap.put("param_version", Build.VERSION.SDK_INT + "");
     localHashMap.put("param_deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
-    bctj.a(BaseApplication.getContext()).a(null, "PttSilkPlaryerError", true, 0L, 0L, localHashMap, null);
+    bdmc.a(BaseApplication.getContext()).a(null, "PttSilkPlaryerError", true, 0L, 0L, localHashMap, null);
   }
   
   public void d() {}
   
   public void d(int paramInt)
   {
-    if (this.jdField_a_of_type_Azts != null)
+    if (this.jdField_a_of_type_Bami != null)
     {
       if (this.jdField_a_of_type_Long >= 0L) {
         break label46;
       }
-      localMessage = this.jdField_a_of_type_Bkgm.obtainMessage(3, Integer.valueOf(paramInt));
-      this.jdField_a_of_type_Bkgm.sendMessage(localMessage);
+      localMessage = this.jdField_a_of_type_Blhq.obtainMessage(3, Integer.valueOf(paramInt));
+      this.jdField_a_of_type_Blhq.sendMessage(localMessage);
       this.jdField_a_of_type_Long = System.currentTimeMillis();
     }
     label46:
     while (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 100L) {
       return;
     }
-    Message localMessage = this.jdField_a_of_type_Bkgm.obtainMessage(3, Integer.valueOf(paramInt));
-    this.jdField_a_of_type_Bkgm.sendMessage(localMessage);
+    Message localMessage = this.jdField_a_of_type_Blhq.obtainMessage(3, Integer.valueOf(paramInt));
+    this.jdField_a_of_type_Blhq.sendMessage(localMessage);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
@@ -244,7 +244,7 @@ public final class SilkPlayer
     //   39: astore_1
     //   40: aload_0
     //   41: aload_2
-    //   42: invokestatic 299	bgrn:a	(Ljava/io/InputStream;)B
+    //   42: invokestatic 299	bhrp:a	(Ljava/io/InputStream;)B
     //   45: putfield 35	com/tencent/mobileqq/ptt/player/SilkPlayer:jdField_a_of_type_Byte	B
     //   48: aload_2
     //   49: astore_1
@@ -355,8 +355,8 @@ public final class SilkPlayer
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 1) {
-      if (this.jdField_a_of_type_Azts != null) {
-        this.jdField_a_of_type_Azts.a(this, 0, 0);
+      if (this.jdField_a_of_type_Bami != null) {
+        this.jdField_a_of_type_Bami.a(this, 0, 0);
       }
     }
     do
@@ -367,11 +367,11 @@ public final class SilkPlayer
         if (paramMessage.what != 2) {
           break;
         }
-      } while (this.jdField_a_of_type_Azts == null);
-      this.jdField_a_of_type_Azts.a();
+      } while (this.jdField_a_of_type_Bami == null);
+      this.jdField_a_of_type_Bami.a();
       return true;
-    } while ((paramMessage.what != 3) || (this.jdField_a_of_type_Azts == null));
-    this.jdField_a_of_type_Azts.a(((Integer)paramMessage.obj).intValue());
+    } while ((paramMessage.what != 3) || (this.jdField_a_of_type_Bami == null));
+    this.jdField_a_of_type_Bami.a(((Integer)paramMessage.obj).intValue());
     return true;
   }
 }

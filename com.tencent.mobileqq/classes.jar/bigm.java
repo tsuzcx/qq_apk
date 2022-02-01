@@ -1,44 +1,43 @@
-import MWIFI.SCGet3rdCloudCheck;
-import android.content.Context;
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
 
-final class bigm
-  extends bigx
+public class bigm
 {
-  bigm(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, anyo paramanyo) {}
-  
-  public void a(int paramInt)
+  public static void a(AppInterface paramAppInterface, String paramString, HashMap<String, String> paramHashMap)
   {
-    if ((1 == paramInt) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anyo);
+    if (a()) {
+      b(paramAppInterface, paramString, paramHashMap);
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.e("VSHealthReportUtil", 1, "[reportToBeacon] no need to report to beacon");
   }
   
-  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck)
+  private static boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, result: " + paramSCGet3rdCloudCheck);
-    }
-    if (paramSCGet3rdCloudCheck != null)
+    return ((Boolean)abac.a().a("is_redirect_aio_to_main_page", Boolean.valueOf(false))).booleanValue();
+  }
+  
+  private static void b(AppInterface paramAppInterface, String paramString, HashMap<String, String> paramHashMap)
+  {
+    if (paramAppInterface == null)
     {
-      if (paramSCGet3rdCloudCheck.delayHour > 24) {
-        bihb.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramSCGet3rdCloudCheck.delayHour);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, tips: " + paramSCGet3rdCloudCheck.tips + " tipsType: " + paramSCGet3rdCloudCheck.tipsType + " delayHour: " + paramSCGet3rdCloudCheck.delayHour + " URL: " + paramSCGet3rdCloudCheck.h5);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-      {
-        MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-        Message localMessage = localMqqHandler.obtainMessage(1134063);
-        localMessage.obj = paramSCGet3rdCloudCheck;
-        localMqqHandler.sendMessage(localMessage);
-        bigl.b(this.jdField_a_of_type_AndroidContentContext, 398677);
-      }
+      QLog.e("VSHealthReportUtil", 1, "[reportToBeacon] report to beacon error, app is null!");
+      return;
+    }
+    if (paramHashMap == null) {
+      paramHashMap = new HashMap();
+    }
+    for (;;)
+    {
+      paramHashMap.put("userid", paramAppInterface.getCurrentAccountUin());
+      paramHashMap.put("platform", "android");
+      paramHashMap.put("data_timestamp", String.valueOf(System.currentTimeMillis()));
+      bdmc.a(BaseApplication.getContext()).a(paramAppInterface.getCurrentAccountUin(), paramString, true, 0L, 0L, paramHashMap, "");
+      return;
     }
   }
 }

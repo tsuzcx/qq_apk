@@ -1,90 +1,300 @@
 import android.content.Context;
-import android.os.Message;
-import android.text.TextUtils;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.process.video.CmGameTxVideoPlayer.1;
+import com.tencent.mobileqq.apollo.process.video.CmGameTxVideoPlayer.3;
+import com.tencent.mobileqq.apollo.process.video.CmGameTxVideoPlayer.4;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.os.MqqHandler;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class anfg
-  extends bgzm
+  implements anfp, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public anfg(ApolloLinearLayout paramApolloLinearLayout) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+  private TVK_PlayerVideoInfo jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo;
+  private TVK_UserInfo jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo;
+  private IVideoViewBase jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new CmGameTxVideoPlayer.1(this);
+  private CopyOnWriteArrayList<anfo> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private long b = 1000L;
   
-  protected void onAuthResponse(boolean paramBoolean, Object paramObject)
+  private void c()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
-    label596:
-    for (;;)
+    if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.jdField_a_of_type_AndroidOsHandler != null))
     {
-      return;
-      Object localObject = new ApolloActionData();
-      paramObject = (HashMap)paramObject;
-      String str = (String)paramObject.get("optFrom");
-      if ((!TextUtils.isEmpty(str)) && ("actionPanel".equals(str)))
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_Long = (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration() - this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion());
+      if (this.jdField_a_of_type_Long > 0L) {
+        this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+      }
+    }
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    }
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
+      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getVideoWidth();
+    }
+    return 0;
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
+      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
+    }
+    return 0L;
+  }
+  
+  public View a()
+  {
+    if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase == null) || (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null))
+    {
+      TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
+      if (localTVK_IProxyFactory == null)
       {
-        int i = Integer.parseInt((String)paramObject.get("id"));
-        ((ApolloActionData)localObject).actionId = i;
-        localObject = this.a.a((ApolloActionData)localObject);
-        if (localObject != null)
+        QLog.e("cmgame_process.CmGameTxVideoPlayer", 1, "videoProxyFactory is null.");
+        return null;
+      }
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase = localTVK_IProxyFactory.createVideoView(this.jdField_a_of_type_AndroidContentContext, true, true);
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = localTVK_IProxyFactory.createMediaPlayer(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase);
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(this);
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(this);
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(this);
+      this.jdField_a_of_type_Int = 1;
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase.addViewCallBack(new anfh(this));
+    }
+    return (View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    {
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
+      this.jdField_a_of_type_Int = 3;
+      c();
+    }
+  }
+  
+  public void a(Context paramContext, AppInterface paramAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameTxVideoPlayer", 0, "[initVideoPlayer]");
+    }
+    if (!TVK_SDKMgr.isInstalled(paramContext))
+    {
+      QLog.w("cmgame_process.CmGameTxVideoPlayer", 1, "sdk NOT installed.");
+      return;
+    }
+    TVK_SDKMgr.setDebugEnable(false);
+    TVK_SDKMgr.setOnLogListener(new anfi());
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo = new TVK_UserInfo("", "");
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
+    paramContext = new HashMap();
+    paramContext.put("shouq_bus_type", "bus_type_apollo");
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setReportInfoMap(paramContext);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+  }
+  
+  public void a(anfo paramanfo)
+  {
+    a(paramanfo, 1000L);
+  }
+  
+  public void a(anfo paramanfo, long paramLong)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramanfo))) {
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramanfo);
+    }
+    this.b = paramLong;
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameTxVideoPlayer", 0, "[startPlay], vid:" + paramString1);
+    }
+    ThreadManager.excute(new CmGameTxVideoPlayer.3(this, paramString1, paramInt), 192, null, true);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
+      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getOutputMute();
+    }
+    return false;
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
+      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getVideoHeight();
+    }
+    return 0;
+  }
+  
+  public long b()
+  {
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
+      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
+    }
+    return 0L;
+  }
+  
+  public void b()
+  {
+    d();
+    ThreadManager.excute(new CmGameTxVideoPlayer.4(this), 192, null, true);
+  }
+  
+  public void b(anfo paramanfo)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramanfo))) {
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramanfo);
+    }
+  }
+  
+  public boolean b()
+  {
+    if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()))
+    {
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
+      d();
+      this.jdField_a_of_type_Int = 4;
+      return true;
+    }
+    return false;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public boolean c()
+  {
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
+      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying();
+    }
+    return false;
+  }
+  
+  public boolean d()
+  {
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
+      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPauseing();
+    }
+    return false;
+  }
+  
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameTxVideoPlayer", 0, "[onCompletion]");
+    }
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = 5;
+    paramTVK_IMediaPlayer = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (paramTVK_IMediaPlayer.hasNext())
+    {
+      anfo localanfo = (anfo)paramTVK_IMediaPlayer.next();
+      if (localanfo != null) {
+        localanfo.g();
+      }
+    }
+  }
+  
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    QLog.i("cmgame_process.CmGameTxVideoPlayer", 1, "[onVideoPrepared] model:" + paramInt1 + ",what:" + paramInt2 + ",extra:" + paramInt3 + ",detailInfo:" + paramString);
+    paramTVK_IMediaPlayer = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (paramTVK_IMediaPlayer.hasNext())
+    {
+      paramObject = (anfo)paramTVK_IMediaPlayer.next();
+      if (paramObject != null) {
+        paramObject.a(paramInt1, paramInt2, paramString);
+      }
+    }
+    d();
+    return false;
+  }
+  
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  {
+    paramTVK_IMediaPlayer = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (paramTVK_IMediaPlayer.hasNext())
+    {
+      paramObject = (anfo)paramTVK_IMediaPlayer.next();
+      if (paramObject != null) {
+        switch (paramInt)
         {
-          ((ImageView)((View)localObject).findViewById(2131378772)).setVisibility(8);
-          ((View)localObject).setClickable(true);
-          if (this.a.b.incrementAndGet() == this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())
-          {
-            this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-            this.a.b.set(0);
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Bgzm);
-          }
-          if (paramBoolean)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloLinearLayout", 2, "action auth success actionid=" + i);
-            }
-            paramObject.put("APOLLO_POP_TYPE", "toast");
-            paramObject.put("tips", this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131690006));
-            ((VasExtensionHandler)this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 128, "obtained action");
-          }
-          for (;;)
-          {
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-              break label596;
-            }
-            localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-            if (localObject == null) {
-              break;
-            }
-            VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "activity_alert_show", ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + i, "0" });
-            localObject = ((MqqHandler)localObject).obtainMessage(45);
-            ((Message)localObject).obj = paramObject;
-            ((Message)localObject).sendToTarget();
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloLinearLayout", 2, "action auth fail actionid=" + i);
-            }
-            paramObject.put("APOLLO_POP_TYPE", "dialog");
-            paramObject.put("feeType", String.valueOf(6));
-            paramObject.put("title", anni.a(2131699268));
-            if (TextUtils.isEmpty((String)paramObject.get("content"))) {
-              paramObject.put("content", anni.a(2131699267));
-            }
-            paramObject.put("rightString", anni.a(2131699269));
-            paramObject.put("isActionBack", "true");
-            paramObject.put("actionId", "" + i);
-          }
+        default: 
+          break;
+        case 21: 
+          paramObject.h();
+          d();
+          break;
+        case 22: 
+          paramObject.i();
+          c();
         }
+      }
+    }
+    return false;
+  }
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameTxVideoPlayer", 0, "[onVideoPrepared]");
+    }
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Boolean = false;
+    paramTVK_IMediaPlayer = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (paramTVK_IMediaPlayer.hasNext())
+    {
+      anfo localanfo = (anfo)paramTVK_IMediaPlayer.next();
+      if (localanfo != null) {
+        localanfo.e();
       }
     }
   }

@@ -1,18 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
 class quz
-  implements View.OnClickListener
 {
-  quz(qux paramqux) {}
+  int jdField_a_of_type_Int = 0;
+  HashMap<String, quw> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void onClick(View paramView)
-  {
-    pha.a(this.a.jdField_a_of_type_AndroidContentContext, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 2, false, 2, false);
-    snh.a(((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), ((pxk)this.a.jdField_a_of_type_JavaLangObject).e());
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  quz(quv paramquv) {}
 }
 
 

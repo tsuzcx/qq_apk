@@ -4,21 +4,21 @@ import UserGrowth.stFollowFeedsRsp;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.util.ArrayList;
 import java.util.List;
-import uen;
-import ups;
+import uep;
+import uqt;
 
 public class WeiShiCacheManager$4
   implements Runnable
 {
-  public WeiShiCacheManager$4(uen paramuen, List paramList) {}
+  public WeiShiCacheManager$4(uep paramuep, List paramList) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.a.size() > uen.a(this.this$0))
+    if (this.a.size() > uep.a(this.this$0))
     {
       int i = 0;
-      while (i < uen.a(this.this$0))
+      while (i < uep.a(this.this$0))
       {
         localArrayList.add(this.a.get(i));
         i += 1;
@@ -28,8 +28,8 @@ public class WeiShiCacheManager$4
     {
       stFollowFeedsRsp localstFollowFeedsRsp = new stFollowFeedsRsp();
       localstFollowFeedsRsp.feeds = localArrayList;
-      if (uen.a(this.this$0, localstFollowFeedsRsp, uen.a(this.this$0), localArrayList.size())) {
-        LocalMultiProcConfig.putString("weishi_usergrowth", "key_ws_cache_v", ups.c());
+      if (uep.a(this.this$0, localstFollowFeedsRsp, uep.a(this.this$0), localArrayList.size())) {
+        LocalMultiProcConfig.putString("weishi_usergrowth", "key_ws_cache_v", uqt.c());
       }
       return;
       localArrayList = new ArrayList(this.a);

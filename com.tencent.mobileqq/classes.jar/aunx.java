@@ -1,15 +1,8 @@
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.widget.Switch;
+import android.view.View;
 
-public class aunx
+public abstract interface aunx
 {
-  public CompoundButton.OnCheckedChangeListener a;
-  public TextView a;
-  public URLImageView a;
-  public Switch a;
-  public String a;
+  public abstract void onClick(View paramView);
 }
 
 

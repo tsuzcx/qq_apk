@@ -1,105 +1,227 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.res.AssetManager;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.idlefish.flutterboost.FlutterBoost;
+import com.idlefish.flutterboost.FlutterBoost.BoostLifecycleListener;
+import com.idlefish.flutterboost.FlutterBoost.ConfigBuilder;
+import com.qflutter.native_resources.QFlutterSkinEnginePlugin;
+import com.qflutter.resource_loader.QFlutterResourceLoader;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.flutter.launch.QFlutterLauncher.2;
+import com.tencent.mobileqq.flutter.launch.QFlutterLauncher.4;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Locale;
+import eipc.EIPCClient;
+import io.flutter.embedding.android.FlutterView.RenderMode;
+import io.flutter.view.FlutterMain;
+import java.io.File;
+import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class auxj
-  implements apvx
 {
-  public auxj(JefsClass paramJefsClass, WeakReference paramWeakReference, JefsClass.CancelableRunnable paramCancelableRunnable, int paramInt, String paramString) {}
+  private static auxj jdField_a_of_type_Auxj;
+  private int jdField_a_of_type_Int = 0;
+  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsLooper);
+  private final Looper jdField_a_of_type_AndroidOsLooper = Looper.getMainLooper();
+  private auxi jdField_a_of_type_Auxi = new auxi();
+  private FlutterBoost.BoostLifecycleListener jdField_a_of_type_ComIdlefishFlutterboostFlutterBoost$BoostLifecycleListener = new auxl(this);
+  private final Set<auxg> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
+  public static auxj a()
   {
-    Object localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (QLog.isColorLevel()) {
-      QLog.d("TeleScreen|JefsClass", 2, String.format(Locale.CHINA, "onReceive: success: %b, jump: %d, err_code: %d, err_msg: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString }));
+    if (jdField_a_of_type_Auxj == null) {}
+    try
+    {
+      if (jdField_a_of_type_Auxj == null) {
+        jdField_a_of_type_Auxj = new auxj();
+      }
+      return jdField_a_of_type_Auxj;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable == null) {
+    finally {}
+  }
+  
+  private void a()
+  {
+    if (Looper.myLooper() != this.jdField_a_of_type_AndroidOsLooper) {}
+  }
+  
+  private void a(int paramInt, boolean paramBoolean)
+  {
+    QLog.d("QFlutter.launcher", 1, String.format("notifyResult, errCode: %s, isFirstLaunch: %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) }));
+    if (Looper.myLooper() == this.jdField_a_of_type_AndroidOsLooper)
+    {
+      b(paramInt, paramBoolean);
       return;
     }
-    if (localObject == null)
+    ThreadManager.getUIHandler().post(new QFlutterLauncher.4(this, paramInt, paramBoolean));
+  }
+  
+  private void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.launcher", 2, "start install");
+    }
+    this.jdField_a_of_type_Auxi.a();
+    if (auxf.a())
     {
-      apwh.a().a(this.jdField_a_of_type_Int, -3);
-      QLog.i("TeleScreen|JefsClass", 1, "context is null");
-      if (this.jdField_a_of_type_JavaLangString == null) {}
-      for (paramString = "";; paramString = this.jdField_a_of_type_JavaLangString)
+      this.jdField_a_of_type_Boolean = true;
+      auxf.a();
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    auxe.a();
+    Bundle localBundle = new Bundle();
+    if (2 == BaseApplicationImpl.sProcessId) {
+      localBundle.putString("FlutterCallerIpcProcessName", "com.tencent.mobileqq:qzone");
+    }
+    QIPCClientHelper.getInstance().getClient().callServer("FlutterMainQIPCModule", "ACTION_INSTALL_ENGINE", localBundle, new auxk(this));
+  }
+  
+  private void b(int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    if (paramInt == 0) {}
+    for (this.jdField_a_of_type_Int = 2;; this.jdField_a_of_type_Int = 0)
+    {
+      auxh localauxh = new auxh(paramInt, paramBoolean, this.jdField_a_of_type_Boolean);
+      if (paramBoolean)
       {
-        bcst.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "", "1", paramString, "");
-        return;
+        this.jdField_a_of_type_Auxi.a(paramInt, this.jdField_a_of_type_Boolean);
+        localauxh.a(this.jdField_a_of_type_Auxi);
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+      while (localIterator.hasNext()) {
+        ((auxg)localIterator.next()).a(localauxh);
       }
     }
-    if ((paramBoolean) && (paramInt1 == 1))
-    {
-      JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+  }
+  
+  private void b(auxg paramauxg)
+  {
+    if (paramauxg == null) {
       return;
     }
-    if ((!paramBoolean) || (paramInt1 == 0)) {}
-    for (;;)
+    synchronized (this.jdField_a_of_type_JavaUtilSet)
     {
+      this.jdField_a_of_type_JavaUtilSet.add(paramauxg);
+      return;
+    }
+  }
+  
+  public void a(auxg paramauxg)
+  {
+    if (paramauxg == null) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilSet)
+    {
+      this.jdField_a_of_type_JavaUtilSet.remove(paramauxg);
+      return;
+    }
+  }
+  
+  public void a(auxg paramauxg, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    a();
+    b(paramauxg);
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      QLog.d("QFlutter.launcher", 1, "engine is running");
+      a(0, false);
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      QLog.d("QFlutter.launcher", 1, "engine is launching");
+      return;
+    }
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Auxi.f();
+    this.jdField_a_of_type_Auxi.a(paramBoolean1, paramBoolean2);
+    b();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Auxi.b();
+    String str = paramString + File.separator + "res.apk";
+    if (auog.a(str)) {
       try
       {
-        if (!(localObject instanceof Activity)) {
-          break label491;
-        }
-        paramString = (Activity)localObject;
-        if ((paramString == null) || (paramString.isFinishing())) {
-          break label317;
-        }
-        QLog.i("TeleScreen|JefsClass", 1, "leave QQ jump other app , act.isFinishing() == false");
-        localObject = bglp.a(paramString, 0, null, "即将离开QQ\n打开其他应用", paramString.getString(2131690582), paramString.getString(2131719153), new auxk(this), new auxl(this));
-        if ((paramString instanceof BaseActivity))
+        AssetManager localAssetManager = BaseApplicationImpl.getContext().getAssets();
+        Method localMethod = AssetManager.class.getDeclaredMethod("addAssetPath", new Class[] { String.class });
+        localMethod.setAccessible(true);
+        localMethod.invoke(localAssetManager, new Object[] { str });
+        this.jdField_a_of_type_Auxi.c();
+        if (Looper.myLooper() == this.jdField_a_of_type_AndroidOsLooper)
         {
-          ((BaseActivity)paramString).setJumpDialog((Dialog)localObject);
-          ((bgpa)localObject).show();
+          b(paramString);
           return;
         }
+        ThreadManager.getUIHandler().postAtFrontOfQueue(new QFlutterLauncher.2(this, paramString));
+        return;
       }
-      catch (Throwable paramString)
+      catch (Exception paramString)
       {
-        QLog.e("TeleScreen|JefsClass", 1, paramString, new Object[0]);
-        JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+        QLog.e("QFlutter.launcher", 1, "loadAsset", paramString);
+        a(5, true);
         return;
       }
-      if ((paramString instanceof BasePluginActivity))
-      {
-        ((BasePluginActivity)paramString).setJumpDialog((Dialog)localObject);
-        continue;
-        label317:
-        if (BaseApplicationImpl.sProcessId != 1)
-        {
-          if (JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass) == null) {
-            JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, new auxs(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, null));
-          }
-          paramString = new IntentFilter("com.tencent.mobileqq.telescreen.action_run");
-          paramString.addAction("com.tencent.mobileqq.telescreen.action_remove");
-          BaseApplicationImpl.context.registerReceiver(JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass), paramString);
-        }
-        paramString = new Intent();
-        paramString.putExtra("big_brother_source_key", this.jdField_a_of_type_JavaLangString);
-        paramString.putExtra("key_id", JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable));
-        paramString.putExtra("key_process_id", BaseApplicationImpl.processName);
-        paramString.putExtra("key_callback_id", this.jdField_a_of_type_Int);
-        paramString.putExtra("public_fragment_window_feature", 1);
-        aevv.a(paramString, PublicTransFragmentActivity.class, JumpConfirmFragment.class);
-        QLog.i("TeleScreen|JefsClass", 1, "leave QQ jump other app , act == null && act.isFinishing() == true");
-        return;
-        apwh.a().a(this.jdField_a_of_type_Int, -2);
-        return;
-        label491:
-        paramString = null;
-      }
+    }
+    QLog.e("QFlutter.launcher", 1, String.format("assetsPath: %s not exist", new Object[] { str }));
+    a(4, true);
+  }
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.launcher", 2, String.format("onInstallResult, isSuccess: %s, installDir: %s, isLocalEngineExist: %s, isLocalAppExist: %s", new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
+    }
+    if ((paramBoolean1) && (auog.a(paramString)))
+    {
+      this.jdField_a_of_type_Auxi.b(paramBoolean2, paramBoolean3);
+      a(paramString);
+      return;
+    }
+    QLog.d("QFlutter.launcher", 1, String.format("onInstallResult, isSuccess: %s, installDir: %s, fileIsExist: %s", new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(auog.a(paramString)) }));
+    a(3, true);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  public void b(String paramString)
+  {
+    a();
+    this.jdField_a_of_type_Auxi.d();
+    FlutterMain.setNativeLibDir(paramString);
+    auxa.a(paramString);
+    com.tencent.qflutter.utils.FLog.sLog = new auwy();
+    QFlutterResourceLoader.get().init(BaseApplicationImpl.getContext(), new auxa(BaseApplicationImpl.getContext()));
+    QFlutterSkinEnginePlugin.setCurrentThemeId(ThemeUtil.getCurrentThemeId());
+    paramString = new FlutterBoost.ConfigBuilder(BaseApplicationImpl.getApplication(), auwx.a()).isDebug(false).whenEngineStart(FlutterBoost.ConfigBuilder.IMMEDIATELY).renderMode(FlutterView.RenderMode.texture).lifecycleListener(this.jdField_a_of_type_ComIdlefishFlutterboostFlutterBoost$BoostLifecycleListener).build();
+    try
+    {
+      FlutterBoost.instance().init(paramString);
+      this.jdField_a_of_type_Auxi.e();
+      a(0, true);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.d("QFlutter.launcher", 1, "loadEngine", paramString);
+      a(6, true);
     }
   }
 }

@@ -1,12 +1,40 @@
-import android.os.Bundle;
-import android.os.IInterface;
+import android.support.annotation.NonNull;
+import cooperation.qqreader.ui.ReaderHomePageActivity;
+import org.json.JSONObject;
 
-public abstract interface bmqr
-  extends IInterface
+public class bmqr
+  extends bmqd
 {
-  public abstract Bundle a(String paramString, Bundle paramBundle);
+  public bmqr(ReaderHomePageActivity paramReaderHomePageActivity) {}
   
-  public abstract void a(String paramString, Bundle paramBundle);
+  public void a(@NonNull bmqc parambmqc)
+  {
+    parambmqc = parambmqc.a();
+    if (parambmqc == null) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        int i = parambmqc.getJSONObject("data").getInt("identity");
+        parambmqc = this.a;
+        if (i == 2)
+        {
+          bool = true;
+          bmqu.e(parambmqc, bool);
+          bmqw.d("ReaderHomePageActivity", "queryUserIdentityForTabSwitch: identity = " + i);
+          return;
+        }
+      }
+      catch (Exception parambmqc)
+      {
+        bmqw.a("ReaderHomePageActivity", "queryUserIdentityForTabSwitch:", parambmqc);
+        return;
+      }
+      boolean bool = false;
+    }
+  }
 }
 
 

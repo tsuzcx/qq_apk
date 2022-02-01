@@ -1,35 +1,17 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bahd
-  extends anxg
+class bahd
+  implements View.OnClickListener
 {
-  public bahd(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  bahd(bahb parambahb, View paramView) {}
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      if (!this.a.isAdded())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "onUpdateTroopGetMemberList succ with fragment is detached");
-        }
-        return;
-      }
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).getApp().getSharedPreferences("last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a).getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a), paramLong).apply();
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(4);
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).removeObserver(this);
-      return;
-    }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(-1);
-    QLog.d("ReceiptMessageReadMemberListContainerFragment", 1, "mTroopObserver onUpdateTroopGetMemberList fail");
+    azyk.a().b(bahb.i(this.jdField_a_of_type_Bahb));
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,6 +1,24 @@
-class upd
+import UserGrowth.stSimpleMetaFeed;
+
+public class upd
 {
-  private static final upb a = new upb(null);
+  public int a;
+  public stSimpleMetaFeed a;
+  public String a;
+  private urd a;
+  public int b;
+  public String b;
+  public String c;
+  
+  public urd a()
+  {
+    return this.a;
+  }
+  
+  public void a(urd paramurd)
+  {
+    this.a = paramurd;
+  }
 }
 
 

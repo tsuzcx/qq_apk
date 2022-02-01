@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bcdo;
-import bceh;
-import bcfj;
-import bdzi;
-import bdzn;
+import bcwg;
+import bcwz;
+import bcyb;
+import beyb;
+import beyg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -16,10 +16,10 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
   implements Runnable
 {
   public int a;
-  public ArrayList<bceh> a;
-  public ArrayList<bcfj> b;
+  public ArrayList<bcwz> a;
+  public ArrayList<bcyb> b;
   
-  public BaseShortVideoOprerator$MultiForwardShortVideoTask(ArrayList<bceh> paramArrayList)
+  public BaseShortVideoOprerator$MultiForwardShortVideoTask(ArrayList<bcwz> paramArrayList)
   {
     this.jdField_a_of_type_Int = 0;
     Object localObject;
@@ -37,7 +37,7 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
         Iterator localIterator = this.b.iterator();
         if (localIterator.hasNext())
         {
-          if (((bcfj)localIterator.next()).jdField_a_of_type_Int == -2) {
+          if (((bcyb)localIterator.next()).jdField_a_of_type_Int == -2) {
             i += 1;
           }
         }
@@ -57,7 +57,7 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
     int i;
     int j;
     label105:
-    bceh localbceh;
+    bcwz localbcwz;
     Object localObject;
     if (this.jdField_a_of_type_Int + BaseShortVideoOprerator.d < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
@@ -69,11 +69,11 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
       if (j >= i) {
         break label456;
       }
-      localbceh = (bceh)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-      if (localbceh.jdField_a_of_type_JavaLangObject == null) {
+      localbcwz = (bcwz)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+      if (localbcwz.jdField_a_of_type_JavaLangObject == null) {
         break label178;
       }
-      localObject = (MessageForShortVideo)localbceh.jdField_a_of_type_JavaLangObject;
+      localObject = (MessageForShortVideo)localbcwz.jdField_a_of_type_JavaLangObject;
       label141:
       if (localObject != null) {
         break label192;
@@ -89,27 +89,27 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
       i = this.jdField_a_of_type_JavaUtilArrayList.size();
       break;
       label178:
-      localObject = this.this$0.a(localbceh);
+      localObject = this.this$0.a(localbcwz);
       break label141;
       label192:
       this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
       long l = System.currentTimeMillis();
-      bdzn localbdzn = new bdzn();
-      localbdzn.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
-      localbdzn.c = ((MessageRecord)localObject).frienduin;
-      localbdzn.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
-      localbdzn.jdField_b_of_type_Int = 20;
-      localbdzn.jdField_a_of_type_JavaLangObject = localbceh;
-      localbdzn.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
-      localbdzn.jdField_a_of_type_Boolean = true;
-      localbdzn.e = 1010;
-      localbdzn.f = localbceh.e;
-      localbdzn.i = (localbceh.h + "QQ_&_MoblieQQ_&_QQ" + localbceh.i + "QQ_&_MoblieQQ_&_QQ" + localbceh.j + "QQ_&_MoblieQQ_&_QQ" + localbceh.g);
-      localbdzn.jdField_a_of_type_Ayyt = new bcdo(this, j);
-      localbdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbdzn);
+      beyg localbeyg = new beyg();
+      localbeyg.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
+      localbeyg.c = ((MessageRecord)localObject).frienduin;
+      localbeyg.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
+      localbeyg.jdField_b_of_type_Int = 20;
+      localbeyg.jdField_a_of_type_JavaLangObject = localbcwz;
+      localbeyg.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
+      localbeyg.jdField_a_of_type_Boolean = true;
+      localbeyg.e = 1010;
+      localbeyg.f = localbcwz.e;
+      localbeyg.i = (localbcwz.h + "QQ_&_MoblieQQ_&_QQ" + localbcwz.i + "QQ_&_MoblieQQ_&_QQ" + localbcwz.j + "QQ_&_MoblieQQ_&_QQ" + localbcwz.g);
+      localbeyg.jdField_a_of_type_Azrg = new bcwg(this, j);
+      localbeyg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbeyg);
       if (QLog.isColorLevel()) {
-        QLog.d("BaseShortVideoOprerator", 2, "MultiForwardShortVideo req" + j + ": " + localbdzn.toString() + " ,cost:" + (System.currentTimeMillis() - l));
+        QLog.d("BaseShortVideoOprerator", 2, "MultiForwardShortVideo req" + j + ": " + localbeyg.toString() + " ,cost:" + (System.currentTimeMillis() - l));
       }
     }
     label456:
@@ -131,10 +131,10 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (bceh)localIterator.next();
-      localObject = new bcfj();
-      ((bcfj)localObject).jdField_a_of_type_Int = -2;
-      ((bcfj)localObject).jdField_a_of_type_Bcev = this.this$0.jdField_a_of_type_Bcev;
+      Object localObject = (bcwz)localIterator.next();
+      localObject = new bcyb();
+      ((bcyb)localObject).jdField_a_of_type_Int = -2;
+      ((bcyb)localObject).jdField_a_of_type_Bcxn = this.this$0.jdField_a_of_type_Bcxn;
       this.b.add(localObject);
     }
     a();

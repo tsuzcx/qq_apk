@@ -1,19 +1,24 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.1;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 
 public class xqu
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements xsy
 {
-  xqu(xqp paramxqp) {}
+  public xqu(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a(@NonNull View paramView, int paramInt)
   {
-    ThreadManager.executeOnSubThread(new VideoViewTVKImpl.5.1(this, paramTVK_IMediaPlayer));
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.5.2(this));
+    if (LiuHaiUtils.a)
+    {
+      paramInt = StoryPlayerGroupHolder.a(this.a);
+      paramView = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+      paramView.bottomMargin = paramInt;
+      this.a.a.setLayoutParams(paramView);
+    }
   }
 }
 

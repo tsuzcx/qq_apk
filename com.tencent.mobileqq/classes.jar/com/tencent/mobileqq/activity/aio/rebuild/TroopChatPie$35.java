@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.rebuild;
 
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import anwd;
+import aoip;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -18,11 +18,11 @@ class TroopChatPie$35
     do
     {
       return;
-      anwd localanwd = (anwd)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+      aoip localaoip = (aoip)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
       String str = this.this$0.a().jdField_a_of_type_JavaLangString;
       if (!TextUtils.isEmpty(str))
       {
-        localanwd.t(str);
+        localaoip.t(str);
         return;
       }
     } while (!QLog.isColorLevel());

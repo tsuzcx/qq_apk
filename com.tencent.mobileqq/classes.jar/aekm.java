@@ -1,17 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aekm
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public aekm(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public aekm(DialogActivity paramDialogActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList cancel.");
+    paramDialogInterface.dismiss();
+    this.a.finish();
+  }
 }
 
 

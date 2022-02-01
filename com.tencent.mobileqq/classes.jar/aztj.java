@@ -1,36 +1,26 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class aztj
-  extends bktt
+class aztj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a(Context paramContext, long paramLong)
+  aztj(azti paramazti, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.b = bgnt.a(BaseApplication.getContext());
-    if (!this.a) {
-      switch (this.b)
-      {
-      default: 
-        this.c = 4096;
-      }
-    }
-    for (;;)
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
+    do
     {
-      if (paramLong < 102400L) {
-        this.c *= 4;
-      }
-      if (paramLong - this.c <= this.c / 2) {
-        this.c = ((int)paramLong);
-      }
-      return this.c;
-      this.c = 32768;
-      continue;
-      this.c = 32768;
-      continue;
-      this.c = 16384;
-      continue;
-      this.c = 8192;
-    }
+      return;
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-azti.a(this.jdField_a_of_type_Azti) * f);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_Azti.f);
+    this.b.setAlpha(1.0F - f);
   }
 }
 

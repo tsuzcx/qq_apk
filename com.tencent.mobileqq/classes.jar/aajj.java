@@ -1,80 +1,20 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aajj
+class aajj
+  implements View.OnClickListener
 {
-  private static boolean a;
+  aajj(aaje paramaaje, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public static void a(Context paramContext, String paramString, aajp paramaajp)
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("SubscribeFollowUserUtil", 2, "follow user failed! user is null");
-    }
-    do
-    {
-      return;
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface))
-      {
-        tzo.a((QQAppInterface)localAppRuntime, paramContext, paramString, new aajn(paramaajp), false, 0, true);
-        return;
-      }
-    } while (paramaajp == null);
-    paramaajp.a(false, paramString, false);
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, aajp paramaajp)
-  {
-    a(paramContext, paramString1, true, paramString2, 2131695741, paramaajp);
-  }
-  
-  public static void a(Context paramContext, String paramString1, boolean paramBoolean, String paramString2, int paramInt, aajp paramaajp)
-  {
-    if (paramContext == null) {}
-    bkho localbkho;
-    do
-    {
-      return;
-      localbkho = bkho.a(paramContext);
-      if (paramBoolean) {
-        localbkho.a(String.format(paramContext.getResources().getString(2131694662), new Object[] { paramString2 }));
-      }
-      localbkho.a(paramInt, 3);
-      localbkho.c(2131690582);
-      localbkho.setOnDismissListener(new aajk());
-      localbkho.a(new aajl(paramaajp, paramString1, localbkho));
-      localbkho.a(new aajm(paramContext, paramString1, paramaajp, localbkho));
-    } while (localbkho.isShowing());
-    a = false;
-    localbkho.show();
-  }
-  
-  public static void b(Context paramContext, String paramString, aajp paramaajp)
-  {
-    a(paramContext, paramString, false, "", 2131694660, paramaajp);
-  }
-  
-  public static void c(Context paramContext, String paramString, aajp paramaajp)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("SubscribeFollowUserUtil", 2, "unfollow user failed! user is null");
-    }
-    do
-    {
-      return;
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface))
-      {
-        tzo.a((QQAppInterface)localAppRuntime, paramContext, paramString, false, new aajo(paramaajp), true);
-        return;
-      }
-    } while (paramaajp == null);
-    paramaajp.a(false, paramString, false);
+    aaiu.b(this.jdField_a_of_type_Aaje.a, aaiu.a(this.jdField_a_of_type_Aaje.a).a(aaiu.a(this.jdField_a_of_type_Aaje.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply));
+    aaiu.c(this.jdField_a_of_type_Aaje.a, true);
+    aaiu.a(this.jdField_a_of_type_Aaje.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

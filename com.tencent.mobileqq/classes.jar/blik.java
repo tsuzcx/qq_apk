@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.AbsListView.SavedState;
 
-public class blik
-  implements DialogInterface.OnClickListener
+public final class blik
+  implements Parcelable.Creator<AbsListView.SavedState>
 {
-  public blik(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public AbsListView.SavedState a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    return new AbsListView.SavedState(paramParcel, null);
+  }
+  
+  public AbsListView.SavedState[] a(int paramInt)
+  {
+    return new AbsListView.SavedState[paramInt];
   }
 }
 

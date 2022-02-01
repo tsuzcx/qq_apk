@@ -348,7 +348,7 @@ public class FileJsPlugin
       String str1 = ((JSONObject)localObject).optString("filePath");
       String str2 = ((JSONObject)localObject).optString("data");
       String str3 = ((JSONObject)localObject).optString("encoding", "utf8");
-      localObject = NativeBuffer.unpackNativeBuffer(this.mMiniAppContext, (JSONObject)localObject, "data");
+      localObject = NativeBuffer.unpackNativeBuffer(paramRequestEvent.jsService, (JSONObject)localObject, "data");
       if (localObject != null) {}
       for (localObject = ((NativeBuffer)localObject).buf;; localObject = null)
       {
@@ -577,80 +577,80 @@ public class FileJsPlugin
   public void getFileInfo(RequestEvent paramRequestEvent)
   {
     // Byte code:
-    //   0: invokestatic 471	java/lang/System:currentTimeMillis	()J
+    //   0: invokestatic 469	java/lang/System:currentTimeMillis	()J
     //   3: lstore_3
-    //   4: new 255	org/json/JSONObject
+    //   4: new 253	org/json/JSONObject
     //   7: dup
     //   8: aload_1
-    //   9: getfield 620	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:jsonParams	Ljava/lang/String;
-    //   12: invokespecial 656	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   9: getfield 618	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:jsonParams	Ljava/lang/String;
+    //   12: invokespecial 654	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   15: astore 5
     //   17: aload 5
-    //   19: ldc_w 623
-    //   22: invokevirtual 626	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   19: ldc_w 621
+    //   22: invokevirtual 624	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   25: astore 6
     //   27: aload 5
-    //   29: ldc_w 843
-    //   32: ldc_w 845
-    //   35: invokevirtual 633	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   29: ldc_w 841
+    //   32: ldc_w 843
+    //   35: invokevirtual 631	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   38: astore 5
     //   40: aload_0
     //   41: getfield 115	com/tencent/qqmini/sdk/plugins/FileJsPlugin:mMiniAppContext	Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
-    //   44: ldc 232
-    //   46: invokeinterface 238 2 0
-    //   51: checkcast 232	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
+    //   44: ldc 230
+    //   46: invokeinterface 236 2 0
+    //   51: checkcast 230	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
     //   54: aload 6
-    //   56: invokevirtual 752	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   56: invokevirtual 750	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
     //   59: astore 6
-    //   61: ldc_w 845
+    //   61: ldc_w 843
     //   64: aload 5
-    //   66: invokevirtual 516	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   66: invokevirtual 514	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   69: ifne +220 -> 289
-    //   72: ldc_w 847
+    //   72: ldc_w 845
     //   75: aload 5
-    //   77: invokevirtual 516	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   77: invokevirtual 514	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   80: ifeq +214 -> 294
     //   83: goto +206 -> 289
     //   86: aload 6
-    //   88: invokestatic 360	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   88: invokestatic 358	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   91: ifne +175 -> 266
     //   94: iload_2
     //   95: ifeq +171 -> 266
-    //   98: new 506	java/io/File
+    //   98: new 504	java/io/File
     //   101: dup
     //   102: aload 6
-    //   104: invokespecial 507	java/io/File:<init>	(Ljava/lang/String;)V
+    //   104: invokespecial 505	java/io/File:<init>	(Ljava/lang/String;)V
     //   107: astore 7
-    //   109: new 255	org/json/JSONObject
+    //   109: new 253	org/json/JSONObject
     //   112: dup
-    //   113: invokespecial 256	org/json/JSONObject:<init>	()V
+    //   113: invokespecial 254	org/json/JSONObject:<init>	()V
     //   116: astore 8
-    //   118: ldc_w 847
+    //   118: ldc_w 845
     //   121: aload 5
-    //   123: invokevirtual 516	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   123: invokevirtual 514	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   126: ifeq +68 -> 194
     //   129: aload 6
-    //   131: invokestatic 852	com/tencent/qqmini/sdk/core/utils/SecurityUtil:getFileSHA1	(Ljava/lang/String;)Ljava/lang/String;
+    //   131: invokestatic 850	com/tencent/qqmini/sdk/core/utils/SecurityUtil:getFileSHA1	(Ljava/lang/String;)Ljava/lang/String;
     //   134: astore 5
     //   136: aload 5
     //   138: ifnull +66 -> 204
     //   141: aload 5
-    //   143: invokevirtual 855	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   143: invokevirtual 853	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   146: astore 5
     //   148: aload 8
-    //   150: ldc_w 857
+    //   150: ldc_w 855
     //   153: aload 5
-    //   155: invokevirtual 267	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   155: invokevirtual 265	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   158: pop
     //   159: aload 8
-    //   161: ldc_w 858
+    //   161: ldc_w 856
     //   164: aload 7
-    //   166: invokevirtual 860	java/io/File:length	()J
-    //   169: invokevirtual 863	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   166: invokevirtual 858	java/io/File:length	()J
+    //   169: invokevirtual 861	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   172: pop
     //   173: aload_0
     //   174: aload_1
-    //   175: getfield 428	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
+    //   175: getfield 426	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
     //   178: iconst_1
     //   179: lload_3
     //   180: lload_3
@@ -658,11 +658,11 @@ public class FileJsPlugin
     //   183: invokespecial 121	com/tencent/qqmini/sdk/plugins/FileJsPlugin:onEventFinish	(Ljava/lang/String;ZJJLjava/lang/String;)V
     //   186: aload_1
     //   187: aload 8
-    //   189: invokevirtual 442	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:ok	(Lorg/json/JSONObject;)Ljava/lang/String;
+    //   189: invokevirtual 440	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:ok	(Lorg/json/JSONObject;)Ljava/lang/String;
     //   192: pop
     //   193: return
     //   194: aload 6
-    //   196: invokestatic 868	com/tencent/qqmini/sdk/launcher/utils/MD5Utils:encodeFileHexStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   196: invokestatic 866	com/tencent/qqmini/sdk/launcher/utils/MD5Utils:encodeFileHexStr	(Ljava/lang/String;)Ljava/lang/String;
     //   199: astore 5
     //   201: goto -65 -> 136
     //   204: aconst_null
@@ -670,35 +670,35 @@ public class FileJsPlugin
     //   207: goto -59 -> 148
     //   210: astore 5
     //   212: ldc 57
-    //   214: new 298	java/lang/StringBuilder
+    //   214: new 296	java/lang/StringBuilder
     //   217: dup
-    //   218: invokespecial 299	java/lang/StringBuilder:<init>	()V
-    //   221: ldc_w 870
-    //   224: invokevirtual 305	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: invokespecial 297	java/lang/StringBuilder:<init>	()V
+    //   221: ldc_w 868
+    //   224: invokevirtual 303	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   227: aload 5
-    //   229: invokevirtual 462	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   232: invokevirtual 305	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   235: invokevirtual 309	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   238: invokestatic 315	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   229: invokevirtual 460	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   232: invokevirtual 303	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   235: invokevirtual 307	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   238: invokestatic 313	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   241: aload_0
     //   242: aload_1
-    //   243: getfield 428	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
+    //   243: getfield 426	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
     //   246: iconst_0
     //   247: lload_3
     //   248: lload_3
     //   249: aload 6
     //   251: invokespecial 121	com/tencent/qqmini/sdk/plugins/FileJsPlugin:onEventFinish	(Ljava/lang/String;ZJJLjava/lang/String;)V
     //   254: aload_1
-    //   255: invokevirtual 872	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	()Ljava/lang/String;
+    //   255: invokevirtual 870	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	()Ljava/lang/String;
     //   258: pop
     //   259: return
     //   260: astore_1
     //   261: aload_1
-    //   262: invokevirtual 651	org/json/JSONException:printStackTrace	()V
+    //   262: invokevirtual 649	org/json/JSONException:printStackTrace	()V
     //   265: return
     //   266: aload_0
     //   267: aload_1
-    //   268: getfield 428	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
+    //   268: getfield 426	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:event	Ljava/lang/String;
     //   271: iconst_0
     //   272: lload_3
     //   273: lload_3
@@ -706,8 +706,8 @@ public class FileJsPlugin
     //   276: invokespecial 121	com/tencent/qqmini/sdk/plugins/FileJsPlugin:onEventFinish	(Ljava/lang/String;ZJJLjava/lang/String;)V
     //   279: aload_1
     //   280: aconst_null
-    //   281: ldc_w 874
-    //   284: invokevirtual 432	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	(Lorg/json/JSONObject;Ljava/lang/String;)Ljava/lang/String;
+    //   281: ldc_w 872
+    //   284: invokevirtual 430	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	(Lorg/json/JSONObject;Ljava/lang/String;)Ljava/lang/String;
     //   287: pop
     //   288: return
     //   289: iconst_1
@@ -1141,7 +1141,7 @@ public class FileJsPlugin
       for (String str1 = null;; str1 = ((JSONObject)localObject).optString("data"))
       {
         String str3 = ((JSONObject)localObject).optString("encoding", "utf8");
-        localObject = NativeBuffer.unpackNativeBuffer(this.mMiniAppContext, (JSONObject)localObject, "data");
+        localObject = NativeBuffer.unpackNativeBuffer(paramRequestEvent.jsService, (JSONObject)localObject, "data");
         if (localObject != null) {
           arrayOfByte = ((NativeBuffer)localObject).buf;
         }

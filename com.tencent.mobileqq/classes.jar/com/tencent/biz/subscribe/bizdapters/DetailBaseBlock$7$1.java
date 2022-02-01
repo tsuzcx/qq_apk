@@ -1,13 +1,13 @@
 package com.tencent.biz.subscribe.bizdapters;
 
-import aacd;
-import aacl;
+import aagi;
+import aagq;
 import com.tencent.biz.subscribe.comment.CommentBottomBar;
 
 public class DetailBaseBlock$7$1
   implements Runnable
 {
-  public DetailBaseBlock$7$1(aacl paramaacl) {}
+  public DetailBaseBlock$7$1(aagq paramaagq) {}
   
   public void run()
   {

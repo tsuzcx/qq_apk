@@ -1,19 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class axwg
-  implements DialogInterface.OnClickListener
+  extends aohi
 {
-  axwg(axwf paramaxwf, bgpa parambgpa) {}
+  axwg(axwf paramaxwf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, List<Long> paramList, int paramInt)
   {
-    this.jdField_a_of_type_Bgpa.dismiss();
-    this.jdField_a_of_type_Axwf.a.e();
-    paramDialogInterface = new Intent("tribe_profile_edit_finish");
-    BaseApplicationImpl.getApplication().sendBroadcast(paramDialogInterface);
+    if (paramInt == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyProxy", 2, "onAddShieldList from nearby");
+      }
+      axwf.a(this.a, 4113, new Object[] { Boolean.valueOf(paramBoolean), paramList });
+    }
+  }
+  
+  protected void b(boolean paramBoolean, List<Long> paramList, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyProxy", 2, "onDeleteShieldList from nearby");
+      }
+      axwf.a(this.a, 4114, new Object[] { Boolean.valueOf(paramBoolean), paramList });
+    }
   }
 }
 

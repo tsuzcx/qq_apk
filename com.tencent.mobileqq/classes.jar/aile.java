@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 
 class aile
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  aile(aild paramaild) {}
+  aile(aikq paramaikq) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    aild.a(this.a).a();
-    ChatActivityUtils.a(aild.a(this.a), aild.a(this.a), aild.a(this.a).jdField_a_of_type_Int, aild.a(this.a).jdField_a_of_type_JavaLangString, true, true, null, null);
-    bcst.b(aild.a(this.a), "CliOper", "", "", "0X8003F00", "0X8003F00", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.jdField_a_of_type_Axxr != null) {
+      this.a.jdField_a_of_type_Axxr.a(paramContext);
+    }
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
   }
 }
 

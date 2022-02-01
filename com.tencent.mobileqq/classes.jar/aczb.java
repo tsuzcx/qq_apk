@@ -1,27 +1,46 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.os.Build;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
 
 public class aczb
-  extends aczg
 {
-  public int a()
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    return 1000;
-  }
-  
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
-  {
-    new bbzc().c(paramList, paramList1, paramStringBuilder);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (5 == paramElem.common_elem.uint32_service_type.get());
+    Object localObject = blhc.a("406d43");
+    int i;
+    HashMap localHashMap;
+    if ((!TextUtils.isEmpty(((blhe)localObject).a)) && (((blhe)localObject).a.startsWith("66666")))
+    {
+      i = 1;
+      boolean bool = Build.FINGERPRINT.contains("generic/vbox86tp/");
+      if ((i != 0) || (bool))
+      {
+        localHashMap = new HashMap();
+        if (i == 0) {
+          break label115;
+        }
+        localObject = "1";
+        label63:
+        localHashMap.put("imei_match", localObject);
+        if (!bool) {
+          break label121;
+        }
+      }
+    }
+    label115:
+    label121:
+    for (localObject = "1";; localObject = "0")
+    {
+      localHashMap.put("finger_print_match", localObject);
+      bdmc.a(BaseApplicationImpl.getContext()).a(paramQQAppInterface.getCurrentAccountUin(), "game_assist_vbox_stat", true, 0L, 0L, localHashMap, null);
+      return;
+      i = 0;
+      break;
+      localObject = "0";
+      break label63;
+    }
   }
 }
 

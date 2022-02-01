@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.face;
 
 import AvatarInfo.QQHeadInfo;
-import aqlf;
+import arai;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -13,7 +13,7 @@ public class QQHeadDownloadHandler
   extends FaceDownloader
 {
   private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130840492, 2130850681, 2130850682, 2130850683 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130840502, 2130850698, 2130850699, 2130850700 };
   private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private MqqHandler b = new MqqHandler(ThreadManager.getSubThreadLooper());
@@ -259,7 +259,7 @@ public class QQHeadDownloadHandler
   
   public String a()
   {
-    return aqlf.a(0);
+    return arai.a(0);
   }
   
   /* Error */
@@ -412,7 +412,7 @@ public class QQHeadDownloadHandler
     //   264: getfield 46	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   267: invokevirtual 229	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   270: invokevirtual 235	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
-    //   273: invokestatic 240	bgle:a	(Landroid/content/Context;)Z
+    //   273: invokestatic 240	bhlf:a	(Landroid/content/Context;)Z
     //   276: ifeq +127 -> 403
     //   279: iload 15
     //   281: istore 10
@@ -424,7 +424,7 @@ public class QQHeadDownloadHandler
     //   293: istore_3
     //   294: iload 29
     //   296: istore 25
-    //   298: invokestatic 244	bgjq:a	()Z
+    //   298: invokestatic 244	bhjr:a	()Z
     //   301: ifeq +102 -> 403
     //   304: iload 15
     //   306: istore 10
@@ -454,23 +454,23 @@ public class QQHeadDownloadHandler
     //   351: getfield 46	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   354: invokevirtual 229	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   357: invokevirtual 235	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
-    //   360: invokestatic 240	bgle:a	(Landroid/content/Context;)Z
+    //   360: invokestatic 240	bhlf:a	(Landroid/content/Context;)Z
     //   363: ifeq +23 -> 386
-    //   366: invokestatic 244	bgjq:a	()Z
+    //   366: invokestatic 244	bhjr:a	()Z
     //   369: istore 23
     //   371: iload 23
     //   373: ifeq +13 -> 386
     //   376: ldc 246
-    //   378: getstatic 251	anhk:bL	Ljava/lang/String;
+    //   378: getstatic 251	antf:bL	Ljava/lang/String;
     //   381: iconst_1
-    //   382: invokestatic 256	bgmg:a	(Ljava/lang/String;Ljava/lang/String;Z)I
+    //   382: invokestatic 256	bhmi:a	(Ljava/lang/String;Ljava/lang/String;Z)I
     //   385: pop
     //   386: aload_0
     //   387: getfield 46	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   390: invokevirtual 229	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   393: invokevirtual 235	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
     //   396: iconst_0
-    //   397: invokestatic 259	bgle:a	(Landroid/content/Context;Z)V
+    //   397: invokestatic 259	bhlf:a	(Landroid/content/Context;Z)V
     //   400: aload 31
     //   402: monitorexit
     //   403: iload 15
@@ -766,7 +766,7 @@ public class QQHeadDownloadHandler
     //   988: getfield 46	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   991: sipush 199
     //   994: invokevirtual 337	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   997: checkcast 339	aopm
+    //   997: checkcast 339	apdc
     //   1000: astore 31
     //   1002: iload_2
     //   1003: istore_3
@@ -809,13 +809,13 @@ public class QQHeadDownloadHandler
     //   1072: aload_1
     //   1073: astore 34
     //   1075: aload 31
-    //   1077: invokevirtual 340	aopm:a	()Z
+    //   1077: invokevirtual 340	apdc:a	()Z
     //   1080: ifeq +37 -> 1117
     //   1083: aload 31
     //   1085: aload 35
     //   1087: getfield 190	AvatarInfo/QQHeadInfo:uin	J
     //   1090: invokestatic 343	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   1093: invokevirtual 345	aopm:a	(Ljava/lang/String;)V
+    //   1093: invokevirtual 345	apdc:a	(Ljava/lang/String;)V
     //   1096: aload_1
     //   1097: astore 34
     //   1099: iload 24
@@ -955,7 +955,7 @@ public class QQHeadDownloadHandler
     //   1405: getfield 46	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1408: sipush 199
     //   1411: invokevirtual 337	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1414: checkcast 339	aopm
+    //   1414: checkcast 339	apdc
     //   1417: astore 33
     //   1419: iload 4
     //   1421: istore_3
@@ -998,13 +998,13 @@ public class QQHeadDownloadHandler
     //   1489: aload_1
     //   1490: astore 34
     //   1492: aload 33
-    //   1494: invokevirtual 340	aopm:a	()Z
+    //   1494: invokevirtual 340	apdc:a	()Z
     //   1497: ifeq -380 -> 1117
     //   1500: aload 33
     //   1502: aload 35
     //   1504: getfield 190	AvatarInfo/QQHeadInfo:uin	J
     //   1507: invokestatic 343	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   1510: invokevirtual 345	aopm:a	(Ljava/lang/String;)V
+    //   1510: invokevirtual 345	apdc:a	(Ljava/lang/String;)V
     //   1513: iload 4
     //   1515: istore_3
     //   1516: aload 31
@@ -1044,18 +1044,18 @@ public class QQHeadDownloadHandler
     //   1581: getfield 46	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1584: sipush 199
     //   1587: invokevirtual 337	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1590: checkcast 339	aopm
+    //   1590: checkcast 339	apdc
     //   1593: astore_1
     //   1594: aload_1
     //   1595: ifnull -288 -> 1307
     //   1598: aload_1
-    //   1599: invokevirtual 340	aopm:a	()Z
+    //   1599: invokevirtual 340	apdc:a	()Z
     //   1602: ifeq -295 -> 1307
     //   1605: aload_1
     //   1606: aload 35
     //   1608: getfield 190	AvatarInfo/QQHeadInfo:uin	J
     //   1611: invokestatic 343	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   1614: invokevirtual 345	aopm:a	(Ljava/lang/String;)V
+    //   1614: invokevirtual 345	apdc:a	(Ljava/lang/String;)V
     //   1617: return
     //   1618: astore_1
     //   1619: sipush 9202
@@ -1377,20 +1377,20 @@ public class QQHeadDownloadHandler
     //   2232: getfield 46	com/tencent/mobileqq/app/face/QQHeadDownloadHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   2235: sipush 199
     //   2238: invokevirtual 337	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   2241: checkcast 339	aopm
+    //   2241: checkcast 339	apdc
     //   2244: astore 31
     //   2246: iload 25
     //   2248: ifne +29 -> 2277
     //   2251: aload 31
     //   2253: ifnull +24 -> 2277
     //   2256: aload 31
-    //   2258: invokevirtual 340	aopm:a	()Z
+    //   2258: invokevirtual 340	apdc:a	()Z
     //   2261: ifeq +16 -> 2277
     //   2264: aload 31
     //   2266: aload 35
     //   2268: getfield 190	AvatarInfo/QQHeadInfo:uin	J
     //   2271: invokestatic 343	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   2274: invokevirtual 345	aopm:a	(Ljava/lang/String;)V
+    //   2274: invokevirtual 345	apdc:a	(Ljava/lang/String;)V
     //   2277: aload_1
     //   2278: athrow
     //   2279: astore_1
@@ -1798,7 +1798,7 @@ public class QQHeadDownloadHandler
   
   public String b()
   {
-    return aqlf.a(1);
+    return arai.a(1);
   }
 }
 

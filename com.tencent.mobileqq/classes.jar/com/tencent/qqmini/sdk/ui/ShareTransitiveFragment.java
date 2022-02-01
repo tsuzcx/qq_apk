@@ -11,6 +11,7 @@ import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ShareProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.ShareData;
+import com.tencent.qqmini.sdk.launcher.ui.MiniBaseFragment;
 
 @MiniKeep
 public class ShareTransitiveFragment

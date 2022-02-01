@@ -1,26 +1,35 @@
-import com.tencent.av.share.AVSchema;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class lxp
-  implements adsx
+  implements ServiceConnection
 {
-  public lxp(AVSchema paramAVSchema, long paramLong) {}
+  public lxp(QQServiceForAV paramQQServiceForAV) {}
   
-  public void a()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onCancel, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
-    this.jdField_a_of_type_ComTencentAvShareAVSchema.b();
+    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceConnected name=" + paramComponentName + ", service=" + paramIBinder);
+    QQServiceForAV.b(this.a, true);
   }
   
-  public void b()
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onBeforeStartActivity, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
-  }
-  
-  public void c()
-  {
-    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onAfterStartActivity, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
-    this.jdField_a_of_type_ComTencentAvShareAVSchema.b();
+    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceDisconnected name=" + paramComponentName);
+    QQServiceForAV.b(this.a, false);
+    try
+    {
+      BaseApplicationImpl.getContext().unbindService(this);
+      return;
+    }
+    catch (Throwable paramComponentName)
+    {
+      QLog.e("QQServiceForAV", 1, "onServiceDisconnected disconnect exception:" + paramComponentName, paramComponentName);
+    }
   }
 }
 

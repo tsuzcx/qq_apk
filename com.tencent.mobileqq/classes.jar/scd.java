@@ -1,57 +1,32 @@
+import android.app.Activity;
 import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public class scd
-  extends MSFServlet
+class scd
+  extends sbh
 {
-  public String[] getPreferSSOCommands()
+  scd(sbi paramsbi) {}
+  
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    return null;
+    paramString = new Intent(sbi.a(this.a), ReadInJoyDeliverBiuActivity.class);
+    if (paramBaseArticleInfo.busiType == 6) {
+      paramString.putExtra("feedsType", sbi.a(this.a).mFeedType);
+    }
+    paramString.putExtra("ARG_VIDEO_ARTICLE_ID", sbi.a(this.a).mArticleID);
+    paramString.putExtra("biu_src", 2);
+    paramString.putExtra("arg_from_type", 8);
+    paramString.putExtra("arg_article_info", (ArticleInfo)paramBaseArticleInfo);
+    sbi.a(this.a).startActivityForResult(paramString, 102);
+    sbi.a(this.a).overridePendingTransition(0, 0);
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public int c()
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("VideoFeedsServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
-      }
-      ((VideoFeedsAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.i("VideoFeedsServlet", 4, "send: " + paramIntent.getServiceCmd());
-        }
-      }
-    }
+    return 0;
   }
 }
 

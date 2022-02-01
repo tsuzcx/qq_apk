@@ -1,25 +1,14 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.freshnews.feed.NearbyImgLoader.RequestLoadedImgTask;
-
-public class auor
-  implements URLDrawableHandler
+final class auor
+  implements bjhv
 {
-  public auor(NearbyImgLoader.RequestLoadedImgTask paramRequestLoadedImgTask) {}
+  auor(auoj paramauoj) {}
   
-  public void doCancel() {}
-  
-  public boolean isCancelled()
+  public void a(int paramInt)
   {
-    return false;
+    if (paramInt == 2) {
+      this.a.a();
+    }
   }
-  
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
-  
-  public void publishProgress(int paramInt) {}
 }
 
 

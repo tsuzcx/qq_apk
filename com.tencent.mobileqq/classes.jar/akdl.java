@@ -1,23 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
 
 public class akdl
-  implements DialogInterface.OnClickListener
+  implements bgrl
 {
-  public akdl(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
+  private long jdField_a_of_type_Long;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public akdl(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, long paramLong)
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("IphoneTitleBarActivity", 2, "new user guild confirm unbind");
-      }
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA5", "0X8006AA5", 0, 0, "", "", "", "");
-    }
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
   }
 }
 

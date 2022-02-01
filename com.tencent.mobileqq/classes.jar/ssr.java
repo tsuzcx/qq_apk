@@ -1,70 +1,56 @@
-import android.app.Activity;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseArray;
+import java.util.Stack;
 
-public class ssr
+class ssr
 {
-  private static ssr jdField_a_of_type_Ssr;
-  private Integer jdField_a_of_type_JavaLangInteger;
-  private ubl jdField_a_of_type_Ubl;
-  private Integer b;
+  SparseArray<Integer> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  Stack<String> jdField_a_of_type_JavaUtilStack = new Stack();
+  SparseArray<Object> b = new SparseArray();
   
-  public static ssr a(Activity paramActivity)
+  public int a()
   {
-    int i;
-    int j;
-    if (jdField_a_of_type_Ssr == null)
+    int j = -1;
+    int i = 3;
+    int k = 0;
+    if (k < this.jdField_a_of_type_AndroidUtilSparseArray.size())
     {
-      jdField_a_of_type_Ssr = new ssr();
-      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-      paramActivity.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-      i = localDisplayMetrics.widthPixels;
-      j = localDisplayMetrics.heightPixels;
-    }
-    try
-    {
-      jdField_a_of_type_Ssr.jdField_a_of_type_Ubl = new ubl(paramActivity, i, j);
-      jdField_a_of_type_Ssr.jdField_a_of_type_Ubl.a(new sss());
-      return jdField_a_of_type_Ssr;
-    }
-    catch (SecurityException paramActivity)
-    {
-      for (;;)
-      {
-        QLog.e("ReadInJoyScreenShotReporter", 1, "SecurityException error = " + paramActivity.toString());
-        jdField_a_of_type_Ssr.jdField_a_of_type_Ubl = null;
+      if (this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(k) <= j) {
+        break label72;
       }
+      i = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(k);
+      j = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(k)).intValue();
+    }
+    for (;;)
+    {
+      int m = k + 1;
+      k = j;
+      j = i;
+      i = k;
+      k = m;
+      break;
+      return i;
+      label72:
+      m = j;
+      j = i;
+      i = m;
     }
   }
   
-  public void a()
+  public int b()
   {
-    if (jdField_a_of_type_Ssr != null)
+    int i = this.jdField_a_of_type_JavaUtilStack.size() - 1;
+    while (i >= 0)
     {
-      jdField_a_of_type_Ssr.jdField_a_of_type_JavaLangInteger = null;
-      jdField_a_of_type_Ssr.b = null;
+      String str = (String)this.jdField_a_of_type_JavaUtilStack.get(i);
+      if (ssn.a().equals(str)) {
+        return 3;
+      }
+      if (ssn.b().equals(str)) {
+        return 2;
+      }
+      i -= 1;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (jdField_a_of_type_Ssr != null)
-    {
-      jdField_a_of_type_Ssr.jdField_a_of_type_JavaLangInteger = new Integer(paramInt2);
-      jdField_a_of_type_Ssr.b = new Integer(paramInt1);
-    }
-  }
-  
-  public void b()
-  {
-    if ((jdField_a_of_type_Ssr != null) && (jdField_a_of_type_Ssr.jdField_a_of_type_Ubl != null))
-    {
-      jdField_a_of_type_Ssr.jdField_a_of_type_Ubl.a();
-      jdField_a_of_type_Ssr.jdField_a_of_type_Ubl = null;
-    }
-    jdField_a_of_type_Ssr = null;
+    return 1;
   }
 }
 

@@ -1,16 +1,21 @@
 package com.tencent.qqmini.sdk.server;
 
-import java.util.Comparator;
-import java.util.List;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WnsConfigProxy;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
 class LaunchManagerService$2
-  implements Comparator<LaunchManagerService.MiniAppSubProcessorInfo>
+  implements Runnable
 {
   LaunchManagerService$2(LaunchManagerService paramLaunchManagerService) {}
   
-  public int compare(LaunchManagerService.MiniAppSubProcessorInfo paramMiniAppSubProcessorInfo1, LaunchManagerService.MiniAppSubProcessorInfo paramMiniAppSubProcessorInfo2)
+  public void run()
   {
-    return -(paramMiniAppSubProcessorInfo1.allMiniAppInfo.size() - paramMiniAppSubProcessorInfo2.allMiniAppInfo.size());
+    QMLog.i("minisdk-start_LaunchManagerService", "zzconfig start to loadServer");
+    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
+    if (localWnsConfigProxy != null) {
+      localWnsConfigProxy.loadConfigFromServer();
+    }
   }
 }
 

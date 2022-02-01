@@ -1,43 +1,72 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.os.Build.VERSION;
+import android.view.View;
 
 public class aazv
-  implements SensorEventListener
 {
-  protected byte a;
-  protected String a;
+  private int a;
+  private int b;
   
-  public aazv(aazu paramaazu, byte paramByte, String paramString)
+  public aazv(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Byte = paramByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public static aazv a(int paramInt)
   {
-    switch (this.jdField_a_of_type_Byte)
+    switch (paramInt)
     {
+    default: 
+      return new aazv(0, -1);
+    case 0: 
+      return new aazv(0, 0);
+    case 1: 
+      return new aazv(0, -1);
     }
-    do
+    return new aazv(0, -2);
+  }
+  
+  public static aazv b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return new aazv(1, -1);
+    case 3: 
+      return new aazv(1, 0);
+    case 1: 
+      return new aazv(1, -1);
+    }
+    return new aazv(1, -2);
+  }
+  
+  public void a(View paramView)
+  {
+    if (this.a == 0) {
+      switch (this.b)
+      {
+      default: 
+        paramView.setPivotX(this.b);
+      }
+    }
+    while (this.a != 1)
     {
       return;
-      float[] arrayOfFloat = new float[4];
-      if (Build.VERSION.SDK_INT >= 9)
-      {
-        SensorManager localSensorManager = this.jdField_a_of_type_Aazu.a;
-        SensorManager.getQuaternionFromVector(arrayOfFloat, paramSensorEvent.values);
-        aazu.a(this.jdField_a_of_type_Aazu)[0] = arrayOfFloat[1];
-        aazu.a(this.jdField_a_of_type_Aazu)[1] = arrayOfFloat[2];
-        aazu.a(this.jdField_a_of_type_Aazu)[2] = arrayOfFloat[3];
-        aazu.a(this.jdField_a_of_type_Aazu)[3] = arrayOfFloat[0];
-      }
-    } while ((!aazu.a()) || (!aazu.b()));
-    this.jdField_a_of_type_Aazu.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(aazu.a(this.jdField_a_of_type_Aazu)[0]), String.valueOf(aazu.a(this.jdField_a_of_type_Aazu)[1]), String.valueOf(aazu.a(this.jdField_a_of_type_Aazu)[2]), String.valueOf(aazu.a(this.jdField_a_of_type_Aazu)[3]) });
+      paramView.setPivotX(paramView.getWidth() * 0.5F);
+      return;
+      paramView.setPivotX(paramView.getWidth());
+      return;
+    }
+    switch (this.b)
+    {
+    default: 
+      paramView.setPivotY(this.b);
+      return;
+    case -1: 
+      paramView.setPivotY(paramView.getHeight() * 0.5F);
+      return;
+    }
+    paramView.setPivotY(paramView.getHeight());
   }
 }
 

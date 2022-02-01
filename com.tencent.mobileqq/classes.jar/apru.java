@@ -1,21 +1,18 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
-import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArDefaultSetting;
 
-public class apru
-  implements View.OnClickListener
+public final class apru
+  implements Parcelable.Creator<ArDefaultSetting>
 {
-  public apru(ArkAppListActivity paramArkAppListActivity, String paramString) {}
-  
-  public void onClick(View paramView)
+  public ArDefaultSetting a(Parcel paramParcel)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity, ArkAuthorityInfoActivity.class);
-    localIntent.putExtra("intent_extra_authority_app_name", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new ArDefaultSetting(paramParcel);
+  }
+  
+  public ArDefaultSetting[] a(int paramInt)
+  {
+    return new ArDefaultSetting[paramInt];
   }
 }
 

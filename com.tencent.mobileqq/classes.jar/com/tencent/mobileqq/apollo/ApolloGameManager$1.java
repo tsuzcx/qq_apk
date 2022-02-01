@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo;
 
-import amgz;
+import amst;
 
 public class ApolloGameManager$1
   implements Runnable
 {
-  public ApolloGameManager$1(amgz paramamgz) {}
+  public ApolloGameManager$1(amst paramamst) {}
   
   public void run()
   {
-    if (amgz.a(this.this$0) == null) {}
+    if (amst.a(this.this$0) == null) {}
   }
 }
 

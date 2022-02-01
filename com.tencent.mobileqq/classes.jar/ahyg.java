@@ -1,67 +1,13 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import java.util.List;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahyg
-  extends anuw
+public class ahyg
+  implements ahyf
 {
-  ahyg(ahxt paramahxt) {}
-  
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
-    do
-    {
-      int k;
-      do
-      {
-        return;
-        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-        if (paramList == null) {}
-        for (int i = 0;; i = paramList.size())
-        {
-          int j = 0;
-          k = 0;
-          while ((k == 0) && (j < i))
-          {
-            if (bgjw.a(String.valueOf(paramList.get(j)), str)) {
-              k = 1;
-            }
-            j += 1;
-          }
-        }
-      } while (k == 0);
-      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
-    } while (!paramBoolean);
-    this.a.bo();
-  }
-  
-  protected void b(boolean paramBoolean, List<Long> paramList)
-  {
-    int k = 0;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
-    do
-    {
-      do
-      {
-        return;
-        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-        if (paramList == null) {}
-        for (int i = 0;; i = paramList.size())
-        {
-          int j = 0;
-          while ((k == 0) && (j < i))
-          {
-            if (bgjw.a(String.valueOf(paramList.get(j)), str)) {
-              k = 1;
-            }
-            j += 1;
-          }
-        }
-      } while (k == 0);
-      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, true);
-    } while (!paramBoolean);
-    this.a.bo();
+    paramahed.i(paramahfq.b);
   }
 }
 

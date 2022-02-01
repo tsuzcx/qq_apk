@@ -1,45 +1,30 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class psh
-  implements Animator.AnimatorListener
+class psh
+  implements aasd
 {
-  public psh(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
+  psh(psd parampsd, String paramString) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void callback(Bundle paramBundle)
   {
-    pmk.a().a(null, 110, true, null);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    pmk.a().a(null, 110, true, null);
-    if (ReadInjoyIMAXAdFragment.a(this.a) != null)
-    {
-      ReadInjoyIMAXAdFragment.a(this.a).setVisibility(0);
-      ReadInjoyIMAXAdFragment.b(this.a).setVisibility(0);
-      ReadInjoyIMAXAdFragment.c(this.a).setVisibility(0);
-      ReadInjoyIMAXAdFragment.b(this.a).setVisibility(0);
-      if (ReadInjoyIMAXAdFragment.e(this.a) != 1001) {
-        break label90;
-      }
-      ReadInjoyIMAXAdFragment.c(this.a).setVisibility(0);
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReadInJoyWebviewPlugin", 4, "receive cancelLoadSkin callback resp:" + paramBundle.toString());
     }
-    label90:
-    while (ReadInjoyIMAXAdFragment.e(this.a) != 1002) {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId"));
+      this.jdField_a_of_type_Psd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
       return;
     }
-    ReadInjoyIMAXAdFragment.c(this.a).setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    pmk.a().a(null, 110, false, null);
+    catch (JSONException paramBundle)
+    {
+      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
+      this.jdField_a_of_type_Psd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
+    }
   }
 }
 

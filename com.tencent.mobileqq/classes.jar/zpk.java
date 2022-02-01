@@ -1,182 +1,78 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.View.OnLayoutChangeListener;
-import android.view.ViewGroup;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
-public abstract class zpk
-  implements View.OnAttachStateChangeListener, View.OnLayoutChangeListener
+public class zpk
 {
-  protected float a;
-  protected int a;
-  protected View a;
-  protected ViewGroup a;
-  protected boolean a;
-  protected float b;
-  protected int b;
-  protected View b;
-  protected float c;
-  protected float d;
-  protected float e;
-  protected float f;
-  protected float g;
-  protected float h;
-  
-  static
+  public static int a(int paramInt)
   {
-    if (!zpk.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    Object localObject = QQStoryContext.a();
+    if (localObject == null)
     {
-      jdField_b_of_type_Boolean = bool;
-      return;
+      yuk.c("Q.qqstory.tag.RedPointUtils", "getStoryRedPointByAppId() error, app is null", new Throwable());
+      return 0;
     }
-  }
-  
-  public zpk(Context paramContext, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(paramInt, null, false);
-    this.jdField_a_of_type_AndroidViewView.addOnLayoutChangeListener(this);
-    this.jdField_a_of_type_AndroidViewView.addOnAttachStateChangeListener(this);
-    this.jdField_b_of_type_AndroidViewView = b();
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public Bitmap a()
-  {
-    Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_AndroidViewView.getWidth(), this.jdField_a_of_type_AndroidViewView.getHeight(), Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(localBitmap);
-    this.jdField_a_of_type_AndroidViewView.draw(localCanvas);
-    return localBitmap;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public final void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
+    localObject = ((nlb)((QQAppInterface)localObject).getManager(70)).a(paramInt);
+    if (localObject == null)
     {
-      return;
-      b();
-    } while (this.jdField_b_of_type_AndroidViewView == null);
-    c();
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    yqp.b("InteractPasterWidget", "setPositionInfo:[screenWidth=%s, screenHeight=%s, targetWidth=%s, targetHeight=%s, srcPollWidth=%s, srcPollHeight=%s, srcPollX=%s, srcPollY=%s, rotation=%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3) });
-    this.jdField_a_of_type_Boolean = true;
-    this.c = 0.0F;
-    this.d = 0.0F;
-    if (paramInt2 * 1.0F / paramInt1 > paramInt4 * 1.0F / paramInt3)
-    {
-      this.jdField_a_of_type_Float = (paramInt3 * 1.0F / paramInt1);
-      this.d = (-(paramInt2 * this.jdField_a_of_type_Float - paramInt4) / 2.0F);
+      yuk.a("Q.qqstory.tag.RedPointUtils", "getStoryRedPointByAppId(%d) info is null", Integer.valueOf(paramInt));
+      return 0;
     }
+    yuk.a("Q.qqstory.tag.RedPointUtils", "getStoryRedPointByAppId(%d) info is %s", Integer.valueOf(paramInt), zow.a((MessageMicro)localObject));
+    paramInt = ((oidb_0x791.RedDotInfo)localObject).uint32_number.get();
+    boolean bool = ((oidb_0x791.RedDotInfo)localObject).bool_display_reddot.get();
+    long l = ((oidb_0x791.RedDotInfo)localObject).uint32_last_time.get();
+    if ((paramInt > 0) && (bool)) {}
     for (;;)
     {
-      this.jdField_a_of_type_Int = paramInt5;
-      this.jdField_b_of_type_Int = paramInt6;
-      this.e = paramFloat1;
-      this.f = paramFloat2;
-      this.jdField_b_of_type_Float = paramFloat3;
-      return;
-      this.jdField_a_of_type_Float = (paramInt4 * 1.0F / paramInt2);
-      this.c = (-(paramInt1 * this.jdField_a_of_type_Float - paramInt3) / 2.0F);
+      return paramInt;
+      paramInt = 0;
     }
   }
   
-  public void a(boolean paramBoolean)
+  public static int a(QQAppInterface paramQQAppInterface)
   {
-    View localView;
-    if (this.jdField_b_of_type_AndroidViewView != null)
+    return ((wwh)paramQQAppInterface.getManager(252)).a;
+  }
+  
+  public static BusinessInfoCheckUpdate.AppInfo a(int paramInt1, String paramString, int paramInt2)
+  {
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = new BusinessInfoCheckUpdate.AppInfo();
+    localAppInfo.path.set("null");
+    localAppInfo.num.set(0);
+    localAppInfo.type.set(-1);
+    localAppInfo.iNewFlag.set(0);
+    localAppInfo.appset.set(-1);
+    if (paramInt1 != -1)
     {
-      localView = this.jdField_b_of_type_AndroidViewView;
-      if (!paramBoolean) {
-        break label24;
+      localAppInfo.uiAppId.set(0);
+      localAppInfo.type.set(paramInt1);
+      localAppInfo.iNewFlag.set(1);
+      localAppInfo.appset.set(paramInt2);
+      localAppInfo.mission_level.set(0);
+      BusinessInfoCheckUpdate.RedDisplayInfo localRedDisplayInfo = new BusinessInfoCheckUpdate.RedDisplayInfo();
+      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+      localRedTypeInfo.red_type.set(paramInt1);
+      if (!TextUtils.isEmpty(paramString)) {
+        localRedTypeInfo.red_content.set(paramString);
       }
+      localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
+      localRedDisplayInfo.tab_display_info.set(localRedTypeInfo);
+      localRedDisplayInfo.red_type_info.add(localRedTypeInfo);
+      localAppInfo.red_display_info.set(localRedDisplayInfo);
     }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
-    }
+    return localAppInfo;
   }
-  
-  public abstract void a(String[] paramArrayOfString);
-  
-  public Rect[] a()
-  {
-    return null;
-  }
-  
-  protected View b()
-  {
-    return null;
-  }
-  
-  protected void b()
-  {
-    int i = this.jdField_a_of_type_AndroidViewView.getWidth();
-    int j = this.jdField_a_of_type_AndroidViewView.getHeight();
-    this.g = (this.jdField_a_of_type_Float * this.jdField_a_of_type_Int / i);
-    this.h = (this.jdField_a_of_type_Float * this.jdField_b_of_type_Int / j);
-    if ((i == 0) || (j == 0)) {
-      return;
-    }
-    float f1 = this.e * this.jdField_a_of_type_Float + this.c;
-    float f2 = this.f * this.jdField_a_of_type_Float + this.d;
-    this.jdField_a_of_type_AndroidViewView.setX(f1 - i * 1.0F / 2.0F);
-    this.jdField_a_of_type_AndroidViewView.setY(f2 - j * 1.0F / 2.0F);
-    this.jdField_a_of_type_AndroidViewView.setRotation(this.jdField_b_of_type_Float);
-    this.jdField_a_of_type_AndroidViewView.setScaleX(this.g);
-    this.jdField_a_of_type_AndroidViewView.setScaleY(this.h);
-    yqp.b("InteractPasterWidget", "relayoutWidgetView view center (%.2f, %.2f) rotation(%.2f) scale(%.2f, %.2f) widgets(%d, %d)", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(this.jdField_b_of_type_Float), Float.valueOf(this.g), Float.valueOf(this.h), Integer.valueOf(i), Integer.valueOf(j) });
-    yqp.a("InteractPasterWidget", "relayoutPollView offset(%.2f, %.2f)", Float.valueOf(this.c), Float.valueOf(this.d));
-  }
-  
-  protected void c() {}
-  
-  public final void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    if (paramView == this.jdField_b_of_type_AndroidViewView)
-    {
-      yqp.b("InteractPasterWidget", "attendWidget onLayoutChange (%d, %d, %d, %d) -> (%d, %d, %d, %d)", new Object[] { Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-      c();
-      return;
-    }
-    yqp.b("InteractPasterWidget", "onLayoutChange (%d, %d, %d, %d) -> (%d, %d, %d, %d)", new Object[] { Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    a();
-  }
-  
-  public void onViewAttachedToWindow(View paramView)
-  {
-    paramView = paramView.getParent();
-    if ((!jdField_b_of_type_Boolean) && ((paramView == null) || (!(paramView instanceof ViewGroup)))) {
-      throw new AssertionError();
-    }
-    paramView = (ViewGroup)paramView;
-    if (paramView.getId() == 2131372754)
-    {
-      if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-        this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_b_of_type_AndroidViewView);
-      }
-      this.jdField_a_of_type_AndroidViewViewGroup = paramView;
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_b_of_type_AndroidViewView);
-      this.jdField_b_of_type_AndroidViewView.addOnLayoutChangeListener(this);
-    }
-  }
-  
-  public void onViewDetachedFromWindow(View paramView) {}
 }
 
 

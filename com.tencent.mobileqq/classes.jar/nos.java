@@ -1,23 +1,12 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
 
-public class nos
+final class nos
+  extends ThreadLocal<CharsetDecoder>
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<String> a;
-  String b;
-  
-  nos(noq paramnoq)
+  protected CharsetDecoder a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long;
+    return Charset.forName("UTF-8").newDecoder();
   }
 }
 

@@ -1,84 +1,71 @@
-import android.accounts.Account;
-import android.annotation.SuppressLint;
-import android.content.AbstractThreadedSyncAdapter;
-import android.content.ContentProviderClient;
-import android.content.Context;
-import android.content.SyncResult;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class ardj
-  extends AbstractThreadedSyncAdapter
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/config/business/BrowserOpenConfProcessor;", "Lcom/tencent/mobileqq/config/IQConfigProcessor;", "Lcom/tencent/mobileqq/config/business/BrowserOpenBean;", "()V", "clazz", "Ljava/lang/Class;", "isNeedCompressed", "", "isNeedStoreLargeFile", "migrateOldOrDefaultContent", "type", "", "migrateOldVersion", "onParsed", "confFiles", "", "Lcom/tencent/mobileqq/config/QConfItem;", "([Lcom/tencent/mobileqq/config/QConfItem;)Lcom/tencent/mobileqq/config/business/BrowserOpenBean;", "onReqFailed", "", "failCode", "onUpdate", "newConf", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ardj
+  extends arac<ardi>
 {
-  private Context a;
-  
-  public ardj(Context paramContext, boolean paramBoolean)
+  @NotNull
+  public ardi a(int paramInt)
   {
-    super(paramContext, paramBoolean);
-    this.a = paramContext;
+    return new ardi();
   }
   
-  public void onPerformSync(Account paramAccount, Bundle paramBundle, String paramString, ContentProviderClient paramContentProviderClient, SyncResult paramSyncResult)
+  @Nullable
+  public ardi a(@NotNull araj[] paramArrayOfaraj)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync");
-    }
-    if (!"Success".equals(BaseApplicationImpl.sInjectResult)) {}
-    do
+    Intrinsics.checkParameterIsNotNull(paramArrayOfaraj, "confFiles");
+    if ((paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
     {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramAccount = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-          if ((paramAccount == null) || (!paramAccount.isLogin()))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync | app is null or not login, " + paramAccount);
-          }
-        }
-        catch (Throwable paramAccount)
-        {
-          for (;;)
-          {
-            QLog.e("ContactSync.SyncAdapter", 1, "onPerformSync exception", paramAccount);
-            paramAccount = null;
-          }
-          try
-          {
-            ((ContactSyncManager)paramAccount.getManager(41)).a(1);
-            return;
-          }
-          catch (Throwable paramAccount) {}
-        }
+      ardi localardi = ardk.a(paramArrayOfaraj[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("[BrowserOpt] H5BrowserOpenConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync | syncAllContacts exception", paramAccount);
+      return localardi;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("[BrowserOpt] H5BrowserOpenConfProcessor", 2, "onParsed is null");
+    }
+    return null;
   }
   
-  @SuppressLint({"NewApi"})
-  public void onSyncCanceled()
+  public void a(@NotNull ardi paramardi)
   {
+    Intrinsics.checkParameterIsNotNull(paramardi, "newConf");
     if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.SyncAdapter", 2, "onSyncCanceled()");
+      QLog.d("[BrowserOpt] H5BrowserOpenConfProcessor", 2, "onUpdate " + paramardi);
     }
-    super.onSyncCanceled();
   }
   
-  @SuppressLint({"NewApi"})
-  public void onSyncCanceled(Thread paramThread)
+  @NotNull
+  public Class<ardi> clazz()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.SyncAdapter", 2, "onSyncCanceled(thread)");
-    }
-    super.onSyncCanceled(paramThread);
+    return ardi.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 627;
   }
 }
 

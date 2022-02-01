@@ -1,16 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ygk
+  extends wzi
 {
-  public static boolean a(QQUserUIItem paramQQUserUIItem)
+  public FeedVideoInfo a;
+  public String a;
+  public List<StoryVideoItem> a;
+  public String b;
+  
+  public ygk(ErrorMessage paramErrorMessage, String paramString)
   {
-    return (paramQQUserUIItem != null) && (paramQQUserUIItem.isVip()) && (!paramQQUserUIItem.isMe()) && (!paramQQUserUIItem.isFriend()) && (!paramQQUserUIItem.isSubscribe());
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static boolean a(String paramString)
+  public String toString()
   {
-    return (!TextUtils.isEmpty(paramString)) && (!TextUtils.equals("0_1000", paramString));
+    return "GetVideoListEvent{mVideoItems=" + this.jdField_a_of_type_JavaUtilList.size() + ", feedId=" + this.jdField_a_of_type_JavaLangString + ", mUnionId=" + this.b + '}' + super.toString();
   }
 }
 

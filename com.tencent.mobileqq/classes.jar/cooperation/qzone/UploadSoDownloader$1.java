@@ -1,30 +1,30 @@
 package cooperation.qzone;
 
-import blvk;
+import bmwm;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class UploadSoDownloader$1
   implements Runnable
 {
-  public UploadSoDownloader$1(blvk paramblvk) {}
+  public UploadSoDownloader$1(bmwm parambmwm) {}
   
   public void run()
   {
-    boolean bool = blvk.a(this.this$0, blvk.a().getAbsolutePath());
-    QLog.d("UploadEnv", 1, "check so md5 result: " + bool);
+    boolean bool = bmwm.a(this.this$0, bmwm.a().getAbsolutePath());
+    QLog.d("[upload2]UploadEnv", 1, "check so md5 result: " + bool);
     if (bool)
     {
-      blvk.a(true);
+      bmwm.a(true);
       return;
     }
     try
     {
-      if (blvk.a().exists()) {
-        blvk.a().delete();
+      if (bmwm.a().exists()) {
+        bmwm.a().delete();
       }
-      blvk.a(this.this$0, false);
-      blvk.a(false);
+      bmwm.a(this.this$0, false);
+      bmwm.a(false);
       return;
     }
     catch (Throwable localThrowable)

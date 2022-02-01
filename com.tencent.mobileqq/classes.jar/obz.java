@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.DownloadBarInfo;
-
-public final class obz
-  implements Parcelable.Creator<VideoInfo.DownloadBarInfo>
+public abstract interface obz
 {
-  public VideoInfo.DownloadBarInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.DownloadBarInfo(paramParcel);
-  }
-  
-  public VideoInfo.DownloadBarInfo[] a(int paramInt)
-  {
-    return new VideoInfo.DownloadBarInfo[paramInt];
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

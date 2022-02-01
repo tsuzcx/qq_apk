@@ -1,36 +1,18 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
 
-class pbc
-  extends ClickableSpan
+public class pbc
+  extends SimpleConfigHandler
 {
-  pbc(pay parampay, BaseCommentData paramBaseCommentData, String paramString1, String paramString2) {}
-  
-  public void onClick(@NotNull View paramView)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAuthorReply()) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.ksHomePage))) {
-      paa.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.ksHomePage, BaseActivity.sTopActivity);
-    }
-    for (;;)
-    {
-      oat.a(null, paa.a(this.jdField_a_of_type_Pay.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Pay.a.mArticleID), String.valueOf(this.jdField_a_of_type_Pay.a.mAlgorithmID), this.jdField_a_of_type_Pay.a.innerUniqueID, this.b, false);
-      return;
-      paa.a(this.jdField_a_of_type_JavaLangString, BaseActivity.sTopActivity);
-    }
-  }
-  
-  public void updateDrawState(@NotNull TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#376099"));
-    paramTextPaint.setUnderlineText(false);
+    boolean bool = super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    paramString = Aladdin.getConfig(paramInt1).getString("daily_header_proteus_bid", "0");
+    bnrf.a("daily_header_proteus_bid", paramString);
+    QLog.i("DailyDynamicHeaderConfig", 2, "update bid=" + paramString);
+    return bool;
   }
 }
 

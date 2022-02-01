@@ -1,11 +1,34 @@
-class asgh
-  implements bdvw
+import com.tencent.mobileqq.emosm.emosearch.EmotionSearchItem;
+import java.util.List;
+
+public class asgh
 {
-  asgh(asgg paramasgg) {}
+  int jdField_a_of_type_Int;
+  asgi jdField_a_of_type_Asgi;
+  List<EmotionSearchItem> jdField_a_of_type_JavaUtilList;
   
-  public void onResp(bdwt parambdwt) {}
+  public asgh(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public List<EmotionSearchItem> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Asgi == null) {
+      return false;
+    }
+    return this.jdField_a_of_type_Asgi.a;
+  }
 }
 
 

@@ -1,19 +1,26 @@
-import android.graphics.Bitmap;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.AVActivity.10.1;
+import com.tencent.av.ui.AVActivity.10.2;
 
-class mbj
-  implements lmr
+public class mbj
+  extends biko
 {
-  mbj(mbi parammbi) {}
+  public mbj(AVActivity paramAVActivity) {}
   
-  public boolean a(Bitmap paramBitmap, String paramString)
+  public void a()
   {
-    boolean bool = false;
-    if (this.a.a != null)
-    {
-      this.a.a.a(paramBitmap);
-      bool = true;
+    if (this.a.a != null) {
+      this.a.a.a().postDelayed(new AVActivity.10.1(this), 0L);
     }
-    return bool;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.a != null) {
+      this.a.a.a().post(new AVActivity.10.2(this));
+    }
   }
 }
 

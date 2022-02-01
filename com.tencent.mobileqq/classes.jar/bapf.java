@@ -1,10 +1,52 @@
-import android.graphics.Paint;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.qcircle.QCircleChatMsgListFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Locale;
 
-public abstract interface bapf
+public class bapf
+  implements Handler.Callback
 {
-  public abstract String a(float paramFloat1, float paramFloat2, float paramFloat3);
+  public bapf(QCircleChatMsgListFragment paramQCircleChatMsgListFragment) {}
   
-  public abstract void a(Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3);
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    label196:
+    for (;;)
+    {
+      return false;
+      if ((this.a.d()) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() != -1)) {
+        break;
+      }
+      this.a.jdField_a_of_type_Alms.a(this.a.jdField_b_of_type_JavaUtilList);
+      this.a.jdField_a_of_type_Alms.a(21);
+      this.a.b();
+      if ((this.a.c) || (this.a.jdField_b_of_type_JavaUtilList.size() == 0)) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      }
+      for (;;)
+      {
+        if (this.a.jdField_a_of_type_Boolean) {
+          break label196;
+        }
+        this.a.jdField_a_of_type_Boolean = true;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("QCircleChatMsgListFragment", 2, String.format(Locale.getDefault(), "init ui cost time : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) }));
+        return false;
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      }
+    }
+    this.a.jdField_b_of_type_Boolean = true;
+    return false;
+  }
 }
 
 

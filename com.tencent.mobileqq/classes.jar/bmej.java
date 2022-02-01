@@ -1,12 +1,41 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.os.Handler;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.groupvideo.GVideoPluginInstallerActivity;
 
-final class bmej
-  implements FileFilter
+public class bmej
+  extends OnPluginInstallListener.Stub
 {
-  public boolean accept(File paramFile)
+  public bmej(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity) {}
+  
+  public void onInstallBegin(String paramString)
   {
-    return paramFile.getName().endsWith(".cfg");
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallBegin...");
+    }
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallDownloadProgress...");
+    }
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallError...");
+    }
+    this.a.b.sendEmptyMessageDelayed(3, 200L);
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallFinish...");
+    }
+    this.a.b.sendEmptyMessageDelayed(1, 1000L);
   }
 }
 

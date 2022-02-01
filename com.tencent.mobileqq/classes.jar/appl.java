@@ -1,16 +1,33 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 class appl
-  implements ArkAppCacheMgr.OnGetAppIcon
+  implements apqg
 {
-  appl(appj paramappj, Context paramContext) {}
+  appl(appj paramappj, appn paramappn, ArCloudConfigInfo paramArCloudConfigInfo) {}
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public void a()
   {
-    if (paramBitmap != null) {
-      appj.a(this.jdField_a_of_type_Appj, paramBitmap, this.jdField_a_of_type_AndroidContentContext);
+    if (this.jdField_a_of_type_Appn != null) {
+      this.jdField_a_of_type_Appn.e();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Appn != null) {
+      this.jdField_a_of_type_Appn.b(paramInt);
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Appn != null) {}
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Appn != null) {
+      this.jdField_a_of_type_Appn.b(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
     }
   }
 }

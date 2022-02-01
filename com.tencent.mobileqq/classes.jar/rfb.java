@@ -1,17 +1,47 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
 
 public class rfb
+  implements rep
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<DislikeInfo> a;
-  public List<Long> a;
-  public long b;
-  public long c;
-  public long d;
+  private req jdField_a_of_type_Req;
+  private rfa jdField_a_of_type_Rfa;
+  private rgh jdField_a_of_type_Rgh;
+  
+  public rfb(rfa paramrfa)
+  {
+    this.jdField_a_of_type_Rfa = paramrfa;
+    this.jdField_a_of_type_Rgh = new rgh(this.jdField_a_of_type_Rfa);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Rgh.a();
+    this.jdField_a_of_type_Req = null;
+  }
+  
+  public void a(UgcVideo paramUgcVideo)
+  {
+    if (this.jdField_a_of_type_Req != null) {
+      this.jdField_a_of_type_Req.a();
+    }
+    this.jdField_a_of_type_Rfa.a(paramUgcVideo, null);
+  }
+  
+  public void a(req paramreq)
+  {
+    this.jdField_a_of_type_Rgh.a(paramreq);
+    this.jdField_a_of_type_Req = paramreq;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Rgh.b();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Rgh.c();
+  }
 }
 
 

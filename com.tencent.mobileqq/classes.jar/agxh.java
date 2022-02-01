@@ -1,18 +1,26 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.intimate.IntimateScoreCardView;
 
-class agxh
-  extends ahbl
+public class agxh
+  implements Animator.AnimatorListener
 {
-  agxh(agwz paramagwz)
+  public agxh(IntimateScoreCardView paramIntimateScoreCardView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramagwz, null);
+    onAnimationEnd(paramAnimator);
   }
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new auqg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    IntimateScoreCardView.a(this.a).setAlpha(1.0F);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -18,17 +18,17 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
-import bcst;
+import bdll;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.DoubleVideoCtrlUI;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import lbc;
-import ley;
-import maf;
-import muz;
+import lbj;
+import lff;
+import mbb;
+import mvy;
 
 public class ChildLockCircle
   extends View
@@ -79,17 +79,17 @@ public class ChildLockCircle
   
   private void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    setId(2131373223);
-    setBackgroundResource(2130842041);
+    setId(2131373348);
+    setBackgroundResource(2130842053);
     paramAttributeSet = getResources();
-    this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(2131694776);
-    this.jdField_b_of_type_JavaLangString = paramAttributeSet.getString(2131694777);
-    this.jdField_c_of_type_JavaLangString = paramAttributeSet.getString(2131694774);
-    this.jdField_d_of_type_JavaLangString = paramAttributeSet.getString(2131694775);
+    this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(2131694818);
+    this.jdField_b_of_type_JavaLangString = paramAttributeSet.getString(2131694819);
+    this.jdField_c_of_type_JavaLangString = paramAttributeSet.getString(2131694816);
+    this.jdField_d_of_type_JavaLangString = paramAttributeSet.getString(2131694817);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130842032);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130842026);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130842044);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130842038);
       this.jdField_a_of_type_AndroidGraphicsRectF.left = 12.0F;
       this.jdField_a_of_type_AndroidGraphicsRectF.top = 12.0F;
       this.jdField_a_of_type_AndroidGraphicsPaint.setFlags(1);
@@ -144,21 +144,21 @@ public class ChildLockCircle
     {
       if (!((AVActivity)getContext()).a().a().x)
       {
-        bcst.b(null, "CliOper", "", "", "0X80061F8", "0X80061F8", 0, 0, "", "", "", "");
+        bdll.b(null, "CliOper", "", "", "0X80061F8", "0X80061F8", 0, 0, "", "", "", "");
         return;
       }
-      bcst.b(null, "CliOper", "", "", "0X80061FA", "0X80061FA", 0, 0, "", "", "", "");
+      bdll.b(null, "CliOper", "", "", "0X80061FA", "0X80061FA", 0, 0, "", "", "", "");
       return;
     }
     catch (Exception localException)
     {
-      lbc.e("ChildLockCircle", localException.getMessage());
+      lbj.e("ChildLockCircle", localException.getMessage());
     }
   }
   
   public Bitmap a(Resources paramResources, int paramInt)
   {
-    int j = 2130842032;
+    int j = 2130842044;
     int i = j;
     switch (paramInt)
     {
@@ -168,33 +168,33 @@ public class ChildLockCircle
     for (;;)
     {
       return BitmapFactory.decodeResource(paramResources, i);
-      i = 2130842026;
-      continue;
-      i = 2130842033;
-      continue;
-      i = 2130842034;
-      continue;
-      i = 2130842035;
-      continue;
-      i = 2130842036;
-      continue;
-      i = 2130842037;
-      continue;
       i = 2130842038;
+      continue;
+      i = 2130842045;
+      continue;
+      i = 2130842046;
+      continue;
+      i = 2130842047;
+      continue;
+      i = 2130842048;
+      continue;
+      i = 2130842049;
+      continue;
+      i = 2130842050;
+      continue;
+      i = 2130842051;
+      continue;
+      i = 2130842052;
       continue;
       i = 2130842039;
       continue;
       i = 2130842040;
       continue;
-      i = 2130842027;
+      i = 2130842041;
       continue;
-      i = 2130842028;
+      i = 2130842042;
       continue;
-      i = 2130842029;
-      continue;
-      i = 2130842030;
-      continue;
-      i = 2130842031;
+      i = 2130842043;
     }
   }
   
@@ -226,7 +226,7 @@ public class ChildLockCircle
         if (QLog.isColorLevel()) {
           QLog.d("ChildLockCircle", 2, "LockAnimation,CountDownTimer start");
         }
-        this.jdField_a_of_type_AndroidOsCountDownTimer = new muz(this, 750L, 50L, paramContext);
+        this.jdField_a_of_type_AndroidOsCountDownTimer = new mvy(this, 750L, 50L, paramContext);
         this.jdField_a_of_type_AndroidOsCountDownTimer.start();
       }
     }
@@ -234,7 +234,7 @@ public class ChildLockCircle
   
   public void a(boolean paramBoolean)
   {
-    maf.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    mbb.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime());
     a();
     if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null) {
       this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(getContext(), 2130772151);
@@ -309,7 +309,7 @@ public class ChildLockCircle
         if (QLog.isColorLevel()) {
           QLog.e("ChildLockCircle", 2, "[childLock] action lock");
         }
-        bcst.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
+        bdll.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
         return false;
       }
       paramMessage.a().y = false;
@@ -317,7 +317,7 @@ public class ChildLockCircle
       if (QLog.isColorLevel()) {
         QLog.e("ChildLockCircle", 2, "[childLock] action unlock");
       }
-      bcst.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
+      bdll.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
       return false;
     }
     catch (Exception paramMessage) {}
@@ -333,7 +333,7 @@ public class ChildLockCircle
         QLog.w("ChildLockCircle", 1, "timtest onAnimationEnd animation.equals(fadeoutAnimation)");
       }
       paramAnimation = (AVActivity)getContext();
-      maf.b((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+      mbb.b((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime());
       this.jdField_d_of_type_Int = 0;
       new Handler().post(new ChildLockCircle.2(this));
     }

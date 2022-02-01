@@ -1,18 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.animation.Animation;
 
 class rvq
-  implements DialogInterface.OnDismissListener
+  extends blgm
 {
-  rvq(rvn paramrvn) {}
+  rvq(rvo paramrvo) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (rvn.a(this.a) != null) {
-      rvn.a(this.a).a(rvn.a(this.a), rvn.b(this.a), false, false);
-    }
-    rvn.a(this.a, true);
-    rvn.b(this.a, false);
+    this.a.a.q.setVisibility(8);
   }
 }
 

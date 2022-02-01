@@ -1,12 +1,20 @@
-import java.net.URL;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public abstract interface uwv
+class uwv
+  implements View.OnTouchListener
 {
-  public abstract void a(URL paramURL, int paramInt);
+  uwv(uwt paramuwt, int paramInt) {}
   
-  public abstract void a(URL paramURL, Throwable paramThrowable);
-  
-  public abstract void a(URL paramURL, tds paramtds);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    uwt.a(this.jdField_a_of_type_Uwt, paramView);
+    this.jdField_a_of_type_Uwt.d = this.jdField_a_of_type_Int;
+    uwt.a(this.jdField_a_of_type_Uwt).onTouchEvent(paramMotionEvent);
+    return false;
+  }
 }
 
 

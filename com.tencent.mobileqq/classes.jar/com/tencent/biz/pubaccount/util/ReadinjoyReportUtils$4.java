@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.util;
 
 import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
-import oat;
-import phi;
+import ocd;
+import paa;
 
 public final class ReadinjoyReportUtils$4
   implements Runnable
@@ -11,16 +11,16 @@ public final class ReadinjoyReportUtils$4
   
   public void run()
   {
-    phi localphi = new phi();
+    paa localpaa = new paa();
     if (this.a.mUnreadNum > 0) {}
     for (int i = 1;; i = 0)
     {
-      localphi.b("reddot_position", "" + (this.a.mPosition + 1));
+      localpaa.b("reddot_position", "" + (this.a.mPosition + 1));
       if (i != 0) {}
       for (String str = "1";; str = "0")
       {
-        localphi.b("reddot_state", str);
-        oat.a(null, null, "0X800978E", "0X800978E", 0, 0, "", "", "", localphi.a(), false);
+        localpaa.b("reddot_state", str);
+        ocd.a(null, null, "0X800978E", "0X800978E", 0, 0, "", "", "", localpaa.a(), false);
         return;
       }
     }

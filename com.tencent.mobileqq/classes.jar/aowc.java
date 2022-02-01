@@ -1,37 +1,38 @@
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class aowc
-  extends beat
+  extends aoxg
 {
-  aovz jdField_a_of_type_Aovz;
-  aowb jdField_a_of_type_Aowb;
-  
-  public aowc(QQAppInterface paramQQAppInterface, aowb paramaowb, aovz paramaovz)
+  public aowc(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    super(paramQQAppInterface, paramaowb.b);
-    this.jdField_a_of_type_Aowb = paramaowb;
-    this.jdField_a_of_type_Aovz = paramaovz;
+    super(paramQQAppInterface, paramContext);
   }
   
-  protected void realCancel()
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realCancel");
+    try
+    {
+      boolean bool = i_();
+      return bool;
     }
-  }
-  
-  protected void realStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realStart");
+    catch (Exception localException)
+    {
+      QLog.e("AssistantSettingAction", 1, "doAction error: " + localException.getMessage());
+      a("AssistantSettingAction");
     }
-    aovz.a(this.jdField_a_of_type_Aovz, this.jdField_a_of_type_Aowb);
+    return false;
   }
   
-  public String toString()
+  public boolean i_()
   {
-    return "[DownloadTask] mInfo=" + this.jdField_a_of_type_Aowb + ", mDownloader=" + this.jdField_a_of_type_Aovz;
+    Intent localIntent = new Intent();
+    localIntent.setClass(this.a, AssistantSettingActivity.class);
+    this.a.startActivity(localIntent);
+    return true;
   }
 }
 

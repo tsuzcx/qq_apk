@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rxq;
-import ryx;
-import sek;
+import rol;
+import rpt;
+import rvo;
 
 public class VideoFeedsVideoUIDelegate$3
   implements Runnable
 {
-  public VideoFeedsVideoUIDelegate$3(sek paramsek) {}
+  public VideoFeedsVideoUIDelegate$3(rvo paramrvo) {}
   
   public void run()
   {
-    ryx.a(this.this$0.a.b, 8, 0);
+    rpt.a(this.this$0.a.b, 8, 0);
   }
 }
 

@@ -1,8 +1,18 @@
-public abstract interface yfk
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment.Observer.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.parallel.SimpleParallelObserver;
+import mqq.os.MqqHandler;
+
+public class yfk
+  extends SimpleParallelObserver
 {
-  public abstract void a(boolean paramBoolean);
+  yfk(yfh paramyfh) {}
   
-  public abstract void b(boolean paramBoolean);
+  public void onAllFunctionComplete(boolean paramBoolean)
+  {
+    super.onAllFunctionComplete(paramBoolean);
+    ThreadManager.getUIHandler().post(new DetailFeedAllInfoPullSegment.Observer.1(this, paramBoolean));
+  }
 }
 
 

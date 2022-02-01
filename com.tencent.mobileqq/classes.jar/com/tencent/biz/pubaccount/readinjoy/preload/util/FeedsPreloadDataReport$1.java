@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.preload.util;
 
 import com.tencent.qphone.base.util.QLog;
-import oat;
-import pha;
+import ocd;
+import ozs;
 
 public final class FeedsPreloadDataReport$1
   implements Runnable
@@ -11,9 +11,9 @@ public final class FeedsPreloadDataReport$1
   
   public void run()
   {
-    String str = pha.a();
+    String str = ozs.a();
     QLog.d("FeedsPreloadDataReport", 1, new Object[] { "actionName = ", this.a, "\n", "r2 = ", str, " r5 = ", this.b });
-    oat.a(null, "", this.a, this.a, 0, 0, str, "", "", this.b, false);
+    ocd.a(null, "", this.a, this.a, 0, 0, str, "", "", this.b, false);
   }
 }
 

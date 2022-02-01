@@ -1,34 +1,60 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedCommentList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
 public class wyu
-  extends wkz
+  extends wyv
 {
-  public List<CommentEntry> a = new ArrayList();
-  public int b;
-  public String c;
-  
-  public wyu(qqstory_service.RspFeedCommentList paramRspFeedCommentList)
+  public wyu(ViewGroup paramViewGroup)
   {
-    super(paramRspFeedCommentList.result, paramRspFeedCommentList.feed_comment_info.is_end, paramRspFeedCommentList.feed_comment_info.next_cookie);
-    this.c = paramRspFeedCommentList.feed_comment_info.feed_id.get().toStringUtf8();
-    this.b = paramRspFeedCommentList.feed_comment_info.comment_total_num.get();
-    paramRspFeedCommentList = paramRspFeedCommentList.feed_comment_info.comment_list.get().iterator();
-    while (paramRspFeedCommentList.hasNext())
-    {
-      CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)paramRspFeedCommentList.next());
-      localCommentEntry.feedId = this.c;
-      this.a.add(localCommentEntry);
+    super(paramViewGroup, 2131561785);
+  }
+  
+  private void c(wvn paramwvn)
+  {
+    paramwvn.d = false;
+    wwg.a(QQStoryContext.a()).a(paramwvn);
+    wwv localwwv = new wwv();
+    localwwv.jdField_b_of_type_JavaLangString = paramwvn.jdField_a_of_type_JavaLangString;
+    localwwv.c = paramwvn.jdField_a_of_type_Int;
+    localwwv.d = 4;
+    localwwv.jdField_b_of_type_Long = paramwvn.e;
+    wow.a().a(localwwv, null);
+  }
+  
+  public void a(wvn paramwvn)
+  {
+    super.a(paramwvn);
+    if (!TextUtils.isEmpty(paramwvn.g)) {
+      c(paramwvn.g);
     }
+    if (!TextUtils.isEmpty(paramwvn.j))
+    {
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramwvn.c)) {}
+      for (str = anzj.a(2131705836);; str = paramwvn.c)
+      {
+        localStoryMsgNodeFrameLayout.setNodeName(str, paramwvn.j);
+        if (paramwvn.d) {
+          c(paramwvn);
+        }
+        return;
+      }
+    }
+    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout = this.a;
+    if (TextUtils.isEmpty(paramwvn.c)) {}
+    for (String str = anzj.a(2131705835);; str = paramwvn.c)
+    {
+      localStoryMsgNodeFrameLayout.setNodeName(str, 0);
+      break;
+    }
+  }
+  
+  protected void b(wvn paramwvn)
+  {
+    this.a.setDisplayState(6);
+    this.a.a(paramwvn);
   }
 }
 

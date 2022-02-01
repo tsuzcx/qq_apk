@@ -1,25 +1,16 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 
 class ysn
-  implements yuq
+  implements yss
 {
-  ysn(ysm paramysm) {}
+  ysn(ysm paramysm, ImageView paramImageView) {}
   
-  public void a()
+  public void a(Drawable paramDrawable)
   {
-    yqp.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
-  }
-  
-  public void a(TroopBarPOI paramTroopBarPOI)
-  {
-    yqp.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
-    if (paramTroopBarPOI != null)
-    {
-      this.a.a.setLocation(paramTroopBarPOI.a());
-      return;
+    if (paramDrawable != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
     }
-    this.a.a.setLocation("None for test!!");
   }
 }
 

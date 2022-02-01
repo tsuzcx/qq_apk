@@ -1,52 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aijg
+class aijg
+  extends anua
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
+  aijg(aijc paramaijc) {}
   
-  public static aijg a(String paramString)
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
   {
-    aijg localaijg = new aijg();
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
+    if (paramBoolean)
     {
-      paramString = new JSONObject(paramString);
-      if ((paramString.has("useRecommendedSticker")) && (paramString.has("maxMatchLength")))
-      {
-        localaijg.a(paramString.getBoolean("useRecommendedSticker"));
-        localaijg.a(paramString.getInt("maxMatchLength"));
+      if ((this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())) {
+        aijc.a(this.a);
       }
-      return localaijg;
+      do
+      {
+        do
+        {
+          return;
+        } while (paramBoolean1.booleanValue());
+        paramString1 = BaseActivity.sTopActivity;
+      } while (paramString1 == null);
+      bhlq.a(paramString1, 230, paramString1.getString(2131689903), null, null, paramString1.getString(2131718195), new aijh(this, paramString1), null).show();
+      return;
     }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("StickerRecConfigBean", 2, paramString.getMessage());
-    }
-    return localaijg;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramInt, 0).b(this.a.a());
   }
 }
 

@@ -8,7 +8,7 @@ public class ProbeItem$ProbeResult
   public Object extra;
   public String probeName;
   protected StringBuilder result = new StringBuilder();
-  public boolean success;
+  public boolean success = false;
   
   public ProbeItem$ProbeResult(String paramString, ProbeCallback paramProbeCallback)
   {

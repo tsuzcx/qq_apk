@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
 import android.content.Context;
-import anni;
+import anzj;
 import com.tencent.mobileqq.widget.QQToast;
 
 class TroopChatPie$36$1
@@ -11,7 +11,7 @@ class TroopChatPie$36$1
   
   public void run()
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, anni.a(2131713937), 1).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie$36.this$0.a());
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, anzj.a(2131714046), 1).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie$36.this$0.a());
   }
 }
 

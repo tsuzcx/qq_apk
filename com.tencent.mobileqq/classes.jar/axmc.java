@@ -1,79 +1,39 @@
-import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.ListView;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.10.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.content.Context;
+import android.widget.OverScroller;
+import com.tencent.qphone.base.util.QLog;
 
 public class axmc
-  implements AbsListView.OnScrollListener
+  extends OverScroller
 {
-  public axmc(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  private axmd a;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public axmc(Context paramContext)
   {
-    if (paramInt1 == 0)
-    {
-      paramAbsListView = ShortVideoCommentsView.a(this.a).getChildAt(0);
-      if ((paramAbsListView != null) && (paramAbsListView.getTop() == 0))
-      {
-        ShortVideoCommentsView.a(this.a, true);
-        return;
-      }
-      ShortVideoCommentsView.a(this.a, false);
-      return;
-    }
-    ShortVideoCommentsView.a(this.a, false);
+    super(paramContext);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(axmd paramaxmd)
   {
-    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
-    if (paramInt == 0)
-    {
-      if ((paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.a.a.a.size() > 0) && (!ShortVideoCommentsView.b(this.a)) && (!ShortVideoCommentsView.c(this.a))) {
-        ShortVideoCommentsView.c(this.a);
-      }
-      if (ShortVideoCommentsView.a(this.a) == null) {
-        break label277;
-      }
-      paramAbsListView = ShortVideoCommentsView.a(this.a).jdField_a_of_type_JavaLangString;
-      if (ShortVideoCommentsView.a(this.a) != null) {
-        long l = ShortVideoCommentsView.a(this.a).jdField_a_of_type_Long;
-      }
-      paramInt = ShortVideoCommentsView.a(this.a);
-      if ((paramInt < ShortVideoCommentsView.b(this.a)) || (paramInt < mue.a(this.a.getContext(), 40.0F))) {
-        break label280;
-      }
-      if (!ShortVideoCommentsView.d(this.a))
-      {
-        ShortVideoCommentsView.a(this.a, true);
-        if (ShortVideoCommentsView.a(this.a).j != 4) {}
-      }
-      this.a.f();
+    this.a = paramaxmd;
+  }
+  
+  public void fling(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioOverScroller", 2, "fling() called with: startX = [" + paramInt1 + "], startY = [" + paramInt2 + "], velocityX = [" + paramInt3 + "], velocityY = [" + paramInt4 + "], minX = [" + paramInt5 + "], maxX = [" + paramInt6 + "], minY = [" + paramInt7 + "], maxY = [" + paramInt8 + "], overX = [" + paramInt9 + "], overY = [" + paramInt10 + "]");
     }
-    for (;;)
-    {
-      ShortVideoCommentsView.a(this.a, paramInt);
-      if ((ShortVideoCommentsView.a(this.a) != null) && (ShortVideoCommentsView.a(this.a).getChildCount() > 0) && (ShortVideoCommentsView.a(this.a).getChildAt(0).getTop() == 0) && (!ShortVideoCommentsView.e(this.a)))
-      {
-        ShortVideoCommentsView.b(this.a, true);
-        this.a.postDelayed(new ShortVideoCommentsView.10.1(this), 100L);
-      }
-      return;
-      label277:
-      break;
-      label280:
-      if (!ShortVideoCommentsView.e(this.a))
-      {
-        this.a.j();
-        ShortVideoCommentsView.a(this.a, 2);
-      }
+    super.fling(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
+  }
+  
+  public boolean springBack(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioOverScroller", 2, "springBack() called with: startX = [" + paramInt1 + "], startY = [" + paramInt2 + "], minX = [" + paramInt3 + "], maxX = [" + paramInt4 + "], minY = [" + paramInt5 + "], maxY = [" + paramInt6 + "]");
     }
+    if (this.a != null) {
+      this.a.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
+    }
+    return super.springBack(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
   }
 }
 

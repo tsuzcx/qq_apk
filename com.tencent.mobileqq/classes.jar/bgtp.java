@@ -1,13 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-public final class bgtp
-  implements DialogInterface.OnClickListener
+public abstract interface bgtp
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bcst.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
-  }
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

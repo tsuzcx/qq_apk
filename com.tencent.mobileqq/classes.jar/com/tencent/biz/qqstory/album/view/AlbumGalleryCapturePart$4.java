@@ -2,24 +2,24 @@ package com.tencent.biz.qqstory.album.view;
 
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.view.View;
-import bote;
+import bpuz;
 import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
-import wef;
-import zlx;
+import wia;
+import zps;
 
 public class AlbumGalleryCapturePart$4
   implements Runnable
 {
-  public AlbumGalleryCapturePart$4(wef paramwef) {}
+  public AlbumGalleryCapturePart$4(wia paramwia) {}
   
   public void run()
   {
-    wef.a(this.this$0, true);
-    View localView = wef.a(this.this$0).a(wef.a(this.this$0).getLayoutManager());
-    if ((wef.b(this.this$0)) && (localView != null) && (wef.a(this.this$0).getPosition(localView) == 0)) {
-      wef.a(this.this$0).a(-(wef.a(this.this$0) - (int)zlx.a(wef.a(this.this$0).getContext(), 30.0F)), 0, 1250);
+    wia.a(this.this$0, true);
+    View localView = wia.a(this.this$0).a(wia.a(this.this$0).getLayoutManager());
+    if ((wia.b(this.this$0)) && (localView != null) && (wia.a(this.this$0).getPosition(localView) == 0)) {
+      wia.a(this.this$0).a(-(wia.a(this.this$0) - (int)zps.a(wia.a(this.this$0).getContext(), 30.0F)), 0, 1250);
     }
-    wef.b(this.this$0, false);
+    wia.b(this.this$0, false);
   }
 }
 

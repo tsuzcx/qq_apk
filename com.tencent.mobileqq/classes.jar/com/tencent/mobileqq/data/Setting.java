@@ -3,7 +3,7 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aril;
+import arya;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
 
@@ -11,7 +11,7 @@ public class Setting
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<Setting> CREATOR = new aril();
+  public static final Parcelable.Creator<Setting> CREATOR = new arya();
   public byte bFaceFlags;
   public byte bHeadType;
   public byte bSourceType;

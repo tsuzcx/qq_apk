@@ -1,19 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
-class skx
-  extends skd
+public class skx
+  extends ThreadLocal<Boolean>
 {
-  skx(ske paramske) {}
+  public skx(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView) {}
   
-  public int a()
+  protected Boolean a()
   {
-    return 2;
-  }
-  
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    ske.a(this.a).d(paramString + "&sourcefrom=6");
+    return Boolean.valueOf(false);
   }
 }
 

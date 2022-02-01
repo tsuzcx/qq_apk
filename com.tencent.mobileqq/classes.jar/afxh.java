@@ -1,8 +1,18 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface afxh
+public class afxh
+  implements View.OnClickListener
 {
-  public abstract void g(ChatMessage paramChatMessage);
+  public afxh(TroopRequestActivity paramTroopRequestActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.g();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,25 +1,36 @@
+import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
 import UserGrowth.stSimpleMetaFeed;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter;
-import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.Builder;
-import java.util.HashMap;
-import java.util.Map;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class uus
+class uus
+  implements SeekBar.OnSeekBarChangeListener
 {
-  private static void a(WSStatisticsReporter.Builder paramBuilder, String paramString)
-  {
-    paramBuilder.build(paramString).report();
-  }
+  uus(uuq paramuuq) {}
   
-  public static void a(String paramString, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    paramstSimpleMetaFeed = new WSStatisticsReporter.Builder().setSceneFrom("QQ_official_account").setSopName("chat_page").setTestId(ups.a(2)).setPushId("").setFlush(true).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams("content", paramInt, paramstSimpleMetaFeed)).setOperationId("").setImmediatelyUpload(ups.c());
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("qq_group_num", paramString);
-    localHashMap.put("card_type", "1");
-    paramstSimpleMetaFeed.addExtParams(localHashMap);
-    a(paramstSimpleMetaFeed, "gzh_click");
+    if ((paramSeekBar == null) || (uuq.a(this.a) == null) || (uuq.a(this.a) == null)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+      return;
+      usv localusv = (usv)uuq.a(this.a).a;
+      if ((localusv != null) && ((localusv.a() instanceof stSimpleMetaFeed)))
+      {
+        float f = paramSeekBar.getProgress();
+        int i = ((stSimpleMetaFeed)localusv.a()).video.duration;
+        int j = (int)(f / 1000.0F * i);
+        uqf.a("WS_VIDEO_seekBar", "WSVerticalItemVideoProgressController onStopTrackingTouch() progress:" + f + ", videoDuration:" + i + ", position:" + j);
+        uuq.a(this.a).a(j, true);
+      }
+    }
   }
 }
 

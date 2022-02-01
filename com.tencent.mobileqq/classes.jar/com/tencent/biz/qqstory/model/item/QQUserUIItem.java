@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.model.item;
 
 import android.text.TextUtils;
-import anmw;
+import anyw;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.OfficialRecommendEntry;
 import com.tencent.biz.qqstory.database.UserEntry;
@@ -17,18 +17,18 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import wev;
-import wpm;
-import wpy;
-import wqq;
-import wwq;
-import ykx;
-import yqp;
-import zkp;
+import wiq;
+import wth;
+import wtt;
+import wul;
+import xal;
+import yos;
+import yuk;
+import zok;
 
 public class QQUserUIItem
   extends BaseUIItem
-  implements wev, wqq
+  implements wiq, wul
 {
   public static final int RELATION_TYPE_FOLLOWER = 1;
   public static final int RELATION_TYPE_QQ_FRIEND = 0;
@@ -161,7 +161,7 @@ public class QQUserUIItem
     int i = 1;
     this.uid = paramUserInfo.union_id.get().toStringUtf8();
     this.qq = String.valueOf(paramUserInfo.uid.get());
-    ((wpy)wpm.a(2)).a(this.uid, this.qq);
+    ((wtt)wth.a(2)).a(this.uid, this.qq);
     this.nickName = paramUserInfo.nick.get().toStringUtf8();
     this.headUrl = paramUserInfo.head_url.get().toStringUtf8();
     boolean bool;
@@ -239,7 +239,7 @@ public class QQUserUIItem
     for (this.sourceTagType = paramUserInfo.video_source_tag_type.get();; this.sourceTagType = 0)
     {
       if (QLog.isColorLevel()) {
-        yqp.a("UserManager", "convert %s", this.uid);
+        yuk.a("UserManager", "convert %s", this.uid);
       }
       return;
       bool = false;
@@ -266,7 +266,7 @@ public class QQUserUIItem
       if (!TextUtils.isEmpty(paramObject.headUrl))
       {
         if ((isMe()) && (!TextUtils.isEmpty(this.headUrl)) && (!TextUtils.equals(this.headUrl, paramObject.headUrl))) {
-          yqp.b("UserManager", "urlchange: %s -> %s  hashCode = %d -> %d %s", new Object[] { this.headUrl, paramObject.headUrl, Integer.valueOf(hashCode()), Integer.valueOf(paramObject.hashCode()), zkp.a(8) });
+          yuk.b("UserManager", "urlchange: %s -> %s  hashCode = %d -> %d %s", new Object[] { this.headUrl, paramObject.headUrl, Integer.valueOf(hashCode()), Integer.valueOf(paramObject.hashCode()), zok.a(8) });
         }
         this.headUrl = paramObject.headUrl;
       }
@@ -399,8 +399,8 @@ public class QQUserUIItem
     }
     if ((this.iconUrlCacheTime == -1L) || (l - this.iconUrlCacheTime > 3600000L))
     {
-      new wwq();
-      wwq.a(this.uid);
+      new xal();
+      xal.a(this.uid);
     }
     return this.iconUrl;
   }
@@ -437,7 +437,7 @@ public class QQUserUIItem
       bool2 = bool1;
     } while (bool1);
     QQStoryContext.a();
-    return ((anmw)QQStoryContext.a().getManager(51)).b(this.qq);
+    return ((anyw)QQStoryContext.a().getManager(51)).b(this.qq);
   }
   
   public boolean isMe()
@@ -497,7 +497,7 @@ public class QQUserUIItem
   
   public String toString()
   {
-    return ykx.a(new Object[] { "QQUserUIItem{nickName=", this.nickName, ", uid=", this.uid, ", isVip=", Boolean.valueOf(this.isVip), ",qq=", this.qq, ",isSubscribe=", Integer.valueOf(this.isSubscribe), ", headUrl=", this.headUrl, ", sourceTagType=", Integer.valueOf(this.sourceTagType) });
+    return yos.a(new Object[] { "QQUserUIItem{nickName=", this.nickName, ", uid=", this.uid, ", isVip=", Boolean.valueOf(this.isVip), ",qq=", this.qq, ",isSubscribe=", Integer.valueOf(this.isSubscribe), ", headUrl=", this.headUrl, ", sourceTagType=", Integer.valueOf(this.sourceTagType) });
   }
 }
 

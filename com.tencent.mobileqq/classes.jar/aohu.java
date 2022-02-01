@@ -1,30 +1,65 @@
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class aohu
-  implements View.OnClickListener
+public class aohu
 {
-  aohu(aoht paramaoht) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  public String a;
+  long b;
+  public String b;
+  public long c;
+  String c;
+  String d;
+  String e;
+  String f;
+  String g;
+  String h;
   
-  public void onClick(View paramView)
+  aohu(aohr paramaohr, String paramString)
   {
-    if (aoht.a != null) {
-      aoht.a(this.a).startActivity(aoht.a);
+    this.h = paramString;
+    a();
+  }
+  
+  public void a()
+  {
+    if (this.h == null) {
+      return;
     }
-    bcst.b(null, "CliOper", "", "", "0X8006B15", "0X8006B15", 0, 0, "", "", "", "");
-    bcst.b(null, "dc00898", "", "", "0X8009AC8", "0X8009AC8", 0, 0, "", "", "", "");
-    Object localObject = PreferenceManager.getDefaultSharedPreferences(aoht.a(this.a));
-    int i = ((SharedPreferences)localObject).getInt("push_msg_notify_open", 0);
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putInt("push_msg_notify_open", i + 1);
-    ((SharedPreferences.Editor)localObject).commit();
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("AppStartedObserver", 0);
+    this.jdField_a_of_type_Long = localSharedPreferences.getLong(this.h + "_timeToWait", 0L);
+    this.jdField_b_of_type_Long = localSharedPreferences.getLong(this.h + "_lastReportTime", 0L);
+    this.jdField_c_of_type_Long = localSharedPreferences.getLong(this.h + "_lastUpdateTime", 0L);
+    this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString(this.h + "_sigHash", "");
+    this.jdField_b_of_type_JavaLangString = localSharedPreferences.getString(this.h + "_md5", "");
+    this.jdField_a_of_type_Int = localSharedPreferences.getInt(this.h + "_serverResult", 0);
+    this.jdField_c_of_type_JavaLangString = localSharedPreferences.getString(this.h + "_dlgTitle", "");
+    this.d = localSharedPreferences.getString(this.h + "_dlgContent", "");
+    this.e = localSharedPreferences.getString(this.h + "_dlgLButton", "");
+    this.f = localSharedPreferences.getString(this.h + "_dlgRButoon", "");
+    this.g = localSharedPreferences.getString(this.h + "_dlgUrl", "");
+  }
+  
+  public void b()
+  {
+    if (this.h == null) {
+      return;
+    }
+    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("AppStartedObserver", 0).edit();
+    localEditor.putLong(this.h + "_timeToWait", this.jdField_a_of_type_Long);
+    localEditor.putLong(this.h + "_lastReportTime", this.jdField_b_of_type_Long);
+    localEditor.putLong(this.h + "_lastUpdateTime", this.jdField_c_of_type_Long);
+    localEditor.putString(this.h + "_sigHash", this.jdField_a_of_type_JavaLangString);
+    localEditor.putString(this.h + "_md5", this.jdField_b_of_type_JavaLangString);
+    localEditor.putInt(this.h + "_serverResult", this.jdField_a_of_type_Int);
+    localEditor.putString(this.h + "_dlgTitle", this.jdField_c_of_type_JavaLangString);
+    localEditor.putString(this.h + "_dlgContent", this.d);
+    localEditor.putString(this.h + "_dlgLButton", this.e);
+    localEditor.putString(this.h + "_dlgRButoon", this.f);
+    localEditor.putString(this.h + "_dlgUrl", this.g);
+    localEditor.commit();
   }
 }
 

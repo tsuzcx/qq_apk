@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import anhk;
-import aong;
-import bddy;
-import bglj;
+import antf;
+import apaw;
+import bdwt;
+import bhlk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.RecentUser;
@@ -17,9 +17,9 @@ class AccountManageActivity$9
   public void run()
   {
     int i;
-    if ((RecentUser)this.this$0.app.a().a().findRecentUser(anhk.x, 7000) != null)
+    if ((RecentUser)this.this$0.app.a().a().findRecentUser(antf.x, 7000) != null)
     {
-      i = bglj.a().a(this.this$0.app.getCurrentAccountUin());
+      i = bhlk.a().a(this.this$0.app.getCurrentAccountUin());
       if (i >= 3) {
         if (QLog.isColorLevel()) {
           QLog.d("AccountManageActivity", 2, "refreshSubAccount() set stick2top fail." + this.this$0.app.getCurrentAccountUin() + " count=" + i + " >=max_stick2top_count , return.");
@@ -32,10 +32,10 @@ class AccountManageActivity$9
       if (QLog.isColorLevel()) {
         QLog.d("AccountManageActivity", 2, "refreshSubAccount() RecentList has default subAccount RU. go 2 stick2Top, current count=" + i);
       }
-      bddy.a(this.this$0.app, anhk.x, true);
-      bglj.a().a(this.this$0.app.getCurrentAccountUin(), i);
+      bdwt.a(this.this$0.app, antf.x, true);
+      bhlk.a().a(this.this$0.app.getCurrentAccountUin(), i);
       return;
-      bglj.a().a(this.this$0.app.getCurrentAccountUin(), 3);
+      bhlk.a().a(this.this$0.app.getCurrentAccountUin(), 3);
     } while (!QLog.isColorLevel());
     QLog.d("SUB_ACCOUNT", 2, "recent list does not exist ruDefault.");
   }

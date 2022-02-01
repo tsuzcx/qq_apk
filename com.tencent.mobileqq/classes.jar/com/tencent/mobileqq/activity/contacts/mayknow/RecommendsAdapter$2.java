@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.mayknow;
 
-import ajjr;
+import ajva;
 
 public class RecommendsAdapter$2
   implements Runnable
 {
-  public RecommendsAdapter$2(ajjr paramajjr) {}
+  public RecommendsAdapter$2(ajva paramajva) {}
   
   public void run()
   {

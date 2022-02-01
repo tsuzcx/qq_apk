@@ -1,41 +1,27 @@
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+
 public class xrr
+  extends xrz<StoryVideoItem>
 {
-  private double jdField_a_of_type_Double = 1.0D;
-  private long jdField_a_of_type_Long;
-  
-  public xrr()
+  public xrr(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    a();
+    super(paramVideoViewVideoHolder, null);
   }
   
-  private long b()
+  public void a(StoryVideoItem paramStoryVideoItem)
   {
-    return (System.nanoTime() / 1000L * this.jdField_a_of_type_Double);
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
   }
   
-  public double a()
+  public void onError(@NonNull Error paramError)
   {
-    return this.jdField_a_of_type_Double;
-  }
-  
-  public long a()
-  {
-    return b() - this.jdField_a_of_type_Long;
-  }
-  
-  public long a(long paramLong)
-  {
-    return paramLong - a();
-  }
-  
-  public void a()
-  {
-    a(0L);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = (b() - paramLong);
+    super.onError(paramError);
+    yuk.d(this.a.a, "STATE_VIDEOFILE_ED error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 

@@ -1,8 +1,10 @@
 public class bftm
 {
-  public int a;
-  public long a;
-  public boolean a;
+  public static int a = -1;
+  public static int b = 1;
+  public static int c = 2;
+  public bfpe a;
+  public int d = a;
 }
 
 

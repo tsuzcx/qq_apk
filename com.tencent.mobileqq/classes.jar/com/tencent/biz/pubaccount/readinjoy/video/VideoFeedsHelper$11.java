@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.app.Dialog;
-import ryx;
+import rpt;
 
 public final class VideoFeedsHelper$11
   implements Runnable
@@ -10,10 +10,10 @@ public final class VideoFeedsHelper$11
   {
     try
     {
-      if (ryx.a != null)
+      if (rpt.a != null)
       {
-        ryx.a.dismiss();
-        ryx.a = null;
+        rpt.a.dismiss();
+        rpt.a = null;
       }
       return;
     }

@@ -1,33 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awip
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public awip(MedalGuideView paramMedalGuideView) {}
+  public awip(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("scale")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleX(f);
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleY(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("translationX")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationX(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("translationY")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
-    f = paramValueAnimator.getAnimatedFraction();
-    if ((!this.a.jdField_a_of_type_Boolean) && (f >= 1.0F))
-    {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_a_of_type_Bkgm.sendEmptyMessage(3);
-    }
-    if (f >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

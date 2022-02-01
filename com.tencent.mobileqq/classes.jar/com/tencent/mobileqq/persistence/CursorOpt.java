@@ -14,7 +14,7 @@ public class CursorOpt
   implements Cursor
 {
   private Cursor mCursor;
-  private HashMap<String, Integer> mMap;
+  private HashMap<String, Integer> mMap = null;
   
   public CursorOpt(Cursor paramCursor)
   {

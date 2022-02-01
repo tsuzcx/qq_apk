@@ -1,24 +1,21 @@
-import android.os.CountDownTimer;
-import android.widget.PopupWindow;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-class uxr
-  extends CountDownTimer
+public class uxr
+  implements Animation.AnimationListener
 {
-  uxr(uxp paramuxp, long paramLong1, long paramLong2)
+  public uxr(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramLong1, paramLong2);
+    this.a.a.startAnimation(PublicAccountImageCollectionMainActivity.a(this.a));
   }
   
-  public void onFinish()
-  {
-    if (uxp.a(this.a) != null)
-    {
-      uxp.a(this.a).dismiss();
-      uxp.a(this.a, null);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onTick(long paramLong) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

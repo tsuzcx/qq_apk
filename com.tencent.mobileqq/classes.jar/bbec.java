@@ -1,72 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class bbec
-  extends aqkz<bbed>
+class bbec
+  extends Handler
 {
-  @NonNull
-  public bbed a(int paramInt)
+  public bbec(Looper paramLooper)
   {
-    return new bbed();
+    super(paramLooper);
   }
   
-  @Nullable
-  public bbed a(aqlg[] paramArrayOfaqlg)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    bbeg.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ScreenShotConfigProcessor", 2, "onParsed : " + paramArrayOfaqlg[0].a);
-      }
-      return bbed.a(paramArrayOfaqlg[0].a);
+    case 1: 
+    default: 
+      return;
+    case 2: 
+      i = paramMessage.arg1;
+      paramMessage = paramMessage.getData();
+      bbeg.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
+      return;
     }
-    return new bbed();
-  }
-  
-  public void a(bbed parambbed)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotConfigProcessor", 2, "onUpdate : " + parambbed);
+    int i = paramMessage.arg1;
+    switch (paramMessage.arg1)
+    {
+    default: 
+      return;
     }
-    bben.a(parambbed);
-  }
-  
-  public Class<bbed> clazz()
-  {
-    return bbed.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotConfigProcessor", 2, "onUpdate : " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 485;
+    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+    bbeg.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
   }
 }
 

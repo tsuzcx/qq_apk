@@ -1,10 +1,6 @@
-import java.util.List;
-
 public abstract interface ayeg
 {
-  public abstract void a(List<ayeh> paramList);
-  
-  public abstract void b();
+  public abstract void a(boolean paramBoolean);
 }
 
 

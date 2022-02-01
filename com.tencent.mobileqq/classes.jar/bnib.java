@@ -1,6 +1,20 @@
-public abstract interface bnib
+class bnib
+  extends bnie
 {
-  public abstract void a(int paramInt);
+  bnib(bnia parambnia, String paramString, boolean paramBoolean)
+  {
+    super(paramString, paramBoolean);
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public String b()
+  {
+    return "wspeed.qq.com";
+  }
 }
 
 

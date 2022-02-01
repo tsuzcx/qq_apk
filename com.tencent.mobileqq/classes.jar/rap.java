@@ -1,11 +1,32 @@
-class rap
-  implements qza
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+
+public class rap
+  implements bliz
 {
-  rap(rao paramrao) {}
+  public rap(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    pmk.a().a(paramBoolean, paramString);
+    if (ReadInJoyDeliverUGCActivity.a(this.a)) {
+      return;
+    }
+    ReadInJoyDeliverUGCActivity.b(this.a, true);
+    ReadInJoyDeliverUGCActivity.c(this.a, ReadInJoyDeliverUGCActivity.c(this.a));
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoyDeliverUGCActivity.a(this.a).dismiss();
+      return;
+      ReadInJoyDeliverUGCActivity.b(this.a);
+      raa.c();
+      ocd.a(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", ozs.g(), false);
+      continue;
+      ReadInJoyDeliverUGCActivity.c(this.a);
+      raa.d();
+    }
   }
 }
 

@@ -1,30 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.lang.ref.WeakReference;
 
 public class ansj
-  extends BroadcastReceiver
 {
-  public ansj(QQAppInterface paramQQAppInterface) {}
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<View.OnClickListener> jdField_a_of_type_JavaLangRefWeakReference;
+  int b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public ansj(View paramView, int paramInt1, String paramString, int paramInt2, View.OnClickListener paramOnClickListener)
   {
-    if (this.a.l) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.broadcast", 2, "qqHeadBroadcastReceiver onReceive, app isReleased");
-      }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+    if (paramOnClickListener != null) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnClickListener);
     }
-    while ((paramIntent == null) || (!"com.tencent.qqhead.getheadreq".equals(paramIntent.getAction()))) {
-      return;
-    }
-    QQAppInterface.a(this.a, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansj
  * JD-Core Version:    0.7.0.1
  */

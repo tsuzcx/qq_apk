@@ -1,35 +1,18 @@
-import android.graphics.RectF;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class apbn
+class apbn
 {
-  public int a;
-  public RectF a;
-  public String a;
-  apbm[] a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
+  long jdField_a_of_type_Long;
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public apbn()
-  {
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_c_of_type_Int = -1;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",sessionId:").append(this.jdField_c_of_type_JavaLangString).append(",moreUrl:").append(this.d);
-    int i = 0;
-    while ((this.jdField_a_of_type_ArrayOfApbm != null) && (i < this.jdField_a_of_type_ArrayOfApbm.length))
-    {
-      localStringBuilder.append("\n{index=").append(i).append(":").append(this.jdField_a_of_type_ArrayOfApbm[i].toString()).append("}\n");
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
+  apbn(apbi paramapbi) {}
 }
 
 

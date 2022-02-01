@@ -12,10 +12,14 @@ import java.util.Map;
 
 public class FaceStyleItem
 {
+  public int activateTriggerCount;
+  public int activateTriggerTotalCount;
+  public int activateTriggerType;
   public boolean alwaysTriggered;
   public String cartoonEnlightLut;
   public FaceStyleItem.CartoonFaceLine cartoonFaceLine;
   public String cartoonLut;
+  public int countTriggerType;
   public String crazyFacePath;
   public String cropBorderColorRGBA;
   public String dataPath;
@@ -41,6 +45,7 @@ public class FaceStyleItem
   public FaceStyleItem.Process postProcess;
   public FaceStyleItem.Render postRender;
   public FaceStyleItem.Process preProcess;
+  public boolean returnPostProcessTexture;
   public List<StickerItem> stickerItemList;
   public int styleChangeType;
   public List<String> textureMaterials;

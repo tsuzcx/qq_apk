@@ -1,18 +1,32 @@
-import com.tencent.mobileqq.gamecenter.data.GameNoticeInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.PwdQueryMsgRsp;
+import mqq.app.MobileQQ;
 
-public final class aurt
-  implements Comparator<GameNoticeInfo>
+class aurt
+  implements boae<WeiyunPB.PwdQueryMsgRsp>
 {
-  public int a(GameNoticeInfo paramGameNoticeInfo1, GameNoticeInfo paramGameNoticeInfo2)
+  aurt(aurp paramaurp) {}
+  
+  public void a(int paramInt, String paramString, WeiyunPB.PwdQueryMsgRsp paramPwdQueryMsgRsp)
   {
-    if (paramGameNoticeInfo1.startTime == paramGameNoticeInfo2.startTime) {
-      return paramGameNoticeInfo1.bannerType - paramGameNoticeInfo2.bannerType;
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onFailed. errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
     }
-    if (paramGameNoticeInfo1.startTime < paramGameNoticeInfo2.startTime) {
-      return -1;
+    aurp.a(this.a).a().a(false, 44, new Object[] { Integer.valueOf(paramInt), paramString, null });
+  }
+  
+  public void a(WeiyunPB.PwdQueryMsgRsp paramPwdQueryMsgRsp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onSucceed  need pwd[" + paramPwdQueryMsgRsp.pwd_open.get() + "]");
     }
-    return 1;
+    boaf.a(aurp.a(this.a).getApplication().getApplicationContext(), true);
+    if (paramPwdQueryMsgRsp.pwd_open.get()) {
+      boaf.b(aurp.a(this.a).getApplication().getApplicationContext(), true);
+    }
+    aurp.a(this.a).a().a(true, 44, new Object[] { Integer.valueOf(0), null, Boolean.valueOf(paramPwdQueryMsgRsp.pwd_open.get()) });
   }
 }
 

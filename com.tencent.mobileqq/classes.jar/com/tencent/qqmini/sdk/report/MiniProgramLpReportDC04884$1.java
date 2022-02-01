@@ -22,7 +22,7 @@ final class MiniProgramLpReportDC04884$1
     if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
       QMLog.d("MiniProgramLpReportDC04", "reportApiReportcalled with args: " + this.val$jsonParams);
     }
-    Object localObject = StorageUtil.getPreference().getString("version", "1.17.0.00206");
+    Object localObject = StorageUtil.getPreference().getString("version", "1.18.0.00132");
     localObject = new ArrayList(Arrays.asList(new COMM.Entry[] { MiniProgramReportHelper.newEntry("appid", this.val$appId), MiniProgramReportHelper.newEntry("miniapp_version", this.val$miniapp_version), MiniProgramReportHelper.newEntry("baselib_version", (String)localObject), MiniProgramReportHelper.newEntry("apiResult", this.val$jsonParams) }));
     if (!QUAUtil.isQQApp()) {
       ((ArrayList)localObject).addAll(MiniProgramReportHelper.newThirdSourceEntries());

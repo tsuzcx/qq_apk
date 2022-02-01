@@ -1,36 +1,90 @@
-import android.annotation.TargetApi;
-import android.app.ActivityManager;
 import android.content.Context;
-import android.graphics.Paint;
-import android.os.PowerManager;
-import android.view.View;
-import com.tencent.util.VersionUtils;
+import android.content.res.Resources;
+import android.support.annotation.Nullable;
+import android.text.TextPaint;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AioPushData;
+import com.tencent.mobileqq.data.HotChatItemData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-@Deprecated
 public class bgil
+  extends bghr
 {
-  public static int a(Context paramContext)
+  public bgil(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    return ((ActivityManager)paramContext.getSystemService("activity")).getMemoryClass();
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = 24;
   }
   
-  @TargetApi(11)
-  public static void a(View paramView, int paramInt, Paint paramPaint)
+  public int a(int paramInt)
   {
-    if (VersionUtils.isHoneycomb()) {
-      paramView.setLayerType(paramInt, paramPaint);
-    }
+    return 2130838527;
   }
   
-  public static boolean a(Context paramContext)
+  @Nullable
+  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    try
+    paramObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    Object localObject = (anzm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(255);
+    paramList = "";
+    if (localObject != null)
     {
-      boolean bool = ((PowerManager)paramContext.getSystemService("power")).isScreenOn();
-      return bool;
+      localObject = ((anzm)localObject).a(paramObject);
+      if ((localObject != null) && (((HotChatItemData)localObject).mGameId > 0))
+      {
+        paramObject = HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((HotChatItemData)localObject).mHotChatCode, ((HotChatItemData)localObject).mGameId);
+        if (paramObject != null)
+        {
+          paramList = paramObject.wording;
+          paramInt1 = 1;
+          if (QLog.isColorLevel()) {
+            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[showNavigateBarIfNeeded] for " + ((HotChatItemData)localObject).mHotChatCode + " " + ((HotChatItemData)localObject).mGameId);
+          }
+        }
+      }
     }
-    catch (Exception paramContext) {}
+    for (;;)
+    {
+      if (paramInt1 != 0)
+      {
+        return new bghs(true, paramList, null, null, paramObject);
+        paramInt1 = 0;
+        paramObject = null;
+        break;
+      }
+      return null;
+      paramObject = null;
+      paramInt1 = 0;
+    }
+  }
+  
+  public void a(int paramInt, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView, String paramString)
+  {
+    paramString = anzj.a(2131713944);
+    paramTextView2.setMaxWidth((int)paramTextView2.getPaint().measureText(paramString));
+    paramTextView2.requestLayout();
+    paramTextView1.setVisibility(8);
+    paramTextView2.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166226));
+    paramImageView.setBackgroundResource(2130838534);
+  }
+  
+  public void a(int paramInt, Object paramObject, String paramString) {}
+  
+  public boolean a(int paramInt)
+  {
     return false;
+  }
+  
+  public void b(int paramInt, Object paramObject, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[onClick] into page");
+    }
   }
 }
 

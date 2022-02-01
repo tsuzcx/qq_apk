@@ -1,20 +1,19 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import mqq.app.QQPermissionCallback;
 
-class rah
-  extends niv
+public class rah
+  implements QQPermissionCallback
 {
-  rah(rag paramrag, raa paramraa) {}
+  public rah(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QLog.i(rag.a(), 1, "yyy_0xe1a error code = " + paramInt);
-    if (paramInt == 0)
-    {
-      rag.a(this.jdField_a_of_type_Rag, paramArrayOfByte, this.jdField_a_of_type_Raa);
-      return;
-    }
-    this.jdField_a_of_type_Raa.a(-1, false, "", "", false);
+    bhlq.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.o();
   }
 }
 

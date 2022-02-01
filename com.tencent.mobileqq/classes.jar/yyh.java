@@ -1,22 +1,22 @@
-import android.support.annotation.Nullable;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
 
 class yyh
-  extends yyq
+  implements blih
 {
-  yyh(yye paramyye, yyd paramyyd)
+  int jdField_a_of_type_Int = 0;
+  
+  yyh(yyg paramyyg) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramyyd);
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
   }
   
-  protected void a(@Nullable yyd arg1)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    super.onResult(???);
-    yqp.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_Yyd = null;
-      this.a.c();
-      return;
+    if ((paramInt == 0) && (this.jdField_a_of_type_Yyg.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_Yyg.a.size() - 1)) {
+      this.jdField_a_of_type_Yyg.f();
     }
   }
 }

@@ -1,42 +1,38 @@
-import android.app.Dialog;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build.VERSION;
 
-public class armc
-  extends ReportDialog
-  implements View.OnClickListener
+class armc
+  implements arlb
 {
-  private armd a;
+  armc(arlz paramarlz) {}
   
-  public armc(@NonNull Context paramContext)
+  public void a(Context paramContext)
   {
-    super(paramContext, 2131755989);
-    super.setContentView(2131558758);
-    super.setCanceledOnTouchOutside(false);
-    super.setCancelable(false);
-    super.findViewById(2131364004).setOnClickListener(this);
-  }
-  
-  public void a(armd paramarmd)
-  {
-    this.a = paramarmd;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.a != null) {
-      this.a.a(this);
+    Intent localIntent = new Intent();
+    localIntent.addFlags(268435456);
+    if (Build.VERSION.SDK_INT >= 9)
+    {
+      localIntent.setAction(arlz.a(this.a));
+      localIntent.setData(Uri.fromParts("package", paramContext.getPackageName(), null));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      paramContext.startActivity(localIntent);
+      return;
+      if (Build.VERSION.SDK_INT <= 8)
+      {
+        localIntent.setAction("android.intent.action.VIEW");
+        localIntent.setClassName("com.android.settings", arlz.a(this.a));
+        localIntent.putExtra("com.android.settings.ApplicationPkgName", paramContext.getPackageName());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     armc
  * JD-Core Version:    0.7.0.1
  */

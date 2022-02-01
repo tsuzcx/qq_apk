@@ -1,10 +1,21 @@
-public abstract interface amkj
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+
+public class amkj
+  implements Animation.AnimationListener
 {
-  public abstract void onNotifyLongTouch(String paramString);
+  public amkj(SpecailCareListActivity paramSpecailCareListActivity, amkn paramamkn) {}
   
-  public abstract void onNotifyStatusChanged(int paramInt, String paramString);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_Amkn.c.setVisibility(0);
+  }
   
-  public abstract void onSurfaceReady(int paramInt1, int paramInt2);
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

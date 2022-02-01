@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.navigatebar;
 
-import bfhz;
+import bgia;
 
 class TroopAioMsgNavigateBar$1$1
   implements Runnable

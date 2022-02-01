@@ -1,186 +1,300 @@
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.os.Bundle;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin.PhoneInfo;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.QZLog;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
+import java.util.Set;
+import tencent.im.oidb.cmd0xbf2.PhoneAddrBook;
+import tencent.im.oidb.cmd0xbf2.ReqBody;
+import tencent.im.oidb.cmd0xbf2.RspBody;
+import tencent.im.oidb.oidb_0xbe8.PopupResult;
+import tencent.im.oidb.oidb_0xbe8.ReqBody;
+import tencent.im.oidb.oidb_0xbe8.RspBody;
 
 public class azou
-  extends azkr
+  extends anud
 {
-  View.OnClickListener a;
-  
-  public azou(azlw paramazlw, azfe paramazfe)
+  public azou(QQAppInterface paramQQAppInterface)
   {
-    super(paramazlw, paramazfe);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new azov(this);
+    super(paramQQAppInterface);
   }
   
-  private boolean a(Card paramCard, boolean paramBoolean)
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (paramCard == null) {
-      return false;
+    oidb_0xbe8.RspBody localRspBody = new oidb_0xbe8.RspBody();
+    int i = paramToServiceMsg.extraData.getInt("op_code");
+    int j = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactBindHandler", 2, String.format("handleShowBindPhonePage reqOpCode=%s result=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
     }
-    if (((azfe)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0)
+    long l;
+    if (j == 0)
     {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "", "", "0X800A1C6", "0X800A1C6", 0, 0, "", "", "", "");
-      QZLog.d("cardInfo.allinone.pa", 2, new Object[] { Integer.valueOf(((azfe)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a) });
-      if ((paramCard.presentSwitch) && (!ProfileActivity.AllInOne.f(((azfe)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))) {
-        break label152;
+      l = 0L;
+      if (localRspBody.uint64_uin.has()) {
+        l = localRspBody.uint64_uin.get();
       }
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        break label147;
-      }
-    }
-    label147:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.jdField_a_of_type_JavaLangObject = null;
-      return paramBoolean;
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "", "", "0X800A1C8", "0X800A1C8", 0, 0, "", "", "", "");
-      break;
-    }
-    label152:
-    View localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131561423, null);
-    this.jdField_a_of_type_JavaLangObject = localView;
-    Object localObject1 = (ViewGroup)localView.findViewById(2131368592);
-    TextView localTextView = (TextView)localView.findViewById(2131378600);
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131368286);
-    Object localObject2 = (ImageView)localView.findViewById(2131368593);
-    Object localObject3 = (ImageView)localView.findViewById(2131368594);
-    Object localObject4 = (ImageView)localView.findViewById(2131368595);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131368596);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(localObject2);
-    localArrayList.add(localObject3);
-    localArrayList.add(localObject4);
-    localArrayList.add(localImageView2);
-    localTextView.setSingleLine(true);
-    localTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-    int i;
-    int j;
-    int k;
-    if ((paramCard.showPresent) && (paramCard.presentUrl != null))
-    {
-      ((ViewGroup)localObject1).setVisibility(0);
-      localObject2 = paramCard.presentUrl;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
-      i = ((Resources)localObject1).getDimensionPixelSize(2131298259);
-      j = ((Resources)localObject1).getDimensionPixelSize(2131297470);
-      k = ((Resources)localObject1).getDimensionPixelSize(2131297467);
-      localObject1 = ((Resources)localObject1).getDisplayMetrics();
-      j = (int)(Math.min(((DisplayMetrics)localObject1).widthPixels, ((DisplayMetrics)localObject1).heightPixels) - j - k);
-      k = (int)((j - i * 3 * 1.0F) / 3.0F);
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.profilecard.FrdProfileCard", 2, String.format(Locale.getDefault(), "makeOrRefreshQZone count:%s, photo:%s, margin:%s, max: %s", new Object[] { Integer.valueOf(localArrayList.size()), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j) }));
-      }
-      localObject1 = null;
-      if ((localObject2 != null) && (!((List)localObject2).isEmpty())) {
-        if (((List)localObject2).size() > 4)
-        {
-          i = 4;
-          j = 0;
-          label523:
-          if (j >= i) {
-            break label705;
-          }
-          localObject3 = (String)((List)localObject2).get(j);
-          if (TextUtils.isEmpty((CharSequence)localObject3)) {
-            break label872;
-          }
-          if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-            ((ImageView)localArrayList.get(j)).setColorFilter(1996488704);
-          }
-          if (localObject1 != null) {
-            break label869;
-          }
-          localObject1 = new ColorDrawable(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131165712));
-        }
+      if (!localRspBody.enum_op_code.has()) {
+        break label303;
       }
     }
-    label705:
-    label863:
-    label869:
-    label872:
-    for (;;)
+    label303:
+    for (i = localRspBody.enum_op_code.get();; i = 0)
     {
-      try
-      {
-        localObject4 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = ((Drawable)localObject1);
-        ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable = ((Drawable)localObject1);
-        ((URLDrawable.URLDrawableOptions)localObject4).mRequestHeight = k;
-        ((URLDrawable.URLDrawableOptions)localObject4).mRequestWidth = k;
-        localObject3 = URLDrawable.getDrawable((String)localObject3, (URLDrawable.URLDrawableOptions)localObject4);
-        ((ImageView)localArrayList.get(j)).setImageDrawable((Drawable)localObject3);
-        j += 1;
-        break label523;
-        i = ((List)localObject2).size();
-      }
-      catch (Exception localException)
+      if (localRspBody.uint32_rsp_of_popup_flag.has()) {}
+      for (j = localRspBody.uint32_rsp_of_popup_flag.get();; j = 0)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("Q.profilecard.FrdProfileCard", 2, "makeOrRefreshPresent fail!", localException);
+          QLog.d("ContactBindHandler", 2, String.format("handleShowBindPhonePage resUin=%s resOpCode=%s resFlag=%s", new Object[] { Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(j) }));
         }
-        continue;
-      }
-      if (((azfe)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0)
-      {
-        localObject1 = anni.a(2131707234);
-        if (TextUtils.isEmpty(paramCard.presentDesc)) {
-          break label863;
+        if (i == 2) {
+          if (j == 1) {
+            notifyUI(1, true, null);
+          }
         }
-      }
-      for (paramCard = ": " + paramCard.presentDesc;; paramCard = "")
-      {
-        localTextView.setText((String)localObject1 + anni.a(2131707241) + paramCard);
-        localView.setTag(new azde(94, null));
-        localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        localView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131691023));
-        a(localTextView, null, localImageView1);
-        return true;
-        localObject1 = ((azfe)this.b).jdField_a_of_type_ArrayOfJavaLangString[0];
-        break;
+        do
+        {
+          do
+          {
+            return;
+            notifyUI(1, false, null);
+            return;
+            if (i == 4)
+            {
+              if (paramFromServiceMsg.isSuccess())
+              {
+                notifyUI(2, true, null);
+                return;
+              }
+              notifyUI(2, false, null);
+              return;
+            }
+          } while (i != 11);
+          if (paramFromServiceMsg.isSuccess())
+          {
+            notifyUI(4, true, null);
+            return;
+          }
+          notifyUI(4, false, null);
+          return;
+          if (i == 1)
+          {
+            notifyUI(1, false, null);
+            return;
+          }
+        } while (i != 3);
+        notifyUI(2, false, null);
+        return;
       }
     }
   }
   
-  public int a()
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    return 1018;
+    paramToServiceMsg = new NewerGuidePlugin.RecommendedListResp();
+    try
+    {
+      Object localObject = new cmd0xbf2.RspBody();
+      int i = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("ContactBindHandler", 2, String.format("handleGetRecommendedList result=%s", new Object[] { Integer.valueOf(i) }));
+      }
+      paramToServiceMsg.jdField_a_of_type_Int = i;
+      if (i != 0) {
+        break label241;
+      }
+      paramToServiceMsg.b = ((cmd0xbf2.RspBody)localObject).uint32_end.get();
+      paramToServiceMsg.jdField_a_of_type_Long = ((cmd0xbf2.RspBody)localObject).uint32_next_index.get();
+      paramFromServiceMsg = ((cmd0xbf2.RspBody)localObject).phoneAddrBook.get();
+      if ((paramFromServiceMsg != null) && (!paramFromServiceMsg.isEmpty()))
+      {
+        paramFromServiceMsg = paramFromServiceMsg.iterator();
+        while (paramFromServiceMsg.hasNext())
+        {
+          paramObject = (cmd0xbf2.PhoneAddrBook)paramFromServiceMsg.next();
+          localObject = new NewerGuidePlugin.PhoneInfo();
+          ((NewerGuidePlugin.PhoneInfo)localObject).a = paramObject.str_phone.get();
+          ((NewerGuidePlugin.PhoneInfo)localObject).b = paramObject.str_nick.get();
+          ((NewerGuidePlugin.PhoneInfo)localObject).c = paramObject.str_long_nick.get();
+          ((NewerGuidePlugin.PhoneInfo)localObject).d = paramObject.str_head_url.get();
+          paramToServiceMsg.jdField_a_of_type_JavaUtilList.add(localObject);
+        }
+      }
+      notifyUI(3, true, paramToServiceMsg);
+    }
+    catch (Throwable paramFromServiceMsg)
+    {
+      QLog.e("ContactBindHandler", 1, "handleGetRecommendedList fail.", paramFromServiceMsg);
+      paramToServiceMsg.jdField_a_of_type_Int = -1;
+      notifyUI(3, false, paramToServiceMsg);
+      return;
+    }
+    return;
+    label241:
+    notifyUI(3, false, paramToServiceMsg);
   }
   
-  public String a()
+  public void a(long paramLong, int paramInt1, int paramInt2)
   {
-    return "ProfilePresentWallComponent";
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactBindHandler", 2, String.format("getRecommendedList uin=%s startIndex=%s num=%s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    }
+    try
+    {
+      Object localObject = new cmd0xbf2.ReqBody();
+      ((cmd0xbf2.ReqBody)localObject).uint64_uin.set(paramLong);
+      ((cmd0xbf2.ReqBody)localObject).uint64_start_index.set(paramInt1);
+      ((cmd0xbf2.ReqBody)localObject).uint64_num.set(paramInt2);
+      localObject = makeOIDBPkg("OidbSvc.0xbf2", 3058, 0, ((cmd0xbf2.ReqBody)localObject).toByteArray());
+      ((ToServiceMsg)localObject).setTimeout(10000L);
+      sendPbReq((ToServiceMsg)localObject);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ContactBindHandler", 1, "getRecommendedList fail.", localThrowable);
+    }
   }
   
-  public boolean a(azfe paramazfe)
+  public void a(String paramString)
   {
-    boolean bool = super.a(paramazfe);
-    return a(((azfe)this.b).jdField_a_of_type_ComTencentMobileqqDataCard, ((azfe)this.b).d) | bool;
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactBindHandler", 2, String.format("queryShowBindPhonePage uin=%s", new Object[] { paramString }));
+    }
+    try
+    {
+      oidb_0xbe8.ReqBody localReqBody = new oidb_0xbe8.ReqBody();
+      localReqBody.uint64_uin.set(Long.valueOf(paramString).longValue());
+      localReqBody.enum_op_code.set(1);
+      localReqBody.uint32_req_of_popup_flag.set(1);
+      paramString = makeOIDBPkg("OidbSvc.0xbe8", 3048, 0, localReqBody.toByteArray());
+      paramString.extraData.putInt("op_code", 1);
+      paramString.setTimeout(10000L);
+      sendPbReq(paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ContactBindHandler", 1, "queryShowBindPhonePage fail.", paramString);
+    }
   }
   
-  public String a_()
+  public void a(String paramString, int paramInt)
   {
-    return "map_key_present";
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactBindHandler", 2, String.format("reportCommonGuideWebOpen uin=%s type=%s", new Object[] { paramString, Integer.valueOf(paramInt) }));
+    }
+    try
+    {
+      oidb_0xbe8.ReqBody localReqBody = new oidb_0xbe8.ReqBody();
+      localReqBody.uint64_uin.set(Long.valueOf(paramString).longValue());
+      localReqBody.enum_op_code.set(10);
+      paramString = new oidb_0xbe8.PopupResult();
+      paramString.uint32_popup_result.set(0);
+      paramString.uint32_popup_fieldid.set(paramInt);
+      localReqBody.rpt_msg_popup_result.add(paramString);
+      paramString = makeOIDBPkg("OidbSvc.0xbe8", 3048, 0, localReqBody.toByteArray());
+      paramString.extraData.putInt("op_code", 10);
+      sendPbReq(paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ContactBindHandler", 1, "reportCommonGuideShowState fail.", paramString);
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactBindHandler", 2, String.format("setShowBindPhonePageResult uin=%s success=%s", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
+    }
+    try
+    {
+      oidb_0xbe8.ReqBody localReqBody = new oidb_0xbe8.ReqBody();
+      localReqBody.uint64_uin.set(Long.valueOf(paramString).longValue());
+      localReqBody.enum_op_code.set(3);
+      paramString = localReqBody.uint32_rst_of_popup_flag;
+      if (paramBoolean) {
+        i = 1;
+      }
+      paramString.set(i);
+      paramString = makeOIDBPkg("OidbSvc.0xbe8", 3048, 0, localReqBody.toByteArray());
+      paramString.extraData.putInt("op_code", 3);
+      paramString.setTimeout(10000L);
+      sendPbReq(paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ContactBindHandler", 1, "setShowBindPhonePageResult fail.", paramString);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactBindHandler", 2, String.format("reportContactsGuidePopWindowState uin=%s", new Object[] { paramString }));
+    }
+    try
+    {
+      oidb_0xbe8.ReqBody localReqBody = new oidb_0xbe8.ReqBody();
+      localReqBody.uint64_uin.set(Long.valueOf(paramString).longValue());
+      localReqBody.enum_op_code.set(8);
+      localReqBody.uint32_mqq808_welcomepage_flag.set(1);
+      paramString = makeOIDBPkg("OidbSvc.0xbe8", 3048, 0, localReqBody.toByteArray());
+      paramString.extraData.putInt("op_code", 8);
+      sendPbReq(paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ContactBindHandler", 1, "queryShowBindPhonePage fail.", paramString);
+    }
+  }
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("OidbSvc.0xbe8");
+      this.allowCmdSet.add("OidbSvc.0xbf2");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends anui> observerClass()
+  {
+    return azow.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    String str = paramFromServiceMsg.getServiceCmd();
+    if (msgCmdFilter(str)) {}
+    do
+    {
+      return;
+      if ("OidbSvc.0xbe8".equals(str))
+      {
+        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+    } while (!"OidbSvc.0xbf2".equals(str));
+    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

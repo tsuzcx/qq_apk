@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
+import android.os.Bundle;
+import org.jetbrains.annotations.Nullable;
 
-public class azmf
-  implements azmj
+class azmf
+  extends azlc
 {
-  public azmf(ComponentCenter paramComponentCenter) {}
+  azmf(azme paramazme) {}
   
-  public void a(azlv paramazlv)
+  public void a(boolean paramBoolean, @Nullable Bundle paramBundle)
   {
-    paramazlv.f();
+    super.a(paramBoolean, paramBundle);
+    if (paramBundle != null) {
+      azme.a(this.a, paramBundle.getString("key_today_constellation_trend"));
+    }
+    this.a.a();
+    if ((azme.a(this.a)) && (azme.a(this.a) != null)) {
+      azme.b(this.a).a();
+    }
   }
 }
 

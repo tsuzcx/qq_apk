@@ -1,59 +1,62 @@
-import android.util.SparseBooleanArray;
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
+import java.io.File;
+import org.json.JSONObject;
 
 public class zab
-  implements yyz
+  implements Cloneable
 {
-  private zab(DoodleLayout paramDoodleLayout) {}
+  public static final String a;
+  public int a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void a()
+  static
   {
-    this.a.a().c();
+    jdField_a_of_type_JavaLangString = ArtFilterManager.jdField_b_of_type_JavaLangString + "loading" + File.separator;
   }
   
-  public void a(int paramInt)
+  public static zab a(JSONObject paramJSONObject)
   {
-    this.a.a().a(paramInt);
+    zab localzab = new zab();
+    localzab.jdField_b_of_type_Int = paramJSONObject.getInt("version");
+    localzab.jdField_a_of_type_Int = paramJSONObject.getInt("picNum");
+    localzab.c = paramJSONObject.getString("url");
+    localzab.jdField_b_of_type_JavaLangString = paramJSONObject.getString("md5");
+    return localzab;
   }
   
-  public void a(boolean paramBoolean, yyb paramyyb)
+  public String a()
   {
-    yxm localyxm = this.a.a();
-    if (paramBoolean)
+    Object localObject = new File(c());
+    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
     {
-      localyxm.a(true);
-      switch (this.a.b)
-      {
-      }
-      for (;;)
-      {
-        this.a.c(3);
-        return;
-        this.a.a().b(false);
+      localObject = ((File)localObject).listFiles();
+      if ((localObject != null) && (localObject.length == this.jdField_a_of_type_Int)) {
+        return c();
       }
     }
-    if (paramyyb.jdField_a_of_type_Int != -1) {
-      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, true);
-    }
-    for (;;)
-    {
-      localyxm.a(paramyyb);
-      localyxm.a(false);
-      this.a.a(new View[] { this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
-      this.a.c(0);
-      this.a.d(0);
-      this.a.jdField_a_of_type_Zaa.i();
-      return;
-      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, false);
-    }
+    return null;
   }
   
-  public void b(int paramInt)
+  public String b()
   {
-    if (this.a.jdField_a_of_type_Zaa != null) {
-      this.a.jdField_a_of_type_Zaa.b(3, paramInt);
-    }
+    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + ".zip";
+  }
+  
+  public String c()
+  {
+    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + File.separator;
+  }
+  
+  public Object clone()
+  {
+    return super.clone();
+  }
+  
+  public String d()
+  {
+    return "loading" + File.separator + this.jdField_b_of_type_Int + ".zip";
   }
 }
 

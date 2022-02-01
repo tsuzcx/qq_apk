@@ -1,183 +1,262 @@
-import android.annotation.TargetApi;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.view.Surface;
+import android.content.Context;
+import android.opengl.GLES20;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qg.sdk.QGJNIBridge;
+import com.tencent.qg.sdk.QGRenderer.QGEventListener;
+import com.tencent.qg.sdk.invoke.ModuleEngine;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.ar.controller.VipQGThreeController.1;
+import cooperation.vip.ar.controller.VipQGThreeController.2;
+import cooperation.vip.ar.controller.VipQGThreeController.3;
+import cooperation.vip.ar.widget.VipQGGLSurfaceView;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
+import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@TargetApi(16)
 public class bnuk
+  extends bnuj
+  implements bnub, QGRenderer.QGEventListener
 {
-  private static String jdField_a_of_type_JavaLangString = bnuk.class.getSimpleName();
-  private int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long = 0L;
-  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
-  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
-  private boolean jdField_a_of_type_Boolean;
-  private final long jdField_b_of_type_Long = 2147483647L;
-  private String jdField_b_of_type_JavaLangString = "";
-  private long c;
+  private volatile int jdField_a_of_type_Int = 1;
+  private aphl jdField_a_of_type_Aphl;
+  private bkfr jdField_a_of_type_Bkfr = new bnul(this);
+  private bnum jdField_a_of_type_Bnum;
+  private bnuo jdField_a_of_type_Bnuo;
+  private VipQGGLSurfaceView jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new VipQGThreeController.3(this);
+  private volatile boolean jdField_a_of_type_Boolean;
+  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
+  private volatile boolean jdField_b_of_type_Boolean;
+  private boolean c = true;
   
-  private void a(Surface paramSurface)
+  public bnuk(Context paramContext, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
-    label121:
-    MediaFormat localMediaFormat;
-    String str;
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(this.jdField_b_of_type_JavaLangString);
-      int j = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackCount();
-      i = 0;
-      if (i < j)
-      {
-        if (this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i).getString("mime").contains("video")) {
-          this.jdField_a_of_type_Int = i;
-        }
-      }
-      else
-      {
-        if (this.jdField_a_of_type_Int != -1) {
-          break label121;
-        }
-        this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
-        return;
-      }
+    super(paramContext, paramViewGroup);
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369745));
     }
-    catch (IOException localIOException1)
-    {
-      for (;;)
-      {
-        int i;
-        QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder media extractor setDataSource() exception, msg = " + localIOException1.getMessage());
-        continue;
-        i += 1;
-      }
-      localMediaFormat = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(this.jdField_a_of_type_Int);
-      str = localMediaFormat.getString("mime");
-    }
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(str);
-      this.jdField_a_of_type_AndroidMediaMediaCodec.configure(localMediaFormat, paramSurface, null, 0);
-      this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.seekTo(0L, 0);
-      return;
-    }
-    catch (IOException localIOException2)
-    {
-      for (;;)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder media codec create exception, msg = " + localIOException2.getMessage());
-      }
-    }
+    b();
   }
   
-  public void a()
+  private String a(float[] paramArrayOfFloat)
   {
-    if (this.jdField_a_of_type_Boolean)
+    StringBuilder localStringBuilder = new StringBuilder("[");
+    int i = 0;
+    while (i < paramArrayOfFloat.length)
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.seekTo(0L, 1);
-      this.jdField_a_of_type_AndroidMediaMediaCodec.flush();
+      localStringBuilder.append(paramArrayOfFloat[i]);
+      if (i != paramArrayOfFloat.length - 1) {
+        localStringBuilder.append(",");
+      }
+      i += 1;
     }
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
-  public void a(String paramString, Surface paramSurface)
+  private boolean a()
   {
-    try
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_b_of_type_AndroidViewViewGroup == null) || (this.jdField_a_of_type_Bnuo == null) || (!bkfs.b.get()))
     {
-      this.jdField_b_of_type_JavaLangString = paramString;
-      a(paramSurface);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder init exception, msg = " + paramString.getMessage());
-    }
-  }
-  
-  public boolean a()
-  {
-    QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface start");
-    if (!Thread.interrupted())
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface loop");
-      int i;
-      Object localObject;
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
-        if (i >= 0)
-        {
-          localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers()[i];
-          j = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData((ByteBuffer)localObject, 0);
-          if (j >= 0) {
-            break label261;
-          }
-          QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface BUFFER_FLAG_END_OF_STREAM");
-          this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, 0, 0L, 4);
-          this.jdField_a_of_type_Boolean = true;
-        }
-      }
-      int j = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
-      QLog.e(jdField_a_of_type_JavaLangString, 4, new Object[] { "mediaCodec.dequeueOutputBuffer, outputBufferIndex = ", Integer.valueOf(j) });
-      switch (j)
-      {
-      }
-      this.c = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
-      QLog.e(jdField_a_of_type_JavaLangString, 4, new Object[] { "mediaCodec.releaseOutputBuffer, outputBufferIndex = ", Integer.valueOf(j), ", timestamp = ", Long.valueOf(this.c) });
-      if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) != 0)
-      {
-        i = 1;
-        label227:
-        localObject = this.jdField_a_of_type_AndroidMediaMediaCodec;
-        if (i != 0) {
-          break label304;
-        }
-      }
-      label261:
-      label304:
-      for (boolean bool = true;; bool = false)
-      {
-        ((MediaCodec)localObject).releaseOutputBuffer(j, bool);
-        if (i == 0) {
-          break label309;
-        }
-        QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface decode complete");
-        return false;
-        QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface mediaCodec.queueInputBuffer");
-        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, j, this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime(), 0);
-        this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
-        break;
-        i = 0;
-        break label227;
-      }
-      label309:
+      QZLog.i("VipARQGThreeController", 1, "checkInValid mVipQGViewConfig = " + this.jdField_a_of_type_Bnuo + " so status = " + bkfs.b.get());
       return true;
     }
     return false;
   }
   
-  public void b()
+  private void b()
   {
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.unselectTrack(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
-      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
+    ThreadManager.executeOnFileThread(new VipQGThreeController.1(this));
+  }
+  
+  public void a()
+  {
+    if (a()) {
       return;
     }
-    catch (Exception localException)
+    ThreadManager.getUIHandler().post(new VipQGThreeController.2(this));
+  }
+  
+  public void a(bnuo parambnuo)
+  {
+    this.jdField_a_of_type_Bnuo = parambnuo;
+    if ((this.jdField_a_of_type_Bnuo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bnuo.jdField_a_of_type_JavaLangString)))
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder exception, msg = " + localException.getMessage());
+      if (QLog.isColorLevel()) {
+        QLog.i("VipARQGThreeController", 2, " setVipQGViewConfig config = " + parambnuo.toString());
+      }
+      localObject = new arjx();
+      ((arjx)localObject).b = parambnuo.jdField_a_of_type_JavaLangString;
+      ((arjx)localObject).c = parambnuo.c;
+      bnuw.a().a((arjx)localObject, this);
+      return;
     }
+    Object localObject = new StringBuilder().append("setVipQGViewConfig config = null or resUrl = null , config == null : ");
+    if (parambnuo == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.e("VipARQGThreeController", 1, bool);
+      return;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Bnuo != null) {
+      this.jdField_a_of_type_Bnuo.b = paramString;
+    }
+    QZLog.i("VipARQGThreeController", 1, "qg resources load success path = " + paramString + " soStatus = " + bkfs.b.get());
+  }
+  
+  public void a(String paramString, float[] paramArrayOfFloat)
+  {
+    if ((this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView == null) || (this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.getQGBridge() == null) || (paramArrayOfFloat == null))
+    {
+      QZLog.e("VipARQGThreeController", 1, new Object[] { "dispatchQGJSEvent float[] error" });
+      return;
+    }
+    this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.getQGBridge().dispatchJSEvent(paramString, paramArrayOfFloat);
+  }
+  
+  public void a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3)
+  {
+    if ((this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView == null) || (this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.getQGBridge() == null))
+    {
+      QZLog.e("VipARQGThreeController", 1, new Object[] { "dispatchQGJSEvent error" });
+      return;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("modelMatrix", a(paramArrayOfFloat1));
+      localJSONObject.put("viewMatrix", a(paramArrayOfFloat2));
+      localJSONObject.put("projectionMatrix", a(paramArrayOfFloat3));
+      this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.getQGBridge().dispatchJSEvent("onRenderFrame", localJSONObject);
+      return;
+    }
+    catch (JSONException paramArrayOfFloat1)
+    {
+      for (;;)
+      {
+        paramArrayOfFloat1.printStackTrace();
+      }
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    QZLog.i("VipARQGThreeController", 1, "qg resources load fail error = " + paramString + " soStatus = " + bkfs.b.get());
+    if (this.jdField_a_of_type_Bnuo != null) {
+      this.jdField_a_of_type_Bnuo.b = "";
+    }
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView != null) {
+      this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.onPause();
+    }
+  }
+  
+  public void d()
+  {
+    super.d();
+    if (this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView != null) {
+      this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.onResume();
+    }
+  }
+  
+  public void f()
+  {
+    super.f();
+    if ((this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView != null) && (this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.getModuleEngine() != null))
+    {
+      this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.getModuleEngine().unRegisterJsModule(this.jdField_a_of_type_Bnum);
+      this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.b();
+    }
+    if (this.jdField_a_of_type_Aphl != null) {
+      this.jdField_a_of_type_Aphl.c();
+    }
+  }
+  
+  public void onCanvasCreated()
+  {
+    QZLog.i("VipARQGThreeController", 1, "qg view onCanvasCreated");
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void onDrawFrame()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void onDrawFrame(GL10 paramGL10)
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+              } while (!bkfs.b.get());
+              QZLog.e("VipARQGThreeController", 2, new Object[] { "onDrawFrame status SO_LOAD success next status CREATE_QGVIEW" });
+              this.jdField_a_of_type_Int = 2;
+              return;
+            } while (this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView != null);
+            a();
+            this.jdField_a_of_type_Int = 5;
+            return;
+          } while ((this.jdField_a_of_type_Bnuo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Bnuo.b)) || (this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView == null));
+          QZLog.e("VipARQGThreeController", 2, new Object[] { "onDrawFrame status JS_MODEL_LOAD success next status DRAW_FRAME mIsQGReady = " + this.jdField_b_of_type_Boolean + " mIsQGStartDraw = " + this.jdField_a_of_type_Boolean });
+        } while (!this.jdField_b_of_type_Boolean);
+        this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.queueEvent(this.jdField_a_of_type_JavaLangRunnable);
+      } while (!this.jdField_a_of_type_Bnuo.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Int = 4;
+      return;
+    } while ((this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView == null) || (!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Aphl == null) || (paramGL10 == null));
+    int i = this.jdField_a_of_type_CooperationVipArWidgetVipQGGLSurfaceView.getCanvasTexture("offScreen");
+    if (i != 0)
+    {
+      GLES20.glEnable(3042);
+      GLES20.glBlendFunc(1, 771);
+      this.jdField_a_of_type_Aphl.a(i, null, null);
+      if (this.c)
+      {
+        bnuq.a("ar_qg_show", "1");
+        this.c = false;
+      }
+    }
+    this.jdField_a_of_type_Int = 4;
+  }
+  
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Aphl != null) {
+      this.jdField_a_of_type_Aphl.a(paramInt1, paramInt2);
+    }
+  }
+  
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
+  {
+    this.jdField_a_of_type_Aphl = new aphl();
+    this.jdField_a_of_type_Aphl.a();
   }
 }
 

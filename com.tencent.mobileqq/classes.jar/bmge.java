@@ -1,69 +1,250 @@
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.mini.share.MiniProgramShareUtils;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.share.QZoneShareActivity;
-import cooperation.qzone.share.QZoneShareActivity.5.1;
-import cooperation.qzone.share.QZoneShareActivity.5.2;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.PluginInfo;
+import java.util.HashMap;
 
 public class bmge
-  implements MiniAppCmdInterface
 {
-  public bmge(QZoneShareActivity paramQZoneShareActivity, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, int paramInt4, String paramString6, MiniAppCmdInterface paramMiniAppCmdInterface) {}
+  private static volatile bmge jdField_a_of_type_Bmge;
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "qzone_plugin.apk", "qwallet_plugin.apk", "qqfav.apk", "qqwadl.apk" };
+  private Context jdField_a_of_type_AndroidContentContext;
+  private HashMap<String, PluginInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  private bmge(Context paramContext)
   {
-    if (paramBoolean)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    a();
+  }
+  
+  public static final bmge a(Context paramContext)
+  {
+    if (jdField_a_of_type_Bmge == null) {}
+    try
     {
-      MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
-      if (localMiniAppInfo != null)
+      if (jdField_a_of_type_Bmge == null) {
+        jdField_a_of_type_Bmge = new bmge(paramContext);
+      }
+      return jdField_a_of_type_Bmge;
+    }
+    finally {}
+  }
+  
+  public static boolean b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return false;
+      int i = 0;
+      while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
       {
-        paramJSONObject = this.jdField_a_of_type_JavaLangString;
-        String str = this.jdField_b_of_type_JavaLangString;
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          paramJSONObject = localMiniAppInfo.name;
+        if (paramString.equals(jdField_a_of_type_ArrayOfJavaLangString[i])) {
+          return true;
         }
-        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-          str = localMiniAppInfo.desc;
-        }
-        if (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) != null)
+        i += 1;
+      }
+    }
+  }
+  
+  public PluginInfo a(String paramString)
+  {
+    return (PluginInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public void a()
+  {
+    b();
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "init. built in plugin size:" + this.jdField_a_of_type_JavaUtilHashMap.size());
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+  }
+  
+  public boolean a(String paramString, PluginBaseInfo paramPluginBaseInfo)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      PluginInfo localPluginInfo = (PluginInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      if (localPluginInfo != null)
+      {
+        if (paramPluginBaseInfo != null)
         {
-          QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).jdField_b_of_type_JavaLangString = paramJSONObject;
-          QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).jdField_c_of_type_JavaLangString = str;
-          if ((QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).a != null) && (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).a.size() == 0)) {
-            QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).a.add(localMiniAppInfo.iconUrl);
+          boolean bool = TextUtils.equals(localPluginInfo.mMD5, paramPluginBaseInfo.mMD5);
+          QLog.i("plugin_tag", 1, "isUpToDayBuiltIn " + paramString + " isUpToDay " + bool);
+          if (!bool) {
+            bdkh.a(new RuntimeException(), "plugin_tagCreateClassLoaderNotUpToDay");
           }
+          return bool;
         }
-        MiniProgramShareUtils.shareAsQzoneFeeds(this.jdField_c_of_type_JavaLangString, paramJSONObject, str, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_JavaLangString, null, this.e, localMiniAppInfo.iconUrl, this.jdField_d_of_type_Int, localMiniAppInfo.versionId, this.f, this.jdField_a_of_type_ComTencentMobileqqMiniReuseMiniAppCmdInterface);
-        return;
-      }
-      this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.runOnUiThread(new QZoneShareActivity.5.1(this));
-      return;
-    }
-    long l;
-    if (paramJSONObject != null)
-    {
-      l = paramJSONObject.optLong("retCode");
-      if (paramJSONObject == null) {
-        break label260;
+        QLog.i("plugin_tag", 1, "isUpToDayBuiltIn info");
       }
     }
-    label260:
-    for (paramJSONObject = paramJSONObject.optString("errMsg");; paramJSONObject = "")
-    {
-      this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.runOnUiThread(new QZoneShareActivity.5.2(this, paramJSONObject, l));
-      return;
-      l = 0L;
-      break;
-    }
+    return false;
+  }
+  
+  /* Error */
+  void b()
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: new 138	java/io/BufferedReader
+    //   5: dup
+    //   6: new 140	java/io/InputStreamReader
+    //   9: dup
+    //   10: aload_0
+    //   11: getfield 36	bmge:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   14: invokevirtual 146	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   17: ldc 148
+    //   19: invokevirtual 154	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   22: invokespecial 157	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   25: invokespecial 160	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   28: astore_1
+    //   29: aload_1
+    //   30: invokevirtual 163	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   33: astore_2
+    //   34: aload_2
+    //   35: ifnull +139 -> 174
+    //   38: aload_2
+    //   39: invokevirtual 166	java/lang/String:trim	()Ljava/lang/String;
+    //   42: ldc 168
+    //   44: invokevirtual 172	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   47: astore 4
+    //   49: aload 4
+    //   51: iconst_0
+    //   52: aaload
+    //   53: astore_3
+    //   54: ldc 174
+    //   56: astore_2
+    //   57: aload 4
+    //   59: arraylength
+    //   60: iconst_1
+    //   61: if_icmple +8 -> 69
+    //   64: aload 4
+    //   66: iconst_1
+    //   67: aaload
+    //   68: astore_2
+    //   69: new 62	cooperation/plugin/PluginInfo
+    //   72: dup
+    //   73: invokespecial 175	cooperation/plugin/PluginInfo:<init>	()V
+    //   76: astore 4
+    //   78: aload 4
+    //   80: aload_3
+    //   81: putfield 178	cooperation/plugin/PluginInfo:mID	Ljava/lang/String;
+    //   84: aload 4
+    //   86: aload_2
+    //   87: putfield 104	cooperation/plugin/PluginInfo:mMD5	Ljava/lang/String;
+    //   90: aload 4
+    //   92: iconst_1
+    //   93: putfield 182	cooperation/plugin/PluginInfo:mUpdateType	I
+    //   96: aload 4
+    //   98: iconst_0
+    //   99: putfield 185	cooperation/plugin/PluginInfo:mInstallType	I
+    //   102: invokestatic 70	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   105: ifeq +45 -> 150
+    //   108: ldc 72
+    //   110: iconst_2
+    //   111: new 74	java/lang/StringBuilder
+    //   114: dup
+    //   115: invokespecial 75	java/lang/StringBuilder:<init>	()V
+    //   118: ldc 187
+    //   120: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: aload 4
+    //   125: getfield 178	cooperation/plugin/PluginInfo:mID	Ljava/lang/String;
+    //   128: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: ldc 189
+    //   133: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   136: aload 4
+    //   138: getfield 104	cooperation/plugin/PluginInfo:mMD5	Ljava/lang/String;
+    //   141: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   144: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   147: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   150: aload_0
+    //   151: getfield 34	bmge:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   154: aload_3
+    //   155: aload 4
+    //   157: invokevirtual 193	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   160: pop
+    //   161: goto -132 -> 29
+    //   164: astore_2
+    //   165: aload_1
+    //   166: ifnull +7 -> 173
+    //   169: aload_1
+    //   170: invokevirtual 196	java/io/BufferedReader:close	()V
+    //   173: return
+    //   174: aload_1
+    //   175: ifnull -2 -> 173
+    //   178: aload_1
+    //   179: invokevirtual 196	java/io/BufferedReader:close	()V
+    //   182: return
+    //   183: astore_1
+    //   184: return
+    //   185: astore_1
+    //   186: aload_2
+    //   187: ifnull +7 -> 194
+    //   190: aload_2
+    //   191: invokevirtual 196	java/io/BufferedReader:close	()V
+    //   194: aload_1
+    //   195: athrow
+    //   196: astore_1
+    //   197: return
+    //   198: astore_2
+    //   199: goto -5 -> 194
+    //   202: astore_3
+    //   203: aload_1
+    //   204: astore_2
+    //   205: aload_3
+    //   206: astore_1
+    //   207: goto -21 -> 186
+    //   210: astore_1
+    //   211: aconst_null
+    //   212: astore_1
+    //   213: goto -48 -> 165
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	216	0	this	bmge
+    //   28	151	1	localBufferedReader	java.io.BufferedReader
+    //   183	1	1	localException1	java.lang.Exception
+    //   185	10	1	localObject1	Object
+    //   196	8	1	localException2	java.lang.Exception
+    //   206	1	1	localObject2	Object
+    //   210	1	1	localIOException1	java.io.IOException
+    //   212	1	1	localObject3	Object
+    //   1	86	2	str	String
+    //   164	27	2	localIOException2	java.io.IOException
+    //   198	1	2	localException3	java.lang.Exception
+    //   204	1	2	localObject4	Object
+    //   53	102	3	localObject5	Object
+    //   202	4	3	localObject6	Object
+    //   47	109	4	localObject7	Object
+    // Exception table:
+    //   from	to	target	type
+    //   29	34	164	java/io/IOException
+    //   38	49	164	java/io/IOException
+    //   57	64	164	java/io/IOException
+    //   69	150	164	java/io/IOException
+    //   150	161	164	java/io/IOException
+    //   178	182	183	java/lang/Exception
+    //   2	29	185	finally
+    //   169	173	196	java/lang/Exception
+    //   190	194	198	java/lang/Exception
+    //   29	34	202	finally
+    //   38	49	202	finally
+    //   57	64	202	finally
+    //   69	150	202	finally
+    //   150	161	202	finally
+    //   2	29	210	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmge
  * JD-Core Version:    0.7.0.1
  */

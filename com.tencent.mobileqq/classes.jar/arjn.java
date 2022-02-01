@@ -1,22 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Comparator;
 
-public class arjn
-  implements View.OnClickListener
+final class arjn
+  implements Comparator<bekf>
 {
-  public arjn(DataReportSettingFragment paramDataReportSettingFragment) {}
-  
-  public void onClick(View paramView)
+  public int a(bekf parambekf1, bekf parambekf2)
   {
-    bglp.a(this.a.getActivity(), 0, 2131559603, anni.a(2131701571), "", anni.a(2131701566), anni.a(2131701572), new arjo(this), new arjp(this)).show();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return parambekf1.c - parambekf2.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arjn
  * JD-Core Version:    0.7.0.1
  */

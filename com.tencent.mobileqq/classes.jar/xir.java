@@ -1,38 +1,15 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 class xir
-  implements wld<wzm, wzn>
+  implements xiv
 {
-  xir(xiq paramxiq, xjd paramxjd) {}
+  xir(xiq paramxiq) {}
   
-  public void a(@NonNull wzm paramwzm, @Nullable wzn paramwzn, @NonNull ErrorMessage paramErrorMessage)
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
   {
-    if ((paramErrorMessage.isFail()) || (paramwzn == null))
-    {
-      yqp.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      this.jdField_a_of_type_Xjd.a(paramErrorMessage, null, false);
-      return;
-    }
-    xiq.a(this.jdField_a_of_type_Xiq);
-    this.jdField_a_of_type_Xiq.b.a(paramwzn.jdField_a_of_type_JavaUtilList, paramwzn.jdField_a_of_type_JavaLangString, paramwzn.jdField_a_of_type_Boolean);
-    ((yij)wpm.a(11)).a(paramwzn.jdField_a_of_type_JavaUtilList);
-    AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
-    boolean bool = yja.a(paramwzn, localAtomicBoolean);
-    yqp.d("Q.qqstory.player.data.HomeFeedPlayPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramwzn.b), Integer.valueOf(xiq.b(this.jdField_a_of_type_Xiq)), Boolean.valueOf(bool) });
-    if ((!paramwzn.jdField_a_of_type_Boolean) && (xiq.b(this.jdField_a_of_type_Xiq) < 10) && ((!paramwzn.b) || (bool)))
-    {
-      yqp.d("Q.qqstory.player.data.HomeFeedPlayPageLoader", "feedId list not end, pull more");
-      paramwzm.b = this.jdField_a_of_type_Xiq.b.a();
-      wlb.a().a(paramwzm, this);
-      return;
-    }
-    if (localAtomicBoolean.getAndSet(false)) {
-      this.jdField_a_of_type_Xiq.b.c();
-    }
-    this.jdField_a_of_type_Xjd.a(paramErrorMessage, xil.b(paramwzn.jdField_a_of_type_JavaUtilList), paramwzn.jdField_a_of_type_Boolean);
+    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
   }
 }
 

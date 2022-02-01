@@ -1,134 +1,246 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.content.Intent;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import cooperation.vip.pb.vac_adv_get.VacFeedsAdvMetaReq;
-import java.util.Arrays;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.appstore.report.AppCenterReporter.1;
+import com.tencent.open.appstore.report.AppCenterReporter.2;
+import com.tencent.open.appstore.report.AppCenterReporter.3;
+import com.tencent.open.appstore.report.AppCenterReporter.4;
+import com.tencent.open.appstore.report.AppCenterReporter.5;
+import com.tencent.open.appstore.report.AppCenterReporter.6;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.replacemonitor.MonitorStep;
+import com.tencent.replacemonitor.MonitorTask;
+import com.tencent.replacemonitor.replace.ReplaceMonitor;
+import com.tencent.tmassistant.st.SDKReportManager2;
+import com.tencent.tmassistantbase.util.GlobalUtil;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
-@JsPlugin(secondary=true)
 public class bjto
-  extends BaseJsPlugin
 {
-  private JSONObject a(RequestEvent paramRequestEvent)
+  private static MonitorTask a(DownloadInfo paramDownloadInfo)
   {
+    MonitorTask localMonitorTask = new MonitorTask();
+    localMonitorTask.appName = paramDownloadInfo.f;
+    localMonitorTask.packageName = paramDownloadInfo.e;
+    localMonitorTask.versionCode = paramDownloadInfo.jdField_b_of_type_Int;
+    localMonitorTask.fileMd5 = paramDownloadInfo.p;
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
-    }
-    return null;
-  }
-  
-  @JsEvent({"qsubscribe_getdeviceinfo"})
-  public void qsubscribeGetdeviceinfo(RequestEvent paramRequestEvent)
-  {
-    try
-    {
-      a(paramRequestEvent);
-      Object localObject = new acry();
-      ((acry)localObject).a = "1b0ad2";
-      localObject = acrx.a(BaseApplication.getContext(), (acry)localObject);
-      if ((localObject != null) && (((acrz)localObject).a != null))
-      {
-        vac_adv_get.VacFeedsAdvMetaReq localVacFeedsAdvMetaReq = new vac_adv_get.VacFeedsAdvMetaReq();
-        localVacFeedsAdvMetaReq.device_info.set(((acrz)localObject).a);
-        localObject = Arrays.toString(localVacFeedsAdvMetaReq.toByteArray());
-        new JSONObject().put("deviceinfo", localObject);
-        paramRequestEvent.ok();
-      }
-      return;
+      localMonitorTask.yybApkId = Long.parseLong(paramDownloadInfo.k);
+      localMonitorTask.yybAppId = Long.parseLong(paramDownloadInfo.c);
+      label62:
+      localMonitorTask.downloadUrl = paramDownloadInfo.d;
+      localMonitorTask.additionalId = paramDownloadInfo.jdField_b_of_type_JavaLangString;
+      localMonitorTask.filePath = paramDownloadInfo.l;
+      localMonitorTask.traceId = paramDownloadInfo.x;
+      localMonitorTask.externalParams = new HashMap();
+      localMonitorTask.externalParams.put("via", paramDownloadInfo.h);
+      return localMonitorTask;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
-      paramRequestEvent.fail();
+      break label62;
     }
   }
   
-  @JsEvent({"qsubscribe_opendetail"})
-  public void qsubscribeOpendetail(RequestEvent paramRequestEvent)
+  private static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
+    return bjtr.a().i(paramString5).k(paramString1).j(paramString2).l(paramString3).m(paramString4).b();
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    bjtx.b("AppCenterReporter", "[report] type=" + paramInt + "\ndata=" + paramString);
+    SDKReportManager2.getInstance().postReport(paramInt, paramString);
+  }
+  
+  public static void a(bjtr parambjtr)
+  {
+    parambjtr = parambjtr.a();
+    bjtx.b("AppCenterReporter", "[reportExposure] type=3002\ndata=" + parambjtr);
+    SDKReportManager2.getInstance().postReport(3002, parambjtr);
+  }
+  
+  public static void a(DownloadInfo paramDownloadInfo)
+  {
+    ThreadManager.excute(new AppCenterReporter.1(paramDownloadInfo), 16, null, true);
+  }
+  
+  public static void a(DownloadInfo paramDownloadInfo, int paramInt)
+  {
+    ThreadManager.excute(new AppCenterReporter.5(paramDownloadInfo, paramInt), 16, null, true);
+  }
+  
+  public static void a(DownloadInfo paramDownloadInfo, int paramInt, String paramString)
+  {
+    ThreadManager.excute(new AppCenterReporter.3(paramDownloadInfo, paramInt, paramString), 16, null, true);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    paramString1 = a(paramString1, paramString2, paramString3, paramString4, paramString5);
+    bjtx.b("AppCenterReporter", "[reportNormalExposure] type=3001\ndata=" + paramString1);
+    SDKReportManager2.getInstance().postReport(3001, paramString1);
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    bjtx.b("AppCenterReporter", ">notifyInstallFinish " + paramString + "|" + paramBoolean);
+    ThreadManager.excute(new AppCenterReporter.6(paramString, paramBoolean), 16, null, true);
+  }
+  
+  private static long b(String paramString)
+  {
+    if (arta.a(paramString, bjjo.a().a())) {}
     try
     {
-      Object localObject = a(paramRequestEvent).optJSONObject("data");
-      if (localObject != null)
-      {
-        String str1 = ((JSONObject)localObject).optString("uin");
-        int i = ((JSONObject)localObject).optInt("type");
-        String str2 = ((JSONObject)localObject).optString("feedid");
-        long l = ((JSONObject)localObject).optLong("createtime");
-        localObject = aaae.a(str2, str1, i, ((JSONObject)localObject).optInt("width"), ((JSONObject)localObject).optInt("height"), l);
-        aaae.a(this.mMiniAppContext.getAttachedActivity(), (CertifiedAccountMeta.StFeed)localObject, 9001);
-      }
+      long l = new File(GlobalUtil.getInstance().getContext().getPackageManager().getPackageInfo(paramString, 0).applicationInfo.sourceDir).length();
+      return l;
+    }
+    catch (Throwable paramString)
+    {
+      label77:
+      break label77;
+    }
+    bjtx.b("AppCenterReporter", "[getInstalledAppFileSize]" + paramString + ": NOT INSTALLED!");
+    return 0L;
+  }
+  
+  public static void b(bjtr parambjtr)
+  {
+    parambjtr = parambjtr.a();
+    bjtx.b("AppCenterReporter", "[reportClick] type=3003\ndata=" + parambjtr);
+    SDKReportManager2.getInstance().postReport(3003, parambjtr);
+  }
+  
+  public static void b(DownloadInfo paramDownloadInfo)
+  {
+    ThreadManager.excute(new AppCenterReporter.2(paramDownloadInfo), 16, null, true);
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    paramString1 = a(paramString1, paramString2, paramString3, paramString4, paramString5) + "|" + bjtr.a().d() + "|" + "200";
+    bjtx.b("AppCenterReporter", "[reportClick] type=3003\ndata=" + paramString1);
+    SDKReportManager2.getInstance().postReport(3003, paramString1);
+  }
+  
+  private static String c(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo == null) {
+      return "";
+    }
+    return bjtr.a().i(paramDownloadInfo.o).k(paramDownloadInfo.t).j(paramDownloadInfo.u).l(paramDownloadInfo.v).m(paramDownloadInfo.h).b();
+  }
+  
+  public static void c(DownloadInfo paramDownloadInfo)
+  {
+    g(paramDownloadInfo);
+    ThreadManager.excute(new AppCenterReporter.4(paramDownloadInfo), 16, null, true);
+  }
+  
+  private static String d(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo == null) {
+      return "";
+    }
+    return bjtr.a().a(paramDownloadInfo.f).b(paramDownloadInfo.e).a(paramDownloadInfo.jdField_b_of_type_Int).c(paramDownloadInfo.c).d(paramDownloadInfo.k).e(paramDownloadInfo.r).f(paramDownloadInfo.s).g(paramDownloadInfo.d).h(paramDownloadInfo.q).c();
+  }
+  
+  public static void d(DownloadInfo paramDownloadInfo)
+  {
+    bjtx.b("AppCenterReporter", ">tryInitMonitorTask info:" + paramDownloadInfo);
+    if (paramDownloadInfo == null) {
       return;
     }
-    catch (Throwable localThrowable)
+    MonitorTask localMonitorTask = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    bjtx.b("AppCenterReporter", ">tryInitMonitorTask info=" + paramDownloadInfo);
+    if (localMonitorTask == null) {}
+    for (paramDownloadInfo = a(paramDownloadInfo);; paramDownloadInfo = localMonitorTask)
     {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
-      paramRequestEvent.fail();
+      ReplaceMonitor.get().addTask(paramDownloadInfo);
+      return;
+      if (TextUtils.isEmpty(localMonitorTask.filePath)) {
+        localMonitorTask.filePath = paramDownloadInfo.l;
+      }
+      bjtx.b("AppCenterReporter", ">tryInitMonitorTask 已有task2:" + localMonitorTask);
     }
   }
   
-  @JsEvent({"qsubscribe_opendiscover"})
-  public void qsubscribeOpendiscover(RequestEvent paramRequestEvent)
+  public static void e(DownloadInfo paramDownloadInfo)
   {
-    boolean bool = false;
-    try
-    {
-      Object localObject = a(paramRequestEvent).optJSONObject("data");
-      if (localObject != null)
-      {
-        String str = ((JSONObject)localObject).optString("uin");
-        int i = ((JSONObject)localObject).optInt("shoptype");
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("postUin", str);
-        ((Intent)localObject).putExtra("sourceFrom", 1);
-        if (i > 1) {
-          bool = true;
-        }
-        ((Intent)localObject).putExtra("has_shop", bool);
-        ((Intent)localObject).addFlags(268435456);
-        blsb.a(this.mMiniAppContext.getAttachedActivity(), (Intent)localObject, 0);
-        paramRequestEvent.ok();
-      }
+    bjtx.b("AppCenterReporter", ">downloadSuccCheck info:" + paramDownloadInfo);
+    if (paramDownloadInfo == null) {
       return;
     }
-    catch (Throwable localThrowable)
+    MonitorTask localMonitorTask2 = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    MonitorTask localMonitorTask1;
+    if (localMonitorTask2 == null)
     {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
-      paramRequestEvent.fail();
+      localMonitorTask1 = a(paramDownloadInfo);
+      ReplaceMonitor.get().addTask(localMonitorTask1);
+    }
+    for (;;)
+    {
+      bjtx.b("AppCenterReporter", ">downloadSuccCheck task:" + localMonitorTask1);
+      if (localMonitorTask1 == null) {
+        break;
+      }
+      ReplaceMonitor.get().execSync(localMonitorTask1, MonitorStep.DOWNLOADING);
+      return;
+      localMonitorTask1 = localMonitorTask2;
+      if (TextUtils.isEmpty(localMonitorTask2.filePath))
+      {
+        localMonitorTask2.filePath = paramDownloadInfo.l;
+        localMonitorTask1 = localMonitorTask2;
+      }
     }
   }
   
-  @JsEvent({"qsubscribe_openhomepage"})
-  public void qsubscribeOpenhomepage(RequestEvent paramRequestEvent)
+  public static void f(DownloadInfo paramDownloadInfo)
   {
-    try
+    bjtx.b("AppCenterReporter", ">deleteCheck info:" + paramDownloadInfo);
+    if (paramDownloadInfo == null) {}
+    do
     {
-      Object localObject = a(paramRequestEvent).optJSONObject("data");
-      if (localObject != null)
-      {
-        localObject = ((JSONObject)localObject).optString("uin");
-        aaae.a(this.mMiniAppContext.getAttachedActivity(), (String)localObject, 9001);
-      }
+      return;
+      paramDownloadInfo = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    } while (paramDownloadInfo == null);
+    ReplaceMonitor.get().deleteTask(paramDownloadInfo);
+  }
+  
+  public static void g(DownloadInfo paramDownloadInfo)
+  {
+    bjtx.b("AppCenterReporter", ">installStartCheck ,info:" + paramDownloadInfo);
+    if (paramDownloadInfo == null) {
       return;
     }
-    catch (Throwable localThrowable)
+    MonitorTask localMonitorTask2 = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    MonitorTask localMonitorTask1;
+    if (localMonitorTask2 == null)
     {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
-      paramRequestEvent.fail();
+      localMonitorTask1 = a(paramDownloadInfo);
+      ReplaceMonitor.get().addTask(localMonitorTask1);
+    }
+    for (;;)
+    {
+      bjtx.b("AppCenterReporter", ">installStartCheck task:" + localMonitorTask1);
+      if (localMonitorTask1 == null) {
+        break;
+      }
+      ReplaceMonitor.get().execSync(localMonitorTask1, MonitorStep.BEFORE_INSTALL);
+      return;
+      localMonitorTask1 = localMonitorTask2;
+      if (TextUtils.isEmpty(localMonitorTask2.filePath))
+      {
+        localMonitorTask2.filePath = paramDownloadInfo.l;
+        localMonitorTask1 = localMonitorTask2;
+      }
     }
   }
 }

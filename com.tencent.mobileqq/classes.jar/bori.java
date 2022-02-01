@@ -1,22 +1,8 @@
-import android.graphics.RectF;
-
-public class bori
-  extends bopx
+public abstract interface bori
 {
-  private int a;
+  public abstract void a(borf paramborf, long paramLong1, long paramLong2);
   
-  public bori(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  void a(int paramInt, bopy parambopy)
-  {
-    RectF localRectF = parambopy.a;
-    localRectF.top += this.a * paramInt;
-    parambopy = parambopy.a;
-    parambopy.bottom += this.a * paramInt;
-  }
+  public abstract void a(borf paramborf, String paramString, boolean paramBoolean, int paramInt);
 }
 
 

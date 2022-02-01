@@ -7,11 +7,11 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import bcof;
-import bctj;
-import bgha;
-import bisz;
-import bkcx;
+import bdgx;
+import bdmc;
+import bhhb;
+import bjty;
+import bleb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import lkw;
-import mue;
+import llk;
+import mvd;
 
 public class AVSoUtils
   extends Step
@@ -35,7 +35,7 @@ public class AVSoUtils
   public static LoadExtResult a(String paramString)
   {
     long l1 = System.currentTimeMillis();
-    LoadExtResult localLoadExtResult = bcof.a().a(paramString);
+    LoadExtResult localLoadExtResult = bdgx.a().a(paramString);
     long l2 = System.currentTimeMillis();
     StringBuilder localStringBuilder = new StringBuilder().append("loadAndDownloadSo. soName = ").append(paramString).append(", result = ").append(localLoadExtResult).append(", time len = ").append(l2 - l1).append(", so path = ");
     if (localLoadExtResult != null) {}
@@ -61,7 +61,7 @@ public class AVSoUtils
     if (!BaseApplicationImpl.isCurrentVersionFirstLaunch) {
       return;
     }
-    if (lkw.f() <= 2) {}
+    if (llk.f() <= 2) {}
     for (int i = 1;; i = 0)
     {
       String str = b();
@@ -254,7 +254,7 @@ public class AVSoUtils
         bool3 = localFile.exists();
         localObject5 = str4;
         bool1 = bool3;
-        localObject6 = bisz.a(localFile);
+        localObject6 = bjty.a(localFile);
         localObject5 = localObject6;
         bool1 = bool3;
         long l2 = localFile.length();
@@ -282,8 +282,8 @@ public class AVSoUtils
       ((HashMap)localObject6).put("sdk", String.valueOf(Build.VERSION.SDK_INT));
       ((HashMap)localObject6).put("man", c(Build.MANUFACTURER));
       ((HashMap)localObject6).put("mod", c(Build.MODEL));
-      ((HashMap)localObject6).put("qq_ver", String.valueOf(mue.b()));
-      bctj.a(paramContext).a("", "AV_LOAD_SO_FAILED", false, 0L, 0L, (HashMap)localObject6, "");
+      ((HashMap)localObject6).put("qq_ver", String.valueOf(mvd.b()));
+      bdmc.a(paramContext).a("", "AV_LOAD_SO_FAILED", false, 0L, 0L, (HashMap)localObject6, "");
       QLog.w("AVModuleExtract", 1, "LoadExtractedSo end , result[" + paramBoolean + "], libName[" + paramString + "], seq[" + paramLong + "]");
       return paramBoolean;
     }
@@ -312,7 +312,7 @@ public class AVSoUtils
     File localFile = new File(paramString);
     try
     {
-      String str1 = bkcx.a(localFile);
+      String str1 = bleb.a(localFile);
       paramString = "[" + paramString + "], exists[" + localFile.exists();
       return paramString + "], md5[" + str1 + "]";
     }
@@ -340,7 +340,7 @@ public class AVSoUtils
     QLog.w("AVModuleExtract", 1, "printSO, " + b(new StringBuilder().append(str).append("libVideoCtrl.so").toString()));
     QLog.w("AVModuleExtract", 1, "printSO, " + b(new StringBuilder().append(str).append("libxplatform.so").toString()));
     QLog.w("AVModuleExtract", 1, "printSO, " + b(new StringBuilder().append(str).append("libc++_shared.so").toString()));
-    str = bgha.a(BaseApplicationImpl.sApplication);
+    str = bhhb.a(BaseApplicationImpl.sApplication);
     QLog.w("AVModuleExtract", 1, "printSO, " + b(new StringBuilder().append(str).append("libc++_shared.so").toString()));
   }
   

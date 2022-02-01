@@ -1,15 +1,16 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
 class aqdx
-  extends GestureDetector.SimpleOnGestureListener
+  implements bliz
 {
-  aqdx(aqdv paramaqdv) {}
+  aqdx(aqdv paramaqdv, blir paramblir) {}
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    aqdv.a(this.a);
-    return true;
+    this.jdField_a_of_type_Aqdv.a.d();
+    this.jdField_a_of_type_Aqdv.a.b("本地APP已删除成功");
+    this.jdField_a_of_type_Blir.dismiss();
   }
 }
 

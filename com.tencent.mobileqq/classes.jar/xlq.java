@@ -1,24 +1,28 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Build.VERSION;
-import android.widget.ImageView;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.1;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.2;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
-class xlq
-  extends AnimatorListenerAdapter
+public final class xlq
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  xlq(xlo paramxlo) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.a.a.setImageAlpha(255);
-    }
-    for (;;)
+    synchronized ()
     {
-      this.a.a.setVisibility(8);
+      xlu localxlu = xlo.a();
+      xlo.a().post(new TVKPreloader.2.2(this, localxlu, paramString1, paramInt, paramString2));
       return;
-      this.a.a.setImageResource(2130850664);
+    }
+  }
+  
+  public void onPreLoadSucess(String arg1, String paramString2)
+  {
+    synchronized ()
+    {
+      paramString2 = xlo.a();
+      xlo.a().post(new TVKPreloader.2.1(this, paramString2));
+      return;
     }
   }
 }

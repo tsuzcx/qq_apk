@@ -1,6 +1,15 @@
-public abstract interface anyb
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import mqq.app.AppRuntime.Status;
+
+public class anyb
+  implements azgi
 {
-  public abstract void b(int paramInt);
+  public anyb(FrameHelperActivity paramFrameHelperActivity) {}
+  
+  public void a(AppRuntime.Status paramStatus)
+  {
+    this.a.a("AccountPanel.OnlineStatusChangedListener");
+  }
 }
 
 

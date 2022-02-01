@@ -1,169 +1,78 @@
-import com.tencent.av.common.ErrorInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.annotation.SuppressLint;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.ParameterizedType;
-import java.util.HashMap;
+import java.nio.ByteBuffer;
 
 public class lfw
-  extends anii
 {
-  static volatile long jdField_a_of_type_Long = 1L;
-  static Object jdField_a_of_type_JavaLangObject = new Object();
-  static volatile HashMap<Long, lfz> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static lfw a = new lfw();
   
-  public lfw(QQAppInterface paramQQAppInterface)
+  private static int a(byte[] paramArrayOfByte)
   {
-    super(paramQQAppInterface);
+    return paramArrayOfByte[3] & 0xFF | (paramArrayOfByte[2] & 0xFF) << 8 | (paramArrayOfByte[1] & 0xFF) << 16 | (paramArrayOfByte[0] & 0xFF) << 24;
   }
   
-  public static int a(common.ErrorInfo paramErrorInfo)
+  @SuppressLint({"DefaultLocale"})
+  public static String a(int paramInt)
   {
-    if ((paramErrorInfo.has()) && (paramErrorInfo.uint32_errcode.has())) {
-      return paramErrorInfo.uint32_errcode.get();
+    return String.format("%d.%d.%d.%d", new Object[] { Integer.valueOf(paramInt >> 24 & 0xFF), Integer.valueOf(paramInt >> 16 & 0xFF), Integer.valueOf(paramInt >> 8 & 0xFF), Integer.valueOf(paramInt & 0xFF) });
+  }
+  
+  public static String a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    return -99;
-  }
-  
-  static long a()
-  {
-    try
+    char[] arrayOfChar1 = "0123456789ABCDEF".toCharArray();
+    char[] arrayOfChar2 = new char[paramArrayOfByte.length * 2];
+    int i = 0;
+    while (i < paramArrayOfByte.length)
     {
-      jdField_a_of_type_Long += 1L;
-      long l = jdField_a_of_type_Long;
-      return l;
+      int j = paramArrayOfByte[i] & 0xFF;
+      arrayOfChar2[(i * 2)] = arrayOfChar1[(j >>> 4)];
+      arrayOfChar2[(i * 2 + 1)] = arrayOfChar1[(j & 0xF)];
+      i += 1;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return new String(arrayOfChar2);
   }
   
-  public static String a(common.ErrorInfo paramErrorInfo)
+  public static lfw a()
   {
-    if ((paramErrorInfo.has()) && (paramErrorInfo.bytes_errmsg.has())) {
-      return paramErrorInfo.bytes_errmsg.get().toStringUtf8();
-    }
-    return "";
+    return a;
   }
   
-  static lfz a(long paramLong)
+  public static lfx a(byte[] paramArrayOfByte)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      lfz locallfz = (lfz)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
-      return locallfz;
-    }
+    int i = paramArrayOfByte.length;
+    int j = paramArrayOfByte[0];
+    j = paramArrayOfByte[(i - 1)];
+    Object localObject = new byte[4];
+    byte[] arrayOfByte = new byte[4];
+    QLog.d("AudioTrans runhw", 2, "rspBodyBytes = " + a(paramArrayOfByte));
+    System.arraycopy(paramArrayOfByte, 1, localObject, 0, 4);
+    System.arraycopy(paramArrayOfByte, 5, arrayOfByte, 0, 4);
+    j = a((byte[])localObject);
+    int k = a(arrayOfByte);
+    QLog.d("AudioTrans runhw", 2, "rspBytesLen = " + i + ", lengthOfHead = " + j + ", lengthOfBody = " + k);
+    localObject = new lfx(j, k);
+    System.arraycopy(paramArrayOfByte, 9, ((lfx)localObject).a, 0, j);
+    System.arraycopy(paramArrayOfByte, j + 9, ((lfx)localObject).b, 0, k);
+    return localObject;
   }
   
-  public static void a(long paramLong, AppInterface paramAppInterface, String paramString, MessageMicro paramMessageMicro, lfz paramlfz)
+  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    lfw locallfw = (lfw)paramAppInterface.getBusinessHandler(52);
-    paramAppInterface = new ToServiceMsg("", paramAppInterface.getCurrentAccountUin(), paramString);
-    mtl.a(paramAppInterface.getAttributes(), paramLong);
-    long l = a();
-    paramAppInterface.getAttributes().put("msgSeq_for_callback", Long.valueOf(l));
-    a(l, paramlfz);
-    paramAppInterface.putWupBuffer(paramMessageMicro.toByteArray());
-    locallfw.sendPbReq(paramAppInterface);
-    if (QLog.isDevelopLevel()) {
-      QLog.w("QAVMessageHandler", 1, "sendMsg, msgListener[" + paramlfz + "], msgSeq_for_callback[" + l + "], seq[" + paramLong + "]");
-    }
-  }
-  
-  static void a(long paramLong, lfz paramlfz)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), paramlfz);
-      return;
-    }
-  }
-  
-  private static lfy b(lfz paramlfz)
-  {
-    paramlfz = paramlfz.getClass().getGenericSuperclass();
-    Object localObject;
-    String str;
-    if (paramlfz != null) {
-      if ((paramlfz instanceof ParameterizedType))
-      {
-        localObject = ((ParameterizedType)paramlfz).getActualTypeArguments();
-        if (localObject != null) {
-          if (localObject.length == 2)
-          {
-            paramlfz = (Class)localObject[0];
-            localObject = (Class)localObject[1];
-            str = "reqType[" + paramlfz + "]rspType[" + localObject + "]";
-          }
-        }
-      }
-    }
-    while (((paramlfz == null) || (localObject == null)) && (AudioHelper.e()))
-    {
-      throw new IllegalArgumentException("QAVMessageHandler get getClassInfo失败, " + str);
-      str = "ActualTypeArguments长度为" + localObject.length;
-      localObject = null;
-      paramlfz = null;
-      continue;
-      localObject = null;
-      str = "getActualTypeArguments为空";
-      paramlfz = null;
-      continue;
-      str = "type[" + paramlfz.getClass().getName() + "]";
-      localObject = null;
-      paramlfz = null;
-      continue;
-      str = "genericInterfaces为空";
-      localObject = null;
-      paramlfz = null;
-    }
-    lfy locallfy = new lfy(null);
-    locallfy.jdField_a_of_type_JavaLangString = str;
-    locallfy.jdField_a_of_type_JavaLangClass = paramlfz;
-    locallfy.b = ((Class)localObject);
-    return locallfy;
-  }
-  
-  protected Class<? extends anil> observerClass()
-  {
-    return anqd.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    long l2 = mtl.a(paramToServiceMsg.getAttributes());
-    long l1 = 0L;
-    Object localObject = paramToServiceMsg.getAttribute("msgSeq_for_callback");
-    if ((localObject instanceof Integer)) {
-      l1 = ((Integer)localObject).intValue();
-    }
-    for (;;)
-    {
-      localObject = a(l1);
-      if (QLog.isColorLevel()) {
-        QLog.w("QAVMessageHandler", 1, "onReceive, cmd[" + str + "], req_cmd[" + paramToServiceMsg.getServiceCmd() + "], isSuccess[" + paramFromServiceMsg.isSuccess() + "], RequestSsoSeq[" + paramToServiceMsg.getRequestSsoSeq() + "], ResultCode[" + paramFromServiceMsg.getResultCode() + "], RequestSsoSeq[" + paramFromServiceMsg.getRequestSsoSeq() + "], msgSeq_for_callback[" + l1 + "], msgListener[" + localObject + "], seq[" + l2 + "]");
-      }
-      if (localObject == null) {
-        break;
-      }
-      ((lfz)localObject).a(l2, paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
-      if ((localObject instanceof Long)) {
-        l1 = ((Long)localObject).longValue();
-      }
-    }
-    QLog.w("QAVMessageHandler", 1, "onReceive, 没有MsgListener， cmd[" + str + "], seq[" + l2 + "]");
+    int i = paramArrayOfByte1.length;
+    int j = paramArrayOfByte2.length;
+    byte[] arrayOfByte1 = ByteBuffer.allocate(4).putInt(i).array();
+    byte[] arrayOfByte2 = ByteBuffer.allocate(4).putInt(j).array();
+    byte[] arrayOfByte3 = new byte[i + 9 + j + 1];
+    arrayOfByte3[0] = 40;
+    System.arraycopy(arrayOfByte1, 0, arrayOfByte3, 1, 4);
+    System.arraycopy(arrayOfByte2, 0, arrayOfByte3, 5, 4);
+    System.arraycopy(paramArrayOfByte1, 0, arrayOfByte3, 9, i);
+    System.arraycopy(paramArrayOfByte2, 0, arrayOfByte3, i + 9, j);
+    arrayOfByte3[(arrayOfByte3.length - 1)] = 41;
+    return arrayOfByte3;
   }
 }
 

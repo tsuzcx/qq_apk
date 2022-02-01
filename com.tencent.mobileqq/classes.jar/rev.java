@@ -1,40 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class rev
+public class rev
+  implements raf
 {
-  public int a;
-  public long a;
-  public BaseArticleInfo a;
-  public TabChannelCoverInfo a;
-  public Long a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public BaseArticleInfo b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public boolean e;
-  public int f;
-  public String f;
-  public boolean f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
+  public rev(EditVideoFragment paramEditVideoFragment) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      rgo.a(EditVideoFragment.a(this.a)).a(EditVideoFragment.a(this.a), true);
+    }
+    QLog.i("RIJUGC.EditVideoFragment", 1, "showMobileNetworkDialog, isContinue=" + paramBoolean);
+  }
 }
 
 

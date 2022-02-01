@@ -12,7 +12,8 @@ class InternalJSPlugin$7$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     QLog.e("InternalJSPlugin", 2, "cancel");
-    this.this$1.this$0.jsPluginEngine.callbackJsEventFail(this.this$1.val$webview, this.this$1.val$eventName, null, "click cancel", this.this$1.val$callbackId);
+    paramDialogInterface = InternalJSPlugin.access$100(this.this$1.this$0, 5);
+    this.this$1.this$0.jsPluginEngine.callbackJsEventFail(this.this$1.val$webview, this.this$1.val$eventName, paramDialogInterface, "click cancel", this.this$1.val$callbackId);
   }
 }
 

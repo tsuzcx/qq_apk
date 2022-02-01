@@ -1,8 +1,20 @@
-public abstract interface nvk
+import android.os.AsyncTask;
+
+class nvk
+  extends AsyncTask<Void, Void, Void>
 {
-  public abstract boolean a(int paramInt);
+  nvk(nvj paramnvj, aeqz paramaeqz) {}
   
-  public abstract boolean b(int paramInt);
+  protected Void a(Void... paramVarArgs)
+  {
+    this.jdField_a_of_type_Nvj.a.a(this.jdField_a_of_type_Aeqz);
+    return null;
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    this.jdField_a_of_type_Nvj.a.a(-1);
+  }
 }
 
 

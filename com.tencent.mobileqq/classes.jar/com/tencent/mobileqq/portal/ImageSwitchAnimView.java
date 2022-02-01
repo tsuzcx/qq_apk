@@ -5,12 +5,12 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
-import azbp;
+import azuc;
 
 public class ImageSwitchAnimView
   extends View
 {
-  private azbp a = new azbp(getContext(), 0, 0, 0, 0, 0, 0, 0, 0);
+  private azuc a = new azuc(getContext(), 0, 0, 0, 0, 0, 0, 0, 0);
   
   public ImageSwitchAnimView(Context paramContext)
   {

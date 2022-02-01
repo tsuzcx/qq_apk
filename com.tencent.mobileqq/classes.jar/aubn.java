@@ -1,17 +1,18 @@
-class aubn
-  implements atnd
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadSpeedInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
+
+public abstract interface aubn
 {
-  aubn(aubl paramaubl) {}
+  public abstract void a();
   
-  public void a()
-  {
-    aubl.a(this.a, false, atul.a(aubl.c(this.a).a()), this.a.c(), new aubo(this));
-  }
+  public abstract void a(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo);
   
-  public void b()
-  {
-    aubl.b(this.a);
-  }
+  public abstract void a(int paramInt, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete);
+  
+  public abstract void a(long paramLong1, long paramLong2, long paramLong3);
+  
+  public abstract void a(ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo);
 }
 
 

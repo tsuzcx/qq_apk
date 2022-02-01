@@ -1,26 +1,20 @@
-import android.support.annotation.NonNull;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qzone.share.QZoneShareActivity;
+import cooperation.qzone.share.QZoneShareActivity.22.1;
 
 public class bnhd
+  extends BroadcastReceiver
 {
-  public static final bnhd a;
-  public static final bnhd[] a;
-  public static final bnhd b;
-  public static final bnhd c;
-  public static final bnhd d;
-  public final String a;
+  public bnhd(QZoneShareActivity paramQZoneShareActivity) {}
   
-  static
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    jdField_a_of_type_Bnhd = new bnhd("STARTED");
-    b = new bnhd("SUCCESS");
-    c = new bnhd("ERROR");
-    d = new bnhd("FAILURE_GESTURE_IN_PROCESS");
-    jdField_a_of_type_ArrayOfBnhd = new bnhd[] { jdField_a_of_type_Bnhd, b, c, d };
-  }
-  
-  private bnhd(@NonNull String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if ("com.tencent.qq.shareupdate".equals(paramIntent.getAction())) {
+      ThreadManager.postImmediately(new QZoneShareActivity.22.1(this), null, true);
+    }
   }
 }
 

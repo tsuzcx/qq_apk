@@ -1,8 +1,19 @@
-import com.tencent.common.app.AppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface mgt
+public class mgt
+  implements View.OnClickListener
 {
-  public abstract void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, mhm parammhm, mhl parammhl);
+  public mgt(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    bdll.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_video", 0, 0, this.a.b, "", "", "");
+    this.a.d(2);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

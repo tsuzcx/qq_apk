@@ -2,8 +2,8 @@ package com.tencent.mobileqq.config.business.qfile;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aqwl;
-import atvm;
+import arlz;
+import aunh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class QfileFileAssistantTipsConfigBean$7
   implements Runnable
 {
-  public QfileFileAssistantTipsConfigBean$7(aqwl paramaqwl) {}
+  public QfileFileAssistantTipsConfigBean$7(arlz paramarlz) {}
   
   public void run()
   {
@@ -28,14 +28,14 @@ public class QfileFileAssistantTipsConfigBean$7
         QLog.e("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, "app is null!!!");
         return;
       }
-      atvm.a("0X800AD02");
+      aunh.a("0X800AD02");
       localObject1 = ((QQAppInterface)localObject1).getApp().getSharedPreferences("qfile_file_assistant_tips" + ((QQAppInterface)localObject1).c(), 0);
       Object localObject3 = ((SharedPreferences)localObject1).getString("qfile_file_assistant_tips", "{}");
       try
       {
         localObject3 = new JSONObject((String)localObject3);
-        aqwl.f(this.this$0);
-        ((JSONObject)localObject3).put("local_click_times", aqwl.g(this.this$0));
+        arlz.f(this.this$0);
+        ((JSONObject)localObject3).put("local_click_times", arlz.g(this.this$0));
         localObject3 = ((JSONObject)localObject3).toString();
         if (QLog.isDebugVersion()) {
           QLog.i("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, (String)localObject3);

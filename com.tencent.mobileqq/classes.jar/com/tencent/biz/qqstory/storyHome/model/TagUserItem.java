@@ -2,23 +2,23 @@ package com.tencent.biz.qqstory.storyHome.model;
 
 import com.tencent.biz.qqstory.model.BaseUIItem;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
-import wqq;
-import zhp;
-import zhq;
+import wul;
+import zlk;
+import zll;
 
 public class TagUserItem
   extends BaseUIItem
-  implements wqq
+  implements wul
 {
   public long tagId;
-  public zhp tagItem;
+  public zlk tagItem;
   public String tagName;
   
   public void convertFrom(qqstory_struct.TagItem paramTagItem)
   {
     if (paramTagItem.has())
     {
-      this.tagItem = new zhp(paramTagItem);
+      this.tagItem = new zlk(paramTagItem);
       this.tagId = this.tagItem.a.jdField_a_of_type_Long;
       this.tagName = this.tagItem.a.jdField_a_of_type_JavaLangString;
     }

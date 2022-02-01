@@ -1,45 +1,12 @@
-public class bmtx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+public final class bmtx
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public int c;
-  
-  public bmtw a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new bmtw(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_Int);
-  }
-  
-  public bmtx a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bmtx a(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public bmtx a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public bmtx b(int paramInt)
-  {
-    this.c = paramInt;
-    return this;
-  }
-  
-  public bmtx c(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    paramDialogInterface.dismiss();
   }
 }
 

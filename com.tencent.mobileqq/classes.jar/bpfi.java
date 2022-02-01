@@ -1,18 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
 
-class bpfi
-  implements bial
+public class bpfi
+  implements View.OnClickListener
 {
-  bpfi(bpff parambpff) {}
+  public bpfi(AEEditorMvClipMenu paramAEEditorMvClipMenu) {}
   
-  public void a(biaj parambiaj)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambiaj);
-    }
+    AEEditorMvClipMenu.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a(biaj parambiaj, int paramInt1, int paramInt2) {}
 }
 
 

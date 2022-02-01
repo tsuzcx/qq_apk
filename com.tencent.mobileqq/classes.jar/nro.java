@@ -1,37 +1,57 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
 
 class nro
-  extends aoqo
+  extends URLDrawableDownListener.Adapter
 {
-  nro(nrn paramnrn) {}
+  nro(nrk paramnrk) {}
   
-  public int a()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    return 7;
-  }
-  
-  public void a(Object paramObject)
-  {
-    nre.b(this.a.a, this.a.a.jdField_a_of_type_Int);
-    if (this.a.a.jdField_a_of_type_AndroidContentSharedPreferences != null) {
-      this.a.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("setting_status_" + this.a.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.a.jdField_a_of_type_Int).apply();
-    }
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
+    super.onLoadCancelled(paramView, paramURLDrawable);
     if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailGroupListContainer", 2, "New 0xc76 onGetRecvMsgState isSuccess = " + paramBoolean);
+      QLog.d("AccountDetailBaseAdapter", 2, "onLoadCancelled");
     }
   }
   
-  public void b(Object paramObject) {}
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (!this.a.f) {
+      this.a.l();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseAdapter", 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
+  }
   
-  public void b(boolean paramBoolean, Object paramObject) {}
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseAdapter", 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {}
+    do
+    {
+      return;
+      this.a.k();
+      if ((paramView instanceof ImageView))
+      {
+        ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
+        paramView.requestLayout();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountDetailBaseAdapter", 2, "onLoadSuccessed");
+  }
 }
 
 

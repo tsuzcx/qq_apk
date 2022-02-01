@@ -1,34 +1,98 @@
-import android.graphics.Bitmap;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.splashad.SplashADView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import mqq.app.AppActivity;
 
-class bdjp
-  extends WebViewClient
+public final class bdjp
+  extends bdhp
 {
-  bdjp(bdjn parambdjn) {}
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public bdjp(Object paramObject, SplashADView paramSplashADView, AppActivity paramAppActivity, ImageView paramImageView1, ImageView paramImageView2, long paramLong)
   {
-    QLog.i("TenDocWebViewPool", 1, "tendocpreload onPageFinished = " + paramString);
+    super(paramObject);
   }
   
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  protected void a()
   {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    QLog.i("TenDocWebViewPool", 1, "tendocpreload onPageStarted = " + paramString);
+    try
+    {
+      banw localbanw = (banw)this.jdField_a_of_type_JavaLangObject;
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b = false;
+      switch (localbanw.a)
+      {
+      case 2: 
+        this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.d();
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QSplash@QbossSplashUtil", 1, "show SplashAd end() error ", localException);
+      return;
+    }
   }
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  protected void a(bdho parambdho)
   {
-    return super.shouldOverrideUrlLoading(paramWebView, paramWebResourceRequest);
+    banw localbanw;
+    try
+    {
+      if (this.jdField_a_of_type_JavaLangObject == null) {
+        return;
+      }
+      localbanw = (banw)this.jdField_a_of_type_JavaLangObject;
+      QLog.i("QSplash@QbossSplashUtil", 1, "bindView");
+      bdhj.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (!this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.jdField_a_of_type_Boolean)
+      {
+        parambdho.jdField_a_of_type_Long = 0L;
+        return;
+      }
+    }
+    catch (Exception parambdho)
+    {
+      QLog.e("QSplash@QbossSplashUtil", 1, "show SplashAd bindView error ", parambdho);
+      return;
+    }
+    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_MqqAppAppActivity.findViewById(2131377909);
+    if (localViewGroup == null)
+    {
+      QLog.i("QSplash@QbossSplashUtil", 1, "bindView fail, root is null");
+      parambdho.jdField_a_of_type_Long = 0L;
+      return;
+    }
+    localViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView, 0);
+    switch (localbanw.a)
+    {
+    }
+    for (;;)
+    {
+      if (bnua.a(localbanw.l))
+      {
+        bnua.a(this.jdField_a_of_type_Long + "", 101, localbanw.b, localbanw.j);
+        banv.a(localbanw.b, this.jdField_a_of_type_Long, false, "tianshu_splash_ad_ids_with_showdate_with_priority_");
+      }
+      banv.a(localbanw.j, null, 1);
+      banv.a(localbanw.b, this.jdField_a_of_type_Long, false, "qboss_splash_ad_ids_with_showdate_with_priority_");
+      bdhj.a(localbanw.c, localbanw.g);
+      return;
+      if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.b != null))
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.b.setVisibility(8);
+      }
+      parambdho.jdField_a_of_type_Long = 3000L;
+      continue;
+      QLog.i("QSplash@QbossSplashUtil", 1, "show video");
+      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b();
+      parambdho.jdField_a_of_type_Long = 10000L;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdjp
  * JD-Core Version:    0.7.0.1
  */

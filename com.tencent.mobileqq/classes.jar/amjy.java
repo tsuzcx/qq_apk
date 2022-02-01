@@ -1,10 +1,21 @@
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-public abstract interface amjy
+public class amjy
+  implements Animation.AnimationListener
 {
-  public abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay);
+  public amjy(SpecailCareListActivity paramSpecailCareListActivity, amkn paramamkn) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_Amkn.c.setVisibility(4);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

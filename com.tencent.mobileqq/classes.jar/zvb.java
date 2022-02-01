@@ -1,13 +1,17 @@
-import java.util.HashMap;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
 public class zvb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public HashMap<String, String> a = new HashMap();
-  public HashMap<String, String> b = new HashMap();
-  public HashMap<String, String> c = new HashMap();
-  public HashMap<String, String> d = new HashMap();
-  public HashMap<String, String> e = new HashMap();
-  public HashMap<String, String> f = new HashMap();
+  public zvb(RotateCircleImageView paramRotateCircleImageView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
+  }
 }
 
 

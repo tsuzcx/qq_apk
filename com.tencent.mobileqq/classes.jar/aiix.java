@@ -1,19 +1,17 @@
-import android.util.SparseIntArray;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-final class aiix
-  implements Comparator<aiis>
+class aiix
+  implements DialogInterface.OnClickListener
 {
-  public int a(aiis paramaiis1, aiis paramaiis2)
+  aiix(aiit paramaiit) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramaiis1 == null) || (paramaiis2 == null)) {
-      return 0;
-    }
-    float f1 = aiiv.a().get(paramaiis1.c());
-    float f2 = aiiv.a().get(paramaiis2.c());
-    float f3 = paramaiis1.b() * 100;
-    float f4 = 1.0F / (paramaiis1.a() + 1) / 10.0F;
-    return Float.compare(f2 + (paramaiis2.b() * 100 + 1.0F / (paramaiis2.a() + 1) / 10.0F), f1 + (f3 + f4));
+    paramDialogInterface.dismiss();
+    abvy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.g);
+    this.a.g = "";
   }
 }
 

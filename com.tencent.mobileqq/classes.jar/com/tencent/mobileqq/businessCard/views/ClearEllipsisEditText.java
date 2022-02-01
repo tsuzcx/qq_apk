@@ -6,8 +6,8 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
-import aqal;
-import aqam;
+import aqol;
+import aqom;
 import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.qphone.base.util.QLog;
 
@@ -87,8 +87,8 @@ public class ClearEllipsisEditText
   
   private void a()
   {
-    addTextChangedListener(new aqal(this));
-    setOnTouchListener(new aqam(this));
+    addTextChangedListener(new aqol(this));
+    setOnTouchListener(new aqom(this));
   }
   
   public String a()

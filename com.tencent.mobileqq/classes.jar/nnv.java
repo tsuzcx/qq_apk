@@ -1,35 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-
-final class nnv
-  implements BusinessObserver
+public class nnv
 {
-  nnv(QQAppInterface paramQQAppInterface, nnx paramnnx) {}
+  public final int a;
+  public final String a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private nnv(String paramString, int paramInt)
   {
-    if ((paramBoolean) && (paramBundle != null))
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        nnt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Nnx);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
-      }
-      this.jdField_a_of_type_Nnx.a("");
-      return;
-    }
-    this.jdField_a_of_type_Nnx.a("");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     nnv
  * JD-Core Version:    0.7.0.1
  */

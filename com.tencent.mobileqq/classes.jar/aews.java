@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-public class aews
-  extends anqd
+class aews
 {
-  public aews(QQLSActivity paramQQLSActivity) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    super.a(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
-    }
-    QQLSActivity.a(this.a);
-  }
+  aews(aewr paramaewr) {}
 }
 
 

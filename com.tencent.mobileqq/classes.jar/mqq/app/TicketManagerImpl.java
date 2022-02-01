@@ -130,62 +130,6 @@ public class TicketManagerImpl
   
   private void reportGetTicketResult(boolean paramBoolean, String paramString1, String paramString2, int paramInt) {}
   
-  public Ticket GetLocalTicket(String paramString, int paramInt)
-  {
-    try
-    {
-      paramString = this.mWtLoginHelper.GetLocalTicket(paramString, 16L, paramInt);
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.d("TicketManager", 1, "cannot getLocalTicket from helper " + paramString.toString());
-    }
-    return null;
-  }
-  
-  public Ticket GetPskey(String paramString, long paramLong, String[] paramArrayOfString, WtTicketPromise paramWtTicketPromise)
-  {
-    try
-    {
-      paramString = this.mWtLoginHelper.GetPskey(paramString, paramLong, paramArrayOfString, paramWtTicketPromise);
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.d("TicketManager", 1, "cannot getpskey from helper " + paramString.toString());
-    }
-    return null;
-  }
-  
-  public Ticket GetSkey(String paramString, long paramLong, WtTicketPromise paramWtTicketPromise)
-  {
-    try
-    {
-      paramString = this.mWtLoginHelper.GetSkey(paramString, paramLong, paramWtTicketPromise);
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.d("TicketManager", 1, "cannot getskey from helper " + paramString.toString());
-    }
-    return null;
-  }
-  
-  public Ticket GetTicket(String paramString, long paramLong, int paramInt, WtTicketPromise paramWtTicketPromise, Bundle paramBundle)
-  {
-    try
-    {
-      paramString = this.mWtLoginHelper.GetTicket(paramString, paramLong, paramInt, paramWtTicketPromise, paramBundle);
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.d("TicketManager", 1, "cannot getticket from helper " + paramString.toString());
-    }
-    return null;
-  }
-  
   public String getA2(String paramString)
   {
     return getA2Impl(paramString, 16, 64, "A2");
@@ -228,6 +172,20 @@ public class TicketManagerImpl
       QLog.d("TicketManager", 1, "get ticket failed, da2, uin is empty!");
       i = -1;
     }
+  }
+  
+  public Ticket getLocalTicket(String paramString, int paramInt)
+  {
+    try
+    {
+      paramString = this.mWtLoginHelper.GetLocalTicket(paramString, 16L, paramInt);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.d("TicketManager", 1, "cannot getLocalTicket from helper " + paramString.toString());
+    }
+    return null;
   }
   
   public String getOpenSdkKey(String paramString, int paramInt)
@@ -283,6 +241,20 @@ public class TicketManagerImpl
     }
   }
   
+  public Ticket getPskey(String paramString, long paramLong, String[] paramArrayOfString, WtTicketPromise paramWtTicketPromise)
+  {
+    try
+    {
+      paramString = this.mWtLoginHelper.GetPskey(paramString, paramLong, paramArrayOfString, paramWtTicketPromise);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.d("TicketManager", 1, "cannot getpskey from helper " + paramString.toString());
+    }
+    return null;
+  }
+  
   public String getPt4Token(String paramString1, String paramString2)
   {
     for (;;)
@@ -326,6 +298,20 @@ public class TicketManagerImpl
   public String getSkey(String paramString)
   {
     return getSkey(paramString, 16);
+  }
+  
+  public Ticket getSkey(String paramString, long paramLong, WtTicketPromise paramWtTicketPromise)
+  {
+    try
+    {
+      paramString = this.mWtLoginHelper.GetSkey(paramString, paramLong, paramWtTicketPromise);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.d("TicketManager", 1, "cannot getskey from helper " + paramString.toString());
+    }
+    return null;
   }
   
   public byte[] getSt(String paramString, int paramInt)
@@ -490,6 +476,20 @@ public class TicketManagerImpl
       continue;
       QLog.d("TicketManager", 1, "get ticket failed, SUPERKEY, uin is empty!");
       i = -1;
+    }
+    return null;
+  }
+  
+  public Ticket getTicket(String paramString, long paramLong, int paramInt, WtTicketPromise paramWtTicketPromise, Bundle paramBundle)
+  {
+    try
+    {
+      paramString = this.mWtLoginHelper.GetTicket(paramString, paramLong, paramInt, paramWtTicketPromise, paramBundle);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.d("TicketManager", 1, "cannot getticket from helper " + paramString.toString());
     }
     return null;
   }

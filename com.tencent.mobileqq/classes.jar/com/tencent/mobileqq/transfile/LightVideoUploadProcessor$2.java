@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.transfile;
 
-import bdwd;
+import beuw;
 
 public class LightVideoUploadProcessor$2
   implements Runnable
 {
-  public LightVideoUploadProcessor$2(bdwd parambdwd) {}
+  public LightVideoUploadProcessor$2(beuw parambeuw) {}
   
   public void run()
   {
-    bdwd.a(this.this$0, 1003);
+    beuw.a(this.this$0, 1003);
   }
 }
 

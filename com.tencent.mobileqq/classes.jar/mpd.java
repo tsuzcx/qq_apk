@@ -1,8 +1,30 @@
-public abstract interface mpd
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.funchat.zimu.ZimuViewMotion;
+import java.lang.ref.WeakReference;
+
+public final class mpd
+  extends Handler
 {
-  public abstract void a(boolean paramBoolean);
+  WeakReference<ZimuViewMotion> a;
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
+  public mpd(ZimuViewMotion paramZimuViewMotion)
+  {
+    this.a = new WeakReference(paramZimuViewMotion);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      paramMessage = (ZimuViewMotion)this.a.get();
+    } while (paramMessage == null);
+    paramMessage.e();
+  }
 }
 
 

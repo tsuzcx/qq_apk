@@ -1,63 +1,80 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
+import com.tencent.tavcut.session.TAVCutImageSession;
+import com.tencent.ttpic.filter.aifilter.NewEnhanceCategories;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.15.1;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.15.2;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.15.3;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import mqq.os.MqqHandler;
 
-class bpgh
-  extends SimpleObserver<bpsf>
+public class bpgh
+  implements bpdz
 {
-  bpgh(bpgg parambpgg) {}
+  public bpgh(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
-  public void a(bpsf parambpsf)
+  public void a(int paramInt, bpez parambpez)
   {
-    super.onNext(parambpsf);
-    this.a.jdField_a_of_type_Bpfx.b();
-    this.a.jdField_a_of_type_Bpfx.getActivity().overridePendingTransition(0, 0);
-    this.a.p();
-    this.a.jdField_b_of_type_Boolean = false;
-    Object localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((bpen)((Iterator)localObject).next()).b(parambpsf);
+    if (this.a.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView != null) {
+      ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.15.1(this, parambpez));
     }
-    this.a.jdField_b_of_type_Boolean = false;
-    this.a.jdField_a_of_type_Bpfx.b();
-    localObject = (bpez)this.a.a(bpez.class);
-    if (localObject != null) {
-      ((bpez)localObject).l();
-    }
-    if (this.a.jdField_b_of_type_JavaUtilList.isEmpty())
+    if (paramInt == 0)
     {
-      localObject = this.a.jdField_a_of_type_Bpfx.getActivity();
-      if (localObject != null)
-      {
-        ((EditWebVideoActivity)localObject).d(anni.a(2131702757));
-        bpgg.a(this.a, (Activity)localObject, this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a, parambpsf.a);
+      bpam.b(AEEditorImageEditFragment.e(), "onAIFilterApplySuccess");
+      ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.15.3(this));
+      if (AEEditorImageEditFragment.a(this.a) != null) {
+        break label107;
       }
+    }
+    label107:
+    bpfe localbpfe;
+    do
+    {
+      do
+      {
+        return;
+        bpam.b(AEEditorImageEditFragment.e(), "onAIFilterAppliedFailed:" + paramInt);
+        ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.15.2(this));
+        break;
+      } while (parambpez == null);
+      AEEditorImageEditFragment.a(this.a).a((String)AEEditorImageEditFragment.b(this.a).get(AEEditorImageEditFragment.a(this.a)), parambpez);
+      AEEditorImageEditFragment.a(this.a).put(String.valueOf(AEEditorImageEditFragment.a(this.a)), this.a.a(parambpez));
+      localbpfe = (bpfe)parambpez;
+    } while (localbpfe == null);
+    AEEditorImageEditFragment.a(this.a).a(AEEditorImageEditFragment.a(this.a), parambpez);
+    AEEditorImageEditFragment.a(this.a).resetAEKitModelForAI(AEEditorImageEditFragment.a(this.a), localbpfe.jdField_b_of_type_JavaLangString, localbpfe.jdField_a_of_type_Float, localbpfe.jdField_a_of_type_JavaUtilHashMap, (int)(localbpfe.c * 100.0F), localbpfe.jdField_b_of_type_Float);
+    this.a.a(new String[] { "智能滤镜label", localbpfe.jdField_a_of_type_JavaLangString, "智能滤镜errCode", String.valueOf(paramInt) });
+    parambpez = "none";
+    Iterator localIterator = NewEnhanceCategories.newEnhanceTypes.iterator();
+    if (localIterator.hasNext())
+    {
+      NewEnhanceCategories localNewEnhanceCategories = (NewEnhanceCategories)localIterator.next();
+      if (!localNewEnhanceCategories.serverLabel.equals(localbpfe.jdField_a_of_type_JavaLangString)) {
+        break label425;
+      }
+      parambpez = localNewEnhanceCategories.filterType;
+    }
+    label425:
+    for (;;)
+    {
+      break;
+      bozv.a().a().jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(AEEditorImageEditFragment.a(this.a)), "effect_aieffect_" + parambpez);
+      bozv.a().a().b.put(Integer.valueOf(AEEditorImageEditFragment.a(this.a)), Float.valueOf(-1.0F));
+      AEEditorImageEditFragment.a(this.a).a(AEEditorImageEditFragment.a(this.a), "effect_aieffect");
       return;
     }
-    QQToast.a(this.a.jdField_a_of_type_Bpfx.a(), anni.a(2131702753), 0).a();
-    this.a.jdField_a_of_type_Bpfx.getActivity().finish();
   }
   
-  public void onCancel()
+  public void aS_()
   {
-    super.onCancel();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    this.a.jdField_b_of_type_JavaUtilList.add(paramError);
-    if (QLog.isColorLevel()) {
-      QLog.e("EditWebVideoActivity", 2, "publish error:", paramError);
+    if (this.a.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView != null) {
+      this.a.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView.a();
     }
-    QQToast.a(this.a.jdField_a_of_type_Bpfx.a(), anni.a(2131702756), 0).a();
-    this.a.jdField_a_of_type_Bpfx.getActivity().finish();
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, "资源下载中，请稍后再试", 0).a();
   }
 }
 

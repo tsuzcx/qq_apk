@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import java.util.List;
 
 public class wfo
 {
-  public static Dispatcher a()
-  {
-    return Dispatchers.get(ThreadManager.getSubThreadLooper());
-  }
+  public int a;
+  public String a;
+  public List<wfq> a;
+  public boolean a;
+  public int b = 500;
+  public String b;
+  public List<wfp> b;
+  public int c = 100;
+  public int d = 15;
 }
 
 

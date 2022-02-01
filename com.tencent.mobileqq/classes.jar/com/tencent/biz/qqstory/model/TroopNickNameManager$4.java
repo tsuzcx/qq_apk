@@ -5,12 +5,12 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import wpu;
+import wtp;
 
 public class TroopNickNameManager$4
   implements Runnable
 {
-  public TroopNickNameManager$4(wpu paramwpu) {}
+  public TroopNickNameManager$4(wtp paramwtp) {}
   
   public void run()
   {

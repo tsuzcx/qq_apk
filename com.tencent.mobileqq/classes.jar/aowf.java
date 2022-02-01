@@ -1,23 +1,34 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aowf
-  implements aowr
+  extends aoxh
 {
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(ARCommonConfigInfo paramARCommonConfigInfo) {}
-  
-  public void a(ArConfigInfo paramArConfigInfo) {}
-  
-  public void a(ArEffectConfig paramArEffectConfig) {}
-  
-  public void b() {}
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  {
+    paramQQAppInterface = new aowe(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "asyncmsg";
+    paramQQAppInterface.c = "open_async_detail";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
+  }
 }
 
 

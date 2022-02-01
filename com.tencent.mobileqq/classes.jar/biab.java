@@ -1,203 +1,46 @@
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import eipc.EIPCResult;
 
 public class biab
-  implements aqkr
+  extends QIPCModule
 {
-  private biac jdField_a_of_type_Biac;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0 };
-  private final Boolean[] jdField_a_of_type_ArrayOfJavaLangBoolean = new Boolean[13];
+  private static biab a;
   
-  public biab(QQAppInterface paramQQAppInterface, biac parambiac)
+  public biab(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Biac = parambiac;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("profile_btn_config", this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("profile_switch_config", this);
-    }
+    super(paramString);
   }
   
-  private void a(String paramString)
+  public static biab a()
   {
-    int[] arrayOfInt = new int[13];
-    int i = 0;
-    while (i < 13)
-    {
-      arrayOfInt[i] = this.jdField_a_of_type_ArrayOfInt[i];
-      i += 1;
-    }
-    label345:
-    label500:
-    label505:
+    if (a == null) {}
     try
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        break label512;
+      if (a == null) {
+        a = new biab("VasMonitorIPCModule");
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        break label345;
-      }
-      localObject = "";
+      return a;
     }
-    catch (Exception localException1)
-    {
-      for (;;)
-      {
-        Object localObject;
-        localException1 = localException1;
-        QLog.e("ProfileConfigHelper", 1, "initProfileSwitchConfig fail.", localException1);
-        i = 0;
-        if (i < 13)
-        {
-          arrayOfBoolean = this.jdField_a_of_type_ArrayOfJavaLangBoolean;
-          if (arrayOfInt[i] == 1) {}
-          for (bool = true;; bool = false)
-          {
-            arrayOfBoolean[i] = Boolean.valueOf(bool);
-            i += 1;
-            break;
-          }
-        }
-      }
-    }
-    finally
-    {
-      i = 0;
-      if (i >= 13) {
-        break label505;
-      }
-      Boolean[] arrayOfBoolean = this.jdField_a_of_type_ArrayOfJavaLangBoolean;
-      if (arrayOfInt[i] != 1) {
-        break label500;
-      }
-      for (boolean bool = true;; bool = false)
-      {
-        arrayOfBoolean[i] = Boolean.valueOf(bool);
-        i += 1;
-        break;
-      }
-    }
-    localObject = aqkp.a((String)localObject, "profile_switch_config");
-    paramString = (String)localObject;
-    label512:
-    for (;;) {}
+    finally {}
   }
   
-  private void b(String paramString)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    Object localObject3 = null;
-    Object localObject4 = null;
-    label165:
-    for (;;)
-    {
-      try
-      {
-        if (!TextUtils.isEmpty(paramString)) {
-          break label165;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
-        {
-          str = "";
-          str = aqkp.a(str, "profile_btn_config");
-          paramString = str;
-        }
-      }
-      catch (Exception localException1)
-      {
-        String str;
-        localException1.printStackTrace();
-        Object localObject1 = localObject4;
-        if (TextUtils.isEmpty(null)) {
-          localObject1 = anni.a(2131707215);
-        }
-        this.jdField_a_of_type_JavaLangString = ((String)localObject1);
-        continue;
-      }
-      finally
-      {
-        paramString = (String)localObject3;
-        if (TextUtils.isEmpty(null)) {
-          paramString = anni.a(2131707215);
-        }
-        this.jdField_a_of_type_JavaLangString = paramString;
-      }
-      try
-      {
-        str = new JSONObject(paramString).optString("call_wording");
-        localObject3 = str;
-        if (TextUtils.isEmpty(str)) {
-          localObject3 = anni.a(2131707215);
-        }
-        this.jdField_a_of_type_JavaLangString = ((String)localObject3);
-        if (QLog.isColorLevel()) {
-          QLog.i("ProfileConfigHelper", 2, String.format("initVoiceBtnConfig [str:%s content:%s]", new Object[] { this.jdField_a_of_type_JavaLangString, paramString }));
-        }
-        return;
-      }
-      catch (Exception localException2)
-      {
-        continue;
-      }
-      str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    if (QLog.isColorLevel()) {
+      QLog.d("VasMonitorIPCModule", 2, "action = " + paramString);
     }
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return anni.a(2131707197);
+    if (paramBundle == null) {
+      QLog.d("VasMonitorIPCModule", 2, "vasreport Err params=null, action=" + paramString);
     }
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      b(null);
+    while ((!"action_vas_monitor".equals(paramString)) || (BaseApplicationImpl.getApplication() == null) || (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) || ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime() == null)) {
+      return null;
     }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_Biac = null;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, aqkq paramaqkq)
-  {
-    if (paramaqkq == null) {}
-    for (;;)
-    {
-      return;
-      if ("profile_btn_config".equals(paramString)) {
-        b(paramaqkq.jdField_a_of_type_JavaLangString);
-      }
-      while (this.jdField_a_of_type_Biac != null)
-      {
-        this.jdField_a_of_type_Biac.a(paramInt, paramString);
-        return;
-        if ("profile_switch_config".equals(paramString)) {
-          a(paramaqkq.jdField_a_of_type_JavaLangString);
-        }
-      }
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    while ((paramInt < 0) || (paramInt >= 13)) {
-      return false;
-    }
-    if (this.jdField_a_of_type_ArrayOfJavaLangBoolean[paramInt] == null) {
-      a(null);
-    }
-    return this.jdField_a_of_type_ArrayOfJavaLangBoolean[paramInt].booleanValue();
+    biaa.a(null, paramBundle.getString("key_appid"), paramBundle.getString("key_err_code"), paramBundle.getString("key_log"), paramBundle.getString("key_key4"), paramBundle.getString("key_key5"), paramBundle.getString("key_key6"), paramBundle.getFloat("key_value2"), paramBundle.getFloat("key_value3"));
+    return null;
   }
 }
 

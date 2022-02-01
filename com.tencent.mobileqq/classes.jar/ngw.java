@@ -1,16 +1,16 @@
-import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ngw
-  extends nhd
+  implements View.OnClickListener
 {
-  ngw(ngv paramngv) {}
+  ngw(ngv paramngv, mzl parammzl) {}
   
-  public boolean a(int paramInt, String paramString, myc parammyc)
+  public void onClick(View paramView)
   {
-    bjcq.c(this.a.a, "onRoomSelfExit " + paramInt + " " + paramString);
-    ngv.a(this.a).removeCallbacksAndMessages(null);
-    ngv.a(this.a).sendEmptyMessage(2);
-    return true;
+    ngq.a(this.jdField_a_of_type_Ngv.a, this.jdField_a_of_type_Mzl.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

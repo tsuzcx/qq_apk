@@ -1,17 +1,17 @@
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
-
 public class qwu
-  extends CharacterStyle
 {
-  public qwu(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader) {}
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(afur.a(2, 14, this.a.getResources()));
-  }
+  public static int a = 1;
+  public static int b = 2;
+  public static int c = 3;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f;
+  public int g;
 }
 
 

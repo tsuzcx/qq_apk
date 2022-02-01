@@ -1,6 +1,17 @@
-public abstract interface adcb
+public class adcb
+  implements adca
 {
-  public abstract void a();
+  private adbd<Integer, adbz> a = new adbe();
+  
+  public adbz a(Integer paramInteger)
+  {
+    return (adbz)this.a.a(paramInteger);
+  }
+  
+  public void a(Integer paramInteger, Class<? extends adbz> paramClass)
+  {
+    this.a.a(paramInteger, paramClass);
+  }
 }
 
 

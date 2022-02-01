@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class anqs
-  extends aoou
+class anqs
+  implements DialogInterface.OnClickListener
 {
-  anqs(String paramString, ToServiceMsg paramToServiceMsg)
-  {
-    super(paramString);
-  }
+  anqs(anqo paramanqo) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo arg2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    synchronized (this.a)
-    {
-      this.a.notify();
-      return;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,7 +1,7 @@
 package cooperation.ilive.share;
 
 import android.graphics.Bitmap;
-import biau;
+import bjbs;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import java.util.Map;
 

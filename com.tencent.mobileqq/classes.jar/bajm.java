@@ -1,104 +1,28 @@
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberCard;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.res.Resources;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
 
-class bajm
-  extends anxg
+public class bajm
+  implements Animation.AnimationListener
 {
-  bajm(bajk parambajk) {}
+  public bajm(VasProfileTagView paramVasProfileTagView, VipTagView paramVipTagView) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2))) {
-      this.a.g(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, true);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if (VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).a.a != 0) {
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setTagColor(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.getResources().getColor(2131166566), this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.getResources().getColor(2131166564));
     }
   }
   
-  protected void a(String paramString, List<Pair<String, String>> paramList)
-  {
-    Object localObject = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
-    if (paramList == null)
-    {
-      i = 0;
-      QLog.i("IceBreak.HotPic", 2, i);
-      if ((paramString != null) && (paramList != null) && (paramList.size() > 1)) {
-        break label76;
-      }
-    }
-    label76:
-    while (!paramString.equals(bajk.a(this.a)))
-    {
-      return;
-      i = paramList.size();
-      break;
-    }
-    localObject = (anmw)this.a.a.getManager(51);
-    String str1 = this.a.a.getCurrentAccountUin();
-    int k = paramList.size();
-    int j = 0;
-    int i = 0;
-    label133:
-    if (j < k)
-    {
-      String str2 = (String)((Pair)paramList.get(j)).first;
-      if ((TextUtils.isEmpty(str2)) || (str2.equals(str1)) || (((anmw)localObject).b(str2))) {
-        break label283;
-      }
-      i += 1;
-    }
-    label283:
-    for (;;)
-    {
-      j += 1;
-      break label133;
-      float f = bajk.a(this.a) / 100.0F;
-      QLog.i("IceBreak.HotPic", 1, "friendCount: " + i + " total count: " + paramList.size());
-      if (1.0F * i / (paramList.size() - 1) <= f) {
-        break;
-      }
-      this.a.f(paramString);
-      return;
-    }
-  }
-  
-  protected void b(String paramString, int paramInt)
-  {
-    this.a.g(paramString);
-  }
-  
-  protected void b(boolean paramBoolean, Object paramObject)
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("IceBreak.HotPic", 2, "onGetTroopMemberCard: isSuccess " + paramBoolean);
-      }
-      if (paramBoolean)
-      {
-        paramObject = (Object[])paramObject;
-        long l = ((Long)paramObject[0]).longValue();
-        paramObject = (TroopMemberCard)paramObject[2];
-        if (String.valueOf(l).equals(bajk.a(this.a)))
-        {
-          QLog.i("IceBreak.HotPic", 1, " onGetTroopMemberCard last_active_time: " + paramObject.lastSpeak + " join_time: " + paramObject.joinTime);
-          if (paramObject.lastSpeak > paramObject.joinTime) {
-            return;
-          }
-          bajk.a(this.a, String.valueOf(l));
-          return;
-        }
-      }
-    }
-    catch (Exception paramObject)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("IceBreak.HotPic", 2, "onGetTroopMemberCard:" + paramObject.toString());
-      }
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,16 +1,26 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.qphone.base.util.QLog;
 
-class awvr
-  extends RecyclerView.ViewHolder
+public class awvr
+  extends aoeg
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public awvr(LoginWelcomeManager paramLoginWelcomeManager, Bundle paramBundle) {}
   
-  public awvr(awvo paramawvo, View paramView)
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379979));
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localBundle.putInt("result", i);
+      this.jdField_a_of_type_AndroidOsBundle.putString("uin", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeManager.b();
+      return;
+    }
   }
 }
 

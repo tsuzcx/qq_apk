@@ -1,48 +1,27 @@
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public abstract interface nbn
+class nbn
+  extends mxs
 {
-  public abstract RectF a();
+  private final WeakReference<Handler> a;
   
-  public abstract Drawable a();
+  nbn(Handler paramHandler)
+  {
+    this.a = new WeakReference(paramHandler);
+  }
   
-  public abstract nal a();
-  
-  public abstract void a();
-  
-  public abstract void a(ImageView paramImageView, long paramLong1, long paramLong2);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, myc parammyc);
-  
-  public abstract void a(myc parammyc);
-  
-  public abstract void a(nal paramnal);
-  
-  public abstract void a(nbl paramnbl);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract Drawable b();
-  
-  public abstract void b();
-  
-  public abstract void b(String paramString, myc parammyc);
-  
-  public abstract void b(myc parammyc);
-  
-  public abstract void b(nbl paramnbl);
-  
-  public abstract void c();
-  
-  public abstract void c(nbl paramnbl);
-  
-  public abstract void d(nbl paramnbl);
-  
-  public abstract void e(nbl paramnbl);
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("GameRoomPresenterImp", 2, "onNetTypeChange, [" + paramInt1 + "-->" + paramInt2 + "]");
+    }
+    Handler localHandler = (Handler)this.a.get();
+    if ((localHandler != null) && (paramInt2 != 1) && (paramInt1 == 1)) {
+      localHandler.sendEmptyMessage(8);
+    }
+  }
 }
 
 

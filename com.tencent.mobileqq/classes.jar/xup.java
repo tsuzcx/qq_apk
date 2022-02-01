@@ -1,21 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.1;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import mqq.os.MqqHandler;
 
-class xup
-  implements DialogInterface.OnDismissListener
+public class xup
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  xup(xui paramxui, Boolean[] paramArrayOfBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  xup(xuk paramxuk) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.jdField_a_of_type_Xui.b, 2, "[az]isResumeVideoPlaySelf === >" + this.jdField_a_of_type_ArrayOfJavaLangBoolean);
-    }
-    if ((!this.jdField_a_of_type_ArrayOfJavaLangBoolean[0].booleanValue()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
+    ThreadManager.executeOnSubThread(new VideoViewTVKImpl.5.1(this, paramTVK_IMediaPlayer));
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.5.2(this));
   }
 }
 

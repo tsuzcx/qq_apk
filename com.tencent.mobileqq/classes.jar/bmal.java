@@ -1,18 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.WeakReference;
 
-public class bmal
-  implements DialogInterface.OnClickListener
+class bmal<K, V>
+  extends WeakReference<V>
 {
-  public bmal(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  K a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bmal(K paramK, V paramV, ReferenceQueue<V> paramReferenceQueue)
   {
-    this.a.stopPlay();
-    QzoneWebMusicJsPlugin.access$300(this.a, "cancel");
-    paramDialogInterface.dismiss();
-    QzoneWebMusicJsPlugin.access$902(this.a, false);
+    super(paramV, paramReferenceQueue);
+    this.a = paramK;
   }
 }
 

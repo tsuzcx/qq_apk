@@ -1,20 +1,11 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo.1.1;
-
-public class yte
-  implements wom<wqd>
+class yte
+  implements zpx<ypc>
 {
-  yte(ytd paramytd) {}
+  yte(ysw paramysw) {}
   
-  public void a(boolean paramBoolean, wqd paramwqd)
+  public ypc a()
   {
-    yqp.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, isSuccess=" + paramBoolean);
-    if ((paramBoolean) && (paramwqd != null))
-    {
-      yqp.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, temperature=%s", Integer.valueOf(paramwqd.a));
-      int i = paramwqd.a;
-      ytd.a(this.a).post(new EditVideoFilterNeo.1.1(this, i));
-    }
+    return new ypc(new ytf(this));
   }
 }
 

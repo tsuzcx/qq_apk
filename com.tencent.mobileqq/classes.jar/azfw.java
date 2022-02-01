@@ -1,79 +1,84 @@
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.onlinestatus.AccountPanel.18.1;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
+import mqq.os.MqqHandler;
 
 public class azfw
+  extends azie
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public int f;
+  azfw(azfn paramazfn) {}
   
-  private String b()
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    switch (this.jdField_c_of_type_Int)
-    {
-    default: 
-      return "";
-    case 4: 
-      return anni.a(2131712335);
-    case 5: 
-      return anni.a(2131712333);
-    case 6: 
-      return anni.a(2131712331);
-    case 7: 
-      return anni.a(2131712332);
-    case 8: 
-      return anni.a(2131712336);
+    int i = 0;
+    if (paramBundle != null) {
+      i = (int)paramBundle.getLong("onlineStatus", 0L);
     }
-    return anni.a(2131712334);
+    paramBundle = AppRuntime.Status.build(i);
+    if ((paramBoolean) && (azfn.a(this.a) != null)) {
+      azfn.a(this.a).a(paramBundle);
+    }
+    ThreadManager.getUIHandler().post(new AccountPanel.18.1(this, paramBoolean, paramBundle));
   }
   
-  public String a()
+  public void b(boolean paramBoolean, Bundle paramBundle)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_b_of_type_Int == 3)
+    super.b(paramBoolean, paramBundle);
+    if (!azfn.a(this.a)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountPanel", 2, "onSetExtInfo: no needShowOnlineStatusToast ");
+      }
+    }
+    boolean bool2;
+    do
     {
-      if (this.jdField_d_of_type_Int > 0) {
-        localStringBuilder.append(this.jdField_d_of_type_Int + "级");
-      }
-      if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))
+      boolean bool1;
+      do
       {
-        if (localStringBuilder.length() > 0) {
-          localStringBuilder.append("   ");
+        return;
+        bool1 = paramBundle.getBoolean("from_register", false);
+        bool2 = paramBundle.getBoolean("from_modify", false);
+        if (QLog.isColorLevel()) {
+          QLog.d("AccountPanel", 2, new Object[] { "onSetExtInfo: invoked. ", " isFromRegister: ", Boolean.valueOf(bool1), " isFromModify=", Boolean.valueOf(bool2) });
         }
-        localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-      }
-      if (this.jdField_c_of_type_Int > 0)
-      {
-        String str = b();
-        if (!TextUtils.isEmpty(str))
+        if (!paramBoolean) {
+          break;
+        }
+        i = paramBundle.getInt("StatusId");
+        azfn.a(this.a, AppRuntime.Status.online, i, false);
+        if (bool2)
         {
-          if (localStringBuilder.length() > 0) {
-            localStringBuilder.append("   ");
-          }
-          localStringBuilder.append(str);
+          QQToast.a(azfn.a(this.a).getApp(), 2, 2131691178, 1).a();
+          this.a.c();
         }
+      } while (!QLog.isColorLevel());
+      QLog.d("AccountPanel", 2, new Object[] { "onSetExtInfo: invoked. ", " statusId: ", Integer.valueOf(i) });
+      return;
+      if (!bool1) {
+        break;
       }
-    }
-    for (;;)
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, "onSetExtInfo: invoked. isFromRegister ");
+    return;
+    if (bool2) {}
+    for (int i = 2131691179;; i = 2131697725)
     {
-      return localStringBuilder.toString();
-      if (this.jdField_d_of_type_Int > 0) {
-        localStringBuilder.append(this.jdField_d_of_type_Int + "级");
-      }
+      QQToast.a(azfn.a(this.a).getApp(), 1, i, 1).a();
+      this.a.c();
+      return;
     }
   }
   
-  public String toString()
+  public void c(boolean paramBoolean, Bundle paramBundle)
   {
-    return "uint32_idx:" + this.jdField_a_of_type_Int + " uint32_category:" + this.jdField_b_of_type_Int + " str_school_id:" + this.jdField_a_of_type_JavaLangString + " str_school_name:" + this.jdField_b_of_type_JavaLangString + " str_department_id:" + this.jdField_c_of_type_JavaLangString + " str_department_name:" + this.jdField_d_of_type_JavaLangString + " uint32_degree:" + this.jdField_c_of_type_Int + " uint32_enrollment_year:" + this.jdField_d_of_type_Int + " uint32_graduation_year:" + this.e + " uint32_allow_recommend:" + this.f;
+    super.c(paramBoolean, paramBundle);
+    if (paramBoolean) {
+      azfn.a(this.a, azfn.a(this.a), azfn.b(this.a), false);
+    }
   }
 }
 

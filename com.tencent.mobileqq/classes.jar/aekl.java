@@ -1,30 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aekl
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aekl(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public aekl(DialogActivity paramDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (System.currentTimeMillis() - this.a.a < 2000L)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList conform to setting.");
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent("android.settings.IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS", Uri.parse("package:" + this.a.getPackageName()));
+    this.a.startActivity(paramDialogInterface);
     this.a.finish();
-    this.a.overridePendingTransition(0, 0);
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (HongbaoShowerActivity.a(this.a) == 0) {}
-    for (String str = "1";; str = "2")
-    {
-      bcst.b(localQQAppInterface, "dc01440", "", "", "0X80077EA", "0X80077EA", 0, 0, str, "", "", "");
-      break;
-    }
   }
 }
 

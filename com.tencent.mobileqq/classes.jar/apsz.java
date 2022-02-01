@@ -1,66 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.view.ARScanEntryView.26;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class apsz
-  implements apta
+  implements View.OnClickListener
 {
-  public final String a = apsy.a + "." + getClass().getSimpleName();
+  public apsz(ARScanEntryView.26 param26) {}
   
-  public static final String b(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    return apua.a() + File.separator + "_res/" + paramString1;
-  }
-  
-  public String a(aptd paramaptd)
-  {
-    return apua.a() + File.separator + "_res/" + paramaptd.b + File.separator;
-  }
-  
-  public boolean a(aptd paramaptd)
-  {
-    String str = b(paramaptd);
-    try
-    {
-      boolean bool = new File(str).exists();
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a, 2, "needDownload.file exist|" + bool + "|" + paramaptd + "|" + str);
-      }
-      if (!bool) {
-        return true;
-      }
+    if (this.a.jdField_a_of_type_Aphq != null) {
+      this.a.jdField_a_of_type_Aphq.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
     }
-    catch (Throwable paramaptd)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.a, 2, "isNeedDownload.exception happen.e=" + paramaptd.getMessage());
-      }
-      paramaptd.printStackTrace();
-    }
-    return false;
-  }
-  
-  public boolean a(aptd paramaptd, boolean paramBoolean)
-  {
-    return true;
-  }
-  
-  public String b(aptd paramaptd)
-  {
-    return b(paramaptd.b, paramaptd.c);
-  }
-  
-  public boolean b(aptd paramaptd)
-  {
-    boolean bool = true;
-    String str = azby.a(b(paramaptd));
-    if (!paramaptd.b.equalsIgnoreCase(str))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.a, 1, "checkDownloadFile.verify failed|" + str + "|" + paramaptd);
-      }
-      bool = false;
-    }
-    return bool;
+    ARScanEntryView.g(this.a.this$0);
+    ARScanEntryView.d(this.a.this$0);
+    this.a.this$0.a.setOnClickListener(this.a.this$0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

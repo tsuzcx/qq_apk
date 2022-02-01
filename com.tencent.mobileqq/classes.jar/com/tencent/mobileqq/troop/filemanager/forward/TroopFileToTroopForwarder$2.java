@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.troop.filemanager.forward;
 
 import android.content.res.Resources;
-import anni;
-import bexg;
+import anzj;
+import bfxa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class TroopFileToTroopForwarder$2
   implements Runnable
 {
-  public TroopFileToTroopForwarder$2(bexg parambexg) {}
+  public TroopFileToTroopForwarder$2(bfxa parambfxa) {}
   
   public void run()
   {
-    int i = BaseApplicationImpl.sApplication.getResources().getDimensionPixelSize(2131298998);
-    QQToast.a(BaseApplicationImpl.sApplication, anni.a(2131714045), 0).b(i);
+    int i = BaseApplicationImpl.sApplication.getResources().getDimensionPixelSize(2131299011);
+    QQToast.a(BaseApplicationImpl.sApplication, anzj.a(2131714154), 0).b(i);
   }
 }
 

@@ -1,39 +1,14 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.MsgBody;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class bbzs
-  implements bbzr
+final class bbzs
+  implements ThreadFactory
 {
-  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbyn parambbyn)
+  private final AtomicInteger a = new AtomicInteger(1);
+  
+  public Thread newThread(Runnable paramRunnable)
   {
-    if ((paramList == null) || (paramMsg == null) || (!paramMsg.msg_body.has()) || (!paramMsg.msg_body.msg_content.has())) {}
-    do
-    {
-      int i;
-      do
-      {
-        do
-        {
-          return;
-          paramMsg = paramMsg.msg_body.msg_content.get().toByteArray();
-          bgva.a(paramMsg, 0);
-          i = paramMsg[4];
-          if (i != 25) {
-            break;
-          }
-        } while (parambbyn.d);
-        aofd.a(paramMessageHandler.app, paramMsg, 5, null, false);
-        return;
-      } while (i != 35);
-      QLog.i("ApolloPushManager", 1, "[discuss.OffLine]");
-    } while (parambbyn.d);
-    aofd.b(paramMessageHandler.app, paramMsg, 5, null, false);
+    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
   }
 }
 

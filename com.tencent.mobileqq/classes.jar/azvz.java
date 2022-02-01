@@ -1,18 +1,11 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import java.util.List;
 
-public class azvz
-  implements bkij
+public abstract interface azvz
 {
-  public azvz(QCallDetailActivity paramQCallDetailActivity) {}
+  public abstract void a(long paramLong, azvy paramazvy);
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramAdapterView = ajbk.a(((TextView)paramView.findViewById(2131374197)).getText().toString());
-    this.a.a(this.a.getActivity(), paramAdapterView);
-  }
+  public abstract void a(List<PersonalityLabelPhoto> paramList, long paramLong);
 }
 
 

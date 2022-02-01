@@ -1,30 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.res.Resources;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-final class atln
-  implements View.OnClickListener
+class atln
+  extends attp
 {
-  atln(atmk paramatmk, FileManagerEntity paramFileManagerEntity) {}
+  atln(atlm paramatlm) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, List<FavFileInfo> paramList, Bundle paramBundle)
   {
-    try
+    if (!atlm.a(this.a))
     {
-      atvn localatvn = new atvn();
-      localatvn.b = "file_forward";
-      localatvn.a = 9;
-      atvm.a(this.jdField_a_of_type_Atmk.a().getCurrentAccountUin(), localatvn);
-      atwt.a(this.jdField_a_of_type_Atmk.a(), this.jdField_a_of_type_Atmk.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      label61:
-      EventCollector.getInstance().onViewClicked(paramView);
+      QLog.d(atlm.a, 1, atlm.b + "<<<getMoreFileRecords is not getting");
       return;
     }
-    catch (Exception localException)
+    QLog.i(atlm.a, 1, atlm.b + "<<<getMoreFileRecords result errCode:" + paramInt);
+    atlm.a(this.a);
+    if (paramInt != 0)
     {
-      break label61;
+      int i = 2131697492;
+      if (paramInt == 65535) {
+        i = 2131697493;
+      }
+      int j = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299011);
+      int k = (int)bhmg.a(BaseApplicationImpl.getContext(), 5.0F);
+      QQToast.a(BaseApplicationImpl.getContext(), 0, i, 0).b(j - k);
+      atlm.b(this.a);
+      this.a.notifyObservers(new Object[] { Integer.valueOf(1), { Integer.valueOf(paramInt) } });
+      return;
+    }
+    if (paramBundle != null)
+    {
+      atlm.a(this.a, paramBundle.getLong("resultTimestamp"));
+      boolean bool = paramBundle.getBoolean("fecth_end");
+      atlm.a(this.a, paramBundle.getBoolean("fecth_local_end"));
+      if ((bool) && ((paramList == null) || (paramList.size() == 0))) {
+        atlm.b(this.a, true);
+      }
+      QLog.i(atlm.a, 1, atlm.b + "getMoreFileRecords result: nextTimestamp:" + atlm.a(this.a) + " gettedListEnd:" + bool + " localEnd:" + atlm.b(this.a));
+    }
+    for (;;)
+    {
+      paramBundle = new atls(this.a);
+      this.a.a(paramList, paramBundle);
+      this.a.a(paramBundle);
+      atlm.c(this.a);
+      this.a.notifyObservers(new Object[] { Integer.valueOf(1), { Integer.valueOf(0) } });
+      return;
+      QLog.i(atlm.a, 1, atlm.b + "getMoreFileRecords result: lastTimestamp:" + atlm.a(this.a) + " exData=null");
     }
   }
 }

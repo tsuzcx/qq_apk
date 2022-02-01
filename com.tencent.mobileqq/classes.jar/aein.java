@@ -1,15 +1,72 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.42.1;
+import com.tencent.mobileqq.activity.Conversation.42.2;
+import com.tencent.mobileqq.activity.Conversation.42.3;
+import com.tencent.mobileqq.activity.Conversation.42.4;
+import com.tencent.mobileqq.activity.Conversation.42.5;
+import com.tencent.mobileqq.activity.Conversation.42.6;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aein
-  implements DialogInterface.OnClickListener
+  extends lnc
 {
-  public aein(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bgpa parambgpa) {}
+  public aein(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Bgpa.dismiss();
+    paramInt = mvd.c(paramInt);
+    this.a.a(8, Long.toString(paramLong), paramInt);
+  }
+  
+  protected void a(int paramInt, long paramLong1, long paramLong2)
+  {
+    paramInt = mvd.c(paramInt);
+    this.a.a(8, Long.toString(paramLong1), paramInt);
+    this.a.b(paramLong1);
+    this.a.a(new Conversation.42.1(this, paramLong1));
+  }
+  
+  protected void a(int paramInt, String paramString1, String paramString2)
+  {
+    this.a.a(8, paramString1, paramInt);
+    this.a.a(new Conversation.42.4(this));
+  }
+  
+  protected void a(String paramString)
+  {
+    super.a(paramString);
+    this.a.a(new Conversation.42.6(this));
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    super.a(paramString1, paramString2);
+    if (!this.a.f) {
+      return;
+    }
+    this.a.a(new Conversation.42.5(this));
+  }
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  protected void b(int paramInt, long paramLong)
+  {
+    paramInt = mvd.c(paramInt);
+    this.a.a(8, Long.toString(paramLong), paramInt);
+  }
+  
+  protected void b(int paramInt, long paramLong1, long paramLong2)
+  {
+    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
+      this.a.a(new Conversation.42.2(this, paramLong1));
+    }
+  }
+  
+  protected void c(int paramInt, long paramLong1, long paramLong2)
+  {
+    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
+      this.a.a(new Conversation.42.3(this, paramLong1));
+    }
   }
 }
 

@@ -1,43 +1,25 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
+import androidx.annotation.NonNull;
 
-class bbcm
-  extends anjq
+public class bbcm
 {
-  bbcm(bbck parambbck) {}
+  public int a;
+  public String a;
+  public String b = "";
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public bbcm()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "onUpdateStatusActions " + paramBoolean + ", " + paramInt);
-    }
-    bbck.a(this.a, 0L);
-    if (paramBoolean)
-    {
-      if (paramInt == 100)
-      {
-        bbck.b(this.a, System.currentTimeMillis());
-        bbck.a(this.a).edit().putLong("k_update_time", bbck.a(this.a)).commit();
-      }
-      this.a.a(true);
-    }
-    if (bbck.a(this.a) != null)
-    {
-      Iterator localIterator = bbck.a(this.a).iterator();
-      if (localIterator.hasNext())
-      {
-        bazy localbazy = (bazy)localIterator.next();
-        if (paramBoolean) {}
-        for (int i = 300;; i = 301)
-        {
-          localbazy.a(paramInt, i);
-          break;
-        }
-      }
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("actionId").append("=").append(this.jdField_a_of_type_Int).append("|");
+    localStringBuilder.append("actionAndData").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append("plainText").append("=").append(this.b).append("|");
+    return localStringBuilder.toString();
   }
 }
 

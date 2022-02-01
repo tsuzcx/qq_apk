@@ -4,21 +4,21 @@ import android.view.View;
 import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import wfp;
-import wrs;
+import wjk;
+import wvn;
 
 public class StoryHaloManager$2
   implements Runnable
 {
-  public StoryHaloManager$2(wfp paramwfp, RecentItemChatMsgData paramRecentItemChatMsgData, View paramView) {}
+  public StoryHaloManager$2(wjk paramwjk, RecentItemChatMsgData paramRecentItemChatMsgData, View paramView) {}
   
   public void run()
   {
-    wrs localwrs = this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.getRecentUserUin());
-    if (localwrs == null) {
+    wvn localwvn = this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.getRecentUserUin());
+    if (localwvn == null) {
       return;
     }
-    ThreadManager.getUIHandler().post(new StoryHaloManager.2.1(this, localwrs));
+    ThreadManager.getUIHandler().post(new StoryHaloManager.2.1(this, localwvn));
   }
 }
 

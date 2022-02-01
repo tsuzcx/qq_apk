@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.richmedia;
 
 import android.content.Intent;
-import bali;
-import balo;
-import balt;
+import bbeb;
+import bbeh;
+import bbem;
 
 class FlowCameraActivity2$6
   implements Runnable
@@ -12,9 +12,9 @@ class FlowCameraActivity2$6
   
   public void run()
   {
-    Object localObject = balo.a().a().a(this.this$0.a);
+    Object localObject = bbeh.a().a().a(this.this$0.a);
     if (localObject != null) {
-      ((bali)localObject).a(103);
+      ((bbeb)localObject).a(103);
     }
     for (;;)
     {

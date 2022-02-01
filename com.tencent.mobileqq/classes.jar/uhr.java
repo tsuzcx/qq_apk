@@ -1,23 +1,16 @@
-import UserGrowth.stSimpleMetaPerson;
 import android.view.View;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class uhr
-  implements bkhw
+  implements View.OnClickListener
 {
-  uhr(uhk paramuhk, stSimpleMetaPerson paramstSimpleMetaPerson) {}
+  uhr(uhp paramuhp) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!nmd.a(uhk.c(this.jdField_a_of_type_Uhk)))
-    {
-      biti.a().a(2131719196);
-      return;
-    }
-    uhk.a(this.jdField_a_of_type_Uhk).b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
-    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus = 2;
-    uhk.a(this.jdField_a_of_type_Uhk).setVisibility(0);
-    uhk.b(this.jdField_a_of_type_Uhk).setVisibility(4);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -16,16 +16,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.tencent.image.RegionDrawableData;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.richmediabrowser.constant.Constants;
 import com.tencent.richmediabrowser.download.HttpDownloadManager;
 import com.tencent.richmediabrowser.download.IImageDownloadListener;
 import com.tencent.richmediabrowser.listener.IBrowserItemEventListener;
@@ -64,15 +59,18 @@ public class PictureView
   {
     Object localObject = this.picPresenter.getItem(paramInt);
     HttpDownloadManager.getInstance().addImageDownloadListener(((RichMediaBrowserInfo)localObject).baseData.url, this);
-    Integer.parseInt(((RichMediaBrowserInfo)localObject).baseData.id);
-    localObject = this.mContext.getResources().getDrawable(2130850730);
-    this.imageView.setOnItemEventListener(this);
-    this.imageView.setImageDrawable((Drawable)localObject);
-    this.imageView.setMainBrowserPresenter(this.picPresenter.mainBrowserPresenter);
-    this.imageView.initDrawable((Drawable)localObject, ScreenUtils.getScreenWidth(this.mContext), 2340, 0);
-    localObject = new PictureView.GalleryPictureViewHolder(this);
-    ((PictureView.GalleryPictureViewHolder)localObject).urlImageView = this.imageView;
-    this.mBrowserItemView.setTag(localObject);
+    if (Integer.parseInt(((RichMediaBrowserInfo)localObject).baseData.id) % 2 == 0) {}
+    for (localObject = this.mContext.getResources().getDrawable(2130850749);; localObject = this.mContext.getResources().getDrawable(2130850749))
+    {
+      this.imageView.setOnItemEventListener(this);
+      this.imageView.setImageDrawable((Drawable)localObject);
+      this.imageView.setMainBrowserPresenter(this.picPresenter.mainBrowserPresenter);
+      this.imageView.initDrawable((Drawable)localObject, ScreenUtils.getScreenWidth(this.mContext), ScreenUtils.getScreenHeight(this.mContext), 0);
+      localObject = new PictureView.GalleryPictureViewHolder(this);
+      ((PictureView.GalleryPictureViewHolder)localObject).urlImageView = this.imageView;
+      this.mBrowserItemView.setTag(localObject);
+      return;
+    }
   }
   
   public void buildComplete()
@@ -97,41 +95,6 @@ public class PictureView
     this.picPresenter.mActiveDrawable.clear();
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (((paramView instanceof RelativeLayout)) && ((paramView.getTag() instanceof PictureView.GalleryPictureViewHolder)))
-    {
-      this.mBrowserItemView = ((RelativeLayout)paramView);
-      paramView = ((PictureView.GalleryPictureViewHolder)paramView.getTag()).urlImageView;
-    }
-    for (;;)
-    {
-      paramViewGroup = this.picPresenter.getItem(paramInt);
-      HttpDownloadManager.getInstance().addImageDownloadListener(paramViewGroup.baseData.url, this);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = this.mScreenWidthPx;
-      localURLDrawableOptions.mRequestHeight = this.mScreenHeightPx;
-      localURLDrawableOptions.mLoadingDrawable = Constants.TRANSPARENT;
-      localURLDrawableOptions.mPlayGifImage = true;
-      localURLDrawableOptions.mUseExifOrientation = false;
-      localURLDrawableOptions.mDecodeFileStrategy = 2;
-      paramViewGroup = URLDrawable.getDrawable(paramViewGroup.baseData.url, localURLDrawableOptions);
-      paramViewGroup.setTag(Integer.valueOf(1));
-      paramView.setImageDrawable(paramViewGroup);
-      paramViewGroup = new PictureView.GalleryPictureViewHolder(this);
-      paramViewGroup.urlImageView = paramView;
-      this.mBrowserItemView.setTag(paramViewGroup);
-      return this.mBrowserItemView;
-      this.mBrowserItemView = new RelativeLayout(this.mContext);
-      this.mBrowserItemView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-      paramView = new BrowserScaleView(this.mContext);
-      paramView.setId(2131368246);
-      paramView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      paramViewGroup = new RelativeLayout.LayoutParams(-1, -1);
-      this.mBrowserItemView.addView(paramView, paramViewGroup);
-    }
-  }
-  
   public View getView(View paramView, ViewGroup paramViewGroup)
   {
     if (((paramView instanceof RelativeLayout)) && ((paramView.getTag() instanceof PictureView.GalleryPictureViewHolder)))
@@ -142,10 +105,9 @@ public class PictureView
     for (;;)
     {
       return this.mBrowserItemView;
-      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559575, paramViewGroup, false));
-      this.imageView = ((BrowserScaleView)this.mBrowserItemView.findViewById(2131368269));
+      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559580, paramViewGroup, false));
+      this.imageView = ((BrowserScaleView)this.mBrowserItemView.findViewById(2131368343));
       this.imageView.setOnClickListener(this);
-      this.mBrowserItemView.findViewById(2131364540).setOnClickListener(this);
     }
   }
   
@@ -156,7 +118,7 @@ public class PictureView
     default: 
       return false;
     }
-    paramMessage = this.mContext.getResources().getDrawable(2130850730);
+    paramMessage = this.mContext.getResources().getDrawable(2130850749);
     this.imageView.initDrawable(paramMessage, ScreenUtils.getScreenWidth(this.mContext), ScreenUtils.getScreenHeight(this.mContext), 0);
     this.imageView.setImageDrawable(paramMessage);
     return false;
@@ -168,21 +130,7 @@ public class PictureView
     clearTheOuchCache();
   }
   
-  public void onClick(View paramView)
-  {
-    int i = paramView.getId();
-    if (i == 2131368269) {
-      Toast.makeText(this.mContext, "点击到图片", 1).show();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (i == 2131364540) {
-        Toast.makeText(this.mContext, "点击到按钮", 1).show();
-      }
-    }
-  }
+  public void onClick(View paramView) {}
   
   public void onClickEvent()
   {
@@ -288,10 +236,6 @@ public class PictureView
       HttpDownloadManager.getInstance().removeImageDownloadListener(paramView.baseData.url);
     }
   }
-  
-  public void onscaleBegin(int paramInt, Drawable paramDrawable, URLDrawable paramURLDrawable, BrowserScaleView paramBrowserScaleView) {}
-  
-  public void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup) {}
   
   public void reset()
   {

@@ -1,81 +1,43 @@
-import android.content.Context;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class ptw
 {
-  public static boolean a(Context paramContext, String paramString)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    ptu.a(paramString);
-    QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "jumpToKDTab, scheme = " + paramString);
-    if (TextUtils.isEmpty(paramString))
+    JSONObject localJSONObject1 = new JSONObject();
+    localJSONObject1.put("id_test", new JSONObject());
+    JSONObject localJSONObject2 = new JSONObject();
+    String str;
+    if (paramBaseArticleInfo.mSinglePicture != null)
     {
-      QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], scheme is empty.");
-      return false;
-    }
-    String str2;
-    String str4;
-    boolean bool;
-    do
-    {
-      String str3;
-      String str5;
-      do
-      {
-        try
-        {
-          paramString = Uri.parse(paramString);
-          str1 = paramString.getQueryParameter("target");
-          if (!"2".equals(str1))
-          {
-            QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], target = " + str1 + ", do not jump to channel.");
-            return false;
-          }
-        }
-        catch (Exception paramContext)
-        {
-          QLog.e("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], e = " + paramContext);
-          QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], do not handle.");
-          return false;
-        }
-        String str1 = paramString.getQueryParameter("channelid");
-        int i = -1;
-        try
-        {
-          int j = Integer.parseInt(str1);
-          i = j;
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          for (;;)
-          {
-            QLog.e("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], e = " + localNumberFormatException);
-          }
-          str2 = paramString.getQueryParameter("rowkey");
-          str3 = paramString.getQueryParameter("algorithmid");
-          str4 = paramString.getQueryParameter("article_url");
-          str5 = URLDecoder.decode(str4, "utf-8");
-          bool = TextUtils.equals("1", paramString.getQueryParameter("show_floating_window"));
-          QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], articleURLDecoded = " + str5);
-        }
-        if (i != 0)
-        {
-          QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], not recommend tab.");
-          return false;
-        }
-      } while ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(str4)) || (TextUtils.isEmpty(str5)));
-      if (!bmqa.h())
-      {
-        pha.a(paramContext, str5);
-        QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], open article directly.");
-        return true;
+      str = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_large_imge_url", str);
+      localJSONObject1.put("id_article_large_imge", localJSONObject2);
+      puo.a(paramBaseArticleInfo, localJSONObject1, true);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
+        break label130;
       }
-    } while (!bool);
-    paramContext.startActivity(ohp.a(paramContext, 12, str2, str4));
-    QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], open floating window.");
-    return true;
+      puo.a(paramBaseArticleInfo, localJSONObject1);
+      puo.b(paramBaseArticleInfo, localJSONObject1);
+    }
+    for (;;)
+    {
+      puo.l(paramBaseArticleInfo, localJSONObject1);
+      puo.e(paramBaseArticleInfo, localJSONObject1);
+      puo.g(paramBaseArticleInfo, localJSONObject1);
+      puo.X(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_large_cell");
+      puo.a(localJSONObject1, paramBaseArticleInfo);
+      puo.aa(paramBaseArticleInfo, localJSONObject1);
+      return localJSONObject1;
+      str = null;
+      break;
+      label130:
+      puo.d(paramBaseArticleInfo, localJSONObject1);
+    }
   }
 }
 

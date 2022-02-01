@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.bless;
 
-import aipe;
+import ajan;
 
 public class BlessManager$5
   implements Runnable
 {
-  public BlessManager$5(aipe paramaipe) {}
+  public BlessManager$5(ajan paramajan) {}
   
   public void run()
   {
-    if (aipe.a(this.this$0) != null)
+    if (ajan.a(this.this$0) != null)
     {
-      if (!aipe.a(this.this$0))
+      if (!ajan.a(this.this$0))
       {
-        aipe.c(this.this$0, aipe.a(this.this$0, aipe.a(this.this$0), false));
-        aipe.a(this.this$0, aipe.a(this.this$0));
-        aipe.a(this.this$0, aipe.a(this.this$0), true);
+        ajan.c(this.this$0, ajan.a(this.this$0, ajan.a(this.this$0), false));
+        ajan.a(this.this$0, ajan.a(this.this$0));
+        ajan.a(this.this$0, ajan.a(this.this$0), true);
       }
       return;
     }
-    aipe.a(this.this$0, false);
+    ajan.a(this.this$0, false);
   }
 }
 

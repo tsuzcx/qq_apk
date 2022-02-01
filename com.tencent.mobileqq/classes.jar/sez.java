@@ -1,8 +1,4 @@
-public abstract interface sez
-{
-  public abstract void a(sey paramsey, boolean paramBoolean);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sez

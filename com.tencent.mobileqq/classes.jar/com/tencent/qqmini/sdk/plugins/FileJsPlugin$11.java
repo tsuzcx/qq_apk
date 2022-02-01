@@ -20,8 +20,8 @@ class FileJsPlugin$11
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l1, this.val$oldPath);
       return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "invalid path");
     }
-    int i = ((MiniAppFileManager)FileJsPlugin.access$5100(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$oldPath);
-    int j = ((MiniAppFileManager)FileJsPlugin.access$5200(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$newPath);
+    int i = ((MiniAppFileManager)FileJsPlugin.access$4900(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$oldPath);
+    int j = ((MiniAppFileManager)FileJsPlugin.access$5000(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$newPath);
     if (i != 2)
     {
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l1, this.val$oldPath);
@@ -32,8 +32,8 @@ class FileJsPlugin$11
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l1, this.val$newPath);
       return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "permission denied, open " + this.val$newPath);
     }
-    String str1 = ((MiniAppFileManager)FileJsPlugin.access$5300(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(this.val$oldPath);
-    String str2 = ((MiniAppFileManager)FileJsPlugin.access$5400(this.this$0).getManager(MiniAppFileManager.class)).getUsrPath(this.val$newPath);
+    String str1 = ((MiniAppFileManager)FileJsPlugin.access$5100(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(this.val$oldPath);
+    String str2 = ((MiniAppFileManager)FileJsPlugin.access$5200(this.this$0).getManager(MiniAppFileManager.class)).getUsrPath(this.val$newPath);
     if (!new File(str1).exists())
     {
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l1, str1);

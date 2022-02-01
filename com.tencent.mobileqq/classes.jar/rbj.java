@@ -1,52 +1,42 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.app.Activity;
+import android.view.View;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
 
-public abstract class rbj
-  extends Binder
-  implements rbi
+public class rbj
+  extends QIMEffectCameraCaptureUnit
 {
-  public rbj()
+  public rbj(bqai parambqai, bqah parambqah)
   {
-    attachInterface(this, "com.tencent.biz.pubaccount.readinjoy.service.redpacket.IReportTaskProgressCallback");
+    super(parambqai, parambqah);
+    this.jdField_a_of_type_Bqaa = new bqaa(10017, 106, 4);
   }
   
-  public static rbi a(IBinder paramIBinder)
+  public View a()
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IReportTaskProgressCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof rbi))) {
-      return (rbi)localIInterface;
-    }
-    return new rbk(paramIBinder);
+    this.s = false;
+    this.r = false;
+    View localView = super.a();
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setFunctionFlag(2);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    return localView;
   }
   
-  public IBinder asBinder()
+  protected bbhn a()
   {
-    return this;
+    bbhn localbbhn = super.a();
+    localbbhn.a(false);
+    localbbhn.l(2);
+    localbbhn.i(2);
+    return localbbhn;
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void a(bbhq parambbhq)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IReportTaskProgressCallback");
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IReportTaskProgressCallback");
-    if (paramParcel1.readInt() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool, paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
-    }
+    Activity localActivity = this.jdField_a_of_type_Bqai.a();
+    localActivity.startActivity(EditPicActivity.a(localActivity, parambbhq.a, true, true, true, true, true, 8));
   }
 }
 

@@ -1,11 +1,9 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-
-class alcc
-  extends albw
+public class alcc
 {
-  public RelativeLayout a;
-  public ImageView c;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
 }
 
 

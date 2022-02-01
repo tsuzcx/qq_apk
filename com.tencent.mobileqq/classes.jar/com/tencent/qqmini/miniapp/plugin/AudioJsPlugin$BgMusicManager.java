@@ -20,7 +20,7 @@ class AudioJsPlugin$BgMusicManager
   
   private AudioJsPlugin$BgMusicManager(AudioJsPlugin paramAudioJsPlugin)
   {
-    this.musicPlayerProxy.init(AudioJsPlugin.access$3800(paramAudioJsPlugin), AudioJsPlugin.access$3900(paramAudioJsPlugin).appId, AudioJsPlugin.access$4000(paramAudioJsPlugin).name);
+    this.musicPlayerProxy.init(AudioJsPlugin.access$3700(paramAudioJsPlugin), AudioJsPlugin.access$3800(paramAudioJsPlugin).appId, AudioJsPlugin.access$3900(paramAudioJsPlugin).name);
   }
   
   private int convertState(int paramInt)
@@ -40,12 +40,12 @@ class AudioJsPlugin$BgMusicManager
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      if (AudioJsPlugin.access$4300(this.this$0) != null)
+      if (AudioJsPlugin.access$4200(this.this$0) != null)
       {
-        localJSONObject.put("currentPosition", AudioJsPlugin.access$4500(this.this$0, AudioJsPlugin.access$4400(this.this$0)));
-        localJSONObject.put("duration", AudioJsPlugin.access$4500(this.this$0, AudioJsPlugin.access$4600(this.this$0)));
+        localJSONObject.put("currentPosition", AudioJsPlugin.access$4400(this.this$0, AudioJsPlugin.access$4300(this.this$0)));
+        localJSONObject.put("duration", AudioJsPlugin.access$4400(this.this$0, AudioJsPlugin.access$4500(this.this$0)));
         localJSONObject.put("status", convertState(AudioJsPlugin.access$000(this.this$0)));
-        localJSONObject.put("dataUrl", AudioJsPlugin.access$4300(this.this$0).url);
+        localJSONObject.put("dataUrl", AudioJsPlugin.access$4200(this.this$0).url);
         paramRequestEvent.ok(localJSONObject);
         return;
       }
@@ -200,15 +200,15 @@ class AudioJsPlugin$BgMusicManager
       return;
     case 1: 
       playQQMusic(paramJSONObject, paramRequestEvent);
-      AudioJsPlugin.access$4102(this.this$0, new AudioJsPlugin.BgMusicData(paramJSONObject, paramRequestEvent, null));
+      AudioJsPlugin.access$4002(this.this$0, new AudioJsPlugin.BgMusicData(paramJSONObject, paramRequestEvent, null));
       return;
     case 2: 
       pauseQQMusic(paramRequestEvent);
-      AudioJsPlugin.access$4102(this.this$0, null);
+      AudioJsPlugin.access$4002(this.this$0, null);
       return;
     case 3: 
       stopQQmMusic(paramRequestEvent);
-      AudioJsPlugin.access$4102(this.this$0, null);
+      AudioJsPlugin.access$4002(this.this$0, null);
       return;
     case 4: 
       seekMusic(paramJSONObject, paramRequestEvent);

@@ -1,10 +1,24 @@
+import com.tencent.TMG.sdk.AVVideoCtrl.LocalVideoPreviewCallback;
+import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
+import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.1.1;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+
 public class amso
+  extends AVVideoCtrl.LocalVideoPreviewCallback
 {
-  int jdField_a_of_type_Int;
-  amsg jdField_a_of_type_Amsg;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  String b;
+  amso(amsn paramamsn) {}
+  
+  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
+  {
+    Object localObject = anbd.a(amsm.a(this.a.a));
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = ((ande)localObject).a();
+    } while (localObject == null);
+    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.1.1(this, (ApolloSurfaceView)localObject, paramVideoFrame));
+  }
 }
 
 

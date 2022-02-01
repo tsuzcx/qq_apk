@@ -15,7 +15,7 @@ public class PluginBaseActivity
   
   protected String a()
   {
-    return getString(2131690563);
+    return getString(2131690559);
   }
   
   protected boolean a()
@@ -33,7 +33,7 @@ public class PluginBaseActivity
   
   public int g()
   {
-    return getResources().getDimensionPixelSize(2131298998);
+    return getResources().getDimensionPixelSize(2131299011);
   }
   
   public final Activity getActivity()

@@ -1,13 +1,24 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.os.Bundle;
 
-final class atvi
-  implements Comparator<Map.Entry<String, Integer>>
+public abstract interface atvi
 {
-  public int a(Map.Entry<String, Integer> paramEntry1, Map.Entry<String, Integer> paramEntry2)
-  {
-    return ((Integer)paramEntry2.getValue()).intValue() - ((Integer)paramEntry1.getValue()).intValue();
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2);
+  
+  public abstract byte[] a(Bundle paramBundle);
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

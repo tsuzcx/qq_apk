@@ -1,29 +1,38 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.content.SharedPreferences.Editor;
 
 class ufm
-  implements TextView.OnEditorActionListener
+  implements aakg
 {
-  ufm(ufh paramufh) {}
+  ufm(ufj paramufj) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a()
   {
-    switch (paramInt)
+    if (ufj.a(this.a).a()) {
+      ufj.a(this.a).b();
+    }
+    for (;;)
     {
-    case 5: 
-    default: 
-      return false;
+      ufj.a(this.a, false);
+      return;
+      this.a.dismiss();
     }
-    if (ufh.a(this.a) != null) {
-      ufh.a(this.a).a();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (ufj.a(this.a) != paramInt)
+    {
+      ufj.a(this.a, paramInt);
+      ufj.a(this.a);
+      ufj.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
+      ufj.a(this.a).commit();
     }
-    return true;
+    ufj.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ufm
  * JD-Core Version:    0.7.0.1
  */

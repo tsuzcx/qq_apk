@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
-import pkr;
-import pll;
+import pdk;
+import pee;
 
 public class DynamicChannelHeaderModule$1
   implements Runnable
 {
-  public DynamicChannelHeaderModule$1(pll parampll, int paramInt1, int paramInt2, pkr parampkr) {}
+  public DynamicChannelHeaderModule$1(pee parampee, int paramInt1, int paramInt2, pdk parampdk) {}
   
   public void run()
   {
-    pll.a(this.this$0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Pkr);
+    pee.a(this.this$0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Pdk);
   }
 }
 

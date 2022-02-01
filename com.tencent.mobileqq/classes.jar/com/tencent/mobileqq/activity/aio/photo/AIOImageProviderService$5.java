@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import anlk;
-import annq;
-import bcst;
+import anxg;
+import anzr;
+import bdll;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -28,10 +28,10 @@ class AIOImageProviderService$5
       if (localChatMessage != null)
       {
         localQQMessageFacade = localQQAppInterface.a();
-        if (!annq.a(localChatMessage)) {
+        if (!anzr.a(localChatMessage)) {
           break label157;
         }
-        annq.a(localChatMessage);
+        anzr.a(localChatMessage);
         break label180;
       }
       for (;;)
@@ -40,10 +40,10 @@ class AIOImageProviderService$5
         if (QLog.isColorLevel()) {
           QLog.d("Q.hotchat", 2, "makeFlashPicReaded,uin:" + this.this$0.b + ",type:" + localChatMessage.istroop + ",extStr" + localChatMessage.extStr);
         }
-        bcst.b(localQQAppInterface, "CliOper", "", "", "0X8005979", "0X8005979", 0, 0, "", "", "", "");
+        bdll.b(localQQAppInterface, "CliOper", "", "", "0X8005979", "0X8005979", 0, 0, "", "", "", "");
         return;
         label157:
-        anlk.a(localChatMessage);
+        anxg.a(localChatMessage);
         Iterator localIterator = localQQMessageFacade.b(localChatMessage.frienduin, localChatMessage.msgtype).iterator();
         label180:
         if (localIterator.hasNext())
@@ -52,7 +52,7 @@ class AIOImageProviderService$5
           if (localMessageRecord.uniseq != this.a) {
             break;
           }
-          anlk.a(localMessageRecord);
+          anxg.a(localMessageRecord);
         }
       }
       return;

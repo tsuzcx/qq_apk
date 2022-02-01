@@ -1,45 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Map;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import mqq.app.AppRuntime;
 
-class avro
-  implements View.OnClickListener
+final class avro
+  implements avre
 {
-  avro(avrn paramavrn) {}
-  
-  public void onClick(View paramView)
+  public String a()
   {
-    int i = ((Integer)paramView.getTag(-1)).intValue();
-    arcs localarcs = (arcs)avrn.a(this.a).getItem(i);
-    if (localarcs == null) {
-      QLog.i("Q.lebatab.LebaListController", 1, "item == null ");
-    }
-    Map localMap;
-    do
+    return avrd.b;
+  }
+  
+  public void a(int paramInt)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localMap = avrn.a(this.a).a();
-    } while (avrn.a(this.a) == null);
-    avrw localavrw = new avrw();
-    localavrw.jdField_a_of_type_Boolean = false;
-    localavrw.jdField_a_of_type_Long = localarcs.jdField_a_of_type_Long;
-    Integer localInteger = null;
-    if (localMap != null) {
-      localInteger = (Integer)localMap.get(Long.valueOf(localarcs.jdField_a_of_type_Long));
-    }
-    if (localInteger == null) {}
-    for (i = 0;; i = localInteger.intValue())
-    {
-      localavrw.jdField_a_of_type_Int = i;
-      if ((paramView instanceof RedTouch)) {
-        localavrw.b = avry.a((RedTouch)paramView);
-      }
-      avrn.a(this.a).a(paramView, localarcs, localavrw);
-      break;
+      ((VasQuickUpdateManager)((AppRuntime)localObject).getManager(184)).downloadItem(5L, "font.hifont.android." + paramInt, "HiBoomDownloader");
+      localObject = ((avrl)((AppRuntime)localObject).getManager(219)).a(paramInt);
+      ((avrk)localObject).b = true;
+      ((avrk)localObject).c = 0;
     }
   }
 }

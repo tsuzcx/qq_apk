@@ -1,8 +1,18 @@
-public abstract interface bjsk
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.appcommon.now.download.local.DownloadNativeApi.1;
+
+public class bjsk
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString);
+  public bjsk(DownloadNativeApi.1 param1) {}
   
-  public abstract void a(byte[] paramArrayOfByte);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bjrz.a().a(this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    bjsj.a(this.a.this$0).a(this.a.jdField_a_of_type_Bjso);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

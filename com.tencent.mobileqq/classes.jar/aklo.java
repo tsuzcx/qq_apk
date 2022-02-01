@@ -1,37 +1,46 @@
-import Wallet.IdiomRedPackMatchReq;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
-class aklo
-  implements akxt
+public class aklo
+  implements aklr
 {
-  aklo(aklj paramaklj, akli paramakli, String paramString, SessionInfo paramSessionInfo, long paramLong, int paramInt) {}
+  public aklo(MiniMsgTabFragment paramMiniMsgTabFragment) {}
   
-  public void a(String paramString)
+  public void a(RecentBaseData paramRecentBaseData)
   {
-    int i = 1;
-    IdiomRedPackMatchReq localIdiomRedPackMatchReq = new IdiomRedPackMatchReq();
-    localIdiomRedPackMatchReq.grabUin = aklj.a(this.jdField_a_of_type_Aklj).getLongAccountUin();
-    localIdiomRedPackMatchReq.billno = this.jdField_a_of_type_Akli.jdField_a_of_type_JavaLangString;
-    localIdiomRedPackMatchReq.inputIdiom = this.jdField_a_of_type_JavaLangString;
-    localIdiomRedPackMatchReq.hbIdiom = aklj.a(this.jdField_a_of_type_Aklj, this.jdField_a_of_type_Akli);
-    localIdiomRedPackMatchReq.makeUin = Long.parseLong(this.jdField_a_of_type_Akli.c);
-    localIdiomRedPackMatchReq.sKey = paramString;
-    localIdiomRedPackMatchReq.appid = AppSetting.a();
-    localIdiomRedPackMatchReq.subchannel = this.jdField_a_of_type_Akli.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) {}
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if (paramRecentBaseData.getRecentUserUin().equals("0"))
+    {
+      MiniMsgTabFragment.a(this.a).findViewById(2131379110).performClick();
+      return;
+    }
+    MiniChatActivity.a(localFragmentActivity, paramRecentBaseData.getRecentUserType(), paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getTitleName(), false, MiniMsgTabFragment.b(this.a));
+    akkw.a("0X8009C2D");
+    if (MiniMsgTabFragment.a(this.a) == null) {
+      MiniMsgTabFragment.a(this.a, AnimationUtils.loadAnimation(this.a.getActivity(), 2130771995));
+    }
+    MiniMsgTabFragment.b(this.a).startAnimation(MiniMsgTabFragment.a(this.a));
+    MiniMsgTabFragment.a(this.a).setAnimationListener(new aklp(this, localFragmentActivity));
+    MiniMsgTabFragment.b(this.a).setVisibility(8);
+    int i = paramRecentBaseData.getRecentUserType();
+    if (adak.d(i)) {
+      i = 1;
+    }
     for (;;)
     {
-      localIdiomRedPackMatchReq.fromType = i;
-      localIdiomRedPackMatchReq.platform = 0;
-      localIdiomRedPackMatchReq.qqVersion = "8.4.1";
-      akmf.a(localIdiomRedPackMatchReq, new aklp(this));
+      bdll.b(null, "dc00898", "", "", "0X800A0F7", "0X800A0F7", MiniMsgTabFragment.b(this.a), 1, "" + i, "", "", "");
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000) {
+      if (i == 1) {
         i = 2;
+      } else if (i == 3000) {
+        i = 4;
       } else {
-        i = 0;
+        i = 5;
       }
     }
   }

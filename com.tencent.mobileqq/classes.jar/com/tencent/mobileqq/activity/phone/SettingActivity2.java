@@ -2,9 +2,9 @@ package com.tencent.mobileqq.activity.phone;
 
 import Override;
 import SecurityAccountServer.RespondQueryQQBindingStat;
-import ajca;
-import akdh;
-import akec;
+import ajnj;
+import akos;
+import akpn;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -15,15 +15,15 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anni;
-import aqqc;
-import aqqd;
-import aqqe;
-import aywi;
-import bcst;
-import bgnt;
-import bkho;
-import bkif;
+import anzj;
+import arfk;
+import arfl;
+import arfm;
+import azov;
+import bdll;
+import bhnv;
+import blir;
+import blji;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.ContactBindedActivity;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
@@ -39,13 +39,13 @@ public class SettingActivity2
   public int a;
   public Button a;
   public TextView a;
-  public aywi a;
+  public azov a;
   public Boolean a;
   public int b;
   public Button b;
   public TextView b;
-  public aywi b;
-  public aywi c;
+  public azov b;
+  public azov c;
   
   public SettingActivity2()
   {
@@ -82,12 +82,12 @@ public class SettingActivity2
     }
     this.jdField_b_of_type_Int = i;
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
-    setTitle(anni.a(2131712626));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364941));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364940));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370546));
+    setTitle(anzj.a(2131712735));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364988));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364987));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370650));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131380877));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131381056));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     if ((i == 7) || (i == 6))
     {
@@ -95,17 +95,17 @@ public class SettingActivity2
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      localObject2 = aqqe.a();
+      localObject2 = arfm.a();
       if (bool)
       {
-        localObject1 = ((aqqc)localObject2).b.a;
-        str = ((aqqc)localObject2).b.b;
-        localObject2 = ((aqqc)localObject2).b.c;
+        localObject1 = ((arfk)localObject2).b.a;
+        str = ((arfk)localObject2).b.b;
+        localObject2 = ((arfk)localObject2).b.c;
         this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
         this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
         this.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject2);
         label383:
-        localObject1 = (ImageView)findViewById(2131368961);
+        localObject1 = (ImageView)findViewById(2131369056);
         if (i != 7) {
           break label503;
         }
@@ -115,14 +115,14 @@ public class SettingActivity2
     for (;;)
     {
       if (AppSetting.c) {
-        ((ImageView)localObject1).setContentDescription(getString(2131694220));
+        ((ImageView)localObject1).setContentDescription(getString(2131694245));
       }
-      ((ImageView)localObject1).setBackgroundResource(2130840281);
+      ((ImageView)localObject1).setBackgroundResource(2130840291);
       ((ImageView)localObject1).setOnClickListener(this);
       return;
-      localObject1 = ((aqqc)localObject2).a.a;
-      str = ((aqqc)localObject2).a.b;
-      localObject2 = ((aqqc)localObject2).a.c;
+      localObject1 = ((arfk)localObject2).a.a;
+      str = ((arfk)localObject2).a.b;
+      localObject2 = ((arfk)localObject2).a.c;
       break;
       this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
@@ -136,30 +136,30 @@ public class SettingActivity2
   
   public void a(String paramString, int paramInt)
   {
-    bcst.b(this.app, "CliOper", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
+    bdll.b(this.app, "CliOper", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
   }
   
   public void b()
   {
-    bkho localbkho = (bkho)bkif.a(this, null);
-    localbkho.setCanceledOnTouchOutside(true);
-    localbkho.a(anni.a(2131712627), 3);
-    localbkho.c(2131690582);
-    localbkho.a(new akec(this, localbkho));
-    localbkho.c(2131690582);
-    localbkho.show();
+    blir localblir = (blir)blji.a(this, null);
+    localblir.setCanceledOnTouchOutside(true);
+    localblir.a(anzj.a(2131712736), 3);
+    localblir.c(2131690580);
+    localblir.a(new akpn(this, localblir));
+    localblir.c(2131690580);
+    localblir.show();
   }
   
   public void c()
   {
-    if (!bgnt.d(this))
+    if (!bhnv.d(this))
     {
-      a(2131693991);
+      a(2131694008);
       return;
     }
     SettingActivity2.3 local3 = new SettingActivity2.3(this);
-    DenyRunnable localDenyRunnable = new DenyRunnable(this, new akdh(this.app));
-    ajca.a(this, this.app, local3, localDenyRunnable);
+    DenyRunnable localDenyRunnable = new DenyRunnable(this, new akos(this.app));
+    ajnj.a(this, this.app, local3, localDenyRunnable);
   }
   
   @Override
@@ -199,23 +199,23 @@ public class SettingActivity2
       return true;
     }
     this.jdField_a_of_type_Int = paramBundle.getIntExtra("kSrouce", -1);
-    super.setContentView(2131559559);
-    PhoneContactManagerImp.a(this.app, getResources(), (ImageView)findViewById(2131364939));
+    super.setContentView(2131559564);
+    PhoneContactManagerImp.a(this.app, getResources(), (ImageView)findViewById(2131364986));
     a();
     return true;
   }
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Aywi != null)
+    if (this.jdField_a_of_type_Azov != null)
     {
-      this.app.unRegistObserver(this.jdField_a_of_type_Aywi);
-      this.jdField_a_of_type_Aywi = null;
+      this.app.unRegistObserver(this.jdField_a_of_type_Azov);
+      this.jdField_a_of_type_Azov = null;
     }
-    if (this.jdField_b_of_type_Aywi != null)
+    if (this.jdField_b_of_type_Azov != null)
     {
-      this.app.unRegistObserver(this.jdField_b_of_type_Aywi);
-      this.jdField_b_of_type_Aywi = null;
+      this.app.unRegistObserver(this.jdField_b_of_type_Azov);
+      this.jdField_b_of_type_Azov = null;
     }
     this.app.removeHandler(SettingActivity2.class);
     super.doOnDestroy();
@@ -235,7 +235,7 @@ public class SettingActivity2
     {
     default: 
       throw new RuntimeException("unknown id: " + i);
-    case 2131368961: 
+    case 2131369056: 
       b();
     }
     for (;;)
@@ -246,8 +246,8 @@ public class SettingActivity2
       c();
       continue;
       SettingActivity2.4 local4 = new SettingActivity2.4(this);
-      DenyRunnable localDenyRunnable = new DenyRunnable(this, new akdh(this.app));
-      ajca.a(this, this.app, local4, localDenyRunnable);
+      DenyRunnable localDenyRunnable = new DenyRunnable(this, new akos(this.app));
+      ajnj.a(this, this.app, local4, localDenyRunnable);
     }
   }
   

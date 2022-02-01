@@ -1,36 +1,35 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.Locale;
 
-public class axbn
+class axbn
 {
+  public static int a;
+  public float a;
   public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c = "";
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public float d;
+  public int d;
+  public float e;
+  public float f;
+  public float g;
+  public float h;
+  public float i;
+  public float j;
+  public float k;
+  public float l;
   
   public axbn()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    int m = jdField_a_of_type_Int;
+    jdField_a_of_type_Int = m + 1;
+    this.jdField_b_of_type_Int = m;
   }
   
-  public axbn(boolean paramBoolean1, boolean paramBoolean2, long paramLong, String paramString1, String paramString2, String paramString3)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-  }
-  
-  public boolean a()
-  {
-    long l = NetConnInfoCenter.getServerTime();
-    return (this.jdField_a_of_type_Long <= 0L) || (l > this.jdField_a_of_type_Long);
+    return String.format(Locale.getDefault(), "[id:%d, start: %d, x: %f, y: %f, vx: %f, vy: %f, size: %d", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.jdField_b_of_type_Float), Float.valueOf(this.c), Float.valueOf(this.jdField_d_of_type_Float), Integer.valueOf(this.jdField_d_of_type_Int) });
   }
 }
 

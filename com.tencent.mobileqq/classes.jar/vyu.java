@@ -1,4 +1,13 @@
-class vyu {}
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class vyu
+  implements DialogInterface.OnClickListener
+{
+  vyu(vys paramvys) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

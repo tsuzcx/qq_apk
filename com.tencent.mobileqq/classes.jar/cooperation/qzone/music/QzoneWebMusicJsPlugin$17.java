@@ -1,7 +1,7 @@
 package cooperation.qzone.music;
 
-import bmfd;
-import bmfg;
+import bngf;
+import bngi;
 
 class QzoneWebMusicJsPlugin$17
   implements Runnable
@@ -10,7 +10,7 @@ class QzoneWebMusicJsPlugin$17
   
   public void run()
   {
-    bmfd.a().a().d();
+    bngf.a().a().d();
   }
 }
 

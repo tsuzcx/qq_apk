@@ -9,14 +9,14 @@ import android.graphics.Path;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import bgtn;
+import bhtq;
 
 public class TriangleView
   extends View
 {
-  public static final int a = bgtn.a(7.0F);
-  public static final int b = bgtn.a(2.0F);
-  public static final int c = bgtn.a(2.0F);
+  public static final int a = bhtq.a(7.0F);
+  public static final int b = bhtq.a(2.0F);
+  public static final int c = bhtq.a(2.0F);
   private int d = 1;
   private int e = Color.parseColor("#00CAFC");
   

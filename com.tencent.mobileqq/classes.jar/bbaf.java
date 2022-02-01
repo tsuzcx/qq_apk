@@ -1,18 +1,33 @@
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.util.Pair;
-import java.util.Comparator;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.widget.ImageView;
 
-public class bbaf
-  implements Comparator<Pair<Integer, Integer>>
+class bbaf
+  extends RecyclerView.OnScrollListener
 {
-  public bbaf(RichStatus paramRichStatus) {}
+  bbaf(bbae parambbae) {}
   
-  public int a(Pair<Integer, Integer> paramPair1, Pair<Integer, Integer> paramPair2)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (((Integer)paramPair1.second).intValue() < ((Integer)paramPair2.second).intValue()) {
-      return -1;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    bbae.a(this.a, paramInt);
+    if (bbae.a(this.a) == 0)
+    {
+      if (bbae.a(this.a).a()) {
+        bbae.a(this.a).b();
+      }
+      int i = bbae.a(this.a).getChildCount();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        paramRecyclerView = bbae.a(this.a).getChildAt(paramInt);
+        paramRecyclerView = (bbah)bbae.a(this.a).getChildViewHolder(paramRecyclerView);
+        bbah.a(paramRecyclerView).setImageBitmap(bbae.a(this.a, bbah.a(paramRecyclerView)));
+        paramInt += 1;
+      }
     }
-    return 1;
+    bbae.a(this.a).a();
+    bbae.a(this.a).c();
   }
 }
 

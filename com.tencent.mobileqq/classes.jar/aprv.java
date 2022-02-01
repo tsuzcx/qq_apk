@@ -1,26 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 
-public class aprv
-  implements CompoundButton.OnCheckedChangeListener
+public final class aprv
+  implements Parcelable.Creator<ArFeatureInfo>
 {
-  public aprv(ArkAuthorityInfoActivity paramArkAuthorityInfoActivity, int paramInt) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public ArFeatureInfo a(Parcel paramParcel)
   {
-    String str1 = ArkAuthorityInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity);
-    String str2 = ArkAuthorityInfoActivity.a()[this.jdField_a_of_type_Int];
-    String str3 = this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity.app.getCurrentAccountUin();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      apii.a(str1, str2, str3, i);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
+    return new ArFeatureInfo(paramParcel);
+  }
+  
+  public ArFeatureInfo[] a(int paramInt)
+  {
+    return new ArFeatureInfo[paramInt];
   }
 }
 

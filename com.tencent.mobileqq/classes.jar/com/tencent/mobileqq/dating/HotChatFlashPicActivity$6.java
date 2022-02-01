@@ -2,7 +2,7 @@ package com.tencent.mobileqq.dating;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bcst;
+import bdll;
 
 class HotChatFlashPicActivity$6
   implements Runnable
@@ -18,7 +18,7 @@ class HotChatFlashPicActivity$6
       if (HotChatFlashPicActivity.a(this.this$0) != 1) {
         break label115;
       }
-      bcst.b(this.this$0.app, "CliOper", "", "", "0X800597A", "0X800597A", 0, 0, "", "", "", "");
+      bdll.b(this.this$0.app, "CliOper", "", "", "0X800597A", "0X800597A", 0, 0, "", "", "", "");
     }
     for (;;)
     {
@@ -32,7 +32,7 @@ class HotChatFlashPicActivity$6
         if (!HotChatFlashPicActivity.b(this.this$0)) {
           localEditor.putLong("commen_flashpic_shot_deadlineday", HotChatFlashPicActivity.b(this.this$0) + 518400000L);
         }
-        bcst.b(this.this$0.app, "CliOper", "", "", "0X800597B", "0X800597B", 0, 0, "", "", "", "");
+        bdll.b(this.this$0.app, "CliOper", "", "", "0X800597B", "0X800597B", 0, 0, "", "", "", "");
       }
     }
   }

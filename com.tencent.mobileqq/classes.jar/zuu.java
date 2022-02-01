@@ -1,10 +1,15 @@
-public abstract interface zuu
+import android.util.SparseArray;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
+
+public final class zuu
+  extends SparseArray<RotateCircleImageView.BorderStyle>
 {
-  public abstract void a(zuw paramzuw);
-  
-  public abstract void b(zuw paramzuw);
-  
-  public abstract void c(zuw paramzuw);
+  public zuu(int paramInt)
+  {
+    super(paramInt);
+    append(0, RotateCircleImageView.BorderStyle.STILL);
+    append(1, RotateCircleImageView.BorderStyle.ROTATE);
+  }
 }
 
 

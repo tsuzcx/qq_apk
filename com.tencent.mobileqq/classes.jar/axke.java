@@ -1,38 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.LocalMediaInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
 
-public final class axke
-  implements Parcelable.Creator<LocalMediaInfo>
+public class axke
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public LocalMediaInfo a(Parcel paramParcel)
-  {
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    localLocalMediaInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_d_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_e_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_e_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.h = paramParcel.readInt();
-    localLocalMediaInfo.i = paramParcel.readInt();
-    localLocalMediaInfo.j = paramParcel.readInt();
-    localLocalMediaInfo.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramParcel.readInt());
-    localLocalMediaInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.g = paramParcel.readInt();
-    localLocalMediaInfo.f = paramParcel.readInt();
-    return localLocalMediaInfo;
-  }
+  public axke(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8) {}
   
-  public LocalMediaInfo[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new LocalMediaInfo[0];
+    float f1 = paramValueAnimator.getAnimatedFraction();
+    paramValueAnimator = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramValueAnimator.leftMargin = (this.jdField_a_of_type_Int + Math.round((this.b - this.jdField_a_of_type_Int) * f1));
+    paramValueAnimator.topMargin = (this.c + Math.round((this.d - this.c) * f1));
+    paramValueAnimator.width = (this.e + Math.round((this.f - this.e) * f1));
+    int i = this.g;
+    int j = MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getHeight() - MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getPaddingTop() - MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getPaddingBottom();
+    if (j > 0) {
+      i = j;
+    }
+    for (;;)
+    {
+      j = this.h;
+      paramValueAnimator.height = (Math.round((i - this.h) * f1) + j);
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
+      this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+      return;
+    }
   }
 }
 

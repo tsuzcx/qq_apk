@@ -1,20 +1,9 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqcircle.widgets.QCircleAvatarView;
-import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
-
 class ahev
-  extends afuv
+  implements bljb
 {
-  public FrameLayout a;
-  public LinearLayout a;
-  public QCircleAvatarView a;
-  public QCircleFollowView a;
-  public View b;
-  public LinearLayout b;
-  public TextView b;
+  ahev(aheu paramaheu) {}
+  
+  public void onDismiss() {}
 }
 
 

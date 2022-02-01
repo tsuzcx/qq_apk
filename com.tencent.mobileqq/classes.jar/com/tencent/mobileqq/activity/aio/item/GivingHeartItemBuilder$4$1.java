@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agtx;
-import ague;
+import ahdk;
+import ahdr;
 
 public class GivingHeartItemBuilder$4$1
   implements Runnable
 {
-  public GivingHeartItemBuilder$4$1(ague paramague) {}
+  public GivingHeartItemBuilder$4$1(ahdr paramahdr) {}
   
   public void run()
   {
-    agtx.a(this.a.a);
+    ahdk.a(this.a.a);
   }
 }
 

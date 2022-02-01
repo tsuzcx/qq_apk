@@ -1,23 +1,55 @@
-import android.content.Context;
 import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.widget.QQToast;
 
 class xws
-  implements bkhw
+  implements View.OnLongClickListener
 {
-  xws(xwr paramxwr, bkho parambkho, Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3) {}
+  xws(xwr paramxwr) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_Bkho.e();
-    switch (paramInt)
+    int i = 0;
+    switch (paramView.getId())
     {
     default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_Xwr.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, true, this.jdField_b_of_type_Int, this.c);
-      return;
+    case 2131371384: 
+    case 2131377489: 
+      do
+      {
+        do
+        {
+          return true;
+          paramView = (wta)wth.a(10);
+          if (((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue()) {
+            break;
+          }
+          bool = true;
+          paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
+          paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+        } while (paramView == null);
+        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
+      } while (paramView == null);
+      if (bool) {}
+      for (;;)
+      {
+        paramView.a(i);
+        return true;
+        bool = false;
+        break;
+        i = 8;
+      }
     }
-    this.jdField_a_of_type_Xwr.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c);
+    paramView = (wta)wth.a(10);
+    if (!((Boolean)paramView.b("player_use_tvk", Boolean.valueOf(false))).booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.b("player_use_tvk", Boolean.valueOf(bool));
+      QQToast.a(this.a.b(), "UserTVK: " + bool, 0).a();
+      return true;
+    }
   }
 }
 

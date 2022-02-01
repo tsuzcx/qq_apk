@@ -1,24 +1,55 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.res.Resources;
+import java.io.IOException;
+import org.xmlpull.v1.XmlPullParserException;
 
 public class bezl
-  implements View.OnClickListener
 {
-  public bezl(HomeworkGuideFragment paramHomeworkGuideFragment) {}
+  private static bezk jdField_a_of_type_Bezk;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  private static bezk a(Context paramContext)
   {
-    this.a.getActivity().setResult(1000);
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    a(paramContext);
+    return jdField_a_of_type_Bezk;
+  }
+  
+  public static String a(Context paramContext, String paramString)
+  {
+    String str = paramString;
+    if (paramString != null) {
+      str = paramString.toLowerCase();
+    }
+    return a(paramContext).a(str);
+  }
+  
+  private static void a(Context paramContext)
+  {
+    bezj localbezj;
+    if (!jdField_a_of_type_Boolean)
+    {
+      localbezj = new bezj();
+      paramContext = paramContext.getResources().getXml(2131886084);
+    }
+    try
+    {
+      jdField_a_of_type_Bezk = localbezj.a(paramContext);
+      jdField_a_of_type_Boolean = true;
+      return;
+    }
+    catch (XmlPullParserException paramContext)
+    {
+      throw new RuntimeException("PreselectedChannelsActivity: XmlPullParserException");
+    }
+    catch (IOException paramContext)
+    {
+      throw new RuntimeException("PreselectedChannelsActivity: IOException");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bezl
  * JD-Core Version:    0.7.0.1
  */

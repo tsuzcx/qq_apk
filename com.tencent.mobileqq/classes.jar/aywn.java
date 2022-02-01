@@ -1,50 +1,62 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.net.URLEncoder;
+import android.util.Log;
+import com.tencent.mobileqq.now.loginmerge.LoginMergedProto.AccountBaseInfo;
+import com.tencent.mobileqq.now.loginmerge.LoginMergedProto.LoginRsp;
+import com.tencent.mobileqq.now.loginmerge.LoginMergedProto.TicketInfo;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 class aywn
-  implements DialogInterface.OnClickListener
+  implements aywl
 {
-  aywn(aywm paramaywm, String paramString, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  aywn(aywm paramaywm, aywp paramaywp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      paramDialogInterface = new StringBuilder("https://aq.qq.com/cn2/change_psw/mobile/mobile_change_psw_reg_input_psw");
-      paramDialogInterface.append("?");
-      paramDialogInterface.append("uin=");
-      paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
-      paramDialogInterface.append("&plat=1");
-      paramDialogInterface.append("&app=1");
-      paramDialogInterface.append("&version=8.4.1.4680");
-      paramDialogInterface.append("&device=" + URLEncoder.encode(Build.DEVICE));
-      paramDialogInterface.append("&system=" + Build.VERSION.RELEASE);
-      paramDialogInterface.append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
-      paramDialogInterface = paramDialogInterface.toString();
-      Intent localIntent = new Intent();
-      localIntent.putExtra("portraitOnly", true);
-      localIntent.putExtra("url", paramDialogInterface);
-      localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("hide_more_button", true);
-      VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_AndroidAppActivity, paramDialogInterface, 32768L, localIntent, false, -1);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Mobile_signup", "Setiing_pw_tips", 0, 0, "", "", "", "");
+    Log.d("now_live_login_mgr", "login faile, errCode=" + paramInt + ", errMsg=" + paramString);
+    if (this.jdField_a_of_type_Aywp != null) {
+      this.jdField_a_of_type_Aywp.a(paramInt, paramString);
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (aywm.a(this.jdField_a_of_type_Aywm)) {
       return;
     }
-    catch (Exception paramDialogInterface)
+    for (;;)
     {
-      for (;;)
+      try
       {
-        paramDialogInterface.printStackTrace();
+        Log.d("now_live_login_mgr", "login success");
+        LoginMergedProto.LoginRsp localLoginRsp = new LoginMergedProto.LoginRsp();
+        localLoginRsp.mergeFrom(paramArrayOfByte);
+        aywr.a().a(localLoginRsp.account_base_info.uid.get());
+        aywr.a().b(localLoginRsp.account_base_info.tinyid.get());
+        aywr.a().a(localLoginRsp.tickets.auth_key.get());
+        paramArrayOfByte = this.jdField_a_of_type_Aywm;
+        if (localLoginRsp.result.get() != 0) {
+          break label185;
+        }
+        bool = true;
+        aywm.a(paramArrayOfByte, bool);
+        if (this.jdField_a_of_type_Aywp == null) {
+          break;
+        }
+        this.jdField_a_of_type_Aywp.a(localLoginRsp.result.get(), localLoginRsp.errMsg.get());
+        return;
       }
+      catch (Exception paramArrayOfByte)
+      {
+        Log.d("now_live_login_mgr", "login parse exception, errMsg=" + paramArrayOfByte.getMessage());
+      }
+      if (this.jdField_a_of_type_Aywp == null) {
+        break;
+      }
+      this.jdField_a_of_type_Aywp.a(1000001, "login parse exception");
+      return;
+      label185:
+      boolean bool = false;
     }
   }
 }

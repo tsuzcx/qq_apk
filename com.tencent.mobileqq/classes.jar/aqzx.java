@@ -1,45 +1,8 @@
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class aqzx
 {
-  private String a = anni.a(2131713531);
-  private String b = "";
+  public void a() {}
   
-  public static aqzx a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
-      return null;
-    }
-    aqzx localaqzx = new aqzx();
-    try
-    {
-      paramArrayOfaqlg = new JSONObject(paramArrayOfaqlg[0].a);
-      localaqzx.a = paramArrayOfaqlg.getString("emptyShowWording");
-      localaqzx.b = paramArrayOfaqlg.getString("linkWord");
-      return localaqzx;
-    }
-    catch (JSONException paramArrayOfaqlg)
-    {
-      paramArrayOfaqlg.printStackTrace();
-      return localaqzx;
-    }
-    catch (NullPointerException paramArrayOfaqlg)
-    {
-      paramArrayOfaqlg.printStackTrace();
-    }
-    return localaqzx;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
+  public void a(boolean paramBoolean, short paramShort, int paramInt, String paramString) {}
 }
 
 

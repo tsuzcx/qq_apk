@@ -1,24 +1,8 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.widget.TextView;
+import java.util.Vector;
 
-class axfg
-  extends BroadcastReceiver
+public abstract interface axfg
 {
-  axfg(axfb paramaxfb) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    int i = paramIntent.getIntExtra("SmallScreenState", 0);
-    if (i == 3) {
-      this.a.a.setVisibility(4);
-    }
-    while ((i != 2) && (i != 0)) {
-      return;
-    }
-    this.a.a.setVisibility(0);
-  }
+  public abstract void a(boolean paramBoolean, Vector<Integer> paramVector);
 }
 
 

@@ -1,209 +1,159 @@
-import android.app.Activity;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QPayReminderActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.manager.Manager;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import tencent.im.s2c.msgtype0x210.submsgtype0x72.SubMsgType0x72.MsgBody;
+import tencent.mobileim.structmsg.QPayReminderMsg.GetInfoReq;
+import tencent.mobileim.structmsg.QPayReminderMsg.GetInfoRsp;
 
 public class aoen
-  implements Manager
+  extends anud
 {
-  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  ConcurrentHashMap<String, aoes> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private String a;
   
   public aoen(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = aoeq.a(paramQQAppInterface.getApp(), paramQQAppInterface.c());
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    super(paramQQAppInterface);
   }
   
-  public static aoen a(QQAppInterface paramQQAppInterface)
+  private void a(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    return (aoen)paramQQAppInterface.getManager(277);
-  }
-  
-  aoes a(String paramString, int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-    {
-      aoes localaoes2 = (aoes)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      aoes localaoes1 = localaoes2;
-      if (localaoes2 == null)
-      {
-        localaoes1 = new aoes();
-        localaoes1.jdField_a_of_type_JavaLangString = paramString;
-        localaoes1.jdField_a_of_type_Int = paramInt;
-      }
-      return localaoes1;
+    Intent localIntent = new Intent(BaseActivity.sTopActivity, QPayReminderActivity.class);
+    localIntent.putExtra("URGENCY", paramInt1);
+    localIntent.putExtra("TEMPLATE", paramInt2);
+    localIntent.putExtra("CONTENT", paramString1);
+    BaseActivity.sTopActivity.startActivity(localIntent);
+    BaseActivity.sTopActivity.overridePendingTransition(2130772302, 2130771990);
+    if (QLog.isColorLevel()) {
+      QLog.d("QPayHandler", 2, "QPayReminder: lauching popup QPayReminderActivity");
     }
+    a(paramString2);
   }
   
-  public ArrayList<aoes> a()
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("KeyHiddenChatList", "");
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    if (!((Boolean)paramToServiceMsg.getAttribute("is_query", Boolean.valueOf(false))).booleanValue()) {}
+    do
     {
-      localObject = ((String)localObject).split(";");
-      if ((localObject != null) && (localObject.length > 0))
+      for (;;)
       {
-        int j = localObject.length;
-        int i = 0;
-        for (;;)
+        return;
+        paramToServiceMsg = new QPayReminderMsg.GetInfoRsp();
+        try
         {
-          if (i < j)
+          paramFromServiceMsg = (QPayReminderMsg.GetInfoRsp)paramToServiceMsg.mergeFrom((byte[])paramObject);
+          if (paramFromServiceMsg.result_code.get() == 0) {
+            break label107;
+          }
+          if (QLog.isColorLevel())
           {
-            String[] arrayOfString = localObject[i].split("\\|");
-            if ((arrayOfString != null) && (arrayOfString.length == 2)) {}
-            try
-            {
-              aoes localaoes = new aoes();
-              localaoes.jdField_a_of_type_JavaLangString = arrayOfString[0];
-              localaoes.jdField_a_of_type_Int = Integer.parseInt(arrayOfString[1]);
-              localArrayList.add(localaoes);
-              i += 1;
-            }
-            catch (Throwable localThrowable)
-            {
-              for (;;)
-              {
-                QLog.e("tag_hidden_chat", 2, localThrowable, new Object[0]);
-              }
-            }
+            QLog.d("QPayHandler", 2, "QPayReminder: receive pull response, but result_code = " + paramFromServiceMsg.result_code.get());
+            return;
           }
         }
+        catch (Exception paramToServiceMsg) {}
       }
+    } while (!QLog.isColorLevel());
+    QLog.d("QPayHandler", 2, "QPayReminder: receive pull response, parse error");
+    return;
+    label107:
+    int i = paramFromServiceMsg.urgency.get();
+    int j = paramFromServiceMsg.template_no.get();
+    paramToServiceMsg = paramFromServiceMsg.content.get();
+    paramFromServiceMsg = paramFromServiceMsg.info_date.get();
+    if (QLog.isColorLevel()) {
+      QLog.d("QPayHandler", 2, "QPayReminder: receive pull response, message content: " + paramToServiceMsg);
     }
-    return localArrayList;
+    a(i, j, paramToServiceMsg, paramFromServiceMsg);
   }
   
-  public void a()
+  public void a(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      aoes localaoes = (aoes)localIterator.next();
-      localStringBuilder.append(localaoes.jdField_a_of_type_JavaLangString).append("|").append(localaoes.jdField_a_of_type_Int).append(";");
-    }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("KeyHiddenChatList", localStringBuilder.toString()).commit();
+    ToServiceMsg localToServiceMsg = createToServiceMsg("QPayReminderSvc.query_over_due_info");
+    QPayReminderMsg.GetInfoReq localGetInfoReq = new QPayReminderMsg.GetInfoReq();
+    localGetInfoReq.scene.set("qpay");
+    localGetInfoReq.sub_cmd.set("feedback_overdue");
+    localGetInfoReq.info_date.set(paramString);
+    localToServiceMsg.putWupBuffer(localGetInfoReq.toByteArray());
+    localToServiceMsg.setNeedCallback(false);
+    sendPbReq(localToServiceMsg);
   }
   
-  public void a(Activity paramActivity)
+  public void a(boolean paramBoolean)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-    if (!localSharedPreferences.getBoolean("FirstSetHidden", false))
-    {
-      localSharedPreferences.edit().putBoolean("FirstSetHidden", true).commit();
-      bglp.a(paramActivity, 230, paramActivity.getString(2131695649), paramActivity.getString(2131695647), paramActivity.getString(2131718062), paramActivity.getString(2131695648), new aoeo(this, paramActivity), new bgmc()).show();
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A349", "0X800A349", 0, 0, "0", "0", "", "");
-    }
-  }
-  
-  void a(aoes paramaoes)
-  {
-    if ((paramaoes == null) || (TextUtils.isEmpty(paramaoes.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramaoes.jdField_a_of_type_JavaLangString, paramaoes);
-      a();
-      return;
-    }
-  }
-  
-  void a(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      a();
-      return;
-    }
-  }
-  
-  public void a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.contains(paramString))) {
-      return;
-    }
+    Object localObject;
     if (paramBoolean)
     {
-      a(a(paramString, paramInt));
-      return;
+      localObject = this.app.getCurrentAccountUin() + ":" + SimpleDateFormat.getDateInstance().format(new Date());
+      if ((this.a != null) && (this.a.equals(localObject))) {
+        if (QLog.isColorLevel()) {
+          QLog.d("QPayHandler", 2, "QPayReminder: only one offline msg is processed everyday");
+        }
+      }
     }
-    a(paramString);
+    do
+    {
+      return;
+      this.a = ((String)localObject);
+      localObject = createToServiceMsg("QPayReminderSvc.query_over_due_info");
+      QPayReminderMsg.GetInfoReq localGetInfoReq = new QPayReminderMsg.GetInfoReq();
+      localGetInfoReq.scene.set("qpay");
+      localGetInfoReq.sub_cmd.set("query_overdue");
+      ((ToServiceMsg)localObject).putWupBuffer(localGetInfoReq.toByteArray());
+      ((ToServiceMsg)localObject).addAttribute("is_query", Boolean.valueOf(true));
+      sendPbReq((ToServiceMsg)localObject);
+    } while (!QLog.isColorLevel());
+    QLog.d("QPayHandler", 2, "QPayReminder: send pull request");
   }
   
-  boolean a()
+  public void a(byte[] paramArrayOfByte)
   {
-    for (;;)
+    if (paramArrayOfByte == null) {}
+    do
     {
+      return;
+      localObject = new SubMsgType0x72.MsgBody();
       try
       {
-        Object localObject1 = a();
-        if (QLog.isColorLevel())
-        {
-          if (localObject1 != null)
-          {
-            i = ((List)localObject1).size();
-            QLog.d("tag_hidden_chat", 2, new Object[] { "doInitAllHidden(), dataList.size is ", Integer.valueOf(i) });
-          }
+        localObject = (SubMsgType0x72.MsgBody)((SubMsgType0x72.MsgBody)localObject).mergeFrom(paramArrayOfByte);
+        if (((SubMsgType0x72.MsgBody)localObject).uint32_sub_cmd.get() == 2) {
+          break;
         }
-        else
-        {
-          if (localObject1 == null) {
-            break label158;
-          }
-          synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-          {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-            localObject1 = ((List)localObject1).iterator();
-            if (!((Iterator)localObject1).hasNext()) {
-              break;
-            }
-            aoes localaoes = (aoes)((Iterator)localObject1).next();
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localaoes.jdField_a_of_type_JavaLangString, localaoes);
-          }
-        }
-        int i = 0;
+        a(false);
+        return;
       }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("tag_hidden_chat", 2, "doInitAllHidden exception:" + localException.getMessage());
-        }
-        return false;
-      }
+      catch (Exception paramArrayOfByte) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("QPayHandler", 2, "QPayReminder: receive online push message, parse error");
+    return;
+    int i = ((SubMsgType0x72.MsgBody)localObject).uint32_urgency.get();
+    int j = ((SubMsgType0x72.MsgBody)localObject).uint32_template_no.get();
+    paramArrayOfByte = ((SubMsgType0x72.MsgBody)localObject).str_content.get();
+    Object localObject = ((SubMsgType0x72.MsgBody)localObject).str_info_date.get();
+    if (QLog.isColorLevel()) {
+      QLog.d("QPayHandler", 2, "QPayReminder: receive online push message, message content: " + paramArrayOfByte);
     }
-    label158:
-    return true;
+    a(i, j, paramArrayOfByte, (String)localObject);
   }
   
-  public void b()
+  protected Class<? extends anui> observerClass()
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      a();
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    }
+    return null;
   }
   
-  public void onDestroy()
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    if ("QPayReminderSvc.query_over_due_info".equals(paramFromServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 

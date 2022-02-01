@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.gamecenter.anim;
 
-import aurp;
+import avjp;
 
 public class FullPopAnimLowVersion$6
   implements Runnable
 {
-  public FullPopAnimLowVersion$6(aurp paramaurp) {}
+  public FullPopAnimLowVersion$6(avjp paramavjp) {}
   
   public void run()
   {
-    aurp.a(this.this$0);
+    avjp.a(this.this$0);
   }
 }
 

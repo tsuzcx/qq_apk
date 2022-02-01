@@ -1,66 +1,29 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import android.content.Intent;
-import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnKeyListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
 
 public class tts
-  implements View.OnClickListener
+  implements View.OnKeyListener
 {
-  public tts(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
+  private tts(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (aauy.a("service_account_folder_publish_feed_button", 2000L))
+    paramView = ReadInJoyNewSearchActivity.a(this.a).getText().toString().trim();
+    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0) && (!TextUtils.isEmpty(paramView)))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      paramKeyEvent = (InputMethodManager)this.a.getSystemService("input_method");
+      if (paramKeyEvent != null) {
+        paramKeyEvent.hideSoftInputFromWindow(ReadInJoyNewSearchActivity.a(this.a).getWindowToken(), 2);
+      }
+      ReadInJoyNewSearchActivity.a(this.a, paramView);
+      this.a.a(paramView);
     }
-    if (Build.VERSION.SDK_INT >= 23) {}
-    for (boolean bool = aoqb.a(this.a);; bool = true)
-    {
-      if (!bool)
-      {
-        bglp.b(this.a);
-        break;
-      }
-      Object localObject = new Intent();
-      ((Intent)localObject).putExtra("postUin", ServiceAccountFolderActivityNew.a(this.a));
-      ((Intent)localObject).putExtra("sourceFrom", 2);
-      label141:
-      String str;
-      if ((ServiceAccountFolderActivityNew.a(this.a) != null) && (ServiceAccountFolderActivityNew.a(this.a).user.youZhan.size() > 0))
-      {
-        if (((CertifiedAccountMeta.StYouZanShop)ServiceAccountFolderActivityNew.a(this.a).user.youZhan.get(0)).type.get() > 1)
-        {
-          bool = true;
-          ((Intent)localObject).putExtra("has_shop", bool);
-        }
-      }
-      else
-      {
-        blsb.a(this.a.getActivity(), (Intent)localObject, 0);
-        str = ((CertifiedAccountMeta.StUser)ServiceAccountFolderActivityNew.a(this.a).user.get()).id.get();
-        if (ServiceAccountFolderActivityNew.a(this.a) != 0) {
-          break label230;
-        }
-      }
-      label230:
-      for (localObject = "auth_follow";; localObject = "auth_discover")
-      {
-        aaxb.a(str, (String)localObject, "post_clk", 0, 0, new String[] { "", "" });
-        break;
-        bool = false;
-        break label141;
-      }
-    }
+    return false;
   }
 }
 

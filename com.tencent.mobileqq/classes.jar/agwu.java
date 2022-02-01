@@ -1,12 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class agwu
-  implements DialogInterface.OnClickListener
+  implements bfmk
 {
-  agwu(agwr paramagwr) {}
+  agwu(agwt paramagwt, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    if (agwt.a(this.jdField_a_of_type_Agwt).a.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
+      agwt.a(this.jdField_a_of_type_Agwt).I();
+    }
+  }
 }
 
 

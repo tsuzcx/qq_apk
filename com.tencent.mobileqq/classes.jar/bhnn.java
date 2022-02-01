@@ -1,48 +1,71 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.minicode.Utils;
-import com.tencent.mobileqq.screendetect.ScreenShotFragment;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
 
 public class bhnn
-  implements bgir<String>
 {
-  public bhnn(WebViewFragment paramWebViewFragment) {}
+  private static ThreadLocal<LinkedList<Long>> a = new ThreadLocal();
   
-  public String a(Bitmap paramBitmap)
+  public static void a()
   {
-    String str = bgim.a() + System.currentTimeMillis() + ".jpg";
-    Utils.saveBitmapToFile(paramBitmap, str, Bitmap.CompressFormat.JPEG, 100, true);
-    return str;
+    if (QLog.isColorLevel())
+    {
+      LinkedList localLinkedList2 = (LinkedList)a.get();
+      LinkedList localLinkedList1 = localLinkedList2;
+      if (localLinkedList2 == null)
+      {
+        localLinkedList1 = new LinkedList();
+        a.set(localLinkedList1);
+      }
+      localLinkedList1.addFirst(Long.valueOf(SystemClock.uptimeMillis()));
+    }
   }
   
-  public void a(Exception paramException)
+  public static void a(String paramString1, String paramString2)
   {
-    QLog.e("WebLog_WebViewFragment", 1, "onScreenShotError, error is " + paramException.getMessage());
-    if (this.a.getActivity() == null)
+    Object localObject2;
+    if (QLog.isColorLevel())
     {
-      QLog.e("WebLog_WebViewFragment", 1, "screen long shot onScreenShotError, activity is null");
+      localObject2 = (LinkedList)a.get();
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = new LinkedList();
+        a.set(localObject1);
+        ((LinkedList)localObject1).addFirst(Long.valueOf(SystemClock.uptimeMillis()));
+      }
+      localObject2 = new StringBuilder();
+      int i = 1;
+      while (i < ((LinkedList)localObject1).size())
+      {
+        ((StringBuilder)localObject2).append("    ");
+        i += 1;
+      }
+      if (((LinkedList)a.get()).size() != 0) {}
+    }
+    else
+    {
       return;
     }
-    QQToast.a(this.a.getActivity(), 2131717580, 0).a();
+    ((StringBuilder)localObject2).append(paramString2);
+    ((StringBuilder)localObject2).append(":cost ");
+    ((StringBuilder)localObject2).append(SystemClock.uptimeMillis() - ((Long)((LinkedList)a.get()).removeFirst()).longValue());
+    ((StringBuilder)localObject2).append("ms");
+    QLog.i(paramString1, 2, ((StringBuilder)localObject2).toString());
   }
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public static void a(String paramString1, String paramString2, String paramString3)
   {
-    if (this.a.getActivity() == null)
+    if (QLog.isColorLevel())
     {
-      QLog.e("WebLog_WebViewFragment", 1, "screen long shot error, activity is null");
-      return;
+      StringBuilder localStringBuilder = new StringBuilder("PreUploadVideo");
+      localStringBuilder.append("[").append(paramString1).append("] ");
+      if (paramString2 != null) {
+        localStringBuilder.append("status:").append(paramString2).append(" ");
+      }
+      localStringBuilder.append("content:").append(paramString3);
+      QLog.i("PreUploadVideo", 2, localStringBuilder.toString());
     }
-    paramBitmap = new Intent();
-    paramBitmap.putExtra("public_fragment_window_feature", 1);
-    paramBitmap.putExtra("screen_path", paramString);
-    paramBitmap.putExtra("is_web_screen_long_shot", true);
-    aevv.a(this.a.getActivity(), paramBitmap, PublicTransFragmentActivity.class, ScreenShotFragment.class);
   }
 }
 

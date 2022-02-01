@@ -5,18 +5,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.annotation.NonNull;
-import bnhu;
-import bnzb;
+import bojc;
+import bpam;
 
 public class AEEditorGenerateBroadcastReceiver
   extends BroadcastReceiver
 {
-  private bnhu jdField_a_of_type_Bnhu;
+  private bojc jdField_a_of_type_Bojc;
   private boolean jdField_a_of_type_Boolean;
   
-  public AEEditorGenerateBroadcastReceiver(bnhu parambnhu)
+  public AEEditorGenerateBroadcastReceiver(bojc parambojc)
   {
-    this.jdField_a_of_type_Bnhu = parambnhu;
+    this.jdField_a_of_type_Bojc = parambojc;
   }
   
   private IntentFilter a()
@@ -41,7 +41,7 @@ public class AEEditorGenerateBroadcastReceiver
   {
     paramContext = paramIntent.getAction();
     if (paramContext == null) {
-      bnzb.d("AEEditorGenerateBroadcastReceiver", "[onReceive] : action is null");
+      bpam.d("AEEditorGenerateBroadcastReceiver", "[onReceive] : action is null");
     }
     String str1;
     String str2;
@@ -66,25 +66,26 @@ public class AEEditorGenerateBroadcastReceiver
         str7 = paramIntent.getStringExtra("generate_thumb_ptah");
         f = paramIntent.getFloatExtra("generate_progress", 0.0F);
         i = paramIntent.getIntExtra("generate_errorcode", 0);
-        bnzb.b("AEEditorGenerateBroadcastReceiver", "[onReceive] action :" + paramContext);
-        bnzb.b("AEEditorGenerateBroadcastReceiver", "[onReceive] mission :" + str5);
-        bnzb.b("AEEditorGenerateBroadcastReceiver", "[onReceive] path :" + str6);
-        bnzb.b("AEEditorGenerateBroadcastReceiver", "[onReceive] thumbPath :" + str7);
-        bnzb.b("AEEditorGenerateBroadcastReceiver", "[onReceive] progress :" + f);
-        bnzb.b("AEEditorGenerateBroadcastReceiver", "[onReceive] errorcode :" + i);
-      } while (this.jdField_a_of_type_Bnhu == null);
+        paramIntent = paramIntent.getStringExtra("generate_source_path");
+        bpam.b("AEEditorGenerateBroadcastReceiver", "[onReceive] action :" + paramContext);
+        bpam.b("AEEditorGenerateBroadcastReceiver", "[onReceive] mission :" + str5);
+        bpam.b("AEEditorGenerateBroadcastReceiver", "[onReceive] path :" + str6);
+        bpam.b("AEEditorGenerateBroadcastReceiver", "[onReceive] thumbPath :" + str7);
+        bpam.b("AEEditorGenerateBroadcastReceiver", "[onReceive] progress :" + f);
+        bpam.b("AEEditorGenerateBroadcastReceiver", "[onReceive] errorcode :" + i);
+      } while (this.jdField_a_of_type_Bojc == null);
       if ("AEEDITOR_GENERATE_STATUS_ERROR".equals(paramContext))
       {
-        this.jdField_a_of_type_Bnhu.a(str5, i);
+        this.jdField_a_of_type_Bojc.a(str5, i);
         return;
       }
       if ("AEEDITOR_GENERATE_STATUS_DOWNLOADING".equals(paramContext))
       {
-        this.jdField_a_of_type_Bnhu.a(str5, f);
+        this.jdField_a_of_type_Bojc.a(str5, f);
         return;
       }
     } while (!"AEEDITOR_GENERATE_STATUS_READY".equals(paramContext));
-    this.jdField_a_of_type_Bnhu.a(str1, str2, str3, str4, str5, str6, str7);
+    this.jdField_a_of_type_Bojc.a(paramIntent, str1, str2, str3, str4, str5, str6, str7);
   }
 }
 

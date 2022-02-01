@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class alsc
-  extends anmu
+class alsc
+  implements DialogInterface.OnClickListener
 {
-  public alsc(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  alsc(alsa paramalsa) {}
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean1) {
-      FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

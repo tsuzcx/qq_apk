@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.tavcut.exporter.ImageExporter;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.19;
+import com.tencent.ttpic.openapi.initializer.PtuToolsInitializer;
+import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
+import com.tencent.ttpic.util.Coffee;
+import com.tencent.ttpic.util.DecryptListener;
 
-public class boep
-  implements DialogInterface.OnDismissListener
+final class boep
+  implements DecryptListener
 {
-  public boep(AEEditorImageEditFragment.19 param19) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public byte[] decrypt(byte[] paramArrayOfByte)
   {
-    AEEditorImageEditFragment.a(this.a.this$0).cancel();
+    if (!FeatureManager.Features.PTU_TOOLS.isFunctionReady()) {
+      return paramArrayOfByte;
+    }
+    return Coffee.drink(paramArrayOfByte, Coffee.getDefaultSign());
   }
 }
 

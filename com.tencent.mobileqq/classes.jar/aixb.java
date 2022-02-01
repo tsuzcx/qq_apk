@@ -1,17 +1,93 @@
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
+import java.util.Calendar;
+import java.util.Date;
 
 public class aixb
-  extends ClickableSpan
 {
-  public aixb(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
-  
-  public void onClick(View paramView)
+  public static int a(int paramInt)
   {
-    PermisionPrivacyActivity.a(NewFriendVerifyBlockedListFragment.a(this.a));
-    bcst.b(null, "dc00898", "", "", "0X800A3AA", "0X800A3AA", 0, 0, "", "", "", "");
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, paramInt);
+    return localCalendar.getActualMaximum(6);
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return "周日";
+    case 2: 
+      return "周一";
+    case 3: 
+      return "周二";
+    case 4: 
+      return "周三";
+    case 5: 
+      return "周四";
+    case 6: 
+      return "周五";
+    }
+    return "周六";
+  }
+  
+  public static String a(long paramLong)
+  {
+    long l = System.currentTimeMillis();
+    String str1 = b(paramLong);
+    if (!a(paramLong, l)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      String str2 = a(paramLong, bool, true, true);
+      return str2 + " " + str1;
+    }
+  }
+  
+  public static String a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramBoolean1)
+    {
+      str = localCalendar.get(1) + "-";
+      localStringBuilder = localStringBuilder.append(str);
+      if (!paramBoolean2) {
+        break label143;
+      }
+      str = String.format("%02d-", new Object[] { Integer.valueOf(localCalendar.get(2) + 1) });
+      label88:
+      localStringBuilder = localStringBuilder.append(str);
+      if (!paramBoolean3) {
+        break label150;
+      }
+    }
+    label143:
+    label150:
+    for (String str = String.format("%02d", new Object[] { Integer.valueOf(localCalendar.get(5)) });; str = "")
+    {
+      return str;
+      str = "";
+      break;
+      str = "";
+      break label88;
+    }
+  }
+  
+  public static boolean a(long paramLong1, long paramLong2)
+  {
+    Calendar localCalendar1 = Calendar.getInstance();
+    localCalendar1.setTimeInMillis(paramLong1);
+    Calendar localCalendar2 = Calendar.getInstance();
+    localCalendar2.setTimeInMillis(paramLong2);
+    return localCalendar1.get(1) == localCalendar2.get(1);
+  }
+  
+  public static String b(long paramLong)
+  {
+    Date localDate = new Date(paramLong);
+    return String.format("%02d:%02d", new Object[] { Integer.valueOf(localDate.getHours()), Integer.valueOf(localDate.getMinutes()) });
   }
 }
 

@@ -1,17 +1,8 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
-
-class aciw
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class aciw
 {
-  aciw(aciu paramaciu, AdArkAdapter.Callback paramCallback) {}
-  
-  public void onGlobalLayout()
-  {
-    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
-      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.onGlobalLayout(aciu.a(this.jdField_a_of_type_Aciu));
-    }
-  }
+  public String a;
+  public String b;
+  public String c;
 }
 
 

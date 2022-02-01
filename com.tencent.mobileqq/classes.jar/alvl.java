@@ -1,20 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+
 public class alvl
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
+  public alvl(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public alvl() {}
-  
-  public alvl(String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    yup.a("video_shoot", "cancel_now", 0, 0, new String[0]);
+    paramDialogInterface.dismiss();
   }
 }
 

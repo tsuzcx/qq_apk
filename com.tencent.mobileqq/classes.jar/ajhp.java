@@ -1,11 +1,44 @@
-class ajhp
-  implements ajkt
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+
+public class ajhp
+  extends Handler
 {
-  ajhp(ajhk paramajhk) {}
+  public WeakReference<GroupSearchRecommendView> a;
   
-  public long a()
+  public ajhp(GroupSearchRecommendView paramGroupSearchRecommendView)
   {
-    return ajhk.a(this.a);
+    this.a = new WeakReference(paramGroupSearchRecommendView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    GroupSearchRecommendView localGroupSearchRecommendView = (GroupSearchRecommendView)this.a.get();
+    if (localGroupSearchRecommendView == null) {
+      return;
+    }
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      GroupSearchRecommendView.a(localGroupSearchRecommendView);
+      return;
+    case 2: 
+      if (QLog.isColorLevel()) {
+        QLog.i("GroupSearchRecommendView", 2, "fetch data successfully");
+      }
+      GroupSearchRecommendView.a(localGroupSearchRecommendView, false);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupSearchRecommendView", 2, "fetch data failed");
+    }
+    GroupSearchRecommendView.a(localGroupSearchRecommendView, true);
   }
 }
 

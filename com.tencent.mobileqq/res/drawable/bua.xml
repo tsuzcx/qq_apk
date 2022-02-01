@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="true" android:state_checked="false" android:state_pressed="true" android:drawable="@drawable/f69" />
-    <item android:state_enabled="false" android:drawable="@drawable/f51" />
-    <item android:state_enabled="true" android:state_checked="true" android:state_pressed="true" android:drawable="@drawable/f50" />
-    <item android:state_checked="true" android:drawable="@drawable/f4s" />
-    <item android:drawable="@drawable/f51" />
-</selector>

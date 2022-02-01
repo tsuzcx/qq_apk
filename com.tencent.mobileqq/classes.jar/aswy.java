@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
 
-public class aswy
-  implements DialogInterface.OnClickListener
+public final class aswy
+  implements Parcelable.Creator<MiniAppRecommInfo.MiniApp>
 {
-  public aswy(QfileLocalFileAppTabView.1.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public MiniAppRecommInfo.MiniApp a(Parcel paramParcel)
   {
-    QfileLocalFileAppTabView.a(this.a.a.this$0);
-    this.a.a.this$0.c(true);
+    return new MiniAppRecommInfo.MiniApp(paramParcel);
+  }
+  
+  public MiniAppRecommInfo.MiniApp[] a(int paramInt)
+  {
+    return new MiniAppRecommInfo.MiniApp[paramInt];
   }
 }
 

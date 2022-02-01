@@ -1,31 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QIMFollwerAdd;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessTypeActivity;
 
 public class ajbh
-  extends ajax
+  implements DialogInterface.OnClickListener
 {
-  public QIMFollwerAdd a;
+  public ajbh(BlessTypeActivity paramBlessTypeActivity) {}
   
-  public ajbh(QIMFollwerAdd paramQIMFollwerAdd)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd = paramQIMFollwerAdd;
-    this.jdField_a_of_type_Long = paramQIMFollwerAdd.upTime;
-  }
-  
-  public String a()
-  {
-    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.uin);
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    return "getMessage";
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.isRead;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

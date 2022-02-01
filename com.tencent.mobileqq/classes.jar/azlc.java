@@ -1,15 +1,22 @@
-class azlc
-  extends bgtm
+import android.os.Bundle;
+import kotlin.Metadata;
+import mqq.observer.BusinessObserver;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/constellation/StatusExtInfoObserver;", "Lmqq/observer/BusinessObserver;", "()V", "onGetConstellationTrend", "", "success", "", "bundle", "Landroid/os/Bundle;", "onReceive", "type", "", "isSuccess", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public class azlc
+  implements BusinessObserver
 {
-  azlc(azla paramazla, int paramInt)
-  {
-    super(paramInt);
-  }
+  public void a(boolean paramBoolean, @Nullable Bundle paramBundle) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, @Nullable Bundle paramBundle)
   {
-    azla.a(this.a, true);
-    azla.a(this.a, 1);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, paramBundle);
   }
 }
 

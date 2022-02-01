@@ -1,52 +1,57 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import java.io.File;
+import android.graphics.PointF;
+import android.view.animation.Interpolator;
 
 public class zjp
-  extends zjt
+  implements Interpolator
 {
-  public zjp(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  private int jdField_a_of_type_Int;
+  private final PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  private final PointF b = new PointF();
+  
+  public zjp(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    super(paramTroopStoryMemoriesListAdapter, paramView);
+    this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
+    this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
+    this.b.x = paramFloat3;
+    this.b.y = paramFloat4;
   }
   
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
+  public static double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5)
   {
-    TroopStoryMemoriesListAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter, paramTroopStoryItemInfo, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetTextView);
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130846885);
-    try
+    double d1 = 1.0D - paramDouble1;
+    double d2 = paramDouble1 * paramDouble1;
+    double d3 = d1 * d1;
+    return d1 * 3.0D * d2 * paramDouble4 + (d3 * 3.0D * paramDouble1 * paramDouble3 + d3 * d1 * paramDouble2) + d2 * paramDouble1 * paramDouble5;
+  }
+  
+  public float getInterpolation(float paramFloat)
+  {
+    double d1 = 1.0D;
+    int i = this.jdField_a_of_type_Int;
+    float f = paramFloat;
+    double d2;
+    if (i < 4096)
     {
-      Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "troop_story_message";
-      localObject = URLDrawable.getDrawable(new File(paramTroopStoryItemInfo.videoThumbUrl), (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setTag(bgey.b(zlx.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 50.0F), zlx.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 70.0F), zlx.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 3.0F)));
-      ((URLDrawable)localObject).setDecodeHandler(bgey.j);
-      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
-      localDrawable = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130846882);
-      localDrawable.setBounds(0, 0, 26, 26);
-      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
-      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131714464));
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-65536);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new zjq(this, paramTroopStoryItemInfo));
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
+      f = 1.0F * i / 4096.0F;
+      if (a(f, 0.0D, this.jdField_a_of_type_AndroidGraphicsPointF.x, this.b.x, 1.0D) >= paramFloat) {
+        this.jdField_a_of_type_Int = i;
       }
+    }
+    else
+    {
+      d2 = a(f, 0.0D, this.jdField_a_of_type_AndroidGraphicsPointF.y, this.b.y, 1.0D);
+      if (d2 <= 0.999D) {
+        break label117;
+      }
+      this.jdField_a_of_type_Int = 0;
+    }
+    for (;;)
+    {
+      return (float)d1;
+      i += 1;
+      break;
+      label117:
+      d1 = d2;
     }
   }
 }

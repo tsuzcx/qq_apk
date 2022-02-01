@@ -1,442 +1,974 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoAdInfo;
 import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoInfo.AdTagInfo;
-import com.tencent.biz.pubaccount.VideoInfo.ECommerceEntranceInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment.PlayRecommendObserver.1;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.VideoInfo.SoftAdDownloadBarInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 
-public class sbg
-  extends ocg
+public final class sbg
 {
-  private boolean a;
+  private final sbf a;
   
-  public sbg(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment, boolean paramBoolean)
+  public sbg(VideoInfo paramVideoInfo)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  private void a()
-  {
-    rwy localrwy = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment);
-    if (VideoFeedsRecommendFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment)) {}
-    for (int i = 3;; i = 2)
-    {
-      localrwy.c(i);
-      if (VideoFeedsRecommendFragment.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment)) {
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(false);
-      }
-      if (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).size() > 0) {
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).b((VideoInfo)VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).get(0));
-      }
-      return;
-    }
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    paramInt1 = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).size() - paramInt1;
-    if (paramInt1 > 0)
-    {
-      if ((VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a() < 0) || (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a() != paramInt2)) {
-        break label157;
-      }
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).notifyItemChanged(paramInt2);
-      if (paramInt1 - 1 > 0) {
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).notifyItemRangeInserted(paramInt2 + 1, paramInt1 - 1);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsRecommendFragment", 2, "notifyItemChanged: ");
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsRecommendFragment", 2, "notifyItemChanged: footerPosition=" + paramInt2 + ", currentPosition=" + VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a() + ", newVideoSize=" + paramInt1);
-      }
-      obj.a().b(paramInt1);
-      return;
-      label157:
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).notifyItemRangeInserted(paramInt2, paramInt1);
-    }
-  }
-  
-  private void a(Bundle paramBundle)
-  {
-    if (paramBundle.getBoolean("VALUE_REQUEST_GAME_DATA", false))
-    {
-      c(paramBundle);
-      return;
-    }
-    b(paramBundle);
-  }
-  
-  private void a(Bundle paramBundle, int paramInt, VideoInfo paramVideoInfo)
-  {
-    for (;;)
-    {
-      try
-      {
-        if ((VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) == null) || (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) == null) || (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a() == null)) {
-          return;
-        }
-        localArrayList = paramBundle.getParcelableArrayList("value_msg_kd_tag_info");
-        paramInt = Math.max(paramInt - 1, 0);
-        a(paramVideoInfo, localArrayList);
-        if ((localArrayList == null) || (localArrayList.isEmpty())) {
-          return;
-        }
-        paramBundle = localArrayList.iterator();
-        if (paramBundle.hasNext())
-        {
-          ((VideoInfo.AdTagInfo)paramBundle.next()).jdField_b_of_type_Int = paramInt;
-          paramInt += 1;
-          continue;
-        }
-        l2 = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment);
-        paramBundle = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment);
-        l1 = l2;
-        if (l2 == 0L)
-        {
-          l1 = l2;
-          if (paramBundle == null) {}
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        ArrayList localArrayList;
-        long l2;
-        long l1;
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("VideoFeedsRecommendFragment", 2, "onGetRecommend: to get game ad info error,e=" + paramBundle.getMessage());
-        return;
-        paramBundle = null;
-        continue;
-      }
-      try
-      {
-        l1 = Long.parseLong(paramBundle.getCurrentAccountUin());
-        if ((VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null))
-        {
-          paramBundle = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).g);
-          VideoFeedsRecommendFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment, true);
-          VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), l1, (VideoInfo)VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).get(0), VideoFeedsRecommendFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), ((VideoInfo)VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).get(0)).jdField_i_of_type_JavaLangString, VideoFeedsRecommendFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), true, 0, VideoFeedsRecommendFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), VideoFeedsRecommendFragment.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), null, VideoFeedsRecommendFragment.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), paramBundle, VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), localArrayList, VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).b(), 0, new ArrayList(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment)));
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.e("VideoFeedsRecommendFragment", 2, paramBundle, new Object[0]);
-        l1 = l2;
-      }
-    }
-  }
-  
-  private void a(Bundle paramBundle, int paramInt, VideoInfo paramVideoInfo1, VideoInfo paramVideoInfo2)
-  {
-    if ((paramVideoInfo1 != null) && (!this.jdField_a_of_type_Boolean) && (paramVideoInfo2 != null))
-    {
-      a(paramVideoInfo1, paramVideoInfo2, paramBundle);
-      paramVideoInfo1.a(paramVideoInfo2);
-      this.jdField_a_of_type_Boolean = true;
-      if ((paramInt == 1) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null))
-      {
-        VideoFeedsPlayActivity.a(anni.a(2131714820) + paramVideoInfo1.b());
-        if (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null) {
-          VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(paramVideoInfo1, VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), true);
-        }
-      }
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).b(paramVideoInfo1);
-      ThreadManager.excute(new VideoFeedsRecommendFragment.PlayRecommendObserver.1(this, paramVideoInfo1), 16, null, true);
-      if (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null) {
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(paramVideoInfo1);
-      }
-    }
-  }
-  
-  private void a(VideoInfo paramVideoInfo1, VideoInfo paramVideoInfo2, Bundle paramBundle)
-  {
-    if ((VideoFeedsRecommendFragment.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment)) || (TextUtils.isEmpty(paramVideoInfo1.jdField_c_of_type_JavaLangString)))
-    {
-      if ((TextUtils.isEmpty(paramVideoInfo2.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramVideoInfo1.jdField_c_of_type_JavaLangString))) {
-        paramVideoInfo2.jdField_c_of_type_JavaLangString = paramVideoInfo1.jdField_c_of_type_JavaLangString;
-      }
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(false);
-    }
-    for (;;)
-    {
-      if ((paramVideoInfo1.jdField_b_of_type_JavaUtilArrayList != null) && (paramVideoInfo1.jdField_b_of_type_JavaUtilArrayList.size() > 0))
-      {
-        if (paramVideoInfo2.jdField_b_of_type_JavaUtilArrayList == null) {
-          paramVideoInfo2.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-        }
-        paramVideoInfo2.jdField_b_of_type_JavaUtilArrayList.addAll(paramVideoInfo1.jdField_b_of_type_JavaUtilArrayList);
-      }
-      paramVideoInfo2.jdField_b_of_type_Long = uca.a.a(paramVideoInfo2.jdField_b_of_type_Long, paramVideoInfo1.jdField_b_of_type_Long);
-      if ((paramVideoInfo1.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (paramVideoInfo2.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null))
-      {
-        paramVideoInfo2.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramVideoInfo1.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-        paramVideoInfo2.jdField_a_of_type_Int = paramVideoInfo1.jdField_a_of_type_Int;
-      }
-      paramVideoInfo2.jdField_p_of_type_Int = paramVideoInfo1.jdField_p_of_type_Int;
-      paramVideoInfo2.jdField_f_of_type_Long = paramVideoInfo1.jdField_f_of_type_Long;
-      paramVideoInfo2.jdField_b_of_type_Int = uca.a.a(paramVideoInfo2.jdField_b_of_type_Int, paramVideoInfo1.jdField_b_of_type_Int);
-      paramVideoInfo2.jdField_c_of_type_Int = uca.a.a(paramVideoInfo2.jdField_c_of_type_Int, paramVideoInfo1.jdField_c_of_type_Int);
-      paramVideoInfo2.jdField_d_of_type_Int = uca.a.a(paramVideoInfo2.jdField_d_of_type_Int, paramVideoInfo1.jdField_d_of_type_Int);
-      paramVideoInfo2.jdField_q_of_type_Int = uca.a.a(paramVideoInfo2.jdField_q_of_type_Int, paramVideoInfo1.jdField_q_of_type_Int);
-      paramVideoInfo2.jdField_r_of_type_Int = uca.a.a(paramVideoInfo2.jdField_r_of_type_Int, paramVideoInfo1.jdField_r_of_type_Int);
-      paramVideoInfo2.jdField_i_of_type_JavaLangString = paramVideoInfo1.jdField_i_of_type_JavaLangString;
-      paramVideoInfo2.k = uca.a.a(paramVideoInfo2.k, paramVideoInfo1.k);
-      paramVideoInfo2.j = uca.a.a(paramVideoInfo2.j, paramVideoInfo1.j);
-      paramVideoInfo2.g = uca.a.a(paramVideoInfo2.g, paramVideoInfo1.g);
-      if ((TextUtils.isEmpty(paramVideoInfo2.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramVideoInfo1.jdField_a_of_type_JavaLangString)))
-      {
-        paramVideoInfo2.jdField_a_of_type_JavaLangString = paramVideoInfo1.jdField_a_of_type_JavaLangString;
-        paramVideoInfo2.jdField_a_of_type_Int = paramVideoInfo1.jdField_a_of_type_Int;
-      }
-      paramVideoInfo2.jdField_f_of_type_JavaLangString = uca.a.a(paramVideoInfo2.jdField_f_of_type_JavaLangString, paramVideoInfo1.jdField_f_of_type_JavaLangString);
-      paramVideoInfo2.jdField_d_of_type_JavaLangString = uca.a.a(paramVideoInfo2.jdField_d_of_type_JavaLangString, paramVideoInfo1.jdField_d_of_type_JavaLangString);
-      paramVideoInfo2.jdField_c_of_type_JavaLangString = uca.a.a(paramVideoInfo2.jdField_c_of_type_JavaLangString, paramVideoInfo1.jdField_c_of_type_JavaLangString);
-      paramVideoInfo2.jdField_p_of_type_JavaLangString = uca.a.a(paramVideoInfo2.jdField_p_of_type_JavaLangString, paramVideoInfo1.jdField_p_of_type_JavaLangString);
-      paramVideoInfo2.o = uca.a.a(paramVideoInfo2.o, paramVideoInfo1.o);
-      paramVideoInfo2.jdField_r_of_type_JavaLangString = uca.a.a(paramVideoInfo2.jdField_r_of_type_JavaLangString, paramVideoInfo1.jdField_r_of_type_JavaLangString);
-      paramVideoInfo2.h = uca.a.a(paramVideoInfo2.h, paramVideoInfo1.h);
-      if (!paramVideoInfo2.jdField_b_of_type_Boolean) {
-        paramVideoInfo2.jdField_q_of_type_Boolean = paramVideoInfo1.jdField_q_of_type_Boolean;
-      }
-      paramVideoInfo2.jdField_b_of_type_JavaLangString = uca.a.a(paramVideoInfo1.jdField_b_of_type_JavaLangString, paramVideoInfo2.jdField_b_of_type_JavaLangString);
-      paramVideoInfo2.z = uca.a.a(paramVideoInfo1.z, paramVideoInfo2.z);
-      paramVideoInfo2.A = uca.a.a(paramVideoInfo1.A, paramVideoInfo2.A);
-      if (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null) {
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(paramVideoInfo2.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$InterruptedWeishiAd);
-      }
-      paramVideoInfo1 = (VideoInfo.ECommerceEntranceInfo)paramBundle.getParcelable("VALUE_ECOMMERCE_ENTRANCE_INFO");
-      if (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null) {
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(paramVideoInfo1);
-      }
-      paramVideoInfo2.l = 0;
-      ryx.a(paramVideoInfo2);
-      return;
-      paramVideoInfo2.jdField_c_of_type_JavaLangString = paramVideoInfo1.jdField_c_of_type_JavaLangString;
-    }
-  }
-  
-  private void a(VideoInfo paramVideoInfo, ArrayList<VideoInfo.AdTagInfo> paramArrayList)
-  {
+    String str1;
     if (paramVideoInfo != null)
     {
-      paramVideoInfo = paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$AdTagInfo;
-      if ((paramArrayList != null) && (paramVideoInfo != null) && (paramVideoInfo.jdField_a_of_type_Int == 0)) {
-        paramArrayList.add(0, paramVideoInfo);
-      }
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    VideoFeedsPlayActivity.a("VideoPlayRecommendObserver() logRecommendVideoInfo" + paramString);
-  }
-  
-  private void a(ArrayList<AdvertisementInfo> paramArrayList)
-  {
-    Iterator localIterator = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).iterator();
-    label97:
-    while (localIterator.hasNext())
-    {
-      VideoInfo localVideoInfo = (VideoInfo)localIterator.next();
-      if (localVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$AdTagInfo != null)
+      str1 = paramVideoInfo.j;
+      String str3 = paramVideoInfo.jdField_a_of_type_JavaLangString;
+      String str2 = paramVideoInfo.g;
+      localObject1 = localObject2;
+      if (paramVideoInfo.jdField_a_of_type_Int == 0)
       {
-        String str = localVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$AdTagInfo.jdField_a_of_type_JavaLangString;
-        int i = 0;
-        for (;;)
-        {
-          if (i >= paramArrayList.size()) {
-            break label97;
-          }
-          AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramArrayList.get(i);
-          if (localAdvertisementInfo.mRowKey.equals(str))
-          {
-            localVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = localAdvertisementInfo;
-            break;
-          }
-          i += 1;
+        localObject1 = localObject2;
+        if (paramVideoInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) {
+          localObject1 = paramVideoInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.getMd5();
         }
       }
-    }
-  }
-  
-  private void a(ArrayList<VideoInfo> paramArrayList, boolean paramBoolean)
-  {
-    if (paramArrayList != null) {}
-    for (int i = paramArrayList.size();; i = 0)
-    {
-      if ((1 == VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).size() - i) && (paramBoolean) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).get(1) != null))
-      {
-        paramArrayList = (VideoInfo)VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).get(1);
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment, paramArrayList);
-      }
-      return;
-    }
-  }
-  
-  private boolean a(List<VideoInfo> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList == null)
-    {
-      a("articleList为空");
-      return false;
-    }
-    a("articleList.size()=: " + paramList.size());
-    paramList = paramList.iterator();
-    boolean bool = false;
-    if (paramList.hasNext())
-    {
-      VideoInfo localVideoInfo = (VideoInfo)paramList.next();
-      if (localVideoInfo.jdField_c_of_type_Boolean)
-      {
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).add(localVideoInfo);
-        a("info.adType=" + localVideoInfo.jdField_i_of_type_Int + ", info.title=" + localVideoInfo.jdField_c_of_type_JavaLangString + ", adInfo.aid=" + localVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.e + ", adInfo.traceid=" + localVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.h + " add to videoDataList");
-      }
-      for (;;)
-      {
-        bool = true;
-        break;
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(localVideoInfo.jdField_a_of_type_JavaLangString).append(" ").append(localVideoInfo.g);
-        localObject = ((StringBuilder)localObject).toString();
-        if (VideoFeedsRecommendFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).contains(localObject))
-        {
-          a("info.vid=" + localVideoInfo.jdField_a_of_type_JavaLangString + ", info.title=" + localVideoInfo.jdField_c_of_type_JavaLangString + ", info.articleID=" + localVideoInfo.g + " has exist");
-          break;
-        }
-        a("info.vid=" + localVideoInfo.jdField_a_of_type_JavaLangString + ", info.title=" + localVideoInfo.jdField_c_of_type_JavaLangString + ", info.articleID=" + localVideoInfo.g + " add to videoDataList");
-        if ((localVideoInfo.jdField_b_of_type_Boolean) && (TextUtils.isEmpty(localVideoInfo.k))) {
-          localVideoInfo.k = bglf.b(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), localVideoInfo.j, true);
-        }
-        ryx.a(localVideoInfo);
-        localVideoInfo.l = VideoFeedsRecommendFragment.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment);
-        localArrayList.add(localVideoInfo.g);
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).add(localVideoInfo);
-        VideoFeedsRecommendFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).add(localObject);
-        if (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null) {
-          VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).b(localVideoInfo);
-        }
-      }
-    }
-    a("hasNewVideo = " + bool);
-    return bool;
-  }
-  
-  private void b(Bundle paramBundle)
-  {
-    int i = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).size();
-    if (i == 1) {
-      obj.a().a(-1);
-    }
-    ArrayList localArrayList = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
-    String str = paramBundle.getString("VALUE_REQUEST_VIDEO_ARTICLE_ID");
-    VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment, paramBundle.getString("VALUE_COOKIE", null));
-    VideoFeedsPlayActivity.a("VideoPlayRecommendObserver() reqArticleID = " + str + ", mLastRequestArticleID = " + VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment));
-    if (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).size() > 0) {}
-    for (VideoInfo localVideoInfo1 = (VideoInfo)VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).get(0);; localVideoInfo1 = null)
-    {
-      VideoInfo localVideoInfo2 = (VideoInfo)paramBundle.getParcelable("VALUE_REQUEST_VIDEO_DETAIL_INFO");
-      a(paramBundle, i, localVideoInfo1, localVideoInfo2);
-      boolean bool = a(localArrayList);
-      a(localArrayList, bool);
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).c(3);
-      if ((!VideoFeedsRecommendFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment)) && (i == 1) && (bool)) {
-        VideoFeedsRecommendFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment);
-      }
-      VideoFeedsRecommendFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment, str);
-      int j = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).size();
-      if (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null) {
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(bool, j - i, VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment));
-      }
-      if ((orl.jdField_a_of_type_Int != 1) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null)) {
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).e();
-      }
-      a(i, i);
-      a(paramBundle, i, localVideoInfo2);
-      return;
-    }
-  }
-  
-  private void c(Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getParcelableArrayList("value_msg_game_ad_info");
-    if ((paramBundle == null) || (paramBundle.isEmpty())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsRecommendFragment", 2, "get gameAdComData isEmpty");
-      }
-    }
-    do
-    {
-      return;
-      a(paramBundle);
-      if ((VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a != null) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a.a != null))
-      {
-        paramBundle = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment);
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(paramBundle, VideoFeedsRecommendFragment.e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment));
-      }
-    } while ((VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) == null) || (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) == null) || (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a == null) || (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a.a == null));
-    paramBundle = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment);
-    VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(paramBundle, VideoFeedsRecommendFragment.e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), 0.0D, 0L);
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    VideoFeedsPlayActivity.a(anni.a(2131714884) + "isSuccess = " + paramBoolean);
-    VideoFeedsRecommendFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment, paramBundle.getBoolean("VALUE_USER_IN_BLACK", false));
-    VideoFeedsRecommendFragment localVideoFeedsRecommendFragment = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment;
-    boolean bool;
-    if ((VideoFeedsRecommendFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment)) || (VideoFeedsRecommendFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment)))
-    {
-      bool = true;
-      VideoFeedsRecommendFragment.c(localVideoFeedsRecommendFragment, bool);
-      if (!paramBoolean) {
-        break label205;
-      }
-      a(paramBundle);
-      label92:
-      if ((!VideoFeedsRecommendFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment)) && (!VideoFeedsRecommendFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment)))
-      {
-        if ((VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) == null) || (!VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a())) {
-          break label212;
-        }
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).setScrollable(false);
-      }
+      paramVideoInfo = str3;
+      localObject2 = localObject1;
+      localObject1 = str2;
     }
     for (;;)
     {
-      if (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null) {
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(VideoFeedsRecommendFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), VideoFeedsRecommendFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment));
-      }
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment);
-      VideoFeedsRecommendFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment, false);
+      this.a = new sbf(localObject2, str1, paramVideoInfo, (String)localObject1);
       return;
-      bool = false;
-      break;
-      label205:
-      a();
-      break label92;
-      label212:
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).setScrollable(true);
+      paramVideoInfo = null;
+      str1 = null;
+      localObject2 = null;
     }
+  }
+  
+  public sbg(String paramString)
+  {
+    this.a = new sbf(paramString);
+  }
+  
+  public sbg(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    this.a = new sbf(paramString1, paramString2, paramString3, paramString4);
+  }
+  
+  public sbg(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2)
+  {
+    this.a = new sbf(paramString1, paramString2, paramString3, paramString4);
+    a(paramLong1).c(paramLong2);
+  }
+  
+  public sbg(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    this.a = new sbf(paramString1, paramString2, paramString3, paramString4, paramString5);
+  }
+  
+  public static int a(int paramInt)
+  {
+    if (paramInt == 1004) {
+      return 2;
+    }
+    if (bnrf.h()) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public sbg A(int paramInt)
+  {
+    this.a.a("actual_height", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg B(int paramInt)
+  {
+    this.a.a("issued_width", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg C(int paramInt)
+  {
+    this.a.a("issued_height", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg D(int paramInt)
+  {
+    if (paramInt != -1) {
+      this.a.a("replay", Integer.valueOf(paramInt));
+    }
+    return this;
+  }
+  
+  public sbg E(int paramInt)
+  {
+    this.a.a("first_video_type", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg F(int paramInt)
+  {
+    if (paramInt == 0) {
+      paramInt = 302;
+    }
+    for (;;)
+    {
+      this.a.a("source", Integer.valueOf(paramInt));
+      return this;
+      if ((paramInt == 1) || (paramInt == 3)) {
+        paramInt = 300;
+      } else if ((paramInt == 2) || (paramInt == 6)) {
+        paramInt = 301;
+      } else {
+        paramInt = 310;
+      }
+    }
+  }
+  
+  public sbg G(int paramInt)
+  {
+    sbf localsbf = this.a;
+    if (paramInt == 0) {}
+    for (String str = "MP4";; str = "HLS")
+    {
+      localsbf.a("video_format", str);
+      return this;
+    }
+  }
+  
+  public sbg H(int paramInt)
+  {
+    this.a.a("video_chat_type", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg I(int paramInt)
+  {
+    this.a.a("video_kandian_type", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg J(int paramInt)
+  {
+    this.a.a("req_times", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg K(int paramInt)
+  {
+    this.a.a("first_video_channel_id", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg L(int paramInt)
+  {
+    this.a.a("first_video_short_video_type", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg M(int paramInt)
+  {
+    this.a.a("video_type", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg N(int paramInt)
+  {
+    this.a.a("entrance", Integer.valueOf(a(paramInt)));
+    return this;
+  }
+  
+  public sbg O(int paramInt)
+  {
+    this.a.a("count", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg P(int paramInt)
+  {
+    this.a.a("style", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg Q(int paramInt)
+  {
+    this.a.a("click_area", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg R(int paramInt)
+  {
+    this.a.a("show_video_logo", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg S(int paramInt)
+  {
+    this.a.a("trigger_src", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg T(int paramInt)
+  {
+    this.a.a("diandianfeeds_type", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg U(int paramInt)
+  {
+    this.a.a("entrance_show_jump_icon", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg V(int paramInt)
+  {
+    this.a.a("feeds_type", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg W(int paramInt)
+  {
+    this.a.a("from_feedstype", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg X(int paramInt)
+  {
+    this.a.a("column_id", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg Y(int paramInt)
+  {
+    this.a.a("double_videocard_pos", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg Z(int paramInt)
+  {
+    this.a.a("video_autoplay", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbf a()
+  {
+    return this.a;
+  }
+  
+  public sbg a()
+  {
+    sbf localsbf = this.a;
+    int i;
+    if (ozs.d()) {
+      i = 2;
+    }
+    for (;;)
+    {
+      localsbf.a("app_type", Integer.valueOf(i));
+      return this;
+      if (ozs.x()) {
+        i = 1;
+      } else {
+        i = 3;
+      }
+    }
+  }
+  
+  public sbg a(float paramFloat)
+  {
+    this.a.a("video_speed", Float.valueOf(paramFloat));
+    return this;
+  }
+  
+  public sbg a(int paramInt)
+  {
+    this.a.a("channel_id", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg a(int paramInt, String paramString)
+  {
+    if (bnrf.g(paramInt)) {
+      this.a.a("column_play_session_id", paramString);
+    }
+    return this;
+  }
+  
+  public sbg a(long paramLong)
+  {
+    this.a.a("current_duration", Long.valueOf(paramLong));
+    return this;
+  }
+  
+  public sbg a(VideoInfo.SoftAdDownloadBarInfo paramSoftAdDownloadBarInfo)
+  {
+    sbf localsbf = this.a;
+    if ((paramSoftAdDownloadBarInfo != null) && (paramSoftAdDownloadBarInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo != null)) {}
+    for (paramSoftAdDownloadBarInfo = paramSoftAdDownloadBarInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.e;; paramSoftAdDownloadBarInfo = "")
+    {
+      localsbf.a("ad_guide_area_video_report_info", paramSoftAdDownloadBarInfo);
+      return this;
+    }
+  }
+  
+  public sbg a(VideoInfo paramVideoInfo)
+  {
+    sbf localsbf = this.a;
+    if (paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$SoftAdDownloadBarInfo != null) {}
+    for (int i = 1;; i = 0)
+    {
+      localsbf.a("ad_guide_area", Integer.valueOf(i));
+      return this;
+    }
+  }
+  
+  public sbg a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    sbf localsbf = this.a;
+    if (paramBaseArticleInfo.isShowGif) {}
+    for (int i = 1;; i = 0)
+    {
+      localsbf.a("gif", Integer.valueOf(i));
+      return this;
+    }
+  }
+  
+  public sbg a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean)
+  {
+    if ((paramBaseArticleInfo != null) && (paramBaseArticleInfo.mVideoColumnInfo != null) && (paramBaseArticleInfo.mChannelID == 56L))
+    {
+      if (!paramBoolean) {
+        break label58;
+      }
+      paramBaseArticleInfo = paramBaseArticleInfo.mVideoColumnInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo;
+      if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.e == null)) {
+        break label69;
+      }
+    }
+    label58:
+    label69:
+    for (paramBaseArticleInfo = paramBaseArticleInfo.e;; paramBaseArticleInfo = "")
+    {
+      p(paramBaseArticleInfo);
+      return this;
+      paramBaseArticleInfo = paramBaseArticleInfo.mVideoColumnInfo.c;
+      break;
+    }
+  }
+  
+  public sbg a(VideoColumnInfo paramVideoColumnInfo)
+  {
+    int i = 1;
+    if (paramVideoColumnInfo != null)
+    {
+      this.a.a("is_column", Integer.valueOf(1));
+      this.a.a("column_id", Integer.valueOf(paramVideoColumnInfo.jdField_a_of_type_Int));
+      sbf localsbf = this.a;
+      if (paramVideoColumnInfo.jdField_a_of_type_Boolean) {}
+      for (;;)
+      {
+        localsbf.a("subscribe_flag", Integer.valueOf(i));
+        return this;
+        i = 0;
+      }
+    }
+    this.a.a("is_column", Integer.valueOf(0));
+    return this;
+  }
+  
+  public sbg a(Boolean paramBoolean)
+  {
+    if (paramBoolean.booleanValue()) {
+      this.a.a("is_ugc_as_pgc", Integer.valueOf(1));
+    }
+    return this;
+  }
+  
+  public sbg a(String paramString)
+  {
+    sbf localsbf = this.a;
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    localsbf.a("video_report_info", str);
+    return this;
+  }
+  
+  public sbg a(String paramString, Object paramObject)
+  {
+    this.a.a(paramString, paramObject);
+    return this;
+  }
+  
+  public sbg a(ArrayList<DislikeInfo> paramArrayList)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramArrayList != null)
+    {
+      paramArrayList = paramArrayList.iterator();
+      int j;
+      for (int i = 1; paramArrayList.hasNext(); i = j)
+      {
+        DislikeInfo localDislikeInfo = (DislikeInfo)paramArrayList.next();
+        j = i;
+        if (localDislikeInfo != null)
+        {
+          if (i == 0) {
+            localStringBuilder.append("|");
+          }
+          j = 0;
+          localStringBuilder.append(localDislikeInfo.jdField_a_of_type_JavaLangString);
+        }
+      }
+    }
+    return l(localStringBuilder.toString());
+  }
+  
+  public sbg a(rwr paramrwr)
+  {
+    sbg localsbg = this;
+    if (paramrwr != null) {
+      localsbg = d(paramrwr.a());
+    }
+    return localsbg;
+  }
+  
+  public sbg a(rwr paramrwr, long paramLong)
+  {
+    sbg localsbg = this;
+    if (paramrwr != null) {
+      localsbg = c(paramrwr.a(paramLong));
+    }
+    return localsbg;
+  }
+  
+  public sbg a(boolean paramBoolean)
+  {
+    sbf localsbf = this.a;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
+    {
+      localsbf.a("download", Integer.valueOf(i));
+      return this;
+    }
+  }
+  
+  public sbg aa(int paramInt)
+  {
+    this.a.a("subscribe_page", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg ab(int paramInt)
+  {
+    this.a.a("return_sence", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg ac(int paramInt)
+  {
+    this.a.a("topic_from_page", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg ad(int paramInt)
+  {
+    this.a.a("follow_way", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg b(int paramInt)
+  {
+    this.a.a("card_jump_type", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg b(long paramLong)
+  {
+    this.a.a("stay_duration", Long.valueOf(paramLong));
+    return this;
+  }
+  
+  public sbg b(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if ((paramBaseArticleInfo != null) && (!TextUtils.isEmpty(paramBaseArticleInfo.mVideoLogoUrl)) && (rpt.e()))
+    {
+      this.a.a("show_video_logo", Integer.valueOf(1));
+      return this;
+    }
+    this.a.a("show_video_logo", Integer.valueOf(0));
+    return this;
+  }
+  
+  public sbg b(VideoColumnInfo paramVideoColumnInfo)
+  {
+    sbg localsbg = this;
+    if (paramVideoColumnInfo != null) {
+      localsbg = X(paramVideoColumnInfo.jdField_a_of_type_Int);
+    }
+    return localsbg;
+  }
+  
+  public sbg b(String paramString)
+  {
+    this.a.a("session_id", paramString);
+    return this;
+  }
+  
+  public sbg b(boolean paramBoolean)
+  {
+    sbf localsbf = this.a;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localsbf.a("interact_button_style", Integer.valueOf(i));
+      return this;
+    }
+  }
+  
+  public sbg c(int paramInt)
+  {
+    this.a.a("strategy_id", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg c(long paramLong)
+  {
+    this.a.a("video_duration", Long.valueOf(paramLong));
+    return this;
+  }
+  
+  public sbg c(BaseArticleInfo paramBaseArticleInfo)
+  {
+    sbg localsbg = this;
+    if (paramBaseArticleInfo != null)
+    {
+      localsbg = this;
+      if (paramBaseArticleInfo.mChannelID == 56L)
+      {
+        localsbg = this;
+        if (paramBaseArticleInfo.mVideoColumnInfo != null) {
+          localsbg = b(paramBaseArticleInfo.mVideoColumnInfo);
+        }
+      }
+    }
+    return localsbg;
+  }
+  
+  public sbg c(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      this.a.a("video_session_id", paramString);
+    }
+    return this;
+  }
+  
+  public sbg c(boolean paramBoolean)
+  {
+    this.a.a("video_inserted", Boolean.valueOf(paramBoolean));
+    return this;
+  }
+  
+  public sbg d(int paramInt)
+  {
+    this.a.a("video_strategyid", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg d(long paramLong)
+  {
+    this.a.a("watch_duration", Long.valueOf(paramLong));
+    return this;
+  }
+  
+  public sbg d(BaseArticleInfo paramBaseArticleInfo)
+  {
+    int j = 1;
+    int i = j;
+    if (paramBaseArticleInfo != null)
+    {
+      i = j;
+      if (paramBaseArticleInfo.mChannelID == 56L)
+      {
+        i = j;
+        if (bnrf.e())
+        {
+          i = j;
+          if (paramBaseArticleInfo.mVideoColumnInfo != null) {
+            i = 2;
+          }
+        }
+      }
+    }
+    this.a.a("video_feeds_type", Integer.valueOf(i));
+    return this;
+  }
+  
+  public sbg d(String paramString)
+  {
+    this.a.a("puin", paramString);
+    return this;
+  }
+  
+  public sbg d(boolean paramBoolean)
+  {
+    sbf localsbf = this.a;
+    if (paramBoolean) {}
+    for (String str = "1";; str = "0")
+    {
+      localsbf.a("fans", str);
+      return this;
+    }
+  }
+  
+  public sbg e(int paramInt)
+  {
+    this.a.a("play_index", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg e(long paramLong)
+  {
+    this.a.a("algorithm_id", Long.valueOf(paramLong));
+    return this;
+  }
+  
+  public sbg e(BaseArticleInfo paramBaseArticleInfo)
+  {
+    this.a.a("account_expose_card", Integer.valueOf(ozs.c(paramBaseArticleInfo)));
+    return this;
+  }
+  
+  public sbg e(String paramString)
+  {
+    this.a.a("vid", paramString);
+    return this;
+  }
+  
+  public sbg e(boolean paramBoolean)
+  {
+    sbf localsbf = this.a;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localsbf.a("is_ads", Integer.valueOf(i));
+      return this;
+    }
+  }
+  
+  public sbg f(int paramInt)
+  {
+    this.a.a("video_play_length", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg f(long paramLong)
+  {
+    this.a.a("video_play_duration", Long.valueOf(paramLong));
+    return this;
+  }
+  
+  public sbg f(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (qur.a().a(paramBaseArticleInfo, false, qur.jdField_a_of_type_Int)) {
+      this.a.a("jump_src", Integer.valueOf(quv.a(paramBaseArticleInfo)));
+    }
+    return this;
+  }
+  
+  public sbg f(String paramString)
+  {
+    this.a.a("aid", paramString);
+    return this;
+  }
+  
+  public sbg f(boolean paramBoolean)
+  {
+    sbf localsbf = this.a;
+    if (paramBoolean) {}
+    for (String str = "H265";; str = "H264")
+    {
+      localsbf.a("video_code_format", str);
+      return this;
+    }
+  }
+  
+  public sbg g(int paramInt)
+  {
+    this.a.a("from", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg g(long paramLong)
+  {
+    this.a.a("first_frame_time", Long.valueOf(paramLong));
+    return this;
+  }
+  
+  public sbg g(String paramString)
+  {
+    this.a.a("topic_id", paramString);
+    return this;
+  }
+  
+  public sbg g(boolean paramBoolean)
+  {
+    sbf localsbf = this.a;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localsbf.a("action_type", Integer.valueOf(i));
+      return this;
+    }
+  }
+  
+  public sbg h(int paramInt)
+  {
+    this.a.a("jump_to_channel", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg h(long paramLong)
+  {
+    this.a.a("first_video_algorithm_id", Long.valueOf(paramLong));
+    return this;
+  }
+  
+  public sbg h(String paramString)
+  {
+    this.a.a("first_video_rowkey", paramString);
+    return this;
+  }
+  
+  public sbg h(boolean paramBoolean)
+  {
+    sbf localsbf = this.a;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
+    {
+      localsbf.a("outcome", Integer.valueOf(i));
+      return this;
+    }
+  }
+  
+  public sbg i(int paramInt)
+  {
+    this.a.a("oper_time", Long.valueOf(System.currentTimeMillis()));
+    this.a.a("company_id", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg i(long paramLong)
+  {
+    this.a.a("duration", Long.valueOf(paramLong));
+    return this;
+  }
+  
+  public sbg i(String paramString)
+  {
+    this.a.a("rowkey", paramString);
+    return this;
+  }
+  
+  public sbg i(boolean paramBoolean)
+  {
+    sbf localsbf = this.a;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localsbf.a("loophole", Integer.valueOf(i));
+      return this;
+    }
+  }
+  
+  public sbg j(int paramInt)
+  {
+    this.a.a("ads_jump", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg j(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      this.a.a("error_code", paramString);
+    }
+    return this;
+  }
+  
+  public sbg j(boolean paramBoolean)
+  {
+    sbf localsbf = this.a;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localsbf.a("is_insertion", Integer.valueOf(i));
+      return this;
+    }
+  }
+  
+  public sbg k(int paramInt)
+  {
+    this.a.a("ads_source", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg k(String paramString)
+  {
+    this.a.a("video_to_uin", paramString);
+    return this;
+  }
+  
+  public sbg k(boolean paramBoolean)
+  {
+    sbf localsbf = this.a;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localsbf.a("video_speed_icon", Integer.valueOf(i));
+      return this;
+    }
+  }
+  
+  public sbg l(int paramInt)
+  {
+    this.a.a("video_index", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg l(String paramString)
+  {
+    this.a.a("neg_reason", paramString);
+    return this;
+  }
+  
+  public sbg m(int paramInt)
+  {
+    this.a.a("transverse_index", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg m(String paramString)
+  {
+    this.a.a("uin", paramString);
+    return this;
+  }
+  
+  public sbg n(int paramInt)
+  {
+    this.a.a("content_type", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg n(String paramString)
+  {
+    this.a.a("trigger_rowkey", paramString);
+    return this;
+  }
+  
+  public sbg o(int paramInt)
+  {
+    this.a.a("add_way", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg o(String paramString)
+  {
+    this.a.a("from_rk", paramString);
+    return this;
+  }
+  
+  public sbg p(int paramInt)
+  {
+    this.a.a("slide_exit", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg p(String paramString)
+  {
+    this.a.a("jump_report_info", paramString);
+    return this;
+  }
+  
+  public sbg q(int paramInt)
+  {
+    this.a.a("kandian_mode_new", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg q(String paramString)
+  {
+    this.a.a("double_videocard_jump_page", paramString);
+    return this;
+  }
+  
+  public sbg r(int paramInt)
+  {
+    this.a.a("kandian_mode", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg r(String paramString)
+  {
+    this.a.a("double_videocard_jump_src", paramString);
+    return this;
+  }
+  
+  public sbg s(int paramInt)
+  {
+    this.a.a("item_type", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg s(String paramString)
+  {
+    this.a.a("subscript", paramString);
+    return this;
+  }
+  
+  public sbg t(int paramInt)
+  {
+    this.a.a("play_num", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg u(int paramInt)
+  {
+    this.a.a("video_from_type", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg v(int paramInt)
+  {
+    if (paramInt != -1) {
+      this.a.a("source", Integer.valueOf(paramInt));
+    }
+    return this;
+  }
+  
+  public sbg w(int paramInt)
+  {
+    this.a.a("card_pos", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg x(int paramInt)
+  {
+    this.a.a("is_loop", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg y(int paramInt)
+  {
+    this.a.a("loop_times", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public sbg z(int paramInt)
+  {
+    this.a.a("actual_width", Integer.valueOf(paramInt));
+    return this;
   }
 }
 

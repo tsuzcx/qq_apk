@@ -1,15 +1,27 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.pb.PBEnumField;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ajrd
-  implements advd
+  implements ajom
 {
-  public ajrd(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
+  public ajrd(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public boolean a(boolean paramBoolean)
+  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (paramBoolean) {
-      bmyc.a(this.a.getActivity());
-    }
+    if (!(paramViewHolder instanceof ajpp)) {}
+    do
+    {
+      return;
+      paramView = (ajpp)paramViewHolder;
+    } while (paramView.a.msg_type.get() != 2);
+    TroopSuspiciousFragment.a(this.a, paramView);
+  }
+  
+  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
     return false;
   }
 }

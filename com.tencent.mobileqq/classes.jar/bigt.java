@@ -1,36 +1,54 @@
+import android.os.Handler;
 import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.wifisdk.TMSDKCustomConfig.IThreadPoolManager;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.ThemeUiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-final class bigt
-  implements TMSDKCustomConfig.IThreadPoolManager
+public class bigt
+  extends Handler
 {
-  public void addTask(int paramInt, Runnable paramRunnable, String paramString)
+  public bigt() {}
+  
+  public bigt(Looper paramLooper)
   {
-    ThreadManagerV2.excute(paramRunnable, 16, null, false);
+    super(paramLooper);
   }
   
-  public void addTypeTask(Runnable paramRunnable, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    int i = 16;
-    if (paramInt == 3) {
-      i = 64;
+    if (ThemeUiPlugin.reportHandler == null) {
+      ThemeUiPlugin.reportHandler = new bigt(BaseApplication.getContext().getMainLooper());
     }
-    for (;;)
+    int i = paramMessage.what;
+    Object localObject = (Object[])paramMessage.obj;
+    if (i == 1)
     {
-      ThreadManagerV2.excute(paramRunnable, i, null, false);
-      return;
-      if (paramInt == 4) {
-        i = 128;
-      } else if (paramInt == 2) {
-        i = 32;
+      if (ThemeUiPlugin.reportTimes < 3)
+      {
+        paramMessage = (String)localObject[0];
+        localObject = (QQAppInterface)localObject[1];
+        if (QLog.isColorLevel()) {
+          QLog.i("ThemeUiPlugin", 2, ThemeUiPlugin.initDownloadedThemeNumForReport + "," + ThemeUiPlugin.initCurrThemeNameForReport);
+        }
+        VasWebviewUtil.reportVasStatus("ThemeMall", "ThemeCount", "0", 0, 0, ThemeUiPlugin.initDownloadedThemeNumForReport, 0, "", "");
+        VasWebviewUtil.reportVasStatus("ThemeMall", "ThemeOn", "0", 0, 0, 0, 0, "theme_" + ThemeUiPlugin.initCurrThemeNameForReport, "");
+        ThemeUiPlugin.reportTimes += 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeUiPlugin", 2, "reportTimes is:" + ThemeUiPlugin.reportTimes);
+        }
+        Message localMessage = ThemeUiPlugin.reportHandler.obtainMessage();
+        localMessage.what = 1;
+        localMessage.obj = new Object[] { paramMessage, localObject };
+        ThemeUiPlugin.reportHandler.sendMessageDelayed(localMessage, 120000L);
       }
     }
-  }
-  
-  public Looper getSubThreadLooper()
-  {
-    return ThreadManagerV2.getSubThreadLooper();
+    else {
+      return;
+    }
+    ThemeUiPlugin.reportTimes = 0;
   }
 }
 

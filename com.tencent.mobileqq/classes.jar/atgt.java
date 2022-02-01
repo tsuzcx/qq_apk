@@ -1,24 +1,57 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 
-class atgt
-  implements atdw
+public class atgt
+  implements Animation.AnimationListener
 {
-  atgt(atgs paramatgs) {}
+  public atgt(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
   
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString1, boolean paramBoolean, int paramInt, String paramString2, long paramLong)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    atgs.c(this.a, paramString1);
-    atgs.a(this.a).a().a(paramBoolean, 60, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), paramString2, paramString1 });
-    atgs.a(this.a);
+    Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (Face2FaceFriendBubbleView.a(this.a) == 1)
+    {
+      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+    }
+    for (;;)
+    {
+      Face2FaceFriendBubbleView.a(this.a).setVisibility(4);
+      return;
+      if (Face2FaceFriendBubbleView.a(this.a) == 2)
+      {
+        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130840090);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      }
+      else if (Face2FaceFriendBubbleView.a(this.a) == 3)
+      {
+        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130840091);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      }
+      else if (Face2FaceFriendBubbleView.a(this.a) == 4)
+      {
+        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130840092);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atgt
  * JD-Core Version:    0.7.0.1
  */

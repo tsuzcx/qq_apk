@@ -1,23 +1,78 @@
-import android.content.Intent;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.text.Editable;
+import android.text.Spanned;
+import android.text.TextWatcher;
+import com.tencent.qphone.base.util.QLog;
 
 public class swj
-  implements MessageQueue.IdleHandler
+  implements TextWatcher
 {
-  public swj(FastWebActivity paramFastWebActivity) {}
+  private swi a;
   
-  public boolean queueIdle()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (FastWebActivity.a(this.a).c == 0) {}
-    for (String str = "";; str = FastWebActivity.a(this.a).p)
+    QLog.d("DeleteAsAWholeWatcher", 2, "afterTextChanged: s: " + paramEditable);
+    if (this.a != null)
     {
-      int i = this.a.getIntent().getIntExtra("floating_window_scene", 0);
-      tbf.a(FastWebActivity.a(this.a).o, FastWebActivity.a(this.a).j, String.valueOf(FastWebActivity.a(this.a).d), FastWebActivity.a(this.a).l, FastWebActivity.a(this.a).c(), str, FastWebActivity.a(this.a).m, FastWebActivity.a(this.a).n, FastWebActivity.a(this.a), FastWebActivity.b(this.a), i, this.a.a.mChannelID);
-      return false;
+      int i = paramEditable.getSpanStart(this.a);
+      int j = paramEditable.getSpanEnd(this.a);
+      if ((i >= 0) && (j <= paramEditable.length()))
+      {
+        paramEditable.delete(i, j);
+        this.a.a();
+        this.a = null;
+      }
     }
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    int i = 0;
+    int j = paramInt1 + paramInt3;
+    if (paramInt3 >= paramInt2) {}
+    label166:
+    for (;;)
+    {
+      return;
+      if ((paramInt2 > 0) && (paramInt2 == paramCharSequence.length()) && (paramInt3 == 0)) {}
+      for (paramInt1 = 1;; paramInt1 = 0)
+      {
+        if (!(paramCharSequence instanceof Spanned)) {
+          break label166;
+        }
+        Spanned localSpanned = (Spanned)paramCharSequence;
+        paramCharSequence = (swi[])localSpanned.getSpans(0, paramCharSequence.length(), swi.class);
+        if ((paramCharSequence == null) || (paramCharSequence.length <= 0)) {
+          break;
+        }
+        paramInt3 = paramCharSequence.length;
+        paramInt2 = i;
+        label86:
+        if (paramInt2 < paramInt3)
+        {
+          if ((paramInt1 == 0) || (paramInt3 <= 1)) {
+            break label117;
+          }
+          paramCharSequence[paramInt2].a();
+        }
+        label117:
+        int k;
+        do
+        {
+          paramInt2 += 1;
+          break label86;
+          break;
+          i = localSpanned.getSpanStart(paramCharSequence[paramInt2]);
+          k = localSpanned.getSpanEnd(paramCharSequence[paramInt2]);
+        } while ((i > j) || (j >= k));
+        this.a = paramCharSequence[paramInt2];
+        return;
+      }
+    }
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    QLog.d("DeleteAsAWholeWatcher", 2, "onTextChanged: s: " + paramCharSequence + " start: " + paramInt1 + " before: " + paramInt2 + " count: " + paramInt3);
   }
 }
 

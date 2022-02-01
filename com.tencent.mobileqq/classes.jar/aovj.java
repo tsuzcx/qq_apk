@@ -1,87 +1,26 @@
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aovj
-  implements aowi
+class aovj
+  implements View.OnClickListener
 {
-  public aovj(ArConfigService paramArConfigService) {}
+  aovj(aovh paramaovh) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (ArConfigService.b(this.a) != null) {
-      try
-      {
-        int j = ArConfigService.b(this.a).beginBroadcast();
-        int i = 0;
-        for (;;)
-        {
-          if (i >= j) {
-            break label106;
-          }
-          try
-          {
-            ((aoya)ArConfigService.b(this.a).getBroadcastItem(i)).a(paramInt1, paramInt2);
-            i += 1;
-          }
-          catch (RemoteException localRemoteException)
-          {
-            for (;;)
-            {
-              localRemoteException.printStackTrace();
-            }
-          }
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onProgress error:" + localException.getMessage());
-        }
-      }
-    }
-    label106:
-    ArConfigService.b(this.a).finishBroadcast();
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (ArConfigService.b(this.a) != null) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        int j = ArConfigService.b(this.a).beginBroadcast();
-        i = 0;
-        if (i >= j) {
-          break label129;
-        }
-        if (paramBoolean) {}
-        try
-        {
-          ((aoya)ArConfigService.b(this.a).getBroadcastItem(i)).a(paramInt);
-        }
-        catch (RemoteException localRemoteException)
-        {
-          localRemoteException.printStackTrace();
-        }
-        ((aoya)ArConfigService.b(this.a).getBroadcastItem(i)).b(paramInt, 0);
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onFinish error:" + localException.getMessage());
-        }
-      }
-      return;
-      label129:
-      ArConfigService.b(this.a).finishBroadcast();
-      return;
-      i += 1;
-    }
+    bdll.b(null, "CliOper", "", "", "0X8006B16", "0X8006B16", 0, 0, "", "", "", "");
+    bdll.b(null, "dc00898", "", "", "0X8009AC9", "0X8009AC9", 0, 0, "", "", "", "");
+    Object localObject = PreferenceManager.getDefaultSharedPreferences(aovh.a(this.a));
+    int i = ((SharedPreferences)localObject).getInt("push_msg_notify_cancle", 0);
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putInt("push_msg_notify_cancle", i + 1);
+    ((SharedPreferences.Editor)localObject).commit();
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,33 +1,48 @@
-import android.content.SharedPreferences;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class rfp
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/managecolumn/CreateTopicDispatcher;", "", "()V", "createTopicListenerList", "", "Lkotlin/Function1;", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ColumnInfo;", "Lkotlin/ParameterName;", "name", "topicInfo", "", "addCreateTopicListener", "listener", "notifyTopicCreate", "removeCreateTopicListener", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rfp
 {
-  public int a;
-  public long a;
-  public long b = -1L;
+  private static final List<Function1<ColumnInfo, Unit>> a;
+  public static final rfp a;
   
-  public rfp()
+  static
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
+    jdField_a_of_type_Rfp = new rfp();
+    jdField_a_of_type_JavaUtilList = (List)new ArrayList();
   }
   
-  public static rfp a()
+  @JvmStatic
+  public static final void a(@NotNull ColumnInfo paramColumnInfo)
   {
-    rfp localrfp = new rfp();
-    SharedPreferences localSharedPreferences = bmqa.a(pha.a(), true, false);
-    localrfp.jdField_a_of_type_Long = localSharedPreferences.getLong("kandian_biu_0x210_seq", -1L);
-    localrfp.b = localSharedPreferences.getLong("kandian_biu_0x210_uin", -1L);
-    localrfp.jdField_a_of_type_Int = localSharedPreferences.getInt("kandian_biu_0x210_status", -1);
-    return localrfp;
+    Intrinsics.checkParameterIsNotNull(paramColumnInfo, "topicInfo");
+    Iterator localIterator = ((Iterable)jdField_a_of_type_JavaUtilList).iterator();
+    while (localIterator.hasNext()) {
+      ((Function1)localIterator.next()).invoke(paramColumnInfo);
+    }
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  @JvmStatic
+  public static final void a(@NotNull Function1<? super ColumnInfo, Unit> paramFunction1)
   {
-    ThreadManager.post(new KandianOx210MsgInfo.Biu0x210Msg.1(this, paramQQAppInterface), 8, null, false);
+    Intrinsics.checkParameterIsNotNull(paramFunction1, "listener");
+    jdField_a_of_type_JavaUtilList.add(paramFunction1);
+  }
+  
+  @JvmStatic
+  public static final void b(@NotNull Function1<? super ColumnInfo, Unit> paramFunction1)
+  {
+    Intrinsics.checkParameterIsNotNull(paramFunction1, "listener");
+    jdField_a_of_type_JavaUtilList.remove(paramFunction1);
   }
 }
 

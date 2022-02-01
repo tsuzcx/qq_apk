@@ -1,18 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 
 public class ayfu
-  implements ayjd
+  implements View.OnTouchListener
 {
-  public ayfu(OCRResultActivity paramOCRResultActivity) {}
+  public ayfu(StuffContainerView paramStuffContainerView, GestureDetector paramGestureDetector) {}
   
-  public void a(int paramInt, ayje paramayje)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((!TextUtils.isEmpty(OCRResultActivity.b(this.a))) && (!OCRResultActivity.b(this.a).equals(paramayje.b)))
-    {
-      OCRResultActivity.b(this.a, paramayje.b);
-      OCRResultActivity.a(this.a, false);
-    }
+    return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
   }
 }
 

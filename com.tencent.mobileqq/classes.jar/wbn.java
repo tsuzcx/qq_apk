@@ -1,34 +1,24 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
-import com.tencent.biz.qqcircle.widgets.multiTouchImage.PhotoViewAttacher;
+import com.tencent.biz.qqcircle.widgets.QCirclePushRankItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import feedcloud.FeedCloudMeta.StUser;
+import qqcircle.QQCircleDitto.StItemContainer;
 
 public class wbn
-  implements GestureDetector.OnDoubleTapListener
+  implements wak
 {
-  public wbn(PhotoViewAttacher paramPhotoViewAttacher) {}
+  public wbn(QCirclePushRankItemView paramQCirclePushRankItemView, QQCircleDitto.StItemContainer paramStItemContainer) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
   {
-    if (PhotoViewAttacher.a(this.a) != null) {
-      PhotoViewAttacher.a(this.a).a();
+    vud localvud = vud.a();
+    vuf localvuf = new vuf().a("followbutton");
+    if (paramBoolean) {}
+    for (String str = "follow";; str = "unfollow")
+    {
+      localvud.a(localvuf.b(str).a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushRankItemView.a()).c(paramStUser.id.get()).d(this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer.containerType.get() + ""));
+      return;
     }
-    return false;
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    this.a.a();
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    if (PhotoViewAttacher.a(this.a) != null) {
-      PhotoViewAttacher.a(this.a).a(PhotoViewAttacher.a(this.a), f1, f2);
-    }
-    return false;
   }
 }
 

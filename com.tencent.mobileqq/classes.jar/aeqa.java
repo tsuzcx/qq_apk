@@ -1,29 +1,37 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class aeqa
-  implements Handler.Callback
+  implements bliz
 {
-  public aeqa(NearbyActivity paramNearbyActivity) {}
+  public aeqa(FriendProfileCardActivity paramFriendProfileCardActivity, blir paramblir) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramMessage.what)
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt == null) || (paramInt >= this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt.length)) {
+      return;
+    }
+    switch (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[paramInt])
     {
     }
     for (;;)
     {
-      return false;
-      if (!this.a.c)
+      try
       {
-        this.a.g();
-        this.a.b.removeMessages(1000);
-        this.a.b.sendEmptyMessageDelayed(1000, this.a.n);
-        continue;
-        NearbyActivity.a(this.a);
+        this.jdField_a_of_type_Blir.dismiss();
+        this.jdField_a_of_type_Blir.a(null);
+        return;
       }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo);
     }
   }
 }

@@ -1,143 +1,183 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.ActionSheetHelper.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.core.ViolaInstance;
-import java.lang.ref.WeakReference;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.qzone.util.NetworkState;
+import java.util.List;
 
-public class tmt
-  implements bkia
+class tmt
+  extends pfh
 {
-  public static String a;
-  private int jdField_a_of_type_Int;
-  private bkho jdField_a_of_type_Bkho;
-  private WeakReference<BridgeModule> jdField_a_of_type_JavaLangRefWeakReference;
-  public boolean a;
+  tmt(tmr paramtmr) {}
   
-  static
+  public void a(Object paramObject, int paramInt, boolean paramBoolean, String... paramVarArgs)
   {
-    jdField_a_of_type_JavaLangString = "BridgeModule.ActionSheetHelper";
-  }
-  
-  public tmt(BridgeModule paramBridgeModule)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBridgeModule);
-  }
-  
-  private void b(JSONObject paramJSONObject, String paramString)
-  {
-    int k = 0;
-    if ((paramJSONObject == null) || (this.jdField_a_of_type_JavaLangRefWeakReference == null)) {}
+    if (paramInt == 101) {
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+    }
     Object localObject1;
-    do
-    {
-      return;
-      localObject1 = ((BridgeModule)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getViolaInstance().getActivity();
-    } while (localObject1 == null);
-    for (;;)
-    {
-      int n;
-      try
+    int j;
+    int i;
+    int k;
+    label80:
+    Object localObject3;
+    Object localObject2;
+    int m;
+    while (paramInt != 110) {
+      for (;;)
       {
-        localObject1 = bkho.a((Context)localObject1);
-        Object localObject2 = paramJSONObject.optString("title");
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          ((bkho)localObject1).a((CharSequence)localObject2);
-        }
-        localObject2 = paramJSONObject.optJSONArray("items");
-        int m = paramJSONObject.optInt("selected", -1);
-        this.jdField_a_of_type_Boolean = false;
-        String str = paramJSONObject.optString("close");
-        if (TextUtils.isEmpty(str)) {
-          break label367;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        ((bkho)localObject1).a(str, 3);
-        i = 1;
-        j = i;
-        if (localObject2 != null)
+        return;
+        paramObject = (ReadInJoyXListView)this.a.a().a();
+        localObject1 = this.a.a().a();
+        if ((paramObject != null) && (localObject1 != null))
         {
-          j = i;
-          if (((JSONArray)localObject2).length() > 0)
+          paramVarArgs = paramVarArgs[0];
+          try
           {
-            n = ((JSONArray)localObject2).length();
-            j = k;
-            if (m >= 0)
+            j = paramObject.getHeaderViewsCount();
+            i = paramObject.getFirstVisiblePosition();
+            k = paramObject.getLastVisiblePosition();
+            paramInt = i;
+            if (paramInt <= k)
             {
-              j = k;
-              if (m < n)
-              {
-                j = 0;
-                if (j >= n) {
-                  break label378;
-                }
-                str = ((JSONArray)localObject2).getString(j);
-                if (j != m) {
-                  break label372;
-                }
-                bool = true;
-                ((bkho)localObject1).a(str, bool);
-                j += 1;
-                continue;
+              if ((paramInt < j) || (paramInt - j >= ((List)localObject1).size())) {
+                break label717;
               }
+              localObject3 = (BaseArticleInfo)((List)localObject1).get(paramInt - j);
+              localObject2 = paramObject.getChildAt(paramInt - i);
+              if (!AdvertisementInfo.isAdvertisementInfo((BaseArticleInfo)localObject3)) {
+                break label717;
+              }
+              localObject3 = (AdvertisementInfo)localObject3;
+              m = tqa.a((AdvertisementInfo)localObject3);
+              String str = tqa.a((AdvertisementInfo)localObject3);
+              if ((m != 1) || (!paramVarArgs.equals(str)) || (!(localObject2 instanceof ProteusItemView))) {
+                break label717;
+              }
+              localObject2 = ((ProteusItemView)localObject2).a().getVirtualView().findViewBaseByName("id_view_AdDownloadView");
+              if ((localObject2 == null) || (!(localObject2 instanceof tse))) {
+                break label717;
+              }
+              ((tse)localObject2).a(true, (AdvertisementInfo)localObject3, paramVarArgs);
             }
-            if (j >= n) {
-              break label378;
-            }
-            ((bkho)localObject1).c(((JSONArray)localObject2).getString(j));
-            j += 1;
-            continue;
+          }
+          catch (Exception paramObject)
+          {
+            return;
           }
         }
-        paramJSONObject = paramJSONObject.optString("cancel");
-        if (!TextUtils.isEmpty(paramJSONObject)) {
-          ((bkho)localObject1).d(paramJSONObject);
-        }
-        ((bkho)localObject1).a(new tmu(this, paramString));
-        ((bkho)localObject1).a(new tmv(this, paramString));
-        ((bkho)localObject1).setOnCancelListener(new tmw(this, paramString));
-        ((bkho)localObject1).a(this);
-        this.jdField_a_of_type_Bkho = ((bkho)localObject1);
-        this.jdField_a_of_type_Int = j;
-        this.jdField_a_of_type_Bkho.show();
-        return;
       }
-      catch (JSONException paramJSONObject) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        paramObject = (ReadInJoyXListView)this.a.a().a();
+        paramVarArgs = this.a.a().a();
+        k = paramObject.getHeaderViewsCount();
+        j = paramObject.getFirstVisiblePosition();
+        m = paramObject.getLastVisiblePosition();
+        paramInt = j;
+        if (paramInt > m) {
+          break;
+        }
+        if ((paramInt < k) || (paramInt - k >= paramVarArgs.size())) {
+          break label724;
+        }
+        localObject1 = (BaseArticleInfo)paramVarArgs.get(paramInt - k);
+        localObject2 = paramObject.getChildAt(paramInt - j);
+        if (!AdvertisementInfo.isAdvertisementInfo((BaseArticleInfo)localObject1)) {
+          break label724;
+        }
+        localObject3 = (AdvertisementInfo)localObject1;
+        if (!((AdvertisementInfo)localObject3).isHideForAnimate) {
+          break label724;
+        }
+        if (paramBoolean) {
+          break label640;
+        }
+        i = 4;
+        localObject2 = ((ProteusItemView)localObject2).a().getVirtualView();
+        if (((AdvertisementInfo)localObject3).mImaxShowAdType != 1001) {
+          break label679;
+        }
+        localObject3 = ((ViewBase)localObject2).findViewBaseByName("id_article_large_imge");
+        if (localObject3 != null) {
+          ((ViewBase)localObject3).getNativeView().setVisibility(i);
+        }
+        localObject3 = ((ViewBase)localObject2).findViewBaseByName("id_large_video_icon");
+        if (localObject3 != null) {
+          ((ViewBase)localObject3).getNativeView().setVisibility(4);
+        }
+        if ((!NetworkState.isWifiConn()) || (i != 0)) {
+          break label652;
+        }
+        if (localObject3 != null) {
+          ((ViewBase)localObject3).getNativeView().setVisibility(i);
+        }
+        localObject3 = ((ViewBase)localObject2).findViewBaseByName("id_view_Ad_CompleteGudie");
+        if (localObject3 != null) {
+          ((ViewBase)localObject3).getNativeView().setVisibility(4);
+        }
+        localObject3 = ((ViewBase)localObject2).findViewBaseByName("id_large_video_activity_img");
+        if (localObject3 != null) {
+          ((ViewBase)localObject3).getNativeView().setVisibility(4);
+        }
+        localObject3 = ((ViewBase)localObject2).findViewBaseByName("id_large_video_cover");
+        if (localObject3 != null) {
+          ((ViewBase)localObject3).getNativeView().setVisibility(i);
+        }
+        localObject3 = ((ViewBase)localObject2).findViewBaseByName("id_large_video_duration");
+        if (localObject3 != null) {
+          ((ViewBase)localObject3).getNativeView().setVisibility(i);
+        }
+        if (!((AdvertisementInfo)localObject1).isIMaxAndNewStyle) {
+          break label724;
+        }
+        localObject1 = ((ViewBase)localObject2).findViewBaseByName("id_artilce_title");
+        if (localObject1 == null) {
+          break label724;
+        }
+        ((ViewBase)localObject1).getNativeView().setVisibility(i);
+      }
+      catch (Exception paramObject) {}
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "showActionSheet error:" + paramJSONObject.getMessage());
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "error  =>" + paramObject.getMessage());
       return;
-      label367:
-      int i = 0;
+      label640:
+      ((AdvertisementInfo)localObject3).isHideForAnimate = false;
+      i = 0;
       continue;
-      label372:
-      boolean bool = false;
-      continue;
-      label378:
-      int j = i + n;
+      label652:
+      localObject3 = ((ViewBase)localObject2).findViewBaseByName("id_video_bg");
+      if (localObject3 != null)
+      {
+        ((ViewBase)localObject3).getNativeView().setVisibility(i);
+        continue;
+        label679:
+        if (((AdvertisementInfo)localObject3).mImaxShowAdType == 1002)
+        {
+          localObject1 = ((ViewBase)localObject2).findViewBaseByName("id_article_double_image");
+          if (localObject1 != null)
+          {
+            ((ViewBase)localObject1).getNativeView().setVisibility(i);
+            break label724;
+            label717:
+            paramInt += 1;
+            break label80;
+          }
+        }
+        label724:
+        paramInt += 1;
+      }
     }
   }
-  
-  public void a(JSONObject paramJSONObject, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      return;
-    }
-    if (Looper.myLooper() == null) {
-      Looper.prepare();
-    }
-    new Handler(BaseActivity.sTopActivity.getMainLooper()).post(new ActionSheetHelper.1(this, paramJSONObject, paramString));
-  }
-  
-  public void ak_() {}
 }
 
 

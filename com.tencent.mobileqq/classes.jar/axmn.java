@@ -1,9 +1,9 @@
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class axmn
-  implements axki
+public abstract interface axmn
 {
-  public axmn(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public abstract void b(View paramView, MotionEvent paramMotionEvent);
 }
 
 

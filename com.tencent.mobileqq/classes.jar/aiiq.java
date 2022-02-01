@@ -1,25 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3;
 
-public abstract class aiiq
-  implements aiiu
+class aiiq
+  implements Animator.AnimatorListener
 {
-  protected QQAppInterface a;
+  aiiq(aiip paramaiip) {}
   
-  public aiiq(QQAppInterface paramQQAppInterface)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public void a() {}
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface = aijp.a(paramQQAppInterface);
-    if (paramQQAppInterface != null) {
-      return paramQQAppInterface.a(paramString);
+    if (aiim.a(this.a.a.this$0) != null) {
+      aiim.a(this.a.a.this$0).setVisibility(0);
     }
-    return false;
+    if (aiim.a(this.a.a.this$0) != null) {
+      aiim.a(this.a.a.this$0).setVisibility(4);
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

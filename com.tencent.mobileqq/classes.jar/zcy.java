@@ -1,83 +1,36 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
 
-public class zcy
+class zcy
+  implements TextWatcher
 {
-  public Handler a;
-  public HandlerThread a;
-  public zcz a;
+  zcy(zcx paramzcx) {}
   
-  public zcy()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("MediaCodecThumbnailGenerator");
-  }
-  
-  private float a(Bitmap paramBitmap)
-  {
-    int i1 = paramBitmap.getHeight() / 16;
-    int i2 = paramBitmap.getWidth() / 9;
-    int k = 0;
-    int i = 0;
-    int j = 0;
-    while (k < paramBitmap.getHeight())
+    if (this.a.jdField_a_of_type_Zdb != null)
     {
-      int m = 0;
-      if (m < paramBitmap.getWidth())
-      {
-        int n = paramBitmap.getPixel(m, k);
-        if (((n >> 16 & 0xFF) < 10) && ((n >> 8 & 0xFF) < 10) && ((n & 0xFF) < 10))
-        {
-          n = j + 1;
-          j = i;
-        }
-        for (i = n;; i = n)
-        {
-          n = m + i2;
-          m = i;
-          i = j;
-          j = m;
-          m = n;
-          break;
-          n = j;
-          j = i + 1;
-        }
-      }
-      k += i1;
+      this.a.jdField_a_of_type_Zbw.a = paramEditable.toString();
+      this.a.jdField_a_of_type_Zdb.a(this.a.jdField_a_of_type_Zbw);
     }
-    float f = j / (i + j);
-    yqp.c("MediaCodecThumbnailGen", "whitePixelCount = " + i + " blackPixelCount = " + j);
-    return f;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Zcz = new zcz(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.myLooper());
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2, zcw<Boolean, zdc> paramzcw, zcw<Boolean, zdb> paramzcw1)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    zda localzda = new zda();
-    localzda.jdField_a_of_type_JavaLangString = paramString1;
-    localzda.jdField_b_of_type_JavaLangString = paramString2;
-    localzda.jdField_a_of_type_Boolean = paramBoolean1;
-    localzda.jdField_a_of_type_Int = paramInt1;
-    localzda.jdField_b_of_type_Int = paramInt2;
-    localzda.c = paramInt3;
-    localzda.d = paramInt4;
-    localzda.jdField_b_of_type_Boolean = paramBoolean2;
-    localzda.jdField_b_of_type_Zcw = paramzcw;
-    localzda.jdField_a_of_type_Zcw = paramzcw1;
-    Message.obtain(this.jdField_a_of_type_Zcz, 1, localzda).sendToTarget();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+    if (this.a.jdField_a_of_type_Zdb == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.a(paramCharSequence.toString()) <= 420);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setText(paramCharSequence.subSequence(0, paramInt1));
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setSelection(paramInt1);
+    } while (this.a.jdField_a_of_type_Zdb == null);
+    this.a.jdField_a_of_type_Zdb.b(420);
   }
 }
 

@@ -1,125 +1,243 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqcircle.bizparts.danmaku.text.TextCell;
+import android.content.Context;
+import android.graphics.Point;
+import com.tencent.biz.qqcircle.bizparts.danmaku.core.PhotoDanmakuDrawer;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
-import java.util.regex.Pattern;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.TreeSet;
 
 public class vha
+  extends vgq
 {
-  public static final int a = bgtn.a(17.0F);
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private vhb[] jdField_a_of_type_ArrayOfVhb;
+  private List<List<vhb>> b;
+  private final int c;
+  private int d;
   
-  public static String a(String paramString)
+  protected vha(Context paramContext, vjl paramvjl, vgp paramvgp, Comparator<vhb> paramComparator)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    Object localObject = a(null, paramString, a, false);
-    paramString = new StringBuilder();
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      String str = ((TextCell)((Iterator)localObject).next()).getText();
-      if (str != null) {
-        paramString.append(str);
-      }
-    }
-    return paramString.toString();
+    super(paramContext, paramvjl, paramvgp, paramComparator);
+    this.c = paramvgp.k;
   }
   
-  public static ArrayList<TextCell> a(vhc paramvhc, CharSequence paramCharSequence, int paramInt, boolean paramBoolean)
+  private void b(vhb paramvhb)
   {
-    return a(paramvhc, paramCharSequence, paramInt, paramBoolean, true, -1);
-  }
-  
-  public static ArrayList<TextCell> a(vhc paramvhc, CharSequence paramCharSequence, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    return a(paramvhc, paramCharSequence, paramInt, paramBoolean1, paramBoolean2, -1);
-  }
-  
-  public static ArrayList<TextCell> a(vhc paramvhc, CharSequence paramCharSequence, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
-  {
-    Object localObject;
-    if (TextUtils.isEmpty(paramCharSequence)) {
-      localObject = new ArrayList();
+    if (!paramvhb.a()) {
+      paramvhb.b(this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer);
     }
-    int j;
-    do
-    {
-      ArrayList localArrayList;
-      do
-      {
-        return localObject;
-        j = paramCharSequence.hashCode();
-        if (!paramBoolean2) {
-          break;
-        }
-        localArrayList = vhd.a().a(j);
-        if (localArrayList == null) {
-          break;
-        }
-        localObject = localArrayList;
-      } while (!localArrayList.isEmpty());
-      new ArrayList();
-      int i = paramInt2;
-      if (paramInt2 == -1) {
-        i = paramInt1 - bgtn.b(1.5F);
-      }
-      paramvhc = b(paramvhc, paramCharSequence, i, paramBoolean1);
-      localObject = paramvhc;
-    } while (!paramBoolean2);
-    vhd.a().a(j, paramvhc);
-    return paramvhc;
   }
   
-  private static ArrayList<TextCell> b(vhc paramvhc, CharSequence paramCharSequence, int paramInt, boolean paramBoolean)
+  public vhb a(vgz paramvgz)
   {
-    ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList3 = new ArrayList(5);
-    localArrayList3.add(new vfh(paramvhc, Pattern.compile("\\[em\\]e\\d{1,}\\[/em\\]", 2)));
-    localArrayList3.add(new vfg(vgb.i));
-    localArrayList3.add(new vfh(paramvhc, vgb.l));
-    localArrayList3.add(new vfi(paramvhc, vgb.k));
-    Object localObject = localArrayList3.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((vfj)((Iterator)localObject).next()).a(paramCharSequence.toString());
-    }
-    int k = paramCharSequence.length();
-    localObject = new StringBuilder(k);
+    int j = this.jdField_b_of_type_JavaUtilList.size();
     int i = 0;
-    if (i < k)
+    while (i < j)
     {
-      Iterator localIterator = localArrayList3.iterator();
+      Iterator localIterator = ((List)this.jdField_b_of_type_JavaUtilList.get(i)).iterator();
       while (localIterator.hasNext())
       {
-        vfj localvfj = (vfj)localIterator.next();
-        if (localvfj.a(i))
+        vhb localvhb = (vhb)localIterator.next();
+        if ((localvhb.d()) && (localvhb.a(paramvgz.jdField_a_of_type_AndroidGraphicsPoint.x, paramvgz.jdField_a_of_type_AndroidGraphicsPoint.y, paramvgz.jdField_a_of_type_Int, paramvgz.jdField_a_of_type_Long)))
         {
-          if (((StringBuilder)localObject).length() > 0)
+          localvhb.b(true);
+          return localvhb;
+        }
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    int j = 0;
+    super.a();
+    if (this.jdField_a_of_type_ArrayOfInt == null)
+    {
+      this.d = this.jdField_a_of_type_Vgp.f;
+      this.jdField_a_of_type_ArrayOfInt = new int[this.d];
+      this.jdField_a_of_type_ArrayOfVhb = new vhb[this.d];
+      this.jdField_b_of_type_JavaUtilList = new ArrayList();
+      i = 0;
+      while (i < this.d)
+      {
+        LinkedList localLinkedList = new LinkedList();
+        this.jdField_b_of_type_JavaUtilList.add(localLinkedList);
+        i += 1;
+      }
+    }
+    int k = (int)(PhotoDanmakuDrawer.a(this.jdField_a_of_type_Vgp) + 0.99999F);
+    int i = j;
+    while (i < this.d)
+    {
+      this.jdField_a_of_type_ArrayOfInt[i] = (i * k + this.jdField_a_of_type_Int);
+      i += 1;
+    }
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeSet.iterator();
+    int i = 0;
+    vhb localvhb;
+    int k;
+    int j;
+    label86:
+    int n;
+    int m;
+    for (;;)
+    {
+      if (localIterator.hasNext())
+      {
+        localvhb = (vhb)localIterator.next();
+        b(localvhb);
+        localIterator.remove();
+        if (localvhb.c())
+        {
+          this.jdField_a_of_type_JavaUtilList.add(localvhb);
+        }
+        else
+        {
+          int i1 = localvhb.a(this.d);
+          k = 2147483647;
+          j = i1;
+          if (j >= this.d + i1) {
+            break label433;
+          }
+          n = j;
+          while (n >= this.d) {
+            n -= this.d;
+          }
+          if (this.jdField_a_of_type_ArrayOfVhb[n] == null)
           {
-            localArrayList2.add(new TextCell(0, ((StringBuilder)localObject).toString()));
-            ((StringBuilder)localObject).delete(0, ((StringBuilder)localObject).length());
+            this.jdField_a_of_type_ArrayOfVhb[n] = localvhb;
+            ((List)this.jdField_b_of_type_JavaUtilList.get(n)).add(localvhb);
+            this.jdField_b_of_type_Int += 1;
+            localvhb.a(this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer, this.c, this.jdField_a_of_type_ArrayOfInt[n]);
+            m = 1;
+            j = i;
+            i = m;
           }
-          localArrayList1.clear();
-          localArrayList1 = localvfj.a(paramInt, paramBoolean, paramvhc, paramCharSequence, localArrayList1);
-          if (localArrayList1 != null) {
-            localArrayList2.addAll(localArrayList1);
-          }
-          i = localvfj.a() - 1;
         }
       }
     }
-    for (int j = 1;; j = 0)
+    for (;;)
     {
-      if (j == 0) {
-        ((StringBuilder)localObject).append(paramCharSequence.charAt(i));
+      m = i;
+      if (i == 0)
+      {
+        m = i;
+        if (localvhb.a(k))
+        {
+          this.jdField_a_of_type_ArrayOfVhb[j] = localvhb;
+          ((List)this.jdField_b_of_type_JavaUtilList.get(j)).add(localvhb);
+          this.jdField_b_of_type_Int += 1;
+          localvhb.a(this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer, this.c, this.jdField_a_of_type_ArrayOfInt[j]);
+          m = 1;
+        }
+      }
+      if (m == 0) {
+        this.jdField_a_of_type_JavaUtilList.add(localvhb);
+      }
+      i = j;
+      break;
+      int i2 = vjk.a(this.jdField_a_of_type_ArrayOfVhb[n], localvhb, localvhb.a().a());
+      m = k;
+      if (i2 < k)
+      {
+        i = n;
+        m = i2;
+      }
+      if (m < 0)
+      {
+        this.jdField_a_of_type_ArrayOfVhb[n] = localvhb;
+        ((List)this.jdField_b_of_type_JavaUtilList.get(n)).add(localvhb);
+        this.jdField_b_of_type_Int += 1;
+        localvhb.a(this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer, this.c, this.jdField_a_of_type_ArrayOfInt[n]);
+        j = i;
+        i = 1;
+        k = m;
+      }
+      else
+      {
+        j += 1;
+        k = m;
+        break label86;
+        return;
+        label433:
+        j = i;
+        i = 0;
+      }
+    }
+  }
+  
+  public void c()
+  {
+    int j = this.jdField_b_of_type_JavaUtilList.size();
+    int i = 0;
+    while (i < j)
+    {
+      Iterator localIterator = ((List)this.jdField_b_of_type_JavaUtilList.get(i)).iterator();
+      while (localIterator.hasNext())
+      {
+        vhb localvhb = (vhb)localIterator.next();
+        b(localvhb);
+        if ((localvhb.c()) || (!localvhb.b()))
+        {
+          if (localvhb == this.jdField_a_of_type_ArrayOfVhb[i]) {
+            this.jdField_a_of_type_ArrayOfVhb[i] = null;
+          }
+          localIterator.remove();
+          this.jdField_b_of_type_Int -= 1;
+          this.jdField_a_of_type_JavaUtilList.add(localvhb);
+        }
       }
       i += 1;
-      break;
-      if (((StringBuilder)localObject).length() > 0) {
-        localArrayList2.add(new TextCell(0, ((StringBuilder)localObject).toString()));
+    }
+  }
+  
+  public void d()
+  {
+    int j = this.jdField_b_of_type_JavaUtilList.size();
+    int i = 0;
+    while (i < j)
+    {
+      Iterator localIterator = ((List)this.jdField_b_of_type_JavaUtilList.get(i)).iterator();
+      while (localIterator.hasNext())
+      {
+        vhb localvhb = (vhb)localIterator.next();
+        localvhb.c();
+        localvhb.a(this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer);
       }
-      return localArrayList2;
+      i += 1;
+    }
+  }
+  
+  public void e()
+  {
+    int j = 0;
+    int i = 0;
+    while (i < this.d)
+    {
+      this.jdField_a_of_type_ArrayOfVhb[i] = null;
+      i += 1;
+    }
+    int k = this.jdField_b_of_type_JavaUtilList.size();
+    i = j;
+    while (i < k)
+    {
+      Iterator localIterator = ((List)this.jdField_b_of_type_JavaUtilList.get(i)).iterator();
+      while (localIterator.hasNext())
+      {
+        vhb localvhb = (vhb)localIterator.next();
+        localIterator.remove();
+        this.jdField_b_of_type_Int -= 1;
+        this.jdField_a_of_type_JavaUtilList.add(localvhb);
+      }
+      i += 1;
     }
   }
 }

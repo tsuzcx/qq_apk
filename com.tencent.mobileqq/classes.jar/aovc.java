@@ -1,20 +1,41 @@
-class aovc
-  extends aptj
+public class aovc
+  implements aouy
 {
-  aovc(aovb paramaovb) {}
-  
-  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
+  public void a(aocj paramaocj, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, aock paramaock)
   {
-    if (aovb.a(this.a) != null) {
-      aovb.a(this.a).a(paramArrayOfFloat);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 6008: 
+      paramaocj.l(paramBoolean);
+      return;
+    case 8015: 
+      paramaocj.h(paramBoolean, paramObject);
+      return;
+    case 6014: 
+      paramaocj.d(paramArrayOfObject);
+      return;
+    case 6016: 
+      paramaocj.e(paramArrayOfObject);
+      return;
+    case 8003: 
+      paramaocj.m(paramBoolean, paramObject);
+      return;
+    case 8011: 
+      paramaocj.n(paramBoolean, paramObject);
+      return;
+    case 8004: 
+      paramaocj.o(paramBoolean, paramObject);
+      return;
+    case 8007: 
+      paramaocj.j(paramBoolean, paramArrayOfObject);
+      return;
+    case 8013: 
+      paramaocj.k(paramBoolean, paramArrayOfObject);
+      return;
     }
-  }
-  
-  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    if (aovb.a(this.a) != null) {
-      aovb.a(this.a).a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    }
+    paramaocj.a((Long[])paramObject);
   }
 }
 

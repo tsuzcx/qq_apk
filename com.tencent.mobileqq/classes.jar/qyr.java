@@ -1,49 +1,17 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.protofile.oidb_0xe1f.oidb_0xe1f.RspBody;
-import com.tencent.qphone.base.util.QLog;
-
 public class qyr
-  extends niv
 {
-  public qyr(RIJRedPacketManager paramRIJRedPacketManager, qyx paramqyx) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
+  public long c;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public String toString()
   {
-    QLog.i("RIJRedPacketManager", 1, "yyy_0xe1f error code: " + paramInt);
-    if (paramInt == 0) {
-      paramBundle = new oidb_0xe1f.RspBody();
-    }
-    for (;;)
-    {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = "";
-        if (!paramBundle.have_redpacket.has()) {
-          break label182;
-        }
-        bool = paramBundle.have_redpacket.get();
-        if (paramBundle.id.has()) {
-          paramArrayOfByte = paramBundle.id.get();
-        }
-        this.jdField_a_of_type_Qyx.a(bool, paramArrayOfByte);
-        QLog.i("RIJRedPacketManager", 1, "yyy_0xe1f rsp: hasRedPacket: " + bool + " \n packetId:  I can not tell you.\n");
-        return;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        this.jdField_a_of_type_Qyx.a(false, "");
-        QLog.i("RIJRedPacketManager", 1, "yyy_0xe1f error: " + paramArrayOfByte.toString());
-        return;
-      }
-      this.jdField_a_of_type_Qyx.a(false, "");
-      return;
-      label182:
-      boolean bool = false;
-    }
+    return "RedPoint{isShow=" + this.jdField_a_of_type_Boolean + ", startTimestamp=" + this.jdField_a_of_type_Long + ", animationTimestamp=" + this.jdField_c_of_type_Long + ", endTimestamp=" + this.jdField_b_of_type_Long + ", type=" + this.jdField_a_of_type_Int + ", titleText=" + this.jdField_a_of_type_JavaLangString + ", titleColor=" + this.jdField_b_of_type_Int + ", titleBgColor=" + this.jdField_c_of_type_Int + '}';
   }
 }
 

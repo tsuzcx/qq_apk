@@ -1,17 +1,16 @@
-import android.app.Activity;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class ahsg
-  implements EIPCResultCallback
+public class ahsg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ahsg(ahsd paramahsd) {}
+  public ahsg(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (-102 == paramEIPCResult.code) {
-      ahsd.r(this.a).finish();
-    }
+    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

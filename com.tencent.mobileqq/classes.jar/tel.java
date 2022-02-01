@@ -1,41 +1,33 @@
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class tel
+  implements rff
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public tel(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
   
-  public tel(String paramString)
+  public void a(int paramInt, String paramString)
   {
-    this.a = paramString;
-  }
-  
-  public void a(String paramString)
-  {
-    this.d = paramString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == this) {}
-    do
+    try
     {
-      return true;
-      if ((paramObject instanceof tel)) {
-        return false;
+      JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
+      if (paramInt == 0) {}
+      for (paramInt = 0;; paramInt = -1)
+      {
+        localJSONObject.put("errCode", paramInt);
+        this.jdField_a_of_type_OrgJsonJSONObject.put("errMsg", paramString);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeJS(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
+        return;
       }
-      paramObject = (tel)paramObject;
-      if ((this.b == null) || (!this.b.equals(paramObject.b))) {
-        break;
-      }
-    } while ((this.c != null) && (this.c.equals(paramObject.c)));
-    return false;
-    return false;
-  }
-  
-  public String toString()
-  {
-    return " bid :" + this.b + " localPath:" + this.c + "  ";
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeJS(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
+      QLog.e(BridgeModule.TAG, 1, "oidb_0xe2a error! e = " + paramString.toString());
+    }
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.qqcircle.adapter;
 
-import uyc;
+import uzl;
 
 public class QCircleCommentPanelBlock$1
   implements Runnable
 {
-  public QCircleCommentPanelBlock$1(uyc paramuyc, boolean paramBoolean) {}
+  public QCircleCommentPanelBlock$1(uzl paramuzl, boolean paramBoolean) {}
   
   public void run()
   {
     if (this.a) {
-      uyc.a(this.this$0);
+      uzl.a(this.this$0);
     }
     this.this$0.notifyDataSetChanged();
   }

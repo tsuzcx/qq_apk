@@ -1,16 +1,17 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.vip.manager.FileBannerTianshuManger.4;
 
-class bnvv
-  implements Observer<Boolean>
+public class bnvv
+  implements View.OnClickListener
 {
-  bnvv(bnvr parambnvr) {}
+  public bnvv(FileBannerTianshuManger.4 param4) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean.booleanValue()) {
-      bnvr.a(this.a).d();
-    }
+    this.a.this$0.a(this.a.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

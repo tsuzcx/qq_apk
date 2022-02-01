@@ -1,31 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.os.Handler;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3.4.1;
 
-class bfue
-  extends niv
+public class bfue
+  implements bdyi
 {
-  bfue(bftx parambftx, bfuf parambfuf) {}
+  public bfue(TroopEnterEffectController.3 param3) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a()
   {
-    paramBundle = new cmd0x934.RspBody();
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
+    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView != null)
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_Bfuf.a(paramInt, paramBundle);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
-        }
-      }
+      this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.n();
+      this.a.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.3.4.1(this));
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import anni;
+import anzj;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class MessageForTroopPobing
@@ -14,7 +14,7 @@ public class MessageForTroopPobing
   
   public static String buildCompatibleText()
   {
-    return anni.a(2131705397);
+    return anzj.a(2131705504);
   }
   
   public void doParse()
@@ -32,7 +32,7 @@ public class MessageForTroopPobing
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return anni.a(2131705356);
+      return anzj.a(2131705463);
     }
     return this.msg;
   }

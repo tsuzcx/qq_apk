@@ -16,13 +16,14 @@ public class TroopTagViewActivity
   protected int a;
   protected String a;
   protected boolean a;
+  public int b;
   protected String b;
   protected String c;
   public String d;
-  public int e = 1;
   
   public TroopTagViewActivity()
   {
+    this.jdField_b_of_type_Int = 1;
     this.jdField_a_of_type_JavaLangClass = TroopTagViewActivity.TroopTagViewFragment.class;
   }
   
@@ -54,7 +55,7 @@ public class TroopTagViewActivity
       return true;
     }
     this.jdField_a_of_type_Int = localBundle.getInt("act_type", 3);
-    this.b = localBundle.getString("tags");
+    this.jdField_b_of_type_JavaLangString = localBundle.getString("tags");
     if (localBundle.containsKey("subclass")) {}
     for (this.c = localBundle.getString("subclass");; this.c = "")
     {
@@ -68,14 +69,14 @@ public class TroopTagViewActivity
     this.jdField_a_of_type_Boolean = localBundle.getBoolean("isAdmin");
     localIntent.putExtra("hide_operation_bar", true);
     String str;
-    if (TextUtils.isEmpty(this.b))
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
       str = "";
-      this.e = localBundle.getInt("modifyToSrv", 1);
+      this.jdField_b_of_type_Int = localBundle.getInt("modifyToSrv", 1);
       if (this.jdField_a_of_type_Int != 1) {
         break label263;
       }
-      localIntent.putExtra("url", String.format("https://web.qun.qq.com/tag/index.html?_bid=146&t=%d#tags=%s&gc=%s&base=%s&modifyToSrv=%s", new Object[] { Long.valueOf(System.currentTimeMillis() / 1000L), str, this.jdField_a_of_type_JavaLangString, this.c, Integer.valueOf(this.e) }));
+      localIntent.putExtra("url", String.format("https://web.qun.qq.com/tag/index.html?_bid=146&t=%d#tags=%s&gc=%s&base=%s&modifyToSrv=%s", new Object[] { Long.valueOf(System.currentTimeMillis() / 1000L), str, this.jdField_a_of_type_JavaLangString, this.c, Integer.valueOf(this.jdField_b_of_type_Int) }));
     }
     for (;;)
     {
@@ -83,11 +84,11 @@ public class TroopTagViewActivity
       super.doOnCreate(paramBundle);
       localIntent.putExtra("act_type", 3);
       return true;
-      str = URLEncoder.encode(this.b).replace("+", "%20");
+      str = URLEncoder.encode(this.jdField_b_of_type_JavaLangString).replace("+", "%20");
       break;
       label263:
       if (this.jdField_a_of_type_Int == 2) {
-        localIntent.putExtra("url", String.format("https://web.qun.qq.com/tag/edit.html?_bid=146#tags=%s&gc=%s&base=%s&modifyToSrv=%s", new Object[] { str, this.jdField_a_of_type_JavaLangString, this.c, Integer.valueOf(this.e) }));
+        localIntent.putExtra("url", String.format("https://web.qun.qq.com/tag/edit.html?_bid=146#tags=%s&gc=%s&base=%s&modifyToSrv=%s", new Object[] { str, this.jdField_a_of_type_JavaLangString, this.c, Integer.valueOf(this.jdField_b_of_type_Int) }));
       } else {
         localIntent.putExtra("url", localBundle.getString("url"));
       }

@@ -1,16 +1,16 @@
 package com.tencent.biz.qqcircle.download;
 
-import vit;
-import viw;
+import vkx;
+import vla;
 
 public class QCircleRichMediaDownLoadManager$2
   implements Runnable
 {
-  public QCircleRichMediaDownLoadManager$2(vit paramvit, viw paramviw) {}
+  public QCircleRichMediaDownLoadManager$2(vkx paramvkx, vla paramvla) {}
   
   public void run()
   {
-    vit.b(this.this$0, this.a);
+    vkx.b(this.this$0, this.a);
   }
 }
 

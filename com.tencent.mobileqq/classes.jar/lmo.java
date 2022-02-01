@@ -1,100 +1,118 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.gaudio.AVObserver.1;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
 
 public class lmo
-  implements Observer
 {
-  Handler a = null;
+  lmj jdField_a_of_type_Lmj = null;
+  lmp jdField_a_of_type_Lmp = null;
+  boolean jdField_a_of_type_Boolean = false;
   
-  protected void a(int paramInt, long paramLong) {}
-  
-  protected void a(int paramInt, long paramLong1, long paramLong2) {}
-  
-  protected void a(int paramInt, String paramString1, String paramString2) {}
-  
-  protected void a(long paramLong1, int paramInt1, long paramLong2, int paramInt2) {}
-  
-  protected void a(long paramLong1, int paramInt, long paramLong2, String paramString) {}
-  
-  public void a(Object paramObject)
+  lmo()
   {
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    switch (i)
-    {
-    default: 
-      int j = ((Integer)paramObject[1]).intValue();
-      long l1 = ((Long)paramObject[2]).longValue();
-      long l2 = ((Long)paramObject[3]).longValue();
-      if (QLog.isDevelopLevel()) {
-        QLog.w("GAudioObserver", 1, "OnUpdate, relationType[" + j + "], discussId[" + l1 + "], memberUin[" + l2 + "], msg[" + i + "]");
-      }
-      a(j, l1, l2);
-      return;
-    case 21: 
-      a(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue());
-      return;
-    case 22: 
-      b(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue());
-      return;
-    case 23: 
-      c(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue());
-      return;
-    case 28: 
-      a(((Integer)paramObject[1]).intValue(), (String)paramObject[2], (String)paramObject[3]);
-      return;
-    case 29: 
-      a((String)paramObject[2], (String)paramObject[3]);
-      return;
-    case 32: 
-      i = ((Integer)paramObject[1]).intValue();
-      a(((Long)paramObject[2]).longValue(), i, ((Long)paramObject[3]).longValue(), ((Integer)paramObject[4]).intValue());
-      return;
-    case 33: 
-      i = ((Integer)paramObject[1]).intValue();
-      a(((Long)paramObject[2]).longValue(), i, ((Long)paramObject[3]).longValue(), (String)paramObject[4]);
-      return;
-    case 36: 
-      a(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue());
-      return;
-    case 37: 
-      b(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue());
-      return;
-    case 408: 
-      a(((Boolean)paramObject[1]).booleanValue(), (String)paramObject[2]);
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, "QavGPDownloader in QQAppInterface");
     }
-    a((String)paramObject[1]);
+    this.jdField_a_of_type_Lmp = new lmp();
   }
   
-  protected void a(String paramString) {}
-  
-  protected void a(String paramString1, String paramString2) {}
-  
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  protected void b(int paramInt, long paramLong) {}
-  
-  protected void b(int paramInt, long paramLong1, long paramLong2) {}
-  
-  protected void c(int paramInt, long paramLong1, long paramLong2) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  static void a(int paramInt)
   {
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
-    {
-      if (this.a == null) {
-        this.a = new Handler(paramObservable);
-      }
-      this.a.post(new AVObserver.1(this, paramObject));
-      return;
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    Intent localIntent = new Intent("tencent.video.qavgameplaysomgr.notify");
+    localIntent.setPackage(localBaseApplicationImpl.getPackageName());
+    localIntent.putExtra("Event_Progress", paramInt);
+    localBaseApplicationImpl.sendBroadcast(localIntent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, "onEnterBackground");
     }
-    a(paramObject);
+    a();
+  }
+  
+  public static void a(String paramString)
+  {
+    if (lmk.a()) {
+      lmk.a().a.b(paramString);
+    }
+  }
+  
+  public static void a(lmj paramlmj)
+  {
+    SharedPreferences localSharedPreferences = lmr.a();
+    paramlmj = paramlmj.b;
+    localSharedPreferences.edit().putString("so_zip_md5", paramlmj).commit();
+  }
+  
+  public static boolean a()
+  {
+    return lmk.a().a.b();
+  }
+  
+  private boolean b()
+  {
+    QLog.d("QavGPDownloadManager", 4, "innerDownload, start");
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      if (((QQAppInterface)localObject).getManager(21) == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("QavGPDownloadManager", 4, "innerDownload, getNetEngine 为空");
+        }
+        return false;
+      }
+    }
+    else
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavGPDownloadManager", 4, "appRuntime 不是 QQAppInterface");
+      }
+      return false;
+    }
+    if (this.jdField_a_of_type_Lmj == null) {
+      this.jdField_a_of_type_Lmj = lmj.a();
+    }
+    localObject = this.jdField_a_of_type_Lmj;
+    if (localObject == null)
+    {
+      QLog.d("QavGPDownloadManager", 2, "downloadInfo == null");
+      this.jdField_a_of_type_Boolean = true;
+      return false;
+    }
+    if (11 == lmr.a((lmj)localObject)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (bool)
+      {
+        QLog.d("QavGPDownloadManager", 2, "downloadTask.start");
+        return this.jdField_a_of_type_Lmp.a((lmj)localObject);
+      }
+      QLog.d("QavGPDownloadManager", 2, "bDownloading = false");
+      return bool;
+    }
+  }
+  
+  void b(String paramString)
+  {
+    lmj locallmj = null;
+    if (!TextUtils.isEmpty(paramString)) {
+      locallmj = lmj.a(paramString);
+    }
+    this.jdField_a_of_type_Lmj = locallmj;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      QLog.d("QavGPDownloadManager", 1, "handle_QAG_QavGameplay_Config, mNeedDownloadAfterGetConfig == true");
+      this.jdField_a_of_type_Boolean = false;
+      a();
+    }
   }
 }
 

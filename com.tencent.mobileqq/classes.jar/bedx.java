@@ -1,4 +1,10 @@
-// INTERNAL ERROR //
+public class bedx
+{
+  public beex a;
+  
+  public bedx(bedw parambedw) {}
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bedx

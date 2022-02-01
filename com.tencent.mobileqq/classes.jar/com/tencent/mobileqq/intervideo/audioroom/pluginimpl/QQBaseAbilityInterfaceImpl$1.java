@@ -15,7 +15,7 @@ class QQBaseAbilityInterfaceImpl$1
     localBundle.putInt("errCode", paramInt1);
     localBundle.putInt("httpCode", paramInt2);
     localBundle.putString("errMsg", paramString);
-    this.val$downloadCallback.onResult(localBundle);
+    this.jdField_a_of_type_ComTencentQqinterfaceDownloadCallback.onResult(localBundle);
   }
   
   public void onDownloadSuccess(String paramString)
@@ -23,8 +23,8 @@ class QQBaseAbilityInterfaceImpl$1
     paramString = new Bundle();
     paramString.putInt("errCode", 0);
     paramString.putString("errMsg", "Download Success");
-    paramString.putString("filePath", this.val$path);
-    this.val$downloadCallback.onResult(paramString);
+    paramString.putString("filePath", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentQqinterfaceDownloadCallback.onResult(paramString);
   }
   
   public void onProgress(int paramInt1, int paramInt2)
@@ -37,7 +37,7 @@ class QQBaseAbilityInterfaceImpl$1
     }
     for (;;)
     {
-      this.val$downloadCallback.onProgress(localBundle);
+      this.jdField_a_of_type_ComTencentQqinterfaceDownloadCallback.onProgress(localBundle);
       return;
       localBundle.putInt("percent", paramInt1 / paramInt2 * 100);
     }

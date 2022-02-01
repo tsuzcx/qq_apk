@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
+import android.graphics.Bitmap;
 
-public class ajit
-  extends anub
+class ajit
+  implements bbst
 {
-  public ajit(DeviceFragment paramDeviceFragment) {}
+  ajit(ajis paramajis) {}
   
-  protected void b(int paramInt)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a.a.notifyDataSetChanged();
+    if ((paramInt2 == 200) && (paramBitmap != null)) {
+      this.a.notifyDataSetChanged();
+    }
   }
 }
 

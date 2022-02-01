@@ -13,11 +13,12 @@ public class SPlayerTextureView
   private static final String TAG = SPlayerTextureView.class.getSimpleName();
   private int mDegree = 0;
   private float mScale = 1.0F;
+  private String mTag;
   private TextureView.SurfaceTextureListener mTextureListener = new SPlayerTextureView.1(this);
   private int mType = 0;
   private int mVideoHeight;
   private int mVideoWidth;
-  private ISPlayerViewBase.viewCreateCallBack mViewCallBack;
+  private ISPlayerViewBase.ViewCreateCallBack mViewCallBack;
   private int radioHeigth = 0;
   private int radioWidth = 0;
   
@@ -44,6 +45,7 @@ public class SPlayerTextureView
     setScaleX(1.0001F);
     setScaleY(1.0001F);
     setSurfaceTextureListener(this.mTextureListener);
+    this.mTag = TAG;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -171,9 +173,14 @@ public class SPlayerTextureView
     this.mVideoHeight = paramInt2;
   }
   
-  public void setViewCallBack(ISPlayerViewBase.viewCreateCallBack paramviewCreateCallBack)
+  public void setViewCallBack(ISPlayerViewBase.ViewCreateCallBack paramViewCreateCallBack)
   {
-    this.mViewCallBack = paramviewCreateCallBack;
+    this.mViewCallBack = paramViewCreateCallBack;
+  }
+  
+  public void setViewViewTagId(String paramString)
+  {
+    this.mTag = (TAG + "-" + paramString);
   }
   
   public void setXYaxis(int paramInt)

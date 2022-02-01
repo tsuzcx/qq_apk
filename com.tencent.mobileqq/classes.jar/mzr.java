@@ -1,20 +1,36 @@
-public abstract interface mzr
+import androidx.annotation.NonNull;
+import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
+
+public class mzr
+  extends mzo
 {
-  public abstract void a();
+  protected mzo a()
+  {
+    return new mzr();
+  }
   
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  public void a(mzo parammzo)
+  {
+    super.a(parammzo);
+  }
   
-  public abstract boolean a();
+  public void a(AvGameCommon.CommonQuestionInfo paramCommonQuestionInfo)
+  {
+    super.a(paramCommonQuestionInfo);
+  }
   
-  public abstract void b();
+  public int b()
+  {
+    return 4;
+  }
   
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    return localStringBuilder.toString();
+  }
 }
 
 

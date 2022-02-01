@@ -1,11 +1,17 @@
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
 
 class amzh
+  implements ValueCallback<String>
 {
-  BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
-  ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream;
-  boolean jdField_a_of_type_Boolean;
+  amzh(amzg paramamzg) {}
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloJSContext", 2, "[onReceiveValue] s " + paramString);
+    }
+  }
 }
 
 

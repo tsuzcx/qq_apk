@@ -16,6 +16,7 @@ public class HotWordSearchEntryDataModel$HotSearchItem
   public String recallWord;
   public String rightIconUrl;
   public String sAppend;
+  public String sExtInfo;
   public int showCount;
   public int showType;
   public String tagBGColor;

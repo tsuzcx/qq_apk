@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.tribe.fragment;
 
 import android.view.View;
-import beei;
-import beep;
+import bfdh;
+import bfdo;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 import com.tencent.superplayer.api.ISuperPlayer;
 
 public class TribeVideoListPlayerFragment$22$1
   implements Runnable
 {
-  public TribeVideoListPlayerFragment$22$1(beei parambeei) {}
+  public TribeVideoListPlayerFragment$22$1(bfdh parambfdh) {}
   
   public void run()
   {
     if (((TribeVideoListPlayerFragment.a(this.a.a) != null) && (TribeVideoListPlayerFragment.a(this.a.a).isVisible())) || (this.a.a.e))
     {
-      if ((((View)this.a.a.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView).getTag() instanceof beep))
+      if ((((View)this.a.a.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView).getTag() instanceof bfdo))
       {
-        this.a.a.a(((beep)((View)this.a.a.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView).getTag()).a, this.a.a.jdField_a_of_type_Long, this.a.a.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs(), true);
+        this.a.a.a(((bfdo)((View)this.a.a.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView).getTag()).a, this.a.a.jdField_a_of_type_Long, this.a.a.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs(), true);
         this.a.a.jdField_a_of_type_Long = 0L;
       }
       this.a.a.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.start();

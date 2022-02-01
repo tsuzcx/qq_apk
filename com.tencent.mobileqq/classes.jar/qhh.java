@@ -1,19 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pts.nativemodule.PTSNativeModuleRegistry.IPTSMarkArticleRead;
+import com.tencent.qphone.base.util.QLog;
 
-class qhh
-  implements pyb
+public class qhh
+  implements PTSNativeModuleRegistry.IPTSMarkArticleRead
 {
-  qhh(qhe paramqhe, QQAppInterface paramQQAppInterface, String paramString) {}
-  
-  public void onLoadUserInfoFailed(String paramString1, String paramString2)
+  public void markArticleRead(long paramLong1, long paramLong2)
   {
-    qhe.a(this.jdField_a_of_type_Qhe, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "", false);
-  }
-  
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
-  {
-    qhe.a(this.jdField_a_of_type_Qhe, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, paramReadInJoyUserInfo.faceUrl + "140", false);
+    QLog.i("PTSMarkArticleReadModule", 1, "[markArticleRead], articleID = " + paramLong1 + ", channelID = " + paramLong2);
+    try
+    {
+      pfa.a().a(paramLong1, System.currentTimeMillis());
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("PTSMarkArticleReadModule", 1, "[markArticleRead], e = " + localException);
+    }
   }
 }
 

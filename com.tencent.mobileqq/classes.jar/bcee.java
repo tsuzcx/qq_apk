@@ -1,7 +1,8 @@
-public abstract interface bcee
+class bcee
 {
-  public static final String a = anni.a(2131712796);
-  public static final String b = anni.a(2131712822);
+  long jdField_a_of_type_Long;
+  bcef jdField_a_of_type_Bcef;
+  String jdField_a_of_type_JavaLangString;
 }
 
 

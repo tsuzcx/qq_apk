@@ -1,189 +1,150 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import android.util.Xml;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.diy.ThemeDiyStyleLogic;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.util.HashMap;
-import org.xmlpull.v1.XmlPullParser;
+import java.io.File;
+import mqq.app.ISecurityFileHelper;
 
 public class apdi
-  extends apcv
+  extends apdh
+  implements ISecurityFileHelper
 {
-  private static final Object a;
-  public static boolean a;
-  
-  static
+  public apdi()
   {
-    jdField_a_of_type_JavaLangObject = new Object();
+    super(null);
   }
   
-  public static byte a(String paramString)
+  protected String a()
   {
-    return apcv.a(2, paramString);
+    return "QQThemeMigration";
   }
   
-  public static Object a()
+  public String declareBusinessFileName()
   {
-    return jdField_a_of_type_JavaLangObject;
+    return "QQ_Favorite";
   }
   
-  public static String a()
+  public boolean doMigrate(File paramFile)
   {
-    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject == null)
+    QLog.d("ISecurityFileHelper", 1, "Move Theme file start");
+    paramFile = new File(ThemeDiyStyleLogic.getSdcardDIYDir());
+    File[] arrayOfFile;
+    int j;
+    int i;
+    Object localObject1;
+    Object localObject2;
+    if ((paramFile.exists()) && (paramFile.isDirectory()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, "getFilesDir is null");
-      }
-      localObject = "";
-    }
-    String str;
-    do
-    {
-      return localObject;
-      str = localObject + "/pddata/prd/" + "qq.android.minidetect.model_v8.2.0";
-      localObject = str;
-    } while (!QLog.isColorLevel());
-    QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, "getLibDir ,path = " + str);
-    return str;
-  }
-  
-  public static String a(String paramString)
-  {
-    return paramString;
-  }
-  
-  protected static void a(boolean paramBoolean)
-  {
-    jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean a()
-  {
-    if ((!a("qr_anchor.bin")) || (!a("qr_detection_model.txt")) || (!a("qr_detection_model.bin")))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.MiniScanDetectModelLoader", 2, "modules is not exist!");
-      }
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return apcv.a(2, jdField_a_of_type_Boolean, paramString);
-  }
-  
-  public static boolean a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    boolean bool = true;
-    XmlPullParser localXmlPullParser = Xml.newPullParser();
-    paramHashMap.clear();
-    for (;;)
-    {
-      try
+      arrayOfFile = apdf.a(paramFile);
+      j = arrayOfFile.length;
+      i = 0;
+      if (i < j)
       {
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
-      }
-      catch (Exception paramHashMap)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("MiniRecog.MiniScanDetectModelLoader", 2, paramString, paramHashMap);
-        bool = false;
-        return bool;
-      }
-      int i = localXmlPullParser.next();
-      break label245;
-      String str = localXmlPullParser.getName();
-      if (str.equalsIgnoreCase("qr_anchor.bin"))
-      {
-        paramHashMap.put("qr_anchor.bin", localXmlPullParser.nextText());
-        continue;
-      }
-      else
-      {
-        if (str.equalsIgnoreCase("qr_detection_model.txt"))
+        localObject1 = arrayOfFile[i];
+        if ((!((File)localObject1).isDirectory()) || (new File((File)localObject1, ".moveflag").exists())) {}
+        for (;;)
         {
-          paramHashMap.put("qr_detection_model.txt", localXmlPullParser.nextText());
-          continue;
-        }
-        if (str.equalsIgnoreCase("qr_detection_model.bin"))
-        {
-          paramHashMap.put("qr_detection_model.bin", localXmlPullParser.nextText());
-          continue;
-        }
-        if (str.equalsIgnoreCase("match_detect_so_md5"))
-        {
-          b("match_detect_so_md5", localXmlPullParser.nextText());
-          continue;
-        }
-        if (!str.equalsIgnoreCase("match_detect_so_md5_64")) {
-          continue;
-        }
-        b("match_detect_so_md5_64", localXmlPullParser.nextText());
-        continue;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("MiniRecog.MiniScanDetectModelLoader", 2, "parseConfig success|config=" + paramHashMap);
-        return true;
-        label245:
-        if (i != 1) {
-          switch (i)
+          i += 1;
+          break;
+          localObject2 = ((File)localObject1).getName();
+          if ((((String)localObject2).length() > 4) && (((String)localObject2).matches("[0-9]{5,}")))
           {
+            localObject2 = paramFile.getAbsolutePath() + "/" + apdf.a((String)localObject2);
+            bhmi.c((String)localObject2 + "/.moveflag");
+            apdf.a(((File)localObject1).getAbsolutePath(), (String)localObject2);
           }
         }
       }
     }
-  }
-  
-  public static String b()
-  {
-    String str2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).getString("mini_native_" + "match_detect_so_md5", null);
-    if (QLog.isColorLevel()) {
-      if (str2 != null) {
-        break label75;
-      }
-    }
-    label75:
-    for (String str1 = "null";; str1 = str2)
+    paramFile = new File(antf.ba);
+    if ((paramFile.exists()) && (paramFile.isDirectory()))
     {
-      QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, String.format("getMatchDetectSoMd5=%s tag=%s", new Object[] { str1, "match_detect_so_md5" }));
-      return str2;
-    }
-  }
-  
-  public static String b(String paramString)
-  {
-    return paramString;
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    Object localObject = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).edit();
-    if (TextUtils.isEmpty(paramString2)) {
-      ((SharedPreferences.Editor)localObject).putString("mini_native_" + paramString1, "").apply();
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel())
+      paramFile = apdf.a(paramFile);
+      int n = paramFile.length;
+      int k = 0;
+      while (k < n)
       {
-        localObject = paramString2;
-        if (paramString2 == null) {
-          localObject = "null";
+        arrayOfFile = paramFile[k];
+        int m = 0;
+        i = 0;
+        localObject1 = arrayOfFile.getName();
+        j = m;
+        if (arrayOfFile.isDirectory())
+        {
+          j = m;
+          if (((String)localObject1).length() > 4)
+          {
+            j = m;
+            if (((String)localObject1).matches("[0-9]{5,}"))
+            {
+              if (apdf.a(arrayOfFile).length > 0)
+              {
+                localObject2 = apdf.a(arrayOfFile);
+                int i1 = localObject2.length;
+                m = 0;
+                for (;;)
+                {
+                  j = i;
+                  if (m >= i1) {
+                    break;
+                  }
+                  Object localObject3 = localObject2[m];
+                  j = i;
+                  if (((File)localObject3).isDirectory())
+                  {
+                    j = i;
+                    if (((File)localObject3).getName().equals("custom_background"))
+                    {
+                      localObject3 = apdf.a((File)localObject3);
+                      j = localObject3.length;
+                      i = 0;
+                      while (i < j)
+                      {
+                        Object localObject4 = localObject3[i];
+                        if (localObject4.isFile())
+                        {
+                          bhmi.c(ThemeDiyStyleLogic.getSdcardDIYDir() + apdf.a((String)localObject1) + "/.moveflag");
+                          bhmi.a(localObject4.getAbsolutePath(), ThemeDiyStyleLogic.getSdcardDIYDir() + apdf.a((String)localObject1) + "/" + localObject4.getName());
+                        }
+                        i += 1;
+                      }
+                      j = 1;
+                    }
+                  }
+                  m += 1;
+                  i = j;
+                }
+              }
+              j = 1;
+            }
+          }
         }
-        QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, String.format("saveMatchDetectSoMd5=%s tag=%s", new Object[] { localObject, paramString1 }));
+        if (j != 0) {
+          bhmi.a(arrayOfFile.getAbsolutePath());
+        }
+        k += 1;
       }
-      return;
-      ((SharedPreferences.Editor)localObject).putString("mini_native_" + paramString1, paramString2).apply();
     }
+    a();
+    return true;
+  }
+  
+  public boolean needMigration()
+  {
+    return a();
+  }
+  
+  public File oldBusinessDir(String paramString)
+  {
+    return null;
+  }
+  
+  public boolean oldBusinessDirExist(String paramString)
+  {
+    return false;
+  }
+  
+  public String[] reportHistoryFileInfo()
+  {
+    return new String[] { "0", "0" };
   }
 }
 

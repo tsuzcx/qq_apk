@@ -1,23 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.av.ui.BaseToolbar;
 
-class mcg
-  extends Handler
+public class mcg
+  extends AnimatorListenerAdapter
 {
-  public mcg(mcf parammcf, Looper paramLooper)
+  public mcg(BaseToolbar paramBaseToolbar) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramLooper);
+    super.onAnimationEnd(paramAnimator);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    mcf.a(this.a);
+    super.onAnimationStart(paramAnimator);
   }
 }
 

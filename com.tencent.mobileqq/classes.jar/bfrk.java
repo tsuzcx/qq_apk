@@ -1,6 +1,36 @@
-public abstract interface bfrk
+import com.tencent.mobileqq.data.TroopFeedItem;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class bfrk
+  extends bfrg
 {
-  public abstract long a();
+  public TroopFeedItem a(JSONObject paramJSONObject)
+  {
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {
+      return null;
+    }
+    localTroopFeedItem.type = 10;
+    try
+    {
+      paramJSONObject = paramJSONObject.getJSONArray("content");
+      if (paramJSONObject.length() > 0)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(0);
+        localTroopFeedItem.linkUrl = paramJSONObject.getString("videourl");
+        localTroopFeedItem.title = paramJSONObject.getString("videointro");
+        localTroopFeedItem.picPath = paramJSONObject.getString("videoid");
+      }
+      return localTroopFeedItem;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return null;
+  }
 }
 
 

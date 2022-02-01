@@ -1,27 +1,91 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
-import java.lang.ref.WeakReference;
+import android.net.Network;
+import android.support.annotation.RequiresApi;
+import com.tencent.qphone.base.util.QLog;
 
-public class awvk
-  implements bkkq
+@RequiresApi(api=21)
+class awvk
+  implements awvj
 {
-  public awvk(MultiCardRootLayout paramMultiCardRootLayout) {}
+  private Network jdField_a_of_type_AndroidNetNetwork;
+  private awvj jdField_a_of_type_Awvj;
   
-  public boolean a(MotionEvent paramMotionEvent)
+  awvk(awvj paramawvj, Network paramNetwork)
   {
-    int i = paramMotionEvent.getActionMasked();
-    if (MultiCardRootLayout.a(this.a) != null)
+    this.jdField_a_of_type_Awvj = paramawvj;
+    this.jdField_a_of_type_AndroidNetNetwork = paramNetwork;
+  }
+  
+  private void a()
+  {
+    try
     {
-      awvm localawvm = (awvm)MultiCardRootLayout.a(this.a).get();
-      if ((localawvm != null) && (localawvm.a(i))) {
-        return true;
+      if (awvg.b() != null) {
+        awvg.b().a();
       }
+      return;
     }
-    if (MultiCardRootLayout.a(this.a) != null) {
-      MultiCardRootLayout.a(this.a).onTouchEvent(paramMotionEvent);
+    finally {}
+  }
+  
+  private boolean a()
+  {
+    boolean bool = true;
+    for (;;)
+    {
+      try
+      {
+        if (awvg.b() == null) {
+          return true;
+        }
+        if (!this.jdField_a_of_type_AndroidNetNetwork.equals(awvg.b(awvg.b()))) {
+          return bool;
+        }
+      }
+      finally {}
+      bool = false;
     }
-    return false;
+  }
+  
+  public void a(int paramInt, Exception paramException)
+  {
+    if (a())
+    {
+      QLog.d("GateWayVerifyManager", 1, "GatewayCallbackWrapper onGetTokenError, but this request is expired");
+      return;
+    }
+    a();
+    this.jdField_a_of_type_Awvj.a(paramInt, paramException);
+  }
+  
+  public void a(Exception paramException)
+  {
+    if (a())
+    {
+      QLog.d("GateWayVerifyManager", 1, "GatewayCallbackWrapper onChangeNetworkError, but this request is expired");
+      return;
+    }
+    a();
+    this.jdField_a_of_type_Awvj.a(paramException);
+  }
+  
+  public void a(String paramString)
+  {
+    if (a())
+    {
+      QLog.d("GateWayVerifyManager", 1, "GatewayCallbackWrapper onRedirect, but this request is expired");
+      return;
+    }
+    this.jdField_a_of_type_Awvj.a(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (a())
+    {
+      QLog.d("GateWayVerifyManager", 1, "GatewayCallbackWrapper onResponse, bbut this request is expired");
+      return;
+    }
+    this.jdField_a_of_type_Awvj.a(paramString1, paramString2);
   }
 }
 

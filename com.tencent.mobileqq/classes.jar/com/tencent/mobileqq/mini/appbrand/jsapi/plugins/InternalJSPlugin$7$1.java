@@ -16,14 +16,15 @@ class InternalJSPlugin$7$1
     if (!TextUtils.isEmpty(this.this$1.val$downloadUrl))
     {
       QLog.d("InternalJSPlugin", 1, "手Q下载");
-      InternalJSPlugin.access$100(this.this$1.this$0, this.this$1.val$activity, this.this$1.val$nativeAppId, this.this$1.val$packageName, this.this$1.val$appName, this.this$1.val$downloadUrl);
+      InternalJSPlugin.access$200(this.this$1.this$0, this.this$1.val$activity, this.this$1.val$nativeAppId, this.this$1.val$packageName, this.this$1.val$appName, this.this$1.val$downloadUrl);
     }
     for (;;)
     {
-      this.this$1.this$0.jsPluginEngine.callbackJsEventOK(this.this$1.val$webview, this.this$1.val$eventName, null, this.this$1.val$callbackId);
+      paramDialogInterface = InternalJSPlugin.access$100(this.this$1.this$0, 4);
+      this.this$1.this$0.jsPluginEngine.callbackJsEventFail(this.this$1.val$webview, this.this$1.val$eventName, paramDialogInterface, this.this$1.val$callbackId);
       return;
       QLog.d("InternalJSPlugin", 1, "应用宝微下载");
-      InternalJSPlugin.access$200(this.this$1.this$0, this.this$1.val$activity, this.this$1.val$nativeAppId, this.this$1.val$packageName);
+      InternalJSPlugin.access$300(this.this$1.this$0, this.this$1.val$activity, this.this$1.val$nativeAppId, this.this$1.val$packageName);
     }
   }
 }

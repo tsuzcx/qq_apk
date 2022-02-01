@@ -58,6 +58,8 @@ public abstract class MiniAppProxy
   
   public abstract String getPayAccessToken();
   
+  public abstract int getPayMode();
+  
   public abstract String getPayOpenId();
   
   public abstract String getPayOpenKey();
@@ -90,6 +92,8 @@ public abstract class MiniAppProxy
   
   public abstract boolean openLocation(Context paramContext, double paramDouble1, double paramDouble2, int paramInt, String paramString1, String paramString2);
   
+  public abstract boolean openNativePage(Context paramContext, String paramString1, String paramString2, String paramString3);
+  
   public abstract boolean openSchema(Context paramContext, String paramString, int paramInt, ResultReceiver paramResultReceiver);
   
   public abstract void sendData(byte[] paramArrayOfByte, MiniAppProxy.SenderListener paramSenderListener);
@@ -100,7 +104,7 @@ public abstract class MiniAppProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy
  * JD-Core Version:    0.7.0.1
  */

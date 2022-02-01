@@ -1,57 +1,77 @@
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.net.URLEncoder;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
-class amew
-  implements View.OnClickListener
+public class amew
+  implements afmf
 {
-  public int a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public PressEffectImageView a;
-  public View b;
+  public amew(SelectMemberActivity paramSelectMemberActivity) {}
   
-  amew(amev paramamev) {}
-  
-  public void onClick(View paramView)
+  public void a(Editable paramEditable)
   {
-    String str3 = this.jdField_a_of_type_Amev.a(this.jdField_a_of_type_Int);
-    if (paramView == this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView)
-    {
-      if (this.jdField_a_of_type_Amev.jdField_a_of_type_Anur != null) {
-        this.jdField_a_of_type_Amev.jdField_a_of_type_Anur.a(this.jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_Amev.a();
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
-    while (paramView != this.jdField_a_of_type_AndroidViewView)
+    for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment.a(paramEditable);
+      }
+      return;
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    }
+  }
+  
+  public void a(ResultRecord paramResultRecord)
+  {
+    String str = paramResultRecord.a;
+    if (this.a.b(str))
+    {
+      this.a.e(str);
+      this.a.a(paramResultRecord, false);
+      this.a.k();
+      int i = this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a();
+      if ((i == 6) || (i == 7) || (i == 5) || (i == 4) || (i == 1) || (i == 0) || (i == 8) || (i == 9)) {
+        ((SelectMemberInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).f();
+      }
+      SelectMemberActivity.a(this.a, false);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && ((this.a.j == 6) || (this.a.j == 7) || (this.a.j != this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a())))
+    {
+      ContactSearchFragment localContactSearchFragment = ((SelectMemberInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).a();
+      if (localContactSearchFragment != null)
+      {
+        localContactSearchFragment.d(this.a.w);
+        localContactSearchFragment.a(this.a.a(), this.a.jdField_b_of_type_JavaUtilArrayList);
+        FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
+        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
+          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
+        }
+        localFragmentTransaction.add(2131376581, localContactSearchFragment);
+        localFragmentTransaction.commitAllowingStateLoss();
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = localContactSearchFragment;
+      }
+      if (this.a.jdField_b_of_type_Int == 0) {
+        bdll.b(this.a.app, "CliOper", "", "", "0X800543F", "0X800543F", 1, 0, "", "", "", "");
+      }
+    }
+    else
+    {
       return;
     }
-    String str2 = aqsx.a().c;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "https://sou.qq.com/kandian/kd.html?_bid=3216&_wv=3&_wwv=1293&_wvSb=0&keyword=$KEYWORD$&from=$FROM$";
-    }
-    str1 = str1.replace("$KEYWORD$", URLEncoder.encode(str3));
-    if ((this.jdField_a_of_type_Amev.jdField_a_of_type_Int == 25) || (this.jdField_a_of_type_Amev.jdField_a_of_type_Int == 10)) {}
-    for (str1 = str1.replace("$FROM$", "kandian_history");; str1 = str1.replace("$FROM$", bbrf.a(this.jdField_a_of_type_Amev.jdField_a_of_type_Int)))
-    {
-      str1 = str1.replace("$SEARCHID$", "" + URLEncoder.encode(UniteSearchActivity.c));
-      bbup.a(this.jdField_a_of_type_Amev.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Amev.jdField_a_of_type_AndroidContentContext, str1);
-      this.jdField_a_of_type_Amev.jdField_a_of_type_Anur.a(str3);
-      bbrf.a(null, new ReportModelDC02528().module("search_his").action("clk_search_his").ver2(bbrf.a(this.jdField_a_of_type_Amev.jdField_a_of_type_Int)).ver4(str3).ver7("{experiment_id:" + bbrf.b + "}"));
-      new anxu(this.jdField_a_of_type_Amev.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_Amev.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_search_his", "search_his", bbrf.a(this.jdField_a_of_type_Amev.jdField_a_of_type_Int), "", str3, "{experiment_id:" + bbrf.b + "}");
-      break;
-    }
+    bdll.b(this.a.app, "CliOper", "", "", "0X800543F", "0X800543F", 2, 0, "", "", "", "");
   }
 }
 

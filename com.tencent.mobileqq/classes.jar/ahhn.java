@@ -1,17 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 
-class ahhn
-  implements bhye
+final class ahhn
+  implements ahky
 {
-  ahhn(ahhm paramahhm, ahhx paramahhx) {}
-  
-  public void a(String paramString)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahhx.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahhx.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Ahhx.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setDrawStatus(2);
+    if (paramChatMessage.isSend()) {
+      return 48;
     }
+    return 49;
   }
 }
 

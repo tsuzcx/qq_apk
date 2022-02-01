@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import axzw;
-import bcst;
+import aysq;
+import bdll;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class Leba$26
@@ -11,11 +11,11 @@ class Leba$26
   
   public void run()
   {
-    axzw localaxzw = (axzw)this.this$0.a.getManager(160);
-    if (localaxzw.a(localaxzw.a(10013))) {
-      localaxzw.a(10013);
+    aysq localaysq = (aysq)this.this$0.a.getManager(160);
+    if (localaysq.a(localaysq.a(10013))) {
+      localaysq.a(10013);
     }
-    bcst.b(this.this$0.a, "dc00898", "", "", "0X8008823", "0X8008823", 0, 0, "", "", "", "");
+    bdll.b(this.this$0.a, "dc00898", "", "", "0X8008823", "0X8008823", 0, 0, "", "", "", "");
   }
 }
 

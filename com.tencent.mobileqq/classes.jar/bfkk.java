@@ -1,19 +1,24 @@
-import java.util.Comparator;
+import android.graphics.Bitmap;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 
-class bfkk
-  implements Comparator<bfkl>
+public class bfkk
+  implements URLDrawable.DownloadListener
 {
-  bfkk(bfkj parambfkj) {}
+  public bfkk(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, bfkl parambfkl) {}
   
-  public int a(bfkl parambfkl1, bfkl parambfkl2)
+  public void onFileDownloadFailed(int paramInt)
   {
-    if (parambfkl1.b() < parambfkl2.b()) {
-      return 1;
-    }
-    if (parambfkl1.b() > parambfkl2.b()) {
-      return -1;
-    }
-    return 0;
+    this.jdField_a_of_type_Bfkl.a(null);
+  }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    Bitmap localBitmap = bjtv.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
+    this.jdField_a_of_type_Bfkl.a(localBitmap);
   }
 }
 

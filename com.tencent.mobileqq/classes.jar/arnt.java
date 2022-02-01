@@ -1,111 +1,53 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.ApolloJscLibData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arnt
-  extends arnz
 {
-  public arnt(QQAppInterface paramQQAppInterface)
-  {
-    super("android.qq.apollo.jsc820", paramQQAppInterface);
-  }
+  private static String jdField_a_of_type_JavaLangString = "https://club.vip.qq.com/official?_wv=16778247&_wwv=68&_nav_alpha=0&pay_src=10&_wvx=10&_proxy=1";
+  private boolean jdField_a_of_type_Boolean;
   
-  public static void a()
+  @NonNull
+  public static arnt a(String paramString)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    arnt localarnt = new arnt();
+    if (TextUtils.isEmpty(paramString))
     {
-      localObject = (arno)((QQAppInterface)localObject).getManager(77);
-      if (localObject != null)
-      {
-        localObject = (arnt)((arno)localObject).a("android.qq.apollo.jsc820");
-        if (localObject != null)
-        {
-          ((arnt)localObject).a(true);
-          QLog.i("ApolloSoLoader_JscHandler", 1, "restartDownload jscLib");
-        }
-      }
+      localarnt.jdField_a_of_type_Boolean = false;
+      return localarnt;
     }
+    a(paramString);
+    localarnt.jdField_a_of_type_Boolean = true;
+    return localarnt;
   }
   
-  public int a()
+  public static String a()
   {
-    return 10072;
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public Class<? extends XmlData> a()
+  private static void a(String paramString)
   {
-    return ApolloJscLibData.class;
-  }
-  
-  public String a()
-  {
-    return "ApolloSoLoader_JscHandler";
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("ApolloSoLoader_JscHandler", 1, "[doOnDownloadSuccess] jsc:" + paramString);
-    XmlData localXmlData = a();
-    if (localXmlData != null) {
-      QLog.i("ApolloSoLoader_JscHandler", 1, "version:" + localXmlData.Version);
-    }
-    int i;
-    if (BaseApplicationImpl.sProcessId == 1)
+    try
     {
-      i = 1;
-      if (i != 0) {
-        anaw.a(10, null, new int[] { 1 });
-      }
-      if (new File(paramString).exists())
-      {
-        if (bkgc.a(paramString, 0)) {
-          break label189;
-        }
-        if (localXmlData != null)
-        {
-          localXmlData.loadState = 0;
-          localXmlData.Version = 0;
-          arnn.a(localXmlData, new String[] { "loadState", "Version" });
-        }
-        QLog.e("ApolloSoLoader_JscHandler", 1, "[doOnDownloadSuccess],unzip apollo jsclib failed!");
-        if (i != 0)
-        {
-          anaw.a(10, 201, 1001, new Object[] { "unzip jsc lib failed" });
-          andw.a = true;
-        }
-      }
-    }
-    for (;;)
-    {
-      super.a(paramString);
+      jdField_a_of_type_JavaLangString = new JSONObject(paramString).getString("qqvip_vip_account");
       return;
-      i = 0;
-      break;
-      label189:
-      if (i != 0) {
-        anaw.a(10, 201, 0, new Object[] { "libjsc so download success" });
-      }
-      andw.a("after_JSC_downloaded");
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
-  public boolean a()
+  public Boolean a()
   {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
+    return Boolean.valueOf(this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arnt
  * JD-Core Version:    0.7.0.1
  */

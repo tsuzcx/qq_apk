@@ -1,19 +1,20 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import java.util.HashMap;
 
-public class xgw
-  implements ViewTreeObserver.OnPreDrawListener
+class xgw
+  extends xfx
 {
-  public xgw(StoryPlayerActivity paramStoryPlayerActivity, View paramView) {}
-  
-  public boolean onPreDraw()
+  xgw(xgp paramxgp, String paramString1, String paramString2, boolean paramBoolean, xht paramxht)
   {
-    xlk.b((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerActivity.a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerActivity.a, new xgx(this));
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
-    return false;
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Xht.a = ((String)a("EncryptUrlJob_encryptedUrl"));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(this.jdField_a_of_type_Xht.a, this.jdField_a_of_type_Xht.a);
+    a("ShortenUrlJob_shortenedUrls", localHashMap);
+    return true;
   }
 }
 

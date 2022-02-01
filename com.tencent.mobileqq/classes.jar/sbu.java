@@ -1,8 +1,18 @@
-public abstract interface sbu
+class sbu
+  implements bljd
 {
-  public abstract void a(String paramString, long paramLong);
+  sbu(sbt paramsbt) {}
   
-  public abstract void d();
+  public void ak_()
+  {
+    if (sbi.c(this.a.a))
+    {
+      sbi.c(this.a.a, false);
+      sbi.a(this.a.a).a(sbi.a(this.a.a), sbi.b(this.a.a), true, false);
+      return;
+    }
+    sbi.a(this.a.a).a(sbi.a(this.a.a), sbi.b(this.a.a), true, true);
+  }
 }
 
 

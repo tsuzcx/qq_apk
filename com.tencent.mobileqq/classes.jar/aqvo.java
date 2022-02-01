@@ -1,53 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class aqvo
-  implements aqlb<String>
 {
-  public boolean a;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  boolean jdField_a_of_type_Boolean;
+  long b;
+  long c;
+  long d;
   
-  public void a(String paramString)
+  public aqvo(long paramLong1, long paramLong2, int paramInt, boolean paramBoolean)
   {
-    QLog.i("QFileApkCheckConfigBean", 1, "configID:663 onParse apkcheckConfig:" + paramString);
-    String str = "";
-    if (!TextUtils.isEmpty(paramString)) {
-      str = paramString.toLowerCase();
-    }
-    if (TextUtils.isEmpty(str))
+    this.b = paramLong1;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof aqvo))
     {
-      QLog.w("QFileApkCheckConfigBean", 1, "apkcheckConfig is empty, configID:663 use default value");
-      this.a = false;
-      return;
-    }
-    try
-    {
-      paramString = new JSONObject(str).getJSONObject("apkcheckconfig");
-      if (paramString == null) {
-        break label118;
-      }
-      if (paramString.has("enable"))
+      paramObject = (aqvo)paramObject;
+      bool1 = bool2;
+      if (paramObject.jdField_a_of_type_Long == this.jdField_a_of_type_Long)
       {
-        this.a = paramString.getBoolean("enable");
-        return;
+        bool1 = bool2;
+        if (paramObject.b == this.b) {
+          bool1 = true;
+        }
       }
     }
-    catch (JSONException paramString)
-    {
-      QLog.e("QFileApkCheckConfigBean", 1, paramString, new Object[0]);
-      return;
-    }
-    this.a = false;
-    return;
-    label118:
-    QLog.w("QFileApkCheckConfigBean", 1, "apkcheckConfig is no enable. use default value");
-    this.a = false;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqvo
  * JD-Core Version:    0.7.0.1
  */

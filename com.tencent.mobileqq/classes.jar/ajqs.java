@@ -1,58 +1,56 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class ajqs
-  implements awxg
+  extends MqqHandler
 {
-  public ajqs(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, awwz paramawwz, awxi paramawxi, List paramList) {}
+  public ajqs(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Awwz.a(new ajqt(this));
-    this.jdField_a_of_type_Awwz.show();
-  }
-  
-  public void a(awxe paramawxe)
-  {
-    if ((paramawxe != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity().isFinishing())) {
-      switch (paramawxe.a)
-      {
-      }
-    }
-    for (;;)
+    switch (paramMessage.what)
     {
-      if (this.jdField_a_of_type_Awwz.isShowing()) {
-        this.jdField_a_of_type_Awwz.dismiss();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.v();
-      this.jdField_a_of_type_Awxi.b();
+    case 1013: 
+    default: 
       return;
-      awxf.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
-      continue;
-      awxf.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
-      continue;
-      awxf.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
+    case 1012: 
+      if (this.a.jdField_a_of_type_Ajpe != null) {
+        if (this.a.c == 0) {
+          break label160;
+        }
+      }
+      for (this.a.jdField_a_of_type_Ajpe.a = 0;; this.a.jdField_a_of_type_Ajpe.a = bdzi.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      {
+        this.a.jdField_a_of_type_Ajpe.notifyDataSetChanged();
+        this.a.jdField_a_of_type_Aoga.c = bdzi.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        this.a.c(ajqw.a());
+        this.a.b(ajqw.b());
+        this.a.a(false, 1);
+        this.a.a(false, 2);
+        if (TroopNotifyAndRecommendView.a(this.a) == null) {
+          break;
+        }
+        TroopNotifyAndRecommendView.a(this.a).notifyDataSetChanged();
+        return;
+      }
+    case 1014: 
+      label160:
+      this.a.j();
+      return;
     }
-  }
-  
-  public void a(awxe paramawxe, int paramInt)
-  {
-    this.jdField_a_of_type_Awwz.a(paramInt);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Awwz.isShowing()) {
-      this.jdField_a_of_type_Awwz.dismiss();
+    paramMessage = paramMessage.obj;
+    try
+    {
+      this.a.a((List)paramMessage);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.v();
-    this.jdField_a_of_type_Awxi.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Awxi.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity(), this.jdField_a_of_type_JavaUtilList);
+    catch (Exception paramMessage)
+    {
+      QLog.e("TroopNotifyAndRecommendView", 1, "handleRecommendData wrong");
+    }
   }
 }
 

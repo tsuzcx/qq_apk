@@ -1,15 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import kotlin.Metadata;
+import org.json.JSONObject;
 
-public class thw
-  implements ValueAnimator.AnimatorUpdateListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "cb", "", "kotlin.jvm.PlatformType", "json", "Lorg/json/JSONObject;", "callJsMethod"}, k=3, mv={1, 1, 16})
+final class thw
+  implements tfg
 {
-  public thw(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
+  thw(tht paramtht) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public final void a(String paramString, JSONObject paramJSONObject)
   {
-    this.a.invalidate();
+    this.a.a(paramString, paramJSONObject);
   }
 }
 

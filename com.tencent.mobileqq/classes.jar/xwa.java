@@ -1,17 +1,14 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public class xwa
+class xwa
+  implements MediaPlayer.OnCompletionListener
 {
-  public List<String> a = new ArrayList();
-  public List<String> b = new ArrayList();
+  xwa(xvy paramxvy, xvq paramxvq) {}
   
-  public void a(String paramString)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (!this.b.contains(paramString))) {
-      this.b.add(paramString);
-    }
+    this.jdField_a_of_type_Xvq.a(this.jdField_a_of_type_Xvy);
   }
 }
 

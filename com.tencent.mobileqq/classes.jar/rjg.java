@@ -1,10 +1,56 @@
-import java.util.List;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable.DownloadListener;
 
-public abstract interface rjg<T>
+public class rjg
+  extends AsyncTask<Void, Void, Boolean>
 {
-  public abstract List<T> a(int paramInt1, int paramInt2);
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener;
+  private String jdField_a_of_type_JavaLangString;
   
-  public abstract void a(List<T> paramList, boolean paramBoolean);
+  public rjg(Bitmap paramBitmap, String paramString)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  protected Boolean a(Void... paramVarArgs)
+  {
+    return Boolean.valueOf(zoc.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString));
+  }
+  
+  public void a()
+  {
+    executeOnExecutor(aoik.a(64), null);
+  }
+  
+  public void a(URLDrawable.DownloadListener paramDownloadListener)
+  {
+    this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = paramDownloadListener;
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    super.onPostExecute(paramBoolean);
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener == null) {
+      return;
+    }
+    if (paramBoolean.booleanValue())
+    {
+      this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener.onFileDownloadSucceed(0L);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener.onFileDownloadFailed(0);
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener.onFileDownloadStarted();
+    }
+  }
 }
 
 

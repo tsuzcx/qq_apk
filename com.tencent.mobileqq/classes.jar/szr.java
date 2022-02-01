@@ -1,25 +1,8 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public class szr
-  implements syk
+public abstract interface szr
 {
-  public int a(BaseData paramBaseData)
-  {
-    return 5;
-  }
-  
-  public syj a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    return new szs(LayoutInflater.from(paramContext).inflate(2131560173, null), paramBaseData);
-  }
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.t == 5;
-  }
+  public abstract void a(BaseArticleInfo paramBaseArticleInfo, int paramInt);
 }
 
 

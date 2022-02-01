@@ -1,7 +1,17 @@
-class atdf
-  implements atdk
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"}, k=3, mv={1, 1, 16})
+final class atdf
+  implements DialogInterface.OnCancelListener
 {
-  atdf(atdb paramatdb) {}
+  public static final atdf a = new atdf();
+  
+  public final void onCancel(DialogInterface paramDialogInterface)
+  {
+    bdll.b(null, "dc00898", "", "", "0X800B2CF", "0X800B2CF", 2, 0, "", "", "", "");
+  }
 }
 
 

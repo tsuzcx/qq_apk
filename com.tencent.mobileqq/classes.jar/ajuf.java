@@ -1,21 +1,18 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
 
 public class ajuf
+  extends anyu
 {
-  public int a;
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
-  public TextView b;
+  public ajuf(DeviceFragment paramDeviceFragment) {}
   
-  public ajuf(ajue paramajue) {}
+  protected void onPullIpad()
+  {
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.e();
+    this.a.a.notifyDataSetChanged();
+  }
 }
 
 

@@ -1,46 +1,18 @@
-public class odf
-  implements anil
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
+
+public final class odf
+  implements Parcelable.Creator<VideoInfo.InterruptedWeishiAd>
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  protected void c(boolean paramBoolean, Object paramObject) {}
-  
-  protected void d(boolean paramBoolean, Object paramObject) {}
-  
-  protected void e(boolean paramBoolean, Object paramObject) {}
-  
-  protected void f(boolean paramBoolean, Object paramObject) {}
-  
-  protected void g(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public VideoInfo.InterruptedWeishiAd a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      a(paramBoolean, paramObject);
-      return;
-    case 1: 
-      b(paramBoolean, paramObject);
-      return;
-    case 2: 
-      c(paramBoolean, paramObject);
-      return;
-    case 3: 
-      d(paramBoolean, paramObject);
-      return;
-    case 4: 
-      e(paramBoolean, paramObject);
-      return;
-    case 5: 
-      f(paramBoolean, paramObject);
-      return;
-    }
-    g(paramBoolean, paramObject);
+    return new VideoInfo.InterruptedWeishiAd(paramParcel);
+  }
+  
+  public VideoInfo.InterruptedWeishiAd[] a(int paramInt)
+  {
+    return new VideoInfo.InterruptedWeishiAd[paramInt];
   }
 }
 

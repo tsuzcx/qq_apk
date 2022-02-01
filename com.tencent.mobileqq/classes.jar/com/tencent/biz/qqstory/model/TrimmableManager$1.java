@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.model;
 
-import wps;
+import wtn;
 
 public class TrimmableManager$1
   implements Runnable
 {
-  public TrimmableManager$1(wps paramwps, int paramInt) {}
+  public TrimmableManager$1(wtn paramwtn, int paramInt) {}
   
   public void run()
   {
-    wps.a(this.this$0, this.a);
+    wtn.a(this.this$0, this.a);
   }
 }
 

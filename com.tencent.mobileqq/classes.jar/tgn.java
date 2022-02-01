@@ -1,25 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ChannelTopPositionView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
 public class tgn
-  implements View.OnClickListener
+  extends tgb
 {
-  public tgn(ChannelTopPositionView paramChannelTopPositionView) {}
-  
-  public void onClick(View paramView)
+  tgn(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ChannelTopPositionView", 2, "onclick");
+    super(paramtfy1, paramActivity, paramtfy2, paramJSONObject);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    paramString2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("rowkey", "");
+    paramString3 = this.jdField_a_of_type_OrgJsonJSONObject.optString("topicId", "");
+    paramActionSheetItem = this.jdField_a_of_type_OrgJsonJSONObject.optString("title", "");
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      tfy.a(this.jdField_a_of_type_Tfy).rijWatchWordPresenter.a(paramString2, paramString1, paramString3, paramActionSheetItem);
+      return;
     }
-    if (ChannelTopPositionView.a(this.a) != null) {
-      PublicFragmentActivity.a(ChannelTopPositionView.a(this.a), ReadInJoySelectPositionFragment.class);
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      tfy.a(this.jdField_a_of_type_Tfy).rijWatchWordPresenter.a(paramString3, paramString1, paramActionSheetItem);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.e(tfy.a, 1, "args is illegal: " + this.jdField_a_of_type_OrgJsonJSONObject.toString());
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.av;
 
-import bctj;
+import bdmc;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -15,7 +15,7 @@ public final class VideoSocketReconnectReporter$2
     localHashMap.put("policy_type", String.valueOf(this.jdField_a_of_type_Int));
     localHashMap.put("net_type", String.valueOf(this.b));
     localHashMap.put("time_cost", String.valueOf(this.jdField_a_of_type_Long));
-    bctj.a(BaseApplication.getContext()).a("", "av_socket_recon_result2", true, 0L, 0L, localHashMap, "");
+    bdmc.a(BaseApplication.getContext()).a("", "av_socket_recon_result2", true, 0L, 0L, localHashMap, "");
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaet;
+import aaiu;
 import android.widget.ListView;
 
 public class CommentPresenter$13
   implements Runnable
 {
-  public CommentPresenter$13(aaet paramaaet) {}
+  public CommentPresenter$13(aaiu paramaaiu) {}
   
   public void run()
   {
-    aaet.b(this.this$0);
+    aaiu.b(this.this$0);
     if (this.this$0.a != null) {
       this.this$0.a.setSelection(0);
     }

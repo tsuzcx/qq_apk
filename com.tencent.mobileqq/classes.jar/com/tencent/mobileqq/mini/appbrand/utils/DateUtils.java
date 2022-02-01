@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
 import android.text.TextUtils;
-import anni;
+import anzj;
 import com.tencent.qphone.base.util.QLog;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -104,7 +104,7 @@ public class DateUtils
     }
     SimpleDateFormat localSimpleDateFormat;
     if (paramString.length() >= 10) {
-      if (Pattern.compile(anni.a(2131701622)).matcher(paramString).matches()) {
+      if (Pattern.compile(anzj.a(2131701729)).matcher(paramString).matches()) {
         localSimpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
       }
     }

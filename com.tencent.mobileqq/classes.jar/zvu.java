@@ -1,33 +1,15 @@
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v4.view.ViewPropertyAnimatorListener;
-import android.view.View;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
 
-class zvu
-  extends zvz
+public class zvu
+  implements DialogInterface.OnDismissListener
 {
-  zvu(zvq paramzvq, zvx paramzvx, ViewPropertyAnimatorCompat paramViewPropertyAnimatorCompat)
-  {
-    super(null);
-  }
+  public zvu(QRCardActivity paramQRCardActivity) {}
   
-  public void onAnimationEnd(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPropertyAnimatorCompat.setListener((ViewPropertyAnimatorListener)null);
-    ViewCompat.setAlpha(paramView, 1.0F);
-    ViewCompat.setTranslationX(paramView, 0.0F);
-    ViewCompat.setTranslationY(paramView, 0.0F);
-    ViewCompat.setScaleX(paramView, 1.0F);
-    ViewCompat.setScaleY(paramView, 1.0F);
-    this.jdField_a_of_type_Zvq.dispatchChangeFinished(this.jdField_a_of_type_Zvx.a, true);
-    zvq.g(this.jdField_a_of_type_Zvq).remove(this.jdField_a_of_type_Zvx.a);
-    zvq.a(this.jdField_a_of_type_Zvq);
-  }
-  
-  public void onAnimationStart(View paramView)
-  {
-    this.jdField_a_of_type_Zvq.dispatchChangeStarting(this.jdField_a_of_type_Zvx.a, true);
+    this.a.c = false;
   }
 }
 

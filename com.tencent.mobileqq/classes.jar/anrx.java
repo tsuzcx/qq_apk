@@ -1,76 +1,33 @@
-import KQQ.ReqItem;
-import KQQ.RespItem;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowListReq;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetUserFollowListRequest;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class anrx
-  implements bcbk
+  implements View.OnClickListener
 {
-  public anrx(PublicAccountHandler paramPublicAccountHandler) {}
+  public anrx(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return 1;
-  }
-  
-  public ReqItem a(int paramInt)
-  {
-    ReqItem localReqItem = new ReqItem();
-    localReqItem.cOperType = 0;
-    localReqItem.eServiceID = 102;
-    boolean bool = tyg.c();
-    long l1 = PublicAccountHandler.a(this.a, bool);
-    long l2 = PublicAccountHandler.b(this.a, bool);
-    Object localObject2 = PublicAccountHandler.a(this.a);
-    if (bool)
-    {
-      localObject1 = new CertifiedAccountRead.StGetFollowListReq();
-      ((CertifiedAccountRead.StGetFollowListReq)localObject1).seq.set(bgjw.a(l1));
-      ((CertifiedAccountRead.StGetFollowListReq)localObject1).count.set(bgjw.a(1L));
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        ((CertifiedAccountRead.StGetFollowListReq)localObject1).attach_info.set((String)localObject2);
-      }
-      localObject2 = new PROTOCAL.StQWebReq();
-      ((PROTOCAL.StQWebReq)localObject2).Seq.set(-1L);
-      ((PROTOCAL.StQWebReq)localObject2).qua.set(blru.a());
-      ((PROTOCAL.StQWebReq)localObject2).deviceInfo.set(blrt.a().c());
-      ((PROTOCAL.StQWebReq)localObject2).busiBuff.set(ByteStringMicro.copyFrom(((CertifiedAccountRead.StGetFollowListReq)localObject1).toByteArray()));
-      localObject1 = aahw.a();
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        ((PROTOCAL.StQWebReq)localObject2).traceid.set((String)localObject1);
-      }
-      localObject2 = ((PROTOCAL.StQWebReq)localObject2).toByteArray();
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new byte[4];
-      }
-      localReqItem.vecParam = bguc.a((byte[])localObject1);
-      return localReqItem;
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_Ansf != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_Ansf.a(3, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId);
     }
-    Object localObject1 = new mobileqq_mp.GetUserFollowListRequest();
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).follow_seqno.set((int)l1);
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).public_account_seqno.set((int)l2);
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).begin.set(0);
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).limit.set(1);
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).version.set(1);
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).is_increment.set(true);
-    localReqItem.vecParam = bguc.a(((mobileqq_mp.GetUserFollowListRequest)localObject1).toByteArray());
-    return localReqItem;
-  }
-  
-  public void a(RespItem paramRespItem)
-  {
-    if ((paramRespItem.eServiceID == 102) && (paramRespItem.cResult == 0)) {
-      this.a.b();
+    for (;;)
+    {
+      ApolloPanel.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "unlockeddownload", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId) });
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QLog.e("ApolloPanel", 1, "showKapuLockActionView mAppController null");
     }
   }
 }

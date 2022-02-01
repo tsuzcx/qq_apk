@@ -1,29 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.QQWalletMsg;
 
 public class adhy
-  implements View.OnClickListener
+  extends adic
 {
-  public adhy(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    View localView = (View)paramView.getParent().getParent();
-    if ((localView == null) || (localView.getTag() == null)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      int i = ((Integer)localView.getTag()).intValue();
-      if ((i != 0) || (aywm.a().a(this.a.app, this.a)))
-      {
-        this.a.a(i);
-        bcst.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit_delete", 0, 0, "", "", "", "");
-      }
-    }
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  {
+    new bcrt().e(paramList, paramList1, paramStringBuilder, paramMsg, parambfoy);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return paramElem.qqwallet_msg.has();
   }
 }
 

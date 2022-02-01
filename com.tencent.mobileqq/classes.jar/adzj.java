@@ -1,40 +1,9 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class adzj
-  extends anvm
+  implements aifc
 {
-  public adzj(Conversation paramConversation) {}
-  
-  public void a(List<String> paramList)
-  {
-    aong localaong;
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      localaong = this.a.a.a();
-      if (localaong != null) {
-        break label37;
-      }
-      QLog.d("Q.recent", 1, "onBatchDelete, proxy == null");
-    }
-    for (;;)
-    {
-      return;
-      label37:
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        RecentUser localRecentUser = (RecentUser)localaong.findRecentUserByUin((String)paramList.next(), 0);
-        if (localRecentUser != null) {
-          localaong.delRecentUser(localRecentUser);
-        }
-      }
-    }
-  }
+  public adzj(BaseChatPie paramBaseChatPie) {}
 }
 
 

@@ -1,51 +1,81 @@
-public class ainj
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
+
+class ainj
+  extends aocj
 {
-  private int jdField_a_of_type_Int = 1;
-  private aink jdField_a_of_type_Aink;
+  ainj(ainh paramainh) {}
   
-  public ainj() {}
-  
-  public ainj(aink paramaink)
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    this.jdField_a_of_type_Aink = paramaink;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Int == 1) {
-      if (this.jdField_a_of_type_Aink != null)
-      {
-        this.jdField_a_of_type_Aink.a(1);
-        this.jdField_a_of_type_Int = 2;
+    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
       }
-    }
-    while ((this.jdField_a_of_type_Int != 2) || (this.jdField_a_of_type_Aink == null)) {
       return;
     }
-    this.jdField_a_of_type_Aink.a(2);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+    }
+    this.a.f(196608);
   }
   
-  public void b()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Aink != null))
+    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
     {
-      this.jdField_a_of_type_Aink.a();
-      this.jdField_a_of_type_Int = 3;
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.m();
+      }
     }
   }
   
-  public void c()
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    if ((this.jdField_a_of_type_Int == 3) && (this.jdField_a_of_type_Aink != null))
-    {
-      this.jdField_a_of_type_Aink.b();
-      this.jdField_a_of_type_Int = 1;
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      return;
     }
+    this.a.t = true;
+    this.a.a(262144, null, paramLong);
+  }
+  
+  protected void a(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if ((paramBoolean) && (paramArrayOfString != null))
+    {
+      paramArrayOfString = paramArrayOfString[0];
+      if (this.a.jdField_a_of_type_Bfqz.b.contains(paramArrayOfString))
+      {
+        this.a.jdField_a_of_type_Bfqz.a.put(paramArrayOfString, Integer.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramArrayOfString, 1)));
+        this.a.jdField_a_of_type_Bfqz.d();
+        this.a.jdField_a_of_type_Bfqz.e();
+        this.a.jdField_a_of_type_Bfqz.c();
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
+    {
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.m();
+      }
+    }
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    this.a.f(65536);
   }
 }
 

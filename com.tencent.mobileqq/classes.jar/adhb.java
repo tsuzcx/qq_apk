@@ -1,70 +1,37 @@
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.widget.EditText;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Iterator;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class adhb
-  implements adea
+  extends adic
 {
-  EditText a;
-  
-  public adhb() {}
-  
-  public adhb(EditText paramEditText)
+  public int a()
   {
-    this.a = paramEditText;
+    return -1000;
   }
   
-  private void a(String paramString)
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
   {
-    if (this.a == null) {}
-    for (boolean bool = true;; bool = false)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      a(paramString, bool);
-      return;
+      paramStringBuilder = (im_msg_body.Elem)paramList.next();
+      if (a(paramStringBuilder)) {
+        aqyt.a(paramMsg, paramStringBuilder, paramList1, (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+      }
     }
+    return false;
   }
   
-  private void a(String paramString, boolean paramBoolean)
+  public boolean a(im_msg_body.Elem paramElem)
   {
-    QLog.d("DoraemonOpenAPI.test", 2, paramString);
-    if (this.a != null) {
-      this.a.append(paramString);
-    }
-    if (paramBoolean) {
-      QQToast.a(BaseApplicationImpl.getApplication(), paramString, 0).a();
-    }
-  }
-  
-  public void onComplete()
-  {
-    a("onComplete\n");
-  }
-  
-  public void onFailure(int paramInt, String paramString)
-  {
-    a("onFailure code=" + paramInt + " msg=" + paramString + "\n");
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    a("onPermission " + paramInt + "\n", true);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    a("onSuccess " + paramJSONObject + "\n", true);
-    if (this.a != null) {
-      new AlertDialog.Builder(this.a.getContext()).setTitle("onSuccess").setMessage(paramJSONObject.toString()).setNegativeButton(anni.a(2131713541), null).create().show();
-    }
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject)
-  {
-    a("onTrigger\n");
+    return (paramElem.common_elem.has()) && (21 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

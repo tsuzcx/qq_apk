@@ -1,38 +1,55 @@
-import android.view.View;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import java.util.List;
 
 public class aggf
-  implements URLDrawableDownListener
 {
-  public aggf(DoodleMsgLayout paramDoodleMsgLayout) {}
+  public float a;
+  public int a;
+  public RelativeLayout.LayoutParams a;
+  public List<Long> a;
+  public boolean a;
+  public int b;
+  public RelativeLayout.LayoutParams b;
+  public boolean b;
+  public int c;
+  public RelativeLayout.LayoutParams c;
+  public boolean c;
+  public int d;
+  public RelativeLayout.LayoutParams d;
+  public boolean d;
+  public int e;
+  public RelativeLayout.LayoutParams e;
+  public int f;
+  public RelativeLayout.LayoutParams f;
+  public int g = 0;
+  public int h = 0;
+  public int i = 0;
+  public int j = 0;
+  public int k = 0;
+  public int l = 0;
+  public int m = 0;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public aggf(BaseBubbleBuilder paramBaseBubbleBuilder)
   {
-    if (paramView == DoodleMsgLayout.a(this.a))
-    {
-      DoodleMsgLayout.a(this.a, true);
-      DoodleMsgLayout.a(this.a);
-    }
-    do
-    {
-      return;
-      if (paramView == DoodleMsgLayout.b(this.a))
-      {
-        ((GifDrawable)paramURLDrawable.getCurrDrawable()).setGIFPlayOnceListener(this.a);
-        return;
-      }
-    } while (paramView != DoodleMsgLayout.c(this.a));
+    this.jdField_a_of_type_JavaUtilList = null;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
+    this.jdField_e_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
+    this.jdField_f_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
   }
 }
 

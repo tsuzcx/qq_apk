@@ -1,21 +1,6 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-
-class aruu
-  extends arvd
+public abstract interface aruu
 {
-  aruu(arup paramarup, String paramString, Object paramObject) {}
-  
-  public void a(EmoticonPackage arg1, int paramInt, Bundle paramBundle)
-  {
-    if (???.epId.equals(this.jdField_a_of_type_JavaLangString)) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaLangObject.notify();
-        return;
-      }
-    }
-  }
+  public abstract int a();
 }
 
 

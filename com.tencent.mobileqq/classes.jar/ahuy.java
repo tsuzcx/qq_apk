@@ -1,74 +1,26 @@
-import android.graphics.Bitmap;
-import android.media.ThumbnailUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.RoundRectBitmap;
-import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.image.downloader.GalleryDecoder;
-import com.tencent.widget.Gallery;
-import java.io.File;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahuy
-  extends GalleryDecoder
+class ahuy
+  implements View.OnClickListener
 {
-  private BaseApplicationImpl a;
+  ahuy(ahux paramahux) {}
   
-  public ahuy(BaseApplicationImpl paramBaseApplicationImpl)
+  public void onClick(View paramView)
   {
-    super(BaseApplicationImpl.getContext());
-    this.a = paramBaseApplicationImpl;
-  }
-  
-  public Object decodeVideo(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    int i = 0;
-    if (paramDownloadParams.tag != null) {
-      i = ((Integer)paramDownloadParams.tag).intValue();
+    ahvc localahvc = (ahvc)agej.a(paramView);
+    if (paramView == localahvc.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localahvc);
     }
-    if (i == 3)
+    for (;;)
     {
-      paramURLDrawableHandler = ThumbnailUtils.createVideoThumbnail(paramFile.getAbsolutePath(), 1);
-      int j = paramURLDrawableHandler.getWidth();
-      i = paramURLDrawableHandler.getHeight();
-      float f = Gallery.a(j, i, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, null);
-      j = (int)(j * f);
-      i = (int)(i * f);
-      return ThumbnailUtils.createVideoThumbnail(paramFile.getAbsolutePath(), 1);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView == localahvc.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+        this.a.a(localahvc);
+      }
     }
-    return null;
-  }
-  
-  public String getLogTag()
-  {
-    return "PEAK";
-  }
-  
-  public void reportSafeDecode(SafeBitmapFactory.SafeDecodeOption paramSafeDecodeOption)
-  {
-    if ((!paramSafeDecodeOption.isInJustDecodeBounds) && (paramSafeDecodeOption.needRegionDecode))
-    {
-      HashMap localHashMap = paramSafeDecodeOption.getInfo();
-      localHashMap.put("from", "GalleryDecoder");
-      bctj.a(BaseApplicationImpl.getApplication()).a(null, "safeDecode", paramSafeDecodeOption.isGetBitmap, paramSafeDecodeOption.runTime, paramSafeDecodeOption.rawHeight * paramSafeDecodeOption.rawWidth, localHashMap, "");
-    }
-  }
-  
-  public RoundRectBitmap resizeAndClipBitmap(Bitmap paramBitmap, int paramInt)
-  {
-    try
-    {
-      RoundRectBitmap localRoundRectBitmap = new RoundRectBitmap(paramBitmap, paramInt);
-      return localRoundRectBitmap;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError) {}
-    return new RoundRectBitmap(paramBitmap, 12.0F);
-  }
-  
-  public boolean useJpegTurbo()
-  {
-    return ayzh.b();
   }
 }
 

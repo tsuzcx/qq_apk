@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.relationx.icebreaking;
 
 import android.support.v4.view.ViewPager;
-import bajg;
+import bbbz;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.hotpic.HotPicMainPanel;
 
 public class AIOIceBreakView$1$1
   implements Runnable
 {
-  public AIOIceBreakView$1$1(bajg parambajg) {}
+  public AIOIceBreakView$1$1(bbbz parambbbz) {}
   
   public void run()
   {

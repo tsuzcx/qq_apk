@@ -1,40 +1,16 @@
-public class bcjc
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bcjc
+  implements View.OnClickListener
 {
-  public int a;
-  private int b;
-  private int c;
+  bcjc(bcjb parambcjb, bcfq parambcfq) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    int i = this.b;
-    this.b = (i + 1);
-    return i;
-  }
-  
-  public void a()
-  {
-    this.b = 0;
-    this.a = 0;
-    this.c = 0;
-  }
-  
-  public int b()
-  {
-    int i = this.c;
-    this.c = (i + 1);
-    return i;
-  }
-  
-  public void b()
-  {
-    this.b = 0;
-    this.a = 0;
-    this.c = 0;
-  }
-  
-  public int c()
-  {
-    return this.c;
+    this.jdField_a_of_type_Bcfq.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

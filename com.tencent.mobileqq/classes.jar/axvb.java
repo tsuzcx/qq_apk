@@ -1,19 +1,27 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.view.animation.DecelerateInterpolator;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 
 class axvb
-  implements TextWatcher
+  extends AnimatorListenerAdapter
 {
-  axvb(axuv paramaxuv) {}
+  axvb(axva paramaxva, axve paramaxve, URLDrawable paramURLDrawable) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    axei.a(this.a.e, 40);
+    if (this.jdField_a_of_type_Axva.a() != null)
+    {
+      this.jdField_a_of_type_Axve.b.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_Axve.b, "alpha", new float[] { 0.2F, 1.0F });
+      paramAnimator.setInterpolator(new DecelerateInterpolator());
+      paramAnimator.setDuration(300L).start();
+      return;
+    }
+    this.jdField_a_of_type_Axve.b.setAlpha(1.0F);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

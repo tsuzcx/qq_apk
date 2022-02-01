@@ -1,24 +1,19 @@
-import android.graphics.Bitmap;
+import android.widget.PopupWindow.OnDismissListener;
 
-public abstract interface sfc
+class sfc
+  implements PopupWindow.OnDismissListener
 {
-  public abstract void a(sfb paramsfb);
+  sfc(sel paramsel) {}
   
-  public abstract void a(sfb paramsfb, Object paramObject);
-  
-  public abstract void a(sfb paramsfb, String paramString);
-  
-  public abstract void a(sfb paramsfb, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap);
-  
-  public abstract boolean a(sfb paramsfb, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
-  
-  public abstract boolean a(sfb paramsfb, int paramInt, Object paramObject);
-  
-  public abstract void b(sfb paramsfb);
-  
-  public abstract void c(sfb paramsfb);
-  
-  public abstract void d(sfb paramsfb);
+  public void onDismiss()
+  {
+    sel.a(this.a).a(1.0F);
+    if (this.a.b)
+    {
+      this.a.a.c();
+      this.a.b = false;
+    }
+  }
 }
 
 

@@ -1,19 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 public class ymu
-  implements View.OnClickListener
+  extends yly<ymt>
 {
-  public ymu(StoryListPresenter.4.1 param1) {}
-  
-  public void onClick(View paramView)
+  public ymu(@Nullable ymc paramymc)
   {
-    yqu.a("home_page", "clk_up_close", 0, 0, new String[0]);
-    this.a.a.this$0.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramymc);
+  }
+  
+  protected JobSegment<ymb, ymt> a()
+  {
+    return new ymo();
+  }
+  
+  protected JobSegment<Integer, ymb> a(yma paramyma)
+  {
+    return new ymv(paramyma, this.a);
+  }
+  
+  protected ymt a()
+  {
+    yme localyme = (yme)wth.a(11);
+    List localList = localyme.a();
+    ymt localymt = new ymt(new ErrorMessage());
+    localymt.jdField_b_of_type_JavaUtilList = localyme.b(localList);
+    localymt.jdField_b_of_type_Boolean = true;
+    localymt.a = localymt.jdField_b_of_type_JavaUtilList.isEmpty();
+    return localymt;
+  }
+  
+  protected ymt a(ErrorMessage paramErrorMessage)
+  {
+    return new ymt(paramErrorMessage);
+  }
+  
+  protected void a(List<String> paramList, boolean paramBoolean)
+  {
+    ((yme)wth.a(11)).a(paramList, paramBoolean);
   }
 }
 

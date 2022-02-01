@@ -16,21 +16,21 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-import yqp;
-import ytb;
-import ytc;
-import zcd;
-import zce;
-import zco;
+import yuk;
+import yww;
+import ywx;
+import zfy;
+import zfz;
+import zgj;
 
 public class EditVideoFilter$FilterPagerAdapter
   extends PagerAdapter
 {
   private final Context jdField_a_of_type_AndroidContentContext;
-  private final SparseArray<zce> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private final List<zcd> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final Map<Class<? extends zce>, Queue<zce>> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private ytb jdField_a_of_type_Ytb;
+  private final SparseArray<zfz> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private final List<zfy> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final Map<Class<? extends zfz>, Queue<zfz>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private yww jdField_a_of_type_Yww;
   
   public EditVideoFilter$FilterPagerAdapter(@NonNull Context paramContext)
   {
@@ -47,19 +47,19 @@ public class EditVideoFilter$FilterPagerAdapter
     return paramInt % this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public zcd a(int paramInt)
+  public zfy a(int paramInt)
   {
     paramInt = a(paramInt);
     if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (zcd)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return (zfy)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
   }
   
   @Nullable
-  public zce a(int paramInt)
+  public zfz a(int paramInt)
   {
-    return (zce)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    return (zfz)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
   }
   
   public void a(int paramInt, String paramString)
@@ -67,28 +67,28 @@ public class EditVideoFilter$FilterPagerAdapter
     Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      zcd localzcd = (zcd)((Iterator)localObject).next();
-      if (paramInt == localzcd.jdField_b_of_type_Int) {
-        localzcd.jdField_b_of_type_JavaLangString = paramString;
+      zfy localzfy = (zfy)((Iterator)localObject).next();
+      if (paramInt == localzfy.jdField_b_of_type_Int) {
+        localzfy.jdField_b_of_type_JavaLangString = paramString;
       }
     }
     int i = 0;
     while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
     {
-      localObject = (zce)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-      if ((localObject != null) && (((zce)localObject).jdField_a_of_type_Zcd.jdField_b_of_type_Int == paramInt) && ((localObject instanceof zco)))
+      localObject = (zfz)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      if ((localObject != null) && (((zfz)localObject).jdField_a_of_type_Zfy.jdField_b_of_type_Int == paramInt) && ((localObject instanceof zgj)))
       {
-        localObject = (zco)localObject;
-        ((zco)localObject).b.setText(paramString);
+        localObject = (zgj)localObject;
+        ((zgj)localObject).b.setText(paramString);
         if (TextUtils.isEmpty(paramString)) {
-          EditVideoFilter.a((zce)localObject);
+          EditVideoFilter.a((zfz)localObject);
         }
       }
       i += 1;
     }
   }
   
-  public void a(List<zcd> paramList)
+  public void a(List<zfy> paramList)
   {
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_JavaUtilList.addAll(paramList);
@@ -96,25 +96,25 @@ public class EditVideoFilter$FilterPagerAdapter
     notifyDataSetChanged();
   }
   
-  public void a(ytb paramytb)
+  public void a(yww paramyww)
   {
-    this.jdField_a_of_type_Ytb = paramytb;
+    this.jdField_a_of_type_Yww = paramyww;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    zce localzce = (zce)paramObject;
-    paramViewGroup.removeView(localzce.jdField_a_of_type_AndroidViewView);
-    localzce.jdField_a_of_type_AndroidViewView.setOnTouchListener(null);
-    localzce.a();
-    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localzce.getClass());
+    zfz localzfz = (zfz)paramObject;
+    paramViewGroup.removeView(localzfz.jdField_a_of_type_AndroidViewView);
+    localzfz.jdField_a_of_type_AndroidViewView.setOnTouchListener(null);
+    localzfz.a();
+    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localzfz.getClass());
     paramViewGroup = paramObject;
     if (paramObject == null)
     {
       paramViewGroup = new LinkedList();
-      this.jdField_a_of_type_JavaUtilMap.put(localzce.getClass(), paramViewGroup);
+      this.jdField_a_of_type_JavaUtilMap.put(localzfz.getClass(), paramViewGroup);
     }
-    paramViewGroup.offer(localzce);
+    paramViewGroup.offer(localzfz);
     this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
   }
   
@@ -125,23 +125,23 @@ public class EditVideoFilter$FilterPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    zcd localzcd = a(paramInt);
-    if (localzcd == null)
+    zfy localzfy = a(paramInt);
+    if (localzfy == null)
     {
-      yqp.d("Q.qqstory.publish.edit.EditVideoFilter", "instantiateItem find data is null !");
+      yuk.d("Q.qqstory.publish.edit.EditVideoFilter", "instantiateItem find data is null !");
       return null;
     }
-    Object localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localzcd.a());
+    Object localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localzfy.a());
     if (localObject1 != null) {}
-    for (localObject1 = (zce)((Queue)localObject1).poll();; localObject1 = null)
+    for (localObject1 = (zfz)((Queue)localObject1).poll();; localObject1 = null)
     {
       Object localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = localzcd.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
+        localObject2 = localzfy.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
       }
-      paramViewGroup.addView(((zce)localObject2).jdField_a_of_type_AndroidViewView);
-      ((zce)localObject2).jdField_a_of_type_AndroidViewView.setOnTouchListener(new ytc(this.jdField_a_of_type_Ytb));
-      ((zce)localObject2).a(localzcd, paramInt);
+      paramViewGroup.addView(((zfz)localObject2).jdField_a_of_type_AndroidViewView);
+      ((zfz)localObject2).jdField_a_of_type_AndroidViewView.setOnTouchListener(new ywx(this.jdField_a_of_type_Yww));
+      ((zfz)localObject2).a(localzfy, paramInt);
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
       return localObject2;
     }
@@ -149,7 +149,7 @@ public class EditVideoFilter$FilterPagerAdapter
   
   public boolean isViewFromObject(View paramView, Object paramObject)
   {
-    return ((paramObject instanceof zce)) && (((zce)paramObject).jdField_a_of_type_AndroidViewView == paramView);
+    return ((paramObject instanceof zfz)) && (((zfz)paramObject).jdField_a_of_type_AndroidViewView == paramView);
   }
 }
 

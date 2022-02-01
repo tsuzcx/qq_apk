@@ -1,20 +1,25 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.image.RegionDrawableData;
+import android.support.v4.app.FragmentActivity;
 
-public abstract interface akfl
+public class akfl
+  extends akbz
 {
-  public abstract View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup);
+  public static final int[] a = { 2131690657, 2131690662, 2131690659, 2131690660, 2131690664, 2131690661, 2131690658, 2131690663 };
+  public static final int[] b = { 2131364406, 2131364411, 2131364408, 2131364409, 2131364413, 2131364410, 2131364407, 2131364412 };
   
-  public abstract void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup);
+  public akfl(FragmentActivity paramFragmentActivity)
+  {
+    super(paramFragmentActivity);
+  }
   
-  public abstract void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData);
+  protected int[] a()
+  {
+    return b;
+  }
   
-  public abstract void onSlot(int paramInt, View paramView, ViewGroup paramViewGroup);
-  
-  public abstract void onViewDetached(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean);
-  
-  public abstract void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup);
+  protected int[] b()
+  {
+    return a;
+  }
 }
 
 

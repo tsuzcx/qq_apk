@@ -1,18 +1,20 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.face.FaceInfo;
 
 public final class aopd
-  implements Parcelable.Creator<SosoInterface.SosoLbsInfo>
+  implements Parcelable.Creator<FaceInfo>
 {
-  public SosoInterface.SosoLbsInfo a(Parcel paramParcel)
+  public FaceInfo a(Parcel paramParcel)
   {
-    return new SosoInterface.SosoLbsInfo(paramParcel);
+    FaceInfo localFaceInfo = new FaceInfo();
+    localFaceInfo.a(paramParcel);
+    return localFaceInfo;
   }
   
-  public SosoInterface.SosoLbsInfo[] a(int paramInt)
+  public FaceInfo[] a(int paramInt)
   {
-    return new SosoInterface.SosoLbsInfo[paramInt];
+    return new FaceInfo[paramInt];
   }
 }
 

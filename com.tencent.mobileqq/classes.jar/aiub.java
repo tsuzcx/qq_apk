@@ -1,23 +1,55 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import java.util.List;
+import org.json.JSONObject;
 
-class aiub
-  extends RecyclerView.ViewHolder
+public class aiub
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  String jdField_a_of_type_JavaLangString;
+  private aiuc a;
   
-  public aiub(aity paramaity, View paramView)
+  public aiub(aiuc paramaiuc)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131376826));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368138));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371539));
+    this.a = paramaiuc;
+  }
+  
+  public String a()
+  {
+    if (this.a == null) {
+      return "";
+    }
+    return this.a.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<String> a()
+  {
+    if (this.a == null) {
+      return null;
+    }
+    return this.a.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(JSONObject paramJSONObject) {}
+  
+  public String b()
+  {
+    if (this.a == null) {
+      return "";
+    }
+    return this.a.b;
+  }
+  
+  public String c()
+  {
+    if (this.a == null) {
+      return "";
+    }
+    return this.a.c;
+  }
+  
+  public String d()
+  {
+    if (this.a == null) {
+      return "";
+    }
+    return this.a.d;
   }
 }
 

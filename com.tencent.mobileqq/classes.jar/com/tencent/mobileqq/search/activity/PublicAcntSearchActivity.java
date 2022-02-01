@@ -5,11 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import anni;
+import anzj;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tyg;
+import tyi;
 
 public class PublicAcntSearchActivity
   extends BaseSearchActivity
@@ -32,9 +32,9 @@ public class PublicAcntSearchActivity
   protected String a()
   {
     if (d == 12) {
-      return anni.a(2131707511) + tyg.a(this.app, getApplicationContext());
+      return anzj.a(2131707620) + tyi.a(this.app, getApplicationContext());
     }
-    return anni.a(2131707569);
+    return anzj.a(2131707678);
   }
   
   @Override

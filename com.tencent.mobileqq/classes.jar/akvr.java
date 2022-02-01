@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class akvr
-  implements bcob
+  implements DialogInterface.OnClickListener
 {
-  akvr(akvq paramakvq, akvs paramakvs) {}
+  akvr(akvn paramakvn) {}
   
-  public void a(int paramInt, LoadExtResult paramLoadExtResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0)
-    {
-      akvq.a(this.jdField_a_of_type_Akvq, true);
-      if (this.jdField_a_of_type_Akvs != null) {
-        this.jdField_a_of_type_Akvs.a(true);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
     }
-    while (this.jdField_a_of_type_Akvs == null) {
-      return;
+    if (((NewPhotoPreviewActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(true);
     }
-    this.jdField_a_of_type_Akvs.a(false);
   }
 }
 

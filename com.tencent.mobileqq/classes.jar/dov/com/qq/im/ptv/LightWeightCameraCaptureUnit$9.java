@@ -1,17 +1,17 @@
 package dov.com.qq.im.ptv;
 
 import android.app.Activity;
-import anni;
-import bows;
-import boym;
-import boyn;
+import anzj;
+import bpyn;
+import bqah;
+import bqai;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class LightWeightCameraCaptureUnit$9
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$9(bows parambows, int paramInt) {}
+  public LightWeightCameraCaptureUnit$9(bpyn parambpyn, int paramInt) {}
   
   public void run()
   {
@@ -24,16 +24,16 @@ public class LightWeightCameraCaptureUnit$9
       do
       {
         return;
-        QQToast.a(BaseApplicationImpl.getApplication(), anni.a(2131704895), 1).a();
-        localActivity = this.this$0.jdField_a_of_type_Boyn.a();
+        QQToast.a(BaseApplicationImpl.getApplication(), anzj.a(2131705002), 1).a();
+        localActivity = this.this$0.jdField_a_of_type_Bqai.a();
       } while ((localActivity == null) || (localActivity.isFinishing()));
-      this.this$0.jdField_a_of_type_Boym.a(2);
+      this.this$0.jdField_a_of_type_Bqah.a(2);
       return;
     case 102: 
-      QQToast.a(BaseApplicationImpl.getContext(), anni.a(2131704893), 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), anzj.a(2131705000), 0).a();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), anni.a(2131704879), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), anzj.a(2131704986), 0).a();
   }
 }
 

@@ -1,22 +1,60 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ThemeImageView;
+import android.support.v4.view.ViewPager;
+import android.view.MotionEvent;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
-class bbfy
-  implements View.OnClickListener
+public class bbfy
+  implements GLGestureListener
 {
-  bbfy(bbfs parambbfs) {}
+  private ViewPager a;
   
-  public void onClick(View paramView)
+  public bbfy(ViewPager paramViewPager)
   {
-    bbfs.a(this.a).findViewById(2131365328).setVisibility(0);
-    bbfs.a(this.a).findViewById(2131365329).setVisibility(8);
-    bbfs.a(this.a).a = false;
-    bbfs.a(this.a).setImageResource(2130837507);
-    bbfs.a(this.a).a(bbfs.a(this.a).a(), true);
-    bbfs.a(this.a).notifyDataSetChanged();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramViewPager;
+  }
+  
+  public void a(ViewPager paramViewPager)
+  {
+    this.a = paramViewPager;
+  }
+  
+  public int onGetPriority()
+  {
+    return 1002;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    int i = paramMotionEvent.getPointerCount();
+    paramMotionEvent.getAction();
+    if ((i == 1) && (!paramBoolean) && (this.a != null) && (this.a.isShown())) {}
+    try
+    {
+      this.a.onTouchEvent(paramMotionEvent);
+      if ((i != 2) || (!paramBoolean) || (this.a == null) || (!this.a.isShown())) {}
+    }
+    catch (Exception localException)
+    {
+      try
+      {
+        if (GLGestureProxy.getInstance().checkSecendFinger(paramMotionEvent))
+        {
+          paramMotionEvent = GLGestureProxy.getInstance().getSecendFingerMotionEvent(paramMotionEvent);
+          this.a.onTouchEvent(paramMotionEvent);
+          paramMotionEvent.recycle();
+        }
+        return false;
+        localException = localException;
+        localException.printStackTrace();
+      }
+      catch (Exception paramMotionEvent)
+      {
+        for (;;)
+        {
+          paramMotionEvent.printStackTrace();
+        }
+      }
+    }
   }
 }
 

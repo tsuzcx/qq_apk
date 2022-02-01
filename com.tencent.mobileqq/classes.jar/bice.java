@@ -1,20 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import android.graphics.drawable.Drawable;
 
 public class bice
-  implements Animation.AnimationListener
 {
-  public bice(ShaderAnimLayout paramShaderAnimLayout) {}
+  public bice(bicd parambicd) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public Drawable a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.setVisibility(8);
+    boolean bool = true;
+    paramString = new bicg(paramString, true, 1, paramBoolean2);
+    bicd localbicd = this.a;
+    if ((paramBoolean1) && (paramBoolean2)) {}
+    for (paramBoolean1 = bool;; paramBoolean1 = false) {
+      return localbicd.a(paramString, paramBoolean1, null);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

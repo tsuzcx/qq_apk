@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.flashchat;
 
-import audp;
+import auvk;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
 
 public class FlashChatPanel$1$1
   implements Runnable
 {
-  public FlashChatPanel$1$1(audp paramaudp) {}
+  public FlashChatPanel$1$1(auvk paramauvk) {}
   
   public void run()
   {

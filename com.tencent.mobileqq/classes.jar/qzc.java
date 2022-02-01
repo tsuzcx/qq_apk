@@ -1,6 +1,7 @@
-public abstract interface qzc
+public class qzc
 {
-  public abstract void a(String paramString);
+  public String a = "";
+  public String b = "";
 }
 
 

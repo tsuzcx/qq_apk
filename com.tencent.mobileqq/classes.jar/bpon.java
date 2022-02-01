@@ -1,93 +1,176 @@
-import android.animation.TimeInterpolator;
-import android.animation.TypeEvaluator;
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import dov.com.qq.im.capture.music.QimMusicDownloader;
+import dov.com.qq.im.capture.view.MusicProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class bpon
-  implements TypeEvaluator<ArrayList<Integer>>
+  extends bpmr
 {
-  private long jdField_a_of_type_Long;
-  private ArrayList<bpoo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ArrayList<Integer> b = new ArrayList();
-  private ArrayList<Integer> c = new ArrayList();
-  private ArrayList<Integer> d = new ArrayList();
-  private ArrayList<TimeInterpolator> e = new ArrayList();
+  bpor a;
+  public MusicItemInfo a;
+  int d;
   
-  public int a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, TimeInterpolator paramTimeInterpolator)
+  public bpon(int paramInt)
   {
-    int i = this.c.size();
-    paramString = new bpoo(paramLong1, paramLong2, i);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-    this.c.add(Integer.valueOf(paramInt1));
-    this.d.add(Integer.valueOf(paramInt2));
-    this.e.add(paramTimeInterpolator);
-    if (paramLong1 + paramLong2 > this.jdField_a_of_type_Long) {
-      this.jdField_a_of_type_Long = (paramLong1 + paramLong2);
-    }
-    return i;
+    super(null);
+    this.jdField_a_of_type_Bpor = new bpoo(this);
+    this.d = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = ((QIMMusicConfigManager)bplq.a(2)).b(paramInt);
   }
   
-  public long a()
+  public float a()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public ArrayList<Integer> a()
-  {
-    return this.d;
-  }
-  
-  public ArrayList<Integer> a(float paramFloat, ArrayList<Integer> paramArrayList1, ArrayList<Integer> paramArrayList2)
-  {
-    if ((paramArrayList1.isEmpty()) || (paramArrayList2.isEmpty())) {
-      return null;
-    }
-    if (paramArrayList1.size() != paramArrayList2.size()) {
-      return null;
-    }
-    int j = paramArrayList1.size();
-    if (this.b == null) {
-      this.b = new ArrayList();
-    }
-    this.b.clear();
-    int i = 0;
-    if (i < j)
+    try
     {
-      int k = ((Integer)paramArrayList1.get(i)).intValue();
-      int m = ((Integer)paramArrayList2.get(i)).intValue();
-      long l1 = ((bpoo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Long;
-      long l2 = ((bpoo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b;
-      int n = (int)((float)this.jdField_a_of_type_Long * paramFloat);
-      if (n < l1) {
-        this.b.add(Integer.valueOf(0));
-      }
-      for (;;)
+      int i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress;
+      float f = 1.0F * i / 100.0F;
+      return f;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public int a()
+  {
+    int i = 3;
+    for (;;)
+    {
+      boolean bool;
+      try
       {
-        i += 1;
-        break;
-        if (n > l1 + l2)
+        MusicItemInfo localMusicItemInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
+        if (localMusicItemInfo == null) {
+          return i;
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress > -1)
         {
-          this.b.add(Integer.valueOf(m));
+          int j = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress;
+          if (j == 100) {
+            continue;
+          }
+          i = 1;
+          continue;
+        }
+      }
+      finally {}
+      try
+      {
+        bool = bhmi.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath());
+        if (bool) {
+          continue;
+        }
+      }
+      catch (Exception localException)
+      {
+        continue;
+      }
+      i = 2;
+    }
+  }
+  
+  public int a(Activity paramActivity, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QCombo.Music", 2, "applyMusic" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo == null) {
+      return 0;
+    }
+    MusicProviderView localMusicProviderView2 = (MusicProviderView)paramActivity.findViewById(2131364195);
+    MusicProviderView localMusicProviderView1 = localMusicProviderView2;
+    if (localMusicProviderView2 == null)
+    {
+      ((QIMProviderContainerView)paramActivity.findViewById(2131373091)).a(104);
+      localMusicProviderView1 = (MusicProviderView)paramActivity.findViewById(2131364195);
+      localMusicProviderView1.g();
+    }
+    paramActivity = ((bpoz)bplq.a().c(8)).a();
+    if ((MusicProviderView.a) && (paramActivity != null) && (paramActivity.mItemId != this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mItemId) && (paramActivity.mType == 5))
+    {
+      localMusicProviderView1.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+      return 0;
+    }
+    localMusicProviderView1.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+    return 0;
+  }
+  
+  public void a(Activity paramActivity, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo == null) {}
+    while ((paramInt == 1) || (paramInt == 3)) {
+      return;
+    }
+    ((bpoz)bplq.a().c(8)).a(paramInt);
+  }
+  
+  public int b()
+  {
+    int j = 3;
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo == null)
+        {
+          i = j;
+          if (QLog.isColorLevel())
+          {
+            QLog.i("MusicProviderView.Downloader", 2, "download STATE_DOWNLOADED" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+            i = j;
+          }
+          return i;
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress > -1)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("MusicProviderView.Downloader", 2, "download mMusic.mProgress" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress);
+          }
         }
         else
         {
-          float f1 = ((TimeInterpolator)this.e.get(i)).getInterpolation((float)(n - l1) / (float)l2);
-          ArrayList localArrayList = this.b;
-          float f2 = k;
-          localArrayList.add(Integer.valueOf((int)(f1 * (m - k) + f2)));
+          if (!bhmi.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath()))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("MusicProviderView.Downloader", 2, "download ." + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress);
+            }
+            this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress = 1;
+            QimMusicDownloader.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mUrl, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath(), this.jdField_a_of_type_Bpor);
+            a();
+            i = 2;
+            continue;
+          }
+          i = j;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.i("MusicProviderView.Downloader", 2, "STATE_DOWNLOADED ." + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress);
+          i = j;
+          continue;
         }
+        int i = 1;
       }
+      finally {}
     }
-    return this.b;
   }
   
-  public ArrayList<Integer> a(long paramLong)
+  public void c(Activity paramActivity, int paramInt)
   {
-    return a((float)paramLong / (float)this.jdField_a_of_type_Long, this.c, this.d);
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo == null) {}
+    while ((paramInt == 1) || (paramInt == 3)) {
+      return;
+    }
+    ((bpoz)bplq.a().c(8)).d();
   }
   
-  public ArrayList<Integer> b()
+  public String toString()
   {
-    return this.c;
+    return "Music@" + this.d + "@" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo + hashCode();
   }
 }
 

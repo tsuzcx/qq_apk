@@ -1,25 +1,19 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-final class bmis
-  implements QQPermissionCallback
+class bmis
+  implements DialogInterface.OnDismissListener
 {
-  bmis(Bitmap paramBitmap, int paramInt, String paramString, Activity paramActivity) {}
+  bmis(bmim parambmim) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bglp.b(bmiq.a(this.jdField_a_of_type_AndroidAppActivity));
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bmiq.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    bmim.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmis
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,27 @@
-import android.os.Bundle;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class adeh
-  implements aaob
+public class adeh
+  implements adci
 {
-  protected abstract void a(boolean paramBoolean, Bundle paramBundle);
-  
-  public void callback(Bundle paramBundle)
+  private static void a(adan paramadan, MsgType0x210 paramMsgType0x210)
   {
-    paramBundle = paramBundle.getBundle("key_result");
-    if (paramBundle != null) {}
-    for (boolean bool = true;; bool = false)
+    paramMsgType0x210 = nku.a(paramadan.a(), paramMsgType0x210.vProtobuf);
+    if (paramMsgType0x210 != null)
     {
-      a(bool, paramBundle);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("storyRedDotDebug", 2, "receive push");
+      }
+      paramadan.a(105, true, paramMsgType0x210);
     }
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan, paramMsgType0x210);
+    return null;
   }
 }
 

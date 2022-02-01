@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.activity.aio.helper.TroopRobotHelper.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.ImageView;
 
-public class agnu
-  implements bfwk
+class agnu
+  implements ValueAnimator.AnimatorUpdateListener
 {
   agnu(agnt paramagnt) {}
   
-  public void a(String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ThreadManager.getUIHandler().post(new TroopRobotHelper.1.1(this));
+    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
+    if (agnt.a(this.a) != null) {
+      agnt.a(this.a).setAlpha((float)d);
+    }
+    if (agnt.a(this.a) != null) {
+      agnt.a(this.a).setAlpha((float)d * 2.0F);
+    }
   }
 }
 

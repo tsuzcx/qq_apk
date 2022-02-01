@@ -1,14 +1,17 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
 
 final class avmf
-  implements EIPCResultCallback
+  implements aldq
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TogetherWatchFloatingUtil", 1, new Object[] { Integer.valueOf(paramEIPCResult.code) });
+      QLog.d("QQGameHelper", 1, "dowloadFullPopRes complete! rescpde=" + paramInt);
+    }
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)) && (QLog.isColorLevel())) {
+      QLog.d("QQGameHelper", 1, "dowloadFullPopRes fileUrl=" + paramPathResult.url + " unzipPath=" + paramPathResult.folderPath);
     }
   }
 }

@@ -1,46 +1,15 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.PAVideoView;
 
-class bdtz
-  implements beai
+public class bdtz
 {
-  bdtz(bdtx parambdtx) {}
-  
-  public Bitmap getBitmap(URL paramURL)
-  {
-    paramURL = this.a.a(paramURL);
-    if (paramURL == null) {
-      paramURL = null;
-    }
-    for (;;)
-    {
-      return paramURL;
-      String str = paramURL.path;
-      if (TextUtils.isEmpty(str)) {
-        return null;
-      }
-      try
-      {
-        Bitmap localBitmap = this.a.a(str);
-        paramURL = localBitmap;
-        if (localBitmap == null)
-        {
-          paramURL = this.a.b(str);
-          return paramURL;
-        }
-      }
-      catch (Throwable paramURL)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
-        }
-      }
-    }
-    return null;
-  }
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public PAVideoView a;
+  public TextView b;
 }
 
 

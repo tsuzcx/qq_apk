@@ -1,40 +1,40 @@
 package com.tencent.mobileqq.apollo;
 
-import amhd;
+import amsx;
 
 public class ApolloManager$17
   implements Runnable
 {
-  public ApolloManager$17(amhd paramamhd) {}
+  public ApolloManager$17(amsx paramamsx) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lamhd;
-    //   4: invokestatic 25	amhd:a	(Lamhd;)Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   1: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lamsx;
+    //   4: invokestatic 25	amsx:a	(Lamsx;)Lcom/tencent/mobileqq/persistence/EntityManager;
     //   7: invokevirtual 31	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   10: astore_1
     //   11: aload_1
     //   12: invokevirtual 36	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   15: aload_0
-    //   16: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lamhd;
-    //   19: invokestatic 39	amhd:a	(Lamhd;)Ljava/lang/Object;
+    //   16: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lamsx;
+    //   19: invokestatic 39	amsx:a	(Lamsx;)Ljava/lang/Object;
     //   22: astore_2
     //   23: aload_2
     //   24: monitorenter
     //   25: aload_0
-    //   26: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lamhd;
-    //   29: invokestatic 42	amhd:a	(Lamhd;)Ljava/util/List;
+    //   26: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lamsx;
+    //   29: invokestatic 42	amsx:a	(Lamsx;)Ljava/util/List;
     //   32: ifnull +154 -> 186
     //   35: new 44	java/util/ArrayList
     //   38: dup
     //   39: invokespecial 45	java/util/ArrayList:<init>	()V
     //   42: astore_3
     //   43: aload_0
-    //   44: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lamhd;
-    //   47: invokestatic 42	amhd:a	(Lamhd;)Ljava/util/List;
+    //   44: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lamsx;
+    //   47: invokestatic 42	amsx:a	(Lamsx;)Ljava/util/List;
     //   50: invokeinterface 51 1 0
     //   55: astore 4
     //   57: aload 4
@@ -80,14 +80,14 @@ public class ApolloManager$17
     //   150: checkcast 63	com/tencent/mobileqq/DrawerPushItem
     //   153: astore 4
     //   155: aload_0
-    //   156: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lamhd;
-    //   159: invokestatic 42	amhd:a	(Lamhd;)Ljava/util/List;
+    //   156: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lamsx;
+    //   159: invokestatic 42	amsx:a	(Lamsx;)Ljava/util/List;
     //   162: aload 4
     //   164: invokeinterface 91 2 0
     //   169: pop
     //   170: aload_0
-    //   171: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lamhd;
-    //   174: invokestatic 25	amhd:a	(Lamhd;)Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   171: getfield 12	com/tencent/mobileqq/apollo/ApolloManager$17:this$0	Lamsx;
+    //   174: invokestatic 25	amsx:a	(Lamsx;)Lcom/tencent/mobileqq/persistence/EntityManager;
     //   177: aload 4
     //   179: invokevirtual 94	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   182: pop

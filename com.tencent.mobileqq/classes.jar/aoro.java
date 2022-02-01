@@ -1,18 +1,27 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class aoro
-  implements MediaPlayer.OnErrorListener
+  extends BroadcastReceiver
 {
-  aoro(aorl paramaorl) {}
-  
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ARMusicController", 2, "ARMusicController, onError, what=" + paramInt1 + ", extra=" + paramInt2);
+    paramIntent = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    aori.a().b(paramIntent);
+    bdll.b(paramIntent, "dc00898", "", "", "0X800B278", "0X800B278", 0, 0, "", "", "", "");
+    try
+    {
+      paramContext.unregisterReceiver(this);
+      return;
     }
-    return false;
+    catch (Exception paramContext)
+    {
+      QLog.d("AccountIdentityManager", 1, new Object[] { "unregisterReceiver error : ", paramContext.getMessage() });
+    }
   }
 }
 

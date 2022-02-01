@@ -1,72 +1,75 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import java.util.List;
+import android.content.Context;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
-public class akjh
-  extends akhu
+class akjh
+  implements blih
 {
-  private int a;
-  private int b;
-  private int c;
+  int jdField_a_of_type_Int = 0;
+  int b;
+  int c = 0;
   
-  public akjh(NewPhotoListActivity paramNewPhotoListActivity)
+  akjh(akjc paramakjc)
   {
-    super(paramNewPhotoListActivity);
+    this.jdField_b_of_type_Int = 0;
   }
   
-  protected void b()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.mPhotoCommonData != null) && (this.mPhotoCommonData.selectedPhotoList != null) && (this.mActivity != null))
-    {
-      Intent localIntent = new Intent();
-      localIntent.putStringArrayListExtra("img_list", this.mPhotoCommonData.selectedPhotoList);
-      ((NewPhotoListActivity)this.mActivity).setResult(-1, localIntent);
-      ((NewPhotoListActivity)this.mActivity).finish();
-      bgkc.anim(this.mActivity, false, false);
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    this.jdField_b_of_type_Int = paramInt3;
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged, reach bottom, scrollState " + paramInt + " firstVisibleItem: " + this.c + ", lastItem:" + this.jdField_a_of_type_Int + ", totalItemCount = " + this.jdField_b_of_type_Int + ", mIsComplete: " + this.jdField_a_of_type_Akjc.d + ", requesting:" + this.jdField_a_of_type_Akjc.jdField_c_of_type_Boolean + ", mSearchMode: " + this.jdField_a_of_type_Akjc.jdField_b_of_type_Int + ", mCurrentKeyword: " + this.jdField_a_of_type_Akjc.jdField_a_of_type_JavaLangString);
     }
-  }
-  
-  public void initData(Intent paramIntent)
-  {
-    super.initData(paramIntent);
-    this.a = paramIntent.getIntExtra("min_width", 200);
-    this.b = paramIntent.getIntExtra("min_height", 200);
-    this.c = paramIntent.getIntExtra("max_gif_size", 8388608);
-  }
-  
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (paramIntent == null) {}
-    while ((paramInt2 != -1) || (paramInt1 != 100010) || (this.mPhotoCommonData == null) || (this.mPhotoCommonData.selectedPhotoList == null) || (this.mActivity == null)) {
-      return;
-    }
-    paramIntent = new Intent();
-    paramIntent.putStringArrayListExtra("img_list", this.mPhotoCommonData.selectedPhotoList);
-    ((NewPhotoListActivity)this.mActivity).setResult(-1, paramIntent);
-    ((NewPhotoListActivity)this.mActivity).finish();
-  }
-  
-  public void updateAddData(List<LocalMediaInfo> paramList, int paramInt)
-  {
-    if (paramList != null)
+    if (this.jdField_b_of_type_Int == 0) {}
+    do
     {
-      int i = paramList.size() - 1;
-      while (i >= 0)
+      do
       {
-        LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)paramList.get(i);
-        if ((!localLocalMediaInfo.path.endsWith(".gif")) && ((localLocalMediaInfo.mediaHeight < this.b) || (localLocalMediaInfo.mediaWidth < this.a))) {
-          paramList.remove(i);
+        return;
+      } while ((this.jdField_a_of_type_Int != this.jdField_b_of_type_Int) || (paramInt != 0));
+      if ((this.c != 0) && (!this.jdField_a_of_type_Akjc.jdField_c_of_type_Boolean))
+      {
+        this.jdField_a_of_type_Akjc.jdField_c_of_type_Boolean = true;
+        if (this.jdField_a_of_type_Akjc.jdField_b_of_type_Int == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageLocal >>>>> isComplete: " + this.jdField_a_of_type_Akjc.d);
+          }
+          this.jdField_a_of_type_Akjc.jdField_a_of_type_Akgd.a(this.jdField_a_of_type_Akjc.jdField_a_of_type_Long, this.jdField_a_of_type_Akjc.jdField_a_of_type_JavaLangString, 2);
+          return;
         }
-        if ((localLocalMediaInfo.path.endsWith(".gif")) && (localLocalMediaInfo.fileSize > this.c)) {
-          paramList.remove(i);
+        if (QLog.isColorLevel()) {
+          QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageInCloud >>>>> isComplete: " + this.jdField_a_of_type_Akjc.d);
         }
-        i -= 1;
+        if (this.jdField_a_of_type_Akjc.d)
+        {
+          this.jdField_a_of_type_Akjc.jdField_c_of_type_AndroidWidgetTextView.setText(anzj.a(2131705022));
+          this.jdField_a_of_type_Akjc.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373040).setVisibility(8);
+          this.jdField_a_of_type_Akjc.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          this.jdField_a_of_type_Akjc.jdField_b_of_type_AndroidViewView.setVisibility(0);
+          return;
+        }
+        this.jdField_a_of_type_Akjc.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Akjc.jdField_a_of_type_AndroidContentContext.getString(2131717755));
+        this.jdField_a_of_type_Akjc.jdField_b_of_type_AndroidViewView.setVisibility(0);
+        this.jdField_a_of_type_Akjc.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373040).setVisibility(0);
+        this.jdField_a_of_type_Akjc.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.jdField_a_of_type_Akjc.jdField_a_of_type_Long = System.currentTimeMillis();
+        return;
       }
-    }
-    super.updateAddData(paramList, paramInt);
+    } while ((this.c != 0) || (this.jdField_a_of_type_Akjc.jdField_c_of_type_Boolean) || (!this.jdField_a_of_type_Akjc.d) || (this.jdField_a_of_type_Akjc.jdField_b_of_type_Int != 1));
+    this.jdField_a_of_type_Akjc.jdField_c_of_type_AndroidWidgetTextView.setText(anzj.a(2131705018));
+    this.jdField_a_of_type_Akjc.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373040).setVisibility(8);
+    this.jdField_a_of_type_Akjc.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_Akjc.jdField_b_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

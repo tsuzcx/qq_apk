@@ -1,28 +1,13 @@
-import android.text.TextUtils;
-import android.widget.Button;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 class aact
-  extends anry
+  implements aacw<E>
 {
-  aact(aacp paramaacp, aadb paramaadb, QQAppInterface paramQQAppInterface) {}
+  aact(aacr paramaacr) {}
   
-  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  public void a(List<E> paramList)
   {
-    super.onFollowPublicAccount(paramBoolean, paramString);
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Aadb.b.setVisibility(8);
-      this.jdField_a_of_type_Aadb.a.setVisibility(0);
-      if (TextUtils.isEmpty(twi.a().a(paramString)))
-      {
-        paramString = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-        if (paramString != null) {
-          paramString.a();
-        }
-      }
-    }
+    aacr.access$100(this.a, paramList);
   }
 }
 

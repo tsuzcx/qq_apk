@@ -1,20 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
+import android.content.Intent;
+import android.view.View;
 
-public class awep
-  extends Handler
+final class awep
+  implements bliz
 {
-  public awep(LyricViewInternal paramLyricViewInternal, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  awep(Intent paramIntent, blir paramblir) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.requestLayout();
-    this.a.invalidate();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    bdll.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_quit_opener", 0, 0, this.jdField_a_of_type_AndroidContentIntent.getStringExtra("cur_uin"), paramInt + "", "", "");
+    paramView = awet.a();
+    if (paramInt == 0) {}
+    for (paramInt = 2;; paramInt = 1)
+    {
+      paramView.a(paramInt);
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+    }
   }
 }
 

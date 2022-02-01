@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.voice;
 
 import Wallet.SongRedPackMatchRsp;
-import akms;
-import akww;
-import akxm;
-import akxq;
-import akxr;
-import akxu;
+import akyd;
+import alil;
+import aljb;
+import aljf;
+import aljg;
+import aljj;
 import android.os.Bundle;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -21,62 +21,62 @@ import java.util.Map;
 public class VoiceRedPacketHelper$4$1$1
   implements Runnable
 {
-  public VoiceRedPacketHelper$4$1$1(akxr paramakxr, boolean paramBoolean, Bundle paramBundle, int paramInt) {}
+  public VoiceRedPacketHelper$4$1$1(aljg paramaljg, boolean paramBoolean, Bundle paramBundle, int paramInt) {}
   
   public void run()
   {
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Akxr.jdField_a_of_type_Long;
-    Object localObject = (akxu)this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_Akxm.jdField_a_of_type_JavaLangRefWeakReference.get();
+    long l2 = this.jdField_a_of_type_Aljg.jdField_a_of_type_Long;
+    Object localObject = (aljj)this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_Aljb.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      QQAppInterface localQQAppInterface = akww.a();
+      QQAppInterface localQQAppInterface = alil.a();
       if (!this.jdField_a_of_type_Boolean) {
-        akxm.a(this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_Akxm, 3, l1 - l2, 1, this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.b);
+        aljb.a(this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_Aljb, 3, l1 - l2, 1, this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.b);
       }
-      if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidOsBundle == null) || (this.jdField_a_of_type_Int != 21) || (localQQAppInterface == null) || (this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg == null) || (localObject == null) || (((akxu)localObject).c()) || (this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_Akxm.b) || (i != this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_Akxm.jdField_a_of_type_Int))
+      if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidOsBundle == null) || (this.jdField_a_of_type_Int != 21) || (localQQAppInterface == null) || (this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg == null) || (localObject == null) || (((aljj)localObject).c()) || (this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_Aljb.b) || (i != this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_Aljb.jdField_a_of_type_Int))
       {
-        this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_Akxm.c("onReceive SongRedPackMatchRsp erorr");
+        this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_Aljb.c("onReceive SongRedPackMatchRsp erorr");
         return;
       }
       SongRedPackMatchRsp localSongRedPackMatchRsp = (SongRedPackMatchRsp)this.jdField_a_of_type_AndroidOsBundle.getSerializable("rsp");
       if (QLog.isColorLevel()) {
         QLog.d("VoiceRedPacketHelper", 2, "SongRedPackMatchRsp onReceive:" + localSongRedPackMatchRsp);
       }
-      if ((localSongRedPackMatchRsp != null) && (localSongRedPackMatchRsp.grabUin == localQQAppInterface.getLongAccountUin()) && (localSongRedPackMatchRsp.billno != null) && (localSongRedPackMatchRsp.billno.equals(this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId)))
+      if ((localSongRedPackMatchRsp != null) && (localSongRedPackMatchRsp.grabUin == localQQAppInterface.getLongAccountUin()) && (localSongRedPackMatchRsp.billno != null) && (localSongRedPackMatchRsp.billno.equals(this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId)))
       {
         if (QLog.isColorLevel()) {
           QLog.d("VoiceRedPacketHelper", 2, "VoiceRedPackMatchRsp status:" + localSongRedPackMatchRsp.status);
         }
-        akxm localakxm = this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_Akxm;
-        localakxm.c += 1;
+        aljb localaljb = this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_Aljb;
+        localaljb.c += 1;
         switch (localSongRedPackMatchRsp.status)
         {
         }
         for (;;)
         {
-          this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_Akxm.jdField_a_of_type_JavaUtilHashMap.remove(this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-          this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_Akxm.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+          this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_Aljb.jdField_a_of_type_JavaUtilHashMap.remove(this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+          this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_Aljb.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
           return;
-          ((akxu)localObject).a(false, "");
+          ((aljj)localObject).a(false, "");
           continue;
-          akxm.a(localSongRedPackMatchRsp.degree, this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt, this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_Bdtc);
-          akxm.b(localSongRedPackMatchRsp.degree, this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
-          ((akxu)localObject).a(true, localSongRedPackMatchRsp.degree);
-          localQQAppInterface.a().a(this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt, this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_Anqd);
+          aljb.a(localSongRedPackMatchRsp.degree, this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt, this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_Beru);
+          aljb.b(localSongRedPackMatchRsp.degree, this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
+          ((aljj)localObject).a(true, localSongRedPackMatchRsp.degree);
+          localQQAppInterface.a().a(this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt, this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_Aocj);
           continue;
           localObject = localSongRedPackMatchRsp.strErr;
           l1 = NetConnInfoCenter.getServerTime();
-          akms.a(localQQAppInterface.getCurrentAccountUin(), "voice_recognieze_in_phone", l1 + localSongRedPackMatchRsp.timeInterval);
-          akms.a(localQQAppInterface.getCurrentAccountUin(), "voice_recognieze_in_phone_tips", (String)localObject);
+          akyd.a(localQQAppInterface.getCurrentAccountUin(), "voice_recognieze_in_phone", l1 + localSongRedPackMatchRsp.timeInterval);
+          akyd.a(localQQAppInterface.getCurrentAccountUin(), "voice_recognieze_in_phone_tips", (String)localObject);
           if (QLog.isColorLevel()) {
             QLog.d("VoiceRedPacketHelper", 2, "server is busy interval is " + localSongRedPackMatchRsp.timeInterval + ",tips is " + (String)localObject);
           }
-          akxm.a(this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_Akxm, (String)localObject);
+          aljb.a(this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_Aljb, (String)localObject);
         }
       }
-      this.jdField_a_of_type_Akxr.jdField_a_of_type_Akxq.jdField_a_of_type_Akxm.c("rsp is null");
+      this.jdField_a_of_type_Aljg.jdField_a_of_type_Aljf.jdField_a_of_type_Aljb.c("rsp is null");
       return;
     }
   }

@@ -1,24 +1,29 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.14.1;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-public class aidv
-  implements Animation.AnimationListener
+public final class aidv
+  implements Parcelable.Creator<AIORichMediaData>
 {
-  aidv(aidp paramaidp) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public AIORichMediaData a(Parcel paramParcel)
   {
-    this.a.t = 5;
-    aidp.d(this.a).post(new PublicAccountChatPie.14.1(this));
-    this.a.a.sendEmptyMessage(1);
+    Object localObject = paramParcel.readString();
+    try
+    {
+      localObject = AIORichMediaData.a((String)localObject);
+      ((AIORichMediaData)localObject).a(paramParcel);
+      return localObject;
+    }
+    catch (ClassNotFoundException paramParcel)
+    {
+      throw new RuntimeException(paramParcel);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public AIORichMediaData[] a(int paramInt)
+  {
+    return new AIORichMediaData[paramInt];
+  }
 }
 
 

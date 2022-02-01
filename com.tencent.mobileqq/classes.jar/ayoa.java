@@ -1,15 +1,12 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 class ayoa
+  implements bljb
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View b;
-  View c;
-  View d;
+  ayoa(aynp paramaynp) {}
+  
+  public void onDismiss()
+  {
+    aynp.a(this.a, this.a.b, false);
+  }
 }
 
 

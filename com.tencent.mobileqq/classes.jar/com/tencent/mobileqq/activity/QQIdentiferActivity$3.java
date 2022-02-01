@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import bhxu;
+import biys;
 import com.tencent.mobileqq.richmedia.capture.view.IdentifierCameraCaptureView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.youtu.ytagreflectlivecheck.ui.YTReflectLayout;

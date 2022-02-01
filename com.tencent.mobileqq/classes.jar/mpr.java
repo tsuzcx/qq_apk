@@ -1,83 +1,39 @@
-import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.redbag.OtherBtnController.2;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class mpr
-  extends mqf
+  extends mrc
 {
-  int jdField_a_of_type_Int = 2130841955;
-  Runnable jdField_a_of_type_JavaLangRunnable = null;
-  WeakReference<AVActivity> jdField_a_of_type_JavaLangRefWeakReference = null;
-  public mbx a;
+  public lwo a;
+  public mpu a;
   
-  mpr(moy parammoy)
+  mpr(mpv parammpv)
   {
-    super(parammoy);
-    this.jdField_a_of_type_Mbx = null;
+    super(parammpv);
+    this.jdField_a_of_type_Lwo = new mps(this);
   }
   
-  public void a()
+  void a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    mpt localmpt = new mpt(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localmpt);
   }
   
-  public void a(boolean paramBoolean)
+  public void a(mpu parammpu)
   {
-    AVActivity localAVActivity = a();
-    QLog.w(this.i, 1, "setBtnsStyle, lightStyle[" + paramBoolean + "], avActivity[" + localAVActivity + "]");
-    if (localAVActivity == null) {}
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(); localAVActivity == null; localAVActivity = null) {
-      return false;
-    }
-    if (localAVActivity == a()) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  void b()
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {}
-    boolean bool;
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Mbx == null) {
-        this.jdField_a_of_type_Mbx = new mps(this);
-      }
-      if (this.jdField_a_of_type_JavaLangRunnable != null)
-      {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_JavaLangRunnable = null;
-      }
-      bool = a();
-      QLog.w(this.i, 1, "hook, mHook[" + bool + "]");
-      if (!bool) {
-        this.jdField_a_of_type_Int = 2130841955;
-      }
-      a(false);
-    } while (bool);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(a());
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Mbx);
-  }
-  
-  void c()
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+    mpv localmpv = a();
+    if (localmpv == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new OtherBtnController.2(this);
+    localmpv.a(parammpu);
+  }
+  
+  public void b(mpu parammpu)
+  {
+    mpv localmpv = a();
+    if (localmpv == null) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(this.jdField_a_of_type_JavaLangRunnable);
+    localmpv.b(parammpu);
   }
 }
 

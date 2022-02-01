@@ -1,25 +1,9 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import java.io.Reader;
 
-class avhy
-  implements mrm
+public abstract class avhy
+  extends avhx
 {
-  avhy(avhx paramavhx, String paramString) {}
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoManager", 2, "start slientDownloadPlugin onResult:" + paramInt);
-    }
-    mrf.a().a();
-    if (paramInt == 1)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("roomCodeType", 1);
-      localBundle.putLong("roomid", Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue());
-      avhx.a(this.jdField_a_of_type_Avhx, localBundle, 1001L);
-    }
-  }
+  protected Reader a;
 }
 
 

@@ -19,50 +19,50 @@ import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.ArrayList;
-import pmk;
-import pmn;
-import rle;
-import rlf;
-import rlg;
-import rlh;
-import rli;
-import rlj;
-import rlr;
+import pfd;
+import pfh;
+import rby;
+import rbz;
+import rca;
+import rcb;
+import rcc;
+import rcd;
+import rcl;
 
 public class ReadInJoyVideoSearchTagFragment
   extends PublicBaseFragment
 {
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new rlf(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new rbz(this);
   private ArrayAdapter<TagInfo> jdField_a_of_type_AndroidWidgetArrayAdapter;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
-  pmn jdField_a_of_type_Pmn = new rle(this);
+  pfh jdField_a_of_type_Pfh = new rby(this);
   
   private void a()
   {
-    getView().setOnClickListener(new rlg(this));
+    getView().setOnClickListener(new rca(this));
   }
   
   private void b()
   {
-    getView().findViewById(2131364016).setOnClickListener(new rlh(this));
+    getView().findViewById(2131364042).setOnClickListener(new rcb(this));
   }
   
   private void c()
   {
-    ListView localListView = (ListView)getView().findViewById(2131369974);
+    ListView localListView = (ListView)getView().findViewById(2131370072);
     View localView = new View(getActivity());
     localView.setBackgroundColor(Color.argb(102, 0, 0, 0));
     localListView.setEmptyView(localView);
-    this.jdField_a_of_type_AndroidWidgetArrayAdapter = new ArrayAdapter(getActivity(), 2131560282, new ArrayList());
+    this.jdField_a_of_type_AndroidWidgetArrayAdapter = new ArrayAdapter(getActivity(), 2131560294, new ArrayList());
     localListView.setAdapter(this.jdField_a_of_type_AndroidWidgetArrayAdapter);
-    localListView.setOnItemClickListener(new rli(this, getActivity().getIntent().getBooleanExtra("EXTRA_SELECTION_REACH_MAXIMUM_NUMBER", false)));
+    localListView.setOnItemClickListener(new rcc(this, getActivity().getIntent().getBooleanExtra("EXTRA_SELECTION_REACH_MAXIMUM_NUMBER", false)));
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)getView().findViewById(2131378273));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new rlj(this));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)getView().findViewById(2131378430));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new rcd(this));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
   }
@@ -87,7 +87,7 @@ public class ReadInJoyVideoSearchTagFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560281, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560293, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -95,7 +95,7 @@ public class ReadInJoyVideoSearchTagFragment
   public void onDestroy()
   {
     super.onDestroy();
-    pmk.a().b(this.jdField_a_of_type_Pmn);
+    pfd.a().b(this.jdField_a_of_type_Pfh);
   }
   
   public void onFinish()
@@ -107,12 +107,12 @@ public class ReadInJoyVideoSearchTagFragment
   public void onResume()
   {
     super.onResume();
-    rlr.a(this);
+    rcl.a(this);
     d();
     c();
     b();
     a();
-    pmk.a().a(this.jdField_a_of_type_Pmn);
+    pfd.a().a(this.jdField_a_of_type_Pfh);
   }
 }
 

@@ -1,8 +1,20 @@
-import android.os.Bundle;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
-public abstract interface aaob
+public class aaob
+  implements bjft
 {
-  public abstract void callback(Bundle paramBundle);
+  public aaob(VideoPlayerView paramVideoPlayerView) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    VideoPlayerView.c(this.a, true);
+    return false;
+  }
 }
 
 

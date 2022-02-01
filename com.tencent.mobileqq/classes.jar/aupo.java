@@ -1,22 +1,13 @@
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+
 public class aupo
+  implements bjhv
 {
-  public String a;
-  public boolean a;
-  public String b;
-  @Deprecated
-  public boolean b;
+  public aupo(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public aupo(String paramString1, String paramString2, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "MatchKey{column='" + this.jdField_a_of_type_JavaLangString + '\'' + ", keyword='" + this.jdField_b_of_type_JavaLangString + '\'' + ", or=" + this.jdField_a_of_type_Boolean + '}';
+    QfileEditBottomBar.a(this.a);
   }
 }
 

@@ -1,22 +1,16 @@
-import android.content.Context;
+import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
 
-public class nek
-  extends bjcl
+public abstract interface nek
 {
-  public nek(Context paramContext, bjci parambjci, nej paramnej)
-  {
-    super(paramContext, parambjci, paramnej);
-  }
+  public abstract void a(TPAudioFrameBuffer paramTPAudioFrameBuffer);
   
-  public nej a()
-  {
-    return (nej)super.a();
-  }
+  public abstract void a(String paramString);
   
-  protected boolean a()
-  {
-    return false;
-  }
+  public abstract void b(String paramString);
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d(String paramString);
 }
 
 

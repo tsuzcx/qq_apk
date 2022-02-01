@@ -1,31 +1,115 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public abstract interface amlq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WaterfallArk;", "", "appName", "", "appMeta", "appVersion", "appView", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getAppMeta", "()Ljava/lang/String;", "setAppMeta", "(Ljava/lang/String;)V", "getAppName", "getAppVersion", "getAppView", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amlq
 {
-  public abstract void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, amlp paramamlp, long paramLong);
+  @NotNull
+  private final String a;
+  @NotNull
+  private String b;
+  @NotNull
+  private final String c;
+  @NotNull
+  private final String d;
   
-  public abstract void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  public amlq(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+  }
   
-  public abstract void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt);
+  @NotNull
+  public final String a()
+  {
+    return this.a;
+  }
   
-  public abstract void onDownloadGameResStart(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  public final void a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.b = paramString;
+  }
   
-  public abstract void onGameCheckFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams);
+  @NotNull
+  public final String b()
+  {
+    return this.b;
+  }
   
-  public abstract void onGameCheckRetry(int paramInt);
+  @NotNull
+  public final String c()
+  {
+    return this.c;
+  }
   
-  public abstract void onGameCheckStart(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  @NotNull
+  public final String d()
+  {
+    return this.d;
+  }
   
-  public abstract void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong);
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
+    {
+      if ((paramObject instanceof amlq))
+      {
+        paramObject = (amlq)paramObject;
+        if ((!Intrinsics.areEqual(this.a, paramObject.a)) || (!Intrinsics.areEqual(this.b, paramObject.b)) || (!Intrinsics.areEqual(this.c, paramObject.c)) || (!Intrinsics.areEqual(this.d, paramObject.d))) {}
+      }
+    }
+    else {
+      return true;
+    }
+    return false;
+  }
   
-  public abstract void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  public int hashCode()
+  {
+    int m = 0;
+    String str = this.a;
+    int i;
+    int j;
+    if (str != null)
+    {
+      i = str.hashCode();
+      str = this.b;
+      if (str == null) {
+        break label95;
+      }
+      j = str.hashCode();
+      label37:
+      str = this.c;
+      if (str == null) {
+        break label100;
+      }
+    }
+    label95:
+    label100:
+    for (int k = str.hashCode();; k = 0)
+    {
+      str = this.d;
+      if (str != null) {
+        m = str.hashCode();
+      }
+      return (k + (j + i * 31) * 31) * 31 + m;
+      i = 0;
+      break;
+      j = 0;
+      break label37;
+    }
+  }
   
-  public abstract void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam);
-  
-  public abstract void onSsoCmdRuleRsp(CmGameStartChecker.StartCheckParam paramStartCheckParam, String paramString);
-  
-  public abstract void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams);
+  @NotNull
+  public String toString()
+  {
+    return "WaterfallArk(appName=" + this.a + ", appMeta=" + this.b + ", appVersion=" + this.c + ", appView=" + this.d + ")";
+  }
 }
 
 

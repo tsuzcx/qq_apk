@@ -1,17 +1,25 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class nrq
   implements View.OnClickListener
 {
-  nrq(nre paramnre, String paramString, nyl paramnyl) {}
+  nrq(nrk paramnrk) {}
   
   public void onClick(View paramView)
   {
-    nre.c(this.jdField_a_of_type_Nre, this.jdField_a_of_type_JavaLangString);
-    nre.a(this.jdField_a_of_type_Nre, this.jdField_a_of_type_Nyl.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ((AccountDetailActivity)this.a.jdField_a_of_type_AndroidAppActivity).E();
+    String str2 = this.a.jdField_a_of_type_JavaLangString;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
+    for (String str1 = "02";; str1 = "01")
+    {
+      ocd.a(null, str2, "0X8007CA4", "0X8007CA4", 0, 0, str1, String.valueOf(nrk.a(this.a)), "", "", false);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

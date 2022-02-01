@@ -1,16 +1,20 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class yzx
-  implements zap
+final class yzx
+  implements Animation.AnimationListener
 {
-  public yzx(DoodleLayout paramDoodleLayout) {}
+  yzx(View paramView) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.a != null) {
-      this.a.a.f();
-    }
+    this.a.setAnimation(null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

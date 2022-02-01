@@ -1,12 +1,30 @@
-import tencent.im.oidb.articlesummary.articlesummary.PGCFeedsInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public final class rgp
-  implements pvb<articlesummary.PGCFeedsInfo, rhn>
+class rgp
+  implements INetInfoHandler
 {
-  public rhn a(articlesummary.PGCFeedsInfo paramPGCFeedsInfo)
+  rgp(rgo paramrgo) {}
+  
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
   {
-    return rhn.a(paramPGCFeedsInfo);
+    QLog.i("RIJUGC.RIJUgcVideoPublishManager", 1, "onNetNone2Mobile");
+    rgo.a(this.a);
   }
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    QLog.i("RIJUGC.RIJUgcVideoPublishManager", 1, "onNetWifi2Mobile");
+    rgo.a(this.a);
+  }
+  
+  public void onNetWifi2None() {}
 }
 
 

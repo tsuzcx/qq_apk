@@ -1,23 +1,17 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnItemTouchListener;
-import android.view.MotionEvent;
+import java.util.Map;
 
 class aado
-  implements RecyclerView.OnItemTouchListener
+  implements aaza
 {
-  aado(aadj paramaadj) {}
+  aado(aadn paramaadn, String paramString, aadu paramaadu) {}
   
-  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    return aadj.a(this.a, paramMotionEvent);
-  }
-  
-  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
-  
-  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
-  {
-    if (aadj.a(this.a) != null) {
-      aadj.a(this.a).a(paramMotionEvent);
+    Object localObject = aadn.a().get(this.jdField_a_of_type_JavaLangString);
+    if (localObject != null)
+    {
+      this.jdField_a_of_type_Aadu.a(localObject);
+      aadn.a().remove(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

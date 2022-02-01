@@ -1,13 +1,25 @@
-class vpj
-  implements vpo
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonInfoWidget;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StUser;
+
+public class vpj
+  implements wal
 {
-  vpj(vpi paramvpi) {}
+  public vpj(QCirclePersonInfoWidget paramQCirclePersonInfoWidget) {}
   
-  public void a() {}
-  
-  public void b()
+  public void a()
   {
-    this.a.a.dismiss();
+    vtq.a(QCirclePersonInfoWidget.a(this.a).id.get(), 11, 3, 3, String.valueOf(1), "2", "", "", "", QCirclePersonInfoWidget.d(this.a));
+  }
+  
+  public void a(int paramInt)
+  {
+    vtq.a(QCirclePersonInfoWidget.a(this.a).id.get(), 11, 3, 1, String.valueOf(paramInt), "2", "", "", "", QCirclePersonInfoWidget.b(this.a));
+  }
+  
+  public void b(int paramInt)
+  {
+    vtq.a(QCirclePersonInfoWidget.a(this.a).id.get(), 11, 3, 2, String.valueOf(paramInt), "2", "", "", "", QCirclePersonInfoWidget.c(this.a));
   }
 }
 

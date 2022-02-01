@@ -14,23 +14,26 @@ class InternalJSPlugin$7$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = InternalJSPlugin.access$800(this.this$1.this$0, this.this$1.val$appParameter, this.this$1.val$pm, this.this$1.val$packageName);
+    paramDialogInterface = InternalJSPlugin.access$900(this.this$1.this$0, this.this$1.val$appParameter, this.this$1.val$pm, this.this$1.val$packageName);
     if (paramDialogInterface != null)
     {
       paramDialogInterface.setPackage(this.this$1.val$packageName);
-      paramDialogInterface.addFlags(67108864);
+      paramDialogInterface.addFlags(268435456);
       paramDialogInterface.putExtra("big_brother_source_key", "biz_src_miniapp");
       if (paramDialogInterface.resolveActivity(this.this$1.val$activity.getPackageManager()) != null)
       {
         this.this$1.val$activity.startActivity(paramDialogInterface);
-        this.this$1.val$req.ok();
-        InnerAppReportDc4239.innerAppReport(InternalJSPlugin.access$900(this.this$1.this$0), null, "launchapp", "openapp", null);
+        paramDialogInterface = InternalJSPlugin.access$700(this.this$1.this$0, 0);
+        this.this$1.val$req.ok(paramDialogInterface);
+        InnerAppReportDc4239.innerAppReport(InternalJSPlugin.access$1000(this.this$1.this$0), null, "launchapp", "openapp", null);
         return;
       }
-      this.this$1.val$req.fail();
+      paramDialogInterface = InternalJSPlugin.access$700(this.this$1.this$0, -1);
+      this.this$1.val$req.fail(paramDialogInterface, "");
       return;
     }
-    this.this$1.val$req.fail();
+    paramDialogInterface = InternalJSPlugin.access$700(this.this$1.this$0, -1);
+    this.this$1.val$req.fail(paramDialogInterface, "");
   }
 }
 

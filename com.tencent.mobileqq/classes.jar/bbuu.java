@@ -1,8 +1,10 @@
-public abstract interface bbuu
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+public class bbuu
 {
-  public abstract void onSoftKeyboardClosed();
-  
-  public abstract void onSoftKeyboardOpened(int paramInt);
+  public ProgressBar a;
+  public TextView a;
 }
 
 

@@ -1,7 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
+import com.tencent.qphone.base.util.QLog;
+import orv;
 
 class FastWebActivity$32
   implements Runnable
@@ -10,7 +11,17 @@ class FastWebActivity$32
   
   public void run()
   {
-    FastWebActivity.a(this.this$0).a(FastWebActivity.a(this.this$0).c);
+    if ((FastWebActivity.a(this.this$0) == null) || (FastWebActivity.a(this.this$0) == null))
+    {
+      QLog.d("FastWebActivity", 1, "error! scrollToHotNewComment");
+      return;
+    }
+    if (FastWebActivity.a(this.this$0).b)
+    {
+      FastWebActivity.a(this.this$0).f();
+      return;
+    }
+    FastWebActivity.a(this.this$0).e();
   }
 }
 

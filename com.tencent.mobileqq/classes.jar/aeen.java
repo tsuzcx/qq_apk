@@ -1,23 +1,13 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
 
 public class aeen
-  extends ahkf
+  implements DialogInterface.OnClickListener
 {
-  public aeen(FontSettingActivity paramFontSettingActivity, QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
-  {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-  }
+  public aeen(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public void a(afwr paramafwr, ChatMessage paramChatMessage) {}
-  
-  public void b(View paramView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,52 +1,77 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class bcgz<K, V>
+public class bcgz
+  implements bcfq
 {
-  private HashMap<K, ArrayList<V>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public int a;
+  public int b;
+  public int c;
   
-  public bcgz(bcgy parambcgy) {}
-  
-  public ArrayList<V> a(K paramK)
+  public int a()
   {
-    return (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
+    return 0;
   }
   
-  public void a(V paramV)
+  public int a(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    int i = -1;
+    switch (paramInt)
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      ArrayList localArrayList = (ArrayList)localEntry.getValue();
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        Object localObject = localArrayList.get(i);
-        if ((localObject == paramV) || ((localObject != null) && (localObject.equals(paramV)))) {
-          ((ArrayList)localEntry.getValue()).remove(paramV);
-        } else {
-          i += 1;
-        }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.uniteSearch.SearchResultGroupModelImpl", 2, "getPosition(). type=" + paramInt + "  position=" + i);
       }
+      return i;
+      i = this.a;
+      continue;
+      i = this.b;
+      continue;
+      i = this.c;
     }
   }
   
-  public void a(K paramK, V paramV)
+  public String a()
   {
-    ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
-    ArrayList localArrayList1 = localArrayList2;
-    if (localArrayList2 == null)
+    return null;
+  }
+  
+  public List<bcfr> a()
+  {
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      localArrayList1 = new ArrayList();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramK, localArrayList1);
+    default: 
+      return;
+    case 1: 
+      this.a = paramInt2;
+      return;
+    case 2: 
+      this.b = paramInt2;
+      return;
     }
-    if (!localArrayList1.contains(paramV)) {
-      localArrayList1.add(paramV);
-    }
+    this.c = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    a(2, paramInt1);
+    a(1, paramInt2);
+    a(3, paramInt3);
+  }
+  
+  public void a(View paramView) {}
+  
+  public String b()
+  {
+    return null;
   }
 }
 

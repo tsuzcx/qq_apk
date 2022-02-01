@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import amhd;
-import ancd;
+import amsx;
+import annx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qphone.base.util.QLog;
@@ -12,20 +12,20 @@ import java.util.List;
 public class ApolloManager$8
   implements Runnable
 {
-  public ApolloManager$8(amhd paramamhd, boolean paramBoolean, int paramInt) {}
+  public ApolloManager$8(amsx paramamsx, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
     if (this.this$0.a != null)
     {
-      localObject2 = (ancd)this.this$0.a.getManager(155);
+      localObject2 = (annx)this.this$0.a.getManager(155);
       localObject1 = new ArrayList();
       if (localObject2 != null)
       {
         if (!this.jdField_a_of_type_Boolean) {
           break label65;
         }
-        localObject1 = ((ancd)localObject2).c();
+        localObject1 = ((annx)localObject2).c();
       }
       if ((localObject1 != null) && (((List)localObject1).size() != 0)) {
         break label77;
@@ -36,7 +36,7 @@ public class ApolloManager$8
     do
     {
       return;
-      localObject1 = ((ancd)localObject2).b(this.jdField_a_of_type_Int);
+      localObject1 = ((annx)localObject2).b(this.jdField_a_of_type_Int);
       break;
       localObject2 = new ArrayList();
       int i = 0;

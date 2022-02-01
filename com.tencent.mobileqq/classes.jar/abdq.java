@@ -1,13 +1,30 @@
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-public abstract interface abdq
+public class abdq
+  extends abdv
 {
-  public abstract void a(List<LatLng> paramList, int paramInt);
+  public abdq(AbsBaseWebViewActivity paramAbsBaseWebViewActivity)
+  {
+    super(paramAbsBaseWebViewActivity, null);
+  }
   
-  public abstract boolean b();
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
   
-  public abstract void l();
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
+  }
 }
 
 

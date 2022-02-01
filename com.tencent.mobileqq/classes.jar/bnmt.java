@@ -1,25 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-public class bnmt
-  implements Animation.AnimationListener
+class bnmt
+  implements bnhn
 {
-  public bnmt(AEMaterialPanel paramAEMaterialPanel) {}
+  bnmt(bnmr parambnmr) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(BaseResp paramBaseResp)
   {
-    if (AEMaterialPanel.a(this.a) != null)
-    {
-      AEMaterialPanel.a(this.a).setAlpha(1.0F);
-      AEMaterialPanel.a(this.a).setVisibility(8);
-    }
+    bnmr.a(this.a, paramBaseResp);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

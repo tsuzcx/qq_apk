@@ -1,20 +1,12 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import java.util.List;
 
-class akgb
-  implements DialogInterface.OnClickListener
+public abstract interface akgb
 {
-  akgb(akfu paramakfu) {}
+  public abstract void a(boolean paramBoolean, @NonNull List<TroopLinkElement> paramList);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      this.a.b();
-      akfu.a(this.a).moveTaskToBack(true);
-    }
-  }
+  public abstract void r();
 }
 
 

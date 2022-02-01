@@ -1,26 +1,29 @@
 import android.text.Editable;
+import android.text.Selection;
 import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.widget.OCRBottomTabView;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class ayfo
   implements TextWatcher
 {
-  public ayfo(OCRResultActivity paramOCRResultActivity) {}
+  public ayfo(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if (paramEditable.toString().trim().length() == 0)
-    {
-      this.a.c.setEnabled(false);
-      this.a.d.setEnabled(false);
-      this.a.b.setEnabled(false);
+    if (ShortVideoCommentsView.a(this.a) == null) {}
+    while (ayeh.a(paramEditable.toString()) <= 140) {
       return;
     }
-    this.a.c.setEnabled(true);
-    this.a.d.setEnabled(true);
-    this.a.b.setEnabled(true);
+    int j = Selection.getSelectionEnd(paramEditable);
+    paramEditable = ayeh.a(paramEditable.toString(), 0, 140).toString();
+    ShortVideoCommentsView.a(this.a).setText(paramEditable);
+    paramEditable = ShortVideoCommentsView.a(this.a).getText();
+    int i = j;
+    if (j > paramEditable.length()) {
+      i = paramEditable.length();
+    }
+    Selection.setSelection(paramEditable, i);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

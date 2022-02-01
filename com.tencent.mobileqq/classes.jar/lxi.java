@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.RecvMsg;
+import android.graphics.Bitmap;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public final class lxi
-  implements Parcelable.Creator<RecvMsg>
+public class lxi
+  implements aoog
 {
-  public RecvMsg a(Parcel paramParcel)
-  {
-    return new RecvMsg(paramParcel);
-  }
+  public lxi(QQServiceForAV paramQQServiceForAV) {}
   
-  public RecvMsg[] a(int paramInt)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    return new RecvMsg[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAV", 2, "onDecodeTaskCompleted");
+    }
+    new lxz(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new lxj(this, paramString, paramBitmap));
   }
 }
 

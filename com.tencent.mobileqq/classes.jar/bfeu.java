@@ -1,93 +1,32 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment.MediaUploadCallback.1;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment.MediaUploadCallback.2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class bfeu
-  implements bmrk
+class bfeu
+  implements View.OnClickListener
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  private bfev jdField_a_of_type_Bfev;
+  private bfew jdField_a_of_type_Bfew;
   
-  public bfeu(bfet parambfet)
+  public bfeu(bfew parambfew)
   {
-    switch (bfet.a(parambfet))
-    {
-    default: 
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Float = 1.0F;
-      return;
-    case 1: 
-      this.jdField_a_of_type_Int = 10;
-      this.jdField_a_of_type_Float = 0.85F;
-      return;
-    }
-    this.jdField_a_of_type_Int = 95;
-    this.jdField_a_of_type_Float = 0.05F;
+    this.jdField_a_of_type_Bfew = parambfew;
   }
   
-  public void a(int paramInt)
+  public void a(bfev parambfev)
   {
-    if (this.jdField_a_of_type_Bfet.isCanceled())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onProgress cancel. progress=", Integer.valueOf(paramInt) });
-      }
-      this.jdField_a_of_type_Bfet.onCancel();
-    }
-    long l;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onProgress. mediaType=", Integer.valueOf(bfet.a(this.jdField_a_of_type_Bfet)), ", info hash=", Integer.valueOf(bfet.a(this.jdField_a_of_type_Bfet).hashCode()), ", info status=", Integer.valueOf(bfet.a(this.jdField_a_of_type_Bfet).g), ", progress=", Integer.valueOf(paramInt) });
-      }
-      l = System.currentTimeMillis();
-      paramInt = this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float * paramInt);
-    } while ((paramInt >= 100) || (l - this.jdField_a_of_type_Long <= 500L));
-    this.jdField_a_of_type_Long = l;
-    ThreadManager.getUIHandler().post(new ImageInfo.UploadMediaSegment.MediaUploadCallback.2(this, paramInt));
+    this.jdField_a_of_type_Bfev = parambfev;
   }
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Bfet.isCanceled())
-    {
-      this.jdField_a_of_type_Bfet.onCancel();
-      return;
+    int i = ((Integer)paramView.getTag()).intValue();
+    bfew.a(this.jdField_a_of_type_Bfew, i);
+    if (this.jdField_a_of_type_Bfev != null) {
+      this.jdField_a_of_type_Bfev.a((bfex)bfew.a(this.jdField_a_of_type_Bfew).get(i));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onComplete. mediaType=", Integer.valueOf(bfet.a(this.jdField_a_of_type_Bfet)), ", info hash=", Integer.valueOf(bfet.a(this.jdField_a_of_type_Bfet).hashCode()), ", info status=", Integer.valueOf(bfet.a(this.jdField_a_of_type_Bfet).g) });
-    }
-    switch (bfet.a(this.jdField_a_of_type_Bfet))
-    {
-    }
-    while (!this.jdField_a_of_type_Bfet.isCanceled())
-    {
-      bfet.a(this.jdField_a_of_type_Bfet, bfet.a(this.jdField_a_of_type_Bfet));
-      return;
-      bfex localbfex = (bfex)bfet.a(this.jdField_a_of_type_Bfet);
-      localbfex.e = paramString;
-      ThreadManager.getUIHandler().post(new ImageInfo.UploadMediaSegment.MediaUploadCallback.1(this, localbfex));
-      continue;
-      bfet.a(this.jdField_a_of_type_Bfet).b = paramString;
-    }
-    this.jdField_a_of_type_Bfet.onCancel();
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(getClass().getSimpleName(), 2, new Object[] { "upload onError. errorCode=", Integer.valueOf(paramInt), ", info type=", Integer.valueOf(bfet.a(this.jdField_a_of_type_Bfet).b()), ", mediaType=", Integer.valueOf(bfet.a(this.jdField_a_of_type_Bfet)) });
-    }
-    if (bfet.a(this.jdField_a_of_type_Bfet) == 2)
-    {
-      bfet.b(this.jdField_a_of_type_Bfet, bfet.a(this.jdField_a_of_type_Bfet));
-      return;
-    }
-    bfet.a(this.jdField_a_of_type_Bfet, new Error("-3"));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

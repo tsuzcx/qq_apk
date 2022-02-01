@@ -1,16 +1,20 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class adew
-  extends JobSegment<awlp, awlp>
+public class adew
+  implements adci
 {
-  protected void a(JobContext paramJobContext, awlp paramawlp)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    paramJobContext = adep.a();
-    if (!paramJobContext.a) {
-      paramJobContext.a();
-    }
-    notifyResult(paramawlp);
+    ((bbav)paramQQAppInterface.getManager(36)).a(paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

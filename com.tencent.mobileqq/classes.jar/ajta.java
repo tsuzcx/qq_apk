@@ -1,17 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajta
-  implements DialogInterface.OnDismissListener
+class ajta
+  extends anyu
 {
-  public ajta(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  ajta(ajst paramajst) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onConversationRecommendTypeChange(int paramInt)
   {
-    this.a.b.postDelayed(new ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable(this.a), 150L);
+    if (QLog.isColorLevel()) {
+      QLog.i("MayknowRecommendManager.ContactsViewController", 2, "onConversationRecommendTypeChange newType is: " + paramInt);
+    }
+    ajst.c(this.a, paramInt);
+  }
+  
+  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactsViewController", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      ajst.a(this.a, false, false);
+    }
+  }
+  
+  public void onRecommendTroopJoinedOrDeleted(String paramString)
+  {
+    if ((ajst.a(this.a) instanceof ajxg)) {
+      ((ajxg)ajst.a(this.a)).a(paramString);
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ContactsViewController", 2, "onUpdateFriendList. mOccurSwitchAccountChangeTab:" + ajst.b(this.a));
+    }
+    if (ajst.b(this.a))
+    {
+      int i = ajst.a(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.i("ContactsViewController", 2, "onUpdateFriendList. mCurrentTabPos:" + ajst.b(this.a) + "  defaultPos:" + i);
+      }
+      if (ajst.b(this.a) != i)
+      {
+        ajst.c(this.a, true);
+        ajst.b(this.a, i);
+        ajst.c(this.a, false);
+      }
+      ajst.b(this.a, false);
+    }
   }
 }
 

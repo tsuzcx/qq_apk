@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import akww;
+import alil;
 
 class ApkgConfigHolder$1
   implements Runnable
@@ -11,7 +11,7 @@ class ApkgConfigHolder$1
   {
     synchronized (ApkgConfigHolder.access$000(this.this$0))
     {
-      akww.a(this.this$0, ApkgConfigHolder.access$100(this.this$0));
+      alil.a(this.this$0, ApkgConfigHolder.access$100(this.this$0));
       return;
     }
   }

@@ -1,25 +1,33 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.ViewTreeObserver.OnDrawListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.1.1;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class rwz
-  implements ViewTreeObserver.OnDrawListener
+class rwz
+  implements SeekBar.OnSeekBarChangeListener
 {
-  int jdField_a_of_type_Int = 0;
+  rwz(rwu paramrwu) {}
   
-  rwz(rwy paramrwy, sar paramsar) {}
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
   
-  public void onDraw()
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    this.jdField_a_of_type_Int += 1;
-    if (this.jdField_a_of_type_Int == 1)
+    int i = paramSeekBar.getProgress();
+    int j = rwu.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoUIManager", 2, "onStopTrackingTouch(): progress=" + i + ", playState=" + rwe.a(j));
+    }
+    if (j == 3) {
+      rwu.a(this.a).a(i * 1000, rwu.a(this.a));
+    }
+    for (;;)
     {
-      rwy.a(this.jdField_a_of_type_Rwy).getWindow().getDecorView().post(new VideoFeedsAdapter.1.1(this, this));
-      if (this.jdField_a_of_type_Sar == rwy.a(this.jdField_a_of_type_Rwy).jdField_a_of_type_Sar) {
-        rwy.a(this.jdField_a_of_type_Rwy).a(this.jdField_a_of_type_Sar, false);
+      EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+      return;
+      if (j == 5) {
+        rwu.a(this.a).c(i * 1000);
       }
     }
   }

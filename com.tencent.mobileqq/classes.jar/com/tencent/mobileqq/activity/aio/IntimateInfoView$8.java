@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afyw;
-import auox;
+import agiq;
+import avgx;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class IntimateInfoView$8
   implements Runnable
 {
-  public IntimateInfoView$8(afyw paramafyw) {}
+  public IntimateInfoView$8(agiq paramagiq) {}
   
   public void run()
   {
-    if ((afyw.a(this.this$0) != null) && (this.this$0.a != null)) {
-      ((auox)this.this$0.a.getManager(323)).a(afyw.a(this.this$0));
+    if ((agiq.a(this.this$0) != null) && (this.this$0.a != null)) {
+      ((avgx)this.this$0.a.getManager(323)).a(agiq.a(this.this$0));
     }
   }
 }

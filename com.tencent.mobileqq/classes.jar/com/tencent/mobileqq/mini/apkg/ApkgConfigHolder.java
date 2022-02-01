@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import akww;
+import alil;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -41,7 +41,7 @@ public class ApkgConfigHolder
     String str = getConfigPath(paramQQAppInterface);
     try
     {
-      paramQQAppInterface = (ApkgConfigHolder)akww.a(str);
+      paramQQAppInterface = (ApkgConfigHolder)alil.a(str);
       Object localObject = paramQQAppInterface;
       if (paramQQAppInterface == null) {
         localObject = new ApkgConfigHolder();

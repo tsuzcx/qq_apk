@@ -1,38 +1,33 @@
-import androidx.annotation.NonNull;
+import android.view.View;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ListView;
 
 public class ayqw
+  implements blih
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  public ayqw(NearbyMomentFragment paramNearbyMomentFragment) {}
   
-  public ayqw(int paramInt1, String paramString1, String paramString2, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  private boolean a(String[] paramArrayOfString)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    String str = null;
-    if (paramArrayOfString.length >= this.jdField_b_of_type_Int) {
-      str = paramArrayOfString[(this.jdField_b_of_type_Int - 1)];
+    int i = 0;
+    if (paramInt == 0)
+    {
+      paramInt = i;
+      if (NearbyMomentFragment.a(this.a).getLastVisiblePosition() == NearbyMomentFragment.a(this.a).getCount() - 1)
+      {
+        paramAbsListView = NearbyMomentFragment.a(this.a).getChildAt(NearbyMomentFragment.a(this.a).getLastVisiblePosition() - NearbyMomentFragment.a(this.a).getFirstVisiblePosition());
+        paramInt = i;
+        if (NearbyMomentFragment.a(this.a).getHeight() >= paramAbsListView.getBottom()) {
+          paramInt = 1;
+        }
+      }
+      if (paramInt != 0) {
+        NearbyMomentFragment.a(this.a);
+      }
     }
-    return (str != null) && (str.equals(this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "Category [statusId=" + this.jdField_a_of_type_Int + ", displayName=" + this.jdField_b_of_type_JavaLangString + ", detectName=" + this.jdField_a_of_type_JavaLangString + ", level=" + this.jdField_b_of_type_Int + "]";
   }
 }
 

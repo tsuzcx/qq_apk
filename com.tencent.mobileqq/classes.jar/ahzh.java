@@ -1,58 +1,13 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.smartdevice.SmartDevicePluginProxyActivity;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahzh
-  implements View.OnClickListener
+public class ahzh
+  implements ahyf
 {
-  ahzh(ahzf paramahzf) {}
-  
-  public void onClick(View paramView)
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(anhk.y)) {
-      if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
-        this.a.I();
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Object localObject1 = new Intent();
-      ((Intent)localObject1).putExtra("nickname", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
-      ((Intent)localObject1).putExtra("bitmap", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (byte)2, false));
-      Object localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("smartdevice_entry", 4).getString("square_url_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "");
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        ((Intent)localObject1).putExtra("url", (String)localObject2);
-      }
-      for (;;)
-      {
-        bmqo.a().a(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (Intent)localObject1, "com.tencent.device.activities.DeviceSquareActivity", 0, null, SmartDevicePluginProxyActivity.class);
-        break;
-        ((Intent)localObject1).putExtra("url", "https://qzs.qq.com/open/mobile/iot_public_device_2/html/devDiscover.html");
-      }
-      localObject1 = (abqn)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
-      localObject2 = ((abqn)localObject1).a(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
-      if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue())
-      {
-        if (ahzf.a(this.a)) {
-          ((abqn)localObject1).a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, (DeviceInfo)localObject2, false);
-        }
-        this.a.I();
-      }
-      else
-      {
-        ((abqn)localObject1).a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, (DeviceInfo)localObject2, false);
-      }
-    }
+    paramahed.c(paramahfq.b, paramMessageRecord);
   }
 }
 

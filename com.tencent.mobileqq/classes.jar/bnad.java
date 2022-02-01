@@ -1,7 +1,30 @@
-final class bnad
-  implements bguy
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.CoverCacheData.PackageInfo;
+
+public final class bnad
+  implements Parcelable.Creator<CoverCacheData.PackageInfo>
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  public CoverCacheData.PackageInfo a(Parcel paramParcel)
+  {
+    CoverCacheData.PackageInfo localPackageInfo = new CoverCacheData.PackageInfo();
+    if (paramParcel != null)
+    {
+      localPackageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      localPackageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localPackageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      localPackageInfo.jdField_a_of_type_Int = paramParcel.readInt();
+      localPackageInfo.jdField_b_of_type_Int = paramParcel.readInt();
+      localPackageInfo.jdField_c_of_type_Int = paramParcel.readInt();
+      localPackageInfo.d = paramParcel.readString();
+    }
+    return localPackageInfo;
+  }
+  
+  public CoverCacheData.PackageInfo[] a(int paramInt)
+  {
+    return null;
+  }
 }
 
 

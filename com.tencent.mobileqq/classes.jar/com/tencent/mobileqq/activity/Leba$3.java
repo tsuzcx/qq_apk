@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import antv;
+import aogf;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class Leba$3
@@ -10,7 +10,7 @@ class Leba$3
   
   public void run()
   {
-    ((antv)this.this$0.a.a(87)).a(false, false);
+    ((aogf)this.this$0.a.a(87)).a(false, false);
   }
 }
 

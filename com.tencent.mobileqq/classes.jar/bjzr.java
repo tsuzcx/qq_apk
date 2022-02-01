@@ -1,35 +1,25 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.appbrand.page.embedded.VideoEmbeddedWidgetClient;
-import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
-import com.tencent.oskplayer.OskPlayerCore;
-import com.tencent.qqmini.sdk.annotation.ProxyService;
-import com.tencent.qqmini.sdk.launcher.core.proxy.VideoPlayerProviderProxy;
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer;
+import com.tencent.qphone.base.util.QLog;
 
-@ProxyService(proxy=VideoPlayerProviderProxy.class)
-public class bjzr
-  implements VideoPlayerProviderProxy
+class bjzr
+  implements bjzx
 {
-  private boolean a;
+  bjzr(bjzo parambjzo, bjzx parambjzx) {}
   
-  public String getUrl(String paramString)
+  public void a()
   {
-    return OskPlayerCore.getInstance().getUrl(MiniAppFileManager.getInstance().getAbsolutePath(paramString));
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "updatePreAuthFromServer onSuccess");
+    this.jdField_a_of_type_Bjzx.a();
   }
   
-  public ReliableVideoPlayer getVideoPlayer()
+  public void a(int paramInt, String paramString)
   {
-    if (!this.a)
-    {
-      VideoEmbeddedWidgetClient.initOskOnce(BaseApplicationImpl.getContext());
-      this.a = true;
-    }
-    return new bjxx();
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "updatePreAuthFromServer onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
+    this.jdField_a_of_type_Bjzx.a(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjzr
  * JD-Core Version:    0.7.0.1
  */

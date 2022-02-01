@@ -91,6 +91,9 @@ public class SDKMiniProgramLpReportDC04239
   public static final String PAGE_VIEW_SUB_ACTION_SHOW = "show";
   public static final String PAGE_VIEW_SUB_ACTION_SHOW_FAIL = "show_fail";
   public static final String PAGE_VIEW_SUB_ACTION_UNLOAD = "unload";
+  public static final String PAY_WX_ACTION = "wechat_pay";
+  public static final String PAY_WX_SUB_ACTION_LAUNCH = "launch_wechatpay";
+  public static final String SCOPE_ACTION = "scope";
   public static final String SHARE_ALERT_RESERVERS_ACTION = "show";
   public static final String SYS_ALERT_ACTION = "sys_alert";
   private static final String TAG = "MiniProgramLpReportDC04239";
@@ -222,7 +225,7 @@ public class SDKMiniProgramLpReportDC04239
   
   public static void recordDuration(MiniAppInfo paramMiniAppInfo, long paramLong)
   {
-    ThreadManager.executeOnComputationThreadPool(new SDKMiniProgramLpReportDC04239.15(paramMiniAppInfo, paramLong));
+    ThreadManager.executeOnComputationThreadPool(new SDKMiniProgramLpReportDC04239.16(paramMiniAppInfo, paramLong));
   }
   
   private static void report(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4)
@@ -267,7 +270,7 @@ public class SDKMiniProgramLpReportDC04239
   
   public static void report(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
   {
-    if ((isLifeCycle(paramString4)) && (!MiniAppReportManager2.isMainProcess))
+    if ((isLifeCycle(paramString4)) && (!MiniAppReportManager2.IsMainProcess))
     {
       MiniProgramReporter.getInstance().getReportHandler().post(new SDKMiniProgramLpReportDC04239.11(paramMiniAppInfo, paramString3, paramString4, paramString2, paramString5, paramString6, paramString1));
       if (("unload".equals(paramString4)) || ("close".equals(paramString4)) || ("hide".equals(paramString4)) || ("finishshow".equals(paramString4)) || ("sys_alert".equals(paramString3)))
@@ -406,7 +409,7 @@ public class SDKMiniProgramLpReportDC04239
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(MiniProgramReportHelper.newUserInfoEntries());
-    localArrayList.addAll(MiniProgramReportHelper.newQQqunInfoBusinessEntries(paramString1, paramString2, paramString3, paramString4));
+    localArrayList.addAll(MiniProgramReportHelper.newQQqunInfoBusinessEntries(paramString1, paramString2, paramString3, "", paramString4));
     localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
     if (!QUAUtil.isQQApp()) {
       localArrayList.addAll(MiniProgramReportHelper.newThirdSourceEntries());
@@ -425,7 +428,7 @@ public class SDKMiniProgramLpReportDC04239
   {
     paramString1 = new ArrayList();
     paramString1.addAll(MiniProgramReportHelper.newUserInfoEntries());
-    paramString1.addAll(MiniProgramReportHelper.newQQqunInfoBusinessEntries(paramString5, paramString6, paramString7, paramString8));
+    paramString1.addAll(MiniProgramReportHelper.newQQqunInfoBusinessEntries(paramString5, paramString6, paramString7, "", paramString8));
     paramString1.addAll(MiniProgramReportHelper.newGenericEntries());
     if (!QUAUtil.isQQApp()) {
       paramString1.addAll(MiniProgramReportHelper.newThirdSourceEntries());
@@ -491,6 +494,11 @@ public class SDKMiniProgramLpReportDC04239
   public static void reportUserClick(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     MiniProgramReporter.getInstance().getReportHandler().post(new SDKMiniProgramLpReportDC04239.2(paramString3, paramString4, paramString5, paramString1, paramMiniAppInfo, paramString2));
+  }
+  
+  public static void reportWithGroupId(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    MiniProgramReporter.getInstance().getReportHandler().post(new SDKMiniProgramLpReportDC04239.15(paramString1, paramString2, paramString3, paramString4, paramString5));
   }
   
   private static void sendRecordDurationMsg()

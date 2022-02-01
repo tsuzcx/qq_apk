@@ -1,7 +1,20 @@
-public class ashu
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+
+class ashu
+  extends DataSetObserver
 {
-  public long a;
-  public String a;
+  ashu(asht paramasht, DragSortListView paramDragSortListView) {}
+  
+  public void onChanged()
+  {
+    this.jdField_a_of_type_Asht.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    this.jdField_a_of_type_Asht.notifyDataSetInvalidated();
+  }
 }
 
 

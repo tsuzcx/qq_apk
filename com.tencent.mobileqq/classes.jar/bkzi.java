@@ -1,15 +1,18 @@
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
+import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnErrorListener;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
+import tv.danmaku.ijk.media.player.IMediaPlayer.OnErrorListener;
 
-class bkzi<K, V>
-  extends WeakReference<V>
+class bkzi
+  implements IMediaPlayer.OnErrorListener
 {
-  K a;
+  bkzi(bkzb parambkzb, ReliableVideoPlayer.OnErrorListener paramOnErrorListener) {}
   
-  public bkzi(K paramK, V paramV, ReferenceQueue<V> paramReferenceQueue)
+  public boolean onError(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    super(paramV, paramReferenceQueue);
-    this.a = paramK;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnErrorListener != null) {
+      return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnErrorListener.onError(this.jdField_a_of_type_Bkzb, paramInt1, paramInt2);
+    }
+    return false;
   }
 }
 

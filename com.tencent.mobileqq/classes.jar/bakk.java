@@ -1,21 +1,45 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import org.jetbrains.annotations.NotNull;
 
-public class bakk
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileOtherWithSecondHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "profileExtendFriendSettingItem", "Lcom/tencent/mobileqq/widget/FormSwitchItem;", "getProfileExtendFriendSettingItem", "()Lcom/tencent/mobileqq/widget/FormSwitchItem;", "setProfileExtendFriendSettingItem", "(Lcom/tencent/mobileqq/widget/FormSwitchItem;)V", "profileExtendFriendTv", "Landroid/widget/TextView;", "getProfileExtendFriendTv", "()Landroid/widget/TextView;", "setProfileExtendFriendTv", "(Landroid/widget/TextView;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bakk
+  extends RecyclerView.ViewHolder
 {
-  public bakk(IosTimepicker paramIosTimepicker) {}
+  @NotNull
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  @NotNull
+  private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   
-  public void onClick(View paramView)
+  public bakk(@NotNull View paramView)
   {
-    if ((IosTimepicker.a(this.a) != null) && (IosTimepicker.a(this.a).isShowing()))
-    {
-      IosTimepicker.a(this.a).dismiss();
-      IosTimepicker.a(this.a, null);
+    super(paramView);
+    View localView = paramView.findViewById(2131366187);
+    if (localView == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSwitchItem");
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)localView);
+    paramView = paramView.findViewById(2131366191);
+    if (paramView == null) {
+      throw new TypeCastException("null cannot be cast to non-null type android.widget.TextView");
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
+  }
+  
+  @NotNull
+  public final TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  @NotNull
+  public final FormSwitchItem a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   }
 }
 

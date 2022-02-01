@@ -1,20 +1,21 @@
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
 
-class yej
-  extends xbu
+public class yej
+  implements bjey
 {
-  yej(yeh paramyeh, FeedItem paramFeedItem) {}
+  public yej(QQStoryMainController paramQQStoryMainController) {}
   
-  public void a()
+  public void onItemSelect(View paramView, int paramInt)
   {
-    super.a();
-    yeh.a(this.jdField_a_of_type_Yeh, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    yqu.a("home_page", "suc_share", 2, paramInt, new String[] { yqu.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", yqu.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
+    if (paramInt == 1) {
+      this.a.jdField_a_of_type_Yel.a();
+    }
+    while (paramInt != 7) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.m();
   }
 }
 

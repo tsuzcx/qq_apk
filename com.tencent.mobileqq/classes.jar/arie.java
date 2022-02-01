@@ -1,23 +1,45 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.PrecoverConfig;
-
-public final class arie
-  implements Parcelable.Creator<PrecoverConfig>
+public class arie
 {
-  public PrecoverConfig a(Parcel paramParcel)
+  @awfx(a="isStatusBarWhite")
+  public int a;
+  @awfx(a="bkgURL")
+  public String a;
+  @awfx(a="isNavBarWhite")
+  public int b;
+  @awfx(a="logoColor")
+  public String b;
+  @awfx(a="needShowLogo")
+  public int c = 1;
+  
+  public arie()
   {
-    return new PrecoverConfig(paramParcel);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public PrecoverConfig[] a(int paramInt)
+  public boolean a()
   {
-    return new PrecoverConfig[paramInt];
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Int == 1;
+  }
+  
+  public boolean c()
+  {
+    return this.c == 1;
+  }
+  
+  public String toString()
+  {
+    return "QrCodeList{bkgURL = " + this.jdField_a_of_type_JavaLangString + ", isStatusBarWhite = " + this.jdField_a_of_type_Int + ", isNavBarWhite = " + this.jdField_b_of_type_Int + ", logoColor = " + this.jdField_b_of_type_JavaLangString + ", needShowLogo = " + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arie
  * JD-Core Version:    0.7.0.1
  */

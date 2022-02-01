@@ -1,21 +1,21 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import acow;
-import amtv;
+import acsz;
 import android.media.AudioManager;
+import anfp;
 
 public class GdtMvViewController$8
   implements Runnable
 {
-  public GdtMvViewController$8(acow paramacow) {}
+  public GdtMvViewController$8(acsz paramacsz) {}
   
   public void run()
   {
-    int i = acow.a(this.this$0).getStreamVolume(3);
-    acow localacow;
-    if (acow.a(this.this$0) != null)
+    int i = acsz.a(this.this$0).getStreamVolume(3);
+    acsz localacsz;
+    if (acsz.a(this.this$0) != null)
     {
-      localacow = this.this$0;
+      localacsz = this.this$0;
       if (i > 0) {
         break label74;
       }
@@ -23,9 +23,9 @@ public class GdtMvViewController$8
     label74:
     for (boolean bool = true;; bool = false)
     {
-      localacow.a = bool;
-      acow.a(this.this$0).a(this.this$0.a);
-      acow.a(this.this$0, i, acow.b(this.this$0), true);
+      localacsz.a = bool;
+      acsz.a(this.this$0).a(this.this$0.a);
+      acsz.a(this.this$0, i, acsz.b(this.this$0), true);
       return;
     }
   }

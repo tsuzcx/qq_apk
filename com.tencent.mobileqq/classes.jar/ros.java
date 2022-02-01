@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.CreateColumnFragment;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 
 public class ros
-  implements DialogInterface.OnClickListener
+  extends roq
 {
-  public ros(CreateColumnFragment paramCreateColumnFragment) {}
+  private ViewGroup A;
+  public VideoFeedsStressFollowLayout a;
+  private ReadInJoyHeadImageView a;
+  public ruz a;
+  public View f;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ros(View paramView)
   {
-    this.a.a(false);
-    this.a.a.c();
-    this.a.i();
+    super(paramView);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setPrefix("@");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131380831));
+    this.A = ((ViewGroup)paramView.findViewById(2131380832));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout = ((VideoFeedsStressFollowLayout)paramView.findViewById(2131378061));
+    this.f = paramView.findViewById(2131380837);
+    this.jdField_a_of_type_Ruz = new ruz(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout, this.l);
   }
 }
 

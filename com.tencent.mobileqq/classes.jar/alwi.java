@@ -1,15 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import java.util.ArrayList;
 
-public class alwi
-  implements DialogInterface.OnClickListener
+class alwi
+  implements alwm
 {
-  public alwi(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  alwi(alwg paramalwg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("PtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
+    }
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size())) {}
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
+    do
+    {
+      do
+      {
+        return;
+        localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      } while (localPtvTemplateInfo == null);
+      this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.smoothScrollToPositionFromLeftOrRight(paramInt, (int)(-this.a.jdField_a_of_type_Int * (0.75F + this.a.c - 1.0F)), 400);
+    } while (localPtvTemplateInfo.usable);
+    alug.b("", "0X8006A1A");
   }
 }
 

@@ -1,26 +1,34 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 public class acuh
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public acuh(GdtVideoImaxFragment paramGdtVideoImaxFragment, float paramFloat1, float paramFloat2, int paramInt) {}
+  public acuh(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = paramValueAnimator.getAnimatedFraction();
-    f = this.jdField_a_of_type_Float + f * (this.b - this.jdField_a_of_type_Float);
-    acqy.a("GdtVideoImaxFragment", "onAnimationUpdate() called with: current = [" + f + "]");
-    paramValueAnimator = GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).getLayoutParams();
-    paramValueAnimator.height = ((int)f);
-    GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).setLayoutParams(paramValueAnimator);
-    paramValueAnimator = (ViewGroup.MarginLayoutParams)GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).getLayoutParams();
-    paramValueAnimator.height = Math.abs((int)(this.jdField_a_of_type_Int - f));
-    GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).setLayoutParams(paramValueAnimator);
+    String str;
+    if (GdtInterstitialFragmentForJS.a(this.a) == null)
+    {
+      str = "loading ad data";
+      acoj localacoj = new acoj();
+      localacoj.a = GdtInterstitialFragmentForJS.a(this.a);
+      GdtInterstitialFragmentForJS.a(this.a, new acoh(localacoj, new WeakReference(GdtInterstitialFragmentForJS.a(this.a))));
+      GdtInterstitialFragmentForJS.a(this.a).a(new WeakReference(this.a.getActivity()));
+    }
+    for (;;)
+    {
+      Toast.makeText(this.a.getActivity().getApplicationContext(), str, 0).show();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      str = "load ad data error";
+    }
   }
 }
 

@@ -1,109 +1,19 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
 
-class axtz
-  implements BusinessObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class axtz
+  implements View.OnClickListener
 {
-  axtz(axtp paramaxtp) {}
+  axtz(Function0 paramFunction0) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public final void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyProfileDisplayTribePanel", 2, "type = [" + paramInt + "], isSuccess = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
-    }
-    Object localObject;
-    if (paramBoolean)
-    {
-      try
-      {
-        ((axby)this.a.a.app.getManager(106)).d.put(this.a.a.app.getCurrentAccountUin(), Integer.valueOf(1));
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label544;
-        }
-        localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (QLog.isColorLevel()) {
-          QLog.i("NearbyProfileDisplayTribePanel", 2, "retCode = [" + paramInt + "]");
-        }
-        if (paramInt == 0) {
-          break label302;
-        }
-        paramBundle = paramBundle.optString("msg");
-        if (!TextUtils.isEmpty(paramBundle))
-        {
-          QQToast.a(this.a.a, 1, "" + paramBundle, 1).a();
-          return;
-        }
-        QQToast.a(this.a.a, 1, anni.a(2131706155), 1).a();
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        QQToast.a(this.a.a, 1, anni.a(2131706091), 1).a();
-        if (!QLog.isColorLevel()) {
-          break label587;
-        }
-      }
-      QLog.e("NearbyProfileDisplayTribePanel", 2, "未知异常，请稍后重试", paramBundle);
-      return;
-      label302:
-      if (paramBundle.optInt("retcode") == 0)
-      {
-        paramBundle = this.a;
-        if (axtp.a(this.a)) {
-          break label588;
-        }
-      }
-    }
-    label544:
-    label587:
-    label588:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      axtp.a(paramBundle, paramBoolean);
-      localObject = this.a.a;
-      if (axtp.a(this.a)) {}
-      for (paramBundle = anni.a(2131706120);; paramBundle = anni.a(2131706078))
-      {
-        QQToast.a((Context)localObject, 2, paramBundle, 1).a();
-        axtp.a(this.a, 1, 60);
-        if ((!axtp.a(this.a)) && (axtp.a(this.a).getChildAt(2).getVisibility() != 0))
-        {
-          paramBundle = (Button)axtp.a(this.a).getChildAt(1).findViewById(2131380031);
-          paramBundle.setTextColor(this.a.a.getResources().getColor(2131167017));
-          paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130839283));
-        }
-        if (!axtp.a(this.a)) {
-          break;
-        }
-        paramBundle = (Button)axtp.a(this.a).getChildAt(1).findViewById(2131380031);
-        paramBundle.setTextColor(this.a.a.getResources().getColor(2131167019));
-        paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130839322));
-        return;
-      }
-      QQToast.a(this.a.a, 1, anni.a(2131706087), 1).a();
-      return;
-      QQToast.a(this.a.a, 1, anni.a(2131706093), 1).a();
-      return;
-    }
+    this.a.invoke();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

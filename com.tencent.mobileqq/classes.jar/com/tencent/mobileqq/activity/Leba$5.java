@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import android.text.TextUtils;
-import bkzv;
-import bkzy;
-import blnp;
+import bmay;
+import bmbb;
+import bmor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
@@ -31,13 +31,13 @@ public class Leba$5
         WebProcessManager.a(Leba.c(), "key_reader_dns_parse");
       }
     }
-    localObject = (blnp)this.this$0.a.getManager(129);
+    localObject = (bmor)this.this$0.a.getManager(129);
     if (localObject != null) {
-      ((blnp)localObject).a(6);
+      ((bmor)localObject).a(6);
     }
-    localObject = (bkzy)this.this$0.a.getManager(142);
+    localObject = (bmbb)this.this$0.a.getManager(142);
     if (localObject != null) {
-      bkzv.a(((bkzy)localObject).a(6), 500L);
+      bmay.a(((bmbb)localObject).a(6), 500L);
     }
     ThreadManager.post(new Leba.5.1(this), 5, null, false);
   }

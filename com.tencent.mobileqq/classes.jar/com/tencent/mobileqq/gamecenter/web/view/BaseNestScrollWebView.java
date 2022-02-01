@@ -4,16 +4,16 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
-import auwg;
-import auwh;
+import avog;
+import avoh;
 import com.tencent.biz.ui.TouchWebView;
-import zlx;
+import zps;
 
 public abstract class BaseNestScrollWebView
   extends TouchWebView
 {
-  public auwg mIHeaderView;
-  private auwh mILoadingView;
+  public avog mIHeaderView;
+  private avoh mILoadingView;
   public int scrollY;
   public boolean useDefaultLoadingLayout = true;
   
@@ -27,9 +27,9 @@ public abstract class BaseNestScrollWebView
     super(paramContext, paramAttributeSet);
   }
   
-  public void attachHeaderView(auwg paramauwg)
+  public void attachHeaderView(avog paramavog)
   {
-    this.mIHeaderView = paramauwg;
+    this.mIHeaderView = paramavog;
   }
   
   public boolean handleBack()
@@ -99,13 +99,13 @@ public abstract class BaseNestScrollWebView
     this.scrollY = paramInt2;
   }
   
-  public void setLoadingView(auwh paramauwh)
+  public void setLoadingView(avoh paramavoh)
   {
-    if (((paramauwh == null) || (!this.useDefaultLoadingLayout)) && (this.mILoadingView != null)) {
+    if (((paramavoh == null) || (!this.useDefaultLoadingLayout)) && (this.mILoadingView != null)) {
       this.mILoadingView.b(this);
     }
     if (this.mILoadingView == null) {
-      this.mILoadingView = paramauwh;
+      this.mILoadingView = paramavoh;
     }
     if (this.mILoadingView != null) {
       this.mILoadingView.a(this);
@@ -115,7 +115,7 @@ public abstract class BaseNestScrollWebView
   
   public void setPaddingTop(int paramInt)
   {
-    String str = "if (document.body && document.body.style) {document.body.style.paddingTop='" + zlx.a(getContext(), paramInt) + "px';} void 0";
+    String str = "if (document.body && document.body.style) {document.body.style.paddingTop='" + zps.a(getContext(), paramInt) + "px';} void 0";
     loadUrl("javascript:" + str);
   }
 }

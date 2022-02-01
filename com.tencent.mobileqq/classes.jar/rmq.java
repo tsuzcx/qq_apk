@@ -1,101 +1,66 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.State;
-import android.util.SparseArray;
-import android.view.View;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
-public abstract class rmq
-  extends RecyclerView.ItemDecoration
+public class rmq
 {
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private final SparseArray<rmr> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  public int a;
+  public ArrayList<Integer> a;
+  public boolean a;
   
-  public rmq()
+  private String a(ArrayList<Integer> paramArrayList)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-  }
-  
-  public static final rmr a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    return a(paramInt1, paramInt2, paramInt3, paramInt4, 0);
-  }
-  
-  public static final rmr a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    rmr localrmr = new rmr();
-    localrmr.e = paramInt5;
-    paramInt5 = (paramInt3 - 1) * paramInt4 / paramInt3;
-    int i = paramInt4 - paramInt5;
-    localrmr.c = paramInt4;
-    if (paramInt1 % paramInt3 == 0) {
-      localrmr.b = paramInt5;
+    if (paramArrayList == null) {
+      return null;
     }
-    while (paramInt1 / paramInt3 == paramInt2 / paramInt3)
+    StringBuilder localStringBuilder = new StringBuilder(paramArrayList.size() * 2);
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
     {
-      localrmr.d = paramInt4;
-      return localrmr;
-      if ((paramInt1 + 1) % paramInt3 == 0)
-      {
-        localrmr.a = paramInt5;
+      Integer localInteger = (Integer)paramArrayList.next();
+      if (localInteger != null) {
+        localStringBuilder.append(localInteger);
       }
-      else
-      {
-        localrmr.a = i;
-        localrmr.b = i;
+      if (paramArrayList.hasNext()) {
+        localStringBuilder.append(",");
       }
     }
-    localrmr.d = 0;
-    return localrmr;
+    return localStringBuilder.toString();
   }
   
-  @Nullable
-  public abstract rmr a(int paramInt, @NotNull RecyclerView paramRecyclerView);
-  
-  public void getItemOffsets(@NotNull Rect paramRect, @NotNull View paramView, @NotNull RecyclerView paramRecyclerView, @NotNull RecyclerView.State paramState)
+  public HashMap<String, String> a()
   {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    int i = paramRecyclerView.getChildAdapterPosition(paramView);
-    paramView.setTag(Integer.valueOf(i));
-    paramView = a(i, paramRecyclerView);
-    if (paramView != null) {
-      paramRect.set(paramView.a, paramView.c, paramView.b, paramView.d);
-    }
-    for (paramRect = paramView;; paramRect = new rmr())
-    {
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, paramRect);
-      return;
-    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_sceneType", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("param_indexList", a(this.jdField_a_of_type_JavaUtilArrayList));
+    localHashMap.put("param_isAutoPlay", String.valueOf(this.jdField_a_of_type_Boolean));
+    return localHashMap;
   }
   
-  public void onDraw(@NotNull Canvas paramCanvas, @NotNull RecyclerView paramRecyclerView, @NotNull RecyclerView.State paramState)
+  public void a()
   {
-    super.onDraw(paramCanvas, paramRecyclerView, paramState);
-    int j = paramRecyclerView.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      paramState = paramRecyclerView.getChildAt(i);
-      int k = ((Integer)paramState.getTag()).intValue();
-      rmr localrmr = (rmr)this.jdField_a_of_type_AndroidUtilSparseArray.get(k);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(localrmr.e);
-      RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramState.getLayoutParams();
-      k = paramState.getBottom() + localLayoutParams.bottomMargin;
-      int m = paramState.getLeft() - localLayoutParams.leftMargin;
-      int n = paramState.getRight() + localLayoutParams.rightMargin;
-      int i1 = paramState.getTop() - localLayoutParams.topMargin;
-      paramCanvas.drawRect(m - localrmr.a, k, localrmr.b + n, localrmr.d + k, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(m - localrmr.a, i1 - localrmr.c, localrmr.b + n, i1, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(m - localrmr.a, i1, m, k, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(n, i1, localrmr.b + n, k, this.jdField_a_of_type_AndroidGraphicsPaint);
-      i += 1;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.isEmpty();
     }
+    return true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{");
+    localStringBuilder.append("mSceneType: ").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mIsAutoPlay: ").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", mIndexList: ").append(a(this.jdField_a_of_type_JavaUtilArrayList));
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

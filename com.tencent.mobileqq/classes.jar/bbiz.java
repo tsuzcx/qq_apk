@@ -1,20 +1,16 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bbiz
+public class bbiz
   implements View.OnClickListener
 {
-  bbiz(bbiy parambbiy, String paramString) {}
+  public bbiz(QQSlidingTabView paramQQSlidingTabView, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Bbiy.a.getActivity(), QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Bbiy.a.startActivity(localIntent);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.jdField_a_of_type_Int);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

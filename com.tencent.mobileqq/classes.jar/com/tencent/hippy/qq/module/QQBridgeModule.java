@@ -4,10 +4,10 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import anni;
-import bgmp;
-import bgng;
-import bgnw;
+import anzj;
+import bhmr;
+import bhni;
+import bhny;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
@@ -22,12 +22,12 @@ import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import nlw;
+import nnr;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pha;
-import sjo;
-import zmi;
+import ozs;
+import sas;
+import zqd;
 
 public class QQBridgeModule
   extends BridgeModule
@@ -107,7 +107,7 @@ public class QQBridgeModule
       if (!(localFragment instanceof ViolaFragment)) {
         break label37;
       }
-      ((ViolaFragment)localFragment).a();
+      ((ViolaFragment)localFragment).doOnBackPressed();
     }
     for (;;)
     {
@@ -144,7 +144,7 @@ public class QQBridgeModule
       }
       if (!TextUtils.isEmpty(str1))
       {
-        ((ViolaFragment)localFragment).a(str1);
+        ((ViolaFragment)localFragment).setTitle(str1);
         invokeCallJS(paramString, new JSONObject());
       }
     }
@@ -203,7 +203,7 @@ public class QQBridgeModule
   
   public void getNetType(Promise paramPromise, boolean paramBoolean)
   {
-    int i = nlw.a();
+    int i = nnr.a();
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "getNetType,netType:" + i);
     }
@@ -257,7 +257,7 @@ public class QQBridgeModule
     }
     boolean bool;
     if (("weishi://feed".equals(paramString)) || ("weishi".equals(paramString))) {
-      bool = zmi.a(localBaseActivity);
+      bool = zqd.a(localBaseActivity);
     }
     for (;;)
     {
@@ -281,7 +281,7 @@ public class QQBridgeModule
       }
       QLog.e(TAG, 2, "hasApp error" + paramString.getMessage());
       return;
-      bool = bgnw.a(localBaseActivity, paramString);
+      bool = bhny.a(localBaseActivity, paramString);
       continue;
       label123:
       int i = 0;
@@ -297,7 +297,7 @@ public class QQBridgeModule
     String str2 = paramJSONObject.optString("method");
     if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
     {
-      invokeErrorCallJS(paramPromise, anni.a(2131700006));
+      invokeErrorCallJS(paramPromise, anzj.a(2131700113));
       QLog.d(TAG, 1, "ns or method not exists");
     }
     Object localObject;
@@ -333,11 +333,11 @@ public class QQBridgeModule
         break label334;
       }
       localObject = ((Fragment)localObject).getActivity();
-      QQAppInterface localQQAppInterface = (QQAppInterface)pha.a();
+      QQAppInterface localQQAppInterface = (QQAppInterface)ozs.a();
       if ((localObject != null) && (localQQAppInterface != null)) {
         try
         {
-          paramJSONObject = bgng.a(localQQAppInterface, (Context)localObject, paramJSONObject.getString("schema"));
+          paramJSONObject = bhni.a(localQQAppInterface, (Context)localObject, paramJSONObject.getString("schema"));
           if (paramJSONObject != null)
           {
             paramJSONObject.b("viola");
@@ -349,7 +349,7 @@ public class QQBridgeModule
         catch (JSONException paramJSONObject)
         {
           paramJSONObject.printStackTrace();
-          invokeErrorCallJS(paramPromise, "ns:" + str1 + anni.a(2131700002) + str2 + anni.a(2131699997));
+          invokeErrorCallJS(paramPromise, "ns:" + str1 + anzj.a(2131700109) + str2 + anzj.a(2131700104));
           return;
         }
       }
@@ -501,7 +501,7 @@ public class QQBridgeModule
   
   public void vaNetworkChange(Promise paramPromise)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)pha.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)ozs.a();
     if (localQQAppInterface == null) {}
     while (this.netInfoHandler != null) {
       return;
@@ -515,7 +515,7 @@ public class QQBridgeModule
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "do videoPlayFeedback start data: " + paramJSONObject.toString());
     }
-    sjo.a(null, paramJSONObject);
+    sas.a(null, paramJSONObject);
     if (getViolaInstance() != null) {
       paramJSONObject = new JSONObject();
     }

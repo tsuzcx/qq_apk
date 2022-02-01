@@ -1,31 +1,25 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyCutImageView;
 
-public class ttk
-  implements TextWatcher
+class ttk
+  implements View.OnTouchListener
 {
-  public ttk(LimitWordCountEditText paramLimitWordCountEditText) {}
+  ttk(tti paramtti) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramCharSequence == null)
+    if (paramMotionEvent.getAction() == 1) {
+      tti.a(this.a).performClick();
+    }
+    if (tti.a(this.a, paramMotionEvent.getX(), paramMotionEvent.getY()).booleanValue()) {}
+    for (int i = 101;; i = 102)
     {
-      if (LimitWordCountEditText.a(this.a) != null) {
-        LimitWordCountEditText.a(this.a).a(0);
-      }
-      LimitWordCountEditText.a(this.a).setText(LimitWordCountEditText.a(this.a));
-      return;
+      int j = tti.a(this.a, tti.a(this.a));
+      tti.a(this.a, i, j + 1);
+      return false;
     }
-    if (LimitWordCountEditText.a(this.a) != null) {
-      LimitWordCountEditText.a(this.a).a(paramCharSequence.length());
-    }
-    LimitWordCountEditText.a(this.a).setText(String.valueOf(LimitWordCountEditText.a(this.a) - paramCharSequence.length()));
   }
 }
 

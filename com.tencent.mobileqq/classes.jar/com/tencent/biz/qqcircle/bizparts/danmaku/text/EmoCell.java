@@ -6,12 +6,12 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import anni;
-import bmpg;
+import anzj;
+import bnqj;
 import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import vft;
-import vfw;
-import vhc;
+import vhx;
+import via;
+import vjg;
 
 public class EmoCell
   extends TextCell
@@ -77,7 +77,7 @@ public class EmoCell
   
   public void draw(Canvas paramCanvas, Paint paramPaint, int paramInt1, Rect paramRect, int paramInt2, int paramInt3, Bitmap paramBitmap)
   {
-    if ((!this.useDefaultFont) && ((paramPaint instanceof vft)) && (((vft)paramPaint).a()) && (!((vft)paramPaint).a)) {}
+    if ((!this.useDefaultFont) && ((paramPaint instanceof vhx)) && (((vhx)paramPaint).a()) && (!((vhx)paramPaint).a)) {}
     for (;;)
     {
       return;
@@ -107,7 +107,7 @@ public class EmoCell
       draw(paramCanvas, paramPaint, paramInt1, paramRect, paramInt2, paramInt3, paramBitmap);
       return false;
     }
-    String str = anni.a(2131702785);
+    String str = anzj.a(2131702892);
     double d = paramPaint.measureText(str + str) - paramPaint.measureText(str) * 2.0F;
     d = paramLong - (paramInt4 + 1) * FADE_START_INTERVAL;
     if (d <= 0.0D)
@@ -150,7 +150,7 @@ public class EmoCell
   {
     if (TextUtils.isEmpty(this.text))
     {
-      this.text = bmpg.g(this.emoCode);
+      this.text = bnqj.g(this.emoCode);
       if (this.text == null) {
         this.text = this.emoCode;
       }
@@ -183,9 +183,9 @@ public class EmoCell
     return true;
   }
   
-  public void reloadDrawable(vhc paramvhc, ImageLoader.ImageLoadListener paramImageLoadListener)
+  public void reloadDrawable(vjg paramvjg, ImageLoader.ImageLoadListener paramImageLoadListener)
   {
-    vfw.a().a(this, paramvhc, paramImageLoadListener);
+    via.a().a(this, paramvjg, paramImageLoadListener);
   }
 }
 

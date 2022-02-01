@@ -1,59 +1,84 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.networkedmodule.QzoneModuleConst;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.NetworkState;
-import java.util.List;
+import eipc.EIPCClient;
+import eipc.EIPCResultCallback;
+import java.util.Iterator;
+import java.util.Vector;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bmbd
-  extends bmas
 {
-  public bmbd(QzoneModuleManager paramQzoneModuleManager) {}
+  static EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new bmbe();
+  static Vector<bmbf> jdField_a_of_type_JavaUtilVector;
+  static JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
   
-  private void a()
+  static
   {
-    if (!NetworkState.isWifiConn())
-    {
-      QLog.w("QzoneModuleManager", 1, "isWifiConn:false,so stop update.");
-      return;
+    jdField_a_of_type_JavaUtilVector = new Vector();
+  }
+  
+  public static int a(String paramString, int paramInt)
+  {
+    return jdField_a_of_type_OrgJsonJSONObject.optInt(paramString, paramInt);
+  }
+  
+  public static void a()
+  {
+    Bundle localBundle = new Bundle();
+    QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "getComicConfig", localBundle, jdField_a_of_type_EipcEIPCResultCallback);
+  }
+  
+  public static void a(bmbf parambmbf)
+  {
+    if (parambmbf != null) {
+      jdField_a_of_type_JavaUtilVector.add(parambmbf);
     }
-    QzoneModuleManager.access$008(this.a);
+  }
+  
+  public static void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
     for (;;)
     {
-      if (QzoneModuleManager.access$000(this.a) < QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size())
+      int i;
+      try
       {
-        String str = (String)QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.get(QzoneModuleManager.access$000(this.a));
-        if (this.a.checkIfNeedUpdate(str)) {
-          this.a.updateModule(str, this);
+        paramString = new JSONObject(paramString).optJSONArray("VipComicCommonConfig");
+        if ((paramString != null) && (paramString.length() > 0))
+        {
+          i = 0;
+          if (i < paramString.length())
+          {
+            Object localObject = paramString.optJSONObject(i);
+            if ((localObject == null) || (!birz.a((JSONObject)localObject, "VipComicCommonConfig"))) {
+              break label118;
+            }
+            jdField_a_of_type_OrgJsonJSONObject = (JSONObject)localObject;
+            paramString = jdField_a_of_type_JavaUtilVector.iterator();
+            if (paramString.hasNext())
+            {
+              localObject = (bmbf)paramString.next();
+              if (localObject == null) {
+                continue;
+              }
+              ((bmbf)localObject).a(jdField_a_of_type_OrgJsonJSONObject);
+              continue;
+            }
+          }
         }
-      }
-      else
-      {
-        if (QzoneModuleManager.access$000(this.a) != QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size()) {
-          break;
-        }
-        QLog.i("QzoneModuleManager", 1, "updateAllModules completed--totalModules:" + QzoneModuleManager.access$000(this.a));
         return;
       }
-      QzoneModuleManager.access$008(this.a);
+      catch (JSONException paramString)
+      {
+        QLog.d("VipComicConfigHelper", 2, "parse config json file failed.", paramString);
+      }
+      label118:
+      i += 1;
     }
-  }
-  
-  public void onDownloadCanceled(String paramString)
-  {
-    super.onDownloadCanceled(paramString);
-    a();
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    super.onDownloadFailed(paramString);
-    a();
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    super.onDownloadSucceed(paramString);
-    a();
   }
 }
 

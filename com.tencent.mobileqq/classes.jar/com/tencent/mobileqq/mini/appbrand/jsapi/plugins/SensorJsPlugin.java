@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Vibrator;
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
@@ -117,7 +118,7 @@ public class SensorJsPlugin
     super.onCreate(paramBaseJsPluginEngine);
   }
   
-  public final boolean startAccelerometer(int paramInt)
+  public final boolean startAccelerometer(@NonNull JsRuntime paramJsRuntime, int paramInt)
   {
     if (this.senSensorManager == null) {}
     while (this.senAccelerometer == null) {
@@ -126,14 +127,14 @@ public class SensorJsPlugin
     if (this.miniAppSensorJsPlugin != null) {
       stopAccelerometer();
     }
-    this.miniAppSensorJsPlugin = new SensorJsPlugin.MiniAppSensorJsPlugin(this, null);
+    this.miniAppSensorJsPlugin = new SensorJsPlugin.MiniAppSensorJsPlugin(this, paramJsRuntime);
     this.senSensorManager.registerListener(this.miniAppSensorJsPlugin, this.senAccelerometer, paramInt);
     this.senSensorManager.registerListener(this.miniAppSensorJsPlugin, this.magneticSensor, paramInt);
     this.senSensorManager.registerListener(this.miniAppSensorJsPlugin, this.gyroscopeSensor, paramInt);
     return true;
   }
   
-  public final boolean startGyroscope(int paramInt)
+  public final boolean startGyroscope(@NonNull JsRuntime paramJsRuntime, int paramInt)
   {
     if ((this.senSensorManager == null) || (this.gyroscopeSensor == null)) {
       return false;
@@ -141,12 +142,12 @@ public class SensorJsPlugin
     if (this.gyroscopeSensorJsPlugin != null) {
       stopGyroscope();
     }
-    this.gyroscopeSensorJsPlugin = new SensorJsPlugin.GyroscopeSensorJsPlugin(this, null);
+    this.gyroscopeSensorJsPlugin = new SensorJsPlugin.GyroscopeSensorJsPlugin(this, paramJsRuntime);
     this.senSensorManager.registerListener(this.gyroscopeSensorJsPlugin, this.gyroscopeSensor, paramInt);
     return true;
   }
   
-  public final boolean startRotationListening(int paramInt)
+  public final boolean startRotationListening(@NonNull JsRuntime paramJsRuntime, int paramInt)
   {
     if ((this.senSensorManager == null) || (this.orientationSensor == null)) {
       return false;
@@ -154,7 +155,7 @@ public class SensorJsPlugin
     if (this.orientationSensorJsPlugin != null) {
       stopRotationListening();
     }
-    this.orientationSensorJsPlugin = new SensorJsPlugin.RotationSensorJsPlugin(this, null);
+    this.orientationSensorJsPlugin = new SensorJsPlugin.RotationSensorJsPlugin(this, paramJsRuntime);
     this.senSensorManager.registerListener(this.orientationSensorJsPlugin, this.orientationSensor, paramInt);
     return true;
   }

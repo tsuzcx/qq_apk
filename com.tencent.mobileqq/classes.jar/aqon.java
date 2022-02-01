@@ -1,72 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aqon
-  extends aqkz<aqoo>
 {
-  public static aqoo a()
-  {
-    return (aqoo)aqlk.a().a(622);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<aqoo> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  @NonNull
-  public aqoo a(int paramInt)
+  public String toString()
   {
-    return new aqoo();
-  }
-  
-  @Nullable
-  public aqoo a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return aqoo.a(paramArrayOfaqlg);
-    }
-    return null;
-  }
-  
-  public void a(aqoo paramaqoo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonTabSortConfProcessor", 2, "EmoticonTabSortConfProcessor onUpdate");
-    }
-  }
-  
-  public Class<aqoo> clazz()
-  {
-    return aqoo.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 622;
+    return "C2CShortcutAppInfo{appId=" + this.jdField_a_of_type_JavaLangString + ", type=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", iconUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + ", jumpUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", desc='" + this.e + '\'' + ", cmdTrace='" + this.f + '\'' + ", redPoint=" + this.jdField_a_of_type_Int + ", showFrame=" + this.jdField_b_of_type_Int + ", playingNum=" + this.jdField_c_of_type_Int + ", canSendArkMsg=" + this.jdField_a_of_type_Boolean + ", arkLabelWording=" + this.g + ", labels=" + this.jdField_a_of_type_JavaUtilArrayList + ", jumpType=" + this.jdField_d_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqon
  * JD-Core Version:    0.7.0.1
  */

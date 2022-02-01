@@ -1,23 +1,7 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class nfe
-  extends RecyclerView.ViewHolder
+class nfe
 {
-  public ImageView a;
-  public TextView a;
-  public myi a;
-  public ImageView b;
-  
-  public nfe(nfb paramnfb, View paramView, ImageView paramImageView1, ImageView paramImageView2, TextView paramTextView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView1;
-    this.b = paramImageView2;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-  }
+  String a;
+  public final boolean[] a = new boolean[2];
 }
 
 

@@ -1,22 +1,34 @@
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 public class ajmv
-  implements URLDrawable.URLDrawableListener
+  implements Comparator<PhoneContact>
 {
-  public ajmv(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public ajmv(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    EmoticonGroupStoreFragment.a(this.a).invalidate();
+    Object localObject2 = paramPhoneContact1.pinyinFirst;
+    String str = paramPhoneContact2.pinyinFirst;
+    Object localObject1 = localObject2;
+    if (((String)localObject2).endsWith("#")) {
+      localObject1 = "Za";
+    }
+    localObject2 = str;
+    if (str.endsWith("#")) {
+      localObject2 = "Za";
+    }
+    int j = ((String)localObject1).compareTo((String)localObject2);
+    int i = j;
+    if (j == 0) {
+      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+    }
+    j = i;
+    if (i == 0) {
+      j = paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    }
+    return j;
   }
 }
 

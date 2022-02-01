@@ -1,38 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedDisplayInfo;
-import java.util.ArrayList;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.vas.VasProfileTemplateController;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
 
-public final class baib
-  implements Parcelable.Creator<RedAppInfo>
+public class baib
+  extends VasQuickUpdateManager.CallBacker
 {
-  public RedAppInfo a(Parcel paramParcel)
-  {
-    RedAppInfo localRedAppInfo = new RedAppInfo();
-    RedAppInfo.a(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.b(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.c(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.a(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.b(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.d(localRedAppInfo, paramParcel.readInt());
-    localRedAppInfo.a = new ArrayList();
-    paramParcel.readList(localRedAppInfo.a, null);
-    RedAppInfo.e(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.f(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.c(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.g(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.h(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.i(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.j(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.a(localRedAppInfo, (RedDisplayInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-    RedAppInfo.k(localRedAppInfo, paramParcel.readInt());
-    return localRedAppInfo;
-  }
+  public baib(VasProfileTemplateController paramVasProfileTemplateController, azxy paramazxy, Card paramCard) {}
   
-  public RedAppInfo[] a(int paramInt)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    return new RedAppInfo[paramInt];
+    if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileTemplateCheckController", 2, String.format("onCardUpdate WZRY template download,  errorCode=%s httpCode=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+      }
+      if (VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController).b != null)
+      {
+        if (this.jdField_a_of_type_Azxy.a(VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController), this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId)) {
+          VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController).jdField_a_of_type_Azxy = this.jdField_a_of_type_Azxy;
+        }
+        VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController).b.obtainMessage(5, 0, 12, this.jdField_a_of_type_ComTencentMobileqqDataCard).sendToTarget();
+      }
+      paramVasQuickUpdateManager.removeCallBacker(this);
+    }
   }
 }
 

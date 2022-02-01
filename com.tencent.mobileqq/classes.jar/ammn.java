@@ -1,19 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.mobileqq.activity.weather.webpage.WeatherArkViewWrapper;
+import com.tencent.mobileqq.activity.weather.webpage.WebViewFragmentWithArk;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public class ammn
-  implements CompoundButton.OnCheckedChangeListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "", "y", "<anonymous parameter 2>", "<anonymous parameter 3>", "<anonymous parameter 4>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onScrollChanged"}, k=3, mv={1, 1, 16})
+public final class ammn
+  implements TouchWebView.OnScrollChangedListener
 {
-  public ammn(CmGameDebugToolFragment paramCmGameDebugToolFragment) {}
+  public ammn(WebViewFragmentWithArk paramWebViewFragmentWithArk) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public final void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    CmGameDebugToolFragment.a(this.a).edit().putBoolean("game_storage_switch", paramBoolean).commit();
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewFragmentWithArk", 2, "showPreview scrollChangedListener  y: " + paramInt2 + ", arkLoadState：" + WebViewFragmentWithArk.a(this.a));
+    }
+    WebViewFragmentWithArk.a(this.a).scrollTo(0, paramInt2);
   }
 }
 

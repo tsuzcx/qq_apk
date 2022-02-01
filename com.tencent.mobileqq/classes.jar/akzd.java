@@ -1,44 +1,26 @@
-import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class akzd
+public class akzd
   implements View.OnClickListener
 {
-  akzd(akyh paramakyh) {}
+  public akzd(RedPacketVoiceFragment paramRedPacketVoiceFragment) {}
   
   public void onClick(View paramView)
   {
-    Object localObject = QQPlayerService.a();
-    int i;
-    if (localObject != null)
+    if ((!this.a.c()) && (RedPacketVoiceFragment.a(this.a) != null) && (paramView != null))
     {
-      akyh.a(this.a).startActivity((Intent)localObject);
-      localObject = ((Intent)localObject).getComponent().getClassName();
-      if (!((String)localObject).equals(MusicPlayerActivity.class.getName())) {
-        break label132;
-      }
-      i = 0;
+      Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
+      localIntent.putExtras(RedPacketVoiceFragment.a(this.a));
+      localIntent.putExtra("pay_requestcode", 5);
+      paramView.getContext().startActivity(localIntent);
     }
-    for (;;)
-    {
-      bcst.a(akyh.a(this.a).app, "dc00898", "", "", "0X8009EE4", "0X8009EE4", 1, 0, "", "", "", "");
-      bcst.b(akyh.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label132:
-      if (((String)localObject).equals(MusicGeneQQBrowserActivity.class.getName())) {
-        i = 1;
-      } else {
-        i = -1;
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

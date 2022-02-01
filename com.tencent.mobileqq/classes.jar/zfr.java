@@ -1,10 +1,24 @@
-import java.util.ArrayList;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract interface zfr
+public class zfr
+  implements ViewPager.OnPageChangeListener
 {
-  public abstract void a(ArrayList<String> paramArrayList);
+  public zfr(FaceViewPager paramFaceViewPager) {}
   
-  public abstract boolean a(ArrayList<String> paramArrayList, zfs paramzfs);
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    Iterator localIterator = FaceViewPager.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((zfs)localIterator.next()).b(paramInt);
+    }
+  }
 }
 
 

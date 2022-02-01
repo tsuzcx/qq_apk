@@ -1,14 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class pvw
-  implements Comparator<AdvertisementInfo>
+  implements ViewBase.OnClickListener
 {
-  pvw(pvu parampvu) {}
+  pvw(pvt parampvt, ppu paramppu, Container paramContainer) {}
   
-  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
+  public void onClick(ViewBase paramViewBase)
   {
-    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
+    this.jdField_a_of_type_Pvt.a(this.jdField_a_of_type_Ppu, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
   }
 }
 

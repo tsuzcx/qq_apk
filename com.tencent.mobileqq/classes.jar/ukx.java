@@ -1,488 +1,207 @@
-import UserGrowth.stFeed;
-import UserGrowth.stFriendFeed;
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaPerson;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.event.FollowEvent;
-import com.tencent.biz.pubaccount.weishi_new.event.LikeRspEvent;
-import com.tencent.biz.pubaccount.weishi_new.event.WSAddCommentEvent;
-import com.tencent.biz.pubaccount.weishi_new.event.WSFriendFeedExposureEvent;
-import com.tencent.biz.pubaccount.weishi_new.event.WSItemExposeEvent;
-import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
-import com.tencent.biz.pubaccount.weishi_new.event.WSVideoPlayEvent;
-import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
-import com.tencent.widget.pull2refresh.XRecyclerView;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.MediaPlayListenerAdapterImpl.1;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.MediaPlayListenerAdapterImpl.2;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.MediaPlayListenerAdapterImpl.3;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.MediaPlayListenerAdapterImpl.4;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.MediaPlayListenerAdapterImpl.5;
+import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
 
 public class ukx
-  extends uku<ull>
+  extends ukv
 {
-  private int a;
+  private ukx(WSPlayerManager paramWSPlayerManager) {}
   
-  private void a(RecyclerView paramRecyclerView, String paramString)
+  private void a(ukz paramukz)
   {
-    int j = paramRecyclerView.getChildCount();
-    int i = 0;
-    if (i < j)
+    uqf.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][onInfo] 播放状态回调 PLAYER_INFO_ENDOF_BUFFERING");
+    if ((WSPlayerManager.a(this.a) != null) && (WSPlayerManager.a(this.a).jdField_a_of_type_Boolean))
     {
-      Object localObject = paramRecyclerView.getChildViewHolder(paramRecyclerView.getChildAt(i));
-      stSimpleMetaPerson localstSimpleMetaPerson;
-      if ((localObject instanceof umn))
-      {
-        localObject = (umn)localObject;
-        localstSimpleMetaPerson = ((umn)localObject).a();
-        if ((localstSimpleMetaPerson != null) && (TextUtils.equals(localstSimpleMetaPerson.id, paramString))) {
-          ((umn)localObject).a();
-        }
+      ulc localulc = WSPlayerManager.a(this.a, WSPlayerManager.a(this.a));
+      if ((localulc != null) && (!localulc.d())) {
+        WSPlayerManager.a(this.a).jdField_a_of_type_Ulc.f();
       }
-      for (;;)
-      {
-        i += 1;
+    }
+    WSPlayerManager.a(this.a).post(new WSPlayerManager.MediaPlayListenerAdapterImpl.4(this, paramukz));
+  }
+  
+  private void b()
+  {
+    ulc localulc = WSPlayerManager.a(this.a, WSPlayerManager.a(this.a));
+    if (localulc != null) {
+      localulc.e();
+    }
+    WSPlayerManager.a(this.a).post(new WSPlayerManager.MediaPlayListenerAdapterImpl.1(this));
+  }
+  
+  private void b(ukz paramukz)
+  {
+    uqf.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][onInfo] 播放状态回调 PLAYER_INFO_START_BUFFERING");
+    if ((WSPlayerManager.a(this.a) != null) && (WSPlayerManager.a(this.a).jdField_a_of_type_Boolean))
+    {
+      ulc localulc = WSPlayerManager.a(this.a, WSPlayerManager.a(this.a));
+      if ((localulc != null) && (!localulc.d())) {
+        WSPlayerManager.a(this.a).jdField_a_of_type_Ulc.e();
+      }
+    }
+    WSPlayerManager.a(this.a).post(new WSPlayerManager.MediaPlayListenerAdapterImpl.5(this, paramukz));
+  }
+  
+  public void a()
+  {
+    WSPlayerManager.a(this.a).removeMessages(-3);
+    WSPlayerManager.a(this.a).removeMessages(-4);
+    if (WSPlayerManager.d(this.a))
+    {
+      this.a.a();
+      return;
+    }
+    WSPlayerManager.b(this.a, true);
+  }
+  
+  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo, ulc paramulc)
+  {
+    super.a(paramTVK_NetVideoInfo, paramulc);
+    if ((!WSPlayerManager.a(this.a, paramulc)) && (paramulc == WSPlayerManager.a(this.a, WSPlayerManager.a(this.a)))) {
+      WSPlayerManager.a(this.a, paramTVK_NetVideoInfo);
+    }
+  }
+  
+  public void a(ulc paramulc)
+  {
+    super.a(paramulc);
+    if (!WSPlayerManager.a(this.a, paramulc))
+    {
+      uqf.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][onCompletion] checkIsPlayerPlaying false! playingVideoUrl:" + WSPlayerManager.b(this.a, WSPlayerManager.b(this.a)));
+      return;
+    }
+    uqf.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][onCompletion] 播放状态回调 playingVideoUrl:" + WSPlayerManager.b(this.a, WSPlayerManager.b(this.a)));
+    WSPlayerManager.a(this.a).post(new WSPlayerManager.MediaPlayListenerAdapterImpl.2(this));
+    WSPlayerManager.c(this.a, true);
+  }
+  
+  public void a(ulc paramulc, Object paramObject)
+  {
+    paramObject = WSPlayerManager.b(this.a);
+    uqf.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][onVideoPrepared] 视频准备完成状态! mIsOpenedVideo:" + WSPlayerManager.a(this.a) + ", playingTitle:" + WSPlayerManager.a(this.a, paramObject));
+    if (!WSPlayerManager.a(this.a, paramulc))
+    {
+      uqf.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][onVideoPrepared] prePlayVideo prepared!");
+      if ((WSPlayerManager.a(this.a, WSPlayerManager.a(this.a)) == paramulc) && (WSPlayerManager.a(this.a).jdField_a_of_type_Boolean)) {
+        b();
+      }
+      return;
+    }
+    if (!WSPlayerManager.a(this.a))
+    {
+      uqf.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][onVideoPrepared] mIsOpenedVideo is false. return!");
+      return;
+    }
+    WSPlayerManager.a(this.a, false);
+    if (WSPlayerManager.a(this.a, paramObject) != null) {
+      WSPlayerManager.a(this.a, paramObject).a(WSPlayerManager.a(this.a, paramObject));
+    }
+    uqf.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][onVideoPrepared] startVideoAfterPrepared!");
+    a();
+  }
+  
+  public boolean a(ulc paramulc, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    super.a(paramulc, paramInt1, paramInt2, paramInt3, paramString, paramObject);
+    Object localObject = new StringBuilder().append("model : ").append(paramInt1).append(" what : ").append(paramInt2).append(" extra : ").append(paramInt3).append("detailInfo : ").append(paramString).append(" obj : ");
+    if (paramObject != null) {}
+    for (paramObject = paramObject.toString();; paramObject = "")
+    {
+      localObject = paramObject;
+      if (WSPlayerManager.a(this.a, paramulc)) {
         break;
-        if ((localObject instanceof umj))
-        {
-          localObject = (umj)localObject;
-          localstSimpleMetaPerson = ((umj)localObject).a();
-          if ((localstSimpleMetaPerson != null) && (TextUtils.equals(localstSimpleMetaPerson.id, paramString))) {
-            ((umj)localObject).b();
-          }
-        }
       }
-    }
-  }
-  
-  private void a(FollowEvent paramFollowEvent, stFeed paramstFeed)
-  {
-    if ((paramstFeed.friendFeed != null) && (paramstFeed.friendFeed.friendFeeds != null))
-    {
-      paramstFeed = paramstFeed.friendFeed.friendFeeds;
-      int i = 0;
-      while (i < paramstFeed.size())
+      if ((WSPlayerManager.a(this.a, WSPlayerManager.a(this.a)) == paramulc) && (paramulc != null))
       {
-        stSimpleMetaPerson localstSimpleMetaPerson = ((stSimpleMetaFeed)paramstFeed.get(i)).poster;
-        if ((localstSimpleMetaPerson != null) && (TextUtils.equals(localstSimpleMetaPerson.id, paramFollowEvent.getPersonId())))
-        {
-          localstSimpleMetaPerson.followStatus = paramFollowEvent.getIsFollow();
-          a(localstSimpleMetaPerson.id);
-        }
-        i += 1;
+        paramulc.e();
+        WSPlayerManager.a(this.a).jdField_a_of_type_Boolean = false;
       }
+      return false;
     }
-  }
-  
-  private void a(String paramString)
-  {
-    if ((a() == null) || (((ull)a()).a() == null)) {}
-    RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter;
-    do
-    {
-      return;
-      localRecyclerViewWithHeaderFooter = ((ull)a()).a().a();
-    } while (localRecyclerViewWithHeaderFooter == null);
-    int j = localRecyclerViewWithHeaderFooter.getChildCount();
-    int i = 0;
-    label53:
-    RecyclerView.ViewHolder localViewHolder;
-    if (i < j)
-    {
-      localViewHolder = localRecyclerViewWithHeaderFooter.getChildViewHolder(localRecyclerViewWithHeaderFooter.getChildAt(i));
-      if (!(localViewHolder instanceof uhv)) {
-        break label99;
-      }
-      a(((uhv)localViewHolder).a(), paramString);
+    paramObject = WSPlayerManager.b(this.a);
+    localObject = new StringBuilder().append("[WSPlayerManager.java][onError] 播放状态回调 errorStr:").append((String)localObject).append(", playingVideoUrl:");
+    if (paramObject == null) {
+      paramulc = "playingVideoParam is null.";
     }
     for (;;)
     {
-      i += 1;
-      break label53;
-      break;
-      label99:
-      if ((localViewHolder instanceof uhs)) {
-        a(((uhs)localViewHolder).a(), paramString);
+      uqf.d("WS_VIDEO_PLAYER", paramulc);
+      WSPlayerManager.a(this.a).post(new WSPlayerManager.MediaPlayListenerAdapterImpl.3(this, paramInt1, paramInt2, paramObject));
+      paramulc = WSPlayerManager.a(this.a, paramObject);
+      if (paramulc == null) {
+        break;
+      }
+      paramulc.a(paramInt1, paramInt2, paramString);
+      return false;
+      if (paramObject.jdField_a_of_type_Uld != null) {
+        paramulc = paramObject.jdField_a_of_type_Uld.b;
+      } else {
+        paramulc = "videoInfo is null.";
       }
     }
   }
   
-  private void b(WSSimpleBaseEvent paramWSSimpleBaseEvent)
+  public boolean a(ulc paramulc, int paramInt, Object paramObject)
   {
-    WSFriendFeedExposureEvent localWSFriendFeedExposureEvent = (WSFriendFeedExposureEvent)paramWSSimpleBaseEvent;
-    Object localObject = new StringBuilder().append("handleOnReceiveEventForFriendFeed event: ");
-    if (localWSFriendFeedExposureEvent == null)
-    {
-      paramWSSimpleBaseEvent = "null";
-      upe.b("WSFollowPresenter", paramWSSimpleBaseEvent);
-      if ((localWSFriendFeedExposureEvent != null) && (localWSFriendFeedExposureEvent.video != null)) {
-        break label68;
-      }
-    }
-    label195:
-    for (;;)
-    {
-      return;
-      paramWSSimpleBaseEvent = Integer.valueOf(localWSFriendFeedExposureEvent.currentPosition);
-      break;
-      label68:
-      paramWSSimpleBaseEvent = ((ull)a()).a();
-      if ((paramWSSimpleBaseEvent != null) && (paramWSSimpleBaseEvent.a() != null))
+    super.a(paramulc, paramInt, paramObject);
+    if ((paramInt != 42) && (!WSPlayerManager.a(this.a, paramulc))) {
+      if (paramInt == 39)
       {
-        paramWSSimpleBaseEvent = ((ull)a()).a();
-        if ((paramWSSimpleBaseEvent != null) && (paramWSSimpleBaseEvent.a() != null))
-        {
-          paramWSSimpleBaseEvent = paramWSSimpleBaseEvent.a();
-          int j = paramWSSimpleBaseEvent.getChildCount();
-          int i = 0;
-          for (;;)
-          {
-            if (i >= j) {
-              break label195;
-            }
-            localObject = paramWSSimpleBaseEvent.getChildViewHolder(paramWSSimpleBaseEvent.getChildAt(i));
-            if ((localObject instanceof uhs))
-            {
-              paramWSSimpleBaseEvent = ((uhs)localObject).a();
-              paramWSSimpleBaseEvent.smoothScrollToPosition(localWSFriendFeedExposureEvent.currentPosition);
-              if (paramWSSimpleBaseEvent.getAdapter() == null) {
-                break;
-              }
-              paramWSSimpleBaseEvent.getAdapter().notifyItemChanged(localWSFriendFeedExposureEvent.currentPosition);
-              return;
-            }
-            i += 1;
-          }
+        if ((WSPlayerManager.a(this.a) != null) && (WSPlayerManager.a(this.a).jdField_a_of_type_Boolean)) {
+          WSPlayerManager.d(this.a, true);
         }
-      }
-    }
-  }
-  
-  private void b(String paramString)
-  {
-    if ((a() == null) || (((ull)a()).a() == null)) {}
-    for (;;)
-    {
-      return;
-      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((ull)a()).a().a();
-      if (localRecyclerViewWithHeaderFooter != null)
-      {
-        int j = localRecyclerViewWithHeaderFooter.getChildCount();
-        int i = 0;
-        while (i < j)
-        {
-          Object localObject = localRecyclerViewWithHeaderFooter.getChildViewHolder(localRecyclerViewWithHeaderFooter.getChildAt(i));
-          if ((localObject instanceof uhk))
-          {
-            localObject = (uhk)localObject;
-            stFeed localstFeed = ((uhk)localObject).a();
-            if ((localstFeed != null) && (localstFeed.feed != null) && (localstFeed.feed.poster != null) && (TextUtils.equals(localstFeed.feed.poster.id, paramString))) {
-              ((uhk)localObject).b();
-            }
-          }
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  private void c(WSSimpleBaseEvent paramWSSimpleBaseEvent)
-  {
-    Object localObject1 = (WSItemExposeEvent)paramWSSimpleBaseEvent;
-    Object localObject2 = new StringBuilder().append("handleItemExposeEvent event: ");
-    if (localObject1 == null)
-    {
-      paramWSSimpleBaseEvent = "null";
-      upe.b("WSFollowPresenter", paramWSSimpleBaseEvent);
-      if ((localObject1 != null) && (((WSItemExposeEvent)localObject1).video != null)) {
-        break label60;
+        uqf.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][onInfo] 播放状态回调 PLAYER_INFO_HW_DECODE_FAILED mIsPrePlayHWDecodeFailed:" + WSPlayerManager.c(this.a));
       }
     }
     for (;;)
     {
-      return;
-      paramWSSimpleBaseEvent = ((WSItemExposeEvent)localObject1).video;
-      break;
-      label60:
-      paramWSSimpleBaseEvent = ((ull)a()).a();
-      if ((paramWSSimpleBaseEvent != null) && (paramWSSimpleBaseEvent.a() != null))
+      return false;
+      paramulc = WSPlayerManager.b(this.a);
+      switch (paramInt)
       {
-        localObject2 = ((ull)a()).a();
-        if ((localObject2 != null) && (((XRecyclerView)localObject2).a() != null))
-        {
-          localObject1 = ((WSItemExposeEvent)localObject1).video;
-          List localList = ugj.a().b;
-          if (paramWSSimpleBaseEvent.a().size() < localList.size()) {
-            ((ull)a()).a(localList);
-          }
-          int i = 0;
-          while (i < localList.size())
-          {
-            if (((stFeed)localList.get(i)).feed == localObject1)
-            {
-              ((XRecyclerView)localObject2).a().scrollToPosition(i);
-              this.a = i;
-              upe.b("WSFollowPresenter", "receive item expose event, position: " + i + ", feed: " + ((stSimpleMetaFeed)localObject1).feed_desc);
-              return;
-            }
-            i += 1;
-          }
+      }
+      while (WSPlayerManager.a(this.a, paramulc) != null)
+      {
+        WSPlayerManager.a(this.a, paramulc).a(paramInt, paramObject);
+        return false;
+        b(paramulc);
+        continue;
+        a(paramulc);
+      }
+    }
+  }
+  
+  public void b(ulc paramulc)
+  {
+    super.b(paramulc);
+    WSPlayerManager.a(this.a).sendEmptyMessageDelayed(-2, 500L);
+  }
+  
+  public void c(ulc paramulc)
+  {
+    super.c(paramulc);
+    if ((!WSPlayerManager.a(this.a, paramulc)) && (paramulc == WSPlayerManager.a(this.a, WSPlayerManager.a(this.a))))
+    {
+      uqf.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][onDownloadFinish] 预播任务 prePlayTitle:" + WSPlayerManager.a(this.a, WSPlayerManager.a(this.a)));
+      if (WSPlayerManager.a(this.a) != null) {
+        if (WSPlayerManager.a(this.a).b <= WSPlayerManager.a(this.a)) {
+          break label143;
         }
       }
     }
-  }
-  
-  private void c(String paramString)
-  {
-    if ((a() == null) || (((ull)a()).a() == null)) {}
-    for (;;)
+    label143:
+    for (boolean bool = true;; bool = false)
     {
-      return;
-      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((ull)a()).a().a();
-      if (localRecyclerViewWithHeaderFooter != null)
-      {
-        int j = localRecyclerViewWithHeaderFooter.getChildCount();
-        int i = 0;
-        while (i < j)
-        {
-          Object localObject = localRecyclerViewWithHeaderFooter.getChildViewHolder(localRecyclerViewWithHeaderFooter.getChildAt(i));
-          if ((localObject instanceof uhk))
-          {
-            localObject = (uhk)localObject;
-            stFeed localstFeed = ((uhk)localObject).a();
-            if ((localstFeed != null) && (localstFeed.feed != null) && (TextUtils.equals(localstFeed.feed.id, paramString)))
-            {
-              upe.b("WSFollowPresenter", "updateLikeStatus");
-              ((uhk)localObject).a();
-            }
-          }
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  private void d(WSSimpleBaseEvent paramWSSimpleBaseEvent)
-  {
-    upe.b("WSFollowPresenter", "[handleOnReceiveEventForFollow]");
-    paramWSSimpleBaseEvent = (FollowEvent)paramWSSimpleBaseEvent;
-    Object localObject1 = ((ull)a()).a();
-    if ((localObject1 == null) || (((ucp)localObject1).a() == null)) {
+      WSPlayerManager.a(this.a).a(WSPlayerManager.a(this.a).b, bool);
+      WSPlayerManager.a(this.a, WSPlayerManager.a(this.a).b);
       return;
     }
-    localObject1 = ((ucp)localObject1).a();
-    int i = 0;
-    label49:
-    Object localObject2;
-    if (i < ((List)localObject1).size())
-    {
-      localObject2 = (stFeed)((List)localObject1).get(i);
-      if ((localObject2 != null) && (((stFeed)localObject2).feed != null) && (((stFeed)localObject2).feed.poster != null)) {
-        break label104;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label49;
-      break;
-      label104:
-      if ((((stFeed)localObject2).feed_type == 1) && (((stFeed)localObject2).person_meta != null))
-      {
-        localObject2 = ((stFeed)localObject2).person_meta;
-        int j = 0;
-        while (j < ((ArrayList)localObject2).size())
-        {
-          stSimpleMetaPerson localstSimpleMetaPerson = (stSimpleMetaPerson)((ArrayList)localObject2).get(j);
-          if (TextUtils.equals(localstSimpleMetaPerson.id, paramWSSimpleBaseEvent.getPersonId()))
-          {
-            localstSimpleMetaPerson.followStatus = paramWSSimpleBaseEvent.getIsFollow();
-            a(localstSimpleMetaPerson.id);
-          }
-          j += 1;
-        }
-      }
-      else if ((((stFeed)localObject2).feed_type == 2) && (((stFeed)localObject2).feed != null))
-      {
-        localObject2 = ((stFeed)localObject2).feed.poster;
-        if (TextUtils.equals(((stSimpleMetaPerson)localObject2).id, paramWSSimpleBaseEvent.getPersonId()))
-        {
-          ((stSimpleMetaPerson)localObject2).followStatus = paramWSSimpleBaseEvent.getIsFollow();
-          b(paramWSSimpleBaseEvent.getPersonId());
-        }
-      }
-      else if (((stFeed)localObject2).feed_type == 4)
-      {
-        a(paramWSSimpleBaseEvent, (stFeed)localObject2);
-      }
-    }
-  }
-  
-  private void d(String paramString)
-  {
-    if ((a() == null) || (((ull)a()).a() == null)) {}
-    for (;;)
-    {
-      return;
-      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((ull)a()).a().a();
-      if (localRecyclerViewWithHeaderFooter != null)
-      {
-        int j = localRecyclerViewWithHeaderFooter.getChildCount();
-        int i = 0;
-        while (i < j)
-        {
-          Object localObject = localRecyclerViewWithHeaderFooter.getChildViewHolder(localRecyclerViewWithHeaderFooter.getChildAt(i));
-          if ((localObject instanceof uhk))
-          {
-            localObject = (uhk)localObject;
-            stFeed localstFeed = ((uhk)localObject).a();
-            if ((localstFeed != null) && (localstFeed.feed != null) && (TextUtils.equals(localstFeed.feed.id, paramString))) {
-              ((uhk)localObject).a(localstFeed.feed);
-            }
-          }
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  private void e(WSSimpleBaseEvent paramWSSimpleBaseEvent)
-  {
-    paramWSSimpleBaseEvent = (WSVideoPlayEvent)paramWSSimpleBaseEvent;
-    upe.b("WSFollowPresenter", "handleVideoPlayEvent mCurrentPosition: " + paramWSSimpleBaseEvent.mCurrentPosition);
-  }
-  
-  private void f(WSSimpleBaseEvent paramWSSimpleBaseEvent)
-  {
-    paramWSSimpleBaseEvent = (LikeRspEvent)paramWSSimpleBaseEvent;
-    upe.b("WSFollowPresenter", "handleLikeEvent feedId: " + paramWSSimpleBaseEvent.getFeedId() + " isDing:" + paramWSSimpleBaseEvent.getRspIsDing());
-    Object localObject = ((ull)a()).a();
-    if ((localObject == null) || (((ucp)localObject).a() == null)) {
-      return;
-    }
-    localObject = ((ucp)localObject).a();
-    int i = 0;
-    label83:
-    stFeed localstFeed;
-    if (i < ((List)localObject).size())
-    {
-      localstFeed = (stFeed)((List)localObject).get(i);
-      if ((localstFeed != null) || (localstFeed.feed != null)) {
-        break label127;
-      }
-    }
-    label127:
-    while (!TextUtils.equals(paramWSSimpleBaseEvent.getFeedId(), localstFeed.feed.id))
-    {
-      i += 1;
-      break label83;
-      break;
-    }
-    int j;
-    label174:
-    stSimpleMetaFeed localstSimpleMetaFeed;
-    if (paramWSSimpleBaseEvent.getRspIsDing() != localstFeed.feed.is_ding)
-    {
-      if (localstFeed.feed.is_ding != 1) {
-        break label220;
-      }
-      j = 1;
-      if (j == 0) {
-        break label225;
-      }
-      localstSimpleMetaFeed = localstFeed.feed;
-    }
-    for (localstSimpleMetaFeed.ding_count -= 1;; localstSimpleMetaFeed.ding_count += 1)
-    {
-      localstFeed.feed.is_ding = paramWSSimpleBaseEvent.getRspIsDing();
-      c(paramWSSimpleBaseEvent.getFeedId());
-      break;
-      label220:
-      j = 0;
-      break label174;
-      label225:
-      localstSimpleMetaFeed = localstFeed.feed;
-    }
-  }
-  
-  private void g(WSSimpleBaseEvent paramWSSimpleBaseEvent)
-  {
-    upe.b("WSFollowPresenter", "[handleOnReceiveEventForFollow]");
-    paramWSSimpleBaseEvent = (WSAddCommentEvent)paramWSSimpleBaseEvent;
-    Object localObject = ((ull)a()).a();
-    if ((localObject == null) || (((ucp)localObject).a() == null)) {
-      return;
-    }
-    localObject = ((ucp)localObject).a();
-    int i = 0;
-    label44:
-    stFeed localstFeed;
-    if (i < ((List)localObject).size())
-    {
-      localstFeed = (stFeed)((List)localObject).get(i);
-      if ((localstFeed != null) && (localstFeed.feed != null)) {
-        break label86;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label44;
-      break;
-      label86:
-      if (TextUtils.equals(paramWSSimpleBaseEvent.getFeedId(), localstFeed.feed.id)) {
-        d(paramWSSimpleBaseEvent.getFeedId());
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public void a(WSSimpleBaseEvent paramWSSimpleBaseEvent)
-  {
-    if ((paramWSSimpleBaseEvent instanceof LikeRspEvent)) {
-      f(paramWSSimpleBaseEvent);
-    }
-    do
-    {
-      return;
-      if ((paramWSSimpleBaseEvent instanceof WSVideoPlayEvent))
-      {
-        e(paramWSSimpleBaseEvent);
-        return;
-      }
-      if ((paramWSSimpleBaseEvent instanceof WSItemExposeEvent))
-      {
-        c(paramWSSimpleBaseEvent);
-        return;
-      }
-      if ((paramWSSimpleBaseEvent instanceof FollowEvent))
-      {
-        d(paramWSSimpleBaseEvent);
-        return;
-      }
-      if ((paramWSSimpleBaseEvent instanceof WSAddCommentEvent))
-      {
-        g(paramWSSimpleBaseEvent);
-        return;
-      }
-    } while (!(paramWSSimpleBaseEvent instanceof WSFriendFeedExposureEvent));
-    b(paramWSSimpleBaseEvent);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (a() == null) {
-      return;
-    }
-    if (paramBoolean1) {
-      ((ull)a()).c();
-    }
-    long l = System.currentTimeMillis();
-    ugj.a().a(paramBoolean1, paramBoolean2, "", 9, new uky(this, l, paramBoolean1));
   }
 }
 

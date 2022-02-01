@@ -1,6 +1,6 @@
 package cooperation.qzone.share;
 
-import biau;
+import bjbs;
 import com.tencent.qphone.base.util.QLog;
 
 class QZoneShareActivity$21

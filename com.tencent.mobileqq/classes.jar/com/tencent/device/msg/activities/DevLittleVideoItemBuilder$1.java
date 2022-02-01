@@ -1,8 +1,8 @@
 package com.tencent.device.msg.activities;
 
-import abua;
-import alvf;
-import alvl;
+import abye;
+import amgx;
+import amhd;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import com.tencent.device.msg.data.MessageForDevLittleVideo;
@@ -11,18 +11,18 @@ import com.tencent.image.Utils;
 public class DevLittleVideoItemBuilder$1
   implements Runnable
 {
-  public DevLittleVideoItemBuilder$1(abua paramabua, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
+  public DevLittleVideoItemBuilder$1(abye paramabye, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
   
   public void run()
   {
-    Object localObject = abua.a(this.this$0, this.a);
-    abua.a(this.this$0, this.a);
+    Object localObject = abye.a(this.this$0, this.a);
+    abye.a(this.this$0, this.a);
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      alvl localalvl = new alvl(this.a.mThumbFilePath, this.a.thumbMD5, null, this.a.thumbWidth, this.a.thumbHeight);
-      localObject = new alvf(this.this$0.a, (String)localObject, this.a.mediacodecEncode, localalvl);
-      ((alvf)localObject).a(abua.a(this.this$0));
-      ((alvf)localObject).a(false);
+      amhd localamhd = new amhd(this.a.mThumbFilePath, this.a.thumbMD5, null, this.a.thumbWidth, this.a.thumbHeight);
+      localObject = new amgx(this.this$0.a, (String)localObject, this.a.mediacodecEncode, localamhd);
+      ((amgx)localObject).a(abye.a(this.this$0));
+      ((amgx)localObject).a(false);
       Utils.executeAsyncTaskOnSerialExcuter((AsyncTask)localObject, new Void[] { (Void)null });
     }
   }

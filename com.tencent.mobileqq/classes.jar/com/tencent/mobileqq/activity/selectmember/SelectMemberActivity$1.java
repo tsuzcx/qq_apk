@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import anwd;
+import aoip;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,12 +11,12 @@ class SelectMemberActivity$1
   
   public void run()
   {
-    anwd localanwd = (anwd)this.this$0.app.a(20);
-    if (localanwd != null) {}
+    aoip localaoip = (aoip)this.this$0.app.a(20);
+    if (localaoip != null) {}
     try
     {
-      localanwd.b(Long.valueOf(this.this$0.c));
-      localanwd.a(Long.valueOf(this.this$0.c));
+      localaoip.b(Long.valueOf(this.this$0.c));
+      localaoip.a(Long.valueOf(this.this$0.c));
       return;
     }
     catch (NumberFormatException localNumberFormatException)

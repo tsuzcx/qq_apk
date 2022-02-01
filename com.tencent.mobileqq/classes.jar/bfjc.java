@@ -1,26 +1,16 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
-class bfjc
-  implements View.OnClickListener
+public class bfjc
+  implements bfev
 {
-  bfjc(bfja parambfja) {}
+  private bfjc(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void onClick(View paramView)
+  public void a(bfex parambfex)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString(bgzo.e, anni.a(2131699033));
-    localBundle.putString(bgzo.f, "CJCLUBT");
-    localBundle.putString(bgzo.d, "1450000516");
-    localBundle.putInt(bgzo.b, 3);
-    localBundle.putString(bgzo.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
-    localBundle.putString(bgzo.g, "svip");
-    localBundle.putString(bgzo.a, bfja.a(this.a).getCurrentAccountUin());
-    bgzo.a(bfja.a(this.a), bfja.a(this.a), localBundle);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.jdField_a_of_type_Bfex = parambfex;
+    this.a.jdField_a_of_type_Bfcn.b();
+    this.a.e(true);
+    bdll.b(null, "dc00899", "Grp_tribe", "", "pub_page", "choose_prefix", 0, 0, this.a.q, "", "", "");
   }
 }
 

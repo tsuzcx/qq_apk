@@ -1,14 +1,34 @@
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import Wallet.AcsPullMsgRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import java.util.ArrayList;
 
-class agcy
-  implements OnCompositionLoadedListener
+public class agcy
+  implements agdr
 {
-  agcy(agcu paramagcu) {}
+  public agcy(ReminderListFragment paramReminderListFragment) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    agcu.a(this.a, paramLottieComposition);
+    if (paramBoolean)
+    {
+      paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null)
+      {
+        paramBundle = paramBundle.msgs;
+        if ((paramBundle != null) && (!paramBundle.isEmpty()))
+        {
+          ArrayList localArrayList = new ArrayList(paramBundle.size());
+          ReminderListFragment.a(this.a, paramBundle, localArrayList, true);
+          return;
+        }
+        ReminderListFragment.b(this.a);
+        return;
+      }
+      ReminderListFragment.b(this.a);
+      return;
+    }
+    ReminderListFragment.a(this.a, anzj.a(2131712261));
   }
 }
 

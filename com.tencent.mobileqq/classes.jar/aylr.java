@@ -1,64 +1,21 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aylr
-  implements aoso
+  implements View.OnClickListener
 {
-  aylr(aylq paramaylq, String paramString, AppInterface paramAppInterface) {}
+  aylr(aykx paramaykx) {}
   
-  public void a(PromotionConfigInfo paramPromotionConfigInfo)
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    QLog.w(aylq.jdField_a_of_type_JavaLangString, 1, "getRes, promotionConfigInfo[" + paramPromotionConfigInfo + "], activityID[" + this.jdField_a_of_type_JavaLangString + "], isDestroyed[" + aylq.a(this.jdField_a_of_type_Aylq) + "]");
-    if (aylq.a(this.jdField_a_of_type_Aylq)) {
-      return;
-    }
-    Object localObject = null;
-    aosj localaosj;
-    String str;
-    if (paramPromotionConfigInfo != null)
+    if (!this.a.a.onBackEvent())
     {
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        break label324;
-      }
-      localaosj = paramPromotionConfigInfo.getItem(this.jdField_a_of_type_JavaLangString);
-      str = aylq.a(this.jdField_a_of_type_Aylq).getCurrentAccountUin();
-      int i = apfg.a(str + "AR_PROMOTION_ENTRY_SHOWONCE");
-      int j = bguf.b(str);
-      if ((j != apfg.a(str + "AR_PROMOTION_ENTRY_SERVER_VERSION")) || (j == 0))
-      {
-        apfg.a(str + "AR_PROMOTION_ENTRY_SERVER_VERSION", j);
-        i = 0;
-      }
-      if ((!paramPromotionConfigInfo.showOnce) || (i == 0)) {
-        apfg.a(str + "AR_PROMOTION_ENTRY_SHOWONCE", 0);
-      }
-      if (!paramPromotionConfigInfo.showOnce) {
-        break label333;
-      }
-      if (i != 0) {}
+      this.a.a.finish();
+      this.a.a.c(false);
     }
-    label324:
-    label333:
-    for (bool = true;; bool = true)
-    {
-      aylq.a(this.jdField_a_of_type_Aylq).a(bool, paramPromotionConfigInfo.showInTopView);
-      localObject = localaosj;
-      if (bool)
-      {
-        localObject = localaosj;
-        if (paramPromotionConfigInfo.showOnce)
-        {
-          apfg.a(str + "AR_PROMOTION_ENTRY_SHOWONCE", 1);
-          localObject = localaosj;
-        }
-      }
-      aylq.a(this.jdField_a_of_type_Aylq, this.jdField_a_of_type_ComTencentCommonAppAppInterface, localObject);
-      return;
-      localaosj = paramPromotionConfigInfo.getActivityItem();
-      break;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import pmk;
+import pfd;
 
 public final class ReadInJoyCommentUtils$1
   implements Runnable
 {
   public void run()
   {
-    pmk.a().b();
+    pfd.a().b();
   }
 }
 

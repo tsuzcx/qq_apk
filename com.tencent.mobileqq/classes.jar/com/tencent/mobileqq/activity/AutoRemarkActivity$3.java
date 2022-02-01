@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.text.TextUtils;
-import anmw;
+import anyw;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -13,7 +13,7 @@ class AutoRemarkActivity$3
   public void run()
   {
     if (TextUtils.isEmpty(this.this$0.a)) {}
-    while (((anmw)this.this$0.app.getManager(51)).b(this.this$0.a) != null) {
+    while (((anyw)this.this$0.app.getManager(51)).b(this.this$0.a) != null) {
       return;
     }
     ((FriendListHandler)this.this$0.app.a(1)).b(this.this$0.a);

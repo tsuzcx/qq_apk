@@ -1,12 +1,42 @@
-import android.graphics.Bitmap;
+import android.content.Context;
+import android.support.annotation.Nullable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
-public abstract interface bgir<T>
+public class bgir
+  extends bghr
 {
-  public abstract T a(Bitmap paramBitmap);
+  public bgir(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  {
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = 101;
+  }
   
-  public abstract void a(Exception paramException);
+  public int a(int paramInt)
+  {
+    return 2130838374;
+  }
   
-  public abstract void a(T paramT, Bitmap paramBitmap);
+  @Nullable
+  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  {
+    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
+    if (((paramList instanceof MessageForArkApp)) && (a(paramList, paramLong2, paramLong3))) {
+      return new bghs(true, this.jdField_a_of_type_AndroidContentContext.getString(2131698518), bfpe.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
+    }
+    return null;
+  }
+  
+  public void a(int paramInt, Object paramObject, String paramString)
+  {
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA10", "0X800AA10", 0, 0, "", "", "", "");
+  }
+  
+  public void b(int paramInt, Object paramObject, String paramString) {}
 }
 
 

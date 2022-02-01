@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aexp;
+import afgu;
 
 public class QQMapActivity$11$1
   implements Runnable
 {
-  public QQMapActivity$11$1(aexp paramaexp) {}
+  public QQMapActivity$11$1(afgu paramafgu) {}
   
   public void run()
   {

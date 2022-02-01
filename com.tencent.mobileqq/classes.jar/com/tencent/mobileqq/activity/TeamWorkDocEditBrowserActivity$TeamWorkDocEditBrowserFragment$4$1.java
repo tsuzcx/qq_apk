@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import afgz;
+import afqd;
 
 public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$4$1
   implements Runnable
 {
-  public TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$4$1(afgz paramafgz) {}
+  public TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$4$1(afqd paramafqd) {}
   
   public void run()
   {

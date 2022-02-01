@@ -1,37 +1,9 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ocr.OCRPerformFragment;
-import com.tencent.mobileqq.ocr.OCRPerformFragment.6.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class ayfh
-  extends auqo
+  implements aydc
 {
-  public ayfh(OCRPerformFragment paramOCRPerformFragment) {}
-  
-  public void a()
-  {
-    this.a.a.sendEmptyMessageDelayed(101, 60000L);
-  }
-  
-  public void a(auqr paramauqr)
-  {
-    this.a.a.obtainMessage(102, paramauqr).sendToTarget();
-  }
-  
-  protected void a(boolean paramBoolean, auqr paramauqr)
-  {
-    if (!OCRPerformFragment.a(this.a))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("OCRPerformFragment", 2, "onPicOcrResult other!");
-      }
-      return;
-    }
-    this.a.a.removeMessages(101);
-    OCRPerformFragment.a(this.a, false);
-    OCRPerformFragment.a(this.a).runOnUiThread(new OCRPerformFragment.6.1(this, paramBoolean, paramauqr));
-  }
+  public ayfh(ShortVideoCommentsView paramShortVideoCommentsView) {}
 }
 
 

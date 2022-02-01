@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.together.ui;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bgey;
+import bhez;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -39,14 +39,14 @@ public class WatchPanelView
   
   private void b()
   {
-    LayoutInflater.from(getContext()).inflate(2131561035, this, true);
-    setBackgroundResource(2130837955);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378966));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378969));
-    this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)findViewById(2131378967));
-    this.b = ((TextView)findViewById(2131378968));
+    LayoutInflater.from(getContext()).inflate(2131561071, this, true);
+    setBackgroundResource(2130837962);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379130));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379133));
+    this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)findViewById(2131379131));
+    this.b = ((TextView)findViewById(2131379132));
     this.jdField_a_of_type_ComTencentWidgetPatchedButton.setOnClickListener(this);
-    this.jdField_a_of_type_Int = afur.a(39.0F, getResources());
+    this.jdField_a_of_type_Int = agej.a(39.0F, getResources());
   }
   
   public void a()
@@ -85,8 +85,8 @@ public class WatchPanelView
         ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-        ((URLDrawable)localObject).setTag(bgey.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, 6));
-        ((URLDrawable)localObject).setDecodeHandler(bgey.e);
+        ((URLDrawable)localObject).setTag(bhez.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, 6));
+        ((URLDrawable)localObject).setDecodeHandler(bhez.e);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
         this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramString);
         if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {

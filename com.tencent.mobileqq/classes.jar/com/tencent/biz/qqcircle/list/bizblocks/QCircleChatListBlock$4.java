@@ -1,12 +1,12 @@
 package com.tencent.biz.qqcircle.list.bizblocks;
 
+import aaav;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import qqcircle.QQCirclePrivateMsgShow.StBatchGetPMGiftInfoRsp;
-import vjl;
-import zxa;
+import vlp;
 
 class QCircleChatListBlock$4
-  implements zxa<QQCirclePrivateMsgShow.StBatchGetPMGiftInfoRsp>
+  implements aaav<QQCirclePrivateMsgShow.StBatchGetPMGiftInfoRsp>
 {
   QCircleChatListBlock$4(QCircleChatListBlock paramQCircleChatListBlock) {}
   
@@ -14,7 +14,7 @@ class QCircleChatListBlock$4
   {
     if ((paramBoolean) && (paramLong == 0L) && (paramStBatchGetPMGiftInfoRsp != null))
     {
-      vjl.a().a(paramStBatchGetPMGiftInfoRsp.userGiftInfos.get());
+      vlp.a().a(paramStBatchGetPMGiftInfoRsp.userGiftInfos.get());
       QCircleChatListBlock.access$300(this.this$0);
       QCircleChatListBlock.access$400(this.this$0);
     }

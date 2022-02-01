@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.history;
 
-import ajpc;
-import ajpw;
-import ajpx;
-import ajpy;
-import ajpz;
-import ajqc;
-import ajqd;
-import ajue;
-import ajug;
-import ajuw;
+import akal;
+import akbf;
+import akbg;
+import akbh;
+import akbi;
+import akbl;
+import akbm;
+import akfn;
+import akfp;
+import akgf;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
@@ -19,25 +19,25 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anni;
-import asyw;
-import atcv;
-import atcx;
-import athj;
-import atpw;
-import atpy;
-import atqb;
-import attd;
-import atte;
-import atvf;
-import atvm;
-import atvn;
-import atvo;
-import atwl;
-import atxd;
-import bcst;
-import bkho;
-import bkif;
+import anzj;
+import atpa;
+import atup;
+import atur;
+import atzd;
+import auhr;
+import auht;
+import auhw;
+import auky;
+import aukz;
+import auna;
+import aunh;
+import auni;
+import aunj;
+import auog;
+import auoy;
+import bdll;
+import blir;
+import blji;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -53,18 +53,18 @@ import java.util.List;
 
 public class ChatHistoryC2CFileFragment
   extends ChatHistoryBaseFragment
-  implements ajug, View.OnClickListener
+  implements akfp, View.OnClickListener
 {
-  private ajue jdField_a_of_type_Ajue;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ajpz(this);
+  private akfn jdField_a_of_type_Akfn;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new akbi(this);
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private asyw jdField_a_of_type_Asyw;
-  private attd<FileManagerEntity> jdField_a_of_type_Attd;
+  private atpa jdField_a_of_type_Atpa;
+  private auky<FileManagerEntity> jdField_a_of_type_Auky;
   private QfilePinnedHeaderExpandableListView jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView;
   private LinkedHashMap<String, List<Object>> jdField_a_of_type_JavaUtilLinkedHashMap;
   private List<FileManagerEntity> jdField_a_of_type_JavaUtilList;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new ajqc(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new akbl(this);
   private View jdField_b_of_type_AndroidViewView;
   private View c;
   private boolean d;
@@ -90,7 +90,7 @@ public class ChatHistoryC2CFileFragment
           if (QLog.isDevelopLevel()) {
             QLog.d("ChatHistoryC2CFileFragment<QFile>", 1, "ChatHistory Query Entity[" + localFileManagerEntity.getId() + "] SessionId:" + localFileManagerEntity.nSessionId);
           }
-          String str = atxd.a(localFileManagerEntity.srvTime);
+          String str = auoy.a(localFileManagerEntity.srvTime);
           if (!localLinkedHashMap.containsKey(str)) {
             localLinkedHashMap.put(str, new ArrayList());
           }
@@ -108,27 +108,27 @@ public class ChatHistoryC2CFileFragment
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setVisibility(8);
-      this.jdField_a_of_type_Ajpc.a(false);
+      this.jdField_a_of_type_Akal.a(false);
     }
     for (;;)
     {
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_Ajue.notifyDataSetChanged();
+      this.jdField_a_of_type_Akfn.notifyDataSetChanged();
       if (!this.e) {
         return;
       }
       this.e = false;
-      while (i < this.jdField_a_of_type_Ajue.getGroupCount())
+      while (i < this.jdField_a_of_type_Akfn.getGroupCount())
       {
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(i);
         i += 1;
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setVisibility(0);
-      this.jdField_a_of_type_Ajpc.a(true);
+      this.jdField_a_of_type_Akal.a(true);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnGroupCollapseListener(new ajpx(this));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnGroupExpandListener(new ajpy(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnGroupCollapseListener(new akbg(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnGroupExpandListener(new akbh(this));
   }
   
   private void a(LinkedHashMap<String, List<Object>> paramLinkedHashMap)
@@ -166,7 +166,7 @@ public class ChatHistoryC2CFileFragment
         if (QLog.isDevelopLevel()) {
           QLog.d("ChatHistoryC2CFileFragment<QFile>", 1, "ChatHistory Query Entity[" + localFileManagerEntity.getId() + "] SessionId:" + localFileManagerEntity.nSessionId);
         }
-        String str = atxd.a(localFileManagerEntity.srvTime);
+        String str = auoy.a(localFileManagerEntity.srvTime);
         if (!localLinkedHashMap.containsKey(str)) {
           localLinkedHashMap.put(str, new ArrayList());
         }
@@ -201,12 +201,12 @@ public class ChatHistoryC2CFileFragment
   
   private void d(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Ajue.a(paramBoolean);
+    this.jdField_a_of_type_Akfn.a(paramBoolean);
     this.d = paramBoolean;
     r();
     if (paramBoolean)
     {
-      int i = this.jdField_a_of_type_Ajuw.a();
+      int i = this.jdField_a_of_type_Akgf.a();
       this.c.setPadding(0, i, 0, 0);
       this.c.setVisibility(0);
       return;
@@ -217,7 +217,7 @@ public class ChatHistoryC2CFileFragment
   
   private void q()
   {
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B6", "0X800A0B6", 2, 0, "", "", "", "");
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B6", "0X800A0B6", 2, 0, "", "", "", "");
     FileSearchActivity.a(getActivity(), 2, a());
   }
   
@@ -238,12 +238,12 @@ public class ChatHistoryC2CFileFragment
       }
       for (;;)
       {
-        if ((paramFileManagerEntity.cloudType == 3) && (!atwl.b(paramFileManagerEntity.getFilePath())))
+        if ((paramFileManagerEntity.cloudType == 3) && (!auog.b(paramFileManagerEntity.getFilePath())))
         {
-          atvf.a(atvo.d(paramFileManagerEntity.fileName) + anni.a(2131700447));
+          auna.a(aunj.d(paramFileManagerEntity.fileName) + anzj.a(2131700554));
           d(paramFileManagerEntity);
         }
-        this.jdField_a_of_type_Ajue.notifyDataSetChanged();
+        this.jdField_a_of_type_Akfn.notifyDataSetChanged();
         do
         {
           return;
@@ -251,32 +251,32 @@ public class ChatHistoryC2CFileFragment
         c(paramFileManagerEntity);
       }
     }
-    Object localObject = new atvn();
-    ((atvn)localObject).b = "file_viewer_in";
-    ((atvn)localObject).jdField_a_of_type_Int = 73;
-    ((atvn)localObject).c = atwl.a(paramFileManagerEntity.fileName);
-    ((atvn)localObject).jdField_a_of_type_Long = paramFileManagerEntity.fileSize;
-    atvm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (atvn)localObject);
-    atvm.a("0X8004AE4");
-    localObject = new atpw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramFileManagerEntity, 10001);
+    Object localObject = new auni();
+    ((auni)localObject).b = "file_viewer_in";
+    ((auni)localObject).jdField_a_of_type_Int = 73;
+    ((auni)localObject).c = auog.a(paramFileManagerEntity.fileName);
+    ((auni)localObject).jdField_a_of_type_Long = paramFileManagerEntity.fileSize;
+    aunh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (auni)localObject);
+    aunh.a("0X8004AE4");
+    localObject = new auhr(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramFileManagerEntity, 10001);
     Bundle localBundle = new Bundle();
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.trim().length() != 0))
     {
       localBundle.putString("c2c_discussion_recentfile", a());
       localBundle.putString("file_browser_extra_params_uin", a());
     }
-    ((atpw)localObject).a(localBundle);
-    localObject = new atpy(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (atqb)localObject);
+    ((auhr)localObject).a(localBundle);
+    localObject = new auht(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (auhw)localObject);
     if (paramFileManagerEntity.peerType == 0) {
-      ((atpy)localObject).a(2);
+      ((auht)localObject).a(2);
     }
     for (;;)
     {
-      ((atpy)localObject).a(true);
-      ((atpy)localObject).a();
+      ((auht)localObject).a(true);
+      ((auht)localObject).a();
       return;
       if (paramFileManagerEntity.peerType == 3000) {
-        ((atpy)localObject).a(6);
+        ((auht)localObject).a(6);
       }
     }
   }
@@ -291,11 +291,11 @@ public class ChatHistoryC2CFileFragment
   
   protected void b()
   {
-    if (this.jdField_a_of_type_Asyw != null) {
+    if (this.jdField_a_of_type_Atpa != null) {
       return;
     }
-    this.jdField_a_of_type_Asyw = new ajpw(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Asyw);
+    this.jdField_a_of_type_Atpa = new akbf(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Atpa);
   }
   
   public void b(FileManagerEntity paramFileManagerEntity)
@@ -309,7 +309,7 @@ public class ChatHistoryC2CFileFragment
     } while (((FileManagerEntity)paramFileManagerEntity.next()).fileSize <= 104857600L);
     for (boolean bool = false;; bool = true)
     {
-      this.jdField_a_of_type_Ajuw.a(5, bool);
+      this.jdField_a_of_type_Akgf.a(5, bool);
       return;
     }
   }
@@ -318,7 +318,7 @@ public class ChatHistoryC2CFileFragment
   {
     super.b(paramBoolean);
     if (paramBoolean) {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B1", "0X800A0B1", 3, 0, "", "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B1", "0X800A0B1", 3, 0, "", "", "", "");
     }
     d(paramBoolean);
     if (!paramBoolean) {
@@ -333,10 +333,10 @@ public class ChatHistoryC2CFileFragment
   
   protected void c()
   {
-    if (this.jdField_a_of_type_Asyw != null)
+    if (this.jdField_a_of_type_Atpa != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Asyw);
-      this.jdField_a_of_type_Asyw = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Atpa);
+      this.jdField_a_of_type_Atpa = null;
     }
   }
   
@@ -348,15 +348,15 @@ public class ChatHistoryC2CFileFragment
     localArrayList.add(Integer.valueOf(3));
     localArrayList.add(Integer.valueOf(4));
     localArrayList.add(Integer.valueOf(5));
-    this.jdField_a_of_type_Ajuw.a(localArrayList);
+    this.jdField_a_of_type_Akgf.a(localArrayList);
   }
   
   public void e()
   {
     super.e();
     c(false);
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B0", "0X800A0B0", 4, 0, "", "", "", "");
-    this.jdField_a_of_type_Ajpc.a(false);
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B0", "0X800A0B0", 4, 0, "", "", "", "");
+    this.jdField_a_of_type_Akal.a(false);
   }
   
   public void f()
@@ -373,10 +373,10 @@ public class ChatHistoryC2CFileFragment
   protected void k()
   {
     super.k();
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B3", "0X800A0B3", 3, 0, "", "", "", "");
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B3", "0X800A0B3", 3, 0, "", "", "", "");
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Attd.a(localArrayList, 1, null);
+    this.jdField_a_of_type_Auky.a(localArrayList, 1, null);
     h();
     d(false);
     r();
@@ -385,10 +385,10 @@ public class ChatHistoryC2CFileFragment
   protected void l()
   {
     super.l();
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B4", "0X800A0B4", 3, 0, "", "", "", "");
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B4", "0X800A0B4", 3, 0, "", "", "", "");
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Attd.a(localArrayList, 4, null);
+    this.jdField_a_of_type_Auky.a(localArrayList, 4, null);
     h();
     d(false);
     r();
@@ -397,10 +397,10 @@ public class ChatHistoryC2CFileFragment
   protected void m()
   {
     super.m();
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B2", "0X800A0B2", 3, 0, "", "", "", "");
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B2", "0X800A0B2", 3, 0, "", "", "", "");
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Attd.a(localArrayList, 2, null);
+    this.jdField_a_of_type_Auky.a(localArrayList, 2, null);
     h();
     d(false);
     r();
@@ -409,13 +409,13 @@ public class ChatHistoryC2CFileFragment
   protected void n()
   {
     super.n();
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800712C", "0X800712C", 0, 0, "", "", "", "");
-    bkho localbkho = (bkho)bkif.a(getActivity(), null);
-    localbkho.a(2131695396);
-    localbkho.a(getActivity().getString(2131692070), 3);
-    localbkho.c(2131690582);
-    localbkho.a(new ajqd(this, localbkho));
-    localbkho.show();
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800712C", "0X800712C", 0, 0, "", "", "", "");
+    blir localblir = (blir)blji.a(getActivity(), null);
+    localblir.a(2131695439);
+    localblir.a(getActivity().getString(2131692075), 3);
+    localblir.c(2131690580);
+    localblir.a(new akbm(this, localblir));
+    localblir.show();
   }
   
   protected void o()
@@ -423,7 +423,7 @@ public class ChatHistoryC2CFileFragment
     super.o();
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Attd.a(localArrayList, 5, null);
+    this.jdField_a_of_type_Auky.a(localArrayList, 5, null);
     h();
     d(false);
     r();
@@ -445,8 +445,8 @@ public class ChatHistoryC2CFileFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    if (this.jdField_a_of_type_Attd == null) {
-      this.jdField_a_of_type_Attd = new atte(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    if (this.jdField_a_of_type_Auky == null) {
+      this.jdField_a_of_type_Auky = new aukz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
     }
   }
   
@@ -456,27 +456,27 @@ public class ChatHistoryC2CFileFragment
     {
       this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.c = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131560880, null);
+      this.c = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131560911, null);
       this.c.setVisibility(8);
-      this.jdField_b_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560856, paramViewGroup, false);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131371779));
+      this.jdField_b_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560887, paramViewGroup, false);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131371886));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_a_of_type_Ajue = new ajue(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaUtilLinkedHashMap);
-      this.jdField_a_of_type_Ajue.a(this);
-      this.jdField_a_of_type_Ajue.a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_Ajue.b(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView = ((QfilePinnedHeaderExpandableListView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369965));
+      this.jdField_a_of_type_Akfn = new akfn(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaUtilLinkedHashMap);
+      this.jdField_a_of_type_Akfn.a(this);
+      this.jdField_a_of_type_Akfn.a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.jdField_a_of_type_Akfn.b(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView = ((QfilePinnedHeaderExpandableListView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370063));
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setAdapter(this.jdField_a_of_type_Ajue);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setAdapter(this.jdField_a_of_type_Akfn);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.addFooterView(this.c);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelector(2131167224);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setAdapter(this.jdField_a_of_type_Ajue);
-      this.jdField_a_of_type_Ajue.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelector(2131167247);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setAdapter(this.jdField_a_of_type_Akfn);
+      this.jdField_a_of_type_Akfn.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setTranscriptMode(0);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setWhetherImageTab(false);
-      paramLayoutInflater = this.jdField_b_of_type_AndroidViewView.findViewById(2131366583);
-      ((TextView)paramLayoutInflater.findViewById(2131373987)).setText(2131690651);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.findViewById(2131373986));
+      paramLayoutInflater = this.jdField_b_of_type_AndroidViewView.findViewById(2131366633);
+      ((TextView)paramLayoutInflater.findViewById(2131374126)).setText(2131690649);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.findViewById(2131374125));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     }
     paramLayoutInflater = (ViewGroup)this.jdField_b_of_type_AndroidViewView.getParent();

@@ -1,129 +1,96 @@
-import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class lid
-  extends lia
+final class lid
+  implements Handler.Callback
 {
-  private static int jdField_c_of_type_Int = -1;
-  static long d = 30000L;
-  long jdField_c_of_type_Long = 0L;
-  
-  public lid(VideoAppInterface paramVideoAppInterface)
+  public boolean handleMessage(Message paramMessage)
   {
-    super(paramVideoAppInterface);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface)
-  {
-    return ((lhz)paramVideoAppInterface.a(5)).a(2, "ptu_so");
-  }
-  
-  public static boolean b()
-  {
-    return jdField_c_of_type_Int == 1;
-  }
-  
-  private boolean c()
-  {
-    if (d()) {}
+    Bundle localBundle = paramMessage.getData();
+    switch (paramMessage.what)
+    {
+    }
     do
     {
-      return true;
-      if (this.jdField_a_of_type_Int < 17)
+      do
       {
-        lbc.c("SupportPendant", "isUserEffectFace error  OSversion:" + this.jdField_a_of_type_Int);
+        long l1;
+        int i;
+        long l2;
+        boolean bool;
+        do
+        {
+          do
+          {
+            do
+            {
+              return false;
+            } while (lic.a() == null);
+            lic.c();
+            lic.a(24, lic.b());
+            try
+            {
+              lic.a().sendEmptyMessageDelayed(1, 5000L);
+              return false;
+            }
+            catch (NullPointerException paramMessage)
+            {
+              paramMessage.printStackTrace();
+              return false;
+            }
+            l1 = localBundle.getLong("roomId");
+            i = localBundle.getInt("node");
+            l2 = localBundle.getLong("value");
+            bool = localBundle.getBoolean("isNode");
+            lic.a(i, true);
+          } while (lic.a(i, true, bool));
+          if ((bool) && (lic.a(33, true)))
+          {
+            lbj.b("VideoNodeManager", "--> TempSeesion THE node_session_close has write !!  this node  be rejected !!   node = " + lib.a(i));
+            return false;
+          }
+          lic.a(i + "", l2 + "", bool);
+          lic.a(i, l2, true);
+          lbj.b("VideoNodeManager", "reportToTempSeesionRecord ,roomId = " + l1 + "  node = " + lib.a(i) + ", value = " + l2 + "   isNode = " + bool);
+          return false;
+          l1 = localBundle.getLong("roomId");
+          i = localBundle.getInt("node");
+          l2 = localBundle.getLong("value");
+          bool = localBundle.getBoolean("isNode");
+          lic.a(i, false);
+        } while (lic.a(i, false, bool));
+        if ((bool) && (lic.a(33, false)))
+        {
+          lbj.b("VideoNodeManager", "--> THE node_session_close has write !!  this node  be rejected !!   node = " + lib.a(i));
+          return false;
+        }
+        if (lic.a(i)) {
+          lbj.a("VideoNodeManager", "reportToHandler  roomId = " + l1 + "  node = " + lib.a(i) + ",  value = " + l2 + "   isNode = " + bool);
+        }
+        lic.b(i + "", l2 + "", bool);
+        lic.a(i, l2, false);
         return false;
-      }
-      if (this.jdField_b_of_type_Int < 4)
-      {
-        lbc.c("SupportPendant", "isUserEffectFace error cpucount:" + this.jdField_b_of_type_Int);
-        return false;
-      }
-      if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Long < 1400000L))
-      {
-        lbc.c("SupportPendant", "isUserEffectFace error cpuFrequency:" + this.jdField_a_of_type_Long);
-        return false;
-      }
-    } while (this.jdField_b_of_type_Long >= 1073741824L);
-    lbc.c("SupportPendant", "isUserEffectFace error  memory:" + this.jdField_b_of_type_Long);
-    return false;
-  }
-  
-  private static boolean d()
-  {
-    String str = Build.MODEL;
-    if (TextUtils.isEmpty(str)) {
+        paramMessage = lic.a();
+        if (!TextUtils.isEmpty(paramMessage))
+        {
+          lbj.a("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TO_SERVER detail = " + paramMessage);
+          bdkl.a(null, "dc03209", paramMessage);
+          lic.e();
+        }
+      } while ((lic.a() == null) || (lic.a().size() == 0));
+      lic.j();
       return false;
-    }
-    return str.equals("MI 5");
-  }
-  
-  public int a(String paramString)
-  {
-    return 0;
-  }
-  
-  public boolean a()
-  {
-    if (jdField_c_of_type_Int != 1)
-    {
-      if (bnpy.b(bnpt.b)) {
-        break label138;
-      }
-      long l1 = System.currentTimeMillis();
-      if (l1 <= this.jdField_c_of_type_Long) {
-        break label121;
-      }
-      long l2 = AudioHelper.c();
-      if (!this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.g()) {
-        break label114;
-      }
-      jdField_c_of_type_Int = 1;
-      long l3 = AudioHelper.c();
-      QLog.w("SupportPendant", 1, "isDownloadedPTUSO, isFilterSoDownLoadSuc[" + jdField_c_of_type_Int + "], cost[" + (l3 - l2) + "]");
-      this.jdField_c_of_type_Long = (l1 + d);
-    }
-    label138:
-    for (;;)
-    {
-      if (jdField_c_of_type_Int != 1) {
-        break label145;
-      }
-      return true;
-      label114:
-      jdField_c_of_type_Int = 0;
-      break;
-      label121:
-      if (QLog.isDevelopLevel())
-      {
-        QLog.w("SupportPendant", 1, "isDownloadedPTUSO, 频繁调用");
-        continue;
-        jdField_c_of_type_Int = 1;
-      }
-    }
-    label145:
+      paramMessage = lic.b();
+      lbj.b("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TEMP_RECORD_TO_SERVER detail = " + paramMessage);
+    } while (TextUtils.isEmpty(paramMessage));
+    bdkl.a(null, "dc03209", paramMessage);
+    lic.f();
     return false;
   }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if ("ptu_so".equalsIgnoreCase(paramString)) {
-      return a();
-    }
-    return c();
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 

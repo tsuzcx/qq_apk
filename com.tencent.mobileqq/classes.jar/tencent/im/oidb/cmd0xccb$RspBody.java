@@ -18,6 +18,7 @@ public final class cmd0xccb$RspBody
   public final PBUInt64Field dest_uin = PBField.initUInt64(0L);
   public final PBUInt64Field group_code = PBField.initUInt64(0L);
   public final PBRepeatMessageField<cmd0xccb.GroupMsgInfo> group_msg = PBField.initRepeatMessage(cmd0xccb.GroupMsgInfo.class);
+  public cmd0xccb.LocalMsgInfo local_msg = new cmd0xccb.LocalMsgInfo();
   public final PBBytesField res_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field service_type = PBField.initUInt32(0);
   public final PBUInt32Field type = PBField.initUInt32(0);
@@ -25,7 +26,7 @@ public final class cmd0xccb$RspBody
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 56, 64 }, new String[] { "type", "dest_uin", "group_code", "c2c_msg", "group_msg", "res_id", "c2c_type", "service_type" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), null, null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 56, 64, 74 }, new String[] { "type", "dest_uin", "group_code", "c2c_msg", "group_msg", "res_id", "c2c_type", "service_type", "local_msg" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), null, null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), null }, RspBody.class);
   }
 }
 

@@ -1,15 +1,27 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class alro
+  implements View.OnTouchListener
 {
-  public ImageView a;
-  public TextView a;
-  public String a;
-  boolean jdField_a_of_type_Boolean;
+  public alro(LoginView paramLoginView) {}
   
-  alro(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity.LoginView", 2, "mScrollRootView.setOnTouch action=" + paramMotionEvent.getAction() + " im:" + LoginView.a(this.a));
+    }
+    if ((paramMotionEvent.getAction() == 1) && (LoginView.a(this.a) != null)) {
+      LoginView.a(this.a).hideSoftInputFromWindow(this.a.a.getWindow().getDecorView().getWindowToken(), 0);
+    }
+    return true;
+  }
 }
 
 

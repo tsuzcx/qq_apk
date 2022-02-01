@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import annl;
+import anzm;
 import com.tencent.mobileqq.data.HotChatItemData;
 import com.tencent.mobileqq.persistence.EntityManager;
 
 public class HotChatCenterManager$2
   implements Runnable
 {
-  public HotChatCenterManager$2(annl paramannl, EntityManager paramEntityManager, HotChatItemData paramHotChatItemData) {}
+  public HotChatCenterManager$2(anzm paramanzm, EntityManager paramEntityManager, HotChatItemData paramHotChatItemData) {}
   
   public void run()
   {

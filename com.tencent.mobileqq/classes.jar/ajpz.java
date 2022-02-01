@@ -1,58 +1,172 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ajpz
-  extends atxe
 {
-  public ajpz(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
+  protected static HashMap<String, structmsg.StructMsg> a;
   
-  public void a(View paramView)
+  public static int a(int paramInt)
   {
-    paramView = (ajuf)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
-    if (5 != localFileManagerEntity.cloudType) {
-      atvo.b(localFileManagerEntity);
-    }
-    switch (paramView.jdField_a_of_type_Int)
+    switch (paramInt)
     {
+    case 82: 
+    default: 
+      return 0;
+    case 1: 
+    case 13: 
+    case 22: 
+    case 60: 
+      return 2;
     }
-    for (;;)
+    return 1;
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface)
+  {
+    int i = 0 + bdzi.a().a(paramQQAppInterface) + aoga.b(paramQQAppInterface);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("TroopNotificationUtils", 4, "getTroopNotificationUnreadNum:" + i);
+    }
+    return i;
+  }
+  
+  public static Drawable a(aoof paramaoof, String paramString, int paramInt)
+  {
+    if ((paramaoof == null) || (paramString == null) || (paramInt == -1)) {
+      return null;
+    }
+    if (paramaoof.a()) {
+      paramaoof.b();
+    }
+    Bitmap localBitmap2 = paramaoof.a(paramInt, paramString);
+    Bitmap localBitmap1 = localBitmap2;
+    if (localBitmap2 == null)
     {
-      ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+      paramaoof.a(paramString, paramInt, true);
+      if (paramInt != 4) {
+        break label68;
+      }
+    }
+    label68:
+    for (localBitmap1 = bhmq.f();; localBitmap1 = bhmq.a()) {
+      return new BitmapDrawable(localBitmap1);
+    }
+  }
+  
+  public static final structmsg.StructMsg a(String paramString)
+  {
+    if ((a != null) && (a.containsKey(paramString))) {
+      return (structmsg.StructMsg)a.get(paramString);
+    }
+    return null;
+  }
+  
+  public static void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopNotificationUtils", 2, "clearAccountLoginInfoSp");
+    }
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("troop_notification_sp", 0);
+    if (localSharedPreferences == null) {
       return;
-      if (!bgnt.d(BaseApplication.getContext()))
-      {
-        atvf.a(2131692314);
-        return;
-      }
-      atul.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new ajqa(this, localFileManagerEntity));
-      continue;
-      this.a.a(localFileManagerEntity);
-      continue;
-      if (localFileManagerEntity.getCloudType() == 0)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
-      }
-      else if (localFileManagerEntity.getCloudType() == 6)
-      {
-        ((anjx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(0, localFileManagerEntity.uniseq, false);
-      }
-      else
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
-        continue;
-        if (!bgnt.d(BaseApplication.getContext()))
-        {
-          atvf.a(2131692314);
-          return;
-        }
-        boolean bool = localFileManagerEntity.isSend();
-        atul.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new ajqb(this, localFileManagerEntity));
-      }
     }
+    localSharedPreferences.edit().clear().commit();
+  }
+  
+  public static final void a(Context paramContext, String paramString1, String paramString2)
+  {
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    String str = String.format("https://qun.qq.com/qunpay/qunfee/pay.html?gc=%s&source=joingroup&_wv=1031", new Object[] { paramString1 });
+    paramString1 = str;
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramString1 = str + "&source_id=" + paramString2;
+    }
+    localIntent.putExtra("url", paramString1);
+    paramContext.startActivity(localIntent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
+    int i = paramQQAppInterface.getInt("share_key_pay2joinTroop_request_num", 0);
+    paramQQAppInterface = paramQQAppInterface.edit();
+    paramQQAppInterface.putInt("share_key_pay2joinTroop_request_num", i + 1);
+    paramQQAppInterface.commit();
+  }
+  
+  public static final void a(String paramString, structmsg.StructMsg paramStructMsg)
+  {
+    if (a == null) {
+      a = new HashMap(3);
+    }
+    a.put(paramString, paramStructMsg);
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      SharedPreferences localSharedPreferences;
+      do
+      {
+        return;
+        localSharedPreferences = BaseApplication.getContext().getSharedPreferences("troop_notification_sp", 0);
+      } while (localSharedPreferences == null);
+      localSharedPreferences.edit().putBoolean("isFirstLogin" + paramString, paramBoolean).commit();
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopNotificationUtils", 2, "setIsAccountFirstLogin uin=" + paramString + " firstLogin=" + paramBoolean);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool1 = false;
+    if (TextUtils.isEmpty(paramString)) {}
+    boolean bool2;
+    do
+    {
+      SharedPreferences localSharedPreferences;
+      do
+      {
+        return bool1;
+        localSharedPreferences = BaseApplication.getContext().getSharedPreferences("troop_notification_sp", 0);
+      } while (localSharedPreferences == null);
+      bool2 = localSharedPreferences.getBoolean("isFirstLogin" + paramString, true);
+      bool1 = bool2;
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopNotificationUtils", 2, "isAccountFirstLogin uin=" + paramString + " result=" + bool2);
+    return bool2;
+  }
+  
+  public static int b(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getInt("share_key_pay2joinTroop_request_num", 0);
+  }
+  
+  public static final void b()
+  {
+    if (a != null) {
+      a.clear();
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit();
+    paramQQAppInterface.putInt("share_key_pay2joinTroop_request_num", 0);
+    paramQQAppInterface.commit();
   }
 }
 

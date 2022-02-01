@@ -1,19 +1,13 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 
-public class bpqj
+class bpqj
+  implements bbgo
 {
-  public final Bitmap a;
-  public final boolean a;
-  public final Rect[] a;
-  public final String[] a;
+  bpqj(bpqh parambpqh, boolean paramBoolean) {}
   
-  public bpqj(Bitmap paramBitmap, String[] paramArrayOfString, Rect[] paramArrayOfRect, boolean paramBoolean)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsRect = paramArrayOfRect;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    SosoInterface.a(new bpqk(this, "NewStoryTakeVideoActivity"));
   }
 }
 

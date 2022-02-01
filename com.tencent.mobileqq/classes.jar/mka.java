@@ -1,33 +1,16 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoControlUI;
 import com.tencent.qphone.base.util.QLog;
 
-class mka
-  implements mhj
+public class mka
+  implements DialogInterface.OnClickListener
 {
-  mka(mjz parammjz, int paramInt) {}
+  public mka(VideoControlUI paramVideoControlUI, long paramLong) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Mjz.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
-    {
-      this.jdField_a_of_type_Mjz.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131373371, false);
-      this.jdField_a_of_type_Mjz.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131363071, false);
-      this.jdField_a_of_type_Mjz.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131363083, false);
-      this.jdField_a_of_type_Mjz.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131363082, false);
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Mjz.a.a().a(this.jdField_a_of_type_Mjz.a.c, 250);
-    this.jdField_a_of_type_Mjz.a.a().b(250);
-    this.jdField_a_of_type_Mjz.a.a().b(this.jdField_a_of_type_Mjz.a.c, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Mjz.a.e = true;
-    QLog.d(this.jdField_a_of_type_Mjz.a.jdField_a_of_type_JavaLangString, 1, "onClose()-> onOutAnimationEnd ->finish  ");
-    this.jdField_a_of_type_Mjz.a.finish();
-    this.jdField_a_of_type_Mjz.a.overridePendingTransition(0, 2130772169);
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionNormalDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
   }
 }
 

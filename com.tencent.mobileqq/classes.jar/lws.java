@@ -1,35 +1,37 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
+import android.os.Binder;
 import android.os.IBinder;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class lws
-  implements ServiceConnection
+public abstract class lws
+  extends Binder
+  implements lwr
 {
-  public lws(QQServiceForAV paramQQServiceForAV) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public static lwr a(IBinder paramIBinder)
   {
-    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceConnected name=" + paramComponentName + ", service=" + paramIBinder);
-    QQServiceForAV.b(this.a, true);
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IAVServiceCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof lwr))) {
+      return (lwr)localIInterface;
+    }
+    return new lwt(paramIBinder);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceDisconnected name=" + paramComponentName);
-    QQServiceForAV.b(this.a, false);
-    try
+    switch (paramInt1)
     {
-      BaseApplicationImpl.getContext().unbindService(this);
-      return;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.av.service.IAVServiceCallback");
+      return true;
     }
-    catch (Throwable paramComponentName)
-    {
-      QLog.e("QQServiceForAV", 1, "onServiceDisconnected disconnect exception:" + paramComponentName, paramComponentName);
-    }
+    paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceCallback");
+    a(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
+    return true;
   }
 }
 

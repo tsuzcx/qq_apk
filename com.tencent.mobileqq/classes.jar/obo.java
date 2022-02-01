@@ -1,18 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.AdTagInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public final class obo
-  implements Parcelable.Creator<VideoInfo.AdTagInfo>
+class obo
+  extends BroadcastReceiver
 {
-  public VideoInfo.AdTagInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.AdTagInfo(paramParcel);
-  }
+  obo(obj paramobj, String paramString, boolean paramBoolean) {}
   
-  public VideoInfo.AdTagInfo[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new VideoInfo.AdTagInfo[paramInt];
+    double d1 = Double.parseDouble(paramIntent.getStringExtra("latitude"));
+    double d2 = Double.parseDouble(paramIntent.getStringExtra("longitude"));
+    paramIntent = paramIntent.getStringExtra("name");
+    this.jdField_a_of_type_Obj.a(d1, d2, paramIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    try
+    {
+      paramContext.unregisterReceiver(this.jdField_a_of_type_Obj.c);
+      label58:
+      this.jdField_a_of_type_Obj.c = null;
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      break label58;
+    }
   }
 }
 

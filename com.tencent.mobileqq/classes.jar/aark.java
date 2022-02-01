@@ -1,48 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
 
-public abstract class aark
-  extends niv
+public class aark
+  implements ISuperPlayer.OnCompletionListener
 {
-  public aark()
-  {
-    super(false);
-  }
+  public aark(TribeVideoPlugin paramTribeVideoPlugin, aarr paramaarr) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onCompletion(ISuperPlayer paramISuperPlayer)
   {
-    b(paramInt, paramArrayOfByte, paramBundle);
-  }
-  
-  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (paramInt != 0)
+    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
     {
-      a(false, paramInt, null, paramBundle);
-      return;
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(6, aarr.a(this.jdField_a_of_type_Aarr));
+      paramISuperPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
+      paramISuperPlayer.obj = aarr.a(this.jdField_a_of_type_Aarr);
+      paramISuperPlayer.what = 6;
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramISuperPlayer);
     }
-    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
-    try
-    {
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d6.DownloadFileRspBody)localRspBody.download_file_rsp.get();
-      if (paramArrayOfByte.int32_ret_code.has())
-      {
-        a(true, 0, paramArrayOfByte, paramBundle);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1, null, paramBundle);
-      return;
-    }
-    a(false, -1, null, paramBundle);
   }
 }
 

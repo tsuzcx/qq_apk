@@ -9,7 +9,7 @@ import android.text.style.StyleSpan;
 import android.text.style.SuperscriptSpan;
 import android.util.SparseArray;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.qphone.base.util.QLog;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -24,7 +24,7 @@ public class NumAnim
   public static final int REGION_PREFFIX = 1;
   public static final int REGION_SUFFIX = 3;
   private static final String TAG = "NumAnim";
-  public static final String WAN = anni.a(2131706451);
+  public static final String WAN = anzj.a(2131706558);
   static DecimalFormat decimalFormatTo1;
   static DecimalFormat decimalFormatTo2 = new DecimalFormat("0.00");
   final boolean changeDip;

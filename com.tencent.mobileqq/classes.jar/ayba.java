@@ -1,21 +1,10 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 
-public class ayba
-  extends aybb
+public abstract interface ayba
 {
-  public ayba(String paramString, aybj paramaybj)
-  {
-    super(paramString, paramaybj);
-  }
+  public abstract void a(InterestTagInfo paramInterestTagInfo);
   
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130839283);
-    this.jdField_a_of_type_Int = -1;
-  }
+  public abstract boolean a(InterestTagInfo paramInterestTagInfo);
 }
 
 

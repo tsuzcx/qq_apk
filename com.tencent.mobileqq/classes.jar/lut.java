@@ -1,104 +1,49 @@
-import android.graphics.Canvas;
-import android.graphics.LinearGradient;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.Shader.TileMode;
-
 public class lut
-  extends ltv
+  extends lur
 {
-  public LinearGradient a;
-  public int b;
-  public Rect b;
-  public int c;
-  public int d;
-  public int e;
-  
-  public lut()
-  {
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  }
-  
   public void a(long paramLong)
   {
-    paramLong -= this.jdField_a_of_type_Long;
+    paramLong -= this.a;
     int j = 0;
+    float f2 = 1.0F;
     int i;
-    if ((paramLong > 0L) && (paramLong < 200L))
+    float f1;
+    if ((paramLong > 3099L) && (paramLong < 3432L))
     {
-      i = (int)(255L * paramLong / 200L);
-      a(i);
-      if (paramLong >= 200L) {
-        break label164;
-      }
-      this.d = ((int)(255L * paramLong / 200L));
+      i = (int)(255L * (paramLong - 3099L) / 333L);
+      f1 = (0.5F * (float)(paramLong + 3432L) - 3099.0F) / 333.0F;
     }
     for (;;)
     {
-      i = (int)(this.c - paramLong * this.c / 750L);
-      a(0, i, this.jdField_b_of_type_AndroidGraphicsRect.right, this.jdField_b_of_type_Int + i);
+      a(i);
+      b(f1);
       return;
-      if ((paramLong >= 200L) && (paramLong <= 700L))
+      if ((paramLong >= 3432L) && (paramLong <= 3865L))
       {
         i = 255;
-        break;
+        f1 = f2;
       }
-      i = j;
-      if (paramLong <= 700L) {
-        break;
+      else
+      {
+        f1 = f2;
+        i = j;
+        if (paramLong > 3865L)
+        {
+          f1 = f2;
+          i = j;
+          if (paramLong < 4032L)
+          {
+            i = (int)(255L * (4032L - paramLong) / 167L);
+            f1 = (167.0F - (float)(3865L - paramLong) * 0.5F) / 167.0F;
+          }
+        }
       }
-      i = j;
-      if (paramLong >= 750L) {
-        break;
-      }
-      i = (int)(255L * (paramLong - 750L) / -50L);
-      break;
-      label164:
-      if ((paramLong >= 200L) && (paramLong <= 650L)) {
-        this.d = 255;
-      } else if ((paramLong > 650L) && (paramLong < 750L)) {
-        this.d = ((int)(255L * (paramLong - 750L) / -100L));
-      }
-    }
-  }
-  
-  public void a(Canvas paramCanvas, Paint paramPaint)
-  {
-    paramPaint.setAlpha(this.d);
-    paramPaint.setShader(this.jdField_a_of_type_AndroidGraphicsLinearGradient);
-    paramCanvas.drawRect(this.jdField_b_of_type_AndroidGraphicsRect, paramPaint);
-    paramPaint.setAlpha(255);
-    paramPaint.setShader(null);
-    super.a(paramCanvas, paramPaint);
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_AndroidGraphicsLinearGradient = null;
-    this.jdField_b_of_type_AndroidGraphicsRect = null;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.e != paramInt)
-    {
-      this.e = paramInt;
-      c();
     }
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_b_of_type_Int = (paramInt1 * 454 / 750);
-    this.c = (paramInt1 * -190 / 750);
-    this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2 / 2);
-    c();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidGraphicsLinearGradient = new LinearGradient(0.0F, 0.0F, 0.0F, this.jdField_b_of_type_AndroidGraphicsRect.bottom, this.e, 0, Shader.TileMode.CLAMP);
+    a(paramInt1 * 548 / 1500, paramInt2 - paramInt1 * 1032 / 1500, paramInt1 * 952 / 1500, paramInt2 - paramInt1 * 472 / 1500);
   }
 }
 

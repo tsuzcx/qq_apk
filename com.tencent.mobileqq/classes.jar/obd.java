@@ -1,8 +1,17 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
-public abstract interface obd<T>
+public class obd
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, boolean paramBoolean, T paramT, Bundle paramBundle);
+  public obd(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.b);
+    PublicAccountJavascriptInterface.setLocationPermissionGrant(this.c, this.d, 1);
+  }
 }
 
 

@@ -1,32 +1,35 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import mqq.app.AppRuntime;
 
 public class omh
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  private View a;
   
-  public void a(JSONObject paramJSONObject)
+  public omh(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo)
   {
-    if (paramJSONObject != null)
+    if (ozs.a() != null)
     {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("adDownloadApiUrl");
-      this.b = paramJSONObject.optString("pkg_name");
-      this.c = paramJSONObject.optString("appid");
-      this.d = paramJSONObject.optString("appname");
-      this.e = paramJSONObject.optString("pkgurl");
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("business_type", 0);
-      paramJSONObject = paramJSONObject.optString("apk_url");
-      if (!TextUtils.isEmpty(paramJSONObject)) {
-        this.e = paramJSONObject;
-      }
+      paramArkAppMessage = ozs.a().getApplication();
+      if (paramArkAppMessage != null) {}
     }
+    else
+    {
+      return;
+    }
+    this.a = new View(paramArkAppMessage);
+    this.a.setVisibility(8);
   }
+  
+  public View a()
+  {
+    return this.a;
+  }
+  
+  public void a() {}
+  
+  public void a(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo) {}
 }
 
 

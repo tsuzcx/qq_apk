@@ -1,23 +1,28 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayfv
-  implements PopupWindow.OnDismissListener
+  implements View.OnLayoutChangeListener
 {
-  public ayfv(OCRResultActivity paramOCRResultActivity) {}
+  public ayfv(StuffContainerView paramStuffContainerView) {}
   
-  public void onDismiss()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.a.b = null;
-    if ((OCRResultActivity.b(this.a) != null) && (OCRResultActivity.b(this.a).size() > 1))
+    long l1 = System.currentTimeMillis();
+    long l2 = StuffContainerView.a(this.a);
+    if ((StuffContainerView.a(this.a) > 0L) && (l1 - l2 < 500L)) {}
+    do
     {
-      Drawable localDrawable = this.a.getResources().getDrawable(2130845625);
-      this.a.a.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
-    }
+      return;
+      StuffContainerView.a(this.a, l1);
+      if (QLog.isColorLevel()) {
+        QLog.d("StuffContainerView", 2, "VideoInfoListenerImpl onLayoutChange");
+      }
+    } while (this.a.a == null);
+    this.a.a.l();
   }
 }
 

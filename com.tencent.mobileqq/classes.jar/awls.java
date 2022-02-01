@@ -1,15 +1,6 @@
-import java.lang.ref.WeakReference;
-
-public abstract class awls<T>
+class awls
 {
-  public WeakReference<T> a;
-  
-  public awls(T paramT)
-  {
-    this.a = new WeakReference(paramT);
-  }
-  
-  public abstract void a(T paramT, boolean paramBoolean, awlp paramawlp);
+  private static final awlq a = new awlq(null);
 }
 
 

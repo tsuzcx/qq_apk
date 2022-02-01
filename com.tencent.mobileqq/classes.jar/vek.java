@@ -1,9 +1,16 @@
+import feedcloud.FeedCloudRead.StGetFeedListRsp;
+
 class vek
-  implements zxa
+  implements aadm<Object>
 {
-  vek(vei paramvei) {}
+  vek(vee paramvee) {}
   
-  public void onReceive(boolean paramBoolean, long paramLong, String paramString, Object paramObject) {}
+  public void a(Object... paramVarArgs)
+  {
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
+      vee.a(this.a).a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetFeedListRsp)paramVarArgs[3], false);
+    }
+  }
 }
 
 

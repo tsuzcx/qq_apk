@@ -1,47 +1,36 @@
 import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 class wsb
-  extends SimpleObserver<List<xfb>>
+  implements woy<xcv, xep>
 {
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  wsb(wrz paramwrz) {}
   
-  wsb(wrx paramwrx) {}
-  
-  public void a(List<xfb> paramList)
+  public void a(@NonNull xcv paramxcv, @Nullable xep paramxep, @NonNull ErrorMessage paramErrorMessage)
   {
-    yqp.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onNext()");
-    super.onNext(paramList);
-    int i = 0;
-    while (i < paramList.size())
+    yuk.b("AddressDataProvider", "requestAddress Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramxep != null))
     {
-      xfb localxfb = (xfb)paramList.get(i);
-      if (!localxfb.a) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localxfb.b);
-      }
-      i += 1;
+      yuk.a("AddressDataProvider", "requestAddress onCmdRespond success : %s .", paramxep.toString());
+      this.a.jdField_a_of_type_JavaLangObject = new wsc(paramxep.a, paramxep.c, paramxep.d, paramxep.e, paramxep.f, paramxcv.d, paramxcv.e);
+      this.a.a("country", paramxep.a);
+      this.a.a("province", paramxep.c);
+      this.a.a("city", paramxep.d);
+      this.a.a("district", paramxep.e);
+      this.a.a("street", paramxep.f);
+      this.a.a("longitude", paramxcv.d);
+      this.a.a("latitude", paramxcv.e);
+      this.a.a("time", System.currentTimeMillis());
+      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
     }
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-  }
-  
-  public void onComplete()
-  {
-    yqp.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onComplete()");
-    super.onComplete();
-    this.jdField_a_of_type_Wrx.a(this.jdField_a_of_type_JavaUtilArrayList);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    yqp.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onError()");
-    super.onError(paramError);
-    this.jdField_a_of_type_Wrx.a(this.jdField_a_of_type_JavaUtilArrayList);
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+      yuk.d("AddressDataProvider", "requestAddress onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramxcv });
+      this.a.a(false, null);
+    }
   }
 }
 

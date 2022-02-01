@@ -1,24 +1,26 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajgu
-  implements View.OnLongClickListener
+public class ajgu
+  implements View.OnClickListener
 {
-  private WeakReference<ajgp> a;
+  public ajgu(TroopView paramTroopView) {}
   
-  public ajgu(ajgp paramajgp)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramajgp);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    ajgp localajgp = (ajgp)this.a.get();
-    if (localajgp != null) {
-      return localajgp.onLongClick(paramView);
-    }
-    return false;
+    Intent localIntent = new Intent(this.a.jdField_a_of_type_Ajdw.a(), SearchContactsActivity.class);
+    localIntent.putExtra("from_key", 1);
+    localIntent.putExtra("fromType", 13);
+    this.a.jdField_a_of_type_Ajdw.a().startActivity(localIntent);
+    this.a.jdField_a_of_type_Ajdw.a().overridePendingTransition(0, 0);
+    bcni.a("add_page", "search", "active_frame", 2, 0, new String[] { "" });
+    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BEC", "0X8004BEC", 2, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

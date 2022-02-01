@@ -28,7 +28,7 @@ public class MqqConnRateReport
   public static final int ERR_MSF_SEND_VIDEOACK_REASON1 = 100;
   public static final int ERR_NONE = 0;
   public static final String TAG = "MqqConnRateReport";
-  static MqqConnRateReport g_Instance;
+  static MqqConnRateReport g_Instance = null;
   static String msfReportLogPath = "";
   
   public static MqqConnRateReport getInstance()

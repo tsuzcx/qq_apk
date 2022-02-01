@@ -1,14 +1,20 @@
-import android.widget.Button;
-import android.widget.TextView;
+import android.view.View;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
 
-class afjk
-  extends amcl
+public class afjk
+  implements blpp
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public afjk(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  private afjk(afjj paramafjj) {}
+  public void a(View paramView)
+  {
+    RecommendFriendActivity.a(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    RecommendFriendActivity.a(this.a, true);
+  }
 }
 
 

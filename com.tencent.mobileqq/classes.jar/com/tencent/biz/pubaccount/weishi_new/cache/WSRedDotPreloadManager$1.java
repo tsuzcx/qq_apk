@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
 import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
-import uek;
-import upe;
+import uem;
+import uqf;
 
 public class WSRedDotPreloadManager$1
   implements Runnable
 {
-  public WSRedDotPreloadManager$1(uek paramuek, WSRedDotPushMsg paramWSRedDotPushMsg, long paramLong, int paramInt) {}
+  public WSRedDotPreloadManager$1(uem paramuem, WSRedDotPushMsg paramWSRedDotPushMsg, long paramLong, int paramInt) {}
   
   public void run()
   {
-    uek.a(this.this$0, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int - 1);
-    upe.b("WSRedDotPreloadManager", "checkSendRequest postDelayed finish: 30s");
+    uem.a(this.this$0, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int - 1);
+    uqf.b("WSRedDotPreloadManager", "checkSendRequest postDelayed finish: 30s");
   }
 }
 

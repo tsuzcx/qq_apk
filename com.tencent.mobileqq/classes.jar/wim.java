@@ -1,6 +1,12 @@
 public abstract interface wim
 {
-  public abstract void a(String paramString, int paramInt);
+  public abstract void a(wgg paramwgg);
+  
+  public abstract void a(wgg paramwgg, int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void e();
 }
 
 

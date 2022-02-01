@@ -1,17 +1,35 @@
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.UiSettings;
+
 public class njq
+  implements Animation.AnimationListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
+  public njq(PoiMapActivity paramPoiMapActivity) {}
   
-  public njq(njo paramnjo, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (PoiMapActivity.h(this.a) != null) {
+      PoiMapActivity.i(this.a).getMap().getUiSettings().setLogoPositionWithMargin(0, 0, 0, 0, 0);
+    }
+    paramAnimation = (FrameLayout.LayoutParams)this.a.b.getLayoutParams();
+    paramAnimation.bottomMargin = (-this.a.p);
+    this.a.b.setLayoutParams(paramAnimation);
+    if ((this.a.e != null) && (this.a.e.getVisibility() != 0)) {
+      this.a.e.setVisibility(0);
+    }
+    PoiMapActivity.e(this.a).clearAnimation();
+    this.a.a = false;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

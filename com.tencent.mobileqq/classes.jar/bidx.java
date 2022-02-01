@@ -1,54 +1,147 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.widget.ksong.KSongProsBar;
-import com.tencent.mobileqq.widget.ksong.KSongView;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
+import com.tencent.open.base.BspatchUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QwAdapter;
+import com.tencent.vas.update.callback.ICommonManager;
+import java.io.File;
 
 public class bidx
-  extends AsyncTask<String, Void, bidu>
+  implements ICommonManager
 {
-  public bidx(KSongView paramKSongView) {}
-  
-  protected bidu a(String... paramVarArgs)
+  public boolean copyFile(String paramString1, String paramString2)
   {
-    String str = paramVarArgs[0];
-    paramVarArgs = paramVarArgs[1];
+    boolean bool = false;
+    paramString1 = new File(paramString1);
+    if (paramString1.exists()) {}
+    try
+    {
+      bool = bhmi.a(paramString1, bhmi.a(paramString2));
+      return bool;
+    }
+    catch (Throwable paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return false;
+  }
+  
+  public boolean filePatch(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VasUpdate_CommonManagerImpl", 2, "bsPatch: srcFile = " + paramString1 + " patchFile = " + paramString2);
+    }
+    return BspatchUtil.a(paramString1, paramString2, paramString1);
+  }
+  
+  public String getAppVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VasUpdate_CommonManagerImpl", 2, "getAppVersion = 8.4.5");
+    }
+    return "8.4.5";
+  }
+  
+  public Context getApplicationContext()
+  {
+    return BaseApplicationImpl.getContext();
+  }
+  
+  public String getFileMd5(String paramString)
+  {
+    return bjtz.a(paramString);
+  }
+  
+  public int getNetType()
+  {
+    int j = 0;
+    int i = j;
+    switch (nnr.a())
+    {
+    default: 
+      i = j;
+    }
     for (;;)
     {
-      try
-      {
-        KSongView.a(this.a, KSongView.a(this.a, paramVarArgs));
-        if ((KSongView.a(this.a) != null) && (KSongView.a(this.a, str)))
-        {
-          paramVarArgs = KSongView.a(this.a);
-          return paramVarArgs;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("VasUpdate_CommonManagerImpl", 2, "getNetType netType = " + i + " local = " + nnr.a());
       }
-      finally {}
-      paramVarArgs = null;
+      return i;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 5;
+      continue;
+      i = 4;
+      continue;
+      i = 3;
     }
   }
   
-  protected void a(bidu parambidu)
+  public String getReportVersion()
   {
-    boolean bool = false;
-    if (parambidu != null)
-    {
-      if (KSongView.a(this.a) != null) {
-        KSongView.a(this.a).a(parambidu);
-      }
-      KSongView.a(this.a).notifyDataSetChanged();
-      KSongView.a(this.a, 0);
+    return "8.4.5.4745";
+  }
+  
+  public String getSeqConfigPath()
+  {
+    return VasQuickUpdateEngine.ENGINE_CONFIG_PATH;
+  }
+  
+  public long getServiceTime()
+  {
+    return NetConnInfoCenter.getServerTime();
+  }
+  
+  public long getTimerDelay()
+  {
+    return 500L;
+  }
+  
+  public String unCompressFile(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VasUpdate_CommonManagerImpl", 2, "uncompressZip: type = " + paramInt + " srcFile = " + paramString);
     }
-    QLog.i("KSongView", 2, "InitTask config = " + parambidu);
-    if (KSongView.a(this.a) != null)
+    if (paramInt != 1) {}
+    for (;;)
     {
-      bidw localbidw = KSongView.a(this.a);
-      if (parambidu != null) {
-        bool = true;
+      return null;
+      Object localObject = new File(paramString);
+      if (!((File)localObject).exists())
+      {
+        QLog.e("VasUpdate_CommonManagerImpl", 1, "uncompressZip file un exist");
+        return null;
       }
-      localbidw.a(bool);
+      paramString = ((File)localObject).getParent() + File.separator;
+      try
+      {
+        localObject = VasQuickUpdateEngine.unZipFile((File)localObject, paramString);
+        if (localObject != null)
+        {
+          paramString = paramString + (String)localObject;
+          if (QLog.isColorLevel()) {
+            QLog.d("VasUpdate_CommonManagerImpl", 2, "uncompressZip result = " + paramString);
+          }
+        }
+        else
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e("VasUpdate_CommonManagerImpl", 2, "uncompressZip fail");
+          return null;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("VasUpdate_CommonManagerImpl", 1, "uncompressZip error : ", paramString);
+        return null;
+      }
     }
+    return paramString;
   }
 }
 

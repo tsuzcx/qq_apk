@@ -1,24 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
+import com.tencent.gdtad.api.banner.GdtBannerAd;
 
-class acpi
-  extends BroadcastReceiver
+public class acpi
+  implements View.OnTouchListener
 {
-  private acpi(acpg paramacpg) {}
+  public acpi(GdtBannerAd paramGdtBannerAd, acpm paramacpm) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramIntent.getIntExtra("android.media.EXTRA_VOLUME_STREAM_TYPE", -1);
-    if (i == 3) {}
-    for (boolean bool = true;; bool = false)
+    acpm localacpm = this.jdField_a_of_type_Acpm;
+    acpm.a.onTouch(paramView, paramMotionEvent);
+    if (paramMotionEvent.getAction() == 1)
     {
-      acqy.a("VolumeBroadcastReceiver", "VolumeBroadcastReceiver action type = " + paramIntent.getAction() + ", isStreamMusic = " + bool + ", streamType = " + i);
-      if (("android.media.VOLUME_CHANGED_ACTION".equals(paramIntent.getAction())) && (bool) && (acpg.a(this.a) != null)) {
-        acpg.a(this.a).a(new Object[0]);
-      }
-      return;
+      GdtBannerAd.access$002(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd, paramMotionEvent.getX());
+      GdtBannerAd.access$102(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd, paramMotionEvent.getY());
     }
+    return false;
   }
 }
 

@@ -1,12 +1,12 @@
 package common.config.service;
 
 import android.content.Intent;
-import bkzb;
+import bmae;
 
 public class QzoneConfig$3$1
   implements Runnable
 {
-  public QzoneConfig$3$1(bkzb parambkzb, Intent paramIntent) {}
+  public QzoneConfig$3$1(bmae parambmae, Intent paramIntent) {}
   
   public void run()
   {

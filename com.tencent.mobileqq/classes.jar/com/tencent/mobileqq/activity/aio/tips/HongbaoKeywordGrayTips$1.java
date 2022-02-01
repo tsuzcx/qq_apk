@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import ailr;
+import aivl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -11,29 +11,29 @@ import java.util.List;
 public class HongbaoKeywordGrayTips$1
   implements Runnable
 {
-  public HongbaoKeywordGrayTips$1(ailr paramailr) {}
+  public HongbaoKeywordGrayTips$1(aivl paramaivl) {}
   
   public void run()
   {
-    Object localObject = ailr.a(this.this$0).a().a(ailr.a(this.this$0).jdField_a_of_type_JavaLangString, ailr.a(this.this$0).jdField_a_of_type_Int);
+    Object localObject = aivl.a(this.this$0).a().a(aivl.a(this.this$0).jdField_a_of_type_JavaLangString, aivl.a(this.this$0).jdField_a_of_type_Int);
     int i = ((List)localObject).size();
     if (i > 0)
     {
       localObject = (ChatMessage)((List)localObject).get(i - 1);
-      if (ailr.a(this.this$0).jdField_a_of_type_Int != 0) {
+      if (aivl.a(this.this$0).jdField_a_of_type_Int != 0) {
         break label130;
       }
-      ailr.a(this.this$0, ((ChatMessage)localObject).time);
+      aivl.a(this.this$0, ((ChatMessage)localObject).time);
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("HongbaoKeywordGrayTips", 2, "size : " + i + ", mLastMsgIdOrTime:" + ailr.a(this.this$0));
+        QLog.d("HongbaoKeywordGrayTips", 2, "size : " + i + ", mLastMsgIdOrTime:" + aivl.a(this.this$0));
       }
       return;
       label130:
-      if ((ailr.a(this.this$0).jdField_a_of_type_Int == 3000) || (ailr.a(this.this$0).jdField_a_of_type_Int == 1)) {
-        ailr.a(this.this$0, ((ChatMessage)localObject).shmsgseq);
+      if ((aivl.a(this.this$0).jdField_a_of_type_Int == 3000) || (aivl.a(this.this$0).jdField_a_of_type_Int == 1)) {
+        aivl.a(this.this$0, ((ChatMessage)localObject).shmsgseq);
       }
     }
   }

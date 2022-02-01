@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.util;
 
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import txk;
+import txm;
 
 public class OpenWithQQBrowser$1
   implements Runnable
 {
-  public OpenWithQQBrowser$1(txk paramtxk, String paramString) {}
+  public OpenWithQQBrowser$1(txm paramtxm, String paramString) {}
   
   public void run()
   {
-    txk.a(this.this$0, MsfSdkUtils.insertMtype("Web", this.a), 0);
+    txm.a(this.this$0, MsfSdkUtils.insertMtype("Web", this.a), 0);
   }
 }
 

@@ -1,98 +1,55 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar.1;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.1.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class aimo
-  implements aimh
+  extends MqqHandler
 {
-  private aimj jdField_a_of_type_Aimj;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aimp(this);
-  public Toast a;
-  public beqr a;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean;
-  private View.OnClickListener b = new aimq(this);
+  aimo(aimn paramaimn) {}
   
-  public aimo(QQAppInterface paramQQAppInterface, aimj paramaimj, BaseActivity paramBaseActivity, SessionInfo paramSessionInfo, beqr parambeqr, Toast paramToast)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aimj = paramaimj;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Beqr = parambeqr;
-    this.jdField_a_of_type_AndroidWidgetToast = paramToast;
-  }
-  
-  public int a()
-  {
-    return 20;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131718872);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString) == 3) {
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131718873);
-    }
-    View localView = ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramVarArgs, this.b, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "AIOchat", "exp_setmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString) == 3) {}
-    for (paramVarArgs = "1";; paramVarArgs = "0")
+    switch (paramMessage.what)
     {
-      bcst.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "exp_topbar", 0, 0, str, paramVarArgs, "", "");
-      return localView;
     }
-  }
-  
-  public void a()
-  {
-    if ((a()) || (this.jdField_a_of_type_Boolean)) {
-      awhv.a().c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    if (paramInt != 1000) {}
     do
     {
       do
       {
         return;
-      } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1);
-      if ((this.jdField_a_of_type_Beqr == null) || (!this.jdField_a_of_type_Beqr.a())) {
-        break;
+      } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof List)));
+      this.a.b((List)paramMessage.obj);
+      if ((aimn.a(this.a) == null) || (aimn.a(this.a).size() == 0))
+      {
+        aimn.a(this.a, System.currentTimeMillis());
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiMsg_TAG", 2, "MultiForwardActivity.doOnCreate, start requestReceiveMultiMsg");
+        }
+        this.a.E();
+        this.a.b = new MultiForwardChatPie.1.1(this);
+        aimn.a(this.a).postDelayed(this.a.b, 60000L);
+        ThreadRegulator.a().b(1);
+        axpf.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.g, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.e, 1035, this.a.a(aimn.a(this.a)));
+        return;
       }
+      paramMessage = ChatActivityUtils.a(aimn.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramMessage = ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramMessage, -1L);
+      aimn.a(this.a).setVisibility(8);
+      aimn.a(this.a).setVisibility(0);
+      aimn.a(this.a).setVisibility(0);
+      aimn.a(this.a).a(aimn.a(this.a), paramMessage);
     } while (!QLog.isColorLevel());
-    QLog.d("TroopAssistTipsBar", 2, "navigateBar is show, return ");
-    return;
-    ThreadManager.post(new TroopAssistTipsBar.1(this), 8, null, true);
-  }
-  
-  public boolean a()
-  {
-    return 3 == this.jdField_a_of_type_Aimj.a();
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 3;
+    QLog.d("MultiMsg_TAG", 2, "MultiForwardActivity.doOnCreate, MultiMsg has been downloaded");
   }
 }
 

@@ -1,52 +1,34 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.weiyun.transmission.utils.handler.ReleaseLooperHandler;
+import NS_USER_ACTION_REPORT.UserActionReport;
+import NS_USER_ACTION_REPORT.UserActionReportReq;
+import NS_USER_ACTION_REPORT.UserCommReport;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
 public class bmzy
-  implements Handler.Callback
+  extends QzoneExternalRequest
 {
-  private bmzt jdField_a_of_type_Bmzt;
-  private final bnaa jdField_a_of_type_Bnaa;
-  private final ReleaseLooperHandler jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler;
+  private final JceStruct a;
   
-  public bmzy(bnaa parambnaa, bmzt parambmzt, ReleaseLooperHandler paramReleaseLooperHandler)
+  public bmzy(int paramInt, UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
   {
-    this.jdField_a_of_type_Bnaa = parambnaa;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler = paramReleaseLooperHandler;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.addCallback(this);
-    this.jdField_a_of_type_Bmzt = parambmzt;
+    this.a = new UserActionReportReq(paramInt, paramUserCommReport, paramArrayList);
+    this.needCompress = false;
   }
   
-  private void b(bmzc parambmzc, int paramInt)
+  public String getCmdString()
   {
-    if (parambmzc == null) {}
-    long l;
-    String str;
-    do
-    {
-      return;
-      l = parambmzc.a();
-      str = parambmzc.a().a;
-    } while (parambmzc.d());
-    this.jdField_a_of_type_Bmzt.a(parambmzc.a().a(), cooperation.weiyun.sdk.download.DownloadType.values()[paramInt], new bmzz(this, str, l, parambmzc, paramInt));
+    return "MobileReport.UserActionReport";
   }
   
-  public void a(bmzc parambmzc, int paramInt)
+  public JceStruct getReq()
   {
-    if (parambmzc == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.sendMessage(Message.obtain(null, 21, paramInt, 0, parambmzc));
+    return this.a;
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public String uniKey()
   {
-    if (paramMessage.what == 21)
-    {
-      b((bmzc)paramMessage.obj, paramMessage.arg1);
-      return true;
-    }
-    return false;
+    return "UserActionReport";
   }
 }
 

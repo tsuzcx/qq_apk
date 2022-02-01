@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import anni;
+import anzj;
 import com.tencent.mobileqq.gamecenter.view.QQGameStatusView;
 import com.tencent.mobileqq.widget.QQToast;
 import cooperation.wadl.ipc.WadlParams;
@@ -32,7 +32,7 @@ class QQGamePubAccountFragment$14
     if (this.a.b == 7)
     {
       if (this.this$0.getActivity() != null) {
-        QQToast.a(this.this$0.getActivity(), anni.a(2131709086), 0).a();
+        QQToast.a(this.this$0.getActivity(), anzj.a(2131709195), 0).a();
       }
       QQGamePubAccountFragment.a(this.this$0).a(this.a.a.a, 2);
       return;

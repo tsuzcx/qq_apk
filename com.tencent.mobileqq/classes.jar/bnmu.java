@@ -1,12 +1,14 @@
-public abstract interface bnmu
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+
+class bnmu
+  implements bjig
 {
-  public abstract void a();
+  bnmu(bnmr parambnmr) {}
   
-  public abstract void a(bnpf parambnpf);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void onWXShareResp(BaseResp paramBaseResp)
+  {
+    bnmr.a(this.a, paramBaseResp);
+  }
 }
 
 

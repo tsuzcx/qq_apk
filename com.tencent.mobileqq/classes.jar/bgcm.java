@@ -1,26 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class bgcm
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public bgcm(SnapshotService paramSnapshotService) {}
+  public bgcm(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = paramIntent.getLongExtra("id", -1L);
-    int i = paramIntent.getIntExtra("action", -1);
-    if ((l == 0L) && (i == 1) && (SnapshotService.a(this.a) > 0L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(SnapshotService.a(), 2, "receive broadcast: destroy snapshot service");
-      }
-      SnapshotService.a(false);
-      this.a.finish();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

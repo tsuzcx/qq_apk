@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.util;
 
-import apwe;
+import aqju;
 import com.tencent.biz.pubaccount.readinjoy.config.beans.AchillesParams;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import twl;
+import twn;
 
 public final class Achilles$1
   implements Runnable
@@ -51,7 +51,7 @@ public final class Achilles$1
         {
           localObject2 = (AchillesParams)((Iterator)localObject1).next();
           localObject3 = Achilles.a((AchillesParams)localObject2);
-          apwe.a((RockDownloadInfo)localObject3, new twl(this, (RockDownloadInfo)localObject3, (AchillesParams)localObject2));
+          aqju.a((RockDownloadInfo)localObject3, new twn(this, (RockDownloadInfo)localObject3, (AchillesParams)localObject2));
         }
       }
     }

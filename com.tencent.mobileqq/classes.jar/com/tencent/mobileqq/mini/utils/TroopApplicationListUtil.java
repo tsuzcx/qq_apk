@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import bfup;
-import bhrs;
-import bhrt;
+import bguq;
+import bisn;
+import biso;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -24,8 +24,8 @@ import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
-import nhe;
-import nmd;
+import niz;
+import nny;
 
 public class TroopApplicationListUtil
 {
@@ -44,7 +44,7 @@ public class TroopApplicationListUtil
   
   public static void addMiniAppToTroopApplicationList(BaseJsPluginEngine paramBaseJsPluginEngine, String paramString1, String paramString2, String paramString3, TroopApplicationListUtil.JsPluginParam paramJsPluginParam)
   {
-    if (!nmd.a(BaseApplicationImpl.getContext()))
+    if (!nny.a(BaseApplicationImpl.getContext()))
     {
       showToast(1000);
       paramBaseJsPluginEngine.callbackJsEventFail(paramJsPluginParam.jsRuntime, paramJsPluginParam.event, null, "network is not available.", paramJsPluginParam.callbackId);
@@ -53,12 +53,12 @@ public class TroopApplicationListUtil
     }
     paramString3 = buildRequest(paramString1, paramString2, paramString3, 1001);
     paramBaseJsPluginEngine = new TroopApplicationListUtil.4(ThreadManagerV2.getSubThreadLooper(), paramBaseJsPluginEngine, paramJsPluginParam, paramString1, paramString2);
-    bhrs.a().a(paramString3, paramBaseJsPluginEngine, getCookie(paramString3.jdField_a_of_type_JavaLangString));
+    bisn.a().a(paramString3, paramBaseJsPluginEngine, getCookie(paramString3.jdField_a_of_type_JavaLangString));
   }
   
   public static void addMiniAppToTroopApplicationList(String paramString1, String paramString2, String paramString3)
   {
-    if (!nmd.a(BaseApplicationImpl.getContext()))
+    if (!nny.a(BaseApplicationImpl.getContext()))
     {
       showToast(1000);
       QLog.e("TroopApplicationListUtil", 1, "addMiniAppToTroopApplicationList, network is not available");
@@ -66,12 +66,12 @@ public class TroopApplicationListUtil
     }
     paramString3 = buildRequest(paramString1, paramString2, paramString3, 1001);
     paramString1 = new TroopApplicationListUtil.3(ThreadManagerV2.getSubThreadLooper(), paramString1, paramString2);
-    bhrs.a().a(paramString3, paramString1, getCookie(paramString3.jdField_a_of_type_JavaLangString));
+    bisn.a().a(paramString3, paramString1, getCookie(paramString3.jdField_a_of_type_JavaLangString));
   }
   
   public static void addMiniAppToTroopApplicationList(String paramString1, String paramString2, String paramString3, AsyncResult paramAsyncResult)
   {
-    if (!nmd.a(BaseApplicationImpl.getContext()))
+    if (!nny.a(BaseApplicationImpl.getContext()))
     {
       showToast(1000);
       paramAsyncResult.onReceiveResult(false, null);
@@ -80,63 +80,63 @@ public class TroopApplicationListUtil
     }
     paramString3 = buildRequest(paramString1, paramString2, null, 1001);
     paramString1 = new TroopApplicationListUtil.5(ThreadManagerV2.getSubThreadLooper(), paramAsyncResult, paramString1, paramString2);
-    bhrs.a().a(paramString3, paramString1, getCookie(paramString3.jdField_a_of_type_JavaLangString));
+    bisn.a().a(paramString3, paramString1, getCookie(paramString3.jdField_a_of_type_JavaLangString));
   }
   
-  private static bhrt buildRequest(String paramString1, String paramString2, String paramString3, int paramInt)
+  private static biso buildRequest(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    bhrt localbhrt = new bhrt();
+    biso localbiso = new biso();
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramInt == 1000)
     {
       localStringBuilder.append("gc=").append(paramString1).append("&appid=").append(paramString2);
-      localbhrt.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/miniapp/proxy/wnscgi/{api}".replace("{api}", "app.qun.qq.com/cgi-bin/api/inner_checkunifiedapp");
+      localbiso.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/miniapp/proxy/wnscgi/{api}".replace("{api}", "app.qun.qq.com/cgi-bin/api/inner_checkunifiedapp");
     }
     for (;;)
     {
-      localStringBuilder.append("&sourcekey=qzone").append("&qqver=").append("8.4.1").append(".").append("4680").append("&platform=2");
-      localbhrt.c = "{}";
-      localbhrt.jdField_a_of_type_Int = 60000;
-      localbhrt.e = "application/x-www-form-urlencoded";
+      localStringBuilder.append("&sourcekey=qzone").append("&qqver=").append("8.4.5").append(".").append("4745").append("&platform=2");
+      localbiso.c = "{}";
+      localbiso.jdField_a_of_type_Int = 60000;
+      localbiso.e = "application/x-www-form-urlencoded";
       paramString1 = paramString3;
       if (TextUtils.isEmpty(paramString3)) {
         paramString1 = "POST";
       }
-      localbhrt.b = paramString1;
-      localbhrt.jdField_a_of_type_Boolean = false;
-      localbhrt.d = localStringBuilder.toString();
+      localbiso.b = paramString1;
+      localbiso.jdField_a_of_type_Boolean = false;
+      localbiso.d = localStringBuilder.toString();
       try
       {
-        paramInt = getBkn(localbhrt.jdField_a_of_type_JavaLangString);
+        paramInt = getBkn(localbiso.jdField_a_of_type_JavaLangString);
         if (paramInt != -1)
         {
-          if (localbhrt.jdField_a_of_type_JavaLangString.contains("?")) {
-            localbhrt.jdField_a_of_type_JavaLangString = (localbhrt.jdField_a_of_type_JavaLangString + "&bkn=" + paramInt);
+          if (localbiso.jdField_a_of_type_JavaLangString.contains("?")) {
+            localbiso.jdField_a_of_type_JavaLangString = (localbiso.jdField_a_of_type_JavaLangString + "&bkn=" + paramInt);
           }
         }
         else
         {
-          return localbhrt;
+          return localbiso;
           localStringBuilder.append("gc=").append(paramString1).append("&append_appid=").append(paramString2).append("&add_type=1").append("&append_source=1");
-          localbhrt.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/miniapp/proxy/wnscgi/{api}".replace("{api}", "app.qun.qq.com/cgi-bin/api/inner_setunifiedapp");
+          localbiso.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/miniapp/proxy/wnscgi/{api}".replace("{api}", "app.qun.qq.com/cgi-bin/api/inner_setunifiedapp");
           continue;
         }
-        localbhrt.jdField_a_of_type_JavaLangString = (localbhrt.jdField_a_of_type_JavaLangString + "?bkn=" + paramInt);
-        return localbhrt;
+        localbiso.jdField_a_of_type_JavaLangString = (localbiso.jdField_a_of_type_JavaLangString + "?bkn=" + paramInt);
+        return localbiso;
       }
       catch (Throwable paramString1)
       {
         QLog.e("TroopApplicationListUtil", 1, "get bkn fail.", paramString1);
       }
     }
-    return localbhrt;
+    return localbiso;
   }
   
   private static int getBkn(String paramString)
   {
     TicketManager localTicketManager = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
     String str1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    String str2 = localTicketManager.getPskey(str1, nhe.a().d(SwiftBrowserCookieMonster.b(paramString)));
+    String str2 = localTicketManager.getPskey(str1, niz.a().d(SwiftBrowserCookieMonster.b(paramString)));
     if (!TextUtils.isEmpty(str2)) {}
     for (int i = getGTK(str2);; i = -1)
     {
@@ -200,19 +200,19 @@ public class TroopApplicationListUtil
   {
     paramString1 = buildRequest(paramString1, paramString2, null, 1000);
     paramBaseJsPluginEngine = new TroopApplicationListUtil.1(ThreadManagerV2.getSubThreadLooper(), paramBaseJsPluginEngine, paramJsPluginParam);
-    bhrs.a().a(paramString1, paramBaseJsPluginEngine, getCookie(paramString1.jdField_a_of_type_JavaLangString));
+    bisn.a().a(paramString1, paramBaseJsPluginEngine, getCookie(paramString1.jdField_a_of_type_JavaLangString));
   }
   
   public static void getGroupAppStatus(String paramString1, String paramString2, AsyncResult paramAsyncResult)
   {
     paramString1 = buildRequest(paramString1, paramString2, null, 1000);
     paramString2 = new TroopApplicationListUtil.2(ThreadManagerV2.getSubThreadLooper(), paramAsyncResult);
-    bhrs.a().a(paramString1, paramString2, getCookie(paramString1.jdField_a_of_type_JavaLangString));
+    bisn.a().a(paramString1, paramString2, getCookie(paramString1.jdField_a_of_type_JavaLangString));
   }
   
   public static boolean isAdminOrCreated()
   {
-    boolean bool = bfup.a();
+    boolean bool = bguq.a();
     QLog.d("TroopApplicationListUtil", 1, "isAdminOrCreated: " + bool);
     return bool;
   }
@@ -235,7 +235,7 @@ public class TroopApplicationListUtil
     String str;
     if ((paramInt == 0) || (paramInt == 41012))
     {
-      str = BaseApplicationImpl.getApplication().getResources().getString(2131693666);
+      str = BaseApplicationImpl.getApplication().getResources().getString(2131693678);
       paramInt = 5;
     }
     for (;;)
@@ -244,12 +244,12 @@ public class TroopApplicationListUtil
       return;
       if (paramInt == 41005)
       {
-        str = BaseApplicationImpl.getApplication().getResources().getString(2131693671);
+        str = BaseApplicationImpl.getApplication().getResources().getString(2131693685);
         paramInt = i;
       }
       else
       {
-        str = BaseApplicationImpl.getApplication().getResources().getString(2131693665);
+        str = BaseApplicationImpl.getApplication().getResources().getString(2131693677);
         paramInt = i;
       }
     }

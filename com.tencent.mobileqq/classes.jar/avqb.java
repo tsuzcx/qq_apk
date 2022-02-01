@@ -1,18 +1,19 @@
 import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class avqb
-  implements View.OnClickListener
+class avqb
+  implements DialogInterface.OnDismissListener
 {
-  public avqb(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
+  avqb(avpx paramavpx) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.a)
+    {
+      this.a.a = false;
+      avpx.a(this.a).finish();
+    }
   }
 }
 

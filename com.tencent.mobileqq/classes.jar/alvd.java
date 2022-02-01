@@ -1,41 +1,28 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListRsp;
-import NS_COMM.COMM.StCommonExt;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21.1.1;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
 
 public class alvd
-  implements zxa<CertifiedAccountRead.StGetFeedListRsp>
+  implements alxk
 {
-  public alvd(ShoppingFragment paramShoppingFragment, aacp paramaacp) {}
+  public alvd(NewFlowCameraActivity.21.1.1 param1) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedListRsp paramStGetFeedListRsp)
+  public void a(int paramInt)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d(ShoppingFragment.a, 2, "loadMore:" + paramBoolean + " " + paramLong + " " + paramString);
-    }
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetFeedListRsp == null))
+    if (paramInt == 0)
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        QQToast.a(ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment), 1, paramString, 0).a();
+      NewFlowCameraActivity.b(this.a.a.a.this$0, true);
+      if (this.a.a.a.this$0.d.getVisibility() == 0)
+      {
+        this.a.a.a.this$0.d.setVisibility(8);
+        this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
       }
       return;
     }
-    this.jdField_a_of_type_Aacp.getLoadInfo().d(paramStGetFeedListRsp.livePageInfo.get());
-    paramString = paramStGetFeedListRsp.hotLive.get();
-    aacp localaacp = this.jdField_a_of_type_Aacp;
-    COMM.StCommonExt localStCommonExt = paramStGetFeedListRsp.extInfo;
-    if (paramStGetFeedListRsp.isFinish.get() == 1) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localaacp.b(paramString, localStCommonExt, paramBoolean);
-      return;
-    }
+    NewFlowCameraActivity.b(this.a.a.a.this$0, false);
+    this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
   }
 }
 

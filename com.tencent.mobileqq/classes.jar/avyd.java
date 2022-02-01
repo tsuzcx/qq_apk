@@ -1,33 +1,65 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class avyd
-  implements DialogInterface.OnClickListener
+class avyd
+  implements INetInfoHandler
 {
-  public avyd(LocationDialogUtil.6 param6) {}
+  avya a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public avyd(avya paramavya1, avya paramavya2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationDialogUtil", 2, new Object[] { "onClick: invoked. showStartShareLocationDialog  ", " which: ", Integer.valueOf(paramInt) });
+    this.a = paramavya2;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onNetMobile2None()
+  {
+    avxz.b("onNetMobile2None");
+    if (this.a != null) {
+      avya.c(this.a);
     }
-    if (BaseActivity.sTopActivity != null) {
-      LocationShareFragment.b(BaseActivity.sTopActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.b);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    avxz.b("onNetMobile2Wifi");
+    if (this.a != null) {
+      avya.c(this.a);
     }
-    try
-    {
-      avwv.a(BaseActivity.sTopActivity.app).a(true);
-      label79:
-      avxq.a(this.a.b, "0X800A769");
-      return;
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    avxz.b("onNetNone2Mobile");
+    if (this.a != null) {
+      avya.c(this.a);
     }
-    catch (Throwable paramDialogInterface)
-    {
-      break label79;
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    avxz.b("onNetNone2Wifi");
+    if (this.a != null) {
+      avya.c(this.a);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    avxz.b("onNetWifi2Mobile");
+    if (this.a != null) {
+      avya.c(this.a);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    avxz.b("onNetWifi2None");
+    if (this.a != null) {
+      avya.c(this.a);
     }
   }
 }

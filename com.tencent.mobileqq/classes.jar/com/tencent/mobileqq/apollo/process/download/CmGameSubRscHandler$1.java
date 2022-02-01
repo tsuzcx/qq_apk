@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.process.download;
 
-import amsk;
+import anee;
 
 public class CmGameSubRscHandler$1
   implements Runnable
 {
-  public CmGameSubRscHandler$1(amsk paramamsk) {}
+  public CmGameSubRscHandler$1(anee paramanee) {}
   
   public void run()
   {

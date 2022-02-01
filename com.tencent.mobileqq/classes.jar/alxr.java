@@ -1,59 +1,40 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.effect.base.P2VGlobalConfig;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
 
 public class alxr
-  implements View.OnClickListener
 {
-  public alxr(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
-  
-  public void onClick(View paramView)
+  public static void a(Context paramContext)
   {
-    Object localObject;
-    if (QQToast.a() == 0)
+    P2VGlobalConfig.P2V_VIDEO_ROOT = paramContext.getFilesDir().getAbsolutePath() + File.separator + "qzone_dynamic_video" + File.separator;
+    P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT = paramContext.getFilesDir().getAbsolutePath() + File.separator + "tencent" + File.separator + "dynamic_video_cache" + File.separator;
+    P2VGlobalConfig.NO_AUDIO_MP4 = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "no_audio.mp4";
+    P2VGlobalConfig.CONCAT_FINAL_M4A = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "concat_final.m4a";
+    P2VGlobalConfig.CONCAT_FINAL_MP3 = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "concat_final.mp3";
+    P2VGlobalConfig.P2V_MATERIAL_ROOT = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "p2v_material" + File.separator;
+    P2VGlobalConfig.P2V_MATERIAL_WATER_MARKER_PNG_NAME = P2VGlobalConfig.P2V_MATERIAL_ROOT + "qzone_p2v_watermark.png";
+    P2VGlobalConfig.P2V_MATERIAL_DUMMY_VIDEO_NAME = P2VGlobalConfig.P2V_MATERIAL_ROOT + "resizeddummy.mp4";
+    try
     {
-      localObject = new aohz(this.a, this.a.app, QQSpecialFriendSettingActivity.a(this.a));
-      ((aohz)localObject).setOnDismissListener(new alxs(this, (aohz)localObject));
-      ((aohz)localObject).show();
-      bcst.b(null, "dc00898", "", "", "0X8009ACB", "0X8009ACB", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSpecialFriendSettingActivity", 2, "finish all setings");
+      paramContext = new File(P2VGlobalConfig.P2V_VIDEO_ROOT);
+      if (!paramContext.exists()) {
+        paramContext.mkdirs();
       }
-      if (bgnt.g(this.a))
+      paramContext = new File(P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT);
+      if (!paramContext.exists()) {
+        paramContext.mkdirs();
+      }
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
       {
-        boolean bool1 = QQSpecialFriendSettingActivity.a(this.a).a();
-        boolean bool2 = QQSpecialFriendSettingActivity.b(this.a).a();
-        localObject = QQSpecialFriendSettingActivity.a(this.a);
-        String str = QQSpecialFriendSettingActivity.a(this.a);
-        int i = QQSpecialFriendSettingActivity.a(this.a);
-        ((FriendListHandler)localObject).a(str, new int[] { 2, 3 }, new boolean[] { bool1, bool2 }, new String[] { String.valueOf(i), null });
-        localObject = this.a.a.obtainMessage(8193);
-        ((Message)localObject).obj = this.a.getString(2131698319);
-        this.a.a.sendMessage((Message)localObject);
-        if ((bool1) && (bool2)) {}
-        for (localObject = "0";; localObject = "1")
-        {
-          bcst.b(null, "CliOper", "", "", "0X80050E2", "0X80050E2", 0, 0, (String)localObject, "", "", "");
-          break;
-        }
+        QLog.d("P2VEffectLoader", 2, "initP2VCacheRootSpace exception", paramContext);
       }
-      localObject = this.a.a.obtainMessage(8195);
-      ((Message)localObject).arg1 = 0;
-      ((Message)localObject).arg2 = 2131691985;
-      this.a.a.sendMessage((Message)localObject);
     }
+    bhmi.c(P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + ".nomedia");
+    bhmi.c(P2VGlobalConfig.P2V_MATERIAL_ROOT + ".nomedia");
   }
 }
 

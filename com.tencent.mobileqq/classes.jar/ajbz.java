@@ -1,63 +1,44 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.util.WeakReference;
 
-public class ajbz
+class ajbz
+  extends anyu
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public long c;
+  ajbz(ajby paramajby) {}
   
-  public ajbz()
+  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public static ajbz a(String paramString)
-  {
-    ajbz localajbz = new ajbz();
-    try
-    {
-      paramString = new JSONObject(paramString);
-      localajbz.jdField_a_of_type_Int = paramString.optInt("version", -1);
-      localajbz.jdField_a_of_type_Long = paramString.optLong("showDate", 0L);
-      localajbz.jdField_b_of_type_Long = paramString.optInt("leftShowNum", 0);
-      localajbz.jdField_b_of_type_Int = paramString.optInt("showCountEveryDay", 0);
-      localajbz.c = paramString.optInt("leftLoginNum", 0);
-      return localajbz;
+    ajby.a(this.a).removeMessages(1);
+    if ((this.a.jdField_a_of_type_Bjbs == null) || (!this.a.jdField_a_of_type_Bjbs.isShowing())) {
+      QLog.e("SeparateForward", 1, new Object[] { "onGetFriendNickBatch timeout, isSuccess:", Boolean.valueOf(paramBoolean) });
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      localajbz.jdField_a_of_type_Int = -1;
-    }
-    return localajbz;
-  }
-  
-  public String a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("version", this.jdField_a_of_type_Int);
-      localJSONObject.put("showDate", this.jdField_a_of_type_Long);
-      localJSONObject.put("leftShowNum", this.jdField_b_of_type_Long);
-      localJSONObject.put("showCountEveryDay", this.jdField_b_of_type_Int);
-      localJSONObject.put("leftLoginNum", this.c);
-      return localJSONObject.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      return;
+      this.a.jdField_a_of_type_Bjbs.dismiss();
+      axpf.a().b.clear();
+      if ((paramBoolean) && (paramObject != null)) {
+        axpf.a().b.putAll((Map)paramObject);
+      }
+      if (axpf.a().b.size() == 0)
       {
-        localJSONException.printStackTrace();
+        BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+        if (localBaseActivity != null) {
+          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131697755, 0).b(localBaseActivity.getTitleBarHeight());
+        }
+      }
+      while (QLog.isDevelopLevel())
+      {
+        QLog.d("MultiMsg_TAG", 4, "onGetFriendNickBatch = " + paramObject);
+        return;
+        this.a.a((Map)paramObject, axpf.a().a);
       }
     }
-  }
-  
-  public String toString()
-  {
-    return "MobileUnityVersionInfo [version=" + this.jdField_a_of_type_Int + ", showDate=" + this.jdField_a_of_type_Long + ", leftShowNum=" + this.jdField_b_of_type_Long + ", leftLoginNum = " + this.c + ", showCountEveryDay=" + this.jdField_b_of_type_Int + "]";
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.out.activity;
 
 import android.graphics.Color;
-import anni;
-import aopa;
-import bgpa;
+import anzj;
+import apcq;
+import bhpc;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import com.tencent.tencentmap.mapsdk.maps.TencentMap;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 class MapActivity$2
-  extends aopa
+  extends apcq
 {
   MapActivity$2(MapActivity paramMapActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, boolean paramBoolean5)
   {
@@ -40,7 +40,7 @@ class MapActivity$2
       }
       return;
     }
-    this.this$0.dialog.setTitle(anni.a(2131705234)).setMessage(anni.a(2131705230)).setPositiveButton(anni.a(2131705232), Color.parseColor("#000000"), new MapActivity.2.2(this)).setNegativeButton(anni.a(2131705231), Color.parseColor("#000000"), new MapActivity.2.1(this));
+    this.this$0.dialog.setTitle(anzj.a(2131705341)).setMessage(anzj.a(2131705337)).setPositiveButton(anzj.a(2131705339), Color.parseColor("#000000"), new MapActivity.2.2(this)).setNegativeButton(anzj.a(2131705338), Color.parseColor("#000000"), new MapActivity.2.1(this));
     this.this$0.dialog.show();
   }
 }

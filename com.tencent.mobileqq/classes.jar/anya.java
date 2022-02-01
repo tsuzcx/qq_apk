@@ -1,7 +1,21 @@
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qphone.base.util.QLog;
+
 public class anya
-  implements anil
+  extends azhk
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  public anya(FrameHelperActivity paramFrameHelperActivity) {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onBatteryChanged updateOnlineStatusItem");
+    }
+    if (FrameHelperActivity.a(this.a) != null) {
+      FrameHelperActivity.a(this.a).a(paramInt);
+    }
+    this.a.a("OnBatteryChangeObserver");
+  }
 }
 
 

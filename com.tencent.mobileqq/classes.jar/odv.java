@@ -1,39 +1,51 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class odv
-  extends anqd
+public class odv
 {
-  odv(odu paramodu) {}
+  private static odv a;
   
-  public void a(List<MessageRecord> paramList)
+  private odv()
   {
-    super.a(paramList);
-    HashSet localHashSet = new HashSet();
-    if (oda.b != null) {
-      localHashSet.addAll(oda.b);
+    a = this;
+  }
+  
+  public static odv a()
+  {
+    if (a == null) {
+      a = new odv();
     }
-    odu localodu = (odu)this.a.mApp.getBusinessHandler(88);
-    paramList = new ArrayList(paramList).iterator();
-    label164:
-    while (paramList.hasNext())
+    return a;
+  }
+  
+  public Drawable a(Resources paramResources, int paramInt)
+  {
+    Object localObject = BaseApplicationImpl.sImageCache.get(String.valueOf(paramInt));
+    if ((localObject != null) && ((localObject instanceof Drawable))) {
+      localObject = (Drawable)localObject;
+    }
+    for (;;)
     {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-      if (("2".equals(localMessageRecord.getExtInfoFromExtStr("inter_num"))) || ((localMessageRecord.istroop == 1008) && (tue.e(this.a.app, localMessageRecord.senderuin)))) {}
-      for (int i = 1;; i = 0)
+      return localObject;
+      localObject = null;
+      try
       {
-        if ((i == 0) && (!localHashSet.contains(localMessageRecord.senderuin))) {
-          break label164;
+        paramResources = paramResources.getDrawable(paramInt);
+        localObject = paramResources;
+        if (paramResources == null) {
+          continue;
         }
-        if (i != 0) {
-          localodu.a(localMessageRecord);
+        BaseApplicationImpl.sImageCache.put(String.valueOf(paramInt), paramResources);
+        return paramResources;
+      }
+      catch (OutOfMemoryError paramResources)
+      {
+        for (;;)
+        {
+          paramResources = (Resources)localObject;
         }
-        localodu.b(localMessageRecord);
-        break;
       }
     }
   }

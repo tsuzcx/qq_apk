@@ -1,12 +1,11 @@
-public class amrj
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
+
+public abstract interface amrj
 {
-  public static String a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return "apollo_router_game.ltgame_redpkg_plankinfo_linkcmd_check_game";
-    }
-    return "ltgame_redpkg_plankinfo.check_game";
-  }
+  public abstract void a(DiscussionInfo paramDiscussionInfo);
+  
+  public abstract void a(TroopInfo paramTroopInfo, int paramInt);
 }
 
 

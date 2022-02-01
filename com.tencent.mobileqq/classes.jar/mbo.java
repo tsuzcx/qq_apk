@@ -1,19 +1,30 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.SeekBar;
-import com.tencent.av.ui.BeautyToolbar;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoLayerUI;
 
 public class mbo
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends Handler
 {
-  public mbo(BeautyToolbar paramBeautyToolbar) {}
+  public mbo(AVActivity paramAVActivity) {}
   
-  public void onGlobalLayout()
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a.mIs1stShow) && (this.a.mSeek != null) && (this.a.mSeek.getWidth() > 0))
+    switch (paramMessage.what)
     {
-      this.a.mIs1stShow = false;
-      this.a.updateTip(this.a.mSeek.getProgress());
+    default: 
+      super.handleMessage(paramMessage);
+      return;
     }
+    long l = muk.a(paramMessage.obj);
+    this.a.a(l, "handleMessage", true);
+    if (this.a.jdField_a_of_type_Mjd != null) {
+      this.a.jdField_a_of_type_Mjd.n();
+    }
+    if (this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI != null) {
+      this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI.k(this.a.jdField_a_of_type_Mjd.a);
+    }
+    this.a.g(-1031L);
   }
 }
 

@@ -1,10 +1,12 @@
-public abstract interface anqi
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class anqi
+  implements View.OnClickListener
 {
-  public abstract void a(anqi paramanqi);
+  anqi(anqh paramanqh) {}
   
-  public abstract void a(boolean paramBoolean, Object paramObject);
-  
-  public abstract void b(int paramInt1, int paramInt2, Object paramObject);
+  public void onClick(View paramView) {}
 }
 
 

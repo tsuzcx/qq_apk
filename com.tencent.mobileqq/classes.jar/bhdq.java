@@ -1,55 +1,37 @@
-import android.os.Bundle;
-import com.tencent.vas.update.callback.listener.IDownloadListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bhdq
-  extends bhhe
+  implements View.OnClickListener
 {
-  bhdq(bhdp parambhdp) {}
+  bhdq(bhdm parambhdm) {}
   
-  public void onDone(bhhf parambhhf)
+  public void onClick(View paramView)
   {
-    int j = 0;
-    if ((bhdp.a(this.a) == null) || (parambhhf == null)) {
-      return;
-    }
-    Object localObject;
-    String str;
-    if ((parambhhf.a() == 3) && (parambhhf.jdField_a_of_type_Int == 0))
+    switch (bhdm.a(this.a))
     {
-      i = 1;
-      localObject = parambhhf.a();
-      if ((localObject != null) && (((Bundle)localObject).getString("from") != null) && (((Bundle)localObject).getString("from").contains("silent_download"))) {
-        bhdp.a(this.a, parambhhf.c, parambhhf.jdField_a_of_type_Long);
-      }
-      localObject = bhdp.a(this.a);
-      str = parambhhf.jdField_a_of_type_JavaLangString;
-      if (i == 0) {
-        break label130;
-      }
     }
-    label130:
-    for (int i = j;; i = 8)
+    for (;;)
     {
-      ((IDownloadListener)localObject).onCompleted(str, i, parambhhf.jdField_a_of_type_Int, parambhhf.jdField_b_of_type_JavaLangString);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      i = 0;
-      break;
+      bjtx.c("NewUpgradeDialog", "onclick right btn  state = STATE_INIT");
+      bhdm.a(this.a);
+      continue;
+      bhdm.b(this.a);
+      bjtx.c("NewUpgradeDialog", "onclick right btn  state = STATE_COMPLETE");
+      continue;
+      bjtx.c("NewUpgradeDialog", "onclick right btn  state = STATE_CANCEL");
+      continue;
+      bhdm.c(this.a);
+      bjtx.c("NewUpgradeDialog", "onclick right btn  state = STATE_PAUSE");
+      continue;
+      this.a.c();
+      bjtx.c("NewUpgradeDialog", "onclick right btn  state = STATE_DOWNLOADING");
+      continue;
+      bjtx.c("NewUpgradeDialog", "onclick right btn  state = STATE_WAIT");
     }
-  }
-  
-  public void onProgress(bhhf parambhhf)
-  {
-    if ((bhdp.a(this.a) != null) && (parambhhf != null)) {
-      bhdp.a(this.a).onProgress(parambhhf.jdField_a_of_type_JavaLangString, parambhhf.jdField_b_of_type_Long, parambhhf.jdField_a_of_type_Long, (int)parambhhf.jdField_a_of_type_Float);
-    }
-  }
-  
-  public boolean onStart(bhhf parambhhf)
-  {
-    if ((bhdp.a(this.a) != null) && (parambhhf != null)) {
-      bhdp.a(this.a).onDownloadStart(parambhhf.jdField_a_of_type_JavaLangString);
-    }
-    return super.onStart(parambhhf);
   }
 }
 

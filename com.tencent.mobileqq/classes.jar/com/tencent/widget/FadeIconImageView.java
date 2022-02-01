@@ -5,12 +5,12 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.StateSet;
 import android.widget.ImageView;
-import bkkn;
+import bllq;
 
 public class FadeIconImageView
   extends ImageView
 {
-  private bkkn a;
+  private bllq a;
   
   public FadeIconImageView(Context paramContext)
   {
@@ -47,14 +47,14 @@ public class FadeIconImageView
     }
   }
   
-  public void setVisibilityHandler(bkkn parambkkn)
+  public void setVisibilityHandler(bllq parambllq)
   {
-    this.a = parambkkn;
+    this.a = parambllq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.FadeIconImageView
  * JD-Core Version:    0.7.0.1
  */

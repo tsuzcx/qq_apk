@@ -1,28 +1,30 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import com.tencent.widget.RoundRectImageView;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ahvu
-  implements Animation.AnimationListener
+public class ahvu
+  extends ahvl
 {
-  ahvu(ahvt paramahvt) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public ahvu(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
   {
-    paramAnimation = new AnimationSet(false);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getWidth() / 2, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getHeight() / 2);
-    paramAnimation.addAnimation(this.a.b);
-    paramAnimation.addAnimation(localScaleAnimation);
-    paramAnimation.setDuration(200L);
-    this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.startAnimation(paramAnimation);
-    paramAnimation.setAnimationListener(this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public aggl a()
+  {
+    return new ahvw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public View a(BaseChatItemLayout paramBaseChatItemLayout)
+  {
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131563029, paramBaseChatItemLayout, false);
+  }
 }
 
 

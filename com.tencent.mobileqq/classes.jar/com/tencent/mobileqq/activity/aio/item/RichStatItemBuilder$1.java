@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahgy;
+import ahqk;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -12,11 +12,11 @@ import com.tencent.qphone.base.util.QLog;
 public class RichStatItemBuilder$1
   implements Runnable
 {
-  public RichStatItemBuilder$1(ahgy paramahgy) {}
+  public RichStatItemBuilder$1(ahqk paramahqk) {}
   
   public void run()
   {
-    if (TextUtils.isEmpty(ahgy.a().feedsId))
+    if (TextUtils.isEmpty(ahqk.a().feedsId))
     {
       ((FriendListHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).b(new String[] { this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.frienduin });
       if (QLog.isColorLevel()) {

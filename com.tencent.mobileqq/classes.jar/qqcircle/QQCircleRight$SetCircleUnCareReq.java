@@ -11,9 +11,10 @@ import feedcloud.FeedCloudCommon.StCommonExt;
 public final class QQCircleRight$SetCircleUnCareReq
   extends MessageMicro<SetCircleUnCareReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34 }, new String[] { "extInfo", "uin", "operType", "strUid" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(1), "" }, SetCircleUnCareReq.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40 }, new String[] { "extInfo", "uin", "operType", "strUid", "rightType" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(1), "", Integer.valueOf(0) }, SetCircleUnCareReq.class);
   public FeedCloudCommon.StCommonExt extInfo = new FeedCloudCommon.StCommonExt();
   public final PBEnumField operType = PBField.initEnum(1);
+  public final PBEnumField rightType = PBField.initEnum(0);
   public final PBStringField strUid = PBField.initString("");
   public final PBUInt32Field uin = PBField.initUInt32(0);
 }

@@ -1,67 +1,28 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
-public class bhqs
-  implements Handler.Callback
+class bhqs
+  implements TextWatcher
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final bhqt jdField_a_of_type_Bhqt;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
+  bhqs(bhqp parambhqp, int paramInt) {}
   
-  public bhqs(bhqt parambhqt)
-  {
-    this.jdField_a_of_type_Bhqt = parambhqt;
-    this.jdField_a_of_type_AndroidOsHandler = new bkgm(Looper.getMainLooper(), this);
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(Bundle paramBundle)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.b = false;
-    do
+    if ((this.jdField_a_of_type_Bhqp.a.getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
     {
-      while (!this.b) {
-        switch (this.jdField_a_of_type_Bhqt.a(paramBundle))
-        {
-        }
-      }
-      return;
-    } while (!this.jdField_a_of_type_Boolean);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    localMessage.setData(paramBundle);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void b()
-  {
-    this.b = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
+      this.jdField_a_of_type_Bhqp.a.setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
+      this.jdField_a_of_type_Bhqp.a.setSelection(this.jdField_a_of_type_Int - 1);
     }
-    if (!this.b) {
-      a(paramMessage.getData());
-    }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhqs
  * JD-Core Version:    0.7.0.1
  */

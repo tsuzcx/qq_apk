@@ -1,28 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-class altb
+public class altb
   implements DialogInterface.OnClickListener
 {
-  altb(alta paramalta) {}
+  public altb(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.d == 36) {
-      if (this.a.a.a == 1) {
-        this.a.a.m();
-      }
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      bcst.b(null, "CliOper", "", "", "0X8004CEE", "0X8004CEE", 0, 0, "", "", "", "");
-      return;
-      this.a.a.a();
-      continue;
-      this.a.a.a();
-    }
+    EditLocalVideoActivity.a(this.a).dismiss();
   }
 }
 

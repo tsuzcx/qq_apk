@@ -1,20 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.TranslateFragment;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-public class ayhb
-  implements ayjd
+class ayhb
+  implements xvr
 {
-  public ayhb(TranslateFragment paramTranslateFragment, ayfk paramayfk) {}
+  ayhb(aygz paramaygz, aygp paramaygp, Object paramObject) {}
   
-  public void a(int paramInt, ayje paramayje)
+  public boolean a(xvo paramxvo, int paramInt1, int paramInt2)
   {
-    if ((paramayje != null) && (!TextUtils.isEmpty(paramayje.b)))
-    {
-      if (!this.jdField_a_of_type_Ayfk.c.equalsIgnoreCase(paramayje.b)) {
-        TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, this.jdField_a_of_type_Ayfk.b, paramayje.b);
-      }
-      ayfi.a("0X800AD31", ayfi.a(paramayje.b));
-    }
+    return this.jdField_a_of_type_Aygp.a(this.jdField_a_of_type_Aygz, 0, paramInt1, this.jdField_a_of_type_Aygz.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
   }
 }
 

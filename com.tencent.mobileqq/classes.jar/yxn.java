@@ -1,16 +1,46 @@
-import android.graphics.PointF;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface yxn
+class yxn
+  implements View.OnClickListener
 {
-  public abstract void a();
+  yxn(yxk paramyxk) {}
   
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
-  
-  public abstract boolean a(yxo paramyxo);
-  
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    String str;
+    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Zgm.jdField_a_of_type_JavaLangString))
+    {
+      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Zgm.jdField_a_of_type_JavaLangString;
+      str = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
+      if ((str.equals("##")) || (TextUtils.isEmpty(str)) || (!str.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
+      {
+        yxt localyxt = this.a.jdField_a_of_type_Yxt;
+        if (this.a.jdField_a_of_type_Yxt.a())
+        {
+          str = "2";
+          localyxt.a("use_custom_tag", 0, 0, new String[] { str });
+        }
+      }
+      else
+      {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Yxt.a(0);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      str = "1";
+      break;
+      this.a.jdField_a_of_type_JavaLangString = "";
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    }
+  }
 }
 
 

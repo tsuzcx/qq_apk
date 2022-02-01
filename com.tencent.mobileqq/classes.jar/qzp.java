@@ -1,73 +1,144 @@
-import android.graphics.drawable.ColorDrawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.media.MediaMetadataRetriever;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class qzp
-  extends qzn
+public final class qzp
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private raj jdField_a_of_type_Raj;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c;
+  public int a;
+  public long a;
+  public LocalMediaInfo a;
+  @Nullable
+  public String a;
+  public boolean a;
+  private int[] a;
+  public int b;
+  public long b;
+  @Nullable
+  public String b;
+  private boolean b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  @NotNull
+  public String e = "";
+  public String f = "";
+  private String g;
   
-  public qzp(ViewGroup paramViewGroup, String paramString1, String paramString2, raj paramraj, int paramInt1, int paramInt2, int paramInt3, String paramString3)
+  public qzp()
   {
-    super(paramViewGroup);
-    this.jdField_a_of_type_Raj = paramraj;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString3;
-    paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
-    paramraj = new ColorDrawable(0);
-    paramViewGroup.mFailedDrawable = paramraj;
-    paramViewGroup.mLoadingDrawable = paramraj;
-    paramViewGroup = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20200313/09d27592d8034af2a494db92ca9e8e25.png", paramViewGroup);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramViewGroup);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    ((TextView)a(2131370480)).setText(paramString1);
-    ((TextView)a(2131378008)).setText(paramString2);
-    a(paramInt1, paramInt2, paramString3);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ArrayOfInt = new int[2];
   }
   
-  View a(ViewGroup paramViewGroup)
+  private int a(String paramString, boolean paramBoolean)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562756, paramViewGroup, false);
-  }
-  
-  protected void c()
-  {
-    a(0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onClick(View paramView)
-  {
-    super.onClick(paramView);
-    if (this.jdField_a_of_type_Boolean) {
-      QQToast.a(BaseApplicationImpl.getContext(), 0, BaseApplicationImpl.getContext().getString(2131714478), 0).a();
-    }
-    for (;;)
+    int j = 0;
+    try
     {
-      this.jdField_a_of_type_Boolean = true;
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
+      paramString = paramString.split("x");
+      if (paramBoolean) {}
+      for (int i = 0;; i = 1)
       {
-        a(1, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Raj.a(this.jdField_a_of_type_Int, this.b, this.c);
+        if (paramString.length >= 2) {
+          j = Integer.parseInt(paramString[i]);
+        }
+        return j;
+      }
+      return 0;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("LocalMediaInfo", 1, "getWidth error", paramString);
+    }
+  }
+  
+  private void a()
+  {
+    for (int i = 0;; i = 1) {
+      for (;;)
+      {
+        try
+        {
+          if (this.jdField_b_of_type_Boolean) {
+            return;
+          }
+          MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+          localMediaMetadataRetriever.setDataSource(this.jdField_b_of_type_JavaLangString);
+          int j = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(18));
+          int k = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(19));
+          if (Build.VERSION.SDK_INT >= 17)
+          {
+            int m = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(24));
+            if ((m == 90) || (m == 270)) {
+              break;
+            }
+            if (i != 0)
+            {
+              this.g = (k + "x" + j);
+              this.jdField_b_of_type_Boolean = true;
+            }
+          }
+          else
+          {
+            QLog.e("LocalMediaInfo", 1, "checkAndSetExifResolution can't get rotation...");
+            continue;
+          }
+          this.g = (j + "x" + k);
+        }
+        catch (Throwable localThrowable)
+        {
+          QLog.e("LocalMediaInfo", 1, "checkAndSetExifResolution", localThrowable);
+          return;
+        }
       }
     }
+  }
+  
+  private void b()
+  {
+    if ((this.jdField_a_of_type_ArrayOfInt[0] == 0) || (this.jdField_a_of_type_ArrayOfInt[1] == 0))
+    {
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      BitmapFactory.decodeFile(this.jdField_b_of_type_JavaLangString, localOptions);
+      this.jdField_a_of_type_ArrayOfInt[0] = localOptions.outWidth;
+      this.jdField_a_of_type_ArrayOfInt[1] = localOptions.outHeight;
+    }
+  }
+  
+  public int a()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      b();
+      return this.jdField_a_of_type_ArrayOfInt[0];
+    }
+    a();
+    if (TextUtils.isEmpty(this.g)) {
+      return a(this.c, true);
+    }
+    return a(this.g, true);
+  }
+  
+  public int b()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      b();
+      return this.jdField_a_of_type_ArrayOfInt[1];
+    }
+    a();
+    if (TextUtils.isEmpty(this.g)) {
+      return a(this.c, false);
+    }
+    return a(this.g, false);
   }
 }
 

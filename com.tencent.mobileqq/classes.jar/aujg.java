@@ -1,33 +1,47 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 class aujg
-  implements ayyt
+  implements ausr
 {
-  aujg(aujf paramaujf, Bundle paramBundle, long paramLong) {}
+  aujg(aujd paramaujd) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void a(boolean paramBoolean)
   {
-    return null;
-  }
-  
-  public void a(ayyu paramayyu)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("upCallBack updateMsg info =");
-    if (paramayyu == null) {}
-    for (paramayyu = "null";; paramayyu = paramayyu.toString())
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Aueg != null)) {
+      this.a.jdField_a_of_type_Aueg.a();
+    }
+    if (paramBoolean)
     {
-      QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, paramayyu);
+      if (this.a.jdField_a_of_type_Augj.e() == 10) {
+        auem.a(this.a.jdField_a_of_type_Augj.c());
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Augj.d(), this);
+      aujd.c(this.a, true);
+      this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(4);
+      aujd.a(this.a);
       return;
     }
+    if (aujd.b(this.a))
+    {
+      aujd.c(this.a, false);
+      if (this.a.d) {
+        this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
+      }
+      aujd.d(this.a, true);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d();
+      if (this.a.jdField_a_of_type_Auef != null) {
+        this.a.jdField_a_of_type_Auef.a();
+      }
+    }
+    audj.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Augj.d(), aujd.a(this.a), true);
   }
   
-  public void b(ayyu paramayyu)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "upCallBack onSend result=", paramayyu });
-    aujf.a(this.jdField_a_of_type_Aujf, paramayyu, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Long);
+    aujd.b(this.a, paramBoolean2);
+    aujd.a(this.a, paramBoolean1);
   }
 }
 

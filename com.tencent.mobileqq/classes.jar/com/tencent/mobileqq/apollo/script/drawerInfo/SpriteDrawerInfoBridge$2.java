@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo.script.drawerInfo;
 
-import amug;
-import amur;
-import amuw;
+import anga;
+import angl;
+import angq;
 
 public class SpriteDrawerInfoBridge$2
   implements Runnable
 {
-  public SpriteDrawerInfoBridge$2(amuw paramamuw, amug paramamug) {}
+  public SpriteDrawerInfoBridge$2(angq paramangq, anga paramanga) {}
   
   public void run()
   {
-    amur localamur = this.a.a();
-    if (localamur != null) {
-      localamur.b();
+    angl localangl = this.a.a();
+    if (localangl != null) {
+      localangl.b();
     }
   }
 }

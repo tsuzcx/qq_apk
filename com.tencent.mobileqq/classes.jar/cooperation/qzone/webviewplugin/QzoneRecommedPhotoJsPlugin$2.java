@@ -1,17 +1,17 @@
 package cooperation.qzone.webviewplugin;
 
-import bmfd;
-import bmfg;
-import bmnd;
+import bngf;
+import bngi;
+import bnog;
 
 public class QzoneRecommedPhotoJsPlugin$2
   implements Runnable
 {
-  public QzoneRecommedPhotoJsPlugin$2(bmnd parambmnd) {}
+  public QzoneRecommedPhotoJsPlugin$2(bnog parambnog) {}
   
   public void run()
   {
-    bmfd.a().a().o();
+    bngf.a().a().o();
   }
 }
 

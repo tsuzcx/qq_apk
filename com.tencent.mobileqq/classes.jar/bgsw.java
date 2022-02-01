@@ -1,37 +1,89 @@
-import android.content.Context;
-import android.text.SpannableString;
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.EmptyPackagePage;
+import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.GetPackageShopRsp;
+import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.RspBody;
+import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.StockItem;
 
-public class bgsw
+class bgsw
+  extends nkp
 {
-  public static CharSequence a(Context paramContext, axkm paramaxkm, String paramString)
-  {
-    if ((paramaxkm == null) || (TextUtils.isEmpty(paramaxkm.a()))) {
-      return paramString;
-    }
-    String str = "#" + paramaxkm.a() + "#";
-    paramString = new SpannableString(str + paramString);
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicHelper", 2, "topicName is " + str);
-    }
-    paramString.setSpan(new bgsx(paramContext, paramaxkm), 0, str.length(), 33);
-    return paramString;
-  }
+  bgsw(bgsu parambgsu, bgst parambgst) {}
   
-  public static CharSequence b(Context paramContext, axkm paramaxkm, String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramaxkm == null) || (TextUtils.isEmpty(paramaxkm.a()))) {
-      return paramString;
+    if (paramInt != 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Bgst);
+      }
+      this.jdField_a_of_type_Bgst.a(-1, "errorCode=" + paramInt);
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString).append("\n").append("#").append(paramaxkm.a()).append("#");
-    SpannableString localSpannableString = new SpannableString(localStringBuilder.toString());
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicHelper", 2, "topicAndDescWithLine is " + localStringBuilder);
+    do
+    {
+      return;
+      paramBundle = new Oidb_0xcd1.RspBody();
+      if (paramArrayOfByte != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult erro data=" + null);
+    return;
+    for (;;)
+    {
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (!paramBundle.get_pack_rsp.has()) {
+          break;
+        }
+        paramArrayOfByte = new Oidb_0xcd1.GetPackageShopRsp();
+        paramArrayOfByte.mergeFrom(((Oidb_0xcd1.GetPackageShopRsp)paramBundle.get_pack_rsp.get()).toByteArray());
+        paramBundle = new ArrayList();
+        if (paramArrayOfByte.msg_stock.has())
+        {
+          List localList = paramArrayOfByte.msg_stock.get();
+          paramInt = 0;
+          if (paramInt < localList.size())
+          {
+            Oidb_0xcd1.StockItem localStockItem = (Oidb_0xcd1.StockItem)localList.get(paramInt);
+            bgtf localbgtf = new bgtf();
+            localbgtf.a = localStockItem.int32_productid.get();
+            localbgtf.b = localStockItem.int32_amount.get();
+            paramBundle.add(localbgtf);
+            paramInt += 1;
+            continue;
+          }
+        }
+        if (paramArrayOfByte.empty_package_page.has())
+        {
+          paramArrayOfByte = (Oidb_0xcd1.EmptyPackagePage)paramArrayOfByte.empty_package_page.get();
+          if (paramArrayOfByte != null)
+          {
+            paramArrayOfByte = new aawq(paramArrayOfByte);
+            if (this.jdField_a_of_type_Bgst == null) {
+              break;
+            }
+            this.jdField_a_of_type_Bgst.a(paramBundle, paramArrayOfByte);
+            return;
+          }
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
+        }
+        this.jdField_a_of_type_Bgst.a(-1, "InvalidProtocolBufferMicroException");
+        return;
+      }
+      paramArrayOfByte = null;
     }
-    localSpannableString.setSpan(new bgsy(paramContext, paramaxkm), paramString.length(), localStringBuilder.length(), 33);
-    return localSpannableString;
   }
 }
 

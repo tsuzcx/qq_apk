@@ -1,94 +1,66 @@
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Map;
 
-class axix
-  implements axiv
+public class axix
+  extends axis
 {
-  private IBinder a;
+  public static String b = antf.ba + "ptt" + File.separator;
+  private static final String c = bfcj.a(axjg.jdField_a_of_type_JavaLangString + "ptt" + File.separator);
+  private String d = (String)this.jdField_a_of_type_JavaUtilMap.get("md5");
+  private String e = (String)this.jdField_a_of_type_JavaUtilMap.get("uuid");
+  private String f = (String)this.jdField_a_of_type_JavaUtilMap.get("selfuin");
   
-  axix(IBinder paramIBinder)
+  public axix(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    this.a = paramIBinder;
-  }
-  
-  public Message a(Message paramMessage)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
-    {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-        if (paramMessage != null)
-        {
-          localParcel1.writeInt(1);
-          paramMessage.writeToParcel(localParcel1, 0);
-          this.a.transact(2, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramMessage = (Message)Message.CREATOR.createFromParcel(localParcel2);
-            return paramMessage;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramMessage = null;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-      }
+    super(paramMsgBackupResEntity);
+    if (this.d == null) {
+      this.d = "";
+    }
+    if (this.e == null) {
+      this.e = "";
+    }
+    if (this.f == null) {
+      this.f = "";
+    }
+    if ((TextUtils.isEmpty(this.d)) || (TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.f))) {
+      a("md5:" + this.d + " mUUID:" + this.e + " mSelfuin:" + this.f);
     }
   }
   
-  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
+  public static String a(String paramString1, String paramString2)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
+    return bfcj.a(b + paramString2 + File.separator + paramString1);
+  }
+  
+  public axgr a()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
+    String str = a();
+    boolean bool = a(str);
+    if (QLog.isColorLevel()) {
+      a("getResDownloadObject,entity:" + ((MsgBackupResEntity)localObject).toLogString() + " tempPath:" + str + " exist:" + bool);
+    }
+    localObject = new axgr();
+    if (!bool) {}
+    for (bool = true;; bool = false)
     {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-        if (paramBasicTypeDataParcel != null)
-        {
-          localParcel1.writeInt(1);
-          paramBasicTypeDataParcel.writeToParcel(localParcel1, 0);
-          this.a.transact(1, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramBasicTypeDataParcel = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(localParcel2);
-            return paramBasicTypeDataParcel;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramBasicTypeDataParcel = null;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-      }
+      ((axgr)localObject).jdField_a_of_type_Boolean = bool;
+      ((axgr)localObject).jdField_a_of_type_JavaLangString = str;
+      return localObject;
     }
   }
   
-  public IBinder asBinder()
+  public String a()
   {
-    return this.a;
+    return c + this.d + this.e + this.f;
+  }
+  
+  public String b()
+  {
+    return a(this.d, this.f);
   }
 }
 

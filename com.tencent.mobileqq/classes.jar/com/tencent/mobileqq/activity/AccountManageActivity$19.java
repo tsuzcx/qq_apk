@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aone;
-import awhf;
-import bglj;
-import biij;
+import apau;
+import awzx;
+import bhlk;
+import bjji;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 
@@ -14,16 +14,16 @@ class AccountManageActivity$19
   
   public void run()
   {
-    biij.a().b(this.jdField_a_of_type_JavaLangString);
+    bjji.a().b(this.jdField_a_of_type_JavaLangString);
     if (this.jdField_a_of_type_Boolean)
     {
       ProxyManager localProxyManager = this.this$0.app.a();
       if (localProxyManager != null)
       {
         localProxyManager.transSaveToDatabase();
-        aone.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, true);
-        new awhf().a(this.jdField_a_of_type_JavaLangString);
-        bglj.a().a(this.this$0.app.getApp(), this.jdField_a_of_type_JavaLangString, false);
+        apau.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, true);
+        new awzx().a(this.jdField_a_of_type_JavaLangString);
+        bhlk.a().a(this.this$0.app.getApp(), this.jdField_a_of_type_JavaLangString, false);
       }
     }
     this.this$0.runOnUiThread(new AccountManageActivity.19.1(this));

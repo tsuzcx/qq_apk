@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video.bandwidth;
 
-import sgu;
-import sgw;
+import rxy;
+import rya;
 
 public class BandwidthPredictor$NetworkCallbackImpl$1
   implements Runnable
 {
-  public BandwidthPredictor$NetworkCallbackImpl$1(sgw paramsgw) {}
+  public BandwidthPredictor$NetworkCallbackImpl$1(rya paramrya) {}
   
   public void run()
   {
-    sgu.a(this.a.a);
+    rxy.a(this.a.a);
   }
 }
 

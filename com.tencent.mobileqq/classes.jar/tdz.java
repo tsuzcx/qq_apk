@@ -1,76 +1,36 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class tdz<T>
+public class tdz
+  implements DialogInterface.OnClickListener
 {
-  public static final String a;
-  private int jdField_a_of_type_Int;
-  private T jdField_a_of_type_JavaLangObject;
-  private final tea<T> jdField_a_of_type_Tea;
+  public tdz(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "zimage." + tdz.class.getSimpleName();
-  }
-  
-  public tdz(T paramT, tea<T> paramtea)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.jdField_a_of_type_Tea = paramtea;
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public T a()
-  {
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new JSONObject();
     try
     {
-      Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-      return localObject1;
-    }
-    finally
-    {
-      localObject2 = finally;
-      throw localObject2;
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_Int += 1;
+      paramDialogInterface.put("button", 1);
+      paramDialogInterface.put("buttonText", this.jdField_a_of_type_OrgJsonJSONObject.optString("okBtnText", ""));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
       return;
     }
-    finally
+    catch (JSONException paramDialogInterface)
     {
-      localObject = finally;
-      throw localObject;
+      while (!QLog.isColorLevel()) {}
+      QLog.e(BridgeModule.TAG, 2, "showDialog error" + paramDialogInterface.getMessage());
     }
-  }
-  
-  public void b()
-  {
-    try
-    {
-      this.jdField_a_of_type_Int -= 1;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        if (QLog.isColorLevel()) {
-          ted.a("Reference", " decReference 0 " + this.jdField_a_of_type_JavaLangObject);
-        }
-        if (this.jdField_a_of_type_JavaLangObject != null)
-        {
-          this.jdField_a_of_type_Tea.a(this.jdField_a_of_type_JavaLangObject);
-          this.jdField_a_of_type_JavaLangObject = null;
-        }
-      }
-      return;
-    }
-    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tdz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
 class qcm
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  qcm(qcl paramqcl, pxk parampxk) {}
+  qcm(qcf paramqcf, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    snh.a(this.jdField_a_of_type_Pxk.a(), 0, 1);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      qcf.a(this.jdField_a_of_type_Qcf).isShowRecommendList = false;
+      qcf.a(this.jdField_a_of_type_Qcf);
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

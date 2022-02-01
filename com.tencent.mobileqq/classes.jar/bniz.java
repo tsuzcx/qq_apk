@@ -1,17 +1,9 @@
-import dov.com.qq.im.capture.view.CountDownView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
-
-class bniz
-  implements bqcm
+public final class bniz
+  extends ThreadLocal<Integer>
 {
-  bniz(bniy parambniy, bnnv parambnnv) {}
-  
-  public void a()
+  protected Integer a()
   {
-    if (bniq.a(this.jdField_a_of_type_Bniy.a) != null) {
-      bniq.a(this.jdField_a_of_type_Bniy.a).a(this.jdField_a_of_type_Bnnv.a(), false);
-    }
-    bniq.a(this.jdField_a_of_type_Bniy.a).setTouchEnable(false);
+    return Integer.valueOf(-100);
   }
 }
 

@@ -1,17 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import android.view.View;
 
-final class avxr
-  implements DialogInterface.OnClickListener
+public class avxr
+  implements avxa
 {
-  avxr(Activity paramActivity, String paramString1, String paramString2, String paramString3, LatLng paramLatLng1, LatLng paramLatLng2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(avxb paramavxb)
   {
-    awao.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, this.jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
-    bcst.b(null, "CliOper", "", "", "0X800A970", "0X800A970", 0, 0, "0", "0", "0", "");
+    paramavxb.a();
+  }
+  
+  public void a(View... paramVarArgs)
+  {
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramVarArgs[i].setVisibility(0);
+      i += 1;
+    }
   }
 }
 

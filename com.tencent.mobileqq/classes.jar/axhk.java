@@ -1,50 +1,65 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class axhk
-  extends bdzm
+  extends axfz
 {
-  public axhk(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public axhk(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    if (paramMessage == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmTokenResponse:  isSuccess: " + paramBoolean);
     }
-    bduk localbduk = (bduk)paramMessage.obj;
-    switch (paramMessage.what)
+    super.a(paramBoolean);
+  }
+  
+  public void a(boolean paramBoolean, axhd paramaxhd)
+  {
+    if (paramBoolean) {
+      this.a.a(paramaxhd);
+    }
+    super.a(paramBoolean, paramaxhd);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onGetQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
+    }
+    Object localObject;
+    if ((paramBoolean) && ((paramObject instanceof axgx)))
     {
-    case 1004: 
-    default: 
-      return;
-    case 1002: 
-      if (localbduk.a <= 0L) {
-        break;
-      }
+      localObject = (axgx)paramObject;
+      this.a.a((axgx)localObject);
     }
-    for (int i = (int)(localbduk.e * 100L / localbduk.a); QLog.isColorLevel(); i = 0)
+    for (;;)
     {
-      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity .mPicUploadHandler.handleMessage, send process : " + i);
+      super.a(paramBoolean, paramObject);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload success. photo_id = " + bdwp.a);
+      if ((paramObject instanceof Integer))
+      {
+        localObject = (Integer)paramObject;
+        this.a.a((Integer)localObject);
       }
-      i = bdwp.a;
-      if (i >= 0) {
-        this.a.a.set(0, Integer.valueOf(i));
-      }
-      this.a.a(this.a.a);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload fail.");
-      }
-      this.a.l();
-      this.a.c(anni.a(2131705969));
-      this.a.a(true, null);
-      return;
     }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onRejectQRResponse:  isSuccess: " + paramBoolean);
+    }
+    super.b(paramBoolean);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
+    }
+    this.a.a(paramBoolean, paramObject);
+    super.b(paramBoolean, paramObject);
   }
 }
 

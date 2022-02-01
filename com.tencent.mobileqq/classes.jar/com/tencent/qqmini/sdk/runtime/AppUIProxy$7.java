@@ -1,5 +1,7 @@
 package com.tencent.qqmini.sdk.runtime;
 
+import android.view.ViewGroup;
+
 class AppUIProxy$7
   implements Runnable
 {
@@ -7,8 +9,12 @@ class AppUIProxy$7
   
   public void run()
   {
-    if (AppUIProxy.access$500(this.this$0) != null) {
-      AppUIProxy.access$500(this.this$0).setVisibility(4);
+    if ((AppUIProxy.access$500(this.this$0) != null) && (this.this$0.mRootLayout != null))
+    {
+      AppUIProxy.access$500(this.this$0).setVisibility(0);
+      AppUIProxy.access$500(this.this$0).bringToFront();
+      this.this$0.mRootLayout.requestLayout();
+      this.this$0.mRootLayout.invalidate();
     }
   }
 }

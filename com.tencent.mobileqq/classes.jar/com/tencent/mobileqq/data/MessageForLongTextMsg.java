@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import acwh;
+import adak;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 
 public class MessageForLongTextMsg
@@ -24,7 +24,7 @@ public class MessageForLongTextMsg
   
   public boolean isSupportFTS()
   {
-    return acwh.x(this.istroop);
+    return adak.x(this.istroop);
   }
   
   public boolean isSupportReply()

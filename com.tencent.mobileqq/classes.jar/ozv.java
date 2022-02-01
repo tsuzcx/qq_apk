@@ -1,8 +1,24 @@
-import com.tencent.widget.ListView;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.16.1;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.16.2;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public abstract interface ozv
+public final class ozv
+  implements blop
 {
-  public abstract void a(ListView paramListView);
+  ozv(BaseActivity paramBaseActivity) {}
+  
+  public void a(bloo parambloo)
+  {
+    switch (parambloo.a)
+    {
+    default: 
+      return;
+    case 0: 
+      skt.a(this.a, new ReadInJoyUtils.16.1(this));
+      return;
+    }
+    skt.a(this.a, new ReadInJoyUtils.16.2(this));
+  }
 }
 
 

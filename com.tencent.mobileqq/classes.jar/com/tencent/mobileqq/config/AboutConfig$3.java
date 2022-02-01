@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.config;
 
-import aqkn;
+import aqzq;
 import com.tencent.mobileqq.data.ResourcePluginInfo;
 
 public final class AboutConfig$3
   implements Runnable
 {
-  public AboutConfig$3(aqkn paramaqkn, ResourcePluginInfo paramResourcePluginInfo) {}
+  public AboutConfig$3(aqzq paramaqzq, ResourcePluginInfo paramResourcePluginInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aqkn.a(this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo);
-    this.jdField_a_of_type_Aqkn.b();
+    this.jdField_a_of_type_Aqzq.a(this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo);
+    this.jdField_a_of_type_Aqzq.b();
   }
 }
 

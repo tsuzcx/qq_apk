@@ -1,18 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class bbil
-  implements View.OnClickListener
+public abstract interface bbil
 {
-  public bbil(UniteSearchActivity paramUniteSearchActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.g();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a();
 }
 
 

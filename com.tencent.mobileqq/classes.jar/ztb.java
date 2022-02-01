@@ -1,25 +1,18 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.view.widget.InnerListView;
 
 public class ztb
-  implements Comparator<String>
+  implements View.OnLongClickListener
 {
-  public ztb(QRDisplayActivity paramQRDisplayActivity) {}
+  public ztb(InnerListView paramInnerListView, int paramInt) {}
   
-  public int a(String paramString1, String paramString2)
+  public boolean onLongClick(View paramView)
   {
-    int i = 1;
-    if ((paramString1 != null) && (paramString2 != null)) {
-      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
+    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
+      return InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
     }
-    while (paramString1 != null) {
-      return i;
-    }
-    if (paramString2 != null) {
-      return -1;
-    }
-    return 0;
+    return false;
   }
 }
 

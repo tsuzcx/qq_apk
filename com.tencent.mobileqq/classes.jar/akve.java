@@ -1,15 +1,19 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.4.1;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class akve
-  implements akut
+  extends aktf
 {
-  public akve(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
-  
-  public void a(boolean paramBoolean)
+  akve(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    DrawRedpacketPannelPreviewFragment.a(this.a).post(new DrawRedpacketPannelPreviewFragment.4.1(this, paramBoolean));
+    super(paramNewPhotoListActivity);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    ((aktm)this.mOtherCommonData).a = 6291456;
+    paramIntent.putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", true);
   }
 }
 

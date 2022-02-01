@@ -1,19 +1,10 @@
-import java.util.List;
+import com.tencent.image.URLDrawable;
 
-public class acxo
-  implements acxl
+public abstract interface acxo
 {
-  private acwu<acxk> a = new acwv();
+  public abstract void a(URLDrawable paramURLDrawable);
   
-  public List<acxk> a()
-  {
-    return this.a.a();
-  }
-  
-  public void a(Class<? extends acxk> paramClass)
-  {
-    this.a.a(paramClass);
-  }
+  public abstract void b(URLDrawable paramURLDrawable);
 }
 
 

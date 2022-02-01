@@ -1,8 +1,8 @@
 package dov.com.qq.im.ae.play;
 
-import aaiz;
-import aevv;
-import aevw;
+import aana;
+import afez;
+import affa;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -18,15 +18,15 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bnox;
-import bnoz;
-import bnqb;
-import bnvx;
-import bnvy;
-import bnvz;
-import bnxl;
-import bnyh;
-import bppm;
+import boqi;
+import boqk;
+import born;
+import boxh;
+import boxi;
+import boxj;
+import boyv;
+import bozr;
+import bqrh;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
 import com.tencent.component.network.utils.FileUtils;
@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
 
 public class AETakeFacePhotoPreviewFragment
   extends PublicBaseFragment
-  implements aevw, View.OnClickListener
+  implements affa, View.OnClickListener
 {
   private static String jdField_a_of_type_JavaLangString = "";
   private int jdField_a_of_type_Int;
@@ -50,8 +50,8 @@ public class AETakeFacePhotoPreviewFragment
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bnox jdField_a_of_type_Bnox = (bnox)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(3);
-  private bnoz jdField_a_of_type_Bnoz;
+  private boqi jdField_a_of_type_Boqi = (boqi)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(3);
+  private boqk jdField_a_of_type_Boqk;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = QQStoryContext.a();
   private int jdField_b_of_type_Int;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -64,8 +64,8 @@ public class AETakeFacePhotoPreviewFragment
   
   private void a()
   {
-    this.jdField_a_of_type_Int = bppm.a(getActivity());
-    this.jdField_b_of_type_Int = bppm.b(getActivity());
+    this.jdField_a_of_type_Int = bqrh.a(getActivity());
+    this.jdField_b_of_type_Int = bqrh.b(getActivity());
     this.jdField_b_of_type_JavaLangString = getArguments().getString("photo_path");
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
@@ -82,7 +82,7 @@ public class AETakeFacePhotoPreviewFragment
   
   public static void a(Activity paramActivity, Intent paramIntent, int paramInt)
   {
-    aevv.a(paramActivity, paramIntent, PublicFragmentActivityForPeak.class, AETakeFacePhotoPreviewFragment.class, paramInt);
+    afez.a(paramActivity, paramIntent, PublicFragmentActivityForPeak.class, AETakeFacePhotoPreviewFragment.class, paramInt);
   }
   
   private void a(@Nullable Bitmap paramBitmap, @Nullable String paramString)
@@ -93,20 +93,20 @@ public class AETakeFacePhotoPreviewFragment
     AEVideoShelfEditFragment.a(getActivity(), true);
     e();
     Intent localIntent = getActivity().getIntent();
-    if (((!localIntent.getBooleanExtra("key_disable_face_detect", false)) || (bnqb.h(localIntent))) && (!bnxl.a(paramBitmap)))
+    if (((!localIntent.getBooleanExtra("key_disable_face_detect", false)) || (born.h(localIntent))) && (!boyv.a(paramBitmap)))
     {
-      QQToast.a(getActivity(), 2131689751, 0).a();
+      QQToast.a(getActivity(), 2131689756, 0).a();
       f();
       onBackPressed();
       return;
     }
-    if ((localIntent.getBooleanExtra("key_need_check_sensitive", false)) || (bnqb.h(localIntent)))
+    if ((localIntent.getBooleanExtra("key_need_check_sensitive", false)) || (born.h(localIntent)))
     {
       d();
-      this.jdField_a_of_type_Bnoz = new bnvy(this);
+      this.jdField_a_of_type_Boqk = new boxi(this);
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Bnoz);
-      this.jdField_a_of_type_Bnox.b(paramString);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Boqk);
+      this.jdField_a_of_type_Boqi.b(paramString);
       return;
     }
     a(true, 0);
@@ -114,9 +114,9 @@ public class AETakeFacePhotoPreviewFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362259));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362273));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362274));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362271));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362285));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362286));
   }
   
   private void a(boolean paramBoolean, int paramInt)
@@ -132,13 +132,13 @@ public class AETakeFacePhotoPreviewFragment
       return;
       if (paramInt == -1)
       {
-        QQToast.a(getActivity(), 2131689749, 0).a();
+        QQToast.a(getActivity(), 2131689754, 0).a();
       }
       else if (paramInt == -2)
       {
-        QQToast.a(getActivity(), 2131697032, 0).a();
+        QQToast.a(getActivity(), 2131697081, 0).a();
         continue;
-        QQToast.a(getActivity(), 2131697032, 0).a();
+        QQToast.a(getActivity(), 2131697081, 0).a();
       }
     }
   }
@@ -146,10 +146,10 @@ public class AETakeFacePhotoPreviewFragment
   private void b()
   {
     jdField_a_of_type_JavaLangString = "";
-    if (!bnxl.a(this.jdField_a_of_type_AndroidGraphicsBitmap)) {
+    if (!boyv.a(this.jdField_a_of_type_AndroidGraphicsBitmap)) {
       return;
     }
-    bnxl.a(this.jdField_a_of_type_AndroidGraphicsBitmap, new bnvx(this));
+    boyv.a(this.jdField_a_of_type_AndroidGraphicsBitmap, new boxh(this));
   }
   
   private void c()
@@ -162,10 +162,10 @@ public class AETakeFacePhotoPreviewFragment
   
   private void d()
   {
-    if (this.jdField_a_of_type_Bnoz != null)
+    if (this.jdField_a_of_type_Boqk != null)
     {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Bnoz);
-      this.jdField_a_of_type_Bnoz = null;
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Boqk);
+      this.jdField_a_of_type_Boqk = null;
     }
   }
   
@@ -176,12 +176,12 @@ public class AETakeFacePhotoPreviewFragment
     {
       if (this.jdField_a_of_type_AndroidAppDialog == null)
       {
-        this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(localFragmentActivity, 2131755823);
-        this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559567);
-        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372466)).setText(2131689748);
+        this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(localFragmentActivity, 2131755824);
+        this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559572);
+        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372578)).setText(2131689753);
         this.jdField_a_of_type_AndroidAppDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-        this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new bnvz(this));
+        this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new boxj(this));
       }
       this.jdField_a_of_type_AndroidAppDialog.show();
     }
@@ -200,7 +200,7 @@ public class AETakeFacePhotoPreviewFragment
     paramActivity.requestWindowFeature(1);
     paramActivity.getWindow().setFlags(1024, 1024);
     if (Build.VERSION.SDK_INT >= 29) {
-      aaiz.a(paramActivity.getWindow());
+      aana.a(paramActivity.getWindow());
     }
   }
   
@@ -222,10 +222,10 @@ public class AETakeFacePhotoPreviewFragment
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131362274) {
+    if (i == 2131362286) {
       if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
       {
-        bnyh.a().S();
+        bozr.a().U();
         a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_b_of_type_JavaLangString);
       }
     }
@@ -233,9 +233,9 @@ public class AETakeFacePhotoPreviewFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (i == 2131362273)
+      if (i == 2131362285)
       {
-        bnyh.a().T();
+        bozr.a().V();
         onBackPressed();
       }
     }
@@ -243,7 +243,7 @@ public class AETakeFacePhotoPreviewFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558492, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558493, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }

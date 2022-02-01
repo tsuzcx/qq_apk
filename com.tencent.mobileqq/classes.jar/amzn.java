@@ -1,19 +1,12 @@
-import org.json.JSONObject;
-
-public class amzn
+public abstract interface amzn
 {
-  public int a;
-  public long a;
-  public JSONObject a = new JSONObject();
-  public long b;
-  public long c;
-  public long d;
-  public long e;
-  public long f;
-  public long g;
-  public long h;
-  public long i;
-  public long j;
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

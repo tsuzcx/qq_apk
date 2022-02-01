@@ -1,12 +1,12 @@
 package dov.com.tencent.mobileqq.activity.richmedia.state;
 
-import bpyq;
-import bqim;
+import bral;
+import brjy;
 
 public class RMVideoInitState$1
   implements Runnable
 {
-  public RMVideoInitState$1(bpyq parambpyq, RMVideoStateMgr paramRMVideoStateMgr) {}
+  public RMVideoInitState$1(bral parambral, RMVideoStateMgr paramRMVideoStateMgr) {}
   
   public void run()
   {

@@ -1,17 +1,21 @@
-import android.graphics.drawable.Drawable;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class agao
+  extends blgm
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
+  public agao(VisitorsActivity paramVisitorsActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.f = false;
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.c.setVisibility(0);
+  }
 }
 
 

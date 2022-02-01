@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/loz" android:layout_width="fill_parent" android:layout_height="70.0px" android:minHeight="70.0px"
+<RelativeLayout android:id="@id/n91" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="28.0px" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/ln6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/lnp" android:visibility="gone" android:layout_width="43.0px" android:layout_height="43.0px" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/lqt" android:background="@drawable/bjo" android:padding="3.0px" android:layout_width="50.0px" android:layout_height="50.0px" android:layout_marginLeft="63.0px" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="28.0px" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/lp2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignBaseline="@id/ln6" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="28.0px" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/lqh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="141.0px" android:layout_marginRight="10.0px" android:singleLine="true" android:layout_toLeftOf="@id/lp2" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <com.tencent.mobileqq.widget.RoundedCornerImageViewNoPadding android:id="@id/n90" android:layout_width="125.0dip" android:layout_height="125.0dip" android:scaleType="fitCenter" android:layout_centerInParent="true" />
 </RelativeLayout>

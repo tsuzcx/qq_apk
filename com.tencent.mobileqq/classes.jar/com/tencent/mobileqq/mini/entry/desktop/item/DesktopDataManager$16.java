@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import android.text.TextUtils;
-import aoql;
-import aqpv;
+import apeb;
+import arfd;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
@@ -53,18 +53,18 @@ class DesktopDataManager$16
       QLog.e("DesktopDataManager", 1, "initLocalDataRunnable error,", localThrowable);
       return;
     }
-    Object localObject1 = (aoql)localThrowable.getBusinessHandler(148);
+    Object localObject1 = (apeb)localThrowable.getBusinessHandler(148);
     if (localObject1 != null) {
-      ((aoql)localObject1).c();
+      ((apeb)localObject1).c();
     }
-    localObject1 = aqpv.a("miniappgetpskeydomain", "qzone.qq.com");
+    localObject1 = arfd.a("miniappgetpskeydomain", "qzone.qq.com");
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
       QLog.d("DesktopDataManager", 1, "getPskeyDomain : " + (String)localObject1);
       localObject1 = ((String)localObject1).split(",");
       if (localObject1.length > 0)
       {
-        localObject1 = ((TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2)).GetPskey(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 16L, (String[])localObject1, new DesktopDataManager.16.2(this));
+        localObject1 = ((TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2)).getPskey(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 16L, (String[])localObject1, new DesktopDataManager.16.2(this));
         if ((localObject1 != null) && (!TextUtils.isEmpty(((Ticket)localObject1).getPSkey("qzone.qq.com")))) {
           QLog.d("DesktopDataManager", 1, "pskey success.");
         }

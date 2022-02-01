@@ -1,4 +1,10 @@
-public abstract interface aqav {}
+import java.lang.ref.WeakReference;
+
+public class aqav
+{
+  public WeakReference<bezv> a;
+  public boolean a = false;
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

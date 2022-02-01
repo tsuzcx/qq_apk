@@ -1,24 +1,20 @@
-import android.graphics.Bitmap;
-import android.media.MediaCodec;
-import android.media.MediaExtractor;
-import java.util.ArrayList;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
 
-public class zdd
+class zdd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public int a;
-  public long a;
-  public MediaCodec a;
-  public MediaExtractor a;
-  public ArrayList<String> a = new ArrayList();
-  public zda a;
-  public zde a;
-  public long[] a;
-  public int b;
-  public long b;
-  public ArrayList<Bitmap> b = new ArrayList();
-  public long[] b;
-  public int c;
-  public int d;
+  private zdd(zcx paramzcx) {}
+  
+  public void onGlobalLayout()
+  {
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom() - this.a.c > this.a.b)
+    {
+      this.a.dismiss();
+      return;
+    }
+    this.a.jdField_a_of_type_Zdb.a(this.a.a());
+  }
 }
 
 

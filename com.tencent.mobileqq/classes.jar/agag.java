@@ -1,10 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class agag
-  implements DialogInterface.OnClickListener
+public abstract interface agag
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

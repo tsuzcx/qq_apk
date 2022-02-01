@@ -1,16 +1,24 @@
+import android.os.Handler;
+import android.os.Message;
+
 class typ
-  implements tom
+  extends Handler
 {
-  typ(tym paramtym) {}
+  typ(tyo paramtyo) {}
   
-  public void a(String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.callJs(paramString1, new String[] { paramString2 });
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     typ
  * JD-Core Version:    0.7.0.1
  */

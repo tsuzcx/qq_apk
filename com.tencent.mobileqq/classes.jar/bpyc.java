@@ -1,61 +1,93 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.SecUtil;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class bpyc
-  implements bdvw
 {
-  bpyc(bpya parambpya) {}
+  public static HashMap<String, Integer> a = new HashMap();
+  public static HashMap<String, Integer> b;
   
-  public void onResp(bdwt parambdwt)
+  static
   {
-    boolean bool = false;
-    FilterDesc localFilterDesc = (FilterDesc)parambdwt.jdField_a_of_type_Bdws.a();
-    if (localFilterDesc != null)
+    a.put("actLbsSendPoiListFailure", Integer.valueOf(100));
+    a.put("actLbsSendGetPidFailure", Integer.valueOf(100));
+    a.put("actLbsPayBridgeFailure", Integer.valueOf(100));
+    a.put("actLbsPoiListFailure", Integer.valueOf(10000));
+    a.put("actLbsPackListFailure", Integer.valueOf(1000));
+    a.put("actLbsGetPackFailure", Integer.valueOf(100));
+    a.put("actLbsCaiShenResourceFailure", Integer.valueOf(100));
+    b = new HashMap();
+    b.put("actLbsSendPoiListFailure", Integer.valueOf(10000));
+    b.put("actLbsSendGetPidFailure", Integer.valueOf(10000));
+    b.put("actLbsPayBridgeFailure", Integer.valueOf(10000));
+    b.put("actLbsPoiListFailure", Integer.valueOf(100000));
+    b.put("actLbsPackListFailure", Integer.valueOf(10000));
+    b.put("actLbsGetPackFailure", Integer.valueOf(10000));
+    b.put("actLbsCaiShenResourceFailure", Integer.valueOf(10000));
+  }
+  
+  public static void a(String paramString)
+  {
+    try
     {
-      if (parambdwt.jdField_a_of_type_Int == 0) {
-        break label96;
+      HashMap localHashMap = new HashMap();
+      String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+      if ((!TextUtils.isEmpty(str)) && (b(paramString)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LbsPack", 2, "uploadSuccess " + paramString);
+        }
+        bdmc.a(MobileQQ.sMobileQQ).a(str, paramString, false, 0L, 0L, localHashMap, null);
       }
-      QLog.e("VideoFilterListDownloader", 2, "MyListDownloaderListener file failed. errorCode: " + parambdwt.b + ", errorMsg: " + parambdwt.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.resurl);
-      bpya.a(this.a, localFilterDesc, 0L, 5);
-    }
-    for (;;)
-    {
-      bpya.a(this.a, localFilterDesc, bool);
       return;
-      label96:
-      if (!localFilterDesc.resMD5.equalsIgnoreCase(SecUtil.getFileMd5(parambdwt.jdField_a_of_type_Bdws.c)))
-      {
-        QLog.e("VideoFilterListDownloader", 2, "MyListDownloaderListener file failed: md5 is not match.");
-        bgmg.d(parambdwt.jdField_a_of_type_Bdws.c);
-      }
-      else
-      {
-        QLog.i("VideoFilterListDownloader", 2, "MyListDownloaderListener resFile success. file: " + localFilterDesc.name + localFilterDesc.resurl);
-        try
-        {
-          String str = bqbq.b;
-          bgmg.a(parambdwt.jdField_a_of_type_Bdws.c, str, false);
-          if (localFilterDesc.bundle == null) {
-            localFilterDesc.bundle = new Bundle();
-          }
-          bpya.a(this.a, localFilterDesc, bgmg.a(parambdwt.jdField_a_of_type_Bdws.c), 0);
-          bgmg.d(parambdwt.jdField_a_of_type_Bdws.c);
-          bool = true;
-        }
-        catch (IOException parambdwt)
-        {
-          parambdwt.printStackTrace();
-          QLog.i("VideoFilterListDownloader", 2, "MyListDownloaderListener  unzip file failed.");
-          bpya.a(this.a, localFilterDesc, 0L, 4);
-        }
-      }
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
-  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
+  public static void a(String paramString, int paramInt)
+  {
+    try
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_FailCode", String.valueOf(paramInt));
+      String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+      if ((!TextUtils.isEmpty(str)) && (a(paramString)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LbsPack", 2, "uploadFailure " + paramString + " " + paramInt);
+        }
+        bdmc.a(MobileQQ.sMobileQQ).a(str, paramString, true, 0L, 0L, localHashMap, null);
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    paramString = (Integer)a.get(paramString);
+    if (paramString == null) {
+      return false;
+    }
+    return (int)(Math.random() * paramString.intValue()) == 1;
+  }
+  
+  public static boolean b(String paramString)
+  {
+    paramString = (Integer)b.get(paramString);
+    if (paramString == null) {
+      return false;
+    }
+    return (int)(Math.random() * paramString.intValue()) == 1;
+  }
 }
 
 

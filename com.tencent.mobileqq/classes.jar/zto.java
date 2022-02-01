@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-
-class zto
-  implements DialogInterface.OnClickListener
+public abstract interface zto
 {
-  zto(ztm paramztm, CompoundButton paramCompoundButton) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
-  }
+  public abstract void a();
 }
 
 

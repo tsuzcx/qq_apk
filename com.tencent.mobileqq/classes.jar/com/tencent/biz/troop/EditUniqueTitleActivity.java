@@ -1,11 +1,11 @@
 package com.tencent.biz.troop;
 
 import Override;
-import aanu;
-import aanv;
-import aanw;
-import aanx;
-import aany;
+import aarw;
+import aarx;
+import aary;
+import aarz;
+import aasa;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -19,11 +19,11 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import anwd;
-import bcst;
-import bglp;
-import bgpa;
-import biau;
+import aoip;
+import bdll;
+import bhlq;
+import bhpc;
+import bjbs;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -38,7 +38,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
-import niq;
+import nkl;
 import tencent.im.oidb.cmd0x8fc.Oidb_0x8fc.MemberInfo;
 import tencent.im.oidb.cmd0x8fc.Oidb_0x8fc.ReqBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
@@ -53,7 +53,7 @@ public class EditUniqueTitleActivity
   public EditText a;
   public ImageButton a;
   public TextView a;
-  protected biau a;
+  protected bjbs a;
   protected String a;
   public boolean a;
   protected int b;
@@ -68,7 +68,7 @@ public class EditUniqueTitleActivity
     this.jdField_a_of_type_Int = 6;
     this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidTextTextWatcher = new aanv(this);
+    this.jdField_a_of_type_AndroidTextTextWatcher = new aarx(this);
   }
   
   public static Intent a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3)
@@ -96,28 +96,28 @@ public class EditUniqueTitleActivity
       ((TroopManager)localObject).a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, false);
       ((TroopManager)localObject).b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.d, -1);
       if (this.jdField_b_of_type_Int == 2) {
-        QQToast.a(this, getResources().getString(2131695607), 1).a();
+        QQToast.a(this, getResources().getString(2131695650), 1).a();
       }
       localObject = getIntent();
       ((Intent)localObject).putExtra("newUniqueTitle", this.d);
       setResult(-1, (Intent)localObject);
       finish();
-      ((anwd)this.app.a(20)).notifyUI(64, true, new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.d });
+      ((aoip)this.app.a(20)).notifyUI(64, true, new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.d });
       return;
     }
     if (this.jdField_b_of_type_Int == 2)
     {
       setResult(0, getIntent());
       finish();
-      QQToast.a(this, getResources().getString(2131695608), 1).a();
+      QQToast.a(this, getResources().getString(2131695651), 1).a();
       return;
     }
     if (paramInt == 1281)
     {
-      QQToast.a(this, getResources().getString(2131695605), 1).a();
+      QQToast.a(this, getResources().getString(2131695648), 1).a();
       return;
     }
-    QQToast.a(this, getResources().getString(2131695609), 1).a();
+    QQToast.a(this, getResources().getString(2131695652), 1).a();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, BusinessObserver paramBusinessObserver)
@@ -144,7 +144,7 @@ public class EditUniqueTitleActivity
         paramString1.uint32_command.set(2300);
         paramString1.uint32_service_type.set(2);
         paramString1.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-        paramString2 = new NewIntent(paramQQAppInterface.getApp(), niq.class);
+        paramString2 = new NewIntent(paramQQAppInterface.getApp(), nkl.class);
         paramString2.putExtra("cmd", "OidbSvc.0x8fc_2");
         paramString2.putExtra("data", paramString1.toByteArray());
         paramString2.setObserver(paramBusinessObserver);
@@ -172,7 +172,7 @@ public class EditUniqueTitleActivity
     if (this.jdField_b_of_type_Int != 2) {
       b();
     }
-    a(this.app, paramString1, paramString2, paramString3, new aany(this));
+    a(this.app, paramString1, paramString2, paramString3, new aasa(this));
   }
   
   private boolean a()
@@ -196,7 +196,7 @@ public class EditUniqueTitleActivity
         this.jdField_c_of_type_JavaLangString = localIntent.getStringExtra("uniqueTitle");
         if (this.jdField_b_of_type_Int == 2)
         {
-          bcst.b(this.app, "P_CliOper", "Grp_manage", "", "grp_aio", "Clk_expire", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+          bdll.b(this.app, "P_CliOper", "Grp_manage", "", "grp_aio", "Clk_expire", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
           return false;
         }
       }
@@ -207,11 +207,11 @@ public class EditUniqueTitleActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167066));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167076));
     this.jdField_a_of_type_AndroidWidgetTextView.setText("0/6");
     if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
       if (this.jdField_c_of_type_Int == 2) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(getString(2131693464));
+        this.jdField_a_of_type_AndroidWidgetEditText.setText(getString(2131693476));
       }
     }
     for (;;)
@@ -220,7 +220,7 @@ public class EditUniqueTitleActivity
       return;
       if (this.jdField_c_of_type_Int == 3)
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(getString(2131718848));
+        this.jdField_a_of_type_AndroidWidgetEditText.setText(getString(2131718998));
         continue;
         this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_c_of_type_JavaLangString);
       }
@@ -236,12 +236,12 @@ public class EditUniqueTitleActivity
     default: 
       return;
     case 2: 
-      if ((!TextUtils.isEmpty(str)) && (!str.equals(getString(2131693464))))
+      if ((!TextUtils.isEmpty(str)) && (!str.equals(getString(2131693476))))
       {
         a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.d);
         return;
       }
-      if (((TextUtils.isEmpty(str)) && (this.jdField_c_of_type_JavaLangString != null) && (this.jdField_c_of_type_JavaLangString.equals(getString(2131693464)))) || ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (str != null) && (str.equals(getString(2131693464)))) || ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (str.equals(getString(2131693464))) && (this.jdField_c_of_type_JavaLangString.equals(str))) || ((TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))))
+      if (((TextUtils.isEmpty(str)) && (this.jdField_c_of_type_JavaLangString != null) && (this.jdField_c_of_type_JavaLangString.equals(getString(2131693476)))) || ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (str != null) && (str.equals(getString(2131693476)))) || ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (str.equals(getString(2131693476))) && (this.jdField_c_of_type_JavaLangString.equals(str))) || ((TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))))
       {
         finish();
         return;
@@ -250,12 +250,12 @@ public class EditUniqueTitleActivity
       a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.d);
       return;
     case 3: 
-      if ((!TextUtils.isEmpty(str)) && (!str.equals(getString(2131718848))))
+      if ((!TextUtils.isEmpty(str)) && (!str.equals(getString(2131718998))))
       {
         a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.d);
         return;
       }
-      if (((TextUtils.isEmpty(str)) && (this.jdField_c_of_type_JavaLangString != null) && (this.jdField_c_of_type_JavaLangString.equals(getString(2131718848)))) || ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (str != null) && (str.equals(getString(2131718848)))) || ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (str.equals(getString(2131718848))) && (this.jdField_c_of_type_JavaLangString.equals(str))) || ((TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))))
+      if (((TextUtils.isEmpty(str)) && (this.jdField_c_of_type_JavaLangString != null) && (this.jdField_c_of_type_JavaLangString.equals(getString(2131718998)))) || ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (str != null) && (str.equals(getString(2131718998)))) || ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (str.equals(getString(2131718998))) && (this.jdField_c_of_type_JavaLangString.equals(str))) || ((TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))))
       {
         finish();
         return;
@@ -280,11 +280,11 @@ public class EditUniqueTitleActivity
   
   protected void a()
   {
-    bcst.b(this.app, "dc00899", "Grp_title", "", "grp_data", "clk_finish", 0, 0, "", "", "", "");
+    bdll.b(this.app, "dc00899", "Grp_title", "", "grp_data", "clk_finish", 0, 0, "", "", "", "");
     String str = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
     if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (TextUtils.isEmpty(str)))
     {
-      bglp.a(this, getString(2131695446), 2131690582, 2131695445, new aanw(this), new aanx(this)).show();
+      bhlq.a(this, getString(2131695489), 2131690580, 2131695488, new aary(this), new aarz(this)).show();
       return;
     }
     e();
@@ -294,13 +294,13 @@ public class EditUniqueTitleActivity
   {
     try
     {
-      if (this.jdField_a_of_type_Biau == null)
+      if (this.jdField_a_of_type_Bjbs == null)
       {
-        this.jdField_a_of_type_Biau = new biau(this, getTitleBarHeight());
-        this.jdField_a_of_type_Biau.c(2131694158);
-        this.jdField_a_of_type_Biau.c(false);
+        this.jdField_a_of_type_Bjbs = new bjbs(this, getTitleBarHeight());
+        this.jdField_a_of_type_Bjbs.c(2131694176);
+        this.jdField_a_of_type_Bjbs.c(false);
       }
-      this.jdField_a_of_type_Biau.show();
+      this.jdField_a_of_type_Bjbs.show();
       return;
     }
     catch (Exception localException)
@@ -314,8 +314,8 @@ public class EditUniqueTitleActivity
   {
     try
     {
-      if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {
-        this.jdField_a_of_type_Biau.dismiss();
+      if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {
+        this.jdField_a_of_type_Bjbs.dismiss();
       }
       return;
     }
@@ -342,44 +342,44 @@ public class EditUniqueTitleActivity
       finish();
       return false;
     }
-    super.setContentView(2131560584);
-    setTitle(2131695495);
-    setLeftButton(2131690582, new aanu(this));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365805));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131364528));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365824));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380430));
+    super.setContentView(2131560599);
+    setTitle(2131695538);
+    setLeftButton(2131690580, new aarw(this));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365848));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131364573));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365867));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380616));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
     this.jdField_a_of_type_Boolean = "1000".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
-    setRightHighlightButton(2131692257, this);
+    setRightHighlightButton(2131692262, this);
     if (!this.jdField_a_of_type_Boolean) {
       this.rightViewText.setAlpha(0.5F);
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376437);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131376569);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     if (this.jdField_c_of_type_Int == 2)
     {
-      paramBundle = getString(2131693464);
+      paramBundle = getString(2131693476);
       if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (!paramBundle.equals(this.jdField_c_of_type_JavaLangString)))
       {
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        bcst.b(this.app, "P_CliOper", "Grp_manage", "", "mber_title", "exp_default", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+        bdll.b(this.app, "P_CliOper", "Grp_manage", "", "mber_title", "exp_default", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
       }
     }
     for (;;)
     {
-      bcst.b(this.app, "dc00899", "Grp_title", "", "grp_data", "edit_exp", 0, 0, "", "", "", "");
+      bdll.b(this.app, "dc00899", "Grp_title", "", "grp_data", "edit_exp", 0, 0, "", "", "", "");
       d();
       return false;
       if (this.jdField_c_of_type_Int == 3)
       {
-        paramBundle = getString(2131718848);
+        paramBundle = getString(2131718998);
         if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (!paramBundle.equals(this.jdField_c_of_type_JavaLangString)))
         {
           this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          bcst.b(this.app, "P_CliOper", "Grp_manage", "", "mber_title", "exp_default", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+          bdll.b(this.app, "P_CliOper", "Grp_manage", "", "mber_title", "exp_default", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
         }
       }
     }
@@ -405,8 +405,8 @@ public class EditUniqueTitleActivity
       continue;
       this.d = "";
       a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.d);
-      bcst.b(this.app, "P_CliOper", "Grp_manage", "", "mber_title", "suc_title", 0, 0, this.jdField_b_of_type_JavaLangString, "0", "0", "0");
-      bcst.b(this.app, "P_CliOper", "Grp_manage", "", "mber_title", "Clk_default", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+      bdll.b(this.app, "P_CliOper", "Grp_manage", "", "mber_title", "suc_title", 0, 0, this.jdField_b_of_type_JavaLangString, "0", "0", "0");
+      bdll.b(this.app, "P_CliOper", "Grp_manage", "", "mber_title", "Clk_default", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
     }
   }
   

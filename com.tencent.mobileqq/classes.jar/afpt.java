@@ -1,14 +1,28 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import java.util.Comparator;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
 public class afpt
-  implements Comparator<afpv>
+  implements View.OnFocusChangeListener
 {
-  private afpt(TroopTransferActivity paramTroopTransferActivity) {}
+  public afpt(SubLoginActivity paramSubLoginActivity) {}
   
-  public int a(afpv paramafpv1, afpv paramafpv2)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    return paramafpv1.f.compareToIgnoreCase(paramafpv2.f);
+    if (true == paramBoolean)
+    {
+      if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).getText().length() > 0)) {
+        SubLoginActivity.a(this.a).setVisibility(0);
+      }
+      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
+    }
+    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
+      return;
+    }
+    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

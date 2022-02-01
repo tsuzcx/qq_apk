@@ -1,20 +1,18 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqcircle.style.QCircleWebViewTitleStyle;
 
-public class vvg
-  extends RecyclerView.OnScrollListener
+public final class vvg
+  implements Parcelable.Creator<QCircleWebViewTitleStyle>
 {
-  public vvg(QCircleCommentListView paramQCircleCommentListView) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public QCircleWebViewTitleStyle a(Parcel paramParcel)
   {
-    if (paramInt == 0)
-    {
-      adcd.a().a("qcircle_comment_page", false);
-      return;
-    }
-    adcd.a().a("qcircle_comment_page");
+    return new QCircleWebViewTitleStyle(paramParcel);
+  }
+  
+  public QCircleWebViewTitleStyle[] a(int paramInt)
+  {
+    return new QCircleWebViewTitleStyle[paramInt];
   }
 }
 

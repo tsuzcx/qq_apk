@@ -1,17 +1,37 @@
-import android.app.Activity;
-import com.tencent.mobileqq.forward.ForwardArkMsgOption;
+import com.tencent.qphone.base.util.QLog;
 
-public class aufy
-  implements apip
+class aufy
+  implements aumz
 {
-  public aufy(ForwardArkMsgOption paramForwardArkMsgOption) {}
+  aufy(aufx paramaufx) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    if (!paramBoolean) {
-      this.a.a.finish();
+    int i = this.a.a.g();
+    if (this.a.a.f() == 6000) {
+      if (i == 0) {
+        if (this.a.a.h() == 2) {
+          auft.c(this.a.a);
+        }
+      }
+    }
+    for (;;)
+    {
+      if (this.a.a.a != null) {
+        this.a.a.a.d();
+      }
+      return;
+      auft.a(this.a.a);
+      continue;
+      auft.c(this.a.a);
+      continue;
+      if (QLog.isColorLevel()) {
+        QLog.i("DatalineFileModel<FileAssistant>", 2, "DatalineFileModel doStartDownload : error, this file is not from dataline");
+      }
     }
   }
+  
+  public void b() {}
 }
 
 

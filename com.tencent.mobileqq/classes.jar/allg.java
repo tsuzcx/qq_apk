@@ -1,66 +1,19 @@
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class allg
+class allg
+  implements View.OnClickListener
 {
-  private static WeakReference<alli> a;
-  private static WeakReference<allh> b;
+  allg(aljw paramaljw, azku paramazku) {}
   
-  public static void a()
+  public void onClick(View paramView)
   {
-    if (b != null) {}
-    for (allh localallh = (allh)b.get();; localallh = null)
-    {
-      if (localallh != null) {
-        localallh.i();
-      }
-      return;
-    }
-  }
-  
-  public static void a(int paramInt)
-  {
-    if (b != null) {}
-    for (allh localallh = (allh)b.get();; localallh = null)
-    {
-      if (localallh != null) {
-        localallh.b(paramInt);
-      }
-      return;
-    }
-  }
-  
-  public static void a(allh paramallh)
-  {
-    b = new WeakReference(paramallh);
-  }
-  
-  public static void a(alli paramalli)
-  {
-    a = new WeakReference(paramalli);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (b != null) {}
-    for (allh localallh = (allh)b.get();; localallh = null)
-    {
-      if (localallh != null) {
-        localallh.c(paramString);
-      }
-      return;
-    }
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    if (a != null) {}
-    for (alli localalli = (alli)a.get();; localalli = null)
-    {
-      if (localalli != null) {
-        localalli.a(paramString, paramInt);
-      }
-      return;
-    }
+    Intent localIntent = aziu.a(aljw.a(this.jdField_a_of_type_Aljw).app, this.jdField_a_of_type_Azku.a);
+    aljw.a(this.jdField_a_of_type_Aljw).startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

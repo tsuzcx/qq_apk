@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-
-public class anfo
-  implements DialogInterface.OnClickListener
+public abstract interface anfo
 {
-  public anfo(ApolloPanel paramApolloPanel) {}
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.n();
-  }
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void e();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

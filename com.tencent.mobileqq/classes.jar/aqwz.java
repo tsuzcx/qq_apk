@@ -1,73 +1,36 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class aqwz
-  extends aqwr<aqwy>
+  implements anvi
 {
-  @NonNull
-  public aqwy a()
-  {
-    return new aqwy();
-  }
+  public aqwz(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  @NonNull
-  public aqwy a(aqlg[] paramArrayOfaqlg)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    int j = paramArrayOfaqlg.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        String str = paramArrayOfaqlg[i].a;
-        if (QLog.isColorLevel()) {
-          QLog.i("PushOpenNotify", 2, "config :" + str);
-        }
-        if (!TextUtils.isEmpty(str))
-        {
-          aoht.a(localQQAppInterface, str, false);
-          PreferenceManager.getDefaultSharedPreferences(localQQAppInterface.getApp()).edit().putString(localQQAppInterface.c() + "_" + "push_open_notify_xml", str).commit();
-        }
-      }
-      else
-      {
-        return new aqwy();
-      }
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearchFriendActivity", 2, "onGetConfig | mDialogType = " + this.a.j + ", isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
     }
-  }
-  
-  @NonNull
-  public aqwy b()
-  {
-    return new aqwy();
-  }
-  
-  public Class<aqwy> clazz()
-  {
-    return aqwy.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public int type()
-  {
-    return 95;
+    if ((this.a.j == 1) || (this.a.j == 2))
+    {
+      if (paramBoolean) {
+        break label110;
+      }
+      this.a.a();
+      QQToast.a(this.a, 2131690905, 0).b(this.a.getTitleBarHeight());
+    }
+    label110:
+    while (paramInt != 2) {
+      return;
+    }
+    this.a.a();
+    this.a.a(this.a.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqwz
  * JD-Core Version:    0.7.0.1
  */

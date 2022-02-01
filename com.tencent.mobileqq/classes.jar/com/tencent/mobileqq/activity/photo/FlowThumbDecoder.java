@@ -12,9 +12,9 @@ import android.graphics.Rect;
 import android.media.ThumbnailUtils;
 import android.provider.MediaStore.Video.Thumbnails;
 import android.util.DisplayMetrics;
-import bctj;
-import bdzx;
-import beai;
+import bdmc;
+import beyq;
+import bezb;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
 import com.tencent.mobileqq.activity.photo.album.QAlbumUtil;
@@ -24,7 +24,7 @@ import java.net.URL;
 import java.util.HashMap;
 
 public class FlowThumbDecoder
-  implements beai
+  implements bezb
 {
   static final int SCALE_MODE_BY_HEIGHT = 2;
   static final int SCALE_MODE_BY_WIDTH = 1;
@@ -44,9 +44,9 @@ public class FlowThumbDecoder
   {
     Resources localResources = paramContext.getResources();
     this.mDensity = localResources.getDisplayMetrics().density;
-    sFlowItemHeight = localResources.getDimension(2131297031);
-    sFlowItemMaxWidth = localResources.getDimension(2131297029);
-    sFlowItemMinWidth = localResources.getDimension(2131297030);
+    sFlowItemHeight = localResources.getDimension(2131297043);
+    sFlowItemMaxWidth = localResources.getDimension(2131297041);
+    sFlowItemMinWidth = localResources.getDimension(2131297042);
     sRatioMax = sFlowItemMaxWidth / sFlowItemHeight;
     sRatioMin = sFlowItemMinWidth / sFlowItemHeight;
     if (sFlowItemHeight == 0.0F) {
@@ -242,11 +242,11 @@ public class FlowThumbDecoder
         {
           paramOptions = paramContext.getInfo();
           paramOptions.put("from", "FlowThumbDecoder");
-          bctj localbctj = bctj.a(BaseApplication.getContext());
+          bdmc localbdmc = bdmc.a(BaseApplication.getContext());
           boolean bool = paramContext.isGetBitmap;
           long l = paramContext.runTime;
           i = paramContext.rawHeight;
-          localbctj.a(null, "safeDecode", bool, l, paramContext.rawWidth * i, paramOptions, "");
+          localbdmc.a(null, "safeDecode", bool, l, paramContext.rawWidth * i, paramOptions, "");
         }
         return paramLocalMediaInfo;
       }
@@ -315,7 +315,7 @@ public class FlowThumbDecoder
   {
     paramURL = this.mContext;
     LocalMediaInfo localLocalMediaInfo = this.mInfo;
-    int i = bdzx.a(localLocalMediaInfo.path);
+    int i = beyq.a(localLocalMediaInfo.path);
     if ((i != 0) && (i != localLocalMediaInfo.orientation))
     {
       if (QLog.isColorLevel()) {

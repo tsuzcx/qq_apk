@@ -1,20 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
 
-class qzg
-  extends pmn
+public final class qzg
+  implements Parcelable.Creator<UrlJumpInfo>
 {
-  private qzg(qze paramqze) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public UrlJumpInfo a(Parcel paramParcel)
   {
-    if ((paramBoolean) && (qze.a(this.a) != null) && (qze.a(this.a).getVisibility() == 0))
-    {
-      qze.a(this.a, new rar(qze.a(this.a).getContext()));
-      qze.a(this.a).a(paramString);
-      qze.a(this.a).a(RIJRedPacketManager.a().d());
-      qze.a(this.a).showAsDropDown(qze.a(this.a), 0, bgtn.a(6.0F));
-    }
+    return new UrlJumpInfo(paramParcel);
+  }
+  
+  public UrlJumpInfo[] a(int paramInt)
+  {
+    return new UrlJumpInfo[paramInt];
   }
 }
 

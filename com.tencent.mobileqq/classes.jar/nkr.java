@@ -1,36 +1,77 @@
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.biz.common.offline.HtmlOffline.6;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class nkr
-  implements nkl
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public nkr(HtmlOffline.6 param6) {}
+  private final int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private nks jdField_a_of_type_Nks;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void loaded(String paramString, int paramInt)
+  public nkr(View paramView, nks paramnks)
   {
-    long l = System.currentTimeMillis() - this.a.jdField_a_of_type_Long;
-    if (nko.a.a()) {
-      nko.a.a("HtmlCheckUpdate", 2, "js call downloadUpdate callback:" + paramInt + ", time:" + l);
-    }
-    if (paramInt == 0) {
-      if (nko.b(this.a.b)) {
-        this.a.jdField_a_of_type_Nkl.loaded(null, 0);
-      }
-    }
-    for (;;)
-    {
-      BidDownloader.b(this.a.b);
-      nko.a(this.a.b, paramInt, l, nmd.a(this.a.jdField_a_of_type_AndroidContentContext));
-      return;
-      this.a.jdField_a_of_type_Nkl.loaded(null, 6);
-      continue;
-      this.a.jdField_a_of_type_Nkl.loaded(null, 2);
-    }
+    this(paramView, paramnks, zps.a(paramView.getContext(), 160.0F));
   }
   
-  public void progress(int paramInt)
+  public nkr(View paramView, nks paramnks, int paramInt)
   {
-    this.a.jdField_a_of_type_Nkl.progress(paramInt);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Nks = paramnks;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(this);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Nks = null;
+    try
+    {
+      if (Build.VERSION.SDK_INT >= 16) {
+        this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      }
+      return;
+    }
+    catch (Throwable localThrowable) {}
+  }
+  
+  public void onGlobalLayout()
+  {
+    boolean bool = true;
+    Rect localRect = new Rect();
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+        int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+        int j = localRect.bottom;
+        int k = localRect.top;
+        if (this.jdField_a_of_type_Nks != null)
+        {
+          if (i - (j - k) < this.jdField_a_of_type_Int) {
+            break label113;
+          }
+          if (bool != this.jdField_a_of_type_Boolean)
+          {
+            this.jdField_a_of_type_Boolean = bool;
+            this.jdField_a_of_type_Nks.a(bool, localRect.right, localRect.bottom);
+          }
+        }
+        return;
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        QLog.e("SoftKeyboardObserver", 1, "getWindowVisibleDisplayFrame error", localNullPointerException);
+        return;
+      }
+      label113:
+      bool = false;
+    }
   }
 }
 

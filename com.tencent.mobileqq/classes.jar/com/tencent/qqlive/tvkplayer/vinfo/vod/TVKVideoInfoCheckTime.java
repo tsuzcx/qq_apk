@@ -20,7 +20,7 @@ import org.xml.sax.InputSource;
 public class TVKVideoInfoCheckTime
 {
   private static int CURRENT_HOST_URL_RETRY_MAX_COUNT = 3;
-  private static final String TAG = "MediaPlayerMgr[TVKVideoInfoCheckTime]";
+  public static final String TAG = "MediaPlayerMgr[TVKVideoInfoCheckTime]";
   private static TVKVideoInfoCheckTime mCheckTime;
   public static long mElapsedRealTime;
   public static String mRandKey;

@@ -1,19 +1,12 @@
 public class aywf
+  extends agyv
 {
-  public String a;
-  public String b;
-  public String c;
+  public void doOnEvent(int paramInt) {}
   
-  public aywf(String paramString1, String paramString2, String paramString3)
+  public void e()
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
-  
-  public String toString()
-  {
-    return "PhoneInfo{countryCode='" + this.a + '\'' + ", areaCode='" + this.b + '\'' + ", rawPhoneNum='" + this.c + '\'' + '}';
+    this.a = false;
+    super.doOnEvent(2);
   }
 }
 

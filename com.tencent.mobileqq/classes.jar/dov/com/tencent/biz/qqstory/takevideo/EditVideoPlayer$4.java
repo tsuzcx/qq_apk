@@ -1,21 +1,21 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.graphics.Bitmap;
-import bpex;
+import bqgs;
 import java.util.concurrent.CountDownLatch;
 
 public class EditVideoPlayer$4
   implements Runnable
 {
-  public EditVideoPlayer$4(bpex parambpex, int paramInt, Bitmap[] paramArrayOfBitmap, CountDownLatch paramCountDownLatch) {}
+  public EditVideoPlayer$4(bqgs parambqgs, int paramInt, Bitmap[] paramArrayOfBitmap, CountDownLatch paramCountDownLatch) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 16	dov/com/tencent/biz/qqstory/takevideo/EditVideoPlayer$4:this$0	Lbpex;
-    //   4: getfield 32	bpex:a	Ljava/util/List;
+    //   1: getfield 16	dov/com/tencent/biz/qqstory/takevideo/EditVideoPlayer$4:this$0	Lbqgs;
+    //   4: getfield 32	bqgs:a	Ljava/util/List;
     //   7: astore_1
     //   8: aload_1
     //   9: ifnull +56 -> 65
@@ -28,7 +28,7 @@ public class EditVideoPlayer$4
     //   26: aload_0
     //   27: getfield 18	dov/com/tencent/biz/qqstory/takevideo/EditVideoPlayer$4:jdField_a_of_type_Int	I
     //   30: invokeinterface 42 2 0
-    //   35: checkcast 44	bpgs
+    //   35: checkcast 44	bqin
     //   38: astore_1
     //   39: aload_1
     //   40: ifnull +17 -> 57
@@ -36,9 +36,9 @@ public class EditVideoPlayer$4
     //   44: getfield 20	dov/com/tencent/biz/qqstory/takevideo/EditVideoPlayer$4:jdField_a_of_type_ArrayOfAndroidGraphicsBitmap	[Landroid/graphics/Bitmap;
     //   47: iconst_0
     //   48: aload_0
-    //   49: getfield 16	dov/com/tencent/biz/qqstory/takevideo/EditVideoPlayer$4:this$0	Lbpex;
+    //   49: getfield 16	dov/com/tencent/biz/qqstory/takevideo/EditVideoPlayer$4:this$0	Lbqgs;
     //   52: aload_1
-    //   53: invokevirtual 47	bpex:a	(Lbpgs;)Landroid/graphics/Bitmap;
+    //   53: invokevirtual 47	bqgs:a	(Lbqin;)Landroid/graphics/Bitmap;
     //   56: aastore
     //   57: aload_0
     //   58: getfield 22	dov/com/tencent/biz/qqstory/takevideo/EditVideoPlayer$4:jdField_a_of_type_JavaUtilConcurrentCountDownLatch	Ljava/util/concurrent/CountDownLatch;

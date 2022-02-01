@@ -15,17 +15,17 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.BadTokenException;
-import bgln;
-import bglp;
-import bgpa;
+import bhlo;
+import bhlq;
+import bhpc;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import lyl;
-import lyu;
+import lzh;
+import lzq;
 import mqq.app.BaseActivity;
 
 public class SmallScreenDialogActivity
@@ -34,44 +34,44 @@ public class SmallScreenDialogActivity
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lyl(this);
-  private bgpa jdField_a_of_type_Bgpa;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lzh(this);
+  private bhpc jdField_a_of_type_Bhpc;
   public VideoAppInterface a;
   private final String jdField_a_of_type_JavaLangString = "SmallScreenDialogActivity_" + AudioHelper.b();
-  private bgpa b;
+  private bhpc b;
   
-  private bgpa a()
+  private bhpc a()
   {
-    bgpa localbgpa;
-    if (this.jdField_a_of_type_Bgpa == null)
+    bhpc localbhpc;
+    if (this.jdField_a_of_type_Bhpc == null)
     {
-      localbgpa = bglp.a(this, 230).setMessage(2131695212).setNegativeButton(2131690582, this);
+      localbhpc = bhlq.a(this, 230).setMessage(2131695255).setNegativeButton(2131690580, this);
       if (!c()) {
         break label76;
       }
     }
     label76:
-    for (int i = 2131695216;; i = 2131695227)
+    for (int i = 2131695259;; i = 2131695270)
     {
-      this.jdField_a_of_type_Bgpa = localbgpa.setPositiveButton(i, this);
-      this.jdField_a_of_type_Bgpa.setTitle(2131695214);
-      this.jdField_a_of_type_Bgpa.setCancelable(false);
-      this.jdField_a_of_type_Bgpa.setCanceledOnTouchOutside(false);
-      return this.jdField_a_of_type_Bgpa;
+      this.jdField_a_of_type_Bhpc = localbhpc.setPositiveButton(i, this);
+      this.jdField_a_of_type_Bhpc.setTitle(2131695257);
+      this.jdField_a_of_type_Bhpc.setCancelable(false);
+      this.jdField_a_of_type_Bhpc.setCanceledOnTouchOutside(false);
+      return this.jdField_a_of_type_Bhpc;
     }
   }
   
   static boolean a()
   {
-    return !"vivo".equalsIgnoreCase(bgln.h());
+    return !"vivo".equalsIgnoreCase(bhlo.h());
   }
   
-  private bgpa b()
+  private bhpc b()
   {
     if (this.b == null)
     {
-      this.b = bglp.a(this, 230).setMessage(2131695213).setNegativeButton(2131690582, this).setPositiveButton(2131692868, this);
-      this.b.setTitle(2131695215);
+      this.b = bhlq.a(this, 230).setMessage(2131695256).setNegativeButton(2131690580, this).setPositiveButton(2131692876, this);
+      this.b.setTitle(2131695258);
       this.b.setCancelable(false);
       this.b.setCanceledOnTouchOutside(false);
     }
@@ -89,7 +89,7 @@ public class SmallScreenDialogActivity
   
   private boolean c()
   {
-    if ((lyu.a(this, "miui.intent.action.APP_PERM_EDITOR")) || (lyu.a(this, "com.meizu.safe.security.SHOW_APPSEC")) || (lyu.a(this, "huawei.intent.action.NOTIFICATIONMANAGER")) || (lyu.a(this, "android.settings.action.MANAGE_OVERLAY_PERMISSION"))) {}
+    if ((lzq.a(this, "miui.intent.action.APP_PERM_EDITOR")) || (lzq.a(this, "com.meizu.safe.security.SHOW_APPSEC")) || (lzq.a(this, "huawei.intent.action.NOTIFICATIONMANAGER")) || (lzq.a(this, "android.settings.action.MANAGE_OVERLAY_PERMISSION"))) {}
     for (boolean bool1 = true;; bool1 = false)
     {
       boolean bool2 = bool1;
@@ -105,7 +105,7 @@ public class SmallScreenDialogActivity
     boolean bool3 = false;
     String str3 = getPackageName();
     Object localObject1 = null;
-    if ((a()) && (lyu.a(this, "android.settings.action.MANAGE_OVERLAY_PERMISSION"))) {
+    if ((a()) && (lzq.a(this, "android.settings.action.MANAGE_OVERLAY_PERMISSION"))) {
       localObject1 = new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:" + str3));
     }
     for (;;)
@@ -133,7 +133,7 @@ public class SmallScreenDialogActivity
       {
         bool1 = bool2;
         localObject3 = localObject1;
-        if (lyu.a(this, "miui.intent.action.APP_PERM_EDITOR"))
+        if (lzq.a(this, "miui.intent.action.APP_PERM_EDITOR"))
         {
           localObject3 = new Intent("miui.intent.action.APP_PERM_EDITOR");
           ((Intent)localObject3).setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
@@ -162,7 +162,7 @@ public class SmallScreenDialogActivity
       {
         bool2 = bool1;
         localObject1 = localObject3;
-        if (lyu.a(this, "com.meizu.safe.security.SHOW_APPSEC"))
+        if (lzq.a(this, "com.meizu.safe.security.SHOW_APPSEC"))
         {
           localObject1 = new Intent("com.meizu.safe.security.SHOW_APPSEC");
           ((Intent)localObject1).setClassName("com.meizu.safe", "com.meizu.safe.security.AppSecActivity");
@@ -187,7 +187,7 @@ public class SmallScreenDialogActivity
         localObject2 = str2;
         continue;
       }
-      if ((!bool2) && ("vivo".equalsIgnoreCase(bgln.h())) && (lyu.a(this, "permission.intent.action.softPermissionDetail")))
+      if ((!bool2) && ("vivo".equalsIgnoreCase(bhlo.h())) && (lzq.a(this, "permission.intent.action.softPermissionDetail")))
       {
         localObject3 = new Intent("permission.intent.action.softPermissionDetail");
         try
@@ -212,7 +212,7 @@ public class SmallScreenDialogActivity
         {
           localObject3 = localObject1;
           bool2 = bool1;
-          if (lyu.a(this, "huawei.intent.action.NOTIFICATIONMANAGER"))
+          if (lzq.a(this, "huawei.intent.action.NOTIFICATIONMANAGER"))
           {
             localObject3 = new Intent();
             ((Intent)localObject3).setClassName("com.huawei.systemmanager", "com.huawei.systemmanager.addviewmonitor.AddViewMonitorActivity");
@@ -281,18 +281,18 @@ public class SmallScreenDialogActivity
     }
   }
   
-  void a(String paramString, bgpa parambgpa)
+  void a(String paramString, bhpc parambhpc)
   {
     try
     {
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "showDialog, from[" + paramString + "]");
-      parambgpa.show();
+      parambhpc.show();
       return;
     }
     catch (WindowManager.BadTokenException localBadTokenException)
     {
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "showDialog BadTokenException, from[" + paramString + "]", localBadTokenException);
-      getWindow().getDecorView().post(new SmallScreenDialogActivity.2(this, paramString, parambgpa));
+      getWindow().getDecorView().post(new SmallScreenDialogActivity.2(this, paramString, parambhpc));
     }
   }
   
@@ -349,7 +349,7 @@ public class SmallScreenDialogActivity
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDialogInterface.equals(this.jdField_a_of_type_Bgpa)) {
+    if (paramDialogInterface.equals(this.jdField_a_of_type_Bhpc)) {
       switch (paramInt)
       {
       }
@@ -359,7 +359,7 @@ public class SmallScreenDialogActivity
       return;
       boolean bool = getIntent().getBooleanExtra("is_video", false);
       paramDialogInterface = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-      lyu.a(paramDialogInterface, lyu.a(paramDialogInterface, bool) + 1, bool);
+      lzq.a(paramDialogInterface, lzq.a(paramDialogInterface, bool) + 1, bool);
       finish();
       return;
       if (c())
@@ -376,7 +376,7 @@ public class SmallScreenDialogActivity
     default: 
       return;
     case 0: 
-      if (lyu.b(this))
+      if (lzq.b(this))
       {
         QLog.w(this.jdField_a_of_type_JavaLangString, 1, "锁屏中，不弹2");
         finish();
@@ -391,7 +391,7 @@ public class SmallScreenDialogActivity
         finish();
         return;
       }
-      a("clickCancel", this.jdField_a_of_type_Bgpa);
+      a("clickCancel", this.jdField_a_of_type_Bhpc);
       return;
     }
     b();
@@ -413,7 +413,7 @@ public class SmallScreenDialogActivity
     paramBundle = new IntentFilter();
     paramBundle.addAction("tencent.video.v2q.SmallScreenState");
     registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-    if (lyu.c(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp())) {
+    if (lzq.c(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp())) {
       finish();
     }
   }
@@ -427,19 +427,19 @@ public class SmallScreenDialogActivity
   public void onResume()
   {
     super.onResume();
-    if (lyu.b(this))
+    if (lzq.b(this))
     {
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "锁屏中，不弹1");
       finish();
       return;
     }
-    if (this.jdField_a_of_type_Bgpa == null)
+    if (this.jdField_a_of_type_Bhpc == null)
     {
       a();
-      a("onResume.1", this.jdField_a_of_type_Bgpa);
+      a("onResume.1", this.jdField_a_of_type_Bhpc);
       return;
     }
-    if (!lyu.c(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp()))
+    if (!lzq.c(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp()))
     {
       b();
       a("onResume.1", this.b);

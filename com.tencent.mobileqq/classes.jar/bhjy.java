@@ -1,124 +1,88 @@
-import android.content.Intent;
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.CardProfile;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 
-class bhjy
-  extends bhhe
+public class bhjy
 {
-  bhjy(bhjt parambhjt, String paramString1, String paramString2)
+  public static CardProfile a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
   {
-    super(paramString1, paramString2);
-  }
-  
-  public void onDone(bhhf parambhhf)
-  {
-    super.onDone(parambhhf);
-    if (QLog.isColorLevel()) {
-      QLog.d("VipFunCallManager", 2, "onDone, status=" + parambhhf.a() + ", task.errCode:" + parambhhf.jdField_a_of_type_Int + ", key=" + parambhhf.jdField_a_of_type_JavaLangString);
-    }
-    Bundle localBundle = parambhhf.a();
-    if (localBundle == null) {
-      QLog.e("VipFunCallManager", 1, "mDownloadListener onDone Err0, key:" + parambhhf.jdField_a_of_type_JavaLangString);
-    }
-    boolean bool;
-    label121:
-    do
+    boolean bool = true;
+    CardProfile localCardProfile = null;
+    EntityManager localEntityManager = paramQQAppInterface.a().createEntityManager();
+    paramQQAppInterface = localCardProfile;
+    if (localEntityManager != null)
     {
-      return;
-      if ((parambhhf.a() != 3) || (parambhhf.jdField_a_of_type_Int != 0)) {
-        break;
+      localCardProfile = (CardProfile)localEntityManager.find(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(paramInt) });
+      paramQQAppInterface = localCardProfile;
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder().append("readFromDb. uin:").append(paramLong).append(" find:");
+        if (localCardProfile == null) {
+          break label111;
+        }
       }
-      bool = true;
-      if (!bool) {
-        QLog.e("VipFunCallManager", 1, "mDownloadListener onDone fail, task.getStatus():" + parambhhf.a() + ", task.errCode:" + parambhhf.jdField_a_of_type_Int);
-      }
-    } while (localBundle.getInt("dealType") == 0);
-    int i = localBundle.getInt("callId");
-    int j = localBundle.getInt("resourceType");
-    Object localObject = localBundle.getString("path");
-    if (localBundle.getBoolean("isExists", false)) {}
+    }
     for (;;)
     {
-      if (!bool) {
-        QLog.e("VipFunCallManager", 1, "mDownloadListener onDone rename failure. path:" + (String)localObject);
-      }
-      if ((localBundle.getBoolean("isIPC")) && (this.a.jdField_a_of_type_Bhhl != null))
-      {
-        localObject = new Bundle();
-        ((Bundle)localObject).putInt("fcStatus", 3);
-        ((Bundle)localObject).putInt("callId", i);
-        ((Bundle)localObject).putInt("srcType", localBundle.getInt("srcType"));
-        ((Bundle)localObject).putBoolean("result_boo", bool);
-        ((Bundle)localObject).putInt("resourceType", j);
-        this.a.jdField_a_of_type_Bhhl.a(i, parambhhf.a(), (Bundle)localObject);
-      }
-      if (9 != bhjt.a()) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VipFunCallManager", 2, "sendBroadcast :tencent.video.q2v.AnnimateDownloadFinish");
-      }
-      parambhhf = new Intent("tencent.video.q2v.AnnimateDownloadFinish");
-      parambhhf.putExtra("fun_call_id", i);
-      parambhhf.setPackage(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName());
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(parambhhf);
-      return;
+      QLog.i("VoteUtil", 2, bool);
+      paramQQAppInterface = localCardProfile;
+      return paramQQAppInterface;
+      label111:
       bool = false;
-      break label121;
-      bool = bgmg.c((String)localObject + ".tmp", (String)localObject);
     }
   }
   
-  public void onProgress(bhhf parambhhf)
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipFunCallManager", 2, "onProgress, loaded=" + parambhhf.b + "percent=" + parambhhf.jdField_a_of_type_Float + ", key=" + parambhhf.jdField_a_of_type_JavaLangString);
-    }
-    Bundle localBundle1 = parambhhf.a();
-    if (localBundle1 == null) {
-      QLog.e("VipFunCallManager", 1, "mDownloadListener onProgress Err0, key:" + parambhhf.jdField_a_of_type_JavaLangString);
-    }
-    while ((localBundle1.getInt("dealType") == 0) || (!parambhhf.a().getBoolean("isIPC")) || (this.a.jdField_a_of_type_Bhhl == null)) {
-      return;
-    }
-    Bundle localBundle2 = new Bundle();
-    localBundle2.putInt("fcStatus", 2);
-    localBundle2.putInt("callId", localBundle1.getInt("callId"));
-    localBundle2.putInt("srcType", localBundle1.getInt("srcType"));
-    localBundle2.putInt("progress", (int)parambhhf.jdField_a_of_type_Float);
-    localBundle2.putInt("resourceType", localBundle1.getInt("resourceType"));
-    this.a.jdField_a_of_type_Bhhl.a(localBundle2);
-  }
-  
-  public boolean onStart(bhhf parambhhf)
-  {
-    Bundle localBundle = parambhhf.a();
-    if (localBundle == null) {
-      QLog.e("VipFunCallManager", 1, "mDownloadListener onStart Err0, key:" + parambhhf.jdField_a_of_type_JavaLangString);
-    }
-    int i;
-    boolean bool;
-    do
+    Object localObject = paramQQAppInterface.a().createEntityManager();
+    CardProfile localCardProfile;
+    if (localObject != null)
     {
-      do
+      paramQQAppInterface = (CardProfile)((EntityManager)localObject).find(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(2) });
+      if (paramQQAppInterface != null)
       {
-        return true;
-      } while (localBundle.getInt("dealType") == 0);
-      i = localBundle.getInt("resourceType");
-      bool = localBundle.getBoolean("isIPC");
-      if (QLog.isColorLevel()) {
-        QLog.d("VipFunCallManager", 2, "onStart, loaded=" + parambhhf.b + ", percent=" + parambhhf.jdField_a_of_type_Float + ", resType=" + i + ", isIPC=" + bool);
+        paramQQAppInterface.bAvailableCnt -= paramInt;
+        paramQQAppInterface.bTodayVotedCnt += paramInt;
+        if (paramQQAppInterface.getStatus() != 1000) {
+          break label238;
+        }
+        ((EntityManager)localObject).persistOrReplace(paramQQAppInterface);
       }
-    } while ((!bool) || (this.a.jdField_a_of_type_Bhhl == null));
-    parambhhf = new Bundle();
-    parambhhf.putInt("fcStatus", 1);
-    parambhhf.putInt("callId", localBundle.getInt("callId"));
-    parambhhf.putInt("srcType", localBundle.getInt("srcType"));
-    parambhhf.putInt("resourceType", i);
-    this.a.jdField_a_of_type_Bhhl.a(parambhhf);
-    return true;
+      localCardProfile = (CardProfile)((EntityManager)localObject).find(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(3) });
+      if (localCardProfile != null)
+      {
+        localCardProfile.bAvailableCnt -= paramInt;
+        localCardProfile.bTodayVotedCnt += paramInt;
+        localCardProfile.bVoteCnt = ((short)(int)localCardProfile.bTodayVotedCnt);
+        if (localCardProfile.getStatus() != 1000) {
+          break label248;
+        }
+        ((EntityManager)localObject).persistOrReplace(localCardProfile);
+      }
+      label180:
+      ((EntityManager)localObject).close();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder().append("updateProfileCardVote. uin:").append(paramLong).append(" find:");
+        if (paramQQAppInterface == null) {
+          break label259;
+        }
+      }
+    }
+    label259:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("VoteUtil", 2, bool);
+      return;
+      label238:
+      ((EntityManager)localObject).update(paramQQAppInterface);
+      break;
+      label248:
+      ((EntityManager)localObject).update(localCardProfile);
+      break label180;
+    }
   }
 }
 

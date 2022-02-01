@@ -1,17 +1,29 @@
-import android.view.View;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import com.tencent.gdtad.jsbridge.GdtBannerFragmentForJS;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface actu
+public class actu
+  implements acun
 {
-  public abstract void a(View paramView);
-  
-  public abstract void a(GdtVideoCommonView paramGdtVideoCommonView);
-  
-  public abstract void b(GdtVideoCommonView paramGdtVideoCommonView);
-  
-  public abstract void c(GdtVideoCommonView paramGdtVideoCommonView);
-  
-  public abstract void d(GdtVideoCommonView paramGdtVideoCommonView);
+  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
+  {
+    if (paramacts != null) {}
+    for (paramString = paramacts.a(); (paramacts == null) || (paramString == null); paramString = null)
+    {
+      acvc.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    try
+    {
+      GdtBannerFragmentForJS.a(paramString, new JSONObject(paramVarArgs[0]), GdtBannerFragmentForJS.class);
+      return true;
+    }
+    catch (JSONException paramacts)
+    {
+      acvc.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramacts);
+    }
+    return true;
+  }
 }
 
 

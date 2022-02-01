@@ -1,28 +1,18 @@
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 
-class avmq
-  extends bdrk
+public abstract interface avmq
 {
-  avmq(avmp paramavmp) {}
+  public abstract String a();
   
-  protected void a(boolean paramBoolean, bdrn parambdrn, int paramInt, String paramString)
-  {
-    if ((!paramBoolean) || (parambdrn == null)) {}
-    do
-    {
-      do
-      {
-        return;
-        QLog.i("WatchTogetherManager", 1, "onGetPlayState  groupuin = " + parambdrn.e);
-      } while (!(parambdrn instanceof WatchTogetherSession));
-      paramString = avmp.a(this.a, (WatchTogetherSession)parambdrn);
-    } while (paramString == null);
-    this.a.b(parambdrn.e, paramString);
-    paramInt = paramString.a;
-    this.a.a("100", paramInt, null);
-  }
+  public abstract void a();
+  
+  public abstract void a(MessageRecord paramMessageRecord, Activity paramActivity);
+  
+  public abstract void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity, int paramInt);
+  
+  public abstract void b();
 }
 
 

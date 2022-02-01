@@ -1,23 +1,39 @@
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView;
-import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel;
-import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel.6;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
 public class bohy
   implements Animator.AnimatorListener
 {
-  public bohy(AEEditorTextControlPanel.6 param6) {}
+  public bohy(AECropperImageView paramAECropperImageView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.onAnimationCancel(paramAnimator);
+    }
+  }
   
-  public void onAnimationEnd(Animator paramAnimator) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.onAnimationEnd(paramAnimator);
+    }
+  }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, true);
+  }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    AEEditorTextControlPanel.a(this.a.this$0).setVisibility(0);
+    AECropperImageView.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.onAnimationStart(paramAnimator);
+    }
   }
 }
 

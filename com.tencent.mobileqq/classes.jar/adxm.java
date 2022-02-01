@@ -1,14 +1,59 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.oidb_0x87a.RspBody;
+import tencent.im.oidb.oidb_0x87c.RspBody;
 
-class adxm
-  implements DialogInterface.OnClickListener
+public class adxm
+  extends ayxn
 {
-  adxm(adxl paramadxl) {}
+  private WeakReference<ayxn> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adxm(ayxn paramayxn)
   {
-    paramDialogInterface.dismiss();
+    this.a = new WeakReference(paramayxn);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    ayxn localayxn = (ayxn)this.a.get();
+    if (localayxn != null)
+    {
+      localayxn.a(paramString1, paramInt, paramString2);
+      return;
+    }
+    super.a(paramString1, paramInt, paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    ayxn localayxn = (ayxn)this.a.get();
+    if (localayxn != null)
+    {
+      localayxn.a(paramString1, paramString2);
+      return;
+    }
+    super.a(paramString1, paramString2);
+  }
+  
+  public void a(oidb_0x87a.RspBody paramRspBody)
+  {
+    ayxn localayxn = (ayxn)this.a.get();
+    if (localayxn != null)
+    {
+      localayxn.a(paramRspBody);
+      return;
+    }
+    super.a(paramRspBody);
+  }
+  
+  public void a(oidb_0x87c.RspBody paramRspBody)
+  {
+    ayxn localayxn = (ayxn)this.a.get();
+    if (localayxn != null)
+    {
+      localayxn.a(paramRspBody);
+      return;
+    }
+    super.a(paramRspBody);
   }
 }
 

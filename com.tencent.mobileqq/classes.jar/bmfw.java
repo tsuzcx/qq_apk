@@ -1,25 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.share.QZoneShareActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class bmfw
-  implements View.OnClickListener
 {
-  public bmfw(QZoneShareActivity paramQZoneShareActivity) {}
+  private static HashMap<String, Long> a = new HashMap();
   
-  public void onClick(View paramView)
+  public static void a(String paramString)
   {
-    if (!this.a.d) {
-      this.a.f();
+    if (QLog.isColorLevel()) {
+      a.put(paramString, Long.valueOf(System.currentTimeMillis()));
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public static void b(String paramString)
+  {
+    if ((!QLog.isColorLevel()) || (!a.containsKey(paramString))) {
       return;
-      this.a.h();
-      this.a.a();
     }
+    long l = ((Long)a.get(paramString)).longValue();
+    a.remove(paramString);
+    QLog.d("ElapseStat", 2, paramString + " elpase:" + (System.currentTimeMillis() - l));
   }
 }
 

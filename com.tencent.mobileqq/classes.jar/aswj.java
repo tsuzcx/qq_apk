@@ -1,19 +1,18 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
 public class aswj
-  extends ayes
 {
-  public aswj(FileAssistantActivity paramFileAssistantActivity) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    QLog.i("FileAssistantActivity", 1, " fileRedTouch get push GameCenterObserver ");
-    paramBundle = this.a.a.obtainMessage(1);
-    this.a.a.sendMessage(paramBundle);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<String> a;
+  public JSONObject a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
 }
 
 

@@ -1,35 +1,21 @@
-import com.idlefish.flutterboost.FlutterBoost;
-import com.idlefish.flutterboost.FlutterBoost.BoostLifecycleListener;
-import com.tencent.qphone.base.util.QLog;
-import io.flutter.embedding.engine.FlutterEngine;
-import io.flutter.plugins.GeneratedPluginRegistrant;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class aufq
-  implements FlutterBoost.BoostLifecycleListener
+  implements aufb
 {
-  aufq(aufo paramaufo) {}
+  aufq(aufn paramaufn) {}
   
-  public void beforeCreateEngine()
+  public void a()
   {
-    QLog.d("QFlutter.launcher", 1, "beforeCreateEngine");
+    this.a.a(true, aumg.a(this.a.a.a()), this.a.c(), new aufr(this));
   }
   
-  public void onEngineCreated()
+  public void b()
   {
-    QLog.d("QFlutter.launcher", 1, "onEngineCreated");
-    FlutterEngine localFlutterEngine = FlutterBoost.instance().engineProvider();
-    GeneratedPluginRegistrant.registerWith(localFlutterEngine);
-    auef.a().a(localFlutterEngine.getDartExecutor(), localFlutterEngine.getRenderer());
-    aufo.a(this.a).e();
-    aufo.a(this.a, 0, true);
+    this.a.d();
+    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.d());
   }
-  
-  public void onEngineDestroy()
-  {
-    QLog.d("QFlutter.launcher", 1, "onEngineDestroy");
-  }
-  
-  public void onPluginsRegistered() {}
 }
 
 

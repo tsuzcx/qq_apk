@@ -1,22 +1,14 @@
-import android.arch.lifecycle.MutableLiveData;
-import com.tencent.biz.qqcircle.requests.QCircleGetFeedDetailRequest;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudCommon.StCommonExt;
-import feedcloud.FeedCloudRead.StGetFeedDetailRsp;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetCommentListRsp;
 
 class vke
-  implements zxa<FeedCloudRead.StGetFeedDetailRsp>
+  implements aaav<FeedCloudRead.StGetCommentListRsp>
 {
-  vke(vkb paramvkb, QCircleGetFeedDetailRequest paramQCircleGetFeedDetailRequest) {}
+  vke(vjy paramvjy, int paramInt, FeedCloudMeta.StFeed paramStFeed, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetCommentListRsp paramStGetCommentListRsp)
   {
-    QLog.d("QCircleContentModel", 1, "getSingleFeed onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedDetailRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedDetailRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
-    if ((paramStGetFeedDetailRsp != null) && (paramStGetFeedDetailRsp.extInfo.has())) {
-      this.jdField_a_of_type_Vkb.a((FeedCloudCommon.StCommonExt)paramStGetFeedDetailRsp.extInfo.get());
-    }
-    vkb.a(this.jdField_a_of_type_Vkb).postValue(new uzp(paramLong, paramString, paramStGetFeedDetailRsp, false));
-    this.jdField_a_of_type_Vkb.a().a(4);
+    vjy.a(this.jdField_a_of_type_Vjy, this.jdField_a_of_type_Int, paramBoolean, paramLong, paramString, paramStGetCommentListRsp, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

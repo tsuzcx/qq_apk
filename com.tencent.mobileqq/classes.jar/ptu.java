@@ -1,151 +1,36 @@
-import android.net.Uri;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.guidingchannel.ReadInJoyChannelGuidingManager.1;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
-import java.util.List;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.InnerMsg;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class ptu
 {
-  private static SparseArray<ptv> a = new SparseArray();
-  private static SparseArray<String> b = new SparseArray();
-  
-  private static void a(int paramInt)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    QLog.i("ReadInJoyChannelGuidingManager", 1, "[clearInsertedArticleInfo], channelID = " + paramInt);
-    a.remove(paramInt);
-  }
-  
-  public static void a(BaseArticleInfo paramBaseArticleInfo, ReadInJoyXListView paramReadInJoyXListView, snh paramsnh)
-  {
-    if ((paramBaseArticleInfo == null) || (paramReadInJoyXListView == null) || (paramsnh == null))
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    if (paramBaseArticleInfo.mSinglePicture != null) {}
+    for (Object localObject = paramBaseArticleInfo.mSinglePicture.getFile();; localObject = null)
     {
-      QLog.e("ReadInJoyChannelGuidingManager", 1, "[openFirstInsertedArticle], articleInfo is null or listView is null, or adapter is null.");
-      return;
-    }
-    int i = (int)paramBaseArticleInfo.mChannelID;
-    String str = (String)b.get(i);
-    b.remove(i);
-    if (!TextUtils.equals(paramBaseArticleInfo.innerUniqueID, str))
-    {
-      QLog.i("ReadInJoyChannelGuidingManager", 1, "[openFirstInsertedArticle], rowKey not equal, do not open; channelID = " + i + ", lastRowKey = " + str + ", innerUniqueID = " + paramBaseArticleInfo.innerUniqueID);
-      return;
-    }
-    QLog.i("ReadInJoyChannelGuidingManager", 1, "[openFirstInsertedArticle], click first article.");
-    pha.b().post(new ReadInJoyChannelGuidingManager.1(paramReadInJoyXListView, paramsnh));
-  }
-  
-  public static void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return;
-      paramString = Uri.parse(paramString);
-      String str1 = paramString.getQueryParameter("channelid");
-      Object localObject = paramString.getQueryParameter("algorithmid");
-      String str2 = paramString.getQueryParameter("rowkey");
-      QLog.i("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], channelid = " + str1 + ", algorithmID = " + (String)localObject + ", rowKey = " + str2);
-      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(str2))) {
-        continue;
-      }
-      localObject = new ptv((String)localObject, str2);
-      try
+      localJSONObject2.put("article_large_imge_url", localObject);
+      localJSONObject1.put("id_article_large_imge", localJSONObject2);
+      if (paramBaseArticleInfo.mGalleryPicNumber > 1)
       {
-        int i = Integer.valueOf(str1).intValue();
-        a.put(i, localObject);
-        b.put(i, str2);
-        try
-        {
-          str1 = paramString.getQueryParameter("article_url");
-          paramString = paramString.getQueryParameter("show_floating_window");
-          str2 = URLDecoder.decode(str1, "utf-8");
-          if ((i == 0) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (TextUtils.equals("1", paramString)) && (bmqa.h()))
-          {
-            b.remove(i);
-            QLog.i("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], remove last rowKey.");
-          }
-          if ((i != 0) || (bmqa.h())) {
-            continue;
-          }
-          a.remove(i);
-          b.remove(i);
-          QLog.i("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], remove insertInfo and last rowKey.");
-          return;
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], e = " + paramString);
-          return;
-        }
-        return;
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + anzj.a(2131711775));
+        localJSONObject1.put("id_gallery_cnt", localObject);
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("gallery_icon", "qq_readinjoy_gallery_count");
+        localJSONObject1.put("id_gallery_img", localObject);
+        localJSONObject1.put("id_gallery_bg", new JSONObject());
       }
-      catch (NumberFormatException paramString)
-      {
-        QLog.e("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], e = " + paramString);
-      }
+      puo.a(paramBaseArticleInfo, localJSONObject1, true);
+      puo.l(paramBaseArticleInfo, localJSONObject1);
+      puo.i(paramBaseArticleInfo, localJSONObject1);
+      puo.a(localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_gallery_channel_large_cell");
+      puo.a(localJSONObject1, paramBaseArticleInfo);
+      return localJSONObject1;
     }
-  }
-  
-  public static void a(qni paramqni, List<oidb_cmd0x68b.InnerMsg> paramList)
-  {
-    if ((paramqni == null) || (paramList == null)) {
-      QLog.i("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], params is null or innerMsgList is null.");
-    }
-    int i;
-    do
-    {
-      return;
-      if (paramqni.a != -1L)
-      {
-        QLog.i("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], is not pull down refresh, do not insert.");
-        return;
-      }
-      i = paramqni.b;
-    } while (!a(i));
-    paramqni = (ptv)a.get(i);
-    oidb_cmd0x68b.InnerMsg localInnerMsg = new oidb_cmd0x68b.InnerMsg();
-    localInnerMsg.uint32_jump_src_type.set(12);
-    localInnerMsg.bytes_inner_uniq_id.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramqni.b)));
-    if (i == 0) {
-      localInnerMsg.uint32_jump_src_type.set(13);
-    }
-    try
-    {
-      localInnerMsg.uint64_algorithm_id.set(Long.valueOf(paramqni.a).longValue());
-      QLog.i("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], insertArticle = " + paramqni);
-      paramList.add(0, localInnerMsg);
-      a(i);
-      return;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        QLog.e("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], e = " + localNumberFormatException);
-      }
-    }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    ptv localptv = (ptv)a.get(paramInt);
-    if (localptv != null)
-    {
-      QLog.i("ReadInJoyChannelGuidingManager", 1, "[isNeedToInsertArticle], " + localptv);
-      return localptv.a();
-    }
-    QLog.i("ReadInJoyChannelGuidingManager", 1, "[isNeedToInsertArticle], channelID = " + paramInt + ", insertArticle is null.");
-    return false;
   }
 }
 

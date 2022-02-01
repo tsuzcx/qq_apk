@@ -1,13 +1,14 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface aupr {}
+public class aupr
+  implements DialogInterface.OnClickListener
+{
+  public aupr(QfileEditBottomBar paramQfileEditBottomBar) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

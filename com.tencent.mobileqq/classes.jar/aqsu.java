@@ -1,87 +1,57 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.config.business.QuickAuthorityConfBean.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class aqsu
+class aqsu
+  implements View.OnClickListener
 {
-  public int a;
-  public ConcurrentHashMap<String, String> a;
-  public int b;
-  public int c = 1;
-  public int d;
-  public int e;
+  aqst jdField_a_of_type_Aqst;
+  aqsx jdField_a_of_type_Aqsx;
   
-  public aqsu()
+  aqsu(aqst paramaqst, aqsx paramaqsx)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
+    this.jdField_a_of_type_Aqst = paramaqst;
+    this.jdField_a_of_type_Aqsx = paramaqsx;
   }
   
-  public static aqsu a(String paramString)
+  public void onClick(View paramView)
   {
-    aqsu localaqsu = new aqsu();
-    if (paramString == null) {
-      return localaqsu;
-    }
-    try
+    int i = this.jdField_a_of_type_Aqsx.getAdapterPosition();
+    ColorNote localColorNote = (ColorNote)aqst.a(this.jdField_a_of_type_Aqst).get(i);
+    aqri.b(localColorNote.mServiceType, localColorNote.mSubType);
+    aqst.a(this.jdField_a_of_type_Aqst).remove(i);
+    this.jdField_a_of_type_Aqst.notifyDataSetChanged();
+    switch (localColorNote.getServiceType())
     {
-      paramString = new JSONObject(paramString);
-      localaqsu.jdField_a_of_type_Int = paramString.optInt("kCheckSignatureSwitch", 0);
-      localaqsu.b = paramString.optInt("kDisableChooseSwitch", 0);
-      localaqsu.c = paramString.optInt("kShowKickDialog", 1);
-      localaqsu.d = paramString.optInt("kFDHookSwitch", 0);
-      localaqsu.e = paramString.optInt("kWtloginPowTest", 0);
-      paramString = paramString.optJSONObject("kSignatureList");
-      if (paramString != null)
+    default: 
+      if (aqsd.b(localColorNote))
       {
-        Iterator localIterator = paramString.keys();
-        while (localIterator.hasNext())
-        {
-          String str1 = (String)localIterator.next();
-          String str2 = paramString.optString(str1);
-          if (!TextUtils.isEmpty(str2))
-          {
-            localaqsu.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str1, str2);
-            if (QLog.isColorLevel()) {
-              QLog.d("QuickAuthorityConfProcessor", 2, new Object[] { "package: ", str1, " signature:", str2 });
-            }
-          }
+        if ((aqsc.a().a()) && (aqrl.b())) {
+          aqst.a(this.jdField_a_of_type_Aqst).a(paramView);
         }
+        bdll.b(null, "dc00898", "", "", "0X800A8AC", "0X800A8AC", aqrd.b(aqsd.a(localColorNote.getServiceType())), 0, "", "", "", "");
       }
-      QLog.d("QuickAuthorityConfProcessor", 2, "confBean = " + localaqsu.toString());
+      break;
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QuickAuthorityConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+      if ((this.jdField_a_of_type_Aqst.getItemCount() == 0) && (aqst.a(this.jdField_a_of_type_Aqst) != null)) {
+        aqst.a(this.jdField_a_of_type_Aqst).b();
       }
-      return null;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QQPlayerService.c(paramView.getContext());
+      break;
+      bdll.b(null, "dc00898", "", "", "0X800A747", "0X800A747", aqrd.a(localColorNote.getServiceType()), 0, "", "", "", "");
     }
-    if (localaqsu.e == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ThreadManagerV2.executeOnSubThread(new QuickAuthorityConfBean.1(bool));
-      return localaqsu;
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("kCheckSignatureSwitch:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" kDisableChooseSwitch:").append(this.b);
-    localStringBuilder.append(" signatureMaps:").append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-    localStringBuilder.append(" fdSwitch:").append(this.d);
-    localStringBuilder.append(" wtloginPowTest:").append(this.e);
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqsu
  * JD-Core Version:    0.7.0.1
  */

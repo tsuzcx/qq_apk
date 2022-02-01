@@ -1,21 +1,21 @@
 package com.tencent.biz.qqstory.utils;
 
-import zlj;
-import zln;
+import zpe;
+import zpi;
 
 public class PollWidgetUtils$WidgetWrapper$2
   implements Runnable
 {
-  public PollWidgetUtils$WidgetWrapper$2(zln paramzln) {}
+  public PollWidgetUtils$WidgetWrapper$2(zpi paramzpi) {}
   
   public void run()
   {
-    zln localzln = this.this$0;
-    if (!zln.a(this.this$0)) {}
+    zpi localzpi = this.this$0;
+    if (!zpi.a(this.this$0)) {}
     for (boolean bool = true;; bool = false)
     {
-      zln.a(localzln, bool);
-      this.this$0.a.a(zln.a(this.this$0));
+      zpi.a(localzpi, bool);
+      this.this$0.a.a(zpi.a(this.this$0));
       return;
     }
   }

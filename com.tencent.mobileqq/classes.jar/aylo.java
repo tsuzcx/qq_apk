@@ -1,35 +1,12 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aylo
-  implements ImageAssetDelegate
+  implements DialogInterface.OnClickListener
 {
-  aylo(ayln paramayln) {}
+  aylo(aykx paramaykx) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
-  {
-    Object localObject = null;
-    paramLottieImageAsset = paramLottieImageAsset.getFileName();
-    String str = this.a.jdField_a_of_type_JavaLangString + "guide_images" + File.separator + paramLottieImageAsset;
-    try
-    {
-      paramLottieImageAsset = mpu.a(str, this.a.jdField_a_of_type_Int, this.a.b);
-      return paramLottieImageAsset;
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        paramLottieImageAsset = localObject;
-      } while (!AudioHelper.f());
-      QLog.w(aylm.jdField_a_of_type_JavaLangString, 1, "PromotionGuide Exception, imagePath[" + str + "]", localException);
-    }
-    return null;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

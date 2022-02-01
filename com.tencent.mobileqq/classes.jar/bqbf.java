@@ -1,23 +1,22 @@
-import android.view.SurfaceView;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import dov.com.qq.im.story.mode.StoryEffectTextMode.6.1;
+import mqq.os.MqqHandler;
 
 public class bqbf
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements nmg
 {
-  public bqbf(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bqbf(bqav parambqav) {}
   
-  public void onGlobalLayout()
+  public void loaded(String paramString, int paramInt)
   {
-    this.a.f = this.a.a.getWidth();
-    this.a.g = this.a.a.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.f + ",mSurfaceViewHeight:" + this.a.g);
+    if ((paramInt == 0) && (paramString == null) && (bqav.a(this.a, bqav.a(this.a).d))) {
+      ThreadManager.getUIHandler().post(new StoryEffectTextMode.6.1(this));
     }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    QLog.i("StoryEffectTextModeQ.qqstory.text_filter", 2, "HtmlOffline.checkUpByBusinessId QG_SO_BID, loaded:code =" + paramInt);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

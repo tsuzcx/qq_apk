@@ -1,17 +1,13 @@
-public class zxs
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+
+class zxs
+  extends zxw
 {
-  public Object a;
-  public boolean a;
+  zxs(zxr paramzxr) {}
   
-  public zxs(Object paramObject)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public zxs(Object paramObject, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    ScannerActivity.a(this.a.a).b();
   }
 }
 

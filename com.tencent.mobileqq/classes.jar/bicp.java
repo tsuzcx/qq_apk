@@ -1,43 +1,86 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bicp
-  extends Handler
+  extends bici
 {
-  public bicp(TabBarView paramTabBarView) {}
+  public static bicp a = new bicp();
   
-  public void handleMessage(Message paramMessage)
+  public static String a(Context paramContext, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.a = 0.0F;
-      paramMessage = this.a;
-      paramMessage.a = ((float)(paramMessage.a + 0.1D));
-      this.a.invalidate();
-      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
-      return;
-    case 1: 
-      if (this.a.a < 1.0F)
-      {
-        paramMessage = this.a;
-        paramMessage.a = ((float)(paramMessage.a + 0.1D));
-        this.a.invalidate();
-        sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
-        return;
-      }
-      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(2), 10L);
-      return;
+    paramContext = a.getDir(paramContext, "specialRing." + paramInt);
+    return paramContext + File.separator + paramInt + ".wav";
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, bhza parambhza, boolean paramBoolean)
+  {
+    a.download(paramQQAppInterface, "specialRing." + paramInt, parambhza, paramBoolean);
+  }
+  
+  public static boolean a(Context paramContext, int paramInt)
+  {
+    Object localObject = "specialRing." + paramInt;
+    paramContext = a.getDir(paramContext, (String)localObject);
+    if (!new File(paramContext).exists()) {
+      return false;
     }
-    TabBarView.a(this.a, this.a.o, this.a.n);
-    this.a.a = 1.0F;
-    TabBarView.b(this.a, this.a.o, this.a.n);
-    this.a.o = this.a.n;
-    this.a.invalidate();
-    TabBarView.a(this.a);
+    localObject = new String[3];
+    localObject[0] = ".wav";
+    localObject[1] = ".json";
+    localObject[2] = ".jpg";
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = localObject[i];
+      if (!new File(paramContext, paramInt + str).exists())
+      {
+        QLog.e("RingUpdateCallback", 1, "missing: " + paramInt + str);
+        return false;
+      }
+      i += 1;
+    }
+    return true;
+  }
+  
+  public static String b(Context paramContext, int paramInt)
+  {
+    paramContext = a.getDir(paramContext, "specialRing." + paramInt);
+    paramContext = bhmi.a(new File(paramContext + File.separator + paramInt + ".json"));
+    if (!TextUtils.isEmpty(paramContext)) {
+      try
+      {
+        paramContext = new JSONObject(paramContext).optString("name", null);
+        return paramContext;
+      }
+      catch (JSONException paramContext)
+      {
+        QLog.e("RingUpdateCallback", 1, "getName error", paramContext);
+        return null;
+      }
+    }
+    QLog.e("RingUpdateCallback", 1, "getName missing json: " + paramInt);
+    return null;
+  }
+  
+  public long getBID()
+  {
+    return 37L;
+  }
+  
+  protected String getRootDir()
+  {
+    return "ring";
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "specialRing.";
   }
 }
 

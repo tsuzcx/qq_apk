@@ -1,77 +1,66 @@
-import android.os.Handler;
 import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.qqcircle.report.QCircleLpReportDc05501.1;
-import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudCommon.Entry;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
+import java.lang.ref.SoftReference;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class vrc
 {
-  private static void a(int paramInt1, int paramInt2) {}
+  public static final String a;
+  private static volatile vrc jdField_a_of_type_Vrc;
+  private List<SoftReference<Object>> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private ConcurrentHashMap<String, Boolean> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public static void a(int paramInt1, int paramInt2, ExtraTypeInfo paramExtraTypeInfo, int paramInt3)
+  static
   {
-    a(paramInt1, paramInt2, paramExtraTypeInfo, null, paramInt3);
+    jdField_a_of_type_JavaLangString = vrc.class.getSimpleName();
   }
   
-  public static void a(int paramInt1, int paramInt2, ExtraTypeInfo paramExtraTypeInfo, List<FeedCloudCommon.Entry> paramList, int paramInt3)
+  public static vrc a()
   {
-    if ((!(paramExtraTypeInfo instanceof ReportExtraTypeInfo)) || (((ReportExtraTypeInfo)paramExtraTypeInfo).mFeed == null))
+    if (jdField_a_of_type_Vrc == null) {}
+    try
     {
-      QLog.e("QCircleReportHelper_QCircleLpReportDc05501", 1, "ExtraTypeInfo is not ReportExtraTypeInfo,actionType:" + paramInt1 + ",subActionType:" + paramInt2);
-      return;
+      if (jdField_a_of_type_Vrc == null) {
+        jdField_a_of_type_Vrc = new vrc();
+      }
+      return jdField_a_of_type_Vrc;
     }
-    a(((ReportExtraTypeInfo)paramExtraTypeInfo).mFeed.poster.id.get(), paramInt1, paramInt2, paramExtraTypeInfo.mDataPosition, ((ReportExtraTypeInfo)paramExtraTypeInfo).mFeed, paramList, paramInt3);
+    finally {}
   }
   
-  public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString2, String paramString3, String paramString4, int paramInt6, FeedCloudMeta.StFeed paramStFeed, List<FeedCloudCommon.Entry> paramList, int paramInt7, int paramInt8)
+  public void a()
   {
-    if (paramInt7 <= 0)
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
     {
-      QLog.e("QCircleReportBean_QCircleLpReportDc05501", 1, "report invalid pageId," + paramInt7 + ",actionType:" + paramInt3 + ",subActionType:" + paramInt4);
-      a(paramInt3, paramInt4);
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "clear all");
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     }
-    vrl.a().a().post(new QCircleLpReportDc05501.1(paramString1, paramInt3, paramInt4, paramInt5, paramString2, paramString3, paramInt7, paramString4, paramInt6, paramInt8, paramList, paramStFeed, paramInt1, paramInt2));
   }
   
-  public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, FeedCloudMeta.StFeed paramStFeed, List<FeedCloudCommon.Entry> paramList, int paramInt4)
+  public void a(String paramString, boolean paramBoolean)
   {
-    if (paramStFeed == null) {
-      return;
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
     }
-    if (paramInt4 <= 0)
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (paramString != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString));
+  }
+  
+  public boolean b(String paramString)
+  {
+    if (a(paramString))
     {
-      QLog.e("QCircleReportBean_QCircleLpReportDc05501", 1, "report invalid pageId," + paramInt4 + ",actionType:" + paramInt1 + ",subActionType:" + paramInt2);
-      a(paramInt1, paramInt2);
-    }
-    int[] arrayOfInt = vse.a(paramStFeed);
-    a(paramString, arrayOfInt[0], arrayOfInt[1], paramInt1, paramInt2, paramInt3, paramStFeed.id.get(), vse.a(paramStFeed), paramStFeed.poster.id.get(), -1, paramStFeed, paramList, paramInt4, -1);
-  }
-  
-  public static void a(String paramString, FeedCloudMeta.StFeed paramStFeed, int paramInt1, int paramInt2, int paramInt3)
-  {
-    a(paramString, paramStFeed, paramInt1, paramInt2, null, paramInt3);
-  }
-  
-  public static void a(String paramString, FeedCloudMeta.StFeed paramStFeed, int paramInt1, int paramInt2, List<FeedCloudCommon.Entry> paramList, int paramInt3)
-  {
-    a(paramString, paramInt2, 2, paramInt1, paramStFeed, paramList, paramInt3);
-  }
-  
-  private static int b()
-  {
-    return 5501;
-  }
-  
-  private static boolean b(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 == 1) || (paramInt1 == 2)) {}
-    while (((paramInt1 == 3) && (paramInt2 == 1)) || ((paramInt1 == 65) && (paramInt2 < 6))) {
-      return true;
+      paramString = (Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (paramString == null)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "mTagFollowMap getValue tagId null");
+        return false;
+      }
+      return paramString.booleanValue();
     }
     return false;
   }

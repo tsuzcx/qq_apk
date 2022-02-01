@@ -1,27 +1,65 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-final class arra
-  implements DialogInterface.OnClickListener
+public class arra
+  extends arac<arqz>
 {
-  arra(QQAppInterface paramQQAppInterface, Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static arqz a()
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    return (arqz)aran.a().a(335);
+  }
+  
+  @NonNull
+  public arqz a(int paramInt)
+  {
+    return new arqz();
+  }
+  
+  @Nullable
+  public arqz a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return arqz.a(paramArrayOfaraj);
     }
-    if (paramInt == 1) {
-      bgzo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, "mvip.n.a.bqsc_aio", 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131718361), "");
-    }
+    return null;
+  }
+  
+  public void a(arqz paramarqz) {}
+  
+  public Class<arqz> clazz()
+  {
+    return arqz.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TencentDocSelectAddDocsProcessor", 1, "handleTencentDocUniversalEntry FILE_SELECT_ADD_DOCS failed, resultCode:" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 335;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arra
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,29 @@
-import QC.SuixintieCheckInfo;
-import QC.SuixintieCheckItem;
-import com.qq.taf.jce.JceInputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-public class azja
+class azja
+  extends BroadcastReceiver
 {
-  public static SuixintieCheckInfo a(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    SuixintieCheckInfo localSuixintieCheckInfo = new SuixintieCheckInfo();
-    localSuixintieCheckInfo.readFrom(new JceInputStream(bigh.a(paramString, 0)));
-    if (localSuixintieCheckInfo.vSuixintieCheckList != null) {
-      return localSuixintieCheckInfo;
+    paramContext = null;
+    if (paramIntent != null) {
+      paramContext = paramIntent.getAction();
     }
-    return null;
-  }
-  
-  public static SuixintieCheckItem a(SuixintieCheckInfo paramSuixintieCheckInfo, int paramInt)
-  {
-    if (paramSuixintieCheckInfo.vSuixintieCheckList != null)
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
     {
-      paramSuixintieCheckInfo = paramSuixintieCheckInfo.vSuixintieCheckList.iterator();
-      while (paramSuixintieCheckInfo.hasNext())
-      {
-        SuixintieCheckItem localSuixintieCheckItem = (SuixintieCheckItem)paramSuixintieCheckInfo.next();
-        if (localSuixintieCheckItem.appid == paramInt) {
-          return localSuixintieCheckItem;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("AutoStatusManager", 2, "[status][autoMgr] ScreenBroadcastReceiver ACTION_SCREEN_OFF");
+      }
+      paramContext = (azic)BaseApplicationImpl.getApplication().getRuntime().getManager(369);
+      if (paramContext != null) {
+        paramContext.a().d("screenOff");
       }
     }
-    return null;
   }
 }
 

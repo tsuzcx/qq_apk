@@ -1,28 +1,66 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.text.TextUtils;
+import android.view.View.OnClickListener;
 
 public class sed
 {
-  public static long a;
+  public int a;
+  public long a;
+  public View.OnClickListener a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
   
-  public static void a()
+  public sed()
   {
-    a = System.currentTimeMillis();
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_c_of_type_Int = -1;
   }
   
-  public static void a(Context paramContext)
+  public boolean equals(Object paramObject)
   {
-    long l = System.currentTimeMillis();
-    if (l - a < 10000L)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof sed))
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_starttime", String.valueOf(l - a));
-      pha.d(paramContext, pha.a(), true, localHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsStartStatistic", 2, "doReportStartTime param_starttime=" + (l - a));
+      paramObject = (sed)paramObject;
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int)
+      {
+        bool1 = bool2;
+        if (this.d == paramObject.d)
+        {
+          bool1 = bool2;
+          if (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int)
+          {
+            bool1 = bool2;
+            if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long)
+            {
+              bool1 = bool2;
+              if (this.jdField_c_of_type_Int == paramObject.jdField_c_of_type_Int)
+              {
+                bool1 = bool2;
+                if (TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString))
+                {
+                  bool1 = bool2;
+                  if (TextUtils.equals(this.jdField_c_of_type_JavaLangString, paramObject.jdField_c_of_type_JavaLangString))
+                  {
+                    bool1 = bool2;
+                    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) {
+                      bool1 = true;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
+    return bool1;
   }
 }
 

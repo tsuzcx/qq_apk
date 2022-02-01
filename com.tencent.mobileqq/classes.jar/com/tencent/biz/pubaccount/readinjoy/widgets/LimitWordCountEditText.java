@@ -15,10 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.R.styleable;
 import org.jetbrains.annotations.NotNull;
-import ttj;
-import ttk;
-import ttl;
-import ttm;
+import tke;
+import tkf;
+import tkg;
+import tkh;
 
 public class LimitWordCountEditText
   extends LinearLayout
@@ -28,7 +28,7 @@ public class LimitWordCountEditText
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private String jdField_a_of_type_JavaLangString = "";
-  private ttm jdField_a_of_type_Ttm;
+  private tkh jdField_a_of_type_Tkh;
   private boolean jdField_a_of_type_Boolean = true;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private String jdField_b_of_type_JavaLangString = "";
@@ -55,7 +55,7 @@ public class LimitWordCountEditText
         if (!localTypedArray.getBoolean(3, true)) {
           break label275;
         }
-        LayoutInflater.from(paramContext).inflate(2131562755, this);
+        LayoutInflater.from(paramContext).inflate(2131562796, this);
       }
     }
     for (;;)
@@ -75,11 +75,11 @@ public class LimitWordCountEditText
       localTypedArray.recycle();
       localObject1 = paramAttributeSet;
       localObject2 = paramContext;
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366091));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378776));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379865));
-      findViewById(2131376788).setOnClickListener(new ttj(this));
-      this.jdField_a_of_type_AndroidTextTextWatcher = new ttk(this);
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366140));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378936));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380045));
+      findViewById(2131376925).setOnClickListener(new tke(this));
+      this.jdField_a_of_type_AndroidTextTextWatcher = new tkf(this);
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
       setHint((String)localObject2);
       setTitle((String)localObject1);
@@ -87,13 +87,13 @@ public class LimitWordCountEditText
       setContentTextSize(f1);
       return;
       label275:
-      LayoutInflater.from(paramContext).inflate(2131562754, this);
+      LayoutInflater.from(paramContext).inflate(2131562795, this);
     }
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_AndroidWidgetEditText.length();
+    return this.jdField_a_of_type_Int;
   }
   
   public EditText a()
@@ -104,6 +104,11 @@ public class LimitWordCountEditText
   public String a()
   {
     return this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetEditText.length();
   }
   
   protected void onDetachedFromWindow()
@@ -124,9 +129,9 @@ public class LimitWordCountEditText
     }
   }
   
-  public void setCountChangeListener(ttm paramttm)
+  public void setCountChangeListener(tkh paramtkh)
   {
-    this.jdField_a_of_type_Ttm = paramttm;
+    this.jdField_a_of_type_Tkh = paramtkh;
   }
   
   public void setCountLimit(int paramInt)
@@ -142,7 +147,7 @@ public class LimitWordCountEditText
   public void setDisableManualEnter(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new ttl(this, paramBoolean));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new tkg(this, paramBoolean));
   }
   
   public void setHint(String paramString)

@@ -1,65 +1,74 @@
-import android.text.TextUtils;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.Context;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-class mty
+public class mty
 {
-  private Map<String, mtz> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  Context jdField_a_of_type_AndroidContentContext;
+  Handler jdField_a_of_type_AndroidOsHandler;
+  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
+  Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public boolean a;
+  Animation.AnimationListener jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener;
+  Animation jdField_b_of_type_AndroidViewAnimationAnimation;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  Animation jdField_c_of_type_AndroidViewAnimationAnimation;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
   
-  public mty(String[] paramArrayOfString)
+  public void a()
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    if (paramArrayOfString != null)
-    {
-      int j = paramArrayOfString.length;
-      int i = 0;
-      if (i < j)
-      {
-        String str = paramArrayOfString[i];
-        if ("DEVICE_BLUETOOTHHEADSET".equals(str)) {
-          this.jdField_a_of_type_JavaUtilMap.put(str, new mtz(this, 2130842232, anni.a(2131713725), str));
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if ("DEVICE_EARPHONE".equals(str)) {
-            this.jdField_a_of_type_JavaUtilMap.put(str, new mtz(this, 2130842234, anni.a(2131713726), str));
-          } else if ("DEVICE_SPEAKERPHONE".equals(str)) {
-            this.jdField_a_of_type_JavaUtilMap.put(str, new mtz(this, 2130842237, anni.a(2131713729), str));
-          } else if ("DEVICE_WIREDHEADSET".equals(str)) {
-            this.jdField_a_of_type_JavaUtilMap.put(str, new mtz(this, 2130842239, anni.a(2131713727), str));
-          }
-        }
-      }
+    c();
+    e();
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.jdField_b_of_type_AndroidWidgetImageView = null;
+    this.jdField_c_of_type_AndroidWidgetImageView = null;
+    this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
+    this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
+    this.jdField_c_of_type_AndroidViewAnimationAnimation = null;
+    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = null;
+    this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = null;
+    this.jdField_a_of_type_AndroidOsHandler = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
     }
   }
   
-  public int a()
+  public void c()
   {
-    return this.jdField_a_of_type_JavaUtilMap.size();
-  }
-  
-  public mtz a(String paramString)
-  {
-    return (mtz)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      mtz localmtz = (mtz)this.jdField_a_of_type_JavaUtilMap.get("DEVICE_BLUETOOTHHEADSET");
-      if (localmtz != null) {
-        localmtz.b = (anni.a(2131713728) + paramString + "）");
-      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     }
   }
   
-  public String[] a()
+  public void d()
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
+    this.jdField_a_of_type_Boolean = true;
+    if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView != null)) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+    }
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10);
+    if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView != null))
+    {
+      this.jdField_b_of_type_AndroidWidgetImageView.clearAnimation();
+      this.jdField_c_of_type_AndroidWidgetImageView.clearAnimation();
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
   }
 }
 

@@ -1,22 +1,31 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
 
 public class aevr
-  implements TextWatcher
+  extends ayxo
 {
-  public aevr(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public aevr(Leba paramLeba) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.b(paramEditable);
+    if (QLog.isColorLevel()) {
+      QLog.d("UndealCount.Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
+    }
+    if (QLog.isColorLevel())
+    {
+      if ((paramLong >>> 17 & 1L) != 0L) {
+        QLog.d("UndealCount.ZebraAlbum.", 2, "Leba onGetQZoneFeedCountFin Zebra album and then call Leba freshEntryItemUI");
+      }
+      QLog.d("UndealCount.", 2, "Leba onGetQZoneFeedCountFin type: " + paramLong + " and then call Leba freshEntryItemUI");
+    }
+    if (paramBoolean1)
+    {
+      Leba.c(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
+      }
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

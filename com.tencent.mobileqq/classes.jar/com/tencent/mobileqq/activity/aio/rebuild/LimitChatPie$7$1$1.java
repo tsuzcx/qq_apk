@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aicl;
-import aict;
+import aimd;
+import aiml;
 
 class LimitChatPie$7$1$1
   implements Runnable

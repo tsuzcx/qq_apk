@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.confess;
 
-import aqbk;
+import aqqm;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -12,7 +12,7 @@ class ConfessHalfScreenActivity$2
   
   public void run()
   {
-    Object[] arrayOfObject = aqbk.a().a();
+    Object[] arrayOfObject = aqqm.a().a();
     if ((arrayOfObject != null) && (arrayOfObject.length == 2))
     {
       boolean bool1 = ((Boolean)arrayOfObject[0]).booleanValue();

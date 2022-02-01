@@ -1,22 +1,61 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public final class arpl
+public class arpl
+  extends arac<arpk>
 {
-  public static arow a(QQAppInterface paramQQAppInterface, arpp paramarpp, int paramInt)
+  public static arpk a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return new arpz(paramQQAppInterface, paramarpp);
-    case 0: 
-      return new arpz(paramQQAppInterface, paramarpp);
+    return (arpk)aran.a().a(486);
+  }
+  
+  @NonNull
+  public arpk a(int paramInt)
+  {
+    return new arpk();
+  }
+  
+  @Nullable
+  public arpk a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return arpk.a(paramArrayOfaraj);
     }
-    return new arox(paramQQAppInterface, paramarpp);
+    return null;
+  }
+  
+  public void a(arpk paramarpk) {}
+  
+  public Class<arpk> clazz()
+  {
+    return arpk.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 486;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arpl
  * JD-Core Version:    0.7.0.1
  */

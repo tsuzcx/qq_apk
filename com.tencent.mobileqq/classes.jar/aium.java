@@ -1,13 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class aium
-  extends anmu
+  implements View.OnClickListener
 {
-  aium(aiui paramaiui) {}
+  aium(aiul paramaiul) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (aiui.a(this.a) != null)) {
-      aiui.a(this.a).a(String.valueOf(paramObject));
-    }
+    aiul.a(this.a);
+    bdll.b(null, "dc00898", "", "", "0X800B034", "0X800B034", 0, 0, "", "", aiul.a(this.a).a, "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

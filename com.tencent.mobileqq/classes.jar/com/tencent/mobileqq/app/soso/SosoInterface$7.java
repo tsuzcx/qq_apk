@@ -3,7 +3,7 @@ package com.tencent.mobileqq.app.soso;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
-import aopa;
+import apcq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.map.geolocation.TencentLocationManager;
 import com.tencent.map.geolocation.TencentLocationRequest;
@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 final class SosoInterface$7
   implements Runnable
 {
-  SosoInterface$7(aopa paramaopa) {}
+  SosoInterface$7(apcq paramapcq) {}
   
   public void run()
   {
@@ -78,7 +78,7 @@ final class SosoInterface$7
         SosoInterface.b(0);
         SosoInterface.a(SystemClock.elapsedRealtime());
         SosoInterface.c(0);
-        aopa.access$2002(this.a, true);
+        apcq.access$2002(this.a, true);
         if (SosoInterface.a() == null) {
           SosoInterface.a(TencentLocationManager.getInstance(BaseApplicationImpl.getContext()));
         }

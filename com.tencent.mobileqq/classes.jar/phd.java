@@ -1,23 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.16.1;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.16.2;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
-public final class phd
-  implements bknm
+public class phd
+  implements View.OnClickListener
 {
-  phd(BaseActivity paramBaseActivity) {}
+  public phd(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
   
-  public void a(bknl parambknl)
+  public void onClick(View paramView)
   {
-    switch (parambknl.a)
+    Object localObject = (biqq)this.a.mComponentsProvider.a(4);
+    if ((localObject != null) && (((biqq)localObject).a != null) && (((biqq)localObject).a.isShowing())) {}
+    for (;;)
     {
-    default: 
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    case 0: 
-      stp.a(this.a, new ReadInJoyUtils.16.1(this));
-      return;
+      ReadInJoyAdIMAXBrowserFragment.a(this.a);
+      localObject = new HashMap();
+      ((HashMap)localObject).put("stat_src", "5");
+      nzq.a(new tlx().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(nzq.v).b(nzq.ag).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(nzq.a((HashMap)localObject)).a());
     }
-    stp.a(this.a, new ReadInJoyUtils.16.2(this));
   }
 }
 

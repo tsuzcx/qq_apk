@@ -1,8 +1,20 @@
-public abstract interface auaw
+import android.view.ViewGroup;
+import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
+
+public class auaw
+  extends bcbi<bcfr, bcnz>
 {
-  public abstract void a(boolean paramBoolean);
+  public auaw(TroopFileSearchFragment paramTroopFileSearchFragment) {}
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  protected bcil<bcfr, bcnz> a(int paramInt)
+  {
+    return new auay();
+  }
+  
+  protected bcoa a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new auba(paramViewGroup);
+  }
 }
 
 

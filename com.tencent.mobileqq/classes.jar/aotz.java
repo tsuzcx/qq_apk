@@ -1,21 +1,38 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.util.Arrays;
 
-public abstract interface aotz
+class aotz
+  implements PermissionMonitor.Listener
 {
-  public abstract void a();
+  static
+  {
+    if (!aotx.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
   
-  public abstract void a(ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject);
+  aotz(aotx paramaotx) {}
   
-  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, aoua paramaoua);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void b(String paramString, int paramInt);
-  
-  public abstract void c(String paramString, int paramInt);
-  
-  public abstract void d(String paramString, int paramInt);
+  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
+  {
+    if (aotx.a(this.jdField_a_of_type_Aotx) != Thread.currentThread()) {}
+    while ((!aotx.a(this.jdField_a_of_type_Aotx)) || (paramArrayOfObject.length != 2)) {
+      return;
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aotx.a(this.jdField_a_of_type_Aotx))) {
+      throw new AssertionError();
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[1].getClass() != Float.class)) {
+      throw new AssertionError();
+    }
+    ShadowParcel.a((int)aotx.a(this.jdField_a_of_type_Aotx), ((Float)paramArrayOfObject[1]).floatValue());
+    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
+  }
 }
 
 

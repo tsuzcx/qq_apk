@@ -1,312 +1,187 @@
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.Log;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.SparseArray;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import dalvik.system.DexClassLoader;
-import dalvik.system.PathClassLoader;
-import java.io.File;
-import java.lang.reflect.Array;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import java.util.Calendar;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
+import mqq.manager.Manager;
+import org.json.JSONObject;
 
-public final class bmbb
+public class bmbb
+  implements Manager
 {
-  private static Object a(Object paramObject)
+  private SparseArray<bmbc> jdField_a_of_type_AndroidUtilSparseArray;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public AtomicInteger a;
+  public AtomicReference<bmax> a;
+  private boolean jdField_a_of_type_Boolean;
+  public AtomicReference<bmaw> b;
+  
+  public bmbb(QQAppInterface paramQQAppInterface)
   {
-    return a(paramObject, Class.forName("dalvik.system.BaseDexClassLoader"), "pathList");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference(null);
+    this.b = new AtomicReference(null);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
   }
   
-  private static Object a(Object paramObject, int paramInt)
+  public int a()
   {
-    Object localObject = paramObject.getClass().getComponentType();
-    int m = Array.getLength(paramObject);
-    if ((paramInt < 0) || (paramInt >= m)) {
-      return paramObject;
-    }
-    localObject = Array.newInstance((Class)localObject, m - 1);
-    int j = 0;
-    int i = 0;
-    if (j < m)
+    return BaseApplicationImpl.getApplication().getSharedPreferences("qqcomic_preload_profile", bhrx.a()).getInt(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_" + "use_times", 0);
+  }
+  
+  public long a()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("qqcomic_preload_profile", bhrx.a()).getLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_" + "active_time", 0L);
+  }
+  
+  public bmbc a(int paramInt)
+  {
+    bmbc localbmbc = (bmbc)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt, null);
+    if (localbmbc == null) {}
+    switch (paramInt)
     {
-      if (j == paramInt) {
-        break label82;
-      }
-      int k = i + 1;
-      Array.set(localObject, i, Array.get(paramObject, j));
-      i = k;
+    default: 
+      return localbmbc;
     }
-    label82:
+    localbmbc = new bmbc(paramInt);
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localbmbc);
+    return localbmbc;
+  }
+  
+  public void a()
+  {
+    int i = 1;
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        return;
+      }
+    }
+    finally {}
+    localObject2 = new bmax(1113, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    if (((bmax)localObject2).jdField_a_of_type_Int != -1)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.set(localObject2);
+      this.jdField_a_of_type_Boolean = true;
+      localObject2 = ((bmax)localObject2).jdField_a_of_type_JavaLangString;
+    }
     for (;;)
     {
-      j += 1;
-      break;
-      return localObject;
-    }
-  }
-  
-  private static Object a(Object paramObject, Class<?> paramClass, String paramString)
-  {
-    paramClass = paramClass.getDeclaredField(paramString);
-    paramClass.setAccessible(true);
-    return paramClass.get(paramObject);
-  }
-  
-  private static Object a(Object paramObject1, Object paramObject2, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      Object localObject = paramObject2.getClass().getComponentType();
-      int j = Array.getLength(paramObject2);
-      int k = Array.getLength(paramObject1) + j;
-      localObject = Array.newInstance((Class)localObject, k);
-      int i = 0;
-      if (i < k)
-      {
-        if (i < j) {
-          Array.set(localObject, i, Array.get(paramObject2, i));
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          Array.set(localObject, i, Array.get(paramObject1, i - j));
-        }
-      }
-      return localObject;
-      localObject = paramObject1;
-      paramObject1 = paramObject2;
-      paramObject2 = localObject;
-    }
-  }
-  
-  public static String a(ClassLoader paramClassLoader, int paramInt)
-  {
-    Object localObject;
-    if (a())
-    {
-      if ((paramClassLoader instanceof PathClassLoader)) {}
-      for (localObject = PathClassLoader.class;; localObject = DexClassLoader.class) {
-        return a(paramClassLoader, (Class)localObject, 0);
-      }
-    }
-    if (!b()) {
       try
       {
-        if ((paramClassLoader instanceof PathClassLoader)) {}
-        for (localObject = PathClassLoader.class;; localObject = DexClassLoader.class) {
-          return b(paramClassLoader, (Class)localObject, 0);
+        localObject2 = new JSONObject((String)localObject2);
+        localObject3 = localObject2;
+      }
+      catch (Exception localException2)
+      {
+        Object localObject3;
+        localObject2 = null;
+        continue;
+      }
+      try
+      {
+        if (((JSONObject)localObject2).has("publicaccount"))
+        {
+          localObject3 = ((JSONObject)localObject2).getJSONObject("publicaccount");
+          AtomicInteger localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+          if (((JSONObject)localObject3).getBoolean("switch"))
+          {
+            localAtomicInteger.set(i);
+            localObject3 = localObject2;
+          }
         }
-        return b(paramClassLoader, 0);
+        else
+        {
+          if (localObject3 == null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("QQComicPreloadManager", 2, "cannot resolve strategy from server.");
+            }
+            return;
+            return;
+            ((Exception)localObject3).printStackTrace();
+            localObject3 = localObject2;
+            continue;
+          }
+          localObject3 = bmaw.a((JSONObject)localObject3);
+          localObject2 = localObject3;
+          if (localObject3 == null)
+          {
+            localObject2 = new bmaw();
+            ((bmaw)localObject2).jdField_a_of_type_Boolean = true;
+            ((bmaw)localObject2).jdField_b_of_type_Int = 127;
+            ((bmaw)localObject2).c = 16777215;
+            ((bmaw)localObject2).jdField_h_of_type_Boolean = true;
+            ((bmaw)localObject2).jdField_b_of_type_Boolean = true;
+            ((bmaw)localObject2).d = true;
+            ((bmaw)localObject2).jdField_e_of_type_Boolean = true;
+            ((bmaw)localObject2).jdField_i_of_type_Boolean = true;
+            ((bmaw)localObject2).jdField_e_of_type_Int = 24;
+            ((bmaw)localObject2).j = true;
+            ((bmaw)localObject2).f = 20;
+            ((bmaw)localObject2).k = true;
+            ((bmaw)localObject2).g = 6;
+            ((bmaw)localObject2).jdField_h_of_type_Int = 1;
+            ((bmaw)localObject2).jdField_i_of_type_Int = 3;
+          }
+          this.b.set(localObject2);
+          return;
+        }
       }
-      catch (Throwable paramClassLoader)
+      catch (Exception localException1)
       {
-        Log.e("QzoneModuleInjector", "fail to inject", paramClassLoader);
-        return "";
+        continue;
+        i = 0;
       }
     }
   }
   
-  private static String a(ClassLoader paramClassLoader, Class paramClass, int paramInt)
+  public void a(int paramInt)
   {
-    try
-    {
-      if ((paramClassLoader instanceof PathClassLoader)) {
-        a(paramClassLoader, paramClass, "mPaths", a(a(paramClassLoader, paramClass, "mPaths"), paramInt));
-      }
-      a(paramClassLoader, PathClassLoader.class, "mFiles", a(a(paramClassLoader, paramClass, "mFiles"), paramInt));
-      a(paramClassLoader, PathClassLoader.class, "mZips", a(a(paramClassLoader, paramClass, "mZips"), paramInt));
-      a(paramClassLoader, PathClassLoader.class, "mLexs", a(a(paramClassLoader, paramClass, "mLexs"), paramInt));
-      return "Success";
-    }
-    catch (Throwable paramClassLoader)
-    {
-      paramClassLoader.printStackTrace();
-    }
-    return "unloadDexInAliyunOs error: " + Log.getStackTraceString(paramClassLoader);
+    bmay.a(a(paramInt));
   }
   
-  private static void a(Context paramContext, ClassLoader paramClassLoader, Class paramClass, String paramString1, String paramString2, boolean paramBoolean)
+  public void a(long paramLong)
   {
-    new DexClassLoader(paramString1, paramContext.getDir("dex", 0).getAbsolutePath(), paramString1, paramClassLoader);
-    String str = new File(paramString1).getName().replaceAll("\\.[a-zA-Z0-9]+", ".lex");
-    Class localClass = Class.forName("dalvik.system.LexClassLoader");
-    paramContext = localClass.getConstructor(new Class[] { String.class, String.class, String.class, ClassLoader.class }).newInstance(new Object[] { paramContext.getDir("dex", 0).getAbsolutePath() + File.separator + str, paramContext.getDir("dex", 0).getAbsolutePath(), paramString1, paramClassLoader });
-    if (!TextUtils.isEmpty(paramString2)) {
-      localClass.getMethod("loadClass", new Class[] { String.class }).invoke(paramContext, new Object[] { paramString2 });
-    }
-    if ((paramClassLoader instanceof PathClassLoader)) {
-      a(paramClassLoader, paramClass, "mPaths", b(a(paramClassLoader, paramClass, "mPaths"), a(paramContext, localClass, "mRawDexPath"), paramBoolean));
-    }
-    a(paramClassLoader, paramClass, "mFiles", a(a(paramClassLoader, paramClass, "mFiles"), a(paramContext, localClass, "mFiles"), paramBoolean));
-    a(paramClassLoader, paramClass, "mZips", a(a(paramClassLoader, paramClass, "mZips"), a(paramContext, localClass, "mZips"), paramBoolean));
-    a(paramClassLoader, paramClass, "mLexs", a(a(paramClassLoader, paramClass, "mLexs"), a(paramContext, localClass, "mDexs"), paramBoolean));
+    BaseApplicationImpl.getApplication().getSharedPreferences("qqcomic_preload_profile", bhrx.a()).edit().putLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_" + "active_time", paramLong).commit();
   }
   
-  private static void a(Context paramContext, ClassLoader paramClassLoader, String paramString1, String paramString2, boolean paramBoolean)
+  public int[] a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneModuleInjector", 2, "injectAboveEqualApiLevel14, libPathL:" + paramString1);
-    }
-    paramContext = new DexClassLoader(paramString1, paramContext.getDir("dex", 0).getAbsolutePath(), paramString1, paramContext.getClassLoader());
-    paramContext = a(b(a(paramClassLoader)), b(a(paramContext)), paramBoolean);
-    paramString1 = a(paramClassLoader);
-    a(paramString1, paramString1.getClass(), "dexElements", paramContext);
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramClassLoader.loadClass(paramString2);
-    }
-  }
-  
-  private static void a(Object paramObject1, Class<?> paramClass, String paramString, Object paramObject2)
-  {
-    paramClass = paramClass.getDeclaredField(paramString);
-    paramClass.setAccessible(true);
-    paramClass.set(paramObject1, paramObject2);
-  }
-  
-  private static boolean a()
-  {
-    try
-    {
-      Class.forName("dalvik.system.LexClassLoader");
-      return true;
-    }
-    catch (ClassNotFoundException localClassNotFoundException) {}
-    return false;
-  }
-  
-  public static boolean a(Context paramContext, ClassLoader paramClassLoader, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (paramString1 == null) {}
-    while (!new File(paramString1).exists()) {
-      return false;
-    }
-    Object localObject;
-    if (a())
-    {
-      if ((paramClassLoader instanceof PathClassLoader)) {}
-      for (localObject = PathClassLoader.class;; localObject = DexClassLoader.class)
-      {
-        a(paramContext, paramClassLoader, (Class)localObject, paramString1, paramString2, paramBoolean);
-        return true;
-      }
-    }
-    if (!b()) {
-      if ((paramClassLoader instanceof PathClassLoader))
-      {
-        localObject = PathClassLoader.class;
-        b(paramContext, paramClassLoader, (Class)localObject, paramString1, paramString2, paramBoolean);
-      }
-    }
-    for (;;)
-    {
-      return true;
-      localObject = DexClassLoader.class;
-      break;
-      a(paramContext, paramClassLoader, paramString1, paramString2, paramBoolean);
-    }
-  }
-  
-  private static Object b(Object paramObject)
-  {
-    return a(paramObject, paramObject.getClass(), "dexElements");
-  }
-  
-  private static Object b(Object paramObject1, Object paramObject2, boolean paramBoolean)
-  {
+    int[] arrayOfInt = new int[24];
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qqcomic_preload_profile", bhrx.a());
     int i = 0;
-    Object localObject = paramObject1.getClass().getComponentType();
-    int k = Array.getLength(paramObject1);
-    int j = k + 1;
-    localObject = Array.newInstance((Class)localObject, j);
-    if (paramBoolean)
+    while (i < 24)
     {
-      Array.set(localObject, 0, paramObject2);
-      i = 1;
-      while (i < j)
-      {
-        Array.set(localObject, i, Array.get(paramObject1, i - 1));
-        i += 1;
-      }
+      arrayOfInt[i] = localSharedPreferences.getInt(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_" + "use_times" + "_" + i, 0);
+      i += 1;
     }
-    if (i < j)
-    {
-      if (i < k) {
-        Array.set(localObject, i, Array.get(paramObject1, i));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        Array.set(localObject, i, paramObject2);
-      }
-    }
-    return localObject;
+    return arrayOfInt;
   }
   
-  @SuppressLint({"NewApi"})
-  private static String b(ClassLoader paramClassLoader, int paramInt)
+  public void b()
   {
-    try
-    {
-      Object localObject = a(b(a(paramClassLoader)), paramInt);
-      paramClassLoader = a(paramClassLoader);
-      a(paramClassLoader, paramClassLoader.getClass(), "dexElements", localObject);
-      return "Success";
-    }
-    catch (Throwable paramClassLoader) {}
-    return "unloadDexAboveEqualApiLevel14 error: " + Log.getStackTraceString(null);
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qqcomic_preload_profile", bhrx.a());
+    int i = a();
+    localSharedPreferences.edit().putInt(str + "_" + "use_times", i + 1).commit();
+    i = Calendar.getInstance().get(11);
+    int j = localSharedPreferences.getInt(str + "_" + "use_times" + "_" + i, 0);
+    localSharedPreferences.edit().putInt(str + "_" + "use_times" + "_" + i, j + 1).commit();
   }
   
-  @TargetApi(14)
-  private static String b(ClassLoader paramClassLoader, Class paramClass, int paramInt)
+  public void onDestroy()
   {
-    try
-    {
-      if ((paramClassLoader instanceof PathClassLoader)) {
-        a(paramClassLoader, paramClass, "mPaths", a(a(paramClassLoader, paramClass, "mPaths"), paramInt));
-      }
-      a(paramClassLoader, PathClassLoader.class, "mFiles", a(a(paramClassLoader, paramClass, "mFiles"), paramInt));
-      a(paramClassLoader, PathClassLoader.class, "mZips", a(a(paramClassLoader, paramClass, "mZips"), paramInt));
-      a(paramClassLoader, PathClassLoader.class, "mDexs", a(a(paramClassLoader, paramClass, "mDexs"), paramInt));
-      return "Success";
-    }
-    catch (Throwable paramClassLoader)
-    {
-      paramClassLoader.printStackTrace();
-    }
-    return "unloadDexBelowApiLevel14 error: " + Log.getStackTraceString(paramClassLoader);
-  }
-  
-  private static void b(Context paramContext, ClassLoader paramClassLoader, Class paramClass, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    paramContext = new DexClassLoader(paramString1, paramContext.getDir("dex", 0).getAbsolutePath(), paramString1, paramContext.getClassLoader());
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramContext.loadClass(paramString2);
-    }
-    if ((paramClassLoader instanceof PathClassLoader)) {
-      a(paramClassLoader, paramClass, "mPaths", b(a(paramClassLoader, paramClass, "mPaths"), a(paramContext, DexClassLoader.class, "mRawDexPath"), paramBoolean));
-    }
-    a(paramClassLoader, paramClass, "mFiles", a(a(paramClassLoader, paramClass, "mFiles"), a(paramContext, DexClassLoader.class, "mFiles"), paramBoolean));
-    a(paramClassLoader, paramClass, "mZips", a(a(paramClassLoader, paramClass, "mZips"), a(paramContext, DexClassLoader.class, "mZips"), paramBoolean));
-    a(paramClassLoader, paramClass, "mDexs", a(a(paramClassLoader, paramClass, "mDexs"), a(paramContext, DexClassLoader.class, "mDexs"), paramBoolean));
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramClassLoader.loadClass(paramString2);
-    }
-  }
-  
-  private static boolean b()
-  {
-    try
-    {
-      Class.forName("dalvik.system.BaseDexClassLoader");
-      return true;
-    }
-    catch (ClassNotFoundException localClassNotFoundException) {}
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
   }
 }
 

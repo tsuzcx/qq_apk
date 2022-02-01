@@ -1,71 +1,31 @@
-import android.content.Context;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.ViewGroup;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
 
-public class zcf
-  extends zcd
+class zcf
+  implements woy<xcx, xer>
 {
-  public final int c;
-  @NonNull
-  public final String c;
-  public final int d;
-  @NonNull
-  public final String d;
-  public final int e;
-  public final String e;
-  public final String f;
-  public final String g;
-  public final String h;
-  public final String i;
+  zcf(zbz paramzbz, WeakReference paramWeakReference) {}
   
-  public zcf(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt3, int paramInt4, int paramInt5)
+  public void a(@NonNull xcx paramxcx, @Nullable xer paramxer, @NonNull ErrorMessage paramErrorMessage)
   {
-    super(paramInt1, paramString1, paramInt2);
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    this.jdField_d_of_type_JavaLangString = paramString3;
-    this.jdField_e_of_type_JavaLangString = paramString4;
-    this.f = paramString5;
-    this.g = paramString6;
-    this.h = paramString7;
-    this.i = paramString8;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_d_of_type_Int = paramInt4;
-    this.jdField_e_of_type_Int = paramInt5;
-  }
-  
-  @NonNull
-  public Class<? extends zce> a()
-  {
-    return zcg.class;
-  }
-  
-  public String a()
-  {
-    if ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))) {
-      return "";
+    if (paramxer == null)
+    {
+      paramxcx = (zcm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramxcx != null) {
+        paramxcx.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
+      }
+      return;
     }
-    if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))) {
-      return this.jdField_c_of_type_JavaLangString + "，" + this.jdField_d_of_type_JavaLangString;
+    paramxcx = (zcm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramxcx != null)
+    {
+      paramxcx.a(0, paramxer.a);
+      return;
     }
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      return this.jdField_c_of_type_JavaLangString;
-    }
-    if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
-      return this.jdField_d_of_type_JavaLangString;
-    }
-    return this.jdField_e_of_type_JavaLangString;
-  }
-  
-  @NonNull
-  public zce a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new zcg(this, paramContext, paramViewGroup);
-  }
-  
-  public boolean a()
-  {
-    return true;
+    yuk.c("DoodleEmojiManager", "requestPoiFaces callback is null");
   }
 }
 

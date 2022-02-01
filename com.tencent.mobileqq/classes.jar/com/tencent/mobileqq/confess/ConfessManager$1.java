@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.confess;
 
-import aqjm;
-import aqjy;
+import aqyp;
+import aqzb;
 
 public class ConfessManager$1
   implements Runnable
 {
-  public ConfessManager$1(aqjm paramaqjm) {}
+  public ConfessManager$1(aqyp paramaqyp) {}
   
   public void run()
   {

@@ -1,140 +1,313 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.vas.avatar.IdleGetDynamic;
-import com.tencent.mobileqq.vas.avatar.VasAvatar;
-import com.tencent.mobileqq.vas.avatar.VasAvatarLoader.1;
-import com.tencent.mobileqq.vas.avatar.VasFaceManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.trooponline.data.TroopAllOnlineData;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.net.URL;
-import mqq.os.MqqHandler;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
 public class bhbe
-  implements bgzq<String>
+  implements Manager
 {
-  private static IdleGetDynamic a;
-  private static final Drawable b;
-  public int a;
-  public long a;
-  public Drawable a;
-  public String a;
-  public WeakReference<VasAvatar> a;
-  public boolean a;
-  public int b;
-  public String b;
+  protected long a;
+  protected QQAppInterface a;
+  private Map<String, bhbc> a;
+  private Map<String, TroopAllOnlineData> b = new ConcurrentHashMap();
   
-  static
+  public bhbe(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_ComTencentMobileqqVasAvatarIdleGetDynamic = new IdleGetDynamic();
-    jdField_b_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(16777215);
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public bhbe(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public int a(String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt2;
+    paramString = (bhbc)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((paramString != null) && (paramString.jdField_a_of_type_Int > 0)) {
+      return paramString.jdField_a_of_type_Int;
+    }
+    return 1;
   }
   
-  public bhbe(String paramString1, int paramInt, String paramString2, long paramLong)
+  public long a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Int = paramInt;
+    return this.jdField_a_of_type_Long;
   }
   
-  public void a(VasAvatar paramVasAvatar)
+  public long a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVasAvatar);
-    if (this.jdField_b_of_type_Int == -1)
+    paramString = (bhbc)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null) {}
+    for (long l1 = paramString.jdField_b_of_type_Long;; l1 = 0L)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.VasFaceManager", 2, "delay getAvatar uin: " + this.jdField_a_of_type_JavaLangString);
+      long l2 = l1;
+      if (l1 <= 0L) {
+        l2 = NetConnInfoCenter.getServerTime();
       }
-      jdField_a_of_type_ComTencentMobileqqVasAvatarIdleGetDynamic.a(this);
-      return;
+      return l2;
     }
-    a(false);
   }
   
-  public void a(String paramString, Object paramObject)
+  public String a(String paramString)
   {
-    if (paramObject == jdField_b_of_type_AndroidGraphicsDrawableDrawable) {
-      a(true);
-    }
-    Object localObject;
-    do
+    if (TextUtils.isEmpty(paramString))
     {
-      do
+      paramString = "";
+      return paramString;
+    }
+    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(paramString);
+    if (localTroopInfo != null) {}
+    for (boolean bool = localTroopInfo.isKicked();; bool = true)
+    {
+      if (bool) {
+        return "";
+      }
+      paramString = (bhbc)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      String str;
+      if (paramString != null) {
+        str = paramString.jdField_a_of_type_JavaLangString;
+      }
+      for (int i = paramString.jdField_b_of_type_Int;; i = 0)
       {
-        return;
-        if (paramString == null)
-        {
-          QLog.e("Q.qqhead.VasFaceManager", 1, "VasAvatar get null path");
-          return;
+        if (str == null) {
+          return "";
         }
-      } while ((this.jdField_b_of_type_Int == -1) && (bgtl.a()));
-      localObject = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localObject == null) || (((VasAvatar)localObject).jdField_a_of_type_Bhbe != this));
+        paramString = str;
+        if (localTroopInfo == null) {
+          break;
+        }
+        paramString = str;
+        if (localTroopInfo.wMemberNumClient <= 0) {
+          break;
+        }
+        paramString = str;
+        if (i <= localTroopInfo.wMemberNumClient) {
+          break;
+        }
+        paramString = str;
+        if (TextUtils.isEmpty(str)) {
+          break;
+        }
+        str = str.replace(String.valueOf(i), String.valueOf(localTroopInfo.wMemberNumClient));
+        paramString = str;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("TroopOnlineMemberManage", 2, String.format("getOnlineTip onlineCount: %s, memberNum: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(localTroopInfo.wMemberNumClient) }));
+        return str;
+        str = null;
+      }
+    }
+  }
+  
+  public List<bhbd> a(String paramString)
+  {
+    paramString = (bhbc)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString == null) {
+      return null;
+    }
+    return paramString.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(String paramString)
+  {
     try
     {
-      paramObject = new URL("vasapngdownloader", paramString, "-vas-face-");
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mUseApngImage = true;
-      localURLDrawableOptions.mUseMemoryCache = true;
-      localURLDrawableOptions.mMemoryCacheKeySuffix = Long.toString(this.jdField_a_of_type_Long);
-      localObject = ((VasAvatar)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mExtraInfo = VasFaceManager.a(this.jdField_a_of_type_Boolean);
-      VasFaceManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(paramObject, localURLDrawableOptions);
-      paramObject = URLDrawable.getDrawable(paramObject, localURLDrawableOptions);
-      ThreadManager.getUIHandler().post(new VasAvatarLoader.1(this, paramObject));
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
       return;
     }
-    catch (Exception paramObject)
+    catch (Exception paramString)
     {
-      QLog.e("Q.qqhead.VasFaceManager", 1, "getApngDrawable ApngImage err, path:" + paramString, paramObject);
+      QLog.i("TroopOnlineMemberManage", 1, "removeDetailOnlineData: e = " + paramString.toString());
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void a(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3)
   {
-    Object localObject1 = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localObject1 == null) || (((VasAvatar)localObject1).jdField_a_of_type_Bhbe != this)) {}
-    Object localObject2;
+    int i = paramInt1;
+    if (paramInt1 <= 0) {
+      i = 10;
+    }
+    bhbc localbhbc2 = (bhbc)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
+    bhbc localbhbc1 = localbhbc2;
+    if (localbhbc2 == null)
+    {
+      localbhbc1 = new bhbc();
+      this.jdField_a_of_type_JavaUtilMap.put(paramString1, localbhbc1);
+    }
+    if ((i != 4) || (!TextUtils.isEmpty(paramString2)))
+    {
+      localbhbc1.jdField_a_of_type_JavaLangString = paramString2;
+      localbhbc1.jdField_b_of_type_Int = paramInt3;
+    }
+    localbhbc1.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTime() + i);
+    if (paramInt2 != -1) {
+      localbhbc1.jdField_a_of_type_Int = paramInt2;
+    }
+  }
+  
+  public void a(String paramString, List<String> paramList, int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt <= 0) {
+      i = 10;
+    }
+    TroopAllOnlineData localTroopAllOnlineData = new TroopAllOnlineData();
+    localTroopAllOnlineData.troopUin = paramString;
+    localTroopAllOnlineData.memberUinList = paramList;
+    localTroopAllOnlineData.nextReqTime = i;
+    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    paramString.persistOrReplace(localTroopAllOnlineData);
+    paramString.close();
+  }
+  
+  public void a(String paramString1, List<bhbd> paramList, int paramInt1, String paramString2, int paramInt2)
+  {
+    int i = paramInt1;
+    if (paramInt1 <= 0) {
+      i = 10;
+    }
+    bhbc localbhbc2 = (bhbc)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
+    bhbc localbhbc1 = localbhbc2;
+    if (localbhbc2 == null)
+    {
+      localbhbc1 = new bhbc();
+      this.jdField_a_of_type_JavaUtilMap.put(paramString1, localbhbc1);
+    }
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      localbhbc1.jdField_a_of_type_JavaLangString = paramString2;
+      localbhbc1.jdField_b_of_type_Int = paramInt2;
+    }
+    if ((paramList != null) && (paramList.size() > 0)) {
+      localbhbc1.jdField_a_of_type_JavaUtilList = paramList;
+    }
+    localbhbc1.jdField_b_of_type_Long = (NetConnInfoCenter.getServerTime() + i);
+  }
+  
+  public int b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
+    }
+    paramString = (bhbc)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null) {}
+    for (int i = paramString.jdField_b_of_type_Int;; i = 0) {
+      return i;
+    }
+  }
+  
+  public long b(String paramString)
+  {
+    paramString = (bhbc)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null) {}
+    for (long l1 = paramString.jdField_a_of_type_Long;; l1 = 0L)
+    {
+      long l2 = l1;
+      if (l1 <= 0L) {
+        l2 = NetConnInfoCenter.getServerTime();
+      }
+      return l2;
+    }
+  }
+  
+  public List<String> b(String paramString)
+  {
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    paramString = (TroopAllOnlineData)localEntityManager.find(TroopAllOnlineData.class, paramString);
+    localEntityManager.close();
+    if (paramString == null) {
+      return null;
+    }
+    return paramString.memberUinList;
+  }
+  
+  public void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
     do
     {
-      do
-      {
-        return;
-        localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-      } while (!(localObject1 instanceof QQAppInterface));
-      localObject2 = (QQAppInterface)localObject1;
-      localObject1 = ((bgzk)((QQAppInterface)localObject2).getManager(235)).a;
-      if (this.jdField_a_of_type_Int > 0)
-      {
-        ((VasFaceManager)localObject1).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this, null);
-        return;
+      return;
+      paramString = (bhbc)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    } while (paramString == null);
+    paramString.jdField_a_of_type_JavaUtilList = null;
+    paramString.jdField_b_of_type_Long = NetConnInfoCenter.getServerTime();
+  }
+  
+  public void b(String paramString, List<String> paramList, int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt <= 0) {
+      i = 10;
+    }
+    TroopAllOnlineData localTroopAllOnlineData2 = (TroopAllOnlineData)this.b.get(paramString);
+    TroopAllOnlineData localTroopAllOnlineData1 = localTroopAllOnlineData2;
+    if (localTroopAllOnlineData2 == null)
+    {
+      localTroopAllOnlineData1 = new TroopAllOnlineData();
+      this.b.put(paramString, localTroopAllOnlineData1);
+    }
+    localTroopAllOnlineData1.troopUin = paramString;
+    localTroopAllOnlineData1.memberUinList = paramList;
+    localTroopAllOnlineData1.nextReqTime = (NetConnInfoCenter.getServerTime() + i);
+  }
+  
+  public long c(String paramString)
+  {
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    paramString = (TroopAllOnlineData)localEntityManager.find(TroopAllOnlineData.class, paramString);
+    localEntityManager.close();
+    if (paramString != null) {}
+    for (long l1 = paramString.nextReqTime;; l1 = 0L)
+    {
+      long l2 = l1;
+      if (l1 <= 0L) {
+        l2 = NetConnInfoCenter.getServerTime();
       }
-      localObject2 = ((QQAppInterface)localObject2).a(this.jdField_a_of_type_JavaLangString, paramBoolean);
-      if ((localObject2 == null) || (((ExtensionInfo)localObject2).faceIdUpdateTime == 0L))
-      {
-        ((VasFaceManager)localObject1).b(this.jdField_a_of_type_JavaLangString, this, jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-        return;
+      return l2;
+    }
+  }
+  
+  public List<String> c(String paramString)
+  {
+    paramString = (TroopAllOnlineData)this.b.get(paramString);
+    if (paramString == null) {
+      return null;
+    }
+    return paramString.memberUinList;
+  }
+  
+  public long d(String paramString)
+  {
+    paramString = (TroopAllOnlineData)this.b.get(paramString);
+    if (paramString != null) {}
+    for (long l1 = paramString.nextReqTime;; l1 = 0L)
+    {
+      long l2 = l1;
+      if (l1 <= 0L) {
+        l2 = NetConnInfoCenter.getServerTime();
       }
-    } while (((ExtensionInfo)localObject2).faceId <= 0);
-    ((VasFaceManager)localObject1).a(((ExtensionInfo)localObject2).faceId, this.jdField_b_of_type_JavaLangString, this, null);
+      return l2;
+    }
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_JavaUtilMap.clear();
   }
 }
 

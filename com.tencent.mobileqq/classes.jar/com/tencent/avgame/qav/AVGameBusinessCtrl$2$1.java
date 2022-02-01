@@ -1,16 +1,16 @@
 package com.tencent.avgame.qav;
 
-import ndt;
-import ndv;
+import nfm;
+import nfo;
 
 public class AVGameBusinessCtrl$2$1
   implements Runnable
 {
-  public AVGameBusinessCtrl$2$1(ndv paramndv) {}
+  public AVGameBusinessCtrl$2$1(nfo paramnfo) {}
   
   public void run()
   {
-    ndt.a(this.a.a);
+    nfm.a(this.a.a);
   }
 }
 

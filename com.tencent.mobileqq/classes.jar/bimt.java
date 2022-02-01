@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment;
-
 class bimt
-  implements DialogInterface.OnClickListener
 {
-  bimt(bimq parambimq) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.a.b(110405, "", "", "");
-  }
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  int c;
+  int d;
+  int e;
+  int f;
 }
 
 

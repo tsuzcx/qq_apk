@@ -10,7 +10,7 @@ class QQAppInterface$22
   
   public void run()
   {
-    QQToast.a(QQAppInterface.j(this.this$0).getApplicationContext(), 2131690388, 5000).a();
+    QQToast.a(QQAppInterface.j(this.this$0).getApplicationContext(), 2131690383, 5000).a();
   }
 }
 

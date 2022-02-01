@@ -1,20 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class befb
-  implements View.OnTouchListener
+class befb
+  implements DialogInterface.OnDismissListener
 {
-  public befb(TribeVideoPreviewFragment paramTribeVideoPreviewFragment) {}
+  befb(beez parambeez) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.getActivity().finish();
+    if (beez.a(this.a) != null) {
+      beez.a(this.a).a();
     }
-    return true;
   }
 }
 

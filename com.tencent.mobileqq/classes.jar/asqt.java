@@ -1,48 +1,21 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.emoticonview.HorizontalListViewEx;
+
 public class asqt
-  extends asqw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public asqt(HorizontalListViewEx paramHorizontalListViewEx, View paramView, int paramInt) {}
   
-  public asqt(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(2, paramString1);
-    this.a = paramString2;
-    this.b = paramString3;
-    this.c = paramString4;
-    this.d = paramString5;
-    if (this.b == null) {
-      this.b = "";
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.jdField_a_of_type_Int = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.jdField_a_of_type_Int += this.jdField_a_of_type_AndroidViewView.getLeft() - this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.jdField_a_of_type_Int == this.jdField_a_of_type_AndroidViewView.getLeft()) {
+      HorizontalListViewEx.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx, false);
     }
-    if (this.e == null) {
-      this.e = "";
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof asqt))
-    {
-      paramObject = (asqt)paramObject;
-      bool1 = bool2;
-      if (this.b.equals(paramObject.b))
-      {
-        bool1 = bool2;
-        if (this.e.equals(paramObject.e)) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public String toString()
-  {
-    return this.e + "_" + this.b;
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.invalidate();
   }
 }
 

@@ -1,36 +1,15 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoSimpleInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
 
 public class xbb
-  extends wla
+  implements woy<xdu, xff>
 {
-  public List<StoryVideoItem> a = new ArrayList();
-  
-  public xbb(qqstory_service.RspSimpleInfoList paramRspSimpleInfoList)
+  public void a(@NonNull xdu paramxdu, @Nullable xff paramxff, @NonNull ErrorMessage paramErrorMessage)
   {
-    super(paramRspSimpleInfoList.result);
-    paramRspSimpleInfoList = paramRspSimpleInfoList.video_list.get();
-    if (paramRspSimpleInfoList != null)
-    {
-      paramRspSimpleInfoList = paramRspSimpleInfoList.iterator();
-      while (paramRspSimpleInfoList.hasNext())
-      {
-        qqstory_struct.StoryVideoSimpleInfo localStoryVideoSimpleInfo = (qqstory_struct.StoryVideoSimpleInfo)paramRspSimpleInfoList.next();
-        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-        localStoryVideoItem.convertFrom("Q.qqstory.net:GetSimpleInfoListResponse", localStoryVideoSimpleInfo);
-        this.a.add(localStoryVideoItem);
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    return "GetSimpleInfoListResponse{mVideoItemList=" + this.a + '}';
+    paramxdu = new xbc(this, paramErrorMessage, paramxdu.b, paramxdu.jdField_c_of_type_JavaLangString, paramxdu.jdField_c_of_type_Int);
+    wjj.a().dispatch(paramxdu);
   }
 }
 

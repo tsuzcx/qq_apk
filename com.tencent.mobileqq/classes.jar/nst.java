@@ -1,31 +1,12 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-public class nst
-  implements bkhw
+class nst
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public nst(AccountDetailActivity paramAccountDetailActivity) {}
+  nst(nsr paramnsr) {}
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (this.a.o) {
-      return;
-    }
-    this.a.o = true;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.a.dismiss();
-      return;
-      this.a.q();
-      continue;
-      this.a.F();
-      continue;
-      this.a.H();
-    }
-  }
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
 }
 
 

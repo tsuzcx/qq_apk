@@ -1,7 +1,8 @@
-public class atwh
+import android.os.Bundle;
+
+public abstract interface atwh
 {
-  public int a;
-  public int b;
+  public abstract void a(int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle);
 }
 
 

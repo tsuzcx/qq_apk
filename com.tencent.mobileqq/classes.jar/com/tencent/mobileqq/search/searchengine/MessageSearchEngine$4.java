@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import aode;
-import bbtl;
+import aopq;
+import bcme;
 
 public class MessageSearchEngine$4
   implements Runnable
 {
-  public MessageSearchEngine$4(bbtl parambbtl, String paramString) {}
+  public MessageSearchEngine$4(bcme parambcme, String paramString) {}
   
   public void run()
   {

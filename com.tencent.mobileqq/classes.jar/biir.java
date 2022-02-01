@@ -1,37 +1,40 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.open.agent.AgentActivity;
-import com.tencent.qconn.protofile.preAuth.PreAuthRequest;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class biir
-  implements biyx
+  extends bnvn
 {
-  public biir(AgentActivity paramAgentActivity, String paramString1, Bundle paramBundle, String paramString2, long paramLong, String paramString3) {}
+  private HashMap<String, bnvn> a;
   
-  public void a(biyc parambiyc)
+  public biir(String paramString, View paramView, HashMap<String, bnvn> paramHashMap)
   {
-    QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "start_auth_use_time", " getTicketNoPasswd onSuccess", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
-    aukw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", parambiyc);
-    this.jdField_a_of_type_ComTencentOpenAgentAgentActivity.a.a().a(this.b, parambiyc);
-    AgentActivity.b(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.b, false);
-    long l1 = ForwardUtils.a(this.b);
-    long l2 = ForwardUtils.a(this.c);
-    preAuth.PreAuthRequest localPreAuthRequest = this.jdField_a_of_type_ComTencentOpenAgentAgentActivity.a.a().a(parambiyc, AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity), l1, l2, this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_ComTencentOpenAgentAgentActivity.a.a().a(localPreAuthRequest, this.jdField_a_of_type_ComTencentOpenAgentAgentActivity, parambiyc, new biis(this), 0);
+    super(paramString, paramView);
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
   }
   
-  public void a(String paramString, Bundle paramBundle)
+  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
   {
-    QLog.d("SDK_LOGIN.AgentActivity", 1, "--> getTicketNoPasswd onFail");
-    aukw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", "", false);
-    AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.b, false);
+    int i = zps.b(this.jdField_a_of_type_AndroidViewView.getContext());
+    paramLayoutParams.width = Math.max((int)(i * 108.0F / 360.0F), zps.a(this.jdField_a_of_type_AndroidViewView.getContext(), 108.0F));
+    paramLayoutParams.height = Math.max((int)(i * 126.0F / 360.0F), zps.a(this.jdField_a_of_type_AndroidViewView.getContext(), 126.0F));
+    return paramLayoutParams;
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if ("border".equals(paramString1))
+    {
+      if ((bnvn)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1) != null) {}
+      return;
+    }
+    super.a(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biir
  * JD-Core Version:    0.7.0.1
  */

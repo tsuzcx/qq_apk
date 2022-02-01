@@ -1,159 +1,58 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
-import java.util.LinkedList;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
 
-public class bogx
+class bogx
+  extends Handler
 {
-  public static final List<bogx> a;
-  public int a;
-  private VsMusicItemInfo a;
-  public boolean a;
-  public final int b;
-  public final boolean b;
-  public final int c;
+  private final WeakReference<bogv> a;
   
-  static
+  public bogx(bogv parambogv)
   {
-    jdField_a_of_type_JavaUtilList = a();
+    this.a = new WeakReference(parambogv);
   }
   
-  public bogx(@NonNull VsMusicItemInfo paramVsMusicItemInfo, boolean paramBoolean, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this(paramVsMusicItemInfo, paramBoolean, paramInt, false, -1);
-  }
-  
-  public bogx(@NonNull VsMusicItemInfo paramVsMusicItemInfo, boolean paramBoolean1, int paramInt1, boolean paramBoolean2, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo = paramVsMusicItemInfo;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.c = paramInt2;
-  }
-  
-  @NonNull
-  private static List<bogx> a()
-  {
-    LinkedList localLinkedList = new LinkedList();
-    int i = 0;
-    if (i < 6)
+    if ((this.a == null) || (this.a.get() == null)) {}
+    Object localObject;
+    do
     {
-      Object localObject = new VsMusicItemInfo();
-      ((VsMusicItemInfo)localObject).mSongMid = ("fakeMid" + (i + 1));
-      ((VsMusicItemInfo)localObject).mMusicName = "";
-      ((VsMusicItemInfo)localObject).mUrl = "";
-      ((VsMusicItemInfo)localObject).mAlbumUrl = "";
-      if (i == 0) {}
-      for (localObject = new bogx((VsMusicItemInfo)localObject, false, 1);; localObject = new bogx((VsMusicItemInfo)localObject, false, 0))
+      return;
+      localObject = (bogv)this.a.get();
+      localArrayList = ((bogv)localObject).jdField_a_of_type_Bohc.a.selectedPhotoList;
+      switch (paramMessage.what)
       {
-        localLinkedList.add(localObject);
-        i += 1;
-        break;
+      default: 
+        return;
+      case 0: 
+        localObject = ((bogv)localObject).jdField_a_of_type_Bogq;
       }
-    }
-    return localLinkedList;
-  }
-  
-  @NonNull
-  private String f()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
-    }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mMusicName == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mMusicName;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.musicStart;
-  }
-  
-  @NonNull
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
-    }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mSongMid == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mSongMid;
-  }
-  
-  public boolean a()
-  {
-    return TextUtils.isEmpty(a());
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.musicDuration;
-  }
-  
-  @NonNull
-  public String b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
-    }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mUrl == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mUrl;
-  }
-  
-  @NonNull
-  public String c()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
-    }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mAlbumUrl == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mAlbumUrl;
-  }
-  
-  @NonNull
-  public String d()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "";
-    }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.b == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.b;
-  }
-  
-  @NonNull
-  public String e()
-  {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
-      return "LRC";
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.a)) {
-      return "LRC";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.a;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "{songMid:" + a() + ", songName:" + f() + ", songUrl:" + b() + ", selected:" + this.jdField_a_of_type_Boolean + ", downloadStatus:" + this.jdField_a_of_type_Int + ", itemType:" + this.jdField_b_of_type_Int + "}";
+    } while (localObject == null);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(((bogq)localObject).a);
+    paramMessage = paramMessage.getData();
+    int i = paramMessage.getInt("ALBUMLIST_POSITION");
+    long l = paramMessage.getLong("ALBUMLIST_ITEM_DURATION");
+    paramMessage = (LocalMediaInfo)localArrayList.get(i);
+    paramMessage.mDuration = l;
+    localArrayList.set(i, paramMessage);
+    ((bogq)localObject).a(localArrayList);
+    ((bogq)localObject).notifyDataSetChanged();
+    return;
+    ((bogv)this.a.get()).jdField_a_of_type_Bohc.a(paramMessage);
+    return;
+    ((bogv)localObject).f();
+    QLog.e("PhotoListActivity", 2, new Object[] { "onEncodeError = ", Integer.valueOf(((Integer)paramMessage.obj).intValue()) });
+    QQToast.a(((bogv)localObject).getActivity(), ((bogv)localObject).getResources().getString(2131694321), 0).a();
   }
 }
 

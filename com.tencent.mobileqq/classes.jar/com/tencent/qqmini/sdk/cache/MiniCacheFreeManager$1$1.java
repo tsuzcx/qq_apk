@@ -11,7 +11,7 @@ class MiniCacheFreeManager$1$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MiniCacheFreeManager.freeCache(this.this$0.val$uin, this.this$0.val$miniAppInfo);
+    MiniCacheFreeManager.freeCache(this.this$0.val$uin, this.this$0.val$miniAppInfo, true, null);
     if (this.this$0.val$activity != null) {
       this.this$0.val$activity.finish();
     }

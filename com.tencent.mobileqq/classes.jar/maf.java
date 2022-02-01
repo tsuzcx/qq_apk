@@ -1,109 +1,148 @@
-import android.graphics.drawable.Drawable;
-import android.view.View.OnClickListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.av.so.DownloadInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public abstract class maf
+class maf
 {
-  public static void a(long paramLong, VideoAppInterface paramVideoAppInterface)
+  int jdField_a_of_type_Int = 0;
+  beum jdField_a_of_type_Beum;
+  DownloadInfo jdField_a_of_type_ComTencentAvSoDownloadInfo = null;
+  boolean jdField_a_of_type_Boolean = false;
+  int b = 0;
+  int c = 0;
+  
+  boolean a(DownloadInfo paramDownloadInfo)
   {
-    if (paramVideoAppInterface == null) {
-      return;
+    boolean bool;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if ((this.jdField_a_of_type_ComTencentAvSoDownloadInfo == paramDownloadInfo) || (((TextUtils.isEmpty(paramDownloadInfo.MD5_zip_model)) || (paramDownloadInfo.MD5_zip_model.equals(this.jdField_a_of_type_ComTencentAvSoDownloadInfo.MD5_zip_model))) && ((TextUtils.isEmpty(paramDownloadInfo.MD5_zip_so)) || (paramDownloadInfo.MD5_zip_so.equals(this.jdField_a_of_type_ComTencentAvSoDownloadInfo.MD5_zip_so))))) {
+        break label348;
+      }
+      bool = true;
     }
-    QLog.w("NewTipsManager", 1, "hideAllTips, seq[" + paramLong + "]");
-    ((lif)paramVideoAppInterface.a(11)).b();
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavSo", 2, String.format("DownloadContrl, mDownloading[%s], reDownload[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
+      }
+      if (!bool)
+      {
+        return this.jdField_a_of_type_Boolean;
+        bool = true;
+      }
+      else
+      {
+        if (this.jdField_a_of_type_Beum != null)
+        {
+          Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+          if ((localObject instanceof AppInterface))
+          {
+            localObject = ((AppInterface)localObject).getNetEngine(0);
+            if (localObject != null)
+            {
+              QLog.d("QavSo", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_Beum.a() }));
+              ((beuo)localObject).b(this.jdField_a_of_type_Beum);
+            }
+          }
+        }
+        this.jdField_a_of_type_ComTencentAvSoDownloadInfo = paramDownloadInfo;
+        this.c = 0;
+        this.jdField_a_of_type_Beum = null;
+        this.jdField_a_of_type_Int = 0;
+        this.b = 0;
+        if (!maj.b(this.jdField_a_of_type_ComTencentAvSoDownloadInfo))
+        {
+          this.c |= 0x1;
+          this.jdField_a_of_type_Int += 1;
+        }
+        if (!maj.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo))
+        {
+          this.c |= 0x2;
+          this.jdField_a_of_type_Int += 1;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("QavSo", 2, String.format("DownloadContrl, mResFlag[%s], mInfo[%s]", new Object[] { Integer.valueOf(this.c), this.jdField_a_of_type_ComTencentAvSoDownloadInfo }));
+        }
+        if (this.jdField_a_of_type_Int == 0) {
+          return this.jdField_a_of_type_Boolean;
+        }
+        this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo, 3);
+        return this.jdField_a_of_type_Boolean;
+        label348:
+        bool = false;
+      }
+    }
   }
   
-  public static void a(VideoAppInterface paramVideoAppInterface)
+  boolean a(DownloadInfo paramDownloadInfo, int paramInt)
   {
-    if (paramVideoAppInterface == null) {
-      return;
+    String str3;
+    String str1;
+    String str2;
+    int i;
+    if (!maj.b(paramDownloadInfo))
+    {
+      str3 = paramDownloadInfo.url_zip_so;
+      str1 = paramDownloadInfo.MD5_zip_so;
+      str2 = maj.b() + str1;
+      i = 1;
     }
-    ((lif)paramVideoAppInterface.a(11)).c();
-  }
-  
-  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt)
-  {
-    if (paramVideoAppInterface == null) {
-      return;
+    boolean bool2;
+    while (paramInt < 0)
+    {
+      QLog.d("QavSo", 1, String.format("downloadRes, 下载死循环了. res_flag[%s], info[%s]", new Object[] { Integer.valueOf(i), paramDownloadInfo }));
+      mae.a(-3);
+      bool2 = false;
+      return bool2;
+      if ((paramDownloadInfo.enable) && (!maj.a(paramDownloadInfo)))
+      {
+        str3 = paramDownloadInfo.url_zip_model;
+        str1 = paramDownloadInfo.MD5_zip_model;
+        str2 = maj.a() + str1;
+        i = 2;
+      }
+      else
+      {
+        mae.a(100);
+        return false;
+      }
     }
-    ((lif)paramVideoAppInterface.a(11)).a(paramInt);
-  }
-  
-  public static void a(VideoAppInterface paramVideoAppInterface, boolean paramBoolean)
-  {
-    if (paramVideoAppInterface == null) {
-      return;
+    QLog.i("QavSo", 1, String.format("downloadRes. res_flag[%s], outPath[%s], info[%s]", new Object[] { Integer.valueOf(i), str2, paramDownloadInfo }));
+    beum localbeum = new beum();
+    localbeum.jdField_a_of_type_Beuq = new mag(this, str1, i, paramDownloadInfo, paramInt);
+    localbeum.a(i + "_" + str1);
+    localbeum.jdField_a_of_type_JavaLangString = str3;
+    localbeum.jdField_a_of_type_Int = 0;
+    localbeum.c = new File(str2).getPath();
+    localbeum.b = bhnv.a(bevn.a().a());
+    paramDownloadInfo = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramDownloadInfo instanceof QQAppInterface))
+    {
+      paramDownloadInfo = ((QQAppInterface)paramDownloadInfo).getNetEngine(0);
+      if (paramDownloadInfo != null)
+      {
+        this.jdField_a_of_type_Beum = localbeum;
+        paramDownloadInfo.a(this.jdField_a_of_type_Beum);
+      }
     }
-    ((lif)paramVideoAppInterface.a(11)).a(paramBoolean);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (!bool1) {
+        mae.a(-2);
+      }
+      bool2 = bool1;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("QavSo", 2, String.format("downloadRes, res_flag[%s], md5[%s], etr[%s]", new Object[] { Integer.valueOf(i), str1, Boolean.valueOf(bool1) }));
+      return bool1;
     }
-    return ((lif)paramVideoAppInterface.a(11)).a(paramInt);
   }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, int paramInt2)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return a(paramVideoAppInterface, paramInt1, paramVideoAppInterface.getApp().getString(paramInt2));
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((lif)paramVideoAppInterface.a(11)).a(paramInt, paramLong);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong, boolean paramBoolean)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((lif)paramVideoAppInterface.a(11)).a(paramInt, paramLong, paramBoolean);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((lif)paramVideoAppInterface.a(11)).a(paramInt, paramString);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, String paramString, Drawable paramDrawable, int paramInt2, View.OnClickListener paramOnClickListener)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((lif)paramVideoAppInterface.a(11)).a(paramInt1, paramString, paramDrawable, paramInt2, paramOnClickListener);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString, View.OnClickListener paramOnClickListener)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((lif)paramVideoAppInterface.a(11)).a(paramInt, paramString, null, -1, paramOnClickListener);
-  }
-  
-  public static void b(VideoAppInterface paramVideoAppInterface)
-  {
-    if (paramVideoAppInterface == null) {
-      return;
-    }
-    ((lif)paramVideoAppInterface.a(11)).d();
-  }
-  
-  public static void b(VideoAppInterface paramVideoAppInterface, boolean paramBoolean) {}
 }
 
 

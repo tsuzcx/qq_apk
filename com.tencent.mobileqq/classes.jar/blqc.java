@@ -1,74 +1,8 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qqreader.view.ReaderTabBarView;
-import java.util.List;
-import mqq.util.WeakReference;
+import com.tencent.widget.TCWDatePicker;
 
-public class blqc
-  implements View.OnClickListener
+public abstract interface blqc
 {
-  final int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  final List<WebViewTabBarData> jdField_a_of_type_JavaUtilList;
-  final WeakReference<ReaderTabBarView> jdField_a_of_type_MqqUtilWeakReference;
-  
-  public blqc(ReaderTabBarView paramReaderTabBarView, int paramInt, @NonNull List<WebViewTabBarData> paramList)
-  {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramReaderTabBarView);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void onClick(View paramView)
-  {
-    ReaderTabBarView localReaderTabBarView = (ReaderTabBarView)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localReaderTabBarView == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_Int != ReaderTabBarView.a(localReaderTabBarView))
-      {
-        long l = System.currentTimeMillis();
-        if (l - this.jdField_a_of_type_Long >= 500L)
-        {
-          this.jdField_a_of_type_Long = l;
-          localReaderTabBarView.setSelectedTab(this.jdField_a_of_type_Int);
-          int i = ReaderTabBarView.a(localReaderTabBarView)[this.jdField_a_of_type_Int];
-          localReaderTabBarView.setCurrentItemId(i);
-          localReaderTabBarView.a();
-          ReaderTabBarView.a(localReaderTabBarView, i);
-          String str1 = localReaderTabBarView.b();
-          String str2 = localReaderTabBarView.a();
-          switch (i)
-          {
-          default: 
-            break;
-          case 0: 
-            blpx.a(str1, str2, "297", "0", "3", "", "");
-            if (localReaderTabBarView.a(i)) {
-              blpx.a(str1, str2, "69", "336", "0", "3", "", "", "");
-            }
-            break;
-          case 1: 
-            blpx.a(str1, str2, "298", "0", "3", "", "");
-            break;
-          case 3: 
-            if (blps.f(localReaderTabBarView.getContext())) {
-              blps.f(localReaderTabBarView.getContext(), false);
-            }
-            blpx.a(str1, str2, "300", "0", "3", "", "");
-            break;
-          case 2: 
-            blpx.a(str1, str2, "1847", "0", "3", "", "");
-          }
-        }
-      }
-    }
-  }
+  public abstract void a(TCWDatePicker paramTCWDatePicker, int paramInt1, int paramInt2, int paramInt3);
 }
 
 

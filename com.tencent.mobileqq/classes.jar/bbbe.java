@@ -1,19 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
-
 public class bbbe
-  implements DialogInterface.OnClickListener
 {
-  public bbbe(SignatureEditFragment paramSignatureEditFragment) {}
+  public int a;
+  public long a;
+  public String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    bbce.a().a(bbce.a().b);
-    this.a.getActivity().finish();
-  }
+  public bbbe(bbbc parambbbc) {}
 }
 
 

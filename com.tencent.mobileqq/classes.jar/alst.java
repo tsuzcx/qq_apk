@@ -1,11 +1,17 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class alst
-  extends anmu
+  implements DialogInterface.OnClickListener
 {
-  public alst(SelectMemberActivity paramSelectMemberActivity) {}
+  public alst(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a("608", "7", "2", true);
+    EditLocalVideoActivity.a(this.a, "an_yuanshipin");
+  }
 }
 
 

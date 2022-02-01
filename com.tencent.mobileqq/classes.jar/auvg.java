@@ -1,60 +1,218 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.gamecenter.view.ScrollTextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import java.util.HashSet;
+import java.util.Set;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class auvg
-  extends Animation
+  extends anud
 {
-  private float jdField_a_of_type_Float;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private final boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private final boolean jdField_b_of_type_Boolean;
-  
-  public auvg(ScrollTextView paramScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
+  public auvg(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    super(paramQQAppInterface);
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.jdField_b_of_type_Float;
-    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
-    int i;
-    if (this.jdField_b_of_type_Boolean)
+    if (QLog.isColorLevel()) {
+      QLog.d("FlashChat", 2, "handleReqSetSwitch ");
+    }
+    boolean bool1;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
     {
-      i = 1;
-      paramTransformation = paramTransformation.getMatrix();
-      localCamera.save();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label99;
+      paramObject = new oidb_sso.OIDBSSOPkg();
+      try
+      {
+        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
+        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.uint32_result.has()))
+        {
+          int i = paramFromServiceMsg.uint32_result.get();
+          if (QLog.isColorLevel()) {
+            QLog.i("FlashChat", 2, "handleReqSetSwitch ret=" + i);
+          }
+          if ((i == 0) && (paramFromServiceMsg.bytes_bodybuffer.has()) && (paramFromServiceMsg.bytes_bodybuffer.get() != null))
+          {
+            paramFromServiceMsg = paramFromServiceMsg.bytes_bodybuffer.get().toByteArray();
+            i = paramFromServiceMsg.length;
+            boolean bool2 = true;
+            bool1 = bool2;
+            if (4 > i) {
+              break label215;
+            }
+            paramFromServiceMsg = String.valueOf(bhvd.a(paramFromServiceMsg, 0));
+            if (paramFromServiceMsg != null)
+            {
+              bool1 = bool2;
+              if (paramFromServiceMsg.equals(this.app.getAccount())) {
+                break label215;
+              }
+            }
+            if (QLog.isColorLevel()) {
+              QLog.w("FlashChat", 2, "handleReqSetSwitch uin error");
+            }
+            return;
+          }
+        }
       }
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        for (;;)
+        {
+          paramFromServiceMsg.printStackTrace();
+          paramFromServiceMsg = paramObject;
+        }
+      }
+    }
+    else
+    {
+      bool1 = false;
+    }
+    label215:
+    paramToServiceMsg.extraData.getByte("lightalk_switch", (byte)0).byteValue();
+    if (bool1) {}
+    notifyUI(2, bool1, null);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FlashChat", 2, "requestGetSwitch begin...");
+    }
+    try
+    {
+      long l = Long.parseLong(this.app.getAccount());
+      Object localObject = new byte[9];
+      bhvd.a((byte[])localObject, 0, l);
+      localObject[4] = 0;
+      bhvd.a((byte[])localObject, 5, (short)1);
+      bhvd.a((byte[])localObject, 7, 40352);
+      localObject = makeOIDBPkg("OidbSvc.0x480_9", 1152, 9, (byte[])localObject);
+      ((ToServiceMsg)localObject).extraData.putBoolean("FlashChatHanlder", true);
+      sendPbReq((ToServiceMsg)localObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.w("FlashChat", 2, "send_oidb_0x480_9 error", localException);
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i;
+    try
+    {
+      paramToServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
+      paramFromServiceMsg = ByteBuffer.wrap(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+      if ((paramToServiceMsg == null) || (!paramToServiceMsg.uint32_result.has())) {
+        break label348;
+      }
+      i = paramToServiceMsg.uint32_result.get();
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      long l;
+      int j;
+      while (QLog.isColorLevel())
+      {
+        QLog.d("FlashChat", 2, "handleReqGetSwitch exception: " + paramToServiceMsg.getMessage());
+        return;
+        label348:
+        i = -1;
+        continue;
+        label354:
+        i = 0;
+      }
+    }
+    if (i == 0)
+    {
+      l = paramFromServiceMsg.getInt();
+      paramFromServiceMsg.get();
+      j = paramFromServiceMsg.getShort();
+      if (!QLog.isColorLevel()) {
+        break label354;
+      }
+      QLog.d("FlashChat", 2, "handleReqGetSwitch, request success, tlvCount = " + j + " uin:" + Long.valueOf(l));
     }
     for (;;)
     {
-      localCamera.getMatrix(paramTransformation);
-      localCamera.restore();
-      paramTransformation.preTranslate(-f1, -f2);
-      paramTransformation.postTranslate(f1, f2);
+      if ((paramFromServiceMsg.hasRemaining()) && (i < j))
+      {
+        int k = paramFromServiceMsg.getShort();
+        int m = paramFromServiceMsg.getShort();
+        if (QLog.isColorLevel()) {
+          QLog.d("FlashChat", 2, "handleReqGetSwitch, TLV type: " + k + ",legnth: " + m);
+        }
+        if (k == -25184)
+        {
+          i = paramFromServiceMsg.getShort();
+          if (QLog.isColorLevel()) {
+            QLog.i("FlashChat", 2, "handleReqGetSwitch switchValue" + i);
+          }
+        }
+        else
+        {
+          if (!QLog.isColorLevel()) {
+            break label361;
+          }
+          QLog.i("FlashChat", 2, "handleReqGetSwitch" + k);
+          break label361;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("FlashChat", 2, "handleReqGetSwitch" + i);
+            return;
+          }
+        }
+      }
       return;
-      i = -1;
-      break;
-      label99:
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
+      label361:
+      i += 1;
     }
   }
   
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected boolean msgCmdFilter(String paramString)
   {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.getHeight();
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.getWidth();
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("OidbSvc.0x4ff_9");
+      this.allowCmdSet.add("OidbSvc.0x480_9");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends anui> observerClass()
+  {
+    return auvf.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
+    String str;
+    do
+    {
+      do
+      {
+        return;
+        str = paramFromServiceMsg.getServiceCmd();
+        if (!"OidbSvc.0x4ff_9".equals(str)) {
+          break;
+        }
+      } while (!paramToServiceMsg.extraData.getBoolean("FlashChatHanlder", false));
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    } while ((!"OidbSvc.0x480_9".equals(str)) || (!paramToServiceMsg.extraData.getBoolean("FlashChatHanlder", false)));
+    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

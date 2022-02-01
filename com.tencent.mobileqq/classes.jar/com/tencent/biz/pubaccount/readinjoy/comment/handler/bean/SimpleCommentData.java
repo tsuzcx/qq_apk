@@ -5,14 +5,14 @@ import android.os.Parcelable;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
-import pdv;
-import pha;
+import own;
+import ozs;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "contentSrc", "", "businessInfo", "", "(ILjava/lang/String;)V", "articleId", "getArticleId", "()Ljava/lang/String;", "setArticleId", "(Ljava/lang/String;)V", "authorId", "", "getAuthorId", "()J", "getBusinessInfo", "setBusinessInfo", "getContentSrc", "()I", "setContentSrc", "(I)V", "reportScene", "getReportScene", "setReportScene", "rowKey", "getRowKey", "setRowKey", "src", "getSrc", "describeContents", "toString", "writeToParcel", "", "flags", "CREATOR", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "contentSrc", "", "businessInfo", "", "(ILjava/lang/String;)V", "articleId", "getArticleId", "()Ljava/lang/String;", "setArticleId", "(Ljava/lang/String;)V", "authorId", "", "getAuthorId", "()J", "getBusinessInfo", "setBusinessInfo", "getContentSrc", "()I", "setContentSrc", "(I)V", "reportScene", "getReportScene", "setReportScene", "rowKey", "getRowKey", "setRowKey", "src", "getSrc", "describeContents", "readFromParcel", "", "toString", "writeToParcel", "flags", "CREATOR", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public class SimpleCommentData
   implements Parcelable
 {
-  public static final pdv a;
+  public static final own CREATOR = new own(null);
   private int jdField_a_of_type_Int;
   private final long jdField_a_of_type_Long;
   @NotNull
@@ -24,18 +24,13 @@ public class SimpleCommentData
   @NotNull
   private String jdField_c_of_type_JavaLangString;
   
-  static
-  {
-    jdField_a_of_type_Pdv = new pdv(null);
-  }
-  
   public SimpleCommentData(int paramInt, @NotNull String paramString)
   {
     this.jdField_c_of_type_Int = paramInt;
     this.jdField_c_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = pha.a();
+    this.jdField_a_of_type_Long = ozs.a();
     this.jdField_b_of_type_Int = 20;
   }
   
@@ -44,6 +39,30 @@ public class SimpleCommentData
   public final long a()
   {
     return this.jdField_a_of_type_Long;
+  }
+  
+  public void a(@NotNull Parcel paramParcel)
+  {
+    Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
+    String str = paramParcel.readString();
+    if (str != null)
+    {
+      this.jdField_a_of_type_JavaLangString = str;
+      str = paramParcel.readString();
+      if (str == null) {
+        break label49;
+      }
+    }
+    for (;;)
+    {
+      this.jdField_b_of_type_JavaLangString = str;
+      this.jdField_a_of_type_Int = paramParcel.readInt();
+      return;
+      str = "";
+      break;
+      label49:
+      str = "";
+    }
   }
   
   public final int b()

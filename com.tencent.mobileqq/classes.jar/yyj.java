@@ -1,17 +1,14 @@
+import com.tencent.mobileqq.app.soso.SosoInterface;
+
 class yyj
-  implements wri
+  implements bbgo
 {
-  yyj(yye paramyye, yyr paramyyr) {}
+  yyj(yyg paramyyg, boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean, wre paramwre)
+  public void a()
   {
-    yqp.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
-    if ((paramBoolean) && (paramwre != null))
-    {
-      this.jdField_a_of_type_Yye.a(paramwre.b, paramwre.a, this.jdField_a_of_type_Yyr);
-      return;
-    }
-    yqp.e("DoodleEmojiManager", "onLbsUpdate failed.");
+    this.jdField_a_of_type_Yyg.a = new yyk(this, "NewStoryTakeVideoActivity");
+    SosoInterface.a(this.jdField_a_of_type_Yyg.a);
   }
 }
 

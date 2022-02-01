@@ -1,54 +1,61 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-
 public class bplu
-  implements bpid
 {
-  private bplu(DoodleLayout paramDoodleLayout) {}
+  public int a;
+  String a;
+  String b;
   
-  public void a(float paramFloat)
+  public bplu(int paramInt)
   {
-    if (paramFloat >= 0.95F)
+    this.jdField_a_of_type_Int = paramInt;
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoodleLayout", 2, "onAnimate:" + paramFloat);
-      }
-      if ((this.a.jdField_a_of_type_Bpjo != null) && (this.a.a() != null) && (this.a.a().a() != null)) {
-        this.a.jdField_a_of_type_Bpjo.a(this.a.a().a(), this.a.a().a().b());
-      }
-    }
-  }
-  
-  public void a(DynamicTextItem paramDynamicTextItem)
-  {
-    if (DoodleLayout.a(this.a)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoodleLayout", 2, "onClickInside mIsRecording");
-      }
-    }
-    long l;
-    do
-    {
+    case 3: 
+    case 6: 
+    case 8: 
+    case 9: 
+    default: 
       return;
-      l = SystemClock.uptimeMillis();
-    } while (l - this.a.jdField_a_of_type_Long <= 500L);
-    this.a.jdField_a_of_type_Long = l;
-    this.a.a(paramDynamicTextItem, paramDynamicTextItem.b(), 1, true);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
-  {
-    this.a.a(paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5);
-  }
-  
-  public boolean a(bpif parambpif)
-  {
-    if ((DoodleLayout.b(this.a)) && (!DoodleLayout.c(this.a))) {
-      return false;
+    case 5: 
+      this.jdField_a_of_type_JavaLangString = anzj.a(2131700272);
+      this.b = anzj.a(2131700269);
+      return;
+    case 1: 
+      this.jdField_a_of_type_JavaLangString = anzj.a(2131700271);
+      this.b = this.jdField_a_of_type_JavaLangString;
+      return;
+    case 0: 
+      this.jdField_a_of_type_JavaLangString = anzj.a(2131700274);
+      this.b = this.jdField_a_of_type_JavaLangString;
+      return;
+    case 2: 
+      this.jdField_a_of_type_JavaLangString = anzj.a(2131700273);
+      this.b = this.jdField_a_of_type_JavaLangString;
+      return;
+    case 4: 
+      this.jdField_a_of_type_JavaLangString = anzj.a(2131700275);
+      this.b = this.jdField_a_of_type_JavaLangString;
+      return;
+    case 7: 
+      bqar localbqar = (bqar)bplq.a(17);
+      return;
     }
-    return this.a.a(parambpif, true);
+    this.jdField_a_of_type_JavaLangString = anzj.a(2131700270);
+    this.b = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

@@ -1,33 +1,25 @@
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.soload.LoadParam;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
 
-public class bdgi
-  extends bdek
+class bdgi
+  implements bdhe
 {
-  protected bder a;
-  protected SpriteNativeView a;
+  bdgi(bdgh parambdgh) {}
   
-  public bdgi()
+  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
   {
-    this.jdField_a_of_type_Bder = new bder(0.0F, 0.0F);
+    this.a.jdField_a_of_type_Int = paramInt;
+    long l = this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq;
+    StringBuilder localStringBuilder = new StringBuilder().append("is64bit=");
+    if (bdgw.a()) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      VACDReportUtil.a(l, null, "load.item.getconfig.end", paramInt + "&v=" + bdgd.a() + "&f=" + this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mCallType, SoConfig.SoInfo.getReportCode(paramSoInfo), null);
+      bdgh.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem, paramSoInfo);
+      return;
+    }
   }
-  
-  public bdeq<bdgi> a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public boolean c()
-  {
-    this.e = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getWidth();
-    this.f = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getHeight();
-    return b();
-  }
-  
-  public void d() {}
 }
 
 

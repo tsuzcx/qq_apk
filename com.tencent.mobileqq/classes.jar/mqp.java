@@ -1,108 +1,95 @@
-import java.util.List;
+import android.view.View;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
 
-public class mqp
+class mqp
+  extends mct
 {
-  public static int a(int[] paramArrayOfInt, int paramInt)
-  {
-    return a(paramArrayOfInt, paramInt, 0);
-  }
+  String jdField_a_of_type_JavaLangString = "AVRedbag_GameMode";
   
-  public static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  mqp(mqo parammqo) {}
+  
+  protected void a(mcv parammcv)
   {
-    if (paramArrayOfInt == null)
-    {
-      paramInt2 = -1;
-      return paramInt2;
+    AVActivity localAVActivity = this.jdField_a_of_type_Mqo.a();
+    if ((!this.jdField_a_of_type_Mqo.a()) || (localAVActivity == null)) {
+      return;
     }
-    int i = paramInt2;
-    if (paramInt2 < 0) {
-      i = 0;
+    if (parammcv.jdField_a_of_type_Int == 1) {
+      mbb.a(this.jdField_a_of_type_Mqo.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695202);
     }
     for (;;)
     {
-      if (i >= paramArrayOfInt.length) {
-        break label38;
+      parammcv.jdField_b_of_type_Boolean = true;
+      parammcv.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      return;
+      if (parammcv.jdField_a_of_type_Int == 2) {
+        mbb.a(this.jdField_a_of_type_Mqo.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695201);
       }
-      paramInt2 = i;
-      if (paramInt1 == paramArrayOfInt[i]) {
-        break;
-      }
-      i += 1;
     }
-    label38:
-    return -1;
   }
   
-  public static int a(Object[] paramArrayOfObject, Object paramObject)
+  protected void a(mcw parammcw)
   {
-    return a(paramArrayOfObject, paramObject, 0);
-  }
-  
-  public static int a(Object[] paramArrayOfObject, Object paramObject, int paramInt)
-  {
-    if (paramArrayOfObject == null)
+    mpv localmpv = this.jdField_a_of_type_Mqo.a();
+    if (localmpv == null) {}
+    int i;
+    do
     {
-      paramInt = -1;
-      return paramInt;
-    }
-    if (paramInt < 0) {
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      int i;
-      if (paramObject == null)
+      do
       {
-        i = paramInt;
-        for (;;)
-        {
-          if (i >= paramArrayOfObject.length) {
-            break label82;
-          }
-          paramInt = i;
-          if (paramArrayOfObject[i] == null) {
-            break;
-          }
-          i += 1;
-        }
-      }
-      if (paramArrayOfObject.getClass().getComponentType().isInstance(paramObject))
-      {
-        i = paramInt;
-        for (;;)
-        {
-          if (i >= paramArrayOfObject.length) {
-            break label82;
-          }
-          paramInt = i;
-          if (paramObject.equals(paramArrayOfObject[i])) {
-            break;
-          }
-          i += 1;
-        }
-      }
-      label82:
-      return -1;
+        return;
+      } while (!localmpv.a());
+      i = parammcw.a().getId();
+    } while ((i != 2131694731) && (i != 2131694732));
+    if (i == 2131694731) {
+      this.jdField_a_of_type_Mqo.jdField_a_of_type_Int = parammcw.jdField_a_of_type_Int;
     }
+    parammcw.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    parammcw.jdField_a_of_type_Boolean = false;
   }
   
-  public static <T> boolean a(List<T> paramList, T paramT)
+  protected void c(mcx parammcx)
   {
-    if (paramList == null) {}
-    while (paramList.indexOf(paramT) < 0) {
-      return false;
+    AVActivity localAVActivity = this.jdField_a_of_type_Mqo.a();
+    if ((!this.jdField_a_of_type_Mqo.a()) || (localAVActivity == null)) {
+      return;
     }
-    return true;
+    mbb.a(this.jdField_a_of_type_Mqo.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695197);
+    parammcx.jdField_b_of_type_Boolean = true;
+    parammcx.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   
-  public static boolean a(int[] paramArrayOfInt, int paramInt)
+  protected void d(mcx parammcx)
   {
-    return a(paramArrayOfInt, paramInt) != -1;
+    AVActivity localAVActivity = this.jdField_a_of_type_Mqo.a();
+    if ((!this.jdField_a_of_type_Mqo.a()) || (localAVActivity == null)) {
+      return;
+    }
+    mbb.a(this.jdField_a_of_type_Mqo.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695199);
+    parammcx.jdField_b_of_type_Boolean = true;
+    parammcx.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   
-  public static boolean a(Object[] paramArrayOfObject, Object paramObject)
+  protected void e(mcx parammcx)
   {
-    return a(paramArrayOfObject, paramObject) != -1;
+    mpv localmpv = this.jdField_a_of_type_Mqo.a();
+    if (localmpv == null) {}
+    while ((localmpv.a == null) || (localmpv.a.a == null) || (localmpv.a.a.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Mqo.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().j) || (this.jdField_a_of_type_Mqo.a() == null) || (!this.jdField_a_of_type_Mqo.a())) {
+      return;
+    }
+    mbb.a(this.jdField_a_of_type_Mqo.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695198);
+    parammcx.jdField_b_of_type_Boolean = true;
+    parammcx.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  protected void f(mcx parammcx)
+  {
+    parammcx = this.jdField_a_of_type_Mqo.a();
+    if ((parammcx != null) && (parammcx.a())) {
+      mqq.d();
+    }
   }
 }
 

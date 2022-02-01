@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.intervideo.yiqikan;
 
-import avlw;
-import avmi;
+import aweh;
+import awet;
 
 public class TogetherBusinessForWebPlugin$1
   implements Runnable
 {
-  public TogetherBusinessForWebPlugin$1(avlw paramavlw) {}
+  public TogetherBusinessForWebPlugin$1(aweh paramaweh) {}
   
   public void run()
   {
-    avmi.a().a();
+    awet.a().a();
   }
 }
 

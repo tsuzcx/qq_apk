@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import adrm;
-import adrs;
-import bccu;
+import aean;
+import aeat;
+import bcvm;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.NewIntent;
-import mqu;
+import mrs;
 
 public final class ChatActivityFacade$2
   implements Runnable
@@ -19,21 +19,21 @@ public final class ChatActivityFacade$2
   public void run()
   {
     int i = 1;
-    adrm.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    aean.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     long l;
     NewIntent localNewIntent;
-    if ((adrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) || (adrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true)))
+    if ((aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) || (aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true)))
     {
-      l = adrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      l = aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       if (QLog.isColorLevel()) {
         QLog.i("ChatActivityFacade.QZoneFeeds", 2, "insertFriendNewestFeedIfNeeded    last publish time:" + l);
       }
-      localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), bccu.class);
+      localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), bcvm.class);
       localNewIntent.putExtra("selfuin", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
     }
     try
     {
-      localNewIntent.putExtra("hostuin", new long[] { mqu.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) });
+      localNewIntent.putExtra("hostuin", new long[] { mrs.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) });
       if (QLog.isColorLevel()) {
         QLog.i("ChatActivityFacade.QZoneFeeds", 2, "insertFriendNewestFeedIfNeeded   lastTime:" + l);
       }
@@ -43,20 +43,20 @@ public final class ChatActivityFacade$2
         localNewIntent.putExtra("src", i);
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
         {
-          adrs localadrs2 = (adrs)adrm.a().get(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-          adrs localadrs1 = localadrs2;
-          if (localadrs2 == null)
+          aeat localaeat2 = (aeat)aean.a().get(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+          aeat localaeat1 = localaeat2;
+          if (localaeat2 == null)
           {
-            localadrs1 = new adrs();
-            adrm.a().put(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localadrs1);
+            localaeat1 = new aeat();
+            aean.a().put(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localaeat1);
           }
-          localadrs1.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          localadrs1.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-          localadrs1.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(localadrs1);
+          localaeat1.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          localaeat1.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+          localaeat1.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(localaeat1);
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
         }
-        adrm.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "key_last_req_aio_feeds_time");
+        aean.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "key_last_req_aio_feeds_time");
         return;
       }
     }

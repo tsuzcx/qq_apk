@@ -1,19 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
-import org.json.JSONObject;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class bijn
-  implements DialogInterface.OnClickListener
+  extends MqqHandler
 {
-  bijn(bijj parambijj, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse, JSONObject paramJSONObject) {}
+  bijn(bijm parambijm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_Bijj.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 104: 
+      do
+      {
+        return;
+        paramMessage = (String)paramMessage.obj;
+        if ((this.a.jdField_a_of_type_Bbbc != null) && (!TextUtils.isEmpty(paramMessage)))
+        {
+          this.a.jdField_a_of_type_Bbbc.a(paramMessage);
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(bijm.jdField_a_of_type_JavaLangString, 2, "captcha sig is empty");
+      return;
+    }
+    bijm.a(this.a).finish();
   }
 }
 

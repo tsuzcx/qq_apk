@@ -1,22 +1,27 @@
-import android.support.annotation.NonNull;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
 
-public class yyn
-  extends weu
+class yyn
+  implements blih
 {
-  public final int a;
-  public final long a;
-  @NonNull
-  public final yyd a;
-  public final boolean a;
-  public final long b;
+  int jdField_a_of_type_Int = 0;
   
-  public yyn(@NonNull yyd paramyyd, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2)
+  yyn(yym paramyym) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Yyd = paramyyd;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt == 1) {
+      blgx.b(this.jdField_a_of_type_Yym.a().a());
+    }
+    while ((paramInt != 0) || (this.jdField_a_of_type_Yym.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_Yym.a.size())) {
+      return;
+    }
+    yym.a(this.jdField_a_of_type_Yym);
   }
 }
 

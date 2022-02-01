@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.widget.media;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import bgtn;
+import bhtq;
 import com.tencent.mobileqq.mini.widget.media.danmu.BarrageView;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -41,7 +41,7 @@ class MiniAppVideoPlayer$9$3
       MiniAppVideoPlayer.access$3900(this.this$1.this$0);
       MiniAppVideoPlayer.access$2302(this.this$1.this$0, false);
       return;
-      if ((bgtn.b(this.this$1.this$0.videoWidth) < l2) && (!this.this$1.this$0.isFullScreen))
+      if ((bhtq.b(this.this$1.this$0.videoWidth) < l2) && (!this.this$1.this$0.isFullScreen))
       {
         this.this$1.this$0.hideTimeDesc = true;
         MiniAppVideoPlayer.access$3500(this.this$1.this$0).setVisibility(8);

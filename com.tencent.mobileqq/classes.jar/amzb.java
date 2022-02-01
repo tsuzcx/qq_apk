@@ -1,25 +1,69 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
 
-final class amzb
-  extends bhhe
+public class amzb
 {
-  amzb(SharedPreferences paramSharedPreferences, int paramInt, amyz paramamyz) {}
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public String b;
   
-  public void onDone(bhhf parambhhf)
+  public WebResourceResponse a()
   {
-    super.onDone(parambhhf);
-    QLog.i("apollo_client_ApolloSSOConfig", 1, "checkUpdateApolloWebViewConfig download file task.getStatus()->" + parambhhf.a() + ", httpCode: " + parambhhf.f);
-    if (3 == parambhhf.a())
+    try
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("sp_key_apollo_webView_config_version", this.jdField_a_of_type_Int).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloSSOConfig", 2, "checkUpdateApolloWebViewConfig download version:" + this.jdField_a_of_type_Int);
+      if (this.b != null)
+      {
+        if ((this.jdField_a_of_type_ArrayOfByte != null) && (!this.jdField_a_of_type_Boolean)) {
+          return new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new ByteArrayInputStream(this.jdField_a_of_type_ArrayOfByte));
+        }
+        if (!bhmi.a(this.b)) {
+          break label102;
+        }
+        WebResourceResponse localWebResourceResponse = new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new FileInputStream(this.b));
+        return localWebResourceResponse;
       }
-      if (this.jdField_a_of_type_Amyz != null) {
-        amyz.a(this.jdField_a_of_type_Amyz);
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[] { "[getResponse]" });
+    }
+    return null;
+    label102:
+    return null;
+  }
+  
+  public String a()
+  {
+    return "file://" + this.b;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (bhmi.a(this.b)))
+      {
+        if (bhmi.b(this.b) <= 8388608L) {
+          break label84;
+        }
+        this.jdField_a_of_type_Boolean = true;
       }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("ApolloGameResManager", 2, "[initData] " + this.b);
+        return;
+        label84:
+        this.jdField_a_of_type_ArrayOfByte = bhmi.a(this.b);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[] { "[initData]" });
     }
   }
 }

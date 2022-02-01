@@ -1,7 +1,7 @@
 package cooperation.qqreader.ui;
 
-import abcr;
-import adea;
+import abgu;
+import admy;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -15,13 +15,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bhmv;
-import bhos;
-import bhpv;
-import bhqo;
-import bkgm;
-import blop;
-import blpz;
+import binq;
+import bipn;
+import biqq;
+import birj;
+import blhq;
+import bmpr;
+import bmrb;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -31,7 +31,7 @@ public class ReaderContentPageFragment
   extends ReaderBaseFragment
   implements Handler.Callback
 {
-  private bkgm jdField_a_of_type_Bkgm = new bkgm(Looper.getMainLooper(), this);
+  private blhq jdField_a_of_type_Blhq = new blhq(Looper.getMainLooper(), this);
   private String jdField_a_of_type_JavaLangString;
   
   public static WebViewFragment a(Intent paramIntent)
@@ -82,8 +82,8 @@ public class ReaderContentPageFragment
   
   private void c()
   {
-    abcr localabcr = ensureShare();
-    localabcr.a(blpz.a(localabcr.a()));
+    abgu localabgu = ensureShare();
+    localabgu.a(bmrb.a(localabgu.a()));
   }
   
   public void a()
@@ -179,17 +179,17 @@ public class ReaderContentPageFragment
         }
         this.jdField_a_of_type_JavaLangString = paramString1.trim();
         break;
-        paramImageView.setImageResource(2130843813);
+        paramImageView.setImageResource(2130843831);
         continue;
-        paramImageView.setImageResource(2130843812);
+        paramImageView.setImageResource(2130843830);
         continue;
-        paramImageView.setImageResource(2130840281);
+        paramImageView.setImageResource(2130840291);
         continue;
-        paramImageView.setImageResource(2130846938);
+        paramImageView.setImageResource(2130846955);
         continue;
-        paramImageView.setImageResource(2130846948);
+        paramImageView.setImageResource(2130846965);
         continue;
-        paramImageView.setImageResource(2130838899);
+        paramImageView.setImageResource(2130838911);
       }
       label193:
       this.jdField_a_of_type_JavaLangString = null;
@@ -219,7 +219,7 @@ public class ReaderContentPageFragment
   
   public void initWebView()
   {
-    a(this.jdField_a_of_type_Bkgm);
+    a(this.jdField_a_of_type_Blhq);
     super.initWebView();
     if (this.intent != null)
     {
@@ -261,10 +261,10 @@ public class ReaderContentPageFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Bkgm.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Blhq.removeCallbacksAndMessages(null);
   }
   
-  public void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, adea paramadea)
+  public void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, admy paramadmy)
   {
     if ((this.mSwiftTitleUI != null) && (this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView != null) && (this.mSwiftTitleUI.c != null)) {
       a(this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView, this.mSwiftTitleUI.c, paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramOnClickListener);
@@ -283,12 +283,12 @@ public class ReaderContentPageFragment
   
   public void showActionSheet()
   {
-    bhpv localbhpv = (bhpv)this.mComponentsProvider.a(4);
-    if (localbhpv != null)
+    biqq localbiqq = (biqq)this.mComponentsProvider.a(4);
+    if (localbiqq != null)
     {
       c();
-      a(localbhpv.a);
-      localbhpv.a(ensureShare(), this.mUIStyle.a);
+      a(localbiqq.a);
+      localbiqq.a(ensureShare(), this.mUIStyle.a);
     }
   }
 }

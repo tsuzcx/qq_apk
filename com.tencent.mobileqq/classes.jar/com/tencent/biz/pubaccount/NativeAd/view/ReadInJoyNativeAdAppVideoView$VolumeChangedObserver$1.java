@@ -3,22 +3,22 @@ package com.tencent.biz.pubaccount.NativeAd.view;
 import android.media.AudioManager;
 import android.widget.ImageView;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import nyj;
+import oae;
 
 public class ReadInJoyNativeAdAppVideoView$VolumeChangedObserver$1
   implements Runnable
 {
-  public ReadInJoyNativeAdAppVideoView$VolumeChangedObserver$1(nyj paramnyj) {}
+  public ReadInJoyNativeAdAppVideoView$VolumeChangedObserver$1(oae paramoae) {}
   
   public void run()
   {
     if (ReadInJoyNativeAdAppVideoView.a(this.a.a).getStreamVolume(3) > 0)
     {
-      ReadInJoyNativeAdAppVideoView.b(this.a.a).setImageResource(2130841579);
+      ReadInJoyNativeAdAppVideoView.b(this.a.a).setImageResource(2130841589);
       ReadInJoyNativeAdAppVideoView.a(this.a.a).setOutputMute(false);
       return;
     }
-    ReadInJoyNativeAdAppVideoView.b(this.a.a).setImageResource(2130841578);
+    ReadInJoyNativeAdAppVideoView.b(this.a.a).setImageResource(2130841588);
     ReadInJoyNativeAdAppVideoView.a(this.a.a).setOutputMute(true);
   }
 }

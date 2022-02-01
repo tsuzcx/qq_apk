@@ -1,27 +1,16 @@
-import android.os.Handler;
-import com.tencent.image.ApngDrawable.OnPlayRepeatListener;
-import com.tencent.image.ApngImage;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.vas.ApngQueuePlayer.RepeatListener.1;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
 
 public class bgwd
-  implements ApngDrawable.OnPlayRepeatListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int a;
+  public bgwd(RedDotAnimateView paramRedDotAnimateView) {}
   
-  bgwd(bgvz parambgvz) {}
-  
-  public void a(ApngImage paramApngImage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Int = paramApngImage.apngLoop;
-    paramApngImage.setOnPlayRepeatListener(this);
-  }
-  
-  public void onPlayRepeat(int paramInt)
-  {
-    if (paramInt == this.jdField_a_of_type_Int) {
-      ThreadManagerV2.getUIHandlerV2().post(new ApngQueuePlayer.RepeatListener.1(this));
-    }
+    this.a.c = ((int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * 255.0F));
+    this.a.invalidate();
   }
 }
 

@@ -1,17 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class biwh
-  implements DialogInterface.OnDismissListener
+public abstract interface biwh
 {
-  biwh(biwe parambiwe) {}
+  public abstract int a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a = null;
-    this.a.c = false;
-    this.a.c = false;
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

@@ -1,6 +1,8 @@
+import android.view.View;
+
 public abstract interface bcit
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void a(View paramView);
 }
 
 

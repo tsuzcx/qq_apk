@@ -1,27 +1,13 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+import android.support.v4.view.ViewPager;
 
-public class xjx
-  extends Subscriber.SingleEventSubscriberNoRefect<wxn>
+class xjx
+  implements bjdq
 {
-  xjt a;
+  xjx(xjw paramxjw) {}
   
-  public xjx(@NonNull xjt paramxjt)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    this.a = paramxjt;
-  }
-  
-  protected void a(@NonNull wxn paramwxn)
-  {
-    if (paramwxn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      this.a.a(paramwxn.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wxn.class;
+    this.a.a.setCurrentItem(paramInt2);
   }
 }
 

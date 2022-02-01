@@ -1,142 +1,49 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import java.util.HashMap;
 
 public class azuo
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  static HashMap<Integer, Bitmap> a;
+  public double a;
+  public float a;
+  public int a;
+  public Bitmap a;
+  public float[] a;
+  float b;
+  public int b;
+  public float c;
+  public float d;
   
-  public azuo(Context paramContext)
+  static
   {
-    this(paramContext, null);
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public azuo(Context paramContext, QQAppInterface paramQQAppInterface)
+  public static azuo a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, Resources paramResources)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("http://")) || (this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("https://"));
-  }
-  
-  private void b()
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
-    String str1;
-    do
+    azuo localazuo = new azuo();
+    float f = paramBitmap.getHeight() / paramBitmap.getWidth();
+    localazuo.jdField_a_of_type_Int = ((int)(agej.a(8.0F, paramResources) + (float)Math.random() * agej.a(3.0F, paramResources)));
+    localazuo.jdField_b_of_type_Int = ((int)(f * localazuo.jdField_a_of_type_Int));
+    localazuo.jdField_a_of_type_ArrayOfFloat = new float[2];
+    localazuo.jdField_a_of_type_ArrayOfFloat[0] = paramFloat1;
+    localazuo.jdField_a_of_type_ArrayOfFloat[1] = paramFloat2;
+    localazuo.jdField_a_of_type_Float = ((float)Math.random() * agej.a(90.0F, paramResources) - agej.a(45.0F, paramResources));
+    localazuo.jdField_a_of_type_Double = (2.0D * Math.random() * 3.141592653589793D - 3.141592653589793D);
+    if (localazuo.jdField_a_of_type_Double >= 0.0D) {}
+    for (localazuo.jdField_b_of_type_Float = (agej.a(10.0F, paramResources) + (float)Math.random() * agej.a(200.0F, paramResources));; localazuo.jdField_b_of_type_Float = (-agej.a(10.0F, paramResources) - (float)Math.random() * agej.a(200.0F, paramResources)))
     {
-      return;
-      str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    } while (TextUtils.isEmpty(str1));
-    try
-    {
-      String str2 = abao.b(str1, abao.b(2));
-      if (QLog.isColorLevel()) {
-        QLog.i("HttpMqqJumper", 2, "openMoreOptions uin:" + str1 + " uinCode:" + str2);
-      }
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false);
-      Object localObject2 = new ArrayList();
-      if (localObject1 != null) {
-        ((List)localObject2).addAll((Collection)localObject1);
-      }
-      localObject1 = abao.a(str1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 25004, 10, (List)localObject2);
-      localObject2 = ((String)localObject1).replaceAll(str1, str2);
-      Bundle localBundle = abao.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      if (QLog.isColorLevel()) {
-        QLog.i("HttpMqqJumper", 2, "openMoreOptions safetyReport reportMsgOrg: " + (String)localObject1 + "  reportMsg: " + (String)localObject2);
-      }
-      abao.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, str1, str2, null, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 25004, (String)localObject2, localBundle);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("HttpMqqJumper", 1, "openMoreOptions safetyReport error" + localThrowable.getMessage());
-    }
-  }
-  
-  private boolean b()
-  {
-    return this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("mqq://jubao.qq.com");
-  }
-  
-  private boolean c()
-  {
-    return this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("mqq://");
-  }
-  
-  public azuo a(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    return this;
-  }
-  
-  public azuo a(SessionInfo paramSessionInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    return this;
-  }
-  
-  public azuo a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    Object localObject;
-    label94:
-    do
-    {
-      do
+      localazuo.c = ((float)(localazuo.jdField_b_of_type_Float * Math.cos(localazuo.jdField_a_of_type_Double)));
+      localazuo.d = ((float)(localazuo.jdField_b_of_type_Float * Math.sin(localazuo.jdField_a_of_type_Double)));
+      localazuo.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(localazuo.jdField_a_of_type_Int)));
+      if (localazuo.jdField_a_of_type_AndroidGraphicsBitmap == null)
       {
-        for (;;)
-        {
-          localObject = null;
-          if (b())
-          {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replace("mqq://", "https://");
-            b();
-          }
-          while (localObject != null)
-          {
-            this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-            return;
-            if (!a()) {
-              break label94;
-            }
-            localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-            ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
-          }
-        }
-        if (!c()) {
-          break;
-        }
-      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-      localObject = bgng.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    } while (localObject == null);
-    ((bgmp)localObject).a();
-    ((bgmp)localObject).a();
+        localazuo.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createScaledBitmap(paramBitmap, localazuo.jdField_a_of_type_Int, localazuo.jdField_b_of_type_Int, true);
+        jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localazuo.jdField_a_of_type_Int), localazuo.jdField_a_of_type_AndroidGraphicsBitmap);
+      }
+      return localazuo;
+    }
   }
 }
 

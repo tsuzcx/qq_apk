@@ -1,27 +1,6 @@
-import com.tencent.TMG.sdk.AVCallback;
-import com.tencent.qphone.base.util.QLog;
-
-class blcp
-  implements AVCallback
+public abstract interface blcp
 {
-  blcp(blck paramblck) {}
-  
-  public void onComplete(int paramInt, String paramString)
-  {
-    if (paramInt == 0)
-    {
-      QLog.e("AVEngineWalper", 1, "AVCallback make connection successfully!!!");
-      blck.a(this.a, true);
-    }
-    for (;;)
-    {
-      if (this.a.a != null) {
-        this.a.a.a(paramInt, paramString);
-      }
-      return;
-      QLog.e("AVEngineWalper", 1, "AVCallback result=" + paramInt + ", errorInfo=" + paramString);
-    }
-  }
+  public abstract void a(int paramInt, blco paramblco, blcq paramblcq);
 }
 
 

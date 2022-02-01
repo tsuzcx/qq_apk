@@ -1,32 +1,94 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_message.ErrorInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_message.RspStoryMessageList;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
 class ysu
-  extends QQUIEventReceiver<ysm, yyo>
+  extends nko
 {
-  public ysu(@NonNull ysm paramysm)
+  WeakReference<yst> b;
+  WeakReference<ImageView> c;
+  
+  public ysu(yst paramyst, ImageView paramImageView)
   {
-    super(paramysm);
+    this.b = new WeakReference(paramyst);
+    this.c = new WeakReference(paramImageView);
   }
   
-  public void a(@NonNull ysm paramysm, @NonNull yyo paramyyo)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    ysw localysw = paramysm.a;
-    if (localysw != null) {
-      localysw.a(paramysm.a());
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch message list result, code=" + paramInt);
     }
-    for (;;)
+    yst localyst = (yst)this.b.get();
+    paramBundle = (ImageView)this.c.get();
+    if ((localyst == null) || (paramBundle == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "weak reference null.");
+      }
+    }
+    do
     {
-      yqu.b("edit_video", "face_list_success", 0, paramyyo.a.errorCode, new String[0]);
-      return;
-      yqp.b(this.TAG, "DoodleEmojiListEventReceiver adapter is null");
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return yyo.class;
+      for (;;)
+      {
+        return null;
+        if ((paramInt == 0) && (paramArrayOfByte != null)) {
+          try
+          {
+            Object localObject = new qqstory_710_message.RspStoryMessageList();
+            ((qqstory_710_message.RspStoryMessageList)localObject).mergeFrom(paramArrayOfByte);
+            if ((((qqstory_710_message.RspStoryMessageList)localObject).errinfo.error_code.has()) && (((qqstory_710_message.RspStoryMessageList)localObject).errinfo.error_code.get() == 0) && (((qqstory_710_message.RspStoryMessageList)localObject).message_num.get() > 0) && (!((qqstory_710_message.RspStoryMessageList)localObject).message_list.get().isEmpty()))
+            {
+              paramArrayOfByte = ((qqstory_710_message.RspStoryMessageList)localObject).message_list.get().iterator();
+              for (;;)
+              {
+                if (paramArrayOfByte.hasNext())
+                {
+                  localObject = new yky((qqstory_710_message.StoryMessage)paramArrayOfByte.next());
+                  if (((yky)localObject).d)
+                  {
+                    paramArrayOfByte = ((yky)localObject).a;
+                    if (QLog.isColorLevel()) {
+                      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "set bigV avatar from MessageData. unionId=" + paramArrayOfByte);
+                    }
+                    if (TextUtils.isEmpty(paramArrayOfByte)) {
+                      break;
+                    }
+                    xiz.a(paramBundle, xiz.b(paramArrayOfByte), true, (int)bhmg.a(yst.b(localyst), 33.0F));
+                    return null;
+                  }
+                }
+              }
+            }
+          }
+          catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "parse RspStoryMessageList error", paramArrayOfByte);
+            }
+          }
+        }
+      }
+      paramArrayOfByte = bhmq.b();
+      QQStoryContext.a();
+      paramArrayOfByte = aoot.a(QQStoryContext.a(), 1, Long.toString(yst.a(localyst)), 3, paramArrayOfByte, paramArrayOfByte);
+      if (paramArrayOfByte != null) {
+        paramBundle.setImageDrawable(paramArrayOfByte);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch message list failed");
+    return null;
   }
 }
 

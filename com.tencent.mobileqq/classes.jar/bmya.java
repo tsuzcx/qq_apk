@@ -1,56 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.UploadServerInfoCallback;
-import com.tencent.weiyun.transmission.upload.UploadFile;
-import com.tencent.weiyun.utils.Utils;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskPicBackupRsp;
+import android.view.animation.Animation;
+import cooperation.qzone.contentbox.PlusMenuContainer;
 
-class bmya
-  implements bmyw<WeiyunPB.DiskPicBackupRsp>
+public class bmya
+  extends blgm
 {
-  bmya(bmxz parambmxz, WeiyunTransmissionGlobal.UploadServerInfoCallback paramUploadServerInfoCallback, UploadFile paramUploadFile) {}
+  public bmya(PlusMenuContainer paramPlusMenuContainer) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.DiskPicBackupRsp paramDiskPicBackupRsp)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, paramInt, paramString);
-  }
-  
-  public void a(WeiyunPB.DiskPicBackupRsp paramDiskPicBackupRsp)
-  {
-    if (paramDiskPicBackupRsp == null)
-    {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, 1828004, anni.a(2131713748));
-      return;
-    }
-    Object localObject1 = paramDiskPicBackupRsp.pdir_key.get();
-    Object localObject2 = paramDiskPicBackupRsp.ppdir_key.get();
-    if (localObject1 != null) {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey = bnau.a((ByteStringMicro)localObject1);
-    }
-    if (localObject2 != null) {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey = bnau.a((ByteStringMicro)localObject2);
-    }
-    if (!TextUtils.isEmpty(paramDiskPicBackupRsp.backup_path.get())) {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirName = paramDiskPicBackupRsp.backup_path.get();
-    }
-    localObject2 = this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile;
-    boolean bool = paramDiskPicBackupRsp.file_exist.get();
-    String str1 = paramDiskPicBackupRsp.file_id.get();
-    String str2 = paramDiskPicBackupRsp.server_name.get();
-    if (WeiyunTransmissionGlobal.getInstance().isNativeUpload()) {}
-    for (localObject1 = paramDiskPicBackupRsp.inside_upload_ip.get();; localObject1 = paramDiskPicBackupRsp.outside_upload_ip.get())
-    {
-      ((UploadFile)localObject2).setServerInfo(bool, str1, str2, (String)localObject1, paramDiskPicBackupRsp.server_port.get(), Utils.bytes2HexStr(paramDiskPicBackupRsp.check_key.get().toByteArray()).toLowerCase(), paramDiskPicBackupRsp.channel_count.get(), Integer.toString(paramDiskPicBackupRsp.file_version.get()));
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, true, 0, null);
-      bnap.a(BaseApplicationImpl.getApplication().getApplicationContext(), String.valueOf(this.jdField_a_of_type_Bmxz.getCurrentUin()), "upload_coupon_count", String.valueOf(paramDiskPicBackupRsp.coupon_count.get()));
-      return;
-    }
+    this.a.setVisibility(4);
+    PlusMenuContainer.a(this.a, false);
   }
 }
 

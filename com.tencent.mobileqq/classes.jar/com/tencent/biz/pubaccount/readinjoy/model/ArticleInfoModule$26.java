@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.List;
-import pwb;
+import pon;
 
 public class ArticleInfoModule$26
   implements Runnable
 {
-  public ArticleInfoModule$26(pwb parampwb) {}
+  public ArticleInfoModule$26(pon parampon) {}
   
   public void run()
   {

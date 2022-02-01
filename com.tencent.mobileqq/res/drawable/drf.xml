@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@drawable/goh" />
-    <item android:drawable="@drawable/goi" />
-</selector>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#ffebebf0" />
+            <corners android:radius="4.0dip" />
+            <size android:height="45.0dip" android:width="45.0dip" />
+        </shape>
+    </item>
+</layer-list>

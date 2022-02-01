@@ -1,8 +1,18 @@
-public abstract interface xrq
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+
+public class xrq
+  extends xrz<String>
 {
-  public abstract xrl a();
+  public xrq(VideoViewVideoHolder paramVideoViewVideoHolder)
+  {
+    super(paramVideoViewVideoHolder, null);
+  }
   
-  public abstract xrl b();
+  public void a(String paramString)
+  {
+    super.onNext(paramString);
+    VideoViewVideoHolder.a(this.a);
+  }
 }
 
 

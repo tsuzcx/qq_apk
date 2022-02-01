@@ -1,35 +1,22 @@
-import com.tencent.mobileqq.activity.LikeSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
 public class aens
-  extends axdw
 {
-  public aens(LikeSettingActivity paramLikeSettingActivity) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public aens(FontSettingActivity paramFontSettingActivity, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (paramBoolean1) {
-      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean2);
-    }
-  }
-  
-  public void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (!paramBoolean1)
-    {
-      QQToast.a(this.a, 1, 2131717834, 0).b(this.a.getTitleBarHeight());
-      paramBoolean1 = ((axbt)this.a.app.getManager(161)).a();
-      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean1);
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 

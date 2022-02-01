@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akpw
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public akpw(QzoneHbFragment paramQzoneHbFragment) {}
+  public akpw(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    if (this.a.b) {
+      bdll.b(this.a.app, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
+    }
+    this.a.finish();
+    bhkd.anim(this.a, true, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

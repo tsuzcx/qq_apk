@@ -1,18 +1,18 @@
-import UserGrowth.stWeishiReportRsp;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushOpModel;
 
-final class umr
-  implements ujj
+public final class umr
+  implements Parcelable.Creator<WSPushOpModel>
 {
-  umr(String paramString) {}
-  
-  public void a(uju paramuju)
+  public WSPushOpModel a(Parcel paramParcel)
   {
-    upe.b("weishi-report", "report " + this.a + " start...");
-    if ((paramuju != null) && (paramuju.a != null) && ((paramuju.a instanceof stWeishiReportRsp)))
-    {
-      paramuju = (stWeishiReportRsp)paramuju.a;
-      upe.b("weishi-report", "report" + this.a + "end: " + paramuju.code + paramuju.msg);
-    }
+    return new WSPushOpModel(paramParcel);
+  }
+  
+  public WSPushOpModel[] a(int paramInt)
+  {
+    return new WSPushOpModel[paramInt];
   }
 }
 

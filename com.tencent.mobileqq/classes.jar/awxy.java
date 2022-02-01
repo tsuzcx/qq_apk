@@ -1,86 +1,60 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import java.io.File;
 
-class awxy
-  implements awxw
+public class awxy
 {
-  private IBinder a;
+  public int a;
+  public boolean a;
+  public String[] a;
+  public int b;
+  public String[] b;
+  public int c;
+  public int d;
   
-  awxy(IBinder paramIBinder)
+  public awxy()
   {
-    this.a = paramIBinder;
+    a();
   }
   
-  public IBinder asBinder()
+  private void a()
   {
-    return this.a;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 1;
+    this.c = 100;
+    this.d = 0;
+    this.jdField_a_of_type_ArrayOfJavaLangString = null;
+    this.jdField_b_of_type_ArrayOfJavaLangString = null;
   }
   
-  /* Error */
-  public void onPlaySongChanged(com.tencent.mobileqq.music.SongInfo paramSongInfo)
+  public boolean a()
   {
-    // Byte code:
-    //   0: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: aload_2
-    //   5: ldc 28
-    //   7: invokevirtual 32	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_1
-    //   11: ifnull +33 -> 44
-    //   14: aload_2
-    //   15: iconst_1
-    //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   19: aload_1
-    //   20: aload_2
-    //   21: iconst_0
-    //   22: invokevirtual 42	com/tencent/mobileqq/music/SongInfo:writeToParcel	(Landroid/os/Parcel;I)V
-    //   25: aload_0
-    //   26: getfield 15	awxy:a	Landroid/os/IBinder;
-    //   29: iconst_2
-    //   30: aload_2
-    //   31: aconst_null
-    //   32: iconst_1
-    //   33: invokeinterface 48 5 0
-    //   38: pop
-    //   39: aload_2
-    //   40: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   43: return
-    //   44: aload_2
-    //   45: iconst_0
-    //   46: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   49: goto -24 -> 25
-    //   52: astore_1
-    //   53: aload_2
-    //   54: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   57: aload_1
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	59	0	this	awxy
-    //   0	59	1	paramSongInfo	com.tencent.mobileqq.music.SongInfo
-    //   3	51	2	localParcel	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	10	52	finally
-    //   14	25	52	finally
-    //   25	39	52	finally
-    //   44	49	52	finally
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
+    int i;
+    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
     {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerCallback");
-      localParcel.writeInt(paramInt);
-      this.a.transact(1, localParcel, null, 1);
-      return;
+      i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      {
+        if (!new File(this.jdField_a_of_type_ArrayOfJavaLangString[i]).exists()) {
+          return false;
+        }
+        i += 1;
+      }
     }
-    finally
+    if ((this.jdField_b_of_type_ArrayOfJavaLangString != null) && (this.jdField_b_of_type_ArrayOfJavaLangString.length > 0))
     {
-      localParcel.recycle();
+      i = 0;
+      for (;;)
+      {
+        if (i >= this.jdField_b_of_type_ArrayOfJavaLangString.length) {
+          break label106;
+        }
+        if (!new File(this.jdField_b_of_type_ArrayOfJavaLangString[i]).exists()) {
+          break;
+        }
+        i += 1;
+      }
     }
+    label106:
+    return true;
   }
 }
 

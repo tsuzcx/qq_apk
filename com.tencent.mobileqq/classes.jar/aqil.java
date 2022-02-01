@@ -1,36 +1,22 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqil
-  implements bbaa
+  implements bdbf
 {
-  public aqil(SearchResultActivity paramSearchResultActivity) {}
+  public aqil(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void a(Exception paramException)
   {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
-    for (;;)
-    {
-      return;
-      if (this.a.jdField_a_of_type_Int == 0)
-      {
-        int i = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          paramBitmap = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt2).getTag();
-          if ((paramBitmap != null) && ((paramBitmap instanceof aqin)))
-          {
-            paramBitmap = (aqin)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              SearchResultActivity.a(this.a, paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
-            }
-          }
-          paramInt2 += 1;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("DynamicAvatarRecordActivity", 2, "[onCameraException]", paramException);
+    }
+  }
+  
+  public void a(RuntimeException paramRuntimeException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("DynamicAvatarRecordActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
     }
   }
 }

@@ -1,25 +1,18 @@
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import java.util.Comparator;
+
 public class amgn
+  implements Comparator<TroopMemberInfo>
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d = -1;
+  private amgn(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public amgn()
+  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_a_of_type_Boolean = false;
+    if ((paramTroopMemberInfo1 != null) && (paramTroopMemberInfo1.displayedNamePinyinFirst != null) && (paramTroopMemberInfo2 != null)) {
+      return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
+    }
+    return 0;
   }
 }
 

@@ -1,16 +1,62 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloTicker;
-import com.tencent.mobileqq.apollo.EnginePreLoader.2;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amjq
 {
-  private ApolloEngine jdField_a_of_type_ComTencentMobileqqApolloApolloEngine;
-  private ApolloTicker jdField_a_of_type_ComTencentMobileqqApolloApolloTicker;
+  public List<amjr> a = new ArrayList();
   
-  private void a()
+  public static amjq a(JSONObject paramJSONObject)
   {
-    ThreadManagerV2.executeOnSubThread(new EnginePreLoader.2(this));
+    if (paramJSONObject == null) {
+      paramJSONObject = new amjq();
+    }
+    for (;;)
+    {
+      return paramJSONObject;
+      localamjq = new amjq();
+      try
+      {
+        JSONArray localJSONArray = new JSONArray(paramJSONObject.getString("items"));
+        paramJSONObject = localamjq;
+        if (localJSONArray == null) {
+          continue;
+        }
+        paramJSONObject = localamjq;
+        if (localJSONArray.length() < 0) {
+          continue;
+        }
+        int j = localJSONArray.length();
+        int i = 0;
+        for (;;)
+        {
+          paramJSONObject = localamjq;
+          if (i >= j) {
+            break;
+          }
+          paramJSONObject = amjr.a(localJSONArray.getJSONObject(i));
+          localamjq.a.add(paramJSONObject);
+          i += 1;
+        }
+        return localamjq;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return localamjq;
+      }
+      catch (OutOfMemoryError paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return localamjq;
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
+    }
   }
 }
 

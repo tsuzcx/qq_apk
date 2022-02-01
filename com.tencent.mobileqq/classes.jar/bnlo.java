@@ -1,14 +1,23 @@
-import android.support.annotation.NonNull;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 
-public class bnlo
+public final class bnlo
+  implements bngj
 {
-  public String a;
-  public String b = "null";
+  public bnlo(Handler paramHandler) {}
   
-  @NonNull
-  public String toString()
+  public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    return this.a + ", value=" + this.b;
+    if ("cmd.uploadCommentVideo".equals(paramString))
+    {
+      paramString = new Message();
+      paramString.obj = paramBundle;
+      this.a.sendMessage(paramString);
+      if ((paramBundle.getBundle("data") != null) && (paramBundle.getBundle("data").getInt("status") != 2)) {
+        bngf.a().b(this);
+      }
+    }
   }
 }
 

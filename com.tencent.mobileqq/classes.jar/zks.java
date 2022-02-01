@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.utils.FileUtils.1;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class zks
-  implements DialogInterface.OnClickListener
+public final class zks
+  implements FilenameFilter
 {
-  public zks(FileUtils.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean accept(File paramFile, String paramString)
   {
-    paramDialogInterface.dismiss();
+    return paramString.endsWith(".mp4");
   }
 }
 

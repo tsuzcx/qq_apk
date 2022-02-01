@@ -1,13 +1,11 @@
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
+import android.content.Context;
+import java.util.Map;
 
-final class nmx
-  extends ThreadLocal<CharsetDecoder>
+public abstract interface nmx
 {
-  protected CharsetDecoder a()
-  {
-    return Charset.forName("UTF-8").newDecoder();
-  }
+  public abstract int a(Context paramContext, String paramString);
+  
+  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, nmg paramnmg, Map<String, String> paramMap);
 }
 
 

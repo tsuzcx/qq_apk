@@ -1,17 +1,10 @@
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
-import com.tencent.mobileqq.data.MessageForPic;
-
-public class agpm
-  extends afwr
+public abstract interface agpm
 {
-  public TextView a;
-  public URLDrawable a;
-  public ChatThumbView a;
-  public MessageForPic a;
+  public abstract void a(int paramInt);
   
-  public agpm(agpl paramagpl) {}
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

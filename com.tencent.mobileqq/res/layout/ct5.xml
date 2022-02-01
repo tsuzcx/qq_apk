@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/h70" android:background="@color/a4p" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:ptf="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
+        <com.tencent.mobileqq.vas.qvip.view.QQVipHeadLayout android:id="@id/nhb" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <View android:id="@id/nhc" android:background="@drawable/fs7" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <com.tencent.mobileqq.vas.qvip.view.QQVipWebview android:id="@id/nhd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mobileqq.vas.qvip.view.QQVipHeadLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/myu" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="88.0dip">
+        <ImageView android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="50.0dip" />
+        <com.tencent.mobileqq.gamecenter.view.NavBarQQGamePub android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="38.0dip" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/enc" android:background="@color/alw" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_width="160.0dip" android:layout_height="100.0dip" android:layout_marginTop="232.0dip" android:src="@drawable/skin_qqvip_finger" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="18.0dip" android:textColor="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="341.0dip" android:text="左右滑动查看历史消息" android:layout_centerHorizontal="true" />
+        <ImageView android:layout_width="24.0dip" android:layout_height="12.0dip" android:layout_marginTop="623.0dip" android:src="@drawable/skin_qqvip_top_arrow" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="18.0dip" android:textColor="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="643.0dip" android:text="上滑查看更多推荐内容" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

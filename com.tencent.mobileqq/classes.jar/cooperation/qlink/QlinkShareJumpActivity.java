@@ -10,20 +10,20 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anni;
-import athc;
-import atwl;
-import bglp;
-import bgpa;
-import bkfv;
-import blhj;
-import blie;
-import blif;
-import blig;
-import blih;
-import blii;
-import blij;
-import blik;
+import anzj;
+import atyw;
+import auog;
+import bhlq;
+import bhpc;
+import blha;
+import bmim;
+import bmjh;
+import bmji;
+import bmjj;
+import bmjk;
+import bmjl;
+import bmjm;
+import bmjn;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -43,12 +43,12 @@ public class QlinkShareJumpActivity
   implements Handler.Callback
 {
   private Bundle jdField_a_of_type_AndroidOsBundle;
-  private bgpa jdField_a_of_type_Bgpa;
+  private bhpc jdField_a_of_type_Bhpc;
   private String jdField_a_of_type_JavaLangString;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bkfv(Looper.getMainLooper(), this);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new blha(Looper.getMainLooper(), this);
   private boolean jdField_a_of_type_Boolean;
-  private String b = anni.a(2131708787);
+  private String b = anzj.a(2131708896);
   
   /* Error */
   private String a(Uri paramUri)
@@ -96,7 +96,7 @@ public class QlinkShareJumpActivity
     //   87: lstore 4
     //   89: lload 4
     //   91: l2f
-    //   92: invokestatic 102	bgmg:c	()F
+    //   92: invokestatic 102	bhmi:c	()F
     //   95: fcmpl
     //   96: ifle +27 -> 123
     //   99: aload_0
@@ -144,7 +144,7 @@ public class QlinkShareJumpActivity
     //   194: aastore
     //   195: iconst_0
     //   196: aaload
-    //   197: invokestatic 137	bgmg:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   197: invokestatic 137	bhmi:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   200: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   203: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   206: astore 8
@@ -161,7 +161,7 @@ public class QlinkShareJumpActivity
     //   232: ifne +26 -> 258
     //   235: aload_0
     //   236: ldc 148
-    //   238: invokestatic 25	anni:a	(I)Ljava/lang/String;
+    //   238: invokestatic 25	anzj:a	(I)Ljava/lang/String;
     //   241: putfield 27	cooperation/qlink/QlinkShareJumpActivity:b	Ljava/lang/String;
     //   244: aload 6
     //   246: ifnull +10 -> 256
@@ -183,7 +183,7 @@ public class QlinkShareJumpActivity
     //   280: invokestatic 73	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   283: aload_0
     //   284: ldc 155
-    //   286: invokestatic 25	anni:a	(I)Ljava/lang/String;
+    //   286: invokestatic 25	anzj:a	(I)Ljava/lang/String;
     //   289: putfield 27	cooperation/qlink/QlinkShareJumpActivity:b	Ljava/lang/String;
     //   292: aload 6
     //   294: ifnull +10 -> 304
@@ -197,7 +197,7 @@ public class QlinkShareJumpActivity
     //   312: ifle +30 -> 342
     //   315: aload_0
     //   316: ldc 158
-    //   318: invokestatic 25	anni:a	(I)Ljava/lang/String;
+    //   318: invokestatic 25	anzj:a	(I)Ljava/lang/String;
     //   321: putfield 27	cooperation/qlink/QlinkShareJumpActivity:b	Ljava/lang/String;
     //   324: aload_1
     //   325: invokevirtual 161	java/io/InputStream:close	()V
@@ -321,7 +321,7 @@ public class QlinkShareJumpActivity
         break label259;
       }
       localObject1 = b((Uri)localObject2);
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (atwl.a((String)localObject1)) && (new File((String)localObject1).canRead())) {
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (auog.a((String)localObject1)) && (new File((String)localObject1).canRead())) {
         break label254;
       }
       localObject1 = a((Uri)localObject2);
@@ -354,7 +354,7 @@ public class QlinkShareJumpActivity
               continue;
             }
             localObject2 = b((Uri)((Iterator)localObject1).next());
-            if (atwl.a((String)localObject2)) {
+            if (auog.a((String)localObject2)) {
               localArrayList.add(localObject2);
             }
             for (;;)
@@ -407,20 +407,20 @@ public class QlinkShareJumpActivity
   {
     this.jdField_a_of_type_Boolean = true;
     ThreadManager.post(new QlinkShareJumpActivity.5(this, paramString, paramInputStream, paramLong), 5, null, true);
-    if (this.jdField_a_of_type_Bgpa == null)
+    if (this.jdField_a_of_type_Bhpc == null)
     {
-      this.jdField_a_of_type_Bgpa = bglp.a(this, getString(2131691145), anni.a(2131708790), new blii(this));
-      this.jdField_a_of_type_Bgpa.setOnDismissListener(new blij(this));
+      this.jdField_a_of_type_Bhpc = bhlq.a(this, getString(2131691145), anzj.a(2131708899), new bmjl(this));
+      this.jdField_a_of_type_Bhpc.setOnDismissListener(new bmjm(this));
     }
-    this.jdField_a_of_type_Bgpa.show();
+    this.jdField_a_of_type_Bhpc.show();
   }
   
   private void a(boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (String str = getString(2131697589);; str = getString(2131697590))
+    for (String str = getString(2131697673);; str = getString(2131697674))
     {
-      bglp.a(this, 230, getString(2131697545), str, 2131697538, 2131697538, new blif(this), null).show();
+      bhlq.a(this, 230, getString(2131697629), str, 2131697622, 2131697622, new bmji(this), null).show();
       return;
     }
   }
@@ -478,7 +478,7 @@ public class QlinkShareJumpActivity
   private void b()
   {
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 50) {
-      bglp.a(this, 230, getString(2131697545), getString(2131697549), 2131697538, 2131697538, new blig(this), null).show();
+      bhlq.a(this, 230, getString(2131697629), getString(2131697633), 2131697622, 2131697622, new bmjj(this), null).show();
     }
     while ((a()) || (a(false))) {
       return;
@@ -488,20 +488,20 @@ public class QlinkShareJumpActivity
   
   private void b(String paramString)
   {
-    bgpa localbgpa = new bgpa(this, 2131755823);
-    localbgpa.setContentView(2131559009);
-    localbgpa.setTitle(getString(2131718563));
-    localbgpa.setMessage(paramString);
-    localbgpa.setCanceledOnTouchOutside(false);
-    localbgpa.setCancelable(false);
-    localbgpa.setNegativeButton(getString(2131690563), new blih(this));
-    localbgpa.show();
+    bhpc localbhpc = new bhpc(this, 2131755824);
+    localbhpc.setContentView(2131559008);
+    localbhpc.setTitle(getString(2131718699));
+    localbhpc.setMessage(paramString);
+    localbhpc.setCanceledOnTouchOutside(false);
+    localbhpc.setCancelable(false);
+    localbhpc.setNegativeButton(getString(2131690559), new bmjk(this));
+    localbhpc.show();
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Bgpa != null) {
-      this.jdField_a_of_type_Bgpa.dismiss();
+    if (this.jdField_a_of_type_Bhpc != null) {
+      this.jdField_a_of_type_Bhpc.dismiss();
     }
   }
   
@@ -515,7 +515,7 @@ public class QlinkShareJumpActivity
       localBundle = new Bundle();
       localBundle.putStringArrayList("string_filepaths", this.jdField_a_of_type_JavaUtilArrayList);
       localArrayList = new ArrayList();
-      localArrayList.addAll(athc.a());
+      localArrayList.addAll(atyw.a());
       if (localArrayList == null) {
         break label141;
       }
@@ -524,10 +524,10 @@ public class QlinkShareJumpActivity
     for (int i = localArrayList.size();; i = 0)
     {
       localBundle.putInt("string_beforeshare_selectedfile_count", i);
-      blhj.a(this, 10, localBundle);
+      bmim.a(this, 10, localBundle);
       finish();
       return;
-      bglp.a(this, 230, getString(2131697545), getString(2131697590), 2131697538, 2131697538, new blik(this), null).show();
+      bhlq.a(this, 230, getString(2131697629), getString(2131697674), 2131697622, 2131697622, new bmjn(this), null).show();
       return;
     }
   }
@@ -579,7 +579,7 @@ public class QlinkShareJumpActivity
           while (paramBundle.hasNext())
           {
             String str = (String)paramBundle.next();
-            if (atwl.a(str))
+            if (auog.a(str))
             {
               if (this.jdField_a_of_type_JavaUtilArrayList == null) {
                 this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -595,7 +595,7 @@ public class QlinkShareJumpActivity
       catch (Exception paramBundle)
       {
         paramBundle.printStackTrace();
-        bglp.a(this, 230, getString(2131697545), getString(2131697590), 2131697538, 2131697538, new blie(this), null).show();
+        bhlq.a(this, 230, getString(2131697629), getString(2131697674), 2131697622, 2131697622, new bmjh(this), null).show();
         return false;
       }
       d();
@@ -636,7 +636,7 @@ public class QlinkShareJumpActivity
       c();
       b();
       continue;
-      this.jdField_a_of_type_Bgpa.setProgress(paramMessage.arg1);
+      this.jdField_a_of_type_Bhpc.setProgress(paramMessage.arg1);
     }
   }
   

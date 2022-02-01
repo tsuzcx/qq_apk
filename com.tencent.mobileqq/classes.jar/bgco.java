@@ -1,66 +1,19 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class bgco
-  extends bhll
+  implements DialogInterface.OnClickListener
 {
-  public bgco(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramAppInterface);
-    super.preInitPluginEngine();
-    this.mWebview = new TouchWebView(this.mContext);
-    buildBaseWebView(paramAppInterface);
-  }
+  public bgco(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.doOnResume();
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    super.doOnCreate(paramIntent);
-  }
-  
-  public void a(String paramString)
-  {
-    if (bhrh.jdField_a_of_type_Boolean)
-    {
-      bhre.a(this.mWebview, bhrh.jdField_a_of_type_JavaLangString);
-      bhrh.jdField_a_of_type_Boolean = false;
+    this.a.e();
+    if (ReciteRecordLayout.a(this.a) != null) {
+      ReciteRecordLayout.a(this.a).e();
     }
-    this.mUrl = paramString;
-    this.mWebview.loadUrl(this.mUrl);
-  }
-  
-  public void b()
-  {
-    super.doOnPause();
-  }
-  
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
-  {
-    if (paramArrayList != null) {
-      paramArrayList.add(new bhta());
-    }
-  }
-  
-  public void c()
-  {
-    super.doOnDestroy();
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-    paramWebView.loadUrl("javascript:" + SnapshotService.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.dismiss();
   }
 }
 

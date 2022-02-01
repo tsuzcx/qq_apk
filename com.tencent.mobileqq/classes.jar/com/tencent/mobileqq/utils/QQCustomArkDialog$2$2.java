@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.utils;
 
 import android.app.Activity;
-import bgor;
-import bgot;
+import bhot;
+import bhov;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class QQCustomArkDialog$2$2
   implements Runnable
 {
-  public QQCustomArkDialog$2$2(bgot parambgot) {}
+  public QQCustomArkDialog$2$2(bhov parambhov) {}
   
   public void run()
   {
-    if (bgor.a(this.a.a) != null) {}
-    for (Activity localActivity = (Activity)bgor.a(this.a.a).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
+    if (bhot.a(this.a.a) != null) {}
+    for (Activity localActivity = (Activity)bhot.a(this.a.a).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
     {
       this.a.a.show();
       return;

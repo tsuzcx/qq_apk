@@ -1,15 +1,33 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aypp
-  extends aypr
+public class aypp
+  implements View.OnClickListener
 {
-  aypp(aypo paramaypo) {}
+  public aypp(NearbyProfileFragment paramNearbyProfileFragment) {}
   
-  public void b(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    super.b(paramBoolean, paramBundle);
-    if (paramBoolean) {
-      aypo.a(this.a);
+    this.a.a(false);
+    if (this.a.a.app != null)
+    {
+      if ((NearbyProfileFragment.a(this.a).iIsGodFlag != 1) || (NearbyProfileFragment.a(this.a).gender != 0)) {
+        break label89;
+      }
+      bdll.b(this.a.a.app, "CliOper", "", "", "0X800528A", "0X800528A", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label89:
+      if ((NearbyProfileFragment.a(this.a).iIsGodFlag == 1) && (NearbyProfileFragment.a(this.a).gender == 1)) {
+        bdll.b(this.a.a.app, "CliOper", "", "", "0X800528B", "0X800528B", 0, 0, "", "", "", "");
+      }
     }
   }
 }

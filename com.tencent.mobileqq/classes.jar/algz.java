@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-
 public class algz
-  implements DialogInterface.OnClickListener
 {
-  public algz(EditLocalVideoActivity paramEditLocalVideoActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.finish();
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
 }
 
 

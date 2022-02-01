@@ -1,7 +1,32 @@
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.activity.richmedia.view.SensorFrameImageView;
+
 public class ambq
+  implements SensorEventListener
 {
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean;
+  public ambq(SensorFrameImageView paramSensorFrameImageView) {}
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    switch (paramSensorEvent.sensor.getType())
+    {
+    }
+    for (;;)
+    {
+      SensorFrameImageView.a(this.a);
+      SensorFrameImageView.b(this.a);
+      return;
+      SensorFrameImageView.a(this.a, paramSensorEvent.values);
+      continue;
+      SensorFrameImageView.b(this.a, paramSensorEvent.values);
+      continue;
+      SensorFrameImageView.c(this.a, paramSensorEvent.values);
+    }
+  }
 }
 
 

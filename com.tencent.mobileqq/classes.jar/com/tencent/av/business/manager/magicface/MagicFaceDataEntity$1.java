@@ -2,7 +2,7 @@ package com.tencent.av.business.manager.magicface;
 
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
-import lbc;
+import lbj;
 
 class MagicFaceDataEntity$1
   implements Runnable
@@ -11,7 +11,7 @@ class MagicFaceDataEntity$1
   
   public void run()
   {
-    lbc.c("MagicFaceDataEntity", "reloadDecrateList 2:" + this.a);
+    lbj.c("MagicFaceDataEntity", "reloadDecrateList 2:" + this.a);
     MagicFaceDataEntity.1.1 local1 = new MagicFaceDataEntity.1.1(this);
     this.this$0.a.a().post(local1);
   }

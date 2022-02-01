@@ -1,24 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
-import com.tencent.biz.qqcircle.widgets.QCircleRecommendWidget;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import qqcircle.QQCircleDitto.StItemContainer;
 
 public class vyf
   implements View.OnClickListener
 {
-  public vyf(QCircleRecommendWidget paramQCircleRecommendWidget) {}
+  public vyf(QCircleCommentListView paramQCircleCommentListView) {}
   
   public void onClick(View paramView)
   {
-    if (QCircleRecommendWidget.a(this.a) != null)
-    {
-      uxo.a(this.a.getContext(), uxn.a(QCircleRecommendWidget.a(this.a).urlInfo.get(), "personRecomListUrl"));
-      vrc.a(29, 2, QCircleRecommendWidget.a(this.a), this.a.d());
-      vrr.a().a(new vrt().a("more").b("click").a(this.a.a()).a(QCircleRecommendWidget.a(this.a).mDataPosition));
+    if (QCircleCommentListView.a(this.a) != null) {
+      QCircleCommentListView.a(this.a).setClickable(false);
     }
+    QCircleCommentListView.a(this.a, true);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

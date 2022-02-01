@@ -1,31 +1,44 @@
-public class berq
+import java.util.HashMap;
+
+final class berq
+  implements beup
 {
-  public int a = -1;
-  
-  public static int a(int paramInt)
+  public void a(bevl parambevl, bevm parambevm)
   {
-    if (paramInt == 0) {
-      return 0;
-    }
-    if ((paramInt == 70) || (paramInt == 7)) {
-      return 2131695423;
-    }
-    if ((paramInt == 97) || (paramInt == 9)) {
-      return 2131695418;
-    }
-    if ((paramInt == 98) || (paramInt == 10)) {
-      return 2131695422;
-    }
-    if ((paramInt == 101) || (paramInt == 11) || (paramInt == 102) || (paramInt == 103) || (paramInt == 14)) {
-      return 2131695420;
-    }
-    if ((paramInt == 105) || (paramInt == 16)) {
-      return 2131695419;
-    }
-    if (paramInt == 21) {
-      return 2131695417;
-    }
-    return 2131695421;
+    if ((parambevl == null) || (parambevm == null)) {}
+    label8:
+    do
+    {
+      do
+      {
+        do
+        {
+          break label8;
+          do
+          {
+            return;
+          } while (!(parambevl instanceof beum));
+          parambevl = (beum)parambevl;
+          parambevl.jdField_a_of_type_Long += parambevm.c;
+          if (0L != parambevl.b) {
+            break;
+          }
+          parambevm.c = 0L;
+          parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
+          parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
+          parambevm = parambevl.jdField_a_of_type_JavaLangString;
+        } while (!parambevm.contains("range="));
+        parambevm = parambevm.substring(0, parambevm.lastIndexOf("range="));
+        parambevl.jdField_a_of_type_JavaLangString = (parambevm + "range=" + parambevl.jdField_a_of_type_Long);
+        return;
+      } while ((parambevl.jdField_a_of_type_Long <= 0L) || (parambevl.b <= 0L) || (parambevl.jdField_a_of_type_Long >= parambevl.b));
+      parambevm.c = 0L;
+      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-" + parambevl.b;
+      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
+      parambevm = parambevl.jdField_a_of_type_JavaLangString;
+    } while (!parambevm.contains("range="));
+    parambevm = parambevm.substring(0, parambevm.lastIndexOf("range="));
+    parambevl.jdField_a_of_type_JavaLangString = (parambevm + "range=" + parambevl.jdField_a_of_type_Long + "-" + parambevl.b);
   }
 }
 

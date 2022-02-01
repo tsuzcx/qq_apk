@@ -1,19 +1,14 @@
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class amqk
-  implements QQPermissionCallback
+  implements DialogInterface.OnClickListener
 {
-  amqk(amqf paramamqf, AppActivity paramAppActivity) {}
+  amqk(amqj paramamqj) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bglp.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Amqf.grant();
+    paramDialogInterface.dismiss();
   }
 }
 

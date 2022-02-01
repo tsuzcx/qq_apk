@@ -1,28 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bnbq
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public bnbq(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public bnbq(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QIMEffectCameraCaptureUnit.e(this.a) != null)
-    {
-      QIMEffectCameraCaptureUnit.e(this.a).clearAnimation();
-      QIMEffectCameraCaptureUnit.e(this.a).setVisibility(8);
-    }
-    this.a.v = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.v = true;
+    paramDialogInterface.dismiss();
+    this.a.isFlowWarningVisible = false;
+    QzoneWebMusicJsPlugin.access$300(this.a, "cancel");
   }
 }
 

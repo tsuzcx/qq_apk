@@ -1,28 +1,12 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
-public class xmb
-  extends QQUIEventReceiver<xma, xmf>
+public abstract interface xmb
 {
-  public xmb(@NonNull xma paramxma)
-  {
-    super(paramxma);
-  }
+  public abstract List<String> a();
   
-  public void a(@NonNull xma paramxma, @NonNull xmf paramxmf)
-  {
-    if (paramxmf.a.isSuccess())
-    {
-      yqp.a("Q.qqstory.playernew.LoadingMoreWidget", "PlayVideoChangeReceiver. %s.", paramxmf.toString());
-      paramxma.e();
-    }
-  }
+  public abstract boolean a();
   
-  public Class acceptEventClass()
-  {
-    return xmf.class;
-  }
+  public abstract boolean b();
 }
 
 

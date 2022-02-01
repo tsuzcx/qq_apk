@@ -1,20 +1,6 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class aian
-  implements View.OnClickListener
+public abstract interface aian
 {
-  aian(ahzy paramahzy) {}
-  
-  public void onClick(View paramView)
-  {
-    if (!ayox.a().a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramView)) {
-      bgxr.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "aio");
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(Object paramObject);
 }
 
 

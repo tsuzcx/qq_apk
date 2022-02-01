@@ -1,78 +1,29 @@
-import android.graphics.Point;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.GridView;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.mobileqq.widget.MeasureGridView;
-import com.tencent.widget.ListView;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class bhwk
-  implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int;
-  private Point jdField_a_of_type_AndroidGraphicsPoint;
-  private boolean jdField_a_of_type_Boolean;
-  private Point b;
-  
-  public bhwk(DraggableGridView paramDraggableGridView, Point paramPoint1, Point paramPoint2, boolean paramBoolean)
+  public static boolean a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(paramPoint1);
-    this.b = new Point(paramPoint2);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = 0;
-    DraggableGridView.b(paramDraggableGridView, true);
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    int i = this.jdField_a_of_type_Int - 1;
-    this.jdField_a_of_type_Int = i;
-    if (i <= 0)
+    try
     {
-      i = 0;
-      while (i < DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).getChildCount())
-      {
-        paramAnimation = DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).getChildAt(i);
-        if ((paramAnimation instanceof MeasureGridView))
-        {
-          paramAnimation = (GridView)paramAnimation;
-          int j = 0;
-          if (j < paramAnimation.getChildCount())
-          {
-            paramAnimation.getChildAt(j).clearAnimation();
-            if ((((Integer)paramAnimation.getTag()).intValue() == DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).y) && (j == DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).x) && (!this.jdField_a_of_type_Boolean)) {
-              paramAnimation.getChildAt(j).setVisibility(4);
-            }
-            for (;;)
-            {
-              j += 1;
-              break;
-              paramAnimation.getChildAt(j).setVisibility(0);
-            }
-          }
-        }
-        i += 1;
-      }
-      if (!this.jdField_a_of_type_Boolean) {
-        break label216;
-      }
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_AndroidGraphicsPoint.y, this.jdField_a_of_type_AndroidGraphicsPoint.x);
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).set(-1, -1);
+      Intent localIntent = new Intent(paramContext, QQTranslucentBrowserActivity.class);
+      localIntent.putExtra("url", paramString);
+      localIntent.setData(Uri.parse(paramString));
+      localIntent.putExtra("flag_show_loading_dialog", true);
+      localIntent.putExtra("hide_left_button", true);
+      paramContext.startActivity(localIntent);
+      return true;
     }
-    for (;;)
+    catch (Exception paramContext)
     {
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).notifyDataSetChanged();
-      DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, false);
-      return;
-      label216:
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_AndroidGraphicsPoint.y, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.b.y, this.b.x);
+      QLog.e("BrowserUtils", 2, paramContext, new Object[0]);
     }
+    return false;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

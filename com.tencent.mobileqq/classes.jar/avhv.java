@@ -1,35 +1,43 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class avhv
-  extends Handler
+  implements avht
 {
-  public avhv(GroupVideoLoadingFragment paramGroupVideoLoadingFragment, Looper paramLooper)
+  public void a(String paramString1, String paramString2, String paramString3)
   {
-    super(paramLooper);
+    a(paramString1, paramString2, paramString3, null);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
   {
-    int i = paramMessage.arg1;
-    if (i < GroupVideoLoadingFragment.a(this.a)) {
-      return;
+    if ("i".equals(paramString2)) {
+      if (QLog.isColorLevel()) {
+        QLog.i(paramString1, 2, paramString3, paramThrowable);
+      }
     }
-    GroupVideoLoadingFragment.b(this.a, i);
-    GroupVideoLoadingFragment.a(this.a).a(GroupVideoLoadingFragment.a(this.a), 0L);
-    paramMessage = Message.obtain();
-    if (GroupVideoLoadingFragment.a(this.a) >= 90) {
-      i += 1;
-    }
-    for (;;)
+    do
     {
-      paramMessage.arg1 = i;
-      sendMessageDelayed(paramMessage, 500L);
+      do
+      {
+        return;
+        if (!"d".equals(paramString2)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(paramString1, 2, paramString3, paramThrowable);
       return;
-      i += 8;
-    }
+      if ("w".equals(paramString2))
+      {
+        QLog.w(paramString1, 2, paramString3, paramThrowable);
+        return;
+      }
+      if ("e".equals(paramString2))
+      {
+        QLog.e(paramString1, 2, paramString3, paramThrowable);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i(paramString1, 2, paramString3, paramThrowable);
   }
 }
 

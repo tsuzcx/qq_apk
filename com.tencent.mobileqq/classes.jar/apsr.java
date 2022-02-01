@@ -1,8 +1,10 @@
-import com.tencent.mobileqq.armap.SdCardImageAnimView;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
-public abstract interface apsr
+public class apsr
+  extends apsq
 {
-  public abstract void a(SdCardImageAnimView paramSdCardImageAnimView);
+  public void a(AppInterface paramAppInterface, Bundle paramBundle) {}
 }
 
 

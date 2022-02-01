@@ -10,7 +10,7 @@ class ReportMediaPlayer$3
   
   public boolean onAudioError(IAudioPlayer paramIAudioPlayer, int paramInt1, int paramInt2)
   {
-    return this.val$listener.onError(this.this$0, paramInt1, paramInt2);
+    return (this.val$listener != null) && (this.val$listener.onError(this.this$0, paramInt1, paramInt2));
   }
 }
 

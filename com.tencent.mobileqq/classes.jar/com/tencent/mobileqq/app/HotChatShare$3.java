@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import android.text.TextUtils;
-import anoc;
+import aoad;
 import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.mobileqq.data.Setting;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class HotChatShare$3
   implements Runnable
 {
-  public HotChatShare$3(anoc paramanoc) {}
+  public HotChatShare$3(aoad paramaoad) {}
   
   public void run()
   {

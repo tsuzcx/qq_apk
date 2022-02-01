@@ -1,208 +1,143 @@
-import android.app.Activity;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.OperationView;
-import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
-import com.tencent.mobileqq.nearby.now.view.logic.VideoInfoListenerImpl.1;
-import com.tencent.mobileqq.nearby.now.view.logic.VideoInfoListenerImpl.3;
-import com.tencent.mobileqq.nearby.now.view.widget.HorizontalBallLoadingView;
-import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
-
-public class axnr
-  implements axnq
+class axnr
+  extends aojs
 {
-  int jdField_a_of_type_Int = -1;
-  private axng jdField_a_of_type_Axng;
-  private StoryPlayController jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController;
-  private ShortVideoCommentsView jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView;
-  private HorizontalBallLoadingView jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetHorizontalBallLoadingView;
-  Runnable jdField_a_of_type_JavaLangRunnable = new VideoInfoListenerImpl.3(this);
-  private final String jdField_a_of_type_JavaLangString = "VideoInfoListener";
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c;
-  
-  public axnr(axng paramaxng, StoryPlayController paramStoryPlayController, ShortVideoCommentsView paramShortVideoCommentsView, boolean paramBoolean)
+  /* Error */
+  protected void a(java.lang.String arg1, boolean paramBoolean, java.util.List<com.tencent.mobileqq.data.TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    this.jdField_a_of_type_Axng = paramaxng;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController = paramStoryPlayController;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView = paramShortVideoCommentsView;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoInfoListener", 2, "onComplete");
-    }
-    if (((this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (((Activity)this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_AndroidContentContext).isFinishing())) {
-      return;
-    }
-    ThreadManager.getUIHandler().postDelayed(new VideoInfoListenerImpl.1(this), 1000L);
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((paramInt == 0) || (this.jdField_a_of_type_Int == paramInt)) {
-      return;
-    }
-    this.jdField_a_of_type_Int = paramInt;
-    int i = paramInt;
-    if (paramInt > 100) {
-      i = 100;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.a())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a.a(this.jdField_a_of_type_Axng.jdField_a_of_type_Int, i);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a.a(0, i);
-  }
-  
-  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoInfoListener", 2, "onCoverComplete() called with: imageWidth = [" + paramInt1 + "], imageHeight = [" + paramInt2 + "], isSuc = [" + paramBoolean + "]");
-    }
-    this.b = paramInt1;
-    this.c = paramInt2;
-    if ((paramBoolean) && (this.jdField_a_of_type_Boolean)) {
-      axlt.a(this.jdField_a_of_type_Axng, paramInt1, paramInt2);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoInfoListener", 2, "onStartPrepareVideo");
-    }
-    if (this.jdField_a_of_type_Axng == null) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Axng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
-      if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a != null) && (((VideoData)this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a.get(this.jdField_a_of_type_Axng.jdField_a_of_type_Int)).jdField_a_of_type_Int != 4)) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a.setVisibility(8);
-      }
-    } while (this.jdField_a_of_type_Axng == null);
-    this.jdField_a_of_type_Axng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a(true);
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoInfoListener", 2, "onStartPlaying");
-    }
-    VideoData localVideoData;
-    if (this.jdField_a_of_type_Axng != null)
-    {
-      this.jdField_a_of_type_Axng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
-      if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a != null) && (((VideoData)this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a.get(this.jdField_a_of_type_Axng.jdField_a_of_type_Int)).jdField_a_of_type_Int != 4)) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a.setVisibility(8);
-      }
-      g();
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.e();
-      this.jdField_a_of_type_Axng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a(true);
-      if ((this.jdField_a_of_type_Axng.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Axng.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a.size()))
-      {
-        localVideoData = (VideoData)this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a.get(this.jdField_a_of_type_Axng.jdField_a_of_type_Int);
-        if (1 != localVideoData.jdField_a_of_type_Int) {
-          break label195;
-        }
-      }
-    }
-    label195:
-    while (this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_Int != this.jdField_a_of_type_Axng.jdField_a_of_type_Int)
-    {
-      return;
-      QLog.e("VideoInfoListener", 1, "mHolder == null!");
-      return;
-    }
-    localVideoData.c = true;
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoInfoListener", 2, "onDoingStartPlayback");
-    }
-    f();
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.k();
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInfoListener", 2, "VideoInfoListenerImpl onLayoutChange");
-    }
-    if (this.jdField_a_of_type_Axng.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getVisibility() == 0) {
-      if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a.size() > this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_Int) && (((VideoData)this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a.get(this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_Int)).jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-        axlt.a(this.jdField_a_of_type_Axng, ((axka)((VideoData)this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a.get(this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_Int)).jdField_a_of_type_JavaUtilArrayList.get(0)).b, ((axka)((VideoData)this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a.get(this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_Int)).jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Int, (VideoData)this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a.get(this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView);
-      }
-    }
-    while ((this.b <= 0) || (this.c <= 0)) {
-      return;
-    }
-    axlt.a(this.jdField_a_of_type_Axng, this.b, this.c);
-  }
-  
-  public void f()
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("showLoading： mHorizontalBallLoadingView is null? : ");
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetHorizontalBallLoadingView != null) {
-        break label76;
-      }
-    }
-    label76:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("VideoInfoListener", 2, bool);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetHorizontalBallLoadingView = ((HorizontalBallLoadingView)this.jdField_a_of_type_Axng.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370198));
-      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
-      return;
-    }
-  }
-  
-  public void g()
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("hideLoading： mHorizontalBallLoadingView is null? : ");
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetHorizontalBallLoadingView != null) {
-        break label61;
-      }
-    }
-    label61:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("VideoInfoListener", 2, bool);
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetHorizontalBallLoadingView != null) {
-        break;
-      }
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetHorizontalBallLoadingView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetHorizontalBallLoadingView = null;
-  }
-  
-  public void h()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.k();
+    // Byte code:
+    //   0: invokestatic 15	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +47 -> 50
+    //   6: ldc 17
+    //   8: iconst_2
+    //   9: new 19	java/lang/StringBuilder
+    //   12: dup
+    //   13: invokespecial 23	java/lang/StringBuilder:<init>	()V
+    //   16: ldc 25
+    //   18: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: iload_2
+    //   22: invokevirtual 32	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   25: ldc 34
+    //   27: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: aload_1
+    //   31: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: ldc 34
+    //   36: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: iload 4
+    //   41: invokevirtual 37	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   44: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   47: invokestatic 45	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   50: aload_1
+    //   51: invokestatic 51	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   54: lstore 5
+    //   56: iload 4
+    //   58: bipush 9
+    //   60: if_icmpne +126 -> 186
+    //   63: lload 5
+    //   65: aload_0
+    //   66: getfield 53	axnr:a	Laxnl;
+    //   69: invokestatic 58	axnl:a	(Laxnl;)J
+    //   72: lcmp
+    //   73: ifne +113 -> 186
+    //   76: aload_0
+    //   77: getfield 53	axnr:a	Laxnl;
+    //   80: invokestatic 62	axnl:b	(Laxnl;)Ljava/util/HashMap;
+    //   83: ifnull +103 -> 186
+    //   86: aload_0
+    //   87: getfield 53	axnr:a	Laxnl;
+    //   90: invokestatic 62	axnl:b	(Laxnl;)Ljava/util/HashMap;
+    //   93: astore_1
+    //   94: aload_1
+    //   95: monitorenter
+    //   96: aload_0
+    //   97: getfield 53	axnr:a	Laxnl;
+    //   100: invokestatic 62	axnl:b	(Laxnl;)Ljava/util/HashMap;
+    //   103: lload 5
+    //   105: invokestatic 66	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   108: invokevirtual 72	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   111: checkcast 74	java/lang/ref/WeakReference
+    //   114: astore_3
+    //   115: aload_1
+    //   116: monitorexit
+    //   117: aload_3
+    //   118: ifnull +68 -> 186
+    //   121: aload_3
+    //   122: invokevirtual 77	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   125: checkcast 79	axnn
+    //   128: astore_3
+    //   129: aload_3
+    //   130: ifnull +56 -> 186
+    //   133: new 81	java/util/ArrayList
+    //   136: dup
+    //   137: iconst_0
+    //   138: invokespecial 84	java/util/ArrayList:<init>	(I)V
+    //   141: pop
+    //   142: aload_0
+    //   143: getfield 53	axnr:a	Laxnl;
+    //   146: invokestatic 87	axnl:c	(Laxnl;)Ljava/util/HashMap;
+    //   149: astore_1
+    //   150: aload_1
+    //   151: monitorenter
+    //   152: aload_0
+    //   153: getfield 53	axnr:a	Laxnl;
+    //   156: invokestatic 87	axnl:c	(Laxnl;)Ljava/util/HashMap;
+    //   159: lload 5
+    //   161: invokestatic 66	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   164: invokevirtual 72	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   167: checkcast 81	java/util/ArrayList
+    //   170: astore 8
+    //   172: aload_1
+    //   173: monitorexit
+    //   174: aload_0
+    //   175: getfield 53	axnr:a	Laxnl;
+    //   178: lload 5
+    //   180: aload 8
+    //   182: aload_3
+    //   183: invokestatic 90	axnl:a	(Laxnl;JLjava/util/ArrayList;Laxnn;)V
+    //   186: return
+    //   187: astore_1
+    //   188: invokestatic 15	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   191: ifeq +31 -> 222
+    //   194: ldc 17
+    //   196: iconst_2
+    //   197: new 19	java/lang/StringBuilder
+    //   200: dup
+    //   201: invokespecial 23	java/lang/StringBuilder:<init>	()V
+    //   204: ldc 25
+    //   206: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: aload_1
+    //   210: invokevirtual 91	java/lang/Exception:toString	()Ljava/lang/String;
+    //   213: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   216: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   219: invokestatic 45	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   222: lconst_0
+    //   223: lstore 5
+    //   225: goto -169 -> 56
+    //   228: astore_3
+    //   229: aload_1
+    //   230: monitorexit
+    //   231: aload_3
+    //   232: athrow
+    //   233: astore_3
+    //   234: aload_1
+    //   235: monitorexit
+    //   236: aload_3
+    //   237: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	238	0	this	axnr
+    //   0	238	2	paramBoolean	boolean
+    //   0	238	3	paramList	java.util.List<com.tencent.mobileqq.data.TroopMemberInfo>
+    //   0	238	4	paramInt1	int
+    //   0	238	5	paramLong	long
+    //   0	238	7	paramInt2	int
+    //   170	11	8	localArrayList	java.util.ArrayList
+    // Exception table:
+    //   from	to	target	type
+    //   50	56	187	java/lang/Exception
+    //   96	117	228	finally
+    //   229	231	228	finally
+    //   152	174	233	finally
+    //   234	236	233	finally
   }
 }
 

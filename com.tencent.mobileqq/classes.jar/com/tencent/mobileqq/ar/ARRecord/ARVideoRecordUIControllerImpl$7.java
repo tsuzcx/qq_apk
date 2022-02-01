@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import aotg;
-import aotj;
+import apgw;
+import apgz;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARVideoRecordUIControllerImpl$7
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$7(aotg paramaotg, int paramInt1, int paramInt2) {}
+  public ARVideoRecordUIControllerImpl$7(apgw paramapgw, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     QLog.d("ARVideoRecordUIControllerImpl", 2, String.format("onRecordUpdate progress=%s", new Object[] { Integer.valueOf(1) }));
-    if (aotg.a(this.this$0)) {
-      aotg.a(this.this$0).a(this.a, this.b);
+    if (apgw.a(this.this$0)) {
+      apgw.a(this.this$0).a(this.a, this.b);
     }
   }
 }

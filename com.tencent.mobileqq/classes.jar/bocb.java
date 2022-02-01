@@ -1,8 +1,10 @@
 public abstract interface bocb
 {
-  public abstract void a(int paramInt);
+  public abstract void a(long paramLong, float paramFloat);
   
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

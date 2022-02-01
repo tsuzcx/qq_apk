@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import bcst;
-import tue;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class Conversation$7
   implements Runnable
 {
-  Conversation$7(Conversation paramConversation, int paramInt1, int paramInt2, int paramInt3) {}
+  Conversation$7(Conversation paramConversation) {}
   
   public void run()
   {
-    long l = tue.a().a();
-    bcst.b(this.this$0.a, "dc00899", "Pb_account_lifeservice", "", "0X8006E12", "0X8006E12", 0, 0, String.valueOf(this.a), String.valueOf(this.b), String.valueOf(this.c), String.valueOf(l));
+    this.this$0.a.s();
   }
 }
 

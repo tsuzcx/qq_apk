@@ -1,24 +1,13 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper.LogFile;
+import java.util.Comparator;
 
-class bnki
-  implements Animator.AnimatorListener
+final class bnki
+  implements Comparator<ShareAppLogHelper.LogFile>
 {
-  bnki(bnkd parambnkd) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public int a(ShareAppLogHelper.LogFile paramLogFile1, ShareAppLogHelper.LogFile paramLogFile2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEWaterMarkListPart", 2, "Watermark panel down");
-    }
+    return (int)(paramLogFile1.lastModified() - paramLogFile2.lastModified()) / 1000;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

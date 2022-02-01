@@ -7,7 +7,7 @@ class SplashDialogWrapper$InternalHandler
   extends Handler
 {
   public static final int MSG_DISMISS = 0;
-  private SplashDialogWrapper mWrapper;
+  private SplashDialogWrapper mWrapper = null;
   
   public SplashDialogWrapper$InternalHandler(SplashDialogWrapper paramSplashDialogWrapper)
   {

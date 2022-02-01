@@ -1,25 +1,18 @@
-import java.io.File;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
 
-public class aapk
+public final class aapk
+  implements Parcelable.Creator<CommodityBean>
 {
-  public int a;
-  String jdField_a_of_type_JavaLangString;
-  public ArrayList<String> a;
-  boolean jdField_a_of_type_Boolean;
-  public String b;
-  public ArrayList<String> b;
-  boolean b;
-  public String c;
-  public ArrayList<File> c = new ArrayList();
-  public String d;
-  public String e;
-  
-  public aapk(aapa paramaapa)
+  public CommodityBean a(Parcel paramParcel)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    return new CommodityBean(paramParcel);
+  }
+  
+  public CommodityBean[] a(int paramInt)
+  {
+    return new CommodityBean[paramInt];
   }
 }
 

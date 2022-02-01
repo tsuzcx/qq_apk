@@ -98,18 +98,18 @@ public class TypefaceCompatApi29Impl
     //   22: aload_3
     //   23: iload 5
     //   25: aaload
-    //   26: astore 10
+    //   26: astore 9
     //   28: aload_1
     //   29: astore 8
     //   31: aload 11
-    //   33: aload 10
+    //   33: aload 9
     //   35: invokevirtual 116	androidx/core/provider/FontsContractCompat$FontInfo:getUri	()Landroid/net/Uri;
     //   38: ldc 118
     //   40: aload_2
     //   41: invokevirtual 124	android/content/ContentResolver:openFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/os/ParcelFileDescriptor;
     //   44: astore 12
     //   46: aconst_null
-    //   47: astore 9
+    //   47: astore 10
     //   49: aload 12
     //   51: ifnonnull +65 -> 116
     //   54: aload_1
@@ -149,11 +149,11 @@ public class TypefaceCompatApi29Impl
     //   119: dup
     //   120: aload 12
     //   122: invokespecial 135	android/graphics/fonts/Font$Builder:<init>	(Landroid/os/ParcelFileDescriptor;)V
-    //   125: aload 10
+    //   125: aload 9
     //   127: invokevirtual 136	androidx/core/provider/FontsContractCompat$FontInfo:getWeight	()I
     //   130: invokevirtual 44	android/graphics/fonts/Font$Builder:setWeight	(I)Landroid/graphics/fonts/Font$Builder;
     //   133: astore 8
-    //   135: aload 10
+    //   135: aload 9
     //   137: invokevirtual 137	androidx/core/provider/FontsContractCompat$FontInfo:isItalic	()Z
     //   140: ifeq +83 -> 223
     //   143: iconst_1
@@ -161,7 +161,7 @@ public class TypefaceCompatApi29Impl
     //   146: aload 8
     //   148: iload 6
     //   150: invokevirtual 51	android/graphics/fonts/Font$Builder:setSlant	(I)Landroid/graphics/fonts/Font$Builder;
-    //   153: aload 10
+    //   153: aload 9
     //   155: invokevirtual 138	androidx/core/provider/FontsContractCompat$FontInfo:getTtcIndex	()I
     //   158: invokevirtual 57	android/graphics/fonts/Font$Builder:setTtcIndex	(I)Landroid/graphics/fonts/Font$Builder;
     //   161: invokevirtual 69	android/graphics/fonts/Font$Builder:build	()Landroid/graphics/fonts/Font;
@@ -203,13 +203,13 @@ public class TypefaceCompatApi29Impl
     //   232: invokevirtual 78	android/graphics/fonts/FontFamily$Builder:addFont	(Landroid/graphics/fonts/Font;)Landroid/graphics/fonts/FontFamily$Builder;
     //   235: pop
     //   236: goto -52 -> 184
-    //   239: astore 9
-    //   241: aload 9
+    //   239: astore 10
+    //   241: aload 10
     //   243: athrow
-    //   244: astore 10
+    //   244: astore 9
     //   246: aload 12
     //   248: ifnull +16 -> 264
-    //   251: aload 9
+    //   251: aload 10
     //   253: ifnull +46 -> 299
     //   256: aload_1
     //   257: astore 8
@@ -217,7 +217,7 @@ public class TypefaceCompatApi29Impl
     //   261: invokevirtual 129	android/os/ParcelFileDescriptor:close	()V
     //   264: aload_1
     //   265: astore 8
-    //   267: aload 10
+    //   267: aload 9
     //   269: athrow
     //   270: aload_1
     //   271: astore 8
@@ -229,7 +229,7 @@ public class TypefaceCompatApi29Impl
     //   284: astore 12
     //   286: aload_1
     //   287: astore 8
-    //   289: aload 9
+    //   289: aload 10
     //   291: aload 12
     //   293: invokevirtual 142	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   296: goto -32 -> 264
@@ -275,7 +275,7 @@ public class TypefaceCompatApi29Impl
     //   377: iconst_0
     //   378: istore 4
     //   380: goto -42 -> 338
-    //   383: astore 10
+    //   383: astore 9
     //   385: goto -139 -> 246
     //   388: astore_1
     //   389: goto -312 -> 77
@@ -294,11 +294,11 @@ public class TypefaceCompatApi29Impl
     //   92	114	8	localObject1	java.lang.Object
     //   210	1	8	localThrowable2	java.lang.Throwable
     //   213	88	8	localContext2	Context
-    //   47	1	9	localObject2	java.lang.Object
-    //   239	51	9	localThrowable3	java.lang.Throwable
-    //   26	128	10	localFontInfo	FontsContractCompat.FontInfo
-    //   244	24	10	localObject3	java.lang.Object
-    //   383	1	10	localObject4	java.lang.Object
+    //   26	128	9	localFontInfo	FontsContractCompat.FontInfo
+    //   244	24	9	localObject2	java.lang.Object
+    //   383	1	9	localObject3	java.lang.Object
+    //   47	1	10	localObject4	java.lang.Object
+    //   239	51	10	localThrowable3	java.lang.Throwable
     //   4	28	11	localContentResolver	android.content.ContentResolver
     //   44	230	12	localParcelFileDescriptor	android.os.ParcelFileDescriptor
     //   284	19	12	localThrowable4	java.lang.Throwable

@@ -10,20 +10,20 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anni;
-import avsp;
-import bcml;
-import bgfz;
-import bown;
-import boxc;
-import boxd;
-import boxe;
-import boxf;
-import boxg;
-import boxu;
-import boxv;
-import boxw;
-import bqja;
+import anzj;
+import awlk;
+import bdfd;
+import bhga;
+import bpyi;
+import bpyx;
+import bpyy;
+import bpyz;
+import bpza;
+import bpzb;
+import bpzp;
+import bpzq;
+import bpzr;
+import brkm;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.richmedia.capture.view.SimpleEffectsCaptureView;
 import com.tencent.qphone.base.util.QLog;
@@ -48,13 +48,13 @@ public class LightWeightCaptureButtonHorizontalLayout
   
   private void a(float paramFloat)
   {
-    if (!this.jdField_a_of_type_Boxu.i)
+    if (!this.jdField_a_of_type_Bpzp.i)
     {
-      this.jdField_a_of_type_Boxu.i = true;
-      float f = this.jdField_a_of_type_Boxu.jdField_f_of_type_Int;
+      this.jdField_a_of_type_Bpzp.i = true;
+      float f = this.jdField_a_of_type_Bpzp.jdField_f_of_type_Int;
       this.c.setTranslationX(f - paramFloat);
       if (AppSetting.jdField_c_of_type_Boolean) {
-        bgfz.a(this.jdField_a_of_type_DovComQqImPtvBaseButton, anni.a(2131704883));
+        bhga.a(this.jdField_a_of_type_DovComQqImPtvBaseButton, anzj.a(2131704990));
       }
       return;
     }
@@ -63,13 +63,13 @@ public class LightWeightCaptureButtonHorizontalLayout
   
   private void b(float paramFloat)
   {
-    if (!this.jdField_a_of_type_Boxu.h)
+    if (!this.jdField_a_of_type_Bpzp.h)
     {
-      this.jdField_a_of_type_Boxu.h = true;
-      float f = this.jdField_a_of_type_Boxu.jdField_e_of_type_Int;
+      this.jdField_a_of_type_Bpzp.h = true;
+      float f = this.jdField_a_of_type_Bpzp.jdField_e_of_type_Int;
       this.b.setTranslationX(-(f - paramFloat));
       if (AppSetting.jdField_c_of_type_Boolean) {
-        bgfz.a(this.jdField_a_of_type_DovComQqImPtvBaseButton, anni.a(2131704898));
+        bhga.a(this.jdField_a_of_type_DovComQqImPtvBaseButton, anzj.a(2131705005));
       }
       return;
     }
@@ -78,58 +78,58 @@ public class LightWeightCaptureButtonHorizontalLayout
   
   private void o()
   {
-    int i = getResources().getColor(2131165394);
-    int j = getResources().getColor(2131165395);
+    int i = getResources().getColor(2131165392);
+    int j = getResources().getColor(2131165393);
     p();
     this.jdField_a_of_type_DovComQqImPtvBaseButton.setBackgroundColor(i);
     this.jdField_a_of_type_DovComQqImPtvBaseButton.setShadowColor(j);
-    this.jdField_a_of_type_DovComQqImPtvBaseButton.setImageWidth(bqja.a(32.0F));
-    this.jdField_a_of_type_DovComQqImPtvBaseButton.setImageHeight(bqja.a(32.0F));
-    this.jdField_a_of_type_DovComQqImPtvBaseButton.setImageResource(2130844458);
+    this.jdField_a_of_type_DovComQqImPtvBaseButton.setImageWidth(brkm.a(32.0F));
+    this.jdField_a_of_type_DovComQqImPtvBaseButton.setImageHeight(brkm.a(32.0F));
+    this.jdField_a_of_type_DovComQqImPtvBaseButton.setImageResource(2130844472);
     i = getResources().getColor(2131165288);
     this.b.setBackgroundColor(-1);
-    this.b.setImageWidth(bqja.a(30.0F));
-    this.b.setImageHeight(bqja.a(30.0F));
-    this.b.setImageResource(2130844447);
+    this.b.setImageWidth(brkm.a(30.0F));
+    this.b.setImageHeight(brkm.a(30.0F));
+    this.b.setImageResource(2130844461);
     this.b.setShadowColor(i);
     this.c.setBackgroundColor(-1);
     this.c.setShadowColor(i);
-    this.c.setImageWidth(bqja.a(30.0F));
-    this.c.setImageHeight(bqja.a(30.0F));
-    this.c.setImageResource(2130844464);
+    this.c.setImageWidth(brkm.a(30.0F));
+    this.c.setImageHeight(brkm.a(30.0F));
+    this.c.setImageResource(2130844478);
   }
   
   private void p()
   {
-    this.jdField_a_of_type_DovComQqImPtvBaseButton.setShadowStrokeMaxWidth(bqja.a(10.0F));
-    this.jdField_a_of_type_DovComQqImPtvBaseButton.setShadowStrokeWidth(bqja.a(10.0F));
+    this.jdField_a_of_type_DovComQqImPtvBaseButton.setShadowStrokeMaxWidth(brkm.a(10.0F));
+    this.jdField_a_of_type_DovComQqImPtvBaseButton.setShadowStrokeWidth(brkm.a(10.0F));
   }
   
   private void q()
   {
-    this.jdField_a_of_type_DovComQqImPtvBaseButton.setShadowStrokeMaxWidth(bqja.a(30.0F));
-    this.jdField_a_of_type_DovComQqImPtvBaseButton.setShadowStrokeWidth(bqja.a(2.0F));
+    this.jdField_a_of_type_DovComQqImPtvBaseButton.setShadowStrokeMaxWidth(brkm.a(30.0F));
+    this.jdField_a_of_type_DovComQqImPtvBaseButton.setShadowStrokeWidth(brkm.a(2.0F));
   }
   
   private void r()
   {
     float f1 = this.b.getTranslationX();
-    float f2 = this.jdField_a_of_type_Boxu.jdField_e_of_type_Float;
+    float f2 = this.jdField_a_of_type_Bpzp.jdField_e_of_type_Float;
     this.b.setTranslationX(f1 + f2);
   }
   
   private void s()
   {
     float f1 = this.c.getTranslationX();
-    float f2 = this.jdField_a_of_type_Boxu.jdField_e_of_type_Float;
+    float f2 = this.jdField_a_of_type_Bpzp.jdField_e_of_type_Float;
     this.c.setTranslationX(f1 + f2);
   }
   
   private void t()
   {
-    if (!this.jdField_a_of_type_Boxu.jdField_e_of_type_Boolean)
+    if (!this.jdField_a_of_type_Bpzp.jdField_e_of_type_Boolean)
     {
-      this.jdField_a_of_type_Boxu.jdField_e_of_type_Boolean = true;
+      this.jdField_a_of_type_Bpzp.jdField_e_of_type_Boolean = true;
       m();
     }
   }
@@ -143,7 +143,7 @@ public class LightWeightCaptureButtonHorizontalLayout
     localAnimatorSet.play(localObjectAnimator1).with(localObjectAnimator2);
     localAnimatorSet.play(localObjectAnimator1).with(localObjectAnimator3);
     localAnimatorSet.setDuration(100L);
-    localAnimatorSet.addListener(new boxc(this));
+    localAnimatorSet.addListener(new bpyx(this));
     localAnimatorSet.start();
     localObjectAnimator1 = ObjectAnimator.ofFloat(this.c, "alpha", new float[] { 1.0F, 0.0F });
     localObjectAnimator1.setDuration(100L);
@@ -152,8 +152,8 @@ public class LightWeightCaptureButtonHorizontalLayout
     localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_DovComQqImPtvLightWeightProgress, "currentProgress", new float[] { 0.0F });
     localObjectAnimator1.setDuration(100L);
     localObjectAnimator1.start();
-    localObjectAnimator1.addListener(new boxd(this));
-    localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_DovComQqImPtvBaseButton, "translationX", new float[] { this.jdField_a_of_type_DovComQqImPtvBaseButton.getTranslationX(), this.jdField_a_of_type_Boxu.jdField_g_of_type_Float });
+    localObjectAnimator1.addListener(new bpyy(this));
+    localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_DovComQqImPtvBaseButton, "translationX", new float[] { this.jdField_a_of_type_DovComQqImPtvBaseButton.getTranslationX(), this.jdField_a_of_type_Bpzp.jdField_g_of_type_Float });
     localObjectAnimator1.setDuration(100L);
     localObjectAnimator1.start();
   }
@@ -175,10 +175,10 @@ public class LightWeightCaptureButtonHorizontalLayout
     int j = getResources().getColor(2131165288);
     int i = getResources().getColor(2131165601);
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofInt(this.b, "backgroundColor", new int[] { i, -1 });
-    localObjectAnimator.setEvaluator(bown.a());
+    localObjectAnimator.setEvaluator(bpyi.a());
     int k = getResources().getColor(2131165602);
     Object localObject2 = ObjectAnimator.ofInt(this.b, "shadowColor", new int[] { k, j });
-    ((ObjectAnimator)localObject2).setEvaluator(bown.a());
+    ((ObjectAnimator)localObject2).setEvaluator(bpyi.a());
     Object localObject1 = new AnimatorSet();
     ((AnimatorSet)localObject1).play(localObjectAnimator).with((Animator)localObject2);
     ((AnimatorSet)localObject1).setDuration(100L);
@@ -191,76 +191,76 @@ public class LightWeightCaptureButtonHorizontalLayout
       QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive deleteView ScaleX:" + this.b.getScaleX() + " ScaleY:" + this.b.getScaleY());
     }
     localObject1 = a(this.b, 1.5F, 1.533F, 1.533F, 1.0F, (Animator)localObject1, this.jdField_a_of_type_JavaUtilArrayList, 140L, 50L);
-    ((AnimatorSet)localObject1).addListener(new boxe(this));
+    ((AnimatorSet)localObject1).addListener(new bpyz(this));
     ((AnimatorSet)localObject1).start();
-    this.b.setImageResource(2130844445);
-    j = getResources().getColor(2131165390);
-    k = getResources().getColor(2131165397);
-    int m = getResources().getColor(2131165393);
+    this.b.setImageResource(2130844459);
+    j = getResources().getColor(2131165388);
+    k = getResources().getColor(2131165395);
+    int m = getResources().getColor(2131165391);
     localObject1 = ObjectAnimator.ofInt(this.jdField_a_of_type_DovComQqImPtvBaseButton, "backgroundColor", new int[] { i, j });
-    ((ObjectAnimator)localObject1).setEvaluator(bown.a());
+    ((ObjectAnimator)localObject1).setEvaluator(bpyi.a());
     localObjectAnimator = ObjectAnimator.ofInt(this.jdField_a_of_type_DovComQqImPtvBaseButton, "shadowColor", new int[] { m, k });
-    localObjectAnimator.setEvaluator(bown.a());
+    localObjectAnimator.setEvaluator(bpyi.a());
     localObject2 = new AnimatorSet();
     ((AnimatorSet)localObject2).play((Animator)localObject1).with(localObjectAnimator);
     ((AnimatorSet)localObject2).setDuration(100L);
     localObject1 = a(this.jdField_a_of_type_DovComQqImPtvBaseButton, 1.0F, 1.022F, 1.022F, 1.0F, (Animator)localObject2, null, 140L, 50L);
-    ((AnimatorSet)localObject1).addListener(new boxf(this));
+    ((AnimatorSet)localObject1).addListener(new bpza(this));
     ((AnimatorSet)localObject1).start();
-    i = getResources().getColor(2131166279);
+    i = getResources().getColor(2131166283);
     localObject1 = ObjectAnimator.ofInt(this.jdField_a_of_type_DovComQqImPtvLightWeightProgress, "deleteColor", new int[] { i, this.jdField_a_of_type_DovComQqImPtvLightWeightProgress.a() });
     ((ObjectAnimator)localObject1).setStartDelay(90L);
     ((ObjectAnimator)localObject1).setDuration(50L);
-    ((ObjectAnimator)localObject1).addListener(new boxg(this));
+    ((ObjectAnimator)localObject1).addListener(new bpzb(this));
     ((ObjectAnimator)localObject1).start();
   }
   
   protected int a()
   {
-    return 2131560952;
+    return 2131560983;
   }
   
   protected void a()
   {
     super.a();
-    this.jdField_e_of_type_Int = bqja.a(5.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376256));
+    this.jdField_e_of_type_Int = brkm.a(5.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376396));
     o();
-    bcml.a(this.jdField_a_of_type_DovComQqImPtvBaseButton, 0.0F, 0.0F, this.jdField_e_of_type_Int, 0.0F, 400, 0.0F, 1.0F);
-    bcml.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.0F, 0.0F, this.jdField_e_of_type_Int, 0.0F, 400, 0.0F, 1.0F);
+    bdfd.a(this.jdField_a_of_type_DovComQqImPtvBaseButton, 0.0F, 0.0F, this.jdField_e_of_type_Int, 0.0F, 400, 0.0F, 1.0F);
+    bdfd.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.0F, 0.0F, this.jdField_e_of_type_Int, 0.0F, 400, 0.0F, 1.0F);
   }
   
-  protected void a(boxv paramboxv, SimpleEffectsCaptureView paramSimpleEffectsCaptureView, LightWeightProgress paramLightWeightProgress)
+  protected void a(bpzq parambpzq, SimpleEffectsCaptureView paramSimpleEffectsCaptureView, LightWeightProgress paramLightWeightProgress)
   {
-    super.a(paramboxv, paramSimpleEffectsCaptureView, paramLightWeightProgress);
-    bcml.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSimpleEffectsCaptureView, 0.0F, 0.0F, this.jdField_e_of_type_Int, 0.0F, 400, 0.0F, 1.0F);
-    bcml.a(this.jdField_a_of_type_DovComQqImPtvLightWeightProgress, 0.0F, 0.0F, this.jdField_e_of_type_Int, 0.0F, 400, 0.0F, 1.0F);
+    super.a(parambpzq, paramSimpleEffectsCaptureView, paramLightWeightProgress);
+    bdfd.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSimpleEffectsCaptureView, 0.0F, 0.0F, this.jdField_e_of_type_Int, 0.0F, 400, 0.0F, 1.0F);
+    bdfd.a(this.jdField_a_of_type_DovComQqImPtvLightWeightProgress, 0.0F, 0.0F, this.jdField_e_of_type_Int, 0.0F, 400, 0.0F, 1.0F);
   }
   
   protected void a(LWMotionEvent paramLWMotionEvent)
   {
-    int i = getResources().getColor(2131165390);
-    int j = getResources().getColor(2131165397);
+    int i = getResources().getColor(2131165388);
+    int j = getResources().getColor(2131165395);
     this.jdField_a_of_type_DovComQqImPtvBaseButton.setBackgroundColor(i);
     this.jdField_a_of_type_DovComQqImPtvBaseButton.setShadowColor(j);
-    this.jdField_a_of_type_DovComQqImPtvBaseButton.setImageWidth(bqja.a(40.0F));
-    this.jdField_a_of_type_DovComQqImPtvBaseButton.setImageHeight(bqja.a(40.0F));
-    this.jdField_a_of_type_DovComQqImPtvBaseButton.setImageResource(2130844457);
+    this.jdField_a_of_type_DovComQqImPtvBaseButton.setImageWidth(brkm.a(40.0F));
+    this.jdField_a_of_type_DovComQqImPtvBaseButton.setImageHeight(brkm.a(40.0F));
+    this.jdField_a_of_type_DovComQqImPtvBaseButton.setImageResource(2130844471);
     q();
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_DovComQqImPtvBaseButton.getLayoutParams();
-    i = bqja.a('');
+    i = brkm.a('');
     localLayoutParams.width = i;
     localLayoutParams.height = i;
-    localLayoutParams.bottomMargin = bqja.a(2.5F);
+    localLayoutParams.bottomMargin = brkm.a(2.5F);
     this.jdField_a_of_type_DovComQqImPtvBaseButton.setLayoutParams(localLayoutParams);
     this.jdField_g_of_type_Boolean = true;
     v();
     this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    if (this.jdField_a_of_type_Boxw != null) {
-      this.jdField_a_of_type_Boxw.k();
+    if (this.jdField_a_of_type_Bpzr != null) {
+      this.jdField_a_of_type_Bpzr.k();
     }
-    avsp.c(this.d);
+    awlk.c(this.d);
     super.a(paramLWMotionEvent);
   }
   
@@ -270,12 +270,12 @@ public class LightWeightCaptureButtonHorizontalLayout
     do
     {
       return true;
-      if (this.jdField_a_of_type_Boxu.jdField_b_of_type_Boolean)
+      if (this.jdField_a_of_type_Bpzp.jdField_b_of_type_Boolean)
       {
         u();
         return true;
       }
-    } while (this.jdField_a_of_type_Boxu.d < 2);
+    } while (this.jdField_a_of_type_Bpzp.d < 2);
     t();
     return true;
   }
@@ -287,15 +287,15 @@ public class LightWeightCaptureButtonHorizontalLayout
     this.c.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_DovComQqImPtvBaseButton.getLayoutParams();
-    int i = bqja.a(91.0F);
+    int i = brkm.a(91.0F);
     localLayoutParams.width = i;
     localLayoutParams.height = i;
-    localLayoutParams.bottomMargin = bqja.a(32.0F);
+    localLayoutParams.bottomMargin = brkm.a(32.0F);
     this.jdField_a_of_type_DovComQqImPtvBaseButton.setLayoutParams(localLayoutParams);
     o();
-    bcml.a(this.jdField_a_of_type_DovComQqImPtvBaseButton, 0.0F, 0.0F, 0.0F, 0.0F, 100, 0.0F, 1.0F);
-    if (this.jdField_a_of_type_Boxw != null) {
-      this.jdField_a_of_type_Boxw.j();
+    bdfd.a(this.jdField_a_of_type_DovComQqImPtvBaseButton, 0.0F, 0.0F, 0.0F, 0.0F, 100, 0.0F, 1.0F);
+    if (this.jdField_a_of_type_Bpzr != null) {
+      this.jdField_a_of_type_Bpzr.j();
     }
   }
   
@@ -305,11 +305,11 @@ public class LightWeightCaptureButtonHorizontalLayout
     {
       if (this.jdField_a_of_type_DovComQqImPtvBaseButton.isLayoutRequested())
       {
-        this.jdField_a_of_type_Boxu.jdField_c_of_type_Boolean = true;
+        this.jdField_a_of_type_Bpzp.jdField_c_of_type_Boolean = true;
         return;
       }
       this.jdField_g_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Boxu.jdField_c_of_type_Boolean)
+      if (this.jdField_a_of_type_Bpzp.jdField_c_of_type_Boolean)
       {
         super.a(paramLWMotionEvent);
         return;
@@ -323,28 +323,28 @@ public class LightWeightCaptureButtonHorizontalLayout
   protected void c()
   {
     float f2;
-    if ((!this.jdField_a_of_type_Boxu.jdField_a_of_type_Boolean) && (Math.abs(this.jdField_a_of_type_Boxu.jdField_e_of_type_Float) > boxu.jdField_a_of_type_Int))
+    if ((!this.jdField_a_of_type_Bpzp.jdField_a_of_type_Boolean) && (Math.abs(this.jdField_a_of_type_Bpzp.jdField_e_of_type_Float) > bpzp.jdField_a_of_type_Int))
     {
-      this.jdField_a_of_type_Boxu.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Boxu.jdField_e_of_type_Float > 0.0F)
+      this.jdField_a_of_type_Bpzp.jdField_a_of_type_Boolean = true;
+      if (this.jdField_a_of_type_Bpzp.jdField_e_of_type_Float > 0.0F)
       {
-        this.jdField_a_of_type_Boxu.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Boxu.jdField_g_of_type_Float = this.jdField_a_of_type_DovComQqImPtvBaseButton.getTranslationX();
-        this.jdField_a_of_type_Boxu.jdField_e_of_type_Int = b();
-        this.jdField_a_of_type_Boxu.jdField_f_of_type_Int = c();
-        this.jdField_a_of_type_Boxu.jdField_f_of_type_Boolean = false;
-        this.jdField_a_of_type_Boxu.jdField_g_of_type_Boolean = false;
+        this.jdField_a_of_type_Bpzp.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_Bpzp.jdField_g_of_type_Float = this.jdField_a_of_type_DovComQqImPtvBaseButton.getTranslationX();
+        this.jdField_a_of_type_Bpzp.jdField_e_of_type_Int = b();
+        this.jdField_a_of_type_Bpzp.jdField_f_of_type_Int = c();
+        this.jdField_a_of_type_Bpzp.jdField_f_of_type_Boolean = false;
+        this.jdField_a_of_type_Bpzp.jdField_g_of_type_Boolean = false;
       }
     }
-    else if (this.jdField_a_of_type_Boxu.jdField_a_of_type_Boolean)
+    else if (this.jdField_a_of_type_Bpzp.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_DovComQqImPtvBaseButton.setTranslationX(this.jdField_a_of_type_DovComQqImPtvBaseButton.getTranslationX() + this.jdField_a_of_type_Boxu.jdField_e_of_type_Float);
+      this.jdField_a_of_type_DovComQqImPtvBaseButton.setTranslationX(this.jdField_a_of_type_DovComQqImPtvBaseButton.getTranslationX() + this.jdField_a_of_type_Bpzp.jdField_e_of_type_Float);
       f1 = this.jdField_a_of_type_DovComQqImPtvBaseButton.getTranslationX();
       f2 = Math.abs(f1);
-      if (!this.jdField_a_of_type_Boxu.jdField_b_of_type_Boolean) {
+      if (!this.jdField_a_of_type_Bpzp.jdField_b_of_type_Boolean) {
         break label504;
       }
-      switch (this.jdField_a_of_type_Boxu.d)
+      switch (this.jdField_a_of_type_Bpzp.d)
       {
       }
     }
@@ -358,109 +358,109 @@ public class LightWeightCaptureButtonHorizontalLayout
           do
           {
             return;
-            this.jdField_a_of_type_Boxu.jdField_b_of_type_Boolean = false;
+            this.jdField_a_of_type_Bpzp.jdField_b_of_type_Boolean = false;
             break;
-            if (f1 > boxu.jdField_b_of_type_Int)
+            if (f1 > bpzp.jdField_b_of_type_Int)
             {
-              this.b.setImageResource(2130844445);
-              this.jdField_a_of_type_Boxu.d = 1;
+              this.b.setImageResource(2130844459);
+              this.jdField_a_of_type_Bpzp.d = 1;
               return;
             }
-          } while ((f1 >= 0.0F) || (f2 <= boxu.jdField_b_of_type_Int));
-          this.jdField_a_of_type_Boxu.jdField_b_of_type_Boolean = false;
-          this.c.setImageResource(2130844463);
-          this.jdField_a_of_type_Boxu.d = 1;
+          } while ((f1 >= 0.0F) || (f2 <= bpzp.jdField_b_of_type_Int));
+          this.jdField_a_of_type_Bpzp.jdField_b_of_type_Boolean = false;
+          this.c.setImageResource(2130844477);
+          this.jdField_a_of_type_Bpzp.d = 1;
           return;
-          if (f1 > boxu.jdField_c_of_type_Int)
+          if (f1 > bpzp.jdField_c_of_type_Int)
           {
-            this.jdField_a_of_type_Boxu.d = 2;
+            this.jdField_a_of_type_Bpzp.d = 2;
             return;
           }
-        } while (f1 > boxu.jdField_b_of_type_Int);
-        this.jdField_a_of_type_Boxu.d = 0;
-        this.b.setImageResource(2130844447);
-        this.jdField_a_of_type_Boxu.jdField_f_of_type_Boolean = true;
+        } while (f1 > bpzp.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Bpzp.d = 0;
+        this.b.setImageResource(2130844461);
+        this.jdField_a_of_type_Bpzp.jdField_f_of_type_Boolean = true;
         return;
         k();
-        this.jdField_a_of_type_Boxu.h = false;
+        this.jdField_a_of_type_Bpzp.h = false;
         return;
-        f2 = this.jdField_a_of_type_Boxu.jdField_e_of_type_Int;
-        l2 = SystemClock.uptimeMillis() - this.jdField_a_of_type_Boxu.jdField_a_of_type_Long;
+        f2 = this.jdField_a_of_type_Bpzp.jdField_e_of_type_Int;
+        l2 = SystemClock.uptimeMillis() - this.jdField_a_of_type_Bpzp.jdField_a_of_type_Long;
         l1 = l2;
-        if (l2 >= this.jdField_a_of_type_Boxu.jdField_b_of_type_Long) {
-          l1 = this.jdField_a_of_type_Boxu.jdField_b_of_type_Long;
+        if (l2 >= this.jdField_a_of_type_Bpzp.jdField_b_of_type_Long) {
+          l1 = this.jdField_a_of_type_Bpzp.jdField_b_of_type_Long;
         }
-        f3 = (float)l1 * 1.0F / (float)this.jdField_a_of_type_Boxu.jdField_b_of_type_Long;
+        f3 = (float)l1 * 1.0F / (float)this.jdField_a_of_type_Bpzp.jdField_b_of_type_Long;
         this.b.setTranslationX(-(f3 * (f2 - f1)));
         return;
         b(f1);
         return;
-        this.jdField_a_of_type_Boxu.d = 6;
+        this.jdField_a_of_type_Bpzp.d = 6;
         b(f1);
         return;
-        this.jdField_a_of_type_Boxu.d = 7;
+        this.jdField_a_of_type_Bpzp.d = 7;
         r();
         return;
-        if (f1 <= boxu.jdField_c_of_type_Int)
+        if (f1 <= bpzp.jdField_c_of_type_Int)
         {
           w();
-          this.jdField_a_of_type_Boxu.d = 10;
+          this.jdField_a_of_type_Bpzp.d = 10;
           return;
         }
         r();
         return;
-        switch (this.jdField_a_of_type_Boxu.d)
+        switch (this.jdField_a_of_type_Bpzp.d)
         {
         default: 
           return;
         case 0: 
-          if ((f1 < 0.0F) && (f2 > boxu.jdField_b_of_type_Int))
+          if ((f1 < 0.0F) && (f2 > bpzp.jdField_b_of_type_Int))
           {
-            this.c.setImageResource(2130844463);
-            this.jdField_a_of_type_Boxu.d = 1;
+            this.c.setImageResource(2130844477);
+            this.jdField_a_of_type_Bpzp.d = 1;
             return;
           }
           break;
         }
-      } while (f1 <= boxu.jdField_b_of_type_Int);
-      this.jdField_a_of_type_Boxu.jdField_b_of_type_Boolean = true;
-      this.b.setImageResource(2130844445);
-      this.jdField_a_of_type_Boxu.d = 1;
+      } while (f1 <= bpzp.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Bpzp.jdField_b_of_type_Boolean = true;
+      this.b.setImageResource(2130844459);
+      this.jdField_a_of_type_Bpzp.d = 1;
       return;
-      if ((f1 < 0.0F) && (f2 > boxu.jdField_c_of_type_Int))
+      if ((f1 < 0.0F) && (f2 > bpzp.jdField_c_of_type_Int))
       {
-        this.jdField_a_of_type_Boxu.d = 2;
+        this.jdField_a_of_type_Bpzp.d = 2;
         return;
       }
-    } while ((f1 <= 0.0F) && (f2 > boxu.jdField_b_of_type_Int));
-    this.jdField_a_of_type_Boxu.d = 0;
-    this.c.setImageResource(2130844464);
-    this.jdField_a_of_type_Boxu.jdField_g_of_type_Boolean = true;
+    } while ((f1 <= 0.0F) && (f2 > bpzp.jdField_b_of_type_Int));
+    this.jdField_a_of_type_Bpzp.d = 0;
+    this.c.setImageResource(2130844478);
+    this.jdField_a_of_type_Bpzp.jdField_g_of_type_Boolean = true;
     return;
     l();
-    this.jdField_a_of_type_Boxu.i = false;
+    this.jdField_a_of_type_Bpzp.i = false;
     return;
-    float f1 = this.jdField_a_of_type_Boxu.jdField_f_of_type_Int;
-    long l2 = SystemClock.uptimeMillis() - this.jdField_a_of_type_Boxu.jdField_a_of_type_Long;
+    float f1 = this.jdField_a_of_type_Bpzp.jdField_f_of_type_Int;
+    long l2 = SystemClock.uptimeMillis() - this.jdField_a_of_type_Bpzp.jdField_a_of_type_Long;
     long l1 = l2;
-    if (l2 >= this.jdField_a_of_type_Boxu.jdField_b_of_type_Long) {
-      l1 = this.jdField_a_of_type_Boxu.jdField_b_of_type_Long;
+    if (l2 >= this.jdField_a_of_type_Bpzp.jdField_b_of_type_Long) {
+      l1 = this.jdField_a_of_type_Bpzp.jdField_b_of_type_Long;
     }
-    float f3 = (float)l1 * 1.0F / (float)this.jdField_a_of_type_Boxu.jdField_b_of_type_Long;
+    float f3 = (float)l1 * 1.0F / (float)this.jdField_a_of_type_Bpzp.jdField_b_of_type_Long;
     this.c.setTranslationX(f3 * (f1 - f2));
     return;
     a(f2);
     return;
-    this.jdField_a_of_type_Boxu.d = 6;
+    this.jdField_a_of_type_Bpzp.d = 6;
     a(f2);
     return;
-    this.jdField_a_of_type_Boxu.d = 7;
+    this.jdField_a_of_type_Bpzp.d = 7;
     s();
     return;
-    if ((f1 > 0.0F) || (f2 <= boxu.jdField_c_of_type_Int))
+    if ((f1 > 0.0F) || (f2 <= bpzp.jdField_c_of_type_Int))
     {
       n();
-      this.jdField_a_of_type_Boxu.d = 10;
+      this.jdField_a_of_type_Bpzp.d = 10;
       return;
     }
     s();

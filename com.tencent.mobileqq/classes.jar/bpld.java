@@ -1,26 +1,10 @@
-import android.graphics.Bitmap;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.content.Context;
 
-public class bpld
-  implements bphz
+public abstract interface bpld
 {
-  public bpld(DoodleLayout paramDoodleLayout) {}
+  public abstract Context a();
   
-  public void a(Bitmap paramBitmap, boolean paramBoolean)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramBitmap, paramBoolean);
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (this.a.a != null)
-    {
-      yqp.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
-      this.a.a.a(paramArrayOfByte);
-    }
-  }
+  public abstract void a();
 }
 
 

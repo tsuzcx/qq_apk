@@ -4,21 +4,21 @@ import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
-import rsa;
+import riw;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class SlidingUpDialog$slidingDown$1
   extends Lambda
   implements Function0<Unit>
 {
-  public SlidingUpDialog$slidingDown$1(rsa paramrsa)
+  public SlidingUpDialog$slidingDown$1(riw paramriw)
   {
     super(0);
   }
   
   public final void invoke()
   {
-    rsa.a(this.this$0);
+    riw.a(this.this$0);
   }
 }
 

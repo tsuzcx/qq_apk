@@ -7,13 +7,13 @@ import android.util.AttributeSet;
 import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
 import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 import javax.microedition.khronos.opengles.GL10;
-import yqp;
-import ziu;
+import yuk;
+import zmp;
 
 public class StoryEffectsCameraCaptureView
   extends EffectsCameraCaptureView
 {
-  private ziu a;
+  private zmp a;
   
   public StoryEffectsCameraCaptureView(@NonNull Context paramContext)
   {
@@ -28,7 +28,7 @@ public class StoryEffectsCameraCaptureView
   public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
   {
     if ((this.jdField_a_of_type_Boolean) && (this.r == 1)) {
-      yqp.b("zhiqiang", "frameToMediaCodec the last frame=" + paramLong);
+      yuk.b("zhiqiang", "frameToMediaCodec the last frame=" + paramLong);
     }
     super.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong);
   }
@@ -36,17 +36,17 @@ public class StoryEffectsCameraCaptureView
   public void onDrawFrame(GL10 paramGL10)
   {
     super.onDrawFrame(paramGL10);
-    paramGL10 = this.jdField_a_of_type_Ziu;
+    paramGL10 = this.jdField_a_of_type_Zmp;
     if (paramGL10 != null)
     {
       paramGL10.a(GlUtil.captureFrame(b(this.t), this.n, this.o, 0));
-      this.jdField_a_of_type_Ziu = null;
+      this.jdField_a_of_type_Zmp = null;
     }
   }
   
-  public void setCaptureRequest(ziu paramziu)
+  public void setCaptureRequest(zmp paramzmp)
   {
-    this.jdField_a_of_type_Ziu = paramziu;
+    this.jdField_a_of_type_Zmp = paramzmp;
   }
 }
 

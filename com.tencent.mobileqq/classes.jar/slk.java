@@ -1,48 +1,22 @@
-import com.tencent.image.AbsThirdDataSourceAdapter;
-import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class slk
-  extends AbsThirdDataSourceAdapter
+class slk
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 2;
-  private AbsThirdDataSourceAdapter.OnPreparedCallback jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback;
-  private String jdField_a_of_type_JavaLangString = "";
-  private int b = 0;
-  private int c = 0;
+  slk(slj paramslj) {}
   
-  public slk(int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int getPlayType()
-  {
-    return this.c;
-  }
-  
-  public int getStaus()
-  {
-    return this.b;
-  }
-  
-  public String getURL()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void requestPrepare(String paramString, AbsThirdDataSourceAdapter.OnPreparedCallback paramOnPreparedCallback)
-  {
-    this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback = paramOnPreparedCallback;
-    this.b = 1;
-    paramOnPreparedCallback = slm.a();
-    sll localsll = new sll(this);
-    if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 6)) {
-      paramOnPreparedCallback.a(paramString, localsll);
+    if (slj.a(this.a) != null) {
+      slj.a(this.a).onClick(paramView);
     }
-    while (this.jdField_a_of_type_Int != 4) {
-      return;
-    }
-    paramOnPreparedCallback.a(paramString, "SQQShopAdSvr.GetUrlByVid", localsll);
+    paa localpaa = new paa();
+    localpaa.h().e().f().b().i().m();
+    localpaa.b("message_reddot_style", ozs.k());
+    ocd.a(null, "", "0X800824B", "0X800824B", 0, 0, "", "", "", localpaa.a(), false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

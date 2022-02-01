@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aiyr;
-import ajae;
+import ajka;
+import ajln;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -9,16 +9,16 @@ import java.util.ArrayList;
 public class SystemMsgListAdapter$1
   implements Runnable
 {
-  public SystemMsgListAdapter$1(ajae paramajae, int paramInt) {}
+  public SystemMsgListAdapter$1(ajln paramajln, int paramInt) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.e("SystemMsgListAdapter", 2, "MSG_FRESH_DATA refreshDataInner tabId = " + this.a);
     }
-    ajae.a(this.this$0).a(true, this.a);
-    ArrayList localArrayList = ajae.a(this.this$0).b();
-    ajae.a(this.this$0).runOnUiThread(new SystemMsgListAdapter.1.1(this, localArrayList));
+    ajln.a(this.this$0).a(true, this.a);
+    ArrayList localArrayList = ajln.a(this.this$0).b();
+    ajln.a(this.this$0).runOnUiThread(new SystemMsgListAdapter.1.1(this, localArrayList));
   }
 }
 

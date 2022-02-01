@@ -13,11 +13,11 @@ class AuthDialog$3
   
   public void onClick(View paramView)
   {
-    this.this$0.getData().putBoolean("key_once_sub_cb1", AuthDialog.access$200(this.this$0).isChecked());
+    this.this$0.getData().putBoolean("key_once_sub_cb1", AuthDialog.access$100(this.this$0).isChecked());
     this.this$0.getData().putBoolean("key_once_sub_cb2", AuthDialog.access$300(this.this$0).isChecked());
-    this.this$0.getData().putBoolean("key_once_sub_cb3", AuthDialog.access$400(this.this$0).isChecked());
-    this.this$0.getData().putBoolean("key_once_sub_cb_maintain", AuthDialog.access$500(this.this$0).isChecked());
-    this.this$0.setConfirm(true);
+    this.this$0.getData().putBoolean("key_once_sub_cb3", AuthDialog.access$500(this.this$0).isChecked());
+    this.this$0.getData().putBoolean("key_once_sub_cb_maintain", AuthDialog.access$900(this.this$0).isChecked());
+    this.this$0.setRefuse(true);
     this.this$0.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }

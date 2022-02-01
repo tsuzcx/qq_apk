@@ -1,20 +1,14 @@
-import java.util.HashMap;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-public abstract class bode
+public class bode
+  implements breu
 {
-  public boolean a;
+  public bode(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public abstract float a();
-  
-  public abstract String a();
-  
-  public abstract HashMap<String, String> a();
-  
-  public abstract float b();
-  
-  public abstract String b();
-  
-  public abstract float c();
+  public void a(String paramString)
+  {
+    QIMEffectCameraCaptureUnit.d(this.a);
+  }
 }
 
 

@@ -1,13 +1,9 @@
-import com.tencent.mobileqq.activity.contacts.troop.TroopFragment;
-
 public class ajml
-  extends anqd
+  extends ajmf
 {
-  public ajml(TroopFragment paramTroopFragment) {}
-  
-  protected void a()
+  public boolean a()
   {
-    this.a.h();
+    return true;
   }
 }
 

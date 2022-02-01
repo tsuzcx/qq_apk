@@ -1,62 +1,128 @@
-import com.tencent.kwstudio.office.base.ILog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloaderFirstPkgRp;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class aubg
-  implements ILog
+public class aubg
 {
-  public void d(String paramString1, String paramString2)
+  int a;
+  protected long a;
+  protected aube a;
+  protected final QQAppInterface a;
+  protected ExcitingTransferDownloadCompletedInfo a;
+  protected ExcitingTransferDownloaderFirstPkgRp a;
+  int b;
+  int c = 0;
+  
+  public aubg(QQAppInterface paramQQAppInterface)
   {
-    QLog.d("TdsReaderView_" + paramString1, 2, paramString2);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  protected String a()
   {
-    QLog.d("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
+    return "actGroupPDFileDownload";
   }
   
-  public void e(String paramString1, String paramString2)
+  public void a(int paramInt)
   {
-    QLog.e("TdsReaderView_" + paramString1, 1, paramString2);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  public void a(int paramInt, long paramLong1, String paramString, long paramLong2, long paramLong3)
   {
-    QLog.e("TdsReaderView_" + paramString1, 1, paramString2, paramThrowable);
+    this.jdField_a_of_type_Aube = new aube();
+    this.jdField_a_of_type_Aube.jdField_a_of_type_Long = paramInt;
+    this.jdField_a_of_type_Aube.jdField_b_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Aube.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Aube.d = paramLong2;
+    this.jdField_a_of_type_Aube.c = paramLong3;
+    this.jdField_a_of_type_Aube.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Aube.jdField_b_of_type_Int = 1;
   }
   
-  public int getLogLevel()
+  public void a(long paramLong)
   {
-    return 1;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void i(String paramString1, String paramString2)
+  public void a(ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
   {
-    QLog.i("TdsReaderView_" + paramString1, 2, paramString2);
+    if (paramExcitingTransferDownloadCompletedInfo.m_uFirstRecvDataTime > paramExcitingTransferDownloadCompletedInfo.m_uStartTime) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHttpFirstTime = (paramExcitingTransferDownloadCompletedInfo.m_uFirstRecvDataTime - paramExcitingTransferDownloadCompletedInfo.m_uStartTime);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHtpFirstDataSize = paramExcitingTransferDownloadCompletedInfo.m_uFirstRecvDataSize;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = paramExcitingTransferDownloadCompletedInfo;
   }
   
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  public void a(boolean paramBoolean)
   {
-    QLog.i("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      this.c = i;
+      return;
+    }
   }
   
-  public void v(String paramString1, String paramString2)
+  public void b(int paramInt)
   {
-    QLog.i("TdsReaderView_" + paramString1, 2, paramString2);
+    this.jdField_b_of_type_Int = paramInt;
   }
   
-  public void v(String paramString1, String paramString2, Throwable paramThrowable)
+  public void b(long paramLong)
   {
-    QLog.i("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp == null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp = new ExcitingTransferDownloaderFirstPkgRp();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mCSStartTime = paramLong;
   }
   
-  public void w(String paramString1, String paramString2)
+  public void b(boolean paramBoolean)
   {
-    QLog.w("TdsReaderView_" + paramString1, 1, paramString2);
+    if ((this.jdField_a_of_type_Aube == null) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo == null))
+    {
+      QLog.e("ExtfGroupDownloadDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] GroupDownloadDataReport err. param err");
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    if (this.jdField_a_of_type_Aube != null) {
+      localHashMap.putAll(this.jdField_a_of_type_Aube.a());
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo != null) {
+      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.getReportData());
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp != null) {
+      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.getReportData());
+    }
+    for (;;)
+    {
+      localHashMap.put("param_V6SelectType", String.valueOf(this.jdField_a_of_type_Int));
+      localHashMap.put("param_ipAddrType", String.valueOf(this.jdField_b_of_type_Int));
+      localHashMap.put("param_stackType", String.valueOf(auoo.b()));
+      localHashMap.put("param_loginType", String.valueOf(auoo.c()));
+      localHashMap.put("param_ishttps", String.valueOf(this.c));
+      QLog.i("ExtfGroupDownloadDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] >>> GroupDownloadDataReport: act=" + a() + localHashMap.toString());
+      bdmc.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), a(), paramBoolean, 0L, 0L, localHashMap, "");
+      this.jdField_a_of_type_Aube = null;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = null;
+      return;
+      localHashMap.put("param_CSTime", String.valueOf(0));
+      localHashMap.put("param_HttpFirstTime", String.valueOf(0));
+      localHashMap.put("param_HttpFirstDataSize", String.valueOf(0));
+    }
   }
   
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  public void c(long paramLong)
   {
-    QLog.w("TdsReaderView_" + paramString1, 1, paramString2, paramThrowable);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mCSEndTime = paramLong;
   }
 }
 

@@ -1,52 +1,9 @@
-public final class bmzd
-  implements Cloneable
+final class bmzd
+  extends awxb<bmzc, Void>
 {
-  public volatile int a;
-  public long a;
-  public bmzc a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c = "";
-  public String d = "";
-  
-  public bmzd()
+  protected bmzc a(Void paramVoid)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  public bmzd a()
-  {
-    try
-    {
-      bmzd localbmzd = (bmzd)super.clone();
-      return localbmzd;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_Int == 3) || ((this.jdField_a_of_type_Int == 1) && ((this.jdField_b_of_type_Int == 1810003) || (this.jdField_b_of_type_Int == 1810004)));
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2);
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_Int == 1) && (this.jdField_b_of_type_Int != 1810003) && (this.jdField_b_of_type_Int != 1810004);
-  }
-  
-  public boolean d()
-  {
-    return (this.jdField_a_of_type_Int == 1) && ((this.jdField_b_of_type_Int == 1810003) || (this.jdField_b_of_type_Int == 1810004));
+    return new bmzc();
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bfrj;
-import bfry;
+import bgrk;
+import bgrz;
 
 public class TroopFileTransferManager$4$1
   implements Runnable
 {
-  public TroopFileTransferManager$4$1(bfry parambfry, TroopFileTransferManager.Item paramItem) {}
+  public TroopFileTransferManager$4$1(bgrz parambgrz, TroopFileTransferManager.Item paramItem) {}
   
   public void run()
   {
-    bfrj localbfrj = new bfrj(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Bfry.a.e, 3, 210);
-    this.jdField_a_of_type_Bfry.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, localbfrj);
+    bgrk localbgrk = new bgrk(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Bgrz.a.e, 3, 210);
+    this.jdField_a_of_type_Bgrz.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, localbgrk);
   }
 }
 

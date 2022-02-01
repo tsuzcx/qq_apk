@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="top" android:orientation="vertical" android:background="@drawable/aao" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.CommonBtmLine android:id="@id/jtk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/jte" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:src="@drawable/guy" android:scaleType="fitCenter" />
-    <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="@color/qzone_skin_feed_content_text_color" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/cj9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/rly" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_second_content_text_color" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/cj_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/rmh" />
-    <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/c6" android:visibility="gone" android:layout_width="170.0dip" android:layout_height="41.0dip" android:layout_marginTop="20.0dip" android:text="@string/rl3" />
+<LinearLayout android:orientation="horizontal" android:id="@id/dqx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/mu6" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:showArrow="true" />
 </LinearLayout>

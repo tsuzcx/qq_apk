@@ -1,38 +1,26 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
+import java.util.Comparator;
 
 class avtn
-  implements EIPCResultCallback
+  implements Comparator<File>
 {
-  avtn(avtl paramavtl) {}
+  avtn(avtm paramavtm) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public int a(File paramFile1, File paramFile2)
   {
-    int i = 0;
-    JSONObject localJSONObject;
-    if (!TextUtils.isEmpty(avtl.a(this.a))) {
-      localJSONObject = new JSONObject();
-    }
-    try
+    if (paramFile1.lastModified() > paramFile2.lastModified()) {}
+    do
     {
-      if (paramEIPCResult.data.getBoolean("result")) {}
-      for (;;)
-      {
-        localJSONObject.put("result", i);
-        this.a.callJs(avtl.a(this.a), new String[] { localJSONObject.toString() });
-        return;
-        i = 1;
+      return -1;
+      if (paramFile1.lastModified() != paramFile2.lastModified()) {
+        break;
       }
-      return;
-    }
-    catch (JSONException paramEIPCResult)
-    {
-      paramEIPCResult.printStackTrace();
-    }
+      if (paramFile1.length() > paramFile2.length()) {
+        return 1;
+      }
+    } while (paramFile1.length() < paramFile2.length());
+    return 0;
+    return 1;
   }
 }
 

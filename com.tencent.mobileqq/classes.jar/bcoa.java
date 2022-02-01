@@ -1,8 +1,8 @@
-import com.tencent.mobileqq.soload.SoLoadInfo;
+import android.view.View;
 
 public abstract interface bcoa
 {
-  public abstract void a(SoLoadInfo paramSoLoadInfo);
+  public abstract View a();
 }
 
 

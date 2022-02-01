@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.Conversation;
+import mqq.os.MqqHandler;
 
-public class alkf
-  implements alox
+class alkf
+  implements DialogInterface.OnClickListener
 {
-  public alkf(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  alkf(alke paramalke) {}
   
-  public void a_(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "onPictureToken path " + paramString);
+    if (andl.a() != null) {
+      anbd.a();
     }
-    this.a.a.b();
-    NewFlowCameraActivity.a(this.a, paramString, true);
+    paramDialogInterface = anbd.a();
+    if (paramDialogInterface != null)
+    {
+      paramDialogInterface = paramDialogInterface.getHandler(Conversation.class);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(1134052));
+      }
+    }
   }
 }
 

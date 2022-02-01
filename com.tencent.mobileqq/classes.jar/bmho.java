@@ -1,10 +1,13 @@
-final class bmho
-  extends bmhn
+import android.app.ProgressDialog;
+import android.content.Context;
+
+public class bmho
 {
-  public boolean a()
-  {
-    return true;
-  }
+  public ProgressDialog a;
+  public Context a;
+  public bmgr a;
+  public bmgt a;
+  public boolean a = true;
 }
 
 

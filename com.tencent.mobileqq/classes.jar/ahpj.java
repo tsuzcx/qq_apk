@@ -1,14 +1,24 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class ahpj
-  implements ahor
+  implements wkz
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  long jdField_a_of_type_Long;
+  ahpk jdField_a_of_type_Ahpk;
+  String jdField_a_of_type_JavaLangString;
+  
+  public void a(ahpk paramahpk, String paramString, long paramLong)
   {
-    paramagup.e(paramagwc, paramString);
+    this.jdField_a_of_type_Ahpk = paramahpk;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
+  
+  public void a(String paramString1, String paramString2, int paramInt) {}
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
+  
+  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

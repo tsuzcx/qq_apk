@@ -6,6 +6,11 @@ public class PTVUpConfigInfo
   private static volatile boolean sIsUpdated;
   public static int sSwitch = 1;
   
+  static
+  {
+    sIsUpdated = false;
+  }
+  
   public static boolean getIsUpdated()
   {
     try
@@ -76,7 +81,7 @@ public class PTVUpConfigInfo
     //   0: ldc 2
     //   2: monitorenter
     //   3: iconst_1
-    //   4: putstatic 23	com/tencent/mobileqq/highway/utils/PTVUpConfigInfo:sIsUpdated	Z
+    //   4: putstatic 15	com/tencent/mobileqq/highway/utils/PTVUpConfigInfo:sIsUpdated	Z
     //   7: aload_0
     //   8: ifnonnull +7 -> 15
     //   11: ldc 2
@@ -107,14 +112,14 @@ public class PTVUpConfigInfo
     //   71: aload_0
     //   72: getfield 70	com/tencent/mobileqq/highway/protocol/subcmd0x501$SubCmd0x501Rspbody$PTVConf:bool_open_hardware_codec	Lcom/tencent/mobileqq/pb/PBBoolField;
     //   75: invokevirtual 75	com/tencent/mobileqq/pb/PBBoolField:get	()Z
-    //   78: putstatic 15	com/tencent/mobileqq/highway/utils/PTVUpConfigInfo:sIsHardCodeEnable	Z
+    //   78: putstatic 17	com/tencent/mobileqq/highway/utils/PTVUpConfigInfo:sIsHardCodeEnable	Z
     //   81: ldc 44
     //   83: new 46	java/lang/StringBuilder
     //   86: dup
     //   87: invokespecial 47	java/lang/StringBuilder:<init>	()V
     //   90: ldc 77
     //   92: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   95: getstatic 15	com/tencent/mobileqq/highway/utils/PTVUpConfigInfo:sIsHardCodeEnable	Z
+    //   95: getstatic 17	com/tencent/mobileqq/highway/utils/PTVUpConfigInfo:sIsHardCodeEnable	Z
     //   98: invokevirtual 80	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   101: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   104: invokestatic 66	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V

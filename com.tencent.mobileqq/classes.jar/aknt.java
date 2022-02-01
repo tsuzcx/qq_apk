@@ -1,37 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class aknt
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public aknt(SendHbActivity paramSendHbActivity) {}
+  public aknt(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ("com.qwallet.report".equals(paramIntent.getAction()))
-    {
-      int i = paramIntent.getIntExtra("type", 0);
-      QLog.i("SendHbActivity", 2, "onReceive type = " + i);
-      if (999 == i) {
-        break label53;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("BindNumberActivity", 2, "new user guild confirm unbind");
     }
-    label53:
-    do
-    {
-      do
-      {
-        return;
-        paramContext = paramIntent.getBundleExtra("params");
-      } while (paramContext == null);
-      QLog.i("SendHbActivity", 2, "onReceive bundle = " + paramContext.toString());
-      paramContext = paramContext.getString("from");
-    } while ((this.a.isFinishing()) || (!"video".equals(paramContext)));
-    this.a.finish();
+    this.a.a("dc00898", "0X8009F16", 0);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.b(this.a.jdField_a_of_type_JavaLangString, this.a.c, 0, this.a.jdField_a_of_type_Boolean, this.a.b);
+    this.a.a(2131717902, 1000L, true);
   }
 }
 

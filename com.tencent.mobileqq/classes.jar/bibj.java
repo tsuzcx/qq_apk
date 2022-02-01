@@ -1,14 +1,21 @@
-class bibj
+import com.tencent.qphone.base.util.QLog;
+
+public class bibj
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int b;
-  int c;
-  int d;
+  public static int a(int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt < 0)
+    {
+      QLog.e("Q.qqhead.VasFaceManager", 1, "unknown DynamicSource", new RuntimeException("DynamicFaceDrawable don't have " + paramInt));
+      i = 7;
+    }
+    return i;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bibj
  * JD-Core Version:    0.7.0.1
  */

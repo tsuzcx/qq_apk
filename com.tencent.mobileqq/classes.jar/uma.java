@@ -1,72 +1,40 @@
+import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 
-public class uma
-  extends uly<WSRedDotPushMsg, WSPushStrategyInfo>
+class uma
+  implements ura
 {
-  private int a;
+  uma(ulx paramulx, Context paramContext, int paramInt) {}
   
-  public uma(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    super(paramWSRedDotPushMsg);
-    this.jdField_a_of_type_Int = paramInt;
+    uqh.a(this.jdField_a_of_type_AndroidContentContext, "biz_src_jc_gzh_weishi", paramString, 1, ulx.a(this.jdField_a_of_type_Ulx), this.jdField_a_of_type_Int);
   }
   
-  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  public void b(String paramString, int paramInt)
   {
-    int i = 2;
-    boolean bool1 = true;
-    if (paramWSPushStrategyInfo == null) {
-      return false;
+    if (!TextUtils.isEmpty(paramString)) {
+      ueg.a(this.jdField_a_of_type_AndroidContentContext, paramString);
     }
-    boolean bool2 = TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme);
-    if (!bool2)
-    {
-      uee.a(paramContext, paramWSPushStrategyInfo.mScheme);
-      paramContext = ups.a();
-      if (paramContext != null) {
-        paramContext.a(null);
-      }
-      ups.a();
-    }
-    if (this.jdField_a_of_type_Int == 2) {
-      if (bool2)
-      {
-        i = 2;
-        if (this.jdField_a_of_type_Ulp != null) {
-          break label93;
-        }
-        paramContext = "";
-        label74:
-        umw.a(i, 1, paramContext);
-        label80:
-        if (bool2) {
-          break label133;
-        }
-      }
-    }
-    for (;;)
-    {
-      return bool1;
-      i = 1;
-      break;
-      label93:
-      paramContext = ((WSRedDotPushMsg)this.jdField_a_of_type_Ulp).mFeedIds;
-      break label74;
-      if (this.jdField_a_of_type_Int != 6) {
-        break label80;
-      }
-      if (bool2) {}
-      for (;;)
-      {
-        umw.d(i);
-        break;
-        i = 1;
-      }
-      label133:
-      bool1 = false;
+  }
+  
+  public void c(String paramString, int paramInt)
+  {
+    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
+    localWSDownloadParams.mScene = 1;
+    localWSDownloadParams.mLinkStrategyType = ulx.a(this.jdField_a_of_type_Ulx);
+    localWSDownloadParams.mEventId = 401;
+    localWSDownloadParams.mTestId = unx.b();
+    localWSDownloadParams.mScheme = paramString;
+    ugz.a((Activity)this.jdField_a_of_type_AndroidContentContext, localWSDownloadParams, false);
+  }
+  
+  public void d(String paramString, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      ulx.a(this.jdField_a_of_type_Ulx, this.jdField_a_of_type_AndroidContentContext, paramString);
     }
   }
 }

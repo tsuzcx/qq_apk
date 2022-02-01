@@ -1,40 +1,9 @@
 public class aova
-  extends aouc
+  implements aouy
 {
-  public aoxu a;
-  public apdw a;
-  public boolean a;
-  public long b;
-  public String b;
-  public int d;
-  public int e = 1;
-  
-  public aova(String paramString1, int paramInt1, int paramInt2, int paramInt3, apdw paramapdw, aoxu paramaoxu, String paramString2, long paramLong, boolean paramBoolean, int paramInt4, int paramInt5, float paramFloat1, float paramFloat2, float paramFloat3)
+  public void a(aocj paramaocj, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, aock paramaock)
   {
-    super(paramString1, paramInt1, paramInt2, paramInt5, paramFloat1, paramFloat2, paramFloat3);
-    this.d = paramInt3;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.e = paramInt4;
-    this.jdField_a_of_type_Apdw = paramapdw;
-    this.jdField_a_of_type_Aoxu = paramaoxu;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("OnlineVideoARRenderableInfo{");
-    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", mRealRenderType=").append(this.d);
-    localStringBuilder.append(", mKeyingParams='").append(this.jdField_a_of_type_Apdw).append('\'');
-    localStringBuilder.append(", mVideoUrl='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", mVideoSize='").append(this.jdField_b_of_type_Long).append('\'');
-    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Aoxu).append('\'');
-    localStringBuilder.append(", isSoftPlay='").append(this.jdField_a_of_type_Boolean).append('\'');
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    paramaocj.a(paramArrayOfObject);
   }
 }
 

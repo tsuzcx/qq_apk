@@ -1,20 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import java.util.List;
 
 class ouk
-  implements pxr
+  extends ovd
 {
-  ouk(ouj paramouj) {}
-  
-  public void a(int paramInt)
+  ouk(otv paramotv, List paramList)
   {
-    if ((ouj.a(this.a) != null) && (ouj.a(this.a).a != null))
-    {
-      if (ouj.a(this.a).a.mSocialFeedInfo == null) {
-        ouj.a(this.a).a.mSocialFeedInfo = new SocializeFeedsInfo();
-      }
-      ouj.a(this.a).a.mSocialFeedInfo.a.a = paramInt;
-    }
+    super(paramotv, null);
+  }
+  
+  void a(ovg paramovg)
+  {
+    paramovg.onCommentListLoad(1, true, this.jdField_a_of_type_JavaUtilList, otv.a(this.jdField_a_of_type_Otv), 3, 3);
   }
 }
 

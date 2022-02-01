@@ -1,40 +1,18 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
 public class altv
-  extends anxg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public altv(TroopAddFrdsInnerFrame paramTroopAddFrdsInnerFrame) {}
+  public altv(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (!this.a.jdField_b_of_type_JavaLangString.equals(paramString))) {
-      return;
-    }
-    ThreadManager.post(new TroopAddFrdsInnerFrame.2.1(this, paramList), 5, null, true);
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString1, String paramString2, long paramLong, int paramInt, boolean paramBoolean2, boolean paramBoolean3, HashMap<String, Integer> paramHashMap, List<String> paramList)
-  {
-    if ((paramBoolean1) && (this.a.a != null) && (this.a.a.longValue() == paramLong) && (paramString1.equals(this.a.jdField_b_of_type_JavaLangString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopAddFrdsInnerFrame", 2, String.format("onTroopBatchReqMemberCmnFrds suc. troopUin:%s, cmnfrds.size:%d", new Object[] { paramString1, Integer.valueOf(paramHashMap.size()) }));
-      }
-      if (paramHashMap.size() > 0)
-      {
-        paramString1 = this.a.jdField_b_of_type_AndroidOsHandler.obtainMessage(6);
-        paramString1.obj = paramHashMap;
-        this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(paramString1);
-      }
-    }
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.qqcircle.report;
 
-import vrl;
+import vtw;
 
 public class QCircleReporter$9
   implements Runnable
 {
-  public QCircleReporter$9(vrl paramvrl) {}
+  public QCircleReporter$9(vtw paramvtw) {}
   
   public void run()
   {
-    vrl.d(this.this$0);
-    vrl.e(this.this$0);
+    vtw.d(this.this$0);
+    vtw.e(this.this$0);
   }
 }
 

@@ -1,16 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.Comparator;
 
-public class pop
-  extends pmn
+class pop
+  implements Comparator<ArticleInfo>
 {
-  public pop(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment) {}
+  pop(pon parampon) {}
   
-  public void a(TopBannerInfo paramTopBannerInfo)
+  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
   {
-    if (paramTopBannerInfo.mChannelId == 2000000000) {
-      this.a.a(paramTopBannerInfo);
+    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
+      return 0;
     }
+    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 

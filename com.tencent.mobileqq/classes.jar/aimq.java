@@ -1,29 +1,53 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
 class aimq
-  implements View.OnClickListener
+  extends atpa
 {
-  aimq(aimo paramaimo) {}
+  aimq(aimn paramaimn) {}
   
-  public void onClick(View paramView)
+  protected void a(atzl paramatzl)
   {
-    aimo.a(this.a).a(aimo.a(this.a).a, Integer.valueOf(4));
-    aimo.a(this.a).a();
-    awhv.a().c(aimo.a(this.a).a, aimo.a(this.a));
-    awhv.a().c(aimo.a(this.a), aimo.a(this.a).a);
-    bcst.b(aimo.a(this.a), "P_CliOper", "Grp_msg", "", "AIOchat", "Clk_setmsg", 0, 0, aimo.a(this.a).a, "", "", "");
-    QQAppInterface localQQAppInterface = aimo.a(this.a);
-    String str2 = aimo.a(this.a).a;
-    if (aimo.a(this.a).b(aimo.a(this.a).a) == 3) {}
-    for (String str1 = "1";; str1 = "0")
+    if (paramatzl == null) {}
+    do
     {
-      bcst.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_confirm", 0, 0, str2, str1, "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      FileManagerEntity localFileManagerEntity;
+      do
+      {
+        do
+        {
+          return;
+        } while (!(paramatzl.a instanceof FileManagerEntity));
+        localFileManagerEntity = (FileManagerEntity)paramatzl.a;
+      } while ((paramatzl.b == null) || (paramatzl.b.length() <= 0));
+      localFileManagerEntity.strThumbPath = paramatzl.b;
+      this.a.a.a().c(localFileManagerEntity);
+    } while (aimn.a(this.a) == null);
+    aimn.a(this.a).notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    if (aimn.a(this.a) != null) {
+      aimn.a(this.a).notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiForwardActivity", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
+    }
+    if (aimn.a(this.a) != null) {
+      aimn.a(this.a).notifyDataSetChanged();
+    }
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    if (aimn.a(this.a) != null) {
+      aimn.a(this.a).notifyDataSetChanged();
     }
   }
 }

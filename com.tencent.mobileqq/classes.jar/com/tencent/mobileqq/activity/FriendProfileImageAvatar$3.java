@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aehr;
+import aeqv;
 import android.os.Message;
 import android.text.TextUtils;
-import atwl;
-import axei;
-import bghy;
+import auog;
+import axxb;
+import bhhz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.Setting;
@@ -15,13 +15,13 @@ import mqq.os.MqqHandler;
 public class FriendProfileImageAvatar$3
   implements Runnable
 {
-  public FriendProfileImageAvatar$3(aehr paramaehr, String paramString) {}
+  public FriendProfileImageAvatar$3(aeqv paramaeqv, String paramString) {}
   
   public void run()
   {
-    if (atwl.a(bghy.b(String.valueOf(this.a)))) {
-      if (axei.a()) {
-        axei.a("Q.profilecard.Avatar", "downloadHDAvatar hd avatar file exist 1", new Object[0]);
+    if (auog.a(bhhz.b(String.valueOf(this.a)))) {
+      if (axxb.a()) {
+        axxb.a("Q.profilecard.Avatar", "downloadHDAvatar hd avatar file exist 1", new Object[0]);
       }
     }
     do
@@ -30,8 +30,8 @@ public class FriendProfileImageAvatar$3
       if (!this.this$0.c) {
         break;
       }
-    } while (!axei.a());
-    axei.a("Q.profilecard.Avatar", "downloadHDAvatar makingHDUrl return 2", new Object[0]);
+    } while (!axxb.a());
+    axxb.a("Q.profilecard.Avatar", "downloadHDAvatar makingHDUrl return 2", new Object[0]);
     return;
     this.this$0.c = true;
     Setting localSetting = (Setting)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager().find(Setting.class, this.a);
@@ -47,10 +47,10 @@ public class FriendProfileImageAvatar$3
     for (;;)
     {
       this.this$0.c = false;
-      if (!axei.a()) {
+      if (!axxb.a()) {
         break;
       }
-      axei.a("Q.profilecard.Avatar", "downloadHDAvatar end of makingHDUrl", new Object[0]);
+      axxb.a("Q.profilecard.Avatar", "downloadHDAvatar end of makingHDUrl", new Object[0]);
       return;
       this.this$0.jdField_a_of_type_Boolean = true;
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.e(this.a);

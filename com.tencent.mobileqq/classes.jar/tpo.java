@@ -1,19 +1,25 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.json.JSONObject;
+import android.util.SparseArray;
+import com.tencent.qphone.base.util.QLog;
 
 public class tpo
-  extends tpg
 {
-  tpo(tpd paramtpd1, Activity paramActivity, tpd paramtpd2, JSONObject paramJSONObject)
+  public SparseArray<tpn> a = new SparseArray();
+  
+  public tpo()
   {
-    super(paramtpd1, paramActivity, paramtpd2, paramJSONObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("ExposureSupplementUtil", 2, "create ExposureSupplementUtilManager");
+    }
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  public tpn a(int paramInt)
   {
-    tpd.a(this.a).mShareHelper.c();
+    return (tpn)this.a.get(paramInt);
+  }
+  
+  public void a(int paramInt, tpn paramtpn)
+  {
+    this.a.put(paramInt, paramtpn);
   }
 }
 

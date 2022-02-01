@@ -2,10 +2,10 @@ package dov.com.qq.im.ae.album.logic;
 
 import android.os.Handler;
 import android.os.Message;
-import bgmg;
-import bnfn;
-import bngh;
-import bngn;
+import bhmi;
+import bogv;
+import bohp;
+import bohv;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.album.PhotoListBaseData;
@@ -17,7 +17,7 @@ import mqq.util.WeakReference;
 public class AEPhotoListLogicDefault$7$1
   implements Runnable
 {
-  public AEPhotoListLogicDefault$7$1(bngn parambngn) {}
+  public AEPhotoListLogicDefault$7$1(bohv parambohv) {}
   
   public void run()
   {
@@ -36,8 +36,8 @@ public class AEPhotoListLogicDefault$7$1
       localLocalMediaInfo.fileSize = new File(this.a.jdField_a_of_type_JavaLangString).length();
       localLocalMediaInfo.isSystemMeidaStore = false;
       PhotoListBaseData.newCaptureMediaInfo.put(this.a.jdField_a_of_type_JavaLangString, localLocalMediaInfo);
-      ((bnfn)this.a.jdField_a_of_type_Bngh.a.get()).a.sendMessage(localMessage);
-      bgmg.a(this.a.b);
+      ((bogv)this.a.jdField_a_of_type_Bohp.a.get()).a.sendMessage(localMessage);
+      bhmi.a(this.a.b);
       return;
     }
     catch (Exception localException)

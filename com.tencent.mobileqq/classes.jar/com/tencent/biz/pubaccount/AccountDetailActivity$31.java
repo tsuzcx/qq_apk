@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount;
 
-import android.view.View;
+import ammh;
 
 class AccountDetailActivity$31
   implements Runnable
@@ -9,7 +9,8 @@ class AccountDetailActivity$31
   
   public void run()
   {
-    this.this$0.b.setEnabled(true);
+    ammh.b(this.this$0, this.this$0.a, 4, this.this$0.d);
+    this.this$0.finish();
   }
 }
 

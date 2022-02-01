@@ -1,20 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class asjk
-  implements View.OnClickListener
+class asjk
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public asjk(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment, ExtendFriendProfileEditFragment.ExtendFriendInfo paramExtendFriendInfo) {}
+  asjk(asiw paramasiw, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void onClick(View paramView)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.getActivity() != null) {
-      asme.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.g, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.h, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.d, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.c);
+    Bundle localBundle;
+    if (paramBundle != null) {
+      localBundle = new Bundle();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("ret", paramBundle.getLong("retCode", 0L));
+      if (!paramBoolean) {
+        localJSONObject.put("msg", paramBundle.getString("errMsg"));
+      }
+      localBundle.putString("result", localJSONObject.toString());
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    catch (Throwable paramBundle)
+    {
+      QLog.e("launchMiniAppById", 1, "launchMiniAppById error,", paramBundle);
+    }
   }
 }
 

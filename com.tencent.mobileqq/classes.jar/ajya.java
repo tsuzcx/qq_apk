@@ -1,56 +1,34 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Iterator;
+import java.util.List;
 
-class ajya
-  implements bkij
+public class ajya
+  implements View.OnClickListener
 {
-  ajya(ajxt paramajxt) {}
+  public ajya(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext()) {
+      ((EmoticonFromGroupEntity)localIterator.next()).status = -1;
     }
-    if ((this.a.jdField_a_of_type_Ajuu.getCount() <= 0) || (paramInt <= 0)) {}
-    do
-    {
-      return;
-      paramAdapterView = (ajyc)this.a.jdField_a_of_type_Ajuu.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
-    }
-    try
-    {
-      paramAdapterView = bend.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
-      if (paramAdapterView == null) {
-        break label214;
-      }
-      paramAdapterView = (TroopLinkElement)paramAdapterView;
-    }
-    catch (Exception paramAdapterView)
-    {
-      for (;;)
-      {
-        paramAdapterView = null;
-        continue;
-        paramAdapterView = null;
-      }
-    }
-    if (paramAdapterView != null)
-    {
-      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", paramAdapterView.url);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    }
+    this.a.a.clear();
+    EmoticonGroupStoreFragment.a(this.a).setVisibility(8);
+    EmoticonGroupStoreFragment.b(this.a).setVisibility(0);
+    EmoticonGroupStoreFragment.a(this.a).a = false;
+    EmoticonGroupStoreFragment.a(this.a).a(false);
+    EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
+    EmoticonGroupStoreFragment.e(this.a);
     this.a.a(true);
+    this.a.resetLeftButton();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

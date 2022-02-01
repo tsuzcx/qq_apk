@@ -1,56 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
 public class arbv
-  extends aqkz<arbu>
+  extends arbu
 {
-  public static arbu a()
+  private arcm a;
+  
+  arbv(String paramString, arcm paramarcm)
   {
-    return (arbu)aqlk.a().a(344);
+    super(paramString);
+    this.a = paramarcm;
   }
   
-  @NonNull
-  public arbu a(int paramInt)
+  public arcm a()
   {
-    return new arbu();
-  }
-  
-  @Nullable
-  public arbu a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return arbu.a(paramArrayOfaqlg);
-    }
-    return null;
-  }
-  
-  public void a(arbu paramarbu) {}
-  
-  public Class<arbu> clazz()
-  {
-    return arbu.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 344;
+    return this.a;
   }
 }
 

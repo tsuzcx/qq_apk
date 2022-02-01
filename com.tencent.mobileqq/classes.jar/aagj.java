@@ -1,95 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.comment.CommentEditText;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aagj
-  implements arxd
+  implements View.OnClickListener
 {
-  aagj(aagg paramaagg) {}
+  aagj(aagi paramaagi) {}
   
-  public void a(arxg paramarxg)
+  public void onClick(View paramView)
   {
-    int i;
-    int j;
-    if ((paramarxg instanceof asdb))
-    {
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
+    if ((this.a.getParentFragment() instanceof SubscribeBaseFragment)) {
+      ((SubscribeBaseFragment)this.a.getParentFragment()).a(this.a.a(2));
     }
-    ascv localascv;
-    int k;
-    int m;
-    do
-    {
-      this.a.a.getEditableText().replace(i, j, bdol.b(((asdb)paramarxg).a));
-      do
-      {
-        return;
-      } while (!(paramarxg instanceof ascv));
-      localascv = (ascv)paramarxg;
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
-      k = localascv.a;
-      m = localascv.b;
-      if ((i < 0) || (j < 0) || (j < i)) {
-        break;
-      }
-    } while ((k == 2) && (m == -1));
-    if (k == 1) {}
-    for (paramarxg = bdol.b(m);; paramarxg = bdol.a(m))
-    {
-      this.a.a.getEditableText().replace(i, j, paramarxg);
-      this.a.a.requestFocus();
-      if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-        break;
-      }
-      localascv.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
-      return;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a(arxg paramarxg1, arxg paramarxg2, Drawable paramDrawable) {}
-  
-  public boolean a(arxg paramarxg)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a.a.getSelectionStart() == 0) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Editable localEditable = this.a.a.getText();
-        int i = this.a.a.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.a.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public void b(arxg paramarxg) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

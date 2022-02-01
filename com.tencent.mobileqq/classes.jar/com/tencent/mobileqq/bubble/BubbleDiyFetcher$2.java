@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.bubble;
 
 import android.text.TextUtils;
-import apwr;
+import aqkr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -13,7 +13,7 @@ import java.util.Map;
 public class BubbleDiyFetcher$2
   implements Runnable
 {
-  public BubbleDiyFetcher$2(apwr paramapwr, QQAppInterface paramQQAppInterface) {}
+  public BubbleDiyFetcher$2(aqkr paramaqkr, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

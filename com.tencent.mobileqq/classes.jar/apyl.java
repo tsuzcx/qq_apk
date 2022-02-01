@@ -1,52 +1,46 @@
-import android.os.Build.VERSION;
-import java.util.AbstractCollection;
-import java.util.ArrayDeque;
-import java.util.concurrent.ArrayBlockingQueue;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.manager.TicketManager;
 
-public class apyl<T>
+public class apyl
+  implements apyt
 {
-  final AbstractCollection<T> a;
-  
-  public apyl(int paramInt)
+  private void a(String paramString, apyo paramapyo)
   {
-    if (Build.VERSION.SDK_INT >= 9)
+    QQAppInterface localQQAppInterface = apxv.a();
+    TicketManager localTicketManager = (TicketManager)localQQAppInterface.getManager(2);
+    String str = localTicketManager.getPskey(localQQAppInterface.getCurrentAccountUin(), paramString);
+    if (!TextUtils.isEmpty(str))
     {
-      this.a = new ArrayDeque();
+      if (paramapyo != null) {
+        paramapyo.a(str);
+      }
       return;
     }
-    this.a = new ArrayBlockingQueue(30);
+    str = localQQAppInterface.getCurrentAccountUin();
+    paramapyo = new apyn(this, localTicketManager, localQQAppInterface, paramString, paramapyo);
+    localTicketManager.getPskey(str, 16L, new String[] { paramString }, paramapyo);
   }
   
-  public T a()
+  public void a(Bundle paramBundle, apyv paramapyv)
   {
-    if (Build.VERSION.SDK_INT >= 9)
+    if (apxv.a() == null)
     {
-      if ((this.a instanceof ArrayDeque)) {
-        return ((ArrayDeque)this.a).poll();
-      }
-    }
-    else if ((this.a instanceof ArrayBlockingQueue)) {
-      return ((ArrayBlockingQueue)this.a).poll();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(T paramT)
-  {
-    if (Build.VERSION.SDK_INT >= 9) {
-      if ((this.a instanceof ArrayDeque)) {
-        ((ArrayDeque)this.a).offer(paramT);
-      }
-    }
-    while (!(this.a instanceof ArrayBlockingQueue)) {
+      QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "onCall, app interface is null");
+      paramapyv.a(EIPCResult.createResult(-102, new Bundle()));
       return;
     }
-    ((ArrayBlockingQueue)this.a).offer(paramT);
+    paramBundle = paramBundle.getString("domain", "");
+    if (TextUtils.isEmpty(paramBundle))
+    {
+      QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "onCall, domain is empty");
+      paramapyv.a(EIPCResult.createResult(0, new Bundle()));
+      return;
+    }
+    a(paramBundle, new apym(this, paramapyv));
   }
 }
 

@@ -1,74 +1,122 @@
-import android.net.Uri;
-import android.util.LruCache;
-import com.tencent.biz.qqcircle.requests.QCircleVideoUrlAdapterRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.style.QCircleWebViewTitleStyle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.widget.WebViewProgressBar;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import feedcloud.FeedCloudMeta.StVideo;
+import com.tencent.widget.FadeIconImageView;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class vnz
+  extends binq
 {
-  private static final long jdField_a_of_type_Long = QzoneConfig.getInstance().getConfig("qqcircle", "secondary_qcircle_video_url_valid_time", 21600000);
-  private static final vnz jdField_a_of_type_Vnz = new vnz();
-  private final LruCache<String, FeedCloudMeta.StVideo> jdField_a_of_type_AndroidUtilLruCache = new LruCache(100);
-  private long b = 300000L;
-  
-  public static vnz a()
+  public vnz(birg parambirg)
   {
-    return jdField_a_of_type_Vnz;
+    super(parambirg);
   }
   
-  public void a(int paramInt, FeedCloudMeta.StVideo paramStVideo, vob paramvob)
+  public void a()
   {
-    if ((paramStVideo == null) || (paramvob == null)) {
-      return;
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
     }
-    if (!a(paramStVideo))
-    {
-      QLog.i("QCircleVideoUrlExchangeHelper", 1, String.format("exchangeVideoUrl: valid callBack fileId:%s ,videoExchange url:%s", new Object[] { paramStVideo.fileId.get(), paramStVideo.playUrl.get() }));
-      paramvob.a(paramStVideo, true);
-      return;
+    if (this.jdField_a_of_type_Birg.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar != null) {
+      this.jdField_a_of_type_Birg.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setVisibility(8);
     }
-    Object localObject = (FeedCloudMeta.StVideo)this.jdField_a_of_type_AndroidUtilLruCache.get(paramStVideo.fileId.get());
-    if (localObject != null)
-    {
-      QLog.i("QCircleVideoUrlExchangeHelper", 1, String.format("exchangeVideoUrl: success hit Video Cache fileId:%s ,videoExchange url %s:", new Object[] { ((FeedCloudMeta.StVideo)localObject).fileId.get(), ((FeedCloudMeta.StVideo)localObject).playUrl.get() }));
-      paramvob.a((FeedCloudMeta.StVideo)localObject, false);
-      return;
-    }
-    localObject = new QCircleVideoUrlAdapterRequest(paramStVideo);
-    VSNetworkHelper.a().a(paramInt, (VSBaseRequest)localObject, new voa(this, paramStVideo, paramvob));
   }
   
-  public boolean a(FeedCloudMeta.StVideo paramStVideo)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (paramStVideo == null) {}
+    try
+    {
+      if (this.jdField_a_of_type_AndroidViewView != null)
+      {
+        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+        localLayoutParams.setMargins(0, ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidViewView.getContext()) + zft.b(this.jdField_a_of_type_AndroidViewView.getContext(), 52.0F), 0, 0);
+        this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      }
+      super.a(paramBoolean, paramInt1, paramInt2);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("WebLog_SwiftIphoneTitleBarUI", 1, "setWarnToastVisible error");
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public void b()
+  {
     for (;;)
     {
-      return false;
       try
       {
-        paramStVideo = Uri.parse(paramStVideo.playUrl.get());
-        if (paramStVideo.getQueryParameter("dis_t") != null)
+        if (this.jdField_a_of_type_Birg.jdField_a_of_type_AndroidAppActivity == null) {
+          break;
+        }
+        localObject = this.jdField_a_of_type_Birg.jdField_a_of_type_AndroidAppActivity.getResources();
+        if (!this.jdField_a_of_type_Birj.m)
         {
-          long l2 = Long.valueOf(paramStVideo.getQueryParameter("dis_t")).longValue() * 1000L;
-          long l1 = System.currentTimeMillis() - l2;
-          QLog.d("QCircleVideoUrlExchangeHelper", 2, String.format("intervalTime:%d, disTime: %d, valid time:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(jdField_a_of_type_Long) }));
-          l2 = jdField_a_of_type_Long;
-          long l3 = this.b;
-          if (l1 > l2 - l3) {
-            return true;
+          this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(uzg.b(false));
+          if ((this.jdField_a_of_type_Birg.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) && (this.jdField_a_of_type_Birg.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mSystemBarComp != null))
+          {
+            ImmersiveUtils.a(true, this.jdField_a_of_type_Birg.jdField_a_of_type_AndroidAppActivity.getWindow());
+            this.jdField_a_of_type_Birg.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mSystemBarComp.setBackgroundColor(uzg.b(false));
           }
         }
+        if ((this.jdField_a_of_type_Birj.a instanceof QCircleWebViewTitleStyle)) {}
+        switch (((QCircleWebViewTitleStyle)this.jdField_a_of_type_Birj.a).a)
+        {
+        case 0: 
+          this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setImageDrawable(((Resources)localObject).getDrawable(2130844000));
+          this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setBackgroundResource(2130844014);
+          i = zps.a(BaseApplicationImpl.getContext(), 14.0F);
+          this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setPadding(i, i, i, i);
+          localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.getLayoutParams();
+          ((RelativeLayout.LayoutParams)localObject).height = zft.b(this.jdField_a_of_type_Birg.jdField_a_of_type_AndroidAppActivity, 52.0F);
+          ((RelativeLayout.LayoutParams)localObject).width = zft.b(this.jdField_a_of_type_Birg.jdField_a_of_type_AndroidAppActivity, 52.0F);
+          ((RelativeLayout.LayoutParams)localObject).setMargins(zft.b(this.jdField_a_of_type_Birg.jdField_a_of_type_AndroidAppActivity, 8.0F), 0, zft.b(this.jdField_a_of_type_Birg.jdField_a_of_type_AndroidAppActivity, 8.0F), 0);
+          ((RelativeLayout.LayoutParams)localObject).addRule(15, -1);
+          this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.c.setTextColor(-16777216);
+          this.b.setTextColor(-16777216);
+          return;
+        }
       }
-      catch (Exception paramStVideo)
+      catch (Exception localException)
       {
-        paramStVideo.printStackTrace();
+        Object localObject;
+        int i;
+        QLog.e("WebLog_SwiftIphoneTitleBarUI", 1, "initDefaultThemeTitleBar error" + localException.getMessage());
+        localException.printStackTrace();
+        return;
       }
+      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setImageDrawable(((Resources)localObject).getDrawable(2130844000));
+      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setBackgroundResource(2130844014);
+      i = zps.a(BaseApplicationImpl.getContext(), 14.0F);
+      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setPadding(i, i, i, i);
+      continue;
+      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setImageDrawable(localException.getDrawable(2130843906));
+      continue;
+      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setImageDrawable(localException.getDrawable(2130843907));
+      continue;
+      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setImageDrawable(localException.getDrawable(2130843908));
     }
-    return false;
+  }
+  
+  public void c()
+  {
+    super.c();
   }
 }
 

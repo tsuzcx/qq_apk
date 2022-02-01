@@ -1,51 +1,22 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.widget.AuthorizationItem;
+import android.view.View;
 
 public class acsi
+  extends acsl
 {
   public int a;
-  public final String a;
-  public final String b;
-  public final String c;
-  
-  private acsi(String paramString1, String paramString2, String paramString3)
-  {
-    this(paramString1, paramString2, paramString3, 0);
-  }
-  
-  private acsi(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private static acsi b()
-  {
-    return new acsi("", "", "", 1);
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.equals(paramString, AuthorizationItem.a.b)) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    if (TextUtils.equals(paramString, AuthorizationItem.b.b)) {
-      return this.b;
-    }
-    if (TextUtils.equals(paramString, AuthorizationItem.c.b)) {
-      return this.c;
-    }
-    return "";
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "UserInfoEntity : [name -> " + this.jdField_a_of_type_JavaLangString + ", phone -> " + this.b + ", city -> " + this.c + ", errCode -> " + this.jdField_a_of_type_Int + "]";
-  }
+  public View a;
+  public int b;
+  public View b;
+  public int c;
+  public View c;
+  public int d;
+  public View d;
+  public int e;
+  public View e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
 }
 
 

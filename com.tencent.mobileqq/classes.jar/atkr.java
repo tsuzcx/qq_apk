@@ -1,23 +1,25 @@
-import android.annotation.TargetApi;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
 public class atkr
-  extends BroadcastReceiver
+  implements Cloneable
 {
-  public atkr(FileBrowserActivity paramFileBrowserActivity) {}
+  public int a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public int b;
+  public TextView b;
+  public int c;
+  public TextView c;
   
-  @TargetApi(5)
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
-  }
+  public atkr(atkq paramatkq) {}
 }
 
 

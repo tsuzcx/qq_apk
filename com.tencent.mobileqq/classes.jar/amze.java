@@ -1,95 +1,110 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import android.util.SparseArray;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-class amze
+public class amze
 {
-  public int a;
-  public String a;
-  public String b;
+  private static long jdField_a_of_type_Long = -1L;
+  private static SparseArray<Long> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   
-  private amze()
+  public static void a()
   {
-    this.jdField_a_of_type_Int = 0;
+    if (jdField_a_of_type_AndroidUtilSparseArray != null) {
+      jdField_a_of_type_AndroidUtilSparseArray.clear();
+    }
+    jdField_a_of_type_AndroidUtilSparseArray = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameTimeReporter", 2, "[destroy]");
+    }
   }
   
-  public void a(String paramString, JSONObject paramJSONObject, AppInterface paramAppInterface)
+  public static void a(CmGameStartChecker.StartCheckParam arg0)
   {
-    if (paramJSONObject != null)
+    if (??? != null)
     {
+      int i = ???.gameId;
+      if (i == 0) {
+        return;
+      }
       try
       {
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          return;
+        if (jdField_a_of_type_AndroidUtilSparseArray == null) {
+          jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
         }
-        if (this.jdField_a_of_type_Int == 0)
+        synchronized (jdField_a_of_type_AndroidUtilSparseArray)
         {
-          paramJSONObject.put(this.jdField_a_of_type_JavaLangString, this.b);
-          return;
-        }
-        if (this.jdField_a_of_type_Int == 1)
-        {
-          paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Integer.parseInt(this.b));
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("apollo_client_ApolloSSOConfig", 1, paramString, new Object[0]);
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 2)
-      {
-        paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Long.parseLong(this.b));
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 3)
-      {
-        paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Float.parseFloat(this.b));
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 4)
-      {
-        paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Long.parseLong(paramAppInterface.getCurrentAccountUin()));
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 5)
-      {
-        paramJSONObject.put(this.jdField_a_of_type_JavaLangString, paramAppInterface.getCurrentAccountUin());
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 8)
-      {
-        paramJSONObject.put(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 6)
-      {
-        if (!TextUtils.isEmpty(paramString))
-        {
-          paramString = Uri.parse(paramString).getQueryParameter(this.b);
-          if (!TextUtils.isEmpty(paramString)) {
-            paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Long.parseLong(paramString));
+          long l = System.currentTimeMillis();
+          jdField_a_of_type_AndroidUtilSparseArray.put(i, Long.valueOf(l));
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloGameTimeReporter", 2, "[reportStart] set time " + i + " # " + l);
           }
+          return;
         }
+        QLog.e("ApolloGameTimeReporter", 1, "[reportStart] no para");
       }
-      else if ((this.jdField_a_of_type_Int == 7) && (!TextUtils.isEmpty(paramString)))
+      catch (Throwable ???)
       {
-        paramString = Uri.parse(paramString).getQueryParameter(this.b);
-        if (!TextUtils.isEmpty(paramString)) {
-          paramJSONObject.put(this.jdField_a_of_type_JavaLangString, paramString);
-        }
+        QLog.e("ApolloGameTimeReporter", 1, ???, new Object[] { "[reportStart]" });
+        return;
       }
     }
   }
   
-  public String toString()
+  public static void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mKey:").append(this.jdField_a_of_type_JavaLangString).append(" mValue:").append(this.b).append(" mType:").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    int i;
+    if (paramStartCheckParam != null)
+    {
+      i = paramStartCheckParam.gameId;
+      if (i == 0) {}
+    }
+    else
+    {
+      label301:
+      for (;;)
+      {
+        try
+        {
+          if (jdField_a_of_type_AndroidUtilSparseArray == null) {
+            break;
+          }
+          synchronized (jdField_a_of_type_AndroidUtilSparseArray)
+          {
+            int j = paramStartCheckParam.gameMode;
+            long l1 = paramStartCheckParam.roomId;
+            long l2 = ((Long)jdField_a_of_type_AndroidUtilSparseArray.get(i, Long.valueOf(jdField_a_of_type_Long))).longValue();
+            paramStartCheckParam = anbd.a(i);
+            if (paramStartCheckParam == null) {
+              break label301;
+            }
+            paramStartCheckParam = paramStartCheckParam.a();
+            if (paramStartCheckParam == null) {
+              break label301;
+            }
+            l1 = paramStartCheckParam.mRoomId;
+            if (l2 != jdField_a_of_type_Long)
+            {
+              long l3 = System.currentTimeMillis() - l2;
+              VipUtils.a(null, "cmshow", "Apollo", "game_time", 0, 0, new String[] { i + "", String.valueOf(j), String.valueOf(l3), String.valueOf(l1) });
+              jdField_a_of_type_AndroidUtilSparseArray.remove(i);
+              if (QLog.isColorLevel()) {
+                QLog.d("ApolloGameTimeReporter", 2, new Object[] { "[reportEnd] report: id:", Integer.valueOf(i), "# roomId:", Long.valueOf(l1), "# mode:", Integer.valueOf(j), "# [", Long.valueOf(l3), "] #", Long.valueOf(l2), " => ", Long.valueOf(System.currentTimeMillis()) });
+              }
+            }
+            return;
+          }
+          QLog.e("ApolloGameTimeReporter", 1, "[reportEnd] no para");
+        }
+        catch (Throwable paramStartCheckParam)
+        {
+          QLog.e("ApolloGameTimeReporter", 1, paramStartCheckParam, new Object[] { "[reportEnd]" });
+          return;
+        }
+        return;
+      }
+    }
   }
 }
 

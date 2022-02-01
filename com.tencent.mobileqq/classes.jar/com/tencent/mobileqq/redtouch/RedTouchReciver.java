@@ -2,7 +2,7 @@ package com.tencent.mobileqq.redtouch;
 
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import bahx;
+import bban;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class RedTouchReciver
@@ -13,9 +13,9 @@ public class RedTouchReciver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    bahx localbahx = bahx.a(paramBundle);
-    if (localbahx != null) {
-      localbahx.a(this.a, paramBundle);
+    bban localbban = bban.a(paramBundle);
+    if (localbban != null) {
+      localbban.a(this.a, paramBundle);
     }
   }
 }

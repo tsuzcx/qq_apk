@@ -1,28 +1,25 @@
-import com.tencent.biz.richframework.download.RFWDownloader.3;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Set;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 public class zwg
-  implements zwa
+  implements bjig
 {
-  public zwg(RFWDownloader.3 param3) {}
+  public zwg(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if ((!paramBoolean2) || (paramBoolean3))
-    {
-      if (zwe.a(this.a.this$0).contains(this.a.a))
-      {
-        QLog.i("RFWDownloader", 1, "getFile ..., file is downloading");
-        return;
-      }
-      QLog.i("RFWDownloader", 1, "getFile ..., start download");
-      zwe.b(this.a.this$0, this.a.a, paramString);
+    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
       return;
     }
-    paramString = this.a.this$0.b(this.a.a);
-    QLog.i("RFWDownloader", 1, "getFile success, the file is exist path:" + paramString);
-    zwe.a(this.a.this$0, this.a.a, true, paramString);
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      zyx.a(1, 2131718139);
+      return;
+    }
+    zyx.a(2, 2131718157);
   }
 }
 

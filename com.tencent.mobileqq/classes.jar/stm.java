@@ -1,28 +1,38 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.CommunityConfigInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.OnCommunityItemListener.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class stm
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public stm(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
+  public int a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.setScaleX(1.0F);
-    this.a.setScaleY(1.0F);
-    this.a.setRotation(0.0F);
-    this.a.setAlpha(1.0F);
-    if (ReadInjoyTabDragAnimationView.a(this.a) != 0) {
-      this.a.a(0);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    String str;
+    if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.jdField_a_of_type_JavaUtilList.size())
+    {
+      CommunityConfigInfo localCommunityConfigInfo = (CommunityConfigInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
+      str = localCommunityConfigInfo.jumpUrl;
+      paramView.postDelayed(new ReadInJoyDiandianHeaderController.OnCommunityItemListener.1(this, paramView), 300L);
+      ocd.a(null, "", "0X8009B9F", "0X8009B9F", 0, 0, localQQAppInterface.getCurrentAccountUin(), localCommunityConfigInfo.bid + "", this.jdField_a_of_type_Int + 1 + "", "", false);
+    }
+    for (;;)
+    {
+      ozs.a(paramView.getContext(), str);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.jdField_a_of_type_JavaLangString;
+      ocd.a(null, "", "0X8009BA3", "0X8009BA3", 0, 0, localQQAppInterface.getCurrentAccountUin(), "", "", "", false);
     }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

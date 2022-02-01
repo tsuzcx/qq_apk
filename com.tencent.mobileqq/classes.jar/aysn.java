@@ -1,18 +1,10 @@
-import com.tencent.map.geolocation.TencentDirectionListener;
-
-class aysn
-  implements TencentDirectionListener
+public class aysn
+  extends aysm
 {
-  aysn(aysl paramaysl) {}
-  
-  public void onDirectionChanged(double paramDouble, int paramInt)
-  {
-    if (aysl.a(this.a) != null)
-    {
-      aysl.a(this.a, 180.0D + paramDouble);
-      aysl.a(this.a, false);
-    }
-  }
+  public int a;
+  public String a;
+  public int b;
+  public long b;
 }
 
 

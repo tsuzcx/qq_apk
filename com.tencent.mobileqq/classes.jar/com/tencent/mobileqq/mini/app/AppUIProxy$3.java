@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.app;
 
-import biip;
+import bjjo;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -30,7 +30,7 @@ class AppUIProxy$3
       if ((paramString == null) && (paramGdtAd != null))
       {
         QLog.d("MiniLoadingAdManager", 1, "选单返回了没有预下载过的广告");
-        MiniLoadingAdManager.getInstance().processSelectAdWithUncachedAd(paramGdtAd, String.valueOf(biip.a().a()), this.val$miniAppConfig.config.appId, this);
+        MiniLoadingAdManager.getInstance().processSelectAdWithUncachedAd(paramGdtAd, String.valueOf(bjjo.a().a()), this.val$miniAppConfig.config.appId, this);
         MiniProgramLpReportDC04239.reportMiniAppEvent(this.val$miniAppConfig, MiniProgramLpReportDC04239.getAppType(this.val$miniAppConfig), null, "ad", "ad_loading", "request_success_realtime", String.valueOf(l1));
         return;
       }

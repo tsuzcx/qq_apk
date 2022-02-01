@@ -1,25 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
 import com.tencent.qphone.base.util.QLog;
 
-public class awba
-  implements ValueAnimator.AnimatorUpdateListener
+public final class awba
+  extends BroadcastReceiver
 {
-  public awba(PoiSlideBottomPanel paramPoiSlideBottomPanel, View paramView, float paramFloat1, float paramFloat2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if ((paramValueAnimator instanceof Float))
+    if (QLog.isColorLevel()) {
+      QLog.d("HuayangPluginLauncher", 2, "onReceive ACTION_FORCE_UPDATE");
+    }
+    if (TextUtils.equals(paramIntent.getAction(), "action_iv_plugin_update"))
     {
-      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
-      if (QLog.isColorLevel()) {
-        QLog.d("PoiSlideBottomPanel", 2, "[panel] onAnimationUpdate: show invoked. mPanel:" + this.jdField_a_of_type_AndroidViewView.getId() + " org: " + this.jdField_a_of_type_Float + " dest: " + this.b + " value: " + this.jdField_a_of_type_AndroidViewView.getY());
-      }
-      if (PoiSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel) != null) {
-        PoiSlideBottomPanel.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel).fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / (PoiSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel) - PoiSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel)));
+      paramIntent = (InstalledPlugin)paramIntent.getSerializableExtra("plugin");
+      if (paramIntent != null)
+      {
+        boolean bool = awbd.a(paramContext, paramIntent).a();
+        if (QLog.isColorLevel()) {
+          QLog.d("HuayangPluginLauncher", 2, "onReceive isCalled:" + bool);
+        }
+        if (!bool)
+        {
+          com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity.a = 0L;
+          Process.killProcess(Process.myPid());
+        }
       }
     }
   }

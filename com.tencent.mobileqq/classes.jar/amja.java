@@ -1,21 +1,27 @@
-import android.view.SurfaceHolder;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class amja
+  implements bihc
 {
-  public int a;
-  public SurfaceHolder a;
-  public int b;
-  public int c;
+  public amja(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public String toString()
+  public void a(int paramInt)
   {
-    StringBuffer localStringBuffer = new StringBuffer("SurfaceCallBackData{");
-    localStringBuffer.append("holder=").append(this.jdField_a_of_type_AndroidViewSurfaceHolder);
-    localStringBuffer.append(", format=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", w=").append(this.b);
-    localStringBuffer.append(", h=").append(this.c);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    if (paramInt == 1)
+    {
+      this.a.a.setVisibility(8);
+      this.a.b.setImageResource(2130846132);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
+      }
+      return;
+      this.a.b.setImageResource(2130846131);
+    }
   }
 }
 

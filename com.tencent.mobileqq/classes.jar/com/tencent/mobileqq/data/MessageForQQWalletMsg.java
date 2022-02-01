@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.data;
 
-import akli;
-import aklj;
-import akme;
-import akuo;
-import akvv;
-import akwv;
+import akwt;
+import akwu;
+import akxp;
+import algd;
+import alhk;
+import alik;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
-import bbzc;
-import bbzh;
-import bcst;
-import bepr;
-import beps;
-import bgsp;
-import blqz;
+import bcrt;
+import bcry;
+import bdll;
+import bfoy;
+import bfoz;
+import bhsr;
+import bmsb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
 import com.tencent.mobileqq.app.MessageHandler;
@@ -107,7 +107,7 @@ public class MessageForQQWalletMsg
     try
     {
       paramString1 = new JSONObject(paramString1);
-      MessageForQQWalletMsg localMessageForQQWalletMsg = (MessageForQQWalletMsg)bbzh.a(-2025);
+      MessageForQQWalletMsg localMessageForQQWalletMsg = (MessageForQQWalletMsg)bcry.a(-2025);
       localMessageForQQWalletMsg.msgtype = -2025;
       localMessageForQQWalletMsg.messageType = paramString1.getInt("msgType");
       localMessageForQQWalletMsg.mQQWalletTransferMsg = null;
@@ -190,7 +190,7 @@ public class MessageForQQWalletMsg
     return null;
   }
   
-  private static void decodePBMsgElemRedPacket(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, bepr parambepr, im_msg_body.QQWalletMsg paramQQWalletMsg, int paramInt, MessageForQQWalletMsg paramMessageForQQWalletMsg)
+  private static void decodePBMsgElemRedPacket(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, bfoy parambfoy, im_msg_body.QQWalletMsg paramQQWalletMsg, int paramInt, MessageForQQWalletMsg paramMessageForQQWalletMsg)
   {
     boolean bool = true;
     paramMessageForQQWalletMsg.mQQWalletTransferMsg = null;
@@ -206,7 +206,7 @@ public class MessageForQQWalletMsg
       if (QLog.isColorLevel()) {
         QLog.d("BlessManagerHB", 2, "decode msgFrom=" + paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.msgFrom);
       }
-      decodePBMsgElemSpecify(paramQQAppInterface, paramMsg, parambepr, paramQQWalletMsg, paramInt, paramMessageForQQWalletMsg);
+      decodePBMsgElemSpecify(paramQQAppInterface, paramMsg, parambfoy, paramQQWalletMsg, paramInt, paramMessageForQQWalletMsg);
       saveRedPacketFromNet(paramMessageHandler, paramMsg, paramQQWalletMsg, paramInt, paramMessageForQQWalletMsg);
       return;
       label136:
@@ -214,7 +214,7 @@ public class MessageForQQWalletMsg
     }
   }
   
-  private static void decodePBMsgElemSpecify(QQAppInterface paramQQAppInterface, msg_comm.Msg paramMsg, bepr parambepr, im_msg_body.QQWalletMsg paramQQWalletMsg, int paramInt, MessageForQQWalletMsg paramMessageForQQWalletMsg)
+  private static void decodePBMsgElemSpecify(QQAppInterface paramQQAppInterface, msg_comm.Msg paramMsg, bfoy parambfoy, im_msg_body.QQWalletMsg paramQQWalletMsg, int paramInt, MessageForQQWalletMsg paramMessageForQQWalletMsg)
   {
     if ((paramInt == 7) || (paramInt == 8))
     {
@@ -232,10 +232,10 @@ public class MessageForQQWalletMsg
     }
     for (paramInt = 1;; paramInt = 0)
     {
-      if ((paramInt != 0) && (parambepr != null))
+      if ((paramInt != 0) && (parambfoy != null))
       {
-        parambepr.a.a(17, paramMsg.msg_head.msg_seq.get(), paramMessageForQQWalletMsg.msgseq);
-        paramMessageForQQWalletMsg.mMessageInfo = parambepr;
+        parambfoy.a.a(17, paramMsg.msg_head.msg_seq.get(), paramMessageForQQWalletMsg.msgseq);
+        paramMessageForQQWalletMsg.mMessageInfo = parambfoy;
       }
       return;
     }
@@ -257,9 +257,9 @@ public class MessageForQQWalletMsg
         if (arrayOfString.length > 1)
         {
           paramMessageForQQWalletMsg = paramMessageForQQWalletMsg.parseUrlParams(arrayOfString[1]);
-          akme.a(paramQQAppInterface, (String)paramMessageForQQWalletMsg.get("tokenid"), paramQQWalletMsg.aio_body.uint64_senduin.get());
+          akxp.a(paramQQAppInterface, (String)paramMessageForQQWalletMsg.get("tokenid"), paramQQWalletMsg.aio_body.uint64_senduin.get());
           if ((l != 0L) && (!TextUtils.isEmpty(paramMessageHandler)) && (paramMessageHandler.compareTo("" + l) != 0)) {
-            bcst.b(paramQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.payaio.buyershow", 0, 0, "", "", "", "");
+            bdll.b(paramQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.payaio.buyershow", 0, 0, "", "", "", "");
           }
         }
       }
@@ -271,12 +271,12 @@ public class MessageForQQWalletMsg
           paramMessageForQQWalletMsg = new HashMap();
         }
       }
-      bcst.b(paramQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.askaio.payershow", 0, 0, "", "", "", "");
+      bdll.b(paramQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.askaio.payershow", 0, 0, "", "", "", "");
       return;
     }
   }
   
-  public static void decodePBMsgElemWalletMsg(bbzc parambbzc, QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg, bepr parambepr)
+  public static void decodePBMsgElemWalletMsg(bcrt parambcrt, QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg, bfoy parambfoy)
   {
     MessageForQQWalletMsg localMessageForQQWalletMsg = null;
     Iterator localIterator = paramList.iterator();
@@ -312,11 +312,11 @@ public class MessageForQQWalletMsg
         if (j != 2) {
           break label402;
         }
-        localMessageForQQWalletMsg = (MessageForQQWalletMsg)bbzh.a(-2025);
+        localMessageForQQWalletMsg = (MessageForQQWalletMsg)bcry.a(-2025);
         localMessageForQQWalletMsg.msgtype = -2025;
         localMessageForQQWalletMsg.messageType = i;
         if (((im_msg_body.QQWalletAioBody)((im_msg_body.QQWalletMsg)localObject).aio_body.get()).sint32_redtype.has()) {
-          decodePBMsgElemRedPacket(paramQQAppInterface, paramMessageHandler, paramMsg, parambepr, (im_msg_body.QQWalletMsg)localObject, i, localMessageForQQWalletMsg);
+          decodePBMsgElemRedPacket(paramQQAppInterface, paramMessageHandler, paramMsg, parambfoy, (im_msg_body.QQWalletMsg)localObject, i, localMessageForQQWalletMsg);
         }
         for (;;)
         {
@@ -342,21 +342,21 @@ public class MessageForQQWalletMsg
         if (i < 2) {
           break;
         }
-        parambbzc.f(paramList, paramList1, paramStringBuilder, paramMsg, parambepr);
+        parambcrt.f(paramList, paramList1, paramStringBuilder, paramMsg, parambfoy);
       } while (!paramList1.isEmpty());
       paramList1.add(localMessageForQQWalletMsg);
       return;
     } while (i < 1);
-    parambbzc.f(paramList, paramList1, paramStringBuilder, paramMsg, parambepr);
+    parambcrt.f(paramList, paramList1, paramStringBuilder, paramMsg, parambfoy);
     if (paramList1.isEmpty())
     {
-      parambbzc.i(paramList, paramList1, paramStringBuilder, paramMsg, parambepr);
+      parambcrt.i(paramList, paramList1, paramStringBuilder, paramMsg, parambfoy);
       return;
     }
     paramList1.add(localMessageForQQWalletMsg);
     return;
     label402:
-    parambbzc.i(paramList, paramList1, paramStringBuilder, paramMsg, parambepr);
+    parambcrt.i(paramList, paramList1, paramStringBuilder, paramMsg, parambfoy);
   }
   
   private static int getProcessMsgType(int paramInt)
@@ -403,7 +403,7 @@ public class MessageForQQWalletMsg
   
   public static boolean isRedPacketMsg(MessageRecord paramMessageRecord)
   {
-    return akwv.a(paramMessageRecord);
+    return alik.a(paramMessageRecord);
   }
   
   private static void saveRedPacketFromNet(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, im_msg_body.QQWalletMsg paramQQWalletMsg, int paramInt, MessageForQQWalletMsg paramMessageForQQWalletMsg)
@@ -446,10 +446,10 @@ public class MessageForQQWalletMsg
           }
         }
         str1 = str3;
-        if (!bgsp.a((String)localObject))
+        if (!bhsr.a((String)localObject))
         {
           str1 = str3;
-          if (!bgsp.a(str2)) {
+          if (!bhsr.a(str2)) {
             str1 = (String)localObject + "_" + str2;
           }
         }
@@ -457,14 +457,14 @@ public class MessageForQQWalletMsg
       if (QLog.isColorLevel()) {
         QLog.i("MessageForQQWalletMsg", 2, "--subChannel: " + paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.body.subChannel);
       }
-      paramMessageHandler = (aklj)paramMessageHandler.app.getManager(125);
+      paramMessageHandler = (akwu)paramMessageHandler.app.getManager(125);
       if (paramMessageHandler != null) {
         localObject = new JSONObject();
       }
       try
       {
         ((JSONObject)localObject).put("key_sub_channel", paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.body.subChannel);
-        akli.a((JSONObject)localObject, paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.body.poemRule);
+        akwt.a((JSONObject)localObject, paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.body.poemRule);
         paramMessageHandler.a((im_msg_body.QQWalletAioBody)paramQQWalletMsg.aio_body.get(), i, l, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_time.get(), paramInt, str1, ((JSONObject)localObject).toString());
         return;
         label383:
@@ -494,16 +494,16 @@ public class MessageForQQWalletMsg
   protected void doParse()
   {
     // Byte code:
-    //   0: new 684	blra
+    //   0: new 684	bmsc
     //   3: dup
     //   4: aload_0
     //   5: getfield 165	com/tencent/mobileqq/data/MessageForQQWalletMsg:msgData	[B
-    //   8: invokespecial 687	blra:<init>	([B)V
+    //   8: invokespecial 687	bmsc:<init>	([B)V
     //   11: astore_3
     //   12: aload_3
     //   13: astore_2
     //   14: aload_3
-    //   15: invokevirtual 689	blra:a	()I
+    //   15: invokevirtual 689	bmsc:a	()I
     //   18: istore_1
     //   19: iload_1
     //   20: iconst_1
@@ -514,7 +514,7 @@ public class MessageForQQWalletMsg
     //   29: aload_3
     //   30: astore_2
     //   31: aload_3
-    //   32: invokevirtual 689	blra:a	()I
+    //   32: invokevirtual 689	bmsc:a	()I
     //   35: iconst_1
     //   36: if_icmpne +26 -> 62
     //   39: aload_3
@@ -529,11 +529,11 @@ public class MessageForQQWalletMsg
     //   54: aload_0
     //   55: getfield 144	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletTransferMsg	Lcom/tencent/mobileqq/data/QQWalletTransferMsg;
     //   58: aload_3
-    //   59: invokevirtual 694	com/tencent/mobileqq/data/QQWalletTransferMsg:readExternal	(Lblra;)V
+    //   59: invokevirtual 694	com/tencent/mobileqq/data/QQWalletTransferMsg:readExternal	(Lbmsc;)V
     //   62: aload_3
     //   63: ifnull +7 -> 70
     //   66: aload_3
-    //   67: invokevirtual 696	blra:a	()V
+    //   67: invokevirtual 696	bmsc:a	()V
     //   70: return
     //   71: iload_1
     //   72: bipush 17
@@ -550,7 +550,7 @@ public class MessageForQQWalletMsg
     //   92: aload_0
     //   93: getfield 150	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
     //   96: aload_3
-    //   97: invokevirtual 698	com/tencent/mobileqq/data/QQWalletRedPacketMsg:readExternal	(Lblra;)V
+    //   97: invokevirtual 698	com/tencent/mobileqq/data/QQWalletRedPacketMsg:readExternal	(Lbmsc;)V
     //   100: goto -38 -> 62
     //   103: astore 4
     //   105: aload_3
@@ -577,7 +577,7 @@ public class MessageForQQWalletMsg
     //   141: aload_3
     //   142: ifnull -72 -> 70
     //   145: aload_3
-    //   146: invokevirtual 696	blra:a	()V
+    //   146: invokevirtual 696	bmsc:a	()V
     //   149: return
     //   150: astore_2
     //   151: aload_2
@@ -589,18 +589,18 @@ public class MessageForQQWalletMsg
     //   162: aload_3
     //   163: astore_2
     //   164: aload_3
-    //   165: invokevirtual 689	blra:a	()I
+    //   165: invokevirtual 689	bmsc:a	()I
     //   168: istore_1
     //   169: aload_3
     //   170: astore_2
     //   171: aload_3
-    //   172: invokevirtual 689	blra:a	()I
+    //   172: invokevirtual 689	bmsc:a	()I
     //   175: pop
     //   176: aload_3
     //   177: astore_2
     //   178: aload_0
     //   179: aload_3
-    //   180: invokevirtual 689	blra:a	()I
+    //   180: invokevirtual 689	bmsc:a	()I
     //   183: putfield 142	com/tencent/mobileqq/data/MessageForQQWalletMsg:messageType	I
     //   186: iload_1
     //   187: iconst_1
@@ -617,7 +617,7 @@ public class MessageForQQWalletMsg
     //   206: aload_0
     //   207: getfield 144	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletTransferMsg	Lcom/tencent/mobileqq/data/QQWalletTransferMsg;
     //   210: aload_3
-    //   211: invokevirtual 694	com/tencent/mobileqq/data/QQWalletTransferMsg:readExternal	(Lblra;)V
+    //   211: invokevirtual 694	com/tencent/mobileqq/data/QQWalletTransferMsg:readExternal	(Lbmsc;)V
     //   214: goto -152 -> 62
     //   217: astore 4
     //   219: aload_2
@@ -627,7 +627,7 @@ public class MessageForQQWalletMsg
     //   224: aload_3
     //   225: ifnull +7 -> 232
     //   228: aload_3
-    //   229: invokevirtual 696	blra:a	()V
+    //   229: invokevirtual 696	bmsc:a	()V
     //   232: aload_2
     //   233: athrow
     //   234: iload_1
@@ -645,7 +645,7 @@ public class MessageForQQWalletMsg
     //   254: aload_0
     //   255: getfield 150	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
     //   258: aload_3
-    //   259: invokevirtual 698	com/tencent/mobileqq/data/QQWalletRedPacketMsg:readExternal	(Lblra;)V
+    //   259: invokevirtual 698	com/tencent/mobileqq/data/QQWalletRedPacketMsg:readExternal	(Lbmsc;)V
     //   262: goto -200 -> 62
     //   265: astore_2
     //   266: aload_2
@@ -788,9 +788,9 @@ public class MessageForQQWalletMsg
     {
       this.frienduin = String.valueOf(l);
       this.time = paramMsg.msg_head.msg_time.get();
-      akvv.a(paramQQAppInterface, this);
+      alhk.a(paramQQAppInterface, this);
       RedPacketEmojiFragment.a(paramQQAppInterface, this);
-      akuo.a(this);
+      algd.a(this);
       return;
       if ((i == 83) || (i == 42)) {
         l = paramMsg.msg_head.discuss_info.discuss_uin.get();
@@ -845,7 +845,7 @@ public class MessageForQQWalletMsg
     parse();
     try
     {
-      ((aklj)BaseApplicationImpl.sApplication.getAppRuntime(this.selfuin).getManager(125)).a(true);
+      ((akwu)BaseApplicationImpl.sApplication.getAppRuntime(this.selfuin).getManager(125)).a(true);
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.qqwalletmsg", 2, "postRead init read status");
       }
@@ -869,7 +869,7 @@ public class MessageForQQWalletMsg
       localObject = this.mQQWalletTransferMsg;
       while (localObject != null)
       {
-        localObject = ((blqz)localObject).flushMsgData(this.messageType);
+        localObject = ((bmsb)localObject).flushMsgData(this.messageType);
         if (localObject != null) {
           this.msgData = ((byte[])localObject);
         }

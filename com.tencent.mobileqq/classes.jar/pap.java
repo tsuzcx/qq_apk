@@ -1,22 +1,54 @@
-import android.view.View;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.aladdin.config.utils.Log;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-class pap
-  implements bkhw
+public class pap
 {
-  pap(pan parampan, pay parampay, bkho parambkho) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static int a(int paramInt)
   {
-    switch (paramInt)
+    SharedPreferences localSharedPreferences = a(ozs.a());
+    if (localSharedPreferences == null)
     {
+      Log.e("AladdinPrefUtils", "getConfigVersionById: return 0 for sp is null");
+      return 0;
     }
-    for (;;)
+    return localSharedPreferences.getInt("config_version_" + paramInt, 0);
+  }
+  
+  private static SharedPreferences a(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime == null)
     {
-      this.jdField_a_of_type_Bkho.dismiss();
+      Log.e("AladdinPrefUtils", "getSharedPreferences: null for runtime is null");
+      return null;
+    }
+    paramAppRuntime = "readinjoy_sp_aladdin_" + paramAppRuntime.getAccount();
+    return BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0);
+  }
+  
+  public static void a()
+  {
+    Log.d("AladdinPrefUtils", "clearAladdinCommonConfigs");
+    SharedPreferences localSharedPreferences = a(ozs.a());
+    if (localSharedPreferences == null)
+    {
+      Log.d("AladdinPrefUtils", "clearAladdinCommonConfigs: sp is null");
       return;
-      this.jdField_a_of_type_Pan.a().a(this.jdField_a_of_type_Pay, this.jdField_a_of_type_Pan.c);
-      this.jdField_a_of_type_Pan.notifyDataSetChanged();
     }
+    localSharedPreferences.edit().clear().commit();
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    SharedPreferences localSharedPreferences = a(ozs.a());
+    if (localSharedPreferences == null)
+    {
+      Log.e("AladdinPrefUtils", "setConfigVersionById: sp is null");
+      return;
+    }
+    localSharedPreferences.edit().putInt("config_version_" + paramInt1, paramInt2).apply();
   }
 }
 

@@ -1,37 +1,92 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.open.agent.TroopAbilityPreVerificationFragment;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class biom
-  implements DialogInterface.OnClickListener
+  implements MiniMsgUser.IMiniMsgActionCallback
 {
-  public biom(TroopAbilityPreVerificationFragment paramTroopAbilityPreVerificationFragment) {}
+  public biom(WebViewFragment paramWebViewFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    if (this.a.jdField_a_of_type_Bgpa == paramDialogInterface)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      if (paramInt != 1) {
-        break label99;
-      }
-      paramDialogInterface = new Intent(this.a.getActivity(), LoginActivity.class);
-      paramDialogInterface.putExtra("key_params", this.a.jdField_a_of_type_AndroidOsBundle);
-      paramDialogInterface.putExtra("is_change_account", true);
-      paramDialogInterface.putExtra("fromThirdAppByOpenSDK", true);
-      paramDialogInterface.addFlags(268435456);
-      paramDialogInterface.addFlags(67108864);
-      this.a.getActivity().startActivity(paramDialogInterface);
-      this.a.getActivity().finish();
-    }
-    label99:
-    while (paramInt != 0) {
+      localJSONObject.put("action", paramString);
+      localJSONObject.put("options", paramJSONObject);
+      paramString = "javascript:mqq.dispatchEvent(\"miniAIOEvent\"," + localJSONObject.toString() + ");";
+      this.a.webView.callJs(paramString);
       return;
     }
-    this.a.getActivity().setResult(0);
-    this.a.getActivity().finish();
+    catch (Exception paramString)
+    {
+      QLog.d("WebLog_WebViewFragment", 1, paramString, new Object[0]);
+    }
+  }
+  
+  public void onFromMiniAIOToAIO()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "onFromMiniAIOToAIO ");
+    }
+    a("fromMiniAIOToAIO", new JSONObject());
+  }
+  
+  public void onGoToConversation()
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebLog_WebViewFragment", 2, "onGoToConversation ");
+      }
+      a("returnMsgList", new JSONObject());
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("WebLog_WebViewFragment", 1, localException, new Object[0]);
+    }
+  }
+  
+  public void onOpenMiniAIOCallback()
+  {
+    if (this.a.mMiniMsgUser == null) {
+      return;
+    }
+    WebViewFragment localWebViewFragment = this.a;
+    Object localObject1 = localWebViewFragment.mKeyWording;
+    if (TextUtils.isEmpty(localWebViewFragment.mKeyWording)) {
+      localObject1 = localWebViewFragment.webView.getTitle();
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject2 = localObject1;
+      if (!"‎".equals(localObject1)) {}
+    }
+    else
+    {
+      localObject2 = anzj.a(2131715674);
+    }
+    localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("banner_wording", (String)localObject2);
+    Object localObject2 = this.a.mMiniMsgUser.getParam();
+    ((MiniMsgUserParam)localObject2).backConversationIntent = localWebViewFragment.generateGoToConversation((Bundle)localObject1);
+    birz.a(((MiniMsgUserParam)localObject2).backConversationIntent);
+    try
+    {
+      a("entryClicked", new JSONObject());
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("WebLog_WebViewFragment", 1, localException, new Object[0]);
+    }
   }
 }
 

@@ -1,18 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahbq
-  implements bhye
+class ahbq
+  implements DialogInterface.OnClickListener
 {
-  public ahbq(LightVideoItemBuilder paramLightVideoItemBuilder, ahbr paramahbr) {}
+  ahbq(ahbn paramahbn) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahbr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahbr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Ahbr.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

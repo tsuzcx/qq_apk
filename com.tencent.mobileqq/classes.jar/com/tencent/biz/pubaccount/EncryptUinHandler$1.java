@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount;
 
-import nwm;
+import nyg;
 
 public class EncryptUinHandler$1
   implements Runnable
 {
   public void run()
   {
-    nwm.a(this.this$0, this.a, 0);
+    nyg.a(this.this$0, this.a, 0);
   }
 }
 

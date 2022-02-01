@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Comparator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import java.util.ArrayList;
 
-final class ajgb
-  implements Comparator<structmsg.StructMsg>
+public class ajgb
+  extends ajtw
 {
-  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
-  {
-    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
-      return 1;
-    }
-    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
-      return -1;
-    }
-    return 0;
-  }
+  public int a;
+  public String a;
+  public ArrayList<ajgc> a;
+  public boolean a;
+  public int b = -1;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

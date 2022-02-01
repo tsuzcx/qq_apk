@@ -1,6 +1,17 @@
-public abstract interface ahvp
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class ahvp
+  implements View.OnTouchListener
 {
-  public abstract void a(String paramString, boolean paramBoolean);
+  ahvp(ahvl paramahvl, agjk paramagjk) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.jdField_a_of_type_Agjk.onTouch(paramView, paramMotionEvent);
+    return false;
+  }
 }
 
 

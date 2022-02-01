@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.utils;
 
 import android.media.AudioRecord;
-import azue;
-import azuf;
-import azug;
-import bgrh;
+import bamu;
+import bamv;
+import bamw;
+import bhrj;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,7 +12,7 @@ import java.io.FileOutputStream;
 
 class QQRecorder$RecordThread
   extends Thread
-  implements azug
+  implements bamw
 {
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long = 0L;
@@ -81,7 +81,7 @@ class QQRecorder$RecordThread
     //   85: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
     //   88: invokestatic 83	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Landroid/content/Context;
     //   91: iconst_1
-    //   92: invokestatic 88	bgkl:a	(Landroid/content/Context;Z)Z
+    //   92: invokestatic 88	bhkm:a	(Landroid/content/Context;Z)Z
     //   95: pop
     //   96: aload_0
     //   97: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
@@ -94,11 +94,11 @@ class QQRecorder$RecordThread
     //   114: putfield 96	com/tencent/mobileqq/utils/QQRecorder$RecorderParam:f	I
     //   117: aload_0
     //   118: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   121: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   121: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   124: ifnull +23 -> 147
     //   127: aload_0
     //   128: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   131: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   131: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   134: aload_1
     //   135: aload_0
     //   136: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
@@ -114,11 +114,11 @@ class QQRecorder$RecordThread
     //   162: invokestatic 109	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)V
     //   165: aload_0
     //   166: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   169: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   169: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   172: ifnull +38 -> 210
     //   175: aload_0
     //   176: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   179: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   179: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   182: invokeinterface 112 1 0
     //   187: istore 11
     //   189: iload 11
@@ -140,7 +140,7 @@ class QQRecorder$RecordThread
     //   226: ldc 120
     //   228: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   231: invokestatic 125	android/os/SystemClock:uptimeMillis	()J
-    //   234: getstatic 128	bdxh:jdField_a_of_type_Long	J
+    //   234: getstatic 128	bewa:jdField_a_of_type_Long	J
     //   237: lsub
     //   238: invokevirtual 131	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   241: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -150,9 +150,9 @@ class QQRecorder$RecordThread
     //   251: invokestatic 133	com/tencent/mobileqq/utils/QQRecorder:b	(Lcom/tencent/mobileqq/utils/QQRecorder;)V
     //   254: aload_0
     //   255: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   258: invokestatic 136	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lazui;
+    //   258: invokestatic 136	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbamy;
     //   261: aload_0
-    //   262: invokevirtual 141	azui:a	(Lazug;)V
+    //   262: invokevirtual 141	bamy:a	(Lbamw;)V
     //   265: ldc2_w 142
     //   268: invokestatic 147	java/lang/Thread:sleep	(J)V
     //   271: aload_0
@@ -217,11 +217,11 @@ class QQRecorder$RecordThread
     //   399: invokestatic 66	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   402: aload_0
     //   403: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   406: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   406: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   409: ifnull +70 -> 479
     //   412: aload_0
     //   413: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   416: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   416: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   419: aload_0
     //   420: getfield 168	com/tencent/mobileqq/utils/QQRecorder$RecordThread:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   423: aload_0
@@ -258,7 +258,7 @@ class QQRecorder$RecordThread
     //   495: ldc 176
     //   497: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   500: invokestatic 125	android/os/SystemClock:uptimeMillis	()J
-    //   503: getstatic 128	bdxh:jdField_a_of_type_Long	J
+    //   503: getstatic 128	bewa:jdField_a_of_type_Long	J
     //   506: lsub
     //   507: invokevirtual 131	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   510: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -351,7 +351,7 @@ class QQRecorder$RecordThread
     //   690: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   693: aload_0
     //   694: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   697: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   697: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   700: ifnull +71 -> 771
     //   703: aload_0
     //   704: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
@@ -375,7 +375,7 @@ class QQRecorder$RecordThread
     //   748: ifeq +2363 -> 3111
     //   751: aload_0
     //   752: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   755: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   755: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   758: aload_1
     //   759: aload_0
     //   760: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
@@ -451,7 +451,7 @@ class QQRecorder$RecordThread
     //   928: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
     //   931: invokestatic 83	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Landroid/content/Context;
     //   934: iconst_0
-    //   935: invokestatic 88	bgkl:a	(Landroid/content/Context;Z)Z
+    //   935: invokestatic 88	bhkm:a	(Landroid/content/Context;Z)Z
     //   938: pop
     //   939: lload 20
     //   941: ldc2_w 240
@@ -693,11 +693,11 @@ class QQRecorder$RecordThread
     //   1472: istore 14
     //   1474: aload_0
     //   1475: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   1478: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   1478: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   1481: ifnull +21 -> 1502
     //   1484: aload_0
     //   1485: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   1488: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   1488: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   1491: iload 11
     //   1493: invokeinterface 315 2 0
     //   1498: iload 11
@@ -772,17 +772,17 @@ class QQRecorder$RecordThread
     //   1634: dstore 6
     //   1636: aload_0
     //   1637: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   1640: invokestatic 136	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lazui;
+    //   1640: invokestatic 136	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbamy;
     //   1643: aload 36
     //   1645: iconst_0
     //   1646: iload 15
-    //   1648: invokevirtual 335	azui:a	([BII)Lazuf;
+    //   1648: invokevirtual 335	bamy:a	([BII)Lbamv;
     //   1651: astore 37
     //   1653: dload_2
     //   1654: dstore 4
     //   1656: dload_2
     //   1657: dstore 6
-    //   1659: invokestatic 337	bdxh:b	()V
+    //   1659: invokestatic 337	bewa:b	()V
     //   1662: dload_2
     //   1663: dstore 4
     //   1665: dload_2
@@ -882,7 +882,7 @@ class QQRecorder$RecordThread
     //   1847: dstore 6
     //   1849: aload_0
     //   1850: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   1853: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   1853: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   1856: ifnull +52 -> 1908
     //   1859: aload 37
     //   1861: ifnull +47 -> 1908
@@ -892,12 +892,12 @@ class QQRecorder$RecordThread
     //   1868: dstore 6
     //   1870: aload_0
     //   1871: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   1874: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   1874: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   1877: aload_1
     //   1878: aload 37
-    //   1880: getfield 347	azuf:jdField_a_of_type_ArrayOfByte	[B
+    //   1880: getfield 347	bamv:jdField_a_of_type_ArrayOfByte	[B
     //   1883: aload 37
-    //   1885: getfield 348	azuf:jdField_a_of_type_Int	I
+    //   1885: getfield 348	bamv:jdField_a_of_type_Int	I
     //   1888: aload_0
     //   1889: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
     //   1892: invokestatic 342	com/tencent/mobileqq/utils/QQRecorder:c	(Lcom/tencent/mobileqq/utils/QQRecorder;)I
@@ -913,7 +913,7 @@ class QQRecorder$RecordThread
     //   1916: dload_2
     //   1917: dstore 6
     //   1919: aload 37
-    //   1921: getfield 348	azuf:jdField_a_of_type_Int	I
+    //   1921: getfield 348	bamv:jdField_a_of_type_Int	I
     //   1924: istore 12
     //   1926: iload 12
     //   1928: i2l
@@ -935,11 +935,11 @@ class QQRecorder$RecordThread
     //   1959: istore 12
     //   1961: aload_0
     //   1962: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   1965: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   1965: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   1968: ifnull +16 -> 1984
     //   1971: aload_0
     //   1972: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   1975: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   1975: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   1978: iconst_2
     //   1979: invokeinterface 315 2 0
     //   1984: iload 12
@@ -990,11 +990,11 @@ class QQRecorder$RecordThread
     //   2080: invokevirtual 356	java/io/FileOutputStream:flush	()V
     //   2083: aload_0
     //   2084: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   2087: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   2087: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   2090: ifnull +56 -> 2146
     //   2093: aload_0
     //   2094: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   2097: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   2097: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   2100: aload_1
     //   2101: aload_0
     //   2102: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
@@ -1081,7 +1081,7 @@ class QQRecorder$RecordThread
     //   2294: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
     //   2297: invokestatic 83	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Landroid/content/Context;
     //   2300: iconst_0
-    //   2301: invokestatic 88	bgkl:a	(Landroid/content/Context;Z)Z
+    //   2301: invokestatic 88	bhkm:a	(Landroid/content/Context;Z)Z
     //   2304: pop
     //   2305: lload 22
     //   2307: ldc2_w 240
@@ -1444,7 +1444,7 @@ class QQRecorder$RecordThread
     //   3116: ifeq +979 -> 4095
     //   3119: aload_0
     //   3120: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   3123: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   3123: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   3126: aload_1
     //   3127: aload_0
     //   3128: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
@@ -1528,7 +1528,7 @@ class QQRecorder$RecordThread
     //   3310: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
     //   3313: invokestatic 83	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Landroid/content/Context;
     //   3316: iconst_0
-    //   3317: invokestatic 88	bgkl:a	(Landroid/content/Context;Z)Z
+    //   3317: invokestatic 88	bhkm:a	(Landroid/content/Context;Z)Z
     //   3320: pop
     //   3321: lload 26
     //   3323: ldc2_w 240
@@ -1858,7 +1858,7 @@ class QQRecorder$RecordThread
     //   4094: athrow
     //   4095: aload_0
     //   4096: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
-    //   4099: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbgrf;
+    //   4099: invokestatic 99	com/tencent/mobileqq/utils/QQRecorder:a	(Lcom/tencent/mobileqq/utils/QQRecorder;)Lbhrh;
     //   4102: aload_1
     //   4103: aload_0
     //   4104: getfield 21	com/tencent/mobileqq/utils/QQRecorder$RecordThread:this$0	Lcom/tencent/mobileqq/utils/QQRecorder;
@@ -2175,7 +2175,7 @@ class QQRecorder$RecordThread
     //   4499	1	36	localThrowable6	java.lang.Throwable
     //   4524	1	36	localThrowable7	java.lang.Throwable
     //   4560	1	36	localThrowable8	java.lang.Throwable
-    //   1651	269	37	localazuf	azuf
+    //   1651	269	37	localbamv	bamv
     //   1820	11	38	localRecorderParam	QQRecorder.RecorderParam
     // Exception table:
     //   from	to	target	type
@@ -2316,10 +2316,10 @@ class QQRecorder$RecordThread
     }
   }
   
-  public void a(azue paramazue, azuf paramazuf)
+  public void a(bamu parambamu, bamv parambamv)
   {
-    if (((paramazue instanceof WechatNsWrapper)) && (QQRecorder.a(this.this$0) != null)) {
-      QQRecorder.a(this.this$0).b(paramazue, paramazuf);
+    if (((parambamu instanceof WechatNsWrapper)) && (QQRecorder.a(this.this$0) != null)) {
+      QQRecorder.a(this.this$0).b(parambamu, parambamv);
     }
   }
   
@@ -2340,15 +2340,15 @@ class QQRecorder$RecordThread
     }
   }
   
-  public void b(azue paramazue, azuf paramazuf)
+  public void b(bamu parambamu, bamv parambamv)
   {
-    if ((paramazue instanceof WechatNsWrapper))
+    if ((parambamu instanceof WechatNsWrapper))
     {
-      QQRecorder.b(this.this$0, (int)AudioHelper.a(QQRecorder.a(this.this$0), paramazuf.jdField_a_of_type_ArrayOfByte, paramazuf.jdField_a_of_type_Int, 1.0F));
+      QQRecorder.b(this.this$0, (int)AudioHelper.a(QQRecorder.a(this.this$0), parambamv.jdField_a_of_type_ArrayOfByte, parambamv.jdField_a_of_type_Int, 1.0F));
       this.jdField_a_of_type_Int = Math.max(this.jdField_a_of_type_Int, QQRecorder.c(this.this$0));
       this.jdField_a_of_type_Long += QQRecorder.c(this.this$0);
       if (QQRecorder.a(this.this$0) != null) {
-        QQRecorder.a(this.this$0).a(paramazue, paramazuf);
+        QQRecorder.a(this.this$0).a(parambamu, parambamv);
       }
     }
   }

@@ -1,38 +1,71 @@
-import android.os.Handler;
-import android.os.Looper;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class mww
+  extends MSFServlet
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private AVGameAppInterface a;
   
-  public mww(Looper paramLooper)
+  public String[] getPreferSSOCommands()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(paramLooper);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramLooper);
+    return new String[] { "OnlinePush.ReqPush" };
   }
   
-  public mww(MqqHandler paramMqqHandler)
+  public void onCreate()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramMqqHandler.getLooper());
-  }
-  
-  public final boolean a(Runnable paramRunnable, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return this.jdField_a_of_type_AndroidOsHandler.postAtFrontOfQueue(paramRunnable);
+    super.onCreate();
+    AppRuntime localAppRuntime = getAppRuntime();
+    if ((localAppRuntime instanceof AVGameAppInterface)) {
+      this.a = ((AVGameAppInterface)localAppRuntime);
     }
-    return this.jdField_a_of_type_MqqOsMqqHandler.postAtFrontOfQueue(paramRunnable);
   }
   
-  public final boolean b(Runnable paramRunnable, boolean paramBoolean)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramBoolean) {
-      return this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
-    return this.jdField_a_of_type_MqqOsMqqHandler.post(paramRunnable);
+    for (;;)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("AVGameServlet", 4, "onReceive, cmd[" + paramFromServiceMsg.getServiceCmd() + "]");
+      }
+      if (this.a != null) {
+        this.a.a(paramIntent, paramFromServiceMsg);
+      }
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
+      {
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+        if (QLog.isDevelopLevel()) {
+          QLog.i("AVGameServlet", 4, "send, cmd[" + paramIntent.getServiceCmd() + "]");
+        }
+      }
+    }
   }
 }
 

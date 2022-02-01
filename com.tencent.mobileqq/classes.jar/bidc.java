@@ -1,33 +1,19 @@
+import android.app.Activity;
 import android.view.View;
-import android.widget.FrameLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
+import com.tencent.mobileqq.vas.qvip.view.ImgHeaderView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bidc
+  implements View.OnClickListener
 {
-  private static long jdField_a_of_type_Long = 400L;
-  private static boolean jdField_a_of_type_Boolean;
+  public bidc(ImgHeaderView paramImgHeaderView, Activity paramActivity, QQVipMsgInfo paramQQVipMsgInfo, int paramInt) {}
   
-  public static void a()
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static void a(FrameLayout paramFrameLayout)
-  {
-    if (jdField_a_of_type_Boolean) {
-      return;
-    }
-    jdField_a_of_type_Boolean = true;
-    paramFrameLayout.invalidate();
-    View localView = paramFrameLayout.getChildAt(1);
-    paramFrameLayout = paramFrameLayout.getChildAt(0);
-    bhvr localbhvr = new bhvr(localView);
-    localbhvr.setDuration(jdField_a_of_type_Long);
-    localbhvr.setFillAfter(true);
-    bhvs localbhvs = new bhvs(paramFrameLayout);
-    localbhvs.setDuration(jdField_a_of_type_Long);
-    localbhvs.setFillAfter(true);
-    localView.startAnimation(localbhvr);
-    paramFrameLayout.startAnimation(localbhvs);
+    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.paMsgid, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.gameAppId, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

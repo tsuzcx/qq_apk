@@ -1,20 +1,17 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class atio
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public atio(FileSelectorSearchGroupFragment paramFileSelectorSearchGroupFragment) {}
+  public atio(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    LocalFileBrowserActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

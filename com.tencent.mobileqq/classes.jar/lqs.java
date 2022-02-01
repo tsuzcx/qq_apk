@@ -1,19 +1,16 @@
-import android.util.Log;
-
-public abstract class lqs
+public class lqs
+  implements lqr
 {
-  private String a;
-  protected lqr a;
+  public void a(lqq paramlqq) {}
   
-  public lqs()
+  public boolean a(lqq paramlqq)
   {
-    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "-" + Integer.toHexString(hashCode()));
+    return false;
   }
   
-  public void a(lqr paramlqr)
+  public boolean b(lqq paramlqq)
   {
-    Log.d(this.jdField_a_of_type_JavaLangString, "init");
-    this.jdField_a_of_type_Lqr = paramlqr;
+    return true;
   }
 }
 

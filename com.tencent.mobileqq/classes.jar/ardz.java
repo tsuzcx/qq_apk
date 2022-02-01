@@ -1,23 +1,38 @@
-import android.content.res.Resources;
-import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ardz
+public class ardz
 {
-  public abstract Resources a();
+  public String a = "";
   
-  public abstract Handler a();
+  public static ardz a(String paramString)
+  {
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        ardz localardz = new ardz();
+        localardz.a = paramString;
+        QLog.d("ConfBean", 2, "confBean = " + localardz.toString());
+        return localardz;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
   
-  public abstract Object a(Class<?> paramClass, String paramString, Object paramObject);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("configContent:").append(this.a);
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ardz
  * JD-Core Version:    0.7.0.1
  */

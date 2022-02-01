@@ -1,41 +1,25 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Headers;
-import okhttp3.Response;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class zwh
-  implements Callback
+public class zwh
+  implements AdapterView.OnItemClickListener
 {
-  zwh(zwe paramzwe, zwa paramzwa, boolean paramBoolean, String paramString) {}
+  public zwh(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onFailure(Call paramCall, IOException paramIOException)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    QLog.d("RFWDownloader", 1, "checkResource onFailure");
-    this.jdField_a_of_type_Zwa.a(false, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onResponse(Call paramCall, Response paramResponse)
-  {
-    try
-    {
-      paramCall = paramResponse.headers().get("X-COS-META-MD5");
-      if ((TextUtils.isEmpty(paramCall)) || (this.jdField_a_of_type_JavaLangString.equals(paramCall)))
-      {
-        QLog.d("RFWDownloader", 1, "checkResource is up to date");
-        this.jdField_a_of_type_Zwa.a(true, this.jdField_a_of_type_Boolean, false, paramCall);
-        return;
-      }
-      QLog.d("RFWDownloader", 1, "checkResource need update");
-      this.jdField_a_of_type_Zwa.a(true, this.jdField_a_of_type_Boolean, true, paramCall);
-      return;
+    QRDisplayActivity.a(this.a).dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.i("QRDisplayActivity", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
     }
-    catch (Throwable paramCall)
-    {
-      paramCall.printStackTrace();
-    }
+    this.a.i = ((int)paramLong);
+    QRDisplayActivity.a(this.a);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

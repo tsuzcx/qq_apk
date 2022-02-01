@@ -1,26 +1,48 @@
-import android.graphics.Color;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.troop.VideoCombineHelper.3;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aatf
-  implements View.OnClickListener
+  extends aauc
 {
-  public aatf(TroopGiftPanel paramTroopGiftPanel) {}
-  
-  public void onClick(View paramView)
+  public aatf(VideoCombineHelper.3 param3)
   {
-    TroopGiftPanel.b(this.a).setSelected(false);
-    this.a.a.a(-1);
-    TroopGiftPanel.a(this.a).setSelected(true);
-    ((TextView)TroopGiftPanel.b(this.a).findViewById(2131379697)).setTextColor(Color.parseColor("#ff878b99"));
-    TroopGiftPanel.b(this.a).findViewById(2131380887).setVisibility(8);
-    ((TextView)TroopGiftPanel.a(this.a).findViewById(2131379696)).setTextColor(Color.parseColor("#ffff5b84"));
-    TroopGiftPanel.a(this.a).findViewById(2131380893).setVisibility(0);
-    this.a.onTabSelected(this.a.h, TroopGiftPanel.d);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(param3.this$0);
+  }
+  
+  public void a(aaub paramaaub)
+  {
+    do
+    {
+      synchronized (this.a.this$0.jdField_a_of_type_JavaLangObject)
+      {
+        this.a.this$0.jdField_a_of_type_JavaUtilHashMap.remove(paramaaub.c);
+        if ((paramaaub instanceof aatw))
+        {
+          this.a.jdField_a_of_type_Aatl.a("", false, "download failed! msg = " + paramaaub.d);
+          return;
+        }
+      }
+      if ((paramaaub instanceof aato))
+      {
+        this.a.jdField_a_of_type_Aatl.a("", false, "combine failed! msg = " + paramaaub.d);
+        return;
+      }
+    } while (!(paramaaub instanceof aatz));
+    this.a.jdField_a_of_type_Aatl.a("", false, "sending failed! msg = " + paramaaub.d);
+  }
+  
+  public void b(aaub paramaaub)
+  {
+    aatn localaatn = paramaaub.a();
+    if (((paramaaub instanceof aato)) || (localaatn.b)) {}
+    synchronized (this.a.this$0.jdField_a_of_type_JavaLangObject)
+    {
+      this.a.this$0.jdField_a_of_type_JavaUtilHashMap.remove(paramaaub.c);
+      this.a.jdField_a_of_type_Aatl.a(localaatn.e, true, "seding success");
+      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+      return;
+    }
   }
 }
 

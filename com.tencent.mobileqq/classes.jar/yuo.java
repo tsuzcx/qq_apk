@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
 
-class yuo
-  implements banv
+public class yuo
+  extends wov
 {
-  yuo(yul paramyul, boolean paramBoolean) {}
-  
-  public void a()
+  public yuo(qqstory_service.RspMonitorValue paramRspMonitorValue)
   {
-    this.jdField_a_of_type_Yul.a = new yup(this, "NewStoryTakeVideoActivity");
-    SosoInterface.a(this.jdField_a_of_type_Yul.a);
+    super(paramRspMonitorValue.result);
+  }
+  
+  public String toString()
+  {
+    return "MonitorValueResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
   }
 }
 

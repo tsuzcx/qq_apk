@@ -1,35 +1,17 @@
 package com.tencent.superplayer.datatransport;
 
-import com.tencent.superplayer.api.ISPlayerPreDownloader.Listener;
-import com.tencent.thumbplayer.api.proxy.ITPPreloadProxy.IPreloadListener;
-import java.util.Hashtable;
+import com.tencent.superplayer.utils.LogUtil;
+import com.tencent.thumbplayer.api.proxy.ITPPreloadProxy;
 
 class SPlayerPreDownloaderImpl$2
-  implements ITPPreloadProxy.IPreloadListener
+  implements Runnable
 {
   SPlayerPreDownloaderImpl$2(SPlayerPreDownloaderImpl paramSPlayerPreDownloaderImpl, int paramInt) {}
   
-  public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
+  public void run()
   {
-    if (SPlayerPreDownloaderImpl.access$100(this.this$0) != null) {
-      SPlayerPreDownloaderImpl.access$100(this.this$0).onPrepareDownloadProgressUpdate(this.val$taskid, paramInt1, paramInt2, paramLong1, paramLong2);
-    }
-  }
-  
-  public void onPrepareError()
-  {
-    SPlayerPreDownloaderImpl.access$200(this.this$0).remove(Integer.valueOf(this.val$taskid));
-    if (SPlayerPreDownloaderImpl.access$100(this.this$0) != null) {
-      SPlayerPreDownloaderImpl.access$100(this.this$0).onPrepareError(this.val$taskid);
-    }
-  }
-  
-  public void onPrepareSuccess()
-  {
-    SPlayerPreDownloaderImpl.access$200(this.this$0).remove(Integer.valueOf(this.val$taskid));
-    if (SPlayerPreDownloaderImpl.access$100(this.this$0) != null) {
-      SPlayerPreDownloaderImpl.access$100(this.this$0).onPrepareSuccess(this.val$taskid);
-    }
+    LogUtil.d(SPlayerPreDownloaderImpl.TAG, "stopAllPreDownload(), stop taskIdForTPProxy=" + this.val$taskIdForTPProxy);
+    SPlayerPreDownloaderImpl.access$000(this.this$0).stopPreload(this.val$taskIdForTPProxy);
   }
 }
 

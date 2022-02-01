@@ -1,34 +1,37 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.List;
 
 class bldm
-  implements ServiceConnection
+  extends Handler
 {
-  bldm(bldk parambldk) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public bldm(bldg parambldg, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoRemoteManager", 2, "Qav Service connected!");
-    }
-    this.a.jdField_a_of_type_Lno = lnp.a(paramIBinder);
-    if ((this.a.jdField_a_of_type_Lno != null) && (this.a.jdField_a_of_type_Bldl != null)) {
-      this.a.jdField_a_of_type_Bldl.a(this.a);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null or mOnReadyListener == null");
+    super(paramLooper);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoRemoteManager", 2, "Qav Service disconnected!");
+    switch (paramMessage.what)
+    {
     }
-    this.a.jdField_a_of_type_Lno = null;
+    do
+    {
+      do
+      {
+        return;
+        bldg.a(this.a);
+        return;
+      } while (paramMessage.obj == null);
+      bldg.a(this.a, (List)paramMessage.obj);
+      return;
+      bldg.b(this.a);
+      return;
+      bldg.c(this.a);
+      return;
+    } while (paramMessage.obj == null);
+    bldg.a(this.a, (bldk)paramMessage.obj);
   }
 }
 

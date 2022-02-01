@@ -1,112 +1,38 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.ApngImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayDeque;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import java.util.Queue;
 
 public class bgvz
-  extends bdzy
+  implements Animator.AnimatorListener
 {
-  private static ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(0);
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  bgwd jdField_a_of_type_Bgwd = new bgwd(this);
-  URLDrawableDownListener.Adapter jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bgwa(this);
-  private ArrayDeque<bgwb> jdField_a_of_type_JavaUtilArrayDeque = new ArrayDeque();
-  private boolean jdField_a_of_type_Boolean = true;
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public bgvz(ImageView paramImageView)
+  public bgvz(MessageSubtitleView paramMessageSubtitleView, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    if ((paramImageView instanceof URLImageView)) {
-      ((URLImageView)paramImageView).setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private Drawable a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Object localObject = jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-    if (localDrawable != null)
+    if (this.jdField_a_of_type_Boolean)
     {
-      localObject = localDrawable;
-      if ((localDrawable instanceof URLDrawable)) {
-        localObject = ((URLDrawable)localDrawable).getCurrDrawable();
+      if (this.jdField_a_of_type_Int == MessageSubtitleView.c) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.b();
       }
-      return localObject;
-    }
-    return localObject;
-  }
-  
-  private void b()
-  {
-    Object localObject = (bgwb)this.jdField_a_of_type_JavaUtilArrayDeque.poll();
-    if (localObject == null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = false;
-      localObject = ((bgwb)localObject).a(a());
-      if (((URLDrawable)localObject).getStatus() == 1)
-      {
-        b();
-        return;
+      if (!this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.a.isEmpty()) {
+        MessageSubtitleView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView);
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    } while ((this.jdField_a_of_type_AndroidWidgetImageView instanceof URLImageView));
-    ((URLDrawable)localObject).setURLDrawableListener(this);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayDeque.clear();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(bgwb parambgwb)
-  {
-    this.jdField_a_of_type_JavaUtilArrayDeque.add(parambgwb);
-    if (this.jdField_a_of_type_Boolean) {
-      b();
     }
   }
   
-  public void a(String paramString, int paramInt)
-  {
-    a(new bgwc(paramString, paramInt));
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("ApngQueuePlayer", 1, "onLoadFialed: ", paramThrowable);
-    b();
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = ((ApngDrawable)paramURLDrawable.getCurrDrawable()).getImage();
-    if (paramURLDrawable.mFrameCount <= 1)
-    {
-      b();
-      return;
-    }
-    if ((paramURLDrawable.apngLoop > 0) && (paramURLDrawable.currentApngLoop >= paramURLDrawable.apngLoop)) {
-      paramURLDrawable.replay();
-    }
-    if (paramURLDrawable.apngLoop != 0)
-    {
-      this.jdField_a_of_type_Bgwd.a(paramURLDrawable);
-      return;
-    }
-    b();
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

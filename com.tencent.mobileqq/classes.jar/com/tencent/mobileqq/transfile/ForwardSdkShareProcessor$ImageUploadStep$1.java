@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import aukw;
-import bdup;
-import bduv;
-import bdzn;
-import bitd;
+import avcw;
+import betj;
+import betp;
+import beyg;
+import bjuc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -21,22 +21,22 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ForwardSdkShareProcessor$ImageUploadStep$1
   implements Runnable
 {
-  public ForwardSdkShareProcessor$ImageUploadStep$1(bduv parambduv) {}
+  public ForwardSdkShareProcessor$ImageUploadStep$1(betp parambetp) {}
   
   public void run()
   {
     int j = 0;
-    QLog.d("Q.share.ForwardSdkShareProcessor", 1, "ImageUploadStep|run|retry=" + bduv.a(this.a));
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, "ImageUploadStep|run|retry=" + betp.a(this.a));
     if (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
       this.a.f();
       return;
     }
-    String str = this.a.jdField_b_of_type_Bdup.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+    String str = this.a.jdField_b_of_type_Betj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
     long l = System.currentTimeMillis();
     int i;
     byte b;
-    if ((!TextUtils.isEmpty(bdup.b(this.a.jdField_b_of_type_Bdup))) && (TextUtils.isEmpty(bdup.a(this.a.jdField_b_of_type_Bdup))))
+    if ((!TextUtils.isEmpty(this.a.jdField_b_of_type_Betj.d)) && (TextUtils.isEmpty(this.a.jdField_b_of_type_Betj.e)))
     {
       i = 1;
       if (i == 0) {
@@ -52,7 +52,7 @@ public class ForwardSdkShareProcessor$ImageUploadStep$1
     {
       if (i != 0)
       {
-        localObject1 = bdup.b(this.a.jdField_b_of_type_Bdup);
+        localObject1 = this.a.jdField_b_of_type_Betj.d;
         if (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
         {
           this.a.f();
@@ -62,11 +62,11 @@ public class ForwardSdkShareProcessor$ImageUploadStep$1
           b = 4;
           continue;
         }
-        localObject2 = bduv.a(this.a, (String)localObject1, l);
+        localObject2 = this.a.a((String)localObject1, l);
         if (!TextUtils.isEmpty((CharSequence)((Pair)localObject2).second))
         {
-          bdup.c(this.a.jdField_b_of_type_Bdup, (String)((Pair)localObject2).second);
-          bdup.a(this.a.jdField_b_of_type_Bdup).set(true);
+          this.a.jdField_b_of_type_Betj.e = ((String)((Pair)localObject2).second);
+          betj.a(this.a.jdField_b_of_type_Betj).set(true);
           bool = true;
           i = j;
           if (!bool) {}
@@ -85,24 +85,24 @@ public class ForwardSdkShareProcessor$ImageUploadStep$1
               QLog.d("Q.share.ForwardSdkShareProcessor", 1, "srcPath to URL err:" + localMalformedURLException.getMessage());
             }
           }
-          aukw.a("reuse_image_for_aio");
-          bitd.a(true, (String)localObject1, bdup.b(this.a.jdField_b_of_type_Bdup), bdup.a(this.a.jdField_b_of_type_Bdup));
-          aukw.a("reuse_image_for_aio", str, true);
+          avcw.a("reuse_image_for_aio");
+          bjuc.a(true, (String)localObject1, this.a.jdField_b_of_type_Betj.d, this.a.jdField_b_of_type_Betj.e);
+          avcw.a("reuse_image_for_aio", str, true);
           b = 1;
         }
       }
     }
     for (;;)
     {
-      localObject1 = this.a.jdField_b_of_type_Bdup.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_b_of_type_Bdup.jdField_a_of_type_Bdzn.c, this.a.jdField_b_of_type_Bdup.jdField_a_of_type_Bdzn.jdField_a_of_type_Int, this.a.jdField_b_of_type_Bdup.jdField_a_of_type_Bdzn.jdField_a_of_type_Long);
+      localObject1 = this.a.jdField_b_of_type_Betj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.c, this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.jdField_a_of_type_Int, this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.jdField_a_of_type_Long);
       if (((localObject1 instanceof MessageForStructing)) && ((((MessageForStructing)localObject1).structingMsg instanceof AbsShareMsg)))
       {
         localObject1 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
-        ((AbsShareMsg)localObject1).updateCover(bdup.a(this.a.jdField_b_of_type_Bdup));
+        ((AbsShareMsg)localObject1).updateCover(this.a.jdField_b_of_type_Betj.e);
         ((AbsShareMsg)localObject1).shareData.imageUrlStatus = b;
-        this.a.jdField_b_of_type_Bdup.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Bdup.jdField_a_of_type_Bdzn.c, this.a.jdField_b_of_type_Bdup.jdField_a_of_type_Bdzn.jdField_a_of_type_Int, this.a.jdField_b_of_type_Bdup.jdField_a_of_type_Bdzn.jdField_a_of_type_Long, ((AbsShareMsg)localObject1).getBytes());
+        this.a.jdField_b_of_type_Betj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.c, this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.jdField_a_of_type_Int, this.a.jdField_b_of_type_Betj.jdField_a_of_type_Beyg.jdField_a_of_type_Long, ((AbsShareMsg)localObject1).getBytes());
       }
-      bdup.b(this.a.jdField_b_of_type_Bdup).set(true);
+      betj.b(this.a.jdField_b_of_type_Betj).set(true);
       this.a.b();
       return;
       if (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
@@ -110,27 +110,27 @@ public class ForwardSdkShareProcessor$ImageUploadStep$1
         this.a.f();
         return;
       }
-      localObject2 = bduv.a(this.a, l);
+      localObject2 = this.a.a(l);
       i = ((Integer)((Pair)localObject2).first).intValue();
       bool = ((Boolean)((Pair)localObject2).second).booleanValue();
       break;
-      if ((i == 100000) && (bdup.c(this.a.jdField_b_of_type_Bdup) < 2))
+      if ((i == 100000) && (betj.b(this.a.jdField_b_of_type_Betj) < 2))
       {
-        bdup.d(this.a.jdField_b_of_type_Bdup);
-        bdup.d(this.a.jdField_b_of_type_Bdup, null);
-        bdup.a(this.a.jdField_b_of_type_Bdup, true);
-        bdup.a(this.a.jdField_b_of_type_Bdup);
+        betj.c(this.a.jdField_b_of_type_Betj);
+        betj.a(this.a.jdField_b_of_type_Betj, null);
+        betj.a(this.a.jdField_b_of_type_Betj, true);
+        betj.a(this.a.jdField_b_of_type_Betj);
         return;
       }
-      if (bduv.b(this.a) < 2)
+      if (betp.b(this.a) < 2)
       {
         ThreadManager.post(this, 8, null, true);
         return;
       }
-      this.a.jdField_b_of_type_Bdup.b(9402, "upload share thumbnail fail");
+      this.a.jdField_b_of_type_Betj.b(9402, "upload share thumbnail fail");
       this.a.c();
       return;
-      QLog.d("Q.share.ForwardSdkShareProcessor", 1, "skip ImageUploadStep change remote url : " + bdup.a(this.a.jdField_b_of_type_Bdup));
+      QLog.d("Q.share.ForwardSdkShareProcessor", 1, "skip ImageUploadStep change remote url : " + this.a.jdField_b_of_type_Betj.e);
     }
   }
 }

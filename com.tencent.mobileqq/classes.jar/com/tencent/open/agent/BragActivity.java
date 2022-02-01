@@ -11,19 +11,19 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import bggq;
-import bikq;
-import bipe;
-import bisx;
-import bisy;
-import biuh;
-import bizt;
+import bhgr;
+import bjlp;
+import bjqd;
+import bjtw;
+import bjtx;
+import bjvg;
+import bkas;
 import com.tencent.open.widget.KeyboardDetectorRelativeLayout;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class BragActivity
   extends ChallengeBragBase
-  implements bizt
+  implements bkas
 {
   public ImageView a;
   protected ScrollView a;
@@ -32,15 +32,15 @@ public class BragActivity
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131363641));
-    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131376632));
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131363665));
+    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131376765));
     this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.a(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363640));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131366085));
-    this.b = ((TextView)super.findViewById(2131365470));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365464));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379543));
-    this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new bisx(this.jdField_a_of_type_AndroidWidgetEditText, 100) };
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363664));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131366133));
+    this.b = ((TextView)super.findViewById(2131365514));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365508));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379714));
+    this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new bjtw(this.jdField_a_of_type_AndroidWidgetEditText, 100) };
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(this.jdField_a_of_type_ArrayOfAndroidTextInputFilter);
     this.jdField_a_of_type_AndroidWidgetEditText.setText(this.i);
     this.b.setOnClickListener(this);
@@ -48,7 +48,7 @@ public class BragActivity
     try
     {
       a(this.h);
-      Bitmap localBitmap = bipe.a().a(this.j);
+      Bitmap localBitmap = bjqd.a().a(this.j);
       if (localBitmap != null)
       {
         this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
@@ -57,17 +57,17 @@ public class BragActivity
     }
     catch (Exception localException)
     {
-      bisy.c("BragActivity", "getNickName error. " + localException.getMessage(), localException);
+      bjtx.c("BragActivity", "getNickName error. " + localException.getMessage(), localException);
       c();
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840264);
-    bipe.a().a(this.j, new bikq(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840274);
+    bjqd.a().a(this.j, new bjlp(this));
   }
   
   public void a(int paramInt)
   {
-    paramInt = bggq.b(this, paramInt) - 10 - 10;
+    paramInt = bhgr.b(this, paramInt) - 10 - 10;
     if ((this.jdField_a_of_type_AndroidWidgetScrollView != null) && (paramInt < 255))
     {
       paramInt = paramInt - 20 - 145;
@@ -75,7 +75,7 @@ public class BragActivity
         break label79;
       }
       this.jdField_a_of_type_AndroidWidgetScrollView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = bggq.a(this, paramInt);
+      this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = bhgr.a(this, paramInt);
       this.jdField_a_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(true);
     }
     label79:
@@ -90,7 +90,7 @@ public class BragActivity
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = bggq.a(this, 90.0F);
+      this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = bhgr.a(this, 90.0F);
       this.jdField_a_of_type_AndroidWidgetImageView.setVerticalFadingEdgeEnabled(false);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
@@ -115,10 +115,10 @@ public class BragActivity
   {
     super.getWindow().requestFeature(1);
     super.onCreate(paramBundle);
-    super.setContentView(2131559671);
+    super.setContentView(2131559677);
     super.a();
     a();
-    biuh.a("100", "ANDROIDQQ.BRAG.FS", this.jdField_c_of_type_JavaLangString);
+    bjvg.a("100", "ANDROIDQQ.BRAG.FS", this.jdField_c_of_type_JavaLangString);
   }
 }
 

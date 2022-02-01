@@ -3,12 +3,12 @@ package com.tencent.mobileqq.applets.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aoqt;
+import apej;
 
 public class AppletItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<AppletItem> CREATOR = new aoqt();
+  public static final Parcelable.Creator<AppletItem> CREATOR = new apej();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;

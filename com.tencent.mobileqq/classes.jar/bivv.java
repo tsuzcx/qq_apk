@@ -1,20 +1,9 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
-class bivv
-  implements bivi
+public abstract interface bivv
 {
-  bivv(bivr parambivr) {}
-  
-  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
-  {
-    bisy.c("DownloadManager_", "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
-    paramBundle = new Bundle();
-    paramBundle.putString("PackageName", paramString1);
-    paramBundle.putString("Code", paramString2);
-    paramBundle.putInt("VersionCode", paramInt);
-    paramBundle.putBoolean("IsSuccess", paramBoolean);
-    bivr.a(this.a, paramBundle);
-  }
+  public abstract void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan);
 }
 
 

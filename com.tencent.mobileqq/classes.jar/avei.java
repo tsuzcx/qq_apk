@@ -1,73 +1,34 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 
-class avei
-  implements INetInfoHandler
+final class avei
+  extends nkn
 {
-  avei(aveh paramaveh) {}
+  avei(NearbyAppInterface paramNearbyAppInterface) {}
   
-  public void onNetMobile2None()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Iterator localIterator = aveh.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((avek)localIterator.next()).a(5);
+    boolean bool2 = false;
+    if (paramInt == 0) {
+      axws.b(this.a.getCurrentAccountUin(), false);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetMobile2None onConnClose");
-    }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    paramString = aveh.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((avek)paramString.next()).a(4);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetMobile2Wifi onConnOK");
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    paramString = aveh.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((avek)paramString.next()).a(3);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetNone2Mobile onConnOK");
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    paramString = aveh.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((avek)paramString.next()).a(2);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetNone2Wifi onConnOK");
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    paramString = aveh.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((avek)paramString.next()).a(1);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    Iterator localIterator = aveh.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((avek)localIterator.next()).a(0);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetWifi2None onConnClose");
+    for (boolean bool1 = false;; bool1 = axws.b(this.a.getCurrentAccountUin()))
+    {
+      paramArrayOfByte = new HashMap();
+      paramArrayOfByte.put("param_reason", String.valueOf(paramInt));
+      paramBundle = bdmc.a(BaseApplicationImpl.getContext());
+      String str = this.a.getCurrentAccountUin();
+      if (paramInt == 0) {
+        bool2 = true;
+      }
+      paramBundle.a(str, "oidb_0x91f", bool2, 0L, 0L, paramArrayOfByte, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.nearby", 2, "oidb_0x91f| visible:" + bool1 + "replyCode:" + paramInt);
+      }
+      return;
     }
   }
 }

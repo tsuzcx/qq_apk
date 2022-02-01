@@ -1,165 +1,40 @@
-import android.graphics.Path;
-import android.graphics.PathMeasure;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.PanelStrategy.1;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aghl
+public class aghl
+  implements aldq
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int = 10;
-  private int b = 25;
+  public aghl(CustomizeStrategyFactory.PanelStrategy.1 param1) {}
   
-  private float a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (paramInt1 <= 1) {
-      return (paramFloat1 + paramFloat2) / 2.0F;
-    }
-    return (paramFloat2 - paramFloat1) * (paramInt2 + 1) / paramInt1 + paramFloat1;
-  }
-  
-  private long a(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 <= 1) {
-      return (paramLong1 + paramLong2) / 2L;
-    }
-    return (paramLong2 - paramLong1) * (paramInt2 + 1) / paramInt1 + paramLong1;
-  }
-  
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<aghs> paramList);
-  
-  public void a(int paramInt1, int paramInt2, float paramFloat)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat;
-    if (this.jdField_a_of_type_Int <= 0) {
-      this.jdField_a_of_type_Int = 10;
-    }
-    if (this.b <= 0) {
-      this.b = 25;
-    }
-    if (this.jdField_a_of_type_Float <= 0.0F) {
-      this.jdField_a_of_type_Float = 1.0F;
-    }
-  }
-  
-  public abstract void a(Path paramPath, List<aghs> paramList);
-  
-  public void a(List<aghs> paramList, int paramInt)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    int i;
-    do
+    paramPathResult = paramPathResult.filePath;
+    if (paramInt == 0) {}
+    try
     {
-      return;
-      i = paramInt;
-      if (paramInt < 0) {
-        i = 0;
+      Bitmap localBitmap = SafeBitmapFactory.decodeFile(paramPathResult, bhmq.a(paramPathResult, (int)(CustomizeStrategyFactory.a * 50.0F + 0.5D)));
+      if (localBitmap != null) {
+        this.a.a.icon = localBitmap;
       }
-    } while (paramList.size() <= i);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = (aghs)paramList.get(i);
-    paramInt = i + 1;
-    while (paramInt < paramList.size())
+      this.a.a.resPath = paramPathResult;
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "PanelStrategy info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
+      }
+    }
+    catch (Throwable paramPathResult)
     {
-      aghs localaghs = (aghs)paramList.get(paramInt);
-      if ((localaghs.a() - ((aghs)localObject).a() < this.b) && (Math.abs(localaghs.a() - ((aghs)localObject).a()) < this.jdField_a_of_type_Float))
-      {
-        ((aghs)localObject).a(localaghs);
-        paramInt += 1;
-      }
-      else
-      {
-        localArrayList.add(localObject);
-        if (((aghs)localObject).a() != localaghs.a()) {
-          localaghs.a(0);
-        }
-        for (;;)
-        {
-          localObject = localaghs;
-          break;
-          localaghs.a(((aghs)localObject).a() + 1);
-        }
-      }
-    }
-    localArrayList.add(localObject);
-    paramList.clear();
-    paramList.addAll(localArrayList);
-  }
-  
-  public abstract void a(List<aghn> paramList, Path paramPath, List<aghs> paramList1);
-  
-  public abstract void a(List<aghn> paramList, Path paramPath, List<aghs> paramList1, int paramInt);
-  
-  protected boolean a(List<aghs> paramList, Path paramPath)
-  {
-    if ((paramList == null) || (paramPath == null) || (paramList.size() == 0)) {
-      return false;
-    }
-    PathMeasure localPathMeasure = new PathMeasure(paramPath, false);
-    float f3 = localPathMeasure.getLength();
-    int i = 0;
-    float f1;
-    for (float f2 = 0.0F; i < paramList.size(); f2 = f1)
-    {
-      Path localPath = new Path();
-      float f4 = ((aghs)paramList.get(i)).b() + f2;
-      f1 = f4;
-      if (f4 > f3) {
-        f1 = f3;
-      }
-      localPathMeasure.getSegment(f2, f1, localPath, true);
-      localPath.rLineTo(0.0F, 0.0F);
-      paramPath.addPath(localPath);
-      ((aghs)paramList.get(i)).a(localPath);
-      i += 1;
-    }
-    return true;
-  }
-  
-  protected boolean a(List<aghs> paramList, Path paramPath, float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
-  {
-    if (paramList == null) {
-      return false;
-    }
-    PathMeasure localPathMeasure = new PathMeasure(paramPath, false);
-    float f2 = localPathMeasure.getLength();
-    int j = (int)Math.ceil(f2 / this.jdField_a_of_type_Int);
-    if (j == 0) {
-      return false;
-    }
-    int i = 0;
-    paramPath = null;
-    if (i < j)
-    {
-      Object localObject = new Path();
-      float f3 = (i + 1) * this.jdField_a_of_type_Int;
-      float f1 = f3;
-      if (f3 > f2) {
-        f1 = f2;
-      }
-      localPathMeasure.getSegment(this.jdField_a_of_type_Int * i, f1, (Path)localObject, true);
-      ((Path)localObject).rLineTo(0.0F, 0.0F);
-      localObject = new aghs((Path)localObject);
-      ((aghs)localObject).a(a(paramFloat1, paramFloat2, j, i));
-      ((aghs)localObject).a(a(paramLong1, paramLong2, j, i));
-      ((aghs)localObject).b(f1 - this.jdField_a_of_type_Int * i);
-      if ((paramPath != null) && (paramPath.a() == ((aghs)localObject).a())) {
-        ((aghs)localObject).a(paramPath.a() + 1);
-      }
       for (;;)
       {
-        paramList.add(localObject);
-        i += 1;
-        paramPath = (Path)localObject;
-        break;
-        ((aghs)localObject).a(0);
+        paramPathResult.printStackTrace();
       }
     }
-    return true;
+    CustomizeStrategyFactory.a().a(this.a.a);
   }
-  
-  public abstract void b(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<aghs> paramList);
 }
 
 

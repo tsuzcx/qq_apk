@@ -1,6 +1,17 @@
-public abstract interface bmlm
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bmlm
+  implements View.OnClickListener
 {
-  public abstract void b();
+  bmlm(bmll parambmll, bmlp parambmlp) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Bmlp.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.studyroom.download;
 
-import bdcx;
-import bdcz;
+import bdvs;
+import bdvu;
 import com.tencent.hlyyb.downloader.DownloaderTask;
 
 public class DownloadTaskListenerBridge$1
   implements Runnable
 {
-  public DownloadTaskListenerBridge$1(bdcx parambdcx, DownloaderTask paramDownloaderTask) {}
+  public DownloadTaskListenerBridge$1(bdvs parambdvs, DownloaderTask paramDownloaderTask) {}
   
   public void run()
   {
-    if (bdcx.a(this.this$0) != null) {
-      bdcx.a(this.this$0).c(this.a);
+    if (bdvs.a(this.this$0) != null) {
+      bdvs.a(this.this$0).c(this.a);
     }
   }
 }

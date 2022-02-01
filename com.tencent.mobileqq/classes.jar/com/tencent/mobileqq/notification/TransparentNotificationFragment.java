@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.notification;
 
-import afur;
+import agej;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import anlq;
+import anxm;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -46,12 +46,12 @@ public class TransparentNotificationFragment
     paramLayoutInflater = paramLayoutInflater.inflate(2131559301, null);
     Object localObject = getActivity().app;
     Intent localIntent = getActivity().getIntent();
-    anlq localanlq = anlq.a((QQAppInterface)localObject);
-    boolean bool2 = localanlq.a();
+    anxm localanxm = anxm.a((QQAppInterface)localObject);
+    boolean bool2 = localanxm.a();
     boolean bool1;
     int i;
     int j;
-    if ((((QQAppInterface)localObject).isBackground_Stop) && (bool2))
+    if ((((QQAppInterface)localObject).isBackgroundStop) && (bool2))
     {
       bool1 = true;
       paramViewGroup = localIntent.getStringExtra("uin");
@@ -59,7 +59,7 @@ public class TransparentNotificationFragment
       paramBundle = localIntent.getStringExtra("uinname");
       j = localIntent.getIntExtra("key_mini_msgtab_businame", 0);
       if (QLog.isColorLevel()) {
-        QLog.d("TransparentNotificationFragment", 2, new Object[] { "onCreateView: invoked. ", " appBackground: ", Boolean.valueOf(bool1), " app.isBackground_Stop: ", Boolean.valueOf(((QQAppInterface)localObject).isBackground_Stop), " subProcessBackgroundStop: ", Boolean.valueOf(bool2), " uin: ", paramViewGroup, " uinName: ", paramBundle });
+        QLog.d("TransparentNotificationFragment", 2, new Object[] { "onCreateView: invoked. ", " appBackground: ", Boolean.valueOf(bool1), " app.isBackgroundStop: ", Boolean.valueOf(((QQAppInterface)localObject).isBackgroundStop), " subProcessBackgroundStop: ", Boolean.valueOf(bool2), " uin: ", paramViewGroup, " uinName: ", paramBundle });
       }
       if (!bool1) {
         break label284;
@@ -68,7 +68,7 @@ public class TransparentNotificationFragment
       ((Intent)localObject).putExtra("uin", paramViewGroup);
       ((Intent)localObject).putExtra("uintype", i);
       ((Intent)localObject).putExtra("uinname", paramBundle);
-      paramViewGroup = afur.a((Intent)localObject, new int[] { 2 });
+      paramViewGroup = agej.a((Intent)localObject, new int[] { 2 });
       paramViewGroup.setAction("com.tencent.mobileqq.action.CHAT");
       getActivity().startActivity(paramViewGroup);
       getActivity().finish();
@@ -80,7 +80,7 @@ public class TransparentNotificationFragment
       bool1 = false;
       break;
       label284:
-      paramViewGroup = localanlq.a(i, paramViewGroup, paramBundle, j);
+      paramViewGroup = localanxm.a(i, paramViewGroup, paramBundle, j);
       getActivity().overridePendingTransition(2130771994, 2130771995);
       getActivity().startActivity(paramViewGroup);
       getActivity().finish();

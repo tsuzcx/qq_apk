@@ -1,37 +1,25 @@
-import android.support.annotation.NonNull;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
 public class booi
+  implements Animator.AnimatorListener
 {
-  public static bokw a(String paramString)
+  public booi(AEProviderContainerView paramAEProviderContainerView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new boms(Integer.valueOf(paramString).intValue());
+    if (QLog.isColorLevel()) {
+      QLog.d("AEProviderContainerView", 2, "panel opened");
+    }
   }
   
-  public static bokw a(String paramString1, @NonNull String paramString2, String paramString3, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    bpnb localbpnb = ((boom)bojv.a(4)).a(paramString2);
-    if ((localbpnb instanceof bpnl)) {
-      return new boof((bpnl)localbpnb, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
-    }
-    if ((localbpnb instanceof bpni)) {
-      return new booe((bpni)localbpnb, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
-    }
-    if ((localbpnb instanceof bpnc)) {
-      return new boob((bpnc)localbpnb, paramString1, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
-    }
-    return null;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public static bokw a(@NonNull String paramString, @NonNull List<String> paramList, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    return new boqg(paramString, paramList, paramFloat1, paramFloat2, paramFloat3);
-  }
-  
-  public static bokw b(String paramString)
-  {
-    return new booj(paramString);
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

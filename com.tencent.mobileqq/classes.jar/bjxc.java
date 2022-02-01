@@ -1,27 +1,41 @@
-import android.content.Intent;
-import com.tencent.mobileqq.mini.utils.TroopApplicationListUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import java.util.Map;
 
 class bjxc
-  implements IActivityResultListener
+  extends anvn
 {
-  bjxc(bjww parambjww, IActivityResultManager paramIActivityResultManager, IMiniAppContext paramIMiniAppContext) {}
+  private bjxc(bjxa parambjxa) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if ((paramInt1 == 1002) && (paramInt2 == -1))
-    {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
-      String str = paramIntent.getStringExtra("uin");
-      paramIntent = paramIntent.getStringExtra("uinname");
-      QLog.d("MiniAppProxyImpl", 1, "group uin: " + str + ", group name: " + paramIntent);
-      TroopApplicationListUtil.addMiniAppToTroopApplicationList(str, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getMiniAppInfo().appId, null);
+    bjtx.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver onGetAuthCode isSuccess|" + paramBoolean + " code|" + paramString1 + " reqId|" + paramString2);
+    if (paramString2 == null) {
+      return;
     }
-    return true;
+    Bundle localBundle = (Bundle)bjxa.a(this.a).get(paramString2);
+    if (localBundle == null)
+    {
+      bjtx.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver reqId|" + paramString2 + "  but params context is null");
+      return;
+    }
+    int i = localBundle.getInt("CallbackId");
+    paramString2 = new Bundle();
+    paramString2.putString("PackageName", localBundle.getString("PackageName"));
+    paramString2.putInt("VersionCode", localBundle.getInt("VersionCode"));
+    if (paramBoolean)
+    {
+      paramString2.putBoolean("IsSuccess", true);
+      paramString2.putString("Code", paramString1);
+    }
+    for (;;)
+    {
+      bjtx.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver callbackId|" + i + " result|" + paramString2);
+      bjxa.a(this.a).callbackResult(i, EIPCResult.createSuccessResult(paramString2));
+      return;
+      paramString2.putBoolean("IsSuccess", false);
+    }
   }
 }
 

@@ -1,41 +1,43 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
 import com.tencent.qphone.base.util.QLog;
 
 class nru
-  extends anmu
+  implements nun
 {
-  nru(nre paramnre) {}
+  nru(nrk paramnrk) {}
   
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  public void a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_AndroidViewViewGroup == null) {}
-    label134:
-    for (;;)
+    float f;
+    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
     {
-      return;
-      int j = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildCount();
-      int i = 0;
-      for (;;)
+      paramInt = -this.a.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailBaseAdapter", 2, "onEndScroll scrollY = " + paramInt + " ,isScrollUp = " + this.a.e);
+      }
+      f = 150.0F * this.a.jdField_a_of_type_Float;
+      if (paramInt != 0)
       {
-        if (i >= j) {
-          break label134;
+        if (!this.a.e) {
+          break label127;
         }
-        View localView = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
-        if (((localView.getTag() instanceof String)) && ((localView instanceof ImageView)) && (((String)localView.getTag()).equals(paramString)))
-        {
-          ((ImageView)localView).setImageDrawable(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramString));
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onUpdateTroopHead:" + paramString);
-          return;
+        if (paramInt <= f) {
+          break label119;
         }
-        i += 1;
+        this.a.d(paramInt);
       }
     }
+    return;
+    label119:
+    this.a.e();
+    return;
+    label127:
+    if (paramInt > this.a.q - f)
+    {
+      this.a.d(paramInt);
+      return;
+    }
+    this.a.e();
   }
 }
 

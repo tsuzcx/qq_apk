@@ -1,18 +1,11 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.widget.ImageView;
 
-final class amra
-  implements EIPCResultCallback
+public class amra
+  extends blpw
 {
-  amra(long paramLong) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    paramEIPCResult = paramEIPCResult.data.getString("respData");
-    ampj.a().callbackFromRequest(this.a, 0, "cs.check_pubAccount_state.local", paramEIPCResult);
-  }
+  public String a;
+  public int b = 1;
+  public ImageView d;
 }
 
 

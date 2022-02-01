@@ -1,18 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.content.Context;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.activity.recent.MsgSummary;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForWriteTogether;
 
 public class adjs
-  implements View.OnTouchListener
+  implements adbi
 {
-  public adjs(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean a(Context paramContext, QQAppInterface paramQQAppInterface, QQMessageFacade.Message paramMessage, int paramInt, MsgSummary paramMsgSummary, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.leftView.getWindowToken(), 2);
+    if ((paramQQAppInterface == null) || (paramMessage == null) || (paramMsgSummary == null)) {
+      return false;
+    }
+    paramContext = paramQQAppInterface.a();
+    if (paramContext == null) {
+      return false;
+    }
+    paramContext = paramContext.b(paramMessage.frienduin, paramMessage.istroop, paramMessage.uniseq);
+    if ((paramContext instanceof MessageForWriteTogether))
+    {
+      paramContext = (MessageForWriteTogether)paramContext;
+      paramContext.parse();
+      paramMsgSummary.strPrefix = paramString;
+      paramMsgSummary.strContent = ("[一起写] " + paramContext.msg);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(QQMessageFacade.Message paramMessage)
+  {
     return false;
   }
 }

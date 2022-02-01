@@ -1,22 +1,56 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.takevideo.dancemachine.PKVideoSharer.2.1;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-public class ywr
-  implements bihh
+class ywr
+  extends zfi
 {
-  public void onWXShareResp(BaseResp paramBaseResp)
+  private final List<zex> a = new ArrayList();
+  
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DanceMachinePKVideoSharer", 2, "[DanceMachine Share]  shareToWechat errorCode : " + paramBaseResp.errCode + "   errorStr : " + paramBaseResp.errCode + "  transaction : " + paramBaseResp.transaction + "  openId : " + paramBaseResp.openId + " type : " + paramBaseResp.getType() + " bitmap ");
+    return this.a.size();
+  }
+  
+  public zex a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (zex)this.a.get(paramInt);
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    return null;
+  }
+  
+  public zex a(String paramString)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      zex localzex = (zex)localIterator.next();
+      if (TextUtils.equals(paramString, localzex.a)) {
+        return localzex;
+      }
     }
-    if ((paramBaseResp.errCode != 0) && (paramBaseResp.errCode != -2)) {
-      this.jdField_a_of_type_Ywq.a.runOnUiThread(new PKVideoSharer.2.1(this));
+    return null;
+  }
+  
+  public void a(Collection<zex> paramCollection)
+  {
+    yuk.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
+    this.a.clear();
+    this.a.addAll(paramCollection);
+    a();
+  }
+  
+  public void a(zex paramzex)
+  {
+    yuk.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + paramzex);
+    int i = this.a.indexOf(paramzex);
+    if (i >= 0)
+    {
+      this.a.set(i, paramzex);
+      a(i);
     }
   }
 }

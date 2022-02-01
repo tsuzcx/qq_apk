@@ -1,44 +1,39 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import com.tencent.av.ui.VideoLayerUI;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.VideoInviteActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class mla
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
+  extends BroadcastReceiver
 {
-  public mla(VideoLayerUI paramVideoLayerUI) {}
+  public mla(VideoInviteActivity paramVideoInviteActivity) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
+    String str = paramIntent.getAction();
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onScale");
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onReceive action = " + str);
     }
-    if (VideoLayerUI.c(this.a) < 0) {
-      VideoLayerUI.a(this.a, (int)paramScaleGestureDetector.getFocusX());
+    if ("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO".equals(str)) {
+      this.a.h();
     }
-    if (VideoLayerUI.d(this.a) < 0) {
-      VideoLayerUI.b(this.a, (int)paramScaleGestureDetector.getFocusY());
-    }
-    float f = paramScaleGestureDetector.getScaleFactor();
-    this.a.jdField_a_of_type_ArrayOfMdt[0].a(f, VideoLayerUI.c(this.a), VideoLayerUI.d(this.a));
-    return true;
-  }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onScaleEnd");
-    }
-    float f1 = this.a.jdField_a_of_type_ArrayOfMdt[0].c();
-    float f2 = this.a.jdField_a_of_type_ArrayOfMdt[0].a();
-    float f3 = this.a.jdField_a_of_type_ArrayOfMdt[0].b();
-    if (f1 < f2) {
-      VideoLayerUI.a(this.a, this.a.jdField_a_of_type_ArrayOfMdt[0], f2 / f1, 60L);
-    }
-    while (f1 <= f3) {
+    do
+    {
       return;
-    }
-    VideoLayerUI.a(this.a, this.a.jdField_a_of_type_ArrayOfMdt[0], f3 / f1, 60L);
+      if ("tencent.video.q2v.sdk.onRequestVideo".equals(str))
+      {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "onReceive action = " + str);
+        this.a.e();
+        return;
+      }
+      if ("android.intent.action.USER_PRESENT".equals(str))
+      {
+        this.a.a("ACTION_USER_PRESENT");
+        return;
+      }
+    } while (this.a.jdField_a_of_type_Mlg == null);
+    this.a.jdField_a_of_type_Mlg.a(paramContext, str, paramIntent);
   }
 }
 

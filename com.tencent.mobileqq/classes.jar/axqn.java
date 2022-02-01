@@ -1,33 +1,34 @@
-import android.app.Activity;
-import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class axqn
-  extends abgc
+class axqn
+  implements ault
 {
-  public axqn(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
+  axqn(axqb paramaxqb, String paramString, axpw paramaxpw) {}
   
-  public abfj a(Activity paramActivity, abfp paramabfp)
+  public void a(int paramInt)
   {
-    return new axqp(paramActivity, paramabfp);
+    if ((this.jdField_a_of_type_Axpw != null) && (this.jdField_a_of_type_Axpw.a != null))
+    {
+      String str = this.jdField_a_of_type_Axpw.a.a();
+      axpx localaxpx = this.jdField_a_of_type_Axqb.a(str);
+      if ((localaxpx != null) && (!localaxpx.a))
+      {
+        localaxpx.c = paramInt;
+        this.jdField_a_of_type_Axqb.a(str, localaxpx);
+        axqb.a(this.jdField_a_of_type_Axqb, localaxpx, paramInt);
+      }
+    }
   }
   
-  public abfl a(Activity paramActivity, abfp paramabfp)
+  public void a(boolean paramBoolean)
   {
-    return new axqt((PicBrowserActivity)paramActivity, paramabfp);
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiRichMediaSaveManager", 2, "downloadFile key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramBoolean);
+    }
+    axqb.a(this.jdField_a_of_type_Axqb, this.jdField_a_of_type_Axpw, paramBoolean);
   }
   
-  public abfp a(Activity paramActivity)
-  {
-    paramActivity = new axqz(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
-    paramActivity.a(this.a.jdField_b_of_type_Int);
-    return paramActivity;
-  }
-  
-  public abfq a(Activity paramActivity, abfp paramabfp)
-  {
-    return null;
-  }
+  public void b(boolean paramBoolean) {}
 }
 
 

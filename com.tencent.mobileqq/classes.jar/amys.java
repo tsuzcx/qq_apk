@@ -1,43 +1,101 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.apollo.game.ApolloGameConfig.1;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONArray;
 
-class amys
-  implements amjk
+public class amys
 {
-  amys(amyl paramamyl, int[] paramArrayOfInt, JSONArray paramJSONArray, String paramString) {}
+  static {}
   
-  public void a(boolean paramBoolean, String paramString1, List<amjh> paramList, String paramString2)
+  public static int a(String paramString)
   {
-    QLog.i("ApolloPluginRscLoader", 1, "checkRoomRsc downloadApolloRes onDownLoadFinish success:" + paramBoolean);
-    int i = 0;
-    if (i < this.jdField_a_of_type_ArrayOfInt.length)
+    int i = -1;
+    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
+    if (localSharedPreferences != null) {
+      i = localSharedPreferences.getInt(paramString, -1);
+    }
+    return i;
+  }
+  
+  public static int a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    int j = -1;
+    if (paramQQAppInterface != null)
     {
-      paramString1 = amjg.a().a(8, this.jdField_a_of_type_ArrayOfInt[i]);
-      int j;
-      if (paramString1 != null)
+      paramQQAppInterface = (amsx)paramQQAppInterface.getManager(153);
+      int i;
+      if ("aio.city.game".equals(paramString))
       {
-        paramList = this.jdField_a_of_type_Amyl;
-        int k = paramString1.b;
-        if (paramString1.a())
+        i = j;
+        if (paramQQAppInterface != null)
         {
-          j = 0;
-          label79:
-          paramString1 = amyl.a(paramList, 8, String.valueOf(k), j);
-          this.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
+          if (!paramQQAppInterface.d) {
+            break label45;
+          }
+          i = amyt.d;
         }
       }
-      for (;;)
+      label45:
+      do
       {
-        i += 1;
-        break;
-        j = 2;
-        break label79;
-        paramString1 = amyl.a(this.jdField_a_of_type_Amyl, 8, String.valueOf(this.jdField_a_of_type_ArrayOfInt[i]), 2);
-        this.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
-      }
+        do
+        {
+          do
+          {
+            for (;;)
+            {
+              return i;
+              i = -1;
+            }
+            i = j;
+          } while (!"drawer.game".equals(paramString));
+          i = j;
+        } while (paramQQAppInterface == null);
+        i = j;
+      } while (!paramQQAppInterface.e);
+      return amyt.b;
     }
-    this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, anni.a(2131699319), this.jdField_a_of_type_OrgJsonJSONArray);
+    QLog.e("ApolloGameConfig", 1, "app is null");
+    return -1;
+  }
+  
+  public static String a(String paramString)
+  {
+    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString(paramString, "");
+    }
+    return "";
+  }
+  
+  public static void a()
+  {
+    ThreadManager.post(new ApolloGameConfig.1(), 8, null, true);
+  }
+  
+  public static boolean a(String paramString, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
+    if (localSharedPreferences != null)
+    {
+      localSharedPreferences.edit().putInt(paramString, paramInt).apply();
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(String paramString1, String paramString2)
+  {
+    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
+    if (localSharedPreferences != null)
+    {
+      localSharedPreferences.edit().putString(paramString1, paramString2).apply();
+      return true;
+    }
+    return false;
   }
 }
 

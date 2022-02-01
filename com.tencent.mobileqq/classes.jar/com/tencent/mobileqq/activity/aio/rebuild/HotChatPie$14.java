@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import afwy;
-import aibv;
-import beqr;
+import aggs;
+import ailn;
+import bfpy;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
 import com.tencent.qphone.base.util.QLog;
@@ -10,19 +10,19 @@ import com.tencent.qphone.base.util.QLog;
 public class HotChatPie$14
   implements Runnable
 {
-  public HotChatPie$14(aibv paramaibv) {}
+  public HotChatPie$14(ailn paramailn) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getVisibility() == 0) {
       this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setVisibility(4);
     }
-    int i = this.this$0.jdField_a_of_type_Afwy.getCount();
-    if ((this.this$0.jdField_a_of_type_Afwy != null) && (this.this$0.v != i)) {
+    int i = this.this$0.jdField_a_of_type_Aggs.getCount();
+    if ((this.this$0.jdField_a_of_type_Aggs != null) && (this.this$0.v != i)) {
       this.this$0.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton.a(true);
     }
-    if ((this.this$0.jdField_a_of_type_Beqr != null) && (this.this$0.jdField_a_of_type_Beqr.a() > 0)) {
-      this.this$0.jdField_a_of_type_Beqr.c(4);
+    if ((this.this$0.jdField_a_of_type_Bfpy != null) && (this.this$0.jdField_a_of_type_Bfpy.a() > 0)) {
+      this.this$0.jdField_a_of_type_Bfpy.c(4);
     }
     if (QLog.isColorLevel()) {
       QLog.d(this.this$0.jdField_a_of_type_JavaLangString + "Q.hotchat.aio_post_red_point", 2, "update, mLastMsgCountBeforeSwitch2PostTab:" + this.this$0.v + ",current msgItemCount:" + i);

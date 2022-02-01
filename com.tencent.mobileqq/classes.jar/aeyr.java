@@ -1,25 +1,25 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class aeyr
-  implements bbad
+  implements View.OnTouchListener
 {
-  public aeyr(QQSettingMe paramQQSettingMe) {}
-  
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.c)
+    switch (paramMotionEvent.getActionMasked())
     {
-      if (paramInt != 100) {
-        this.a.a(2131690634);
-      }
-      this.a.z();
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      FrameHelperActivity.c(false);
+      return false;
     }
+    FrameHelperActivity.c(true);
+    return false;
   }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

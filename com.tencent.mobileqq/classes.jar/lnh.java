@@ -1,12 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
+import com.tencent.av.gaudio.GaInviteActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+
 public class lnh
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public long b;
+  public lnh(GaInviteActivity paramGaInviteActivity) {}
   
-  public lnh(long paramLong1, long paramLong2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
+    if (this.a.isFinishing()) {}
+    while (((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) || (paramInt == 1)) {
+      return;
+    }
+    ChatActivityUtils.a(this.a, true, new lni(this));
   }
 }
 

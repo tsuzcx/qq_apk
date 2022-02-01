@@ -1,23 +1,58 @@
 package com.tencent.qqmini.sdk.plugins.engine;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqmini.sdk.widget.AuthDialog;
+import android.content.Context;
+import android.os.Handler;
+import android.util.Log;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.utils.ViewUtils;
+import org.json.JSONObject;
 
 class BaseJsPluginEngine$10
-  implements View.OnClickListener
+  implements AsyncResult
 {
-  BaseJsPluginEngine$10(BaseJsPluginEngine paramBaseJsPluginEngine) {}
+  BaseJsPluginEngine$10(BaseJsPluginEngine paramBaseJsPluginEngine, MiniAppProxy paramMiniAppProxy, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
   
-  public void onClick(View paramView)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (this.this$0.authDialog != null)
+    Object localObject3 = null;
+    if (paramBoolean) {}
+    for (;;)
     {
-      this.this$0.authDialog.setConfirm(true);
-      this.this$0.authDialog.dismiss();
+      try
+      {
+        Object localObject1 = paramJSONObject.getJSONObject("userInfo");
+        paramJSONObject = ((JSONObject)localObject1).getString("nickName");
+        int i;
+        int j;
+        QMLog.e("JsPluginEngine[AuthGuard]", "call getUserInfo failed. " + Log.getStackTraceString(localThrowable1));
+      }
+      catch (Throwable localThrowable1)
+      {
+        try
+        {
+          localObject1 = ((JSONObject)localObject1).getString("avatarUrl");
+          i = ViewUtils.dpToPx(26.0F);
+          j = ViewUtils.dpToPx(40.0F);
+          BaseJsPluginEngine.access$300(this.this$0).post(new BaseJsPluginEngine.10.1(this, i, (String)localObject1, j, paramJSONObject));
+          return;
+        }
+        catch (Throwable localThrowable2)
+        {
+          Object localObject2;
+          break label75;
+        }
+        localThrowable1 = localThrowable1;
+        paramJSONObject = null;
+      }
+      label75:
+      localObject2 = localObject3;
+      continue;
+      QMLog.d("JsPluginEngine[AuthGuard]", "call getUserInfo failed. ");
+      paramJSONObject = null;
+      localObject2 = localObject3;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

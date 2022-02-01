@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class asrr
-  implements View.OnClickListener
+class asrr
+  implements axfu<List<aspq>>
 {
-  public asrr(FilePreviewActivity paramFilePreviewActivity) {}
+  asrr(asro paramasro) {}
   
-  public void onClick(View paramView)
+  public void a(List<aspq> paramList)
   {
-    bcst.b(this.a.app, "dc00898", "", "", "0X8009065", "0X8009065", 0, 0, "", "", "", "");
-    FilePreviewActivity.a(this.a, bdho.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131718486), true));
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a(paramList);
   }
 }
 

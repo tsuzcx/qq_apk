@@ -1,21 +1,79 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import com.tencent.av.ui.ConferenceFlyTicketActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class mcq
-  implements View.OnClickListener
+  extends mvj
 {
-  public mcq(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
-  
-  public void onClick(View paramView)
+  public mcq(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity)
   {
-    QLog.d(this.a.d, 1, "onClick R.id.qav_btn_accept_video");
-    this.a.e();
-    this.a.a.a().aq = true;
-    EventCollector.getInstance().onViewClicked(paramView);
+    SSLSocketFactory.getSocketFactory().setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
+  }
+  
+  public void a(mvm parammvm)
+  {
+    AudioHelper.b("上传SelfNickName_rsp");
+    String str = "";
+    if (parammvm.a.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      try
+      {
+        parammvm = new String(parammvm.a.jdField_a_of_type_ArrayOfByte, "UTF-8");
+        if (parammvm != null)
+        {
+          try
+          {
+            JSONObject localJSONObject = new JSONObject(parammvm);
+            i = localJSONObject.getInt("retcode");
+            if (QLog.isColorLevel()) {
+              QLog.d(this.a.a, 2, "OnReportHrSelfNickNameTask.onPostDownloadComplete : retcode = " + i);
+            }
+            parammvm = str;
+            if (localJSONObject.has("result"))
+            {
+              localJSONObject = localJSONObject.getJSONObject("result");
+              parammvm = str;
+              if (localJSONObject.has("result_code")) {
+                parammvm = localJSONObject.getString("result_code");
+              }
+            }
+          }
+          catch (JSONException parammvm)
+          {
+            if (!QLog.isColorLevel()) {
+              break label248;
+            }
+            QLog.i(this.a.a, 2, "onPostDownloadComplete : result_code = " + "" + ",retcode = " + -2);
+            parammvm = "";
+            i = -2;
+            continue;
+            this.a.a(1, 0);
+            this.a.finish();
+            return;
+          }
+          if ((i == 0) && (parammvm.equals("0")))
+          {
+            this.a.b();
+            return;
+          }
+        }
+      }
+      catch (Exception parammvm)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(this.a.a, 2, "onPostDownloadComplete :" + parammvm.toString());
+        }
+        parammvm = null;
+        continue;
+      }
+      label248:
+      parammvm = "";
+      int i = 1;
+    }
   }
 }
 

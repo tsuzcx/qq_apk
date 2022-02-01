@@ -1,13 +1,25 @@
-import android.os.HandlerThread;
-import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.text.TextUtils;
 
-public final class apoa
-  implements ArkEnvironmentManager.ThreadCreater
+public class apoa
 {
-  public HandlerThread createHanderThread(String paramString)
+  public String a;
+  public String b;
+  public String c;
+  
+  public String a()
   {
-    return ThreadManager.newFreeHandlerThread(paramString, -1);
+    if (TextUtils.isEmpty(this.b)) {
+      return "";
+    }
+    return this.b;
+  }
+  
+  public String b()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return "";
+    }
+    return this.c;
   }
 }
 

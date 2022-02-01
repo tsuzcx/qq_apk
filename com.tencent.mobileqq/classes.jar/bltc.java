@@ -1,45 +1,45 @@
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.msf.service.protocol.security.CustomSigContent;
-import com.tencent.msf.service.protocol.security.RespondCustomSig;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.observer.AccountObserver;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-final class bltc
-  extends AccountObserver
+public class bltc
+  extends GridLayoutManager.SpanSizeLookup
 {
-  bltc(String paramString, anil paramanil) {}
+  private GridLayoutManager.SpanSizeLookup jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager$SpanSizeLookup;
+  private final GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
+  private final bltq jdField_a_of_type_Bltq;
   
-  public void onChangeToken(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public bltc(bltq parambltq, GridLayoutManager paramGridLayoutManager)
   {
-    if ((paramBoolean) && (paramHashMap != null))
+    this.jdField_a_of_type_Bltq = parambltq;
+    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = paramGridLayoutManager;
+  }
+  
+  public void a(GridLayoutManager.SpanSizeLookup paramSpanSizeLookup)
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager$SpanSizeLookup = paramSpanSizeLookup;
+  }
+  
+  public int getSpanSize(int paramInt)
+  {
+    int j = 1;
+    int i;
+    if ((this.jdField_a_of_type_Bltq.a(paramInt)) || (this.jdField_a_of_type_Bltq.b(paramInt)))
     {
-      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
-      if ((paramHashMap != null) && (paramHashMap.SigList != null)) {
-        break label30;
+      i = 1;
+      if (i == 0) {
+        break label45;
       }
+      i = this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.getSpanCount();
     }
-    for (;;)
+    label45:
+    do
     {
-      return;
-      label30:
-      int i = 0;
-      while (i < paramHashMap.SigList.size())
-      {
-        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
-        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
-        {
-          localObject = new String(((CustomSigContent)localObject).SigContent);
-          OpenID localOpenID = new OpenID();
-          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
-          localOpenID.openID = ((String)localObject);
-          if (this.jdField_a_of_type_Anil != null) {
-            this.jdField_a_of_type_Anil.onUpdate(1, true, localOpenID);
-          }
-        }
-        i += 1;
-      }
-    }
+      return i;
+      i = 0;
+      break;
+      i = j;
+    } while (this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager$SpanSizeLookup == null);
+    return this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager$SpanSizeLookup.getSpanSize(paramInt - this.jdField_a_of_type_Bltq.a());
   }
 }
 

@@ -1,19 +1,9 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import java.util.List;
 
 public class nqf
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public ImageView b;
-  TextView b;
-  public ImageView c;
-  TextView c;
-  public ImageView d;
-  
-  nqf(npm paramnpm) {}
+  public void a(int paramInt, List<SearchProtocol.WordItem> paramList) {}
 }
 
 

@@ -1,74 +1,42 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class azsf
-  extends anuw
+public final class azsf
 {
-  public azsf(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  final TroopAIOAppInfo a = new TroopAIOAppInfo();
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  private void a(String paramString)
   {
-    if (this.a.a == null) {
-      return;
+    if (!TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOPlusPanelAppInfoConfigProcessor", 2, "Config parse configText -> " + paramString);
+      }
     }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
+    try
     {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bgjw.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      this.a.a(paramBoolean, false);
+      paramString = new JSONObject(paramString);
+      this.a.appid = paramString.optInt("appid");
+      this.a.name = paramString.optString("title");
+      this.a.enName = paramString.optString("eng_title");
+      this.a.iconUrl = paramString.optString("iconNormal");
+      this.a.iconPress = paramString.optString("iconPress");
+      this.a.simpleDayUrl = paramString.optString("iconConciseNormal");
+      this.a.simpleDayPressUrl = paramString.optString("iconConcisePress");
+      this.a.simpleNightUrl = paramString.optString("iconConciseNightNormal");
+      this.a.simpleNightPressUrl = paramString.optString("iconConciseNightPress");
+      this.a.redDotID = azte.a(this.a.appid);
+      this.a.actionType = paramString.optString("actionType");
+      this.a.action = paramString.optString("action");
+      this.a.enableC2C = paramString.optInt("enableC2C");
+      this.a.enableGroup = paramString.optInt("enableGroup");
       return;
     }
-  }
-  
-  protected void b(boolean paramBoolean, List<Long> paramList)
-  {
-    int k = 0;
-    if (this.a.a == null) {
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
+    catch (JSONException paramString)
     {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bgjw.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      this.a.a(paramBoolean, true);
-      return;
+      QLog.e("AIOPlusPanelAppInfoConfigProcessor", 1, paramString, new Object[0]);
     }
   }
 }

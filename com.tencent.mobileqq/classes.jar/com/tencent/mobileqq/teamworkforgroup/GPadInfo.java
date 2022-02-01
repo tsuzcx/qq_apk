@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import bdmc;
+import beex;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.teamwork.PadInfo;
 import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class GPadInfo
   extends PadInfo
-  implements bdmc
+  implements beex
 {
   public String creatorCard;
   public long creatorUid;

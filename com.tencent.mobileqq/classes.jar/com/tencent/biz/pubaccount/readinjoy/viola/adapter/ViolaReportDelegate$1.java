@@ -1,31 +1,31 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.adapter;
 
 import android.text.TextUtils;
-import bmqa;
+import bnrf;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
-import tmf;
+import tdd;
 
 public class ViolaReportDelegate$1
   implements Runnable
 {
-  public ViolaReportDelegate$1(tmf paramtmf, String paramString, int paramInt) {}
+  public ViolaReportDelegate$1(tdd paramtdd, String paramString, int paramInt) {}
   
   public void run()
   {
     try
     {
-      Object localObject = bmqa.d();
+      Object localObject = bnrf.d();
       if (!TextUtils.isEmpty((CharSequence)localObject)) {}
       for (localObject = new JSONObject((String)localObject);; localObject = new JSONObject())
       {
-        JSONObject localJSONObject = tmf.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+        JSONObject localJSONObject = tdd.a(this.this$0, this.jdField_a_of_type_JavaLangString);
         if (localJSONObject == null) {
           break;
         }
         ((JSONObject)localObject).put("" + this.jdField_a_of_type_Int, localJSONObject);
-        bmqa.g(((JSONObject)localObject).toString());
-        bmqa.f(true);
+        bnrf.g(((JSONObject)localObject).toString());
+        bnrf.f(true);
         return;
       }
       return;
@@ -33,7 +33,7 @@ public class ViolaReportDelegate$1
     catch (Exception localException)
     {
       if (QLog.isColorLevel()) {
-        QLog.e(tmf.jdField_a_of_type_JavaLangString, 2, "cachePageOpenData Exception:" + localException.getMessage());
+        QLog.e(tdd.jdField_a_of_type_JavaLangString, 2, "cachePageOpenData Exception:" + localException.getMessage());
       }
     }
   }

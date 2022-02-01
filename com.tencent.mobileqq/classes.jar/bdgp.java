@@ -1,25 +1,25 @@
+import com.tencent.mobileqq.soload.LoadOptions;
+
 public class bdgp
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
+  private LoadOptions a = new LoadOptions();
   
-  public boolean equals(Object paramObject)
+  bdgp a(boolean paramBoolean)
   {
-    return this.b.equals(((bdgp)paramObject).b);
+    if (paramBoolean)
+    {
+      localLoadOptions = this.a;
+      localLoadOptions.flag |= 0x1;
+      return this;
+    }
+    LoadOptions localLoadOptions = this.a;
+    localLoadOptions.flag &= 0xFFFFFFFE;
+    return this;
   }
   
-  public int hashCode()
+  public LoadOptions a()
   {
-    return super.hashCode();
+    return this.a;
   }
 }
 

@@ -1,6 +1,20 @@
-public abstract interface aven
+import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import java.io.File;
+import java.io.FileFilter;
+
+public class aven
+  implements FileFilter
 {
-  public abstract void a();
+  public aven(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  
+  public boolean accept(File paramFile)
+  {
+    if (paramFile.getName().endsWith(".png")) {}
+    while (paramFile.getName().endsWith(".jpg")) {
+      return true;
+    }
+    return false;
+  }
 }
 
 

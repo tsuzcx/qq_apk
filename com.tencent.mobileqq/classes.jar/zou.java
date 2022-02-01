@@ -1,13 +1,20 @@
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.content.Context;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
-public class zou
-  implements zpt
+final class zou
+  implements INetEventHandler
 {
-  public zou(SegmentList paramSegmentList) {}
+  zou(Context paramContext) {}
   
-  public void a()
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    this.a.a.a(false);
+    if (paramBoolean)
+    {
+      zot.a(this.a);
+      return;
+    }
+    zot.a("");
+    zot.b("");
   }
 }
 

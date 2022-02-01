@@ -1,29 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 
-public class arth
-  extends anmu
+class arth
+  implements TextWatcher
 {
-  public arth(MessengerService paramMessengerService) {}
+  arth(artg paramartg) {}
   
-  protected void onGetSigZanInfo(boolean paramBoolean, Object paramObject)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.b != null)
-    {
-      this.a.b.putString("cmd", "ipc_signature_setlike");
-      paramObject = new Bundle();
-      if (!paramBoolean) {
-        break label81;
-      }
-    }
-    label81:
-    for (int i = 0;; i = 101)
-    {
-      paramObject.putInt("result", i);
-      this.a.b.putBundle("response", paramObject);
-      this.a.a(this.a.b);
-      this.a.b = null;
-      return;
+    if (!TextUtils.isEmpty(paramCharSequence)) {
+      this.a.c();
     }
   }
 }

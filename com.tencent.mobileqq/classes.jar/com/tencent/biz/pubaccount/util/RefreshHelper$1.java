@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.view.View;
-import ubk;
+import ubm;
 
 public class RefreshHelper$1
   implements Runnable
 {
   public void run()
   {
-    if (ubk.a(this.this$0) != null) {
-      ubk.a(this.this$0).setVisibility(8);
+    if (ubm.a(this.this$0) != null) {
+      ubm.a(this.this$0).setVisibility(8);
     }
   }
 }

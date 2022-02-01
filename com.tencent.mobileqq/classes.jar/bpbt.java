@@ -1,11 +1,6 @@
-public abstract interface bpbt
-  extends bpeo
+class bpbt
 {
-  public abstract int a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  static final bpbr a = new bpbr(null);
 }
 
 

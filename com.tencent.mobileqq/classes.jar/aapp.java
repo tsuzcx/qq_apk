@@ -1,28 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 class aapp
-  implements aapi
+  implements View.OnClickListener
 {
-  aapp(aapm paramaapm, long paramLong) {}
+  aapp(aapo paramaapo, int paramInt) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel())
+    if (this.jdField_a_of_type_Int < aapo.a(this.jdField_a_of_type_Aapo).size())
     {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
-      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      aapo.b(this.jdField_a_of_type_Aapo).remove(this.jdField_a_of_type_Int);
+      ((ArrayList)this.jdField_a_of_type_Aapo.a.a()).remove(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Aapo.notifyDataSetChanged();
+      if (CommodityListView.a(this.jdField_a_of_type_Aapo.a) != null) {
+        CommodityListView.a(this.jdField_a_of_type_Aapo.a).a(aapo.c(this.jdField_a_of_type_Aapo).size());
+      }
     }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
-    {
-      this.jdField_a_of_type_Aapm.jdField_a_of_type_Aapk.e = paramString1;
-      this.jdField_a_of_type_Aapm.jdField_a_of_type_Aapl.a.b(this.jdField_a_of_type_Aapm.jdField_a_of_type_Aapl);
-      this.jdField_a_of_type_Aapm.jdField_a_of_type_Aapl.b();
-      return;
-    }
-    this.jdField_a_of_type_Aapm.jdField_a_of_type_Aapl.d = paramString2;
-    this.jdField_a_of_type_Aapm.jdField_a_of_type_Aapl.a.a(this.jdField_a_of_type_Aapm.jdField_a_of_type_Aapl);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

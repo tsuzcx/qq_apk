@@ -1,12 +1,5 @@
 [
   {
-    "id": "font_huangyou",
-    "description": "黄油拾叁体",
-    "url": "https://downv6.qq.com/shadow_qqcamera/Font/font_huangyou_v2_7ebca3dc2e50cf666f1af284a970a465.zip",
-    "md5": "7ebca3dc2e50cf666f1af284a970a465",
-    "preDownload": 1
-  },
-  {
     "id": "font_lanting",
     "description": "方正兰亭特黑简体",
     "url": "https://downv6.qq.com/shadow_qqcamera/Font/font_lanting_v2_4a9aea96f09b22db96a705985fadbdbd.zip",
@@ -32,6 +25,13 @@
     "description": "造字工房尚雅体",
     "url": "https://downv6.qq.com/shadow_qqcamera/Font/font_shangya_v2_8a85baecf498ef2b58a2305040715124.zip",
     "md5": "8a85baecf498ef2b58a2305040715124",
+    "preDownload": 1
+  },
+  {
+    "id": "font_huangyou",
+    "description": "黄油拾叁体",
+    "url": "https://downv6.qq.com/shadow_qqcamera/Font/font_huangyou_v2_7ebca3dc2e50cf666f1af284a970a465.zip",
+    "md5": "7ebca3dc2e50cf666f1af284a970a465",
     "preDownload": 1
   }
 ]

@@ -1,31 +1,36 @@
-class aocu
-  extends anmu
+import java.util.List;
+import tencent.im.nearfield_discuss.nearfield_discuss.BusiRespHead;
+import tencent.im.nearfield_discuss.nearfield_discuss.UserProfile;
+
+public class aocu
+  implements anui
 {
-  private aocu(aocs paramaocs) {}
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(4, paramBoolean, new Object[] { paramString });
-  }
+  protected void a(boolean paramBoolean, List<nearfield_discuss.UserProfile> paramList, int paramInt1, int paramInt2, nearfield_discuss.BusiRespHead paramBusiRespHead, int paramInt3, int paramInt4, long paramLong) {}
   
-  public void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(39, paramBoolean, new Object[] { paramString });
-  }
+  protected void b(boolean paramBoolean, Object paramObject) {}
   
-  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.a(6, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(5, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(30, paramBoolean, new Object[] { paramString });
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      a(paramBoolean, paramObject);
+      return;
+      if (paramBoolean)
+      {
+        paramObject = (Object[])paramObject;
+        a(paramBoolean, (List)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), (nearfield_discuss.BusiRespHead)paramObject[3], ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Long)paramObject[6]).longValue());
+        return;
+      }
+      a(paramBoolean, null, -1, -1, null, -1, -1, -1L);
+      return;
+    } while (!paramBoolean);
+    b(paramBoolean, paramObject);
   }
 }
 

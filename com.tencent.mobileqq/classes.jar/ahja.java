@@ -1,19 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ahja
-  extends AnimatorListenerAdapter
+class ahja
+  extends ahkx
 {
-  public ahja(SixCombolEffectView paramSixCombolEffectView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  ahja(ahgk paramahgk)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.a) {
-      return;
-    }
-    this.a.b();
+    super(paramahgk, null);
+  }
+  
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahdk(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

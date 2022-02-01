@@ -1,20 +1,17 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class awzd
-  implements awyo
+class awzd
+  implements SoundPool.OnLoadCompleteListener
 {
-  public awzd(MusicPlayerActivity paramMusicPlayerActivity) {}
+  awzd(awzc paramawzc, int paramInt, String paramString) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2, Object paramObject)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    paramString = Message.obtain(MusicPlayerActivity.a(this.a), 49);
-    Bundle localBundle = new Bundle();
-    localBundle.putIntArray("KEY_COLOR_LIST", new int[] { paramInt1, paramInt2 });
-    localBundle.putBoolean("KEY_MATCH_SONG", ((Boolean)paramObject).booleanValue());
-    paramString.setData(localBundle);
-    paramString.sendToTarget();
+    if ((this.jdField_a_of_type_Awzc.a.play(paramInt1, 1.0F, 1.0F, 0, this.jdField_a_of_type_Int, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

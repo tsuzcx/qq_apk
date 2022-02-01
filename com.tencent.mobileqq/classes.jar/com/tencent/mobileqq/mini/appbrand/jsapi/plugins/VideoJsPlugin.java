@@ -11,10 +11,10 @@ import android.media.MediaFormat;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.text.TextUtils;
-import anni;
-import bckx;
-import bgkc;
-import bgsp;
+import anzj;
+import bddp;
+import bhkd;
+import bhsr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
@@ -44,8 +44,8 @@ import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zkr;
-import zmn;
+import zom;
+import zqi;
 
 public class VideoJsPlugin
   extends BaseJsPlugin
@@ -64,7 +64,7 @@ public class VideoJsPlugin
   private long chooseVideoMaxDuration = QzoneConfig.getInstance().getConfig("qqminiapp", "miniAppChooseVideoMaxDuration", 600000L);
   private long chooseVideoMaxSize = QzoneConfig.getInstance().getConfig("qqminiapp", "miniAppChooseVideoMaxSize", 1610612736L);
   private Set<String> eventMap = new HashSet();
-  private zmn ffmpeg;
+  private zqi ffmpeg;
   private Activity mActivity;
   private BroadcastReceiver mAvatarReceiver = new VideoJsPlugin.3(this);
   private boolean mAvatarReceiverRegistered;
@@ -102,11 +102,11 @@ public class VideoJsPlugin
   private void execCommand(String paramString1, String paramString2, LocalMediaInfo paramLocalMediaInfo, int paramInt)
   {
     if (this.ffmpeg == null) {
-      this.ffmpeg = zmn.a(BaseApplicationImpl.getApplication());
+      this.ffmpeg = zqi.a(BaseApplicationImpl.getApplication());
     }
     AppBrandRuntime localAppBrandRuntime = AppBrandRuntimeContainer.g().getCurrentAppBrandRuntime();
     if (localAppBrandRuntime != null) {
-      showLoading(localAppBrandRuntime, anni.a(2131714967));
+      showLoading(localAppBrandRuntime, anzj.a(2131715076));
     }
     long l1 = System.currentTimeMillis();
     long l2 = paramLocalMediaInfo.mDuration;
@@ -222,7 +222,7 @@ public class VideoJsPlugin
     localIntent.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
     localIntent.putExtra("PhotoConst.IS_PREVIEW_VIDEO", false);
     paramActivity.startActivity(localIntent);
-    bgkc.anim(paramActivity, false, true);
+    bhkd.anim(paramActivity, false, true);
   }
   
   private void handleJsCallBack(String paramString, long paramLong, LocalMediaInfo paramLocalMediaInfo, int paramInt)
@@ -236,7 +236,7 @@ public class VideoJsPlugin
       localJSONObject.put("size", paramLong);
       localJSONObject.put("height", paramLocalMediaInfo.mediaHeight);
       localJSONObject.put("width", paramLocalMediaInfo.mediaWidth);
-      localJSONObject.put("__plugin_ready__", new File(bckx.a(MobileQQ.getContext())).exists());
+      localJSONObject.put("__plugin_ready__", new File(bddp.a(MobileQQ.getContext())).exists());
       handleNativeResponseOk(paramInt, "chooseVideo", localJSONObject);
       return;
     }
@@ -1078,14 +1078,14 @@ public class VideoJsPlugin
         if ("saveVideoToPhotosAlbum".equals(paramString1))
         {
           paramString2 = paramString2.optString("filePath");
-          if (bgsp.a(paramString2))
+          if (bhsr.a(paramString2))
           {
             handleNativeResponseFail(paramInt, paramString1, null, "fail file not exists");
           }
           else
           {
             paramString2 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
-            if (zkr.a(this.jsPluginEngine.getActivityContext(), paramString2, getSaveVideoFilePath()))
+            if (zom.a(this.jsPluginEngine.getActivityContext(), paramString2, getSaveVideoFilePath()))
             {
               handleNativeResponseOk(paramInt, paramString1, null);
             }

@@ -1,16 +1,21 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class atah
-  implements DialogInterface.OnClickListener
+  extends asvt
 {
-  atah(atae paramatae, Context paramContext, String paramString) {}
+  atah(atag paramatag) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, aswv paramaswv, String paramString)
   {
-    bcst.b(null, "dc00898", "", "", "0X800AE3D", "0X800AE3D", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_Atae.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    this.a.a().a(paramBoolean, paramInt, paramaswv, paramString);
+  }
+  
+  protected void a(boolean paramBoolean, aswv paramaswv)
+  {
+    this.a.a().a(paramBoolean, paramaswv);
+  }
+  
+  protected void e(boolean paramBoolean)
+  {
+    this.a.a().a(paramBoolean);
   }
 }
 

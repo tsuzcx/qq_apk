@@ -1,25 +1,22 @@
-import java.util.Comparator;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
+import com.tencent.mobileqq.matchchat.MatchChatSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class axat
-  implements Comparator<String>
+public class axat
+  implements View.OnClickListener
 {
-  public int a(String paramString1, String paramString2)
+  public axat(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramString1 != null) && (paramString2 != null)) {
-      if (paramString1.length() <= paramString2.length()) {}
-    }
-    while (paramString1 != null)
-    {
-      return -1;
-      if (paramString1.length() >= paramString2.length()) {
-        break;
-      }
-      return 1;
-    }
-    if (paramString2 != null) {
-      return 1;
-    }
-    return 0;
+    bdll.b(this.a.a, "dc00898", "", "", "0X800A698", "0X800A698", 0, 0, "", "", "", "");
+    Intent localIntent = new Intent();
+    PublicFragmentActivity.a(this.a.getActivity(), localIntent, MatchChatSettingFragment.class);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

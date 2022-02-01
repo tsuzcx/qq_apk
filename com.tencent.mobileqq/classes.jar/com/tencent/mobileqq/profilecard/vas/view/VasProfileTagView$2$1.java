@@ -5,8 +5,8 @@ import android.graphics.PointF;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import azde;
-import azfe;
+import azvr;
+import azxr;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.profile.ProfileLabelInfo;
@@ -41,16 +41,16 @@ class VasProfileTagView$2$1
         if ((this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) && (VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0)[k] == null))
         {
           localObject2 = VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0);
-          localObject1 = View.inflate(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0.getContext(), 2131562098, null);
+          localObject1 = View.inflate(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0.getContext(), 2131562138, null);
           localObject2[k] = localObject1;
           localObject2 = new RatioLayout.LayoutParams(-2, -2, 0.5F, 0.5F, 0.5F, 0.5F);
           VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0).addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
           ((View)localObject1).setVisibility(4);
-          ((View)localObject1).setTag(new azde(32, null));
+          ((View)localObject1).setTag(new azvr(32, null));
           ((View)localObject1).setOnClickListener(VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0));
-          ((View)localObject1).setId(2131374900);
-          ((View)localObject1).setTag(2131374900, Integer.valueOf(-1));
-          ((View)localObject1).setTag(2131374902, Integer.valueOf(VasProfileTagView.a().length - 1));
+          ((View)localObject1).setId(2131375037);
+          ((View)localObject1).setTag(2131375037, Integer.valueOf(-1));
+          ((View)localObject1).setTag(2131375039, Integer.valueOf(VasProfileTagView.a().length - 1));
         }
         j = 0;
         while (j < k)
@@ -78,8 +78,8 @@ class VasProfileTagView$2$1
           VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0)[j] = localObject1;
           VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0).addView((View)localObject1);
           ((VipTagView)localObject1).setGravity(17);
-          ((VipTagView)localObject1).setTag(2131374900, Integer.valueOf(j));
-          ((VipTagView)localObject1).setTag(2131374902, Integer.valueOf(VasProfileTagView.a()[j]));
+          ((VipTagView)localObject1).setTag(2131375037, Integer.valueOf(j));
+          ((VipTagView)localObject1).setTag(2131375039, Integer.valueOf(VasProfileTagView.a()[j]));
           ((VipTagView)localObject1).setTextColor(-1);
         }
         VipTagView localVipTagView = (VipTagView)VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0)[j];
@@ -92,11 +92,11 @@ class VasProfileTagView$2$1
           label572:
           localVipTagView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           localVipTagView.setLabelAndPraise(((ProfileLabelInfo)localObject2).labelName, ((ProfileLabelInfo)localObject2).likeNum.intValue());
-          localVipTagView.setTag(2131374901, ((ProfileLabelInfo)localObject2).labelId);
+          localVipTagView.setTag(2131375038, ((ProfileLabelInfo)localObject2).labelId);
           if ((!this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0.a(localVipTagView)) || (this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0)) {
             break label712;
           }
-          localVipTagView.setTagColor(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0.getResources().getColor(2131166562), this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0.getResources().getColor(2131166560));
+          localVipTagView.setTagColor(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0.getResources().getColor(2131166566), this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0.getResources().getColor(2131166564));
         }
         for (;;)
         {
@@ -106,7 +106,7 @@ class VasProfileTagView$2$1
           localVipTagView.setVisibility(4);
           break label572;
           label712:
-          localVipTagView.setTagColor(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0.getResources().getColor(2131166561), this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0.getResources().getColor(2131166559));
+          localVipTagView.setTagColor(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0.getResources().getColor(2131166565), this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView$2.this$0.getResources().getColor(2131166563));
         }
       }
     }

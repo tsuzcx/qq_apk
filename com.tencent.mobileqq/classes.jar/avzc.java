@@ -1,26 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import com.tencent.shadow.dynamic.host.PluginManager;
 
-public class avzc
-  implements View.OnClickListener
+public abstract interface avzc
+  extends PluginManager
 {
-  public avzc(LocationPickFragment paramLocationPickFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    if (LocationPickFragment.a(this.a).b()) {
-      LocationPickFragment.a(this.a).b();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      LocationPickFragment.a(this.a).a();
-    }
-  }
+  public abstract void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback);
 }
 
 

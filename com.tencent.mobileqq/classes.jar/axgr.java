@@ -1,20 +1,22 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
 
-final class axgr
-  implements DialogInterface.OnClickListener
+public class axgr
 {
-  axgr(Context paramContext, String paramString, int paramInt) {}
+  public String a;
+  public boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String a(axge paramaxge, MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
   {
-    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, GameRoomInviteActivity.class);
-    paramDialogInterface.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.putExtra("roomNum", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return paramaxge.a(paramMessageRecord, paramMsgBackupResEntity);
+    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

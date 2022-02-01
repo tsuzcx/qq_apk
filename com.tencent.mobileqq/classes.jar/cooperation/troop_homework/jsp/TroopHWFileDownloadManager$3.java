@@ -1,6 +1,6 @@
 package cooperation.troop_homework.jsp;
 
-import bmrm;
+import bnsr;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class TroopHWFileDownloadManager$3
@@ -8,7 +8,7 @@ public class TroopHWFileDownloadManager$3
 {
   public void run()
   {
-    bmrm.a(this.this$0).cancelDownloadTask(this.a);
+    bnsr.a(this.this$0).cancelDownloadTask(this.a);
   }
 }
 

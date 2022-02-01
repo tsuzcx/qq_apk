@@ -1,122 +1,196 @@
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaPerson;
-import android.app.Activity;
-import android.content.Context;
-import android.support.annotation.UiThread;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.util.AdExposureChecker;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtAppReceiver;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
 
 public class usb
-  extends ueh<uru>
-  implements View.OnClickListener
+  implements ukp
 {
-  public static GdtAppReceiver a;
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public AdExposureChecker.ExposureCallback a;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private RoundImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView;
-  private uqi jdField_a_of_type_Uqi;
-  private View b;
+  private uty jdField_a_of_type_Uty;
+  private uuo jdField_a_of_type_Uuo;
+  private uuq jdField_a_of_type_Uuq;
+  private uuy jdField_a_of_type_Uuy;
   
-  public usb(Context paramContext)
+  private WSPlayerManager a()
   {
-    super(paramContext);
-  }
-  
-  public usb(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
-  {
-    this(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
-  }
-  
-  protected void a()
-  {
-    uru localuru = (uru)a();
-    if (localuru == null) {}
-    while (!(localuru.a() instanceof stSimpleMetaFeed)) {
-      return;
+    if ((this.jdField_a_of_type_Uuy != null) && (this.jdField_a_of_type_Uuy.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null)) {
+      return this.jdField_a_of_type_Uuy.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a();
     }
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)localuru.a());
+    return null;
   }
   
-  protected int b()
-  {
-    return 2131559217;
-  }
+  public void a(ukz paramukz) {}
   
-  @UiThread
-  protected void b()
+  public void a(ukz paramukz, int paramInt1, int paramInt2, String paramString)
   {
-    upe.a("GdtAdWSVerticalItemTopController", "onUpdateUI hashcode******************************" + hashCode() + ",position:" + a());
-    uru localuru = (uru)a();
-    if (localuru == null) {}
-    while (!(localuru.a() instanceof stSimpleMetaFeed)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.nick);
-    ups.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.avatar);
-  }
-  
-  protected void c() {}
-  
-  protected void e()
-  {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = upr.b();
-    localLayoutParams.width = -2;
-    localLayoutParams.topMargin = upr.b((Activity)this.jdField_a_of_type_AndroidContentContext);
-    localLayoutParams.leftMargin = upr.a();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    this.b = a(2131376808);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)a(2131367359));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131367362));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.b.setOnClickListener(this);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null))
+    if (this.jdField_a_of_type_Uuo != null)
     {
-      upe.b("GdtAdWSVerticalItemTopController", "跳转到广告落地页");
-      if (jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver == null)
-      {
-        jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
-        jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_Uuo.h();
+      this.jdField_a_of_type_Uuo.a(paramString);
+    }
+  }
+  
+  public void a(ukz paramukz, int paramInt, boolean paramBoolean) {}
+  
+  public void a(ukz paramukz, long paramLong1, long paramLong2)
+  {
+    if ((this.jdField_a_of_type_Uuq != null) && (!this.jdField_a_of_type_Uuq.a()))
+    {
+      if (paramLong2 != 0L) {
+        break label65;
       }
-      Object localObject;
-      if (urv.b(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed))
-      {
-        localObject = new GdtAd(urv.a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed));
-        if (this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback == null) {
-          this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = new usc(this);
-        }
-        AdExposureChecker.onClick(a(), (Ad)localObject, new WeakReference(this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback));
+      this.jdField_a_of_type_Uuq.a(0.0F);
+    }
+    for (;;)
+    {
+      if ((paramLong1 > 2000L) && (this.jdField_a_of_type_Uty != null) && (!this.jdField_a_of_type_Uty.a())) {
+        this.jdField_a_of_type_Uty.f();
       }
-      this.jdField_a_of_type_Uqi = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a();
-      if ((this.jdField_a_of_type_Uqi != null) && (this.jdField_a_of_type_Uqi.a() != null))
+      return;
+      label65:
+      float f = (float)paramLong1 / (float)paramLong2;
+      this.jdField_a_of_type_Uuq.a(f);
+    }
+  }
+  
+  public void a(ukz paramukz, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Uuq != null)
+    {
+      uqf.b("WS_VIDEO_ProgressBar", "WSVerticalPlayerUIDelegate onVideoInitiate() show");
+      this.jdField_a_of_type_Uuq.f();
+      this.jdField_a_of_type_Uuq.a(0.0F);
+    }
+  }
+  
+  public void a(ukz paramukz, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((this.jdField_a_of_type_Uuo != null) && (paramBoolean1) && (paramBoolean2)) {
+      this.jdField_a_of_type_Uuo.a(8, 400);
+    }
+  }
+  
+  public void a(uuy paramuuy)
+  {
+    this.jdField_a_of_type_Uuy = paramuuy;
+    if (paramuuy == null) {}
+    do
+    {
+      do
       {
-        localObject = this.jdField_a_of_type_Uqi.a();
-        if ((localObject != null) && (((utw)localObject).a != null)) {
-          urv.a(a(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver, ((utw)localObject).a);
+        return;
+        if ((paramuuy.jdField_a_of_type_Uek instanceof utq))
+        {
+          Object localObject = (utq)paramuuy.jdField_a_of_type_Uek;
+          uej localuej = ((utq)localObject).a();
+          if ((localuej instanceof uuo)) {
+            this.jdField_a_of_type_Uuo = ((uuo)localuej);
+          }
+          localObject = ((utq)localObject).b();
+          if ((localObject instanceof uuq)) {
+            this.jdField_a_of_type_Uuq = ((uuq)localObject);
+          }
         }
+      } while (!(paramuuy.jdField_a_of_type_Uek instanceof uve));
+      paramuuy = ((uve)paramuuy.jdField_a_of_type_Uek).c();
+    } while (!(paramuuy instanceof uty));
+    this.jdField_a_of_type_Uty = ((uty)paramuuy);
+  }
+  
+  public boolean a(ukz paramukz)
+  {
+    return false;
+  }
+  
+  public void b(ukz paramukz) {}
+  
+  public void c(ukz paramukz)
+  {
+    uqf.b("WS_VIDEO_VerticalUIDelegate", "WSVerticalPlayerUIDelegate onVideoViewLayoutSwitched()");
+    if (this.jdField_a_of_type_Uuo != null) {
+      this.jdField_a_of_type_Uuo.a(8, 200);
+    }
+  }
+  
+  public void d(ukz paramukz)
+  {
+    if (this.jdField_a_of_type_Uuo != null)
+    {
+      this.jdField_a_of_type_Uuo.a(8, 400);
+      this.jdField_a_of_type_Uuo.c(8);
+      this.jdField_a_of_type_Uuo.h();
+      this.jdField_a_of_type_Uuo.i();
+    }
+    if (this.jdField_a_of_type_Uuq != null)
+    {
+      uqf.b("WS_VIDEO_ProgressBar", "WSVerticalPlayerUIDelegate onVideoStart() hide");
+      this.jdField_a_of_type_Uuq.g();
+    }
+  }
+  
+  public void e(ukz paramukz)
+  {
+    if (this.jdField_a_of_type_Uuo != null) {
+      this.jdField_a_of_type_Uuo.c(0);
+    }
+  }
+  
+  public void f(ukz paramukz)
+  {
+    if (this.jdField_a_of_type_Uuo != null)
+    {
+      this.jdField_a_of_type_Uuo.c(8);
+      this.jdField_a_of_type_Uuo.i();
+    }
+  }
+  
+  public void g(ukz paramukz)
+  {
+    if (this.jdField_a_of_type_Uuo != null)
+    {
+      this.jdField_a_of_type_Uuo.h();
+      this.jdField_a_of_type_Uuo.a(0, 100);
+      this.jdField_a_of_type_Uuo.c(8);
+    }
+    if (this.jdField_a_of_type_Uuq != null)
+    {
+      this.jdField_a_of_type_Uuq.g();
+      this.jdField_a_of_type_Uuq.a(0.0F);
+    }
+  }
+  
+  public void h(ukz paramukz)
+  {
+    if (this.jdField_a_of_type_Uuo != null)
+    {
+      this.jdField_a_of_type_Uuo.g();
+      paramukz = a();
+      if ((paramukz != null) && (paramukz.b())) {
+        this.jdField_a_of_type_Uuo.c(8);
       }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void i(ukz paramukz)
+  {
+    if (this.jdField_a_of_type_Uuq != null)
+    {
+      uqf.b("WS_VIDEO_ProgressBar", "WSVerticalPlayerUIDelegate onVideoBufferEnd() hide");
+      this.jdField_a_of_type_Uuq.g();
+    }
+    if (this.jdField_a_of_type_Uuo != null)
+    {
+      this.jdField_a_of_type_Uuo.h();
+      paramukz = a();
+      if ((paramukz != null) && (paramukz.b())) {
+        this.jdField_a_of_type_Uuo.c(0);
+      }
+    }
+  }
+  
+  public void j(ukz paramukz)
+  {
+    if (this.jdField_a_of_type_Uuo != null) {
+      this.jdField_a_of_type_Uuo.a(0, 100);
+    }
   }
 }
 

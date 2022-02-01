@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.view;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -38,7 +38,7 @@ public class CameraGridView
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(afur.a(0.5F, getResources()));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(agej.a(0.5F, getResources()));
   }
   
   protected void onDraw(Canvas paramCanvas)

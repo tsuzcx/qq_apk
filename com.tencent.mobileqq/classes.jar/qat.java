@@ -1,17 +1,158 @@
+import android.graphics.Color;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
+import com.tencent.qphone.base.util.QLog;
 
-class qat
-  implements View.OnClickListener
+public class qat
+  extends TextBase
 {
-  qat(qam paramqam, String paramString1, String paramString2) {}
+  private NativeCommentView a;
   
-  public void onClick(View paramView)
+  public qat(VafContext paramVafContext)
   {
-    qam.a(2, this.jdField_a_of_type_JavaLangString);
-    pha.a(qam.a(this.jdField_a_of_type_Qam), this.b);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramVafContext);
+    this.mTextSize = Utils.dp2px(16.0D);
+    this.mLineSpaceExtra = Utils.rp2px(5.0D);
+    this.a = new NativeCommentView(paramVafContext.getContext());
+    this.a.setTextColor(-654311424);
+  }
+  
+  public void a(ppu paramppu)
+  {
+    this.a.setModel(paramppu);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.a.setBackgroundColor(this.mBackground);
+    this.a.setTextSize(0, this.mTextSize);
+    this.a.setLineSpacing(this.mLineSpaceExtra, 1.0F);
+    this.a.setIncludeFontPadding(false);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    return super.setAttribute(paramInt, paramObject);
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return super.setAttribute(paramInt, paramString);
+    case 1172: 
+      try
+      {
+        this.a.setPreBlankNum(Integer.valueOf(paramString).intValue());
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("ArticleCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1173: 
+      try
+      {
+        this.a.setPreAccountUin(Long.parseLong(paramString));
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("ArticleCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1174: 
+      try
+      {
+        this.a.a("1".equals(paramString));
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("ArticleCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1188: 
+      try
+      {
+        paramInt = Color.parseColor(paramString);
+        this.a.setTextColor(paramInt);
+        QLog.d("ArticleCommentView", 1, "setEmotionFontColor: " + paramInt);
+        return true;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("ArticleCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1187: 
+      try
+      {
+        this.mTextSize = Utils.dp2px(Integer.valueOf(paramString).intValue());
+        QLog.d("ArticleCommentView", 1, "setEmotionFontSize: " + this.mTextSize);
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("ArticleCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1189: 
+      try
+      {
+        this.mLineSpaceExtra = Utils.rp2px(Float.valueOf(String.valueOf(paramString)).floatValue());
+        QLog.d("ArticleCommentView", 1, "setEmotionlineSpace: " + this.mLineSpaceExtra);
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("ArticleCommentView", 1, paramString, new Object[0]);
+        return false;
+      }
+    }
+    try
+    {
+      paramInt = Color.parseColor(paramString);
+      this.a.setLinkedTextColor(paramInt);
+      QLog.d("ArticleCommentView", 1, "ArticleCommentView | setLinkTextColor: " + paramInt);
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ArticleCommentView", 1, paramString, new Object[0]);
+    }
+    return false;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.applets.data;
 
-import bgsp;
+import bhsr;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.persistence.Entity;
@@ -70,7 +70,7 @@ public class AppletsAccountInfo
   
   public String toString()
   {
-    String str = bgsp.e(String.valueOf(this.uin));
+    String str = bhsr.e(String.valueOf(this.uin));
     StringBuilder localStringBuilder = new StringBuilder("--AppletsAccountInfo--");
     localStringBuilder.append(",shortUin:").append(str).append(",nick:").append(this.nick).append(",face_url:").append(this.faceUrl).append(",face_url_simple:").append(this.faceUrlSimple).append(",appInfo:").append(this.appInfo);
     return localStringBuilder.toString();

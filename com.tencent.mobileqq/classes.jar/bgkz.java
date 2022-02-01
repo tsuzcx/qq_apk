@@ -1,7 +1,23 @@
-public class bgkz
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bgkz
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
+  bgkz(bgkx parambgkx) {}
+  
+  public void onClick(View paramView)
+  {
+    if (bgkx.a(this.a) != null)
+    {
+      bgkx.a(this.a).a(paramView);
+      if (bgkx.a(this.a) != null) {
+        bgkx.a(this.a).b(paramView, 0);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

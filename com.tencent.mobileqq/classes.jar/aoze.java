@@ -1,28 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aoze
-  implements aoyt
+public class aoze
+  extends aoxh
 {
-  aoze(aozd paramaozd) {}
-  
-  public void a(aozl paramaozl)
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    aozd.f(this.a, false);
-    if (aozd.a(this.a)) {
-      return;
-    }
-    if (aozd.a(this.a) != null) {
-      aozd.a(this.a).removeMessages(2);
-    }
-    QLog.i("AREngine_ARCloudControl", 1, "onARCloudLBSLocationCheckComplete. retCode = " + paramaozl.jdField_a_of_type_Int + ", imageId = " + paramaozl.jdField_a_of_type_JavaLangString);
-    if (aozd.a(this.a) != null)
-    {
-      apad.a(this.a.a.recognitions, aozd.a(this.a), paramaozl);
-      aozd.a(this.a).a(0, aozd.a(this.a));
-    }
-    aozd.a(this.a, null);
+    paramQQAppInterface = new aozd(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qzone";
+    paramQQAppInterface.c = "to_qzone_dialog";
+    return paramQQAppInterface;
   }
 }
 

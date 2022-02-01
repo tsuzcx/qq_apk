@@ -1,14 +1,14 @@
 package com.tencent.open.filedownload;
 
 import android.widget.TextView;
-import bixq;
+import bjyp;
 import com.tencent.open.filedownload.ui.NormalDownloadButton;
 import com.tencent.open.filedownload.ui.SafeDownloadButton;
 
 public class ApkFileDownloadFragment$3$1
   implements Runnable
 {
-  public ApkFileDownloadFragment$3$1(bixq parambixq) {}
+  public ApkFileDownloadFragment$3$1(bjyp parambjyp) {}
   
   public void run()
   {

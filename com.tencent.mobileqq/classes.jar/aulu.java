@@ -1,57 +1,28 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.DeleteFaceFragment;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.manager.TicketManager;
 
 public class aulu
-  implements View.OnClickListener
+  extends aulp
 {
-  public aulu(DeleteFaceFragment paramDeleteFaceFragment, FragmentActivity paramFragmentActivity) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void onClick(View paramView)
+  public aulu(bftf parambftf)
   {
-    bcst.b(null, "dc00898", "", "", "0X800A320", "0X800A320", 0, 0, "", "", "", "");
-    if ((DeleteFaceFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment) != null) && (DeleteFaceFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment).isShowing())) {
-      DeleteFaceFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment).dismiss();
-    }
-    if (!bgnt.d(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment.getActivity())) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment.getString(2131691985), 0).b(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment.a());
-    }
-    for (;;)
+    this.jdField_a_of_type_JavaLangString = parambftf.e;
+    this.jdField_a_of_type_Int = 1;
+    this.b = String.valueOf(parambftf.b);
+  }
+  
+  public String a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("DeleteFaceFragment", 2, "user confirm delete");
-      }
-      if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app == null))
-      {
-        QLog.d("DeleteFaceFragment", 1, "delete face, but activity is null or app is null");
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment.a();
-        TicketManager localTicketManager = (TicketManager)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(2);
-        String str1 = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getAccount();
-        String str2 = localTicketManager.getSkey(str1);
-        if (TextUtils.isEmpty(str2))
-        {
-          QLog.d("DeleteFaceFragment", 1, "skey is null");
-          localTicketManager.GetSkey(str1, 16L, new aulv(this, str1));
-        }
-        else
-        {
-          DeleteFaceFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment, str1, str2);
-        }
-      }
+      QLog.e("TroopFileControlReq<QFile>", 1, "key params is null");
+      return "";
     }
+    return a(this.jdField_a_of_type_Int + "", this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

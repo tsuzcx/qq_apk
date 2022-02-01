@@ -1,7 +1,8 @@
-class ndl
+import android.view.View;
+
+public abstract interface ndl
 {
-  String a;
-  public final boolean[] a = new boolean[2];
+  public abstract void onClick(View paramView);
 }
 
 

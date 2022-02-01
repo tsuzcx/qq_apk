@@ -1,76 +1,20 @@
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-public class wve
-  extends wuw
+public abstract class wve
+  extends apcq
 {
-  public wve(ViewGroup paramViewGroup)
+  public wve(String paramString)
   {
-    super(paramViewGroup);
+    super(0, true, false, 300000L, false, false, paramString);
   }
   
-  protected String a(QQUserUIItem paramQQUserUIItem)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    String str = super.a(paramQQUserUIItem);
-    paramQQUserUIItem = str;
-    if (str == null) {
-      paramQQUserUIItem = anni.a(2131712027);
-    }
-    return paramQQUserUIItem;
-  }
-  
-  public void a()
-  {
-    this.a.setTag(2131374552, null);
-  }
-  
-  protected void a(String paramString)
-  {
-    c(paramString);
-  }
-  
-  protected void a(String paramString, boolean paramBoolean, wrs paramwrs)
-  {
-    if ((!TextUtils.isEmpty(paramwrs.j)) && (!paramBoolean))
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      this.a.setNodeName(paramString, paramwrs.j);
-      return;
-    }
-    super.a(paramString, paramBoolean, paramwrs);
-  }
-  
-  public void a(wrs paramwrs)
-  {
-    super.a(paramwrs);
-    this.a.setDisplayState(2);
-    String str;
-    if (!TextUtils.equals((String)this.a.getTag(2131374552), paramwrs.jdField_a_of_type_JavaLangString))
-    {
-      if ((paramwrs.jdField_a_of_type_JavaUtilList == null) || (paramwrs.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-        break label168;
-      }
-      str = ((wsk)paramwrs.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString;
-      Iterator localIterator = paramwrs.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        wsk localwsk = (wsk)localIterator.next();
-        if (!localwsk.jdField_a_of_type_Boolean) {
-          str = localwsk.jdField_a_of_type_JavaLangString;
-        }
-      }
-    }
-    for (;;)
-    {
-      yqu.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramwrs.jdField_a_of_type_JavaLangString, "1", "", str });
-      this.a.setTag(2131374552, paramwrs.jdField_a_of_type_JavaLangString);
-      return;
-      continue;
-      label168:
-      str = "";
+      wva.a = new wuz((int)(paramSosoLbsInfo.a.a * 1000000.0D), (int)(paramSosoLbsInfo.a.b * 1000000.0D));
+      yuk.b("LbsManager", "onLocationFinish success : " + wva.a);
     }
   }
 }

@@ -1,9 +1,27 @@
+import android.view.View;
+import java.util.List;
+
 class agvm
-  implements bkhy
+  implements bliz
 {
-  agvm(agvj paramagvj) {}
+  agvm(agvl paramagvl, List paramList, blir paramblir) {}
   
-  public void onDismiss() {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      agvl.a(this.jdField_a_of_type_Agvl, this.jdField_a_of_type_JavaUtilList);
+      agsd.a(agvl.a(this.jdField_a_of_type_Agvl), this.jdField_a_of_type_JavaUtilList, 3);
+      continue;
+      this.jdField_a_of_type_Agvl.a(this.jdField_a_of_type_JavaUtilList, 0);
+      agsd.a(agvl.a(this.jdField_a_of_type_Agvl), this.jdField_a_of_type_JavaUtilList, 3);
+    }
+  }
 }
 
 

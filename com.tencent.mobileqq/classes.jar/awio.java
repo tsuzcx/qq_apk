@@ -1,22 +1,18 @@
-import android.animation.ArgbEvaluator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awio
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public awio(MedalGuideView paramMedalGuideView) {}
+  public awio(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = ((Integer)this.a.jdField_a_of_type_AndroidAnimationArgbEvaluator.evaluate(f, Integer.valueOf(this.a.jdField_a_of_type_Int), Integer.valueOf(0))).intValue();
-    this.a.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(i);
-    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

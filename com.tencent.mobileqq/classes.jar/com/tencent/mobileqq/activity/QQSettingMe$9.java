@@ -15,11 +15,11 @@ class QQSettingMe$9
   
   public void run()
   {
-    int i = (int)this.this$0.a.getResources().getDimension(2131296854);
+    int i = (int)this.this$0.a.getResources().getDimension(2131296866);
     Object localObject = new int[2];
-    this.this$0.d.getLocationOnScreen((int[])localObject);
+    this.this$0.e.getLocationOnScreen((int[])localObject);
     int j = this.this$0.g.getWidth();
-    int k = this.this$0.d.getWidth();
+    int k = this.this$0.e.getWidth();
     if ((j != 0) && (k != 0)) {
       i -= (j - k) / 2;
     }
@@ -35,7 +35,7 @@ class QQSettingMe$9
         QLog.d("QQSettingRedesign", 2, "setBottomBtnMarginLeft, diffMargin = " + i);
       }
       return;
-      i = (int)this.this$0.a.getResources().getDimension(2131296859);
+      i = (int)this.this$0.a.getResources().getDimension(2131296871);
       QLog.e("QQSettingRedesign", 1, "setBottomBtnMarginLeft, but getWidth return 0");
     }
   }

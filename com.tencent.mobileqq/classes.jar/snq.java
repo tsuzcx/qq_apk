@@ -1,18 +1,19 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
-class snq
-  implements sow
+public class snq
+  extends pfh
 {
-  snq(snh paramsnh) {}
+  public snq(FastWebActivity paramFastWebActivity) {}
   
-  public void onClick(View paramView)
+  public void b(String paramString)
   {
-    Object localObject = (pum)paramView.getTag();
-    localObject = this.a.b(((pum)localObject).a);
-    ubb.a(this.a.a, (ArticleInfo)localObject, this.a, 56);
-    ubb.a(this.a.a, (ArticleInfo)localObject, this.a, 56, true, null);
-    puf.a(paramView);
+    super.b(paramString);
+    paramString = FastWebActivity.a(this.a).a(paramString, FastWebActivity.c(this.a));
+    if (paramString != null) {
+      this.a.a(true, paramString.a.commentId, null);
+    }
+    FastWebActivity.a(this.a).notifyDataSetChanged();
   }
 }
 

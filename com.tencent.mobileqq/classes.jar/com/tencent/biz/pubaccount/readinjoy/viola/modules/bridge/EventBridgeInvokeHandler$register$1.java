@@ -7,14 +7,14 @@ import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import tqd;
+import tgz;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "param", "Lorg/json/JSONObject;", "callback", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class EventBridgeInvokeHandler$register$1
   extends Lambda
   implements Function2<JSONObject, String, Unit>
 {
-  public EventBridgeInvokeHandler$register$1(tqd paramtqd)
+  public EventBridgeInvokeHandler$register$1(tgz paramtgz)
   {
     super(2);
   }

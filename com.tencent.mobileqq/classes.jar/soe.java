@@ -1,16 +1,19 @@
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class soe
-  extends pue
+public class soe
+  implements aqvd
 {
-  soe(snh paramsnh, String paramString, List paramList)
-  {
-    super(paramString);
-  }
+  public soe(FastWebActivity paramFastWebActivity) {}
   
-  public void a(ptx paramptx)
+  public void onColorNoteAnimFinish()
   {
-    paramptx.a(this.jdField_a_of_type_JavaUtilList);
+    FastWebActivity.a(this.a, true);
+    FastWebActivity.b(this.a);
+    if ((FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a).c())) {
+      this.a.overridePendingTransition(0, 0);
+    }
+    QLog.d("FastWebActivity", 2, "mColorNoteController ：onColorNoteAnimFinish");
   }
 }
 

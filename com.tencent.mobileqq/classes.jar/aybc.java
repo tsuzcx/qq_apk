@@ -1,16 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.nearby.widget.GradientAnimTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aybc
-  implements ValueAnimator.AnimatorUpdateListener
+class aybc
+  implements View.OnClickListener
 {
-  public aybc(GradientAnimTextView paramGradientAnimTextView) {}
+  aybc(aybb paramaybb) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    GradientAnimTextView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    if (aybb.a(this.a) != null) {
+      aybb.a(this.a).a(aybb.a(this.a));
+    }
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

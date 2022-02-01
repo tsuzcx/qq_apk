@@ -1,51 +1,7 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import kotlin.Metadata;
 
-public class say
-  implements ryi
-{
-  private say(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
-  
-  public void a()
-  {
-    this.a.b(true);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (VideoFeedsRecommendFragment.a(this.a) != null) {
-      VideoFeedsRecommendFragment.a(this.a).a.e(paramBoolean);
-    }
-    VideoFeedsRecyclerView localVideoFeedsRecyclerView;
-    if (paramBoolean)
-    {
-      VideoFeedsRecommendFragment.a(this.a).setNeedDetectOrientation(this.a.getActivity(), false);
-      if (!VideoFeedsRecommendFragment.b(this.a))
-      {
-        localVideoFeedsRecyclerView = VideoFeedsRecommendFragment.a(this.a);
-        if (paramBoolean) {
-          break label152;
-        }
-      }
-    }
-    label152:
-    for (boolean bool = true;; bool = false)
-    {
-      localVideoFeedsRecyclerView.setScrollable(bool);
-      if ((!paramBoolean) && (VideoFeedsRecommendFragment.c(this.a)))
-      {
-        VideoFeedsRecommendFragment.a(this.a).a();
-        VideoFeedsRecommendFragment.a(this.a, false);
-      }
-      if (VideoFeedsRecommendFragment.a(this.a) != null) {
-        VideoFeedsRecommendFragment.a(this.a).a(paramBoolean);
-      }
-      return;
-      VideoFeedsRecommendFragment.a(this.a, VideoFeedsRecommendFragment.a(this.a));
-      break;
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$Companion;", "", "()V", "BITMAP_CONFIG", "Landroid/graphics/Bitmap$Config;", "getBITMAP_CONFIG", "()Landroid/graphics/Bitmap$Config;", "DEFAULT_CAPTURE_SCALE", "", "ERROR_CAPTURE", "", "ERROR_SAVE_FILE", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class say {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

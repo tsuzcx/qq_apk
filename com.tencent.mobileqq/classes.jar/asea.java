@@ -1,18 +1,79 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QavGAudioSoundData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
 
 public class asea
-  implements View.OnClickListener
+  extends asdn
 {
-  public asea(AIOEmotionBaseFragment paramAIOEmotionBaseFragment) {}
-  
-  public void onClick(View paramView)
+  public asea(QQAppInterface paramQQAppInterface)
   {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super("qq.android.qav.muteaudio", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10046;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QavGAudioSoundData.class;
+  }
+  
+  public String a()
+  {
+    return "qavDownloadGAudioSoundDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavGAudioSoundHandler", 2, "download success: " + paramString);
+    }
+    try
+    {
+      bhmi.a(paramString, msc.a(), false);
+      super.a(paramString);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)a();
+    if ((localQavGAudioSoundData != null) && (!localQavGAudioSoundData.autoDownload))
+    {
+      localQavGAudioSoundData.autoDownload = true;
+      asdd.a(localQavGAudioSoundData, new String[] { "autoDownload" });
+    }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean h()
+  {
+    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)a();
+    if (localQavGAudioSoundData == null) {
+      return super.h();
+    }
+    return localQavGAudioSoundData.autoDownload;
   }
 }
 

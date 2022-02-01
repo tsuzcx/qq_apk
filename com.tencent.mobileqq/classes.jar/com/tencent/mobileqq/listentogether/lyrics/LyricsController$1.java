@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import avuv;
+import awnq;
 
 public class LyricsController$1
   implements Runnable
 {
-  public LyricsController$1(avuv paramavuv) {}
+  public LyricsController$1(awnq paramawnq) {}
   
   public void run()
   {

@@ -1,27 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import NS_MOBILE_EXTRA.mobile_get_urlinfo_req;
+import QMF_PROTOCAL.RetryInfo;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
-class awho
-  implements DialogInterface.OnClickListener
+public class awho
+  extends QzoneExternalRequest
 {
-  awho(awhm paramawhm, BaseChatPie paramBaseChatPie, short paramShort) {}
+  private JceStruct a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public awho(String paramString)
   {
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(1);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      if (paramInt == 1)
-      {
-        this.jdField_a_of_type_Awhm.a(this.jdField_a_of_type_Short, true, true);
-        bcst.b(awhm.a(this.jdField_a_of_type_Awhm), "dc00898", "", "", "0X8009978", "0X8009978", this.jdField_a_of_type_Awhm.a(this.jdField_a_of_type_Short), this.jdField_a_of_type_Awhm.a(this.jdField_a_of_type_Short), "", "", "", "");
-      }
-    }
+    mobile_get_urlinfo_req localmobile_get_urlinfo_req = new mobile_get_urlinfo_req();
+    localmobile_get_urlinfo_req.url = paramString;
+    this.a = localmobile_get_urlinfo_req;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.getUrlInfo";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public Object getRetryInfo()
+  {
+    return new RetryInfo((short)0, 0, System.currentTimeMillis());
+  }
+  
+  public String uniKey()
+  {
+    return "getUrlInfo";
   }
 }
 

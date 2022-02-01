@@ -1,11 +1,14 @@
-import tencent.im.oidb.articlesummary.feeds_info.VisibleShowInfo;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import org.jetbrains.annotations.NotNull;
 
-public final class rgt
-  implements pvb<feeds_info.VisibleShowInfo, rhq>
+class rgt
+  implements omr
 {
-  public rhq a(feeds_info.VisibleShowInfo paramVisibleShowInfo)
+  rgt(rgo paramrgo) {}
+  
+  public void a(@NotNull Runnable paramRunnable)
   {
-    return rhq.a(paramVisibleShowInfo);
+    ThreadManagerV2.excute(paramRunnable, 16, null, false);
   }
 }
 

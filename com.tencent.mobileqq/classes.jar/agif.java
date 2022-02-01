@@ -1,11 +1,8 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
+import android.view.View;
 
-public class agif
-  extends agip
+public abstract interface agif
 {
-  public ImageView a;
-  public ColorView a;
+  public abstract void a(View paramView, bete parambete, int paramInt1, int paramInt2);
 }
 
 

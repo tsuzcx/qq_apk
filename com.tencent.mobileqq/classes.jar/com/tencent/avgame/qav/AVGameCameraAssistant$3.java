@@ -1,14 +1,14 @@
 package com.tencent.avgame.qav;
 
-import bkgm;
+import blhq;
 import com.tencent.av.camera.CameraUtils;
 import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
-import mwu;
-import ndy;
-import neb;
+import mxt;
+import nfr;
+import nfu;
 
 public class AVGameCameraAssistant$3
   implements Runnable
@@ -31,8 +31,8 @@ public class AVGameCameraAssistant$3
         if ((bool) || (AVGameCameraAssistant.a(this.this$0) != null)) {
           break label213;
         }
-        AVGameCameraAssistant.a(this.this$0, new ndy(this));
-        mwu.a().a(AVGameCameraAssistant.a(this.this$0), true);
+        AVGameCameraAssistant.a(this.this$0, new nfr(this));
+        mxt.a().a(AVGameCameraAssistant.a(this.this$0), true);
         if (QLog.isColorLevel()) {
           QLog.i("AVGameCameraAssistant", 2, "check ptv so ret[" + bool + "]");
         }

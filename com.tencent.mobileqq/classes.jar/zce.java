@@ -1,39 +1,17 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-
-public abstract class zce<T extends zcd>
+class zce
+  implements wvd
 {
-  protected int a;
-  public final View a;
-  public T a;
+  zce(zbz paramzbz, zcm paramzcm) {}
   
-  protected zce(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public void a(boolean paramBoolean, wuz paramwuz)
   {
-    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      throw new NullPointerException("onCreateView can not return null");
+    yuk.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
+    if ((paramBoolean) && (paramwuz != null))
+    {
+      this.jdField_a_of_type_Zbz.a(paramwuz.b, paramwuz.a, this.jdField_a_of_type_Zcm);
+      return;
     }
-  }
-  
-  protected abstract View a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Zcd = null;
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a(T paramT, int paramInt)
-  {
-    this.jdField_a_of_type_Zcd = paramT;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Zcd != null) && (this.jdField_a_of_type_Zcd.a());
+    yuk.e("DoodleEmojiManager", "onLbsUpdate failed.");
   }
 }
 

@@ -37,7 +37,7 @@ public class AccessibilityDelegateCompat
   
   static List<AccessibilityNodeInfoCompat.AccessibilityActionCompat> getActionList(View paramView)
   {
-    List localList = (List)paramView.getTag(2131378235);
+    List localList = (List)paramView.getTag(2131378392);
     paramView = localList;
     if (localList == null) {
       paramView = Collections.emptyList();
@@ -77,7 +77,7 @@ public class AccessibilityDelegateCompat
   
   private boolean performClickableSpanAction(int paramInt, View paramView)
   {
-    Object localObject = (SparseArray)paramView.getTag(2131378236);
+    Object localObject = (SparseArray)paramView.getTag(2131378393);
     if (localObject != null)
     {
       localObject = (WeakReference)((SparseArray)localObject).get(paramInt);

@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.POIInfo;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.qphone.base.util.QLog;
 
-public final class apsx
-  implements Parcelable.Creator<POIInfo>
+public class apsx
+  implements MessageQueue.IdleHandler
 {
-  public POIInfo a(Parcel paramParcel)
-  {
-    return new POIInfo(paramParcel);
-  }
+  public apsx(ARScanEntryView paramARScanEntryView) {}
   
-  public POIInfo[] a(int paramInt)
+  public boolean queueIdle()
   {
-    return new POIInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "queueIdle called ");
+    }
+    if ((ARScanEntryView.a(this.a) != null) && (this.a.m)) {
+      ARScanEntryView.a(this.a).c();
+    }
+    return false;
   }
 }
 

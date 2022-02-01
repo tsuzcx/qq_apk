@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
-import bdzx;
+import beyq;
 import com.tencent.image.URLDrawable;
 
 class ForwardShortVideoOption$3
@@ -11,7 +11,7 @@ class ForwardShortVideoOption$3
   
   public void run()
   {
-    bdzx.a(this.a, null, false);
+    beyq.a(this.a, null, false);
     this.this$0.a.runOnUiThread(new ForwardShortVideoOption.3.1(this));
   }
 }

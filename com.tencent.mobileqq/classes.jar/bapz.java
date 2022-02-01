@@ -1,24 +1,32 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderView;
+import NS_MOBILE_PHOTO.operation_red_touch_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class bapz
-  implements Animation.AnimationListener
+  extends QzoneExternalRequest
 {
-  public bapz(ProviderContainerView paramProviderContainerView) {}
+  public JceStruct a;
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public bapz(long paramLong, operation_red_touch_req paramoperation_red_touch_req)
   {
-    if (ProviderContainerView.a(this.a) != null)
-    {
-      ProviderContainerView.a(this.a).setAlpha(1.0F);
-      ProviderContainerView.a(this.a).setVisibility(0);
-    }
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    this.a = paramoperation_red_touch_req;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.asy_photo.OperationRedTouch";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "OperationRedTouch";
   }
 }
 

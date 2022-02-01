@@ -1,40 +1,69 @@
-import android.support.annotation.NonNull;
-import cooperation.qzone.thread.QzoneThreadMonitor;
+import android.os.IBinder;
 
-public class bmib
-  implements Comparable<bmib>
+class bmib
+  implements bmhz
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
+  private IBinder a;
   
-  public bmib(QzoneThreadMonitor paramQzoneThreadMonitor, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, long paramLong, int paramInt2)
+  bmib(IBinder paramIBinder)
   {
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_c_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a = paramIBinder;
   }
   
-  public int a(@NonNull bmib parambmib)
+  /* Error */
+  public void a(cooperation.qappcenter.remote.RecvMsg paramRecvMsg)
   {
-    return (int)(this.jdField_a_of_type_Long - parambmib.jdField_a_of_type_Long);
+    // Byte code:
+    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: aload_2
+    //   5: ldc 25
+    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_1
+    //   11: ifnull +33 -> 44
+    //   14: aload_2
+    //   15: iconst_1
+    //   16: invokevirtual 33	android/os/Parcel:writeInt	(I)V
+    //   19: aload_1
+    //   20: aload_2
+    //   21: iconst_0
+    //   22: invokevirtual 39	cooperation/qappcenter/remote/RecvMsg:writeToParcel	(Landroid/os/Parcel;I)V
+    //   25: aload_0
+    //   26: getfield 15	bmib:a	Landroid/os/IBinder;
+    //   29: iconst_1
+    //   30: aload_2
+    //   31: aconst_null
+    //   32: iconst_1
+    //   33: invokeinterface 45 5 0
+    //   38: pop
+    //   39: aload_2
+    //   40: invokevirtual 48	android/os/Parcel:recycle	()V
+    //   43: return
+    //   44: aload_2
+    //   45: iconst_0
+    //   46: invokevirtual 33	android/os/Parcel:writeInt	(I)V
+    //   49: goto -24 -> 25
+    //   52: astore_1
+    //   53: aload_2
+    //   54: invokevirtual 48	android/os/Parcel:recycle	()V
+    //   57: aload_1
+    //   58: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	59	0	this	bmib
+    //   0	59	1	paramRecvMsg	cooperation.qappcenter.remote.RecvMsg
+    //   3	51	2	localParcel	android.os.Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   4	10	52	finally
+    //   14	25	52	finally
+    //   25	39	52	finally
+    //   44	49	52	finally
   }
   
-  public boolean equals(Object paramObject)
+  public IBinder asBinder()
   {
-    return ((paramObject instanceof bmib)) && (this.jdField_a_of_type_JavaLangString.equals(((bmib)paramObject).jdField_a_of_type_JavaLangString));
+    return this.a;
   }
 }
 

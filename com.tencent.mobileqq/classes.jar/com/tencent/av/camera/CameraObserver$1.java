@@ -1,15 +1,15 @@
 package com.tencent.av.camera;
 
-import ljd;
+import ljl;
 
 public class CameraObserver$1
   implements Runnable
 {
-  public CameraObserver$1(ljd paramljd, Object paramObject) {}
+  public CameraObserver$1(ljl paramljl, Object paramObject) {}
   
   public void run()
   {
-    ljd.a(this.this$0, this.a);
+    ljl.a(this.this$0, this.a);
   }
 }
 

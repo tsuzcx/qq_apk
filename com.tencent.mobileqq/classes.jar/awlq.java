@@ -1,66 +1,70 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.miniapp.MiniAppInfoManager.1;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class awlq
 {
-  Map<String, awlp> a = new ConcurrentHashMap();
+  public static final String a;
+  public int a;
+  public long a;
+  public anwh a;
+  public int b = 0;
   
-  awlp a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  static
   {
-    awlp localawlp = (awlp)this.a.get(paramString);
-    if ((localawlp != null) && (paramBoolean)) {
-      if (!a(localawlp, paramInt1, paramInt2)) {}
-    }
-    while (!QLog.isColorLevel())
+    jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.ltcfg.name();
+  }
+  
+  private awlq()
+  {
+    this.jdField_a_of_type_Int = 50;
+    this.jdField_a_of_type_Long = 3000L;
+    this.jdField_a_of_type_Anwh = new awlr(this);
+    a();
+    DeviceProfileManager.a(this.jdField_a_of_type_Anwh);
+  }
+  
+  public static awlq a()
+  {
+    return awls.a();
+  }
+  
+  private void a()
+  {
+    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
+    try
     {
-      return localawlp;
-      return null;
+      if (!TextUtils.isEmpty(str))
+      {
+        String[] arrayOfString = str.split("\\|");
+        if (arrayOfString.length >= 4)
+        {
+          this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
+          this.b = Integer.valueOf(arrayOfString[1]).intValue();
+          this.jdField_a_of_type_Long = Long.valueOf(arrayOfString[2]).longValue();
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ListenTogether.dpc", 2, String.format("loadDpc, dpcValue: %s, [%s]", new Object[] { str, this }));
+      }
+      return;
     }
-    QLog.d("MiniAppInfoManager", 2, new Object[] { "getAppInfoFromCache cache invalid. cacheKey=", paramString });
-    return localawlp;
-  }
-  
-  void a(awlp paramawlp, int paramInt, awls paramawls)
-  {
-    ThreadManagerV2.excute(new MiniAppInfoManager.1(this, paramawls, paramawlp, paramInt), 128, null, true);
-  }
-  
-  boolean a(awlp paramawlp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyAppInfo. appState=", Integer.valueOf(paramawlp.jdField_c_of_type_Int) });
-    }
-    return (paramawlp != null) && (paramawlp.jdField_c_of_type_Int == 1);
-  }
-  
-  boolean a(awlp paramawlp, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppInfoManager", 2, new Object[] { "getAppInfoFromCache cache valid. cacheKey=", paramawlp.h });
-    }
-    if (paramInt2 == 1)
+    catch (Exception localException)
     {
-      if (paramawlp.jdField_c_of_type_Long <= NetConnInfoCenter.getServerTimeMillis()) {}
-    }
-    else {
-      while ((paramInt2 == 0) && (((paramInt1 == 1) && (paramawlp.a > NetConnInfoCenter.getServerTimeMillis())) || ((paramInt1 == 2) && (paramawlp.b > NetConnInfoCenter.getServerTimeMillis())))) {
-        return true;
+      for (;;)
+      {
+        QLog.d("ListenTogether.dpc", 1, "loadDpc", localException);
+        this.jdField_a_of_type_Int = 50;
+        this.b = 0;
+        this.jdField_a_of_type_Long = 3000L;
       }
     }
-    return false;
   }
   
-  boolean b(awlp paramawlp)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyDownloadUrl. downloadUrl=", paramawlp.f });
-    }
-    return !TextUtils.isEmpty(paramawlp.f);
+    return "ListenTogetherDPC{maxCacheCount=" + this.jdField_a_of_type_Int + ", preDownloadNetType=" + this.b + ", playingAdjustInterval=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

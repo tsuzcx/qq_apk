@@ -1,26 +1,27 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.debug.ArkAsyncShareMiniAppTest.1.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
-
 public class apqc
-  implements aprx
 {
-  public boolean needProcess(JSONObject paramJSONObject)
+  public int a;
+  public long a;
+  public beum a;
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "";
+  
+  public apqc()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.mArkMessagePreprocessor needProcess=", Boolean.valueOf(true) });
-    }
-    return true;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void process(JSONObject paramJSONObject, apry paramapry, Object paramObject)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process msgJson=", paramJSONObject.toString() });
-    }
-    ThreadManager.getFileThreadHandler().postDelayed(new ArkAsyncShareMiniAppTest.1.1(this, paramJSONObject, paramapry, paramObject), 20000L);
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", md5='").append(this.b).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

@@ -20,6 +20,7 @@ public class MsfConstants
   public static final String ATTRIBUTE_LOGIN_PWD = "to_login_pwd";
   public static final String ATTRIBUTE_LOGIN_TOKEN_CMDHEAD = "to_login_token_cmdhead";
   public static final String ATTRIBUTE_LOGIN_TOKEN_MAP = "to_login_token_map";
+  public static final String ATTRIBUTE_LOGIN_UIN_ENCRYPT = "to_login_uin_encrypt";
   public static final String ATTRIBUTE_MAXPACKAGESIZE = "to_maxPackageSize";
   public static final String ATTRIBUTE_MSGTIMEOUT_CALLBACKER = "to_msgtimeoutCallbacker";
   public static final String ATTRIBUTE_PREDETECT_TIMEOUT_CALLBACKER = "to_predetect_timeoutCallbacker";
@@ -55,6 +56,7 @@ public class MsfConstants
   public static final String ATTRIBUTE_RESP_DEVLOCKINFO = "resp_devlockinfo";
   public static final String ATTRIBUTE_RESP_LOGINEDUSERLIST = "resp_loginedUserList";
   public static final String ATTRIBUTE_RESP_NEEDBOOTAPP = "resp_needBootApp";
+  public static final String ATTRIBUTE_RESP_PHONE_PROTECT_UINS_URL = "resp_phone_protect_uins_url";
   public static final String ATTRIBUTE_RESP_REGISTER_CONTACTSIG = "resp_register_contactssig";
   public static final String ATTRIBUTE_RESP_REGISTER_ERRMSG = "res_register_errmsg";
   public static final String ATTRIBUTE_RESP_REGISTER_LH_SIG = "resp_register_lh_sig";

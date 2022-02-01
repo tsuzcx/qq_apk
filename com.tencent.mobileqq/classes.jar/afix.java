@@ -1,21 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 
 public class afix
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public afix(TroopDisbandActivity paramTroopDisbandActivity, Dialog paramDialog) {}
+  public afix(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    TroopDisbandActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.finish();
   }
 }
 

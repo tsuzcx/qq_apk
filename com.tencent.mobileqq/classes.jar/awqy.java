@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class awqy
-  implements awxb
+public class awqy
+  implements DialogInterface.OnClickListener
 {
-  awqy(awqx paramawqx) {}
+  public awqy(LocationDialogUtil.6 param6) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((awqv.a(this.a.jdField_a_of_type_Awqv) != null) && (awqv.a(this.a.jdField_a_of_type_Awqv).a != null)) {
-      this.a.jdField_a_of_type_Awxi.a(this.a.jdField_a_of_type_JavaUtilList, 2, awqv.a(this.a.jdField_a_of_type_Awqv).a.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationDialogUtil", 2, new Object[] { "onClick: invoked. showStartShareLocationDialog  ", " which: ", Integer.valueOf(paramInt) });
     }
-    this.a.jdField_a_of_type_Awxi.a();
-    if (awqv.a(this.a.jdField_a_of_type_Awqv) != null) {
-      awqv.a(this.a.jdField_a_of_type_Awqv).a(false, null, false);
+    if (BaseActivity.sTopActivity != null) {
+      LocationShareFragment.b(BaseActivity.sTopActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.b);
+    }
+    try
+    {
+      awpq.a(BaseActivity.sTopActivity.app).a(true);
+      label79:
+      awql.a(this.a.b, "0X800A769");
+      return;
+    }
+    catch (Throwable paramDialogInterface)
+    {
+      break label79;
     }
   }
 }

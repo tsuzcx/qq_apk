@@ -1,35 +1,16 @@
-import android.content.Intent;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
-class akzf
-  implements View.OnClickListener
+public class akzf
+  implements DialogInterface.OnClickListener
 {
-  akzf(akyh paramakyh, long paramLong, String paramString) {}
+  public akzf(SendHbActivity paramSendHbActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (akyh.a(this.jdField_a_of_type_Akyh) != null)
-    {
-      localObject = akyh.a(this.jdField_a_of_type_Akyh).obtainMessage(1134028);
-      akyh.a(this.jdField_a_of_type_Akyh).sendMessage((Message)localObject);
-    }
-    Object localObject = new Intent();
-    ((Intent)localObject).putExtra("bookid", this.jdField_a_of_type_Long);
-    ((Intent)localObject).putExtra("chapterid", this.jdField_a_of_type_JavaLangString);
-    ((Intent)localObject).putExtra("is_from_conversation", true);
-    Intent localIntent = new Intent();
-    localIntent.putExtras((Intent)localObject);
-    localIntent.putExtra("readtype", "15");
-    localIntent.setClassName(akyh.a(this.jdField_a_of_type_Akyh), "cooperation.qqreader.QRBridgeActivity");
-    localIntent.addFlags(268435456);
-    akyh.a(this.jdField_a_of_type_Akyh).startActivity(localIntent);
-    bcst.a(akyh.a(this.jdField_a_of_type_Akyh).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 1, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
+    SendHbActivity.a(this.a);
   }
 }
 

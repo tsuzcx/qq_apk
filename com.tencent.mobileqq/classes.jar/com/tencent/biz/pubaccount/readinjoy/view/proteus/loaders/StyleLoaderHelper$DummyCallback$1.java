@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders;
 
 import com.tencent.qphone.base.util.QLog;
-import teo;
-import tfc;
+import svg;
+import svu;
 
 public class StyleLoaderHelper$DummyCallback$1
   implements Runnable
 {
-  public StyleLoaderHelper$DummyCallback$1(teo paramteo, String paramString, int paramInt) {}
+  public StyleLoaderHelper$DummyCallback$1(svg paramsvg, String paramString, int paramInt) {}
   
   public void run()
   {
     QLog.d("TemplateFactory", 1, "check style config param: " + this.jdField_a_of_type_JavaLangString + " code: " + this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Teo.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Svg.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
     }
-    tfc.a(teo.a(this.jdField_a_of_type_Teo), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    svu.a(svg.a(this.jdField_a_of_type_Svg), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

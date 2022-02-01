@@ -1,18 +1,27 @@
-import android.os.Message;
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView;
+import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
 
 public class amkn
-  extends bdzm
 {
-  public amkn(HotChatCenterFragment paramHotChatCenterFragment) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.what;
-    if ((i == 1003) || (i == 2003)) {
-      this.a.b();
-    }
-  }
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public Friends a;
+  public MutualMarkIconsView a;
+  public OnlineStatusView a;
+  public String a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
+  public ImageView d;
+  public ImageView e;
+  public ImageView f;
+  public ImageView g;
 }
 
 

@@ -1,44 +1,18 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.util.WeakReference;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class zwk
+  implements baey
 {
-  private List<zwn> jdField_a_of_type_JavaUtilList;
-  private Map<String, zwm> jdField_a_of_type_JavaUtilMap;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private WeakReference<zwo> jdField_a_of_type_MqqUtilWeakReference;
-  private AtomicInteger b;
+  public zwk(QRDisplayActivity paramQRDisplayActivity) {}
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.b = new AtomicInteger(0);
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      zwn localzwn = (zwn)localIterator.next();
-      zwj.a(localzwn.jdField_a_of_type_Zwd).a(localzwn.jdField_a_of_type_JavaLangString, new zwl(this, localzwn, i));
-    }
+    bdll.b(this.a.app, "CliOper", "", "", "0X800AEB1", "0X800AEB1", 0, 0, "", "", "", "");
   }
   
-  public void a(zwn paramzwn)
+  public void a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramzwn);
-  }
-  
-  public void a(zwo paramzwo)
-  {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramzwo);
+    bdll.b(this.a.app, "CliOper", "", "", "0X800AEB3", "0X800AEB3", 0, 0, "", "", "", "");
   }
 }
 

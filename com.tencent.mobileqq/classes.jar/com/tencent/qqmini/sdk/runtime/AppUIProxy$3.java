@@ -1,5 +1,7 @@
 package com.tencent.qqmini.sdk.runtime;
 
+import android.app.Activity;
+
 class AppUIProxy$3
   implements Runnable
 {
@@ -7,7 +9,9 @@ class AppUIProxy$3
   
   public void run()
   {
-    AppUIProxy.access$000(this.this$0).onStop();
+    if (this.this$0.mActivity != null) {
+      this.this$0.mActivity.finish();
+    }
   }
 }
 

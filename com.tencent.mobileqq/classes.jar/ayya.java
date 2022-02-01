@@ -1,30 +1,36 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.pic.PicShareToWX;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.os.Message;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
+import com.tencent.mobileqq.ocr.OCRPerformFragment.6.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class ayya
-  implements bihh
+  extends avio
 {
-  public ayya(PicShareToWX paramPicShareToWX, int paramInt) {}
+  public ayya(OCRPerformFragment paramOCRPerformFragment) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicShareToWX", 1, "onWXShareResp resp.errCode = " + paramBaseResp.errCode + ", fromType = " + this.jdField_a_of_type_Int);
-    }
-    if (paramBaseResp.errCode == 0)
+    this.a.a.sendEmptyMessageDelayed(101, 60000L);
+  }
+  
+  public void a(avir paramavir)
+  {
+    this.a.a.obtainMessage(102, paramavir).sendToTarget();
+  }
+  
+  protected void a(boolean paramBoolean, avir paramavir)
+  {
+    if (!OCRPerformFragment.a(this.a))
     {
-      PicShareToWX.a(this.jdField_a_of_type_Int, true);
-      PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX, true, 0, 1);
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
+      if (QLog.isColorLevel()) {
+        QLog.d("OCRPerformFragment", 2, "onPicOcrResult other!");
+      }
       return;
-      PicShareToWX.a(this.jdField_a_of_type_Int, false);
-      PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX, false, paramBaseResp.errCode, 1);
     }
+    this.a.a.removeMessages(101);
+    OCRPerformFragment.a(this.a, false);
+    OCRPerformFragment.a(this.a).runOnUiThread(new OCRPerformFragment.6.1(this, paramBoolean, paramavir));
   }
 }
 

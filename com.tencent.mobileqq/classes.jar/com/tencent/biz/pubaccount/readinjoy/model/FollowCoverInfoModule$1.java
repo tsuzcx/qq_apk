@@ -2,27 +2,27 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.content.SharedPreferences;
 import android.util.Base64;
-import bmqa;
+import bnrf;
 import java.util.HashMap;
 import java.util.Iterator;
 import org.json.JSONObject;
-import pxc;
-import rii;
+import ppn;
+import qzb;
 import tencent.im.oidb.articlesummary.articlesummary.TopicRecommendFeedsInfo;
 
 public class FollowCoverInfoModule$1
   implements Runnable
 {
-  public FollowCoverInfoModule$1(pxc parampxc) {}
+  public FollowCoverInfoModule$1(ppn paramppn) {}
   
   public void run()
   {
-    Object localObject1 = bmqa.a(pxc.a(this.this$0), true, false);
+    Object localObject1 = bnrf.a(ppn.a(this.this$0), true, false);
     if (localObject1 != null) {
       try
       {
-        pxc.a(this.this$0, ((SharedPreferences)localObject1).getInt("follow_tab_topic_update_info_exists", 0));
-        if (pxc.a(this.this$0) == 1)
+        ppn.a(this.this$0, ((SharedPreferences)localObject1).getInt("follow_tab_topic_update_info_exists", 0));
+        if (ppn.a(this.this$0) == 1)
         {
           Object localObject2 = ((SharedPreferences)localObject1).getString("follow_tab_topic_update_info", null);
           Object localObject3;
@@ -31,7 +31,7 @@ public class FollowCoverInfoModule$1
             localObject2 = Base64.decode((String)localObject2, 0);
             localObject3 = new articlesummary.TopicRecommendFeedsInfo();
             ((articlesummary.TopicRecommendFeedsInfo)localObject3).mergeFrom((byte[])localObject2);
-            pxc.a(this.this$0, rii.a((articlesummary.TopicRecommendFeedsInfo)localObject3));
+            ppn.a(this.this$0, qzb.a((articlesummary.TopicRecommendFeedsInfo)localObject3));
           }
           localObject1 = ((SharedPreferences)localObject1).getString("follow_tab_topic_update_info_exposure", null);
           if (localObject1 != null)
@@ -43,7 +43,7 @@ public class FollowCoverInfoModule$1
               localObject3 = (String)((Iterator)localObject2).next();
               Long localLong = Long.valueOf(((JSONObject)localObject1).optLong((String)localObject3, 0L));
               if (localLong.longValue() != 0L) {
-                pxc.a(this.this$0).put(Long.valueOf((String)localObject3), localLong);
+                ppn.a(this.this$0).put(Long.valueOf((String)localObject3), localLong);
               }
             }
           }
@@ -53,7 +53,7 @@ public class FollowCoverInfoModule$1
       catch (Exception localException)
       {
         localException.printStackTrace();
-        pxc.a(this.this$0, 0);
+        ppn.a(this.this$0, 0);
       }
     }
   }

@@ -1,18 +1,18 @@
 package com.tencent.biz.publicAccountImageCollection;
 
 import java.util.ArrayList;
-import uvi;
-import uwf;
+import uwt;
+import uxq;
 
 public class PublicAccountImageCollectionMainActivity$3$9
   implements Runnable
 {
-  public PublicAccountImageCollectionMainActivity$3$9(uwf paramuwf, ArrayList paramArrayList) {}
+  public PublicAccountImageCollectionMainActivity$3$9(uxq paramuxq, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if (PublicAccountImageCollectionMainActivity.a(this.jdField_a_of_type_Uwf.a) != null) {
-      PublicAccountImageCollectionMainActivity.a(this.jdField_a_of_type_Uwf.a).a(this.jdField_a_of_type_JavaUtilArrayList);
+    if (PublicAccountImageCollectionMainActivity.a(this.jdField_a_of_type_Uxq.a) != null) {
+      PublicAccountImageCollectionMainActivity.a(this.jdField_a_of_type_Uxq.a).a(this.jdField_a_of_type_JavaUtilArrayList);
     }
   }
 }

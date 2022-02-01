@@ -1,68 +1,72 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.telephony.TelephonyManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class adpd
-  extends BroadcastReceiver
+  implements admy
 {
-  public adpd(BaseChatPie paramBaseChatPie) {}
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<CustomWebView> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public adpd(CustomWebView paramCustomWebView, JSONObject paramJSONObject)
   {
-    paramContext = paramIntent.getAction();
-    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramCustomWebView);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("__nativeAPICallID__");
+  }
+  
+  public void onComplete()
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "receive action_recv_video_request");
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 4]);");
       }
-      this.a.k(2);
     }
-    do
+  }
+  
+  public void onFailure(int paramInt, String paramString)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      return;
-      if ("android.intent.action.PHONE_STATE".equals(paramContext))
-      {
-        paramContext = (TelephonyManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("phone");
-        if (paramContext.getCallState() == 1)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "receive action_phone_state_changed|call_state_ringing");
-          }
-          this.a.k(2);
-        }
-        if (paramContext.getCallState() == 1)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "receive action_phone_state_changed|call_state_ringing");
-          }
-          paramIntent = MediaPlayerManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          if (paramIntent.a()) {
-            paramIntent.a(false);
-          }
-        }
-        this.a.e(paramContext.getCallState());
-        return;
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 3, " + paramInt + ", '" + paramString + "']);");
       }
-      if ((BaseChatPie.i() == 1) && ("vivo_smart_shot_enter".equals(paramContext)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("vivo", 2, "receive action_vivo_smart_shot_enter");
-        }
-        BaseChatPie.a(this.a, Boolean.valueOf(false));
-        return;
-      }
-    } while (!"com.huawei.hwmultidisplay.action.WINDOW_CAST_MODE".equals(paramContext));
-    boolean bool = paramIntent.getBooleanExtra("mode", false);
-    QLog.d("WindowsCastReceiver", 1, "onReceive mode = " + bool);
-    if (bool) {}
-    for (int i = 1;; i = 0)
+    }
+  }
+  
+  public void onPermission(int paramInt)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      bgjk.a = i;
-      return;
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 1, " + paramInt + "]);");
+      }
+    }
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 2, " + paramJSONObject.toString() + "]);");
+      }
+    }
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 5, " + paramJSONObject.toString() + "]);");
+      }
     }
   }
 }

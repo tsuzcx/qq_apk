@@ -1,12 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceText;
 
 class ahcs
   implements DialogInterface.OnClickListener
 {
-  ahcs(ahch paramahch) {}
+  ahcs(ahcr paramahcr, MessageForDeviceText paramMessageForDeviceText) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ((abzb)this.jdField_a_of_type_Ahcr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a(this.jdField_a_of_type_Ahcr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahcr.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahcr.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceText);
+  }
 }
 
 

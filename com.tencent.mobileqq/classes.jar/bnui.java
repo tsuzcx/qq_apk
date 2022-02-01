@@ -1,60 +1,29 @@
-import android.os.Handler;
-import android.os.HandlerThread;
+import android.opengl.GLSurfaceView.EGLContextFactory;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.gif.video.PngsTextDrawer.1;
-import dov.com.qq.im.ae.gif.video.PngsTextDrawer.2;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class bnui
+class bnui
+  implements GLSurfaceView.EGLContextFactory
 {
-  private static String jdField_a_of_type_JavaLangString = bntw.class.getSimpleName();
-  private int jdField_a_of_type_Int = 320;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private bnrm jdField_a_of_type_Bnrm;
-  private bnuj jdField_a_of_type_Bnuj;
-  private int jdField_b_of_type_Int = 320;
-  private String jdField_b_of_type_JavaLangString = bndp.jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private int d;
+  private int jdField_a_of_type_Int = 12440;
   
-  public bnui(String paramString)
+  private bnui(bnud parambnud) {}
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    paramString = new HandlerThread("PngsTextDrawerHT" + System.currentTimeMillis());
-    paramString.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramString.getLooper());
+    int i = this.jdField_a_of_type_Int;
+    bnud.a(this.jdField_a_of_type_Bnud, paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 }));
+    return bnud.a(this.jdField_a_of_type_Bnud);
   }
   
-  private List<String> a(String paramString)
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    String[] arrayOfString = new File(paramString).list();
-    Arrays.sort(arrayOfString);
-    ArrayList localArrayList = new ArrayList();
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = arrayOfString[i];
-      localArrayList.add(paramString + File.separator + str);
-      i += 1;
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
+      QLog.e("VipARCameraController", 2, new Object[] { "DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext });
     }
-    return localArrayList;
-  }
-  
-  public void a(bnuj parambnuj)
-  {
-    this.jdField_a_of_type_Bnuj = parambnuj;
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "start add text to png");
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsTextDrawer.2(this, parambnuj));
-  }
-  
-  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsTextDrawer.1(this, paramFloat3, paramFloat4, paramString1, paramInt1, paramString2, paramString3, paramInt2, paramFloat1, paramFloat2));
   }
 }
 

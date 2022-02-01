@@ -1,26 +1,75 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-class ards
-  implements TextWatcher
+public class ards
+  extends arac<ardr>
 {
-  ards(ardr paramardr) {}
-  
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  @NonNull
+  public ardr a(int paramInt)
   {
-    if (!TextUtils.isEmpty(paramCharSequence)) {
-      this.a.c();
+    return new ardr();
+  }
+  
+  @Nullable
+  public ardr a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    {
+      ardr localardr = ardr.a(paramArrayOfaraj[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("DonDisturbProcessor", 0, "onParsed don disturb" + paramArrayOfaraj[0].a);
+      }
+      return localardr;
     }
+    return new ardr();
+  }
+  
+  public void a(ardr paramardr)
+  {
+    bhsi.a(BaseApplicationImpl.getContext(), "open_don_disturb", BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramardr.a());
+    if (QLog.isColorLevel()) {
+      QLog.d("DonDisturbProcessor", 0, "onUpdate don disturb" + paramardr);
+    }
+  }
+  
+  public Class<ardr> clazz()
+  {
+    return ardr.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 453;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ards
  * JD-Core Version:    0.7.0.1
  */

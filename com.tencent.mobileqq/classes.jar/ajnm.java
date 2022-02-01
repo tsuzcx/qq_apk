@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.Context;
+import android.view.View;
 
-class ajnm
-  implements DialogInterface.OnKeyListener
+public class ajnm
+  extends ajoo
 {
-  ajnm(ajnk paramajnk) {}
+  public ajnn a;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public ajnm(Context paramContext, View paramView)
   {
-    if (paramInt == 4)
-    {
-      ajnk.a(this.a, ajnk.a(this.a), Long.valueOf(ajnk.a(this.a)).longValue());
-      ajnk.a(this.a);
-    }
-    return true;
+    super(paramContext, paramView);
   }
 }
 

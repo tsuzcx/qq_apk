@@ -1,182 +1,65 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.beacon.event.UserAction;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class lgs
+public class lgs<T extends lgr>
+  extends Handler
 {
-  static int jdField_a_of_type_Int = 0;
-  static long jdField_a_of_type_Long;
-  static String jdField_a_of_type_JavaLangString = "";
-  static String b = "";
-  static String c = "";
+  final String jdField_a_of_type_JavaLangString;
+  WeakReference<EffectConfigBase<T>> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public static void a(int paramInt)
+  public lgs(String paramString, EffectConfigBase<T> paramEffectConfigBase)
   {
-    if ((paramInt != 1) && (paramInt != 3) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)))
-    {
-      long l = System.currentTimeMillis();
-      a(jdField_a_of_type_JavaLangString, (l - jdField_a_of_type_Long) / 1000L, jdField_a_of_type_Int);
-      jdField_a_of_type_JavaLangString = "";
-      jdField_a_of_type_Int = 0;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramEffectConfigBase);
   }
   
-  public static void a(int paramInt, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    g(paramString);
-    if (!TextUtils.isEmpty(b)) {
-      a("0X8008025", b);
-    }
-  }
-  
-  public static void a(VideoAppInterface paramVideoAppInterface, String paramString)
-  {
-    if ((paramVideoAppInterface != null) && (paramString != null))
+    boolean bool = true;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
     {
-      g(paramString);
-      paramVideoAppInterface = (lhz)paramVideoAppInterface.a(5);
-      boolean bool = paramVideoAppInterface.a(3, "normal");
-      if ((paramVideoAppInterface.a(3, "interact")) || (bool)) {
-        a("0X8008026", null);
-      }
-    }
-    else
-    {
-      return;
-    }
-    a("0X8008027", null);
-  }
-  
-  public static void a(String paramString)
-  {
-    g(paramString);
-    a("0X8008021", null);
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    if ((paramInt == 1) || (paramInt == 3))
-    {
-      a(paramString, 10L, paramInt);
-      return;
-    }
-    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (!paramString.equals(jdField_a_of_type_JavaLangString)))
-    {
-      long l = System.currentTimeMillis();
-      a(jdField_a_of_type_JavaLangString, (l - jdField_a_of_type_Long) / 1000L, jdField_a_of_type_Int);
-    }
-    jdField_a_of_type_JavaLangString = paramString;
-    jdField_a_of_type_Int = paramInt;
-    jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public static void a(String paramString1, int paramInt, String paramString2)
-  {
-    g(paramString2);
-    b = paramString1;
-  }
-  
-  public static void a(String paramString, long paramLong, int paramInt)
-  {
-    lbc.c("MagicDataReport", "DOUBLE SCREEN DataReport onStateReport: |" + paramString + "|" + paramLong);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("activeName", paramString);
-    localHashMap.put("duration", String.valueOf(paramLong));
-    UserAction.onUserAction("actAVFunChatFace", true, -1L, -1L, localHashMap, true);
-    try
-    {
-      UserAction.flushObjectsToDB(true);
-      int i = 0;
-      switch (paramInt)
+      EffectConfigBase localEffectConfigBase = (EffectConfigBase)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      lgr locallgr;
+      switch (paramMessage.what)
       {
       default: 
-        paramInt = i;
-        if (paramInt != 0) {
-          b(paramInt, paramString);
-        }
+        localEffectConfigBase.a(paramMessage);
+      case 0: 
+        do
+        {
+          return;
+          locallgr = (lgr)paramMessage.obj;
+          l = paramMessage.arg1;
+          bool = EffectConfigBase.a(localEffectConfigBase, locallgr, localEffectConfigBase.jdField_a_of_type_Lgr);
+          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "MSG_ON_ITEM_SELECT_CHANGED, seq[" + l + "], isEqual[" + bool + "], count_MSG[" + localEffectConfigBase.jdField_a_of_type_Int + "], \nitem[" + locallgr + "], \ncur[" + localEffectConfigBase.jdField_a_of_type_Lgr + "]");
+          if (localEffectConfigBase.jdField_a_of_type_Int >= 0) {
+            localEffectConfigBase.jdField_a_of_type_Int -= 1;
+          }
+        } while (!bool);
+        EffectConfigBase.a(localEffectConfigBase, l, locallgr);
         return;
+      case 1: 
+        locallgr = (lgr)paramMessage.obj;
+        l = paramMessage.arg2;
+        if (paramMessage.arg1 == 1) {}
+        for (;;)
+        {
+          EffectConfigBase.a(localEffectConfigBase, l, locallgr, bool);
+          return;
+          bool = false;
+        }
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        lbc.e("MagicDataReport", localException.getMessage());
-        continue;
-        paramInt = 3;
-        continue;
-        paramInt = 4;
-        continue;
-        paramInt = 5;
-      }
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    a("CliOper", paramString1, 0, paramString2);
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt, String paramString3)
-  {
-    lbc.c("MagicDataReport", "reportClickEvent key = " + paramString2 + ", fromType = " + paramInt + ", value = " + paramString3 + ", mRoomId = " + c);
-    bcst.b(null, paramString1, "", "", paramString2, paramString2, paramInt, 0, "", "", c, paramString3);
-  }
-  
-  public static void b(int paramInt, String paramString)
-  {
-    lbc.c("MagicDataReport", "WL_DEBUG reportChangeFace fromType = " + paramInt + ", id = " + paramString);
-    if ((TextUtils.isEmpty(c)) || (c.equals("0")))
-    {
-      VideoController localVideoController = VideoController.a();
-      c = localVideoController.a(localVideoController.a().d) + "";
-    }
-    if (paramInt == 5)
-    {
-      a("dc00898", "0X800984E", paramInt, paramString);
+      EffectConfigBase.a(localEffectConfigBase, (lgr)paramMessage.obj, paramMessage.arg1);
       return;
     }
-    a("dc00898", "0X80088B3", paramInt, paramString);
-  }
-  
-  public static void b(String paramString)
-  {
-    g(paramString);
-    a("0X800812F", null);
-  }
-  
-  public static void c(String paramString)
-  {
-    g(paramString);
-    a("0X8008130", null);
-  }
-  
-  public static void d(String paramString)
-  {
-    g(paramString);
-    a("0X800984D", null);
-  }
-  
-  public static void e(String paramString)
-  {
-    g(paramString);
-    a("0X8008131", null);
-  }
-  
-  public static void f(String paramString)
-  {
-    g(paramString);
-    a("0X8008022", null);
-  }
-  
-  static void g(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("0"))) {
-      c = paramString;
+    long l = 0L;
+    if (paramMessage.what == 0) {
+      l = paramMessage.arg1;
     }
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "handleMessage, had destroy, msg[" + paramMessage.what + "], seq[" + l + "]");
   }
 }
 

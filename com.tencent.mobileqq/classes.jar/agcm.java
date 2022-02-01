@@ -1,64 +1,43 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import Wallet.AcsGetMsgRsp;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.1;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.2;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class agcm
-  extends aqkz<agcl>
+  implements BusinessObserver
 {
-  @NonNull
-  public agcl a(int paramInt)
-  {
-    QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "migrateOldOrDefaultContent, type = " + paramInt);
-    return new agcl();
-  }
+  public agcm(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
   
-  @Nullable
-  public agcl a(aqlg[] paramArrayOfaqlg)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "onParsed");
+    if ((QQNotifySettingBaseFragment.a(this.a).isShowing()) && (QQNotifySettingBaseFragment.a(this.a) != null)) {
+      QQNotifySettingBaseFragment.a(this.a).dismiss();
     }
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return agcl.a(paramArrayOfaqlg[0].a);
+    if (paramInt == 2005)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(QQNotifySettingBaseFragment.a(), 2, "acs msg succ");
+      }
+      if (!paramBoolean) {
+        break label114;
+      }
+      paramBundle = (AcsGetMsgRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null) {
+        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.1(this, paramBundle));
+      }
     }
-    return null;
-  }
-  
-  public void a(agcl paramagcl) {}
-  
-  public Class<agcl> clazz()
-  {
-    return agcl.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TroopDragonKingAnimEntryConfig.config", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 609;
+    else
+    {
+      return;
+    }
+    QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.2(this));
+    return;
+    label114:
+    this.a.a();
   }
 }
 

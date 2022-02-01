@@ -1,28 +1,31 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aivc
-  implements View.OnTouchListener
+class aivc
+  implements View.OnClickListener
 {
-  float jdField_a_of_type_Float = 0.0F;
+  aivc(aivb paramaivb) {}
   
-  public aivc(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_Float = paramView.getAlpha();
-      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
+    bdll.b(aivb.a(this.a), "CliOper", "", "", "Free_call", "Clk_free_call_tips", 0, 0, "", "", "", "");
+    aivb.c(aivb.a(this.a), aivb.a(this.a).jdField_a_of_type_JavaLangString);
+    aivb.a(this.a).a();
+    String str1 = null;
+    String str2 = null;
+    if (aivb.a(this.a).jdField_a_of_type_Int == 1006) {
+      str2 = aivb.a(this.a).jdField_a_of_type_JavaLangString;
     }
     for (;;)
     {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(this.jdField_a_of_type_Float);
-      }
+      ChatActivityUtils.a(aivb.a(this.a), aivb.a(this.a), aivb.a(this.a).jdField_a_of_type_Int, str1, aivb.a(this.a).d, str2, true, aivb.a(this.a).b, true, true, null, "from_internal");
+      bdll.b(aivb.a(this.a), "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "8", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      str1 = aivb.a(this.a).jdField_a_of_type_JavaLangString;
     }
   }
 }

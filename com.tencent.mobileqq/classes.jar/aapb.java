@@ -1,39 +1,15 @@
-import com.tencent.biz.troop.VideoCombineHelper.2;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.subscribe.event.SharePanelShowStateEvent;
 
-public class aapb
-  extends aapz
+class aapb
+  implements DialogInterface.OnDismissListener
 {
-  public aapb(VideoCombineHelper.2 param2)
-  {
-    super(param2.this$0);
-  }
+  aapb(aapa paramaapa) {}
   
-  public void a(aapy paramaapy)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramaapy instanceof aapt)) {
-      this.a.jdField_a_of_type_Aapi.a("", false, "download failed! msg = " + paramaapy.d);
-    }
-    do
-    {
-      return;
-      if ((paramaapy instanceof aapl))
-      {
-        this.a.jdField_a_of_type_Aapi.a("", false, "combine failed! msg = " + paramaapy.d);
-        return;
-      }
-    } while (!(paramaapy instanceof aapw));
-    this.a.jdField_a_of_type_Aapi.a("", false, "sending failed! msg = " + paramaapy.d);
-  }
-  
-  public void b(aapy paramaapy)
-  {
-    if ((paramaapy instanceof aapw))
-    {
-      paramaapy = paramaapy.a();
-      this.a.jdField_a_of_type_Aapi.a(paramaapy.e, true, "seding success");
-      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
-    }
+    aaak.a().a(new SharePanelShowStateEvent(false));
   }
 }
 

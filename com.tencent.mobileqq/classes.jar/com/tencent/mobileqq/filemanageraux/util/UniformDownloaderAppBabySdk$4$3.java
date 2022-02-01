@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanageraux.util;
 
-import aucw;
-import aucx;
+import auur;
+import auus;
 
 public class UniformDownloaderAppBabySdk$4$3
   implements Runnable
 {
-  public UniformDownloaderAppBabySdk$4$3(aucx paramaucx, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3) {}
+  public UniformDownloaderAppBabySdk$4$3(auus paramauus, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3) {}
   
   public void run()
   {
-    aucw.a(this.jdField_a_of_type_Aucx.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c);
-    aucw.a(this.jdField_a_of_type_Aucx.a);
+    auur.a(this.jdField_a_of_type_Auus.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c);
+    auur.a(this.jdField_a_of_type_Auus.a);
   }
 }
 

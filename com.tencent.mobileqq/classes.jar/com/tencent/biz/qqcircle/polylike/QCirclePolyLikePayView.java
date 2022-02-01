@@ -1,31 +1,33 @@
 package com.tencent.biz.qqcircle.polylike;
 
+import aadv;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
+import android.text.SpannableString;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bglp;
-import bgpa;
+import bhlq;
+import bhpc;
 import com.tencent.biz.qqcircle.report.QCircleReportBean;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import qqcircle.QQCircleFeedBase.StPolyLike;
-import uxx;
-import vpo;
-import vpp;
-import vps;
-import vpt;
-import vqa;
-import vrc;
-import vrg;
-import zzr;
+import uzg;
+import vrx;
+import vry;
+import vsb;
+import vsc;
+import vsj;
+import vtn;
+import vtr;
+import zuc;
 
 public class QCirclePolyLikePayView
   extends QCirclePolyBaseLikeView
 {
-  private bgpa a;
+  private bhpc a;
   
   public QCirclePolyLikePayView(@NonNull Context paramContext, int paramInt)
   {
@@ -34,18 +36,34 @@ public class QCirclePolyLikePayView
   
   private void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_Bgpa == null)
-    {
-      this.jdField_a_of_type_Bgpa = bglp.a(getContext(), 230);
-      this.jdField_a_of_type_Bgpa.setMessage(String.format(getContext().getResources().getString(2131697197), new Object[] { Float.valueOf(paramFloat) }));
-      this.jdField_a_of_type_Bgpa.setNegativeButton(2131690582, new vps(this));
-      this.jdField_a_of_type_Bgpa.setPositiveButton(2131692384, new vpt(this));
+    int j = 0;
+    this.jdField_a_of_type_Bhpc = bhlq.a(getContext(), 230);
+    SpannableString localSpannableString = new SpannableString(String.format(getContext().getResources().getString(2131697265), new Object[] { Float.valueOf(paramFloat) }));
+    int i;
+    if ((paramFloat >= 10.0F) && (paramFloat < 100.0F)) {
+      i = 1;
     }
-    if (!this.jdField_a_of_type_Bgpa.isShowing())
+    for (;;)
     {
-      this.jdField_a_of_type_Bgpa.show();
-      vrg.a(95, 1, a(), a().getPageId());
-      vrc.a(String.valueOf(uxx.a()), 95, 1, this.c, a(), null, a().getPageId());
+      localSpannableString.setSpan(new zuc(getContext(), 2130844049), i + 11, i + 12, 33);
+      this.jdField_a_of_type_Bhpc.setMessage(localSpannableString);
+      this.jdField_a_of_type_Bhpc.setNegativeButton(2131690580, new vsb(this));
+      this.jdField_a_of_type_Bhpc.setPositiveButton(2131692389, new vsc(this));
+      if (!this.jdField_a_of_type_Bhpc.isShowing())
+      {
+        this.jdField_a_of_type_Bhpc.show();
+        vtr.a(95, 1, a(), a().getPageId());
+        vtn.a(String.valueOf(uzg.a()), 95, 1, this.c, a(), null, a().getPageId());
+      }
+      return;
+      i = j;
+      if (paramFloat >= 100.0F)
+      {
+        i = j;
+        if (paramFloat < 1000.0F) {
+          i = 2;
+        }
+      }
     }
   }
   
@@ -62,9 +80,9 @@ public class QCirclePolyLikePayView
   public int a()
   {
     if (b() == 256) {
-      return 2131560753;
+      return 2131560778;
     }
-    return 2131560752;
+    return 2131560777;
   }
   
   public String a()
@@ -74,21 +92,21 @@ public class QCirclePolyLikePayView
   
   protected void a()
   {
-    float f = vpp.a().a();
+    float f = vry.a().a();
     Context localContext = getContext();
     getContext();
     ((Vibrator)localContext.getSystemService("vibrator")).vibrate(50L);
-    if (this.jdField_a_of_type_Vpo != null) {
-      this.jdField_a_of_type_Vpo.b();
+    if (this.jdField_a_of_type_Vrx != null) {
+      this.jdField_a_of_type_Vrx.b();
     }
     if (f < this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike.price.get()) {
       a(f);
     }
-    while (this.jdField_a_of_type_Vqa == null) {
+    while (this.jdField_a_of_type_Vsj == null) {
       return;
     }
-    this.jdField_a_of_type_Vqa.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike, 21);
-    this.jdField_a_of_type_Vqa.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike);
+    this.jdField_a_of_type_Vsj.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike, 21);
+    this.jdField_a_of_type_Vsj.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike);
   }
   
   public void a(Context paramContext, View paramView)
@@ -103,7 +121,7 @@ public class QCirclePolyLikePayView
   {
     super.a(paramObject, paramInt);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike.price.get()));
-    zzr.a(this.jdField_a_of_type_AndroidWidgetTextView, true);
+    aadv.a(this.jdField_a_of_type_AndroidWidgetTextView, true);
   }
 }
 

@@ -1,17 +1,21 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.redtouch.RedTouchUI;
-import com.tencent.widget.SimpleTextView;
-import cooperation.comic.ui.QQComicTabBarView;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-public class blbp
+class blbp
+  implements blcm
 {
-  public ImageView a;
-  public URLDrawable a;
-  public RedTouchUI a;
-  public SimpleTextView a;
+  protected long a;
   
-  public blbp(QQComicTabBarView paramQQComicTabBarView) {}
+  public blbp(blbl paramblbl, long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    if (this.jdField_a_of_type_Long != 0L) {
+      QSecFramework.a(7L, this.jdField_a_of_type_Long, paramInt, 0L, paramArrayOfByte1, paramArrayOfByte2, null, null);
+    }
+  }
 }
 
 

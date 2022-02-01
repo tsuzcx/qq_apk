@@ -1,6 +1,15 @@
+import java.util.List;
+
 public class bcdu
 {
-  public void a() {}
+  public List<Long> a;
+  
+  public bcdu() {}
+  
+  public bcdu(List<Long> paramList)
+  {
+    this.a = paramList;
+  }
 }
 
 

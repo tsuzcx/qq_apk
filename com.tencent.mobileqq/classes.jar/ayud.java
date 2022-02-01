@@ -1,18 +1,8 @@
-import android.os.Bundle;
+import android.view.View;
 
-class ayud
-  extends ayuf
+public abstract interface ayud
 {
-  ayud(ayub paramayub) {}
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    super.a(paramBoolean, paramBundle);
-    this.a.a();
-    if ((ayub.a(this.a)) && (ayub.a(this.a) != null)) {
-      ayub.b(this.a).a();
-    }
-  }
+  public abstract void onClick(View paramView);
 }
 
 

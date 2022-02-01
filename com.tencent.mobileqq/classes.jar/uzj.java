@@ -1,130 +1,146 @@
-import com.tencent.biz.qqcircle.beans.QCircleFakeFeed;
-import cooperation.qzone.LbsDataV2.PoiInfo;
-import cooperation.qzone.model.LabelInfo;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.widgets.QCircleBannerView;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import common.config.service.QzoneConfig;
+import feedcloud.FeedCloudMeta.StDittoFeed;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
+import qqcircle.QQCircleDitto.StCircleDittoDataNew;
+import qqcircle.QQCircleDitto.StSinglePicBanner;
+import qqcircle.QQCircleFeedBase.StFollowPageData;
 
 public class uzj
+  extends vbn
 {
-  private QCircleFakeFeed a = new QCircleFakeFeed();
+  public static final long a;
+  private QCircleBannerView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBannerView;
+  private QQCircleDitto.StSinglePicBanner jdField_a_of_type_QqcircleQQCircleDitto$StSinglePicBanner;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  public QCircleFakeFeed a()
+  static
   {
-    return this.a;
+    jdField_a_of_type_Long = TimeUnit.SECONDS.toMillis(QzoneConfig.getQQCircleShowBannerInterval());
   }
   
-  public uzj a(int paramInt)
+  public uzj(Bundle paramBundle)
   {
-    QCircleFakeFeed.a(this.a, paramInt);
-    return this;
+    super(paramBundle);
   }
   
-  public uzj a(long paramLong)
+  protected BaseWidgetView a(ViewGroup paramViewGroup, aabp paramaabp)
   {
-    QCircleFakeFeed.a(this.a, paramLong);
-    return this;
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBannerView = new QCircleBannerView(getContext());
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBannerView.setReportBean(a());
+    return this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBannerView;
   }
   
-  public uzj a(LbsDataV2.PoiInfo paramPoiInfo)
+  protected String a()
   {
-    QCircleFakeFeed.a(this.a, paramPoiInfo);
-    return this;
+    return "QCircleInviteBannerBlock";
   }
   
-  public uzj a(String paramString)
+  public void a(QQCircleFeedBase.StFollowPageData paramStFollowPageData)
   {
-    QCircleFakeFeed.a(this.a, paramString);
-    return this;
+    boolean bool1;
+    boolean bool2;
+    label85:
+    QQCircleDitto.StCircleDittoDataNew localStCircleDittoDataNew;
+    if ((paramStFollowPageData != null) && (paramStFollowPageData.has())) {
+      if ((!TextUtils.isEmpty(paramStFollowPageData.tipsTitle.get())) && (uyk.a().e()))
+      {
+        bool1 = true;
+        if ((!paramStFollowPageData.dittoFeed.has()) || (paramStFollowPageData.dittoFeed.get() == null) || (paramStFollowPageData.dittoFeed.dittoId.get() != 3) || (paramStFollowPageData.dittoFeed.dittoPatternId.get() != 2)) {
+          break label318;
+        }
+        bool2 = true;
+        QLog.d("QCircleInviteBannerBlock", 1, "needShowAuthBanner:" + bool1 + "    needShowDittoBanner:" + bool2);
+        if ((bool1) || (!bool2)) {
+          break label357;
+        }
+        localStCircleDittoDataNew = new QQCircleDitto.StCircleDittoDataNew();
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localStCircleDittoDataNew.mergeFrom(paramStFollowPageData.dittoFeed.dittoDataNew.get().toByteArray());
+        if (localStCircleDittoDataNew.singlePicBanner.get() != null)
+        {
+          long l1 = uyk.a().a();
+          long l2 = System.currentTimeMillis() - l1;
+          if (l1 == 0L) {
+            break label363;
+          }
+          if (l2 > jdField_a_of_type_Long)
+          {
+            break label363;
+            QLog.d("QCircleInviteBannerBlock", 1, "min interval:" + jdField_a_of_type_Long + "    current show interval:" + l2 + "    isValid:" + bool1);
+            a(bool1);
+            if (!bool1) {
+              break label357;
+            }
+            if (paramStFollowPageData.busiReport.get() != null) {
+              this.jdField_a_of_type_ArrayOfByte = paramStFollowPageData.busiReport.get().toByteArray();
+            }
+            setDatas(new ArrayList(Arrays.asList(new QQCircleDitto.StSinglePicBanner[] { (QQCircleDitto.StSinglePicBanner)localStCircleDittoDataNew.singlePicBanner.get() })));
+            return;
+            bool1 = false;
+            break;
+            label318:
+            bool2 = false;
+            break label85;
+          }
+          bool1 = false;
+          continue;
+        }
+        a(false);
+      }
+      catch (Exception paramStFollowPageData)
+      {
+        QLog.e("QCircleInviteBannerBlock", 1, "getSinglePicBanner error" + paramStFollowPageData.getMessage());
+      }
+      label357:
+      return;
+      label363:
+      bool1 = true;
+    }
   }
   
-  public uzj a(ArrayList<String> paramArrayList)
+  protected String b()
   {
-    QCircleFakeFeed.a(this.a, paramArrayList);
-    return this;
+    return "banner";
   }
   
-  public uzj b(int paramInt)
+  public void loadData(aabu paramaabu) {}
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    QCircleFakeFeed.b(this.a, paramInt);
-    return this;
+    if ((this.mDataList != null) && (this.mDataList.size() > 0))
+    {
+      this.jdField_a_of_type_QqcircleQQCircleDitto$StSinglePicBanner = ((QQCircleDitto.StSinglePicBanner)this.mDataList.get(paramInt));
+      if ((this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBannerView != null) && (this.jdField_a_of_type_QqcircleQQCircleDitto$StSinglePicBanner != null))
+      {
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBannerView.setReportInfo(this.jdField_a_of_type_ArrayOfByte);
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBannerView.setData(this.jdField_a_of_type_QqcircleQQCircleDitto$StSinglePicBanner);
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBannerView.setInviteBannerClickListener(new uzk(this));
+      }
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
-  public uzj b(String paramString)
-  {
-    QCircleFakeFeed.b(this.a, paramString);
-    return this;
-  }
-  
-  public uzj b(ArrayList<LabelInfo> paramArrayList)
-  {
-    QCircleFakeFeed.b(this.a, paramArrayList);
-    return this;
-  }
-  
-  public uzj c(int paramInt)
-  {
-    QCircleFakeFeed.c(this.a, paramInt);
-    return this;
-  }
-  
-  public uzj c(String paramString)
-  {
-    QCircleFakeFeed.c(this.a, paramString);
-    return this;
-  }
-  
-  public uzj c(ArrayList<String> paramArrayList)
-  {
-    QCircleFakeFeed.c(this.a, paramArrayList);
-    return this;
-  }
-  
-  public uzj d(int paramInt)
-  {
-    QCircleFakeFeed.d(this.a, paramInt);
-    return this;
-  }
-  
-  public uzj d(String paramString)
-  {
-    QCircleFakeFeed.d(this.a, paramString);
-    return this;
-  }
-  
-  public uzj d(ArrayList<String> paramArrayList)
-  {
-    QCircleFakeFeed.d(this.a, paramArrayList);
-    return this;
-  }
-  
-  public uzj e(String paramString)
-  {
-    QCircleFakeFeed.e(this.a, paramString);
-    return this;
-  }
-  
-  public uzj e(ArrayList<String> paramArrayList)
-  {
-    QCircleFakeFeed.e(this.a, paramArrayList);
-    return this;
-  }
-  
-  public uzj f(String paramString)
-  {
-    QCircleFakeFeed.f(this.a, paramString);
-    return this;
-  }
-  
-  public uzj f(ArrayList<String> paramArrayList)
-  {
-    QCircleFakeFeed.f(this.a, paramArrayList);
-    return this;
-  }
-  
-  public uzj g(String paramString)
-  {
-    QCircleFakeFeed.g(this.a, paramString);
-    return this;
-  }
+  public void onInitBlock(Bundle paramBundle) {}
 }
 
 

@@ -1,58 +1,17 @@
-import com.tencent.hlyyb.downloader.Downloader;
-import com.tencent.hlyyb.downloader.DownloaderTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Handler;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.12.1;
 
-class bddb
-  implements bdcz
+public class bddb
+  implements ahca
 {
-  bddb(bdda parambdda) {}
+  bddb(bdcy parambdcy) {}
   
-  public void a(DownloaderTask paramDownloaderTask)
+  public void a()
   {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskCompleted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSavePath() }));
-    if (bdda.a(this.a) != null) {
-      bdda.a(this.a).deleteTask(paramDownloaderTask, false);
+    if (bdcy.a(this.a) == null) {
+      bdcy.a(this.a, new Handler());
     }
-    if ((bdda.a(this.a) != null) && (bdda.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (bdda.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((bdcy)bdda.a(this.a).get(paramDownloaderTask.getUrl())).a();
-    }
-    bdda.a(this.a, paramDownloaderTask.getUrl());
-  }
-  
-  public void b(DownloaderTask paramDownloaderTask)
-  {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskDetected url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
-  }
-  
-  public void c(DownloaderTask paramDownloaderTask)
-  {
-    QLog.e("DownloadManager_Now_for_qq", 1, String.format("onTaskFailed url=%s failCode=%s failInfo=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getFailCode()), paramDownloaderTask.getFailInfo() }));
-    if (bdda.a(this.a) != null) {
-      bdda.a(this.a).deleteTask(paramDownloaderTask, false);
-    }
-    if ((bdda.a(this.a) != null) && (bdda.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (bdda.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((bdcy)bdda.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getFailCode(), paramDownloaderTask.getFailCode(), "failed");
-    }
-    bdda.a(this.a, paramDownloaderTask.getUrl());
-  }
-  
-  public void d(DownloaderTask paramDownloaderTask)
-  {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskPending url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
-  }
-  
-  public void e(DownloaderTask paramDownloaderTask)
-  {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskStarted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
-  }
-  
-  public void f(DownloaderTask paramDownloaderTask)
-  {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskReceived url=%s percent=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getPercentage()) }));
-    if ((bdda.a(this.a) != null) && (bdda.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (bdda.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((bdcy)bdda.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getReceivedLength(), paramDownloaderTask.getTotalLength(), paramDownloaderTask.getPercentage());
-    }
+    bdcy.a(this.a).postDelayed(new RedBagVideoManager.12.1(this), 1000L);
   }
 }
 

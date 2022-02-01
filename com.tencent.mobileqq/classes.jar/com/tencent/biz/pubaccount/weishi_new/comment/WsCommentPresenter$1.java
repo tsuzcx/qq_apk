@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
-import ufp;
+import ufr;
 
 public class WsCommentPresenter$1
   implements Runnable
 {
-  public WsCommentPresenter$1(ufp paramufp) {}
+  public WsCommentPresenter$1(ufr paramufr) {}
   
   public void run()
   {

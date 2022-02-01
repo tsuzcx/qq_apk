@@ -1,18 +1,18 @@
 package dov.com.qq.im.ptv;
 
-import anni;
-import bows;
+import anzj;
+import bpyn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class LightWeightCameraCaptureUnit$7
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$7(bows parambows) {}
+  public LightWeightCameraCaptureUnit$7(bpyn parambpyn) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), anni.a(2131704882), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), anzj.a(2131704989), 0).a();
     this.this$0.r();
   }
 }

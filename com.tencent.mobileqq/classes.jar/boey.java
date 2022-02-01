@@ -1,27 +1,9 @@
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.io.File;
 
 public class boey
-  implements WtTicketPromise
 {
-  public boey(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
-  
-  public void Done(Ticket paramTicket)
-  {
-    bnzb.b(AEEditorImageEditFragment.e(), "psKey success.");
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    bnzb.d(AEEditorImageEditFragment.e(), paramErrMsg.toString());
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    bnzb.d(AEEditorImageEditFragment.e(), paramErrMsg.toString());
-  }
+  public static final String a = bofe.b + File.separator + "gif";
+  public static final String b = a + File.separator + "gifPreview";
 }
 
 

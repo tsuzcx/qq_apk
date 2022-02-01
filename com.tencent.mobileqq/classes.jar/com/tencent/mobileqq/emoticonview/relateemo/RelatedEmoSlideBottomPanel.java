@@ -25,10 +25,10 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import asdj;
-import asdk;
-import asdl;
-import asdm;
+import assx;
+import assy;
+import assz;
+import asta;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 
@@ -43,7 +43,7 @@ public class RelatedEmoSlideBottomPanel
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private asdm jdField_a_of_type_Asdm;
+  private asta jdField_a_of_type_Asta;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -84,12 +84,12 @@ public class RelatedEmoSlideBottomPanel
       if (!this.jdField_d_of_type_Boolean)
       {
         this.jdField_d_of_type_Boolean = true;
-        if (this.jdField_a_of_type_Asdm != null) {
-          this.jdField_a_of_type_Asdm.a();
+        if (this.jdField_a_of_type_Asta != null) {
+          this.jdField_a_of_type_Asta.a();
         }
       }
-      if (this.jdField_a_of_type_Asdm != null) {
-        this.jdField_a_of_type_Asdm.a(f2 - a());
+      if (this.jdField_a_of_type_Asta != null) {
+        this.jdField_a_of_type_Asta.a(f2 - a());
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setY(f2);
       return f1;
@@ -160,22 +160,25 @@ public class RelatedEmoSlideBottomPanel
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
       localObject = new FrameLayout.LayoutParams(i, i);
       ((FrameLayout.LayoutParams)localObject).gravity = 17;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849661);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849671);
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-      setOnClickListener(new asdj(this));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new asdk(this));
+      setOnClickListener(new assx(this));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new assy(this));
       setVisibility(4);
       return;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130849659);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130849669);
     }
   }
   
   private void b(int paramInt)
   {
-    a(new float[] { this.jdField_a_of_type_AndroidWidgetLinearLayout.getY(), paramInt });
-    this.jdField_a_of_type_Boolean = false;
-    a(false);
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getY() != paramInt)
+    {
+      a(new float[] { this.jdField_a_of_type_AndroidWidgetLinearLayout.getY(), paramInt });
+      this.jdField_a_of_type_Boolean = false;
+      a(false);
+    }
   }
   
   private void c()
@@ -183,8 +186,8 @@ public class RelatedEmoSlideBottomPanel
     if (this.jdField_d_of_type_Boolean)
     {
       this.jdField_d_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Asdm != null) {
-        this.jdField_a_of_type_Asdm.b();
+      if (this.jdField_a_of_type_Asta != null) {
+        this.jdField_a_of_type_Asta.b();
       }
     }
     if (this.jdField_b_of_type_Int == 0) {
@@ -220,14 +223,17 @@ public class RelatedEmoSlideBottomPanel
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    a(true, new float[] { this.jdField_a_of_type_AndroidWidgetLinearLayout.getY(), getMeasuredHeight() });
+    if (this.jdField_a_of_type_Int != paramInt)
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      a(true, new float[] { this.jdField_a_of_type_AndroidWidgetLinearLayout.getY(), getMeasuredHeight() });
+    }
   }
   
   public void a(boolean paramBoolean, float... paramVarArgs)
   {
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "y", paramVarArgs);
-    localObjectAnimator.addUpdateListener(new asdl(this, paramBoolean, paramVarArgs));
+    localObjectAnimator.addUpdateListener(new assz(this, paramBoolean, paramVarArgs));
     localObjectAnimator.setDuration(250L).start();
   }
   
@@ -350,8 +356,8 @@ public class RelatedEmoSlideBottomPanel
     for (;;)
     {
       a(-paramInt4);
-      if (this.jdField_a_of_type_Asdm != null) {
-        this.jdField_a_of_type_Asdm.a(f1 - a());
+      if (this.jdField_a_of_type_Asta != null) {
+        this.jdField_a_of_type_Asta.a(f1 - a());
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setY(f1);
       return;
@@ -378,16 +384,16 @@ public class RelatedEmoSlideBottomPanel
   public void onStopNestedScroll(View paramView)
   {
     this.jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper.onStopNestedScroll(paramView);
-    if (!this.jdField_b_of_type_Boolean)
+    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Int != 4))
     {
       this.jdField_a_of_type_Int = 3;
       c();
     }
   }
   
-  public void setCallback(asdm paramasdm)
+  public void setCallback(asta paramasta)
   {
-    this.jdField_a_of_type_Asdm = paramasdm;
+    this.jdField_a_of_type_Asta = paramasta;
   }
   
   public void setContentHeight(int paramInt)

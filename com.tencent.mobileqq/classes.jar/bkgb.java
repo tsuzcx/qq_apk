@@ -1,174 +1,193 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
+import com.tencent.qg.qq.QGameApp.1;
+import com.tencent.qg.qq.QGameApp.3;
 import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.io.File;
+import org.json.JSONObject;
 
 public class bkgb
+  extends axee
+  implements IEventReceiver
 {
-  private static int a(int paramInt)
+  public static volatile boolean a;
+  private bkgd a;
+  
+  public bkgb(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return 2;
-    case 1: 
-      return 3;
-    case 2: 
-      return 1;
-    case 3: 
-      return 6;
-    }
-    return 7;
+    super(paramMiniAppActivity, paramString, paramInt);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, long paramLong)
+  public static String a(Context paramContext, String paramString)
   {
-    if (paramInt == 7220) {}
-    try
-    {
-      a(paramQQAppInterface, "0X80098E4", "" + paramLong, "", "", "");
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      return paramContext.getCacheDir().getAbsolutePath();
     }
-    catch (Throwable paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
-    }
+    return paramContext.getCacheDir().getAbsolutePath() + File.separator + paramString;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, arcs paramarcs, int paramInt1, int paramInt2)
+  public static String a(Context paramContext, String paramString1, String paramString2)
   {
+    if (TextUtils.isEmpty(paramString2)) {
+      return a(paramContext, paramString1);
+    }
+    return a(paramContext, paramString1) + File.separator + paramString2;
+  }
+  
+  private String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return "";
+      paramString = new File(paramString);
+    } while ((!paramString.exists()) || (paramString.length() <= 0L));
     try
     {
-      if (paramarcs.a.strPkgName.equals("com.android.ReadInJoy")) {
-        a(paramQQAppInterface, "0X80098E6", "" + a(paramInt1), "" + paramInt2, "", "");
+      paramString = new JSONObject(bhmi.b(paramString)).optString("version");
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    String str = paramString1;
+    if (!TextUtils.isEmpty(paramString2)) {
+      str = paramString1 + File.separator + paramString2;
+    }
+    paramString1 = str;
+    if (!TextUtils.isEmpty(paramString3)) {
+      paramString1 = str + File.separator + paramString3;
+    }
+    return paramString1;
+  }
+  
+  private void a(int paramInt)
+  {
+    QLog.e("QGameApp", 1, new Object[] { "dispatchAppInitFailed. errorCode=", Integer.valueOf(paramInt) });
+    axeg localaxeg = new axeg();
+    localaxeg.jdField_a_of_type_Int = 4;
+    localaxeg.jdField_a_of_type_Axeh = this.jdField_a_of_type_Axeh;
+    wjj.a().dispatch("MiniAppManager", localaxeg);
+  }
+  
+  private void a(boolean paramBoolean, String paramString)
+  {
+    ThreadManagerV2.excute(new QGameApp.3(this, paramBoolean, paramString), 64, null, true);
+  }
+  
+  private boolean a(boolean paramBoolean, String paramString)
+  {
+    boolean bool = false;
+    String str1;
+    String str2;
+    if (!paramBoolean)
+    {
+      str1 = a(a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "libsconfig.json"));
+      str2 = a(a(paramString, "", "libsconfig.json"));
+      if ((!TextUtils.isEmpty(str2)) && (str2.equals(str1))) {
+        paramBoolean = true;
       }
-      return;
     }
-    catch (Throwable paramQQAppInterface)
+    do
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
-    }
+      return paramBoolean;
+      str1 = a(paramString, "qgamelibs", "");
+      str2 = a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs") + File.separator;
+      bhmi.b(str2);
+      paramBoolean = bool;
+    } while (bhmi.a(str1, str2, false) < 0);
+    return bhmi.d(a(paramString, "", "libsconfig.json"), a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "libsconfig.json"));
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, MainFragment paramMainFragment, anlv paramanlv, int paramInt)
+  private String[] a()
   {
-    try
-    {
-      if ((((paramanlv instanceof ReadinjoyTabFrame)) || (paramInt == MainFragment.h)) && ((ReadinjoyTabFrame)paramMainFragment.a(ReadinjoyTabFrame.class) != null) && (paramInt == MainFragment.h) && (paramMainFragment.getActivity().getIntent().getIntExtra("launch_from", 5) == 6)) {
-        a(paramQQAppInterface, "0X80098E2", "", "", "", "");
-      }
-      return;
+    String str3 = this.jdField_a_of_type_Axeh.a.getString("unzipped_path");
+    String str2 = a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "ejecta.js");
+    String str1 = null;
+    if (!TextUtils.isEmpty(str3)) {
+      str1 = a(str3, this.jdField_a_of_type_Axeh.h, "index.js");
     }
-    catch (Throwable paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
-    }
+    return new String[] { str2, str1 };
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  @SuppressLint({"UnsafeDynamicallyLoadedCode"})
+  private boolean b()
   {
-    try
+    int i = 0;
+    if (!jdField_a_of_type_Boolean)
     {
-      if (((paramBaseActivity instanceof ReadInJoyNewFeedsActivity)) && (paramBaseActivity.getIntent().getIntExtra("launch_from", 5) == 6)) {
-        a(paramQQAppInterface, "0X80098E2", "", "", "", "");
-      }
-      return;
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    try
-    {
-      if ((paramMessageRecord.istroop == 7220) || ((paramMessageRecord.istroop == 1008) && (anhk.az.equals(paramMessageRecord.frienduin))))
+      Object localObject = new File(a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs"));
+      if (!((File)localObject).isDirectory()) {}
+      do
       {
-        a(paramQQAppInterface, "0X80098E5", "" + paramMessageRecord.msgUid, "", "", "");
-        return;
-      }
-      if (paramMessageRecord.istroop == 10007)
+        return false;
+        localObject = ((File)localObject).listFiles(new bkgc(this));
+      } while ((localObject == null) || (localObject.length == 0));
+      int j = localObject.length;
+      while (i < j)
       {
-        autf.a(paramQQAppInterface, paramMessageRecord.frienduin, 10006, 1);
-        return;
+        System.load(localObject[i].getAbsolutePath());
+        i += 1;
       }
+      jdField_a_of_type_Boolean = true;
     }
-    catch (Throwable paramQQAppInterface)
+    return true;
+  }
+  
+  private void d()
+  {
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new QGameApp.1(this), 1000L);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+      this.jdField_a_of_type_Bkgd = new bkgd(this);
+      wjj.a().registerSubscriber(this.jdField_a_of_type_Bkgd);
+      axef localaxef = axem.a().a("ak:3214");
+      if (localaxef != null) {
+        localaxef.a("ak:3214", "QGameApp", this.jdField_a_of_type_Axeh.h);
       }
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
+  public boolean a()
   {
-    if (paramRecentUser != null) {}
-    try
-    {
-      if (paramRecentUser.getType() == 7220) {
-        a(paramQQAppInterface, "0X80098E3", "", "", "", "");
-      }
-      return;
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    return this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity.finish();
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser, RecentBaseData paramRecentBaseData)
+  public void c()
   {
-    if (paramRecentUser != null) {
-      try
-      {
-        if (paramRecentUser.getType() == 1008)
-        {
-          if (!"2173223560".equals(paramRecentBaseData.getRecentUserUin())) {
-            break label145;
-          }
-          a(paramQQAppInterface, "0X80098E0", "" + paramRecentBaseData.mUnreadFlag, "" + paramRecentBaseData.mUnreadNum, "", "");
-        }
-        while (paramRecentUser.getType() == 7220)
-        {
-          a(paramQQAppInterface, "0X80098DF", "" + paramRecentBaseData.mUnreadFlag, "" + paramRecentBaseData.mUnreadNum, "", "");
-          return;
-          label145:
-          if (anhk.aR.equals(paramRecentBaseData.getRecentUserUin())) {
-            a(paramQQAppInterface, "0X80098F2", "" + paramRecentBaseData.mUnreadFlag, "" + paramRecentBaseData.mUnreadNum, "", "");
-          }
-        }
-        return;
-      }
-      catch (Throwable paramQQAppInterface)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
-        }
-      }
+    super.c();
+    if (this.jdField_a_of_type_Bkgd != null) {
+      wjj.a().unRegisterSubscriber(this.jdField_a_of_type_Bkgd);
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public boolean isValidate()
   {
-    bcst.b(paramQQAppInterface, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, paramString5);
+    return true;
   }
 }
 

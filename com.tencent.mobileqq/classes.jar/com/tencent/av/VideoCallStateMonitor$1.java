@@ -1,19 +1,19 @@
 package com.tencent.av;
 
-import bctj;
+import bdmc;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
-import lbx;
+import lce;
 
 public class VideoCallStateMonitor$1
   implements Runnable
 {
-  public VideoCallStateMonitor$1(lbx paramlbx, HashMap paramHashMap) {}
+  public VideoCallStateMonitor$1(lce paramlce, HashMap paramHashMap) {}
   
   public void run()
   {
-    bctj.a(BaseApplication.getContext()).a(lbx.a(this.this$0).getCurrentAccountUin(), "av_memory_details", true, 0L, 0L, this.a, "");
+    bdmc.a(BaseApplication.getContext()).a(lce.a(this.this$0).getCurrentAccountUin(), "av_memory_details", true, 0L, 0L, this.a, "");
   }
 }
 

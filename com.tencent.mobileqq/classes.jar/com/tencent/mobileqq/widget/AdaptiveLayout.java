@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
-import bhuc;
+import biux;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,7 @@ public class AdaptiveLayout
   extends ViewGroup
 {
   private int jdField_a_of_type_Int;
-  private Map<Integer, bhuc> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<Integer, biux> jdField_a_of_type_JavaUtilMap = new HashMap();
   private int b;
   private int c;
   private int d;
@@ -80,7 +80,7 @@ public class AdaptiveLayout
             m -= this.b;
             i1 = Math.max(j, m);
             n = i + (this.c + k);
-            this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i4), new bhuc(this, m, k));
+            this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i4), new biux(this, m, k));
             i = this.mPaddingLeft;
             i3 = this.mPaddingRight + i;
             i2 = 0;
@@ -111,7 +111,7 @@ public class AdaptiveLayout
       m -= this.b;
       i1 = Math.max(j, m);
       n = i + k;
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i4), new bhuc(this, m, k));
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i4), new biux(this, m, k));
     }
     this.e = i1;
     this.f = n;
@@ -164,7 +164,7 @@ public class AdaptiveLayout
     label505:
     for (;;)
     {
-      localObject = (bhuc)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+      localObject = (biux)this.jdField_a_of_type_JavaUtilMap.get(localObject);
       int k = this.b;
       int m = this.c;
       int i3;
@@ -191,20 +191,20 @@ public class AdaptiveLayout
             i5 = i4;
             if (localView.getVisibility() != 8)
             {
-              i5 = (((bhuc)localObject).b - localView.getMeasuredHeight()) / 2 + (k + j);
+              i5 = (((biux)localObject).b - localView.getMeasuredHeight()) / 2 + (k + j);
               localView.layout(i4, i5, localView.getMeasuredWidth() + i4, localView.getMeasuredHeight() + i5);
               i5 = i4 + (localView.getMeasuredWidth() + i3);
             }
             i2 += 1;
           }
-          i = this.mPaddingLeft + paramInt3 - paramInt1 - ((bhuc)localObject).jdField_a_of_type_Int;
+          i = this.mPaddingLeft + paramInt3 - paramInt1 - ((biux)localObject).jdField_a_of_type_Int;
           i3 = k;
           break label162;
-          i = this.mPaddingLeft + (paramInt3 - paramInt1 - ((bhuc)localObject).jdField_a_of_type_Int) / 2;
+          i = this.mPaddingLeft + (paramInt3 - paramInt1 - ((biux)localObject).jdField_a_of_type_Int) / 2;
           i3 = k;
           break label162;
           i = i1 - i2;
-          k = (paramInt3 - paramInt1 - (((bhuc)localObject).jdField_a_of_type_Int - this.b * (i - 1))) / i;
+          k = (paramInt3 - paramInt1 - (((biux)localObject).jdField_a_of_type_Int - this.b * (i - 1))) / i;
           break;
           k = this.mPaddingTop + paramInt4 - paramInt2 - this.f;
           continue;
@@ -213,7 +213,7 @@ public class AdaptiveLayout
         m = (paramInt4 - paramInt2 - (this.f - this.c * (i7 - 1))) / i7;
       }
       if (i != i4) {}
-      for (int i = ((bhuc)localObject).b + m + j;; i = j)
+      for (int i = ((biux)localObject).b + m + j;; i = j)
       {
         n += 1;
         j = i;

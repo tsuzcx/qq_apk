@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view.headers;
 
-import tdi;
+import sua;
 
 public class ReadInJoyTabTopSearchHeaderController$4
   implements Runnable
 {
-  public ReadInJoyTabTopSearchHeaderController$4(tdi paramtdi) {}
+  public ReadInJoyTabTopSearchHeaderController$4(sua paramsua) {}
   
   public void run()
   {

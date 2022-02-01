@@ -1,22 +1,62 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import MQQ.PayRuleCfg;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.net.URLEncoder;
 
 public class afhv
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public afhv(TranslucentTRansferFragment paramTranslucentTRansferFragment, bgpa parambgpa) {}
+  public afhv(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bgpa.dismiss();
-    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.getActivity(), RegisterPhoneNumActivity.class);
-    paramDialogInterface.putExtra("invite_code", this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.getActivity().getIntent().getStringExtra("invite_code"));
-    this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.startActivity(paramDialogInterface);
-    bcst.b(null, "dc00898", "", "", "0X800970C", "0X800970C", 0, 0, "", "", "", "");
+    if (QQSettingMe.a(this.a) == null) {}
+    Object localObject;
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QQSettingMe.a(this.a).clickHide == 1)
+      {
+        QQSettingMe.a(this.a).enable = 0;
+        QLog.e("QQSettingRedesign", 1, "VipInfoHandler click clear enable");
+        aokv.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), QQSettingMe.a(this.a));
+      }
+      bdll.b(null, "dc00898", "", "", "", "0X800A633", aokv.a(QQSettingMe.a(this.a)), 1, 0, "1", QQSettingMe.a(this.a).advId, "", "");
+      aokv.a(102, QQSettingMe.a(this.a).advId);
+      if (!TextUtils.isEmpty(QQSettingMe.a(this.a).iconJumpUrl))
+      {
+        QLog.e("QQSettingRedesign", 1, "VipInfoHandler click iconJumpUrl: " + QQSettingMe.a(this.a).iconJumpUrl);
+        localObject = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+        ((Intent)localObject).putExtra("url", QQSettingMe.a(this.a).iconJumpUrl);
+        ((Intent)localObject).putExtra("isShowAd", false);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject);
+      }
+      else
+      {
+        switch (QQSettingMe.a(this.a).clubType)
+        {
+        default: 
+          QLog.e("QQSettingRedesign", 1, "VipInfoHandler unknown clubType=" + QQSettingMe.a(this.a).clubType);
+        }
+      }
+    }
+    for (int i = 11;; i = 12)
+    {
+      QLog.e("QQSettingRedesign", 1, "VipInfoHandler click type: " + QQSettingMe.a(this.a).clubType);
+      localObject = URLEncoder.encode("jsbridge://vipclub/paySuccess?p={\"type\":" + i + "}");
+      bhzu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQSettingMe.a(this.a).aid, "CJCLUBT", 3, false, false, "", (String)localObject, true, true);
+      break;
+    }
   }
 }
 

@@ -1,15 +1,17 @@
+import java.util.Comparator;
+
 public class bfru
-  implements bfrt
+  implements Comparator<bfrs>
 {
-  public boolean a(besl parambesl)
+  public int a(bfrs parambfrs1, bfrs parambfrs2)
   {
-    if (parambesl.b) {
-      return false;
+    if (parambfrs1.b < parambfrs2.b) {
+      return 1;
     }
-    switch (parambesl.e)
-    {
+    if (parambfrs1.b == parambfrs2.b) {
+      return 0;
     }
-    return true;
+    return -1;
   }
 }
 

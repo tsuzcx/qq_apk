@@ -1,8 +1,16 @@
-import android.hardware.Camera.Face;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8.1.1;
 
-public abstract interface aqar
+public class aqar
+  extends aqbg
 {
-  public abstract void a(Camera.Face[] paramArrayOfFace, aqav paramaqav);
+  public aqar(ArkAiDictUpdateMgr.8 param8) {}
+  
+  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte)
+  {
+    ThreadManager.post(new ArkAiDictUpdateMgr.8.1.1(this, paramArrayOfByte, paramBoolean), 5, null, true);
+  }
 }
 
 

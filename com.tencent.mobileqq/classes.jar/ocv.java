@@ -1,81 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoAdInfo.NegFeedback;
 
-public class ocv
-  extends aqkz<ocu>
+public final class ocv
+  implements Parcelable.Creator<VideoAdInfo.NegFeedback>
 {
-  @NonNull
-  public ocu a(int paramInt)
+  public VideoAdInfo.NegFeedback a(Parcel paramParcel)
   {
-    if (paramInt == 0)
-    {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface))
-      {
-        tyg.a((QQAppInterface)localAppRuntime);
-        return ocu.a();
-      }
-    }
-    return new ocu();
+    return new VideoAdInfo.NegFeedback(paramParcel);
   }
   
-  @Nullable
-  public ocu a(aqlg[] paramArrayOfaqlg)
+  public VideoAdInfo.NegFeedback[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderConfProcessor", 2, "[onParsed]");
-    }
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return ocu.a(paramArrayOfaqlg);
-    }
-    return null;
-  }
-  
-  public void a(ocu paramocu)
-  {
-    paramocu.b();
-    paramocu.a();
-    paramocu.c();
-  }
-  
-  public Class<ocu> clazz()
-  {
-    return ocu.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return tyg.a((QQAppInterface)localAppRuntime);
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 81;
+    return new VideoAdInfo.NegFeedback[paramInt];
   }
 }
 

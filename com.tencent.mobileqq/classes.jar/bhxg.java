@@ -1,21 +1,53 @@
-import android.graphics.drawable.BitmapDrawable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bhxg
+  implements asmy
 {
-  public int a;
-  public long a;
-  public BitmapDrawable a;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public bhxg(int paramInt, long paramLong, BitmapDrawable paramBitmapDrawable)
+  public bhxg(bhwz parambhwz) {}
+  
+  public List<aspt> a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = paramBitmapDrawable;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new aspt(7, 7, null));
+    axfj localaxfj = (axfj)bhwz.a(this.jdField_a_of_type_Bhwz).getManager(14);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      int i = ((Integer)localIterator.next()).intValue();
+      EmoticonPackage localEmoticonPackage = localaxfj.a(String.valueOf(i));
+      if (localEmoticonPackage != null)
+      {
+        localArrayList.add(new aspt(10, 7, localEmoticonPackage));
+      }
+      else
+      {
+        localEmoticonPackage = new EmoticonPackage();
+        localEmoticonPackage.epId = String.valueOf(i);
+        localEmoticonPackage.wordingId = -1L;
+        localEmoticonPackage.jobType = 4;
+        localEmoticonPackage.isMagicFaceDownloading = false;
+        localEmoticonPackage.valid = true;
+        localEmoticonPackage.status = 0;
+        localEmoticonPackage.aio = true;
+        localaxfj.a(localEmoticonPackage);
+        askc.a().a(bhwz.a(this.jdField_a_of_type_Bhwz));
+        ((askd)bhwz.a(this.jdField_a_of_type_Bhwz).getManager(43)).a(String.valueOf(i), askd.c, null, true, 0);
+      }
+    }
+    return localArrayList;
   }
   
-  public String toString()
+  public void a(List<Integer> paramList)
   {
-    return "Frame{index=" + this.jdField_a_of_type_Int + ", targetTime=" + this.jdField_a_of_type_Long + ", drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable + '}';
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramList);
+    }
   }
 }
 

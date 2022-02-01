@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-
 public class axmq
-  implements DialogInterface.OnClickListener
 {
-  public axmq(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public String a;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public axmq(String paramString1, String paramString2)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

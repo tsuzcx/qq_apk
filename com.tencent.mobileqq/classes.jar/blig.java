@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
-
-public class blig
-  implements DialogInterface.OnClickListener
+public abstract interface blig
 {
-  public blig(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.finish();
-  }
+  public abstract void a(int paramInt);
 }
 
 

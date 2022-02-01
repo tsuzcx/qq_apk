@@ -1,8 +1,8 @@
-import java.util.Vector;
-
 public abstract interface awmo
 {
-  public abstract void a(boolean paramBoolean, Vector<Integer> paramVector);
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

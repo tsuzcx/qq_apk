@@ -1,20 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentVideo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqcircle.comment.QCircleCommentItemView;
+import com.tencent.biz.qqcircle.widgets.QCircleCommentPraiseLayout;
 
 public class vkr
-  implements View.OnClickListener
+  implements vyx
 {
-  public vkr(QCircleContentOperationView paramQCircleContentOperationView) {}
+  public vkr(QCircleCommentItemView paramQCircleCommentItemView) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if (((QCircleContentOperationView.a(this.a) instanceof vjt)) && (((vjt)QCircleContentOperationView.a(this.a)).a != null)) {
-      ((vjt)QCircleContentOperationView.a(this.a)).a.M_();
+    aakb localaakb;
+    QCircleCommentPraiseLayout localQCircleCommentPraiseLayout;
+    if (QCircleCommentItemView.a(this.a) != null)
+    {
+      localaakb = QCircleCommentItemView.a(this.a);
+      localQCircleCommentPraiseLayout = QCircleCommentItemView.a(this.a);
+      if (!paramBoolean) {
+        break label58;
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    label58:
+    for (int i = 14;; i = 15)
+    {
+      localaakb.a(localQCircleCommentPraiseLayout, i, QCircleCommentItemView.a(this.a), QCircleCommentItemView.a(this.a));
+      return;
+    }
   }
 }
 

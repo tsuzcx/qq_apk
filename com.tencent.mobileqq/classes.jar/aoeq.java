@@ -1,94 +1,42 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aoeq
+  extends BroadcastReceiver
 {
-  public static SharedPreferences a(Context paramContext, String paramString)
-  {
-    return paramContext.getSharedPreferences("PrefHiddenChat" + paramString, 4);
-  }
+  public aoeq(QQAppInterface paramQQAppInterface) {}
   
-  public static void a(String paramString, Context paramContext, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
-      return;
-      paramContext = a(paramContext, paramString).edit();
-      paramContext.putBoolean("show_unread_msg", paramBoolean);
-      paramContext.commit();
-    } while (!QLog.isColorLevel());
-    QLog.i("HiddenChatUtil", 2, "setHiddenSession ac[" + paramString + "], open[" + paramBoolean + "]");
-  }
-  
-  public static boolean a(Context paramContext, String paramString1, String paramString2, int paramInt)
-  {
-    boolean bool2;
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1))) {
-      bool2 = true;
+    if (this.a.l) {
+      QLog.i("QQAppInterface", 1, "qzoneBrocastReceiver release() has been called  ,return ", null);
     }
-    boolean bool1;
     do
     {
-      return bool2;
-      paramContext = a(paramContext, paramString1);
-      bool2 = paramContext.getBoolean("show_video_msg", false);
-      bool1 = bool2;
-      if (!bool2)
+      int i;
+      do
       {
-        paramContext = paramContext.getString("KeyHiddenChatList", "");
-        String str = paramString2 + "|" + paramInt + ";";
-        if ((TextUtils.isEmpty(paramContext)) || (!paramContext.contains(str))) {
-          bool2 = true;
+        return;
+        paramContext = paramIntent.getAction();
+        if (!"com.tencent.qzone.cleanunreadcount".equals(paramContext)) {
+          break;
         }
-        bool1 = bool2;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s], cur[%s], list[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool2), str, paramContext }));
-          bool1 = bool2;
-        }
-      }
-      bool2 = bool1;
-    } while (!QLog.isColorLevel());
-    QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool1) }));
-    return bool1;
-  }
-  
-  public static boolean a(String paramString, Context paramContext)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      return true;
-    }
-    return a(paramContext, paramString).getBoolean("show_unread_msg", true);
-  }
-  
-  public static void b(String paramString, Context paramContext, boolean paramBoolean)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
+        i = paramIntent.getIntExtra("clean_unread_feed_type", -1);
+        paramContext = (bcvn)this.a.getManager(10);
+      } while ((paramContext == null) || (i == -1));
+      paramContext.a(i, 0L, new ArrayList(), null, false, false, "");
       return;
-      paramContext = a(paramContext, paramString).edit();
-      paramContext.putBoolean("show_video_msg", paramBoolean);
-      paramContext.commit();
-    } while (!QLog.isColorLevel());
-    QLog.i("HiddenChatUtil", 2, "setVideoMsg ac[" + paramString + "], open[" + paramBoolean + "]");
-  }
-  
-  public static boolean b(String paramString, Context paramContext)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      return true;
-    }
-    return a(paramContext, paramString).getBoolean("show_video_msg", false);
+    } while (!"com.tecent.qzone.clearAlbumRedTouch".equals(paramContext));
+    ((bapy)this.a.getManager(104)).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoeq
  * JD-Core Version:    0.7.0.1
  */

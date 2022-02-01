@@ -1,68 +1,59 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import java.util.Vector;
 
-final class bmvp
-  extends Drawable.ConstantState
+class bmvp
+  implements Downloader.DownloadListener
 {
-  int jdField_a_of_type_Int;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-  Drawable b = null;
-  Drawable c = null;
-  Drawable d = null;
-  Drawable e = null;
-  Drawable f = null;
-  Drawable g = null;
+  bmvp(bmvo parambmvo, bmvq parambmvq) {}
   
-  bmvp() {}
-  
-  bmvp(bmvp parambmvp)
+  public void onDownloadCanceled(String paramString)
   {
-    if ((parambmvp.b != null) && (parambmvp.b.getConstantState() != null))
+    bmvo.a(this.jdField_a_of_type_Bmvo, false);
+    if (bmvo.a(this.jdField_a_of_type_Bmvo).size() > 0)
     {
-      this.b = parambmvp.b.getConstantState().newDrawable();
-      this.b.setBounds(parambmvp.b.getBounds());
+      bmvq localbmvq = (bmvq)bmvo.a(this.jdField_a_of_type_Bmvo).get(0);
+      bmvo.a(this.jdField_a_of_type_Bmvo).remove(0);
+      bmvo.a(this.jdField_a_of_type_Bmvo, localbmvq);
     }
-    if ((parambmvp.c != null) && (parambmvp.c.getConstantState() != null))
-    {
-      this.c = parambmvp.c.getConstantState().newDrawable();
-      this.c.setBounds(parambmvp.c.getBounds());
+    if (this.jdField_a_of_type_Bmvq.a != null) {
+      this.jdField_a_of_type_Bmvq.a.onDownloadCanceled(paramString);
     }
-    if ((parambmvp.d != null) && (parambmvp.d.getConstantState() != null))
-    {
-      this.d = parambmvp.d.getConstantState().newDrawable();
-      this.d.setBounds(parambmvp.d.getBounds());
-    }
-    if ((parambmvp.e != null) && (parambmvp.e.getConstantState() != null))
-    {
-      this.e = parambmvp.e.getConstantState().newDrawable();
-      this.e.setBounds(parambmvp.e.getBounds());
-    }
-    if ((parambmvp.f != null) && (parambmvp.f.getConstantState() != null))
-    {
-      this.f = parambmvp.f.getConstantState().newDrawable();
-      this.f.setBounds(parambmvp.f.getBounds());
-    }
-    if ((parambmvp.g != null) && (parambmvp.g.getConstantState() != null))
-    {
-      this.g = parambmvp.g.getConstantState().newDrawable();
-      this.g.setBounds(parambmvp.g.getBounds());
-    }
-    if ((parambmvp.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (parambmvp.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState() != null))
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = parambmvp.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(parambmvp.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds());
-    }
-    this.jdField_a_of_type_Int = parambmvp.jdField_a_of_type_Int;
   }
   
-  public int getChangingConfigurations()
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    return this.jdField_a_of_type_Int;
+    bmvo.a(this.jdField_a_of_type_Bmvo, false);
+    if (bmvo.a(this.jdField_a_of_type_Bmvo).size() > 0)
+    {
+      bmvq localbmvq = (bmvq)bmvo.a(this.jdField_a_of_type_Bmvo).get(0);
+      bmvo.a(this.jdField_a_of_type_Bmvo).remove(0);
+      bmvo.a(this.jdField_a_of_type_Bmvo, localbmvq);
+    }
+    if (this.jdField_a_of_type_Bmvq.a != null) {
+      this.jdField_a_of_type_Bmvq.a.onDownloadFailed(paramString, paramDownloadResult);
+    }
   }
   
-  public Drawable newDrawable()
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
   {
-    return new bmvo(new bmvp(this));
+    if (this.jdField_a_of_type_Bmvq.a != null) {
+      this.jdField_a_of_type_Bmvq.a.onDownloadProgress(paramString, paramLong, paramFloat);
+    }
+  }
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    bmvo.a(this.jdField_a_of_type_Bmvo, false);
+    if (bmvo.a(this.jdField_a_of_type_Bmvo).size() > 0)
+    {
+      bmvq localbmvq = (bmvq)bmvo.a(this.jdField_a_of_type_Bmvo).get(0);
+      bmvo.a(this.jdField_a_of_type_Bmvo).remove(0);
+      bmvo.a(this.jdField_a_of_type_Bmvo, localbmvq);
+    }
+    if (this.jdField_a_of_type_Bmvq.a != null) {
+      this.jdField_a_of_type_Bmvq.a.onDownloadSucceed(paramString, paramDownloadResult);
+    }
   }
 }
 

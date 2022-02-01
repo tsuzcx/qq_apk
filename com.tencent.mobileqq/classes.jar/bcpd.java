@@ -1,26 +1,33 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import android.os.Build.VERSION;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
 
-public final class bcpd
-  implements QQPermissionCallback
+class bcpd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bcpd(bcpg parambcpg, Activity paramActivity) {}
+  bcpd(bcpc parambcpc) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onGlobalLayout()
   {
-    bglp.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bcpg);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (this.jdField_a_of_type_Bcpg != null) {
-      this.jdField_a_of_type_Bcpg.a();
+    if (bcpc.a(this.a) != null)
+    {
+      if (Build.VERSION.SDK_INT >= 16) {
+        bcpc.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      }
+      ViewGroup.LayoutParams localLayoutParams = bcpc.a(this.a).getLayoutParams();
+      if (localLayoutParams != null)
+      {
+        localLayoutParams.height = ((int)(bcpc.a(this.a).getWidth() / 2.3F));
+        bcpc.a(this.a).requestLayout();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcpd
  * JD-Core Version:    0.7.0.1
  */

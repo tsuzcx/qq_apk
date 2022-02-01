@@ -2,11 +2,17 @@ package com.tencent.mobileqq.imcore.constants;
 
 public final class AppSetting
 {
-  public static boolean isDebugVersion = true;
-  public static boolean isGooglePlayVersion;
+  public static boolean isDebugVersion;
+  public static boolean isGooglePlayVersion = false;
   public static boolean isGrayVersion;
-  public static boolean isPublicVersion;
-  public static volatile boolean logcatDBOperation;
+  public static boolean isPublicVersion = false;
+  public static volatile boolean logcatDBOperation = false;
+  
+  static
+  {
+    isDebugVersion = true;
+    isGrayVersion = false;
+  }
 }
 
 

@@ -4,13 +4,13 @@ import MessageSvcPack.RoamInfo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anui;
+import aogs;
 import java.util.ArrayList;
 
 public class RoamInfoListWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator<RoamInfoListWrapper> CREATOR = new anui();
+  public static final Parcelable.Creator<RoamInfoListWrapper> CREATOR = new aogs();
   public ArrayList<RoamInfo> a;
   
   public int describeContents()

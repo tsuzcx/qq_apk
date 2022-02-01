@@ -1,9 +1,29 @@
-public class aaxq
-  implements aaxr
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+
+class aaxq
+  implements ActionMode.Callback
 {
-  public awdu a(String paramString)
+  aaxq(aaxp paramaaxp, TroopGiftPanel paramTroopGiftPanel) {}
+  
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    return new awed(paramString).a();
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

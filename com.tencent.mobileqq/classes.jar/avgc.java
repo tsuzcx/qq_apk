@@ -1,28 +1,19 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
-import java.io.File;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class avgc
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+public class avgc
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private avgc(avfx paramavfx) {}
+  public avgc(TempMsgSettingFragment paramTempMsgSettingFragment) {}
   
-  public void onComplete(String paramString1, String paramString2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    synchronized (avfx.a(this.a))
-    {
-      String str = avfx.a(paramString1);
-      avfw.b("onComplete path:" + str);
-      avfw.b("onComplete vid:" + paramString1 + ", detail:" + paramString2);
-      avfx.a(this.a, paramString1);
-      paramString2 = new File(avfx.b(paramString1));
-      if (paramString2.exists()) {
-        paramString2.renameTo(new File(str));
-      }
-      avfx.b(this.a, paramString1);
-      avfx.b(this.a, avfx.a(this.a));
-      avfx.b(this.a);
-      return;
-    }
+    ((axae)this.a.a.getManager(303)).a((short)-23312, paramBoolean, true);
+    bdll.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 2, 2, "", "", "", "");
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

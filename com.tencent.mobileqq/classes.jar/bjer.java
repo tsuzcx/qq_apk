@@ -1,11 +1,4 @@
-public abstract class bjer
-{
-  long a;
-  
-  public abstract void a();
-  
-  public abstract void b();
-}
+public class bjer {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

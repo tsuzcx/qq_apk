@@ -1,21 +1,48 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qcq
   implements View.OnClickListener
 {
-  qcq(qco paramqco, Container paramContainer, pxk parampxk, int paramInt) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RecommendFollowInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  
+  private qcq(qcf paramqcf) {}
   
   public void onClick(View paramView)
   {
-    qco.a(this.jdField_a_of_type_Qco, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pxk, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("BiuPgcProteusItem", 2, "click bottom bar for jumping to gallery articleinfo = " + this.jdField_a_of_type_Pxk.a() + " position = " + this.jdField_a_of_type_Int);
+    switch (paramView.getId())
+    {
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      qcf localqcf = this.jdField_a_of_type_Qcf;
+      RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localqcf.a(localRecommendFollowInfo, bool);
+        ocd.a(null, ozs.a() + "", "0X800984A", "0X800984A", 0, 0, "1", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.uin + "", "", "", false);
+        break;
+      }
+      qcf.b(this.jdField_a_of_type_Qcf, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      ocd.a(null, ozs.a() + "", "0X8009849", "0X8009849", 0, 0, "1", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.uin + "", "", "", false);
+    }
   }
 }
 

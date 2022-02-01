@@ -1,57 +1,75 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare.1.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AccountNotMatchException;
+import mqq.os.MqqHandler;
 
-public abstract class bdox
-  extends Binder
-  implements bdow
+public final class bdox
+  implements View.OnClickListener
 {
-  private static final String DESCRIPTOR = "com.tencent.mobileqq.theme.IDownloadListener";
-  static final int TRANSACTION_onComplete = 2;
-  static final int TRANSACTION_onProgress = 1;
-  
-  public bdox()
+  public void onClick(View paramView)
   {
-    attachInterface(this, "com.tencent.mobileqq.theme.IDownloadListener");
-  }
-  
-  public static bdow asInterface(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.theme.IDownloadListener");
-    if ((localIInterface != null) && ((localIInterface instanceof bdow))) {
-      return (bdow)localIInterface;
-    }
-    return new bdoy(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    Object localObject2 = paramView.findViewById(2131378101);
+    if (localObject2 == null) {}
+    for (;;)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.theme.IDownloadListener");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.IDownloadListener");
-      onProgress(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
-      paramParcel2.writeNoException();
-      return true;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject1 = ((View)localObject2).getTag(2131378101);
+      Object localObject3;
+      if ((localObject1 != null) && ((localObject1 instanceof StructMsgForAudioShare)))
+      {
+        localObject1 = (StructMsgForAudioShare)localObject1;
+        localObject3 = paramView.getTag();
+        if ((localObject3 != null) && ((localObject3 instanceof ahtm)))
+        {
+          localObject3 = (ahtm)localObject3;
+          localObject2 = ((View)localObject2).getContext();
+        }
+      }
+      try
+      {
+        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(((StructMsgForAudioShare)localObject1).currentAccountUin);
+        if (((StructMsgForAudioShare)localObject1).msgId > 0L)
+        {
+          bdll.b(localQQAppInterface, "P_CliOper", "Pb_account_lifeservice", ((StructMsgForAudioShare)localObject1).uin, "mp_msg_msgpic_click", "aio_morpic_click", 0, 0, "", "", Long.toString(((StructMsgForAudioShare)localObject1).msgId), "");
+          ThreadManager.getSubThreadHandler().postDelayed(new StructMsgForAudioShare.1.1(this, (StructMsgForAudioShare)localObject1, localQQAppInterface), 0L);
+          AbsShareMsg.doReport(localQQAppInterface, (AbsShareMsg)localObject1);
+          if (localQQAppInterface == null) {
+            continue;
+          }
+          noe.a(localQQAppInterface, "", "click", ((StructMsgForAudioShare)localObject1).mSourceAppid, ((StructMsgForAudioShare)localObject1).mMsgServiceID, noe.a(((ahtm)localObject3).a.a));
+          MediaPlayerManager.a(localQQAppInterface).a(true);
+        }
+      }
+      catch (AccountNotMatchException localAccountNotMatchException)
+      {
+        for (;;)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.d("StructMsg", 4, localAccountNotMatchException.getStackTrace().toString());
+          }
+        }
+      }
+      bdll.b(null, "CliOper", "", "", "0X800567A", "0X800567A", 0, 0, ((StructMsgForAudioShare)localObject1).mMsgServiceID + "", "", "", "");
+      bdll.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
+      bdll.b(null, "dc00898", "", "", "0X800A630", "0X800A630", 0, 0, "2", ForwardUtils.b(((StructMsgForAudioShare)localObject1).uinType), ((StructMsgForAudioShare)localObject1).mContentTitle, String.valueOf(((StructMsgForAudioShare)localObject1).mSourceAppid));
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsg", 2, new Object[] { "音乐分享内容点击=", "0X800A630", ", mContentTitle=" + ((StructMsgForAudioShare)localObject1).mContentTitle, ", uinType=", ForwardUtils.b(((StructMsgForAudioShare)localObject1).uinType) });
+      }
+      StructMsgForAudioShare.onClickEvent((Context)localObject2, (StructMsgForAudioShare)localObject1);
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.theme.IDownloadListener");
-    onComplete(paramParcel1.readString(), paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
   }
 }
 

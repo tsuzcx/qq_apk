@@ -1,26 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
 
-public class adnf
-  implements View.OnClickListener
+public abstract class adnf
+  implements aasd
 {
-  public adnf(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  protected abstract void a(boolean paramBoolean, Bundle paramBundle);
   
-  public void onClick(View paramView)
+  public void callback(Bundle paramBundle)
   {
-    View localView = (View)paramView.getParent();
-    if ((localView == null) || (localView.getTag() == null)) {}
-    for (;;)
+    paramBundle = paramBundle.getBundle("key_result");
+    if (paramBundle != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      a(bool, paramBundle);
       return;
-      bcst.b(this.a.app, "CliOper", "", "", "0X8007146", "0X8007146", 0, 0, "", "", "", "");
-      if ((localView.getTag() instanceof SubAccountInfo)) {
-        this.a.a((SubAccountInfo)localView.getTag());
-      }
     }
   }
 }

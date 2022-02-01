@@ -1,27 +1,30 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akdo
-  implements Animation.AnimationListener
+class akdo
+  implements View.OnClickListener
 {
-  public akdo(NewStyleCountryActivity paramNewStyleCountryActivity) {}
+  akdo(akdn paramakdn) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.jdField_a_of_type_Akdu.show();
-      this.a.b.setAnimation(null);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      NewStyleCountryActivity.a(this.a).setVisibility(8);
+    this.a.a.g = false;
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131691682);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.a.d.setVisibility(8);
+    this.a.a.d = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131369042));
+    this.a.a.d.setVisibility(0);
+    this.a.a.d.setOnClickListener(this.a.a.b);
+    if (this.a.a.jdField_a_of_type_Akfe != null) {
+      this.a.a.jdField_a_of_type_Akfe.a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

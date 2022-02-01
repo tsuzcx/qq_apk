@@ -1,24 +1,27 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Handler;
+import android.os.Message;
+import java.util.ArrayList;
+import java.util.List;
 
 class bnnk
-  implements Animation.AnimationListener
+  extends Handler
 {
-  bnnk(bnnj parambnnj) {}
+  bnnk(bnni parambnni) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    if (bnnj.a(this.a) != null)
+    switch (paramMessage.what)
     {
-      bnnj.a(this.a).clearAnimation();
-      bnnj.a(this.a).setVisibility(8);
     }
+    do
+    {
+      return;
+    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String[])));
+    ArrayList localArrayList = new ArrayList();
+    String[] arrayOfString = (String[])paramMessage.obj;
+    localArrayList.add(bnni.a(this.a, arrayOfString));
+    this.a.a(localArrayList, paramMessage.arg1);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

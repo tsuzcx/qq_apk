@@ -1,23 +1,33 @@
-import android.os.Handler;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
+import com.tencent.weseevideo.editor.sticker.music.lyric.data.Sentence;
+import com.tencent.weseevideo.editor.sticker.music.lyric.data.SentenceUI;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class bpdd
-  implements bpjl
+public class bpdd
 {
-  bpdd(bpcv parambpcv) {}
-  
-  public void a(int paramInt, List<wqr> paramList)
+  public static final Lyric a(Lyric paramLyric)
   {
-    yqp.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = Collections.EMPTY_LIST;
+    if (paramLyric == null) {
+      return new Lyric(2, 0, null);
     }
-    wfo.a().dispatch(new bpjj(paramInt, (List)localObject));
+    Lyric localLyric = new Lyric(2, paramLyric.mOffset, new ArrayList());
+    localLyric.mType = paramLyric.mType;
+    paramLyric = paramLyric.mSentences.iterator();
+    while (paramLyric.hasNext())
+    {
+      Object localObject = (Sentence)paramLyric.next();
+      if (localObject != null)
+      {
+        localObject = ((Sentence)localObject).mUILine.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          SentenceUI localSentenceUI = (SentenceUI)((Iterator)localObject).next();
+          localLyric.mSentences.add(new Sentence(localSentenceUI));
+        }
+      }
+    }
+    return localLyric;
   }
 }
 

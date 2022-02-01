@@ -1,17 +1,14 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-
-public class augy
-  implements TextView.OnEditorActionListener
+class augy
+  implements aumz
 {
-  public augy(ForwardFileOption paramForwardFileOption) {}
+  augy(augx paramaugx) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a()
   {
-    return (paramInt == 4) || (paramInt == 6) || ((paramKeyEvent != null) && (66 == paramKeyEvent.getKeyCode()) && (paramKeyEvent.getAction() == 0));
+    this.a.a.u();
   }
+  
+  public void b() {}
 }
 
 

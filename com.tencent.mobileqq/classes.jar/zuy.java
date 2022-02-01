@@ -1,16 +1,16 @@
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
-class zuy
-  implements Comparator<zuw>
+public class zuy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  zuy(zux paramzux) {}
+  public zuy(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public int a(zuw paramzuw1, zuw paramzuw2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramzuw1.d > paramzuw2.d) {
-      return 1;
-    }
-    return -1;
+    RotateCircleImageView.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 

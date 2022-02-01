@@ -1,16 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
 
-public class bqdm
-  implements ValueAnimator.AnimatorUpdateListener
+public final class bqdm
+  implements Parcelable.Creator<EditTakePhotoSource>
 {
-  public bqdm(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public EditTakePhotoSource a(Parcel paramParcel)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(f);
+    return new EditTakePhotoSource(paramParcel);
+  }
+  
+  public EditTakePhotoSource[] a(int paramInt)
+  {
+    return new EditTakePhotoSource[paramInt];
   }
 }
 

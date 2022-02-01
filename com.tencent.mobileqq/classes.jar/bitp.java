@@ -1,22 +1,11 @@
-import java.io.InputStream;
-
-public class bitp
+public abstract interface bitp
+  extends biod
 {
-  public int a;
-  public long a;
-  public InputStream a;
-  public String a;
-  public long b;
+  public abstract String getMsgid();
   
-  public bitp(String paramString, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      this.b = this.jdField_a_of_type_JavaLangString.length();
-    }
-  }
+  public abstract String getPublicUin();
+  
+  public abstract String getSourcePuin();
 }
 
 

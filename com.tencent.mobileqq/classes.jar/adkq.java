@@ -1,45 +1,81 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.data.KplRoleInfo.WZRYUIinfo;
+import com.tencent.qapmsdk.QAPM;
+import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
+import com.tencent.qapmsdk.base.config.PluginCombination;
+import com.tencent.qapmsdk.base.reporter.ab.AbType;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class adkq
-  implements View.OnClickListener
 {
-  public adkq(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt1, int paramInt2, int paramInt3) {}
+  public static Class<? extends AbType>[] a = { adkp.class, adkr.class };
   
-  public void onClick(View paramView)
+  public static int a(String paramString, HashMap<String, String> paramHashMap)
   {
-    String str1 = AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, false);
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if ((str2 != null) && (str1 != null) && (!str2.equals(str1))) {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B0", "0X80077B0", 0, 0, "", "", "", "");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(str2, false);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131691770).equals(str2)) && (!AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))) {
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo != null)
+    if (paramString != null)
     {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X8008439", "0X8008439", 0, 0, "", "", "", "");
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.verifyMsg)) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.verifyMsg.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString()))) {
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X800843A", "0X800843A", 0, 0, "", "", "", "");
+      if ("actSceneMem".equals(paramString)) {
+        return PluginCombination.leakPlugin.plugin;
       }
+      if ("actScenePerf".equals(paramString)) {
+        return PluginCombination.resourcePlugin.plugin;
+      }
+      if (!"unifiedMonitor".equals(paramString)) {}
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim(), null, "");
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("AddFriendVerifyActivity", 2, "reportClickEvent action: 0X80077B4  sourceId = " + this.jdField_a_of_type_Int + " subSourceId = " + this.b);
+    switch (Integer.parseInt((String)paramHashMap.get("family")))
+    {
+    default: 
+      return -1;
+    case 9: 
+    case 10: 
+      return PluginCombination.dropFramePlugin.plugin;
+    case 0: 
+      return PluginCombination.loopStackPlugin.plugin;
+    case 20: 
+      return PluginCombination.resourcePlugin.plugin;
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
+    return PluginCombination.batteryPlugin.plugin;
+  }
+  
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    if (paramHashMap == null) {}
+    do
+    {
+      return;
+      paramHashMap.put("deviceLv", String.valueOf(bhlo.f()));
+      paramString = QAPM.getAbFactorByQapmPlugin(a(paramString, paramHashMap));
+    } while ((paramString == null) || (paramString.length() <= 0));
+    paramHashMap.put("abfactor", paramString);
+  }
+  
+  public static void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_Int, this.c);
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      try
+      {
+        if (paramJSONObject.has("newplugin"))
+        {
+          i = paramJSONObject.getInt("newplugin");
+          String str = QAPM.getAbFactorByQapmPlugin(i);
+          if ((str == null) || (str.length() <= 0)) {
+            break;
+          }
+          paramJSONObject.put("abfactor", str);
+          return;
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        QLog.e("MagnifierSDK.QAPM.AbFactorManger", 2, "", paramJSONObject);
+        return;
+      }
+      int i = paramJSONObject.getInt("plugin");
+    }
   }
 }
 

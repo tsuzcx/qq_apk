@@ -1,32 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aiky
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  aiky(aikx paramaikx) {}
+  aiky(aikq paramaikq) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
-    {
-      Object localObject = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if (localObject != null)
-      {
-        localObject = ((ChatFragment)localObject).a();
-        if (localObject != null) {
-          ((BaseChatPie)localObject).b(aikx.a(this.a));
-        }
-      }
-      appj.a().a();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.b(1);
   }
 }
 

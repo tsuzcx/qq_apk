@@ -1,14 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.qphone.base.util.QLog;
 
 class apfx
-  implements ValueAnimator.AnimatorUpdateListener
+  extends apmd
 {
   apfx(apfw paramapfw) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    this.a.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    if (QLog.isColorLevel()) {
+      QLog.d(apgj.a, 2, "onArSoDownloadSuccess");
+    }
+    this.a.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(apgj.a, 2, "onArSoDownloadProcess process=" + paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(apgj.a, 2, "onArSoDownloadFail");
+    }
+    this.a.a();
   }
 }
 

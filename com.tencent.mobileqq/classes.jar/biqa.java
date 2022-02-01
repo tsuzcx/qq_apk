@@ -1,824 +1,544 @@
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.appcommon.AppClient.1;
-import com.tencent.open.appcommon.AppClient.2;
-import com.tencent.open.appcommon.AppClient.3;
-import com.tencent.open.applist.QZoneAppListActivity;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.tmassistantbase.common.DownloadSDKConfigManager;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.1;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.4;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.7;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
+import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.HitTestResult;
+import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.HitTestResult.ImageAnchorData;
+import com.tencent.smtt.sdk.CookieManager;
 
 public class biqa
+  extends bipp
 {
-  public static Class a(String paramString)
+  public int a;
+  public final Activity a;
+  public bjbs a;
+  public blir a;
+  public CookieManager a;
+  public Object a;
+  String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  
+  public biqa(Activity paramActivity)
   {
-    try
-    {
-      Class.forName("com.tencent.open.appcenter.QZoneAppWebViewActivity");
-      if (paramString.equals("detail")) {
-        return QZoneAppListActivity.class;
-      }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof QQBrowserActivity)) {
+      this.jdField_a_of_type_Int = ((QQBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight();
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-      if (paramString.equals("index")) {
-        return QZoneAppListActivity.class;
-      }
-      if (!paramString.equals("online")) {}
-    }
-    return QZoneAppListActivity.class;
+    ThreadManager.postImmediately(new SwiftBrowserLongClickHandler.1(this, paramActivity), null, true);
   }
   
-  protected static String a(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  private void d(String paramString)
   {
-    bisy.c("AppClient", "getFeedsChannelId >>> qzoneAppid = " + paramInt1 + "| " + paramInt2 + " | " + paramInt3);
-    if (paramInt1 == 352) {}
-    switch (paramInt2)
+    if (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+      return;
+    }
+    ThreadManager.excute(new SwiftBrowserLongClickHandler.4(this, paramString), 64, null, true);
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    switch (paramInt)
     {
-    case 4: 
-    case 5: 
-    case 6: 
     default: 
-      return "";
-    case 1: 
-    case 3: 
-      return "100_1";
-    case 7: 
-    case 8: 
-      if ((paramInt3 == 0) || (paramInt3 == 2)) {
-        return "200_1";
-      }
-      if (paramInt3 == 1) {
-        return "200_2";
-      }
-      break;
+      return;
     }
-    return "";
+    if ((this.jdField_a_of_type_Blir != null) && (this.jdField_a_of_type_Blir.isShowing())) {
+      this.jdField_a_of_type_Blir.dismiss();
+    }
+    apqo.a().a(hashCode(), "SwiftBrowserLongClickHandler");
   }
   
-  public static String a(String paramString)
+  /* Error */
+  public void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    paramString = paramString.split("\\.");
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 2;
-    if ((paramString != null) && (paramString.length > 2))
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 6
+    //   3: new 93	java/io/File
+    //   6: dup
+    //   7: aload_1
+    //   8: invokespecial 95	java/io/File:<init>	(Ljava/lang/String;)V
+    //   11: astore 8
+    //   13: new 97	java/io/FileInputStream
+    //   16: dup
+    //   17: aload 8
+    //   19: invokespecial 100	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   22: astore 5
+    //   24: aload 5
+    //   26: invokevirtual 105	java/io/InputStream:read	()I
+    //   29: istore_2
+    //   30: aload 5
+    //   32: invokevirtual 105	java/io/InputStream:read	()I
+    //   35: istore_3
+    //   36: aload 5
+    //   38: invokevirtual 105	java/io/InputStream:read	()I
+    //   41: istore 4
+    //   43: iload_2
+    //   44: bipush 66
+    //   46: if_icmpne +177 -> 223
+    //   49: iload_3
+    //   50: bipush 77
+    //   52: if_icmpne +171 -> 223
+    //   55: ldc 107
+    //   57: astore_1
+    //   58: aload 5
+    //   60: ifnull +331 -> 391
+    //   63: aload 5
+    //   65: invokevirtual 110	java/io/InputStream:close	()V
+    //   68: aload_1
+    //   69: ifnull +288 -> 357
+    //   72: aload_0
+    //   73: getfield 112	biqa:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   76: invokestatic 118	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   79: invokevirtual 122	android/net/Uri:getLastPathSegment	()Ljava/lang/String;
+    //   82: astore 6
+    //   84: aload 6
+    //   86: invokestatic 128	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   89: ifeq +206 -> 295
+    //   92: ldc 130
+    //   94: astore 5
+    //   96: new 93	java/io/File
+    //   99: dup
+    //   100: getstatic 135	antf:bg	Ljava/lang/String;
+    //   103: invokespecial 95	java/io/File:<init>	(Ljava/lang/String;)V
+    //   106: invokevirtual 138	java/io/File:mkdirs	()Z
+    //   109: pop
+    //   110: new 140	java/lang/StringBuilder
+    //   113: dup
+    //   114: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   117: getstatic 135	antf:bg	Ljava/lang/String;
+    //   120: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: aload 5
+    //   125: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: aload_1
+    //   129: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   135: astore 7
+    //   137: new 93	java/io/File
+    //   140: dup
+    //   141: aload 7
+    //   143: invokespecial 95	java/io/File:<init>	(Ljava/lang/String;)V
+    //   146: astore 6
+    //   148: iconst_2
+    //   149: istore_2
+    //   150: aload 6
+    //   152: invokevirtual 151	java/io/File:exists	()Z
+    //   155: ifeq +174 -> 329
+    //   158: iload_2
+    //   159: ldc 152
+    //   161: if_icmpge +168 -> 329
+    //   164: new 140	java/lang/StringBuilder
+    //   167: dup
+    //   168: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   171: getstatic 135	antf:bg	Ljava/lang/String;
+    //   174: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: aload 5
+    //   179: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   182: ldc 154
+    //   184: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   187: iload_2
+    //   188: invokevirtual 157	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   191: ldc 159
+    //   193: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   196: aload_1
+    //   197: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   200: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   203: astore 7
+    //   205: new 93	java/io/File
+    //   208: dup
+    //   209: aload 7
+    //   211: invokespecial 95	java/io/File:<init>	(Ljava/lang/String;)V
+    //   214: astore 6
+    //   216: iload_2
+    //   217: iconst_1
+    //   218: iadd
+    //   219: istore_2
+    //   220: goto -70 -> 150
+    //   223: iload_2
+    //   224: sipush 137
+    //   227: if_icmpne +167 -> 394
+    //   230: iload_3
+    //   231: bipush 80
+    //   233: if_icmpne +161 -> 394
+    //   236: ldc 161
+    //   238: astore_1
+    //   239: goto -181 -> 58
+    //   242: ldc 163
+    //   244: astore_1
+    //   245: goto -187 -> 58
+    //   248: astore 5
+    //   250: goto -182 -> 68
+    //   253: astore_1
+    //   254: aconst_null
+    //   255: astore 5
+    //   257: aload 5
+    //   259: ifnull +127 -> 386
+    //   262: aload 5
+    //   264: invokevirtual 110	java/io/InputStream:close	()V
+    //   267: aconst_null
+    //   268: astore_1
+    //   269: goto -201 -> 68
+    //   272: astore_1
+    //   273: aconst_null
+    //   274: astore_1
+    //   275: goto -207 -> 68
+    //   278: astore_1
+    //   279: aload 6
+    //   281: astore 5
+    //   283: aload 5
+    //   285: ifnull +8 -> 293
+    //   288: aload 5
+    //   290: invokevirtual 110	java/io/InputStream:close	()V
+    //   293: aload_1
+    //   294: athrow
+    //   295: aload 6
+    //   297: astore 5
+    //   299: aload 6
+    //   301: aload_1
+    //   302: invokevirtual 169	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   305: ifeq -209 -> 96
+    //   308: aload 6
+    //   310: iconst_0
+    //   311: aload 6
+    //   313: invokevirtual 172	java/lang/String:length	()I
+    //   316: aload_1
+    //   317: invokevirtual 172	java/lang/String:length	()I
+    //   320: isub
+    //   321: invokevirtual 176	java/lang/String:substring	(II)Ljava/lang/String;
+    //   324: astore 5
+    //   326: goto -230 -> 96
+    //   329: aload 8
+    //   331: aload 6
+    //   333: invokevirtual 180	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   336: ifeq +21 -> 357
+    //   339: aload_0
+    //   340: getfield 30	biqa:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
+    //   343: new 182	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$5
+    //   346: dup
+    //   347: aload_0
+    //   348: aload 7
+    //   350: invokespecial 183	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$5:<init>	(Lbiqa;Ljava/lang/String;)V
+    //   353: invokevirtual 187	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   356: return
+    //   357: aload_0
+    //   358: getfield 30	biqa:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
+    //   361: new 189	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$6
+    //   364: dup
+    //   365: aload_0
+    //   366: invokespecial 192	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$6:<init>	(Lbiqa;)V
+    //   369: invokevirtual 187	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   372: return
+    //   373: astore 5
+    //   375: goto -82 -> 293
+    //   378: astore_1
+    //   379: goto -96 -> 283
+    //   382: astore_1
+    //   383: goto -126 -> 257
+    //   386: aconst_null
+    //   387: astore_1
+    //   388: goto -320 -> 68
+    //   391: goto -323 -> 68
+    //   394: iload_2
+    //   395: bipush 71
+    //   397: if_icmpne +15 -> 412
+    //   400: iload_3
+    //   401: bipush 73
+    //   403: if_icmpne +9 -> 412
+    //   406: ldc 194
+    //   408: astore_1
+    //   409: goto -351 -> 58
+    //   412: iload_2
+    //   413: sipush 255
+    //   416: if_icmpne +16 -> 432
+    //   419: iload_3
+    //   420: sipush 216
+    //   423: if_icmpne +9 -> 432
+    //   426: ldc 196
+    //   428: astore_1
+    //   429: goto -371 -> 58
+    //   432: bipush 82
+    //   434: iload_2
+    //   435: if_icmpne -193 -> 242
+    //   438: bipush 73
+    //   440: iload_3
+    //   441: if_icmpne -199 -> 242
+    //   444: bipush 70
+    //   446: iload 4
+    //   448: if_icmpne -206 -> 242
+    //   451: ldc 198
+    //   453: astore_1
+    //   454: goto -396 -> 58
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	457	0	this	biqa
+    //   0	457	1	paramString	String
+    //   29	407	2	i	int
+    //   35	407	3	j	int
+    //   41	408	4	k	int
+    //   22	156	5	localObject1	Object
+    //   248	1	5	localIOException1	java.io.IOException
+    //   255	70	5	localObject2	Object
+    //   373	1	5	localIOException2	java.io.IOException
+    //   1	331	6	localObject3	Object
+    //   135	214	7	str	String
+    //   11	319	8	localFile	java.io.File
+    // Exception table:
+    //   from	to	target	type
+    //   63	68	248	java/io/IOException
+    //   13	24	253	java/io/IOException
+    //   262	267	272	java/io/IOException
+    //   13	24	278	finally
+    //   288	293	373	java/io/IOException
+    //   24	43	378	finally
+    //   24	43	382	java/io/IOException
+  }
+  
+  void a(String paramString, int paramInt)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, ScannerActivity.class);
+    localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", paramString);
+    localIntent.putExtra("detectType", paramInt);
+    localIntent.putExtra("QRDecode", true);
+    localIntent.putExtra("QRDecodeResult", paramString);
+    String str = this.jdField_a_of_type_JavaLangString;
+    paramString = str;
+    if (!TextUtils.isEmpty(str))
     {
-      if (i < paramString.length)
+      paramString = str;
+      if (str.startsWith("data:")) {
+        paramString = "";
+      }
+    }
+    localIntent.putExtra("report_params", zxx.a(null, paramString, null, null, null, 5));
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {
+      this.jdField_a_of_type_Bjbs.dismiss();
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        if (i == paramString.length - 1) {
-          localStringBuilder.append(paramString[i]);
+        if ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) || (!this.jdField_c_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString)) || (this.jdField_c_of_type_Int <= 0)) {
+          break label142;
         }
-        for (;;)
+        bool2 = zxx.a(this.jdField_c_of_type_Int);
+        bool1 = zxx.b(this.jdField_c_of_type_Int);
+        if (bool2)
         {
-          i += 1;
-          break;
-          localStringBuilder.append(paramString[i] + ".");
+          a(this.jdField_b_of_type_JavaLangString, 1);
+          return true;
         }
       }
-      return localStringBuilder.toString();
+      if (bool1)
+      {
+        a(this.jdField_b_of_type_JavaLangString, 2);
+        return true;
+      }
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, 2131690086, 1).b(this.jdField_a_of_type_Int);
+      return false;
+      label142:
+      boolean bool1 = false;
+      boolean bool2 = false;
     }
-    return "";
   }
   
-  public static void a(Activity paramActivity, Bundle paramBundle)
+  public boolean a(View paramView)
   {
-    biqd.a();
-    int i = paramBundle.getInt("qzoneAppid");
-    int j = paramBundle.getInt("qzoneSubId");
-    int k = paramBundle.getInt("op_type");
-    int m = paramBundle.getInt("from");
-    boolean bool = paramBundle.getBoolean("is_can_open_yyb_native", true);
-    paramActivity = paramBundle.getString("schemaUrl");
-    Object localObject6;
-    Object localObject2;
-    if ((!TextUtils.isEmpty(paramActivity)) && (paramActivity.contains("&")))
+    int k = 0;
+    boolean bool1 = false;
+    if ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
     {
-      localObject6 = new Bundle();
-      if (paramActivity.startsWith("http://")) {}
-      String str2;
+      bool1 = true;
+      return bool1;
+    }
+    Object localObject;
+    int i;
+    if ((this.jdField_a_of_type_Bipq != null) && (this.jdField_a_of_type_Bipq.a() != null))
+    {
+      localObject = this.jdField_a_of_type_Bipq.a();
+      paramView = ((com.tencent.smtt.sdk.WebView)localObject).getX5HitTestResult();
+      if (paramView != null)
+      {
+        i = paramView.getType();
+        if (i == 8)
+        {
+          if (!(paramView.getData() instanceof IX5WebViewBase.HitTestResult.ImageAnchorData)) {
+            break label525;
+          }
+          paramView = ((IX5WebViewBase.HitTestResult.ImageAnchorData)paramView.getData()).mPicUrl;
+        }
+      }
+    }
+    for (;;)
+    {
+      label101:
+      localObject = ((com.tencent.smtt.sdk.WebView)localObject).getX5WebViewExtension();
+      boolean bool2;
+      label150:
+      int j;
+      if (localObject != null)
+      {
+        localObject = (Boolean)((IX5WebViewExtension)localObject).invokeMiscMethod("supportImageQuery", new Bundle());
+        if (localObject != null)
+        {
+          bool2 = ((Boolean)localObject).booleanValue();
+          bool1 = bool2;
+          localObject = paramView;
+          j = i;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("SwiftBrowserLongClickHandler", 2, "isSupportImageQuery:" + bool2);
+            j = i;
+            localObject = paramView;
+            bool1 = bool2;
+          }
+        }
+      }
       for (;;)
       {
-        try
+        if ((j != 8) && (j != 5))
         {
-          localObject2 = new URL(paramActivity).getQuery();
-          HashMap localHashMap = biqd.a((String)localObject2);
-          str1 = (String)localHashMap.get("appid");
-          if (TextUtils.isEmpty(str1))
-          {
-            str1 = (String)localHashMap.get(bivp.b);
-            localObject4 = (String)localHashMap.get(bivp.jdField_c_of_type_JavaLangString);
-            if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-              break label416;
-            }
-            localObject4 = (String)localHashMap.get("ta");
-            localObject5 = (String)localHashMap.get(bivp.d);
-            if (!TextUtils.isEmpty((CharSequence)localObject5)) {
-              break label419;
-            }
-            localObject5 = (String)localHashMap.get("tk");
-            str2 = (String)localHashMap.get(bivp.e);
-            localObject7 = (String)localHashMap.get("via");
-            localObject3 = (String)localHashMap.get("packName");
-            if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-              break label422;
-            }
-            localObject3 = (String)localHashMap.get(bivp.f);
-            paramActivity = (String)localHashMap.get(bivp.B);
-            bisy.d("AppClient", " feedChannel:" + paramActivity + "   schemaUrl:" + (String)localObject2);
-            if ((!TextUtils.isEmpty(paramActivity)) && (!paramActivity.startsWith("0;"))) {
-              break label425;
-            }
-            paramActivity = "";
-            bisy.d("AppClient", " finalFeedChannel:" + paramActivity);
-            if ((TextUtils.isEmpty((CharSequence)localObject3)) || (!biub.a((String)localObject3))) {
-              break;
-            }
-            paramActivity = (String)localHashMap.get("appCustom");
-          }
-        }
-        catch (MalformedURLException localMalformedURLException)
-        {
-          String str1;
-          localMalformedURLException.printStackTrace();
-        }
-        try
-        {
-          paramBundle = URLDecoder.decode(paramActivity, "UTF-8");
-          paramActivity = paramBundle;
-        }
-        catch (Exception paramBundle)
-        {
-          for (;;)
-          {
-            CharSequence localCharSequence;
-            Object localObject1;
+          QLog.e("SwiftBrowserLongClickHandler", 1, "the type of HitTestResult is not image type.");
+          return false;
+          paramView = paramView.getExtra();
+          break label101;
+          paramView = ((com.tencent.smtt.sdk.WebView)localObject).getHitTestResult();
+          if (paramView == null) {
             break;
           }
-        }
-        biub.a(biip.a().a(), str1, (String)localObject3, paramActivity);
-        return;
-        localObject2 = paramActivity;
-        continue;
-        continue;
-        label416:
-        continue;
-        label419:
-        continue;
-        label422:
-        continue;
-        label425:
-        paramActivity = paramActivity.split(";");
-        if (paramActivity == null)
-        {
-          paramActivity = "";
-        }
-        else if (paramActivity.length <= 0)
-        {
-          paramActivity = "";
-        }
-        else
-        {
-          localCharSequence = paramActivity[0];
-          if (!TextUtils.isEmpty(localCharSequence))
-          {
-            paramActivity = localCharSequence;
-            if (!localCharSequence.equals("0")) {}
+          i = paramView.getType();
+          paramView = paramView.getExtra();
+          break label101;
+          QLog.e("SwiftBrowserLongClickHandler", 1, "X5WebView supportImageQuery invoke result is null.");
+          bool2 = false;
+          break label150;
+          QLog.e("SwiftBrowserLongClickHandler", 1, "X5WebView extension is null. can't get ability of supportImageQuery");
+          bool1 = false;
+          localObject = paramView;
+          j = i;
+          continue;
+          if (!(paramView instanceof android.webkit.WebView)) {
+            break label513;
           }
-          else
-          {
-            paramActivity = "";
+          paramView = ((android.webkit.WebView)paramView).getHitTestResult();
+          if (paramView == null) {
+            break;
           }
+          j = paramView.getType();
+          localObject = paramView.getExtra();
+          bool1 = false;
+          continue;
         }
-      }
-      ((Bundle)localObject6).putString(bivp.b, localMalformedURLException);
-      ((Bundle)localObject6).putString(bivp.jdField_c_of_type_JavaLangString, (String)localObject4);
-      ((Bundle)localObject6).putString(bivp.d, (String)localObject5);
-      ((Bundle)localObject6).putString(bivp.e, str2);
-      ((Bundle)localObject6).putString(bivp.f, (String)localObject3);
-      ((Bundle)localObject6).putString(bivp.i, (String)localObject7);
-      ((Bundle)localObject6).putString(bivp.B, paramActivity);
-      ((Bundle)localObject6).putString("schemaUrl", (String)localObject2);
-      paramActivity = (Activity)localObject6;
-      localObject5 = str2;
-      localObject4 = localObject3;
-      localObject3 = paramActivity;
-      paramActivity = (Activity)localObject7;
-      if (k != 7) {
-        break label735;
-      }
-      localObject7 = a(i, j, m, localMalformedURLException);
-      if (!TextUtils.isEmpty(paramActivity)) {
-        break label1256;
-      }
-      paramActivity = biuh.a(i, j, m);
-      biur.a().a(String.valueOf(biip.a().a()), localMalformedURLException, paramActivity, "200", false);
-      localObject6 = paramActivity;
-    }
-    for (paramActivity = (Activity)localObject7;; paramActivity = (Activity)localObject7)
-    {
-      if ((TextUtils.isEmpty((CharSequence)localObject5)) || (TextUtils.isEmpty((CharSequence)localObject4)) || ("0".equals(localObject5)) || (localObject3 == null) || (!biwe.a().c()) || (!bool)) {
-        break label749;
-      }
-      ThreadManager.getSubThreadHandler().post(new AppClient.2(paramBundle, (Bundle)localObject3, localMalformedURLException, (String)localObject2, paramActivity, (String)localObject6));
-      return;
-      localObject3 = null;
-      localObject4 = null;
-      localObject5 = "0";
-      localObject6 = null;
-      localObject1 = paramActivity;
-      localObject2 = paramActivity;
-      paramActivity = (Activity)localObject6;
-      break;
-      label735:
-      localObject7 = "2410";
-      localObject6 = paramActivity;
-    }
-    label749:
-    Object localObject3 = biqd.g() + File.separator + "qapp_center_detail.htm";
-    Object localObject4 = new File((String)localObject3);
-    if (!((File)localObject4).exists())
-    {
-      bisy.d("AppClient", "file" + (String)localObject3 + " not exist copyassets.");
-      bisv.a("Page/system", biqd.h());
-    }
-    Object localObject5 = new Intent();
-    Object localObject7 = new Bundle();
-    if (((File)localObject4).exists())
-    {
-      localObject3 = "file:///" + (String)localObject3;
-      localObject4 = "&from=-10&id=" + (String)localObject1 + "&channelId=" + paramActivity;
-      paramActivity = (Activity)localObject4;
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        if (!((String)localObject2).equals(localObject1)) {
-          break label1206;
-        }
-        paramActivity = (Activity)localObject4;
-      }
-      label945:
-      if (biqd.a(paramBundle.getString("schemaUrl")).get("auto_download") == null) {
-        break label1235;
-      }
-      i = 1;
-      label965:
-      localObject1 = paramActivity;
-      if (i != 0)
-      {
-        localObject1 = paramActivity;
-        if (!paramActivity.contains("auto_download")) {
-          localObject1 = paramActivity + "&auto_download=1";
-        }
-      }
-      ((Intent)localObject5).setClass(biip.a().a(), QZoneAppListActivity.class);
-      ((Bundle)localObject7).putString("APP_URL", (String)localObject3);
-      ((Bundle)localObject7).putBoolean("FROM_FEED", true);
-      ((Bundle)localObject7).putString("APP_PARAMS", (String)localObject1);
-      if (!DownloadSDKConfigManager.canGotoNewDetailPage((String)localObject6)) {
-        break label1240;
-      }
-      ((Bundle)localObject7).putInt("goto_type", 7);
-    }
-    for (;;)
-    {
-      if (paramBundle.getInt("process_id") == 2) {
-        ((Bundle)localObject7).putInt("process_id", 2);
-      }
-      bisy.b("Jie", "APP_URL:" + (String)localObject3 + " |  PARAMS >>> " + ((Bundle)localObject7).getString("APP_PARAMS"));
-      ((Intent)localObject5).putExtras((Bundle)localObject7);
-      ((Intent)localObject5).putExtra("adapter_action", "action_app_detail");
-      ((Intent)localObject5).addFlags(872415232);
-      biip.a().a().startActivity((Intent)localObject5);
-      return;
-      localObject3 = biqd.m() + File.separator + "qapp_center_detail.htm";
-      break;
-      label1206:
-      paramActivity = (String)localObject4 + "&" + (String)localObject2;
-      break label945;
-      label1235:
-      i = 0;
-      break label965;
-      label1240:
-      ((Bundle)localObject7).putInt("goto_type", 2);
-    }
-  }
-  
-  public static void a(Activity paramActivity, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("schemaUrl", paramString);
-    a(paramActivity, localBundle);
-  }
-  
-  public static void a(Activity paramActivity, String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("schemaUrl", paramString);
-    localBundle.putInt("qzoneAppid", paramInt1);
-    localBundle.putInt("qzoneSubId", paramInt2);
-    localBundle.putInt("from", paramInt3);
-    a(paramActivity, localBundle);
-  }
-  
-  public static void a(Activity paramActivity, String paramString, int paramInt, Bundle paramBundle)
-  {
-    String str1 = biqd.g() + File.separator + "qapp_center_detail.htm";
-    biqd.a();
-    Object localObject = new File(str1);
-    if (!((File)localObject).exists())
-    {
-      bisy.d("AppClient", "file" + str1 + " not exist copyassets.");
-      bisv.a("Page/system", biqd.h());
-    }
-    Intent localIntent = new Intent();
-    Bundle localBundle = new Bundle();
-    String str2;
-    if (((File)localObject).exists())
-    {
-      str2 = "file:///" + str1;
-      localIntent.setClass(biip.a().a(), QZoneAppListActivity.class);
-      str1 = "&from=-10&id=" + paramString + "&channelId=" + paramInt;
-      paramString = null;
-      if (paramBundle != null) {
-        paramString = paramBundle.getString("via");
-      }
-      if (!DownloadSDKConfigManager.canGotoNewDetailPage(paramString)) {
-        break label554;
-      }
-      localBundle.putInt("goto_type", 7);
-      label218:
-      if (!TextUtils.isEmpty(paramString)) {
-        break label566;
-      }
-    }
-    for (;;)
-    {
-      int i = 0;
-      paramString = str1;
-      if (paramBundle != null)
-      {
-        boolean bool = paramBundle.getBoolean("autoDownload");
-        paramString = paramBundle.getString("packageName");
-        localObject = str1;
-        if (!TextUtils.isEmpty(paramString)) {
-          localObject = str1 + "&packageName=" + paramString;
-        }
-        str1 = paramBundle.getString("subpagetype");
-        paramString = (String)localObject;
-        i = bool;
-        if (!TextUtils.isEmpty(str1))
+        if (TextUtils.isEmpty((CharSequence)localObject))
         {
-          paramString = (String)localObject + "&subpagetype=" + str1;
-          i = bool;
+          QLog.e("SwiftBrowserLongClickHandler", 1, "the image url of HitTestResult is empty.");
+          return false;
         }
-      }
-      str1 = paramString;
-      if (i != 0) {
-        str1 = paramString + "&msgType=56";
-      }
-      localBundle.putString("APP_PARAMS", str1);
-      if (paramBundle != null)
-      {
-        localBundle.putString("uin", paramBundle.getString("uin"));
-        localBundle.putString("sid", paramBundle.getString("vkey"));
-      }
-      localBundle.putString("APP_URL", str2);
-      localBundle.putBoolean("FROM_FEED", true);
-      bisy.b("Jie", "APP_URL:" + str2 + " |  PARAMS >>> " + localBundle.getString("APP_PARAMS"));
-      localIntent.putExtras(localBundle);
-      localIntent.putExtra("adapter_action", "action_app_detail");
-      localIntent.addFlags(603979776);
-      paramActivity.startActivityForResult(localIntent, 200);
-      return;
-      str2 = biqd.m() + File.separator + "qapp_center_detail.htm";
-      break;
-      label554:
-      localBundle.putInt("goto_type", 3);
-      break label218;
-      label566:
-      str1 = str1 + "&via=" + paramString;
-    }
-  }
-  
-  protected static void a(Activity paramActivity, String paramString1, String paramString2, Bundle paramBundle, String paramString3, String paramString4)
-  {
-    biqd.a();
-    int i = 1;
-    Object localObject;
-    if (!paramString3.equals("online"))
-    {
-      paramString4 = biqd.g() + File.separator + paramString4;
-      localObject = new File(paramString4);
-      if (!((File)localObject).exists())
-      {
-        bisy.d("AppClient", "file" + paramString4 + " not exist copyassets.");
-        bisv.a("Page/system", biqd.h());
-      }
-      if (((File)localObject).exists()) {
-        paramString4 = "file:///" + paramString4;
-      }
-    }
-    Intent localIntent;
-    Bundle localBundle;
-    String str1;
-    for (;;)
-    {
-      localIntent = new Intent();
-      localBundle = new Bundle();
-      Class localClass = a(paramString3);
-      localIntent.setClass(paramActivity, localClass);
-      String str5 = paramBundle.getString("installedVersion");
-      String str6 = paramBundle.getString("localVersion");
-      String str7 = paramBundle.getString("typeid");
-      String str8 = paramBundle.getString("serverApkVersion");
-      String str9 = paramBundle.getString("msgType");
-      String str10 = paramBundle.getString("sendTime");
-      str1 = paramBundle.getString("via");
-      String str3 = paramBundle.getString("splitvia");
-      String str4 = paramBundle.getString("subPageType");
-      String str2 = paramBundle.getString("appCustom");
-      localObject = paramString2;
-      if (paramString2 == "2460") {
-        localObject = paramString2 + "_" + str9;
-      }
-      paramString2 = "&from=-10&id=" + paramString1 + "&channelId=" + (String)localObject + "&installedVersion=" + str5 + "&localVersion=" + str6 + "&serverApkVersion=" + str8 + "&typeId=" + str7 + "&msgType=" + str9 + "&sendTime=" + str10;
-      str5 = paramBundle.getString("schemaUrl");
-      if (TextUtils.isEmpty(str4))
-      {
-        label409:
-        if (!TextUtils.isEmpty(str1)) {
-          break label967;
+        if (QLog.isColorLevel()) {
+          QLog.d("SwiftBrowserLongClickHandler", 2, "showActionSheet");
         }
-        label417:
-        if (!TextUtils.isEmpty(str3)) {
-          break label996;
+        this.jdField_a_of_type_JavaLangString = ((String)localObject);
+        i = k;
+        if ((this.jdField_a_of_type_AndroidAppActivity instanceof TeamWorkDocEditBrowserActivity)) {
+          i = 1;
         }
-        label425:
-        if (!TextUtils.isEmpty(str2)) {
-          break label1025;
+        this.jdField_a_of_type_Blir = blir.c(this.jdField_a_of_type_AndroidAppActivity);
+        if (bool1) {
+          this.jdField_a_of_type_Blir.b(2131690555);
         }
-        label433:
-        if (!TextUtils.isEmpty(str5)) {
-          break label1054;
+        this.jdField_a_of_type_Blir.b(2131690554);
+        this.jdField_a_of_type_Blir.b(2131690553);
+        if (i != 0) {
+          this.jdField_a_of_type_Blir.b(2131692960);
         }
-        label441:
-        localBundle.putString("APP_PARAMS", paramString2);
-        localBundle.putString("uin", paramBundle.getString("uin"));
-        localBundle.putString("sid", paramBundle.getString("vkey"));
-        localBundle.putString("APP_URL", paramString4);
-        localBundle.putBoolean("FROM_FEED", true);
-        localBundle.putString(bivp.i, str1);
-        if (!"detail".equals(paramString3)) {
-          break label1082;
-        }
-        localBundle.putInt("goto_type", 2);
-        label528:
-        if ((!paramString3.equals("custom")) || (i == 0)) {}
-      }
-      try
-      {
-        paramString2 = paramBundle.getString("pageTitles");
-        if (!TextUtils.isEmpty(paramString2))
-        {
-          paramString2 = new ArrayList(Arrays.asList(paramString2.split("&")));
-          localBundle.putStringArrayList("titleName", paramString2);
-          if (paramString2.size() > 0)
-          {
-            bool = true;
-            localBundle.putBoolean("showTitle", bool);
-            bisy.b("AppClient", "titles = " + paramString2);
-          }
-        }
-        else
-        {
-          bisy.b("TAG", "APP_URL:" + paramString4 + " |  PARAMS >>> " + localBundle.getString("APP_PARAMS"));
-          localIntent.putExtras(localBundle);
-          localIntent.putExtra("adapter_action", "action_app_detail");
-          localIntent.addFlags(603979776);
-        }
-      }
-      catch (Exception paramString2)
-      {
+        this.jdField_a_of_type_Blir.c(2131690580);
+        d(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Blir.a(new biqb(this));
+        this.jdField_a_of_type_Blir.setOnDismissListener(new biqc(this));
+        this.jdField_a_of_type_Blir.setCanceledOnTouchOutside(true);
         try
         {
-          for (;;)
-          {
-            paramString2 = Class.forName("com.tencent.open.appcenter.QZoneAppWebViewActivity");
-            if ((paramString2 == null) || (!localClass.getName().equals(paramString2.getName()))) {
-              break label1167;
-            }
-            if (!((String)localObject).equals("2457")) {
-              break label1143;
-            }
-            paramString1 = bivr.a().a(paramString1);
-            if ((!biwe.a().c()) || (paramString1 == null) || (paramString1.jdField_c_of_type_Int != 1)) {
-              break label1133;
-            }
-            bisy.d("AppClient", ">>>appid=" + paramString1.jdField_c_of_type_JavaLangString + " myAppid=" + paramString1.j);
-            localBundle.putString(bivp.b, paramString1.jdField_c_of_type_JavaLangString);
-            localBundle.putString(bivp.jdField_c_of_type_JavaLangString, paramString1.j);
-            localBundle.putString(bivp.d, paramString1.k);
-            localBundle.putString(bivp.i, str1);
-            localBundle.putString(bivp.f, paramString1.e);
-            localBundle.putInt(bivp.e, paramString1.b);
-            biwe.a().a(paramActivity, localBundle, ((String)localObject).equals("2457"), true);
-            return;
-            i = 0;
-            paramString4 = biqd.m() + File.separator + "qapp_center_detail.htm";
-            break;
-            break;
-            paramString2 = paramString2 + "&subPageType=" + str4;
-            break label409;
-            label967:
-            paramString2 = paramString2 + "&via=" + str1;
-            break label417;
-            label996:
-            paramString2 = paramString2 + "&splitVia=" + str3;
-            break label425;
-            label1025:
-            paramString2 = paramString2 + "&appCustom=" + str2;
-            break label433;
-            label1054:
-            paramString2 = paramString2 + "&" + str5;
-            break label441;
-            label1082:
-            if (!"index".equals(paramString3)) {
-              break label528;
-            }
-            localBundle.putInt("goto_type", 1);
-            break label528;
-            boolean bool = false;
-          }
-          paramString2 = paramString2;
-          bisy.c("AppClient", "get push title error>>>", paramString2);
+          this.jdField_a_of_type_Blir.show();
+          return true;
         }
-        catch (Exception paramString2)
+        catch (Exception paramView)
         {
           for (;;)
           {
-            paramString2.printStackTrace();
-            paramString2 = null;
-          }
-          label1133:
-          paramActivity.startActivityForResult(localIntent, 200);
-          return;
-        }
-      }
-    }
-    label1143:
-    ThreadManager.getSubThreadHandler().post(new AppClient.1(paramString1, localBundle, str1, paramActivity, localIntent, paramBundle));
-    return;
-    label1167:
-    paramActivity.startActivityForResult(localIntent, 200);
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3)
-  {
-    a(paramActivity, paramString1, paramString2, paramString3, "2457");
-  }
-  
-  protected static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    bisy.b("AppClient", "shcemaUrlAnd:" + paramString1);
-    if ((paramString1 == null) || (paramString1.length() == 0)) {}
-    for (;;)
-    {
-      return;
-      Object localObject2 = biqd.a(paramString1);
-      String str8 = (String)((HashMap)localObject2).get("appid");
-      String str10 = (String)((HashMap)localObject2).get("sendtime");
-      String str9 = (String)((HashMap)localObject2).get("packname");
-      String str13 = (String)((HashMap)localObject2).get("packetversion");
-      String str11 = (String)((HashMap)localObject2).get("msgtype");
-      String str14 = (String)((HashMap)localObject2).get("type");
-      Object localObject1 = (String)((HashMap)localObject2).get("downurl");
-      String str12 = (String)((HashMap)localObject2).get("via");
-      String str15 = a(str12);
-      String str7 = (String)((HashMap)localObject2).get("appCustom");
-      String str2 = (String)((HashMap)localObject2).get("nativepage");
-      String str1 = str2;
-      if (TextUtils.isEmpty(str2)) {
-        str1 = (String)((HashMap)localObject2).get("np");
-      }
-      str2 = (String)((HashMap)localObject2).get("htmlpage");
-      label236:
-      label370:
-      String str16;
-      label270:
-      label304:
-      label337:
-      int i;
-      if (TextUtils.isEmpty(str2))
-      {
-        str2 = (String)((HashMap)localObject2).get("hp");
-        String str3 = (String)((HashMap)localObject2).get("subpagetype");
-        if (!TextUtils.isEmpty(str3)) {
-          break label864;
-        }
-        str3 = (String)((HashMap)localObject2).get("sp");
-        String str4 = (String)((HashMap)localObject2).get("pagetitles");
-        if (!TextUtils.isEmpty(str4)) {
-          break label867;
-        }
-        str4 = (String)((HashMap)localObject2).get("pt");
-        String str5 = (String)((HashMap)localObject2).get(bivp.jdField_c_of_type_JavaLangString);
-        if (!TextUtils.isEmpty(str5)) {
-          break label870;
-        }
-        str5 = (String)((HashMap)localObject2).get("ta");
-        String str6 = (String)((HashMap)localObject2).get(bivp.d);
-        if (!TextUtils.isEmpty(str6)) {
-          break label873;
-        }
-        str6 = (String)((HashMap)localObject2).get("tk");
-        str16 = (String)((HashMap)localObject2).get("minvercode");
-        localObject2 = (String)((HashMap)localObject2).get("backurl");
-        bisy.b("AppClient", "appid=" + str8 + " ,sendtime=" + str10 + " ,packname=" + str9 + " ,packetversion=" + str13 + " ,msgtype=" + str11 + " ,type=" + str14 + " ,downUrl=" + (String)localObject1 + " ,nativePage=" + str1 + " ,htmlPage=" + str2 + " ,subPageType=" + str3 + " ,pageTitles=" + str4 + " ,minvercode=" + str16 + " ,backUrl=" + (String)localObject2);
-        i = biub.a(str9);
-        int j = biub.b(bivr.a().a(str8));
-        localObject1 = new Bundle();
-        ((Bundle)localObject1).putString("installedVersion", String.valueOf(i));
-        ((Bundle)localObject1).putString("localVersion", String.valueOf(j));
-        ((Bundle)localObject1).putString("serverApkVersion", str13);
-        ((Bundle)localObject1).putString("typeid", str14);
-        ((Bundle)localObject1).putString("msgType", str11);
-        ((Bundle)localObject1).putString("sendTime", str10);
-        ((Bundle)localObject1).putString("subPageType", str3);
-        ((Bundle)localObject1).putString("pageTitles", str4);
-        ((Bundle)localObject1).putString("appCustom", str7);
-        ((Bundle)localObject1).putString("schemaUrl", paramString1);
-        if (!TextUtils.isEmpty(str12))
-        {
-          ((Bundle)localObject1).putString("via", str12);
-          ((Bundle)localObject1).putString("splitvia", str15);
-        }
-        ((Bundle)localObject1).putString("uin", paramString2);
-        ((Bundle)localObject1).putString("vkey", paramString3);
-        ((Bundle)localObject1).putString(bivp.b, str8);
-        ((Bundle)localObject1).putString(bivp.jdField_c_of_type_JavaLangString, str5);
-        ((Bundle)localObject1).putString(bivp.d, str6);
-        if (!TextUtils.isEmpty(str9)) {
-          ((Bundle)localObject1).putString(bivp.f, str9);
-        }
-        ((Bundle)localObject1).putString(bivp.e, str13);
-      }
-      try
-      {
-        biip.a().a(Integer.parseInt(paramString2));
-        label800:
-        biip.a().a(paramString3);
-        b(paramString4, str11, str8, str12);
-        if ("2460".equals(paramString4))
-        {
-          a(paramString2, paramString3, str8, str10);
-          if (i <= 0) {}
-        }
-        try
-        {
-          paramString1 = URLDecoder.decode(str7, "UTF-8");
-          biub.a(paramActivity, str8, str9, paramString1);
-          return;
-          break label236;
-          label864:
-          break label270;
-          label867:
-          break label304;
-          label870:
-          break label337;
-          label873:
-          break label370;
-          if (TextUtils.isEmpty(str1))
-          {
-            a(paramActivity, str8, paramString4, (Bundle)localObject1, "detail", "qapp_center_detail.htm");
-            return;
-          }
-          if (str1.equals("tmast"))
-          {
-            if (TextUtils.isEmpty(str2)) {
-              continue;
-            }
-            i = biub.a("com.tencent.android.qqdownloader");
-            if ((!TextUtils.isEmpty(str16)) && (i > 0) && (i >= Integer.valueOf(str16).intValue()))
-            {
-              paramString1 = new Intent("android.intent.action.VIEW", Uri.parse(str2));
-              paramString1.setFlags(268435456);
-              paramActivity.startActivity(paramString1);
-              return;
-            }
-            if (TextUtils.isEmpty((CharSequence)localObject2)) {
-              continue;
-            }
-            a(paramActivity, str8, paramString4, (Bundle)localObject1, "online", (String)localObject2);
-            return;
-          }
-          if (str1.equals("detail"))
-          {
-            a(paramActivity, str8, paramString4, (Bundle)localObject1, "detail", "qapp_center_detail.htm");
-            return;
-          }
-          a(paramActivity, str8, paramString4, (Bundle)localObject1, str1, str2);
-          return;
-        }
-        catch (Exception paramString1)
-        {
-          for (;;)
-          {
-            paramString1 = str7;
+            paramView.printStackTrace();
           }
         }
+        label513:
+        localObject = "";
+        j = 0;
+        bool1 = false;
       }
-      catch (NumberFormatException paramString1)
-      {
-        break label800;
-      }
+      label525:
+      paramView = "";
     }
   }
   
-  public static void a(Context paramContext, String paramString, boolean paramBoolean)
+  public void b(String paramString)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("process_id", 2);
-    localBundle.putString("schemaUrl", paramString);
-    localBundle.putBoolean("is_can_open_yyb_native", paramBoolean);
-    if ((paramContext instanceof Activity))
+    localBundle.putInt("forward_type", 1);
+    localBundle.putString("forward_filepath", paramString);
+    localBundle.putString("forward_extra", paramString);
+    localBundle.putBoolean("not_forward", true);
+    localBundle.putString("forward_thumb", paramString);
+    localBundle.putBoolean("isFromShare", true);
+    localBundle.putBoolean("isJumpAIO", true);
+    paramString = new Intent();
+    paramString.putExtras(localBundle);
+    auxu.a(this.jdField_a_of_type_AndroidAppActivity, paramString, 21);
+  }
+  
+  public void c(String paramString)
+  {
+    if (this.jdField_a_of_type_Bipq == null)
     {
-      a((Activity)paramContext, localBundle);
+      QLog.e("SwiftBrowserLongClickHandler", 1, "x5QueryImage. mComponentContext is null");
       return;
     }
-    a(null, localBundle);
-  }
-  
-  protected static void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("huin", paramString1);
-    localBundle.putString("keytype", "256");
-    localBundle.putString("keystr", paramString2);
-    localBundle.putString("appid", paramString3);
-    localBundle.putString("platform", biip.a().g());
-    localBundle.putString("requestkeys", paramString4);
-    localBundle.putString("mode", "1");
-    localBundle.putString("v", biip.a().e());
-    new bitt("https://appic.qq.com/cgi-bin/appstage/mapp_setrequest.cgi", "GET", null).execute(new Bundle[] { localBundle });
-  }
-  
-  public static void b(Activity paramActivity, Bundle paramBundle)
-  {
-    String str1 = paramBundle.getString("packageName");
-    String str2 = paramBundle.getString("appId");
-    boolean bool = paramBundle.getBoolean("autoDownload");
-    paramBundle = paramBundle.getString("big_brother_source_key");
-    biuh.a("200", "ANDROIDQQ.SHARESOURCE", str2);
-    ThreadManager.executeOnSubThread(new AppClient.3(str2, str1, paramBundle, paramActivity, bool));
-  }
-  
-  public static void b(Activity paramActivity, String paramString1, String paramString2, String paramString3)
-  {
-    a(paramActivity, paramString1, paramString2, paramString3, "2460");
-  }
-  
-  protected static void b(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    if ("2457".equals(paramString1)) {
-      if (!TextUtils.isEmpty(paramString4)) {
-        break label67;
-      }
-    }
-    for (String str = "ANDROIDQQ.PCPUSH.AIOMSG";; str = paramString4)
+    Object localObject = this.jdField_a_of_type_Bipq.a();
+    if (localObject == null)
     {
-      biuh.a("200", str, paramString3);
-      if ("2460".equals(paramString1)) {}
-      label67:
-      try
-      {
-        paramString2 = biuh.a(Integer.parseInt(paramString2));
-        paramString1 = paramString4;
-        if (TextUtils.isEmpty(paramString4)) {
-          paramString1 = paramString2;
-        }
-        biuh.a("200", paramString1, paramString3);
-        return;
-      }
-      catch (NumberFormatException paramString1) {}
+      QLog.e("SwiftBrowserLongClickHandler", 1, "x5QueryImage. x5WebView is null");
+      return;
     }
+    localObject = ((com.tencent.smtt.sdk.WebView)localObject).getX5WebViewExtension();
+    if (localObject == null)
+    {
+      QLog.e("SwiftBrowserLongClickHandler", 1, "x5QueryImage. extension is null");
+      return;
+    }
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("SwiftBrowserLongClickHandler", 1, "x5QueryImage. filePath is null");
+      return;
+    }
+    ThreadManager.excute(new SwiftBrowserLongClickHandler.7(this, paramString, (IX5WebViewExtension)localObject), 64, null, true);
   }
 }
 

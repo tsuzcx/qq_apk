@@ -1,22 +1,20 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
 public class noa
-  extends Handler
+  extends aocj
 {
-  public noa(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
+  protected void a(boolean paramBoolean, OpenID paramOpenID) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramMessage.what)
+    switch (paramInt)
     {
     default: 
       return;
     }
-    paramMessage = (Bundle)paramMessage.obj;
-    this.a.jdField_a_of_type_Aanz.a(17, paramMessage, this.a.jdField_a_of_type_Anil);
+    QLog.d("openid", 2, "isSuccess=" + paramBoolean + ",data=" + paramObject);
+    a(paramBoolean, (OpenID)paramObject);
   }
 }
 

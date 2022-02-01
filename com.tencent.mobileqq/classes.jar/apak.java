@@ -1,25 +1,16 @@
-import android.text.TextUtils;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class apak
+  extends aoxh
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public String a()
+  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
   {
-    if (TextUtils.isEmpty(this.b)) {
-      return "";
-    }
-    return this.b;
-  }
-  
-  public String b()
-  {
-    if (TextUtils.isEmpty(this.c)) {
-      return "";
-    }
-    return this.c;
+    paramQQAppInterface = new apaj(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "wsgzh";
+    paramQQAppInterface.c = "waterfall";
+    return paramQQAppInterface;
   }
 }
 

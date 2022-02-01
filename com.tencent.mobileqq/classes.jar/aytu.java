@@ -1,21 +1,20 @@
-import android.os.Bundle;
-import org.jetbrains.annotations.Nullable;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class aytu
-  extends aysj
+public class aytu
+  extends aytv
 {
-  aytu(aytt paramaytt) {}
-  
-  public void a(boolean paramBoolean, @Nullable Bundle paramBundle)
+  public aytu(String paramString, ayud paramayud)
   {
-    super.a(paramBoolean, paramBundle);
-    if (paramBundle != null) {
-      aytt.a(this.a, paramBundle.getString("key_today_constellation_trend"));
-    }
-    this.a.a();
-    if ((aytt.a(this.a)) && (aytt.a(this.a) != null)) {
-      aytt.b(this.a).a();
-    }
+    super(paramString, paramayud);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130839291);
+    this.jdField_a_of_type_Int = -1;
   }
 }
 

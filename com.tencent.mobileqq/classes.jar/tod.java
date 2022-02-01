@@ -1,22 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class tod
-  extends aoou
+  implements acyt
 {
-  public tod(BridgeModule paramBridgeModule, String paramString1, String paramString2)
+  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    super(paramString1);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    if (paramLong == 8589934598L)
     {
-      BridgeModule.access$1800(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, paramSosoLbsInfo, this.jdField_a_of_type_JavaLangString);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("GameWebReportLoad", 2, "handleEvent type=" + paramLong);
+      }
+      paramString = new Bundle();
+      aasb.a().a(140, paramString);
     }
-    BridgeModule.access$1900(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_a_of_type_JavaLangString, "errorCode: " + paramInt);
+    return false;
   }
 }
 

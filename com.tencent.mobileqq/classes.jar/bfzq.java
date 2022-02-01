@@ -1,24 +1,42 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class bfzq
-  implements bdet
+  implements View.OnClickListener
 {
-  public bfzq(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  public bfzq(HomeWorkTroopSelectorFragment paramHomeWorkTroopSelectorFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (TroopGiftToAllSurfaceView.a(this.a).d == 0) {
-      this.a.a(1, TroopGiftToAllSurfaceView.a(this.a));
-    }
-    for (;;)
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    if (HomeWorkTroopSelectorFragment.a(this.a) != null)
     {
-      if ((TroopGiftToAllSurfaceView.a(this.a) instanceof VideoSprite)) {
-        ((VideoSprite)TroopGiftToAllSurfaceView.a(this.a)).c(TroopGiftToAllSurfaceView.a(this.a));
+      int j = HomeWorkTroopSelectorFragment.a(this.a).getCount();
+      int i = 0;
+      while (i < j)
+      {
+        localObject = (bfzv)HomeWorkTroopSelectorFragment.a(this.a).getItem(i);
+        if ((((Boolean)((bfzv)localObject).b).booleanValue()) && (!HomeWorkTroopSelectorFragment.a(this.a).equals(((TroopInfo)((bfzv)localObject).a).troopuin)))
+        {
+          localArrayList1.add(((TroopInfo)((bfzv)localObject).a).troopname);
+          localArrayList2.add(((TroopInfo)((bfzv)localObject).a).troopuin);
+        }
+        i += 1;
       }
-      return;
-      this.a.a(0, TroopGiftToAllSurfaceView.a(this.a));
     }
+    Object localObject = new Intent();
+    ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_uin_list_key", localArrayList2);
+    ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_name_list_key", localArrayList1);
+    this.a.getActivity().setResult(262, (Intent)localObject);
+    this.a.getActivity().doOnBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,15 +1,8 @@
-import android.content.Context;
-import android.view.View;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-public class ajcd
-  extends ajdf
+public abstract interface ajcd
 {
-  public ajce a;
-  
-  public ajcd(Context paramContext, View paramView)
-  {
-    super(paramContext, paramView);
-  }
+  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
 }
 
 

@@ -6,7 +6,7 @@ import android.app.Dialog;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import anni;
+import anzj;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -21,7 +21,7 @@ public class TroopBaseProxyActivity
     {
       try
       {
-        paramActivity = new ReportDialog(paramActivity, 2131755823);
+        paramActivity = new ReportDialog(paramActivity, 2131755824);
         Activity localActivity = paramActivity;
       }
       catch (OutOfMemoryError localOutOfMemoryError1)
@@ -29,9 +29,9 @@ public class TroopBaseProxyActivity
         try
         {
           paramActivity.setCancelable(true);
-          paramActivity.setContentView(2131559567);
+          paramActivity.setContentView(2131559572);
           paramActivity.show();
-          ((TextView)paramActivity.findViewById(2131372466)).setText(anni.a(2131713927));
+          ((TextView)paramActivity.findViewById(2131372578)).setText(anzj.a(2131714036));
           localActivity = paramActivity;
           return localActivity;
         }

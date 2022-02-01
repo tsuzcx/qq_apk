@@ -1,36 +1,73 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-class bgpj
-  implements View.OnClickListener
+public class bgpj
 {
-  bgpj(bgpa parambgpa, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public static String a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgpa, 0);
+    if (a(paramString)) {
+      return paramString + 140;
     }
-    try
+    return null;
+  }
+  
+  public static String a(String paramString1, String paramString2, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString2)) {
+      QLog.d("AvatarTroopUtil", 1, "getAvatarAddress troopUin is empty");
+    }
+    do
     {
-      if (this.jdField_a_of_type_Bgpa.isShowing()) {
-        this.jdField_a_of_type_Bgpa.dismiss();
+      return "https://p.qlogo.cn/gh/dir/file/";
+      if (1 == paramInt) {
+        return "https://p.qlogo.cn/gh/dir/file/".replace("dir", paramString2).replace("file", paramString2 + "_" + paramString1);
       }
-      label38:
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    } while (paramInt != 0);
+    return "https://p.qlogo.cn/gh/dir/file/".replace("dir", paramString2).replace("file", paramString2);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (paramString == null) {
+      return false;
     }
-    catch (Exception localException)
+    return paramString.startsWith("https://p.qlogo.cn/gh/");
+  }
+  
+  public static String b(String paramString)
+  {
+    if (a(paramString)) {
+      return paramString + 0;
+    }
+    return null;
+  }
+  
+  public static boolean b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    if (((paramString.length() > 1) && (paramString.startsWith("+"))) || (paramString.startsWith("-"))) {}
+    for (int i = 1;; i = 0)
     {
-      break label38;
+      int j = paramString.length();
+      int k;
+      do
+      {
+        k = j - 1;
+        if (k < i) {
+          break;
+        }
+        j = k;
+      } while (Character.isDigit(paramString.charAt(k)));
+      return false;
+      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgpj
  * JD-Core Version:    0.7.0.1
  */

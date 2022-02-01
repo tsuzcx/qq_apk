@@ -1,21 +1,12 @@
-import android.graphics.Bitmap;
+import java.util.List;
 
-public class bggm
+public abstract interface bggm
 {
-  public int a;
-  public Bitmap a;
-  private bggm a;
-  
-  public bggm()
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_Bggm = null;
-  }
+  public abstract void a(List<bggs> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bggm
  * JD-Core Version:    0.7.0.1
  */

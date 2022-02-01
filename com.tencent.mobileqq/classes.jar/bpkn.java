@@ -1,8 +1,20 @@
-public abstract interface bpkn
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.aeeditor.module.toolbar.VideoEditToolBar;
+
+public class bpkn
+  implements Animation.AnimationListener
 {
-  public abstract void a(int paramInt);
+  public bpkn(VideoEditToolBar paramVideoEditToolBar) {}
   
-  public abstract void c();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

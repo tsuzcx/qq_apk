@@ -1,22 +1,26 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.location.ui.LocationMapWidget;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class avyj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public final class avyj
 {
-  avyj(avyi paramavyi) {}
+  public boolean a;
+  public boolean b = true;
   
-  public void onGlobalLayout()
+  private void a(String paramString)
   {
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    List localList = LocationMapWidget.a(this.a.a);
-    CameraPosition localCameraPosition = this.a.a.a.getCameraPosition();
-    if (localCameraPosition != null) {
-      LocationMapWidget.a(this.a.a).a(localCameraPosition.target, localList);
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.a = paramString.optBoolean("input_status_gray_switch", false);
+      this.b = paramString.optBoolean("expand_chat_input_status_switch", true);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("InputStatusConfig", 1, paramString, new Object[0]);
     }
   }
 }

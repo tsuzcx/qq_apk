@@ -1,10 +1,15 @@
-import android.os.Binder;
-import com.tencent.av.service.UtilsServiceForAV;
+import android.graphics.Bitmap;
 
-public class lxj
-  extends Binder
+class lxj
+  implements lya
 {
-  public lxj(UtilsServiceForAV paramUtilsServiceForAV) {}
+  lxj(lxi paramlxi, String paramString, Bitmap paramBitmap) {}
+  
+  public void a(lxz paramlxz)
+  {
+    paramlxz.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    paramlxz.a();
+  }
 }
 
 

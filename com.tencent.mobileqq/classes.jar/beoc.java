@@ -1,23 +1,94 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.mobileqq.widget.CustomHorizontalScrollView;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 public class beoc
-  extends Handler
+  implements TextWatcher
 {
-  public beoc(NewTroopContactView paramNewTroopContactView) {}
+  private int jdField_a_of_type_Int;
+  private beod jdField_a_of_type_Beod;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString = "";
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
   
-  public void handleMessage(Message paramMessage)
+  private void a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+  }
+  
+  public void a(beod parambeod)
+  {
+    this.jdField_a_of_type_Beod = parambeod;
+  }
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    if (this.jdField_a_of_type_Beod == null) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
+    if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
+      this.jdField_c_of_type_Boolean = true;
+    }
+    paramEditable = paramEditable.toString();
+    String str1;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      str1 = this.jdField_b_of_type_JavaLangString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Beod.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, str1, this.jdField_a_of_type_JavaLangString, paramEditable);
+    }
+    for (;;)
+    {
+      a();
+      return;
+      if (this.jdField_b_of_type_Boolean)
+      {
+        str1 = this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_c_of_type_Int);
+        this.jdField_a_of_type_Beod.b(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, str1, this.jdField_a_of_type_JavaLangString, paramEditable);
+      }
+      else if (this.jdField_c_of_type_Boolean)
+      {
+        str1 = this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_c_of_type_Int);
+        String str2 = this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_a_of_type_Int) + this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_Int + this.jdField_c_of_type_Int);
+        String str3 = this.jdField_b_of_type_JavaLangString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Beod.b(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, str1, this.jdField_a_of_type_JavaLangString, str2);
+        this.jdField_a_of_type_Beod.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, str3, this.jdField_a_of_type_JavaLangString, paramEditable);
+      }
+    }
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt3;
+    if (paramInt2 == 0) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if (paramInt3 == 0) {
+      this.jdField_b_of_type_Boolean = true;
+    }
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_b_of_type_JavaLangString = paramCharSequence.toString();
+    this.jdField_c_of_type_Int = paramInt2;
+    if (paramInt2 == 0) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if (paramInt3 == 0) {
+      this.jdField_b_of_type_Boolean = true;
+    }
   }
 }
 

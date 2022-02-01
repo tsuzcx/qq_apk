@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import azfe;
+import azxr;
 import com.tencent.qphone.base.util.QLog;
 
 class FriendProfileCardActivity$3

@@ -1,56 +1,66 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arbf
-  extends aqkz<arbe>
+  extends armf<arbe>
 {
-  public static arbe a()
-  {
-    return (arbe)aqlk.a().a(487);
-  }
-  
   @NonNull
-  public arbe a(int paramInt)
+  public arbe a()
   {
     return new arbe();
   }
   
-  @Nullable
-  public arbe a(aqlg[] paramArrayOfaqlg)
+  @NonNull
+  public arbe a(@NonNull araj[] paramArrayOfaraj)
   {
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return arbe.a(paramArrayOfaqlg);
+    QLog.e("VasUpdateConfProcessor", 1, "onParsed ");
+    if (paramArrayOfaraj != null) {
+      try
+      {
+        if (paramArrayOfaraj.length > 0)
+        {
+          int j = paramArrayOfaraj.length;
+          int i = 0;
+          while (i < j)
+          {
+            araj localaraj = paramArrayOfaraj[i];
+            if (localaraj != null)
+            {
+              arbe localarbe = arbe.a(localaraj.a);
+              if (QLog.isColorLevel()) {
+                QLog.d("VasUpdateConfProcessor", 2, "onParsed " + localaraj.a);
+              }
+              if (localarbe != null) {
+                return localarbe;
+              }
+            }
+            i += 1;
+          }
+        }
+        return new arbe();
+      }
+      catch (Exception paramArrayOfaraj)
+      {
+        paramArrayOfaraj.printStackTrace();
+        QLog.e("VasUpdateConfProcessor", 1, "onParsed Exception = " + paramArrayOfaraj.getMessage());
+      }
     }
-    return null;
   }
   
-  public void a(arbe paramarbe) {}
+  @NonNull
+  public arbe b()
+  {
+    return new arbe();
+  }
   
   public Class<arbe> clazz()
   {
     return arbe.class;
   }
   
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
   public int type()
   {
-    return 487;
+    return 649;
   }
 }
 

@@ -1,22 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.QuickLoginActivity;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
-class afjc
-  implements DialogInterface.OnClickListener
+public class afjc
+  implements AdapterView.OnItemClickListener
 {
-  afjc(afjb paramafjb, bgpa parambgpa) {}
+  public afjc(QuickLoginActivity paramQuickLoginActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    bcst.b(this.jdField_a_of_type_Afjb.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Afjb.a.a, "", "", "");
-    paramDialogInterface = new Intent(this.jdField_a_of_type_Afjb.a, QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", "https://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
-    paramDialogInterface.putExtra("webStyle", "noBottomBar");
-    this.jdField_a_of_type_Afjb.a.startActivity(paramDialogInterface);
-    this.jdField_a_of_type_Bgpa.cancel();
+    String str = (String)((HashMap)this.a.a.get(paramInt)).get("qq");
+    libsafeedit.getLoginLegal((String)((HashMap)this.a.a.get(paramInt)).get("password"));
+    byte[] arrayOfByte = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
+    this.a.getAppRuntime().login(str, arrayOfByte, QuickLoginActivity.a(this.a));
+    Toast.makeText(this.a.getApplicationContext(), "logining...", 0).show();
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

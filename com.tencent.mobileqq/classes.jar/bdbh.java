@@ -1,22 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import java.lang.ref.WeakReference;
-
-public class bdbh
-  extends Handler
+class bdbh
+  implements bczh
 {
-  private WeakReference<bdaz> a;
+  bdbh(bdbg parambdbg, bdbl parambdbl) {}
   
-  public bdbh(bdaz parambdaz)
-  {
-    this.a = new WeakReference(parambdaz);
-  }
+  public void a(int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if ((bdaz)this.a.get() != null) {
-      ((AnyScaleTypeImageView)paramMessage.obj).setImageResource(2130845416);
+    if ((paramInt == 1) && (this.jdField_a_of_type_Bdbl != null)) {
+      this.jdField_a_of_type_Bdbl.a(paramBoolean, true);
     }
   }
 }

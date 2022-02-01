@@ -1,147 +1,63 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 
 public class xgb
-  extends ReportDialog
-  implements View.OnClickListener
+  extends xfz
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  MyVideoVisiblePersonPageView jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView;
-  MyVideoVisibleTroopPageView jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView;
-  LeftTabBarView jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
-  String jdField_a_of_type_JavaLangString;
-  wrd jdField_a_of_type_Wrd;
-  boolean jdField_a_of_type_Boolean;
+  private final String c;
   
-  public xgb(@NonNull Context paramContext, String paramString, int paramInt, wrd paramwrd, boolean paramBoolean)
+  private boolean a(yar paramyar)
   {
-    super(paramContext, 16973841);
-    super.requestWindowFeature(1);
-    super.setContentView(LayoutInflater.from(paramContext).inflate(2131561878, null));
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = xfe.a();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Wrd = paramwrd;
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)xfe.a().getManager(52));
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    boolean bool = false;
+    try
+    {
+      Bitmap localBitmap = Bitmap.createBitmap(paramyar.a(), paramyar.b(), Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      localCanvas.drawColor(-1);
+      localCanvas.drawBitmap(paramyar.a(), 0.0F, 0.0F, null);
+      bhmq.a(bhmq.a(localBitmap, 100), new File(this.c));
+      bool = true;
+    }
+    catch (IOException paramyar)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramyar, new Object[0]);
+      return false;
+    }
+    catch (OutOfMemoryError paramyar)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramyar, new Object[0]);
+    }
+    return bool;
+    return false;
   }
   
-  void a()
+  protected void a(Error paramError)
   {
-    ((ElasticImageView)findViewById(2131364554)).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131380895));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView = ((LeftTabBarView)findViewById(2131378186));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setUnselectColor(-1);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectColor(-1);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setBackgroundDrawable(null);
-    ArrayList localArrayList1 = new ArrayList();
-    int i;
-    if ((this.jdField_a_of_type_Wrd != null) && (this.jdField_a_of_type_Boolean))
-    {
-      if ((this.jdField_a_of_type_Wrd.a != null) && (!this.jdField_a_of_type_Wrd.a.isEmpty()))
-      {
-        ArrayList localArrayList2 = new ArrayList(this.jdField_a_of_type_Wrd.a.size());
-        Iterator localIterator = this.jdField_a_of_type_Wrd.a.iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject = (String)localIterator.next();
-          localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b((String)localObject);
-          if (localObject != null) {
-            localArrayList2.add(localObject);
-          }
-        }
-        Collections.sort(localArrayList2, anjs.a);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView = new MyVideoVisibleTroopPageView(this, this.jdField_a_of_type_AndroidContentContext, localArrayList2, this.jdField_a_of_type_ComTencentMobileqqAppTroopManager);
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView = new MyVideoVisiblePersonPageView(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView.a());
-        localArrayList1.add(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView);
-      }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView.a());
-        localArrayList1.add(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView);
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(0, false);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setOnTabChangeListener(new xgc(this));
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(new xge(this, localArrayList1));
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new xgd(this));
-      if (this.jdField_a_of_type_Int != 2) {
-        break label438;
-      }
-      i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramError, new Object[0]);
     }
-    for (;;)
-    {
-      yqu.a("pub_control", "exp_list", 0, 0, new String[] { String.valueOf(i), "", "", this.jdField_a_of_type_JavaLangString });
-      return;
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView = new MyVideoVisiblePersonPageView(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      break;
-      label438:
-      if (this.jdField_a_of_type_Int == 3) {
-        i = 2;
-      } else if (this.jdField_a_of_type_Int == 1) {
-        i = 3;
-      } else {
-        i = 0;
-      }
+    b(false);
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarSaveFileJob_sgi"))) {
+      this.a = ((String)a("ShareGroupAvatarSaveFileJob_sgi"));
     }
   }
   
-  public void dismiss()
+  protected void a(yar paramyar)
   {
-    super.dismiss();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView.b();
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      dismiss();
-    }
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    paramBundle = super.getWindow();
-    paramBundle.setGravity(80);
-    paramBundle.setWindowAnimations(2131755167);
-    a();
+    ThreadManager.post(new ShareGroupAvatarSaveFileJob.1(this, paramyar), 8, null, true);
   }
 }
 

@@ -1,136 +1,60 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer.1;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
-public class atsl
-  extends atsj
+class atsl
+  implements atqw
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
-  private TextView d;
-  private TextView e;
-  private TextView f;
-  private TextView g;
-  private TextView h;
+  atsl(atsk paramatsk, String paramString, atte paramatte) {}
   
-  public atsl(Activity paramActivity)
+  public void a(int paramInt, String paramString)
   {
-    super(paramActivity);
-  }
-  
-  public void a()
-  {
-    QLog.i("FileBrowserViewBase", 4, "FileBrowserViewBase: MusicFileViewer initFileView");
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2BuddyTaskExcuter faild");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560900, this.jdField_a_of_type_AndroidViewViewGroup, false);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371482));
-      this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371966));
-      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366566));
-      this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131372687));
-      this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362644));
-      this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372808));
-      this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366563));
-      if (Build.VERSION.SDK_INT >= 21) {
-        this.jdField_a_of_type_AndroidWidgetSeekBar.setSplitTrack(false);
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_Atsk.jdField_a_of_type_JavaLangString + "] faild:" + paramInt);
+      }
+      this.jdField_a_of_type_Atte.a(atsi.a(this.jdField_a_of_type_Atsk.jdField_a_of_type_Long, bool2), bool1);
+      return;
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
       }
     }
   }
   
-  public void a(SeekBar.OnSeekBarChangeListener paramOnSeekBarChangeListener)
+  public void a(String paramString1, String paramString2)
   {
-    if (paramOnSeekBarChangeListener != null) {
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(paramOnSeekBarChangeListener);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "1");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Atsk.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Atsk.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Atsk.d);
+    localBundle.putString("_m_ForwardUuid", paramString1);
+    localBundle.putString("_m_ForwardFileIdCrc", paramString2);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Atsk.f);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Atsk.g);
+    if (QLog.isColorLevel()) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_Atsk.jdField_a_of_type_JavaLangString + "] success");
     }
-  }
-  
-  public void b(View.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
-    }
-  }
-  
-  public void c()
-  {
-    if (anll.a() > 17.0F)
-    {
-      float f1 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics().density;
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams((int)(150.0F * f1), (int)(f1 * 150.0F));
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(paramInt);
-  }
-  
-  public void c(String paramString)
-  {
-    this.f.setText(paramString);
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setEnabled(paramBoolean);
-  }
-  
-  public void d(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(paramInt);
-    }
-  }
-  
-  public void d(String paramString)
-  {
-    this.e.setText(paramString);
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844320);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131690985));
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844321);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131690987));
-  }
-  
-  public void e(String paramString)
-  {
-    if (this.g.getMeasuredWidth() <= 0)
-    {
-      this.g.post(new MusicFileViewer.1(this, paramString));
-      return;
-    }
-    this.g.setText(atvo.a(paramString, false, this.g.getMeasuredWidth(), this.g.getPaint(), 2));
-  }
-  
-  public void f(String paramString)
-  {
-    this.h.setText(paramString);
+    this.jdField_a_of_type_Atte.a(paramString1, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsl
  * JD-Core Version:    0.7.0.1
  */

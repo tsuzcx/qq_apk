@@ -1,28 +1,134 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc.1;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc.2;
+import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Set;
+import org.json.JSONObject;
 
 public class anfz
-  implements View.OnClickListener
 {
-  public anfz(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData, int paramInt, String paramString1, String paramString2) {}
+  private static final Set<String> a = new SpriteCommFunc.1();
   
-  public void onClick(View paramView)
+  public static void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString)
   {
-    ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "lmx_actchat");
-    ApolloPanel.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "action_flame_clickgain", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId) });
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[stopTaskByMsg], msgId", Long.valueOf(paramLong), ",from:", paramString });
     }
-    amhd.a(125, String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.b);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!angi.c(paramQQAppInterface)) {}
+    do
+    {
+      do
+      {
+        return;
+        paramQQAppInterface = angi.a(paramQQAppInterface);
+      } while (paramQQAppInterface == null);
+      paramQQAppInterface = paramQQAppInterface.a();
+    } while (paramQQAppInterface == null);
+    paramString = paramQQAppInterface.a(paramLong);
+    if (paramString == null)
+    {
+      QLog.w("cmshow_scripted_SpriteCommFunc", 2, "task NOT exist, msgId:" + paramLong);
+      return;
+    }
+    ThreadManager.post(new SpriteCommFunc.2(paramQQAppInterface, paramString), 5, null, true);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[stopAllTask]", ",from:", paramString });
+    }
+    if (!angi.c(paramQQAppInterface)) {
+      return;
+    }
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("type", 0);
+      paramQQAppInterface = angi.a(paramQQAppInterface);
+      if ((paramQQAppInterface == null) || (paramQQAppInterface.a() == null))
+      {
+        QLog.e("cmshow_scripted_SpriteCommFunc", 1, "[stopAllTask], spriteContext or getSurfaceView is null.");
+        return;
+      }
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      QLog.e("cmshow_scripted_SpriteCommFunc", 1, "[stopAllTask],", paramQQAppInterface);
+      return;
+    }
+    ApolloCmdChannel.getChannel(paramQQAppInterface.a()).callbackFromRequest(paramQQAppInterface.a().getLuaState(), 0, "sc.stop_all_task.local", paramString.toString());
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[showOrHideSprite]", ",from:", paramString });
+    }
+    if (!angi.c(paramQQAppInterface)) {}
+    do
+    {
+      angf localangf;
+      do
+      {
+        do
+        {
+          return;
+        } while (!a.contains(paramString));
+        localangf = angi.a(paramQQAppInterface);
+      } while (localangf == null);
+      anga localanga = angi.a(paramQQAppInterface);
+      if (localanga != null) {
+        localanga.a(paramString, paramBoolean);
+      }
+      if (angi.a(paramQQAppInterface))
+      {
+        QLog.i("cmshow_scripted_SpriteCommFunc", 1, "showOrHideSprite double should hide");
+        return;
+      }
+      paramQQAppInterface = localangf.a();
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.a(paramBoolean, false, paramString);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool1 = angi.b(paramQQAppInterface);
+    boolean bool2 = angi.a(paramQQAppInterface);
+    return (bool1) || (bool2);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[isSpriteActive]", ",from:", paramString });
+    }
+    if (!angi.c(paramQQAppInterface)) {}
+    do
+    {
+      do
+      {
+        return false;
+        paramQQAppInterface = angi.a(paramQQAppInterface);
+      } while (paramQQAppInterface == null);
+      paramQQAppInterface = paramQQAppInterface.a();
+    } while (paramQQAppInterface == null);
+    return paramQQAppInterface.a();
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {}
+    do
+    {
+      return false;
+      paramQQAppInterface = angi.a(paramQQAppInterface);
+    } while ((paramQQAppInterface == null) || (!paramQQAppInterface.a(paramString)));
+    return true;
   }
 }
 

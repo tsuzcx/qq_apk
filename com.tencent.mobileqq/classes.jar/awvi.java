@@ -1,20 +1,15 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import android.net.Network;
+import mqq.os.MqqHandler;
 
-public class awvi
-  extends RecyclerView.ItemDecoration
+class awvi
+  implements awvl
 {
-  private final int jdField_a_of_type_Int = afur.a(12.0F, this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment.getResources());
+  awvi(awvg paramawvg, String paramString, awvj paramawvj) {}
   
-  private awvi(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void a(Network paramNetwork)
   {
-    paramRect.top = this.jdField_a_of_type_Int;
+    awvg.a(this.jdField_a_of_type_Awvg).removeCallbacksAndMessages(null);
+    awvg.a(this.jdField_a_of_type_Awvg, this.jdField_a_of_type_JavaLangString, paramNetwork, new awvk(this.jdField_a_of_type_Awvj, paramNetwork));
   }
 }
 

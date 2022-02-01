@@ -3,18 +3,18 @@ package com.tencent.qqmini.proxyimpl;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bjvl;
+import bkwm;
 import com.tencent.qphone.base.util.QLog;
 
 public class AdProxyImpl$AdResultReceiver
   extends ResultReceiver
 {
-  private bjvl a;
+  private bkwm a;
   
-  public AdProxyImpl$AdResultReceiver(Handler paramHandler, bjvl parambjvl)
+  public AdProxyImpl$AdResultReceiver(Handler paramHandler, bkwm parambkwm)
   {
     super(paramHandler);
-    this.a = parambjvl;
+    this.a = parambkwm;
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)

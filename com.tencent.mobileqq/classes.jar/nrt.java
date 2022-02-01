@@ -1,108 +1,102 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x487.oidb_0x487.GroupList;
-import tencent.im.oidb.cmd0x487.oidb_0x487.RspBody;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.widget.AbsListView;
 
 class nrt
-  extends niv
+  implements blih
 {
-  nrt(nre paramnre) {}
+  int jdField_a_of_type_Int;
+  int b = (int)(2.0F * this.jdField_a_of_type_Nrk.jdField_a_of_type_Float);
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  nrt(nrk paramnrk) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onResult, errorCode=" + paramInt);
-    }
-    int i;
-    if ((paramInt != -1) && (paramArrayOfByte != null))
+    if (this.jdField_a_of_type_Nrk.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0)
     {
-      try
+      if ((this.jdField_a_of_type_Nrk.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) && (this.jdField_a_of_type_Nrk.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.protocolVersion == 0))
       {
-        paramBundle = new oidb_0x487.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        k = paramBundle.uint32_result.get();
-        if (k != 0) {
-          break label463;
+        paramInt1 = -this.jdField_a_of_type_Nrk.b();
+        paramAbsListView = this.jdField_a_of_type_Nrk.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getChildAt(0);
+        if (!this.jdField_a_of_type_Nrk.c) {
+          break label215;
         }
-        paramArrayOfByte = new ArrayList();
-        if (!paramBundle.msg_groups.has()) {
-          break label458;
+        if (!this.jdField_a_of_type_Nrk.b) {
+          break label203;
         }
-        localObject1 = paramBundle.msg_groups.get();
-        if (localObject1 == null) {
-          break label458;
-        }
-        int j = ((List)localObject1).size();
-        i = 0;
-        paramInt = j;
-        if (i < j)
+        paramInt2 = (int)(paramInt1 - 262.0F * this.jdField_a_of_type_Nrk.jdField_a_of_type_Float);
+        this.jdField_a_of_type_Nrk.b(paramInt2, paramAbsListView);
+        if ((this.jdField_a_of_type_Nrk.jdField_a_of_type_Nsr != null) && (paramInt1 != 0))
         {
-          localObject2 = ((oidb_0x487.GroupList)((List)localObject1).get(i)).uint64_groupcode.get() + "";
-          ((oidb_0x487.GroupList)((List)localObject1).get(i)).bytes_group_name.get().toStringUtf8();
-          paramArrayOfByte.add(localObject2);
-          if (paramArrayOfByte.size() < 3) {
-            break label469;
+          if (paramInt1 >= this.jdField_a_of_type_Nrk.q - 75.0F * this.jdField_a_of_type_Nrk.jdField_a_of_type_Float) {
+            break label247;
           }
-          paramInt = j;
+          this.jdField_a_of_type_Nrk.jdField_a_of_type_Nsr.a(false);
         }
       }
-      catch (Exception paramArrayOfByte)
-      {
-        int k;
-        Object localObject1;
-        Object localObject2;
-        while (QLog.isColorLevel())
-        {
-          QLog.e("PubAccountMoreInfoActivity.bindTroop", 2, "getBindedTroops, exception=" + paramArrayOfByte.toString());
-          return;
-          paramInt = 0;
-          continue;
-          paramInt = 0;
-        }
+      label151:
+      paramInt2 = this.jdField_a_of_type_Nrk.b();
+      if (Math.abs(this.jdField_a_of_type_Int - paramInt2) <= this.b) {
+        break label290;
       }
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayOfByte);
-      if (paramBundle.uint32_privilege_flag.has())
-      {
-        localObject1 = this.a;
-        if (paramBundle.uint32_privilege_flag.get() != 1) {
-          break label478;
+      paramInt1 = 1;
+      label177:
+      if (paramInt1 != 0) {
+        if (this.jdField_a_of_type_Int <= paramInt2) {
+          break label295;
         }
       }
     }
-    label458:
-    label463:
-    label469:
-    label478:
-    for (boolean bool = true;; bool = false)
+    label290:
+    label295:
+    for (this.jdField_a_of_type_Nrk.e = true;; this.jdField_a_of_type_Nrk.e = false)
     {
-      ((nre)localObject1).d = bool;
-      localObject1 = (bfrd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putBoolean("mIsAbleBindTroop", this.a.d);
-      ((Bundle)localObject2).putStringArrayList("mBindedTroopUins", paramArrayOfByte);
-      ((bfrd)localObject1).a(this.a.jdField_a_of_type_JavaLangString, (Bundle)localObject2);
-      this.a.d();
-      if (QLog.isColorLevel())
-      {
-        if (paramBundle.bytes_errmsg.has()) {}
-        for (paramArrayOfByte = paramBundle.bytes_errmsg.get().toStringUtf8();; paramArrayOfByte = "")
-        {
-          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onResult, ret=" + k + "," + paramInt + "," + paramArrayOfByte + "," + this.a.d);
-          return;
-        }
+      this.jdField_a_of_type_Int = paramInt2;
+      return;
+      label203:
+      this.jdField_a_of_type_Nrk.c(paramInt1, paramAbsListView);
+      break;
+      label215:
+      if ((this.jdField_a_of_type_Nrk.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) && (this.jdField_a_of_type_Nrk.jdField_a_of_type_ComTencentMobileqqDataEqqDetail == null)) {
+        break;
+      }
+      this.jdField_a_of_type_Nrk.a(paramInt1, paramAbsListView);
+      break;
+      label247:
+      this.jdField_a_of_type_Nrk.jdField_a_of_type_Nsr.a();
+      break label151;
+      this.jdField_a_of_type_Nrk.c();
+      if (this.jdField_a_of_type_Nrk.jdField_a_of_type_Nsr == null) {
+        break label151;
+      }
+      this.jdField_a_of_type_Nrk.jdField_a_of_type_Nsr.a();
+      break label151;
+      paramInt1 = 0;
+      break label177;
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      sun.a().c();
+      if (!this.jdField_a_of_type_Nrk.e) {
+        break label89;
+      }
+      nrk.a(this.jdField_a_of_type_Nrk, paramAbsListView.getLastVisiblePosition(), nrk.d());
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_Nrk.getCount() - paramAbsListView.getLastVisiblePosition() < nrk.e()) && (this.jdField_a_of_type_Nrk.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.a)) {
+        nrk.a(this.jdField_a_of_type_Nrk);
+      }
+      if ((paramAbsListView instanceof AccountDetailXListView)) {
+        ((AccountDetailXListView)paramAbsListView).onScrollStateChanged(paramAbsListView, paramInt);
       }
       return;
-      i += 1;
-      break;
+      label89:
+      nrk.a(this.jdField_a_of_type_Nrk, paramAbsListView.getFirstVisiblePosition() - nrk.d(), nrk.d());
     }
   }
 }

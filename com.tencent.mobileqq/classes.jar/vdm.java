@@ -1,25 +1,13 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.widget.QQToast;
-
 class vdm
-  implements bihh
+  implements aabr
 {
-  vdm(vde paramvde) {}
+  vdm(vdj paramvdj) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void a(aabu paramaabu, Object paramObject)
   {
-    if ((vde.a(this.a) == null) || (!vde.a(this.a).equals(paramBaseResp.transaction))) {
-      return;
+    if (paramaabu.e()) {
+      vdj.a(this.a).a(vdj.a(this.a), true, false, vdj.a(this.a), null);
     }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      QQToast.a(this.a.a(), 1, anni.a(2131713340), 0).a();
-      return;
-    }
-    QQToast.a(this.a.a(), 2, anni.a(2131713342), 0).a();
   }
 }
 

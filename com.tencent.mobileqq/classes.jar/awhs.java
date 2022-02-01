@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-class awhs
-  implements DialogInterface.OnClickListener
+public class awhs
+  extends WebViewPlugin
 {
-  awhs(awhq paramawhq) {}
+  private final aasb a = aasb.a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    paramDialogInterface.dismiss();
-    bcst.b(awhq.a(this.a), "dc00898", "", "", "0X80085DB", "0X80085DB", 0, 0, "", "", "", "");
+    if (("studyroom".equals(paramString2)) && ("predownload".equals(paramString3)))
+    {
+      this.a.k();
+      return true;
+    }
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.a.a();
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    this.a.b();
   }
 }
 

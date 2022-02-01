@@ -1,31 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ListView;
 
-public class bfcq
-  implements DialogInterface.OnClickListener
+class bfcq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bfcq(ReciteRecordLayout paramReciteRecordLayout) {}
+  bfcq(bfcn parambfcn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.jdField_a_of_type_Bgpa.isShowing()) {
-      this.a.jdField_a_of_type_Bgpa.dismiss();
-    }
-    if (!bgnt.g(this.a.jdField_a_of_type_AndroidContentContext)) {
-      this.a.jdField_a_of_type_Bgpa.show();
-    }
-    do
-    {
-      return;
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    } while (ReciteRecordLayout.a(this.a) == null);
-    ReciteRecordLayout.a(this.a).f();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    bfcn.a(this.a).setPadding(bhgr.a(bfcn.a(this.a).getContext(), 8.0F), i, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfcq
  * JD-Core Version:    0.7.0.1
  */

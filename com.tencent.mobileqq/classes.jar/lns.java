@@ -1,19 +1,24 @@
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
-import java.nio.ByteBuffer;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.ui.QavPanel;
 
 public class lns
+  implements mif
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public MediaFormat a;
-  public ByteBuffer a;
-  public boolean a;
+  public lns(GaInviteLockActivity paramGaInviteLockActivity, long paramLong) {}
   
-  public lns(lnr paramlnr)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a != null)
+    {
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131373495, false);
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131373496, false);
+    }
+  }
+  
+  public void b()
+  {
+    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, this.jdField_a_of_type_Long);
+    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, 0, 2130772169);
   }
 }
 

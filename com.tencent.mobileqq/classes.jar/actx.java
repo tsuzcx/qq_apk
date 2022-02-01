@@ -1,19 +1,32 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
+import android.widget.Toast;
+import com.tencent.gdtad.api.GdtAd;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class actx
+class actx
   implements View.OnClickListener
 {
-  public actx(GdtVideoCeilingTitleBar paramGdtVideoCeilingTitleBar) {}
+  actx(actv paramactv) {}
   
   public void onClick(View paramView)
   {
-    if (GdtVideoCeilingTitleBar.a(this.a) != null) {
-      GdtVideoCeilingTitleBar.a(this.a).a(paramView);
+    if (this.a.a() == null) {
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "error", 0).show();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (!this.a.a().isLoaded()) {
+        Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
+      } else if (this.a.a().isInvalidated()) {
+        Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is invalidated", 0).show();
+      } else {
+        this.a.a();
+      }
+    }
   }
 }
 

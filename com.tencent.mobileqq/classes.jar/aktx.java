@@ -1,23 +1,15 @@
-import org.json.JSONArray;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aktx
+class aktx
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public JSONArray a;
-  public int b;
-  public String b;
-  public JSONArray b;
-  public int c;
-  public String c;
-  public JSONArray c;
-  public String d;
-  public JSONArray d;
-  public String e;
-  public JSONArray e;
-  public String f;
-  public String g;
-  public String h;
+  aktx(aktq paramaktq, Runnable paramRunnable) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
 }
 
 

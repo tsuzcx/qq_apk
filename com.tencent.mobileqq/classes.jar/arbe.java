@@ -1,36 +1,33 @@
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONException;
+import android.text.TextUtils;
+import androidx.annotation.NonNull;
 import org.json.JSONObject;
 
 public class arbe
 {
-  public String a = anni.a(2131713516);
-  public String b = anni.a(2131713523);
-  public String c = anni.a(2131713519);
-  public String d = anni.a(2131713521);
-  public String e = anni.a(2131713514);
+  public int a;
   
-  public static arbe a(aqlg[] paramArrayOfaqlg)
+  public static arbe a(String paramString)
   {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
-      return null;
+    if (TextUtils.isEmpty(paramString)) {
+      return new arbe();
     }
     arbe localarbe = new arbe();
     try
     {
-      paramArrayOfaqlg = new JSONObject(paramArrayOfaqlg[0].a).optJSONObject("MyFileNameConfig");
-      localarbe.a = paramArrayOfaqlg.optString("tdfileTabName");
-      localarbe.b = paramArrayOfaqlg.optString("wyfileTabName");
-      localarbe.c = paramArrayOfaqlg.optString("tdlistTabviewName");
-      localarbe.d = paramArrayOfaqlg.optString("createTXDocTitle");
-      localarbe.e = paramArrayOfaqlg.optString("safeShareToastWording");
+      localarbe.a = new JSONObject(paramString).optInt("enable", 0);
       return localarbe;
     }
-    catch (JSONException paramArrayOfaqlg)
+    catch (Throwable paramString)
     {
-      QLog.e("TencentDocMyFileNameBean", 1, paramArrayOfaqlg.getLocalizedMessage(), paramArrayOfaqlg);
+      paramString.printStackTrace();
     }
     return localarbe;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "switch = " + this.a;
   }
 }
 

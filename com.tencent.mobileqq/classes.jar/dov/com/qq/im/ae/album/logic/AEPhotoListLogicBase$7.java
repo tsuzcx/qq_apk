@@ -1,24 +1,24 @@
 package dov.com.qq.im.ae.album.logic;
 
-import bnff;
-import bnfi;
-import bnfu;
-import bngd;
+import bogn;
+import bogq;
+import bohc;
+import bohl;
 import com.tencent.mobileqq.widget.QQToast;
 import mqq.util.WeakReference;
 
 public class AEPhotoListLogicBase$7
   implements Runnable
 {
-  public AEPhotoListLogicBase$7(bngd parambngd, boolean paramBoolean) {}
+  public AEPhotoListLogicBase$7(bohl parambohl, boolean paramBoolean) {}
   
   public void run()
   {
     if (this.a) {
-      QQToast.a(((bnff)this.this$0.a.get()).getActivity(), "暂无媒体文件", 1000).a();
+      QQToast.a(((bogn)this.this$0.a.get()).getActivity(), "暂无媒体文件", 1000).a();
     }
-    ((bnff)this.this$0.a.get()).jdField_a_of_type_Bnfi.notifyDataSetChanged();
-    ((bnff)this.this$0.a.get()).jdField_a_of_type_Bnfu.d();
+    ((bogn)this.this$0.a.get()).jdField_a_of_type_Bogq.notifyDataSetChanged();
+    ((bogn)this.this$0.a.get()).jdField_a_of_type_Bohc.d();
   }
 }
 

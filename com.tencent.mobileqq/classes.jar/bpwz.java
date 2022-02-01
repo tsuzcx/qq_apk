@@ -1,16 +1,26 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
+import java.lang.ref.WeakReference;
 
-class bpwz
-  implements CompoundButton.OnCheckedChangeListener
+public class bpwz
+  implements View.OnClickListener
 {
-  bpwz(bpwy parambpwy) {}
+  public bpwz(VideoSegmentPickerProviderView paramVideoSegmentPickerProviderView) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    bpwy.a(this.a).f = paramBoolean;
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    VideoSegmentPickerProviderView.a(this.a).a.clearSegments();
+    if (VideoSegmentPickerProviderView.a(this.a) != null)
+    {
+      bpxa localbpxa = (bpxa)VideoSegmentPickerProviderView.a(this.a).get();
+      if (localbpxa != null) {
+        localbpxa.a(0L, 0L);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

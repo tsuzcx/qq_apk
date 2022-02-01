@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.runtime;
 
-import android.app.Activity;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
 
 class AppUIProxy$2
   implements Runnable
@@ -9,9 +9,7 @@ class AppUIProxy$2
   
   public void run()
   {
-    if (this.this$0.mActivity != null) {
-      this.this$0.mActivity.finish();
-    }
+    QUAUtil.getSystemUA();
   }
 }
 

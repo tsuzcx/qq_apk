@@ -1,11 +1,11 @@
-public final class andd
-  implements amhn
+public class andd
 {
-  public andd(andk paramandk) {}
-  
-  public void a()
+  public static String a(boolean paramBoolean)
   {
-    this.a.a(true);
+    if (paramBoolean) {
+      return "apollo_router_game.ltgame_redpkg_plankinfo_linkcmd_check_game";
+    }
+    return "ltgame_redpkg_plankinfo.check_game";
   }
 }
 

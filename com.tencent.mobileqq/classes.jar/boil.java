@@ -1,52 +1,26 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
+import android.support.annotation.NonNull;
 
-class boil
-  implements View.OnClickListener
+public class boil
 {
-  boil(boik paramboik, int paramInt, AEEditorTextBean paramAEEditorTextBean, boio paramboio) {}
+  public static final boil a;
+  public static final boil[] a;
+  public static final boil b;
+  public static final boil c;
+  public static final boil d;
+  public final String a;
   
-  public void onClick(View paramView)
+  static
   {
-    if (this.jdField_a_of_type_Int == boik.a(this.jdField_a_of_type_Boik)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean.pagFilePath != null)
-      {
-        if ((boik.a(this.jdField_a_of_type_Boik) != -1) || (boik.b(this.jdField_a_of_type_Boik) < 10)) {
-          break;
-        }
-        Context localContext = this.jdField_a_of_type_Boio.a.getContext();
-        if (localContext != null) {
-          QQToast.a(localContext, localContext.getString(2131689709), 0).a();
-        }
-      }
-    }
-    bnyl.a().a().g = this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean.id;
-    bnyh.a().v();
-    if (!this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean.usable)
-    {
-      boik.a(this.jdField_a_of_type_Boik, this.jdField_a_of_type_Boio, true);
-      this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean.isDownloading = true;
-      boiw.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, this.jdField_a_of_type_Boik);
-    }
-    for (;;)
-    {
-      boik.a(this.jdField_a_of_type_Boik, this.jdField_a_of_type_Int);
-      break;
-      if (boik.a(this.jdField_a_of_type_Boik) != null)
-      {
-        boik.a(this.jdField_a_of_type_Boik).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean);
-        this.jdField_a_of_type_Boik.notifyDataSetChanged();
-      }
-    }
+    jdField_a_of_type_Boil = new boil("STARTED");
+    b = new boil("SUCCESS");
+    c = new boil("ERROR");
+    d = new boil("FAILURE_GESTURE_IN_PROCESS");
+    jdField_a_of_type_ArrayOfBoil = new boil[] { jdField_a_of_type_Boil, b, c, d };
+  }
+  
+  private boil(@NonNull String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

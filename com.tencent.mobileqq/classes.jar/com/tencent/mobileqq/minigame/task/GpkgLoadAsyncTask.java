@@ -3,7 +3,7 @@ package com.tencent.mobileqq.minigame.task;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import anni;
+import anzj;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.tfs.AsyncTask;
@@ -53,7 +53,7 @@ public class GpkgLoadAsyncTask
       for (Object localObject = this.miniAppConfig.config;; localObject = "")
       {
         QLog.e(str, 1, localObject);
-        onTaskFailed(2002, anni.a(2131704092));
+        onTaskFailed(2002, anzj.a(2131704199));
         return;
       }
     }

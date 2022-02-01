@@ -1,111 +1,167 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.Conversation;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class adzn
-  extends anvp
+  extends atpa
 {
-  public adzn(Conversation paramConversation) {}
+  private adzn(BaseChatPie paramBaseChatPie) {}
   
-  protected void a(boolean paramBoolean, bdei parambdei)
+  protected void a()
   {
-    Object localObject2;
-    Object localObject1;
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder().append("Conversation.onGetBindSubAccount() return, isSucc=").append(paramBoolean).append(" mSubUin=");
-      if (parambdei == null)
-      {
-        localObject1 = null;
-        QLog.d("SUB_ACCOUNT", 2, (String)localObject1);
-      }
+    this.a.jdField_a_of_type_Aggs.notifyDataSetChanged();
+  }
+  
+  protected void a(int paramInt, long paramLong, String paramString)
+  {
+    aunj.a(paramLong, paramInt, paramString);
+    boch.a(null, paramInt);
+    if (this.a.jdField_a_of_type_Aggs != null) {
+      this.a.jdField_a_of_type_Aggs.notifyDataSetChanged();
     }
-    else
+  }
+  
+  protected void a(long paramLong1, long paramLong2)
+  {
+    this.a.jdField_a_of_type_Aggs.notifyDataSetChanged();
+  }
+  
+  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.jdField_a_of_type_Aggs.notifyDataSetChanged();
+  }
+  
+  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  {
+    if ((paramString2 != null) && (paramString2.length() > 0))
     {
-      if ((paramBoolean) && (parambdei != null)) {
-        break label113;
-      }
-      if (QLog.isDevelopLevel())
-      {
-        localObject1 = new StringBuilder().append("Conversation.onGetBindSubAccount() return:");
-        if (!paramBoolean) {
-          break label107;
-        }
-      }
-    }
-    label107:
-    for (parambdei = "data=null";; parambdei = "isSucc=false")
-    {
-      QLog.d("SUB_ACCOUNT", 4, parambdei);
+      aunj.a(paramString2);
       return;
-      localObject1 = parambdei.c;
-      break;
     }
-    label113:
-    if (parambdei.jdField_a_of_type_Int == 1008)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SUB_ACCOUNT", 2, "Conversation.onGetBindSubAccount() delete all subAccountType RU, and add default RU.");
-      }
-      bddy.a(this.a.a, 0);
+    aunj.a(paramLong);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt, String paramString)
+  {
+    if ((paramString != null) && (paramString.length() > 0)) {
+      aunj.a(paramString);
     }
-    if (parambdei.a())
+    this.a.jdField_a_of_type_Aggs.notifyDataSetChanged();
+  }
+  
+  protected void a(atzl paramatzl)
+  {
+    if (paramatzl == null) {}
+    label4:
+    do
     {
-      bddy.a(this.a.a, parambdei.a(), 2);
-      this.a.a.c = true;
-    }
-    if (parambdei.b())
-    {
-      localObject1 = parambdei.b();
-      if (localObject1 != null)
+      FileManagerEntity localFileManagerEntity;
+      do
       {
-        localObject1 = ((ArrayList)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
+        do
         {
-          localObject2 = (String)((Iterator)localObject1).next();
-          bddy.c(this.a.a, (String)localObject2);
+          break label4;
+          do
+          {
+            return;
+          } while (!(paramatzl.a instanceof FileManagerEntity));
+          localFileManagerEntity = (FileManagerEntity)paramatzl.a;
+          if ((paramatzl.b == null) || (paramatzl.b.length() <= 0)) {
+            break;
+          }
+          localFileManagerEntity.strThumbPath = paramatzl.b;
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity);
+        } while (this.a.jdField_a_of_type_Aggs == null);
+        this.a.jdField_a_of_type_Aggs.notifyDataSetChanged();
+        return;
+      } while (localFileManagerEntity.thumbInvalidCode != 1);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity);
+    } while (this.a.jdField_a_of_type_Aggs == null);
+    this.a.jdField_a_of_type_Aggs.notifyDataSetChanged();
+  }
+  
+  protected void a(Integer paramInteger, long paramLong, String paramString)
+  {
+    if (this.a.jdField_a_of_type_Aggs != null) {
+      this.a.jdField_a_of_type_Aggs.notifyDataSetChanged();
+    }
+    aunj.a(paramLong, paramInteger.intValue(), paramString);
+    boch.a(null, paramInteger.intValue());
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.jdField_a_of_type_Aggs.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
+    }
+    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
+    if ((paramString1 != null) && (paramString1.nOpType == 6)) {
+      if (bnyz.a(paramInt2))
+      {
+        if (!paramBoolean) {
+          break label154;
+        }
+        bnzt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.a());
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Aggs.notifyDataSetChanged();
+      return;
+      label154:
+      if (bnyz.b())
+      {
+        bnyz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      }
+      else
+      {
+        if (!TextUtils.isEmpty(paramString2)) {
+          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramString2, 1).b(this.a.a());
+        }
+        for (;;)
+        {
+          boch.a(null, paramInt2);
+          break;
+          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131692444, 1).b(this.a.a());
+        }
+        if ((!paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString1.peerUin)) && (paramString1.peerUin.equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+        {
+          aunj.a(paramLong2, paramInt2, paramString2);
+          boch.a(null, paramInt2);
         }
       }
     }
-    parambdei.a();
-    this.a.a(0L);
-    Conversation.m(this.a);
   }
   
-  protected void b(boolean paramBoolean, bdei parambdei)
+  protected void b()
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SUB_ACCOUNT", 2, "Conversation.onBindSubAccount() isSucc=" + paramBoolean);
-      if (parambdei != null) {
-        QLog.d("SUB_ACCOUNT", 2, "Conversation.onBindSubAccount() mainAccount=" + parambdei.b + " subAccount=" + parambdei.c + " errType=" + parambdei.jdField_a_of_type_Int + " errMsg=" + parambdei.jdField_a_of_type_JavaLangString);
-      }
-    }
-    if ((paramBoolean) && (parambdei != null) && (parambdei.c())) {
-      bddy.a(this.a.a, parambdei.c(), 1);
-    }
-    this.a.a(0L);
+    this.a.jdField_a_of_type_Aggs.notifyDataSetChanged();
   }
   
-  protected void c(boolean paramBoolean, bdei parambdei)
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SUB_ACCOUNT", 2, "Conversation.onUnBindSubAccount() isSucc=" + paramBoolean);
-      if (parambdei != null) {
-        QLog.d("SUB_ACCOUNT", 2, "Conversation.onUnBindSubAccount() mainAccount=" + parambdei.b + " subAccount=" + parambdei.c + " errType=" + parambdei.jdField_a_of_type_Int + " errMsg=" + parambdei.jdField_a_of_type_JavaLangString);
-      }
+    this.a.jdField_a_of_type_Aggs.notifyDataSetChanged();
+  }
+  
+  protected void c()
+  {
+    this.a.jdField_a_of_type_Aggs.notifyDataSetChanged();
+  }
+  
+  protected void d()
+  {
+    if (this.a.jdField_a_of_type_Aggs != null) {
+      this.a.jdField_a_of_type_Aggs.notifyDataSetChanged();
     }
-    if (parambdei == null) {}
-    while ((!paramBoolean) || (parambdei.c == null) || (parambdei.c.length() <= 4)) {
-      return;
-    }
-    this.a.a.a().c(parambdei.c, 7000);
-    bddy.c(this.a.a, parambdei.c);
-    this.a.a(0L);
   }
 }
 

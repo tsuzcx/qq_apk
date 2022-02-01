@@ -49,6 +49,8 @@ public final class AccountSearchPb$record
   public final PBStringField title_image = PBField.initString("");
   public final PBUInt64Field uin = PBField.initUInt64(0L);
   public final PBInt32Field uin_privilege = PBField.initInt32(0);
+  public final PBUInt32Field uint32_richflag1_59 = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_richflag4_409 = PBField.initUInt32(0);
   public final PBUInt32Field video_account = PBField.initUInt32(0);
   public final PBUInt32Field video_article = PBField.initUInt32(0);
   
@@ -57,7 +59,7 @@ public final class AccountSearchPb$record
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 58, 66, 72, 80, 88, 98, 106, 112, 120, 128, 136, 146, 154, 162, 170, 176, 186, 194, 202, 210, 216, 242, 248, 256, 264, 274, 4002 }, new String[] { "uin", "code", "source", "name", "sex", "age", "accout", "brief", "number", "flag", "relation", "mobile", "sign", "country", "province", "city", "class_index", "class_name", "country_name", "province_name", "city_name", "account_flag", "title_image", "article_short_url", "article_create_time", "article_author", "account_id", "msg_group_labels", "video_account", "video_article", "uin_privilege", "bytes_join_group_auth", "bytes_token" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(1), "", Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), "", localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", Integer.valueOf(0), "", "", "", "", Long.valueOf(0L), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3 }, record.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 58, 66, 72, 80, 88, 98, 106, 112, 120, 128, 136, 146, 154, 162, 170, 176, 186, 194, 202, 210, 216, 242, 248, 256, 264, 274, 4002, 324824, 339272 }, new String[] { "uin", "code", "source", "name", "sex", "age", "accout", "brief", "number", "flag", "relation", "mobile", "sign", "country", "province", "city", "class_index", "class_name", "country_name", "province_name", "city_name", "account_flag", "title_image", "article_short_url", "article_create_time", "article_author", "account_id", "msg_group_labels", "video_account", "video_article", "uin_privilege", "bytes_join_group_auth", "bytes_token", "uint32_richflag1_59", "uint32_richflag4_409" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(1), "", Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), "", localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", Integer.valueOf(0), "", "", "", "", Long.valueOf(0L), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0) }, record.class);
   }
 }
 

@@ -1,22 +1,51 @@
-import com.tencent.tavcut.bean.TextEditorData;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
-import dov.com.qq.im.aeeditor.module.topbar.AEEditorTopBar;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.AEPituCameraUnit.27.1;
+import dov.com.qq.im.ae.AEPituCameraUnit.27.2;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
+import mqq.os.MqqHandler;
 
 public class bofo
-  implements boij
+  implements boiz
 {
-  public bofo(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
+  bofo(bofh parambofh) {}
   
   public void a()
   {
-    AEEditorVideoEditFragment.b(this.a, true);
-    this.a.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.a();
+    if (bofh.a(this.a) != null) {
+      bofh.a(this.a).i();
+    }
   }
   
-  public void a(TextEditorData paramTextEditorData)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a.a(true);
-    this.a.jdField_a_of_type_ComTencentTavcutBeanTextEditorData = paramTextEditorData;
+    bpam.b("AEPituCameraUnit", "onCameraPreviewSizeChanged---width=" + paramInt1 + ", height=" + paramInt2);
+    if (bofh.a(this.a) != null) {
+      bofh.a(this.a).a(paramInt1, paramInt2);
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    bpam.b("AEPituCameraUnit", "onCameraStarted--success=" + paramBoolean + ", errMsg=" + paramString);
+    if (paramBoolean) {
+      bowp.a().a("onCameraStart");
+    }
+    if (!paramBoolean) {
+      ThreadManager.getUIHandler().post(new AEPituCameraUnit.27.1(this));
+    }
+    for (;;)
+    {
+      int i = AEBeautyProviderView.a();
+      int j = AEBeautyProviderView.b();
+      bofh.a(this.a).a(i);
+      bofh.a(this.a).b(j);
+      bofh.a(this.a).a(458753, new Object[0]);
+      return;
+      if (bofh.a(this.a) != null) {
+        ThreadManager.getUIHandler().post(new AEPituCameraUnit.27.2(this));
+      }
+    }
   }
 }
 

@@ -1,53 +1,19 @@
-import android.text.SpannableString;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
-class bfjj
+public final class bfjj
+  implements QQPermissionCallback
 {
-  public final int a;
-  public final SpannableString a;
+  public bfjj(BaseActivity paramBaseActivity) {}
   
-  public bfjj(int paramInt, SpannableString paramSpannableString)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidTextSpannableString = paramSpannableString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (bfjj)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
-        return false;
-      }
-      if (this.jdField_a_of_type_AndroidTextSpannableString != null) {
-        return this.jdField_a_of_type_AndroidTextSpannableString.equals(paramObject.jdField_a_of_type_AndroidTextSpannableString);
-      }
-    } while (paramObject.jdField_a_of_type_AndroidTextSpannableString == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    int j = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_AndroidTextSpannableString != null) {}
-    for (int i = this.jdField_a_of_type_AndroidTextSpannableString.hashCode();; i = 0) {
-      return i + j * 31;
+    if (!this.a.isFinishing()) {
+      bhlq.b(this.a);
     }
   }
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("AtTag{");
-    localStringBuilder.append("startIndex=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", atSpan=").append(this.jdField_a_of_type_AndroidTextSpannableString);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
-  }
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

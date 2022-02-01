@@ -1,8 +1,16 @@
-import java.util.ArrayList;
+import android.graphics.RectF;
 
-public abstract interface appf
+public class appf
 {
-  public abstract void b(ArrayList<apoo> paramArrayList);
+  public double a;
+  public RectF a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
 }
 
 

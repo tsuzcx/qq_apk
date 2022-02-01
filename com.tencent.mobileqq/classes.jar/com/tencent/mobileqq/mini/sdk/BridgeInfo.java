@@ -1,25 +1,21 @@
 package com.tencent.mobileqq.mini.sdk;
 
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import java.lang.ref.WeakReference;
 
 public class BridgeInfo
 {
   public int callbackId;
-  private WeakReference<JsRuntime> webviewRef;
+  private JsRuntime webview;
   
   public BridgeInfo(JsRuntime paramJsRuntime, int paramInt)
   {
-    this.webviewRef = new WeakReference(paramJsRuntime);
+    this.webview = paramJsRuntime;
     this.callbackId = paramInt;
   }
   
   public JsRuntime getWebView()
   {
-    if (this.webviewRef != null) {
-      return (JsRuntime)this.webviewRef.get();
-    }
-    return null;
+    return this.webview;
   }
 }
 

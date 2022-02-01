@@ -1,36 +1,33 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity.1.1;
+import android.graphics.Bitmap;
 
 public class yvk
-  implements alvk
+  extends yzy
 {
-  public yvk(EditWebVideoActivity paramEditWebVideoActivity) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public void a(int paramInt)
+  public yvk(int paramInt, Bitmap paramBitmap)
   {
-    this.a.runOnUiThread(new EditWebVideoActivity.1.1(this));
+    super(paramInt, paramBitmap);
   }
   
-  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  public static yvk a(yvk paramyvk, Bitmap paramBitmap)
   {
-    int i = ((yvl)this.a.a).a;
-    EditWebVideoActivity.a(this.a, paramString1);
-    EditWebVideoActivity.a(this.a, paramArrayOfByte1);
-    EditWebVideoActivity.b(this.a, HexUtil.bytes2HexStr(EditWebVideoActivity.a(this.a)));
-    paramString1 = this.a;
-    if (i <= 0) {}
-    for (;;)
-    {
-      EditWebVideoActivity.a(paramString1, paramInt3);
-      EditWebVideoActivity.c(this.a, paramString2);
-      EditWebVideoActivity.b(this.a, paramArrayOfByte2);
-      EditWebVideoActivity.b(this.a, paramInt1);
-      EditWebVideoActivity.c(this.a, paramInt2);
-      EditWebVideoActivity.a(this.a).sendEmptyMessage(1002);
-      return;
-      paramInt3 = i;
-    }
+    paramBitmap = new yvk(paramyvk.c, paramBitmap);
+    paramBitmap.jdField_a_of_type_Int = paramyvk.jdField_a_of_type_Int;
+    paramBitmap.jdField_b_of_type_Int = paramyvk.jdField_b_of_type_Int;
+    paramBitmap.jdField_a_of_type_JavaLangString = paramyvk.jdField_a_of_type_JavaLangString;
+    paramBitmap.jdField_a_of_type_Boolean = paramyvk.jdField_a_of_type_Boolean;
+    paramBitmap.jdField_b_of_type_Boolean = paramyvk.jdField_b_of_type_Boolean;
+    return paramBitmap;
+  }
+  
+  public String toString()
+  {
+    return "PlayerContext{startTime=" + this.jdField_a_of_type_Int + ", endTime=" + this.jdField_b_of_type_Int + ", isMute=" + this.jdField_a_of_type_Boolean + ", isDeleted=" + this.jdField_b_of_type_Boolean + "} " + super.toString();
   }
 }
 

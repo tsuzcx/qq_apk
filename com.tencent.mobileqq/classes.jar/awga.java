@@ -1,6 +1,21 @@
-public abstract interface awga
+public final class awga
+  implements beuq
 {
-  public abstract void a(int paramInt);
+  public awga(beuq parambeuq) {}
+  
+  public void onResp(bevm parambevm)
+  {
+    if (this.a != null) {
+      this.a.onResp(parambevm);
+    }
+  }
+  
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2)
+  {
+    if (this.a != null) {
+      this.a.onUpdateProgeress(parambevl, paramLong1, paramLong2);
+    }
+  }
 }
 
 

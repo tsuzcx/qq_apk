@@ -14,21 +14,21 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafCon
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import pil;
-import pxk;
-import qqs;
-import qrb;
-import qva;
-import qyc;
+import pbd;
+import ppu;
+import qjg;
+import qjp;
+import qno;
+import qqq;
 
 public class ComponentLastRead
   extends LinearLayout
-  implements qqs
+  implements qjg
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
   private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  public qva a;
+  public qno a;
   
   public ComponentLastRead(Context paramContext)
   {
@@ -48,7 +48,7 @@ public class ComponentLastRead
     b(paramContext);
   }
   
-  private void a(pxk parampxk)
+  private void a(ppu paramppu)
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null) {}
     do
@@ -64,25 +64,25 @@ public class ComponentLastRead
             do
             {
               return;
-              i = parampxk.e();
-            } while ((i != 0) && (!pil.c(i)));
-            parampxk = parampxk.a();
-          } while (parampxk == null);
-          localObject = parampxk.getTemplateFactory();
+              i = paramppu.e();
+            } while ((i != 0) && (!pbd.c(i)));
+            paramppu = paramppu.a();
+          } while (paramppu == null);
+          localObject = paramppu.getTemplateFactory();
         } while ((localObject == null) || (!((BaseTemplateFactory)localObject).hasTemplate("ReadInjoy_last_read_cell")));
         localObject = ((BaseTemplateFactory)localObject).getTemplate("ReadInjoy_last_read_cell");
       } while (localObject == null);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = parampxk.getViewFactory().inflate(parampxk, (TemplateBean)localObject);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramppu.getViewFactory().inflate(paramppu, (TemplateBean)localObject);
     } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null);
     removeAllViews();
-    parampxk = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().getComLayoutParams();
-    parampxk = new RelativeLayout.LayoutParams(parampxk.mLayoutWidth, parampxk.mLayoutHeight);
-    addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, parampxk);
+    paramppu = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().getComLayoutParams();
+    paramppu = new RelativeLayout.LayoutParams(paramppu.mLayoutWidth, paramppu.mLayoutHeight);
+    addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, paramppu);
   }
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Qva = new qva();
+    this.jdField_a_of_type_Qno = new qno();
     a(paramContext);
     a();
   }
@@ -96,21 +96,21 @@ public class ComponentLastRead
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pxk))
+    if ((paramObject instanceof ppu))
     {
-      this.jdField_a_of_type_Qva.a((pxk)paramObject);
+      this.jdField_a_of_type_Qno.a((ppu)paramObject);
       b();
-      if (this.jdField_a_of_type_Qva.a.g())
+      if (this.jdField_a_of_type_Qno.a.g())
       {
-        a((pxk)paramObject);
+        a((ppu)paramObject);
         if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) && (this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_AndroidViewView == null))
         {
-          this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560120, null, false);
-          setBackgroundResource(2131166872);
+          this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560132, null, false);
+          setBackgroundResource(2131166876);
           addView(this.jdField_a_of_type_AndroidViewView);
         }
         setVisibility(0);
-        setOnClickListener(new qyc(this));
+        setOnClickListener(new qqq(this));
         ThreadManager.executeOnSubThread(new ComponentLastRead.2(this));
       }
     }
@@ -121,9 +121,9 @@ public class ComponentLastRead
     setVisibility(8);
   }
   
-  public void a(qrb paramqrb)
+  public void a(qjp paramqjp)
   {
-    this.jdField_a_of_type_Qva.a(paramqrb);
+    this.jdField_a_of_type_Qno.a(paramqjp);
   }
   
   public void b() {}

@@ -7,19 +7,25 @@ import NS_MINI_AD.MiniAppAd.DeviceInfo;
 import NS_MINI_AD.MiniAppAd.PositionInfo;
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
 import NS_MINI_AD.MiniAppAd.UserInfo;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StInteractiveTemplate;
 import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
+import aaay;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import aqpv;
-import blru;
+import arfd;
+import bmsw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ExtConfigInfo;
 import com.tencent.mobileqq.mini.apkg.PluginInfo;
 import com.tencent.mobileqq.mini.apkg.RecommendAppInfo;
 import com.tencent.mobileqq.mini.network.http.HttpCmdManager;
 import com.tencent.mobileqq.mini.servlet.BatchGetUserInfoServlet;
+import com.tencent.mobileqq.mini.servlet.BookShelfInsertServlet;
+import com.tencent.mobileqq.mini.servlet.BookShelfQueryServlet;
+import com.tencent.mobileqq.mini.servlet.BookShelfUpdateServlet;
+import com.tencent.mobileqq.mini.servlet.CheckBindingStateServlet;
 import com.tencent.mobileqq.mini.servlet.CloudStorageServlet;
 import com.tencent.mobileqq.mini.servlet.CreateUpdatableMsgServlet;
 import com.tencent.mobileqq.mini.servlet.GetPotentialFriendListServlet;
@@ -104,7 +110,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import zxd;
 
 public class MiniAppCmdUtil
 {
@@ -248,12 +253,22 @@ public class MiniAppCmdUtil
     BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
+  public void checkBindingState(String paramString1, String paramString2, int paramInt, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), CheckBindingStateServlet.class, paramMiniAppCmdInterface, "checkBindingState");
+    paramMiniAppCmdInterface.putExtra("key_uid", paramString2);
+    paramMiniAppCmdInterface.putExtra("key_appId", paramString1);
+    paramMiniAppCmdInterface.putExtra("key_bindType", paramInt);
+    paramMiniAppCmdInterface.setObserver(this.cmdObserver);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
+  }
+  
   public void checkNavigateRight(String paramString1, String paramString2, COMM.StCommonExt paramStCommonExt, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (aqpv.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (arfd.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -299,7 +314,7 @@ public class MiniAppCmdUtil
     BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
-  public void createUpdatableMsg(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, MiniAppCmdInterface paramMiniAppCmdInterface)
+  public void createUpdatableMsg(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, byte[] paramArrayOfByte, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), CreateUpdatableMsgServlet.class, paramMiniAppCmdInterface, "createUpdatableMsg");
     paramMiniAppCmdInterface.putExtra("key_appid", paramString1);
@@ -307,8 +322,15 @@ public class MiniAppCmdUtil
     paramMiniAppCmdInterface.putExtra("key_from", paramInt1);
     paramMiniAppCmdInterface.putExtra("key_scene", paramInt2);
     paramMiniAppCmdInterface.putExtra("key_uin", paramString3);
+    paramMiniAppCmdInterface.putExtra("key_service_type", paramInt3);
+    paramMiniAppCmdInterface.putExtra("key_sig", paramArrayOfByte);
     paramMiniAppCmdInterface.setObserver(this.cmdObserver);
     BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
+  }
+  
+  public void createUpdatableMsg(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    createUpdatableMsg(paramString1, paramString2, paramInt1, paramInt2, paramString3, 0, null, paramMiniAppCmdInterface);
   }
   
   public void delPhoneNumber(String paramString1, String paramString2, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -348,7 +370,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (aqpv.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (arfd.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -395,7 +417,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (aqpv.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (arfd.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -558,7 +580,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (aqpv.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (arfd.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -712,7 +734,7 @@ public class MiniAppCmdUtil
   
   public void getStoryInfo(String paramString, int paramInt, long paramLong, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), zxd.class, paramMiniAppCmdInterface, "getStoryInfo");
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), aaay.class, paramMiniAppCmdInterface, "getStoryInfo");
     paramMiniAppCmdInterface.putExtra("key_list_tyep", paramInt);
     paramMiniAppCmdInterface.putExtra("key_newest_time", paramLong);
     paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(paramString));
@@ -857,11 +879,24 @@ public class MiniAppCmdUtil
     BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
-  public void modifyFriendInteractiveStorage(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, HashMap<String, String> paramHashMap, MiniAppCmdInterface paramMiniAppCmdInterface)
+  public void insertBookShelf(String paramString1, String paramString2, ArrayList<String> paramArrayList, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), BookShelfInsertServlet.class, paramMiniAppCmdInterface, "InsertBookShelf");
+    paramMiniAppCmdInterface.putExtra("key_appid", paramString1);
+    paramMiniAppCmdInterface.putExtra("key_category", paramString2);
+    paramMiniAppCmdInterface.putStringArrayListExtra("key_contentIds", paramArrayList);
+    paramMiniAppCmdInterface.setObserver(this.cmdObserver);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
+  }
+  
+  public void modifyFriendInteractiveStorage(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, HashMap<String, String> paramHashMap, boolean paramBoolean, CloudStorage.StInteractiveTemplate paramStInteractiveTemplate, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), ModifyFriendInteractiveStorageServlet.class, paramMiniAppCmdInterface, "modifyFriendInteractiveStorage");
     if (paramStCommonExt != null) {
       paramMiniAppCmdInterface.putExtra("key_ext", paramStCommonExt.toByteArray());
+    }
+    if (paramStInteractiveTemplate != null) {
+      paramMiniAppCmdInterface.putExtra("key_interactive_template", paramStInteractiveTemplate.toByteArray());
     }
     paramMiniAppCmdInterface.putExtra("key_appid", paramString1);
     paramMiniAppCmdInterface.putExtra("key_to_user", paramString2);
@@ -869,6 +904,7 @@ public class MiniAppCmdUtil
     paramMiniAppCmdInterface.putExtra("key_opnum", paramInt);
     paramMiniAppCmdInterface.putExtra("key_operation", paramString4);
     paramMiniAppCmdInterface.putExtra("key_data", paramHashMap);
+    paramMiniAppCmdInterface.putExtra("key_quiet", paramBoolean);
     BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
@@ -895,6 +931,15 @@ public class MiniAppCmdUtil
       return;
     }
     QLog.e(TAG, 1, "performReport failed: BaseApplicationImpl.getApplication().getRuntime() is null");
+  }
+  
+  public void queryBookShelf(String paramString, ArrayList<String> paramArrayList, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), BookShelfQueryServlet.class, paramMiniAppCmdInterface, "QueryBookShelf");
+    paramMiniAppCmdInterface.putExtra("key_appid", paramString);
+    paramMiniAppCmdInterface.putStringArrayListExtra("key_contentIds", paramArrayList);
+    paramMiniAppCmdInterface.setObserver(this.cmdObserver);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
   public void realTimeLogReport(String paramString1, String paramString2, String paramString3, String[] paramArrayOfString, ArrayList<RealTimeLogItem> paramArrayList, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -1014,7 +1059,7 @@ public class MiniAppCmdUtil
     if (paramStCommonExt != null) {
       paramMiniAppCmdInterface.putExtra("key_ext", paramStCommonExt.toByteArray());
     }
-    if (aqpv.c()) {}
+    if (arfd.c()) {}
     for (paramInt1 = 1;; paramInt1 = 0)
     {
       paramMiniAppCmdInterface.putExtra("key_from_new_download", paramInt1);
@@ -1065,7 +1110,7 @@ public class MiniAppCmdUtil
     {
       long l = StorageUtil.getPreference().getLong("baselib_min_update_time", 0L);
       String str = StorageUtil.getPreference().getString("baselib_update_qua", "");
-      if ((blru.a().equals(str)) && (System.currentTimeMillis() - l <= 0L))
+      if ((bmsw.a().equals(str)) && (System.currentTimeMillis() - l <= 0L))
       {
         QLog.i(TAG, 1, "[MiniEng] updateBaseLib 在时间间隔内，暂时不更新");
         return false;
@@ -1095,7 +1140,7 @@ public class MiniAppCmdUtil
     {
       long l = StorageUtil.getPreference().getLong("baselib_min_update_time", 0L);
       String str = StorageUtil.getPreference().getString("baselib_update_qua", "");
-      if ((blru.a().equals(str)) && (System.currentTimeMillis() - l <= 0L))
+      if ((bmsw.a().equals(str)) && (System.currentTimeMillis() - l <= 0L))
       {
         QLog.i(TAG, 1, "[MiniEng] updateBaseLib 在时间间隔内，暂时不更新");
         return false;
@@ -1116,6 +1161,16 @@ public class MiniAppCmdUtil
         QLog.e(TAG, 1, "", localException);
       }
     }
+  }
+  
+  public void updateBookshelfReadtime(String paramString1, String paramString2, String paramString3, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), BookShelfUpdateServlet.class, paramMiniAppCmdInterface, "UpdateBookShelfReadTime");
+    paramMiniAppCmdInterface.putExtra("key_appid", paramString1);
+    paramMiniAppCmdInterface.putExtra("key_category", paramString2);
+    paramMiniAppCmdInterface.putExtra("key_contentId", paramString3);
+    paramMiniAppCmdInterface.setObserver(this.cmdObserver);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
   public void updateUserSetting(COMM.StCommonExt paramStCommonExt, String paramString, INTERFACE.StUserSettingInfo paramStUserSettingInfo, MiniAppCmdInterface paramMiniAppCmdInterface)

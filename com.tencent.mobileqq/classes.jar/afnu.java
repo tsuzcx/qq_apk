@@ -1,18 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.URLDrawable;
 
 public class afnu
-  implements View.OnClickListener
 {
-  public afnu(TroopRequestActivity paramTroopRequestActivity) {}
+  int jdField_a_of_type_Int;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public afnu(afnr paramafnr, String paramString1, String paramString2, int paramInt)
   {
-    String str = this.a.d;
-    bfhe.a(this.a, str);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 

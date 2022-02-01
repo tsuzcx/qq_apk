@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.jetbrains.annotations.NotNull;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
 
-class sle
-  extends uaj
+public class sle
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  sle(ske paramske) {}
+  public sle(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
   
-  public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return this.a.a(paramInt, paramActionSheetItem);
+    ReadinjoySlidingIndicator.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 

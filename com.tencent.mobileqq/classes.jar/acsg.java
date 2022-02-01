@@ -1,54 +1,70 @@
-import android.os.Bundle;
-import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.gdtad.util.GdtUserInfoAuthorizationHelper.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AuthorizationItem;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import com.tencent.gdtad.views.video.GdtVideoData;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class acsg
-  implements aaob
 {
-  public void callback(Bundle paramBundle)
+  private GdtAd jdField_a_of_type_ComTencentGdtadAditemGdtAd;
+  private GdtMotiveVideoPageData jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData;
+  private GdtVideoData jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData;
+  private qq_ad_get.QQAdGetRsp.AdInfo jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo;
+  
+  public acsg(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
   {
-    String str1 = paramBundle.getString("name");
-    String str2 = paramBundle.getString("phone");
-    paramBundle = paramBundle.getString("city");
-    this.jdField_a_of_type_Aanz.b();
-    if (QLog.isColorLevel()) {
-      QLog.d("GdtUserInfoAuthorizationHelper", 2, "getUserInfo : name -> " + str1 + ", phone -> " + str2 + ", city -> " + paramBundle);
-    }
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.a))
+    acvc.a("GdtMotiveVideoModel", "[GdtMotiveVideoModel]\n" + paramGdtMotiveVideoPageData.adsContent);
+    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData = paramGdtMotiveVideoPageData;
+    b(paramGdtMotiveVideoPageData);
+    a(paramGdtMotiveVideoPageData);
+  }
+  
+  private void a(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
+  {
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData = new GdtVideoData();
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setAd(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setPlayScene(11);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setUrl(paramGdtMotiveVideoPageData.url);
+  }
+  
+  private void b(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
+  {
+    if (TextUtils.isEmpty(paramGdtMotiveVideoPageData.adsContent))
     {
-      bool1 = bool2;
-      if (TextUtils.isEmpty(str1)) {
-        bool1 = false;
-      }
-    }
-    bool2 = bool1;
-    if (this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.b))
-    {
-      bool2 = bool1;
-      if (TextUtils.isEmpty(str2)) {
-        bool2 = false;
-      }
-    }
-    if ((this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.c)) && (TextUtils.isEmpty(paramBundle))) {}
-    for (bool1 = false;; bool1 = bool2)
-    {
-      paramBundle = acsf.a(this.jdField_a_of_type_Acsf, str1, str2, paramBundle, this.jdField_a_of_type_JavaUtilList);
-      if (Looper.myLooper() == Looper.getMainLooper())
-      {
-        acsf.a(this.jdField_a_of_type_Acsf, this.jdField_a_of_type_AndroidAppActivity, bool1, paramBundle, this.jdField_a_of_type_Acsh, this.jdField_a_of_type_JavaUtilList);
-        return;
-      }
-      ThreadManager.getUIHandler().post(new GdtUserInfoAuthorizationHelper.1.1(this, bool1, paramBundle));
+      acvc.d("GdtMotiveVideoModel", "[adJson==null error]");
       return;
     }
+    try
+    {
+      this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramGdtMotiveVideoPageData.adsContent))));
+      return;
+    }
+    catch (Throwable paramGdtMotiveVideoPageData)
+    {
+      acvc.d("GdtMotiveVideoModel", "GdtMotiveVideoModel error]", paramGdtMotiveVideoPageData);
+    }
+  }
+  
+  public GdtAd a()
+  {
+    return this.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
+  }
+  
+  public GdtMotiveVideoPageData a()
+  {
+    return this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData;
+  }
+  
+  public GdtVideoData a()
+  {
+    return this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData;
+  }
+  
+  public qq_ad_get.QQAdGetRsp.AdInfo a()
+  {
+    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo;
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.open.agent;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import bipr;
+import bjqq;
 import com.tencent.qphone.base.util.QLog;
 
 class BindGroupConfirmActivity$3
@@ -19,11 +19,11 @@ class BindGroupConfirmActivity$3
       Object localObject2 = null;
       try
       {
-        Bitmap localBitmap = BitmapFactory.decodeResource(this.this$0.a, 2130842566);
+        Bitmap localBitmap = BitmapFactory.decodeResource(this.this$0.a, 2130842579);
         if (localBitmap == null) {
           continue;
         }
-        localBitmap = bipr.a(this.this$0, localBitmap, 50, 50);
+        localBitmap = bjqq.a(this.this$0, localBitmap, 50, 50);
         if (localBitmap == null) {
           continue;
         }

@@ -1,25 +1,12 @@
-import android.os.Looper;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.vip.lianghao.RegisterLHAssistant.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bhiz
-  implements bhje
+class bhiz
+  implements View.OnClickListener
 {
-  public bhiz(RegisterLHAssistant.2 param2) {}
+  bhiz(bhiu parambhiu) {}
   
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(bhix.a, 4, String.format(Locale.getDefault(), "checkVipQQStatus, needShow: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    bhix.a(this.a.this$0, paramBoolean);
-    if ((bhix.a(this.a.this$0)) && (bhix.a(this.a.this$0).isEnabled()) && (Thread.currentThread() == Looper.getMainLooper().getThread()) && (bhix.a(this.a.this$0).getVisibility() == 8)) {
-      this.a.this$0.b(true);
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

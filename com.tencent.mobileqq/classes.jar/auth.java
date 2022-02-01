@@ -1,122 +1,59 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ConversationInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.message.TinyInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.fileviewer.model.DeviceFileModel.1.1;
 
 public class auth
+  extends abwg
 {
-  public static auth a()
+  auth(autg paramautg) {}
+  
+  public void a(Session paramSession, float paramFloat)
   {
-    return autj.a;
+    FileManagerEntity localFileManagerEntity = autg.a(this.a).a();
+    if (localFileManagerEntity == null) {}
+    while ((autg.c(this.a) == null) || (paramSession.uSessionID != autg.a(this.a))) {
+      return;
+    }
+    localFileManagerEntity.fProgress = paramFloat;
+    autg.d(this.a).a(paramFloat);
   }
   
-  private boolean a(ConversationInfo paramConversationInfo)
+  public void a(Session paramSession, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramConversationInfo.extString))
+    FileManagerEntity localFileManagerEntity = autg.b(this.a).a();
+    if (localFileManagerEntity == null) {}
+    do
     {
-      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "isValid() called, info is invalid!" + paramConversationInfo);
-      return false;
-    }
-    if ((paramConversationInfo.tinyInfo == null) || (TextUtils.isEmpty(paramConversationInfo.tinyInfo.fromRoleId)) || (TextUtils.isEmpty(paramConversationInfo.tinyInfo.toRoleId)))
-    {
-      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "isValid() called, info is invalid!" + paramConversationInfo);
-      return false;
-    }
-    return true;
-  }
-  
-  @Nullable
-  public ConversationInfo a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if (paramQQAppInterface == null)
-    {
-      paramQQAppInterface = null;
-      return paramQQAppInterface;
-    }
-    ConversationInfo localConversationInfo = paramQQAppInterface.a().a(paramString, paramInt);
-    if (localConversationInfo != null)
-    {
-      paramQQAppInterface = paramQQAppInterface.a(10007).a(paramString, paramInt);
-      if (paramQQAppInterface == null) {
-        break label116;
-      }
-      paramString = paramQQAppInterface.getExtInfoFromExtStr("ext_key_game_msg_info");
-      if (!TextUtils.isEmpty(paramString))
+      return;
+      if ((autg.a(this.a) != null) && (paramSession.uSessionID == autg.b(this.a)) && (paramBoolean))
       {
-        localConversationInfo.tinyInfo = new TinyInfo(paramString, paramQQAppInterface.isSend());
-        localConversationInfo.extString = paramString;
+        localFileManagerEntity.strThumbPath = paramSession.strFilePathSrc;
+        autg.b(this.a).a(String.valueOf(localFileManagerEntity.nSessionId), paramSession.strFilePathSrc);
       }
-    }
-    for (;;)
+    } while ((autg.e(this.a) == null) || (paramSession.uSessionID != autg.a(this.a)));
+    if (paramBoolean)
     {
-      paramQQAppInterface = localConversationInfo;
-      if (!QLog.isColorLevel()) {
-        break;
+      localFileManagerEntity.fProgress = 1.0F;
+      localFileManagerEntity.setFilePath(paramSession.strFilePathSrc);
+      autg.f(this.a).f();
+      if (this.a.e() == 2)
+      {
+        new Handler(Looper.getMainLooper()).postDelayed(new DeviceFileModel.1.1(this), 1000L);
+        return;
       }
-      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfo info = " + localConversationInfo);
-      return localConversationInfo;
-      label116:
-      if (!TextUtils.isEmpty(localConversationInfo.extString)) {
-        localConversationInfo.tinyInfo = new TinyInfo(localConversationInfo.extString);
-      }
+      autg.i(this.a).f();
+      return;
     }
+    autg.j(this.a).g();
   }
   
-  public List<ConversationInfo> a(QQAppInterface paramQQAppInterface)
+  public void b(Session paramSession)
   {
-    Object localObject = paramQQAppInterface.a().a();
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((Set)localObject).iterator();
-    label241:
-    while (((Iterator)localObject).hasNext())
-    {
-      ConversationInfo localConversationInfo = (ConversationInfo)((Iterator)localObject).next();
-      if (localConversationInfo.type == 10007)
-      {
-        MessageRecord localMessageRecord = paramQQAppInterface.a(10007).a(localConversationInfo.uin, localConversationInfo.type);
-        if (localMessageRecord != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList item = " + localMessageRecord.getBaseInfoString());
-          }
-          String str = localMessageRecord.getExtInfoFromExtStr("ext_key_game_msg_info");
-          if (!TextUtils.isEmpty(str))
-          {
-            localConversationInfo.extString = str;
-            localConversationInfo.tinyInfo = new TinyInfo(str, localMessageRecord.isSend());
-          }
-        }
-        for (;;)
-        {
-          if (!a(localConversationInfo)) {
-            break label241;
-          }
-          localArrayList.add(localConversationInfo);
-          break;
-          if (!TextUtils.isEmpty(localConversationInfo.extString))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList info = " + localConversationInfo);
-            }
-            localConversationInfo.tinyInfo = new TinyInfo(localConversationInfo.extString);
-          }
-        }
-      }
+    if ((autg.a(this.a) != null) && (paramSession.uSessionID == autg.a(this.a))) {
+      autg.b(this.a).d();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList mock before = " + localArrayList);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList size = " + localArrayList.size());
-    }
-    return localArrayList;
   }
 }
 

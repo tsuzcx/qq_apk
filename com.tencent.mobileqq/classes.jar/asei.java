@@ -1,28 +1,69 @@
-import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.earlydownload.xmldata.WebpSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.util.WebpSoLoader;
+import com.tencent.qphone.base.util.QLog;
 
 public class asei
-  implements awnc<EmoticonPackage>
+  extends asdn
 {
-  public asei(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
+  QQAppInterface b = null;
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public asei(QQAppInterface paramQQAppInterface)
   {
-    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.name != null) && ((paramEmoticonPackage.mobileFeetype != 0) || (paramEmoticonPackage.downloadCount != 0)))
+    super("qq.android.pic.webp.so", paramQQAppInterface);
+    this.b = paramQQAppInterface;
+  }
+  
+  public int a()
+  {
+    return 10056;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return WebpSoData.class;
+  }
+  
+  public String a()
+  {
+    return "QWebpSoDownloadDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getInt("emosm_json_last_download_timestamp", 0);
-      int j = (int)(System.currentTimeMillis() / 1000L);
-      if ((j - i > 86400) || (j < i))
-      {
-        AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QWebpSoDownloadHandler", 2, "onDownload success: " + paramString);
       }
-      ahch.a(6, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a, null, true);
-      return;
+      String str = WebpSoLoader.a(BaseApplicationImpl.getContext());
+      if (!TextUtils.isEmpty(str)) {
+        bhmi.a(paramString, str, false);
+      }
     }
-    AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QWebpSoDownloadHandler", 2, localException.getMessage());
+        }
+      }
+    }
+    super.a(paramString);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 

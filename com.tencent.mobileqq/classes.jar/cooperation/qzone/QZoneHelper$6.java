@@ -2,7 +2,7 @@ package cooperation.qzone;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
-import blsh;
+import bmtj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import java.util.List;
 public final class QZoneHelper$6
   implements Runnable
 {
-  public QZoneHelper$6(blsh paramblsh) {}
+  public QZoneHelper$6(bmtj parambmtj) {}
   
   public void run()
   {

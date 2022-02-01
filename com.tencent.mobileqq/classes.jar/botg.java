@@ -1,27 +1,42 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Set;
 
 class botg
-  extends RecyclerView.OnScrollListener
+  implements View.OnClickListener
 {
-  boolean jdField_a_of_type_Boolean = false;
+  botg(botf parambotf, bosw parambosw, int paramInt, botl parambotl) {}
   
-  botg(botf parambotf) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onClick(View paramView)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((paramInt == 0) && (this.jdField_a_of_type_Boolean))
+    boolean bool;
+    if (this.jdField_a_of_type_Bosw.jdField_a_of_type_Int == 13)
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Botf.a();
+      if (this.jdField_a_of_type_Bosw.a()) {
+        break label80;
+      }
+      bool = true;
+      if (!bool) {
+        break label85;
+      }
+      botf.a(this.jdField_a_of_type_Botf).add(Integer.valueOf(this.jdField_a_of_type_Int));
+      botf.a(this.jdField_a_of_type_Botf, true);
     }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 != 0) || (paramInt2 != 0)) {
-      this.jdField_a_of_type_Boolean = true;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bosw.a(bool);
+      this.jdField_a_of_type_Botl.a(bool);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label80:
+      bool = false;
+      break;
+      label85:
+      botf.a(this.jdField_a_of_type_Botf).remove(Integer.valueOf(this.jdField_a_of_type_Int));
+      if (botf.a(this.jdField_a_of_type_Botf).size() < 1) {
+        botf.a(this.jdField_a_of_type_Botf, false);
+      }
     }
   }
 }

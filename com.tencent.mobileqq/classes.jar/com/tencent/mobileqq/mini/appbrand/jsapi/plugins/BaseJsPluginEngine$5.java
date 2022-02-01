@@ -1,22 +1,19 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import aqps;
-import aqpt;
-import com.tencent.mobileqq.mini.apkg.ApkgInfo;
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
 import java.util.List;
+import org.json.JSONObject;
 
 class BaseJsPluginEngine$5
-  implements Runnable
+  implements MiniAppCmdInterface
 {
-  BaseJsPluginEngine$5(BaseJsPluginEngine paramBaseJsPluginEngine, String paramString) {}
+  BaseJsPluginEngine$5(BaseJsPluginEngine paramBaseJsPluginEngine, String paramString, JsRuntime paramJsRuntime, List paramList, int paramInt) {}
   
-  public void run()
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    aqps localaqps = aqpt.a();
-    if ((localaqps != null) && (localaqps.a() != null) && (localaqps.a().contains(this.val$eventName))) {
-      MiniProgramLpReportDC04239.reportApiInvoke(this.this$0.appBrandRuntime.getApkgInfo().appConfig, this.val$eventName);
+    if (paramBoolean) {
+      this.this$0.onceSubMsgCallbackSuc(this.val$eventName, this.val$webview, this.val$allSubMsg, this.val$callbackId);
     }
   }
 }

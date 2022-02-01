@@ -1,17 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ytm
-  implements DialogInterface.OnDismissListener
+  extends QQUIEventReceiver<ysw, wmd>
 {
-  public ytm(EditVideoGuide paramEditVideoGuide) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ytm(@NonNull ysw paramysw)
   {
-    this.a.jdField_a_of_type_Int = 2;
-    this.a.b = 2;
-    this.a.jdField_a_of_type_Yty.a(5);
+    super(paramysw);
+  }
+  
+  public void a(@NonNull ysw paramysw, @NonNull wmd paramwmd)
+  {
+    if (paramwmd.a())
+    {
+      yuk.b(this.TAG, "group video upload");
+      return;
+    }
+    if (!paramwmd.b())
+    {
+      yuk.b(this.TAG, "ignore personal video");
+      return;
+    }
+    paramysw.a(paramwmd);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wmd.class;
   }
 }
 

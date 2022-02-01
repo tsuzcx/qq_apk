@@ -1,17 +1,22 @@
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
-class afev
-  implements bdov
+public class afev
+  implements TextWatcher
 {
-  afev(afeu paramafeu) {}
+  public afev(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onCancel() {}
-  
-  public void onConfirm()
+  public void afterTextChanged(Editable paramEditable)
   {
-    afen.a(this.a.jdField_a_of_type_Afer.a).b();
-    afer.a(this.a.jdField_a_of_type_Afer, this.a.jdField_a_of_type_Int);
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.etrump.mixlayout;
 
-import bgtl;
+import bhto;
 import gb;
 import gc;
 
@@ -12,7 +12,7 @@ public class FontManager$9
   public void run()
   {
     if (gc.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Gb, this.jdField_a_of_type_Int)) {
-      bgtl.a(this.this$0.a);
+      bhto.a(this.this$0.a);
     }
   }
 }

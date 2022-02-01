@@ -1,133 +1,176 @@
-import android.graphics.Color;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.GifDrawable;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.List;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import com.tencent.mobileqq.data.MessageForLightVideo;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bbnp
-  extends bbnn
 {
-  public static final String k = bbnp.class.getSimpleName();
-  public boolean b;
-  public boolean c;
-  public String l;
-  public String m;
-  public String n;
+  private QQAppInterface a;
   
-  protected bbnp(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, UnifySearchCommon.ResultItem paramResultItem)
+  public bbnp(QQAppInterface paramQQAppInterface)
   {
-    super(paramString, paramLong, paramList, paramInt1, paramJSONObject, paramInt2, paramResultItem);
+    this.a = paramQQAppInterface;
   }
   
-  protected bbnp(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, DynamicSearch.ResultItem paramResultItem)
+  public static boolean a(int paramInt)
   {
-    super(paramString, paramLong, paramList, paramInt1, paramJSONObject, paramInt2, paramResultItem);
+    return (paramInt == -2000) || (paramInt == -2022) || (paramInt == -1035) || (paramInt == -1036);
   }
   
-  public void a(View paramView)
+  public static boolean b(int paramInt)
   {
-    super.a(paramView);
-    bbup.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), this.n);
+    return (paramInt == 1004) || (paramInt == 1005) || (paramInt == 2005) || (paramInt == 5001) || (paramInt == 5002);
   }
   
-  public void a(bbvs parambbvs)
+  public int a(MessageRecord paramMessageRecord)
   {
-    if (!(parambbvs instanceof bbvu)) {
+    if (paramMessageRecord != null)
+    {
+      paramMessageRecord = this.a.a().a(paramMessageRecord.frienduin, paramMessageRecord.uniseq);
+      if ((paramMessageRecord instanceof berp)) {
+        return (int)((berp)paramMessageRecord).c();
+      }
+    }
+    return -1;
+  }
+  
+  protected void a(MessageForShortVideo paramMessageForShortVideo)
+  {
+    bcyq localbcyq = new bcyq(this.a, this.a.getApplication(), paramMessageForShortVideo, null);
+    bcyp.a().a(paramMessageForShortVideo.uniseq, localbcyq);
+  }
+  
+  public void a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord == null) || (this.a == null)) {}
+    for (;;)
+    {
+      return;
+      long l = System.currentTimeMillis();
+      if (((paramMessageRecord instanceof MessageForMixedMsg)) || ((paramMessageRecord instanceof MessageForLightVideo))) {
+        this.a.a().a(paramMessageRecord);
+      }
+      while (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addMsg cost:").append(System.currentTimeMillis() - l).append(" uniseq = ").append(paramMessageRecord.uniseq).append(", msgtype = ").append(paramMessageRecord.msgtype);
+        QLog.d("MediaMsgController", 2, localStringBuilder.toString());
+        return;
+        ((aogu)this.a.a(13)).a(paramMessageRecord);
+        this.a.a().a(paramMessageRecord, this.a.getCurrentAccountUin());
+      }
+    }
+  }
+  
+  public void a(MessageRecord paramMessageRecord, aocj paramaocj, bbnt parambbnt)
+  {
+    if (paramMessageRecord == null) {
       return;
     }
-    int i = parambbvs.a().getLayoutParams().width - bggq.a(parambbvs.a().getContext(), 3.0F);
-    if (this.jdField_a_of_type_Bbni != null) {
-      bbqr.a(this, parambbvs, true, i);
+    if (parambbnt != null) {
+      parambbnt.a(paramMessageRecord);
     }
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
-    {
-      parambbvs.a().setTextColor(Color.parseColor("#737373"));
-      parambbvs.c().setTextColor(Color.parseColor("#4A4A4A"));
-      if (!TextUtils.isEmpty(this.l)) {
-        break label192;
-      }
-      parambbvs.a().setVisibility(8);
-      label104:
-      if (!TextUtils.isEmpty(this.m)) {
-        break label254;
-      }
-      parambbvs.c().setVisibility(8);
-      label123:
-      if (!this.jdField_b_of_type_Boolean) {
-        break label276;
-      }
-      parambbvs.a().setGravity(1);
-      parambbvs.c().setGravity(1);
+    this.a.a().b(paramMessageRecord, paramaocj);
+  }
+  
+  public boolean a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord != null) && (paramMessageRecord.extraflag == 32768)) {
+      return true;
+    }
+    int i;
+    if ((paramMessageRecord instanceof MessageForShortVideo)) {
+      i = ((MessageForShortVideo)paramMessageRecord).videoFileStatus;
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(this.n)) {
-        break label295;
-      }
-      parambbvs.a().setOnClickListener(null);
-      return;
-      parambbvs.a().setTextColor(Color.parseColor("#262626"));
-      parambbvs.c().setTextColor(Color.parseColor("#737373"));
-      break;
-      label192:
-      parambbvs.a().setVisibility(0);
-      if (this.c)
+      return b(i);
+      if (((paramMessageRecord instanceof MessageForPic)) && (((MessageForPic)paramMessageRecord).size <= 0L))
       {
-        parambbvs.a().setText(bbup.a(parambbvs.a(), i, 2, this.l, this.jdField_a_of_type_Bbue.a, false, false));
-        break label104;
+        int j = a(paramMessageRecord);
+        i = j;
+        if (j == -1) {
+          return true;
+        }
       }
-      parambbvs.a().setText(this.l);
-      break label104;
-      label254:
-      parambbvs.c().setVisibility(0);
-      parambbvs.c().setText(this.m);
-      break label123;
-      label276:
-      parambbvs.a().setGravity(3);
-      parambbvs.c().setGravity(3);
+      else
+      {
+        i = 0;
+      }
     }
-    label295:
-    parambbvs.a().setOnClickListener(this);
   }
   
-  public void b(JSONObject paramJSONObject)
+  public boolean a(String paramString)
   {
-    boolean bool2 = true;
-    this.l = paramJSONObject.optString("title");
-    this.m = paramJSONObject.optString("desc");
-    if (paramJSONObject.optInt("needCenter") == 1)
+    if (TextUtils.isEmpty(paramString)) {}
+    int i;
+    do
     {
-      bool1 = true;
-      this.jdField_b_of_type_Boolean = bool1;
-      this.n = paramJSONObject.optString("jumpUrl");
-      if (paramJSONObject.optInt("highlightTitle", 1) != 1) {
-        break label109;
+      return false;
+      File localFile = new File(paramString);
+      if ((localFile.exists()) && (GifDrawable.isGifFile(localFile)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MediaMsgController", 2, "isDoutuPic gifFile");
+        }
+        return true;
+      }
+      i = bmgb.a(paramString);
+    } while ((i != 2000) && (i != 3));
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaMsgController", 2, new Object[] { "isDoutuPic imageType:", Integer.valueOf(i) });
+    }
+    return true;
+  }
+  
+  public int b(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord != null)
+    {
+      paramMessageRecord = this.a.a().a(paramMessageRecord.frienduin, paramMessageRecord.uniseq);
+      if (!(paramMessageRecord instanceof berp)) {}
+    }
+    for (int i = ((berp)paramMessageRecord).e();; i = -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MediaMsgController", 2, new Object[] { "getUploadProgress:", Integer.valueOf(i) });
+      }
+      return i;
+    }
+  }
+  
+  public boolean b(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForShortVideo))
+    {
+      MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)paramMessageRecord;
+      if ((localMessageForShortVideo.busiType == 0) && (localMessageForShortVideo.videoFileStatus != 998) && (TextUtils.isEmpty(localMessageForShortVideo.md5)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MediaMsgController", 2, "isVideoNeedPreCompress is true, " + paramMessageRecord.uniseq);
+        }
+        return true;
       }
     }
-    label109:
-    for (boolean bool1 = bool2;; bool1 = false)
+    return false;
+  }
+  
+  public boolean c(MessageRecord paramMessageRecord)
+  {
+    boolean bool = false;
+    if (b(paramMessageRecord))
     {
-      this.c = bool1;
-      this.j = paramJSONObject.optString("result_id");
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("extra_report_info");
-      paramJSONObject = paramJSONObject.optJSONObject("imageInfo");
-      if (paramJSONObject == null) {
-        break label114;
-      }
-      a(paramJSONObject);
-      return;
-      bool1 = false;
-      break;
+      bool = true;
+      a((MessageForShortVideo)paramMessageRecord);
     }
-    label114:
-    this.jdField_a_of_type_Bbni = null;
+    return bool;
   }
 }
 

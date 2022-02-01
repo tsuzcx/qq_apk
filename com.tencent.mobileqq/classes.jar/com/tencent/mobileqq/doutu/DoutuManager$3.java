@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.doutu;
 
-import anmw;
-import armt;
-import arnb;
+import anyw;
+import ascj;
+import ascr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
@@ -11,29 +11,29 @@ import mqq.app.NewIntent;
 public class DoutuManager$3
   implements Runnable
 {
-  public DoutuManager$3(armt paramarmt) {}
+  public DoutuManager$3(ascj paramascj) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i("DoutuManager", 2, "postGetDoutuList : run begin .");
     }
-    armt.a(this.this$0, 1);
-    NewIntent localNewIntent = new NewIntent(armt.a(this.this$0).getApp(), arnb.class);
-    long l = Long.valueOf(armt.a(this.this$0).getCurrentAccountUin()).longValue();
+    ascj.a(this.this$0, 1);
+    NewIntent localNewIntent = new NewIntent(ascj.a(this.this$0).getApp(), ascr.class);
+    long l = Long.valueOf(ascj.a(this.this$0).getCurrentAccountUin()).longValue();
     localNewIntent.putExtra("KEY_SRC_UIN", l);
     localNewIntent.putExtra("KEY_CMD", 1);
-    Object localObject = (anmw)armt.a(this.this$0).getManager(51);
+    Object localObject = (anyw)ascj.a(this.this$0).getManager(51);
     int i;
     if (localObject != null)
     {
-      localObject = ((anmw)localObject).b(armt.a(this.this$0).getCurrentAccountUin());
+      localObject = ((anyw)localObject).b(ascj.a(this.this$0).getCurrentAccountUin());
       if (localObject != null)
       {
         i = ((Card)localObject).age;
         localNewIntent.putExtra("KEY_AGE", ((Card)localObject).age);
         localNewIntent.putExtra("key_gender", ((Card)localObject).shGender);
-        armt.a(this.this$0, (Card)localObject);
+        ascj.a(this.this$0, (Card)localObject);
       }
     }
     for (;;)
@@ -41,7 +41,7 @@ public class DoutuManager$3
       if (QLog.isColorLevel()) {
         QLog.d("DoutuManager", 2, "postGetDoutuList : curUin = " + l + ", age = " + i);
       }
-      armt.a(this.this$0).startServlet(localNewIntent);
+      ascj.a(this.this$0).startServlet(localNewIntent);
       return;
       i = 0;
     }

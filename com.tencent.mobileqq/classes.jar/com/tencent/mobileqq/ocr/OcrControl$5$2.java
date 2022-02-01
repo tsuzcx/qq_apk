@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.ocr;
 
-import apah;
-import apai;
-import aygu;
-import aygw;
-import bgmg;
+import apnx;
+import apny;
+import ayzn;
+import ayzp;
+import bhmi;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class OcrControl$5$2
   implements Runnable
 {
-  public OcrControl$5$2(aygu paramaygu, apai paramapai) {}
+  public OcrControl$5$2(ayzn paramayzn, apny paramapny) {}
   
   public void run()
   {
-    String str1 = this.jdField_a_of_type_Apai.a.a;
+    String str1 = this.jdField_a_of_type_Apny.a.a;
     String str2 = new File(str1).getParent();
-    if (aygw.a.equals(str2))
+    if (ayzp.a.equals(str2))
     {
-      bgmg.d(str1);
+      bhmi.d(str1);
       if (QLog.isColorLevel()) {
         QLog.d("Q.ocr.control", 2, "delete pic path:" + str1);
       }

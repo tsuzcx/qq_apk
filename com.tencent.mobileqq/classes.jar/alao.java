@@ -1,286 +1,285 @@
+import Wallet.ReqWalletConfig;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.data.BaseRecentUser;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class alao
-  implements Comparator<RecentBaseData>
+  implements Manager
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+  private int jdField_a_of_type_Int = -1;
+  private volatile long jdField_a_of_type_Long = -1L;
+  private final QWalletConfig jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   public alao(QQAppInterface paramQQAppInterface)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletConfigManager", 2, "QWalletConfigManager init");
+    }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig = QWalletConfig.readConfig(paramQQAppInterface);
   }
   
-  private int a(RecentUserBaseData paramRecentUserBaseData, int paramInt)
+  private void a(long paramLong, alar paramalar, String paramString, Map<String, String> paramMap)
   {
-    int j = 0;
-    int i = j;
-    if (paramRecentUserBaseData.mUnreadNum > 0)
+    if (a())
     {
-      i = j;
-      if (paramRecentUserBaseData.mUser.getType() == 0)
-      {
-        i = j;
-        if (alxx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + paramRecentUserBaseData.mUser.uin))
-        {
-          i = j;
-          if (!a(paramRecentUserBaseData.mUser.uin, 0)) {
-            i = 1;
-          }
-        }
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.seriesNo = 0L;
+      QLog.i("QWalletConfigManager", 2, "replace install:" + AppSetting.a());
+    }
+    long l1;
+    if (paramLong == 0L)
+    {
+      l1 = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.seriesNo;
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+        break label191;
       }
     }
-    if (i != 0) {
-      paramInt = 4096;
+    label191:
+    for (long l2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();; l2 = 0L)
+    {
+      ReqWalletConfig localReqWalletConfig = ReqWalletConfig.createReq(paramLong, l2, l1, paramString, paramMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletConfigManager", 2, "realGetConfig:" + paramLong + "|" + paramalar + "|" + paramString + "|" + paramMap + "|" + localReqWalletConfig);
+      }
+      akxq.a(localReqWalletConfig, new alap(this, paramLong, paramalar, new WeakReference(this)), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      return;
+      l1 = 0L;
+      break;
     }
-    return paramInt;
   }
   
-  private void a()
+  public static void a(String paramString, alas paramalas)
   {
-    if ((this.jdField_a_of_type_JavaLangStringBuilder != null) && (QLog.isDevelopLevel()))
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface))
     {
-      this.jdField_a_of_type_JavaLangStringBuilder.append("]");
-      QLog.i("Q.recent", 4, this.jdField_a_of_type_JavaLangStringBuilder.toString());
+      ((alao)localAppRuntime.getManager(245)).c(paramString, paramalas);
+      return;
     }
+    alib.a(paramString, paramalas);
   }
   
-  private void a(String... paramVarArgs)
+  public static void b(String paramString, alas paramalas)
   {
-    if ((this.jdField_a_of_type_JavaLangStringBuilder != null) && (QLog.isDevelopLevel()) && (paramVarArgs != null))
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface))
     {
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
+      ((alao)localAppRuntime.getManager(245)).d(paramString, paramalas);
+      return;
+    }
+    alib.b(paramString, paramalas);
+  }
+  
+  public int a(String paramString, int paramInt, String... paramVarArgs)
+  {
+    return alal.a(a(paramString), paramInt, paramVarArgs);
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.lastReqTime;
+  }
+  
+  public alam a(String paramString)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.getConfigInfo(paramString);
+  }
+  
+  public String a(String paramString)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.getConfig(paramString);
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    Object localObject1 = null;
+    Object localObject2 = a(paramString1);
+    paramString1 = localObject1;
+    if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
+    try
+    {
+      localObject2 = new JSONObject((String)localObject2);
+      paramString1 = localObject1;
+      if (localObject2 != null)
       {
-        String str = paramVarArgs[i];
-        this.jdField_a_of_type_JavaLangStringBuilder.append(str);
+        paramString1 = localObject1;
+        if (((JSONObject)localObject2).has(paramString2)) {
+          paramString1 = ((JSONObject)localObject2).optString(paramString2);
+        }
+      }
+      return paramString1;
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return null;
+  }
+  
+  public String a(String paramString1, String paramString2, String... paramVarArgs)
+  {
+    return alal.a(a(paramString1), paramString2, paramVarArgs);
+  }
+  
+  public JSONArray a(String paramString, String... paramVarArgs)
+  {
+    return alal.a(a(paramString), paramVarArgs);
+  }
+  
+  public JSONObject a(String paramString)
+  {
+    paramString = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.getParsedConfig(paramString);
+    if ((paramString instanceof JSONObject)) {
+      return (JSONObject)paramString;
+    }
+    return null;
+  }
+  
+  public JSONObject a(String paramString, String... paramVarArgs)
+  {
+    return alal.a(a(paramString), paramVarArgs);
+  }
+  
+  public void a()
+  {
+    ThreadManager.executeOnSubThread(new QWalletConfigManager.1(this, new WeakReference(this)));
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.getValidReqOcca(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletConfigManager", 2, "tryGetConfig:" + paramInt + "|" + i + "|" + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig);
+    }
+    if (i != -1)
+    {
+      if (Math.abs(NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long) <= 60000L) {
+        break label90;
+      }
+      b(i);
+    }
+    label90:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("QWalletConfigManager", 2, "tryGetConfig too frequently to req");
+  }
+  
+  public void a(Map<String, String> paramMap)
+  {
+    if (paramMap == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletConfigManager", 2, "setConfig params is null");
+      }
+    }
+    do
+    {
+      return;
+      paramMap = ReqWalletConfig.createReq(0L, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.seriesNo, null, paramMap);
+      akxq.a(paramMap, 1, new alaq(this));
+    } while (!QLog.isColorLevel());
+    QLog.d("QWalletConfigManager", 2, "setConfig:" + paramMap);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.isVersionUpdate();
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    Object localObject;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localObject = a("pub_acc", "pay_puin_list");
+      bool1 = bool2;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    }
+    try
+    {
+      localObject = new JSONArray((String)localObject);
+      bool1 = bool2;
+      int i;
+      if (localObject != null) {
+        i = 0;
+      }
+      for (;;)
+      {
+        bool1 = bool2;
+        if (i < ((JSONArray)localObject).length())
+        {
+          bool1 = paramString.equals("" + ((JSONArray)localObject).get(i));
+          if (bool1) {
+            bool1 = true;
+          }
+        }
+        else
+        {
+          return bool1;
+        }
         i += 1;
       }
+      return false;
     }
-  }
-  
-  private boolean a(RecentUserBaseData paramRecentUserBaseData)
-  {
-    if ((paramRecentUserBaseData.mUser.getType() == 1) && (!axbp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (RecentUser)paramRecentUserBaseData.mUser))) {
-      return ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(paramRecentUserBaseData.getRecentUserUin());
-    }
-    return FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (RecentUser)paramRecentUserBaseData.mUser);
-  }
-  
-  private boolean a(String paramString, int paramInt)
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(paramString, paramInt) > 0);
-  }
-  
-  private void b(List<RecentUser> paramList)
-  {
-    if (QLog.isDevelopLevel())
+    catch (JSONException paramString)
     {
-      if (this.jdField_a_of_type_JavaLangStringBuilder == null)
-      {
-        this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-        this.jdField_a_of_type_JavaLangStringBuilder.append("checkRUList, src[");
-        paramList = paramList.iterator();
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("req_when", paramInt + "");
+    try
+    {
+      String str = ((alex)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(273)).a();
+      if (!TextUtils.isEmpty(str)) {
+        localHashMap.put("redPoint", str);
       }
+      a(0L, null, null, localHashMap);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
       for (;;)
       {
-        if (!paramList.hasNext()) {
-          break label120;
-        }
-        RecentUser localRecentUser = (RecentUser)paramList.next();
-        if (localRecentUser == null)
-        {
-          this.jdField_a_of_type_JavaLangStringBuilder.append("null | null,");
-          continue;
-          this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-          break;
-        }
-        this.jdField_a_of_type_JavaLangStringBuilder.append(localRecentUser.uin).append("|").append(localRecentUser.getType()).append(",");
+        localThrowable.printStackTrace();
       }
-      label120:
-      this.jdField_a_of_type_JavaLangStringBuilder.append("], [");
     }
   }
   
-  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
+  public void c(String paramString, alas paramalas)
   {
-    int j;
-    int i;
-    long l2;
-    long l3;
-    long l1;
-    if (((paramRecentBaseData1 instanceof RecentUserBaseData)) && ((paramRecentBaseData2 instanceof RecentUserBaseData)))
-    {
-      paramRecentBaseData1 = (RecentUserBaseData)paramRecentBaseData1;
-      paramRecentBaseData2 = (RecentUserBaseData)paramRecentBaseData2;
-      j = 0;
-      i = 0;
-      boolean bool1 = a(paramRecentBaseData1);
-      boolean bool2 = a(paramRecentBaseData2);
-      if ((bool1) && (!bool2)) {
-        return -1;
-      }
-      if ((!bool1) && (bool2)) {
-        return 1;
-      }
-      if (!bool1)
-      {
-        j = a(paramRecentBaseData1, 0);
-        i = a(paramRecentBaseData2, 0);
-        l2 = Math.max(paramRecentBaseData1.mUser.lastmsgtime, paramRecentBaseData1.mUser.lastmsgdrafttime);
-        l3 = Math.max(paramRecentBaseData2.mUser.lastmsgtime, paramRecentBaseData2.mUser.lastmsgdrafttime);
-        l1 = l2;
-        if (paramRecentBaseData1.mUser.lastmsgtime <= 0L)
-        {
-          l1 = l2;
-          if (paramRecentBaseData1.mUser.lastmsgdrafttime <= 0L) {
-            l1 = Math.max(l2, paramRecentBaseData1.mUser.opTime);
-          }
-        }
-        if ((paramRecentBaseData2.mUser.lastmsgtime > 0L) || (paramRecentBaseData2.mUser.lastmsgdrafttime > 0L)) {
-          break label307;
-        }
-        l3 = Math.max(l3, paramRecentBaseData2.mUser.opTime);
-        l2 = l1;
-        l1 = l3;
-      }
-    }
-    for (;;)
-    {
-      if (l2 > l1) {
-        l1 = 3L;
-      }
-      for (;;)
-      {
-        l1 = (int)(l1 | j) - (int)(0x2 | i);
-        if (l1 != 0L) {
-          break label294;
-        }
-        return 0;
-        l2 = paramRecentBaseData1.mDisplayTime;
-        l1 = paramRecentBaseData2.mDisplayTime;
-        break;
-        if (l2 < l1) {
-          l1 = 1L;
-        } else {
-          l1 = 2L;
-        }
-      }
-      label294:
-      if (l1 < 0L) {
-        return 1;
-      }
-      return -1;
-      return 0;
-      label307:
-      l2 = l1;
-      l1 = l3;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.addUpdateListener(paramString, paramalas);
   }
   
-  public void a(BaseActivity paramBaseActivity)
+  public void d(String paramString, alas paramalas)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramBaseActivity.getAppRuntime());
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.removeUpdateListener(paramString, paramalas);
   }
   
-  public void a(List<RecentUser> paramList)
+  public void onDestroy()
   {
-    b(paramList);
-    HotChatManager localHotChatManager = null;
-    int i;
-    label17:
-    RecentUser localRecentUser;
-    if (paramList == null)
-    {
-      i = 0;
-      i -= 1;
-      if (i < 0) {
-        break label418;
-      }
-      localRecentUser = (RecentUser)paramList.get(i);
-      if (localRecentUser != null) {
-        break label63;
-      }
-      paramList.remove(i);
-    }
-    label415:
-    label418:
-    label423:
-    label426:
-    for (;;)
-    {
-      i -= 1;
-      break label17;
-      i = paramList.size();
-      break;
-      label63:
-      if ((TextUtils.isEmpty(localRecentUser.uin)) || (TextUtils.isEmpty(localRecentUser.uin.trim())))
-      {
-        paramList.remove(i);
-        a(new String[] { String.valueOf(i), ",", String.valueOf(localRecentUser.getType()), ";" });
-      }
-      else
-      {
-        if ((localRecentUser.getType() == 1) && ((localRecentUser.lFlag & 1L) != 0L))
-        {
-          if ((localHotChatManager != null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-            break label423;
-          }
-          localHotChatManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(true);
-        }
-        for (;;)
-        {
-          if ((localHotChatManager == null) || (localHotChatManager.b(localRecentUser.uin))) {
-            break label426;
-          }
-          paramList.remove(i);
-          a(new String[] { "invalide hotchat ", String.valueOf(i), ",", localRecentUser.uin, ";" });
-          break;
-          if (localRecentUser.getType() == 3000)
-          {
-            if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-              break label415;
-            }
-            DiscussionInfo localDiscussionInfo = ((ankw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(localRecentUser.uin);
-            if ((localDiscussionInfo == null) || (localDiscussionInfo.isUIControlFlag_Hidden_RecentUser()) || (localDiscussionInfo.isHidden()))
-            {
-              paramList.remove(i);
-              a(new String[] { "hidden_RecentUser ", String.valueOf(i), ",", localRecentUser.uin, ";" });
-            }
-            break;
-          }
-          if (localRecentUser.lFlag == 16L)
-          {
-            if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-              break label415;
-            }
-            nuu.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser);
-            break;
-          }
-          if ((localRecentUser.getType() == 10005) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-            avfu.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser);
-          }
-          break;
-          a();
-          return;
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.onDestroy();
   }
 }
 

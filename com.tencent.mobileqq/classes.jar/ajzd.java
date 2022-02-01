@@ -1,18 +1,34 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 class ajzd
-  implements View.OnTouchListener
+  implements ashj
 {
-  ajzd(ajyx paramajyx) {}
+  ajzd(ajyt paramajyt, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(float paramFloat, List<Integer> paramList)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, "upLoadEmotions progress=" + paramFloat + ", addEmotionsResults=" + paramList + ", isTimeOut=" + ajyt.b(this.jdField_a_of_type_Ajyt));
+    }
+    if (!ajyt.b(this.jdField_a_of_type_Ajyt))
+    {
+      ajyt.b(this.jdField_a_of_type_Ajyt, paramList);
+      ajyt.a(this.jdField_a_of_type_Ajyt, this.jdField_a_of_type_Int, paramFloat);
+    }
+  }
+  
+  public void a(List<Integer> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, "onUploadFinish , addEmotionsResults=" + paramList + ", isTimeOut=" + ajyt.b(this.jdField_a_of_type_Ajyt));
+    }
+    if (!ajyt.b(this.jdField_a_of_type_Ajyt))
+    {
+      ajyt.a(this.jdField_a_of_type_Ajyt).removeMessages(11);
+      ajyt.a(this.jdField_a_of_type_Ajyt, this.jdField_a_of_type_Int, paramList);
+    }
   }
 }
 

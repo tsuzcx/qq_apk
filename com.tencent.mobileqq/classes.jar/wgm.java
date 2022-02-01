@@ -1,131 +1,92 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class wgm
+  implements woy<wgo, wgp>
 {
-  protected String a;
-  public List<WeakReference<wgz>> a;
-  protected Map<String, wgv> a;
-  protected wgp a;
-  protected wgr a;
+  private HashMap<String, wgf> jdField_a_of_type_JavaUtilHashMap;
+  private wgn jdField_a_of_type_Wgn;
   
-  public wgm()
+  public void a()
   {
-    this.jdField_a_of_type_Wgr = new wgr(this, null);
-    this.jdField_a_of_type_Wgp = new wgp(this, null);
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  }
-  
-  private boolean b(wgv paramwgv)
-  {
-    if ((paramwgv.d != null) && (paramwgv.d.contains("qqstocdnd")))
-    {
-      String str = ((wfs)wpm.a(4)).a();
-      yqp.a("AsyncFileDownloader", "get url key:%s", str);
-      if ((str == null) || (str.equals("00"))) {
-        return false;
-      }
-      paramwgv.d = bkgj.a(paramwgv.d, "authkey", str);
-    }
-    return true;
-  }
-  
-  public void a(List<WeakReference<wgz>> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public boolean a()
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      wgv localwgv = (wgv)this.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_JavaLangString);
-      if (localwgv != null) {
-        localwgv.jdField_a_of_type_Wgu.b(localwgv);
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(wgv paramwgv)
-  {
-    paramwgv = (wgv)this.jdField_a_of_type_JavaUtilMap.remove(paramwgv.jdField_a_of_type_JavaLangString);
-    if (paramwgv != null)
-    {
-      paramwgv.jdField_a_of_type_Wgu.b(paramwgv);
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(wgv paramwgv, wgo paramwgo)
-  {
-    if (paramwgv == null)
-    {
-      yqp.d("AsyncFileDownloader", "task is empty");
-      return false;
-    }
-    if (TextUtils.isEmpty(paramwgv.d))
-    {
-      if ((!zjb.a(paramwgv.b)) || ((paramwgv.jdField_a_of_type_Int != 2) && (paramwgv.jdField_a_of_type_Int != 0))) {
-        break label279;
-      }
-      QQStoryContext.a();
-      localObject1 = zjb.a(QQStoryContext.a(), paramwgv.b);
-      if (!(localObject1 instanceof MessageForShortVideo)) {
-        break label279;
+    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.size() == 0)) {
+      if (this.jdField_a_of_type_Wgn != null) {
+        this.jdField_a_of_type_Wgn.a(new ErrorMessage(-1, "CheckBlackGeoHashHandler no photo"), null);
       }
     }
-    label279:
-    for (Object localObject1 = (MessageForShortVideo)localObject1;; localObject1 = null)
+    List localList;
+    do
     {
-      Object localObject2 = localObject1;
-      if (localObject1 == null)
+      return;
+      localList = wfv.a(this.jdField_a_of_type_JavaUtilHashMap);
+      if (localList.size() != 0) {
+        break;
+      }
+    } while (this.jdField_a_of_type_Wgn == null);
+    this.jdField_a_of_type_Wgn.a(new ErrorMessage(-1, "CheckBlackGeoHashHandler gps error " + this.jdField_a_of_type_JavaUtilHashMap.toString()), null);
+    return;
+    wgo localwgo = new wgo();
+    localwgo.a(localList);
+    wow.a().a(localwgo, this);
+  }
+  
+  public void a(@NonNull HashMap<String, wgf> paramHashMap)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+  }
+  
+  public void a(wgn paramwgn)
+  {
+    this.jdField_a_of_type_Wgn = paramwgn;
+  }
+  
+  public void a(@NonNull wgo paramwgo, @Nullable wgp paramwgp, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if ((paramwgp == null) || (paramErrorMessage.isFail())) {
+      if (this.jdField_a_of_type_Wgn != null) {
+        this.jdField_a_of_type_Wgn.a(paramErrorMessage, null);
+      }
+    }
+    label202:
+    do
+    {
+      return;
+      paramwgo = new ArrayList();
+      if ((paramwgp.a != null) && (paramwgp.a.size() > 0))
       {
-        if (paramwgo != null) {
-          paramwgo.a(paramwgv, new ErrorMessage(14, "ERR_URL_EMPTY"));
+        paramwgp = paramwgp.a.iterator();
+        for (;;)
+        {
+          if (!paramwgp.hasNext()) {
+            break label202;
+          }
+          qqstory_struct.GpsMsg localGpsMsg1 = (qqstory_struct.GpsMsg)paramwgp.next();
+          Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+          if (localIterator.hasNext())
+          {
+            wgf localwgf = (wgf)((Map.Entry)localIterator.next()).getValue();
+            if (localwgf.jdField_a_of_type_Whl == null) {
+              break;
+            }
+            qqstory_struct.GpsMsg localGpsMsg2 = localwgf.jdField_a_of_type_Whl.a();
+            if ((localGpsMsg2.lat.get() != localGpsMsg1.lat.get()) || (localGpsMsg2.lng.get() != localGpsMsg1.lng.get())) {
+              break;
+            }
+            paramwgo.add(localwgf.jdField_a_of_type_JavaLangString);
+          }
         }
-        return false;
-        localObject2 = null;
       }
-      if (!zky.a(QQStoryContext.a().a()))
-      {
-        if (paramwgo != null) {
-          paramwgo.a(paramwgv, new ErrorMessage(9004, "no net work"));
-        }
-        return false;
-      }
-      if (!b(paramwgv))
-      {
-        if (paramwgo != null) {
-          paramwgo.a(paramwgv, new ErrorMessage(200, "ERR_VERIFY_ERROR"));
-        }
-        return false;
-      }
-      paramwgv.jdField_a_of_type_Wgo = paramwgo;
-      paramwgv.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (localObject2 != null) {
-        paramwgv.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = localObject2;
-      }
-      for (paramwgv.jdField_a_of_type_Wgu = this.jdField_a_of_type_Wgp; !paramwgv.jdField_a_of_type_Wgu.a(); paramwgv.jdField_a_of_type_Wgu = this.jdField_a_of_type_Wgr)
-      {
-        if (paramwgo != null) {
-          paramwgo.a(paramwgv, new ErrorMessage(15, "downloader not prepare"));
-        }
-        return false;
-      }
-      Bosses.get().postJob(new wgn(this, "AsyncFileDownloader", paramwgv));
-      return true;
-    }
+    } while (this.jdField_a_of_type_Wgn == null);
+    this.jdField_a_of_type_Wgn.a(paramErrorMessage, paramwgo);
   }
 }
 

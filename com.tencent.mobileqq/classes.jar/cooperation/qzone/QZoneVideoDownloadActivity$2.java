@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import anni;
+import anzj;
 import com.tencent.mobileqq.widget.QQToast;
 
 class QZoneVideoDownloadActivity$2
@@ -10,7 +10,7 @@ class QZoneVideoDownloadActivity$2
   
   public void run()
   {
-    QQToast.a(this.this$0.getApplicationContext(), anni.a(2131711298), 1).a();
+    QQToast.a(this.this$0.getApplicationContext(), anzj.a(2131711407), 1).a();
   }
 }
 

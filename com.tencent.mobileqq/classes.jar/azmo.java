@@ -1,18 +1,18 @@
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
+
 class azmo
 {
-  final String a;
-  final String b;
+  azmo(azmm paramazmm) {}
   
-  azmo(String paramString1, String paramString2)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    bhlq.a(azmm.a(this.a), 2131697711, 2131697712);
   }
   
-  public String toString()
-  {
-    return String.format("CopyItem{mMenuTitle=%s mCopyContent=%s}", new Object[] { this.a, this.b });
-  }
+  @QQPermissionGrant(1)
+  public void grant() {}
 }
 
 

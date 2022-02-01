@@ -1,15 +1,8 @@
-public class amnv
+import com.tencent.mobileqq.data.PhoneContact;
+
+public abstract interface amnv
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public amnv(String paramString1, String paramString2, String paramString3)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
+  public abstract void a(PhoneContact paramPhoneContact, boolean paramBoolean);
 }
 
 

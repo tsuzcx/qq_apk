@@ -1,89 +1,181 @@
-import android.app.Activity;
-import android.graphics.drawable.ColorDrawable;
-import android.view.Window;
+import android.text.TextUtils;
+import com.tencent.aekit.openrender.util.AEProfilerBase;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LWMotionEvent;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
 public class bowo
+  extends AEProfilerBase
+  implements bows
 {
-  private static ArrayList<boye> a = new ArrayList();
+  private static boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString = "none";
+  private List<Float> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
   
-  public static boyo a(String paramString, boyn paramboyn, boym paramboym)
+  public bowo()
   {
-    if (paramString.equals(bows.class.getName())) {
-      return new bows(paramboyn, paramboym);
-    }
-    return null;
+    jdField_a_of_type_Boolean = false;
+    this.mEnableBase = true;
   }
   
-  public static void a()
+  private float a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCExitEvent size: " + a.size());
-    }
-    Iterator localIterator = a.iterator();
-    while (localIterator.hasNext())
+    a("getAverageFps: fps list size=" + this.jdField_a_of_type_JavaUtilList.size());
+    float f = 0.0F;
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      boye localboye = (boye)localIterator.next();
-      if (localboye != null)
+      f += ((Float)this.jdField_a_of_type_JavaUtilList.get(i)).floatValue();
+      i += 1;
+    }
+    return f / this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  private void a(String paramString)
+  {
+    if (jdField_a_of_type_Boolean) {
+      QLog.i("AEFpsManager", 2, "report fps: " + paramString);
+    }
+  }
+  
+  private void i()
+  {
+    a("startMonitor");
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  private void j()
+  {
+    if ((!this.jdField_b_of_type_Boolean) || (this.c)) {}
+    do
+    {
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCExitEvent newCode= " + localboye.hashCode());
+        return;
+      } while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 5000L);
+      if (this.jdField_a_of_type_Int >= 30)
+      {
+        if (this.jdField_b_of_type_Long > 0L)
+        {
+          float f = this.jdField_a_of_type_Int * 1000.0F / (float)this.jdField_b_of_type_Long;
+          if (this.jdField_a_of_type_JavaUtilList.size() >= 500) {
+            this.jdField_a_of_type_JavaUtilList.remove(0);
+          }
+          this.jdField_a_of_type_JavaUtilList.add(Float.valueOf(f));
         }
-        localboye.u();
+        this.jdField_a_of_type_Int = 0;
+        this.jdField_b_of_type_Long = 0L;
+        return;
       }
-    }
+    } while (this.mOneFrameCost == 0L);
+    this.jdField_b_of_type_Long += this.mOneFrameCost;
+    this.jdField_a_of_type_Int += 1;
   }
   
-  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
+  private void k()
   {
-    if (paramString.equals(bows.class.getName()))
-    {
-      if (!paramBoolean) {
-        paramActivity.getWindow().setBackgroundDrawableResource(2130844582);
-      }
-    }
-    else {
+    boolean bool = true;
+    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
       return;
     }
-    paramActivity.getWindow().setBackgroundDrawable(new ColorDrawable(-1));
-  }
-  
-  public static void a(boye paramboye)
-  {
-    a.remove(paramboye);
-    if (QLog.isColorLevel()) {
-      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "removeIPCEvent: " + a.size() + " newCode=" + paramboye.hashCode());
-    }
-  }
-  
-  public static void a(LWMotionEvent paramLWMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCEvent size: " + a.size());
-    }
-    Iterator localIterator = a.iterator();
-    while (localIterator.hasNext())
+    float f = a();
+    bozr localbozr = bozr.a();
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (aluf.jdField_a_of_type_Int == 1) {}
+    for (;;)
     {
-      boye localboye = (boye)localIterator.next();
-      if (localboye != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCEvent newCode= " + localboye.hashCode());
-        }
-        localboye.a(paramLWMotionEvent);
-      }
+      localbozr.a(str, bool, f, 0.0D, 0.0D, "");
+      a("fps=" + f);
+      return;
+      bool = false;
     }
   }
   
-  public static void b(boye paramboye)
+  public void a()
   {
-    a.add(paramboye);
-    if (QLog.isColorLevel()) {
-      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "addIPCEventHook: " + a.size() + " newCode=" + paramboye.hashCode());
+    a("stopMonitor");
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public void a(VideoMaterial paramVideoMaterial)
+  {
+    a("onMaterialSelected, useMaterial=" + paramVideoMaterial);
+    if ((paramVideoMaterial == null) || (TextUtils.isEmpty(paramVideoMaterial.getId()))) {}
+    for (this.jdField_a_of_type_JavaLangString = "none";; this.jdField_a_of_type_JavaLangString = paramVideoMaterial.getId())
+    {
+      a();
+      i();
+      return;
     }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    a("onCameraSwitch");
+    k();
+    a();
+    i();
+  }
+  
+  public void b()
+  {
+    a("onCameraOpened");
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    a("onModeChangedToGif");
+    this.c = paramBoolean;
+    if (paramBoolean) {
+      a();
+    }
+  }
+  
+  public void c()
+  {
+    a("onFirstFrame");
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    i();
+  }
+  
+  public void d()
+  {
+    j();
+  }
+  
+  public void e()
+  {
+    a("onCapturePicture");
+    k();
+    a();
+  }
+  
+  public void f()
+  {
+    a("onCaptureVideo");
+    k();
+    a();
+  }
+  
+  public void g()
+  {
+    a("onEnterActivity");
+  }
+  
+  public void h()
+  {
+    a("onExitActivity");
+    a();
   }
 }
 

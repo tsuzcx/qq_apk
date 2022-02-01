@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import acvy;
+import adab;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -50,7 +50,7 @@ public class RecentInteractAndFollowItem
       this.messageType = ((MessageForInteractAndFollow)localObject1).type;
       if (((MessageForInteractAndFollow)localObject1).type == 1)
       {
-        this.mTitleName = paramContext.getString(2131693825);
+        this.mTitleName = paramContext.getString(2131693842);
         label92:
         this.mUnreadFlag = 3;
         this.mDisplayTime = ((MessageForInteractAndFollow)localObject1).timeStamp;
@@ -58,7 +58,7 @@ public class RecentInteractAndFollowItem
         if (localObject2 == null) {
           break label329;
         }
-        this.mUnreadNum = ((acvy)localObject2).a(((MessageForInteractAndFollow)localObject1).frienduin, ((MessageForInteractAndFollow)localObject1).istroop);
+        this.mUnreadNum = ((adab)localObject2).a(((MessageForInteractAndFollow)localObject1).frienduin, ((MessageForInteractAndFollow)localObject1).istroop);
         label133:
         localObject2 = getMsgSummaryTemp();
         ((MsgSummary)localObject2).strContent = ((MessageForInteractAndFollow)localObject1).context;
@@ -82,12 +82,12 @@ public class RecentInteractAndFollowItem
         return;
         if (((MessageForInteractAndFollow)localObject1).type == 2)
         {
-          this.mTitleName = paramContext.getString(2131693824);
+          this.mTitleName = paramContext.getString(2131693841);
           break label92;
         }
         if (((MessageForInteractAndFollow)localObject1).type == 3)
         {
-          this.mTitleName = paramContext.getString(2131693826);
+          this.mTitleName = paramContext.getString(2131693843);
           break label92;
         }
         if (!QLog.isColorLevel()) {

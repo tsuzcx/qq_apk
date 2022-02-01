@@ -1,38 +1,53 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.QzoneCommonIntent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import mqq.app.MSFServlet;
 
-public class arxy
-  implements awnc<Integer>
+public final class arxy
+  implements arxz
 {
-  public arxy(EmoticonPanelController paramEmoticonPanelController, long paramLong) {}
-  
-  public void a(Integer paramInteger)
+  public void a(MSFServlet paramMSFServlet, QzoneCommonIntent paramQzoneCommonIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.f(paramInteger.intValue());
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.d(paramInteger.intValue());
-    if ((!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_Arxz.e) && (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_Arxz.f)) {
-      EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController).a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_Arxz.f = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelController", 2, "selectIndex = " + paramInteger + "[Performance] initEmoticonView duration:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_Arxz.g) {
-      EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController).a();
-    }
-    paramInteger = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.b;
-    if (paramInteger.size() > EmoticonPanelController.d) {
-      if (((asaf)paramInteger.get(EmoticonPanelController.d)).a != 8) {
-        EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.g);
+    bmsy localbmsy = paramQzoneCommonIntent.getRequest();
+    Object localObject2 = localbmsy.uniKey();
+    int i = localbmsy.a();
+    int[] arrayOfInt = new int[1];
+    String[] arrayOfString = new String[1];
+    Object localObject1 = null;
+    if (!paramFromServiceMsg.isSuccess())
+    {
+      arrayOfInt[0] = (paramFromServiceMsg.getResultCode() + 300000);
+      arrayOfString[0] = paramFromServiceMsg.getBusinessFailMsg();
+      paramFromServiceMsg = (FromServiceMsg)localObject1;
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneCommonIntent", 2, String.format("cmd :%s, success:%b,code:%d, msg:%s", new Object[] { localbmsy.getCmdString(), Boolean.valueOf(QzoneCommonIntent.succeeded(arrayOfInt[0])), Integer.valueOf(arrayOfInt[0]), arrayOfString[0] }));
+      }
+      localObject2 = paramQzoneCommonIntent.getExtras();
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new Bundle();
+      }
+      ((Bundle)localObject1).putSerializable("key_response", paramFromServiceMsg);
+      ((Bundle)localObject1).putInt("key_response_code", arrayOfInt[0]);
+      ((Bundle)localObject1).putString("key_response_msg", arrayOfString[0]);
+      if (paramQzoneCommonIntent.getObserver() == null) {
+        QLog.e("QzoneCommonIntent", 1, "observer ==null,无法回调，请检查是否有调用setObserver");
+      }
+      if ((paramFromServiceMsg == null) || (!QzoneCommonIntent.succeeded(arrayOfInt[0]))) {
+        break label260;
       }
     }
-    for (;;)
+    label260:
+    for (boolean bool = true;; bool = false)
     {
-      EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController).a();
+      paramMSFServlet.notifyObserver(paramQzoneCommonIntent, i, bool, (Bundle)localObject1, null);
+      if (arrayOfInt[0] != 1000006) {
+        QzoneCommonIntent.access$000(localbmsy, arrayOfInt[0], arrayOfString[0]);
+      }
       return;
-      EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.g);
+      paramFromServiceMsg = bnke.a(paramFromServiceMsg.getWupBuffer(), (String)localObject2, arrayOfInt, arrayOfString);
+      break;
     }
   }
 }

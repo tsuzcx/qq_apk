@@ -1,24 +1,15 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.qphone.base.util.QLog;
-
-final class bank
-  implements bgtg<Float>
+public class bank
 {
-  bank(View paramView) {}
-  
-  @TargetApi(11)
-  public void a(bgta<Float> parambgta, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public static banj a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
+    if (bhsr.a(paramString)) {
+      return new banj();
     }
-    paramFloat = paramFloat1.floatValue();
-    if (this.a != null)
+    if ((paramString.equalsIgnoreCase("qinterest")) || (paramString.equalsIgnoreCase("bodong")) || (paramString.equalsIgnoreCase("qqgame"))) {}
+    for (Object localObject = new banm();; localObject = new banj())
     {
-      this.a.setAlpha(paramFloat);
-      this.a.invalidate();
+      ((banj)localObject).f = paramString;
+      return localObject;
     }
   }
 }

@@ -1,18 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class bdou
-  implements DialogInterface.OnClickListener
+public abstract interface bdou
 {
-  bdou(bdov parambdov) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bdoq.a("0X800A5CA");
-    if (this.a != null) {
-      this.a.onCancel();
-    }
-  }
+  public static final String an = anzj.a(2131713413);
+  public static final String ao = anzj.a(2131713405);
+  public static final String ap = anzj.a(2131713398);
+  public static final String aq = anzj.a(2131713409);
+  public static final String ar = antf.ba + "photo" + "/temp/";
 }
 
 

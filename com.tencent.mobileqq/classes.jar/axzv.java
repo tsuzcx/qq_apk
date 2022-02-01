@@ -1,233 +1,135 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.medalwall.MedalWallMng;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItemExtMsg;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.gameroom.RecentInviteUser;
+import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.1;
+import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.2;
+import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.3;
+import com.tencent.mobileqq.persistence.EntityManager;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.util.WeakReference;
-import org.json.JSONObject;
-import tencent.im.oidb.redInfo.RedInfo;
+import java.util.Map;
+import mqq.manager.Manager;
 
 public class axzv
-  implements ayae
+  implements Manager
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  WeakReference<axzw> jdField_a_of_type_MqqUtilWeakReference;
+  public QQAppInterface a;
+  public EntityManager a;
+  public Object a;
+  public Map<String, RecentInviteUser> a;
+  protected Object b = new Object();
   
-  public axzv(QQAppInterface paramQQAppInterface, axzw paramaxzw)
+  public axzv(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramaxzw);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    ThreadManager.post(new WerewolvesDataManager.1(this, paramQQAppInterface), 5, null, false);
   }
   
-  public static String a(int paramInt)
+  public List<RecentInviteUser> a()
   {
-    return "file_redpoint_handler_" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_" + paramInt;
-  }
-  
-  public axzw a()
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {
-      return null;
-    }
-    return (axzw)this.jdField_a_of_type_MqqUtilWeakReference.get();
-  }
-  
-  public void a(RedTouchItem paramRedTouchItem, int paramInt)
-  {
-    if ((paramInt == 10016) || (paramInt == 10015)) {
-      paramRedTouchItem.isClosed = true;
-    }
-    do
+    ArrayList localArrayList = new ArrayList();
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
+      Object localObject3 = this.jdField_a_of_type_JavaUtilMap.values();
+      ??? = ((Collection)localObject3).iterator();
+      while (((Iterator)???).hasNext())
+      {
+        localObject3 = (RecentInviteUser)((Iterator)???).next();
+        if (((RecentInviteUser)localObject3).uinType == 0) {
+          localArrayList.add(localObject3);
+        }
+      }
+    }
+    synchronized (this.b)
+    {
+      Collections.sort(localList);
+      return localList;
+    }
+  }
+  
+  public void a(RecentInviteUser paramRecentInviteUser)
+  {
+    ThreadManager.post(new WerewolvesDataManager.3(this, paramRecentInviteUser), 5, null, false);
+  }
+  
+  public void a(String arg1, int paramInt, String paramString2)
+  {
+    String str = RecentInviteUser.getKey(paramInt, ???);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      ??? = (RecentInviteUser)this.jdField_a_of_type_JavaUtilMap.get(str);
+      ??? = ???;
+      if (??? == null)
+      {
+        ??? = new RecentInviteUser();
+        ((RecentInviteUser)???).uniKey = str;
+      }
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(str, ???);
+        ((RecentInviteUser)???).uin = ???;
+        ((RecentInviteUser)???).uinType = paramInt;
+        ((RecentInviteUser)???).lastInviteId = paramString2;
+      }
+    }
+    synchronized (this.b)
+    {
+      ((RecentInviteUser)???).lastInviteTime = System.currentTimeMillis();
+      a((RecentInviteUser)???);
       return;
-      if (paramInt == 100601)
-      {
-        if (!ayah.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
-        for (bool1 = true;; bool1 = false)
-        {
-          paramRedTouchItem.isClosed = bool1;
-          return;
-        }
-      }
-    } while (!ayac.a(paramInt));
-    Object localObject1 = "";
-    Object localObject2;
-    Object localObject4;
-    boolean bool2;
-    if (paramRedTouchItem.extMsgs.size() > 0)
-    {
-      RedTouchItemExtMsg localRedTouchItemExtMsg2 = (RedTouchItemExtMsg)paramRedTouchItem.extMsgs.get(0);
-      if ((localRedTouchItemExtMsg2.bytesData == null) || (localRedTouchItemExtMsg2.bytesData.length <= 0)) {
-        break label438;
-      }
-      try
-      {
-        localObject2 = new redInfo.RedInfo();
-      }
-      catch (Throwable localThrowable1)
-      {
-        label175:
-        localObject2 = null;
-      }
-    }
-    try
-    {
-      ((redInfo.RedInfo)localObject2).mergeFrom(localRedTouchItemExtMsg2.bytesData);
-      localObject4 = localObject2;
-      if ((localObject4 == null) || (!localObject4.uint64_from_uin.has())) {
-        break label428;
-      }
-      localObject2 = localObject4.uint64_from_uin.get() + "";
-      bool2 = true;
-    }
-    catch (Throwable localThrowable2)
-    {
-      break label323;
-      bool2 = false;
-      localObject2 = localObject1;
-      break label175;
-    }
-    localObject1 = localObject2;
-    boolean bool1 = bool2;
-    if (localRedTouchItemExtMsg2.bytesData.length > 102400)
-    {
-      QLog.d("DefaultRedPointPrePostHandler", 1, String.format("onPreHandle() id=[%d] msgs.size=%d bytes_data.len=%d too large !!", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramRedTouchItem.extMsgs.size()), Integer.valueOf(localRedTouchItemExtMsg2.bytesData.length) }));
-      bool1 = bool2;
-      localObject1 = localObject2;
-    }
-    for (;;)
-    {
-      RedTouchItemExtMsg localRedTouchItemExtMsg1 = localRedTouchItemExtMsg2;
-      localObject2 = localObject1;
-      bool2 = bool1;
-      label323:
-      Object localObject3;
-      if (paramRedTouchItem.extMsgs.size() > 1)
-      {
-        paramInt = paramRedTouchItem.extMsgs.size() - 1;
-        for (;;)
-        {
-          localRedTouchItemExtMsg1 = localRedTouchItemExtMsg2;
-          localObject2 = localObject1;
-          bool2 = bool1;
-          if (paramInt <= 0) {
-            break;
-          }
-          paramRedTouchItem.extMsgs.remove(paramInt);
-          paramInt -= 1;
-        }
-        localObject4 = localObject2;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("DefaultRedPointPrePostHandler", 2, localThrowable1.getMessage(), localThrowable1);
-        localObject4 = localObject2;
-        break;
-        localObject3 = null;
-        bool2 = false;
-        localObject2 = localObject1;
-      }
-      if (bool2) {
-        bgmg.a(a(-4), localObject3);
-      }
-      for (;;)
-      {
-        QLog.d("DefaultRedPointPrePostHandler", 1, new Object[] { "isQQSettingMeBubbleMsg show=", Boolean.valueOf(bool2), " uin=", bgsp.e((String)localObject2) });
-        return;
-        paramRedTouchItem.count = 0;
-      }
-      label428:
-      label438:
-      bool1 = false;
+      ??? = finally;
+      throw ???;
+      ??? = finally;
+      throw ???;
     }
   }
   
-  public void a(List<RedTouchItem> paramList)
+  public void a(String paramString1, String paramString2, ArrayList<String> paramArrayList, axzw paramaxzw)
   {
-    axzw localaxzw = a();
-    if ((paramList == null) || (localaxzw == null)) {
-      return;
-    }
-    Object localObject2 = null;
-    Object localObject3 = paramList.iterator();
-    while (((Iterator)localObject3).hasNext())
+    ThreadManager.post(new WerewolvesDataManager.2(this, paramString1, paramString2, paramArrayList, paramaxzw), 8, null, true);
+  }
+  
+  public boolean a(String paramString1, int paramInt, String paramString2)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      localObject1 = localObject2;
-      if (((RedTouchItem)((Iterator)localObject3).next()).taskId == 10005) {
-        localObject1 = "0X800761B";
-      }
-      localObject2 = localObject1;
-      if (localObject1 != null)
+      paramString1 = (RecentInviteUser)this.jdField_a_of_type_JavaUtilMap.get(RecentInviteUser.getKey(paramInt, paramString1));
+      if (paramString1 != null)
       {
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject1, (String)localObject1, 0, 0, "", "", "", "");
-        localObject2 = localObject1;
+        boolean bool = TextUtils.equals(paramString1.lastInviteId, paramString2);
+        return bool;
       }
-    }
-    localObject3 = localaxzw.a(10015);
-    Object localObject1 = localObject2;
-    if (localObject3 != null)
-    {
-      localObject1 = localObject2;
-      if (paramList.contains(localObject3))
-      {
-        localObject1 = "0X8007391";
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007391", "0X8007391", 0, 0, "", "", "", "");
-        ((MedalWallMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(250)).b();
-      }
-    }
-    localObject2 = localaxzw.a(10016);
-    if ((localObject2 != null) && (paramList.contains(localObject2)) && (((RedTouchItem)localObject2).bytes != null) && (((RedTouchItem)localObject2).bytes.length > 0)) {}
-    for (;;)
-    {
-      try
-      {
-        int i = new JSONObject(new String(((RedTouchItem)localObject2).bytes, "utf-8")).optInt("type", 1);
-        switch (i)
-        {
-        default: 
-          localObject2 = localObject1;
-        }
-      }
-      catch (Exception localException)
-      {
-        localObject2 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("DefaultRedPointPrePostHandler", 2, localException, new Object[0]);
-        localObject2 = localObject1;
-        continue;
-        paramList.a((RedTouchItem)localObject1);
-      }
-      if (localObject2 != null) {
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
-      }
-      localObject1 = localaxzw.a(10018);
-      if ((localObject1 == null) || (!paramList.contains(localObject1)) || (((RedTouchItem)localObject1).extMsgs == null) || (((RedTouchItem)localObject1).extMsgs.size() <= 0) || (!((RedTouchItem)localObject1).unReadFlag)) {
-        break;
-      }
-      paramList = (aqjm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(269);
-      localObject2 = paramList.a();
-      if ((localObject2 != null) && (((aqji)localObject2).c())) {
-        continue;
-      }
-      ((RedTouchItem)localObject1).unReadFlag = false;
-      localaxzw.c();
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("DefaultRedPointPrePostHandler", 2, "onPostDealReachedRedPoints frdRecMsgSwitch is off");
-      return;
-      localObject2 = "0X8007396";
-      continue;
-      localObject2 = "0X80073B5";
+      return false;
     }
   }
+  
+  public List<RecentInviteUser> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      Object localObject2 = this.jdField_a_of_type_JavaUtilMap.values();
+      ??? = ((Collection)localObject2).iterator();
+      while (((Iterator)???).hasNext())
+      {
+        localObject2 = (RecentInviteUser)((Iterator)???).next();
+        if (((RecentInviteUser)localObject2).uinType == 1) {
+          localArrayList.add(localObject2);
+        }
+      }
+    }
+    Collections.sort(localList);
+    return localList;
+  }
+  
+  public void onDestroy() {}
 }
 
 

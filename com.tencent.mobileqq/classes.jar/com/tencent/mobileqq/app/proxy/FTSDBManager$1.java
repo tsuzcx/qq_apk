@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.proxy;
 
-import aone;
-import aonm;
-import bguq;
+import apau;
+import apbc;
+import bhut;
 import com.tencent.mobileqq.app.ThreadRegulator;
 
 public class FTSDBManager$1
   implements Runnable
 {
-  public FTSDBManager$1(aone paramaone) {}
+  public FTSDBManager$1(apau paramapau) {}
   
   public void run()
   {
@@ -20,21 +20,21 @@ public class FTSDBManager$1
         do
         {
           return;
-          if (bguq.g(aone.a(this.this$0)))
+          if (bhut.g(apau.a(this.this$0)))
           {
-            aone.a(this.this$0);
+            apau.a(this.this$0);
             return;
           }
-        } while ((!bguq.h(aone.a(this.this$0))) || (this.this$0.b));
-        aone.a(this.this$0);
+        } while ((!bhut.h(apau.a(this.this$0))) || (this.this$0.b));
+        apau.a(this.this$0);
         ThreadRegulator.a().b();
-      } while (aone.a(this.this$0));
-      if ((aone.b(this.this$0) > 10) || (aone.c(this.this$0) == 1))
+      } while (apau.a(this.this$0));
+      if ((apau.b(this.this$0) > 10) || (apau.c(this.this$0) == 1))
       {
-        aone.a(this.this$0);
+        apau.a(this.this$0);
         return;
       }
-    } while (aone.c(this.this$0) != -1);
+    } while (apau.c(this.this$0) != -1);
     this.this$0.a.postDelayed(this, 5000L);
   }
 }

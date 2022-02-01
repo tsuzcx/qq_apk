@@ -13,38 +13,38 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import mqq.app.NewIntent;
-import niq;
-import nlw;
-import noi;
-import noj;
-import nok;
+import nkl;
+import nnr;
+import nqd;
+import nqe;
+import nqf;
 
 public class SearchProtocol
 {
-  public static void a(AppInterface paramAppInterface, Context paramContext, nok paramnok)
+  public static void a(AppInterface paramAppInterface, Context paramContext, nqf paramnqf)
   {
-    if ((paramAppInterface == null) || (paramnok == null)) {
+    if ((paramAppInterface == null) || (paramnqf == null)) {
       return;
     }
-    paramContext = new noi(Looper.getMainLooper(), paramnok);
-    if (nlw.a() == 0)
+    paramContext = new nqd(Looper.getMainLooper(), paramnqf);
+    if (nnr.a() == 0)
     {
       paramAppInterface = paramContext.obtainMessage();
       paramAppInterface.arg1 = -1;
       paramContext.sendMessage(paramAppInterface);
       return;
     }
-    paramnok = new NewIntent(paramAppInterface.getApp(), niq.class);
-    paramnok.putExtra("cmd", "PubAccountArticleCenter.GetSearchHotwords");
+    paramnqf = new NewIntent(paramAppInterface.getApp(), nkl.class);
+    paramnqf.putExtra("cmd", "PubAccountArticleCenter.GetSearchHotwords");
     mobileqq_dynamic_search.RequestBody localRequestBody = new mobileqq_dynamic_search.RequestBody();
     localRequestBody.cmd.set(1);
     mobileqq_dynamic_search.RootSearcherRequest localRootSearcherRequest = new mobileqq_dynamic_search.RootSearcherRequest();
     localRootSearcherRequest.business.set(128);
     localRequestBody.search_request.set(localRootSearcherRequest);
-    localRequestBody.version.set(ByteStringMicro.copyFromUtf8("8.4.1"));
-    paramnok.putExtra("data", localRequestBody.toByteArray());
-    paramnok.setObserver(new noj(paramContext));
-    paramAppInterface.startServlet(paramnok);
+    localRequestBody.version.set(ByteStringMicro.copyFromUtf8("8.4.5"));
+    paramnqf.putExtra("data", localRequestBody.toByteArray());
+    paramnqf.setObserver(new nqe(paramContext));
+    paramAppInterface.startServlet(paramnqf);
   }
   
   private static int b(String paramString)

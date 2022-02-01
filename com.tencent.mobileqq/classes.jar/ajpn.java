@@ -1,14 +1,26 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.widget.XListView;
 
 public class ajpn
-  implements ajvc
+  extends Handler
 {
-  public ajpn(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  public ajpn(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
-  public void a(MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a(paramMotionEvent);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      this.a.a.springBackOverScrollHeaderView();
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+    }
   }
 }
 

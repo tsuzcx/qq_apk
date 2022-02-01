@@ -1,6 +1,16 @@
-public abstract interface bnxo
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class bnxo
+  implements View.OnTouchListener
 {
-  public abstract void a(bnxn parambnxn);
+  bnxo(bnxm parambnxm) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return paramMotionEvent.getAction() == 2;
+  }
 }
 
 

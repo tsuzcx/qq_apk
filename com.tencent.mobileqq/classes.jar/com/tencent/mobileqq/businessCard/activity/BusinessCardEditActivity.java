@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.businessCard.activity;
 
 import Override;
-import afur;
+import agej;
 import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.ContentUris;
@@ -34,41 +34,41 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import anmu;
-import anmw;
-import anni;
-import aoch;
-import apyx;
-import apyy;
-import apyz;
-import apza;
-import apzb;
-import apzc;
-import apzd;
-import apze;
-import apzf;
-import apzg;
-import apzh;
-import apzi;
-import apzj;
-import apzk;
-import apzl;
-import apzm;
-import apzn;
-import apzo;
-import apzp;
-import aqaj;
-import bcst;
-import bggq;
-import bglf;
-import bglp;
-import bgnt;
-import biau;
-import bibh;
-import bkft;
-import bkho;
-import bmjh;
-import bmji;
+import anyu;
+import anyw;
+import anzj;
+import aoot;
+import aqmx;
+import aqmy;
+import aqmz;
+import aqna;
+import aqnb;
+import aqnc;
+import aqnd;
+import aqne;
+import aqnf;
+import aqng;
+import aqnh;
+import aqni;
+import aqnj;
+import aqnk;
+import aqnl;
+import aqnm;
+import aqnn;
+import aqno;
+import aqnp;
+import aqoj;
+import bdll;
+import bhgr;
+import bhlg;
+import bhlq;
+import bhnv;
+import bjbs;
+import bjcf;
+import blgx;
+import blir;
+import bnkk;
+import bnkl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.AddFriendLogicActivity;
@@ -111,16 +111,16 @@ public class BusinessCardEditActivity
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  anmu jdField_a_of_type_Anmu = new apzf(this);
-  public apyx a;
-  apyy jdField_a_of_type_Apyy = new apzg(this);
-  apzp jdField_a_of_type_Apzp;
-  biau jdField_a_of_type_Biau;
+  anyu jdField_a_of_type_Anyu = new aqnf(this);
+  public aqmx a;
+  aqmy jdField_a_of_type_Aqmy = new aqng(this);
+  aqnp jdField_a_of_type_Aqnp;
+  bjbs jdField_a_of_type_Bjbs;
   public BusinessCard a;
   CardOCRInfo jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo;
   ClearEllipsisEditText jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText;
   public String a;
-  private List<WeakReference<aoch>> jdField_a_of_type_JavaUtilList;
+  private List<WeakReference<aoot>> jdField_a_of_type_JavaUtilList;
   public boolean a;
   int jdField_b_of_type_Int;
   LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
@@ -203,78 +203,78 @@ public class BusinessCardEditActivity
           while (((Iterator)localObject4).hasNext())
           {
             localObject6 = (String)((Iterator)localObject4).next();
-            localObject5 = LayoutInflater.from(this).inflate(2131561074, null);
-            localObject7 = (ImageView)((View)localObject5).findViewById(2131368138);
-            localObject8 = aoch.a(this.app, 1, (String)localObject6);
+            localObject5 = LayoutInflater.from(this).inflate(2131561110, null);
+            localObject7 = (ImageView)((View)localObject5).findViewById(2131368212);
+            localObject8 = aoot.a(this.app, 1, (String)localObject6);
             this.jdField_a_of_type_JavaUtilList.add(new WeakReference(localObject8));
             ((ImageView)localObject7).setBackgroundDrawable((Drawable)localObject8);
-            ((TextView)((View)localObject5).findViewById(2131371705)).setText(bglf.m(this.app, (String)localObject6));
-            ((TextView)((View)localObject5).findViewById(2131380197)).setText((CharSequence)localObject6);
-            ((ImageView)((View)localObject5).findViewById(2131362944)).setVisibility(0);
-            localObject7 = new apzo(this);
-            ((apzo)localObject7).jdField_a_of_type_JavaLangString = ((String)localObject6);
-            ((apzo)localObject7).jdField_b_of_type_JavaLangString = bglf.m(this.app, (String)localObject6);
-            ((apzo)localObject7).jdField_a_of_type_Boolean = false;
+            ((TextView)((View)localObject5).findViewById(2131371813)).setText(bhlg.m(this.app, (String)localObject6));
+            ((TextView)((View)localObject5).findViewById(2131380382)).setText((CharSequence)localObject6);
+            ((ImageView)((View)localObject5).findViewById(2131362962)).setVisibility(0);
+            localObject7 = new aqno(this);
+            ((aqno)localObject7).jdField_a_of_type_JavaLangString = ((String)localObject6);
+            ((aqno)localObject7).jdField_b_of_type_JavaLangString = bhlg.m(this.app, (String)localObject6);
+            ((aqno)localObject7).jdField_a_of_type_Boolean = false;
             ((View)localObject5).setTag(localObject7);
-            ((View)localObject5).setOnClickListener(new apzk(this));
-            localObject6 = new LinearLayout.LayoutParams(-1, bggq.a(this, 70.0F));
+            ((View)localObject5).setOnClickListener(new aqnk(this));
+            localObject6 = new LinearLayout.LayoutParams(-1, bhgr.a(this, 70.0F));
             this.jdField_c_of_type_AndroidWidgetLinearLayout.addView((View)localObject5, (ViewGroup.LayoutParams)localObject6);
           }
           localObject3 = ((ArrayList)localObject3).iterator();
           while (((Iterator)localObject3).hasNext())
           {
             localObject5 = (String)((Iterator)localObject3).next();
-            localObject4 = LayoutInflater.from(this).inflate(2131561074, null);
-            localObject6 = (ImageView)((View)localObject4).findViewById(2131368138);
-            localObject7 = aoch.a(this.app, 1, (String)localObject5);
+            localObject4 = LayoutInflater.from(this).inflate(2131561110, null);
+            localObject6 = (ImageView)((View)localObject4).findViewById(2131368212);
+            localObject7 = aoot.a(this.app, 1, (String)localObject5);
             this.jdField_a_of_type_JavaUtilList.add(new WeakReference(localObject7));
             ((ImageView)localObject6).setBackgroundDrawable((Drawable)localObject7);
-            localObject6 = (TextView)((View)localObject4).findViewById(2131371705);
-            ((TextView)((View)localObject4).findViewById(2131380197)).setText((CharSequence)localObject5);
-            localObject7 = (Button)((View)localObject4).findViewById(2131362159);
+            localObject6 = (TextView)((View)localObject4).findViewById(2131371813);
+            ((TextView)((View)localObject4).findViewById(2131380382)).setText((CharSequence)localObject5);
+            localObject7 = (Button)((View)localObject4).findViewById(2131362165);
             ((Button)localObject7).setVisibility(0);
-            localObject8 = new apzo(this);
-            ((apzo)localObject8).jdField_a_of_type_JavaLangString = ((String)localObject5);
-            ((apzo)localObject8).jdField_b_of_type_JavaLangString = bglf.c(this.app, (String)localObject5, true);
-            ((apzo)localObject8).jdField_a_of_type_Boolean = false;
+            localObject8 = new aqno(this);
+            ((aqno)localObject8).jdField_a_of_type_JavaLangString = ((String)localObject5);
+            ((aqno)localObject8).jdField_b_of_type_JavaLangString = bhlg.c(this.app, (String)localObject5, true);
+            ((aqno)localObject8).jdField_a_of_type_Boolean = false;
             ((View)localObject4).setTag(localObject8);
-            ((TextView)localObject6).setText(((apzo)localObject8).jdField_b_of_type_JavaLangString);
+            ((TextView)localObject6).setText(((aqno)localObject8).jdField_b_of_type_JavaLangString);
             ((Button)localObject7).setTag(localObject8);
-            ((Button)localObject7).setOnClickListener(new apzl(this));
-            localObject5 = new LinearLayout.LayoutParams(-1, bggq.a(this, 70.0F));
+            ((Button)localObject7).setOnClickListener(new aqnl(this));
+            localObject5 = new LinearLayout.LayoutParams(-1, bhgr.a(this, 70.0F));
             this.jdField_c_of_type_AndroidWidgetLinearLayout.addView((View)localObject4, (ViewGroup.LayoutParams)localObject5);
           }
           localObject2 = ((ArrayList)localObject2).iterator();
           if (((Iterator)localObject2).hasNext())
           {
             localObject7 = (String)((Iterator)localObject2).next();
-            localObject3 = LayoutInflater.from(this).inflate(2131561074, null);
-            localObject4 = (ImageView)((View)localObject3).findViewById(2131368138);
-            localObject5 = (TextView)((View)localObject3).findViewById(2131371705);
-            localObject8 = (TextView)((View)localObject3).findViewById(2131380197);
-            localObject6 = (Button)((View)localObject3).findViewById(2131362159);
+            localObject3 = LayoutInflater.from(this).inflate(2131561110, null);
+            localObject4 = (ImageView)((View)localObject3).findViewById(2131368212);
+            localObject5 = (TextView)((View)localObject3).findViewById(2131371813);
+            localObject8 = (TextView)((View)localObject3).findViewById(2131380382);
+            localObject6 = (Button)((View)localObject3).findViewById(2131362165);
             ((Button)localObject6).setVisibility(0);
             ((TextView)localObject8).setText((CharSequence)localObject7);
             localObject8 = paramBusinessCard.getMobileInfoByMobile((String)localObject7);
-            apzo localapzo = new apzo(this);
-            localapzo.jdField_a_of_type_Boolean = true;
+            aqno localaqno = new aqno(this);
+            localaqno.jdField_a_of_type_Boolean = true;
             if (localObject8 != null)
             {
-              localObject7 = aoch.a(this.app, 11, ((CardMobileInfo)localObject8).d);
+              localObject7 = aoot.a(this.app, 11, ((CardMobileInfo)localObject8).d);
               this.jdField_a_of_type_JavaUtilList.add(new WeakReference(localObject7));
               ((ImageView)localObject4).setBackgroundDrawable((Drawable)localObject7);
-              localapzo.jdField_a_of_type_JavaLangString = ((CardMobileInfo)localObject8).d;
+              localaqno.jdField_a_of_type_JavaLangString = ((CardMobileInfo)localObject8).d;
             }
-            for (localapzo.jdField_b_of_type_JavaLangString = ((CardMobileInfo)localObject8).jdField_c_of_type_JavaLangString;; localapzo.jdField_b_of_type_JavaLangString = ((String)localObject7))
+            for (localaqno.jdField_b_of_type_JavaLangString = ((CardMobileInfo)localObject8).jdField_c_of_type_JavaLangString;; localaqno.jdField_b_of_type_JavaLangString = ((String)localObject7))
             {
-              ((View)localObject3).setTag(localapzo);
-              ((TextView)localObject5).setText(localapzo.jdField_b_of_type_JavaLangString);
-              ((Button)localObject6).setTag(localapzo);
-              ((Button)localObject6).setOnClickListener(new apzm(this));
-              localObject4 = new LinearLayout.LayoutParams(-1, bggq.a(this, 70.0F));
+              ((View)localObject3).setTag(localaqno);
+              ((TextView)localObject5).setText(localaqno.jdField_b_of_type_JavaLangString);
+              ((Button)localObject6).setTag(localaqno);
+              ((Button)localObject6).setOnClickListener(new aqnm(this));
+              localObject4 = new LinearLayout.LayoutParams(-1, bhgr.a(this, 70.0F));
               this.jdField_c_of_type_AndroidWidgetLinearLayout.addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
               break;
-              localapzo.jdField_a_of_type_JavaLangString = ((String)localObject7);
+              localaqno.jdField_a_of_type_JavaLangString = ((String)localObject7);
             }
           }
           localObject1 = ((ArrayList)localObject1).iterator();
@@ -287,8 +287,8 @@ public class BusinessCardEditActivity
         a(this.jdField_c_of_type_AndroidWidgetLinearLayout, null, 0);
       }
       this.jdField_d_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      localObject1 = (LinearLayout)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131365374);
-      Object localObject2 = this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131365356);
+      localObject1 = (LinearLayout)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131365418);
+      Object localObject2 = this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131365400);
       if (paramBusinessCard.descs.isEmpty()) {
         break label1143;
       }
@@ -489,7 +489,7 @@ public class BusinessCardEditActivity
       localObject = this.jdField_c_of_type_AndroidWidgetLinearLayout.getChildAt(i);
       if ((localObject instanceof RelativeLayout))
       {
-        localObject = (EditText)((View)localObject).findViewById(2131374238);
+        localObject = (EditText)((View)localObject).findViewById(2131374376);
         if (localObject != null)
         {
           localObject = ((EditText)localObject).getText().toString().trim();
@@ -519,16 +519,16 @@ public class BusinessCardEditActivity
       if (TextUtils.isEmpty(paramBusinessCard.cardName)) {
         localObject = "1";
       }
-      bcst.b(this.app, "CliOper", "", "", "0X80064E7", "0X80064E7", 0, 0, (String)localObject, "", "", "");
+      bdll.b(this.app, "CliOper", "", "", "0X80064E7", "0X80064E7", 0, 0, (String)localObject, "", "", "");
       localObject = "0";
       if (TextUtils.isEmpty(paramBusinessCard.company)) {
         localObject = "1";
       }
-      bcst.b(this.app, "CliOper", "", "", "0X80064E8", "0X80064E8", 0, 0, (String)localObject, "", "", "");
+      bdll.b(this.app, "CliOper", "", "", "0X80064E8", "0X80064E8", 0, 0, (String)localObject, "", "", "");
       localObject = paramBusinessCard.qqNum.size() + "";
-      bcst.b(this.app, "CliOper", "", "", "0X80064E9", "0X80064E9", 0, 0, (String)localObject, "", "", "");
+      bdll.b(this.app, "CliOper", "", "", "0X80064E9", "0X80064E9", 0, 0, (String)localObject, "", "", "");
       paramBusinessCard = paramBusinessCard.descs.size() + "";
-      bcst.b(this.app, "CliOper", "", "", "0X80064EA", "0X80064EA", 0, 0, paramBusinessCard, "", "", "");
+      bdll.b(this.app, "CliOper", "", "", "0X80064EA", "0X80064EA", 0, 0, paramBusinessCard, "", "", "");
     }
     for (;;)
     {
@@ -539,42 +539,42 @@ public class BusinessCardEditActivity
         localObject = "0";
         if (!TextUtils.isEmpty(paramBusinessCard.cardName))
         {
-          bcst.b(this.app, "CliOper", "", "", "0X8007749", "0X8007749", this.jdField_d_of_type_Int, 0, "", "", "", "");
+          bdll.b(this.app, "CliOper", "", "", "0X8007749", "0X8007749", this.jdField_d_of_type_Int, 0, "", "", "", "");
           localObject = "1";
         }
-        bcst.b(this.app, "CliOper", "", "", "0X80064EF", "0X80064EF", 0, 0, (String)localObject, "", "", "");
+        bdll.b(this.app, "CliOper", "", "", "0X80064EF", "0X80064EF", 0, 0, (String)localObject, "", "", "");
         localObject = "0";
         if (!TextUtils.isEmpty(paramBusinessCard.company))
         {
-          bcst.b(this.app, "CliOper", "", "", "0X800774A", "0X800774A", this.jdField_d_of_type_Int, 0, "", "", "", "");
+          bdll.b(this.app, "CliOper", "", "", "0X800774A", "0X800774A", this.jdField_d_of_type_Int, 0, "", "", "", "");
           localObject = "1";
         }
-        bcst.b(this.app, "CliOper", "", "", "0X80064F0", "0X80064F0", 0, 0, (String)localObject, "", "", "");
+        bdll.b(this.app, "CliOper", "", "", "0X80064F0", "0X80064F0", 0, 0, (String)localObject, "", "", "");
         localObject = paramBusinessCard.qqNum.size() + "";
-        bcst.b(this.app, "CliOper", "", "", "0X80064F1", "0X80064F1", 0, 0, (String)localObject, "", "", "");
+        bdll.b(this.app, "CliOper", "", "", "0X80064F1", "0X80064F1", 0, 0, (String)localObject, "", "", "");
         int j = paramBusinessCard.descs.size();
         i = 0;
         while (i < j)
         {
           if (!TextUtils.isEmpty((CharSequence)paramBusinessCard.descs.get(i))) {
-            bcst.b(this.app, "CliOper", "", "", "0X800774E", "0X800774E", this.jdField_d_of_type_Int, 0, "", "", "", "");
+            bdll.b(this.app, "CliOper", "", "", "0X800774E", "0X800774E", this.jdField_d_of_type_Int, 0, "", "", "", "");
           }
           i += 1;
         }
         localObject = paramBusinessCard.descs.size() + "";
-        bcst.b(this.app, "CliOper", "", "", "0X80064F2", "0X80064F2", 0, 0, (String)localObject, "", "", "");
+        bdll.b(this.app, "CliOper", "", "", "0X80064F2", "0X80064F2", 0, 0, (String)localObject, "", "", "");
         j = paramBusinessCard.mobilesNum.size();
         i = 0;
         while (i < j)
         {
           if ((i == 0) && (!TextUtils.isEmpty((CharSequence)paramBusinessCard.mobilesNum.get(i)))) {
-            bcst.b(this.app, "CliOper", "", "", "0X800774B", "0X800774B", this.jdField_d_of_type_Int, 0, "", "", "", "");
+            bdll.b(this.app, "CliOper", "", "", "0X800774B", "0X800774B", this.jdField_d_of_type_Int, 0, "", "", "", "");
           }
           if ((i == 1) && (!TextUtils.isEmpty((CharSequence)paramBusinessCard.mobilesNum.get(i)))) {
-            bcst.b(this.app, "CliOper", "", "", "0X800774C", "0X800774C", this.jdField_d_of_type_Int, 0, "", "", "", "");
+            bdll.b(this.app, "CliOper", "", "", "0X800774C", "0X800774C", this.jdField_d_of_type_Int, 0, "", "", "", "");
           }
           if ((i == 2) && (!TextUtils.isEmpty((CharSequence)paramBusinessCard.mobilesNum.get(i)))) {
-            bcst.b(this.app, "CliOper", "", "", "0X800774D", "0X800774D", this.jdField_d_of_type_Int, 0, "", "", "", "");
+            bdll.b(this.app, "CliOper", "", "", "0X800774D", "0X800774D", this.jdField_d_of_type_Int, 0, "", "", "", "");
           }
           i += 1;
         }
@@ -627,45 +627,45 @@ public class BusinessCardEditActivity
           while (((Iterator)localObject2).hasNext())
           {
             localObject4 = (String)((Iterator)localObject2).next();
-            localObject3 = LayoutInflater.from(this).inflate(2131561074, null);
-            localObject5 = (ImageView)((View)localObject3).findViewById(2131368138);
-            localObject6 = aoch.a(this.app, 1, (String)localObject4);
+            localObject3 = LayoutInflater.from(this).inflate(2131561110, null);
+            localObject5 = (ImageView)((View)localObject3).findViewById(2131368212);
+            localObject6 = aoot.a(this.app, 1, (String)localObject4);
             this.jdField_a_of_type_JavaUtilList.add(new WeakReference(localObject6));
             ((ImageView)localObject5).setBackgroundDrawable((Drawable)localObject6);
-            ((TextView)((View)localObject3).findViewById(2131371705)).setText(bglf.m(this.app, (String)localObject4));
-            ((TextView)((View)localObject3).findViewById(2131380197)).setText((CharSequence)localObject4);
-            ((ImageView)((View)localObject3).findViewById(2131362944)).setVisibility(0);
-            localObject5 = new apzo(this);
-            ((apzo)localObject5).jdField_a_of_type_JavaLangString = ((String)localObject4);
-            ((apzo)localObject5).jdField_b_of_type_JavaLangString = bglf.m(this.app, (String)localObject4);
-            ((apzo)localObject5).jdField_a_of_type_Boolean = false;
+            ((TextView)((View)localObject3).findViewById(2131371813)).setText(bhlg.m(this.app, (String)localObject4));
+            ((TextView)((View)localObject3).findViewById(2131380382)).setText((CharSequence)localObject4);
+            ((ImageView)((View)localObject3).findViewById(2131362962)).setVisibility(0);
+            localObject5 = new aqno(this);
+            ((aqno)localObject5).jdField_a_of_type_JavaLangString = ((String)localObject4);
+            ((aqno)localObject5).jdField_b_of_type_JavaLangString = bhlg.m(this.app, (String)localObject4);
+            ((aqno)localObject5).jdField_a_of_type_Boolean = false;
             ((View)localObject3).setTag(localObject5);
-            ((View)localObject3).setOnClickListener(new apzi(this));
-            localObject4 = new LinearLayout.LayoutParams(-1, bggq.a(this, 70.0F));
+            ((View)localObject3).setOnClickListener(new aqni(this));
+            localObject4 = new LinearLayout.LayoutParams(-1, bhgr.a(this, 70.0F));
             this.jdField_c_of_type_AndroidWidgetLinearLayout.addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
           }
           localObject1 = ((ArrayList)localObject1).iterator();
           while (((Iterator)localObject1).hasNext())
           {
             localObject3 = (String)((Iterator)localObject1).next();
-            localObject2 = LayoutInflater.from(this).inflate(2131561074, null);
-            localObject4 = (ImageView)((View)localObject2).findViewById(2131368138);
-            localObject5 = aoch.a(this.app, 1, (String)localObject3);
+            localObject2 = LayoutInflater.from(this).inflate(2131561110, null);
+            localObject4 = (ImageView)((View)localObject2).findViewById(2131368212);
+            localObject5 = aoot.a(this.app, 1, (String)localObject3);
             this.jdField_a_of_type_JavaUtilList.add(new WeakReference(localObject5));
             ((ImageView)localObject4).setBackgroundDrawable((Drawable)localObject5);
-            localObject4 = (TextView)((View)localObject2).findViewById(2131371705);
-            ((TextView)((View)localObject2).findViewById(2131380197)).setText((CharSequence)localObject3);
-            localObject5 = (Button)((View)localObject2).findViewById(2131362159);
+            localObject4 = (TextView)((View)localObject2).findViewById(2131371813);
+            ((TextView)((View)localObject2).findViewById(2131380382)).setText((CharSequence)localObject3);
+            localObject5 = (Button)((View)localObject2).findViewById(2131362165);
             ((Button)localObject5).setVisibility(0);
-            localObject6 = new apzo(this);
-            ((apzo)localObject6).jdField_a_of_type_JavaLangString = ((String)localObject3);
-            ((apzo)localObject6).jdField_b_of_type_JavaLangString = bglf.c(this.app, (String)localObject3, true);
-            ((apzo)localObject6).jdField_a_of_type_Boolean = false;
+            localObject6 = new aqno(this);
+            ((aqno)localObject6).jdField_a_of_type_JavaLangString = ((String)localObject3);
+            ((aqno)localObject6).jdField_b_of_type_JavaLangString = bhlg.c(this.app, (String)localObject3, true);
+            ((aqno)localObject6).jdField_a_of_type_Boolean = false;
             ((View)localObject2).setTag(localObject6);
-            ((TextView)localObject4).setText(((apzo)localObject6).jdField_b_of_type_JavaLangString);
+            ((TextView)localObject4).setText(((aqno)localObject6).jdField_b_of_type_JavaLangString);
             ((Button)localObject5).setTag(localObject6);
-            ((Button)localObject5).setOnClickListener(new apzj(this));
-            localObject3 = new LinearLayout.LayoutParams(-1, bggq.a(this, 70.0F));
+            ((Button)localObject5).setOnClickListener(new aqnj(this));
+            localObject3 = new LinearLayout.LayoutParams(-1, bhgr.a(this, 70.0F));
             this.jdField_c_of_type_AndroidWidgetLinearLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
           }
           paramCardOCRInfo = paramCardOCRInfo.iterator();
@@ -678,8 +678,8 @@ public class BusinessCardEditActivity
         a(this.jdField_c_of_type_AndroidWidgetLinearLayout, null, 0);
       }
       this.jdField_d_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      paramCardOCRInfo = (LinearLayout)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131365374);
-      localObject1 = this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131365356);
+      paramCardOCRInfo = (LinearLayout)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131365418);
+      localObject1 = this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131365400);
       paramCardOCRInfo.setVisibility(8);
       ((View)localObject1).setVisibility(8);
     }
@@ -724,18 +724,18 @@ public class BusinessCardEditActivity
         getContentResolver().insert(ContactsContract.Data.CONTENT_URI, localContentValues);
       }
     }
-    bcst.b(this.app, "CliOper", "", "", "0X80064E4", "0X80064E4", 0, 0, "", "", "", "");
+    bdll.b(this.app, "CliOper", "", "", "0X80064E4", "0X80064E4", 0, 0, "", "", "", "");
   }
   
   private void a(String paramString, boolean paramBoolean)
   {
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.a().trim();
-    anmw localanmw;
+    anyw localanyw;
     Object localObject1;
     if (!TextUtils.isEmpty(paramString))
     {
-      localanmw = (anmw)this.app.getManager(51);
-      if (localanmw == null)
+      localanyw = (anyw)this.app.getManager(51);
+      if (localanyw == null)
       {
         localObject1 = null;
         if ((localObject1 == null) || (TextUtils.isEmpty(((Card)localObject1).strNick))) {
@@ -746,23 +746,23 @@ public class BusinessCardEditActivity
     }
     for (;;)
     {
-      if ((!this.jdField_a_of_type_Apzp.jdField_b_of_type_Boolean) && (((String)localObject2).equals(localObject1)) && (this.jdField_d_of_type_Boolean)) {}
+      if ((!this.jdField_a_of_type_Aqnp.jdField_b_of_type_Boolean) && (((String)localObject2).equals(localObject1)) && (this.jdField_d_of_type_Boolean)) {}
       for (localObject1 = "";; localObject1 = localObject2)
       {
         localObject2 = (FriendListHandler)this.app.a(1);
         if (localObject2 != null)
         {
           ((FriendListHandler)localObject2).a(paramString, (String)localObject1, false, paramBoolean);
-          localObject1 = new bmji();
-          ((bmji)localObject1).jdField_a_of_type_Int = 5;
-          bmjh.a(paramString).a((bmji)localObject1);
+          localObject1 = new bnkl();
+          ((bnkl)localObject1).jdField_a_of_type_Int = 5;
+          bnkk.a(paramString).a((bnkl)localObject1);
         }
         return;
-        localObject1 = localanmw.b(paramString);
+        localObject1 = localanyw.b(paramString);
         break;
         label148:
-        if (localanmw == null) {}
-        for (localObject1 = null;; localObject1 = localanmw.e(paramString))
+        if (localanyw == null) {}
+        for (localObject1 = null;; localObject1 = localanyw.e(paramString))
         {
           if (localObject1 == null) {
             break label183;
@@ -860,7 +860,7 @@ public class BusinessCardEditActivity
   {
     if (this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard != null)
     {
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.bindUin)) && ((((anmw)this.app.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.bindUin)) || (this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardType == 1))) {
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.bindUin)) && ((((anyw)this.app.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.bindUin)) || (this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardType == 1))) {
         paramArrayList1.add(this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.bindUin);
       }
       Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.uinInfos.iterator();
@@ -933,7 +933,7 @@ public class BusinessCardEditActivity
       }
       for (;;)
       {
-        aqaj.a(this.app.getCurrentAccountUin(), i);
+        aqoj.a(this.app.getCurrentAccountUin(), i);
         return;
         if ((!paramCardOCRInfo.jdField_b_of_type_JavaUtilList.isEmpty()) || (!((ArrayList)localObject).isEmpty())) {
           break label247;
@@ -955,12 +955,12 @@ public class BusinessCardEditActivity
   
   private void b(String paramString1, String paramString2, boolean paramBoolean)
   {
-    RelativeLayout localRelativeLayout1 = (RelativeLayout)findViewById(2131364192);
-    RelativeLayout localRelativeLayout2 = (RelativeLayout)findViewById(2131364170);
-    Object localObject = (TextView)findViewById(2131371550);
+    RelativeLayout localRelativeLayout1 = (RelativeLayout)findViewById(2131364236);
+    RelativeLayout localRelativeLayout2 = (RelativeLayout)findViewById(2131364212);
+    Object localObject = (TextView)findViewById(2131371658);
     if (this.jdField_a_of_type_Int == 2)
     {
-      ((TextView)localObject).setText(super.getResources().getString(2131693038));
+      ((TextView)localObject).setText(super.getResources().getString(2131693047));
       if (paramBoolean) {}
     }
     for (;;)
@@ -973,17 +973,17 @@ public class BusinessCardEditActivity
         this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setFocusable(true);
         this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setFocusableInTouchMode(true);
         if (this.jdField_a_of_type_Int == 2) {
-          this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setHint(2131697803);
+          this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setHint(2131697887);
         }
         for (;;)
         {
-          this.jdField_a_of_type_Apzp = new apzp(this, 96, this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText, 1);
-          this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.addTextChangedListener(this.jdField_a_of_type_Apzp);
+          this.jdField_a_of_type_Aqnp = new aqnp(this, 96, this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText, 1);
+          this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.addTextChangedListener(this.jdField_a_of_type_Aqnp);
           localRelativeLayout2.setVisibility(0);
           this.jdField_b_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setFocusable(true);
           this.jdField_b_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setFocusableInTouchMode(true);
-          this.jdField_b_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setHint(2131697790);
-          paramString1 = new apzp(this, 30, this.jdField_b_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText);
+          this.jdField_b_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setHint(2131697874);
+          paramString1 = new aqnp(this, 30, this.jdField_b_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText);
           this.jdField_b_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.addTextChangedListener(paramString1);
           return;
           if (this.jdField_c_of_type_JavaLangString != null)
@@ -994,7 +994,7 @@ public class BusinessCardEditActivity
           if ((this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.bindUin))) {
             break label530;
           }
-          paramString1 = (anmw)this.app.getManager(51);
+          paramString1 = (anyw)this.app.getManager(51);
           Card localCard;
           if (paramString1 == null)
           {
@@ -1037,14 +1037,14 @@ public class BusinessCardEditActivity
           paramString1 = paramString1.name;
           this.jdField_d_of_type_Boolean = true;
           break;
-          ((TextView)localObject).setText(super.getResources().getString(2131697800));
+          ((TextView)localObject).setText(super.getResources().getString(2131697884));
           break;
-          this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setHint(2131697801);
+          this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setHint(2131697885);
         }
       }
       this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setFocusable(false);
       this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setFocusableInTouchMode(false);
-      this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setHint(anni.a(2131700061));
+      this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setHint(anzj.a(2131700168));
       if (TextUtils.isEmpty(paramString2))
       {
         localRelativeLayout2.setVisibility(8);
@@ -1053,7 +1053,7 @@ public class BusinessCardEditActivity
       localRelativeLayout2.setVisibility(0);
       this.jdField_b_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setFocusable(false);
       this.jdField_b_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setFocusableInTouchMode(false);
-      this.jdField_b_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setHint(anni.a(2131700056));
+      this.jdField_b_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setHint(anzj.a(2131700163));
       return;
       label530:
       paramString1 = "";
@@ -1078,8 +1078,8 @@ public class BusinessCardEditActivity
         paramString = URLDrawable.URLDrawableOptions.obtain();
         paramString.mRequestWidth = 1000;
         paramString.mRequestHeight = 600;
-        paramString.mLoadingDrawable = super.getResources().getDrawable(2130844938);
-        paramString.mFailedDrawable = super.getResources().getDrawable(2130844938);
+        paramString.mLoadingDrawable = super.getResources().getDrawable(2130844953);
+        paramString.mFailedDrawable = super.getResources().getDrawable(2130844953);
         paramString = URLDrawable.getDrawable(this.jdField_b_of_type_JavaLangString, paramString);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
         return;
@@ -1090,7 +1090,7 @@ public class BusinessCardEditActivity
         return;
       }
     }
-    findViewById(2131372543).setVisibility(8);
+    findViewById(2131372654).setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
   
@@ -1106,16 +1106,16 @@ public class BusinessCardEditActivity
     this.jdField_b_of_type_Boolean = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("finish_immedia", false);
     this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("has_local_remark");
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Apyx = ((apyx)this.app.getManager(112));
+    this.jdField_a_of_type_Aqmx = ((aqmx)this.app.getManager(112));
     if (this.jdField_a_of_type_JavaLangString != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard = this.jdField_a_of_type_Apyx.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard = this.jdField_a_of_type_Aqmx.a(this.jdField_a_of_type_JavaLangString);
       if (this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard == null) {
         ThreadManager.post(new BusinessCardEditActivity.1(this), 8, null, true);
       }
       if (this.jdField_a_of_type_Int != 3)
       {
-        apyz.a(this.app, this.jdField_a_of_type_JavaLangString, false, 3);
+        aqmz.a(this.app, this.jdField_a_of_type_JavaLangString, false, 3);
         if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.picUrl))) {
           this.jdField_c_of_type_Int = 0;
         }
@@ -1127,11 +1127,11 @@ public class BusinessCardEditActivity
     }
     for (;;)
     {
-      this.app.registObserver(this.jdField_a_of_type_Apyy);
+      this.app.registObserver(this.jdField_a_of_type_Aqmy);
       g();
-      addObserver(this.jdField_a_of_type_Anmu);
+      addObserver(this.jdField_a_of_type_Anyu);
       return;
-      apyz.a(this.app, this.jdField_a_of_type_JavaLangString, true, 3);
+      aqmz.a(this.app, this.jdField_a_of_type_JavaLangString, true, 3);
       break;
       if (this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard == null) {
         break;
@@ -1149,7 +1149,7 @@ public class BusinessCardEditActivity
   
   private void d(String paramString)
   {
-    this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, paramString, 2131692667, 2131692981, new apzc(this), new apzd(this));
+    this.jdField_a_of_type_AndroidAppDialog = bhlq.a(this, paramString, 2131692675, 2131692990, new aqnc(this), new aqnd(this));
     if ((this.jdField_a_of_type_AndroidAppDialog != null) && (!isFinishing())) {
       this.jdField_a_of_type_AndroidAppDialog.show();
     }
@@ -1157,23 +1157,23 @@ public class BusinessCardEditActivity
   
   private void e()
   {
-    super.setContentView(2131561069);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376807));
+    super.setContentView(2131561105);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376944));
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFitsSystemWindows(true);
     }
     a();
     f();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364200));
-    this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText = ((ClearEllipsisEditText)findViewById(2131364191));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364244));
+    this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText = ((ClearEllipsisEditText)findViewById(2131364235));
     this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setOnEditorActionListener(this);
     this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setTag("name");
     this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setMaxLength(96, 1);
-    this.jdField_b_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText = ((ClearEllipsisEditText)findViewById(2131364169));
+    this.jdField_b_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText = ((ClearEllipsisEditText)findViewById(2131364211));
     this.jdField_b_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setOnEditorActionListener(this);
     this.jdField_b_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setMaxLength(30, 2);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365825));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365579));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365868));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365621));
     if (this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard != null)
     {
       c(this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.picUrl);
@@ -1201,10 +1201,10 @@ public class BusinessCardEditActivity
     if (this.jdField_a_of_type_Boolean) {
       if (this.jdField_a_of_type_Int == 2)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697796);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697880);
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131692257);
-        this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(super.getResources().getDrawable(2130850652));
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131692262);
+        this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(super.getResources().getDrawable(2130850668));
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       }
     }
@@ -1216,22 +1216,22 @@ public class BusinessCardEditActivity
         return;
         if (this.jdField_a_of_type_Int == 3)
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697799);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697883);
           break;
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697795);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697879);
         break;
         if (this.jdField_a_of_type_Int == 3) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697799);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697883);
         }
         for (;;)
         {
-          this.jdField_c_of_type_AndroidWidgetTextView.setText(2131691679);
+          this.jdField_c_of_type_AndroidWidgetTextView.setText(2131691682);
           if (this.jdField_b_of_type_Int == 2) {
             this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
           }
-          this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(super.getResources().getDrawable(2130850652));
-          this.jdField_a_of_type_AndroidWidgetButton.setText(2131697806);
+          this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(super.getResources().getDrawable(2130850668));
+          this.jdField_a_of_type_AndroidWidgetButton.setText(2131697890);
           if ((this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard == null) || (((this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.OCRInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.OCRInfo.jdField_b_of_type_JavaLangString))) && (this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.mobilesNum.size() <= 0))) {
             break label307;
           }
@@ -1240,7 +1240,7 @@ public class BusinessCardEditActivity
           }
           this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
           return;
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697794);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697878);
         }
       } while (this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.mobilesNum.size() <= 0);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
@@ -1264,7 +1264,7 @@ public class BusinessCardEditActivity
   {
     try
     {
-      this.jdField_a_of_type_AndroidDatabaseContentObserver = new apze(this, new Handler(this.app.getApp().getMainLooper()));
+      this.jdField_a_of_type_AndroidDatabaseContentObserver = new aqne(this, new Handler(this.app.getApp().getMainLooper()));
       this.app.getApp().getContentResolver().registerContentObserver(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, true, this.jdField_a_of_type_AndroidDatabaseContentObserver);
       return;
     }
@@ -1279,13 +1279,13 @@ public class BusinessCardEditActivity
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368994));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368947));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369088));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369042));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368979));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369073));
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363562));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363581));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363586));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363605));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -1302,7 +1302,7 @@ public class BusinessCardEditActivity
   
   public void a(int paramInt1, int paramInt2)
   {
-    new bibh(this).a(paramInt1, getTitleBarHeight(), 0, paramInt2);
+    new bjcf(this).a(paramInt1, getTitleBarHeight(), 0, paramInt2);
   }
   
   public void a(LinearLayout paramLinearLayout, String paramString, int paramInt)
@@ -1310,16 +1310,16 @@ public class BusinessCardEditActivity
     TextView localTextView = new TextView(this);
     localTextView.setText(paramString);
     localTextView.setTextSize(16.0F);
-    localTextView.setHint(anni.a(2131700077));
-    localTextView.setTextColor(super.getResources().getColor(2131166986));
+    localTextView.setHint(anzj.a(2131700184));
+    localTextView.setTextColor(super.getResources().getColor(2131166990));
     localTextView.setGravity(16);
-    localTextView.setBackgroundDrawable(super.getResources().getDrawable(2130850358));
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, bggq.a(this, 44.0F));
-    localTextView.setPadding(afur.a(28.0F, getResources()), 0, afur.a(50.0F, getResources()), 0);
+    localTextView.setBackgroundDrawable(super.getResources().getDrawable(2130850370));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, bhgr.a(this, 44.0F));
+    localTextView.setPadding(agej.a(28.0F, getResources()), 0, agej.a(50.0F, getResources()), 0);
     if (paramInt == 1)
     {
       localTextView.setTag(paramString);
-      localTextView.setOnClickListener(new apzn(this));
+      localTextView.setOnClickListener(new aqnn(this));
       paramString = localLayoutParams;
     }
     for (;;)
@@ -1330,8 +1330,8 @@ public class BusinessCardEditActivity
       if (paramInt == 2)
       {
         paramString = new LinearLayout.LayoutParams(-1, -2);
-        localTextView.setMinHeight(bggq.a(this, 44.0F));
-        localTextView.setPadding(afur.a(28.0F, getResources()), afur.a(12.0F, getResources()), afur.a(50.0F, getResources()), afur.a(10.0F, getResources()));
+        localTextView.setMinHeight(bhgr.a(this, 44.0F));
+        localTextView.setPadding(agej.a(28.0F, getResources()), agej.a(12.0F, getResources()), agej.a(50.0F, getResources()), agej.a(10.0F, getResources()));
       }
     }
   }
@@ -1343,27 +1343,27 @@ public class BusinessCardEditActivity
   
   public void a(LinearLayout paramLinearLayout, String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, afur.a(44.0F, getResources()));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, agej.a(44.0F, getResources()));
     Object localObject;
     if (paramInt1 != 2)
     {
       localObject = new ClearableEditText(this);
       ((EditText)localObject).setInputType(2);
       ((EditText)localObject).setSingleLine();
-      ((EditText)localObject).setHint(2131697797);
-      ((EditText)localObject).setBackgroundDrawable(super.getResources().getDrawable(2130850358));
-      ((EditText)localObject).setCompoundDrawablePadding(afur.a(5.0F, getResources()));
-      ((EditText)localObject).setPadding(afur.a(28.0F, getResources()), 0, afur.a(10.0F, getResources()), 0);
+      ((EditText)localObject).setHint(2131697881);
+      ((EditText)localObject).setBackgroundDrawable(super.getResources().getDrawable(2130850370));
+      ((EditText)localObject).setCompoundDrawablePadding(agej.a(5.0F, getResources()));
+      ((EditText)localObject).setPadding(agej.a(28.0F, getResources()), 0, agej.a(10.0F, getResources()), 0);
     }
     for (;;)
     {
       ((EditText)localObject).setText(paramString);
       ((EditText)localObject).setTextSize(16.0F);
-      ((EditText)localObject).setTextColor(super.getResources().getColor(2131166986));
-      ((EditText)localObject).setHintTextColor(super.getResources().getColor(2131165432));
+      ((EditText)localObject).setTextColor(super.getResources().getColor(2131166990));
+      ((EditText)localObject).setHintTextColor(super.getResources().getColor(2131165430));
       ((EditText)localObject).setGravity(16);
       paramLinearLayout.addView((View)localObject, localLayoutParams);
-      ((EditText)localObject).addTextChangedListener(new apzp(this, paramInt2, (EditText)localObject));
+      ((EditText)localObject).addTextChangedListener(new aqnp(this, paramInt2, (EditText)localObject));
       if (paramBoolean)
       {
         ((EditText)localObject).setSelection(((EditText)localObject).getText().toString().length());
@@ -1372,34 +1372,34 @@ public class BusinessCardEditActivity
       return;
       localObject = new EditText(this);
       localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      ((EditText)localObject).setBackgroundDrawable(super.getResources().getDrawable(2130850358));
-      ((EditText)localObject).setMinHeight(bggq.a(this, 44.0F));
+      ((EditText)localObject).setBackgroundDrawable(super.getResources().getDrawable(2130850370));
+      ((EditText)localObject).setMinHeight(bhgr.a(this, 44.0F));
       ((EditText)localObject).setOnEditorActionListener(this);
-      ((EditText)localObject).setPadding(afur.a(28.0F, getResources()), afur.a(12.0F, getResources()), afur.a(50.0F, getResources()), afur.a(10.0F, getResources()));
-      ((EditText)localObject).setHint(2131697792);
+      ((EditText)localObject).setPadding(agej.a(28.0F, getResources()), agej.a(12.0F, getResources()), agej.a(50.0F, getResources()), agej.a(10.0F, getResources()));
+      ((EditText)localObject).setHint(2131697876);
     }
   }
   
   public void a(String paramString)
   {
-    bkho localbkho = bkho.a(this);
-    localbkho.b(2131697787);
-    localbkho.b(2131697808);
-    localbkho.c(2131690582);
-    localbkho.a(new apzb(this, paramString, localbkho));
-    localbkho.show();
+    blir localblir = blir.a(this);
+    localblir.b(2131697871);
+    localblir.b(2131697892);
+    localblir.c(2131690580);
+    localblir.a(new aqnb(this, paramString, localblir));
+    localblir.show();
   }
   
   public void a(String paramString, int paramInt)
   {
-    View localView = LayoutInflater.from(this).inflate(2131561073, null);
+    View localView = LayoutInflater.from(this).inflate(2131561109, null);
     localView.setTag(Integer.valueOf(paramInt));
-    EditText localEditText = (EditText)localView.findViewById(2131374238);
-    localEditText.addTextChangedListener(new apzp(this, 15, localEditText));
+    EditText localEditText = (EditText)localView.findViewById(2131374376);
+    localEditText.addTextChangedListener(new aqnp(this, 15, localEditText));
     localEditText.setText(paramString);
-    paramString = (ImageView)localView.findViewById(2131362182);
+    paramString = (ImageView)localView.findViewById(2131362191);
     paramString.setTag(Integer.valueOf(paramInt));
-    paramString.setOnClickListener(new apzh(this));
+    paramString.setOnClickListener(new aqnh(this));
     this.jdField_c_of_type_AndroidWidgetLinearLayout.addView(localView);
   }
   
@@ -1413,7 +1413,7 @@ public class BusinessCardEditActivity
       i = 2;
     }
     super.startActivity(AddFriendLogicActivity.a(this, i, paramString1, null, 3026, j, paramString2, null, BusinessCardEditActivity.class.getName(), setLastActivityName(), null));
-    bcst.b(this.app, "CliOper", "", "", "0X80064E6", "0X80064E6", 0, 0, "", "", "", "");
+    bdll.b(this.app, "CliOper", "", "", "0X80064E6", "0X80064E6", 0, 0, "", "", "", "");
   }
   
   public void a(boolean paramBoolean)
@@ -1422,21 +1422,21 @@ public class BusinessCardEditActivity
     {
       this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131371227));
-      this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131374240));
-      this.jdField_d_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131365361));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131371221));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131371334));
+      this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131374378));
+      this.jdField_d_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131365405));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131371328));
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131374069));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131374208));
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131365354));
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131365398));
       this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this);
       if (a())
       {
-        this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131374241).setVisibility(8);
+        this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131374379).setVisibility(8);
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
       }
       if (paramBoolean) {
@@ -1450,12 +1450,12 @@ public class BusinessCardEditActivity
         return;
         this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
         this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131371227));
-        this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131374240));
-        this.jdField_d_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131365361));
+        this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131371334));
+        this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131374378));
+        this.jdField_d_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131365405));
         if (a())
         {
-          this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131374241).setVisibility(8);
+          this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131374379).setVisibility(8);
           if (QLog.isColorLevel()) {
             QLog.w("BusinessCard_EditActivity", 2, "名片备注不应该出现详情态");
           }
@@ -1477,8 +1477,8 @@ public class BusinessCardEditActivity
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing()) && (!isFinishing())) {
-      this.jdField_a_of_type_Biau.dismiss();
+    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing()) && (!isFinishing())) {
+      this.jdField_a_of_type_Bjbs.dismiss();
     }
   }
   
@@ -1488,13 +1488,13 @@ public class BusinessCardEditActivity
     do
     {
       return;
-      if (this.jdField_a_of_type_Biau == null) {
-        this.jdField_a_of_type_Biau = new biau(this, getTitleBarHeight());
+      if (this.jdField_a_of_type_Bjbs == null) {
+        this.jdField_a_of_type_Bjbs = new bjbs(this, getTitleBarHeight());
       }
-      this.jdField_a_of_type_Biau.a(paramString);
-      this.jdField_a_of_type_Biau.setCancelable(false);
+      this.jdField_a_of_type_Bjbs.a(paramString);
+      this.jdField_a_of_type_Bjbs.setCancelable(false);
     } while (isFinishing());
-    this.jdField_a_of_type_Biau.show();
+    this.jdField_a_of_type_Bjbs.show();
   }
   
   void c()
@@ -1552,7 +1552,7 @@ public class BusinessCardEditActivity
       Object localObject = this.jdField_c_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt2);
       if (((localObject instanceof ViewGroup)) && ((((View)localObject).getTag() instanceof Integer)) && (paramInt1 == ((Integer)((View)localObject).getTag()).intValue()))
       {
-        localObject = (EditText)((View)localObject).findViewById(2131374238);
+        localObject = (EditText)((View)localObject).findViewById(2131374376);
         if (localObject != null)
         {
           ((EditText)localObject).setText(paramIntent.jdField_a_of_type_JavaLangString);
@@ -1563,8 +1563,8 @@ public class BusinessCardEditActivity
           this.jdField_e_of_type_Boolean = true;
           c(null);
           return;
-          paramIntent.putExtra("selfSet_leftViewText", getString(2131718387));
-          localObject = afur.a(new Intent(this, SplashActivity.class), null);
+          paramIntent.putExtra("selfSet_leftViewText", getString(2131718523));
+          localObject = agej.a(new Intent(this, SplashActivity.class), null);
           ((Intent)localObject).putExtras(new Bundle(paramIntent.getExtras()));
           startActivity((Intent)localObject);
           return;
@@ -1585,15 +1585,15 @@ public class BusinessCardEditActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_Anmu);
+    removeObserver(this.jdField_a_of_type_Anyu);
     c();
-    this.app.unRegistObserver(this.jdField_a_of_type_Apyy);
+    this.app.unRegistObserver(this.jdField_a_of_type_Aqmy);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      aoch localaoch = (aoch)((WeakReference)localIterator.next()).get();
-      if (localaoch != null) {
-        localaoch.b();
+      aoot localaoot = (aoot)((WeakReference)localIterator.next()).get();
+      if (localaoot != null) {
+        localaoot.b();
       }
     }
   }
@@ -1608,7 +1608,7 @@ public class BusinessCardEditActivity
   {
     super.doOnResume();
     if (this.jdField_d_of_type_Int != 0) {
-      bcst.b(this.app, "CliOper", "", "", "0X8007751", "0X8007751", this.jdField_d_of_type_Int, 0, "", "", "", "");
+      bdll.b(this.app, "CliOper", "", "", "0X8007751", "0X8007751", this.jdField_d_of_type_Int, 0, "", "", "", "");
     }
   }
   
@@ -1628,14 +1628,14 @@ public class BusinessCardEditActivity
   
   public boolean onBackEvent()
   {
-    bkft.a(this);
+    blgx.a(this);
     if (this.jdField_a_of_type_Boolean)
     {
       BusinessCard localBusinessCard = new BusinessCard();
       a(localBusinessCard, false);
       if (a(localBusinessCard, this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard))
       {
-        d(super.getResources().getString(2131694467));
+        d(super.getResources().getString(2131694509));
         return true;
       }
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (!isFinishing()))
@@ -1670,7 +1670,7 @@ public class BusinessCardEditActivity
       Object localObject1;
       if (this.jdField_a_of_type_Boolean)
       {
-        bkft.a(this);
+        blgx.a(this);
         localObject2 = new BusinessCard();
         a((BusinessCard)localObject2, true);
         if (this.jdField_c_of_type_Boolean)
@@ -1680,7 +1680,7 @@ public class BusinessCardEditActivity
         }
         if ((this.jdField_a_of_type_Int == 2) && (this.jdField_c_of_type_JavaLangString != null))
         {
-          ((apyx)this.app.getManager(112)).a(((BusinessCard)localObject2).bindUin, (BusinessCard)localObject2);
+          ((aqmx)this.app.getManager(112)).a(((BusinessCard)localObject2).bindUin, (BusinessCard)localObject2);
           if (!isFinishing())
           {
             localObject1 = getIntent();
@@ -1692,16 +1692,16 @@ public class BusinessCardEditActivity
         }
         while (this.jdField_d_of_type_Int != 0)
         {
-          bcst.b(this.app, "CliOper", "", "", "0X8007754", "0X8007754", this.jdField_d_of_type_Int, 0, "", "", "", "");
+          bdll.b(this.app, "CliOper", "", "", "0X8007754", "0X8007754", this.jdField_d_of_type_Int, 0, "", "", "", "");
           break;
           if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard != null)) {
             a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.bindUin, getIntent().getBooleanExtra("notify_plugin", false));
           }
           if (a((BusinessCard)localObject2, this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard))
           {
-            if (!bgnt.d(this))
+            if (!bhnv.d(this))
             {
-              a(2131693991, 1);
+              a(2131694008, 1);
               break;
             }
             localObject1 = Boolean.valueOf(false);
@@ -1710,12 +1710,12 @@ public class BusinessCardEditActivity
             }
             if ((((BusinessCard)localObject2).cardId != null) && (((BusinessCard)localObject2).cardId.length() > 0))
             {
-              apyz.b(this.app, (BusinessCard)localObject2, ((Boolean)localObject1).booleanValue());
-              b(anni.a(2131700057));
+              aqmz.b(this.app, (BusinessCard)localObject2, ((Boolean)localObject1).booleanValue());
+              b(anzj.a(2131700164));
               continue;
             }
-            apyz.a(this.app, (BusinessCard)localObject2, ((Boolean)localObject1).booleanValue());
-            b(anni.a(2131700051));
+            aqmz.a(this.app, (BusinessCard)localObject2, ((Boolean)localObject1).booleanValue());
+            b(anzj.a(2131700158));
             continue;
           }
           if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (!isFinishing())) {
@@ -1726,12 +1726,12 @@ public class BusinessCardEditActivity
         }
       }
       a(true, false, true);
-      bcst.b(this.app, "CliOper", "", "", "0X80064E2", "0X80064E2", 0, 0, "", "", "", "");
+      bdll.b(this.app, "CliOper", "", "", "0X80064E2", "0X80064E2", 0, 0, "", "", "", "");
       continue;
       if ((this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard != null) || (this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo != null))
       {
         this.jdField_f_of_type_Boolean = true;
-        requestPermissions(new apza(this), 1, new String[] { "android.permission.WRITE_CONTACTS" });
+        requestPermissions(new aqna(this), 1, new String[] { "android.permission.WRITE_CONTACTS" });
         continue;
         a(this.jdField_b_of_type_AndroidWidgetLinearLayout, null, 1, 15);
         this.jdField_e_of_type_Int += 1;
@@ -1740,7 +1740,7 @@ public class BusinessCardEditActivity
         }
         if (this.jdField_d_of_type_Int != 0)
         {
-          bcst.b(this.app, "CliOper", "", "", "0X8007752", "0X8007752", this.jdField_d_of_type_Int, 0, "", "", "", "");
+          bdll.b(this.app, "CliOper", "", "", "0X8007752", "0X8007752", this.jdField_d_of_type_Int, 0, "", "", "", "");
           continue;
           a(null, this.jdField_f_of_type_Int);
           this.jdField_f_of_type_Int += 1;

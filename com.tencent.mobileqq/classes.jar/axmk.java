@@ -1,18 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class axmk
-  implements View.OnClickListener
+public abstract interface axmk
 {
-  public axmk(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public void onClick(View paramView)
-  {
-    ShortVideoCommentsView.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt);
 }
 
 

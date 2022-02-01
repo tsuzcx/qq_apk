@@ -1,26 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class atqt
-  implements View.OnClickListener
+  extends atrt
 {
-  atqt(atqp paramatqp) {}
+  atqt(atqr paramatqr, atqw paramatqw) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2)
   {
-    int i = atwt.b(this.a.a.e());
-    bcst.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
-    atnd localatnd = this.a.a.a();
-    if (localatnd != null) {
-      localatnd.a();
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Atqw.a(paramString2, paramString3);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Atqw.a(paramInt, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atqt
  * JD-Core Version:    0.7.0.1
  */

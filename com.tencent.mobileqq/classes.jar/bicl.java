@@ -1,14 +1,22 @@
-import android.view.View;
-
-public abstract interface bicl
+public class bicl
+  extends bici
 {
-  public abstract View a();
+  public static bicl a = new bicl();
   
-  public abstract void a();
+  public long getBID()
+  {
+    return 39L;
+  }
   
-  public abstract void a(float paramFloat, int paramInt);
+  protected String getRootDir()
+  {
+    return "musicPlayer";
+  }
   
-  public abstract boolean a();
+  protected String getScidPrefix()
+  {
+    return "musicPlayer.";
+  }
 }
 
 

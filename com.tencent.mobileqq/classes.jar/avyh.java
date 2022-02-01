@@ -1,18 +1,28 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.9;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class avyh
-  implements DialogInterface.OnClickListener
+class avyh
+  implements URLDrawable.URLDrawableListener
 {
-  public avyh(LocationDialogUtil.9 param9) {}
+  avyh(avyg paramavyg, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (avxq.a(this.a.a)) {
-      this.a.a.finish();
-    }
+    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap onLoadCanceled");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap FAILED, no more action ...");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = aydu.a(paramURLDrawable);
+    avyg.a(this.jdField_a_of_type_Avyg, this.jdField_a_of_type_JavaLangString, this.b, this.c, paramURLDrawable, this.d, this.jdField_a_of_type_Int);
   }
 }
 

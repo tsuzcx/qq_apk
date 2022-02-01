@@ -1,16 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class mqa
-  implements View.OnTouchListener
+public abstract interface mqa
 {
-  mqa(mpw parammpw) {}
+  public abstract void a(boolean paramBoolean);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
 }
 
 

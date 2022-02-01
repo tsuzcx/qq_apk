@@ -9,9 +9,8 @@ class GameNoticeCenter$2
   
   public void run()
   {
-    GameNoticeCenter.a(this.this$0);
-    GameNoticeCenter.b(this.this$0);
-    GameNoticeCenter.a(this.this$0).set(false);
+    GameNoticeCenter.access$000(this.this$0);
+    GameNoticeCenter.access$100(this.this$0).set(false);
   }
 }
 

@@ -1,21 +1,21 @@
 package cooperation.qzone.plugin;
 
-import bctj;
-import bmdx;
+import bdmc;
+import bnez;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 
 public class QZonePluginManager$1
   implements Runnable
 {
-  public QZonePluginManager$1(bmdx parambmdx, String paramString, int paramInt) {}
+  public QZonePluginManager$1(bnez parambnez, String paramString, int paramInt) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("plugin_id", this.jdField_a_of_type_JavaLangString);
     localHashMap.put("refer", String.valueOf(this.jdField_a_of_type_Int));
-    bctj.a(BaseApplicationImpl.getContext()).a(null, "QzonePluginDownloadRefer", true, 0L, 0L, localHashMap, null);
+    bdmc.a(BaseApplicationImpl.getContext()).a(null, "QzonePluginDownloadRefer", true, 0L, 0L, localHashMap, null);
   }
 }
 

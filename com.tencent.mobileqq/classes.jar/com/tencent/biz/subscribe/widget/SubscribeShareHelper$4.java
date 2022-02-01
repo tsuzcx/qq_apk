@@ -1,25 +1,25 @@
 package com.tencent.biz.subscribe.widget;
 
-import aakz;
+import aapa;
 import android.graphics.Bitmap;
-import biau;
+import bjbs;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import java.util.Map;
 
 public class SubscribeShareHelper$4
   implements Runnable
 {
-  public SubscribeShareHelper$4(aakz paramaakz, Map paramMap, String paramString1, String paramString2, String paramString3, int paramInt) {}
+  public SubscribeShareHelper$4(aapa paramaapa, Map paramMap, String paramString1, String paramString2, String paramString3, int paramInt) {}
   
   public void run()
   {
-    if ((aakz.a(this.this$0) != null) && (aakz.a(this.this$0).isShowing())) {
-      aakz.a(this.this$0).dismiss();
+    if ((aapa.a(this.this$0) != null) && (aapa.a(this.this$0).isShowing())) {
+      aapa.a(this.this$0).dismiss();
     }
-    aakz.a(this.this$0, String.valueOf(System.currentTimeMillis()));
+    aapa.a(this.this$0, String.valueOf(System.currentTimeMillis()));
     Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
     WXShareHelper localWXShareHelper = WXShareHelper.a();
-    String str1 = aakz.a(this.this$0);
+    String str1 = aapa.a(this.this$0);
     String str2 = this.jdField_a_of_type_JavaLangString;
     String str3 = this.b;
     String str4 = this.c;

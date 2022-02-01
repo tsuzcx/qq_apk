@@ -1,9 +1,41 @@
-public abstract class aday
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+
+public class aday
 {
-  public static int a;
-  public static String a = "https://zyjc.sec.qq.com/config?b=";
-  public static String b = "https://zyjc.sec.qq.com/reportFixer.php";
-  public static String c = "/sdcard/";
+  public int a;
+  long a;
+  public adae a;
+  public Object a;
+  public String a;
+  public List<MessageRecord> a;
+  public boolean a;
+  public int b;
+  long b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d = true;
+  public int e;
+  public boolean e;
+  public int f;
+  public boolean f = true;
+  public boolean g = true;
+  public boolean h;
+  public volatile boolean i;
+  
+  public aday()
+  {
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 9223372036854775807L;
+    this.jdField_b_of_type_Long = 0L;
+  }
+  
+  public String toString()
+  {
+    return "[isComplete = " + this.jdField_a_of_type_Boolean + ", isJoined = " + this.jdField_b_of_type_Boolean + ", isLocalOnly = " + this.c + "]";
+  }
 }
 
 

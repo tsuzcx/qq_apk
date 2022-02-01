@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.QQSettingMe.35.1;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class aezb
-  extends anpj
+  implements View.OnClickListener
 {
-  public aezb(QQSettingMe paramQQSettingMe) {}
+  public aezb(NearbyActivity paramNearbyActivity) {}
   
-  public void a(Object paramObject)
+  public void onClick(View paramView)
   {
-    this.a.a.runOnUiThread(new QQSettingMe.35.1(this));
+    int i = 0;
+    while (i < this.a.a.size())
+    {
+      ((View.OnClickListener)this.a.a.get(i)).onClick(paramView);
+      i += 1;
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

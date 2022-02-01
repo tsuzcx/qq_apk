@@ -1,23 +1,26 @@
-import com.tencent.widget.AbsListView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class amer
-  implements bkhe
+public class amer
+  implements View.OnClickListener
 {
-  amer(amen paramamen) {}
+  public amer(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    amen.a(this.a, paramInt);
-    if (paramInt == 0)
+    if (this.a.d == 27)
     {
-      amen.a(this.a, null, null);
-      amen.a(this.a).b();
-      return;
+      this.a.a.putParcelableArrayListExtra("result_set", this.a.e);
+      ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindow().peekDecorView().getWindowToken(), 0);
+      this.a.setResult(-1, this.a.a);
     }
-    amen.a(this.a).c();
-    amen.a(this.a).a();
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

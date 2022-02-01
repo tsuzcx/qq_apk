@@ -1,68 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
-public final class arby
-  extends aqkz<arbx>
+public class arby
+  extends arbu
 {
-  public static void a()
+  private arcs a;
+  
+  public arby(String paramString, arcs paramarcs)
   {
-    QLog.d("TdsReaderView_TdsReaderConfigProcessor", 1, "initConfig");
-    arbx.a(false, (arbx)aqlk.a().a(482));
+    super(paramString);
+    this.a = paramarcs;
   }
   
-  @NonNull
-  public arbx a(int paramInt)
+  public arcs a()
   {
-    QLog.w("TdsReaderView_TdsReaderConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
-    return new arbx();
-  }
-  
-  @Nullable
-  public arbx a(aqlg[] paramArrayOfaqlg)
-  {
-    return arbx.a(paramArrayOfaqlg);
-  }
-  
-  public void a(arbx paramarbx)
-  {
-    QLog.w("TdsReaderView_TdsReaderConfigProcessor", 1, "onUpdate");
-    arbx.a(true, paramarbx);
-  }
-  
-  public Class<arbx> clazz()
-  {
-    return arbx.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.e("TdsReaderView_TdsReaderConfigProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 482;
+    return this.a;
   }
 }
 

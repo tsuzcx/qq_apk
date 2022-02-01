@@ -1,21 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
 class abft
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
-  abft(abfq paramabfq) {}
+  abft(abfp paramabfp) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.k();
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user denied = ");
+    bhlq.a(this.a.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user grant = ");
+    abfp.g(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abft
  * JD-Core Version:    0.7.0.1
  */

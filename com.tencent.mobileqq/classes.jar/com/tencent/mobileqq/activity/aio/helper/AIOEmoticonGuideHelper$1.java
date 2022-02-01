@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agjn;
+import agso;
 import android.os.Message;
 import android.text.TextUtils;
-import aqlk;
-import aqso;
-import aqsp;
-import arvj;
-import arvq;
-import bdsh;
+import aran;
+import aria;
+import arib;
+import askx;
+import asle;
+import beqz;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -18,15 +18,15 @@ import mqq.os.MqqHandler;
 public class AIOEmoticonGuideHelper$1
   implements Runnable
 {
-  public AIOEmoticonGuideHelper$1(agjn paramagjn) {}
+  public AIOEmoticonGuideHelper$1(agso paramagso) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("aio_emoticon_guide.helper", 2, "showGuideBubble start loadConObj.");
     }
-    aqsp localaqsp = (aqsp)aqlk.a().a(545);
-    if (localaqsp == null) {
+    arib localarib = (arib)aran.a().a(545);
+    if (localarib == null) {
       if (QLog.isColorLevel()) {
         QLog.d("aio_emoticon_guide.helper", 2, "config bean is null.");
       }
@@ -34,21 +34,21 @@ public class AIOEmoticonGuideHelper$1
     for (;;)
     {
       return;
-      if (agjn.a(this.this$0) == null)
+      if (agso.a(this.this$0) == null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("aio_emoticon_guide.helper", 2, "chat pie is null.");
         }
       }
-      else if (agjn.a(this.this$0, localaqsp))
+      else if (agso.a(this.this$0, localarib))
       {
-        Object localObject = localaqsp.a.a;
-        if (ThemeUtil.isNowThemeIsNight(agjn.a(this.this$0).a, false, null)) {
-          localObject = localaqsp.a.b;
+        Object localObject = localarib.a.a;
+        if (ThemeUtil.isNowThemeIsNight(agso.a(this.this$0).a, false, null)) {
+          localObject = localarib.a.b;
         }
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          if (!bdsh.b((String)localObject))
+          if (!beqz.b((String)localObject))
           {
             if (QLog.isColorLevel()) {
               QLog.d("aio_emoticon_guide.helper", 2, "file no download.");
@@ -56,21 +56,21 @@ public class AIOEmoticonGuideHelper$1
             URLDrawable.getDrawable((String)localObject).startDownload(false);
             return;
           }
-          int i = localaqsp.a.c;
-          int j = localaqsp.a.d;
+          int i = localarib.a.c;
+          int j = localarib.a.d;
           boolean bool;
           if (j == 1) {
-            bool = arvq.d(i);
+            bool = asle.d(i);
           }
           while (bool)
           {
             localObject = Message.obtain();
             ((Message)localObject).what = 2;
-            ((Message)localObject).obj = localaqsp;
-            agjn.a(this.this$0).sendMessage((Message)localObject);
+            ((Message)localObject).obj = localarib;
+            agso.a(this.this$0).sendMessage((Message)localObject);
             return;
             if (j == 2) {
-              bool = arvj.b(arvj.b(i));
+              bool = askx.b(askx.b(i));
             } else {
               bool = false;
             }

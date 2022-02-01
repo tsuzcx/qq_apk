@@ -10,147 +10,147 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bclx;
-import bqcd;
+import bdep;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
 import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import wsl;
-import xix;
-import xiy;
-import xjl;
-import xlr;
-import xlu;
-import xma;
-import xmd;
-import xmg;
-import xmu;
-import xmz;
-import xna;
-import xnb;
-import xne;
+import wwg;
+import xms;
+import xmt;
 import xng;
-import xnl;
-import xnm;
-import xos;
-import xoy;
-import xpc;
-import xso;
-import xsw;
-import xts;
-import xui;
-import xvg;
-import xvi;
-import xvm;
-import xvu;
-import yqp;
+import xpm;
+import xpp;
+import xpv;
+import xpy;
+import xqb;
+import xqp;
+import xqu;
+import xqv;
+import xqw;
+import xqz;
+import xrb;
+import xrg;
+import xrh;
+import xsn;
+import xst;
+import xsx;
+import xwj;
+import xwr;
+import xxn;
+import xyd;
+import xzb;
+import xzd;
+import xzh;
+import xzp;
+import yuk;
 
 public class StoryPlayerGroupHolder
-  extends xlu
+  extends xpp
 {
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   public StoryPlayerGroupHolder.StoryPlayerVideoAdapter a;
   public XViewPager a;
-  private xmd jdField_a_of_type_Xmd;
-  private xmu jdField_a_of_type_Xmu;
-  private xos jdField_a_of_type_Xos;
-  private xpc jdField_a_of_type_Xpc = new xna(this);
+  private xpy jdField_a_of_type_Xpy;
+  private xqp jdField_a_of_type_Xqp;
+  private xsn jdField_a_of_type_Xsn;
+  private xsx jdField_a_of_type_Xsx = new xqv(this);
   public int b;
-  private xos b;
+  private xsn b;
   private int c = 0;
   
-  public StoryPlayerGroupHolder(@NonNull ViewGroup paramViewGroup, xmu paramxmu)
+  public StoryPlayerGroupHolder(@NonNull ViewGroup paramViewGroup, xqp paramxqp)
   {
     super(paramViewGroup);
     this.jdField_b_of_type_Int = -1;
-    this.jdField_b_of_type_Xos = new xnb(this);
-    this.jdField_a_of_type_Xmu = paramxmu;
+    this.jdField_b_of_type_Xsn = new xqw(this);
+    this.jdField_a_of_type_Xqp = paramxqp;
     d();
-    a(new xng((ViewGroup)this.jdField_a_of_type_AndroidViewView));
-    a(new xlr((ViewGroup)this.jdField_a_of_type_AndroidViewView));
-    a(new xmg((ViewGroup)this.jdField_a_of_type_AndroidViewView));
-    a(new xvu(this.jdField_a_of_type_AndroidViewView.findViewById(2131381178)));
-    a(new xvm((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380285)));
-    a(new xts((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365397)));
-    a(new xso((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363267)));
-    a(new xvi((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131372937)));
-    a(new xsw((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363612)));
-    a(new xma((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370194)));
-    a(new xui(this.jdField_a_of_type_AndroidViewView.findViewById(2131376573).findViewById(2131371293)));
-    a(new xvg(this.jdField_a_of_type_AndroidViewView.findViewById(2131371634)));
+    a(new xrb((ViewGroup)this.jdField_a_of_type_AndroidViewView));
+    a(new xpm((ViewGroup)this.jdField_a_of_type_AndroidViewView));
+    a(new xqb((ViewGroup)this.jdField_a_of_type_AndroidViewView));
+    a(new xzp(this.jdField_a_of_type_AndroidViewView.findViewById(2131381351)));
+    a(new xzh((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380471)));
+    a(new xxn((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365441)));
+    a(new xwj((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363291)));
+    a(new xzd((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373050)));
+    a(new xwr((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363636)));
+    a(new xpv((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370295)));
+    a(new xyd(this.jdField_a_of_type_AndroidViewView.findViewById(2131376705).findViewById(2131371400)));
+    a(new xzb(this.jdField_a_of_type_AndroidViewView.findViewById(2131371742)));
   }
   
   private int b()
   {
-    boolean bool = bclx.a(this.jdField_a_of_type_AndroidViewView.getContext());
-    yqp.b("FredguoFix", "StoryPlayerGroupHolder: hasNavi " + bool);
+    boolean bool = bdep.a(this.jdField_a_of_type_AndroidViewView.getContext());
+    yuk.b("FredguoFix", "StoryPlayerGroupHolder: hasNavi " + bool);
     if (bool) {
       return 0;
     }
-    return (int)Math.min(bclx.jdField_b_of_type_Int - bclx.jdField_a_of_type_Int / 9.0F * 16.0F, 140.0F);
+    return (int)Math.min(bdep.jdField_b_of_type_Int - bdep.jdField_a_of_type_Int / 9.0F * 16.0F, 140.0F);
   }
   
   private void d()
   {
-    if (bqcd.jdField_a_of_type_Boolean)
+    if (LiuHaiUtils.jdField_a_of_type_Boolean)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131372674);
+      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131372786);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
-      localLayoutParams.height = (bqcd.jdField_a_of_type_Int / 2);
+      localLayoutParams.height = (LiuHaiUtils.jdField_a_of_type_Int / 2);
       localView.setLayoutParams(localLayoutParams);
     }
   }
   
   public View a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561833, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramViewGroup.findViewById(2131376494));
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561874, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramViewGroup.findViewById(2131376626));
     return paramViewGroup;
   }
   
   public VideoViewVideoHolder a()
   {
-    xnl localxnl = a();
-    if (localxnl != null) {
-      return (VideoViewVideoHolder)localxnl.a(VideoViewVideoHolder.class);
+    xrg localxrg = a();
+    if (localxrg != null) {
+      return (VideoViewVideoHolder)localxrg.a(VideoViewVideoHolder.class);
     }
     return null;
   }
   
-  public xnl a()
+  public xrg a()
   {
     return a(this.jdField_b_of_type_Int);
   }
   
-  public xnl a(int paramInt)
+  public xrg a(int paramInt)
   {
-    xnl localxnl = null;
+    xrg localxrg = null;
     if (paramInt >= 0)
     {
-      xoy localxoy = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.a(paramInt);
-      if (localxoy != null) {
-        localxnl = (xnl)localxoy.a;
+      xst localxst = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.a(paramInt);
+      if (localxst != null) {
+        localxrg = (xrg)localxst.a;
       }
-      return localxnl;
+      return localxrg;
     }
-    yqp.d(this.jdField_a_of_type_JavaLangString, "getPageHolderOfPosition, return null ! position=%d", new Object[] { Integer.valueOf(paramInt) });
+    yuk.d(this.jdField_a_of_type_JavaLangString, "getPageHolderOfPosition, return null ! position=%d", new Object[] { Integer.valueOf(paramInt) });
     return null;
   }
   
-  public void a(int paramInt, xiy paramxiy, @NonNull ArrayList<xne> paramArrayList)
+  public void a(int paramInt, xmt paramxmt, @NonNull ArrayList<xqz> paramArrayList)
   {
     boolean bool = this.jdField_a_of_type_Boolean;
-    super.a(paramInt, paramxiy, paramArrayList);
+    super.a(paramInt, paramxmt, paramArrayList);
     if (bool)
     {
-      yqp.b(this.jdField_a_of_type_JavaLangString, "onReBind, verticalPosition: %d => %d, old-data.size=%d, new-data.size=%d, groupId=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(paramArrayList.size()), paramxiy.jdField_a_of_type_Xix.jdField_a_of_type_JavaLangString });
+      yuk.b(this.jdField_a_of_type_JavaLangString, "onReBind, verticalPosition: %d => %d, old-data.size=%d, new-data.size=%d, groupId=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(paramArrayList.size()), paramxmt.jdField_a_of_type_Xms.jdField_a_of_type_JavaLangString });
       this.c = a().mUIStyle.mPlayerRepeatMode;
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder$StoryPlayerVideoAdapter.a(paramArrayList, paramInt);
-      paramxiy = a(paramxiy.jdField_a_of_type_Xix.jdField_a_of_type_JavaLangString);
-      if (paramxiy == null) {
+      paramxmt = a(paramxmt.jdField_a_of_type_Xms.jdField_a_of_type_JavaLangString);
+      if (paramxmt == null) {
         break label619;
       }
       paramInt = 0;
@@ -158,69 +158,69 @@ public class StoryPlayerGroupHolder
       if (paramInt >= paramArrayList.size()) {
         break label619;
       }
-      if (!TextUtils.equals(((xne)paramArrayList.get(paramInt)).jdField_a_of_type_JavaLangString, paramxiy)) {
+      if (!TextUtils.equals(((xqz)paramArrayList.get(paramInt)).jdField_a_of_type_JavaLangString, paramxmt)) {
         break label304;
       }
     }
     for (;;)
     {
-      paramxiy = (xma)b(xma.class);
-      if ((d()) && (paramxiy != null) && (paramxiy.c()))
+      paramxmt = (xpv)b(xpv.class);
+      if ((d()) && (paramxmt != null) && (paramxmt.c()))
       {
-        yqp.a(this.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onBind, weishi hide loading state", Integer.valueOf(paramInt));
-        paramxiy.e();
+        yuk.a(this.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onBind, weishi hide loading state", Integer.valueOf(paramInt));
+        paramxmt.e();
         if ((paramInt > 0) && (paramInt + 1 < paramArrayList.size()))
         {
           this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.setCurrentItem(paramInt + 1);
-          yqp.a(this.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onBind, change to next video", Integer.valueOf(paramInt));
+          yuk.a(this.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onBind, change to next video", Integer.valueOf(paramInt));
           return;
-          yqp.a(this.jdField_a_of_type_JavaLangString, "onBind, verticalPosition: %d, data.size=%d, groupId=%s", Integer.valueOf(paramInt), Integer.valueOf(paramArrayList.size()), paramxiy.jdField_a_of_type_Xix.jdField_a_of_type_JavaLangString);
+          yuk.a(this.jdField_a_of_type_JavaLangString, "onBind, verticalPosition: %d, data.size=%d, groupId=%s", Integer.valueOf(paramInt), Integer.valueOf(paramArrayList.size()), paramxmt.jdField_a_of_type_Xms.jdField_a_of_type_JavaLangString);
           break;
           label304:
           paramInt += 1;
           break label124;
         }
-        paramxiy = a();
-        if ((paramxiy instanceof xnm))
+        paramxmt = a();
+        if ((paramxmt instanceof xrh))
         {
-          paramxiy = (VideoViewVideoHolder)((xnm)paramxiy).b(VideoViewVideoHolder.class);
-          if (paramxiy != null)
+          paramxmt = (VideoViewVideoHolder)((xrh)paramxmt).b(VideoViewVideoHolder.class);
+          if (paramxmt != null)
           {
-            paramxiy.d();
-            yqp.a(this.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onBind, resume play", Integer.valueOf(paramInt));
+            paramxmt.d();
+            yuk.a(this.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onBind, resume play", Integer.valueOf(paramInt));
           }
         }
       }
       if (paramInt == -1)
       {
         paramInt = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.c();
-        yqp.a(this.jdField_a_of_type_JavaLangString, "onBind, -1 ==>> getCurrentItem=%d", Integer.valueOf(paramInt));
+        yuk.a(this.jdField_a_of_type_JavaLangString, "onBind, -1 ==>> getCurrentItem=%d", Integer.valueOf(paramInt));
       }
       for (;;)
       {
         if (paramInt >= 0) {}
         for (;;)
         {
-          yqp.b(this.jdField_a_of_type_JavaLangString, "onBind, verticalPosition=%d, data.size=%d, groupId=%s, current=%d, selected=%d, mPlayerRepeatMode=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(paramArrayList.size()), this.jdField_a_of_type_Xix.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.c()), Integer.valueOf(paramInt), Integer.valueOf(this.c) });
+          yuk.b(this.jdField_a_of_type_JavaLangString, "onBind, verticalPosition=%d, data.size=%d, groupId=%s, current=%d, selected=%d, mPlayerRepeatMode=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(paramArrayList.size()), this.jdField_a_of_type_Xms.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.c()), Integer.valueOf(paramInt), Integer.valueOf(this.c) });
           if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.c() != paramInt) {
             break label607;
           }
-          paramxiy = a(paramInt);
-          yqp.a(this.jdField_a_of_type_JavaLangString, "onBind, getPageHolderOfPosition = %s", paramxiy);
-          if ((paramxiy != null) && (paramxiy.c())) {
+          paramxmt = a(paramInt);
+          yuk.a(this.jdField_a_of_type_JavaLangString, "onBind, getPageHolderOfPosition = %s", paramxmt);
+          if ((paramxmt != null) && (paramxmt.c())) {
             break label591;
           }
-          yqp.a(this.jdField_a_of_type_JavaLangString, "onBind, fake onPageSelected, position = %d", Integer.valueOf(paramInt));
-          this.jdField_a_of_type_Xpc.a(paramInt);
-          paramxiy = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.a().iterator();
-          while (paramxiy.hasNext()) {
-            ((xpc)paramxiy.next()).a(paramInt);
+          yuk.a(this.jdField_a_of_type_JavaLangString, "onBind, fake onPageSelected, position = %d", Integer.valueOf(paramInt));
+          this.jdField_a_of_type_Xsx.a(paramInt);
+          paramxmt = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.a().iterator();
+          while (paramxmt.hasNext()) {
+            ((xsx)paramxmt.next()).a(paramInt);
           }
           break;
           paramInt = 0;
         }
         label591:
-        yqp.a(this.jdField_a_of_type_JavaLangString, "onBind, setCurrentItem ignore position = %d, selectedItem=%s", Integer.valueOf(paramInt), paramxiy);
+        yuk.a(this.jdField_a_of_type_JavaLangString, "onBind, setCurrentItem ignore position = %d, selectedItem=%s", Integer.valueOf(paramInt), paramxmt);
         return;
         label607:
         this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.setCurrentItem(paramInt);
@@ -231,23 +231,23 @@ public class StoryPlayerGroupHolder
     }
   }
   
-  public void a(xmd paramxmd, xos paramxos)
+  public void a(xpy paramxpy, xsn paramxsn)
   {
-    this.jdField_a_of_type_Xmd = paramxmd;
-    this.jdField_a_of_type_Xos = paramxos;
+    this.jdField_a_of_type_Xpy = paramxpy;
+    this.jdField_a_of_type_Xsn = paramxsn;
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    xlr localxlr;
+    xpm localxpm;
     if (paramBoolean1)
     {
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
       if (paramBoolean2)
       {
-        localxlr = (xlr)a(xlr.class);
-        if (localxlr != null) {
-          localxlr.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        localxpm = (xpm)a(xpm.class);
+        if (localxpm != null) {
+          localxpm.jdField_a_of_type_AndroidViewView.setVisibility(0);
         }
       }
     }
@@ -258,14 +258,14 @@ public class StoryPlayerGroupHolder
         return;
         this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
       } while (!paramBoolean2);
-      localxlr = (xlr)a(xlr.class);
-    } while (localxlr == null);
-    localxlr.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      localxpm = (xpm)a(xpm.class);
+    } while (localxpm == null);
+    localxpm.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager = ((XViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131380863));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager = ((XViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131381041));
     int i = (int)this.jdField_a_of_type_AndroidViewView.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.setPageTurningThreshold(0.3F);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.setDistanceAndVelocityThreshold(i * 10, i * 80);
@@ -277,11 +277,11 @@ public class StoryPlayerGroupHolder
     StoryPlayerGroupHolder.StoryPlayerVideoAdapter localStoryPlayerVideoAdapter = new StoryPlayerGroupHolder.StoryPlayerVideoAdapter(this, a(), this);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder$StoryPlayerVideoAdapter = localStoryPlayerVideoAdapter;
     localXViewPager.setAdapter(localStoryPlayerVideoAdapter);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder$StoryPlayerVideoAdapter.a(this.jdField_b_of_type_Xos);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.setOnPageChangeListener(this.jdField_a_of_type_Xpc);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder$StoryPlayerVideoAdapter.a(this.jdField_b_of_type_Xsn);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.setOnPageChangeListener(this.jdField_a_of_type_Xsx);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.post(new StoryPlayerGroupHolder.1(this));
     super.b();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.setOnVisibilityChangeListener(new xmz(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.setOnVisibilityChangeListener(new xqu(this));
   }
   
   public void c()
@@ -298,8 +298,8 @@ public class StoryPlayerGroupHolder
   public boolean d()
   {
     boolean bool = false;
-    if ((this.jdField_a_of_type_Xix instanceof xjl)) {
-      bool = wsl.a(QQStoryContext.a()).a(((xjl)this.jdField_a_of_type_Xix).a());
+    if ((this.jdField_a_of_type_Xms instanceof xng)) {
+      bool = wwg.a(QQStoryContext.a()).a(((xng)this.jdField_a_of_type_Xms).a());
     }
     return bool;
   }
@@ -309,18 +309,18 @@ public class StoryPlayerGroupHolder
     boolean bool2 = false;
     boolean bool1 = bool2;
     Object localObject;
-    if (TextUtils.equals(this.jdField_a_of_type_Xmu.a().jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xix.jdField_a_of_type_JavaLangString))
+    if (TextUtils.equals(this.jdField_a_of_type_Xqp.a().jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xms.jdField_a_of_type_JavaLangString))
     {
-      localObject = a(this.jdField_a_of_type_Xix.jdField_a_of_type_JavaLangString);
+      localObject = a(this.jdField_a_of_type_Xms.jdField_a_of_type_JavaLangString);
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         break label83;
       }
       localObject = a();
-      yqp.a(this.jdField_a_of_type_JavaLangString, "no selected Vid, current = %s", localObject);
+      yuk.a(this.jdField_a_of_type_JavaLangString, "no selected Vid, current = %s", localObject);
       bool1 = bool2;
       if (localObject != null)
       {
-        a((xnl)localObject);
+        a((xrg)localObject);
         bool1 = true;
       }
     }
@@ -333,10 +333,10 @@ public class StoryPlayerGroupHolder
       if (i >= StoryPlayerGroupHolder.StoryPlayerVideoAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder$StoryPlayerVideoAdapter).size()) {
         break;
       }
-      xnl localxnl = (xnl)StoryPlayerGroupHolder.StoryPlayerVideoAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder$StoryPlayerVideoAdapter).valueAt(i);
-      if (TextUtils.equals(localxnl.a.jdField_a_of_type_JavaLangString, (CharSequence)localObject))
+      xrg localxrg = (xrg)StoryPlayerGroupHolder.StoryPlayerVideoAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder$StoryPlayerVideoAdapter).valueAt(i);
+      if (TextUtils.equals(localxrg.a.jdField_a_of_type_JavaLangString, (CharSequence)localObject))
       {
-        a(localxnl);
+        a(localxrg);
         return true;
       }
       i += 1;

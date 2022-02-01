@@ -1,23 +1,29 @@
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.GlowCountRecyclerView;
+import com.tencent.mobileqq.olympic.activity.PromotionEntry;
 
 public class azea
+  implements View.OnTouchListener
 {
-  public long a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public GlowCountRecyclerView a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  View c;
-  public ImageView c;
-  public View d;
-  public ImageView d;
-  View e;
+  public azea(PromotionEntry paramPromotionEntry) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (PromotionEntry.a(this.a) == null) {}
+    do
+    {
+      return false;
+      if (paramMotionEvent.getAction() == 1)
+      {
+        PromotionEntry.a(this.a).setAlpha(255);
+        return false;
+      }
+    } while (paramMotionEvent.getAction() != 0);
+    PromotionEntry.a(this.a).setAlpha(100);
+    return false;
+  }
 }
 
 

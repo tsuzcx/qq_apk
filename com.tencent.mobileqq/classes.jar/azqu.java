@@ -1,49 +1,134 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
-import com.tencent.mobileqq.widget.RatioLayout;
-
 public class azqu
-  implements ValueAnimator.AnimatorUpdateListener
+  extends azqt
 {
-  public azqu(VasProfileTagView paramVasProfileTagView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public azqt a()
   {
-    Object localObject = VasProfileTagView.a(this.a).getLayoutParams();
-    if (localObject != null)
-    {
-      ((ViewGroup.LayoutParams)localObject).height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-      VasProfileTagView.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        localObject = (FrameLayout)VasProfileTagView.b(this.a).findViewById(16908290);
-        if ((localObject != null) && (((FrameLayout)localObject).getChildCount() > 0))
-        {
-          localObject = ((FrameLayout)localObject).getChildAt(0);
-          if (localObject != null)
-          {
-            localObject = ((View)localObject).getBackground();
-            if ((localObject instanceof BitmapDrawable))
-            {
-              int j = (int)(255.0F * paramValueAnimator.getAnimatedFraction());
-              int i = j;
-              if (paramValueAnimator == VasProfileTagView.a(this.a)) {
-                i = 255 - j;
-              }
-              ((Drawable)localObject).setAlpha(i);
-            }
-          }
-        }
-      }
-    }
+    return this;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.e = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_c_of_type_Long = paramLong;
+  }
+  
+  public void a(azqs paramazqs)
+  {
+    this.jdField_a_of_type_Azqs = paramazqs;
+  }
+  
+  public void a(azqv paramazqv)
+  {
+    this.jdField_a_of_type_Azqv = paramazqv;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_g_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_h_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_f_of_type_Int = paramInt;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_g_of_type_Long = paramLong;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_h_of_type_JavaLangString = paramString;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_j_of_type_Boolean = paramBoolean;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_g_of_type_Int = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void d(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public void e(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void e(String paramString)
+  {
+    this.d = paramString;
+  }
+  
+  public void f(int paramInt)
+  {
+    this.jdField_h_of_type_Int = paramInt;
+  }
+  
+  public void f(String paramString)
+  {
+    this.jdField_f_of_type_JavaLangString = paramString;
+  }
+  
+  public void g(int paramInt)
+  {
+    this.jdField_j_of_type_Int = paramInt;
+  }
+  
+  public void h(int paramInt)
+  {
+    this.k = paramInt;
+  }
+  
+  public void i(int paramInt)
+  {
+    this.l = paramInt;
+  }
+  
+  public void j(int paramInt)
+  {
+    this.m = paramInt;
+  }
+  
+  public void k(int paramInt)
+  {
+    this.n = paramInt;
+  }
+  
+  public void l(int paramInt)
+  {
+    this.o = paramInt;
+  }
+  
+  public void m(int paramInt)
+  {
+    this.q = paramInt;
   }
 }
 

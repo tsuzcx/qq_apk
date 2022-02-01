@@ -1,31 +1,61 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.GameRich;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public final class arhb
-  implements Parcelable.Creator
+public class arhb
+  extends arac<arha>
 {
-  public IPSiteModel.GameRich a(Parcel paramParcel)
+  @NonNull
+  public arha a(int paramInt)
   {
-    IPSiteModel.GameRich localGameRich = new IPSiteModel.GameRich();
-    localGameRich.anchorFaceUrl = paramParcel.readString();
-    localGameRich.anchorId = paramParcel.readString();
-    localGameRich.anchorName = paramParcel.readString();
-    localGameRich.coverUrl = paramParcel.readString();
-    localGameRich.online = paramParcel.readString();
-    localGameRich.title = paramParcel.readString();
-    localGameRich.richJumpUrl = paramParcel.readString();
-    return localGameRich;
+    return new arha();
   }
   
-  public IPSiteModel.GameRich[] a(int paramInt)
+  @Nullable
+  public arha a(araj[] paramArrayOfaraj)
   {
-    return new IPSiteModel.GameRich[paramInt];
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return arha.a(paramArrayOfaraj[0].a);
+    }
+    return null;
+  }
+  
+  public void a(arha paramarha) {}
+  
+  public Class<arha> clazz()
+  {
+    return arha.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 419;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arhb
  * JD-Core Version:    0.7.0.1
  */

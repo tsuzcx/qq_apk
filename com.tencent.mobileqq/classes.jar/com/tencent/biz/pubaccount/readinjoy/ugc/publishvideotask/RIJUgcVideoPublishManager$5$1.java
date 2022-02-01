@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import rps;
+import rgo;
 
 class RIJUgcVideoPublishManager$5$1
   implements Runnable
@@ -13,7 +13,7 @@ class RIJUgcVideoPublishManager$5$1
     if (this.a.a.status == UgcVideo.STATUS_FINISH)
     {
       this.a.this$0.a(this.a.a);
-      rps.a(this.a.this$0, this.a.a);
+      rgo.a(this.a.this$0, this.a.a);
     }
   }
 }

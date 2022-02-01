@@ -1,19 +1,62 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity.30;
+import android.app.Dialog;
+import android.os.Message;
+import java.lang.reflect.Field;
 
 public class adkm
-  implements DialogInterface.OnClickListener
 {
-  public adkm(AddFriendVerifyActivity.30 param30) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(Dialog paramDialog)
   {
-    if (paramInt == 1)
+    if (paramDialog == null) {}
+    for (;;)
     {
-      this.a.this$0.a.cancel();
-      this.a.this$0.finish();
+      return;
+      String[] arrayOfString = new String[3];
+      arrayOfString[0] = "mDismissMessage";
+      arrayOfString[1] = "mCancelMessage";
+      arrayOfString[2] = "mShowMessage";
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = arrayOfString[i];
+        try
+        {
+          localObject = Dialog.class.getDeclaredField((String)localObject);
+          if (localObject != null)
+          {
+            if (!((Field)localObject).isAccessible()) {
+              ((Field)localObject).setAccessible(true);
+            }
+            localObject = ((Field)localObject).get(paramDialog);
+            if ((localObject instanceof Message))
+            {
+              localObject = (Message)localObject;
+              if (((Message)localObject).obj != null)
+              {
+                ((Message)localObject).obj = null;
+                ((Message)localObject).what = 0;
+              }
+            }
+          }
+        }
+        catch (NoSuchFieldException localNoSuchFieldException)
+        {
+          localNoSuchFieldException.printStackTrace();
+        }
+        catch (IllegalArgumentException localIllegalArgumentException)
+        {
+          localIllegalArgumentException.printStackTrace();
+        }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          localIllegalAccessException.printStackTrace();
+        }
+        catch (Throwable localThrowable)
+        {
+          localThrowable.printStackTrace();
+        }
+        i += 1;
+      }
     }
   }
 }

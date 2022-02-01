@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aemr;
-import ajvd;
+import aevu;
+import akgm;
 
 public class Leba$30$1
   implements Runnable
 {
-  public Leba$30$1(aemr paramaemr) {}
+  public Leba$30$1(aevu paramaevu) {}
   
   public void run()
   {

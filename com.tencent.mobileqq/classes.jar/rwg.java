@@ -1,20 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import android.graphics.Bitmap;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class rwg
-  implements View.OnClickListener
+public abstract interface rwg
 {
-  rwg(rvx paramrvx, VideoInfo paramVideoInfo) {}
+  public abstract void a(rwf paramrwf);
   
-  public final void onClick(View paramView)
-  {
-    rvx.a(this.jdField_a_of_type_Rvx, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(rwf paramrwf, Object paramObject);
+  
+  public abstract void a(rwf paramrwf, String paramString);
+  
+  public abstract void a(rwf paramrwf, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap);
+  
+  public abstract boolean a(rwf paramrwf, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
+  
+  public abstract boolean a(rwf paramrwf, int paramInt, Object paramObject);
+  
+  public abstract void b(rwf paramrwf);
+  
+  public abstract void c(rwf paramrwf);
+  
+  public abstract void d(rwf paramrwf);
 }
 
 

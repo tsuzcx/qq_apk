@@ -1,18 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
 public class ajmh
-  extends anxg
+  extends ajmf
 {
-  public ajmh(ContactsTroopAdapter paramContactsTroopAdapter) {}
+  public ArrayList<ajiq> a;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public ajmh(ArrayList<ajiq> paramArrayList)
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
-    if (localBitmap != null) {
-      ContactsTroopAdapter.a(this.a, paramString, localBitmap);
-    }
+    this.a = paramArrayList;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

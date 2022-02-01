@@ -3,48 +3,48 @@ package com.tencent.biz.qqcircle.bizparts;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.biz.qqcircle.events.QCirclePublishBoxStatusEvent;
-import uxx;
-import vda;
-import vrf;
-import yqp;
+import uzg;
+import vfe;
+import vtq;
+import yuk;
 
 public class QCirclePublishStatusBoxPart$1
   implements Runnable
 {
-  public QCirclePublishStatusBoxPart$1(vda paramvda, QCirclePublishBoxStatusEvent paramQCirclePublishBoxStatusEvent) {}
+  public QCirclePublishStatusBoxPart$1(vfe paramvfe, QCirclePublishBoxStatusEvent paramQCirclePublishBoxStatusEvent) {}
   
   public void run()
   {
     if (this.a.taskCount <= 0)
     {
-      vda.a(this.this$0).setVisibility(8);
-      yqp.c("QCirclePushFeedPart", "updateUploadBoxStatus  PublishBoxStatusEvent  GONE");
+      vfe.a(this.this$0).setVisibility(8);
+      yuk.c("QCirclePushFeedPart", "updateUploadBoxStatus  PublishBoxStatusEvent  GONE");
       return;
     }
-    if ((vda.a(this.this$0) != null) && (uxx.a(vda.a(this.this$0))))
+    if ((vfe.a(this.this$0) != null) && (uzg.a(vfe.a(this.this$0))))
     {
-      vrf.a("", 16, 1, 0, this.this$0.c());
-      vda.a(this.this$0).setVisibility(0);
+      vtq.a("", 16, 1, 0, this.this$0.c());
+      vfe.a(this.this$0).setVisibility(0);
     }
     for (;;)
     {
-      yqp.c("QCirclePushFeedPart", "updateUploadBoxStatus  PublishBoxStatusEvent  VISIBLE  taskCount = " + this.a.taskCount + "  hasRunningTask:" + this.a.hasRunningTask + "  hasOfflineWaitingTask:" + this.a.hasOfflineWaitingTask);
+      yuk.c("QCirclePushFeedPart", "updateUploadBoxStatus  PublishBoxStatusEvent  VISIBLE  taskCount = " + this.a.taskCount + "  hasRunningTask:" + this.a.hasRunningTask + "  hasOfflineWaitingTask:" + this.a.hasOfflineWaitingTask);
       if (!this.a.hasRunningTask) {
         break;
       }
-      vda.a(this.this$0).setBackgroundResource(2130844037);
-      vda.a(this.this$0, String.valueOf(this.a.taskCount));
+      vfe.a(this.this$0).setBackgroundResource(2130844056);
+      vfe.a(this.this$0, String.valueOf(this.a.taskCount));
       return;
-      vda.a(this.this$0).setVisibility(8);
+      vfe.a(this.this$0).setVisibility(8);
     }
     if (this.a.hasOfflineWaitingTask)
     {
-      vda.a(this.this$0).setBackgroundResource(2130848639);
-      vda.a(this.this$0, "");
+      vfe.a(this.this$0).setBackgroundResource(2130848658);
+      vfe.a(this.this$0, "");
       return;
     }
-    vda.a(this.this$0).setBackgroundResource(2130848638);
-    vda.a(this.this$0, "");
+    vfe.a(this.this$0).setBackgroundResource(2130848657);
+    vfe.a(this.this$0, "");
   }
 }
 

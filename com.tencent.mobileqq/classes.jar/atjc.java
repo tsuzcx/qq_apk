@@ -1,19 +1,18 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class atjc
-  extends bbio<bbmy, bbvg>
+  implements View.OnClickListener
 {
-  public atjc(TroopFileSearchFragment paramTroopFileSearchFragment) {}
+  public atjc(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  protected bbps<bbmy, bbvg> a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new atje();
-  }
-  
-  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new atjg(paramViewGroup);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

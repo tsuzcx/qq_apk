@@ -1,17 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 
 public class suw
-  implements pxp
+  extends BitmapDrawable
 {
-  public suw(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
-  
-  public void a(int paramInt)
+  public suw(Bitmap paramBitmap)
   {
-    if (paramInt == 0) {
-      ReadinjoyTabFrame.g(this.a);
-    }
-    QLog.d("ReadInJoyTabFrame", 2, "ugcAccountCreateResult result = " + paramInt);
+    super(paramBitmap);
   }
 }
 

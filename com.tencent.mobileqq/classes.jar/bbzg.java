@@ -1,12 +1,12 @@
-import java.util.Comparator;
-
-final class bbzg
-  implements Comparator<acxk>
+public abstract interface bbzg
 {
-  public int a(acxk paramacxk1, acxk paramacxk2)
-  {
-    return paramacxk2.a() - paramacxk1.a();
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void a(String paramString);
+  
+  public abstract long b();
+  
+  public abstract long c();
 }
 
 

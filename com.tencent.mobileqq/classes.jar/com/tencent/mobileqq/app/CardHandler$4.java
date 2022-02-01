@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import anip;
+import anum;
 
 public class CardHandler$4
   implements Runnable
 {
-  public CardHandler$4(anip paramanip) {}
+  public CardHandler$4(anum paramanum) {}
   
   public void run()
   {
-    anip.a(this.this$0);
+    anum.a(this.this$0);
   }
 }
 

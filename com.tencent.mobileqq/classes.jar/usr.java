@@ -1,31 +1,35 @@
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.biz.pubaccount.weishi_new.event.WSUserAuthEvent;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager.ResponseThrowable;
+import rx.Subscriber;
 
-public abstract class usr<T>
-  extends bkrv<T>
+public class usr
+  extends Subscriber<ust>
 {
-  public WSVerticalPageFragment a;
-  public T a;
-  public uei<T> a;
+  public usr(WSVerticalDataManager paramWSVerticalDataManager, usf paramusf) {}
   
-  public usr(ViewGroup paramViewGroup, int paramInt1, int paramInt2, WSVerticalPageFragment paramWSVerticalPageFragment)
+  public void a(ust paramust)
   {
-    super(paramViewGroup, paramInt1);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
-    this.jdField_a_of_type_Uei = a(paramInt2);
+    if (paramust == null) {}
+    do
+    {
+      return;
+      if ((paramust.b) && (uea.a())) {
+        uhf.a().a(new WSUserAuthEvent());
+      }
+    } while (this.jdField_a_of_type_Usf == null);
+    this.jdField_a_of_type_Usf.a(paramust.jdField_a_of_type_JavaUtilList, paramust.jdField_a_of_type_Boolean, paramust.b, paramust.jdField_a_of_type_JavaLangObject);
   }
   
-  public abstract FrameLayout a();
+  public void onCompleted() {}
   
-  public abstract uei<T> a(int paramInt);
-  
-  public abstract void a(int paramInt);
-  
-  public void a(T paramT)
+  public void onError(Throwable paramThrowable)
   {
-    super.a(paramT);
-    this.jdField_a_of_type_JavaLangObject = paramT;
+    if ((this.jdField_a_of_type_Usf != null) && ((paramThrowable instanceof WSVerticalDataManager.ResponseThrowable)))
+    {
+      paramThrowable = (WSVerticalDataManager.ResponseThrowable)paramThrowable;
+      this.jdField_a_of_type_Usf.a(paramThrowable.mErrorCode, paramThrowable.mErrorMsg);
+    }
   }
 }
 

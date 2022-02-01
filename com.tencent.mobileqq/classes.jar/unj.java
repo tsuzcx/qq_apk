@@ -1,14 +1,27 @@
-import UserGrowth.stBlockRecommPersonReq;
-import UserGrowth.stBlockRecommPersonRsp;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-public class unj
-  extends ujr<stBlockRecommPersonRsp>
+class unj
+  implements Animator.AnimatorListener
 {
-  public unj(String paramString)
+  unj(unh paramunh) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super("BlockRecommPerson");
-    this.a = new stBlockRecommPersonReq(paramString);
+    unh.a(this.a).removeAnimatorListener(this);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    unh.b(this.a);
+    unh.a(this.a).setVisibility(8);
+    unh.a(this.a).removeAnimatorListener(this);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

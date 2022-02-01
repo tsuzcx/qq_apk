@@ -2,18 +2,18 @@ package com.tencent.mobileqq.location.ui;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import avxq;
-import avyg;
-import bglp;
-import bgpa;
+import awql;
+import awrb;
+import bhlq;
+import bhpc;
 
 public final class LocationDialogUtil$8
   implements Runnable
 {
   public void run()
   {
-    bgpa localbgpa = bglp.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131718120) + this.jdField_a_of_type_JavaLangString, 2131694081, 2131690582, new avyg(this), null);
-    avxq.a(this.jdField_a_of_type_AndroidAppActivity, localbgpa);
+    bhpc localbhpc = bhlq.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131718253) + this.jdField_a_of_type_JavaLangString, 2131694098, 2131690580, new awrb(this), null);
+    awql.a(this.jdField_a_of_type_AndroidAppActivity, localbhpc);
   }
 }
 

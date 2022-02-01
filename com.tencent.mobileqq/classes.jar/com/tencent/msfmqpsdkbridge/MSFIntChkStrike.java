@@ -13,10 +13,10 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import bgnw;
-import bgsg;
-import biic;
-import biif;
+import bhny;
+import bhsi;
+import bjjb;
+import bjje;
 import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -30,7 +30,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 public class MSFIntChkStrike
-  implements biif
+  implements bjje
 {
   private static final int BTN_ACTION_BROWSER = 5;
   private static final int BTN_ACTION_BROWSER_AND_LOGOUT = 6;
@@ -45,7 +45,7 @@ public class MSFIntChkStrike
   private int mNetworkFlags;
   private String mPackageDownloadURL = "";
   private String mPackageName = "MQPINTCHK";
-  private biic mResultListener;
+  private bjjb mResultListener;
   private int mStrikeResult = 0;
   private int mStrikeType;
   private boolean mToastAlreadyShown;
@@ -122,7 +122,7 @@ public class MSFIntChkStrike
               if (this.mApp != null)
               {
                 this.mApp.logout(true);
-                bgsg.a(this.mApp.getApp(), this.mApp.getCurrentAccountUin(), false);
+                bhsi.a(this.mApp.getApp(), this.mApp.getCurrentAccountUin(), false);
               }
               localObject = new Intent(paramDialogInterface, LoginActivity.class);
               ((Intent)localObject).addFlags(335544320);
@@ -190,7 +190,7 @@ public class MSFIntChkStrike
     }
   }
   
-  public void exec(String paramString, biic parambiic)
+  public void exec(String paramString, bjjb parambjjb)
   {
     Object localObject1 = null;
     Object localObject3 = null;
@@ -215,13 +215,13 @@ public class MSFIntChkStrike
             if (TextUtils.isEmpty(paramString)) {
               break;
             }
-            if (parambiic != null) {
-              this.mResultListener = parambiic;
+            if (parambjjb != null) {
+              this.mResultListener = parambjjb;
             }
-            parambiic = DocumentBuilderFactory.newInstance();
+            parambjjb = DocumentBuilderFactory.newInstance();
             try
             {
-              localObject1 = parambiic.newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes())).getDocumentElement();
+              localObject1 = parambjjb.newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes())).getDocumentElement();
               paramString = ((Element)localObject1).getElementsByTagName("title");
               if (paramString.getLength() == 0) {
                 break;
@@ -248,13 +248,13 @@ public class MSFIntChkStrike
                   this.mNetworkFlags = 0;
                 }
               }
-              parambiic = "";
+              parambjjb = "";
               paramString = ((Element)localObject1).getElementsByTagName("btn_confirm");
               if (paramString.getLength() <= 0) {
                 break label762;
               }
               paramString = (Element)paramString.item(0);
-              parambiic = paramString.getAttribute("text");
+              parambjjb = paramString.getAttribute("text");
               paramString = new MSFIntChkStrike.1(this, Integer.parseInt(paramString.getAttribute("action")));
               localObject3 = "";
               localObject1 = ((Element)localObject1).getElementsByTagName("btn_cancel");
@@ -265,7 +265,7 @@ public class MSFIntChkStrike
               localObject3 = ((Element)localObject1).getAttribute("text");
               localObject1 = new MSFIntChkStrike.2(this, Integer.parseInt(((Element)localObject1).getAttribute("action")));
               MSFIntChkStrike.3 local3 = new MSFIntChkStrike.3(this);
-              new Handler(Looper.getMainLooper()).post(new MSFIntChkStrike.4(this, str1, str2, paramString, (DialogInterface.OnClickListener)localObject1, (String)localObject3, parambiic, local3));
+              new Handler(Looper.getMainLooper()).post(new MSFIntChkStrike.4(this, str1, str2, paramString, (DialogInterface.OnClickListener)localObject1, (String)localObject3, parambjjb, local3));
               return;
             }
             catch (Exception paramString)
@@ -284,7 +284,7 @@ public class MSFIntChkStrike
       }
       if (this.mStrikeType == 2)
       {
-        if (parambiic != null) {}
+        if (parambjjb != null) {}
         label584:
         for (;;)
         {
@@ -299,7 +299,7 @@ public class MSFIntChkStrike
             {
               paramString.put("strike_result", 5);
               if (paramString != null) {
-                parambiic.a(paramString.toString());
+                parambjjb.a(paramString.toString());
               }
               this.mApp.b(false);
               return;
@@ -333,13 +333,13 @@ public class MSFIntChkStrike
           for (;;)
           {
             paramString.put("strike_result", i);
-            parambiic.a(paramString.toString());
+            parambjjb.a(paramString.toString());
             return;
             paramString = paramString;
             paramString.printStackTrace();
             paramString = localContext;
             continue;
-            if (!bgnw.a(localContext, paramString, this.mApp.getCurrentAccountUin())) {
+            if (!bhny.a(localContext, paramString, this.mApp.getCurrentAccountUin())) {
               break;
             }
             i = 13;
@@ -358,10 +358,10 @@ public class MSFIntChkStrike
         break;
       }
       localContext = this.mApp.getApp().getApplicationContext();
-      if (!bgnw.a(localContext, paramString))
+      if (!bhny.a(localContext, paramString))
       {
         i = 11;
-        if (parambiic == null) {
+        if (parambjjb == null) {
           break;
         }
         paramString = new JSONObject();

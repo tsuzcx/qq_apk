@@ -1,28 +1,24 @@
+import android.app.Activity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class ahez
-  extends afuv
+  implements bliz
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String a;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  CornerImageView jdField_b_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String b;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  View jdField_d_of_type_AndroidViewView;
-  TextView jdField_d_of_type_AndroidWidgetTextView;
-  View e;
-  View f;
-  View g;
+  ahez(ahex paramahex, blir paramblir) {}
   
-  ahez(ahew paramahew) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    this.jdField_a_of_type_Blir.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    ChatActivityUtils.a(this.jdField_a_of_type_Ahex.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Ahex.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahex.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Ahex.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ahex.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, null, true, this.jdField_a_of_type_Ahex.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, true, true, null, "from_internal");
+    bdll.b(this.jdField_a_of_type_Ahex.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
+  }
 }
 
 

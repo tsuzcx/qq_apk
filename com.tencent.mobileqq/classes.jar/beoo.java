@@ -1,18 +1,24 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.AbsNewTroopBaseView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
 
-public class beoo
-  extends AnimatorListenerAdapter
+class beoo
+  extends bepm<EditorState>
 {
-  public beoo(NewTroopCreateActivity paramNewTroopCreateActivity) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  beoo(beoh parambeoh, EditorState paramEditorState, List paramList)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView.a(this.a.jdField_a_of_type_Boolean);
+    super(paramEditorState, paramList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    super.a(paramEditorState);
+    if (bemv.a(beoh.a(this.a), beoh.a(this.a)))
+    {
+      beoh.a(this.a).a(false, false);
+      return;
     }
+    beoh.a(this.a).a(EditorState.CLOSED_BY_ADMIN, beoh.a(this.a).getString(2131719380));
   }
 }
 

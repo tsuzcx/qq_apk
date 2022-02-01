@@ -1,35 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.graphics.PointF;
 
-class bhti
-  extends niv
+final class bhti
+  implements bhtk<PointF>
 {
-  bhti(bhte parambhte, bhtl parambhtl) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
   {
-    if (this.jdField_a_of_type_Bhtl != null)
-    {
-      paramBundle = new oidb_0x8e4.RspBody();
-      if (paramArrayOfByte == null) {}
-    }
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_Bhtl.a(paramInt, paramBundle);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("WerewolvesHandler", 2, paramArrayOfByte.getMessage());
-        }
-      }
-    }
+    float f1 = paramPointF1.x;
+    float f2 = paramPointF1.y;
+    return new PointF(f1 + (paramPointF2.x - f1) * paramFloat, f2 + (paramPointF2.y - f2) * paramFloat);
   }
 }
 

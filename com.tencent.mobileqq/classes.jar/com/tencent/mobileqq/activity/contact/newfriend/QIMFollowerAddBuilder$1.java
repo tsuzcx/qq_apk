@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aiyr;
-import aizx;
-import ajbh;
+import ajka;
+import ajlg;
+import ajmp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class QIMFollowerAddBuilder$1
   implements Runnable
 {
-  public QIMFollowerAddBuilder$1(aizx paramaizx) {}
+  public QIMFollowerAddBuilder$1(ajlg paramajlg) {}
   
   public void run()
   {
-    ((aiyr)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).a(((ajbh)this.this$0.jdField_a_of_type_Ajax).a);
+    ((ajka)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).a(((ajmp)this.this$0.jdField_a_of_type_Ajmf).a);
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new QIMFollowerAddBuilder.1.1(this));
   }
 }

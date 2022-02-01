@@ -1,13 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-
 public class alwx
-  implements DialogInterface.OnClickListener
 {
-  public alwx(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public static final String a = anzj.a(2131711256) + win.a + anzj.a(2131711257);
 }
 
 

@@ -1,9 +1,13 @@
+import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.AbsPublishColumnFragment;
+
 public class rfh
-  extends rfi
+  implements tkh
 {
-  public rfh(Long paramLong, Integer paramInteger, String paramString1, String paramString2)
+  public rfh(AbsPublishColumnFragment paramAbsPublishColumnFragment) {}
+  
+  public void a(int paramInt)
   {
-    super(paramLong, paramInteger, paramString1, paramString2);
+    this.a.g();
   }
 }
 

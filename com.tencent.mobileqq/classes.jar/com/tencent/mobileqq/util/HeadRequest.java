@@ -4,12 +4,12 @@ import AvatarInfo.QQHeadInfo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bghc;
+import bhhd;
 
 public class HeadRequest
   implements Parcelable
 {
-  public static final Parcelable.Creator<HeadRequest> CREATOR = new bghc();
+  public static final Parcelable.Creator<HeadRequest> CREATOR = new bhhd();
   public int a;
   public QQHeadInfo a;
   public String a;

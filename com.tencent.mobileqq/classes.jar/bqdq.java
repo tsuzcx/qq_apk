@@ -1,20 +1,38 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class bqdq
-  extends Handler
+class bqdq
+  implements bpsi
 {
-  public bqdq(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout, Looper paramLooper)
+  private int jdField_a_of_type_Int = -1;
+  private bqgk jdField_a_of_type_Bqgk;
+  private String jdField_a_of_type_JavaLangString = "";
+  
+  public bqdq(bqgk parambqgk)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Bqgk = parambqgk;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(float paramFloat, String paramString, int paramInt) {}
+  
+  public void a(int paramInt)
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EditVideoAblumList", 2, "download Res Finished , type id, " + this.jdField_a_of_type_Int + " isSuccess : " + paramBoolean + " url : " + paramString + " StickerStr : " + this.jdField_a_of_type_JavaLangString + " mParent : " + this.jdField_a_of_type_Bqgk);
+    }
+    if ((this.jdField_a_of_type_Int != -1) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Bqgk != null)) {
+      this.jdField_a_of_type_Bqgk.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

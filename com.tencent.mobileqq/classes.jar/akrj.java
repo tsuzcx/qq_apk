@@ -1,63 +1,28 @@
-import android.text.InputFilter;
-import android.text.InputFilter.LengthFilter;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class akrj
-  implements akrh
+class akrj
+  implements DialogInterface.OnClickListener
 {
-  private List<String> a;
+  akrj(akrf paramakrf, QQAppInterface paramQQAppInterface) {}
   
-  public String a(List<String> paramList, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramList.size() - 1;
-    while (i >= 0)
+    switch (paramInt)
     {
-      String str = (String)paramList.remove(i);
-      if (!TextUtils.isEmpty(str)) {
-        return str;
-      }
-      i -= 1;
     }
-    if (paramBoolean)
+    for (;;)
     {
-      if (this.a == null)
-      {
-        this.a = new ArrayList(7);
-        this.a.add("花");
-        this.a.add("风");
-        this.a.add("夜");
-        this.a.add("雨");
-        this.a.add("情");
-        this.a.add("云");
-        this.a.add("春");
-      }
-      i = new Random().nextInt(this.a.size());
-      if (QLog.isColorLevel()) {
-        QLog.i("KeyWordChainBizImpl", 2, "getRandomIdiom get backIdiom:" + i + " backWordListSize:" + this.a.size());
-      }
-      return (String)this.a.get(i);
+      this.jdField_a_of_type_Akrf.a.dismiss();
+      return;
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6C", "0X8009B6C", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Akrf.b();
+      akrf.a(this.jdField_a_of_type_Akrf, akrf.a(this.jdField_a_of_type_Akrf), true, Long.valueOf(akrf.b(this.jdField_a_of_type_Akrf)).longValue(), false);
+      continue;
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6D", "0X8009B6D", 0, 0, "", "", "", "");
+      akrf.a(this.jdField_a_of_type_Akrf, akrf.a(this.jdField_a_of_type_Akrf), true, Long.valueOf(akrf.b(this.jdField_a_of_type_Akrf)).longValue(), true);
     }
-    return "";
-  }
-  
-  public void a(String paramString) {}
-  
-  public boolean a(String paramString)
-  {
-    return !TextUtils.isEmpty(paramString);
-  }
-  
-  public InputFilter[] a(int paramInt)
-  {
-    if ((bgjq.d()) || (bgjq.e())) {}
-    for (int i = 1; (i == 0) && (paramInt > 0); i = 0) {
-      return new InputFilter[] { new InputFilter.LengthFilter(paramInt) };
-    }
-    return new InputFilter[0];
   }
 }
 

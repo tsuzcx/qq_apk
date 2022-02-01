@@ -1,19 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import java.util.ArrayList;
 
-class qrq
-  implements View.OnTouchListener
+public class qrq
 {
-  qrq(qro paramqro, LinearLayout paramLinearLayout) {}
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<qrp> a;
+  public long b;
+  public String b;
+  public long c;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public qrq(qrn paramqrn) {}
+  
+  public String toString()
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-    }
-    return false;
+    return "\nGestureEvent{direction=" + this.jdField_a_of_type_Int + ", deltaFromLastScroll=" + this.jdField_a_of_type_Long + ", scrollDistance=" + this.jdField_b_of_type_Long + ", scrollMills=" + this.c + ", scrollSpeed=" + this.jdField_a_of_type_Float + ", scrollDownAndUpCoordinate='" + this.jdField_a_of_type_JavaLangString + '\'' + ", clickCoordinate='" + this.jdField_b_of_type_JavaLangString + '\'' + ", scrollStateInfos=" + this.jdField_a_of_type_JavaUtilArrayList + "}";
   }
 }
 

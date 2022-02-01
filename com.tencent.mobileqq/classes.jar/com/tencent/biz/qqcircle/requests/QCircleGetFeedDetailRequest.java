@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudRead.StGetFeedDetailReq;
 import feedcloud.FeedCloudRead.StGetFeedDetailRsp;
-import uxx;
+import uzg;
 
 public class QCircleGetFeedDetailRequest
   extends QCircleBaseRequest
@@ -32,7 +32,7 @@ public class QCircleGetFeedDetailRequest
     this.mRequest.from.set(paramInt);
     if (paramStFeed != null)
     {
-      paramString1 = uxx.a(paramStFeed);
+      paramString1 = uzg.a(paramStFeed);
       if (paramString1 != null)
       {
         paramString1.busiTranparent.set(paramStFeed.busiTranparent.get());

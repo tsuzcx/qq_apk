@@ -1,250 +1,138 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.Window;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
 public class bans
-  implements DialogInterface.OnDismissListener, baqe
 {
-  public static final int[] a;
-  alky a;
-  public View a;
-  public AppInterface a;
-  public CaptureVideoFilterViewPager a;
-  public EffectsCameraCaptureView a;
-  
-  static
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 25, 43, 60, 78, 95 };
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView != null) && (paramInt >= 0) && (paramInt <= 5))
+    for (;;)
     {
-      BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).edit().putInt("sv_beauty_level", paramInt).commit();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setBeauty(jdField_a_of_type_ArrayOfInt[paramInt]);
-      if (QLog.isColorLevel()) {
-        QLog.d("sv_beauty_level", 2, "beauty level : " + jdField_a_of_type_ArrayOfInt[paramInt]);
-      }
-      banm.b(paramInt);
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    SubtitleLayout localSubtitleLayout = (SubtitleLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378082);
-    if (localSubtitleLayout != null)
-    {
-      alnu.a().c = almp.a(paramInt);
-      if (paramInt == 0)
-      {
-        localSubtitleLayout.setAnimType(0, null, null, 0, 0);
-        localSubtitleLayout.setVisibility(8);
-      }
-    }
-    else
-    {
-      return;
-    }
-    localSubtitleLayout.setVisibility(0);
-    localSubtitleLayout.setAnimType(paramInt, paramString, null, 0, 0);
-  }
-  
-  public void a(FilterCategoryItem paramFilterCategoryItem)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.setCurrentItem(paramFilterCategoryItem);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFilter(paramFilterCategoryItem);
-    }
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo)
-  {
-    if (paramPtvTemplateInfo == null) {
-      return;
-    }
-    bcst.b(null, "dc00898", "", "", "0X800859F", "0X800859F", 1, 0, "", "", paramPtvTemplateInfo.id, "");
-    if (paramPtvTemplateInfo.popup)
-    {
-      boolean bool = a(paramPtvTemplateInfo.androidopenurlheader);
-      if (bool) {}
-      for (String str = "1";; str = "0")
-      {
-        bcst.b(null, "dc00898", "", "", "0X80085A0", "0X80085A0", 1, 0, str, "", "", "");
-        if (!bool) {
-          break;
-        }
-        a(paramPtvTemplateInfo.popupimgurl, paramPtvTemplateInfo.popupcontent, paramPtvTemplateInfo.popupbtn, paramPtvTemplateInfo.androidopenurlheader, paramPtvTemplateInfo.openurl, paramPtvTemplateInfo.storeurl, paramPtvTemplateInfo.buttonbgcolor, 1, bool);
-        return;
-      }
-      a(paramPtvTemplateInfo.popupimgurl, paramPtvTemplateInfo.popupcontent2, paramPtvTemplateInfo.popupbtn2, paramPtvTemplateInfo.androidopenurlheader, paramPtvTemplateInfo.openurl, paramPtvTemplateInfo.storeurl, paramPtvTemplateInfo.buttonbgcolor, 1, bool);
-      return;
-    }
-    a(paramPtvTemplateInfo.androidopenurlheader, paramPtvTemplateInfo.openurl, paramPtvTemplateInfo.storeurl);
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString)
-  {
-    EffectsCameraCaptureView localEffectsCameraCaptureView;
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView != null)
-    {
-      bamd.a();
-      if (bckg.a(bamd.a))
-      {
-        localEffectsCameraCaptureView = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView;
-        if (paramPtvTemplateInfo.funcType != PtvTemplateManager.PtvTemplateInfo.FUNC_REDBAG_GET) {
-          break label53;
-        }
-      }
-    }
-    label53:
-    for (boolean bool = true;; bool = false)
-    {
-      localEffectsCameraCaptureView.g(bool);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFaceEffect(paramString);
-      return;
-    }
-  }
-  
-  void a(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_AndroidViewView.getContext() != null)) {}
-    try
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidViewView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("url", paramString);
-      this.jdField_a_of_type_AndroidViewView.getContext().startActivity(localIntent);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("EffectsListenerController", 1, "start QQBrowserActivity catch an Exception.", paramString);
-    }
-  }
-  
-  void a(String paramString1, String paramString2)
-  {
-    try
-    {
-      if (!bgsp.a(paramString2)) {}
-      for (paramString1 = new Intent("android.intent.action.VIEW", Uri.parse(paramString2)); paramString1 != null; paramString1 = this.jdField_a_of_type_AndroidViewView.getContext().getPackageManager().getLaunchIntentForPackage(paramString1))
-      {
-        paramString1.addCategory("android.intent.category.DEFAULT");
-        this.jdField_a_of_type_AndroidViewView.getContext().startActivity(paramString1);
-        return;
-      }
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("EffectsListenerController", 1, "TryJumpToQIM catch an Exception.", paramString1);
-      new bibh(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp()).a(anni.a(2131702779), 100, 0, 1);
-    }
-  }
-  
-  void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (a(paramString1))
-    {
-      a(paramString1, paramString2);
-      return;
-    }
-    a(paramString3);
-  }
-  
-  void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt, boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Alky == null))
-    {
-      alky localalky = new alky(this.jdField_a_of_type_AndroidViewView.getContext());
-      this.jdField_a_of_type_Alky = localalky;
-      localalky.a(paramString1, paramString2, paramString3, paramString7);
-      localalky.a(new bant(this, paramInt, paramBoolean, paramString4, paramString5, paramString6));
-      localalky.a();
-      this.jdField_a_of_type_Alky.setOnDismissListener(this);
-      this.jdField_a_of_type_Alky.show();
-      paramString1 = this.jdField_a_of_type_Alky.getWindow().getAttributes();
-      paramString1.width = -1;
-      paramString1.height = -1;
-      this.jdField_a_of_type_Alky.getWindow().setAttributes(paramString1);
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    QLog.d("EffectsListenerController", 1, "start CheckJumpAPPisInstall appPackageName is " + paramString);
-    if (bgsp.a(paramString)) {}
-    do
-    {
-      return false;
       try
       {
-        paramString = this.jdField_a_of_type_AndroidViewView.getContext().getPackageManager().getPackageInfo(paramString, 1);
-        if (paramString == null)
+        bezv localbezv = (bezv)paramQQAppInterface.getManager(193);
+        if (localbezv.a())
         {
-          QLog.d("EffectsListenerController", 1, "CheckJumpAPPisInstall PackageInfo is null");
-          return false;
+          int i = 2;
+          String str = "qboss_splash_ad_res_png";
+          if (paramInt == 2)
+          {
+            i = 1;
+            str = "qboss_splash_ad_res_video";
+            j = 10082;
+            QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes request adid" + paramString1);
+            HashMap localHashMap = new HashMap();
+            localHashMap.put("qbossSplashresAppid", paramString1);
+            a("qbossSplashrequest", localHashMap);
+            localbezv.a(j, "vas", paramString2, 0, paramString2, paramString3 + ".splashtemp", i, 0, true, new bant(paramQQAppInterface, str, paramString1, paramString3, paramInt, paramString4, paramString2));
+          }
+        }
+        else
+        {
+          QLog.i("QSplash@QbossSplashUtil", 1, "ctrl.isEnable() = false");
+          return;
         }
       }
-      catch (Exception paramString)
+      catch (Exception paramQQAppInterface)
       {
-        QLog.e("EffectsListenerController", 1, "CheckJumpAPPisInstall catch an Exception.", paramString);
-        return false;
-      }
-      paramString = paramString.activities[0].name;
-      QLog.d("EffectsListenerController", 1, "start CheckJumpAPPisInstall qqAppActivity is " + paramString);
-    } while (paramString == null);
-    return true;
-  }
-  
-  public void b(FilterCategoryItem paramFilterCategoryItem)
-  {
-    if (paramFilterCategoryItem == null) {
-      return;
-    }
-    bcst.b(null, "dc00898", "", "", "0X800859F", "0X800859F", 2, 0, "", "", paramFilterCategoryItem.a, "");
-    if (paramFilterCategoryItem.b)
-    {
-      boolean bool = a(paramFilterCategoryItem.g);
-      if (bool) {}
-      for (String str = "1";; str = "0")
-      {
-        bcst.b(null, "dc00898", "", "", "0X80085A0", "0X80085A0", 2, 0, str, "", "", "");
-        if (!bool) {
-          break;
-        }
-        a(paramFilterCategoryItem.k, paramFilterCategoryItem.l, paramFilterCategoryItem.m, paramFilterCategoryItem.g, paramFilterCategoryItem.h, paramFilterCategoryItem.i, paramFilterCategoryItem.p, 2, bool);
         return;
       }
-      a(paramFilterCategoryItem.k, paramFilterCategoryItem.n, paramFilterCategoryItem.o, paramFilterCategoryItem.g, paramFilterCategoryItem.h, paramFilterCategoryItem.i, paramFilterCategoryItem.p, 2, bool);
-      return;
+      int j = 10081;
     }
-    a(paramFilterCategoryItem.g, paramFilterCategoryItem.h, paramFilterCategoryItem.i);
   }
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static void a(QQAppInterface paramQQAppInterface, Collection<banw> paramCollection)
   {
-    this.jdField_a_of_type_Alky = null;
+    for (;;)
+    {
+      banw localbanw;
+      try
+      {
+        paramCollection = paramCollection.iterator();
+        if (!paramCollection.hasNext()) {
+          break label156;
+        }
+        localbanw = (banw)paramCollection.next();
+        if (!localbanw.b())
+        {
+          QLog.i("QSplash@QbossSplashDownloadManager", 1, "adEntry should not requestRes");
+          continue;
+        }
+        switch (localbanw.a)
+        {
+        }
+      }
+      finally {}
+      a(paramQQAppInterface, localbanw.jdField_b_of_type_JavaLangString, localbanw.e, localbanw.h, 0, localbanw.k);
+      continue;
+      a(paramQQAppInterface, localbanw.jdField_b_of_type_JavaLangString, localbanw.e, localbanw.h, 2, localbanw.k);
+      continue;
+      a(paramQQAppInterface, localbanw.jdField_b_of_type_JavaLangString, localbanw.e, localbanw.h, 1, localbanw.k);
+      continue;
+      label156:
+      return;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    Object localObject = banr.a(BaseApplicationImpl.getContext(), paramString1);
+    paramString1 = ((SharedPreferences)localObject).edit();
+    QLog.i("QSplash@QbossSplashDownloadManager", 1, "pic or gif download succ! MD5 checkok");
+    boolean bool = ((SharedPreferences)localObject).getBoolean("qboss_exposure_is_low_device_limit_", false);
+    QLog.i("QSplash@QbossSplashDownloadManager", 1, "isLowerDeviceLimit = " + bool);
+    if (!bool)
+    {
+      paramString1.putBoolean("qboss_splash_ad_is_limited_" + paramString2, true);
+      localObject = banv.a;
+      if ((localObject != null) && (((HashMap)localObject).containsKey(paramString2))) {
+        ((banw)((HashMap)localObject).get(paramString2)).jdField_b_of_type_Boolean = true;
+      }
+    }
+    paramString1.apply();
+  }
+  
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    try
+    {
+      if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount())))
+      {
+        bdmc.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramString, true, 0L, 0L, paramHashMap, null, false);
+        if (QLog.isColorLevel()) {
+          QLog.i("QSplash@QbossSplashDownloadManager", 2, "reportqbossSplashBeacon, tagName  " + paramString);
+        }
+      }
+      return;
+    }
+    catch (Exception paramString) {}
+  }
+  
+  private static void b(String paramString1, AppInterface paramAppInterface, String paramString2)
+  {
+    if (paramAppInterface == null) {
+      return;
+    }
+    try
+    {
+      paramAppInterface = (bezv)paramAppInterface.getManager(193);
+      if (paramAppInterface.a()) {
+        paramAppInterface.a(paramString1, -1L);
+      }
+      paramString1 = new HashMap();
+      paramString1.put("qbossSplashresAppid", paramString2);
+      a("qbossSplashDownloadFailed", paramString1);
+      return;
+    }
+    catch (Exception paramString1) {}
   }
 }
 

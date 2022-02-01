@@ -1,29 +1,28 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
 import java.util.List;
 
-public class ybk
-  extends wvn
+class ybk
+  implements ybi
 {
-  public int a;
-  public String a;
-  public List<CommentEntry> a;
-  public int b;
-  public String b;
-  public int c;
+  ybk(ybj paramybj, List paramList, Bitmap[] paramArrayOfBitmap, Handler paramHandler) {}
   
-  public ybk(ErrorMessage paramErrorMessage, String paramString, int paramInt)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(0);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt;
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
+    yaq.b(ybj.a(this.jdField_a_of_type_Ybj), "bitmap download success index=%d, url=%s", Integer.valueOf(i), paramString);
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i] = paramBitmap;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 0, this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap), 200L);
   }
   
-  public String toString()
+  public void a(String paramString, Throwable paramThrowable)
   {
-    return "GetFeedCommentEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mType=" + this.jdField_a_of_type_Int + ", mSource=" + this.c + ", mCommentEntries=" + this.jdField_a_of_type_JavaUtilList.size() + ", mTotalCount=" + this.b + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
+    yaq.c(ybj.a(this.jdField_a_of_type_Ybj), "bitmap download failed index=%s, error=%s", Integer.valueOf(i), paramThrowable);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, paramThrowable), 500L);
   }
 }
 

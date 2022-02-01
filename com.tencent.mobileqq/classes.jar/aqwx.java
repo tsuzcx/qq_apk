@@ -1,54 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aqwx
-  extends aqwr<aqwu>
+  extends Handler
 {
-  @NonNull
-  public static aqwu c()
+  public aqwx(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    aqwu localaqwu2 = (aqwu)aqlk.a().a(541);
-    aqwu localaqwu1 = localaqwu2;
-    if (localaqwu2 == null) {
-      localaqwu1 = aqwu.a();
+    if ((paramMessage.what == 1000) && ((this.a.j == 1) || (this.a.j == 2)))
+    {
+      this.a.a();
+      QQToast.a(this.a, 2131690905, 0).b(this.a.getTitleBarHeight());
     }
-    return localaqwu1;
-  }
-  
-  @NonNull
-  public aqwu a()
-  {
-    return aqwu.a();
-  }
-  
-  @NonNull
-  public aqwu a(@NonNull aqlg[] paramArrayOfaqlg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("KC.ConfigProcessor", 1, paramArrayOfaqlg[0].a);
-    }
-    return aqwu.a(paramArrayOfaqlg[0].a);
-  }
-  
-  @NonNull
-  public aqwu b()
-  {
-    return aqwu.a();
-  }
-  
-  public Class<aqwu> clazz()
-  {
-    return aqwu.class;
-  }
-  
-  public int type()
-  {
-    return 541;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqwx
  * JD-Core Version:    0.7.0.1
  */

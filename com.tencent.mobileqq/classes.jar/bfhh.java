@@ -1,35 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
-class bfhh
-  implements View.OnClickListener
+public class bfhh
+  implements DialogInterface.OnClickListener
 {
-  bfhh(bfhg parambfhg) {}
+  public bfhh(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    BaseActivity localBaseActivity = (BaseActivity)bfhg.a(this.a).get();
-    if (localBaseActivity != null)
-    {
-      bfpj.a(bfhg.a(this.a), bfhg.a(this.a).a);
-      Object localObject1 = bfti.a();
-      Object localObject2 = ((bfti)localObject1).a("troop_list_homework");
-      bftj localbftj = new bftj();
-      localbftj.a = bfhg.b(this.a).a;
-      localbftj.c = "aio";
-      localObject1 = ((bfti)localObject1).a((String)localObject2, localbftj);
-      localObject2 = new Intent(localBaseActivity, QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("url", (String)localObject1);
-      localBaseActivity.startActivity((Intent)localObject2);
-      bgjt.a(bfhg.b(this.a), bfhg.c(this.a).a, "homework", "AioSee_Clk", 0, 0, new String[] { bfhg.d(this.a).a, "", "", bgjt.a(bfhg.c(this.a), bfhg.e(this.a).a) });
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
   }
 }
 

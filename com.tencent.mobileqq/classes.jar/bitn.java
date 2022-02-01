@@ -1,15 +1,13 @@
-import org.apache.http.HttpResponse;
+import com.tencent.mobileqq.widget.WebViewProgressBar;
 
-public class bitn
+public abstract interface bitn
+  extends biod
 {
-  public int a;
-  public HttpResponse a;
+  public abstract WebViewProgressBar a();
   
-  public bitn(HttpResponse paramHttpResponse, int paramInt)
-  {
-    this.jdField_a_of_type_OrgApacheHttpHttpResponse = paramHttpResponse;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

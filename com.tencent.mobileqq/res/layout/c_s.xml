@@ -5,7 +5,7 @@
     <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_below="@id/lpm">
         <LinearLayout android:orientation="vertical" android:id="@id/h0a" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="3.0">
-                <ImageView android:id="@id/lfn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gug" android:scaleType="centerInside" />
+                <ImageView android:id="@id/lfn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gwf" android:scaleType="centerInside" />
                 <TextView android:textSize="20.0dip" android:textColor="@color/skin_black" android:gravity="center" android:id="@id/eli" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" />
                 <TextView android:textSize="16.0sp" android:textColor="@color/skin_gray2" android:gravity="center" android:id="@id/m00" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
             </LinearLayout>

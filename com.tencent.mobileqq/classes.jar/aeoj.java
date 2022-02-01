@@ -1,53 +1,66 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0x5e1.RspBody;
-import tencent.im.oidb.oidb_0x5e1.UdcUinData;
 
 public class aeoj
-  extends ayeu
+  implements bcie
 {
-  public aeoj(LoginInfoActivity paramLoginInfoActivity) {}
+  public aeoj(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void a(View paramView)
   {
-    QQToast.a(this.a, paramString2, 0).a();
-    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
-    LoginInfoActivity.a(this.a).setVisibility(4);
-  }
-  
-  public void a(oidb_0x5e1.RspBody paramRspBody)
-  {
-    LoginInfoActivity.a(this.a, paramRspBody);
-    int i = ((oidb_0x5e1.UdcUinData)paramRspBody.rpt_msg_uin_data.get(0)).user_login_guard_face.get();
-    TextView localTextView = LoginInfoActivity.c(this.a);
-    if (i == 1)
-    {
-      paramRspBody = this.a.getString(2131691948);
-      localTextView.setText(paramRspBody);
-      LoginInfoActivity.a(this.a).setVisibility(4);
-      LoginInfoActivity.c(this.a).setVisibility(0);
-      if (i != 1) {
-        break label122;
-      }
-    }
-    label122:
-    for (paramRspBody = "1";; paramRspBody = "0")
-    {
-      bcst.b(null, "dc00898", "", "", "0X800AA7A", "0X800AA7A", 0, 0, paramRspBody, "", "", "");
+    int i = 3000;
+    paramView = (bcfn)paramView.getTag(2131381109);
+    if (paramView == null) {
       return;
-      paramRspBody = this.a.getString(2131691953);
-      break;
+    }
+    String str1 = paramView.b();
+    String str2 = paramView.a().toString();
+    if ((paramView instanceof bceb)) {
+      paramView = ((bceb)paramView).e();
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onAction, uin = " + str1 + ", displayName = " + str2 + ", troopUin = " + paramView + ", type = " + i);
+      }
+      if ((i != -1) && (ForwardRecentActivity.a(this.a, new ResultRecord(str1, str2, i, paramView, "")))) {
+        ForwardRecentActivity.a(this.a).notifyDataSetChanged();
+      }
+      ForwardRecentActivity.h(this.a);
+      return;
+      if ((paramView instanceof bcdz))
+      {
+        paramView = ((bcdz)paramView).b();
+      }
+      else if ((paramView instanceof bceh))
+      {
+        paramView = ((bceh)paramView).a;
+        i = 1;
+      }
+      else if ((paramView instanceof bcem))
+      {
+        paramView = ((bcem)paramView).a().troopuin;
+        i = 1;
+      }
+      else if ((paramView instanceof bcec))
+      {
+        i = 0;
+        paramView = "-1";
+      }
+      else
+      {
+        i = -1;
+        paramView = "-1";
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeoj
  * JD-Core Version:    0.7.0.1
  */

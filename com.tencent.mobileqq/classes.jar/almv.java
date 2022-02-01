@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.BarrageParcelItem;
+import android.view.View;
 
-public final class almv
-  implements Parcelable.Creator<BarrageParcelItem>
+class almv
+  implements blkc
 {
-  public BarrageParcelItem a(Parcel paramParcel)
-  {
-    return new BarrageParcelItem(paramParcel);
-  }
+  almv(alms paramalms, View paramView) {}
   
-  public BarrageParcelItem[] a(int paramInt)
+  public void a()
   {
-    return new BarrageParcelItem[paramInt];
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

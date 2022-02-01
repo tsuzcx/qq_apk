@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.utils;
 
-import bgmp;
+import bhmr;
 
 public class JumpAction$5
   implements Runnable
 {
-  public JumpAction$5(bgmp parambgmp) {}
+  public JumpAction$5(bhmr parambhmr) {}
   
   public void run()
   {
-    bgmp.b(this.this$0);
+    bhmr.b(this.this$0);
   }
 }
 

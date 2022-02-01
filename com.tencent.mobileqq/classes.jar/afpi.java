@@ -1,19 +1,59 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 
 public class afpi
-  implements View.OnTouchListener
+  extends aoib
 {
-  public afpi(TroopTransferActivity paramTroopTransferActivity) {}
+  public afpi(SubAccountUgActivity paramSubAccountUgActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean, bdxd parambdxd)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.b();
+    if ((paramBoolean) && (parambdxd != null) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.length() >= 5))
+    {
+      parambdxd = parambdxd.c();
+      if ((parambdxd != null) && (!parambdxd.contains(this.a.jdField_a_of_type_JavaLangString))) {}
     }
-    return true;
+    else
+    {
+      return;
+    }
+    parambdxd = (bdwt)this.a.app.getManager(62);
+    SubAccountUgActivity.a(this.a, parambdxd, this.a.jdField_a_of_type_JavaLangString);
+  }
+  
+  protected void c(boolean paramBoolean, bdxd parambdxd)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() isSucc=" + paramBoolean + " currentActivity subUin=" + this.a.jdField_a_of_type_JavaLangString);
+      if (parambdxd != null) {
+        QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() mainAccount=" + parambdxd.b + " subAccount=" + parambdxd.c + " errType=" + parambdxd.jdField_a_of_type_Int + " errMsg=" + parambdxd.jdField_a_of_type_JavaLangString);
+      }
+    }
+    if ((parambdxd == null) || (this.a.jdField_a_of_type_JavaLangString == null) || ((this.a.jdField_a_of_type_JavaLangString != null) && (!this.a.jdField_a_of_type_JavaLangString.equals(parambdxd.c)))) {}
+    do
+    {
+      return;
+      this.a.e();
+      if (this.a.b)
+      {
+        this.a.b = false;
+        if (paramBoolean)
+        {
+          this.a.a();
+          this.a.c(this.a.getString(2131718454));
+          return;
+        }
+        this.a.b(this.a.getString(2131718453));
+        return;
+      }
+    } while (!paramBoolean);
+    parambdxd = (bdwt)this.a.app.getManager(62);
+    Pair localPair = parambdxd.a(this.a.jdField_a_of_type_JavaLangString, 1);
+    parambdxd.a(this.a.app, this.a, localPair, new afpj(this, parambdxd, localPair));
   }
 }
 

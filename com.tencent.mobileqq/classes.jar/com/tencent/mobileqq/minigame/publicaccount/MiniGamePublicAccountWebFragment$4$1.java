@@ -19,7 +19,7 @@ class MiniGamePublicAccountWebFragment$4$1
       Drawable localDrawable = QWalletPicHelper.getDrawableForWallet(this.val$pathRes.filePath, null);
       if (localDrawable != null)
       {
-        ((ImageView)this.this$1.val$rootView.findViewById(2131368436)).setImageDrawable(localDrawable);
+        ((ImageView)this.this$1.val$rootView.findViewById(2131368509)).setImageDrawable(localDrawable);
         return;
       }
       MiniGamePublicAccountWebFragment.access$1000(this.this$1.this$0);

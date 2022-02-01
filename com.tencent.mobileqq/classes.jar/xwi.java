@@ -1,26 +1,18 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
 
-class xwi
-  extends niv
+public class xwi
+  extends xqm
 {
-  xwi(xwg paramxwg, boolean paramBoolean) {}
+  public xwi(AbsVideoInfoWidget paramAbsVideoInfoWidget) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void g()
   {
-    if (paramInt != 0)
+    super.g();
+    if (this.a.jdField_b_of_type_Boolean)
     {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(2, bool);
-        this.a.a(0, this.a.a.getString(2131718828));
-        return;
-      }
+      AbsVideoInfoWidget.a(this.a);
+      yuk.b(this.a.jdField_b_of_type_JavaLangString, "destroy by activity");
     }
-    ((wfg)this.a.a.app.getManager(181)).a(this.b);
   }
 }
 

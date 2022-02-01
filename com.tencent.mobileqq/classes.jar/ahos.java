@@ -1,13 +1,22 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 public class ahos
-  implements ahor
+  extends ahoq
 {
-  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public ProgressBar a;
+  public RelativeLayout a;
+  public AsyncImageView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public int e;
+  
+  public ahos(ahor paramahor)
   {
-    paramagup.i(paramagwc.b);
+    super(paramahor);
   }
 }
 

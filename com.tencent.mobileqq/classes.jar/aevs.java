@@ -1,10 +1,14 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.Leba;
 
 public class aevs
-  extends amcl
+  extends ayxm
 {
-  public aevm a;
-  public TextView a;
+  public aevs(Leba paramLeba) {}
+  
+  protected void a(Object paramObject)
+  {
+    Leba.c(this.a);
+  }
 }
 
 

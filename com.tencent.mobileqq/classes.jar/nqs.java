@@ -1,30 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.now.NowVideoView;
+import com.tencent.mobileqq.data.MessageRecord;
 
-final class nqs
-  implements BusinessObserver
+public class nqs
+  extends Handler
 {
-  nqs(QQAppInterface paramQQAppInterface, boolean paramBoolean, anry paramanry) {}
+  public nqs(NowVideoView paramNowVideoView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList isSuccess:" + String.valueOf(paramBoolean));
-    }
-    paramBundle = paramBundle.getByteArray("data");
-    if ((paramBoolean) && (paramBundle != null)) {}
-    for (paramInt = nqr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);; paramInt = 1)
+    switch (paramMessage.what)
     {
-      if (this.jdField_a_of_type_Anry != null) {
-        this.jdField_a_of_type_Anry.onDynamicListGet(paramBoolean, paramInt);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList onReceiveerrCode:" + paramInt);
-      }
-      return;
     }
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.a.jdField_a_of_type_Nql == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null));
+      this.a.jdField_a_of_type_Nql.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, true);
+      return;
+    } while ((this.a.jdField_a_of_type_Nql == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.a.jdField_a_of_type_Boolean) || (this.a.d != 2));
+    this.a.jdField_a_of_type_Nql.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, false);
   }
 }
 

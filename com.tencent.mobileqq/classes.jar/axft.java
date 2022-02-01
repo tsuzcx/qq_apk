@@ -1,28 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.component.network.utils.NetworkUtils;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.manager.Manager;
 
-public class axft
-  implements View.OnClickListener
+public abstract interface axft
+  extends Manager
 {
-  public axft(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    if (!NetworkUtils.isNetworkAvailable(this.a)) {
-      QQToast.a(this.a, 1, 2131693948, 1).a();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.d();
-      this.a.a("invite_page", "clk_exit");
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b();
 }
 
 

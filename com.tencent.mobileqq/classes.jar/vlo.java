@@ -1,21 +1,22 @@
-import com.tencent.biz.qqcircle.QCircleInitBean;
+import android.support.v7.widget.RecyclerView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
 
-class vlo
-  implements zxw
+public class vlo
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  vlo(vll paramvll) {}
+  public vlo(QCircleBaseTabFragment paramQCircleBaseTabFragment, RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
   
-  public void a(zxz paramzxz, Object paramObject)
+  public boolean onPreDraw()
   {
-    if ((vll.a(this.a) != null) && (vll.a(this.a) != null))
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount() > 0)
     {
-      if ((paramzxz.c()) || (paramzxz.d())) {
-        vll.a(this.a).a(vll.a(this.a));
-      }
-      if (!vll.a(this.a).isSingleFeed) {
-        vll.a(this.a).a(vll.a(this.a), paramzxz);
-      }
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getViewTreeObserver().removeOnPreDrawListener(this);
+      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBaseTabFragment.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this.jdField_a_of_type_Int, this.b);
+      return true;
     }
+    return false;
   }
 }
 

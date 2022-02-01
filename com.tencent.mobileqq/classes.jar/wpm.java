@@ -1,140 +1,86 @@
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class wpm
-  implements wou
+  extends wre
 {
-  public final wou[] a = new wou[40];
+  public static final String a;
+  public static final String b = wnu.a("StorySvc.del_feed_comment");
+  public static final String c = wnu.a("StorySvc.get_comment_list");
+  protected int a;
+  protected wqa a;
+  protected boolean a;
+  private String d;
   
-  public static wou a(int paramInt)
+  static
   {
-    return wpo.a.b(paramInt);
+    jdField_a_of_type_JavaLangString = wnu.a("StorySvc.add_feed_comment");
   }
   
-  public static wpm a()
+  public wpm(wqa paramwqa)
   {
-    return wpo.a;
+    this.jdField_a_of_type_Wqa = paramwqa;
   }
   
-  private void a(int paramInt, wou paramwou)
+  public static void a(CommentEntry paramCommentEntry, wrk paramwrk)
   {
-    this.a[paramInt] = paramwou;
+    paramCommentEntry = new wpq(paramCommentEntry, paramwrk);
+    paramwrk = new wpr(paramwrk);
+    wrg.a().a(paramCommentEntry, paramwrk);
   }
   
-  public void a() {}
-  
-  public wou b(int paramInt)
+  public static void a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    wou localwou1 = this.a[paramInt];
-    if (localwou1 == null) {}
-    for (;;)
-    {
-      wou localwou2;
-      synchronized (this.a)
-      {
-        localwou2 = this.a[paramInt];
-        if (localwou2 == null) {
-          break label408;
-        }
-        return localwou2;
-        if (localwou1 != null)
-        {
-          localwou1.a();
-          yqp.b("Q.qqstory.SuperManager", "onInit manager : %s", localwou1);
-        }
-        a(paramInt, localwou1);
-        return localwou1;
-      }
-      Object localObject2 = this;
-      continue;
-      localObject2 = new wps();
-      continue;
-      localObject2 = new xxe();
-      continue;
-      localObject2 = new wqk();
-      continue;
-      localObject2 = new wpf();
-      continue;
-      localObject2 = new wrf();
-      continue;
-      localObject2 = new yye();
-      continue;
-      localObject2 = new bpja();
-      continue;
-      localObject2 = new wpy();
-      continue;
-      localObject2 = new whg();
-      continue;
-      localObject2 = new wfs();
-      continue;
-      localObject2 = new why();
-      continue;
-      localObject2 = new wpj();
-      continue;
-      localObject2 = new wpc();
-      continue;
-      localObject2 = new wix();
-      continue;
-      localObject2 = new woy();
-      continue;
-      localObject2 = new wpa();
-      continue;
-      localObject2 = new woj();
-      continue;
-      localObject2 = new woz();
-      continue;
-      localObject2 = new won();
-      continue;
-      localObject2 = new wpx();
-      continue;
-      localObject2 = new wos();
-      continue;
-      localObject2 = new yij();
-      continue;
-      localObject2 = new yip();
-      continue;
-      localObject2 = new wpu();
-      continue;
-      localObject2 = new xzh();
-      continue;
-      localObject2 = new wot();
-      continue;
-      localObject2 = new wpp();
-      continue;
-      localObject2 = new wfy();
-      continue;
-      localObject2 = new wpk();
-      continue;
-      localObject2 = new wca();
-      continue;
-      return localObject2;
-      label408:
-      localObject2 = localwou2;
-      switch (paramInt)
-      {
-      }
-      localObject2 = localwou2;
-    }
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    wou[] arrayOfwou = this.a;
-    int i = 0;
+    long l = System.currentTimeMillis();
+    Object localObject1 = null;
     try
     {
-      while (i < this.a.length)
-      {
-        wou localwou = this.a[i];
-        yqp.b("Q.qqstory.SuperManager", "destroy manager : %s", localwou);
-        if (localwou != null) {
-          localwou.b();
-        }
-        this.a[i] = null;
-        i += 1;
-      }
-      return;
+      Object localObject2 = new JSONObject();
+      ((JSONObject)localObject2).putOpt("vid", paramString3);
+      ((JSONObject)localObject2).putOpt("feedid", paramString4);
+      ((JSONObject)localObject2).putOpt("pvid", paramString5);
+      ((JSONObject)localObject2).putOpt("styles", new JSONArray(paramString6));
+      localObject2 = ((JSONObject)localObject2).toString();
+      localObject1 = localObject2;
     }
-    finally {}
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("Q.qqstory:FeedCommentDataProvider", 2, "addGamePKComment jsonException " + localJSONException);
+      }
+    }
+    a(paramString1, null, paramString2, l, paramInt, localObject1, 4, new wpn(paramString1, paramInt, l, paramString2, paramString3, paramString4, paramString5, paramString6));
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, String paramString4, int paramInt2, wrk paramwrk)
+  {
+    paramString1 = new wpo(paramString1, paramString2, paramString3, paramLong, paramInt1, paramString4, paramInt2, paramwrk);
+    paramString2 = new wpp(paramwrk);
+    wrg.a().a(paramString1, paramString2);
+  }
+  
+  public static void b(CommentEntry paramCommentEntry, wrk paramwrk)
+  {
+    paramCommentEntry = new wpo(paramCommentEntry, paramwrk);
+    paramwrk = new wpp(paramwrk);
+    wrg.a().a(paramCommentEntry, paramwrk);
+  }
+  
+  public void a()
+  {
+    a(this.jdField_a_of_type_Wqa.a.feedId, 0);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    paramString = new wps(this, paramString, paramInt);
+    wpt localwpt = new wpt(this);
+    wrg.a().a(paramString, localwpt);
   }
 }
 

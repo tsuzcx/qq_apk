@@ -1,3432 +1,2651 @@
-import NearbyGroup.GroupInfo;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.os.SystemClock;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Base64;
-import android.view.View;
-import com.tencent.biz.JoinGroupTransitActivity;
-import com.tencent.component.network.utils.NetworkUtils;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.activity.contacts.mayknow.ContactReportUtils;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemRecommendTroopData;
-import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.MayknowRecommendManager.1;
-import com.tencent.mobileqq.app.MayknowRecommendManager.11;
-import com.tencent.mobileqq.app.MayknowRecommendManager.13;
-import com.tencent.mobileqq.app.MayknowRecommendManager.2;
-import com.tencent.mobileqq.app.MayknowRecommendManager.4;
-import com.tencent.mobileqq.app.MayknowRecommendManager.5;
-import com.tencent.mobileqq.app.MayknowRecommendManager.6;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.BaseRecentUser;
-import com.tencent.mobileqq.data.MayKnowExposure;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.Label;
-import tencent.im.oidb.oidb_0xc26.EntryDelay;
-import tencent.im.oidb.oidb_0xc26.RecommendInfo;
-import tencent.im.oidb.oidb_0xc26.RgroupInfo;
-import tencent.im.oidb.oidb_0xc26.TabInfo;
-import tencent.im.s2c.msgtype0x210.submsgtype0x111.SubMsgType0x111.MsgBody;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
 
 public class anpk
-  implements Manager
 {
-  public static int a;
-  public static long a;
-  public static final Object a;
-  public static final Object b;
-  private static int jdField_c_of_type_Int = 70;
-  private static int jdField_d_of_type_Int = 3;
-  public static boolean e;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  anmu jdField_a_of_type_Anmu = new anpn(this);
-  private awna jdField_a_of_type_Awna = new anpo(this);
-  private bdci jdField_a_of_type_Bdci = new anpp(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  public String a;
-  private ArrayList<MayKnowRecommend> jdField_a_of_type_JavaUtilArrayList;
-  private HashMap<Integer, ArrayList> jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
-  private List<RecentRecommendTroopItem> jdField_a_of_type_JavaUtilList;
-  private ConcurrentHashMap<String, MayKnowExposure> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  public volatile boolean a;
-  public int b;
-  private long jdField_b_of_type_Long;
-  private final ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList;
-  private ConcurrentHashMap<Integer, byte[]> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
-  boolean jdField_b_of_type_Boolean = false;
-  private long jdField_c_of_type_Long;
-  private Object jdField_c_of_type_JavaLangObject = new Object();
-  private ArrayList<aixh> jdField_c_of_type_JavaUtilArrayList;
-  private ConcurrentHashMap<Integer, Boolean> jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
-  boolean jdField_c_of_type_Boolean = false;
-  private Object jdField_d_of_type_JavaLangObject = new Object();
-  public boolean d;
-  private int jdField_e_of_type_Int = 2;
-  private Object jdField_e_of_type_JavaLangObject = new Object();
-  private int jdField_f_of_type_Int;
-  private Object jdField_f_of_type_JavaLangObject = new Object();
-  private boolean jdField_f_of_type_Boolean;
-  private int jdField_g_of_type_Int = 1;
-  private volatile boolean jdField_g_of_type_Boolean;
-  private volatile boolean h;
-  private boolean i;
-  private boolean j;
-  
-  static
+  public static SSLContext a()
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_b_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_Long = 86400000L;
-    jdField_a_of_type_Int = 37;
-  }
-  
-  public anpk(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(5);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(ThreadManager.getSubThreadLooper());
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new MayknowRecommendManager.1(this));
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Anmu);
-    if (this.jdField_a_of_type_Awna != null)
+    try
     {
-      paramQQAppInterface = (PhoneContactManagerImp)paramQQAppInterface.getManager(11);
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.a(this.jdField_a_of_type_Awna);
-      }
+      localSSLContext = SSLContext.getInstance("TLS");
+      QLog.d("ApolloHttpUtil", 1, "getSLLContext exception: " + localThrowable1);
     }
-    bdch.a(this.jdField_a_of_type_Bdci);
-  }
-  
-  private int a(List<RecentBaseData> paramList, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 < 3)
+    catch (Throwable localThrowable1)
     {
-      if (paramInt2 <= 3) {
-        return paramInt2;
-      }
-      int k = paramInt1;
-      paramInt2 = paramInt1;
-      paramInt1 = k;
-      if (paramInt2 >= paramList.size()) {
-        break label81;
-      }
-      RecentBaseData localRecentBaseData = (RecentBaseData)paramList.get(paramInt2);
-      if (albc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentBaseData)) {
-        break label78;
-      }
-      paramInt1 += 1;
-      label58:
-      if (paramInt1 != 3) {}
-    }
-    label78:
-    label81:
-    for (paramInt1 = paramInt2 + 1;; paramInt1 = 3)
-    {
-      return paramInt1;
-      paramInt2 += 1;
-      break;
-      return paramInt1;
-      break label58;
-    }
-  }
-  
-  private aixh a(oidb_0xc26.TabInfo paramTabInfo)
-  {
-    aixh localaixh = new aixh();
-    localaixh.jdField_a_of_type_Int = paramTabInfo.uint32_tab_id.get();
-    localaixh.jdField_b_of_type_Int = paramTabInfo.uint32_recommend_count.get();
-    String str;
-    if (paramTabInfo.bytes_table_name.has())
-    {
-      str = paramTabInfo.bytes_table_name.get().toStringUtf8();
-      localaixh.jdField_a_of_type_JavaLangString = str;
-      if (!paramTabInfo.bytes_icon_url_select.has()) {
-        break label116;
-      }
-      str = paramTabInfo.bytes_icon_url_select.get().toStringUtf8();
-      label77:
-      localaixh.jdField_b_of_type_JavaLangString = str;
-      if (!paramTabInfo.bytes_icon_url_unselect.has()) {
-        break label122;
-      }
-    }
-    label116:
-    label122:
-    for (paramTabInfo = paramTabInfo.bytes_icon_url_unselect.get().toStringUtf8();; paramTabInfo = "")
-    {
-      localaixh.c = paramTabInfo;
-      return localaixh;
-      str = "";
-      break;
-      str = "";
-      break label77;
-    }
-  }
-  
-  private RecentRecommendTroopItem a(String paramString)
-  {
-    aong localaong = null;
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "onJoinedTroop uin: " + paramString);
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    label214:
-    label252:
-    label255:
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        int m = this.jdField_a_of_type_JavaUtilList.size();
-        int k = 0;
-        Object localObject = localaong;
-        if (k < m)
-        {
-          if (((RecentRecommendTroopItem)this.jdField_a_of_type_JavaUtilList.get(k)).uin.equalsIgnoreCase(paramString))
-          {
-            localObject = (RecentRecommendTroopItem)this.jdField_a_of_type_JavaUtilList.remove(k);
-            if (this.jdField_f_of_type_Int <= k) {
-              break label252;
-            }
-            k = 0;
-            if (k >= this.jdField_e_of_type_Int) {
-              break label255;
-            }
-            this.jdField_f_of_type_Int -= 1;
-            k += 1;
-            continue;
-          }
-        }
-        else
-        {
-          k = this.jdField_a_of_type_JavaUtilList.size();
-          this.jdField_a_of_type_MqqOsMqqHandler.post(new MayknowRecommendManager.11(this, paramString));
-          if (k != 0) {
-            break label214;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().deleteRecentUserByType(8113);
-          return localObject;
-        }
-        k += 1;
-      }
-      localaong = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-      paramString = (RecentUser)localaong.findRecentUser(paramString, 8113);
-      if (paramString != null)
-      {
-        localaong.delRecentUser(paramString);
-        continue;
-      }
-    }
-  }
-  
-  private ArrayList<RecentRecommendTroopItem> a(ArrayList<RecentRecommendTroopItem> paramArrayList)
-  {
-    Object localObject;
-    if ((paramArrayList == null) || (paramArrayList.isEmpty()))
-    {
-      localObject = new ArrayList();
-      return localObject;
-    }
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-    int k = paramArrayList.size() - 1;
-    for (;;)
-    {
-      localObject = paramArrayList;
-      if (k < 0) {
-        break;
-      }
-      if (localTroopManager.d(((RecentRecommendTroopItem)paramArrayList.get(k)).uin) != null) {
-        paramArrayList.remove(k);
-      }
-      k -= 1;
-    }
-  }
-  
-  private void a(int paramInt, ArrayList<MayKnowRecommend> paramArrayList, boolean paramBoolean)
-  {
-    if (paramArrayList != null)
-    {
-      paramArrayList = b(paramArrayList);
-      if (paramInt != 23) {
-        break label192;
-      }
-    }
-    for (;;)
-    {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if ((paramArrayList.size() > 0) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() + paramArrayList.size() < 1000)) {
-          this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-        }
-        ??? = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
-      }
       try
       {
-        ((EntityTransaction)???).begin();
-        if (paramBoolean)
-        {
-          localObject2 = "delete from MayKnowRecommend where tabID=" + paramInt;
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.execSQL((String)localObject2);
+        localSSLContext.init(null, new TrustManager[] { new anpn() }, null);
+        return localSSLContext;
+      }
+      catch (Throwable localThrowable2)
+      {
+        SSLContext localSSLContext;
+        break label31;
+      }
+      localThrowable1 = localThrowable1;
+      localSSLContext = null;
+    }
+    label31:
+    return localSSLContext;
+  }
+  
+  /* Error */
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String[] paramArrayOfString, anph paramanph)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 12
+    //   3: aconst_null
+    //   4: astore 11
+    //   6: aconst_null
+    //   7: astore 9
+    //   9: aconst_null
+    //   10: astore 8
+    //   12: aconst_null
+    //   13: astore 10
+    //   15: new 62	java/net/URL
+    //   18: dup
+    //   19: aload_0
+    //   20: invokespecial 65	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   23: invokevirtual 69	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   26: checkcast 71	java/net/HttpURLConnection
+    //   29: astore_0
+    //   30: aload_0
+    //   31: ldc 73
+    //   33: invokevirtual 76	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   36: aload_0
+    //   37: instanceof 78
+    //   40: ifeq +29 -> 69
+    //   43: invokestatic 80	anpk:a	()Ljavax/net/ssl/SSLContext;
+    //   46: astore 12
+    //   48: aload 12
+    //   50: ifnull +19 -> 69
+    //   53: aload 12
+    //   55: invokevirtual 84	javax/net/ssl/SSLContext:getSocketFactory	()Ljavax/net/ssl/SSLSocketFactory;
+    //   58: astore 12
+    //   60: aload_0
+    //   61: checkcast 78	javax/net/ssl/HttpsURLConnection
+    //   64: aload 12
+    //   66: invokevirtual 88	javax/net/ssl/HttpsURLConnection:setSSLSocketFactory	(Ljavax/net/ssl/SSLSocketFactory;)V
+    //   69: aload_0
+    //   70: sipush 8000
+    //   73: invokevirtual 92	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   76: aload_0
+    //   77: sipush 8000
+    //   80: invokevirtual 95	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   83: aload_0
+    //   84: iconst_0
+    //   85: invokevirtual 99	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   88: aload_0
+    //   89: ldc 101
+    //   91: aload_1
+    //   92: invokevirtual 105	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   95: aload_0
+    //   96: ldc 107
+    //   98: aload_2
+    //   99: invokevirtual 105	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   102: aload_0
+    //   103: ldc 109
+    //   105: aload_3
+    //   106: invokevirtual 105	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   109: aconst_null
+    //   110: astore_2
+    //   111: iconst_0
+    //   112: istore 6
+    //   114: iload 6
+    //   116: aload 4
+    //   118: arraylength
+    //   119: if_icmpge +87 -> 206
+    //   122: iload 6
+    //   124: iconst_2
+    //   125: irem
+    //   126: ifne +12 -> 138
+    //   129: aload 4
+    //   131: iload 6
+    //   133: aaload
+    //   134: astore_2
+    //   135: goto +470 -> 605
+    //   138: aload_0
+    //   139: aload_2
+    //   140: aload 4
+    //   142: iload 6
+    //   144: aaload
+    //   145: invokevirtual 105	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   148: goto +457 -> 605
+    //   151: astore_1
+    //   152: aconst_null
+    //   153: astore_1
+    //   154: aconst_null
+    //   155: astore 4
+    //   157: aconst_null
+    //   158: astore_2
+    //   159: aload_0
+    //   160: astore_3
+    //   161: aload_1
+    //   162: astore_0
+    //   163: aload 4
+    //   165: astore_1
+    //   166: aload 5
+    //   168: iconst_m1
+    //   169: aconst_null
+    //   170: invokevirtual 114	anph:a	(I[B)V
+    //   173: aload_3
+    //   174: ifnull +7 -> 181
+    //   177: aload_3
+    //   178: invokevirtual 117	java/net/HttpURLConnection:disconnect	()V
+    //   181: aload_1
+    //   182: ifnull +7 -> 189
+    //   185: aload_1
+    //   186: invokevirtual 122	java/io/OutputStream:close	()V
+    //   189: aload_2
+    //   190: ifnull +7 -> 197
+    //   193: aload_2
+    //   194: invokevirtual 125	java/io/InputStream:close	()V
+    //   197: aload_0
+    //   198: ifnull +7 -> 205
+    //   201: aload_0
+    //   202: invokevirtual 128	java/io/ByteArrayOutputStream:close	()V
+    //   205: return
+    //   206: aload_0
+    //   207: invokevirtual 132	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   210: astore_2
+    //   211: aload 11
+    //   213: astore 4
+    //   215: aload_2
+    //   216: aload_1
+    //   217: invokevirtual 138	java/lang/String:getBytes	()[B
+    //   220: invokevirtual 142	java/io/OutputStream:write	([B)V
+    //   223: aload 11
+    //   225: astore 4
+    //   227: aload_2
+    //   228: invokevirtual 145	java/io/OutputStream:flush	()V
+    //   231: aload 11
+    //   233: astore 4
+    //   235: aload_0
+    //   236: invokevirtual 149	java/net/HttpURLConnection:getResponseCode	()I
+    //   239: istore 6
+    //   241: aload 11
+    //   243: astore 4
+    //   245: aload_0
+    //   246: invokevirtual 153	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   249: astore_1
+    //   250: aload_1
+    //   251: astore 4
+    //   253: new 127	java/io/ByteArrayOutputStream
+    //   256: dup
+    //   257: invokespecial 154	java/io/ByteArrayOutputStream:<init>	()V
+    //   260: astore_3
+    //   261: sipush 1024
+    //   264: newarray byte
+    //   266: astore 4
+    //   268: aload_1
+    //   269: aload 4
+    //   271: invokevirtual 158	java/io/InputStream:read	([B)I
+    //   274: istore 7
+    //   276: iload 7
+    //   278: iconst_m1
+    //   279: if_icmpeq +15 -> 294
+    //   282: aload_3
+    //   283: aload 4
+    //   285: iconst_0
+    //   286: iload 7
+    //   288: invokevirtual 161	java/io/ByteArrayOutputStream:write	([BII)V
+    //   291: goto -23 -> 268
+    //   294: aload 5
+    //   296: iload 6
+    //   298: aload_3
+    //   299: invokevirtual 164	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   302: invokevirtual 114	anph:a	(I[B)V
+    //   305: aload_0
+    //   306: ifnull +7 -> 313
+    //   309: aload_0
+    //   310: invokevirtual 117	java/net/HttpURLConnection:disconnect	()V
+    //   313: aload_2
+    //   314: ifnull +7 -> 321
+    //   317: aload_2
+    //   318: invokevirtual 122	java/io/OutputStream:close	()V
+    //   321: aload_1
+    //   322: ifnull +7 -> 329
+    //   325: aload_1
+    //   326: invokevirtual 125	java/io/InputStream:close	()V
+    //   329: aload_3
+    //   330: ifnull -125 -> 205
+    //   333: aload_3
+    //   334: invokevirtual 128	java/io/ByteArrayOutputStream:close	()V
+    //   337: return
+    //   338: astore_0
+    //   339: return
+    //   340: astore_0
+    //   341: ldc 35
+    //   343: iconst_1
+    //   344: aload_0
+    //   345: iconst_0
+    //   346: anewarray 4	java/lang/Object
+    //   349: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   352: goto -31 -> 321
+    //   355: astore_0
+    //   356: ldc 35
+    //   358: iconst_1
+    //   359: aload_0
+    //   360: iconst_0
+    //   361: anewarray 4	java/lang/Object
+    //   364: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   367: goto -38 -> 329
+    //   370: astore_1
+    //   371: ldc 35
+    //   373: iconst_1
+    //   374: aload_1
+    //   375: iconst_0
+    //   376: anewarray 4	java/lang/Object
+    //   379: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   382: goto -193 -> 189
+    //   385: astore_1
+    //   386: ldc 35
+    //   388: iconst_1
+    //   389: aload_1
+    //   390: iconst_0
+    //   391: anewarray 4	java/lang/Object
+    //   394: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   397: goto -200 -> 197
+    //   400: astore_0
+    //   401: aload 9
+    //   403: astore_1
+    //   404: aload 8
+    //   406: astore 5
+    //   408: aload 10
+    //   410: astore_3
+    //   411: aload 12
+    //   413: astore_2
+    //   414: aload_2
+    //   415: ifnull +7 -> 422
+    //   418: aload_2
+    //   419: invokevirtual 117	java/net/HttpURLConnection:disconnect	()V
+    //   422: aload_3
+    //   423: ifnull +7 -> 430
+    //   426: aload_3
+    //   427: invokevirtual 122	java/io/OutputStream:close	()V
+    //   430: aload_1
+    //   431: ifnull +7 -> 438
+    //   434: aload_1
+    //   435: invokevirtual 125	java/io/InputStream:close	()V
+    //   438: aload 5
+    //   440: ifnull +8 -> 448
+    //   443: aload 5
+    //   445: invokevirtual 128	java/io/ByteArrayOutputStream:close	()V
+    //   448: aload_0
+    //   449: athrow
+    //   450: astore_2
+    //   451: ldc 35
+    //   453: iconst_1
+    //   454: aload_2
+    //   455: iconst_0
+    //   456: anewarray 4	java/lang/Object
+    //   459: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   462: goto -32 -> 430
+    //   465: astore_1
+    //   466: ldc 35
+    //   468: iconst_1
+    //   469: aload_1
+    //   470: iconst_0
+    //   471: anewarray 4	java/lang/Object
+    //   474: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   477: goto -39 -> 438
+    //   480: astore_0
+    //   481: return
+    //   482: astore_1
+    //   483: goto -35 -> 448
+    //   486: astore_1
+    //   487: aload_0
+    //   488: astore_2
+    //   489: aload_1
+    //   490: astore_0
+    //   491: aload 10
+    //   493: astore_3
+    //   494: aload 8
+    //   496: astore 5
+    //   498: aload 9
+    //   500: astore_1
+    //   501: goto -87 -> 414
+    //   504: astore_1
+    //   505: aload_2
+    //   506: astore_3
+    //   507: aload_0
+    //   508: astore_2
+    //   509: aload_1
+    //   510: astore_0
+    //   511: aload 8
+    //   513: astore 5
+    //   515: aload 4
+    //   517: astore_1
+    //   518: goto -104 -> 414
+    //   521: astore 4
+    //   523: aload_3
+    //   524: astore 5
+    //   526: aload_2
+    //   527: astore_3
+    //   528: aload_0
+    //   529: astore_2
+    //   530: aload 4
+    //   532: astore_0
+    //   533: goto -119 -> 414
+    //   536: astore 5
+    //   538: aload_2
+    //   539: astore 4
+    //   541: aload 5
+    //   543: astore_2
+    //   544: aload_0
+    //   545: astore 5
+    //   547: aload_2
+    //   548: astore_0
+    //   549: aload_3
+    //   550: astore_2
+    //   551: aload_1
+    //   552: astore_3
+    //   553: aload 4
+    //   555: astore_1
+    //   556: goto -142 -> 414
+    //   559: astore_0
+    //   560: aconst_null
+    //   561: astore_1
+    //   562: aconst_null
+    //   563: astore_2
+    //   564: aconst_null
+    //   565: astore_3
+    //   566: aconst_null
+    //   567: astore_0
+    //   568: goto -402 -> 166
+    //   571: astore_1
+    //   572: aconst_null
+    //   573: astore 4
+    //   575: aload_0
+    //   576: astore_3
+    //   577: aload_2
+    //   578: astore_1
+    //   579: aconst_null
+    //   580: astore_0
+    //   581: aload 4
+    //   583: astore_2
+    //   584: goto -418 -> 166
+    //   587: astore_3
+    //   588: aload_1
+    //   589: astore_3
+    //   590: aload_0
+    //   591: astore 4
+    //   593: aload_2
+    //   594: astore_1
+    //   595: aconst_null
+    //   596: astore_0
+    //   597: aload_3
+    //   598: astore_2
+    //   599: aload 4
+    //   601: astore_3
+    //   602: goto -436 -> 166
+    //   605: iload 6
+    //   607: iconst_1
+    //   608: iadd
+    //   609: istore 6
+    //   611: goto -497 -> 114
+    //   614: astore 4
+    //   616: aload_0
+    //   617: astore 4
+    //   619: aload_3
+    //   620: astore_0
+    //   621: aload_1
+    //   622: astore_3
+    //   623: aload_2
+    //   624: astore_1
+    //   625: aload_3
+    //   626: astore_2
+    //   627: aload 4
+    //   629: astore_3
+    //   630: goto -464 -> 166
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	633	0	paramString1	String
+    //   0	633	1	paramString2	String
+    //   0	633	2	paramString3	String
+    //   0	633	3	paramString4	String
+    //   0	633	4	paramArrayOfString	String[]
+    //   0	633	5	paramanph	anph
+    //   112	498	6	i	int
+    //   274	13	7	j	int
+    //   10	502	8	localObject1	Object
+    //   7	492	9	localObject2	Object
+    //   13	479	10	localObject3	Object
+    //   4	238	11	localObject4	Object
+    //   1	411	12	localObject5	Object
+    // Exception table:
+    //   from	to	target	type
+    //   30	48	151	java/lang/Throwable
+    //   53	69	151	java/lang/Throwable
+    //   69	109	151	java/lang/Throwable
+    //   114	122	151	java/lang/Throwable
+    //   138	148	151	java/lang/Throwable
+    //   206	211	151	java/lang/Throwable
+    //   333	337	338	java/io/IOException
+    //   317	321	340	java/io/IOException
+    //   325	329	355	java/io/IOException
+    //   185	189	370	java/io/IOException
+    //   193	197	385	java/io/IOException
+    //   15	30	400	finally
+    //   426	430	450	java/io/IOException
+    //   434	438	465	java/io/IOException
+    //   201	205	480	java/io/IOException
+    //   443	448	482	java/io/IOException
+    //   30	48	486	finally
+    //   53	69	486	finally
+    //   69	109	486	finally
+    //   114	122	486	finally
+    //   138	148	486	finally
+    //   206	211	486	finally
+    //   215	223	504	finally
+    //   227	231	504	finally
+    //   235	241	504	finally
+    //   245	250	504	finally
+    //   253	261	504	finally
+    //   261	268	521	finally
+    //   268	276	521	finally
+    //   282	291	521	finally
+    //   294	305	521	finally
+    //   166	173	536	finally
+    //   15	30	559	java/lang/Throwable
+    //   215	223	571	java/lang/Throwable
+    //   227	231	571	java/lang/Throwable
+    //   235	241	571	java/lang/Throwable
+    //   245	250	571	java/lang/Throwable
+    //   253	261	587	java/lang/Throwable
+    //   261	268	614	java/lang/Throwable
+    //   268	276	614	java/lang/Throwable
+    //   282	291	614	java/lang/Throwable
+    //   294	305	614	java/lang/Throwable
+  }
+  
+  /* Error */
+  public static void a(String paramString1, String paramString2, byte[] paramArrayOfByte, String[] paramArrayOfString, anph paramanph)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 11
+    //   3: aconst_null
+    //   4: astore 10
+    //   6: aconst_null
+    //   7: astore 7
+    //   9: aconst_null
+    //   10: astore 8
+    //   12: aconst_null
+    //   13: astore 9
+    //   15: new 62	java/net/URL
+    //   18: dup
+    //   19: aload_1
+    //   20: invokespecial 65	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   23: invokevirtual 69	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   26: checkcast 71	java/net/HttpURLConnection
+    //   29: astore_1
+    //   30: aload_1
+    //   31: aload_0
+    //   32: invokevirtual 76	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   35: aload_1
+    //   36: instanceof 78
+    //   39: ifeq +24 -> 63
+    //   42: invokestatic 80	anpk:a	()Ljavax/net/ssl/SSLContext;
+    //   45: astore_0
+    //   46: aload_0
+    //   47: ifnull +16 -> 63
+    //   50: aload_0
+    //   51: invokevirtual 84	javax/net/ssl/SSLContext:getSocketFactory	()Ljavax/net/ssl/SSLSocketFactory;
+    //   54: astore_0
+    //   55: aload_1
+    //   56: checkcast 78	javax/net/ssl/HttpsURLConnection
+    //   59: aload_0
+    //   60: invokevirtual 88	javax/net/ssl/HttpsURLConnection:setSSLSocketFactory	(Ljavax/net/ssl/SSLSocketFactory;)V
+    //   63: aload_1
+    //   64: sipush 8000
+    //   67: invokevirtual 92	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   70: aload_1
+    //   71: sipush 8000
+    //   74: invokevirtual 95	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   77: aload_1
+    //   78: iconst_0
+    //   79: invokevirtual 99	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   82: aconst_null
+    //   83: astore_0
+    //   84: iconst_0
+    //   85: istore 5
+    //   87: iload 5
+    //   89: aload_3
+    //   90: arraylength
+    //   91: if_icmpge +83 -> 174
+    //   94: iload 5
+    //   96: iconst_2
+    //   97: irem
+    //   98: ifne +11 -> 109
+    //   101: aload_3
+    //   102: iload 5
+    //   104: aaload
+    //   105: astore_0
+    //   106: goto +487 -> 593
+    //   109: aload_1
+    //   110: aload_0
+    //   111: aload_3
+    //   112: iload 5
+    //   114: aaload
+    //   115: invokevirtual 105	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   118: goto +475 -> 593
+    //   121: astore_0
+    //   122: aconst_null
+    //   123: astore_0
+    //   124: aconst_null
+    //   125: astore 7
+    //   127: aconst_null
+    //   128: astore_2
+    //   129: aload_1
+    //   130: astore_3
+    //   131: aload 7
+    //   133: astore_1
+    //   134: aload 4
+    //   136: iconst_m1
+    //   137: aconst_null
+    //   138: invokevirtual 114	anph:a	(I[B)V
+    //   141: aload_3
+    //   142: ifnull +7 -> 149
+    //   145: aload_3
+    //   146: invokevirtual 117	java/net/HttpURLConnection:disconnect	()V
+    //   149: aload_1
+    //   150: ifnull +7 -> 157
+    //   153: aload_1
+    //   154: invokevirtual 122	java/io/OutputStream:close	()V
+    //   157: aload_2
+    //   158: ifnull +7 -> 165
+    //   161: aload_2
+    //   162: invokevirtual 125	java/io/InputStream:close	()V
+    //   165: aload_0
+    //   166: ifnull +7 -> 173
+    //   169: aload_0
+    //   170: invokevirtual 128	java/io/ByteArrayOutputStream:close	()V
+    //   173: return
+    //   174: aload_1
+    //   175: invokevirtual 132	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   178: astore_0
+    //   179: aload 10
+    //   181: astore 7
+    //   183: aload_0
+    //   184: aload_2
+    //   185: invokevirtual 142	java/io/OutputStream:write	([B)V
+    //   188: aload 10
+    //   190: astore 7
+    //   192: aload_0
+    //   193: invokevirtual 145	java/io/OutputStream:flush	()V
+    //   196: aload 10
+    //   198: astore 7
+    //   200: aload_1
+    //   201: invokevirtual 149	java/net/HttpURLConnection:getResponseCode	()I
+    //   204: istore 5
+    //   206: aload 10
+    //   208: astore 7
+    //   210: aload_1
+    //   211: invokevirtual 153	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   214: astore_2
+    //   215: aload_2
+    //   216: astore 7
+    //   218: new 127	java/io/ByteArrayOutputStream
+    //   221: dup
+    //   222: invokespecial 154	java/io/ByteArrayOutputStream:<init>	()V
+    //   225: astore_3
+    //   226: sipush 1024
+    //   229: newarray byte
+    //   231: astore 7
+    //   233: aload_2
+    //   234: aload 7
+    //   236: invokevirtual 158	java/io/InputStream:read	([B)I
+    //   239: istore 6
+    //   241: iload 6
+    //   243: iconst_m1
+    //   244: if_icmpeq +15 -> 259
+    //   247: aload_3
+    //   248: aload 7
+    //   250: iconst_0
+    //   251: iload 6
+    //   253: invokevirtual 161	java/io/ByteArrayOutputStream:write	([BII)V
+    //   256: goto -23 -> 233
+    //   259: aload 4
+    //   261: iload 5
+    //   263: aload_3
+    //   264: invokevirtual 164	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   267: invokevirtual 114	anph:a	(I[B)V
+    //   270: aload_1
+    //   271: ifnull +7 -> 278
+    //   274: aload_1
+    //   275: invokevirtual 117	java/net/HttpURLConnection:disconnect	()V
+    //   278: aload_0
+    //   279: ifnull +7 -> 286
+    //   282: aload_0
+    //   283: invokevirtual 122	java/io/OutputStream:close	()V
+    //   286: aload_2
+    //   287: ifnull +7 -> 294
+    //   290: aload_2
+    //   291: invokevirtual 125	java/io/InputStream:close	()V
+    //   294: aload_3
+    //   295: ifnull -122 -> 173
+    //   298: aload_3
+    //   299: invokevirtual 128	java/io/ByteArrayOutputStream:close	()V
+    //   302: return
+    //   303: astore_0
+    //   304: ldc 35
+    //   306: iconst_1
+    //   307: aload_0
+    //   308: iconst_0
+    //   309: anewarray 4	java/lang/Object
+    //   312: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   315: return
+    //   316: astore_0
+    //   317: ldc 35
+    //   319: iconst_1
+    //   320: aload_0
+    //   321: iconst_0
+    //   322: anewarray 4	java/lang/Object
+    //   325: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   328: goto -42 -> 286
+    //   331: astore_0
+    //   332: ldc 35
+    //   334: iconst_1
+    //   335: aload_0
+    //   336: iconst_0
+    //   337: anewarray 4	java/lang/Object
+    //   340: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   343: goto -49 -> 294
+    //   346: astore_1
+    //   347: ldc 35
+    //   349: iconst_1
+    //   350: aload_1
+    //   351: iconst_0
+    //   352: anewarray 4	java/lang/Object
+    //   355: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   358: goto -201 -> 157
+    //   361: astore_1
+    //   362: ldc 35
+    //   364: iconst_1
+    //   365: aload_1
+    //   366: iconst_0
+    //   367: anewarray 4	java/lang/Object
+    //   370: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   373: goto -208 -> 165
+    //   376: astore_0
+    //   377: ldc 35
+    //   379: iconst_1
+    //   380: aload_0
+    //   381: iconst_0
+    //   382: anewarray 4	java/lang/Object
+    //   385: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   388: return
+    //   389: astore_0
+    //   390: aload 7
+    //   392: astore_2
+    //   393: aload 8
+    //   395: astore 4
+    //   397: aload 9
+    //   399: astore_3
+    //   400: aload 11
+    //   402: astore_1
+    //   403: aload_1
+    //   404: ifnull +7 -> 411
+    //   407: aload_1
+    //   408: invokevirtual 117	java/net/HttpURLConnection:disconnect	()V
+    //   411: aload_3
+    //   412: ifnull +7 -> 419
+    //   415: aload_3
+    //   416: invokevirtual 122	java/io/OutputStream:close	()V
+    //   419: aload_2
+    //   420: ifnull +7 -> 427
+    //   423: aload_2
+    //   424: invokevirtual 125	java/io/InputStream:close	()V
+    //   427: aload 4
+    //   429: ifnull +8 -> 437
+    //   432: aload 4
+    //   434: invokevirtual 128	java/io/ByteArrayOutputStream:close	()V
+    //   437: aload_0
+    //   438: athrow
+    //   439: astore_1
+    //   440: ldc 35
+    //   442: iconst_1
+    //   443: aload_1
+    //   444: iconst_0
+    //   445: anewarray 4	java/lang/Object
+    //   448: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   451: goto -32 -> 419
+    //   454: astore_1
+    //   455: ldc 35
+    //   457: iconst_1
+    //   458: aload_1
+    //   459: iconst_0
+    //   460: anewarray 4	java/lang/Object
+    //   463: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   466: goto -39 -> 427
+    //   469: astore_1
+    //   470: ldc 35
+    //   472: iconst_1
+    //   473: aload_1
+    //   474: iconst_0
+    //   475: anewarray 4	java/lang/Object
+    //   478: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   481: goto -44 -> 437
+    //   484: astore_0
+    //   485: aload 9
+    //   487: astore_3
+    //   488: aload 8
+    //   490: astore 4
+    //   492: aload 7
+    //   494: astore_2
+    //   495: goto -92 -> 403
+    //   498: astore_2
+    //   499: aload_0
+    //   500: astore_3
+    //   501: aload_2
+    //   502: astore_0
+    //   503: aload 8
+    //   505: astore 4
+    //   507: aload 7
+    //   509: astore_2
+    //   510: goto -107 -> 403
+    //   513: astore 7
+    //   515: aload_3
+    //   516: astore 4
+    //   518: aload_0
+    //   519: astore_3
+    //   520: aload 7
+    //   522: astore_0
+    //   523: goto -120 -> 403
+    //   526: astore 7
+    //   528: aload_1
+    //   529: astore 4
+    //   531: aload 7
+    //   533: astore_1
+    //   534: aload_0
+    //   535: astore 7
+    //   537: aload_1
+    //   538: astore_0
+    //   539: aload_3
+    //   540: astore_1
+    //   541: aload 4
+    //   543: astore_3
+    //   544: aload 7
+    //   546: astore 4
+    //   548: goto -145 -> 403
+    //   551: astore_0
+    //   552: aconst_null
+    //   553: astore_1
+    //   554: aconst_null
+    //   555: astore_2
+    //   556: aconst_null
+    //   557: astore_3
+    //   558: aconst_null
+    //   559: astore_0
+    //   560: goto -426 -> 134
+    //   563: astore_2
+    //   564: aconst_null
+    //   565: astore_2
+    //   566: aload_1
+    //   567: astore_3
+    //   568: aconst_null
+    //   569: astore 7
+    //   571: aload_0
+    //   572: astore_1
+    //   573: aload 7
+    //   575: astore_0
+    //   576: goto -442 -> 134
+    //   579: astore_3
+    //   580: aload_1
+    //   581: astore_3
+    //   582: aconst_null
+    //   583: astore 7
+    //   585: aload_0
+    //   586: astore_1
+    //   587: aload 7
+    //   589: astore_0
+    //   590: goto -456 -> 134
+    //   593: iload 5
+    //   595: iconst_1
+    //   596: iadd
+    //   597: istore 5
+    //   599: goto -512 -> 87
+    //   602: astore 7
+    //   604: aload_1
+    //   605: astore 7
+    //   607: aload_0
+    //   608: astore_1
+    //   609: aload_3
+    //   610: astore_0
+    //   611: aload 7
+    //   613: astore_3
+    //   614: goto -480 -> 134
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	617	0	paramString1	String
+    //   0	617	1	paramString2	String
+    //   0	617	2	paramArrayOfByte	byte[]
+    //   0	617	3	paramArrayOfString	String[]
+    //   0	617	4	paramanph	anph
+    //   85	513	5	i	int
+    //   239	13	6	j	int
+    //   7	501	7	localObject1	Object
+    //   513	8	7	localObject2	Object
+    //   526	6	7	localObject3	Object
+    //   535	53	7	str1	String
+    //   602	1	7	localThrowable	Throwable
+    //   605	7	7	str2	String
+    //   10	494	8	localObject4	Object
+    //   13	473	9	localObject5	Object
+    //   4	203	10	localObject6	Object
+    //   1	400	11	localObject7	Object
+    // Exception table:
+    //   from	to	target	type
+    //   30	46	121	java/lang/Throwable
+    //   50	63	121	java/lang/Throwable
+    //   63	82	121	java/lang/Throwable
+    //   87	94	121	java/lang/Throwable
+    //   109	118	121	java/lang/Throwable
+    //   174	179	121	java/lang/Throwable
+    //   298	302	303	java/io/IOException
+    //   282	286	316	java/io/IOException
+    //   290	294	331	java/io/IOException
+    //   153	157	346	java/io/IOException
+    //   161	165	361	java/io/IOException
+    //   169	173	376	java/io/IOException
+    //   15	30	389	finally
+    //   415	419	439	java/io/IOException
+    //   423	427	454	java/io/IOException
+    //   432	437	469	java/io/IOException
+    //   30	46	484	finally
+    //   50	63	484	finally
+    //   63	82	484	finally
+    //   87	94	484	finally
+    //   109	118	484	finally
+    //   174	179	484	finally
+    //   183	188	498	finally
+    //   192	196	498	finally
+    //   200	206	498	finally
+    //   210	215	498	finally
+    //   218	226	498	finally
+    //   226	233	513	finally
+    //   233	241	513	finally
+    //   247	256	513	finally
+    //   259	270	513	finally
+    //   134	141	526	finally
+    //   15	30	551	java/lang/Throwable
+    //   183	188	563	java/lang/Throwable
+    //   192	196	563	java/lang/Throwable
+    //   200	206	563	java/lang/Throwable
+    //   210	215	563	java/lang/Throwable
+    //   218	226	579	java/lang/Throwable
+    //   226	233	602	java/lang/Throwable
+    //   233	241	602	java/lang/Throwable
+    //   247	256	602	java/lang/Throwable
+    //   259	270	602	java/lang/Throwable
+  }
+  
+  /* Error */
+  public static void a(String paramString1, String paramString2, String[] paramArrayOfString, anph paramanph)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 7
+    //   3: aconst_null
+    //   4: astore 8
+    //   6: new 62	java/net/URL
+    //   9: dup
+    //   10: aload_0
+    //   11: invokespecial 65	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   14: invokevirtual 69	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   17: checkcast 71	java/net/HttpURLConnection
+    //   20: astore_0
+    //   21: aload_0
+    //   22: ldc 73
+    //   24: invokevirtual 76	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   27: aload_0
+    //   28: instanceof 78
+    //   31: ifeq +29 -> 60
+    //   34: invokestatic 80	anpk:a	()Ljavax/net/ssl/SSLContext;
+    //   37: astore 6
+    //   39: aload 6
+    //   41: ifnull +19 -> 60
+    //   44: aload 6
+    //   46: invokevirtual 84	javax/net/ssl/SSLContext:getSocketFactory	()Ljavax/net/ssl/SSLSocketFactory;
+    //   49: astore 6
+    //   51: aload_0
+    //   52: checkcast 78	javax/net/ssl/HttpsURLConnection
+    //   55: aload 6
+    //   57: invokevirtual 88	javax/net/ssl/HttpsURLConnection:setSSLSocketFactory	(Ljavax/net/ssl/SSLSocketFactory;)V
+    //   60: aload_0
+    //   61: sipush 8000
+    //   64: invokevirtual 92	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   67: aload_0
+    //   68: sipush 8000
+    //   71: invokevirtual 95	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   74: aload_0
+    //   75: iconst_0
+    //   76: invokevirtual 99	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   79: iconst_0
+    //   80: istore 4
+    //   82: aconst_null
+    //   83: astore 6
+    //   85: iload 4
+    //   87: aload_2
+    //   88: arraylength
+    //   89: if_icmpge +88 -> 177
+    //   92: iload 4
+    //   94: iconst_2
+    //   95: irem
+    //   96: ifne +12 -> 108
+    //   99: aload_2
+    //   100: iload 4
+    //   102: aaload
+    //   103: astore 6
+    //   105: goto +505 -> 610
+    //   108: aload_0
+    //   109: aload 6
+    //   111: aload_2
+    //   112: iload 4
+    //   114: aaload
+    //   115: invokevirtual 105	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   118: goto +492 -> 610
+    //   121: astore_1
+    //   122: aconst_null
+    //   123: astore_1
+    //   124: aconst_null
+    //   125: astore 7
+    //   127: aload_0
+    //   128: astore_2
+    //   129: aload 8
+    //   131: astore 6
+    //   133: aload 7
+    //   135: astore_0
+    //   136: aload_3
+    //   137: iconst_m1
+    //   138: aconst_null
+    //   139: invokevirtual 114	anph:a	(I[B)V
+    //   142: aload_2
+    //   143: ifnull +7 -> 150
+    //   146: aload_2
+    //   147: invokevirtual 117	java/net/HttpURLConnection:disconnect	()V
+    //   150: aload_0
+    //   151: ifnull +7 -> 158
+    //   154: aload_0
+    //   155: invokevirtual 122	java/io/OutputStream:close	()V
+    //   158: aload_1
+    //   159: ifnull +7 -> 166
+    //   162: aload_1
+    //   163: invokevirtual 125	java/io/InputStream:close	()V
+    //   166: aload 6
+    //   168: ifnull +8 -> 176
+    //   171: aload 6
+    //   173: invokevirtual 128	java/io/ByteArrayOutputStream:close	()V
+    //   176: return
+    //   177: aload_0
+    //   178: invokevirtual 132	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   181: astore_2
+    //   182: aload_2
+    //   183: aload_1
+    //   184: invokevirtual 138	java/lang/String:getBytes	()[B
+    //   187: invokevirtual 142	java/io/OutputStream:write	([B)V
+    //   190: aload_2
+    //   191: invokevirtual 145	java/io/OutputStream:flush	()V
+    //   194: aload_0
+    //   195: invokevirtual 149	java/net/HttpURLConnection:getResponseCode	()I
+    //   198: istore 4
+    //   200: aload_0
+    //   201: invokevirtual 153	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   204: astore 6
+    //   206: new 127	java/io/ByteArrayOutputStream
+    //   209: dup
+    //   210: invokespecial 154	java/io/ByteArrayOutputStream:<init>	()V
+    //   213: astore 7
+    //   215: sipush 1024
+    //   218: newarray byte
+    //   220: astore_1
+    //   221: aload 6
+    //   223: aload_1
+    //   224: invokevirtual 158	java/io/InputStream:read	([B)I
+    //   227: istore 5
+    //   229: iload 5
+    //   231: iconst_m1
+    //   232: if_icmpeq +15 -> 247
+    //   235: aload 7
+    //   237: aload_1
+    //   238: iconst_0
+    //   239: iload 5
+    //   241: invokevirtual 161	java/io/ByteArrayOutputStream:write	([BII)V
+    //   244: goto -23 -> 221
+    //   247: aload_3
+    //   248: iload 4
+    //   250: aload 7
+    //   252: invokevirtual 164	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   255: invokevirtual 114	anph:a	(I[B)V
+    //   258: aload_0
+    //   259: ifnull +7 -> 266
+    //   262: aload_0
+    //   263: invokevirtual 117	java/net/HttpURLConnection:disconnect	()V
+    //   266: aload_2
+    //   267: ifnull +7 -> 274
+    //   270: aload_2
+    //   271: invokevirtual 122	java/io/OutputStream:close	()V
+    //   274: aload 6
+    //   276: ifnull +8 -> 284
+    //   279: aload 6
+    //   281: invokevirtual 125	java/io/InputStream:close	()V
+    //   284: aload 7
+    //   286: ifnull -110 -> 176
+    //   289: aload 7
+    //   291: invokevirtual 128	java/io/ByteArrayOutputStream:close	()V
+    //   294: return
+    //   295: astore_0
+    //   296: ldc 35
+    //   298: iconst_1
+    //   299: aload_0
+    //   300: iconst_0
+    //   301: anewarray 4	java/lang/Object
+    //   304: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   307: return
+    //   308: astore_0
+    //   309: ldc 35
+    //   311: iconst_1
+    //   312: aload_0
+    //   313: iconst_0
+    //   314: anewarray 4	java/lang/Object
+    //   317: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   320: goto -46 -> 274
+    //   323: astore_0
+    //   324: ldc 35
+    //   326: iconst_1
+    //   327: aload_0
+    //   328: iconst_0
+    //   329: anewarray 4	java/lang/Object
+    //   332: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   335: goto -51 -> 284
+    //   338: astore_0
+    //   339: ldc 35
+    //   341: iconst_1
+    //   342: aload_0
+    //   343: iconst_0
+    //   344: anewarray 4	java/lang/Object
+    //   347: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   350: goto -192 -> 158
+    //   353: astore_0
+    //   354: ldc 35
+    //   356: iconst_1
+    //   357: aload_0
+    //   358: iconst_0
+    //   359: anewarray 4	java/lang/Object
+    //   362: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   365: goto -199 -> 166
+    //   368: astore_0
+    //   369: ldc 35
+    //   371: iconst_1
+    //   372: aload_0
+    //   373: iconst_0
+    //   374: anewarray 4	java/lang/Object
+    //   377: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   380: return
+    //   381: astore_0
+    //   382: aconst_null
+    //   383: astore_2
+    //   384: aconst_null
+    //   385: astore 6
+    //   387: aconst_null
+    //   388: astore_1
+    //   389: aload 7
+    //   391: astore_3
+    //   392: aload_1
+    //   393: ifnull +7 -> 400
+    //   396: aload_1
+    //   397: invokevirtual 117	java/net/HttpURLConnection:disconnect	()V
+    //   400: aload_3
+    //   401: ifnull +7 -> 408
+    //   404: aload_3
+    //   405: invokevirtual 122	java/io/OutputStream:close	()V
+    //   408: aload 6
+    //   410: ifnull +8 -> 418
+    //   413: aload 6
+    //   415: invokevirtual 125	java/io/InputStream:close	()V
+    //   418: aload_2
+    //   419: ifnull +7 -> 426
+    //   422: aload_2
+    //   423: invokevirtual 128	java/io/ByteArrayOutputStream:close	()V
+    //   426: aload_0
+    //   427: athrow
+    //   428: astore_1
+    //   429: ldc 35
+    //   431: iconst_1
+    //   432: aload_1
+    //   433: iconst_0
+    //   434: anewarray 4	java/lang/Object
+    //   437: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   440: goto -32 -> 408
+    //   443: astore_1
+    //   444: ldc 35
+    //   446: iconst_1
+    //   447: aload_1
+    //   448: iconst_0
+    //   449: anewarray 4	java/lang/Object
+    //   452: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   455: goto -37 -> 418
+    //   458: astore_1
+    //   459: ldc 35
+    //   461: iconst_1
+    //   462: aload_1
+    //   463: iconst_0
+    //   464: anewarray 4	java/lang/Object
+    //   467: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   470: goto -44 -> 426
+    //   473: astore_3
+    //   474: aconst_null
+    //   475: astore_2
+    //   476: aconst_null
+    //   477: astore 6
+    //   479: aload_0
+    //   480: astore_1
+    //   481: aload_3
+    //   482: astore_0
+    //   483: aload 7
+    //   485: astore_3
+    //   486: goto -94 -> 392
+    //   489: astore_3
+    //   490: aconst_null
+    //   491: astore 6
+    //   493: aload_0
+    //   494: astore_1
+    //   495: aload_3
+    //   496: astore_0
+    //   497: aconst_null
+    //   498: astore 7
+    //   500: aload_2
+    //   501: astore_3
+    //   502: aload 7
+    //   504: astore_2
+    //   505: goto -113 -> 392
+    //   508: astore_3
+    //   509: aconst_null
+    //   510: astore 7
+    //   512: aload_0
+    //   513: astore_1
+    //   514: aload_3
+    //   515: astore_0
+    //   516: aload_2
+    //   517: astore_3
+    //   518: aload 7
+    //   520: astore_2
+    //   521: goto -129 -> 392
+    //   524: astore_3
+    //   525: aload_0
+    //   526: astore_1
+    //   527: aload_3
+    //   528: astore_0
+    //   529: aload_2
+    //   530: astore_3
+    //   531: aload 7
+    //   533: astore_2
+    //   534: goto -142 -> 392
+    //   537: astore 8
+    //   539: aload_1
+    //   540: astore 7
+    //   542: aload_2
+    //   543: astore_1
+    //   544: aload 6
+    //   546: astore_2
+    //   547: aload_0
+    //   548: astore_3
+    //   549: aload 8
+    //   551: astore_0
+    //   552: aload 7
+    //   554: astore 6
+    //   556: goto -164 -> 392
+    //   559: astore_0
+    //   560: aconst_null
+    //   561: astore_0
+    //   562: aconst_null
+    //   563: astore_1
+    //   564: aconst_null
+    //   565: astore_2
+    //   566: aload 8
+    //   568: astore 6
+    //   570: goto -434 -> 136
+    //   573: astore_1
+    //   574: aload_0
+    //   575: astore 7
+    //   577: aload_2
+    //   578: astore_0
+    //   579: aconst_null
+    //   580: astore_1
+    //   581: aload 8
+    //   583: astore 6
+    //   585: aload 7
+    //   587: astore_2
+    //   588: goto -452 -> 136
+    //   591: astore_1
+    //   592: aload_0
+    //   593: astore 7
+    //   595: aload_2
+    //   596: astore_0
+    //   597: aload 6
+    //   599: astore_1
+    //   600: aload 8
+    //   602: astore 6
+    //   604: aload 7
+    //   606: astore_2
+    //   607: goto -471 -> 136
+    //   610: iload 4
+    //   612: iconst_1
+    //   613: iadd
+    //   614: istore 4
+    //   616: goto -531 -> 85
+    //   619: astore_1
+    //   620: aload_0
+    //   621: astore 8
+    //   623: aload_2
+    //   624: astore_0
+    //   625: aload 6
+    //   627: astore_1
+    //   628: aload 7
+    //   630: astore 6
+    //   632: aload 8
+    //   634: astore_2
+    //   635: goto -499 -> 136
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	638	0	paramString1	String
+    //   0	638	1	paramString2	String
+    //   0	638	2	paramArrayOfString	String[]
+    //   0	638	3	paramanph	anph
+    //   80	535	4	i	int
+    //   227	13	5	j	int
+    //   37	594	6	localObject1	Object
+    //   1	628	7	localObject2	Object
+    //   4	126	8	localObject3	Object
+    //   537	64	8	localObject4	Object
+    //   621	12	8	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   21	39	121	java/lang/Throwable
+    //   44	60	121	java/lang/Throwable
+    //   60	79	121	java/lang/Throwable
+    //   85	92	121	java/lang/Throwable
+    //   108	118	121	java/lang/Throwable
+    //   177	182	121	java/lang/Throwable
+    //   289	294	295	java/io/IOException
+    //   270	274	308	java/io/IOException
+    //   279	284	323	java/io/IOException
+    //   154	158	338	java/io/IOException
+    //   162	166	353	java/io/IOException
+    //   171	176	368	java/io/IOException
+    //   6	21	381	finally
+    //   404	408	428	java/io/IOException
+    //   413	418	443	java/io/IOException
+    //   422	426	458	java/io/IOException
+    //   21	39	473	finally
+    //   44	60	473	finally
+    //   60	79	473	finally
+    //   85	92	473	finally
+    //   108	118	473	finally
+    //   177	182	473	finally
+    //   182	206	489	finally
+    //   206	215	508	finally
+    //   215	221	524	finally
+    //   221	229	524	finally
+    //   235	244	524	finally
+    //   247	258	524	finally
+    //   136	142	537	finally
+    //   6	21	559	java/lang/Throwable
+    //   182	206	573	java/lang/Throwable
+    //   206	215	591	java/lang/Throwable
+    //   215	221	619	java/lang/Throwable
+    //   221	229	619	java/lang/Throwable
+    //   235	244	619	java/lang/Throwable
+    //   247	258	619	java/lang/Throwable
+  }
+  
+  public static void a(@NonNull String paramString1, @NonNull String paramString2, @Nullable String[] paramArrayOfString, @Nullable byte[] paramArrayOfByte, @NonNull anpj paramanpj, @Nullable anpi paramanpi1, @Nullable anpi paramanpi2)
+  {
+    if (paramanpj == null) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramString1))
+    {
+      paramanpj.a(-1, null, null);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest urlString:", paramString1 });
+    }
+    int i = paramString1.indexOf("http://stubcmshow.qq.com/cm3d/");
+    if (i >= 0) {}
+    for (paramString2 = paramString1.substring(i + "http://stubcmshow.qq.com/cm3d/".length());; paramString2 = paramString1)
+    {
+      int j;
+      for (;;)
+      {
+        i = paramString1.indexOf("https://stubcmshow.qq.com/cm3d/");
+        if (i >= 0) {
+          paramString2 = paramString1.substring("https://stubcmshow.qq.com/cm3d/".length() + i);
         }
-        if (paramArrayList.size() > 0)
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest localUrl:", paramString2 });
+        }
+        if (TextUtils.isEmpty(paramString2))
         {
-          paramArrayList = paramArrayList.iterator();
-          while (paramArrayList.hasNext())
+          paramanpj.a(-1, null, null);
+          return;
+        }
+        try
+        {
+          if (!paramString2.startsWith("Role:")) {
+            break label474;
+          }
+          paramString1 = paramString2.substring("Role:".length() + "//".length());
+          i = paramString1.indexOf("/");
+          if (i <= 0) {
+            break;
+          }
+          j = ApolloUtil.b(paramString1.substring(0, i));
+          paramString1 = paramString1.substring("/".length() + i);
+          if (TextUtils.isEmpty(paramString1))
           {
-            localObject2 = (MayKnowRecommend)paramArrayList.next();
-            this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persist((Entity)localObject2);
+            paramanpj.a(-1, null, null);
+            return;
           }
         }
-      }
-      catch (Exception paramArrayList)
-      {
-        Object localObject2;
-        if (QLog.isColorLevel()) {
-          QLog.d("MayknowRecommendManager", 2, "onGetConnectionsPersonData ex", paramArrayList);
+        catch (Exception paramString1)
+        {
+          QLog.e("ApolloHttpUtil", 1, paramString1, new Object[0]);
+          return;
         }
+      }
+      paramString1 = annv.g + j + File.separator + paramString1;
+      paramString2 = new File(paramString1);
+      if (paramString2.exists())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest file exists:", paramString2.getAbsolutePath() });
+        }
+        paramArrayOfString = b(paramArrayOfString);
+        if (a(paramString1))
+        {
+          paramString1 = b(paramString2, paramArrayOfString);
+          paramanpj.a(0, paramArrayOfString, paramString1);
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest retByteArray:", Integer.valueOf(paramString1.length) });
+          }
+        }
+        while (QLog.isColorLevel())
+        {
+          QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest retHeader:", paramArrayOfString });
+          return;
+          paramanpj.a(0, paramArrayOfString, ApolloRender.readStream(new FileInputStream(paramString2)));
+        }
+        break;
+      }
+      QLog.d("ApolloHttpUtil", 1, "fakeResource3DUrlRequest start download id:" + j);
+      aniv.b(anbd.a(), null, new anpl(paramString1, paramArrayOfString, paramanpj), j, null, -1, -1, false);
+      return;
+      label474:
+      if (paramString2.startsWith("Dress:"))
+      {
+        paramString1 = paramString2.substring("Dress:".length() + "//".length());
+        i = paramString1.indexOf("/");
+        if (i <= 0) {
+          break;
+        }
+        j = ApolloUtil.b(paramString1.substring(0, i));
+        paramString1 = paramString1.substring("/".length() + i);
+        if (TextUtils.isEmpty(paramString1))
+        {
+          paramanpj.a(-1, null, null);
+          return;
+        }
+        paramString1 = annv.f + j + File.separator + paramString1;
+        paramString2 = new File(paramString1);
+        if (paramString2.exists())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest file exists:", paramString2.getAbsolutePath() });
+          }
+          paramArrayOfString = b(paramArrayOfString);
+          if (a(paramString1)) {
+            paramanpj.a(0, paramArrayOfString, b(paramString2, paramArrayOfString));
+          }
+          while (QLog.isColorLevel())
+          {
+            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest retHeader:", paramArrayOfString });
+            return;
+            paramanpj.a(0, paramArrayOfString, ApolloRender.readStream(new FileInputStream(paramString2)));
+          }
+          break;
+        }
+        QLog.d("ApolloHttpUtil", 1, "fakeResource3DUrlRequest start download id:" + j);
+        aniv.b(anbd.a(), null, new anpm(paramString1, paramArrayOfString, paramanpj, j), -1, new int[] { j }, -1, -1, true);
         return;
-        paramArrayList = finally;
-        throw paramArrayList;
-        label192:
-        ??? = this.jdField_f_of_type_JavaLangObject;
-        if (paramBoolean) {}
+      }
+      if (!paramString2.startsWith("def/role/0/3D/")) {
+        break;
+      }
+      paramString1 = annv.c + File.separator + paramString2;
+      paramString2 = new File(paramString1);
+      if (paramString2.exists())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest file exists:", paramString2.getAbsolutePath() });
+        }
+        paramArrayOfString = b(paramArrayOfString);
+        if (a(paramString1)) {
+          paramanpj.a(0, paramArrayOfString, b(paramString2, paramArrayOfString));
+        }
+        while (QLog.isColorLevel())
+        {
+          QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest retHeader:", paramArrayOfString });
+          return;
+          paramanpj.a(0, paramArrayOfString, ApolloRender.readStream(new FileInputStream(paramString2)));
+        }
+        break;
+      }
+      QLog.d("ApolloHttpUtil", 1, new Object[] { "fakeResource3DUrlRequest file no exists", paramString2.getAbsolutePath() });
+      return;
+    }
+  }
+  
+  /* Error */
+  public static void a(String paramString, String[] paramArrayOfString, anph paramanph)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 7
+    //   3: aconst_null
+    //   4: astore 6
+    //   6: new 37	java/lang/StringBuilder
+    //   9: dup
+    //   10: ldc_w 316
+    //   13: invokespecial 317	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   16: aload_0
+    //   17: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: astore 8
+    //   22: new 62	java/net/URL
+    //   25: dup
+    //   26: aload_0
+    //   27: invokespecial 65	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   30: invokevirtual 69	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   33: checkcast 71	java/net/HttpURLConnection
+    //   36: astore_0
+    //   37: sipush -255
+    //   40: invokestatic 322	android/net/TrafficStats:setThreadStatsTag	(I)V
+    //   43: aload_0
+    //   44: ldc_w 324
+    //   47: invokevirtual 76	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   50: aload_0
+    //   51: instanceof 78
+    //   54: ifeq +38 -> 92
+    //   57: invokestatic 80	anpk:a	()Ljavax/net/ssl/SSLContext;
+    //   60: astore 5
+    //   62: aload 5
+    //   64: ifnull +71 -> 135
+    //   67: aload 5
+    //   69: invokevirtual 84	javax/net/ssl/SSLContext:getSocketFactory	()Ljavax/net/ssl/SSLSocketFactory;
+    //   72: astore 5
+    //   74: aload_0
+    //   75: checkcast 78	javax/net/ssl/HttpsURLConnection
+    //   78: aload 5
+    //   80: invokevirtual 88	javax/net/ssl/HttpsURLConnection:setSSLSocketFactory	(Ljavax/net/ssl/SSLSocketFactory;)V
+    //   83: aload 8
+    //   85: ldc_w 326
+    //   88: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   91: pop
+    //   92: aload_0
+    //   93: sipush 8000
+    //   96: invokevirtual 92	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   99: aload_0
+    //   100: sipush 8000
+    //   103: invokevirtual 95	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   106: aload_1
+    //   107: ifnull +171 -> 278
+    //   110: iconst_0
+    //   111: istore_3
+    //   112: aconst_null
+    //   113: astore 5
+    //   115: iload_3
+    //   116: aload_1
+    //   117: arraylength
+    //   118: if_icmpge +160 -> 278
+    //   121: iload_3
+    //   122: iconst_2
+    //   123: irem
+    //   124: ifne +87 -> 211
+    //   127: aload_1
+    //   128: iload_3
+    //   129: aaload
+    //   130: astore 5
+    //   132: goto +450 -> 582
+    //   135: aload 8
+    //   137: ldc_w 328
+    //   140: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   143: pop
+    //   144: goto -52 -> 92
+    //   147: astore_1
+    //   148: aconst_null
+    //   149: astore 7
+    //   151: aload 6
+    //   153: astore 5
+    //   155: aload_0
+    //   156: astore_1
+    //   157: aload 7
+    //   159: astore_0
+    //   160: aload_2
+    //   161: ifnull +9 -> 170
+    //   164: aload_2
+    //   165: iconst_m1
+    //   166: aconst_null
+    //   167: invokevirtual 114	anph:a	(I[B)V
+    //   170: aload_1
+    //   171: ifnull +7 -> 178
+    //   174: aload_1
+    //   175: invokevirtual 117	java/net/HttpURLConnection:disconnect	()V
+    //   178: aload 5
+    //   180: ifnull +8 -> 188
+    //   183: aload 5
+    //   185: invokevirtual 125	java/io/InputStream:close	()V
+    //   188: aload_0
+    //   189: ifnull +7 -> 196
+    //   192: aload_0
+    //   193: invokevirtual 128	java/io/ByteArrayOutputStream:close	()V
+    //   196: invokestatic 331	android/net/TrafficStats:clearThreadStatsTag	()V
+    //   199: ldc 35
+    //   201: iconst_1
+    //   202: aload 8
+    //   204: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   207: invokestatic 334	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   210: return
+    //   211: aload_0
+    //   212: aload 5
+    //   214: aload_1
+    //   215: iload_3
+    //   216: aaload
+    //   217: invokevirtual 105	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   220: goto +362 -> 582
+    //   223: astore 6
+    //   225: aconst_null
+    //   226: astore 5
+    //   228: aload 7
+    //   230: astore_2
+    //   231: aload_0
+    //   232: astore_1
+    //   233: aload 6
+    //   235: astore_0
+    //   236: aload_1
+    //   237: ifnull +7 -> 244
+    //   240: aload_1
+    //   241: invokevirtual 117	java/net/HttpURLConnection:disconnect	()V
+    //   244: aload 5
+    //   246: ifnull +8 -> 254
+    //   249: aload 5
+    //   251: invokevirtual 125	java/io/InputStream:close	()V
+    //   254: aload_2
+    //   255: ifnull +7 -> 262
+    //   258: aload_2
+    //   259: invokevirtual 128	java/io/ByteArrayOutputStream:close	()V
+    //   262: invokestatic 331	android/net/TrafficStats:clearThreadStatsTag	()V
+    //   265: ldc 35
+    //   267: iconst_1
+    //   268: aload 8
+    //   270: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   273: invokestatic 334	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   276: aload_0
+    //   277: athrow
+    //   278: aload_0
+    //   279: invokevirtual 149	java/net/HttpURLConnection:getResponseCode	()I
+    //   282: istore_3
+    //   283: aload 8
+    //   285: ldc_w 336
+    //   288: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   291: iload_3
+    //   292: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   295: ldc_w 338
+    //   298: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   301: aload_0
+    //   302: invokevirtual 342	java/net/HttpURLConnection:getHeaderFields	()Ljava/util/Map;
+    //   305: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   308: pop
+    //   309: aload_0
+    //   310: invokevirtual 153	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   313: astore 5
+    //   315: new 127	java/io/ByteArrayOutputStream
+    //   318: dup
+    //   319: invokespecial 154	java/io/ByteArrayOutputStream:<init>	()V
+    //   322: astore_1
+    //   323: sipush 1024
+    //   326: newarray byte
+    //   328: astore 6
+    //   330: aload 5
+    //   332: aload 6
+    //   334: invokevirtual 158	java/io/InputStream:read	([B)I
+    //   337: istore 4
+    //   339: iload 4
+    //   341: iconst_m1
+    //   342: if_icmpeq +15 -> 357
+    //   345: aload_1
+    //   346: aload 6
+    //   348: iconst_0
+    //   349: iload 4
+    //   351: invokevirtual 161	java/io/ByteArrayOutputStream:write	([BII)V
+    //   354: goto -24 -> 330
+    //   357: aload 8
+    //   359: ldc_w 344
+    //   362: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   365: aload_1
+    //   366: invokevirtual 347	java/io/ByteArrayOutputStream:size	()I
+    //   369: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   372: pop
+    //   373: aload_2
+    //   374: ifnull +12 -> 386
+    //   377: aload_2
+    //   378: iload_3
+    //   379: aload_1
+    //   380: invokevirtual 164	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   383: invokevirtual 114	anph:a	(I[B)V
+    //   386: aload_0
+    //   387: ifnull +7 -> 394
+    //   390: aload_0
+    //   391: invokevirtual 117	java/net/HttpURLConnection:disconnect	()V
+    //   394: aload 5
+    //   396: ifnull +8 -> 404
+    //   399: aload 5
+    //   401: invokevirtual 125	java/io/InputStream:close	()V
+    //   404: aload_1
+    //   405: ifnull +7 -> 412
+    //   408: aload_1
+    //   409: invokevirtual 128	java/io/ByteArrayOutputStream:close	()V
+    //   412: invokestatic 331	android/net/TrafficStats:clearThreadStatsTag	()V
+    //   415: ldc 35
+    //   417: iconst_1
+    //   418: aload 8
+    //   420: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   423: invokestatic 334	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   426: return
+    //   427: astore_0
+    //   428: ldc 35
+    //   430: iconst_1
+    //   431: aload_0
+    //   432: iconst_0
+    //   433: anewarray 4	java/lang/Object
+    //   436: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   439: goto -35 -> 404
+    //   442: astore_0
+    //   443: ldc 35
+    //   445: iconst_1
+    //   446: aload_0
+    //   447: iconst_0
+    //   448: anewarray 4	java/lang/Object
+    //   451: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   454: goto -42 -> 412
+    //   457: astore_1
+    //   458: ldc 35
+    //   460: iconst_1
+    //   461: aload_1
+    //   462: iconst_0
+    //   463: anewarray 4	java/lang/Object
+    //   466: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   469: goto -281 -> 188
+    //   472: astore_0
+    //   473: ldc 35
+    //   475: iconst_1
+    //   476: aload_0
+    //   477: iconst_0
+    //   478: anewarray 4	java/lang/Object
+    //   481: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   484: goto -288 -> 196
+    //   487: astore_1
+    //   488: ldc 35
+    //   490: iconst_1
+    //   491: aload_1
+    //   492: iconst_0
+    //   493: anewarray 4	java/lang/Object
+    //   496: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   499: goto -245 -> 254
+    //   502: astore_1
+    //   503: ldc 35
+    //   505: iconst_1
+    //   506: aload_1
+    //   507: iconst_0
+    //   508: anewarray 4	java/lang/Object
+    //   511: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   514: goto -252 -> 262
+    //   517: astore_0
+    //   518: aconst_null
+    //   519: astore 5
+    //   521: aconst_null
+    //   522: astore_1
+    //   523: aload 7
+    //   525: astore_2
+    //   526: goto -290 -> 236
+    //   529: astore_2
+    //   530: aload_0
+    //   531: astore_1
+    //   532: aload_2
+    //   533: astore_0
+    //   534: aload 7
+    //   536: astore_2
+    //   537: goto -301 -> 236
+    //   540: astore 6
+    //   542: aload_1
+    //   543: astore_2
+    //   544: aload_0
+    //   545: astore_1
+    //   546: aload 6
+    //   548: astore_0
+    //   549: goto -313 -> 236
+    //   552: astore 6
+    //   554: aload_0
+    //   555: astore_2
+    //   556: aload 6
+    //   558: astore_0
+    //   559: goto -323 -> 236
+    //   562: astore_0
+    //   563: aconst_null
+    //   564: astore_0
+    //   565: aconst_null
+    //   566: astore_1
+    //   567: aload 6
+    //   569: astore 5
+    //   571: goto -411 -> 160
+    //   574: astore_1
+    //   575: aload_0
+    //   576: astore_1
+    //   577: aconst_null
+    //   578: astore_0
+    //   579: goto -419 -> 160
+    //   582: iload_3
+    //   583: iconst_1
+    //   584: iadd
+    //   585: istore_3
+    //   586: goto -471 -> 115
+    //   589: astore 6
+    //   591: aload_0
+    //   592: astore 6
+    //   594: aload_1
+    //   595: astore_0
+    //   596: aload 6
+    //   598: astore_1
+    //   599: goto -439 -> 160
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	602	0	paramString	String
+    //   0	602	1	paramArrayOfString	String[]
+    //   0	602	2	paramanph	anph
+    //   111	475	3	i	int
+    //   337	13	4	j	int
+    //   60	510	5	localObject1	Object
+    //   4	148	6	localObject2	Object
+    //   223	11	6	localObject3	Object
+    //   328	19	6	arrayOfByte	byte[]
+    //   540	7	6	localObject4	Object
+    //   552	16	6	localObject5	Object
+    //   589	1	6	localException	Exception
+    //   592	5	6	str	String
+    //   1	534	7	localObject6	Object
+    //   20	399	8	localStringBuilder	java.lang.StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   37	62	147	java/lang/Exception
+    //   67	92	147	java/lang/Exception
+    //   92	106	147	java/lang/Exception
+    //   115	121	147	java/lang/Exception
+    //   135	144	147	java/lang/Exception
+    //   211	220	147	java/lang/Exception
+    //   278	315	147	java/lang/Exception
+    //   37	62	223	finally
+    //   67	92	223	finally
+    //   92	106	223	finally
+    //   115	121	223	finally
+    //   135	144	223	finally
+    //   211	220	223	finally
+    //   278	315	223	finally
+    //   399	404	427	java/io/IOException
+    //   408	412	442	java/io/IOException
+    //   183	188	457	java/io/IOException
+    //   192	196	472	java/io/IOException
+    //   249	254	487	java/io/IOException
+    //   258	262	502	java/io/IOException
+    //   22	37	517	finally
+    //   315	323	529	finally
+    //   323	330	540	finally
+    //   330	339	540	finally
+    //   345	354	540	finally
+    //   357	373	540	finally
+    //   377	386	540	finally
+    //   164	170	552	finally
+    //   22	37	562	java/lang/Exception
+    //   315	323	574	java/lang/Exception
+    //   323	330	589	java/lang/Exception
+    //   330	339	589	java/lang/Exception
+    //   345	354	589	java/lang/Exception
+    //   357	373	589	java/lang/Exception
+    //   377	386	589	java/lang/Exception
+  }
+  
+  static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    while ((!paramString.endsWith(".jpg")) && (!paramString.endsWith(".png"))) {
+      return false;
+    }
+    return true;
+  }
+  
+  private static byte[] a(@NonNull HttpURLConnection paramHttpURLConnection, @Nullable anpi paramanpi)
+  {
+    localObject3 = null;
+    Object localObject1 = localObject3;
+    try
+    {
+      int i = paramHttpURLConnection.getContentLength();
+      localObject1 = localObject3;
+      Object localObject4;
+      try
+      {
+        localObject4 = paramHttpURLConnection.getInputStream();
+        paramHttpURLConnection = (HttpURLConnection)localObject4;
+      }
+      catch (IOException localIOException)
+      {
         for (;;)
         {
           try
           {
-            this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramArrayList);
-            break;
+            paramHttpURLConnection.close();
+            paramanpi = (anpi)localObject3;
+            return paramanpi;
           }
-          finally {}
-          localObject2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-          if (localObject2 != null)
+          catch (IOException paramHttpURLConnection)
           {
-            ArrayList localArrayList = new ArrayList(((ArrayList)localObject2).size() + paramArrayList.size());
-            localArrayList.addAll((Collection)localObject2);
-            localArrayList.addAll(paramArrayList);
-            this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localArrayList);
+            paramHttpURLConnection.printStackTrace();
+            return localObject3;
           }
+          localIOException = localIOException;
+          localObject2 = localObject3;
+          paramHttpURLConnection = paramHttpURLConnection.getErrorStream();
         }
-        ((EntityTransaction)???).commit();
-        return;
       }
-      finally
+      if (paramHttpURLConnection == null)
       {
-        ((EntityTransaction)???).end();
+        localObject1 = paramHttpURLConnection;
+        localObject3 = new byte[0];
+        paramanpi = (anpi)localObject3;
+        if (paramHttpURLConnection == null) {}
       }
-    }
-  }
-  
-  private void a(int paramInt, byte[] paramArrayOfByte)
-  {
-    for (;;)
-    {
-      SharedPreferences localSharedPreferences;
-      synchronized (this.jdField_e_of_type_JavaLangObject)
-      {
-        localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("mayknow_connections_sp_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-        if (paramArrayOfByte != null)
-        {
-          String str = "";
-          try
-          {
-            localObject1 = Base64.encodeToString(paramArrayOfByte, 2);
-            localSharedPreferences.edit().putString("sp_mayknow_connections_tabinfo_cookie_" + paramInt, (String)localObject1).commit();
-            if (QLog.isColorLevel())
-            {
-              localObject1 = new StringBuilder().append("saveTabCookieToSP ").append(paramInt).append(" isNull ");
-              if (paramArrayOfByte != null) {
-                break label283;
-              }
-              bool = true;
-              QLog.d("MayknowRecommendManager", 2, bool);
-            }
-            localObject1 = paramArrayOfByte;
-            if (paramArrayOfByte == null) {
-              localObject1 = new byte[0];
-            }
-            this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localObject1);
-            return;
-          }
-          catch (Throwable localThrowable)
-          {
-            Object localObject1 = str;
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("MayknowRecommendManager", 2, "saveTabCookieToSP " + localThrowable.toString());
-            localObject1 = str;
-            continue;
-          }
-        }
-      }
-      localSharedPreferences.edit().remove("sp_mayknow_connections_tabinfo_cookie_" + paramInt).commit();
-      continue;
-      label283:
-      boolean bool = false;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte != null) {}
-    for (;;)
-    {
-      Object localObject;
-      try
-      {
-        localObject = new SubMsgType0x111.MsgBody();
-        ((SubMsgType0x111.MsgBody)localObject).mergeFrom(paramArrayOfByte);
-        if (!((SubMsgType0x111.MsgBody)localObject).uint64_type.has()) {
-          break label387;
-        }
-        l1 = ((SubMsgType0x111.MsgBody)localObject).uint64_type.get();
-        if (QLog.isColorLevel()) {
-          QLog.i("MayknowRecommendManager", 2, "decodePush0x210_0x111,type = " + l1);
-        }
-        paramQQAppInterface = (FriendListHandler)paramQQAppInterface.a(1);
-        if (l1 == 0L)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MayknowRecommendManager", 2, "decodePush0x210_0x111 update list");
-          }
-          paramQQAppInterface.a((int)l1, null);
-          return;
-        }
-        if (l1 == 1L)
-        {
-          paramArrayOfByte = new ArrayList();
-          if (((SubMsgType0x111.MsgBody)localObject).rpt_msg_add_recommend_persons.has()) {
-            paramArrayOfByte.addAll(MayKnowRecommend.covServerPushDataToLocal(((SubMsgType0x111.MsgBody)localObject).rpt_msg_add_recommend_persons.get(), System.currentTimeMillis()));
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("MayknowRecommendManager", 2, "decodePush0x210_0x111 add " + paramArrayOfByte);
-          }
-          paramQQAppInterface.a((int)l1, paramArrayOfByte);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramQQAppInterface)
-      {
-        QLog.i("MayknowRecommendManager", 1, "decodePush0x210_0x111 decode error, e=" + paramQQAppInterface.toString());
-        return;
-      }
-      if (l1 == 2L)
-      {
-        paramArrayOfByte = new ArrayList();
-        if (((SubMsgType0x111.MsgBody)localObject).rpt_uint64_del_uins.has()) {
-          paramArrayOfByte.addAll(((SubMsgType0x111.MsgBody)localObject).rpt_uint64_del_uins.get());
-        }
-        localObject = new ArrayList();
-        paramArrayOfByte = paramArrayOfByte.iterator();
-        while (paramArrayOfByte.hasNext())
-        {
-          long l2 = ((Long)paramArrayOfByte.next()).longValue();
-          if (l2 > 0L) {
-            ((List)localObject).add(String.valueOf(l2));
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MayknowRecommendManager", 2, "decodePush0x210_0x111 del " + localObject);
-        }
-        paramQQAppInterface.a((int)l1, (List)localObject);
-        return;
-        QLog.i("MayknowRecommendManager", 1, "decodePush0x210_0x111 pbData = null");
-      }
-      return;
-      label387:
-      long l1 = -1L;
-    }
-  }
-  
-  private void a(RecentRecommendTroopItem paramRecentRecommendTroopItem)
-  {
-    int m;
-    int k;
-    String str;
-    if ((paramRecentRecommendTroopItem.labelList != null) && (!paramRecentRecommendTroopItem.labelList.isEmpty()))
-    {
-      m = Math.min(3, paramRecentRecommendTroopItem.labelList.size());
-      Iterator localIterator = paramRecentRecommendTroopItem.labelList.iterator();
-      k = 0;
-      while (localIterator.hasNext())
-      {
-        oidb_0x9fb.Label localLabel = (oidb_0x9fb.Label)localIterator.next();
-        str = localLabel.bytes_name.get().toStringUtf8();
-        if (!TextUtils.isEmpty(str))
-        {
-          if (localLabel.enum_type.get() != 1) {
-            break label193;
-          }
-          str = str + anni.a(2131705264);
-        }
-      }
-    }
-    label193:
-    for (;;)
-    {
-      paramRecentRecommendTroopItem.labelStr += str;
-      k += 1;
-      if (k == m) {
-        return;
-      }
-      paramRecentRecommendTroopItem.labelStr += "|";
-      break;
-    }
-  }
-  
-  private <T extends MayKnowRecommend> ArrayList<T> b(@NonNull ArrayList<T> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return paramArrayList;
-    }
-    ArrayList localArrayList = new ArrayList(paramArrayList.size());
-    anmw localanmw = (anmw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      MayKnowRecommend localMayKnowRecommend = (MayKnowRecommend)paramArrayList.next();
-      if (!localanmw.b(localMayKnowRecommend.uin))
-      {
-        boolean bool = localanmw.a(localMayKnowRecommend.uin, false, true);
-        if (bool) {}
-        for (int k = 1;; k = 0)
-        {
-          localMayKnowRecommend.friendStatus = k;
-          if (bool) {
-            break;
-          }
-          localArrayList.add(localMayKnowRecommend);
-          break;
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  private void c(List<oidb_0xc26.TabInfo> paramList)
-  {
-    Object localObject2;
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder().append("saveConnectionsTabInfoList ");
-      if (paramList != null) {
-        break label143;
-      }
-    }
-    label143:
-    for (??? = "null";; ??? = Integer.valueOf(paramList.size()))
-    {
-      QLog.d("MayknowRecommendManager", 2, ???);
-      if (paramList == null) {
-        return;
-      }
-      synchronized (this.jdField_d_of_type_JavaLangObject)
-      {
-        this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(paramList.size());
-        paramList = paramList.iterator();
-        if (!paramList.hasNext()) {
-          break;
-        }
-        localObject2 = a((oidb_0xc26.TabInfo)paramList.next());
-        if (((aixh)localObject2).jdField_a_of_type_Int == 23) {
-          ((aixh)localObject2).jdField_b_of_type_Int += c().size();
-        }
-        this.jdField_c_of_type_JavaUtilArrayList.add(localObject2);
-      }
-    }
-    d(this.jdField_c_of_type_JavaUtilArrayList);
-  }
-  
-  private void d(List<aixh> paramList)
-  {
-    for (;;)
-    {
-      SharedPreferences localSharedPreferences;
-      JSONArray localJSONArray;
-      synchronized (this.jdField_e_of_type_JavaLangObject)
-      {
-        localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("mayknow_connections_sp_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-        if (paramList == null)
-        {
-          localSharedPreferences.edit().remove("sp_mayknow_connections_tabinfo_list_json").commit();
-          return;
-        }
-        localJSONArray = new JSONArray();
-        paramList = paramList.iterator();
-        if (paramList.hasNext()) {
-          localJSONArray.put(aixh.a((aixh)paramList.next()));
-        }
-      }
-      localSharedPreferences.edit().putString("sp_mayknow_connections_tabinfo_list_json", localJSONArray.toString()).commit();
-    }
-  }
-  
-  private void e(int paramInt)
-  {
-    synchronized (this.jdField_f_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt)))) {
-        return;
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen()))
-      {
-        ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(MayKnowRecommend.class, false, "tabID=?", new String[] { paramInt + "" }, null, null, null, null);
-        synchronized (this.jdField_f_of_type_JavaLangObject)
-        {
-          if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (localArrayList != null)) {
-            this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localArrayList);
-          }
-          return;
-        }
-      }
-    }
-  }
-  
-  private void f(int paramInt)
-  {
-    StringBuilder localStringBuilder = null;
-    if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.contains(Integer.valueOf(paramInt))) {
-      return;
-    }
-    label244:
-    for (;;)
-    {
-      synchronized (this.jdField_e_of_type_JavaLangObject)
-      {
-        String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("mayknow_connections_sp_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).getString("sp_mayknow_connections_tabinfo_cookie_" + paramInt, null);
-        Object localObject1 = localStringBuilder;
-        if (str != null) {}
-        try
-        {
-          localObject1 = Base64.decode(str, 2);
-          if (QLog.isColorLevel())
-          {
-            localStringBuilder = new StringBuilder().append("loadTabCookieFromSP ").append(paramInt).append(" ");
-            if (localObject1 == null)
-            {
-              bool = true;
-              QLog.d("MayknowRecommendManager", 2, bool);
-            }
-          }
-          else
-          {
-            if (localObject1 != null) {
-              break label244;
-            }
-            localObject1 = new byte[0];
-            this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localObject1);
-            return;
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          localObject1 = localStringBuilder;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("MayknowRecommendManager", 2, "loadTabCookieFromSP " + localThrowable.toString());
-          localObject1 = localStringBuilder;
-          continue;
-        }
-      }
-      boolean bool = false;
-    }
-  }
-  
-  private boolean f()
-  {
-    return !((ajld)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(295)).c();
-  }
-  
-  private void g(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "deleteRecentUserByType " + paramInt);
-    }
-    aong localaong = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-    Object localObject = localaong.getRecentList(false);
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        RecentUser localRecentUser = (RecentUser)((Iterator)localObject).next();
-        if (localRecentUser.getType() == paramInt) {
-          localaong.delRecentUser(localRecentUser);
-        }
-      }
-    }
-  }
-  
-  private void k()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "initData conversationTabShowType: " + this.jdField_b_of_type_Int);
-    }
-    boolean bool3 = anpe.c();
-    boolean bool1 = false;
-    boolean bool2 = false;
-    EntityTransaction localEntityTransaction;
-    if (bool3) {
-      localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
-    }
-    try
-    {
-      localEntityTransaction.begin();
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.execSQL("delete from MayKnowRecommend");
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.execSQL("delete from MayKnowExposure");
-      localEntityTransaction.commit();
-      bool1 = true;
-    }
-    catch (Exception localException)
-    {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MayknowRecommendManager", 2, "initData ex", localException);
+        Object localObject2 = paramHttpURLConnection;
+        localObject3 = new ByteArrayOutputStream();
+        localObject2 = paramHttpURLConnection;
+        localObject4 = new byte[1024];
+        for (;;)
+        {
+          localObject2 = paramHttpURLConnection;
+          int j = paramHttpURLConnection.read((byte[])localObject4);
+          if (j == -1) {
+            break;
+          }
+          localObject2 = paramHttpURLConnection;
+          ((ByteArrayOutputStream)localObject3).write((byte[])localObject4, 0, j);
+          if (paramanpi != null)
+          {
+            localObject2 = paramHttpURLConnection;
+            paramanpi.a(((ByteArrayOutputStream)localObject3).size(), i);
+          }
         }
-        localEntityTransaction.end();
-        bool1 = bool2;
+        try
+        {
+          ((InputStream)localObject2).close();
+          throw paramHttpURLConnection;
+          localObject2 = paramHttpURLConnection;
+          paramanpi = ((ByteArrayOutputStream)localObject3).toByteArray();
+          localObject2 = paramanpi;
+          paramanpi = (anpi)localObject2;
+          if (paramHttpURLConnection == null) {
+            continue;
+          }
+          try
+          {
+            paramHttpURLConnection.close();
+            return localObject2;
+          }
+          catch (IOException paramHttpURLConnection)
+          {
+            paramHttpURLConnection.printStackTrace();
+            return localObject2;
+          }
+        }
+        catch (IOException paramanpi)
+        {
+          for (;;)
+          {
+            paramanpi.printStackTrace();
+          }
+        }
       }
     }
     finally
     {
-      localEntityTransaction.end();
+      if (localObject2 == null) {}
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("pull_interval_conversation_tab", 0L).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "initData isLocaleIDChange =  " + bool3 + ",isDBOperateSuccess = " + bool1);
-    }
-    l();
-    if (this.jdField_b_of_type_Int == -1) {
-      return;
-    }
-    if (this.jdField_b_of_type_Int == 2)
-    {
-      n();
-      return;
-    }
-    m();
-    o();
   }
   
-  private void l()
+  private static HashMap<String, String> b(String[] paramArrayOfString)
   {
-    boolean bool2 = true;
-    jdField_a_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("sp_report_interval", 86400000L);
-    jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("sp_config_showcount", 37);
-    jdField_c_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("sp_config_expectcount", 70);
-    jdField_d_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("sp_config_newfriendcount", 3);
-    int k = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("sp_conversation_tab_show_type", -1);
-    this.jdField_b_of_type_Boolean = b("sp_mayknow_ml_s_a_vl");
-    this.jdField_c_of_type_Boolean = b("sp_mayknow_addpage_s_a_vl");
-    this.jdField_c_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("sp_contacts_tab_recommend_troop_hide_time", 0L);
-    this.jdField_e_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("sp_contacts_tab_recommend_troop_count", 2);
-    aqly localaqly = aqlx.a();
-    StringBuilder localStringBuilder;
-    if (localaqly != null)
+    HashMap localHashMap = new HashMap();
+    if (paramArrayOfString != null)
     {
-      this.jdField_g_of_type_Int = localaqly.jdField_a_of_type_Int;
-      this.jdField_a_of_type_JavaLangString = localaqly.jdField_a_of_type_JavaLangString;
-      if (localaqly.jdField_b_of_type_Int == 1)
+      String str = null;
+      int i = 0;
+      if (i < paramArrayOfString.length)
       {
-        bool1 = true;
-        this.jdField_d_of_type_Boolean = bool1;
-      }
-    }
-    else
-    {
-      if (this.jdField_b_of_type_Int != k)
-      {
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).notifyUI(123, true, new Object[] { Integer.valueOf(k) });
-        this.jdField_b_of_type_Int = k;
-      }
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("initParams ,conversationTabDisplayAsVerticalListItem = ").append(this.jdField_b_of_type_Boolean).append(",addPageDisplayAsVerticalListItem = ").append(this.jdField_c_of_type_Boolean).append(",conversationTabShowType=").append(this.jdField_b_of_type_Int).append(",mContactsTabRecommendTroopHideTime=").append(this.jdField_c_of_type_Long).append(",mContactsTabRecommendTroopPollInterval=").append(this.jdField_g_of_type_Int).append(",contactsTabRecommendTroopJumpUrl=").append(this.jdField_a_of_type_JavaLangString).append(",showRecommendTroopWhenSearchEmpty=").append(this.jdField_d_of_type_Boolean).append(",mContactsTabShowRecommendTroopCount=").append(this.jdField_e_of_type_Int).append(", config is null: ");
-        if (localaqly != null) {
-          break label379;
+        if ((i & 0x1) == 0) {
+          str = paramArrayOfString[i];
         }
-      }
-    }
-    label379:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      QLog.d("MayknowRecommendManager", 2, bool1);
-      return;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  private void m()
-  {
-    synchronized (jdField_b_of_type_JavaLangObject)
-    {
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(MayKnowExposure.class, false, null, null, null, null, null, null);
-      if ((localObject2 != null) && (((List)localObject2).size() > 0))
-      {
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
+        for (;;)
         {
-          MayKnowExposure localMayKnowExposure = (MayKnowExposure)((Iterator)localObject2).next();
-          localMayKnowExposure = (MayKnowExposure)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(MayKnowExposure.generateKey(localMayKnowExposure), localMayKnowExposure);
-        }
-      }
-      this.h = true;
-      long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("sp_report_explosure_time", 0L);
-      if (Math.abs(System.currentTimeMillis() - l) > jdField_a_of_type_Long)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a.a() == 1) {
-          r();
-        }
-      }
-      else {
-        return;
-      }
-    }
-    this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new MayknowRecommendManager.2(this), 5000L);
-  }
-  
-  private void n()
-  {
-    Object localObject1 = (ArrayList)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(RecentRecommendTroopItem.class);
-    Object localObject3;
-    int k;
-    ArrayList localArrayList;
-    if (QLog.isColorLevel())
-    {
-      localObject3 = new StringBuilder().append("initRecommendTroop in db, troopItems = ");
-      if (localObject1 == null)
-      {
-        k = 0;
-        QLog.i("MayknowRecommendManager", 2, k);
-      }
-    }
-    else
-    {
-      localArrayList = a((ArrayList)localObject1);
-      localObject3 = this.jdField_a_of_type_JavaUtilList;
-      if (localArrayList == null) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        if ((!localArrayList.isEmpty()) && (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-          this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject1);
-        }
-        if (QLog.isColorLevel())
-        {
-          localObject3 = new StringBuilder().append("filtered troop:");
-          if (localArrayList != null) {
-            break label205;
-          }
-          localObject1 = "null";
-          QLog.i("MayknowRecommendManager", 2, (String)localObject1);
-        }
-        c();
-        localObject1 = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
-        localObject3 = new Bundle();
-        ((Bundle)localObject3).putBoolean("is_from_init", true);
-        ((FriendListHandler)localObject1).notifyUI(92, true, localObject3);
-        return;
-      }
-      finally {}
-      k = ((ArrayList)localObject1).size();
-      break;
-      label205:
-      String str = localArrayList.toString();
-    }
-  }
-  
-  private void o()
-  {
-    Bundle localBundle = null;
-    ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(MayKnowRecommend.class, false, "tabID=? or tabID is null", new String[] { "23" }, null, null, null, null);
-    Object localObject3;
-    if (QLog.isColorLevel())
-    {
-      localObject3 = new StringBuilder().append("initMayKnowGet in db, cpMkrs = ");
-      if (localArrayList == null)
-      {
-        ??? = "NULL";
-        QLog.i("MayknowRecommendManager", 2, (String)???);
-      }
-    }
-    else
-    {
-      localObject3 = b(localArrayList);
-      if ((localObject3 == null) || ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))) {
-        break label259;
-      }
-    }
-    for (;;)
-    {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject3);
-        if (QLog.isColorLevel())
-        {
-          localObject3 = new StringBuilder().append("initMayKnowGet size:");
-          if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-            break label278;
-          }
-          ??? = Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size());
-          localObject3 = ((StringBuilder)localObject3).append(???).append(" cpMkrs:");
-          ??? = localBundle;
-          if (localArrayList != null) {
-            ??? = Integer.valueOf(localArrayList.size());
-          }
-          QLog.i("MayknowRecommendManager", 2, ???);
-        }
-        d();
-        ??? = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
-        localBundle = new Bundle();
-        localBundle.putBoolean("is_from_init", true);
-        ((FriendListHandler)???).notifyUI(92, true, localBundle);
-        return;
-        ??? = localArrayList.toString();
-      }
-      label259:
-      if (QLog.isColorLevel())
-      {
-        QLog.i("MayknowRecommendManager", 2, "initMayKnowGet, mRecommends alread has data");
-        continue;
-        label278:
-        ??? = null;
-      }
-    }
-  }
-  
-  private void p()
-  {
-    int k = 0;
-    synchronized (this.jdField_d_of_type_JavaLangObject)
-    {
-      if (this.jdField_c_of_type_JavaUtilArrayList == null) {}
-      synchronized (this.jdField_e_of_type_JavaLangObject)
-      {
-        Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("mayknow_connections_sp_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).getString("sp_mayknow_connections_tabinfo_list_json", "");
-        if (QLog.isColorLevel()) {
-          QLog.d("MayknowRecommendManager", 2, "loadConnectionsTabInfoList " + (String)localObject4);
-        }
-        boolean bool = ((String)localObject4).isEmpty();
-        if (!bool) {}
-        try
-        {
-          localObject4 = new JSONArray((String)localObject4);
-          ArrayList localArrayList = new ArrayList(5);
-          while (k < ((JSONArray)localObject4).length())
-          {
-            localArrayList.add(aixh.a(((JSONArray)localObject4).getJSONObject(k)));
-            k += 1;
-          }
-          this.jdField_c_of_type_JavaUtilArrayList = localArrayList;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("MayknowRecommendManager", 2, "loadConnectionsTabInfoList " + localJSONException.toString());
-            }
-          }
-        }
-        return;
-      }
-    }
-  }
-  
-  private void q()
-  {
-    synchronized (this.jdField_e_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("mayknow_connections_sp_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).edit().clear().commit();
-      return;
-    }
-  }
-  
-  private void r()
-  {
-    if (!NetworkUtils.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication())) {}
-    for (;;)
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MayknowRecommendManager", 2, "reportExplosure size=" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() + " isExplosuresInited=" + this.h);
-      }
-      if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() <= 0) || (!this.h)) {
-        continue;
-      }
-      synchronized (jdField_b_of_type_JavaLangObject)
-      {
-        this.jdField_g_of_type_Boolean = true;
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        ??? = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-        if (!((Iterator)???).hasNext()) {
-          continue;
-        }
-        Map.Entry localEntry = (Map.Entry)((Iterator)???).next();
-        QLog.d("MayknowRecommendManager", 2, "reportExplosure, Key = " + (String)localEntry.getKey() + ", Value.exposeCnt = " + ((MayKnowExposure)localEntry.getValue()).exposeCnt + ", Value.exposeTime = " + ((MayKnowExposure)localEntry.getValue()).exposeTime);
-      }
-    }
-  }
-  
-  public int a()
-  {
-    int n = 0;
-    int k = 0;
-    p();
-    if (!((ajld)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(295)).c()) {}
-    for (int m = 1;; m = 0) {
-      label149:
-      for (;;)
-      {
-        synchronized (this.jdField_d_of_type_JavaLangObject)
-        {
-          if (this.jdField_c_of_type_JavaUtilArrayList != null)
-          {
-            Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
-            n = k;
-            if (localIterator.hasNext())
-            {
-              aixh localaixh = (aixh)localIterator.next();
-              if ((localaixh.jdField_a_of_type_Int != 23) && (m == 0)) {
-                break label149;
-              }
-              k = localaixh.jdField_b_of_type_Int + k;
-              break label149;
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("MayknowRecommendManager", 2, "getConnectionsPersonAllNum " + n);
-          }
-          return n;
-        }
-      }
-    }
-  }
-  
-  public int a(int paramInt)
-  {
-    int k = 1;
-    ArrayList localArrayList = a(paramInt);
-    int m = k;
-    if (localArrayList != null)
-    {
-      m = k;
-      if (localArrayList.size() > 0)
-      {
-        paramInt = ((MayKnowRecommend)localArrayList.get(0)).timestamp;
-        int n = localArrayList.size();
-        k = 1;
-        m = paramInt;
-        if (k < n)
-        {
-          MayKnowRecommend localMayKnowRecommend = (MayKnowRecommend)localArrayList.get(k);
-          if (localMayKnowRecommend.timestamp >= paramInt) {
-            break label91;
-          }
-          paramInt = localMayKnowRecommend.timestamp;
-        }
-      }
-    }
-    label91:
-    for (;;)
-    {
-      k += 1;
-      break;
-      return m;
-    }
-  }
-  
-  public long a(int paramInt)
-  {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      return 9223372036854775807L;
-    case 1: 
-      str = "pull_interval_conversation_tab";
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-      for (;;)
-      {
-        return this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(str, 43200000L);
-        str = "pull_interval_contact_head";
-        continue;
-        str = "pull_interval_recommend_tab";
-        continue;
-        str = "pull_interval_new_friend";
-        continue;
-        str = "pull_interval_add_page";
-      }
-    }
-    return 0L;
-  }
-  
-  public ArrayList<aixh> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    p();
-    for (;;)
-    {
-      boolean bool;
-      aixh localaixh;
-      synchronized (this.jdField_d_of_type_JavaLangObject)
-      {
-        if (this.jdField_c_of_type_JavaUtilArrayList == null) {
+          i += 1;
           break;
-        }
-        bool = f();
-        Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localaixh = aixh.a((aixh)localIterator.next());
-        if (localaixh.jdField_a_of_type_Int == 23)
-        {
-          localaixh.jdField_a_of_type_Boolean = true;
-          localArrayList.add(localaixh);
-        }
-      }
-      localaixh.jdField_a_of_type_Boolean = bool;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "getConnectionsTabInfoList " + localArrayList1.toString());
-    }
-    return localArrayList1;
-  }
-  
-  public ArrayList<MayKnowRecommend> a(int paramInt)
-  {
-    ArrayList localArrayList;
-    if (paramInt == 23)
-    {
-      localArrayList = c();
-      f(paramInt);
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder().append("getConnectionsPersonLocal ").append(paramInt).append(" ");
-        if (localArrayList == null)
-        {
-          ??? = "null";
-          QLog.d("MayknowRecommendManager", 2, (String)???);
-        }
-      }
-      else
-      {
-        return localArrayList;
-      }
-    }
-    else
-    {
-      e(paramInt);
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_f_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-          break label156;
-        }
-        localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-        if (localArrayList == null) {
-          break label156;
-        }
-        localArrayList = new ArrayList(localArrayList);
-      }
-      ??? = localObject1.size() + "";
-      break;
-      label156:
-      Object localObject2 = null;
-    }
-  }
-  
-  public List<RecentRecommendTroopItem> a(int paramInt)
-  {
-    int k = 1;
-    if (!b("sp_mayknow_entry_list_head"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MayknowRecommendManager", 2, "getContactsTabNeedShowTroop switch not open.");
-      }
-      return null;
-    }
-    long l = NetConnInfoCenter.getServerTime();
-    if (l - this.jdField_c_of_type_Long < 86400L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MayknowRecommendManager", 2, "getContactsTabNeedShowTroop hide time in 24h. return null.");
-      }
-      return null;
-    }
-    if (this.jdField_e_of_type_Int == 0)
-    {
-      this.jdField_e_of_type_Int = 2;
-      ??? = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      ((SharedPreferences.Editor)???).putInt("sp_contacts_tab_recommend_troop_count", this.jdField_e_of_type_Int);
-      ((SharedPreferences.Editor)???).commit();
-    }
-    ArrayList localArrayList = new ArrayList();
-    if (this.jdField_g_of_type_Int < 1) {}
-    while ((l - this.jdField_b_of_type_Long < k * 60) && (paramInt > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MayknowRecommendManager", 2, "getContactsTabNeedShowTroop in poll interval. return empty.");
-      }
-      return localArrayList;
-      k = this.jdField_g_of_type_Int;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      k = this.jdField_a_of_type_JavaUtilList.size();
-      if (k == 0) {
-        return null;
-      }
-      if (this.jdField_f_of_type_Int < 0) {
-        this.jdField_f_of_type_Int = 0;
-      }
-      this.jdField_f_of_type_Int %= k;
-      int m = Math.min(this.jdField_e_of_type_Int, k);
-      paramInt = 0;
-      while ((this.jdField_f_of_type_Int < k) && (paramInt < m))
-      {
-        localArrayList.add(this.jdField_a_of_type_JavaUtilList.get(this.jdField_f_of_type_Int));
-        int n = this.jdField_f_of_type_Int + 1;
-        this.jdField_f_of_type_Int = n;
-        this.jdField_f_of_type_Int = (n % k);
-        paramInt += 1;
-      }
-      if (localArrayList.size() > 0) {
-        this.jdField_b_of_type_Long = l;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("MayknowRecommendManager", 2, "getContactsTabNeedShowTroop return troop list: " + localArrayList.toString());
-      }
-      return localArrayList;
-    }
-  }
-  
-  public void a()
-  {
-    boolean bool = true;
-    aqly localaqly = aqlx.a();
-    if (localaqly != null)
-    {
-      this.jdField_g_of_type_Int = localaqly.jdField_a_of_type_Int;
-      this.jdField_a_of_type_JavaLangString = localaqly.jdField_a_of_type_JavaLangString;
-      if (localaqly.jdField_b_of_type_Int != 1) {
-        break label102;
-      }
-    }
-    for (;;)
-    {
-      this.jdField_d_of_type_Boolean = bool;
-      if (QLog.isColorLevel()) {
-        QLog.d("MayknowRecommendManager", 2, "updateRecommendTroopConfig, mContactsTabRecommendTroopPollInterval=" + this.jdField_g_of_type_Int + ",contactsTabRecommendTroopJumpUrl=" + this.jdField_a_of_type_JavaLangString + ",showRecommendTroopWhenSearchEmpty=" + this.jdField_d_of_type_Boolean);
-      }
-      return;
-      label102:
-      bool = false;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "clearConnectionsPageNetworkState " + paramInt);
-    }
-    if (this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "getConnectionsPersonRemote entryType = " + paramInt1 + " tabID=" + paramInt2);
-    }
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new MayknowRecommendManager.4(this, paramInt2, paramInt1, paramBundle));
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString != null)
-        {
-          int k = Integer.valueOf(paramString.optString("reportInterval").trim()).intValue();
-          if ((k <= 86400000) && (k > 0)) {
-            jdField_a_of_type_Long = k;
-          }
-          k = Integer.valueOf(paramString.optString("showCount").trim()).intValue();
-          if ((k > 0) && (k <= 100)) {
-            jdField_a_of_type_Int = k;
-          }
-          k = Integer.valueOf(paramString.optString("totalCount").trim()).intValue();
-          if ((k <= 100) && (k > 0)) {
-            jdField_c_of_type_Int = k;
-          }
-          k = Integer.valueOf(paramString.optString("newfriendCount")).intValue();
-          if (k > 0) {
-            jdField_d_of_type_Int = k;
-          }
-          this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("sp_report_interval", jdField_a_of_type_Long).commit();
-          this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("sp_config_showcount", jdField_a_of_type_Int).commit();
-          this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("sp_config_expectcount", jdField_c_of_type_Int).commit();
-          this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("sp_config_newfriendcount", jdField_d_of_type_Int).commit();
-          this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("sp_config_version", paramInt).commit();
+          localHashMap.put(str, paramArrayOfString[i]);
         }
       }
     }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("MayknowRecommendManager", 2, "updateConfigs error " + paramString.getMessage());
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "timeInterval = " + jdField_a_of_type_Long + ",showCount=" + jdField_a_of_type_Int + ",expectCount=" + jdField_c_of_type_Int + ",newfriendCount=" + jdField_d_of_type_Int);
-    }
-  }
-  
-  public void a(int paramInt, ArrayList<MayKnowRecommend> paramArrayList, List<oidb_0xc26.TabInfo> paramList, byte[] paramArrayOfByte, boolean paramBoolean, Bundle paramBundle)
-  {
-    Object localObject2 = null;
-    Object localObject3;
-    int k;
-    if (QLog.isColorLevel())
-    {
-      localObject3 = new StringBuilder().append("onGetConnectionsPersonData ").append(paramInt).append(" ").append(paramBoolean).append(" ");
-      if (paramArrayList == null)
-      {
-        ??? = "";
-        QLog.d("MayknowRecommendManager", 2, ???);
-      }
-    }
-    else
-    {
-      a(paramInt, paramArrayList, paramBoolean);
-      p();
-      if (paramList == null) {
-        break label574;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MayknowRecommendManager", 2, "onGetConnectionsPersonData " + paramInt + " " + paramList.size());
-      }
-      paramList = paramList.iterator();
-      for (;;)
-      {
-        if (paramList.hasNext())
-        {
-          ??? = (oidb_0xc26.TabInfo)paramList.next();
-          if (((oidb_0xc26.TabInfo)???).uint32_tab_id.get() == paramInt)
-          {
-            paramList = a((oidb_0xc26.TabInfo)???);
-            ??? = a(paramInt);
-            if (??? != null)
-            {
-              k = ((ArrayList)???).size();
-              if (QLog.isColorLevel()) {
-                QLog.d("MayknowRecommendManager", 2, "onGetConnectionsPersonData update count " + k + " " + paramList.jdField_b_of_type_Int);
-              }
-              paramList.jdField_b_of_type_Int = (k + paramList.jdField_b_of_type_Int);
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        if (paramList == null) {
-          break label574;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MayknowRecommendManager", 2, "onGetConnectionsPersonData update tabInfo" + paramList.toString());
-        }
-        synchronized (this.jdField_d_of_type_JavaLangObject)
-        {
-          if (this.jdField_c_of_type_JavaUtilArrayList != null)
-          {
-            localObject3 = this.jdField_c_of_type_JavaUtilArrayList.iterator();
-            while (((Iterator)localObject3).hasNext())
-            {
-              aixh localaixh = (aixh)((Iterator)localObject3).next();
-              if ((localaixh.equals(paramList)) && ((localaixh.jdField_b_of_type_Int != paramList.jdField_b_of_type_Int) || (!localaixh.jdField_a_of_type_JavaLangString.equals(paramList.jdField_a_of_type_JavaLangString)) || (!localaixh.jdField_b_of_type_JavaLangString.equals(paramList.jdField_b_of_type_JavaLangString)) || (!localaixh.c.equals(paramList.c))))
-              {
-                localaixh.jdField_b_of_type_Int = paramList.jdField_b_of_type_Int;
-                localaixh.jdField_a_of_type_JavaLangString = paramList.jdField_a_of_type_JavaLangString;
-                localaixh.jdField_b_of_type_JavaLangString = paramList.jdField_b_of_type_JavaLangString;
-                localaixh.c = paramList.c;
-                d(this.jdField_c_of_type_JavaUtilArrayList);
-              }
-            }
-          }
-          paramList = new ArrayList();
-          if ((paramArrayList != null) && (paramArrayList.size() > 0))
-          {
-            paramArrayList = paramArrayList.iterator();
-            for (;;)
-            {
-              if (paramArrayList.hasNext())
-              {
-                ??? = (MayKnowRecommend)paramArrayList.next();
-                if (??? != null)
-                {
-                  paramList.add(((MayKnowRecommend)???).uin);
-                  continue;
-                  ??? = Integer.valueOf(paramArrayList.size());
-                  break;
-                  k = 0;
-                }
-              }
-            }
-          }
-        }
-      }
-      if (paramBundle == null)
-      {
-        paramArrayList = localObject2;
-        if (paramBundle != null) {
-          break label597;
-        }
-      }
-      label574:
-      label597:
-      for (k = 3;; k = paramBundle.getInt("update_type", 3))
-      {
-        ContactReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, k, paramList, String.valueOf(paramInt), paramArrayList);
-        a(paramInt, paramArrayOfByte);
-        return;
-        paramArrayList = paramBundle.getString("from", "3");
-        break;
-      }
-      paramList = null;
-    }
-  }
-  
-  public void a(View paramView, Context paramContext, String paramString)
-  {
-    int k = paramView.getId();
-    if ((paramString.equals("sp_uin_for_title")) && (k == 2131376201))
-    {
-      paramView = bkho.a(paramContext);
-      paramView.b(2131691104);
-      paramView.c(2131690582);
-      paramView.a(new anpm(this, paramView));
-      paramView.show();
-      bcst.b(null, "dc00899", "Grp_recom", "", "msg_tab", "clk_ellipsis", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      return;
-      if ((paramView.getTag() != null) && ((paramView.getTag() instanceof aldh)))
-      {
-        paramView = (aldh)paramView.getTag();
-        if (paramView.a == null) {
-          break;
-        }
-        if ((paramView.a.mUser != null) && ((paramView.a.mUser.extraInfo instanceof RecentRecommendTroopItem))) {}
-        for (paramView = (RecentRecommendTroopItem)paramView.a.mUser.extraInfo; paramView != null; paramView = null)
-        {
-          Object localObject;
-          if (k == 2131363816)
-          {
-            paramString = "mqqapi://app/joinImmediately?source_id=3&version=1.0&src_type=app&pkg=com.tencent.mobileqq&cmp=com.tencent.biz.JoinGroupTransitActivity&group_code=" + paramView.uin + "&subsource_id=10017";
-            localObject = new Intent(paramContext, JoinGroupTransitActivity.class);
-            ((Intent)localObject).putExtra("source_scheme", paramString);
-            paramContext.startActivity((Intent)localObject);
-            bcst.b(null, "dc00899", "Grp_recom", "", "msg_tab", "clk_add", 0, 0, paramView.uin, paramView.recomAlgol, "", "");
-            return;
-          }
-          paramString = new GroupInfo();
-          for (;;)
-          {
-            try
-            {
-              paramString.lCode = Long.valueOf(paramView.uin).longValue();
-              paramString.strName = paramView.name;
-              if (TextUtils.isEmpty(paramView.recommendReason))
-              {
-                paramString.strIntro = paramView.intro;
-                paramString.iMemberCnt = paramView.memberNum;
-                localObject = njn.a(paramView);
-                if (localObject != null) {
-                  paramString.labels = ((ArrayList)localObject);
-                }
-                paramString.strJoinSig = paramView.authSig;
-                bfup.a(paramContext, bfup.a(107, paramString, 10018, false), 2);
-                bcst.b(null, "dc00899", "Grp_recom", "", "msg_tab", "clk_grp", 0, 0, paramView.uin, paramView.recomAlgol, "", "");
-                return;
-              }
-            }
-            catch (Exception paramView)
-            {
-              QLog.d("MayknowRecommendManager", 1, "cast string2long error");
-              return;
-            }
-            paramString.strIntro = paramView.recommendReason;
-          }
-        }
-      }
-    }
-  }
-  
-  public void a(MayKnowRecommend paramMayKnowRecommend, int paramInt1, int paramInt2, int paramInt3)
-  {
-    for (;;)
-    {
-      synchronized (jdField_b_of_type_JavaLangObject)
-      {
-        if ((!this.h) || (this.jdField_g_of_type_Boolean)) {
-          return;
-        }
-        ??? = MayKnowExposure.generateKey(paramMayKnowRecommend, paramInt1, paramInt2, paramInt3);
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(???))
-        {
-          paramMayKnowRecommend = (MayKnowExposure)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(???);
-          if (paramInt3 != 1) {
-            paramMayKnowRecommend.exposeCnt += 1;
-          }
-          if ((paramMayKnowRecommend.startExploseTime != 0L) || (paramInt3 != 1)) {
-            break;
-          }
-          paramMayKnowRecommend.startExploseTime = SystemClock.uptimeMillis();
-          return;
-        }
-      }
-      paramMayKnowRecommend = new MayKnowExposure(paramMayKnowRecommend.uin, paramInt1, paramInt2, paramInt3, paramMayKnowRecommend.algBuffer, paramMayKnowRecommend.additive);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(???, paramMayKnowRecommend);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    int k;
-    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
-    {
-      this.jdField_b_of_type_JavaUtilArrayList.clear();
-      try
-      {
-        Object localObject3 = new JSONObject(paramString);
-        if (((JSONObject)localObject3).has("shield_sub_source_id"))
-        {
-          localObject3 = ((JSONObject)localObject3).getJSONArray("shield_sub_source_id");
-          k = 0;
-          while ((localObject3 != null) && (k < ((JSONArray)localObject3).length()))
-          {
-            int m = ((JSONArray)localObject3).getInt(k);
-            this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(m));
-            k += 1;
-          }
-        }
-        ??? = new StringBuilder(100);
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.i("MayknowRecommendManager", 2, "updateShieldConfig", localException);
-        }
-        if (!QLog.isColorLevel()) {
-          break label238;
-        }
-      }
-      ((StringBuilder)???).append("updateShieldConfig config: ").append(paramString).append("\r\n");
-      ((StringBuilder)???).append("[");
-      paramString = this.jdField_b_of_type_JavaUtilArrayList;
-      k = 0;
-    }
-    try
-    {
-      while (k < this.jdField_b_of_type_JavaUtilArrayList.size())
-      {
-        ((StringBuilder)???).append(this.jdField_b_of_type_JavaUtilArrayList.get(k)).append(",");
-        k += 1;
-        continue;
-        paramString = finally;
-        throw paramString;
-      }
-      ((StringBuilder)???).append("]");
-      QLog.i("MayknowRecommendManager", 2, ((StringBuilder)???).toString());
-      label238:
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "removeMayKnowRecommend, uin=" + paramString);
-    }
-    for (;;)
-    {
-      aixh localaixh;
-      int k;
-      for (;;)
-      {
-        synchronized (jdField_a_of_type_JavaLangObject)
-        {
-          ??? = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-          if (!((Iterator)???).hasNext()) {
-            break label431;
-          }
-          localMayKnowRecommend = (MayKnowRecommend)((Iterator)???).next();
-          if (!localMayKnowRecommend.uin.equals(paramString)) {
-            break;
-          }
-          ((Iterator)???).remove();
-          if ((paramBoolean) && (localMayKnowRecommend != null)) {
-            this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localMayKnowRecommend);
-          }
-          p();
-          if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_c_of_type_JavaUtilArrayList == null)) {
-            break label340;
-          }
-          synchronized (this.jdField_c_of_type_JavaUtilArrayList)
-          {
-            if (this.jdField_c_of_type_JavaUtilArrayList == null) {
-              break label337;
-            }
-            Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
-            for (;;)
-            {
-              if (!localIterator.hasNext()) {
-                break label337;
-              }
-              localaixh = (aixh)localIterator.next();
-              label218:
-              label223:
-              synchronized (this.jdField_f_of_type_JavaLangObject)
-              {
-                if (localaixh.jdField_a_of_type_Int != 23) {
-                  break label253;
-                }
-                if (localMayKnowRecommend != null)
-                {
-                  if (localaixh.jdField_b_of_type_Int <= 0) {
-                    break;
-                  }
-                  k = localaixh.jdField_b_of_type_Int - 1;
-                  localaixh.jdField_b_of_type_Int = k;
-                }
-              }
-            }
-          }
-        }
-        k = 0;
-        break label218;
-        label253:
-        Object localObject3 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(localaixh.jdField_a_of_type_Int));
-        if (localObject3 != null)
-        {
-          localObject3 = ((ArrayList)localObject3).iterator();
-          if (((Iterator)localObject3).hasNext())
-          {
-            if (!((MayKnowRecommend)((Iterator)localObject3).next()).uin.equals(paramString)) {
-              break label223;
-            }
-            ((Iterator)localObject3).remove();
-            localaixh.jdField_b_of_type_Int -= 1;
-          }
-        }
-      }
-      label337:
-      label340:
-      d(this.jdField_c_of_type_JavaUtilArrayList);
-      if (paramBoolean) {}
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())
-        {
-          paramString = "delete from MayKnowRecommend where uin=" + paramString;
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.execSQL(paramString);
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("MayknowRecommendManager", 2, "removeConnectionPerson, " + paramString.toString());
-        return;
-      }
-      label431:
-      MayKnowRecommend localMayKnowRecommend = null;
-    }
+    return localHashMap;
   }
   
   /* Error */
-  public void a(@NonNull ArrayList<MayKnowRecommend> paramArrayList)
+  public static void b(@NonNull String paramString1, @NonNull String paramString2, @Nullable String[] paramArrayOfString, @Nullable byte[] paramArrayOfByte, @NonNull anpj paramanpj, @Nullable anpi paramanpi1, @Nullable anpi paramanpi2)
   {
     // Byte code:
-    //   0: aload_1
-    //   1: ifnull +10 -> 11
-    //   4: aload_1
-    //   5: invokevirtual 334	java/util/ArrayList:isEmpty	()Z
-    //   8: ifeq +30 -> 38
-    //   11: invokestatic 263	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   14: ifeq +23 -> 37
-    //   17: ldc_w 265
-    //   20: iconst_2
-    //   21: invokestatic 1313	java/util/Locale:getDefault	()Ljava/util/Locale;
-    //   24: ldc_w 1315
-    //   27: iconst_0
-    //   28: anewarray 4	java/lang/Object
-    //   31: invokestatic 1319	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   34: invokestatic 280	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   37: return
-    //   38: aload_0
-    //   39: aload_1
-    //   40: invokespecial 351	anpk:b	(Ljava/util/ArrayList;)Ljava/util/ArrayList;
-    //   43: astore 4
-    //   45: aload 4
-    //   47: astore_3
-    //   48: aload 4
-    //   50: invokeinterface 193 1 0
-    //   55: sipush 1000
-    //   58: if_icmple +15 -> 73
-    //   61: aload 4
-    //   63: iconst_0
-    //   64: sipush 1000
-    //   67: invokeinterface 1323 3 0
-    //   72: astore_3
-    //   73: getstatic 47	anpk:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   76: astore 4
-    //   78: aload 4
-    //   80: monitorenter
-    //   81: aload_0
-    //   82: getfield 140	anpk:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   85: invokevirtual 1266	java/util/ArrayList:clear	()V
-    //   88: aload_0
-    //   89: getfield 140	anpk:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   92: aload_3
-    //   93: invokevirtual 355	java/util/ArrayList:addAll	(Ljava/util/Collection;)Z
-    //   96: pop
-    //   97: aload 4
-    //   99: monitorexit
-    //   100: aload_0
-    //   101: getfield 129	anpk:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   104: invokevirtual 361	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   107: astore 4
-    //   109: aload 4
-    //   111: invokevirtual 366	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   114: aload_0
-    //   115: getfield 129	anpk:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   118: ldc_w 707
-    //   121: invokevirtual 374	com/tencent/mobileqq/persistence/EntityManager:execSQL	(Ljava/lang/String;)Z
-    //   124: pop
-    //   125: aload_3
-    //   126: invokeinterface 193 1 0
-    //   131: ifle +147 -> 278
-    //   134: aload_3
-    //   135: invokeinterface 552 1 0
-    //   140: astore_3
-    //   141: aload_3
-    //   142: invokeinterface 383 1 0
-    //   147: ifeq +131 -> 278
-    //   150: aload_0
-    //   151: aload_3
-    //   152: invokeinterface 387 1 0
-    //   157: checkcast 389	com/tencent/mobileqq/data/MayKnowRecommend
-    //   160: invokevirtual 1325	anpk:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   163: pop
-    //   164: goto -23 -> 141
-    //   167: astore_3
-    //   168: invokestatic 263	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   171: ifeq +14 -> 185
-    //   174: ldc_w 265
-    //   177: iconst_2
-    //   178: ldc_w 1327
-    //   181: aload_3
-    //   182: invokestatic 398	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   185: aload 4
-    //   187: invokevirtual 401	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   190: iconst_0
-    //   191: istore_2
-    //   192: aload_0
-    //   193: getfield 97	anpk:jdField_f_of_type_JavaLangObject	Ljava/lang/Object;
-    //   196: astore_3
-    //   197: aload_3
-    //   198: monitorenter
-    //   199: aload_0
-    //   200: getfield 84	anpk:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   203: ifnull +10 -> 213
-    //   206: aload_0
-    //   207: getfield 84	anpk:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   210: invokevirtual 1328	java/util/HashMap:clear	()V
-    //   213: aload_3
-    //   214: monitorexit
-    //   215: invokestatic 263	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   218: ifeq -181 -> 37
-    //   221: ldc_w 265
-    //   224: iconst_2
-    //   225: invokestatic 1313	java/util/Locale:getDefault	()Ljava/util/Locale;
-    //   228: ldc_w 1330
-    //   231: iconst_3
-    //   232: anewarray 4	java/lang/Object
-    //   235: dup
-    //   236: iconst_0
-    //   237: aload_1
-    //   238: invokevirtual 337	java/util/ArrayList:size	()I
-    //   241: invokestatic 407	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   244: aastore
-    //   245: dup
-    //   246: iconst_1
-    //   247: aload_0
-    //   248: getfield 140	anpk:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   251: invokevirtual 337	java/util/ArrayList:size	()I
-    //   254: invokestatic 407	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   257: aastore
-    //   258: dup
-    //   259: iconst_2
-    //   260: iload_2
-    //   261: invokestatic 1335	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   264: aastore
-    //   265: invokestatic 1319	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   268: invokestatic 280	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   271: return
-    //   272: astore_1
-    //   273: aload 4
-    //   275: monitorexit
-    //   276: aload_1
-    //   277: athrow
-    //   278: aload 4
-    //   280: invokevirtual 417	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   283: aload 4
-    //   285: invokevirtual 401	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   288: iconst_1
-    //   289: istore_2
-    //   290: goto -98 -> 192
-    //   293: astore_1
-    //   294: aload 4
-    //   296: invokevirtual 401	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   299: aload_1
-    //   300: athrow
-    //   301: astore_1
-    //   302: aload_3
-    //   303: monitorexit
-    //   304: aload_1
-    //   305: athrow
+    //   0: aconst_null
+    //   1: astore 11
+    //   3: aconst_null
+    //   4: astore 16
+    //   6: aconst_null
+    //   7: astore 15
+    //   9: aconst_null
+    //   10: astore 12
+    //   12: aconst_null
+    //   13: astore 14
+    //   15: aconst_null
+    //   16: astore 13
+    //   18: iconst_m1
+    //   19: istore 8
+    //   21: new 371	java/util/HashMap
+    //   24: dup
+    //   25: invokespecial 372	java/util/HashMap:<init>	()V
+    //   28: astore 18
+    //   30: new 380	java/lang/StringBuffer
+    //   33: dup
+    //   34: ldc_w 382
+    //   37: invokespecial 383	java/lang/StringBuffer:<init>	(Ljava/lang/String;)V
+    //   40: aload_0
+    //   41: invokevirtual 386	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   44: astore 17
+    //   46: new 62	java/net/URL
+    //   49: dup
+    //   50: aload_0
+    //   51: invokespecial 65	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   54: invokevirtual 69	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   57: checkcast 71	java/net/HttpURLConnection
+    //   60: astore_0
+    //   61: aload 13
+    //   63: astore 12
+    //   65: aload 14
+    //   67: astore 11
+    //   69: aload_0
+    //   70: instanceof 78
+    //   73: ifeq +70 -> 143
+    //   76: aload 13
+    //   78: astore 12
+    //   80: aload 14
+    //   82: astore 11
+    //   84: invokestatic 80	anpk:a	()Ljavax/net/ssl/SSLContext;
+    //   87: astore 15
+    //   89: aload 15
+    //   91: ifnull +160 -> 251
+    //   94: aload 13
+    //   96: astore 12
+    //   98: aload 14
+    //   100: astore 11
+    //   102: aload 15
+    //   104: invokevirtual 84	javax/net/ssl/SSLContext:getSocketFactory	()Ljavax/net/ssl/SSLSocketFactory;
+    //   107: astore 15
+    //   109: aload 13
+    //   111: astore 12
+    //   113: aload 14
+    //   115: astore 11
+    //   117: aload_0
+    //   118: checkcast 78	javax/net/ssl/HttpsURLConnection
+    //   121: aload 15
+    //   123: invokevirtual 88	javax/net/ssl/HttpsURLConnection:setSSLSocketFactory	(Ljavax/net/ssl/SSLSocketFactory;)V
+    //   126: aload 13
+    //   128: astore 12
+    //   130: aload 14
+    //   132: astore 11
+    //   134: aload 17
+    //   136: ldc_w 388
+    //   139: invokevirtual 386	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   142: pop
+    //   143: aload 13
+    //   145: astore 12
+    //   147: aload 14
+    //   149: astore 11
+    //   151: aload_0
+    //   152: aload_1
+    //   153: invokevirtual 76	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   156: aload 13
+    //   158: astore 12
+    //   160: aload 14
+    //   162: astore 11
+    //   164: aload_0
+    //   165: sipush 10000
+    //   168: invokevirtual 92	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   171: aload 13
+    //   173: astore 12
+    //   175: aload 14
+    //   177: astore 11
+    //   179: aload_0
+    //   180: sipush 10000
+    //   183: invokevirtual 95	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   186: aload 13
+    //   188: astore 12
+    //   190: aload 14
+    //   192: astore 11
+    //   194: aload_0
+    //   195: iconst_1
+    //   196: invokevirtual 391	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   199: aload 13
+    //   201: astore 12
+    //   203: aload 14
+    //   205: astore 11
+    //   207: aload_0
+    //   208: iconst_0
+    //   209: invokevirtual 99	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   212: aload_2
+    //   213: ifnull +272 -> 485
+    //   216: aconst_null
+    //   217: astore_1
+    //   218: iconst_0
+    //   219: istore 7
+    //   221: aload 13
+    //   223: astore 12
+    //   225: aload 14
+    //   227: astore 11
+    //   229: iload 7
+    //   231: aload_2
+    //   232: arraylength
+    //   233: if_icmpge +252 -> 485
+    //   236: iload 7
+    //   238: iconst_1
+    //   239: iand
+    //   240: ifne +133 -> 373
+    //   243: aload_2
+    //   244: iload 7
+    //   246: aaload
+    //   247: astore_1
+    //   248: goto +737 -> 985
+    //   251: aload 13
+    //   253: astore 12
+    //   255: aload 14
+    //   257: astore 11
+    //   259: aload 17
+    //   261: ldc_w 393
+    //   264: invokevirtual 386	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   267: pop
+    //   268: aload 13
+    //   270: astore 12
+    //   272: aload 14
+    //   274: astore 11
+    //   276: ldc 35
+    //   278: iconst_1
+    //   279: ldc_w 395
+    //   282: invokestatic 397	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   285: goto -142 -> 143
+    //   288: astore_2
+    //   289: iconst_m1
+    //   290: istore 7
+    //   292: aconst_null
+    //   293: astore_3
+    //   294: aload_0
+    //   295: astore_1
+    //   296: aload_3
+    //   297: astore_0
+    //   298: ldc 35
+    //   300: iconst_1
+    //   301: new 37	java/lang/StringBuilder
+    //   304: dup
+    //   305: invokespecial 38	java/lang/StringBuilder:<init>	()V
+    //   308: ldc_w 399
+    //   311: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   314: aload_2
+    //   315: invokevirtual 402	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   318: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   321: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   324: invokestatic 397	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   327: aload 4
+    //   329: iload 7
+    //   331: aload 18
+    //   333: aload_2
+    //   334: invokevirtual 403	java/io/IOException:toString	()Ljava/lang/String;
+    //   337: invokevirtual 138	java/lang/String:getBytes	()[B
+    //   340: invokeinterface 186 4 0
+    //   345: ldc 35
+    //   347: iconst_1
+    //   348: aload 17
+    //   350: invokevirtual 404	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   353: invokestatic 397	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   356: aload_0
+    //   357: ifnull +7 -> 364
+    //   360: aload_0
+    //   361: invokevirtual 122	java/io/OutputStream:close	()V
+    //   364: aload_1
+    //   365: ifnull +7 -> 372
+    //   368: aload_1
+    //   369: invokevirtual 117	java/net/HttpURLConnection:disconnect	()V
+    //   372: return
+    //   373: aload 13
+    //   375: astore 12
+    //   377: aload 14
+    //   379: astore 11
+    //   381: aload_0
+    //   382: aload_1
+    //   383: aload_2
+    //   384: iload 7
+    //   386: aaload
+    //   387: invokevirtual 105	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   390: goto +595 -> 985
+    //   393: astore_2
+    //   394: aload 12
+    //   396: astore_1
+    //   397: iload 8
+    //   399: istore 7
+    //   401: aload_0
+    //   402: astore 11
+    //   404: aload_1
+    //   405: astore 12
+    //   407: ldc 35
+    //   409: iconst_1
+    //   410: new 37	java/lang/StringBuilder
+    //   413: dup
+    //   414: invokespecial 38	java/lang/StringBuilder:<init>	()V
+    //   417: ldc_w 406
+    //   420: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   423: aload_2
+    //   424: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   427: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   430: invokestatic 397	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   433: aload_0
+    //   434: astore 11
+    //   436: aload_1
+    //   437: astore 12
+    //   439: aload 4
+    //   441: iload 7
+    //   443: aload 18
+    //   445: aload_2
+    //   446: invokevirtual 407	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   449: invokevirtual 138	java/lang/String:getBytes	()[B
+    //   452: invokeinterface 186 4 0
+    //   457: ldc 35
+    //   459: iconst_1
+    //   460: aload 17
+    //   462: invokevirtual 404	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   465: invokestatic 397	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   468: aload_1
+    //   469: ifnull +7 -> 476
+    //   472: aload_1
+    //   473: invokevirtual 122	java/io/OutputStream:close	()V
+    //   476: aload_0
+    //   477: ifnull -105 -> 372
+    //   480: aload_0
+    //   481: invokevirtual 117	java/net/HttpURLConnection:disconnect	()V
+    //   484: return
+    //   485: aload_3
+    //   486: ifnull +494 -> 980
+    //   489: aload 13
+    //   491: astore 12
+    //   493: aload 14
+    //   495: astore 11
+    //   497: aload 17
+    //   499: ldc_w 409
+    //   502: invokevirtual 386	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   505: aload_3
+    //   506: arraylength
+    //   507: invokevirtual 412	java/lang/StringBuffer:append	(I)Ljava/lang/StringBuffer;
+    //   510: pop
+    //   511: aload 13
+    //   513: astore 12
+    //   515: aload 14
+    //   517: astore 11
+    //   519: aload_0
+    //   520: iconst_1
+    //   521: invokevirtual 415	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   524: aload 13
+    //   526: astore 12
+    //   528: aload 14
+    //   530: astore 11
+    //   532: aload_0
+    //   533: aload_3
+    //   534: arraylength
+    //   535: invokevirtual 418	java/net/HttpURLConnection:setFixedLengthStreamingMode	(I)V
+    //   538: aload 13
+    //   540: astore 12
+    //   542: aload 14
+    //   544: astore 11
+    //   546: aload_0
+    //   547: invokevirtual 132	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   550: astore_1
+    //   551: aload_1
+    //   552: astore 12
+    //   554: aload_1
+    //   555: astore 11
+    //   557: aload_3
+    //   558: arraylength
+    //   559: istore 10
+    //   561: iconst_0
+    //   562: istore 7
+    //   564: iload 7
+    //   566: iload 10
+    //   568: if_icmpge +77 -> 645
+    //   571: aload_1
+    //   572: astore 12
+    //   574: aload_1
+    //   575: astore 11
+    //   577: sipush 4096
+    //   580: iload 10
+    //   582: iload 7
+    //   584: isub
+    //   585: invokestatic 424	java/lang/Math:min	(II)I
+    //   588: istore 9
+    //   590: aload_1
+    //   591: astore 12
+    //   593: aload_1
+    //   594: astore 11
+    //   596: aload_1
+    //   597: aload_3
+    //   598: iload 7
+    //   600: iload 9
+    //   602: invokevirtual 425	java/io/OutputStream:write	([BII)V
+    //   605: iload 7
+    //   607: iload 9
+    //   609: iadd
+    //   610: istore 9
+    //   612: iload 9
+    //   614: istore 7
+    //   616: aload 5
+    //   618: ifnull -54 -> 564
+    //   621: aload_1
+    //   622: astore 12
+    //   624: aload_1
+    //   625: astore 11
+    //   627: aload 5
+    //   629: iload 9
+    //   631: iload 10
+    //   633: invokeinterface 369 3 0
+    //   638: iload 9
+    //   640: istore 7
+    //   642: goto -78 -> 564
+    //   645: aload_1
+    //   646: astore 12
+    //   648: aload_1
+    //   649: astore 11
+    //   651: aload_1
+    //   652: invokevirtual 145	java/io/OutputStream:flush	()V
+    //   655: aload_0
+    //   656: invokevirtual 149	java/net/HttpURLConnection:getResponseCode	()I
+    //   659: istore 7
+    //   661: aload_0
+    //   662: invokevirtual 342	java/net/HttpURLConnection:getHeaderFields	()Ljava/util/Map;
+    //   665: astore_2
+    //   666: aload 17
+    //   668: ldc_w 427
+    //   671: invokevirtual 386	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   674: iload 7
+    //   676: invokevirtual 412	java/lang/StringBuffer:append	(I)Ljava/lang/StringBuffer;
+    //   679: ldc_w 338
+    //   682: invokevirtual 386	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   685: aload_2
+    //   686: invokevirtual 430	java/lang/StringBuffer:append	(Ljava/lang/Object;)Ljava/lang/StringBuffer;
+    //   689: pop
+    //   690: aload_2
+    //   691: invokeinterface 436 1 0
+    //   696: invokeinterface 442 1 0
+    //   701: astore_2
+    //   702: aload_2
+    //   703: invokeinterface 447 1 0
+    //   708: ifeq +64 -> 772
+    //   711: aload_2
+    //   712: invokeinterface 451 1 0
+    //   717: checkcast 453	java/util/Map$Entry
+    //   720: astore 5
+    //   722: aload 5
+    //   724: invokeinterface 456 1 0
+    //   729: checkcast 134	java/lang/String
+    //   732: astore_3
+    //   733: aload 5
+    //   735: invokeinterface 459 1 0
+    //   740: checkcast 461	java/util/List
+    //   743: astore 5
+    //   745: aload_3
+    //   746: ifnull -44 -> 702
+    //   749: aload 5
+    //   751: ifnull -49 -> 702
+    //   754: aload 18
+    //   756: aload_3
+    //   757: ldc_w 463
+    //   760: aload 5
+    //   762: invokestatic 467	android/text/TextUtils:join	(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+    //   765: invokevirtual 376	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   768: pop
+    //   769: goto -67 -> 702
+    //   772: aload_0
+    //   773: aload 6
+    //   775: invokestatic 469	anpk:a	(Ljava/net/HttpURLConnection;Lanpi;)[B
+    //   778: astore_2
+    //   779: aload 17
+    //   781: ldc_w 471
+    //   784: invokevirtual 386	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   787: aload_2
+    //   788: arraylength
+    //   789: invokevirtual 412	java/lang/StringBuffer:append	(I)Ljava/lang/StringBuffer;
+    //   792: pop
+    //   793: aload 4
+    //   795: iload 7
+    //   797: aload 18
+    //   799: aload_2
+    //   800: invokeinterface 186 4 0
+    //   805: ldc 35
+    //   807: iconst_1
+    //   808: aload 17
+    //   810: invokevirtual 404	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   813: invokestatic 397	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   816: aload_1
+    //   817: ifnull +7 -> 824
+    //   820: aload_1
+    //   821: invokevirtual 122	java/io/OutputStream:close	()V
+    //   824: aload_0
+    //   825: ifnull -453 -> 372
+    //   828: aload_0
+    //   829: invokevirtual 117	java/net/HttpURLConnection:disconnect	()V
+    //   832: return
+    //   833: astore_1
+    //   834: aload_1
+    //   835: invokevirtual 364	java/io/IOException:printStackTrace	()V
+    //   838: goto -14 -> 824
+    //   841: astore_0
+    //   842: aload_0
+    //   843: invokevirtual 364	java/io/IOException:printStackTrace	()V
+    //   846: goto -482 -> 364
+    //   849: astore_1
+    //   850: aload_1
+    //   851: invokevirtual 364	java/io/IOException:printStackTrace	()V
+    //   854: goto -378 -> 476
+    //   857: astore_0
+    //   858: aload 12
+    //   860: astore_2
+    //   861: aload 11
+    //   863: astore_1
+    //   864: ldc 35
+    //   866: iconst_1
+    //   867: aload 17
+    //   869: invokevirtual 404	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   872: invokestatic 397	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   875: aload_2
+    //   876: ifnull +7 -> 883
+    //   879: aload_2
+    //   880: invokevirtual 122	java/io/OutputStream:close	()V
+    //   883: aload_1
+    //   884: ifnull +7 -> 891
+    //   887: aload_1
+    //   888: invokevirtual 117	java/net/HttpURLConnection:disconnect	()V
+    //   891: aload_0
+    //   892: athrow
+    //   893: astore_2
+    //   894: aload_2
+    //   895: invokevirtual 364	java/io/IOException:printStackTrace	()V
+    //   898: goto -15 -> 883
+    //   901: astore_2
+    //   902: aload_0
+    //   903: astore_1
+    //   904: aload_2
+    //   905: astore_0
+    //   906: aload 11
+    //   908: astore_2
+    //   909: goto -45 -> 864
+    //   912: astore_3
+    //   913: aload_1
+    //   914: astore_2
+    //   915: aload_0
+    //   916: astore_1
+    //   917: aload_3
+    //   918: astore_0
+    //   919: goto -55 -> 864
+    //   922: astore_3
+    //   923: aload_0
+    //   924: astore_2
+    //   925: aload_3
+    //   926: astore_0
+    //   927: goto -63 -> 864
+    //   930: astore_2
+    //   931: aload 16
+    //   933: astore_0
+    //   934: iload 8
+    //   936: istore 7
+    //   938: aload 15
+    //   940: astore_1
+    //   941: goto -540 -> 401
+    //   944: astore_2
+    //   945: iload 8
+    //   947: istore 7
+    //   949: goto -548 -> 401
+    //   952: astore_2
+    //   953: goto -552 -> 401
+    //   956: astore_2
+    //   957: aconst_null
+    //   958: astore_0
+    //   959: aconst_null
+    //   960: astore_1
+    //   961: iconst_m1
+    //   962: istore 7
+    //   964: goto -666 -> 298
+    //   967: astore_2
+    //   968: aload_0
+    //   969: astore_3
+    //   970: iconst_m1
+    //   971: istore 7
+    //   973: aload_1
+    //   974: astore_0
+    //   975: aload_3
+    //   976: astore_1
+    //   977: goto -679 -> 298
+    //   980: aconst_null
+    //   981: astore_1
+    //   982: goto -327 -> 655
+    //   985: iload 7
+    //   987: iconst_1
+    //   988: iadd
+    //   989: istore 7
+    //   991: goto -770 -> 221
+    //   994: astore_2
+    //   995: iconst_m1
+    //   996: istore 7
+    //   998: aload_0
+    //   999: astore_3
+    //   1000: aload_1
+    //   1001: astore_0
+    //   1002: aload_3
+    //   1003: astore_1
+    //   1004: goto -706 -> 298
+    //   1007: astore_2
+    //   1008: aload_0
+    //   1009: astore_3
+    //   1010: aload_1
+    //   1011: astore_0
+    //   1012: aload_3
+    //   1013: astore_1
+    //   1014: goto -716 -> 298
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	306	0	this	anpk
-    //   0	306	1	paramArrayList	ArrayList<MayKnowRecommend>
-    //   191	99	2	bool	boolean
-    //   47	105	3	localObject1	Object
-    //   167	15	3	localException	Exception
-    //   43	252	4	localObject3	Object
+    //   0	1017	0	paramString1	String
+    //   0	1017	1	paramString2	String
+    //   0	1017	2	paramArrayOfString	String[]
+    //   0	1017	3	paramArrayOfByte	byte[]
+    //   0	1017	4	paramanpj	anpj
+    //   0	1017	5	paramanpi1	anpi
+    //   0	1017	6	paramanpi2	anpi
+    //   219	778	7	i	int
+    //   19	927	8	j	int
+    //   588	51	9	k	int
+    //   559	73	10	m	int
+    //   1	906	11	localObject1	Object
+    //   10	849	12	localObject2	Object
+    //   16	523	13	localObject3	Object
+    //   13	530	14	localObject4	Object
+    //   7	932	15	localObject5	Object
+    //   4	928	16	localObject6	Object
+    //   44	824	17	localStringBuffer	java.lang.StringBuffer
+    //   28	770	18	localHashMap	HashMap
     // Exception table:
     //   from	to	target	type
-    //   109	141	167	java/lang/Exception
-    //   141	164	167	java/lang/Exception
-    //   278	283	167	java/lang/Exception
-    //   81	100	272	finally
-    //   273	276	272	finally
-    //   109	141	293	finally
-    //   141	164	293	finally
-    //   168	185	293	finally
-    //   278	283	293	finally
-    //   199	213	301	finally
-    //   213	215	301	finally
-    //   302	304	301	finally
+    //   69	76	288	java/io/IOException
+    //   84	89	288	java/io/IOException
+    //   102	109	288	java/io/IOException
+    //   117	126	288	java/io/IOException
+    //   134	143	288	java/io/IOException
+    //   151	156	288	java/io/IOException
+    //   164	171	288	java/io/IOException
+    //   179	186	288	java/io/IOException
+    //   194	199	288	java/io/IOException
+    //   207	212	288	java/io/IOException
+    //   229	236	288	java/io/IOException
+    //   259	268	288	java/io/IOException
+    //   276	285	288	java/io/IOException
+    //   381	390	288	java/io/IOException
+    //   497	511	288	java/io/IOException
+    //   519	524	288	java/io/IOException
+    //   532	538	288	java/io/IOException
+    //   546	551	288	java/io/IOException
+    //   69	76	393	java/lang/Throwable
+    //   84	89	393	java/lang/Throwable
+    //   102	109	393	java/lang/Throwable
+    //   117	126	393	java/lang/Throwable
+    //   134	143	393	java/lang/Throwable
+    //   151	156	393	java/lang/Throwable
+    //   164	171	393	java/lang/Throwable
+    //   179	186	393	java/lang/Throwable
+    //   194	199	393	java/lang/Throwable
+    //   207	212	393	java/lang/Throwable
+    //   229	236	393	java/lang/Throwable
+    //   259	268	393	java/lang/Throwable
+    //   276	285	393	java/lang/Throwable
+    //   381	390	393	java/lang/Throwable
+    //   497	511	393	java/lang/Throwable
+    //   519	524	393	java/lang/Throwable
+    //   532	538	393	java/lang/Throwable
+    //   546	551	393	java/lang/Throwable
+    //   557	561	393	java/lang/Throwable
+    //   577	590	393	java/lang/Throwable
+    //   596	605	393	java/lang/Throwable
+    //   627	638	393	java/lang/Throwable
+    //   651	655	393	java/lang/Throwable
+    //   820	824	833	java/io/IOException
+    //   360	364	841	java/io/IOException
+    //   472	476	849	java/io/IOException
+    //   46	61	857	finally
+    //   407	433	857	finally
+    //   439	457	857	finally
+    //   879	883	893	java/io/IOException
+    //   69	76	901	finally
+    //   84	89	901	finally
+    //   102	109	901	finally
+    //   117	126	901	finally
+    //   134	143	901	finally
+    //   151	156	901	finally
+    //   164	171	901	finally
+    //   179	186	901	finally
+    //   194	199	901	finally
+    //   207	212	901	finally
+    //   229	236	901	finally
+    //   259	268	901	finally
+    //   276	285	901	finally
+    //   381	390	901	finally
+    //   497	511	901	finally
+    //   519	524	901	finally
+    //   532	538	901	finally
+    //   546	551	901	finally
+    //   557	561	901	finally
+    //   577	590	901	finally
+    //   596	605	901	finally
+    //   627	638	901	finally
+    //   651	655	901	finally
+    //   655	661	912	finally
+    //   661	702	912	finally
+    //   702	745	912	finally
+    //   754	769	912	finally
+    //   772	805	912	finally
+    //   298	345	922	finally
+    //   46	61	930	java/lang/Throwable
+    //   655	661	944	java/lang/Throwable
+    //   661	702	952	java/lang/Throwable
+    //   702	745	952	java/lang/Throwable
+    //   754	769	952	java/lang/Throwable
+    //   772	805	952	java/lang/Throwable
+    //   46	61	956	java/io/IOException
+    //   655	661	967	java/io/IOException
+    //   557	561	994	java/io/IOException
+    //   577	590	994	java/io/IOException
+    //   596	605	994	java/io/IOException
+    //   627	638	994	java/io/IOException
+    //   651	655	994	java/io/IOException
+    //   661	702	1007	java/io/IOException
+    //   702	745	1007	java/io/IOException
+    //   754	769	1007	java/io/IOException
+    //   772	805	1007	java/io/IOException
   }
   
-  public void a(List<Integer> paramList)
+  private static byte[] b(File paramFile, HashMap<String, String> paramHashMap)
   {
-    boolean bool1 = paramList.contains(Integer.valueOf(1));
-    boolean bool2 = paramList.contains(Integer.valueOf(2));
-    boolean bool3 = paramList.contains(Integer.valueOf(3));
-    boolean bool4 = paramList.contains(Integer.valueOf(4));
-    boolean bool5 = paramList.contains(Integer.valueOf(5));
-    paramList = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    paramList.putBoolean("sp_mayknow_entry_list_msg", bool1);
-    paramList.putBoolean("sp_mayknow_entry_list_head", bool2);
-    paramList.putBoolean("sp_mayknow_entry_list_recommend", bool3);
-    paramList.putBoolean("sp_mayknow_entry_list_new", bool4);
-    paramList.putBoolean("sp_mayknow_entry_list_add", bool5);
-    paramList.commit();
-    QLog.i("MayknowRecommendManager", 1, "saveEntryOpenList,MsgEntryOpen=" + bool1 + ",HeadEntryOpen=" + bool2 + ", RecommendEntryOpen=" + bool3 + ", NewEntryOpen=" + bool4 + ", EntryAdd=" + bool5);
-  }
-  
-  /* Error */
-  public void a(List<String> paramList, long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    // Byte code:
-    //   0: aload_1
-    //   1: ifnull +12 -> 13
-    //   4: aload_1
-    //   5: invokeinterface 575 1 0
-    //   10: ifeq +4 -> 14
-    //   13: return
-    //   14: new 131	java/util/ArrayList
-    //   17: dup
-    //   18: invokespecial 138	java/util/ArrayList:<init>	()V
-    //   21: astore 7
-    //   23: getstatic 47	anpk:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   26: astore 8
-    //   28: aload 8
-    //   30: monitorenter
-    //   31: aload_0
-    //   32: getfield 140	anpk:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   35: invokevirtual 378	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   38: astore 9
-    //   40: aload 9
-    //   42: invokeinterface 383 1 0
-    //   47: ifeq +92 -> 139
-    //   50: aload 9
-    //   52: invokeinterface 387 1 0
-    //   57: checkcast 389	com/tencent/mobileqq/data/MayKnowRecommend
-    //   60: astore 10
-    //   62: aload 10
-    //   64: ifnull -24 -> 40
-    //   67: aload_1
-    //   68: aload 10
-    //   70: getfield 614	com/tencent/mobileqq/data/MayKnowRecommend:uin	Ljava/lang/String;
-    //   73: invokeinterface 1337 2 0
-    //   78: ifeq -38 -> 40
-    //   81: iload 6
-    //   83: ifeq +39 -> 122
-    //   86: aload 10
-    //   88: getfield 1363	com/tencent/mobileqq/data/MayKnowRecommend:cardDisplayTimestamp	J
-    //   91: lload 4
-    //   93: ladd
-    //   94: lload_2
-    //   95: lcmp
-    //   96: ifge -56 -> 40
-    //   99: aload 10
-    //   101: lload_2
-    //   102: putfield 1363	com/tencent/mobileqq/data/MayKnowRecommend:cardDisplayTimestamp	J
-    //   105: aload 7
-    //   107: aload 10
-    //   109: invokevirtual 623	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   112: pop
-    //   113: goto -73 -> 40
-    //   116: astore_1
-    //   117: aload 8
-    //   119: monitorexit
-    //   120: aload_1
-    //   121: athrow
-    //   122: aload 10
-    //   124: lload_2
-    //   125: putfield 1363	com/tencent/mobileqq/data/MayKnowRecommend:cardDisplayTimestamp	J
-    //   128: aload 7
-    //   130: aload 10
-    //   132: invokevirtual 623	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   135: pop
-    //   136: goto -96 -> 40
-    //   139: aload 8
-    //   141: monitorexit
-    //   142: aload 7
-    //   144: invokevirtual 334	java/util/ArrayList:isEmpty	()Z
-    //   147: ifne -134 -> 13
-    //   150: aload_0
-    //   151: getfield 129	anpk:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   154: invokevirtual 361	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   157: astore_1
-    //   158: aload_1
-    //   159: invokevirtual 366	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   162: aload 7
-    //   164: invokevirtual 378	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   167: astore 7
-    //   169: aload 7
-    //   171: invokeinterface 383 1 0
-    //   176: ifeq +47 -> 223
-    //   179: aload 7
-    //   181: invokeinterface 387 1 0
-    //   186: checkcast 389	com/tencent/mobileqq/data/MayKnowRecommend
-    //   189: astore 8
-    //   191: aload 8
-    //   193: ifnull -24 -> 169
-    //   196: aload_0
-    //   197: aload 8
-    //   199: invokevirtual 1325	anpk:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   202: pop
-    //   203: goto -34 -> 169
-    //   206: astore 7
-    //   208: ldc_w 265
-    //   211: iconst_1
-    //   212: ldc_w 1365
-    //   215: invokestatic 1059	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   218: aload_1
-    //   219: invokevirtual 401	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   222: return
-    //   223: aload_1
-    //   224: invokevirtual 417	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   227: aload_1
-    //   228: invokevirtual 401	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   231: return
-    //   232: astore 7
-    //   234: aload_1
-    //   235: invokevirtual 401	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   238: aload 7
-    //   240: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	241	0	this	anpk
-    //   0	241	1	paramList	List<String>
-    //   0	241	2	paramLong1	long
-    //   0	241	4	paramLong2	long
-    //   0	241	6	paramBoolean	boolean
-    //   21	159	7	localObject1	Object
-    //   206	1	7	localThrowable	Throwable
-    //   232	7	7	localObject2	Object
-    //   26	172	8	localObject3	Object
-    //   38	13	9	localIterator	Iterator
-    //   60	71	10	localMayKnowRecommend	MayKnowRecommend
-    // Exception table:
-    //   from	to	target	type
-    //   31	40	116	finally
-    //   40	62	116	finally
-    //   67	81	116	finally
-    //   86	113	116	finally
-    //   117	120	116	finally
-    //   122	136	116	finally
-    //   139	142	116	finally
-    //   158	169	206	java/lang/Throwable
-    //   169	191	206	java/lang/Throwable
-    //   196	203	206	java/lang/Throwable
-    //   223	227	206	java/lang/Throwable
-    //   158	169	232	finally
-    //   169	191	232	finally
-    //   196	203	232	finally
-    //   208	218	232	finally
-    //   223	227	232	finally
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.execSQL("delete from MayKnowExposure");
-      if (QLog.isColorLevel()) {
-        QLog.d("MayknowRecommendManager", 2, "onReportExplosures , success");
-      }
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("sp_report_explosure_time", System.currentTimeMillis());
-    }
-    synchronized (jdField_b_of_type_JavaLangObject)
-    {
-      this.jdField_g_of_type_Boolean = false;
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean, ArrayList<MayKnowRecommend> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4, Bundle paramBundle, List<oidb_0xc26.TabInfo> paramList, byte[] arg9)
-  {
-    if (!paramBoolean)
-    {
-      QLog.i("MayknowRecommendManager", 1, "handleReqMayknownFriendList, isSuc is false");
-      return;
-    }
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    a(paramArrayList);
-    q();
-    c(paramList);
-    a(23, ???);
-    if (paramBundle != null)
-    {
-      paramList = new ArrayList();
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          MayKnowRecommend localMayKnowRecommend = (MayKnowRecommend)localIterator.next();
-          if (localMayKnowRecommend != null) {
-            paramList.add(localMayKnowRecommend.uin);
-          }
-        }
-      }
-      if (!paramList.isEmpty())
-      {
-        k = 0;
-        paramBundle = paramBundle.getString("from", "");
-        if (!"fetch".equals(paramBundle)) {
-          break label391;
-        }
-        k = 3;
-        ContactReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, k, paramList);
-      }
-    }
-    boolean bool;
-    if (paramInt2 != 0)
-    {
-      bool = true;
-      label186:
-      localEditor.putBoolean("sp_mayknow_entry_is_up", bool);
-      if (paramInt3 != 1) {
-        break label414;
-      }
-      bool = true;
-      label208:
-      localEditor.putBoolean("sp_mayknow_ml_s_a_vl", bool);
-      if (paramInt4 != 1) {
-        break label420;
-      }
-      bool = true;
-      label230:
-      localEditor.putBoolean("sp_mayknow_addpage_s_a_vl", bool);
-      localEditor.commit();
-      if (paramInt3 != 1) {
-        break label426;
-      }
-      bool = true;
-      label260:
-      this.jdField_b_of_type_Boolean = bool;
-      if (paramInt4 != 1) {
-        break label432;
-      }
-      bool = true;
-      label275:
-      this.jdField_c_of_type_Boolean = bool;
-      if (paramBoolean)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        if (this.jdField_b_of_type_Boolean) {
-          this.jdField_a_of_type_Boolean = false;
-        }
-      }
-      if (paramArrayList != null) {
-        break label438;
-      }
-    }
-    label391:
-    label414:
-    label420:
-    label426:
-    label432:
-    label438:
-    for (int k = 0;; k = paramArrayList.size())
-    {
-      QLog.i("MayknowRecommendManager", 1, "handleReqMayknownFriendList, isSuc = " + paramBoolean + ",dataSize=" + k + ",timestamp=" + paramInt1 + ",isMsgUp=" + paramInt2 + ",msgTabListSwitch=" + paramInt3 + ",addPageListSwitch=" + paramInt4);
-      return;
-      if (!"push".equals(paramBundle)) {
-        break;
-      }
-      k = 2;
-      break;
-      bool = false;
-      break label186;
-      bool = false;
-      break label208;
-      bool = false;
-      break label230;
-      bool = false;
-      break label260;
-      bool = false;
-      break label275;
-    }
-  }
-  
-  public void a(boolean paramBoolean, List<oidb_0xc26.RecommendInfo> arg2)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder().append("handleReqRecommendTroopList success: ").append(paramBoolean).append(" trooplist size: ");
-      if (??? != null) {
-        break label71;
-      }
-    }
-    label71:
-    for (int k = 0;; k = ???.size())
-    {
-      QLog.i("MayknowRecommendManager", 2, k);
-      if ((paramBoolean) && (??? != null) && (!???.isEmpty())) {
-        break;
-      }
-      return;
-    }
-    Object localObject1 = new ArrayList();
-    localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
-    localEntityTransaction.begin();
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.execSQL("delete from RecentRecommendTroopItem");
-    Iterator localIterator1 = ???.iterator();
-    while (localIterator1.hasNext())
-    {
-      ??? = ((oidb_0xc26.RecommendInfo)localIterator1.next()).msg_groups.get();
-      if ((??? != null) && (!???.isEmpty()))
-      {
-        Iterator localIterator2 = ???.iterator();
-        label171:
-        oidb_0xc26.RgroupInfo localRgroupInfo;
-        RecentRecommendTroopItem localRecentRecommendTroopItem;
-        while (localIterator2.hasNext())
-        {
-          localRgroupInfo = (oidb_0xc26.RgroupInfo)localIterator2.next();
-          localRecentRecommendTroopItem = new RecentRecommendTroopItem();
-          if (localRgroupInfo.uint64_group_code.has())
-          {
-            localRecentRecommendTroopItem.uin = String.valueOf(localRgroupInfo.uint64_group_code.get());
-            if (localRgroupInfo.bytes_group_name.has()) {
-              localRecentRecommendTroopItem.name = new String(localRgroupInfo.bytes_group_name.get().toByteArray());
-            }
-            if (localRgroupInfo.bytes_group_memo.has()) {
-              localRecentRecommendTroopItem.intro = new String(localRgroupInfo.bytes_group_memo.get().toByteArray());
-            }
-            localRecentRecommendTroopItem.labelList = antq.b(localRgroupInfo.rpt_group_label.get());
-            localRecentRecommendTroopItem.labelStr = "";
-            a(localRecentRecommendTroopItem);
-            localRecentRecommendTroopItem.memberNum = localRgroupInfo.uint32_member_num.get();
-            localRecentRecommendTroopItem.x935RgroupInfo = localRgroupInfo.toByteArray();
-            if (!localRgroupInfo.bytes_algorithm.has()) {
-              break label515;
-            }
-            ??? = localRgroupInfo.bytes_algorithm.get().toStringUtf8();
-            label372:
-            localRecentRecommendTroopItem.recomAlgol = ???;
-            if (!localRgroupInfo.bytes_join_group_auth.has()) {
-              break label521;
-            }
-            ??? = localRgroupInfo.bytes_join_group_auth.get().toStringUtf8();
-            label401:
-            localRecentRecommendTroopItem.authSig = ???;
-            if (!localRgroupInfo.uint32_activity.has()) {
-              break label527;
-            }
-            k = localRgroupInfo.uint32_activity.get();
-            label427:
-            localRecentRecommendTroopItem.activity = k;
-            if (!localRgroupInfo.int32_uin_privilege.has()) {
-              break label532;
-            }
-          }
-        }
-        label515:
-        label521:
-        label527:
-        label532:
-        for (k = localRgroupInfo.int32_uin_privilege.get();; k = -1)
-        {
-          localRecentRecommendTroopItem.privilege = k;
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(localRecentRecommendTroopItem);
-          ((List)localObject1).add(localRecentRecommendTroopItem);
-          if (!QLog.isColorLevel()) {
-            break label171;
-          }
-          QLog.d("MayknowRecommendManager", 2, "saveNotificationRecommendTroop into db, recommend troop = " + localRecentRecommendTroopItem);
-          break label171;
-          break;
-          ??? = "";
-          break label372;
-          ??? = "";
-          break label401;
-          k = 0;
-          break label427;
-        }
-      }
-    }
-    for (;;)
-    {
+    if ((paramFile != null) && (paramFile.exists())) {
       try
       {
-        localEntityTransaction.commit();
-      }
-      catch (Exception ???)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("MayknowRecommendManager", 2, "saveRecommendTroop commit error");
-        localEntityTransaction.end();
-        continue;
-      }
-      finally
-      {
-        localEntityTransaction.end();
-      }
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject1);
-        this.jdField_f_of_type_Int = 0;
-        this.jdField_b_of_type_Long = 0L;
-        return;
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    if (!this.j)
-    {
-      PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
-      if ((localPhoneContactManagerImp == null) || (localPhoneContactManagerImp.d() < 9)) {
-        break label50;
-      }
-    }
-    label50:
-    for (boolean bool = true;; bool = false)
-    {
-      this.i = bool;
-      this.j = true;
-      return this.i;
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return a(paramInt, null);
-  }
-  
-  public boolean a(int paramInt, Bundle paramBundle)
-  {
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "getMayKnowRecommendRemote entryType = " + paramInt);
-    }
-    if (!b(paramInt))
-    {
-      QLog.i("MayknowRecommendManager", 1, String.format("getMayKnowRecommendRemote, isTimeToObtainRemote is false, entryType = " + paramInt, new Object[0]));
-      if (!this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("sp_mayknow_818_first_install", true)) {
-        return bool;
-      }
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("sp_mayknow_818_first_install", false).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("MayknowRecommendManager", 2, "getMayKnowRecommendRemote is818FirstInstall");
-      }
-    }
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new MayknowRecommendManager.6(this, paramInt, paramBundle));
-    bool = true;
-    return bool;
-  }
-  
-  protected boolean a(Entity paramEntity)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen()) {
-      if (paramEntity.getStatus() == 1000)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
-        if (paramEntity.getStatus() == 1001) {
-          bool = true;
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return bool;
-      if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002)) {
-        return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
-      }
-    }
-    QLog.d("MayknowRecommendManager", 2, "updateEntity em closed e=" + paramEntity.getTableName());
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "onMsgTabRecommendBItemRemove uin = " + paramString + ",conversationTabDisplayAsVerticalListItem = " + this.jdField_b_of_type_Boolean);
-    }
-    if (this.jdField_b_of_type_Boolean)
-    {
-      aong localaong = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-      paramString = (RecentUser)localaong.findRecentUser(paramString, 8112);
-      if (paramString != null)
-      {
-        localaong.delRecentUser(paramString);
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public boolean a(List<RecentBaseData> paramList)
-  {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "checkAndReOrderRecentData");
-    }
-    boolean bool1;
-    Object localObject;
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      bool1 = b("sp_mayknow_entry_list_msg");
-      boolean bool3 = b("sp_mayknow_entry_is_up");
-      if (QLog.isColorLevel()) {
-        QLog.d("MayknowRecommendManager", 2, "checkAndReOrderRecentData showConversationMayKnow = " + bool1 + ",shouldRiseUp = " + bool3);
-      }
-      if ((bool1) && (bool3))
-      {
-        Iterator localIterator = paramList.iterator();
-        for (;;)
+        paramFile = BitmapFactory.decodeFile(paramFile.getAbsolutePath());
+        if (paramHashMap != null)
         {
-          if (localIterator.hasNext())
-          {
-            localObject = (RecentBaseData)localIterator.next();
-            if ((localObject instanceof RecentItemMayKnowFriendData))
-            {
-              localObject = (RecentItemMayKnowFriendData)localObject;
-              localIterator.remove();
-              if (localObject != null)
-              {
-                localIterator = paramList.iterator();
-                int k = 0;
-                label208:
-                while (localIterator.hasNext())
-                {
-                  if ((((RecentBaseData)localIterator.next()).mMenuFlag & 0xF0) != 32) {
-                    break label579;
-                  }
-                  k += 1;
-                }
-                int m = paramList.size();
-                int n = a(paramList, k, m);
-                paramList.add(n, localObject);
-                if (QLog.isColorLevel()) {
-                  QLog.d("MayknowRecommendManager", 2, "checkAndReOrderRecentData insertIndex = " + n + ",setTopItemCount = " + k + ",listsize = " + m);
-                }
-                long l = NetConnInfoCenter.getServerTime();
-                if (((RecentItemMayKnowFriendData)localObject).mUser.lastmsgtime < l) {
-                  ((RecentItemMayKnowFriendData)localObject).mUser.lastmsgtime = l;
-                }
-                if (n > 0)
-                {
-                  paramList = (RecentBaseData)paramList.get(n - 1);
-                  if ((paramList.mMenuFlag & 0xF0) != 32) {
-                    break;
-                  }
-                }
-                else
-                {
-                  label352:
-                  if (QLog.isColorLevel()) {
-                    QLog.d("MayknowRecommendManager", 2, "checkAndReOrderRecentData insertIndex = " + n + ",setTopItemCount = " + k + ",listsize = " + m + ",lastmsgtime = " + ((RecentItemMayKnowFriendData)localObject).mUser.lastmsgtime);
-                  }
-                  this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().saveRecentUser(((RecentItemMayKnowFriendData)localObject).mUser);
-                  this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("sp_mayknow_entry_is_up", false);
-                  bool1 = true;
-                }
-              }
-            }
-          }
+          paramHashMap.put("width", String.valueOf(paramFile.getWidth()));
+          paramHashMap.put("height", String.valueOf(paramFile.getHeight()));
         }
+        paramHashMap = ByteBuffer.allocateDirect(paramFile.getByteCount());
+        paramHashMap.order(ByteOrder.nativeOrder());
+        paramFile.copyPixelsToBuffer(paramHashMap);
+        paramFile = paramHashMap.array();
+        return paramFile;
       }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MayknowRecommendManager", 2, "checkAndReOrderRecentData result = " + bool1);
-      }
-      return bool1;
-      if ((!(paramList instanceof RecentUserBaseData)) || (((RecentItemMayKnowFriendData)localObject).mUser.lastmsgtime <= ((RecentUserBaseData)paramList).mUser.lastmsgtime)) {
-        break label352;
-      }
-      ((RecentItemMayKnowFriendData)localObject).mUser.lastmsgtime = (((RecentUserBaseData)paramList).mUser.lastmsgtime - 1L);
-      break label352;
-      bool1 = bool2;
-      if (QLog.isColorLevel())
+      catch (OutOfMemoryError paramFile)
       {
-        QLog.d("MayknowRecommendManager", 2, "checkAndReOrderRecentData mayKnowFriendData is null ");
-        bool1 = bool2;
-        continue;
-        label579:
-        break label208;
-        localObject = null;
-        break;
-        bool1 = true;
+        QLog.d("ApolloHttpUtil", 2, "wrapBitmapBuffer" + paramFile);
       }
     }
-  }
-  
-  public boolean a(boolean paramBoolean, List<MayKnowRecommend> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return false;
-    }
-    Object localObject2;
-    Object localObject3;
-    MayKnowRecommend localMayKnowRecommend;
-    if (paramBoolean)
-    {
-      paramList = b(new ArrayList(paramList));
-      localObject2 = new ArrayList(2);
-      ??? = paramList.iterator();
-      while (((Iterator)???).hasNext())
-      {
-        localObject3 = (MayKnowRecommend)((Iterator)???).next();
-        if (localObject3 != null)
-        {
-          ((MayKnowRecommend)localObject3).cardDisplayTimestamp = NetConnInfoCenter.getServerTimeMillis();
-          ((List)localObject2).add(((MayKnowRecommend)localObject3).uin);
-        }
-      }
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if ((paramList.size() <= 0) || (this.jdField_a_of_type_JavaUtilArrayList.size() + paramList.size() >= 1000)) {
-          break label436;
-        }
-        localObject3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localMayKnowRecommend = (MayKnowRecommend)((Iterator)localObject3).next();
-          if ((localMayKnowRecommend != null) && (((List)localObject2).contains(localMayKnowRecommend.uin))) {
-            ((Iterator)localObject3).remove();
-          }
-        }
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(0, paramList);
-    }
-    label436:
-    for (paramList = new LinkedList(this.jdField_a_of_type_JavaUtilArrayList);; paramList = null)
-    {
-      localObject2 = new ArrayList();
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        localObject3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localMayKnowRecommend = (MayKnowRecommend)((Iterator)localObject3).next();
-          if (localMayKnowRecommend != null) {
-            ((ArrayList)localObject2).add(localMayKnowRecommend.uin);
-          }
-        }
-      }
-      if (!((ArrayList)localObject2).isEmpty()) {
-        ContactReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, (ArrayList)localObject2);
-      }
-      if ((paramList != null) && (!paramList.isEmpty()))
-      {
-        ??? = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
-        try
-        {
-          ((EntityTransaction)???).begin();
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.execSQL("delete from MayKnowRecommend where tabID=23");
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            localObject2 = (MayKnowRecommend)paramList.next();
-            if (localObject2 != null)
-            {
-              ((MayKnowRecommend)localObject2).setStatus(1000);
-              a((Entity)localObject2);
-            }
-          }
-          return false;
-        }
-        catch (Exception paramList)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MayknowRecommendManager", 2, "handleMayKnowPushAdd ex", paramList);
-          }
-          return false;
-          ((EntityTransaction)???).commit();
-          return true;
-        }
-        finally
-        {
-          ((EntityTransaction)???).end();
-        }
-      }
-    }
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("sp_config_version", 0);
-  }
-  
-  public ArrayList<String> b()
-  {
-    int k = 0;
-    p();
-    ArrayList localArrayList = new ArrayList(4);
-    Object localObject3 = null;
-    Object localObject4 = this.jdField_d_of_type_JavaLangObject;
-    Object localObject1 = localObject3;
-    try
-    {
-      if (this.jdField_c_of_type_JavaUtilArrayList != null)
-      {
-        localObject1 = localObject3;
-        if (!this.jdField_c_of_type_JavaUtilArrayList.isEmpty()) {
-          localObject1 = (aixh)this.jdField_c_of_type_JavaUtilArrayList.get(0);
-        }
-      }
-      if (localObject1 != null)
-      {
-        localObject1 = a(((aixh)localObject1).jdField_a_of_type_Int);
-        if (localObject1 != null) {
-          while ((k < ((ArrayList)localObject1).size()) && (k < 4))
-          {
-            localArrayList.add(((MayKnowRecommend)((ArrayList)localObject1).get(k)).uin);
-            k += 1;
-          }
-        }
-      }
-      if (!QLog.isColorLevel()) {
-        break label160;
-      }
-    }
-    finally {}
-    QLog.d("MayknowRecommendManager", 2, "getConnectionsPersonUinListFroAddActivity " + localArrayList.toString());
-    label160:
-    return localArrayList;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "removeConnectionsDataExceptRecommendTab ");
-    }
-    p();
-    if (this.jdField_c_of_type_JavaUtilArrayList != null)
-    {
-      Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        aixh localaixh = (aixh)localIterator.next();
-        if (localaixh.jdField_a_of_type_Int != 23)
-        {
-          a(localaixh.jdField_a_of_type_Int, new ArrayList(0), true);
-          a(localaixh.jdField_a_of_type_Int, null);
-        }
-      }
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "removeConnectionTab " + paramInt);
-    }
-    a(paramInt, new ArrayList(0), true);
-    p();
-    for (;;)
-    {
-      synchronized (this.jdField_d_of_type_JavaLangObject)
-      {
-        if (this.jdField_c_of_type_JavaUtilArrayList == null) {
-          break label155;
-        }
-        Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
-        if (localIterator.hasNext())
-        {
-          if (((aixh)localIterator.next()).jdField_a_of_type_Int != paramInt) {
-            continue;
-          }
-          localIterator.remove();
-          k = 1;
-          m = k;
-          if (k != 0)
-          {
-            d(this.jdField_c_of_type_JavaUtilArrayList);
-            m = k;
-          }
-          if (m != 0) {
-            a(paramInt, null);
-          }
-          return;
-        }
-      }
-      int k = 0;
-      continue;
-      label155:
-      int m = 0;
-    }
-  }
-  
-  public void b(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "getConnectionsPersonRemoteNextPage entryType = " + paramInt1 + " tabID=" + paramInt2);
-    }
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new MayknowRecommendManager.5(this, paramInt2, paramInt1, paramBundle));
-  }
-  
-  public void b(MayKnowRecommend paramMayKnowRecommend, int paramInt1, int paramInt2, int paramInt3)
-  {
-    synchronized (jdField_b_of_type_JavaLangObject)
-    {
-      if ((!this.h) || (this.jdField_g_of_type_Boolean)) {
-        return;
-      }
-      paramMayKnowRecommend = MayKnowExposure.generateKey(paramMayKnowRecommend, paramInt1, paramInt2, paramInt3);
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramMayKnowRecommend))
-      {
-        paramMayKnowRecommend = (MayKnowExposure)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramMayKnowRecommend);
-        if ((paramInt3 == 1) && (paramMayKnowRecommend.startExploseTime != 0L))
-        {
-          paramMayKnowRecommend.exposeTime = ((int)(SystemClock.uptimeMillis() - paramMayKnowRecommend.startExploseTime + paramMayKnowRecommend.exposeTime));
-          paramMayKnowRecommend.exposeCnt += 1;
-          paramMayKnowRecommend.startExploseTime = 0L;
-          return;
-        }
-      }
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    a(paramString, true);
-  }
-  
-  public void b(List<oidb_0xc26.EntryDelay> paramList)
-  {
-    int i2 = 0;
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    localEditor.putLong("sp_get_mayknow_timestamp_v3_for_card_header", System.currentTimeMillis());
-    localEditor.putLong("sp_get_mayknow_timestamp_v2", System.currentTimeMillis());
-    int i1;
-    int n;
-    int m;
-    int k;
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      i2 = 0;
-      i1 = 0;
-      n = 0;
-      m = 0;
-      k = 0;
-      if (paramList.hasNext())
-      {
-        oidb_0xc26.EntryDelay localEntryDelay = (oidb_0xc26.EntryDelay)paramList.next();
-        int i3;
-        int i4;
-        switch (localEntryDelay.em_entry.get())
-        {
-        default: 
-          i3 = i2;
-          i4 = i1;
-          i2 = k;
-          i1 = m;
-          m = i4;
-          k = i3;
-        }
-        for (;;)
-        {
-          i3 = i2;
-          i4 = i1;
-          i2 = k;
-          i1 = m;
-          m = i4;
-          k = i3;
-          break;
-          i3 = localEntryDelay.uint32_delay.get();
-          k = i2;
-          i2 = m;
-          m = i1;
-          i1 = i2;
-          i2 = i3;
-          continue;
-          i3 = localEntryDelay.uint32_delay.get();
-          m = i1;
-          i1 = i3;
-          i3 = k;
-          k = i2;
-          i2 = i3;
-          continue;
-          n = localEntryDelay.uint32_delay.get();
-          i3 = m;
-          i4 = k;
-          k = i2;
-          m = i1;
-          i1 = i3;
-          i2 = i4;
-          continue;
-          i1 = localEntryDelay.uint32_delay.get();
-          i3 = m;
-          i4 = k;
-          k = i2;
-          m = i1;
-          i1 = i3;
-          i2 = i4;
-          continue;
-          i4 = localEntryDelay.uint32_delay.get();
-          i2 = m;
-          i3 = k;
-          k = i4;
-          m = i1;
-          i1 = i2;
-          i2 = i3;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (k > 0) {
-        localEditor.putLong("pull_interval_conversation_tab", k * 1000);
-      }
-      if (m > 0) {
-        localEditor.putLong("pull_interval_contact_head", m * 1000);
-      }
-      if (n > 0) {
-        localEditor.putLong("pull_interval_recommend_tab", n * 1000);
-      }
-      if (i1 > 0) {
-        localEditor.putLong("pull_interval_new_friend", i1 * 1000);
-      }
-      if (i2 > 0) {
-        localEditor.putLong("pull_interval_add_page", i2 * 1000);
-      }
-      localEditor.commit();
-      QLog.i("MayknowRecommendManager", 1, "saveReqTimeAndIntervalInfo,msgIntervel = " + k + ",headIntervel = " + m + ",recommendIntervel = " + n + ",newIntervel = " + i1 + ",addIntervel = " + i2);
-      return;
-      i1 = 0;
-      n = 0;
-      m = 0;
-      k = 0;
-    }
-  }
-  
-  public boolean b()
-  {
-    boolean bool = true;
-    if (this.jdField_b_of_type_Int != 1) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MayknowRecommendManager", 2, "shouldShowRecommendTroop result: " + bool);
-      }
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public boolean b(int paramInt)
-  {
-    long l1;
-    long l2;
-    if (paramInt == 2)
-    {
-      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("sp_get_mayknow_timestamp_v3_for_card_header", 0L);
-      l2 = a(paramInt);
-      if (Math.abs(l1 - System.currentTimeMillis()) < l2) {
-        break label142;
-      }
-    }
-    label142:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("MayknowRecommendManager", 1, String.format(new StringBuilder().append("isTimeToObtainRemote, return=").append(bool).append(", lastTime").append(l1).toString(), new Object[0]) + ", pullInternalTime" + l2 + ",entryType = " + paramInt);
-      return bool;
-      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("sp_get_mayknow_timestamp_v2", 0L);
-      break;
-    }
-  }
-  
-  public boolean b(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(paramString, false);; bool1 = false)
-    {
-      boolean bool3 = bool1;
-      if (this.jdField_b_of_type_Int == 1)
-      {
-        boolean bool2 = bool1;
-        if (bool1)
-        {
-          bool2 = bool1;
-          if (!TextUtils.equals(paramString, "sp_mayknow_ml_s_a_vl"))
-          {
-            bool2 = bool1;
-            if (!TextUtils.equals(paramString, "sp_mayknow_addpage_s_a_vl"))
-            {
-              bool2 = bool1;
-              if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-              {
-                ajld localajld = (ajld)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(295);
-                bool2 = bool1;
-                if (localajld != null)
-                {
-                  bool2 = bool1;
-                  if (localajld.b())
-                  {
-                    if (QLog.isColorLevel()) {
-                      QLog.i("MayknowRecommendManager", 2, "getSPSwitchState user closed");
-                    }
-                    bool2 = false;
-                  }
-                }
-              }
-            }
-          }
-        }
-        bool3 = bool2;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("MayknowRecommendManager", 2, "getSPSwitchState name:" + paramString + "  open:" + bool2);
-          bool3 = bool2;
-        }
-      }
-      return bool3;
-    }
-  }
-  
-  public boolean b(boolean paramBoolean, List<String> arg2)
-  {
-    if ((??? == null) || (???.isEmpty())) {
-      return false;
-    }
-    if (paramBoolean)
-    {
-      LinkedList localLinkedList = new LinkedList();
-      Object localObject4;
-      MayKnowRecommend localMayKnowRecommend;
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        localObject4 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (((Iterator)localObject4).hasNext())
-        {
-          localMayKnowRecommend = (MayKnowRecommend)((Iterator)localObject4).next();
-          if ((localMayKnowRecommend != null) && (???.contains(localMayKnowRecommend.uin)))
-          {
-            localLinkedList.add(localMayKnowRecommend);
-            ((Iterator)localObject4).remove();
-          }
-        }
-      }
-      ??? = new ArrayList();
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        localObject4 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (((Iterator)localObject4).hasNext())
-        {
-          localMayKnowRecommend = (MayKnowRecommend)((Iterator)localObject4).next();
-          if (localMayKnowRecommend != null) {
-            ((ArrayList)???).add(localMayKnowRecommend.uin);
-          }
-        }
-      }
-      if (!((ArrayList)???).isEmpty()) {
-        ContactReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, (ArrayList)???);
-      }
-      if (!localObject1.isEmpty())
-      {
-        ??? = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
-        try
-        {
-          ???.begin();
-          Iterator localIterator = localObject1.iterator();
-          while (localIterator.hasNext())
-          {
-            ??? = (MayKnowRecommend)localIterator.next();
-            if (??? != null)
-            {
-              localObject4 = ((MayKnowRecommend)???).uin;
-              this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove((Entity)???, "uin=?", new String[] { localObject4 });
-            }
-          }
-          return false;
-        }
-        catch (Exception localException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MayknowRecommendManager", 2, "handleMayKnowPushDel ex", localException);
-          }
-          return false;
-          ???.commit();
-          return true;
-        }
-        finally
-        {
-          ???.end();
-        }
-      }
-    }
-  }
-  
-  public ArrayList<MayKnowRecommend> c()
-  {
-    ArrayList localArrayList = new ArrayList();
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      localArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-      return localArrayList;
-    }
-  }
-  
-  public void c()
-  {
-    boolean bool = b("sp_mayknow_entry_list_msg");
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "prepareConversationTabRecommendTroopList troopItems size: " + this.jdField_a_of_type_JavaUtilList.size() + " switch open: " + bool);
-    }
-    Object localObject4 = new ArrayList();
-    label413:
-    label414:
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        ((List)localObject4).addAll(this.jdField_a_of_type_JavaUtilList);
-        if ((localObject4 != null) && (!((List)localObject4).isEmpty()) && (bool))
-        {
-          aong localaong = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-          localaong.deleteRecentUserByType(8112);
-          ??? = (RecentUser)localaong.findRecentUser(anhk.ag, 8111);
-          if (??? != null) {
-            localaong.delRecentUser((BaseRecentUser)???);
-          }
-          localaong.deleteRecentUserByType(8113);
-          Object localObject2 = (RecentUser)localaong.findRecentUser("sp_uin_for_title", 8113);
-          ??? = localObject2;
-          if (localObject2 == null) {
-            ??? = new RecentUser("sp_uin_for_title", 8113);
-          }
-          long l = -1L - 1L;
-          ((RecentUser)???).lastmsgtime = l;
-          ((RecentUser)???).lastmsgdrafttime = -500L;
-          ((RecentUser)???).opTime = -500L;
-          localaong.saveRecentUser((BaseRecentUser)???);
-          Iterator localIterator = ((List)localObject4).iterator();
-          if (!localIterator.hasNext()) {
-            break label413;
-          }
-          RecentRecommendTroopItem localRecentRecommendTroopItem = (RecentRecommendTroopItem)localIterator.next();
-          ??? = (RecentUser)localaong.findRecentUser(localRecentRecommendTroopItem.uin, 8113);
-          if (??? != null) {
-            break label414;
-          }
-          ??? = new RecentUser(localRecentRecommendTroopItem.uin, 8113);
-          localObject4 = localRecentRecommendTroopItem.name;
-          localObject2 = localObject4;
-          if (TextUtils.isEmpty((CharSequence)localObject4)) {
-            localObject2 = localRecentRecommendTroopItem.uin;
-          }
-          ((RecentUser)???).displayName = ((String)localObject2);
-          ((RecentUser)???).extraInfo = localRecentRecommendTroopItem;
-          l -= 1L;
-          ((RecentUser)???).lastmsgtime = l;
-          ((RecentUser)???).lastmsgdrafttime = -500L;
-          ((RecentUser)???).opTime = -500L;
-          localaong.saveRecentUser((BaseRecentUser)???);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().deleteRecentUserByType(8113);
-      return;
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(null, null, paramInt, null);
-  }
-  
-  public void c(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "onContactsTabTroopItemDeleted troop uin: " + paramString);
-    }
-    a(paramString);
-    ((antq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(22)).a(paramString, new anpq(this, paramString));
-    this.jdField_e_of_type_Int -= 1;
-    paramString = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    if (this.jdField_e_of_type_Int == 0)
-    {
-      this.jdField_c_of_type_Long = NetConnInfoCenter.getServerTime();
-      paramString.putLong("sp_contacts_tab_recommend_troop_hide_time", this.jdField_c_of_type_Long);
-      bcst.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_hide", 0, 0, "", "", "", "");
-    }
-    paramString.putInt("sp_contacts_tab_recommend_troop_count", this.jdField_e_of_type_Int);
-    paramString.commit();
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).notifyUI(92, true, null);
-  }
-  
-  public boolean c()
-  {
-    boolean bool1 = b();
-    boolean bool2 = bdch.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, String.format("shouldShowRecommendTroopInConversation, showRecommendTroop: %s, isStudyMode: %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-    }
-    return (bool1) && (!bool2);
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "prepareConversationMayKnowRecenUser ，conversationTabDisplayAsVerticalListItem = " + this.jdField_b_of_type_Boolean);
-    }
-    if ((!b("sp_mayknow_entry_list_msg")) || (this.jdField_b_of_type_Int != 1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MayknowRecommendManager", 2, "prepareConversationMayKnowRecenUser hideConversationMayKnow  return ");
-      }
-    }
-    Object localObject2;
-    do
-    {
-      return;
-      localObject2 = c();
-    } while ((localObject2 == null) || (((ArrayList)localObject2).size() <= 0));
-    aong localaong = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-    g(8113);
-    Object localObject1;
-    RecentUser localRecentUser;
-    long l;
-    MayKnowRecommend localMayKnowRecommend;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      localObject1 = (RecentUser)localaong.findRecentUser(anhk.ag, 8111);
-      if (localObject1 != null) {
-        localaong.delRecentUser((BaseRecentUser)localObject1);
-      }
-      g(8112);
-      localRecentUser = (RecentUser)localaong.findRecentUser("sp_uin_for_title", 8112);
-      localObject1 = localRecentUser;
-      if (localRecentUser == null) {
-        localObject1 = new RecentUser("sp_uin_for_title", 8112);
-      }
-      l = 0L - 1L;
-      ((RecentUser)localObject1).lastmsgtime = l;
-      ((RecentUser)localObject1).lastmsgdrafttime = -500L;
-      ((RecentUser)localObject1).opTime = -500L;
-      localaong.saveRecentUser((BaseRecentUser)localObject1);
-      Iterator localIterator = ((ArrayList)localObject2).iterator();
-      if (!localIterator.hasNext()) {
-        break label474;
-      }
-      localMayKnowRecommend = (MayKnowRecommend)localIterator.next();
-      localRecentUser = (RecentUser)localaong.findRecentUser(localMayKnowRecommend.uin, 8112);
-      if (localRecentUser != null) {
-        break label491;
-      }
-      localRecentUser = new RecentUser(localMayKnowRecommend.uin, 8112);
-    }
-    label474:
-    label491:
-    for (;;)
-    {
-      localObject2 = localMayKnowRecommend.remark;
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        localObject2 = localMayKnowRecommend.mobile_name;
-        localObject1 = localObject2;
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject1 = localMayKnowRecommend.nick;
-        }
-      }
-      localRecentUser.displayName = ((String)localObject1);
-      localRecentUser.extraInfo = localMayKnowRecommend;
-      l -= 1L;
-      localRecentUser.lastmsgtime = l;
-      localRecentUser.lastmsgdrafttime = -500L;
-      localRecentUser.opTime = -500L;
-      localaong.saveRecentUser(localRecentUser);
-      break;
-      g(8112);
-      localRecentUser = (RecentUser)localaong.findRecentUser(anhk.ag, 8111);
-      if (QLog.isColorLevel()) {
-        QLog.d("MayknowRecommendManager", 2, "prepareConversationMayKnowRecenUser mayKnowRecommends.size = " + ((ArrayList)localObject2).size() + ",ru = " + localRecentUser);
-      }
-      localObject1 = localRecentUser;
-      if (localRecentUser == null) {
-        localObject1 = new RecentUser(anhk.ag, 8111);
-      }
-      localaong.saveRecentUser((BaseRecentUser)localObject1);
-      ((LoginWelcomeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(146)).f();
-      return;
-    }
-  }
-  
-  public void d(int paramInt)
-  {
-    if (this.jdField_b_of_type_Int != paramInt) {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).notifyUI(123, true, new Object[] { Integer.valueOf(paramInt) });
-    }
-    this.jdField_b_of_type_Int = paramInt;
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    localEditor.putInt("sp_conversation_tab_show_type", paramInt);
-    localEditor.commit();
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "saveConversationTabShowType type is: " + paramInt);
-    }
-  }
-  
-  public void d(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "onConversationTabTroopItemDeleted uin:" + paramString);
-    }
-    Object localObject = a(paramString);
-    ((antq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(22)).a(paramString, new anpl(this, paramString));
-    FriendListHandler localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
-    localFriendListHandler.notifyUI(92, true, null);
-    localFriendListHandler.notifyUI(122, true, new Object[] { paramString });
-    if (localObject == null)
-    {
-      paramString = "";
-      if (localObject != null) {
-        break label148;
-      }
-    }
-    label148:
-    for (localObject = "";; localObject = ((RecentRecommendTroopItem)localObject).recomAlgol)
-    {
-      bcst.b(null, "dc00899", "Grp_recom", "", "msg_tab", "slide_delete", 0, 0, paramString, (String)localObject, "", "");
-      return;
-      paramString = ((RecentRecommendTroopItem)localObject).uin;
-      break;
-    }
-  }
-  
-  public boolean d()
-  {
-    boolean bool1 = b("sp_mayknow_entry_list_msg");
-    boolean bool2 = bdch.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, String.format("shouldShowConversationMayKnow, mayKnowListSwitch: %s, isStudyMode: %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-    }
-    return (bool1) && (!bool2);
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "removeConversationMayKnowRecentUser  ，conversationTabDisplayAsVerticalListItem = " + this.jdField_b_of_type_Boolean);
-    }
-    aong localaong = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-    g(8112);
-    RecentUser localRecentUser = (RecentUser)localaong.findRecentUser(anhk.ag, 8111);
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "removeConversationMayKnowRecentUser ,ru = " + localRecentUser);
-    }
-    if (localRecentUser != null) {
-      localaong.delRecentUser(localRecentUser);
-    }
-    ((LoginWelcomeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(146)).e();
-  }
-  
-  public void e(String paramString)
-  {
-    a(paramString);
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).notifyUI(122, true, new Object[] { paramString });
-  }
-  
-  public boolean e()
-  {
-    boolean bool1 = b("sp_mayknow_entry_list_new");
-    boolean bool2 = bdch.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, String.format("shouldShowMayKnowInNewFriend, mayKnowListSwitch: %s, isStudyMode: %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-    }
-    return (bool1) && (!bool2);
-  }
-  
-  public void f()
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null)) {}
-    for (;;)
-    {
-      return;
-      Object localObject4 = null;
-      EntityTransaction localEntityTransaction = null;
-      Object localObject2 = localEntityTransaction;
-      Object localObject1 = localObject4;
-      try
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-        localObject2 = localEntityTransaction;
-        localObject1 = localObject4;
-        localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
-        localObject2 = localEntityTransaction;
-        localObject1 = localEntityTransaction;
-        localEntityTransaction.begin();
-        for (;;)
-        {
-          localObject2 = localEntityTransaction;
-          localObject1 = localEntityTransaction;
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localObject2 = localEntityTransaction;
-          localObject1 = localEntityTransaction;
-          localObject4 = (MayKnowExposure)((Map.Entry)localIterator.next()).getValue();
-          localObject2 = localEntityTransaction;
-          localObject1 = localEntityTransaction;
-          if (((MayKnowExposure)localObject4).exposeCnt > 0)
-          {
-            localObject2 = localEntityTransaction;
-            localObject1 = localEntityTransaction;
-            a((Entity)localObject4);
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          localObject1 = localObject2;
-          QLog.e("MayknowRecommendManager", 2, "saveExplosures", localException);
-        }
-        return;
-        localObject2 = localException;
-        localObject1 = localException;
-        localException.commit();
-        localObject2 = localException;
-        localObject1 = localException;
-        if (QLog.isColorLevel())
-        {
-          localObject2 = localException;
-          localObject1 = localException;
-          QLog.d("MayknowRecommendManager", 2, "saveExplosures count = " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-        }
-        localObject2 = localException;
-        localObject1 = localException;
-        localObject4 = jdField_b_of_type_JavaLangObject;
-        localObject2 = localException;
-        localObject1 = localException;
-        try
-        {
-          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-          }
-          if (localException == null) {
-            continue;
-          }
-          localException.end();
-          return;
-        }
-        finally
-        {
-          localObject2 = localException;
-          localObject1 = localException;
-        }
-      }
-      finally
-      {
-        if (localObject1 != null) {
-          ((EntityTransaction)localObject1).end();
-        }
-      }
-    }
-  }
-  
-  public void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 1, "turnOffSPMsgTabEntrySwitchState");
-    }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("sp_mayknow_entry_list_msg", false).commit();
-  }
-  
-  public void h()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "onConversationTabRecommendTroopHided");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().deleteRecentUserByType(8113);
-    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    ((SharedPreferences.Editor)localObject).putBoolean("sp_mayknow_entry_list_msg", false);
-    ((SharedPreferences.Editor)localObject).commit();
-    localObject = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
-    ((FriendListHandler)localObject).notifyUI(92, true, null);
-    ((FriendListHandler)localObject).i();
-  }
-  
-  public void i()
-  {
-    this.jdField_b_of_type_Long = 0L;
-  }
-  
-  public void j()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "onEnterBackground ");
-    }
-    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
-    {
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new MayknowRecommendManager.13(this));
-      ContactReportUtils.a();
-    }
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anmu);
-    f();
-    synchronized (this.jdField_c_of_type_JavaLangObject)
-    {
-      this.jdField_f_of_type_Boolean = true;
-      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11)) && (this.jdField_a_of_type_Awna != null)) {
-        ((PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).b(this.jdField_a_of_type_Awna);
-      }
-      this.jdField_a_of_type_Awna = null;
-      bdch.b(this.jdField_a_of_type_Bdci);
-      return;
-    }
+    return null;
   }
 }
 

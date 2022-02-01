@@ -1,22 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import android.view.View;
-import android.view.animation.AnimationUtils;
-import bgsg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import ocd;
+import ozs;
 
 class ReadinjoyTabFrame$16
   implements Runnable
 {
-  ReadinjoyTabFrame$16(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  ReadinjoyTabFrame$16(ReadinjoyTabFrame paramReadinjoyTabFrame, long paramLong) {}
   
   public void run()
   {
-    if (ReadinjoyTabFrame.b(this.this$0) != null)
-    {
-      ReadinjoyTabFrame.b(this.this$0).setAnimation(AnimationUtils.loadAnimation(this.this$0.a(), 2130772328));
-      ReadinjoyTabFrame.b(this.this$0).setVisibility(8);
-      bgsg.A(this.this$0.a(), this.this$0.a.getCurrentAccountUin());
+    ocd.a((QQAppInterface)ozs.a(), "CliOper", "", "", "0X80066F7", "0X80066F7", 1, 1, Long.toString(this.a / 1000L), "", "", ozs.f(), false);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.4tab", 2, "report ReadinjoyTabFrame use time: " + this.a / 1000L);
     }
   }
 }

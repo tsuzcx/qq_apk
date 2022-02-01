@@ -1,8 +1,8 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.util.Log;
-import bcsp;
-import bcuy;
+import bdlh;
+import bdnr;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -17,8 +17,8 @@ class DataReporter$1
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        bcuy localbcuy = (bcuy)localIterator.next();
-        bcsp.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localbcuy);
+        bdnr localbdnr = (bdnr)localIterator.next();
+        bdlh.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localbdnr);
       }
       return;
     }

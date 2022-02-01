@@ -7,14 +7,14 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
-import asez;
-import bqja;
+import asun;
+import brkm;
 import com.tencent.mobileqq.activity.photo.DragGallery;
 
 public class EmotionGallery
   extends DragGallery
 {
-  private asez a;
+  private asun a;
   
   public EmotionGallery(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,42 +35,42 @@ public class EmotionGallery
     if (paramInt > paramFloat) {}
     for (paramFloat /= paramInt;; paramFloat = Math.min(1.5F, paramFloat / paramInt))
     {
-      setMaxScale((float)bqja.a / paramInt);
+      setMaxScale((float)brkm.a / paramInt);
       return paramFloat;
     }
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Asez != null)
+    if (this.jdField_a_of_type_Asun != null)
     {
       float f = a();
-      this.jdField_a_of_type_Asez.c(f);
+      this.jdField_a_of_type_Asun.c(f);
     }
     return super.onDoubleTap(paramMotionEvent);
   }
   
   public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Asez != null) {
-      this.jdField_a_of_type_Asez.b();
+    if (this.jdField_a_of_type_Asun != null) {
+      this.jdField_a_of_type_Asun.b();
     }
     return super.onScaleBegin(paramScaleGestureDetector);
   }
   
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Asez != null)
+    if (this.jdField_a_of_type_Asun != null)
     {
       float f = a();
-      this.jdField_a_of_type_Asez.b(f);
+      this.jdField_a_of_type_Asun.b(f);
     }
     super.onScaleEnd(paramScaleGestureDetector);
   }
   
-  public void setOnScaleChangeListener(asez paramasez)
+  public void setOnScaleChangeListener(asun paramasun)
   {
-    this.jdField_a_of_type_Asez = paramasez;
+    this.jdField_a_of_type_Asun = paramasun;
   }
 }
 

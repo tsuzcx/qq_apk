@@ -1,381 +1,594 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.theme.DarkModeManager.3;
-import com.tencent.mobileqq.theme.DarkModeManager.6;
-import com.tencent.mobileqq.theme.ThemeSwitcher;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
-import org.jetbrains.annotations.Nullable;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.util.Locale;
+import org.xmlpull.v1.XmlSerializer;
 
 public class bdoq
+  implements XmlSerializer
 {
-  private static boolean a;
-  private static boolean b;
+  private int jdField_a_of_type_Int;
+  private BufferedWriter jdField_a_of_type_JavaIoBufferedWriter;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[4];
+  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[12];
+  private boolean[] jdField_a_of_type_ArrayOfBoolean = new boolean[4];
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private String[] jdField_b_of_type_ArrayOfJavaLangString = new String[8];
   
-  private static SharedPreferences a()
+  private final String a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject2 = null;
-    try
-    {
-      Object localObject3 = BaseApplicationImpl.getApplication();
-      Object localObject1 = localObject2;
-      if (localObject3 != null)
+    int i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int + 1)] * 2 - 2;
+    Object localObject;
+    int j;
+    if (i >= 0) {
+      if ((this.jdField_b_of_type_ArrayOfJavaLangString[(i + 1)].equals(paramString)) && ((paramBoolean1) || (this.jdField_b_of_type_ArrayOfJavaLangString[i].length() != 0)))
       {
-        localObject3 = ((BaseApplicationImpl)localObject3).getRuntime();
-        localObject1 = localObject2;
-        if (localObject3 != null) {
-          localObject1 = ((AppRuntime)localObject3).getApplication().getSharedPreferences("DarkModeManagerdark_mode_ui", 4);
+        localObject = this.jdField_b_of_type_ArrayOfJavaLangString[i];
+        j = i + 2;
+        label70:
+        if (j >= this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int + 1)] * 2) {
+          break label275;
+        }
+        if (this.jdField_b_of_type_ArrayOfJavaLangString[j].equals(localObject)) {
+          localObject = null;
         }
       }
-      return localObject1;
     }
-    catch (Throwable localThrowable)
+    label275:
+    for (;;)
     {
-      QLog.e("DarkModeManager", 2, "getSharedPreferences error!: ", localThrowable);
-    }
-    return null;
-  }
-  
-  private static void a()
-  {
-    if (bcnj.b()) {}
-    for (String str = "2920";; str = "1103")
-    {
-      QLog.d("DarkModeManager", 1, "switchToNightMode themeID=" + str);
-      ThemeSwitcher.a(str, "202", null);
-      return;
-    }
-  }
-  
-  public static void a(Activity paramActivity, String paramString, bdov parambdov)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing()))
-    {
-      QLog.e("DarkModeManager", 2, "showThemeDarkModeTips error!: ");
-      return;
-    }
-    paramActivity = bglp.a(paramActivity, 0, null, paramActivity.getString(2131717827), paramActivity.getString(2131690582), paramActivity.getString(2131690912), new bdot(parambdov), new bdou(parambdov));
-    paramActivity.show();
-    paramActivity.setCancelable(false);
-    a("0X800A5C9");
-  }
-  
-  public static void a(bdpx parambdpx)
-  {
-    if (b()) {
-      if ((BaseApplicationImpl.getApplication().getApplicationContext().getResources().getConfiguration().uiMode & 0x30) == 32)
+      if (localObject != null)
       {
-        bool1 = true;
-        bool2 = ThemeUtil.isNowThemeIsNight(null, false, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("DarkModeManager", 2, "updateDarkModeStatus isNightMode  = " + bool2 + ", isDarkMode = " + bool1);
-        }
-        b(bool1, bool2, parambdpx);
+        return localObject;
+        j += 1;
+        break label70;
       }
-    }
-    while ((!b) || (BaseApplicationImpl.isCurrentVersionFirstLaunch)) {
+      i -= 2;
+      break;
+      if (!paramBoolean2) {
+        return null;
+      }
+      if (paramString.length() == 0)
+      {
+        localObject = "";
+        paramBoolean1 = this.jdField_a_of_type_Boolean;
+        this.jdField_a_of_type_Boolean = false;
+        setPrefix((String)localObject, paramString);
+        this.jdField_a_of_type_Boolean = paramBoolean1;
+        return localObject;
+      }
+      label174:
+      localObject = new StringBuilder().append("n");
+      i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = (i + 1);
+      String str = i;
+      i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int + 1)] * 2 - 2;
       for (;;)
       {
-        boolean bool2;
-        return;
-        boolean bool1 = false;
-      }
-    }
-    d();
-  }
-  
-  public static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "report() called with: key = [" + paramString + "]");
-    }
-    bcst.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      a("0X800A3E8");
-    }
-    SharedPreferences localSharedPreferences;
-    for (;;)
-    {
-      a = paramBoolean;
-      localSharedPreferences = a();
-      if (localSharedPreferences != null) {
-        break;
-      }
-      return;
-      a("0X800A3E7");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "updateModeStatus isOpened  = " + a);
-    }
-    localSharedPreferences.edit().putBoolean("dark_switch_key", a).apply();
-  }
-  
-  public static void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
-  {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing()))
-    {
-      QLog.e("DarkModeManager", 2, "showDarkModeTips error!: ");
-      return;
-    }
-    String str = localBaseActivity.getString(2131717830);
-    if (!paramBoolean1) {
-      str = localBaseActivity.getString(2131717826);
-    }
-    paramString1 = bglp.a(localBaseActivity, 0, null, str, localBaseActivity.getString(2131690582), localBaseActivity.getString(2131690912), new bdor(paramBoolean1, paramBoolean2), new bdos(paramString1, paramString2));
-    paramString1.show();
-    paramString1.setCancelable(false);
-    c();
-    a("0X800A5B4");
-  }
-  
-  public static boolean a()
-  {
-    return Build.VERSION.SDK_INT >= 29;
-  }
-  
-  public static boolean a(Activity paramActivity, String paramString, bdov parambdov)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing())) {}
-    while (!b()) {
-      return false;
-    }
-    boolean bool2;
-    label40:
-    boolean bool1;
-    if ((paramActivity.getResources().getConfiguration().uiMode & 0x30) == 32)
-    {
-      bool2 = true;
-      bool1 = ThemeUtil.isNowThemeIsNight(null, false, paramString);
-      if (TextUtils.isEmpty(paramString))
-      {
-        if (ThemeUtil.isNowThemeIsNight(null, false, null)) {
-          break label136;
+        localObject = str;
+        if (i >= 0)
+        {
+          if (str.equals(this.jdField_b_of_type_ArrayOfJavaLangString[i])) {
+            localObject = null;
+          }
         }
-        bool1 = true;
+        else
+        {
+          if (localObject == null) {
+            break label174;
+          }
+          break;
+        }
+        i -= 2;
       }
-      label65:
-      if (bool2 == bool1) {
-        break label139;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeManager", 2, "userSetThemeAction isNightMode  = " + bool1 + ", isDarkMode = " + bool2);
-      }
-      if (Looper.getMainLooper() != Looper.myLooper()) {
-        break label141;
-      }
-      a(paramActivity, paramString, parambdov);
-    }
-    for (;;)
-    {
-      return true;
-      bool2 = false;
-      break label40;
-      label136:
-      bool1 = false;
-      break label65;
-      label139:
-      break;
-      label141:
-      ThreadManager.getUIHandler().post(new DarkModeManager.6(paramActivity, paramString, parambdov));
     }
   }
   
-  public static boolean a(String paramString)
+  private static void a(char paramChar)
   {
-    if (b()) {
-      if ((BaseApplicationImpl.getApplication().getApplicationContext().getResources().getConfiguration().uiMode & 0x30) != 32) {
-        break label85;
-      }
-    }
-    label85:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2 = ThemeUtil.isNowThemeIsNight(null, false, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeManager", 2, "updateDarkModeStatus isNightMode  = " + bool2 + ", isDarkMode = " + bool1);
-      }
-      if (bool1 != bool2) {
-        break;
-      }
-      return true;
-    }
-    return false;
+    throw new IllegalArgumentException("Illegal character (" + Integer.toHexString(paramChar) + ")");
   }
   
-  public static boolean a(String paramString1, String paramString2)
+  private final void a(String paramString, int paramInt)
   {
-    if (a())
+    int i = 0;
+    if (i < paramString.length())
     {
-      localBaseActivity = BaseActivity.sTopActivity;
-      if ((localBaseActivity != null) && (!localBaseActivity.isFinishing())) {}
-    }
-    while (!QLog.isColorLevel())
-    {
-      boolean bool1;
-      boolean bool2;
-      do
+      int k = paramString.charAt(i);
+      String str;
+      switch (k)
       {
-        do
+      default: 
+        if (k == paramInt)
         {
-          BaseActivity localBaseActivity;
-          return false;
-          if ((localBaseActivity.getResources().getConfiguration().uiMode & 0x30) != 32) {
-            break;
-          }
-          bool1 = true;
-          bool2 = ThemeUtil.isNowThemeIsNight(null, false, null);
-          if (QLog.isColorLevel()) {
-            QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme isNightMode  = " + bool2 + ", isDarkMode = " + bool1 + ", isCurrentVersionFirstLaunch = " + BaseApplicationImpl.isCurrentVersionFirstLaunch);
-          }
-        } while (bool1 == bool2);
-        if ((!d()) && (aqof.a()))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme dialog will show!");
-          }
-          if (Looper.getMainLooper() == Looper.myLooper()) {
-            a(bool1, bool2, paramString1, paramString2);
-          }
-          for (;;)
+          BufferedWriter localBufferedWriter = this.jdField_a_of_type_JavaIoBufferedWriter;
+          if (k == 34)
           {
-            return true;
-            bool1 = false;
-            break;
-            ThreadManager.getUIHandler().post(new DarkModeManager.3(bool1, bool2, paramString1, paramString2));
+            str = "&quot;";
+            label99:
+            localBufferedWriter.write(str);
           }
         }
-      } while (!b());
-      b(bool1, bool2, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme iscalled! switch is opened, so switch theme!");
+        break;
       }
-      return true;
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (paramInt == -1)
+        {
+          this.jdField_a_of_type_JavaIoBufferedWriter.write(k);
+        }
+        else
+        {
+          this.jdField_a_of_type_JavaIoBufferedWriter.write("&#" + k + ';');
+          continue;
+          this.jdField_a_of_type_JavaIoBufferedWriter.write("&amp;");
+          continue;
+          this.jdField_a_of_type_JavaIoBufferedWriter.write("&gt;");
+          continue;
+          this.jdField_a_of_type_JavaIoBufferedWriter.write("&lt;");
+          continue;
+          str = "&apos;";
+          break label99;
+          if (((k >= 32) && (k <= 55295)) || ((k >= 57344) && (k <= 65533))) {}
+          for (int j = 1;; j = 0)
+          {
+            if ((j == 0) && ((!this.jdField_b_of_type_Boolean) && (k >= 127))) {
+              break label276;
+            }
+            this.jdField_a_of_type_JavaIoBufferedWriter.write(k);
+            break;
+          }
+          label276:
+          this.jdField_a_of_type_JavaIoBufferedWriter.write("&#" + k + ";");
+        }
+      }
     }
-    QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme iscalled! the system version is lower 29! so do not dialog!");
-    return false;
   }
   
-  @Nullable
-  private static QQAppInterface b()
+  private final void a(boolean paramBoolean)
   {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject != null)
-    {
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-      if ((localObject instanceof QQAppInterface)) {
-        return (QQAppInterface)localObject;
-      }
-    }
-    return null;
-  }
-  
-  private static void b()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null)
-    {
-      a = localSharedPreferences.getBoolean("dark_switch_key", false);
+    if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    a = true;
+    this.jdField_b_of_type_Int += 1;
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_ArrayOfBoolean.length <= this.jdField_b_of_type_Int)
+    {
+      localObject = new boolean[this.jdField_b_of_type_Int + 4];
+      System.arraycopy(this.jdField_a_of_type_ArrayOfBoolean, 0, localObject, 0, this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_ArrayOfBoolean = ((boolean[])localObject);
+    }
+    this.jdField_a_of_type_ArrayOfBoolean[this.jdField_b_of_type_Int] = this.jdField_a_of_type_ArrayOfBoolean[(this.jdField_b_of_type_Int - 1)];
+    int i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int - 1)];
+    if (i < this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int])
+    {
+      this.jdField_a_of_type_JavaIoBufferedWriter.write(32);
+      this.jdField_a_of_type_JavaIoBufferedWriter.write("xmlns");
+      if (this.jdField_b_of_type_ArrayOfJavaLangString[(i * 2)].length() != 0)
+      {
+        this.jdField_a_of_type_JavaIoBufferedWriter.write(58);
+        this.jdField_a_of_type_JavaIoBufferedWriter.write(this.jdField_b_of_type_ArrayOfJavaLangString[(i * 2)]);
+      }
+      while ((getNamespace() == null) || (getNamespace().length() != 0) || (this.jdField_b_of_type_ArrayOfJavaLangString[(i * 2 + 1)].length() == 0))
+      {
+        this.jdField_a_of_type_JavaIoBufferedWriter.write("=\"");
+        a(this.jdField_b_of_type_ArrayOfJavaLangString[(i * 2 + 1)], 34);
+        this.jdField_a_of_type_JavaIoBufferedWriter.write(34);
+        i += 1;
+        break;
+      }
+      throw new IllegalStateException("Cannot set default namespace for elements in no namespace");
+    }
+    if (this.jdField_a_of_type_ArrayOfInt.length <= this.jdField_b_of_type_Int + 1)
+    {
+      localObject = new int[this.jdField_b_of_type_Int + 8];
+      System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, localObject, 0, this.jdField_b_of_type_Int + 1);
+      this.jdField_a_of_type_ArrayOfInt = ((int[])localObject);
+    }
+    this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int + 1)] = this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int];
+    BufferedWriter localBufferedWriter = this.jdField_a_of_type_JavaIoBufferedWriter;
+    if (paramBoolean) {}
+    for (Object localObject = " />";; localObject = ">")
+    {
+      localBufferedWriter.write((String)localObject);
+      return;
+    }
   }
   
-  private static void b(bdpx parambdpx)
+  public XmlSerializer attribute(String paramString1, String paramString2, String paramString3)
   {
-    Object localObject;
-    if (bcnj.b()) {
-      localObject = bcnj.a(bcnj.d());
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new IllegalStateException("illegal position for attribute");
+    }
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "";
+    }
+    if (str.length() == 0)
+    {
+      paramString1 = "";
+      this.jdField_a_of_type_JavaIoBufferedWriter.write(32);
+      if (paramString1.length() != 0)
+      {
+        this.jdField_a_of_type_JavaIoBufferedWriter.write(paramString1);
+        this.jdField_a_of_type_JavaIoBufferedWriter.write(58);
+      }
+      this.jdField_a_of_type_JavaIoBufferedWriter.write(paramString2);
+      this.jdField_a_of_type_JavaIoBufferedWriter.write(61);
+      if (paramString3.indexOf('"') != -1) {
+        break label142;
+      }
+    }
+    label142:
+    for (int i = 34;; i = 39)
+    {
+      this.jdField_a_of_type_JavaIoBufferedWriter.write(i);
+      a(paramString3, i);
+      this.jdField_a_of_type_JavaIoBufferedWriter.write(i);
+      return this;
+      paramString1 = a(str, false, true);
+      break;
+    }
+  }
+  
+  public void cdsect(String paramString)
+  {
+    a(false);
+    paramString = paramString.replace("]]>", "]]]]><![CDATA[>").toCharArray();
+    int m = paramString.length;
+    int j = 0;
+    if (j < m)
+    {
+      int i = paramString[j];
+      if (((i >= 32) && (i <= 55295)) || (i == 9) || (i == 10) || (i == 13) || ((i >= 57344) && (i <= 65533))) {}
+      for (int k = 1;; k = 0)
+      {
+        if (k == 0) {
+          a(i);
+        }
+        j += 1;
+        break;
+      }
+    }
+    this.jdField_a_of_type_JavaIoBufferedWriter.write("<![CDATA[");
+    this.jdField_a_of_type_JavaIoBufferedWriter.write(paramString, 0, paramString.length);
+    this.jdField_a_of_type_JavaIoBufferedWriter.write("]]>");
+  }
+  
+  public void comment(String paramString)
+  {
+    a(false);
+    this.jdField_a_of_type_JavaIoBufferedWriter.write("<!--");
+    this.jdField_a_of_type_JavaIoBufferedWriter.write(paramString);
+    this.jdField_a_of_type_JavaIoBufferedWriter.write("-->");
+  }
+  
+  public void docdecl(String paramString)
+  {
+    this.jdField_a_of_type_JavaIoBufferedWriter.write("<!DOCTYPE");
+    this.jdField_a_of_type_JavaIoBufferedWriter.write(paramString);
+    this.jdField_a_of_type_JavaIoBufferedWriter.write(">");
+  }
+  
+  public void endDocument()
+  {
+    while (this.jdField_b_of_type_Int > 0) {
+      endTag(this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_b_of_type_Int * 3 - 3)], this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_b_of_type_Int * 3 - 1)]);
+    }
+    flush();
+  }
+  
+  public XmlSerializer endTag(String paramString1, String paramString2)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_b_of_type_Int -= 1;
+    }
+    if (((paramString1 == null) && (this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_b_of_type_Int * 3)] != null)) || ((paramString1 != null) && (!paramString1.equals(this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_b_of_type_Int * 3)]))) || (!this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_b_of_type_Int * 3 + 2)].equals(paramString2))) {
+      throw new IllegalArgumentException("</{" + paramString1 + "}" + paramString2 + "> does not match start");
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      a(true);
+      this.jdField_b_of_type_Int -= 1;
     }
     for (;;)
     {
-      QLog.d("DarkModeManager", 1, "closedNightMode is called, will set themeID=" + (String)localObject);
-      ThemeSwitcher.a((String)localObject, "202", parambdpx);
+      this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int + 1)] = this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int];
+      return this;
+      if (this.jdField_a_of_type_ArrayOfBoolean[(this.jdField_b_of_type_Int + 1)] != 0)
+      {
+        this.jdField_a_of_type_JavaIoBufferedWriter.write("\r\n");
+        int i = 0;
+        while (i < this.jdField_b_of_type_Int)
+        {
+          this.jdField_a_of_type_JavaIoBufferedWriter.write("  ");
+          i += 1;
+        }
+      }
+      this.jdField_a_of_type_JavaIoBufferedWriter.write("</");
+      paramString1 = this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_b_of_type_Int * 3 + 1)];
+      if (paramString1.length() != 0)
+      {
+        this.jdField_a_of_type_JavaIoBufferedWriter.write(paramString1);
+        this.jdField_a_of_type_JavaIoBufferedWriter.write(58);
+      }
+      this.jdField_a_of_type_JavaIoBufferedWriter.write(paramString2);
+      this.jdField_a_of_type_JavaIoBufferedWriter.write(62);
+    }
+  }
+  
+  public void entityRef(String paramString)
+  {
+    a(false);
+    this.jdField_a_of_type_JavaIoBufferedWriter.write(38);
+    this.jdField_a_of_type_JavaIoBufferedWriter.write(paramString);
+    this.jdField_a_of_type_JavaIoBufferedWriter.write(59);
+  }
+  
+  public void flush()
+  {
+    a(false);
+    this.jdField_a_of_type_JavaIoBufferedWriter.flush();
+  }
+  
+  public int getDepth()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_b_of_type_Int + 1;
+    }
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public boolean getFeature(String paramString)
+  {
+    if ("http://xmlpull.org/v1/doc/features.html#indent-output".equals(paramString)) {
+      return this.jdField_a_of_type_ArrayOfBoolean[this.jdField_b_of_type_Int];
+    }
+    return false;
+  }
+  
+  public String getName()
+  {
+    if (getDepth() == 0) {
+      return null;
+    }
+    return this.jdField_a_of_type_ArrayOfJavaLangString[(getDepth() * 3 - 1)];
+  }
+  
+  public String getNamespace()
+  {
+    if (getDepth() == 0) {
+      return null;
+    }
+    return this.jdField_a_of_type_ArrayOfJavaLangString[(getDepth() * 3 - 3)];
+  }
+  
+  public String getPrefix(String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      paramString = a(paramString, false, paramBoolean);
+      return paramString;
+    }
+    catch (IOException paramString)
+    {
+      throw new RuntimeException(paramString.toString());
+    }
+  }
+  
+  public Object getProperty(String paramString)
+  {
+    throw new RuntimeException("Unsupported property");
+  }
+  
+  public void ignorableWhitespace(String paramString)
+  {
+    text(paramString);
+  }
+  
+  public void processingInstruction(String paramString)
+  {
+    a(false);
+    this.jdField_a_of_type_JavaIoBufferedWriter.write("<?");
+    this.jdField_a_of_type_JavaIoBufferedWriter.write(paramString);
+    this.jdField_a_of_type_JavaIoBufferedWriter.write("?>");
+  }
+  
+  public void setFeature(String paramString, boolean paramBoolean)
+  {
+    if ("http://xmlpull.org/v1/doc/features.html#indent-output".equals(paramString))
+    {
+      this.jdField_a_of_type_ArrayOfBoolean[this.jdField_b_of_type_Int] = paramBoolean;
       return;
-      localObject = bdpw.a(b());
-      String str = ((Bundle)localObject).getString("themeID");
-      QLog.d("DarkModeManager", 1, "closedNightMode, pre themeID=" + str + ",version=" + ((Bundle)localObject).getString("version"));
-      localObject = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject = "1000";
+    }
+    throw new RuntimeException("Unsupported Feature");
+  }
+  
+  public void setOutput(OutputStream paramOutputStream, String paramString)
+  {
+    if (paramOutputStream == null) {
+      throw new IllegalArgumentException("os == null");
+    }
+    if (paramString == null) {}
+    for (paramOutputStream = new OutputStreamWriter(paramOutputStream);; paramOutputStream = new OutputStreamWriter(paramOutputStream, paramString))
+    {
+      setOutput(paramOutputStream);
+      this.jdField_a_of_type_JavaLangString = paramString;
+      if ((paramString != null) && (paramString.toLowerCase(Locale.US).startsWith("utf"))) {
+        this.jdField_b_of_type_Boolean = true;
+      }
+      return;
+    }
+  }
+  
+  public void setOutput(Writer paramWriter)
+  {
+    if ((paramWriter instanceof BufferedWriter)) {}
+    for (this.jdField_a_of_type_JavaIoBufferedWriter = ((BufferedWriter)paramWriter);; this.jdField_a_of_type_JavaIoBufferedWriter = new BufferedWriter(paramWriter, 500))
+    {
+      this.jdField_a_of_type_ArrayOfInt[0] = 2;
+      this.jdField_a_of_type_ArrayOfInt[1] = 2;
+      this.jdField_b_of_type_ArrayOfJavaLangString[0] = "";
+      this.jdField_b_of_type_ArrayOfJavaLangString[1] = "";
+      this.jdField_b_of_type_ArrayOfJavaLangString[2] = "xml";
+      this.jdField_b_of_type_ArrayOfJavaLangString[3] = "https://www.w3.org/XML/1998/namespace";
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_b_of_type_Int = 0;
+      this.jdField_b_of_type_Boolean = false;
+      return;
+    }
+  }
+  
+  public void setPrefix(String paramString1, String paramString2)
+  {
+    a(false);
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "";
+    }
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    if (str.equals(a(paramString1, true, false))) {
+      return;
+    }
+    paramString2 = this.jdField_a_of_type_ArrayOfInt;
+    int i = this.jdField_b_of_type_Int + 1;
+    int j = paramString2[i];
+    paramString2[i] = (j + 1);
+    i = j << 1;
+    if (this.jdField_b_of_type_ArrayOfJavaLangString.length < i + 1)
+    {
+      paramString2 = new String[this.jdField_b_of_type_ArrayOfJavaLangString.length + 16];
+      System.arraycopy(this.jdField_b_of_type_ArrayOfJavaLangString, 0, paramString2, 0, i);
+      this.jdField_b_of_type_ArrayOfJavaLangString = paramString2;
+    }
+    this.jdField_b_of_type_ArrayOfJavaLangString[i] = str;
+    this.jdField_b_of_type_ArrayOfJavaLangString[(i + 1)] = paramString1;
+  }
+  
+  public void setProperty(String paramString, Object paramObject)
+  {
+    throw new RuntimeException("Unsupported Property:" + paramObject);
+  }
+  
+  public void startDocument(String paramString, Boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaIoBufferedWriter.write("<?xml version='1.0' ");
+    if (paramString != null)
+    {
+      this.jdField_a_of_type_JavaLangString = paramString;
+      if (paramString.toLowerCase(Locale.US).startsWith("utf")) {
+        this.jdField_b_of_type_Boolean = true;
       }
     }
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    b = paramBoolean;
-  }
-  
-  private static void b(boolean paramBoolean1, boolean paramBoolean2, bdpx parambdpx)
-  {
-    if ((paramBoolean1) && (!paramBoolean2)) {
-      a();
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      this.jdField_a_of_type_JavaIoBufferedWriter.write("encoding='");
+      this.jdField_a_of_type_JavaIoBufferedWriter.write(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaIoBufferedWriter.write("' ");
     }
-    while ((paramBoolean1) || (!paramBoolean2)) {
+    BufferedWriter localBufferedWriter;
+    if (paramBoolean != null)
+    {
+      this.jdField_a_of_type_JavaIoBufferedWriter.write("standalone='");
+      localBufferedWriter = this.jdField_a_of_type_JavaIoBufferedWriter;
+      if (!paramBoolean.booleanValue()) {
+        break label133;
+      }
+    }
+    label133:
+    for (paramString = "yes";; paramString = "no")
+    {
+      localBufferedWriter.write(paramString);
+      this.jdField_a_of_type_JavaIoBufferedWriter.write("' ");
+      this.jdField_a_of_type_JavaIoBufferedWriter.write("?>");
       return;
     }
-    b(parambdpx);
   }
   
-  public static boolean b()
+  public XmlSerializer startTag(String paramString1, String paramString2)
   {
-    return (a()) && (c());
-  }
-  
-  private static void c()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences == null) {
-      return;
+    a(false);
+    if (this.jdField_a_of_type_ArrayOfBoolean[this.jdField_b_of_type_Int] != 0)
+    {
+      this.jdField_a_of_type_JavaIoBufferedWriter.write("\r\n");
+      i = 0;
+      while (i < this.jdField_b_of_type_Int)
+      {
+        this.jdField_a_of_type_JavaIoBufferedWriter.write("  ");
+        i += 1;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "setShownPromtFlag is called!");
+    int j = this.jdField_b_of_type_Int * 3;
+    Object localObject;
+    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < j + 3)
+    {
+      localObject = new String[this.jdField_a_of_type_ArrayOfJavaLangString.length + 12];
+      System.arraycopy(this.jdField_a_of_type_ArrayOfJavaLangString, 0, localObject, 0, j);
+      this.jdField_a_of_type_ArrayOfJavaLangString = ((String[])localObject);
     }
-    localSharedPreferences.edit().putBoolean("dialog_has_shown_key", true).apply();
+    if (paramString1 == null)
+    {
+      localObject = "";
+      if ((paramString1 != null) && (paramString1.length() == 0)) {
+        i = this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int];
+      }
+    }
+    else
+    {
+      for (;;)
+      {
+        if (i >= this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int + 1)]) {
+          break label207;
+        }
+        if ((this.jdField_b_of_type_ArrayOfJavaLangString[(i * 2)].length() == 0) && (this.jdField_b_of_type_ArrayOfJavaLangString[(i * 2 + 1)].length() != 0))
+        {
+          throw new IllegalStateException("Cannot set default namespace for elements in no namespace");
+          localObject = a(paramString1, true, true);
+          break;
+        }
+        i += 1;
+      }
+    }
+    label207:
+    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+    int i = j + 1;
+    arrayOfString[j] = paramString1;
+    this.jdField_a_of_type_ArrayOfJavaLangString[i] = localObject;
+    this.jdField_a_of_type_ArrayOfJavaLangString[(i + 1)] = paramString2;
+    this.jdField_a_of_type_JavaIoBufferedWriter.write(60);
+    if (((String)localObject).length() != 0)
+    {
+      this.jdField_a_of_type_JavaIoBufferedWriter.write((String)localObject);
+      this.jdField_a_of_type_JavaIoBufferedWriter.write(58);
+    }
+    this.jdField_a_of_type_JavaIoBufferedWriter.write(paramString2);
+    this.jdField_a_of_type_Boolean = true;
+    return this;
   }
   
-  public static boolean c()
+  public XmlSerializer text(String paramString)
   {
-    
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "getDarkModeSwitch isOpened  = " + a);
-    }
-    return a;
+    a(false);
+    this.jdField_a_of_type_ArrayOfBoolean[this.jdField_b_of_type_Int] = false;
+    a(paramString, -1);
+    return this;
   }
   
-  private static void d()
+  public XmlSerializer text(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    a("1000", "204");
-  }
-  
-  private static boolean d()
-  {
-    boolean bool = false;
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("dialog_has_shown_key", false);
-    }
-    return bool;
+    text(new String(paramArrayOfChar, paramInt1, paramInt2));
+    return this;
   }
 }
 

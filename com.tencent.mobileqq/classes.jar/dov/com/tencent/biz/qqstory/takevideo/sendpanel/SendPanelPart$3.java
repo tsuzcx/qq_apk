@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo.sendpanel;
 
-import bptk;
-import bptt;
+import bqvf;
+import bqvo;
 
 public class SendPanelPart$3
   implements Runnable
 {
-  public SendPanelPart$3(bptt parambptt) {}
+  public SendPanelPart$3(bqvo parambqvo) {}
   
   public void run()
   {
-    bptt.a(this.this$0).a(true);
+    bqvo.a(this.this$0).a(true);
   }
 }
 

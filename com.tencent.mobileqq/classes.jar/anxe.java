@@ -1,16 +1,48 @@
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.List;
 
-public abstract interface anxe
+public class anxe
+  implements anui
 {
-  public abstract void a(String paramString);
+  protected void a(List<CustomEmotionData> paramList) {}
   
-  public abstract void a(String paramString1, String paramString2);
+  protected void a(boolean paramBoolean) {}
   
-  public abstract void a(ArrayList<String> paramArrayList);
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public abstract void b(String paramString);
+  protected void b(boolean paramBoolean, Object paramObject) {}
   
-  public abstract void b(String paramString1, String paramString2);
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+    case 0: 
+      do
+      {
+        return;
+      } while (paramObject == null);
+      a(((Boolean)paramObject).booleanValue());
+      return;
+    case 1: 
+      try
+      {
+        a((ArrayList)paramObject);
+        return;
+      }
+      catch (Exception paramObject)
+      {
+        QLog.e("FavEmoRoamingObserver", 1, "onUploadReq error, ", paramObject);
+        return;
+      }
+    case 2: 
+      b(paramBoolean, paramObject);
+      return;
+    }
+    a(paramBoolean, paramObject);
+  }
 }
 
 

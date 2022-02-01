@@ -1,76 +1,16 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.panel.PokeAndEmoPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class agmr
-  implements agma
+class agmr
+  implements View.OnClickListener
 {
-  private ahrb jdField_a_of_type_Ahrb;
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  agmr(agmq paramagmq) {}
   
-  public agmr(aglu paramaglu, BaseChatPie paramBaseChatPie)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  private PokeAndEmoPanel a()
-  {
-    if (this.jdField_a_of_type_Ahrb == null) {
-      this.jdField_a_of_type_Ahrb = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-    }
-    return (PokeAndEmoPanel)this.jdField_a_of_type_Ahrb.b(23);
-  }
-  
-  private void a()
-  {
-    PokeAndEmoPanel localPokeAndEmoPanel = a();
-    if (localPokeAndEmoPanel != null) {
-      localPokeAndEmoPanel.a();
-    }
-  }
-  
-  private void b()
-  {
-    PokeAndEmoPanel localPokeAndEmoPanel = a();
-    if (localPokeAndEmoPanel != null) {
-      localPokeAndEmoPanel.c();
-    }
-  }
-  
-  private void c()
-  {
-    PokeAndEmoPanel localPokeAndEmoPanel = a();
-    if (localPokeAndEmoPanel != null)
-    {
-      localPokeAndEmoPanel.b();
-      aheh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), aheh.a);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 9: 
-    case 11: 
-    case 12: 
-    default: 
-      return;
-    case 8: 
-      a();
-      return;
-    case 10: 
-      b();
-      return;
-    }
-    c();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 8, 10, 13 };
+    this.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

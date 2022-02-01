@@ -1,14 +1,28 @@
+import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
+
 public class zmj
+  implements blmh
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  String c;
-  public String d;
-  String e;
-  public String f;
-  public String g;
+  public zmj(ScrollFrameSelectBar paramScrollFrameSelectBar) {}
+  
+  public void onScrollStateChanged(int paramInt)
+  {
+    yuk.a("Q.qqstory.frameWidget.ScrollFrameSelectBar", "onScrollStateChanged:%s", Integer.valueOf(paramInt));
+    switch (paramInt)
+    {
+    default: 
+    case 4098: 
+    case 4099: 
+      do
+      {
+        return;
+      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
+      ScrollFrameSelectBar.a(this.a).c();
+      return;
+    }
+    this.a.c();
+  }
 }
 
 

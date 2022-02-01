@@ -1,12 +1,17 @@
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
-public class azft
+class azft
+  extends azhk
 {
-  public int a;
-  public String a;
-  public ArrayList<azfu> a;
-  public String b;
-  public String c;
+  azft(azfn paramazfn) {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountPanel", 2, "onBatteryChanged updateOnlineStatusItem");
+    }
+    azfn.a(this.a).b();
+  }
 }
 
 

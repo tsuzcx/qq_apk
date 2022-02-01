@@ -1,8 +1,26 @@
-import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public abstract interface bnxq
+class bnxq
+  implements View.OnTouchListener
 {
-  public abstract void a(NodeItem paramNodeItem);
+  bnxq(bnxm parambnxm) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.a.d();
+      return true;
+    }
+    if (paramMotionEvent.getAction() == 4)
+    {
+      this.a.d();
+      return true;
+    }
+    return paramView.onTouchEvent(paramMotionEvent);
+  }
 }
 
 

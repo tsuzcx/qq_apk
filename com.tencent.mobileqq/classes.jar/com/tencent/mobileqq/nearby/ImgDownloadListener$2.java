@@ -2,21 +2,21 @@ package com.tencent.mobileqq.nearby;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import axbq;
-import bctj;
-import bgnt;
+import axuh;
+import bdmc;
+import bhnv;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class ImgDownloadListener$2
   implements Runnable
 {
-  public ImgDownloadListener$2(axbq paramaxbq, int paramInt) {}
+  public ImgDownloadListener$2(axuh paramaxuh, int paramInt) {}
   
   public void run()
   {
-    long l = SystemClock.elapsedRealtime() - axbq.a(this.this$0);
-    Object localObject2 = bgnt.a(axbq.a(this.this$0));
+    long l = SystemClock.elapsedRealtime() - axuh.a(this.this$0);
+    Object localObject2 = bhnv.a(axuh.a(this.this$0));
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = "wifi";
@@ -25,8 +25,8 @@ public class ImgDownloadListener$2
     ((HashMap)localObject2).put("errorCode", String.valueOf(this.a));
     ((HashMap)localObject2).put("costTime", String.valueOf(l));
     ((HashMap)localObject2).put("apn", localObject1);
-    ((HashMap)localObject2).put("param_NetType", bgnt.a(null) + "");
-    bctj.a(axbq.a(this.this$0)).a("", axbq.a(this.this$0), false, l, 0L, (HashMap)localObject2, "", true);
+    ((HashMap)localObject2).put("param_NetType", bhnv.a(null) + "");
+    bdmc.a(axuh.a(this.this$0)).a("", axuh.a(this.this$0), false, l, 0L, (HashMap)localObject2, "", true);
     if (QLog.isColorLevel()) {
       QLog.d("ImgDownloadListener", 2, "onFileDownloadFailed, errorCode=" + this.a);
     }

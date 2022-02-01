@@ -1,43 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
-class sni
-  extends Handler
+public class sni
+  implements MessageQueue.IdleHandler
 {
-  sni(snh paramsnh, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public sni(FastWebActivity paramFastWebActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean queueIdle()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      do
-      {
-        return;
-        this.a.a.getGlobalVisibleRect(snh.a(this.a));
-      } while (!oqj.a(snh.a(this.a)));
-      if (!this.a.g) {
-        break;
-      }
-      if (this.a.f)
-      {
-        snh.a(this.a, this.a.a);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w("ReadInJoyBaseAdapter", 2, "MSG_FOR_CHECK_PLAYAREA, 平移转场动画未做完，不触发自动播放");
-    return;
-    snh.a(this.a, this.a.a);
+    FastWebActivity.a(this.a, this.a.a);
+    return false;
   }
 }
 

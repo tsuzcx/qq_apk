@@ -1,27 +1,14 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-
 public class alxi
-  implements bhgn
 {
-  public alxi(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void a(int paramInt)
+  public alxi(int paramInt, String paramString1, String paramString2)
   {
-    if (paramInt == 1)
-    {
-      this.a.a.setVisibility(8);
-      this.a.b.setImageResource(2130846117);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
-      }
-      return;
-      this.a.b.setImageResource(2130846116);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

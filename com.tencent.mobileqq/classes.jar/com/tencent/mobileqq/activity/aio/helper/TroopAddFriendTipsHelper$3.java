@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import anwd;
+import aoip;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 
@@ -11,13 +11,13 @@ class TroopAddFriendTipsHelper$3
   
   public void run()
   {
-    anwd localanwd = (anwd)TroopAddFriendTipsHelper.a(this.this$0).a(20);
+    aoip localaoip = (aoip)TroopAddFriendTipsHelper.a(this.this$0).a(20);
     if (this.jdField_a_of_type_Boolean)
     {
-      localanwd.a().c(this.jdField_a_of_type_JavaLangString);
+      localaoip.a().c(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    localanwd.a().d(this.jdField_a_of_type_JavaLangString);
+    localaoip.a().d(this.jdField_a_of_type_JavaLangString);
   }
 }
 

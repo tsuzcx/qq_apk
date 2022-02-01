@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.pic;
 
-import ayxi;
-import ayyl;
+import azpw;
+import azqy;
 
 class PresendPicMgr$PresendRunnable
   implements Runnable
 {
-  private ayyl a;
+  private azqy a;
   
-  public PresendPicMgr$PresendRunnable(PresendPicMgr paramPresendPicMgr, ayyl paramayyl)
+  public PresendPicMgr$PresendRunnable(PresendPicMgr paramPresendPicMgr, azqy paramazqy)
   {
-    this.a = paramayyl;
+    this.a = paramazqy;
   }
   
   public void run()
   {
-    ayxi.a("PresendPicMgr", "PresendRunnable.run", "PresendReq is " + this.a);
+    azpw.a("PresendPicMgr", "PresendRunnable.run", "PresendReq is " + this.a);
     this.a.a();
   }
 }

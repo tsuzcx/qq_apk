@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import android.os.Build.VERSION;
-import anhk;
-import bdzx;
+import antf;
+import beyq;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.qphone.base.util.QLog;
@@ -25,9 +25,9 @@ class CleanCache$1
         CleanCache.a(this.this$0, this.a);
         CleanCache.a(this.this$0);
         File[] arrayOfFile = new File[3];
-        arrayOfFile[0] = new File(anhk.ba + "photo");
-        arrayOfFile[1] = new File(anhk.ba + "ptv_template");
-        arrayOfFile[2] = new File(anhk.bL + File.separator + "_dynamic");
+        arrayOfFile[0] = new File(antf.ba + "photo");
+        arrayOfFile[1] = new File(antf.ba + "ptv_template");
+        arrayOfFile[2] = new File(antf.bL + File.separator + "_dynamic");
         int k = arrayOfFile.length;
         j = 0;
         if (i < k)
@@ -41,12 +41,12 @@ class CleanCache$1
         if (Build.VERSION.SDK_INT >= 21) {
           continue;
         }
-        i += CleanCache.a(this.this$0, bdzx.a, 2000, 500);
+        i += CleanCache.a(this.this$0, beyq.a, 2000, 500);
         if (QLog.isColorLevel()) {
           QLog.d("QQInitHandler", 2, "onCleanCache. delete " + i + " cache file(s)");
         }
         this.this$0.e();
-        this.this$0.b();
+        this.this$0.d();
         CleanCache.b(this.this$0);
         CleanCache.c(this.this$0);
       }
@@ -58,7 +58,7 @@ class CleanCache$1
       }
       this.this$0.a.notifyUI(40001, true, null);
       return;
-      j = CleanCache.a(this.this$0, bdzx.a, 5000, 2000);
+      j = CleanCache.a(this.this$0, beyq.a, 5000, 2000);
       i += j;
     }
   }

@@ -1,19 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class wxk
-  implements wld<wxl, wxm>
+  implements bizc
 {
+  public wxk(StoryMsgNodeFrameLayout paramStoryMsgNodeFrameLayout) {}
+  
   public void a(String paramString)
   {
-    paramString = new wxl(this, paramString);
-    wlb.a().a(paramString, this);
-  }
-  
-  public void a(@NonNull wxl paramwxl, @Nullable wxm paramwxm, @NonNull ErrorMessage paramErrorMessage)
-  {
-    new wxn(paramErrorMessage, paramwxl.b);
+    this.a.a.setVisibility(4);
   }
 }
 

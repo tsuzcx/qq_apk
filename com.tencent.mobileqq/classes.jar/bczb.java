@@ -1,19 +1,43 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.media.Image;
+import android.media.Image.Plane;
+import android.media.ImageReader;
+import android.media.ImageReader.OnImageAvailableListener;
+import android.os.Handler;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer;
+import java.nio.ByteBuffer;
 
-class bczb
+public class bczb
+  implements ImageReader.OnImageAvailableListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
-  String jdField_a_of_type_JavaLangString;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  String jdField_b_of_type_JavaLangString;
-  String c;
+  public bczb(Camera2Control paramCamera2Control) {}
   
-  bczb(bcyz parambcyz) {}
+  public void onImageAvailable(ImageReader paramImageReader)
+  {
+    try
+    {
+      bczm.a(1, "[Camera2]Image Capture cost:" + (float)(System.currentTimeMillis() - Camera2Control.a(this.a)) / 1000.0F);
+      bczl.a(2, Camera2Control.a(this.a).a * Camera2Control.a(this.a).b, System.currentTimeMillis() - Camera2Control.a(this.a));
+      paramImageReader = paramImageReader.acquireNextImage();
+      if (paramImageReader != null)
+      {
+        ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
+        byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
+        localByteBuffer.get(arrayOfByte);
+        if ((Camera2Control.a(this.a) != null) && (Camera2Control.a(this.a) != null))
+        {
+          Camera2Control.a(this.a).a = Camera2Control.a(this.a).a;
+          Camera2Control.a(this.a).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.a)));
+        }
+        paramImageReader.close();
+      }
+      return;
+    }
+    catch (Exception paramImageReader)
+    {
+      bczm.a(1, "[Camera2] onImageAvailable mImageReader exception:" + paramImageReader);
+    }
+  }
 }
 
 

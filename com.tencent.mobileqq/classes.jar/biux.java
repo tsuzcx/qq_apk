@@ -1,8 +1,15 @@
-import android.content.ContentValues;
+import com.tencent.mobileqq.widget.AdaptiveLayout;
 
-public abstract class biux
+public class biux
 {
-  public abstract void writeTo(ContentValues paramContentValues);
+  public int a;
+  public int b;
+  
+  public biux(AdaptiveLayout paramAdaptiveLayout, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

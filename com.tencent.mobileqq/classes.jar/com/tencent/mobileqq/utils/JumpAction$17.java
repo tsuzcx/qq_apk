@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.utils;
 
 import android.text.TextUtils;
-import bgku;
-import bgmg;
-import bgmp;
+import bhkv;
+import bhmi;
+import bhmr;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class JumpAction$17
   implements Runnable
 {
-  public JumpAction$17(bgmp parambgmp, String paramString) {}
+  public JumpAction$17(bhmr parambhmr, String paramString) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class JumpAction$17
       String str = URLDecoder.decode(arrayOfString[i]);
       if (!TextUtils.isEmpty(str))
       {
-        str = bgmg.a(this.this$0.jdField_a_of_type_AndroidContentContext, str, "opensdk_tmp");
+        str = bhmi.a(this.this$0.jdField_a_of_type_AndroidContentContext, str, "opensdk_tmp");
         if (!TextUtils.isEmpty(str))
         {
           ((StringBuffer)localObject).append(URLEncoder.encode(str));
@@ -38,9 +38,9 @@ public class JumpAction$17
     }
     try
     {
-      localObject = new String(bgku.encode(((StringBuffer)localObject).toString().getBytes("UTF-8"), 0));
+      localObject = new String(bhkv.encode(((StringBuffer)localObject).toString().getBytes("UTF-8"), 0));
       this.this$0.jdField_a_of_type_JavaUtilHashMap.put("image_url", localObject);
-      bgmp.a(this.this$0, false);
+      bhmr.a(this.this$0, false);
       return;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)

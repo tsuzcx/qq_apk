@@ -1,15 +1,24 @@
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieOnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aath
-  implements LottieOnCompositionLoadedListener
+class aath
+  extends aaty
 {
-  public aath(TroopGiftPanel paramTroopGiftPanel, aasl paramaasl) {}
-  
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  aath(aatd paramaatd, aatl paramaatl, String paramString)
   {
-    TroopGiftPanel.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, paramLottieComposition, this.jdField_a_of_type_Aasl);
+    super(paramaatd);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "splitAudio end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "splitAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Aatd.a));
+      this.jdField_a_of_type_Aatd.a = System.currentTimeMillis();
+    }
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Aatl.a(this.jdField_a_of_type_JavaLangString, false, "splitAudio done.");
+    }
   }
 }
 

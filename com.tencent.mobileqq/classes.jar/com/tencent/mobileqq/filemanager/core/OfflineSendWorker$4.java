@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aszn;
-import atcv;
-import atcx;
-import atdm;
-import atdy;
-import atet;
-import atgz;
-import atjh;
+import atri;
+import atup;
+import atur;
+import atvg;
+import atvs;
+import atwn;
+import atyt;
+import aubb;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -17,29 +17,29 @@ import java.util.List;
 public class OfflineSendWorker$4
   implements Runnable
 {
-  public OfflineSendWorker$4(atet paramatet, aszn paramaszn, boolean paramBoolean1, String paramString, List paramList1, List paramList2, int paramInt, boolean paramBoolean2) {}
+  public OfflineSendWorker$4(atwn paramatwn, atri paramatri, boolean paramBoolean1, String paramString, List paramList1, List paramList2, int paramInt, boolean paramBoolean2) {}
   
   public void run()
   {
-    QLog.i("OfflineSendWorker<FileAssistant>", 1, "nSessionID[" + String.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "] onUpdateSendOfflineFile,retCode[" + String.valueOf(this.jdField_a_of_type_Aszn.jdField_a_of_type_Int) + "] bUseHttps:" + this.jdField_a_of_type_Boolean + " httpsDomain:" + this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_Aszn.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Aszn.jdField_a_of_type_JavaLangString.length() > 0))
+    QLog.i("OfflineSendWorker<FileAssistant>", 1, "nSessionID[" + String.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "] onUpdateSendOfflineFile,retCode[" + String.valueOf(this.jdField_a_of_type_Atri.jdField_a_of_type_Int) + "] bUseHttps:" + this.jdField_a_of_type_Boolean + " httpsDomain:" + this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Atri.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Atri.jdField_a_of_type_JavaLangString.length() > 0))
     {
-      QLog.e("OfflineSendWorker<FileAssistant>", 1, "id[" + String.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "] will show taost, retCode[" + String.valueOf(this.jdField_a_of_type_Aszn.jdField_a_of_type_Int) + "], retMsg:" + this.jdField_a_of_type_Aszn.jdField_a_of_type_JavaLangString);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 4, null, this.jdField_a_of_type_Aszn.jdField_a_of_type_Int, this.jdField_a_of_type_Aszn.jdField_a_of_type_JavaLangString);
+      QLog.e("OfflineSendWorker<FileAssistant>", 1, "id[" + String.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "] will show taost, retCode[" + String.valueOf(this.jdField_a_of_type_Atri.jdField_a_of_type_Int) + "], retMsg:" + this.jdField_a_of_type_Atri.jdField_a_of_type_JavaLangString);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 4, null, this.jdField_a_of_type_Atri.jdField_a_of_type_Int, this.jdField_a_of_type_Atri.jdField_a_of_type_JavaLangString);
     }
-    if ((this.jdField_a_of_type_Aszn.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_Aszn.jdField_a_of_type_ArrayOfByte.length > 0))
+    if ((this.jdField_a_of_type_Atri.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_Atri.jdField_a_of_type_ArrayOfByte.length > 0))
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid = new String(this.jdField_a_of_type_Aszn.jdField_a_of_type_ArrayOfByte);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bUseMediaPlatform = this.jdField_a_of_type_Aszn.jdField_b_of_type_Boolean;
-      if ((!this.jdField_a_of_type_Aszn.jdField_a_of_type_Boolean) || ((!this.jdField_a_of_type_Aszn.jdField_b_of_type_Boolean) && (this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize > 104857600L))) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid = new String(this.jdField_a_of_type_Atri.jdField_a_of_type_ArrayOfByte);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bUseMediaPlatform = this.jdField_a_of_type_Atri.jdField_b_of_type_Boolean;
+      if ((!this.jdField_a_of_type_Atri.jdField_a_of_type_Boolean) || ((!this.jdField_a_of_type_Atri.jdField_b_of_type_Boolean) && (this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize > 104857600L))) {
         break label480;
       }
       this.this$0.jdField_b_of_type_Boolean = true;
-      QLog.d("OfflineSendWorker<FileAssistant>", 1, "=_= ^! nSessionID[" + String.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "] onUpdateSendOfflineFile: miaochuan bUseMediaPlatform " + this.jdField_a_of_type_Aszn.jdField_b_of_type_Boolean);
-      if (this.jdField_a_of_type_Aszn.jdField_b_of_type_Boolean) {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc = this.jdField_a_of_type_Aszn.f;
+      QLog.d("OfflineSendWorker<FileAssistant>", 1, "=_= ^! nSessionID[" + String.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "] onUpdateSendOfflineFile: miaochuan bUseMediaPlatform " + this.jdField_a_of_type_Atri.jdField_b_of_type_Boolean);
+      if (this.jdField_a_of_type_Atri.jdField_b_of_type_Boolean) {
+        this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc = this.jdField_a_of_type_Atri.f;
       }
-      atet.a(this.this$0);
+      atwn.a(this.this$0);
     }
     label480:
     label1380:
@@ -54,42 +54,42 @@ public class OfflineSendWorker$4
       if (QLog.isColorLevel()) {
         QLog.e("##########", 2, "已收到CS包,准备开始上传任务,nSessionID[" + String.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "]");
       }
-      if ((atgz.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean))
+      if ((atyt.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean))
       {
         this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.add(0, "14.17.29.27:" + this.jdField_a_of_type_Aszn.jdField_a_of_type_Short);
+        this.jdField_a_of_type_JavaUtilList.add(0, "14.17.29.27:" + this.jdField_a_of_type_Atri.jdField_a_of_type_Short);
       }
-      String str = HexUtil.bytes2HexStr(this.jdField_a_of_type_Aszn.jdField_b_of_type_ArrayOfByte);
+      String str = HexUtil.bytes2HexStr(this.jdField_a_of_type_Atri.jdField_b_of_type_ArrayOfByte);
       if (this.this$0.d())
       {
         QLog.i("OfflineSendWorker<FileAssistant>", 1, "^_^ nSessionID[" + String.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "] upload file use comstom uploader");
-        this.this$0.jdField_a_of_type_Atdy = this.this$0.a(this.jdField_a_of_type_Aszn, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+        this.this$0.jdField_a_of_type_Atvs = this.this$0.a(this.jdField_a_of_type_Atri, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
       }
       for (;;)
       {
-        if (this.this$0.jdField_a_of_type_Atdy != null)
+        if (this.this$0.jdField_a_of_type_Atvs != null)
         {
-          atet.a(this.this$0, false);
-          this.this$0.jdField_a_of_type_Atdy.a(this.this$0);
-          if (!this.this$0.jdField_a_of_type_Atdy.a(0L))
+          atwn.a(this.this$0, false);
+          this.this$0.jdField_a_of_type_Atvs.a(this.this$0);
+          if (!this.this$0.jdField_a_of_type_Atvs.a(0L))
           {
-            atet.a(this.this$0, 1005);
+            atwn.a(this.this$0, 1005);
             this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 15, null, 0, "");
-            atet.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, 9045, "sendFile error");
-            atet.b(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, 9045, "sendFile error");
+            atwn.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, 9045, "sendFile error");
+            atwn.b(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, 9045, "sendFile error");
             if (!QLog.isColorLevel()) {
               break;
             }
             QLog.e("OfflineSendWorker<FileAssistant>", 2, "=_= ^! nSessionID[" + this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "],sendFile return false");
             return;
-            if (1 == this.jdField_a_of_type_Aszn.d)
+            if (1 == this.jdField_a_of_type_Atri.d)
             {
-              str = "/?ver=2&ukey=" + str + "&filekey=" + atet.a(this.this$0) + "&filesize=" + this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
+              str = "/?ver=2&ukey=" + str + "&filekey=" + atwn.a(this.this$0) + "&filesize=" + this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
               this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strServerPath = ("http://" + (String)this.jdField_a_of_type_JavaUtilList.get(0) + str);
-              this.this$0.jdField_a_of_type_Atdy = atdm.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), this.jdField_a_of_type_JavaUtilList, str);
+              this.this$0.jdField_a_of_type_Atvs = atvg.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), this.jdField_a_of_type_JavaUtilList, str);
               continue;
             }
-            if (2 == this.jdField_a_of_type_Aszn.d)
+            if (2 == this.jdField_a_of_type_Atri.d)
             {
               if (this.jdField_a_of_type_Boolean)
               {
@@ -102,31 +102,31 @@ public class OfflineSendWorker$4
               for (this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.svrPathIpType = 2;; this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.svrPathIpType = 1)
               {
                 this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bombData = str.getBytes();
-                if (this.jdField_a_of_type_Aszn.c != null)
+                if (this.jdField_a_of_type_Atri.c != null)
                 {
-                  this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA = atjh.a(this.jdField_a_of_type_Aszn.c);
+                  this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA = aubb.a(this.jdField_a_of_type_Atri.c);
                   this.this$0.j();
                 }
-                this.this$0.jdField_a_of_type_Atdy = atdm.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), str, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA, this.jdField_a_of_type_JavaUtilList, "/ftn_handler", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+                this.this$0.jdField_a_of_type_Atvs = atvg.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), str, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA, this.jdField_a_of_type_JavaUtilList, "/ftn_handler", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
                 break;
                 this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strServerPath = ("http://" + (String)this.jdField_a_of_type_JavaUtilList.get(0) + "/ftn_handler");
                 break label1183;
               }
             }
-            QLog.w("OfflineSendWorker<FileAssistant>", 1, "onUpdateSendOfflineFile httpsvrApiVer[" + this.jdField_a_of_type_Aszn.d + "] not recognized");
+            QLog.w("OfflineSendWorker<FileAssistant>", 1, "onUpdateSendOfflineFile httpsvrApiVer[" + this.jdField_a_of_type_Atri.d + "] not recognized");
             continue;
           }
           this.this$0.b(System.currentTimeMillis());
           return;
         }
       }
-      atet.a(this.this$0, 1005);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 15, null, this.jdField_a_of_type_Aszn.jdField_a_of_type_Int, this.jdField_a_of_type_Aszn.jdField_a_of_type_JavaLangString);
-      atet.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, 9045, "upload param error");
-      atet.b(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, 9045, "upload param error");
+      atwn.a(this.this$0, 1005);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 15, null, this.jdField_a_of_type_Atri.jdField_a_of_type_Int, this.jdField_a_of_type_Atri.jdField_a_of_type_JavaLangString);
+      atwn.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, 9045, "upload param error");
+      atwn.b(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, 9045, "upload param error");
     } while (!QLog.isColorLevel());
     label1183:
-    QLog.e("OfflineSendWorker<FileAssistant>", 2, "=_= ^! nSessionID[" + this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "],retCode[" + this.jdField_a_of_type_Aszn.jdField_a_of_type_Int + "]");
+    QLog.e("OfflineSendWorker<FileAssistant>", 2, "=_= ^! nSessionID[" + this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "],retCode[" + this.jdField_a_of_type_Atri.jdField_a_of_type_Int + "]");
   }
 }
 

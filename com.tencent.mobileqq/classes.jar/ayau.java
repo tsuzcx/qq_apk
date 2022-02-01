@@ -1,59 +1,36 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.widget.AbsListView;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
 
-class ayau
-  implements bkhe
+public class ayau
+  implements View.OnKeyListener
 {
-  private ayau(ayar paramayar) {}
+  public ayau(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    bkhe localbkhe = this.a.jdField_a_of_type_Ayaq.a();
-    if (localbkhe != null) {
-      localbkhe.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    int j = 0;
-    int i;
-    Object localObject;
-    if ((this.a.jdField_a_of_type_Int == 2) && (paramInt != 2))
-    {
-      i = 1;
-      if (i == 0) {
-        break label136;
+    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0)) {
+      if (ChooseInterestTagActivity.a(this.a).getText() == null)
+      {
+        paramView = "";
+        if (TextUtils.isEmpty(paramView))
+        {
+          ChooseInterestTagActivity.a(this.a).fullScroll(66);
+          ChooseInterestTagActivity.a(this.a, ChooseInterestTagActivity.d(this.a) + 1);
+        }
       }
-      localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this.a);
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      if (!this.a.b) {
-        break label129;
-      }
-      i = j;
-      label66:
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, i);
-      this.a.jdField_a_of_type_Boolean = true;
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Int = paramInt;
-      localObject = this.a.jdField_a_of_type_Ayaq.a();
-      if (localObject != null) {
-        ((bkhe)localObject).onScrollStateChanged(paramAbsListView, paramInt);
-      }
-      return;
-      i = 0;
+      return false;
+      paramView = ChooseInterestTagActivity.a(this.a).getText().toString();
       break;
-      label129:
-      i = 550;
-      break label66;
-      label136:
-      if (paramInt == 2)
-      {
-        this.a.jdField_a_of_type_Boolean = false;
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      if ((paramInt == 66) && (paramKeyEvent.getAction() == 0)) {
+        blgx.b(ChooseInterestTagActivity.a(this.a));
       }
     }
   }

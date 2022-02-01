@@ -1,12 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.FrameLayout;
 
 class vvk
-  implements DialogInterface.OnClickListener
+  implements vvs
 {
-  vvk(vvi paramvvi) {}
+  vvk(vvh paramvvh, vvs paramvvs) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    if (vvh.a(this.jdField_a_of_type_Vvh) != null) {
+      vvh.a(this.jdField_a_of_type_Vvh).a(3);
+    }
+    vvh.a(this.jdField_a_of_type_Vvh).setAlpha(0.0F);
+    vvh.a(null);
+    if (this.jdField_a_of_type_Vvs != null) {
+      this.jdField_a_of_type_Vvs.a();
+    }
+  }
 }
 
 

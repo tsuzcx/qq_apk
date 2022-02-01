@@ -1,68 +1,114 @@
-import com.tencent.common.app.AppInterface;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.util.Map;
 
 public class bnpo
+  extends WebViewPlugin
+  implements binj
 {
-  private static final String a;
+  private BroadcastReceiver a = new bnpp(this);
   
-  static
+  public void a()
   {
-    jdField_a_of_type_JavaLangString = bnpo.class.getSimpleName();
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("QZoneCardPreDownload");
+    localIntentFilter.addAction("action_facade_qzone2js");
+    BaseApplication.getContext().registerReceiver(this.a, localIntentFilter);
   }
   
-  public static void a(AppInterface paramAppInterface, bnpf parambnpf, String paramString, bnpq parambnpq)
+  public void b()
   {
-    if (parambnpf == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "startDownloadMaterial is null");
-      }
-      return;
+    BaseApplication.getContext().unregisterReceiver(this.a);
+  }
+  
+  public String[] getMultiNameSpace()
+  {
+    return new String[] { "qzcardstorre", "QzAvatar", "QzFloat" };
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    if ((paramLong == 2L) && (paramString.equals(bnpl.a))) {
+      bnpl.a(this.mRuntime, null);
     }
-    b(paramAppInterface, parambnpf, paramString, parambnpq);
+    return false;
   }
   
-  private static void b(AppInterface paramAppInterface, bnpf parambnpf, String paramString, bnpq parambnpq)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((parambnpf == null) || (paramAppInterface == null)) {}
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePersonalizePlugin", 2, "handleJsRequest \n url: " + paramString1 + "\n pkgName:" + paramString2 + "\n method:" + paramString3);
+    }
+    if (bnmg.a(paramString3))
     {
-      return;
-      parambnpf.a = System.currentTimeMillis();
-      parambnpf.jdField_f_of_type_Boolean = true;
-      bdvs localbdvs = new bdvs();
-      localbdvs.jdField_a_of_type_Bdvw = new bnpp(parambnpf, paramString, parambnpq);
-      localbdvs.jdField_a_of_type_JavaLangString = parambnpf.d;
-      localbdvs.jdField_a_of_type_Int = 0;
-      if (parambnpf.jdField_f_of_type_JavaLangString == null)
-      {
-        QLog.i(jdField_a_of_type_JavaLangString, 1, "startDownloadMaterial fail, info.name is null, url:" + parambnpf.d);
-        return;
+      LocalMultiProcConfig.putBool("qzone_force_refresh", true);
+      LocalMultiProcConfig.putBool("qzone_force_refresh_passive", true);
+    }
+    if (paramString2.equals("qzcardstorre"))
+    {
+      if (paramString3.equals("closecardpreview")) {
+        return true;
       }
-      localbdvs.jdField_c_of_type_JavaLangString = new File(paramString, parambnpf.jdField_f_of_type_JavaLangString).getPath();
-      localbdvs.b = bgnt.a(bdwu.a().a());
-      localbdvs.jdField_c_of_type_Long = 60000L;
-      try
-      {
-        paramAppInterface.getNetEngine(0).a(localbdvs);
-        localbdvs.jdField_a_of_type_Bdvw.onUpdateProgeress(localbdvs, 1L, 100L);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "startDownloadMaterial url: " + parambnpf.d);
-        return;
+      if (paramString3.equals("setcardfinish")) {
+        bnpd.a(this, this.mRuntime, paramVarArgs);
       }
-      catch (Exception paramAppInterface)
+      if (paramString3.equals("downloadcard"))
+      {
+        bnpd.a(this.mRuntime, paramVarArgs);
+        return true;
+      }
+    }
+    else
+    {
+      if (!paramString2.equals("QzAvatar")) {
+        break label208;
+      }
+      if (!paramString3.equals("downloadAvatar")) {
+        break label162;
+      }
+      bnpj.b(this.mRuntime, paramVarArgs);
+    }
+    label162:
+    label208:
+    do
+    {
+      do
       {
         for (;;)
         {
-          if (QLog.isColorLevel()) {
-            paramAppInterface.printStackTrace();
+          return false;
+          if (paramString3.equals("setAvatar")) {
+            bnpj.a(this.mRuntime, paramVarArgs);
+          } else if (paramString3.equalsIgnoreCase("checkIdList")) {
+            bnpj.c(this.mRuntime, new String[0]);
           }
         }
+      } while (!paramString2.equals("QzFloat"));
+      if (paramString3.equals("downloadFloat"))
+      {
+        bnpl.a(this.mRuntime, paramVarArgs);
+        return true;
       }
-    }
+    } while (!paramString3.equals("setFloat"));
+    bnpl.b(this.mRuntime, paramVarArgs);
+    return true;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    a();
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    b();
   }
 }
 

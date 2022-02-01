@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class akbl
-  extends VasQuickUpdateManager.CallBacker
+  extends auoz
 {
-  public akbl(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public akbl(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void a(View paramView)
   {
-    if ((paramLong == 1000L) && (paramString1.equals("pendant_market_json.android.v2"))) {
-      if (paramInt1 == 0) {
-        this.a.e();
-      }
-    }
-    while ((paramLong != 23L) || (!paramString1.equals("avatarInPendant_json")) || (paramInt1 != 0)) {
+    if ((paramView.getTag() instanceof String)) {
       return;
     }
-    this.a.f();
+    paramView = (FileManagerEntity)((akfo)paramView.getTag()).a;
+    this.a.a(paramView);
   }
 }
 

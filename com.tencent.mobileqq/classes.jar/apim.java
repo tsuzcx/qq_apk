@@ -1,8 +1,20 @@
-public abstract interface apim
+import android.opengl.GLES20;
+
+class apim
+  implements aprk
 {
-  public abstract void a();
+  apim(apil paramapil) {}
   
-  public abstract void b();
+  public void a()
+  {
+    GLES20.glUniform1i(apil.a(this.a), apil.b(this.a));
+  }
+  
+  public void a(int paramInt)
+  {
+    apil.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
+    apiw.a("glGetUniformLocation uDisplayType");
+  }
 }
 
 

@@ -1,19 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
 
-class aibd
-  implements DialogInterface.OnClickListener
+public class aibd
+  implements auoj
 {
-  aibd(aiay paramaiay, boolean paramBoolean, bhtt parambhtt) {}
+  public aibd(AIOFileVideoData paramAIOFileVideoData, aksn paramaksn, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Aiay.aa = true;
-    aiay.d(this.jdField_a_of_type_Aiay, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Aiay.Z = true;
-    if ((this.jdField_a_of_type_Bhtt.a()) && (!this.jdField_a_of_type_Bhtt.b())) {
-      bcst.b(this.jdField_a_of_type_Aiay.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
+    if (AIOFileVideoData.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData))
+    {
+      AIOFileVideoData.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData, false);
+      this.jdField_a_of_type_Aksn.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.a(false));
     }
+    this.jdField_a_of_type_Aksn.b();
+    this.jdField_a_of_type_Aksn.f();
   }
 }
 

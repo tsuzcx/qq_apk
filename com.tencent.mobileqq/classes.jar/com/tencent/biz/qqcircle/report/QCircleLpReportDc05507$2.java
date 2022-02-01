@@ -12,9 +12,9 @@ import java.util.Arrays;
 import java.util.List;
 import qqcircle.QQCircleFeedBase.StReportInfoForClient;
 import qqcircle.QQCircleReport.SingleDcData;
-import vrg;
-import vri;
-import vrl;
+import vtr;
+import vtt;
+import vtw;
 
 public final class QCircleLpReportDc05507$2
   implements Runnable
@@ -23,16 +23,16 @@ public final class QCircleLpReportDc05507$2
   
   public void run()
   {
-    Object localObject = new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { vri.a("touin", this.jdField_a_of_type_JavaLangString), vri.a("actiontype", String.valueOf(this.jdField_a_of_type_Int)), vri.a("subactiontype", String.valueOf(this.jdField_b_of_type_Int)), vri.a("feedid", this.jdField_b_of_type_JavaLangString), vri.a("author_uin", this.jdField_c_of_type_JavaLangString), vri.a("play_scene", String.valueOf(this.jdField_c_of_type_Int)), vri.a("position_id", String.valueOf(this.jdField_d_of_type_Int + 1)), vri.a("feed_tag", this.jdField_d_of_type_JavaLangString), vri.a("video_tag", this.jdField_e_of_type_JavaLangString), vri.a("pic_info", this.jdField_f_of_type_JavaLangString), vri.a("item_detail", this.jdField_g_of_type_JavaLangString), vri.a("acttime", String.valueOf(System.currentTimeMillis())), vri.a("lloc", this.jdField_h_of_type_JavaLangString) }));
+    Object localObject = new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("touin", this.jdField_a_of_type_JavaLangString), vtt.a("actiontype", String.valueOf(this.jdField_a_of_type_Int)), vtt.a("subactiontype", String.valueOf(this.jdField_b_of_type_Int)), vtt.a("feedid", this.jdField_b_of_type_JavaLangString), vtt.a("author_uin", this.jdField_c_of_type_JavaLangString), vtt.a("play_scene", String.valueOf(this.jdField_c_of_type_Int)), vtt.a("position_id", String.valueOf(this.jdField_d_of_type_Int + 1)), vtt.a("feed_tag", this.jdField_d_of_type_JavaLangString), vtt.a("video_tag", this.jdField_e_of_type_JavaLangString), vtt.a("pic_info", this.jdField_f_of_type_JavaLangString), vtt.a("item_detail", this.jdField_g_of_type_JavaLangString), vtt.a("acttime", String.valueOf(System.currentTimeMillis())), vtt.a("lloc", this.jdField_h_of_type_JavaLangString) }));
     label249:
     QQCircleFeedBase.StReportInfoForClient localStReportInfoForClient;
     if (this.jdField_e_of_type_Int > -1)
     {
-      ((List)localObject).add(vri.a("page_id", String.valueOf(this.jdField_e_of_type_Int)));
+      ((List)localObject).add(vtt.a("page_id", String.valueOf(this.jdField_e_of_type_Int)));
       if (this.jdField_f_of_type_Int <= -1) {
         break label512;
       }
-      ((List)localObject).add(vri.a("fpage_id", String.valueOf(this.jdField_f_of_type_Int)));
+      ((List)localObject).add(vtt.a("fpage_id", String.valueOf(this.jdField_f_of_type_Int)));
       if (this.jdField_a_of_type_JavaUtilList != null) {
         ((List)localObject).addAll(this.jdField_a_of_type_JavaUtilList);
       }
@@ -49,7 +49,7 @@ public final class QCircleLpReportDc05507$2
       try
       {
         localStReportInfoForClient.mergeFrom(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.reportInfoForClient.get().toByteArray());
-        ((List)localObject).addAll(Arrays.asList(new FeedCloudCommon.Entry[] { vri.a("feedtype1", String.valueOf(localStReportInfoForClient.feedtype1.get())), vri.a("feedtype2", String.valueOf(localStReportInfoForClient.feedtype2.get())), vri.a("feedtype3", String.valueOf(localStReportInfoForClient.feedtype3.get())) }));
+        ((List)localObject).addAll(Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("feedtype1", String.valueOf(localStReportInfoForClient.feedtype1.get())), vtt.a("feedtype2", String.valueOf(localStReportInfoForClient.feedtype2.get())), vtt.a("feedtype3", String.valueOf(localStReportInfoForClient.feedtype3.get())) }));
         i = 1;
       }
       catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
@@ -60,24 +60,24 @@ public final class QCircleLpReportDc05507$2
         continue;
       }
       if (i == 0) {
-        ((List)localObject).addAll(Arrays.asList(new FeedCloudCommon.Entry[] { vri.a("feedtype1", String.valueOf(this.jdField_g_of_type_Int)), vri.a("feedtype2", String.valueOf(this.jdField_h_of_type_Int)) }));
+        ((List)localObject).addAll(Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("feedtype1", String.valueOf(this.jdField_g_of_type_Int)), vtt.a("feedtype2", String.valueOf(this.jdField_h_of_type_Int)) }));
       }
-      ((List)localObject).addAll(vri.a().a());
-      localObject = vri.a(vrg.a(), (List)localObject, null, vri.a().a(this.jdField_e_of_type_Int, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed));
-      if (vri.a().a())
+      ((List)localObject).addAll(vtt.a().a());
+      localObject = vtt.a(vtr.a(), (List)localObject, null, vtt.a().a(this.jdField_e_of_type_Int, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed));
+      if (vtt.a().a())
       {
-        vrl.a().a((QQCircleReport.SingleDcData)localObject, vrg.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
+        vtw.a().a((QQCircleReport.SingleDcData)localObject, vtr.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
         return;
-        ((List)localObject).add(vri.a("page_id", "0"));
+        ((List)localObject).add(vtt.a("page_id", "0"));
         break;
-        ((List)localObject).add(vri.a("fpage_id", "0"));
+        ((List)localObject).add(vtt.a("fpage_id", "0"));
         break label249;
         label539:
         i = 0;
         continue;
       }
       QLog.w("QCircleReporter", 1, "QCircleLpReportDc05507 report miss Session: actiontype:" + this.jdField_a_of_type_Int + ",subActionType:" + this.jdField_b_of_type_Int + ",add Miss Session report cache list");
-      vrl.a().b((QQCircleReport.SingleDcData)localObject);
+      vtw.a().b((QQCircleReport.SingleDcData)localObject);
       return;
       label597:
       int i = 1;

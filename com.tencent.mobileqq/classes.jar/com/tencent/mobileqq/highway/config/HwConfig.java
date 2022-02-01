@@ -20,18 +20,18 @@ public class HwConfig
   public static final int NET_TYPE_DEFAULT = 0;
   public static final int NET_TYPE_WIFI = 1;
   private static final long serialVersionUID = 2113693234079222598L;
-  public PBUInt32Field bdhIpv6Policy;
-  public PBUInt32Field connAttemptDelay;
-  public subcmd0x501.SubCmd0x501Rspbody.DynTimeOutConf dtConf;
-  public PBUInt32Field fmtIpv6Policy;
-  public subcmd0x501.SubCmd0x501Rspbody.IpLearnConf ipConf;
+  public PBUInt32Field bdhIpv6Policy = null;
+  public PBUInt32Field connAttemptDelay = null;
+  public subcmd0x501.SubCmd0x501Rspbody.DynTimeOutConf dtConf = null;
+  public PBUInt32Field fmtIpv6Policy = null;
+  public subcmd0x501.SubCmd0x501Rspbody.IpLearnConf ipConf = null;
   public ArrayList<EndPoint> ipList;
   public ArrayList<EndPoint> ipv6List;
   public ArrayList<HwNetSegConf> netSegConfList;
-  public subcmd0x501.SubCmd0x501Rspbody.OpenUpConf openUpConf;
-  public subcmd0x501.SubCmd0x501Rspbody.PTVConf ptvCof;
+  public subcmd0x501.SubCmd0x501Rspbody.OpenUpConf openUpConf = null;
+  public subcmd0x501.SubCmd0x501Rspbody.PTVConf ptvCof = null;
   public ArrayList<HwNetSegConf> shortVideoSegConfList;
-  public subcmd0x501.SubCmd0x501Rspbody.ShortVideoConf videoConf;
+  public subcmd0x501.SubCmd0x501Rspbody.ShortVideoConf videoConf = null;
   
   public HwConfig clone()
   {

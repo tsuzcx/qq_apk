@@ -2,8 +2,8 @@ package com.tencent.mobileqq.olympic;
 
 import android.os.Handler;
 import android.support.v4.util.SparseArrayCompat;
-import bcst;
-import bkfu;
+import bdll;
+import blgz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -51,12 +51,12 @@ public class OlympicManager$ShuayishuaReport
         localArrayList2 = new ArrayList(60);
         localArrayList3 = new ArrayList(1);
         localArrayList4 = new ArrayList(1);
-        Object localObject1 = new bkfu(60);
+        Object localObject1 = new blgz(60);
         k = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(i);
         Object localObject2 = (ArrayList)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(k);
         if (localObject2 != null)
         {
-          bcst.b(this.this$0.a, "CliOper", "", "", "0X80069C7", "0X80069C7", 0, 0, this.this$0.a.getCurrentAccountUin(), String.valueOf(((ArrayList)localObject2).size()), "", "");
+          bdll.b(this.this$0.a, "CliOper", "", "", "0X80069C7", "0X80069C7", 0, 0, this.this$0.a.getCurrentAccountUin(), String.valueOf(((ArrayList)localObject2).size()), "", "");
           localObject2 = ((ArrayList)localObject2).iterator();
           while (((Iterator)localObject2).hasNext())
           {
@@ -65,23 +65,23 @@ public class OlympicManager$ShuayishuaReport
             for (j = 1000;; j = 60000)
             {
               l = localLong.longValue() / j * j;
-              if (((bkfu)localObject1).a(l) == null) {
+              if (((blgz)localObject1).a(l) == null) {
                 break label253;
               }
-              ((bkfu)localObject1).a(l, Integer.valueOf(((Integer)((bkfu)localObject1).a(l)).intValue() + 1));
+              ((blgz)localObject1).a(l, Integer.valueOf(((Integer)((blgz)localObject1).a(l)).intValue() + 1));
               break;
             }
             label253:
-            ((bkfu)localObject1).a(l, Integer.valueOf(1));
+            ((blgz)localObject1).a(l, Integer.valueOf(1));
           }
         }
         j = 0;
-        if (j < ((bkfu)localObject1).a())
+        if (j < ((blgz)localObject1).a())
         {
           localObject2 = new OlympicServlet.ReportRecord();
-          l = ((bkfu)localObject1).a(j);
+          l = ((blgz)localObject1).a(j);
           ((OlympicServlet.ReportRecord)localObject2).time_stamp = l;
-          ((OlympicServlet.ReportRecord)localObject2).count = ((int)((Integer)((bkfu)localObject1).a(l)).intValue());
+          ((OlympicServlet.ReportRecord)localObject2).count = ((int)((Integer)((blgz)localObject1).a(l)).intValue());
           if (this.jdField_a_of_type_Int == 1) {
             localArrayList2.add(localObject2);
           }

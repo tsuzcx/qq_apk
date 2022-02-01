@@ -1,16 +1,34 @@
+import android.os.Bundle;
 import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajrs
-  extends atxe
+  implements View.OnClickListener
 {
-  public ajrs(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  public ajrs(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    bcst.b(this.a.a, "dc00898", "", "", "0X800A0BF", "0X800A0BF", 2, 0, "", "", "", "");
-    FileSearchActivity.a(this.a.getActivity(), 13, this.a.a());
+    Object localObject;
+    if ((paramView.getTag() instanceof ajpx))
+    {
+      localObject = (ajpx)paramView.getTag();
+      if (localObject != null) {
+        break label30;
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label30:
+      localObject = TroopInfoActivity.a(((ajpx)localObject).b, 4);
+      ((Bundle)localObject).putInt("t_s_f", 1002);
+      bguq.a(this.a.getActivity(), (Bundle)localObject, 2);
+    }
   }
 }
 

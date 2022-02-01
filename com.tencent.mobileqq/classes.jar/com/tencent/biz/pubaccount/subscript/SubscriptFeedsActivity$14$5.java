@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import tuv;
+import tux;
 
 public class SubscriptFeedsActivity$14$5
   implements Runnable
 {
-  public SubscriptFeedsActivity$14$5(tuv paramtuv) {}
+  public SubscriptFeedsActivity$14$5(tux paramtux) {}
   
   public void run()
   {

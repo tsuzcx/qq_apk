@@ -1,28 +1,16 @@
-import com.tencent.biz.qqcircle.requests.QCircleDoLikeRequest;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudWrite.StDoLikeRsp;
-import qqcircle.QQCircleFeedBase.StPolyLike;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalWorksFragment;
+import feedcloud.FeedCloudMeta.StUser;
 
-class vqd
-  implements zxa<FeedCloudWrite.StDoLikeRsp>
+public class vqd
+  implements Observer<FeedCloudMeta.StUser>
 {
-  vqd(vqa paramvqa, QCircleDoLikeRequest paramQCircleDoLikeRequest, int paramInt, FeedCloudMeta.StFeed paramStFeed, QQCircleFeedBase.StPolyLike paramStPolyLike1, QQCircleFeedBase.StPolyLike paramStPolyLike2) {}
+  public vqd(QCirclePersonalWorksFragment paramQCirclePersonalWorksFragment) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoLikeRsp paramStDoLikeRsp)
+  public void a(@Nullable FeedCloudMeta.StUser paramStUser)
   {
-    QLog.d(vqa.a(), 1, "onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleDoLikeRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleDoLikeRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
-    vqa.b(this.jdField_a_of_type_Vqa, true);
-    if ((paramBoolean) && (paramLong == 0L))
-    {
-      if ((!vqa.b(this.jdField_a_of_type_Vqa)) && (this.jdField_a_of_type_Int != 21)) {
-        this.jdField_a_of_type_Vqa.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Int, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike, this.b);
-      }
-      if ((this.jdField_a_of_type_Int == 22) || (this.jdField_a_of_type_Int == 21)) {
-        vqa.a(this.jdField_a_of_type_Vqa, paramStDoLikeRsp);
-      }
-    }
-    vqa.a(this.jdField_a_of_type_Vqa, true);
+    this.a.a(paramStUser);
   }
 }
 

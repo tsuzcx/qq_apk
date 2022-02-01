@@ -1,58 +1,26 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
-public class tes
-  implements teq
+class tes
+  implements raf
 {
-  private File jdField_a_of_type_JavaIoFile;
-  private String jdField_a_of_type_JavaLangString;
+  tes(ter paramter, UgcVideo paramUgcVideo, List paramList) {}
   
-  public tes(String paramString)
+  public void a(boolean paramBoolean)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("" + paramString);
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaIoFile = new File(paramString);
-  }
-  
-  public InputStream a(String paramString)
-  {
-    Object localObject = new File(this.jdField_a_of_type_JavaLangString + "/" + paramString);
-    if (((File)localObject).exists()) {
-      try
-      {
-        localObject = new FileInputStream((File)localObject);
-        return localObject;
-      }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        QLog.e("ReadMergeFile", 2, "getFile:" + paramString, localFileNotFoundException);
-      }
-    }
-    return null;
-  }
-  
-  public List<String> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    String[] arrayOfString = this.jdField_a_of_type_JavaIoFile.list();
-    if (arrayOfString != null)
+    if (paramBoolean)
     {
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        localArrayList.add(arrayOfString[i]);
-        i += 1;
-      }
+      rgo.a(this.jdField_a_of_type_Ter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo, true);
+      BridgeModule.access$1500(this.jdField_a_of_type_Ter.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_a_of_type_Ter.jdField_b_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Ter.jdField_b_of_type_JavaLangString, 0, "");
     }
-    return localArrayList;
+    for (;;)
+    {
+      QLog.i(BridgeModule.TAG, 1, "showMobileNetworkDialog, isContinue=" + paramBoolean);
+      return;
+      BridgeModule.access$1500(this.jdField_a_of_type_Ter.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_a_of_type_Ter.jdField_b_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Ter.jdField_b_of_type_JavaLangString, -2, "cancel upload by user on mobile net");
+    }
   }
 }
 

@@ -1,54 +1,153 @@
-import android.text.Spanned;
-import android.text.TextUtils;
+import android.support.annotation.Nullable;
+import java.io.File;
 
-class boqu
-  extends bpkc
+public class boqu
 {
-  boqu(boqs paramboqs, int paramInt)
+  public static final boqu a;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c = 0;
+  public String c;
+  public boolean c;
+  public int d = 0;
+  public String d;
+  public boolean d;
+  public int e;
+  public String e;
+  public boolean e;
+  public int f;
+  public String f;
+  public boolean f;
+  public int g = 0;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
+  public String o;
+  
+  static
   {
-    super(paramInt);
+    jdField_a_of_type_Boqu = a();
   }
   
-  public int a(CharSequence paramCharSequence)
+  private static boqu a()
   {
-    return 0;
+    boqu localboqu = new boqu();
+    localboqu.jdField_a_of_type_JavaLangString = "0";
+    localboqu.jdField_a_of_type_Int = 0;
+    return localboqu;
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public static boolean a(boqu paramboqu)
   {
-    Object localObject = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
-    String str1 = bfsj.b((String)localObject);
-    String str2 = this.jdField_a_of_type_Boqs.a(str1);
-    this.jdField_a_of_type_Int = (((String)localObject).length() - str1.length() + 20);
-    localObject = str2.split("\n");
-    int m = localObject.length;
-    int j = 0;
-    int i = 0;
-    if (j < m)
-    {
-      int k = localObject[j].length();
-      int n = k / 5;
-      if (k % 5 > 0) {}
-      for (k = 1;; k = 0)
-      {
-        i += k + n;
-        j += 1;
-        break;
-      }
+    if (paramboqu == null) {}
+    while ((paramboqu.jdField_a_of_type_JavaLangString != null) && (!paramboqu.jdField_a_of_type_JavaLangString.equals("0"))) {
+      return false;
     }
-    if (TextUtils.equals(paramCharSequence, "\n")) {
-      i += 1;
-    }
-    for (;;)
+    return true;
+  }
+  
+  public static boolean b(@Nullable boqu paramboqu)
+  {
+    return (paramboqu != null) && ((paramboqu.g == 0) || (paramboqu.g == 4) || (paramboqu.g == 5) || (paramboqu.g == 6) || (paramboqu.g == 7));
+  }
+  
+  public int a()
+  {
+    switch (this.d)
     {
-      if (i > boqs.a().length)
+    default: 
+      return -1;
+    case 1: 
+      return 2130844592;
+    case 2: 
+      return 2130844593;
+    case 3: 
+      return 2130844595;
+    }
+    return 2130844594;
+  }
+  
+  public String a()
+  {
+    File localFile = new File(boev.e);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return new File(localFile.getPath(), this.jdField_a_of_type_JavaLangString).getPath() + File.separator;
+  }
+  
+  public void a(boqu paramboqu)
+  {
+    if (!equals(jdField_a_of_type_Boqu))
+    {
+      this.e = paramboqu.e;
+      this.f = paramboqu.f;
+      this.jdField_a_of_type_Boolean = paramboqu.jdField_a_of_type_Boolean;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.c == 12;
+  }
+  
+  public String b()
+  {
+    File localFile = new File(boev.e);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return localFile.getPath() + File.separator;
+  }
+  
+  public boolean b()
+  {
+    return this.d != 0;
+  }
+  
+  public String c()
+  {
+    return new File(boqr.c(), this.jdField_a_of_type_JavaLangString).getPath();
+  }
+  
+  public boolean c()
+  {
+    return (this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.equals("0"));
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      do
       {
-        if (!TextUtils.equals("", paramCharSequence)) {
-          a();
-        }
-        return "";
+        return false;
+      } while (!(paramObject instanceof boqu));
+      paramObject = (boqu)paramObject;
+      if ((paramObject.jdField_a_of_type_JavaLangString == null) && (this.jdField_a_of_type_JavaLangString == null)) {
+        return true;
       }
-      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    } while (((paramObject.jdField_a_of_type_JavaLangString == null) && (this.jdField_a_of_type_JavaLangString != null)) || ((paramObject.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString == null)));
+    return paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {}
+    for (int i1 = 0;; i1 = this.jdField_a_of_type_JavaLangString.hashCode()) {
+      return i1 + 31;
     }
   }
 }

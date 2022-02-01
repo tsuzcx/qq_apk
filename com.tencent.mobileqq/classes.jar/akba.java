@@ -1,22 +1,59 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
+import mqq.os.MqqHandler;
 
 public class akba
-  implements DialogInterface.OnClickListener
+  extends AccountObserver
 {
-  public akba(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public akba(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if (!this.a.a()) {
-      ((VasExtensionHandler)this.a.app.a(71)).a(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Bgwg.a, -1);
+    int j = 1;
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
+      if (paramString2 == null)
+      {
+        i = 0;
+        QLog.d("Q.history.C2CAllFragment", 2, i);
+      }
     }
-    VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "faceAddon", "0X80088EE", "", 1, 0, 0, null, "", "");
-    bcst.b(this.a.app, "CliOper", "", "", "0X8005FDB", "0X8005FDB", 0, 0, String.valueOf(this.a.jdField_a_of_type_Long), "", "", "");
+    else
+    {
+      if ((!paramBoolean) || (TextUtils.isEmpty(paramString2))) {
+        break label133;
+      }
+      i = 1;
+      label67:
+      paramString1 = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.obtainMessage(39);
+      if (i == 0) {
+        break label139;
+      }
+      i = 1;
+      label88:
+      paramString1.arg1 = i;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label145;
+      }
+    }
+    label133:
+    label139:
+    label145:
+    for (int i = j;; i = 0)
+    {
+      paramString1.arg2 = i;
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.sendMessage(paramString1);
+      return;
+      i = paramString2.length();
+      break;
+      i = 0;
+      break label67;
+      i = 0;
+      break label88;
+    }
   }
 }
 

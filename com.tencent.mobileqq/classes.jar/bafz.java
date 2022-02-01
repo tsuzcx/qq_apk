@@ -1,31 +1,24 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bafz
-  implements agma
+class bafz
+  implements View.OnClickListener
 {
-  private QQAppInterface a;
+  bafz(bafx parambafx, azxr paramazxr, Card paramCard, QQAppInterface paramQQAppInterface) {}
   
-  public bafz(BaseChatPie paramBaseChatPie)
+  public void onClick(View paramView)
   {
-    this.a = paramBaseChatPie.a;
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (this.a == null);
-    ((baga)this.a.getManager(312)).onDestroy();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 10 };
+    QCircleInitBean localQCircleInitBean = new QCircleInitBean();
+    localQCircleInitBean.setUin(this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqDataCard.uin);
+    localQCircleInitBean.setLaunchFrom("5");
+    uyx.b(paramView.getContext(), localQCircleInitBean);
+    vtq.a(this.jdField_a_of_type_ComTencentMobileqqDataCard.uin, 3, 1, 2);
+    baew.l(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azxr);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

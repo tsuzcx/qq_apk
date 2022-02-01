@@ -1,29 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2.1;
+import com.tencent.widget.AdapterView;
 
 public class bfhn
-  implements Comparable<bfhn>
+  implements bljm
 {
-  public int a;
-  public TroopInfo a;
-  public String a;
-  public int b;
+  public bfhn(TroopAvatarWallPreviewActivity.2.1 param1) {}
   
-  public int a(@NonNull bfhn parambfhn)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.b != parambfhn.b) {
-      return this.b - parambfhn.b;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime != parambfhn.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime) {
-      return (int)(parambfhn.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime);
-    }
-    if (parambfhn.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime != this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime) {
-      return (int)(parambfhn.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime);
-    }
-    if (this.jdField_a_of_type_Int != parambfhn.jdField_a_of_type_Int) {
-      return this.jdField_a_of_type_Int - parambfhn.jdField_a_of_type_Int;
-    }
-    return this.jdField_a_of_type_JavaLangString.compareTo(parambfhn.jdField_a_of_type_JavaLangString);
+    this.a.a.this$0.a();
   }
 }
 

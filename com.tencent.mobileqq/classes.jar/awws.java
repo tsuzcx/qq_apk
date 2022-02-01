@@ -1,77 +1,12 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Looper;
 
-public class awws
+final class awws
+  extends awxb<Handler, Void>
 {
-  public int a;
-  public SessionInfo a;
-  public MessageForStructing a;
-  public AbsStructMsg a;
-  private Object a = new Object();
-  public HashMap<String, ArrayList<MessageRecord>> a;
-  public List<ChatMessage> a;
-  public Map<String, String> a;
-  public boolean a;
-  public int b;
-  public List<MessageForStructing> b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  private int h;
-  private int i;
-  
-  public int a()
+  protected Handler a(Void paramVoid)
   {
-    synchronized (this.a)
-    {
-      int j = this.h;
-      return j;
-    }
-  }
-  
-  public String a()
-  {
-    return String.valueOf(hashCode());
-  }
-  
-  public void a(int paramInt)
-  {
-    synchronized (this.a)
-    {
-      this.h ^= paramInt;
-      return;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    synchronized (this.a)
-    {
-      int j = this.i;
-      if (paramInt1 == 0) {
-        paramInt2 = 0;
-      }
-      this.i = (j + paramInt2);
-      return;
-    }
-  }
-  
-  public int b()
-  {
-    synchronized (this.a)
-    {
-      int j = this.i;
-      return j;
-    }
+    return new Handler(Looper.getMainLooper());
   }
 }
 

@@ -1,30 +1,17 @@
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import UserGrowth.eConfigBit;
+import UserGrowth.stUserConfigReq;
+import UserGrowth.stUserConfigRsp;
+import android.support.annotation.NonNull;
 
 public class upb
+  extends ukl<stUserConfigRsp>
 {
-  private String a;
-  
-  public static upb a()
+  public upb(@NonNull eConfigBit parameConfigBit)
   {
-    return upd.a();
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    WSRedDotPushMsg localWSRedDotPushMsg = ups.a();
-    if (localWSRedDotPushMsg != null) {
-      this.a = localWSRedDotPushMsg.mPushId;
-    }
-  }
-  
-  public void b()
-  {
-    this.a = "";
+    super("UserConfig", 10005);
+    stUserConfigReq localstUserConfigReq = new stUserConfigReq();
+    localstUserConfigReq.config_set = parameConfigBit.value();
+    this.a = localstUserConfigReq;
   }
 }
 

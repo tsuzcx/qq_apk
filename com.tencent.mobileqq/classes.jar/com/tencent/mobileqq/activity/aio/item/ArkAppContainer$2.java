@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agpq;
+import agyw;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkAppContainer$2
   implements Runnable
 {
-  public ArkAppContainer$2(agpq paramagpq, String paramString) {}
+  public ArkAppContainer$2(agyw paramagyw, String paramString) {}
   
   public void run()
   {

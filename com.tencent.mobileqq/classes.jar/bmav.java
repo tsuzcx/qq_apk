@@ -1,66 +1,256 @@
-import android.text.TextUtils;
+import java.lang.reflect.Array;
 
 public class bmav
 {
-  public final int a;
-  public long a;
-  public bmav a;
-  public final String a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
-  public final String f;
-  public final String g;
-  public final String h;
+  private int jdField_a_of_type_Int = 3;
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private float[][] jdField_a_of_type_Array2dOfFloat;
   
-  public bmav(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt, long paramLong, bmav parambmav)
+  public bmav(bmau parambmau, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.g = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
-    this.jdField_a_of_type_Bmav = parambmav;
-    this.h = paramString7;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  private static boolean a(Object paramObject1, Object paramObject2)
-  {
-    if (paramObject1 == paramObject2) {
-      return true;
+    int i = paramInt;
+    if (paramInt <= 0) {
+      i = this.jdField_a_of_type_Int;
     }
-    if (paramObject1 != null)
+    this.jdField_a_of_type_Int = i;
+    paramInt = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Array2dOfFloat = ((float[][])Array.newInstance(Float.TYPE, new int[] { paramInt, 2 }));
+    paramInt = 0;
+    while (paramInt < this.jdField_a_of_type_Int)
     {
-      if ((paramObject2 == null) && ((paramObject1 instanceof String)) && (TextUtils.isEmpty((String)paramObject1))) {
-        return true;
+      this.jdField_a_of_type_Array2dOfFloat[paramInt][0] = 0;
+      this.jdField_a_of_type_Array2dOfFloat[paramInt][1] = 0;
+      paramInt += 1;
+    }
+  }
+  
+  public int a(int[] paramArrayOfInt, int paramInt)
+  {
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length < this.jdField_a_of_type_Int) || (this.jdField_a_of_type_Int <= 0) || (paramInt < 1) || (paramInt > paramArrayOfInt.length)) {
+      return -1;
+    }
+    int i2 = paramArrayOfInt.length;
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+    int k = i2 / this.jdField_a_of_type_Int;
+    int i = 0;
+    while (i < this.jdField_a_of_type_Int)
+    {
+      j = i * k;
+      this.jdField_a_of_type_Array2dOfFloat[i][0] = j;
+      this.jdField_a_of_type_Array2dOfFloat[i][1] = this.jdField_a_of_type_ArrayOfInt[j];
+      while ((j < (i + 1) * k) && (j < i2))
+      {
+        if (this.jdField_a_of_type_ArrayOfInt[j] > this.jdField_a_of_type_Array2dOfFloat[i][1])
+        {
+          this.jdField_a_of_type_Array2dOfFloat[i][0] = j;
+          this.jdField_a_of_type_Array2dOfFloat[i][1] = this.jdField_a_of_type_ArrayOfInt[j];
+        }
+        j += 1;
       }
-      return paramObject1.equals(paramObject2);
+      i += 1;
     }
-    return ((paramObject2 instanceof String)) && (TextUtils.isEmpty((String)paramObject2));
+    paramArrayOfInt = new int[i2];
+    i = 0;
+    while (i < i2)
+    {
+      paramArrayOfInt[i] = -1;
+      i += 1;
+    }
+    i = this.jdField_a_of_type_Int;
+    int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { i, 2 });
+    int[] arrayOfInt1 = new int[this.jdField_a_of_type_Int];
+    i = 0;
+    while (i < this.jdField_a_of_type_Int)
+    {
+      arrayOfInt[i][0] = 0;
+      arrayOfInt[i][1] = 0;
+      arrayOfInt1[i] = ((int)this.jdField_a_of_type_Array2dOfFloat[i][0]);
+      i += 1;
+    }
+    i = 0;
+    int j = 0;
+    while ((j < 10) && (i == 0))
+    {
+      k = 0;
+      int n;
+      int m;
+      if (k < i2)
+      {
+        if (this.jdField_a_of_type_ArrayOfInt[k] == 0) {}
+        for (;;)
+        {
+          k += 1;
+          break;
+          n = 0;
+          m = Math.abs(k - (int)this.jdField_a_of_type_Array2dOfFloat[0][0]);
+          i = 0;
+          while (i < this.jdField_a_of_type_Int)
+          {
+            int i1 = m;
+            if (m > Math.abs(k - (int)this.jdField_a_of_type_Array2dOfFloat[i][0]))
+            {
+              i1 = Math.abs(k - (int)this.jdField_a_of_type_Array2dOfFloat[i][0]);
+              n = i;
+            }
+            i += 1;
+            m = i1;
+          }
+          paramArrayOfInt[k] = n;
+        }
+      }
+      i = 0;
+      while (i < this.jdField_a_of_type_Int)
+      {
+        arrayOfInt[i][0] = 0;
+        arrayOfInt[i][1] = 0;
+        i += 1;
+      }
+      i = 0;
+      int[] arrayOfInt2;
+      if (i < i2)
+      {
+        if (this.jdField_a_of_type_ArrayOfInt[i] == 0) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          arrayOfInt2 = arrayOfInt[paramArrayOfInt[i]];
+          arrayOfInt2[0] += this.jdField_a_of_type_ArrayOfInt[i] * i;
+          arrayOfInt2 = arrayOfInt[paramArrayOfInt[i]];
+          arrayOfInt2[1] += this.jdField_a_of_type_ArrayOfInt[i];
+        }
+      }
+      i = 0;
+      while (i < this.jdField_a_of_type_Int)
+      {
+        if (arrayOfInt[i][1] != 0)
+        {
+          this.jdField_a_of_type_Array2dOfFloat[i][0] = ((int)Math.round(arrayOfInt[i][0] * 1.0D / arrayOfInt[i][1]));
+          m = (int)this.jdField_a_of_type_Array2dOfFloat[i][0] - paramInt / 2;
+          if (m < 0)
+          {
+            k = i2;
+            arrayOfInt[i][1] = 0;
+            m += k;
+            k = 0;
+            label613:
+            if (k >= paramInt) {
+              break label695;
+            }
+            if (paramArrayOfInt[m] == i)
+            {
+              arrayOfInt2 = arrayOfInt[i];
+              arrayOfInt2[1] += this.jdField_a_of_type_ArrayOfInt[m];
+            }
+            n = m + 1;
+            if (n < i2) {
+              break label689;
+            }
+          }
+          label689:
+          for (m = -i2;; m = 0)
+          {
+            k += 1;
+            m = n + m;
+            break label613;
+            k = 0;
+            break;
+          }
+          label695:
+          this.jdField_a_of_type_Array2dOfFloat[i][1] = arrayOfInt[i][1];
+        }
+        i += 1;
+      }
+      i = 1;
+      k = 0;
+      while (k < this.jdField_a_of_type_Int)
+      {
+        if (arrayOfInt1[k] != (int)this.jdField_a_of_type_Array2dOfFloat[k][0])
+        {
+          arrayOfInt1[k] = ((int)this.jdField_a_of_type_Array2dOfFloat[k][0]);
+          i = 0;
+        }
+        k += 1;
+      }
+      j += 1;
+    }
+    paramInt = 0;
+    while (paramInt < this.jdField_a_of_type_Array2dOfFloat.length)
+    {
+      i = 0;
+      while (i < this.jdField_a_of_type_Array2dOfFloat.length - paramInt - 1)
+      {
+        if (this.jdField_a_of_type_Array2dOfFloat[(i + 1)][1] > this.jdField_a_of_type_Array2dOfFloat[i][1])
+        {
+          j = this.jdField_a_of_type_Array2dOfFloat[i][0];
+          k = this.jdField_a_of_type_Array2dOfFloat[i][1];
+          this.jdField_a_of_type_Array2dOfFloat[i][0] = this.jdField_a_of_type_Array2dOfFloat[(i + 1)][0];
+          this.jdField_a_of_type_Array2dOfFloat[i][1] = this.jdField_a_of_type_Array2dOfFloat[(i + 1)][1];
+          this.jdField_a_of_type_Array2dOfFloat[(i + 1)][0] = j;
+          this.jdField_a_of_type_Array2dOfFloat[(i + 1)][1] = k;
+        }
+        i += 1;
+      }
+      paramInt += 1;
+    }
+    return (int)this.jdField_a_of_type_Array2dOfFloat[0][0];
   }
   
-  public bmav a()
+  public int[] a(int[] paramArrayOfInt, int paramInt)
   {
-    bmav localbmav = this;
-    if (this.jdField_a_of_type_Bmav != null) {
-      localbmav = this.jdField_a_of_type_Bmav;
+    if ((paramArrayOfInt == null) || (paramInt <= 0) || (paramArrayOfInt.length < paramInt)) {
+      return null;
     }
-    return localbmav;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Bmav != null) && ((!a(this.b, this.jdField_a_of_type_Bmav.b)) || (!a(this.c, this.jdField_a_of_type_Bmav.c)) || (!a(this.d, this.jdField_a_of_type_Bmav.d)) || (!a(this.e, this.jdField_a_of_type_Bmav.e)) || (!a(this.f, this.jdField_a_of_type_Bmav.f)) || (!a(this.g, this.jdField_a_of_type_Bmav.g)) || (!a(this.h, this.jdField_a_of_type_Bmav.h)) || (this.jdField_a_of_type_Int != this.jdField_a_of_type_Bmav.jdField_a_of_type_Int));
+    int j = 0;
+    int i = 0;
+    while (j < paramInt)
+    {
+      i += paramArrayOfInt[j];
+      j += 1;
+    }
+    int k = 1;
+    int m = i;
+    j = 0;
+    if (k < paramArrayOfInt.length)
+    {
+      i -= paramArrayOfInt[(k - 1)];
+      if (k + paramInt - 1 < paramArrayOfInt.length) {
+        i += paramArrayOfInt[(k + paramInt - 1)];
+      }
+      for (;;)
+      {
+        int n = m;
+        if (m < i)
+        {
+          n = i;
+          j = k;
+        }
+        k += 1;
+        m = n;
+        break;
+        i += paramArrayOfInt[((k + paramInt - 1) % paramArrayOfInt.length)];
+      }
+    }
+    int[] arrayOfInt = new int[paramInt];
+    i = 0;
+    if (i < paramInt)
+    {
+      arrayOfInt[i] = j;
+      k = j + 1;
+      if (k >= paramArrayOfInt.length) {}
+      for (j = -paramArrayOfInt.length;; j = 0)
+      {
+        j = k + j;
+        i += 1;
+        break;
+      }
+    }
+    return arrayOfInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmav
  * JD-Core Version:    0.7.0.1
  */

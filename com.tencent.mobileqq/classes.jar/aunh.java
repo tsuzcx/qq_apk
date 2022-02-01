@@ -1,25 +1,47 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
 public class aunh
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public aunh(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static void a(String paramString)
   {
-    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131694401), "qqsetting_auto_receive_pic_key", paramBoolean);
-    QQAppInterface localQQAppInterface = QQSettingAutoDownloadAndSaveFragment.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject != null) && ((localObject instanceof QQAppInterface))) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
     {
-      bcst.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
+      if (localObject == null) {
+        return;
+      }
+      auni localauni = new auni();
+      localauni.jdField_b_of_type_JavaLangString = paramString;
+      localauni.jdField_a_of_type_JavaLangString = paramString;
+      if (localauni.jdField_a_of_type_Boolean) {}
+      for (int i = 0;; i = 1)
+      {
+        bdll.b((QQAppInterface)localObject, "CliOper", "", "", localauni.jdField_a_of_type_JavaLangString, localauni.jdField_b_of_type_JavaLangString, localauni.jdField_a_of_type_Int, localauni.jdField_b_of_type_Int, i, String.valueOf(localauni.jdField_b_of_type_Long), localauni.d, auni.a(localauni), localauni.c);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i("FileManagerReporter<FileAssistant>", 2, "report key:" + paramString);
+        return;
+      }
+    }
+  }
+  
+  public static void a(String paramString, auni paramauni)
+  {
+    BaseApplicationImpl.getContext();
+    paramString = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramString != null) && ((paramString instanceof QQAppInterface))) {}
+    for (paramString = (QQAppInterface)paramString;; paramString = null)
+    {
+      if (paramauni.jdField_a_of_type_Boolean) {}
+      for (int i = 0;; i = 1)
+      {
+        bdll.b(paramString, "CliOper", "", "", paramauni.jdField_a_of_type_JavaLangString, paramauni.jdField_b_of_type_JavaLangString, paramauni.jdField_a_of_type_Int, paramauni.jdField_b_of_type_Int, i, String.valueOf(paramauni.jdField_b_of_type_Long), paramauni.d, auni.a(paramauni), paramauni.c);
+        return;
+      }
     }
   }
 }

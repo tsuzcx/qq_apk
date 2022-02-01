@@ -1,20 +1,41 @@
-import android.app.Activity;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import mqq.app.QQPermissionCallback;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class bmrr
-  implements QQPermissionCallback
+final class bmrr
+  implements WtTicketPromise
 {
-  public bmrr(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, Activity paramActivity) {}
+  bmrr(bmrs parambmrs, String paramString) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void Done(Ticket paramTicket)
   {
-    bglp.b(this.jdField_a_of_type_AndroidAppActivity);
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "get pskey async success!");
+    }
+    if (this.jdField_a_of_type_Bmrs != null) {
+      this.jdField_a_of_type_Bmrs.a(0, new String[] { bmrq.a(paramTicket, this.jdField_a_of_type_JavaLangString) });
+    }
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.b(this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "preGetKey. PSk Failed!!!");
+    }
+    if (this.jdField_a_of_type_Bmrs != null) {
+      this.jdField_a_of_type_Bmrs.a(-1, new String[] { paramErrMsg.getMessage() });
+    }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "preGetKey. PSk Timeout!");
+    }
+    if (this.jdField_a_of_type_Bmrs != null) {
+      this.jdField_a_of_type_Bmrs.a(-1, new String[] { paramErrMsg.getMessage() });
+    }
   }
 }
 

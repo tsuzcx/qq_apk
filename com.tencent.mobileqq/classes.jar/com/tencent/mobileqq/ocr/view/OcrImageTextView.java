@@ -4,17 +4,22 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.ImageView;
-import auqp;
-import ayfj;
-import ayir;
-import bclx;
+import avip;
+import aviq;
+import ayyb;
+import ayyc;
+import ayzp;
+import azbk;
+import bdep;
+import bhvu;
+import bhvw;
+import bhvy;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -30,9 +35,9 @@ public class OcrImageTextView
   private Context jdField_a_of_type_AndroidContentContext;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private ayfj jdField_a_of_type_Ayfj;
+  private ayyc jdField_a_of_type_Ayyc;
   public Runnable a;
-  private List<ayir> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<azbk> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private boolean jdField_b_of_type_Boolean;
@@ -55,52 +60,125 @@ public class OcrImageTextView
     b();
   }
   
-  public static float a(int paramInt1, String paramString, Paint paramPaint, int paramInt2)
+  private void a(int paramInt1, azbk paramazbk, int paramInt2)
   {
-    float f2 = paramPaint.getTextSize();
-    float f1 = paramPaint.measureText(paramString);
-    paramInt1 = (int)(paramInt1 * 0.95D);
-    paramInt2 = (int)(paramInt2 * 0.95D);
-    if (f1 > paramInt1)
-    {
-      f2 -= 1.0F;
-      for (f3 = f1;; f3 = paramPaint.measureText(paramString))
-      {
-        f1 = f2;
-        if (f3 <= paramInt1) {
-          break;
-        }
-        f2 -= 1.0F;
-        paramPaint.setTextSize(f2);
-      }
+    if (paramInt1 <= 0) {
+      return;
     }
-    f2 += 1.0F;
-    for (float f3 = f1;; f3 = paramPaint.measureText(paramString))
+    if (paramazbk.jdField_a_of_type_Float > 0.0F)
     {
-      f1 = f2;
-      if (f3 >= paramInt1) {
-        break;
-      }
-      f2 += 1.0F;
-      paramPaint.setTextSize(f2);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramazbk.jdField_a_of_type_Float);
+      return;
     }
-    paramString = paramPaint.getFontMetrics();
-    f2 = paramString.descent;
-    f3 = paramString.ascent;
-    f3 = f2 - f3;
-    f2 = f1;
-    for (f1 = f3; f1 > paramInt2; f1 = paramString.descent - paramString.ascent)
-    {
-      f2 -= 1.0F;
-      paramPaint.setTextSize(f2);
-      paramString = paramPaint.getFontMetrics();
-    }
-    return f2 - 1.0F;
+    paramazbk.jdField_a_of_type_Float = ayzp.a(paramInt1, paramazbk.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsPaint, paramInt2);
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds(paramazbk.jdField_a_of_type_JavaLangString, 0, paramazbk.jdField_a_of_type_JavaLangString.length(), localRect);
+    paramazbk.j = ((paramInt1 - localRect.width()) / 2);
+    paramazbk.k = ((paramInt2 - localRect.height()) / 2);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramazbk.jdField_a_of_type_Float);
   }
   
-  private void a(List<auqp> paramList, int paramInt1, int paramInt2, String paramString)
+  private void a(Bitmap paramBitmap)
+  {
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    i = (int)(bdep.e(getContext()) / i * j);
+    super.setMeasuredDimension(View.MeasureSpec.makeMeasureSpec(bdep.e(getContext()), 1073741824), View.MeasureSpec.makeMeasureSpec(i, 1073741824));
+  }
+  
+  private void a(Canvas paramCanvas, azbk paramazbk, Rect paramRect, int paramInt)
+  {
+    paramCanvas.drawBitmap(paramazbk.jdField_a_of_type_AndroidGraphicsBitmap, paramRect, paramRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (paramazbk.jdField_b_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-15550475);
+      paramCanvas.drawRect(paramRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    if (paramazbk.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+    }
+    for (;;)
+    {
+      paramCanvas.drawText(paramazbk.jdField_a_of_type_JavaLangString, paramazbk.j, paramInt, this.jdField_a_of_type_AndroidGraphicsPaint);
+      return;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16777216);
+    }
+  }
+  
+  private void a(avip paramavip, azbk paramazbk)
+  {
+    paramavip = paramavip.a.iterator();
+    while (paramavip.hasNext())
+    {
+      Object localObject = (aviq)paramavip.next();
+      localObject = new Point((int)(((aviq)localObject).jdField_a_of_type_Int * this.jdField_a_of_type_Float), (int)(((aviq)localObject).jdField_b_of_type_Int * this.jdField_b_of_type_Float));
+      paramazbk.jdField_a_of_type_JavaUtilList.add(localObject);
+      paramazbk.jdField_d_of_type_Int = Math.max(paramazbk.jdField_d_of_type_Int, ((Point)localObject).x);
+      paramazbk.e = Math.max(paramazbk.e, ((Point)localObject).y);
+      paramazbk.f = Math.min(paramazbk.f, ((Point)localObject).x);
+      paramazbk.g = Math.min(paramazbk.g, ((Point)localObject).y);
+    }
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      this.jdField_a_of_type_JavaUtilList.add(paramazbk);
+    }
+  }
+  
+  private void a(azbk paramazbk)
+  {
+    Object localObject = bhvu.a(paramazbk.jdField_a_of_type_AndroidGraphicsBitmap).a();
+    if ((localObject != null) && (((bhvu)localObject).a() != null))
+    {
+      localObject = ((bhvu)localObject).a();
+      paramazbk.m = (((bhvy)localObject).a() | 0xFF000000);
+      paramazbk.n = (((bhvy)localObject).d() | 0xFF000000);
+      paramazbk.jdField_d_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "ocrText.backRGB=" + paramazbk.m + " ocrText.textColor =" + paramazbk.n + " text=" + paramazbk.jdField_a_of_type_JavaLangString);
+      }
+      ayyb.a(1, "ocr_palette_suc");
+      return;
+    }
+    paramazbk.jdField_a_of_type_Boolean = ayyb.a(paramazbk.jdField_a_of_type_AndroidGraphicsBitmap);
+    ayyb.a(0, "ocr_palette_suc");
+  }
+  
+  private void a(List<avip> paramList, int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      avip localavip = (avip)paramList.next();
+      int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      if (i != paramInt1)
+      {
+        float f = i / paramInt1;
+        if ((paramInt3 == 90) || (paramInt3 == 270)) {
+          f = i / paramInt2;
+        }
+        localavip.a(f);
+      }
+    }
+  }
+  
+  private void a(List<avip> paramList, int paramInt1, int paramInt2, String paramString)
   {
     ThreadManager.getSubThreadHandler().post(new OcrImageTextView.1(this, paramList, paramString, paramInt2, paramInt1));
+  }
+  
+  private boolean a(avip paramavip, azbk paramazbk, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  {
+    if (paramazbk.jdField_c_of_type_Boolean) {}
+    for (paramavip = ayyb.a(this.jdField_a_of_type_AndroidGraphicsBitmap, paramavip.e(), paramavip.g(), paramInt1, paramInt2, paramazbk.jdField_a_of_type_Int, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float); paramavip == null; paramavip = ayyb.a(this.jdField_a_of_type_AndroidGraphicsBitmap, paramavip.d(), paramavip.f(), paramInt1, paramInt2, paramazbk.jdField_a_of_type_Int, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float))
+    {
+      ayyb.a(0, paramString, paramazbk.jdField_a_of_type_JavaLangString, "ocr_crop_back_img");
+      return false;
+    }
+    ayyb.a(1, paramString, paramazbk.jdField_a_of_type_JavaLangString, "ocr_crop_back_img");
+    ayyb.a(paramazbk, 64, paramavip);
+    if ((paramavip.getHeight() != paramInt3) || (paramavip.getWidth() != paramInt4)) {
+      paramavip.recycle();
+    }
+    return true;
   }
   
   private void b()
@@ -111,6 +189,19 @@ public class OcrImageTextView
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(30.0F);
   }
   
+  private void b(Canvas paramCanvas, azbk paramazbk, Rect paramRect, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramazbk.m);
+    paramCanvas.drawRect(paramRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (paramazbk.jdField_b_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-15550475);
+      paramCanvas.drawRect(paramRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramazbk.n);
+    paramCanvas.drawText(paramazbk.jdField_a_of_type_JavaLangString, paramazbk.j, paramInt, this.jdField_a_of_type_AndroidGraphicsPaint);
+  }
+  
   public CharSequence a()
   {
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
@@ -119,76 +210,50 @@ public class OcrImageTextView
     StringBuilder localStringBuilder = new StringBuilder();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int i = -2;
-    ayir localayir;
+    azbk localazbk;
     if (localIterator.hasNext())
     {
-      localayir = (ayir)localIterator.next();
-      if (!localayir.jdField_b_of_type_Boolean) {
-        break label154;
+      localazbk = (azbk)localIterator.next();
+      if (!localazbk.jdField_b_of_type_Boolean) {
+        break label156;
       }
       if (i < 0)
       {
-        localStringBuilder.append(localayir.jdField_a_of_type_JavaLangString.trim());
-        i = localayir.h;
+        localStringBuilder.append(localazbk.jdField_a_of_type_JavaLangString.trim());
+        i = localazbk.h;
       }
     }
-    label154:
+    label156:
     for (;;)
     {
       break;
-      if (localayir.h == i)
+      if (localazbk.h == i)
       {
-        localStringBuilder.append(localayir.jdField_a_of_type_JavaLangString.trim());
+        localStringBuilder.append(localazbk.jdField_a_of_type_JavaLangString.trim());
       }
       else
       {
-        localStringBuilder.append("\n\n").append(localayir.jdField_a_of_type_JavaLangString.trim());
-        i = localayir.h;
+        localStringBuilder.append("\n\n").append(localazbk.jdField_a_of_type_JavaLangString.trim());
+        i = localazbk.h;
         continue;
         return localStringBuilder.toString();
       }
     }
   }
   
-  public List<ayir> a(List<auqp> paramList, int paramInt1, int paramInt2, String paramString, int paramInt3)
+  public List<azbk> a(List<avip> paramList, int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
     a();
     if ((paramList == null) || (paramList.isEmpty()) || (getDrawable() == null) || (!(getDrawable() instanceof BitmapDrawable))) {
       return null;
     }
-    int i;
-    if (QLog.isColorLevel())
-    {
-      i = 0;
-      while (i < paramList.size())
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { paramList.get(i) });
-        i += 1;
-      }
-    }
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
     {
       this.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)getDrawable()).getBitmap();
-      this.jdField_a_of_type_Float = (bclx.e(getContext()) / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
+      this.jdField_a_of_type_Float = (bdep.e(getContext()) / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
       this.jdField_b_of_type_Float = this.jdField_a_of_type_Float;
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "scaleX=" + this.jdField_a_of_type_Float + " scaleY=" + this.jdField_b_of_type_Float + " getWidth=" + this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + ", " + getWidth() + " getHeight=" + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() + ", " + getHeight() + " ocrWidth=" + paramInt1 + " ocrHeight=" + paramInt2 + " hardware accelerate: " + isHardwareAccelerated());
-      }
     }
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      auqp localauqp = (auqp)localIterator.next();
-      i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      if (i != paramInt1)
-      {
-        float f = i / paramInt1;
-        if ((paramInt3 == 90) || (paramInt3 == 270)) {
-          f = i / paramInt2;
-        }
-        localauqp.a(f);
-      }
-    }
+    a(paramList, paramInt1, paramInt2, paramInt3);
     a(paramList, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), paramString);
     return this.jdField_a_of_type_JavaUtilList;
   }
@@ -199,11 +264,11 @@ public class OcrImageTextView
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      ayir localayir = (ayir)localIterator.next();
-      if ((localayir != null) && (localayir.jdField_a_of_type_AndroidGraphicsBitmap != null))
+      azbk localazbk = (azbk)localIterator.next();
+      if ((localazbk != null) && (localazbk.jdField_a_of_type_AndroidGraphicsBitmap != null))
       {
-        localayir.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        localayir.jdField_a_of_type_AndroidGraphicsBitmap = null;
+        localazbk.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        localazbk.jdField_a_of_type_AndroidGraphicsBitmap = null;
       }
     }
     this.jdField_a_of_type_JavaUtilList.clear();
@@ -212,25 +277,6 @@ public class OcrImageTextView
       this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
       this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
-  }
-  
-  public void a(int paramInt1, ayir paramayir, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.getTextSize();
-    if (paramInt1 <= 0) {
-      return;
-    }
-    if (paramayir.jdField_a_of_type_Float > 0.0F)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramayir.jdField_a_of_type_Float);
-      return;
-    }
-    paramayir.jdField_a_of_type_Float = a(paramInt1, paramayir.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsPaint, paramInt2);
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds(paramayir.jdField_a_of_type_JavaLangString, 0, paramayir.jdField_a_of_type_JavaLangString.length(), localRect);
-    paramayir.j = ((paramInt1 - localRect.width()) / 2);
-    paramayir.k = ((paramInt2 - localRect.height()) / 2);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramayir.jdField_a_of_type_Float);
   }
   
   public void a(boolean paramBoolean)
@@ -259,7 +305,7 @@ public class OcrImageTextView
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      if (((ayir)localIterator.next()).jdField_b_of_type_Boolean) {
+      if (((azbk)localIterator.next()).jdField_b_of_type_Boolean) {
         return true;
       }
     }
@@ -270,65 +316,45 @@ public class OcrImageTextView
   {
     super.onDraw(paramCanvas);
     if (!this.jdField_a_of_type_Boolean) {}
-    ayir localayir;
+    while ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    label49:
+    azbk localazbk;
     Rect localRect;
     int i;
-    for (;;)
+    while (localIterator.hasNext())
     {
-      return;
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+      localazbk = (azbk)localIterator.next();
+      if (localazbk.jdField_a_of_type_AndroidGraphicsBitmap != null)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext())
+        a(localazbk.jdField_b_of_type_Int, localazbk, localazbk.jdField_c_of_type_Int);
+        if (localazbk.jdField_a_of_type_AndroidGraphicsRect == null)
         {
-          localayir = (ayir)localIterator.next();
-          if (localayir.jdField_a_of_type_AndroidGraphicsBitmap != null)
-          {
-            a(localayir.jdField_b_of_type_Int, localayir, localayir.c);
-            if (localayir.jdField_a_of_type_AndroidGraphicsRect == null)
-            {
-              localRect = new Rect();
-              this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds(localayir.jdField_a_of_type_JavaLangString, 0, localayir.jdField_a_of_type_JavaLangString.length(), localRect);
-              localayir.jdField_a_of_type_AndroidGraphicsRect = localRect;
-            }
-            paramCanvas.save();
-            paramCanvas.translate(((Point)localayir.jdField_a_of_type_JavaUtilList.get(0)).x, ((Point)localayir.jdField_a_of_type_JavaUtilList.get(0)).y);
-            paramCanvas.rotate(localayir.jdField_a_of_type_Int);
-            localRect = new Rect();
-            localRect.set(0, 0, localayir.jdField_b_of_type_Int, localayir.c);
-            i = localayir.jdField_a_of_type_AndroidGraphicsRect.height();
-            if (!localayir.d) {
-              break label328;
-            }
-            this.jdField_a_of_type_AndroidGraphicsPaint.setColor(localayir.m);
-            paramCanvas.drawRect(localRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-            if (localayir.jdField_b_of_type_Boolean)
-            {
-              this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-15550475);
-              paramCanvas.drawRect(localRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-            }
-            this.jdField_a_of_type_AndroidGraphicsPaint.setColor(localayir.n);
-            paramCanvas.drawText(localayir.jdField_a_of_type_JavaLangString, localayir.j, i, this.jdField_a_of_type_AndroidGraphicsPaint);
-            paramCanvas.restore();
-          }
+          localRect = new Rect();
+          this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds(localazbk.jdField_a_of_type_JavaLangString, 0, localazbk.jdField_a_of_type_JavaLangString.length(), localRect);
+          localazbk.jdField_a_of_type_AndroidGraphicsRect = localRect;
         }
+        paramCanvas.save();
+        paramCanvas.translate(localazbk.a(), localazbk.b());
+        paramCanvas.rotate(localazbk.jdField_a_of_type_Int);
+        localRect = new Rect();
+        localRect.set(0, 0, localazbk.jdField_b_of_type_Int, localazbk.jdField_c_of_type_Int);
+        i = localazbk.jdField_a_of_type_AndroidGraphicsRect.height();
+        if (!localazbk.jdField_d_of_type_Boolean) {
+          break label231;
+        }
+        b(paramCanvas, localazbk, localRect, i);
       }
     }
-    label328:
-    paramCanvas.drawBitmap(localayir.jdField_a_of_type_AndroidGraphicsBitmap, localRect, localRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (localayir.jdField_b_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-15550475);
-      paramCanvas.drawRect(localRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    if (localayir.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    }
     for (;;)
     {
-      paramCanvas.drawText(localayir.jdField_a_of_type_JavaLangString, localayir.j, i, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.restore();
+      break label49;
       break;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16777216);
+      label231:
+      a(paramCanvas, localazbk, localRect, i);
     }
   }
   
@@ -353,16 +379,12 @@ public class OcrImageTextView
       super.setMeasuredDimension(paramInt1, paramInt2);
       return;
     }
-    paramInt1 = localBitmap.getWidth();
-    paramInt2 = localBitmap.getHeight();
-    float f = bclx.e(getContext()) / paramInt1;
-    paramInt1 = (int)(paramInt2 * f);
-    super.setMeasuredDimension(View.MeasureSpec.makeMeasureSpec(bclx.e(getContext()), 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824));
+    a(localBitmap);
   }
   
-  public void setHideAnimLisnter(ayfj paramayfj)
+  public void setHideAnimLisnter(ayyc paramayyc)
   {
-    this.jdField_a_of_type_Ayfj = paramayfj;
+    this.jdField_a_of_type_Ayyc = paramayyc;
   }
   
   public void setShowTextMask(boolean paramBoolean)

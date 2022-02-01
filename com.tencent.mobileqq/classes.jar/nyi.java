@@ -1,12 +1,25 @@
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
+import java.util.List;
 
-public abstract interface nyi
+public abstract class nyi
+  implements anui
 {
-  public abstract void a(View paramView);
+  protected abstract void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle);
   
-  public abstract void d();
-  
-  public abstract void e();
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramObject != null) {}
+    try
+    {
+      paramObject = (Bundle)paramObject;
+      a(paramBoolean, paramObject.getParcelableArrayList("KEY_ENCRYPT_RESULT_LIST"), paramObject);
+      return;
+    }
+    catch (Exception paramObject) {}
+    a(false, null, new Bundle());
+    return;
+  }
 }
 
 

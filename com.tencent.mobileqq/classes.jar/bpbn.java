@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import java.io.File;
 
-public final class bpbn
-  implements Parcelable.Creator<EditRecordVideoSource>
+public class bpbn
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
-  {
-    return new EditRecordVideoSource(paramParcel);
-  }
-  
-  public EditRecordVideoSource[] a(int paramInt)
-  {
-    return new EditRecordVideoSource[paramInt];
-  }
+  public static final String a = bofe.a + File.separator + "ae_editor" + File.separator + "lottie/aiscene";
+  public static final String b = a + File.separator + "res";
+  public static final String c = b + File.separator + "AutoAISceneAni";
+  public static final String d = c + File.separator + "AILottie";
+  public static final String e = c + File.separator + "AILottie" + File.separator + "ProcessAnimation.zip";
 }
 
 

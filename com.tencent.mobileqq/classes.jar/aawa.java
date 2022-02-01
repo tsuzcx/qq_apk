@@ -1,17 +1,9 @@
-import NS_QQ_STORY_CONFIG.CONFIG.StGetStoryConfigRsp;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.List;
 
-class aawa
-  implements zxa<CONFIG.StGetStoryConfigRsp>
+public class aawa
 {
-  aawa(aavz paramaavz) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CONFIG.StGetStoryConfigRsp paramStGetStoryConfigRsp)
-  {
-    if ((paramStGetStoryConfigRsp != null) && (paramStGetStoryConfigRsp.intConf != null)) {
-      aavz.a(this.a, paramStGetStoryConfigRsp.intConf.get());
-    }
-  }
+  public String a;
+  public List<aawb> a;
 }
 
 

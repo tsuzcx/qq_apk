@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ScrollView;
-import bcwd;
-import bgpa;
+import bdow;
+import bhpc;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -27,7 +27,7 @@ public class ForwardTribeShortVideoMsgOption
   {
     super.a();
     this.i = this.jdField_a_of_type_AndroidOsBundle.getString("qqtribeVideoInfoExtra ");
-    AbsStructMsg localAbsStructMsg = bcwd.a(this.jdField_a_of_type_AndroidOsBundle.getByteArray("stuctmsg_bytes"));
+    AbsStructMsg localAbsStructMsg = bdow.a(this.jdField_a_of_type_AndroidOsBundle.getByteArray("stuctmsg_bytes"));
     if ((localAbsStructMsg != null) && ((localAbsStructMsg instanceof AbsShareMsg))) {
       this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)localAbsStructMsg);
     }
@@ -40,11 +40,11 @@ public class ForwardTribeShortVideoMsgOption
   }
   
   /* Error */
-  public boolean a(bgpa parambgpa)
+  public boolean a(bhpc parambhpc)
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 65	bgpa:getWindow	()Landroid/view/Window;
+    //   1: invokevirtual 65	bhpc:getWindow	()Landroid/view/Window;
     //   4: bipush 19
     //   6: invokevirtual 71	android/view/Window:setSoftInputMode	(I)V
     //   9: aload_0
@@ -53,27 +53,27 @@ public class ForwardTribeShortVideoMsgOption
     //   16: aload_0
     //   17: getfield 74	com/tencent/mobileqq/forward/ForwardTribeShortVideoMsgOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   20: ldc 75
-    //   22: invokestatic 80	bggq:a	(Landroid/content/Context;F)I
+    //   22: invokestatic 80	bhgr:a	(Landroid/content/Context;F)I
     //   25: istore_2
     //   26: aload_0
     //   27: getfield 74	com/tencent/mobileqq/forward/ForwardTribeShortVideoMsgOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   30: ldc 81
-    //   32: invokestatic 80	bggq:a	(Landroid/content/Context;F)I
+    //   32: invokestatic 80	bhgr:a	(Landroid/content/Context;F)I
     //   35: istore_3
     //   36: aload_0
     //   37: getfield 74	com/tencent/mobileqq/forward/ForwardTribeShortVideoMsgOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   40: ldc 82
-    //   42: invokestatic 80	bggq:a	(Landroid/content/Context;F)I
+    //   42: invokestatic 80	bhgr:a	(Landroid/content/Context;F)I
     //   45: istore 4
     //   47: aload_0
     //   48: getfield 74	com/tencent/mobileqq/forward/ForwardTribeShortVideoMsgOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   51: ldc 83
-    //   53: invokestatic 80	bggq:a	(Landroid/content/Context;F)I
+    //   53: invokestatic 80	bhgr:a	(Landroid/content/Context;F)I
     //   56: istore 5
     //   58: aload_0
     //   59: getfield 74	com/tencent/mobileqq/forward/ForwardTribeShortVideoMsgOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   62: ldc 84
-    //   64: invokestatic 80	bggq:a	(Landroid/content/Context;F)I
+    //   64: invokestatic 80	bhgr:a	(Landroid/content/Context;F)I
     //   67: istore 6
     //   69: ldc 86
     //   71: invokestatic 92	android/graphics/Color:parseColor	(Ljava/lang/String;)I
@@ -142,7 +142,7 @@ public class ForwardTribeShortVideoMsgOption
     //   206: aload_0
     //   207: getfield 74	com/tencent/mobileqq/forward/ForwardTribeShortVideoMsgOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   210: ldc 135
-    //   212: invokestatic 80	bggq:a	(Landroid/content/Context;F)I
+    //   212: invokestatic 80	bhgr:a	(Landroid/content/Context;F)I
     //   215: putfield 138	android/widget/RelativeLayout$LayoutParams:topMargin	I
     //   218: new 140	android/widget/TextView
     //   221: dup
@@ -167,7 +167,7 @@ public class ForwardTribeShortVideoMsgOption
     //   261: aload_0
     //   262: getfield 74	com/tencent/mobileqq/forward/ForwardTribeShortVideoMsgOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   265: ldc 150
-    //   267: invokestatic 80	bggq:a	(Landroid/content/Context;F)I
+    //   267: invokestatic 80	bhgr:a	(Landroid/content/Context;F)I
     //   270: putfield 151	android/widget/LinearLayout$LayoutParams:topMargin	I
     //   273: aload 15
     //   275: iconst_3
@@ -187,7 +187,7 @@ public class ForwardTribeShortVideoMsgOption
     //   306: aload_1
     //   307: aload 9
     //   309: aload 10
-    //   311: invokevirtual 159	bgpa:addView	(Landroid/view/View;Landroid/widget/LinearLayout$LayoutParams;)Lbgpa;
+    //   311: invokevirtual 159	bhpc:addView	(Landroid/view/View;Landroid/widget/LinearLayout$LayoutParams;)Lbhpc;
     //   314: pop
     //   315: aload 14
     //   317: aload_0
@@ -250,7 +250,7 @@ public class ForwardTribeShortVideoMsgOption
     //   450: invokevirtual 203	com/tencent/image/URLImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   453: aload_0
     //   454: aload_1
-    //   455: invokevirtual 65	bgpa:getWindow	()Landroid/view/Window;
+    //   455: invokevirtual 65	bhpc:getWindow	()Landroid/view/Window;
     //   458: invokevirtual 239	android/view/Window:getDecorView	()Landroid/view/View;
     //   461: ldc 240
     //   463: invokevirtual 246	android/view/View:findViewById	(I)Landroid/view/View;
@@ -294,7 +294,7 @@ public class ForwardTribeShortVideoMsgOption
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	553	0	this	ForwardTribeShortVideoMsgOption
-    //   0	553	1	parambgpa	bgpa
+    //   0	553	1	parambhpc	bhpc
     //   25	176	2	j	int
     //   35	378	3	k	int
     //   45	374	4	m	int
@@ -322,7 +322,7 @@ public class ForwardTribeShortVideoMsgOption
     int j = c();
     String str = "";
     if (j != 0) {
-      str = this.jdField_a_of_type_Bgpa.getInputValue();
+      str = this.jdField_a_of_type_Bhpc.getInputValue();
     }
     this.jdField_a_of_type_AndroidOsBundle.putString("share_comment_message", str);
     e();
@@ -344,7 +344,7 @@ public class ForwardTribeShortVideoMsgOption
     }
   }
   
-  public boolean i()
+  public boolean j()
   {
     return false;
   }
@@ -356,9 +356,9 @@ public class ForwardTribeShortVideoMsgOption
     }
   }
   
-  public void r()
+  public void s()
   {
-    super.r();
+    super.s();
     e();
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.share", 2, "forwardOnCancel");

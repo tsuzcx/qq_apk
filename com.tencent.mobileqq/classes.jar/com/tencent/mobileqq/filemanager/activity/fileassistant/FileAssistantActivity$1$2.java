@@ -3,7 +3,7 @@ package com.tencent.mobileqq.filemanager.activity.fileassistant;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.TextView;
-import anni;
+import anzj;
 
 class FileAssistantActivity$1$2
   implements Runnable
@@ -12,10 +12,10 @@ class FileAssistantActivity$1$2
   
   public void run()
   {
-    this.a.this$0.a = ((ViewStub)this.a.this$0.findViewById(2131381073));
+    this.a.this$0.a = ((ViewStub)this.a.this$0.findViewById(2131381255));
     View localView = this.a.this$0.a.inflate();
     this.a.this$0.a.setVisibility(0);
-    ((TextView)localView.findViewById(2131379953)).setText(anni.a(2131703275));
+    ((TextView)localView.findViewById(2131380137)).setText(anzj.a(2131703382));
   }
 }
 

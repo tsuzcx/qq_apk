@@ -1,20 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import java.util.Comparator;
 
-public class alfx
-  implements ValueAnimator.AnimatorUpdateListener
+class alfx
+  implements Comparator<alfy>
 {
-  public alfx(LoginView paramLoginView) {}
+  alfx(alfw paramalfw) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a(alfy paramalfy1, alfy paramalfy2)
   {
-    float f = paramValueAnimator.getAnimatedFraction();
-    int i = (int)((LoginView.b(this.a) - LoginView.c(this.a)) * f + LoginView.c(this.a));
-    int j = (int)((LoginView.d(this.a) - LoginView.e(this.a)) * f + LoginView.e(this.a));
-    int k = (int)((LoginView.f(this.a) - LoginView.g(this.a)) * f + LoginView.g(this.a));
-    int m = (int)((LoginView.h(this.a) - LoginView.i(this.a)) * f + LoginView.i(this.a));
-    LoginView.a(this.a, i, j, k, m, f);
+    if (paramalfy2.a - paramalfy1.a > 0.0F) {
+      return 1;
+    }
+    return -1;
   }
 }
 

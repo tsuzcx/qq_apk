@@ -1,19 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class npp
-  implements Animation.AnimationListener
+final class npp
+  implements BusinessObserver
 {
-  npp(npm paramnpm) {}
+  npp(QQAppInterface paramQQAppInterface, npr paramnpr) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    npm.a(this.a, this.a.a.c, this.a.a.d, 100L, 240L);
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        npo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Npr);
+      }
+    }
+    else
+    {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
+    }
+    this.jdField_a_of_type_Npr.a();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

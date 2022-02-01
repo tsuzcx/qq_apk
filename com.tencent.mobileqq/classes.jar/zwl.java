@@ -1,37 +1,52 @@
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.util.WeakReference;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-class zwl
-  implements zwi
+public class zwl
+  implements bjig
 {
-  zwl(zwk paramzwk, zwn paramzwn, int paramInt) {}
+  public zwl(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    paramString = new zwm(this.jdField_a_of_type_Zwn.a, paramBoolean, paramString);
-    zwk.a(this.jdField_a_of_type_Zwk).put(this.jdField_a_of_type_Zwn.a, paramString);
-    if (paramBoolean)
+    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    String str1;
+    label53:
+    String str3;
+    int i;
+    if (this.a.jdField_c_of_type_Int == 2)
     {
-      zwk.a(this.jdField_a_of_type_Zwk).incrementAndGet();
-      if ((zwk.a(this.jdField_a_of_type_Zwk).get() + zwk.b(this.jdField_a_of_type_Zwk).get() == this.jdField_a_of_type_Int) && (zwk.a(this.jdField_a_of_type_Zwk) != null))
-      {
-        paramString = (zwo)zwk.a(this.jdField_a_of_type_Zwk).get();
-        if (paramString != null) {
-          if (zwk.b(this.jdField_a_of_type_Zwk).get() != 0) {
-            break label153;
-          }
-        }
+      if (this.a.i != 2) {
+        break label159;
+      }
+      str1 = "qr_wechat";
+      str3 = this.a.jdField_c_of_type_JavaLangString;
+      i = this.a.a;
+      if (paramBaseResp.errCode != 0) {
+        break label165;
       }
     }
-    label153:
-    for (paramBoolean = true;; paramBoolean = false)
+    label159:
+    label165:
+    for (String str2 = "0";; str2 = "1")
     {
-      paramString.a(paramBoolean, zwk.a(this.jdField_a_of_type_Zwk));
-      return;
-      zwk.b(this.jdField_a_of_type_Zwk).incrementAndGet();
-      break;
+      bhju.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, String.valueOf(i), str2 });
+      switch (paramBaseResp.errCode)
+      {
+      case -1: 
+      default: 
+        zyx.a(1, 2131718139);
+        this.a.a(false);
+        return;
+        str1 = "qr_circle";
+        break label53;
+      }
     }
+    zyx.a(2, 2131718157);
+    this.a.a(true);
+    return;
+    this.a.a(false);
   }
 }
 

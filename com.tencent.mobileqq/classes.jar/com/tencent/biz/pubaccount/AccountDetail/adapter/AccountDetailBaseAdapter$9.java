@@ -2,18 +2,18 @@ package com.tencent.biz.pubaccount.AccountDetail.adapter;
 
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import npm;
-import npz;
+import nrk;
+import nrx;
 
 public class AccountDetailBaseAdapter$9
   implements Runnable
 {
-  public AccountDetailBaseAdapter$9(npm paramnpm, npz paramnpz, RelativeLayout.LayoutParams paramLayoutParams1, RelativeLayout.LayoutParams paramLayoutParams2) {}
+  public AccountDetailBaseAdapter$9(nrk paramnrk, nrx paramnrx, RelativeLayout.LayoutParams paramLayoutParams1, RelativeLayout.LayoutParams paramLayoutParams2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Npz.a.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_Npz.b.setLayoutParams(this.b);
+    this.jdField_a_of_type_Nrx.a.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.jdField_a_of_type_Nrx.b.setLayoutParams(this.b);
   }
 }
 

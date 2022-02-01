@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import bgsg;
+import bhsi;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
@@ -11,10 +11,10 @@ class RedDotImageView$2
   public void run()
   {
     MobileQQ localMobileQQ = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication();
-    int i = bgsg.d(localMobileQQ);
-    if (bgsg.a(localMobileQQ, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_JavaLangString))
+    int i = bhsi.d(localMobileQQ);
+    if (bhsi.a(localMobileQQ, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_JavaLangString))
     {
-      bgsg.a(localMobileQQ, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_JavaLangString);
+      bhsi.a(localMobileQQ, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_JavaLangString);
       if (QLog.isColorLevel()) {
         QLog.d("Q.recent", 2, this.jdField_a_of_type_JavaLangString + " close redDot");
       }

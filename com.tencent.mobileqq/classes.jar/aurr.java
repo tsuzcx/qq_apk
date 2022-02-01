@@ -1,49 +1,30 @@
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.gamecenter.anim.FullPopAnimWithLOLLIPOP.5;
-import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileDocDownloadAbsMsgRsp;
 
-public class aurr
-  extends auro
-  implements auuj
+class aurr
+  implements boae<WeiyunPB.DiskFileDocDownloadAbsMsgRsp>
 {
-  private int jdField_a_of_type_Int;
-  @SuppressLint({"HandlerLeak"})
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private ausj jdField_a_of_type_Ausj;
-  private int b;
+  aurr(aurp paramaurp) {}
   
-  @SuppressLint({"NewApi"})
-  private void b()
+  public void a(int paramInt, String paramString, WeiyunPB.DiskFileDocDownloadAbsMsgRsp paramDiskFileDocDownloadAbsMsgRsp)
   {
-    if (this.jdField_a_of_type_Ausj != null)
-    {
-      ausj localausj = this.jdField_a_of_type_Ausj;
-      localausj.jdField_a_of_type_Int += this.jdField_a_of_type_Int;
-      localausj = this.jdField_a_of_type_Ausj;
-      localausj.b -= this.b;
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setOutlineProvider(this.jdField_a_of_type_Ausj);
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setClipToOutline(true);
-      if (this.jdField_a_of_type_Ausj.jdField_a_of_type_Int > this.jdField_a_of_type_Ausj.b)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
-        this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.a();
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "get weiyun file PreviewAddress onFailed,errCode[" + paramInt + "],errMsg[" + paramString + "]");
     }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 5L);
+    aurp.a(this.a).a().a(false, 278, new Object[] { Integer.valueOf(paramInt), paramString, "", "", "", "", Integer.valueOf(0) });
   }
   
-  public void a()
+  public void a(WeiyunPB.DiskFileDocDownloadAbsMsgRsp paramDiskFileDocDownloadAbsMsgRsp)
   {
-    ThreadManagerV2.getUIHandlerV2().post(new FullPopAnimWithLOLLIPOP.5(this));
-    a(false);
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "get weiyun file PreviewAddress onSucceed");
+    }
+    String str = bocc.a(paramDiskFileDocDownloadAbsMsgRsp.downloadkey.get());
+    aurp.a(this.a).a().a(true, 278, new Object[] { Integer.valueOf(0), "", str, paramDiskFileDocDownloadAbsMsgRsp.cookie.get(), paramDiskFileDocDownloadAbsMsgRsp.downloadip.get(), paramDiskFileDocDownloadAbsMsgRsp.downloaddns.get(), Integer.valueOf(paramDiskFileDocDownloadAbsMsgRsp.downloadport.get()) });
   }
 }
 

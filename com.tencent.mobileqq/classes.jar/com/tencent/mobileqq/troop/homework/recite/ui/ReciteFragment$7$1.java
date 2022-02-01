@@ -3,27 +3,27 @@ package com.tencent.mobileqq.troop.homework.recite.ui;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import bfcc;
-import bfcn;
-import bfeo;
+import bgbw;
+import bgch;
+import bgei;
 
 public class ReciteFragment$7$1
   implements Runnable
 {
-  public ReciteFragment$7$1(bfcn parambfcn, int paramInt) {}
+  public ReciteFragment$7$1(bgch parambgch, int paramInt) {}
   
   public void run()
   {
-    if (ReciteFragment.b(this.jdField_a_of_type_Bfcn.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment).isFinishing()) {
+    if (ReciteFragment.b(this.jdField_a_of_type_Bgch.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment).isFinishing()) {
       return;
     }
-    this.jdField_a_of_type_Bfcn.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bfeo.e = this.jdField_a_of_type_Bfcn.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Bfcn.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bfeo.d = this.jdField_a_of_type_Bfcn.c;
-    this.jdField_a_of_type_Bfcn.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bfeo.f = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Bfcn.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bfcc.a(true, this.jdField_a_of_type_Bfcn.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bfeo.b, this.jdField_a_of_type_Bfcn.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bfeo.f, this.jdField_a_of_type_Bfcn.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bfeo.a, this.jdField_a_of_type_Bfcn.c, this.jdField_a_of_type_Bfcn.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bfcn.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_AndroidOsHandler.postDelayed(new ReciteFragment.7.1.1(this), 100L);
-    this.jdField_a_of_type_Bfcn.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_Bfcn.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.requestLayout();
+    this.jdField_a_of_type_Bgch.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bgei.e = this.jdField_a_of_type_Bgch.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Bgch.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bgei.d = this.jdField_a_of_type_Bgch.c;
+    this.jdField_a_of_type_Bgch.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bgei.f = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Bgch.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bgbw.a(true, this.jdField_a_of_type_Bgch.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bgei.b, this.jdField_a_of_type_Bgch.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bgei.f, this.jdField_a_of_type_Bgch.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bgei.a, this.jdField_a_of_type_Bgch.c, this.jdField_a_of_type_Bgch.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bgch.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_AndroidOsHandler.postDelayed(new ReciteFragment.7.1.1(this), 100L);
+    this.jdField_a_of_type_Bgch.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_Bgch.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.requestLayout();
   }
 }
 

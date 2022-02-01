@@ -1,27 +1,18 @@
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import org.json.JSONObject;
 
 public class pjj
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+  implements pks
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d("VideoSingleModeConfigHandler", 2, "[onReceiveConfig] " + paramString);
-    paramString = phv.a(paramString);
-    if ((String)paramString.get("readinjoy_single_video_switch") != null) {
-      bmqa.a((String)paramString.get("readinjoy_single_video_switch"));
-    }
-    return true;
-  }
+  public pjj(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onWipeConfig(int paramInt)
+  public void a()
   {
-    super.onWipeConfig(paramInt);
-    bmqa.a(null);
+    ozs.a(this.a.a.getContext(), oyu.o);
+    JSONObject localJSONObject = ozs.a();
+    ocd.a(null, "CliOper", "", "", "0X800845A", "0X800845A", 0, 0, ReadInJoySelfFragment.a(this.a, 11) + "", "", "", localJSONObject.toString(), false);
+    ReadInJoySelfFragment.a(this.a, 11);
   }
 }
 

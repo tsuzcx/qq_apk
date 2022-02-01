@@ -2,8 +2,8 @@ package com.tencent.mobileqq.filemanager.util;
 
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
-import atvg;
-import atwl;
+import aunb;
+import auog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.util.Iterator;
@@ -16,7 +16,7 @@ public final class FileCategoryUtil$4
   
   public void run()
   {
-    if (atwl.a(this.a.getFilePath())) {}
+    if (auog.a(this.a.getFilePath())) {}
     PackageInfo localPackageInfo;
     do
     {
@@ -25,12 +25,12 @@ public final class FileCategoryUtil$4
       {
         return;
         while ((this.a.strApkPackageName == null) || (this.a.strApkPackageName.length() == 0)) {}
-        localIterator = atvg.a(BaseApplicationImpl.getContext()).iterator();
+        localIterator = aunb.a(BaseApplicationImpl.getContext()).iterator();
       } while (!localIterator.hasNext());
       localPackageInfo = (PackageInfo)localIterator.next();
     } while (!this.a.strApkPackageName.equalsIgnoreCase(localPackageInfo.packageName));
     this.a.setFilePath(localPackageInfo.applicationInfo.publicSourceDir);
-    this.a.fileName = atvg.a(this.a.getFilePath());
+    this.a.fileName = aunb.a(this.a.getFilePath());
   }
 }
 

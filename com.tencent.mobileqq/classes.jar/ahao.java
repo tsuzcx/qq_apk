@@ -1,18 +1,23 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import java.lang.ref.WeakReference;
 
 class ahao
-  extends ahbl
+  implements ahag
 {
-  ahao(agwz paramagwz)
+  ahao(aham paramaham, MessageForArkFlashChat paramMessageForArkFlashChat) {}
+  
+  public void a()
   {
-    super(paramagwz, null);
+    AutoStartProgressBar localAutoStartProgressBar = (AutoStartProgressBar)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.mSendingProgress.get();
+    if ((localAutoStartProgressBar.getTag() == this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat) && (localAutoStartProgressBar != null))
+    {
+      localAutoStartProgressBar.b();
+      localAutoStartProgressBar.setVisibility(8);
+    }
   }
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new agrz(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
+  public void b() {}
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.biz.qqcircle.bizparts.danmaku.text;
 
 import android.view.View;
-import vgl;
+import vip;
 
 public class TextCellLayout$5
   implements Runnable
 {
-  public TextCellLayout$5(vgl paramvgl, View paramView) {}
+  public TextCellLayout$5(vip paramvip, View paramView) {}
   
   public void run()
   {

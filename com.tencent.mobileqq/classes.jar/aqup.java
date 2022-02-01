@@ -1,43 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.graphics.Point;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.colornote.anim.MusicDanceImageView;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
 public class aqup
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public int b;
+  public aqup(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
   
-  public static aqup a(String paramString)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramString == null) {}
-    do
+    paramAnimator = (LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams();
+    if (!this.a.a())
     {
-      return null;
-      try
-      {
-        aqup localaqup = new aqup();
-        paramString = new JSONObject(paramString);
-        localaqup.a = paramString.optInt("switch", 0);
-        localaqup.b = paramString.optInt("stoppreload", 0);
-        QLog.d("ConfBean", 2, "confBean = " + localaqup.a);
-        return localaqup;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+      paramAnimator.leftMargin = bhgr.a(this.a.getContext(), 14.5F);
+      paramAnimator.rightMargin = 0;
+    }
+    ColorNoteSmallScreenRelativeLayout.a(this.a).setLayoutParams(paramAnimator);
+    ColorNoteSmallScreenRelativeLayout.a(this.a).setVisibility(0);
+    ((LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams()).leftMargin = bhgr.a(this.a.getContext(), 13.5F);
+    ColorNoteSmallScreenRelativeLayout.a(this.a).x = this.a.g();
+    paramAnimator = this.a;
+    if (ColorNoteSmallScreenRelativeLayout.a(this.a).x < 0) {}
+    for (int i = 0;; i = 1)
+    {
+      ColorNoteSmallScreenRelativeLayout.b(paramAnimator, i);
+      ColorNoteSmallScreenRelativeLayout.d(this.a, false);
+      return;
+    }
   }
   
-  public String toString()
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("result:").append(this.a);
-    localStringBuilder.append(" stoppreload:").append(this.b);
-    return localStringBuilder.toString();
+    ColorNoteSmallScreenRelativeLayout.d(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqup
  * JD-Core Version:    0.7.0.1
  */

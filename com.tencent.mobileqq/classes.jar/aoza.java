@@ -1,42 +1,53 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
+import android.content.Context;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URLDecoder;
+import java.util.HashMap;
+import org.json.JSONObject;
 
-class aoza
-  implements SensorEventListener
+public class aoza
+  extends aoxg
 {
-  aoza(aoyz paramaoyz) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public aoza(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    double d1 = 1.0D;
-    if (1 != paramSensorEvent.sensor.getType()) {
-      return;
-    }
-    paramSensorEvent = paramSensorEvent.values;
-    float f1 = paramSensorEvent[0];
-    float f2 = paramSensorEvent[1];
-    double d2 = Math.sqrt(f1 * f1 + f2 * f2);
-    d2 = f2 / d2;
-    if (d2 > 1.0D) {}
-    for (;;)
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public boolean a()
+  {
+    try
     {
-      d2 = Math.acos(d1);
-      d1 = d2;
-      if (f1 < 0.0F) {
-        d1 = 6.283185307179586D - d2;
+      boolean bool = this.jdField_a_of_type_JavaUtilHashMap.containsKey("params");
+      if (bool) {}
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(URLDecoder.decode((String)this.jdField_a_of_type_JavaUtilHashMap.get("params")));
+        if (QLog.isColorLevel()) {
+          QLog.i("QwalletToNotifyAction", 2, "urlParamObj: " + localJSONObject);
+        }
+        if (localJSONObject.optInt("view_type", 0) == 0)
+        {
+          localJSONObject = localJSONObject.optJSONObject("params");
+          if (localJSONObject != null) {
+            ReminderListFragment.a(this.jdField_a_of_type_AndroidContentContext, localJSONObject.optString("notice_time"));
+          }
+        }
       }
-      int i = (int)(d1 * 57.295779513082323D);
-      aoyz.a(this.a, (i + 45) / 90 * 90);
-      return;
-      if (d2 < -1.0D) {
-        d1 = -1.0D;
-      } else {
-        d1 = d2;
+      catch (Exception localException1)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.e("QwalletToNotifyAction", 2, "JumpAction parse url throw an exception: " + localException1);
+        return false;
       }
+      return false;
     }
+    catch (Exception localException2)
+    {
+      QLog.e("QwalletToNotifyAction", 1, "doAction error: " + localException2.getMessage());
+      a("QwalletToNotifyAction");
+    }
+    return false;
   }
 }
 

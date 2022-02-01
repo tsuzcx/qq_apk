@@ -1,29 +1,21 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.avgame.floatwindow.CommonGameFloatWindowLayout;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class mxf
-  implements Animator.AnimatorListener
+  implements DialogInterface.OnClickListener
 {
-  mxf(mxb parammxb, int paramInt1, int paramInt2) {}
+  mxf(mxc parammxc, Activity paramActivity, int paramInt, String paramString1, String paramString2) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    mxb.a(this.jdField_a_of_type_Mxb).a(this.jdField_a_of_type_Int, this.b);
-    mxb.a(this.jdField_a_of_type_Mxb).d();
-    mxb.a(this.jdField_a_of_type_Mxb, null);
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_Mxc.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+      return;
+    }
+    this.jdField_a_of_type_Mxc.a(this.jdField_a_of_type_AndroidAppActivity);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    mxb.a(this.jdField_a_of_type_Mxb).a(this.jdField_a_of_type_Int, this.b);
-    mxb.a(this.jdField_a_of_type_Mxb).d();
-    mxb.a(this.jdField_a_of_type_Mxb, null);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

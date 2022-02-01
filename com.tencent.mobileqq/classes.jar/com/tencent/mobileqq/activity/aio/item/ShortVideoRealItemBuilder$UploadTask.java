@@ -2,11 +2,11 @@ package com.tencent.mobileqq.activity.aio.item;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bcec;
-import bcev;
-import bcfn;
-import bctj;
-import bgmg;
+import bcwu;
+import bcxn;
+import bcyf;
+import bdmc;
+import bhmi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.msg.data.MessageForDevLittleVideo;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -55,7 +55,7 @@ public class ShortVideoRealItemBuilder$UploadTask
     MessageForShortVideo localMessageForShortVideo = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
     Object localObject1 = localMessageForShortVideo.videoFileName;
     Object localObject2 = (ShortVideoRealItemBuilder)this.c.get();
-    if (bgmg.b((String)localObject1))
+    if (bhmi.b((String)localObject1))
     {
       if (QLog.isColorLevel()) {
         QLog.e("ShortVideoRealItemBuilder", 2, "mr.videoFileName is not null...");
@@ -63,7 +63,7 @@ public class ShortVideoRealItemBuilder$UploadTask
       a(localMessageForShortVideo.uniseq);
       return;
     }
-    if (!bgmg.b(this.jdField_a_of_type_JavaLangString))
+    if (!bhmi.b(this.jdField_a_of_type_JavaLangString))
     {
       if (QLog.isColorLevel()) {
         QLog.e("ShortVideoRealItemBuilder", 2, "uploadTask file is null!");
@@ -93,12 +93,12 @@ public class ShortVideoRealItemBuilder$UploadTask
       return;
     }
     localMessageForShortVideo.videoFileSize = ((int)l);
-    if (bgmg.b(localMessageForShortVideo.mThumbFilePath))
+    if (bhmi.b(localMessageForShortVideo.mThumbFilePath))
     {
       localObject2 = ShortVideoUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
       if (!((String)localObject2).equals(localMessageForShortVideo.mThumbFilePath))
       {
-        if (!bgmg.c(localMessageForShortVideo.mThumbFilePath, (String)localObject2))
+        if (!bhmi.c(localMessageForShortVideo.mThumbFilePath, (String)localObject2))
         {
           if (QLog.isColorLevel()) {
             QLog.e("ShortVideoRealItemBuilder", 2, "process mThumbFilePath error!");
@@ -114,7 +114,7 @@ public class ShortVideoRealItemBuilder$UploadTask
       localObject2 = ShortVideoUtils.a(localMessageForShortVideo, "mp4");
       if (!this.jdField_a_of_type_JavaLangString.equals(localObject2))
       {
-        bgmg.c(this.jdField_a_of_type_JavaLangString, (String)localObject2);
+        bhmi.c(this.jdField_a_of_type_JavaLangString, (String)localObject2);
         if (QLog.isColorLevel()) {
           QLog.i("ShortVideoRealItemBuilder", 2, "onPostExecute destVideoPath " + (String)localObject2);
         }
@@ -129,17 +129,17 @@ public class ShortVideoRealItemBuilder$UploadTask
     for (int i = 4;; i = 2)
     {
       ((QQAppInterface)localObject1).a().a(localMessageForShortVideo.frienduin, localMessageForShortVideo.istroop, localMessageForShortVideo.uniseq, localMessageForShortVideo.msgData);
-      localObject2 = bcec.a(0, i);
-      bcfn localbcfn = bcec.a(localMessageForShortVideo, (bcev)localObject2);
-      localbcfn.a = false;
-      ((bcev)localObject2).a(localbcfn);
-      bcec.a((bcev)localObject2, (QQAppInterface)localObject1);
+      localObject2 = bcwu.a(0, i);
+      bcyf localbcyf = bcwu.a(localMessageForShortVideo, (bcxn)localObject2);
+      localbcyf.a = false;
+      ((bcxn)localObject2).a(localbcyf);
+      bcwu.a((bcxn)localObject2, (QQAppInterface)localObject1);
       this.jdField_b_of_type_Long = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.i("ShortVideoRealItemBuilder", 2, "[" + localMessageForShortVideo.uniseq + "]mMessageForShortVideo = " + localMessageForShortVideo + "\n |- upload cost:" + (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000.0D);
       }
       localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin();
-      bctj.a(BaseApplicationImpl.getContext()).a((String)localObject1, "actShortVideoGenerateDuration", true, 0L, 0L, ShortVideoRealItemBuilder.a(), "");
+      bdmc.a(BaseApplicationImpl.getContext()).a((String)localObject1, "actShortVideoGenerateDuration", true, 0L, 0L, ShortVideoRealItemBuilder.a(), "");
       a(localMessageForShortVideo.uniseq);
       return;
       if (!QLog.isColorLevel()) {

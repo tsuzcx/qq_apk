@@ -1,67 +1,11 @@
+import android.app.Activity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.1;
-import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.2;
-import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.3;
-import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.4;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
 
-public class wod
-  extends yke
-  implements View.OnClickListener
+public abstract interface wod<T extends Activity>
 {
-  public EditText a;
-  public wpk a;
-  public EditText b;
+  public abstract void a(T paramT);
   
-  public void a()
-  {
-    super.a();
-  }
-  
-  public void a(Bundle paramBundle1, Bundle paramBundle2)
-  {
-    super.a(paramBundle1, paramBundle2);
-    this.jdField_a_of_type_Wpk = ((wpk)wpm.a(29));
-    a(2131558447);
-    a(2131363786).setOnClickListener(this);
-    a(2131363841).setOnClickListener(this);
-    a(2131363737).setOnClickListener(this);
-    a(2131363873).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131365840));
-    this.b = ((EditText)a(2131365807));
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.1(this), true);
-      continue;
-      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.2(this), true);
-      continue;
-      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.3(this));
-      continue;
-      this.b.getText().toString();
-      this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      this.b.getText().clear();
-      this.jdField_a_of_type_AndroidWidgetEditText.getText().clear();
-      new woc(BaseApplicationImpl.getApplication().getRuntime().getAccount()).a();
-      continue;
-      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.4(this, this.b.getText().toString(), this.jdField_a_of_type_AndroidWidgetEditText.getText().toString()));
-    }
-  }
+  public abstract void a(T paramT, Bundle paramBundle);
 }
 
 

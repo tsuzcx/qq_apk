@@ -1,6 +1,8 @@
+import android.os.Bundle;
+
 public abstract interface bmeh
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(Bundle paramBundle);
 }
 
 

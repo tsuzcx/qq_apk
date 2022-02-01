@@ -1,20 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.avgame.gameroom.overlay.OverlayView;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.qphone.base.util.QLog;
 
-class ncn
-  implements DialogInterface.OnClickListener
+public class ncn
+  implements nbb
 {
-  ncn(ncl paramncl, long paramLong) {}
+  public ncn(OverlayView paramOverlayView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(LottieDrawable paramLottieDrawable)
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Ncl.a()) {
-      return;
+    if (paramLottieDrawable != null)
+    {
+      OverlayView.c(this.a, paramLottieDrawable);
+      if (QLog.isColorLevel()) {
+        QLog.d("OverlayView", 2, "loadLottieAnim success needRecoverSelfHeadCheerLottie = " + OverlayView.c(this.a));
+      }
+      if (OverlayView.c(this.a))
+      {
+        OverlayView.b(this.a).setImageDrawable(OverlayView.c(this.a));
+        OverlayView.c(this.a).playAnimation();
+        OverlayView.d(this.a, false);
+      }
     }
-    QLog.w(this.jdField_a_of_type_Ncl.a, 1, "showPermissionNormalDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
-    nfx.a(this.jdField_a_of_type_Ncl.a());
   }
 }
 

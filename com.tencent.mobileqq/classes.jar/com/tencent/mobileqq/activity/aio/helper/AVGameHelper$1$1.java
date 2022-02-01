@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agkw;
-import agkx;
-import aiks;
+import agtx;
+import agty;
+import aiul;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import java.util.List;
-import mwr;
+import mxq;
 
 public class AVGameHelper$1$1
   implements Runnable
 {
-  public AVGameHelper$1$1(agkx paramagkx, mwr parammwr) {}
+  public AVGameHelper$1$1(agty paramagty, mxq parammxq) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Mwr == null) || (this.jdField_a_of_type_Mwr.jdField_a_of_type_JavaLangString == null) || (!agkw.a(this.jdField_a_of_type_Agkx.a).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Mwr.jdField_a_of_type_JavaLangString)) || (agkw.a(this.jdField_a_of_type_Agkx.a) == null)) {
+    if ((this.jdField_a_of_type_Mxq == null) || (this.jdField_a_of_type_Mxq.jdField_a_of_type_JavaLangString == null) || (!agtx.a(this.jdField_a_of_type_Agty.a).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Mxq.jdField_a_of_type_JavaLangString)) || (agtx.a(this.jdField_a_of_type_Agty.a) == null)) {
       return;
     }
-    if ((this.jdField_a_of_type_Mwr.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Mwr.jdField_a_of_type_JavaUtilList.size() > 0))
+    if ((this.jdField_a_of_type_Mxq.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Mxq.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      agkw.a(this.jdField_a_of_type_Agkx.a).a(this.jdField_a_of_type_Mwr.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Mwr.jdField_a_of_type_Int);
+      agtx.a(this.jdField_a_of_type_Agty.a).a(this.jdField_a_of_type_Mxq.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Mxq.jdField_a_of_type_Int);
       return;
     }
-    agkw.a(this.jdField_a_of_type_Agkx.a).a();
+    agtx.a(this.jdField_a_of_type_Agty.a).a();
   }
 }
 

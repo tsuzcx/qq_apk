@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import anni;
+import anzj;
 
 public class MessageForTroopStory
   extends MessageForRichText
@@ -19,7 +19,7 @@ public class MessageForTroopStory
   public static final String KEY_UNION_ID = "key_union_id";
   public static final String KEY_VIDEO_HEIGHT = "key_video_height";
   public static final String KEY_VIDEO_WIDTH = "key_video_width";
-  public static final String MSG_CONTENT = anni.a(2131705363);
+  public static final String MSG_CONTENT = anzj.a(2131705470);
   public static final String TAG = "MessageForTroopStory";
   public String compatibleText;
   public int ctrVersion;

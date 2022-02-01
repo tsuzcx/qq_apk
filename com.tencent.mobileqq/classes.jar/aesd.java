@@ -1,19 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aesd
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aesd(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public aesd(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    PublicFragmentActivity.a(this.a, TempMsgSettingFragment.class);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      bdll.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Enter_sendmsg", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131694428), "qqsetting_enter_sendmsg_key", paramBoolean);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+    }
   }
 }
 

@@ -1,24 +1,41 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.mobileqq.widget.QQToast;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import com.tencent.qphone.base.util.QLog;
 
-public class aujq
-  extends Handler
+class aujq
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public aujq(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  aujq(aujj paramaujj) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAudioFocusChange(int paramInt)
   {
-    if (paramMessage.what == 0) {
-      QQToast.a(this.a.a, anni.a(2131703595), 0).a();
+    if (aujj.a(this.a) != null) {
+      QLog.w("FileBrowserPresenter<FileAssistant>", 1, "onAudioFocusChange:mVideoView null!");
     }
-    while (1 != paramMessage.what) {
+    boolean bool;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          bool = aujj.a(this.a).isPlaying();
+          if (paramInt != -2) {
+            break;
+          }
+        } while (!bool);
+        aujj.a(this.a);
+        return;
+        if (paramInt != 1) {
+          break;
+        }
+      } while ((bool) || (this.a.a == null) || (!(this.a.a instanceof FileBrowserActivity)) || (!((FileBrowserActivity)this.a.a).isResume()));
+      aujj.c(this.a);
       return;
-    }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    } while ((paramInt != -1) || (!bool));
+    aujj.a(this.a);
   }
 }
 

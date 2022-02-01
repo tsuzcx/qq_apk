@@ -1,15 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.file.MoveFileActivity;
+import android.content.res.ColorStateList;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 public class aaqo
-  implements DialogInterface.OnClickListener
+  extends ClickableSpan
 {
-  public aaqo(MoveFileActivity paramMoveFileActivity) {}
+  private int jdField_a_of_type_Int;
+  private aaqp jdField_a_of_type_Aaqp;
+  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Aaqp != null)) {
+      this.jdField_a_of_type_Aaqp.a(this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
+      paramTextPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(paramTextPaint.drawableState, 0));
+    }
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

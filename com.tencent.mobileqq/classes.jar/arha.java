@@ -1,38 +1,102 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Game;
-import com.tencent.mobileqq.data.IPSiteModel.GameRich;
-import java.util.ArrayList;
-import java.util.List;
+import org.json.JSONObject;
 
-public final class arha
-  implements Parcelable.Creator
+public class arha
 {
-  public IPSiteModel.Game a(Parcel paramParcel)
+  private long jdField_a_of_type_Long = 2000L;
+  private boolean jdField_a_of_type_Boolean = true;
+  private long jdField_b_of_type_Long = 60000L;
+  private boolean jdField_b_of_type_Boolean = false;
+  private boolean c = true;
+  private boolean d = false;
+  
+  public static arha a(String paramString)
   {
-    IPSiteModel.Game localGame = new IPSiteModel.Game();
-    localGame.cover = paramParcel.readString();
-    localGame.desc = paramParcel.readString();
-    localGame.id = paramParcel.readString();
-    localGame.jumpUrl = paramParcel.readString();
-    localGame.name = paramParcel.readString();
-    localGame.recommDesc = paramParcel.readString();
-    if (localGame.gameRiches == null) {
-      localGame.gameRiches = new ArrayList();
+    boolean bool2 = true;
+    if (paramString == null) {
+      return null;
     }
-    localGame.gameRiches.clear();
-    paramParcel.readList(localGame.gameRiches, IPSiteModel.GameRich.class.getClassLoader());
-    return localGame;
+    try
+    {
+      arha localarha = new arha();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("useNewLog", 1) == 1)
+      {
+        bool1 = true;
+        localarha.jdField_a_of_type_Boolean = bool1;
+        if (paramString.optInt("compressAndEncrypt", 0) != 1) {
+          break label130;
+        }
+        bool1 = true;
+        label56:
+        localarha.jdField_b_of_type_Boolean = bool1;
+        if (paramString.optInt("enableConsole", 1) != 1) {
+          break label135;
+        }
+        bool1 = true;
+        label74:
+        localarha.c = bool1;
+        if (paramString.optInt("enableCheckPermission", 1) != 1) {
+          break label140;
+        }
+      }
+      label130:
+      label135:
+      label140:
+      for (boolean bool1 = bool2;; bool1 = false)
+      {
+        localarha.d = bool1;
+        localarha.jdField_a_of_type_Long = paramString.optLong("locationSdkCallbackIntervalMillis", 2000L);
+        localarha.jdField_b_of_type_Long = paramString.optLong("locationBgTimeoutMillis", 60000L);
+        return localarha;
+        bool1 = false;
+        break;
+        bool1 = false;
+        break label56;
+        bool1 = false;
+        break label74;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  public IPSiteModel.Game[] a(int paramInt)
+  public long a()
   {
-    return new IPSiteModel.Game[paramInt];
+    if (this.jdField_a_of_type_Long < 0L) {
+      return 2000L;
+    }
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public long b()
+  {
+    if (this.jdField_b_of_type_Long < 0L) {
+      return 60000L;
+    }
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public boolean b()
+  {
+    return this.d;
+  }
+  
+  public String toString()
+  {
+    return "QConfLogBean{useNewLog=" + this.jdField_a_of_type_Boolean + ", compressAndEncrypt=" + this.jdField_b_of_type_Boolean + ", enableConsole=" + this.c + ",enableCheckPermission=" + this.d + ",locationSdkCallbackIntervalMillis=" + this.jdField_a_of_type_Long + ",locationBgTimeoutMillis=" + this.jdField_b_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arha
  * JD-Core Version:    0.7.0.1
  */

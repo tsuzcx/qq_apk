@@ -1,32 +1,46 @@
-import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
-class ajxp
-  implements bkij
+public class ajxp
+  implements bliz
 {
-  ajxp(ajxi paramajxi) {}
+  public ajxp(ContactsTroopAdapter paramContactsTroopAdapter, anwo paramanwo, DiscussionInfo paramDiscussionInfo, boolean paramBoolean, blir paramblir) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
-    }
-    if ((this.a.jdField_a_of_type_Ajxg.getCount() <= 0) || (paramInt <= 0)) {}
-    do
+    paramView = this.jdField_a_of_type_Anwo;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo;
+    boolean bool;
+    if (!this.jdField_a_of_type_Boolean)
     {
-      return;
-      paramAdapterView = (ajyc)this.a.jdField_a_of_type_Ajxg.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
+      bool = true;
+      paramView.a((DiscussionInfo)localObject, bool);
+      this.jdField_a_of_type_Blir.e();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label154;
+      }
+      paramInt = 1;
+      label43:
+      paramView = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.uin;
+      ((antz)this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.a.a(22)).notifyUI(18, true, new Object[] { paramView, Integer.valueOf(paramInt), Integer.valueOf(0), null });
+      localObject = new bdlq(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.a).a("dc00899").b("Grp_Dis_set").c("Grp_contactlist");
+      if (!this.jdField_a_of_type_Boolean) {
+        break label159;
+      }
     }
-    ChatHistoryActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.h, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, 0);
+    label154:
+    label159:
+    for (paramView = "Clk_unstick";; paramView = "Clk_stick")
+    {
+      ((bdlq)localObject).d(paramView).a();
+      return;
+      bool = false;
+      break;
+      paramInt = 0;
+      break label43;
+    }
   }
 }
 

@@ -1,18 +1,40 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnInfoListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
 
-class vbm
-  implements MediaPlayer.OnInfoListener
+public abstract class vbm
+  extends aabe
+  implements aabg<QCircleReportBean>
 {
-  vbm(vbl paramvbl) {}
+  protected QCircleReportBean a;
   
-  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  protected int a()
   {
-    if (paramInt1 == 3) {
-      QLog.d("QCircleFolderSplashPart", 1, "videoView render start");
+    return QCircleReportBean.getParentPageId(a(), this.a);
+  }
+  
+  public QCircleReportBean a()
+  {
+    if (this.a == null) {
+      this.a = new QCircleReportBean();
     }
-    return true;
+    return QCircleReportBean.getReportBean(a(), this.a.setModuleIdStr(b()));
+  }
+  
+  public void a(QCircleReportBean paramQCircleReportBean)
+  {
+    this.a = QCircleReportBean.setReportBean(a(), paramQCircleReportBean);
+  }
+  
+  protected int b()
+  {
+    return QCircleReportBean.getPageId(a(), this.a);
+  }
+  
+  protected String b()
+  {
+    if (this.a != null) {
+      return this.a.getModuleIdStr();
+    }
+    return null;
   }
 }
 

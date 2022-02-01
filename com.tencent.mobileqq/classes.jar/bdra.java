@@ -1,7 +1,18 @@
-public final class bdra
+import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
+
+public class bdra
 {
-  public static final String a = anni.a(2131713692);
-  public static final String b = anni.a(2131713706);
+  public Bundle a;
+  public View a;
+  public LinearLayout a;
+  public boolean a;
+  public View b;
+  public LinearLayout b;
+  public View c;
+  public View d;
+  public View e;
 }
 
 

@@ -1,28 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
-public abstract interface rpb
+class rpb
+  implements osf
 {
-  public abstract void a();
+  rpb(roy paramroy) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(@Nullable ColumnInfo paramColumnInfo);
-  
-  public abstract void a(@NotNull ColumnInfo paramColumnInfo, boolean paramBoolean);
-  
-  public abstract void a(@NotNull String paramString);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void b();
-  
-  public abstract void b(@NotNull ColumnInfo paramColumnInfo, boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onViewCreated(boolean paramBoolean)
+  {
+    roy.a(this.a).d();
+  }
 }
 
 

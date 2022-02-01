@@ -1,69 +1,23 @@
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
-import java.util.ArrayList;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import com.tencent.biz.qqcircle.comment.QCircleCommentItemView;
 
 public class vkq
-  implements vwc
+  extends LinearLayoutManager
 {
-  public vkq(QCircleContentOperationView paramQCircleContentOperationView, View.OnClickListener paramOnClickListener) {}
-  
-  public void a()
+  public vkq(QCircleCommentItemView paramQCircleCommentItemView, Context paramContext, int paramInt, boolean paramBoolean)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (QCircleContentOperationView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView)) {}
-    for (String str = "1";; str = "2")
-    {
-      localArrayList.add(vri.a("ext1", str));
-      vrg.a(82, 1, this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.a(), localArrayList, QCircleContentOperationView.e(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView));
-      return;
-    }
+    super(paramContext, paramInt, paramBoolean);
   }
   
-  public void a(boolean paramBoolean)
+  public boolean canScrollHorizontally()
   {
-    ArrayList localArrayList = new ArrayList();
-    String str;
-    if (QCircleContentOperationView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView))
-    {
-      str = "1";
-      localArrayList.add(vri.a("ext1", str));
-      if (!paramBoolean) {
-        break label69;
-      }
-    }
-    label69:
-    for (int i = 2;; i = 3)
-    {
-      vrg.a(82, i, this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.a(), localArrayList, QCircleContentOperationView.f(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView));
-      return;
-      str = "2";
-      break;
-    }
+    return false;
   }
   
-  public void b(boolean paramBoolean)
+  public boolean canScrollVertically()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
-    int i;
-    QCircleContentOperationView localQCircleContentOperationView;
-    if (paramBoolean)
-    {
-      i = 2130844014;
-      ((QCircleContentOperationView)localObject).setBackgroundResource(i);
-      localQCircleContentOperationView = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
-      if (!paramBoolean) {
-        break label52;
-      }
-    }
-    label52:
-    for (localObject = this.jdField_a_of_type_AndroidViewView$OnClickListener;; localObject = null)
-    {
-      localQCircleContentOperationView.setOnClickListener((View.OnClickListener)localObject);
-      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.setClickable(paramBoolean);
-      return;
-      i = 0;
-      break;
-    }
+    return false;
   }
 }
 

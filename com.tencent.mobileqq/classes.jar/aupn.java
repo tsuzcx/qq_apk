@@ -1,45 +1,16 @@
-import com.tencent.mobileqq.fts.entity.FTSEntity;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
 public class aupn
+  implements aumz
 {
-  private int jdField_a_of_type_Int;
-  private Class<? extends FTSEntity> jdField_a_of_type_JavaLangClass;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  aupo[] jdField_a_of_type_ArrayOfAupo;
-  private String b;
+  public aupn(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public aupm a()
+  public void a()
   {
-    if (this.jdField_a_of_type_JavaLangClass == null) {
-      throw new IllegalArgumentException("entityClazz must not be null.");
-    }
-    return new aupm(this.jdField_a_of_type_JavaLangClass, this.jdField_a_of_type_ArrayOfAupo, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    QfileEditBottomBar.a(this.a);
   }
   
-  public aupn a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public aupn a(Class<? extends FTSEntity> paramClass)
-  {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-    return this;
-  }
-  
-  public aupn a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public aupn a(aupo... paramVarArgs)
-  {
-    this.jdField_a_of_type_ArrayOfAupo = paramVarArgs;
-    return this;
-  }
+  public void b() {}
 }
 
 

@@ -1,24 +1,41 @@
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem;
 
-class bkhs
-  implements URLDrawable.DownloadListener
+public final class bkhs
+  implements Parcelable.Creator<QidianProfileCardActivity.QidianCompoundProfileItem>
 {
-  bkhs(bkho parambkho) {}
-  
-  public void onFileDownloadFailed(int paramInt)
+  public QidianProfileCardActivity.QidianCompoundProfileItem a(Parcel paramParcel)
   {
-    QLog.i("ActionSheet", 1, "onFileDownloadFailed " + paramInt);
+    boolean bool2 = true;
+    QidianProfileCardActivity.QidianCompoundProfileItem localQidianCompoundProfileItem = new QidianProfileCardActivity.QidianCompoundProfileItem();
+    localQidianCompoundProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQidianCompoundProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localQidianCompoundProfileItem.c = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      localQidianCompoundProfileItem.jdField_a_of_type_Boolean = bool1;
+      localQidianCompoundProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readByte() == 0) {
+        break label103;
+      }
+    }
+    label103:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localQidianCompoundProfileItem.jdField_b_of_type_Boolean = bool1;
+      localQidianCompoundProfileItem.d = paramParcel.readString();
+      localQidianCompoundProfileItem.e = paramParcel.readString();
+      return localQidianCompoundProfileItem;
+      bool1 = false;
+      break;
+    }
   }
   
-  public void onFileDownloadStarted()
+  public QidianProfileCardActivity.QidianCompoundProfileItem[] a(int paramInt)
   {
-    QLog.i("ActionSheet", 1, "onFileDownloadStarted");
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    QLog.i("ActionSheet", 1, "onFileDownloadSucceed " + paramLong);
+    return new QidianProfileCardActivity.QidianCompoundProfileItem[paramInt];
   }
 }
 

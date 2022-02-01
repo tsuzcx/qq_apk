@@ -1,73 +1,14 @@
-import com.tencent.open.appcommon.js.BaseInterface;
-import com.tencent.smtt.sdk.WebView;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class biqu
+class biqu
+  implements DialogInterface.OnClickListener
 {
-  protected static Map<Integer, List<BaseInterface>> a = new HashMap();
+  biqu(biqq parambiqq, int paramInt, String paramString) {}
   
-  public static void a(WebView paramWebView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i;
-    try
-    {
-      i = paramWebView.hashCode();
-      paramWebView = (List)a.get(Integer.valueOf(i));
-      if (paramWebView == null) {
-        return;
-      }
-      Iterator localIterator = paramWebView.iterator();
-      while (localIterator.hasNext()) {
-        ((BaseInterface)localIterator.next()).destroy();
-      }
-      paramWebView.clear();
-    }
-    catch (Exception paramWebView)
-    {
-      paramWebView.printStackTrace();
-      return;
-    }
-    a.remove(Integer.valueOf(i));
-  }
-  
-  public static void a(WebView paramWebView, String paramString)
-  {
-    try
-    {
-      int i = paramWebView.hashCode();
-      paramWebView = ((List)a.get(Integer.valueOf(i))).iterator();
-      while (paramWebView.hasNext())
-      {
-        BaseInterface localBaseInterface = (BaseInterface)paramWebView.next();
-        if (localBaseInterface != null) {
-          localBaseInterface.setCurrentUrl(paramString);
-        }
-      }
-      return;
-    }
-    catch (Exception paramWebView)
-    {
-      paramWebView.printStackTrace();
-    }
-  }
-  
-  public static void a(List<BaseInterface> paramList, WebView paramWebView, String paramString, avnj paramavnj)
-  {
-    if (!bite.a(paramString))
-    {
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
-      {
-        BaseInterface localBaseInterface = (BaseInterface)localIterator.next();
-        paramavnj.a(localBaseInterface, localBaseInterface.getInterfaceName());
-        biql.a.put(localBaseInterface.getInterfaceName(), localBaseInterface.getClass());
-        localBaseInterface.setCurrentUrl(paramString);
-      }
-    }
-    a.put(Integer.valueOf(paramWebView.hashCode()), paramList);
+    biqq.a(this.jdField_a_of_type_Biqq, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

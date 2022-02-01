@@ -1,59 +1,42 @@
-import android.content.Intent;
-import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import java.util.ArrayList;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 
 class akkh
-  extends akif
+  implements TextWatcher
 {
-  protected akkh(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
-  {
-    super(paramNewPhotoPreviewActivity);
-  }
+  akkh(akkg paramakkg) {}
   
-  public void initData(Intent paramIntent)
+  public void afterTextChanged(Editable paramEditable)
   {
-    super.initData(paramIntent);
-    this.a.customSendBtnText = ((NewPhotoPreviewActivity)this.mActivity).getString(2131689885);
-  }
-  
-  public void initUI()
-  {
-    super.initUI();
-    ((NewPhotoPreviewActivity)this.mActivity).titleView.setVisibility(8);
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new akki(this));
-    ((NewPhotoPreviewActivity)this.mActivity).cancelTv.setVisibility(8);
-  }
-  
-  public void onMagicStickClick(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
-  {
-    if (((NewPhotoPreviewActivity)this.mActivity).getCurrentSelectedPostion() != -1) {
-      this.a.a = ((String)this.a.paths.get(((NewPhotoPreviewActivity)this.mActivity).getCurrentSelectedPostion()));
-    }
-    super.onMagicStickClick(paramView, 18003, paramBundle, paramInt2, EditPicActivity.a(this.mActivity, this.a.a, true, true, true, true, true, false, false, false, 2, 122, 0, false, null));
-    AIOLongShotHelper.a("0X8009DED");
-  }
-  
-  public void updateButton()
-  {
-    super.updateButton();
-    if ((this.mPhotoCommonData.selectedPhotoList != null) && (this.mPhotoCommonData.selectedPhotoList.size() > 0)) {}
-    for (int i = 1;; i = 0)
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (paramEditable.length() == 0)
     {
-      if ((i != 0) && ((this.a.g) || (this.a.isSingleMode)))
-      {
-        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(0);
-        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setEnabled(true);
-      }
+      this.a.jdField_b_of_type_JavaLangString = "";
+      this.a.findViewById(2131368209).setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.a.jdField_a_of_type_Akge.a();
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    }
+    while (this.a.jdField_b_of_type_JavaLangString.equals(paramEditable)) {
       return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "afterTextChanged, lastChangedKeyword = " + this.a.jdField_b_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
+    }
+    this.a.jdField_b_of_type_JavaLangString = paramEditable;
+    this.a.findViewById(2131368209).setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    this.a.a();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

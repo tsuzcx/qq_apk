@@ -1,15 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class shw
-  extends AnimatorListenerAdapter
+  extends pmr
 {
-  public shw(HorizontalRefreshLayout paramHorizontalRefreshLayout) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public shw(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    HorizontalRefreshLayout.a(this.a, 0.0F);
+    super(paramString);
+  }
+  
+  public void a(pmk parampmk)
+  {
+    parampmk.b(ReadInJoyListViewGroup.a(this.a), this.a.a);
   }
 }
 

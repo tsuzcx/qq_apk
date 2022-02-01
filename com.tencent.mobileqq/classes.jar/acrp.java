@@ -1,25 +1,52 @@
-import android.os.Bundle;
+import android.app.Activity;
+import com.tencent.gdtad.api.motivevideo.GdtDemoMvFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
 public class acrp
-  implements BusinessObserver
+  implements acos
 {
-  protected void a(int paramInt, String paramString1, String paramString2) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public acrp(GdtDemoMvFragment paramGdtDemoMvFragment, Activity paramActivity)
   {
-    if (100 == paramInt)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QBossC2SCheckerServlet", 2, "Observer .onReceive Success: " + paramBoolean);
-      }
-      a(paramBundle.getInt("code"), paramBundle.getString("msg"), paramBundle.getString("adid"));
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
+      return paramGdtAd.getAd().getAId();
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("QBossC2SCheckerServlet", 2, "ID__C2S_CHECKER NOT MATCH isSuc" + paramBoolean);
+    return -2147483648L;
+  }
+  
+  public void onAdClicked(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("GdtDemoMvFragment", 1, String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+  }
+  
+  public void onAdClosed(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("GdtDemoMvFragment", 1, String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+  }
+  
+  public void onAdFailedToLoad(com.tencent.gdtad.api.GdtAd paramGdtAd, acor paramacor)
+  {
+    QLog.e("GdtDemoMvFragment", 1, "onAdFailedToLoad " + paramacor.a());
+  }
+  
+  public void onAdImpression(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("GdtDemoMvFragment", 1, String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+  }
+  
+  public void onAdLoaded(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    GdtDemoMvFragment.a(this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtDemoMvFragment, paramGdtAd);
+    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, "demo数据构造成功", 0).a();
+    QLog.i("GdtDemoMvFragment", 1, String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    acoo.a().a(paramGdtAd.getAd());
   }
 }
 

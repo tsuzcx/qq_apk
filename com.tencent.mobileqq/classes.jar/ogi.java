@@ -1,43 +1,27 @@
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyChannelViewPager;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
 
-class ogi
-  implements View.OnClickListener
+public class ogi
+  implements bjey
 {
-  ogi(ogh paramogh) {}
+  public ogi(EcshopNewPageFragment paramEcshopNewPageFragment) {}
   
-  public void onClick(View paramView)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    if (pih.a()) {}
-    for (;;)
+    if ((paramInt == 5) || (paramInt == 4))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Intent localIntent = new Intent();
-      localIntent.putExtra("currentIndex", ogh.a(this.a).getCurrentItem());
-      PublicTransFragmentActivity.b(ogh.a(this.a), localIntent, ReadInJoyChannelPanelFragment.class);
-      try
-      {
-        ReadInJoyChannelPanelFragment.a("0X8009497", new phi().b().c(this.a.a()).a());
-        ogh.a(this.a, false);
-        ogh.a(this.a).setVisibility(8);
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("ReadInJoyChannelViewPagerController", 1, QLog.getStackTraceString(localJSONException));
-        }
-      }
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", "3046055438");
+      paramView.putExtra("source", 5);
+      this.a.startActivity(paramView);
     }
+    while (paramInt != 1) {
+      return;
+    }
+    this.a.getActivity().finish();
   }
 }
 

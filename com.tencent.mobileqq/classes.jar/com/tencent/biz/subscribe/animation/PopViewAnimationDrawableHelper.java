@@ -1,17 +1,17 @@
 package com.tencent.biz.subscribe.animation;
 
-import aabn;
-import aabo;
-import aabp;
-import aabq;
+import aafs;
+import aaft;
+import aafu;
+import aafv;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 
 public class PopViewAnimationDrawableHelper
 {
   private int jdField_a_of_type_Int;
-  private aabp jdField_a_of_type_Aabp;
-  private aabq jdField_a_of_type_Aabq;
+  private aafu jdField_a_of_type_Aafu;
+  private aafv jdField_a_of_type_Aafv;
   private AnimationDrawable jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private Runnable jdField_a_of_type_JavaLangRunnable;
@@ -22,8 +22,8 @@ public class PopViewAnimationDrawableHelper
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = paramAnimationDrawable;
     this.c = paramAnimationDrawable.getNumberOfFrames();
-    this.jdField_a_of_type_AndroidOsHandler = new aabo();
-    this.jdField_a_of_type_Aabq = new aabn(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aaft();
+    this.jdField_a_of_type_Aafv = new aafs(this);
     this.jdField_a_of_type_JavaLangRunnable = new PopViewAnimationDrawableHelper.LoopingRunnable(this);
   }
   
@@ -72,13 +72,13 @@ public class PopViewAnimationDrawableHelper
       return;
       this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
       c();
-    } while (this.jdField_a_of_type_Aabp == null);
-    this.jdField_a_of_type_Aabp.a();
+    } while (this.jdField_a_of_type_Aafu == null);
+    this.jdField_a_of_type_Aafu.a();
   }
   
-  public void a(aabp paramaabp)
+  public void a(aafu paramaafu)
   {
-    this.jdField_a_of_type_Aabp = paramaabp;
+    this.jdField_a_of_type_Aafu = paramaafu;
   }
   
   public void b()

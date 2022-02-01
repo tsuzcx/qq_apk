@@ -1,111 +1,120 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import com.qq.jce.wup.UniPacket;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import java.io.File;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.util.WeakReference;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class boql
+  extends UniPacket
 {
-  private DynamicTextConfigManager jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager;
-  private ConcurrentHashMap<String, ArrayList<WeakReference<boqn>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private final String a = "compressed";
   
-  public boql(DynamicTextConfigManager paramDynamicTextConfigManager)
+  public boql(boolean paramBoolean)
   {
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager = paramDynamicTextConfigManager;
+    super(paramBoolean);
   }
   
-  private void a(boqk paramboqk)
+  private void a(boolean paramBoolean) {}
+  
+  /* Error */
+  private byte[] a(byte[] paramArrayOfByte)
   {
-    if ((paramboqk == null) || (TextUtils.isEmpty(paramboqk.c))) {}
-    File[] arrayOfFile;
-    do
-    {
-      return;
-      arrayOfFile = DynamicTextConfigManager.a.listFiles();
-    } while ((arrayOfFile == null) || (arrayOfFile.length == 0));
-    int j = arrayOfFile.length;
-    int i = 0;
-    label40:
-    File localFile;
-    if (i < j)
-    {
-      localFile = arrayOfFile[i];
-      if (localFile != null) {
-        break label63;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label40;
-      break;
-      label63:
-      String str1 = localFile.getName();
-      if (TextUtils.isEmpty(str1)) {
-        localFile.delete();
-      }
-      if (str1.contains("_"))
-      {
-        String str2 = str1.substring(0, str1.lastIndexOf("_"));
-        if ((paramboqk.c.equalsIgnoreCase(str2)) && (!str1.equalsIgnoreCase(paramboqk.a()))) {
-          localFile.delete();
-        }
-      }
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +5 -> 6
+    //   4: aconst_null
+    //   5: areturn
+    //   6: new 20	java/util/zip/Inflater
+    //   9: dup
+    //   10: invokespecial 23	java/util/zip/Inflater:<init>	()V
+    //   13: astore_2
+    //   14: aload_2
+    //   15: aload_1
+    //   16: iconst_0
+    //   17: aload_1
+    //   18: arraylength
+    //   19: invokevirtual 27	java/util/zip/Inflater:setInput	([BII)V
+    //   22: sipush 4096
+    //   25: newarray byte
+    //   27: astore_3
+    //   28: new 29	java/io/ByteArrayOutputStream
+    //   31: dup
+    //   32: invokespecial 30	java/io/ByteArrayOutputStream:<init>	()V
+    //   35: astore 4
+    //   37: aload_2
+    //   38: invokevirtual 34	java/util/zip/Inflater:finished	()Z
+    //   41: ifne +29 -> 70
+    //   44: aload 4
+    //   46: aload_3
+    //   47: iconst_0
+    //   48: aload_2
+    //   49: aload_3
+    //   50: invokevirtual 38	java/util/zip/Inflater:inflate	([B)I
+    //   53: invokevirtual 41	java/io/ByteArrayOutputStream:write	([BII)V
+    //   56: goto -19 -> 37
+    //   59: astore_3
+    //   60: aload_3
+    //   61: invokevirtual 44	java/util/zip/DataFormatException:printStackTrace	()V
+    //   64: aload_2
+    //   65: invokevirtual 47	java/util/zip/Inflater:end	()V
+    //   68: aload_1
+    //   69: areturn
+    //   70: aload 4
+    //   72: invokevirtual 51	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   75: astore_3
+    //   76: aload_2
+    //   77: invokevirtual 47	java/util/zip/Inflater:end	()V
+    //   80: aload_3
+    //   81: areturn
+    //   82: astore_1
+    //   83: aload_2
+    //   84: invokevirtual 47	java/util/zip/Inflater:end	()V
+    //   87: aload_1
+    //   88: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	89	0	this	boql
+    //   0	89	1	paramArrayOfByte	byte[]
+    //   13	71	2	localInflater	java.util.zip.Inflater
+    //   27	23	3	arrayOfByte1	byte[]
+    //   59	2	3	localDataFormatException	java.util.zip.DataFormatException
+    //   75	6	3	arrayOfByte2	byte[]
+    //   35	36	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    // Exception table:
+    //   from	to	target	type
+    //   37	56	59	java/util/zip/DataFormatException
+    //   70	76	59	java/util/zip/DataFormatException
+    //   37	56	82	finally
+    //   60	64	82	finally
+    //   70	76	82	finally
   }
   
-  public void a(@NonNull boqk paramboqk, boqn paramboqn)
+  public <T> T getByClass(String paramString, T paramT)
   {
-    if ((paramboqk == null) || (TextUtils.isEmpty(paramboqk.jdField_a_of_type_JavaLangString)))
+    Object localObject;
+    if ((this._data != null) && (this._data.containsKey("compressed")) && (this._data.get("compressed") != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("DText", 2, "startDownloadDynamicTextRes fontInfo is null or resUrl is empty.");
-      }
-      return;
-    }
-    Object localObject = paramboqk.jdField_a_of_type_JavaLangString;
-    if (QLog.isColorLevel()) {
-      QLog.i("DText", 2, "startDownloadDynamicText res url: " + (String)localObject);
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+      localObject = (byte[])((HashMap)this._data.get("compressed")).get("string");
+      if ("true".equalsIgnoreCase(new String((byte[])localObject)))
       {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localObject))
+        localObject = (HashMap)this._data.get(paramString);
+        if (localObject != null)
         {
-          paramboqk = (ArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-          localObject = paramboqk.iterator();
-          if (!((Iterator)localObject).hasNext()) {
-            break label268;
+          localObject = ((HashMap)localObject).entrySet().iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            localObject = (Map.Entry)((Iterator)localObject).next();
+            ((Map.Entry)localObject).setValue(a((byte[])((Map.Entry)localObject).getValue()));
           }
-          if (((WeakReference)((Iterator)localObject).next()).get() != paramboqn) {
-            continue;
-          }
-          i = 1;
-          if (i == 0) {
-            paramboqk.add(new WeakReference(paramboqn));
-          }
-          return;
         }
       }
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(new WeakReference(paramboqn));
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject, localArrayList);
-      paramboqn = new bdvs();
-      paramboqn.jdField_a_of_type_Bdvw = new boqm(this);
-      paramboqn.jdField_a_of_type_JavaLangString = ((String)localObject);
-      paramboqn.jdField_a_of_type_Int = 0;
-      paramboqn.c = DynamicTextConfigManager.a(paramboqk);
-      paramboqn.b = bgnt.a(bdwu.a().a());
-      paramboqn.a(paramboqk);
-      lbd.a().a(paramboqn);
-      return;
-      label268:
-      int i = 0;
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      a(bool);
+      return super.getByClass(paramString, paramT);
+      QLog.e("CompressUniPacket", 1, "not compressed " + new String((byte[])localObject));
     }
   }
 }

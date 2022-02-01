@@ -1,62 +1,22 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
 
 public class aqxi
-  extends aqwr<aqxh>
+  extends Handler
 {
-  public static aqxh c()
-  {
-    return (aqxh)aqlk.a().a(412);
-  }
+  public aqxi(LocationSelectActivity paramLocationSelectActivity) {}
   
-  @NonNull
-  public aqxh a()
+  public void handleMessage(Message paramMessage)
   {
-    return new aqxh();
-  }
-  
-  @NonNull
-  public aqxh a(aqlg[] paramArrayOfaqlg)
-  {
-    boolean bool = true;
-    localaqxh = new aqxh();
-    try
-    {
-      if (new JSONObject(paramArrayOfaqlg[0].a).optInt("allow_edit_color_nick", 1) == 1) {}
-      for (;;)
-      {
-        localaqxh.a = bool;
-        return localaqxh;
-        bool = false;
-      }
-      return localaqxh;
+    if (paramMessage.what == 1000) {
+      this.a.a(((Boolean)((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[0]).booleanValue(), (String[])((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[1]);
     }
-    catch (JSONException paramArrayOfaqlg)
-    {
-      yqp.e("QVipColorNickProcessor", "QVipColorNickProcessor onParsed exception :" + paramArrayOfaqlg.getMessage());
-    }
-  }
-  
-  @NonNull
-  public aqxh b()
-  {
-    return new aqxh();
-  }
-  
-  public Class<aqxh> clazz()
-  {
-    return aqxh.class;
-  }
-  
-  public int type()
-  {
-    return 412;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqxi
  * JD-Core Version:    0.7.0.1
  */

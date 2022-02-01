@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.widget;
 
-import afur;
+import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -23,19 +23,19 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import tio;
-import tip;
-import tiq;
-import tir;
-import zby;
+import szi;
+import szj;
+import szk;
+import szl;
+import zft;
 
 public class ReadInJoyScrollViewSwitcher
   extends ViewSwitcher
 {
   private int jdField_a_of_type_Int = 400;
-  private ArrayList<tir> jdField_a_of_type_JavaUtilArrayList;
-  private tip jdField_a_of_type_Tip;
-  public tiq a;
+  private ArrayList<szl> jdField_a_of_type_JavaUtilArrayList;
+  private szj jdField_a_of_type_Szj;
+  public szk a;
   private int b;
   private int c;
   
@@ -51,35 +51,35 @@ public class ReadInJoyScrollViewSwitcher
     d();
   }
   
-  private void a(tir paramtir, View paramView, int paramInt)
+  private void a(szl paramszl, View paramView, int paramInt)
   {
-    TextView localTextView = (TextView)paramView.findViewById(2131378445);
-    localTextView.setText(paramtir.jdField_a_of_type_JavaLangString);
-    paramView = (CornerImageView)paramView.findViewById(2131368138);
-    paramView.setRadius(afur.a(2.0F, getResources()));
+    TextView localTextView = (TextView)paramView.findViewById(2131378603);
+    localTextView.setText(paramszl.jdField_a_of_type_JavaLangString);
+    paramView = (CornerImageView)paramView.findViewById(2131368212);
+    paramView.setRadius(agej.a(2.0F, getResources()));
     RelativeLayout.LayoutParams localLayoutParams;
-    if (TextUtils.isEmpty(paramtir.b)) {
-      if (paramtir.jdField_a_of_type_Int > 0)
+    if (TextUtils.isEmpty(paramszl.b)) {
+      if (paramszl.jdField_a_of_type_Int > 0)
       {
-        paramView.setImageDrawable(getResources().getDrawable(paramtir.jdField_a_of_type_Int));
+        paramView.setImageDrawable(getResources().getDrawable(paramszl.jdField_a_of_type_Int));
         localLayoutParams = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
-        localLayoutParams.rightMargin = afur.a(32.0F, getResources());
+        localLayoutParams.rightMargin = agej.a(32.0F, getResources());
         localTextView.setLayoutParams(localLayoutParams);
         paramView.setVisibility(0);
       }
     }
     for (;;)
     {
-      localTextView.setOnClickListener(new tio(this, paramtir));
+      localTextView.setOnClickListener(new szi(this, paramszl));
       return;
       paramView.setVisibility(8);
       paramView = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
-      paramView.rightMargin = afur.a(5.0F, getResources());
+      paramView.rightMargin = agej.a(5.0F, getResources());
       localTextView.setLayoutParams(paramView);
       continue;
-      a(paramtir.b, paramView);
+      a(paramszl.b, paramView);
       localLayoutParams = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
-      localLayoutParams.rightMargin = afur.a(32.0F, getResources());
+      localLayoutParams.rightMargin = agej.a(32.0F, getResources());
       localTextView.setLayoutParams(localLayoutParams);
       paramView.setVisibility(0);
     }
@@ -88,7 +88,7 @@ public class ReadInJoyScrollViewSwitcher
   private void c()
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Tip = new tip(this);
+    this.jdField_a_of_type_Szj = new szj(this);
     setAnimateFirstView(false);
   }
   
@@ -129,7 +129,7 @@ public class ReadInJoyScrollViewSwitcher
     for (int i = 0;; i = this.b + 1)
     {
       this.b = i;
-      a((tir)this.jdField_a_of_type_JavaUtilArrayList.get(this.b), getNextView(), this.b);
+      a((szl)this.jdField_a_of_type_JavaUtilArrayList.get(this.b), getNextView(), this.b);
       showNext();
       return;
     }
@@ -138,9 +138,9 @@ public class ReadInJoyScrollViewSwitcher
   protected void a(String paramString, URLImageView paramURLImageView)
   {
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = zby.b(getContext(), 24.0F);
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = zby.b(getContext(), 24.0F);
-    ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = zby.b(getContext(), 2.0F);
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = zft.b(getContext(), 24.0F);
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = zft.b(getContext(), 24.0F);
+    ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = zft.b(getContext(), 2.0F);
     try
     {
       localObject = URLDrawable.getDrawable(new URL("redtouchpicdownloadprotoc", null, paramString), (URLDrawable.URLDrawableOptions)localObject);
@@ -163,19 +163,19 @@ public class ReadInJoyScrollViewSwitcher
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
       return;
     }
-    this.jdField_a_of_type_Tip.removeMessages(0);
-    this.jdField_a_of_type_Tip.sendEmptyMessageDelayed(0, this.c);
+    this.jdField_a_of_type_Szj.removeMessages(0);
+    this.jdField_a_of_type_Szj.sendEmptyMessageDelayed(0, this.c);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.jdField_a_of_type_Tip.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Szj.removeCallbacksAndMessages(null);
   }
   
-  public void setOnClickListener(tiq paramtiq)
+  public void setOnClickListener(szk paramszk)
   {
-    this.jdField_a_of_type_Tiq = paramtiq;
+    this.jdField_a_of_type_Szk = paramszk;
   }
 }
 

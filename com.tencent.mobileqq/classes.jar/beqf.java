@@ -1,35 +1,42 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
+import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-class beqf
-  implements Animation.AnimationListener
+public class beqf
+  extends bemu
 {
-  beqf(beqc parambeqc, boolean paramBoolean) {}
+  public beqf(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, boolean paramBoolean, bent parambent)
   {
-    if (beqc.a(this.jdField_a_of_type_Beqc) != null)
-    {
-      beqc.a(this.jdField_a_of_type_Beqc).a.clearAnimation();
-      beqc.a(this.jdField_a_of_type_Beqc).a.setVisibility(8);
-    }
-    beqc.a(this.jdField_a_of_type_Beqc, false);
-    beqc.a(this.jdField_a_of_type_Beqc, null);
-    beqc.a(this.jdField_a_of_type_Beqc, null);
-    beqc.a(this.jdField_a_of_type_Beqc, -1);
-    if ((!this.jdField_a_of_type_Boolean) && (!beqc.b(this.jdField_a_of_type_Beqc)))
-    {
-      ThreadManager.getUIHandler().post(beqc.a(this.jdField_a_of_type_Beqc));
-      beqc.b(this.jdField_a_of_type_Beqc, true);
-    }
+    super.a(paramInt, paramBoolean, parambent);
+    WriteTogetherEditorFragment.a(this.a, paramBoolean, parambent);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(int paramInt, boolean paramBoolean, OpenDocParam paramOpenDocParam)
+  {
+    super.a(paramInt, paramBoolean, paramOpenDocParam);
+    WriteTogetherEditorFragment.a(this.a, paramBoolean, paramOpenDocParam);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    super.a(paramInt, paramBoolean, paramArrayOfObject);
+    WriteTogetherEditorFragment.a(this.a, false);
+    WriteTogetherEditorFragment.b(this.a, paramBoolean);
+    WriteTogetherEditorFragment.a(this.a);
+    if (!paramBoolean) {
+      QQToast.a(WriteTogetherEditorFragment.a(this.a), WriteTogetherEditorFragment.a(this.a).getResources().getString(2131719397), 0).a();
+    }
+    if (paramBoolean)
+    {
+      this.a.getActivity().setResult(15);
+      this.a.getActivity().finish();
+    }
+  }
 }
 
 

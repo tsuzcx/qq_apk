@@ -1,11 +1,21 @@
-import com.google.gson.reflect.TypeToken;
-import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
-import java.util.List;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProvider.AndroidViewModelFactory;
+import android.arch.lifecycle.ViewModelProvider.Factory;
+import android.arch.lifecycle.ViewModelStoreOwner;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class bofz
-  extends TypeToken<List<AEEditorDownloadResBean>>
+public class bofz
 {
-  bofz(bofw parambofw) {}
+  public static ViewModelProvider a(@NonNull ViewModelStoreOwner paramViewModelStoreOwner)
+  {
+    return new ViewModelProvider(paramViewModelStoreOwner, ViewModelProvider.AndroidViewModelFactory.getInstance(BaseApplicationImpl.getApplication()));
+  }
+  
+  public static ViewModelProvider a(@NonNull ViewModelStoreOwner paramViewModelStoreOwner, ViewModelProvider.Factory paramFactory)
+  {
+    return new ViewModelProvider(paramViewModelStoreOwner, paramFactory);
+  }
 }
 
 

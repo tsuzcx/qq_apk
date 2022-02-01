@@ -1,24 +1,13 @@
-import android.os.Build.VERSION;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.JBMR2VideoConverterImpl;
-import java.io.File;
+import android.graphics.Bitmap;
+import android.graphics.PointF;
+import android.support.annotation.NonNull;
 
 public class bqjs
+  extends bqkh
 {
-  bqjv a;
-  
-  public bqjs()
+  public bqjs(bqjr parambqjr, String[] paramArrayOfString, @NonNull Bitmap paramBitmap, @NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
   {
-    if (Build.VERSION.SDK_INT >= 18) {
-      this.a = new JBMR2VideoConverterImpl();
-    }
-  }
-  
-  public boolean a(File paramFile, bqjt parambqjt, boolean paramBoolean)
-  {
-    if (this.a != null) {
-      return this.a.a(paramFile, parambqjt, paramBoolean);
-    }
-    return false;
+    super(parambqjr, paramArrayOfString, paramBitmap, paramPointF, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramBoolean);
   }
 }
 

@@ -1,51 +1,96 @@
-import cooperation.vip.jsoninflate.model.AlumBasicData;
-import java.util.List;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Checkable;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.emosm.view.DragSortItemView;
+import com.tencent.mobileqq.emosm.view.DragSortItemViewCheckable;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class asht
+  extends BaseAdapter
 {
-  public static final int FOOTER_TYPE_LOADING = 0;
-  public static final int FOOTER_TYPE_LOAD_FAIL = 1;
-  public static final int FOOTER_TYPE_LOAD_OVER = 2;
-  public static final int TYPE_CAMPUS_VERIFY = 7;
-  public static final int TYPE_EMTPY = 2;
-  public static final int TYPE_FEED = 0;
-  public static final int TYPE_FEED_ADV = 4;
-  public static final int TYPE_FEED_BANNER = 6;
-  public static final int TYPE_FOOTER = 1;
-  public static final int TYPE_MINI_RECOMM = 5;
-  public int clothesId;
-  public int fontId;
-  public int fontType;
-  public boolean mAddFriendVerified;
-  public int mAge;
-  public AlumBasicData mAlumbasicdata;
-  public int mAvailLikeCount;
-  public boolean mBigVipHide;
-  public int mBigVipLevel;
-  public String mDeclaration;
-  public int mFooterType;
-  public int mGender;
-  public boolean mIsMyFeed;
-  public List<ashu> mLabelInfos;
-  public boolean mLiked;
-  public String mNickName;
-  public int mPopularity;
-  public List<ashv> mSchoolInfos;
-  public String mStrRecomTrace;
-  public int mTemplateId;
-  public int mType;
-  public String mUin;
-  public boolean mVipHide;
-  public int mVipLevel;
-  public int mVipType;
-  public int mVoiceDuration;
-  public String mVoiceUrl;
-  public boolean mbAllowStrangerVote;
-  public byte[] voiceCode;
+  private ListAdapter jdField_a_of_type_AndroidWidgetListAdapter;
   
-  public boolean equals(Object paramObject)
+  public asht(DragSortListView paramDragSortListView, ListAdapter paramListAdapter)
   {
-    return (paramObject != null) && ((paramObject instanceof asht)) && (bgjw.a(((asht)paramObject).mUin, this.mUin));
+    this.jdField_a_of_type_AndroidWidgetListAdapter = paramListAdapter;
+    this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(new ashu(this, paramDragSortListView));
+  }
+  
+  public boolean areAllItemsEnabled()
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.areAllItemsEnabled();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItem(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemId(paramInt);
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemViewType(paramInt);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView != null)
+    {
+      localObject = (DragSortItemView)paramView;
+      localView1 = ((DragSortItemView)localObject).getChildAt(0);
+      View localView2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, localView1, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
+      if (localView2 != localView1)
+      {
+        if (localView1 != null) {
+          ((DragSortItemView)localObject).removeViewAt(0);
+        }
+        ((DragSortItemView)localObject).addView(localView2);
+      }
+      DragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeaderViewsCount() + paramInt, (View)localObject, true);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+    }
+    View localView1 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, null, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
+    if ((localView1 instanceof Checkable)) {}
+    for (Object localObject = new DragSortItemViewCheckable(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext());; localObject = new DragSortItemView(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext()))
+    {
+      ((DragSortItemView)localObject).setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+      ((DragSortItemView)localObject).addView(localView1);
+      break;
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.getViewTypeCount();
+  }
+  
+  public boolean hasStableIds()
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.hasStableIds();
+  }
+  
+  public boolean isEmpty()
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.isEmpty();
+  }
+  
+  public boolean isEnabled(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetListAdapter.isEnabled(paramInt);
   }
 }
 

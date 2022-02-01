@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:paddingLeft="12.0dip" android:paddingTop="15.0dip" android:paddingRight="12.0dip" android:paddingBottom="11.5dip" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/dn5" android:layout_width="wrap_content" android:layout_height="27.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/co0" />
-    <include layout="@layout/co1" />
-    <ViewStub android:id="@id/nbt" android:layout="@layout/co2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" />
+    <TextView android:textSize="@dimen/ayk" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/nge" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
+    <ImageView android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginRight="6.5dip" android:src="@drawable/gq5" />
 </LinearLayout>

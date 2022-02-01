@@ -1,43 +1,53 @@
-import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask.1;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask.2;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-public abstract class beat
+public class beat
+  extends beay
 {
-  static final String TAG = "PreDownload.Task";
-  protected QQAppInterface app;
-  protected beaw ctrl;
-  public String key;
-  protected Handler subHandler;
-  public Object userData;
+  private atrl jdField_a_of_type_Atrl = new beau(this);
+  FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
   
-  protected beat(QQAppInterface paramQQAppInterface, String paramString)
+  public beat(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
   {
-    this.key = paramString;
-    this.app = paramQQAppInterface;
-    this.ctrl = ((beaw)this.app.getManager(193));
-    this.subHandler = new Handler(ThreadManager.getSubThreadLooper());
+    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
   }
   
-  public final void cancel()
+  public void a(QQAppInterface paramQQAppInterface)
   {
-    this.subHandler.post(new AbsPreDownloadTask.2(this));
-  }
-  
-  public abstract void realCancel();
-  
-  public abstract void realStart();
-  
-  public final void start()
-  {
-    this.subHandler.post(new AbsPreDownloadTask.1(this));
-  }
-  
-  public String toString()
-  {
-    return super.toString() + "[" + this.key + "]";
+    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
+    {
+      if ((!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString))) {
+        break label197;
+      }
+      MessageRecord localMessageRecord = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long);
+      if ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForFile))) {
+        break label176;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = aunj.a(paramQQAppInterface, (MessageForFile)localMessageRecord);
+      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid))) {
+        break label197;
+      }
+      paramQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend, false, this.jdField_a_of_type_Atrl);
+    }
+    label176:
+    label197:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Beav.i(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      }
+      this.jdField_a_of_type_Beav.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
+      break;
+    }
   }
 }
 

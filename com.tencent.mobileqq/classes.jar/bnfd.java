@@ -1,29 +1,63 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.data.QQAlbumInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.AdapterView;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class bnfd
-  implements bkij
+final class bnfd
+  implements ServiceConnection
 {
-  private bnfd(bnfa parambnfa) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    paramAdapterView = this.a.jdField_a_of_type_Bnex.a(paramInt);
-    paramView = this.a.getActivity().getIntent();
-    if ((paramAdapterView == null) || (paramAdapterView.mMediaFileCount <= 0) || (TextUtils.isEmpty(paramAdapterView.name))) {
-      QQToast.a(this.a.getActivity(), 2131689963, 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginManger", 2, "onServiceConnected");
     }
-    boolean bool;
-    do
+    if (bnfc.a() == null)
     {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "return WeakReference<OnPluginInterfaceReadyListener> is null");
+      }
+      bnfc.a();
       return;
-      bool = this.a.jdField_a_of_type_Bnfq.a(paramAdapterView, paramInt, paramView);
-    } while (this.a.jdField_a_of_type_Bnfe == null);
-    this.a.jdField_a_of_type_Bnfe.a(paramAdapterView, paramInt, bool);
+    }
+    paramComponentName = (bnfe)bnfc.a().get();
+    if (paramComponentName == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "return OnPluginManagerLoadedListener is null");
+      }
+      bnfc.a();
+      return;
+    }
+    if ((paramIBinder != null) && (paramIBinder.isBinderAlive()) && (paramIBinder.pingBinder()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "binder alive");
+      }
+      bnfc.a = new bneg(bnfo.a(paramIBinder));
+      paramComponentName.a(bnfc.a);
+    }
+    for (;;)
+    {
+      bnfc.a();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "binder not alive");
+      }
+      paramComponentName.a(null);
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("plugin_tag", 2, "onServiceDisconnected");
+    }
+    if (bnfc.a != null)
+    {
+      bnfc.a.b();
+      bnfc.a = null;
+    }
   }
 }
 

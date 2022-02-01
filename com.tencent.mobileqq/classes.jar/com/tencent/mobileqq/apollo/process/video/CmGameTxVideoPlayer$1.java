@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.apollo.process.video;
 
-import amtm;
-import amtu;
 import android.os.Handler;
+import anfg;
+import anfo;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class CmGameTxVideoPlayer$1
   implements Runnable
 {
-  public CmGameTxVideoPlayer$1(amtm paramamtm) {}
+  public CmGameTxVideoPlayer$1(anfg paramanfg) {}
   
   public void run()
   {
-    if (amtm.a(this.this$0) < 0L) {}
+    if (anfg.a(this.this$0) < 0L) {}
     do
     {
       return;
-      Iterator localIterator = amtm.a(this.this$0).iterator();
+      Iterator localIterator = anfg.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        amtu localamtu = (amtu)localIterator.next();
-        if (localamtu != null) {
-          localamtu.a(amtm.a(this.this$0), this.this$0.a());
+        anfo localanfo = (anfo)localIterator.next();
+        if (localanfo != null) {
+          localanfo.a(anfg.a(this.this$0), this.this$0.a());
         }
       }
-      amtm.a(this.this$0, this.this$0.a() - this.this$0.b());
-    } while (amtm.a(this.this$0) == null);
-    amtm.a(this.this$0).postDelayed(this, amtm.b(this.this$0));
+      anfg.a(this.this$0, this.this$0.a() - this.this$0.b());
+    } while (anfg.a(this.this$0) == null);
+    anfg.a(this.this$0).postDelayed(this, anfg.b(this.this$0));
   }
 }
 

@@ -1,6 +1,6 @@
 public abstract interface actm
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(Object... paramVarArgs);
 }
 
 

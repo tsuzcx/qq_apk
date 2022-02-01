@@ -1,29 +1,23 @@
-import android.view.View;
-import com.tencent.biz.qqcircle.bizparts.danmaku.text.TextCell;
-
-public abstract interface vhc
+public class vhc
 {
-  public abstract View a();
+  private long a;
+  private long b;
   
-  public abstract void a(TextCell paramTextCell);
+  public vhc(long paramLong)
+  {
+    this.b = paramLong;
+    this.a = this.b;
+  }
   
-  public abstract boolean a();
+  public long a()
+  {
+    return this.b;
+  }
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void invalidate();
-  
-  public abstract boolean isPressed();
-  
-  public abstract void postInvalidate();
-  
-  public abstract void requestLayout();
-  
-  public abstract void setLongClickTrig(boolean paramBoolean);
-  
-  public abstract void setPressed(boolean paramBoolean);
+  public vhc a()
+  {
+    return new vhc(this.b);
+  }
 }
 
 

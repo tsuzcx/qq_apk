@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.serviceAccountFolder;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import tue;
+import tug;
 
 public class ServiceAccountFolderManager$3
   implements Runnable
 {
-  public ServiceAccountFolderManager$3(tue paramtue, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  public ServiceAccountFolderManager$3(tug paramtug, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
   
   public void run()
   {

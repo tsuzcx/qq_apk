@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 
 class dh
-  implements biyk
+  implements bjzj
 {
   dh(dg paramdg) {}
   
@@ -70,7 +70,7 @@ class dh
                 dq.g(this.a.a.app);
                 ((DataLineMsgRecord)localObject).issuc = true;
                 ((DataLineMsgRecord)localObject).progress = 1.0F;
-                ((DataLineMsgRecord)localObject).path = biyj.a().a(((DataLineMsgRecord)localObject).strMoloKey);
+                ((DataLineMsgRecord)localObject).path = bjzi.a().a(((DataLineMsgRecord)localObject).strMoloKey);
                 if (QLog.isColorLevel())
                 {
                   if (((DataLineMsgRecord)localObject).path == null) {
@@ -123,16 +123,16 @@ class dh
     QLog.d("dataline.MoloHandler", 2, "OnDownloadListener.WAIT(" + paramString + ")");
   }
   
-  public void a(biyl parambiyl, int paramInt1, String paramString, int paramInt2)
+  public void a(bjzk parambjzk, int paramInt1, String paramString, int paramInt2)
   {
     Object localObject;
-    if ((parambiyl == null) || (paramInt1 == -25))
+    if ((parambjzk == null) || (paramInt1 == -25))
     {
       if (QLog.isColorLevel()) {
         QLog.d("dataline.MoloHandler", 2, "onDownloadError( tm exit)");
       }
       paramString = this.a.a.a().a().a(0).a();
-      parambiyl = this.a.a.a().a().a(0).a(true);
+      parambjzk = this.a.a.a().a().a(0).a(true);
       paramString = paramString.iterator();
       while (paramString.hasNext())
       {
@@ -148,15 +148,15 @@ class dh
           }
         }
       }
-      if (parambiyl != null) {
-        parambiyl = parambiyl.iterator();
+      if (parambjzk != null) {
+        parambjzk = parambjzk.iterator();
       }
     }
     else
     {
-      while (parambiyl.hasNext())
+      while (parambjzk.hasNext())
       {
-        paramString = ((DataLineMsgSet)parambiyl.next()).values().iterator();
+        paramString = ((DataLineMsgSet)parambjzk.next()).values().iterator();
         while (paramString.hasNext())
         {
           localObject = (DataLineMsgRecord)paramString.next();
@@ -169,10 +169,10 @@ class dh
         }
         continue;
         if (QLog.isColorLevel()) {
-          QLog.d("dataline.MoloHandler", 2, "onDownloadError(" + parambiyl.toString() + "), key[" + parambiyl.a + "], errorCode" + paramInt1 + "], state[" + paramInt2);
+          QLog.d("dataline.MoloHandler", 2, "onDownloadError(" + parambjzk.toString() + "), key[" + parambjzk.a + "], errorCode" + paramInt1 + "], state[" + paramInt2);
         }
-        parambiyl = this.a.a.app.a(0).a(parambiyl.a);
-        if (parambiyl != null) {
+        parambjzk = this.a.a.app.a(0).a(parambjzk.a);
+        if (parambjzk != null) {
           break label460;
         }
       }
@@ -181,10 +181,10 @@ class dh
     {
       return;
       label460:
-      parambiyl = parambiyl.iterator();
-      while (parambiyl.hasNext())
+      parambjzk = parambjzk.iterator();
+      while (parambjzk.hasNext())
       {
-        paramString = (DataLineMsgRecord)parambiyl.next();
+        paramString = (DataLineMsgRecord)parambjzk.next();
         dq.l(this.a.a.app);
         paramString.issuc = false;
         this.a.a.app.a().a(0).c();
@@ -193,23 +193,23 @@ class dh
     }
   }
   
-  public void a(List<biyl> paramList)
+  public void a(List<bjzk> paramList)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      biyl localbiyl = (biyl)paramList.next();
+      bjzk localbjzk = (bjzk)paramList.next();
       if (QLog.isColorLevel()) {
-        QLog.d("dataline.MoloHandler", 2, "onDownloadUpdatem key[" + localbiyl.a + "], appName[" + localbiyl.e + "], progress[" + localbiyl.f);
+        QLog.d("dataline.MoloHandler", 2, "onDownloadUpdatem key[" + localbjzk.a + "], appName[" + localbjzk.e + "], progress[" + localbjzk.f);
       }
-      Object localObject = this.a.a.app.a(0).a(localbiyl.a);
+      Object localObject = this.a.a.app.a(0).a(localbjzk.a);
       if (localObject != null)
       {
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject).next();
-          float f = localbiyl.f / 100.0F;
+          float f = localbjzk.f / 100.0F;
           if (localDataLineMsgRecord.progress < f) {
             localDataLineMsgRecord.progress = f;
           }

@@ -1,67 +1,346 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.ROMUtil;
+import android.graphics.Color;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bgnj
 {
-  public static Intent a(Context paramContext)
-  {
-    if (("MIUI".equals(ROMUtil.getRomName())) && (Build.VERSION.SDK_INT > 19)) {
-      return d(paramContext);
-    }
-    if (("SMARTISAN".equals(ROMUtil.getRomName())) || ("360".equals(ROMUtil.getRomName()))) {
-      return c(paramContext);
-    }
-    return b(paramContext);
-  }
+  private String jdField_a_of_type_JavaLangString = "";
+  private HashMap<Integer, bgnl> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private TreeMap<Integer, Integer> jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
+  private String jdField_b_of_type_JavaLangString = "";
+  private HashMap<Integer, bgni> jdField_b_of_type_JavaUtilHashMap = new HashMap();
+  private String c = "";
   
-  public static Intent b(Context paramContext)
+  public static bgnj a(String paramString)
   {
-    Intent localIntent;
-    if (Build.VERSION.SDK_INT >= 26)
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberLevelMapConfig", 2, "content : " + paramString);
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    HashMap localHashMap1 = new HashMap();
+    HashMap localHashMap2 = new HashMap();
+    TreeMap localTreeMap = new TreeMap();
+    String str2 = "";
+    String str1 = "";
+    ArrayList localArrayList = new ArrayList();
+    localObject3 = str1;
+    localObject1 = str2;
+    try
     {
-      localIntent = new Intent();
-      localIntent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
-      localIntent.putExtra("android.provider.extra.APP_PACKAGE", paramContext.getPackageName());
-      localIntent.putExtra("android.provider.extra.CHANNEL_ID", paramContext.getApplicationInfo().uid);
-      return localIntent;
+      JSONObject localJSONObject = new JSONObject(paramString);
+      localObject3 = str1;
+      localObject1 = str2;
+      paramString = localJSONObject.getJSONArray("grayTroopUins");
+      int i;
+      if (paramString != null)
+      {
+        localObject3 = str1;
+        localObject1 = str2;
+        if (paramString.length() > 0)
+        {
+          i = 0;
+          for (;;)
+          {
+            localObject3 = str1;
+            localObject1 = str2;
+            if (i >= paramString.length()) {
+              break;
+            }
+            localObject3 = str1;
+            localObject1 = str2;
+            localArrayList.add(Integer.valueOf(paramString.getInt(i)));
+            i += 1;
+          }
+        }
+      }
+      localObject3 = str1;
+      localObject1 = str2;
+      paramString = localJSONObject.getJSONArray("troopMemberLevelMap");
+      if (paramString != null)
+      {
+        localObject3 = str1;
+        localObject1 = str2;
+        if (paramString.length() > 0)
+        {
+          i = 0;
+          for (;;)
+          {
+            localObject3 = str1;
+            localObject1 = str2;
+            if (i >= paramString.length()) {
+              break;
+            }
+            localObject3 = str1;
+            localObject1 = str2;
+            localObject2 = paramString.getJSONObject(i);
+            localObject3 = str1;
+            localObject1 = str2;
+            localObject4 = new bgnl(((JSONObject)localObject2).getInt("begin"), ((JSONObject)localObject2).getInt("end"), ((JSONObject)localObject2).getInt("rankid"), ((JSONObject)localObject2).getString("rankname"));
+            localObject3 = str1;
+            localObject1 = str2;
+            localHashMap1.put(Integer.valueOf(((JSONObject)localObject2).getInt("rankid")), localObject4);
+            i += 1;
+          }
+        }
+      }
+      localObject3 = str1;
+      localObject1 = str2;
+      paramString = localJSONObject.getJSONArray("titleBackgroundColor");
+      if (paramString != null)
+      {
+        localObject3 = str1;
+        localObject1 = str2;
+        if (paramString.length() > 0)
+        {
+          i = 0;
+          for (;;)
+          {
+            localObject3 = str1;
+            localObject1 = str2;
+            if (i >= paramString.length()) {
+              break;
+            }
+            localObject3 = str1;
+            localObject1 = str2;
+            localObject2 = paramString.getJSONObject(i);
+            localObject3 = str1;
+            localObject1 = str2;
+            localObject4 = new bgni(((JSONObject)localObject2).getInt("titleId"), ((JSONObject)localObject2).getString("start"), ((JSONObject)localObject2).getString("end"));
+            localObject3 = str1;
+            localObject1 = str2;
+            localHashMap2.put(Integer.valueOf(((JSONObject)localObject2).getInt("titleId")), localObject4);
+            i += 1;
+          }
+        }
+      }
+      localObject3 = str1;
+      localObject1 = str2;
+      paramString = localJSONObject.getJSONArray("oldLevelToNewLevelMap");
+      if (paramString != null)
+      {
+        localObject3 = str1;
+        localObject1 = str2;
+        if (paramString.length() > 0)
+        {
+          i = 0;
+          for (;;)
+          {
+            localObject3 = str1;
+            localObject1 = str2;
+            if (i >= paramString.length()) {
+              break;
+            }
+            localObject3 = str1;
+            localObject1 = str2;
+            localObject2 = paramString.getJSONObject(i);
+            localObject3 = str1;
+            localObject1 = str2;
+            localTreeMap.put(Integer.valueOf(((JSONObject)localObject2).getInt("old")), Integer.valueOf(((JSONObject)localObject2).getInt("new")));
+            i += 1;
+          }
+        }
+      }
+      localObject3 = str1;
+      localObject1 = str2;
+      Object localObject4 = localJSONObject.getJSONObject("onlyLevelBackgroundColor");
+      localObject2 = str1;
+      paramString = str2;
+      if (localObject4 != null)
+      {
+        localObject3 = str1;
+        localObject1 = str2;
+        paramString = ((JSONObject)localObject4).getString("start");
+        localObject3 = str1;
+        localObject1 = paramString;
+        localObject2 = ((JSONObject)localObject4).getString("end");
+      }
+      localObject3 = localObject2;
+      localObject1 = paramString;
+      str1 = localJSONObject.getString("newGroupMemberLevelJumpUrl");
+      localObject1 = str1;
+      if (localObject1 == null) {
+        break label756;
+      }
     }
-    if (Build.VERSION.SDK_INT >= 21)
+    catch (JSONException paramString)
     {
-      localIntent = new Intent();
-      localIntent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
-      localIntent.putExtra("app_package", paramContext.getPackageName());
-      localIntent.putExtra("app_uid", paramContext.getApplicationInfo().uid);
-      return localIntent;
+      for (;;)
+      {
+        paramString.printStackTrace();
+        Object localObject2 = localObject3;
+        paramString = "";
+        localObject3 = localObject1;
+        continue;
+        localObject1 = "";
+      }
     }
-    if (Build.VERSION.SDK_INT >= 19) {
-      return c(paramContext);
+    localObject3 = paramString;
+    paramString = (String)localObject1;
+    localObject1 = new bgnj();
+    ((bgnj)localObject1).jdField_a_of_type_JavaUtilHashMap = localHashMap1;
+    ((bgnj)localObject1).jdField_b_of_type_JavaUtilHashMap = localHashMap2;
+    ((bgnj)localObject1).jdField_a_of_type_JavaUtilList = localArrayList;
+    ((bgnj)localObject1).jdField_a_of_type_JavaUtilTreeMap = localTreeMap;
+    ((bgnj)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject3);
+    ((bgnj)localObject1).jdField_b_of_type_JavaLangString = ((String)localObject2);
+    ((bgnj)localObject1).c = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberLevelMapConfig", 2, "levelMap.size : " + localHashMap1.size() + ",levelColorMap.size :" + localHashMap2.size() + ", tempGrayList.size :" + localArrayList.size());
     }
-    return c(paramContext);
+    return localObject1;
   }
   
-  public static Intent c(Context paramContext)
+  public int a(int paramInt)
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
-    localIntent.setData(Uri.parse("package:" + paramContext.getPackageName()));
-    return localIntent;
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      return 0;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    Object localObject;
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localObject = localIterator.next();
+      localObject = (bgnl)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+    } while ((((bgnl)localObject).jdField_a_of_type_Int > paramInt) || (paramInt > ((bgnl)localObject).b));
+    for (paramInt = ((bgnl)localObject).c;; paramInt = 0) {
+      return paramInt;
+    }
   }
   
-  public static Intent d(Context paramContext)
+  public String a()
   {
-    if (Build.VERSION.SDK_INT < 21) {
-      return c(paramContext);
+    return this.c;
+  }
+  
+  public String a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberLevelMapConfig", 2, "getRankNameByLevel levelMap is null");
+      }
+      return "";
     }
-    Intent localIntent = new Intent("android.intent.action.MAIN");
-    localIntent.setClassName("com.android.settings", "com.android.settings.Settings$NotificationFilterActivity");
-    localIntent.putExtra("appName", paramContext.getResources().getString(paramContext.getApplicationInfo().labelRes));
-    localIntent.putExtra("packageName", paramContext.getPackageName());
-    return localIntent;
+    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    Object localObject2;
+    do
+    {
+      if (!((Iterator)localObject1).hasNext()) {
+        break;
+      }
+      localObject2 = (Integer)((Iterator)localObject1).next();
+      localObject2 = (bgnl)this.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
+    } while ((localObject2 == null) || (((bgnl)localObject2).jdField_a_of_type_Int > paramInt) || (((bgnl)localObject2).b < paramInt));
+    for (localObject1 = ((bgnl)localObject2).jdField_a_of_type_JavaLangString;; localObject1 = "")
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberLevelMapConfig", 2, "getRankNameByLevel strRankName = " + (String)localObject1);
+      }
+      return localObject1;
+    }
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.c);
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberLevelMapConfig", 2, "isGrayTroop troopUin = " + paramString);
+    }
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilList == null))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder().append("grayTroopUinList is null ? ");
+        if (this.jdField_a_of_type_JavaUtilList != null) {
+          break label96;
+        }
+      }
+      for (;;)
+      {
+        QLog.d("TroopMemberLevelMapConfig", 2, bool1);
+        bool2 = false;
+        return bool2;
+        label96:
+        bool1 = false;
+      }
+    }
+    paramString = paramString.substring(paramString.length() - 1);
+    int i = 0;
+    label114:
+    if (i < this.jdField_a_of_type_JavaUtilList.size()) {
+      if (!String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)).equals(paramString)) {}
+    }
+    for (bool1 = bool2;; bool1 = false)
+    {
+      bool2 = bool1;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("TroopMemberLevelMapConfig", 2, "isGrayTroop isGrayTroop = " + bool1);
+      return bool1;
+      i += 1;
+      break label114;
+    }
+  }
+  
+  public int[] a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
+      return null;
+    }
+    return new int[] { Color.parseColor(this.jdField_a_of_type_JavaLangString), Color.parseColor(this.jdField_b_of_type_JavaLangString) };
+  }
+  
+  public int[] a(int paramInt)
+  {
+    Object localObject = (bgni)this.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localObject != null)
+    {
+      String str = ((bgni)localObject).jdField_a_of_type_JavaLangString;
+      localObject = ((bgni)localObject).jdField_b_of_type_JavaLangString;
+      return new int[] { Color.parseColor(str), Color.parseColor((String)localObject) };
+    }
+    return null;
+  }
+  
+  public int b(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilTreeMap == null) || (this.jdField_a_of_type_JavaUtilTreeMap.size() == 0)) {
+      return 0;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      int i = ((Integer)localEntry.getKey()).intValue();
+      int j = ((Integer)localEntry.getValue()).intValue();
+      if (paramInt == i) {
+        return j;
+      }
+    }
+    return 0;
   }
 }
 

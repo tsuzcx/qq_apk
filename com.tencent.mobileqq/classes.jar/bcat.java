@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgType0x210;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bcat
-  implements bcba
+  implements View.OnClickListener
 {
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbyn parambbyn, MessageHandler paramMessageHandler)
+  public bcat(MixSearchWebFragment paramMixSearchWebFragment) {}
+  
+  public void onClick(View paramView)
   {
-    ((PublicAccountHandler)paramMessageHandler.app.a(11)).a(paramMsgType0x210.sub_msg_type.get(), paramMsgType0x210.msg_content.get().toByteArray());
+    this.a.a.setText("");
+    this.a.a.requestFocus();
+    InputMethodManager localInputMethodManager = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    if (localInputMethodManager != null) {
+      localInputMethodManager.showSoftInput(this.a.a, 0);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

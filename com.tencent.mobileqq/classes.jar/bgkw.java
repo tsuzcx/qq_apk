@@ -1,216 +1,148 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.text.Layout;
-import android.text.TextPaint;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuImageLayout;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuLayout;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
-import com.tencent.widget.BubblePopupWindow;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class bgkw
 {
-  public static boolean a;
+  private agwg jdField_a_of_type_Agwg;
+  private bgkx jdField_a_of_type_Bgkx;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private HashMap<Long, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private HashSet<Long> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private HashMap<Long, Long> jdField_b_of_type_JavaUtilHashMap = new HashMap();
+  private HashSet<Long> jdField_b_of_type_JavaUtilHashSet = new HashSet();
+  private HashMap<Long, Long> c = new HashMap();
+  private HashMap<Long, Long> d = new HashMap();
   
-  public static View a(BubblePopupWindow paramBubblePopupWindow, Context paramContext, bguh parambguh, View.OnClickListener paramOnClickListener)
+  public bgkw(bgkv parambgkv, BaseChatPie paramBaseChatPie, agvc paramagvc)
   {
-    return a(paramBubblePopupWindow, paramContext, parambguh, paramOnClickListener, false);
+    this.jdField_a_of_type_Bgkx = ((bgkx)parambgkv);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_Agwg = ((agwg)paramagvc);
   }
   
-  public static View a(BubblePopupWindow paramBubblePopupWindow, Context paramContext, bguh parambguh, View.OnClickListener paramOnClickListener, boolean paramBoolean)
+  private int a(long paramLong)
   {
-    int i;
-    int n;
-    int j;
-    label21:
-    int k;
-    if (paramBoolean)
+    if (this.jdField_a_of_type_JavaUtilHashSet.contains(Long.valueOf(paramLong))) {
+      return 1;
+    }
+    return 2;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_Agwg == null) || (this.jdField_a_of_type_Bgkx == null)) {
+      return;
+    }
+    bdll.b(null, "dc00898", "", this.jdField_a_of_type_Agwg.a(), "0X800B19D", "0X800B19D", 0, 0, "", "", "", "");
+  }
+  
+  public void a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_Agwg == null) || (this.jdField_a_of_type_Bgkx == null)) {
+      return;
+    }
+    bdll.b(null, "dc00898", "", this.jdField_a_of_type_Agwg.a(), "0X800B19E", "0X800B19E", 0, 0, "", "", String.valueOf(paramInt), "");
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_Agwg == null) || (this.jdField_a_of_type_Bgkx == null)) {}
+    String str;
+    do
     {
-      i = 8;
-      int m = 1;
-      n = parambguh.a();
-      j = 0;
-      k = m;
-      if (j < n)
-      {
-        if (parambguh.a(j).b() != 0) {
-          break label182;
-        }
-        k = 0;
+      return;
+      str = "0X800B19A";
+      if (paramInt == 1) {
+        str = "0X800B19F";
       }
-      if (!paramBoolean) {
-        break label191;
-      }
-      if (QQCustomMenuNoIconLayout.jdField_a_of_type_Int == 0)
+    } while ((paramView.getTag() == null) || (!(paramView.getTag() instanceof bgkm)));
+    paramView = (bgkm)paramView.getTag();
+    bdll.b(null, "dc00898", "", this.jdField_a_of_type_Agwg.a(), str, str, 0, 0, String.valueOf(paramView.c()), "", String.valueOf(this.jdField_a_of_type_Bgkx.a()), "");
+    this.jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(paramView.c()));
+  }
+  
+  public void a(Long paramLong1, Long paramLong2)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramLong1, paramLong2);
+    this.d.put(paramLong1, paramLong2);
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap.size() == 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_Agwg == null) || (this.jdField_a_of_type_Bgkx == null)) {
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      Long localLong = (Long)localIterator.next();
+      if ((localLong != null) && (!this.jdField_b_of_type_JavaUtilHashSet.contains(localLong)))
       {
-        localObject = paramContext.getResources();
-        QQCustomMenuNoIconLayout.jdField_a_of_type_Int = ((Resources)localObject).getDisplayMetrics().widthPixels;
-        QQCustomMenuNoIconLayout.jdField_a_of_type_Float = ((Resources)localObject).getDisplayMetrics().density;
-        QQCustomMenuNoIconLayout.c = afur.a(QQCustomMenuNoIconLayout.c, (Resources)localObject);
-        QQCustomMenuNoIconLayout.f = afur.a(QQCustomMenuNoIconLayout.f, (Resources)localObject);
+        this.jdField_b_of_type_JavaUtilHashSet.add(localLong);
+        bdll.b(null, "dc00898", "", this.jdField_a_of_type_Agwg.a(), "0X800B199", "0X800B199", 0, 0, String.valueOf(localLong), "", "", "");
       }
     }
-    for (;;)
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void b(View paramView, int paramInt)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_Agwg == null) || (this.jdField_a_of_type_Bgkx == null)) {}
+    String str;
+    do
     {
-      if ((paramBoolean) || (k == 0) || (QQCustomMenuImageLayout.jdField_a_of_type_Int < 480)) {
-        break label281;
+      return;
+      str = "0X800B1A0";
+      if (paramInt == 0) {
+        str = "0X800B19C";
       }
-      paramContext = new QQCustomMenuImageLayout(paramContext);
-      paramContext.setGravity(17);
-      paramContext.setPadding(QQCustomMenuImageLayout.c, 0, 0, 0);
-      paramContext.setPopup(paramBubblePopupWindow);
-      paramContext.setMenu(parambguh);
-      paramContext.setMenuIconClickListener(paramOnClickListener);
-      paramContext.a();
-      return paramContext;
-      i = 6;
-      break;
-      label182:
-      j += 1;
-      break label21;
-      label191:
-      if (QQCustomMenuImageLayout.jdField_a_of_type_Int == 0)
-      {
-        localObject = paramContext.getResources();
-        QQCustomMenuImageLayout.jdField_a_of_type_Int = ((Resources)localObject).getDisplayMetrics().widthPixels;
-        QQCustomMenuImageLayout.jdField_a_of_type_Float = ((Resources)localObject).getDisplayMetrics().density;
-        QQCustomMenuImageLayout.c = afur.a(QQCustomMenuImageLayout.c, (Resources)localObject);
-        QQCustomMenuImageLayout.d = afur.a(QQCustomMenuImageLayout.d, (Resources)localObject);
-        QQCustomMenuImageLayout.e = afur.a(QQCustomMenuImageLayout.e, (Resources)localObject);
-        QQCustomMenuImageLayout.f = (QQCustomMenuImageLayout.jdField_a_of_type_Int - afur.a(36.0F, (Resources)localObject)) / i;
+    } while ((paramView.getTag() == null) || (!(paramView.getTag() instanceof bgkm)));
+    paramView = (bgkm)paramView.getTag();
+    bdll.b(null, "dc00898", "", this.jdField_a_of_type_Agwg.a(), str, str, 0, 0, String.valueOf(paramView.c()), String.valueOf(this.jdField_a_of_type_Bgkx.a()), String.valueOf(a(paramView.a())), "");
+    this.jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(paramView.a()));
+  }
+  
+  public void b(Long paramLong1, Long paramLong2)
+  {
+    this.jdField_b_of_type_JavaUtilHashMap.put(paramLong1, paramLong2);
+    this.d.put(paramLong1, paramLong2);
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_b_of_type_JavaUtilHashMap.size() == 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_Agwg == null) || (this.jdField_a_of_type_Bgkx == null)) {
+      return;
+    }
+    String str = "";
+    Iterator localIterator = this.c.values().iterator();
+    while (localIterator.hasNext())
+    {
+      Long localLong = (Long)localIterator.next();
+      if (localLong != null) {
+        str = str + ";" + String.valueOf(localLong);
       }
     }
-    label281:
-    if (paramBoolean)
-    {
-      paramContext = new QQCustomMenuNoIconLayout(paramContext);
-      paramContext.setGravity(17);
-      paramContext.setPadding(0, 0, 0, 0);
-      paramContext.setPopup(paramBubblePopupWindow);
-      paramContext.setMenu(parambguh);
-      paramContext.setMenuIconClickListener(paramOnClickListener);
-      paramContext.a();
-      return paramContext;
-    }
-    Object localObject = new QQCustomMenuLayout(paramContext);
-    ((QQCustomMenuLayout)localObject).setGravity(17);
-    a(paramBubblePopupWindow, paramContext, parambguh, paramOnClickListener, (QQCustomMenuLayout)localObject, n);
-    return localObject;
+    bdll.b(null, "dc00898", "", this.jdField_a_of_type_Agwg.a(), "0X800B198", "0X800B198", 0, 0, String.valueOf(this.c.size()), String.valueOf(this.jdField_a_of_type_Bgkx.a()), str, String.valueOf(this.d.size()));
+    this.c.clear();
+    this.d.clear();
   }
   
-  private static QQCustomMenuLayout a(BubblePopupWindow paramBubblePopupWindow, Context paramContext, bguh parambguh, View.OnClickListener paramOnClickListener, QQCustomMenuLayout paramQQCustomMenuLayout, int paramInt)
+  public void c(Long paramLong1, Long paramLong2)
   {
-    int i = 0;
-    while (i < paramInt)
-    {
-      Object localObject = parambguh.a(i);
-      bgkx localbgkx = new bgkx(paramContext, paramBubblePopupWindow);
-      localbgkx.setText(((bguj)localObject).a());
-      localbgkx.setTextSize(13.0F);
-      Resources localResources = paramContext.getResources();
-      TextPaint localTextPaint = new TextPaint(1);
-      localTextPaint.density = localResources.getDisplayMetrics().density;
-      int k = (int)Layout.getDesiredWidth(((bguj)localObject).a(), localTextPaint);
-      int j = 5;
-      if (localTextPaint.density >= 2.0F) {
-        j = 10;
-      }
-      j = (int)(j * localTextPaint.density);
-      localbgkx.setMinimumWidth(j * 2 + k);
-      localbgkx.setPadding(j, 0, j, 0);
-      localbgkx.setContentDescription(((bguj)localObject).a());
-      localbgkx.setId(((bguj)localObject).a());
-      localbgkx.setTextColor(-1);
-      localbgkx.setBackgroundDrawable(null);
-      localbgkx.setIncludeFontPadding(true);
-      localbgkx.setOnClickListener(paramOnClickListener);
-      localbgkx.setGravity(17);
-      paramQQCustomMenuLayout.addView(localbgkx, new LinearLayout.LayoutParams(-2, -2, 1.0F));
-      if (i != paramInt - 1)
-      {
-        localObject = new ImageView(paramContext);
-        ((ImageView)localObject).setBackgroundResource(2130838915);
-        paramQQCustomMenuLayout.addView((View)localObject, -2, -2);
-      }
-      i += 1;
-    }
-    paramQQCustomMenuLayout.a();
-    return paramQQCustomMenuLayout;
+    this.c.put(paramLong1, paramLong2);
   }
   
-  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, int paramInt3, bguh parambguh, View.OnClickListener paramOnClickListener)
+  public void d()
   {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambguh, paramOnClickListener));
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(false);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.c(1);
-    localBubblePopupWindow.b(2);
-    localBubblePopupWindow.e(false);
-    localBubblePopupWindow.g(paramInt3);
-    localBubblePopupWindow.a(0);
-    localBubblePopupWindow.b(paramView, paramInt1, paramInt2);
-    return localBubblePopupWindow;
-  }
-  
-  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, bguh parambguh)
-  {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambguh, null));
-    localBubblePopupWindow.a(null);
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(false);
-    localBubblePopupWindow.a(paramView, paramInt1, paramInt2);
-    return localBubblePopupWindow;
-  }
-  
-  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, bguh parambguh, View.OnClickListener paramOnClickListener)
-  {
-    return a(paramView, paramInt1, paramInt2, parambguh, paramOnClickListener, false);
-  }
-  
-  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, bguh parambguh, View.OnClickListener paramOnClickListener, boolean paramBoolean)
-  {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambguh, paramOnClickListener, paramBoolean));
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.c(1);
-    localBubblePopupWindow.b(2);
-    localBubblePopupWindow.a(paramView, paramInt1, paramInt2, paramBoolean);
-    return localBubblePopupWindow;
-  }
-  
-  public static BubblePopupWindow a(View paramView, bguh parambguh, View.OnClickListener paramOnClickListener)
-  {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambguh, paramOnClickListener));
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.b(paramView);
-    return localBubblePopupWindow;
-  }
-  
-  public static BubblePopupWindow a(View paramView, bguh parambguh, View.OnClickListener paramOnClickListener, bkiz parambkiz)
-  {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambguh, paramOnClickListener));
-    localBubblePopupWindow.a(parambkiz);
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.b(paramView);
-    return localBubblePopupWindow;
+    this.jdField_a_of_type_JavaUtilHashSet.clear();
+    this.jdField_b_of_type_JavaUtilHashSet.clear();
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = null;
+    this.jdField_a_of_type_Agwg = null;
+    this.jdField_a_of_type_Bgkx = null;
   }
 }
 

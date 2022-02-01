@@ -1,19 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager.OpenRedPacketResultStruct;
 
-class qri
-  implements View.OnTouchListener
+public final class qri
+  implements Parcelable.Creator<RIJRedPacketManager.OpenRedPacketResultStruct>
 {
-  qri(qrf paramqrf, LinearLayout paramLinearLayout) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public RIJRedPacketManager.OpenRedPacketResultStruct a(Parcel paramParcel)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-    }
-    return false;
+    return new RIJRedPacketManager.OpenRedPacketResultStruct(paramParcel);
+  }
+  
+  public RIJRedPacketManager.OpenRedPacketResultStruct[] a(int paramInt)
+  {
+    return new RIJRedPacketManager.OpenRedPacketResultStruct[paramInt];
   }
 }
 

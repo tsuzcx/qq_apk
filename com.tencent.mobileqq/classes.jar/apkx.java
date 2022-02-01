@@ -1,40 +1,45 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.HashMap;
 
-class apkx
-  implements WtTicketPromise
+public class apkx
 {
-  apkx(apkv paramapkv, TicketManager paramTicketManager, QQAppInterface paramQQAppInterface, String paramString, apky paramapky) {}
+  private static int a;
+  public static String a;
+  public static HashMap<String, apkf> a;
+  private static int b;
+  public static String b;
+  public static String c;
+  public static String d;
   
-  public void Done(Ticket paramTicket)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkApp.GetPSKeyAsyncHandler", 2, "--- pskey async done---  ");
-    }
-    paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Apky != null) {
-      this.jdField_a_of_type_Apky.a(paramTicket);
-    }
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_Int = 5;
+    jdField_b_of_type_Int = 1;
+    jdField_a_of_type_JavaLangString = "";
+    jdField_b_of_type_JavaLangString = "";
+    c = "";
+    d = "";
+    jdField_a_of_type_JavaUtilHashMap.put("recogQ3", new apkf(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("recogQ4", new apkf(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("recogQ5", new apkf(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("trackQ3", new apkf(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("trackQ4", new apkf(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("trackQ5", new apkf(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("renderQ1", new apkf(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("renderQ0", new apkf(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ1", new apkf(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ0", new apkf(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("camRenderQ0", new apkf(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ1", new apkf(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ0", new apkf(2147483647));
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "--- pskey async failed---  " + paramErrMsg.getMessage());
-    if (this.jdField_a_of_type_Apky != null) {
-      this.jdField_a_of_type_Apky.a(null);
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "--- pskey async timeout---  " + paramErrMsg.getMessage());
-    if (this.jdField_a_of_type_Apky != null) {
-      this.jdField_a_of_type_Apky.a(null);
-    }
+    jdField_a_of_type_JavaLangString = paramString1;
+    jdField_b_of_type_JavaLangString = paramString2;
+    c = paramString3;
+    d = paramString4;
   }
 }
 

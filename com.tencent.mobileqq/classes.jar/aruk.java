@@ -1,16 +1,59 @@
-import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.danmaku.data.ViewDanmaku.1;
 
 public class aruk
+  extends aruj
 {
-  int jdField_a_of_type_Int;
-  public Bundle a;
-  Runnable jdField_a_of_type_JavaLangRunnable;
+  private arvn a;
+  private boolean e;
   
-  public aruk(int paramInt, Bundle paramBundle)
+  public aruk(arul paramarul)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    paramBundle.putInt("seq", paramInt);
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    super(paramarul);
+  }
+  
+  public int a()
+  {
+    return -2147483647;
+  }
+  
+  public arvn a()
+  {
+    return this.a;
+  }
+  
+  public arvp a(arvz paramarvz)
+  {
+    if (this.a != null)
+    {
+      View localView = this.a.a(paramarvz);
+      if (localView != null) {
+        artl.a().a().a().post(new ViewDanmaku.1(this, localView));
+      }
+    }
+    return super.a(paramarvz);
+  }
+  
+  public void a(arvn paramarvn)
+  {
+    this.a = paramarvn;
+  }
+  
+  public void e()
+  {
+    super.e();
+    this.e = false;
+  }
+  
+  public void f(boolean paramBoolean)
+  {
+    this.e = paramBoolean;
+  }
+  
+  public boolean i()
+  {
+    return this.e;
   }
 }
 

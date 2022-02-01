@@ -1,11 +1,11 @@
 package com.tencent.avgame.gameroom;
 
-import mzy;
+import nbb;
 
 public final class AVGameLottieHelper$2
   implements Runnable
 {
-  public AVGameLottieHelper$2(mzy parammzy) {}
+  public AVGameLottieHelper$2(nbb paramnbb) {}
   
   public void run()
   {

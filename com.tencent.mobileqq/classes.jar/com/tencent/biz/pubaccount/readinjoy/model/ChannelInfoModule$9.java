@@ -1,13 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pwn;
+import pfd;
+import poz;
 
 public class ChannelInfoModule$9
   implements Runnable
 {
+  public ChannelInfoModule$9(poz parampoz, int paramInt) {}
+  
   public void run()
   {
-    this.this$0.a(this.a);
+    pfd.a().f(this.a);
   }
 }
 

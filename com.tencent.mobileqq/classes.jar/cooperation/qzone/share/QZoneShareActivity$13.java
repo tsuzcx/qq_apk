@@ -13,7 +13,7 @@ class QZoneShareActivity$13
   {
     this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(0);
     this.this$0.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849050);
+    this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849069);
     this.this$0.d = true;
     this.this$0.e = false;
     QZoneShareActivity.a(this.this$0, this.this$0.d);

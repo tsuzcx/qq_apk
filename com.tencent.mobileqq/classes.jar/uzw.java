@@ -1,41 +1,60 @@
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.widgets.QCircleMessageNoticeView;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public abstract class uzw
-  extends zxj
-  implements zxl<QCircleReportBean>
+public class uzw
+  extends vbn
 {
-  protected QCircleReportBean a;
+  private QCircleMessageNoticeView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView;
+  private vbb jdField_a_of_type_Vbb;
   
-  protected int a()
+  public uzw(Bundle paramBundle)
   {
-    return QCircleReportBean.getParentPageId(a(), this.a);
+    super(paramBundle);
   }
   
-  public QCircleReportBean a()
+  protected BaseWidgetView a(ViewGroup paramViewGroup, aabp paramaabp)
   {
-    if (this.a == null) {
-      this.a = new QCircleReportBean();
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView = new QCircleMessageNoticeView(getContext());
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView.setReportBean(a());
+    return this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView;
+  }
+  
+  protected String a()
+  {
+    return "QCircleMessage_QCircleMessageNoticeBubbleBlock";
+  }
+  
+  public void loadData(aabu paramaabu) {}
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    QLog.d("QCircleMessage_QCircleMessageNoticeBubbleBlock", 1, "onBindViewHolder");
+    if ((this.mDataList != null) && (this.mDataList.size() > 0))
+    {
+      this.jdField_a_of_type_Vbb = ((vbb)this.mDataList.get(paramInt));
+      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView == null) {
+        break label80;
+      }
+      QLog.d("QCircleMessage_QCircleMessageNoticeBubbleBlock", 1, "mMessageNoticeView not null");
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView.setData(this.jdField_a_of_type_Vbb);
     }
-    return QCircleReportBean.getReportBean(a(), this.a.setModuleIdStr(b()));
-  }
-  
-  public void a(QCircleReportBean paramQCircleReportBean)
-  {
-    this.a = QCircleReportBean.setReportBean(a(), paramQCircleReportBean);
-  }
-  
-  protected int b()
-  {
-    return QCircleReportBean.getPageId(a(), this.a);
-  }
-  
-  protected String b()
-  {
-    if (this.a != null) {
-      return this.a.getModuleIdStr();
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+      return;
+      label80:
+      QLog.d("QCircleMessage_QCircleMessageNoticeBubbleBlock", 1, "mMessageNoticeView is null");
     }
-    return null;
   }
+  
+  public void onInitBlock(Bundle paramBundle) {}
 }
 
 

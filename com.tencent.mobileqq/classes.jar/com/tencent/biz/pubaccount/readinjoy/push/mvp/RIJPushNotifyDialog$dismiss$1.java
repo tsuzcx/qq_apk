@@ -5,21 +5,21 @@ import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
-import qqa;
+import qio;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJPushNotifyDialog$dismiss$1
   extends Lambda
   implements Function0<Unit>
 {
-  public RIJPushNotifyDialog$dismiss$1(qqa paramqqa)
+  public RIJPushNotifyDialog$dismiss$1(qio paramqio)
   {
     super(0);
   }
   
   public final void invoke()
   {
-    qqa.a(this.this$0).removeView(qqa.a(this.this$0));
+    qio.a(this.this$0).removeView(qio.a(this.this$0));
   }
 }
 

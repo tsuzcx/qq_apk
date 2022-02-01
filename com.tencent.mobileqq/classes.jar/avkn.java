@@ -1,43 +1,32 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.intervideo.nowproxy.NowPluginObserver;
-import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
+import android.view.View.OnClickListener;
+import com.tencent.gamecenter.activities.GameCenterActivity;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avkn
-  implements NowPluginObserver
+  implements View.OnClickListener
 {
-  public avkn(LoadingFragment paramLoadingFragment) {}
+  public avkn(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  public void onCloseLoadingView()
+  public void onClick(View paramView)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if (localFragmentActivity != null) {
-      localFragmentActivity.finish();
+    Object localObject = "";
+    if (QQGamePubAccountFragment.a(this.a) != null) {
+      localObject = this.a.a(QQGamePubAccountFragment.a(this.a).getCurrentItem());
     }
-  }
-  
-  public void onEnterAvPlugin(Bundle paramBundle) {}
-  
-  public void onEnterRoom(Bundle paramBundle)
-  {
-    this.a.a();
-  }
-  
-  public void onExitRoom(Bundle paramBundle) {}
-  
-  public void onLoadingViewCreated(View paramView)
-  {
-    if (paramView != null)
-    {
-      this.a.getActivity();
-      FrameLayout localFrameLayout = (FrameLayout)this.a.getView();
-      if ((paramView != null) && (localFrameLayout != null)) {
-        localFrameLayout.addView(paramView, new FrameLayout.LayoutParams(-1, -1));
-      }
-    }
+    acik.a(anbd.a(), "769", "205037", (String)localObject, "76901", "1", "160", new String[] { this.a.a(), "", "20" });
+    localObject = new Intent(BaseApplication.getContext(), GameCenterActivity.class);
+    ((Intent)localObject).putExtra("url", "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=gzh&_wv=18950115&_wwv=393");
+    ((Intent)localObject).addFlags(268435456);
+    ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+    ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_zf_games");
+    paramView.getContext().startActivity((Intent)localObject);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

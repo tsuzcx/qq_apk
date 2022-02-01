@@ -1,25 +1,15 @@
-import android.content.Intent;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import com.tencent.avgame.gameroom.stage.StageView;
 
-class nde
-  implements EIPCResultCallback
+public class nde
+  implements ndl
 {
-  nde(ndd paramndd, String paramString, int paramInt) {}
+  public nde(StageView paramStageView) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(View paramView)
   {
-    if ((paramEIPCResult == null) || (!paramEIPCResult.isSuccess()))
-    {
-      paramEIPCResult = new Intent("action_notify_av_game_room_changed");
-      paramEIPCResult.putExtra("action_key_room_id", this.jdField_a_of_type_JavaLangString);
-      paramEIPCResult.putExtra("action_key_status", this.jdField_a_of_type_Int);
-      ndd.a(this.jdField_a_of_type_Ndd).getApp().sendBroadcast(paramEIPCResult);
-      QLog.d("AVGameClientQIPCModule", 2, "status change with broadcast " + this.jdField_a_of_type_Int + " " + this.jdField_a_of_type_JavaLangString);
-    }
+    this.a.a().a();
+    bdll.b(null, "dc00898", "", "", "0X800B04A", "0X800B04A", 1, 0, "", "", "", "");
   }
 }
 

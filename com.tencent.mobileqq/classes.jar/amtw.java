@@ -1,206 +1,395 @@
-import com.tencent.mobileqq.apollo.script.SpriteActionMessage.1;
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.ApolloQueueDownloader.1;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ApolloSlaveInfo;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
 
 public class amtw
+  implements bihz, INetInfoHandler
 {
-  private amug a;
+  private bihy jdField_a_of_type_Bihy;
+  private LinkedList<bihu> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  public AtomicInteger a;
   
-  public amtw(amug paramamug)
+  public amtw(AppRuntime paramAppRuntime, bihy parambihy)
   {
-    this.a = paramamug;
-  }
-  
-  private void a(int paramInt, boolean paramBoolean)
-  {
-    ThreadManager.getUIHandler().post(new SpriteActionMessage.1(this, paramInt, paramBoolean));
-  }
-  
-  private void a(ApolloActionData paramApolloActionData)
-  {
-    if (paramApolloActionData == null) {
-      QLog.e("cmshow_scripted_SpriteActionMessage", 1, "[tiggerAction] actionData is null,return.");
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+    bihy localbihy = parambihy;
+    if (parambihy == null) {
+      localbihy = new bihy();
     }
-    SpriteTaskParam localSpriteTaskParam;
+    this.jdField_a_of_type_Bihy = localbihy;
+    if (this.jdField_a_of_type_Bihy.a) {
+      AppNetConnInfo.registerConnectionChangeReceiver(paramAppRuntime.getApplication(), this);
+    }
+  }
+  
+  private bihu a()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    {
+      if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (localIterator.hasNext())
+        {
+          bihu localbihu = (bihu)localIterator.next();
+          if (!localbihu.a())
+          {
+            localbihu.a();
+            return localbihu;
+          }
+        }
+      }
+      return null;
+    }
+  }
+  
+  public int a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloQueue_Downloader", 2, "cancelTask stopAll=" + paramBoolean + ",key=" + paramString);
+    }
+    Object localObject;
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    {
+      if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
+        break label115;
+      }
+      if (!paramBoolean) {
+        break label119;
+      }
+      paramString = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+      if (paramString.hasNext())
+      {
+        localObject = (bihu)paramString.next();
+        ((bihu)localObject).a(true);
+        ((bihu)localObject).i();
+      }
+    }
+    this.jdField_a_of_type_JavaUtilLinkedList.clear();
+    for (;;)
+    {
+      label115:
+      return 0;
+      label119:
+      if ((paramString == null) || (TextUtils.isEmpty(paramString))) {
+        break;
+      }
+      localObject = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+      ArrayList localArrayList = new ArrayList();
+      while (((Iterator)localObject).hasNext())
+      {
+        bihu localbihu = (bihu)((Iterator)localObject).next();
+        if (paramString.equals(localbihu.jdField_a_of_type_JavaLangString))
+        {
+          if (!localbihu.a())
+          {
+            ((Iterator)localObject).remove();
+            localArrayList.add(localbihu);
+          }
+          else
+          {
+            localbihu.a(true);
+            localbihu.i();
+          }
+        }
+        else if ((localbihu.b()) && (!localbihu.a()))
+        {
+          ((Iterator)localObject).remove();
+          localArrayList.add(localbihu);
+        }
+      }
+      if (localArrayList.size() > 0) {
+        this.jdField_a_of_type_JavaUtilLinkedList.removeAll(localArrayList);
+      }
+    }
+    return -1;
+  }
+  
+  public bihu a(String paramString)
+  {
+    LinkedList localLinkedList = this.jdField_a_of_type_JavaUtilLinkedList;
+    if (paramString != null) {}
+    try
+    {
+      if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (localIterator.hasNext())
+        {
+          bihu localbihu = (bihu)localIterator.next();
+          if (paramString.equals(localbihu.jdField_a_of_type_JavaLangString))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloQueue_Downloader", 2, "getTask | " + paramString + " task find =" + localbihu);
+            }
+            return localbihu;
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloQueue_Downloader", 2, "getTask | " + paramString + " task not find");
+      }
+      return null;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    for (;;)
+    {
+      try
+      {
+        synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+        {
+          Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+          if (!localIterator.hasNext()) {
+            break label185;
+          }
+          bihu localbihu2 = (bihu)localIterator.next();
+          if (localbihu2.d <= 0L) {
+            break label316;
+          }
+          long l = System.currentTimeMillis() / 1000L;
+          if ((!localbihu2.a()) && (l > localbihu2.c + localbihu2.d))
+          {
+            bool = true;
+            if ((!localbihu2.b()) && (!bool)) {
+              continue;
+            }
+            localIterator.remove();
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("ApolloQueue_Downloader", 2, "remove task[" + localbihu2.jdField_a_of_type_JavaLangString + "], isCancal=" + localbihu2.b() + ", timeOut=" + bool);
+          }
+        }
+        bool = false;
+      }
+      finally {}
+      continue;
+      label185:
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloQueue_Downloader", 2, "doTask | downloadLimitCount=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ",maxDownloadCount=" + 3 + ",downloadQueue size=" + this.jdField_a_of_type_JavaUtilLinkedList.size());
+      }
+      for (;;)
+      {
+        bihu localbihu1;
+        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= 3)
+        {
+          localbihu1 = a();
+          if (localbihu1 != null) {
+            break label288;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloQueue_Downloader", 2, "doTask | run() null");
+          }
+        }
+        return;
+        label288:
+        ThreadManager.postDownLoadTask(new ApolloQueueDownloader.1(this, localbihu1), 2, null, false);
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
+      }
+      label316:
+      boolean bool = false;
+    }
+  }
+  
+  public void a(bihu parambihu)
+  {
+    LinkedList localLinkedList = this.jdField_a_of_type_JavaUtilLinkedList;
+    if (parambihu != null) {}
+    try
+    {
+      if ((!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) && (this.jdField_a_of_type_JavaUtilLinkedList.contains(parambihu)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloQueue_Downloader", 2, "removeTask | task=" + parambihu);
+        }
+        parambihu.i();
+        this.jdField_a_of_type_JavaUtilLinkedList.remove(parambihu);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(bihu parambihu, biht arg2, Bundle paramBundle)
+  {
+    if ((!bihw.a(parambihu)) || (a(parambihu.jdField_a_of_type_JavaLangString) == parambihu)) {}
+    bihu localbihu;
     do
     {
       return;
-      localSpriteTaskParam = new SpriteTaskParam();
-      localSpriteTaskParam.f = paramApolloActionData.actionId;
-      localSpriteTaskParam.jdField_c_of_type_Int = 0;
-      localSpriteTaskParam.g = 3;
-      localSpriteTaskParam.e = paramApolloActionData.personNum;
-      localSpriteTaskParam.jdField_a_of_type_Long = -10000L;
-      localSpriteTaskParam.jdField_a_of_type_Boolean = true;
-      localSpriteTaskParam.b = false;
-      localSpriteTaskParam.jdField_c_of_type_JavaLangString = paramApolloActionData.bubbleText;
-    } while ((this.a == null) || (this.a.a() == null));
-    localSpriteTaskParam.jdField_a_of_type_JavaLangString = String.valueOf(this.a.a().getCurrentAccountUin());
-    ((amul)this.a.a().getManager(249)).a().a(localSpriteTaskParam);
-  }
-  
-  private void a(String paramString)
-  {
-    amtx localamtx;
-    if ((this.a != null) && (this.a.a() != null))
-    {
-      localamtx = amuo.a(this.a.a());
-      if (localamtx != null) {}
+      localbihu = a(parambihu.jdField_a_of_type_JavaLangString);
+      if (localbihu == null) {
+        break;
+      }
+    } while ((localbihu == null) || (!localbihu.s));
+    parambihu.a(???);
+    parambihu.a(paramBundle);
+    ??? = BaseApplicationImpl.getApplication().getRuntime();
+    if ((??? != null) && (parambihu.jdField_a_of_type_Bihv.a < 0L)) {
+      parambihu.jdField_a_of_type_Bihv.a = ???.getLongAccountUin();
     }
-    else
-    {
-      return;
-    }
-    localamtx.a("", paramString);
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt)
-  {
-    if ((this.a == null) || (this.a.a() == null)) {
-      return;
-    }
-    QQAppInterface localQQAppInterface = this.a.a();
-    ApolloActionData localApolloActionData = ((ancd)localQQAppInterface.getManager(155)).a(paramInt);
-    String str = anni.a(2131713013);
-    if (localApolloActionData == null)
-    {
-      a(str);
-      return;
-    }
-    localApolloActionData.bubbleText = str;
-    if (!ApolloUtil.a(paramInt, localApolloActionData.personNum))
-    {
-      ((amhd)localQQAppInterface.getManager(153)).a(localApolloActionData, 4);
-      a(str);
-      return;
-    }
-    a(localApolloActionData);
-  }
-  
-  public boolean a(MessageForApollo paramMessageForApollo)
-  {
-    int k = 2;
-    int j = 0;
-    if ((paramMessageForApollo.actionType != 5) || (this.a == null) || (this.a.a() == null)) {
-      return true;
-    }
-    QQAppInterface localQQAppInterface = this.a.a();
-    String str1 = paramMessageForApollo.extendJson;
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteActionMessage", 2, new Object[] { "rep data:", str1 });
+    localbihu.a(parambihu);
+    return;
+    parambihu.a(???);
+    parambihu.a(paramBundle);
+    parambihu.g = 3;
+    ??? = BaseApplicationImpl.getApplication().getRuntime();
+    if ((??? != null) && (parambihu.jdField_a_of_type_Bihv.a < 0L)) {
+      parambihu.jdField_a_of_type_Bihv.a = ???.getLongAccountUin();
     }
     for (;;)
     {
-      int i;
-      boolean bool1;
-      boolean bool2;
-      try
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
       {
-        paramMessageForApollo = new JSONObject(paramMessageForApollo.extendJson);
-        if (!paramMessageForApollo.has("data")) {
-          break label332;
-        }
-        String str2 = localQQAppInterface.getCurrentAccountUin();
-        JSONObject localJSONObject = paramMessageForApollo.getJSONObject("data");
-        JSONArray localJSONArray = localJSONObject.getJSONArray("slaveInfoList");
-        Object localObject = null;
-        str1 = null;
-        paramMessageForApollo = localObject;
-        if (localJSONArray != null)
+        paramBundle = a(parambihu.jdField_a_of_type_JavaLangString);
+        if (paramBundle == null)
         {
-          paramMessageForApollo = localObject;
-          if (localJSONArray.length() > 0)
+          parambihu.c = ((int)(System.currentTimeMillis() / 1000L));
+          if (parambihu.b)
           {
-            i = 0;
-            paramMessageForApollo = str1;
-            if (i < localJSONArray.length())
-            {
-              paramMessageForApollo = (ApolloSlaveInfo)bghp.a(localJSONArray.getJSONObject(i), ApolloSlaveInfo.class);
-              if (!str2.equals(String.valueOf(paramMessageForApollo.uin))) {
-                continue;
-              }
+            this.jdField_a_of_type_JavaUtilLinkedList.addFirst(parambihu);
+            if ((parambihu.jdField_a_of_type_JavaUtilList != null) && (parambihu.jdField_a_of_type_JavaUtilList.size() != 0)) {
+              break label328;
             }
+            ??? = null;
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloQueue_Downloader", 2, new Object[] { "startDownload | task=" + parambihu.jdField_a_of_type_JavaLangString, ", url:", ??? });
+            }
+            a();
+            return;
           }
+          this.jdField_a_of_type_JavaUtilLinkedList.addLast(parambihu);
         }
-        if (paramMessageForApollo == null) {
-          break label324;
-        }
-        i = paramMessageForApollo.slaveTotal;
-        if (paramMessageForApollo.isCaptured == 1)
-        {
-          bool1 = true;
-          int m = localJSONObject.optInt("defaultActId");
-          a(i, bool1);
-          if ((bool1) || (i != 0)) {
-            break label318;
-          }
-          a(m);
-          bool2 = false;
-          break label343;
-          VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "clickslaveaction", j, i, new String[0]);
-          return bool2;
-          i += 1;
-          continue;
-        }
-        bool1 = false;
+      }
+      if ((parambihu.b) && (!paramBundle.a()) && (this.jdField_a_of_type_JavaUtilLinkedList.remove(paramBundle)))
+      {
+        this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramBundle);
         continue;
-        if (i > 0) {
-          i = k;
-        } else {
-          i = 3;
-        }
-      }
-      catch (Exception paramMessageForApollo)
-      {
-        QLog.i("cmshow_scripted_SpriteActionMessage", 1, "[handleSendMsg] Exception", paramMessageForApollo);
-        return true;
-      }
-      if (i == 0)
-      {
-        i = 0;
-      }
-      else
-      {
-        i = 1;
-        break label355;
-        label318:
-        bool2 = true;
-        break label343;
-        label324:
-        bool1 = false;
-        i = 0;
-        continue;
-        label332:
-        bool1 = false;
-        i = 0;
-        bool2 = true;
-        break label355;
-        label343:
-        if (!bool1) {
-          continue;
-        }
-        if (i < 5) {
-          continue;
-        }
-        i = 1;
-      }
-      label355:
-      if (bool1) {
-        j = 1;
+        label328:
+        ??? = (String)parambihu.jdField_a_of_type_JavaUtilList.get(0);
       }
     }
+  }
+  
+  public void b()
+  {
+    a(true, null);
+  }
+  
+  public void onNetMobile2None()
+  {
+    if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloQueue_Downloader", 2, "queueDownload network-onNetMobile2None");
+      }
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (localIterator.hasNext())
+        {
+          bihu localbihu = (bihu)localIterator.next();
+          if (localbihu.a() == 2) {
+            localbihu.h();
+          }
+        }
+      }
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloQueue_Downloader", 2, "queueDownload network-onNetMobile2Wifi");
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloQueue_Downloader", 2, "queueDownload network-onNetNone2Mobile");
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloQueue_Downloader", 2, "queueDownload network-onNetNone2Wifi");
+    }
+  }
+  
+  public void onNetWifi2Mobile(String arg1)
+  {
+    if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)) {
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (localIterator.hasNext())
+        {
+          bihu localbihu = (bihu)localIterator.next();
+          if (localbihu.a() == 2) {
+            localbihu.f();
+          }
+        }
+      }
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloQueue_Downloader", 2, "queueDownload network-onNetWifi2None");
+      }
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (localIterator.hasNext())
+        {
+          bihu localbihu = (bihu)localIterator.next();
+          if (localbihu.a() == 2) {
+            localbihu.g();
+          }
+        }
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)) {
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        if (localIterator.hasNext())
+        {
+          bihu localbihu = (bihu)localIterator.next();
+          localStringBuilder.append("key=").append(localbihu.jdField_a_of_type_JavaLangString);
+          if ((localbihu.jdField_a_of_type_JavaUtilList != null) && (localbihu.jdField_a_of_type_JavaUtilList.size() > 0)) {
+            localStringBuilder.append(",size=").append(localbihu.jdField_a_of_type_JavaUtilList.size()).append(",url=").append((String)localbihu.jdField_a_of_type_JavaUtilList.get(0));
+          }
+          localStringBuilder.append(";");
+        }
+      }
+    }
+    return "QueueDownloader task url:" + localObject.toString();
   }
 }
 

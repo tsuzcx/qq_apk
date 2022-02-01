@@ -1,6 +1,6 @@
-public abstract interface wiw
+public abstract interface wiw<T>
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  public abstract T a();
 }
 
 

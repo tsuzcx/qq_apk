@@ -2,29 +2,29 @@ package com.tencent.qqmini.nativePlugins;
 
 import android.app.Activity;
 import android.content.Context;
-import anni;
-import bglp;
-import bgpa;
-import bjtv;
-import bjtx;
-import bjty;
-import bjtz;
+import anzj;
+import bhlq;
+import bhpc;
+import bkuw;
+import bkuy;
+import bkuz;
+import bkva;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 
 public class TroopAlbumPlugin$2$1
   implements Runnable
 {
-  public TroopAlbumPlugin$2$1(bjtx parambjtx) {}
+  public TroopAlbumPlugin$2$1(bkuy parambkuy) {}
   
   public void run()
   {
-    bjtv.a(this.a.jdField_a_of_type_Bjtv, this.a.jdField_a_of_type_JavaLangString);
-    Activity localActivity = bjtv.e(this.a.jdField_a_of_type_Bjtv).getAttachedActivity();
-    if (bjtv.a(this.a.jdField_a_of_type_Bjtv) == null) {
-      bjtv.a(this.a.jdField_a_of_type_Bjtv, bglp.a(localActivity, 230).setTitle(anni.a(2131713852)).setMessage(anni.a(2131713851)).setPositiveButton(anni.a(2131713850), new bjtz(this)).setNegativeButton(localActivity.getString(2131716691), new bjty(this)));
+    bkuw.a(this.a.jdField_a_of_type_Bkuw, this.a.jdField_a_of_type_JavaLangString);
+    Activity localActivity = bkuw.e(this.a.jdField_a_of_type_Bkuw).getAttachedActivity();
+    if (bkuw.a(this.a.jdField_a_of_type_Bkuw) == null) {
+      bkuw.a(this.a.jdField_a_of_type_Bkuw, bhlq.a(localActivity, 230).setTitle(anzj.a(2131713961)).setMessage(anzj.a(2131713960)).setPositiveButton(anzj.a(2131713959), new bkva(this)).setNegativeButton(localActivity.getString(2131716807), new bkuz(this)));
     }
-    if (!bjtv.a(this.a.jdField_a_of_type_Bjtv).isShowing()) {
-      bjtv.a(this.a.jdField_a_of_type_Bjtv).show();
+    if (!bkuw.a(this.a.jdField_a_of_type_Bkuw).isShowing()) {
+      bkuw.a(this.a.jdField_a_of_type_Bkuw).show();
     }
   }
 }

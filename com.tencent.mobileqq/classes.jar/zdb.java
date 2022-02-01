@@ -1,11 +1,14 @@
-import android.graphics.Bitmap;
-
-public class zdb
+public abstract interface zdb
 {
-  public int a;
-  public long a = -1L;
-  public Bitmap a;
-  public String a;
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(zbw paramzbw);
+  
+  public abstract void a(boolean paramBoolean, zbw paramzbw);
+  
+  public abstract void b(int paramInt);
 }
 
 

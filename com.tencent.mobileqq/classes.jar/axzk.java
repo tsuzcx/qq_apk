@@ -1,16 +1,20 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-public class axzk
-  extends axxt
+final class axzk
+  implements DialogInterface.OnClickListener
 {
-  public ImageView e;
-  public ImageView f;
-  public TextView g;
+  axzk(Context paramContext, String paramString, int paramInt) {}
   
-  public axzk(axzj paramaxzj)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramaxzj);
+    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, GameRoomInviteActivity.class);
+    paramDialogInterface.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.putExtra("roomNum", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
 }
 

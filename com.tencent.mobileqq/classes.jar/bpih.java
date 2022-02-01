@@ -1,28 +1,8 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-
-class bpih
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bpih
 {
-  bpih(bpif parambpif) {}
+  public abstract void a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if (this.a.a.b == null) {
-      return;
-    }
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.s = (this.a.d + this.a.f * (1.0F - f));
-    this.a.t = (this.a.e + this.a.g * (1.0F - f));
-    this.a.q = (this.a.b + this.a.h * (1.0F - f));
-    this.a.r = (this.a.c + this.a.i * (1.0F - f));
-    if (f == 1.0F)
-    {
-      this.a.a.b = null;
-      this.a.a.b(4);
-    }
-    bpic.b(this.a.a);
-  }
+  public abstract void a(String paramString);
 }
 
 

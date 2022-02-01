@@ -1,31 +1,152 @@
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.ViewGroup;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
+
 public class biup
+  implements aoog
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
+  abdj jdField_a_of_type_Abdj = (abdj)abdj.jdField_a_of_type_JavaUtilHashMap.get("Werewolves.apk");
+  public aikq a;
+  Handler jdField_a_of_type_AndroidOsHandler = new biuq(this, Looper.getMainLooper());
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  public aoof a;
+  biuo jdField_a_of_type_Biuo;
+  public String a;
   
-  public biup(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
+  public biup(String paramString)
   {
-    this.a = (paramString1 + "");
-    this.b = (paramString2 + "");
-    this.c = (paramString3 + "");
-    this.d = (paramString4 + "");
-    this.e = (paramString5 + "");
-    this.f = (paramString6 + "");
-    this.g = (paramString7 + "");
-    this.h = paramString8;
-    this.i = paramString9;
-    this.j = (paramString10 + "");
-    this.k = (paramString11 + "");
-    bisy.b("report_debug", "reportItem apn=" + this.a + ",frequency=" + this.b + ",commandid=" + this.c + ",resultcode=" + this.d + "timecost" + this.e + ",reqsize=" + this.f + ",rspsize=" + this.g + ",uin=" + this.h + ",deviceinfo=" + this.i + ",detail=" + this.j + ",appid=" + paramString11);
+    if (this.jdField_a_of_type_Abdj == null) {
+      this.jdField_a_of_type_Abdj = new abdj("2584", "Werewolves.apk");
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public biuo a()
+  {
+    return this.jdField_a_of_type_Biuo;
+  }
+  
+  public String a(String paramString)
+  {
+    if (this.jdField_a_of_type_Biuo != null) {
+      return this.jdField_a_of_type_Biuo.a(paramString);
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Abdj.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Abdj.a(false);
+      return;
+    }
+    if (this.jdField_a_of_type_Biuo == null) {
+      this.jdField_a_of_type_Biuo = new biuo(this, this.jdField_a_of_type_Abdj.jdField_a_of_type_JavaLangClassLoader);
+    }
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    localMessage.arg1 = 0;
+    localMessage.sendToTarget();
+  }
+  
+  public void a(aikq paramaikq)
+  {
+    if (this.jdField_a_of_type_Aikq != paramaikq) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Biuo != null) {
+        this.jdField_a_of_type_Biuo.b();
+      }
+      if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+      {
+        this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+        this.jdField_a_of_type_AndroidViewViewGroup = null;
+      }
+      if (this.jdField_a_of_type_Aoof != null) {
+        this.jdField_a_of_type_Aoof.d();
+      }
+    } while (this.jdField_a_of_type_Abdj == null);
+    this.jdField_a_of_type_Abdj.jdField_a_of_type_Abdi = null;
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+    this.jdField_a_of_type_Biuo.a(paramViewGroup, this.jdField_a_of_type_Abdj.jdField_a_of_type_Abdi);
+  }
+  
+  public void a(BaseActivity paramBaseActivity, aikq paramaikq)
+  {
+    this.jdField_a_of_type_Aikq = paramaikq;
+    this.jdField_a_of_type_Abdj.a(paramBaseActivity);
+    if (this.jdField_a_of_type_Biuo != null)
+    {
+      this.jdField_a_of_type_Biuo.a();
+      this.jdField_a_of_type_Biuo.a(this.jdField_a_of_type_Abdj.jdField_a_of_type_Abdi);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aoof = new aoof((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+      this.jdField_a_of_type_Aoof.a(this);
+      return;
+      this.jdField_a_of_type_Biuo = new biuo(this, this.jdField_a_of_type_Abdj.jdField_a_of_type_JavaLangClassLoader);
+    }
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Biuo == null) {
+      return;
+    }
+    this.jdField_a_of_type_Biuo.a(paramString, paramArrayOfByte);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Abdj.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Biuo != null) {
+      this.jdField_a_of_type_Biuo.a();
+    }
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+    {
+      this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+      this.jdField_a_of_type_AndroidViewViewGroup = null;
+    }
+    this.jdField_a_of_type_Aikq = null;
+    if (this.jdField_a_of_type_Aoof != null) {
+      this.jdField_a_of_type_Aoof.d();
+    }
+    if (this.jdField_a_of_type_Abdj != null) {
+      this.jdField_a_of_type_Abdj.c();
+    }
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_Biuo == null) {}
+    while ((this.jdField_a_of_type_Biuo != null) && (this.jdField_a_of_type_Biuo.a())) {
+      return true;
+    }
+    return false;
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if ((this.jdField_a_of_type_Biuo != null) && ((paramInt2 == 32) || (paramInt2 == 1))) {
+      this.jdField_a_of_type_Biuo.a(paramString, paramBitmap);
+    }
   }
 }
 

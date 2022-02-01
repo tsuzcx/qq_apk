@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import afur;
+import agej;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.drawable.GradientDrawable;
@@ -34,14 +34,14 @@ class AssociatedAccountActivity$5$1
       this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.leftView.bringToFront();
       if ("1103".equals(ThemeUtil.curThemeId))
       {
-        localColorStateList = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources().getColorStateList(2131166983);
+        localColorStateList = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources().getColorStateList(2131166987);
         AssociatedAccountActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).setTextColor(localColorStateList);
-        AssociatedAccountActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).setBackgroundResource(2130838356);
-        AssociatedAccountActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).setPadding(afur.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources()), 0, afur.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources()), 0);
+        AssociatedAccountActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).setBackgroundResource(2130838367);
+        AssociatedAccountActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).setPadding(agej.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources()), 0, agej.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources()), 0);
         localObject = AssociatedAccountActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).height = afur.a(24.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources());
+        ((ViewGroup.LayoutParams)localObject).height = agej.a(24.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources());
         if ((localObject instanceof RelativeLayout.LayoutParams)) {
-          ((RelativeLayout.LayoutParams)localObject).leftMargin = afur.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources());
+          ((RelativeLayout.LayoutParams)localObject).leftMargin = agej.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0.getResources());
         }
         AssociatedAccountActivity.h(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).requestLayout();
         localObject = (GradientDrawable)AssociatedAccountActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$5.this$0).getBackground();

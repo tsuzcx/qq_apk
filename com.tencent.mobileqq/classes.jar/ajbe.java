@@ -1,21 +1,10 @@
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajbe
-  extends ajax
+public final class ajbe
+  implements DialogInterface.OnClickListener
 {
-  public ArrayList<aixh> a;
-  public boolean a;
-  
-  public ajbe(ArrayList<aixh> paramArrayList, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

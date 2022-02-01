@@ -1,6 +1,20 @@
-public abstract interface akrg
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class akrg
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(akqw paramakqw);
+  akrg(akrf paramakrf) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      this.a.b();
+      akrf.a(this.a).moveTaskToBack(true);
+    }
+  }
 }
 
 

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import afmp;
-import afna;
+import afvt;
+import afwe;
 import android.os.Handler;
 import java.util.List;
 
 class TroopMemberListActivity$40$2$1
   implements Runnable
 {
-  TroopMemberListActivity$40$2$1(TroopMemberListActivity.40.2 param2, afna paramafna) {}
+  TroopMemberListActivity$40$2$1(TroopMemberListActivity.40.2 param2, afwe paramafwe) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40$2.jdField_a_of_type_Afmp.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40$2.jdField_a_of_type_JavaLangString);
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40$2.jdField_a_of_type_Afmp.a)
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40$2.jdField_a_of_type_Afvt.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40$2.jdField_a_of_type_JavaLangString);
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40$2.jdField_a_of_type_Afvt.a)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40$2.jdField_a_of_type_Afmp.a.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Afna);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40$2.jdField_a_of_type_Afmp.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40$2.jdField_a_of_type_Afvt.a.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Afwe);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40$2.jdField_a_of_type_Afvt.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
       return;
     }
   }

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import afur;
-import ahsa;
-import ahsc;
-import aiql;
-import aiqm;
-import aiqn;
-import ajyc;
-import ajyd;
+import agej;
+import aibo;
+import aibq;
+import ajbu;
+import ajbv;
+import ajbw;
+import akjl;
+import akjm;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -41,20 +41,20 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.WrapperListAdapter;
-import anni;
-import aufz;
-import ayfa;
-import bcst;
-import bdzx;
-import bgkw;
-import bglj;
-import bguh;
-import biau;
-import bkfv;
-import bkhd;
-import bkij;
-import bkik;
-import bley;
+import anzj;
+import auxu;
+import ayxt;
+import bdll;
+import beyq;
+import bhkx;
+import bhlk;
+import bhuk;
+import bjbs;
+import blha;
+import blig;
+import bljm;
+import bljn;
+import bmgb;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
@@ -76,20 +76,20 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import cooperation.troop.TroopFileProxyActivity;
 import java.util.Iterator;
 import java.util.List;
-import zlx;
+import zps;
 
 public class ChatHistoryForTroopFragment
   extends PublicBaseFragment
-  implements ahsc, Handler.Callback, TextWatcher, View.OnClickListener, View.OnKeyListener, View.OnTouchListener, TextView.OnEditorActionListener, bkhd, bkij, bkik
+  implements aibq, Handler.Callback, TextWatcher, View.OnClickListener, View.OnKeyListener, View.OnTouchListener, TextView.OnEditorActionListener, blig, bljm, bljn
 {
   int jdField_a_of_type_Int = 0;
-  aiqn jdField_a_of_type_Aiqn;
-  ajyc jdField_a_of_type_Ajyc;
-  ajyd jdField_a_of_type_Ajyd;
+  ajbw jdField_a_of_type_Ajbw;
+  akjl jdField_a_of_type_Akjl;
+  akjm jdField_a_of_type_Akjm;
   View jdField_a_of_type_AndroidViewView;
   EditText jdField_a_of_type_AndroidWidgetEditText;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  biau jdField_a_of_type_Biau;
+  bjbs jdField_a_of_type_Bjbs;
   public AIORichMediaData a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
@@ -130,8 +130,8 @@ public class ChatHistoryForTroopFragment
       localObject = paramFragmentActivity.getCurrentAccountUin();
       if (localObject != null)
       {
-        localBundle.putBoolean("extra.OCR", ayfa.a((String)localObject, 7));
-        bley.b(paramFragmentActivity, localBundle, new AIOImageProviderService((String)localObject, this.jdField_b_of_type_JavaLangString, 1, null), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, -1, 3);
+        localBundle.putBoolean("extra.OCR", ayxt.a((String)localObject, 7));
+        bmgb.b(paramFragmentActivity, localBundle, new AIOImageProviderService((String)localObject, this.jdField_b_of_type_JavaLangString, 1, null), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, -1, 3);
       }
     }
     do
@@ -139,13 +139,13 @@ public class ChatHistoryForTroopFragment
       return;
       paramFragmentActivity = getActivity();
     } while (paramFragmentActivity == null);
-    TroopAIOImageEmptyFragment.a(paramFragmentActivity, anni.a(2131700474), "https://hb.url.cn/myapp/qq_desk/chatfileEmptyImage.png", anni.a(2131700414));
+    TroopAIOImageEmptyFragment.a(paramFragmentActivity, anzj.a(2131700581), "https://hb.url.cn/myapp/qq_desk/chatfileEmptyImage.png", anzj.a(2131700521));
   }
   
   private void d()
   {
     TroopAIOImageGeter localTroopAIOImageGeter = new TroopAIOImageGeter(getActivity().getCurrentAccountUin(), this.jdField_b_of_type_JavaLangString, 1, null);
-    localTroopAIOImageGeter.a(new aiqm(this));
+    localTroopAIOImageGeter.a(new ajbv(this));
     localTroopAIOImageGeter.a(0);
   }
   
@@ -155,41 +155,41 @@ public class ChatHistoryForTroopFragment
     if (localFragmentActivity == null) {
       return;
     }
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377433);
-    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131365977);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377063));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377587);
+    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131366022);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377202));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(this);
-    int i = zlx.a(localFragmentActivity, 10.0F);
+    int i = zps.a(localFragmentActivity, 10.0F);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(localFragmentActivity);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(16.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167066));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167076));
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(1);
     this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, i, 0, i);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidWidgetTextView);
-    this.d = this.jdField_a_of_type_AndroidViewView.findViewById(2131368135);
+    this.d = this.jdField_a_of_type_AndroidViewView.findViewById(2131368209);
     this.d.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131366102));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131366151));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
     this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(this);
     this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(this);
     this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(this);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131363719).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131368246).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131365941).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131366551).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131369895).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131365230).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131370575).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131363745).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131368320).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131365986).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131366600).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131369993).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131365274).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131370679).setOnClickListener(this);
   }
   
   public void a(int paramInt)
   {
     if (paramInt < 0)
     {
-      String str = this.jdField_a_of_type_Ajyd.a();
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131700420));
-      this.jdField_a_of_type_Ajyd.a(System.currentTimeMillis(), str, 2);
+      String str = this.jdField_a_of_type_Akjm.a();
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131700527));
+      this.jdField_a_of_type_Akjm.a(System.currentTimeMillis(), str, 2);
     }
   }
   
@@ -217,7 +217,7 @@ public class ChatHistoryForTroopFragment
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramBundle);
       d();
-      ahsa.a().a(this);
+      aibo.a().a(this);
       return;
     }
     QLog.e("chatHistory.troop.portal", 1, "app is null");
@@ -232,19 +232,19 @@ public class ChatHistoryForTroopFragment
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (this.jdField_a_of_type_Ajyd == null)
+    if (this.jdField_a_of_type_Akjm == null)
     {
       SessionInfo localSessionInfo = new SessionInfo();
       localSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
       localSessionInfo.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Ajyd = new ajyd(this.jdField_a_of_type_AndroidViewView.getContext(), new bkfv(Looper.getMainLooper(), this), localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_Akjm = new akjm(this.jdField_a_of_type_AndroidViewView.getContext(), new blha(Looper.getMainLooper(), this), localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
-    if (!paramString.equalsIgnoreCase(this.jdField_a_of_type_Ajyd.a())) {
-      this.jdField_a_of_type_Ajyd.a(System.currentTimeMillis(), paramString, 1);
+    if (!paramString.equalsIgnoreCase(this.jdField_a_of_type_Akjm.a())) {
+      this.jdField_a_of_type_Akjm.a(System.currentTimeMillis(), paramString, 1);
     }
     for (;;)
     {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "search_result", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "search_result", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
       return;
       b(2);
     }
@@ -258,12 +258,12 @@ public class ChatHistoryForTroopFragment
     if (paramView == this.jdField_a_of_type_AndroidWidgetTextView) {
       return false;
     }
-    this.jdField_a_of_type_Ajyc = ((ajyc)paramAdapterView.getAdapter().getItem(paramInt));
+    this.jdField_a_of_type_Akjl = ((akjl)paramAdapterView.getAdapter().getItem(paramInt));
     paramView.setSelected(true);
-    paramAdapterView = new bguh();
-    paramAdapterView.a(2131365147, anni.a(2131700400), 2130838920);
-    paramAdapterView.a(2131367027, this.jdField_a_of_type_AndroidViewView.getContext().getString(2131692395), 2130838929);
-    bgkw.a(paramView, paramAdapterView, this, new aiql(this, paramView));
+    paramAdapterView = new bhuk();
+    paramAdapterView.a(2131365191, anzj.a(2131700507), 2130838930);
+    paramAdapterView.a(2131367078, this.jdField_a_of_type_AndroidViewView.getContext().getString(2131692400), 2130838939);
+    bhkx.a(paramView, paramAdapterView, this, new ajbu(this, paramView));
     return true;
   }
   
@@ -313,7 +313,7 @@ public class ChatHistoryForTroopFragment
       label97:
       if (paramInt == 2)
       {
-        this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ajyd);
+        this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Akjm);
         this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
         this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemLongClickListener(this);
         this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
@@ -321,21 +321,21 @@ public class ChatHistoryForTroopFragment
         this.jdField_b_of_type_AndroidViewView.setVisibility(8);
         this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollToButtomListener(this);
         Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-        if (this.jdField_a_of_type_Ajyd.a()) {}
+        if (this.jdField_a_of_type_Akjm.a()) {}
         for (;;)
         {
           ((TextView)localObject).setVisibility(i);
-          this.jdField_a_of_type_Ajyd.notifyDataSetChanged();
-          ((TextView)this.c.findViewById(2131378459)).setText(anni.a(2131700422));
+          this.jdField_a_of_type_Akjm.notifyDataSetChanged();
+          ((TextView)this.c.findViewById(2131378617)).setText(anzj.a(2131700529));
           localObject = this.jdField_a_of_type_AndroidViewView.getContext().getResources();
           URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          localURLDrawableOptions.mRequestWidth = afur.a(320.0F, (Resources)localObject);
-          localURLDrawableOptions.mRequestHeight = afur.a(177.5F, (Resources)localObject);
-          localURLDrawableOptions.mLoadingDrawable = bdzx.a;
-          localURLDrawableOptions.mFailedDrawable = bdzx.a;
+          localURLDrawableOptions.mRequestWidth = agej.a(320.0F, (Resources)localObject);
+          localURLDrawableOptions.mRequestHeight = agej.a(177.5F, (Resources)localObject);
+          localURLDrawableOptions.mLoadingDrawable = beyq.a;
+          localURLDrawableOptions.mFailedDrawable = beyq.a;
           localObject = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20171229/54e96094adaf456f9b8f622f191f8fde.png", localURLDrawableOptions);
-          ((ImageView)this.c.findViewById(2131378665)).setImageDrawable((Drawable)localObject);
-          bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_search", "search_exp", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+          ((ImageView)this.c.findViewById(2131378826)).setImageDrawable((Drawable)localObject);
+          bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_search", "search_exp", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
           break;
           i = 0;
         }
@@ -352,7 +352,7 @@ public class ChatHistoryForTroopFragment
     if (localObject == null) {
       return;
     }
-    localObject = afur.a(new Intent((Context)localObject, SplashActivity.class), null);
+    localObject = agej.a(new Intent((Context)localObject, SplashActivity.class), null);
     ((Intent)localObject).putExtras(new Bundle(paramBundle));
     startActivity((Intent)localObject);
   }
@@ -361,8 +361,8 @@ public class ChatHistoryForTroopFragment
   
   protected void c()
   {
-    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {
-      this.jdField_a_of_type_Biau.dismiss();
+    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {
+      this.jdField_a_of_type_Bjbs.dismiss();
     }
   }
   
@@ -377,9 +377,9 @@ public class ChatHistoryForTroopFragment
     TextView localTextView;
     if ((paramMessage.obj instanceof List))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131700452));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131700559));
       localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (!this.jdField_a_of_type_Ajyd.a()) {
+      if (!this.jdField_a_of_type_Akjm.a()) {
         break label109;
       }
     }
@@ -387,8 +387,8 @@ public class ChatHistoryForTroopFragment
     for (int i = 8;; i = 0)
     {
       localTextView.setVisibility(i);
-      this.jdField_a_of_type_Ajyd.a((List)paramMessage.obj, paramMessage.arg1);
-      this.jdField_a_of_type_Ajyd.notifyDataSetChanged();
+      this.jdField_a_of_type_Akjm.a((List)paramMessage.obj, paramMessage.arg1);
+      this.jdField_a_of_type_Akjm.notifyDataSetChanged();
       b(2);
       break;
     }
@@ -426,71 +426,71 @@ public class ChatHistoryForTroopFragment
       {
       default: 
         break;
-      case 2131363719: 
+      case 2131363745: 
         b();
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "Clk_cancel", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "Clk_cancel", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
         break;
-      case 2131368135: 
+      case 2131368209: 
         this.jdField_a_of_type_AndroidWidgetEditText.setText("");
         ((InputMethodManager)this.jdField_a_of_type_AndroidWidgetEditText.getContext().getSystemService("input_method")).showSoftInput(this.jdField_a_of_type_AndroidWidgetEditText, 0);
         break;
-      case 2131368246: 
+      case 2131368320: 
         a((FragmentActivity)localObject1);
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "Clk_pic", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "Clk_pic", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
         break;
-      case 2131365941: 
+      case 2131365986: 
         localObject2 = new Intent();
         ((Intent)localObject2).putExtra("uin", this.jdField_a_of_type_JavaLangString);
         ((Intent)localObject2).putExtra("uintype", this.jdField_b_of_type_Int);
         ((Intent)localObject2).putExtra("troop_uin", this.jdField_b_of_type_JavaLangString);
         PublicFragmentActivity.a((Context)localObject1, (Intent)localObject2, TroopAIOEmotionFragment.class);
         break;
-      case 2131366551: 
+      case 2131366600: 
         localObject2 = ((FragmentActivity)localObject1).getCurrentAccountUin();
-        bglj.a((String)localObject2, "troop_file_new", this.jdField_b_of_type_JavaLangString, 0);
+        bhlk.a((String)localObject2, "troop_file_new", this.jdField_b_of_type_JavaLangString, 0);
         localObject3 = new Intent();
         ((Intent)localObject3).putExtra(TroopFileProxyActivity.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
         ((Intent)localObject3).putExtra("param_from", 5000);
         TroopFileProxyActivity.a((Activity)localObject1, (Intent)localObject3, -1, (String)localObject2);
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "Clk_file", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "Clk_file", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
         break;
-      case 2131369895: 
+      case 2131369993: 
         localObject1 = new Intent((Context)localObject1, QQBrowserActivity.class);
         ((Intent)localObject1).putExtra("url", a(this.jdField_b_of_type_JavaLangString));
         ((Intent)localObject1).putExtra("webStyle", "noBottomBar");
         ((Intent)localObject1).putExtra("startOpenPageTime", System.currentTimeMillis());
         startActivity((Intent)localObject1);
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "Clk_link", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "Clk_link", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
         break;
-      case 2131365230: 
+      case 2131365274: 
         localObject2 = new Intent();
         ((Intent)localObject2).putExtra("troop_uin", this.jdField_b_of_type_JavaLangString);
         PublicFragmentActivity.a((Context)localObject1, (Intent)localObject2, ChatHistoryByDateFragment.class);
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "Clk_date", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "Clk_date", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
         break;
-      case 2131370575: 
+      case 2131370679: 
         localObject1 = TroopMemberListActivity.a((Context)localObject1, this.jdField_b_of_type_JavaLangString, 18);
         ((Intent)localObject1).putExtra("uin", this.jdField_b_of_type_JavaLangString);
         ((Intent)localObject1).putExtra("uintype", 1);
         startActivity((Intent)localObject1);
-        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "Clk_mber", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "Clk_mber", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
         break;
-      case 2131365147: 
-        localObject2 = this.jdField_a_of_type_Ajyc;
+      case 2131365191: 
+        localObject2 = this.jdField_a_of_type_Akjl;
         if (localObject2 != null) {
-          ((ClipboardManager)((FragmentActivity)localObject1).getSystemService("clipboard")).setText(((ajyc)localObject2).a.msg);
+          ((ClipboardManager)((FragmentActivity)localObject1).getSystemService("clipboard")).setText(((akjl)localObject2).a.msg);
         }
         break;
-      case 2131367027: 
-        localObject3 = this.jdField_a_of_type_Ajyc;
+      case 2131367078: 
+        localObject3 = this.jdField_a_of_type_Akjl;
         if (localObject3 != null)
         {
           localObject2 = new Bundle();
           ((Bundle)localObject2).putInt("forward_type", -1);
-          ((Bundle)localObject2).putString("forward_text", ((ajyc)localObject3).a.msg);
+          ((Bundle)localObject2).putString("forward_text", ((akjl)localObject3).a.msg);
           localObject3 = new Intent();
           ((Intent)localObject3).putExtras((Bundle)localObject2);
-          aufz.a((Activity)localObject1, (Intent)localObject3, 21);
+          auxu.a((Activity)localObject1, (Intent)localObject3, 21);
         }
         break;
       }
@@ -499,7 +499,7 @@ public class ChatHistoryForTroopFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560574, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560589, paramViewGroup, false);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       this.jdField_a_of_type_AndroidViewView.setFitsSystemWindows(true);
@@ -507,7 +507,7 @@ public class ChatHistoryForTroopFragment
     }
     a(getArguments());
     a();
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "exp", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "exp", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
     paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -516,7 +516,7 @@ public class ChatHistoryForTroopFragment
   public void onDestroyView()
   {
     c();
-    ahsa.a().b(this);
+    aibo.a().b(this);
     super.onDestroyView();
   }
   
@@ -555,9 +555,9 @@ public class ChatHistoryForTroopFragment
     }
     if (paramView == this.jdField_a_of_type_AndroidWidgetTextView)
     {
-      paramAdapterView = this.jdField_a_of_type_Ajyd.a();
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131700476));
-      this.jdField_a_of_type_Ajyd.a(System.currentTimeMillis(), paramAdapterView, 2);
+      paramAdapterView = this.jdField_a_of_type_Akjm.a();
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131700583));
+      this.jdField_a_of_type_Akjm.a(System.currentTimeMillis(), paramAdapterView, 2);
     }
     do
     {
@@ -565,19 +565,19 @@ public class ChatHistoryForTroopFragment
       {
         return;
         for (paramAdapterView = this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter(); (paramAdapterView instanceof WrapperListAdapter); paramAdapterView = ((WrapperListAdapter)paramAdapterView).getWrappedAdapter()) {}
-        if (paramAdapterView != this.jdField_a_of_type_Ajyd) {
+        if (paramAdapterView != this.jdField_a_of_type_Akjm) {
           break;
         }
         paramView = getActivity();
       } while (paramView == null);
-      paramAdapterView = ((ajyc)paramAdapterView.getItem(paramInt)).a;
+      paramAdapterView = ((akjl)paramAdapterView.getItem(paramInt)).a;
       ChatHistoryBubbleListForTroopFragment.a(paramView, this.jdField_b_of_type_JavaLangString, paramAdapterView, 100, 2);
       if (QLog.isColorLevel()) {
         QLog.i("chatHistory.troop.portal", 2, "onItemClick, message = " + paramAdapterView);
       }
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_search", "search_clk", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_search", "search_clk", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
       return;
-      if (paramAdapterView == this.jdField_a_of_type_Aiqn)
+      if (paramAdapterView == this.jdField_a_of_type_Ajbw)
       {
         paramAdapterView = (String)paramAdapterView.getItem(paramInt);
         this.jdField_a_of_type_AndroidWidgetEditText.setText(paramAdapterView);
@@ -619,7 +619,7 @@ public class ChatHistoryForTroopFragment
     while (paramView != this.jdField_a_of_type_AndroidWidgetEditText) {
       return false;
     }
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "Clk_search", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "home", "Clk_search", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
     return false;
   }
 }

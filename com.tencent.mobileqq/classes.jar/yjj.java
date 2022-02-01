@@ -1,45 +1,27 @@
 import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import java.util.List;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class yjj
-  extends wfr<yjc, ycp>
+class yjj
+  extends QQUIEventReceiver<yjh, xbt>
 {
-  public yjj(yjc paramyjc)
+  public yjj(@NonNull yjh paramyjh)
   {
-    super(paramyjc);
+    super(paramyjh);
   }
   
-  public void a(@NonNull yjc paramyjc, @NonNull ycp paramycp)
+  public void a(@NonNull yjh paramyjh, @NonNull xbt paramxbt)
   {
-    Object localObject = paramyjc.a(paramycp.jdField_a_of_type_JavaLangString);
-    if (localObject == null)
-    {
-      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramycp.jdField_a_of_type_JavaLangString });
-      return;
+    yuk.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video info list. %s.", paramxbt.toString());
+    if (paramxbt.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      yjh.a(paramyjh).a(paramxbt.jdField_a_of_type_JavaLangString, paramxbt.jdField_a_of_type_JavaUtilList);
     }
-    if (!(localObject instanceof yka))
-    {
-      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramycp.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    localObject = (yka)localObject;
-    if (paramycp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      ((yka)localObject).c(paramycp.jdField_a_of_type_JavaUtilList, false);
-      ((VideoListFeedItem)((yka)localObject).a).updateVideoInfo(paramycp.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
-      yqp.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video update after count:%d", paramycp.jdField_a_of_type_JavaLangString, Integer.valueOf(((yka)localObject).a().size()));
-    }
-    yjc.a(paramyjc).a((yka)localObject);
   }
   
   public Class acceptEventClass()
   {
-    return ycp.class;
+    return xbt.class;
   }
-  
-  public void b(@NonNull yjc paramyjc, @NonNull ycp paramycp) {}
 }
 
 

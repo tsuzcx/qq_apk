@@ -1,17 +1,18 @@
-import android.view.MotionEvent;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
 class agnh
-  implements bhwq
+  implements bdxo
 {
-  agnh(agne paramagne) {}
+  agnh(agng paramagng) {}
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShortcutBarAIOHelper", 2, "ShortcutBarAioHelper.DrawerFrame.TouchEventConsumer");
-    }
-    return this.a.a(paramMotionEvent);
+    int i = this.a.a.jdField_a_of_type_Int / 2;
+    int j = (int)(this.a.a.b - bhgr.a(this.a.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.a.jdField_a_of_type_Bdyr.b / 2.0F);
+    int k = (int)(this.a.a.b - bhgr.a(this.a.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.a.jdField_a_of_type_Bdyr.b / 2.0F);
+    bdxw localbdxw = new bdxw(new bdxn[] { new bdxr(450, i, j, i, k), new bdxr(450, i, k, i, j) });
+    localbdxw.a = true;
+    this.a.a.jdField_a_of_type_Bdyr.a(new bdxn[] { localbdxw });
   }
 }
 

@@ -1,18 +1,18 @@
 package cooperation.qzone.share;
 
-import bmge;
+import bnhg;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class QZoneShareActivity$5$2
   implements Runnable
 {
-  public QZoneShareActivity$5$2(bmge parambmge, String paramString, long paramLong) {}
+  public QZoneShareActivity$5$2(bnhg parambnhg, String paramString, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bmge.a.k();
-    QQToast.a(this.jdField_a_of_type_Bmge.a, 1, this.jdField_a_of_type_JavaLangString + "(" + this.jdField_a_of_type_Long + ")", 1).a();
-    this.jdField_a_of_type_Bmge.a.finish();
+    this.jdField_a_of_type_Bnhg.a.k();
+    QQToast.a(this.jdField_a_of_type_Bnhg.a, 1, this.jdField_a_of_type_JavaLangString + "(" + this.jdField_a_of_type_Long + ")", 1).a();
+    this.jdField_a_of_type_Bnhg.a.finish();
   }
 }
 

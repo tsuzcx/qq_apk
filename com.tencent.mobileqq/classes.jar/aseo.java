@@ -1,13 +1,29 @@
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
-
-public class aseo
+class aseo
+  extends anul
 {
-  public ImageView a;
-  public URLImageView a;
-  public ImageView b;
+  aseo(asel paramasel) {}
   
-  public aseo(asem paramasem) {}
+  protected void a(int paramInt)
+  {
+    if ((paramInt == 0) && (this.a.a != null)) {
+      this.a.a.e();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt)
+  {
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+  }
+  
+  protected void b(int paramInt)
+  {
+    asel.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+  }
 }
 
 

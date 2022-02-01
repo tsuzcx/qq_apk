@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.apkg;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import blru;
+import bmsw;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.minigame.utils.GameLog;
@@ -27,7 +27,7 @@ public abstract class ApkgBaseInfo
   public static final int DOMIAN_TYPE_UPLOAD = 3;
   public static final int DOMIAN_TYPE_WEBSOCKET = 1;
   public static final int DOMIAN_TYPE_WEBVIEW = 4;
-  public static boolean isRdmBuild = blru.a().toLowerCase().contains("rdm");
+  public static boolean isRdmBuild = bmsw.a().toLowerCase().contains("rdm");
   private static String mCurWhiteListConfig;
   private static ArrayList<String> sDominWhiteList;
   public String apkgFolderPath;

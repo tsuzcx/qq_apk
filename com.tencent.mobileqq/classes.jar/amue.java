@@ -1,18 +1,31 @@
-public class amue
-  extends amty
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import org.json.JSONObject;
+
+public final class amue
+  implements admy
 {
-  private int b;
+  public amue(View paramView, adnb paramadnb, long paramLong, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6) {}
   
-  public amue(int paramInt1, int paramInt2, amug paramamug)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    super(paramInt1, paramamug);
-    this.b = paramInt2;
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Adnb, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed");
   }
   
-  public amlc a(long paramLong, String paramString1, String paramString2)
+  public void onPermission(int paramInt)
   {
-    return null;
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Adnb, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed permission");
   }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    paramJSONObject = paramJSONObject.optString("city", "");
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Adnb, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, paramJSONObject, 0, "location success");
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

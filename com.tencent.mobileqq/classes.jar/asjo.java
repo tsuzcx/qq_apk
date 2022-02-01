@@ -1,16 +1,26 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchBaseFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.4;
 
 public class asjo
-  implements asno
+  implements amzv
 {
-  public asjo(ExtendFriendSearchBaseFragment paramExtendFriendSearchBaseFragment) {}
+  public asjo(MessengerService.IncomingHandler.4 param4) {}
   
-  public void a(String paramString, int paramInt)
+  public void a()
   {
-    ExtendFriendSearchBaseFragment.a(this.a).setText(paramString);
-    ExtendFriendSearchBaseFragment.a(this.a).setSelection(ExtendFriendSearchBaseFragment.a(this.a).length());
-    ExtendFriendSearchBaseFragment.a(this.a, paramString);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", 0);
+    this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+  }
+  
+  public void a(int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", paramInt);
+    this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

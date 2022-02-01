@@ -1,37 +1,38 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.ViewGroup;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
 
 public class bont
-  implements bonr
+  implements SeekBar.OnSeekBarChangeListener
 {
-  private File a;
+  public bont(AEBeautyProviderView paramAEBeautyProviderView) {}
   
-  public void a()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if ((this.a == null) || (!this.a.exists()))
+    if (AEBeautyProviderView.a(this.a) != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("VoiceBgmRecognizer", 2, "recognize: invoked. info: mTargetAudioFile = " + this.a);
-      }
-      return;
-    }
-    bonv localbonv = (bonv)bojv.a().c(10);
-    localbonv.a(this.a);
-    try
-    {
-      bonh.a(this.a.getAbsolutePath(), this.a.getAbsolutePath() + "_8kHz", localbonv);
-      return;
-    }
-    catch (FFmpegCommandAlreadyRunningException localFFmpegCommandAlreadyRunningException)
-    {
-      QLog.d("VoiceBgmRecognizer", 1, String.format("e = %s", new Object[] { localFFmpegCommandAlreadyRunningException }));
+      AEBeautyProviderView.a(this.a).b(paramInt);
+      this.a.b.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
     }
   }
   
-  public void a(File paramFile)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    this.a = paramFile;
+    AEBeautyProviderView.a(this.a, AEBeautyProviderView.b(this.a), AEBeautyProviderView.a(this.a));
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((AEBeautyProviderView.c(this.a) != null) && ((AEBeautyProviderView.c(this.a) instanceof ViewGroup))) {
+      ((ViewGroup)AEBeautyProviderView.c(this.a)).setMotionEventSplittingEnabled(true);
+    }
+    AEBeautyProviderView.b(this.a, paramSeekBar.getProgress());
+    bozv.a().f(paramSeekBar.getProgress());
+    AEBeautyProviderView.b(this.a, AEBeautyProviderView.b(this.a), AEBeautyProviderView.a(this.a));
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

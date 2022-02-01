@@ -1,28 +1,18 @@
-import android.content.Context;
-import android.net.Uri;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class affh
-  implements View.OnClickListener
 {
-  public affh(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.b(1);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230721);
-    if (this.a.a().booleanValue())
-    {
-      this.a.b();
-      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
 }
 
 

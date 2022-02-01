@@ -1,61 +1,30 @@
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import tencent.im.longconn.multimsg.UpFileRspExtInfo;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.studyroom.utils.PluginUtils.1;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
-class bdwm
-  implements ITransactionCallback
+public class bdwm
 {
-  bdwm(bdwl parambdwl) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public static Future<?> a(Context paramContext, Bundle paramBundle, boolean paramBoolean, bdwn parambdwn)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiMsg_TAG", 2, "BDH.Upload fail  : result:" + paramInt);
-    }
-    this.a.d();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    paramBundle.putString("qqVersion", "8.4.5");
+    paramBundle.putString("bizType", "StudyRoom");
+    paramBundle.putString("plugin_id", "StudyRoom");
+    paramBundle.putString("appid", "101854111");
+    paramBundle.putInt("authtype", 1);
+    paramBundle.putInt("isGroupCode", 1);
+    paramBundle.putInt("roomCodeType", 1);
+    paramBundle.putString("uin", localQQAppInterface.c());
+    paramBundle.putBoolean("preload", paramBoolean);
+    paramBundle.putString("fromId", "1");
+    paramBundle.putLong("ts_click_millisecond", System.currentTimeMillis());
+    paramBundle.putBoolean("show_status_bar", true);
+    return aoik.a(192).submit(new PluginUtils.1(paramContext, paramBundle, parambdwn));
   }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiMsg_TAG", 2, "Multimsg upload file by BDH and onSuccess  ");
-    }
-    paramHashMap = new UpFileRspExtInfo();
-    try
-    {
-      paramHashMap.mergeFrom(paramArrayOfByte);
-      bdwl.a(this.a, paramHashMap.bytes_msg_res_id.get().toByteArray());
-      if (QLog.isDevelopLevel()) {
-        QLog.i("MultiMsg_TAG_opt", 2, "Multimsg upload file by BDH and onSuccess  " + new String(bdwl.a(this.a), "utf-8"));
-      }
-      paramArrayOfByte = new File(bdsh.d(bdwl.a(this.a)));
-      if (paramArrayOfByte.exists()) {
-        paramArrayOfByte.delete();
-      }
-      this.a.e();
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("MultiMsg_TAG_opt", 2, "Multimsg upload file by BDH and onSuccess but exception + " + paramArrayOfByte);
-        }
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
 }
 
 

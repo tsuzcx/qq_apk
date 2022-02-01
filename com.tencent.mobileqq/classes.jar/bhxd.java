@@ -1,15 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Paint;
+import java.util.Comparator;
 
 class bhxd
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Comparator<bhxe>
 {
-  bhxd(bhxb parambhxb) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a(bhxe parambhxe1, bhxe parambhxe2)
   {
-    bhxb.a(this.a).setAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    int i = 1;
+    if (parambhxe1.a == parambhxe2.a) {
+      if (parambhxe1.b == parambhxe2.b) {
+        i = 0;
+      }
+    }
+    while (parambhxe1.a > parambhxe2.a)
+    {
+      do
+      {
+        return i;
+      } while (parambhxe1.b > parambhxe2.b);
+      return -1;
+    }
+    return -1;
   }
 }
 

@@ -1,18 +1,22 @@
-import java.util.ArrayList;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class asgv
+class asgv
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<String> a;
-  public JSONObject a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
+  asgv(asgs paramasgs, BaseActivity paramBaseActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (paramInt == 1) {
+      bhzu.a(asgs.a(this.jdField_a_of_type_Asgs), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", asgs.a(this.jdField_a_of_type_Asgs).getString(2131718497), "");
+    }
+  }
 }
 
 

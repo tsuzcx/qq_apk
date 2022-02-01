@@ -1,56 +1,38 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class pgd
-  extends RecyclerView.Adapter
+class pgd
+  extends BroadcastReceiver
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private tgt jdField_a_of_type_Tgt;
-  private List<String> b = new ArrayList();
-  
-  public pgd(Context paramContext, List<String> paramList1, List<String> paramList2, tgt paramtgt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.b = paramList1;
-    this.jdField_a_of_type_JavaUtilList = paramList2;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Tgt = paramtgt;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.b != null) {
-      return this.b.size();
-    }
-    return 0;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((paramViewHolder instanceof pgf))
+    if (paramIntent == null) {}
+    do
     {
-      pgf localpgf = (pgf)paramViewHolder;
-      if ((paramInt >= 0) && (paramInt < this.b.size()))
+      return;
+      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
       {
-        String str1 = (String)this.b.get(paramInt);
-        String str2 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        localpgf.a.setText(str1);
-        localpgf.a.setOnClickListener(new pge(this, str2, str1));
+        QLog.d("ReadinjoySPEventReport", 2, "receive screen off broadcast");
+        pfs.e(false);
+        return;
       }
-    }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new pgf(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560131, null));
+      if (paramIntent.getAction().equals("android.intent.action.SCREEN_ON"))
+      {
+        QLog.d("ReadinjoySPEventReport", 2, "receive screen on broadcast");
+        pfs.e(true);
+        return;
+      }
+      if ("mqq.intent.action.QQ_FOREGROUND".equals(paramIntent.getAction()))
+      {
+        pfs.c(false);
+        pfs.o();
+        return;
+      }
+    } while (!"mqq.intent.action.QQ_BACKGROUND".equals(paramIntent.getAction()));
+    pfs.d(false);
+    pfs.o();
   }
 }
 

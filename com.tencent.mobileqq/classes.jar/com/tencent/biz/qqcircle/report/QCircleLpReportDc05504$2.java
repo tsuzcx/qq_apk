@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import qqcircle.QQCircleReport.SingleDcData;
-import vrf;
-import vri;
-import vrl;
+import vtq;
+import vtt;
+import vtw;
 
 public final class QCircleLpReportDc05504$2
   implements Runnable
@@ -17,32 +17,32 @@ public final class QCircleLpReportDc05504$2
   
   public void run()
   {
-    Object localObject = new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { vri.a("touin", this.jdField_a_of_type_JavaLangString), vri.a("actiontype", String.valueOf(this.jdField_a_of_type_Int)), vri.a("subactiontype", String.valueOf(this.jdField_b_of_type_Int)), vri.a("thr_action", String.valueOf(this.jdField_c_of_type_Int)), vri.a("ext1", this.jdField_b_of_type_JavaLangString), vri.a("ext2", this.jdField_c_of_type_JavaLangString), vri.a("ext5", this.jdField_d_of_type_JavaLangString), vri.a("ext6", this.jdField_e_of_type_JavaLangString), vri.a("ext7", this.f), vri.a("vid", this.g) }));
+    Object localObject = new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("touin", this.jdField_a_of_type_JavaLangString), vtt.a("actiontype", String.valueOf(this.jdField_a_of_type_Int)), vtt.a("subactiontype", String.valueOf(this.jdField_b_of_type_Int)), vtt.a("thr_action", String.valueOf(this.jdField_c_of_type_Int)), vtt.a("ext1", this.jdField_b_of_type_JavaLangString), vtt.a("ext2", this.jdField_c_of_type_JavaLangString), vtt.a("ext5", this.jdField_d_of_type_JavaLangString), vtt.a("ext6", this.jdField_e_of_type_JavaLangString), vtt.a("ext7", this.f), vtt.a("vid", this.g) }));
     if (this.jdField_d_of_type_Int > -1)
     {
-      ((List)localObject).add(vri.a("page_id", String.valueOf(this.jdField_d_of_type_Int)));
+      ((List)localObject).add(vtt.a("page_id", String.valueOf(this.jdField_d_of_type_Int)));
       if (this.jdField_e_of_type_Int <= -1) {
-        break label274;
+        break label284;
       }
-      ((List)localObject).add(vri.a("fpage_id", String.valueOf(this.jdField_e_of_type_Int)));
+      ((List)localObject).add(vtt.a("fpage_id", String.valueOf(this.jdField_e_of_type_Int)));
     }
     for (;;)
     {
-      ((List)localObject).addAll(vri.a().a());
-      localObject = vri.a(vrf.a(), (List)localObject, null, vri.a().a(this.jdField_d_of_type_Int, this.jdField_a_of_type_ArrayOfByte));
-      if (!vri.a().a()) {
-        break label291;
+      ((List)localObject).addAll(vtt.a().a());
+      localObject = vtt.a(vtq.a(), (List)localObject, null, vtt.a().a(this.jdField_d_of_type_Int, this.jdField_a_of_type_ArrayOfByte));
+      if ((!vtt.a().a()) && (!vtq.a(this.jdField_a_of_type_Int))) {
+        break label301;
       }
-      vrl.a().a((QQCircleReport.SingleDcData)localObject, false);
+      vtw.a().a((QQCircleReport.SingleDcData)localObject, false);
       return;
-      ((List)localObject).add(vri.a("page_id", "0"));
+      ((List)localObject).add(vtt.a("page_id", "0"));
       break;
-      label274:
-      ((List)localObject).add(vri.a("fpage_id", "0"));
+      label284:
+      ((List)localObject).add(vtt.a("fpage_id", "0"));
     }
-    label291:
+    label301:
     QLog.w("QCircleReporter", 1, "QCircleLpReportDc05504 report miss Session: actiontype:" + this.jdField_a_of_type_Int + ",subActionType:" + this.jdField_b_of_type_Int + ",add Miss Session report cache list");
-    vrl.a().b((QQCircleReport.SingleDcData)localObject);
+    vtw.a().b((QQCircleReport.SingleDcData)localObject);
   }
 }
 

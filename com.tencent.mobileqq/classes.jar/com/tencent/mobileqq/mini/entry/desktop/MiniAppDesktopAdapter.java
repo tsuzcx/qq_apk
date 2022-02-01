@@ -2,10 +2,10 @@ package com.tencent.mobileqq.mini.entry.desktop;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Vibrator;
@@ -24,12 +24,11 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
-import anni;
-import aqpv;
-import bgtn;
-import bkjh;
+import anzj;
+import arfd;
+import bhtq;
+import blkk;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.ditto.shell.DittoUIEngine;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -61,12 +60,12 @@ import com.tencent.mobileqq.mini.entry.desktop.widget.DesktopDittoAreaView;
 import com.tencent.mobileqq.mini.entry.desktop.widget.DragAdapter;
 import com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView;
 import com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView.OnItemChangeListener;
+import com.tencent.mobileqq.mini.entry.layout.ModeInfoLayoutKt;
+import com.tencent.mobileqq.mini.entry.layout.PopularityListLayoutKt;
 import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager;
 import com.tencent.mobileqq.vas.VasApngUtil;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ThemeImageView;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -79,9 +78,9 @@ public class MiniAppDesktopAdapter
   extends DragAdapter
   implements MiniAppDesktopLayout.DesktopChangeListener, DesktopDataManager.DataChangeListener, DragRecyclerView.OnItemChangeListener
 {
-  private static final String DEVELOP = anni.a(2131705569);
+  private static final String DEVELOP = anzj.a(2131705676);
   private static final long DRAG_INSERT_DURA = 200L;
-  private static final String EXPERIENCE = anni.a(2131705578);
+  private static final String EXPERIENCE = anzj.a(2131705685);
   public static final int REFER_CONTACTS = 1;
   public static final int REFER_CONVERSATION = 0;
   public static final int REFER_LEBA = 2;
@@ -132,8 +131,8 @@ public class MiniAppDesktopAdapter
   
   private void collectAdReport(ImageView paramImageView, TextView paramTextView, MiniAppInfo paramMiniAppInfo, int paramInt)
   {
-    paramImageView.addOnAttachStateChangeListener(new MiniAppDesktopAdapter.5(this, paramMiniAppInfo, paramInt));
-    paramTextView.addOnAttachStateChangeListener(new MiniAppDesktopAdapter.6(this, paramMiniAppInfo, paramInt));
+    paramImageView.addOnAttachStateChangeListener(new MiniAppDesktopAdapter.4(this, paramMiniAppInfo, paramInt));
+    paramTextView.addOnAttachStateChangeListener(new MiniAppDesktopAdapter.5(this, paramMiniAppInfo, paramInt));
   }
   
   private void deleteMiniApp(MiniAppInfo paramMiniAppInfo)
@@ -202,6 +201,11 @@ public class MiniAppDesktopAdapter
     return localDesktopItemInfo1.mModuleType == localDesktopItemInfo2.mModuleType;
   }
   
+  private boolean needShowRodDotCount(String paramString)
+  {
+    return (this.mCanShowRedDot) && (this.mRedDotSwitchState == 1) && (getRedDotCount(paramString) > 0);
+  }
+  
   private void setAnimationListener(MiniAppDesktopAdapter.OnAnimationListener paramOnAnimationListener)
   {
     this.mAnimListener = paramOnAnimationListener;
@@ -238,7 +242,7 @@ public class MiniAppDesktopAdapter
     paramMicroAppViewHolder.itemView.setVisibility(0);
     if (paramDesktopAppInfo.isTemp)
     {
-      paramMicroAppViewHolder.imageView.setImageResource(2130840932);
+      paramMicroAppViewHolder.imageView.setImageResource(2130840942);
       paramMicroAppViewHolder.textView.setVisibility(4);
       paramMicroAppViewHolder.versionTypeMark.setVisibility(4);
       paramMicroAppViewHolder.recommendBadge.setVisibility(4);
@@ -249,6 +253,12 @@ public class MiniAppDesktopAdapter
     Object localObject1;
     Object localObject2;
     Object localObject3;
+    label228:
+    int i;
+    label263:
+    label306:
+    label339:
+    boolean bool;
     if (((localMiniAppInfo.motionPics == null) || (localMiniAppInfo.motionPics.size() <= 0)) && (!TextUtils.isEmpty(localMiniAppInfo.apngUrl)))
     {
       paramMicroAppViewHolder.anpgImagView.setVisibility(0);
@@ -262,67 +272,72 @@ public class MiniAppDesktopAdapter
       paramMicroAppViewHolder.setMiniAppInfo(localMiniAppInfo);
       paramMicroAppViewHolder.setModuleType(paramDesktopAppInfo.getModuleType());
       if (!localMiniAppInfo.isSpecialMiniApp()) {
-        break label981;
+        break label909;
       }
       paramMicroAppViewHolder.itemView.setTag(Integer.valueOf(3));
-      label228:
       if ((localMiniAppInfo.verType != 0) && (localMiniAppInfo.verType != 4)) {
-        break label1018;
+        break label946;
       }
       paramMicroAppViewHolder.versionTypeMark.setVisibility(0);
       paramMicroAppViewHolder.versionTypeMark.setText(DEVELOP);
-      label263:
       if (paramDesktopAppInfo.getModuleType() != 2) {
-        break label1071;
+        break label999;
       }
       paramMicroAppViewHolder.recommendBadge.setVisibility(0);
       if (TextUtils.isEmpty(localMiniAppInfo.recommendAppIconUrl)) {
-        break label1060;
+        break label988;
       }
       paramMicroAppViewHolder.recommendBadge.setImageDrawable(MiniAppUtils.getDrawable(localMiniAppInfo.recommendAppIconUrl, null));
-      label306:
       if ((!TextUtils.isEmpty(localMiniAppInfo.amsAdInfo)) && (!paramDesktopAppInfo.isFromCache())) {
         collectAdReport(paramMicroAppViewHolder.imageView, paramMicroAppViewHolder.textView, localMiniAppInfo, paramInt);
       }
-      label339:
-      localObject1 = (Integer)this.mRedDotData.get(localMiniAppInfo.appId);
+      i = getRedDotCount(localMiniAppInfo.appId);
       if (QLog.isColorLevel()) {
-        QLog.d("MiniAppDesktopAdapter", 2, "onBindViewHolder, canShowRedDot: " + this.mCanShowRedDot + ", redDotNum : " + localObject1 + ", name : " + localMiniAppInfo.name + ", mRedDotSwitchState: " + this.mRedDotSwitchState);
+        QLog.d("MiniAppDesktopAdapter", 2, "onBindViewHolder, canShowRedDot: " + this.mCanShowRedDot + ", redDotNum : " + i + ", name : " + localMiniAppInfo.name + ", mRedDotSwitchState: " + this.mRedDotSwitchState);
       }
-      if ((!this.mCanShowRedDot) || (this.mRedDotSwitchState != 1) || (localObject1 == null) || (((Integer)localObject1).intValue() <= 0)) {
-        break label1083;
+      bool = needShowRodDotCount(localMiniAppInfo.appId);
+      if ((!bool) || ((paramDesktopAppInfo.getModuleType() != 1) && (paramDesktopAppInfo.getModuleType() != 3))) {
+        break label1011;
       }
       paramMicroAppViewHolder.redDot.setVisibility(0);
-      bkjh.a(paramMicroAppViewHolder.redDot, 7, ((Integer)localObject1).intValue(), 0);
-      label482:
+      blkk.a(paramMicroAppViewHolder.redDot, 7, i, 0);
+      label475:
       if (paramDesktopAppInfo.getModuleType() != 1) {
-        break label1095;
+        break label1030;
       }
-      paramInt = 3001;
+      if (!bool) {
+        break label1023;
+      }
+      paramInt = 3020;
     }
     for (;;)
     {
-      label494:
-      localObject3 = MiniAppUtils.getAppInterface();
-      localObject1 = null;
-      if (localObject3 != null)
+      label492:
+      localObject1 = MiniAppUtils.getAppInterface();
+      if (localObject1 != null)
       {
-        localObject2 = (MiniAppExposureManager)((AppInterface)localObject3).getManager(322);
-        localObject1 = (DesktopDataManager)((AppInterface)localObject3).getManager(336);
+        localObject2 = (MiniAppExposureManager)((AppInterface)localObject1).getManager(322);
+        localObject1 = (DesktopDataManager)((AppInterface)localObject1).getManager(336);
       }
       for (;;)
       {
+        MiniAppExposureManager.MiniAppModuleExposureData localMiniAppModuleExposureData;
+        MiniAppExposureManager.MiniAppRedDotExposureData localMiniAppRedDotExposureData;
         if (localObject2 != null)
         {
           localObject3 = new MiniAppConfig(localMiniAppInfo);
           ((MiniAppConfig)localObject3).launchParam.scene = paramInt;
-          paramInt = getRedDotCount(localMiniAppInfo.appId);
-          MiniAppExposureManager.MiniAppModuleExposureData localMiniAppModuleExposureData = new MiniAppExposureManager.MiniAppModuleExposureData((MiniAppConfig)localObject3, "page_view", "expo");
-          MiniAppExposureManager.MiniAppRedDotExposureData localMiniAppRedDotExposureData = new MiniAppExposureManager.MiniAppRedDotExposureData((MiniAppConfig)localObject3, "page_view", "expo_scene", paramInt);
-          localObject3 = null;
-          if (localMiniAppInfo.tianshuAdId > 0) {
-            localObject3 = new MiniAppExposureManager.TianShuExposureData("tianshu.78", "tianshu.78", String.valueOf(localMiniAppInfo.tianshuAdId), 101);
+          localMiniAppModuleExposureData = new MiniAppExposureManager.MiniAppModuleExposureData((MiniAppConfig)localObject3, "page_view", "expo");
+          localMiniAppRedDotExposureData = new MiniAppExposureManager.MiniAppRedDotExposureData((MiniAppConfig)localObject3, "page_view", "expo_scene", i);
+          if (localMiniAppInfo.tianshuAdId <= 0) {
+            break label1100;
           }
+        }
+        label909:
+        label946:
+        label1100:
+        for (localObject3 = new MiniAppExposureManager.TianShuExposureData("tianshu.78", "tianshu.78", String.valueOf(localMiniAppInfo.tianshuAdId), 101);; localObject3 = null)
+        {
           Object localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append(localMiniAppInfo.appId).append("_").append(localMiniAppInfo.verType).append("_").append(paramDesktopAppInfo.getModuleType());
           localObject4 = ((StringBuilder)localObject4).toString();
@@ -331,82 +346,77 @@ public class MiniAppDesktopAdapter
           if (localObject3 != null) {
             ((MiniAppExposureManager)localObject2).putReportDataToMap((String)localObject4 + "_tianshu", (MiniAppExposureManager.BaseExposureReport)localObject3);
           }
-        }
-        if ((localObject1 != null) && (paramDesktopAppInfo.getModuleType() == 2) && (!paramDesktopAppInfo.mMiniAppInfo.isSpecialMiniApp())) {
-          ((DesktopDataManager)localObject1).updateRecommendExposureNumber(paramDesktopAppInfo.mMiniAppInfo.appId);
-        }
-        if (paramMicroAppViewHolder.textView != null) {
-          paramMicroAppViewHolder.textView.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131166993));
-        }
-        if ((paramMicroAppViewHolder.imageView instanceof ThemeImageView))
-        {
-          ((ThemeImageView)paramMicroAppViewHolder.imageView).setSupportMaskView(true);
-          paramMicroAppViewHolder.imageView.setBackgroundDrawable(null);
-        }
-        if ((localMiniAppInfo.motionPics != null) && (localMiniAppInfo.motionPics.size() > 0))
-        {
-          setAnimationListener(paramMicroAppViewHolder);
-          paramDesktopAppInfo = localMiniAppInfo.motionPics.iterator();
-          for (;;)
-          {
-            if (paramDesktopAppInfo.hasNext())
-            {
-              localObject1 = (String)paramDesktopAppInfo.next();
-              localObject2 = new ImageView(this.mContext);
-              ((ImageView)localObject2).setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-              ((ImageView)localObject2).setImageDrawable(MiniAppUtils.getIcon(this.mContext, (String)localObject1, true));
-              ((ImageView)localObject2).setScaleType(ImageView.ScaleType.CENTER);
-              paramMicroAppViewHolder.viewFlipper.addView((View)localObject2);
-              continue;
-              paramMicroAppViewHolder.anpgImagView.setVisibility(8);
-              break;
-              label981:
-              if (localMiniAppInfo.topType == 1)
-              {
-                paramMicroAppViewHolder.itemView.setTag(Integer.valueOf(2));
-                break label228;
-              }
-              paramMicroAppViewHolder.itemView.setTag(Integer.valueOf(1));
-              break label228;
-              label1018:
-              if (localMiniAppInfo.verType == 1)
-              {
-                paramMicroAppViewHolder.versionTypeMark.setVisibility(0);
-                paramMicroAppViewHolder.versionTypeMark.setText(EXPERIENCE);
-                break label263;
-              }
-              paramMicroAppViewHolder.versionTypeMark.setVisibility(8);
-              break label263;
-              label1060:
-              paramMicroAppViewHolder.recommendBadge.setImageDrawable(null);
-              break label306;
-              label1071:
-              paramMicroAppViewHolder.recommendBadge.setVisibility(8);
-              break label339;
-              label1083:
-              paramMicroAppViewHolder.redDot.setVisibility(8);
-              break label482;
-              label1095:
-              if (paramDesktopAppInfo.getModuleType() == 2)
-              {
-                paramInt = 3002;
-                break label494;
-              }
-              if (paramDesktopAppInfo.getModuleType() != 3) {
-                break label1174;
-              }
-              paramInt = 3003;
-              break label494;
-            }
+          if ((localObject1 != null) && (paramDesktopAppInfo.getModuleType() == 2) && (!paramDesktopAppInfo.mMiniAppInfo.isSpecialMiniApp())) {
+            ((DesktopDataManager)localObject1).updateRecommendExposureNumber(paramDesktopAppInfo.mMiniAppInfo.appId);
           }
-          paramMicroAppViewHolder.picCount = localMiniAppInfo.motionPics.size();
+          if ((localMiniAppInfo.motionPics != null) && (localMiniAppInfo.motionPics.size() > 0))
+          {
+            setAnimationListener(paramMicroAppViewHolder);
+            paramDesktopAppInfo = localMiniAppInfo.motionPics.iterator();
+            for (;;)
+            {
+              if (paramDesktopAppInfo.hasNext())
+              {
+                localObject1 = (String)paramDesktopAppInfo.next();
+                localObject2 = new ImageView(this.mContext);
+                ((ImageView)localObject2).setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+                ((ImageView)localObject2).setImageDrawable(MiniAppUtils.getIcon(this.mContext, (String)localObject1, true));
+                ((ImageView)localObject2).setScaleType(ImageView.ScaleType.CENTER);
+                paramMicroAppViewHolder.viewFlipper.addView((View)localObject2);
+                continue;
+                paramMicroAppViewHolder.anpgImagView.setVisibility(8);
+                break;
+                if (localMiniAppInfo.topType == 1)
+                {
+                  paramMicroAppViewHolder.itemView.setTag(Integer.valueOf(2));
+                  break label228;
+                }
+                paramMicroAppViewHolder.itemView.setTag(Integer.valueOf(1));
+                break label228;
+                if (localMiniAppInfo.verType == 1)
+                {
+                  paramMicroAppViewHolder.versionTypeMark.setVisibility(0);
+                  paramMicroAppViewHolder.versionTypeMark.setText(EXPERIENCE);
+                  break label263;
+                }
+                paramMicroAppViewHolder.versionTypeMark.setVisibility(8);
+                break label263;
+                label988:
+                paramMicroAppViewHolder.recommendBadge.setImageDrawable(null);
+                break label306;
+                label999:
+                paramMicroAppViewHolder.recommendBadge.setVisibility(8);
+                break label339;
+                label1011:
+                paramMicroAppViewHolder.redDot.setVisibility(8);
+                break label475;
+                label1023:
+                paramInt = 3001;
+                break label492;
+                if (paramDesktopAppInfo.getModuleType() == 2)
+                {
+                  paramInt = 3002;
+                  break label492;
+                }
+                if (paramDesktopAppInfo.getModuleType() != 3) {
+                  break label1115;
+                }
+                if (bool) {}
+                for (paramInt = 3021;; paramInt = 3003) {
+                  break;
+                }
+              }
+            }
+            paramMicroAppViewHolder.picCount = localMiniAppInfo.motionPics.size();
+          }
+          paramMicroAppViewHolder.itemView.setOnClickListener(new MiniAppDesktopAdapter.3(this));
+          return;
         }
-        paramMicroAppViewHolder.itemView.setOnClickListener(new MiniAppDesktopAdapter.3(this));
-        paramMicroAppViewHolder.itemView.setOnLongClickListener(new MiniAppDesktopAdapter.4(this));
-        return;
+        label1030:
+        localObject1 = null;
         localObject2 = null;
       }
-      label1174:
+      label1115:
       paramInt = 9999;
     }
   }
@@ -547,9 +557,12 @@ public class MiniAppDesktopAdapter
     default: 
       return null;
     case 1: 
-      return new MiniAppDesktopAdapter.ModuleViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562421, paramViewGroup, false), (Activity)this.mActivity.get());
+      if (Build.VERSION.SDK_INT > 21) {}
+      for (paramViewGroup = ModeInfoLayoutKt.buildModuleInfoLayout(paramViewGroup.getContext());; paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562462, paramViewGroup, false)) {
+        return new MiniAppDesktopAdapter.ModuleViewHolder(paramViewGroup, (Activity)this.mActivity.get());
+      }
     case 2: 
-      return new MiniAppDesktopAdapter.MicroAppViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562419, paramViewGroup, false));
+      return new MiniAppDesktopAdapter.MicroAppViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562460, paramViewGroup, false));
     case 3: 
       return new MiniAppDesktopAdapter.MicroAppViewHolder(new View(paramViewGroup.getContext()));
     case 4: 
@@ -562,7 +575,10 @@ public class MiniAppDesktopAdapter
     case 8: 
       return new MiniAppDesktopAdapter.RecommendModuleViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559389, paramViewGroup, false));
     case 9: 
-      return new MiniAppDesktopAdapter.PopularityListModuleViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559388, paramViewGroup, false));
+      if (Build.VERSION.SDK_INT > 21) {}
+      for (paramViewGroup = PopularityListLayoutKt.buildPopularityListLayout(paramViewGroup.getContext());; paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559388, paramViewGroup, false)) {
+        return new MiniAppDesktopAdapter.PopularityListModuleViewHolder(paramViewGroup);
+      }
     case 10: 
       return new MiniAppDesktopAdapter.FriendsPkViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559384, paramViewGroup, false));
     }
@@ -586,7 +602,7 @@ public class MiniAppDesktopAdapter
       int k = ((View)localViewHolder.itemView.getParent()).getTop();
       int m = localViewHolder.itemView.getLeft();
       int n = localViewHolder.itemView.getTop();
-      if ((Math.abs(paramInt1 - (j + m)) <= bgtn.b(20.0F)) && (Math.abs(paramInt2 - (k + n)) <= bgtn.b(20.0F)))
+      if ((Math.abs(paramInt1 - (j + m)) <= bhtq.b(20.0F)) && (Math.abs(paramInt2 - (k + n)) <= bhtq.b(20.0F)))
       {
         if (this.mMoveItemRunnable.pendingMoveTargetIndex == i) {
           return;
@@ -621,7 +637,7 @@ public class MiniAppDesktopAdapter
   public void onDesktopResume()
   {
     QLog.d("MiniAppDesktopAdapter", 2, "onDesktopResume");
-    ThreadManager.getUIHandler().postDelayed(new MiniAppDesktopAdapter.7(this), 300L);
+    ThreadManager.getUIHandler().postDelayed(new MiniAppDesktopAdapter.6(this), 300L);
   }
   
   public void onDragFinish(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -653,7 +669,7 @@ public class MiniAppDesktopAdapter
           localObject = (FrameLayout.LayoutParams)this.mDragMirrorLayout.getLayoutParams();
           k = paramViewHolder.itemView.getLeft();
           j = (int)paramFloat1 + (j + k);
-          i = paramViewHolder.itemView.getTop() + i + (int)paramFloat2 - bgtn.b(8.0F);
+          i = paramViewHolder.itemView.getTop() + i + (int)paramFloat2 - bhtq.b(8.0F);
           this.currDragMoveLeft = j;
           this.currDragMoveTop = i;
           ((FrameLayout.LayoutParams)localObject).setMargins(j, i, 0, 0);
@@ -666,7 +682,7 @@ public class MiniAppDesktopAdapter
             if (this.mIntertTarget < 0)
             {
               paramViewHolder = this.mRecyclerView.findViewHolderForAdapterPosition(getItemCount() - 1);
-              if ((paramViewHolder != null) && (Math.abs(j - paramViewHolder.itemView.getLeft()) >= bgtn.b(20.0F)) && (i - paramViewHolder.itemView.getTop() >= bgtn.b(30.0F)))
+              if ((paramViewHolder != null) && (Math.abs(j - paramViewHolder.itemView.getLeft()) >= bhtq.b(20.0F)) && (i - paramViewHolder.itemView.getTop() >= bhtq.b(30.0F)))
               {
                 paramViewHolder = (DesktopItemInfo)this.mData.get(getItemCount() - 1);
                 if ((paramViewHolder.dropEnable) && (!paramViewHolder.isTemp) && (!isSameModule(this.mDragIndex, getItemCount() - 1)))
@@ -707,7 +723,7 @@ public class MiniAppDesktopAdapter
           if ((k != 0) && (this.mDragMirrorMarkImage != null)) {
             this.mDragMirrorMarkImage.setVisibility(0);
           }
-          if ((Math.abs(j - this.lastDragLeft) > bgtn.b(25.0F)) || (Math.abs(i - this.lastDragTop) > bgtn.b(25.0F)))
+          if ((Math.abs(j - this.lastDragLeft) > bhtq.b(25.0F)) || (Math.abs(i - this.lastDragTop) > bhtq.b(25.0F)))
           {
             QLog.i("MiniAppDesktopAdapter", 1, "Desktop-Drag DragMirror left:" + j + " top:" + i);
             this.lastDragLeft = j;
@@ -744,7 +760,7 @@ public class MiniAppDesktopAdapter
       }
       for (;;)
       {
-        if ((Math.abs(j - this.lastDragMoveLeft) <= bgtn.b(20.0F)) && (Math.abs(j - this.lastDragMoveTop) <= bgtn.b(20.0F))) {
+        if ((Math.abs(j - this.lastDragMoveLeft) <= bhtq.b(20.0F)) && (Math.abs(j - this.lastDragMoveTop) <= bhtq.b(20.0F))) {
           break label240;
         }
         this.lastDragMoveLeft = i;
@@ -829,7 +845,7 @@ public class MiniAppDesktopAdapter
     this.mData.addAll(paramList);
     this.mRedDotData.clear();
     this.mRedDotData.putAll(paramMap);
-    this.mCanShowRedDot = aqpv.d();
+    this.mCanShowRedDot = arfd.d();
   }
   
   public void setRedDotSwitchState(int paramInt)

@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adxv
-  extends bgzm
+  implements View.OnClickListener
 {
-  public adxv(ChatSettingForTroop paramChatSettingForTroop) {}
+  public adxv(AutoRemarkActivity paramAutoRemarkActivity) {}
   
-  protected void onGetMyTroopEffect(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.chatopttroop", 2, "onGetMyTroopEffect  result = " + paramBoolean);
+    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {}
+    try
+    {
+      this.a.a.dismiss();
+      label46:
+      this.a.a = null;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    if (paramBoolean) {
-      this.a.a(true);
+    catch (Throwable localThrowable)
+    {
+      break label46;
     }
   }
 }

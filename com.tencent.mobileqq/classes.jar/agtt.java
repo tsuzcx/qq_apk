@@ -1,39 +1,18 @@
-import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MessageForFoldMsgGrayTips;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.AdapterView;
 
 class agtt
-  implements View.OnClickListener
+  implements bljm
 {
-  agtt(agts paramagts) {}
+  agtt(agtr paramagtr) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Object localObject = afur.a(paramView);
-    if ((localObject instanceof MessageForFoldMsgGrayTips))
-    {
-      ((MessageForFoldMsgGrayTips)localObject).isOpen = true;
-      agtu localagtu = (agtu)afur.a(paramView);
-      localagtu.jdField_b_of_type_AndroidWidgetTextView.setText(((MessageForFoldMsgGrayTips)localObject).getShowMsgContent(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext));
-      localObject = localagtu.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-      if ((localObject instanceof ViewGroup.MarginLayoutParams))
-      {
-        localObject = (ViewGroup.MarginLayoutParams)localObject;
-        if (((ViewGroup.MarginLayoutParams)localObject).rightMargin != afur.a(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources())) {
-          ((ViewGroup.MarginLayoutParams)localObject).rightMargin = afur.a(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources());
-        }
-      }
-      localagtu.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      localagtu.a.requestLayout();
-      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80064BD", "0X80064BD", 0, 0, "", "", "", "");
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramAdapterView = (akjl)agtr.a(this.a).a.getItem(paramInt - 1);
+    agtr.a(this.a, paramAdapterView);
+    agtr.a(this.a).dismiss();
+    bdll.b(agtr.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
   }
 }
 

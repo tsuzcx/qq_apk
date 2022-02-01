@@ -1,43 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
-class aprs
+public abstract class aprs
+  implements apsd
 {
   public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d = aprr.a();
+  protected Context a;
+  protected AppInterface a;
+  protected int b;
   
   public aprs()
   {
-    this.jdField_a_of_type_JavaLangString = "android";
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public String toString()
+  public int a()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("os", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("app", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("url", this.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("result", this.jdField_a_of_type_Int);
-      localJSONObject.put("scene", this.jdField_b_of_type_Int);
-      localJSONObject.put("type", this.jdField_c_of_type_Int);
-      localJSONObject.put("ver", this.d);
-      return localJSONObject.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("ArkApp.ArkSecurityReporter", 1, "ArkSafe.report exception=", localJSONException);
-      }
-    }
+    return 0;
+  }
+  
+  public void a(Context paramContext, AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void h()
+  {
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  public void i() {}
+  
+  public void j()
+  {
+    this.jdField_a_of_type_Int = 5;
   }
 }
 

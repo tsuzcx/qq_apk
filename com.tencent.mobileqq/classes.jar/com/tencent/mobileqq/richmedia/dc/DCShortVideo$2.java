@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.richmedia.dc;
 
-import bard;
-import barf;
-import barg;
+import bbjw;
+import bbjy;
+import bbjz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class DCShortVideo$2
   implements Runnable
 {
-  public DCShortVideo$2(bard parambard, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, int paramInt3) {}
+  public DCShortVideo$2(bbjw parambbjw, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, int paramInt3) {}
   
   public void run()
   {
-    Object localObject = new barf();
-    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, (barg)localObject);
-    ((barf)localObject).jdField_a_of_type_Int = this.c;
+    Object localObject = new bbjy();
+    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, (bbjz)localObject);
+    ((bbjy)localObject).jdField_a_of_type_Int = this.c;
     if (QLog.isDevelopLevel()) {
-      QLog.d("DCShortVideo", 4, "[reportPreview]shortVideoType=" + ((barf)localObject).f + ",uinType = " + ((barf)localObject).b + ",groupMemCount = " + ((barf)localObject).c + ",age = " + ((barf)localObject).d + ",gender = " + ((barf)localObject).e + ",reprotHour = " + ((barf)localObject).g + ",netType = " + ((barf)localObject).h + ",playAction = " + ((barf)localObject).jdField_a_of_type_Int);
+      QLog.d("DCShortVideo", 4, "[reportPreview]shortVideoType=" + ((bbjy)localObject).f + ",uinType = " + ((bbjy)localObject).b + ",groupMemCount = " + ((bbjy)localObject).c + ",age = " + ((bbjy)localObject).d + ",gender = " + ((bbjy)localObject).e + ",reprotHour = " + ((bbjy)localObject).g + ",netType = " + ((bbjy)localObject).h + ",playAction = " + ((bbjy)localObject).jdField_a_of_type_Int);
     }
-    localObject = new DataReport.ReportTask("ShortVideo.Preview", ((barf)localObject).a("ShortVideo.Preview"));
+    localObject = new DataReport.ReportTask("ShortVideo.Preview", ((bbjy)localObject).a("ShortVideo.Preview"));
     DataReport.a().a((DataReport.ReportTask)localObject);
   }
 }

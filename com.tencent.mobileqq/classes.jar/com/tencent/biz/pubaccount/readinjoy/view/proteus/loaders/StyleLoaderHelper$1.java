@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders;
 
-import pmk;
-import ten;
+import pfd;
+import svf;
 
 public class StyleLoaderHelper$1
   implements Runnable
 {
-  public StyleLoaderHelper$1(ten paramten) {}
+  public StyleLoaderHelper$1(svf paramsvf) {}
   
   public void run()
   {
-    pmk.a().b();
+    pfd.a().b();
   }
 }
 

@@ -1,55 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
+import android.text.TextUtils;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.2;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import org.json.JSONObject;
 
-class apxj
-  extends AnimatorListenerAdapter
+public class apxj
+  implements apxf
 {
-  apxj(apxi paramapxi) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(String paramString)
   {
-    this.a.a("animator set end!");
-    if (this.a.c != null)
-    {
-      apxi.a(this.a).removeView(this.a.c);
-      this.a.c = null;
-      if (this.a.d == null) {
-        break label186;
-      }
-      apxi.b(this.a).removeView(this.a.d);
-      this.a.d = null;
-    }
-    for (;;)
-    {
-      if (this.a.e != null)
-      {
-        this.a.e.setVisibility(0);
-        paramAnimator = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
-        paramAnimator.a = -1L;
-        paramAnimator.b();
-      }
-      if (this.a.jdField_b_of_type_AndroidViewView != null) {
-        this.a.jdField_b_of_type_AndroidViewView.invalidate();
-      }
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.jdField_b_of_type_JavaLangString = "";
-      this.a.a(true);
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      this.a.a("something wrong, bubble view is null!");
-      break;
-      label186:
-      this.a.a("something wrong, pendview is null!");
     }
+    ArkAppCenter.a().postToMainThread(new ArkAppSchemeCenter.TelSchemeHandler.1(this, paramString));
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
   {
-    this.a.a("animator set start!");
-    this.a.a(false);
+    ArkAppCenter.a().send(paramString3, new ArkAppSchemeCenter.TelSchemeHandler.2(this, paramString3, paramString1, paramLong, paramString2));
+    return true;
   }
 }
 

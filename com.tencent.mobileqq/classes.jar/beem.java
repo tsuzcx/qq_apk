@@ -1,17 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class beem
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bebs
 {
-  public beem(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public beem(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.setAlpha(f);
+    GroupTeamWorkListActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupTeamWorkListActivity", 2, " onDeletePad success: " + paramBoolean);
+    }
   }
 }
 

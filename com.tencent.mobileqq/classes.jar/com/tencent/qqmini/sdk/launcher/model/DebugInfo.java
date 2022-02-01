@@ -65,6 +65,11 @@ public class DebugInfo
     this.wsUrl = paramString;
   }
   
+  public boolean valid()
+  {
+    return (!TextUtils.isEmpty(this.roomId)) && (!TextUtils.isEmpty(this.wsUrl));
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeString(this.roomId);
@@ -73,7 +78,7 @@ public class DebugInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.DebugInfo
  * JD-Core Version:    0.7.0.1
  */

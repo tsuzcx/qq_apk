@@ -1,15 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class ajwl
-  implements DialogInterface.OnClickListener
+public abstract interface ajwl
 {
-  ajwl(ajvr paramajvr) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a();
 }
 
 

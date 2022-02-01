@@ -1,50 +1,22 @@
-import android.view.Surface;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
 
-public class aots
+class aots
+  implements aczq
 {
-  private bati jdField_a_of_type_Bati;
-  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = (EGL10)EGLContext.getEGL();
-  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext();
-  private EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentDisplay();
-  private EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentSurface(12377);
+  aots(aoti paramaoti, long paramLong1, long paramLong2, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
   
-  public aots(bath parambath, Surface paramSurface)
+  public ToServiceMsg a()
   {
-    this.jdField_a_of_type_Bati = new bati(parambath);
-    this.jdField_a_of_type_Bati.a(paramSurface);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Bati.a(paramLong);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bati.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Bati.a();
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Bati != null)
-    {
-      this.jdField_a_of_type_Bati.a();
-      this.jdField_a_of_type_Bati = null;
-    }
+    ToServiceMsg localToServiceMsg = aoti.c(this.jdField_a_of_type_Aoti).createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
+    localToServiceMsg.extraData.putLong("latestFriendSeq", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putLong("latestGroupSeq", this.b);
+    localToServiceMsg.extraData.putLong("type", 1L);
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
+    localToServiceMsg.setEnableFastResend(true);
+    return localToServiceMsg;
   }
 }
 

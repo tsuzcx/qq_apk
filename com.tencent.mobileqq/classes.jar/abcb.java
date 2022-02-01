@@ -1,11 +1,10 @@
-import java.util.List;
-
-public class abcb
+public abstract interface abcb
 {
-  public int a;
-  public String a;
-  public List<abca> a;
-  public List<String> b;
+  public abstract void a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void b();
 }
 
 

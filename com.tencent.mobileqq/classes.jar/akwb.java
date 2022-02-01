@@ -1,13 +1,23 @@
-import java.util.HashSet;
-import java.util.Set;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akwb
+class akwb
+  implements View.OnClickListener
 {
-  public static final Set<String> a = new HashSet();
+  akwb(akwa paramakwa) {}
   
-  static
+  public void onClick(View paramView)
   {
-    a.add("SoLoadModule");
+    if (akwa.a(this.a) == null)
+    {
+      akwa.a(this.a, bhlq.a(this.a.mActivity, 0, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131717100), null, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131717098), ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131717099), new akwc(this), new akwd(this)));
+      akwa.a(this.a).setCanceledOnTouchOutside(false);
+    }
+    akwa.a(this.a).show();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

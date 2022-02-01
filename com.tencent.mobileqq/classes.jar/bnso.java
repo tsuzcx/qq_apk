@@ -1,76 +1,193 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import android.widget.TextView;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.List;
+import java.io.File;
 
-class bnso
-  implements Observer<bnrb>
+public class bnso
+  implements bdfl
 {
-  bnso(bnsi parambnsi) {}
+  final int jdField_a_of_type_Int;
+  final String jdField_a_of_type_JavaLangString;
+  Throwable jdField_a_of_type_JavaLangThrowable;
+  final int b;
   
-  public void a(@Nullable bnrb parambnrb)
+  bnso(String paramString, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    if (paramInt2 > 0) {}
+    for (this.jdField_b_of_type_Int = paramInt2;; this.jdField_b_of_type_Int = 30)
+    {
+      this.jdField_a_of_type_JavaLangThrowable = null;
+      if (paramString != null) {
+        break;
+      }
+      throw new IllegalArgumentException("null == outputFilePath");
+    }
+  }
+  
+  public bdfm a(int paramInt1, int paramInt2)
   {
     int i = 0;
-    bnsi.a(this.a).a().removeObservers(bnsi.a(this.a));
-    if (parambnrb != null)
+    bdfm localbdfm = new bdfm();
+    int k;
+    Object localObject;
+    if (paramInt1 <= paramInt2)
     {
-      QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "Obtained recognizedEmotion", "=====" + parambnrb });
-      QLog.d("AEGIFChunkPreviewFragment", 4, "emo ===" + parambnrb.jdField_a_of_type_JavaLangString + "text ===" + parambnrb.jdField_a_of_type_Int + "material ====" + parambnrb.jdField_b_of_type_Int);
-      if (parambnrb.jdField_a_of_type_JavaLangString == null)
-      {
-        parambnrb.jdField_a_of_type_Int = 0;
-        parambnrb.jdField_b_of_type_Int = 6;
-        parambnrb.jdField_a_of_type_JavaLangString = "default";
+      k = paramInt2;
+      localObject = new File(this.jdField_a_of_type_JavaLangString);
+      if (((File)localObject).exists()) {
+        ((File)localObject).delete();
       }
-      if ((parambnrb.jdField_a_of_type_JavaUtilList != null) && (parambnrb.jdField_a_of_type_JavaUtilList.size() == 0)) {
-        parambnrb.jdField_a_of_type_JavaUtilList.addAll(bnrn.jdField_a_of_type_JavaUtilList);
+      localbdfm.jdField_a_of_type_JavaIoFile = ((File)localObject);
+      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.lvcc.name(), "640|640|384|768|30");
+      if ((localObject == null) || (((String)localObject).length() <= 0)) {
+        break label431;
       }
-      Object localObject;
-      if (parambnrb.jdField_a_of_type_JavaLangString.equals("default"))
-      {
-        localObject = anni.a(2131698783);
-        bnsi.a(this.a).setText((CharSequence)localObject);
-      }
-      for (;;)
-      {
-        if (i < parambnrb.jdField_a_of_type_Int)
-        {
-          localObject = new bnri();
-          ((bnri)localObject).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = null;
-          ((bnri)localObject).jdField_a_of_type_JavaLangString = ((String)parambnrb.jdField_a_of_type_JavaUtilList.get(i % parambnrb.jdField_a_of_type_JavaUtilList.size()));
-          ((bnri)localObject).jdField_b_of_type_Int = 2;
-          if (bnsi.a(this.a).size() < bnsi.a(this.a)) {}
-        }
-        else
-        {
-          bnsi.a(this.a).a(bnsi.a(this.a), parambnrb.jdField_a_of_type_JavaLangString);
-          bnsi.a(this.a).b().observe(bnsi.a(this.a), new bnsp(this, parambnrb));
-          bnsi.a(this.a).a().observe(bnsi.a(this.a), new bnsq(this, parambnrb));
-          return;
-          localObject = (String)bnsi.a(this.a).get(parambnrb.jdField_a_of_type_JavaLangString);
-          localObject = anni.a(2131698778) + (String)localObject + anni.a(2131698785);
-          break;
-        }
-        bnsi.a(this.a).add(localObject);
-        bnsi.a(this.a).notifyItemInserted(bnsi.a(this.a).size() - 1);
-        bntz localbntz = new bntz();
-        localbntz.jdField_b_of_type_JavaLangString = ((bnri)localObject).jdField_a_of_type_JavaLangString;
-        localbntz.jdField_a_of_type_Int = (i + 1);
-        bnsi.a(this.a).a(localbntz);
-        i += 1;
+      localObject = ((String)localObject).split("\\|");
+      if ((localObject == null) || (localObject.length <= 4)) {
+        break label431;
       }
     }
-    QLog.d("AEGIFChunkPreviewFragment", 4, "Recognized emotion bean is null");
-    parambnrb = new bnri();
-    parambnrb.jdField_b_of_type_JavaLangString = "";
-    parambnrb.jdField_a_of_type_JavaLangString = "";
-    parambnrb.jdField_b_of_type_Int = 2;
-    parambnrb.jdField_a_of_type_Int = 11;
-    bnsi.a(this.a).add(parambnrb);
+    label431:
+    for (;;)
+    {
+      try
+      {
+        i = Integer.valueOf(localObject[1]).intValue();
+      }
+      catch (NumberFormatException localNumberFormatException1)
+      {
+        paramInt1 = 0;
+        paramInt2 = 0;
+        i = 0;
+      }
+      try
+      {
+        paramInt2 = Integer.valueOf(localObject[2]).intValue();
+      }
+      catch (NumberFormatException localNumberFormatException2)
+      {
+        for (;;)
+        {
+          label344:
+          int n;
+          paramInt1 = 0;
+          paramInt2 = 0;
+        }
+      }
+      try
+      {
+        paramInt1 = Integer.valueOf(localObject[3]).intValue();
+      }
+      catch (NumberFormatException localNumberFormatException3)
+      {
+        paramInt1 = 0;
+        break label344;
+      }
+      try
+      {
+        m = Integer.valueOf(localObject[4]).intValue();
+        j = i;
+        i = paramInt2;
+        paramInt2 = m;
+        m = j;
+        if (j <= 0) {
+          m = 640;
+        }
+        j = i;
+        if (i <= 0) {
+          j = 384;
+        }
+        i = paramInt1;
+        if (paramInt1 <= 0) {
+          i = 768;
+        }
+        paramInt1 = paramInt2;
+        if (paramInt2 <= 0) {
+          paramInt1 = 30;
+        }
+        localbdfm.jdField_a_of_type_Float = (m / k);
+        localbdfm.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int * localbdfm.jdField_a_of_type_Float * localbdfm.jdField_a_of_type_Float + 0.5F));
+        if (localbdfm.jdField_a_of_type_Int <= i * 1024) {
+          break label382;
+        }
+        localbdfm.jdField_a_of_type_Int = (i * 1024);
+        paramInt2 = paramInt1;
+        if (this.jdField_b_of_type_Int <= paramInt1) {
+          paramInt2 = this.jdField_b_of_type_Int;
+        }
+        localbdfm.jdField_b_of_type_Int = paramInt2;
+        localbdfm.jdField_b_of_type_Boolean = a();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopHomeworkHelper", 2, "CompressTask, step: getEncodeConfig() config.setRotation = " + localbdfm.jdField_b_of_type_Boolean);
+        }
+        return localbdfm;
+      }
+      catch (NumberFormatException localNumberFormatException4)
+      {
+        break label344;
+      }
+      k = paramInt1;
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopHomeworkHelper", 2, "getEncodeConfig -> get DpcConfig Erro", localNumberFormatException1);
+      }
+      n = 0;
+      int j = paramInt2;
+      int m = i;
+      paramInt2 = n;
+      i = j;
+      j = m;
+      continue;
+      label382:
+      if (localbdfm.jdField_a_of_type_Int < j * 1024)
+      {
+        localbdfm.jdField_a_of_type_Int = (j * 1024);
+        continue;
+        paramInt2 = 0;
+        paramInt1 = 0;
+        j = 0;
+      }
+    }
   }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHomeworkHelper", 2, "CompressTask, step: HWCompressProcessor onSuccessed");
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHomeworkHelper", 2, "CompressTask, step: HWCompressProcessor onProgress:" + paramInt);
+    }
+  }
+  
+  public void a(Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopHomeworkHelper", 2, "CompressTask, step: HWCompressProcessor onFailed");
+    }
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
+      bool = true;
+    }
+    while (Build.VERSION.SDK_INT <= 19) {
+      return bool;
+    }
+    return false;
+  }
+  
+  public void b() {}
 }
 
 

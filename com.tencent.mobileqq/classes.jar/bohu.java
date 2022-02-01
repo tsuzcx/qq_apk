@@ -1,6 +1,14 @@
-public abstract interface bohu
+class bohu
+  implements aumz
 {
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
+  bohu(bohp parambohp) {}
+  
+  public void a()
+  {
+    this.a.i();
+  }
+  
+  public void b() {}
 }
 
 

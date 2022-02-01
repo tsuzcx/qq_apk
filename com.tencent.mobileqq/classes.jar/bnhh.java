@@ -1,14 +1,17 @@
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.12.2;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bnhh
-  implements banv
+  implements View.OnClickListener
 {
-  public bnhh(AECameraGLSurfaceView.12.2 param2) {}
+  public bnhh(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    bnzb.b("AECameraGLSurfaceView", "updateWMProps onGetLocation");
-    bnnx.a().a();
+    QZoneShareActivity.f(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

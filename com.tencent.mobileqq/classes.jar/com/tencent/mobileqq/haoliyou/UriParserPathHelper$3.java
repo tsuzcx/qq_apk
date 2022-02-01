@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.haoliyou;
 
 import android.net.Uri;
-import auxw;
+import avpx;
 import java.io.InputStream;
 
 public class UriParserPathHelper$3
   implements Runnable
 {
-  public UriParserPathHelper$3(auxw paramauxw, String paramString, InputStream paramInputStream, long paramLong, Uri paramUri) {}
+  public UriParserPathHelper$3(avpx paramavpx, String paramString, InputStream paramInputStream, long paramLong, Uri paramUri) {}
   
   /* Error */
   public void run()
@@ -34,8 +34,8 @@ public class UriParserPathHelper$3
     //   35: invokevirtual 44	java/io/File:createNewFile	()Z
     //   38: ifne +46 -> 84
     //   41: aload_0
-    //   42: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
-    //   45: invokestatic 49	auxw:a	(Lauxw;)Lmqq/os/MqqHandler;
+    //   42: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
+    //   45: invokestatic 49	avpx:a	(Lavpx;)Lmqq/os/MqqHandler;
     //   48: iconst_1
     //   49: invokevirtual 55	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
     //   52: pop
@@ -45,9 +45,9 @@ public class UriParserPathHelper$3
     //   60: aconst_null
     //   61: invokevirtual 65	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   64: aload_0
-    //   65: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
+    //   65: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
     //   68: iconst_0
-    //   69: putfield 68	auxw:jdField_a_of_type_Boolean	Z
+    //   69: putfield 68	avpx:jdField_a_of_type_Boolean	Z
     //   72: aload_0
     //   73: getfield 21	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
     //   76: invokestatic 74	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
@@ -93,8 +93,8 @@ public class UriParserPathHelper$3
     //   156: aload 11
     //   158: astore 9
     //   160: aload_0
-    //   161: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
-    //   164: getfield 68	auxw:jdField_a_of_type_Boolean	Z
+    //   161: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
+    //   164: getfield 68	avpx:jdField_a_of_type_Boolean	Z
     //   167: ifeq +123 -> 290
     //   170: lload_2
     //   171: iload_1
@@ -138,11 +138,11 @@ public class UriParserPathHelper$3
     //   239: aload 11
     //   241: astore 9
     //   243: aload_0
-    //   244: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
-    //   247: invokestatic 49	auxw:a	(Lauxw;)Lmqq/os/MqqHandler;
+    //   244: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
+    //   247: invokestatic 49	avpx:a	(Lavpx;)Lmqq/os/MqqHandler;
     //   250: aload_0
-    //   251: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
-    //   254: invokestatic 49	auxw:a	(Lauxw;)Lmqq/os/MqqHandler;
+    //   251: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
+    //   254: invokestatic 49	avpx:a	(Lavpx;)Lmqq/os/MqqHandler;
     //   257: iconst_3
     //   258: lload 4
     //   260: l2d
@@ -185,11 +185,11 @@ public class UriParserPathHelper$3
     //   331: aload 11
     //   333: astore 9
     //   335: aload_0
-    //   336: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
-    //   339: getfield 123	auxw:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   336: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
+    //   339: getfield 123	avpx:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   342: ldc 124
     //   344: invokevirtual 130	android/content/Context:getString	(I)Ljava/lang/String;
-    //   347: putstatic 131	auxw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   347: putstatic 131	avpx:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   350: aload 12
     //   352: astore 10
     //   354: aload 12
@@ -197,8 +197,8 @@ public class UriParserPathHelper$3
     //   358: aload 11
     //   360: astore 9
     //   362: aload_0
-    //   363: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
-    //   366: invokestatic 49	auxw:a	(Lauxw;)Lmqq/os/MqqHandler;
+    //   363: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
+    //   366: invokestatic 49	avpx:a	(Lavpx;)Lmqq/os/MqqHandler;
     //   369: iconst_1
     //   370: invokevirtual 55	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
     //   373: pop
@@ -209,8 +209,8 @@ public class UriParserPathHelper$3
     //   382: aload 11
     //   384: astore 9
     //   386: aload_0
-    //   387: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
-    //   390: getfield 68	auxw:jdField_a_of_type_Boolean	Z
+    //   387: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
+    //   390: getfield 68	avpx:jdField_a_of_type_Boolean	Z
     //   393: ifeq +314 -> 707
     //   396: aload 12
     //   398: astore 10
@@ -219,8 +219,8 @@ public class UriParserPathHelper$3
     //   404: aload 11
     //   406: astore 9
     //   408: aload_0
-    //   409: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
-    //   412: invokestatic 134	auxw:a	(Lauxw;)Lauyc;
+    //   409: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
+    //   412: invokestatic 134	avpx:a	(Lavpx;)Lavqd;
     //   415: ifnull +59 -> 474
     //   418: aload 12
     //   420: astore 10
@@ -229,8 +229,8 @@ public class UriParserPathHelper$3
     //   426: aload 11
     //   428: astore 9
     //   430: aload_0
-    //   431: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
-    //   434: invokestatic 134	auxw:a	(Lauxw;)Lauyc;
+    //   431: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
+    //   434: invokestatic 134	avpx:a	(Lavpx;)Lavqd;
     //   437: aload 13
     //   439: invokevirtual 137	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   442: aload 13
@@ -244,9 +244,9 @@ public class UriParserPathHelper$3
     //   461: aload 11
     //   463: astore 9
     //   465: aload_0
-    //   466: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
+    //   466: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
     //   469: aconst_null
-    //   470: invokestatic 148	auxw:a	(Lauxw;Lauyc;)Lauyc;
+    //   470: invokestatic 148	avpx:a	(Lavpx;Lavqd;)Lavqd;
     //   473: pop
     //   474: aload 12
     //   476: astore 10
@@ -254,7 +254,7 @@ public class UriParserPathHelper$3
     //   480: astore 8
     //   482: aload 11
     //   484: astore 9
-    //   486: invokestatic 151	auxw:a	()Ljava/util/concurrent/ConcurrentHashMap;
+    //   486: invokestatic 151	avpx:a	()Ljava/util/concurrent/ConcurrentHashMap;
     //   489: aload_0
     //   490: getfield 25	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
     //   493: invokevirtual 112	android/net/Uri:toString	()Ljava/lang/String;
@@ -269,11 +269,11 @@ public class UriParserPathHelper$3
     //   513: aload 11
     //   515: astore 9
     //   517: aload_0
-    //   518: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
-    //   521: invokestatic 49	auxw:a	(Lauxw;)Lmqq/os/MqqHandler;
+    //   518: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
+    //   521: invokestatic 49	avpx:a	(Lavpx;)Lmqq/os/MqqHandler;
     //   524: aload_0
-    //   525: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
-    //   528: invokestatic 49	auxw:a	(Lauxw;)Lmqq/os/MqqHandler;
+    //   525: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
+    //   528: invokestatic 49	avpx:a	(Lavpx;)Lmqq/os/MqqHandler;
     //   531: iconst_3
     //   532: bipush 100
     //   534: iconst_0
@@ -287,8 +287,8 @@ public class UriParserPathHelper$3
     //   550: aload 11
     //   552: astore 9
     //   554: aload_0
-    //   555: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
-    //   558: invokestatic 49	auxw:a	(Lauxw;)Lmqq/os/MqqHandler;
+    //   555: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
+    //   558: invokestatic 49	avpx:a	(Lavpx;)Lmqq/os/MqqHandler;
     //   561: iconst_2
     //   562: ldc2_w 158
     //   565: invokevirtual 163	mqq/os/MqqHandler:sendEmptyMessageDelayed	(IJ)Z
@@ -299,9 +299,9 @@ public class UriParserPathHelper$3
     //   577: aload 12
     //   579: invokevirtual 65	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   582: aload_0
-    //   583: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
+    //   583: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
     //   586: iconst_0
-    //   587: putfield 68	auxw:jdField_a_of_type_Boolean	Z
+    //   587: putfield 68	avpx:jdField_a_of_type_Boolean	Z
     //   590: aload_0
     //   591: getfield 21	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
     //   594: invokestatic 74	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
@@ -315,11 +315,11 @@ public class UriParserPathHelper$3
     //   611: aload 11
     //   613: astore 9
     //   615: aload_0
-    //   616: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
-    //   619: getfield 123	auxw:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   616: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
+    //   619: getfield 123	avpx:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   622: ldc 164
     //   624: invokevirtual 130	android/content/Context:getString	(I)Ljava/lang/String;
-    //   627: putstatic 131	auxw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   627: putstatic 131	avpx:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   630: goto -280 -> 350
     //   633: astore 12
     //   635: aload 10
@@ -336,8 +336,8 @@ public class UriParserPathHelper$3
     //   657: aload 11
     //   659: astore 9
     //   661: aload_0
-    //   662: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
-    //   665: invokestatic 49	auxw:a	(Lauxw;)Lmqq/os/MqqHandler;
+    //   662: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
+    //   665: invokestatic 49	avpx:a	(Lavpx;)Lmqq/os/MqqHandler;
     //   668: iconst_1
     //   669: invokevirtual 55	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
     //   672: pop
@@ -347,9 +347,9 @@ public class UriParserPathHelper$3
     //   681: aload 10
     //   683: invokevirtual 65	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   686: aload_0
-    //   687: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
+    //   687: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
     //   690: iconst_0
-    //   691: putfield 68	auxw:jdField_a_of_type_Boolean	Z
+    //   691: putfield 68	avpx:jdField_a_of_type_Boolean	Z
     //   694: aload_0
     //   695: getfield 21	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
     //   698: invokestatic 74	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
@@ -387,9 +387,9 @@ public class UriParserPathHelper$3
     //   767: aload 9
     //   769: invokevirtual 65	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   772: aload_0
-    //   773: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lauxw;
+    //   773: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavpx;
     //   776: iconst_0
-    //   777: putfield 68	auxw:jdField_a_of_type_Boolean	Z
+    //   777: putfield 68	avpx:jdField_a_of_type_Boolean	Z
     //   780: aload_0
     //   781: getfield 21	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
     //   784: invokestatic 74	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V

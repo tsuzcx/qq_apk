@@ -1,18 +1,8 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgReq;
+import java.util.List;
 
-public class bede
-  extends bebh
+public abstract interface bede
 {
-  protected void a(bdxe parambdxe)
-  {
-    parambdxe.a = "LongConn.SharePic2Wechat";
-  }
-  
-  protected void a(cmd0x352.TryUpImgReq paramTryUpImgReq)
-  {
-    paramTryUpImgReq.uint32_bu_type.set(96);
-  }
+  public abstract void a(List<String> paramList);
 }
 
 

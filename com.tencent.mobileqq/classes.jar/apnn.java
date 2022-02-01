@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-
-class apnn
-  implements anil
+public abstract interface apnn
 {
-  apnn(apni paramapni) {}
+  public abstract void a(int paramInt, apnx paramapnx, long paramLong);
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (!paramBoolean)
-    {
-      ArkAppCenter.c("ArkApp.ArkAppCGI", "doVipReport(), sso request failed");
-      return;
-    }
-    ArkAppCenter.b("ArkApp.ArkAppCGI", "doVipReport().server.back=" + paramObject);
-  }
+  public abstract void a(apnp paramapnp);
+  
+  public abstract void a(apnq paramapnq);
+  
+  public abstract void a(apnr paramapnr);
+  
+  public abstract void a(apns paramapns);
+  
+  public abstract void a(apnz paramapnz);
+  
+  public abstract void b(apnq paramapnq);
 }
 
 

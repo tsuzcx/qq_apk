@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.drawable;
 
-import bmij;
+import bnjl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.util.WeakReference;
-import pka;
-import pkf;
+import pcs;
+import pcx;
 
 public class ReadInJoyLottieDrawable$5$1
   implements Runnable
 {
-  public ReadInJoyLottieDrawable$5$1(pkf parampkf) {}
+  public ReadInJoyLottieDrawable$5$1(pcx parampcx) {}
   
   public void run()
   {
-    if (bmij.b(this.this$0.jdField_a_of_type_JavaIoFile, this.this$0.b)) {}
+    if (bnjl.b(this.this$0.jdField_a_of_type_JavaIoFile, this.this$0.b)) {}
     try
     {
-      pka localpka = (pka)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get();
-      if (localpka != null) {
-        pka.a(localpka, this.this$0.b);
+      pcs localpcs = (pcs)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get();
+      if (localpcs != null) {
+        pcs.a(localpcs, this.this$0.b);
       }
       this.this$0.jdField_a_of_type_JavaIoFile.delete();
       return;

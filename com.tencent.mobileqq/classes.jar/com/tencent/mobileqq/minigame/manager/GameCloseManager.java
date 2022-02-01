@@ -12,10 +12,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bglp;
-import bgpa;
-import bgpo;
-import bgtn;
+import bhlq;
+import bhpc;
+import bhpq;
+import bhtq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -73,28 +73,28 @@ public class GameCloseManager
   
   private static void doShowRetainDialog(Activity paramActivity, MiniAppInfo paramMiniAppInfo, ArrayList<MiniAppInfo> paramArrayList, DialogInterface.OnClickListener paramOnClickListener)
   {
-    bgpo localbgpo = new bgpo(paramActivity, 2131755823);
-    localbgpo.setContentView(2131559009);
-    localbgpo.setBodyLayoutNoMargin();
-    View localView = LayoutInflater.from(paramActivity).inflate(2131559425, null, false);
-    ((URLImageView)localView.findViewById(2131378807)).setBackgroundURL(GameWnsUtils.getGameRetainConfirmImageUrl());
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(bgtn.b(296.0F), bgtn.b(166.0F));
+    bhpq localbhpq = new bhpq(paramActivity, 2131755824);
+    localbhpq.setContentView(2131559008);
+    localbhpq.setBodyLayoutNoMargin();
+    View localView = LayoutInflater.from(paramActivity).inflate(2131559427, null, false);
+    ((URLImageView)localView.findViewById(2131378967)).setBackgroundURL(GameWnsUtils.getGameRetainConfirmImageUrl());
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(bhtq.b(296.0F), bhtq.b(166.0F));
     localLayoutParams.gravity = 17;
-    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131376203);
+    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131376343);
     int i = 0;
     while (i < 3)
     {
       GameCloseManager.MiniAppViewItem localMiniAppViewItem = new GameCloseManager.MiniAppViewItem(paramActivity);
       MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramArrayList.get(i);
-      localMiniAppViewItem.setData(localMiniAppInfo, new GameCloseManager.1(localMiniAppInfo, localbgpo, paramOnClickListener, paramActivity));
+      localMiniAppViewItem.setData(localMiniAppInfo, new GameCloseManager.1(localMiniAppInfo, localbhpq, paramOnClickListener, paramActivity));
       localLinearLayout.addView(GameCloseManager.MiniAppViewItem.access$100(localMiniAppViewItem));
       i += 1;
     }
-    localbgpo.setCancelable(false);
-    localbgpo.setTitle(null).setMessage(null).addView(localView, localLayoutParams).setNegativeButton(2131693708, new GameCloseManager.3(paramMiniAppInfo, paramOnClickListener, paramActivity)).setPositiveButton(2131693709, new GameCloseManager.2(paramMiniAppInfo, paramOnClickListener, paramActivity));
-    localbgpo.getBtnight().setTypeface(Typeface.DEFAULT, 1);
-    localbgpo.getBtnLeft().setTypeface(Typeface.DEFAULT, 1);
-    localbgpo.show();
+    localbhpq.setCancelable(false);
+    localbhpq.setTitle(null).setMessage(null).addView(localView, localLayoutParams).setNegativeButton(2131693725, new GameCloseManager.3(paramMiniAppInfo, paramOnClickListener, paramActivity)).setPositiveButton(2131693726, new GameCloseManager.2(paramMiniAppInfo, paramOnClickListener, paramActivity));
+    localbhpq.getBtnight().setTypeface(Typeface.DEFAULT, 1);
+    localbhpq.getBtnLeft().setTypeface(Typeface.DEFAULT, 1);
+    localbhpq.show();
     MiniProgramLpReportDC04239.reportAsync("minigame_popup", "popup", "expo", "");
   }
   
@@ -229,7 +229,7 @@ public class GameCloseManager
     while (!shouldShowAlertViewForBattleGame(paramMiniAppConfig)) {
       return false;
     }
-    paramGameActivity = bglp.a(paramGameActivity, 230).setTitle(paramGameActivity.getString(2131718563)).setMessage(paramGameActivity.getString(2131693676)).setNegativeButton(paramGameActivity.getString(2131690582), new GameCloseManager.5()).setPositiveButton(paramGameActivity.getString(2131693675), new GameCloseManager.4(paramOnClickListener));
+    paramGameActivity = bhlq.a(paramGameActivity, 230).setTitle(paramGameActivity.getString(2131718699)).setMessage(paramGameActivity.getString(2131693690)).setNegativeButton(paramGameActivity.getString(2131690580), new GameCloseManager.5()).setPositiveButton(paramGameActivity.getString(2131693689), new GameCloseManager.4(paramOnClickListener));
     paramGameActivity.setCancelable(false);
     paramGameActivity.show();
     return true;

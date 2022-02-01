@@ -1,71 +1,90 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.BabyQAIOPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public abstract class agfy
+public class agfy
+  extends BaseAdapter
 {
-  protected Context a;
-  protected Rect a;
-  protected DoodleView a;
+  public agfy(BabyQAIOPanel paramBabyQAIOPanel) {}
   
-  public agfy(DoodleView paramDoodleView)
+  public agfw a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    if (paramDoodleView == null) {
-      throw new IllegalStateException("DoodleView can not be null.");
+    if ((paramInt >= 0) && (paramInt < BabyQAIOPanel.a(this.a).size())) {
+      return (agfw)BabyQAIOPanel.a(this.a).get(paramInt);
     }
-    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView = paramDoodleView;
+    return new agfw();
   }
   
-  public void a()
+  public int getCount()
   {
-    c();
+    return BabyQAIOPanel.a(this.a).size();
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public long getItemId(int paramInt)
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return;
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    if (paramView == null)
+    {
+      paramView = new agfx();
+      localView = LayoutInflater.from(BabyQAIOPanel.a(this.a)).inflate(2131558587, paramViewGroup, false);
+      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131368923));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368238));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378618));
+      paramView.b = ((ImageView)localView.findViewById(2131371761));
+      localView.setTag(paramView);
+      localObject = (RelativeLayout.LayoutParams)paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      if (paramInt % 2 == 0) {
+        break label271;
+      }
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = bhgr.a(this.a.getContext(), 8.0F);
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = bhgr.a(this.a.getContext(), 12.0F);
+      label145:
+      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = a(paramInt);
+      paramView.jdField_a_of_type_Int = ((agfw)localObject).jdField_a_of_type_Int;
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((agfw)localObject).jdField_a_of_type_JavaLangString);
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(((agfw)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      if (!((agfw)localObject).jdField_a_of_type_Boolean) {
+        break label308;
+      }
+      paramView.b.setVisibility(0);
     }
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
-  }
-  
-  public final void a(Canvas paramCanvas)
-  {
-    b(paramCanvas);
-  }
-  
-  public boolean a()
-  {
-    return b();
-  }
-  
-  public final boolean a(MotionEvent paramMotionEvent)
-  {
-    b();
-    return b(paramMotionEvent);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.invalidate();
+    for (;;)
+    {
+      localView.setOnClickListener(this.a);
+      if (AppSetting.c) {
+        localView.setContentDescription(((agfw)localObject).jdField_a_of_type_JavaLangString);
+      }
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (agfx)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label271:
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = bhgr.a(this.a.getContext(), 12.0F);
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = bhgr.a(this.a.getContext(), 8.0F);
+      break label145;
+      label308:
+      paramView.b.setVisibility(8);
     }
   }
-  
-  protected abstract void b(Canvas paramCanvas);
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  protected abstract boolean b(MotionEvent paramMotionEvent);
-  
-  public void c() {}
 }
 
 

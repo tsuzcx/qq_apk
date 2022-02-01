@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.theme.diy;
 
-import awnc;
-import bdps;
-import bdqe;
+import axfu;
+import beio;
+import beja;
 import org.json.JSONObject;
 
 class ThemeDiyModule$1
-  implements awnc<bdps>
+  implements axfu<beio>
 {
   ThemeDiyModule$1(ThemeDiyModule paramThemeDiyModule, JSONObject paramJSONObject, String paramString) {}
   
-  public void postQuery(bdps parambdps)
+  public void postQuery(beio parambeio)
   {
-    if ((parambdps != null) && (parambdps.b())) {
+    if ((parambeio != null) && (parambeio.b())) {
       if (ThemeDiyModule.access$000(this.this$0) != null) {
         ThemeDiyModule.access$000(this.this$0).diyThemeSetup(this.val$styleObj, this.val$callbackId);
       }

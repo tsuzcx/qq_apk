@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.multimsg;
 
-import adrm;
-import adrt;
-import agjf;
+import aean;
+import aeau;
+import agsg;
 import android.content.Intent;
 import android.os.Bundle;
-import atvo;
-import awwm;
-import awwt;
-import baku;
-import bcst;
-import bgsc;
+import aunj;
+import axpf;
+import axpm;
+import bbdn;
+import bdll;
+import bhse;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -28,6 +28,7 @@ import com.tencent.mobileqq.data.MessageForReplyText;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageForWriteTogether;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
@@ -39,27 +40,33 @@ import java.util.Iterator;
 public class MultiMsgManager$1
   implements Runnable
 {
-  public MultiMsgManager$1(awwm paramawwm, ArrayList paramArrayList, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, int paramInt) {}
+  public MultiMsgManager$1(axpf paramaxpf, SessionInfo paramSessionInfo, ArrayList paramArrayList, QQAppInterface paramQQAppInterface, int paramInt) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a().getBooleanArray("forward_write_together_is_expired");
+    Object localObject3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     int j = 0;
     int i = 0;
-    Object localObject3;
+    ChatMessage localChatMessage;
     Object localObject1;
-    if (((Iterator)localObject2).hasNext())
+    for (;;)
     {
-      localObject3 = (ChatMessage)((Iterator)localObject2).next();
-      if (((ChatMessage)localObject3).msgtype == -2000)
+      if (((Iterator)localObject3).hasNext())
       {
-        localObject1 = (MessageForPic)localObject3;
-        adrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForPic)localObject1, this.jdField_a_of_type_Int);
-        i += 1;
-        label79:
-        if (j >= awwm.a(this.this$0)) {
-          break label1537;
+        localChatMessage = (ChatMessage)((Iterator)localObject3).next();
+        if ((!(localChatMessage instanceof MessageForWriteTogether)) || (!localChatMessage.frienduin.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) || (localObject2 == null) || (localObject2[this.jdField_a_of_type_JavaUtilArrayList.indexOf(localChatMessage)] != 0)) {
+          if (localChatMessage.msgtype == -2000)
+          {
+            localObject1 = (MessageForPic)localChatMessage;
+            aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForPic)localObject1, this.jdField_a_of_type_Int);
+            i += 1;
+            label150:
+            if (j >= axpf.a(this.this$0)) {
+              break label1610;
+            }
+          }
         }
       }
     }
@@ -67,114 +74,114 @@ public class MultiMsgManager$1
     {
       try
       {
-        Thread.sleep(awwm.b(this.this$0));
+        Thread.sleep(axpf.b(this.this$0));
         if (QLog.isColorLevel()) {
-          QLog.d("MultiMsg_TAG", 2, "sendMultuMsgSeperaterFromLocal delay  i = " + j + " mDelayTime = " + awwm.b(this.this$0));
+          QLog.d("MultiMsg_TAG", 2, "sendMultuMsgSeperaterFromLocal delay  i = " + j + " mDelayTime = " + axpf.b(this.this$0));
         }
         j += 1;
         break;
-        if (((ChatMessage)localObject3).msgtype == -2011)
+        if (localChatMessage.msgtype == -2011)
         {
-          if (!(localObject3 instanceof MessageForStructing)) {
-            break label1540;
+          if (!(localChatMessage instanceof MessageForStructing)) {
+            break label1613;
           }
-          localObject1 = ((MessageForStructing)localObject3).structingMsg;
+          localObject1 = ((MessageForStructing)localChatMessage).structingMsg;
           if ((localObject1 == null) || (!(localObject1 instanceof StructMsgForImageShare))) {
-            break label1540;
+            break label1613;
           }
           ((AbsStructMsg)localObject1).forwardID = this.jdField_a_of_type_Int;
           StructMsgForImageShare.sendAndUploadImageShare(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (StructMsgForImageShare)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, 0);
           k = 1;
-          if ((k == 0) && ((localObject3 instanceof MessageForStructing)))
+          if ((k == 0) && ((localChatMessage instanceof MessageForStructing)))
           {
-            localObject1 = ((MessageForStructing)localObject3).structingMsg;
-            ((AbsStructMsg)localObject1).parentUniseq = ((ChatMessage)localObject3).uniseq;
+            localObject1 = ((MessageForStructing)localChatMessage).structingMsg;
+            ((AbsStructMsg)localObject1).parentUniseq = localChatMessage.uniseq;
             ((AbsStructMsg)localObject1).forwardID = this.jdField_a_of_type_Int;
-            bgsc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (AbsStructMsg)localObject1, null);
+            bhse.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (AbsStructMsg)localObject1, null);
           }
-          break label79;
+          break label150;
         }
-        if (((ChatMessage)localObject3).msgtype == -5008)
+        if (localChatMessage.msgtype == -5008)
         {
-          localObject1 = ((MessageForArkApp)localObject3).ark_app_message;
-          ((ArkAppMessage)localObject1).uniSeq = ((ChatMessage)localObject3).uniseq;
+          localObject1 = ((MessageForArkApp)localChatMessage).ark_app_message;
+          ((ArkAppMessage)localObject1).uniSeq = localChatMessage.uniseq;
           ((ArkAppMessage)localObject1).forwardID = this.jdField_a_of_type_Int;
-          adrm.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (ArkAppMessage)localObject1);
-          break label79;
+          aean.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (ArkAppMessage)localObject1);
+          break label150;
         }
-        if (((ChatMessage)localObject3).msgtype == -5017)
+        if (localChatMessage.msgtype == -5017)
         {
-          localObject1 = ((MessageForArkApp)localObject3).ark_app_message;
-          ((ArkAppMessage)localObject1).uniSeq = ((ChatMessage)localObject3).uniseq;
+          localObject1 = ((MessageForArkApp)localChatMessage).ark_app_message;
+          ((ArkAppMessage)localObject1).uniSeq = localChatMessage.uniseq;
           ((ArkAppMessage)localObject1).forwardID = this.jdField_a_of_type_Int;
-          adrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (ArkAppMessage)localObject1);
-          break label79;
+          aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (ArkAppMessage)localObject1);
+          break label150;
         }
-        if (((ChatMessage)localObject3).msgtype == -5016)
+        if (localChatMessage.msgtype == -5016)
         {
           QLog.e("MultiMsg_TAG", 1, "MSG_TYPE_ARK_BABYQ_REPLY no longer supported");
-          break label79;
+          break label150;
         }
-        if (((ChatMessage)localObject3).msgtype == -5013)
+        if (localChatMessage.msgtype == -5013)
         {
-          localObject1 = ((MessageForArkFlashChat)localObject3).ark_app_message;
-          ((ArkFlashChatMessage)localObject1).uniSeq = ((ChatMessage)localObject3).uniseq;
+          localObject1 = ((MessageForArkFlashChat)localChatMessage).ark_app_message;
+          ((ArkFlashChatMessage)localObject1).uniSeq = localChatMessage.uniseq;
           ((ArkFlashChatMessage)localObject1).forwardID = this.jdField_a_of_type_Int;
-          adrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (ArkFlashChatMessage)localObject1, this.jdField_a_of_type_Int);
-          break label79;
+          aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (ArkFlashChatMessage)localObject1, this.jdField_a_of_type_Int);
+          break label150;
         }
-        if ((((ChatMessage)localObject3).msgtype == -1035) || (((ChatMessage)localObject3).msgtype == -1036))
+        if ((localChatMessage.msgtype == -1035) || (localChatMessage.msgtype == -1036))
         {
-          if (((ChatMessage)localObject3).msgtype == -1036)
+          if (localChatMessage.msgtype == -1036)
           {
-            localObject1 = (MessageForMixedMsg)((MessageForLongMsg)localObject3).rebuildLongMsg();
-            agjf.a().a((MessageRecord)localObject3, (MessageRecord)localObject1, this.jdField_a_of_type_Int);
-            ((MessageForMixedMsg)localObject1).mForwardFromUniSeq = ((ChatMessage)localObject3).uniseq;
+            localObject1 = (MessageForMixedMsg)((MessageForLongMsg)localChatMessage).rebuildLongMsg();
+            agsg.a().a(localChatMessage, (MessageRecord)localObject1, this.jdField_a_of_type_Int);
+            ((MessageForMixedMsg)localObject1).mForwardFromUniSeq = localChatMessage.uniseq;
             ((MessageForMixedMsg)localObject1).forwardID = this.jdField_a_of_type_Int;
-            baku.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForMixedMsg)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Int);
-            break label79;
+            bbdn.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForMixedMsg)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Int);
+            break label150;
           }
-          localObject1 = (MessageForMixedMsg)localObject3;
+          localObject1 = (MessageForMixedMsg)localChatMessage;
           continue;
         }
-        if (((ChatMessage)localObject3).msgtype == -2022)
+        if (localChatMessage.msgtype == -2022)
         {
-          localObject1 = (MessageForShortVideo)localObject3;
+          localObject1 = (MessageForShortVideo)localChatMessage;
           ((MessageForShortVideo)localObject1).forwardID = this.jdField_a_of_type_Int;
-          adrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForShortVideo)localObject1);
-          break label79;
+          aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForShortVideo)localObject1);
+          break label150;
         }
-        if (((localObject3 instanceof MessageForFile)) || ((localObject3 instanceof MessageForTroopFile)))
+        if (((localChatMessage instanceof MessageForFile)) || ((localChatMessage instanceof MessageForTroopFile)))
         {
-          localObject1 = atvo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject3);
+          localObject1 = aunj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localChatMessage);
           if ((localObject1 != null) && (((Intent)localObject1).getExtras() != null))
           {
             localObject4 = (ForwardFileInfo)((Intent)localObject1).getExtras().getParcelable("fileinfo");
             String str2 = ((Intent)localObject1).getStringExtra("forward_filepath");
             if (localObject4 != null)
             {
-              ((ForwardFileInfo)localObject4).c(((ChatMessage)localObject3).uniseq);
+              ((ForwardFileInfo)localObject4).c(localChatMessage.uniseq);
               ((ForwardFileInfo)localObject4).jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-              adrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseActivity.sTopActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (Intent)localObject1, str2, (ForwardFileInfo)localObject4, false);
+              aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseActivity.sTopActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (Intent)localObject1, str2, (ForwardFileInfo)localObject4, false);
             }
           }
-          break label79;
+          break label150;
         }
-        if ((localObject3 instanceof MessageForReplyText))
+        if ((localChatMessage instanceof MessageForReplyText))
         {
-          localObject1 = (MessageForReplyText)localObject3;
-          baku.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ChatMessage)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 0, this.jdField_a_of_type_Int, true);
-          break label79;
+          localObject1 = (MessageForReplyText)localChatMessage;
+          bbdn.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ChatMessage)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 0, this.jdField_a_of_type_Int, true);
+          break label150;
         }
-        localObject1 = ((ChatMessage)localObject3).msg;
-        Object localObject4 = new adrt();
-        ((adrt)localObject4).g = true;
-        ((adrt)localObject4).j = true;
-        localObject1 = adrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (String)localObject1, null, (adrt)localObject4);
+        localObject1 = localChatMessage.msg;
+        Object localObject4 = new aeau();
+        ((aeau)localObject4).g = true;
+        ((aeau)localObject4).j = true;
+        localObject1 = aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (String)localObject1, null, (aeau)localObject4);
         if ((localObject1 != null) && (localObject1.length > 0))
         {
-          agjf.a().a(localObject1[0], ((ChatMessage)localObject3).uniseq, this.jdField_a_of_type_Int);
-          agjf.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((ChatMessage)localObject3).uniseq, this.jdField_a_of_type_Int);
+          agsg.a().a(localObject1[0], localChatMessage.uniseq, this.jdField_a_of_type_Int);
+          agsg.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localChatMessage.uniseq, this.jdField_a_of_type_Int);
         }
       }
       catch (InterruptedException localInterruptedException)
@@ -201,10 +208,10 @@ public class MultiMsgManager$1
           }
           for (;;)
           {
-            label1018:
-            bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", str1, "0X8004876", "0X8004876", 0, 0, j + "", k + "", "" + this.jdField_a_of_type_JavaUtilArrayList.size(), "" + i + "");
+            label1091:
+            bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", str1, "0X8004876", "0X8004876", 0, 0, j + "", k + "", "" + this.jdField_a_of_type_JavaUtilArrayList.size(), "" + i + "");
             i = 1;
-            label1142:
+            label1215:
             int n;
             if (m == 0)
             {
@@ -213,69 +220,69 @@ public class MultiMsgManager$1
               localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
               k = 0;
               j = 0;
-              label1164:
+              label1237:
               if (!((Iterator)localObject2).hasNext()) {
-                break label1358;
+                break label1431;
               }
               localObject3 = (MessageRecord)((Iterator)localObject2).next();
               if (((MessageRecord)localObject3).msgtype != -2022) {
-                break label1323;
+                break label1396;
               }
               m = k;
               k = j + 1;
               j = m;
             }
+            label1431:
             for (;;)
             {
               m = k;
               k = j;
               j = m;
-              break label1164;
+              break label1237;
               if (j == 3000)
               {
                 j = 2;
                 break;
               }
               if (j != 1) {
-                break label1527;
+                break label1600;
               }
               j = 3;
               break;
               if (m == 3000)
               {
                 k = 2;
-                break label1018;
+                break label1091;
               }
               if (m != 1) {
-                break label1522;
+                break label1595;
               }
               k = 3;
-              break label1018;
+              break label1091;
               if ((m == 3000) || (m == 1))
               {
                 i = 2;
-                break label1142;
+                break label1215;
               }
               if ((m == 1000) || (m == 1004))
               {
                 i = 3;
-                break label1142;
+                break label1215;
               }
               if (!ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
-                break label1142;
+                break label1215;
               }
               i = 4;
-              break label1142;
-              label1323:
+              break label1215;
+              label1396:
               if ((((MessageRecord)localObject3).msgtype == -2005) || (((MessageRecord)localObject3).msgtype == -2017))
               {
                 m = k + 1;
                 k = j;
                 j = m;
                 continue;
-                label1358:
-                bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", str1, "0X8009ABF", "0X8009ABF", i, 0, n + "", n + "", "" + j, "" + k);
-                awwt.a("report_0X8009ABF:fromType:%d,msgCount:%d,msgSize:%d,videoMsgCount:%d,fileMsgCount:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(n), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(k) });
+                bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", str1, "0X8009ABF", "0X8009ABF", i, 0, n + "", n + "", "" + j, "" + k);
+                axpm.a("report_0X8009ABF:fromType:%d,msgCount:%d,msgSize:%d,videoMsgCount:%d,fileMsgCount:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(n), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(k) });
               }
               else
               {
@@ -284,16 +291,16 @@ public class MultiMsgManager$1
                 k = m;
               }
             }
-            label1522:
+            label1595:
             k = 4;
           }
-          label1527:
+          label1600:
           j = 4;
         }
       }
-      label1537:
+      label1610:
       continue;
-      label1540:
+      label1613:
       int k = 0;
     }
   }

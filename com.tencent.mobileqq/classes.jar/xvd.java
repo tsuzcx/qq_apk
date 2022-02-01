@@ -1,17 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.nio.ByteBuffer;
 
-class xvd
-  implements DialogInterface.OnDismissListener
+public class xvd
 {
-  xvd(xvb paramxvb) {}
+  int jdField_a_of_type_Int;
+  public long a;
+  ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
+  public boolean a;
+  public boolean b;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public xvd()
   {
-    if (xvb.a(this.a) != null) {
-      xvb.a(this.a).c(false);
-    }
+    a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaNioByteBuffer = null;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+  }
+  
+  public String toString()
+  {
+    return "FrameInfo{buffer=" + this.jdField_a_of_type_Int + ", data=" + this.jdField_a_of_type_JavaNioByteBuffer + ", presentationTimeUs=" + this.jdField_a_of_type_Long + ", endOfStream=" + this.jdField_a_of_type_Boolean + ", representationChanged=" + this.b + '}';
   }
 }
 

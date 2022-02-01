@@ -2205,9 +2205,19 @@ public class AEFilterManager
     if (this.mAiAttr == null) {
       return false;
     }
-    if (((PTFaceAttr)this.mAiAttr.getRealtimeData(AEDetectorType.FACE.value)).getFaceCount() > 0) {}
-    for (boolean bool = true;; bool = false) {
+    PTFaceAttr localPTFaceAttr = (PTFaceAttr)this.mAiAttr.getRealtimeData(AEDetectorType.FACE.value);
+    boolean bool;
+    if (localPTFaceAttr != null) {
+      if (localPTFaceAttr.getFaceCount() > 0) {
+        bool = true;
+      }
+    }
+    for (;;)
+    {
       return bool;
+      bool = false;
+      continue;
+      bool = false;
     }
   }
   

@@ -1,31 +1,23 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PhoneContactAdd;
-import com.tencent.mobileqq.data.QIMNotifyAddFriend;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 
-public class amee
-  extends bkot
+public final class amee
+  implements Parcelable.Creator<ResultRecord>
 {
-  public int a;
-  public long a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public PhoneContactAdd a;
-  public QIMNotifyAddFriend a;
-  public String a;
-  public structmsg.StructMsg a;
-  public long b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public ResultRecord a(Parcel paramParcel)
+  {
+    return new ResultRecord(paramParcel, null);
+  }
+  
+  public ResultRecord[] a(int paramInt)
+  {
+    return new ResultRecord[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amee
  * JD-Core Version:    0.7.0.1
  */

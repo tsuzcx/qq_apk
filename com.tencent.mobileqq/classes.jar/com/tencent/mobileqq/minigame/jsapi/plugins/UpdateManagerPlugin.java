@@ -2,14 +2,13 @@ package com.tencent.mobileqq.minigame.jsapi.plugins;
 
 import android.support.annotation.NonNull;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPlugin;
-import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine;
 import com.tencent.mobileqq.minigame.jsapi.manager.JsApiUpdateManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class UpdateManagerPlugin
@@ -20,15 +19,66 @@ public class UpdateManagerPlugin
   public static final String NATIVE_EVENT_NAME_ON_UPDATE_DOWNLOAD_RESULT = "onUpdateDownloadResult";
   public static final String NATIVE_EVENT_NAME_UPDATE_APP = "updateApp";
   private static final String TAG = "UpdateManagerPlugin";
+  private JsRuntime cacheJsRuntime;
+  private Boolean mHasUpdateCache;
+  private Boolean mUpdateResultCache;
+  
+  private void notifyUpdateCheckResult(boolean paramBoolean)
+  {
+    if (this.cacheJsRuntime == null) {
+      return;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("hasUpdate", paramBoolean);
+      this.cacheJsRuntime.evaluateSubcribeJS("onUpdateCheckResult", localJSONObject.toString(), 0);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  private void notifyUpdateDownloadResult(boolean paramBoolean)
+  {
+    if (this.cacheJsRuntime == null) {
+      return;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("updateResult", paramBoolean);
+      this.cacheJsRuntime.evaluateSubcribeJS("onUpdateDownloadResult", localJSONObject.toString(), 0);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
   
   public String handleNativeRequest(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
   {
-    GameJsPluginEngine localGameJsPluginEngine = (GameJsPluginEngine)this.jsPluginEngine;
+    boolean bool = false;
+    QLog.d("UpdateManagerPlugin", 1, new Object[] { "handleNativeRequest for ", paramString1 });
+    if (this.cacheJsRuntime == null) {
+      this.cacheJsRuntime = paramJsRuntime;
+    }
     if ("getUpdateManager".equals(paramString1))
     {
-      QLog.d("UpdateManagerPlugin", 1, new Object[] { "handleNativeRequest do nothing for ", paramString1 });
-      ApiUtil.wrapCallbackOk(paramString1, new JSONObject());
-      JsApiUpdateManager.handleUpdateCheckResult(localGameJsPluginEngine, false);
+      if (this.mHasUpdateCache != null) {
+        bool = this.mHasUpdateCache.booleanValue();
+      }
+      QLog.i("UpdateManagerPlugin", 1, "handleNativeRequest getUpdateManager, hasUpdate:" + bool);
+      notifyUpdateCheckResult(bool);
       return "";
     }
     if ("onUpdateCheckResult".equals(paramString1)) {
@@ -47,6 +97,18 @@ public class UpdateManagerPlugin
         QLog.d("UpdateManagerPlugin", 2, new Object[] { "handleNativeRequest ", paramString1 });
       }
     }
+  }
+  
+  public void setUpdateCheckResult(boolean paramBoolean)
+  {
+    this.mHasUpdateCache = Boolean.valueOf(paramBoolean);
+    notifyUpdateCheckResult(paramBoolean);
+  }
+  
+  public void setUpdateDownloadResult(boolean paramBoolean)
+  {
+    this.mUpdateResultCache = Boolean.valueOf(paramBoolean);
+    notifyUpdateDownloadResult(paramBoolean);
   }
   
   @NonNull

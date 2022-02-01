@@ -1,20 +1,21 @@
 package com.tencent.mobileqq.triton.touch;
 
-import com.tencent.mobileqq.triton.jni.TTNativeCall;
+import com.tencent.mobileqq.triton.utils.TritonKeep;
 import java.util.ArrayList;
 
+@TritonKeep
 public class TTTouchEvents
 {
-  @TTNativeCall
+  @TritonKeep
   public int action;
-  @TTNativeCall
+  @TritonKeep
   public ArrayList<Touch> changedTouches = new ArrayList();
-  @TTNativeCall
+  @TritonKeep
   public double timeStamp;
-  @TTNativeCall
+  @TritonKeep
   public ArrayList<Touch> touches = new ArrayList();
   
-  public TTTouchEvents a()
+  public TTTouchEvents copy()
   {
     TTTouchEvents localTTTouchEvents = new TTTouchEvents();
     localTTTouchEvents.action = this.action;

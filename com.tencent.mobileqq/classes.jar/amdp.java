@@ -1,40 +1,18 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class amdp
-  extends Animation
+public class amdp
+  implements View.OnClickListener
 {
-  amdp(amdl paramamdl, View paramView, int paramInt) {}
+  public amdp(FriendTabView paramFriendTabView) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onClick(View paramView)
   {
-    paramFloat = (float)(paramFloat * (0.5D + Math.sqrt(paramFloat) / 2.0D));
-    this.jdField_a_of_type_AndroidViewView.getLayoutParams().width = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
-    if (paramFloat <= 0.4F) {
-      this.jdField_a_of_type_AndroidViewView.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (paramFloat > 0.99F) {
-          break;
-        }
-      } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      return;
-    } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return true;
+    this.a.a.a(1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.InviteToGroupInfo.UinInfo;
-
-public final class bepo
-  implements Parcelable.Creator<InviteToGroupInfo.UinInfo>
+public abstract interface bepo
 {
-  public InviteToGroupInfo.UinInfo a(Parcel paramParcel)
-  {
-    return new InviteToGroupInfo.UinInfo(paramParcel);
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
   
-  public InviteToGroupInfo.UinInfo[] a(int paramInt)
-  {
-    return new InviteToGroupInfo.UinInfo[paramInt];
-  }
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
 }
 
 

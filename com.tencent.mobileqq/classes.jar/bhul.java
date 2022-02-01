@@ -1,6 +1,22 @@
-public abstract interface bhul
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuImageLayout;
+import com.tencent.widget.BubblePopupWindow;
+
+public class bhul
+  extends TextView
 {
-  public abstract int a();
+  public bhul(QQCustomMenuImageLayout paramQQCustomMenuImageLayout, Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    boolean bool = super.performClick();
+    QQCustomMenuImageLayout.a(this.a).b();
+    return bool;
+  }
 }
 
 

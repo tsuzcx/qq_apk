@@ -1,27 +1,27 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.widget.ksong.KSongView;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
 public class aknd
-  implements MediaPlayer.OnPreparedListener
+  implements Animator.AnimatorListener
 {
-  public aknd(RedPacketKSongFragment paramRedPacketKSongFragment, boolean paramBoolean) {}
+  public aknd(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPacketKSongFragment", 2, "playSong onPrepared");
-    }
-    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, true);
-    bgkl.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.getActivity(), true);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager.a(true);
-    }
-    paramMediaPlayer.start();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a(this.jdField_a_of_type_Boolean);
+    this.a.e = AvatarPendantActivity.c;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.e = AvatarPendantActivity.a;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.e = AvatarPendantActivity.d;
   }
 }
 

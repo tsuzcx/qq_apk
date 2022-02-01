@@ -1,6 +1,6 @@
 package com.tencent.avgame.ui;
 
-import nfu;
+import nhp;
 
 class AVGameActivity$2
   implements Runnable
@@ -9,7 +9,7 @@ class AVGameActivity$2
   
   public void run()
   {
-    nfu.a().a("param_StepLoading", 0);
+    nhp.a().a("param_StepLoading", 0);
     this.this$0.a();
   }
 }

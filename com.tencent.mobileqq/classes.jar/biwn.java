@@ -1,28 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
 
+@TargetApi(16)
 public class biwn
-  implements DialogInterface.OnClickListener
+  implements blkc
 {
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  biwn(ContextMenuTextView paramContextMenuTextView) {}
   
-  public biwn(biwe parambiwe, DialogInterface.OnClickListener paramOnClickListener, String paramString1, String paramString2)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_JavaLangString = biuh.a(paramString1, "NEWYYB");
-    this.b = paramString2;
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    if (Build.VERSION.SDK_INT < 16) {
+      ContextMenuTextView.a(this.a, null);
     }
-    this.jdField_a_of_type_Biwe.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-    this.jdField_a_of_type_Biwe.jdField_a_of_type_Biwp = null;
-    biuh.a("710", this.jdField_a_of_type_JavaLangString, this.b);
+    for (;;)
+    {
+      this.a.a = null;
+      return;
+      ContextMenuTextView.b(this.a, null);
+    }
   }
 }
 

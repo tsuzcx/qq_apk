@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.takevideo2;
 
-import bnpt;
-import bnpu;
-import bnzb;
-import ziv;
+import borf;
+import borg;
+import bpam;
+import zmq;
 
 public class StoryPublishLauncher$2
   implements Runnable
 {
-  public StoryPublishLauncher$2(ziv paramziv) {}
+  public StoryPublishLauncher$2(zmq paramzmq) {}
   
   public void run()
   {
-    bnzb.b("Q.qqstory.publish.StoryPublishLauncher", "launchForResult requestAEKitDownload : AEKIT_ADDITIONAL_PACKAGE");
-    bnpu.a().a(bnpt.b, null, false);
-    bnpu.a().a(bnpt.c, null, true);
+    bpam.b("Q.qqstory.publish.StoryPublishLauncher", "launchForResult requestAEKitDownload : AEKIT_ADDITIONAL_PACKAGE");
+    borg.a().a(borf.b, null, false);
+    borg.a().a(borf.c, null, true);
   }
 }
 

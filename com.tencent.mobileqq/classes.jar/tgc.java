@@ -1,16 +1,20 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
+import android.app.Activity;
+import android.content.ClipboardManager;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
 public class tgc
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
+  extends tgb
 {
-  private tgc(GestureCropImageView paramGestureCropImageView) {}
-  
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  tgc(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
   {
-    this.a.a(paramScaleGestureDetector.getScaleFactor(), GestureCropImageView.a(this.a), GestureCropImageView.b(this.a), true);
-    return true;
+    super(paramtfy1, paramActivity, paramtfy2, paramJSONObject);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    ((ClipboardManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("clipboard")).setText(paramString1);
+    zyx.a(2, 2131691142);
   }
 }
 

@@ -1,29 +1,26 @@
-import java.util.List;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class bbfl
+class bbfl
+  implements beuq
 {
-  public int a;
-  public String a;
-  public List<String> a;
-  public String b;
-  public String c;
+  bbfl(bbfg parambbfg) {}
   
-  public bbfl(int paramInt, String paramString1, String paramString2, String paramString3)
+  public void onResp(bevm parambevm)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    FilterDesc localFilterDesc = (FilterDesc)parambevm.jdField_a_of_type_Bevl.a();
+    if (parambevm.jdField_a_of_type_Int != 0)
+    {
+      lbj.c("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + parambevm.b + ", errorMsg: " + parambevm.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
+      return;
+    }
+    if ((bbfg.a(this.a).decrementAndGet() == 0) && (bbfg.a(this.a) != null)) {
+      bbfg.a(this.a).a(true);
+    }
+    lbj.c("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.iconurl);
   }
   
-  public bbfl(int paramInt, String paramString1, String paramString2, String paramString3, List<String> paramList)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
+  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

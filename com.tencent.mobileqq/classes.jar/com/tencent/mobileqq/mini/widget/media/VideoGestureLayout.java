@@ -31,9 +31,9 @@ public class VideoGestureLayout
   
   private void init(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131559414, this);
-    this.iv_center = ((ImageView)findViewById(2131369065));
-    this.pb = ((ProgressBar)findViewById(2131372231));
+    LayoutInflater.from(paramContext).inflate(2131559416, this);
+    this.iv_center = ((ImageView)findViewById(2131369155));
+    this.pb = ((ProgressBar)findViewById(2131372345));
     this.mHideRunnable = new VideoGestureLayout.HideRunnable(this, null);
     setVisibility(8);
   }

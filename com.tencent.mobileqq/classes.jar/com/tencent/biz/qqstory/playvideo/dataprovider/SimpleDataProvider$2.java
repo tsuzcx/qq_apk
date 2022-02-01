@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.playvideo.dataprovider;
 
-import xix;
-import xjt;
+import xms;
+import xno;
 
 public class SimpleDataProvider$2
   implements Runnable
 {
-  public SimpleDataProvider$2(xjt paramxjt, xix paramxix, int paramInt1, int paramInt2, String paramString) {}
+  public SimpleDataProvider$2(xno paramxno, xms paramxms, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
-    xjt.a(this.this$0, this.jdField_a_of_type_Xix, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    xno.a(this.this$0, this.jdField_a_of_type_Xms, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

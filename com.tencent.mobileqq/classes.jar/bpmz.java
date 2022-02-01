@@ -1,137 +1,16 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Cap;
-import android.graphics.Paint.Join;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.view.MotionEvent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.ArrayList;
+import android.os.Bundle;
 
-public class bpmz
-  extends bpma
+public abstract interface bpmz
 {
-  public static final int a;
-  public float a;
-  public Paint a;
-  bplw a;
-  public bpmy a;
-  public float b;
-  public int b;
-  public Paint b;
-  public int c = afur.a(6.0F, BaseApplicationImpl.getContext().getResources());
+  public abstract void a(bpnm parambpnm);
   
-  static
-  {
-    jdField_a_of_type_Int = bpwg.a[1];
-  }
+  public abstract void a(bpnm parambpnm, boolean paramBoolean, int paramInt, Bundle paramBundle);
   
-  public bpmz(bplw parambplw)
-  {
-    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bplw = parambplw;
-  }
+  public abstract void a(bpnp parambpnp, boolean paramBoolean, int paramInt, Bundle paramBundle);
   
-  private void a(Paint paramPaint, bpmy parambpmy)
-  {
-    paramPaint.setXfermode(null);
-    paramPaint.setColor(parambpmy.jdField_b_of_type_Int);
-    paramPaint.setStrokeWidth(parambpmy.c);
-    paramPaint.setShader(null);
-  }
+  public abstract void a(bpnw parambpnw, boolean paramBoolean, int paramInt, Bundle paramBundle);
   
-  public Paint a()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsPaint;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(Canvas paramCanvas, bplx parambplx, Paint paramPaint)
-  {
-    if ((parambplx instanceof bpmy))
-    {
-      parambplx = (bpmy)parambplx;
-      if (parambplx.jdField_a_of_type_AndroidGraphicsPath != null)
-      {
-        a(paramPaint, parambplx);
-        paramCanvas.drawPath(parambplx.jdField_a_of_type_AndroidGraphicsPath, paramPaint);
-      }
-    }
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-      this.jdField_a_of_type_Bpmy = new bpmy(new Path(), 101, this.jdField_a_of_type_AndroidGraphicsPaint.getColor(), this.c);
-      if (this.jdField_a_of_type_Bplw != null) {
-        this.jdField_a_of_type_Bplw.a(this.jdField_a_of_type_Bpmy);
-      }
-      DoodleLayout.a("use_graffiti");
-      this.jdField_a_of_type_Bpmy.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_Bpmy.jdField_a_of_type_AndroidGraphicsPath.moveTo(f1, f2);
-      this.jdField_a_of_type_Bpmy.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1 + 1.0F, f2 + 1.0F);
-      this.jdField_a_of_type_Bpmy.jdField_a_of_type_JavaUtilArrayList.add(new bpmx(bpmx.jdField_a_of_type_Int, f1, f2));
-      this.jdField_a_of_type_Bpmy.jdField_a_of_type_JavaUtilArrayList.add(new bpmx(bpmx.jdField_b_of_type_Int, f1 + 1.0F, f2 + 1.0F));
-      continue;
-      float f3 = (this.jdField_a_of_type_Float + f1) / 2.0F;
-      float f4 = (this.jdField_b_of_type_Float + f2) / 2.0F;
-      if (this.jdField_a_of_type_Bpmy != null)
-      {
-        this.jdField_a_of_type_Bpmy.jdField_a_of_type_AndroidGraphicsPath.quadTo(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f3, f4);
-        this.jdField_a_of_type_Bpmy.jdField_a_of_type_JavaUtilArrayList.add(new bpmx(bpmx.c, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f3, f4));
-      }
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-    }
-  }
-  
-  public Paint b()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPaint;
-  }
-  
-  public void b()
-  {
-    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bpmy = null;
-  }
+  public abstract void a(braa parambraa);
 }
 
 

@@ -1,39 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import java.util.List;
 
-class xcd
-  extends wle<xaa, xab>
+public class xcd
 {
-  xcd(xcc paramxcc, String[] paramArrayOfString) {}
+  public int a;
+  public String a;
+  public List<LikeEntry> a;
+  public int b;
   
-  public void a(@NonNull xaa paramxaa, @Nullable xab paramxab, @NonNull ErrorMessage paramErrorMessage)
+  public boolean equals(Object paramObject)
   {
-    if ((paramxab == null) || (paramxab.jdField_a_of_type_Int != 0))
+    if (this == paramObject) {}
+    do
     {
-      if (paramxab != null) {}
-      for (int i = paramxab.jdField_a_of_type_Int;; i = -1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("EncryptUrlJob", 2, "encrypt failed, error code = " + i);
-        }
-        xcc.a(this.jdField_a_of_type_Xcc, false);
-        return;
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-    }
-    if (((Boolean)((wpf)wpm.a(10)).b("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue()) {}
-    for (paramxaa = xek.a(this.jdField_a_of_type_ArrayOfJavaLangString[1], xcc.a(this.jdField_a_of_type_Xcc));; paramxaa = this.jdField_a_of_type_ArrayOfJavaLangString[1])
-    {
-      paramxaa = this.jdField_a_of_type_ArrayOfJavaLangString[0] + "?token=" + paramxab.jdField_a_of_type_JavaLangString + "&" + paramxaa;
-      if (QLog.isColorLevel()) {
-        QLog.d("EncryptUrlJob", 2, new Object[] { "encrypt done url:", paramxaa });
+      paramObject = (xcd)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
       }
-      this.jdField_a_of_type_Xcc.a("EncryptUrlJob_coverUrl", paramxab.c);
-      this.jdField_a_of_type_Xcc.a("EncryptUrlJob_encryptedUrl", paramxaa);
-      xcc.b(this.jdField_a_of_type_Xcc, true);
-      return;
+    } while (paramObject.a == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.a != null) {
+      return this.a.hashCode();
     }
+    return 0;
   }
 }
 

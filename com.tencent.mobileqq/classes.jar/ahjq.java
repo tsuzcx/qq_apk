@@ -1,14 +1,17 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopSign;
 
-public class ahjq
-  implements PopupWindow.OnDismissListener
+final class ahjq
+  implements ahky
 {
-  public ahjq(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
-  
-  public void onDismiss()
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    StructingMsgItemBuilder.a(this.a, false);
+    if (TextUtils.isEmpty(((MessageForTroopSign)paramChatMessage).dynamicSource)) {
+      return 71;
+    }
+    return 84;
   }
 }
 

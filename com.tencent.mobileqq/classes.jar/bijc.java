@@ -1,15 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
 public class bijc
-  implements DialogInterface.OnClickListener
+  implements DownloadParams.DecodeHandler
 {
-  public bijc(AuthorityActivity paramAuthorityActivity) {}
+  private int a;
+  private int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @Deprecated
+  public bijc() {}
+  
+  public bijc(int paramInt1, int paramInt2)
   {
-    paramDialogInterface.dismiss();
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  @Deprecated
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    return bhrn.a(paramBitmap, this.a, this.b);
+  }
+  
+  public String toString()
+  {
+    return "NinePatchDecoderHandler{reqW=" + this.a + ", reqH=" + this.b + '}';
   }
 }
 

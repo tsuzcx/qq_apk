@@ -1,87 +1,54 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.TMG.utils.QLog;
 
 public class aqrx
-  extends aqkz<bosi>
+  implements anui
 {
-  @NonNull
-  public bosi a(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return new bosi();
-  }
-  
-  @Nullable
-  public bosi a(aqlg[] paramArrayOfaqlg)
-  {
-    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length == 0)) {
-      return null;
-    }
-    paramArrayOfaqlg = paramArrayOfaqlg[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMFilterConfigProcessor", 2, "handleGetQIMFilterConfig onParsed, content:" + paramArrayOfaqlg);
-    }
-    return new bosf().a(paramArrayOfaqlg, lbf.e(), "temp_filter_zip", new aqry(this));
-  }
-  
-  public void a(bosi parambosi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMFilterConfigProcessor", 2, "handleGetQIMFilterConfig onUpdate");
-    }
-  }
-  
-  public Class<bosi> clazz()
-  {
-    return bosi.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (!new File(bqbq.a + "filter_config_new.xml").exists()) {
-      return 0;
-    }
-    return bpye.a(BaseApplicationImpl.getContext());
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMFilterConfigProcessor", 2, "handleGetQIMFilterConfig onReqFailed");
-    }
-  }
-  
-  public int onSend(int paramInt)
-  {
-    if (!new File(bqbq.a + "filter_config_new.xml").exists())
+    switch (paramInt)
     {
-      QLog.i("QIMFilterConfigProcessor", 1, "config file not exist");
-      aqlk.a().a(306, 0);
-      return 0;
+    default: 
+      return;
+    case 1: 
+      paramObject = (Object[])paramObject;
+      if ((paramObject != null) && (paramObject.length == 1))
+      {
+        aqsb localaqsb = aqsc.a();
+        if ((localaqsb == null) || (!localaqsb.a())) {
+          break label135;
+        }
+      }
+      break;
     }
-    return super.onSend(paramInt);
-  }
-  
-  public int type()
-  {
-    return 306;
+    label135:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if ((paramInt != 0) && (!((Boolean)paramObject[0]).booleanValue())) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        aqre.c(paramBoolean);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("ColorNoteObserver", 0, "onUpdate: TYPE_REQ_GET_COLOR_NOTE_RECENT_SWITCH");
+        return;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ColorNoteObserver", 0, "onUpdate: params == null || params.length != 1");
+      return;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ColorNoteObserver", 0, "onUpdate: TYPE_REQ_SET_COLOR_NOTE_RECENT_SWITCH");
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqrx
  * JD-Core Version:    0.7.0.1
  */

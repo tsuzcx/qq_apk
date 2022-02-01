@@ -1,103 +1,41 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletTips;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
-import java.util.Map;
 import org.json.JSONObject;
 
 public class arhz
-  extends ClickableSpan
 {
-  public arhz(MessageForQQWalletTips paramMessageForQQWalletTips, SoftReference paramSoftReference1, SoftReference paramSoftReference2, QQAppInterface paramQQAppInterface, Context paramContext, agmv paramagmv, aklj paramaklj, int paramInt) {}
+  public String a = "";
+  public String b = "";
   
-  public void onClick(View paramView)
+  public static arhz a(JSONObject paramJSONObject)
   {
-    paramView = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-    Object localObject1 = (QQAppInterface)this.b.get();
-    if ((localObject1 == null) || (paramView == null)) {}
+    arhz localarhz = new arhz();
+    if (paramJSONObject == null) {}
     do
     {
-      return;
-      QLog.i(MessageForQQWalletTips.access$000(), 2, "rich click, msgtype: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.msgType + ", msgsubtype: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.subType + ",isEq:" + TextUtils.equals(((QQAppInterface)localObject1).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.reciverUin));
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.bytes_jumpurl))
+      do
       {
-        QLog.i(MessageForQQWalletTips.access$000(), 2, "gold red package...");
-        paramView = blqo.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.bytes_jumpurl, MessageForQQWalletTips.access$100(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), true);
-        akwv.a(this.jdField_a_of_type_AndroidContentContext, paramView);
-        return;
+        return localarhz;
+        paramJSONObject = paramJSONObject.optJSONObject("anim_emoticon_count");
+      } while (paramJSONObject == null);
+      if (QLog.isColorLevel()) {
+        QLog.i("QQSysAndEmojiConfProcessor", 2, "parse AnimCountConfBean: ");
       }
-      if ((MessageForQQWalletTips.access$200(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips) != 524288) || (this.jdField_a_of_type_Agmv == null) || (this.jdField_a_of_type_Aklj == null)) {
-        break;
+      if (paramJSONObject.has("model")) {
+        localarhz.a = paramJSONObject.optString("model");
       }
-      localObject2 = this.jdField_a_of_type_Aklj.a(MessageForQQWalletTips.access$300(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips));
-      if ((localObject2 == null) || (((akli)localObject2).a) || (((akli)localObject2).b) || (((akli)localObject2).a())) {
-        break;
-      }
-      paramView = this.jdField_a_of_type_Aklj;
-    } while (bgsp.a(aklj.a(((akli)localObject2).e)));
-    this.jdField_a_of_type_Agmv.a(MessageForQQWalletTips.access$300(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips), ((akli)localObject2).e, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.subChannel);
-    return;
-    if (TextUtils.isEmpty(MessageForQQWalletTips.access$300(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips)))
-    {
-      QLog.i(MessageForQQWalletTips.access$000(), 2, "error, listId is null");
-      return;
-    }
-    Object localObject2 = MessageForQQWalletTips.access$400(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips, (QQAppInterface)localObject1);
-    String str1 = (String)((Map)localObject2).get("grouptype");
-    String str2 = (String)((Map)localObject2).get("name");
-    String str3 = (String)((Map)localObject2).get("groupId");
-    JSONObject localJSONObject = new JSONObject();
-    localObject2 = new JSONObject();
-    try
-    {
-      localJSONObject.put("listid", MessageForQQWalletTips.access$300(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips));
-      localJSONObject.put("name", str2);
-      localJSONObject.put("grouptype", str1);
-      localJSONObject.put("groupid", str3);
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.authKey != null) {
-        localJSONObject.put("authkey", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.authKey);
-      }
-      ((JSONObject)localObject2).put("userId", ((QQAppInterface)localObject1).getCurrentAccountUin());
-      ((JSONObject)localObject2).put("viewTag", "redgiftDetail");
-      ((JSONObject)localObject2).put("app_info", "appid#1344242394|bargainor_id#1000030201|channel#graytips");
-      ((JSONObject)localObject2).put("come_from", 2);
-      ((JSONObject)localObject2).put("extra_data", localJSONObject);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-    localObject1 = new Bundle();
-    ((Bundle)localObject1).putString("json", ((JSONObject)localObject2).toString());
-    ((Bundle)localObject1).putString("callbackSn", "0");
-    localObject2 = new Intent(paramView, PayBridgeActivity.class);
-    ((Intent)localObject2).putExtras((Bundle)localObject1);
-    ((Intent)localObject2).putExtra("pay_requestcode", 5);
-    paramView.startActivity((Intent)localObject2);
+    } while (!paramJSONObject.has("version"));
+    localarhz.b = paramJSONObject.optString("version");
+    return localarhz;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public String toString()
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.clearShadowLayer();
+    return "{mAnimEmoVersion=" + this.b + ", mAnimEmoModel=" + this.a + "}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arhz
  * JD-Core Version:    0.7.0.1
  */

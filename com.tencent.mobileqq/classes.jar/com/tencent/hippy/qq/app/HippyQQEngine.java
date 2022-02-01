@@ -3,12 +3,11 @@ package com.tencent.hippy.qq.app;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Looper;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.ViewGroup;
-import bgmg;
+import bhmi;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
@@ -16,6 +15,8 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hippy.qq.adapter.HippyQQFontAdapter;
 import com.tencent.hippy.qq.adapter.HippyQQImageLoader;
 import com.tencent.hippy.qq.adapter.HippyQQThirdPartyAdapter;
+import com.tencent.hippy.qq.module.tkd.TKDJsCallBack;
+import com.tencent.hippy.qq.module.tkd.TKDNativeProxy;
 import com.tencent.hippy.qq.update.HippyQQFileUtil;
 import com.tencent.hippy.qq.update.HippyQQLibraryManager;
 import com.tencent.hippy.qq.update.HippyQQLibraryManager.LibraryLoadListener;
@@ -28,12 +29,15 @@ import com.tencent.mtt.hippy.HippyEngine.ModuleLoadParams;
 import com.tencent.mtt.hippy.HippyRootView;
 import com.tencent.mtt.hippy.adapter.thirdparty.HippyThirdPartyAdapter;
 import com.tencent.mtt.hippy.common.HippyMap;
+import com.tencent.mtt.hippy.uimanager.HippyCustomViewCreator;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
 public class HippyQQEngine
@@ -42,6 +46,7 @@ public class HippyQQEngine
   protected static final String TAG = "HippyQQEngine";
   public static SparseArray<HippyQQEngine> mEngines = new SparseArray();
   private static HashMap<String, Long> mModuleUpdateTime = new HashMap();
+  private String componentName;
   private ViewGroup mContainer;
   private HippyQQEngine.HippyQQEngineListener mEngineListener;
   private ViolaFragment mFragment;
@@ -54,11 +59,16 @@ public class HippyQQEngine
   private int mModuleVersion;
   private JSONObject mPageData;
   private HippyQQUpdateManager mUpdateManager;
+  @androidx.annotation.NonNull
+  private final TKDNativeProxy nativeProxy;
+  private HippyMap propsMap;
+  private HippyCustomViewCreator viewCreator;
   
   public HippyQQEngine(ViolaFragment paramViolaFragment, String paramString)
   {
     this.mFragment = paramViolaFragment;
     this.mModuleName = paramString;
+    this.nativeProxy = new TKDNativeProxy();
     initJsBundleTypeFromUrl();
   }
   
@@ -88,6 +98,20 @@ public class HippyQQEngine
     return (HippyQQEngine)mEngines.get(paramInt);
   }
   
+  @NotNull
+  private HippyMap getJsParamsMap(HippyEngine.ModuleLoadParams paramModuleLoadParams)
+  {
+    paramModuleLoadParams = new HippyMap();
+    if (this.propsMap != null) {
+      paramModuleLoadParams.pushAll(this.propsMap);
+    }
+    paramModuleLoadParams.pushString("msgFromNative", "Hi js developer, I come from native code!");
+    if (this.mInitData != null) {
+      paramModuleLoadParams.pushString("cookie", this.mInitData.toString());
+    }
+    return paramModuleLoadParams;
+  }
+  
   public static int getModuleOnlineConfig(String paramString)
   {
     paramString = Aladdin.getConfig(311).getString(paramString, "");
@@ -103,6 +127,16 @@ public class HippyQQEngine
     return 0;
   }
   
+  @NotNull
+  private Map<String, Object> getNativeParams()
+  {
+    HashMap localHashMap = new HashMap();
+    if (this.viewCreator != null) {
+      localHashMap.put("CustomViewCreator", this.viewCreator);
+    }
+    return localHashMap;
+  }
+  
   public static String getPageDataCacheFromUrl(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -115,7 +149,7 @@ public class HippyQQEngine
       if (localAppRuntime == null) {
         return null;
       }
-      paramString = bgmg.a("viola_cache_file_" + paramString + "_" + localAppRuntime.getAccount());
+      paramString = bhmi.a("viola_cache_file_" + paramString + "_" + localAppRuntime.getAccount());
       if ((paramString instanceof String)) {
         return (String)paramString;
       }
@@ -132,9 +166,9 @@ public class HippyQQEngine
     if ((!TextUtils.isEmpty(this.mJsBundleType)) && (this.mJsBundleType.equals("react"))) {}
     for (Object localObject1 = "react.android.js";; localObject1 = "vue.android.js")
     {
-      localObject2 = HippyQQFileUtil.getCoreJsFilePath((String)localObject1);
+      localObject2 = HippyQQLibraryManager.getInstance().getCoreJsFilePath((String)localObject1);
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        break label72;
+        break label79;
       }
       if (this.mEngineListener == null) {
         break;
@@ -142,19 +176,20 @@ public class HippyQQEngine
       this.mEngineListener.onError(-10, "could not found core js file!");
       return;
     }
-    label72:
+    label79:
     localObject1 = new HippyEngine.EngineInitParams();
     ((HippyEngine.EngineInitParams)localObject1).context = this.mFragment.getActivity();
     ((HippyEngine.EngineInitParams)localObject1).imageLoader = new HippyQQImageLoader();
     ((HippyEngine.EngineInitParams)localObject1).fontScaleAdapter = new HippyQQFontAdapter();
     ((HippyEngine.EngineInitParams)localObject1).thirdPartyAdapter = new HippyQQThirdPartyAdapter();
-    ((HippyEngine.EngineInitParams)localObject1).thirdPartyAdapter.setPageUrl(this.mFragment.a());
+    ((HippyEngine.EngineInitParams)localObject1).thirdPartyAdapter.setPageUrl(this.mFragment.getUrl());
     ((HippyEngine.EngineInitParams)localObject1).debugMode = this.mIsDebugMode;
     ((HippyEngine.EngineInitParams)localObject1).enableLog = false;
     ((HippyEngine.EngineInitParams)localObject1).coreJSFilePath = ((String)localObject2);
     ((HippyEngine.EngineInitParams)localObject1).exceptionHandler = new HippyQQEngine.3(this);
     Object localObject2 = new ArrayList();
     ((List)localObject2).add(new HippyQQAPIProvider());
+    ((List)localObject2).add(new TKDApiProvider());
     ((HippyEngine.EngineInitParams)localObject1).providers = ((List)localObject2);
     this.mHippyEngine = HippyEngine.create((HippyEngine.EngineInitParams)localObject1);
     mEngines.put(this.mHippyEngine.getId(), this);
@@ -163,7 +198,7 @@ public class HippyQQEngine
   
   private void initJsBundleTypeFromUrl()
   {
-    String str = this.mFragment.a();
+    String str = this.mFragment.getUrl();
     if (TextUtils.isEmpty(str)) {}
     for (;;)
     {
@@ -205,14 +240,16 @@ public class HippyQQEngine
     }
     HippyEngine.ModuleLoadParams localModuleLoadParams = new HippyEngine.ModuleLoadParams();
     localModuleLoadParams.context = this.mFragment.getActivity();
-    localModuleLoadParams.componentName = this.mModuleName;
-    localModuleLoadParams.jsFilePath = paramString;
-    localModuleLoadParams.jsParams = new HippyMap();
-    localModuleLoadParams.jsParams.pushString("msgFromNative", "Hi js developer, I come from native code!");
-    if (this.mInitData != null) {
-      localModuleLoadParams.jsParams.pushString("cookie", this.mInitData.toString());
+    if (TextUtils.isEmpty(this.componentName)) {}
+    for (String str = this.mModuleName;; str = this.componentName)
+    {
+      localModuleLoadParams.componentName = str;
+      localModuleLoadParams.jsFilePath = paramString;
+      localModuleLoadParams.nativeParams = getNativeParams();
+      localModuleLoadParams.jsParams = getJsParamsMap(localModuleLoadParams);
+      this.mHippyRootView = this.mHippyEngine.loadModule(localModuleLoadParams, new HippyQQEngine.2(this));
+      return;
     }
-    this.mHippyRootView = this.mHippyEngine.loadModule(localModuleLoadParams, new HippyQQEngine.2(this));
   }
   
   public static void runTaskInUIThread(Runnable paramRunnable)
@@ -237,12 +274,18 @@ public class HippyQQEngine
     return this.mHippyEngine;
   }
   
-  public void initHippy(@NonNull ViewGroup paramViewGroup, @NonNull JSONObject paramJSONObject, boolean paramBoolean, HippyQQEngine.HippyQQEngineListener paramHippyQQEngineListener)
+  @androidx.annotation.NonNull
+  public TKDNativeProxy getNativeProxy()
+  {
+    return this.nativeProxy;
+  }
+  
+  public void initHippy(@android.support.annotation.NonNull ViewGroup paramViewGroup, @android.support.annotation.NonNull JSONObject paramJSONObject, boolean paramBoolean, HippyQQEngine.HippyQQEngineListener paramHippyQQEngineListener)
   {
     this.mModuleVersion = 0;
     this.mPageData = paramJSONObject;
     this.mEngineListener = paramHippyQQEngineListener;
-    this.mContainer = ((ViewGroup)paramViewGroup.findViewById(2131380966));
+    this.mContainer = ((ViewGroup)paramViewGroup.findViewById(2131381146));
     HippyQQLibraryManager.getInstance().loadLibraryIfNeed(this);
   }
   
@@ -297,7 +340,24 @@ public class HippyQQEngine
   
   public void onResume() {}
   
+  public void registerNativeMethod(String paramString1, String paramString2, TKDJsCallBack paramTKDJsCallBack)
+  {
+    this.nativeProxy.registerNativeMethod(paramString1, paramString2, paramTKDJsCallBack);
+  }
+  
   public void reload(HippyQQEngine.HippyQQEngineListener paramHippyQQEngineListener) {}
+  
+  public void sendEvent(String paramString, Object paramObject)
+  {
+    if (this.mHippyEngine != null) {
+      this.mHippyEngine.sendEvent(paramString, paramObject);
+    }
+  }
+  
+  public void setComponentName(String paramString)
+  {
+    this.componentName = paramString;
+  }
   
   public void setDebugMode(boolean paramBoolean)
   {
@@ -314,6 +374,21 @@ public class HippyQQEngine
     if (!TextUtils.isEmpty(paramString)) {
       this.mJsBundleType = paramString;
     }
+  }
+  
+  public void setPropsMap(HippyMap paramHippyMap)
+  {
+    this.propsMap = paramHippyMap;
+  }
+  
+  public void setViewCreator(HippyCustomViewCreator paramHippyCustomViewCreator)
+  {
+    this.viewCreator = paramHippyCustomViewCreator;
+  }
+  
+  public void unRegisterNativeMethod(String paramString1, String paramString2)
+  {
+    this.nativeProxy.unRegisterNativeMethod(paramString1, paramString2);
   }
 }
 

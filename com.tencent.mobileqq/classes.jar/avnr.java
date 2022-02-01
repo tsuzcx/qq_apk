@@ -1,106 +1,51 @@
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.SystemClock;
+import android.widget.LinearLayout;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.smtt.sdk.WebView;
 
 public class avnr
-  extends WebViewPlugin
+  extends avoc
 {
-  public avnr()
+  public avnr(QQGameFeedWebFragment paramQQGameFeedWebFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {
-    this.mPluginNameSpace = "avgame";
+    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView);
   }
   
-  private void a(String... paramVarArgs)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-    {
-      QLog.d("AVGameShareJsApiPlugin", 1, "Call joinRoom, args:" + paramVarArgs);
-      try
-      {
-        paramVarArgs = new JSONObject(paramVarArgs[0]).optString("key");
-        Intent localIntent = new Intent(this.mRuntime.a(), JumpActivity.class);
-        localIntent.setData(Uri.parse("mqqapi://avgame/join_room?key=" + paramVarArgs));
-        this.mRuntime.a().startActivity(localIntent);
-        return;
-      }
-      catch (Exception paramVarArgs)
-      {
-        QLog.e("AVGameShareJsApiPlugin", 1, "Call joinRoom fail: " + paramVarArgs.getMessage());
-        return;
-      }
-    }
-    QLog.e("AVGameShareJsApiPlugin", 1, "Call joinRoom fail, args empty");
-  }
-  
-  private void b(String... paramVarArgs)
-  {
+    this.a.i = SystemClock.elapsedRealtime();
+    this.a.e = System.currentTimeMillis();
+    super.onPageFinished(paramWebView, paramString);
+    QQGameFeedWebFragment.a(this.a).setVisibility(0);
+    QQGameFeedWebFragment.a(this.a).setVisibility(8);
+    QLog.d("GameWebPage", 4, "-->web onPageFinished");
     try
     {
-      QLog.d("AVGameShareJsApiPlugin", 1, "Call createRoom");
-      Intent localIntent = new Intent(this.mRuntime.a(), JumpActivity.class);
-      StringBuilder localStringBuilder = new StringBuilder(50);
-      localStringBuilder.append("mqqapi://avgame/create_room?gameType=");
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-      {
-        paramVarArgs = new JSONObject(paramVarArgs[0]);
-        localStringBuilder.append(Integer.valueOf(paramVarArgs.optString("gameType")).intValue());
-        if (paramVarArgs.has("fromType"))
-        {
-          localStringBuilder.append("&fromType=");
-          localStringBuilder.append(Integer.valueOf(paramVarArgs.optString("fromType")).intValue());
-        }
-      }
-      localIntent.setData(Uri.parse(localStringBuilder.toString()));
-      this.mRuntime.a().startActivity(localIntent);
+      QQGameFeedWebFragment.b(this.a);
       return;
     }
-    catch (Exception paramVarArgs)
+    catch (Throwable paramWebView)
     {
-      QLog.e("AVGameShareJsApiPlugin", 1, "Call createRoom fail: " + paramVarArgs.getMessage());
+      paramWebView.printStackTrace();
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    if (TextUtils.isEmpty(paramString1))
-    {
-      QLog.e("AVGameShareJsApiPlugin", 1, "Call avgame jsapi error, url is empty");
-      return false;
-    }
-    QLog.d("AVGameShareJsApiPlugin", 1, "Call AVGameShareJsApiPlugin handleJsRequest, url" + paramString1 + " pkgName:" + paramString2);
-    if ("avgame".equals(paramString2))
-    {
-      if ("joinRoom".equals(paramString3))
-      {
-        a(paramVarArgs);
-        return true;
-      }
-      if ("createRoom".equals(paramString3))
-      {
-        b(paramVarArgs);
-        return true;
-      }
-      QLog.e("AVGameShareJsApiPlugin", 1, "Call avgame jsapi error, method not match");
-      return false;
-    }
-    QLog.e("AVGameShareJsApiPlugin", 1, "Call avgame jsapi error, package not match");
-    return false;
+    this.a.g = SystemClock.elapsedRealtime();
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
   }
   
-  public void onCreate()
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    super.onCreate();
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 

@@ -1,13 +1,17 @@
 package com.tencent.biz.qqcircle.adapter;
 
+import aaak;
+import aaam;
+import aabj;
+import aabu;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import bkfj;
-import com.tencent.biz.qqcircle.QCircleInitBean;
+import blgn;
 import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
 import com.tencent.biz.qqcircle.events.QCirclePublishBoxStatusEvent;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
 import com.tencent.biz.qqcircle.requests.QCircleGetFeedDetailRequest;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
@@ -30,18 +34,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import mqq.app.AppRuntime;
-import uxc;
-import uyh;
-import uzb;
-import uzv;
-import zwp;
-import zwr;
-import zxo;
-import zxz;
+import uyn;
+import uzq;
+import var;
+import vbl;
 
 public abstract class QCircleFakeAdapter
-  extends uzv<FeedCloudMeta.StFeed>
-  implements zwr
+  extends vbl<FeedCloudMeta.StFeed>
+  implements aaam
 {
   private static boolean jdField_a_of_type_Boolean;
   protected int a;
@@ -174,8 +174,8 @@ public abstract class QCircleFakeAdapter
   
   private String c()
   {
-    if ((getInteractor() instanceof uzb)) {
-      return ((uzb)getInteractor()).a().getTagInfo().tagName.get();
+    if ((getInteractor() instanceof var)) {
+      return ((var)getInteractor()).a().getTagInfo().tagName.get();
     }
     return "";
   }
@@ -189,7 +189,7 @@ public abstract class QCircleFakeAdapter
   {
     if (paramQCircleFeedEvent != null)
     {
-      uxc.a("qcircle_fakeid_" + paramQCircleFeedEvent.mTargetId, Integer.valueOf(paramQCircleFeedEvent.mState));
+      uyn.a("qcircle_fakeid_" + paramQCircleFeedEvent.mTargetId, Integer.valueOf(paramQCircleFeedEvent.mState));
       QLog.d("QCircleFakeAdapter", 4, "fake feed composite success");
     }
   }
@@ -272,7 +272,7 @@ public abstract class QCircleFakeAdapter
       if (((Integer)localObject).intValue() >= 3)
       {
         if (getContext() != null) {
-          QQToast.a(getContext(), 0, 2131694666, 0).a();
+          QQToast.a(getContext(), 0, 2131694708, 0).a();
         }
         QLog.d("QCircleFakeAdapter", 1, "max retry return");
         return;
@@ -284,7 +284,7 @@ public abstract class QCircleFakeAdapter
   
   protected void a(QCircleFeedEvent paramQCircleFeedEvent, boolean paramBoolean)
   {
-    VSNetworkHelper.a().a(new QCircleGetFeedDetailRequest(paramQCircleFeedEvent.mSingleFakeFeed.id.get(), BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramQCircleFeedEvent.mSingleFakeFeed.createTime.get(), true), new uyh(this, paramQCircleFeedEvent, paramBoolean));
+    VSNetworkHelper.a().a(new QCircleGetFeedDetailRequest(paramQCircleFeedEvent.mSingleFakeFeed.id.get(), BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramQCircleFeedEvent.mSingleFakeFeed.createTime.get(), true), new uzq(this, paramQCircleFeedEvent, paramBoolean));
   }
   
   public void a(boolean paramBoolean)
@@ -296,7 +296,7 @@ public abstract class QCircleFakeAdapter
   {
     boolean bool = true;
     int i;
-    zxo localzxo;
+    aabj localaabj;
     if ((getBlockContainer() != null) && (getBlockMerger() != null))
     {
       getLoadInfo().a(4);
@@ -307,7 +307,7 @@ public abstract class QCircleFakeAdapter
           break label74;
         }
         i = 1;
-        localzxo = getBlockMerger();
+        localaabj = getBlockMerger();
         if ((!paramBoolean2) || (i != 0)) {
           break label79;
         }
@@ -317,7 +317,7 @@ public abstract class QCircleFakeAdapter
     label79:
     for (paramBoolean2 = bool;; paramBoolean2 = false)
     {
-      localzxo.a(paramBoolean1, paramBoolean2);
+      localaabj.a(paramBoolean1, paramBoolean2);
       return;
       i = 0;
       break;
@@ -357,7 +357,7 @@ public abstract class QCircleFakeAdapter
   
   protected void b(int paramInt)
   {
-    if (bkfj.a(paramInt, getDataList())) {
+    if (blgn.a(paramInt, getDataList())) {
       return;
     }
     getDataList().remove(paramInt);
@@ -376,7 +376,7 @@ public abstract class QCircleFakeAdapter
   {
     super.onAttachedToRecyclerView(paramRecyclerView);
     if (this.jdField_b_of_type_Boolean) {
-      zwp.a().a(this);
+      aaak.a().a(this);
     }
   }
   
@@ -384,7 +384,7 @@ public abstract class QCircleFakeAdapter
   {
     super.onDetachedFromRecyclerView(paramRecyclerView);
     if (this.jdField_b_of_type_Boolean) {
-      zwp.a().b(this);
+      aaak.a().b(this);
     }
     if (this.jdField_b_of_type_JavaUtilHashMap.size() > 0)
     {

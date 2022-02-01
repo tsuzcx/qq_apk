@@ -219,46 +219,46 @@ public abstract class ReuseCodecWrapper
   
   private void handleCoreAPIException(int paramInt, String paramString, Throwable paramThrowable)
   {
-    handleCoreAPIException(paramInt, paramString, paramThrowable, false);
+    handleCoreAPIException(paramInt, paramString, paramThrowable, false, this.mSurface);
   }
   
-  private void handleCoreAPIException(int paramInt, String paramString, Throwable paramThrowable, boolean paramBoolean)
+  private void handleCoreAPIException(int paramInt, String paramString, Throwable paramThrowable, boolean paramBoolean, Surface paramSurface)
   {
     this.mErrorHappened = true;
-    Object localObject;
+    String str;
     if (paramThrowable == null) {
-      localObject = "";
+      str = "";
     }
     for (;;)
     {
-      paramString = paramString + " handleCoreAPIException exception:" + (String)localObject;
+      paramString = paramString + " handleCoreAPIException exception:" + str;
       int i = paramInt;
       if (paramBoolean)
       {
-        int j = checkSurfaceState(this.mSurface);
+        int j = checkSurfaceState(paramSurface);
         i = paramInt;
         if (j != 0) {
           i = j;
         }
       }
-      localObject = new JSONObject();
+      paramSurface = new JSONObject();
       try
       {
-        ((JSONObject)localObject).put("errorCode", i);
-        ((JSONObject)localObject).put("exceptionMsg", paramString);
+        paramSurface.put("errorCode", i);
+        paramSurface.put("exceptionMsg", paramString);
         if (this.callback != null) {
-          this.callback.onReuseCodecAPIException(((JSONObject)localObject).toString(), paramThrowable);
+          this.callback.onReuseCodecAPIException(paramSurface.toString(), paramThrowable);
         }
-        LogUtils.e("ReuseCodecWrapper", "errorCode:" + i + ", " + paramString, paramThrowable);
+        LogUtils.e("ReuseCodecWrapper", "hasReused:" + this.hasReused + "    errorCode:" + i + ", " + paramString, paramThrowable);
         releaseCodecWhenError(i);
         return;
-        localObject = paramThrowable.getLocalizedMessage();
+        str = paramThrowable.getLocalizedMessage();
       }
-      catch (JSONException localJSONException)
+      catch (JSONException paramSurface)
       {
         for (;;)
         {
-          localJSONException.printStackTrace();
+          paramSurface.printStackTrace();
         }
       }
     }
@@ -283,41 +283,35 @@ public abstract class ReuseCodecWrapper
       LogUtils.w("ReuseCodecWrapper", this + ", innerSetOutputSurface error surface:" + paramSurface + " is same, stack:" + Log.getStackTraceString(new Throwable()));
       return;
     }
-    String str;
+    String str = null;
     if (LogUtils.isLogEnable())
     {
       str = this + " configure, call innerSetOutputSurface surface:" + paramSurface + "  decodeState:" + this.decodeState + " callByInner:" + paramBoolean;
       LogUtils.d("ReuseCodecWrapper", str);
     }
+    try
+    {
+      setSurface(paramSurface);
+      this.codec.setOutputSurface(paramSurface);
+      releaseStoreSurfaceTexture();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      i = 0;
+      if (!(localThrowable instanceof IllegalStateException)) {
+        break label170;
+      }
+    }
+    int i = 30000;
     for (;;)
     {
-      try
-      {
-        Surface localSurface = this.mSurface;
-        setSurface(paramSurface);
-        this.codec.setOutputSurface(paramSurface);
-        releaseOldSurface(localSurface);
-        releaseStoreSurfaceTexture();
-        return;
+      handleCoreAPIException(i, str, localThrowable, true, paramSurface);
+      throw localThrowable;
+      label170:
+      if ((localThrowable instanceof IllegalArgumentException)) {
+        i = 30001;
       }
-      catch (Throwable paramSurface)
-      {
-        i = 0;
-        if (!(paramSurface instanceof IllegalStateException)) {
-          break label174;
-        }
-      }
-      int i = 30000;
-      for (;;)
-      {
-        handleCoreAPIException(i, str, paramSurface, true);
-        throw paramSurface;
-        label174:
-        if ((paramSurface instanceof IllegalArgumentException)) {
-          i = 30001;
-        }
-      }
-      str = null;
     }
   }
   
@@ -400,85 +394,75 @@ public abstract class ReuseCodecWrapper
   
   private void realConfigure(@NonNull MediaFormat paramMediaFormat, @Nullable Surface paramSurface, int paramInt, @Nullable MediaDescrambler paramMediaDescrambler)
   {
-    String str;
+    String str = null;
     if (LogUtils.isLogEnable())
     {
       str = this + ", configure mediaFormat:" + paramMediaFormat + " surface:" + paramSurface + " flags:" + paramInt + " descrambler:" + paramMediaDescrambler + " state:" + this.state + " mHasConfigureCalled：" + this.mHasConfigureCalled;
       LogUtils.d("ReuseCodecWrapper", str);
     }
+    try
+    {
+      this.codec.configure(paramMediaFormat, paramSurface, paramInt, paramMediaDescrambler);
+      setSurface(paramSurface);
+      this.state = ReuseCodecWrapper.CodecState.Configured;
+      return;
+    }
+    catch (Throwable paramMediaFormat)
+    {
+      paramInt = 0;
+      if (!(paramMediaFormat instanceof MediaCodec.CodecException)) {
+        break label150;
+      }
+    }
+    paramInt = 10002;
     for (;;)
     {
-      try
-      {
-        this.codec.configure(paramMediaFormat, paramSurface, paramInt, paramMediaDescrambler);
-        setSurface(paramSurface);
-        this.state = ReuseCodecWrapper.CodecState.Configured;
-        return;
+      handleCoreAPIException(paramInt, str, paramMediaFormat, true, paramSurface);
+      throw paramMediaFormat;
+      label150:
+      if ((paramMediaFormat instanceof IllegalStateException)) {
+        paramInt = 10000;
+      } else if ((paramMediaFormat instanceof MediaCodec.CryptoException)) {
+        paramInt = 10001;
       }
-      catch (Throwable paramMediaFormat)
-      {
-        paramInt = 0;
-        if (!(paramMediaFormat instanceof MediaCodec.CodecException)) {
-          break label146;
-        }
-      }
-      paramInt = 10002;
-      for (;;)
-      {
-        handleCoreAPIException(paramInt, str, paramMediaFormat, true);
-        throw paramMediaFormat;
-        label146:
-        if ((paramMediaFormat instanceof IllegalStateException)) {
-          paramInt = 10000;
-        } else if ((paramMediaFormat instanceof MediaCodec.CryptoException)) {
-          paramInt = 10001;
-        }
-      }
-      str = null;
     }
   }
   
   private void realConfigure(@NonNull MediaFormat paramMediaFormat, @Nullable Surface paramSurface, @Nullable MediaCrypto paramMediaCrypto, int paramInt)
   {
-    String str2 = null;
+    Object localObject2 = null;
+    String str = null;
+    Object localObject1 = localObject2;
     try
     {
       if (LogUtils.isLogEnable())
       {
-        str2 = this + ", realConfigure mediaFormat:" + paramMediaFormat + " surface:" + paramSurface + " crypto:" + paramMediaCrypto + " flags:" + paramInt + " state:" + this.state + " mHasConfigureCalled：" + this.mHasConfigureCalled;
-        str1 = str2;
+        localObject1 = localObject2;
+        str = this + ", realConfigure mediaFormat:" + paramMediaFormat + " surface:" + paramSurface + " crypto:" + paramMediaCrypto + " flags:" + paramInt + " state:" + this.state + " mHasConfigureCalled：" + this.mHasConfigureCalled;
+        localObject1 = str;
+        LogUtils.d("ReuseCodecWrapper", str);
       }
-      paramInt = 0;
+      localObject1 = str;
+      this.codec.configure(paramMediaFormat, paramSurface, paramMediaCrypto, paramInt);
+      localObject1 = str;
+      setSurface(paramSurface);
+      localObject1 = str;
+      this.state = ReuseCodecWrapper.CodecState.Configured;
+      return;
     }
     catch (Throwable paramMediaFormat)
     {
-      try
-      {
-        LogUtils.d("ReuseCodecWrapper", str2);
-        str1 = str2;
-        this.codec.configure(paramMediaFormat, paramSurface, paramMediaCrypto, paramInt);
-        str1 = str2;
-        setSurface(paramSurface);
-        str1 = str2;
-        this.state = ReuseCodecWrapper.CodecState.Configured;
-        return;
+      paramInt = 0;
+      if (!(paramMediaFormat instanceof IllegalStateException)) {
+        break label180;
       }
-      catch (Throwable paramMediaFormat)
-      {
-        String str1;
-        break label144;
-      }
-      paramMediaFormat = paramMediaFormat;
-      str1 = null;
     }
-    label144:
-    if ((paramMediaFormat instanceof IllegalStateException)) {
-      paramInt = 10000;
-    }
+    paramInt = 10000;
     for (;;)
     {
-      handleCoreAPIException(paramInt, str1, paramMediaFormat, true);
+      handleCoreAPIException(paramInt, (String)localObject1, paramMediaFormat, true, paramSurface);
       throw paramMediaFormat;
+      label180:
       if ((paramMediaFormat instanceof MediaCodec.CryptoException)) {
         paramInt = 10001;
       }
@@ -890,6 +874,11 @@ public abstract class ReuseCodecWrapper
   public final MediaCodec getCodec()
   {
     return this.codec;
+  }
+  
+  public String getCodecName()
+  {
+    return this.codecName;
   }
   
   @NonNull

@@ -1,16 +1,15 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import android.app.Activity;
 
-public class aumk
-  implements Handler.Callback
+class aumk
+  implements bihs
 {
-  public aumk(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  aumk(aumg paramaumg, Activity paramActivity, int paramInt) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void callback(int paramInt)
   {
-    MsgBackupSettingFragment.a(this.a, paramMessage);
-    return false;
+    if ((paramInt == 1) || (paramInt == 2)) {
+      aumg.a(this.jdField_a_of_type_Aumg, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    }
   }
 }
 

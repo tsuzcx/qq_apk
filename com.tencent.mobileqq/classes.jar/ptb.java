@@ -1,28 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.im.oidb.articlesummary.articlesummary.PackJumpInfo;
 
-public class ptb
-  implements ptm
+class ptb
+  implements View.OnClickListener
 {
-  public ptb(VideoView paramVideoView) {}
+  ptb(psx parampsx, articlesummary.PackJumpInfo paramPackJumpInfo) {}
   
-  public void a(String[] paramArrayOfString1, String[] arg2)
+  public void onClick(View paramView)
   {
-    if ((??? != null) && (???.length > 0) && (paramArrayOfString1 != null) && (paramArrayOfString1.length > 0))
-    {
-      String str = ???[0];
-      synchronized (this.a)
-      {
-        if ((!TextUtils.isEmpty(VideoView.access$3300(this.a))) && (VideoView.access$3300(this.a).equals(paramArrayOfString1[0])))
-        {
-          this.a.openVideoByUrl(str);
-          return;
-        }
-        QLog.d("gifvideo.VideoView", 2, "not current video");
-      }
-    }
-    QLog.d("gifvideo.VideoView", 2, "urls null");
+    String str = this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_url.get();
+    ozs.a(psx.a(this.jdField_a_of_type_Psx), str);
+    psx.a(2, this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_wording.get());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

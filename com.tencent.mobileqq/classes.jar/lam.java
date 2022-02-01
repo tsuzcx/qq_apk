@@ -1,11 +1,9 @@
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateError;
-
-public abstract interface lam
+class lam
 {
-  public abstract void a(long paramLong, String paramString1, Language paramLanguage, String paramString2, ahkt paramahkt);
+  public long a;
+  public String a;
   
-  public abstract void a(long paramLong, String paramString, TranslateError paramTranslateError, ahkt paramahkt);
+  private lam(lai paramlai) {}
 }
 
 

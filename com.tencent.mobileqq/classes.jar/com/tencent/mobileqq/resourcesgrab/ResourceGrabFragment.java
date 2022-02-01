@@ -6,9 +6,9 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
-import axbe;
-import baky;
-import balb;
+import axtv;
+import bbdr;
+import bbdu;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mvvm.LifeCycleFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 public class ResourceGrabFragment
   extends LifeCycleFragment
 {
-  private balb jdField_a_of_type_Balb;
+  private bbdu jdField_a_of_type_Bbdu;
   private WeakReference<ResourceGrabView> jdField_a_of_type_MqqUtilWeakReference;
   private boolean jdField_a_of_type_Boolean;
   
@@ -30,7 +30,7 @@ public class ResourceGrabFragment
       QLog.d("ResourceGrabFragment", 2, "doGrabResourceName");
     }
     View localView = getActivity().getWindow().getDecorView();
-    this.jdField_a_of_type_Balb.a(localView, true);
+    this.jdField_a_of_type_Bbdu.a(localView, true);
     this.jdField_a_of_type_Boolean = true;
   }
   
@@ -39,11 +39,11 @@ public class ResourceGrabFragment
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramResourceGrabView);
   }
   
-  public void a(List<baky> paramList)
+  public void a(List<bbdr> paramList)
   {
     ResourceGrabView localResourceGrabView = (ResourceGrabView)this.jdField_a_of_type_MqqUtilWeakReference.get();
     if (localResourceGrabView != null) {
-      localResourceGrabView.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Balb.a(paramList));
+      localResourceGrabView.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Bbdu.a(paramList));
     }
   }
   
@@ -66,7 +66,7 @@ public class ResourceGrabFragment
   void c()
   {
     Object localObject = getActivity().getWindow().getDecorView();
-    this.jdField_a_of_type_Balb.a((View)localObject, false);
+    this.jdField_a_of_type_Bbdu.a((View)localObject, false);
     localObject = (ResourceGrabView)this.jdField_a_of_type_MqqUtilWeakReference.get();
     if (localObject != null) {
       ((ResourceGrabView)localObject).b();
@@ -76,13 +76,13 @@ public class ResourceGrabFragment
   public void d()
   {
     View localView = getActivity().getWindow().getDecorView();
-    this.jdField_a_of_type_Balb.a(localView, false);
+    this.jdField_a_of_type_Bbdu.a(localView, false);
   }
   
   public void onCreate(@Nullable Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Balb = ((balb)axbe.a(this).get(balb.class));
+    this.jdField_a_of_type_Bbdu = ((bbdu)axtv.a(this).get(bbdu.class));
   }
   
   public void onDestroy()

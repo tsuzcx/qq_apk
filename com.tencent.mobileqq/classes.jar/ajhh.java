@@ -1,17 +1,6 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contacts.base.Contacts;
-
-public class ajhh
-  extends ayes
+public abstract interface ajhh
 {
-  public ajhh(Contacts paramContacts) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (Contacts.a(this.a)) {
-      Contacts.a(this.a);
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

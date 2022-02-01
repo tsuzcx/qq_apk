@@ -1,24 +1,11 @@
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.util.ArrayList;
-
 public class apnu
 {
-  public long a;
-  public apnr a;
-  public ByteArrayOutputStream a;
-  public File a;
-  public String a;
-  public final ArrayList<Object> a;
-  public byte[] a;
-  public String b;
-  public final ArrayList<apnq> b = new ArrayList();
-  public String c;
+  public apnb a;
+  public boolean a;
   
-  private apnu()
+  public String toString()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Long = -1L;
+    return "ARCloudRecogResultBase{hasLBSLocation = " + this.jdField_a_of_type_Boolean + ", checkResult = " + this.jdField_a_of_type_Apnb + '}';
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader;
 
-import atjq;
+import aubk;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
 
 public class ExtfBaseFileDownloader$3
   implements Runnable
 {
-  public ExtfBaseFileDownloader$3(atjq paramatjq, int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo) {}
+  public ExtfBaseFileDownloader$3(aubk paramaubk, int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo) {}
   
   public void run()
   {

@@ -1,32 +1,19 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.TextView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
 
 public class abce
-  extends WebViewPlugin
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abce()
-  {
-    this.mPluginNameSpace = "qztodayinhistory";
-  }
+  public abce(SingleLyricView paramSingleLyricView) {}
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneTihSettingWebPlugin", 2, "handleJsRequest url: " + paramString1 + "pkgName:" + paramString2 + "method:" + paramString3);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (SingleLyricView.a(this.a) != null) {
+      SingleLyricView.a(this.a).setAlpha(f);
     }
-    if (!paramString2.equals("qztodayinhistory")) {}
-    while (!paramString3.equals("settihnome")) {
-      return false;
-    }
-    paramJsBridgeListener = new Intent("aciton_switch_tih_setting");
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneTihSettingWebPlugin", 2, "actionString: " + paramJsBridgeListener.getAction());
-    }
-    BaseApplication.getContext().sendBroadcast(paramJsBridgeListener);
-    return true;
   }
 }
 

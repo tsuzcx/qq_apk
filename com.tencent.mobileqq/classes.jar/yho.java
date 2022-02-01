@@ -1,24 +1,29 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yho
-  extends zqf
+  extends QQUIEventReceiver<yhc, xas>
 {
-  private static final int[] a = { 2131691320 };
-  private static final int[] f = { 2131165603 };
-  private static final int[] g = { 2131370639 };
-  private static int[] h = { BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298884) };
-  
-  public yho()
+  public yho(@NonNull yhc paramyhc)
   {
-    super(1, 1, h, -1, g, a, f);
+    super(paramyhc);
   }
   
-  public void a(int paramInt, Object paramObject, bkou[] paramArrayOfbkou)
+  public void a(@NonNull yhc paramyhc, @NonNull xas paramxas)
   {
-    paramArrayOfbkou[0].a = 0;
-    paramArrayOfbkou[0].b = 0;
+    if (yhc.a(paramyhc) == null)
+    {
+      yuk.b(this.TAG, "ignore this user info event. %s.", paramxas.toString());
+      return;
+    }
+    yuk.a(this.TAG, "receive user info event. %s.", paramxas.toString());
+    yhc.a(paramyhc).c();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xas.class;
   }
 }
 

@@ -1,83 +1,60 @@
-import android.os.Bundle;
-import androidx.annotation.NonNull;
-import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
-import com.tencent.mobileqq.flutter.container.QFlutterFragment;
-import io.flutter.embedding.android.FlutterView.RenderMode;
-import io.flutter.embedding.android.FlutterView.TransparencyMode;
-import io.flutter.embedding.engine.FlutterShellArgs;
-import java.io.Serializable;
-import java.lang.reflect.Constructor;
-import java.util.HashMap;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aueu
+  implements aqrn
 {
-  private FlutterView.RenderMode jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView$RenderMode = FlutterView.RenderMode.surface;
-  private FlutterView.TransparencyMode jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView$TransparencyMode = FlutterView.TransparencyMode.transparent;
-  private FlutterShellArgs jdField_a_of_type_IoFlutterEmbeddingEngineFlutterShellArgs;
-  private final Class<? extends QFlutterFragment> jdField_a_of_type_JavaLangClass = QFlutterFragment.class;
-  private String jdField_a_of_type_JavaLangString = "";
-  private Map jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = true;
+  private String a;
   
-  @NonNull
-  private Bundle a()
+  public aueu(String paramString)
   {
-    Bundle localBundle = new Bundle();
-    if (this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterShellArgs != null) {
-      localBundle.putStringArray("initialization_args", this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterShellArgs.toArray());
-    }
-    Object localObject = new BoostFlutterActivity.SerializableMap();
-    ((BoostFlutterActivity.SerializableMap)localObject).setMap(this.jdField_a_of_type_JavaUtilMap);
-    localBundle.putString("url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putSerializable("params", (Serializable)localObject);
-    if (this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView$RenderMode != null)
-    {
-      localObject = this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView$RenderMode.name();
-      localBundle.putString("flutterview_render_mode", (String)localObject);
-      if (this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView$TransparencyMode == null) {
-        break label124;
-      }
-    }
-    label124:
-    for (localObject = this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView$TransparencyMode.name();; localObject = FlutterView.TransparencyMode.transparent.name())
-    {
-      localBundle.putString("flutterview_transparency_mode", (String)localObject);
-      localBundle.putBoolean("destroy_engine_with_fragment", true);
-      return localBundle;
-      localObject = FlutterView.RenderMode.surface.name();
-      break;
+    this.a = paramString;
+    if (bhmi.b(this.a)) {
+      this.a = new File(this.a).getAbsolutePath();
     }
   }
   
-  public aueu a(@NonNull String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public aueu a(@NonNull Map paramMap)
-  {
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    return this;
-  }
-  
-  @NonNull
-  public <T extends QFlutterFragment> T a()
+  private String a()
   {
     try
     {
-      QFlutterFragment localQFlutterFragment = (QFlutterFragment)this.jdField_a_of_type_JavaLangClass.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-      if (localQFlutterFragment == null) {
-        throw new RuntimeException("The NewFlutterFragment subclass sent in the constructor (" + this.jdField_a_of_type_JavaLangClass.getCanonicalName() + ") does not match the expected return type.");
-      }
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("file_color_note_local_path", this.a);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
-    catch (Exception localException)
+    catch (JSONException localJSONException) {}
+    return "";
+  }
+  
+  public ColorNote getColorNote()
+  {
+    if (!bhmi.b(this.a))
     {
-      throw new RuntimeException("Could not instantiate NewFlutterFragment subclass (" + this.jdField_a_of_type_JavaLangClass.getName() + ")", localException);
+      QLog.i("LocalFileColorNoteServiceInfo", 1, "getColorNote: loacl file path is null");
+      return null;
     }
-    localException.setArguments(a());
-    return localException;
+    aqrv localaqrv = new aqrv();
+    localaqrv.a(17039360);
+    String str = auoo.b(5, this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("LocalFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    }
+    localaqrv.a(str);
+    str = aunj.a(this.a);
+    localaqrv.b(str);
+    localaqrv.c(auog.a(aunj.a(this.a)));
+    int i = aunj.a(aunj.a(str));
+    localaqrv.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localaqrv.a(str.getBytes());
+    }
+    return localaqrv.a();
   }
 }
 

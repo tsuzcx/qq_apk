@@ -1,19 +1,17 @@
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+
 public class oay
+  extends BroadcastReceiver
 {
-  public String a;
-  public boolean a;
-  public String b;
+  public oay(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface) {}
   
-  public oay(oau paramoau, String paramString1, String paramString2, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "PublicAccountSearchRecommendItem->uin:" + this.jdField_a_of_type_JavaLangString + ", name:" + this.b + ", isPublicAccount:" + this.jdField_a_of_type_Boolean;
+    this.a.a.finish();
   }
 }
 

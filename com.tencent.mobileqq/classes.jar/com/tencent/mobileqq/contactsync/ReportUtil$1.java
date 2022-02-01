@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.contactsync;
 
-import bctj;
+import bdmc;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -21,7 +21,7 @@ public final class ReportUtil$1
     localHashMap.put("report_key_delCntConflict", String.valueOf(this.f));
     localHashMap.put("report_key_delCntDangerous", String.valueOf(this.g));
     localHashMap.put("report_key_insertCnt", String.valueOf(this.h));
-    bctj.a(BaseApplication.getContext()).a("", "actContactSyncExReport", true, 0L, 0L, localHashMap, "");
+    bdmc.a(BaseApplication.getContext()).a("", "actContactSyncExReport", true, 0L, 0L, localHashMap, "");
     if (QLog.isColorLevel()) {
       QLog.i("actContactSyncExReport", 2, String.format("reportContactSyncExIfNeed from|type|qqContactCnt|rawContactCnt|delCnt|delCntConflict|delCntDangerous|insertCnt = %d|%d|%d|%d|%d|%d|%d|%d", new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b), Integer.valueOf(this.c), Integer.valueOf(this.d), Integer.valueOf(this.e), Integer.valueOf(this.f), Integer.valueOf(this.g), Integer.valueOf(this.h) }));
     }

@@ -1,13 +1,6 @@
-class axah
+public abstract interface axah
 {
-  public axai a;
-  public String a;
-  
-  public axah(axad paramaxad, String paramString, axai paramaxai)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Axai = paramaxai;
-  }
+  public abstract void a(short paramShort, boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

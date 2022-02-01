@@ -1,15 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.app.Activity;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class audg
-  extends AnimatorListenerAdapter
+final class audg
+  implements View.OnClickListener
 {
-  audg(audf paramaudf) {}
+  audg(Activity paramActivity, String paramString) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.a.setVisibility(8);
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BasePluginActivity)) {
+      aunj.a(((BasePluginActivity)this.jdField_a_of_type_AndroidAppActivity).getOutActivity(), this.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      aunj.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

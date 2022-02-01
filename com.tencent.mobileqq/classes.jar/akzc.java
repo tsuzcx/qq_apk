@@ -1,24 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-class akzc
-  implements View.OnClickListener
+public class akzc
+  implements OnCompositionLoadedListener
 {
-  akzc(akyh paramakyh) {}
+  public akzc(RedPacketPopFragment paramRedPacketPopFragment, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    Intent localIntent = new Intent(akyh.a(this.a), TroopAssisSettingActivity.class);
-    akyh.a(this.a).startActivityForResult(localIntent, 9001);
-    akyh.a(this.a).sendEmptyMessageDelayed(1, 1000L);
-    bcst.b(akyh.a(this.a).app, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
-    bcst.a(akyh.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 17, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localLottieDrawable);
   }
 }
 

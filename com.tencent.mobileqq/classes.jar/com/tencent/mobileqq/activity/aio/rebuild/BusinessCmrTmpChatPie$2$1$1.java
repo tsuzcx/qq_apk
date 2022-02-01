@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahxt;
-import ahyc;
+import aihh;
+import aihq;
 
 class BusinessCmrTmpChatPie$2$1$1
   implements Runnable

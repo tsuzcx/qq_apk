@@ -1,55 +1,34 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudCommon.StCommonExt;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.ArrayList;
-import java.util.Collection;
-import qqcircle.QQCircleFeedBase.StFollowPageData;
-import qqcircle.QQCircleFeedBase.StTabInfo;
+import android.app.ActivityManager;
+import android.graphics.Bitmap;
+import com.tencent.component.media.utils.LruCache;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class vjb
 {
-  private int jdField_a_of_type_Int;
-  private FeedCloudCommon.StCommonExt jdField_a_of_type_FeedcloudFeedCloudCommon$StCommonExt;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<FeedCloudMeta.StFeed> jdField_a_of_type_JavaUtilArrayList;
-  private QQCircleFeedBase.StFollowPageData jdField_a_of_type_QqcircleQQCircleFeedBase$StFollowPageData;
-  private QQCircleFeedBase.StTabInfo jdField_a_of_type_QqcircleQQCircleFeedBase$StTabInfo;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private static LruCache<Integer, Bitmap> jdField_a_of_type_ComTencentComponentMediaUtilsLruCache;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public static vjb a(vtz paramvtz, int paramInt1, int paramInt2)
+  public static vjb a()
   {
-    if (paramvtz == null)
+    return vjd.a();
+  }
+  
+  public LruCache<Integer, Bitmap> a()
+  {
+    if (jdField_a_of_type_ComTencentComponentMediaUtilsLruCache == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      QLog.d("QCircleFolderCacheHelper", 1, "wrap failed!model is null");
-      return null;
+      if (jdField_a_of_type_ComTencentComponentMediaUtilsLruCache == null)
+      {
+        int j = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getMemoryClass() * 131072;
+        int i = j;
+        if (j > 52428800) {
+          i = 52428800;
+        }
+        jdField_a_of_type_ComTencentComponentMediaUtilsLruCache = new vjc(this, i);
+      }
+      return jdField_a_of_type_ComTencentComponentMediaUtilsLruCache;
     }
-    vjb localvjb = new vjb();
-    QQCircleFeedBase.StTabInfo localStTabInfo = paramvtz.a();
-    Collection localCollection = paramvtz.a();
-    boolean bool = paramvtz.b();
-    FeedCloudCommon.StCommonExt localStCommonExt = paramvtz.a();
-    String str1 = paramvtz.b();
-    String str2 = paramvtz.c();
-    if ((localStTabInfo == null) || (localCollection == null) || (localCollection.isEmpty()) || (TextUtils.isEmpty(str1)))
-    {
-      QLog.d("QCircleFolderCacheHelper", 1, "wrap failed!miss key data!");
-      return null;
-    }
-    localvjb.jdField_a_of_type_Int = paramInt1;
-    localvjb.jdField_b_of_type_Int = paramInt2;
-    localvjb.jdField_a_of_type_QqcircleQQCircleFeedBase$StTabInfo = localStTabInfo;
-    localvjb.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    localvjb.jdField_a_of_type_JavaUtilArrayList.addAll(localCollection);
-    localvjb.jdField_a_of_type_Boolean = bool;
-    localvjb.jdField_a_of_type_FeedcloudFeedCloudCommon$StCommonExt = localStCommonExt;
-    localvjb.jdField_a_of_type_JavaLangString = str1;
-    localvjb.jdField_b_of_type_JavaLangString = str2;
-    localvjb.jdField_a_of_type_QqcircleQQCircleFeedBase$StFollowPageData = ((QQCircleFeedBase.StFollowPageData)paramvtz.c().getValue());
-    return localvjb;
   }
 }
 

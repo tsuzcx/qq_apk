@@ -1,521 +1,558 @@
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.Typeface;
-import android.os.Bundle;
-import android.text.SpannableStringBuilder;
+import android.media.AudioManager;
 import android.text.TextUtils;
-import android.text.style.TextAppearanceSpan;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.mobileqq.widget.FixRatioPAHighLightImageView;
-import com.tencent.mobileqq.widget.PAImageView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.maxvideo.common.GlobalInit;
+import com.tencent.maxvideo.common.MessageStruct;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bczp
-  extends bcvt
 {
-  public static int s = 100;
-  public static int t = 200;
-  public static int u = 300;
-  public static int v = 400;
-  private boolean a;
+  public static int a;
+  public static long a;
+  public static Context a;
+  public static String a;
+  public static final int[] a;
+  public static int b;
+  private static String b;
+  public static final int[] b;
+  public static int c;
+  private static String c;
+  public static final int[] c;
+  public static int d;
+  private static String d;
+  public static final int[] d;
+  private static String e;
+  public static final int[] e;
+  private static String f;
+  public static final int[] f;
+  public static final int[] g = { 1280, 800 };
+  public static final int[] h = { 720, 480 };
   
-  private LinearLayout a(Context paramContext)
+  static
   {
-    Resources localResources = paramContext.getResources();
-    paramContext = new LinearLayout(paramContext);
-    paramContext.setOrientation(1);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    paramContext.setPadding(localResources.getDimensionPixelSize(2131298900), 0, localResources.getDimensionPixelSize(2131298901), 0);
-    paramContext.setLayoutParams(localLayoutParams);
-    return paramContext;
+    jdField_a_of_type_AndroidContentContext = VideoEnvironment.a();
+    jdField_a_of_type_Long = -1L;
+    jdField_a_of_type_Int = 1;
+    jdField_b_of_type_Int = 1;
+    jdField_c_of_type_Int = 640;
+    jdField_d_of_type_Int = 480;
+    jdField_a_of_type_ArrayOfInt = new int[] { 960, 640 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 720, 480 };
+    jdField_c_of_type_ArrayOfInt = new int[] { 720, 540, 640, 480, 480, 360, 320, 240 };
+    jdField_d_of_type_ArrayOfInt = new int[] { 1, 1, 0 };
+    jdField_e_of_type_ArrayOfInt = new int[] { 1, 0, 0 };
+    jdField_f_of_type_ArrayOfInt = new int[] { 1, 1, 0 };
   }
   
-  private void a(Context paramContext, Resources paramResources, LinearLayout paramLinearLayout, int paramInt, Bundle paramBundle, boolean paramBoolean)
+  public static String a()
   {
-    int k = paramResources.getDimensionPixelSize(2131296389);
-    int m = paramResources.getDimensionPixelSize(2131296390);
-    Object localObject1 = paramBundle.getString("sType");
-    Object localObject2;
-    label157:
-    Object localObject3;
-    int i;
-    int j;
-    label222:
-    Object localObject4;
-    if (((localObject1 == null) || (!((String)localObject1).equals("1"))) || (paramLinearLayout.getChildCount() == this.jdField_a_of_type_JavaUtilArrayList.size()))
-    {
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      paramInt = 0;
-      if (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (bcvs)((Iterator)localObject1).next();
-        ((bcvs)localObject2).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-        if ((localObject2 instanceof StructMsgItemTitle))
-        {
-          ((StructMsgItemTitle)localObject2).a(a(), this.p);
-          ((StructMsgItemTitle)localObject2).a(false);
-          if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).c())) {
-            ((StructMsgItemTitle)localObject2).c(String.valueOf(36));
-          }
-          localObject3 = paramLinearLayout.getChildAt(paramInt);
-          ((bcvs)localObject2).a(paramContext, (View)localObject3, paramBundle);
-          i = ((View)localObject3).getPaddingTop();
-          j = ((View)localObject3).getPaddingBottom();
-          if (paramBoolean)
-          {
-            if ((!(localObject2 instanceof bcxv)) && (!(localObject2 instanceof bcxx))) {
-              break label431;
-            }
-            ((View)localObject3).setPadding(0, i, 0, j);
-          }
-          if (!(localObject2 instanceof StructMsgItemTitle)) {
-            break label467;
-          }
-          if ((paramBoolean) && (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).e()))) {
-            ((TextView)localObject3).setTypeface(Typeface.DEFAULT, 1);
-          }
-        }
-        for (;;)
-        {
-          paramInt += 1;
-          break;
-          if (!(localObject2 instanceof bdaq)) {
-            break label157;
-          }
-          localObject3 = (bdaq)localObject2;
-          ((bdaq)localObject3).a();
-          if ((localObject3 != null) && ((((bdaq)localObject3).c() == null) || (((bdaq)localObject3).c().equals("")))) {
-            ((bdaq)localObject3).c(String.valueOf(28));
-          }
-          localObject4 = ((bdaq)localObject3).f();
-          if ((localObject4 != null) && (((String)localObject4).equals("1")))
-          {
-            ((bdaq)localObject3).c(String.valueOf(24));
-            if ((!paramBoolean) || (!TextUtils.isEmpty(((bdaq)localObject3).d()))) {
-              break label157;
-            }
-            ((bdaq)localObject3).b("#8e8e8e");
-            break label157;
-          }
-          if (!paramBoolean) {
-            break label157;
-          }
-          if (TextUtils.isEmpty(((bdaq)localObject3).c())) {
-            ((bdaq)localObject3).c(String.valueOf(32));
-          }
-          if (!TextUtils.isEmpty(((bdaq)localObject3).d())) {
-            break label157;
-          }
-          ((bdaq)localObject3).b("#000000");
-          break label157;
-          label431:
-          if ((localObject2 instanceof bcwv))
-          {
-            ((View)localObject3).setPadding(0, 0, 0, 0);
-            break label222;
-          }
-          ((View)localObject3).setPadding(k, i, m, j);
-          break label222;
-          label467:
-          if (((localObject2 instanceof bdaq)) && (paramBoolean)) {
-            ((TextView)localObject3).setLineSpacing(afur.a(2.0F, paramResources), 1.0F);
-          }
-        }
-      }
-    }
-    else
-    {
-      paramLinearLayout.removeAllViews();
-      localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      i = 0;
-      if (((Iterator)localObject2).hasNext())
-      {
-        localObject1 = (bcvs)((Iterator)localObject2).next();
-        ((bcvs)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-        localObject3 = ((bcvs)localObject1).jdField_a_of_type_JavaLangString;
-        if ("title".equals(localObject3))
-        {
-          if ((localObject1 instanceof StructMsgItemTitle))
-          {
-            ((StructMsgItemTitle)localObject1).a(a(), this.p);
-            ((StructMsgItemTitle)localObject1).a(false);
-            if (TextUtils.isEmpty(((StructMsgItemTitle)localObject1).c())) {
-              ((StructMsgItemTitle)localObject1).c(String.valueOf(36));
-            }
-          }
-          localObject3 = ((bcvs)localObject1).a(paramContext, null, paramBundle);
-          localObject4 = new LinearLayout.LayoutParams(-2, -2);
-          ((LinearLayout.LayoutParams)localObject4).topMargin = afur.a(2.5F, paramResources);
-          ((LinearLayout.LayoutParams)localObject4).bottomMargin = afur.a(1.5F, paramResources);
-          if ((a(1)) && (i == 0)) {
-            ((LinearLayout.LayoutParams)localObject4).topMargin = afur.a(20.0F, paramResources);
-          }
-          if (paramBoolean)
-          {
-            ((View)localObject3).setPadding(k, ((View)localObject3).getPaddingTop(), m, ((View)localObject3).getPaddingBottom());
-            if (TextUtils.isEmpty(((StructMsgItemTitle)localObject1).e())) {
-              ((TextView)localObject3).setTypeface(Typeface.DEFAULT, 1);
-            }
-          }
-          paramLinearLayout.addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if ("hr".equals(localObject3))
-          {
-            localObject1 = ((bcvs)localObject1).a(paramContext, null, paramBundle);
-            localObject3 = new LinearLayout.LayoutParams(-1, 1);
-            if (i > 0) {
-              ((LinearLayout.LayoutParams)localObject3).topMargin = afur.a(7.5F, paramResources);
-            }
-            if (paramBoolean)
-            {
-              ((LinearLayout.LayoutParams)localObject3).leftMargin = k;
-              ((LinearLayout.LayoutParams)localObject3).rightMargin = m;
-            }
-            if (localObject1 != null) {
-              paramLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
-            }
-          }
-          else
-          {
-            if ("summary".equals(localObject3))
-            {
-              if ((localObject1 instanceof bcvu))
-              {
-                localObject3 = (bdaq)localObject1;
-                ((bdaq)localObject3).a();
-                if ((localObject3 != null) && ((((bdaq)localObject3).c() == null) || (((bdaq)localObject3).c().equals("")))) {
-                  ((bdaq)localObject3).c(String.valueOf(28));
-                }
-                localObject4 = ((bdaq)localObject1).f();
-                if ((localObject4 == null) || (!((String)localObject4).equals("1"))) {
-                  break label1100;
-                }
-                ((bdaq)localObject3).c(String.valueOf(24));
-                if ((paramBoolean) && (TextUtils.isEmpty(((bdaq)localObject3).d()))) {
-                  ((bdaq)localObject3).b("#8e8e8e");
-                }
-              }
-              for (;;)
-              {
-                localObject1 = ((bcvs)localObject1).a(paramContext, null, paramBundle);
-                if (paramBoolean) {
-                  ((TextView)localObject1).setLineSpacing(afur.a(2.0F, paramResources), 1.0F);
-                }
-                localObject3 = new LinearLayout.LayoutParams(-2, -2);
-                ((LinearLayout.LayoutParams)localObject3).topMargin = afur.a(4.5F, paramResources);
-                ((LinearLayout.LayoutParams)localObject3).bottomMargin = afur.a(5.5F, paramResources);
-                if ((a(2)) && (i == this.jdField_a_of_type_JavaUtilArrayList.size() - 1)) {
-                  ((LinearLayout.LayoutParams)localObject3).bottomMargin = afur.a(13.0F, paramResources);
-                }
-                if (paramBoolean) {
-                  ((View)localObject1).setPadding(k, ((View)localObject1).getPaddingTop(), m, ((View)localObject1).getPaddingBottom());
-                }
-                paramLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
-                break;
-                label1100:
-                if (paramBoolean)
-                {
-                  if (TextUtils.isEmpty(((bdaq)localObject3).c())) {
-                    ((bdaq)localObject3).c(String.valueOf(32));
-                  }
-                  if (TextUtils.isEmpty(((bdaq)localObject3).d())) {
-                    ((bdaq)localObject3).b("#000000");
-                  }
-                }
-              }
-            }
-            if ("timer".equals(localObject3))
-            {
-              localObject1 = ((bcvs)localObject1).a(paramContext, null, paramBundle);
-              localObject3 = new LinearLayout.LayoutParams(-2, -2);
-              if (i > 0) {
-                ((LinearLayout.LayoutParams)localObject3).topMargin = paramInt;
-              }
-              if (paramBoolean) {
-                ((View)localObject1).setPadding(k, ((View)localObject1).getPaddingTop(), m, ((View)localObject1).getPaddingBottom());
-              }
-              paramLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
-            }
-            else
-            {
-              if (("picture".equals(localObject3)) || ("video".equals(localObject3)))
-              {
-                localObject4 = ((bcvs)localObject1).a(paramContext, null, paramBundle);
-                localObject1 = ((View)localObject4).findViewById(2131368420);
-                if (("picture".equals(localObject3)) && (paramBoolean) && (a(1)) && (i == 0) && (paramBundle != null)) {
-                  paramBundle.putBoolean("pa_should_change", true);
-                }
-                if ((localObject1 != null) && ((localObject1 instanceof AnyScaleTypeImageView)) && ("picture".equals(localObject3))) {
-                  AnyScaleTypeImageView localAnyScaleTypeImageView = (AnyScaleTypeImageView)localObject1;
-                }
-                if (paramBoolean)
-                {
-                  ((View)localObject4).setPadding(0, ((View)localObject4).getPaddingTop(), 0, ((View)localObject4).getPaddingBottom());
-                  if ((localObject1 instanceof FixRatioPAHighLightImageView))
-                  {
-                    ((FixRatioPAHighLightImageView)localObject1).setRatio(1.8F);
-                    localObject1 = new LinearLayout.LayoutParams(-1, -2);
-                    label1395:
-                    if (i > 0) {
-                      ((LinearLayout.LayoutParams)localObject1).topMargin = paramInt;
-                    }
-                    if ((!"picture".equals(localObject3)) || (!paramBoolean) || (!a(1)) || (i != 0)) {
-                      break label1602;
-                    }
-                    ((LinearLayout.LayoutParams)localObject1).topMargin = 0;
-                    if ((localObject4 != null) && ((localObject4 instanceof PAImageView))) {
-                      ((PAImageView)localObject4).setUseRadiusRound(true, paramResources.getDimensionPixelSize(2131296391));
-                    }
-                  }
-                }
-                for (;;)
-                {
-                  ((LinearLayout.LayoutParams)localObject1).bottomMargin = afur.a(7.5F, paramResources);
-                  paramLinearLayout.addView((View)localObject4, (ViewGroup.LayoutParams)localObject1);
-                  break;
-                  j = BaseChatItemLayout.A;
-                  if (!paramBundle.getBoolean("hasHeadIcon", true)) {
-                    j = BaseChatItemLayout.B;
-                  }
-                  localObject1 = new LinearLayout.LayoutParams(-1, (int)(j / 1.8D));
-                  break label1395;
-                  if ((!paramBundle.getBoolean("hasHeadIcon", true)) && (paramBundle.getInt("serviceID", 0) == 21))
-                  {
-                    localObject1 = new LinearLayout.LayoutParams(-1, afur.a(105.0F, paramResources));
-                    break label1395;
-                  }
-                  localObject1 = new LinearLayout.LayoutParams(-1, afur.a(175.0F, paramResources));
-                  break label1395;
-                  label1602:
-                  ((LinearLayout.LayoutParams)localObject1).topMargin = afur.a(7.5F, paramResources);
-                }
-              }
-              if ("more".equals(localObject3))
-              {
-                localObject1 = ((bcvs)localObject1).a(paramContext, null, paramBundle);
-                localObject3 = new LinearLayout.LayoutParams(-1, afur.a(36.0F, paramResources));
-                if (paramBoolean) {
-                  ((View)localObject1).setPadding(k, ((View)localObject1).getPaddingTop(), m, ((View)localObject1).getPaddingBottom());
-                }
-                paramLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
-              }
-              else if ("item".equals(localObject3))
-              {
-                localObject1 = ((bcvs)localObject1).a(paramContext, null, paramBundle);
-                if (paramBoolean) {
-                  ((View)localObject1).setPadding(k, ((View)localObject1).getPaddingTop(), m, ((View)localObject1).getPaddingBottom());
-                }
-                paramLinearLayout.addView((View)localObject1);
-              }
-              else if ("price".equals(localObject3))
-              {
-                localObject1 = ((bcvs)localObject1).a(paramContext, null, paramBundle);
-                if (paramBoolean) {
-                  ((View)localObject1).setPadding(k, ((View)localObject1).getPaddingTop(), m, ((View)localObject1).getPaddingBottom());
-                }
-                paramLinearLayout.addView((View)localObject1);
-              }
-              else if ("pavideo".equals(localObject3))
-              {
-                localObject1 = ((bcvs)localObject1).a(paramContext, null, paramBundle);
-                ((AnyScaleTypeImageView)localObject1).setImageResource(2130841666);
-                localObject3 = new LinearLayout.LayoutParams(-1, (int)(BaseChatItemLayout.b / 1.8D));
-                if (paramBoolean)
-                {
-                  ((View)localObject1).setPadding(k, ((View)localObject1).getPaddingTop(), m, ((View)localObject1).getPaddingBottom());
-                  ((LinearLayout.LayoutParams)localObject3).topMargin = afur.a(7.5F, paramResources);
-                  ((LinearLayout.LayoutParams)localObject3).bottomMargin = afur.a(7.5F, paramResources);
-                }
-                paramLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
-              }
-              else if ("asyncmsg".equals(localObject3))
-              {
-                localObject1 = ((bcvs)localObject1).a(paramContext, null, paramBundle);
-                if (paramBoolean) {
-                  ((View)localObject1).setPadding(k, ((View)localObject1).getPaddingTop(), m, ((View)localObject1).getPaddingBottom());
-                }
-                paramLinearLayout.addView((View)localObject1);
-              }
-              else if ("group".equals(localObject3))
-              {
-                localObject1 = ((bcvs)localObject1).a(paramContext, null, paramBundle);
-                ((View)localObject1).setPadding(0, 0, 0, 0);
-                localObject3 = new LinearLayout.LayoutParams(-1, -2);
-                ((LinearLayout.LayoutParams)localObject3).leftMargin = 0;
-                ((LinearLayout.LayoutParams)localObject3).rightMargin = 0;
-                ((LinearLayout.LayoutParams)localObject3).topMargin = 0;
-                ((LinearLayout.LayoutParams)localObject3).bottomMargin = 0;
-                paramLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
-                this.jdField_a_of_type_Boolean = true;
-              }
-            }
-          }
-        }
-      }
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      paramLinearLayout.setPadding(0, 0, 0, 0);
-    }
+    return jdField_c_of_type_JavaLangString;
   }
   
-  private void a(Context paramContext, Resources paramResources, LinearLayout paramLinearLayout, int paramInt, View paramView, boolean paramBoolean)
+  public static void a()
   {
-    Object localObject1 = new StringBuffer();
-    Object localObject2 = new ArrayList();
-    Object localObject3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    int i = -1;
-    if (((Iterator)localObject3).hasNext())
+    try
     {
-      Object localObject4 = (bcvs)((Iterator)localObject3).next();
-      ((bcvs)localObject4).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-      int j = i;
-      if ((localObject4 instanceof bcvu))
-      {
-        localObject4 = (bcvu)localObject4;
-        if (paramBoolean)
-        {
-          if (!(localObject4 instanceof bdaq)) {
-            break label216;
-          }
-          if (TextUtils.isEmpty(((bcvu)localObject4).c())) {
-            ((bcvu)localObject4).c(String.valueOf(32));
-          }
-          if (TextUtils.isEmpty(((bcvu)localObject4).d())) {
-            ((bcvu)localObject4).b("#000000");
-          }
-        }
+      AudioManager localAudioManager = (AudioManager)VideoEnvironment.a().getSystemService("audio");
+      int j = localAudioManager.requestAudioFocus(null, 3, 2);
+      int i = j;
+      if (j == 0) {
+        i = localAudioManager.requestAudioFocus(null, 3, 1);
       }
-      for (;;)
-      {
-        localObject4 = ((bcvu)localObject4).a(paramResources);
-        j = i;
-        if (localObject4 != null)
-        {
-          ((bcvv)localObject4).e = (i + 1);
-          ((bcvv)localObject4).f = (((bcvv)localObject4).e + ((bcvv)localObject4).jdField_a_of_type_JavaLangString.length());
-          j = i + ((bcvv)localObject4).jdField_a_of_type_JavaLangString.length();
-          ((StringBuffer)localObject1).append(((bcvv)localObject4).jdField_a_of_type_JavaLangString);
-          ((ArrayList)localObject2).add(localObject4);
-        }
-        i = j;
-        break;
-        label216:
-        if (((localObject4 instanceof StructMsgItemTitle)) && (TextUtils.isEmpty(((bcvu)localObject4).c()))) {
-          ((bcvu)localObject4).c(String.valueOf(36));
-        }
+      if (i == 0) {
+        localAudioManager.requestAudioFocus(null, 3, 3);
       }
-    }
-    localObject1 = new SpannableStringBuilder(((StringBuffer)localObject1).toString());
-    localObject2 = ((ArrayList)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (bcvv)((Iterator)localObject2).next();
-      ((SpannableStringBuilder)localObject1).setSpan(new TextAppearanceSpan(null, ((bcvv)localObject3).b, (int)TypedValue.applyDimension(2, ((bcvv)localObject3).c, paramResources.getDisplayMetrics()), ColorStateList.valueOf(((bcvv)localObject3).jdField_a_of_type_Int), null), ((bcvv)localObject3).e, ((bcvv)localObject3).f, 33);
-    }
-    if ((paramView != null) && ((paramView instanceof TextView)))
-    {
-      paramContext = (TextView)paramView;
-      paramContext.setText((CharSequence)localObject1);
-      paramContext.requestLayout();
       return;
     }
-    paramView = new LinearLayout.LayoutParams(-2, -2);
-    paramContext = new TextView(paramContext);
-    if (paramBoolean)
+    catch (Exception localException)
     {
-      paramContext.setLineSpacing(afur.a(2.0F, paramResources), 1.0F);
-      paramView.topMargin = afur.a(4.5F, paramResources);
-      paramView.bottomMargin = afur.a(5.5F, paramResources);
-    }
-    for (;;)
-    {
-      paramLinearLayout.addView(paramContext, paramView);
-      break;
-      paramContext.setLineSpacing(paramInt, 1.0F);
-      if (a(2)) {
-        paramView.bottomMargin = afur.a(10.0F, paramResources);
-      }
-      if (a(1)) {
-        paramView.topMargin = afur.a(10.0F, paramResources);
-      }
+      localException.printStackTrace();
     }
   }
   
-  protected int b()
+  public static boolean a(long paramLong, Context paramContext)
   {
-    return 6;
-  }
-  
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    boolean bool;
-    Resources localResources;
-    label38:
-    int k;
-    int m;
-    int i;
-    if (paramBundle.getInt("accostType") == AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA)
+    if (paramLong <= 0L) {}
+    boolean bool1;
+    boolean bool2;
+    do
     {
-      bool = true;
-      localResources = paramContext.getResources();
-      if ((paramView == null) || (!(paramView instanceof LinearLayout))) {
-        break label159;
-      }
-      paramView = (LinearLayout)paramView;
-      k = paramView.getPaddingTop();
-      m = paramView.getPaddingBottom();
-      j = localResources.getDimensionPixelSize(2131298900);
-      i = localResources.getDimensionPixelSize(2131298901);
-      a(paramView);
-      d(paramView);
-      if (bool)
+      do
       {
-        if (this.o != 1) {
-          break label168;
+        do
+        {
+          do
+          {
+            return false;
+            bool1 = bhmi.a();
+            if (!bool1)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.e("initDirs", 2, "hasSDCardAndWritable = false");
+              }
+              return bool1;
+            }
+            paramContext = bdfe.a().jdField_b_of_type_JavaLangString;
+            if (!TextUtils.isEmpty(paramContext)) {
+              break;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.e("initDirs", 2, "sdcardDirPath = empty");
+          return false;
+          if (QLog.isColorLevel()) {
+            QLog.e("initDirs", 2, "sdcardDirPath:storeVideoPath=" + paramContext);
+          }
+          localFile = new File(paramContext);
+          if ((localFile.exists()) && (localFile.isDirectory()) && (localFile.canWrite())) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.e("initDirs", 2, "exists OR isDirectory OR canWrite = false");
+        return false;
+        jdField_a_of_type_JavaLangString = paramContext + File.separator + "trimvideo";
+        File localFile = new File(jdField_a_of_type_JavaLangString);
+        bool1 = localFile.mkdirs();
+        bool2 = localFile.isDirectory();
+        if (QLog.isColorLevel()) {
+          QLog.e("initDirs", 2, "trimVideoFilesDirPath:mkd=" + bool1 + " isdir=" + bool2);
         }
-        i = localResources.getDimensionPixelSize(2131296389);
+      } while ((!bool1) && (!bool2));
+      jdField_e_of_type_JavaLangString = paramContext + "/Product";
+      jdField_d_of_type_JavaLangString = paramContext + "/Material";
+      jdField_f_of_type_JavaLangString = jdField_d_of_type_JavaLangString + "/ProcessedMaterial";
+      jdField_b_of_type_JavaLangString = paramContext + "/log.txt";
+      jdField_c_of_type_JavaLangString = paramContext + File.separator + "Source";
+      paramContext = new File(jdField_c_of_type_JavaLangString);
+      bool1 = paramContext.mkdirs();
+      bool2 = paramContext.isDirectory();
+      if (QLog.isColorLevel()) {
+        QLog.e("initDirs", 2, "avSourceFilesDirPath:mkd=" + bool1 + " isdir=" + bool2);
       }
-    }
-    for (int j = i;; j = 0)
-    {
-      paramView.setPadding(j, k, i, m);
-      i = afur.a(8.0F, localResources);
-      if (this.o != 1) {
-        break label177;
-      }
-      a(paramContext, localResources, paramView, i, paramView.getChildAt(0), bool);
-      return paramView;
-      bool = false;
-      break;
-      label159:
-      paramView = a(paramContext);
-      break label38;
-      label168:
-      i = 0;
-    }
-    label177:
-    a(paramContext, localResources, paramView, i, paramBundle, bool);
-    return paramView;
+    } while ((!bool1) && (!bool2));
+    return true;
   }
   
-  public String b()
+  public static boolean a(long paramLong, Context paramContext, int paramInt1, int paramInt2)
   {
-    return "Layout6";
+    if (paramContext == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("GloableValue", 2, "GloableValue[init]context=" + paramContext);
+      }
+    }
+    do
+    {
+      return false;
+      if ((jdField_a_of_type_Long > 0L) && ((paramLong <= 0L) || (jdField_a_of_type_Long == paramLong)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("GloableValue", 2, "GloableValue[init]sUin=" + jdField_a_of_type_Long + "uin=" + paramLong);
+        }
+        return true;
+      }
+      jdField_a_of_type_Long = paramLong;
+    } while ((!a(paramLong, paramContext)) || (!a(paramLong + "", paramContext, paramInt1, paramInt2)));
+    return true;
+  }
+  
+  /* Error */
+  public static boolean a(String paramString, Context paramContext, int paramInt1, int paramInt2)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 7
+    //   6: aconst_null
+    //   7: astore 6
+    //   9: aconst_null
+    //   10: astore 8
+    //   12: invokestatic 100	bdfe:a	()Lbdfe;
+    //   15: getfield 102	bdfe:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   18: astore 9
+    //   20: new 204	com/tencent/maxvideo/common/MessageStruct
+    //   23: dup
+    //   24: bipush 6
+    //   26: invokespecial 207	com/tencent/maxvideo/common/MessageStruct:<init>	(I)V
+    //   29: astore 4
+    //   31: aload 4
+    //   33: new 112	java/lang/StringBuilder
+    //   36: dup
+    //   37: invokespecial 115	java/lang/StringBuilder:<init>	()V
+    //   40: ldc 209
+    //   42: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: aload_0
+    //   46: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: ldc 211
+    //   51: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: aload 9
+    //   56: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: ldc 213
+    //   61: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: getstatic 172	bczp:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   67: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: ldc 215
+    //   72: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: getstatic 58	bczp:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   78: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: ldc 217
+    //   83: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: getstatic 161	bczp:jdField_e_of_type_JavaLangString	Ljava/lang/String;
+    //   89: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   92: ldc 219
+    //   94: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: getstatic 165	bczp:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   100: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: ldc 221
+    //   105: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   108: getstatic 169	bczp:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   111: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   114: ldc 223
+    //   116: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: getstatic 226	bdbt:jdField_c_of_type_Int	I
+    //   122: invokevirtual 229	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   125: ldc 231
+    //   127: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   130: getstatic 233	bdbt:g	I
+    //   133: invokevirtual 229	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   136: ldc 235
+    //   138: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   141: iload_2
+    //   142: invokevirtual 229	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   145: ldc 237
+    //   147: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: iload_3
+    //   151: invokevirtual 229	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   154: ldc 239
+    //   156: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   159: iconst_0
+    //   160: invokevirtual 229	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   163: ldc 241
+    //   165: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   171: putfield 245	com/tencent/maxvideo/common/MessageStruct:mObj0	Ljava/lang/Object;
+    //   174: aload 4
+    //   176: aconst_null
+    //   177: aconst_null
+    //   178: invokestatic 251	com/tencent/maxvideo/common/GlobalInit:nativeSyncProcessMsg	(Lcom/tencent/maxvideo/common/MessageStruct;Lcom/tencent/maxvideo/common/MessageStruct;Ljava/lang/Object;)Z
+    //   181: pop
+    //   182: aload_1
+    //   183: invokevirtual 255	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   186: ldc_w 256
+    //   189: invokevirtual 262	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
+    //   192: astore_0
+    //   193: aload_0
+    //   194: invokevirtual 268	java/io/InputStream:available	()I
+    //   197: newarray byte
+    //   199: astore 10
+    //   201: aload_0
+    //   202: aload 10
+    //   204: invokevirtual 272	java/io/InputStream:read	([B)I
+    //   207: pop
+    //   208: new 274	java/io/FileOutputStream
+    //   211: dup
+    //   212: new 126	java/io/File
+    //   215: dup
+    //   216: new 112	java/lang/StringBuilder
+    //   219: dup
+    //   220: invokespecial 115	java/lang/StringBuilder:<init>	()V
+    //   223: aload 9
+    //   225: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   228: ldc_w 276
+    //   231: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   237: invokespecial 129	java/io/File:<init>	(Ljava/lang/String;)V
+    //   240: invokespecial 279	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   243: astore 4
+    //   245: aload 4
+    //   247: aload 10
+    //   249: invokevirtual 283	java/io/FileOutputStream:write	([B)V
+    //   252: aload_0
+    //   253: ifnull +7 -> 260
+    //   256: aload_0
+    //   257: invokevirtual 286	java/io/InputStream:close	()V
+    //   260: aload 4
+    //   262: ifnull +8 -> 270
+    //   265: aload 4
+    //   267: invokevirtual 287	java/io/FileOutputStream:close	()V
+    //   270: aload_1
+    //   271: invokevirtual 255	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   274: ldc_w 288
+    //   277: invokevirtual 262	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
+    //   280: astore_0
+    //   281: aload_0
+    //   282: invokevirtual 268	java/io/InputStream:available	()I
+    //   285: newarray byte
+    //   287: astore 4
+    //   289: aload_0
+    //   290: aload 4
+    //   292: invokevirtual 272	java/io/InputStream:read	([B)I
+    //   295: pop
+    //   296: new 274	java/io/FileOutputStream
+    //   299: dup
+    //   300: new 126	java/io/File
+    //   303: dup
+    //   304: new 112	java/lang/StringBuilder
+    //   307: dup
+    //   308: invokespecial 115	java/lang/StringBuilder:<init>	()V
+    //   311: aload 9
+    //   313: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   316: ldc_w 290
+    //   319: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   325: invokespecial 129	java/io/File:<init>	(Ljava/lang/String;)V
+    //   328: invokespecial 279	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   331: astore_1
+    //   332: aload_1
+    //   333: aload 4
+    //   335: invokevirtual 283	java/io/FileOutputStream:write	([B)V
+    //   338: aload_0
+    //   339: ifnull +7 -> 346
+    //   342: aload_0
+    //   343: invokevirtual 286	java/io/InputStream:close	()V
+    //   346: aload_1
+    //   347: ifnull +7 -> 354
+    //   350: aload_1
+    //   351: invokevirtual 287	java/io/FileOutputStream:close	()V
+    //   354: iconst_1
+    //   355: ireturn
+    //   356: astore_0
+    //   357: aconst_null
+    //   358: astore 4
+    //   360: aconst_null
+    //   361: astore_0
+    //   362: aload_0
+    //   363: ifnull +7 -> 370
+    //   366: aload_0
+    //   367: invokevirtual 286	java/io/InputStream:close	()V
+    //   370: aload 4
+    //   372: ifnull -102 -> 270
+    //   375: aload 4
+    //   377: invokevirtual 287	java/io/FileOutputStream:close	()V
+    //   380: goto -110 -> 270
+    //   383: astore_0
+    //   384: goto -114 -> 270
+    //   387: astore_0
+    //   388: aconst_null
+    //   389: astore 4
+    //   391: aconst_null
+    //   392: astore_0
+    //   393: aload_0
+    //   394: ifnull +7 -> 401
+    //   397: aload_0
+    //   398: invokevirtual 286	java/io/InputStream:close	()V
+    //   401: aload 4
+    //   403: ifnull -133 -> 270
+    //   406: aload 4
+    //   408: invokevirtual 287	java/io/FileOutputStream:close	()V
+    //   411: goto -141 -> 270
+    //   414: astore_0
+    //   415: goto -145 -> 270
+    //   418: astore_1
+    //   419: aconst_null
+    //   420: astore_0
+    //   421: aload 8
+    //   423: astore 4
+    //   425: aload_0
+    //   426: ifnull +7 -> 433
+    //   429: aload_0
+    //   430: invokevirtual 286	java/io/InputStream:close	()V
+    //   433: aload 4
+    //   435: ifnull +8 -> 443
+    //   438: aload 4
+    //   440: invokevirtual 287	java/io/FileOutputStream:close	()V
+    //   443: aload_1
+    //   444: athrow
+    //   445: astore_0
+    //   446: aconst_null
+    //   447: astore_0
+    //   448: aload 5
+    //   450: astore_1
+    //   451: aload_0
+    //   452: ifnull +7 -> 459
+    //   455: aload_0
+    //   456: invokevirtual 286	java/io/InputStream:close	()V
+    //   459: aload_1
+    //   460: ifnull -106 -> 354
+    //   463: aload_1
+    //   464: invokevirtual 287	java/io/FileOutputStream:close	()V
+    //   467: goto -113 -> 354
+    //   470: astore_0
+    //   471: goto -117 -> 354
+    //   474: astore_0
+    //   475: aconst_null
+    //   476: astore_0
+    //   477: aload 7
+    //   479: astore_1
+    //   480: aload_0
+    //   481: ifnull +7 -> 488
+    //   484: aload_0
+    //   485: invokevirtual 286	java/io/InputStream:close	()V
+    //   488: aload_1
+    //   489: ifnull -135 -> 354
+    //   492: aload_1
+    //   493: invokevirtual 287	java/io/FileOutputStream:close	()V
+    //   496: goto -142 -> 354
+    //   499: astore_0
+    //   500: goto -146 -> 354
+    //   503: astore_1
+    //   504: aconst_null
+    //   505: astore_0
+    //   506: aload 6
+    //   508: astore 4
+    //   510: aload_0
+    //   511: ifnull +7 -> 518
+    //   514: aload_0
+    //   515: invokevirtual 286	java/io/InputStream:close	()V
+    //   518: aload 4
+    //   520: ifnull +8 -> 528
+    //   523: aload 4
+    //   525: invokevirtual 287	java/io/FileOutputStream:close	()V
+    //   528: aload_1
+    //   529: athrow
+    //   530: astore_0
+    //   531: goto -271 -> 260
+    //   534: astore_0
+    //   535: goto -265 -> 270
+    //   538: astore_0
+    //   539: goto -169 -> 370
+    //   542: astore_0
+    //   543: goto -142 -> 401
+    //   546: astore_0
+    //   547: goto -114 -> 433
+    //   550: astore_0
+    //   551: goto -108 -> 443
+    //   554: astore_0
+    //   555: goto -209 -> 346
+    //   558: astore_0
+    //   559: goto -205 -> 354
+    //   562: astore_0
+    //   563: goto -104 -> 459
+    //   566: astore_0
+    //   567: goto -79 -> 488
+    //   570: astore_0
+    //   571: goto -53 -> 518
+    //   574: astore_0
+    //   575: goto -47 -> 528
+    //   578: astore_1
+    //   579: aload 6
+    //   581: astore 4
+    //   583: goto -73 -> 510
+    //   586: astore 5
+    //   588: aload_1
+    //   589: astore 4
+    //   591: aload 5
+    //   593: astore_1
+    //   594: goto -84 -> 510
+    //   597: astore_1
+    //   598: aload 7
+    //   600: astore_1
+    //   601: goto -121 -> 480
+    //   604: astore 4
+    //   606: goto -126 -> 480
+    //   609: astore_1
+    //   610: aload 5
+    //   612: astore_1
+    //   613: goto -162 -> 451
+    //   616: astore 4
+    //   618: goto -167 -> 451
+    //   621: astore_1
+    //   622: aload 8
+    //   624: astore 4
+    //   626: goto -201 -> 425
+    //   629: astore_1
+    //   630: goto -205 -> 425
+    //   633: astore 4
+    //   635: aconst_null
+    //   636: astore 4
+    //   638: goto -245 -> 393
+    //   641: astore 8
+    //   643: goto -250 -> 393
+    //   646: astore 4
+    //   648: aconst_null
+    //   649: astore 4
+    //   651: goto -289 -> 362
+    //   654: astore 8
+    //   656: goto -294 -> 362
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	659	0	paramString	String
+    //   0	659	1	paramContext	Context
+    //   0	659	2	paramInt1	int
+    //   0	659	3	paramInt2	int
+    //   29	561	4	localObject1	Object
+    //   604	1	4	localIOException1	java.io.IOException
+    //   616	1	4	localFileNotFoundException1	java.io.FileNotFoundException
+    //   624	1	4	localObject2	Object
+    //   633	1	4	localIOException2	java.io.IOException
+    //   636	1	4	localObject3	Object
+    //   646	1	4	localFileNotFoundException2	java.io.FileNotFoundException
+    //   649	1	4	localObject4	Object
+    //   1	448	5	localObject5	Object
+    //   586	25	5	localObject6	Object
+    //   7	573	6	localObject7	Object
+    //   4	595	7	localObject8	Object
+    //   10	613	8	localObject9	Object
+    //   641	1	8	localIOException3	java.io.IOException
+    //   654	1	8	localFileNotFoundException3	java.io.FileNotFoundException
+    //   18	294	9	str	String
+    //   199	49	10	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   182	193	356	java/io/FileNotFoundException
+    //   375	380	383	java/io/IOException
+    //   182	193	387	java/io/IOException
+    //   406	411	414	java/io/IOException
+    //   182	193	418	finally
+    //   270	281	445	java/io/FileNotFoundException
+    //   463	467	470	java/io/IOException
+    //   270	281	474	java/io/IOException
+    //   492	496	499	java/io/IOException
+    //   270	281	503	finally
+    //   256	260	530	java/io/IOException
+    //   265	270	534	java/io/IOException
+    //   366	370	538	java/io/IOException
+    //   397	401	542	java/io/IOException
+    //   429	433	546	java/io/IOException
+    //   438	443	550	java/io/IOException
+    //   342	346	554	java/io/IOException
+    //   350	354	558	java/io/IOException
+    //   455	459	562	java/io/IOException
+    //   484	488	566	java/io/IOException
+    //   514	518	570	java/io/IOException
+    //   523	528	574	java/io/IOException
+    //   281	332	578	finally
+    //   332	338	586	finally
+    //   281	332	597	java/io/IOException
+    //   332	338	604	java/io/IOException
+    //   281	332	609	java/io/FileNotFoundException
+    //   332	338	616	java/io/FileNotFoundException
+    //   193	245	621	finally
+    //   245	252	629	finally
+    //   193	245	633	java/io/IOException
+    //   245	252	641	java/io/IOException
+    //   193	245	646	java/io/FileNotFoundException
+    //   245	252	654	java/io/FileNotFoundException
+  }
+  
+  public static void b()
+  {
+    try
+    {
+      ((AudioManager)VideoEnvironment.a().getSystemService("audio")).abandonAudioFocus(null);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public static void c()
+  {
+    GlobalInit.nativeSyncProcessMsg(new MessageStruct(7), null, null);
+    jdField_a_of_type_Long = -1L;
   }
 }
 

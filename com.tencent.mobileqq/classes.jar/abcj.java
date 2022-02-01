@@ -1,22 +1,58 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class abcj
-  extends Handler
+public class abcj
 {
-  abcj(abcg paramabcg, Looper paramLooper)
+  private static final abcl jdField_a_of_type_Abcl = new abcl(null);
+  private CopyOnWriteArrayList<abcb> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  
+  public static abcj a()
   {
-    super(paramLooper);
+    return (abcj)jdField_a_of_type_Abcl.getInstance();
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    if (!(paramMessage.obj instanceof bhru)) {}
-    while (paramMessage.what != 204) {
-      return;
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator.hasNext()) {
+        ((abcb)localIterator.next()).b();
+      }
     }
-    this.a.a((bhru)paramMessage.obj);
+  }
+  
+  public void a(long paramLong)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (!this.jdField_a_of_type_Boolean))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator.hasNext()) {
+        ((abcb)localIterator.next()).a(paramLong);
+      }
+    }
+  }
+  
+  public void a(abcb paramabcb)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramabcb);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator.hasNext()) {
+        ((abcb)localIterator.next()).a();
+      }
+    }
+  }
+  
+  public void b(abcb paramabcb)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramabcb);
   }
 }
 

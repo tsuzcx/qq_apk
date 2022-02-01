@@ -1,22 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 
 public class tcm
-  implements tjx
+  implements aqvj
 {
-  public tcm(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
+  public tcm(ViolaFragment paramViolaFragment) {}
   
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.h();
-      return;
-    }
-    this.a.f();
-  }
+  public void a() {}
+  
+  public void b() {}
 }
 
 

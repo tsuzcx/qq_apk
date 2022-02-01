@@ -1,126 +1,131 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 
-class lmb
+public class lmb
+  extends BitmapDrawable
 {
-  int jdField_a_of_type_Int = 0;
-  bdvs jdField_a_of_type_Bdvs;
-  llv jdField_a_of_type_Llv = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = 0;
+  protected float a;
+  protected int a;
+  private Matrix a = new Matrix();
+  protected float[] a;
+  protected float b;
+  protected int b;
+  protected float c;
+  protected float d;
+  protected float e;
+  protected float f;
+  protected float g;
+  protected float h;
+  protected float i;
+  protected float j;
+  protected float k;
+  protected float l;
+  protected float m;
+  protected float n;
+  protected float o;
+  protected float p;
+  private float q;
+  private float r;
+  private float s;
+  private float t = 1.0F;
+  private float u;
+  private float v;
+  private float w;
+  private float x;
   
-  boolean a(llv paramllv)
+  public lmb(BitmapDrawable paramBitmapDrawable)
   {
-    boolean bool;
-    if (this.jdField_a_of_type_Boolean)
+    super(paramBitmapDrawable.getBitmap());
+  }
+  
+  private void a()
+  {
+    this.a.reset();
+    this.a.preRotate(this.s, this.q, this.r);
+    this.a.preScale(this.t, this.t, this.q, this.r);
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (this.s != paramFloat)
     {
-      if ((this.jdField_a_of_type_Llv == paramllv) || (TextUtils.isEmpty(paramllv.b)) || (paramllv.b.equals(this.jdField_a_of_type_Llv.b))) {
-        break label273;
-      }
-      bool = true;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavGPDownloadManager", 2, String.format("GPsoDownloadTask, mDownloading[%s], reDownload[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
-      }
-      if (!bool)
-      {
-        return this.jdField_a_of_type_Boolean;
-        bool = true;
-      }
-      else
-      {
-        if (this.jdField_a_of_type_Bdvs != null)
-        {
-          Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-          if ((localObject instanceof AppInterface))
-          {
-            localObject = ((AppInterface)localObject).getNetEngine(0);
-            if (localObject != null)
-            {
-              QLog.d("QavGPDownloadManager", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_Bdvs.a() }));
-              ((bdvu)localObject).b(this.jdField_a_of_type_Bdvs);
-            }
-          }
-        }
-        this.jdField_a_of_type_Llv = paramllv;
-        this.jdField_a_of_type_Bdvs = null;
-        this.jdField_a_of_type_Int = 0;
-        this.b = 0;
-        if (!lmd.a(this.jdField_a_of_type_Llv)) {
-          this.jdField_a_of_type_Int += 1;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QavGPDownloadManager", 2, String.format("DownloadContrl, isNeedDownload[%s], mInfo[%s]", new Object[] { Boolean.valueOf(false), this.jdField_a_of_type_Llv }));
-        }
-        if (this.jdField_a_of_type_Int == 0) {
-          return this.jdField_a_of_type_Boolean;
-        }
-        this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_Llv, 3);
-        return this.jdField_a_of_type_Boolean;
-        label273:
-        bool = false;
-      }
+      this.s = paramFloat;
+      a();
     }
   }
   
-  boolean a(llv paramllv, int paramInt)
+  public void a(float paramFloat1, float paramFloat2)
   {
-    String str2;
-    String str1;
-    String str3;
-    boolean bool2;
-    if (!lmd.a(paramllv))
-    {
-      str2 = paramllv.jdField_a_of_type_JavaLangString;
-      str1 = paramllv.b;
-      str3 = lmd.a() + str1;
-      if (paramInt < 0)
-      {
-        QLog.d("QavGPDownloadManager", 1, String.format("downloadRes, 下载死循环了. info[%s]", new Object[] { paramllv }));
-        lma.a(-3);
-        bool2 = false;
-        return bool2;
-      }
+    a(this.u + paramFloat1, this.v + paramFloat2, this.w, this.x);
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    Rect localRect1 = getBounds();
+    Rect localRect2 = new Rect();
+    this.u = paramFloat1;
+    this.v = paramFloat2;
+    this.w = paramFloat3;
+    this.x = paramFloat4;
+    localRect2.left = ((int)this.u);
+    localRect2.top = ((int)this.v);
+    localRect2.right = ((int)(this.u + this.w));
+    localRect2.bottom = ((int)(this.v + this.x));
+    if (!localRect1.equals(localRect2)) {
+      setBounds(localRect2);
     }
-    else
+  }
+  
+  public void b(float paramFloat)
+  {
+    if (this.t != paramFloat)
     {
-      lma.a(100);
-      return false;
+      this.t = paramFloat;
+      a();
     }
-    bdvs localbdvs = new bdvs();
-    localbdvs.jdField_a_of_type_Bdvw = new lmc(this, str1, paramllv, paramInt);
-    localbdvs.a(str1);
-    localbdvs.jdField_a_of_type_JavaLangString = str2;
-    localbdvs.jdField_a_of_type_Int = 0;
-    localbdvs.c = new File(str3).getPath();
-    localbdvs.b = bgnt.a(bdwu.a().a());
-    paramllv = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramllv instanceof QQAppInterface))
+  }
+  
+  public void b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    setColorFilter(Color.argb(255, (int)(paramFloat1 * 255.0F), (int)(paramFloat2 * 255.0F), (int)(paramFloat3 * 255.0F)), PorterDuff.Mode.SRC_ATOP);
+    setAlpha((int)(paramFloat4 * 255.0F));
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    paramCanvas.save();
+    paramCanvas.concat(this.a);
+    super.draw(paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int i1 = 1;
+    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    float f1 = (paramInt1 + paramInt3) / 2;
+    float f2 = (paramInt2 + paramInt4) / 2;
+    paramInt1 = 0;
+    if (this.q != f1)
     {
-      paramllv = ((QQAppInterface)paramllv).getNetEngine(0);
-      if (paramllv != null)
-      {
-        this.jdField_a_of_type_Bdvs = localbdvs;
-        paramllv.a(this.jdField_a_of_type_Bdvs);
-      }
+      this.q = f1;
+      paramInt1 = 1;
     }
-    for (boolean bool1 = true;; bool1 = false)
+    if (this.r != f2)
     {
-      if (!bool1) {
-        lma.a(-2);
+      this.r = f2;
+      paramInt1 = i1;
+    }
+    for (;;)
+    {
+      if (paramInt1 != 0) {
+        a();
       }
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("QavGPDownloadManager", 2, String.format("downloadRes, md5[%s], etr[%s]", new Object[] { str1, Boolean.valueOf(bool1) }));
-      return bool1;
+      return;
     }
   }
 }

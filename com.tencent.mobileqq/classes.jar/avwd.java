@@ -1,35 +1,34 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
 class avwd
-  implements avts
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  avwd(avwb paramavwb) {}
+  avwd(avvx paramavvx) {}
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a).a(this.a.jdField_a_of_type_Avwh.jdField_a_of_type_Int, this.a.jdField_a_of_type_Avwh.jdField_a_of_type_JavaLangString, paramBoolean);
-    bcst.b(null, "dc00899", this.a.jdField_a_of_type_Avwg.jdField_a_of_type_JavaLangString, "", "music_tab", "clk_quit", 0, 0, this.a.jdField_a_of_type_Avwg.b, "", this.a.jdField_a_of_type_Avwg.jdField_a_of_type_Int + "", "");
-    String str2;
-    String str3;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin().equalsIgnoreCase(this.a.jdField_a_of_type_Avwh.c))
+    switch (paramInt)
     {
-      str2 = this.a.jdField_a_of_type_Avwg.jdField_a_of_type_JavaLangString;
-      str3 = this.a.jdField_a_of_type_Avwg.b;
-      if (!paramBoolean) {
-        break label185;
+    }
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoBaseItem", 2, "video start buffering !");
       }
-    }
-    label185:
-    for (String str1 = "1";; str1 = "0")
-    {
-      bcst.b(null, "dc00899", str2, "", "music_tab", "clk_quit_opener", 0, 0, str3, "", str1, "");
-      return;
-    }
+      if (avvx.a(this.a) != null) {
+        avvx.a(this.a).a(this.a.b, 0);
+      }
+      this.a.c = 6;
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoBaseItem", 2, "video end buffering !");
+      }
+    } while (avvx.a(this.a) == null);
+    avvx.a(this.a).a(this.a.b, 1);
+    return false;
   }
 }
 

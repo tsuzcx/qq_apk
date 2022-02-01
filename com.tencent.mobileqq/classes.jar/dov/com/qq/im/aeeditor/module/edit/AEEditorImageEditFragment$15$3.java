@@ -1,12 +1,12 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import boem;
+import bpgh;
 import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
 
 public class AEEditorImageEditFragment$15$3
   implements Runnable
 {
-  public AEEditorImageEditFragment$15$3(boem paramboem) {}
+  public AEEditorImageEditFragment$15$3(bpgh parambpgh) {}
   
   public void run()
   {

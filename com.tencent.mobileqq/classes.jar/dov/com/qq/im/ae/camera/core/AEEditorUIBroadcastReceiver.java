@@ -5,18 +5,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.annotation.NonNull;
-import bnib;
-import bnzb;
+import bojj;
+import bpam;
 
 public class AEEditorUIBroadcastReceiver
   extends BroadcastReceiver
 {
-  private bnib jdField_a_of_type_Bnib;
+  private bojj jdField_a_of_type_Bojj;
   private boolean jdField_a_of_type_Boolean;
   
-  public AEEditorUIBroadcastReceiver(bnib parambnib)
+  public AEEditorUIBroadcastReceiver(bojj parambojj)
   {
-    this.jdField_a_of_type_Bnib = parambnib;
+    this.jdField_a_of_type_Bojj = parambojj;
   }
   
   private IntentFilter a()
@@ -39,13 +39,13 @@ public class AEEditorUIBroadcastReceiver
   {
     paramContext = paramIntent.getAction();
     if (paramContext == null) {
-      bnzb.d("AEEditorUIBroadcastReceiver", "[onReceive] : action is null");
+      bpam.d("AEEditorUIBroadcastReceiver", "[onReceive] : action is null");
     }
     while (!"AEEDITOR_GENERATE_STATUS_DELETE".equals(paramContext)) {
       return;
     }
     int i = paramIntent.getIntExtra("delete_position", 0);
-    this.jdField_a_of_type_Bnib.a(i);
+    this.jdField_a_of_type_Bojj.a(i);
   }
 }
 

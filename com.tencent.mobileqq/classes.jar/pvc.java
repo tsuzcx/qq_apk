@@ -1,23 +1,14 @@
-import android.text.TextUtils;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONObject;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"putStringIfNotEmpty", "", "Lorg/json/JSONObject;", "key", "", "value", "defaultValue", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class pvc
+class pvc
+  implements qoe
 {
-  public static final void a(@NotNull JSONObject paramJSONObject, @Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3)
+  pvc(puz parampuz, ppu paramppu) {}
+  
+  public void a()
   {
-    Intrinsics.checkParameterIsNotNull(paramJSONObject, "$this$putStringIfNotEmpty");
-    if (!TextUtils.isEmpty((CharSequence)paramString2)) {
-      paramJSONObject.put(paramString1, paramString2);
+    sgf localsgf = this.jdField_a_of_type_Ppu.a().a();
+    if (localsgf != null) {
+      localsgf.a(null, this.jdField_a_of_type_Ppu.a(), 1);
     }
-    while (paramString3 == null) {
-      return;
-    }
-    paramJSONObject.put(paramString1, paramString3);
   }
 }
 

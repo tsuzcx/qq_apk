@@ -1,14 +1,29 @@
-import android.view.View;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$PrivacySettingClickListener;", "", "onPrivacyCheckClick", "", "view", "Landroid/view/View;", "item", "Lcom/tencent/mobileqq/profilesetting/ProfileDisplaySettingItem;", "onPrivacySettingClick", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface azrq
+public class azrq
+  extends azrs
 {
-  public abstract void a(@NotNull View paramView, @Nullable azsj paramazsj);
+  azrq(CompressInfo paramCompressInfo)
+  {
+    super(paramCompressInfo);
+  }
   
-  public abstract void b(@NotNull View paramView, @NotNull azsj paramazsj);
+  protected int a()
+  {
+    return 80;
+  }
+  
+  protected final int[] a()
+  {
+    if (this.a.g == 2) {
+      return null;
+    }
+    int[] arrayOfInt = new int[2];
+    arrayOfInt[0] = 2560;
+    arrayOfInt[1] = (arrayOfInt[0] * 2);
+    azpw.a("PicTypeNormal", "getScaleLargerSide", "PicType.SendPhotoMaxLongSide = " + arrayOfInt[0]);
+    return arrayOfInt;
+  }
 }
 
 

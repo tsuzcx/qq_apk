@@ -1,13 +1,20 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class pxi
-  extends CharacterStyle
+class pxi
+  implements View.OnClickListener
 {
-  public void updateDrawState(TextPaint paramTextPaint)
+  pxi(pxe parampxe, ppu paramppu, sel paramsel) {}
+  
+  public void onClick(View paramView)
   {
-    paramTextPaint.setColor(Color.parseColor("#FF3DB8FF"));
+    this.jdField_a_of_type_Ppu.a();
+    sgf localsgf = this.jdField_a_of_type_Sel.a();
+    if (localsgf != null) {
+      localsgf.a(paramView, this.jdField_a_of_type_Ppu.a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

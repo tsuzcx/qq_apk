@@ -1,31 +1,81 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 
-class bgrd
-  extends Handler
+public abstract class bgrd
+  extends nkq
 {
-  bgrd(bgrb parambgrb, Looper paramLooper)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    synchronized (this.a)
+    boolean bool2 = false;
+    Object localObject = null;
+    long l2 = 0L;
+    long l1;
+    boolean bool1;
+    if ((paramInt == 0) && (paramBundle != null))
     {
-      if (bgrb.a(this.a) != null) {
-        bgrb.a(this.a).a(bgrb.a(this.a));
+      l2 = paramBundle.getLong("uin");
+      l1 = l2;
+      if (paramArrayOfByte == null) {
+        break label199;
       }
-      while (!QLog.isDevelopLevel())
+      paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+      bool1 = bool2;
+    }
+    for (;;)
+    {
+      try
       {
-        super.handleMessage(paramMessage);
-        return;
+        paramBundle.mergeFrom(paramArrayOfByte);
+        bool1 = bool2;
+        if (!((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) {
+          break label211;
+        }
+        bool1 = bool2;
+        if (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() != 0) {
+          break label211;
+        }
+        bool1 = true;
+        paramArrayOfByte = new AccountDetail(paramBundle);
+        bool1 = true;
       }
-      QLog.d("QQLSActivity", 4, "QQLSSensor handler callback=null");
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        bool2 = bool1;
+        bool1 = bool2;
+        paramArrayOfByte = localObject;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("TroopBindPubAccountProtocol", 2, paramBundle.toString());
+        bool1 = bool2;
+        paramArrayOfByte = localObject;
+        continue;
+      }
+      a(bool1, l2, paramArrayOfByte);
+      return;
+      l1 = l2;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("TroopBindPubAccountProtocol", 2, "get pubAccountInfo failed, errorCode=" + paramInt);
+        l1 = l2;
+      }
+      label199:
+      bool1 = false;
+      paramArrayOfByte = null;
+      l2 = l1;
+      continue;
+      label211:
+      paramArrayOfByte = null;
+      bool1 = false;
     }
   }
+  
+  protected abstract void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail);
 }
 
 

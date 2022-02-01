@@ -1,22 +1,27 @@
-import android.support.annotation.Nullable;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.tavcut.exporter.MovieExporter;
 
-public abstract interface bohj
+class bohj
+  implements View.OnClickListener
 {
-  public abstract void a(float paramFloat);
+  bohj(bohh parambohh) {}
   
-  public abstract void a(@Nullable bogx parambogx, int paramInt);
-  
-  public abstract void b(float paramFloat);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void d(boolean paramBoolean);
-  
-  public abstract void x();
-  
-  public abstract void y();
+  public void onClick(View paramView)
+  {
+    if (bohh.a(this.a) != null)
+    {
+      if (bohh.a(this.a) != null) {
+        bohh.a(this.a).cancelCompress();
+      }
+      bohh.a(this.a).dismiss();
+      bohh.a(this.a, null);
+      bohh.a(this.a, null);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

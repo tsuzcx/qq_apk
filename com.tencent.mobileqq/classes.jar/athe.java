@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class athe
-  implements Parcelable.Creator<FavFileInfo>
+public class athe
+  implements View.OnClickListener
 {
-  public FavFileInfo a(Parcel paramParcel)
-  {
-    return new FavFileInfo(paramParcel);
-  }
+  public athe(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
   
-  public FavFileInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new FavFileInfo[paramInt];
+    this.a.i();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

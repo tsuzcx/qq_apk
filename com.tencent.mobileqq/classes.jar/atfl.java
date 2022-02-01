@@ -1,14 +1,17 @@
-class atfl
-  extends atfq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+
+public class atfl
+  implements DialogInterface.OnClickListener
 {
-  public atfl(atfe paramatfe)
-  {
-    super(paramatfe);
-  }
+  public atfl(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  protected String a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "StateCancelUploadWhenRecv";
+    this.a.a = false;
+    this.a.doOnBackPressed();
+    bdll.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_admin", "Clk_quit", 0, 0, this.a.d, "", "", "");
   }
 }
 

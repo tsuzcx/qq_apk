@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import ajdv;
-import antq;
-import bgjt;
+import ajpe;
+import aoga;
+import bhju;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,24 +14,24 @@ class TroopNotifyAndRecommendView$19
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Ajdv != null)
+    if (this.this$0.jdField_a_of_type_Ajpe != null)
     {
-      this.this$0.jdField_a_of_type_Ajdv.b = true;
-      this.this$0.jdField_a_of_type_Ajdv.notifyDataSetChanged();
+      this.this$0.jdField_a_of_type_Ajpe.b = true;
+      this.this$0.jdField_a_of_type_Ajpe.notifyDataSetChanged();
     }
     TroopNotifyAndRecommendView.d(this.this$0);
-    Object localObject = (antq)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(22);
+    Object localObject = (aoga)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(22);
     if ((this.a != null) && (this.a.size() > 0))
     {
-      if (this.this$0.jdField_a_of_type_Ajdv != null)
+      if (this.this$0.jdField_a_of_type_Ajpe != null)
       {
-        this.this$0.jdField_a_of_type_Ajdv.b(this.a);
-        this.this$0.jdField_a_of_type_Ajdv.notifyDataSetChanged();
+        this.this$0.jdField_a_of_type_Ajpe.b(this.a);
+        this.this$0.jdField_a_of_type_Ajpe.notifyDataSetChanged();
         this.this$0.c = this.a;
       }
       if (!this.this$0.d)
       {
-        bgjt.a("Grp_contacts_news", "notice", "enter_recom", 1, 0, new String[0]);
+        bhju.a("Grp_contacts_news", "notice", "enter_recom", 1, 0, new String[0]);
         this.this$0.d = true;
       }
     }
@@ -44,11 +44,11 @@ class TroopNotifyAndRecommendView$19
         this.this$0.f = true;
       }
       return;
-      if (this.this$0.jdField_a_of_type_Ajdv != null)
+      if (this.this$0.jdField_a_of_type_Ajpe != null)
       {
         localObject = new ArrayList();
-        this.this$0.jdField_a_of_type_Ajdv.b((List)localObject);
-        this.this$0.jdField_a_of_type_Ajdv.notifyDataSetChanged();
+        this.this$0.jdField_a_of_type_Ajpe.b((List)localObject);
+        this.this$0.jdField_a_of_type_Ajpe.notifyDataSetChanged();
         this.this$0.c = ((List)localObject);
       }
     }

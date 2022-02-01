@@ -1,23 +1,16 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import android.app.Activity;
 
-public class aumj
-  implements TextWatcher
+class aumj
+  implements aumz
 {
-  public aumj(MsgBackupSettingFragment paramMsgBackupSettingFragment, TextView paramTextView1, TextView paramTextView2) {}
+  aumj(aumg paramaumg, Activity paramActivity, int paramInt) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a()
   {
-    paramEditable = paramEditable.toString();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(MsgBackupSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
-    this.b.setText(String.format(MsgBackupSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
+    aumg.a(this.jdField_a_of_type_Aumg, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void b() {}
 }
 
 

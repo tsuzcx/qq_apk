@@ -1,19 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
 
-class aifs
-  implements View.OnClickListener
+public class aifs
+  extends aifp
 {
-  aifs(aifq paramaifq) {}
-  
-  public void onClick(View paramView)
+  public aifs(QQAppInterface paramQQAppInterface, aigj paramaigj, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, aghj paramaghj)
   {
-    if (!this.a.M) {
-      bfpx.a(this.a.jdField_a_of_type_AndroidContentContext, null, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    super(paramQQAppInterface, paramaigj, paramQQWalletBaseMsgElem, paramInt, paramaghj);
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.b.setVisibility(0);
+    this.a.b.setTextColor(-8947849);
+    this.a.b.setText(aifu.c);
+    return false;
   }
 }
 

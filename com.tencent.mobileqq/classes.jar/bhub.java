@@ -1,55 +1,75 @@
-import android.os.Handler;
-import android.os.Message;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.widget.ADView;
-import com.tencent.mobileqq.widget.WorkSpaceView;
-import java.lang.ref.WeakReference;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class bhub
-  extends Handler
+  implements View.OnTouchListener
 {
-  private ADView jdField_a_of_type_ComTencentMobileqqWidgetADView;
-  private WeakReference<ADView> jdField_a_of_type_JavaLangRefWeakReference;
+  private int jdField_a_of_type_Int;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public bhub(ADView paramADView)
+  public bhub(QQAppInterface paramQQAppInterface, boolean paramBoolean1, ImageView paramImageView, String paramString, int paramInt, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramADView);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramBoolean2;
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
+    if (this.jdField_a_of_type_Boolean) {
+      return false;
+    }
+    switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
-      super.handleMessage(paramMessage);
-      do
+      return true;
+      if (Build.VERSION.SDK_INT >= 16)
       {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetADView = ((ADView)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-      } while ((this.jdField_a_of_type_ComTencentMobileqqWidgetADView == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a == null));
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getChildCount() > 1) && (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getWidth() > 0)) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a(this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a() + 1);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(127);
       }
-      try
+      else
       {
-        bcvm localbcvm = (bcvm)this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getChildAt(this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a()).getTag();
-        i = localbcvm.a;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetADView.setContentDescription(localbcvm.n);
-        i *= 1000;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
+        this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
+        continue;
+        if (Build.VERSION.SDK_INT >= 16)
         {
-          int i = 5000;
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(255);
+        }
+        else
+        {
+          this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          continue;
+          if (Build.VERSION.SDK_INT >= 16) {
+            this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(255);
+          }
+          for (;;)
+          {
+            if (!this.b) {
+              break label192;
+            }
+            VipUtils.b(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+            bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009F0D", "0X8009F0D", 0, 0, "", "", "", "");
+            break;
+            this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          }
+          label192:
+          VipUtils.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
         }
       }
-      sendEmptyMessageDelayed(0, i);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetADView = null;
-      continue;
-      removeMessages(0);
     }
   }
 }

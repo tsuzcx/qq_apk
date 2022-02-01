@@ -1,33 +1,22 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.7;
 
 class tzj
-  implements sgo
+  implements DialogInterface.OnClickListener
 {
-  tzj(tym paramtym) {}
+  tzj(tzi paramtzi) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("video_vid", paramString1);
-      localJSONObject.put("retCode", paramInt);
-      this.a.callJs(paramString2, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (JSONException paramString1)
-    {
-      for (;;)
-      {
-        paramString1.printStackTrace();
-      }
-    }
+    anxh.a();
+    this.a.a.this$0.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tzj
  * JD-Core Version:    0.7.0.1
  */

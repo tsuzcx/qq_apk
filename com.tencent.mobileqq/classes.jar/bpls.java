@@ -1,6 +1,6 @@
-public abstract interface bpls
+class bpls
 {
-  public abstract void a();
+  private static final bplq a = new bplq(null);
 }
 
 

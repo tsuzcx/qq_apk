@@ -1,15 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketPopupView;
+import qig;
+import qih;
 
 class FastWebActivity$29
   implements Runnable
 {
-  FastWebActivity$29(FastWebActivity paramFastWebActivity, RIJRedPacketPopupView paramRIJRedPacketPopupView) {}
+  FastWebActivity$29(FastWebActivity paramFastWebActivity) {}
   
   public void run()
   {
-    FastWebActivity.a(this.this$0, this.a, false);
+    qig.a.a().a(false, "MATCH_ALL_UIN");
   }
 }
 

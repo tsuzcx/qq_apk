@@ -1,12 +1,12 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import boen;
+import bpgi;
 import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
 
 public class AEEditorImageEditFragment$16$3
   implements Runnable
 {
-  public AEEditorImageEditFragment$16$3(boen paramboen) {}
+  public AEEditorImageEditFragment$16$3(bpgi parambpgi) {}
   
   public void run()
   {

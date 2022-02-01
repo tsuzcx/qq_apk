@@ -1,9 +1,16 @@
-public class ajbd
-  extends ajax
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+
+public final class ajbd
+  implements DialogInterface.OnClickListener
 {
-  public boolean a()
+  public ajbd(Context paramContext) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    ((BlessSelectMemberActivity)this.a).f();
   }
 }
 

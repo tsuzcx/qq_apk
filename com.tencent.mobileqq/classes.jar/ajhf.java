@@ -1,6 +1,6 @@
 public abstract interface ajhf
 {
-  public abstract int c();
+  public abstract void a(boolean paramBoolean);
 }
 
 

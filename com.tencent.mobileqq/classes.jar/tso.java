@@ -1,15 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class tso
-  implements tln
+class tso
+  implements View.OnClickListener
 {
-  public tso(ViolaBaseView paramViolaBaseView) {}
+  tso(tsl paramtsl) {}
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void b() {}
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

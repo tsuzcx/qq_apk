@@ -1,8 +1,31 @@
-public abstract interface uqc
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+
+public class uqc
 {
-  public abstract void b(int paramInt);
+  private String a;
   
-  public abstract void c(int paramInt);
+  public static uqc a()
+  {
+    return uqe.a();
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public void a()
+  {
+    WSRedDotPushMsg localWSRedDotPushMsg = uqt.a();
+    if (localWSRedDotPushMsg != null) {
+      this.a = localWSRedDotPushMsg.mPushId;
+    }
+  }
+  
+  public void b()
+  {
+    this.a = "";
+  }
 }
 
 

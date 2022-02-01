@@ -1,14 +1,190 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.commonsdk.pool.ByteArrayPool;
+import java.io.FilterOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
-public abstract interface bnkw<T extends RecyclerView.ViewHolder>
+public class bnkw
+  extends FilterOutputStream
 {
-  public abstract void a(float paramFloat, int paramInt1, int paramInt2, @Nullable T paramT1, @Nullable T paramT2);
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static bnkw jdField_b_of_type_Bnkw;
+  private static int c;
+  protected int a;
+  private bnkw jdField_a_of_type_Bnkw;
+  private boolean jdField_a_of_type_Boolean;
+  protected byte[] a;
+  private final int jdField_b_of_type_Int = 4;
   
-  public abstract void b(@NonNull T paramT, int paramInt);
+  private bnkw(@NonNull OutputStream paramOutputStream)
+  {
+    this(paramOutputStream, 8192);
+  }
   
-  public abstract void c(@NonNull T paramT, int paramInt);
+  private bnkw(@NonNull OutputStream paramOutputStream, int paramInt)
+  {
+    super(paramOutputStream);
+    this.jdField_a_of_type_ArrayOfByte = ByteArrayPool.getGenericInstance().getBuf(paramInt);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public static bnkw a(@NonNull OutputStream paramOutputStream)
+  {
+    bnkw localbnkw = null;
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_b_of_type_Bnkw != null)
+      {
+        localbnkw = jdField_b_of_type_Bnkw;
+        jdField_b_of_type_Bnkw = localbnkw.jdField_a_of_type_Bnkw;
+        localbnkw.jdField_a_of_type_Bnkw = null;
+        c -= 1;
+      }
+      if (localbnkw != null)
+      {
+        localbnkw.out = paramOutputStream;
+        localbnkw.jdField_a_of_type_Boolean = true;
+        return localbnkw;
+      }
+    }
+    return new bnkw(paramOutputStream);
+  }
+  
+  private void a()
+  {
+    c();
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (c < 4)
+      {
+        this.jdField_a_of_type_Bnkw = jdField_b_of_type_Bnkw;
+        jdField_b_of_type_Bnkw = this;
+        c += 1;
+      }
+      return;
+    }
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (((paramInt2 | paramInt3) < 0) || (paramInt2 > paramInt1) || (paramInt1 - paramInt2 < paramInt3)) {
+      throw new IndexOutOfBoundsException("length=" + paramInt1 + "; regionStart=" + paramInt2 + "; regionLength=" + paramInt3);
+    }
+  }
+  
+  private void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new IOException("BufferedOutputStream is closed");
+    }
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.out = null;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_Int > 0)
+    {
+      this.out.write(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int = 0;
+    }
+  }
+  
+  public void close()
+  {
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      if (bool) {
+        break label14;
+      }
+    }
+    finally
+    {
+      try
+      {
+        for (;;)
+        {
+          label14:
+          super.close();
+          a();
+        }
+      }
+      finally
+      {
+        a();
+      }
+      localObject1 = finally;
+    }
+  }
+  
+  public void flush()
+  {
+    try
+    {
+      b();
+      d();
+      this.out.flush();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void write(int paramInt)
+  {
+    try
+    {
+      b();
+      if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfByte.length)
+      {
+        this.out.write(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Int = 0;
+      }
+      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = (i + 1);
+      arrayOfByte[i] = ((byte)paramInt);
+      return;
+    }
+    finally {}
+  }
+  
+  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    try
+    {
+      b();
+      if (paramArrayOfByte == null) {
+        throw new NullPointerException("buffer == null");
+      }
+    }
+    finally {}
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    if (paramInt2 >= arrayOfByte.length)
+    {
+      d();
+      this.out.write(paramArrayOfByte, paramInt1, paramInt2);
+    }
+    for (;;)
+    {
+      return;
+      a(paramArrayOfByte.length, paramInt1, paramInt2);
+      if (paramInt2 > arrayOfByte.length - this.jdField_a_of_type_Int) {
+        d();
+      }
+      System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, this.jdField_a_of_type_Int, paramInt2);
+      this.jdField_a_of_type_Int += paramInt2;
+    }
+  }
 }
 
 

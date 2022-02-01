@@ -1,33 +1,24 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
 class rud
-  implements MediaPlayer.OnPreparedListener
+  extends sbh
 {
-  rud(ruc paramruc) {}
+  rud(rsx paramrsx) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    try
-    {
-      paramMediaPlayer.start();
-      ruc.a(this.a).a = true;
-      paramMediaPlayer = (ruf)ruc.a(this.a).get();
-      if (paramMediaPlayer != null)
-      {
-        paramMediaPlayer.a(ruc.a(this.a));
-        this.a.a(true, "ugc voice play");
-      }
-      return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      for (;;)
-      {
-        paramMediaPlayer.printStackTrace();
-      }
-    }
+    rsx.a(this.a, paramInt, paramVideoInfo, paramString, c(), a());
+  }
+  
+  public int b()
+  {
+    return 2;
+  }
+  
+  public int c()
+  {
+    return 3;
   }
 }
 

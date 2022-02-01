@@ -1,16 +1,10 @@
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.data.MessageForPic;
 
 public class aetv
-  implements bkhy
 {
-  public aetv(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
-  
-  public void onDismiss()
-  {
-    if (this.a.a) {
-      this.a.finish();
-    }
-  }
+  public URLImageView a;
+  MessageForPic a;
 }
 
 

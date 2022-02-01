@@ -1,352 +1,76 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.2;
-import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.3;
-import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.4;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONObject;
 
-public class amrg
-  implements DialogInterface.OnDismissListener, AdapterView.OnItemClickListener, bkhw
+class amrg
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private bkho jdField_a_of_type_Bkho;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private WeakReference<AppInterface> jdField_b_of_type_JavaLangRefWeakReference;
-  private boolean jdField_b_of_type_Boolean;
-  private String c;
-  private String d;
+  amrg(amre paramamre) {}
   
-  public amrg(Context paramContext, AppInterface paramAppInterface)
+  public void onClick(View paramView)
   {
-    try
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+    Object localObject = (View)paramView.getParent();
+    if ((localObject instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localObject).d();
+    }
+    localObject = paramView.getTag();
+    if (!(localObject instanceof TroopInfo))
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)paramContext);
-      this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    catch (Throwable paramContext)
-    {
-      QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[ApolloGameShare], errInfo->" + paramContext.getMessage());
-    }
-  }
-  
-  private int a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_cmGame_CmGameCommonShare", 2, "[parseShareParm],jsonStr:" + paramString);
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      return -1;
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_b_of_type_JavaLangString = paramString.optString("extendInfo");
-      this.c = paramString.optString("summary");
-      this.jdField_a_of_type_JavaLangString = paramString.optString("localPicPath");
-      this.jdField_b_of_type_Int = paramString.optInt("activityId");
-      int i = paramString.optInt("reqCode");
-      paramString = ampj.a(this.jdField_a_of_type_Int);
-      if (paramString != null)
-      {
-        paramString.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-        paramString.c = i;
-      }
-      return 0;
-    }
-    catch (Exception paramString)
-    {
-      QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[showShareDialog], errInfo->" + paramString.getMessage());
-    }
-    return -3;
-  }
-  
-  private AppInterface a()
-  {
-    if (this.jdField_b_of_type_JavaLangRefWeakReference == null) {
-      return null;
-    }
-    return (AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  private String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
+    TroopInfo localTroopInfo = (TroopInfo)localObject;
+    boolean bool = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(localTroopInfo.troopuin);
+    localObject = (antz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
+    int i;
+    label111:
+    bdlq localbdlq;
+    label133:
+    label205:
     String str;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (bool)
     {
-      if (!this.jdField_a_of_type_JavaLangString.startsWith("GameSandBox:")) {
-        break label84;
+      i = 1;
+      if (!((antz)localObject).a(localTroopInfo.troopcode, i)) {
+        break label261;
       }
-      str = this.jdField_a_of_type_JavaLangString.substring("GameSandBox:".length() + "//".length());
-      localStringBuilder.append(ancb.s);
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      localStringBuilder.append("/sandbox/");
-      localStringBuilder.append(str);
+      if (!bool) {
+        break label263;
+      }
+      localObject = "Clk_uncommgrp";
+      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_set", "", "Grp_contactlist", (String)localObject, 0, 0, localTroopInfo.troopuin, "", "", "");
+      localbdlq = new bdlq(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_set").c("Grp_contactlist");
+      if (!bool) {
+        break label270;
+      }
+      localObject = "Clk_unstick";
+      localbdlq = localbdlq.d((String)localObject);
+      str = localTroopInfo.troopuin;
+      if (!localTroopInfo.hasSetTroopHead()) {
+        break label277;
+      }
     }
-    for (;;)
+    label261:
+    label263:
+    label270:
+    label277:
+    for (localObject = "1";; localObject = "0")
     {
-      return localStringBuilder.toString();
-      label84:
-      if (this.jdField_a_of_type_JavaLangString.startsWith("GameRes:"))
-      {
-        str = this.jdField_a_of_type_JavaLangString.substring("GameRes:".length() + "//".length());
-        localStringBuilder.append(ancb.s);
-        localStringBuilder.append(this.jdField_a_of_type_Int);
-        localStringBuilder.append("/");
-        localStringBuilder.append(str);
-      }
-    }
-  }
-  
-  private String a(int paramInt)
-  {
-    return ancb.s + paramInt + "/" + "shareQRCode_default_v2.png";
-  }
-  
-  private void a(int paramInt)
-  {
-    ThreadManager.post(new CmGameCommonShare.4(this, paramInt), 5, null, true);
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    amrk localamrk = ampj.a(this.jdField_a_of_type_Int);
-    if (localamrk != null) {
-      localamrk.a(paramInt1, paramInt2, 0, "");
-    }
-  }
-  
-  private boolean a(long paramLong)
-  {
-    try
-    {
-      localamrk = ampj.a(this.jdField_a_of_type_Int);
-      if (localamrk == null) {
-        break label82;
-      }
-      CmGameStartChecker.StartCheckParam localStartCheckParam = localamrk.a();
-      if ((localStartCheckParam == null) || (localStartCheckParam.mGameType != 5)) {
-        break label82;
-      }
-      if (paramLong == 0L) {
-        break label76;
-      }
-      switch ((int)paramLong)
-      {
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        amrk localamrk;
-        label76:
-        label82:
-        QLog.e("apollo_cmGame_CmGameCommonShare", 1, localThrowable, new Object[0]);
-        continue;
-        int i = 1;
-        continue;
-        i = 2;
-        continue;
-        i = 3;
-        continue;
-        i = 4;
-      }
-    }
-    localamrk.e(i);
-    return true;
-    localamrk.e(1);
-    return false;
-  }
-  
-  private String b(int paramInt)
-  {
-    return ancb.s + paramInt + "/" + "shareQRCode_no_icon_default_v2.png";
-  }
-  
-  private void b()
-  {
-    Bundle localBundle = new Bundle();
-    ArrayList localArrayList = new ArrayList();
-    try
-    {
-      Object localObject = this.jdField_a_of_type_JavaLangString;
-      File localFile = new File(a());
-      if (localFile.isFile())
-      {
-        localObject = localFile;
-        if (localFile.exists()) {}
-      }
-      else
-      {
-        localFile = new File(a(this.jdField_a_of_type_Int));
-        localObject = localFile;
-        if (!localFile.exists()) {
-          localObject = new File(b(this.jdField_a_of_type_Int));
-        }
-      }
-      localArrayList.add(((File)localObject).getAbsolutePath());
-      localBundle.putStringArrayList("images", localArrayList);
-      localBundle.putString("summary", this.c);
-      localBundle.putInt("req_type", 7);
-      localBundle.putBoolean("key_need_save_draft", false);
-      localObject = null;
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-        localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      }
-      if (localObject != null)
-      {
-        bltb.a(a(), (Context)localObject, localBundle, this, 255);
-        return;
-      }
-      a(1, 4);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("apollo_cmGame_CmGameCommonShare", 1, "publishToQzone:", localException);
-      a(1, 4);
-    }
-  }
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    a();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bkho != null) {
-      this.jdField_a_of_type_Bkho.dismiss();
-    }
-  }
-  
-  public void a(Bitmap paramBitmap, int paramInt)
-  {
-    if (paramBitmap == null) {}
-    for (Object localObject = b(paramInt);; localObject = a(paramInt))
-    {
-      localObject = new File((String)localObject);
-      if (!((File)localObject).exists()) {
-        break;
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_cmGame_CmGameCommonShare", 2, new Object[] { "checkDefaultQRSharePic gameId:", paramInt + " bitmap:" + paramBitmap });
-    }
-    ThreadManager.post(new CmGameCommonShare.2(this, paramInt, paramBitmap, (File)localObject), 5, null, true);
-  }
-  
-  public void a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    bkic localbkic = null;
-    this.d = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    paramInt = a(paramString);
-    if (paramInt < 0)
-    {
-      QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[showShareDialog], errInfo->parse err or param err, ret:" + paramInt);
-      return;
-    }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (paramString = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramString = null)
-    {
-      this.jdField_b_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_Bkho == null) && (paramString != null))
-      {
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(bkic.a(0));
-        localArrayList.add(bkic.a(1));
-        localArrayList.add(bkic.a(2));
-        localArrayList.add(bkic.a(3));
-        if (paramString != null)
-        {
-          localbkic = new bkic(paramString);
-          localbkic.a(localArrayList);
-        }
-        this.jdField_a_of_type_Bkho = bkic.a(paramString, localbkic, this, this, this, false);
-      }
-      if ((this.jdField_a_of_type_Bkho == null) || (this.jdField_a_of_type_Bkho.isShowing())) {
-        break;
-      }
-      this.jdField_a_of_type_Bkho.setOnDismissListener(this);
-      this.jdField_a_of_type_Bkho.a(new amrh(this));
-      this.jdField_a_of_type_Bkho.show();
-      return;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (new File(ancb.s + paramInt + "/" + "shareQRCode_default_v2.png").exists()) {}
-    while (new File(ancb.s + paramInt + "/" + "shareQRCode_no_icon_default_v2.png").exists()) {
-      return true;
-    }
-    return false;
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      a(-1, -1);
-    }
-  }
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 1000L) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
-      this.jdField_a_of_type_Long = l;
-      a();
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_cmGame_CmGameCommonShare", 2, new Object[] { "click type:", Long.valueOf(paramLong) });
-      }
-      this.jdField_b_of_type_Boolean = true;
-      if (!a(paramLong)) {
-        if (paramLong == 1L) {
-          b();
-        } else if (paramLong == 0L) {
-          ThreadManager.post(new CmGameCommonShare.3(this), 5, null, true);
-        } else if (paramLong == 2L) {
-          a(0);
-        } else if (paramLong == 3L) {
-          a(1);
-        }
-      }
+      localbdlq.a(new String[] { str, localObject }).a();
+      break;
+      i = 0;
+      break label111;
+      break;
+      localObject = "Clk_setcommgrp";
+      break label133;
+      localObject = "Clk_stick";
+      break label205;
     }
   }
 }

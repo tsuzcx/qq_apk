@@ -1,20 +1,18 @@
-import java.util.ArrayList;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
 
 class vej
-  implements vfc
+  extends var
 {
-  vej(vei paramvei) {}
+  vej(vee paramvee) {}
   
-  public void a()
+  public int a()
   {
-    ArrayList localArrayList = new ArrayList();
-    if (vei.a(this.a)) {}
-    for (String str = "1";; str = "2")
-    {
-      localArrayList.add(vri.a("ext1", str));
-      vrg.a(84, 1, this.a.a(), localArrayList, vei.a(this.a));
-      return;
-    }
+    return 0;
+  }
+  
+  public QCircleInitBean a()
+  {
+    return vee.a(this.a);
   }
 }
 

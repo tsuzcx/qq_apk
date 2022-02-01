@@ -1,52 +1,18 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.forward.ForwardFileOption;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class auhd
-  implements View.OnTouchListener
+class auhd
+  implements View.OnClickListener
 {
-  public auhd(ForwardFileOption paramForwardFileOption) {}
+  auhd(auha paramauha, FileManagerEntity paramFileManagerEntity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    int i = ForwardFileOption.a(this.a);
-    if (paramMotionEvent.getAction() == 0)
-    {
-      paramMotionEvent = paramView.findViewById(2131367033);
-      if (paramMotionEvent != null) {
-        paramMotionEvent.setBackgroundColor(Color.argb(25, 0, 0, 0));
-      }
-      if (i != 1) {}
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return false;
-            } while (i != 3);
-            paramView = (ImageView)paramView.findViewById(2131367039);
-          } while (paramView == null);
-          paramView.setImageResource(2130840118);
-          return false;
-        } while (paramMotionEvent.getAction() != 1);
-        paramMotionEvent = paramView.findViewById(2131367033);
-        if (paramMotionEvent != null) {
-          paramMotionEvent.setBackgroundColor(Color.argb(0, 0, 0, 0));
-        }
-      } while ((i == 1) || (i != 3));
-      paramView = (ImageView)paramView.findViewById(2131367039);
-    } while (paramView == null);
-    paramView.setImageResource(2130840117);
-    return false;
+    bdll.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
+    auoo.a(this.jdField_a_of_type_Auha.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Auha.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFileID, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

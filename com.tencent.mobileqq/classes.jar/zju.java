@@ -1,20 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class zju
-  implements View.OnClickListener
+public abstract interface zju
 {
-  zju(zjt paramzjt, int paramInt) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Zjt.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      this.jdField_a_of_type_Zjt.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Zjt.jdField_b_of_type_ComTencentImageURLImageView);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt);
 }
 
 

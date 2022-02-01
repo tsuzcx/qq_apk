@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import atro;
-import atsu;
+import aujj;
+import aukp;
 
 public class VideoFilePresenter$11
   implements Runnable
 {
-  public VideoFilePresenter$11(atro paramatro) {}
+  public VideoFilePresenter$11(aujj paramaujj) {}
   
   public void run()
   {

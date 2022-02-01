@@ -1,41 +1,84 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
 
 public class afex
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public afex(SoundAndVibrateActivity paramSoundAndVibrateActivity, String paramString) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static void a(Activity paramActivity)
   {
-    if (NotifyPushSettingActivity.a())
-    {
-      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setChecked(false);
-      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(8);
-      SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.getString(2131717429), "qqsetting_notify_showcontent_key", paramBoolean);
-      if (!paramBoolean) {
-        break label132;
-      }
+    b(paramActivity);
+  }
+  
+  public static void a(Activity paramActivity, String paramString)
+  {
+    Intent localIntent = new Intent(paramActivity, PublicAccountBrowser.class);
+    if ((paramActivity instanceof BaseActivity)) {
+      localIntent.putExtra("uin", ((QQAppInterface)((BaseActivity)paramActivity).getAppRuntime()).getCurrentAccountUin());
     }
-    label132:
-    for (int i = 1;; i = 0)
+    if (bipb.a.containsKey("PublicAccountJs")) {
+      localIntent.putExtra("insertPluginsArray", new String[] { "PublicAccountJs" });
+    }
+    localIntent.putExtra("fromLocalUrl", true);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("hideRightButton", true);
+    localIntent.putExtra("leftViewText", paramActivity.getString(2131694618));
+    localIntent.putExtra("assignBackText", paramActivity.getString(2131694618));
+    if (TextUtils.isEmpty(paramString)) {
+      localIntent.putExtra("url", tyi.b);
+    }
+    for (;;)
     {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      paramActivity.startActivity(localIntent);
       return;
-      if (paramBoolean)
-      {
-        SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(0);
-        break;
-      }
-      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(8);
-      break;
+      localIntent.putExtra("url", "https://find.mp.qq.com/search/index?_wv=67109947&keyword=" + paramString);
     }
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3)
+  {
+    Intent localIntent = new Intent(paramActivity, PublicAccountBrowser.class);
+    if (TextUtils.isEmpty(paramString2)) {
+      if ((paramActivity instanceof BaseActivity)) {
+        localIntent.putExtra("uin", ((QQAppInterface)((BaseActivity)paramActivity).getAppRuntime()).getCurrentAccountUin());
+      }
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        localIntent.putExtra("leftViewText", paramString1);
+        localIntent.putExtra("assignBackText", paramString1);
+      }
+      if (bipb.a.containsKey("PublicAccountJs")) {
+        localIntent.putExtra("insertPluginsArray", new String[] { "PublicAccountJs" });
+      }
+      paramString1 = paramString3;
+      if (TextUtils.isEmpty(paramString3)) {
+        paramString1 = "https://dyzx.mp.qq.com/static/v8/page/subscribeindex.html?_wv=67109947&_bid=2278&_wwv=1";
+      }
+      localIntent.putExtra("fromLocalUrl", true);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("url", paramString1);
+      localIntent.putExtra("hideRightButton", true);
+      paramActivity.startActivity(localIntent);
+      return;
+      localIntent.putExtra("uin", paramString2);
+    }
+  }
+  
+  private static void b(Activity paramActivity)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("last_key_words", "");
+    localIntent.putExtra("from_key", 2);
+    localIntent.putExtra(ClassificationSearchActivity.a, ClassificationSearchActivity.c);
+    localIntent.setClass(paramActivity, ClassificationSearchActivity.class);
+    ClassificationSearchActivity.a(paramActivity, localIntent, null);
   }
 }
 

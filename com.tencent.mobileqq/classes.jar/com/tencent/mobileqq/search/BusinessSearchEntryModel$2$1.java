@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search;
 
-import bbfe;
+import bbxx;
 
 class BusinessSearchEntryModel$2$1
   implements Runnable

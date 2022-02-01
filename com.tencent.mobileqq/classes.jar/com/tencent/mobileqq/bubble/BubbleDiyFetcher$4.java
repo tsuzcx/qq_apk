@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.bubble;
 
 import android.text.TextUtils;
-import apwr;
-import apws;
-import apym;
+import aqkr;
+import aqks;
+import aqmm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public class BubbleDiyFetcher$4
   implements Runnable
 {
-  public BubbleDiyFetcher$4(apwr paramapwr, QQAppInterface paramQQAppInterface) {}
+  public BubbleDiyFetcher$4(aqkr paramaqkr, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class BubbleDiyFetcher$4
       this.this$0.c(this.a);
       if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
       {
-        ((apws)this.a.a(70)).a(new ArrayList(this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet), null);
+        ((aqks)this.a.a(70)).a(new ArrayList(this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet), null);
         this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.clear();
       }
     }
@@ -48,12 +48,12 @@ public class BubbleDiyFetcher$4
     Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
     while (localIterator.hasNext())
     {
-      localObject = (apym)localIterator.next();
-      if ((localObject == null) || (((apym)localObject).getCallback() == null)) {
+      localObject = (aqmm)localIterator.next();
+      if ((localObject == null) || (((aqmm)localObject).getCallback() == null)) {
         this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject);
       }
     }
-    apwr.jdField_a_of_type_Long = 0L;
+    aqkr.jdField_a_of_type_Long = 0L;
   }
 }
 

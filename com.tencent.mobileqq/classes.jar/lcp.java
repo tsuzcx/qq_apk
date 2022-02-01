@@ -1,16 +1,14 @@
-import android.media.MediaPlayer.OnCompletionListener;
 import com.tencent.av.VideoController;
+import java.util.Comparator;
 
-public abstract class lcp
-  implements MediaPlayer.OnCompletionListener
+public class lcp
+  implements Comparator<lcv>
 {
-  public long a;
-  
   public lcp(VideoController paramVideoController) {}
   
-  public String toString()
+  public int a(lcv paramlcv1, lcv paramlcv2)
   {
-    return "Custom." + this.a;
+    return (int)(paramlcv1.d - paramlcv2.d);
   }
 }
 

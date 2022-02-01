@@ -1,109 +1,149 @@
-import android.graphics.PointF;
+import android.content.Intent;
+import android.os.Build;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class lil
+  extends lii
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = null;
-  volatile boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString = null;
-  int c = 0;
-  int d = 0;
-  int e = 0;
-  int f = 0;
-  int g = 0;
+  private static int jdField_c_of_type_Int = -1;
+  static long d = 30000L;
+  long jdField_c_of_type_Long = 0L;
   
-  public PointF a(PointF paramPointF)
+  public lil(VideoAppInterface paramVideoAppInterface)
   {
-    if ((!a()) || (paramPointF == null)) {
-      return null;
+    super(paramVideoAppInterface);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface)
+  {
+    return ((lih)paramVideoAppInterface.a(5)).a(2, "ptu_so");
+  }
+  
+  public static boolean b()
+  {
+    return jdField_c_of_type_Int == 1;
+  }
+  
+  private boolean c()
+  {
+    if (d()) {}
+    do
+    {
+      return true;
+      if (this.jdField_a_of_type_Int < 17)
+      {
+        lbj.c("SupportPendant", "isUserEffectFace error  OSversion:" + this.jdField_a_of_type_Int);
+        return false;
+      }
+      if (this.jdField_b_of_type_Int < 4)
+      {
+        lbj.c("SupportPendant", "isUserEffectFace error cpucount:" + this.jdField_b_of_type_Int);
+        return false;
+      }
+      if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Long < 1400000L))
+      {
+        lbj.c("SupportPendant", "isUserEffectFace error cpuFrequency:" + this.jdField_a_of_type_Long);
+        return false;
+      }
+    } while (this.jdField_b_of_type_Long >= 1073741824L);
+    lbj.c("SupportPendant", "isUserEffectFace error  memory:" + this.jdField_b_of_type_Long);
+    return false;
+  }
+  
+  private static boolean d()
+  {
+    String str = Build.MODEL;
+    if (TextUtils.isEmpty(str)) {
+      return false;
     }
-    float f1 = paramPointF.x * this.d;
-    float f2 = paramPointF.y * this.c;
-    float f4 = this.jdField_a_of_type_Int;
-    float f3 = this.jdField_b_of_type_Int;
-    f4 = (f4 + f1) / this.f;
-    f3 = (f3 + f2) / this.e;
-    lij.a("getSmallPointInBigScreen: " + f1 + "|" + f2 + "|" + f4 + "|" + f3 + "|" + this.jdField_a_of_type_Int + "|" + this.jdField_b_of_type_Int);
-    return new PointF(f4, f3);
+    return str.equals("MI 5");
   }
   
-  public String a()
+  public int a(String paramString)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.g = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return 0;
   }
   
   public boolean a()
   {
-    int i;
-    int j;
-    if (this.jdField_b_of_type_JavaLangString != null)
+    if (jdField_c_of_type_Int != 1)
     {
-      i = 1;
-      if ((this.e <= 0) || (this.f <= 0)) {
-        break label60;
+      if (bork.b(borf.b)) {
+        break label138;
       }
-      j = 1;
-      label25:
-      if ((this.c <= 0) || (this.d <= 0)) {
-        break label65;
+      long l1 = System.currentTimeMillis();
+      if (l1 <= this.jdField_c_of_type_Long) {
+        break label121;
+      }
+      long l2 = AudioHelper.c();
+      if (!this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.g()) {
+        break label114;
+      }
+      jdField_c_of_type_Int = 1;
+      long l3 = AudioHelper.c();
+      QLog.w("SupportPendant", 1, "isDownloadedPTUSO, isFilterSoDownLoadSuc[" + jdField_c_of_type_Int + "], cost[" + (l3 - l2) + "]");
+      this.jdField_c_of_type_Long = (l1 + d);
+    }
+    for (;;)
+    {
+      if (jdField_c_of_type_Int == 1)
+      {
+        return true;
+        label114:
+        jdField_c_of_type_Int = 0;
+        break;
+        label121:
+        if (!QLog.isDevelopLevel()) {
+          continue;
+        }
+        QLog.w("SupportPendant", 1, "isDownloadedPTUSO, 频繁调用");
+        continue;
+        label138:
+        jdField_c_of_type_Int = 1;
+        boolean bool = bork.b(borf.c);
+        if (!bool) {}
+        try
+        {
+          Intent localIntent = new Intent();
+          localIntent.setAction("tencent.video.v2q.checkPtuRes");
+          localIntent.putExtra("packageIdx", borf.c.jdField_a_of_type_Int);
+          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(localIntent);
+          if (QLog.isColorLevel()) {
+            QLog.i("PtuResCheck", 2, "downloadPtuSO, extend res ready [" + bool + "]");
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            QLog.i("PtuResCheck", 1, "downloadPtuSO", localThrowable);
+          }
+        }
       }
     }
-    label60:
-    label65:
-    for (int k = 1;; k = 0)
-    {
-      if ((i == 0) || (j == 0) || (k == 0)) {
-        break label70;
-      }
-      return true;
-      i = 0;
-      break;
-      j = 0;
-      break label25;
-    }
-    label70:
     return false;
   }
   
-  public String b()
+  public boolean a(int paramInt, String paramString)
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return false;
   }
   
-  public void b(int paramInt1, int paramInt2)
+  public boolean a(String paramString)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
+    if ("ptu_so".equalsIgnoreCase(paramString)) {
+      return a();
+    }
+    return c();
   }
   
-  public void c(int paramInt1, int paramInt2)
-  {
-    this.e = paramInt1;
-    this.f = paramInt2;
-  }
+  public void b() {}
+  
+  public void c() {}
 }
 
 

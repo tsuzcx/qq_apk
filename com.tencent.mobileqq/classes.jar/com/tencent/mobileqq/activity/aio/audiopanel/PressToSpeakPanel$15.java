@@ -8,7 +8,7 @@ import android.os.SystemClock;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
-import anni;
+import anzj;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -45,20 +45,20 @@ class PressToSpeakPanel$15
     }
     Object localObject = PressToSpeakPanel.a(this.this$0).a();
     int i = PressToSpeakPanel.a(this.this$0).a().getTitleBarHeight();
-    bdxh.a = SystemClock.uptimeMillis();
+    bewa.a = SystemClock.uptimeMillis();
     if (!QQRecorder.a(((QQRecorder.RecorderParam)localObject).c))
     {
-      QQToast.a(BaseApplication.getContext(), 2131693057, 0).b(i);
+      QQToast.a(BaseApplication.getContext(), 2131693066, 0).b(i);
       return;
     }
     if (PressToSpeakPanel.a(this.this$0).n())
     {
-      QQToast.a(BaseApplication.getContext(), anni.a(2131707178), 0).b(i);
+      QQToast.a(BaseApplication.getContext(), anzj.a(2131707287), 0).b(i);
       return;
     }
     if (PressToSpeakPanel.a(this.this$0).d())
     {
-      QQToast.a(BaseApplication.getContext(), 2131694574, 0).b(i);
+      QQToast.a(BaseApplication.getContext(), 2131694616, 0).b(i);
       return;
     }
     if (AudioHelper.b(1))

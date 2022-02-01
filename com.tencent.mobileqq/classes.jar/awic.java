@@ -1,34 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import org.json.JSONObject;
 
 public class awic
-  extends anmu
+  implements tfg
 {
-  public awic(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
+  public awic(UiApiPlugin paramUiApiPlugin) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a(paramString))) {
-      this.a.a();
-    }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MatchChatMsgListFragment", 2, "onUpdateFriendInfo uin =" + paramString);
-      }
-      int i = 0;
-      if (this.a.a(paramString)) {
-        i = 1;
-      }
-      if (i != 0) {
-        this.a.a();
-      }
-    }
+    this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
   }
 }
 

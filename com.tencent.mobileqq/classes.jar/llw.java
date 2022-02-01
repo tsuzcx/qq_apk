@@ -1,59 +1,44 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
+import android.graphics.PointF;
 
-public class llw
+public abstract class llw
+  extends llm
 {
-  private static volatile llw jdField_a_of_type_Llw;
-  lly jdField_a_of_type_Lly = null;
-  lma jdField_a_of_type_Lma = null;
+  protected Path a;
+  protected PathMeasure a;
   
-  public static llw a()
+  public llw()
   {
-    if (jdField_a_of_type_Llw == null) {}
-    try
-    {
-      if (jdField_a_of_type_Llw == null)
-      {
-        llw localllw = new llw();
-        localllw.b();
-        jdField_a_of_type_Llw = localllw;
-      }
-      return jdField_a_of_type_Llw;
-    }
-    finally {}
+    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(this.jdField_a_of_type_AndroidGraphicsPath, false);
   }
   
-  public static void a()
+  public abstract void a();
+  
+  public void a(float paramFloat1, float paramFloat2)
   {
-    llw localllw = a();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGPDownloadManager", 4, String.format("onDownloadRequest, mStatusGameplay[%s]", new Object[] { Integer.valueOf(localllw.jdField_a_of_type_Lly.a) }));
-    }
-    lma.a();
+    super.a(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    a();
   }
   
-  public static boolean a()
+  public void b(float paramFloat1, float paramFloat2)
   {
-    return jdField_a_of_type_Llw != null;
+    this.jdField_a_of_type_AndroidGraphicsPath.quadTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y, (this.jdField_a_of_type_AndroidGraphicsPointF.x + paramFloat1) / 2.0F, (this.jdField_a_of_type_AndroidGraphicsPointF.y + paramFloat2) / 2.0F);
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    a();
   }
   
-  private void b()
+  public void c(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Lly = new lly();
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      this.jdField_a_of_type_Lma = new lma();
-    }
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Lly.a();
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Lly.c();
+    this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
+    this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    a();
   }
 }
 

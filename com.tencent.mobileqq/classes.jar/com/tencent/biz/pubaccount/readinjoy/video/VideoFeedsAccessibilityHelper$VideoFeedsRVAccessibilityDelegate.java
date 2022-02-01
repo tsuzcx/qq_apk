@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerViewAccessibilityDelegate;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
-import anni;
+import anzj;
 
 public class VideoFeedsAccessibilityHelper$VideoFeedsRVAccessibilityDelegate
   extends RecyclerViewAccessibilityDelegate
@@ -21,7 +21,7 @@ public class VideoFeedsAccessibilityHelper$VideoFeedsRVAccessibilityDelegate
   {
     super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
     AccessibilityEventCompat.asRecord(paramAccessibilityEvent).setItemCount(0);
-    paramView.setContentDescription(anni.a(2131714857));
+    paramView.setContentDescription(anzj.a(2131714966));
   }
   
   public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)

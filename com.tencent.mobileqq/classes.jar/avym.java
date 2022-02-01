@@ -1,14 +1,33 @@
-import android.graphics.Point;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 
-public abstract interface avym
+class avym
+  implements TextWatcher
 {
-  public abstract void a(LatLng paramLatLng, float paramFloat, List<String> paramList);
+  avym(avyl paramavyl) {}
   
-  public abstract void a(LatLng paramLatLng, List<String> paramList);
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public abstract void a(boolean paramBoolean, Point paramPoint);
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (avyl.a(this.a) != null)
+    {
+      if (TextUtils.isEmpty(paramCharSequence)) {
+        break label45;
+      }
+      if (!avyl.b(this.a))
+      {
+        avyl.b(this.a, true);
+        avyl.a(this.a, 1);
+      }
+    }
+    return;
+    label45:
+    this.a.c();
+  }
 }
 
 

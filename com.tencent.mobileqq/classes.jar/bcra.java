@@ -1,22 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.pb.profilecard.SummaryCardBusiEntry.comm;
 
-public final class bcra
-  implements TVK_IMediaPlayer.OnErrorListener
+public class bcra
 {
-  public bcra(bcow parambcow) {}
+  public SummaryCardBusiEntry.comm a;
+  public byte[] a;
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public bcra(SummaryCardBusiEntry.comm paramcomm, byte[] paramArrayOfByte)
   {
-    QLog.i("SplashMiniGameStarter", 1, "splash_logoerro+ errotype" + paramInt1 + "errcode =" + paramInt2);
-    this.a.a(15, 1, 0L);
-    return false;
+    this.jdField_a_of_type_ComTencentPbProfilecardSummaryCardBusiEntry$comm = paramcomm;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcra
  * JD-Core Version:    0.7.0.1
  */

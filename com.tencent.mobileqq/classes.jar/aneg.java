@@ -1,19 +1,17 @@
-import android.content.Context;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.2;
 
 public class aneg
-  extends anfl
+  implements DialogInterface.OnClickListener
 {
-  public aneg(String paramString)
-  {
-    super(paramString);
-  }
+  public aneg(CmGameSubRscHandler.2 param2) {}
   
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramQQAppInterface, paramContext, paramEditText, paramSessionInfo);
+    if (this.a.a != null) {
+      this.a.a.b(null);
+    }
   }
 }
 

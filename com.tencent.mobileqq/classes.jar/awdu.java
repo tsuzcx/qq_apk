@@ -1,219 +1,129 @@
-import android.graphics.Paint;
-import android.util.Log;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import mqq.manager.Manager;
 
 public class awdu
+  implements avzh, Manager
 {
-  public int a;
-  private awdw a;
-  public ArrayList<awdw> a;
-  @Deprecated
-  public int b;
-  public ArrayList<awdy> b;
-  private int c;
-  private int d;
+  QQAppInterface a;
   
-  public awdu(int paramInt1, int paramInt2, ArrayList<awdw> paramArrayList)
+  public awdu(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.a = paramQQAppInterface;
   }
   
-  public int a()
+  public static Bundle a(IVPluginInfo paramIVPluginInfo, avzd paramavzd)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public int a(int paramInt)
-  {
-    return b(paramInt);
-  }
-  
-  public List<awdw> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Awdw = null;
-  }
-  
-  public void a(Paint paramPaint1, Paint paramPaint2, int paramInt)
-  {
-    a(paramPaint1, paramPaint2, paramInt, false, false);
-  }
-  
-  public void a(Paint paramPaint1, Paint paramPaint2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    this.c = 0;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        awdw localawdw = (awdw)localIterator.next();
-        localawdw.a(paramPaint1, paramPaint2, paramInt, paramBoolean1, paramBoolean2);
-        this.c += localawdw.a();
-        this.jdField_b_of_type_JavaUtilArrayList.addAll(localawdw.jdField_a_of_type_JavaUtilArrayList);
-      }
-    }
-  }
-  
-  public void a(awdu paramawdu)
-  {
-    this.jdField_a_of_type_Int = paramawdu.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = paramawdu.jdField_b_of_type_Int;
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
+    int m = 0;
+    Bundle localBundle = new Bundle();
     for (;;)
     {
-      Iterator localIterator = paramawdu.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      try
       {
-        awdw localawdw = (awdw)localIterator.next();
-        this.jdField_a_of_type_JavaUtilArrayList.add(localawdw.a());
+        localObject1 = ((BaseApplicationImpl)MobileQQ.getContext()).waitAppRuntime(null);
+        str2 = ((AppRuntime)localObject1).getAccount();
+        localObject2 = (anyw)((AppRuntime)localObject1).getManager(51);
+        localObject3 = ((anyw)localObject2).e(str2);
+        if (localObject3 == null) {
+          break label470;
+        }
+        localObject1 = ((Friends)localObject3).name;
+        j = ((Friends)localObject3).gender;
+        i = ((Friends)localObject3).age;
+        localObject3 = ((anyw)localObject2).b(str2);
+        if (localObject3 == null) {
+          break label452;
+        }
+        k = (int)((Card)localObject3).lBirthday;
+        localObject2 = ((Card)localObject3).strCountry;
+        str1 = ((Card)localObject3).strProvince;
+        localObject3 = ((Card)localObject3).strCity;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    this.c = paramawdu.b();
-    Log.d("Lyric", "copy -> mType : " + this.jdField_a_of_type_Int);
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0);
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public int b(int paramInt)
-  {
-    if (paramInt < 0)
-    {
-      Log.w("Lyric", "findLineNoByStartTime -> illegal time");
-      return -1;
-    }
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0))
-    {
-      Log.w("Lyric", "findLineNoByStartTime -> lyric is empty");
-      return -1;
-    }
-    if ((this.jdField_a_of_type_Awdw != null) && (this.jdField_a_of_type_Awdw.jdField_a_of_type_Long < paramInt) && (this.jdField_a_of_type_Awdw.jdField_a_of_type_Long + this.jdField_a_of_type_Awdw.b > paramInt)) {
-      return this.d;
-    }
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    int k = localArrayList.size();
-    int j = 0;
-    if (j < k)
-    {
-      awdw localawdw = (awdw)localArrayList.get(j);
-      if (localawdw == null) {}
-      while (localawdw.jdField_a_of_type_Long <= paramInt)
+      catch (Exception paramIVPluginInfo)
       {
-        j += 1;
-        break;
+        String str2;
+        paramIVPluginInfo.printStackTrace();
+        return localBundle;
       }
-    }
-    for (paramInt = j - 1;; paramInt = 0)
-    {
-      int i = paramInt;
-      if (paramInt < 0) {
-        i = 0;
+      localBundle.putString("nickname", (String)localObject1);
+      localBundle.putLong("roomid", paramIVPluginInfo.a);
+      localBundle.putInt("authtype", 1);
+      localBundle.putString("authid", paramavzd.a().b);
+      localBundle.putInt("gender", j);
+      localBundle.putInt("vastype", 2);
+      localBundle.putLong("hostid", Long.parseLong(str2));
+      localBundle.putString("authkey", paramavzd.a().a);
+      localBundle.putString("appid", paramIVPluginInfo.b);
+      localBundle.putString("vasname", paramIVPluginInfo.g);
+      localBundle.putString("userdata", paramIVPluginInfo.d);
+      localBundle.putInt("fromid", Integer.parseInt(paramIVPluginInfo.e));
+      localBundle.putInt("age", i);
+      localBundle.putInt("birthyear", n);
+      localBundle.putInt("birthmonth", m);
+      localBundle.putInt("birthday", k);
+      localBundle.putBoolean("loghost", true);
+      localBundle.putBoolean("reporthost", true);
+      localBundle.putString("backType", paramIVPluginInfo.h);
+      localBundle.putInt("isGroupCode", paramIVPluginInfo.c);
+      localBundle.putString("openType", paramIVPluginInfo.i);
+      localBundle.putString("extra", paramIVPluginInfo.j);
+      localBundle.putString("payToken", paramavzd.a().c);
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        localBundle.putString("addrCountry", (String)localObject2);
       }
-      if (j == k) {}
-      for (paramInt = k - 1;; paramInt = i)
+      if (!TextUtils.isEmpty(str1)) {
+        localBundle.putString("addrProv", str1);
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+        localBundle.putString("addrCity", (String)localObject3);
+      }
+      return localBundle;
+      int n = k >>> 16;
+      m = (0xFF00 & k) >>> 8;
+      k &= 0xFF;
+      continue;
+      label452:
+      Object localObject2 = "";
+      int k = 0;
+      String str1 = "";
+      Object localObject3 = "";
+      break label481;
+      label470:
+      int i = 0;
+      int j = 0;
+      Object localObject1 = "";
+      continue;
+      label481:
+      if (k == 0)
       {
-        this.d = paramInt;
-        this.jdField_a_of_type_Awdw = ((awdw)localArrayList.get(paramInt));
-        return paramInt;
+        n = 1995;
+        k = 0;
       }
     }
   }
   
-  public int c()
-  {
-    if (a()) {
-      return 0;
-    }
-    awdw localawdw = (awdw)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    long l = localawdw.jdField_a_of_type_Long;
-    return (int)(localawdw.b + l);
-  }
+  public void a() {}
   
-  public int c(int paramInt)
-  {
-    int i;
-    if (paramInt < 0)
-    {
-      Log.w("Lyric", "findEndLineByStartTime -> illegal time");
-      i = 0;
-      return i;
-    }
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localArrayList == null)
-    {
-      Log.w("Lyric", "findEndLineByStartTime -> sentence data not found");
-      return -1;
-    }
-    int k = localArrayList.size();
-    int j = 0;
-    if (j < k)
-    {
-      awdw localawdw = (awdw)localArrayList.get(j);
-      if (localawdw == null) {}
-      while (paramInt > localawdw.jdField_a_of_type_Long)
-      {
-        j += 1;
-        break;
-      }
-    }
-    for (paramInt = j - 1;; paramInt = 0)
-    {
-      i = paramInt;
-      if (paramInt < 0) {
-        i = 0;
-      }
-      if (j != k) {
-        break;
-      }
-      return k - 1;
-    }
-  }
+  public void a(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt) {}
   
-  public String toString()
+  public void a(String paramString, boolean paramBoolean, int paramInt) {}
+  
+  public void onDestroy()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("XProxy|ODPROXY", 2, "onDestroy");
     }
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      awdw localawdw = (awdw)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      localStringBuilder.append(i);
-      localStringBuilder.append(":");
-      localStringBuilder.append(localawdw.jdField_a_of_type_Long);
-      localStringBuilder.append(":");
-      localStringBuilder.append(localawdw.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(":");
-      localStringBuilder.append(localawdw.b + localawdw.jdField_a_of_type_Long);
-      localStringBuilder.append("\n");
-      i += 1;
-    }
-    return localStringBuilder.toString();
+    a();
+    this.a = null;
   }
 }
 

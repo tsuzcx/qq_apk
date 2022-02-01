@@ -1,19 +1,33 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import android.content.Context;
+import android.content.ServiceConnection;
+import java.lang.ref.WeakReference;
 
-class bnfc
-  implements MessageQueue.IdleHandler
+public class bnfc
 {
-  bnfc(bnfa parambnfa, int paramInt1, int paramInt2) {}
+  private static ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new bnfd();
+  static bneg jdField_a_of_type_Bneg;
+  private static WeakReference<bnfe> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public boolean queueIdle()
+  public static void a(Context paramContext, bnfe parambnfe)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AlbumListActivity", 2, "load Scroll Position,index:" + this.jdField_a_of_type_Int + " top:" + this.b);
+    if ((jdField_a_of_type_Bneg != null) && (jdField_a_of_type_Bneg.b()))
+    {
+      if (parambnfe != null) {
+        parambnfe.a(jdField_a_of_type_Bneg);
+      }
+      return;
     }
-    this.jdField_a_of_type_Bnfa.a.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
-    return false;
+    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambnfe);
+    bnea.a().a(paramContext, jdField_a_of_type_AndroidContentServiceConnection, 0);
+  }
+  
+  private static void b()
+  {
+    if (jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      jdField_a_of_type_JavaLangRefWeakReference.clear();
+      jdField_a_of_type_JavaLangRefWeakReference = null;
+    }
   }
 }
 

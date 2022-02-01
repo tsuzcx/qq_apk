@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.model;
 
-import apbt;
-import apeo;
+import appj;
+import apse;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQARSession$11
   implements Runnable
 {
-  public QQARSession$11(apeo paramapeo) {}
+  public QQARSession$11(apse paramapse) {}
   
   public void run()
   {
     QLog.i("AREngine_QQARSession", 1, "processCloudObjectClassifyResult. download resource timeout.");
-    apeo.a(this.this$0).b();
+    apse.a(this.this$0).b();
     this.this$0.b(false, null);
   }
 }

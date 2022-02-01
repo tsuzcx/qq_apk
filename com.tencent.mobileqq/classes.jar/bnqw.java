@@ -1,22 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
 
 class bnqw
-  implements Animation.AnimationListener
+  implements QzoneZipCacheHelperCallBack
 {
-  bnqw(bnqt parambnqt) {}
+  bnqw(bnqv parambnqv) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onResult(boolean paramBoolean)
   {
-    bnqt.a(this.a).setVisibility(8);
-    bnqt.a(this.a).setAlpha(1.0F);
-    bnqt.a(this.a, false);
+    bnqv.a(this.a, paramBoolean);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
 }
 
 

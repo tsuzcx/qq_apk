@@ -1,33 +1,8 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.freshnews.BlockableEditTextView;
-
-public class auol
-  implements ActionMode.Callback
+public abstract interface auol
 {
-  public auol(BlockableEditTextView paramBlockableEditTextView) {}
+  public abstract void a();
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
-  {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    if (BlockableEditTextView.a(this.a) == 0) {
-      return true;
-    }
-    return BlockableEditTextView.a(this.a);
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

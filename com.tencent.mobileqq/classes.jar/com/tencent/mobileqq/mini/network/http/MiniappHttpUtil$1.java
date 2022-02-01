@@ -33,11 +33,19 @@ final class MiniappHttpUtil$1
     if (this.canceled) {
       return;
     }
-    int i = paramResponse.code();
-    GamePreConnectManager.onUrlConnect(this.val$url, i);
-    paramCall = paramResponse.headers().toMultimap();
-    this.val$callBack.headersReceived(i, paramCall);
-    this.val$callBack.httpCallBack(i, paramResponse.body().bytes(), paramCall);
+    try
+    {
+      int i = paramResponse.code();
+      GamePreConnectManager.onUrlConnect(this.val$url, i);
+      paramCall = paramResponse.headers().toMultimap();
+      this.val$callBack.headersReceived(i, paramCall);
+      this.val$callBack.httpCallBack(i, paramResponse.body().bytes(), paramCall);
+      return;
+    }
+    catch (Throwable paramCall)
+    {
+      paramCall.printStackTrace();
+    }
   }
 }
 

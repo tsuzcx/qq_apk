@@ -1,36 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class pim
-  implements AladdinConfigHandler
+class pim
+  implements View.OnClickListener
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("DefaultFeedsProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = phv.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("DefaultFeedsProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "default_feeds"))
-      {
-        bmqa.a("default_feeds_proteus_offline_bid", str2);
-        new tek().a("default_feeds");
-      }
-    }
-    return true;
-  }
+  pim(pil parampil) {}
   
-  public void onWipeConfig(int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("DefaultFeedsProteusBidConfigHandler", 1, "[onWipeConfig]");
-    bmqa.a("default_feeds_proteus_offline_bid", "0");
+    int i = ((Integer)paramView.getTag()).intValue();
+    this.a.a.a(paramView, i);
+    oxw.a(this.a.a.getActivity(), "0X8009A71", this.a.a.a(), ((pik)this.a.a.a.get(i)).a.mChannelCoverId);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -13,15 +13,15 @@ class RequestJsPlugin$6
   {
     if (paramBoolean)
     {
-      RequestJsPlugin.access$2300(this.this$0, this.val$req, paramJSONObject);
+      RequestJsPlugin.access$1900(this.this$0, this.val$req, paramJSONObject);
       return;
     }
     if (paramJSONObject != null)
     {
-      RequestJsPlugin.access$2400(this.this$0, this.val$req, paramJSONObject, null);
+      RequestJsPlugin.access$2000(this.this$0, this.val$req, paramJSONObject, null);
       return;
     }
-    RequestJsPlugin.access$2400(this.this$0, this.val$req, null, "do not support getGroupAppStatus!");
+    RequestJsPlugin.access$2000(this.this$0, this.val$req, null, "do not support getGroupAppStatus!");
   }
 }
 

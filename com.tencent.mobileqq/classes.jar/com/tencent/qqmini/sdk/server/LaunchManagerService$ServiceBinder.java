@@ -2,10 +2,14 @@ package com.tencent.qqmini.sdk.server;
 
 import android.os.Bundle;
 import android.os.ResultReceiver;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.core.utils.thread.ThreadPools;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager.Stub;
 import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import java.util.concurrent.ExecutorService;
 
 public class LaunchManagerService$ServiceBinder
   extends ILaunchManager.Stub
@@ -14,14 +18,30 @@ public class LaunchManagerService$ServiceBinder
   
   public void onAppLifecycle(int paramInt, String paramString, MiniAppInfo paramMiniAppInfo, Bundle paramBundle)
   {
+    if (paramMiniAppInfo == null)
+    {
+      QMLog.w("minisdk-start_LaunchManagerService", "handleAppLifecycle lifecycle:" + paramInt + " process:" + paramString + " miniAppInfo is null");
+      return;
+    }
     QMLog.i("minisdk-start_LaunchManagerService", "handleAppLifecycle lifecycle:" + paramInt + " process:" + paramString + " miniAppInfo:" + paramMiniAppInfo);
     switch (paramInt)
     {
     default: 
       return;
     case 1: 
-      this.this$0.onAppStart(paramString, paramMiniAppInfo, paramBundle);
-      return;
+      try
+      {
+        this.this$0.onAppStart(paramString, paramMiniAppInfo, paramBundle);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        QMLog.e("minisdk-start_LaunchManagerService", "onAppLifecycle() called with: lifecycle = [" + paramInt + "], processName = [" + paramString + "], miniAppInfo = [" + paramMiniAppInfo + "], bundle = [" + paramBundle + "]");
+        if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
+          ThreadPools.getComputationThreadPool().execute(new LaunchManagerService.ServiceBinder.1(this, localThrowable));
+        }
+        throw new RuntimeException(localThrowable);
+      }
     case 4: 
       this.this$0.onAppStop(paramString, paramMiniAppInfo, paramBundle);
       return;
@@ -41,7 +61,7 @@ public class LaunchManagerService$ServiceBinder
     {
       if ("query_mini_process".equals(paramString1))
       {
-        boolean bool = this.this$0.isMiniProcess(paramString2);
+        boolean bool = LaunchManagerService.access$200(this.this$0, paramString2);
         paramString1 = new Bundle();
         paramString1.putBoolean("key_result", bool);
         return paramString1;
@@ -98,11 +118,6 @@ public class LaunchManagerService$ServiceBinder
   public void stopMiniApp(MiniAppInfo paramMiniAppInfo)
   {
     this.this$0.stopMiniApp(paramMiniAppInfo);
-  }
-  
-  public void stopMiniAppByAppId(String paramString)
-  {
-    this.this$0.stopMiniApp(paramString);
   }
 }
 

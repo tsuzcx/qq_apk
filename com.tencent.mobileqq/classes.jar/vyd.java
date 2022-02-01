@@ -1,52 +1,27 @@
-import android.content.Context;
-import com.tencent.biz.qqcircle.events.QCirclePushUpdateEvent;
-import com.tencent.biz.qqcircle.requests.QCircleDoRecommendRequest;
-import com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudWrite.StDoPushRsp;
+import com.tencent.biz.qqcircle.widgets.QCircleBaseVideoView;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import feedcloud.FeedCloudMeta.StVideo;
+import java.util.Collections;
 
-class vyd
-  implements zxa<FeedCloudWrite.StDoPushRsp>
+public class vyd
+  implements vqj
 {
-  vyd(vyc paramvyc, QCircleDoRecommendRequest paramQCircleDoRecommendRequest) {}
+  public vyd(QCircleBaseVideoView paramQCircleBaseVideoView, int paramInt, FeedCloudMeta.StVideo paramStVideo) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoPushRsp paramStDoPushRsp)
+  public void a(long paramLong, String paramString)
   {
-    QLog.d(QCircleRecommendImageView.a(this.jdField_a_of_type_Vyc.a), 1, "QCircleDoRecommendRequest push is success:" + paramBoolean + " retCode:" + paramLong);
-    if ((paramLong == 0L) && (paramStDoPushRsp != null))
-    {
-      QLog.d(QCircleRecommendImageView.a(this.jdField_a_of_type_Vyc.a), 1, "req traceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleDoRecommendRequest.getTraceId());
-      QLog.d(QCircleRecommendImageView.a(this.jdField_a_of_type_Vyc.a), 1, "QCircleDoRecommendRequest push success myFuel:" + paramStDoPushRsp.myFuel.get() + "consumeFuel" + paramStDoPushRsp.consumeFuel.get());
-      QCircleRecommendImageView.c(this.jdField_a_of_type_Vyc.a, QCircleRecommendImageView.a(this.jdField_a_of_type_Vyc.a) + paramStDoPushRsp.consumeFuel.get());
-      QCircleRecommendImageView.b(this.jdField_a_of_type_Vyc.a, QCircleRecommendImageView.a(this.jdField_a_of_type_Vyc.a));
-      paramString = new QCirclePushUpdateEvent(uxc.a(), QCircleRecommendImageView.a(this.jdField_a_of_type_Vyc.a).id.get(), QCircleRecommendImageView.a(this.jdField_a_of_type_Vyc.a));
-      paramString.mHashCode = this.jdField_a_of_type_Vyc.a.hashCode();
-      zwp.a().a(paramString);
-      QCircleRecommendImageView.a(this.jdField_a_of_type_Vyc.a, paramStDoPushRsp.myFuel.get(), paramStDoPushRsp.consumeFuel.get());
-    }
-    for (;;)
-    {
-      QCircleRecommendImageView.a(this.jdField_a_of_type_Vyc.a, QCircleRecommendImageView.a(this.jdField_a_of_type_Vyc.a));
-      QCircleRecommendImageView.b(this.jdField_a_of_type_Vyc.a, QCircleRecommendImageView.a(this.jdField_a_of_type_Vyc.a));
+    QCircleBaseVideoView.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView, QCircleBaseVideoView.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView), "video_exchange_url", this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView.a(), Collections.singletonList(vtt.a("ret_code", String.valueOf(paramLong))));
+    if (VSNetworkHelper.a((int)paramLong)) {
       return;
-      if (paramLong == 700207L)
-      {
-        QLog.d(QCircleRecommendImageView.a(this.jdField_a_of_type_Vyc.a), 1, "CW_HAVE_PUSH_MAX_CNT");
-        QCircleRecommendImageView.e(this.jdField_a_of_type_Vyc.a);
-      }
-      else if (paramLong == 700202L)
-      {
-        uxp.a().a(this.jdField_a_of_type_Vyc.a.getContext(), this.jdField_a_of_type_Vyc.a.getContext().getString(2131697172));
-        QCircleRecommendImageView.f(this.jdField_a_of_type_Vyc.a);
-      }
-      else
-      {
-        QLog.d(QCircleRecommendImageView.a(this.jdField_a_of_type_Vyc.a), 1, "net_error" + paramLong);
-        QCircleRecommendImageView.a(this.jdField_a_of_type_Vyc.a, paramString);
-      }
+    }
+    QCircleBaseVideoView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StVideo, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(FeedCloudMeta.StVideo paramStVideo, boolean paramBoolean)
+  {
+    QCircleBaseVideoView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView, paramStVideo, this.jdField_a_of_type_Int);
+    if (!paramBoolean) {
+      QCircleBaseVideoView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView, QCircleBaseVideoView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView), "video_exchange_url", this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseVideoView.a(), Collections.singletonList(vtt.a("ret_code", "0")));
     }
   }
 }

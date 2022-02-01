@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bieb;
+import bjez;
 import com.tencent.mobileqq.widget.RoundImageView;
 
 public class PressEffectRoundImageView
@@ -28,10 +28,10 @@ public class PressEffectRoundImageView
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      bieb.a(this);
+      bjez.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bieb.b(this);
+      bjez.b(this);
     }
   }
   

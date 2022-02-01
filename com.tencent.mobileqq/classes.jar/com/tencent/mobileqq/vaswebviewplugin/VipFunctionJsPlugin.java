@@ -2,9 +2,9 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import arpd;
-import arph;
-import bhod;
+import aser;
+import asev;
+import bioy;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -22,7 +22,7 @@ public class VipFunctionJsPlugin
   private static final int MAX_REDIRECT = 5;
   public static final String Method_openPreview = "reportToClientTo644";
   public static final String Method_report643 = "reportToClientTo643";
-  public static final String Tag = "QQVIPFunctionJsPlugin";
+  public static final String TAG = "QQVIPFunctionJsPlugin";
   private volatile String mCurrentURL;
   private Set<String> mUrlFilter;
   private volatile String mUserAgent;
@@ -43,7 +43,7 @@ public class VipFunctionJsPlugin
     localBundle.putInt("fromeType", paramInt1);
     localBundle.putInt("result", paramInt2);
     localBundle.putStringArray("reserves", paramArrayOfString);
-    sendRemoteReq(arph.a("QQVIPFunctionReport643", "callback", this.mOnRemoteResp.key, localBundle), false, false);
+    sendRemoteReq(asev.a("QQVIPFunctionReport643", "callback", this.mOnRemoteResp.key, localBundle), false, false);
   }
   
   private void reportToClientTo644(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String[] paramArrayOfString)

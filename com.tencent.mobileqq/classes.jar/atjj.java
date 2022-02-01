@@ -1,69 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
 
-public abstract class atjj
+public class atjj
+  extends atpa
 {
-  protected final QQAppInterface a;
+  public atjj(VerifyPwdView paramVerifyPwdView) {}
   
-  public atjj(QQAppInterface paramQQAppInterface)
+  protected void a(int paramInt, String paramString)
   {
-    this.a = paramQQAppInterface;
+    auna.a(paramString);
   }
   
-  protected abstract String a(boolean paramBoolean);
-  
-  protected abstract HashMap<String, String> a();
-  
-  public abstract void a();
-  
-  public void a(atjk paramatjk, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete, HashMap<String, String> paramHashMap)
+  protected void a(boolean paramBoolean)
   {
-    paramatjk = paramatjk.a();
-    if (paramExcitingTransferOneSlotComplete != null) {
-      paramatjk.putAll(paramExcitingTransferOneSlotComplete.getReportData());
-    }
-    if (paramHashMap != null) {
-      paramatjk.putAll(paramHashMap);
-    }
-    paramHashMap = bctj.a(BaseApplication.getContext());
-    String str = this.a.getCurrentAccountUin();
-    if (paramExcitingTransferOneSlotComplete.m_SubReason == 0) {}
-    for (boolean bool = true;; bool = false)
+    if (!paramBoolean)
     {
-      paramHashMap.a(str, "actPDSlot", bool, 0L, 0L, paramatjk, "");
+      VerifyPwdView.a(this.a);
       return;
     }
+    VerifyPwdView.b(this.a);
   }
   
-  public void a(boolean paramBoolean)
+  protected void b(int paramInt, String paramString)
   {
-    if (a()) {
-      b(paramBoolean);
-    }
-    HashMap localHashMap = a();
-    if (localHashMap != null) {
-      QLog.i("DataReport", 1, ">>> report: act=" + a(false) + localHashMap.toString());
-    }
-    bctj.a(BaseApplication.getContext()).a(this.a.getCurrentAccountUin(), a(false), paramBoolean, 0L, 0L, localHashMap, "");
+    auna.a(paramString);
+    VerifyPwdView.c(this.a);
   }
   
-  protected abstract boolean a();
-  
-  protected abstract HashMap<String, String> b();
-  
-  public abstract void b();
-  
-  public void b(boolean paramBoolean)
+  protected void e()
   {
-    HashMap localHashMap = b();
-    if (localHashMap != null)
-    {
-      QLog.i("OldDataReport", 1, ">>> reportOld: act=" + a(true) + localHashMap.toString());
-      bctj.a(BaseApplication.getContext()).a(this.a.getCurrentAccountUin(), a(true), paramBoolean, 0L, 0L, localHashMap, "");
-    }
+    VerifyPwdView.a(this.a);
   }
 }
 

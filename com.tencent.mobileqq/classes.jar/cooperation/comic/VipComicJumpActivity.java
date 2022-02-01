@@ -1,7 +1,7 @@
 package cooperation.comic;
 
 import Override;
-import ajvi;
+import akgr;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -23,31 +23,31 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import anni;
-import anuk;
-import arcs;
-import arsr;
-import avaj;
-import baif;
-import bgyg;
-import bkge;
-import bkgm;
-import bkzp;
-import bkzq;
-import bkzy;
-import blae;
-import blaj;
-import blak;
-import blam;
-import blan;
-import blao;
-import blap;
-import blaq;
-import blax;
-import blbu;
-import blby;
-import blcf;
-import blfh;
+import anzj;
+import aogu;
+import arsh;
+import asif;
+import avsk;
+import bbav;
+import bhyk;
+import blhi;
+import blhq;
+import bmas;
+import bmat;
+import bmbb;
+import bmbh;
+import bmbm;
+import bmbn;
+import bmbp;
+import bmbq;
+import bmbr;
+import bmbs;
+import bmbt;
+import bmca;
+import bmcx;
+import bmdb;
+import bmdi;
+import bmgk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.MainFragment;
@@ -78,7 +78,7 @@ import java.util.List;
 import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import nko;
+import nmj;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -90,9 +90,9 @@ public class VipComicJumpActivity
   long jdField_a_of_type_Long = 0L;
   BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bkgm a;
-  public blak a;
-  public blfh a;
+  public blhq a;
+  public bmbn a;
+  public bmgk a;
   boolean jdField_a_of_type_Boolean = false;
   long jdField_b_of_type_Long = 0L;
   TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -110,7 +110,7 @@ public class VipComicJumpActivity
     this.jdField_c_of_type_Long = 0L;
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Blak = null;
+    this.jdField_a_of_type_Bmbn = null;
   }
   
   public static int a(String paramString, List<WebViewTabBarData> paramList)
@@ -126,106 +126,106 @@ public class VipComicJumpActivity
     return 0;
   }
   
-  public static blak a(Intent paramIntent)
+  public static bmbn a(Intent paramIntent)
   {
-    boolean bool = true;
+    boolean bool2 = true;
     if (paramIntent == null) {
       return null;
     }
-    blak localblak = new blak();
-    localblak.jdField_a_of_type_Long = paramIntent.getLongExtra("click_start_time", 0L);
-    localblak.jdField_b_of_type_Long = System.currentTimeMillis();
-    if (localblak.jdField_a_of_type_Long <= 0L) {
-      localblak.jdField_a_of_type_Long = localblak.jdField_b_of_type_Long;
+    bmbn localbmbn = new bmbn();
+    localbmbn.jdField_a_of_type_Long = paramIntent.getLongExtra("click_start_time", 0L);
+    localbmbn.jdField_b_of_type_Long = System.currentTimeMillis();
+    if (localbmbn.jdField_a_of_type_Long <= 0L) {
+      localbmbn.jdField_a_of_type_Long = localbmbn.jdField_b_of_type_Long;
     }
-    localblak.jdField_g_of_type_Boolean = paramIntent.getBooleanExtra("has_red_dot", false);
+    localbmbn.jdField_h_of_type_Boolean = paramIntent.getBooleanExtra("has_red_dot", false);
     Object localObject1 = paramIntent.getStringExtra("from_leba");
     Object localObject2 = paramIntent.getStringExtra("from_leba_mgr");
     String str = paramIntent.getStringExtra("cfrom");
     if ((localObject1 != null) && (((String)localObject1).equalsIgnoreCase("fromleba")))
     {
-      localblak.jdField_a_of_type_Int = 1006002;
+      localbmbn.jdField_a_of_type_Int = 1006002;
       localObject1 = null;
     }
-    label180:
-    label223:
-    label739:
-    label750:
-    label755:
-    label762:
-    label1149:
+    label260:
+    label427:
+    label1206:
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("VipComicJumpActivity", 2, "getFromInfoFromIntent sourceFrom = " + localblak.jdField_a_of_type_Int + ", extUrlParam = " + localblak.jdField_a_of_type_JavaLangString);
+        QLog.d("VipComicJumpActivity", 2, "getFromInfoFromIntent sourceFrom = " + localbmbn.jdField_a_of_type_Int + ", extUrlParam = " + localbmbn.jdField_a_of_type_JavaLangString);
       }
+      label184:
       int i;
-      if (localblak.jdField_a_of_type_Int == 1006002)
+      label227:
+      boolean bool1;
+      if (localbmbn.jdField_a_of_type_Int == 1006002)
       {
-        localblak.jdField_f_of_type_JavaLangString = MainFragment.jdField_c_of_type_JavaLangString;
-        localObject2 = blap.a(null);
-        if ((localObject2 == null) || ((localblak.jdField_a_of_type_Int != 1006002) && (localblak.jdField_a_of_type_Int != 19) && (localblak.jdField_a_of_type_Int != 20))) {
-          break label734;
+        localbmbn.jdField_f_of_type_JavaLangString = MainFragment.jdField_c_of_type_JavaLangString;
+        localObject2 = bmbs.a(null);
+        if ((localObject2 == null) || ((localbmbn.jdField_a_of_type_Int != 1006002) && (localbmbn.jdField_a_of_type_Int != 19) && (localbmbn.jdField_a_of_type_Int != 20))) {
+          break label748;
         }
         i = 1;
         if (i == 0) {
-          break label771;
+          break label786;
         }
         i = ((Bundle)localObject2).getInt("type", -1);
         if ((i < 100) || (i > 300)) {
-          break label739;
+          break label753;
         }
-        localblak.jdField_b_of_type_JavaLangString = "com.qqcomic.activity.media.VipComicMediaPlayActivity";
-        localblak.jdField_a_of_type_Blaj = new blaj();
-        localblak.jdField_a_of_type_Blaj.jdField_a_of_type_JavaLangString = ((Bundle)localObject2).getString("comicId");
-        localblak.jdField_a_of_type_Blaj.jdField_b_of_type_JavaLangString = ((Bundle)localObject2).getString("sectionId");
-        localblak.jdField_a_of_type_Blaj.jdField_c_of_type_JavaLangString = ((Bundle)localObject2).getString("pictureId");
-        localblak.jdField_a_of_type_Blaj.jdField_a_of_type_Int = ((Bundle)localObject2).getInt("offset", -1);
-        localblak.jdField_a_of_type_Blaj.jdField_b_of_type_Int = ((Bundle)localObject2).getInt("type", -1);
-        localblak.jdField_a_of_type_Blaj.jdField_c_of_type_Int = ((Bundle)localObject2).getInt("player", 2);
-        localblak.jdField_a_of_type_Blaj.jdField_e_of_type_JavaLangString = ((Bundle)localObject2).getString("cloudUrl", "");
-        if (!"com.qqcomic.activity.media.VipComicMediaPlayActivity".equals(localblak.jdField_b_of_type_JavaLangString)) {
-          break label762;
+        localbmbn.jdField_b_of_type_JavaLangString = "com.qqcomic.activity.media.VipComicMediaPlayActivity";
+        localbmbn.jdField_a_of_type_Bmbm = new bmbm();
+        localbmbn.jdField_a_of_type_Bmbm.jdField_a_of_type_JavaLangString = ((Bundle)localObject2).getString("comicId");
+        localbmbn.jdField_a_of_type_Bmbm.jdField_b_of_type_JavaLangString = ((Bundle)localObject2).getString("sectionId");
+        localbmbn.jdField_a_of_type_Bmbm.jdField_c_of_type_JavaLangString = ((Bundle)localObject2).getString("pictureId");
+        localbmbn.jdField_a_of_type_Bmbm.jdField_a_of_type_Int = ((Bundle)localObject2).getInt("offset", -1);
+        localbmbn.jdField_a_of_type_Bmbm.jdField_b_of_type_Int = ((Bundle)localObject2).getInt("type", -1);
+        localbmbn.jdField_a_of_type_Bmbm.jdField_c_of_type_Int = ((Bundle)localObject2).getInt("player", 2);
+        localbmbn.jdField_a_of_type_Bmbm.jdField_e_of_type_JavaLangString = ((Bundle)localObject2).getString("cloudUrl", "");
+        if (!"com.qqcomic.activity.media.VipComicMediaPlayActivity".equals(localbmbn.jdField_b_of_type_JavaLangString)) {
+          break label777;
         }
-        localblak.jdField_a_of_type_Boolean = false;
-        localblak.jdField_c_of_type_Boolean = ((Bundle)localObject2).getBoolean("isPlayerLocked", false);
+        localbmbn.jdField_a_of_type_Boolean = false;
+        localbmbn.jdField_d_of_type_Boolean = ((Bundle)localObject2).getBoolean("isPlayerLocked", false);
         if (((Bundle)localObject2).getBoolean("supportMiniPlayer", false)) {
-          break label750;
+          break label764;
         }
-        bool = true;
-        localblak.jdField_e_of_type_Boolean = bool;
-        if (!localblak.jdField_e_of_type_Boolean) {
-          break label755;
+        bool1 = true;
+        localbmbn.jdField_f_of_type_Boolean = bool1;
+        if (!localbmbn.jdField_f_of_type_Boolean) {
+          break label769;
         }
         localObject1 = "";
-        localblak.jdField_a_of_type_Blaj.jdField_d_of_type_JavaLangString = a("comicDetailVideo", null, null, "1", "354", null, (String)localObject1 + "ADTAG=comic.plugin.fav&id=" + localblak.jdField_a_of_type_Blaj.jdField_a_of_type_JavaLangString);
+        label445:
+        localbmbn.jdField_a_of_type_Bmbm.jdField_d_of_type_JavaLangString = a("comicDetailVideo", null, null, "1", "354", null, (String)localObject1 + "ADTAG=comic.plugin.fav&id=" + localbmbn.jdField_a_of_type_Bmbm.jdField_a_of_type_JavaLangString);
       }
       for (;;)
       {
         for (;;)
         {
-          if (TextUtils.isEmpty(localblak.jdField_d_of_type_JavaLangString)) {
-            localblak.jdField_d_of_type_JavaLangString = blae.a();
+          if (TextUtils.isEmpty(localbmbn.jdField_d_of_type_JavaLangString)) {
+            localbmbn.jdField_d_of_type_JavaLangString = bmbh.a();
           }
           if ((paramIntent.hasExtra("banner_fromBanner")) && (paramIntent.getBooleanExtra("banner_fromBanner", false)))
           {
             if (QLog.isColorLevel()) {
               QLog.d("VipComicJumpActivity", 2, "come from AIO Banner!");
             }
-            if ((localblak.jdField_a_of_type_Blaj != null) && (!TextUtils.isEmpty(localblak.jdField_a_of_type_Blaj.jdField_a_of_type_JavaLangString))) {
-              blaq.a(null, "100007", "2", "40040", localblak.jdField_a_of_type_Blaj.jdField_a_of_type_JavaLangString, new String[0]);
+            if ((localbmbn.jdField_a_of_type_Bmbm != null) && (!TextUtils.isEmpty(localbmbn.jdField_a_of_type_Bmbm.jdField_a_of_type_JavaLangString))) {
+              bmbt.a(null, "100007", "2", "40040", localbmbn.jdField_a_of_type_Bmbm.jdField_a_of_type_JavaLangString, new String[0]);
             }
           }
-          return localblak;
+          return localbmbn;
           if ((localObject2 != null) && (((String)localObject2).equalsIgnoreCase("fromlebamgr")))
           {
-            localblak.jdField_a_of_type_Int = 1006003;
+            localbmbn.jdField_a_of_type_Int = 1006003;
             localObject1 = null;
             break;
           }
           if (!TextUtils.isEmpty(str))
           {
-            localblak.jdField_a_of_type_Int = Integer.valueOf(str).intValue();
+            localbmbn.jdField_a_of_type_Int = Integer.valueOf(str).intValue();
             localObject1 = null;
             break;
           }
@@ -235,13 +235,13 @@ public class VipComicJumpActivity
             {
               localObject1 = paramIntent.getStringExtra("options");
               if (TextUtils.isEmpty((CharSequence)localObject1)) {
-                break label1149;
+                break label1206;
               }
               localObject1 = new JSONObject((String)localObject1);
               try
               {
-                localblak.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("from");
-                localblak.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("extUrlParam");
+                localbmbn.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("from");
+                localbmbn.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("extUrlParam");
               }
               catch (Exception localException1) {}
             }
@@ -250,7 +250,12 @@ public class VipComicJumpActivity
           {
             for (;;)
             {
+              label748:
+              label753:
+              label764:
               JSONObject localJSONObject;
+              label834:
+              label877:
               localObject1 = null;
             }
             localObject1 = null;
@@ -258,73 +263,84 @@ public class VipComicJumpActivity
         }
         localException1.printStackTrace();
         break;
-        if (localblak.jdField_a_of_type_Int != 1006003) {
-          break label180;
+        if (localbmbn.jdField_a_of_type_Int != 1006003) {
+          break label184;
         }
-        localblak.jdField_f_of_type_JavaLangString = anni.a(2131715380);
-        break label180;
+        localbmbn.jdField_f_of_type_JavaLangString = anzj.a(2131715489);
+        break label184;
         i = 0;
-        break label223;
-        localblak.jdField_b_of_type_JavaLangString = "com.qqcomic.activity.reader.VipComicPortraitReadingActivity";
-        break label256;
-        bool = false;
-        break label423;
+        break label227;
+        localbmbn.jdField_b_of_type_JavaLangString = "com.qqcomic.activity.reader.VipComicPortraitReadingActivity";
+        break label260;
+        bool1 = false;
+        break label427;
         localObject1 = "init_player=1&";
-        break label440;
-        localblak.jdField_a_of_type_Boolean = true;
+        break label445;
+        localbmbn.jdField_a_of_type_Boolean = true;
         continue;
         if (localObject1 != null)
         {
-          localblak.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("jumpto", "com.qqcomic.activity.VipComicMainTabActivity");
-          localblak.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("from", 0);
+          localbmbn.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("jumpto", "com.qqcomic.activity.VipComicMainTabActivity");
+          localbmbn.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("from", 0);
           if (!((JSONObject)localObject1).optBoolean("newInstance"))
           {
-            localblak.jdField_d_of_type_Boolean = bool;
+            bool1 = true;
+            localbmbn.jdField_e_of_type_Boolean = bool1;
             if (((JSONObject)localObject1).has("url")) {
-              localblak.jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).optString("url");
+              localbmbn.jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).optString("url");
             }
           }
           try
           {
-            localblak.jdField_c_of_type_JavaLangString = URLDecoder.decode(localblak.jdField_c_of_type_JavaLangString);
-            if (blae.a(localblak.jdField_c_of_type_JavaLangString, localblak.jdField_a_of_type_AndroidContentIntent)) {
-              localblak.jdField_b_of_type_JavaLangString = "com.qqcomic.activity.media.VipComicMediaPlayActivity";
+            localbmbn.jdField_c_of_type_JavaLangString = URLDecoder.decode(localbmbn.jdField_c_of_type_JavaLangString);
+            if (bmbh.a(localbmbn.jdField_c_of_type_JavaLangString, localbmbn.jdField_a_of_type_AndroidContentIntent)) {
+              localbmbn.jdField_b_of_type_JavaLangString = "com.qqcomic.activity.media.VipComicMediaPlayActivity";
             }
             if (((JSONObject)localObject1).has("comic")) {}
-            try
+            for (;;)
             {
-              localJSONObject = new JSONObject(((JSONObject)localObject1).optString("comic"));
-              localblak.jdField_a_of_type_Blaj = new blaj();
-              localblak.jdField_a_of_type_Blaj.jdField_a_of_type_JavaLangString = localJSONObject.optString("comicID");
-              localblak.jdField_a_of_type_Blaj.jdField_b_of_type_JavaLangString = localJSONObject.optString("comicSectionID");
-              localblak.jdField_a_of_type_Blaj.jdField_c_of_type_JavaLangString = localJSONObject.optString("comicPageID");
-              localblak.jdField_a_of_type_Blaj.jdField_a_of_type_Int = localJSONObject.optInt("comicPageOffset");
-              localblak.jdField_a_of_type_Blaj.jdField_b_of_type_Int = localJSONObject.optInt("type");
-              localblak.jdField_a_of_type_Boolean = localJSONObject.optBoolean("returnToDetail");
-              localblak.jdField_a_of_type_Blaj.jdField_c_of_type_Int = localJSONObject.optInt("player", 2);
-              localblak.jdField_a_of_type_Blaj.jdField_e_of_type_JavaLangString = localJSONObject.optString("cloudUrl", "");
-              localblak.jdField_a_of_type_Blaj.jdField_d_of_type_JavaLangString = localJSONObject.optString("url", "");
+              try
+              {
+                localJSONObject = new JSONObject(((JSONObject)localObject1).optString("comic"));
+                localbmbn.jdField_a_of_type_Bmbm = new bmbm();
+                localbmbn.jdField_a_of_type_Bmbm.jdField_a_of_type_JavaLangString = localJSONObject.optString("comicID");
+                localbmbn.jdField_a_of_type_Bmbm.jdField_b_of_type_JavaLangString = localJSONObject.optString("comicSectionID");
+                localbmbn.jdField_a_of_type_Bmbm.jdField_c_of_type_JavaLangString = localJSONObject.optString("comicPageID");
+                localbmbn.jdField_a_of_type_Bmbm.jdField_a_of_type_Int = localJSONObject.optInt("comicPageOffset");
+                localbmbn.jdField_a_of_type_Bmbm.jdField_b_of_type_Int = localJSONObject.optInt("type");
+                localbmbn.jdField_a_of_type_Boolean = localJSONObject.optBoolean("returnToDetail");
+                localbmbn.jdField_a_of_type_Bmbm.jdField_c_of_type_Int = localJSONObject.optInt("player", 2);
+                localbmbn.jdField_a_of_type_Bmbm.jdField_e_of_type_JavaLangString = localJSONObject.optString("cloudUrl", "");
+                localbmbn.jdField_a_of_type_Bmbm.jdField_d_of_type_JavaLangString = localJSONObject.optString("url", "");
+                if (localJSONObject.optInt("returnToHome") != 1) {
+                  continue;
+                }
+                bool1 = bool2;
+                localbmbn.jdField_b_of_type_Boolean = bool1;
+              }
+              catch (JSONException localJSONException)
+              {
+                continue;
+              }
               if (((JSONObject)localObject1).has("maintab")) {
-                localblak.jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).optString("maintab");
+                localbmbn.jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).optString("maintab");
               }
               if (((JSONObject)localObject1).has("subtab")) {
-                localblak.jdField_e_of_type_JavaLangString = ((JSONObject)localObject1).optString("subtab");
+                localbmbn.jdField_e_of_type_JavaLangString = ((JSONObject)localObject1).optString("subtab");
               }
-              if (((JSONObject)localObject1).has("leftViewText"))
-              {
-                localblak.jdField_f_of_type_JavaLangString = ((JSONObject)localObject1).optString("leftViewText");
-                continue;
-                bool = false;
+              if (!((JSONObject)localObject1).has("leftViewText")) {
+                break;
               }
-            }
-            catch (JSONException localJSONException)
-            {
-              break label1058;
+              localbmbn.jdField_f_of_type_JavaLangString = ((JSONObject)localObject1).optString("leftViewText");
+              break;
+              bool1 = false;
+              break label834;
+              bool1 = false;
             }
           }
           catch (Exception localException2)
           {
-            break label854;
+            break label877;
           }
         }
       }
@@ -333,10 +349,10 @@ public class VipComicJumpActivity
   
   public static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    String str2 = (String)bgyg.a().get(paramString1);
+    String str2 = (String)bhyk.a().get(paramString1);
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = blcf.a(paramString1);
+      str1 = bmdi.a(paramString1);
     }
     return b(str1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7);
   }
@@ -371,12 +387,12 @@ public class VipComicJumpActivity
         localMqqHandler.sendMessageDelayed(localMessage1, 1000L);
         localMqqHandler.sendMessageDelayed(localMessage2, 1000L);
       }
-      blap.a((QQAppInterface)paramAppInterface);
-      blax.a((QQAppInterface)paramAppInterface);
+      bmbs.a((QQAppInterface)paramAppInterface);
+      bmca.a((QQAppInterface)paramAppInterface);
       if (paramBoolean) {
         ThreadManager.postImmediately(new VipComicJumpActivity.1((QQAppInterface)paramAppInterface), null, true);
       }
-      paramAppInterface = (arsr)paramAppInterface.getBusinessHandler(80);
+      paramAppInterface = (asif)paramAppInterface.getBusinessHandler(80);
       if (paramAppInterface != null) {
         paramAppInterface.b();
       }
@@ -393,9 +409,9 @@ public class VipComicJumpActivity
     }
   }
   
-  static void a(AppRuntime paramAppRuntime, blak paramblak)
+  static void a(AppRuntime paramAppRuntime, bmbn parambmbn)
   {
-    if ((paramAppRuntime == null) || (paramblak == null)) {
+    if ((paramAppRuntime == null) || (parambmbn == null)) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -406,7 +422,7 @@ public class VipComicJumpActivity
     Object localObject2;
     if (bool2)
     {
-      localObject1 = ajvi.a().a();
+      localObject1 = akgr.a().a();
       if (localObject1 == null) {
         break label1017;
       }
@@ -416,12 +432,12 @@ public class VipComicJumpActivity
         if (!((Iterator)localObject1).hasNext()) {
           break;
         }
-        localObject2 = (arcs)((Iterator)localObject1).next();
-      } while ((localObject2 == null) || (((arcs)localObject2).jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) || (((arcs)localObject2).jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId != 1113L));
+        localObject2 = (arsh)((Iterator)localObject1).next();
+      } while ((localObject2 == null) || (((arsh)localObject2).jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) || (((arsh)localObject2).jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId != 1113L));
     }
     label119:
     label1017:
-    for (int i = ((arcs)localObject2).jdField_a_of_type_Byte;; i = -1)
+    for (int i = ((arsh)localObject2).jdField_a_of_type_Byte;; i = -1)
     {
       label122:
       String str;
@@ -442,7 +458,7 @@ public class VipComicJumpActivity
         if (!bool2) {
           break label699;
         }
-        paramAppRuntime = (baif)paramAppRuntime.getManager(36);
+        paramAppRuntime = (bbav)paramAppRuntime.getManager(36);
         if (paramAppRuntime == null) {
           break;
         }
@@ -456,33 +472,33 @@ public class VipComicJumpActivity
           break label674;
         }
         bool1 = true;
-        paramblak.a("index", bool1);
+        parambmbn.a("index", bool1);
         if ((paramAppRuntime == null) || (paramAppRuntime.iNewFlag.get() == 0)) {
           break label679;
         }
         bool1 = true;
-        paramblak.a("fav", bool1);
+        parambmbn.a("fav", bool1);
         if ((localObject3 == null) || (((BusinessInfoCheckUpdate.AppInfo)localObject3).iNewFlag.get() == 0)) {
           break label684;
         }
         bool1 = true;
-        paramblak.a("category", bool1);
+        parambmbn.a("category", bool1);
         if ((localObject5 == null) || (((BusinessInfoCheckUpdate.AppInfo)localObject5).iNewFlag.get() == 0)) {
           break label689;
         }
         bool1 = true;
-        paramblak.a("more", bool1);
+        parambmbn.a("more", bool1);
         if ((localObject4 == null) || (((BusinessInfoCheckUpdate.AppInfo)localObject4).iNewFlag.get() == 0)) {
           break label694;
         }
       }
       for (boolean bool1 = true;; bool1 = false)
       {
-        paramblak.a("group", bool1);
-        if ((localObject1 != null) && (paramblak.jdField_g_of_type_Boolean))
+        parambmbn.a("group", bool1);
+        if ((localObject1 != null) && (parambmbn.jdField_h_of_type_Boolean))
         {
-          a(((BusinessInfoCheckUpdate.AppInfo)localObject1).buffer.get(), ((BusinessInfoCheckUpdate.AppInfo)localObject1).missions.get(), paramblak);
-          paramblak.jdField_g_of_type_JavaLangString = a(((BusinessInfoCheckUpdate.AppInfo)localObject1).missions.get());
+          a(((BusinessInfoCheckUpdate.AppInfo)localObject1).buffer.get(), ((BusinessInfoCheckUpdate.AppInfo)localObject1).missions.get(), parambmbn);
+          parambmbn.jdField_g_of_type_JavaLangString = a(((BusinessInfoCheckUpdate.AppInfo)localObject1).missions.get());
         }
         if (!QLog.isColorLevel()) {
           break label990;
@@ -491,11 +507,11 @@ public class VipComicJumpActivity
         return;
         bool1 = false;
         break label119;
-        localObject1 = (blby)paramAppRuntime.getManager(213);
+        localObject1 = (bmdb)paramAppRuntime.getManager(213);
         if (localObject1 == null) {
           break;
         }
-        bool1 = ((blby)localObject1).a(1113);
+        bool1 = ((bmdb)localObject1).a(1113);
         break label122;
         localObject6 = "100600.100001113." + 100100800;
         localObject5 = "100600.100001113." + 100100802;
@@ -520,7 +536,7 @@ public class VipComicJumpActivity
       paramAppRuntime.add(localObject3);
       paramAppRuntime.add(localObject5);
       paramAppRuntime.add(localObject4);
-      paramAppRuntime = ((blby)localObject1).a(paramAppRuntime);
+      paramAppRuntime = ((bmdb)localObject1).a(paramAppRuntime);
       if (paramAppRuntime == null) {
         break;
       }
@@ -533,34 +549,34 @@ public class VipComicJumpActivity
       if ((localObject6 != null) && (((RedAppInfo)localObject6).b() != 0))
       {
         bool1 = true;
-        paramblak.a("index", bool1);
+        parambmbn.a("index", bool1);
         if ((paramAppRuntime == null) || (paramAppRuntime.b() == 0)) {
           break label997;
         }
         bool1 = true;
-        paramblak.a("fav", bool1);
+        parambmbn.a("fav", bool1);
         if ((localObject3 == null) || (((RedAppInfo)localObject3).b() == 0)) {
           break label1002;
         }
         bool1 = true;
-        paramblak.a("category", bool1);
+        parambmbn.a("category", bool1);
         if ((localObject5 == null) || (((RedAppInfo)localObject5).b() == 0)) {
           break label1007;
         }
         bool1 = true;
-        paramblak.a("more", bool1);
+        parambmbn.a("more", bool1);
         if ((localObject4 == null) || (((RedAppInfo)localObject4).b() == 0)) {
           break label1012;
         }
       }
       for (bool1 = true;; bool1 = false)
       {
-        paramblak.a("group", bool1);
-        if ((localObject1 == null) || (!paramblak.jdField_g_of_type_Boolean)) {
+        parambmbn.a("group", bool1);
+        if ((localObject1 == null) || (!parambmbn.jdField_h_of_type_Boolean)) {
           break label496;
         }
-        a(((RedAppInfo)localObject1).a(), ((RedAppInfo)localObject1).a(), paramblak);
-        paramblak.jdField_g_of_type_JavaLangString = a(((RedAppInfo)localObject1).a());
+        a(((RedAppInfo)localObject1).a(), ((RedAppInfo)localObject1).a(), parambmbn);
+        parambmbn.jdField_g_of_type_JavaLangString = a(((RedAppInfo)localObject1).a());
         break label496;
         break;
         bool1 = false;
@@ -575,9 +591,9 @@ public class VipComicJumpActivity
     }
   }
   
-  public static boolean a(AppInterface paramAppInterface, Activity paramActivity, blak paramblak)
+  public static boolean a(AppInterface paramAppInterface, Activity paramActivity, bmbn parambmbn)
   {
-    if ((paramAppInterface == null) || (paramActivity == null) || (paramblak == null)) {
+    if ((paramAppInterface == null) || (paramActivity == null) || (parambmbn == null)) {
       return false;
     }
     if (QLog.isColorLevel()) {
@@ -587,10 +603,10 @@ public class VipComicJumpActivity
     String str;
     Object localObject2;
     Object localObject4;
-    if (("com.qqcomic.activity.VipComicMainTabActivity".equals(paramblak.jdField_b_of_type_JavaLangString)) && (paramblak.jdField_d_of_type_JavaLangString == null))
+    if (("com.qqcomic.activity.VipComicMainTabActivity".equals(parambmbn.jdField_b_of_type_JavaLangString)) && (parambmbn.jdField_d_of_type_JavaLangString == null))
     {
       i = 1;
-      if ((paramblak.jdField_a_of_type_Int != 12) || (i == 0)) {
+      if ((parambmbn.jdField_a_of_type_Int != 12) || (i == 0)) {
         break label312;
       }
       localObject3 = paramActivity.getSharedPreferences("vip_comic_file", 4);
@@ -638,47 +654,47 @@ public class VipComicJumpActivity
       }
       label312:
       Object localObject1;
-      if ("com.qqcomic.activity.VipComicMainTabActivity".equals(paramblak.jdField_b_of_type_JavaLangString))
+      if ("com.qqcomic.activity.VipComicMainTabActivity".equals(parambmbn.jdField_b_of_type_JavaLangString))
       {
-        a(paramAppInterface, paramblak);
+        a(paramAppInterface, parambmbn);
         if (QLog.isColorLevel()) {
           QLog.d("QQComicDebug", 2, "handle param parse red touch end");
         }
-        if (paramblak.jdField_h_of_type_Boolean)
+        if (parambmbn.i)
         {
-          paramAppInterface = nko.a(paramblak.jdField_h_of_type_JavaLangString, "returnIndex=true");
+          paramAppInterface = nmj.a(parambmbn.jdField_h_of_type_JavaLangString, "returnIndex=true");
           localObject1 = new Intent();
           ((Intent)localObject1).putExtra("url", paramAppInterface);
-          ((Intent)localObject1).putExtra("reportSourceFrom", paramblak.jdField_a_of_type_Int);
-          ((Intent)localObject1).putExtra("startOpenPageTime", paramblak.jdField_a_of_type_Long);
-          blae.a(paramActivity, (Intent)localObject1, -1);
+          ((Intent)localObject1).putExtra("reportSourceFrom", parambmbn.jdField_a_of_type_Int);
+          ((Intent)localObject1).putExtra("startOpenPageTime", parambmbn.jdField_a_of_type_Long);
+          bmbh.a(paramActivity, (Intent)localObject1, -1);
           if (QLog.isColorLevel()) {
             QLog.d("VipComicJumpActivity", 2, "jump to comic activity page directly, url=" + paramAppInterface);
           }
           return true;
         }
         localObject1 = new ArrayList();
-        j = paramActivity.getResources().getDimensionPixelSize(2131298998);
+        j = paramActivity.getResources().getDimensionPixelSize(2131299011);
         i = j;
         if (ImmersiveUtils.isSupporImmersive() == 1) {
           i = j + ImmersiveUtils.getStatusBarHeight(paramActivity);
         }
         i = (int)((i - 0.5F) / paramActivity.getResources().getDisplayMetrics().density);
-        paramAppInterface = blan.a();
+        paramAppInterface = bmbq.a();
         if ((paramAppInterface != null) && (!paramAppInterface.isEmpty()))
         {
           localObject2 = paramAppInterface.iterator();
           if (((Iterator)localObject2).hasNext())
           {
-            localObject3 = (blao)((Iterator)localObject2).next();
+            localObject3 = (bmbr)((Iterator)localObject2).next();
             localObject4 = new WebViewTabBarData();
-            ((WebViewTabBarData)localObject4).tag = ((blao)localObject3).jdField_a_of_type_JavaLangString;
-            ((WebViewTabBarData)localObject4).tabName = ((blao)localObject3).jdField_b_of_type_JavaLangString;
-            if (TextUtils.equals(((blao)localObject3).jdField_a_of_type_JavaLangString, "index")) {}
-            for (paramAppInterface = "&redDotIds=" + paramblak.jdField_g_of_type_JavaLangString;; paramAppInterface = "")
+            ((WebViewTabBarData)localObject4).tag = ((bmbr)localObject3).jdField_a_of_type_JavaLangString;
+            ((WebViewTabBarData)localObject4).tabName = ((bmbr)localObject3).jdField_b_of_type_JavaLangString;
+            if (TextUtils.equals(((bmbr)localObject3).jdField_a_of_type_JavaLangString, "index")) {}
+            for (paramAppInterface = "&redDotIds=" + parambmbn.jdField_g_of_type_JavaLangString;; paramAppInterface = "")
             {
-              ((WebViewTabBarData)localObject4).url = nko.a(((blao)localObject3).jdField_c_of_type_JavaLangString, "_cfrom=" + paramblak.jdField_a_of_type_Int + "&hasRedDot=" + paramblak.a(((blao)localObject3).jdField_a_of_type_JavaLangString) + "&_titleBarHeight=" + i + paramAppInterface);
-              ((WebViewTabBarData)localObject4).tabIcon = blan.a(((blao)localObject3).jdField_d_of_type_JavaLangString);
+              ((WebViewTabBarData)localObject4).url = nmj.a(((bmbr)localObject3).jdField_c_of_type_JavaLangString, "_cfrom=" + parambmbn.jdField_a_of_type_Int + "&hasRedDot=" + parambmbn.a(((bmbr)localObject3).jdField_a_of_type_JavaLangString) + "&_titleBarHeight=" + i + paramAppInterface);
+              ((WebViewTabBarData)localObject4).tabIcon = bmbq.a(((bmbr)localObject3).jdField_d_of_type_JavaLangString);
               ((ArrayList)localObject1).add(localObject4);
               break;
             }
@@ -688,24 +704,24 @@ public class VipComicJumpActivity
         {
           paramAppInterface = new WebViewTabBarData();
           paramAppInterface.tag = "index";
-          paramAppInterface.tabName = anni.a(2131715160);
-          paramAppInterface.url = a("comicIndex", null, "64", "5", "", null, "_cfrom=" + paramblak.jdField_a_of_type_Int + "&hasRedDot=" + paramblak.a("index") + "&_titleBarHeight=" + i + "&redDotIds=" + paramblak.jdField_g_of_type_JavaLangString);
+          paramAppInterface.tabName = anzj.a(2131715269);
+          paramAppInterface.url = a("comicIndex", null, "64", "5", "", null, "_cfrom=" + parambmbn.jdField_a_of_type_Int + "&hasRedDot=" + parambmbn.a("index") + "&_titleBarHeight=" + i + "&redDotIds=" + parambmbn.jdField_g_of_type_JavaLangString);
           localObject2 = new WebViewTabBarData();
           ((WebViewTabBarData)localObject2).tag = "fav";
-          ((WebViewTabBarData)localObject2).tabName = anni.a(2131715154);
-          ((WebViewTabBarData)localObject2).url = a("comicFav", null, "", "1", "354", "%7B%22tabNum%22%3A2%2C%22subTextArray%22%3A%5B%22%E6%94%B6%E8%97%8F%22%2C%22%E4%B8%8B%E8%BD%BD%22%5D%7D", "_cfrom=" + paramblak.jdField_a_of_type_Int + "&hasRedDot=" + paramblak.a("fav") + "&_titleBarHeight=" + i);
+          ((WebViewTabBarData)localObject2).tabName = anzj.a(2131715263);
+          ((WebViewTabBarData)localObject2).url = a("comicFav", null, "", "1", "354", "%7B%22tabNum%22%3A2%2C%22subTextArray%22%3A%5B%22%E6%94%B6%E8%97%8F%22%2C%22%E4%B8%8B%E8%BD%BD%22%5D%7D", "_cfrom=" + parambmbn.jdField_a_of_type_Int + "&hasRedDot=" + parambmbn.a("fav") + "&_titleBarHeight=" + i);
           localObject3 = new WebViewTabBarData();
           ((WebViewTabBarData)localObject3).tag = "category";
-          ((WebViewTabBarData)localObject3).tabName = anni.a(2131715157);
-          ((WebViewTabBarData)localObject3).url = a("comicCategory", null, null, "1", "354", null, "_cfrom=" + paramblak.jdField_a_of_type_Int + "&hasRedDot=" + paramblak.a("category") + "&_titleBarHeight=" + i);
+          ((WebViewTabBarData)localObject3).tabName = anzj.a(2131715266);
+          ((WebViewTabBarData)localObject3).url = a("comicCategory", null, null, "1", "354", null, "_cfrom=" + parambmbn.jdField_a_of_type_Int + "&hasRedDot=" + parambmbn.a("category") + "&_titleBarHeight=" + i);
           localObject4 = new WebViewTabBarData();
           ((WebViewTabBarData)localObject4).tag = "more";
-          ((WebViewTabBarData)localObject4).tabName = anni.a(2131715238);
-          ((WebViewTabBarData)localObject4).url = a("comicMore", null, null, "1", "354", null, "_cfrom=" + paramblak.jdField_a_of_type_Int + "&hasRedDot=" + paramblak.a("more") + "&_titleBarHeight=" + i);
+          ((WebViewTabBarData)localObject4).tabName = anzj.a(2131715347);
+          ((WebViewTabBarData)localObject4).url = a("comicMore", null, null, "1", "354", null, "_cfrom=" + parambmbn.jdField_a_of_type_Int + "&hasRedDot=" + parambmbn.a("more") + "&_titleBarHeight=" + i);
           WebViewTabBarData localWebViewTabBarData = new WebViewTabBarData();
           localWebViewTabBarData.tag = "group";
-          localWebViewTabBarData.tabName = anni.a(2131715166);
-          localWebViewTabBarData.url = a("comicGroup", null, null, "1", "354", null, "_cfrom=" + paramblak.jdField_a_of_type_Int + "&hasRedDot=" + paramblak.a("group") + "&_titleBarHeight=" + i);
+          localWebViewTabBarData.tabName = anzj.a(2131715275);
+          localWebViewTabBarData.url = a("comicGroup", null, null, "1", "354", null, "_cfrom=" + parambmbn.jdField_a_of_type_Int + "&hasRedDot=" + parambmbn.a("group") + "&_titleBarHeight=" + i);
           ((ArrayList)localObject1).add(paramAppInterface);
           ((ArrayList)localObject1).add(localObject2);
           ((ArrayList)localObject1).add(localObject3);
@@ -722,49 +738,49 @@ public class VipComicJumpActivity
           }
         }
         i = 0;
-        if (paramblak.jdField_d_of_type_JavaLangString == null) {
+        if (parambmbn.jdField_d_of_type_JavaLangString == null) {
           break label1912;
         }
       }
       label1724:
       label1912:
-      for (int j = a(paramblak.jdField_d_of_type_JavaLangString, (List)localObject1);; j = 0)
+      for (int j = a(parambmbn.jdField_d_of_type_JavaLangString, (List)localObject1);; j = 0)
       {
         paramAppInterface = (WebViewTabBarData)((ArrayList)localObject1).get(j);
-        paramAppInterface.url = nko.a(paramAppInterface.url, "isDefaultTab=1");
-        if (paramblak.jdField_e_of_type_JavaLangString != null) {}
+        paramAppInterface.url = nmj.a(paramAppInterface.url, "isDefaultTab=1");
+        if (parambmbn.jdField_e_of_type_JavaLangString != null) {}
         try
         {
-          i = Integer.parseInt(paramblak.jdField_e_of_type_JavaLangString);
-          if ((!TextUtils.isEmpty(paramblak.jdField_a_of_type_JavaLangString)) && (j >= 0) && (j < ((ArrayList)localObject1).size()))
+          i = Integer.parseInt(parambmbn.jdField_e_of_type_JavaLangString);
+          if ((!TextUtils.isEmpty(parambmbn.jdField_a_of_type_JavaLangString)) && (j >= 0) && (j < ((ArrayList)localObject1).size()))
           {
             paramAppInterface = (WebViewTabBarData)((ArrayList)localObject1).get(j);
-            paramAppInterface.url = nko.a(paramAppInterface.url, "extUrlParam=" + URLEncoder.encode(paramblak.jdField_a_of_type_JavaLangString));
+            paramAppInterface.url = nmj.a(paramAppInterface.url, "extUrlParam=" + URLEncoder.encode(parambmbn.jdField_a_of_type_JavaLangString));
           }
           localObject2 = new Intent();
           ((Intent)localObject2).putExtra("tabConfigData", (Serializable)localObject1);
-          ((Intent)localObject2).putExtra("reportSourceFrom", paramblak.jdField_a_of_type_Int);
-          ((Intent)localObject2).putExtra("startOpenPageTime", paramblak.jdField_a_of_type_Long);
+          ((Intent)localObject2).putExtra("reportSourceFrom", parambmbn.jdField_a_of_type_Int);
+          ((Intent)localObject2).putExtra("startOpenPageTime", parambmbn.jdField_a_of_type_Long);
           ((Intent)localObject2).putExtra("key_maintab", j);
           ((Intent)localObject2).putExtra("tabDefaultIndex", j);
           ((Intent)localObject2).putExtra("key_subtab", i);
-          if (TextUtils.isEmpty(paramblak.jdField_f_of_type_JavaLangString))
+          if (TextUtils.isEmpty(parambmbn.jdField_f_of_type_JavaLangString))
           {
-            paramAppInterface = paramActivity.getString(2131690563);
+            paramAppInterface = paramActivity.getString(2131690559);
             ((Intent)localObject2).putExtra("selfSet_leftViewText", paramAppInterface);
-            if ((paramblak.jdField_a_of_type_Int == 1006002) || (paramblak.jdField_a_of_type_Int == 1006003))
+            if ((parambmbn.jdField_a_of_type_Int == 1006002) || (parambmbn.jdField_a_of_type_Int == 1006003))
             {
-              if (paramblak.jdField_a_of_type_Int != 1006002) {
+              if (parambmbn.jdField_a_of_type_Int != 1006002) {
                 break label1724;
               }
               i = 40400;
               ((Intent)localObject2).putExtra("individuation_url_type", i);
             }
-            if (paramblak.jdField_d_of_type_Boolean) {
+            if (parambmbn.jdField_e_of_type_Boolean) {
               ((Intent)localObject2).setFlags(((Intent)localObject2).getFlags() | 0x4000000 | 0x10000000);
             }
-            blae.a(paramActivity, (Intent)localObject2, -1);
-            VipUtils.a(null, "VIPCOMIC", "0X8005FC8", "0X8005FC8", paramblak.jdField_a_of_type_Int, 0, new String[] { String.valueOf(System.currentTimeMillis() - paramblak.jdField_b_of_type_Long) });
+            bmbh.a(paramActivity, (Intent)localObject2, -1);
+            VipUtils.a(null, "VIPCOMIC", "0X8005FC8", "0X8005FC8", parambmbn.jdField_a_of_type_Int, 0, new String[] { String.valueOf(System.currentTimeMillis() - parambmbn.jdField_b_of_type_Long) });
             if (QLog.isColorLevel()) {
               QLog.d("QQComicDebug", 2, "handle param open main tab end");
             }
@@ -777,30 +793,30 @@ public class VipComicJumpActivity
           {
             i = 0;
             continue;
-            paramAppInterface = paramblak.jdField_f_of_type_JavaLangString;
+            paramAppInterface = parambmbn.jdField_f_of_type_JavaLangString;
             continue;
             i = 40401;
           }
         }
-        if ("com.qqcomic.activity.VipComicTabBrowserActivity".equals(paramblak.jdField_b_of_type_JavaLangString))
+        if ("com.qqcomic.activity.VipComicTabBrowserActivity".equals(parambmbn.jdField_b_of_type_JavaLangString))
         {
           localObject1 = new Intent();
-          ((Intent)localObject1).putExtra("url", paramblak.jdField_c_of_type_JavaLangString);
-          ((Intent)localObject1).putExtra("reportSourceFrom", paramblak.jdField_a_of_type_Int);
-          ((Intent)localObject1).putExtra("startOpenPageTime", paramblak.jdField_a_of_type_Long);
-          if (TextUtils.isEmpty(paramblak.jdField_f_of_type_JavaLangString)) {}
-          for (paramAppInterface = paramActivity.getString(2131690563);; paramAppInterface = paramblak.jdField_f_of_type_JavaLangString)
+          ((Intent)localObject1).putExtra("url", parambmbn.jdField_c_of_type_JavaLangString);
+          ((Intent)localObject1).putExtra("reportSourceFrom", parambmbn.jdField_a_of_type_Int);
+          ((Intent)localObject1).putExtra("startOpenPageTime", parambmbn.jdField_a_of_type_Long);
+          if (TextUtils.isEmpty(parambmbn.jdField_f_of_type_JavaLangString)) {}
+          for (paramAppInterface = paramActivity.getString(2131690559);; paramAppInterface = parambmbn.jdField_f_of_type_JavaLangString)
           {
             ((Intent)localObject1).putExtra("selfSet_leftViewText", paramAppInterface);
-            blae.a(paramActivity, (Intent)localObject1, -1);
-            VipUtils.a(null, "VIPCOMIC", "0X8005FC8", "0X8005FC8", paramblak.jdField_a_of_type_Int, 0, new String[] { String.valueOf(System.currentTimeMillis() - paramblak.jdField_b_of_type_Long) });
+            bmbh.a(paramActivity, (Intent)localObject1, -1);
+            VipUtils.a(null, "VIPCOMIC", "0X8005FC8", "0X8005FC8", parambmbn.jdField_a_of_type_Int, 0, new String[] { String.valueOf(System.currentTimeMillis() - parambmbn.jdField_b_of_type_Long) });
             if (QLog.isColorLevel()) {
               QLog.d("QQComicDebug", 2, "handle param open web end");
             }
             return true;
           }
         }
-        paramblak.jdField_f_of_type_Boolean = true;
+        parambmbn.jdField_g_of_type_Boolean = true;
         if (QLog.isColorLevel()) {
           QLog.d("QQComicDebug", 2, "handle param end");
         }
@@ -809,7 +825,7 @@ public class VipComicJumpActivity
     }
   }
   
-  static boolean a(String paramString, List<String> paramList, blak paramblak)
+  static boolean a(String paramString, List<String> paramList, bmbn parambmbn)
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramList != null) && (!paramList.isEmpty()))
     {
@@ -835,14 +851,14 @@ public class VipComicJumpActivity
                 if (!TextUtils.isEmpty((CharSequence)localObject))
                 {
                   localObject = new JSONObject((String)localObject);
-                  paramblak.jdField_h_of_type_Boolean = "redirect".equals(((JSONObject)localObject).optString("type"));
-                  if (paramblak.jdField_h_of_type_Boolean)
+                  parambmbn.i = "redirect".equals(((JSONObject)localObject).optString("type"));
+                  if (parambmbn.i)
                   {
                     localObject = ((JSONObject)localObject).optString("link");
                     if (!TextUtils.isEmpty((CharSequence)localObject)) {
                       break;
                     }
-                    paramblak.jdField_h_of_type_Boolean = false;
+                    parambmbn.i = false;
                   }
                 }
               }
@@ -861,7 +877,7 @@ public class VipComicJumpActivity
           QLog.e("VipComicJumpActivity", 1, "parse red failed", paramString);
           paramString = localException;
         }
-        paramblak.jdField_h_of_type_JavaLangString = localException;
+        parambmbn.jdField_h_of_type_JavaLangString = localException;
         return true;
       }
     }
@@ -871,7 +887,7 @@ public class VipComicJumpActivity
   
   public static String b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    StringBuilder localStringBuilder = bkge.a();
+    StringBuilder localStringBuilder = blhi.a();
     if (!TextUtils.isEmpty(paramString7)) {
       localStringBuilder.append(paramString7);
     }
@@ -903,103 +919,104 @@ public class VipComicJumpActivity
     if ((localStringBuilder.length() > 0) && (localStringBuilder.charAt(0) == '&')) {
       localStringBuilder.deleteCharAt(0);
     }
-    return nko.a(paramString1, localStringBuilder.toString());
+    return nmj.a(paramString1, localStringBuilder.toString());
   }
   
-  void a(Activity paramActivity, blak paramblak)
+  void a(Activity paramActivity, bmbn parambmbn)
   {
-    if ((paramActivity == null) || (paramblak == null)) {
+    if ((paramActivity == null) || (parambmbn == null)) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQComicDebug", 2, "call start plugin activity start.");
     }
-    Intent localIntent = paramblak.jdField_a_of_type_AndroidContentIntent;
+    Intent localIntent = parambmbn.jdField_a_of_type_AndroidContentIntent;
     localIntent.putExtra("begin_to_load_comic_plugin", System.currentTimeMillis());
-    localIntent.putExtra("startOpenPageTime", paramblak.jdField_a_of_type_Long);
+    localIntent.putExtra("startOpenPageTime", parambmbn.jdField_a_of_type_Long);
     localIntent.putExtra("pluginFinished", this.jdField_a_of_type_Long);
-    if (!TextUtils.isEmpty(paramblak.jdField_c_of_type_JavaLangString)) {
-      localIntent.putExtra("url", paramblak.jdField_c_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(parambmbn.jdField_c_of_type_JavaLangString)) {
+      localIntent.putExtra("url", parambmbn.jdField_c_of_type_JavaLangString);
     }
-    if (paramblak.jdField_a_of_type_Blaj != null)
+    if (parambmbn.jdField_a_of_type_Bmbm != null)
     {
-      localIntent.putExtra("key_comic_id", paramblak.jdField_a_of_type_Blaj.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("key_section_id", paramblak.jdField_a_of_type_Blaj.jdField_b_of_type_JavaLangString);
-      localIntent.putExtra("key_pic_id", paramblak.jdField_a_of_type_Blaj.jdField_c_of_type_JavaLangString);
-      localIntent.putExtra("key_pic_offset_ratio", paramblak.jdField_a_of_type_Blaj.jdField_a_of_type_Int);
-      localIntent.putExtra("key_type", paramblak.jdField_a_of_type_Blaj.jdField_b_of_type_Int);
+      localIntent.putExtra("key_comic_id", parambmbn.jdField_a_of_type_Bmbm.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("key_section_id", parambmbn.jdField_a_of_type_Bmbm.jdField_b_of_type_JavaLangString);
+      localIntent.putExtra("key_pic_id", parambmbn.jdField_a_of_type_Bmbm.jdField_c_of_type_JavaLangString);
+      localIntent.putExtra("key_pic_offset_ratio", parambmbn.jdField_a_of_type_Bmbm.jdField_a_of_type_Int);
+      localIntent.putExtra("key_type", parambmbn.jdField_a_of_type_Bmbm.jdField_b_of_type_Int);
       localIntent.putExtra("key_jump_from_out_plugin", true);
-      localIntent.putExtra("key_return_to_detail", paramblak.jdField_a_of_type_Boolean);
-      localIntent.putExtra("key_is_player_locked", paramblak.jdField_c_of_type_Boolean);
-      localIntent.putExtra("key_return_to_home_from_detail", paramblak.jdField_b_of_type_Boolean);
-      localIntent.putExtra("key_is_fullscreen", paramblak.jdField_e_of_type_Boolean);
-      localIntent.putExtra("key_video_player_type", paramblak.jdField_a_of_type_Blaj.jdField_c_of_type_Int);
-      localIntent.putExtra("key_cloud_url", paramblak.jdField_a_of_type_Blaj.jdField_e_of_type_JavaLangString);
+      localIntent.putExtra("key_return_to_detail", parambmbn.jdField_a_of_type_Boolean);
+      localIntent.putExtra("key_return_to_home", parambmbn.jdField_b_of_type_Boolean);
+      localIntent.putExtra("key_is_player_locked", parambmbn.jdField_d_of_type_Boolean);
+      localIntent.putExtra("key_return_to_home_from_detail", parambmbn.jdField_c_of_type_Boolean);
+      localIntent.putExtra("key_is_fullscreen", parambmbn.jdField_f_of_type_Boolean);
+      localIntent.putExtra("key_video_player_type", parambmbn.jdField_a_of_type_Bmbm.jdField_c_of_type_Int);
+      localIntent.putExtra("key_cloud_url", parambmbn.jdField_a_of_type_Bmbm.jdField_e_of_type_JavaLangString);
       localIntent.putExtra("key_from_out_entry", true);
-      if (!TextUtils.isEmpty(paramblak.jdField_a_of_type_Blaj.jdField_d_of_type_JavaLangString)) {
-        localIntent.putExtra("url", paramblak.jdField_a_of_type_Blaj.jdField_d_of_type_JavaLangString);
+      if (!TextUtils.isEmpty(parambmbn.jdField_a_of_type_Bmbm.jdField_d_of_type_JavaLangString)) {
+        localIntent.putExtra("url", parambmbn.jdField_a_of_type_Bmbm.jdField_d_of_type_JavaLangString);
       }
     }
-    localIntent.putExtra("key_source_from", paramblak.jdField_a_of_type_Int);
-    if (TextUtils.isEmpty(paramblak.jdField_f_of_type_JavaLangString))
+    localIntent.putExtra("key_source_from", parambmbn.jdField_a_of_type_Int);
+    if (TextUtils.isEmpty(parambmbn.jdField_f_of_type_JavaLangString))
     {
-      localIntent.putExtra("selfSet_leftViewText", getString(2131690563));
-      label351:
-      if (paramblak.jdField_d_of_type_Boolean) {
+      localIntent.putExtra("selfSet_leftViewText", getString(2131690559));
+      label364:
+      if (parambmbn.jdField_e_of_type_Boolean) {
         localIntent.addFlags(67108864);
       }
-      localIntent.putExtra("reportSourceFrom", paramblak.jdField_a_of_type_Int);
+      localIntent.putExtra("reportSourceFrom", parambmbn.jdField_a_of_type_Int);
       if (!this.jdField_a_of_type_Boolean) {
-        break label615;
+        break label628;
       }
     }
-    label615:
+    label628:
     for (int i = 1;; i = 0)
     {
       localIntent.putExtra("reportProcessExistFlag", i);
-      localIntent.putExtra("reportLebaClick", paramblak.jdField_a_of_type_Long);
-      localIntent.putExtra("reportJumpActivityOnCreate", paramblak.jdField_b_of_type_Long);
-      if ((paramblak.jdField_b_of_type_Long != 0L) && (this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Long > paramblak.jdField_b_of_type_Long)) {
-        localIntent.putExtra("reportDownloadTime", this.jdField_a_of_type_Long - paramblak.jdField_b_of_type_Long);
+      localIntent.putExtra("reportLebaClick", parambmbn.jdField_a_of_type_Long);
+      localIntent.putExtra("reportJumpActivityOnCreate", parambmbn.jdField_b_of_type_Long);
+      if ((parambmbn.jdField_b_of_type_Long != 0L) && (this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Long > parambmbn.jdField_b_of_type_Long)) {
+        localIntent.putExtra("reportDownloadTime", this.jdField_a_of_type_Long - parambmbn.jdField_b_of_type_Long);
       }
       if ((this.jdField_b_of_type_Long != 0L) && (this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Long > this.jdField_a_of_type_Long)) {
         localIntent.putExtra("reportInstallTime", this.jdField_b_of_type_Long - this.jdField_a_of_type_Long);
       }
       localIntent.putExtra("reportStartPluginTime", System.currentTimeMillis());
       localIntent.putExtra("isFromJumpActivity", true);
-      bkzq localbkzq = bkzp.a(2);
-      avaj localavaj = null;
-      if (localbkzq != null)
+      bmat localbmat = bmas.a(2);
+      avsk localavsk = null;
+      if (localbmat != null)
       {
-        localbkzq.a();
-        localavaj = localbkzq.a;
+        localbmat.a();
+        localavsk = localbmat.a;
       }
-      blbu.a(paramActivity, localIntent, paramblak.jdField_b_of_type_JavaLangString, localavaj);
+      bmcx.a(paramActivity, localIntent, parambmbn.jdField_b_of_type_JavaLangString, localavsk);
       if (!QLog.isColorLevel()) {
         break;
       }
       QLog.d("QQComicDebug", 2, "call start plugin activity end.");
       return;
-      localIntent.putExtra("selfSet_leftViewText", paramblak.jdField_f_of_type_JavaLangString);
-      break label351;
+      localIntent.putExtra("selfSet_leftViewText", parambmbn.jdField_f_of_type_JavaLangString);
+      break label364;
     }
   }
   
-  public void a(blak paramblak)
+  public void a(bmbn parambmbn)
   {
     if (QLog.isColorLevel()) {
       QLog.d("QQComicDebug", 2, "init plugin start");
     }
     a(this.app, false);
-    ThreadManager.postImmediately(new VipComicJumpActivity.2(this, this.app, paramblak), null, true);
+    ThreadManager.postImmediately(new VipComicJumpActivity.2(this, this.app, parambmbn), null, true);
     if (QLog.isColorLevel()) {
       QLog.d("QQComicDebug", 2, "init plugin end");
     }
   }
   
-  public void a(blak paramblak, int paramInt)
+  public void a(bmbn parambmbn, int paramInt)
   {
-    if (paramblak == null) {
+    if (parambmbn == null) {
       return;
     }
     this.jdField_c_of_type_Long = System.currentTimeMillis();
@@ -1010,11 +1027,11 @@ public class VipComicJumpActivity
         if (this.app == null) {
           continue;
         }
-        localObject1 = (anuk)this.app.a(13);
+        localObject1 = (aogu)this.app.a(13);
         if (localObject1 == null) {
           continue;
         }
-        i = ((anuk)localObject1).g();
+        i = ((aogu)localObject1).g();
         if (i != 1) {
           continue;
         }
@@ -1027,10 +1044,10 @@ public class VipComicJumpActivity
         localException.printStackTrace();
         Object localObject2 = "1";
         continue;
-        if ((paramblak.jdField_b_of_type_Long == 0L) || (this.jdField_a_of_type_Long == 0L) || (this.jdField_a_of_type_Long <= paramblak.jdField_b_of_type_Long)) {
+        if ((parambmbn.jdField_b_of_type_Long == 0L) || (this.jdField_a_of_type_Long == 0L) || (this.jdField_a_of_type_Long <= parambmbn.jdField_b_of_type_Long)) {
           continue;
         }
-        String str1 = this.jdField_a_of_type_Long - paramblak.jdField_b_of_type_Long + "";
+        String str1 = this.jdField_a_of_type_Long - parambmbn.jdField_b_of_type_Long + "";
         continue;
         String str4 = "0";
         continue;
@@ -1056,15 +1073,15 @@ public class VipComicJumpActivity
         continue;
       }
       str3 = this.jdField_c_of_type_Long - this.jdField_b_of_type_Long + "";
-      if ((paramblak.jdField_b_of_type_Long == 0L) || (this.jdField_c_of_type_Long == 0L) || (this.jdField_c_of_type_Long <= paramblak.jdField_b_of_type_Long)) {
+      if ((parambmbn.jdField_b_of_type_Long == 0L) || (this.jdField_c_of_type_Long == 0L) || (this.jdField_c_of_type_Long <= parambmbn.jdField_b_of_type_Long)) {
         continue;
       }
-      str4 = this.jdField_c_of_type_Long - paramblak.jdField_b_of_type_Long + "";
+      str4 = this.jdField_c_of_type_Long - parambmbn.jdField_b_of_type_Long + "";
       if (QLog.isColorLevel()) {
-        QLog.d("VipComicJumpActivity", 2, "downloadCost:" + (String)localObject1 + ", installCost:" + str2 + ", launchCost:" + str3 + ", allCost:" + str4 + ",[startTime-launchTime]=[" + paramblak.jdField_b_of_type_Long + "-" + this.jdField_c_of_type_Long + "]");
+        QLog.d("VipComicJumpActivity", 2, "downloadCost:" + (String)localObject1 + ", installCost:" + str2 + ", launchCost:" + str3 + ", allCost:" + str4 + ",[startTime-launchTime]=[" + parambmbn.jdField_b_of_type_Long + "-" + this.jdField_c_of_type_Long + "]");
       }
-      VipUtils.a(null, "VIPCOMIC", "0X80052CA", "0X80052CA", paramblak.jdField_a_of_type_Int, paramInt, new String[] { localObject2 });
-      VipUtils.a(null, "VIPCOMIC", "0X8005359", "0X8005359", paramblak.jdField_a_of_type_Int, paramInt, new String[] { localObject1, str2, str3, str4 });
+      VipUtils.a(null, "VIPCOMIC", "0X80052CA", "0X80052CA", parambmbn.jdField_a_of_type_Int, paramInt, new String[] { localObject2 });
+      VipUtils.a(null, "VIPCOMIC", "0X8005359", "0X8005359", parambmbn.jdField_a_of_type_Int, paramInt, new String[] { localObject1, str2, str3, str4 });
       return;
       if (i != 3) {
         continue;
@@ -1073,9 +1090,9 @@ public class VipComicJumpActivity
     }
   }
   
-  void b(blak paramblak)
+  void b(bmbn parambmbn)
   {
-    if (paramblak == null) {
+    if (parambmbn == null) {
       return;
     }
     Object localObject = ((ActivityManager)getApplication().getSystemService("activity")).getRunningAppProcesses();
@@ -1091,8 +1108,8 @@ public class VipComicJumpActivity
     }
     for (int i = 1;; i = 0)
     {
-      if (paramblak.jdField_f_of_type_Boolean) {
-        this.jdField_a_of_type_Bkgm.sendEmptyMessage(1000);
+      if (parambmbn.jdField_g_of_type_Boolean) {
+        this.jdField_a_of_type_Blhq.sendEmptyMessage(1000);
       }
       this.jdField_a_of_type_Boolean = QIPCServerHelper.getInstance().isModuleRunning("comic_plugin.apk");
       if (!this.jdField_a_of_type_Boolean)
@@ -1103,8 +1120,8 @@ public class VipComicJumpActivity
         if (i == 0) {
           SystemClock.sleep(500L);
         }
-        blbu.a(this);
-        VipUtils.a(null, "VIPCOMIC", "0X8005FCE", "0X8005FCE", paramblak.jdField_a_of_type_Int, 0, new String[] { String.valueOf(System.currentTimeMillis() - paramblak.jdField_b_of_type_Long), "1" });
+        bmcx.a(this);
+        VipUtils.a(null, "VIPCOMIC", "0X8005FCE", "0X8005FCE", parambmbn.jdField_a_of_type_Int, 0, new String[] { String.valueOf(System.currentTimeMillis() - parambmbn.jdField_b_of_type_Long), "1" });
         return;
       }
       if (!QLog.isColorLevel()) {
@@ -1115,12 +1132,12 @@ public class VipComicJumpActivity
     }
   }
   
-  public void c(blak paramblak)
+  public void c(bmbn parambmbn)
   {
-    if (paramblak == null) {
+    if (parambmbn == null) {
       return;
     }
-    if (!paramblak.jdField_f_of_type_Boolean)
+    if (!parambmbn.jdField_g_of_type_Boolean)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQComicDebug", 2, "skip launch activity.");
@@ -1128,8 +1145,8 @@ public class VipComicJumpActivity
       finish();
       return;
     }
-    a(this, paramblak);
-    VipUtils.a(null, "VIPCOMIC", "0X8005FC8", "0X8005FC8", paramblak.jdField_a_of_type_Int, 0, new String[] { String.valueOf(System.currentTimeMillis() - paramblak.jdField_b_of_type_Long) });
+    a(this, parambmbn);
+    VipUtils.a(null, "VIPCOMIC", "0X8005FC8", "0X8005FC8", parambmbn.jdField_a_of_type_Int, 0, new String[] { String.valueOf(System.currentTimeMillis() - parambmbn.jdField_b_of_type_Long) });
   }
   
   @Override
@@ -1143,45 +1160,45 @@ public class VipComicJumpActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    blak localblak = a(getIntent());
-    this.jdField_a_of_type_Blak = localblak;
-    if (a(this.app, this, localblak)) {
+    bmbn localbmbn = a(getIntent());
+    this.jdField_a_of_type_Bmbn = localbmbn;
+    if (a(this.app, this, localbmbn)) {
       finish();
     }
     paramBundle = new IntentFilter();
     paramBundle.addAction("com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_FAILED");
     paramBundle.addAction("com.tencent.mobileqq.PreLoadComicProcess");
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new blam(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bmbp(this);
     getApplicationContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     if (QLog.isColorLevel()) {
       QLog.i("VipComicJumpActivity", 2, "VipComicJumpActivity.doOnCreate registerReceiver");
     }
-    setContentView(2131563058);
-    setTitle(2131719105);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370219));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370223));
-    this.jdField_a_of_type_Blfh = ((blfh)this.app.getManager(27));
+    setContentView(2131563093);
+    setTitle(2131719274);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370320));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370324));
+    this.jdField_a_of_type_Bmgk = ((bmgk)this.app.getManager(27));
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder().append("VipComicJumpActivity onCreate mPluginManager = ");
-      if (this.jdField_a_of_type_Blfh != null) {
+      if (this.jdField_a_of_type_Bmgk != null) {
         break label284;
       }
     }
     label284:
-    for (paramBundle = "null";; paramBundle = Boolean.valueOf(this.jdField_a_of_type_Blfh.isReady()))
+    for (paramBundle = "null";; paramBundle = Boolean.valueOf(this.jdField_a_of_type_Bmgk.isReady()))
     {
       QLog.d("VipComicJumpActivity", 2, paramBundle);
-      this.jdField_a_of_type_Bkgm = new bkgm(this);
-      VipUtils.a(null, "VIPCOMIC", "0X8005FC7", "0X8005FC7", localblak.jdField_a_of_type_Int, 0, new String[] { String.valueOf(System.currentTimeMillis() - localblak.jdField_b_of_type_Long) });
-      paramBundle = (bkzy)this.app.getManager(142);
+      this.jdField_a_of_type_Blhq = new blhq(this);
+      VipUtils.a(null, "VIPCOMIC", "0X8005FC7", "0X8005FC7", localbmbn.jdField_a_of_type_Int, 0, new String[] { String.valueOf(System.currentTimeMillis() - localbmbn.jdField_b_of_type_Long) });
+      paramBundle = (bmbb)this.app.getManager(142);
       if (paramBundle != null)
       {
         paramBundle.a(System.currentTimeMillis());
         paramBundle.b();
       }
-      a(localblak);
+      a(localbmbn);
       return true;
     }
   }
@@ -1198,7 +1215,7 @@ public class VipComicJumpActivity
       do
       {
         return bool;
-      } while (this.jdField_a_of_type_Blak == null);
+      } while (this.jdField_a_of_type_Bmbn == null);
       if (!this.jdField_b_of_type_Boolean)
       {
         if (QLog.isColorLevel()) {
@@ -1206,8 +1223,8 @@ public class VipComicJumpActivity
         }
         this.jdField_b_of_type_Boolean = true;
         this.jdField_c_of_type_Boolean = true;
-        c(this.jdField_a_of_type_Blak);
-        VipUtils.a(null, "VIPCOMIC", "0X8005FCE", "0X8005FCE", this.jdField_a_of_type_Blak.jdField_a_of_type_Int, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Blak.jdField_b_of_type_Long), "2" });
+        c(this.jdField_a_of_type_Bmbn);
+        VipUtils.a(null, "VIPCOMIC", "0X8005FCE", "0X8005FCE", this.jdField_a_of_type_Bmbn.jdField_a_of_type_Int, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Bmbn.jdField_b_of_type_Long), "2" });
       }
       else if (QLog.isColorLevel())
       {
@@ -1223,17 +1240,17 @@ public class VipComicJumpActivity
   
   public boolean onBackEvent()
   {
-    Object localObject = this.jdField_a_of_type_Blfh.a("comic_plugin.apk");
+    Object localObject = this.jdField_a_of_type_Bmgk.a("comic_plugin.apk");
     boolean bool = getIntent().getBooleanExtra("has_red_dot", false);
     int i;
-    if (this.jdField_a_of_type_Blak != null)
+    if (this.jdField_a_of_type_Bmbn != null)
     {
       if (localObject != null) {
         break label166;
       }
-      j = this.jdField_a_of_type_Blak.jdField_a_of_type_Int;
+      j = this.jdField_a_of_type_Bmbn.jdField_a_of_type_Int;
       l1 = System.currentTimeMillis();
-      l2 = this.jdField_a_of_type_Blak.jdField_b_of_type_Long;
+      l2 = this.jdField_a_of_type_Bmbn.jdField_b_of_type_Long;
       if (!this.jdField_a_of_type_Boolean) {
         break label129;
       }
@@ -1262,9 +1279,9 @@ public class VipComicJumpActivity
       break;
     }
     label166:
-    int j = this.jdField_a_of_type_Blak.jdField_a_of_type_Int;
+    int j = this.jdField_a_of_type_Bmbn.jdField_a_of_type_Int;
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Blak.jdField_b_of_type_Long;
+    long l2 = this.jdField_a_of_type_Bmbn.jdField_b_of_type_Long;
     int k = ((PluginBaseInfo)localObject).mState;
     if (this.jdField_a_of_type_Boolean)
     {
@@ -1304,10 +1321,10 @@ public class VipComicJumpActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Bkgm != null)
+    if (this.jdField_a_of_type_Blhq != null)
     {
-      this.jdField_a_of_type_Bkgm.removeMessages(1000);
-      this.jdField_a_of_type_Bkgm.removeMessages(1001);
+      this.jdField_a_of_type_Blhq.removeMessages(1000);
+      this.jdField_a_of_type_Blhq.removeMessages(1001);
     }
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {}
     try

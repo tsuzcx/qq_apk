@@ -1,9 +1,10 @@
-import android.graphics.Canvas;
-import com.tencent.mobileqq.widget.BubbleVideoView;
-
 public abstract interface bhur
 {
-  public abstract void a(BubbleVideoView paramBubbleVideoView, Canvas paramCanvas);
+  public abstract void a(bhuq parambhuq, float paramFloat1, float paramFloat2);
+  
+  public abstract void a(bhuq parambhuq, bhus parambhus, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean a(bhuq parambhuq, float paramFloat1, float paramFloat2);
 }
 
 

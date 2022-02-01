@@ -1,9 +1,9 @@
 package dov.com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
-import bqig;
+import brjs;
 
 class Game3DNativeEvent
-  implements bqig
+  implements brjs
 {
   public native void gestureEventNative(long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
   

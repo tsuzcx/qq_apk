@@ -1,22 +1,24 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class opq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class opq
+  implements ViewBase.OnClickListener
 {
-  private CopyOnWriteArrayList<String> a = new CopyOnWriteArrayList();
+  opq(otp paramotp, otd paramotd, Container paramContainer) {}
   
-  public void a(Context paramContext, pxk parampxk, int paramInt1, int paramInt2)
+  public final void onClick(ViewBase paramViewBase)
   {
-    if ((this.a == null) || (parampxk.a() == null) || (parampxk.a().mSmallMiniGameInfo == null) || (parampxk.a().mSmallMiniGameInfo.a == null)) {}
-    String str;
-    do
+    if (tpk.a(this.jdField_a_of_type_Otp))
     {
-      return;
-      str = parampxk.a().mSmallMiniGameInfo.b + "_" + ((omw)parampxk.a().mSmallMiniGameInfo.a.get(paramInt1)).a;
-    } while (this.a.contains(str));
-    this.a.add(str);
-    nxw.a(paramContext, parampxk.a(), parampxk.h(), paramInt1, paramInt2);
+      paramViewBase = this.jdField_a_of_type_Otd.a();
+      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
+      tpk.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Otp, 2001);
+    }
   }
 }
 

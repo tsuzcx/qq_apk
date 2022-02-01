@@ -1,19 +1,17 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.BannerAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class tak
-  implements tal
+public class tak
+  implements View.OnClickListener
 {
-  tak(szv paramszv) {}
+  public tak(BannerAdapter paramBannerAdapter, int paramInt) {}
   
-  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  public void onClick(View paramView)
   {
-    paramViewBase = paramProteusItemData.c;
-    if ((paramViewBase != null) && ((paramContext instanceof FastWebActivity))) {
-      tbp.a(paramViewBase, (FastWebActivity)paramContext, paramProteusItemData.b, paramProteusItemData.a);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.a(this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

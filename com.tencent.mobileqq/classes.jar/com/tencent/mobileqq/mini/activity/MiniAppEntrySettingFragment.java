@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ListView;
-import anni;
+import anzj;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
@@ -54,11 +54,11 @@ public class MiniAppEntrySettingFragment
   
   private void initUI(View paramView)
   {
-    this.mSettingLayout = ((BounceScrollView)paramView.findViewById(2131370934));
+    this.mSettingLayout = ((BounceScrollView)paramView.findViewById(2131371039));
     if (MiniAppUtils.isNightMode()) {
       this.mSettingLayout.setBackgroundColor(-16777216);
     }
-    this.mSettingListView = ((ListView)paramView.findViewById(2131371178));
+    this.mSettingListView = ((ListView)paramView.findViewById(2131371285));
     this.mSettingListViewAdapter = new MiniAppEntrySettingFragment.SettingListViewAdapter(this, paramView.getContext());
     this.mSettingListView.setAdapter(this.mSettingListViewAdapter);
     if (this.activity != null) {
@@ -203,7 +203,7 @@ public class MiniAppEntrySettingFragment
   
   public int getContentLayoutId()
   {
-    return 2131562413;
+    return 2131562454;
   }
   
   public void onAttach(Activity paramActivity)
@@ -221,7 +221,7 @@ public class MiniAppEntrySettingFragment
   {
     super.onViewCreated(paramView, paramBundle);
     this.activity = getActivity();
-    setTitle(anni.a(2131705589));
+    setTitle(anzj.a(2131705696));
     initData();
     initUI(paramView);
   }

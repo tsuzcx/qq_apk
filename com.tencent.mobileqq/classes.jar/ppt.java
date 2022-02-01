@@ -1,21 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.Map;
-import java.util.Set;
-
-public abstract interface ppt
-  extends ppc<BaseArticleInfo>
+public class ppt
 {
-  public abstract void a(Map<Long, rev> paramMap, boolean paramBoolean);
+  public int a;
+  public String a;
+  public boolean a;
   
-  public abstract void a(Map<Long, rev> paramMap, boolean paramBoolean, Map<Long, ubj> paramMap1, String paramString);
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
+  }
   
-  public abstract void a(Set<Long> paramSet, Map<Long, rev> paramMap);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean, String paramString);
-  
-  public abstract void b(boolean paramBoolean);
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 2);
+  }
 }
 
 

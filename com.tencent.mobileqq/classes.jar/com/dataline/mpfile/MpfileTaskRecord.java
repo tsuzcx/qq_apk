@@ -1,6 +1,6 @@
 package com.dataline.mpfile;
 
-import anhk;
+import antf;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
@@ -23,7 +23,7 @@ public class MpfileTaskRecord
   
   public MpfileTaskRecord()
   {
-    this.selfuin = String.valueOf(anhk.z);
+    this.selfuin = String.valueOf(antf.z);
     this.frienduin = this.selfuin;
     this.senderuin = this.selfuin;
     this.istroop = 6000;

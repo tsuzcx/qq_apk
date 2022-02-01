@@ -1,26 +1,40 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import UserGrowth.stSimpleMetaGdtAdInfo;
 
-class usv
-  implements Animator.AnimatorListener
+public class usv<I>
 {
-  usv(usu paramusu) {}
+  private stSimpleMetaGdtAdInfo jdField_a_of_type_UserGrowthStSimpleMetaGdtAdInfo;
+  private I jdField_a_of_type_JavaLangObject;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public stSimpleMetaGdtAdInfo a()
   {
-    usu.a(this.a).removeAnimatorListener(this);
+    return this.jdField_a_of_type_UserGrowthStSimpleMetaGdtAdInfo;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public I a()
   {
-    usu.a(this.a).setVisibility(8);
-    usu.a(this.a).removeAnimatorListener(this);
+    return this.jdField_a_of_type_JavaLangObject;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void a(stSimpleMetaGdtAdInfo paramstSimpleMetaGdtAdInfo)
+  {
+    this.jdField_a_of_type_UserGrowthStSimpleMetaGdtAdInfo = paramstSimpleMetaGdtAdInfo;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(I paramI)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramI;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
 }
 
 

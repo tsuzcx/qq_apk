@@ -1,30 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class qrw
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/service/RIJAidlClient;", "", "()V", "TAG", "", "<set-?>", "Lcom/tencent/biz/pubaccount/readinjoy/service/IRIJAidlInterface;", "rijAidlInterface", "getRijAidlInterface", "()Lcom/tencent/biz/pubaccount/readinjoy/service/IRIJAidlInterface;", "rijServiceConnection", "Lcom/tencent/biz/pubaccount/readinjoy/service/RIJAidlClient$RIJServiceConnection;", "bindService", "", "context", "Landroid/content/Context;", "getInstance", "unbindService", "RIJServiceConnection", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qrw
 {
-  qrw(qrv paramqrv) {}
+  @Nullable
+  private static qrt jdField_a_of_type_Qrt;
+  public static final qrw a;
+  private static final qrx jdField_a_of_type_Qrx = new qrx();
   
-  public void onClick(View paramView)
+  static
   {
-    if (this.a.jdField_a_of_type_Snh == null) {}
-    for (;;)
+    jdField_a_of_type_Qrw = new qrw();
+  }
+  
+  @JvmStatic
+  @NotNull
+  public static final qrw a()
+  {
+    return jdField_a_of_type_Qrw;
+  }
+  
+  public final void a(@NotNull Context paramContext)
+  {
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramContext.bindService(new Intent(paramContext, KandianVideoUploadService.class), (ServiceConnection)jdField_a_of_type_Qrx, 1);
       return;
-      ArticleInfo localArticleInfo = ((pxk)this.a.jdField_a_of_type_JavaLangObject).a();
-      if (localArticleInfo != null)
-      {
-        int i = ComponentContentGalleryBiu.a(localArticleInfo, this.a.jdField_a_of_type_Snh);
-        soy localsoy = this.a.jdField_a_of_type_Snh.a();
-        if (localsoy != null) {
-          localsoy.a(this.a.jdField_a_of_type_AndroidContentContext, localArticleInfo, 0, localArticleInfo.innerUniqueID, i, this.a.jdField_a_of_type_Int, 0);
-        }
-      }
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("RIJAidlClient", 1, QLog.getStackTraceString((Throwable)paramContext));
     }
   }
 }

@@ -1,75 +1,54 @@
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.mobileqq.profile.lifeachivement.LifeAchivementPanelView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionChecker.OnlineStatusPermissionItem;
 
-public class azhh
-  implements azha
+public abstract class azhh
 {
-  public azhh(LifeAchivementPanelView paramLifeAchivementPanelView) {}
+  public long a;
+  protected azhi a;
+  protected BaseActivity a;
+  protected QQAppInterface a;
+  public String a;
+  public boolean a;
+  public String b;
+  protected boolean b = true;
+  public String c;
+  public String d = "";
   
-  public void a(View paramView, int paramInt)
+  public azhh(long paramLong, azhi paramazhi, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
   {
-    int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.i("LifeAchivementPanelView", 2, "onClickAchivement position = " + paramInt);
-    }
-    paramView = this.a.jdField_a_of_type_Azgv.a(paramInt);
-    if (paramView != null)
-    {
-      if (paramView.jdField_a_of_type_Int == 2)
-      {
-        azhc.a(LifeAchivementPanelView.c(this.a), this.a.jdField_a_of_type_JavaLangString);
-        if (LifeAchivementPanelView.a(this.a)) {
-          i = 1;
-        }
-        bcst.b(null, "", "", "", "0X800AE59", "0X800AE59", i, 0, "", "", "", "");
-      }
-    }
-    else {
-      return;
-    }
-    if (paramView.jdField_a_of_type_Int == 1)
-    {
-      azhc.a(LifeAchivementPanelView.d(this.a));
-      bcst.b(null, "", "", "", "0X800AE54", "0X800AE54", 2, 0, "", "", "", "");
-      return;
-    }
-    azhc.a(LifeAchivementPanelView.e(this.a), this.a.jdField_a_of_type_JavaLangString, paramView.b);
-    if (LifeAchivementPanelView.a(this.a)) {
-      i = 1;
-    }
-    bcst.b(null, "", "", "", "0X800AE58", "0X800AE58", i, 0, "", "", "", "");
+    this.jdField_a_of_type_Azhi = paramazhi;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void b(View paramView, int paramInt)
+  protected abstract void a();
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public void a(boolean paramBoolean, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LifeAchivementPanelView", 2, "onClickPraise position = " + paramInt + ",isSelf = " + LifeAchivementPanelView.a(this.a) + ",isFriend = " + LifeAchivementPanelView.b(this.a));
-    }
-    azhc.a(paramView);
-    if ((!LifeAchivementPanelView.a(this.a)) && (!LifeAchivementPanelView.b(this.a)))
-    {
-      QQToast.a(LifeAchivementPanelView.f(this.a), paramView.getResources().getString(2131698039), 0).a();
-      return;
-    }
-    paramView = this.a.jdField_a_of_type_Azgv.a(paramInt);
-    if (paramView.jdField_a_of_type_Boolean) {}
-    for (int i = 2;; i = 1)
-    {
-      LifeAchivementPanelView.a(this.a, paramView, paramInt, i);
-      if (this.a.jdField_a_of_type_Anip != null) {
-        this.a.jdField_a_of_type_Anip.a(this.a.jdField_a_of_type_Long, paramView.b, i);
-      }
-      if (LifeAchivementPanelView.a(this.a)) {}
-      for (paramInt = 1;; paramInt = 2)
-      {
-        bcst.b(null, "", "", "", "0X800AE56", "0X800AE56", paramInt, 0, "", "", "", "");
-        return;
-      }
-    }
+    this.b = paramBoolean;
   }
+  
+  public abstract void a(boolean paramBoolean, OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem);
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public abstract void b();
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 

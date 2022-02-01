@@ -1,26 +1,15 @@
-import com.jakewharton.disklrucache.DiskLruCache.Snapshot;
-import java.io.InputStream;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class zwv
+  implements DialogInterface.OnDismissListener
 {
-  private DiskLruCache.Snapshot jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot;
-  private InputStream jdField_a_of_type_JavaIoInputStream;
+  public zwv(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public zwv(zwu paramzwu) {}
-  
-  public InputStream a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return this.jdField_a_of_type_JavaIoInputStream;
-  }
-  
-  public void a(DiskLruCache.Snapshot paramSnapshot)
-  {
-    this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot = paramSnapshot;
-  }
-  
-  public void a(InputStream paramInputStream)
-  {
-    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
+    this.a.h = false;
   }
 }
 

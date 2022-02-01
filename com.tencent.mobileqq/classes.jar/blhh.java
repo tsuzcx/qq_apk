@@ -1,59 +1,65 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qlink.SendMsg;
+import android.opengl.GLES20;
 
-public abstract class blhh
-  extends Binder
-  implements blhg
+public class blhh
 {
-  public blhh()
+  public static int a(int paramInt, String paramString)
   {
-    attachInterface(this, "cooperation.qlink.IQlinkService");
-  }
-  
-  public static blhg a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qlink.IQlinkService");
-    if ((localIInterface != null) && ((localIInterface instanceof blhg))) {
-      return (blhg)localIInterface;
-    }
-    return new blhi(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    paramInt = GLES20.glCreateShader(paramInt);
+    if (paramInt != 0)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qlink.IQlinkService");
-      return true;
+      GLES20.glShaderSource(paramInt, paramString);
+      GLES20.glCompileShader(paramInt);
+      paramString = new int[1];
+      GLES20.glGetShaderiv(paramInt, 35713, paramString, 0);
+      if (paramString[0] == 0)
+      {
+        GLES20.glDeleteShader(paramInt);
+        return 0;
+      }
     }
-    paramParcel1.enforceInterface("cooperation.qlink.IQlinkService");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    return paramInt;
+  }
+  
+  public static int a(String paramString1, String paramString2)
+  {
+    int i = a(35633, paramString1);
+    if (i == 0) {}
+    int j;
+    do
     {
-      a(paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
+      return 0;
+      j = a(35632, paramString2);
+    } while (j == 0);
+    int k = GLES20.glCreateProgram();
+    if (k != 0)
+    {
+      GLES20.glAttachShader(k, i);
+      a("glAttachShader");
+      GLES20.glAttachShader(k, j);
+      a("glAttachShader");
+      GLES20.glLinkProgram(k);
+      paramString1 = new int[1];
+      GLES20.glGetProgramiv(k, 35714, paramString1, 0);
+      if (paramString1[0] != 1)
+      {
+        GLES20.glDeleteProgram(k);
+        return 0;
+      }
+    }
+    return k;
+  }
+  
+  public static void a(String paramString)
+  {
+    int i = GLES20.glGetError();
+    if (i != 0) {
+      throw new RuntimeException(paramString + ": glError " + i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blhh
  * JD-Core Version:    0.7.0.1
  */

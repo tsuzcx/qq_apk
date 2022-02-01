@@ -1,55 +1,119 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
-import oicq.wlogin_sdk.tools.util;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-class amrs
-  extends WtloginObserver
+public class amrs
+  extends BaseAdapter
 {
-  public int a;
-  public int b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
+  private List<Long> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  amrs(amrr paramamrr) {}
-  
-  public void OnGetOpenKeyWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, ErrMsg paramErrMsg)
+  public amrs(Context paramContext, QQAppInterface paramQQAppInterface, List<Long> paramList)
   {
-    if (paramInt2 == 0)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
+  }
+  
+  private void a(View paramView, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopMessageSettingAdapter", 2, "setItemBackground() childPos = " + paramInt1 + ", listSize = " + paramInt2);
+    }
+    if (paramInt2 <= 1)
     {
-      paramString = util.buf_to_string(paramArrayOfByte2);
-      if (QLog.isColorLevel()) {
-        QLog.i("cmgame_process.CmGameMainManager", 2, "OnGetOpenKeyWithoutPasswd token:" + paramString);
+      paramView.setBackgroundResource(2130839440);
+      return;
+    }
+    if (paramInt1 == 0)
+    {
+      paramView.setBackgroundResource(2130839456);
+      return;
+    }
+    if (paramInt1 == paramInt2 - 1)
+    {
+      paramView.setBackgroundResource(2130839447);
+      return;
+    }
+    paramView.setBackgroundResource(2130839450);
+  }
+  
+  public void a(List<Long> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    String str = String.valueOf(this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    return this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(str);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    TroopInfo localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(String.valueOf(this.jdField_a_of_type_JavaUtilList.get(paramInt)));
+    Object localObject;
+    View localView;
+    if (paramView != null)
+    {
+      localObject = (amrt)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localTroopInfo.troopuin);
+      if (localObject != null) {
+        break label219;
       }
-      paramArrayOfByte1 = this.jdField_a_of_type_Amrr.a();
-      if (paramArrayOfByte1 != null) {
-        break label57;
-      }
+      localObject = bhmq.f();
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
     }
     for (;;)
     {
-      return;
-      try
-      {
-        label57:
-        paramArrayOfByte2 = new JSONObject();
-        paramArrayOfByte2.put("appId", paramLong2);
-        paramArrayOfByte2.put("gameId", this.jdField_a_of_type_Int);
-        paramArrayOfByte2.put("openKey", paramString);
-        CmGameCmdChannel.a(paramArrayOfByte1).a(0, "cs.on_get_open_key.local", paramArrayOfByte2.toString(), this.b);
-        paramArrayOfByte1 = ((ancd)paramArrayOfByte1.getManager(155)).a(this.jdField_a_of_type_Amrr.a.gameId);
-        if (paramArrayOfByte1 != null)
-        {
-          paramArrayOfByte1.openKey = paramString;
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("cmgame_process.CmGameMainManager", 1, "OpenKeyObserver error:", paramString);
-      }
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopInfo.getTroopName());
+      paramView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      a(localView, paramInt, getCount());
+      localView.setBackgroundResource(2130839440);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562917, null);
+      paramView = new amrt(this);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367700));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367746));
+      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367715));
+      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131376554));
+      localView.setTag(paramView);
+      break;
+      label219:
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
     }
   }
 }

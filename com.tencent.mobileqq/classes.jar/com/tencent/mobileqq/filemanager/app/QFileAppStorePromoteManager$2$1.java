@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atal;
+import atsg;
 
 class QFileAppStorePromoteManager$2$1
   implements Runnable

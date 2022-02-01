@@ -1,11 +1,17 @@
-import com.tencent.biz.widgets.ElasticHorScrView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bqee
+class bqee
+  implements View.OnClickListener
 {
-  public int a;
-  public ElasticHorScrView a;
-  private int b;
-  public ElasticHorScrView b;
+  bqee(bqeb parambqeb) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.a(22);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

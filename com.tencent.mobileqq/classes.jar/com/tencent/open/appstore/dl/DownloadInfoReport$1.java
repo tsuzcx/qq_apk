@@ -1,7 +1,7 @@
 package com.tencent.open.appstore.dl;
 
 import android.text.TextUtils;
-import bcst;
+import bdll;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
 
@@ -25,7 +25,7 @@ public final class DownloadInfoReport$1
             if ((this.jdField_a_of_type_JavaLangObject instanceof DownloadInfo)) {
               str1 = ((DownloadInfo)this.jdField_a_of_type_JavaLangObject).e;
             }
-            bcst.b(null, "dc00898", "", "", "0X800A80C", "0X800A80C", this.jdField_a_of_type_Int, this.b, "1", "1", this.jdField_a_of_type_JavaLangString, str1);
+            bdll.b(null, "dc00898", "", "", "0X800A80C", "0X800A80C", this.jdField_a_of_type_Int, this.b, "1", "1", this.jdField_a_of_type_JavaLangString, str1);
             return;
           }
         }
@@ -44,7 +44,7 @@ public final class DownloadInfoReport$1
           if ((this.jdField_a_of_type_JavaLangObject instanceof DownloadInfo)) {
             str2 = ((DownloadInfo)this.jdField_a_of_type_JavaLangObject).e;
           }
-          bcst.b(null, "dc00898", "", "", "0X800A80C", "0X800A80C", this.jdField_a_of_type_Int, this.b, "2", "1", this.jdField_a_of_type_JavaLangString, str2);
+          bdll.b(null, "dc00898", "", "", "0X800A80C", "0X800A80C", this.jdField_a_of_type_Int, this.b, "2", "1", this.jdField_a_of_type_JavaLangString, str2);
           return;
           if ((this.jdField_a_of_type_JavaLangObject instanceof DownloadInfo))
           {
@@ -60,7 +60,7 @@ public final class DownloadInfoReport$1
                 if (TextUtils.isEmpty(((DownloadInfo)this.jdField_a_of_type_JavaLangObject).e)) {}
                 for (str2 = "empty";; str2 = ((DownloadInfo)this.jdField_a_of_type_JavaLangObject).e)
                 {
-                  bcst.b(null, "dc00898", "", "", "0X800A80D", "0X800A80D", i, j, "1", "1", str3, str2);
+                  bdll.b(null, "dc00898", "", "", "0X800A80D", "0X800A80D", i, j, "1", "1", str3, str2);
                   return;
                 }
               }
@@ -71,7 +71,7 @@ public final class DownloadInfoReport$1
                 if (TextUtils.isEmpty(((DownloadInfo)this.jdField_a_of_type_JavaLangObject).e)) {}
                 for (str2 = "empty";; str2 = ((DownloadInfo)this.jdField_a_of_type_JavaLangObject).e)
                 {
-                  bcst.b(null, "dc00898", "", "", "0X800A80D", "0X800A80D", i, j, "2", "1", str3, str2);
+                  bdll.b(null, "dc00898", "", "", "0X800A80D", "0X800A80D", i, j, "2", "1", str3, str2);
                   return;
                 }
               }

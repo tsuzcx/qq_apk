@@ -1,62 +1,151 @@
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.OperationView;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
 
 public class ayen
 {
-  private static final String a = ayen.class.getSimpleName();
+  public static float a = 600.0F;
+  public static float b = 1334.0F;
+  public static float c = -1.0F;
   
-  public static boolean a(Activity paramActivity, String paramString)
+  public static boolean a(ayga paramayga)
   {
-    if (QLog.isColorLevel()) {
-      bisy.b(a, "enter now live room. mqqapi= " + paramString);
-    }
-    try
-    {
-      paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
-      paramString.putExtra("big_brother_source_key", "biz_src_now");
-      paramActivity.startActivity(paramString);
-      return true;
-    }
-    catch (Exception paramActivity)
-    {
-      if (QLog.isColorLevel()) {
-        bisy.b(a, "enter now live room error: " + paramActivity.getMessage());
-      }
-    }
-    return false;
+    paramayga.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setVisibility(8);
+    ViewGroup.LayoutParams localLayoutParams = paramayga.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    localLayoutParams.width = -1;
+    localLayoutParams.height = -2;
+    paramayga.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+    return true;
   }
   
-  public static boolean a(Activity paramActivity, String paramString, int paramInt1, int paramInt2)
+  public static boolean a(ayga paramayga, float paramFloat1, float paramFloat2)
   {
-    if ((paramActivity != null) && (!bgnt.g(paramActivity.getApplication()))) {
-      bljz.a(paramActivity, 2131693959, 1);
+    if ((paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView == null) || (paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView == null)) {}
+    while ((!(paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext() instanceof Activity)) || (paramFloat2 == 0.0F) || (paramFloat1 == 0.0F)) {
+      return false;
+    }
+    if ((paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a == 6))
+    {
+      a(paramayga);
+      return false;
+    }
+    Object localObject = paramayga.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.getLayoutParams();
+    View localView = ((Activity)paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext()).getWindow().getDecorView();
+    Rect localRect = new Rect();
+    localView.getWindowVisibleDisplayFrame(localRect);
+    float f2 = localRect.height();
+    float f1 = mvd.a(paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext());
+    c = f2 / 2.0F;
+    if (f1 / f2 < paramFloat1 / paramFloat2)
+    {
+      paramFloat1 = f1 / paramFloat1 * paramFloat2;
+      ((ViewGroup.LayoutParams)localObject).width = ((int)f1);
+      ((ViewGroup.LayoutParams)localObject).height = ((int)paramFloat1);
+      if (paramFloat1 <= c)
+      {
+        localLayoutParams.width = ((int)f1);
+        localLayoutParams.height = ((int)c);
+        ((ViewGroup.LayoutParams)localObject).width = ((int)f1);
+        ((ViewGroup.LayoutParams)localObject).height = ((int)c);
+        paramayga.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams(localLayoutParams);
+        paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.getRootView().setBackgroundColor(Color.parseColor("#000000"));
+        paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
+        paramayga.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
+      }
     }
     for (;;)
     {
+      localObject = (ImageView)paramayga.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369184);
+      paramayga = (ImageView)paramayga.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365679);
+      ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_CENTER);
+      paramayga.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      return true;
+      paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramayga.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
+      paramayga.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
+      continue;
+      ((ViewGroup.LayoutParams)localObject).width = ((int)f1);
+      ((ViewGroup.LayoutParams)localObject).height = ((int)f2);
+      paramayga.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramayga.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
+      localLayoutParams.width = ((int)f1);
+      localLayoutParams.height = ((int)f2);
+      paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
+    }
+  }
+  
+  public static boolean a(ayga paramayga, float paramFloat1, float paramFloat2, VideoData paramVideoData, ShortVideoCommentsView paramShortVideoCommentsView)
+  {
+    if ((paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView == null) || (paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView == null) || (paramShortVideoCommentsView == null)) {}
+    while (!(paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext() instanceof Activity)) {
       return false;
-      if ((paramString != null) && (paramString.startsWith("mqqapi://"))) {
-        return a(paramActivity, paramString);
+    }
+    if ((paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a == 6))
+    {
+      a(paramayga);
+      return false;
+    }
+    paramVideoData = paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getLayoutParams();
+    paramShortVideoCommentsView = paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.getLayoutParams();
+    View localView = ((Activity)paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext()).getWindow().getDecorView();
+    Rect localRect = new Rect();
+    localView.getWindowVisibleDisplayFrame(localRect);
+    float f2 = localRect.height();
+    float f1 = mvd.a(paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext());
+    c = f2 / 2.0F;
+    if (f1 / f2 < paramFloat2 / paramFloat1)
+    {
+      paramFloat1 = f1 / paramFloat2 * paramFloat1;
+      paramVideoData.width = ((int)f1);
+      paramVideoData.height = ((int)paramFloat1);
+      if (paramFloat1 <= c)
+      {
+        paramShortVideoCommentsView.width = ((int)f1);
+        paramShortVideoCommentsView.height = ((int)c);
+        paramVideoData.width = ((int)f1);
+        paramVideoData.height = ((int)c);
+        paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setLayoutParams(paramVideoData);
+        paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams(paramShortVideoCommentsView);
+        paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.getRootView().setBackgroundColor(Color.parseColor("#000000"));
+        paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
+        paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.requestLayout();
       }
-      if (paramInt1 > 0) {}
-      for (paramString = "mqqapi://now/openroom?first=1&roomid=" + paramInt1 + "&roomtype=0&startsrc=" + paramInt2 + "&fromid=" + paramInt2; (paramString != null) && (paramString.length() > 0); paramString = null) {
-        for (;;)
-        {
-          return a(paramActivity, paramString);
-          if ((paramString != null) && (paramString.contains("roomid="))) {
-            try
-            {
-              paramString = Uri.parse(paramString).getQueryParameter("roomid");
-              paramString = "mqqapi://now/openroom?first=1&roomid=" + paramString + "&roomtype=0&startsrc=" + paramInt2 + "&fromid=" + paramInt2;
-            }
-            catch (Exception paramString)
-            {
-              QLog.e(a, 2, paramString, new Object[0]);
-            }
-          }
-        }
-      }
+    }
+    for (;;)
+    {
+      paramayga.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(new ColorDrawable(-16777216));
+      return false;
+      paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams(paramVideoData);
+      paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setLayoutParams(paramVideoData);
+      paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
+      paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.requestLayout();
+      continue;
+      paramVideoData.width = ((int)f1);
+      paramVideoData.height = ((int)f2);
+      paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setLayoutParams(paramVideoData);
+      paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.requestLayout();
+      paramShortVideoCommentsView.width = ((int)f1);
+      paramShortVideoCommentsView.height = ((int)f2);
+      paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams(paramVideoData);
+      paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
+      paramayga.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.requestLayout();
     }
   }
 }

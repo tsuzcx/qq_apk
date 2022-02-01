@@ -1,19 +1,10 @@
-import android.os.Bundle;
-import java.util.ArrayList;
-
-final class apki
-  extends apll
+public abstract interface apki
 {
-  apki(ArrayList paramArrayList) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBoolean)
-    {
-      int i = paramBundle.getInt("mode", -1);
-      this.a.add(Integer.valueOf(i));
-    }
-  }
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void k_(int paramInt);
 }
 
 

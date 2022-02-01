@@ -1,41 +1,64 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class astz
-  implements View.OnClickListener
+public class astz
+  extends askr
 {
-  astz(asty paramasty, View paramView) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private asre jdField_a_of_type_Asre;
+  private bjbs jdField_a_of_type_Bjbs;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void onClick(View paramView)
+  public astz(AIOEmotionFragment paramAIOEmotionFragment) {}
+  
+  public void a(int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, asre paramasre, SessionInfo paramSessionInfo, bjbs parambjbs)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((localObject instanceof asth))
-    {
-      localObject = (WeiYunFileInfo)((asth)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-      if ((athc.a(((WeiYunFileInfo)localObject).a)) && (QLog.isColorLevel())) {
-        QLog.d(QfileBaseCloudFileTabView.b, 2, "there is a bug ");
-      }
-      QfileBaseCloudFileTabView.b(this.jdField_a_of_type_Asty.a).a().a((WeiYunFileInfo)localObject);
-      this.jdField_a_of_type_Asty.a.aw_();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Asre = paramasre;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_Bjbs = parambjbs;
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOEmotionFragment", 2, "onJsonComplete:" + paramEmoticonPackage.epId + " ,currEpid:" + this.jdField_a_of_type_Asre.a.epId);
     }
-    for (;;)
+    if (this.jdField_a_of_type_Int == 32) {
+      if ((paramInt == 0) && (Long.parseLong(paramEmoticonPackage.epId) != Long.parseLong(this.jdField_a_of_type_Asre.a.epId))) {
+        AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, bool);
+      }
+    }
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((localObject instanceof asun))
-      {
-        localObject = (WeiYunFileInfo)((asun)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-        break;
+      bool = false;
+      break;
+      if (paramInt != 0) {
+        break label233;
       }
-      if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseCloudFileTabView.b, 2, "unknow Object");
-      }
-    }
+    } while (Long.parseLong(paramEmoticonPackage.epId) != Long.parseLong(this.jdField_a_of_type_Asre.a.epId));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putInt("emosm_json_last_download_timestamp", (int)(System.currentTimeMillis() / 1000L)).commit();
+    ahlt.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Asre, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bjbs, true);
+    paramBundle = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a.obtainMessage(1000);
+    paramBundle.obj = paramEmoticonPackage.name;
+    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a.sendMessage(paramBundle);
+    return;
+    label233:
+    ahlt.a(this.jdField_a_of_type_Int + 1000, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Asre, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bjbs, true);
   }
 }
 

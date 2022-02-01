@@ -1,31 +1,30 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
-class ajoe
-  implements View.OnClickListener
+public abstract class ajoe<T>
+  extends ajoi<T>
 {
-  ajoe(ajod paramajod, DialogInterface.OnClickListener paramOnClickListener) {}
+  protected int a;
+  protected Context a;
+  protected LayoutInflater a;
   
-  public void onClick(View paramView)
+  public ajoe(Context paramContext, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ajod, 0);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Ajod.isShowing()) {
-        this.jdField_a_of_type_Ajod.dismiss();
-      }
-      label38:
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label38;
-    }
+    super(paramContext);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_Int = paramInt;
+    a(new ajof(this, paramInt));
+  }
+  
+  protected abstract ajoo a(Context paramContext, ViewGroup paramViewGroup, int paramInt);
+  
+  protected abstract void a(ajoo paramajoo, T paramT, int paramInt);
+  
+  public ajoo b(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  {
+    return a(paramContext, paramViewGroup, paramInt);
   }
 }
 

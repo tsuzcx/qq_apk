@@ -1,110 +1,67 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.net.Uri;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import android.text.format.Time;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.MD5;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collections;
+import java.util.List;
 
-public class bggo
+final class bggo
+  implements bggm
 {
-  public static final Uri a()
-  {
-    String str = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).getString("LastScreenShotUri", "");
-    if (TextUtils.isEmpty(str)) {
-      return null;
-    }
-    return Uri.parse(str);
-  }
+  bggo(NavBarAIO paramNavBarAIO, ImageView paramImageView1, ImageView paramImageView2, boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString, Activity paramActivity) {}
   
-  public static String a()
+  public void a(List<bggs> paramList)
   {
-    Time localTime = new Time();
-    localTime.setToNow();
-    localTime.switchTimezone("Asia/Shanghai");
-    return localTime.format("%Y%m%d%H%M%S");
-  }
-  
-  public static String a(ArrayList<String> paramArrayList, boolean paramBoolean)
-  {
-    Time localTime = new Time();
-    localTime.setToNow();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("com.tencent.process.exit");
-    localStringBuilder.append(localTime.year).append(localTime.month + 1).append(localTime.monthDay);
-    localStringBuilder.append(localTime.hour);
-    if (paramBoolean)
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      localStringBuilder.append(localTime.minute - 1);
-      if (paramArrayList != null) {
-        break label134;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setTitleIconLeft(0, 0);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(null);
+      this.b.setOnTouchListener(null);
+      return;
+    }
+    if (paramList.size() > 1) {
+      Collections.sort(paramList, new bggp(this));
+    }
+    axtj localaxtj = bggn.a((bggs)paramList.get(0));
+    if (paramList.size() > 1)
+    {
+      paramList = bggn.a((bggs)paramList.get(1));
+      label99:
+      bggq localbggq = new bggq(this);
+      if (localaxtj == null) {
+        break label203;
       }
+      this.jdField_a_of_type_AndroidWidgetImageView.setTag(localaxtj);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(localbggq);
+      label128:
+      if (paramList == null) {
+        break label214;
+      }
+      this.b.setTag(paramList);
+      this.b.setOnTouchListener(localbggq);
     }
-    label134:
-    for (paramArrayList = "null";; paramArrayList = paramArrayList.toString())
-    {
-      localStringBuilder.append(paramArrayList);
-      paramArrayList = MD5.toMD5(localStringBuilder.toString());
-      return MD5.toMD5(paramArrayList + localStringBuilder.toString());
-      localStringBuilder.append(localTime.minute);
-      break;
-    }
-  }
-  
-  public static boolean a(long paramLong1, long paramLong2)
-  {
-    if ((paramLong1 == 0L) || (paramLong2 == 0L)) {}
-    long l;
-    do
-    {
-      return false;
-      l = System.currentTimeMillis();
-    } while ((l < paramLong1) || (l > paramLong2));
-    return true;
-  }
-  
-  public static boolean a(String paramString, ArrayList<String> paramArrayList)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while ((!paramString.equals(a(paramArrayList, false))) && (!paramString.equals(a(paramArrayList, true)))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean a(ArrayList<String> paramArrayList, Context paramContext)
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      bool1 = true;
-    }
-    do
-    {
-      return bool1;
-      paramContext = BaseApplicationImpl.processName;
-      bool1 = bool2;
-    } while (paramContext == null);
-    int i = 0;
     for (;;)
     {
-      bool1 = bool2;
-      if (i >= paramArrayList.size()) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setTitleIconLeftForMutualMark(localaxtj, paramList);
+      if (!QLog.isColorLevel()) {
         break;
       }
-      if (paramContext.equals(paramArrayList.get(i))) {
-        return true;
-      }
-      i += 1;
+      QLog.d("TroopHonor.utils", 2, "updateAIOTitleTroopHonorInteractiveIcon one:" + localaxtj + " two:" + paramList);
+      return;
+      paramList = null;
+      break label99;
+      label203:
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(null);
+      break label128;
+      label214:
+      this.b.setOnTouchListener(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bggo
  * JD-Core Version:    0.7.0.1
  */

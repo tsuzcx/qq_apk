@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dating;
 
-import axei;
-import bctj;
+import axxb;
+import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -15,9 +15,9 @@ final class NearbyTransitActivity$4
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
-    bctj.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_JavaLangString, "actEnterHotChatAIO", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, localHashMap, "");
+    bdmc.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_JavaLangString, "actEnterHotChatAIO", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, localHashMap, "");
     if (QLog.isDevelopLevel()) {
-      axei.a("NearbyTransitActivity", "reportResult", new Object[] { "end of report" });
+      axxb.a("NearbyTransitActivity", "reportResult", new Object[] { "end of report" });
     }
   }
 }

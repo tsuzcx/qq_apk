@@ -1,54 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
-import tencent.im.group.nearbybanner.nearbybanner.Banners;
-import tencent.im.group.nearbybanner.nearbybanner.RspBody;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.subscribe.widget.SubscribeBannerView;
+import com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter;
+import com.tencent.biz.subscribe.widget.SubscribeBannerView.DotsIndicator;
+import java.util.ArrayList;
 
-class aaos
-  implements BusinessObserver
+public class aaos
+  implements ViewPager.OnPageChangeListener
 {
-  aaos(aaor paramaaor, Bundle paramBundle) {}
+  public aaos(SubscribeBannerView paramSubscribeBannerView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsBundle.remove("data");
-    if (!paramBoolean)
-    {
-      this.jdField_a_of_type_Aaor.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-      return;
+    if ((SubscribeBannerView.a(this.a) != null) && (SubscribeBannerView.a(this.a) != null)) {
+      SubscribeBannerView.a(this.a).setDotsSelected(paramInt % SubscribeBannerView.a(this.a).a().size());
     }
-    paramBundle = paramBundle.getByteArray("data");
-    nearbybanner.RspBody localRspBody = new nearbybanner.RspBody();
-    try
-    {
-      localRspBody.mergeFrom(paramBundle);
-      if ((localRspBody.uint32_result.get() != 0) && (!localRspBody.msg_banners.has()))
-      {
-        this.jdField_a_of_type_Aaor.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      this.jdField_a_of_type_Aaor.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      paramBundle = (nearbybanner.Banners)localRspBody.msg_banners.get();
-      if (!paramBundle.rpt_banner_info.has())
-      {
-        this.jdField_a_of_type_Aaor.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-        return;
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      this.jdField_a_of_type_Aaor.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsBundle.putByteArray("data", paramBundle.toByteArray());
-    this.jdField_a_of_type_Aaor.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

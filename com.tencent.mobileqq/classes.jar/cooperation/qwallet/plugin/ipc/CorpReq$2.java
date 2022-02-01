@@ -2,8 +2,8 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bgjw;
-import bglf;
+import bhjx;
+import bhlg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -85,7 +85,7 @@ class CorpReq$2
             if (QLog.isColorLevel())
             {
               ((StringBuffer)localObject3).append(" nick=");
-              ((StringBuffer)localObject3).append(bgjw.a((String)localObject1));
+              ((StringBuffer)localObject3).append(bhjx.a((String)localObject1));
               paramBundle = (Bundle)localObject1;
             }
             ((Map)localObject2).put(localObject5, paramBundle);
@@ -111,7 +111,7 @@ class CorpReq$2
           localObject2 = this.val$resp;
           paramBundle = (Bundle)localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            paramBundle = bglf.h(this.val$app, this.this$0.troopUin, this.this$0.memUin);
+            paramBundle = bhlg.h(this.val$app, this.this$0.troopUin, this.this$0.memUin);
           }
           ((CorpResp)localObject2).memNick = paramBundle;
           this.val$resp.toBundle((Bundle)localObject3);
@@ -131,7 +131,7 @@ class CorpReq$2
           ((JSONObject)localObject6).put("memUin", localObject7);
           paramBundle = (Bundle)localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            paramBundle = bglf.h(this.val$app, this.this$0.troopUin, (String)localObject7);
+            paramBundle = bhlg.h(this.val$app, this.this$0.troopUin, (String)localObject7);
           }
           ((JSONObject)localObject6).put("memNick", paramBundle);
           ((JSONArray)localObject4).put(localObject6);

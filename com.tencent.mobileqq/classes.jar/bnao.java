@@ -1,55 +1,18 @@
-public class bnao
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.PublishEventTag;
+
+public final class bnao
+  implements Parcelable.Creator<PublishEventTag>
 {
-  private static int a;
-  private static int b;
-  private static int c;
-  private static int d;
-  
-  public static int a()
+  public PublishEventTag a(Parcel paramParcel)
   {
-    a();
-    return a;
+    return new PublishEventTag(paramParcel);
   }
   
-  private static void a()
+  public PublishEventTag[] a(int paramInt)
   {
-    String[] arrayOfString;
-    if (c == 0)
-    {
-      arrayOfString = bdxz.a().split("\\.");
-      if (arrayOfString.length >= 4) {}
-    }
-    else
-    {
-      return;
-    }
-    try
-    {
-      a = Integer.valueOf(arrayOfString[0]).intValue();
-      b = Integer.valueOf(arrayOfString[1]).intValue();
-      d = Integer.valueOf(arrayOfString[2]).intValue();
-      c = Integer.valueOf(arrayOfString[3]).intValue();
-      return;
-    }
-    catch (NumberFormatException localNumberFormatException) {}
-  }
-  
-  public static int b()
-  {
-    a();
-    return b;
-  }
-  
-  public static int c()
-  {
-    a();
-    return c;
-  }
-  
-  public static int d()
-  {
-    a();
-    return d;
+    return new PublishEventTag[paramInt];
   }
 }
 

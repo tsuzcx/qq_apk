@@ -1,18 +1,25 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
-public class quq
-  extends qus
+class quq
+  extends NativeGifImage
 {
-  public quq(Context paramContext, aobu paramaobu, snh paramsnh)
+  quq(qup paramqup, File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
   {
-    super(paramContext, paramaobu, paramsnh);
+    super(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
   }
   
-  public qqt g()
+  public void executeNewTask()
   {
-    this.jdField_a_of_type_Qqs = new ComponentContentUgcImage(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    if (this.mCurrentLoop == 1) {
+      return;
+    }
+    super.executeNewTask();
+  }
+  
+  public void reset()
+  {
+    super.reset();
   }
 }
 

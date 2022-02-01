@@ -1,9 +1,20 @@
-import com.tencent.mobileqq.data.QCallRecent;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
-public abstract interface azwl
+public class azwl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(List<QCallRecent> paramList);
+  public azwl(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ValueAnimator paramValueAnimator, View paramView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramValueAnimator.height = i;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+  }
 }
 
 

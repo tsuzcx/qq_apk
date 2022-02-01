@@ -1,12 +1,12 @@
 package dov.com.qq.im.ae.album.adapter;
 
-import bnex;
+import bogf;
 import com.tencent.mobileqq.data.QQAlbumInfo;
 
 public class AEAlbumListAdapter$2
   implements Runnable
 {
-  public AEAlbumListAdapter$2(bnex parambnex, QQAlbumInfo paramQQAlbumInfo) {}
+  public AEAlbumListAdapter$2(bogf parambogf, QQAlbumInfo paramQQAlbumInfo) {}
   
   public void run()
   {

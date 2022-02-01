@@ -1,34 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.30.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class sof
-  implements sow
+  extends aqrh
 {
-  sof(snh paramsnh) {}
+  public sof(FastWebActivity paramFastWebActivity) {}
   
-  public void onClick(View paramView)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    pum localpum = (pum)paramView.getTag();
-    BaseArticleInfo localBaseArticleInfo = this.a.b(localpum.jdField_a_of_type_Int);
-    if (localBaseArticleInfo == null) {
-      return;
+    super.onAddColorNote(paramBundle, paramBoolean);
+    ssy.a(this.a.a, FastWebActivity.a(this.a), this.a.getApplicationContext());
+    if (paramBundle.getInt("color_note_curd_from_type") != 1) {
+      this.a.finish();
     }
-    if (!ryx.a(localBaseArticleInfo, this.a.a()))
-    {
-      if (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo))
-      {
-        ubb.a(this.a.a, (ArticleInfo)localBaseArticleInfo, this.a, 56);
-        ubb.a(this.a.a, (ArticleInfo)localBaseArticleInfo, this.a, 56, true, null);
-        return;
-      }
-      this.a.a(localpum.jdField_a_of_type_Sey, localBaseArticleInfo);
-    }
-    ThreadManager.executeOnSubThread(new ReadInJoyBaseAdapter.30.1(this, localBaseArticleInfo));
-    puf.a(paramView);
   }
 }
 

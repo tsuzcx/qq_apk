@@ -1,30 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment.ViewHolder.1.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
-public class ouy
-  implements pyb
+class ouy
+  extends ovd
 {
-  ouy(oux paramoux) {}
-  
-  public void onLoadUserInfoFailed(String paramString1, String paramString2)
+  ouy(otv paramotv, BaseCommentData paramBaseCommentData)
   {
-    QLog.d("ReadInjoyFriendsBiuComponentFragment", 1, "setComments infoFailed. uin:" + paramString1 + " errMsg:" + paramString2);
+    super(paramotv, null);
   }
   
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  void a(ovg paramovg)
   {
-    if ((paramReadInJoyUserInfo != null) && (this.a.a != null)) {
-      ThreadManager.getUIHandler().post(new ReadInjoyFriendsBiuComponentFragment.ViewHolder.1.1(this));
-    }
-    if (paramReadInJoyUserInfo != null) {}
-    for (paramReadInJoyUserInfo = paramReadInJoyUserInfo.nick;; paramReadInJoyUserInfo = "null")
-    {
-      QLog.d("ReadInjoyFriendsBiuComponentFragment", 1, new Object[] { "setComments infoSuccess nick = ", paramReadInJoyUserInfo, "  uin:" + paramString, " mContents:" + this.a.a });
-      return;
-    }
+    paramovg.onCommentReply(true, new otp(0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, otv.a(this.jdField_a_of_type_Otv)));
   }
 }
 

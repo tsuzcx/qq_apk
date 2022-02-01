@@ -39,7 +39,7 @@ public class CustomButtonPlugin
   private static final String WITH_CREDENTIALS = "withCredentials";
   private WeakReference<Context> mContextRef;
   private CustomButtonManager mCustomButtonManager;
-  private WeakReference<JsRuntime> mJsRuntimeRef;
+  private JsRuntime mJsRuntime;
   
   public String handleNativeRequest(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
   {
@@ -50,7 +50,7 @@ public class CustomButtonPlugin
     if (this.mCustomButtonManager == null) {
       this.mCustomButtonManager = new CustomButtonManager((Activity)localObject, (IGameUI)localObject, DisplayUtil.getDisplayMetrics((Context)localObject).density);
     }
-    this.mJsRuntimeRef = new WeakReference(paramJsRuntime);
+    this.mJsRuntime = paramJsRuntime;
     if (("operateCustomButton".equals(paramString1)) && (this.mCustomButtonManager != null) && (!TextUtils.isEmpty(paramString2))) {
       for (;;)
       {
@@ -86,7 +86,7 @@ public class CustomButtonPlugin
               continue;
             }
             if (!"update".equals(str)) {
-              break label349;
+              break label342;
             }
             bool = this.mCustomButtonManager.updateCustomButton((JSONObject)localObject, this);
             continue;
@@ -98,7 +98,7 @@ public class CustomButtonPlugin
           this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "json parse error", paramInt);
           GameLog.getInstance().e("CustomButtonPlugin", paramString1 + " parse json exception " + paramString2, localJSONException);
         }
-        label349:
+        label342:
         boolean bool = false;
       }
     }
@@ -113,8 +113,8 @@ public class CustomButtonPlugin
       localJSONObject.put("compId", paramButtonParam.componentId);
       localJSONObject.put("withCredentials", paramButtonParam.withCredentials);
       localJSONObject.put("lang", paramButtonParam.lang);
-      if ((this.mJsRuntimeRef != null) && (this.mJsRuntimeRef.get() != null)) {
-        ((JsRuntime)this.mJsRuntimeRef.get()).evaluateSubcribeJS("onCustomButtonTap", localJSONObject.toString(), -1);
+      if (this.mJsRuntime != null) {
+        this.mJsRuntime.evaluateSubcribeJS("onCustomButtonTap", localJSONObject.toString(), -1);
       }
       return;
     }
@@ -133,7 +133,7 @@ public class CustomButtonPlugin
   public void onDestroy()
   {
     this.mContextRef = null;
-    this.mJsRuntimeRef = null;
+    this.mJsRuntime = null;
     super.onDestroy();
   }
   

@@ -1,31 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hiboom.FontBubble;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.forward.ForwardPhotoOption.3;
 
 public class avah
+  implements View.OnTouchListener
 {
-  private static AtomicInteger a;
-  public int a;
-  public FontBubble a;
+  public avah(ForwardPhotoOption.3 param3) {}
   
-  static
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
-  }
-  
-  public avah(FontBubble paramFontBubble)
-  {
-    this.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble = paramFontBubble;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("FontBubbleManager", 1, "setFontBubble: " + this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.fontId + "," + this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.bubbleId);
-    }
-    ((anuk)paramQQAppInterface.a(13)).a(this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.fontId, this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.bubbleId, this.jdField_a_of_type_Int);
+    return true;
   }
 }
 

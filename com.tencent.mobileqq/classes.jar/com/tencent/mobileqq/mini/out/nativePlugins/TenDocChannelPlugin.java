@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdhn;
-import bdhu;
-import bdkv;
+import beai;
+import beap;
+import bedq;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
@@ -73,8 +73,8 @@ public class TenDocChannelPlugin
     {
       paramString = new JSONObject(paramString).optString("fileName");
       new Bundle().putString("fileName", paramString);
-      bdhu.a(paramActivity, paramString, true);
-      bdkv.a(null, "0X800A4B2");
+      beap.a(paramActivity, paramString, true);
+      bedq.a(null, "0X800A4B2");
       return;
     }
     catch (Exception paramActivity)
@@ -93,7 +93,7 @@ public class TenDocChannelPlugin
     {
       paramString = new JSONObject(paramString).optString("folderId");
       Intent localIntent = new Intent(paramActivity, FMActivity.class);
-      localIntent.putExtra(bdhn.f, true);
+      localIntent.putExtra(beai.f, true);
       localIntent.addFlags(536870912);
       localIntent.putExtra("selectMode", true);
       localIntent.putExtra("busiType", 9);
@@ -101,7 +101,7 @@ public class TenDocChannelPlugin
       localIntent.putExtra("enterfrom", 9);
       localIntent.putExtra("tab_tab_type", 7);
       localIntent.putExtra("only_show_local_tab", true);
-      localIntent.putExtra(bdhn.g, paramString);
+      localIntent.putExtra(beai.g, paramString);
       localIntent.putExtra("smart_device_support_flag", 8);
       paramActivity.startActivity(localIntent);
       return;

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import atmc;
-import atqu;
-import atsl;
+import audx;
+import auip;
+import aukg;
 
 class MusicFilePresenter$5$1
   implements Runnable
@@ -11,11 +11,11 @@ class MusicFilePresenter$5$1
   
   public void run()
   {
-    if ((this.a.this$0.jdField_a_of_type_Atmc != null) && (this.a.this$0.jdField_a_of_type_Atmc.b(atqu.a(this.a.this$0))))
+    if ((this.a.this$0.jdField_a_of_type_Audx != null) && (this.a.this$0.jdField_a_of_type_Audx.b(auip.a(this.a.this$0))))
     {
-      int i = this.a.this$0.jdField_a_of_type_Atmc.a();
+      int i = this.a.this$0.jdField_a_of_type_Audx.a();
       this.a.this$0.b(i);
-      this.a.this$0.jdField_a_of_type_Atsl.c(i);
+      this.a.this$0.jdField_a_of_type_Aukg.c(i);
     }
   }
 }

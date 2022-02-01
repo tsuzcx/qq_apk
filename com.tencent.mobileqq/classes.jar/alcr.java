@@ -1,9 +1,6 @@
-class alcr
-  implements bknn
+public abstract interface alcr
 {
-  alcr(alcp paramalcp) {}
-  
-  public void a() {}
+  public abstract void a(alch paramalch);
 }
 
 

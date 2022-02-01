@@ -1,26 +1,22 @@
-import UserGrowth.stRedDotRsp;
-
-class ula
-  implements ujj
+public abstract interface ula
 {
-  ula(ukz paramukz) {}
+  public abstract void a(ukz paramukz);
   
-  public void a(uju paramuju)
-  {
-    if ((this.a.a() != null) && (paramuju != null) && (paramuju.a()) && (paramuju.a != null) && ((paramuju.a instanceof stRedDotRsp)))
-    {
-      paramuju = (stRedDotRsp)paramuju.a;
-      ukz.a(this.a, paramuju.notificationReddot);
-      ukz.b(this.a, paramuju.menu);
-      if (this.a.a() != null) {
-        ((ulm)this.a.a()).a(paramuju);
-      }
-    }
-    while (this.a.a() == null) {
-      return;
-    }
-    ((ulm)this.a.a()).a();
-  }
+  public abstract void a(ukz paramukz, int paramInt);
+  
+  public abstract void a(ukz paramukz, int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(ukz paramukz, boolean paramBoolean);
+  
+  public abstract void b(ukz paramukz);
+  
+  public abstract void c(ukz paramukz);
+  
+  public abstract void d(ukz paramukz);
+  
+  public abstract void e(ukz paramukz);
+  
+  public abstract void f(ukz paramukz);
 }
 
 

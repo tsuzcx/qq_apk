@@ -1,55 +1,21 @@
-import android.graphics.PointF;
-import android.support.annotation.NonNull;
+import android.graphics.Bitmap;
 
-public class yxg
+class yxg
+  extends yzy
 {
-  public final float a;
-  public final int a;
-  public final PointF a;
-  public final String a;
-  public final float b;
-  public final int b;
-  public final float c;
-  public final int c;
-  public final float d;
-  public final int d;
+  public Bitmap a;
+  public Bitmap b;
   
-  public yxg(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, int paramInt1, int paramInt2)
+  public yxg(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_Float = paramFloat3;
-    this.jdField_b_of_type_Float = paramFloat4;
-    this.jdField_c_of_type_Float = paramFloat5;
-    this.jdField_d_of_type_Float = paramFloat6;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 0;
+    super(paramInt, paramBitmap1);
+    this.b = paramBitmap2;
+    this.a = paramBitmap3;
   }
   
-  public yxg(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  public yxg(yzy paramyzy, Bitmap paramBitmap1, Bitmap paramBitmap2)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_Float = paramFloat3;
-    this.jdField_b_of_type_Float = paramFloat4;
-    this.jdField_c_of_type_Float = paramFloat5;
-    this.jdField_d_of_type_Float = paramFloat6;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_d_of_type_Int = paramInt4;
-  }
-  
-  public static yxg a(@NonNull yxg paramyxg)
-  {
-    return new yxg(paramyxg.jdField_a_of_type_AndroidGraphicsPointF.x, paramyxg.jdField_a_of_type_AndroidGraphicsPointF.y, paramyxg.jdField_a_of_type_Float, paramyxg.jdField_b_of_type_Float, paramyxg.jdField_c_of_type_Float, paramyxg.jdField_d_of_type_Float, paramyxg.jdField_a_of_type_Int, paramyxg.jdField_b_of_type_Int, paramyxg.jdField_a_of_type_JavaLangString, paramyxg.jdField_c_of_type_Int, paramyxg.jdField_d_of_type_Int);
-  }
-  
-  public String toString()
-  {
-    return "LayerParams{centerP=" + this.jdField_a_of_type_AndroidGraphicsPointF + ", scale=" + this.jdField_a_of_type_Float + ", rotate=" + this.jdField_b_of_type_Float + ", translateXValue=" + this.jdField_c_of_type_Float + ", translateYValue=" + this.jdField_d_of_type_Float + ", width=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_c_of_type_Int + ", textSize=" + this.jdField_d_of_type_Int + '}';
+    this(paramyzy.jdField_c_of_type_Int, paramyzy.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
   }
 }
 

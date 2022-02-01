@@ -1,15 +1,15 @@
 package cooperation.qzone.webviewplugin;
 
-import bmmu;
+import bnnx;
 
 public class QzoneQunFeedJsPlugin$6
   implements Runnable
 {
-  public QzoneQunFeedJsPlugin$6(bmmu parambmmu) {}
+  public QzoneQunFeedJsPlugin$6(bnnx parambnnx) {}
   
   public void run()
   {
-    bmmu.a(this.this$0, bmmu.a(this.this$0));
+    bnnx.a(this.this$0, bnnx.a(this.this$0));
   }
 }
 

@@ -1,12 +1,23 @@
-public class bfsr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bfsr
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public String a;
+  bfsr(bfsf parambfsf, bfrs parambfrs) {}
   
-  public bfsr(bfsk parambfsk, String paramString, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    }
+    if (bfsf.a(this.jdField_a_of_type_Bfsf) != 0) {
+      bgrn.a(this.jdField_a_of_type_Bfsf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bfsf.jdField_a_of_type_Long).b(this.jdField_a_of_type_Bfrs);
+    }
+    bdll.b(this.jdField_a_of_type_Bfsf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Cancel_pause_upload", 0, 0, "", this.jdField_a_of_type_Bfsf.jdField_a_of_type_Long + "", "", "");
   }
 }
 

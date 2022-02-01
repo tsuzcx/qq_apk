@@ -1,58 +1,33 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel;
+import android.graphics.drawable.ColorDrawable;
 
 public class ascz
+  extends ColorDrawable
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private arxd jdField_a_of_type_Arxd;
-  private asda jdField_a_of_type_Asda;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private int a;
+  private int b;
   
-  public ascz(Context paramContext)
+  public ascz(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(0);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public ascz a(EditText paramEditText)
+  public ascz(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    return this;
+    super(paramInt1);
+    this.a = paramInt2;
+    this.b = paramInt3;
   }
   
-  public ascz a(arxd paramarxd)
+  public int getIntrinsicHeight()
   {
-    this.jdField_a_of_type_Arxd = paramarxd;
-    return this;
+    return this.b;
   }
   
-  public ascz a(boolean paramBoolean)
+  public int getIntrinsicWidth()
   {
-    this.b = paramBoolean;
-    return this;
-  }
-  
-  public SystemAndEmojiUniversalPanel a()
-  {
-    SystemAndEmojiUniversalPanel localSystemAndEmojiUniversalPanel = (SystemAndEmojiUniversalPanel)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559141, null);
-    a(localSystemAndEmojiUniversalPanel);
-    return localSystemAndEmojiUniversalPanel;
-  }
-  
-  public void a(SystemAndEmojiUniversalPanel paramSystemAndEmojiUniversalPanel)
-  {
-    if (paramSystemAndEmojiUniversalPanel == null) {
-      return;
-    }
-    paramSystemAndEmojiUniversalPanel.setEmoticonCallback(this.jdField_a_of_type_Arxd);
-    paramSystemAndEmojiUniversalPanel.setDispatchKeyEventListener(this.jdField_a_of_type_Asda);
-    paramSystemAndEmojiUniversalPanel.setShowDeleteButton(this.jdField_a_of_type_AndroidWidgetEditText);
-    paramSystemAndEmojiUniversalPanel.setShowCommonUsedSystemEmoji(this.jdField_a_of_type_Boolean);
-    paramSystemAndEmojiUniversalPanel.setFilterSysFaceBeyond255Enable(this.b);
-    paramSystemAndEmojiUniversalPanel.a();
+    return this.a;
   }
 }
 

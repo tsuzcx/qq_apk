@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.theme;
 
-import anvs;
-import bdpz;
+import aoie;
+import beiv;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ThemeUtil$2$1
   implements Runnable
 {
-  public ThemeUtil$2$1(bdpz parambdpz) {}
+  public ThemeUtil$2$1(beiv parambeiv) {}
   
   public void run()
   {
     ThemeUtil.isNowThemeIsAnimate();
-    anvs localanvs = (anvs)this.this$0.a.a(14);
-    if (localanvs != null) {
-      localanvs.a();
+    aoie localaoie = (aoie)this.this$0.a.a(14);
+    if (localaoie != null) {
+      localaoie.a();
     }
   }
 }

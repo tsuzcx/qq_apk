@@ -1,26 +1,15 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.ad.video.strategy.VideoAdExposureManager.PosListener.1;
-import java.lang.ref.WeakReference;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
 public final class ork
-  implements pxb
+  extends Editable.Factory
 {
-  private WeakReference<orj> a;
-  
-  public ork(orj paramorj)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    this.a = new WeakReference(paramorj);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.a != null)
-    {
-      orj localorj = (orj)this.a.get();
-      if ((localorj != null) && (orj.a(localorj) != null)) {
-        orj.a(localorj).post(new VideoAdExposureManager.PosListener.1(this, localorj, paramInt));
-      }
+    if ((paramCharSequence instanceof omv)) {
+      return (Editable)paramCharSequence;
     }
+    return new omv(paramCharSequence, 3, 20);
   }
 }
 

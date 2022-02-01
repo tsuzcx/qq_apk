@@ -1,13 +1,32 @@
-import java.io.File;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.QZLog;
 
-public class bndm
+final class bndm
+  implements bndq
 {
-  public static final String a = bndv.a + File.separator + "camera";
-  public static final String b = bndv.a + File.separator + "sv_config_resources" + File.separator;
-  public static final String c = a + File.separator + "capture";
-  public static final String d = a + File.separator + "material_zip_download";
-  public static final String e = a + File.separator + "material_usable";
-  public static final String f = a + File.separator + "material_config";
+  public void a(boolean paramBoolean, Context paramContext, bndr parambndr)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      long l1 = parambndr.a.getLongExtra("key_launch_time", 0L);
+      if (l1 > 0L)
+      {
+        long l2 = System.currentTimeMillis();
+        QZLog.d("plugin_tag", 1, "IPluginManager onPluginReady Open Plugin Activity timedelay=" + (l2 - l1));
+      }
+      bndl.b((Activity)paramContext, parambndr);
+      return;
+    }
+    Toast.makeText(BaseApplicationImpl.getContext(), anzj.a(2131704749), 0).show();
+  }
 }
 
 

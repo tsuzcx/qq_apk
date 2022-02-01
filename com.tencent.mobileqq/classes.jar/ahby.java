@@ -1,93 +1,43 @@
-import android.app.Activity;
 import android.view.View;
-import com.etrump.mixlayout.ETFont;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
+import com.tencent.mobileqq.data.MessageForConfessNews;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahby
-  implements bhue
+  implements View.OnClickListener
 {
-  ahby(ahbx paramahbx, boolean paramBoolean) {}
+  ahby(ahbx paramahbx) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LongMsgItemBuilder", 2, "SingleTap invoked!");
-    }
     Object localObject;
-    float f1;
-    float f2;
-    float f3;
-    int k;
-    boolean bool2;
-    int j;
-    boolean bool1;
-    if ((paramView instanceof AnimationTextView))
+    int i;
+    if ((paramView instanceof ConfessNewsBgView))
     {
-      localObject = (AnimationTextView)paramView;
-      f1 = ((AnimationTextView)localObject).touchL - ahbx.b();
-      f2 = ((AnimationTextView)localObject).touchT;
-      f3 = ahbx.c();
-      if (this.jdField_a_of_type_Boolean) {
-        f1 = ((AnimationTextView)localObject).touchL - ahbx.d();
-      }
-      localObject = ((AnimationTextView)localObject).getText();
-      if ((localObject instanceof bdnt))
+      localObject = paramView.getTag();
+      if ((localObject instanceof MessageForConfessNews))
       {
-        localObject = (bdnt)localObject;
-        localObject = (bdoa[])((bdnt)localObject).getSpans(0, ((bdnt)localObject).length(), bdoa.class);
-        if (!(paramView instanceof ETTextView)) {
-          break label332;
+        localObject = (MessageForConfessNews)localObject;
+        if (((MessageForConfessNews)localObject).istroop != 1) {
+          break label80;
         }
-        paramView = (ETTextView)paramView;
-        k = paramView.mClickEpId;
-        int m = paramView.mClickcEId;
-        if ((paramView.mFont == null) || (paramView.mFont.mFontId == 0) || (paramView.mFont.mFontType != 1)) {
-          break label314;
+        i = 1;
+        if (i == 0) {
+          break label85;
         }
-        bool2 = true;
-        i = k;
-        j = m;
-        bool1 = bool2;
-        if (bool2)
-        {
-          i = k;
-          j = m;
-          bool1 = bool2;
-          if (paramView.getETLayout() != null)
-          {
-            paramView = paramView.getETLayout();
-            if (QLog.isColorLevel()) {
-              QLog.d("ChatItemBuilder", 2, "isHanYiFont, onlyEmoji: " + paramView.jdField_a_of_type_Boolean);
-            }
-            if (paramView.jdField_a_of_type_Boolean) {
-              break label320;
-            }
-            bool1 = true;
-            label248:
-            j = m;
-          }
-        }
+        aqzo.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, 2, ((MessageForConfessNews)localObject).strGroupUin, ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).strRecUin);
       }
     }
-    for (int i = k;; i = -1)
+    for (;;)
     {
-      if ((i != -1) && (j != -1)) {}
-      for (bool2 = true;; bool2 = false)
-      {
-        arze.a((bdoa[])localObject, f1, f2 - f3, bool2, i, j, this.jdField_a_of_type_Ahbx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahbx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (Activity)this.jdField_a_of_type_Ahbx.jdField_a_of_type_AndroidContentContext, bool1);
-        return;
-        label314:
-        bool2 = false;
-        break;
-        label320:
-        bool1 = false;
-        break label248;
-      }
-      label332:
-      bool1 = false;
-      j = -1;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label80:
+      i = 0;
+      break;
+      label85:
+      aqyt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).nConfessorSex, ((MessageForConfessNews)localObject).strRecUin);
     }
   }
 }

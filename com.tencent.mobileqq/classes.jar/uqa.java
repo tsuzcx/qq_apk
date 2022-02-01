@@ -1,80 +1,31 @@
-import NS_KING_SOCIALIZE_META.stMetaUgcImage;
-import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
-import UserGrowth.stFloatingLayerCardStyle;
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaPerson;
-import android.content.Context;
-import android.text.TextUtils;
-import com.google.gson.Gson;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
-public class uqa
+final class uqa
+  implements upr
 {
-  public static stSimpleMetaFeed a(String paramString)
+  uqa(Activity paramActivity, String paramString1, WSDownloadParams paramWSDownloadParams, String paramString2, int paramInt) {}
+  
+  public void a()
   {
-    stSimpleMetaFeed localstSimpleMetaFeed = null;
-    try
-    {
-      paramString = new JSONObject(paramString);
-      Gson localGson = new Gson();
-      localstSimpleMetaFeed = new stSimpleMetaFeed();
-      if (paramString != null)
-      {
-        localstSimpleMetaFeed.id = paramString.optString("id");
-        localstSimpleMetaFeed.ding_count = paramString.optInt("dingCount");
-        localstSimpleMetaFeed.is_ding = paramString.optInt("isDing");
-        localstSimpleMetaFeed.total_comment_num = paramString.optInt("commentNum");
-        localstSimpleMetaFeed.material_desc = paramString.optString("materialDesc");
-        localstSimpleMetaFeed.material_thumburl = paramString.optString("materialThumburl");
-        localstSimpleMetaFeed.feed_desc = paramString.optString("feedDesc");
-        localstSimpleMetaFeed.video = ((stMetaUgcVideoSeg)localGson.fromJson(paramString.optJSONObject("video").toString(), stMetaUgcVideoSeg.class));
-        localstSimpleMetaFeed.video_url = paramString.optString("videoUrl");
-        ArrayList localArrayList = new ArrayList();
-        stMetaUgcImage localstMetaUgcImage = new stMetaUgcImage();
-        localstMetaUgcImage.url = paramString.optString("coverUrl");
-        localstMetaUgcImage.height = paramString.optInt("coverHeight");
-        localstMetaUgcImage.width = paramString.optInt("coverWidth");
-        localArrayList.add(localstMetaUgcImage);
-        localstSimpleMetaFeed.images = localArrayList;
-        localstSimpleMetaFeed.poster_id = paramString.optString("posterId");
-        localstSimpleMetaFeed.poster = ((stSimpleMetaPerson)localGson.fromJson(paramString.optJSONObject("poster").toString(), stSimpleMetaPerson.class));
-        paramString = new stFloatingLayerCardStyle();
-        paramString.cardType = 3;
-        localstSimpleMetaFeed.floatingLayerCardStyle = paramString;
-      }
-      return localstSimpleMetaFeed;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = localstSimpleMetaFeed;
-      }
-    }
+    uqh.a(this.jdField_a_of_type_AndroidAppActivity, "biz_src_jc_gzh_weishi", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
   }
   
-  public static ArrayList<stSimpleMetaFeed> a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  public void b()
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramstSimpleMetaFeed != null) {
-      localArrayList.add(paramstSimpleMetaFeed);
-    }
-    return localArrayList;
+    WSPublicAccReport.getInstance().reportCallDialog("gzh_exposure", "dynamics_" + this.b + this.jdField_a_of_type_Int, 0);
   }
   
-  public static boolean a(stSimpleMetaFeed paramstSimpleMetaFeed, Context paramContext)
+  public void c()
   {
-    if ((paramContext == null) || (paramstSimpleMetaFeed == null)) {
-      return false;
-    }
-    ArrayList localArrayList = a(paramstSimpleMetaFeed);
-    if ((localArrayList != null) && (localArrayList.size() > 0) && (localArrayList.get(0) != null) && (((stSimpleMetaFeed)localArrayList.get(0)).poster != null) && (paramstSimpleMetaFeed.poster != null) && (TextUtils.equals(((stSimpleMetaFeed)localArrayList.get(0)).poster.id, ups.f()))) {}
-    WSVerticalPageFragment.a(paramContext, "qqchat", "qqchat", localArrayList, 0, true);
-    return true;
+    WSPublicAccReport.getInstance().reportCallDialog("gzh_click", "dynamics_" + this.b + this.jdField_a_of_type_Int, 1000001);
+    uqh.a(this.jdField_a_of_type_AndroidAppActivity, "biz_src_jc_gzh_weishi", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
+  }
+  
+  public void d()
+  {
+    WSPublicAccReport.getInstance().reportCallDialog("gzh_click", "dynamics_" + this.b + this.jdField_a_of_type_Int, 1000005);
   }
 }
 

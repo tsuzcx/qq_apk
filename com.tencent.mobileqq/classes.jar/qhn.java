@@ -1,63 +1,49 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pts.core.PTSComposer;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import org.jetbrains.annotations.Nullable;
 
-public class qhn
-  implements ViewBase.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/network/PTSGeneralRequestModule$Companion;", "", "()V", "CMD_PTS_REQUEST_DATA", "", "KEY_PTS_APP_INSTANCE_ID", "SERVICE_TYPE_DEFAULT", "", "TAG", "requestPtsBusinessData", "", "ptsComposer", "Lcom/tencent/pts/core/PTSComposer;", "businessType", "requestParamsJson", "extendInfoJson", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qhn
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  
-  public qhn(ArticleInfo paramArticleInfo, Context paramContext)
+  public final void a(@Nullable PTSComposer paramPTSComposer, int paramInt, @Nullable String paramString1, @Nullable String paramString2)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
-      return;
+    if (paramPTSComposer == null) {
+      QLog.i("PTSGeneralRequestModule", 1, "[requestPtsBusinessData] ptsComposer is null, businessType = " + paramInt);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("OnTopicRecommendHeaderClickListener", 2, "business url is " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessUrl);
-    }
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.size() > 0)) {}
-    for (Object localObject = (rik)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.get(0);; localObject = null)
+    Object localObject;
+    do
     {
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (localObject == null))
+      do
       {
-        QLog.d("OnTopicRecommendHeaderClickListener", 1, new Object[] { "articleInfo is null or topicRecommendInfo is null, articleInfo: ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, " topicRecommendInfo: ", localObject });
-        return;
+        do
+        {
+          return;
+          localObject = ozs.a();
+          if (localObject == null) {
+            throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
+          }
+          localObject = (pfg)((QQAppInterface)localObject).getManager(163);
+        } while (localObject == null);
+        localObject = ((pfg)localObject).a();
+      } while (localObject == null);
+      localObject = ((pfa)localObject).a();
+    } while (localObject == null);
+    if (paramString1 != null) {
+      if (paramString2 == null) {
+        break label121;
       }
-      String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessUrl;
-      if (TextUtils.isEmpty(str)) {
-        break;
-      }
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
-      localIntent.putExtra("url", str);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      str = pha.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      localObject = pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, ((rik)localObject).a + "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      oat.a(null, str, "0X8008A63", "0X8008A63", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId), (String)localObject, false);
-      snh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-      pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-      return;
     }
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    int i = snh.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (i != 79)) {
-      a();
+    for (;;)
+    {
+      ((qhm)localObject).a(paramPTSComposer, paramInt, paramString1, paramString2);
+      return;
+      paramString1 = "";
+      break;
+      label121:
+      paramString2 = "";
     }
   }
 }

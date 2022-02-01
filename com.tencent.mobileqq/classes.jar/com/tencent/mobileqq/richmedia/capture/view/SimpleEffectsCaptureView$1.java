@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import bann;
-import baqq;
+import bbgg;
+import bbjj;
 import com.tencent.qphone.base.util.QLog;
 
 class SimpleEffectsCaptureView$1
@@ -11,7 +11,7 @@ class SimpleEffectsCaptureView$1
   
   public void run()
   {
-    SimpleEffectsCaptureView.a(this.this$0, bann.b());
+    SimpleEffectsCaptureView.a(this.this$0, bbgg.b());
     if (SimpleEffectsCaptureView.a(this.this$0) != null) {
       SimpleEffectsCaptureView.a(this.this$0).a(SimpleEffectsCaptureView.a(this.this$0));
     }

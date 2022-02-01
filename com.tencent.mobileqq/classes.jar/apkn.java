@@ -1,18 +1,131 @@
-import android.os.Bundle;
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.NeonControl.1;
+import com.tencent.mobileqq.ar.NeonControl.2;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-final class apkn
-  extends aplm
+public class apkn
 {
-  apkn(String paramString, ArrayList paramArrayList)
+  private static apkn jdField_a_of_type_Apkn;
+  public static boolean a;
+  apko jdField_a_of_type_Apko;
+  public final Object a;
+  private boolean b;
+  
+  static
   {
-    super(paramString);
+    jdField_a_of_type_Boolean = true;
   }
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  private apkn()
   {
-    if ((paramBoolean) && (paramBundle != null)) {
-      this.a.add(paramBundle.getString("Nickname", ""));
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    Object localObject1 = BaseApplication.getContext().getSharedPreferences("sp_cpu_neon_support", 4);
+    if (!((SharedPreferences)localObject1).contains("sp_cpu_neon_support")) {
+      ThreadManager.post(new NeonControl.1(this, (SharedPreferences)localObject1, false), 5, null, true);
+    }
+    boolean bool2 = ((SharedPreferences)localObject1).getBoolean("sp_cpu_neon_support", false);
+    boolean bool3 = apky.a().e;
+    int i;
+    int j;
+    if (QLog.isColorLevel())
+    {
+      if (bool3)
+      {
+        i = 1;
+        if (!bool2) {
+          break label174;
+        }
+        j = 1;
+        label97:
+        QLog.i("NeonControl", 2, String.format("dpcNeonCfgSwitch:%d isNeonSupport:%d forceOpenNeon:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0) }));
+      }
+    }
+    else
+    {
+      localObject1 = this.jdField_a_of_type_JavaLangObject;
+      if ((!bool3) || (!bool2)) {
+        break label179;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        this.b = bool1;
+        return;
+      }
+      finally {}
+      i = 0;
+      break;
+      label174:
+      j = 0;
+      break label97;
+      label179:
+      bool1 = false;
+    }
+  }
+  
+  public static apkn a()
+  {
+    if (jdField_a_of_type_Apkn == null) {
+      jdField_a_of_type_Apkn = new apkn();
+    }
+    return jdField_a_of_type_Apkn;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Apko == null) {}
+    apko localapko;
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        localapko = new apko(this);
+        localapko.jdField_a_of_type_Long = this.jdField_a_of_type_Apko.jdField_a_of_type_Long;
+        localapko.jdField_a_of_type_Int = this.jdField_a_of_type_Apko.jdField_a_of_type_Int;
+        localapko.b = this.jdField_a_of_type_Apko.b;
+        this.jdField_a_of_type_Apko.b = -2147483648;
+        this.jdField_a_of_type_Apko.jdField_a_of_type_Long = 0L;
+        this.jdField_a_of_type_Apko.jdField_a_of_type_Int = 0;
+      } while ((localapko.jdField_a_of_type_Long <= 0L) || (localapko.jdField_a_of_type_Int <= 0) || (localapko.b == -2147483648));
+      i = (int)(localapko.jdField_a_of_type_Long / localapko.jdField_a_of_type_Int);
+    } while ((i < 0) || (i >= 600000));
+    ThreadManager.post(new NeonControl.2(this, localapko, i), 5, null, false);
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    if (this.jdField_a_of_type_Apko == null)
+    {
+      this.jdField_a_of_type_Apko = new apko(this);
+      this.jdField_a_of_type_Apko.b = paramInt;
+    }
+    if (this.jdField_a_of_type_Apko.b != paramInt)
+    {
+      if ((this.jdField_a_of_type_Apko.jdField_a_of_type_Long > 0L) || (this.jdField_a_of_type_Apko.jdField_a_of_type_Int > 0)) {
+        a();
+      }
+      this.jdField_a_of_type_Apko.b = paramInt;
+      this.jdField_a_of_type_Apko.jdField_a_of_type_Long = 0L;
+      this.jdField_a_of_type_Apko.jdField_a_of_type_Int = 0;
+    }
+    apko localapko = this.jdField_a_of_type_Apko;
+    localapko.jdField_a_of_type_Long += paramLong;
+    localapko = this.jdField_a_of_type_Apko;
+    localapko.jdField_a_of_type_Int += 1;
+  }
+  
+  public boolean a()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      boolean bool = this.b;
+      return bool;
     }
   }
 }

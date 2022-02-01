@@ -1,12 +1,15 @@
-public abstract interface atxx
+class atxx
+  extends atxl
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public atxx(atwy paramatwy)
+  {
+    super(paramatwy);
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  protected String a()
+  {
+    return "StateSaveToWeiYunByPC";
+  }
 }
 
 

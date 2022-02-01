@@ -1,24 +1,70 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.ilive.IliveLaunchFragment;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bldw
-  implements LoadSoCallback
 {
-  public bldw(IliveLaunchFragment paramIliveLaunchFragment, long paramLong) {}
+  private AtomicInteger a = new AtomicInteger(0);
   
-  public void onLoad(boolean paramBoolean)
+  public void a()
   {
-    QLog.e("IliveLaunchActivity", 1, "initVideoSDK loadSo = " + paramBoolean);
-    blet.b("IliveLaunch initVideoSDK");
-    if (paramBoolean)
+    int i;
+    do
     {
-      blet.a("IliveLaunch initSDKAsync");
-      azwq.a(BaseApplicationImpl.getApplication(), new bldx(this));
+      i = this.a.get();
+      if ((i & 0xFFFFFFFE) == 0) {}
+      do
+      {
+        return;
+        if ((i & 0x1) == 0) {
+          break;
+        }
+      } while ((this.a.addAndGet(-2) & 0xFFFFFFFE) != 0);
+      synchronized (this.a)
+      {
+        this.a.notifyAll();
+        return;
+      }
+    } while (!this.a.compareAndSet(i, i - 2));
+  }
+  
+  public boolean a()
+  {
+    int i;
+    do
+    {
+      i = this.a.get();
+      if ((i & 0x1) != 0) {
+        return false;
+      }
+    } while (!this.a.compareAndSet(i, i + 2));
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a.compareAndSet(0, 1)) {}
+    while (this.a.compareAndSet(1, 1)) {
       return;
     }
-    this.jdField_a_of_type_CooperationIliveIliveLaunchFragment.onFail(108, "media play so load fail");
+    int i;
+    do
+    {
+      i = this.a.get();
+    } while (!this.a.compareAndSet(i, i | 0x1));
+    try
+    {
+      synchronized (this.a)
+      {
+        this.a.wait();
+        return;
+      }
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        localInterruptedException.printStackTrace();
+      }
+    }
   }
 }
 

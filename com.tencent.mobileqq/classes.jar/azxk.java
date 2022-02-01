@@ -1,42 +1,31 @@
-import NS_MOBILE_PHOTO.operation_red_touch_req;
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.graphics.Point;
+import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
+import java.util.Comparator;
+import java.util.Random;
 
 public class azxk
-  extends MSFServlet
+  implements Comparator<azxg>
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  int jdField_a_of_type_Int;
+  Random jdField_a_of_type_JavaUtilRandom;
+  int b;
+  
+  public azxk(TagCloudView paramTagCloudView, Random paramRandom, int paramInt1, int paramInt2)
   {
-    if (paramFromServiceMsg != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAlbumRedDotServlet", 2, "resultcode:" + paramFromServiceMsg.getResultCode() + ",failMsg:" + paramFromServiceMsg.getBusinessFailMsg());
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("QzoneAlbumRedDotServlet", 2, "fromServiceMsg==msg");
+    this.jdField_a_of_type_JavaUtilRandom = paramRandom;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt1;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public int a(azxg paramazxg1, azxg paramazxg2)
   {
-    paramIntent = paramIntent.getSerializableExtra("req");
-    if ((paramIntent != null) && ((paramIntent instanceof operation_red_touch_req)))
-    {
-      azxj localazxj = new azxj(getAppRuntime().getLongAccountUin(), (operation_red_touch_req)paramIntent);
-      byte[] arrayOfByte = localazxj.encode();
-      paramIntent = arrayOfByte;
-      if (arrayOfByte == null) {
-        paramIntent = new byte[4];
-      }
-      paramPacket.setTimeout(60000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + localazxj.uniKey());
-      paramPacket.putSendData(paramIntent);
+    if ((paramazxg1.b.y > this.jdField_a_of_type_Int) || (paramazxg2.b.y > this.jdField_a_of_type_Int)) {
+      return -(paramazxg1.b.y - paramazxg2.b.y);
     }
+    if ((paramazxg1.b.x > this.b) || (paramazxg2.b.x > this.b)) {
+      return -(paramazxg1.b.x - paramazxg2.b.x);
+    }
+    return this.jdField_a_of_type_JavaUtilRandom.nextInt(3) - 2;
   }
 }
 

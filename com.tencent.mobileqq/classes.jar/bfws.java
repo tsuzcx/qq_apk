@@ -1,103 +1,64 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.net.URL;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.util.UUID;
 
-class bfws
-  implements URLDrawableDownListener
+public class bfws
 {
-  bfws(bfwr parambfwr, ImageProgressCircle paramImageProgressCircle, URLImageView paramURLImageView) {}
+  protected long a;
+  aavn a;
+  protected bfve a;
+  protected TroopFileTransferManager.Item a;
+  protected String a;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  private bfws(long paramLong, TroopFileTransferManager.Item paramItem)
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
+    this.jdField_a_of_type_Aavn = new bfwt(this);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
+    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
     {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadCancelled urlStr : " + paramView);
-    bcst.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_cancel", 0, 1, 0, paramView, "", "", "");
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    if (paramThrowable == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
-    {
-      QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadFailed urlStr : " + paramView + "; errorMsg : " + paramURLDrawable);
-      bcst.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
+      this.jdField_a_of_type_JavaLangString = paramItem;
       return;
     }
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  public static bfws a(long paramLong, TroopFileTransferManager.Item paramItem)
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
+    if (paramLong == 0L)
     {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
+      bfvr.a("TroopFilePreviewWorker", bfvr.a, "getWoker. troopuin=0");
+      return null;
     }
-    if (paramInterruptedException == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramInterruptedException.getMessage())
+    if (paramItem == null)
     {
-      QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadInterrupted urlStr : " + paramView + "; errorMsg : " + paramURLDrawable);
-      bcst.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
-      return;
+      bfvr.a("TroopFilePreviewWorker", bfvr.a, "getWoker. item=null");
+      return null;
     }
+    if (paramItem.Id == null)
+    {
+      bfvr.a("TroopFilePreviewWorker", bfvr.a, "getWoker. item.id=null");
+      return null;
+    }
+    return new bfws(paramLong, paramItem);
   }
   
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public UUID a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
-    if ((this.jdField_a_of_type_Bfwr.a != null) && (this.jdField_a_of_type_Bfwr.a.get() != null)) {
-      ((TextView)this.jdField_a_of_type_Bfwr.a.get()).setText(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.a());
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
   }
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public boolean a()
   {
-    this.jdField_a_of_type_Bfwr.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
+    QQAppInterface localQQAppInterface = bfvp.a();
+    if (localQQAppInterface == null)
     {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
+      bfvr.a("TroopFilePreviewWorker", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] getPreviewInfo app=null");
+      return false;
     }
-    if ((this.jdField_a_of_type_Bfwr.a != null) && (this.jdField_a_of_type_Bfwr.a.get() != null)) {
-      ((TextView)this.jdField_a_of_type_Bfwr.a.get()).setVisibility(8);
-    }
-    this.jdField_a_of_type_Bfwr.a = null;
-    this.jdField_a_of_type_Bfwr.c = false;
-    bcst.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
+    bfvr.c("TroopFilePreviewWorker", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] getPreviewInfo");
+    this.jdField_a_of_type_Bfve = aauw.a(localQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 0, true, false, this.jdField_a_of_type_Aavn);
+    return true;
   }
 }
 

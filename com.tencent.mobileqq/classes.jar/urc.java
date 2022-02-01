@@ -1,104 +1,111 @@
-import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
 import UserGrowth.stSimpleMetaFeed;
-import android.app.Activity;
-import android.text.TextUtils;
-import android.widget.RelativeLayout;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import UserGrowth.stSimpleMetaGdtAdInfo;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class urc
+  implements ula
 {
-  public static int a(String paramString)
+  private WSPlayerManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
+  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+  private urj jdField_a_of_type_Urj;
+  
+  public urc(WSPlayerManager paramWSPlayerManager)
   {
-    int i = 2;
-    if (TextUtils.equals(paramString, "trends")) {
-      i = 6;
-    }
-    while (!TextUtils.equals(paramString, "aio_home_page")) {
-      return i;
-    }
-    return 12;
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager = paramWSPlayerManager;
   }
   
-  public static List<uru> a(List<stSimpleMetaFeed> paramList)
+  private void a()
   {
-    if ((paramList != null) && (paramList.size() > 0))
+    uuy localuuy = this.jdField_a_of_type_Urj.b();
+    StringBuilder localStringBuilder = new StringBuilder().append("[WSPlayerStatusListenerImpl.java][prePlayVideo] videoItemHolder:").append(localuuy).append(", mPlayerParam:");
+    if (localuuy != null) {}
+    for (Object localObject = localuuy.jdField_a_of_type_Ukz;; localObject = "null")
     {
-      ArrayList localArrayList = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      uqf.e("WS_VIDEO_LISTENER", localObject);
+      if ((localuuy != null) && (localuuy.jdField_a_of_type_Ukz != null))
       {
-        stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)paramList.next();
-        uru localuru = new uru();
-        localuru.a(localstSimpleMetaFeed);
-        localArrayList.add(localuru);
+        uqf.e("WS_VIDEO_SCROLL", "[WSPlayerStatusListenerImpl.java][prePlayVideo] start prePlayView.");
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(localuuy.jdField_a_of_type_Ukz);
       }
-      return localArrayList;
-    }
-    return null;
-  }
-  
-  public static List<ukn> a(List<uru> paramList, int paramInt, boolean paramBoolean)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = new ArrayList(paramList);
-    if (paramBoolean)
-    {
-      i = paramInt + 1;
-      while (i < paramInt + 1 + 3)
-      {
-        a(localArrayList, paramList, i);
-        i += 1;
-      }
-    }
-    int i = paramInt - 1;
-    while (i > paramInt - 1 - 3)
-    {
-      a(localArrayList, paramList, i);
-      i -= 1;
-    }
-    return localArrayList;
-  }
-  
-  public static ukn a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    ukn localukn = new ukn(paramstSimpleMetaFeed.video_url, paramstSimpleMetaFeed.video.duration);
-    localukn.a = paramstSimpleMetaFeed.id;
-    localukn.c = paramstSimpleMetaFeed.feed_desc;
-    return localukn;
-  }
-  
-  public static void a(Activity paramActivity, RelativeLayout paramRelativeLayout)
-  {
-    if ((paramActivity != null) && (paramRelativeLayout != null)) {
-      paramRelativeLayout.setPadding(paramRelativeLayout.getPaddingLeft(), paramRelativeLayout.getPaddingTop() + upr.a(paramActivity), paramRelativeLayout.getPaddingRight(), paramRelativeLayout.getPaddingBottom());
-    }
-  }
-  
-  private static void a(List<ukn> paramList, List<uru> paramList1, int paramInt)
-  {
-    if ((paramList1.size() > paramInt) && (paramInt >= 0))
-    {
-      paramList1 = (uru)paramList1.get(paramInt);
-      if ((paramList1.a() instanceof stSimpleMetaFeed)) {}
-    }
-    else
-    {
       return;
     }
-    paramList.add(a((stSimpleMetaFeed)paramList1.a()));
   }
   
-  public static int b(String paramString)
+  public void a(WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    if ((TextUtils.equals(paramString, "recommend_tab")) || (TextUtils.equals(paramString, "aio_new_msg")) || (TextUtils.equals(paramString, "mini_app_personal_main")) || (TextUtils.equals(paramString, "mini_app_personal_guest")) || (TextUtils.equals(paramString, "vertical_layer_collection")) || (TextUtils.equals(paramString, "aio_home_page")) || (TextUtils.equals(paramString, "qqchat"))) {
-      return 1;
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
+    if (paramWSVerticalPageFragment != null) {
+      this.jdField_a_of_type_Urj = paramWSVerticalPageFragment.a();
     }
-    if ((TextUtils.equals(paramString, "follow_tab")) || (TextUtils.equals(paramString, "friend_feed"))) {
-      return 0;
+  }
+  
+  public void a(ukz paramukz) {}
+  
+  public void a(ukz paramukz, int paramInt)
+  {
+    boolean bool = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.j();
+    uqf.e("WS_VIDEO_LISTENER", "onVideoReplayOnLoop loopPlayMode:" + bool);
+    if (!bool) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.f();
     }
-    return -1;
+    Object localObject;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramukz == null) || (paramukz.a == null) || (this.jdField_a_of_type_Urj == null) || (this.jdField_a_of_type_Urj.a() == null));
+        localObject = this.jdField_a_of_type_Urj.a();
+      } while ((localObject == null) || (((uuy)localObject).jdField_a_of_type_JavaLangObject == null) || (((usv)((uuy)localObject).jdField_a_of_type_JavaLangObject).a() == null) || (paramukz == null));
+      localObject = ((usv)((uuy)localObject).jdField_a_of_type_JavaLangObject).a();
+    } while (!(localObject instanceof stSimpleMetaFeed));
+    uvt.a((stSimpleMetaFeed)localObject, paramukz, paramukz.a.c);
+  }
+  
+  public void a(ukz paramukz, int paramInt1, int paramInt2, String paramString) {}
+  
+  public void a(ukz paramukz, boolean paramBoolean)
+  {
+    uvv.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), paramukz, paramBoolean);
+    uoi.a(paramukz, paramBoolean);
+    if ((paramukz != null) && (this.jdField_a_of_type_Urj != null) && (this.jdField_a_of_type_Urj.a() != null))
+    {
+      Object localObject2 = this.jdField_a_of_type_Urj.a();
+      if ((localObject2 != null) && (((uuy)localObject2).jdField_a_of_type_JavaLangObject != null) && (((usv)((uuy)localObject2).jdField_a_of_type_JavaLangObject).a() != null) && (paramukz != null))
+      {
+        Object localObject1 = ((usv)((uuy)localObject2).jdField_a_of_type_JavaLangObject).a();
+        localObject2 = ((usv)((uuy)localObject2).jdField_a_of_type_JavaLangObject).a();
+        if (((localObject1 instanceof stSimpleMetaFeed)) && (localObject2 != null) && (!((stSimpleMetaGdtAdInfo)localObject2).isGdtAdVidoReport)) {
+          uvt.a((stSimpleMetaFeed)localObject1, paramukz);
+        }
+      }
+    }
+  }
+  
+  public void b(ukz paramukz)
+  {
+    a();
+    uvv.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), paramukz);
+    uhc.a().a();
+  }
+  
+  public void c(ukz paramukz)
+  {
+    if (!this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.j()) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.f();
+    }
+  }
+  
+  public void d(ukz paramukz) {}
+  
+  public void e(ukz paramukz) {}
+  
+  public void f(ukz paramukz)
+  {
+    a();
   }
 }
 

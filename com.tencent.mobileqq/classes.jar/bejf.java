@@ -1,39 +1,18 @@
-import android.content.ContentResolver;
-import android.database.ContentObserver;
-import android.os.Handler;
-import android.provider.Settings.System;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 
 public class bejf
-  extends ContentObserver
+  implements ImageAssetDelegate
 {
-  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
-  
-  public bejf(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, Handler paramHandler)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    super(paramHandler);
-    this.jdField_a_of_type_AndroidContentContentResolver = paramTroopAvatarWallPreviewActivity.getContentResolver();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    super.onChange(paramBoolean);
-    if (Settings.System.getInt(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getContentResolver(), "accelerometer_rotation", -1) == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.setRequestedOrientation(4);
-      return;
+    if (BaseApplicationImpl.sImageCache != null) {
+      return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.setRequestedOrientation(1);
+    return null;
   }
 }
 

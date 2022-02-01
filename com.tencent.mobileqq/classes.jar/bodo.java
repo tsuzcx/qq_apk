@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
+import com.tencent.mobileqq.activity.qwallet.emoj.IBaseRecognizer;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMEmojiRedPacketCameraCaptureUnit.6.1;
+import mqq.os.MqqHandler;
 
 public class bodo
-  implements View.OnClickListener
+  implements IBaseRecognizer
 {
-  public bodo(AEEditorMvClipMenu paramAEEditorMvClipMenu) {}
+  bodo(bodh parambodh) {}
   
-  public void onClick(View paramView)
+  public void OnInitResultCallback(boolean paramBoolean)
   {
-    if (AEEditorMvClipMenu.a(this.a) != null) {
-      AEEditorMvClipMenu.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "init recoginzer result =" + paramBoolean);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!paramBoolean) {
+      ThreadManager.getUIHandler().post(new QIMEmojiRedPacketCameraCaptureUnit.6.1(this));
+    }
   }
 }
 

@@ -1,319 +1,314 @@
-import android.content.Context;
-import android.os.Handler;
-import android.telephony.PhoneStateListener;
-import com.tencent.av.utils.PhoneStatusMonitor.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class msb
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private PhoneStateListener jdField_a_of_type_AndroidTelephonyPhoneStateListener;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private msc jdField_a_of_type_Msc;
-  private msd jdField_a_of_type_Msd;
-  private boolean jdField_a_of_type_Boolean;
-  private final AtomicBoolean b;
+  private static float jdField_c_of_type_Float = 0.02F;
+  private static long m;
+  private float jdField_a_of_type_Float = 0.0F;
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  public msb a;
+  boolean jdField_a_of_type_Boolean = false;
+  private float jdField_b_of_type_Float = 0.0F;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  boolean jdField_b_of_type_Boolean = false;
+  private int jdField_c_of_type_Int;
+  private long jdField_c_of_type_Long;
+  private boolean jdField_c_of_type_Boolean = true;
+  private int jdField_d_of_type_Int;
+  private long jdField_d_of_type_Long;
+  private boolean jdField_d_of_type_Boolean;
+  private int jdField_e_of_type_Int;
+  private long jdField_e_of_type_Long;
+  private int jdField_f_of_type_Int;
+  private long jdField_f_of_type_Long;
+  private int jdField_g_of_type_Int;
+  private long jdField_g_of_type_Long;
+  private int jdField_h_of_type_Int;
+  private long jdField_h_of_type_Long;
+  private long i;
+  private long j;
+  private long k;
+  private long l;
+  private long n;
+  private final long o;
   
-  /* Error */
-  public msb(Context paramContext, msc parammsc)
+  public msb(msb parammsb, long paramLong)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokespecial 27	java/lang/Object:<init>	()V
-    //   4: aload_0
-    //   5: new 29	java/util/concurrent/atomic/AtomicBoolean
-    //   8: dup
-    //   9: invokespecial 30	java/util/concurrent/atomic/AtomicBoolean:<init>	()V
-    //   12: putfield 32	msb:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   15: aload_0
-    //   16: new 29	java/util/concurrent/atomic/AtomicBoolean
-    //   19: dup
-    //   20: invokespecial 30	java/util/concurrent/atomic/AtomicBoolean:<init>	()V
-    //   23: putfield 34	msb:b	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   26: aload_0
-    //   27: new 36	com/tencent/av/utils/PhoneStatusMonitor$3
-    //   30: dup
-    //   31: aload_0
-    //   32: invokespecial 39	com/tencent/av/utils/PhoneStatusMonitor$3:<init>	(Lmsb;)V
-    //   35: putfield 41	msb:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   38: invokestatic 47	android/os/SystemClock:elapsedRealtime	()J
-    //   41: lstore_3
-    //   42: invokestatic 53	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   45: ifeq +11 -> 56
-    //   48: ldc 55
-    //   50: iconst_2
-    //   51: ldc 57
-    //   53: invokestatic 61	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   56: aload_0
-    //   57: aload_1
-    //   58: putfield 63	msb:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   61: aload_0
-    //   62: aload_2
-    //   63: putfield 65	msb:jdField_a_of_type_Msc	Lmsc;
-    //   66: aload_0
-    //   67: new 67	mse
-    //   70: dup
-    //   71: aload_0
-    //   72: invokespecial 68	mse:<init>	(Lmsb;)V
-    //   75: putfield 70	msb:jdField_a_of_type_AndroidTelephonyPhoneStateListener	Landroid/telephony/PhoneStateListener;
-    //   78: aload_0
-    //   79: new 72	msd
-    //   82: dup
-    //   83: aload_0
-    //   84: invokespecial 73	msd:<init>	(Lmsb;)V
-    //   87: putfield 75	msb:jdField_a_of_type_Msd	Lmsd;
-    //   90: new 77	com/tencent/av/utils/PhoneStatusMonitor$1
-    //   93: dup
-    //   94: aload_0
-    //   95: aload_1
-    //   96: invokespecial 80	com/tencent/av/utils/PhoneStatusMonitor$1:<init>	(Lmsb;Landroid/content/Context;)V
-    //   99: bipush 16
-    //   101: aconst_null
-    //   102: iconst_0
-    //   103: invokestatic 86	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   106: invokestatic 53	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   109: ifeq +37 -> 146
-    //   112: ldc 55
-    //   114: iconst_2
-    //   115: new 88	java/lang/StringBuilder
-    //   118: dup
-    //   119: invokespecial 89	java/lang/StringBuilder:<init>	()V
-    //   122: ldc 91
-    //   124: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   127: invokestatic 47	android/os/SystemClock:elapsedRealtime	()J
-    //   130: lload_3
-    //   131: lsub
-    //   132: invokevirtual 98	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   135: ldc 100
-    //   137: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   140: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   143: invokestatic 61	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   146: new 106	android/content/IntentFilter
-    //   149: dup
-    //   150: invokespecial 107	android/content/IntentFilter:<init>	()V
-    //   153: astore_2
-    //   154: aload_2
-    //   155: ldc 109
-    //   157: invokevirtual 113	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   160: aload_2
-    //   161: ldc 115
-    //   163: invokevirtual 113	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   166: aload_2
-    //   167: ldc 117
-    //   169: invokevirtual 113	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   172: aload_2
-    //   173: ldc 119
-    //   175: invokevirtual 113	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   178: aload_2
-    //   179: ldc 121
-    //   181: invokevirtual 113	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   184: aload_1
-    //   185: aload_0
-    //   186: getfield 75	msb:jdField_a_of_type_Msd	Lmsd;
-    //   189: aload_2
-    //   190: invokevirtual 127	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
-    //   193: pop
-    //   194: invokestatic 53	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   197: ifeq +37 -> 234
-    //   200: ldc 55
-    //   202: iconst_2
-    //   203: new 88	java/lang/StringBuilder
-    //   206: dup
-    //   207: invokespecial 89	java/lang/StringBuilder:<init>	()V
-    //   210: ldc 129
-    //   212: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   215: invokestatic 47	android/os/SystemClock:elapsedRealtime	()J
-    //   218: lload_3
-    //   219: lsub
-    //   220: invokevirtual 98	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   223: ldc 100
-    //   225: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   228: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   231: invokestatic 61	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   234: aload_0
-    //   235: new 131	android/os/Handler
-    //   238: dup
-    //   239: invokestatic 137	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   242: invokespecial 140	android/os/Handler:<init>	(Landroid/os/Looper;)V
-    //   245: putfield 142	msb:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   248: return
-    //   249: astore_2
-    //   250: invokestatic 53	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   253: ifeq -175 -> 78
-    //   256: ldc 55
-    //   258: iconst_2
-    //   259: new 88	java/lang/StringBuilder
-    //   262: dup
-    //   263: invokespecial 89	java/lang/StringBuilder:<init>	()V
-    //   266: ldc 144
-    //   268: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   271: aload_2
-    //   272: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   275: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   278: invokestatic 150	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   281: goto -203 -> 78
-    //   284: astore_2
-    //   285: invokestatic 53	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   288: ifeq -182 -> 106
-    //   291: ldc 55
-    //   293: iconst_2
-    //   294: new 88	java/lang/StringBuilder
-    //   297: dup
-    //   298: invokespecial 89	java/lang/StringBuilder:<init>	()V
-    //   301: ldc 152
-    //   303: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   306: aload_2
-    //   307: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   310: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   313: invokestatic 150	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   316: goto -210 -> 106
-    //   319: astore_2
-    //   320: invokestatic 53	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   323: ifeq -217 -> 106
-    //   326: ldc 55
-    //   328: iconst_2
-    //   329: new 88	java/lang/StringBuilder
-    //   332: dup
-    //   333: invokespecial 89	java/lang/StringBuilder:<init>	()V
-    //   336: ldc 154
-    //   338: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   341: aload_2
-    //   342: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   345: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   348: invokestatic 150	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   351: goto -245 -> 106
-    //   354: astore_1
-    //   355: ldc 55
-    //   357: iconst_1
-    //   358: ldc 155
-    //   360: aload_1
-    //   361: invokestatic 159	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   364: goto -170 -> 194
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	367	0	this	msb
-    //   0	367	1	paramContext	Context
-    //   0	367	2	parammsc	msc
-    //   41	178	3	l	long
-    // Exception table:
-    //   from	to	target	type
-    //   66	78	249	java/lang/Exception
-    //   90	106	284	java/lang/InternalError
-    //   90	106	319	java/lang/IncompatibleClassChangeError
-    //   184	194	354	java/lang/Throwable
+    this.o = paramLong;
+    this.jdField_a_of_type_Msb = parammsb;
   }
   
-  private void a(boolean paramBoolean)
+  static float a(float paramFloat, long paramLong)
   {
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {}
+    float f1;
+    if (paramFloat == 0.0F) {
+      f1 = (float)paramLong;
+    }
     do
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("PhoneStatusMonitor", 2, "updateCallingState, pre[" + this.jdField_a_of_type_Boolean + "], cur[" + paramBoolean + "]");
-      }
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if (this.jdField_a_of_type_Msc != null) {
-        this.jdField_a_of_type_Msc.a(this.jdField_a_of_type_Boolean);
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    d();
+      return f1;
+      f1 = paramFloat;
+    } while (paramLong == 0L);
+    return (1.0F - jdField_c_of_type_Float) * paramFloat + (float)paramLong * jdField_c_of_type_Float;
   }
   
-  public void a()
+  static int a(float paramFloat)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_AndroidTelephonyPhoneStateListener == null)) {
+    if (paramFloat == 0.0F) {
+      return 0;
+    }
+    return (int)(1000000.0F / paramFloat * 100.0F);
+  }
+  
+  static long a(long paramLong1, long paramLong2)
+  {
+    if (paramLong1 == 0L) {}
+    while (paramLong2 == 0L) {
+      return 0L;
+    }
+    return paramLong1 - paramLong2;
+  }
+  
+  private void a(String paramString)
+  {
+    a();
+    b(paramString);
+    this.jdField_a_of_type_Msb = null;
+  }
+  
+  public static boolean a()
+  {
+    return true;
+  }
+  
+  private void b(String paramString)
+  {
+    boolean bool = c();
+    if ((bool) || (AudioHelper.a(18) == 1))
+    {
+      int i1 = a(this.jdField_a_of_type_Float);
+      int i2 = a(this.jdField_b_of_type_Float);
+      String str = "frameIndex[" + this.jdField_a_of_type_Msb + "->" + this.o + "], dataLen[" + this.jdField_b_of_type_Int + "], width[" + this.jdField_c_of_type_Int + "], height[" + this.jdField_d_of_type_Int + "], format[" + this.jdField_e_of_type_Int + "], CamAngle[" + this.jdField_f_of_type_Int + "], FinalAngle[" + this.jdField_h_of_type_Int + "], CamFPS[" + this.n + "], PreviewDataFPS[" + i1 + "], SendFPS[" + i2 + "], isFront[" + this.jdField_c_of_type_Boolean + "], effect[" + this.jdField_d_of_type_Boolean + "], business[" + String.format("%08x", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }) + "]";
+      paramString = null;
+      if (b()) {
+        paramString = ", intervalPreviewData[" + this.jdField_b_of_type_Long + "], intervalSendCameraFrame2Native[" + this.l + "], render[" + a(this.j, this.jdField_c_of_type_Long) + "], CheckLowligh[" + a(this.jdField_d_of_type_Long, this.jdField_c_of_type_Long) + "], Beauty2[" + a(this.jdField_e_of_type_Long, this.jdField_d_of_type_Long) + "], DenoiseRender[" + a(this.jdField_f_of_type_Long, this.jdField_e_of_type_Long) + "], LowLightRender[" + a(this.jdField_g_of_type_Long, this.jdField_f_of_type_Long) + "], Beauty3[" + a(this.jdField_h_of_type_Long, this.jdField_g_of_type_Long) + "], RenderChain[" + a(this.i, this.jdField_h_of_type_Long) + "], post[" + a(this.j, this.i) + "], buildExtInfo[" + a(this.k, this.j) + "]";
+      }
+      paramString = "PerfLog, " + str + paramString;
+      paramString = paramString + ", onPreviewData[" + this.jdField_a_of_type_Long + "], renderBegin[" + this.jdField_c_of_type_Long + "], afterCheckLowligh[" + this.jdField_d_of_type_Long + "], afterDenoiseRender[" + this.jdField_f_of_type_Long + "], afterLowLightRender[" + this.jdField_g_of_type_Long + "], afterBeautyRender[" + this.jdField_h_of_type_Long + "], afterRenderChain[" + this.i + "], renderEnd[" + this.j + "], sendCameraFrame2Native[" + this.k + "]";
+      if (bool) {
+        QLog.w("FramePerfDataK_" + this.jdField_b_of_type_Boolean, 1, paramString);
+      }
+    }
+    else
+    {
       return;
     }
-    d();
-    msf.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidTelephonyPhoneStateListener, 0);
-    QLog.d("PhoneStatusMonitor", 1, "PhoneStatusMonitor.unregisterReceiver()");
-    try
-    {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Msd);
-      this.jdField_a_of_type_Msc = null;
-      this.jdField_a_of_type_Msd = null;
-      this.jdField_a_of_type_AndroidTelephonyPhoneStateListener = null;
-      this.jdField_a_of_type_AndroidContentContext = null;
-      this.jdField_a_of_type_AndroidOsHandler = null;
-      return;
+    QLog.w("FramePerfData_" + this.jdField_b_of_type_Boolean, 1, paramString);
+  }
+  
+  public static boolean b()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  void a()
+  {
+    float f2 = 0.0F;
+    for (msb localmsb = this.jdField_a_of_type_Msb; (localmsb != null) && (!localmsb.jdField_a_of_type_Boolean); localmsb = localmsb.jdField_a_of_type_Msb) {
+      localmsb.jdField_b_of_type_Boolean = true;
     }
-    catch (Throwable localThrowable)
+    this.jdField_a_of_type_Msb = localmsb;
+    if (localmsb != null)
     {
-      for (;;)
-      {
-        QLog.i("PhoneStatusMonitor", 1, "unregisterReceiver", localThrowable);
+      if (localmsb.jdField_a_of_type_Long != 0L) {
+        this.jdField_b_of_type_Long = (this.jdField_a_of_type_Long - localmsb.jdField_a_of_type_Long);
+      }
+      if (localmsb.k != 0L) {
+        this.l = (this.k - localmsb.k);
+      }
+    }
+    if (localmsb == null)
+    {
+      f1 = 0.0F;
+      this.jdField_a_of_type_Float = a(f1, this.jdField_b_of_type_Long / 1000L);
+      if (localmsb != null) {
+        break label137;
+      }
+    }
+    label137:
+    for (float f1 = f2;; f1 = localmsb.jdField_b_of_type_Float)
+    {
+      this.jdField_b_of_type_Float = a(f1, this.l / 1000L);
+      return;
+      f1 = localmsb.jdField_a_of_type_Float;
+      break;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_h_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.jdField_d_of_type_Int = paramInt3;
+    this.jdField_e_of_type_Int = paramInt4;
+    this.jdField_f_of_type_Int = paramInt5;
+    this.jdField_g_of_type_Int = paramInt6;
+    this.n = paramLong;
+    this.jdField_c_of_type_Boolean = paramBoolean1;
+    this.jdField_d_of_type_Boolean = paramBoolean2;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (b())
+    {
+      this.jdField_e_of_type_Long = AudioHelper.c();
+      if (paramBoolean) {
+        this.jdField_a_of_type_Int |= 0x1;
       }
     }
   }
   
-  public boolean a()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    return this.jdField_a_of_type_Boolean;
+    if (b())
+    {
+      this.i = AudioHelper.c();
+      if (paramBoolean1) {
+        this.jdField_a_of_type_Int |= 0x20;
+      }
+      if (paramBoolean2) {
+        this.jdField_a_of_type_Int |= 0x10;
+      }
+      if (paramBoolean3) {
+        this.jdField_a_of_type_Int |= 0x40;
+      }
+      if (paramBoolean4) {
+        this.jdField_a_of_type_Int |= 0x80;
+      }
+    }
   }
   
   public void b()
   {
-    a();
+    if (b()) {
+      this.jdField_a_of_type_Long = AudioHelper.c();
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (b())
+    {
+      this.jdField_f_of_type_Long = AudioHelper.c();
+      if (paramBoolean) {
+        this.jdField_a_of_type_Int |= 0x2;
+      }
+    }
   }
   
   public void c()
   {
-    boolean bool = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-    if (QLog.isColorLevel()) {
-      QLog.i("PhoneStatusMonitor", 2, "checkCalling, begin, isCalling[" + this.jdField_a_of_type_Boolean + "], isChecking[" + bool + "]");
+    if (b()) {
+      this.jdField_c_of_type_Long = AudioHelper.c();
     }
-    if (bool) {
-      return;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    if (b())
+    {
+      this.jdField_g_of_type_Long = AudioHelper.c();
+      if (paramBoolean) {
+        this.jdField_a_of_type_Int |= 0x4;
+      }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    ThreadManager.excute(new PhoneStatusMonitor.2(this), 16, null, false);
+  }
+  
+  boolean c()
+  {
+    if (System.currentTimeMillis() - m >= 4000L)
+    {
+      m = System.currentTimeMillis();
+      return true;
+    }
+    msb localmsb = this.jdField_a_of_type_Msb;
+    if (localmsb != null)
+    {
+      if ((localmsb.jdField_b_of_type_Int != this.jdField_b_of_type_Int) || (localmsb.jdField_c_of_type_Int != this.jdField_c_of_type_Int) || (localmsb.jdField_d_of_type_Int != this.jdField_d_of_type_Int) || (localmsb.jdField_e_of_type_Int != this.jdField_e_of_type_Int) || (localmsb.jdField_f_of_type_Int != this.jdField_f_of_type_Int) || (localmsb.jdField_g_of_type_Int != this.jdField_g_of_type_Int) || (localmsb.n != this.n) || (localmsb.jdField_c_of_type_Boolean != this.jdField_c_of_type_Boolean) || (localmsb.jdField_d_of_type_Boolean != this.jdField_d_of_type_Boolean) || (localmsb.jdField_h_of_type_Int != this.jdField_h_of_type_Int) || (localmsb.jdField_a_of_type_Int != this.jdField_a_of_type_Int) || (localmsb.o + 1L != this.o))
+      {
+        m = System.currentTimeMillis();
+        return true;
+      }
+    }
+    else
+    {
+      m = System.currentTimeMillis();
+      return true;
+    }
+    return false;
   }
   
   public void d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhoneStatusMonitor", 2, "clearTillEnd, calling[" + this.jdField_a_of_type_Boolean + "], tillEnd[" + this.b.get() + "]");
+    if (b()) {
+      this.j = AudioHelper.c();
     }
-    this.b.set(false);
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-    if (localHandler != null) {
-      localHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    if (b())
+    {
+      this.jdField_h_of_type_Long = AudioHelper.c();
+      if (paramBoolean) {
+        this.jdField_a_of_type_Int |= 0x8;
+      }
     }
+  }
+  
+  public boolean d()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return true;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    a("clear");
+    return false;
   }
   
   public void e()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhoneStatusMonitor", 2, "checkEndOfCall, calling[" + this.jdField_a_of_type_Boolean + "]");
+    if (b()) {
+      this.jdField_d_of_type_Long = AudioHelper.c();
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.b.set(true);
-    c();
   }
   
-  protected void finalize()
+  public void f()
   {
-    try
-    {
-      a();
-      return;
+    this.jdField_a_of_type_Boolean = true;
+    if (b()) {
+      this.k = AudioHelper.c();
     }
-    finally
-    {
-      super.finalize();
-    }
+    a("finish");
+  }
+  
+  public String toString()
+  {
+    return this.o + "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     msb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.hiboom.FontBubble;
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
-import java.util.List;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.forward.ForwardFileOption;
 
 public class auyv
-  implements awnd<T, List<FontBubble>>
+  implements TextView.OnEditorActionListener
 {
-  public auyv(FontBubblePanelView paramFontBubblePanelView) {}
+  public auyv(ForwardFileOption paramForwardFileOption) {}
   
-  public List<FontBubble> a(T paramT)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramT = FontBubblePanelView.a(this.a).a(FontBubblePanelView.a(this.a).a, paramT);
-    FontBubble localFontBubble = new FontBubble();
-    localFontBubble.viewType = 0;
-    paramT.add(localFontBubble);
-    return paramT;
+    return (paramInt == 4) || (paramInt == 6) || ((paramKeyEvent != null) && (66 == paramKeyEvent.getKeyCode()) && (paramKeyEvent.getAction() == 0));
   }
 }
 

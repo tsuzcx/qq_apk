@@ -1,21 +1,21 @@
 package dov.com.qq.im.ae.play;
 
-import bnxi;
-import bnxk;
+import boys;
+import boyu;
 
 public class EditTextViewer$4$1
   implements Runnable
 {
-  public EditTextViewer$4$1(bnxi parambnxi, boolean paramBoolean) {}
+  public EditTextViewer$4$1(boys paramboys, boolean paramBoolean) {}
   
   public void run()
   {
-    EditTextViewer.b(this.jdField_a_of_type_Bnxi.a);
+    EditTextViewer.b(this.jdField_a_of_type_Boys.a);
     if (this.jdField_a_of_type_Boolean)
     {
-      EditTextViewer.c(this.jdField_a_of_type_Bnxi.a);
-      if (EditTextViewer.a(this.jdField_a_of_type_Bnxi.a) != null) {
-        EditTextViewer.a(this.jdField_a_of_type_Bnxi.a).c(EditTextViewer.a(this.jdField_a_of_type_Bnxi.a));
+      EditTextViewer.c(this.jdField_a_of_type_Boys.a);
+      if (EditTextViewer.a(this.jdField_a_of_type_Boys.a) != null) {
+        EditTextViewer.a(this.jdField_a_of_type_Boys.a).c(EditTextViewer.a(this.jdField_a_of_type_Boys.a));
       }
     }
   }

@@ -1,12 +1,16 @@
-import com.tencent.TMG.sdk.AVCallback;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.11;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
 
-public class amqg
-  implements AVCallback
+class amqg
+  extends amof
 {
-  public amqg(CmGameAvHandler.11 param11) {}
-  
-  public void onComplete(int paramInt, String paramString) {}
+  public TextView a;
+  public MayKnowRecommend a;
+  public TroopLabelLayout a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
 }
 
 

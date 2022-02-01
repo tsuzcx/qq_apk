@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aksh;
+import aldt;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -17,8 +17,8 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bhod;
-import bkgm;
+import bioy;
+import blhq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -67,16 +67,16 @@ public class QWalletCommonJsPlugin$QWVideoJsPlugin
   private Handler mHandler;
   private String mVid;
   final HashMap<String, QWalletCommonJsPlugin.QWVideoJsPlugin.MyVideoView> mVideoViews = new HashMap();
-  private aksh preloadManager;
+  private aldt preloadManager;
   private ViewGroup videoLayout;
   private ViewGroup videoParent;
   
   public QWalletCommonJsPlugin$QWVideoJsPlugin(QWalletCommonJsPlugin paramQWalletCommonJsPlugin, Context paramContext, WebViewPlugin paramWebViewPlugin, AppInterface paramAppInterface)
   {
     this.mContext = paramContext;
-    this.mHandler = new bkgm(this);
+    this.mHandler = new blhq(this);
     this.mExtPlugin = paramWebViewPlugin;
-    this.preloadManager = aksh.a(paramAppInterface);
+    this.preloadManager = aldt.a(paramAppInterface);
   }
   
   private void callbackJs(String paramString1, String paramString2, JSONObject paramJSONObject)
@@ -125,7 +125,7 @@ public class QWalletCommonJsPlugin$QWVideoJsPlugin
   
   private String getInnerVideoPath(String paramString)
   {
-    return this.preloadManager.d(paramString);
+    return this.preloadManager.e(paramString);
   }
   
   private void js_download(String paramString1, String paramString2, JSONObject paramJSONObject)
@@ -748,15 +748,15 @@ public class QWalletCommonJsPlugin$QWVideoJsPlugin
     }
   }
   
-  protected void onWebViewCreated(bhod parambhod)
+  protected void onWebViewCreated(bioy parambioy)
   {
-    this.videoParent = ((ViewGroup)parambhod.a().findViewById(2131381162));
+    this.videoParent = ((ViewGroup)parambioy.a().findViewById(2131381335));
     if (this.videoParent != null)
     {
       this.videoLayout = new FrameLayout(this.mContext);
-      parambhod = new FrameLayout.LayoutParams(this.mContext.getResources().getDisplayMetrics().widthPixels, this.mContext.getResources().getDisplayMetrics().heightPixels);
-      parambhod.setMargins(0, 0, 0, 0);
-      this.videoParent.addView(this.videoLayout, parambhod);
+      parambioy = new FrameLayout.LayoutParams(this.mContext.getResources().getDisplayMetrics().widthPixels, this.mContext.getResources().getDisplayMetrics().heightPixels);
+      parambioy.setMargins(0, 0, 0, 0);
+      this.videoParent.addView(this.videoLayout, parambioy);
       this.videoLayout.setBackgroundColor(0);
       this.videoLayout.setVisibility(4);
     }

@@ -1,27 +1,70 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class awox
-  implements View.OnClickListener
+class awox
+  extends awmf
 {
-  public awox(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  awox(awow paramawow) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt, String paramString)
   {
-    if (MsgBackupDateFragment.a(this.a) == 0) {
-      awqs.a("0X800A237");
-    }
-    for (;;)
-    {
-      this.a.a();
-      EventCollector.getInstance().onViewClicked(paramView);
+    QLog.d("BaseListenTogetherPanel", 1, String.format("onJoinAndEnter [%d,%s] [%d,%s] resumed=[%b] ", new Object[] { Integer.valueOf(paramInt), paramString, Integer.valueOf(this.a.jdField_a_of_type_Awpc.jdField_a_of_type_Int), this.a.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString, Boolean.valueOf(this.a.b) }));
+    if ((!this.a.b) || (this.a.jdField_a_of_type_Awpc.jdField_a_of_type_Int != paramInt) || (!this.a.jdField_a_of_type_Awpc.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
       return;
-      if (awnr.c) {
-        awqs.a("0X800A25C");
-      }
     }
+    paramString = ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a(paramInt, paramString);
+    if ((paramString == null) || (this.a.jdField_a_of_type_Awpc.b == 3))
+    {
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693276, 0).a();
+      return;
+    }
+    if (this.a.jdField_a_of_type_Awpc.c != 2)
+    {
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693278, 0).a();
+      return;
+    }
+    if (this.a.jdField_a_of_type_Awpc.b == 4)
+    {
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693280, 0).a();
+      return;
+    }
+    MusicInfo localMusicInfo = paramString.a();
+    ListenTogetherPlayFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString, localMusicInfo, this.a.jdField_a_of_type_Awpc.jdField_a_of_type_Boolean, null);
+  }
+  
+  protected void a(int paramInt, String paramString1, String paramString2)
+  {
+    awow.a(this.a, paramInt, paramString1, paramString2);
+  }
+  
+  protected void a(int paramInt, String paramString, boolean paramBoolean)
+  {
+    this.a.a(paramInt, paramString, paramBoolean);
+  }
+  
+  protected void a(ListenTogetherSession paramListenTogetherSession)
+  {
+    this.a.a(paramListenTogetherSession);
+  }
+  
+  protected void a(String paramString, int paramInt1, int paramInt2)
+  {
+    this.a.a(paramString, paramInt1, paramInt2);
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    this.a.a(paramInt, paramString);
+  }
+  
+  protected void h(int paramInt, String paramString)
+  {
+    this.a.b(paramInt, paramString);
   }
 }
 

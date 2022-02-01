@@ -1,39 +1,19 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.subscribe.comment.CommentPresenter.5.1;
+import com.tencent.qphone.base.util.QLog;
 
-class aaix
-  implements TopGestureLayout.InterceptTouchEventListener
+public class aaix
+  implements View.OnLayoutChangeListener
 {
-  aaix(aaiw paramaaiw, Rect paramRect) {}
+  aaix(aaiu paramaaiu) {}
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    QLog.d(aaiu.a(), 2, "OnLayoutChangeListener scrollToReplyView start mScrollToTargetReply" + aaiu.c(this.a));
+    if ((aaiu.a(this.a) != null) && (aaiu.c(this.a))) {
+      aaiu.a(this.a, new CommentPresenter.5.1(this));
     }
-    int i;
-    int j;
-    do
-    {
-      while (!paramMotionEvent.hasNext())
-      {
-        do
-        {
-          return true;
-          i = (int)(paramMotionEvent.getX() + 0.5F);
-          j = (int)(paramMotionEvent.getY() + 0.5F);
-        } while (aaiw.a(this.jdField_a_of_type_Aaiw) == null);
-        paramMotionEvent = aaiw.a(this.jdField_a_of_type_Aaiw).iterator();
-      }
-      ((View)paramMotionEvent.next()).getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
-    } while (!this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j));
-    return false;
   }
 }
 

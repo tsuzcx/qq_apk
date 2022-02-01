@@ -1,58 +1,42 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.MessageForFuDai;
 
 public class avif
+  implements agvc, Handler.Callback
 {
-  final Context jdField_a_of_type_AndroidContentContext;
-  final String jdField_a_of_type_JavaLangString;
-  String b = "";
-  String c = "";
-  String d = "";
-  String e;
-  String f;
-  String g;
-  String h;
+  private BaseChatPie a;
   
-  public avif(Context paramContext, String paramString)
+  public avif(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramBaseChatPie;
   }
   
-  public void a(String paramString)
+  public void a(int paramInt)
   {
-    this.b = paramString;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 14: 
+    case 15: 
+      avig.e();
+      return;
+    }
+    avig.f();
   }
   
-  public void b(String paramString)
+  void a(MessageForFuDai paramMessageForFuDai) {}
+  
+  public int[] a()
   {
-    this.c = paramString;
+    return new int[] { 3, 13, 14, 15, 16 };
   }
   
-  public void c(String paramString)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.d = paramString;
-  }
-  
-  public void d(String paramString)
-  {
-    this.e = paramString;
-  }
-  
-  public void e(String paramString)
-  {
-    this.g = paramString;
-  }
-  
-  public void f(String paramString)
-  {
-    this.h = paramString;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "uin: " + this.jdField_a_of_type_JavaLangString + " roomId: " + this.b + " roomGroupCode: " + this.c + " roomShowNumber: " + this.d + " fromId: " + this.e + " openType: " + this.f + " fromGroupId: " + this.g + " fromGroupOwnerUin: " + this.h;
+    return false;
   }
 }
 

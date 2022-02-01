@@ -1,22 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCircleRead.ConfidentCircleMemberRsp;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import qqcircle.QQCircleFeedBase.StFeedListBusiRspData;
 
 class veg
-  implements zxa<QQCircleRead.ConfidentCircleMemberRsp>
+  implements Observer<vxq<QQCircleFeedBase.StFeedListBusiRspData>>
 {
   veg(vee paramvee) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleRead.ConfidentCircleMemberRsp paramConfidentCircleMemberRsp)
+  public void a(@Nullable vxq<QQCircleFeedBase.StFeedListBusiRspData> paramvxq)
   {
-    if ((!paramBoolean) || (paramLong != 0L) || (paramConfidentCircleMemberRsp == null))
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        QLog.e("QCircleTopAuthPart", 1, "confirmCircleMemberShip error:" + paramString);
-      }
-      return;
-    }
-    QLog.e("QCircleTopAuthPart", 1, "confirmCircleMemberShip success!");
+    vee.b(this.a, paramvxq);
   }
 }
 

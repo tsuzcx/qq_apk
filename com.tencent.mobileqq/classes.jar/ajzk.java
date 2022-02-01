@@ -1,47 +1,31 @@
-import android.content.Context;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class ajzk
-  extends agwz
+class ajzk
+  extends nkq
 {
-  boolean a;
+  ajzk(ajyt paramajyt) {}
   
-  public ajzk(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramContext, paramQQAppInterface, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private boolean a(int paramInt)
-  {
-    return (paramInt == 62) || (paramInt == 96) || (paramInt == 75);
-  }
-  
-  public afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    if (a(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage))) {
-      if (this.jdField_a_of_type_Ajzo == null) {
-        this.jdField_a_of_type_Ajzo = new ajzo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-      }
-    }
-    for (paramChatMessage = a(this.jdField_a_of_type_Ajzo, paramBaseAdapter);; paramChatMessage = super.a(paramChatMessage, paramBaseAdapter))
+    QLog.i("SDKEmotionSettingManager", 1, " checkJumpAction checkOpenidDiff errorCode =" + paramInt);
+    if ((ajyt.a(this.a).isFinishing()) || (this.a.a))
     {
-      if ((paramChatMessage instanceof BaseBubbleBuilder)) {
-        ((BaseBubbleBuilder)paramChatMessage).b = true;
-      }
-      return paramChatMessage;
+      QLog.i("SDKEmotionSettingManager", 1, " checkJumpAction activity finishing or timeout");
+      return;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a.c();
+    if (ajyt.a(this.a) != null) {
+      ajyt.a(this.a).removeCallbacks(ajyt.b(this.a));
+    }
+    if (paramInt == 16)
+    {
+      this.a.d();
+      return;
+    }
+    ajyt.c(this.a);
   }
 }
 

@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.biz.qqcircle.list.bizblocks.QCircleObserver;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aejm
-  implements DialogInterface.OnClickListener
+  extends QCircleObserver
 {
-  public aejm(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  private WeakReference<Conversation> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aejm(Conversation paramConversation)
   {
-    paramDialogInterface.dismiss();
+    this.a = new WeakReference(paramConversation);
+  }
+  
+  public void onUpdateRedPoint(int paramInt)
+  {
+    Conversation localConversation = (Conversation)this.a.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("QCircleObserver onUpdateRedPoint: ");
+    if (localConversation != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("Q.recent", 2, bool);
+      if (localConversation != null) {
+        localConversation.p();
+      }
+      return;
+    }
   }
 }
 

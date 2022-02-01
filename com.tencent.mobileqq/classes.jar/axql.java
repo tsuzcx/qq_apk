@@ -1,12 +1,45 @@
-import android.content.Context;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class axql
-  extends axqw
+class axql
+  extends bcyj
 {
-  public axql(Context paramContext, PicInfo paramPicInfo)
+  axql(axqb paramaxqb, String paramString, axpw paramaxpw) {}
+  
+  public void a(int paramInt)
   {
-    super(paramContext, paramPicInfo);
+    if (this.jdField_a_of_type_Axpw.a != null)
+    {
+      String str = this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_Axpw.a.a);
+      axpx localaxpx = this.jdField_a_of_type_Axqb.a(str);
+      if ((localaxpx != null) && (!localaxpx.a))
+      {
+        localaxpx.c = (paramInt / 100);
+        this.jdField_a_of_type_Axqb.a(str, localaxpx);
+        axqb.a(this.jdField_a_of_type_Axqb, localaxpx, paramInt / 100);
+      }
+    }
+  }
+  
+  public void a(int paramInt, bcyb parambcyb)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiRichMediaSaveManager", 2, "downloadShortVideo key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt);
+    }
+    int j = 0;
+    String str2 = "";
+    String str1 = str2;
+    int i = j;
+    if (parambcyb != null)
+    {
+      str1 = str2;
+      i = j;
+      if (parambcyb.a != null)
+      {
+        i = parambcyb.a.a;
+        str1 = parambcyb.a.b;
+      }
+    }
+    this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_Axpw, paramInt, i, str1);
   }
 }
 

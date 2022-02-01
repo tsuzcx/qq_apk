@@ -1,30 +1,15 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.9.1;
 
-class ayav
-  implements bkil
+public class ayav
+  implements bizf
 {
-  private ayav(ayar paramayar) {}
+  public ayav(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.a.jdField_a_of_type_Int != 0)
-    {
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.a();
-    }
-    bkil localbkil = this.a.jdField_a_of_type_Ayaq.a();
-    if (localbkil != null) {
-      localbkil.onItemSelected(paramAdapterView, paramView, paramInt, paramLong);
-    }
-  }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView)
-  {
-    bkil localbkil = this.a.jdField_a_of_type_Ayaq.a();
-    if (localbkil != null) {
-      localbkil.onNothingSelected(paramAdapterView);
-    }
+    ChooseInterestTagActivity.a(this.a).post(new ChooseInterestTagActivity.9.1(this, paramInt1));
   }
 }
 

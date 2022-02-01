@@ -1,41 +1,19 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment;
 
 public class ajtg
-  implements View.OnClickListener
+  extends View.AccessibilityDelegate
 {
-  public ajtg(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, List paramList, CheckBox paramCheckBox, boolean paramBoolean, Dialog paramDialog) {}
+  public ajtg(ContactsBaseFragment paramContactsBaseFragment) {}
   
-  public void onClick(View paramView)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    Object localObject = (anwd)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.b.a(20);
-    String str;
-    if (localObject != null)
-    {
-      ((anwd)localObject).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_c_of_type_JavaLangString), this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked(), this.jdField_a_of_type_Boolean);
-      str = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.o;
-      if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break label152;
-      }
+    int i = paramInt;
+    if (paramInt == 8) {
+      i = 32768;
     }
-    label152:
-    for (localObject = "0";; localObject = "1")
-    {
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.b, "P_CliOper", "Grp_manage", "", "del_mber", "Clk_del", 1, 0, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_c_of_type_JavaLangString, str, (String)localObject, "");
-      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.x();
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_c_of_type_AndroidAppDialog.show();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    super.sendAccessibilityEvent(paramView, i);
   }
 }
 

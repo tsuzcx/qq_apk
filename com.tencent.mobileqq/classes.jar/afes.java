@@ -1,17 +1,20 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class afes
-  extends AccessibilityDelegateCompat
+public class afes
+  extends amof
 {
-  afes(afer paramafer) {}
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setSelected(true);
-  }
+  public afeq a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
 }
 
 

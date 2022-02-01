@@ -1,940 +1,314 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.commonsdk.util.HexUtil;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadWorker.1;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.transfile.ScribblePicDownloadProcessor.1;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.UUID;
 
 public class bewu
-  implements bewq
+  extends berj
 {
-  protected int a;
-  aark a;
-  protected Bundle a;
-  protected bevi a;
-  protected bevk a;
-  protected bewp a;
-  protected beww a;
-  public TroopFileTransferManager.Item a;
-  public String a;
-  protected int b;
-  protected long b;
-  protected String b;
-  public boolean b;
-  protected long c;
-  public String c;
-  protected boolean c;
-  protected long d;
-  public String d;
-  protected boolean d;
-  protected long e;
-  protected String e;
-  protected long f;
-  protected long g;
+  MessageForScribble a;
+  private ArrayList<String> c;
+  private int d;
+  String e;
+  private int q;
   
-  protected bewu(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle, beww parambeww)
+  public bewu(beyb parambeyb, beyg parambeyg)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Bevi = new bevi();
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Aark = new bewv(this);
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    this.jdField_a_of_type_Beww = parambeww;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
-    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
+    super(parambeyb, parambeyg);
+    this.jdField_e_of_type_JavaLangString = "";
+  }
+  
+  private void a(MessageForScribble paramMessageForScribble)
+  {
+    if (paramMessageForScribble != null)
     {
-      this.jdField_a_of_type_JavaLangString = paramItem;
-      this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+      paramMessageForScribble.prewrite();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageForScribble.frienduin, paramMessageForScribble.istroop, paramMessageForScribble.uniseq, paramMessageForScribble.msgData);
+    }
+  }
+  
+  private void g()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble == null) {
       return;
     }
-  }
-  
-  public static String a()
-  {
-    try
+    String str = bbxv.a(this.jdField_a_of_type_Beyg.h);
+    if (str.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileMd5))
     {
-      Thread.sleep(1L);
-      long l = System.currentTimeMillis();
-      String str = new SimpleDateFormat("yyyyMMddHHmmssSS", Locale.US).format(new Date(l));
-      return str;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mCombineFileExist = true;
+      }
+      int i = bbxm.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
+      if (i == bbxm.d)
       {
-        localInterruptedException.printStackTrace();
-      }
-    }
-    finally {}
-  }
-  
-  public static bewu b(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle, beww parambeww)
-  {
-    if (paramLong == 0L)
-    {
-      bevx.a("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "getWoker. troopuin=0");
-      return null;
-    }
-    if (paramItem == null)
-    {
-      bevx.a("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "getWoker. item=null");
-      return null;
-    }
-    if (paramItem.Id == null)
-    {
-      bevx.a("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "getWoker. item.id=null");
-      return null;
-    }
-    return new bewu(paramLong, paramItem, paramBundle, parambeww);
-  }
-  
-  protected int a()
-  {
-    if (this.jdField_a_of_type_Bewp == null) {
-      return 0;
-    }
-    return atwt.c(this.jdField_a_of_type_Bewp.d());
-  }
-  
-  protected int a(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    return bevh.a(paramInt1, paramInt2);
-  }
-  
-  protected int a(int paramInt, Bundle paramBundle)
-  {
-    return 3;
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  protected bewp a(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, boolean paramBoolean, String paramString3)
-  {
-    return null;
-  }
-  
-  public UUID a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
-  }
-  
-  public void a(int paramInt)
-  {
-    int i = 8;
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Int != 5))
-    {
-      bevx.c("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop. but had stoped. mStatus:" + this.jdField_a_of_type_Int);
-      return;
-    }
-    this.jdField_b_of_type_Boolean = true;
-    a(8, 0);
-    bevx.c("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop. mStatus:" + this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Bewp != null)
-    {
-      this.jdField_a_of_type_Bewp.c();
-      this.jdField_a_of_type_Bewp = null;
-    }
-    if (this.jdField_a_of_type_Bevk != null)
-    {
-      aaqt.a(bevv.a(), this.jdField_a_of_type_Bevk);
-      this.jdField_a_of_type_Bevk = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Pausing = 1;
-    int j = 9;
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.W2MPause = 2;
-      i = 11;
-    }
-    for (;;)
-    {
-      bevg.a(this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, j);
-      b(0);
-      this.jdField_a_of_type_Bevi.jdField_c_of_type_Int = i;
-      b();
-      i();
-      return;
-      if (paramInt == 2)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Pausing = -1;
-        i = 12;
-      }
-      else if (paramInt == 3)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Pausing = -1;
-        j = 10;
-        i = 11;
-      }
-    }
-  }
-  
-  protected void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Bewp != null)
-    {
-      this.jdField_a_of_type_Bevi.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bewp.d();
-      this.jdField_a_of_type_Bevi.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Bewp.e();
-      this.jdField_a_of_type_Bevi.jdField_a_of_type_Int = this.jdField_a_of_type_Bewp.c();
-      this.jdField_a_of_type_Bevi.jdField_b_of_type_Int = this.jdField_a_of_type_Bewp.d();
-    }
-    this.jdField_a_of_type_Bevi.jdField_c_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Bevi.jdField_d_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Bevi.jdField_b_of_type_Long = this.jdField_d_of_type_Long;
-    if (this.jdField_c_of_type_Long != 0L)
-    {
-      this.jdField_a_of_type_Bevi.jdField_c_of_type_Long = (System.currentTimeMillis() - this.jdField_c_of_type_Long);
-      if ((this.jdField_d_of_type_Long > 0L) && (this.jdField_a_of_type_Bevi.jdField_c_of_type_Long > 0L))
-      {
-        float f1 = (float)this.jdField_a_of_type_Bevi.jdField_c_of_type_Long / 1000.0F;
-        this.jdField_a_of_type_Bevi.jdField_e_of_type_Long = (((float)this.jdField_d_of_type_Long / f1));
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_Bevi.jdField_e_of_type_Long = 0L;
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    if (paramLong1 > this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ProgressValue) {}
-    for (this.jdField_d_of_type_Long += paramLong1 - this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ProgressValue;; this.jdField_d_of_type_Long = paramLong1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ProgressValue = paramLong1;
-      paramLong1 = System.currentTimeMillis();
-      if ((this.jdField_e_of_type_Long != 0L) && (paramLong1 - this.jdField_e_of_type_Long < 1500L)) {
-        break;
-      }
-      this.jdField_e_of_type_Long = paramLong1;
-      bevg.b(this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-      return;
-    }
-  }
-  
-  protected final void a(bety parambety, String paramString1, String paramString2, String paramString3)
-  {
-    QQAppInterface localQQAppInterface = bevv.a();
-    if (localQQAppInterface == null)
-    {
-      bevx.a("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] addFMEntity fail app=null ");
-      return;
-    }
-    FileManagerEntity localFileManagerEntity = atvo.a(parambety);
-    localFileManagerEntity.isReaded = true;
-    localFileManagerEntity.peerUin = String.valueOf(parambety.jdField_b_of_type_Long);
-    localFileManagerEntity.peerNick = bglf.o(localQQAppInterface, localFileManagerEntity.peerUin);
-    localFileManagerEntity.srvTime = (bbyp.a() * 1000L);
-    localFileManagerEntity.setCloudType(3);
-    localFileManagerEntity.bSend = false;
-    localFileManagerEntity.status = 1;
-    localFileManagerEntity.fProgress = 1.0F;
-    localFileManagerEntity.TroopUin = this.jdField_b_of_type_Long;
-    localFileManagerEntity.strFileMd5 = paramString1;
-    localFileManagerEntity.strFileSHA = paramString2;
-    localFileManagerEntity.strFileSha3 = paramString3;
-    if ((localFileManagerEntity.nFileType == 0) || (localFileManagerEntity.nFileType == 2))
-    {
-      if (TextUtils.isEmpty(localFileManagerEntity.strFileSha3)) {
-        localFileManagerEntity.strFileSha3 = atjh.a(atvo.c(parambety.jdField_a_of_type_JavaLangString));
-      }
-      if ((localFileManagerEntity.fileSize < 104857600L) && (TextUtils.isEmpty(localFileManagerEntity.strFileSHA))) {
-        localFileManagerEntity.strFileSHA = atjh.a(atvo.a(parambety.jdField_a_of_type_JavaLangString));
-      }
-    }
-    localFileManagerEntity.str10Md5 = bgmj.a(atvo.e(parambety.jdField_a_of_type_JavaLangString));
-    try
-    {
-      localFileManagerEntity.localModifyTime = new File(parambety.jdField_a_of_type_JavaLangString).lastModified();
-      label264:
-      localQQAppInterface.a().a(localFileManagerEntity);
-      localFileManagerEntity.status = 1;
-      localQQAppInterface.a().c(localFileManagerEntity);
-      return;
-    }
-    catch (Exception parambety)
-    {
-      break label264;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ProgressTotal >= this.jdField_a_of_type_Bevi.jdField_a_of_type_Long) {
-      this.jdField_d_of_type_Long = (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ProgressTotal - this.jdField_a_of_type_Bevi.jdField_a_of_type_Long);
-    }
-    h();
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    bevx.a(paramString1, paramInt, paramString2);
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Bevk = null;
-    b(4);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ErrorCode = 0;
-    bevg.a(this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 12);
-    b();
-    i();
-    if (paramBoolean)
-    {
-      String str = "";
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp)) {
-        str = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp;
-      }
-      bfui.b(paramInt1, paramInt2, str);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.retryTimes = 0;
-    bevx.a("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onFileInvailDel  nReportResultCode:" + paramInt1 + " nReportSecResultCode:" + paramInt2);
-    if (this.jdField_a_of_type_Beww != null) {
-      this.jdField_a_of_type_Beww.a(a(), false, paramInt2, this);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Bevk = null;
-    b(4);
-    bevg.a(this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 10, paramInt3);
-    b();
-    i();
-    if (paramBoolean)
-    {
-      String str = "";
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp)) {
-        str = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp;
-      }
-      bfui.b(paramInt1, paramInt2, str);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.retryTimes = 0;
-    bevx.a("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onDownloadErr  nReportResultCode:" + paramInt1 + " nReportSecResultCode:" + paramInt2 + " troopFileError:" + paramInt3);
-    if (this.jdField_a_of_type_Beww != null) {
-      this.jdField_a_of_type_Beww.a(a(), false, paramInt2, this);
-    }
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, Bundle paramBundle)
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    int i = bevv.a(paramString1);
-    int n = i;
-    if (i == 0) {
-      n = bevv.b(paramString2);
-    }
-    int i5 = bevv.c(paramString1);
-    int j;
-    if (!paramBoolean)
-    {
-      i = a(paramInt, paramBundle);
-      j = a(paramInt, i5, paramBundle);
-      if (paramInt == 9050) {
-        i = 4;
-      }
-      a(i, j);
-      this.jdField_a_of_type_Bevi.jdField_e_of_type_Int = i5;
-      this.jdField_a_of_type_Bevi.f = n;
-      j();
-      this.jdField_a_of_type_Bevi.jdField_e_of_type_Int = 0;
-      this.jdField_a_of_type_Bevi.f = 0;
-      this.jdField_a_of_type_Bevi.jdField_c_of_type_Int = 0;
-      this.jdField_a_of_type_Bevi.jdField_d_of_type_Int = 0;
-      return;
-    }
-    a("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onHasErr. download fail. errCode:" + paramInt + " transferedSize:" + paramLong);
-    int i1 = a(paramInt, paramBundle);
-    int i2 = a(paramInt, i5, paramBundle);
-    int i4 = 1;
-    int i3 = bfuj.jdField_d_of_type_Int;
-    int k;
-    int m;
-    if (!bgnt.d(BaseApplication.getContext()))
-    {
-      k = 306;
-      j = bfuj.jdField_b_of_type_Int;
-      paramInt = bfuj.k;
-      i = 106;
-      m = i1;
-    }
-    for (;;)
-    {
-      a(m, k);
-      this.jdField_a_of_type_Bevi.jdField_e_of_type_Int = i5;
-      this.jdField_a_of_type_Bevi.f = n;
-      a(true, j, paramInt, i);
-      return;
-      if (paramInt == -5000)
-      {
-        m = 7;
-        k = 708;
-        j = bfuj.jdField_b_of_type_Int;
-        paramInt = bfuj.jdField_h_of_type_Int;
-        i = 303;
-      }
-      else if (paramInt == -5001)
-      {
-        m = 7;
-        k = 709;
-        j = bfuj.jdField_b_of_type_Int;
-        paramInt = bfuj.g;
-        i = 304;
-      }
-      else if (paramInt == 9039)
-      {
-        m = 7;
-        k = 710;
-        j = bfuj.jdField_b_of_type_Int;
-        paramInt = bfuj.n;
-        i = 308;
-      }
-      else if (paramInt == 9004)
-      {
-        m = 3;
-        k = 306;
-        j = bfuj.jdField_b_of_type_Int;
-        paramInt = bfuj.k;
-        i = 106;
-      }
-      else if (paramInt == 9301)
-      {
-        m = 7;
-        k = 705;
-        j = bfuj.jdField_b_of_type_Int;
-        paramInt = bfuj.i;
-        i = 306;
-      }
-      else if (paramInt == -5001)
-      {
-        m = 7;
-        k = 704;
-        j = bfuj.jdField_b_of_type_Int;
-        paramInt = bfuj.q;
-        i = 305;
-      }
-      else if (this.jdField_a_of_type_Bewp.b())
-      {
-        m = 4;
-        paramInt = bfuj.p;
-        i = 105;
-        j = i3;
-        k = i2;
-      }
-      else
-      {
-        j = i3;
-        i = i4;
-        k = i2;
-        m = i1;
-        if (n != 0)
+        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null)
         {
-          paramInt = n;
-          j = i3;
-          i = i4;
-          k = i2;
-          m = i1;
+          this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mDataFileExist = true;
+          this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mInit = true;
         }
+        e();
+        return;
       }
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mDataFileExist = false;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mInit = true;
+      }
+      b(9303, a(new Exception("SpliteCombineFile illegal result: " + i)));
+      d();
+      return;
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mDataFileExist = false;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mCombineFileExist = false;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mInit = true;
+    }
+    b(9041, a(new Exception("SpliteCombineFile illegal md5String: " + str + "  msg.combineFileMd5:  " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileMd5)));
+    d();
   }
   
-  public boolean a()
+  public void aN_()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath))
-    {
-      bevx.a("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] start filepath is null");
-      return false;
+    super.aN_();
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.fileDownloadStatus = 3;
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Bevi.jdField_d_of_type_Long = System.currentTimeMillis();
-    this.f = 0L;
-    this.g = 0L;
-    this.jdField_d_of_type_Boolean = false;
-    boolean bool2;
-    if (this.jdField_a_of_type_AndroidOsBundle != null)
+    String str;
+    if ((this.jdField_e_of_type_JavaLangString != null) && (!this.jdField_e_of_type_JavaLangString.startsWith("https")))
     {
-      bool2 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("_wifi2mobile_resume_", false);
-      bool1 = bool2;
-      if (bool2)
+      str = InnerDns.getHostFromUrl(this.jdField_e_of_type_JavaLangString);
+      this.c = InnerDns.getInstance().reqDnsForIpList(str, 1018);
+    }
+    if ((this.c != null) && (!this.c.isEmpty()))
+    {
+      str = "ipListFromInnerDns : ";
+      int i = 0;
+      while (i < this.c.size())
       {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.W2MPause == 2) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.W2MPause = 0;
-        }
+        str = str + " " + (String)this.c.get(i);
+        i += 1;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("ScribblePicDownloadProcessor", 2, str);
       }
     }
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      bevx.c("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] start filename:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName + " filePath:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath + " bResueFromW2MPause:" + bool1);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Pausing = 0;
-      Object localObject = bevv.a(this.jdField_b_of_type_Long);
-      if (localObject != null)
-      {
-        localObject = ((bfrm)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
-        if (localObject != null) {
-          this.jdField_a_of_type_Bevi.jdField_h_of_type_Long = ((besl)localObject).jdField_c_of_type_Int;
-        }
-      }
-      if (!bgnt.g(BaseApplication.getContext()))
-      {
-        bevx.a("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] no network");
-        this.jdField_b_of_type_Boolean = true;
-        b(4);
-        this.jdField_a_of_type_Bevi.jdField_c_of_type_Int = 9;
-        this.jdField_a_of_type_Bevi.jdField_d_of_type_Int = 901;
-        b();
-        this.jdField_a_of_type_Bevi.a();
-        bevg.a(this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 10, 106);
-        bfui.b(bfuj.jdField_b_of_type_Int, bfuj.k);
-        return false;
-      }
-      ThreadManager.post(new TroopFileDownloadWorker.1(this), 8, null, false);
-      return true;
-    }
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945A", "0X800945A", 0, 0, "", "", "", "");
+    f();
   }
   
-  protected void b()
+  public int b()
   {
-    int i = 1;
-    bevi localbevi;
-    if (b())
+    if (QLog.isColorLevel()) {
+      QLog.d("ScribblePicDownloadProcessor", 2, "resume()");
+    }
+    if (this.jdField_m_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bevi.g = 1;
-      this.jdField_a_of_type_Bevi.jdField_h_of_type_Int = this.jdField_b_of_type_Int;
-      this.jdField_a_of_type_Bevi.i = a();
-      localbevi = this.jdField_a_of_type_Bevi;
-      if (!this.jdField_d_of_type_Boolean) {
-        break label86;
+      this.jdField_m_of_type_Boolean = false;
+      this.jdField_q_of_type_Boolean = false;
+      this.k = 0;
+      this.j = "";
+      this.jdField_a_of_type_Bern.a.post(new ScribblePicDownloadProcessor.1(this));
+    }
+    return 0;
+  }
+  
+  public int c()
+  {
+    super.c();
+    b("uiParam", this.jdField_a_of_type_Beyg.toString());
+    if ((this.jdField_a_of_type_Beyg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_Beyg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForScribble)))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble = ((MessageForScribble)this.jdField_a_of_type_Beyg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      this.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileUrl;
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileUrl.equals("")) || (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileUrl.startsWith("http")))
+    {
+      b(9302, a(new Exception("combineFileUrl illegal " + this.jdField_e_of_type_JavaLangString)));
+      d();
+      return -1;
+    }
+    this.jdField_a_of_type_Beyg.h = bbxm.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Beyg.h))
+    {
+      b(9302, a(new Exception("combineFileMd5 illegal " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileMd5)));
+      d();
+      return -1;
+    }
+    return 0;
+  }
+  
+  void d()
+  {
+    super.d();
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.fileDownloadStatus = 2;
+    }
+    a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
+    d(2005);
+    bbxk localbbxk = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if (localbbxk != null)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble == null) {
+        break label92;
       }
+      localbbxk.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
     }
     for (;;)
     {
-      localbevi.j = i;
-      bevh.b(this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, "actGroupFileDown", this.jdField_a_of_type_Bevi);
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945B", "0X800945B", 0, 0, "", "", "", "");
       return;
-      this.jdField_a_of_type_Bevi.g = 0;
-      break;
-      label86:
-      i = 0;
+      label92:
+      localbbxk.a(null);
     }
   }
   
-  protected void b(int paramInt)
+  void e()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    bevx.c("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onChangeUrl:" + paramString);
-  }
-  
-  protected boolean b()
-  {
-    return false;
-  }
-  
-  protected void c()
-  {
-    int i = 1;
-    bevi localbevi;
-    if (b())
+    super.e();
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.fileDownloadStatus = 1;
+    }
+    a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
+    d(2003);
+    bbxk localbbxk = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if (localbbxk != null)
     {
-      this.jdField_a_of_type_Bevi.g = 1;
-      this.jdField_a_of_type_Bevi.jdField_h_of_type_Int = this.jdField_b_of_type_Int;
-      this.jdField_a_of_type_Bevi.i = a();
-      localbevi = this.jdField_a_of_type_Bevi;
-      if (!this.jdField_d_of_type_Boolean) {
-        break label86;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble == null) {
+        break label92;
       }
+      localbbxk.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
     }
     for (;;)
     {
-      localbevi.j = i;
-      bevh.b(this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Bevi, "actGroupFileDown");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945C", "0X800945C", 0, 0, "", "", "", "");
       return;
-      this.jdField_a_of_type_Bevi.g = 0;
-      break;
-      label86:
-      i = 0;
+      label92:
+      localbbxk.a(null);
     }
-  }
-  
-  public boolean c()
-  {
-    boolean bool;
-    if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {
-      bool = false;
-    }
-    File localFile;
-    do
-    {
-      return bool;
-      this.jdField_b_of_type_JavaLangString = anhk.bp;
-      localFile = new File(this.jdField_b_of_type_JavaLangString);
-      if (!localFile.exists()) {
-        localFile.mkdirs();
-      }
-      this.jdField_c_of_type_JavaLangString = anhk.bs;
-      bool = true;
-      localFile = new File(this.jdField_c_of_type_JavaLangString);
-    } while (localFile.exists());
-    return true | localFile.mkdirs();
-  }
-  
-  public void d()
-  {
-    bevx.c("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onRetryDownload");
-    if (this.jdField_a_of_type_Bewp != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.retryTimes = this.jdField_a_of_type_Bewp.b();
-    }
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Bevi.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ProgressValue;
-    this.jdField_a_of_type_Bevi.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_Bevi.f = 0;
-    this.jdField_a_of_type_Bevi.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Bevi.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_Bevi.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Bevi.jdField_d_of_type_JavaLangString = "";
-  }
-  
-  public void e()
-  {
-    bevg.a(this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 8);
-    b(5);
   }
   
   public void f()
   {
-    this.jdField_c_of_type_Boolean = false;
-    bevg.a(this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 8);
-    QQAppInterface localQQAppInterface = bevv.a();
-    if (localQQAppInterface == null)
+    QLog.i("ScribblePicDownloadProcessor", 2, "scribble download start ");
+    this.jdField_b_of_type_Berr.a();
+    String str1 = this.jdField_e_of_type_JavaLangString;
+    d(2001);
+    beum localbeum = new beum();
+    localbeum.jdField_a_of_type_Beuq = this;
+    localbeum.jdField_a_of_type_JavaLangString = str1;
+    localbeum.jdField_a_of_type_Int = 0;
+    localbeum.c = this.jdField_a_of_type_Beyg.h;
+    localbeum.jdField_e_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Beyg.jdField_a_of_type_Long);
+    localbeum.f = this.jdField_a_of_type_Beyg.jdField_a_of_type_Int;
+    localbeum.jdField_e_of_type_Int = this.jdField_a_of_type_Beyg.jdField_b_of_type_Int;
+    localbeum.jdField_a_of_type_Long = 0L;
+    localbeum.l = true;
+    localbeum.jdField_m_of_type_Boolean = true;
+    String str2;
+    if ((this.c != null) && (!this.c.isEmpty()) && (this.d < this.c.size()))
     {
-      bevx.a("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] reqDownload app=null");
-      this.jdField_a_of_type_Bevi.jdField_c_of_type_Int = 9;
-      this.jdField_a_of_type_Bevi.jdField_d_of_type_Int = 902;
-      a(true, bfuj.jdField_b_of_type_Int, bfuj.w, 1);
-      return;
+      str2 = (String)this.c.get(this.d);
+      str2 = InnerDns.replaceDomainWithIp(localbeum.jdField_a_of_type_JavaLangString, str2);
+      if ((str2 != null) && (!str2.equals(localbeum.jdField_a_of_type_JavaLangString))) {
+        localbeum.jdField_a_of_type_JavaLangString = str2;
+      }
     }
-    bevx.c("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] reqDownload");
-    Object localObject = bevv.a(this.jdField_b_of_type_Long);
-    if (localObject != null)
+    for (int i = 1;; i = 0)
     {
-      besl localbesl = ((bfrm)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
-      if (localbesl != null)
+      if (i != 0) {
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945D", "0X800945D", 0, 0, "", "", "", "");
+      }
+      for (;;)
       {
-        localObject = ((bfrm)localObject).a(localbesl.f);
-        if (localObject != null)
-        {
-          localbesl.jdField_e_of_type_Int = 8;
-          ((besl)localObject).a(localbesl);
+        str2 = bews.a(str1);
+        if (QLog.isColorLevel()) {
+          QLog.i("ScribblePicDownloadProcessor", 2, "httpDownRespDomain: " + str2 + "reqUrl : " + str1 + " " + localbeum.jdField_a_of_type_JavaLangString + " uuid:" + this.jdField_a_of_type_Beyg.jdField_e_of_type_JavaLangString + " downOffset:" + localbeum.jdField_a_of_type_Long);
         }
+        QLog.i("ScribblePicDownloadProcessor", 2, "index:" + this.d + str1);
+        if (f()) {
+          break;
+        }
+        return;
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945E", "0X800945E", 0, 0, "", "", "", "");
       }
-    }
-    this.jdField_a_of_type_Bevk = aaqt.a(localQQAppInterface, this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 0, false, false, this.jdField_a_of_type_Aark);
-    b(1);
-    this.f = bbyp.a();
-    bfui.b();
-  }
-  
-  protected void g()
-  {
-    QQAppInterface localQQAppInterface = bevv.a();
-    if (localQQAppInterface == null)
-    {
-      bevx.a("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] startDownload app=null");
-      this.jdField_a_of_type_Bevi.jdField_c_of_type_Int = 9;
-      this.jdField_a_of_type_Bevi.jdField_d_of_type_Int = 902;
-      a(true, bfuj.jdField_b_of_type_Int, bfuj.w, 1);
+      this.jdField_a_of_type_Bevl = localbeum;
+      o();
+      this.jdField_a_of_type_Beuo.a(localbeum);
       return;
     }
-    if (this.jdField_a_of_type_Bewp != null)
+  }
+  
+  public void onResp(bevm parambevm)
+  {
+    super.onResp(parambevm);
+    this.jdField_a_of_type_Bevl = null;
+    Object localObject = new StringBuilder().append(" result:");
+    if (parambevm.jdField_a_of_type_Int == 0)
     {
-      this.jdField_a_of_type_Bewp.c();
-      this.jdField_a_of_type_Bewp = null;
+      bool = true;
+      b("onHttpResp", bool);
+      localObject = this.jdField_b_of_type_Berr;
+      if (parambevm.jdField_a_of_type_Int != 0) {
+        break label179;
+      }
     }
-    String str = "/ftn_handler/" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl + "/?fname=" + bgmj.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp);
-    Object localObject1;
-    long l;
-    boolean bool1;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS)) {
-      if (atcq.a().a(localQQAppInterface, 3))
+    label179:
+    for (boolean bool = true;; bool = false)
+    {
+      a((berr)localObject, parambevm, bool);
+      this.jdField_a_of_type_Long = parambevm.jdField_a_of_type_Long;
+      if (this.jdField_a_of_type_Long <= 0L) {
+        this.jdField_a_of_type_Long = (parambevm.jdField_b_of_type_Long + parambevm.jdField_a_of_type_Bevl.jdField_a_of_type_Long);
+      }
+      this.jdField_b_of_type_Long += parambevm.c;
+      QLog.i("ScribblePicDownloadProcessor", 2, "scribble download onResp resp.mResult = " + parambevm.jdField_a_of_type_Int);
+      if (parambevm.jdField_a_of_type_Int != 0) {
+        break label184;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mCombineFileExist = true;
+      }
+      g();
+      return;
+      bool = false;
+      break;
+    }
+    label184:
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mCombineFileExist = false;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mDataFileExist = false;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mInit = true;
+    }
+    if (this.jdField_q_of_type_Int < 5)
+    {
+      this.jdField_q_of_type_Int += 1;
+      if ((this.c != null) && (!this.c.isEmpty()) && (this.d < this.c.size()))
       {
-        QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopfile. is config enable IPv6. domain[" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + "]");
-        localObject1 = new atcr(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS, 0);
-        localObject1 = atcq.a().a(localQQAppInterface, (atcr)localObject1, 3);
-        if ((localObject1 != null) && (!((atct)localObject1).a()))
-        {
-          if (atcq.a())
-          {
-            QLog.d("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopfile. debugIsDisableIPv4OnDoubleStack");
-            localArrayList.clear();
-          }
-          atcq.a(((atct)localObject1).jdField_a_of_type_JavaUtilList, localArrayList, true, false);
-          this.jdField_b_of_type_Int = 2;
-          if (((atct)localObject1).jdField_a_of_type_Int == 1) {
-            this.jdField_b_of_type_Int = 3;
-          }
-          QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopfile. use IPv6. iplist:" + localArrayList.toString());
-          this.jdField_c_of_type_Long = System.currentTimeMillis();
-          this.jdField_a_of_type_Bevi.jdField_a_of_type_Long = atwl.a(this.jdField_d_of_type_JavaLangString);
-          l = bevv.a();
-          boolean bool2 = false;
-          Object localObject2 = null;
-          bool1 = bool2;
-          localObject1 = localObject2;
-          if (bfsj.b(localQQAppInterface))
-          {
-            bool1 = bool2;
-            localObject1 = localObject2;
-            if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS))
-            {
-              bool1 = true;
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS;
-            }
-          }
-          this.jdField_d_of_type_Boolean = bool1;
-          bevx.c("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] startDownload. nSessionId:" + l + " firstIP=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp + " urlParams:" + str + " mTmpFilePath:" + this.jdField_d_of_type_JavaLangString + " bUseHttps:" + bool1 + " httpsDomain:" + (String)localObject1);
-          if (!b()) {
-            break label745;
-          }
-        }
+        QLog.e("ScribblePicDownloadProcessor", 2, "scribble download  retry by changeIp");
+        n();
+        parambevm = InnerDns.getHostFromUrl(this.jdField_e_of_type_JavaLangString);
+        InnerDns.getInstance().reportBadIp(parambevm, (String)this.c.get(this.d), 1018);
+        this.d += 1;
+        f();
+        return;
       }
-    }
-    label745:
-    for (this.jdField_a_of_type_Bewp = a(localQQAppInterface, l, this.jdField_d_of_type_JavaLangString, str, bool1, (String)localObject1);; this.jdField_a_of_type_Bewp = bewx.a(localQQAppInterface, l, this.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ProgressTotal, localArrayList, str, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue, bool1, (String)localObject1))
-    {
-      if (this.jdField_a_of_type_Bewp != null) {
-        break label783;
-      }
-      this.jdField_a_of_type_Bevi.jdField_c_of_type_Int = 9;
-      this.jdField_a_of_type_Bevi.jdField_d_of_type_Int = 903;
-      a(true, bfuj.jdField_b_of_type_Int, bfuj.w, 1);
-      return;
-      QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopfile. use IPv4");
-      localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS);
-      this.jdField_b_of_type_Int = 1;
-      break;
-      localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS);
-      this.jdField_b_of_type_Int = 1;
-      break;
-      this.jdField_b_of_type_Int = 1;
-      break;
-    }
-    label783:
-    this.jdField_a_of_type_Bewp.a(this);
-    this.jdField_a_of_type_Bewp.b();
-    b(2);
-  }
-  
-  protected void h()
-  {
-    long l1 = new File(this.jdField_d_of_type_JavaLangString).length();
-    long l2 = l1;
-    File localFile;
-    if (l1 == 0L)
-    {
-      QLog.i("TroopFileDownloadWorkerfile_debug", 1, "vfs file get length error. use normal try again.");
-      localFile = new File(this.jdField_d_of_type_JavaLangString);
-    }
-    try
-    {
-      l2 = localFile.length();
-      l1 = l2;
-    }
-    catch (Exception localException)
-    {
-      label627:
-      do
+      if ((parambevm.jdField_b_of_type_Int == 9364) && (this.jdField_m_of_type_Int < 3))
       {
-        for (;;)
-        {
-          QLog.i("TroopFileDownloadWorkerfile_debug", 1, "normal file get length exception: " + localException.getMessage());
-        }
-        int j;
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName.length() > 85)
-        {
-          j = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName.lastIndexOf('.');
-          i = j;
-          if (j < 0) {
-            i = 0;
-          }
-          j = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName.length() - 85;
-          if (i != 0) {
-            break label627;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName.substring(0, 85);
-        }
-        for (;;)
-        {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName;
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.NameForSave))
-          {
-            localObject1 = localObject2;
-            if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.SafeCheckRes == 2) {
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.NameForSave;
-            }
-          }
-          localObject2 = localObject1;
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            localObject2 = a();
-          }
-          this.jdField_e_of_type_JavaLangString = new File(this.jdField_b_of_type_JavaLangString + (String)localObject2).getAbsoluteFile().toString();
-          if (bgmg.a(this.jdField_e_of_type_JavaLangString)) {
-            this.jdField_e_of_type_JavaLangString = atvo.b(this.jdField_e_of_type_JavaLangString);
-          }
-          boolean bool2 = atvo.a(new File(this.jdField_d_of_type_JavaLangString), new File(this.jdField_e_of_type_JavaLangString));
-          boolean bool1 = bool2;
-          if (!bool2)
-          {
-            bool1 = atvo.a(new File(this.jdField_d_of_type_JavaLangString), new File(this.jdField_e_of_type_JavaLangString));
-            QLog.e("TroopFileDownloadWorker", 1, "rename with vfs error, normalResult[" + bool1 + "]");
-          }
-          if (bool1) {
-            break;
-          }
-          bevx.a("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] renameFile fail  mFilePath:" + this.jdField_e_of_type_JavaLangString);
-          a(7, 706);
-          a(true, bfuj.jdField_b_of_type_Int, bfuj.o, 307);
-          return;
-          if (i > j)
-          {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName.substring(0, i - j) + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName.substring(i);
-            this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName = ((String)localObject1);
-          }
-        }
-        bevx.c("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onDownlaodSuc  mFilePath:" + this.jdField_e_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile = this.jdField_e_of_type_JavaLangString;
-        int i = atvo.a(atwl.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName));
-        if (((i == 2) || (i == 0)) && (!atwl.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.jdField_b_of_type_Long, 383)))) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.genThumb_Middle_OnGettedLargeOrOrigPic = true;
-        }
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Bevk = null;
-        b(3);
-        bevg.a(this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 11);
-        Object localObject1 = HexUtil.bytes2HexStr(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Md5);
-        Object localObject2 = HexUtil.bytes2HexStr(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Sha);
-        a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.jdField_b_of_type_Long), (String)localObject1, (String)localObject2, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Sha3);
-        if (5 == atvo.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName))
-        {
-          localObject1 = bevv.a();
-          if (localObject1 != null) {
-            ((QQAppInterface)localObject1).a().a().a(this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-          }
-        }
-        a(0, 0);
-        c();
-        if (!b()) {
-          k();
-        }
-        i();
-        bfui.b(bfuj.jdField_a_of_type_Int, 0);
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.retryTimes = 0;
-      } while (this.jdField_a_of_type_Beww == null);
-      this.jdField_a_of_type_Beww.a(a(), true, 0, this);
-    }
-    QLog.i("TroopFileDownloadWorkerfile_debug", 1, "normal file get length[" + l1 + "]");
-    l2 = l1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ProgressTotal != 0L) && (l2 != this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ProgressTotal))
-    {
-      bevx.a("TroopFileDownloadWorker", bevx.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "]  file size check fail. filesize:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ProgressTotal + " transSize:" + l2);
-      a(7, 704);
-      a(true, bfuj.jdField_b_of_type_Int, bfuj.q, 305);
-      new File(this.jdField_d_of_type_JavaLangString).delete();
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ProgressValue = 0L;
-      return;
-    }
-  }
-  
-  protected void i()
-  {
-    this.jdField_a_of_type_Bevi.a();
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-  }
-  
-  protected final void j()
-  {
-    int i = 1;
-    bevi localbevi;
-    if (b())
-    {
-      this.jdField_a_of_type_Bevi.g = 1;
-      this.jdField_a_of_type_Bevi.jdField_h_of_type_Int = this.jdField_b_of_type_Int;
-      this.jdField_a_of_type_Bevi.i = a();
-      localbevi = this.jdField_a_of_type_Bevi;
-      if (!this.jdField_d_of_type_Boolean) {
-        break label86;
+        b("[netChg]", "failed.but net change detect.so retry");
+        QLog.e("ScribblePicDownloadProcessor", 2, "scribble download  retry");
+        this.jdField_m_of_type_Int += 1;
+        n();
+        f();
+        return;
       }
     }
-    for (;;)
-    {
-      localbevi.j = i;
-      bevh.b(this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, "actGroupFileDownDetail", this.jdField_a_of_type_Bevi);
-      return;
-      this.jdField_a_of_type_Bevi.g = 0;
-      break;
-      label86:
-      i = 0;
-    }
-  }
-  
-  protected void k()
-  {
-    int i = 1;
-    bevi localbevi;
-    if (b())
-    {
-      this.jdField_a_of_type_Bevi.g = 1;
-      this.jdField_a_of_type_Bevi.jdField_h_of_type_Int = this.jdField_b_of_type_Int;
-      this.jdField_a_of_type_Bevi.i = a();
-      localbevi = this.jdField_a_of_type_Bevi;
-      if (!this.jdField_d_of_type_Boolean) {
-        break label86;
-      }
-    }
-    for (;;)
-    {
-      localbevi.j = i;
-      bevh.b(this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Bevi, "actGroupFileDownDetail");
-      return;
-      this.jdField_a_of_type_Bevi.g = 0;
-      break;
-      label86:
-      i = 0;
-    }
+    d();
   }
 }
 

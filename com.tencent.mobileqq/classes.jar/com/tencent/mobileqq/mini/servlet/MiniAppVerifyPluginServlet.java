@@ -2,10 +2,10 @@ package com.tencent.mobileqq.mini.servlet;
 
 import NS_MINI_INTERFACE.INTERFACE.StPlugin;
 import NS_MINI_INTERFACE.INTERFACE.StVerifyPluginRsp;
-import acqx;
+import acvb;
 import android.content.Intent;
 import android.os.Bundle;
-import bguc;
+import bhuf;
 import com.tencent.mobileqq.mini.apkg.PluginInfo;
 import com.tencent.mobileqq.pb.PBStringField;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class MiniAppVerifyPluginServlet
     localStVerifyPluginRsp.mergeFrom(paramArrayOfByte);
     if (paramBundle.getLong("retCode") == 0L)
     {
-      paramArrayOfByte = acqx.a(localStVerifyPluginRsp.pluginList);
+      paramArrayOfByte = acvb.a(localStVerifyPluginRsp.pluginList);
       if (paramArrayOfByte != null) {
         paramBundle.putString("plugin_profile", paramArrayOfByte.toString());
       }
@@ -66,7 +66,7 @@ public class MiniAppVerifyPluginServlet
       localObject1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_info.VerifyPlugin");
-    paramPacket.putSendData(bguc.a((byte[])localObject1));
+    paramPacket.putSendData(bhuf.a((byte[])localObject1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

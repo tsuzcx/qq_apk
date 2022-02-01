@@ -5,11 +5,11 @@ import java.util.HashMap;
 
 public class BrowserPluginFactory
 {
-  public static final HashMap<String, Integer> sPluginNameSpaceHashMap = new HashMap();
+  public static final HashMap<String, Integer> S_PLUGIN_NAME_SPACE_HASH_MAP = new HashMap();
   
   static
   {
-    sPluginNameSpaceHashMap.put("miniApp", Integer.valueOf(1));
+    S_PLUGIN_NAME_SPACE_HASH_MAP.put("miniApp", Integer.valueOf(1));
   }
   
   public static BrowserPlugin createWebViewPlugin(int paramInt)
@@ -24,8 +24,8 @@ public class BrowserPluginFactory
   
   public static BrowserPlugin createWebViewPlugin(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (sPluginNameSpaceHashMap.containsKey(paramString))) {
-      return createWebViewPlugin(((Integer)sPluginNameSpaceHashMap.get(paramString)).intValue());
+    if ((!TextUtils.isEmpty(paramString)) && (S_PLUGIN_NAME_SPACE_HASH_MAP.containsKey(paramString))) {
+      return createWebViewPlugin(((Integer)S_PLUGIN_NAME_SPACE_HASH_MAP.get(paramString)).intValue());
     }
     return null;
   }

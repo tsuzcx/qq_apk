@@ -1,29 +1,10 @@
-import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
-public abstract class aplt
-  implements aple
+public abstract interface aplt
+  extends IInterface
 {
-  private final long a;
-  private final long b;
-  
-  public aplt(long paramLong1, long paramLong2)
-  {
-    this.a = paramLong1;
-    this.b = paramLong2;
-  }
-  
-  public Bundle a()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("srcAppID", this.a);
-    localBundle.putLong("dstAppID", this.b);
-    return localBundle;
-  }
-  
-  public String a()
-  {
-    return "QQ.Login";
-  }
+  public abstract ARScanStarFaceConfigInfo a();
 }
 
 

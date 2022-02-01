@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.filemanageraux.core;
 
-import atzj;
-import aucw;
+import aure;
+import auur;
 import com.tencent.qphone.base.util.QLog;
 
 public class UniformDownloadMgr$3
   implements Runnable
 {
-  public UniformDownloadMgr$3(atzj paramatzj) {}
+  public UniformDownloadMgr$3(aure paramaure) {}
   
   public void run()
   {
     QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr onQQProcessExit releaseABSdkClient...");
-    aucw.a().a();
+    auur.a().a();
   }
 }
 

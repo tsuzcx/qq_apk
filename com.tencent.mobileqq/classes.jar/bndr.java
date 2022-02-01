@@ -1,9 +1,36 @@
-import java.io.File;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bndr
 {
-  public static final String a = bndt.c + File.separator + "camera_play_show_default_template.json";
-  public static final String b = bndt.c + File.separator + "camera_play_show_updated_template.json";
+  int a;
+  public Dialog a;
+  public Intent a;
+  public ServiceConnection a;
+  public Class<? extends Activity> a;
+  public String a;
+  public List<RemoteCommand> a;
+  public boolean a;
+  public int b = -1;
+  public String b;
+  public int c = 10000;
+  String c;
+  public String d;
+  public String e;
+  public String f;
+  
+  public bndr(int paramInt)
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

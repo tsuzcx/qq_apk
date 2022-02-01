@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio;
 
-import agam;
-import aheh;
+import agkg;
+import ahnt;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class PokePanel$3$1
   implements Runnable
 {
-  public PokePanel$3$1(agam paramagam, QQAppInterface paramQQAppInterface) {}
+  public PokePanel$3$1(agkg paramagkg, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Agam.a.a(aheh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    this.jdField_a_of_type_Agkg.a.a(ahnt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
   }
 }
 

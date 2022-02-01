@@ -1,18 +1,15 @@
-import android.support.annotation.NonNull;
-import org.json.JSONObject;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class adgi
-  extends adee
+  implements adci
 {
-  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull adea paramadea)
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    adhh.a(paramadea, adec.a);
-    return true;
+    ((bitz)paramadan.a().a(107)).a(paramMsgType0x210.vProtobuf);
+    return null;
   }
 }
 

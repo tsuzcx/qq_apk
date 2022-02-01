@@ -1,16 +1,21 @@
-public class apbm
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+
+class apbm
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  apbm(apbl paramapbl, ArrayList paramArrayList, String paramString) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("skuId:").append(this.c).append(",skuName:").append(this.d).append(",skuPrice:").append(this.e).append(",imageUrl:").append(this.b).append(",detailUrl:").append(this.a);
-    return localStringBuilder.toString();
+    OpenPlayerBuilder localOpenPlayerBuilder = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString), 120);
+    localOpenPlayerBuilder.a();
+    xlj.a(this.jdField_a_of_type_Apbl.a.a, localOpenPlayerBuilder.a(), null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

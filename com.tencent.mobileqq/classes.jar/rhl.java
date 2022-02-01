@@ -1,12 +1,21 @@
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
+
 public class rhl
+  implements View.OnKeyListener
 {
-  private String a;
-  private String b;
-  private String c;
+  public rhl(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
   
-  public rhl(String paramString)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a = paramString;
+    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0) && (TextUtils.isEmpty(ReadInJoySelectMemberFragment.a(this.a).getText()))) {
+      ReadInJoySelectMemberFragment.a(this.a).a();
+    }
+    return false;
   }
 }
 

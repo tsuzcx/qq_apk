@@ -1,95 +1,106 @@
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import cooperation.qzone.util.NetworkState;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/imageopt/RIJImageOptConfig;", "", "()V", "FILE_TYPE_SHARPP", "", "FILE_TYPE_WEBP", "TAG", "", "bitmapOpt", "decodeHttpStream", "fileTypeOpt", "isBitmapOpt", "", "()Z", "isDecodeHttpStream", "isLifoOn", "isRenderFirst", "isRportOn", "lifoOn", "monitorTime", "", "renderFirst", "reportOn", "useInnerDns", "useKandianIpConnect", "getMonitorTime", "updateConfig", "", "useIpConnect", "useSharpP", "useWebp", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class puu
+public class puu
+  implements pye
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static long jdField_a_of_type_Long = 0L;
-  private static final String jdField_a_of_type_JavaLangString = "RIJImageOptConfig";
-  public static final puu a;
-  private static int b = 0;
-  private static int c = 0;
-  private static int d = 0;
-  private static int e = 0;
-  private static int f = 0;
-  private static int g = 0;
-  private static final int h = 1;
-  private static final int i = 2;
-  private static int j;
-  
-  static
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    jdField_a_of_type_Puu = new puu();
+    return null;
   }
   
-  public final long a()
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    if (jdField_a_of_type_Long > 0L) {
-      return jdField_a_of_type_Long;
+    return ptx.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
+  {
+    ViewBase localViewBase = paramContainer.getVirtualView();
+    if ((NetworkState.isWifiConn()) || (Aladdin.getConfig(299).getIntegerFromString("rij_main_feeds_tips_off", 0) == 1))
+    {
+      localObject = localViewBase.findViewBaseByName("id_large_video_icon");
+      if (localObject != null) {
+        ((ViewBase)localObject).setVisibility(0);
+      }
+      localObject = localViewBase.findViewBaseByName("id_video_bg");
+      if (localObject != null) {
+        ((ViewBase)localObject).setVisibility(8);
+      }
+      ozc.a(false, localViewBase, null);
+      if (paramppu != null)
+      {
+        localObject = paramppu.a();
+        if ((localObject != null) && (((BaseArticleInfo)localObject).isAccountShown)) {
+          qag.a(paramContainer, paramppu);
+        }
+      }
+      rze.a(paramppu.a(), paramContainer.getContext());
+      return;
     }
-    return 10000L;
+    Object localObject = localViewBase.findViewBaseByName("id_large_video_icon");
+    if (localObject != null) {
+      ((ViewBase)localObject).setVisibility(8);
+    }
+    localObject = localViewBase.findViewBaseByName("id_video_bg");
+    if (localObject != null) {
+      ((ViewBase)localObject).setVisibility(0);
+    }
+    NativeText localNativeText = (NativeText)localViewBase.findViewBaseByName("id_video_paly_text");
+    String str;
+    if (localNativeText != null)
+    {
+      str = anzj.a(2131700015);
+      if (bihq.a() == 1)
+      {
+        localObject = anzj.a(2131700016);
+        label199:
+        localNativeText.setText((CharSequence)localObject);
+      }
+    }
+    else
+    {
+      if (paramppu == null) {
+        break label292;
+      }
+    }
+    label292:
+    for (localObject = paramppu.a();; localObject = null)
+    {
+      ozc.a(localViewBase, (BaseArticleInfo)localObject);
+      break;
+      localObject = str;
+      if (paramppu == null) {
+        break label199;
+      }
+      localObject = str;
+      if (paramppu.a().mXGFileSize <= 0L) {
+        break label199;
+      }
+      localObject = rpt.b(paramppu.a().mXGFileSize) + anzj.a(2131700014);
+      break label199;
+    }
   }
   
-  public final void a()
+  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
   {
-    jdField_a_of_type_Int = Aladdin.getConfig(293).getIntegerFromString("reportOn", 0);
-    b = Aladdin.getConfig(293).getIntegerFromString("lifoOn", 0);
-    c = Aladdin.getConfig(293).getIntegerFromString("renderFirst", 0);
-    d = Aladdin.getConfig(293).getIntegerFromString("decodeHttpStream", 0);
-    e = Aladdin.getConfig(293).getIntegerFromString("bitmapOpt", 0);
-    jdField_a_of_type_Long = Aladdin.getConfig(293).getIntegerFromString("monitorTime", 10000);
-    j = Aladdin.getConfig(323).getIntegerFromString("image_flow_optimization_config", 0);
-    f = Aladdin.getConfig(323).getIntegerFromString("use_ip", 0);
-    g = Aladdin.getConfig(293).getIntegerFromString("use_kandian_ip_connect", 0);
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "reportOn:" + jdField_a_of_type_Int + ", lifoOn:" + b + ", renderFirst:" + c + ", decodeHttpStream:" + d + ", bitmapOpt:" + e + ", monitorTime:" + jdField_a_of_type_Long + ", fileTypeOpt:" + j + ", use_ip:" + f + ", use_ip_connect:" + g);
-  }
-  
-  public final boolean a()
-  {
-    return jdField_a_of_type_Int == 1;
-  }
-  
-  public final boolean b()
-  {
-    return b == 1;
-  }
-  
-  public final boolean c()
-  {
-    return c == 1;
-  }
-  
-  public final boolean d()
-  {
-    return d == 1;
-  }
-  
-  public final boolean e()
-  {
-    return e == 1;
-  }
-  
-  public final boolean f()
-  {
-    return j == h;
-  }
-  
-  public final boolean g()
-  {
-    return j == i;
-  }
-  
-  public final boolean h()
-  {
-    return f == 1;
-  }
-  
-  public final boolean i()
-  {
-    return g == 1;
+    paramContainer = paramppu.a();
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    {
+    default: 
+      return false;
+    }
+    paramViewBase.setOnClickListener(new puv(this, paramContainer, paramppu, paramViewBase));
+    return true;
   }
 }
 

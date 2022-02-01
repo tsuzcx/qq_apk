@@ -1,39 +1,103 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import com.google.gson.Gson;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 public class ogb
-  extends Handler
 {
-  private WeakReference<ofx> a;
-  
-  public ogb(ofx paramofx)
+  public static ArrayList<ofh> a()
   {
-    this.a = new WeakReference(paramofx);
+    ArrayList localArrayList = new ArrayList();
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {
+      localArrayList = (ArrayList)new Gson().fromJson(oge.a(localAppRuntime, "redpoint_info_" + ofz.a(localAppRuntime)), new ogc().getType());
+    }
+    return localArrayList;
   }
   
-  public void handleMessage(Message paramMessage)
+  public static void a()
   {
-    ofx localofx = (ofx)this.a.get();
-    if (localofx == null) {}
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {
+      oge.a(localAppRuntime, "redpoint_info_" + ofz.a(localAppRuntime), "");
+    }
+  }
+  
+  public static void a(int paramInt)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {
+      oge.a(localAppRuntime, "redpoint_show_" + paramInt + "_" + ofz.a(localAppRuntime), true);
+    }
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    QLog.i("Ecshop_RedPointUtil", 2, "[saveRedpoingClickTag]  taksId: " + paramInt2);
+    if (localAppRuntime != null) {
+      oge.a(localAppRuntime, "redpoint_click_" + paramInt1 + "_" + ofz.a(localAppRuntime), paramInt2);
+    }
+  }
+  
+  public static void a(ArrayList<ofh> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
+    AppRuntime localAppRuntime;
     do
     {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        case 1: 
-          ofx.a(localofx);
-          return;
-        }
-      } while (ofx.a(localofx) == null);
-      ofx.a(localofx).a(ofx.a(localofx));
       return;
-    } while (ofx.a(localofx) == null);
-    ofx.a(localofx).b();
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    } while (localAppRuntime == null);
+    oge.a(localAppRuntime, "redpoint_info_" + ofz.a(localAppRuntime), new Gson().toJson(paramArrayList));
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    boolean bool = false;
+    try
+    {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if (localAppRuntime != null) {
+        bool = oge.a(localAppRuntime, "redpoint_show_" + paramInt + "_" + ofz.a(localAppRuntime));
+      }
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("Ecshop_RedPointUtil", 1, "[getRedpointClickTag] fail.", localException);
+    }
+    return false;
+  }
+  
+  public static boolean a(int paramInt1, int paramInt2)
+  {
+    try
+    {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if (localAppRuntime != null)
+      {
+        paramInt1 = oge.a(localAppRuntime, "redpoint_click_" + paramInt1 + "_" + ofz.a(localAppRuntime));
+        if (QLog.isColorLevel()) {
+          QLog.i("Ecshop_RedPointUtil", 2, "[getRedpointClickTag] cachedTaskId: " + paramInt1 + " taskId: " + paramInt2);
+        }
+        return paramInt1 == paramInt2;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("Ecshop_RedPointUtil", 1, "[getRedpointClickTag] fail.", localException);
+    }
+    return false;
+  }
+  
+  public static void b(int paramInt)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {
+      oge.a(localAppRuntime, "redpoint_show_" + paramInt + "_" + ofz.a(localAppRuntime), false);
+    }
   }
 }
 

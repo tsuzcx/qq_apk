@@ -1,58 +1,82 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
 public class aqdg
-  implements aqdf
 {
-  private void a(Context paramContext, String paramString)
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup.MarginLayoutParams jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams;
+  private ArkAppView jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
+  private int b;
+  private int c;
+  
+  private aqdg(Activity paramActivity, ArkAppView paramArkAppView)
   {
-    LaunchParam localLaunchParam = new LaunchParam();
-    localLaunchParam.scene = 1131;
-    MiniAppController.startAppByAppid(paramContext, paramString, "", "", localLaunchParam, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher_colorNote", 2, "startMiniAppByAppId, appId: " + paramString);
+    FrameLayout localFrameLayout = (FrameLayout)paramActivity.findViewById(16908290);
+    if (localFrameLayout == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView = localFrameLayout.getChildAt(0);
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new aqdh(this));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = paramArkAppView;
+    this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams = ((ViewGroup.MarginLayoutParams)paramArkAppView.getLayoutParams());
+    paramArkAppView = new DisplayMetrics();
+    paramActivity.getWindowManager().getDefaultDisplay().getMetrics(paramArkAppView);
+    this.c = paramArkAppView.heightPixels;
+    this.b = this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin;
+  }
+  
+  private int a()
+  {
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
+  }
+  
+  private void a()
+  {
+    int i = a();
+    if (i != this.jdField_a_of_type_Int)
+    {
+      int k = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+      int j = k - i;
+      if (j <= k / 4) {
+        break label104;
+      }
+      Rect localRect = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getInputRect();
+      int[] arrayOfInt = new int[2];
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLocationOnScreen(arrayOfInt);
+      k = localRect.bottom + arrayOfInt[1];
+      j = this.c - j;
+      if (j < k)
+      {
+        this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = (j - k);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
+      label104:
+      this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = this.b;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
     }
   }
   
-  public void a(Context paramContext, ColorNote paramColorNote)
+  public static void a(Activity paramActivity, ArkAppView paramArkAppView)
   {
-    int i = 0;
-    if (paramColorNote.getServiceType() != 16842752) {
-      return;
-    }
-    String str = paramColorNote.getSubType();
-    paramColorNote = paramColorNote.getReserve();
-    if (QzoneConfig.getInstance().getConfig("qqminiapp", "openColorNoteMiniAppByAppInfo", 0) == 1) {
-      i = 1;
-    }
-    if ((paramColorNote != null) && (paramColorNote.length > 0) && (i != 0))
-    {
-      paramColorNote = MiniAppUtils.createFromBuffer(paramColorNote);
-      if ((paramColorNote != null) && (!TextUtils.isEmpty(paramColorNote.desc))) {
-        try
-        {
-          MiniAppController.launchMiniAppByAppInfo(null, paramColorNote, 1131);
-          return;
-        }
-        catch (Exception paramColorNote)
-        {
-          QLog.e("MiniAppLauncher_colorNote", 1, "MiniAppLauncher, launch exception: " + Log.getStackTraceString(paramColorNote));
-          a(paramContext, str);
-          return;
-        }
-      }
-      a(paramContext, str);
-      return;
-    }
-    a(paramContext, str);
+    new aqdg(paramActivity, paramArkAppView);
   }
 }
 

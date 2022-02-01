@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.os.Bundle;
-import atbt;
-import atbv;
+import atto;
+import attq;
 import java.util.HashSet;
 import java.util.Iterator;
 
 public class QQFavProxy$2
   implements Runnable
 {
-  public QQFavProxy$2(atbt paramatbt, boolean paramBoolean, Bundle paramBundle) {}
+  public QQFavProxy$2(atto paramatto, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
-    Iterator localIterator = atbt.a(this.this$0).iterator();
+    Iterator localIterator = atto.a(this.this$0).iterator();
     while (localIterator.hasNext()) {
-      ((atbv)localIterator.next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+      ((attq)localIterator.next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
     }
   }
 }

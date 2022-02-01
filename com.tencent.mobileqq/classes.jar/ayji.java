@@ -1,69 +1,32 @@
-import android.os.SystemClock;
-import android.util.Log;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.app.Activity;
+import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
 
 public class ayji
+  extends abkg
 {
-  private static boolean jdField_a_of_type_Boolean = true;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
+  public ayji(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
   
-  public static boolean a()
+  public abjn a(Activity paramActivity, abjt paramabjt)
   {
-    return jdField_a_of_type_Boolean;
+    return super.a(paramActivity, paramabjt);
   }
   
-  public void a()
+  public abjp a(Activity paramActivity, abjt paramabjt)
   {
-    if ((a()) && (this.jdField_a_of_type_Int > 0))
-    {
-      int i = (int)(SystemClock.uptimeMillis() - this.jdField_b_of_type_Long);
-      i = Math.round(1000.0F * this.jdField_a_of_type_Int / i);
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("actType", String.valueOf(this.jdField_b_of_type_Int));
-      localHashMap.put("actFps", String.valueOf(i));
-      bctj.a(BaseApplication.getContext()).a(null, "actOcrGestureFps", true, 0L, 0L, localHashMap, null);
-      QLog.d("GestureFps", 1, new Object[] { "report ActOcrGestureFps, type:", Integer.valueOf(this.jdField_b_of_type_Int), " fps:", Integer.valueOf(i) });
-    }
+    return new ayjk((PicBrowserActivity)paramActivity, paramabjt);
   }
   
-  public void a(int paramInt)
+  public abjt a(Activity paramActivity)
   {
-    if (a())
-    {
-      this.jdField_b_of_type_Int = paramInt;
-      long l = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_Long = l;
-      this.jdField_b_of_type_Long = l;
-      this.jdField_a_of_type_Int = 0;
-    }
+    paramActivity = new ayjt(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
+    paramActivity.a(this.a.jdField_b_of_type_Int);
+    return paramActivity;
   }
   
-  public void b()
+  public abju a(Activity paramActivity, abjt paramabjt)
   {
-    long l;
-    if (a())
-    {
-      l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
-      if (l <= 40L) {
-        break label66;
-      }
-      Log.e("GestureFps", "Frame time: " + l);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      return;
-      label66:
-      if (l > 20L) {
-        Log.w("GestureFps", "Frame time: " + l);
-      }
-    }
+    return null;
   }
 }
 

@@ -1,81 +1,72 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.pullrefresh.ContactRefreshHeader;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import org.json.JSONObject;
 
 public class aivv
-  extends Handler
 {
-  public WeakReference<TroopView> a;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  int jdField_b_of_type_Int = 0;
+  long jdField_b_of_type_Long;
+  String jdField_b_of_type_JavaLangString;
+  protected int c;
+  long jdField_c_of_type_Long;
+  String jdField_c_of_type_JavaLangString;
+  int jdField_d_of_type_Int = 0;
+  public long d;
+  String jdField_d_of_type_JavaLangString;
+  int e = 0;
   
-  public aivv(TroopView paramTroopView)
+  public aivv(JSONObject paramJSONObject)
   {
-    this.a = new WeakReference(paramTroopView);
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_Long = paramJSONObject.optLong("puin");
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("type");
+      this.jdField_b_of_type_Int = paramJSONObject.optInt("show_tab");
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("content");
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
+      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("url");
+      this.jdField_b_of_type_Long = paramJSONObject.optLong("begin");
+      this.jdField_c_of_type_Long = paramJSONObject.optLong("end");
+      this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("shool_id");
+      this.jdField_c_of_type_Int = paramJSONObject.optInt("times");
+      this.jdField_d_of_type_Long = paramJSONObject.optLong("msg_seqno");
+      this.jdField_d_of_type_Long = paramJSONObject.optLong("msg_seqno");
+      this.jdField_d_of_type_Int = paramJSONObject.optInt("tid");
+      this.e = paramJSONObject.optInt("clicked");
+    }
   }
   
-  public void a()
+  boolean a()
   {
-    TroopView localTroopView = (TroopView)this.a.get();
-    if (localTroopView == null) {}
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Long > 0L)
     {
-      return;
-      if (TroopView.a(localTroopView) != null) {
-        TroopView.a(localTroopView).setRefreshing(false);
+      bool1 = bool2;
+      if (this.jdField_c_of_type_Int >= 0) {
+        bool1 = true;
       }
-    } while (TroopView.a(localTroopView) == null);
-    TroopView.a(localTroopView).setRefresh(false);
+    }
+    return bool1;
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean b()
   {
-    TroopView localTroopView = (TroopView)this.a.get();
-    if (localTroopView == null) {
-      return;
-    }
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    boolean bool2 = true;
+    long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
+    boolean bool1 = bool2;
+    if (l >= this.jdField_b_of_type_Long)
     {
-    default: 
-      return;
-    case 1: 
-      TroopView.c(localTroopView);
-      TroopView.a(localTroopView, 1, 2131693948);
-      return;
-    case 4: 
-      TroopView.a(localTroopView, true);
-      return;
-    case 5: 
-      TroopView.a(localTroopView, false);
-      return;
-    case 13: 
-      TroopView.a(localTroopView, 1, 2131693948);
-      a();
-      return;
-    case 14: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label178;
-        }
-        TroopView.d(localTroopView);
-        if (TroopView.a(localTroopView) == null) {
-          break;
-        }
-        TroopView.a(localTroopView).a(0);
-        TroopView.a(localTroopView).sendEmptyMessageDelayed(15, 800L);
-        return;
+      bool1 = bool2;
+      if (l <= this.jdField_c_of_type_Long) {
+        bool1 = false;
       }
-      label178:
-      a();
-      TroopView.a(localTroopView, 1, 2131718227);
-      return;
     }
-    a();
+    return bool1;
   }
 }
 

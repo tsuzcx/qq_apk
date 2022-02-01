@@ -1,25 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aecz
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public aecz(EditInfoActivity paramEditInfoActivity) {}
+  public aecz(ChatHistory paramChatHistory, View paramView1, View paramView2) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847887);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anni.a(2131702418));
-    this.a.jdField_a_of_type_Boolean = false;
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.show();
+    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
+    this.b.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

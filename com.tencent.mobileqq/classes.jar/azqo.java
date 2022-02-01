@@ -1,14 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pic.PicShareToWX.2.1;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import mqq.os.MqqHandler;
 
-public class azqo
-  implements Animation.AnimationListener
+public final class azqo
+  implements EIPCResultCallback
 {
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicShareToWX", 2, "onCallback, eipcResult.code = " + paramEIPCResult.code);
+    }
+    ThreadManager.getUIHandler().post(new PicShareToWX.2.1(this, paramEIPCResult));
+  }
 }
 
 

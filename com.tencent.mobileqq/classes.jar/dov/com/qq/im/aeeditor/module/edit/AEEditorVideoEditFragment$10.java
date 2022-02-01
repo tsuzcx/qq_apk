@@ -1,7 +1,7 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import anni;
-import bofc;
+import anzj;
+import bpgx;
 
 public class AEEditorVideoEditFragment$10
   implements Runnable
@@ -10,7 +10,7 @@ public class AEEditorVideoEditFragment$10
   
   public void run()
   {
-    this.this$0.a(anni.a(2131689713), true, 0L, new bofc(this));
+    this.this$0.a(anzj.a(2131689718), true, 0L, new bpgx(this));
   }
 }
 

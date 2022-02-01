@@ -1,28 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollViewPager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 
-public class ayay
-  extends Handler
+public final class ayay
+  implements Parcelable.Creator<InterestTagInfo>
 {
-  public ayay(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
+  public InterestTagInfo a(Parcel paramParcel)
   {
-    super(paramLooper);
+    return new InterestTagInfo(paramParcel);
   }
   
-  public void handleMessage(Message paramMessage)
+  public InterestTagInfo[] a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a() > 1)
-    {
-      paramMessage = this.a;
-      paramMessage.f += 1;
-      this.a.f %= this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.f, true);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), this.a.e);
-    }
+    return new InterestTagInfo[paramInt];
   }
 }
 

@@ -1,22 +1,49 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aalm
-  implements View.OnClickListener
+  implements aaav<CertifiedAccountRead.StGetMainPageRsp>
 {
-  public aalm(CommodityListView paramCommodityListView, CertifiedAccountMeta.StUser paramStUser) {}
+  public aalm(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    aaxb.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + aakz.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView.a()), "clk_shop", 0, 0, new String[0]);
-    aaae.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
-    EventCollector.getInstance().onViewClicked(paramView);
+    SubscribePersonalDetailFragment.a(this.a, paramBoolean);
+    if (paramBoolean)
+    {
+      if (paramStGetMainPageRsp != null)
+      {
+        yuk.c("SubscribePersonalDetail", "sendRequest GetMainPage success");
+        SubscribePersonalDetailFragment.a(this.a, paramStGetMainPageRsp);
+        if ((this.a.a != null) && (SubscribePersonalDetailFragment.a(this.a).user != null)) {
+          this.a.a.poster.set(SubscribePersonalDetailFragment.a(this.a).user.get());
+        }
+        aaee.a(paramStGetMainPageRsp);
+        SubscribePersonalDetailFragment.a(this.a, paramString);
+        SubscribePersonalDetailFragment.a(this.a);
+        SubscribePersonalDetailFragment.a(this.a).notifyLoadingComplete(true);
+        if (paramStGetMainPageRsp.user.type.get() == 0) {
+          abbe.b(paramStGetMainPageRsp.user.id.get(), "auth_person", "user_exp", 0, 0, new String[0]);
+        }
+      }
+      abbe.a("subscribe_personal_detail_page_request", abbe.a(0L, System.currentTimeMillis() - SubscribePersonalDetailFragment.a(this.a)));
+      return;
+    }
+    yuk.c("SubscribePersonalDetail", "sendRequest GetMainPage error");
+    paramStGetMainPageRsp = paramString;
+    if (!TextUtils.isEmpty(paramString)) {
+      paramStGetMainPageRsp = anzj.a(2131713448);
+    }
+    if (this.a.getActivity() != null) {
+      QQToast.a(this.a.getActivity(), paramStGetMainPageRsp, 0).a();
+    }
+    abbe.a("subscribe_personal_detail_page_request", abbe.a(paramLong, System.currentTimeMillis() - SubscribePersonalDetailFragment.a(this.a)));
   }
 }
 

@@ -1,80 +1,69 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.activity.richmedia.FlowActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.beacon.upload.TunnelInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.utils.ReportUtils.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
 public class alis
-  extends aliq
-  implements ahqz
 {
-  int jdField_a_of_type_Int = -1;
-  private View jdField_a_of_type_AndroidViewView;
-  
-  public alis(FlowActivity paramFlowActivity)
+  static
   {
-    super(paramFlowActivity);
+    UserAction.registerTunnel(new TunnelInfo("000004B5DU3Q3LD1"));
   }
   
-  public void a()
+  private static final String a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (paramAppRuntime == null) {
+      return "";
+    }
+    return paramAppRuntime.getAccount();
   }
   
-  public void a(ViewGroup paramViewGroup)
+  public static Map<String, String> a(JSONObject paramJSONObject)
   {
-    PanelIconLinearLayout localPanelIconLinearLayout = new PanelIconLinearLayout(paramViewGroup.getContext(), null);
-    localPanelIconLinearLayout.setPanelIconListener(this);
-    int i = (int)(40.0F * paramViewGroup.getResources().getDisplayMetrics().density + 0.5F);
-    Object localObject = new RelativeLayout.LayoutParams(-1, -2);
-    ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131366870);
-    paramViewGroup.addView(localPanelIconLinearLayout, (ViewGroup.LayoutParams)localObject);
-    localPanelIconLinearLayout.setCustomHeight(i);
-    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowActivity.getIntent().getExtras();
-    if ((paramViewGroup != null) && (paramViewGroup.containsKey("selected_item")))
+    HashMap localHashMap = new HashMap();
+    if (paramJSONObject == null) {
+      return localHashMap;
+    }
+    Iterator localIterator = paramJSONObject.keys();
+    while (localIterator.hasNext())
     {
-      this.jdField_a_of_type_Int = paramViewGroup.getInt("selected_item");
-      if (paramViewGroup.containsKey("selected_data"))
-      {
-        localObject = (ArrayList)paramViewGroup.getSerializable("selected_data");
-        localPanelIconLinearLayout.a.clear();
-        localPanelIconLinearLayout.a.addAll((Collection)localObject);
-      }
-      localPanelIconLinearLayout.b();
-      localPanelIconLinearLayout.setSelected(this.jdField_a_of_type_Int);
-      if (paramViewGroup.containsKey("flow_key_need_poke_red")) {
-        localPanelIconLinearLayout.setShowRed(23, paramViewGroup.getBoolean("flow_key_need_poke_red"));
-      }
-      this.jdField_a_of_type_AndroidViewView = localPanelIconLinearLayout;
-      return;
+      String str = (String)localIterator.next();
+      localHashMap.put(str, paramJSONObject.optString(str));
     }
-    throw new RuntimeException("No pass args SELECTED_ITEM");
+    return localHashMap;
   }
   
-  public void a(Object paramObject)
+  public static void a()
   {
-    Intent localIntent = ((FlowActivity)a()).getIntent();
-    if ((paramObject == null) || (!(paramObject instanceof Integer))) {
-      return;
-    }
-    int i = ((Integer)paramObject).intValue();
-    QLog.d("XPanel", 2, " FlowPlusPanel  onPanelIconClick  i==" + i + "panelType===" + this.jdField_a_of_type_Int);
-    localIntent.putExtra("click_item", i);
-    ((FlowActivity)a()).setResult(1000, localIntent);
-    ((FlowActivity)a()).finish();
+    ThreadManagerV2.executeOnFileThread(new ReportUtils.1());
   }
   
-  public void b()
+  public static void a(String paramString1, String paramString2, Map<String, String> paramMap)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    if (paramMap != null)
+    {
+      if ((!paramMap.containsKey("A8")) && (BaseApplicationImpl.getApplication() != null)) {
+        paramMap.put("A8", a(BaseApplicationImpl.getApplication().peekAppRuntime()));
+      }
+      if (!paramMap.containsKey("plat")) {
+        paramMap.put("plat", "android");
+      }
+      if (!paramMap.containsKey("version")) {
+        paramMap.put("version", "8.4.5");
+      }
+    }
+    UserAction.onUserActionToTunnel(paramString1, paramString2, true, -1L, -1L, paramMap, true, true);
+  }
+  
+  public static void a(String paramString1, String paramString2, JSONObject paramJSONObject)
+  {
+    a(paramString1, paramString2, a(paramJSONObject));
   }
 }
 

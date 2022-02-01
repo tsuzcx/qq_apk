@@ -1,35 +1,27 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-class atcy
-  extends MqqHandler
+final class atcy
+  implements View.OnTouchListener
 {
-  atcy(atcx paramatcx, Looper paramLooper)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    switch (paramMotionEvent.getAction())
     {
-    default: 
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("FileManagerNotifyCenter<FileAssistant>", 1, "recv Netchang event!");
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
-    this.a.a.a().a(true);
-    this.a.a.a().b(-1);
-    atdq.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcy
  * JD-Core Version:    0.7.0.1
  */

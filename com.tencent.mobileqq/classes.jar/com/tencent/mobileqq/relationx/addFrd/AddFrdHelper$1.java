@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.relationx.addFrd;
 
-import baiu;
+import bbbn;
 
 public class AddFrdHelper$1
   implements Runnable
 {
-  public AddFrdHelper$1(baiu parambaiu) {}
+  public AddFrdHelper$1(bbbn parambbbn) {}
   
   public void run()
   {

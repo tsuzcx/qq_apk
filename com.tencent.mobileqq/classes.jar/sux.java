@@ -1,18 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
 
 public class sux
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public sux(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public sux(ZImageView paramZImageView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    ReadinjoyTabFrame.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ZImageView.access$000(this.a);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ZImageView.access$000(this.a);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

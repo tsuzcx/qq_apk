@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class obw
-  implements Parcelable.Creator<VideoInfo.InterruptedWeishiAd>
+class obw
+  implements DialogInterface.OnClickListener
 {
-  public VideoInfo.InterruptedWeishiAd a(Parcel paramParcel)
-  {
-    return new VideoInfo.InterruptedWeishiAd(paramParcel);
-  }
+  obw(obj paramobj) {}
   
-  public VideoInfo.InterruptedWeishiAd[] a(int paramInt)
-  {
-    return new VideoInfo.InterruptedWeishiAd[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,37 +1,24 @@
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import dov.com.qq.im.ae.play.AEVideoPreviewFragment;
 
-class boxs
-  implements View.OnTouchListener
+public class boxs
+  implements DialogInterface.OnClickListener
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public boxs(AEVideoPreviewFragment paramAEVideoPreviewFragment) {}
   
-  boxs(boxr paramboxr) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
-    }
-    do
-    {
-      return true;
-      this.jdField_a_of_type_Boxr.a.a.setBackgroundColor(this.jdField_a_of_type_Boxr.a.getResources().getColor(2131165392));
-      this.jdField_a_of_type_Boolean = true;
-      return true;
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Boxr.a.a.setBackgroundColor(this.jdField_a_of_type_Boxr.a.getResources().getColor(2131165394));
-    if (!this.jdField_a_of_type_Boxr.a.f)
-    {
-      this.jdField_a_of_type_Boxr.a.f = true;
-      this.jdField_a_of_type_Boxr.a.h();
-    }
-    this.jdField_a_of_type_Boolean = false;
-    return true;
+    paramInt = this.a.c();
+    paramDialogInterface = new Intent("AEEDITOR_GENERATE_STATUS_DELETE");
+    paramDialogInterface.putExtra("delete_position", paramInt);
+    paramDialogInterface.setPackage(BaseApplicationImpl.getContext().getPackageName());
+    BaseApplicationImpl.getContext().sendBroadcast(paramDialogInterface);
+    this.a.getActivity().finish();
   }
 }
 

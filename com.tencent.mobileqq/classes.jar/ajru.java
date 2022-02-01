@@ -1,27 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 import java.util.ArrayList;
-import java.util.List;
+import mqq.os.MqqHandler;
 
 public class ajru
-  implements bkhw
+  extends avhb
 {
-  public ajru(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, bkho parambkho) {}
+  public ajru(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, ArrayList<ajpy> paramArrayList)
   {
-    paramView = ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a();
-    if ((paramView == null) || (paramView.isEmpty())) {}
-    do
+    if (TroopWithCommonFriendsFragment.a(this.a) != null) {
+      TroopWithCommonFriendsFragment.a(this.a).dismiss();
+    }
+    if (!paramBoolean)
     {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1014);
       return;
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(paramView);
-      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(localArrayList, 3, new ajrv(this));
-      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment.h();
-    } while (!this.jdField_a_of_type_Bkho.isShowing());
-    this.jdField_a_of_type_Bkho.dismiss();
+    }
+    ajrx.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, paramArrayList);
+    ajrx.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, paramInt);
+    this.a.b = paramInt;
+    this.a.jdField_a_of_type_JavaUtilList = ajrx.a(paramArrayList, TroopWithCommonFriendsFragment.a(this.a));
+    TroopWithCommonFriendsFragment.a(this.a).a();
+    TroopWithCommonFriendsFragment.a(this.a).a(this.a.jdField_a_of_type_JavaUtilList);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1012);
   }
 }
 

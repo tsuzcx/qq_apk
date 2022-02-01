@@ -7,14 +7,14 @@ import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bhul;
+import bivg;
 
 public class AutoFitTextView
   extends TextView
 {
   private float jdField_a_of_type_Float;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private bhul jdField_a_of_type_Bhul;
+  private bivg jdField_a_of_type_Bivg;
   
   public AutoFitTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -30,9 +30,9 @@ public class AutoFitTextView
     if (this.jdField_a_of_type_Float == 0.0F) {
       this.jdField_a_of_type_Float = getTextSize();
     }
-    if (this.jdField_a_of_type_Bhul != null) {}
+    if (this.jdField_a_of_type_Bivg != null) {}
     float f1;
-    for (paramInt = this.jdField_a_of_type_Bhul.a();; paramInt = getWidth())
+    for (paramInt = this.jdField_a_of_type_Bivg.a();; paramInt = getWidth())
     {
       int i = getPaddingLeft();
       int j = getPaddingRight();
@@ -58,9 +58,9 @@ public class AutoFitTextView
     a(getText().toString(), getWidth());
   }
   
-  public void setOnGetMaxWidthCallback(bhul parambhul)
+  public void setOnGetMaxWidthCallback(bivg parambivg)
   {
-    this.jdField_a_of_type_Bhul = parambhul;
+    this.jdField_a_of_type_Bivg = parambivg;
   }
 }
 

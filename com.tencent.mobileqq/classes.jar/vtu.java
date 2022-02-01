@@ -1,33 +1,18 @@
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetSessionInfoRsp;
 
-public class vtu
+class vtu
+  implements aaav<FeedCloudRead.StGetSessionInfoRsp>
 {
-  private static float jdField_a_of_type_Float = -1.0F;
-  private static int jdField_a_of_type_Int = -1;
+  vtu(vtt paramvtt, int paramInt) {}
   
-  public static float a()
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetSessionInfoRsp paramStGetSessionInfoRsp)
   {
-    if (jdField_a_of_type_Float < 0.0F) {
-      jdField_a_of_type_Float = BaseApplication.getContext().getResources().getDisplayMetrics().density;
+    if (((!paramBoolean) || (paramLong != 0L) || (paramStGetSessionInfoRsp == null)) && (!TextUtils.isEmpty(paramString))) {
+      QLog.e("QCircleReportHelper", 1, "requestReportSession error:" + paramString);
     }
-    return jdField_a_of_type_Float;
-  }
-  
-  public static int a()
-  {
-    return bgtn.a();
-  }
-  
-  public static int a(float paramFloat)
-  {
-    return (int)(vtc.a() * paramFloat + 0.5F);
-  }
-  
-  public static int b(float paramFloat)
-  {
-    return Math.round(a() * paramFloat);
+    vtt.a(this.jdField_a_of_type_Vtt, paramStGetSessionInfoRsp, this.jdField_a_of_type_Int);
   }
 }
 

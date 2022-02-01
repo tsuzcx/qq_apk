@@ -2,7 +2,7 @@ import android.os.AsyncTask;
 import com.dataline.activities.LiteActivity;
 
 public class an
-  implements atve
+  implements aumz
 {
   public an(LiteActivity paramLiteActivity, AsyncTask paramAsyncTask, int paramInt) {}
   

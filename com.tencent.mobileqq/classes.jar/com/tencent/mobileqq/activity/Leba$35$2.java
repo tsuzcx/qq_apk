@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aenj;
-import anni;
-import bgfz;
+import aewm;
+import anzj;
+import bhga;
 import java.util.ArrayList;
 
 class Leba$35$2
@@ -16,7 +16,7 @@ class Leba$35$2
       Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0).a(this.jdField_a_of_type_JavaUtilArrayList);
     }
     if (Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0) != null) {
-      bgfz.a(Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0), anni.a(2131704805));
+      bhga.a(Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$35.this$0), anzj.a(2131704912));
     }
   }
 }

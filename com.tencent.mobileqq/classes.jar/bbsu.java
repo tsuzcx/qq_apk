@@ -1,18 +1,8 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import android.graphics.Bitmap;
 
-public class bbsu
-  extends bbti
+public abstract interface bbsu
 {
-  public bbsu(GroupSearchEngine paramGroupSearchEngine, bbtj parambbtj, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, parambbtj, paramString, paramInt);
-  }
-  
-  public bbmx a(List<bbmy> paramList, String paramString)
-  {
-    return new bbmp(paramList, paramString, GroupSearchEngine.a(this.a));
-  }
+  public abstract void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3);
 }
 
 

@@ -1,27 +1,120 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.GroupPubAccountInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.kingkong.UpdateManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.net.patch.PatchChecker;
+import com.tencent.mobileqq.msf.core.net.patch.PatchCommonUtil;
+import com.tencent.mobileqq.msf.core.net.patch.PatchReporter;
+import com.tencent.mobileqq.vas.LzmaUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class acza
-  extends aczg
 {
-  public int a()
+  private static void a()
   {
-    return 1000;
+    aczh localaczh = aczi.a(BaseApplicationImpl.sApplication, "Native");
+    if (localaczh != null) {
+      UpdateManager.a(localaczh.e());
+    }
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    new bbzc().g(paramList, paramList1, paramStringBuilder, paramMsg, parambepr);
-    return true;
+    b(paramQQAppInterface);
+    a();
   }
   
-  public boolean a(im_msg_body.Elem paramElem)
+  public static boolean a(aczh paramaczh)
   {
-    return (paramElem.group_pub_acc_info.has()) && (paramElem.group_pub_acc_info.uint64_pub_account.has());
+    int j = 701;
+    String str1 = paramaczh.c();
+    Object localObject = PatchCommonUtil.getPatchPath(str1);
+    String str2 = PatchCommonUtil.getPatchPath("");
+    try
+    {
+      i = LzmaUtils.a(BaseApplicationImpl.sApplication, (String)localObject, str2);
+      if (i != 0) {
+        break label136;
+      }
+      i = 700;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        label136:
+        int i = 702;
+        QLog.d("PatchLogTag", 1, "PatchFileManager un7zNPatchFile throwable=" + localThrowable);
+        continue;
+        i = j;
+        if (((File)localObject).exists())
+        {
+          i = 703;
+          ((File)localObject).delete();
+        }
+      }
+    }
+    localObject = new File((String)localObject);
+    if (((File)localObject).exists()) {
+      ((File)localObject).delete();
+    }
+    if (700 == i)
+    {
+      localObject = new File(PatchCommonUtil.getPatchPath(paramaczh.b()));
+      if ((((File)localObject).exists()) && (((File)localObject).length() == paramaczh.b())) {
+        i = 700;
+      }
+    }
+    for (;;)
+    {
+      PatchReporter.reportPatchEvent(BaseApplicationImpl.sApplication, "", "actPatchUnzip", i, str1);
+      if (700 == i)
+      {
+        return true;
+        i = 701;
+        break;
+      }
+      return false;
+    }
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface)
+  {
+    int j = 1;
+    aczh localaczh = aczi.a(BaseApplicationImpl.sApplication, "dex");
+    if ((localaczh != null) && (localaczh.a(BaseApplicationImpl.sApplication, null)))
+    {
+      String str = localaczh.b();
+      File localFile = new File(PatchCommonUtil.getPatchPath(str));
+      int i;
+      if ((!localFile.exists()) || (localFile.length() != localaczh.b()))
+      {
+        i = j;
+        if (localFile.exists())
+        {
+          localFile.delete();
+          i = j;
+        }
+      }
+      for (;;)
+      {
+        if (i != 0) {
+          ((acyy)paramQQAppInterface.getManager(120)).a(0, "dex", localaczh);
+        }
+        return;
+        if (!PatchChecker.checkPatchValid("dex", str))
+        {
+          localFile.delete();
+          i = j;
+        }
+        else
+        {
+          i = 0;
+          abiz.c();
+        }
+      }
+    }
+    abiz.c();
   }
 }
 

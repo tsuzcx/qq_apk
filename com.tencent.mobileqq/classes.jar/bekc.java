@@ -1,36 +1,14 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bekc
-  extends ClickableSpan
+class bekc
+  implements DialogInterface.OnClickListener
 {
-  public bekc(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  bekc(bejx parambejx) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null)
-    {
-      if (!this.a.a.a()) {
-        break label42;
-      }
-      this.a.a.b();
-    }
-    for (;;)
-    {
-      this.a.e(true);
-      return;
-      label42:
-      this.a.a.a();
-      bcst.b(null, "dc00899", "Grp_tribe", "", "pub_page", "clk_prefixchoose", 0, 0, this.a.q, "", "", "");
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-16777216);
-    paramTextPaint.setUnderlineText(false);
+    paramDialogInterface.dismiss();
   }
 }
 

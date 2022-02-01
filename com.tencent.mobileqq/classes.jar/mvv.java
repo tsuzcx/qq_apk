@@ -1,55 +1,6 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.LocaleFileDownloader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-
-public class mvv
-  extends URLDrawableParams
+public abstract interface mvv
 {
-  private ProtocolDownloader jdField_a_of_type_ComTencentImageProtocolDownloader;
-  
-  public mvv(AVGameAppInterface paramAVGameAppInterface, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
-  {
-    if ("fileassistantimage".equals(paramString)) {
-      return new bduh(BaseApplicationImpl.getApplication());
-    }
-    if ("file".equalsIgnoreCase(paramString)) {
-      return new LocaleFileDownloader();
-    }
-    if (this.jdField_a_of_type_ComTencentImageProtocolDownloader == null) {
-      this.jdField_a_of_type_ComTencentImageProtocolDownloader = new bdvl();
-    }
-    return this.jdField_a_of_type_ComTencentImageProtocolDownloader;
-  }
-  
-  public String doGetLocalFilePath(String paramString)
-  {
-    return null;
-  }
-  
-  public ApngSoLoader getApngSoLoader()
-  {
-    return bgzd.a();
-  }
-  
-  public Drawable getDefaultLoadingDrawable()
-  {
-    return null;
-  }
-  
-  public Drawable getDefualtFailedDrawable()
-  {
-    return null;
-  }
+  public abstract void a(int paramInt, long paramLong, String paramString1, String paramString2);
 }
 
 

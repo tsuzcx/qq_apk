@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.soso;
 
-import aooy;
-import aopa;
+import apco;
+import apcq;
 
 public class SosoInterface$3$1
   implements Runnable
 {
-  public SosoInterface$3$1(aooy paramaooy, aopa paramaopa, String paramString1, int paramInt, String paramString2) {}
+  public SosoInterface$3$1(apco paramapco, apcq paramapcq, String paramString1, int paramInt, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aopa.onStatusUpdate(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Apcq.onStatusUpdate(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
   }
 }
 

@@ -1,37 +1,25 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.utils.VipUtils;
-
-class amsh
-  implements amlp
+public class amsh
 {
-  amsh(amsg paramamsg) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d = -1;
   
-  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  public amsh()
   {
-    amsg localamsg = this.a;
-    if (amsg.a(this.a).jdField_b_of_type_Boolean)
-    {
-      paramStartCheckParam = amsg.a(this.a).e;
-      amsg.a(localamsg, paramStartCheckParam);
-      if (!"message".equals(amsg.a(this.a).f)) {
-        break label101;
-      }
-    }
-    label101:
-    for (int i = 1;; i = 0)
-    {
-      VipUtils.a(null, "cmshow", "Apollo", "download_confirm", i, 3, new String[] { String.valueOf(amsg.a(this.a).jdField_b_of_type_Int) });
-      return;
-      paramStartCheckParam = amsg.a(this.a).d;
-      break;
-    }
-  }
-  
-  public void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    if (amsg.a(this.a) != null) {
-      amsg.a(this.a).c(-10001, amsg.a(this.a).jdField_b_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

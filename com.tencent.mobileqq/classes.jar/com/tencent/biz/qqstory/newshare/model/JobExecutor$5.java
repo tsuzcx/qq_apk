@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.newshare.model;
 
-import xdt;
-import xdv;
+import xho;
+import xhq;
 
 public class JobExecutor$5
   implements Runnable
 {
-  public JobExecutor$5(xdv paramxdv, xdt paramxdt) {}
+  public JobExecutor$5(xhq paramxhq, xho paramxho) {}
   
   public void run()
   {
-    xdv.a(this.this$0, this.a.a);
+    xhq.a(this.this$0, this.a.a);
   }
 }
 

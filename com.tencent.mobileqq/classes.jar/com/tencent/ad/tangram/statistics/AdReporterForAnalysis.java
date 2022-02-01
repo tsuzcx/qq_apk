@@ -10,6 +10,9 @@ import com.tencent.ad.tangram.analysis.AdAnalysis;
 import com.tencent.ad.tangram.analysis.AdAnalysisEvent;
 import com.tencent.ad.tangram.analysis.AdAnalysisUtil;
 import com.tencent.ad.tangram.device.AdCarrier;
+import com.tencent.ad.tangram.device.c;
+import com.tencent.ad.tangram.device.r;
+import com.tencent.ad.tangram.device.r.a;
 import com.tencent.ad.tangram.loader.AdLoaderWithJSON;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.net.AdHttp.Params;
@@ -21,6 +24,8 @@ import com.tencent.ad.tangram.util.AdClickUtil.Params;
 import com.tencent.ad.tangram.util.AdClickUtil.Result;
 import com.tencent.ad.tangram.util.AdUriUtil;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 @Keep
 public final class AdReporterForAnalysis
@@ -82,34 +87,15 @@ public final class AdReporterForAnalysis
     return new AdAnalysisEvent(localgdt_analysis_event, 102);
   }
   
-  public static AdAnalysisEvent createEventForAndroidId(Context paramContext, int paramInt, long paramLong, boolean paramBoolean)
+  public static AdAnalysisEvent createEventForDeviceIdentifier(Context paramContext, int paramInt1, int paramInt2, long paramLong, int paramInt3)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    AdAnalysisUtil.initEvent(paramContext, 1042, localgdt_analysis_event);
-    localgdt_analysis_event.internalErrorCode = paramInt;
+    AdAnalysisUtil.initEvent(paramContext, paramInt1, localgdt_analysis_event);
+    localgdt_analysis_event.internalErrorCode = paramInt2;
     localgdt_analysis_event.duration = paramLong;
-    if (paramBoolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      localgdt_analysis_event.cached = paramInt;
-      return new AdAnalysisEvent(localgdt_analysis_event, 102);
-    }
-  }
-  
-  public static AdAnalysisEvent createEventForDeviceId(Context paramContext, int paramInt1, long paramLong, boolean paramBoolean, int paramInt2)
-  {
-    gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    AdAnalysisUtil.initEvent(paramContext, 1040, localgdt_analysis_event);
-    localgdt_analysis_event.internalErrorCode = paramInt1;
-    localgdt_analysis_event.duration = paramLong;
-    if (paramBoolean) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      localgdt_analysis_event.cached = paramInt1;
-      localgdt_analysis_event.errorCode3 = paramInt2;
-      localgdt_analysis_event.phoneType = paramInt2;
-      return new AdAnalysisEvent(localgdt_analysis_event, 102);
-    }
+    localgdt_analysis_event.cached = paramInt3;
+    localgdt_analysis_event.phoneType = c.getPhoneType(paramContext);
+    return new AdAnalysisEvent(localgdt_analysis_event, 102);
   }
   
   public static AdAnalysisEvent createEventForDeviceInfoEnd(Context paramContext, String paramString, long paramLong)
@@ -118,17 +104,6 @@ public final class AdReporterForAnalysis
     AdAnalysisUtil.initEvent(paramContext, 1037, localgdt_analysis_event);
     localgdt_analysis_event.businessId = paramString;
     localgdt_analysis_event.duration = paramLong;
-    return new AdAnalysisEvent(localgdt_analysis_event, 102);
-  }
-  
-  public static AdAnalysisEvent createEventForGetImei(Context paramContext, int paramInt1, long paramLong, int paramInt2)
-  {
-    gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    AdAnalysisUtil.initEvent(paramContext, 1073, localgdt_analysis_event);
-    localgdt_analysis_event.internalErrorCode = paramInt1;
-    localgdt_analysis_event.duration = paramLong;
-    localgdt_analysis_event.errorCode3 = paramInt2;
-    localgdt_analysis_event.phoneType = paramInt2;
     return new AdAnalysisEvent(localgdt_analysis_event, 102);
   }
   
@@ -197,20 +172,6 @@ public final class AdReporterForAnalysis
     }
   }
   
-  public static AdAnalysisEvent createEventForMacAddress(Context paramContext, int paramInt, long paramLong, boolean paramBoolean)
-  {
-    gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    AdAnalysisUtil.initEvent(paramContext, 1041, localgdt_analysis_event);
-    localgdt_analysis_event.internalErrorCode = paramInt;
-    localgdt_analysis_event.duration = paramLong;
-    if (paramBoolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      localgdt_analysis_event.cached = paramInt;
-      return new AdAnalysisEvent(localgdt_analysis_event, 102);
-    }
-  }
-  
   private static gdt_analysis_event createEventForStatistics(Context paramContext, int paramInt1, int paramInt2, Ad paramAd, String paramString)
   {
     paramString = AdUriUtil.parse(paramString);
@@ -234,25 +195,22 @@ public final class AdReporterForAnalysis
     return new AdAnalysisEvent(localgdt_analysis_event, 102);
   }
   
-  public static AdAnalysisEvent createEventImeiConsistency(Context paramContext, int paramInt1, int paramInt2)
+  private static AdAnalysisEvent createEventForUUID(Context paramContext, int paramInt, r paramr, r.a parama)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    AdAnalysisUtil.initEvent(paramContext, 1074, localgdt_analysis_event);
-    localgdt_analysis_event.internalErrorCode = paramInt1;
-    localgdt_analysis_event.errorCode3 = paramInt2;
-    localgdt_analysis_event.phoneType = paramInt2;
-    return new AdAnalysisEvent(localgdt_analysis_event, 102);
-  }
-  
-  public static AdAnalysisEvent createEventImeiSource(Context paramContext, int paramInt1, int paramInt2)
-  {
-    gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    AdAnalysisUtil.initEvent(paramContext, 1075, localgdt_analysis_event);
-    localgdt_analysis_event.androidSimState = paramInt1;
-    localgdt_analysis_event.muidSourceType = paramInt1;
-    localgdt_analysis_event.errorCode3 = paramInt2;
-    localgdt_analysis_event.phoneType = paramInt2;
-    return new AdAnalysisEvent(localgdt_analysis_event, 102);
+    AdAnalysisUtil.initEvent(paramContext, paramInt, localgdt_analysis_event);
+    if (paramr == null) {
+      localgdt_analysis_event.internalErrorCode = 16;
+    }
+    for (;;)
+    {
+      return new AdAnalysisEvent(localgdt_analysis_event, 102);
+      if (!paramr.isValid(parama)) {
+        localgdt_analysis_event.internalErrorCode = 4;
+      } else {
+        localgdt_analysis_event.internalErrorCode = 0;
+      }
+    }
   }
   
   public static void reportForAPIInvoked(Context paramContext, boolean paramBoolean, String paramString, Ad paramAd)
@@ -937,6 +895,31 @@ public final class AdReporterForAnalysis
   {
     paramAd = createEventForStatistics(paramContext, 1056, paramInt, paramAd, paramString);
     AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramAd, 103));
+  }
+  
+  public static void reportForUUID(Context paramContext, r paramr1, r paramr2, r.a parama)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(createEventForUUID(paramContext, 1126, paramr1, parama));
+    localArrayList.add(createEventForUUID(paramContext, 1127, paramr2, parama));
+    parama = new gdt_analysis_event();
+    AdAnalysisUtil.initEvent(paramContext, 1128, parama);
+    if ((paramr1 == null) && (paramr2 == null)) {
+      parama.internalErrorCode = 0;
+    }
+    for (;;)
+    {
+      localArrayList.add(new AdAnalysisEvent(parama, 102));
+      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), localArrayList);
+      return;
+      if ((paramr1 == null) || (paramr2 == null)) {
+        parama.internalErrorCode = 1;
+      } else if (paramr1.equals(paramr2)) {
+        parama.internalErrorCode = 0;
+      } else {
+        parama.internalErrorCode = 1;
+      }
+    }
   }
 }
 

@@ -1,16 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pmk;
-import pwn;
+import android.util.SparseArray;
+import pfd;
+import poz;
 
 public class ChannelInfoModule$10
   implements Runnable
 {
-  public ChannelInfoModule$10(pwn parampwn, int paramInt) {}
+  public ChannelInfoModule$10(poz parampoz, boolean paramBoolean, int paramInt, SparseArray paramSparseArray) {}
   
   public void run()
   {
-    pmk.a().f(this.a);
+    pfd.a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidUtilSparseArray);
   }
 }
 

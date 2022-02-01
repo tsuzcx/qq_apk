@@ -1,24 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.support.annotation.ColorInt;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import androidx.annotation.NonNull;
 
 public class swh
-  implements ozi
+  extends ClickableSpan
 {
-  public swh(FastWebActivity paramFastWebActivity) {}
+  private final int jdField_a_of_type_Int;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   
-  public void a(long paramLong)
+  public swh(@ColorInt int paramInt)
   {
-    if (FastWebActivity.a(this.a) != null)
-    {
-      FastWebActivity.a(this.a).b = paramLong;
-      if (FastWebActivity.a(this.a).b <= 0L)
-      {
-        FastWebActivity.a(this.a).b = 0L;
-        this.a.e();
-      }
-      FastWebActivity.a(this.a).a(this.a, FastWebActivity.a(this.a), this.a.a);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+  }
+  
+  public void onClick(@NonNull View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
     }
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
   }
 }
 

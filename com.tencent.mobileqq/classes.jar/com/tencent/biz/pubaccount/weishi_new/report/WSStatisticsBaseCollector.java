@@ -3,10 +3,10 @@ package com.tencent.biz.pubaccount.weishi_new.report;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bcrp;
-import bgln;
-import biuf;
-import blru;
+import bdkh;
+import bhlo;
+import bjve;
+import bmsw;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -17,9 +17,9 @@ import cooperation.qzone.LocalMultiProcConfig;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.app.AppRuntime;
-import umz;
-import ups;
-import zmi;
+import uoa;
+import uqt;
+import zqd;
 
 public class WSStatisticsBaseCollector
 {
@@ -48,7 +48,7 @@ public class WSStatisticsBaseCollector
     }
     catch (NullPointerException localNullPointerException)
     {
-      bcrp.a(localNullPointerException);
+      bdkh.a(localNullPointerException);
     }
     return "";
   }
@@ -65,10 +65,10 @@ public class WSStatisticsBaseCollector
   
   private String getRefPageId()
   {
-    if (TextUtils.isEmpty(umz.b)) {
+    if (TextUtils.isEmpty(uoa.b)) {
       return LocalMultiProcConfig.getString("weishi_usergrowth", "key_ref_page_id", "");
     }
-    return umz.b;
+    return uoa.b;
   }
   
   private String getSceneFrom()
@@ -85,9 +85,9 @@ public class WSStatisticsBaseCollector
   {
     HashMap localHashMap = new HashMap(38);
     localHashMap.put("qimei", UserAction.getQIMEI());
-    localHashMap.put("imsi", bgln.b());
-    localHashMap.put("imei", biuf.c());
-    localHashMap.put("mac", biuf.a());
+    localHashMap.put("imsi", bhlo.b());
+    localHashMap.put("imei", bjve.c());
+    localHashMap.put("mac", bjve.a());
     localHashMap.put("dev_brand", GlobalUtil.getInstance().getBrand());
     localHashMap.put("dev_model", Build.MODEL);
     localHashMap.put("os", "Android");
@@ -95,22 +95,22 @@ public class WSStatisticsBaseCollector
     localHashMap.put("operating_system_version", Build.VERSION.RELEASE);
     localHashMap.put("ui_version", UI_VERSION);
     localHashMap.put("app_ver", APP_VERSION);
-    localHashMap.put("wifiBssid", ups.e());
+    localHashMap.put("wifiBssid", uqt.e());
     localHashMap.put("push_id", getPushId());
     localHashMap.put("ip", getLocalIpAddress());
     localHashMap.put("session_id", WSPublicAccReport.getInstance().getSessionId());
     localHashMap.put("session_stamp", WSPublicAccReport.getInstance().getSessionStamp());
     localHashMap.put("sop_name", getSopName());
-    localHashMap.put("qua", blru.a());
-    localHashMap.put("android_id", bgln.f());
-    localHashMap.put("qq", ups.a().getAccount());
-    if (zmi.a(BaseApplicationImpl.getApplication())) {}
+    localHashMap.put("qua", bmsw.a());
+    localHashMap.put("android_id", bhlo.f());
+    localHashMap.put("qq", uqt.a().getAccount());
+    if (zqd.a(BaseApplicationImpl.getApplication())) {}
     for (String str = "1";; str = "0")
     {
       localHashMap.put("if_install_weishi", str);
-      localHashMap.put("person_id", ups.f());
+      localHashMap.put("person_id", uqt.f());
       localHashMap.put("time", String.valueOf(System.currentTimeMillis()));
-      localHashMap.put("network_type", ups.d());
+      localHashMap.put("network_type", uqt.d());
       localHashMap.put("extended_fields", getExtendInfo());
       localHashMap.put("scenes_from", getSceneFrom());
       localHashMap.put("operation_id", getOperationId());

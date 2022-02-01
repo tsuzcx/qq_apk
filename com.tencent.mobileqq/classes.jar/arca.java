@@ -1,43 +1,64 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
-public final class arca
-  extends aqkz<arbz>
+public class arca
+  extends arac<arbu>
 {
-  public static void a()
+  public static arbu b(int paramInt)
   {
-    QLog.d("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "initConfig");
-    arbz.a(false, (arbz)aqlk.a().a(501));
+    arbu localarbu = (arbu)aran.a().a(paramInt);
+    if (localarbu != null) {
+      return localarbu;
+    }
+    return new arbu();
   }
   
   @NonNull
-  public arbz a(int paramInt)
+  public arbu a(int paramInt)
   {
-    QLog.w("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
-    return new arbz();
+    return new arbu();
+  }
+  
+  public arbu a(String paramString)
+  {
+    QLog.d("ArkConfProcessor", 1, "[onParsed] type=" + type() + ", content = " + paramString);
+    return new arbu(paramString);
   }
   
   @Nullable
-  public arbz a(aqlg[] paramArrayOfaqlg)
+  public arbu a(araj[] paramArrayOfaraj)
   {
-    return arbz.a(paramArrayOfaqlg);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkConfProcessor", 2, "[onParsed] config type = " + type());
+    }
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    {
+      paramArrayOfaraj = paramArrayOfaraj[0].a;
+      if (!TextUtils.isEmpty(paramArrayOfaraj)) {
+        return a(paramArrayOfaraj);
+      }
+      QLog.d("ArkConfProcessor", 1, "[onParsed] content is empty, config type = " + type());
+    }
+    return null;
   }
   
-  public void a(arbz paramarbz)
+  public void a(arbu paramarbu)
   {
-    QLog.w("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "onUpdate");
-    arbz.a(true, paramarbz);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkConfProcessor", 2, "[onUpdate]  config type = " + type());
+    }
   }
   
-  public Class<arbz> clazz()
+  public Class<arbu> clazz()
   {
-    return arbz.class;
+    return arbu.class;
   }
   
   public boolean isAccountRelated()
   {
-    return true;
+    return false;
   }
   
   public boolean isNeedCompressed()
@@ -57,12 +78,17 @@ public final class arca
   
   public void onReqFailed(int paramInt)
   {
-    QLog.e("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "onReqFailed: " + paramInt);
+    QLog.d("ArkConfProcessor", 1, "[onReqFailed] failCode=" + paramInt + ", config type = " + type());
+  }
+  
+  public void onReqNoReceive()
+  {
+    super.onReqNoReceive();
   }
   
   public int type()
   {
-    return 501;
+    return 0;
   }
 }
 

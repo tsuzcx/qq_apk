@@ -1,148 +1,27 @@
-import android.media.SoundPool;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.av.random.RandomWebProtocol;
+import org.json.JSONObject;
 
 public class lto
+  extends ltl
 {
-  int jdField_a_of_type_Int;
-  SoundPool jdField_a_of_type_AndroidMediaSoundPool;
-  HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  HashSet<Integer> jdField_a_of_type_JavaUtilHashSet;
-  List<String> jdField_a_of_type_JavaUtilList;
-  int jdField_b_of_type_Int;
-  HashMap<String, Integer> jdField_b_of_type_JavaUtilHashMap;
-  int c;
+  public boolean a;
+  public String b;
+  public String c;
+  public int f = -1;
+  public int g = -1;
   
-  public lto(List<String> paramList, int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_b_of_type_Int = paramList.size();
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public lto(RandomWebProtocol paramRandomWebProtocol) {}
   
-  public void a()
+  void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoundPoolHelper", 2, "releaseMusic");
-    }
-    if (this.jdField_a_of_type_AndroidMediaSoundPool != null)
+    super.a(paramString);
+    if ((2 == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_OrgJsonJSONObject != null))
     {
-      this.jdField_a_of_type_AndroidMediaSoundPool.release();
-      this.jdField_a_of_type_AndroidMediaSoundPool = null;
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_a_of_type_JavaUtilHashSet.clear();
-      this.jdField_b_of_type_JavaUtilHashMap.clear();
-      this.c = 0;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (localInteger == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoundPoolHelper", 2, "stopMusic fail soundID is null, path = " + paramString);
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (this.jdField_a_of_type_JavaUtilHashSet.contains(localInteger)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("SoundPoolHelper", 2, "stopMusic fail soundID is not ready, path = " + paramString);
-        return;
-        localInteger = (Integer)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
-        if (localInteger != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SoundPoolHelper", 2, "stopMusic fail steamID is null, path = " + paramString);
-      return;
-    } while (this.jdField_a_of_type_AndroidMediaSoundPool == null);
-    this.jdField_a_of_type_AndroidMediaSoundPool.stop(localInteger.intValue());
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoundPoolHelper", 2, "playMusic, path = " + paramString + ",loop = " + paramBoolean);
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoundPoolHelper", 2, "playMusic fail path is empty ");
-      }
-    }
-    Integer localInteger;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-          if (localInteger != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("SoundPoolHelper", 2, "playMusic fail soundID is null, path = " + paramString + ",loop = " + paramBoolean);
-        return;
-        if (this.jdField_a_of_type_JavaUtilHashSet.contains(localInteger)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SoundPoolHelper", 2, "playMusic fail soundID is not ready, path = " + paramString + ",loop = " + paramBoolean);
-      return;
-    } while (this.jdField_a_of_type_AndroidMediaSoundPool == null);
-    SoundPool localSoundPool = this.jdField_a_of_type_AndroidMediaSoundPool;
-    int j = localInteger.intValue();
-    if (paramBoolean) {}
-    for (int i = -1;; i = 0)
-    {
-      i = localSoundPool.play(j, 1.0F, 1.0F, 1, i, 1.0F);
-      this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i));
-      return;
-    }
-  }
-  
-  public void a(ltq paramltq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoundPoolHelper", 2, "loadMusic ,soundPool = " + this.jdField_a_of_type_AndroidMediaSoundPool);
-    }
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoundPoolHelper", 2, "loadMusic fail filPathList is empty");
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidMediaSoundPool == null)
-      {
-        this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_Int, 0);
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new ltp(this, paramltq));
-      }
-      paramltq = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramltq.hasNext())
-      {
-        String str = (String)paramltq.next();
-        int i = this.jdField_a_of_type_AndroidMediaSoundPool.load(str, 1);
-        this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(i));
-      }
+      this.f = this.jdField_a_of_type_OrgJsonJSONObject.optInt("ismask", -1);
+      this.b = this.jdField_a_of_type_OrgJsonJSONObject.optString("groupids");
+      this.g = this.jdField_a_of_type_OrgJsonJSONObject.optInt("businessid", -1);
+      this.c = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("roomowner"));
+      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_OrgJsonJSONObject.optBoolean("ownerenable", true);
     }
   }
 }

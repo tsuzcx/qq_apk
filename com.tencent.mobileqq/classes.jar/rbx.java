@@ -1,16 +1,29 @@
-import kotlin.Lazy;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager$Companion;", "", "()V", "CLIP_TAG", "", "TAG", "WATCH_WORD_COUNT", "", "instance", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager;", "getInstance", "()Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager;", "instance$delegate", "Lkotlin/Lazy;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rbx
+public class rbx
+  implements View.OnTouchListener
 {
-  @NotNull
-  public final rbw a()
+  public rbx(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Lazy localLazy = rbw.a();
-    rbx localrbx = rbw.a;
-    return (rbw)localLazy.getValue();
+    paramView = ReadInJoyUgcSearchTopicFragment.a(this.a).getCompoundDrawables()[2];
+    if ((paramMotionEvent.getAction() == 0) && (paramView != null))
+    {
+      float f = ReadInJoyUgcSearchTopicFragment.a(this.a).getRight() - paramView.getBounds().width();
+      if (paramMotionEvent.getRawX() >= f)
+      {
+        ReadInJoyUgcSearchTopicFragment.b(this.a);
+        return true;
+      }
+    }
+    return false;
   }
 }
 

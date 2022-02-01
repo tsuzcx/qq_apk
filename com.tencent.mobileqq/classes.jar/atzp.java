@@ -1,15 +1,20 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.List;
 
 public class atzp
+  extends atzt
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public String a;
-  public boolean a;
-  public String b;
-  
-  atzp(atzj paramatzj) {}
+  public CharSequence c()
+  {
+    Object localObject = (FileManagerEntity)this.a.get(0);
+    String str1 = auoy.b(((FileManagerEntity)localObject).srvTime);
+    String str2 = aunj.b((FileManagerEntity)localObject);
+    localObject = auog.a(((FileManagerEntity)localObject).fileSize);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str2).append("  ").append(str1).append("  ").append((String)localObject);
+    this.b = localStringBuilder;
+    return localStringBuilder;
+  }
 }
 
 

@@ -6,12 +6,12 @@ import android.os.Parcelable.Creator;
 import cooperation.qzone.LbsDataV2.PoiInfo;
 import cooperation.qzone.model.LabelInfo;
 import java.util.ArrayList;
-import uzi;
+import vay;
 
 public class QCircleFakeFeed
   implements Parcelable
 {
-  public static final Parcelable.Creator<QCircleFakeFeed> CREATOR = new uzi();
+  public static final Parcelable.Creator<QCircleFakeFeed> CREATOR = new vay();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private LbsDataV2.PoiInfo jdField_a_of_type_CooperationQzoneLbsDataV2$PoiInfo;

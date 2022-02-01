@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.widget.ImageView;
-import atwl;
+import auog;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -18,7 +18,7 @@ final class GuideViewPager$1
   {
     try
     {
-      if (atwl.a(this.jdField_a_of_type_JavaLangString))
+      if (auog.a(this.jdField_a_of_type_JavaLangString))
       {
         Object localObject = new BitmapFactory.Options();
         ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;

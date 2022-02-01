@@ -1,37 +1,13 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahyn
-  extends anqd
+public class ahyn
+  implements ahyf
 {
-  ahyn(ahyk paramahyk) {}
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    a(paramBoolean, paramString, paramLong, null);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong, anqa paramanqa)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.a.a)) {
-      return;
-    }
-    this.a.t = true;
-    this.a.a(262144, paramanqa, paramLong);
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
-    }
-    this.a.f(131072);
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    this.a.f(65536);
+    paramahed.a(paramMessageRecord, paramLinearLayout, paramahfq);
   }
 }
 

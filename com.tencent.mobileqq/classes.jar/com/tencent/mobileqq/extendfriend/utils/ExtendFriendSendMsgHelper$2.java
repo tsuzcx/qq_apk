@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.extendfriend.utils;
 
 import android.os.Bundle;
-import asfu;
-import asml;
+import asvi;
+import atck;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ExtendFriendSendMsgHelper$2
   implements Runnable
 {
-  public ExtendFriendSendMsgHelper$2(asml paramasml, int paramInt, String paramString) {}
+  public ExtendFriendSendMsgHelper$2(atck paramatck, int paramInt, String paramString) {}
   
   public void run()
   {
-    asfu localasfu = (asfu)asml.a(this.this$0).getManager(264);
+    asvi localasvi = (asvi)atck.a(this.this$0).getManager(264);
     Bundle localBundle = new Bundle();
     localBundle.putInt("fromType", this.jdField_a_of_type_Int);
-    localasfu.a(this.jdField_a_of_type_JavaLangString, localBundle);
+    localasvi.a(this.jdField_a_of_type_JavaLangString, localBundle);
   }
 }
 

@@ -1,112 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import android.media.MediaFormat;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class zkx
+public abstract class zkx
 {
-  public static Long a()
-  {
-    String str = aoor.b();
-    if (TextUtils.isEmpty(str))
-    {
-      yqp.b("LocationUtils", "getCityCode() lbsInfo.location.cityCode is empty");
-      return null;
-    }
-    try
-    {
-      long l = Long.parseLong(str);
-      yqp.a("LocationUtils", "getCityCode() lbsInfo.location.cityCode is %d", Long.valueOf(l));
-      return Long.valueOf(l);
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      yqp.e("LocationUtils", "getCityCode() cityCode is not number!");
-      bcrp.a(zls.a("LocationUtils getCityCode() error", localNumberFormatException), "LocationUtils getCityCode() error");
-    }
-    return null;
-  }
+  protected int a;
+  protected bbmq a;
+  protected String a;
+  protected String b;
   
-  public static wre a(com.tencent.biz.qqstory.takevideo.EditVideoParams paramEditVideoParams)
+  protected void a(int paramInt, String paramString1, String paramString2, MediaFormat paramMediaFormat, SlideItemInfo paramSlideItemInfo, zkw paramzkw)
   {
-    wre localwre2 = wrf.a();
-    wre localwre1;
-    int j;
-    int i;
-    if (paramEditVideoParams.d())
+    if (paramzkw != null)
     {
-      localwre1 = null;
-      paramEditVideoParams = paramEditVideoParams.a;
-      if ((paramEditVideoParams instanceof EditLocalVideoSource))
+      zjv localzjv = new zjv();
+      localzjv.jdField_a_of_type_Long = paramzkw.b;
+      localzjv.jdField_a_of_type_Int = paramInt;
+      localzjv.jdField_b_of_type_JavaLangString = paramString2;
+      localzjv.jdField_a_of_type_JavaLangString = paramString1;
+      localzjv.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+      localzjv.c = this.jdField_b_of_type_JavaLangString;
+      localzjv.jdField_a_of_type_Boolean = false;
+      localzjv.jdField_b_of_type_Int = 1;
+      if (paramSlideItemInfo != null)
       {
-        paramEditVideoParams = ((EditLocalVideoSource)paramEditVideoParams).a;
-        j = paramEditVideoParams.latitude;
-        i = paramEditVideoParams.longitude;
+        localzjv.jdField_a_of_type_Boolean = paramSlideItemInfo.jdField_a_of_type_Boolean;
+        localzjv.jdField_b_of_type_Int = paramSlideItemInfo.c;
       }
-    }
-    for (;;)
-    {
-      if ((j != 0) || (i != 0))
-      {
-        localwre1 = new wre(j, i, 0);
-        yqp.a("LocationUtils", "Use LocalMediaInfo Lat/Lng to Request POIList %s", paramEditVideoParams);
-        return localwre1;
-        if ((paramEditVideoParams instanceof EditLocalPhotoSource))
-        {
-          paramEditVideoParams = ((EditLocalPhotoSource)paramEditVideoParams).a;
-          j = paramEditVideoParams.latitude;
-          i = paramEditVideoParams.longitude;
-        }
+      if (paramzkw.a != null) {
+        paramzkw.a.a(localzjv);
       }
-      else
-      {
-        return localwre2;
-      }
-      i = 0;
-      j = 0;
-      paramEditVideoParams = localwre1;
     }
   }
   
-  public static wre a(dov.com.tencent.biz.qqstory.takevideo.EditVideoParams paramEditVideoParams)
+  protected boolean a(zkw paramzkw)
   {
-    wre localwre2 = wrf.a();
-    wre localwre1;
-    int j;
-    int i;
-    if (paramEditVideoParams.d())
-    {
-      localwre1 = null;
-      paramEditVideoParams = paramEditVideoParams.a;
-      if ((paramEditVideoParams instanceof EditLocalVideoSource))
-      {
-        paramEditVideoParams = ((EditLocalVideoSource)paramEditVideoParams).a;
-        j = paramEditVideoParams.latitude;
-        i = paramEditVideoParams.longitude;
-      }
+    if ((!paramzkw.d) && (QLog.isColorLevel())) {
+      QLog.d("ToVideoConverter", 2, "run exit:" + paramzkw.b + " currContext.isRun:" + paramzkw.d);
     }
-    for (;;)
-    {
-      if ((j != 0) || (i != 0))
-      {
-        localwre1 = new wre(j, i, 0);
-        yqp.a("LocationUtils", "Use LocalMediaInfo Lat/Lng to Request POIList %s", paramEditVideoParams);
-        return localwre1;
-        if ((paramEditVideoParams instanceof EditLocalPhotoSource))
-        {
-          paramEditVideoParams = ((EditLocalPhotoSource)paramEditVideoParams).a;
-          j = paramEditVideoParams.latitude;
-          i = paramEditVideoParams.longitude;
-        }
-      }
-      else
-      {
-        return localwre2;
-      }
-      i = 0;
-      j = 0;
-      paramEditVideoParams = localwre1;
-    }
+    return !paramzkw.d;
   }
 }
 

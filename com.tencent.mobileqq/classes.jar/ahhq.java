@@ -1,30 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.customviews.VideoProgressView;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.data.ChatMessage;
 
 class ahhq
-  implements awxh
+  extends ahkx
 {
-  ahhq(ahhm paramahhm, String paramString, ahhx paramahhx) {}
-  
-  public void a()
+  ahhq(ahgk paramahgk)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Ahhx.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahhx.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Ahhx.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
-    }
+    super(paramahgk, null);
   }
   
-  public void a(awxe paramawxe)
+  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    ahhm.a(this.jdField_a_of_type_Ahhm, paramawxe, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ahhx, this);
+    return attw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, 61, paramChatMessage);
   }
-  
-  public void a(awxe paramawxe, int paramInt)
-  {
-    this.jdField_a_of_type_Ahhm.a(this.jdField_a_of_type_Ahhx, paramInt, false);
-  }
-  
-  public void b(awxe paramawxe) {}
 }
 
 

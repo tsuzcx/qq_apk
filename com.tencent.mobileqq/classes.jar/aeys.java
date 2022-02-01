@@ -1,18 +1,9 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
 
 public class aeys
-  implements bbaa
 {
-  public aeys(QQSettingMe paramQQSettingMe) {}
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
-  {
-    if ((this.a.c) && (paramBitmap != null) && (QQSettingMe.a(this.a).a().actionId == paramInt1) && (paramInt2 == 200)) {
-      this.a.z();
-    }
-  }
+  public ResourcePluginInfo a;
+  public String a;
 }
 
 

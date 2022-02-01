@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.os.Bundle;
-import anii;
-import anil;
+import anud;
+import anui;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -13,20 +13,20 @@ import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
-import nyq;
-import ocd;
-import ocf;
-import scc;
+import oal;
+import odn;
+import odp;
+import rsv;
 
 public class VideoFeedsAppInterface
   extends AppInterface
 {
   public static String a;
-  private HashMap<Integer, anii> jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
-  private List<anil> jdField_a_of_type_JavaUtilList = new Vector();
-  private scc jdField_a_of_type_Scc;
-  private List<anil> b = new Vector();
-  private List<anil> c = new Vector();
+  private HashMap<Integer, anud> jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
+  private List<anui> jdField_a_of_type_JavaUtilList = new Vector();
+  private rsv jdField_a_of_type_Rsv;
+  private List<anui> b = new Vector();
+  private List<anui> c = new Vector();
   
   static
   {
@@ -38,29 +38,29 @@ public class VideoFeedsAppInterface
     super(paramBaseApplicationImpl, paramString);
   }
   
-  public anii a(int paramInt)
+  public anud a(int paramInt)
   {
-    anii localanii = (anii)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    if (localanii == null) {}
+    anud localanud = (anud)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localanud == null) {}
     for (;;)
     {
       synchronized (this.jdField_a_of_type_JavaUtilHashMap)
       {
-        localanii = (anii)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-        if (localanii == null) {
+        localanud = (anud)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+        if (localanud == null) {
           break label113;
         }
-        return localanii;
-        if (localanii != null) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localanii);
+        return localanud;
+        if (localanud != null) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localanud);
         }
-        return localanii;
+        return localanud;
       }
-      Object localObject2 = new ocf(this);
+      Object localObject2 = new odp(this);
       continue;
-      localObject2 = new ocd(this);
+      localObject2 = new odn(this);
       continue;
-      localObject2 = new nyq(this);
+      localObject2 = new oal(this);
       continue;
       return localObject2;
       label113:
@@ -72,32 +72,32 @@ public class VideoFeedsAppInterface
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Scc.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    this.jdField_a_of_type_Rsv.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
   
-  public void addObserver(anil paramanil)
+  public void addObserver(anui paramanui)
   {
-    addObserver(paramanil, false);
+    addObserver(paramanui, false);
   }
   
-  public void addObserver(anil paramanil, boolean paramBoolean)
+  public void addObserver(anui paramanui, boolean paramBoolean)
   {
-    if (paramanil == null) {
+    if (paramanui == null) {
       return;
     }
     if (paramBoolean) {
       synchronized (this.b)
       {
-        if (!this.b.contains(paramanil)) {
-          this.b.add(paramanil);
+        if (!this.b.contains(paramanui)) {
+          this.b.add(paramanui);
         }
         return;
       }
     }
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramanil)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramanil);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramanui)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramanui);
       }
       return;
     }
@@ -113,7 +113,7 @@ public class VideoFeedsAppInterface
     return AppSetting.a();
   }
   
-  public List<anil> getBusinessObserver(int paramInt)
+  public List<anui> getBusinessObserver(int paramInt)
   {
     if (paramInt == 1) {
       return this.jdField_a_of_type_JavaUtilList;
@@ -145,33 +145,33 @@ public class VideoFeedsAppInterface
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Scc = new scc(this);
+    this.jdField_a_of_type_Rsv = new rsv(this);
   }
   
-  public void removeObserver(anil paramanil)
+  public void removeObserver(anui paramanui)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramanil);
+      this.jdField_a_of_type_JavaUtilList.remove(paramanui);
       synchronized (this.b)
       {
-        this.b.remove(paramanil);
+        this.b.remove(paramanui);
       }
     }
     synchronized (this.c)
     {
-      this.c.remove(paramanil);
+      this.c.remove(paramanui);
       return;
-      paramanil = finally;
-      throw paramanil;
-      paramanil = finally;
-      throw paramanil;
+      paramanui = finally;
+      throw paramanui;
+      paramanui = finally;
+      throw paramanui;
     }
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_Scc.a(paramToServiceMsg);
+    this.jdField_a_of_type_Rsv.a(paramToServiceMsg);
   }
 }
 

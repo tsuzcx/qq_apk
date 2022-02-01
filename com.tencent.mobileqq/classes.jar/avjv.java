@@ -1,14 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gamecenter.data.GameNoticeCenter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-class avjv
-  implements avkm
+public class avjv
+  implements View.OnClickListener
 {
-  avjv(avju paramavju, avlu paramavlu) {}
+  public avjv(GameNoticeCenter paramGameNoticeCenter, String paramString) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    QLog.i("XProxy|NowProxy", 1, "openWatchTogetherRoom  enter success  retCode= " + paramInt + ";msg=" + paramString);
-    this.jdField_a_of_type_Avlu.a(paramInt, paramString);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = ((QQAppInterface)localObject).getHandler(GameNoticeCenter.class);
+      if (localObject != null)
+      {
+        localObject = ((MqqHandler)localObject).obtainMessage(1);
+        ((Message)localObject).obj = this.jdField_a_of_type_JavaLangString;
+        ((Message)localObject).sendToTarget();
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

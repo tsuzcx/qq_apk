@@ -18,7 +18,7 @@ public class NotificationCompat$DecoratedCustomViewStyle
   
   private RemoteViews createRemoteViews(RemoteViews paramRemoteViews, boolean paramBoolean)
   {
-    RemoteViews localRemoteViews = applyStandardTemplate(true, 2131559518, false);
+    RemoteViews localRemoteViews = applyStandardTemplate(true, 2131559523, false);
     localRemoteViews.removeAllViews(2131361988);
     List localList = getNonContextualActions(this.mBuilder.mActions);
     if ((paramBoolean) && (localList != null))
@@ -60,10 +60,10 @@ public class NotificationCompat$DecoratedCustomViewStyle
       }
     }
     label123:
-    for (int j = 2131559515;; j = 2131559514)
+    for (int j = 2131559520;; j = 2131559519)
     {
       localObject = new RemoteViews((String)localObject, j);
-      ((RemoteViews)localObject).setImageViewBitmap(2131361955, createColoredBitmap(paramAction.getIconCompat(), this.mBuilder.mContext.getResources().getColor(2131165861)));
+      ((RemoteViews)localObject).setImageViewBitmap(2131361955, createColoredBitmap(paramAction.getIconCompat(), this.mBuilder.mContext.getResources().getColor(2131165862)));
       ((RemoteViews)localObject).setTextViewText(2131361987, paramAction.title);
       if (i == 0) {
         ((RemoteViews)localObject).setOnClickPendingIntent(2131361949, paramAction.actionIntent);

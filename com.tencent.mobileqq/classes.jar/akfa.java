@@ -1,30 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akfa
-  extends Handler
+  implements View.OnClickListener
 {
-  public akfa(PhotoCropActivity paramPhotoCropActivity) {}
+  public akfa(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
+    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
+    this.a.getActivity().finish();
+    if (this.a.d == 11) {
+      bdll.b(this.a.getActivity().app, "CliOper", "", "", "0X8006215", "0X8006215", 0, 0, "1", "", "", "");
     }
-    do
-    {
-      return;
-      this.a.b();
-      this.a.a.sendMessageDelayed(Message.obtain(this.a.a, 1003), 10000L);
-      return;
-    } while (this.a.isFinishing());
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoCropActivity", 2, "LOADING_TIMEOUT");
-    }
-    PhotoCropActivity.a(this.a, 2131715973);
-    this.a.c();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

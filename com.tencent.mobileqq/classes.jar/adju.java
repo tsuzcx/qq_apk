@@ -1,15 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.intervideo.nowproxy.proxyinner.channel.ToService;
 
-public class adju
-  implements DialogInterface.OnDismissListener
+public final class adju
+  implements Parcelable.Creator<ToService>
 {
-  public adju(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ToService a(Parcel paramParcel)
   {
-    this.a.a = null;
+    ToService localToService = new ToService();
+    localToService.jdField_a_of_type_Int = paramParcel.readInt();
+    localToService.b = paramParcel.readInt();
+    localToService.c = paramParcel.readInt();
+    localToService.d = paramParcel.readInt();
+    localToService.jdField_a_of_type_Long = paramParcel.readLong();
+    localToService.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localToService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
+    return localToService;
+  }
+  
+  public ToService[] a(int paramInt)
+  {
+    return new ToService[paramInt];
   }
 }
 

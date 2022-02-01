@@ -97,19 +97,19 @@ public class PTSLiteItemViewManager
       PTSLog.i("PTSLiteItemViewManager", "[triggerLiteEvent] unknown, eventType = " + paramInt);
       return;
     case 1: 
-      this.liteEventListener.onTapEventTriggered(paramString, paramHashMap, paramView);
+      this.liteEventListener.onTapEventTriggered(paramString, paramHashMap, paramView, null);
       return;
     case 2: 
-      this.liteEventListener.onExposureTriggered(paramString, paramHashMap, paramView);
+      this.liteEventListener.onExposureTriggered(paramString, paramHashMap, paramView, null);
       return;
     case 3: 
-      this.liteEventListener.onSwiperItemExposureTriggered(paramString, paramHashMap, paramView);
+      this.liteEventListener.onSwiperItemExposureTriggered(paramString, paramHashMap, paramView, null);
       return;
     case 4: 
-      this.liteEventListener.onSwiperDragTriggered(paramString, paramHashMap, paramView);
+      this.liteEventListener.onSwiperDragTriggered(paramString, paramHashMap, paramView, null);
       return;
     }
-    this.liteEventListener.onScrollViewItemExposureTriggered(paramString, paramHashMap, paramView);
+    this.liteEventListener.onScrollViewItemExposureTriggered(paramString, paramHashMap, paramView, null);
   }
 }
 

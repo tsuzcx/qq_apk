@@ -1,21 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.1;
-
 public class atzk
-  extends BroadcastReceiver
+  implements Cloneable
 {
-  public atzk(UniformDownloadMgr.1 param1) {}
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public byte[] a = new byte[16];
+  public long b;
+  public short b;
+  public boolean b;
+  public long c = -1L;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public atzk a()
   {
-    if (paramIntent == null) {
-      return;
+    try
+    {
+      atzk localatzk = (atzk)super.clone();
+      return localatzk;
     }
-    paramContext = paramIntent.getBundleExtra("param");
-    paramIntent = paramIntent.getStringExtra("url");
-    atzj.a().a(paramIntent, paramContext);
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      localCloneNotSupportedException.printStackTrace();
+    }
+    return null;
   }
 }
 

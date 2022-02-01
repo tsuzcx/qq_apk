@@ -1,6 +1,33 @@
-public abstract interface blgf
+import com.tencent.tar.jni.ScanFeatureFilterView;
+
+public final class blgf
 {
-  public abstract void a(String paramString1, String paramString2, long paramLong);
+  public float a;
+  public int a;
+  public long a;
+  public boolean a;
+  public float b;
+  public int b;
+  public long b;
+  public boolean b;
+  
+  public float a(int paramInt, long paramLong)
+  {
+    if (paramLong < this.jdField_b_of_type_Long) {
+      return 0.0F;
+    }
+    if (paramLong - this.jdField_b_of_type_Long > paramInt) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    return (float)(paramLong - this.jdField_b_of_type_Long) / paramInt % 1.0F;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = ScanFeatureFilterView.a();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+  }
 }
 
 

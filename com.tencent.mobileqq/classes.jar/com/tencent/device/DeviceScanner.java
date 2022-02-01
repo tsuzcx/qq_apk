@@ -1,18 +1,18 @@
 package com.tencent.device;
 
-import accz;
+import achd;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
-import bglp;
-import bgpa;
-import bmqo;
+import bhlq;
+import bhpc;
+import bnrt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.bind.DevicePluginDownloadActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.smartdevice.SmartDevicePluginProxyActivity;
-import zuk;
+import zyf;
 
 public class DeviceScanner
 {
@@ -33,10 +33,10 @@ public class DeviceScanner
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("url", "http://qzs.qq.com/open/mobile/iot_qrcode_error/index.html");
-    bmqo.a().a(paramActivity, paramQQAppInterface, paramQQAppInterface.getAccount(), localIntent, "com.tencent.device.activities.DeviceSquareActivity", 0, null, SmartDevicePluginProxyActivity.class);
+    bnrt.a().a(paramActivity, paramQQAppInterface, paramQQAppInterface.getAccount(), localIntent, "com.tencent.device.activities.DeviceSquareActivity", 0, null, SmartDevicePluginProxyActivity.class);
   }
   
-  public static boolean openDeviceQCodeUrl(Activity paramActivity, zuk paramzuk, String paramString)
+  public static boolean openDeviceQCodeUrl(Activity paramActivity, zyf paramzyf, String paramString)
   {
     if (QLog.isColorLevel()) {
       QLog.d("smartdevice::DeviceScanner", 2, "device qrcode url:" + paramString);
@@ -57,13 +57,13 @@ public class DeviceScanner
             if (QLog.isColorLevel()) {
               QLog.d("smartdevice::DeviceScanner", 2, "device qrcode error pid:" + localDeviceQRCodeParser.strDevPid + " sn:" + localDeviceQRCodeParser.strDevSN + ",token:" + localDeviceQRCodeParser.strDevToken);
             }
-            accz.a().jdField_a_of_type_Int = i;
-            accz.a().a(localQQAppInterface, "Usr_Analyze_URL", 3);
-            accz.a(localQQAppInterface, "Usr_QRCode_Result", 0, 0, i);
+            achd.a().jdField_a_of_type_Int = i;
+            achd.a().a(localQQAppInterface, "Usr_Analyze_URL", 3);
+            achd.a(localQQAppInterface, "Usr_QRCode_Result", 0, 0, i);
             if (paramActivity != null)
             {
               if (paramString.startsWith("http://iot.qq.com")) {
-                showNoticeDlg(paramActivity, paramzuk, 2131691375, 2131691374);
+                showNoticeDlg(paramActivity, paramzyf, 2131691378, 2131691377);
               }
             }
             else {
@@ -79,12 +79,12 @@ public class DeviceScanner
           }
           if ((!TextUtils.isEmpty(localDeviceQRCodeParser.strDevToken)) && (localDeviceQRCodeParser.strDevToken.length() != 32))
           {
-            showNoticeDlg(paramActivity, paramzuk, 2131691375, 2131691376);
+            showNoticeDlg(paramActivity, paramzyf, 2131691378, 2131691379);
             return false;
           }
-          if (!bmqo.a().a(localQQAppInterface))
+          if (!bnrt.a().a(localQQAppInterface))
           {
-            showNoticeDlg(paramActivity, paramzuk, 2131691375, 2131691374);
+            showNoticeDlg(paramActivity, paramzyf, 2131691378, 2131691377);
             return false;
           }
           goToErrorPage(paramActivity, localQQAppInterface);
@@ -94,50 +94,50 @@ public class DeviceScanner
           break;
         }
       } while (paramActivity == null);
-      showNoticeDlg(paramActivity, paramzuk, 2131691375, 2131691374);
+      showNoticeDlg(paramActivity, paramzyf, 2131691378, 2131691377);
       return false;
-      accz.a().jdField_a_of_type_Int = i;
-      accz.a().jdField_a_of_type_JavaLangString = localDeviceQRCodeParser.strDevSN;
+      achd.a().jdField_a_of_type_Int = i;
+      achd.a().jdField_a_of_type_JavaLangString = localDeviceQRCodeParser.strDevSN;
       if ("SMS".equals(localDeviceQRCodeParser.strTag)) {
-        accz.a().a(localQQAppInterface, "Usr_Analyze_URL", 4);
+        achd.a().a(localQQAppInterface, "Usr_Analyze_URL", 4);
       }
       for (;;)
       {
         if (QLog.isColorLevel()) {
           QLog.d("smartdevice::DeviceScanner", 2, "device qrcode pid:" + localDeviceQRCodeParser.strDevPid + " sn:" + localDeviceQRCodeParser.strDevSN);
         }
-        if (bmqo.a().a(localQQAppInterface)) {
+        if (bnrt.a().a(localQQAppInterface)) {
           break;
         }
         if (paramActivity != null)
         {
-          paramzuk = new Intent(paramActivity, DevicePluginDownloadActivity.class);
-          paramzuk.putExtra("DevicePID", localDeviceQRCodeParser.strDevPid);
-          paramzuk.putExtra("DeviceSN", localDeviceQRCodeParser.strDevSN);
-          paramzuk.putExtra("DeviceToken", localDeviceQRCodeParser.strDevToken);
-          paramActivity.startActivity(paramzuk);
+          paramzyf = new Intent(paramActivity, DevicePluginDownloadActivity.class);
+          paramzyf.putExtra("DevicePID", localDeviceQRCodeParser.strDevPid);
+          paramzyf.putExtra("DeviceSN", localDeviceQRCodeParser.strDevSN);
+          paramzyf.putExtra("DeviceToken", localDeviceQRCodeParser.strDevToken);
+          paramActivity.startActivity(paramzyf);
         }
         return true;
         if ((localDeviceQRCodeParser.strDevToken != null) && (localDeviceQRCodeParser.strDevToken.length() > 0)) {
-          accz.a().a(localQQAppInterface, "Usr_Analyze_URL", 2);
+          achd.a().a(localQQAppInterface, "Usr_Analyze_URL", 2);
         } else {
-          accz.a().a(localQQAppInterface, "Usr_Analyze_URL", 1);
+          achd.a().a(localQQAppInterface, "Usr_Analyze_URL", 1);
         }
       }
-      paramzuk = new Intent();
-      paramzuk.putExtra("DevicePID", localDeviceQRCodeParser.strDevPid);
-      paramzuk.putExtra("DeviceSN", localDeviceQRCodeParser.strDevSN);
-      paramzuk.putExtra("DeviceToken", localDeviceQRCodeParser.strDevToken);
-      paramzuk.putExtra("DataReportSeq", accz.a().jdField_a_of_type_Long);
+      paramzyf = new Intent();
+      paramzyf.putExtra("DevicePID", localDeviceQRCodeParser.strDevPid);
+      paramzyf.putExtra("DeviceSN", localDeviceQRCodeParser.strDevSN);
+      paramzyf.putExtra("DeviceToken", localDeviceQRCodeParser.strDevToken);
+      paramzyf.putExtra("DataReportSeq", achd.a().jdField_a_of_type_Long);
     }
     catch (Exception localException2)
     {
       try
       {
-        paramzuk.putExtra("nickname", localQQAppInterface.getCurrentNickname());
-        paramzuk.putExtra("bitmap", localQQAppInterface.a(localQQAppInterface.getCurrentAccountUin(), (byte)2, false));
+        paramzyf.putExtra("nickname", localQQAppInterface.getCurrentNickname());
+        paramzyf.putExtra("bitmap", localQQAppInterface.a(localQQAppInterface.getCurrentAccountUin(), (byte)2, false));
         label666:
-        bmqo.a().a(paramActivity, localQQAppInterface, localQQAppInterface.getAccount(), paramzuk, "com.tencent.device.activities.DeviceScanActivity", -1, null, SmartDevicePluginProxyActivity.class);
+        bnrt.a().a(paramActivity, localQQAppInterface, localQQAppInterface.getAccount(), paramzyf, "com.tencent.device.activities.DeviceScanActivity", -1, null, SmartDevicePluginProxyActivity.class);
         return true;
         localException2 = localException2;
       }
@@ -148,13 +148,13 @@ public class DeviceScanner
     }
   }
   
-  private static void showNoticeDlg(Activity paramActivity, zuk paramzuk, int paramInt1, int paramInt2)
+  private static void showNoticeDlg(Activity paramActivity, zyf paramzyf, int paramInt1, int paramInt2)
   {
     if (paramActivity == null) {
       return;
     }
-    paramActivity = bglp.a(paramActivity, 230);
-    paramActivity.setNegativeButton(2131694081, new DeviceScanner.1(paramzuk));
+    paramActivity = bhlq.a(paramActivity, 230);
+    paramActivity.setNegativeButton(2131694098, new DeviceScanner.1(paramzyf));
     paramActivity.setTitle(paramInt1);
     paramActivity.setMessage(paramInt2);
     paramActivity.show();

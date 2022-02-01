@@ -1,27 +1,27 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import com.tencent.mobileqq.data.MessageForFoldMsg;
+import java.util.LinkedHashSet;
 
 public class aczm
-  extends aczg
 {
-  public int a()
-  {
-    return 1000;
-  }
+  public int a;
+  public long a;
+  public MessageForFoldMsg a;
+  public LinkedHashSet<String> a;
+  public boolean a;
+  public long b;
+  public MessageForFoldMsg b;
+  public boolean b;
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  public aczm()
   {
-    new bbzc().d(paramList, paramList1, paramStringBuilder);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (15 == paramElem.common_elem.uint32_service_type.get());
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilLinkedHashSet = new LinkedHashSet();
+    this.jdField_a_of_type_Long = 9223372036854775807L;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
+    this.jdField_b_of_type_Boolean = true;
   }
 }
 

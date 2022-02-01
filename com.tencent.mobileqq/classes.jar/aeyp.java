@@ -1,36 +1,47 @@
-import MQQ.PayRuleCfg;
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.os.SystemClock;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class aeyp
-  extends bdzy
+  implements GestureDetector.OnDoubleTapListener
 {
-  public aeyp(QQSettingMe paramQQSettingMe, TextView paramTextView) {}
+  public aeyp(MainFragment paramMainFragment) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("QQSettingRedesign", 1, "VipInfoHandler updateVipItemView onLoadFialed: ", paramThrowable);
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "VipInfoHandler onLoadSuccessed: " + QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconUrl);
+      QLog.d("MainFragment", 2, "onDoubleTap() called with: e = [" + paramMotionEvent + "]");
     }
-    try
+    MainFragment.a(this.a, SystemClock.uptimeMillis());
+    paramMotionEvent = (Conversation)this.a.a(Conversation.class);
+    if (paramMotionEvent != null) {}
+    for (int i = paramMotionEvent.d;; i = 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconText);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconTextCol));
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("DynimiIcon", 2, "onDoubleTap() unReadCount = " + i);
+      }
+      paramMotionEvent = this.a.b();
+      if ((paramMotionEvent instanceof Conversation)) {
+        ((Conversation)paramMotionEvent).j();
+      }
+      if (i == 0) {
+        MainFragment.d(this.a);
+      }
+      return false;
     }
-    catch (Exception paramURLDrawable)
-    {
-      QLog.e("QQSettingRedesign", 1, "VipInfoHandler setTextColor: " + QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconTextCol, paramURLDrawable);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    }
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

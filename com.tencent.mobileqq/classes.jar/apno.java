@@ -1,11 +1,14 @@
-class apno
-  implements apnr
+public class apno
 {
-  apno(apni paramapni) {}
+  public String a;
+  public byte[] a;
+  public String b;
   
-  public void a(apnu paramapnu, boolean paramBoolean, byte[] paramArrayOfByte)
+  public apno(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    this.a.a((apnv)paramapnu, paramBoolean, paramArrayOfByte);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
 }
 

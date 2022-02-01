@@ -1,26 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.component.media.utils.LruCache;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqcircle.bizparts.danmaku.core.PhotoDanmakuDrawer;
+import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
+import com.tencent.component.media.image.ImageLoader.Options;
 
-class vgu
+public class vgu
+  implements ImageLoader.ImageLoadListener
 {
-  public int a;
+  public vgu(PhotoDanmakuDrawer paramPhotoDanmakuDrawer, vhb paramvhb) {}
   
-  public vgu(vgl paramvgl, int paramInt)
+  public void onImageCanceled(String paramString, ImageLoader.Options paramOptions) {}
+  
+  public void onImageFailed(String paramString, ImageLoader.Options paramOptions) {}
+  
+  public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Vhb.f(true);
   }
   
-  public void finalize()
-  {
-    if (this.jdField_a_of_type_Int > 0)
-    {
-      Bitmap localBitmap = (Bitmap)vgx.a().a().remove(Integer.valueOf(this.jdField_a_of_type_Int));
-      if (localBitmap != null) {
-        localBitmap.recycle();
-      }
-    }
-  }
+  public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions) {}
 }
 
 

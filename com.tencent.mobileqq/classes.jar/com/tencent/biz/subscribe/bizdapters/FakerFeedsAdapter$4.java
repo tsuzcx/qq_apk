@@ -1,13 +1,13 @@
 package com.tencent.biz.subscribe.bizdapters;
 
-import aacm;
+import aagr;
 import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
 import java.util.ArrayList;
 
 public class FakerFeedsAdapter$4
   implements Runnable
 {
-  public FakerFeedsAdapter$4(aacm paramaacm, SubscribeFeedsEvent paramSubscribeFeedsEvent) {}
+  public FakerFeedsAdapter$4(aagr paramaagr, SubscribeFeedsEvent paramSubscribeFeedsEvent) {}
   
   public void run()
   {

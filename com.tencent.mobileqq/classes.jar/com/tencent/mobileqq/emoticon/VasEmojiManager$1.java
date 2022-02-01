@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emoticon;
 
 import android.os.Bundle;
-import aruo;
-import arup;
-import arwc;
+import askc;
+import askd;
+import aslq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
@@ -13,17 +13,17 @@ import java.util.concurrent.ConcurrentHashMap;
 public class VasEmojiManager$1
   implements Runnable
 {
-  public VasEmojiManager$1(arwc paramarwc, String paramString, EmoticonPackage paramEmoticonPackage) {}
+  public VasEmojiManager$1(aslq paramaslq, String paramString, EmoticonPackage paramEmoticonPackage) {}
   
   public void run()
   {
     Object localObject = this.this$0.a();
-    if ((!new File(arwc.b(this.jdField_a_of_type_JavaLangString)).exists()) || (!((arup)localObject).b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, true, false)))
+    if ((!new File(aslq.b(this.jdField_a_of_type_JavaLangString)).exists()) || (!((askd)localObject).b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, true, false)))
     {
       localObject = (VasQuickUpdateManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(184);
       if (localObject != null)
       {
-        arup.jdField_a_of_type_Aruo.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
+        askd.jdField_a_of_type_Askc.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
         ((VasQuickUpdateManager)localObject).downloadItem(1004L, this.jdField_a_of_type_JavaLangString, "VasEmojiManager");
       }
     }
@@ -32,8 +32,8 @@ public class VasEmojiManager$1
       if (i == 0)
       {
         localObject = this.this$0.a();
-        ((arup)localObject).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
-        ((arup)localObject).a((Bundle)this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), null, false, 0, "nomatch", 0L, 0);
+        ((askd)localObject).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
+        ((askd)localObject).a((Bundle)this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), null, false, 0, "nomatch", 0L, 0);
       }
       return;
     }

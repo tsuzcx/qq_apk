@@ -1,44 +1,40 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public final class bicv
-  implements ValueAnimator.AnimatorUpdateListener
+public class bicv
 {
-  public float a;
-  private final TabDragAnimationView a;
-  public boolean a;
-  public boolean b = false;
-  
-  public bicv(TabDragAnimationView paramTabDragAnimationView)
+  public static String a(MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_Float = 1.0F;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f - this.jdField_a_of_type_Float > 0.0F) {
-      this.jdField_a_of_type_Boolean = true;
+    String str2 = "";
+    String str1 = str2;
+    try
+    {
+      Object localObject = paramMessageRecord.extStr;
+      paramMessageRecord = str2;
+      str1 = str2;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        str1 = str2;
+        localObject = new JSONObject((String)localObject);
+        str1 = str2;
+        str2 = ((JSONObject)localObject).optString("public_account_msg_id", "");
+        paramMessageRecord = str2;
+        str1 = str2;
+        if (TextUtils.isEmpty(str2))
+        {
+          str1 = str2;
+          paramMessageRecord = ((JSONObject)localObject).optString("pa_msgId", "");
+        }
+      }
+      return paramMessageRecord;
     }
-    if ((this.jdField_a_of_type_Boolean) && (f > 0.8F)) {
-      this.b = false;
+    catch (Throwable paramMessageRecord)
+    {
+      QLog.e("QQVipConstant", 1, "getPAMsgId error =" + paramMessageRecord.toString());
     }
-    this.jdField_a_of_type_Float = f;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
-    if (QLog.isColorLevel()) {
-      QLog.d(TabDragAnimationView.class.getSimpleName(), 2, "do mScale animation, percent=" + this.jdField_a_of_type_Float + ",reversed=" + this.jdField_a_of_type_Boolean + ",doAnim=" + this.b);
-    }
+    return str1;
   }
 }
 

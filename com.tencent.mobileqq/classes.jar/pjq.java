@@ -1,50 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class pjq
-  implements AladdinConfigHandler
+  implements pks
 {
-  private static void a(int paramInt)
-  {
-    QLog.d("WormholeConfigHandler", 0, "update wormhole value: " + paramInt);
-    bmqa.a("wormhole_open", Integer.valueOf(paramInt));
-  }
+  public pjq(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public static boolean a()
+  public void a()
   {
-    return ((Integer)bmqa.a("wormhole_open", Integer.valueOf(0))).intValue() == 1;
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("WormholeConfigHandler", 0, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    try
-    {
-      paramString = phv.a(paramString);
-      Iterator localIterator = paramString.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str1 = (String)localIterator.next();
-        String str2 = (String)paramString.get(str1);
-        if (TextUtils.equals(str1, "open")) {
-          a(Integer.parseInt(str2));
-        }
-      }
-      return true;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.d("WormholeConfigHandler", 0, "parse wormhole error: " + paramString.getMessage());
-    }
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    a(0);
+    ozs.a(this.a.a.getContext(), oyu.t);
   }
 }
 

@@ -1,23 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.1.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-final class bgfp
-  implements DownloadParams.DecodeHandler
+public class bgfp
+  implements View.OnClickListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  bgfp(bgfo parambgfo) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramBitmap == null) {
-      return null;
+    if (!paramView.hasFocus())
+    {
+      paramView.setFocusable(true);
+      paramView.setFocusableInTouchMode(true);
+      ThreadManager.getUIHandler().post(new TextItem.1.1(this, paramView));
     }
-    paramDownloadParams = paramDownloadParams.tag;
-    int i;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1)) {
-      i = ((int[])(int[])paramDownloadParams)[0];
-    }
-    for (paramDownloadParams = bgmo.a(paramBitmap, i, i, i);; paramDownloadParams = null) {
-      return paramDownloadParams;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

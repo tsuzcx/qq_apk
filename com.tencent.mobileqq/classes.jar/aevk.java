@@ -1,18 +1,41 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aevk
-  implements View.OnTouchListener
+  implements Handler.Callback
 {
-  public aevk(PublicAccountListActivity paramPublicAccountListActivity, InputMethodManager paramInputMethodManager) {}
+  public aevk(Leba paramLeba) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.lebatab.leba", 4, "callback handleMessage,what = " + paramMessage.what);
+    }
+    if ((this.a.a != null) && ("0".equals(this.a.a.getCurrentAccountUin()))) {
+      return false;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.lebatab.leba", 2, "handler refresh leba config");
+      }
+      this.a.l();
+      continue;
+      Leba.c(this.a);
+      continue;
+      this.a.a(paramMessage);
+      continue;
+      this.a.r();
+      continue;
+      Leba.d(this.a);
+    }
   }
 }
 

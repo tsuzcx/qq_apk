@@ -1,188 +1,241 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.PrinterStatusHandler.1;
-import com.tencent.mobileqq.app.PrinterStatusHandler.2;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Timer;
-import java.util.TimerTask;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
-import msf.msgsvc.msg_svc.RoutingHead;
-import msf.msgsvc.msg_svc.Trans0x211;
-import tencent.im.msg.im_msg_head.InstCtrl;
-import tencent.im.msg.im_msg_head.InstInfo;
-import tencent.im.s2c.msgtype0x211.submsgtype0x9.C2CType0x211_SubC2CType0x9.MsgBody;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class anrg
-  extends anii
+  extends anra
 {
-  private int jdField_a_of_type_Int;
-  private anqd jdField_a_of_type_Anqd = new anrh(this);
-  private anub jdField_a_of_type_Anub = new anri(this);
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private boolean jdField_a_of_type_Boolean;
+  public Drawable a;
+  public Drawable b;
   
-  public anrg(QQAppInterface paramQQAppInterface)
+  public anrg(String paramString)
   {
-    super(paramQQAppInterface);
-    this.app.addObserver(this.jdField_a_of_type_Anqd);
-    this.app.addObserver(this.jdField_a_of_type_Anub);
-    a();
-  }
-  
-  private ToServiceMsg a(boolean paramBoolean, long paramLong1, String paramString, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte, long paramLong2)
-  {
-    ToServiceMsg localToServiceMsg = createToServiceMsg("MessageSvc.PbSendMsg");
-    localToServiceMsg.extraData.putInt("SEND_MSG_CMD_MSG_TYPE", 1);
-    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 13);
-    localToServiceMsg.extraData.putBoolean("ISFROM_DATALINE", true);
-    localToServiceMsg.extraData.putInt("DATALINE_CMD", paramInt3);
-    localToServiceMsg.addAttribute("cookie", Long.valueOf(paramLong1));
-    localToServiceMsg.addAttribute("sendFromNative", Boolean.valueOf(paramBoolean));
-    localToServiceMsg.extraData.putInt("DATALINE_TRYINDEX", 0);
-    paramLong1 = atvo.b();
-    paramLong2 = atvo.a();
-    bbzm localbbzm = new bbzm();
-    localbbzm.jdField_a_of_type_Int = paramInt2;
-    localbbzm.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    paramString = bbzf.a(this.app, 13, paramString, localbbzm, paramLong2, bbzj.b(paramLong1));
-    paramArrayOfByte = new im_msg_head.InstInfo();
-    paramArrayOfByte.uint32_apppid.set(1);
-    paramArrayOfByte.uint32_instid.set(0);
-    paramArrayOfByte.enum_device_type.set(1);
-    paramArrayOfByte.setHasFlag(true);
-    paramString.routing_head.trans_0x211.inst_ctrl.rpt_msg_send_to_inst.add(paramArrayOfByte);
-    paramArrayOfByte = new im_msg_head.InstInfo();
-    paramArrayOfByte.uint32_apppid.set(1001);
-    paramArrayOfByte.uint32_instid.set(AppSetting.a());
-    paramArrayOfByte.enum_device_type.set(2);
-    paramArrayOfByte.setHasFlag(true);
-    paramString.routing_head.trans_0x211.inst_ctrl.msg_from_inst = paramArrayOfByte;
-    paramString.routing_head.trans_0x211.inst_ctrl.setHasFlag(true);
-    localToServiceMsg.putWupBuffer(paramString.toByteArray());
-    sendPbReq(localToServiceMsg);
-    return localToServiceMsg;
-  }
-  
-  public ToServiceMsg a(long paramLong1, String paramString, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte, long paramLong2)
-  {
-    return a(true, paramLong1, paramString, paramInt1, paramInt2, paramInt3, paramArrayOfByte, paramLong2);
-  }
-  
-  public void a()
-  {
-    Object localObject1 = (antz)this.app.a(10);
-    if ((((antz)localObject1).a() != 0) && (((antz)localObject1).e() == 1))
-    {
-      if (this.jdField_a_of_type_JavaUtilTimer == null)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)) {
+      try
       {
-        localObject1 = new PrinterStatusHandler.1(this);
-        this.jdField_a_of_type_JavaUtilTimer = new Timer();
-        this.jdField_a_of_type_JavaUtilTimer.schedule((TimerTask)localObject1, 30000L);
-        Object localObject2 = new C2CType0x211_SubC2CType0x9.MsgBody();
-        ((C2CType0x211_SubC2CType0x9.MsgBody)localObject2).str_service.set("printer");
-        ((C2CType0x211_SubC2CType0x9.MsgBody)localObject2).uint32_CMD.set(1);
-        this.jdField_a_of_type_Int += 1;
-        localObject1 = this.app.getCurrentAccountUin();
-        localObject2 = ((C2CType0x211_SubC2CType0x9.MsgBody)localObject2).toByteArray();
-        a(this.jdField_a_of_type_Int, (String)localObject1, 529, 9, 1021, (byte[])localObject2, 0L);
+        paramString = BaseApplication.getContext().getResources();
+        if (paramString != null)
+        {
+          Bitmap localBitmap1 = (Bitmap)BaseApplicationImpl.sImageHashMap.get("apolloMainInfoDef");
+          Bitmap localBitmap2 = (Bitmap)BaseApplicationImpl.sImageHashMap.get("apolloMainInfoFail");
+          if (localBitmap1 != null) {
+            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(localBitmap1);
+          }
+          while (localBitmap2 != null)
+          {
+            this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(localBitmap2);
+            return;
+            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130838010);
+            BaseApplicationImpl.sImageHashMap.put("apolloMainInfoDef", BitmapFactory.decodeResource(paramString, 2130838010));
+          }
+        }
+        return;
       }
-      return;
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.e("ApolloMainInfo", 2, paramString.getMessage());
+          return;
+          this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130843719);
+          BaseApplicationImpl.sImageHashMap.put("apolloMainInfoFail", BitmapFactory.decodeResource(paramString, 2130843719));
+          return;
+        }
+      }
+      catch (OutOfMemoryError paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ApolloMainInfo", 2, paramString.getMessage());
+        }
+      }
     }
-    this.jdField_a_of_type_Boolean = false;
-    notifyUI(12, false, null);
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public Drawable a(Context paramContext, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.Printer", 2, "received a cmd=" + paramFromServiceMsg.getServiceCmd());
-    }
-    if ((paramToServiceMsg.extraData.getInt("ROUNTING_TYPE") != 13) || (!paramToServiceMsg.extraData.getBoolean("ISFROM_DATALINE"))) {}
-    int i;
+    Object localObject = null;
+    paramContext = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData == null) {}
+    String str;
     do
     {
       do
       {
-        return;
-      } while (paramFromServiceMsg.getResultCode() == 1000);
-      i = paramToServiceMsg.extraData.getInt("DATALINE_TRYINDEX");
-      if (QLog.isColorLevel()) {
-        QLog.d("dataline.Printer", 2, "<PbSendMsg><R><---handle0x211C2CMessageError, retry = " + i);
+        return paramContext;
+        str = Integer.toString(1);
+        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+          break;
+        }
+        paramContext = URLDrawable.URLDrawableOptions.obtain();
+        localObject = new aniu();
+        ((aniu)localObject).jdField_a_of_type_JavaLangString = (annv.d + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId + File.separator + "txtImg.png");
+        ((aniu)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.textImg;
+        paramContext.mExtraInfo = localObject;
+        paramContext.mRequestHeight = ApolloLinearLayout.e;
+        paramContext.mRequestWidth = ApolloLinearLayout.e;
+        localObject = anit.a(true, ((aniu)localObject).jdField_a_of_type_JavaLangString, paramContext, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.textImg);
+        paramContext = (Context)localObject;
+      } while (!QLog.isColorLevel());
+      QLog.d("ApolloMainInfo", 2, "decode panel action name =" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionName + " mActionText:" + this.jdField_b_of_type_JavaLangString);
+      return localObject;
+      try
+      {
+        paramContext = new URL("apollo_pic", null, a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData));
+        if (paramContext == null) {
+          return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        }
       }
-    } while (i >= 3);
-    paramToServiceMsg.extraData.putInt("DATALINE_TRYINDEX", i + 1);
-    sendPbReq(paramToServiceMsg);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilTimer != null)
-    {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
-      this.jdField_a_of_type_JavaUtilTimer = null;
-    }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    Object localObject1 = (antz)this.app.a(10);
-    if ((((antz)localObject1).a() != 0) && (((antz)localObject1).e() == 1))
-    {
-      Object localObject2 = new C2CType0x211_SubC2CType0x9.MsgBody();
-      ((C2CType0x211_SubC2CType0x9.MsgBody)localObject2).str_service.set("printer");
-      ((C2CType0x211_SubC2CType0x9.MsgBody)localObject2).uint32_CMD.set(5);
-      this.jdField_a_of_type_Int += 1;
-      localObject1 = this.app.getCurrentAccountUin();
-      localObject2 = ((C2CType0x211_SubC2CType0x9.MsgBody)localObject2).toByteArray();
-      a(this.jdField_a_of_type_Int, (String)localObject1, 529, 9, 1021, (byte[])localObject2, 0L);
-    }
-  }
-  
-  protected Class<? extends anil> observerClass()
-  {
-    return anke.class;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Anqd != null)
-    {
-      this.app.removeObserver(this.jdField_a_of_type_Anqd);
-      this.jdField_a_of_type_Anqd = null;
-    }
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (!"MessageSvc.PbSendMsg".equals(paramFromServiceMsg.getServiceCmd()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("dataline.Printer", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
+      catch (MalformedURLException localMalformedURLException)
+      {
+        for (;;)
+        {
+          paramContext = (Context)localObject;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("ApolloMainInfo", 2, "getDrawable ,", localMalformedURLException);
+            paramContext = (Context)localObject;
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloMainInfo", 2, "decode panel action name =" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionName);
+        }
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = ApolloLinearLayout.e;
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = ApolloLinearLayout.e;
+        ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = false;
+        localObject = URLDrawable.getDrawable(paramContext, (URLDrawable.URLDrawableOptions)localObject);
+        paramContext = (Context)localObject;
       }
+    } while (((URLDrawable)localObject).getStatus() == 1);
+    ((URLDrawable)localObject).setTag(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData);
+    ((URLDrawable)localObject).addHeader("apollo_uin", this.jdField_a_of_type_JavaLangString);
+    ((URLDrawable)localObject).addHeader("apollo_tasks", str);
+    return localObject;
+  }
+  
+  public String a(ApolloActionData paramApolloActionData)
+  {
+    if (paramApolloActionData == null) {
+      return "action";
+    }
+    return paramApolloActionData.actionId + "_" + paramApolloActionData.actionName;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData == null) || (paramQQAppInterface == null) || (paramSessionInfo == null)) {
       return;
     }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new PrinterStatusHandler.2(this, paramToServiceMsg, paramFromServiceMsg, paramObject));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloMainInfo", 2, "send apolloInfo actionid=" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId + " input =" + paramEditText.getText().toString());
     }
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    aean.a(paramQQAppInterface, paramContext, paramSessionInfo, this);
+    paramContext = "";
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.inputText))
+    {
+      paramEditText = "2";
+      paramContext = paramEditText;
+      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        break label604;
+      }
+      if (this.d == 0) {
+        paramContext = "6";
+      }
+    }
+    label207:
+    label596:
+    label604:
+    for (;;)
+    {
+      String str1;
+      int i;
+      String str2;
+      String str3;
+      if (paramSessionInfo.jdField_a_of_type_Int == 0)
+      {
+        str1 = paramSessionInfo.jdField_a_of_type_JavaLangString;
+        i = Integer.parseInt(paramContext);
+        str2 = "" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId;
+        str3 = "655_" + this.jdField_a_of_type_Int;
+        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+        {
+          paramEditText = "0";
+          VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "action_sent", str1, i, 0, new String[] { str2, str3, paramEditText, String.valueOf(System.currentTimeMillis() / 1000L) });
+        }
+      }
+      int j;
+      for (;;)
+      {
+        if (anlk.a(paramQQAppInterface.c(), paramQQAppInterface) == 0)
+        {
+          VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "exp_panelnewuser_send_action", paramSessionInfo.jdField_a_of_type_JavaLangString, Integer.parseInt(paramContext), ApolloUtil.b(paramSessionInfo.jdField_a_of_type_Int), new String[] { "" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId, "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
+          return;
+          paramContext = paramEditText;
+          if (this.d != 1) {
+            break label604;
+          }
+          paramContext = "7";
+          break;
+          if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+          {
+            paramContext = "3";
+            break;
+          }
+          if (this.d == 0)
+          {
+            paramContext = "4";
+            break;
+          }
+          if (this.d != 1) {
+            break label604;
+          }
+          paramContext = "5";
+          break;
+          paramEditText = this.jdField_b_of_type_JavaLangString;
+          break label207;
+          if (((paramSessionInfo.jdField_a_of_type_Int == 1) || (paramSessionInfo.jdField_a_of_type_Int == 3000)) && (this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.personNum == 0))
+          {
+            str1 = paramSessionInfo.jdField_a_of_type_JavaLangString;
+            i = Integer.parseInt(paramContext);
+            j = ApolloUtil.b(paramSessionInfo.jdField_a_of_type_Int);
+            str2 = "" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId;
+            str3 = "655_" + this.jdField_a_of_type_Int;
+            if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+              break label596;
+            }
+          }
+        }
+      }
+      for (paramEditText = "0";; paramEditText = this.jdField_b_of_type_JavaLangString)
+      {
+        VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "g_action_single_sent", str1, i, j, new String[] { str2, str3, paramEditText, String.valueOf(System.currentTimeMillis() / 1000L) });
+        break label256;
+        break;
+      }
+    }
   }
 }
 

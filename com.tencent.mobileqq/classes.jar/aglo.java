@@ -1,66 +1,74 @@
-import android.text.Editable;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
+import com.tencent.qphone.base.util.QLog;
 
-class aglo
-  implements ActionMode.Callback
+public class aglo
+  extends AsyncTask<Long, Void, Void>
 {
-  int jdField_a_of_type_Int = 1;
-  int b = 2;
+  private Object jdField_a_of_type_JavaLangObject;
   
-  aglo(aglj paramaglj) {}
-  
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public aglo(FriendProfileCardBgDrawable paramFriendProfileCardBgDrawable, Object paramObject)
   {
-    boolean bool = false;
-    if (paramMenuItem.getItemId() == this.jdField_a_of_type_Int)
-    {
-      bcst.b(aglj.a(this.jdField_a_of_type_Aglj), "dc00898", "", "", "0X800A513", "0X800A513", aglj.a(this.jdField_a_of_type_Aglj), 0, "", "", "", "");
-      aglj.a(this.jdField_a_of_type_Aglj).a.getText().insert(aglj.a(this.jdField_a_of_type_Aglj).a.getSelectionStart(), "\n");
-      paramActionMode.finish();
-      bool = true;
-    }
-    while (paramMenuItem.getItemId() != this.b) {
-      return bool;
-    }
-    if (this.jdField_a_of_type_Aglj.a())
-    {
-      bcst.b(aglj.a(this.jdField_a_of_type_Aglj), "dc00898", "", "", "0X800A514", "0X800A514", aglj.a(this.jdField_a_of_type_Aglj), 0, "", "", "", "");
-      this.jdField_a_of_type_Aglj.a(false);
-    }
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  protected Void a(Long... paramVarArgs)
+  {
     for (;;)
     {
-      paramActionMode.finish();
-      return true;
-      bcst.b(aglj.a(this.jdField_a_of_type_Aglj), "dc00898", "", "", "0X8009F28", "0X8009F28", aglj.a(this.jdField_a_of_type_Aglj), 0, "", "", "", "");
-      aglj.b(this.jdField_a_of_type_Aglj);
+      try
+      {
+        l1 = paramVarArgs[0].longValue();
+        long l2 = paramVarArgs[1].longValue();
+        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.a(this.jdField_a_of_type_JavaLangObject, (int)l2);
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.d)
+        {
+          paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler;
+          FriendProfileCardBgDrawable localFriendProfileCardBgDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable;
+          if (FriendProfileCardBgDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable) != null) {
+            break label203;
+          }
+          l1 = 1000L;
+          paramVarArgs.postDelayed(localFriendProfileCardBgDrawable, l1);
+          return null;
+        }
+        if ((paramVarArgs != null) && (!isCancelled()))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = paramVarArgs;
+          l2 = SystemClock.uptimeMillis();
+          if (l2 < l1)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable, l1 - l2);
+            return null;
+          }
+        }
+      }
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        QLog.e("FriendProfileCardBgDrawable", 4, "", paramVarArgs);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Boolean = true;
+        return null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable);
+        return null;
+      }
+      catch (Throwable paramVarArgs)
+      {
+        QLog.e("FriendProfileCardBgDrawable", 1, "", paramVarArgs);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Boolean = true;
+      }
+      return null;
+      label203:
+      long l1 = 0L;
     }
   }
   
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  protected void a(Void paramVoid)
   {
-    if (bcnj.b()) {
-      return true;
-    }
-    paramMenu.add(0, this.jdField_a_of_type_Int, 196608, anni.a(2131703750));
-    int i = this.b;
-    if (this.jdField_a_of_type_Aglj.a()) {}
-    for (paramActionMode = anni.a(2131703751);; paramActionMode = anni.a(2131703748))
-    {
-      paramMenu.add(0, i, 196608, paramActionMode);
-      return true;
-    }
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Aglo = null;
   }
 }
 

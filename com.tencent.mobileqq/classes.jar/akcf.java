@@ -1,16 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
 
 public class akcf
   implements DialogInterface.OnClickListener
 {
-  public akcf(BindNumberActivity paramBindNumberActivity) {}
+  public akcf(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, aeef paramaeef) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    BindNumberActivity.b(this.a);
+    this.jdField_a_of_type_Aeef.a(false);
   }
 }
 

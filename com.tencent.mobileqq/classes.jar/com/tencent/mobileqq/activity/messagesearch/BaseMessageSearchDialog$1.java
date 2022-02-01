@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import afur;
-import ajwv;
+import agej;
+import akie;
 import android.app.Activity;
 import android.view.View;
-import bqcd;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 
 public class BaseMessageSearchDialog$1
   implements Runnable
 {
-  public BaseMessageSearchDialog$1(ajwv paramajwv, View paramView, Activity paramActivity) {}
+  public BaseMessageSearchDialog$1(akie paramakie, View paramView, Activity paramActivity) {}
   
   public void run()
   {
     int[] arrayOfInt = new int[2];
     this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(arrayOfInt);
-    int i = bqcd.b(this.jdField_a_of_type_AndroidAppActivity);
+    int i = LiuHaiUtils.b(this.jdField_a_of_type_AndroidAppActivity);
     if (QLog.isColorLevel()) {
       QLog.d("BaseMessageSearchDialog", 2, "rootView post : x -> " + arrayOfInt[0] + ", y -> " + arrayOfInt[1] + ", notchHeight -> " + i);
     }
     if (arrayOfInt[1] < i) {
       this.jdField_a_of_type_AndroidViewView.setPadding(this.jdField_a_of_type_AndroidViewView.getPaddingLeft(), i, this.jdField_a_of_type_AndroidViewView.getPaddingRight(), this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
     }
-    afur.a(this.this$0.findViewById(2131366102));
+    agej.a(this.this$0.findViewById(2131366151));
   }
 }
 

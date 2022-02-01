@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aeau;
+import aejy;
 
 public class ConversationQbossBannerTitleEntranceCtrl$3
   implements Runnable
 {
-  public ConversationQbossBannerTitleEntranceCtrl$3(aeau paramaeau) {}
+  public ConversationQbossBannerTitleEntranceCtrl$3(aejy paramaejy) {}
   
   public void run()
   {

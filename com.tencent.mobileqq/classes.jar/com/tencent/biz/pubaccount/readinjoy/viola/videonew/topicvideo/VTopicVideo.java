@@ -15,9 +15,9 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 import org.json.JSONObject;
-import trj;
-import trk;
-import trv;
+import tif;
+import tig;
+import tir;
 
 public class VTopicVideo
   extends VVideo
@@ -27,7 +27,7 @@ public class VTopicVideo
   private static final int TOPIC_VIDEO_CONTROL_PLAY = 2;
   private static final int TOPIC_VIDEO_CONTROL_REPLAY = 5;
   private static final int TOPIC_VIDEO_CONTROL_STOP = 4;
-  private IObserver mVideoAppearEventObserver = new trv(this);
+  private IObserver mVideoAppearEventObserver = new tir(this);
   
   public VTopicVideo(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -42,7 +42,7 @@ public class VTopicVideo
     }
   }
   
-  public trk getVideoLifeCycleChangeListener()
+  public tig getVideoLifeCycleChangeListener()
   {
     if ((getHostView() != null) && (((VVideoView)getHostView()).a() != null)) {
       return ((VVideoView)getHostView()).a();

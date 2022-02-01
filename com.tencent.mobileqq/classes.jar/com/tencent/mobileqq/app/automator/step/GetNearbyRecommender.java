@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import android.content.SharedPreferences;
-import anmw;
-import anos;
-import aoad;
-import aoor;
-import axdz;
-import aybt;
+import anyw;
+import aoat;
+import aomn;
+import apch;
+import axws;
+import ayun;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -18,11 +18,11 @@ import mqq.app.MobileQQ;
 public class GetNearbyRecommender
   extends AsyncStep
 {
-  private aoad a;
+  private aomn a;
   
   public int a()
   {
-    Object localObject = ((anmw)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin());
+    Object localObject = ((anyw)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin());
     long l2 = 0L;
     long l1 = 0L;
     int k = 0;
@@ -33,10 +33,10 @@ public class GetNearbyRecommender
     int i = 0;
     if (localObject == null)
     {
-      if (this.jdField_a_of_type_Aoad == null) {
-        this.jdField_a_of_type_Aoad = new aoad(this);
+      if (this.jdField_a_of_type_Aomn == null) {
+        this.jdField_a_of_type_Aomn = new aomn(this);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Aoad, true);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Aomn, true);
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "GetNearbyRecommender doStep|RESULT_WAITING");
       }
@@ -50,7 +50,7 @@ public class GetNearbyRecommender
     {
       k = 1;
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApplication().getSharedPreferences("sp_nearbyrecommender", 0);
-      l4 = ((Long)axdz.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getAccount(), "nearby_enter_time", Long.valueOf(0L))).longValue();
+      l4 = ((Long)axws.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getAccount(), "nearby_enter_time", Long.valueOf(0L))).longValue();
       long l5 = System.currentTimeMillis();
       if (l4 != 0L)
       {
@@ -97,11 +97,11 @@ public class GetNearbyRecommender
         l3 = l6;
         l1 = l4;
         l2 = l5;
-        if (!aoor.a()) {
+        if (!apch.a()) {
           break label636;
         }
         k = 5;
-        ((anos)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(3)).a(0);
+        ((aoat)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(3)).a(0);
         l1 = l6;
         i = m;
         j = n;
@@ -132,18 +132,18 @@ public class GetNearbyRecommender
     }
   }
   
-  public void c()
+  public void b()
   {
-    aybt.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
+    ayun.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
     this.c = 1;
   }
   
-  public void d()
+  public void c()
   {
-    if (this.jdField_a_of_type_Aoad != null)
+    if (this.jdField_a_of_type_Aomn != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Aoad);
-      this.jdField_a_of_type_Aoad = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Aomn);
+      this.jdField_a_of_type_Aomn = null;
     }
   }
 }

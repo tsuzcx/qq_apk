@@ -1,36 +1,23 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import java.lang.ref.WeakReference;
 
-class aabc
-  implements aaiu
+public class aabc
+  implements aadm
 {
-  aabc(aaba paramaaba) {}
+  private WeakReference<aabb> a;
   
-  public void a(boolean paramBoolean)
+  aabc(aabb paramaabb)
   {
-    String str2 = RecommendBannerItemView.a(this.a.a).id.get();
-    StringBuilder localStringBuilder = new StringBuilder().append("recom_");
-    if (paramBoolean)
+    this.a = new WeakReference(paramaabb);
+  }
+  
+  public void a(Object[] paramArrayOfObject)
+  {
+    if (this.a != null)
     {
-      str1 = "cancel";
-      aaxb.a(str2, "auth_page", str1, 0, 0, new String[] { "", RecommendBannerItemView.a(this.a.a) + "", RecommendBannerItemView.a(this.a.a).nick.get() });
-      if (RecommendBannerItemView.a(this.a.a))
-      {
-        str2 = RecommendBannerItemView.a(this.a.a).id.get();
-        localStringBuilder = new StringBuilder().append("reco_");
-        if (!paramBoolean) {
-          break label252;
-        }
+      aabb localaabb = (aabb)this.a.get();
+      if (localaabb != null) {
+        localaabb.a(paramArrayOfObject);
       }
-    }
-    label252:
-    for (String str1 = "cancel";; str1 = "dislike")
-    {
-      aaxb.a(str2, "auth_discover", str1, 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a.a)), RecommendBannerItemView.a(this.a.a).nick.get(), RecommendBannerItemView.a(this.a.a).desc.get() });
-      return;
-      str1 = "dislike";
-      break;
     }
   }
 }

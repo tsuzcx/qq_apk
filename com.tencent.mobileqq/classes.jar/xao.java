@@ -1,53 +1,82 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDateVideoCollectionList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollection;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.IconInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UsrIcon;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-public class xao
-  extends wla
+class xao
+  extends SimpleJob<Void>
 {
-  public long a;
-  public String a;
-  public ArrayList<VideoCollectionItem> a;
-  public boolean a;
-  public int b;
-  public int c = -1;
-  
-  public xao(String paramString, qqstory_service.RspDateVideoCollectionList paramRspDateVideoCollectionList)
+  xao(xan paramxan, String paramString)
   {
-    super(paramRspDateVideoCollectionList.result);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    if (paramRspDateVideoCollectionList.is_end.get() == 1) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = paramRspDateVideoCollectionList.next_cookie.get().toStringUtf8();
-      this.b = paramRspDateVideoCollectionList.total_video_count.get();
-      this.jdField_a_of_type_Long = paramRspDateVideoCollectionList.seqno.get();
-      this.c = paramRspDateVideoCollectionList.is_friend.get();
-      paramRspDateVideoCollectionList = paramRspDateVideoCollectionList.collection_list.get().iterator();
-      while (paramRspDateVideoCollectionList.hasNext())
-      {
-        qqstory_struct.DateVideoCollection localDateVideoCollection = (qqstory_struct.DateVideoCollection)paramRspDateVideoCollectionList.next();
-        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
-        localVideoCollectionItem.convertFrom("Q.qqstory.memories:GetDateCollectionListResponse", paramString, localDateVideoCollection);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
-      }
-      bool = false;
-    }
+    super(paramString);
   }
   
-  public String toString()
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return "GetDateCollectionListResponse{isEnd=" + this.jdField_a_of_type_Boolean + ", nextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", seq=" + this.jdField_a_of_type_Long + ", mTotalVideoCount=" + this.b + ", mIsFriend=" + this.c + '}';
+    paramJobContext = this.a.a.icon_info.get();
+    HashMap localHashMap = new HashMap();
+    wtt localwtt = (wtt)wth.a(2);
+    Iterator localIterator = paramJobContext.iterator();
+    String str;
+    QQUserUIItem localQQUserUIItem;
+    for (;;)
+    {
+      if (localIterator.hasNext())
+      {
+        paramJobContext = (qqstory_struct.IconInfo)localIterator.next();
+        str = paramJobContext.union_id.get().toStringUtf8();
+        localQQUserUIItem = localwtt.b(str);
+        if (localQQUserUIItem != null) {
+          if ((paramJobContext.err_code.get() == 0) && (paramJobContext.usr_icon_list.has()) && (paramJobContext.usr_icon_list.size() > 0))
+          {
+            paramVarArgs = (qqstory_struct.UsrIcon)paramJobContext.usr_icon_list.get(0);
+            paramJobContext = paramVarArgs.icon_postfix.get().toStringUtf8();
+            paramVarArgs = paramVarArgs.jmp_postfix.get().toStringUtf8();
+            if (TextUtils.isEmpty(paramJobContext)) {
+              break label309;
+            }
+            paramJobContext = "https://pub.idqqimg.com/pc/misc/qqstory_icon/" + paramJobContext;
+          }
+        }
+      }
+    }
+    label309:
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(paramVarArgs)) {
+        paramVarArgs = "https://story.now.qq.com/mobile/pages/medal.html?_bid=2473&_wv=1031" + paramVarArgs;
+      }
+      for (;;)
+      {
+        localHashMap.put(str, new String[] { paramJobContext, paramVarArgs });
+        localQQUserUIItem.setUserIcon(paramJobContext, paramVarArgs);
+        for (;;)
+        {
+          localQQUserUIItem.iconUrlCacheTime = System.currentTimeMillis();
+          localwtt.a(localQQUserUIItem);
+          break;
+          localHashMap.put(str, new String[] { "", "" });
+          localQQUserUIItem.setUserIcon("", "");
+        }
+        paramJobContext = new xap();
+        paramJobContext.a = localHashMap;
+        wjj.a().dispatch(paramJobContext);
+        return null;
+      }
+    }
   }
 }
 

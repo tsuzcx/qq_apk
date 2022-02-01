@@ -1,21 +1,46 @@
-public class amlw
+import com.tencent.mobileqq.app.QQAppInterface;
+import kotlin.Metadata;
+import mqq.app.AppRuntime;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "isSuccess", "", "onResult"}, k=3, mv={1, 1, 16})
+final class amlw
+  implements bimf
 {
-  public float a;
-  public float b;
-  public float c;
+  amlw(AppRuntime paramAppRuntime, boolean paramBoolean) {}
   
-  public amlw(float paramFloat1, float paramFloat2, float paramFloat3)
+  public final void a(boolean paramBoolean)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ApolloRoleInfo:").append("scale:").append(this.a).append(",xPos:").append(this.b).append(",yPos:").append(this.c);
-    return localStringBuilder.toString();
+    String str;
+    int i;
+    if (paramBoolean)
+    {
+      str = "new_folder_prestart_success";
+      amlk.a().a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, str);
+      amlv.a("preloadWebProcess isSuccess " + paramBoolean + " isWebProcessExist " + this.jdField_a_of_type_Boolean);
+      if (paramBoolean) {
+        amlv.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime);
+      }
+      if (!paramBoolean) {
+        break label111;
+      }
+      i = 0;
+      label75:
+      if ((i != -4001) || (!this.jdField_a_of_type_Boolean)) {
+        break label118;
+      }
+      i = -4000;
+    }
+    label111:
+    label118:
+    for (;;)
+    {
+      amlv.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, i);
+      return;
+      str = "new_folder_prestart_fail";
+      break;
+      i = -4001;
+      break label75;
+    }
   }
 }
 

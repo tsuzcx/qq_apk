@@ -1,24 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.1.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public class bffv
-  implements View.OnClickListener
+class bffv
+  extends aojs
 {
   bffv(bffu parambffu) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt1, int paramInt2)
   {
-    if (!paramView.hasFocus())
-    {
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
-      ThreadManager.getUIHandler().post(new TextItem.1.1(this, paramView));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    bffu.a(this.a, false, paramInt1, paramInt2, null);
+  }
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    bffu.a(this.a, true, paramInt1, paramInt2, paramString);
+  }
+  
+  protected void a(String paramString)
+  {
+    bffu.a(this.a, paramString);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  {
+    bffu.a(this.a, paramBoolean, paramLong, paramTroopInfo);
   }
 }
 

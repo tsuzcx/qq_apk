@@ -1,18 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.screendetect.ScreenShotFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class bbeg
-  implements bbdz
 {
-  public bbeg(ScreenShotFragment paramScreenShotFragment) {}
-  
-  public void a(View paramView, int paramInt)
+  public static int a(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotFragment", 2, "ScreenShotInnerAdapter OnItemClickListener : position = " + paramInt + ", view = " + paramView);
+      QLog.d(paramString1, 2, "##" + paramString2);
     }
-    ScreenShotFragment.a(this.a, paramInt);
+    return 0;
+  }
+  
+  public static int b(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 2, "##" + paramString2);
+    return 0;
   }
 }
 

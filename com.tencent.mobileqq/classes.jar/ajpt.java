@@ -1,30 +1,37 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 public class ajpt
-  implements anqi
+  implements View.OnClickListener
 {
-  public ajpt(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment) {}
+  public ajpt(TroopActivity paramTroopActivity) {}
   
-  public void a(anqi paramanqi) {}
-  
-  public void a(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ChatHistoryC2CDateFragment.b(), 2, "onGetRoamMsgForDate " + paramBoolean);
+    int i = bdzi.a().a(this.a.app);
+    MqqHandler localMqqHandler1 = this.a.app.getHandler(NotificationView.class);
+    MqqHandler localMqqHandler2 = this.a.app.getHandler(TroopNotifyAndRecommendView.class);
+    if (localMqqHandler1 != null) {
+      localMqqHandler1.sendEmptyMessage(1014);
     }
-    this.a.p();
-    if (paramBoolean)
-    {
-      ThreadManagerV2.executeOnSubThread(new ChatHistoryC2CDateFragment.3.1(this));
-      return;
+    if (localMqqHandler2 != null) {
+      localMqqHandler2.sendEmptyMessage(1014);
     }
-    this.a.c(this.a.getString(2131690652));
+    this.a.app.a().d(antf.W, 9000, -i);
+    ((aofz)this.a.app.getManager(33)).a(antf.W, 9000);
+    localMqqHandler1 = this.a.app.getHandler(Conversation.class);
+    if (localMqqHandler1 != null) {
+      localMqqHandler1.sendMessage(localMqqHandler1.obtainMessage(1009));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void b(int paramInt1, int paramInt2, Object paramObject) {}
 }
 
 

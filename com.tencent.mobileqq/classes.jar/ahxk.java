@@ -1,34 +1,12 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahxk
-  extends ahxe
+final class ahxk
+  implements DialogInterface.OnClickListener
 {
-  public afxn a;
-  public Bitmap a;
-  public boolean a;
-  public Drawable[] a;
-  
-  public ahxk(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap;
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramRedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
-      this.jdField_a_of_type_Afxn = paramRedPacketInfo.jdField_a_of_type_Afxn;
-      this.jdField_a_of_type_Boolean = paramRedPacketInfo.b;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_AndroidGraphicsBitmap != null) || (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null);
+    paramDialogInterface.dismiss();
   }
 }
 

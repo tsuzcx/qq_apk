@@ -1,74 +1,142 @@
-import android.text.TextUtils;
-import com.tencent.commonsdk.util.MD5Coding;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.MessageQueue;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity.MyHandler.1;
+import com.tencent.mobileqq.activity.photo.SendPhotoTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.lang.ref.WeakReference;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class akrv
-  extends bhhe
+  extends Handler
 {
-  public akrv(PreloadManager paramPreloadManager, DownloadParam paramDownloadParam, akse paramakse, WeakReference paramWeakReference) {}
+  private final WeakReference<SendPhotoActivity> a;
   
-  public void onDoneFile(bhhf parambhhf)
+  public akrv(SendPhotoActivity paramSendPhotoActivity)
   {
-    super.onDoneFile(parambhhf);
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadManager", 2, "RealTime onDoneFile|" + parambhhf.jdField_a_of_type_Int + "|" + parambhhf.jdField_a_of_type_JavaLangString + "|" + ((File)parambhhf.jdField_a_of_type_JavaUtilMap.get(parambhhf.jdField_a_of_type_JavaLangString)).getAbsolutePath());
-    }
-    Object localObject2;
-    Object localObject1;
-    if ((parambhhf.jdField_a_of_type_Int == 0) && (parambhhf.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambhhf.jdField_a_of_type_JavaLangString)))
-    {
-      localObject2 = (File)parambhhf.jdField_a_of_type_JavaUtilMap.get(parambhhf.jdField_a_of_type_JavaLangString);
-      if (localObject2 == null)
+    this.a = new WeakReference(paramSendPhotoActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    SendPhotoActivity localSendPhotoActivity = (SendPhotoActivity)this.a.get();
+    if (localSendPhotoActivity != null) {
+      switch (paramMessage.what)
       {
-        localObject1 = "";
-        localObject1 = MD5Coding.encodeFile2HexStr((String)localObject1);
-        if ((localObject2 == null) || (!((File)localObject2).exists()) || (TextUtils.isEmpty((CharSequence)localObject1))) {
-          break label242;
-        }
-        if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.md5ForChecked)) || (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.md5ForChecked.equalsIgnoreCase((String)localObject1))) {
-          break label224;
-        }
-        if (this.jdField_a_of_type_Akse != null) {
-          this.jdField_a_of_type_Akse.onResult(2, PreloadManager.PathResult.getFailRes(parambhhf.jdField_a_of_type_JavaLangString));
-        }
-        PreloadManager.a(parambhhf.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
+      default: 
+        super.handleMessage(paramMessage);
       }
     }
-    label224:
-    label242:
+    label399:
+    label555:
     do
     {
-      do
-      {
-        do
-        {
-          return;
-          localObject1 = ((File)localObject2).getAbsolutePath();
-          break;
-          aktg.a(parambhhf.jdField_a_of_type_JavaLangString, (String)localObject1, NetConnInfoCenter.getServerTimeMillis(), this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
-        } while (!PreloadManager.a((PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get()));
-        if (parambhhf.jdField_a_of_type_Int != 0) {
-          break label339;
-        }
-        localObject1 = aktg.a(parambhhf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.isForceUnzip, 0, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
-        localObject2 = new PreloadManager.PathResult();
-        ((PreloadManager.PathResult)localObject2).url = parambhhf.jdField_a_of_type_JavaLangString;
-        ((PreloadManager.PathResult)localObject2).filePath = ((ResourceInfo)localObject1).filePath;
-        ((PreloadManager.PathResult)localObject2).folderPath = ((ResourceInfo)localObject1).folderPath;
-      } while (this.jdField_a_of_type_Akse == null);
-      this.jdField_a_of_type_Akse.onResult(0, (PreloadManager.PathResult)localObject2);
       return;
-    } while (this.jdField_a_of_type_Akse == null);
-    label339:
-    this.jdField_a_of_type_Akse.onResult(1, PreloadManager.PathResult.getFailRes(parambhhf.jdField_a_of_type_JavaLangString, parambhhf.jdField_a_of_type_Int));
+      localSendPhotoActivity.finish();
+      return;
+      localSendPhotoActivity.a(2131694337);
+      return;
+      if (localSendPhotoActivity.jdField_a_of_type_AndroidOsHandler.hasMessages(2))
+      {
+        azpw.b(SendPhotoActivity.jdField_a_of_type_JavaLangString, "handleMessage", "remove delayed Message:MSG_CANCLE_PROGRESS");
+        localSendPhotoActivity.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+      }
+      Object localObject2;
+      Object localObject1;
+      if ((localSendPhotoActivity.jdField_a_of_type_AndroidAppProgressDialog != null) && (localSendPhotoActivity.jdField_a_of_type_AndroidAppProgressDialog.isShowing()))
+      {
+        bool1 = true;
+        localSendPhotoActivity.b();
+        localObject2 = localSendPhotoActivity.getIntent().getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
+        if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
+        {
+          localObject1 = new String[((ArrayList)localObject2).size()];
+          ((ArrayList)localObject2).toArray((Object[])localObject1);
+          i = localSendPhotoActivity.getIntent().getIntExtra("uintype", 1003);
+          localObject2 = localSendPhotoActivity.app;
+          if ((paramMessage.obj == null) || (!"TimeOut".equals(paramMessage.obj.toString()))) {
+            break label399;
+          }
+        }
+      }
+      ArrayList localArrayList;
+      for (boolean bool2 = true;; bool2 = false)
+      {
+        ThreadManager.post(new SendPhotoActivity.MyHandler.1(this, bool2, (String[])localObject1, i, (QQAppInterface)localObject2), 5, null, true);
+        localObject2 = localSendPhotoActivity.getIntent();
+        ((Intent)localObject2).putExtra(bhkc.h, 2);
+        if (!((Intent)localObject2).hasExtra("extra_image_sender_tag")) {
+          ((Intent)localObject2).putExtra("extra_image_sender_tag", "SendPhotoActivity.handlePhoto");
+        }
+        localObject1 = null;
+        Object localObject3 = paramMessage.getData();
+        localArrayList = new ArrayList();
+        paramMessage = (Message)localObject1;
+        if (localObject3 == null) {
+          break label555;
+        }
+        ((Bundle)localObject3).setClassLoader(CompressInfo.class.getClassLoader());
+        paramMessage = ((Bundle)localObject3).getParcelableArrayList("flag_compressinfolist");
+        if (paramMessage == null) {
+          break label555;
+        }
+        localObject1 = paramMessage.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject3 = (CompressInfo)((Iterator)localObject1).next();
+          azpw.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "handleMessage print CompressInfo", "info:" + localObject3);
+          localArrayList.add(((CompressInfo)localObject3).e);
+        }
+        bool1 = false;
+        break;
+      }
+      int i = paramMessage.size();
+      long l1 = System.nanoTime();
+      long l2 = (l1 - localSendPhotoActivity.b) / 1000000L;
+      azpw.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "CompressLog", "compress startTime = " + localSendPhotoActivity.b + "ns,finishTime = " + l1 + "ns,duration = " + l2 + "ms,count = " + i + ",isShowing = " + bool1);
+      akrx.a(l2, i, bool1);
+      localSendPhotoActivity.app.a().a(l1);
+      azpw.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "TimeCompare", "CompressFinish Time = " + l1 + "ns");
+      ((Intent)localObject2).putExtra("open_chatfragment_fromphoto", true);
+      SendPhotoActivity.a(localSendPhotoActivity, localArrayList);
+      ((Intent)localObject2).removeExtra("PhotoConst.SEND_BUSINESS_TYPE");
+      localSendPhotoActivity.setResult(-1, localSendPhotoActivity.getIntent());
+      localSendPhotoActivity.finish();
+      boolean bool1 = localSendPhotoActivity.getIntent().getBooleanExtra("PhotoConst.HANDLE_DEST_RESULT", false);
+      if (QLog.isColorLevel()) {
+        QLog.d("forward", 2, "sendPhotoActivity isWaitForResult=" + bool1);
+      }
+      if (!bool1)
+      {
+        localObject1 = localSendPhotoActivity.getIntent();
+        localObject2 = ((Intent)localObject1).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+        ((Intent)localObject1).setClassName(((Intent)localObject1).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME"), (String)localObject2);
+        ((Intent)localObject1).addFlags(603979776);
+        localSendPhotoActivity.startActivity((Intent)localObject1);
+      }
+      azru.a(BaseApplication.getContext(), paramMessage);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e(SendPhotoActivity.jdField_a_of_type_JavaLangString, 2, "idleHandler time out");
+      }
+    } while (localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask != null);
+    Looper.myQueue().removeIdleHandler(localSendPhotoActivity.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
+    localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask = new SendPhotoTask(localSendPhotoActivity, null, localSendPhotoActivity.jdField_a_of_type_AndroidOsHandler);
+    if (localSendPhotoActivity.jdField_a_of_type_Long != 0L) {
+      localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask.jdField_a_of_type_Long = (SystemClock.uptimeMillis() - localSendPhotoActivity.jdField_a_of_type_Long);
+    }
+    ThreadManager.post(localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask, 8, null, false);
   }
 }
 

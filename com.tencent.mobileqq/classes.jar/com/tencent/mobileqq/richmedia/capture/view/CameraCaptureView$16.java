@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
 import android.graphics.Bitmap;
-import baou;
-import baox;
-import bgmg;
-import bgmo;
+import bbhn;
+import bbhq;
+import bhmi;
+import bhmq;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.File;
 import java.io.IOException;
@@ -17,13 +17,13 @@ class CameraCaptureView$16
   public void run()
   {
     String str = this.this$0.a.b + "/" + System.currentTimeMillis() + ".jpg";
-    bgmg.c(str);
+    bhmi.c(str);
     File localFile = new File(str);
     try
     {
-      bgmo.a(this.a, localFile);
-      bgmo.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
-      this.this$0.a(new baox(0, 0, str, null, this.this$0.u));
+      bhmq.a(this.a, localFile);
+      bhmq.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
+      this.this$0.a(new bbhq(0, 0, str, null, this.this$0.u));
       this.a.recycle();
       return;
     }
@@ -32,7 +32,7 @@ class CameraCaptureView$16
       for (;;)
       {
         localIOException.printStackTrace();
-        this.this$0.a(new baox(0, -1, str, null, this.this$0.u));
+        this.this$0.a(new bbhq(0, -1, str, null, this.this$0.u));
       }
     }
   }

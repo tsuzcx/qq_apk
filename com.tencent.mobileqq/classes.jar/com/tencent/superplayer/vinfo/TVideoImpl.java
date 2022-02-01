@@ -56,7 +56,7 @@ class TVideoImpl
       ((TVKPlaybackInfo)localObject2).requestInfo().flowId(((TVKPlaybackParam)localObject1).flowId());
       ((TVKPlaybackInfo)localObject2).requestInfo().definition(((TVKPlaybackParam)localObject1).definition());
       if (paramSuperPlayerVideoInfo.getVideoType() == 1) {
-        ((TVKPlaybackInfo)localObject2).requestInfo().formatId(1);
+        ((TVKPlaybackInfo)localObject2).requestInfo().formatId(0);
       }
       break;
     }

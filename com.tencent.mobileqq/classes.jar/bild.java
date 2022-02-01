@@ -1,27 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.open.agent.DeviceFriendListOpenFrame;
+import android.graphics.drawable.Drawable;
 
 public class bild
-  extends Handler
 {
-  public bild(DeviceFriendListOpenFrame paramDeviceFriendListOpenFrame) {}
+  public int a;
+  public Drawable a;
+  public String a;
+  public String b;
   
-  public void handleMessage(Message paramMessage)
+  public bild(int paramInt, String paramString1, String paramString2, Drawable paramDrawable)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
-      return;
-    case 2: 
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
-      return;
-    }
-    this.a.jdField_a_of_type_Bile.notifyDataSetChanged();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
   }
 }
 

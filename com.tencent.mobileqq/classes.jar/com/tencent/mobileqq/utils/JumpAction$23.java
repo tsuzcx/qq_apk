@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.utils;
 
 import android.text.TextUtils;
-import bgmp;
+import bhmr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 
 public class JumpAction$23
   implements Runnable
 {
-  public JumpAction$23(bgmp parambgmp) {}
+  public JumpAction$23(bhmr parambhmr) {}
   
   public void run()
   {

@@ -1,31 +1,20 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.TMG.utils.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class amnx
-  implements EIPCResultCallback
+public class amnx
+  extends amni
 {
-  amnx(amnw paramamnw) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (paramEIPCResult.code == 0)
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("key_game_friUin");
-      QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] current game friendUin:" + paramEIPCResult + ",mCurrentFriUin:" + amnw.a(this.a));
-      if (!amnw.a(this.a).equals(paramEIPCResult))
-      {
-        amnw.a(this.a).removeMessages(1);
-        amnw.a(this.a).sendEmptyMessage(1);
-      }
-      return;
-    }
-    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] game is not exist. exit room");
-    amnw.a(this.a).removeMessages(1);
-    amnw.a(this.a).sendEmptyMessage(1);
-  }
+  public View a;
+  public TextView a;
+  public boolean a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
+  public ImageView d;
+  public TextView d;
 }
 
 

@@ -1,32 +1,65 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import com.tencent.qphone.base.util.QLog;
 
-class skz
-  extends skd
+public class skz
+  extends RecyclerView.OnScrollListener
 {
-  skz(ske paramske) {}
+  public skz(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView) {}
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    paramString = new Intent(ske.a(this.a), ReadInJoyDeliverBiuActivity.class);
-    if (paramBaseArticleInfo.busiType == 6) {
-      paramString.putExtra("feedsType", ske.a(this.a).mFeedType);
+    int i = 0;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if ((paramInt == 0) && (ReadInjoyXRecyclerView.c(this.a) == 2)) {
+      this.a.a();
     }
-    paramString.putExtra("ARG_VIDEO_ARTICLE_ID", ske.a(this.a).mArticleID);
-    paramString.putExtra("biu_src", 2);
-    paramString.putExtra("arg_from_type", 8);
-    paramString.putExtra("arg_article_info", (ArticleInfo)paramBaseArticleInfo);
-    ske.a(this.a).startActivityForResult(paramString, 102);
-    ske.a(this.a).overridePendingTransition(0, 0);
+    int j = paramRecyclerView.getChildCount();
+    boolean bool;
+    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+    {
+      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
+      i = paramRecyclerView.getItemCount();
+      paramRecyclerView = paramRecyclerView.findFirstVisibleItemPositions(null);
+      int k = ReadInjoyXRecyclerView.a(this.a).a();
+      if (i - j <= paramRecyclerView[0] + k)
+      {
+        bool = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("XRecyclerView", 2, new Object[] { "totalItemCount=%d, firstVisibleItem=%d, visibleThreshold=%d, isCloseToTheEnd=%b", Integer.valueOf(i), Integer.valueOf(paramRecyclerView[0]), Integer.valueOf(k), Boolean.valueOf(bool) });
+        }
+        if (bool) {
+          ReadInjoyXRecyclerView.a(this.a).b(true);
+        }
+      }
+    }
+    for (;;)
+    {
+      ReadInjoyXRecyclerView.c(this.a, paramInt);
+      return;
+      bool = false;
+      break;
+      if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager))
+      {
+        paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
+        if (paramRecyclerView.getItemCount() - j <= paramRecyclerView.findFirstVisibleItemPosition() + ReadInjoyXRecyclerView.a(this.a).a()) {
+          i = 1;
+        }
+        if (i != 0) {
+          ReadInjoyXRecyclerView.a(this.a).b(true);
+        }
+      }
+    }
   }
   
-  public int c()
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    return 0;
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    ReadInjoyXRecyclerView.a(this.a, ReadInjoyXRecyclerView.a(this.a) + paramInt1);
+    ReadInjoyXRecyclerView.b(this.a, ReadInjoyXRecyclerView.b(this.a) + paramInt2);
   }
 }
 

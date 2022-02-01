@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import biau;
+import bjbs;
 
 class EmojiUiPlugin$5
   implements Runnable

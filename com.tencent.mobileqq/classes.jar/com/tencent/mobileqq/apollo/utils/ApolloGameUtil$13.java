@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ampj;
-import amrk;
-import andl;
+import anbd;
+import ande;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import anpf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
@@ -17,18 +17,18 @@ import com.tencent.qphone.base.util.QLog;
 final class ApolloGameUtil$13
   implements Runnable
 {
-  ApolloGameUtil$13(int paramInt, String paramString, andl paramandl) {}
+  ApolloGameUtil$13(int paramInt, String paramString, anpf paramanpf) {}
   
   public void run()
   {
     Object localObject1 = BaseApplicationImpl.getContext();
     try
     {
-      Object localObject2 = ampj.a(this.jdField_a_of_type_Int);
+      Object localObject2 = anbd.a(this.jdField_a_of_type_Int);
       if (localObject2 == null) {
         return;
       }
-      Object localObject3 = ((amrk)localObject2).a();
+      Object localObject3 = ((ande)localObject2).a();
       if ((localObject3 != null) && (((CmGameStartChecker.StartCheckParam)localObject3).game != null))
       {
         localObject3 = ((CmGameStartChecker.StartCheckParam)localObject3).game.name;
@@ -38,7 +38,7 @@ final class ApolloGameUtil$13
         localIntent.putExtra("jump_cm_extendinfo", this.jdField_a_of_type_JavaLangString);
         localIntent.setFlags(337641472);
         localObject1 = null;
-        Activity localActivity = ((amrk)localObject2).a();
+        Activity localActivity = ((ande)localObject2).a();
         if ((localActivity instanceof ApolloGameActivity))
         {
           localObject2 = ((ApolloGameActivity)localActivity).a();
@@ -47,7 +47,7 @@ final class ApolloGameUtil$13
             localObject1 = ApolloUtil.a();
           }
         }
-        ApolloGameUtil.a(localActivity, this.jdField_a_of_type_Int, localIntent, (String)localObject3, (Bitmap)localObject1, this.jdField_a_of_type_Andl);
+        ApolloGameUtil.a(localActivity, this.jdField_a_of_type_Int, localIntent, (String)localObject3, (Bitmap)localObject1, this.jdField_a_of_type_Anpf);
         return;
       }
     }

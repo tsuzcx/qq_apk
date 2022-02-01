@@ -1,113 +1,38 @@
-import android.graphics.Matrix;
-import android.graphics.Path;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeCustomizeStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aghs
-  implements aghj
+  implements aghi
 {
-  public static final aghk<aghs> a;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private float b;
+  private PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  static
+  public aghs(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Aghk = new aght();
-  }
-  
-  public aghs(aghh paramaghh)
-  {
-    paramaghh.a();
-    this.jdField_a_of_type_Float = paramaghh.a();
-    this.jdField_a_of_type_Long = paramaghh.a();
-    this.jdField_a_of_type_Int = paramaghh.a();
-    this.b = paramaghh.a();
-  }
-  
-  public aghs(Path paramPath)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Path a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPath;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(aghh paramaghh, int paramInt)
-  {
-    paramaghh.a(1);
-    paramaghh.a(this.jdField_a_of_type_Float);
-    paramaghh.a(this.jdField_a_of_type_Long);
-    paramaghh.a(this.jdField_a_of_type_Int);
-    paramaghh.a(this.b);
-  }
-  
-  public void a(aghs paramaghs)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsPath != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramaghs.jdField_a_of_type_AndroidGraphicsPath);
-      this.b += paramaghs.b;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
     }
   }
   
-  public void a(Path paramPath)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-  }
+  public void a() {}
   
-  public float b()
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    return this.b;
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.b = paramFloat;
-  }
-  
-  public void c(float paramFloat)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
+    if (paramRedPacketInfo == null) {
       return;
     }
-    Matrix localMatrix = new Matrix();
-    localMatrix.postScale(paramFloat, paramFloat);
-    Path localPath = new Path();
-    localPath.addPath(this.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
-    this.jdField_a_of_type_AndroidGraphicsPath = localPath;
+    ThreadManager.post(new CustomizeStrategyFactory.ThemeCustomizeStrategy.1(this, paramRedPacketInfo), 5, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, aigs paramaigs)
+  {
+    if ((paramRedPacketInfo != null) && ((paramaigs instanceof aigx))) {
+      paramRedPacketInfo.background = ((aigx)paramaigs).b;
+    }
   }
 }
 

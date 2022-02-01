@@ -1,53 +1,77 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.3.1;
-import com.tencent.mobileqq.nearby.now.view.widget.LikeAniView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class axpl
-  implements GestureDetector.OnDoubleTapListener
 {
-  axpl(axop paramaxop) {}
+  public int a;
+  public SessionInfo a;
+  public MessageForStructing a;
+  public AbsStructMsg a;
+  private Object a = new Object();
+  public HashMap<String, ArrayList<MessageRecord>> a;
+  public List<ChatMessage> a;
+  public Map<String, String> a;
+  public boolean a;
+  public int b;
+  public List<MessageForStructing> b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  private int h;
+  private int i;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public int a()
   {
-    if (System.currentTimeMillis() - axop.a(this.a) >= 500L)
+    synchronized (this.a)
     {
-      int i = (int)paramMotionEvent.getRawX();
-      int j = (int)paramMotionEvent.getRawY();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a != 6)) {
-        ((LikeAniView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369822)).a(i, j);
-      }
-      if (!axop.a(this.a)) {
-        break label98;
-      }
-    }
-    for (;;)
-    {
-      axop.a(this.a, System.currentTimeMillis());
-      return true;
-      label98:
-      if ((!axop.b(this.a)) && (this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369822).getVisibility() == 0))
-      {
-        axop.a(this.a, false);
-        this.a.c(null);
-        new axlq().h("video").i("playpage_double_click").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        ThreadManagerV2.excute(new PlayOperationViewModel.3.1(this, (axby)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
-      }
+      int j = this.h;
+      return j;
     }
   }
   
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  public String a()
   {
-    return false;
+    return String.valueOf(hashCode());
   }
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void a(int paramInt)
   {
-    return false;
+    synchronized (this.a)
+    {
+      this.h ^= paramInt;
+      return;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    synchronized (this.a)
+    {
+      int j = this.i;
+      if (paramInt1 == 0) {
+        paramInt2 = 0;
+      }
+      this.i = (j + paramInt2);
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    synchronized (this.a)
+    {
+      int j = this.i;
+      return j;
+    }
   }
 }
 

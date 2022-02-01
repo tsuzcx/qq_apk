@@ -2,7 +2,7 @@ package cooperation.qzone.contentbox;
 
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import aoch;
+import aoot;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class UserListItemView$1
@@ -15,9 +15,9 @@ class UserListItemView$1
     if ((UserListItemView.a(this.this$0) == null) || (UserListItemView.a(this.this$0) == null)) {
       return;
     }
-    Object localObject = aoch.a(1, 3);
-    localObject = aoch.a(((BaseActivity)UserListItemView.a(this.this$0)).app, 1, this.a, 3, (Drawable)localObject, (Drawable)localObject, null);
-    UserListItemView.a(this.this$0).post(new UserListItemView.1.1(this, (aoch)localObject));
+    Object localObject = aoot.a(1, 3);
+    localObject = aoot.a(((BaseActivity)UserListItemView.a(this.this$0)).app, 1, this.a, 3, (Drawable)localObject, (Drawable)localObject, null);
+    UserListItemView.a(this.this$0).post(new UserListItemView.1.1(this, (aoot)localObject));
   }
 }
 

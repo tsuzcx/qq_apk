@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahzv;
+import aijj;
 
 public class DiscussChatPie$8$2
   implements Runnable
 {
-  public DiscussChatPie$8$2(ahzv paramahzv, String paramString) {}
+  public DiscussChatPie$8$2(aijj paramaijj, String paramString) {}
   
   public void run()
   {
-    ahzv.a(this.jdField_a_of_type_Ahzv, this.jdField_a_of_type_JavaLangString);
+    aijj.a(this.jdField_a_of_type_Aijj, this.jdField_a_of_type_JavaLangString);
   }
 }
 

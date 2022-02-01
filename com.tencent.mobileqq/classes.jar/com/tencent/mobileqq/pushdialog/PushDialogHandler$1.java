@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.pushdialog;
 
-import azuj;
-import azur;
+import bamz;
+import banh;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class PushDialogHandler$1
   implements Runnable
 {
-  public PushDialogHandler$1(azur paramazur, BaseChatPie paramBaseChatPie, PushDialogTemplate paramPushDialogTemplate) {}
+  public PushDialogHandler$1(banh parambanh, BaseChatPie paramBaseChatPie, PushDialogTemplate paramPushDialogTemplate) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate != null)) {
-      ((azuj)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(42)).a(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate, 102, 101);
+      ((bamz)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(42)).a(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate, 102, 101);
     }
   }
 }

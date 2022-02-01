@@ -1,15 +1,35 @@
+import androidx.annotation.NonNull;
+import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
+
 public class mzq
+  extends mzo
 {
-  String jdField_a_of_type_JavaLangString;
-  mzp jdField_a_of_type_Mzp;
-  public boolean a;
-  public String b;
-  public boolean b = false;
-  boolean c = false;
-  
-  private mzq(mzn parammzn)
+  protected mzo a()
   {
-    this.jdField_a_of_type_Boolean = false;
+    return new mzq();
+  }
+  
+  public void a(mzo parammzo)
+  {
+    super.a(parammzo);
+  }
+  
+  public void a(AvGameCommon.CommonQuestionInfo paramCommonQuestionInfo)
+  {
+    super.a(paramCommonQuestionInfo);
+  }
+  
+  public int b()
+  {
+    return 3;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    return localStringBuilder.toString();
   }
 }
 

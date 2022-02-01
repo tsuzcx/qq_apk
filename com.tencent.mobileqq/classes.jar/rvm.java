@@ -1,15 +1,8 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-
-class rvm
-  implements ota
+public class rvm
 {
-  rvm(rvk paramrvk, AdvertisementInfo paramAdvertisementInfo, sey paramsey) {}
-  
-  public void a(View paramView, int paramInt)
-  {
-    rvk.a(this.jdField_a_of_type_Rvk, paramView.getContext(), paramInt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_Sey.a);
-  }
+  public String a;
+  public String b;
+  public String c;
 }
 
 

@@ -1,23 +1,9 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
-import mqq.app.QQPermissionCallback;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class askr
-  implements QQPermissionCallback
+public abstract class askr
 {
-  public askr(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if ((ExtendFriendLimitChatMatchFragment.a(this.a) != null) && (!ExtendFriendLimitChatMatchFragment.a(this.a).isFinishing())) {
-      bglp.a(ExtendFriendLimitChatMatchFragment.a(this.a), paramArrayOfString, paramArrayOfInt);
-    }
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    ExtendFriendLimitChatMatchFragment.g(this.a);
-  }
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle) {}
 }
 
 

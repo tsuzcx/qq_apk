@@ -1,40 +1,37 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
+import anzj;
+import com.tencent.mobileqq.minigame.debug.DebugWebSocket.DebuggerStateListener;
+import com.tencent.qphone.base.util.QLog;
 
 class GameActivity$32
-  implements Runnable
+  implements DebugWebSocket.DebuggerStateListener
 {
-  GameActivity$32(GameActivity paramGameActivity, String paramString1, String paramString2, boolean paramBoolean) {}
+  GameActivity$32(GameActivity paramGameActivity) {}
   
-  public void run()
+  public void onDebuggerBreakPointPaused()
   {
-    int i = 0;
-    GameActivity.access$4600(this.this$0);
-    if ((GameActivity.access$4700(this.this$0) != null) && (!TextUtils.isEmpty(this.val$debuggerTxt))) {
-      GameActivity.access$4700(this.this$0).setText(this.val$debuggerTxt);
-    }
-    if (!TextUtils.isEmpty(this.val$debuggerToast)) {
-      Toast.makeText(this.this$0, this.val$debuggerToast, 0).show();
-    }
-    View localView;
-    if (GameActivity.access$4800(this.this$0) != null)
-    {
-      localView = GameActivity.access$4800(this.this$0);
-      if (!this.val$showBreakPoint) {
-        break label99;
-      }
-    }
-    for (;;)
-    {
-      localView.setVisibility(i);
-      return;
-      label99:
-      i = 8;
-    }
+    QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger BreakPointPaused");
+    GameActivity.access$4400(this.this$0, anzj.a(2131703904), null, true);
+  }
+  
+  public void onDebuggerConnectedNormal()
+  {
+    QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger connected ");
+    GameActivity.access$4400(this.this$0, anzj.a(2131703898), null, false);
+    GameActivity.access$4500(this.this$0);
+  }
+  
+  public void onDebuggerDisconnect(String paramString)
+  {
+    QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger Disconnect");
+    GameActivity.access$4400(this.this$0, anzj.a(2131703903), anzj.a(2131703908), false);
+  }
+  
+  public void onDebuggerReconnecting(String paramString)
+  {
+    QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger Reconnecting");
+    GameActivity.access$4400(this.this$0, anzj.a(2131703900), anzj.a(2131703899), false);
   }
 }
 

@@ -1,19 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ayks
+public class ayks
   implements View.OnClickListener
 {
-  ayks(ayko paramayko, ayld paramayld) {}
+  public ayks(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
   public void onClick(View paramView)
   {
-    ayko.a(this.jdField_a_of_type_Ayko).removeMessages(101);
-    ayko.a(this.jdField_a_of_type_Ayko).obtainMessage(101).sendToTarget();
-    this.jdField_a_of_type_Ayld.a.a();
+    if ((this.a.a != null) && (!this.a.isFinishing()))
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

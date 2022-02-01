@@ -1,24 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
 public class adkd
-  implements View.OnClickListener
 {
-  public adkd(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void onClick(View paramView)
+  public adkd(adka paramadka) {}
+  
+  public boolean a(JSONObject paramJSONObject)
   {
-    switch (paramView.getId())
+    try
     {
+      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("param_index"));
+      this.jdField_b_of_type_Int = Integer.parseInt(paramJSONObject.getString("param_type"));
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("param_value1").trim();
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("param_value2").trim();
+      return true;
     }
-    for (;;)
+    catch (Exception paramJSONObject)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      AddFriendVerifyActivity.c(this.a);
+      adjv.a("KingKongNativePatch", "Parse parameter error!");
     }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "Index " + this.jdField_a_of_type_Int + ": " + this.jdField_b_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_b_of_type_JavaLangString;
   }
 }
 

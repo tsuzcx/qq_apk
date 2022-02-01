@@ -1,25 +1,88 @@
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import java.util.Iterator;
+import java.util.Set;
 
-class xwl
-  extends niv
+public class xwl
+  extends xqm
 {
-  xwl(xwg paramxwg, boolean paramBoolean) {}
+  public xwl(xwj paramxwj) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramInt != 0)
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
     {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(7, bool);
-        this.a.a(0, this.a.a.getString(2131718828));
-        return;
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xpd)localIterator.next()).a(paramInt1, paramInt2, paramIntent);
       }
     }
-    ((wpf)wpm.a(10)).b("story_publish_flag_compress", Boolean.valueOf(this.b));
+  }
+  
+  public void a(Bundle paramBundle1, Bundle paramBundle2)
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xpd)localIterator.next()).a(paramBundle1, paramBundle2);
+      }
+    }
+  }
+  
+  public void c()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xpd)localIterator.next()).c();
+      }
+    }
+  }
+  
+  public void d()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xpd)localIterator.next()).d();
+      }
+    }
+  }
+  
+  public void e()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xpd)localIterator.next()).e();
+      }
+    }
+  }
+  
+  public void f()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xpd)localIterator.next()).f();
+      }
+    }
+  }
+  
+  public void g()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xpd)localIterator.next()).g();
+      }
+    }
   }
 }
 

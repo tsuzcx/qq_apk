@@ -1,9 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-
 public abstract interface alas
 {
-  public abstract boolean interceptDrawer(View paramView, MotionEvent paramMotionEvent);
+  public abstract void a(String paramString1, String paramString2, alam paramalam);
 }
 
 

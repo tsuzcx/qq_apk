@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class aziv
-  implements DialogInterface.OnClickListener
+  implements aziz
 {
-  aziv(azir paramazir) {}
+  aziv(aziu paramaziu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    azir.a(this.a, false);
-    paramDialogInterface.dismiss();
+    return this.a.a();
+  }
+  
+  public void a()
+  {
+    this.a.b();
   }
 }
 

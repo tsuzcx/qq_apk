@@ -1,20 +1,12 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.ImageView;
 
-public class ywd
+class ywd
 {
-  public final int c;
-  public final Bitmap c;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public ywd(int paramInt, Bitmap paramBitmap)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public String toString()
-  {
-    return "VideoFragmentInfo{blockIndex=" + this.jdField_c_of_type_Int + '}';
-  }
+  ywd(ywc paramywc) {}
 }
 
 

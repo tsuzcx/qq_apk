@@ -1,90 +1,125 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
 import java.util.List;
 
 public class amlk
-  extends amlf<Canvas>
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(2);
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private Rect b = new Rect();
+  private static amlk a;
   
-  public boolean a(Canvas paramCanvas, float paramFloat)
+  public static amlk a()
   {
-    boolean bool = false;
-    if (paramCanvas == null) {
-      return bool;
-    }
-    label25:
-    amli localamli;
-    Bitmap localBitmap;
-    for (;;)
+    if (a == null) {}
+    try
     {
-      try
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (!localIterator.hasNext()) {
-          break label360;
-        }
-        localamli = (amli)localIterator.next();
-        localamli.b();
-        if (!localamli.a())
-        {
-          localIterator.remove();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("CanvasDisplay", 2, "remove invalidate barrage:" + localamli);
-          continue;
-        }
-        localBitmap = localamli.a();
+      if (a == null) {
+        a = new amlk();
       }
-      finally {}
-      if ((localBitmap != null) && (!localBitmap.isRecycled()))
+      return a;
+    }
+    finally {}
+  }
+  
+  private boolean a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      QLog.i("WeatherDCReportHelper", 1, "isLastWeatherMessageNew app == null");
+    }
+    do
+    {
+      return false;
+      paramQQAppInterface = paramQQAppInterface.a();
+      if (paramQQAppInterface == null)
       {
-        paramCanvas.save();
-        if (paramFloat == 1.0F)
-        {
-          if (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() != localamli.d) {
-            this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(localamli.d);
-          }
-          label165:
-          if (localamli.h <= 0.0F) {
-            break label388;
-          }
-        }
+        QLog.i("WeatherDCReportHelper", 1, "isLastWeatherMessageNew qqMessageFacade == null");
+        return false;
+      }
+      paramQQAppInterface = paramQQAppInterface.a("2658655094", 1008);
+    } while ((paramQQAppInterface == null) || (paramQQAppInterface.size() <= 0));
+    return ammh.a((ChatMessage)paramQQAppInterface.get(paramQQAppInterface.size() - 1));
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    int i;
+    if ((amme.a.a()) && (a(paramQQAppInterface)))
+    {
+      i = 1;
+      if (i == 0) {
+        break label38;
       }
     }
-    label388:
-    for (float f1 = localamli.h;; f1 = 1.0F)
+    label38:
+    for (String str = "new_folder_weather_expose";; str = "folder_weather_expose")
     {
-      float f2 = localamli.jdField_e_of_type_Float;
-      float f3 = localamli.jdField_f_of_type_Float;
-      float f4 = localamli.jdField_e_of_type_Float;
-      float f5 = localamli.jdField_e_of_type_Int;
-      float f6 = localamli.jdField_f_of_type_Float;
-      paramCanvas.clipRect(f2, f3, f4 + f5 * f1, f1 * localamli.jdField_f_of_type_Int + f6);
-      paramCanvas.translate(localamli.jdField_e_of_type_Float, localamli.jdField_f_of_type_Float);
-      if (localamli.h != 0.0F) {
-        paramCanvas.scale(localamli.h, localamli.h);
+      a(paramQQAppInterface, str);
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForArkApp))
+    {
+      amlv.a(1, "");
+      if (!ammh.a(paramMessageRecord)) {
+        break label30;
       }
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-      this.b.set(0, 0, localamli.jdField_e_of_type_Int, localamli.jdField_f_of_type_Int);
-      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.restore();
-      break label25;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(255.0F * paramFloat));
-      break label165;
-      label360:
-      bool = this.jdField_a_of_type_JavaUtilList.isEmpty();
-      if (!bool) {}
-      for (bool = true;; bool = false) {
-        break;
+    }
+    label30:
+    for (paramMessageRecord = "new_folder_weather_arrive";; paramMessageRecord = "folder_weather_arrive")
+    {
+      a(paramQQAppInterface, paramMessageRecord);
+      return;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    a(paramQQAppInterface, paramString, null);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, Object paramObject)
+  {
+    String str2 = "";
+    String str1 = str2;
+    if (paramObject != null)
+    {
+      str1 = str2;
+      if (!TextUtils.isEmpty(String.valueOf(paramObject))) {
+        str1 = "|" + paramObject;
       }
+    }
+    paramString = System.currentTimeMillis() + "|" + "QQWeather" + "|" + "QQWeather_native" + "|" + paramString + "|" + "android" + str1;
+    bdkl.a(paramQQAppInterface, "dc04698", paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("WeatherDCReportHelper", 2, "reportWeather : " + paramString);
+    }
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface)
+  {
+    int i;
+    if ((amme.a.a()) && (a(paramQQAppInterface)))
+    {
+      i = 1;
+      if (i == 0) {
+        break label38;
+      }
+    }
+    label38:
+    for (String str = "new_folder_weather_click";; str = "folder_weather_click")
+    {
+      a(paramQQAppInterface, str);
+      return;
+      i = 0;
+      break;
     }
   }
 }

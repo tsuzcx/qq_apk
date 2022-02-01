@@ -1,17 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
-import com.tencent.widget.XPanelContainer;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class avbf
-  implements ValueAnimator.AnimatorUpdateListener
+class avbf
+  implements azrg
 {
-  public avbf(HotPicMainPanel paramHotPicMainPanel) {}
+  avbf(avbe paramavbe, Bundle paramBundle, long paramLong) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.requestLayout();
+    return null;
+  }
+  
+  public void a(azrh paramazrh)
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("upCallBack updateMsg info =");
+    if (paramazrh == null) {}
+    for (paramazrh = "null";; paramazrh = paramazrh.toString())
+    {
+      QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, paramazrh);
+      return;
+    }
+  }
+  
+  public void b(azrh paramazrh)
+  {
+    QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "upCallBack onSend result=", paramazrh });
+    avbe.a(this.jdField_a_of_type_Avbe, paramazrh, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Long);
   }
 }
 

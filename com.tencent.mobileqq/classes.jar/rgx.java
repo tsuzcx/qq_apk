@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
-
-public final class rgx
-  implements Parcelable.Creator<SocializeFeedsInfo.BiuCommentInfo>
+public abstract interface rgx
 {
-  public SocializeFeedsInfo.BiuCommentInfo a(Parcel paramParcel)
-  {
-    return new SocializeFeedsInfo.BiuCommentInfo(paramParcel);
-  }
-  
-  public SocializeFeedsInfo.BiuCommentInfo[] a(int paramInt)
-  {
-    return new SocializeFeedsInfo.BiuCommentInfo[paramInt];
-  }
+  public abstract void a();
 }
 
 

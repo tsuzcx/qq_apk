@@ -1,17 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qlo
-  implements uwv
+class qlo
+  implements View.OnClickListener
 {
-  public void a(URL paramURL, int paramInt) {}
+  qlo(qln paramqln) {}
   
-  public void a(URL paramURL, Throwable paramThrowable) {}
-  
-  public void a(URL paramURL, tds paramtds)
+  public void onClick(View paramView)
   {
-    QLog.d("NativeReadInjoyImageView", 2, "setImageDrawable: url is " + paramURL);
-    paramtds.a();
+    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
+    if (localsgf != null) {
+      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

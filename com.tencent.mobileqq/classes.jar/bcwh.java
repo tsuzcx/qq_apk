@@ -1,17 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-
-public class bcwh
-  implements View.OnTouchListener
+public abstract interface bcwh
 {
-  public bcwh(StructMsgForGeneralShare paramStructMsgForGeneralShare, afzq paramafzq) {}
+  public abstract bcwz a(Object paramObject, bcxn parambcxn);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return this.jdField_a_of_type_Afzq.onTouch(paramView, paramMotionEvent);
-  }
+  public abstract bcyf a(Object paramObject, bcxn parambcxn);
 }
 
 

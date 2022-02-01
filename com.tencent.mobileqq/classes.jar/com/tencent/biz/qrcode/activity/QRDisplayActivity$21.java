@@ -2,16 +2,17 @@ package com.tencent.biz.qrcode.activity;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import zvc;
+import zyx;
 
 class QRDisplayActivity$21
   implements Runnable
 {
-  QRDisplayActivity$21(QRDisplayActivity paramQRDisplayActivity, String paramString) {}
+  QRDisplayActivity$21(QRDisplayActivity paramQRDisplayActivity) {}
   
   public void run()
   {
-    String str = zvc.a(this.this$0, this.a, this.this$0.b);
+    String str = "temp_qrcode_share_" + this.this$0.c + ".png";
+    str = zyx.a(this.this$0, str, this.this$0.b);
     ThreadManager.getUIHandler().post(new QRDisplayActivity.21.1(this, str));
   }
 }

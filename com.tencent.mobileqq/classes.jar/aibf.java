@@ -1,42 +1,70 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.BinderWarpper;
 
-class aibf
-  extends bhts
+public class aibf
+  extends abkg
 {
-  aibf(aiay paramaiay) {}
+  aiec jdField_a_of_type_Aiec = new aibg(this);
   
-  public void a(int paramInt)
+  public aibf(AIOGalleryActivity paramAIOGalleryActivity) {}
+  
+  public abjp a(Activity paramActivity, abjt paramabjt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDownLoadedPluginResult result = " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.bw();
-    }
-    do
-    {
-      return;
-      QQToast.a(this.a.a(), anni.a(2131703891), 0).a();
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
+    return new aics(paramActivity, paramabjt, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aidz, AIOGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity));
   }
   
-  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  public abjt a(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onNotifyGameRoomSpeakerStatus uin = " + paramLong2 + " isSeaking = " + paramBoolean);
+    return new aicx(true);
+  }
+  
+  public abju a(Activity paramActivity, abjt paramabjt)
+  {
+    aicx localaicx = (aicx)paramabjt;
+    localaicx.e = paramActivity.getIntent().getBooleanExtra("extra.IS_FROM_NEW_TROOP_CHAT_HISTORY", false);
+    if (localaicx.e) {
+      bdll.b(null, "dc00899", "Grp_chatRecord", "", "chatRecor_pic", "pic_exp", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_JavaLangString, "", "", "");
     }
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(String.valueOf(paramLong1))) || (this.a.jdField_a_of_type_Bhtu == null)) {}
-    bhtt localbhtt;
-    do
+    localaicx.d(4);
+    localaicx.a();
+    return new aicy(paramActivity, paramabjt, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aidz, AIOGalleryActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity));
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aidz == null)
     {
-      return;
-      localbhtt = this.a.jdField_a_of_type_Bhtu.a();
-    } while (localbhtt == null);
-    localbhtt.a(String.valueOf(paramLong2), paramBoolean);
+      BinderWarpper localBinderWarpper = (BinderWarpper)paramActivity.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
+      if (localBinderWarpper == null) {
+        break label160;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aidz = aiea.a(localBinderWarpper.a);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aidz.a(this.jdField_a_of_type_Aiec);
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOGalleryActivity", 2, "IAIOImageProvider is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aidz);
+      }
+    }
+    boolean bool = paramActivity.getIntent().getBooleanExtra("extra.IS_GOTO_IMAGELIST", false);
+    super.a(paramActivity);
+    if (bool)
+    {
+      this.jdField_a_of_type_Boolean = paramActivity.getIntent().getBooleanExtra("extra.NO_FIRST_ENTER_ANIMATION", false);
+      super.a();
+      if ((this.jdField_a_of_type_Abju != null) && ((this.jdField_a_of_type_Abju instanceof aicy))) {
+        ((aicy)this.jdField_a_of_type_Abju).p();
+      }
+    }
+    return;
+    label160:
+    throw new IllegalArgumentException("can't find Binder in Intent..");
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

@@ -1,128 +1,70 @@
-import cooperation.qzone.statistic.access.concept.Key;
-import cooperation.qzone.statistic.access.concept.Statistic;
-import cooperation.qzone.util.QZLog;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.List;
+import android.content.Intent;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.pluginsdk.IStatisticsUploader;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import java.io.File;
+import mqq.app.MobileQQ;
 
 public class bmgx
-  extends bmhg
+  extends AsyncTask<String, String, String>
 {
-  protected Statistic a;
+  private IStatisticsUploader jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
+  private String d;
+  private String e;
+  private String f;
   
-  public static String a(Object paramObject)
+  public bmgx(Intent paramIntent)
   {
-    if (paramObject == null) {
-      return "";
-    }
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("pluginsdk_selfuin");
+    this.b = paramIntent.getStringExtra("pluginsdk_pluginName");
+    this.c = paramIntent.getStringExtra("pluginsdk_pluginLocation");
+    this.d = paramIntent.getStringExtra("pluginsdk_pluginpath");
+    this.e = paramIntent.getStringExtra("pluginsdk_launchActivity");
+    this.f = paramIntent.getStringExtra("pluginsdk_extraInfo");
+    paramIntent = paramIntent.getStringExtra("clsUploader");
+    if (paramIntent != null) {}
     try
     {
-      String str = URLEncoder.encode(paramObject.toString(), "utf-8");
-      return str;
+      this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader = ((IStatisticsUploader)Class.forName(paramIntent).newInstance());
+      return;
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    catch (Exception paramIntent)
     {
-      localUnsupportedEncodingException.printStackTrace();
+      this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader = null;
     }
-    return paramObject.toString();
   }
   
-  public String a(String paramString, Statistic paramStatistic)
+  protected String a(String... paramVarArgs)
   {
-    Key[] arrayOfKey = paramStatistic.getKeys();
-    paramStatistic = paramStatistic.getValues();
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramString != null) {
-      localStringBuilder.append(paramString);
+    if ((this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader == null) || (this.f == null)) {
+      return "";
     }
-    int i = 0;
-    if (i < arrayOfKey.length)
-    {
-      if ((paramStatistic[i] != null) && (!paramStatistic[i].equals(""))) {
-        if (localStringBuilder.length() != 0) {
-          break label106;
-        }
-      }
-      label106:
-      for (paramString = "";; paramString = "&")
-      {
-        localStringBuilder.append(paramString);
-        localStringBuilder.append(arrayOfKey[i]).append("=").append(a(paramStatistic[i]));
-        i += 1;
-        break;
-      }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public String a(String paramString, List<Statistic> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramString != null) {}
     for (;;)
     {
       try
       {
-        localStringBuilder.append(paramString);
-        localStringBuilder.append("&");
-        paramString = ((Statistic)paramList.get(0)).getKeys();
-        localStringBuilder.append("key=");
-        i = 0;
-        if (i < paramString.length)
+        if ((this.f.contains("Resources$NotFoundException")) || (this.f.contains("ResourcesNotFoundException")) || (this.f.contains("ClassNotFoundException")) || (this.f.contains("GetPackageInfoFailException")))
         {
-          Object localObject = paramString[i].getName();
-          if (i != 0) {
-            localStringBuilder.append(",");
-          }
-          localStringBuilder.append((String)localObject);
-          i += 1;
-          continue;
-          if (i < paramString.length)
-          {
-            int j = 0;
-            if (j >= paramList.size()) {
-              break label232;
-            }
-            localObject = (Statistic)paramList.get(j);
-            localStringBuilder.append("&").append(j + 1).append("_").append(i + 1).append("=").append(a(((Statistic)localObject).getValue(i)));
-            j += 1;
+          paramVarArgs = PluginStatic.encodeFile(this.d);
+          if (this.d == null) {
             continue;
           }
-          localStringBuilder.append("&count=").append(paramList.size());
-          return localStringBuilder.toString();
+          l = new File(this.d).length();
+          this.f = ("ApkMd5:" + paramVarArgs + "__FileSize:" + l + "__" + this.f);
         }
+        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader.uploadStartupFailure(MobileQQ.getContext(), this.jdField_a_of_type_JavaLangString, this.b, this.c, this.e, this.f);
       }
-      catch (OutOfMemoryError paramString)
+      catch (Throwable paramVarArgs)
       {
-        QZLog.e("HttpAssembler", "", paramString);
-        return null;
+        long l;
+        continue;
       }
-      int i = 0;
-      continue;
-      label232:
-      i += 1;
+      return null;
+      l = 0L;
     }
-  }
-  
-  public String a(List<Statistic> paramList)
-  {
-    int i = paramList.size();
-    String str = a(null, this.a);
-    if (i == 0) {
-      return str;
-    }
-    if (i == 1) {
-      return a(str, (Statistic)paramList.get(0));
-    }
-    return a(str, paramList);
-  }
-  
-  public void a(Statistic paramStatistic)
-  {
-    this.a = paramStatistic;
   }
 }
 

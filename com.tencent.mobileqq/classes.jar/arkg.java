@@ -1,76 +1,72 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.mobileqq.datareportviewer.ReportData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arkg
-  extends BaseAdapter
+  extends arac<arkf>
 {
-  public arkg(DataReportViewer paramDataReportViewer) {}
-  
-  public int getCount()
+  @NonNull
+  public arkf a(int paramInt)
   {
-    return this.a.a.size();
+    return new arkf();
   }
   
-  public Object getItem(int paramInt)
+  @Nullable
+  public arkf a(araj[] paramArrayOfaraj)
   {
-    return this.a.a.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    if (paramView == null)
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
     {
-      localView = LayoutInflater.from(this.a.getContext()).inflate(2131559605, paramViewGroup, false);
-      paramView = new arkh(this.a, localView);
-      localView.setTag(paramView);
-      localObject = (ReportData)this.a.a.get(paramInt);
-      paramView.a.setText(((ReportData)localObject).table);
-      paramView.b.setText(((ReportData)localObject).mainAction);
-      paramView.c.setText(((ReportData)localObject).subAction);
-      paramView.d.setText(((ReportData)localObject).actionName);
-      paramView.e.setText(String.valueOf(((ReportData)localObject).opType));
-      paramView.f.setText(String.valueOf(((ReportData)localObject).result));
-      paramView.g.setText(((ReportData)localObject).r2);
-      paramView.h.setText(((ReportData)localObject).r3);
-      paramView.i.setText(((ReportData)localObject).r4);
-      paramView.j.setText(((ReportData)localObject).r5);
-      if (!((ReportData)localObject).isLightBlueBg) {
-        break label249;
+      arkf localarkf = arkf.a(paramArrayOfaraj[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVWhiteListConfProcessor", 2, "onParsed  " + paramArrayOfaraj[0].a);
       }
-      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166562));
+      return localarkf;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (arkh)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label249:
-      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167279));
+    return null;
+  }
+  
+  public void a(arkf paramarkf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVWhiteListConfProcessor", 2, "onUpdate " + paramarkf.toString());
     }
+  }
+  
+  public Class<arkf> clazz()
+  {
+    return arkf.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 207;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arkg
  * JD-Core Version:    0.7.0.1
  */

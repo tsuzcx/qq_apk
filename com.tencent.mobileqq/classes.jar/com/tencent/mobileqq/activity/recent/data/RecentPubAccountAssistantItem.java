@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import acvy;
-import agaw;
+import adab;
+import agkq;
 import android.content.Context;
 import android.text.TextUtils;
-import anrs;
+import aody;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -112,7 +112,7 @@ public class RecentPubAccountAssistantItem
         if (paramIMCoreAppRuntime != null)
         {
           this.mUnreadNum = paramIMCoreAppRuntime.a(localMessage.frienduin, localMessage.istroop);
-          paramIMCoreAppRuntime = (anrs)localQQAppInterface.getManager(56);
+          paramIMCoreAppRuntime = (aody)localQQAppInterface.getManager(56);
           if (paramIMCoreAppRuntime == null) {
             break label455;
           }
@@ -164,7 +164,7 @@ public class RecentPubAccountAssistantItem
           this.mUnreadNum = 0;
           break;
           ((MsgSummary)localObject1).strContent = "";
-          localObject2 = agaw.a(localMessage);
+          localObject2 = agkq.a(localMessage);
           if ((localObject2 == null) || (((PAMessage)localObject2).items == null) || (((PAMessage)localObject2).items.size() == 0))
           {
             buildMessageBody(localMessage, i, localQQAppInterface, paramContext, (MsgSummary)localObject1);

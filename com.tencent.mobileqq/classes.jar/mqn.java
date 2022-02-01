@@ -1,68 +1,54 @@
-import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
 
-public class mqn
+class mqn
+  implements lfs
 {
-  private static final Map<String, Long> a = new HashMap(5);
-  private static final Map<String, Long> b = new HashMap(5);
+  mqn(mqm parammqm) {}
   
-  public static void a(String paramString1, String paramString2, int paramInt, Object... paramVarArgs)
+  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    int j = 0;
-    if (QLog.isColorLevel())
+    boolean bool2 = true;
+    if (11 != paramInt1) {}
+    do
     {
-      long l2 = SystemClock.elapsedRealtime();
-      Object localObject1 = (Long)b.get(paramString1);
-      long l1;
-      if ((paramInt == 1) || (localObject1 == null))
+      return false;
+      QLog.w(this.a.i, 1, "onC2CDataCome, subType[" + paramInt2 + "], mPeerSupportRedBag[" + this.a.jdField_a_of_type_Int + "], mPeerSendMode[" + this.a.jdField_a_of_type_Boolean + "]");
+      paramArrayOfByte = this.a.a();
+    } while (paramArrayOfByte == null);
+    boolean bool1;
+    switch (paramInt2)
+    {
+    default: 
+      bool1 = false;
+    }
+    for (;;)
+    {
+      return bool1;
+      this.a.jdField_a_of_type_Int = 2;
+      paramArrayOfByte.b("AbilityResDownloading");
+      bool1 = bool2;
+      continue;
+      this.a.jdField_a_of_type_Int = 1;
+      paramArrayOfByte.b("AbilityEnable");
+      bool1 = bool2;
+      continue;
+      this.a.jdField_a_of_type_Int = 0;
+      paramArrayOfByte.b("AbilityDisable");
+      bool1 = bool2;
+      continue;
+      this.a.jdField_a_of_type_Boolean = true;
+      bool1 = bool2;
+      if (this.a.jdField_a_of_type_Int != 1)
       {
-        a.put(paramString1, Long.valueOf(l2));
-        b.put(paramString1, Long.valueOf(l2));
-        l1 = 0L;
-      }
-      for (;;)
-      {
-        Object localObject2 = "[]";
-        localObject1 = localObject2;
-        if (paramVarArgs == null) {
-          break label210;
-        }
-        localObject1 = localObject2;
-        if (paramVarArgs.length <= 0) {
-          break label210;
-        }
-        localObject1 = new StringBuilder(100);
-        ((StringBuilder)localObject1).append("[");
-        int k = paramVarArgs.length;
-        int i = 0;
-        while (i < k)
-        {
-          localObject2 = paramVarArgs[i];
-          if (j > 0) {
-            ((StringBuilder)localObject1).append(",");
-          }
-          ((StringBuilder)localObject1).append(localObject2);
-          j += 1;
-          i += 1;
-        }
-        l1 = l2 - ((Long)localObject1).longValue();
-        b.put(paramString1, Long.valueOf(l2));
-      }
-      ((StringBuilder)localObject1).append("]");
-      localObject1 = ((StringBuilder)localObject1).toString();
-      label210:
-      QLog.i("AVTraceUtil", 2, paramString1 + "--" + paramString2 + "--" + (String)localObject1 + "--" + l1);
-      if (paramInt == 2)
-      {
-        paramVarArgs = (Long)a.get(paramString1);
-        paramString2 = paramVarArgs;
-        if (paramVarArgs == null) {
-          paramString2 = Long.valueOf(l2);
-        }
-        l1 = paramString2.longValue();
-        QLog.i("AVTraceUtil", 2, paramString1 + ": " + (l2 - l1));
+        this.a.jdField_a_of_type_Int = 1;
+        paramArrayOfByte.b("Enter_SendMode");
+        bool1 = bool2;
+        continue;
+        this.a.jdField_a_of_type_Boolean = false;
+        bool1 = bool2;
+        continue;
+        paramArrayOfByte.a(this.a.b);
+        bool1 = bool2;
       }
     }
   }

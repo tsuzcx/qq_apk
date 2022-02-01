@@ -1,22 +1,34 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Queue;
 
 class aglr
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Animator.AnimatorListener
 {
-  aglr(aglj paramaglj) {}
+  aglr(aglq paramaglq) {}
   
-  public void onGlobalLayout()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((aglj.a(this.a).a.getLineCount() > 3) && (aglj.a(this.a).h()) && (aglj.a(this.a).C()) && (!bcnj.b()))
-    {
-      this.a.a.setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimation", 2, "onAnimationEnd");
+    }
+    aglq.a(this.a).remove();
+    if (aglq.a(this.a).isEmpty()) {
+      this.a.c();
+    }
+    while (aglq.a(this.a)) {
       return;
     }
-    this.a.a.setVisibility(8);
+    aglq.a(this.a).clear();
+    this.a.c();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,76 +1,52 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.ExpiredPushBanner;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.NoColumnError;
-import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
-import com.tencent.mobileqq.persistence.OGAbstractDao;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.now.NowQQLiveFragment;
 
 public class ayve
-  extends OGAbstractDao
+  implements bjey
 {
-  public ayve()
-  {
-    this.columnLen = 3;
-  }
+  public ayve(NowQQLiveFragment paramNowQQLiveFragment) {}
   
-  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    paramEntity = (ExpiredPushBanner)paramEntity;
-    if (paramNoColumnErrorHandler == null)
+    if (4 == paramInt)
     {
-      paramEntity.cid = paramCursor.getLong(paramCursor.getColumnIndex("cid"));
-      paramEntity.md5 = paramCursor.getString(paramCursor.getColumnIndex("md5"));
-      paramEntity.endtime = paramCursor.getLong(paramCursor.getColumnIndex("endtime"));
-      return paramEntity;
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", ayvd.a);
+      this.a.getActivity().startActivity(paramView);
     }
-    int i = paramCursor.getColumnIndex("cid");
-    if (i == -1)
+    do
     {
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("cid", Long.TYPE));
-      i = paramCursor.getColumnIndex("md5");
-      if (i != -1) {
-        break label187;
+      return;
+      if (5 == paramInt)
+      {
+        paramView = new Intent();
+        Bundle localBundle = new Bundle();
+        paramView.setComponent(new ComponentName(this.a.getActivity(), ChatActivity.class));
+        localBundle.putString("uin", ayvd.a);
+        localBundle.putInt("uintype", 1008);
+        localBundle.putString("uinname", anzj.a(2131694061));
+        paramView.putExtras(localBundle);
+        paramView.setFlags(67108864);
+        paramView.putExtra("isforceRequestDetail", false);
+        paramView.putExtra("jump_from", 2);
+        this.a.getActivity().startActivity(paramView);
+        ayxc.a();
+        ayxc.b();
+        return;
       }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("md5", String.class));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("endtime");
-      if (i != -1) {
-        break label202;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("endtime", Long.TYPE));
-      return paramEntity;
-      paramEntity.cid = paramCursor.getLong(i);
-      break;
-      label187:
-      paramEntity.md5 = paramCursor.getString(i);
-    }
-    label202:
-    paramEntity.endtime = paramCursor.getLong(i);
-    return paramEntity;
-  }
-  
-  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
-  {
-    paramEntity = (ExpiredPushBanner)paramEntity;
-    paramContentValues.put("cid", Long.valueOf(paramEntity.cid));
-    paramContentValues.put("md5", paramEntity.md5);
-    paramContentValues.put("endtime", Long.valueOf(paramEntity.endtime));
-  }
-  
-  public String getCreateTableSql(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,cid INTEGER UNIQUE ,md5 TEXT ,endtime INTEGER)");
-    return localStringBuilder.toString();
+    } while (1 != paramInt);
+    NowQQLiveFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayve
  * JD-Core Version:    0.7.0.1
  */

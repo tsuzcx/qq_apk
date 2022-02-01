@@ -1,75 +1,97 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.FeedsProtocol.TopicCfg;
+import com.tencent.pb.now.ilive_feeds_read.TopicCfg;
+import java.util.List;
 
 public class aydg
 {
-  public static String a(ChatMessage paramChatMessage)
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  private String d;
+  
+  public static aysk a(List<ilive_feeds_read.TopicCfg> paramList, aysk paramaysk)
   {
-    if (!(paramChatMessage instanceof MessageForStructing)) {
-      return "";
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      paramList = (ilive_feeds_read.TopicCfg)paramList.get(0);
+      paramaysk.a = new aydg();
+      paramaysk.a.d(paramList.jump_url.get());
+      paramaysk.a.b(paramList.topic_name.get());
+      paramaysk.a.a(paramList.topic_desc.get());
+      paramaysk.a.b(paramList.topic_parti_num.get());
+      paramaysk.a.c(paramList.topic_pic_url.get());
+      paramaysk.a.a(paramList.topic_tag.get());
+      paramaysk.a.c(paramList.topic_type.get());
     }
-    paramChatMessage = (MessageForStructing)paramChatMessage;
-    if (!(paramChatMessage.structingMsg instanceof StructMsgForGeneralShare)) {
-      return "";
-    }
-    return ((StructMsgForGeneralShare)paramChatMessage.structingMsg).mContentCover;
+    return paramaysk;
   }
   
-  public static String a(MessageForArkApp paramMessageForArkApp)
+  public static VideoData a(List<FeedsProtocol.TopicCfg> paramList, VideoData paramVideoData)
   {
-    if ((paramMessageForArkApp == null) || (paramMessageForArkApp.ark_app_message == null) || (TextUtils.isEmpty(paramMessageForArkApp.ark_app_message.metaList))) {}
-    for (;;)
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      return "";
-      try
-      {
-        paramMessageForArkApp = new JSONObject(paramMessageForArkApp.ark_app_message.metaList);
-        if (!TextUtils.isEmpty(paramMessageForArkApp.optString("msgInfo")))
-        {
-          paramMessageForArkApp = new JSONObject(paramMessageForArkApp.optString("msgInfo")).optString("jump_url");
-          return paramMessageForArkApp;
-        }
-      }
-      catch (JSONException paramMessageForArkApp)
-      {
-        paramMessageForArkApp.printStackTrace();
-        QLog.e("ChatMessageHelper", 4, paramMessageForArkApp, new Object[0]);
-      }
+      paramList = (FeedsProtocol.TopicCfg)paramList.get(0);
+      paramVideoData.a = new aydg();
+      paramVideoData.a.d(paramList.jump_url.get());
+      paramVideoData.a.b(paramList.topic_name.get());
+      paramVideoData.a.a(paramList.topic_desc.get());
+      paramVideoData.a.b(paramList.topic_parti_num.get());
+      paramVideoData.a.c(paramList.topic_pic_url.get());
+      paramVideoData.a.a(paramList.topic_tag.get());
+      paramVideoData.a.c(paramList.topic_type.get());
     }
-    return "";
+    return paramVideoData;
   }
   
-  public static String b(ChatMessage paramChatMessage)
+  public String a()
   {
-    paramChatMessage = paramChatMessage.getExtInfoFromExtStr("report_key_bytes_oac_msg_extend");
-    if (TextUtils.isEmpty(paramChatMessage)) {
-      return "";
-    }
-    try
-    {
-      paramChatMessage = new JSONObject(paramChatMessage).optString("oac_triggle");
-      if (TextUtils.isEmpty(paramChatMessage)) {
-        return "";
-      }
-      int i = paramChatMessage.indexOf("ad_id=");
-      if (paramChatMessage.length() < i + 12) {
-        return paramChatMessage.substring(i + 6);
-      }
-      paramChatMessage = paramChatMessage.substring(i + 6, i + 12);
-      return paramChatMessage;
-    }
-    catch (JSONException paramChatMessage)
-    {
-      paramChatMessage.printStackTrace();
-    }
-    return "";
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String b()
+  {
+    return this.d;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public void d(String paramString)
+  {
+    this.d = paramString;
   }
 }
 

@@ -1,30 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alwt
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public alwt(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public alwt(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    Object localObject = ShortVideoPreviewActivity.a(this.a);
-    paramDialogInterface = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-    localObject = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
-    Intent localIntent = new Intent();
-    localIntent.setClassName((String)localObject, paramDialogInterface);
-    localIntent.addFlags(603979776);
-    localIntent.putExtra("file_send_path", this.a.c);
-    localIntent.putExtra("file_send_size", this.a.a);
-    localIntent.putExtra("file_send_duration", this.a.jdField_b_of_type_Long);
-    localIntent.putExtra("file_source", this.a.jdField_b_of_type_JavaLangString);
-    this.a.startActivity(localIntent);
-    ShortVideoPreviewActivity.a(this.a);
-    localObject = new Intent("key_video_select_confirm_ok_click");
-    ((Intent)localObject).putExtra("className", paramDialogInterface);
-    this.a.sendBroadcast((Intent)localObject);
+    QzoneSlideShowPreparingFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

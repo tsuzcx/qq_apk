@@ -1,33 +1,6 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.Iterator;
-import java.util.List;
-
-public class aeef
-  implements awnc<List<EmoticonPackage>>
+public abstract interface aeef
 {
-  public aeef(EmosmActivity paramEmosmActivity) {}
-  
-  public void a(List<EmoticonPackage> paramList)
-  {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      this.a.g.setVisibility(8);
-    }
-    do
-    {
-      return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramList.next();
-        if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
-          this.a.c = true;
-        }
-      }
-    } while (this.a.c);
-    this.a.g.setVisibility(8);
-  }
+  public abstract boolean a(boolean paramBoolean);
 }
 
 

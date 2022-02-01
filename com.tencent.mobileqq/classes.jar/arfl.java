@@ -1,20 +1,24 @@
-public abstract interface arfl
+public class arfl
 {
-  public abstract void a(String paramString1, String paramString2);
+  public String a;
+  public String b;
+  public String c;
   
-  public abstract void a(String paramString1, String paramString2, Throwable paramThrowable);
+  arfl(String paramString1, String paramString2, String paramString3)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
   
-  public abstract void b(String paramString1, String paramString2);
-  
-  public abstract void c(String paramString1, String paramString2);
-  
-  public abstract void d(String paramString1, String paramString2);
-  
-  public abstract void e(String paramString1, String paramString2);
+  public String toString()
+  {
+    return "UIElement(" + this.a + ", " + this.b + ", " + this.c + ")";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arfl
  * JD-Core Version:    0.7.0.1
  */

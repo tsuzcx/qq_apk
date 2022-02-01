@@ -1,26 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.CircleProgressBar;
-
-public class bhus
-  extends Handler
+public abstract interface bhus
 {
-  public bhus(CircleProgressBar paramCircleProgressBar) {}
+  public abstract void a(bhuq parambhuq, bhur parambhur, float paramFloat1, float paramFloat2);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = this.a;
-      paramMessage.i += 3;
-      this.a.postInvalidate();
-    } while (!this.a.a);
-    sendEmptyMessageDelayed(10000, 50L);
-  }
+  public abstract boolean a(float paramFloat1, float paramFloat2);
+  
+  public abstract boolean a(bhuq parambhuq, bhur parambhur, float paramFloat1, float paramFloat2);
+  
+  public abstract void b(bhuq parambhuq, bhur parambhur, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean b(bhuq parambhuq, bhur parambhur, float paramFloat1, float paramFloat2);
 }
 
 

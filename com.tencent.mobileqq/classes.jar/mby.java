@@ -1,37 +1,40 @@
-import com.tencent.av.app.VideoAppInterface;
+import android.content.Context;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.av.ui.AVActivity;
 import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class mby
+  extends mcd
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString = null;
-  
-  mby(int paramInt)
+  public mby(AVActivity paramAVActivity, Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramContext, paramInt);
   }
   
-  public long a()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Long == 0L) && (AudioHelper.e())) {
-      throw new IllegalArgumentException("seq未初始化:" + getClass().getSimpleName());
+    long l = AudioHelper.b();
+    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.h != paramInt)
+    {
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "onVideoOrientationChanged, mRotationAngle[" + this.jdField_a_of_type_ComTencentAvUiAVActivity.h + "->" + paramInt + "], seq[" + l + "], isFinishing[" + this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing() + "]");
+      if (AudioHelper.e())
+      {
+        Display localDisplay = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay();
+        QLog.w(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "onVideoOrientationChanged, Display.getRotation[" + localDisplay.getRotation() + "], seq[" + l + "]");
+      }
     }
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(VideoAppInterface paramVideoAppInterface)
-  {
-    if (paramVideoAppInterface == null) {
+    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing()) {
       return;
     }
-    paramVideoAppInterface.a(new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this });
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_ComTencentAvUiAVActivity.a(l, 270, paramBoolean);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvUiAVActivity.a(l, paramInt, paramBoolean);
   }
 }
 

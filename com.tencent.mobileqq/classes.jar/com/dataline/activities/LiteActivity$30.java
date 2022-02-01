@@ -1,6 +1,6 @@
 package com.dataline.activities;
 
-import bgmg;
+import bhmi;
 import com.tencent.mobileqq.data.MessageForPic;
 
 class LiteActivity$30
@@ -10,7 +10,7 @@ class LiteActivity$30
   
   public void run()
   {
-    this.a.md5 = bgmg.c(this.a.path);
+    this.a.md5 = bhmi.c(this.a.path);
     this.this$0.runOnUiThread(new LiteActivity.30.1(this));
   }
 }

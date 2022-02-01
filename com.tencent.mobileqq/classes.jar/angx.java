@@ -1,15 +1,34 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class angx
+public final class angx
+  implements EIPCResultCallback
 {
-  View jdField_a_of_type_AndroidViewView;
-  public ImageView a;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  View b;
+  public angx(angz paramangz) {}
   
-  public angx(angw paramangw) {}
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    boolean bool = true;
+    QLog.i("CmShow_CmShowRenderView", 1, "changeApolloStatus ipc code:" + paramEIPCResult.code);
+    ApolloUtil.b("changeApolloStatus code:" + paramEIPCResult.code);
+    angz localangz;
+    if (this.a != null)
+    {
+      localangz = this.a;
+      if (paramEIPCResult.code != 0) {
+        break label82;
+      }
+    }
+    for (;;)
+    {
+      localangz.a(bool);
+      return;
+      label82:
+      bool = false;
+    }
+  }
 }
 
 

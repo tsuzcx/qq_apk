@@ -1,60 +1,28 @@
-import android.os.Bundle;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.biz.PoiMapActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.util.WeakReference;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
 public class njy
+  implements bljm
 {
-  aanz jdField_a_of_type_Aanz;
-  HashMap<Integer, WeakReference<njz>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public njy(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public njy(aanz paramaanz)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Aanz = paramaanz;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
-  }
-  
-  public void a(int paramInt, njz paramnjz)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.i("PoiMapActivity", 2, "setOnItemClickListener" + paramInt);
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new WeakReference(paramnjz));
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebPushClient", 2, "data is null");
-      }
-    }
-    WeakReference localWeakReference;
-    do
+    paramAdapterView = (nka)this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.get(paramInt);
+    if (paramAdapterView != null)
     {
-      int i;
-      do
-      {
-        return;
-        i = paramBundle.getInt("msgType", -1);
-        if (i != 0) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("WebPushClient", 2, "type is 0");
-      return;
-      localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
-    } while ((localWeakReference == null) || (localWeakReference.get() == null));
-    ((njz)localWeakReference.get()).a(paramBundle);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.h = true;
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(paramAdapterView);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_result", "", "", "", "");
+    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

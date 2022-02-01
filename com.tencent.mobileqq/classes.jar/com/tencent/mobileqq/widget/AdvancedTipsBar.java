@@ -7,9 +7,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bkpg;
+import blqj;
 import com.tencent.common.app.BaseApplicationImpl;
-import zlx;
+import zps;
 
 public class AdvancedTipsBar
   extends TipsBar
@@ -26,7 +26,7 @@ public class AdvancedTipsBar
   
   public void a()
   {
-    if (!bkpg.a()) {}
+    if (!blqj.a()) {}
     for (int i = Color.parseColor("#03081A");; i = Color.parseColor("#FFFFFF"))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
@@ -47,9 +47,9 @@ public class AdvancedTipsBar
     super.c();
     if (this.b != null)
     {
-      this.b.setId(2131378770);
+      this.b.setId(2131378930);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-      localLayoutParams.rightMargin = zlx.a(BaseApplicationImpl.context, 16.0F);
+      localLayoutParams.rightMargin = zps.a(BaseApplicationImpl.context, 16.0F);
       this.b.setLayoutParams(localLayoutParams);
     }
   }
@@ -60,11 +60,11 @@ public class AdvancedTipsBar
     RelativeLayout.LayoutParams localLayoutParams;
     if (this.jdField_a_of_type_AndroidWidgetButton != null)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setId(2131378769);
+      this.jdField_a_of_type_AndroidWidgetButton.setId(2131378929);
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetButton.getLayoutParams();
       localLayoutParams.leftMargin = 0;
-      localLayoutParams.rightMargin = zlx.a(BaseApplicationImpl.context, 44.0F);
-      if (bkpg.a()) {
+      localLayoutParams.rightMargin = zps.a(BaseApplicationImpl.context, 44.0F);
+      if (blqj.a()) {
         break label110;
       }
     }
@@ -76,7 +76,7 @@ public class AdvancedTipsBar
       if (this.jdField_a_of_type_AndroidWidgetTextView != null)
       {
         localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-        localLayoutParams.addRule(0, 2131378769);
+        localLayoutParams.addRule(0, 2131378929);
         this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
       }
       return;

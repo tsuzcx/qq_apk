@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import mqq.os.MqqHandler;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajgm
-  extends anxg
+  implements View.OnClickListener
 {
-  public ajgm(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
+  public ajgm(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (paramInt1 == 8) {
-      this.a.a.sendEmptyMessage(1018);
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener");
     }
-  }
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (paramInt1 == 8) {
-      this.a.a.sendEmptyMessage(1016);
-    }
+    bdll.b(null, "dc00899", "Grp_find_new", "", "grptab", "location_set_exp", 0, 0, "", "", "", "");
+    this.a.getActivity().requestPermissions(new ajgn(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

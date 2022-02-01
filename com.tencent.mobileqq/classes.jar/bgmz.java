@@ -1,35 +1,45 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
 
-class bgmz
-  implements xep
+public class bgmz
+  extends aojs
 {
-  bgmz(bgmp parambgmp) {}
+  public bgmz(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public void a(xab paramxab, biau parambiau)
+  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    if ((parambiau != null) && (parambiau.isShowing())) {
-      parambiau.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("VisitorTroopCardFragment.Activity", 2, "onQueryJoinTroopCanNoVerify result:" + paramBoolean);
     }
-    xen.a(this.a.a);
-    if ((paramxab != null) && (paramxab.jdField_a_of_type_Int == 0))
+    if (paramBoolean)
     {
-      xen.a(paramxab.jdField_a_of_type_JavaLangString, this.a.a);
-      bgmp.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("VisitorTroopCardFragment.Activity", 2, "onQueryJoinTroopCanNoVerify noVerify:" + paramInt);
+      }
+      this.a.b = paramInt;
+      if (this.a.b == 1)
+      {
+        if (this.a.a.isHomeworkTroop())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("VisitorTroopCardFragment.Activity", 2, "onQueryJoinTroopCanNoVerify isHomeworkTroop true");
+          }
+          this.a.a(1);
+          return;
+        }
+        this.a.e();
+        return;
+      }
+      VisitorTroopCardFragment.b(this.a);
       return;
     }
-    if (!bgnt.g(BaseApplicationImpl.getContext()))
-    {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131693949, 1).a();
-      return;
-    }
-    this.a.c = "open";
-    bgmp.a(this.a);
+    VisitorTroopCardFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgmz
  * JD-Core Version:    0.7.0.1
  */

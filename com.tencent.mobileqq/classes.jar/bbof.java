@@ -1,305 +1,48 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.mobileqq.search.model.SearchEntryDataModel.1;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import pb.unify.search.UnifySearchDiscovery.HotSearchItem;
-import pb.unify.search.UnifySearchDiscovery.Result;
-import pb.unite.search.DynamicDiscovery.HotSearchItem;
-import pb.unite.search.DynamicDiscovery.Result;
-
 public abstract class bbof
-  implements bbmw
 {
-  public int a;
-  public final Object a;
-  public boolean a;
-  public byte[] a;
-  public int b;
+  public static final String a;
+  public long a;
+  private String b;
   
-  public bbof(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, boolean paramBoolean)
+  static
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    jdField_a_of_type_JavaLangString = bbhn.jdField_a_of_type_JavaLangString;
   }
   
-  public bbof(QQAppInterface paramQQAppInterface, int paramInt1, byte[] paramArrayOfByte, int paramInt2, boolean paramBoolean)
+  public bbof(long paramLong)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public static List<bbof> a(QQAppInterface paramQQAppInterface, List<DynamicDiscovery.Result> paramList, int paramInt)
+  private void a()
   {
-    QLog.d("SearchEntryDataModel818searchProto_old", 2, "convertPbDataToModel");
-    int i = 0;
-    Object localObject1 = Aladdin.getConfig(313);
-    if (localObject1 != null)
-    {
-      bbgu.b = ((AladdinConfig)localObject1).getString("SBWord_Source", "Hot_word");
-      i = ((AladdinConfig)localObject1).getIntegerFromString("SearchPage_UIType", 0);
-      bbgu.jdField_a_of_type_Int = ((AladdinConfig)localObject1).getIntegerFromString("SearchPage_RwordNum", 8);
-    }
-    ArrayList localArrayList = new ArrayList();
-    int[] arrayOfInt = new int[paramList.size()];
-    Object localObject3;
-    Object localObject2;
-    if (paramList.size() > 0)
-    {
-      int j = 0;
-      localObject1 = null;
-      localObject3 = null;
-      localObject2 = null;
-      if (j < paramList.size())
-      {
-        Object localObject4 = (DynamicDiscovery.Result)paramList.get(j);
-        Object localObject5 = null;
-        int m = ((DynamicDiscovery.Result)localObject4).type.get();
-        switch (m)
-        {
-        default: 
-          localObject4 = localObject3;
-          localObject3 = localObject2;
-          localObject2 = localObject4;
-          localObject4 = localObject5;
-        case 1: 
-        case 3: 
-          for (;;)
-          {
-            if (localObject4 != null) {
-              ((bbof)localObject4).b();
-            }
-            j += 1;
-            localObject4 = localObject3;
-            localObject3 = localObject2;
-            localObject2 = localObject4;
-            break;
-            localObject2 = ((DynamicDiscovery.Result)localObject4).hot_search_items.get();
-            if (((List)localObject2).size() < 6) {}
-            for (localObject4 = null;; localObject4 = new HotWordSearchEntryDataModel(paramQQAppInterface, m, ((DynamicDiscovery.Result)localObject4).toByteArray(), paramInt, false))
-            {
-              if (i == 2) {
-                localObject4 = null;
-              }
-              localObject2 = localObject3;
-              localObject3 = localObject4;
-              break;
-              if (bbgu.b.contentEquals("Hot_word"))
-              {
-                localObject5 = new String[((List)localObject2).size()];
-                int k = 0;
-                while (k < ((List)localObject2).size())
-                {
-                  localObject5[k] = ((DynamicDiscovery.HotSearchItem)((List)localObject2).get(k)).title.get().toStringUtf8();
-                  k += 1;
-                }
-                bgsg.a(paramQQAppInterface.getCurrentAccountUin(), (String[])localObject5);
-              }
-            }
-            localObject4 = new bbld(paramQQAppInterface, m, ((DynamicDiscovery.Result)localObject4).toByteArray(), paramInt, false);
-            localObject1 = localObject4;
-            localObject5 = localObject2;
-            localObject2 = localObject3;
-            localObject3 = localObject5;
-          }
-        }
-        if (((DynamicDiscovery.Result)localObject4).hot_search_items.get().size() < 6) {}
-        for (localObject4 = null;; localObject4 = new HotWordSearchEntryDataModel(paramQQAppInterface, m, ((DynamicDiscovery.Result)localObject4).toByteArray(), paramInt, false))
-        {
-          if (i == 1) {
-            localObject4 = null;
-          }
-          localObject3 = localObject4;
-          localObject5 = localObject2;
-          localObject2 = localObject3;
-          localObject3 = localObject5;
-          break;
-        }
-      }
-      switch (i)
-      {
-      }
-    }
-    for (;;)
-    {
-      boolean bool = a(arrayOfInt, bbgu.a(paramQQAppInterface, paramInt, false));
-      bbgu.a(paramQQAppInterface, paramInt, bool, false);
-      if (bool) {
-        bbgu.a(paramQQAppInterface, paramInt, arrayOfInt, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchEntryDataModel", 2, "convertPbDataToModel, modelList = " + localArrayList.size());
-      }
-      return localArrayList;
-      if (localObject1 != null) {
-        localArrayList.add(localObject1);
-      }
-      arrayOfInt[0] = 3;
-      if (localObject2 != null) {
-        localArrayList.add(localObject2);
-      }
-      arrayOfInt[1] = 1;
-      continue;
-      if (localObject2 != null) {
-        localArrayList.add(localObject2);
-      }
-      arrayOfInt[0] = 1;
-      continue;
-      if (localObject3 != null) {
-        localArrayList.add(localObject3);
-      }
-      arrayOfInt[0] = 7;
-      continue;
-      if (localObject2 != null) {
-        localArrayList.add(localObject2);
-      }
-      arrayOfInt[0] = 1;
-      if (localObject3 != null) {
-        localArrayList.add(localObject3);
-      }
-      arrayOfInt[1] = 7;
-      continue;
-      if (localObject3 != null) {
-        localArrayList.add(localObject3);
-      }
-      arrayOfInt[0] = 7;
-      if (localObject2 != null) {
-        localArrayList.add(localObject2);
-      }
-      arrayOfInt[1] = 1;
+    if (this.b == null) {
+      this.b = (jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long + "/");
     }
   }
   
-  private static boolean a(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
+  public final String a()
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramArrayOfInt1 == null) || (paramArrayOfInt2 == null))
-    {
-      bool1 = true;
-      return bool1;
-    }
-    if (paramArrayOfInt1.length != paramArrayOfInt2.length) {
-      return true;
-    }
-    int i = 0;
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i >= paramArrayOfInt1.length) {
-        break;
-      }
-      if (paramArrayOfInt1[i] != paramArrayOfInt2[i]) {
-        return true;
-      }
-      i += 1;
-    }
+    a();
+    return this.b + "thumb.jpg";
   }
   
-  public static List<bbof> b(QQAppInterface paramQQAppInterface, List<UnifySearchDiscovery.Result> paramList, int paramInt)
+  public final String b()
   {
-    QLog.d("SearchEntryDataModel818searchProto_new", 2, "convertUnifyPbDataToModel");
-    ArrayList localArrayList = new ArrayList();
-    int[] arrayOfInt = new int[paramList.size()];
-    if (paramList.size() > 0)
-    {
-      int i = 0;
-      if (i < paramList.size())
-      {
-        Object localObject = (UnifySearchDiscovery.Result)paramList.get(i);
-        arrayOfInt[i] = ((UnifySearchDiscovery.Result)paramList.get(i)).type.get();
-        int k = ((UnifySearchDiscovery.Result)localObject).type.get();
-        switch (k)
-        {
-        case 2: 
-        default: 
-          localObject = null;
-        }
-        for (;;)
-        {
-          if (localObject != null)
-          {
-            ((bbof)localObject).b();
-            localArrayList.add(localObject);
-          }
-          i += 1;
-          break;
-          List localList = ((UnifySearchDiscovery.Result)localObject).hot_search_items.get();
-          if (localList.size() < 6)
-          {
-            localObject = null;
-          }
-          else
-          {
-            String[] arrayOfString = new String[localList.size()];
-            int j = 0;
-            while (j < localList.size())
-            {
-              arrayOfString[j] = ((UnifySearchDiscovery.HotSearchItem)localList.get(j)).title.get().toStringUtf8();
-              j += 1;
-            }
-            bgsg.b(paramQQAppInterface.getCurrentAccountUin(), arrayOfString);
-            localObject = new HotWordSearchEntryDataModel(paramQQAppInterface, k, ((UnifySearchDiscovery.Result)localObject).toByteArray(), paramInt, true);
-            continue;
-            localObject = new bbld(paramQQAppInterface, k, ((UnifySearchDiscovery.Result)localObject).toByteArray(), paramInt, true);
-          }
-        }
-      }
-      boolean bool = a(arrayOfInt, bbgu.a(paramQQAppInterface, paramInt, true));
-      bbgu.a(paramQQAppInterface, paramInt, bool, true);
-      if (bool) {
-        bbgu.a(paramQQAppInterface, paramInt, arrayOfInt, true);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchEntryDataModel", 2, "convertPbDataToModel, modelList = " + localArrayList.size());
-    }
-    return localArrayList;
+    a();
+    return this.b + "combine.mp4";
   }
   
-  public void a()
+  public final String c()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ArrayOfByte = bgmg.a(BaseApplication.getContext().getFileStreamPath("search_discovery_sp_prefixpref_search_model_data" + localQQAppInterface.getCurrentAccountUin() + "_" + this.jdField_a_of_type_Int + "_" + this.b));
-        a(this.jdField_a_of_type_ArrayOfByte);
-        return;
-      }
-      this.jdField_a_of_type_ArrayOfByte = bgmg.a(BaseApplication.getContext().getFileStreamPath("search_discovery_sp_prefix_unifypref_search_model_data" + localQQAppInterface.getCurrentAccountUin() + "_" + this.jdField_a_of_type_Int + "_" + this.b));
-      a(this.jdField_a_of_type_ArrayOfByte);
-    }
+    a();
+    return this.b + "audio.mp4";
   }
   
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  protected void b()
+  public String d()
   {
-    if (this.jdField_a_of_type_ArrayOfByte == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("SearchEntryDataModel", 2, "saveDataToLocal, mRawData is null");
-      }
-      return;
-    }
-    ThreadManager.post(new SearchEntryDataModel.1(this), 5, null, true);
+    a();
+    return this.b;
   }
 }
 

@@ -1,21 +1,30 @@
-class vpx
-  implements vpo
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalDetailFragment;
+import com.tencent.biz.subscribe.event.UserStateUpdateEvent;
+import mqq.util.WeakReference;
+
+public class vpx
+  extends BroadcastReceiver
 {
-  vpx(vpu paramvpu) {}
+  private WeakReference<QCirclePersonalDetailFragment> a;
   
-  public void a()
+  public vpx(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment)
   {
-    if (vpu.a(this.a) != null) {
-      vpu.a(this.a).a();
-    }
+    this.a = new WeakReference(paramQCirclePersonalDetailFragment);
   }
   
-  public void b()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (vpu.a(this.a) != null) {
-      vpu.a(this.a).b();
+    paramContext = (QCirclePersonalDetailFragment)this.a.get();
+    if ((paramContext != null) && (paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_reload_get_main_page")) && (paramIntent.hasExtra("uin")) && (paramIntent.getStringExtra("uin").equals(QCirclePersonalDetailFragment.a(paramContext))))
+    {
+      QCirclePersonalDetailFragment.a(paramContext, false);
+      QCirclePersonalDetailFragment.b(paramContext, false);
+      aaak.a().a(new UserStateUpdateEvent());
     }
-    this.a.dismiss();
   }
 }
 

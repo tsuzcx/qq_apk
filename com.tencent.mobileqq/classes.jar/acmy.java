@@ -1,17 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingFragment;
-import kotlin.Metadata;
+import com.tencent.ad.tangram.analysis.AdAnalysisAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
-public final class acmy
-  implements DialogInterface.OnClickListener
+public class acmy
+  implements AdAnalysisAdapter
 {
-  public acmy(GdtMotiveBrowsingFragment paramGdtMotiveBrowsingFragment) {}
-  
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String getAppVersion()
   {
-    GdtMotiveBrowsingFragment.b(this.a);
+    return acvf.a();
+  }
+  
+  public String getUIN()
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    do
+    {
+      return null;
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    } while (localObject == null);
+    return ((AppRuntime)localObject).getAccount();
   }
 }
 

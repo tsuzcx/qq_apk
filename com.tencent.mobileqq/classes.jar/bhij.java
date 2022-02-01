@@ -1,49 +1,27 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.util.QZLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.lang.ref.WeakReference;
 
-public class bhij
-  extends bmts
+final class bhij
+  implements URLDrawable.URLDrawableListener
 {
-  private MQLruCache<String, Object> a;
+  bhij(WeakReference paramWeakReference) {}
   
-  public bhij(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public MQLruCache<String, Object> a()
-  {
-    return this.a;
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public void a(int paramInt)
-  {
-    this.a = new bhik(this, paramInt);
-    this.a.setLargeSize(1);
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void c()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    super.c();
     if (this.a != null)
     {
-      Iterator localIterator = this.a.getLargeCache().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Object localObject = this.a.get(str);
-        if ((localObject != null) && ((localObject instanceof Bitmap)))
-        {
-          ((Bitmap)localObject).recycle();
-          QZLog.i("DIYProfileTemplate.DIYLottieLoader", 4, "recycle bitmap key = " + str);
-        }
+      paramURLDrawable = (View)this.a.get();
+      if (paramURLDrawable != null) {
+        paramURLDrawable.postInvalidate();
       }
-      this.a.releaseLargeCache();
     }
   }
 }

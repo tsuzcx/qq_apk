@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import afwy;
-import aicv;
-import aidd;
+import aggs;
+import aimn;
+import aimv;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
@@ -11,16 +11,16 @@ import com.tencent.mobileqq.bubble.ChatXListView;
 public class MultiForwardChatPie$LongTextDownloadCallback$1
   implements Runnable
 {
-  public MultiForwardChatPie$LongTextDownloadCallback$1(aidd paramaidd, aicv paramaicv, CharSequence paramCharSequence) {}
+  public MultiForwardChatPie$LongTextDownloadCallback$1(aimv paramaimv, aimn paramaimn, CharSequence paramCharSequence) {}
   
   public void run()
   {
-    aicv.a(this.jdField_a_of_type_Aicv).setVisibility(8);
-    aicv.a(this.jdField_a_of_type_Aicv).setVisibility(0);
-    aicv.a(this.jdField_a_of_type_Aicv).setVisibility(0);
-    this.jdField_a_of_type_Aicv.e.setText(this.jdField_a_of_type_Aicv.h);
-    aicv.a(this.jdField_a_of_type_Aicv).a(aicv.a(this.jdField_a_of_type_Aicv), this.jdField_a_of_type_JavaLangCharSequence);
-    this.jdField_a_of_type_Aicv.F();
+    aimn.a(this.jdField_a_of_type_Aimn).setVisibility(8);
+    aimn.a(this.jdField_a_of_type_Aimn).setVisibility(0);
+    aimn.a(this.jdField_a_of_type_Aimn).setVisibility(0);
+    this.jdField_a_of_type_Aimn.e.setText(this.jdField_a_of_type_Aimn.h);
+    aimn.a(this.jdField_a_of_type_Aimn).a(aimn.a(this.jdField_a_of_type_Aimn), this.jdField_a_of_type_JavaLangCharSequence);
+    this.jdField_a_of_type_Aimn.F();
   }
 }
 

@@ -1,34 +1,13 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class aesz
-  extends avgl
+  implements asic
 {
-  public aesz(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public aesz(GroupManagerActivity paramGroupManagerActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = 1;
-    if (!paramBoolean1)
-    {
-      this.a.a(2131717834, 1);
-      return;
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean2) {
-      i = 2;
-    }
-    bcst.b(localQQAppInterface, "dc00898", "", "", "0X8009D11", "0X8009D11", 0, 0, String.valueOf(i), "", "", "");
-  }
+  public void a(int paramInt) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
-    }
-  }
+  public void b(int paramInt) {}
 }
 
 

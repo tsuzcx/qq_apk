@@ -1,25 +1,14 @@
-import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
-import java.util.Stack;
-
 public class bhyf
 {
-  private Stack<ChatThumbView> jdField_a_of_type_JavaUtilStack = new Stack();
-  
-  public bhyf(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
-  
-  public ChatThumbView a()
-  {
-    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
-      return null;
-    }
-    return (ChatThumbView)this.jdField_a_of_type_JavaUtilStack.pop();
-  }
-  
-  public void a(ChatThumbView paramChatThumbView)
-  {
-    this.jdField_a_of_type_JavaUtilStack.push(paramChatThumbView);
-  }
+  public static int b = 2;
+  public static int c = 1;
+  public int a;
+  public bhyc a;
+  public String a;
+  public bhyc b;
+  public bhyc c;
+  public int d;
+  public int e;
 }
 
 

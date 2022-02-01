@@ -1,32 +1,17 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.qphone.base.util.QLog;
 
 class aorn
-  implements MediaPlayer.OnPreparedListener
+  implements DialogInterface.OnCancelListener
 {
-  aorn(aorl paramaorl) {}
+  aorn(aori paramaori, Activity paramActivity) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMusicController", 2, "load bg music success. : " + aorl.b(this.a));
-      }
-      this.a.a.seekTo(0);
-      aorl.b(this.a, true);
-      if (aorl.b(this.a))
-      {
-        this.a.a.start();
-        aorl.c(this.a, false);
-      }
-      return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      paramMediaPlayer.printStackTrace();
-    }
+    QLog.d("AccountIdentityManager", 1, "dialog cancel");
+    aori.a(this.jdField_a_of_type_Aori, this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

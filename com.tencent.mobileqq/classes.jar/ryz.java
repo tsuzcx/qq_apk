@@ -1,22 +1,18 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.widget.TextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo.TopicVideoCard;
 
-final class ryz
-  extends ClickableSpan
+public final class ryz
+  implements Parcelable.Creator<DiscoveryInfo.TopicVideoCard>
 {
-  ryz(TextView paramTextView) {}
-  
-  public void onClick(View paramView)
+  public DiscoveryInfo.TopicVideoCard a(Parcel paramParcel)
   {
-    this.a.performClick();
+    return new DiscoveryInfo.TopicVideoCard(paramParcel);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public DiscoveryInfo.TopicVideoCard[] a(int paramInt)
   {
-    paramTextPaint.setColor(Color.parseColor("#FF00CAFC"));
+    return new DiscoveryInfo.TopicVideoCard[paramInt];
   }
 }
 

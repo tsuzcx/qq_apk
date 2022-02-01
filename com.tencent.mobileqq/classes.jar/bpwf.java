@@ -1,10 +1,7 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
-
 public abstract interface bpwf
+  extends bbiv
 {
-  public abstract void a(@NonNull ArrayList<bpwg> paramArrayList, @NonNull Context paramContext);
+  public abstract void a(boolean paramBoolean);
 }
 
 

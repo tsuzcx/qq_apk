@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import Wallet.AcsMsg;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class agdh
-  implements bdet
+public class agdh
 {
-  agdh(agdg paramagdg) {}
+  public long a;
+  public AcsMsg a;
+  public MessageRecord a;
   
-  public void a()
+  public String toString()
   {
-    int i = this.a.a.jdField_a_of_type_Int / 2;
-    int j = (int)(this.a.a.b - bggq.a(this.a.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.a.jdField_a_of_type_Bdfw.b / 2.0F);
-    int k = (int)(this.a.a.b - bggq.a(this.a.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.a.jdField_a_of_type_Bdfw.b / 2.0F);
-    bdfb localbdfb = new bdfb(new bdes[] { new bdew(450, i, j, i, k), new bdew(450, i, k, i, j) });
-    localbdfb.a = true;
-    this.a.a.jdField_a_of_type_Bdfw.a(new bdes[] { localbdfb });
+    return "QQReminderOrderModel{messageRecord=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord + ", acsMsg=" + this.jdField_a_of_type_WalletAcsMsg + ", orderTime=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

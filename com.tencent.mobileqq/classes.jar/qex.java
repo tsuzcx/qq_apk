@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.List;
 
 class qex
-  implements View.OnClickListener
+  implements ViewBase.OnClickListener
 {
-  qex(qet paramqet, pxk parampxk, snh paramsnh) {}
+  qex(qev paramqev) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_Pxk.a();
-    spb localspb = this.jdField_a_of_type_Snh.a();
-    if (localspb != null) {
-      localspb.a(paramView, this.jdField_a_of_type_Pxk.a(), 2);
+    oyj.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    if ((qeu.a(this.a.jdField_a_of_type_Qeu) != null) && (this.a.jdField_a_of_type_Int < qeu.a(this.a.jdField_a_of_type_Qeu).size()))
+    {
+      ozs.a(qeu.a(this.a.jdField_a_of_type_Qeu).getContext(), (BaseArticleInfo)qeu.a(this.a.jdField_a_of_type_Qeu).get(this.a.jdField_a_of_type_Int), paramViewBase.getEventAttachedData());
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    ozs.a(qeu.a(this.a.jdField_a_of_type_Qeu).getContext(), paramViewBase.getEventAttachedData());
   }
 }
 

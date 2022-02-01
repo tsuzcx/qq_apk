@@ -7,14 +7,14 @@ import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import tqr;
+import thn;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "params", "Lorg/json/JSONObject;", "callback", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJBridgeInvokeHandler$register$16
   extends Lambda
   implements Function2<JSONObject, String, Unit>
 {
-  public RIJBridgeInvokeHandler$register$16(tqr paramtqr)
+  public RIJBridgeInvokeHandler$register$16(thn paramthn)
   {
     super(2);
   }

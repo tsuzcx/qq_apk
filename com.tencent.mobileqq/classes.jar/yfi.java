@@ -1,34 +1,21 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetShareGroupListReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.List;
 
 public class yfi
-  extends QQUIEventReceiver<yff, ygi>
 {
-  public yfi(@NonNull yff paramyff)
-  {
-    super(paramyff);
-  }
+  public int a;
+  public String a;
+  public List<CommentEntry> a;
+  public boolean a;
+  public boolean b;
   
-  public void a(@NonNull yff paramyff, @NonNull ygi paramygi)
+  public yfi(boolean paramBoolean1, List<CommentEntry> paramList, int paramInt, boolean paramBoolean2, String paramString)
   {
-    if (paramygi.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      yqp.b("Q.qqstory.memories.MemoriesProfilePresenter", "update share group total count. %d.", Integer.valueOf(paramygi.jdField_a_of_type_Int));
-      yff.b(paramyff, paramygi.jdField_a_of_type_Int);
-      if (paramyff.a != null)
-      {
-        paramyff.a.shareGroupCount = yff.b(paramyff);
-        ThreadManager.post(new MemoriesProfilePresenter.GetShareGroupListReceiver.1(this, paramyff), 5, null, false);
-      }
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return ygi.class;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramBoolean2;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

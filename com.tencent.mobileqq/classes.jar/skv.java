@@ -1,25 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.view.MotionEvent;
+import android.widget.TextView;
 
-class skv
-  extends skd
+public class skv
+  extends LinkMovementMethod
 {
-  skv(ske paramske) {}
-  
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    ske.a(this.a, false);
-    ske.a(this.a, ske.a(this.a), null, 0, "");
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public int c()
-  {
-    return 1;
+    boolean bool = super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0)) {
+      Selection.removeSelection(paramSpannable);
+    }
+    paramTextView.setPressed(false);
+    paramTextView.setFocusable(false);
+    return bool;
   }
 }
 

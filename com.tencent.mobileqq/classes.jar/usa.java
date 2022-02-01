@@ -1,17 +1,18 @@
-import android.view.View;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import com.tencent.qflutter.utils.FLog;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-class usa
-  implements AdExposureChecker.ExposureCallback
+public class usa
+  implements DialogInterface.OnDismissListener
 {
-  usa(urz paramurz) {}
+  public usa(WSVerticalPageFragment paramWSVerticalPageFragment) {}
   
-  public void onExposure(WeakReference<View> paramWeakReference)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    FLog.e("AdExposureChecker", "onExposure");
-    urv.a(urz.a(this.a), (uru)this.a.a());
+    if (WSVerticalPageFragment.a(this.a) != null) {
+      WSVerticalPageFragment.a(this.a).e();
+    }
   }
 }
 

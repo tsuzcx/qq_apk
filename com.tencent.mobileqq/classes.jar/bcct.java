@@ -1,50 +1,25 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
+import com.tencent.mobileqq.search.fragment.MessageSearchDetailFragment;
+import com.tencent.widget.ListView;
 
 public class bcct
-  extends MSFServlet
+  extends bcbk<bcfu, bcpp>
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public bcct(MessageSearchDetailFragment paramMessageSearchDetailFragment, ListView paramListView, aoof paramaoof, FullMessageSearchResult.SearchResultItem paramSearchResultItem, String paramString, QQAppInterface paramQQAppInterface)
   {
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
-    {
-      paramIntent = blrz.a(paramFromServiceMsg.getWupBuffer());
-      if (paramIntent != null)
-      {
-        paramFromServiceMsg = new Bundle();
-        paramFromServiceMsg.putSerializable("data", paramIntent);
-        notifyObserver(null, 1002, true, paramFromServiceMsg, ayev.class);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneAlbumListNumServlet", 2, "inform QZoneAlbumListNumServlet isSuccess false");
-      }
-      notifyObserver(null, 1002, false, new Bundle(), ayev.class);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneAlbumListNumServlet", 2, "inform QZoneAlbumListNumServlet resultcode fail.");
-    }
-    notifyObserver(null, 1002, false, new Bundle(), ayev.class);
+    super(paramListView, paramaoof, paramSearchResultItem, paramString, paramQQAppInterface);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  protected bcil a(int paramInt)
   {
-    if (paramIntent == null) {
-      return;
-    }
-    byte[] arrayOfByte = new blrz(paramIntent.getLongExtra("selfuin", 0L), paramIntent.getStringExtra("refer")).encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null) {
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + "getAlbumListNum");
-    paramPacket.putSendData(paramIntent);
+    return new bcji(MessageSearchDetailFragment.a(this.a));
+  }
+  
+  protected bcoa a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new bcpp(paramViewGroup, 2131562882);
   }
 }
 

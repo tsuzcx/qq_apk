@@ -1,16 +1,16 @@
-class bffe
-  implements bgub
+import android.text.Editable;
+import android.text.Editable.Factory;
+
+public final class bffe
+  extends Editable.Factory
 {
-  bffe(bffd parambffd) {}
-  
-  public void a(int paramInt1, String paramString, int paramInt2)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    this.a.b(bffd.a(this.a));
+    if ((paramCharSequence instanceof begz)) {
+      return (Editable)paramCharSequence;
+    }
+    return new begz(paramCharSequence, 3, 20);
   }
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void b(String paramString, int paramInt1, int paramInt2) {}
 }
 
 

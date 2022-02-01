@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.os.Handler;
 import com.tencent.biz.pubaccount.VideoInfo;
-import ryx;
+import rpt;
 
 class VideoFollowManager$CheckAccountFollowedRunnable
   implements Runnable
@@ -11,9 +11,9 @@ class VideoFollowManager$CheckAccountFollowedRunnable
   
   private boolean a(VideoInfo paramVideoInfo, boolean paramBoolean)
   {
-    if ((paramVideoInfo.j != null) && (paramVideoInfo.j.equals(this.a.j)) && (!paramVideoInfo.c) && (paramVideoInfo.q != paramBoolean))
+    if ((paramVideoInfo.j != null) && (paramVideoInfo.j.equals(this.a.j)) && (!paramVideoInfo.c) && (paramVideoInfo.n != paramBoolean))
     {
-      paramVideoInfo.q = paramBoolean;
+      paramVideoInfo.n = paramBoolean;
       return true;
     }
     return false;
@@ -23,7 +23,7 @@ class VideoFollowManager$CheckAccountFollowedRunnable
   {
     try
     {
-      boolean bool = ryx.a(VideoFollowManager.a(this.this$0), Long.valueOf(this.a.j).longValue());
+      boolean bool = rpt.a(VideoFollowManager.a(this.this$0), Long.valueOf(this.a.j).longValue());
       if (VideoFollowManager.a(this.this$0) == null) {
         return;
       }

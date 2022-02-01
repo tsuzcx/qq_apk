@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.util;
 
 import android.os.Bundle;
-import axeq;
+import axxj;
 
 public final class NearbyProfileUtil$2
   implements Runnable
 {
-  public NearbyProfileUtil$2(axeq paramaxeq, Bundle paramBundle) {}
+  public NearbyProfileUtil$2(axxj paramaxxj, Bundle paramBundle) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Axeq.a(this.jdField_a_of_type_AndroidOsBundle, null, null, false, false, false, false);
+    this.jdField_a_of_type_Axxj.a(this.jdField_a_of_type_AndroidOsBundle, null, null, false, false, false, false);
   }
 }
 

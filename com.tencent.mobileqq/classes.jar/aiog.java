@@ -1,102 +1,18 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ProgressBar;
-import android.widget.RadioButton;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
-public class aiog
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
+class aiog
+  implements DialogInterface.OnClickListener
 {
-  public ProgressBar a;
-  public RadioButton a;
-  public RelativeLayout a;
-  public BubbleImageView a;
-  public WeakReference<aioj> a;
+  aiog(ainh paramainh, PublicAccountInfo paramPublicAccountInfo, aody paramaody) {}
   
-  public aiog(ZhituPanelView paramZhituPanelView, View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)paramView.findViewById(2131376508));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.d(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setRadius(5.0F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.b = false;
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131376509));
-    paramView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131376510));
-    this.jdField_a_of_type_AndroidWidgetRadioButton.setOnCheckedChangeListener(this);
-    if (paramZhituPanelView.a() == 1)
-    {
-      this.jdField_a_of_type_AndroidWidgetRadioButton.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetRadioButton.setVisibility(0);
-  }
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView.a() == 1) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      if (paramBoolean) {
-        onClick(paramCompoundButton);
-      }
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    Object localObject = (aioj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localObject == null) || (((aioj)localObject).jdField_a_of_type_JavaLangString == null) || (((aioj)localObject).jdField_a_of_type_Aiok == null) || (ZhituPanelView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView).a == null)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView.a() == 1)
-      {
-        ZhituPanelView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView, (aioj)localObject);
-        localObject = ains.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        if ((localObject != null) && (((ains)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView != null))
-        {
-          ((ains)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView.b();
-          bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ACA1", "0X800ACA1", this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, "", "", "", "");
-        }
-      }
-      else if (ZhituPanelView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView) != localObject)
-      {
-        Iterator localIterator = ZhituPanelView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView).a.iterator();
-        while (localIterator.hasNext()) {
-          ((aioj)localIterator.next()).d = false;
-        }
-        ((aioj)localObject).d = true;
-        ZhituPanelView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView).setVisibility(0);
-        ZhituPanelView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView).setEnabled(true);
-        if (!((aioj)localObject).b)
-        {
-          ZhituPanelView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView, (aioj)localObject);
-          ZhituPanelView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView).notifyDataSetChanged();
-        }
-        else
-        {
-          ains.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).d((aioj)localObject);
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs = false;
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected = true;
+    this.jdField_a_of_type_Aody.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+    this.jdField_a_of_type_Ainh.a(2, null);
   }
 }
 

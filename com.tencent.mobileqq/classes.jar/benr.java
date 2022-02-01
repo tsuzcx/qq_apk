@@ -1,17 +1,6 @@
-import android.widget.ListView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
-
-class benr
-  implements bepf
+public abstract interface benr
 {
-  benr(benp parambenp) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && (paramInt > 0)) {
-      this.a.a.a.a.smoothScrollBy(paramInt, 200);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

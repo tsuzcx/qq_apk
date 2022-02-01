@@ -1,117 +1,44 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
 
-public class aztk
+class aztk
+  implements Animator.AnimatorListener
 {
-  private static int jdField_a_of_type_Int = 5;
-  private static long jdField_a_of_type_Long;
-  private static String jdField_a_of_type_JavaLangString = aztk.class.getSimpleName();
-  private static ArrayList<aztl> jdField_a_of_type_JavaUtilArrayList;
+  aztk(azti paramazti, View paramView1, View paramView2) {}
   
-  static
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    jdField_a_of_type_Long = 60000L;
-  }
-  
-  public static bktt a()
-  {
-    try
+    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    paramAnimator.topMargin = (-azti.a(this.jdField_a_of_type_Azti));
+    this.b.setLayoutParams(paramAnimator);
+    if (this.jdField_a_of_type_Azti.f)
     {
-      if (jdField_a_of_type_JavaUtilArrayList == null) {
-        jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      Object localObject3 = b();
-      Object localObject1 = localObject3;
-      if (localObject3 == null)
-      {
-        localObject3 = new aztj();
-        ((bktt)localObject3).a();
-        jdField_a_of_type_JavaUtilArrayList.add(new aztl((bktt)localObject3));
-        localObject1 = localObject3;
-        if (QLog.isColorLevel())
-        {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "can't find sscm object, add new one, size= " + jdField_a_of_type_JavaUtilArrayList.size());
-          localObject1 = localObject3;
-        }
-      }
-      return localObject1;
-    }
-    finally {}
-  }
-  
-  public static void a()
-  {
-    try
-    {
-      jdField_a_of_type_JavaUtilArrayList = null;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
   }
   
-  public static void a(bktt parambktt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    for (;;)
+    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    paramAnimator.topMargin = (-azti.a(this.jdField_a_of_type_Azti));
+    this.b.setLayoutParams(paramAnimator);
+    if (this.jdField_a_of_type_Azti.f)
     {
-      aztl localaztl;
-      try
-      {
-        Object localObject = jdField_a_of_type_JavaUtilArrayList;
-        if (localObject == null) {}else {
-          localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
-        }
-        if (!((Iterator)localObject).hasNext()) {
-          continue;
-        }
-        localaztl = (aztl)((Iterator)localObject).next();
-        if (parambktt != localaztl.jdField_a_of_type_Bktt) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "return sscm, current size=" + jdField_a_of_type_JavaUtilArrayList.size());
-        }
-        if (jdField_a_of_type_JavaUtilArrayList.size() > jdField_a_of_type_Int)
-        {
-          ((Iterator)localObject).remove();
-          continue;
-        }
-        localaztl.jdField_a_of_type_Boolean = false;
-      }
-      finally {}
-      localaztl.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
   }
   
-  private static bktt b()
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (jdField_a_of_type_JavaUtilArrayList == null) {
-      return null;
+    if (!this.jdField_a_of_type_Azti.f) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    Object localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      aztl localaztl = (aztl)((Iterator)localObject).next();
-      if (!localaztl.jdField_a_of_type_Boolean)
-      {
-        localObject = localaztl.jdField_a_of_type_Bktt;
-        localaztl.jdField_a_of_type_Boolean = true;
-        long l = SystemClock.elapsedRealtime();
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "query for sscm, get one expired:" + (l - localaztl.jdField_a_of_type_Long));
-        }
-        if (l - localaztl.jdField_a_of_type_Long > jdField_a_of_type_Long) {
-          localaztl.jdField_a_of_type_Bktt.a();
-        }
-        return localObject;
-      }
-    }
-    return null;
   }
 }
 

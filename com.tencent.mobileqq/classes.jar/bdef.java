@@ -1,94 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
+import android.opengl.EGLContext;
 
-class bdef
-  extends anvp
+public class bdef
 {
-  bdef(bdee parambdee) {}
+  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
+  public bdfa a;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
   
-  protected void a(boolean paramBoolean, bdei parambdei)
+  public void a()
   {
-    Object localObject2;
-    if (QLog.isColorLevel())
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      localObject2 = new StringBuilder().append("SubAccountProtocManager.onGetBindSubAccount() isSucc=").append(paramBoolean).append(" data.mSubUin=");
-      if (parambdei == null)
-      {
-        ??? = "data is null";
-        QLog.d("SUB_ACCOUNT", 2, (String)???);
-      }
-    }
-    else
-    {
-      if (!bdee.a(this.a).l) {
-        break label73;
-      }
-    }
-    for (;;)
-    {
-      return;
-      ??? = parambdei.c;
-      break;
-      label73:
-      if ((!bdee.a(this.a)) && (ThreadManager.getSubThreadHandler() != null)) {
-        ThreadManager.getSubThreadHandler().postDelayed(bdee.a(this.a), 100L);
-      }
-      if (parambdei != null)
-      {
-        if (parambdei.a()) {
-          bddy.a(bdee.a(this.a), parambdei.a(), 2);
-        }
-        if (parambdei.b())
-        {
-          ??? = parambdei.b();
-          if (??? != null)
-          {
-            ??? = ((ArrayList)???).iterator();
-            while (((Iterator)???).hasNext())
-            {
-              localObject2 = (String)((Iterator)???).next();
-              bddy.c(bdee.a(this.a), (String)localObject2);
-            }
-          }
-        }
-        parambdei.a();
-      }
-      synchronized (bdee.c())
-      {
-        bdee.c(this.a, false);
-        bdee.d(this.a, true);
-        if ((parambdei == null) || (!parambdei.b)) {
-          continue;
-        }
-        bddy.a(bdee.a(this.a), parambdei.c, false);
-        ??? = (aqtu)aqlk.a().a(607);
-        if ((??? == null) || (((aqtu)???).a)) {
-          continue;
-        }
-        bdeg.a(bdee.a(this.a), parambdei.c);
-        return;
-      }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, bdei arg2)
-  {
-    synchronized ()
-    {
-      bdee.a(this.a, false);
+      this.jdField_a_of_type_AndroidOpenglEGLContext = null;
       return;
     }
   }
   
-  protected void c(boolean paramBoolean, bdei arg2)
+  public void a(EGLContext paramEGLContext)
   {
-    synchronized ()
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      bdee.b(this.a, false);
+      this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
       return;
     }
   }

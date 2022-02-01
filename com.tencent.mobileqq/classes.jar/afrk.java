@@ -1,20 +1,33 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import mqq.os.MqqHandler;
 
 public class afrk
-  extends bkfi
+  extends aojs
 {
-  public afrk(VisitorsActivity paramVisitorsActivity) {}
+  public afrk(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.a.f = false;
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.a.sendEmptyMessage(1);
+      }
+    }
+    while ((paramInt1 != 2) || (paramInt2 != 0)) {
+      return;
+    }
+    axan.a().b(paramString, this.a.app);
+    this.a.c();
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  protected void b(String paramString)
   {
-    this.a.c.setVisibility(0);
+    this.a.c();
+  }
+  
+  protected void c(String paramString)
+  {
+    this.a.c();
   }
 }
 

@@ -1,18 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class alrq
-  extends Handler
+  implements Animator.AnimatorListener
 {
-  public alrq(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  public alrq(LoginView paramLoginView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    switch (paramMessage.what)
-    {
-    }
+    LoginView.c(this.a, false);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    LoginView.a(this.a, LoginView.b(this.a), LoginView.d(this.a), LoginView.f(this.a), LoginView.h(this.a), 1.0F);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+    LoginView.c(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

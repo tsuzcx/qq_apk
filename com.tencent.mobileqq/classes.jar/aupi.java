@@ -1,61 +1,13 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.widget.ThemeImageView;
-
-public class aupi
-  extends RecyclerView.ViewHolder
+class aupi
+  implements bjhv
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
-  private TextView b;
-  private TextView c;
+  aupi(aupf paramaupf) {}
   
-  aupi(View paramView)
+  public void a(int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368711));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368713));
-    this.b = ((TextView)paramView.findViewById(2131368716));
-    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131368709));
-    this.c = ((TextView)paramView.findViewById(2131368715));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131368714));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368710);
-  }
-  
-  View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  Button a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetButton;
-  }
-  
-  TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  URLImageView a()
-  {
-    return this.jdField_a_of_type_ComTencentImageURLImageView;
-  }
-  
-  public ThemeImageView a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetThemeImageView;
-  }
-  
-  TextView b()
-  {
-    return this.c;
+    if (paramInt == 2) {
+      this.a.c();
+    }
   }
 }
 

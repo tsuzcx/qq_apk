@@ -1,18 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.soload.SoLoadInfo;
-import eipc.EIPCResult;
-
-class aksy
-  implements bcoa
+public class aksy
 {
-  aksy(akss paramakss, int paramInt) {}
-  
-  public void a(SoLoadInfo paramSoLoadInfo)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("res", paramSoLoadInfo);
-    this.jdField_a_of_type_Akss.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
-  }
+  public int a = 0;
+  public int b = 0;
+  public int c = 0;
+  public int d = 0;
+  public int e = 0;
+  public int f = 0;
+  public int g = 0;
+  public int h = 0;
+  public int i = 0;
+  public int j = 0;
+  public int k = 0;
 }
 
 

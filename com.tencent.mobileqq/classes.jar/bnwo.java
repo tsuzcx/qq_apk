@@ -1,13 +1,10 @@
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import java.util.HashMap;
 
 public class bnwo
-  implements bial
 {
-  public bnwo(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
-  
-  public void a(biaj parambiaj) {}
-  
-  public void a(biaj parambiaj, int paramInt1, int paramInt2) {}
+  public int a;
+  public HashMap<String, String> a;
+  public int b;
 }
 
 

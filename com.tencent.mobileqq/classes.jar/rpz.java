@@ -1,16 +1,18 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
 
-class rpz
-  implements rqb
+final class rpz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  rpz(rps paramrps, long paramLong, rqa paramrqa) {}
+  rpz(int paramInt1, ViewGroup.MarginLayoutParams paramMarginLayoutParams, int paramInt2, View paramView) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    List localList = rps.a(this.jdField_a_of_type_Rps, this.jdField_a_of_type_Long, rps.a(this.jdField_a_of_type_Rps));
-    this.jdField_a_of_type_Rqa.a(localList);
-    rps.b(this.jdField_a_of_type_Rps).remove(this);
+    int i = (int)(paramValueAnimator.getAnimatedFraction() * this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.bottomMargin = (i + this.b);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams);
   }
 }
 

@@ -1,10 +1,10 @@
 package dov.com.qq.im.capture.music;
 
 import android.os.SystemClock;
-import bgjw;
-import bhhf;
-import bhhh;
-import bomw;
+import bhjx;
+import bihu;
+import bihw;
+import bpor;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
 import com.tencent.qphone.base.util.QLog;
@@ -14,15 +14,15 @@ import java.io.File;
 class QimMusicDownloader$DownloadMusicTask
   implements Runnable
 {
-  bomw jdField_a_of_type_Bomw;
+  bpor jdField_a_of_type_Bpor;
   String jdField_a_of_type_JavaLangString;
   String b;
   
-  public QimMusicDownloader$DownloadMusicTask(String paramString1, String paramString2, bomw parambomw)
+  public QimMusicDownloader$DownloadMusicTask(String paramString1, String paramString2, bpor parambpor)
   {
     this.b = paramString1;
     this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Bomw = parambomw;
+    this.jdField_a_of_type_Bpor = parambpor;
   }
   
   public void run()
@@ -30,10 +30,10 @@ class QimMusicDownloader$DownloadMusicTask
     if (QLog.isColorLevel()) {
       QLog.d("MusicProviderView.Downloader", 2, "begin download " + this.jdField_a_of_type_JavaLangString + " " + this.b);
     }
-    if ((bgjw.a()) && (bgjw.b() < 20971520L))
+    if ((bhjx.a()) && (bhjx.b() < 20971520L))
     {
-      if (this.jdField_a_of_type_Bomw != null) {
-        this.jdField_a_of_type_Bomw.a(this.b, false);
+      if (this.jdField_a_of_type_Bpor != null) {
+        this.jdField_a_of_type_Bpor.a(this.b, false);
       }
       QLog.e("MusicProviderView.Downloader", 1, "download err no space");
     }
@@ -50,16 +50,16 @@ class QimMusicDownloader$DownloadMusicTask
       }
       localObject = new File(this.jdField_a_of_type_JavaLangString);
       l1 = SystemClock.uptimeMillis();
-      localObject = new bhhf(this.b, (File)localObject);
-      ((bhhf)localObject).n = true;
-      ((bhhf)localObject).b = 2;
-      ((bhhf)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      ((bhhf)localObject).b(512);
-      ((bhhf)localObject).a(this.jdField_a_of_type_Bomw);
-      i = bhhh.a((bhhf)localObject, null, null);
+      localObject = new bihu(this.b, (File)localObject);
+      ((bihu)localObject).n = true;
+      ((bihu)localObject).b = 2;
+      ((bihu)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      ((bihu)localObject).b(512);
+      ((bihu)localObject).a(this.jdField_a_of_type_Bpor);
+      i = bihw.a((bihu)localObject, null, null);
       l2 = SystemClock.uptimeMillis();
     } while (!QLog.isColorLevel());
-    QLog.i("MusicProviderView.Downloader", 2, "download cost " + (l2 - l1) + " result " + i + " key " + ((bhhf)localObject).jdField_a_of_type_JavaLangString);
+    QLog.i("MusicProviderView.Downloader", 2, "download cost " + (l2 - l1) + " result " + i + " key " + ((bihu)localObject).jdField_a_of_type_JavaLangString);
   }
 }
 

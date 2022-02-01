@@ -1,60 +1,102 @@
-import java.util.ArrayList;
+import dov.com.qq.im.ae.SessionWrap;
 
-class bqad
+public class bqad
 {
-  int jdField_a_of_type_Int = 3;
-  long jdField_a_of_type_Long = 0L;
-  bqad jdField_a_of_type_Bqad = null;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-  boolean jdField_a_of_type_Boolean = false;
+  public int a;
+  private SessionWrap jdField_a_of_type_DovComQqImAeSessionWrap;
+  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  public boolean b;
+  private int c;
+  public boolean c;
+  private int d;
+  public boolean d;
+  private int jdField_e_of_type_Int;
+  private boolean jdField_e_of_type_Boolean = true;
+  private boolean f;
   
-  static bqad a()
+  public bqad(int paramInt)
   {
-    bqad localbqad = new bqad();
-    localbqad.a();
-    return localbqad;
-  }
-  
-  String a()
-  {
-    switch (this.jdField_a_of_type_Int)
+    this.jdField_c_of_type_Int = 1;
+    this.jdField_d_of_type_Int = 11;
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
+    if (paramInt == 2) {}
+    for (paramInt = i;; paramInt = 1)
     {
-    default: 
-      return "LBS_REQ_OK";
-    case 1: 
-      return "LBS_REQ_PENDING";
-    }
-    return "LBS_REQ_PERM_OK";
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_Bqad == null) {
-      this.jdField_a_of_type_Bqad = new bqad();
+      this.jdField_b_of_type_Int = paramInt;
+      return;
     }
   }
   
-  boolean a(String paramString)
+  public bqab a()
   {
-    bqab.a("startLocation", String.format("filterId=%s , IdList=%s", new Object[] { paramString, this.jdField_a_of_type_JavaUtilArrayList.toString() }), null);
-    return this.jdField_a_of_type_JavaUtilArrayList.contains(paramString);
+    return new bqab(this, null);
   }
   
-  void b()
+  public bqad a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 3;
+    this.jdField_c_of_type_Int = paramInt;
+    return this;
   }
   
-  void c()
+  public bqad a(SessionWrap paramSessionWrap)
   {
-    this.jdField_a_of_type_Bqad.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Bqad.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Bqad.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Bqad.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Bqad.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_DovComQqImAeSessionWrap = paramSessionWrap;
+    if (paramSessionWrap != null) {
+      this.jdField_d_of_type_Int = bcwd.a(paramSessionWrap.jdField_a_of_type_Int);
+    }
+    return this;
+  }
+  
+  public bqad a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bqad a(boolean paramBoolean)
+  {
+    this.jdField_e_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public bqad b(int paramInt)
+  {
+    this.jdField_e_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public bqad b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public bqad c(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public bqad c(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public bqad d(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public bqad e(boolean paramBoolean)
+  {
+    this.jdField_d_of_type_Boolean = paramBoolean;
+    return this;
   }
 }
 

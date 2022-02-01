@@ -1,11 +1,6 @@
-import android.support.annotation.NonNull;
-import java.util.List;
-
 public abstract interface bpcf
-  extends bpeo
 {
-  @NonNull
-  public abstract List<String> a(int paramInt);
+  public abstract void a(int paramInt);
 }
 
 

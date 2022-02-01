@@ -1,52 +1,40 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qapmsdk.QAPM;
-import com.tencent.qapmsdk.base.meta.SceneMeta;
-import com.tencent.qapmsdk.resource.ResourceListener;
-import com.tencent.qapmsdk.resource.ResourceMonitor;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import tencent.im.oidb.submsgtype0x136.Submsgtype0x136.MsgBody;
 
 public class addk
-  extends adcg
-  implements adca, ResourceListener
+  implements adci
 {
-  public void a(String paramString)
+  private static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
   {
-    if (e()) {
-      QAPM.beginScene(paramString, QAPM.ModeResource);
-    }
-  }
-  
-  protected void b()
-  {
-    ResourceMonitor.setPublicMode(true);
-    ResourceMonitor.setResourceListener(this);
-  }
-  
-  public void b(String paramString)
-  {
-    if (e()) {
-      QAPM.endScene(paramString, QAPM.ModeResource);
-    }
-  }
-  
-  public String c()
-  {
-    return "resource";
-  }
-  
-  public void onMetaGet(SceneMeta paramSceneMeta)
-  {
-    double d = 100.0D * paramSceneMeta.cpu;
     if (QLog.isColorLevel()) {
-      QLog.i("QAPM_QQ_Impl", 2, "reportToDenta" + paramSceneMeta.stage + " " + d + " " + paramSceneMeta.memory + " " + paramSceneMeta.duration);
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x136");
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("cpuUsage", String.valueOf(d));
-    localHashMap.put("memory", String.valueOf(paramSceneMeta.memory));
-    localHashMap.put("scene", String.valueOf(paramSceneMeta.stage));
-    localHashMap.put("duration", String.valueOf(paramSceneMeta.duration));
-    bctj.a(BaseApplicationImpl.getContext()).a("", "actScenePerf", true, 0L, 0L, localHashMap, "");
+    Submsgtype0x136.MsgBody localMsgBody = new Submsgtype0x136.MsgBody();
+    try
+    {
+      localMsgBody.mergeFrom(paramArrayOfByte);
+      if (localMsgBody.uint32_msg_type.get() == 0) {
+        ((aoip)paramQQAppInterface.a(20)).a(String.valueOf(localMsgBody.uint64_group_id.get()), 1, 0, null, 0);
+      }
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x136 " + paramQQAppInterface);
+    }
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210.vProtobuf);
+    return null;
   }
 }
 

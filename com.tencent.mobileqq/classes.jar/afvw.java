@@ -1,49 +1,27 @@
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class afvw
+  implements View.OnClickListener
 {
-  public int a;
-  bgkk jdField_a_of_type_Bgkk;
-  volatile boolean jdField_a_of_type_Boolean;
+  public afvw(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public afvw(bgkk parambgkk, int paramInt)
+  public void onClick(View paramView)
   {
-    this(parambgkk, paramInt, false);
-  }
-  
-  public afvw(bgkk parambgkk, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Bgkk = parambgkk;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public bgkk a()
-  {
-    return this.jdField_a_of_type_Bgkk;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(afvw paramafvw)
-  {
-    if ((paramafvw == null) || (this.jdField_a_of_type_Bgkk == null)) {
-      return false;
-    }
-    return this.jdField_a_of_type_Bgkk.equals(paramafvw.jdField_a_of_type_Bgkk);
+    Bundle localBundle = new Bundle();
+    localBundle.putString(bhzu.e, anzj.a(2131714391));
+    localBundle.putString(bhzu.f, "CJCLUBT");
+    localBundle.putString(bhzu.d, "1450000516");
+    localBundle.putInt(bhzu.b, 3);
+    localBundle.putString(bhzu.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
+    localBundle.putString(bhzu.g, "svip");
+    localBundle.putString(bhzu.a, this.a.app.getCurrentAccountUin());
+    bhzu.a(this.a.app, this.a, localBundle);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

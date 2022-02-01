@@ -1,25 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
-class aeou
-  implements DialogInterface.OnClickListener
+public class aeou
+  extends BroadcastReceiver
 {
-  aeou(aeos paramaeos) {}
+  public aeou(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 1) {
-      this.a.b();
+    if (!this.a.isFinishing()) {
+      this.a.finish();
     }
-    while (aeos.a(this.a) == null) {
-      return;
-    }
-    aeos.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeou
  * JD-Core Version:    0.7.0.1
  */

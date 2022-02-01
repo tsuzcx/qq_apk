@@ -1,24 +1,17 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class atmu
-  implements atkw
+public class atmu
+  implements View.OnClickListener
 {
-  atmu(atmt paramatmt, BaseActivity paramBaseActivity) {}
+  public atmu(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public atoo a()
+  public void onClick(View paramView)
   {
-    Object localObject2 = null;
-    List localList = this.jdField_a_of_type_Atmt.a();
-    Object localObject1 = localObject2;
-    if (localList != null)
-    {
-      localObject1 = localObject2;
-      if (localList.size() > 0) {
-        localObject1 = new atpf(this.jdField_a_of_type_Atmt.a, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localList, atmt.a(this.jdField_a_of_type_Atmt));
-      }
-    }
-    return localObject1;
+    this.a.h();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

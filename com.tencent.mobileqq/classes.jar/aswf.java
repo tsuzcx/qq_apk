@@ -1,21 +1,37 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import androidx.annotation.NonNull;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class aswf
-  implements View.OnTouchListener
 {
-  public aswf(FileAssistantActivity paramFileAssistantActivity) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static aswf a(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (paramMotionEvent.getAction() == 4)
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramSosoLbsInfo != null)
     {
-      this.a.a.dismiss();
-      return true;
+      localObject1 = localObject2;
+      if (paramSosoLbsInfo.a != null)
+      {
+        localObject1 = new aswf();
+        ((aswf)localObject1).a = ((int)(paramSosoLbsInfo.a.a * 1000000.0D));
+        ((aswf)localObject1).b = ((int)(paramSosoLbsInfo.a.b * 1000000.0D));
+        ((aswf)localObject1).d = 1;
+        ((aswf)localObject1).c = ((int)paramSosoLbsInfo.a.e);
+      }
     }
-    return false;
+    return localObject1;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "lat:" + this.a + " lon:" + this.b + " alt:" + this.c + " type:" + this.d;
   }
 }
 

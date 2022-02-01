@@ -1,27 +1,27 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import bcst;
+import bdll;
 import com.tencent.qphone.base.util.QLog;
-import tty;
-import ttz;
+import tua;
+import tub;
 
 public class ServiceAccountFolderFeedAdapter$1
   implements Runnable
 {
-  public ServiceAccountFolderFeedAdapter$1(ttz paramttz, tty paramtty) {}
+  public ServiceAccountFolderFeedAdapter$1(tub paramtub, tua paramtua) {}
   
   public void run()
   {
     try
     {
-      if (ttz.a(this.this$0, this.a.jdField_a_of_type_JavaLangString))
+      if (tub.a(this.this$0, this.a.jdField_a_of_type_JavaLangString))
       {
         String str2 = this.a.jdField_a_of_type_JavaLangString;
         String str3 = this.a.c;
         if (this.a.jdField_a_of_type_JavaLangCharSequence == null) {}
         for (String str1 = "";; str1 = this.a.jdField_a_of_type_JavaLangCharSequence.toString())
         {
-          bcst.b(null, "dc00898", "", str2, "auth_page", "left_unfollow", 0, 0, "", "", str3, str1);
+          bdll.b(null, "dc00898", "", str2, "auth_page", "left_unfollow", 0, 0, "", "", str3, str1);
           return;
         }
       }

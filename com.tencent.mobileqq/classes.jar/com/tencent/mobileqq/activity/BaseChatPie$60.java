@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aihx;
+import airq;
 import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$60
@@ -13,7 +13,7 @@ class BaseChatPie$60
     if (QLog.isColorLevel()) {
       QLog.d(this.this$0.a, 2, "checkPESourceDowned onShow First");
     }
-    aihx.a();
+    airq.a();
   }
 }
 

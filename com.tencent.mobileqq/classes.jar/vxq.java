@@ -1,29 +1,135 @@
-import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
-
-public class vxq
-  extends ClickableSpan
+public class vxq<T>
 {
-  public vxq(QCirclePushAsyncTextView paramQCirclePushAsyncTextView) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private T jdField_a_of_type_JavaLangObject;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private int c;
   
-  public void onClick(@NonNull View paramView)
+  private vxq(int paramInt)
   {
-    if (QCirclePushAsyncTextView.a(this.a) != null) {
-      QCirclePushAsyncTextView.a(this.a).b();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static <T> vxq<T> a()
+  {
+    return new vxq(0);
+  }
+  
+  public static <T> vxq<T> a(int paramInt1, int paramInt2)
+  {
+    return new vxq(5).a(paramInt1).b(paramInt2);
+  }
+  
+  public static <T> vxq<T> a(String paramString)
+  {
+    return new vxq(4).b(paramString);
+  }
+  
+  public static <T> vxq<T> a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 2;; i = 3) {
+      return new vxq(i);
     }
   }
   
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  public static <T> vxq<T> b()
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#03081A"));
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setTextSize(bclx.a(13.0F));
-    zzr.a(paramTextPaint, false);
+    return new vxq(1);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public T a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public vxq<T> a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public vxq<T> a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public vxq<T> a(boolean paramBoolean, T paramT)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    return this;
+  }
+  
+  public vxq<T> a(byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    return this;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public vxq<T> b(int paramInt)
+  {
+    this.c = paramInt;
+    return this;
+  }
+  
+  public vxq<T> b(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public vxq<T> b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public vxq<T> c(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    return this;
   }
 }
 

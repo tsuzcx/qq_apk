@@ -1,45 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.redpacket.VKdRedPacketProgress;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.ui.dom.DomObject;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy.VideoAdExposureManager.PosListener.1;
+import java.lang.ref.WeakReference;
 
-public class trc
-  extends pmn
+public final class trc
+  implements ppm
 {
-  public trc(VKdRedPacketProgress paramVKdRedPacketProgress) {}
+  private WeakReference<trb> a;
   
-  public void a(boolean paramBoolean, String paramString)
+  public trc(trb paramtrb)
   {
-    if (paramBoolean) {}
-    try
+    this.a = new WeakReference(paramtrb);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.a != null)
     {
-      if (this.a.mAppendEvents.contains("redPacketProcessFinish"))
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("isFinish", paramBoolean);
-        localJSONObject.put("tips", paramString);
-        paramString = new JSONArray();
-        if (this.a.getDomObject() != null)
-        {
-          String str = this.a.getDomObject().getRef();
-          if (str != null) {
-            paramString.put(str);
-          }
-          paramString.put("redPacketProcessFinish");
-          VKdRedPacketProgress.access$000(this.a, "redPacketProcessFinish", paramString, localJSONObject);
-        }
+      trb localtrb = (trb)this.a.get();
+      if ((localtrb != null) && (trb.a(localtrb) != null)) {
+        trb.a(localtrb).post(new VideoAdExposureManager.PosListener.1(this, localtrb, paramInt));
       }
-      else
-      {
-        QLog.i("VKdRedPacketProgress", QLog.getUIN_REPORTLOG_LEVEL(), " red packet task do not get Tips!");
-        return;
-      }
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("VKdRedPacketProgress", QLog.getUIN_REPORTLOG_LEVEL(), " onRedPacketTaskFinish error :" + paramString.getMessage());
     }
   }
 }

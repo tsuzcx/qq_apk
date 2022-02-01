@@ -5,7 +5,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import bmez;
+import bngb;
 
 public abstract class IServiceHandler$Stub
   extends Binder
@@ -28,7 +28,7 @@ public abstract class IServiceHandler$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IServiceHandler))) {
       return (IServiceHandler)localIInterface;
     }
-    return new bmez(paramIBinder);
+    return new bngb(paramIBinder);
   }
   
   public IBinder asBinder()

@@ -1,16 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
-public class nzp
-  implements DialogInterface.OnClickListener
+class nzp
+  implements DialogInterface.OnShowListener
 {
-  public nzp(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, long paramLong, String paramString2, String paramString3) {}
+  nzp(nzl paramnzl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-    PublicAccountJavascriptInterface.setLocationPermissionGrant(this.b, this.c, 1);
+    nzl.a(this.a).getWindow().clearFlags(8);
   }
 }
 

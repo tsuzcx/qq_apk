@@ -1,26 +1,26 @@
-import android.support.v4.content.FileProvider;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 
-class uxa
-  implements zwi
+public class uxa
 {
-  uxa(uwz paramuwz) {}
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    QLog.d("QCircleConfig", 1, "tryGetSplashVideoAsync onRspCallback " + paramBoolean + ", " + paramString);
-    if (paramBoolean)
-    {
-      paramString = new File(paramString, uwz.a(this.a));
-      if ((paramString.exists()) && (paramString.length() > 0L))
-      {
-        uwz.a(FileProvider.getUriForFile(MobileQQ.getContext(), "com.tencent.mobileqq.fileprovider", paramString));
-        QLog.d("QCircleConfig", 1, "tryGetSplashVideoAsync splashVideoPath: " + uwz.b());
-      }
-    }
-  }
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public VideoFeedsAlphaMaskView a;
+  ZImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView;
+  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+  TextView b;
+  TextView c;
+  TextView d;
+  TextView e;
+  TextView f;
 }
 
 

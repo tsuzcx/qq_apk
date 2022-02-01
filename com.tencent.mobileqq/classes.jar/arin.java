@@ -1,23 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.SpecialCareInfo;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public final class arin
-  implements Parcelable.Creator<SpecialCareInfo>
+public class arin
 {
-  public SpecialCareInfo a(Parcel paramParcel)
+  public void a(araj[] paramArrayOfaraj)
   {
-    return new SpecialCareInfo(paramParcel);
-  }
-  
-  public SpecialCareInfo[] a(int paramInt)
-  {
-    return new SpecialCareInfo[paramInt];
+    QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[handleReadInJoyResetAllConfig] " + paramArrayOfaraj);
+    if (paramArrayOfaraj != null) {
+      try
+      {
+        if (paramArrayOfaraj.length > 0)
+        {
+          new pbu();
+          int j = paramArrayOfaraj.length;
+          int i = 0;
+          while (i < j)
+          {
+            boolean bool = TextUtils.isEmpty(paramArrayOfaraj[i].a);
+            if (bool) {}
+            i += 1;
+          }
+        }
+        return;
+      }
+      catch (Exception paramArrayOfaraj)
+      {
+        QLog.e("ReadinjoyResetFunctionConfProcessor", 1, "[handleReadInJoyResetAllConfig] ", paramArrayOfaraj);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aess;
-import aest;
+import afbw;
+import afbx;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bglp;
-import bgpa;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class OverloadTipsActivity
   extends BaseActivity
 {
-  private bgpa a;
+  private bhpc a;
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -28,7 +28,7 @@ public class OverloadTipsActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559516);
+    super.setContentView(2131559521);
     if ((getIntent() != null) && (getIntent().getExtras() != null)) {}
     for (paramBundle = getIntent().getExtras().getString("msg");; paramBundle = null)
     {
@@ -41,11 +41,11 @@ public class OverloadTipsActivity
         this.a.dismiss();
       }
       this.a = null;
-      this.a = bglp.a(this, 230);
-      this.a.setContentView(2131558985);
-      this.a.setTitle(null).setMessage(paramBundle).setPositiveButton(2131694163, new aess(this));
+      this.a = bhlq.a(this, 230);
+      this.a.setContentView(2131558984);
+      this.a.setTitle(null).setMessage(paramBundle).setPositiveButton(2131694181, new afbw(this));
       this.a.setTextContentDescription(paramBundle);
-      this.a.setOnKeyListener(new aest(this));
+      this.a.setOnKeyListener(new afbx(this));
       this.a.show();
       return false;
     }

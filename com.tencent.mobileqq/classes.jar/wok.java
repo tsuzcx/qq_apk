@@ -1,132 +1,65 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.util.SparseArray;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 public class wok
-  implements wou
 {
-  protected SharedPreferences a;
-  protected AtomicBoolean a;
+  public static SparseArray<Class<? extends zsv>> a = new SparseArray();
+  public static SparseArray<Boolean> b = new SparseArray();
   
-  public wok()
+  static
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    a.put(1, ysm.class);
+    b.put(1, Boolean.valueOf(true));
+    a.put(5, yst.class);
+    b.put(5, Boolean.valueOf(true));
   }
   
-  private void a(@Nullable String paramString1, @Nullable Object paramObject, @Nullable String paramString2)
+  public static zsv a(Context paramContext, int paramInt)
   {
-    paramString2 = new StringBuilder().append("key=").append(paramString1).append(" expected ").append(paramString2).append(" but value was ");
-    if (paramObject == null) {}
-    for (paramString1 = "null";; paramString1 = paramObject.getClass().getName())
-    {
-      yqp.d("ConfigManager", paramString1);
-      return;
+    Object localObject = (Class)a.get(paramInt, null);
+    Boolean localBoolean = (Boolean)b.get(paramInt, Boolean.valueOf(true));
+    if (localObject == null) {
+      throw new IllegalArgumentException(anzj.a(2131712579));
     }
-  }
-  
-  private void c()
-  {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      throw new IllegalStateException("have not attachContext");
-    }
-  }
-  
-  public <V> V a(@NonNull String paramString, @NonNull V paramV)
-  {
-    c();
-    Object localObject;
-    if (paramV.getClass() == Integer.class) {
-      localObject = Integer.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, ((Integer)paramV).intValue()));
-    }
-    for (;;)
-    {
-      yqp.b("ConfigManager", "get value : K : %s, V : %s", paramString, localObject);
-      if ((localObject == null) || (localObject.getClass() != paramV.getClass())) {
-        break label183;
-      }
-      return localObject;
-      if (paramV.getClass() == Long.class)
+    if (localBoolean.booleanValue()) {
+      try
       {
-        localObject = Long.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(paramString, ((Long)paramV).longValue()));
+        paramContext = (zsv)((Class)localObject).getConstructor(new Class[] { Context.class }).newInstance(new Object[] { paramContext });
+        return paramContext;
       }
-      else if (paramV.getClass() == String.class)
+      catch (NoSuchMethodException paramContext)
       {
-        localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString, (String)paramV);
+        throw new IllegalStateException(anzj.a(2131712575), paramContext);
       }
-      else
+      catch (IllegalAccessException paramContext)
       {
-        if (paramV.getClass() != Boolean.class) {
-          break;
-        }
-        localObject = Boolean.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(paramString, ((Boolean)paramV).booleanValue()));
+        throw new IllegalStateException(anzj.a(2131712578), paramContext);
+      }
+      catch (InstantiationException paramContext)
+      {
+        throw new IllegalStateException(anzj.a(2131712581), paramContext);
+      }
+      catch (InvocationTargetException paramContext)
+      {
+        throw new IllegalArgumentException(anzj.a(2131712577), paramContext);
       }
     }
-    throw new IllegalArgumentException("defValue class is not support : " + paramV.getClass());
-    label183:
-    a(paramString, localObject, paramV.getClass().getName());
-    return paramV;
-  }
-  
-  public void a()
-  {
-    yqp.b("ConfigManager", "onInit");
-  }
-  
-  public void a(Context paramContext)
-  {
-    if (paramContext == null) {
-      throw new IllegalArgumentException("Context should not be null");
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    try
     {
-      yqp.b("ConfigManager", "attachContext, " + paramContext);
-      this.jdField_a_of_type_AndroidContentSharedPreferences = paramContext.getSharedPreferences("qqstory_config", 4);
-      return;
+      localObject = (String)((Class)localObject).getDeclaredField("KEY").get(null);
+      return new yto(paramContext, (String)localObject);
     }
-    yqp.d("ConfigManager", "attachContext duplicate");
-  }
-  
-  public void a(String paramString)
-  {
-    c();
-    if (!this.jdField_a_of_type_AndroidContentSharedPreferences.edit().remove(paramString).commit())
+    catch (NoSuchFieldException paramContext)
     {
-      yqp.e("ConfigManager", "remove value error : K:%s.", new Object[] { paramString });
-      return;
+      throw new IllegalStateException(anzj.a(2131712582), paramContext);
     }
-    yqp.b("ConfigManager", "remove value success :  K:%s.", paramString);
-  }
-  
-  public <V> void a(String paramString, V paramV)
-  {
-    c();
-    boolean bool;
-    if (paramV.getClass() == Integer.class) {
-      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, ((Integer)paramV).intValue()).commit();
-    }
-    while (!bool)
+    catch (IllegalAccessException paramContext)
     {
-      yqp.e("ConfigManager", "set value error : K:%s, V:%s .", new Object[] { paramString, paramV });
-      return;
-      if (paramV.getClass() == Long.class) {
-        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong(paramString, ((Long)paramV).longValue()).commit();
-      } else if (paramV.getClass() == String.class) {
-        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(paramString, (String)paramV).commit();
-      } else if (paramV.getClass() == Boolean.class) {
-        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(paramString, ((Boolean)paramV).booleanValue()).commit();
-      } else {
-        throw new IllegalArgumentException("value class is not support : " + paramV.getClass());
-      }
+      throw new IllegalStateException(anzj.a(2131712576), paramContext);
     }
-    yqp.b("ConfigManager", "set value success :  K:%s, V:%s .", paramString, paramV);
-  }
-  
-  public void b()
-  {
-    yqp.b("ConfigManager", "onDestroy");
   }
 }
 

@@ -1,14 +1,14 @@
-public abstract interface bpvg
+import dov.com.qq.im.capture.view.MusicProviderView;
+
+public class bpvg
+  extends bpop
 {
-  public abstract void a(int paramInt);
+  public bpvg(MusicProviderView paramMusicProviderView) {}
   
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d(int paramInt);
+  public void b()
+  {
+    this.a.a(false);
+  }
 }
 
 

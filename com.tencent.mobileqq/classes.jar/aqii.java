@@ -1,33 +1,15 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
 
-public class aqii
-  implements Handler.Callback
+class aqii
+  implements DialogInterface.OnClickListener
 {
-  public aqii(SearchResultActivity paramSearchResultActivity) {}
+  aqii(aqih paramaqih) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      SearchResultActivity.a(this.a);
-      continue;
-      SearchResultActivity.b(this.a);
-      continue;
-      this.a.a.springBackOverScrollHeaderView();
-      QQToast.a(this.a, 2131693948, 0).b(this.a.getTitleBarHeight());
-      continue;
-      this.a.a.springBackOverScrollHeaderView();
-      continue;
-      this.a.a.springBackOverScrollHeaderView();
-    }
+    this.a.a.finish();
   }
 }
 

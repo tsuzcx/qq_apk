@@ -1,16 +1,53 @@
-class aice
-  implements aatt
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.24.1;
+
+public class aice
+  implements aibl
 {
-  aice(aibv paramaibv) {}
+  aice(aibr paramaibr) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    this.a.a.a(false, false, 4);
-  }
-  
-  public void b()
-  {
-    this.a.a.a();
+    View localView;
+    if (paramInt == 0)
+    {
+      localView = this.a.a().findViewById(2131367352);
+      if (localView != null) {}
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localView.setVisibility(0);
+          AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+          localAlphaAnimation.setDuration(300L);
+          localView.startAnimation(localAlphaAnimation);
+          localView.postDelayed(new AIOGalleryScene.24.1(this, localView), 8000L);
+          return;
+          if (1 != paramInt) {
+            break;
+          }
+        } while ((this.a.jdField_a_of_type_Bdcy == null) || (((aibr.J(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)aibr.K(this.a)).b)) || (this.a.c));
+        this.a.c(null);
+        return;
+        if (2 != paramInt) {
+          break;
+        }
+        this.a.a(null);
+      } while ((this.a.jdField_a_of_type_Bdcy == null) || (((aibr.L(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)aibr.M(this.a)).b)) || (this.a.c));
+      this.a.jdField_a_of_type_Bdcy.b(this.a.jdField_a_of_type_Aicx.a().jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData);
+      return;
+    } while (3 != paramInt);
+    this.a.jdField_a_of_type_Aicx.a().jdField_a_of_type_Aidx.i = true;
+    this.a.e.setText("");
+    this.a.u();
   }
 }
 

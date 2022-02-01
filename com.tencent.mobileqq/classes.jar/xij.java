@@ -1,43 +1,22 @@
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
+import com.tencent.qphone.base.util.QLog;
 
-class xij
-  implements xiz
+public class xij
+  extends woz<xdv, xdw>
 {
-  xij(xih paramxih) {}
+  public xij(StoryShareEncryptHelper.2 param2, long paramLong, bjbs parambjbs) {}
   
-  public void a()
+  public void a(@NonNull xdv paramxdv, @Nullable xdw paramxdw, @NonNull ErrorMessage paramErrorMessage)
   {
-    xih.a(this.a, this.a.a.a(xih.a(this.a), 5));
-    List localList = xih.a(this.a).a;
-    if ((xih.a(this.a) == null) && (localList.size() > 0)) {
-      xih.a(this.a, ((xiy)localList.get(0)).a);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.share.trans.helper", 2, "decrypt done costTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", resp:" + paramxdw);
     }
-    label199:
-    for (;;)
-    {
-      yqp.d("Q.qqstory.player.data.SimpleDataProvider", "current group:%s", new Object[] { xih.a(this.a) });
-      xih.a(this.a).a(xih.a(this.a), "");
-      return;
-      int i = 0;
-      for (;;)
-      {
-        if (i >= localList.size()) {
-          break label199;
-        }
-        if (((xiy)localList.get(i)).a.equals(xih.a(this.a)))
-        {
-          if (localList.size() <= i + 1) {
-            break;
-          }
-          xih.a(this.a, ((xiy)localList.get(i + 1)).a);
-          break;
-        }
-        i += 1;
-      }
-    }
+    yup.a("StoryShareEncryptHelper", "decrypt", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareUtilStoryShareEncryptHelper$2.a.a(paramxdw, this.jdField_a_of_type_Bjbs);
   }
-  
-  public void a(xix paramxix, String paramString, boolean paramBoolean) {}
 }
 
 

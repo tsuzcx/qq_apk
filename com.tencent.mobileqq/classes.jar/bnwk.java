@@ -1,73 +1,156 @@
-import android.os.Build.VERSION;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.RelativeLayout;
+import BOSSStrategyCenter.tAdvDesc;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.videoshelf.model.template.VideoShelfTemplate;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import cooperation.vip.pb.TianShuAccess.AdItem;
+import cooperation.vip.pb.TianShuAccess.MapEntry;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
 public class bnwk
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends almm
 {
-  public bnwk(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
   
-  public void onGlobalLayout()
+  public bnwk(tAdvDesc paramtAdvDesc)
   {
-    double d;
-    int i;
-    if (Build.VERSION.SDK_INT >= 16)
+    super(paramtAdvDesc);
+  }
+  
+  public bnwk(TianShuAccess.AdItem paramAdItem)
+  {
+    super(paramAdItem);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    if ((this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc == null) || (TextUtils.isEmpty(this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data)))
     {
-      AEVideoShelfEditFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      d = 0.0D;
-      if ((AEVideoShelfEditFragment.a(this.a) == null) || (AEVideoShelfEditFragment.a(this.a).getVideoHeight() == 0)) {
-        break label345;
-      }
-      d = AEVideoShelfEditFragment.a(this.a).getVideoWidth() / AEVideoShelfEditFragment.a(this.a).getVideoHeight();
-      if (d < 1.0D) {
-        break label253;
-      }
-      i = 1;
+      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
+      return;
     }
-    for (;;)
+    String str = this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data;
+    try
     {
-      label79:
-      Object localObject;
-      if (i != 0) {
-        if (d < 3.0D)
-        {
-          i = (int)(AEVideoShelfEditFragment.a(this.a).getWidth() / d);
-          localObject = (ViewGroup.MarginLayoutParams)AEVideoShelfEditFragment.a(this.a).getLayoutParams();
-          ((ViewGroup.MarginLayoutParams)localObject).height = i;
-          AEVideoShelfEditFragment.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
-          AEVideoShelfEditFragment.a(this.a, AEVideoShelfEditFragment.a(this.a).getWidth());
-          AEVideoShelfEditFragment.b(this.a, ((ViewGroup.MarginLayoutParams)localObject).height);
-        }
+      Object localObject = new JSONObject(str);
+      this.e = ((JSONObject)localObject).optString("topText");
+      this.f = ((JSONObject)localObject).optString("bottomText");
+      this.g = ((JSONObject)localObject).optString("textColor");
+      this.h = ((JSONObject)localObject).optString("cartoon");
+      this.i = ((JSONObject)localObject).optString("cartoon_md5");
+      this.j = ((JSONObject)localObject).optString("cartoonNum");
+      localObject = new bnwm(this, null);
+      ((almn)localObject).a = this.h;
+      ((almn)localObject).b = this.i;
+      if (!TextUtils.isEmpty(this.h)) {
+        ((almn)localObject).c = (QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.h.hashCode())) + ".zip");
       }
-      for (;;)
-      {
-        if (QLog.isDebugVersion()) {
-          QLog.d("AEVideoShelfEditFrag", 2, new Object[] { "centerView onGlobalLayout: ratio=", Double.valueOf(d), ", wxh=", Integer.valueOf(AEVideoShelfEditFragment.a(this.a)), "x", Integer.valueOf(AEVideoShelfEditFragment.b(this.a)) });
-        }
-        return;
-        AEVideoShelfEditFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-        break;
-        label253:
-        i = 0;
-        break label79;
-        if (d > 0.3333333333333333D)
-        {
-          i = (int)(AEVideoShelfEditFragment.a(this.a).getHeight() * d);
-          localObject = AEVideoShelfEditFragment.a(this.a).getLayoutParams();
-          ((ViewGroup.LayoutParams)localObject).width = i;
-          AEVideoShelfEditFragment.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
-          AEVideoShelfEditFragment.a(this.a, ((ViewGroup.LayoutParams)localObject).width);
-          AEVideoShelfEditFragment.b(this.a, AEVideoShelfEditFragment.a(this.a).getHeight());
-        }
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(2, localObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner parseJson error msg = " + localException.getMessage());
+      bnfx.a().a(2741, this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.task_id, 102, "CountDownBanner json parseError exception = " + localException.getMessage() + " json string = " + str);
+    }
+  }
+  
+  public void a(SharedPreferences paramSharedPreferences, String paramString)
+  {
+    if (paramSharedPreferences == null) {
+      return;
+    }
+    super.a(paramSharedPreferences, paramString);
+    try
+    {
+      this.e = paramSharedPreferences.getString("splash_union_banner_top_text" + paramString, "");
+      this.f = paramSharedPreferences.getString("splash_union_banner_bottom_text" + paramString, "");
+      this.g = paramSharedPreferences.getString("splash_union_banner_text_color" + paramString, "");
+      this.h = paramSharedPreferences.getString("splash_union_banner_cartoon_url" + paramString, "");
+      this.i = paramSharedPreferences.getString("splash_union_banner_md5" + paramString, "");
+      this.j = paramSharedPreferences.getString("splash_union_banner_cartoon_num" + paramString, "");
+      paramSharedPreferences = new bnwm(this, null);
+      paramSharedPreferences.a = this.h;
+      paramSharedPreferences.b = this.i;
+      if (!TextUtils.isEmpty(this.h)) {
+        paramSharedPreferences.c = (QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.h.hashCode())) + ".zip");
       }
-      label345:
-      i = 0;
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(2, paramSharedPreferences);
+      return;
+    }
+    catch (Exception paramSharedPreferences)
+    {
+      paramSharedPreferences.printStackTrace();
+      QLog.e("QbossADBannerConfigInfo", 1, "buildUnionBannerFromSP error msg = " + paramSharedPreferences.getMessage());
+    }
+  }
+  
+  public void a(String paramString, SharedPreferences paramSharedPreferences)
+  {
+    if (paramSharedPreferences == null) {
+      return;
+    }
+    super.a(paramString, paramSharedPreferences);
+    paramString = paramSharedPreferences.edit();
+    paramString.putString("splash_union_banner_top_text" + this.c, this.e);
+    paramString.putString("splash_union_banner_bottom_text" + this.c, this.f);
+    paramString.putString("splash_union_banner_text_color" + this.c, this.g);
+    paramString.putString("splash_union_banner_cartoon_url" + this.c, this.h);
+    paramString.putString("splash_union_banner_md5" + this.c, this.i);
+    paramString.putString("splash_union_banner_cartoon_num" + this.c, this.j);
+    paramString.apply();
+  }
+  
+  protected void b()
+  {
+    super.b();
+    if (this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem == null)
+    {
+      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
+      return;
+    }
+    Object localObject = new HashMap();
+    Iterator localIterator = this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.argList.get().iterator();
+    while (localIterator.hasNext())
+    {
+      TianShuAccess.MapEntry localMapEntry = (TianShuAccess.MapEntry)localIterator.next();
+      ((HashMap)localObject).put(localMapEntry.key.get(), localMapEntry.value.get());
+    }
+    try
+    {
+      this.e = ((String)((HashMap)localObject).get("topText"));
+      this.f = ((String)((HashMap)localObject).get("bottomText"));
+      this.g = ((String)((HashMap)localObject).get("textColor"));
+      this.h = ((String)((HashMap)localObject).get("cartoon"));
+      this.i = ((String)((HashMap)localObject).get("cartoon_md5"));
+      this.j = ((String)((HashMap)localObject).get("cartoonNum"));
+      localObject = new bnwm(this, null);
+      ((almn)localObject).a = this.h;
+      ((almn)localObject).b = this.i;
+      if (!TextUtils.isEmpty(this.h)) {
+        ((almn)localObject).c = (QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.h.hashCode())) + ".zip");
+      }
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(2, localObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner fillDataFromUnionSplashItem error msg = " + localException.getMessage());
     }
   }
 }

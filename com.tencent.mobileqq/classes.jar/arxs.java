@@ -1,28 +1,58 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageForTroopFee;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
-class arxs
-  implements View.OnClickListener
+public class arxs
+  extends DefaultHandler
 {
-  arxs(arxr paramarxr) {}
+  MessageForTroopFee a;
+  public String a;
   
-  public void onClick(View paramView)
+  public arxs()
   {
-    long l = System.currentTimeMillis();
-    if (l - arxr.a(this.a) > 1000L)
-    {
-      arxr.a(this.a, l);
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("AECAMERA_MODE", 202);
-      localBundle.putInt("VIDEO_STORY_FROM_TYPE", bnqb.i.a());
-      bnqf.a((BaseActivity)this.a.a.a, 120, localBundle);
-      bcst.b(((BaseActivity)this.a.a.a).app, "dc00898", "", "", "0X800A36E", "0X800A36E", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee = new MessageForTroopFee();
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public MessageForTroopFee a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_JavaLangString.equals("title")) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.title = paramArrayOfChar;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    while (!this.jdField_a_of_type_JavaLangString.equals("summary")) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.summary = paramArrayOfChar;
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    if (paramString3.equals("msg"))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.actionUrl = paramAttributes.getValue("url");
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.brief = paramAttributes.getValue("brief");
+    }
+    do
+    {
+      return;
+      if (paramString3.equals("title"))
+      {
+        this.jdField_a_of_type_JavaLangString = "title";
+        return;
+      }
+      if (paramString3.equals("summary"))
+      {
+        this.jdField_a_of_type_JavaLangString = "summary";
+        return;
+      }
+    } while (!paramString3.equals("source"));
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.source = paramAttributes.getValue("name");
   }
 }
 

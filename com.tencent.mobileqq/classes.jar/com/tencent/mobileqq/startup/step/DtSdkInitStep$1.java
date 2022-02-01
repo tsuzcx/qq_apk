@@ -13,8 +13,8 @@ final class DtSdkInitStep$1
     if (localBaseApplicationImpl != null)
     {
       long l = System.currentTimeMillis();
-      UserAction.initUserAction(localBaseApplicationImpl);
-      DtSdkInitStep.b();
+      UserAction.initUserAction(localBaseApplicationImpl, false);
+      DtSdkInitStep.d();
       UserAction.setLogAble(false, false);
       com.tencent.beacon.upload.UploadStrategy.DEFAULT_SENSOR_ENABLE = false;
       QLog.d("DtSdkInitStep", 1, "init beacon-dt success ! cost : " + (System.currentTimeMillis() - l) + " ms");

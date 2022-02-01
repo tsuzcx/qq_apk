@@ -1,27 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
 
 public class bphd
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public bphd(ArtFilterItemView paramArtFilterItemView, EditVideoArtFilter paramEditVideoArtFilter) {}
+  public bphd(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a = false;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.a(true);
-    }
+    this.a.f();
+    this.a.j();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,12 +1,11 @@
 public class apnq
 {
-  public void a(apns paramapns, Object paramObject) {}
+  public int a = 3000;
   
-  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject) {}
-  
-  public void b(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
+  public String toString()
+  {
+    return "ARCloudRecogReqObjectClassifyInfo{timeout = " + this.a + '}';
+  }
 }
 
 

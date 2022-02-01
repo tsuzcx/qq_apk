@@ -1,27 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
 class aymw
-  implements DialogInterface.OnClickListener
+  implements axvz
 {
-  aymw(aymu paramaymu) {}
+  aymw(aymj paramaymj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountPanel", 2, "onAccoutChangeFailed -> LoginActivity");
-    }
-    paramDialogInterface = new Intent(aymu.a(this.a), LoginActivity.class);
-    paramDialogInterface.putExtra("is_change_account", true);
-    paramDialogInterface.putExtra("uin", aymu.a(this.a));
-    paramDialogInterface.putExtra("befault_uin", aymu.a(this.a).getCurrentAccountUin());
-    aymu.a(this.a).startActivity(paramDialogInterface);
-    aymu.a(this.a, null);
+    this.a.c(paramBoolean);
+    this.a.u = paramBoolean;
   }
 }
 

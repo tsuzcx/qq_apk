@@ -1,44 +1,66 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import msf.msgcomm.msg_comm.MsgType0x210;
-import tencent.im.s2c.msgtype0x210.submsgtype0x128.submsgtype0x128.MsgBody;
+import pb.unify.search.UnifySearchAssociationWord.SuggestUrlItem;
 
 public class bcao
-  implements bcba
+  extends aokf
 {
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbyn parambbyn, MessageHandler paramMessageHandler)
+  public bcao(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  
+  public void a(String paramString, int paramInt, List<AssociateSearchWordsFragment.AssociateItem> paramList, List<UnifySearchAssociationWord.SuggestUrlItem> paramList1, UnifySearchAssociationWord.SuggestUrlItem paramSuggestUrlItem)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendDecoder", 2, "extendfriend limitchat offLinePush receive submsgtype0x128 decodeC2CMsgPkg_MsgType0x210 receive 0x128 push message");
+      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleSuggestUrlResult keyword=" + paramString + " activity keyword=" + this.a.jdField_a_of_type_JavaLangString + " size=" + paramList1.size());
     }
-    int i = paramMsgType0x210.sub_msg_type.get();
-    try
+    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString))
     {
-      paramList = new submsgtype0x128.MsgBody();
-      paramList.mergeFrom(paramMsgType0x210.msg_content.get().toByteArray());
-      paramMsgType0x210 = (asfs)paramMessageHandler.app.a(127);
-      if (i == 296) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramMsgType0x210.a(paramList, bool);
-        QLog.d("ExtendFriendDecoderExtendFriendLimitChat", 2, "SubMsgType0x27.ChatMatchInfo subType " + i);
-        bbzf.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
-        return;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment = new AssociateSearchWordsFragment();
       }
-      return;
+      paramList1 = new ArrayList();
+      paramSuggestUrlItem = new AssociateSearchWordsFragment.AssociateItem();
+      paramSuggestUrlItem.jdField_a_of_type_Int = 1;
+      StringBuilder localStringBuilder = new StringBuilder("");
+      if ((paramList != null) && (paramList.size() > 0))
+      {
+        paramInt = 0;
+        if (paramInt < paramList.size())
+        {
+          String str = ((AssociateSearchWordsFragment.AssociateItem)paramList.get(paramInt)).jdField_a_of_type_JavaLangString;
+          AssociateSearchWordsFragment.AssociateItem localAssociateItem = new AssociateSearchWordsFragment.AssociateItem();
+          localAssociateItem.jdField_a_of_type_JavaLangString = str;
+          localAssociateItem.jdField_a_of_type_Int = 3;
+          localAssociateItem.d = (paramInt + 1);
+          paramList1.add(localAssociateItem);
+          if (paramInt != paramList.size() - 1)
+          {
+            paramList1.add(paramSuggestUrlItem);
+            localStringBuilder.append(str).append("::");
+          }
+          for (;;)
+          {
+            paramInt += 1;
+            break;
+            localStringBuilder.append(str);
+          }
+        }
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(true);
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramString);
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramList1);
+      bcjy.a(null, new ReportModelDC02528().module("subweb_search").action("exp_thinkword_list").obj1(bcni.a(this.a.jdField_a_of_type_ArrayOfLong)).ver1(this.a.a()).ver4(localStringBuilder.toString()).ver7("{experiment_id:" + bcjy.b + "}"));
     }
-    catch (Exception paramMsgType0x210)
-    {
-      QLog.e("ExtendFriendDecoder", 1, "troopFormLog offLinePush receive submsgtype match chat0x128 decodeC2CMsgPkg_MsgType0x210 receive 0x128 push message, errInfo->" + paramMsgType0x210.getMessage() + " msgType" + i);
+  }
+  
+  public void a(String paramString1, Integer paramInteger, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleAssociateResultError keyword=" + paramString1 + "  resultCode=" + paramInteger + "  errorMsg=" + paramString2);
     }
   }
 }

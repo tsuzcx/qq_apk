@@ -1,9 +1,19 @@
-public class agsq
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+
+class agsq
+  extends aogi
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  agsq(agsp paramagsp) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    agsp.a(this.a).a.c();
+    agwl localagwl = (agwl)agsp.a(this.a).a(29);
+    if (localagwl != null) {
+      localagwl.f();
+    }
+  }
 }
 
 

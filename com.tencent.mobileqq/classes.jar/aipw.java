@@ -1,158 +1,38 @@
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForBlessPTV;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aipw
-  extends AsyncTask<Void, Void, Integer>
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  Intent jdField_a_of_type_AndroidContentIntent;
-  MessageForShortVideo jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  int jdField_b_of_type_Int;
-  WeakReference<BaseActivity> jdField_b_of_type_JavaLangRefWeakReference;
-  int c;
+  public aipw(TroopChatPie paramTroopChatPie) {}
   
-  public aipw(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
-    this.jdField_a_of_type_AndroidContentIntent = paramBaseActivity.getIntent();
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("param_entrance", 0);
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("thumbfile_send_path");
-    this.jdField_b_of_type_Int = 2;
-    this.c = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("uintype", -1);
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessSelectMemberActivity", 2, "BlessPTVProcessTask: create");
+    paramDialogInterface = (aoip)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if ((bhnv.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramDialogInterface != null)) {
+      if (((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).c(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+        paramDialogInterface.l(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      }
     }
-  }
-  
-  protected Integer a(Void... arg1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("BlessSelectMemberActivity", 2, "BlessPTVProcessTask: doInBackground start");
-    }
-    long l = SystemClock.elapsedRealtime();
-    ??? = (BaseActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if (??? == null) {
-      return Integer.valueOf(5);
-    }
-    if (!TextUtils.isEmpty(BlessSelectMemberActivity.jdField_a_of_type_JavaLangString))
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessSelectMemberActivity", 2, "BlessPTVProcessTask: currVideoPath is not null");
-      }
-      return Integer.valueOf(1);
-    }
-    SendVideoActivity.a(this.jdField_a_of_type_AndroidContentIntent);
-    bcjb.z = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_frame_count", 0);
-    bcjb.y = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_record_time", 0);
-    if (!bgmg.b(this.jdField_a_of_type_JavaLangString)) {
-      return Integer.valueOf(2);
-    }
-    Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
-    localObject1 = URLDrawable.getDrawable(new File(this.jdField_a_of_type_JavaLangString), (URLDrawable.URLDrawableOptions)localObject1);
-    ((URLDrawable)localObject1).downloadImediatly();
-    if (((URLDrawable)localObject1).getStatus() == 1)
-    {
-      localObject1 = bcec.a(0, this.jdField_b_of_type_Int);
-      bcfn localbcfn = bcec.a(this.jdField_a_of_type_AndroidContentIntent, (bcev)localObject1);
-      if (localbcfn == null) {
-        return Integer.valueOf(5);
-      }
-      localbcfn.d = true;
-      localbcfn.a = false;
-      if ((localbcfn.r != null) && (localbcfn.r.length() == 39)) {
-        localbcfn.r = localbcfn.r.substring(0, 28);
-      }
-      ((bcev)localObject1).a(localbcfn);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = ((MessageForShortVideo)new bcdm(???.app).a(localbcfn));
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo instanceof MessageForBlessPTV)) {
-        ((MessageForBlessPTV)this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo).videoFileName = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("bless_ptv_mp4_path");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessSelectMemberActivity", 2, "BlessPTVProcessTask: generate req and mr success, cost:" + (SystemClock.elapsedRealtime() - l));
-      }
-      l = SystemClock.elapsedRealtime();
-      ((aipe)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getManager(138)).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-      if (BlessSelectMemberActivity.a() == null) {
-        break label452;
-      }
-      BlessSelectMemberActivity.a().sendEmptyMessage(3);
-    }
-    try
-    {
-      synchronized (BlessSelectMemberActivity.a())
-      {
-        BlessSelectMemberActivity.a().wait(BlessSelectMemberActivity.a());
-        BlessSelectMemberActivity.b(SystemClock.elapsedRealtime() - l);
-        if (QLog.isColorLevel()) {
-          QLog.d("BlessSelectMemberActivity", 2, "BlessPTVProcessTask: encodeVideo cost = " + (SystemClock.elapsedRealtime() - l));
-        }
-        if (BlessSelectMemberActivity.b() >= BlessSelectMemberActivity.a())
-        {
-          return Integer.valueOf(9);
-          return Integer.valueOf(2);
-          label452:
-          QLog.e("BlessSelectMemberActivity", 1, "mUIHandler is null!");
-        }
-      }
-      return Integer.valueOf(BlessSelectMemberActivity.a());
-    }
-    catch (InterruptedException ???)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessSelectMemberActivity", 2, "BlessPTVProcessTask: wait exception = " + ???.getMessage());
-      }
-      return Integer.valueOf(5);
-    }
-  }
-  
-  protected void a(Integer arg1)
-  {
-    super.onPostExecute(???);
-    if (QLog.isColorLevel()) {
-      QLog.i("BlessSelectMemberActivity", 1, "BlessPTVProcessTask: onPostExecute result=" + ???);
-    }
-    BlessSelectMemberActivity.b(???.intValue());
-    synchronized (BlessSelectMemberActivity.b())
-    {
-      BlessSelectMemberActivity.b().set(true);
-      BlessSelectMemberActivity.b().notifyAll();
+      new bdlq(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_quitgrp").a(new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a }).a();
       return;
+      paramDialogInterface.k(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      continue;
+      if (paramDialogInterface != null) {
+        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131694008, 0).a();
+      } else {
+        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131691899, 0).a();
+      }
     }
-  }
-  
-  public boolean a()
-  {
-    if (ShortVideoUtils.a()) {
-      return true;
-    }
-    ShortVideoUtils.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    return ShortVideoUtils.a();
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
-    BlessSelectMemberActivity.b(1);
-    QLog.d("BlessSelectMemberActivity", 1, "Is video useable:" + a() + ", mEntrance:" + this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,22 +1,11 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
+import tencent.im.oidb.articlesummary.articlesummary.WendaInfo;
 
-public class qxj
-  extends ClickableSpan
+public final class qxj
+  implements pno<articlesummary.WendaInfo, qyp>
 {
-  public qxj(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
-  
-  public void onClick(View paramView)
+  public qyp a(articlesummary.WendaInfo paramWendaInfo)
   {
-    pha.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(afur.a(2, 14, this.a.getResources()));
+    return qyp.a(paramWendaInfo);
   }
 }
 

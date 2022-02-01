@@ -1,40 +1,31 @@
-import android.os.Handler;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.activity.ChatHistoryViewBase.1;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class advt
+public class advt
+  implements View.OnClickListener
 {
-  public ChatHistoryFileActivity a;
-  public boolean i = true;
+  public advt(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public abstract View a();
-  
-  public void a(long paramLong) {}
-  
-  public void b() {}
-  
-  public abstract boolean b();
-  
-  public void c() {}
-  
-  protected boolean c()
+  public void onClick(View paramView)
   {
-    return this.i;
-  }
-  
-  public void d() {}
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public void i_(int paramInt) {}
-  
-  protected void l()
-  {
-    this.i = false;
-    new Handler().postDelayed(new ChatHistoryViewBase.1(this), 1500L);
+    boolean bool = false;
+    bdll.b(this.a.app, "CliOper", "", "", "0X8007144", "0X8007144", 0, 0, "", "", "", "");
+    bdxc localbdxc = (bdxc)this.a.app.getManager(61);
+    if ((localbdxc != null) && (localbdxc.a() >= 2)) {}
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "click top right manage btn underTwo = " + bool);
+      }
+      AssociatedAccountActivity.a(this.a, bool);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bool = true;
+    }
   }
 }
 

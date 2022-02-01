@@ -1,17 +1,21 @@
-import com.tencent.ark.ark.PlayerStub;
-import com.tencent.ark.ark.PlayerStubFactory;
-
-final class appc
-  implements ark.PlayerStubFactory
+public class appc
 {
-  public ark.PlayerStub CreateStub()
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  
+  public String toString()
   {
-    return new appb();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("skuId:").append(this.c).append(",skuName:").append(this.d).append(",skuPrice:").append(this.e).append(",imageUrl:").append(this.b).append(",detailUrl:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     appc
  * JD-Core Version:    0.7.0.1
  */

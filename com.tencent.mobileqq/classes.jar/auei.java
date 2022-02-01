@@ -1,48 +1,55 @@
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.MethodCodec;
-import io.flutter.plugin.common.StandardMethodCodec;
-import java.util.HashMap;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 
-public abstract class auei
-  implements MethodChannel.MethodCallHandler
+public abstract interface auei
 {
-  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
+  public abstract int a();
   
-  protected abstract void a(String paramString, MethodChannel.Result paramResult);
+  public abstract long a();
   
-  protected abstract void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
+  public abstract FileManagerEntity a();
   
-  protected abstract void a(String paramString, Integer paramInteger, Double paramDouble, MethodChannel.Result paramResult);
+  public abstract WeiYunFileInfo a();
   
-  protected abstract void a(String paramString1, Integer paramInteger, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, MethodChannel.Result paramResult);
+  public abstract String a();
   
-  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
-  {
-    String str = paramMethodCall.method;
-    if ("reportException".equals(str))
-    {
-      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("category"), (String)paramMethodCall.argument("errorType"), (String)paramMethodCall.argument("errorMsg"), (String)paramMethodCall.argument("stack"), (HashMap)paramMethodCall.argument("extraInfo"), paramResult);
-      return;
-    }
-    if ("recordPageView".equals(str))
-    {
-      a((String)paramMethodCall.argument("pagePath"), paramResult);
-      return;
-    }
-    if ("reportScrollPerfomance".equals(str))
-    {
-      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("FPS"), (Double)paramMethodCall.argument("dropRate"), paramResult);
-      return;
-    }
-    if ("reportPageLoadTime".equals(str))
-    {
-      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("loadTime"), paramResult);
-      return;
-    }
-    paramResult.notImplemented();
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract String b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract int c();
+  
+  public abstract long c();
+  
+  public abstract String c();
+  
+  public abstract int d();
+  
+  public abstract String d();
+  
+  public abstract int e();
+  
+  public abstract String e();
+  
+  public abstract String f();
+  
+  public abstract String g();
+  
+  public abstract String h();
+  
+  public abstract String i();
 }
 
 

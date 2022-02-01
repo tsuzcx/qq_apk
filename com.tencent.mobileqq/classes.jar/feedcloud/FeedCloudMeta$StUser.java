@@ -14,6 +14,7 @@ public final class FeedCloudMeta$StUser
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field birthday = PBField.initUInt64(0L);
+  public final PBUInt32Field blackState = PBField.initUInt32(0);
   public final PBBytesField busiData = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBStringField desc = PBField.initString("");
   public final PBUInt32Field followState = PBField.initUInt32(0);
@@ -30,7 +31,7 @@ public final class FeedCloudMeta$StUser
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48, 56, 64, 74, 90, 98, 104, 112 }, new String[] { "id", "nick", "icon", "desc", "followState", "type", "sex", "birthday", "school", "location", "busiData", "frdState", "relationState" }, new Object[] { "", "", null, "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), "", "", localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, StUser.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48, 56, 64, 74, 90, 98, 104, 112, 120 }, new String[] { "id", "nick", "icon", "desc", "followState", "type", "sex", "birthday", "school", "location", "busiData", "frdState", "relationState", "blackState" }, new Object[] { "", "", null, "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), "", "", localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, StUser.class);
   }
 }
 

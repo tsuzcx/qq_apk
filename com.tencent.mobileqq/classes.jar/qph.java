@@ -1,59 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSLiteSwitchManager.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUGCVoice;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qph
+  implements View.OnClickListener
 {
-  private static volatile qph jdField_a_of_type_Qph;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b = true;
+  public qph(ComponentContentUGCVoice paramComponentContentUGCVoice) {}
   
-  public static qph a()
+  public void onClick(View paramView)
   {
-    if (jdField_a_of_type_Qph == null) {}
-    try
-    {
-      if (jdField_a_of_type_Qph == null) {
-        jdField_a_of_type_Qph = new qph();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ((ComponentContentUGCVoice.a(this.a) != null) && (!TextUtils.isEmpty(ComponentContentUGCVoice.a(this.a).jdField_a_of_type_JavaLangString))) {
+      if (ComponentContentUGCVoice.a(this.a).jdField_a_of_type_Boolean)
+      {
+        ocd.a(null, "", "0X8009CA4", "0X8009CA4", 0, 0, localQQAppInterface.getCurrentAccountUin(), ComponentContentUGCVoice.a(this.a).mFeedId + "", "2", "", false);
+        rky.a().a();
       }
-      return jdField_a_of_type_Qph;
     }
-    finally {}
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = true;
-    qpc.c();
-  }
-  
-  private boolean c()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  private boolean d()
-  {
-    return this.b;
-  }
-  
-  void a()
-  {
-    b();
-    PTSLiteSwitchManager.1 local1 = new PTSLiteSwitchManager.1(this);
-    ThreadManager.getFileThreadHandler().post(local1);
-  }
-  
-  public boolean a()
-  {
-    return (d()) && (qoo.a().a());
-  }
-  
-  @Deprecated
-  public boolean b()
-  {
-    return (c()) && (qoo.a().a());
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ocd.a(null, "", "0X8009CA4", "0X8009CA4", 0, 0, localQQAppInterface.getCurrentAccountUin(), ComponentContentUGCVoice.a(this.a).mFeedId + "", "1", "", false);
+      rky.a().a(this.a, ComponentContentUGCVoice.a(this.a));
+      continue;
+      if (QLog.isColorLevel()) {
+        QLog.d(ComponentContentUGCVoice.jdField_a_of_type_JavaLangString, 2, "mUGCVoiceInfo or its voiceUrl is null");
+      }
+    }
   }
 }
 

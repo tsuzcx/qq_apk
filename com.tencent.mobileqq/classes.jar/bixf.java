@@ -1,121 +1,46 @@
-import android.app.Notification;
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.RemoteViews;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bixf
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  protected float a;
-  protected DisplayMetrics a;
-  protected Integer a;
-  protected final String a;
-  protected float b;
-  protected Integer b;
-  protected final String b;
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  bixf(bixd parambixd, Context paramContext)
+  public bixf(DraggableGridView paramDraggableGridView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Float = 14.0F;
-    this.jdField_b_of_type_Float = 16.0F;
-    this.jdField_a_of_type_JavaLangString = "SearchForText";
-    this.jdField_b_of_type_JavaLangString = "SearchForTitle";
-    this.jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
-    ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
-    a(paramContext);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public float a()
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public Integer a()
-  {
-    return this.jdField_a_of_type_JavaLangInteger;
-  }
-  
-  protected void a(Context paramContext)
-  {
-    if ((this.jdField_a_of_type_JavaLangInteger != null) && (this.jdField_b_of_type_JavaLangInteger != null)) {
-      return;
+    if (DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView) != null) {
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(paramView, this.jdField_a_of_type_Int, this.b);
     }
-    try
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    if (DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView) != null) {
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, this.b);
+    }
+    if ((DraggableGridView.c(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)) && (!DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)))
     {
-      Notification localNotification = new Notification();
-      localNotification.setLatestEventInfo(paramContext, "SearchForTitle", "SearchForText", null);
-      paramContext = (ViewGroup)localNotification.contentView.apply(paramContext, null);
-      a(paramContext);
-      b(paramContext);
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.a((View)paramView.getParent(), paramView);
+      paramView.setVisibility(4);
+      paramView.setPressed(false);
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, this.jdField_a_of_type_Int);
+      DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, this.b);
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).x = DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView);
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).y = DraggableGridView.c(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView);
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, true);
     }
-    catch (Exception paramContext) {}
-  }
-  
-  protected boolean a(ViewGroup paramViewGroup)
-  {
-    int j = paramViewGroup.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      if ((paramViewGroup.getChildAt(i) instanceof TextView))
-      {
-        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
-        if ("SearchForTitle".equals(localTextView.getText().toString()))
-        {
-          this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_b_of_type_Float = localTextView.getTextSize();
-          this.jdField_b_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
-          return true;
-        }
-      }
-      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (a((ViewGroup)paramViewGroup.getChildAt(i))))
-      {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
-  }
-  
-  public float b()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public Integer b()
-  {
-    return this.jdField_b_of_type_JavaLangInteger;
-  }
-  
-  protected boolean b(ViewGroup paramViewGroup)
-  {
-    int j = paramViewGroup.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      if ((paramViewGroup.getChildAt(i) instanceof TextView))
-      {
-        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
-        if ("SearchForText".equals(localTextView.getText().toString()))
-        {
-          this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_a_of_type_Float = localTextView.getTextSize();
-          this.jdField_a_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
-          return true;
-        }
-      }
-      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (b((ViewGroup)paramViewGroup.getChildAt(i))))
-      {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
+    return true;
   }
 }
 

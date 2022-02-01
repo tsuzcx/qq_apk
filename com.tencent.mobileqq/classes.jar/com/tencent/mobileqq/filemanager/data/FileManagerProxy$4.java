@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.data;
 
 import android.text.TextUtils;
-import athj;
-import atwl;
+import atzd;
+import auog;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.Entity;
@@ -16,18 +16,18 @@ import java.util.Map;
 public class FileManagerProxy$4
   implements Runnable
 {
-  public FileManagerProxy$4(athj paramathj, long paramLong, String paramString) {}
+  public FileManagerProxy$4(atzd paramatzd, long paramLong, String paramString) {}
   
   public void run()
   {
     Object localObject2 = "select * from ( select * from " + FileManagerEntity.tableName() + " where bDelInFM = 0  and nRelatedSessionId = " + this.jdField_a_of_type_Long + "  order by srvTime desc limit " + 2000 + ") ";
-    EntityManager localEntityManager = athj.a(this.this$0).a().createEntityManager();
+    EntityManager localEntityManager = atzd.a(this.this$0).a().createEntityManager();
     localObject2 = localEntityManager.rawQuery(FileManagerEntity.class, (String)localObject2, null);
     for (;;)
     {
-      synchronized (athj.a(this.this$0))
+      synchronized (atzd.a(this.this$0))
       {
-        athj.a(this.this$0, new HashMap());
+        atzd.a(this.this$0, new HashMap());
         if (QLog.isColorLevel())
         {
           ??? = new StringBuilder().append("find ZipList file:");
@@ -67,7 +67,7 @@ public class FileManagerProxy$4
         ((FileManagerEntity)???).setStatus(1001);
         localObject1.remove((Entity)???);
       }
-      else if (!atwl.b(((FileManagerEntity)???).getFilePath()))
+      else if (!auog.b(((FileManagerEntity)???).getFilePath()))
       {
         if (QLog.isDevelopLevel()) {
           QLog.e("FileManagerProxy<FileAssistant>", 1, ((FileManagerEntity)???).fileName + ": file not exist!");
@@ -79,9 +79,9 @@ public class FileManagerProxy$4
       {
         try
         {
-          synchronized (athj.a(this.this$0))
+          synchronized (atzd.a(this.this$0))
           {
-            athj.a(this.this$0).put(((FileManagerEntity)???).zipInnerPath, ???);
+            atzd.a(this.this$0).put(((FileManagerEntity)???).zipInnerPath, ???);
           }
         }
         catch (Exception localException)

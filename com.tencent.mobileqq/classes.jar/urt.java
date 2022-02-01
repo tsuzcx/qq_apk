@@ -1,9 +1,4 @@
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
-
-public class urt
-{
-  private static final WSVerticalDataManager a = new WSVerticalDataManager(null);
-}
+public class urt {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

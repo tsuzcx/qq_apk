@@ -1,9 +1,17 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-public abstract interface shx
+public class shx
+  extends pmr
 {
-  public abstract void a(float paramFloat, View paramView, HorizontalRefreshLayout paramHorizontalRefreshLayout);
+  public shx(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
+  {
+    super(paramString);
+  }
+  
+  public void a(pmk parampmk)
+  {
+    parampmk.c();
+  }
 }
 
 

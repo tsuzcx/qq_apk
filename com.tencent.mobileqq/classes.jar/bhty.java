@@ -1,222 +1,226 @@
+import QQService.EVIPSPEC;
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffColorFilter;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.business.qvip.QVipBigClubSVIP9Config;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.io.File;
+import mqq.app.AppRuntime;
 
 public class bhty
-  extends WebViewPlugin
 {
-  private int jdField_a_of_type_Int = 2147483647;
-  ColorFilter jdField_a_of_type_AndroidGraphicsColorFilter = new PorterDuffColorFilter(-1, PorterDuff.Mode.SRC_IN);
-  private RedTouch jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch;
-  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
+  private static long[] a = { 0L, 0L };
   
-  public bhty()
+  public static int a(bhtz parambhtz)
   {
-    this.mPluginNameSpace = "allpeoplevote";
-  }
-  
-  private void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    int i = 0;
-    Object localObject = this.mRuntime.a();
-    WebViewFragment localWebViewFragment = this.mRuntime.a();
-    if (localWebViewFragment != null)
+    if ((parambhtz == bhtz.b) || (parambhtz == bhtz.c)) {}
+    do
     {
-      ImageView localImageView = localWebViewFragment.mSwiftTitleUI.a;
-      if (this.jdField_a_of_type_Int == 2147483647) {
-        this.jdField_a_of_type_Int = localImageView.getPaddingRight();
+      return 2130847070;
+      if (parambhtz == bhtz.d) {
+        return 2130847069;
       }
-      if ((!paramBoolean1) || (TextUtils.isEmpty(paramString)))
-      {
-        localImageView.setVisibility(8);
-        localImageView.setPadding(localImageView.getPaddingLeft(), localImageView.getPaddingTop(), this.jdField_a_of_type_Int, localImageView.getPaddingBottom());
-        return;
+      if (parambhtz == bhtz.e) {
+        return 2130847071;
       }
-      localImageView.setImageResource(2130844845);
-      int k;
-      if (localWebViewFragment.mSwiftTitleUI.b != null)
-      {
-        int j = localWebViewFragment.mSwiftTitleUI.b.getCurrentTextColor();
-        localImageView.setColorFilter(new PorterDuffColorFilter(j, PorterDuff.Mode.SRC_IN));
-        if (QLog.isColorLevel()) {
-          QLog.i("WholePeoplePlugin", 2, "titleColor:" + j);
-        }
-        localImageView.setVisibility(0);
-        if (!paramBoolean2) {
-          break label388;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch == null) {
-          this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch((Context)localObject, localImageView).a(53).a();
-        }
-        localObject = aqbk.a().b();
-        if (localObject == null) {
-          break label371;
-        }
-        j = ((Bundle)localObject).getInt("redPointCount", 0);
-        k = ((Bundle)localObject).getInt("redNumCount", 0);
-        if (k > 0) {
-          break label350;
-        }
-        label255:
-        localObject = bhtw.a(k, j);
-        this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject);
-        j = localImageView.getPaddingLeft();
-        k = localImageView.getPaddingTop();
-        int m = this.jdField_a_of_type_Int;
-        localImageView.setPadding(j, k, afur.a(i, this.jdField_a_of_type_ComTencentSmttSdkWebView.getResources()) + m, localImageView.getPaddingBottom());
-      }
-      label388:
-      for (;;)
-      {
-        localImageView.setOnClickListener(new bhtz(this, paramString));
-        return;
-        localImageView.setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
-        break;
-        label350:
-        if (k > 99)
-        {
-          i = 12;
-          break label255;
-        }
-        i = 10;
-        break label255;
-        label371:
-        if (this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.d();
-          continue;
-          if (this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
-            this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.d();
-          }
-        }
-      }
-    }
-    QLog.e("WholePeoplePlugin", 1, "setRightButton, not support " + localObject);
+    } while ((parambhtz != bhtz.f) && (parambhtz != bhtz.g));
+    return 2130847067;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public static String a(int paramInt1, int paramInt2, long paramLong)
   {
-    bool2 = false;
-    boolean bool3 = true;
-    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("allpeoplevote")) || (paramString3 == null)) {
-      bool1 = false;
+    return a(paramInt1, paramInt2, paramLong, false);
+  }
+  
+  private static String a(int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
+  {
+    if (!paramBoolean) {}
+    for (String str = armt.c().mAPngIconUrl;; str = armt.c().mAPngIconUrlNewGray)
+    {
+      if (paramBoolean) {
+        paramLong = 0L;
+      }
+      return String.format(str, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
     }
-    label230:
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    return paramString1 + File.separator + paramString2 + ".png";
+  }
+  
+  public static String a(AppRuntime paramAppRuntime, String paramString, EVIPSPEC paramEVIPSPEC)
+  {
+    Object localObject = (anyw)paramAppRuntime.getManager(51);
+    if (localObject != null)
+    {
+      localObject = ((anyw)localObject).e(paramString);
+      if (localObject != null)
+      {
+        int i;
+        if (paramEVIPSPEC == EVIPSPEC.E_SP_BIGCLUB)
+        {
+          i = VipUtils.a(paramAppRuntime, paramString, EVIPSPEC.E_SP_BIGCLUB);
+          return a((i & 0xF) << 8 | i >> 8, ((Friends)localObject).getServiceLevel(paramEVIPSPEC), ((Friends)localObject).bigClubTemplateId, false);
+        }
+        if (paramEVIPSPEC == EVIPSPEC.E_SP_SUPERVIP)
+        {
+          i = VipUtils.a(paramAppRuntime, paramString, EVIPSPEC.E_SP_SUPERVIP);
+          return a((i & 0xF) << 8 | i >> 8, ((Friends)localObject).getServiceLevel(paramEVIPSPEC), ((Friends)localObject).superVipTemplateId, false);
+        }
+        if (paramEVIPSPEC == EVIPSPEC.E_SP_QQVIP)
+        {
+          i = VipUtils.a(paramAppRuntime, paramString, EVIPSPEC.E_SP_QQVIP);
+          return a((i & 0xF) << 8 | i >> 8, ((Friends)localObject).getServiceLevel(paramEVIPSPEC), 0L, false);
+        }
+      }
+    }
+    return a(0, 0, 0L, false);
+  }
+  
+  public static String a(AppRuntime paramAppRuntime, String paramString, bhtz parambhtz, boolean paramBoolean)
+  {
+    paramAppRuntime = (anyw)paramAppRuntime.getManager(51);
+    if (paramAppRuntime != null)
+    {
+      paramAppRuntime = paramAppRuntime.e(paramString);
+      if (paramAppRuntime != null)
+      {
+        int i;
+        if ((parambhtz == bhtz.f) || (parambhtz == bhtz.g))
+        {
+          i = paramAppRuntime.getServiceLevel(EVIPSPEC.E_SP_BIGCLUB);
+          return a(parambhtz.a, i, paramAppRuntime.bigClubTemplateId, paramBoolean);
+        }
+        if ((parambhtz == bhtz.d) || (parambhtz == bhtz.e))
+        {
+          i = paramAppRuntime.getServiceLevel(EVIPSPEC.E_SP_SUPERVIP);
+          return a(parambhtz.a, i, paramAppRuntime.superVipTemplateId, paramBoolean);
+        }
+        if ((parambhtz == bhtz.b) || (parambhtz == bhtz.c))
+        {
+          i = paramAppRuntime.getServiceLevel(EVIPSPEC.E_SP_QQVIP);
+          return a(parambhtz.a, i, 0L, paramBoolean);
+        }
+      }
+    }
+    return a(0, 0, 0L, false);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
+  {
+    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+    paramString = armt.c().getVipIconSettingsUrl(paramString);
+    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
+    localIntent.putExtra("portraitOnly", true);
+    localIntent.putExtra("uin", paramQQAppInterface);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("hide_more_button", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, paramString, 256L, localIntent, false, -1);
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return paramInt > 0;
+  }
+  
+  public static int[] a(AppRuntime paramAppRuntime, String paramString)
+  {
+    paramAppRuntime = (anyw)paramAppRuntime.getManager(51);
+    if (paramAppRuntime != null)
+    {
+      paramAppRuntime = paramAppRuntime.e(paramString);
+      if (paramAppRuntime != null) {
+        return new int[] { paramAppRuntime.nameplateVipType, paramAppRuntime.grayNameplateFlag };
+      }
+    }
+    return new int[] { 0, 0 };
+  }
+  
+  private static String b(asxh paramasxh)
+  {
+    int i = VipUtils.a(paramasxh);
+    i = (i & 0xF) << 8 | i >> 8;
+    if ((i & 0xFF) == 3) {
+      return a(i, paramasxh.mBigVipLevel, paramasxh.mTemplateId, false);
+    }
+    if ((i & 0xFF) == 2) {
+      return a(i, paramasxh.mVipLevel, paramasxh.mTemplateId, false);
+    }
+    return null;
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return paramInt == 1;
+  }
+  
+  private static void c(String paramString, int paramInt, boolean paramBoolean)
+  {
+    long l;
+    if ("VIA_SETTINGME".equals(paramString))
+    {
+      l = System.currentTimeMillis();
+      if (Math.abs(l - a[0]) >= 3000L) {}
+    }
     do
     {
       do
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return bool1;
-              if ((this.mRuntime == null) || (this.mRuntime.a() == null)) {
-                return false;
-              }
-              if ((paramString3.equalsIgnoreCase("setRightButton")) && (paramVarArgs.length == 1))
-              {
-                for (;;)
-                {
-                  try
-                  {
-                    paramJsBridgeListener = this.mRuntime.a();
-                    bool1 = bool3;
-                    if (paramJsBridgeListener == null) {
-                      break;
-                    }
-                    bool1 = bool3;
-                    if (paramJsBridgeListener.isFinishing()) {
-                      break;
-                    }
-                    paramString2 = new JSONObject(paramVarArgs[0]);
-                    paramJsBridgeListener = paramString2.optString("callback");
-                  }
-                  catch (JSONException paramJsBridgeListener)
-                  {
-                    bool1 = bool3;
-                  }
-                  try
-                  {
-                    paramString1 = paramString2.optString("show");
-                    paramString2 = paramString2.optString("showRedNum");
-                    i = Integer.parseInt(paramString1);
-                  }
-                  catch (Exception paramString1)
-                  {
-                    i = 0;
-                  }
-                  try
-                  {
-                    j = Integer.parseInt(paramString2);
-                    if (!QLog.isColorLevel()) {
-                      break label328;
-                    }
-                    QLog.i("WholePeoplePlugin", 2, "setRightButton show=" + i + " showRedNum=" + j + " callback=" + paramJsBridgeListener);
-                  }
-                  catch (Exception paramString1)
-                  {
-                    do
-                    {
-                      break label230;
-                    } while (i != 1);
-                    bool1 = true;
-                    if (j != 1) {
-                      continue;
-                    }
-                    bool2 = true;
-                    continue;
-                  }
-                  a(bool1, bool2, paramJsBridgeListener);
-                  return true;
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.d("WholePeoplePlugin", 2, "setRightButton error", paramJsBridgeListener);
-                  return true;
-                  j = 0;
-                }
-                bool1 = false;
-                break label337;
-              }
-              bool1 = bool3;
-            } while (!paramString3.equalsIgnoreCase("readRedPoint"));
-            paramJsBridgeListener = this.mRuntime.a();
-            bool1 = bool3;
-          } while (paramJsBridgeListener == null);
-          bool1 = bool3;
-        } while (paramJsBridgeListener.isFinishing());
-        aqbk.a().b();
-        bool1 = bool3;
-      } while (this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch == null);
-      bool1 = bool3;
-    } while (!this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.b());
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.d();
-    return true;
+        return;
+        a[0] = l;
+        e("0X800AA99", paramInt, paramBoolean);
+        return;
+        if (!"VIA_PROFILECARD".equals(paramString)) {
+          break;
+        }
+        l = System.currentTimeMillis();
+      } while (Math.abs(l - a[1]) < 3000L);
+      a[1] = l;
+      e("0X800AA9A", paramInt, paramBoolean);
+      return;
+      if ("VIA_AIO_TITLE".equals(paramString))
+      {
+        e("0X800AA9B", paramInt, paramBoolean);
+        return;
+      }
+    } while (!"VIA_AIO_CHATSETTINGS".equals(paramString));
+    e("0X800AA9C", paramInt, paramBoolean);
   }
   
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  private static void d(String paramString, int paramInt, boolean paramBoolean)
   {
-    super.onWebViewCreated(paramCustomWebView);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = this.mRuntime.a();
+    if ("VIA_SETTINGME".equals(paramString)) {
+      e("0X800AA9D", paramInt, paramBoolean);
+    }
+    do
+    {
+      return;
+      if ("VIA_PROFILECARD".equals(paramString))
+      {
+        e("0X800AA9E", paramInt, paramBoolean);
+        return;
+      }
+      if ("VIA_AIO_TITLE".equals(paramString))
+      {
+        e("0X800AA9F", paramInt, paramBoolean);
+        return;
+      }
+    } while (!"VIA_AIO_CHATSETTINGS".equals(paramString));
+    e("0X800AAA0", paramInt, paramBoolean);
+  }
+  
+  private static void e(String paramString, int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 9;; i = 0)
+    {
+      bdll.b(null, "dc00898", "", "", "qq_vip", paramString, i, 1, paramInt, "", "", "", "");
+      return;
+    }
   }
 }
 

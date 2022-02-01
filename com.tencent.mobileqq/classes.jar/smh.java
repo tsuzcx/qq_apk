@@ -1,40 +1,29 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.widget.BubblePopupWindow;
 
-class smh
+public class smh
   implements View.OnClickListener
 {
-  smh(smg paramsmg, ViewGroup paramViewGroup) {}
+  public smh(ReadinjoyTabbar paramReadinjoyTabbar) {}
   
   public void onClick(View paramView)
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    if (ChannelClassificationListView.a(this.jdField_a_of_type_Smg.a) != null) {
-      ChannelClassificationListView.a(this.jdField_a_of_type_Smg.a).onItemClick((AdapterView)this.jdField_a_of_type_AndroidViewViewGroup, paramView, i, this.jdField_a_of_type_Smg.getItemId(i));
-    }
-    JSONObject localJSONObject = new JSONObject();
+    if ((ReadinjoyTabbar.a(this.a) != null) && (ReadinjoyTabbar.a(this.a).b())) {}
     try
     {
-      localJSONObject.put("subchannelid", this.jdField_a_of_type_Smg.a(i).b());
-      localJSONObject.put("subchannelname", this.jdField_a_of_type_Smg.a(i).a());
-      localJSONObject.put("channelid", ChannelClassificationListView.a(this.jdField_a_of_type_Smg.a));
-      oat.a(null, pha.a() + "", "0X8009933", "0X8009933", 0, 0, "", "", "", localJSONObject.toString(), false);
+      ReadinjoyTabbar.a(this.a).a(3, 257, null, true);
+      ReadinjoyTabbar.a(this.a).b();
+      label49:
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    catch (JSONException localJSONException)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      break label49;
     }
   }
 }

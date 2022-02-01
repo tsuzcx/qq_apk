@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import pmk;
-import pwb;
+import pfd;
+import pon;
 
 public class ArticleInfoModule$9
   implements Runnable
 {
-  public ArticleInfoModule$9(pwb parampwb, boolean paramBoolean, int paramInt, List paramList) {}
+  public ArticleInfoModule$9(pon parampon, boolean paramBoolean, int paramInt, List paramList) {}
   
   public void run()
   {
@@ -15,8 +15,8 @@ public class ArticleInfoModule$9
       return;
     }
     this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
-    List localList = pwb.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
-    pmk.a().c(this.jdField_a_of_type_Int, localList);
+    List localList = pon.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
+    pfd.a().c(this.jdField_a_of_type_Int, localList);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import afxa;
-import akaj;
-import akaq;
-import akax;
+import aggu;
+import aklt;
+import akma;
+import akmh;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -18,9 +18,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
-import anlq;
-import aybv;
-import aypy;
+import anxm;
+import azir;
 import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -37,7 +36,7 @@ public class MiniChatFragment
   private static boolean jdField_a_of_type_Boolean;
   private float jdField_a_of_type_Float = 0.85F;
   int jdField_a_of_type_Int;
-  protected akaj a;
+  protected aklt a;
   protected SessionInfo a;
   
   public MiniChatFragment()
@@ -57,11 +56,8 @@ public class MiniChatFragment
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (paramInt2 == 28)
-    {
-      anlq localanlq = anlq.a(getActivity().app);
-      aypy.a("0X800AFCE", localanlq.a(paramInt1));
-      localanlq.a().a();
+    if (paramInt2 == 28) {
+      azir.a("0X800AFCE", anxm.a(getActivity().app).a(paramInt1));
     }
   }
   
@@ -118,7 +114,7 @@ public class MiniChatFragment
       }
       ((Window)localObject).setAttributes(localLayoutParams);
       localObject = ((Window)localObject).getDecorView();
-      if (akax.a())
+      if (akmh.a())
       {
         this.jdField_a_of_type_Float = a(paramActivity).getFloatExtra("minaio_scaled_ration", 0.95F);
         ((View)localObject).setScaleX(this.jdField_a_of_type_Float);
@@ -150,8 +146,8 @@ public class MiniChatFragment
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_Akaj != null) {
-      this.jdField_a_of_type_Akaj.r();
+    if (this.jdField_a_of_type_Aklt != null) {
+      this.jdField_a_of_type_Aklt.r();
     }
     return true;
   }
@@ -183,9 +179,9 @@ public class MiniChatFragment
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f = paramBundle.getIntExtra("key_mini_from", 0);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Afxa = new afxa();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Afxa.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850026);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Afxa.jdField_a_of_type_AndroidContentResColorStateList = getResources().getColorStateList(2131165337);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aggu = new aggu();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aggu.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850038);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aggu.jdField_a_of_type_AndroidContentResColorStateList = getResources().getColorStateList(2131165337);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int = ChatTextSizeSettingActivity.a(getActivity());
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Long = paramBundle.getLongExtra("key_mini_aio_msg_shmsgseq", 0L);
       int i = paramBundle.getIntExtra("key_mini_from", 0);
@@ -206,8 +202,8 @@ public class MiniChatFragment
           paramBundle.putInt("key_mini_msgtab_businame", i);
           this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a(paramBundle);
         }
-        this.jdField_a_of_type_Akaj = akaq.a(getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, getActivity().app);
-        if (this.jdField_a_of_type_Akaj != null) {
+        this.jdField_a_of_type_Aklt = akma.a(getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, getActivity().app);
+        if (this.jdField_a_of_type_Aklt != null) {
           break label414;
         }
         getActivity().finish();
@@ -216,8 +212,8 @@ public class MiniChatFragment
       }
       label414:
       a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, i);
-      paramViewGroup = this.jdField_a_of_type_Akaj.a(paramLayoutInflater, null, paramViewGroup);
-      this.jdField_a_of_type_Akaj.a();
+      paramViewGroup = this.jdField_a_of_type_Aklt.a(paramLayoutInflater, null, paramViewGroup);
+      this.jdField_a_of_type_Aklt.a();
       paramLayoutInflater = paramViewGroup;
       if (paramViewGroup == null)
       {
@@ -230,8 +226,8 @@ public class MiniChatFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Akaj != null) {
-      this.jdField_a_of_type_Akaj.p();
+    if (this.jdField_a_of_type_Aklt != null) {
+      this.jdField_a_of_type_Aklt.p();
     }
   }
   
@@ -246,24 +242,24 @@ public class MiniChatFragment
   public void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
-    if (this.jdField_a_of_type_Akaj != null) {
-      this.jdField_a_of_type_Akaj.j();
+    if (this.jdField_a_of_type_Aklt != null) {
+      this.jdField_a_of_type_Aklt.j();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Akaj != null) {
-      this.jdField_a_of_type_Akaj.m();
+    if (this.jdField_a_of_type_Aklt != null) {
+      this.jdField_a_of_type_Aklt.m();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Akaj != null) {
-      this.jdField_a_of_type_Akaj.k();
+    if (this.jdField_a_of_type_Aklt != null) {
+      this.jdField_a_of_type_Aklt.k();
     }
   }
   
@@ -271,8 +267,8 @@ public class MiniChatFragment
   {
     a(true);
     super.onStart();
-    if (this.jdField_a_of_type_Akaj != null) {
-      this.jdField_a_of_type_Akaj.n();
+    if (this.jdField_a_of_type_Aklt != null) {
+      this.jdField_a_of_type_Aklt.n();
     }
   }
   
@@ -280,16 +276,16 @@ public class MiniChatFragment
   {
     a(false);
     super.onStop();
-    if (this.jdField_a_of_type_Akaj != null) {
-      this.jdField_a_of_type_Akaj.o();
+    if (this.jdField_a_of_type_Aklt != null) {
+      this.jdField_a_of_type_Aklt.o();
     }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (this.jdField_a_of_type_Akaj != null) {
-      this.jdField_a_of_type_Akaj.c(paramBoolean);
+    if (this.jdField_a_of_type_Aklt != null) {
+      this.jdField_a_of_type_Aklt.c(paramBoolean);
     }
   }
 }

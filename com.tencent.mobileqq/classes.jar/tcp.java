@@ -1,17 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class tcp
-  implements bkle
+  implements View.OnClickListener
 {
-  public tcp(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
+  public tcp(ViolaFragment paramViolaFragment) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((ReadInJoyDiandianHeaderController.b(this.a)) && (paramInt == 4097)) {
-      oat.a(null, "", "0X8009BA4", "0X8009BA4", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), "", "", "", false);
-    }
+    this.a.mViolaUiDelegate.d();
+    this.a.reloadPage();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

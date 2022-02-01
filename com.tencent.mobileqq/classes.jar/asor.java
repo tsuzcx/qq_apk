@@ -1,21 +1,14 @@
-import android.os.Handler;
-import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
 
 public class asor
-  implements apyj
 {
-  public asor(SignalBombAnimationView paramSignalBombAnimationView) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public URLImageView a;
   
-  public void a() {}
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == SignalBombAnimationView.a(this.a)) {
-      SignalBombAnimationView.a(this.a).sendEmptyMessage(2);
-    }
-  }
-  
-  public void b() {}
+  public asor(asop paramasop) {}
 }
 
 

@@ -1,10 +1,83 @@
-import OnlinePushPack.SvcRespPushMsg;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bnr.BnrReport.BNRConfigMsg;
+import com.tencent.mobileqq.bnr.BnrReport.BNReportConfigRsp;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface nnd
+public class nnd
+  implements bcuc
 {
-  public abstract void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg);
+  private QQAppInterface a;
   
-  public abstract void a(int paramInt, String paramString);
+  public nnd(QQAppInterface paramQQAppInterface)
+  {
+    this.a = paramQQAppInterface;
+    nnc.a();
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BnrReport", 2, "getCheckUpdateItemData");
+    }
+    ReqItem localReqItem = new ReqItem();
+    localReqItem.cOperType = 1;
+    localReqItem.eServiceID = 118;
+    BnrReport.BNRConfigMsg localBNRConfigMsg = nnc.a(this.a.getCurrentAccountUin());
+    if (localBNRConfigMsg != null) {
+      localReqItem.vecParam = bhuf.a(localBNRConfigMsg.toByteArray());
+    }
+    nnc.a = true;
+    return localReqItem;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BnrReport", 2, "handleCheckUpdateItemData");
+    }
+    BnrReport.BNRConfigMsg localBNRConfigMsg;
+    if (paramRespItem.cResult == 2) {
+      if (paramRespItem.eServiceID == 118)
+      {
+        paramRespItem = bhuf.b(paramRespItem.vecUpdate);
+        if (paramRespItem != null) {
+          localBNRConfigMsg = new BnrReport.BNRConfigMsg();
+        }
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localBNRConfigMsg.mergeFrom(paramRespItem);
+        nnc.a((BnrReport.BNReportConfigRsp)localBNRConfigMsg.msg_rsp_body.get());
+        nnc.a(this.a, 74);
+        nnc.a = false;
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramRespItem)
+      {
+        paramRespItem.printStackTrace();
+        continue;
+      }
+      catch (Exception paramRespItem)
+      {
+        paramRespItem.printStackTrace();
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("BnrReport", 2, "***handleCheckUpdateItemData fail respitem.cResult:" + paramRespItem.cResult);
+      }
+    }
+  }
 }
 
 

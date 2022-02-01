@@ -1,22 +1,22 @@
 package com.tencent.gdtad.api.interstitial;
 
-import acmc;
-import acqy;
+import acqe;
+import acvc;
 import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 
 public class GdtInterstitialNotifyReg$7
   implements Runnable
 {
-  public GdtInterstitialNotifyReg$7(acmc paramacmc, String paramString) {}
+  public GdtInterstitialNotifyReg$7(acqe paramacqe, String paramString) {}
   
   public void run()
   {
-    String str = acmc.a(this.a);
-    WeakReference localWeakReference = acmc.a(this.a);
+    String str = acqe.a(this.a);
+    WeakReference localWeakReference = acqe.a(this.a);
     if ((TextUtils.isEmpty(str)) || (localWeakReference == null) || (localWeakReference.get() == null))
     {
-      acqy.d("GdtInterstitialNotifyReg", "receiveReport");
+      acvc.d("GdtInterstitialNotifyReg", "receiveReport");
       return;
     }
     int i;

@@ -1,23 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Point;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqfl
-  implements ValueAnimator.AnimatorUpdateListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aqfl(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout1, ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout2, Point paramPoint, LinearLayout.LayoutParams paramLayoutParams, int paramInt) {}
+  public aqfl(ArkAuthorityInfoActivity paramArkAuthorityInfoActivity, int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i = (int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * (ColorNoteSmallScreenRelativeLayout.b(this.b) / 2));
-    int j = ColorNoteSmallScreenRelativeLayout.a(this.b, this.b.e());
-    int k = ColorNoteSmallScreenRelativeLayout.c(this.b);
-    if (ColorNoteSmallScreenRelativeLayout.a(this.b) != null) {
-      ColorNoteSmallScreenRelativeLayout.a(this.b).a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout, this.jdField_a_of_type_AndroidGraphicsPoint.x - i, this.jdField_a_of_type_AndroidGraphicsPoint.y, j + this.jdField_a_of_type_AndroidGraphicsPoint.x - i, k + this.jdField_a_of_type_AndroidGraphicsPoint.y);
+    String str1 = ArkAuthorityInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity);
+    String str2 = ArkAuthorityInfoActivity.a()[this.jdField_a_of_type_Int];
+    String str3 = this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity.app.getCurrentAccountUin();
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      apvy.a(str1, str2, str3, i);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = (this.jdField_a_of_type_Int + i);
   }
 }
 

@@ -1,13 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
 
 public class bjgj
-  implements DialogInterface.OnClickListener
+  implements MediaPlayer.OnPreparedListener
 {
-  public bjgj(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public bjgj(VideoTextureView paramVideoTextureView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onPrepared(MediaPlayer paramMediaPlayer)
+  {
+    if (VideoTextureView.a(this.a) != null)
+    {
+      VideoTextureView.a(this.a).start();
+      VideoTextureView.a(this.a, VideoTextureView.a(this.a).getDuration());
+    }
+    if (VideoTextureView.a() != null)
+    {
+      VideoTextureView.a().onVideoStart(VideoTextureView.a(this.a));
+      VideoTextureView.a().onVideoProgressUpdate(0);
+      VideoTextureView.a().onVideoSize(VideoTextureView.a(this.a).getVideoWidth(), VideoTextureView.a(this.a).getVideoHeight());
+    }
+    if (VideoTextureView.a(this.a) != null) {
+      VideoTextureView.a(this.a).post(this.a.a);
+    }
+  }
 }
 
 

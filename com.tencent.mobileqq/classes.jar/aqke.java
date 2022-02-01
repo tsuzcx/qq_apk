@@ -1,25 +1,16 @@
-import android.graphics.Rect;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class aqke
-  implements Comparator<Rect>
+  implements DialogInterface.OnClickListener
 {
-  aqke(aqkc paramaqkc) {}
+  aqke(aqkd paramaqkd, aqkg paramaqkg) {}
   
-  public int a(Rect paramRect1, Rect paramRect2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
-    do
-    {
-      return 1;
-      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
-        return -1;
-      }
-    } while (paramRect1.width() > paramRect2.width());
-    if (paramRect1.width() < paramRect2.width()) {
-      return -1;
-    }
-    return 0;
+    aqkh.a(BaseApplication.context, this.jdField_a_of_type_Aqkg.d(), aqkd.a(this.jdField_a_of_type_Aqkd));
+    azir.a("0X800ADEF");
   }
 }
 

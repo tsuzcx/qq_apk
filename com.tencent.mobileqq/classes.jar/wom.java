@@ -1,6 +1,18 @@
-public abstract interface wom<DATA>
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
+
+public class wom
 {
-  public abstract void a(boolean paramBoolean, DATA paramDATA);
+  public static WeakReference<QQAppInterface> a = new WeakReference(null);
+  
+  public static boolean a()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)a.get();
+    if (localQQAppInterface == null) {
+      throw new IllegalStateException(anzj.a(2131713206));
+    }
+    return localQQAppInterface.a().a;
+  }
 }
 
 

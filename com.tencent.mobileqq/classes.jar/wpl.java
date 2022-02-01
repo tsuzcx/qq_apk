@@ -1,48 +1,42 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPromoteTaskList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class wpl
-  implements wld<xaf, xag>
+public final class wpl
+  extends MSFServlet
 {
-  wpl(wpk paramwpk) {}
-  
-  public void a(@NonNull xaf paramxaf, @Nullable xag paramxag, @NonNull ErrorMessage paramErrorMessage)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramxag == null) {
-      yqp.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramxag });
-    }
-    do
-    {
+    if (paramIntent == null) {
       return;
-      if (paramErrorMessage.errorCode == 15000)
-      {
-        yqp.a("StoryPromoteTaskManager", "onCmdRespond() no change of the request %s", paramxag);
-        this.a.jdField_a_of_type_Long = paramxag.a.uint64_expire_time.get();
-        return;
-      }
-      if (paramErrorMessage.isFail())
-      {
-        yqp.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramxag });
-        return;
-      }
-    } while (this.a.jdField_a_of_type_Boolean);
-    this.a.jdField_a_of_type_JavaLangString = paramxag.a.bytes_cookie.get().toStringUtf8();
-    this.a.jdField_a_of_type_Long = paramxag.a.uint64_expire_time.get();
-    this.a.a();
-    this.a.a(paramxag.a);
-    paramxaf = paramxag.a.bytes_global_promote_url.get().toStringUtf8();
-    if (!TextUtils.isEmpty(paramxaf))
-    {
-      ((wpf)wpm.a(10)).b("key_story_player_promote_url", paramxaf);
-      this.a.b = paramxaf;
     }
-    this.a.a("onCmdRespond()");
+    Bundle localBundle = paramIntent.getExtras();
+    paramIntent = null;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      paramIntent = bhuf.b(paramFromServiceMsg.getWupBuffer());
+      localBundle.putInt("data_error_code", 0);
+    }
+    for (;;)
+    {
+      QQStoryContext.a().a().a(localBundle, paramIntent);
+      return;
+      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
+      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bhuf.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    paramPacket.autoResend = paramIntent.getBooleanExtra("support_retry", false);
   }
 }
 

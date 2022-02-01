@@ -1,29 +1,28 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import afur;
+import agej;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import aufz;
-import blsb;
-import blsi;
+import auxu;
+import bmtd;
+import bmtk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.app.AppLoaderFactory;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.share.MiniProgramShareUtils;
 import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.manager.ActivityResultManager;
+import com.tencent.qqmini.sdk.launcher.shell.ICommonManager;
 import cooperation.qzone.share.QZoneShareActivity;
 import eipc.EIPCClient;
 import mqq.app.AppRuntime;
@@ -37,7 +36,7 @@ public class ShareUtils
   {
     if ((paramInt1 == 1010) && (paramInt2 == -1) && (paramActivity != null) && (!paramActivity.isFinishing()))
     {
-      Intent localIntent = afur.a(new Intent(paramActivity, SplashActivity.class), null);
+      Intent localIntent = agej.a(new Intent(paramActivity, SplashActivity.class), null);
       Bundle localBundle = new Bundle();
       localBundle.putString("key_mini_report_event_action_type", "user_click");
       localBundle.putString("key_mini_report_event_sub_action_type", "custom_button");
@@ -124,12 +123,12 @@ public class ShareUtils
     localBundle.putString("forward_extra", paramString);
     paramString = new Intent();
     paramString.putExtras(localBundle);
-    if ((AppLoaderFactory.isSDKMode()) || ((paramActivity instanceof GameActivity1))) {
-      ActivityResultManager.g().addActivityResultListener(new ShareUtils.1(paramActivity));
+    if ((com.tencent.mobileqq.mini.app.AppLoaderFactory.isSDKMode()) || ((paramActivity instanceof GameActivity1))) {
+      com.tencent.qqmini.sdk.launcher.AppLoaderFactory.g().getCommonManager().addActivityResultListener(new ShareUtils.1(paramActivity));
     }
     for (;;)
     {
-      aufz.a(paramActivity, paramString, 1010);
+      auxu.a(paramActivity, paramString, 1010);
       return;
       MiniAppController.getInstance().setActivityResultListener(new ShareUtils.2(paramActivity));
     }
@@ -140,9 +139,9 @@ public class ShareUtils
     if (QLog.isColorLevel()) {
       QLog.d("AppBrandRuntime", 2, "startSharePicToQzone. localPicPath=" + paramString1);
     }
-    blsi localblsi = blsi.a();
-    localblsi.a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    blsb.a(paramActivity, localblsi, paramString1, paramString2, "", -1);
+    bmtk localbmtk = bmtk.a();
+    localbmtk.a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    bmtd.a(paramActivity, localbmtk, paramString1, paramString2, "", -1);
     paramActivity = new Bundle();
     paramActivity.putString("key_mini_report_event_action_type", "user_click");
     paramActivity.putString("key_mini_report_event_sub_action_type", "custom_button");

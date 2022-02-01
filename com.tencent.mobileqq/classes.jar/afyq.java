@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Text;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-public final class afyq
-  implements Parcelable.Creator<ForwardUtils.Section_Text>
+class afyq
+  implements DialogInterface.OnClickListener
 {
-  public ForwardUtils.Section_Text a(Parcel paramParcel)
-  {
-    return new ForwardUtils.Section_Text(paramParcel);
-  }
+  afyq(afyo paramafyo, bhpc parambhpc) {}
   
-  public ForwardUtils.Section_Text[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new ForwardUtils.Section_Text[paramInt];
+    bdll.b(this.jdField_a_of_type_Afyo.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Afyo.a.a, "", "", "");
+    this.jdField_a_of_type_Bhpc.cancel();
   }
 }
 

@@ -1,87 +1,51 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.QVipBigTroopExpiredConfig;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aqxg
-  extends aqwr<QVipBigTroopExpiredConfig>
+  implements aqxz
 {
-  public static QVipBigTroopExpiredConfig c()
+  public aqxg(LocationSelectActivity paramLocationSelectActivity) {}
+  
+  public int a()
   {
-    QVipBigTroopExpiredConfig localQVipBigTroopExpiredConfig2 = (QVipBigTroopExpiredConfig)aqlk.a().a(428);
-    QVipBigTroopExpiredConfig localQVipBigTroopExpiredConfig1 = localQVipBigTroopExpiredConfig2;
-    if (localQVipBigTroopExpiredConfig2 == null) {
-      localQVipBigTroopExpiredConfig1 = new QVipBigTroopExpiredConfig();
+    return this.a.jdField_a_of_type_Int;
+  }
+  
+  public int a(int paramInt)
+  {
+    if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt] != null) {
+      return ((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt]).size();
     }
-    return localQVipBigTroopExpiredConfig1;
+    return 0;
   }
   
-  @NonNull
-  public QVipBigTroopExpiredConfig a()
+  public String a(int paramInt1, int paramInt2)
   {
-    return new QVipBigTroopExpiredConfig();
-  }
-  
-  @NonNull
-  public QVipBigTroopExpiredConfig a(aqlg[] paramArrayOfaqlg)
-  {
-    boolean bool = true;
-    localQVipBigTroopExpiredConfig = new QVipBigTroopExpiredConfig();
-    paramArrayOfaqlg = paramArrayOfaqlg[0].a;
     try
     {
-      if (!TextUtils.isEmpty(paramArrayOfaqlg))
+      if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1] != null)
       {
-        paramArrayOfaqlg = new JSONObject(paramArrayOfaqlg);
-        if (paramArrayOfaqlg.optInt("enable", 1) != 1) {
-          break label164;
+        if (((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).code.equals("0")) {
+          return "----";
         }
+        String str = ((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).name;
+        return str;
       }
-      for (;;)
-      {
-        localQVipBigTroopExpiredConfig.mIsEnable = bool;
-        localQVipBigTroopExpiredConfig.mNotifyTipsMaxDay = paramArrayOfaqlg.optInt("NotifyTipsMaxDay", 15);
-        localQVipBigTroopExpiredConfig.mNotifyTipsMinDay = paramArrayOfaqlg.optInt("NotifyTipsMinDay", 7);
-        localQVipBigTroopExpiredConfig.mNotifyTipsMaxCount = paramArrayOfaqlg.optInt("NotifyTipsMaxCount", 2);
-        localQVipBigTroopExpiredConfig.mNotifyTipsPerDay = paramArrayOfaqlg.optInt("NotifyTipsPerDay", 1);
-        localQVipBigTroopExpiredConfig.mNotifyTipsMaxCloseCount = paramArrayOfaqlg.optInt("NotifyTipsMaxCloseCount", 3);
-        localQVipBigTroopExpiredConfig.mNotifyDialogMaxDay = paramArrayOfaqlg.optInt("NotifyDialogMaxDay", 7);
-        localQVipBigTroopExpiredConfig.mNotifyDialogMinDay = paramArrayOfaqlg.optInt("NotifyDialogMinDay", 0);
-        localQVipBigTroopExpiredConfig.mNotifyDialogMaxCount = paramArrayOfaqlg.optInt("NotifyDialogMaxCount", 2);
-        localQVipBigTroopExpiredConfig.mNotifyDialogPerDay = paramArrayOfaqlg.optInt("NotifyDialogPerDay", 1);
-        localQVipBigTroopExpiredConfig.mNotifyDialogExpiredIntervalDay = paramArrayOfaqlg.optInt("NotifyDialogExpiredIntervalDay", 5);
-        return localQVipBigTroopExpiredConfig;
-        label164:
-        bool = false;
-      }
-      return localQVipBigTroopExpiredConfig;
     }
-    catch (JSONException paramArrayOfaqlg)
+    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
     {
-      yqp.e("QVipBigTroopExpiredProcessor", "QVipBigTroopExpiredConfig onParsed exception :" + paramArrayOfaqlg.getMessage());
+      if (QLog.isColorLevel()) {
+        QLog.e("LocationSelectActivity", 2, "", localIndexOutOfBoundsException);
+      }
     }
-  }
-  
-  @NonNull
-  public QVipBigTroopExpiredConfig b()
-  {
-    return new QVipBigTroopExpiredConfig();
-  }
-  
-  public Class<QVipBigTroopExpiredConfig> clazz()
-  {
-    return QVipBigTroopExpiredConfig.class;
-  }
-  
-  public int type()
-  {
-    return 428;
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqxg
  * JD-Core Version:    0.7.0.1
  */

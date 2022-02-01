@@ -1,50 +1,23 @@
-import android.widget.LinearLayout;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.jsbridge.GdtBannerFragmentForJS;
+import android.content.Context;
 
-public class acpq
-  implements acko
+public final class acpq
 {
-  public acpq(GdtBannerFragmentForJS paramGdtBannerFragmentForJS) {}
+  public int a = -2147483648;
+  public int b = -2147483648;
+  public int c = -2147483648;
+  public int d = -2147483648;
   
-  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  public acpq(Context paramContext, int paramInt1, int paramInt2)
   {
-    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
-      return paramGdtAd.getAd().getAId();
+    if ((paramInt1 <= 0) || (paramInt2 <= 0))
+    {
+      acvc.d("GdtBannerViewWithLetterStyle", "constructor");
+      return;
     }
-    return -2147483648L;
-  }
-  
-  public void onAdClicked(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    acqy.b("GdtBannerFragmentForJS", String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
-  }
-  
-  public void onAdClosed(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    acqy.b("GdtBannerFragmentForJS", String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
-    this.a.a.removeView(GdtBannerFragmentForJS.a(this.a).a());
-  }
-  
-  public void onAdFailedToLoad(com.tencent.gdtad.api.GdtAd paramGdtAd, ackn paramackn)
-  {
-    acqy.d("GdtBannerFragmentForJS", "onAdFailedToLoad " + paramackn.a());
-    Toast.makeText(BaseApplicationImpl.getContext(), "onAdFailedToLoad " + paramackn.a(), 0).show();
-  }
-  
-  public void onAdImpression(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    acqy.b("GdtBannerFragmentForJS", String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
-  }
-  
-  public void onAdLoaded(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    acqy.b("GdtBannerFragmentForJS", String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
+    this.a = Double.valueOf(0.02892561983471075D * paramInt1).intValue();
+    this.b = Double.valueOf(0.02666666666666667D * paramInt2).intValue();
+    this.c = Double.valueOf(0.06666666666666667D * paramInt2).intValue();
+    this.d = Double.valueOf(0.16D * paramInt2).intValue();
   }
 }
 

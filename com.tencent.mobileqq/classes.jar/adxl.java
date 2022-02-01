@@ -1,79 +1,136 @@
-import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
+import mqq.manager.VerifyDevLockManager.NotifyType;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class adxl
-  extends anif
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public adxl(ChatSettingForTroop paramChatSettingForTroop) {}
+  public adxl(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  private void a(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
   {
-    if ((paramInt2 != 0) && (TextUtils.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, paramString1)))
-    {
-      if ((!this.a.isFinishing()) && (this.a.isResume()))
-      {
-        paramString1 = paramString2;
-        if (TextUtils.isEmpty(paramString2)) {
-          paramString1 = this.a.getResources().getString(2131694156);
-        }
-        QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
-      }
-      ChatSettingForTroop.m(this.a);
+    if (this.a.isFinishing()) {
+      return;
     }
+    this.a.c();
+    if (paramInt2 == 0)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode uin:" + paramString + " seq=" + paramInt1);
+        if (paramDevlockInfo != null) {
+          QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode info.TimeLimit:" + paramDevlockInfo.TimeLimit);
+        }
+      }
+      setSeq(paramInt1);
+      paramInt2 = 60;
+      paramInt1 = paramInt2;
+      if (paramDevlockInfo != null)
+      {
+        paramInt1 = paramInt2;
+        if (paramDevlockInfo.TimeLimit > 0) {
+          paramInt1 = paramDevlockInfo.TimeLimit;
+        }
+      }
+      AuthDevVerifyCodeActivity.a(this.a, paramInt1);
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode ret = " + paramInt2 + " seq=" + paramInt1);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode  errMsg:" + paramErrMsg.getMessage() + " seq=" + paramInt1);
+      }
+    }
+    if ((paramInt2 == 9) || (paramInt2 == 155))
+    {
+      this.a.setResult(-1);
+      this.a.finish();
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      this.a.a(paramErrMsg.getMessage(), 1);
+      return;
+    }
+    paramString = this.a.getString(2131715879);
+    this.a.a(paramString, 1);
   }
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt)
+  private void b(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
   {
-    boolean bool = true;
-    super.a(paramBoolean, paramString1, paramString2, paramString3, paramInt);
-    if (TextUtils.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, paramString1))
-    {
-      this.a.p();
-      if (!paramBoolean) {
-        break label171;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopName = true;
-      this.a.a(paramString2);
-      if ((this.a.isResume()) && (this.a.e))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop = false;
-        bfup.a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, this.a, new adxm(this));
-        this.a.e = false;
-      }
-      paramString1 = this.a;
-      if ((this.a.d) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop)) {
-        break label166;
-      }
-      paramBoolean = bool;
-      ChatSettingForTroop.b(paramString1, paramBoolean);
-    }
-    label166:
-    label171:
-    do
-    {
+    if (this.a.isFinishing()) {
       return;
-      paramBoolean = false;
-      break;
-      if (paramInt == 1328) {
-        ChatSettingForTroop.n(this.a);
+    }
+    AuthDevVerifyCodeActivity.a(this.a);
+    if (paramInt2 == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult uin:" + paramString + " seq=" + paramInt1);
       }
-      paramString1 = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        paramString1 = anni.a(2131700551);
+      setSeq(paramInt1);
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult ret = " + paramInt2 + " seq=" + paramInt1);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult  errMsg:" + paramErrMsg.getMessage() + " seq=" + paramInt1);
       }
-      QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopName = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.getTroopName();
-        this.a.e();
+    }
+    if ((paramInt2 == 9) || (paramInt2 == 155))
+    {
+      this.a.setResult(-1);
+      this.a.finish();
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      this.a.a(paramErrMsg.getMessage(), 1);
+      return;
+    }
+    paramString = this.a.getString(2131715879);
+    this.a.a(paramString, 1);
+  }
+  
+  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvNotice uin:" + paramString + " seq=" + paramInt1);
+    }
+    if (paramNotifyType == VerifyDevLockManager.NotifyType.NOTIFY_REFRESH_SMS_RESULT)
+    {
+      a(paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
+      return;
+    }
+    b(paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
+  }
+  
+  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose ret = " + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose  errMsg:" + paramErrMsg.getMessage());
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.chatopttroop", 2, paramString1);
+    }
+    if (this.a.isFinishing())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose activity is finishing.");
+      }
+      return;
+    }
+    this.a.c();
+    AuthDevVerifyCodeActivity.a(this.a);
+    this.a.setResult(-1);
+    this.a.finish();
+    asvf.a().a((AppRuntime)AuthDevVerifyCodeActivity.a(this.a).get(), this.a, paramString, true);
   }
 }
 

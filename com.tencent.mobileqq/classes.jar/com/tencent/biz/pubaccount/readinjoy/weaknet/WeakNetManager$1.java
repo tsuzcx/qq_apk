@@ -4,25 +4,25 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
-import pha;
-import phi;
-import ttg;
-import tth;
+import ozs;
+import paa;
+import tkc;
+import tkd;
 
 public class WeakNetManager$1
   implements Runnable
 {
-  public WeakNetManager$1(tth paramtth, long paramLong) {}
+  public WeakNetManager$1(tkd paramtkd, long paramLong) {}
   
   public void run()
   {
-    tth.a(this.this$0, null);
-    if (ttg.a())
+    tkd.a(this.this$0, null);
+    if (tkc.a())
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 1, 2131717257, 1).a();
+      QQToast.a(BaseApplicationImpl.sApplication, 1, 2131717373, 1).a();
       try
       {
-        ttg.a("0X8009D08", pha.a().a("loading_time", String.valueOf(this.a)).a());
+        tkc.a("0X8009D08", ozs.a().a("loading_time", String.valueOf(this.a)).a());
         QLog.d("WeakNetManager", 1, "show weak net toast.");
         return;
       }

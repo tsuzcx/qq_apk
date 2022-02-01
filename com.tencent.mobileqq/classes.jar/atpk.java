@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class atpk
-  implements View.OnClickListener
+  implements atqq
 {
-  atpk(atpf paramatpf) {}
+  atpk(atpa paramatpa) {}
   
-  public void onClick(View paramView) {}
+  public void a(Object[] paramArrayOfObject)
+  {
+    atpa.g(this.a, paramArrayOfObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atpk
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
+import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
@@ -19,6 +20,7 @@ public class ScreenJsPlugin
   public static final String EVENT_SET_SCREEN_BRIGHTNESS = "setScreenBrightness";
   private static final Set<String> S_EVENT_MAP = new ScreenJsPlugin.1();
   private static final String TAG = "[mini] ScreenJsPlugin";
+  private JsRuntime cacheCaptureScreenJsRuntime;
   
   /* Error */
   public static float getScreenBrightness(Activity paramActivity)
@@ -29,17 +31,17 @@ public class ScreenJsPlugin
     //   2: fconst_0
     //   3: fstore_3
     //   4: aload_0
-    //   5: invokevirtual 43	android/app/Activity:getWindow	()Landroid/view/Window;
+    //   5: invokevirtual 49	android/app/Activity:getWindow	()Landroid/view/Window;
     //   8: astore 5
     //   10: aload 5
     //   12: ifnonnull +8 -> 20
-    //   15: ldc 44
+    //   15: ldc 50
     //   17: fstore_1
     //   18: fload_1
     //   19: freturn
     //   20: aload 5
-    //   22: invokevirtual 50	android/view/Window:getAttributes	()Landroid/view/WindowManager$LayoutParams;
-    //   25: getfield 56	android/view/WindowManager$LayoutParams:screenBrightness	F
+    //   22: invokevirtual 56	android/view/Window:getAttributes	()Landroid/view/WindowManager$LayoutParams;
+    //   25: getfield 62	android/view/WindowManager$LayoutParams:screenBrightness	F
     //   28: fstore_2
     //   29: fload_2
     //   30: fconst_0
@@ -52,13 +54,13 @@ public class ScreenJsPlugin
     //   39: fcmpl
     //   40: ifle +21 -> 61
     //   43: aload_0
-    //   44: invokevirtual 60	android/app/Activity:getContentResolver	()Landroid/content/ContentResolver;
-    //   47: ldc 62
-    //   49: invokestatic 68	android/provider/Settings$System:getInt	(Landroid/content/ContentResolver;Ljava/lang/String;)I
+    //   44: invokevirtual 66	android/app/Activity:getContentResolver	()Landroid/content/ContentResolver;
+    //   47: ldc 68
+    //   49: invokestatic 74	android/provider/Settings$System:getInt	(Landroid/content/ContentResolver;Ljava/lang/String;)I
     //   52: istore 4
     //   54: iload 4
     //   56: i2f
-    //   57: ldc 69
+    //   57: ldc 75
     //   59: fdiv
     //   60: fstore_1
     //   61: fload_1
@@ -82,8 +84,8 @@ public class ScreenJsPlugin
     //   84: iconst_1
     //   85: aload_0
     //   86: iconst_0
-    //   87: anewarray 71	java/lang/Object
-    //   90: invokestatic 77	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   87: anewarray 77	java/lang/Object
+    //   90: invokestatic 83	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   93: fload_1
     //   94: freturn
     //   95: astore_0
@@ -140,32 +142,45 @@ public class ScreenJsPlugin
     if ("setScreenBrightness".equals(paramString1)) {
       AppBrandTask.runTaskOnUiThread(new ScreenJsPlugin.3(this, paramString2, paramJsRuntime, paramString1, paramInt));
     }
-    for (;;)
+    do
     {
-      return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
-      if ("getScreenBrightness".equals(paramString1)) {
-        try
+      for (;;)
+      {
+        return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
+        if ("getScreenBrightness".equals(paramString1))
         {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("value", getScreenBrightness(this.jsPluginEngine.appBrandRuntime.activity));
-          this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, localJSONObject, paramInt);
+          try
+          {
+            JSONObject localJSONObject = new JSONObject();
+            localJSONObject.put("value", getScreenBrightness(this.jsPluginEngine.appBrandRuntime.activity));
+            this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, localJSONObject, paramInt);
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("[mini] ScreenJsPlugin", 2, localThrowable, new Object[0]);
+          }
         }
-        catch (Throwable localThrowable)
+        else
         {
-          QLog.e("[mini] ScreenJsPlugin", 2, localThrowable, new Object[0]);
+          if (!"setKeepScreenOn".equals(paramString1)) {
+            break;
+          }
+          AppBrandTask.runTaskOnUiThread(new ScreenJsPlugin.4(this, paramString2, paramJsRuntime, paramString1, paramInt));
         }
-      } else if ("setKeepScreenOn".equals(paramString1)) {
-        AppBrandTask.runTaskOnUiThread(new ScreenJsPlugin.4(this, paramString2, paramJsRuntime, paramString1, paramInt));
       }
+    } while (!"onUserCaptureScreen".equals(paramString1));
+    if (this.cacheCaptureScreenJsRuntime == null) {
+      this.cacheCaptureScreenJsRuntime = paramJsRuntime;
     }
+    return ApiUtil.wrapCallbackOk(paramString1, null).toString();
   }
   
   public void onCreate(BaseJsPluginEngine paramBaseJsPluginEngine)
   {
     super.onCreate(paramBaseJsPluginEngine);
-    paramBaseJsPluginEngine = ScreenJsPlugin.ScreenShotListenManager.newInstance(paramBaseJsPluginEngine.appBrandRuntime.activity);
-    paramBaseJsPluginEngine.setListener(new ScreenJsPlugin.2(this));
-    paramBaseJsPluginEngine.startListen();
+    ScreenJsPlugin.ScreenShotListenManager localScreenShotListenManager = ScreenJsPlugin.ScreenShotListenManager.newInstance(paramBaseJsPluginEngine.appBrandRuntime.activity);
+    localScreenShotListenManager.setListener(new ScreenJsPlugin.2(this, paramBaseJsPluginEngine));
+    localScreenShotListenManager.startListen();
   }
   
   public Set<String> supportedEvents()

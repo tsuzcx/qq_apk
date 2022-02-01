@@ -45,9 +45,9 @@ public class TransReport
   public static final String rep_time_send = "tc_s:";
   public static final String rep_upFlow_Xg = "upFlow_Xg";
   public static final String rep_upFlow_wifi = "upFlow_WiFi";
-  public boolean bCacheDiff;
-  public boolean bFINLost;
-  public boolean bHasNet;
+  public boolean bCacheDiff = false;
+  public boolean bFINLost = false;
+  public boolean bHasNet = false;
   public long confConnNum;
   public long confSegNum;
   public long confSegSize;
@@ -56,29 +56,29 @@ public class TransReport
   public long[] dataFlow;
   public String detectResult;
   public String failReason;
-  public int firstRange;
-  public boolean hasReUpload;
+  public int firstRange = 0;
+  public boolean hasReUpload = false;
   public String ipAddr = "";
-  public long ipConnCost;
+  public long ipConnCost = 0L;
   public int ipIndex = -1;
-  public boolean isConnected;
+  public boolean isConnected = false;
   public boolean isIpv6;
   public HashMap<Integer, AtomicInteger> mDataFlowOfChannel = new HashMap();
   public boolean mHasIpv6List;
   public boolean mIPv6Fast;
-  public boolean mIsPreConnExist;
+  public boolean mIsPreConnExist = false;
   public int mRetryCode;
-  public int mRetryTimes_SegsMax;
-  public int mRetryTimes_SegsNum;
-  public int mRetryTimes_SegsTotal;
+  public int mRetryTimes_SegsMax = 0;
+  public int mRetryTimes_SegsNum = 0;
+  public int mRetryTimes_SegsTotal = 0;
   public int mTransferedSize = -1;
   public int netType;
   public String port = "";
   public String protoType;
-  public int sliceNum;
-  public int timeCost_Cache;
-  public int timeCost_Ht;
-  public int timeCost_Send;
+  public int sliceNum = 0;
+  public int timeCost_Cache = 0;
+  public int timeCost_Ht = 0;
+  public int timeCost_Send = 0;
   
   public HashMap<String, String> getReportInfo()
   {
@@ -138,10 +138,10 @@ public class TransReport
       ((StringBuilder)localObject1).append("proto").append(":").append(this.protoType).append(";");
       localObject2 = ((StringBuilder)localObject1).append("hasNet").append(":");
       if (!this.bHasNet) {
-        break label936;
+        break label965;
       }
       str = "true";
-      label499:
+      label524:
       ((StringBuilder)localObject2).append(str).append(";");
       ((StringBuilder)localObject1).append("progress").append(":").append(this.mTransferedSize).append(";");
       ((StringBuilder)localObject1).append("param_BDH_Reason").append(this.failReason).append(";");
@@ -156,10 +156,10 @@ public class TransReport
       localHashMap.put("param_conf_connNum", String.valueOf(this.confConnNum));
       localHashMap.put("segspercnt", localStringBuilder.toString());
       if (!this.bFINLost) {
-        break label943;
+        break label972;
       }
       str = String.valueOf(true);
-      label722:
+      label751:
       localHashMap.put("param_fin_lost", str);
       localHashMap.put("param_retry_seg_count", String.valueOf(this.mRetryTimes_SegsNum));
       localHashMap.put("param_total_retry_times", String.valueOf(this.mRetryTimes_SegsTotal));
@@ -171,26 +171,26 @@ public class TransReport
       localHashMap.put("port", this.port);
       localHashMap.put("param_BDH_Cache_Diff", String.valueOf(this.bCacheDiff));
       if (!this.isIpv6) {
-        break label951;
+        break label980;
       }
       i = 1;
-      label872:
+      label901:
       localHashMap.put("param_is_ipv6", String.valueOf(i));
       if (!this.mIPv6Fast) {
-        break label956;
+        break label985;
       }
       i = 1;
-      label893:
+      label922:
       localHashMap.put("param_ipv6First", String.valueOf(i));
       if (!this.mHasIpv6List) {
-        break label961;
+        break label990;
       }
     }
-    label936:
-    label943:
-    label951:
-    label956:
-    label961:
+    label965:
+    label972:
+    label980:
+    label985:
+    label990:
     for (int i = j;; i = 0)
     {
       localHashMap.put("param_hasV6List", String.valueOf(i));
@@ -198,13 +198,13 @@ public class TransReport
       str = "0";
       break;
       str = "false";
-      break label499;
+      break label524;
       str = String.valueOf(false);
-      break label722;
+      break label751;
       i = 0;
-      break label872;
+      break label901;
       i = 0;
-      break label893;
+      break label922;
     }
   }
   

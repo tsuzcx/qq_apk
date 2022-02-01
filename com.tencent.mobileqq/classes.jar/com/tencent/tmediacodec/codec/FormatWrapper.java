@@ -33,6 +33,25 @@ public final class FormatWrapper
     this.sampleMimeType = paramString;
   }
   
+  private static String configCsdArray(String paramString, byte[] paramArrayOfByte)
+  {
+    paramString = new StringBuilder(paramString);
+    paramString.append(", length:");
+    paramString.append(paramArrayOfByte.length);
+    paramString.append("  [");
+    int i = 0;
+    while (i < Math.min(paramArrayOfByte.length, 20))
+    {
+      if (i != 0) {
+        paramString.append(" ,");
+      }
+      paramString.append(paramArrayOfByte[i]);
+      i += 1;
+    }
+    paramString.append("]");
+    return paramString.toString();
+  }
+  
   public static FormatWrapper create(@NonNull MediaFormat paramMediaFormat)
   {
     FormatWrapper localFormatWrapper = new FormatWrapper(paramMediaFormat.getString("mime"));
@@ -64,6 +83,23 @@ public final class FormatWrapper
       LogUtils.e("FormatWrapper", "create format error", paramMediaFormat);
     }
     return localFormatWrapper;
+  }
+  
+  public static void dumpCsdArray(ArrayList<byte[]> paramArrayList)
+  {
+    if (paramArrayList == null) {}
+    while (!LogUtils.isLogEnable()) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < paramArrayList.size())
+    {
+      localStringBuilder.append(configCsdArray(TUtils.CSD_INDEX_ARRAY[i], (byte[])paramArrayList.get(i)));
+      localStringBuilder.append("\n");
+      i += 1;
+    }
+    LogUtils.d("FormatWrapper", "csdData size:" + paramArrayList.size() + "    " + localStringBuilder.toString());
   }
   
   public static int getInteger(@NonNull MediaFormat paramMediaFormat, @NonNull String paramString)

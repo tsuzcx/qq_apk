@@ -1,48 +1,19 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import mqq.os.MqqHandler;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import java.util.HashMap;
 
 public class ajpq
-  extends WtloginObserver
+  implements ajpo
 {
-  public ajpq(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, long paramLong, boolean paramBoolean) {}
+  public ajpq(TroopActivity paramTroopActivity) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void a(String paramString, boolean paramBoolean)
   {
-    int i = 1;
-    boolean bool;
-    if (QLog.isColorLevel())
+    if ((this.a.a.containsKey(paramString)) && (((Boolean)this.a.a.get(paramString)).booleanValue() != paramBoolean))
     {
-      long l = System.currentTimeMillis();
-      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
-      if (paramDevlockInfo == null)
-      {
-        bool = true;
-        QLog.d("Q.history.C2CAllFragment", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
-      }
-    }
-    else
-    {
-      paramWUserSigInfo = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.obtainMessage(40);
-      paramWUserSigInfo.arg1 = paramInt;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label135;
-      }
-    }
-    label135:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramWUserSigInfo.arg2 = paramInt;
-      paramWUserSigInfo.obj = paramDevlockInfo;
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.sendMessage(paramWUserSigInfo);
+      this.a.a.remove(paramString);
       return;
-      bool = false;
-      break;
     }
+    this.a.a.put(paramString, Boolean.valueOf(paramBoolean));
   }
 }
 

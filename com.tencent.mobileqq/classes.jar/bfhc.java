@@ -1,59 +1,25 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
 
 public class bfhc
-  extends WebViewPlugin
+  implements bliz
 {
-  protected aanz a;
-  protected AtomicBoolean a;
+  public bfhc(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, blir paramblir) {}
   
-  public bfhc()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool = false;
-    if ((!"GroupAppPanel".equals(paramString2)) || (("launchGroupApp".equals(paramString3)) && (paramVarArgs.length > 0) && (this.jdField_a_of_type_Aanz != null))) {}
-    try
+    switch (paramInt)
     {
-      paramString3 = new JSONObject(paramVarArgs[0]);
-      paramJsBridgeListener = paramString3.getString("groupCode");
-      paramString1 = paramString3.getString("appID");
-      paramString2 = paramString3.getString("url");
-      paramString3 = paramString3.getString("source");
-      this.jdField_a_of_type_Aanz.a(paramJsBridgeListener, paramString1, paramString2, paramString3);
-      bool = true;
-      return bool;
     }
-    catch (Exception paramJsBridgeListener)
+    for (;;)
     {
-      for (;;)
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      if (System.currentTimeMillis() - TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity) > 500L)
       {
-        paramJsBridgeListener.printStackTrace();
-        QLog.e("TroopAppPanelJsPlugin", 2, "launchGroupApp: args error");
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Aksb.c(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Int);
+        TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, System.currentTimeMillis());
       }
-    }
-  }
-  
-  public void onCreate()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-    {
-      this.jdField_a_of_type_Aanz = aanz.a();
-      this.jdField_a_of_type_Aanz.a();
-    }
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      this.jdField_a_of_type_Aanz.b();
     }
   }
 }

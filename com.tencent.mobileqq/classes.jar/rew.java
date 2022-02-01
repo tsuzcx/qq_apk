@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseVideoArticleInfo;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class rew
-  implements Parcelable.Creator<BaseVideoArticleInfo>
+public class rew
+  implements View.OnClickListener
 {
-  public BaseVideoArticleInfo a(Parcel paramParcel)
-  {
-    return new BaseVideoArticleInfo(paramParcel);
-  }
+  public rew(EditVideoFragment paramEditVideoFragment) {}
   
-  public BaseVideoArticleInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new BaseVideoArticleInfo[paramInt];
+    if ((EditVideoFragment.a(this.a) != null) && (EditVideoFragment.a(this.a).isShowing())) {
+      EditVideoFragment.a(this.a).dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

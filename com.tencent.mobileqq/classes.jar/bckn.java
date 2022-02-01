@@ -1,11 +1,15 @@
-class bckn
-  implements agsm
+public class bckn
 {
-  bckn(bckg parambckg) {}
+  public int a;
   
-  public void a()
+  public bckn(int paramInt)
   {
-    bckg.e(this.a);
+    this.a = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.a;
   }
 }
 

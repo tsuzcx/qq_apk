@@ -1,32 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class atqy
-  implements awjk
+  implements aunf
 {
-  atqy(atqu paramatqu) {}
+  atqy(atqx paramatqx, FileManagerEntity paramFileManagerEntity, Runnable paramRunnable) {}
   
-  public void a(int paramInt)
+  public void a(String paramString1, String paramString2)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_GAIN");
-      } while (atqu.a(this.a));
-      atqu.b(this.a);
-      return;
-      QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_LOSS");
-    } while (!atqu.a(this.a));
-    atqu.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = paramString1;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strApkPackageName = paramString2;
+    this.jdField_a_of_type_Atqx.a.a().a().a(paramString2, new atqz(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atqy
  * JD-Core Version:    0.7.0.1
  */

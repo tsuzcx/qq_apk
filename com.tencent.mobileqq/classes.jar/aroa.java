@@ -1,170 +1,54 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.FaceModelsData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class aroa
-  extends arnz
+  extends armf<arnz>
 {
-  private int a;
-  private boolean d;
-  
-  public aroa(QQAppInterface paramQQAppInterface)
+  @NonNull
+  public static arnz c()
   {
-    super("qq.android.ar.face.models_v8.2.0", paramQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "FaceModelsDownloadHandler construct,STR_RES_NAME = qq.android.ar.face.models_v8.2.0");
+    arnz localarnz2 = (arnz)aran.a().a(562);
+    arnz localarnz1 = localarnz2;
+    if (localarnz2 == null) {
+      localarnz1 = arnz.a();
     }
+    return localarnz1;
   }
   
-  public int a()
+  @NonNull
+  public arnz a()
   {
-    return 10061;
+    return arnz.a();
   }
   
-  public Class<? extends XmlData> a()
-  {
-    return FaceModelsData.class;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public void a()
+  @NonNull
+  public arnz a(@NonNull araj[] paramArrayOfaraj)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "restoreState");
+      QLog.d("QVIP.SDK.ConfigProcessor", 1, paramArrayOfaraj[0].a);
     }
-    a().loadState = 0;
-    a().Version = 0;
-    arnn.a(a(), new String[0]);
+    return arnz.a(paramArrayOfaraj[0].a);
   }
   
-  public void a(long paramLong1, long paramLong2)
+  @NonNull
+  public arnz b()
   {
-    super.a(paramLong1, paramLong2);
-    this.jdField_a_of_type_Int = ((int)(100L * paramLong1 / paramLong2));
-    aowh.a(0, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download progress: " + this.jdField_a_of_type_Int);
-    }
+    return arnz.a();
   }
   
-  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
+  public Class<arnz> clazz()
   {
-    if (!paramBoolean) {
-      aowh.a(0, false);
-    }
-    super.a(paramXmlData, paramBoolean, paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download finish: " + paramBoolean);
-    }
+    return arnz.class;
   }
   
-  public void a(String paramString)
+  public int type()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download success: " + paramString);
-    }
-    if (aowj.a(paramString) != 0)
-    {
-      a();
-      aowh.a(0, false);
-    }
-    for (;;)
-    {
-      super.a(paramString);
-      return;
-      aowh.a(0, true);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008358", "0X8008358", 0, 0, "", "", "model", "");
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("res_type", "model");
-      bctj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "FaceResDownloadSuccess", true, 0L, 0L, localHashMap, "", true);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (!this.d) {
-      this.d = paramBoolean;
-    }
-    super.a(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download restart userClick = " + paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return "prd";
-  }
-  
-  public void b(XmlData paramXmlData)
-  {
-    super.b(paramXmlData);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download begin");
-    }
-  }
-  
-  public boolean b()
-  {
-    if (this.d)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceModelsDownloadHandler", 2, "isNetValid2Download by user ");
-      }
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "isNetValid2Download by startup ");
-    }
-    return super.b();
-  }
-  
-  public boolean e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "downloadResource,isDownloadReqedByUser = " + this.d);
-    }
-    if (!this.d)
-    {
-      if (!aowh.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FaceModelsDownloadHandler", 2, "pre download config disable ");
-        }
-        return false;
-      }
-      if (BaseActivity.sTopActivity == null) {
-        break label115;
-      }
-    }
-    label115:
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceModelsDownloadHandler", 2, "downloadResource later " + bool);
-      }
-      if (bool) {
-        break;
-      }
-      return super.e();
-    }
+    return 562;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aroa
  * JD-Core Version:    0.7.0.1
  */

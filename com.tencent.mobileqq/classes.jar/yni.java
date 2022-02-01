@@ -1,58 +1,54 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryUploadProgressView.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 public class yni
-  implements wim
+  extends wjm<ymx, wtm>
 {
-  public MessageProgressView a;
-  private String a;
-  
-  public yni(MessageProgressView paramMessageProgressView)
+  public yni(ymx paramymx)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = paramMessageProgressView;
+    super(paramymx);
   }
   
-  private void b(String paramString, int paramInt)
+  public void a(@NonNull ymx paramymx, @NonNull wtm paramwtm)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramInt, this.jdField_a_of_type_JavaLangString + "_" + hashCode());
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(zlx.a(this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getContext(), 8.0F), false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(paramInt);
-  }
-  
-  public void a(bhye parambhye)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(parambhye);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    b(paramString, paramInt);
-    if (paramInt >= 100) {
-      ThreadManager.getUIHandler().postDelayed(new StoryUploadProgressView.1(this), 500L);
+    Object localObject = ymx.a(paramymx);
+    paramwtm = paramwtm.a;
+    wtk localwtk = (wtk)wth.a(27);
+    localObject = ((ArrayList)localObject).iterator();
+    int i = 0;
+    while (((Iterator)localObject).hasNext())
+    {
+      ynt localynt = (ynt)((Iterator)localObject).next();
+      if ((localynt instanceof ynv))
+      {
+        xcs localxcs = (xcs)paramwtm.get(localynt.a().feedId);
+        if (localxcs == null) {
+          break label129;
+        }
+        ((ynv)localynt).d = localwtk.a(((ynv)localynt).a(), localxcs.a);
+        i = 1;
+      }
+    }
+    label129:
+    for (;;)
+    {
+      break;
+      if (i != 0) {
+        ymx.a(paramymx).f();
+      }
+      return;
     }
   }
   
-  public boolean a()
+  public Class acceptEventClass()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(this.jdField_a_of_type_JavaLangString + "_" + hashCode());
+    return wtm.class;
   }
+  
+  public void b(@NonNull ymx paramymx, @NonNull wtm paramwtm) {}
 }
 
 

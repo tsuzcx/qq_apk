@@ -1,22 +1,27 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aecq
-  implements TextWatcher
+  extends Handler
 {
-  private aecq(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public aecq(ChatHistory paramChatHistory) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void handleMessage(Message paramMessage)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.b(paramEditable);
+    if (paramMessage.what == 1)
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = new bjbs(this.a, this.a.getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.c(2131691342);
+      if (!this.a.isFinishing()) {
+        this.a.a.show();
+      }
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

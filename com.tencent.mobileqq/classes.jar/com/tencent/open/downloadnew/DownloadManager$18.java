@@ -3,10 +3,10 @@ package com.tencent.open.downloadnew;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import biip;
-import bisy;
-import bivr;
-import bixg;
+import bjjo;
+import bjtx;
+import bjwq;
+import bjyf;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,14 +14,14 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DownloadManager$18
   implements Runnable
 {
-  public DownloadManager$18(bivr parambivr) {}
+  public DownloadManager$18(bjwq parambjwq) {}
   
   public void run()
   {
     DownloadInfo localDownloadInfo;
     try
     {
-      if (!biip.a().a().getSharedPreferences("opensdk_config", 0).getBoolean("download_clear_unuse", false))
+      if (!bjjo.a().a().getSharedPreferences("opensdk_config", 0).getBoolean("download_clear_unuse", false))
       {
         Iterator localIterator = this.this$0.a.values().iterator();
         for (;;)
@@ -41,7 +41,7 @@ public class DownloadManager$18
           if (this.this$0.a(str) == null)
           {
             this.this$0.a.remove(localDownloadInfo.jdField_c_of_type_JavaLangString);
-            bixg.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
+            bjyf.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
           }
         }
       }
@@ -49,7 +49,7 @@ public class DownloadManager$18
     }
     catch (Exception localException)
     {
-      bisy.c("DownloadManager_", "checkDownloadList>>>", localException);
+      bjtx.c("DownloadManager_", "checkDownloadList>>>", localException);
     }
     label134:
     label173:
@@ -61,10 +61,10 @@ public class DownloadManager$18
         break;
       }
       this.this$0.a.remove(localDownloadInfo.jdField_c_of_type_JavaLangString);
-      bixg.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
+      bjyf.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
       break;
     } while (this.this$0.a.size() <= 200);
-    Object localObject = biip.a().a().getSharedPreferences("opensdk_config", 0).edit();
+    Object localObject = bjjo.a().a().getSharedPreferences("opensdk_config", 0).edit();
     ((SharedPreferences.Editor)localObject).putBoolean("download_clear_unuse", true);
     ((SharedPreferences.Editor)localObject).commit();
   }

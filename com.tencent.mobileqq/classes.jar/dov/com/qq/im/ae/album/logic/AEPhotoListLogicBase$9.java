@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.album.logic;
 
-import bngd;
+import bohl;
 
 public class AEPhotoListLogicBase$9
   implements Runnable
 {
-  public AEPhotoListLogicBase$9(bngd parambngd, String paramString, boolean paramBoolean) {}
+  public AEPhotoListLogicBase$9(bohl parambohl, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    bngd.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    bohl.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
   }
 }
 

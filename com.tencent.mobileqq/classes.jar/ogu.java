@@ -1,33 +1,20 @@
 import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ogu
-  implements AladdinConfigHandler
+class ogu
+  implements View.OnClickListener
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    paramString = phv.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
-      if (TextUtils.equals("readinjoy_drop_frame_monitor", str1)) {
-        bmqa.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
-      }
-    }
-    return true;
-  }
+  ogu(ogs paramogs, String paramString) {}
   
-  public void onWipeConfig(int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
-    bmqa.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(false));
+    if ((ogs.a(this.jdField_a_of_type_Ogs) != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      ozs.a(ogs.a(this.jdField_a_of_type_Ogs).getContext(), this.jdField_a_of_type_JavaLangString);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,23 +1,14 @@
-import com.tribe.async.dispatch.IEventReceiver;
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 
 public class ylf
-  implements IEventReceiver
+  implements blkc
 {
-  protected yko a;
+  public ylf(StoryMessageListActivity paramStoryMessageListActivity, View paramView) {}
   
-  public yko a()
+  public void a()
   {
-    return this.a;
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    yqp.b("Q.qqstory.home.Repository", "executeRunnableOnWorkThread");
-  }
-  
-  public boolean isValidate()
-  {
-    return false;
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

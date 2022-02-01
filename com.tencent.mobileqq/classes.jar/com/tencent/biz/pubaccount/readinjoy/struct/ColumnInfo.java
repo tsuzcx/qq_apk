@@ -8,8 +8,8 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.Entity;
 import org.jetbrains.annotations.NotNull;
-import rey;
-import rop;
+import qvs;
+import rfl;
 import tencent.kandian.ugc.topic_info.TopicInfo;
 import tencent.kandian.ugc.topic_info.TopicInfoExt;
 
@@ -17,7 +17,7 @@ public class ColumnInfo
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<ColumnInfo> CREATOR = new rey();
+  public static final Parcelable.Creator<ColumnInfo> CREATOR = new qvs();
   public static final int SOURCE_UGC = 5;
   public static final int TYPE_ALLOW_SUBMIT = 1;
   public static final int TYPE_FORBID_SUBMIT = 0;
@@ -57,28 +57,28 @@ public class ColumnInfo
     this.videoCount = paramParcel.readInt();
   }
   
-  public ColumnInfo(rop paramrop)
+  public ColumnInfo(rfl paramrfl)
   {
-    if (paramrop.jdField_a_of_type_JavaLangString != null)
+    if (paramrfl.jdField_a_of_type_JavaLangString != null)
     {
-      str = paramrop.jdField_a_of_type_JavaLangString;
+      str = paramrfl.jdField_a_of_type_JavaLangString;
       this.coverUrl = str;
-      if (paramrop.b == null) {
+      if (paramrfl.b == null) {
         break label88;
       }
-      str = paramrop.b;
+      str = paramrfl.b;
       label51:
       this.title = str;
-      if (paramrop.c == null) {
+      if (paramrfl.c == null) {
         break label94;
       }
     }
     label88:
     label94:
-    for (String str = paramrop.c;; str = "")
+    for (String str = paramrfl.c;; str = "")
     {
       this.intro = str;
-      this.submitPermission = paramrop.jdField_a_of_type_Int;
+      this.submitPermission = paramrfl.jdField_a_of_type_Int;
       return;
       str = "";
       break;

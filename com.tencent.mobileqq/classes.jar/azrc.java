@@ -1,98 +1,154 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import androidx.recyclerview.widget.RecyclerView.Adapter;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "mContext", "Landroid/content/Context;", "profileDisplaySettingItem", "Lcom/tencent/mobileqq/profilesetting/ProfileDisplaySettingItem;", "(Landroid/content/Context;Lcom/tencent/mobileqq/profilesetting/ProfileDisplaySettingItem;)V", "getMContext", "()Landroid/content/Context;", "setMContext", "(Landroid/content/Context;)V", "mData", "", "Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$ActionSheetPrivacySelectBean;", "mInflater", "Landroid/view/LayoutInflater;", "mPrivacySelectActionSheetClickListener", "Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$PrivacySelectActionSheetClickListener;", "mProfileDisplaySettingItem", "getProfileDisplaySettingItem", "()Lcom/tencent/mobileqq/profilesetting/ProfileDisplaySettingItem;", "setProfileDisplaySettingItem", "(Lcom/tencent/mobileqq/profilesetting/ProfileDisplaySettingItem;)V", "getItemCount", "", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "viewType", "setData", "list", "", "setOnPrivacySelectActionSheetClickListener", "listener", "ActionSheetPrivacySelectBean", "PrivacyHolder", "PrivacySelectActionSheetClickListener", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class azrc
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+public class azrc
 {
-  @NotNull
-  private Context jdField_a_of_type_AndroidContentContext;
-  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private azrf jdField_a_of_type_Azrf;
-  private final azsj jdField_a_of_type_Azsj;
-  private final List<azrd> jdField_a_of_type_JavaUtilList;
-  @NotNull
-  private azsj b;
+  public static int a;
+  public static String a;
+  public static boolean a;
+  public static boolean b;
   
-  public azrc(@NotNull Context paramContext, @NotNull azsj paramazsj)
+  static
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.b = paramazsj;
-    this.jdField_a_of_type_Azsj = this.b;
-    this.jdField_a_of_type_JavaUtilList = ((List)new ArrayList());
-    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "LayoutInflater.from(mContext)");
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramContext;
+    jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_JavaLangString = "struct_msg_pic_pre";
   }
   
-  public final void a(@Nullable azrf paramazrf)
+  public static int a()
   {
-    this.jdField_a_of_type_Azrf = paramazrf;
-  }
-  
-  public final void a(@Nullable List<azrd> paramList)
-  {
-    if (paramList != null)
+    if (BaseApplicationImpl.sProcessId == 1)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll((Collection)paramList);
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      return BaseApplicationImpl.getApplication().getSharedPreferences(localQQAppInterface.getCurrentAccountUin() + "_" + jdField_a_of_type_JavaLangString, 0).getInt("mStructMsgPicSwitch", 0);
     }
-    notifyDataSetChanged();
+    return 0;
   }
   
-  public int getItemCount()
+  public static void a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public void onBindViewHolder(@NotNull RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    Intrinsics.checkParameterIsNotNull(paramViewHolder, "holder");
-    paramViewHolder = (azre)paramViewHolder;
-    paramViewHolder.a().setText((CharSequence)((azrd)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a());
-    if (paramInt == 0)
+    if (BaseApplicationImpl.sProcessId == 1)
     {
-      paramViewHolder.itemView.setBackgroundResource(2130837583);
-      if (((azrd)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a() != this.jdField_a_of_type_Azsj.g()) {
-        break label127;
+      jdField_a_of_type_Int = paramInt;
+      b = true;
+      Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      localObject = BaseApplicationImpl.getApplication().getSharedPreferences(((QQAppInterface)localObject).getCurrentAccountUin() + "_" + jdField_a_of_type_JavaLangString, 0).edit();
+      ((SharedPreferences.Editor)localObject).putInt("mStructMsgPicSwitch", paramInt);
+      ((SharedPreferences.Editor)localObject).commit();
+    }
+  }
+  
+  public static void a(bdol parambdol, List<String> paramList)
+  {
+    if ((parambdol != null) && ((parambdol instanceof bdom)))
+    {
+      parambdol = ((bdom)parambdol).a;
+      if ((parambdol != null) && (parambdol.size() > 0)) {
+        parambdol = parambdol.iterator();
       }
-      paramViewHolder.a().setVisibility(0);
+    }
+    else
+    {
+      while (parambdol.hasNext())
+      {
+        a((bdol)parambdol.next(), paramList);
+        continue;
+        if ((parambdol != null) && ((parambdol instanceof bdqo)))
+        {
+          parambdol = ((bdqo)parambdol).ac;
+          if ((TextUtils.isEmpty(parambdol)) || (!parambdol.startsWith("http"))) {
+            break;
+          }
+        }
+      }
+    }
+    try
+    {
+      if (a(new URL(parambdol).getHost())) {
+        paramList.add(parambdol);
+      }
+      return;
+    }
+    catch (MalformedURLException parambdol)
+    {
+      parambdol.printStackTrace();
+    }
+  }
+  
+  public static void a(MessageForStructing paramMessageForStructing, QQAppInterface paramQQAppInterface)
+  {
+    int i = azqi.a();
+    if (!b)
+    {
+      jdField_a_of_type_Int = a();
+      b = true;
+    }
+    if ((i != 0) && (jdField_a_of_type_Int == 0)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("StructMsgPicPreDelegate", 2, "not wifi not pre download");
+      }
     }
     for (;;)
     {
-      azrf localazrf = this.jdField_a_of_type_Azrf;
-      if (localazrf != null) {
-        paramViewHolder.itemView.setOnClickListener((View.OnClickListener)new azrg(localazrf, this, paramViewHolder, paramInt));
-      }
       return;
-      paramViewHolder.itemView.setBackgroundResource(2130837571);
-      break;
-      label127:
-      paramViewHolder.a().setVisibility(8);
+      if (paramMessageForStructing != null)
+      {
+        paramQQAppInterface = paramMessageForStructing.structingMsg;
+        ArrayList localArrayList = new ArrayList();
+        if ((paramQQAppInterface != null) && ((paramQQAppInterface instanceof AbsShareMsg)))
+        {
+          localObject = ((AbsShareMsg)paramQQAppInterface).getStructMsgItemLists();
+          if ((localObject != null) && (((List)localObject).size() > 0))
+          {
+            localObject = ((List)localObject).iterator();
+            while (((Iterator)localObject).hasNext()) {
+              a((bdol)((Iterator)localObject).next(), localArrayList);
+            }
+          }
+        }
+        if (localArrayList.size() <= 0) {
+          break;
+        }
+        Object localObject = new beui();
+        ((beui)localObject).b = paramQQAppInterface.mMsgServiceID;
+        ((beui)localObject).c = paramQQAppInterface.mMsgTemplateID;
+        ((beui)localObject).jdField_a_of_type_JavaLangString = String.valueOf(paramMessageForStructing.istroop);
+        ((beui)localObject).jdField_a_of_type_Boolean = true;
+        paramMessageForStructing = localArrayList.iterator();
+        while (paramMessageForStructing.hasNext()) {
+          a((String)paramMessageForStructing.next(), (beui)localObject);
+        }
+      }
     }
   }
   
-  @NotNull
-  public RecyclerView.ViewHolder onCreateViewHolder(@NotNull ViewGroup paramViewGroup, int paramInt)
+  public static void a(String paramString, beui parambeui)
   {
-    Intrinsics.checkParameterIsNotNull(paramViewGroup, "viewGroup");
-    paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561390, paramViewGroup, false);
-    Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "mInflater.inflate(R.layo…w_item, viewGroup, false)");
-    return (RecyclerView.ViewHolder)new azre(paramViewGroup);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("http"))) {
+      beuf.a(paramString, parambeui, null, 1);
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool = Pattern.compile("((\\.|^)(qq\\.com|soso\\.com|gtimg\\.cn|url\\.cn|qpic\\.cn|qlogo\\.cn|idqqimg\\.com)$)").matcher(paramString).find();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("StructMsgPicPreDelegate", 4, " host = " + paramString + " ,isTencentDomain = " + bool);
+    }
+    return bool;
   }
 }
 

@@ -1,30 +1,110 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.earlydownload.xmldata.ViolaBizLibData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aseg
-  implements View.OnTouchListener
+  extends asdn
 {
-  public aseg(AIOEmotionFragment paramAIOEmotionFragment) {}
+  public static final String[] a = { "libviola.so" };
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aseg(QQAppInterface paramQQAppInterface)
   {
-    if (paramMotionEvent.getAction() == 1)
+    super("android.qq.readinjoy.viola_biz_810", paramQQAppInterface);
+  }
+  
+  public static void f()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      this.a.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      EmojiHomeUiPlugin.openEmojiDetailPage(this.a.getActivity(), this.a.a().getAccount(), 8, this.a.a.epId, false, false);
-      this.a.a("0X800997F");
+      localObject = (asde)((QQAppInterface)localObject).getManager(77);
+      if (localObject != null)
+      {
+        localObject = (aseg)((asde)localObject).a("android.qq.readinjoy.viola_biz_810");
+        if (localObject != null)
+        {
+          ((aseg)localObject).a(true);
+          QLog.i("viola.ViolaBizLibHandler", 1, "restartDownloadLib");
+        }
+      }
     }
-    while (paramMotionEvent.getAction() != 0) {
-      return false;
+  }
+  
+  public static boolean i()
+  {
+    String str = pfr.a();
+    int i = 0;
+    while (i < a.length)
+    {
+      File localFile = new File(str, a[i]);
+      if ((localFile == null) || (!localFile.exists()) || (!localFile.isFile())) {
+        return false;
+      }
+      i += 1;
     }
-    this.a.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
-    return false;
+    return true;
+  }
+  
+  public int a()
+  {
+    return 10079;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return ViolaBizLibData.class;
+  }
+  
+  public String a()
+  {
+    return "viola.ViolaBizLibHandler";
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.i("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess]:" + paramString);
+    XmlData localXmlData = a();
+    if (localXmlData != null) {
+      QLog.i("viola.ViolaBizLibHandler", 1, "version:" + localXmlData.Version);
+    }
+    if (new File(paramString).exists())
+    {
+      if (pfr.a(paramString)) {
+        break label124;
+      }
+      if (localXmlData != null)
+      {
+        localXmlData.loadState = 0;
+        localXmlData.Version = 0;
+        asdd.a(localXmlData, new String[] { "loadState", "Version" });
+      }
+      QLog.e("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess],unzip android.qq.readinjoy.viola_biz_810 lib failed!");
+    }
+    label124:
+    do
+    {
+      return;
+      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
+      if (paramString != null) {
+        paramString.edit().putString("res_name", "android.qq.readinjoy.viola_biz_810").commit();
+      }
+    } while (!aseh.i());
+    pfl.a("biz doOnDownloadSuccess");
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 

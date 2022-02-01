@@ -1,8 +1,8 @@
 package com.tencent.gdtad.aditem;
 
-import ackk;
-import acqy;
-import avfx;
+import acoo;
+import acvc;
+import avya;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.AppRuntime;
@@ -10,24 +10,24 @@ import mqq.app.AppRuntime;
 public class GdtPreLoader$3
   implements Runnable
 {
-  public GdtPreLoader$3(ackk paramackk, GdtAd paramGdtAd) {}
+  public GdtPreLoader$3(acoo paramacoo, GdtAd paramGdtAd) {}
   
   public void run()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    acqy.a("GdtPreLoader", "preloadVideoAfterAdLoaded() called with: app = [" + localAppRuntime + "]");
+    acvc.a("GdtPreLoader", "preloadVideoAfterAdLoaded() called with: app = [" + localAppRuntime + "]");
     if (localAppRuntime == null) {}
-    avfx localavfx;
+    avya localavya;
     do
     {
       do
       {
         return;
       } while (!(localAppRuntime instanceof QQAppInterface));
-      localavfx = (avfx)localAppRuntime.getManager(268);
-    } while (localavfx == null);
-    localavfx.a(this.a.getTencent_video_id());
-    localavfx.a((QQAppInterface)localAppRuntime);
+      localavya = (avya)localAppRuntime.getManager(268);
+    } while (localavya == null);
+    localavya.a(this.a.getTencent_video_id());
+    localavya.a((QQAppInterface)localAppRuntime);
   }
 }
 

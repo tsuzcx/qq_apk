@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class sue
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  sue(sud paramsud) {}
+  sue(sua paramsua) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    sud.a(true, -1, sud.a(this.a));
-    if (sud.a(this.a) != null) {
-      sud.a(this.a).onClick(paramView);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.a.a);
+    this.a.b(false, -1, -1);
   }
 }
 

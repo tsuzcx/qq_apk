@@ -1,15 +1,45 @@
-import java.util.List;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-class zyy
-  implements zza<E>
+final class zyy
+  implements BusinessObserver
 {
-  zyy(zyv paramzyv) {}
+  zyy(zvp paramzvp) {}
   
-  public void a(List<E> paramList) {}
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if ((paramBoolean) && (paramBundle != null)) {}
+    for (paramBundle = paramBundle.getString("result");; paramBundle = null)
+    {
+      try
+      {
+        paramBundle = new JSONObject(paramBundle);
+        if (paramBundle.getInt("r") != 0) {
+          continue;
+        }
+        paramBundle = paramBundle.getString("url");
+        if (paramBundle != null)
+        {
+          this.a.a(true, paramBundle);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          paramBundle = null;
+        }
+      }
+      this.a.a(false, null);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zyy
  * JD-Core Version:    0.7.0.1
  */

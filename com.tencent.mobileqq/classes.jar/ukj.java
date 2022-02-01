@@ -1,64 +1,44 @@
-import android.os.Handler;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.qzone.util.QZLog;
 
 public class ukj
-  implements TVK_SDKMgr.InstallListener
 {
-  private Handler a;
+  public static int a;
+  public static String a;
+  public static String b;
+  public static String c;
   
-  public ukj(Handler paramHandler)
+  static
   {
-    this.a = paramHandler;
-  }
-  
-  public void onInstallProgress(float paramFloat)
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(2);
-    }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    jdField_a_of_type_JavaLangString = "1522415138827987";
+    int j = a();
+    if (j == -1) {}
+    for (int i = 760;; i = j)
     {
-      localJSONObject.put("version", "8.4.1");
-      localJSONObject.put("error_code", paramInt);
-      if (this.a != null) {
-        this.a.sendEmptyMessage(1);
-      }
+      jdField_a_of_type_Int = i;
+      QZLog.d("WeishiHeaderConst", 4, "appversion:" + j);
+      jdField_a_of_type_Int = 760;
+      b = "";
+      c = "";
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        upe.d("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][onInstalledFailed] JSONException: " + localException.getLocalizedMessage());
-      }
-    }
   }
   
-  public void onInstalledSuccessed()
+  static int a()
   {
-    JSONObject localJSONObject = new JSONObject();
+    String str = bmsw.a();
+    int i = str.indexOf(".");
+    int j = str.lastIndexOf(".");
+    if ((j <= i) || (j - i != 2)) {}
+    while (i <= 1) {
+      return -1;
+    }
     try
     {
-      localJSONObject.put("version", "8.4.1");
-      if (this.a != null) {
-        this.a.sendEmptyMessage(0);
-      }
-      return;
+      i = Integer.parseInt(str.substring(i - 1, j + 2).replace(".", ""));
+      return i;
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        upe.d("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][onInstalledSuccess] JSONException: " + localJSONException.getLocalizedMessage());
-      }
-    }
+    catch (Throwable localThrowable) {}
+    return -1;
   }
 }
 

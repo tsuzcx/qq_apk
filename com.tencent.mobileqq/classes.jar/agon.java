@@ -1,20 +1,24 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
-class agon
-  extends anmu
+public class agon
+  extends AccessibilityDelegateCompat
 {
-  agon(agol paramagol) {}
+  public agon(PressToSpeakPanel paramPressToSpeakPanel) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if ((AppSetting.c) && (PressToSpeakPanel.a(this.a) > 0) && (!PressToSpeakPanel.a(this.a)) && (PressToSpeakPanel.a(this.a).a() == 1))
     {
-      paramString = this.a.a.a(this.a.a.getCurrentAccountUin(), (byte)3, false);
-      if ((paramString != null) && (agol.a(this.a) != null)) {
-        agol.a(this.a).setImageBitmap(paramString);
-      }
+      PressToSpeakPanel.a(this.a, true);
+      PressToSpeakPanel.b(this.a);
+      bhga.a(this.a, this.a.getContext().getString(2131690958));
     }
   }
 }

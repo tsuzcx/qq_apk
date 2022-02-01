@@ -1,43 +1,18 @@
+import android.app.Activity;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import android.view.View.OnClickListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class trz
-  implements pae
+  implements View.OnClickListener
 {
-  trz(trw paramtrw) {}
-  
-  public void a()
-  {
-    if (trw.a(this.a) != null) {
-      trw.a(this.a).a();
-    }
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return;
-    }
-    trw.a(this.a, true);
-    trw.a(this.a).c();
-  }
+  trz(try paramtry) {}
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      trw.a(this.a).e();
-      trw.a(this.a, false);
-      trw.a(this.a).c();
-    }
+    tqa.a(try.a(this.a), 1000, null);
+    ubd.a((Activity)try.a(this.a), try.a(this.a), try.a(this.a).a(), try.a(this.a).e(), false, tpz.b(try.a(this.a)), new tlt());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

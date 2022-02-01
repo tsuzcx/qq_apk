@@ -1,37 +1,37 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class affm
-  implements CompoundButton.OnCheckedChangeListener
+  implements bbhm
 {
-  public affm(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public affm(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(bbhq parambbhq) {}
+  
+  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
+  
+  public void a(boolean paramBoolean, String paramString)
   {
-    int i = 1;
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    if (!paramBoolean)
     {
-      this.a.app.c(1);
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label78;
-      }
-    }
-    for (;;)
-    {
-      bcst.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      paramString = bhlq.a(this.a, 230, this.a.getString(2131697740), anzj.a(2131709231), new affn(this), null);
+      paramString.setOnDismissListener(new affo(this));
+      paramString.show();
       return;
-      this.a.app.c(0);
-      break;
-      label78:
-      i = 0;
     }
+    QQIdentiferActivity.a(this.a).set(false);
+    QQIdentiferActivity.a(this.a).a();
   }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

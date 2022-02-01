@@ -2,22 +2,22 @@ package com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge;
 
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
-import pha;
-import ryx;
-import tpx;
+import ppo;
+import ppq;
+import tgs;
+import tgu;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run", "com/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DataBridgeInvokeHandler$isFollowUin$1$1"}, k=3, mv={1, 1, 16})
 public final class DataBridgeInvokeHandler$isFollowUin$$inlined$also$lambda$1
   implements Runnable
 {
-  public DataBridgeInvokeHandler$isFollowUin$$inlined$also$lambda$1(String paramString1, tpx paramtpx, String paramString2) {}
+  public DataBridgeInvokeHandler$isFollowUin$$inlined$also$lambda$1(String paramString1, tgs paramtgs, String paramString2) {}
   
   public final void run()
   {
     try
     {
-      boolean bool = ryx.a(pha.a(), Long.parseLong(this.a));
-      tpx.a(this.this$0, bool, this.b);
+      ppo.a(Long.parseLong(this.a), (ppq)new tgu(this));
       return;
     }
     catch (Exception localException)

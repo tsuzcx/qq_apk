@@ -1,25 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class afjm
-  implements DialogInterface.OnClickListener
+  extends MqqHandler
 {
-  public afjm(TroopInfoActivity paramTroopInfoActivity) {}
+  public afjm(RegisterActivity paramRegisterActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    QQAppInterface localQQAppInterface = this.a.app;
-    String str2 = this.a.a.troopUin;
-    if (this.a.a.bOwner) {}
-    for (String str1 = "0";; str1 = "1")
+    switch (paramMessage.what)
     {
-      bcst.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "0", "");
-      paramDialogInterface.dismiss();
-      return;
     }
+    do
+    {
+      return;
+      paramMessage = (String)paramMessage.obj;
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        RegisterActivity.b(this.a, paramMessage);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("IphoneTitleBarActivity", 2, "captcha sig is empty");
   }
 }
 

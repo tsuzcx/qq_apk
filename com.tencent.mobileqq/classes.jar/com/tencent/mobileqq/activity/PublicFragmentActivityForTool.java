@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aevv;
+import afez;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,12 +15,12 @@ public class PublicFragmentActivityForTool
 {
   public static void b(Activity paramActivity, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    aevv.a(paramActivity, paramIntent, PublicFragmentActivityForTool.class, paramClass, paramInt);
+    afez.a(paramActivity, paramIntent, PublicFragmentActivityForTool.class, paramClass, paramInt);
   }
   
   public static void b(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    aevv.a(paramContext, paramIntent, PublicFragmentActivityForTool.class, paramClass);
+    afez.a(paramContext, paramIntent, PublicFragmentActivityForTool.class, paramClass);
   }
   
   @Override

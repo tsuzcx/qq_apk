@@ -1,73 +1,29 @@
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqdataline.DatalineBridgeActivity;
 
 public class bmkb
 {
-  static volatile String a = null;
-  
-  private static Object a(Object paramObject)
+  public static void a(Context paramContext, Bundle paramBundle, String paramString)
   {
-    Object localObject1 = (WifiManager)BaseApplication.getContext().getSystemService("wifi");
-    if (localObject1 == null) {}
-    for (;;)
+    if (paramContext == null)
     {
-      return paramObject;
-      try
-      {
-        localObject1 = ((WifiManager)localObject1).getConnectionInfo();
-        if (localObject1 == null) {
-          continue;
-        }
-        return localObject1;
+      if (QLog.isColorLevel()) {
+        QLog.e("QQProxyForQlink", 2, "[QLINK] QQ - startQlink failed context=null!");
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          Object localObject2 = null;
-        }
-      }
+      Toast.makeText(BaseApplication.getContext(), anzj.a(2131709575), 0).show();
+      return;
     }
-  }
-  
-  public static String a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        b();
-      }
-      if (("N/A".equals(a)) || ("00:00:00:00:00:00".equals(a)) || ("FF:FF:FF:FF:FF:FF".equalsIgnoreCase(a))) {
-        return null;
-      }
+    Intent localIntent = new Intent(paramContext, DatalineBridgeActivity.class);
+    localIntent.putExtra("componetname", paramString);
+    if (paramBundle != null) {
+      localIntent.putExtra("_param_", paramBundle);
     }
-    finally {}
-    return a;
-  }
-  
-  public static String b()
-  {
-    for (;;)
-    {
-      try
-      {
-        Object localObject1 = a("N/A");
-        if (localObject1 != "N/A")
-        {
-          String str = ((WifiInfo)localObject1).getBSSID();
-          localObject1 = str;
-          if (str == null) {
-            localObject1 = "N/A";
-          }
-          a = (String)localObject1;
-          return localObject1;
-        }
-      }
-      finally {}
-      Object localObject3 = null;
-    }
+    paramContext.startActivity(localIntent);
   }
 }
 

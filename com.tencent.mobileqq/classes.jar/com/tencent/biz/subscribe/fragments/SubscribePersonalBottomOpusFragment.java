@@ -3,19 +3,21 @@ package com.tencent.biz.subscribe.fragments;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_COMM.COMM.StCommonExt;
-import aaaf;
-import aacp;
-import aagr;
-import aahe;
-import aahf;
-import aahh;
-import aahi;
-import aahj;
-import aaxb;
+import aabn;
+import aaec;
+import aaek;
+import aagu;
+import aaks;
+import aalf;
+import aalg;
+import aali;
+import aalj;
+import aalk;
+import abbe;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v4.app.FragmentActivity;
-import anni;
+import anzj;
 import com.tencent.biz.richframework.part.block.BlockContainer;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.widget.StatusView;
@@ -23,53 +25,54 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.List;
-import zxs;
-import zzx;
 
 public class SubscribePersonalBottomOpusFragment
   extends SubscribeBaseBottomPersonalFragment
 {
-  private aacp a;
+  private aagu a;
   protected ExtraTypeInfo a;
   
-  private void a(aagr paramaagr)
+  private void a(aaks paramaaks)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView == null) {}
+    if (getActivity() == null) {}
     do
     {
-      return;
-      if ((paramaagr == null) || ((paramaagr.jdField_a_of_type_JavaUtilList != null) && (paramaagr.jdField_a_of_type_JavaUtilList.size() > 0)))
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView == null);
+      if ((paramaaks == null) || ((paramaaks.jdField_a_of_type_JavaUtilList != null) && (paramaaks.jdField_a_of_type_JavaUtilList.size() > 0)))
       {
         this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setVisibility(8);
         return;
       }
-    } while (paramaagr.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null);
-    if (paramaagr.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.type.get() == 0) {
-      if (aaaf.a(paramaagr.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.attr.get(), 6)) {
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(new aahh(this, paramaagr));
+    } while (paramaaks.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null);
+    if (paramaaks.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.type.get() == 0) {
+      if (aaek.a(paramaaks.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.attr.get(), 6)) {
+        this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(new aali(this, paramaaks));
       }
     }
     for (;;)
     {
-      aaxb.b(paramaagr.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_person", "blank_exp", 0, 0, new String[0]);
+      abbe.b(paramaaks.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_person", "blank_exp", 0, 0, new String[0]);
       return;
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setHintImageFilePath(aaaf.a() + "/certified_account_feeds_empty.png");
-      if (aaaf.a(paramaagr.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.attr.get(), 1))
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setHintImageFilePath(aaek.a() + "/certified_account_feeds_empty.png");
+      if (aaek.a(paramaaks.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.attr.get(), 1))
       {
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(anni.a(2131718338), 13, getResources().getColor(2131167163));
+        this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(anzj.a(2131718474), 13, getResources().getColor(2131167175));
       }
       else
       {
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(anni.a(2131712144), 13, getResources().getColor(2131167163));
+        this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(anzj.a(2131712253), 13, getResources().getColor(2131167175));
         continue;
-        if (aaaf.a(paramaagr.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.attr.get(), 1))
+        if (aaek.a(paramaaks.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.attr.get(), 1))
         {
-          this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(new aahi(this, paramaagr), new aahj(this, paramaagr));
+          this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(new aalj(this, paramaaks), new aalk(this, paramaaks));
         }
         else
         {
-          this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setHintImageFilePath(aaaf.a() + "/certified_account_feeds_empty.png");
-          this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(anni.a(2131712144), 13, getResources().getColor(2131167163));
+          this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setHintImageFilePath(aaek.a() + "/certified_account_feeds_empty.png");
+          this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(anzj.a(2131712253), 13, getResources().getColor(2131167175));
         }
       }
     }
@@ -77,16 +80,16 @@ public class SubscribePersonalBottomOpusFragment
   
   private void b()
   {
-    if (this.jdField_a_of_type_Aagr != null)
+    if (this.jdField_a_of_type_Aaks != null)
     {
-      if (this.jdField_a_of_type_Aagr.jdField_a_of_type_JavaUtilList != null)
+      if (this.jdField_a_of_type_Aaks.jdField_a_of_type_JavaUtilList != null)
       {
-        a(this.jdField_a_of_type_Aagr.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Aagr.jdField_a_of_type_NS_COMMCOMM$StCommonExt, this.jdField_a_of_type_Aagr.jdField_a_of_type_Boolean);
-        if (this.jdField_a_of_type_Aacp != null) {
-          this.jdField_a_of_type_Aacp.setShareData("share_key_subscribe_user", new zxs(this.jdField_a_of_type_Aagr.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser));
+        a(this.jdField_a_of_type_Aaks.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Aaks.jdField_a_of_type_NS_COMMCOMM$StCommonExt, this.jdField_a_of_type_Aaks.jdField_a_of_type_Boolean);
+        if (this.jdField_a_of_type_Aagu != null) {
+          this.jdField_a_of_type_Aagu.setShareData("share_key_subscribe_user", new aabn(this.jdField_a_of_type_Aaks.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser));
         }
       }
-      a(this.jdField_a_of_type_Aagr);
+      a(this.jdField_a_of_type_Aaks);
     }
   }
   
@@ -111,31 +114,31 @@ public class SubscribePersonalBottomOpusFragment
   
   protected void a()
   {
-    this.jdField_a_of_type_Aacp = new aacp(null);
-    this.jdField_a_of_type_Aacp.b(false);
-    this.jdField_a_of_type_Aacp.a(true);
-    this.jdField_a_of_type_Aacp.a(new aahe(this));
-    this.jdField_a_of_type_Aacp.setOnLoadDataDelegate(new aahf(this));
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(this.jdField_a_of_type_Aacp);
+    this.jdField_a_of_type_Aagu = new aagu(null);
+    this.jdField_a_of_type_Aagu.b(false);
+    this.jdField_a_of_type_Aagu.a(true);
+    this.jdField_a_of_type_Aagu.a(new aalf(this));
+    this.jdField_a_of_type_Aagu.setOnLoadDataDelegate(new aalg(this));
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(this.jdField_a_of_type_Aagu);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.c();
     b();
   }
   
   public void a(int paramInt) {}
   
-  public void a(String paramString, aagr paramaagr)
+  public void a(String paramString, aaks paramaaks)
   {
     if ("share_key_subscribe_opus".equals(paramString))
     {
-      this.jdField_a_of_type_Aagr = paramaagr;
+      this.jdField_a_of_type_Aaks = paramaaks;
       b();
     }
   }
   
   public void a(List<CertifiedAccountMeta.StFeed> paramList, COMM.StCommonExt paramStCommonExt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Aacp != null) {
-      this.jdField_a_of_type_Aacp.a(paramList, paramStCommonExt, paramBoolean);
+    if (this.jdField_a_of_type_Aagu != null) {
+      this.jdField_a_of_type_Aagu.a(paramList, paramStCommonExt, paramBoolean);
     }
   }
 }

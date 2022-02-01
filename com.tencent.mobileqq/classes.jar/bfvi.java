@@ -1,13 +1,26 @@
-import android.view.View;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
+import java.util.Set;
 
-public class bfvi
+class bfvi
+  extends bfxv
 {
-  public View a;
-  public URLImageView a;
+  bfvi(bfvh parambfvh) {}
   
-  public bfvi(AvatarWallViewPagerAdapter paramAvatarWallViewPagerAdapter) {}
+  protected void a(Set<Long> paramSet)
+  {
+    this.a.a = 1;
+    if ((paramSet != null) && (paramSet.contains(Long.valueOf(bfvh.a(this.a))))) {
+      this.a.a = 2;
+    }
+    bfvr.c("TroopFileTransferMgr", bfvr.a, "onW2MPausedUpload mW2MPausedUploadState:" + this.a.a + " mW2MPausedDownloadState:" + this.a.b);
+    if (this.a.b > 0)
+    {
+      if ((this.a.b == 2) || (this.a.a == 2)) {
+        bgri.a(bfvh.a(this.a), bfvh.b(this.a), 107);
+      }
+      this.a.a = 0;
+      this.a.b = 0;
+    }
+  }
 }
 
 

@@ -1,23 +1,29 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class aflx
-  implements View.OnTouchListener
+  implements AdapterView.OnItemClickListener
 {
-  public aflx(TroopMemberListActivity paramTroopMemberListActivity, InputMethodManager paramInputMethodManager) {}
+  public aflx(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    ResultRecord localResultRecord = (ResultRecord)SelectedAndSearchBar.a(this.a).get(paramInt);
+    if (SelectedAndSearchBar.a(this.a) != null) {
+      SelectedAndSearchBar.a(this.a).a(localResultRecord);
+    }
+    this.a.a(false);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aflx
  * JD-Core Version:    0.7.0.1
  */

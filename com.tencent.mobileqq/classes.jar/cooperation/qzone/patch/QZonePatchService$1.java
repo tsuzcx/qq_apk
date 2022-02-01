@@ -1,19 +1,19 @@
 package cooperation.qzone.patch;
 
-import anni;
-import bmch;
+import anzj;
+import bndj;
 
 public class QZonePatchService$1
   implements Runnable
 {
-  public QZonePatchService$1(bmch parambmch, String paramString1, String paramString2) {}
+  public QZonePatchService$1(bndj parambndj, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bmch.b(anni.a(2131710844));
-    bmch.b(anni.a(2131710845));
-    bmch.a();
-    bmch.b(this.a, this.b);
+    bndj.b(anzj.a(2131710953));
+    bndj.b(anzj.a(2131710954));
+    bndj.a();
+    bndj.b(this.a, this.b);
   }
 }
 

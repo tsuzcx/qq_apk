@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import tue;
+import tug;
 
 public class ServiceAccountFolderManager$2
   implements Runnable
 {
-  public ServiceAccountFolderManager$2(tue paramtue, QQAppInterface paramQQAppInterface) {}
+  public ServiceAccountFolderManager$2(tug paramtug, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

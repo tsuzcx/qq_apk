@@ -1,30 +1,64 @@
-import android.app.Activity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 class agvg
-  extends ClickableSpan
+  implements awpp
 {
-  agvg(agup paramagup) {}
+  agvg(agvf paramagvf) {}
   
-  public void onClick(View paramView)
+  public void a(awpk paramawpk, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      paramView = bkho.a(this.a.jdField_a_of_type_AndroidContentContext);
-      paramView.b(2131718656);
-      paramView.c(2131690582);
-      paramView.a(new agvh(this));
-      paramView.a(new agvi(this, paramView));
-      paramView.show();
-      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005975", "0X8005975", 0, 0, "", "", "", "");
+    if ((agvf.a(this.a) == agvf.a(this.a).a().a()) && (agvf.a(this.a, paramawpk.a(), paramawpk.a()))) {
+      agvf.a(this.a).a().a();
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(awpk paramawpk, int paramInt1, int paramInt2) {}
+  
+  public void a(awpk paramawpk, LocationRoom.Venue paramVenue, List<awpi> paramList)
   {
-    paramTextPaint.setColor(-12541697);
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareHelper", 2, "[queryLocationRoom] onUpdateUserLocations: invoked. sessionUin: " + paramawpk.a() + " itemList: " + paramList.size());
+    }
+    paramVenue = awuo.a(agvf.a(this.a).a).a().a();
+    if ((paramVenue != null) && (paramVenue.equals(paramawpk))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationShareHelper", 2, new Object[] { "onUpdateUserLocations: invoked. ", " roomKey: ", paramawpk, " currentFloatWindowVisibleRoomKey: ", paramVenue });
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (!agvf.a(this.a, paramawpk.a(), paramawpk.a()));
+      if ((paramList != null) && (!paramList.isEmpty())) {
+        break;
+      }
+    } while (agvf.a(this.a) != agvf.a(this.a).a().a());
+    agvf.a(this.a).a().a();
+    return;
+    paramVenue = new ArrayList();
+    int i = 0;
+    while (i < paramList.size())
+    {
+      paramVenue.add(((awpi)paramList.get(i)).a());
+      i += 1;
+    }
+    boolean bool = paramVenue.contains(agvf.a(this.a).a.c());
+    agvf.a(this.a).a(bool, agvf.a(this.a, paramawpk, (String)paramVenue.get(0)), paramList.size(), paramVenue);
+    agvf.a(this.a).a().a(agvf.a(this.a), new Object[0]);
+  }
+  
+  public void b(awpk paramawpk, int paramInt)
+  {
+    if ((agvf.a(this.a) == agvf.a(this.a).a().a()) && (agvf.a(this.a, paramawpk.a(), paramawpk.a()))) {
+      agvf.a(this.a).a().a();
+    }
   }
 }
 

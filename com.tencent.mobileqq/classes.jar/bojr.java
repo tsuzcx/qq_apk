@@ -1,12 +1,14 @@
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+
 class bojr
-  extends bolh
+  implements Observer<boom>
 {
-  bojr(bojo parambojo) {}
+  bojr(bojq parambojq) {}
   
-  public void a()
+  public void a(@Nullable boom paramboom)
   {
-    super.a();
-    this.a.n();
+    bojq.a(this.a, paramboom);
   }
 }
 

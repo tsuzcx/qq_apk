@@ -1,19 +1,9 @@
-import android.os.Bundle;
+import kotlin.Metadata;
 
-class atef
-  implements atep
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/FillBirthdayDialog$OnConfirmListener;", "", "onConfirm", "", "newBirthday", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface atef
 {
-  atef(atee paramatee) {}
-  
-  public void a(String paramString, Bundle paramBundle)
-  {
-    atee.a(this.a, paramString);
-  }
-  
-  public void a(String paramString, ateo paramateo)
-  {
-    atee.a(this.a, paramString, paramateo);
-  }
+  public abstract void a(int paramInt);
 }
 
 

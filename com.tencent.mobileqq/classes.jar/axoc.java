@@ -1,17 +1,23 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.4.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import mqq.os.MqqHandler;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multicard.MultiCardRootLayout;
+import java.lang.ref.WeakReference;
 
 public class axoc
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  axoc(axny paramaxny) {}
+  public axoc(MultiCardRootLayout paramMultiCardRootLayout) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.4.1(this));
+    if ((MultiCardRootLayout.a(this.a)) && (MultiCardRootLayout.a(this.a) != null))
+    {
+      axof localaxof = (axof)MultiCardRootLayout.a(this.a).get();
+      if (localaxof != null) {
+        localaxof.a(this.a);
+      }
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

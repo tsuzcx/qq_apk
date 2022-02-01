@@ -1,24 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class bfaz
-  implements View.OnClickListener
+  extends bfbf
 {
-  public bfaz(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  public String a;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    bkft.b(paramView);
-    this.a.getActivity().doOnBackPressed();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfaz
  * JD-Core Version:    0.7.0.1
  */

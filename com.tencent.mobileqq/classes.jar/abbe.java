@@ -1,171 +1,125 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import NS_COMM.COMM.Entry;
+import android.content.Context;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qphone.base.util.QLog;
+import android.provider.Settings.Secure;
+import android.support.annotation.NonNull;
+import com.tencent.biz.videostory.support.VSReporter.1;
+import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
+import com.tencent.mobileqq.mini.report.MiniProgramReporter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-class abbe
-  extends Handler
+public class abbe
 {
-  abbe(abbc paramabbc, Looper paramLooper)
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  
+  public static long a()
   {
-    super(paramLooper);
+    return jdField_a_of_type_Long;
   }
   
-  public void handleMessage(Message paramMessage)
+  @NonNull
+  public static String a(int paramInt, String... paramVarArgs)
   {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    label32:
-    Object localObject2;
-    label468:
-    do
+    if ((paramVarArgs == null) || (paramVarArgs.length <= paramInt)) {
+      return "";
+    }
+    return paramVarArgs[paramInt];
+  }
+  
+  public static List<COMM.Entry> a()
+  {
+    return new ArrayList(Arrays.asList(new COMM.Entry[] { MiniProgramReportHelper.newEntry("uin", String.valueOf(bjjo.a().a())), MiniProgramReportHelper.newEntry("timestamp", String.valueOf(System.currentTimeMillis())), MiniProgramReportHelper.newEntry("qua", bmsw.a()), MiniProgramReportHelper.newEntry("version", "8.4.5.4745"), MiniProgramReportHelper.newEntry("imei", bjve.c()), MiniProgramReportHelper.newEntry("idfa", ""), MiniProgramReportHelper.newEntry("idfv", ""), MiniProgramReportHelper.newEntry("android_id", Settings.Secure.getString(bjjo.a().a().getContentResolver(), "android_id")) }));
+  }
+  
+  public static List<COMM.Entry> a(int paramInt, long paramLong1, String paramString1, long paramLong2, String paramString2)
+  {
+    return new ArrayList(Arrays.asList(new COMM.Entry[] { MiniProgramReportHelper.newEntry("ret_code", String.valueOf(paramInt)), MiniProgramReportHelper.newEntry("time_cost", String.valueOf(paramLong1)), MiniProgramReportHelper.newEntry("url", paramString1), MiniProgramReportHelper.newEntry("file_size", String.valueOf(paramLong2)), MiniProgramReportHelper.newEntry("element_id", paramString2) }));
+  }
+  
+  public static List<COMM.Entry> a(long paramLong1, long paramLong2)
+  {
+    return new ArrayList(Arrays.asList(new COMM.Entry[] { MiniProgramReportHelper.newEntry("ret_code", String.valueOf(paramLong1)), MiniProgramReportHelper.newEntry("time_cost", String.valueOf(paramLong2)) }));
+  }
+  
+  public static List<COMM.Entry> a(long paramLong1, long paramLong2, String paramString, long paramLong3)
+  {
+    return new ArrayList(Arrays.asList(new COMM.Entry[] { MiniProgramReportHelper.newEntry("ret_code", String.valueOf(paramLong1)), MiniProgramReportHelper.newEntry("time_cost", String.valueOf(paramLong2)), MiniProgramReportHelper.newEntry("url", paramString), MiniProgramReportHelper.newEntry("file_size", String.valueOf(paramLong3)) }));
+  }
+  
+  public static List<COMM.Entry> a(ArrayList<COMM.Entry> paramArrayList, HashMap<String, Object> paramHashMap)
+  {
+    Object localObject = paramArrayList;
+    if (paramArrayList == null) {
+      localObject = new ArrayList();
+    }
+    if ((paramHashMap != null) && (paramHashMap.keySet().size() > 0))
     {
-      do
+      paramArrayList = paramHashMap.keySet().iterator();
+      while (paramArrayList.hasNext())
       {
-        do
-        {
-          do
-          {
-            Object localObject1;
-            do
-            {
-              return;
-              switch (paramMessage.what)
-              {
-              default: 
-                if (paramMessage.arg1 != 1) {
-                  break label468;
-                }
-                this.a.b = paramMessage.arg2;
-                localObject1 = (String)paramMessage.obj;
-                localObject2 = this.a.mRuntime.a();
-              }
-            } while (localObject2 == null);
-            if (this.a.jdField_a_of_type_Long == -1L) {
-              this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-            }
-            ((CustomWebView)localObject2).loadUrlOriginal((String)localObject1);
-            ((CustomWebView)localObject2).requestFocus();
-            if (QLog.isColorLevel()) {
-              QLog.i("OfflinePluginQQ", 2, "mCheckupHandler loadUrl start \n" + (String)localObject1);
-            }
-            this.a.a((String)localObject1);
-            for (;;)
-            {
-              for (;;)
-              {
-                localObject1 = this.a.mRuntime.a();
-                localObject2 = this.a.mRuntime.a(this.a.mRuntime.a());
-                if ((localObject2 == null) || (!(localObject2 instanceof bhsl))) {
-                  break;
-                }
-                if (paramMessage.arg1 != 4) {
-                  break label535;
-                }
-                if ((abbc.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(abbc.a(this.a)))) {
-                  break;
-                }
-                localObject1 = (txj)abbc.jdField_a_of_type_JavaUtilHashMap.get(abbc.a(this.a));
-                if (this.a.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-                  this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramMessage.arg2);
-                }
-                if (this.a.jdField_a_of_type_AndroidWidgetTextView == null) {
-                  break;
-                }
-                this.a.jdField_a_of_type_AndroidWidgetTextView.setText(((txj)localObject1).e + paramMessage.arg2 + "%");
-                return;
-                try
-                {
-                  localObject1 = (String)((Object[])(Object[])paramMessage.obj)[1];
-                  localObject2 = new JSONObject();
-                  ((JSONObject)localObject2).put("retcode", 0);
-                  ((JSONObject)localObject2).put("data", nmj.a((String)localObject1));
-                  this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject2).toString() });
-                }
-                catch (Exception localException1)
-                {
-                  try
-                  {
-                    JSONObject localJSONObject1 = new JSONObject();
-                    localJSONObject1.put("retcode", -1);
-                    localJSONObject1.put("msg", "error");
-                    this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { localJSONObject1.toString() });
-                  }
-                  catch (JSONException localJSONException) {}
-                }
-              }
-              if (!QLog.isColorLevel()) {
-                break label32;
-              }
-              QLog.d("OfflinePluginQQ", 2, "OfflinePlugin, batchCheckUpdate, JSONException :" + localJSONException);
-              break label32;
-              if (paramMessage.arg1 == 2)
-              {
-                if (QLog.isDevelopLevel()) {
-                  QLog.i("OfflinePluginQQ", 4, "checkOfflineUpBack refresh current url");
-                }
-                this.a.c();
-              }
-              else if (paramMessage.arg1 == 3)
-              {
-                try
-                {
-                  JSONObject localJSONObject2 = (JSONObject)paramMessage.obj;
-                  this.a.a(localJSONObject2);
-                }
-                catch (Exception localException2)
-                {
-                  localException2.printStackTrace();
-                }
-              }
-            }
-          } while ((paramMessage.arg1 != 5) || (abbc.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(abbc.a(this.a))));
-          localObject2 = (txj)abbc.jdField_a_of_type_JavaUtilHashMap.get(abbc.a(this.a));
-        } while (localObject2 == null);
-        if (paramMessage.arg2 != 0) {
-          break;
-        }
-        ((txj)localObject2).a(3);
-      } while (localException2 == null);
-      paramMessage = localException2.getResources().getDrawable(2130839377);
-      paramMessage.setBounds(0, 0, 40, 40);
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramMessage, null, null, null);
+        String str = (String)paramArrayList.next();
+        ((ArrayList)localObject).add(MiniProgramReportHelper.newEntry(str, String.valueOf(paramHashMap.get(str))));
       }
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(((txj)localObject2).d);
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      }
-    } while (this.a.jdField_a_of_type_AndroidWidgetLinearLayout == null);
-    label535:
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    return;
-    if ((paramMessage.arg2 == 5) || (paramMessage.arg2 == 7))
-    {
-      if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      }
-      ((txj)localObject2).a(4);
-      return;
     }
-    zvc.a(1, 2131695392);
-    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    return localObject;
+  }
+  
+  public static List<COMM.Entry> a(HashMap<String, Object> paramHashMap)
+  {
+    return a(null, paramHashMap);
+  }
+  
+  public static List<COMM.Entry> a(List<COMM.Entry> paramList)
+  {
+    if (paramList != null) {
+      paramList.add(MiniProgramReportHelper.newEntry("unique_id", String.valueOf(a())));
     }
-    ((txj)localObject2).a(4);
+    return paramList;
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_Long = System.currentTimeMillis() / 1000L << 32 | jdField_a_of_type_Int;
+    jdField_a_of_type_Int += 1;
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
+  {
+    a("", paramString1, paramString2, paramInt1, paramInt2, paramVarArgs);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String... paramVarArgs)
+  {
+    bdll.b(null, "dc00898", "", paramString1, paramString2, paramString3, paramInt1, paramInt2, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
+  }
+  
+  public static void a(String paramString, List<COMM.Entry> paramList)
+  {
+    MiniProgramReporter.getInstance().getReportHandler().post(new VSReporter.1(paramString, paramList));
+  }
+  
+  public static List<COMM.Entry> b(HashMap<String, Object> paramHashMap)
+  {
+    if ((paramHashMap != null) && (paramHashMap.keySet().size() > 0)) {
+      return a(a(paramHashMap));
+    }
+    return null;
+  }
+  
+  public static void b(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
+  {
+    b("", paramString1, paramString2, paramInt1, paramInt2, paramVarArgs);
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String... paramVarArgs)
+  {
+    bdmn.a(null, paramString1, paramString2, paramString3, paramInt1, paramInt2, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
   }
 }
 

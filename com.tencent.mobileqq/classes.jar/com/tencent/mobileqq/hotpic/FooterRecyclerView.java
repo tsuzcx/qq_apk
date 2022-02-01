@@ -4,24 +4,24 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.util.AttributeSet;
-import avbd;
-import avdr;
+import avtf;
+import avvt;
 import com.tencent.qphone.base.util.QLog;
 
 public class FooterRecyclerView
   extends RecyclerView
 {
-  avbd a;
+  avtf a;
   
   public FooterRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public void a(avbd paramavbd)
+  public void a(avtf paramavtf)
   {
     if (getAdapter() != null) {}
-    this.a = paramavbd;
+    this.a = paramavtf;
   }
   
   public void setAdapter(RecyclerView.Adapter paramAdapter)
@@ -29,7 +29,7 @@ public class FooterRecyclerView
     Object localObject = paramAdapter;
     if (this.a != null)
     {
-      localObject = new avdr(paramAdapter, this.a);
+      localObject = new avvt(paramAdapter, this.a);
       if (QLog.isColorLevel()) {
         QLog.d("FooterRecyclerView", 2, "has footer");
       }

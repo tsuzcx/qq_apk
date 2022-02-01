@@ -1,27 +1,19 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
+import MWIFI.SCGet3rdCloudCheck;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class bjhm
-  implements bkhw
+final class bjhm
+  implements aolb
 {
-  bjhm(bjhl parambjhl, Intent paramIntent, bkho parambkho) {}
+  bjhm(QQAppInterface paramQQAppInterface, aola paramaola) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      paramView = this.jdField_a_of_type_AndroidContentIntent.getExtras();
-      if ((paramView.containsKey("request_type")) && (paramView.containsKey("uin")) && (paramView.containsKey("sigt")) && (paramView.containsKey("nickname"))) {
-        bjhk.a(this.jdField_a_of_type_Bjhl.a, paramView);
-      }
+    if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aola);
     }
   }
+  
+  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
 }
 
 

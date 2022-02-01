@@ -2,6 +2,7 @@ package com.tencent.biz.qqcircle.fragments.content;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
@@ -19,15 +20,16 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StImage;
-import uxh;
-import vju;
-import vjv;
-import vjw;
-import vjx;
-import vjy;
-import vjz;
-import vka;
-import vou;
+import uys;
+import var;
+import vly;
+import vlz;
+import vma;
+import vmb;
+import vmc;
+import vmd;
+import vme;
+import vrd;
 
 public class QCircleContentImage
   extends QCircleBaseWidgetView<FeedCloudMeta.StFeed>
@@ -43,10 +45,22 @@ public class QCircleContentImage
     super(paramContext);
   }
   
+  private Drawable a()
+  {
+    if ((this.c != 0) || (a() == null) || (!(a() instanceof var))) {
+      return getResources().getDrawable(2130850680);
+    }
+    var localvar = (var)a();
+    if (localvar.a() != null) {
+      return localvar.a();
+    }
+    return getResources().getDrawable(2130850680);
+  }
+  
   private URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView, FeedCloudMeta.StImage paramStImage)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = uxh.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView);
-    localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130850664);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = uys.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView);
+    localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130850680);
     if ((paramStImage == null) || (paramURLImageView == null)) {}
     int k;
     do
@@ -67,12 +81,12 @@ public class QCircleContentImage
   {
     if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnDoubleTabListener(new vjv(this, paramStFeed));
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnScaleChangeListener(new vjw(this, paramStFeed));
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnViewTapListener(new vjx(this, paramStFeed));
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnScaleBeginListener(new vjy(this));
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnScaleEndListener(new vjz(this));
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnLongClickListener(new vka(this));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnDoubleTabListener(new vlz(this, paramStFeed));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnScaleChangeListener(new vma(this, paramStFeed));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnViewTapListener(new vmb(this, paramStFeed));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnScaleBeginListener(new vmc(this));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnScaleEndListener(new vmd(this));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView.setOnLongClickListener(new vme(this));
     }
   }
   
@@ -106,8 +120,8 @@ public class QCircleContentImage
       if (str != null)
       {
         localObject = a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView, (FeedCloudMeta.StImage)localObject);
-        localObject = new vou().a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView).b(((URLDrawable.URLDrawableOptions)localObject).mRequestHeight).c(((URLDrawable.URLDrawableOptions)localObject).mRequestWidth).a(str).a(getResources().getDrawable(2130850664)).a(true);
-        QCircleFeedPicLoader.a().a((vou)localObject, new vju(this, paramStFeed, str));
+        localObject = new vrd().a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMultiTouchImageQCircleMultiTouchImageView).b(((URLDrawable.URLDrawableOptions)localObject).mRequestHeight).c(((URLDrawable.URLDrawableOptions)localObject).mRequestWidth).a(str).a(a()).a(true);
+        QCircleFeedPicLoader.a().a((vrd)localObject, new vly(this, paramStFeed, str));
       }
       b(paramStFeed);
       this.jdField_a_of_type_Boolean = false;

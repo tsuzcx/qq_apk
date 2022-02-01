@@ -1,60 +1,8 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import java.lang.ref.WeakReference;
-
-public class alhp
-  extends Handler
+public abstract interface alhp
 {
-  private WeakReference<EditLocalVideoActivity> a;
+  public abstract void a(int paramInt);
   
-  public alhp(EditLocalVideoActivity paramEditLocalVideoActivity)
-  {
-    this.a = new WeakReference(paramEditLocalVideoActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if ((this.a == null) || (this.a.get() == null)) {}
-    EditLocalVideoActivity localEditLocalVideoActivity;
-    do
-    {
-      return;
-      localEditLocalVideoActivity = (EditLocalVideoActivity)this.a.get();
-      switch (paramMessage.what)
-      {
-      case 1000: 
-      default: 
-        return;
-      case 1001: 
-        EditLocalVideoActivity.b(localEditLocalVideoActivity);
-        return;
-      case 1103: 
-        EditLocalVideoActivity.a(localEditLocalVideoActivity);
-        return;
-      case 1102: 
-        EditLocalVideoActivity.a(localEditLocalVideoActivity, paramMessage);
-        return;
-      }
-    } while (EditLocalVideoActivity.a(localEditLocalVideoActivity) == null);
-    EditLocalVideoActivity.a(localEditLocalVideoActivity).requestLayout();
-    return;
-    EditLocalVideoActivity.c(localEditLocalVideoActivity);
-    return;
-    Toast.makeText(localEditLocalVideoActivity.getApplicationContext(), anni.a(2131702444), 1).show();
-    EditLocalVideoActivity.d(localEditLocalVideoActivity);
-    return;
-    localEditLocalVideoActivity.a("608", "3", "1", true);
-    LpReportInfo_pf00064.allReport(664, 3, 4);
-    paramMessage = (String)paramMessage.obj;
-    return;
-    localEditLocalVideoActivity.a("608", "3", "2", true);
-    return;
-    EditLocalVideoActivity.e(localEditLocalVideoActivity);
-  }
+  public abstract void b(int paramInt);
 }
 
 

@@ -1,28 +1,39 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerTriplePicItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
 public class ooa
-  extends onq
 {
-  public ooa(View paramView, BaseData paramBaseData, WeakReference<Context> paramWeakReference)
+  private ooc jdField_a_of_type_Ooc;
+  private wmk jdField_a_of_type_Wmk = new wmk();
+  
+  private void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
   {
-    super(paramBaseData, paramWeakReference, localWeakReference);
+    if (this.jdField_a_of_type_Ooc != null) {
+      this.jdField_a_of_type_Ooc.a(paramPublishVideoEntry, paramInt, paramString);
+    }
   }
   
-  protected void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
+  private void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
   {
-    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new oob(this, paramBaseData, paramContext));
+    if (this.jdField_a_of_type_Ooc != null) {
+      this.jdField_a_of_type_Ooc.a(paramPublishVideoEntry, paramString);
+    }
   }
   
-  protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
+  public void a(String paramString)
   {
-    return (paramBaseData1 == paramBaseData2) && ((paramBaseData2 instanceof ProteusBannerTriplePicItemData));
+    wmk.a(wmk.a(paramString));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    paramString1 = wmk.a(paramString1);
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_Wmk.a(paramString1, paramString2 + ".tmp.mp4", false, true, new oob(this, l, paramString1));
+  }
+  
+  public void a(ooc paramooc)
+  {
+    this.jdField_a_of_type_Ooc = paramooc;
   }
 }
 

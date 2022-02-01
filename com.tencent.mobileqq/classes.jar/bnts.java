@@ -1,54 +1,24 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-import java.io.File;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.vip.pb.TianShuAccess.AdItem;
 
-public class bnts
-  extends ViewModel
+class bnts
+  implements View.OnClickListener
 {
-  private MutableLiveData<bnrl> a = new MutableLiveData();
-  private MutableLiveData<String> b = new MutableLiveData();
-  private MutableLiveData<bnub> c = new MutableLiveData();
+  bnts(bntq parambntq) {}
   
-  public MutableLiveData<bnrl> a()
+  public void onClick(View paramView)
   {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    this.a.postValue(new bnrl("#ccffffff", "#000000"));
-    this.b.postValue("");
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    this.b.postValue(paramString);
-    this.a.postValue(bnrk.a.get(paramInt));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    bnub localbnub = new bnub();
-    String[] arrayOfString = new File(paramString2).list();
-    String str = paramString2 + File.separator + "snapshot.png";
-    if (arrayOfString.length != 0) {
-      bncx.a(paramString2 + File.separator + arrayOfString[0], 320, 320, str);
+    bntq.a(this.a);
+    if ((bntq.a(this.a) != null) && (bntq.a(this.a).a() != null) && (bntq.a(this.a).a().app != null) && (bntq.a(this.a) != null)) {
+      bntp.a(bntq.a(this.a).a().app, 122, String.valueOf(bntq.a(this.a).iAdId.get()), bntq.a(this.a).traceinfo.get());
     }
-    localbnub.a = paramString2;
-    localbnub.b = paramString1;
-    localbnub.c = str;
-    this.c.postValue(localbnub);
-  }
-  
-  public MutableLiveData<String> b()
-  {
-    return this.b;
-  }
-  
-  public MutableLiveData<bnub> c()
-  {
-    return this.c;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

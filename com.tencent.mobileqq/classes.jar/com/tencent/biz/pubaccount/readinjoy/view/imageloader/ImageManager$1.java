@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 
 import java.util.concurrent.ThreadPoolExecutor;
-import puw;
-import tdv;
-import tdw;
+import pnj;
+import sun;
+import suo;
 
 public class ImageManager$1
   implements Runnable
 {
-  public ImageManager$1(tdv paramtdv, tdw paramtdw, RunningJob paramRunningJob) {}
+  public ImageManager$1(sun paramsun, suo paramsuo, RunningJob paramRunningJob) {}
   
   public void run()
   {
-    puw.a(3, this.jdField_a_of_type_Tdw);
+    pnj.a(3, this.jdField_a_of_type_Suo);
     this.this$0.a.execute(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob);
   }
 }

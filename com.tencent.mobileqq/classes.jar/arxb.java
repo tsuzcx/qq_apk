@@ -1,11 +1,9 @@
-public abstract class arxb
-  extends arxg
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
+
+public abstract interface arxb
 {
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  public abstract void a(View paramView, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct);
 }
 
 

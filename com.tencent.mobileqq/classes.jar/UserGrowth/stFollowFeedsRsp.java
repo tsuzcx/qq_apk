@@ -10,10 +10,12 @@ import java.util.Map;
 public final class stFollowFeedsRsp
   extends JceStruct
 {
+  static stFollowFeedsGlobalConfig cache_config = new stFollowFeedsGlobalConfig();
   static ArrayList<stFeed> cache_feeds = new ArrayList();
   static Map<String, String> cache_map_ext;
   public String attatch_info = "";
   public int cache_size;
+  public stFollowFeedsGlobalConfig config;
   public ArrayList<stFeed> feeds;
   public String feeds_source = "";
   public boolean is_finished = true;
@@ -30,7 +32,7 @@ public final class stFollowFeedsRsp
   
   public stFollowFeedsRsp() {}
   
-  public stFollowFeedsRsp(ArrayList<stFeed> paramArrayList, String paramString1, boolean paramBoolean, int paramInt, String paramString2, String paramString3, Map<String, String> paramMap)
+  public stFollowFeedsRsp(ArrayList<stFeed> paramArrayList, String paramString1, boolean paramBoolean, int paramInt, String paramString2, String paramString3, Map<String, String> paramMap, stFollowFeedsGlobalConfig paramstFollowFeedsGlobalConfig)
   {
     this.feeds = paramArrayList;
     this.attatch_info = paramString1;
@@ -39,6 +41,7 @@ public final class stFollowFeedsRsp
     this.feeds_source = paramString2;
     this.trace_id = paramString3;
     this.map_ext = paramMap;
+    this.config = paramstFollowFeedsGlobalConfig;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -50,6 +53,7 @@ public final class stFollowFeedsRsp
     this.feeds_source = paramJceInputStream.readString(4, false);
     this.trace_id = paramJceInputStream.readString(5, false);
     this.map_ext = ((Map)paramJceInputStream.read(cache_map_ext, 6, false));
+    this.config = ((stFollowFeedsGlobalConfig)paramJceInputStream.read(cache_config, 7, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -70,6 +74,9 @@ public final class stFollowFeedsRsp
     }
     if (this.map_ext != null) {
       paramJceOutputStream.write(this.map_ext, 6);
+    }
+    if (this.config != null) {
+      paramJceOutputStream.write(this.config, 7);
     }
   }
 }

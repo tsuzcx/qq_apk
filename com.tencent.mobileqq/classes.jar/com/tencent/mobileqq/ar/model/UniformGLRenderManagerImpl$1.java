@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.model;
 
-import aoty;
-import apew;
+import apho;
+import apsm;
 
 public class UniformGLRenderManagerImpl$1
   implements Runnable
 {
-  public UniformGLRenderManagerImpl$1(apew paramapew, aoty paramaoty) {}
+  public UniformGLRenderManagerImpl$1(apsm paramapsm, apho paramapho) {}
   
   public void run()
   {

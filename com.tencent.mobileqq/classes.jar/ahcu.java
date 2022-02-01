@@ -1,54 +1,28 @@
-import android.graphics.drawable.Animatable;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
-import com.tencent.mobileqq.activity.aio.item.PttAudioPlayView;
-import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
-import com.tencent.mobileqq.activity.contact.connections.TriangleView;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.doutu.DuiButtonImageView;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ahcu
-  extends afwr
+class ahcu
+  extends ClickableSpan
 {
-  public long a;
-  public FrameLayout a;
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public asbq a;
-  public BreathAnimationLayout a;
-  public PttAudioPlayView a;
-  public PttAudioWaveView a;
-  public TriangleView a;
-  EmoticonPackage jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
-  DuiButtonImageView jdField_a_of_type_ComTencentMobileqqDoutuDuiButtonImageView;
-  public boolean a;
-  ImageView b;
-  public RelativeLayout b;
-  public boolean b;
-  ImageView c;
-  ImageView d;
-  public int e = -1;
-  public ImageView e;
-  public ImageView f;
-  ImageView g;
+  ahcu(ahcr paramahcr) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView.a();
+    if (!bhnv.d(this.a.a))
+    {
+      QQToast.a(this.a.a, anzj.a(2131702124), 2000).a();
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.b();
-    }
-    if ((this.g != null) && ((this.g.getDrawable() instanceof Animatable))) {
-      ((Animatable)this.g.getDrawable()).stop();
-    }
+    paramView = new Intent();
+    paramView.setFlags(268435456);
+    paramView.setAction("android.intent.action.VIEW");
+    paramView.putExtra("devlock_open_source", "SmartDeviceMsg");
+    paramView.setData(Uri.parse("mqqdevlock://devlock/open?"));
+    this.a.a.startActivity(paramView);
   }
 }
 

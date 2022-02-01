@@ -1,55 +1,20 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.data.PhoneContact;
-import friendlist.GetOnlineInfoResp;
-import java.util.List;
-import mqq.manager.Manager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-public abstract interface awmz
-  extends Manager
+public class awmz
+  implements DialogInterface.OnDismissListener
 {
-  public abstract RespondQueryQQBindingStat a();
+  public awmz(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
   
-  public abstract PhoneContact a(String paramString);
-  
-  public abstract String a(String paramString);
-  
-  public abstract void a(int paramInt, List<String> paramList);
-  
-  public abstract void a(awna paramawna);
-  
-  public abstract void a(String paramString, GetOnlineInfoResp paramGetOnlineInfoResp);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract Object[] a();
-  
-  public abstract PhoneContact b(String paramString);
-  
-  public abstract String b(String paramString);
-  
-  public abstract void b(awna paramawna);
-  
-  public abstract PhoneContact c(String paramString);
-  
-  public abstract void c(String paramString1, String paramString2);
-  
-  public abstract boolean c();
-  
-  public abstract int d();
-  
-  public abstract List<PhoneContact> d();
-  
-  public abstract boolean d();
-  
-  public abstract List<List<PhoneContact>> e();
-  
-  public abstract List<PhoneContact> f();
-  
-  public abstract void f();
-  
-  public abstract List<PhoneContact> g();
-  
-  public abstract boolean i();
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if ((!ListenTogetherOverlayFragment.a(this.a)) && (!ListenTogetherOverlayFragment.a(this.a).isFinishing())) {
+      ListenTogetherOverlayFragment.a(this.a).finish();
+    }
+    ListenTogetherOverlayFragment.a(this.a, null);
+  }
 }
 
 

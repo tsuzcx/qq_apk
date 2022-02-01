@@ -1,59 +1,91 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetCommentList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCommentList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-public class wlx
-  extends wnn
+class wlx
+  implements ThreadExcutor.IThreadListener
 {
-  int jdField_a_of_type_Int;
-  public final String a;
-  String b;
+  wlx(wlt paramwlt, wnm paramwnm) {}
   
-  public wlx(wlr paramwlr, String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = wjz.a("StorySvc.get_comment_list");
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public void onAdded() {}
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public void onPostRun() {}
   
-  public wno a(byte[] paramArrayOfByte)
+  public void onPreRun()
   {
-    qqstory_service.RspGetCommentList localRspGetCommentList = new qqstory_service.RspGetCommentList();
-    try
+    boolean bool1;
+    int i;
+    int j;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Wnm.b))
     {
-      localRspGetCommentList.mergeFrom(paramArrayOfByte);
-      return new wly(this.jdField_a_of_type_Wlr, localRspGetCommentList);
+      bool1 = this.jdField_a_of_type_Wnm.a().getBooleanExtra("landscape_video", false);
+      boolean bool2 = this.jdField_a_of_type_Wnm.a().isLocalPublish;
+      boolean bool3 = this.jdField_a_of_type_Wnm.a().getBooleanExtra("is_hw_encode", false);
+      if (this.jdField_a_of_type_Wnm.a().businessId != 1) {
+        break label240;
+      }
+      i = 1;
+      j = this.jdField_a_of_type_Wnm.a().getIntExtra("thumb_rotation", 0);
+      if (!bool2) {
+        break label245;
+      }
+      j = 0;
+      label91:
+      if ((i == 0) || (!bool3) || ((bool2) && (!bool1)) || (j == 0)) {}
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    for (;;)
     {
-      yqp.d("Q.qqstory:GetCommentListRequest", "" + paramArrayOfByte);
+      try
+      {
+        BufferedInputStream localBufferedInputStream = new BufferedInputStream(new FileInputStream(this.jdField_a_of_type_Wnm.b));
+        if (localBufferedInputStream != null)
+        {
+          Bitmap localBitmap1 = BitmapFactory.decodeStream(localBufferedInputStream);
+          Bitmap localBitmap2 = zoc.a(localBitmap1, j);
+          bool1 = zoc.a(localBitmap2, this.jdField_a_of_type_Wnm.b);
+          if (localBitmap2 != null) {
+            localBitmap2.recycle();
+          }
+          localBitmap1.recycle();
+          localBufferedInputStream.close();
+          if (bool1) {
+            continue;
+          }
+          yuk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "compress file fail, %s", new Object[] { this.jdField_a_of_type_Wnm.b });
+        }
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        yuk.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "FileNotFoundException =", localFileNotFoundException);
+        continue;
+      }
+      catch (IOException localIOException)
+      {
+        yuk.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "IOException =", localIOException);
+        continue;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        label240:
+        label245:
+        yuk.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "OutOfMemoryError = ", localOutOfMemoryError);
+        continue;
+      }
+      wlt.a(this.jdField_a_of_type_Wlt);
+      yuk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.jdField_a_of_type_Wnm });
+      return;
+      i = 0;
+      break;
+      j = 360 - j;
+      break label91;
+      yuk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "video local file exist %b, %s", new Object[] { Boolean.valueOf(zom.b(this.jdField_a_of_type_Wnm.b)), this.jdField_a_of_type_Wnm.b });
     }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetCommentList localReqGetCommentList = new qqstory_service.ReqGetCommentList();
-    localReqGetCommentList.vid.set(ByteStringMicro.copyFromUtf8(this.b));
-    localReqGetCommentList.latest_comment_id.set(this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory:GetCommentListRequest", 2, "getCommentListData by latest_comment_id: " + this.jdField_a_of_type_Int);
-    }
-    return localReqGetCommentList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetCommentListRequest{ vid=" + this.b + ", startCommentID=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

@@ -1,6 +1,11 @@
-public abstract interface blqq
+class blqq
 {
-  public abstract void a(int paramInt, String... paramVarArgs);
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  
+  blqq(blqp paramblqp) {}
 }
 
 

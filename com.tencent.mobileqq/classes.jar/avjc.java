@@ -1,91 +1,39 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.os.Looper;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.intervideo.huayang.MonitorConfig.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.HashMap;
 import java.util.Map;
-import org.json.JSONObject;
 
-public class avjc
+class avjc
+  implements View.OnClickListener
 {
-  public static Map<String, avjc> a;
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  avjc(avjb paramavjb) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    if (jdField_a_of_type_JavaUtilMap.get(paramString) != null) {}
-    do
+    if ((avjb.a(this.a) == null) || (TextUtils.isEmpty(avjb.a(this.a).jumpUrl))) {}
+    for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      paramContext = paramContext.getApplicationContext().getSharedPreferences("pre_huayang_plugin_new_start_mode", 4).getString("pre_monitor" + paramString, null);
-    } while (paramContext == null);
-    a(paramString, paramContext);
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    if ((jdField_a_of_type_JavaUtilMap.get(paramString1) != null) || (TextUtils.isEmpty(paramString2))) {
-      return;
+      Object localObject = new Intent(aviu.a(avjb.a(this.a)), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", avjb.a(this.a).jumpUrl);
+      aviu.a(avjb.a(this.a)).startActivity((Intent)localObject);
+      localObject = new HashMap();
+      acik.a((Map)localObject, avjb.a(this.a).msgId);
+      ((Map)localObject).put(Integer.valueOf(2), avjb.a(this.a).msgId);
+      ((Map)localObject).put(Integer.valueOf(6), avjb.a(this.a).feedId);
+      ((Map)localObject).put(Integer.valueOf(4), "20");
+      ((Map)localObject).put(Integer.valueOf(43), avjb.a(this.a).algorithmId);
+      ((Map)localObject).put(Integer.valueOf(44), avjb.a(this.a).type + "");
+      acik.a(anbd.a(), "769", "205022", avjb.a(this.a).a().gameAppId, "76902", "1", "160", (Map)localObject);
     }
-    paramContext.getApplicationContext().getSharedPreferences("pre_huayang_plugin_new_start_mode", 4).edit().putString("pre_monitor" + paramString1, paramString2).commit();
-    a(paramString1, paramString2);
-  }
-  
-  private static void a(String paramString1, String paramString2)
-  {
-    try
-    {
-      paramString2 = new JSONObject(paramString2);
-      avjc localavjc = new avjc();
-      localavjc.jdField_a_of_type_Int = paramString2.optInt("startupId");
-      localavjc.b = paramString2.optInt("downloadSucId");
-      localavjc.c = paramString2.optInt("downloadFailId");
-      localavjc.d = paramString2.optInt("loadSucId");
-      localavjc.e = paramString2.optInt("loadFailId");
-      localavjc.f = paramString2.optInt("startSucId");
-      localavjc.g = paramString2.optInt("firstUserId");
-      localavjc.h = paramString2.optInt("exitId");
-      jdField_a_of_type_JavaUtilMap.put(paramString1, localavjc);
-      if (QLog.isColorLevel()) {
-        QLog.d("MonitorConfig", 2, paramString1 + localavjc);
-      }
-      return;
-    }
-    catch (Throwable paramString1)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MonitorConfig", 2, "pareMonitorConfig exception :" + paramString1);
-    }
-  }
-  
-  public static void b(Context paramContext, String paramString)
-  {
-    if (jdField_a_of_type_JavaUtilMap.get(paramString) != null)
-    {
-      avjb.b(String.valueOf(((avjc)jdField_a_of_type_JavaUtilMap.get(paramString)).jdField_a_of_type_Int));
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MonitorConfig", 2, "没有找到匹配的monitor离线配置文件，重新拉取一次");
-    }
-    avjb.b("3235982");
-    new Handler(Looper.getMainLooper()).postDelayed(new MonitorConfig.1(paramContext, paramString), 1500L);
   }
 }
 

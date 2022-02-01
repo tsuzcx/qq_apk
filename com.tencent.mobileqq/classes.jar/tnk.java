@@ -1,42 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.viola.core.ViolaInstance;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerTriplePicItemData;
 
 public class tnk
-  implements tsb
+  extends tna
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public tnk(BridgeModule paramBridgeModule) {}
-  
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  public int a(BaseData paramBaseData)
   {
-    ViolaFragment localViolaFragment;
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance() != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment() instanceof ViolaFragment)))
-    {
-      localViolaFragment = (ViolaFragment)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment();
-      if (!paramBoolean) {
-        break label85;
-      }
-      this.jdField_a_of_type_JavaLangString = localViolaFragment.c();
-      this.jdField_a_of_type_Boolean = localViolaFragment.a().booleanValue();
-      localViolaFragment.a("#FF000000");
-      localViolaFragment.b("#FF000000");
-      localViolaFragment.a(Boolean.valueOf(true), true);
+    int i = -1;
+    if ((paramBaseData instanceof ProteusBannerTriplePicItemData)) {
+      i = tpp.a((ProteusBannerTriplePicItemData)paramBaseData);
     }
-    label85:
-    do
-    {
-      return;
-      localViolaFragment.a(this.jdField_a_of_type_JavaLangString);
-      localViolaFragment.b(this.jdField_a_of_type_JavaLangString);
-      localViolaFragment.a(Boolean.valueOf(this.jdField_a_of_type_Boolean), true);
-    } while ((!localViolaFragment.a()) || (localViolaFragment.a() == null));
-    localViolaFragment.a().g();
+    return i;
+  }
+  
+  protected spi a(View paramView, BaseData paramBaseData)
+  {
+    return new tnl(this, paramView, paramBaseData, this.a);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return (paramBaseData != null) && (paramBaseData.r == 24);
   }
 }
 

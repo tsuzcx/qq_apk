@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import adrm;
+import aean;
 import android.text.TextUtils;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -14,7 +14,7 @@ class BaseChatPie$57
   
   public void run()
   {
-    MessageRecord localMessageRecord = adrm.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    MessageRecord localMessageRecord = aean.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     if ((localMessageRecord != null) && (!TextUtils.isEmpty(localMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"))))
     {
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"));

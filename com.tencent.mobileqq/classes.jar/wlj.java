@@ -1,65 +1,96 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.common.app.AppInterface;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.NewIntent;
+import java.io.File;
 
-public class wlj
-  extends SimpleJob
+public abstract class wlj
 {
-  public wlj(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, wlf paramwlf)
+  protected wlj a;
+  protected String[] a;
+  
+  public wlj(@NonNull String[] paramArrayOfString)
   {
-    super(paramString);
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  public static double a(File paramFile)
   {
-    for (;;)
+    double d1 = 0.0D;
+    double d2;
+    if (paramFile.isDirectory())
     {
-      NewIntent localNewIntent;
-      try
+      paramFile = paramFile.listFiles();
+      d2 = d1;
+      if (paramFile != null)
       {
-        paramJobContext = this.jdField_a_of_type_Wlf.a();
-        paramArrayOfObject = Integer.valueOf(QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).getAndIncrement());
-        AppInterface localAppInterface = QQStoryContext.a();
-        localNewIntent = new NewIntent(localAppInterface.getApp(), wlq.class);
-        localNewIntent.putExtra("storySeq", paramArrayOfObject);
-        localNewIntent.putExtra("cmd", this.jdField_a_of_type_Wlf.a());
-        localNewIntent.putExtra("data", paramJobContext);
-        localNewIntent.putExtra("start_time", System.currentTimeMillis());
-        if (this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a.contains(Integer.valueOf(this.jdField_a_of_type_Wlf.b())))
+        int j = paramFile.length;
+        int i = 0;
+        for (;;)
         {
-          localNewIntent.putExtra("timeout", 10000L);
-          localNewIntent.putExtra("support_retry", true);
-          QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).put(paramArrayOfObject, this.jdField_a_of_type_Wlf);
-          localAppInterface.startServlet(localNewIntent);
-          return null;
+          d2 = d1;
+          if (i >= j) {
+            break;
+          }
+          d2 = a(paramFile[i]);
+          i += 1;
+          d1 = d2 + d1;
         }
       }
-      catch (QQStoryCmdHandler.IllegalUinException paramJobContext)
-      {
-        Bosses.get().scheduleJobDelayed(new wlk(this, "Q.qqstory.net:QQStoryCmdHandler", paramJobContext), 100);
-        return null;
-      }
-      if (this.jdField_a_of_type_Wlf.a > 0L) {
-        localNewIntent.putExtra("timeout", this.jdField_a_of_type_Wlf.a);
-      }
+    }
+    else
+    {
+      d2 = paramFile.length() / 1024.0D / 1024.0D;
+    }
+    return d2;
+  }
+  
+  public wlj a(wlj paramwlj)
+  {
+    this.jdField_a_of_type_Wlj = paramwlj;
+    return this.jdField_a_of_type_Wlj;
+  }
+  
+  public void a(File paramFile)
+  {
+    try
+    {
+      zom.d(paramFile.getPath());
+      return;
+    }
+    catch (Exception paramFile)
+    {
+      yuk.d("Q.qqstory.cleaner:AbsCleanStep", "delete failed : " + paramFile);
     }
   }
   
-  public int getJobType()
+  public void a(wlk paramwlk)
   {
-    return 16;
+    a(this.jdField_a_of_type_ArrayOfJavaLangString, paramwlk);
+    if (this.jdField_a_of_type_Wlj != null) {}
+    long l;
+    do
+    {
+      try
+      {
+        Thread.sleep(100L);
+        this.jdField_a_of_type_Wlj.a(paramwlk);
+        return;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          yuk.e("Q.qqstory.cleaner:AbsCleanStep", "sleep error ,InterruptedException");
+        }
+      }
+      l = zom.a() / 1024L;
+      yuk.d("Q.qqstory.cleaner:AbsCleanStep", "clean cache over , spend time = %d , free size = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - paramwlk.jdField_a_of_type_Long), Long.valueOf(l) });
+      if (paramwlk.jdField_a_of_type_Int != 0) {
+        yup.b("story_cache", "clear_cache", 0, 0, new String[] { String.valueOf(0), String.valueOf(paramwlk.jdField_a_of_type_Int), String.valueOf(paramwlk.jdField_a_of_type_Double), String.valueOf(l) });
+      }
+    } while (paramwlk.jdField_b_of_type_Int == 0);
+    yup.b("story_cache", "clear_cache", 0, 0, new String[] { String.valueOf(1), String.valueOf(paramwlk.jdField_b_of_type_Int), String.valueOf(paramwlk.jdField_b_of_type_Double), String.valueOf(l) });
   }
+  
+  protected abstract void a(String[] paramArrayOfString, wlk paramwlk);
 }
 
 

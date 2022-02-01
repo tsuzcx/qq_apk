@@ -1,15 +1,15 @@
 package com.tencent.av.smallscreen;
 
-import bgpa;
+import bhpc;
 
 class SmallScreenDialogActivity$2
   implements Runnable
 {
-  SmallScreenDialogActivity$2(SmallScreenDialogActivity paramSmallScreenDialogActivity, String paramString, bgpa parambgpa) {}
+  SmallScreenDialogActivity$2(SmallScreenDialogActivity paramSmallScreenDialogActivity, String paramString, bhpc parambhpc) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaLangString + "_dealy", this.jdField_a_of_type_Bgpa);
+    this.this$0.a(this.jdField_a_of_type_JavaLangString + "_dealy", this.jdField_a_of_type_Bhpc);
   }
 }
 

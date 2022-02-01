@@ -1,69 +1,46 @@
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.doodle.control.RDBaseListLayout;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import java.util.List;
 
-public class agin
-  extends BaseAdapter
+class agin
+  implements AdapterView.OnItemClickListener
 {
-  private agin(RDBaseListLayout paramRDBaseListLayout) {}
+  agin(agim paramagim) {}
   
-  public void a() {}
-  
-  public void b() {}
-  
-  public int getCount()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return RDBaseListLayout.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return RDBaseListLayout.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject2 = RDBaseListLayout.a(this.a).get(paramInt);
-    Object localObject1;
-    if (paramView == null) {
-      localObject1 = this.a.a(paramInt, localObject2);
+    int j = ((ShareActionSheetBuilder.ActionSheetItem)agim.a(this.a)[0].get(paramInt)).action;
+    agim.a(this.a).dismiss();
+    int i = 0;
+    switch (j)
+    {
     }
     for (;;)
     {
-      if (localObject1 == null)
-      {
-        localObject2 = null;
-        localObject1 = paramView;
+      if (i != 0) {
+        bdll.b(null, "dc00898", "", "", "0X800A11B", "0X800A11B", i, 0, "", "", "", "");
       }
-      for (;;)
-      {
-        EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-        return localObject2;
-        localObject1 = (agio)paramView.getTag();
-        if (localObject1 == null) {
-          break label141;
-        }
-        localObject1 = ((agio)localObject1).a;
-        break;
-        this.a.a(paramInt, localObject2, localObject1);
-        localObject2 = ((agip)localObject1).a();
-        if (localObject2 != null) {
-          ((View)localObject2).setTag(new agio(this.a, paramInt, localObject1));
-        }
-        paramView = (View)localObject2;
-        localObject1 = localObject2;
-        localObject2 = paramView;
+      if (QLog.isColorLevel()) {
+        QLog.i("IntimateInfoShareHelper", 2, "intimate shareAction: " + paramInt + "," + j);
       }
-      label141:
-      localObject1 = null;
+      this.a.a(j, agim.a(this.a));
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+      continue;
+      i = 5;
+      continue;
+      i = 6;
     }
   }
 }

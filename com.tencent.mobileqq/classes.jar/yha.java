@@ -1,11 +1,13 @@
-class yha
-  extends zpq
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+
+public class yha
+  extends ztl
 {
-  yha(ygz paramygz) {}
+  public yha(StoryDetailFragment paramStoryDetailFragment) {}
   
   public boolean a(boolean paramBoolean)
   {
-    this.a.b();
+    this.a.d();
     return true;
   }
 }

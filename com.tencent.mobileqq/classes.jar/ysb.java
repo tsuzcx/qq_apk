@@ -1,19 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public final class ysb
-  implements Parcelable.Creator<EditRecordVideoSource>
+public abstract interface ysb
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
-  {
-    return new EditRecordVideoSource(paramParcel);
-  }
+  public abstract void a(String paramString, CommentEntry paramCommentEntry);
   
-  public EditRecordVideoSource[] a(int paramInt)
-  {
-    return new EditRecordVideoSource[paramInt];
-  }
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

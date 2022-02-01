@@ -1,8 +1,27 @@
-import android.view.View;
-
-public abstract interface aruz
+public class aruz
 {
-  public abstract void a(View paramView);
+  private static aruo jdField_a_of_type_Aruo;
+  private static boolean jdField_a_of_type_Boolean;
+  
+  public static void a(arva paramarva)
+  {
+    if (paramarva != null) {
+      arwe.a(paramarva);
+    }
+  }
+  
+  public static boolean a()
+  {
+    return (jdField_a_of_type_Boolean) && (b());
+  }
+  
+  private static boolean b()
+  {
+    if (jdField_a_of_type_Aruo != null) {
+      return jdField_a_of_type_Aruo.a();
+    }
+    return true;
+  }
 }
 
 

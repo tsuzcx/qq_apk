@@ -6,12 +6,12 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sxt;
+import sop;
 
 public class WebFastAdapter$10
   implements Runnable
 {
-  public WebFastAdapter$10(sxt paramsxt) {}
+  public WebFastAdapter$10(sop paramsop) {}
   
   public void run()
   {

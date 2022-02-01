@@ -7,7 +7,7 @@ import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.mobileqq.minigame.utils.GameLog;
-import com.tencent.mobileqq.triton.sdk.Version;
+import com.tencent.mobileqq.triton.model.Version;
 
 final class GameEnvManager$2
   implements Downloader.DownloadListener

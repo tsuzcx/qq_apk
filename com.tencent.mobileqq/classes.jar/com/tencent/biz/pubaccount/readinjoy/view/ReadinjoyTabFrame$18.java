@@ -1,9 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import pmr;
-import rui;
-import ruj;
-
 class ReadinjoyTabFrame$18
   implements Runnable
 {
@@ -11,8 +7,7 @@ class ReadinjoyTabFrame$18
   
   public void run()
   {
-    pmr.b();
-    rui.a.a();
+    this.this$0.F_();
   }
 }
 

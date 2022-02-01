@@ -1,200 +1,82 @@
-import Wallet.AcsMsg;
-import android.app.AlarmManager;
-import android.app.AlarmManager.AlarmClockInfo;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.activateFriend.biz.ReminderAlarmReceiver;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
-import mqq.app.MobileQQ;
-import mqq.manager.Manager;
+import tencent.im.oidb.cmd0xe83.oidb_0xe83.RspBody;
 
 public class afts
-  implements Manager
+  extends aojs
 {
-  private AlarmManager jdField_a_of_type_AndroidAppAlarmManager;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private ReminderAlarmReceiver jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBizReminderAlarmReceiver;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private CopyOnWriteArraySet<String> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet;
+  public afts(TroopLowCreditLevelNotifyActivity paramTroopLowCreditLevelNotifyActivity) {}
   
-  public afts(QQAppInterface paramQQAppInterface)
+  protected void a(oidb_0xe83.RspBody paramRspBody, int paramInt)
+  {
+    if (paramRspBody.group_id.has())
+    {
+      paramRspBody = String.valueOf(paramRspBody.group_id.get());
+      if (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramRspBody)) {
+        break label119;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList troopUin not match. rsp uin=" + paramRspBody + ", current uin=" + this.a.jdField_a_of_type_JavaLangString);
+      }
+    }
+    label119:
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList group_id lost. current uin=" + this.a.jdField_a_of_type_JavaLangString);
+      }
+      this.a.d();
+      paramRspBody = this.a.a(1101236949L);
+    } while (paramRspBody == null);
+    this.a.a(paramRspBody);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.Manager", 2, "ActivateFriends.Manager--onCreate---");
+      QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramBoolean);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("pref_act_frd" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext();
-    this.jdField_a_of_type_AndroidAppAlarmManager = ((AlarmManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("alarm"));
-    b();
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBizReminderAlarmReceiver == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBizReminderAlarmReceiver = new ReminderAlarmReceiver(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("notification_alram_action");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBizReminderAlarmReceiver, localIntentFilter);
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBizReminderAlarmReceiver != null) {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBizReminderAlarmReceiver);
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (!this.jdField_a_of_type_AndroidContentSharedPreferences.getStringSet("sp_key_alarmids" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), new HashSet()).isEmpty())
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-        while (localIterator.hasNext()) {
-          a(Integer.parseInt((String)localIterator.next()));
-        }
-      }
-      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet == null) {
-        break label136;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ActivateFriends.Manager", 2, "clearAllAlarm throw an exception: " + localException);
-      return;
-    }
-    if (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.clear();
-    }
-    label136:
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().remove("sp_key_alarmids" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).apply();
-  }
-  
-  public void a(int paramInt)
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ActivateFriends.Manager", 2, "cancelAlarmById alarmId: " + paramInt);
-      }
-      Object localObject = String.valueOf(paramInt);
-      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(localObject)) {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localObject);
-      }
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putStringSet("sp_key_alarmids" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet).apply();
-      localObject = new Intent();
-      ((Intent)localObject).setAction("notification_alram_action");
-      localObject = PendingIntent.getBroadcast(this.jdField_a_of_type_AndroidContentContext, paramInt, (Intent)localObject, 0);
-      this.jdField_a_of_type_AndroidAppAlarmManager.cancel((PendingIntent)localObject);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ActivateFriends.Manager", 2, "cancelAlarmById throw an exceptio: " + localThrowable);
-    }
-  }
-  
-  public void a(AcsMsg paramAcsMsg)
-  {
-    if (paramAcsMsg == null) {}
-    long l;
-    label335:
+    if (!this.a.jdField_a_of_type_JavaLangString.equals(paramLong + "")) {}
     do
     {
       do
       {
-        Object localObject1;
         do
         {
-          for (;;)
+          do
           {
             return;
-            try
-            {
-              l = paramAcsMsg.notice_time * 1000L;
-              int i = paramAcsMsg.msg_id.hashCode();
-              localObject1 = paramAcsMsg.title;
-              if (l <= NetConnInfoCenter.getServerTimeMillis()) {
-                break label434;
-              }
-              Object localObject2 = String.valueOf(i);
-              if (this.jdField_a_of_type_AndroidContentSharedPreferences.getStringSet("sp_key_alarmids" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), new CopyOnWriteArraySet()).contains(localObject2)) {
-                break label395;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("ActivateFriends.Manager", 2, "setAlarmTimer at " + afsx.a(l, "yyyyMMdd HH:mm:ss") + " msg: " + (String)localObject1 + " alarmId: " + i);
-              }
-              if (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(localObject2))
-              {
-                this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(localObject2);
-                this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putStringSet("sp_key_alarmids" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet).apply();
-              }
-              localObject2 = new Intent();
-              ((Intent)localObject2).setAction("notification_alram_action");
-              ((Intent)localObject2).putExtra("msg", (String)localObject1);
-              ((Intent)localObject2).putExtra("msg_id", paramAcsMsg.msg_id);
-              paramAcsMsg = PendingIntent.getBroadcast(this.jdField_a_of_type_AndroidContentContext, i, (Intent)localObject2, 0);
-              if (this.jdField_a_of_type_AndroidAppAlarmManager != null)
-              {
-                if (Build.VERSION.SDK_INT < 23) {
-                  break label335;
-                }
-                this.jdField_a_of_type_AndroidAppAlarmManager.setExactAndAllowWhileIdle(0, l, paramAcsMsg);
-                return;
-              }
-            }
-            catch (Throwable paramAcsMsg) {}
-          }
-        } while (!QLog.isColorLevel());
-        QLog.e("ActivateFriends.Manager", 2, "setAlarmTimer throw an exceptio: " + paramAcsMsg);
-        return;
-        if (Build.VERSION.SDK_INT >= 21)
-        {
-          localObject1 = new AlarmManager.AlarmClockInfo(l, paramAcsMsg);
-          this.jdField_a_of_type_AndroidAppAlarmManager.setAlarmClock((AlarmManager.AlarmClockInfo)localObject1, paramAcsMsg);
-          return;
-        }
-        if (Build.VERSION.SDK_INT >= 19)
-        {
-          this.jdField_a_of_type_AndroidAppAlarmManager.setExact(0, l, paramAcsMsg);
-          return;
-        }
-        this.jdField_a_of_type_AndroidAppAlarmManager.set(0, l, paramAcsMsg);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("ActivateFriends.Manager", 2, "has already setAlarmTimer at " + afsx.a(l, "yyyyMMdd HH:mm:ss"));
+            this.a.d();
+          } while (!paramBoolean);
+          localObject = (TroopManager)this.a.app.getManager(52);
+        } while (localObject == null);
+        localObject = ((TroopManager)localObject).b(this.a.jdField_a_of_type_JavaLangString);
+      } while (localObject == null);
+      paramLong = ((TroopInfo)localObject).troopCreditLevel;
+      if (QLog.isColorLevel()) {
+        QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramLong);
+      }
+    } while (paramLong == 2L);
+    if (paramLong == 1L)
+    {
+      localObject = bhlq.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131718699)).setMessage(anzj.a(2131714262));
+      ((bhpc)localObject).setPositiveButton(2131696883, new aftt(this));
+      ((bhpc)localObject).setNegativeButton("", null);
+      ((bhpc)localObject).setCancelable(false);
+      ((bhpc)localObject).show();
       return;
-    } while (!QLog.isColorLevel());
-    label395:
-    label434:
-    QLog.d("ActivateFriends.Manager", 2, "has already setAlarmTimer at " + afsx.a(l, "yyyyMMdd HH:mm:ss"));
-  }
-  
-  public void onDestroy()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.Manager", 2, "ActivateFriends.Manager--onDestroy---");
     }
-    c();
-    a();
+    Object localObject = bhlq.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131718699)).setMessage(anzj.a(2131714263));
+    ((bhpc)localObject).setPositiveButton(2131696883, new aftu(this));
+    ((bhpc)localObject).setNegativeButton("", null);
+    ((bhpc)localObject).setCancelable(false);
+    ((bhpc)localObject).show();
   }
 }
 

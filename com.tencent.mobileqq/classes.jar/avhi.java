@@ -1,213 +1,61 @@
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.text.TextUtils;
-import com.tencent.mobileqq.intervideo.InvalidFileException;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.shadow.core.common.LoggerFactory;
-import com.tencent.shadow.dynamic.host.DynamicPluginManager;
-import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
-import java.io.File;
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.widget.ThemeImageView;
 
-public final class avhi
+public class avhi
+  extends RecyclerView.ViewHolder
 {
-  private static avhh jdField_a_of_type_Avhh;
-  public static final IVPluginDataReporter a;
-  private static final Object jdField_a_of_type_JavaLangObject;
-  private static boolean jdField_a_of_type_Boolean;
+  private View jdField_a_of_type_AndroidViewView;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
+  private TextView b;
+  private TextView c;
   
-  static
+  avhi(View paramView)
   {
-    jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
-    jdField_a_of_type_JavaLangObject = new Object();
-    a();
+    super(paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368785));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368787));
+    this.b = ((TextView)paramView.findViewById(2131368790));
+    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131368783));
+    this.c = ((TextView)paramView.findViewById(2131368789));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131368788));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368784);
   }
   
-  public static avgz a(Context paramContext, String paramString1, String paramString2)
+  View a()
   {
-    try
-    {
-      paramContext = (avgz)anvy.a(192).submit(new avhj(paramContext, paramString1)).get(20L, TimeUnit.SECONDS);
-      return paramContext;
-    }
-    catch (TimeoutException paramContext)
-    {
-      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("updateException").d1(paramContext.toString()).report();
-      throw paramContext;
-    }
-    catch (InterruptedException paramContext)
-    {
-      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("updateException").d1(paramContext.toString()).report();
-      throw paramContext;
-    }
-    catch (ExecutionException paramContext)
-    {
-      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("updateException").d1(paramContext.toString()).report();
-      throw paramContext;
-    }
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  private static avhh a(String paramString, avgo paramavgo)
+  Button a()
   {
-    QLog.i("shadow::Shadow", 2, "pluginManagerWrapper ，sPluginManagerWrapper = " + jdField_a_of_type_Avhh + " bizType:" + paramString);
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Avhh == null)
-      {
-        jdField_a_of_type_Avhh = new avhh(paramString, new DynamicPluginManager(paramavgo));
-        QLog.i("shadow::Shadow", 2, "new pluginManagerWrapper : " + jdField_a_of_type_Avhh);
-      }
-      paramString = jdField_a_of_type_Avhh;
-      return paramString;
-    }
+    return this.jdField_a_of_type_AndroidWidgetButton;
   }
   
-  public static void a()
+  TextView a()
   {
-    if (!jdField_a_of_type_Boolean) {}
-    try
-    {
-      LoggerFactory.setILoggerFactory(avgw.a());
-      label12:
-      jdField_a_of_type_Boolean = true;
-      return;
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      break label12;
-    }
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
   
-  public static avgz b(Context paramContext, String paramString1, String paramString2)
+  URLImageView a()
   {
-    l1 = System.currentTimeMillis();
-    jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(paramString1).opType("CdnGetBizPm").toUin(paramString2);
-    Object localObject1 = new avgs(paramString1);
-    if (((avgs)localObject1).getLatest() != null) {
-      return new avhh(paramString1, new DynamicPluginManager((PluginManagerUpdater)localObject1));
-    }
-    localavgo = new avgo(paramContext.getApplicationContext(), paramString1, paramString2, "9_1");
-    if (QLog.isColorLevel()) {
-      QLog.i("shadow::Shadow", 2, "wasUpdating:" + localavgo.wasUpdating() + " getLatest:" + localavgo.getLatest());
-    }
-    if ((localavgo.wasUpdating()) || (localavgo.getLatest() == null))
-    {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.i("shadow::Shadow", 2, "needWaitingUpdate:" + bool);
-      }
-      if (TextUtils.equals("GVideo", paramString1)) {
-        localavgo.a(new avhk(paramString1));
-      }
-      paramString2 = localavgo.update();
-      if (!bool) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString2.get();
-        localObject2 = paramContext.getPackageManager();
-        if (localavgo.getLatest() != null)
-        {
-          paramContext = localavgo.getLatest().getAbsolutePath();
-          l2 = System.currentTimeMillis();
-          localObject1 = null;
-          paramString2 = null;
-        }
-      }
-      catch (ExecutionException paramContext)
-      {
-        Object localObject2;
-        l2 = System.currentTimeMillis();
-        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(1).report();
-        throw paramContext;
-      }
-      catch (InterruptedException paramContext)
-      {
-        l2 = System.currentTimeMillis();
-        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(2).report();
-        throw paramContext;
-      }
-      try
-      {
-        localObject2 = ((PackageManager)localObject2).getPackageArchiveInfo(paramContext, 128);
-        paramString2 = (String)localObject2;
-        localObject1 = localObject2;
-        QLog.i("shadow::Shadow", 2, "getPackageArchiveInfo，timespan = " + (System.currentTimeMillis() - l2));
-        if (localObject2 == null) {
-          paramString1 = "";
-        }
-      }
-      catch (Exception localException)
-      {
-        if (paramString2 == null) {
-          paramString1 = "";
-        }
-        try
-        {
-          paramString2 = bkcx.a(localavgo.getLatest());
-          paramString1 = paramString2;
-        }
-        catch (IOException paramString2)
-        {
-          break label497;
-        }
-        QLog.i("shadow::Shadow", 1, "pluginManager apk file is invalid，apk = " + paramContext + " md5 = " + paramString1);
-        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(paramContext).d2("FileInvalid").d3(paramString1).opResult(1000).report();
-        localavgo.a();
-        throw new InvalidFileException("pluginManager apk file is invalid!");
-      }
-      finally
-      {
-        if (localException == null) {
-          paramString1 = "";
-        }
-        try
-        {
-          paramString2 = bkcx.a(localavgo.getLatest());
-          paramString1 = paramString2;
-        }
-        catch (IOException paramString2)
-        {
-          break label592;
-        }
-        QLog.i("shadow::Shadow", 1, "pluginManager apk file is invalid，apk = " + paramContext + " md5 = " + paramString1);
-        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(paramContext).d2("FileInvalid").d3(paramString1).opResult(1000).report();
-        localavgo.a();
-        throw new InvalidFileException("pluginManager apk file is invalid!");
-        throw paramString1;
-        l2 = System.currentTimeMillis();
-        if (TextUtils.equals("GVideo", paramString1)) {}
-        for (paramContext = a(paramString1, localavgo);; paramContext = new avhh(paramString1, new DynamicPluginManager(localavgo)))
-        {
-          jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(0).report();
-          return paramContext;
-        }
-      }
-      try
-      {
-        paramString2 = bkcx.a(localavgo.getLatest());
-        paramString1 = paramString2;
-      }
-      catch (IOException paramString2)
-      {
-        continue;
-      }
-      QLog.i("shadow::Shadow", 1, "pluginManager apk file is invalid，apk = " + paramContext + " md5 = " + paramString1);
-      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(paramContext).d2("FileInvalid").d3(paramString1).opResult(1000).report();
-      localavgo.a();
-      throw new InvalidFileException("pluginManager apk file is invalid!");
-      bool = false;
-      break;
-      paramContext = "";
-    }
+    return this.jdField_a_of_type_ComTencentImageURLImageView;
+  }
+  
+  public ThemeImageView a()
+  {
+    return this.jdField_a_of_type_ComTencentWidgetThemeImageView;
+  }
+  
+  TextView b()
+  {
+    return this.c;
   }
 }
 

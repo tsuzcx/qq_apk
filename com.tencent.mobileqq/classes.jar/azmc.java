@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
 
-public class azmc
-  implements azmj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
+final class azmc
+  implements DialogInterface.OnClickListener
 {
-  public azmc(ComponentCenter paramComponentCenter) {}
+  azmc(Function0 paramFunction0) {}
   
-  public void a(azlv paramazlv)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramazlv.c();
+    this.a.invoke();
   }
 }
 

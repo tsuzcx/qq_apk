@@ -17,6 +17,7 @@ import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
 import com.tencent.qqmini.sdk.plugins.engine.JsPluginEngine;
+import io.flutter.app.FlutterPluginRegistry;
 import io.flutter.plugin.common.BasicMessageChannel;
 import io.flutter.plugin.common.BinaryCodec;
 import io.flutter.plugin.common.MethodChannel;
@@ -28,8 +29,18 @@ import java.util.Map;
 public class NativeAppBrandRuntime
   extends BaseAppBrandRuntime
 {
+  private static final int PAGE_STATE_APPEAR = 1;
+  private static final int PAGE_STATE_BACKGROUND = 5;
+  private static final int PAGE_STATE_BECAME_ACTIVE = 7;
+  private static final int PAGE_STATE_DESTROY = 4;
+  private static final int PAGE_STATE_DISAPPEAR = 3;
+  private static final int PAGE_STATE_FOREGROUND = 6;
+  private static final int PAGE_STATE_INIT = 0;
+  private static final int PAGE_STATE_RESIGN_ACTIVE = 8;
+  private static final int PAGE_STATE_WILL_DISAPPEAR = 2;
   private static final String TAG = "AppBrandRuntime";
   private boolean firstPageShown = false;
+  Map<String, NativeAppBrandRuntime.TissueEventHandler> handlers = new NativeAppBrandRuntime.2(this);
   private BaselibLoader.BaselibContent mBaselibContent;
   private BasicMessageChannel messageChannel;
   private MethodChannel methodChannel;
@@ -39,6 +50,11 @@ public class NativeAppBrandRuntime
   {
     super(paramContext);
     this.mEventListener = new NativeEventListener(this);
+  }
+  
+  private void sendPageState(int paramInt)
+  {
+    sendMsgToFlutter("messagePageState", new NativeAppBrandRuntime.7(this, paramInt));
   }
   
   public void flutterLoadData(String paramString)
@@ -74,11 +90,11 @@ public class NativeAppBrandRuntime
   public void initTissueChannels(IChannelInitCallback paramIChannelInitCallback)
   {
     this.methodChannel = new MethodChannel(this.nativeView, "flutter_method_channel");
-    this.methodChannel.setMethodCallHandler(new NativeAppBrandRuntime.2(this));
+    this.methodChannel.setMethodCallHandler(new NativeAppBrandRuntime.3(this));
     this.messageChannel = new BasicMessageChannel(this.nativeView, "com.tencent.tissue/basic_channel", StandardMessageCodec.INSTANCE);
-    this.messageChannel.setMessageHandler(new NativeAppBrandRuntime.3(this, paramIChannelInitCallback));
-    new BasicMessageChannel(this.nativeView, "com.tencent.tissue/log_channel", BinaryCodec.INSTANCE).setMessageHandler(new NativeAppBrandRuntime.4(this));
-    QflutterLogPlugin.setLog(new NativeAppBrandRuntime.5(this));
+    this.messageChannel.setMessageHandler(new NativeAppBrandRuntime.4(this, paramIChannelInitCallback));
+    new BasicMessageChannel(this.nativeView, "com.tencent.tissue/log_channel", BinaryCodec.INSTANCE).setMessageHandler(new NativeAppBrandRuntime.5(this));
+    QflutterLogPlugin.setLog(new NativeAppBrandRuntime.6(this));
   }
   
   public void onLoadMiniAppInfo(MiniAppInfo paramMiniAppInfo, boolean paramBoolean, String paramString)
@@ -97,17 +113,37 @@ public class NativeAppBrandRuntime
   public void onRuntimeDetachActivity(Activity paramActivity)
   {
     super.onRuntimeDetachActivity(paramActivity);
-    if (this.nativeView.isAttached()) {
+    if (this.nativeView.getPluginRegistry().getPlatformViewsController() != null) {}
+    try
+    {
       this.nativeView.detachFromFlutterView();
+      return;
+    }
+    catch (Throwable paramActivity)
+    {
+      QMLog.e("AppBrandRuntime", "nativeView.detachFromFlutterView err, ", paramActivity);
     }
   }
   
   public void onRuntimePause()
   {
-    if (this.messageChannel != null) {
+    if (this.messageChannel != null)
+    {
       sendMsgToFlutter("appDidDisappear");
+      sendPageState(2);
+      sendPageState(8);
     }
     super.onRuntimePause();
+  }
+  
+  public void onRuntimeResume()
+  {
+    if (this.messageChannel != null)
+    {
+      sendPageState(7);
+      sendPageState(1);
+    }
+    super.onRuntimeResume();
   }
   
   public void sendMsgToFlutter(String paramString)

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agjr;
+import agss;
 import android.app.Dialog;
 
 public class AIOJubaoDialogHelper$3
   implements Runnable
 {
-  public AIOJubaoDialogHelper$3(agjr paramagjr) {}
+  public AIOJubaoDialogHelper$3(agss paramagss) {}
   
   public void run()
   {

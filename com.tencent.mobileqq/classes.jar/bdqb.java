@@ -1,22 +1,58 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
-class bdqb
-  implements bgyv
+public class bdqb
+  extends bdol
 {
-  bdqb(bdqa parambdqa) {}
+  public int o;
   
-  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  public bdqb()
   {
-    QLog.e("TintManager", 1, "tint config download onCompleted");
-    this.a.loadConfig(BaseApplicationImpl.getApplication().getResources(), bdqa.a(this.a));
-    paramQQAppInterface = new Intent("com.tencent.qplus.THEME_UPDATE");
-    BaseApplicationImpl.getApplication().sendBroadcast(paramQQAppInterface, "com.tencent.msg.permission.pushnotify");
+    this.a = "voice";
   }
   
-  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.o = paramObjectInput.readInt();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.o);
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "voice");
+    paramXmlSerializer.attribute(null, "length", String.valueOf(this.o));
+    paramXmlSerializer.endTag(null, "voice");
+  }
+  
+  public boolean a(bdqc parambdqc)
+  {
+    parambdqc = parambdqc.a("length");
+    if (!TextUtils.isEmpty(parambdqc)) {
+      this.o = Integer.parseInt(parambdqc);
+    }
+    return true;
+  }
 }
 
 

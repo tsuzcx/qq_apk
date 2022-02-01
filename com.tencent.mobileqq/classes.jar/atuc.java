@@ -1,19 +1,18 @@
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+
 public class atuc
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public long b;
-  public String b;
-  public byte[] b;
-  public long c;
-  public byte[] c;
-  public long d;
+  long a;
+  public FileManagerEntity a;
+  
+  public atuc(FileManagerEntity paramFileManagerEntity)
+  {
+    this.a = paramFileManagerEntity;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atuc
  * JD-Core Version:    0.7.0.1
  */

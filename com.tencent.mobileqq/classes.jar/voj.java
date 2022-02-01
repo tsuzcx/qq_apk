@@ -1,18 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.PointF;
-import android.view.View;
+import com.tencent.biz.qqcircle.fragments.message.item.QCircleMessageReplyItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StReply;
+import feedcloud.FeedCloudMeta.StUser;
 
-class voj
-  implements ValueAnimator.AnimatorUpdateListener
+public class voj
+  implements vya
 {
-  voj(vog paramvog, View paramView) {}
+  public voj(QCircleMessageReplyItemView paramQCircleMessageReplyItemView, FeedCloudMeta.StReply paramStReply) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    paramValueAnimator = (PointF)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_AndroidViewView.setX(paramValueAnimator.x);
-    this.jdField_a_of_type_AndroidViewView.setY(paramValueAnimator.y);
+    vtn.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.id.get(), QCircleMessageReplyItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsMessageItemQCircleMessageReplyItemView).a, QCircleMessageReplyItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsMessageItemQCircleMessageReplyItemView), 44, QCircleMessageReplyItemView.b(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsMessageItemQCircleMessageReplyItemView));
+    QCircleMessageReplyItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsMessageItemQCircleMessageReplyItemView, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.id.get());
   }
 }
 

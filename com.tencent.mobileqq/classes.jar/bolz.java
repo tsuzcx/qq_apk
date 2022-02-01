@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.TemplateData;
-
-public final class bolz
-  implements Parcelable.Creator<TemplateData>
+public abstract interface bolz
 {
-  public TemplateData a(Parcel paramParcel)
-  {
-    return new TemplateData(paramParcel);
-  }
-  
-  public TemplateData[] a(int paramInt)
-  {
-    return new TemplateData[paramInt];
-  }
+  public abstract int a();
 }
 
 

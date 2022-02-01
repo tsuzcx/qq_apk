@@ -1,23 +1,18 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
 
 class bold
-  implements Handler.Callback
+  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
 {
-  bold(bolb parambolb) {}
+  bold(bokv parambokv) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
   {
-    switch (paramMessage.what)
-    {
+    if (paramRatio == null) {
+      return;
     }
-    for (;;)
-    {
-      return false;
-      if ((paramMessage.obj instanceof bolj)) {
-        paramMessage = (bolj)paramMessage.obj;
-      }
-    }
+    bokv.a(this.a, paramRatio);
   }
 }
 

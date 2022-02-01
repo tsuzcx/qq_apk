@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.app;
 
-import aocq;
-import aocs;
+import aopc;
+import aope;
 import com.tencent.mobileqq.app.face.FaceDownloader;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
 public class NearByFaceDownloader
   extends FaceDownloader
 {
-  aocq jdField_a_of_type_Aocq = null;
-  aocs jdField_a_of_type_Aocs = null;
+  aopc jdField_a_of_type_Aopc = null;
+  aope jdField_a_of_type_Aope = null;
   NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = null;
   
   public NearByFaceDownloader(NearbyAppInterface paramNearbyAppInterface)
   {
     super(paramNearbyAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
-    this.jdField_a_of_type_Aocq = ((aocq)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(4));
-    this.jdField_a_of_type_Aocs = ((aocs)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(216));
+    this.jdField_a_of_type_Aopc = ((aopc)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(4));
+    this.jdField_a_of_type_Aope = ((aope)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(216));
   }
   
   /* Error */
@@ -126,7 +126,7 @@ public class NearByFaceDownloader
     //   196: getfield 15	com/tencent/mobileqq/app/NearByFaceDownloader:jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface	Lcom/tencent/mobileqq/nearby/NearbyAppInterface;
     //   199: sipush 216
     //   202: invokevirtual 30	com/tencent/mobileqq/nearby/NearbyAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   205: checkcast 32	aocs
+    //   205: checkcast 32	aope
     //   208: astore 26
     //   210: iload 11
     //   212: istore 8
@@ -138,7 +138,7 @@ public class NearByFaceDownloader
     //   224: istore 6
     //   226: aload 26
     //   228: aload 28
-    //   230: invokevirtual 109	aocs:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Setting;
+    //   230: invokevirtual 109	aope:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Setting;
     //   233: astore 31
     //   235: aload 31
     //   237: ifnonnull +2145 -> 2382
@@ -270,7 +270,7 @@ public class NearByFaceDownloader
     //   508: istore 6
     //   510: aload 26
     //   512: aload_1
-    //   513: invokevirtual 167	aocs:a	(Lcom/tencent/mobileqq/app/face/FaceInfo;)Ljava/lang/String;
+    //   513: invokevirtual 167	aope:a	(Lcom/tencent/mobileqq/app/face/FaceInfo;)Ljava/lang/String;
     //   516: astore 26
     //   518: iload 11
     //   520: istore 8
@@ -593,11 +593,11 @@ public class NearByFaceDownloader
     //   1157: iload_2
     //   1158: istore 6
     //   1160: aload_0
-    //   1161: getfield 17	com/tencent/mobileqq/app/NearByFaceDownloader:jdField_a_of_type_Aocq	Laocq;
+    //   1161: getfield 17	com/tencent/mobileqq/app/NearByFaceDownloader:jdField_a_of_type_Aopc	Laopc;
     //   1164: iconst_0
     //   1165: iconst_1
     //   1166: aload_1
-    //   1167: invokevirtual 246	aocq:notifyUI	(IZLjava/lang/Object;)V
+    //   1167: invokevirtual 246	aopc:notifyUI	(IZLjava/lang/Object;)V
     //   1170: iload 4
     //   1172: istore 8
     //   1174: iload 7
@@ -607,11 +607,11 @@ public class NearByFaceDownloader
     //   1182: iload_2
     //   1183: istore 6
     //   1185: aload_0
-    //   1186: getfield 17	com/tencent/mobileqq/app/NearByFaceDownloader:jdField_a_of_type_Aocq	Laocq;
+    //   1186: getfield 17	com/tencent/mobileqq/app/NearByFaceDownloader:jdField_a_of_type_Aopc	Laopc;
     //   1189: iconst_1
     //   1190: iconst_1
     //   1191: aload_1
-    //   1192: invokevirtual 246	aocq:notifyUI	(IZLjava/lang/Object;)V
+    //   1192: invokevirtual 246	aopc:notifyUI	(IZLjava/lang/Object;)V
     //   1195: aload 30
     //   1197: astore 29
     //   1199: lconst_0

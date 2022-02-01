@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.redtouch;
 
 import android.app.Activity;
-import bhod;
+import bioy;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;

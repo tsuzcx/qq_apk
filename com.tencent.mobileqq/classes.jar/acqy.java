@@ -1,52 +1,17 @@
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
+import kotlin.Metadata;
 
-public class acqy
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onReceiveValue"}, k=3, mv={1, 1, 16})
+public final class acqy<T>
+  implements ValueCallback<String>
 {
-  public static void a(String paramString1, String paramString2)
-  {
-    a(paramString1, paramString2, null);
-  }
+  public static final acqy a = new acqy();
   
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public final void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2, paramThrowable);
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    b(paramString1, paramString2, null);
-  }
-  
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2, paramThrowable);
-    }
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    c(paramString1, paramString2, null);
-  }
-  
-  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2, paramThrowable);
-    }
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    d(paramString1, paramString2, null);
-  }
-  
-  public static void d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2, paramThrowable);
+      QLog.d("GdtMotiveBrowsingFragment", 2, "handleMotiveBrowsingData EVENT_CALL_BACK_JS callback " + paramString);
     }
   }
 }

@@ -1,14 +1,28 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import java.util.Map;
 
 public class ajrm
-  implements ajvb
+  extends anyu
 {
-  public ajrm(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
+  public ajrm(TroopView paramTroopView) {}
   
-  public void a(MotionEvent paramMotionEvent)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a.a(paramMotionEvent);
+    if (paramBoolean1) {
+      this.a.j();
+    }
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    this.a.j();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.j();
+    }
   }
 }
 

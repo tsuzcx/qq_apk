@@ -10,9 +10,9 @@ class VideoController$24
   
   public void run()
   {
-    QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "GAudioCtrl.quit start.");
-    VideoController.b(this.this$0, this.this$0.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.quit(this.a));
-    QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "GAudioCtrl.quit end. mQuitResult = " + VideoController.a(this.this$0));
+    QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "GAudioCtrl.quitRoom start.");
+    VideoController.b(this.this$0, this.this$0.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.quitRoom(this.a));
+    QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "GAudioCtrl.quitRoom end. mQuitResult = " + VideoController.a(this.this$0));
     synchronized (VideoController.a(this.this$0))
     {
       VideoController.a(this.this$0).notify();

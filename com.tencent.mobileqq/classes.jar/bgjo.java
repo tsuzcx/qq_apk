@@ -1,23 +1,14 @@
-import android.content.ClipData;
-import android.view.View;
-import java.io.File;
+import android.text.Editable;
+import java.util.Comparator;
 
-public class bgjo
+final class bgjo
+  implements Comparator
 {
-  public ClipData a;
-  public View a;
-  File a;
+  bgjo(Editable paramEditable) {}
   
-  bgjo(File paramFile, View paramView, ClipData paramClipData)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidContentClipData = paramClipData;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidContentClipData != null);
+    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
   }
 }
 

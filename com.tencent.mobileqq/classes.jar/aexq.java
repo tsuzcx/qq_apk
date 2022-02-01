@@ -1,23 +1,30 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
 
 public class aexq
-  implements View.OnClickListener
+  implements ActionMode.Callback
 {
-  public aexq(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
+  public aexq(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    paramMenu.clear();
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

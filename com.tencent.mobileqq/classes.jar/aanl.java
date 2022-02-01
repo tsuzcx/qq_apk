@@ -1,16 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.tribe.TribeVideoPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class aanl
-  implements View.OnTouchListener
+final class aanl
+  implements DialogInterface.OnDismissListener
 {
-  public aanl(TribeVideoPlugin paramTribeVideoPlugin) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return true;
+    aank.a(false);
   }
 }
 

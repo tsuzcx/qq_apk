@@ -1,31 +1,12 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneIPCModule;
-import eipc.EIPCResult;
-import feedcloud.FeedCloudTagcategorysvr.StTagCategoryRecomRsp;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
-public class bltz
-  implements zxa<FeedCloudTagcategorysvr.StTagCategoryRecomRsp>
+public abstract interface bltz
 {
-  public bltz(QzoneIPCModule paramQzoneIPCModule, int paramInt) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudTagcategorysvr.StTagCategoryRecomRsp paramStTagCategoryRecomRsp)
-  {
-    QLog.i("[QzoneIPCModule_upload2]QCircle", 1, "QCircleGetRecommendTagRequest onReceive isSuccess:" + paramBoolean + " retCode:" + paramLong + " errMsg:" + paramString);
-    if ((paramBoolean) && (paramLong == 0L) && (paramStTagCategoryRecomRsp != null))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putLong("key_return_code", paramLong);
-      localBundle.putString("key_error_msg", paramString);
-      localBundle.putByteArray("key_qcircle_tag_list_rsp", paramStTagCategoryRecomRsp.toByteArray());
-      this.jdField_a_of_type_CooperationQzoneQzoneIPCModule.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, localBundle));
-      return;
-    }
-    paramStTagCategoryRecomRsp = new Bundle();
-    paramStTagCategoryRecomRsp.putLong("key_return_code", paramLong);
-    paramStTagCategoryRecomRsp.putString("key_error_msg", paramString);
-    this.jdField_a_of_type_CooperationQzoneQzoneIPCModule.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, paramStTagCategoryRecomRsp));
-  }
+  public abstract void a(XRecyclerView paramXRecyclerView, int paramInt);
+  
+  public abstract void a(XRecyclerView paramXRecyclerView, boolean paramBoolean);
 }
 
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.data;
 
-import athj;
+import atzd;
 
 public class FileManagerProxy$2
   implements Runnable
 {
-  public FileManagerProxy$2(athj paramathj) {}
+  public FileManagerProxy$2(atzd paramatzd) {}
   
   public void run()
   {
-    athj.a(this.this$0);
+    atzd.a(this.this$0);
   }
 }
 

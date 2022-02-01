@@ -1,44 +1,35 @@
-import android.media.MediaFormat;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class zhc
+class zhc
+  extends wvh
 {
-  protected int a;
-  protected batx a;
-  protected String a;
-  protected String b;
-  
-  protected void a(int paramInt, String paramString1, String paramString2, MediaFormat paramMediaFormat, SlideItemInfo paramSlideItemInfo, zhb paramzhb)
+  zhc(zhb paramzhb, wke paramwke, long paramLong)
   {
-    if (paramzhb != null)
-    {
-      zga localzga = new zga();
-      localzga.jdField_a_of_type_Long = paramzhb.b;
-      localzga.jdField_a_of_type_Int = paramInt;
-      localzga.jdField_b_of_type_JavaLangString = paramString2;
-      localzga.jdField_a_of_type_JavaLangString = paramString1;
-      localzga.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
-      localzga.c = this.jdField_b_of_type_JavaLangString;
-      localzga.jdField_a_of_type_Boolean = false;
-      localzga.jdField_b_of_type_Int = 1;
-      if (paramSlideItemInfo != null)
-      {
-        localzga.jdField_a_of_type_Boolean = paramSlideItemInfo.jdField_a_of_type_Boolean;
-        localzga.jdField_b_of_type_Int = paramSlideItemInfo.c;
-      }
-      if (paramzhb.a != null) {
-        paramzhb.a.a(localzga);
-      }
-    }
+    super(paramwke);
   }
   
-  protected boolean a(zhb paramzhb)
+  protected void a(wvk paramwvk)
   {
-    if ((!paramzhb.d) && (QLog.isColorLevel())) {
-      QLog.d("ToVideoConverter", 2, "run exit:" + paramzhb.b + " currContext.isRun:" + paramzhb.d);
+    if (paramwvk.jdField_a_of_type_Int == 0)
+    {
+      long l1 = SystemClock.uptimeMillis();
+      long l2 = this.jdField_a_of_type_Long;
+      if (QLog.isColorLevel()) {
+        QLog.d("FileDownloadTask", 2, "startDownloadVCImage success, cost:" + (l1 - l2));
+      }
+      zhb.a().sendMessage(Message.obtain(zhb.a(), 1, null));
     }
-    return !paramzhb.d;
+    for (;;)
+    {
+      zhb.a(this.jdField_a_of_type_Zhb);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("FileDownloadTask", 2, "startDownloadVCImage error:" + paramwvk.jdField_a_of_type_Int + ", errMsg:" + paramwvk.jdField_a_of_type_JavaLangString);
+      }
+    }
   }
 }
 

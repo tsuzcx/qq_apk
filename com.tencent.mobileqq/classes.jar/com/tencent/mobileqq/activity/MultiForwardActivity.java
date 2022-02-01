@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import agjh;
+import agsi;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -11,7 +11,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class MultiForwardActivity
   extends ChatActivity
 {
-  public agjh a = new agjh();
+  public agsi a = new agsi();
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aetc;
+import afcg;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class PermisionPrivacyActivity$16$2
   implements Runnable
 {
-  public PermisionPrivacyActivity$16$2(aetc paramaetc) {}
+  public PermisionPrivacyActivity$16$2(afcg paramafcg) {}
   
   public void run()
   {

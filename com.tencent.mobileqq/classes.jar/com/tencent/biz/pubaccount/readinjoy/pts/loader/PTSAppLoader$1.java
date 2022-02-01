@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
-import qog;
+import qgs;
 
 public class PTSAppLoader$1
   implements Runnable
 {
-  public PTSAppLoader$1(qog paramqog) {}
+  public PTSAppLoader$1(qgs paramqgs) {}
   
   public void run()
   {
-    qog.a(this.this$0, "3978");
+    qgs.a(this.this$0, "3978");
   }
 }
 

@@ -1,95 +1,32 @@
-import android.view.MotionEvent;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public class banb
-  implements GLGestureListener
+class banb
+  extends ClickableSpan
 {
-  protected View a;
-  private banc a;
-  protected ProviderContainerView a;
-  protected AEMaterialPanel a;
-  protected AEProviderContainerView a;
-  protected QIMProviderContainerView a;
+  banb(bamz parambamz, String paramString1, String paramString2, String paramString3) {}
   
-  public banb() {}
-  
-  public banb(QIMProviderContainerView paramQIMProviderContainerView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView = paramQIMProviderContainerView;
+    new bane(bamz.a(this.jdField_a_of_type_Bamz).a).a(this.jdField_a_of_type_JavaLangString).a();
+    bdll.b(bamz.a(this.jdField_a_of_type_Bamz).a(), "dc00898", "", "", "0X800A4BB", "0X800A4BB", 0, 0, "", "", "", "");
   }
   
-  public void a(View paramView)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(banc parambanc)
-  {
-    this.jdField_a_of_type_Banc = parambanc;
-  }
-  
-  public void a(AEMaterialPanel paramAEMaterialPanel)
-  {
-    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel = paramAEMaterialPanel;
-  }
-  
-  public void a(AEProviderContainerView paramAEProviderContainerView)
-  {
-    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView = paramAEProviderContainerView;
-  }
-  
-  public int onGetPriority()
-  {
-    return 1060;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    int j = paramMotionEvent.getPointerCount();
-    int k = paramMotionEvent.getAction() & 0xFF;
-    Object localObject = new StringBuilder().append("action: ").append(k).append(" event Y: ").append(paramMotionEvent.getY()).append(" container view height: ");
-    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight())
-    {
-      bnzb.a("CameraProviderViewGesture", i);
-      if ((j == 1) && (!paramBoolean)) {}
-      switch (k)
-      {
-      default: 
-        return false;
-      }
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setTextSize(bhgr.a(bamz.a(this.jdField_a_of_type_Bamz).a, 14.0F));
+    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
+    if (!TextUtils.isEmpty(this.b)) {
+      paramTextPaint.setColor(Color.parseColor(this.b));
     }
-    if (this.jdField_a_of_type_AndroidViewView != null) {}
-    for (localObject = this.jdField_a_of_type_AndroidViewView;; localObject = GLGestureProxy.getInstance().getGLSurfaceView())
-    {
-      if (this.jdField_a_of_type_Banc != null) {
-        this.jdField_a_of_type_Banc.a();
-      }
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.getHeight())) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a();
-      }
-      if ((localObject != null) && (this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.getHeight()))
-      {
-        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setCloseEventTouch(true);
-        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.c();
-        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setCloseEventTouch(false);
-      }
-      if ((localObject != null) && (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight()))
-      {
-        bnzb.a("CameraProviderViewGesture", "in hide close panel.");
-        this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.a(true);
-      }
-      if ((localObject == null) || (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView == null) || (paramMotionEvent.getY() >= ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.getHeight())) {
-        break;
-      }
-      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.d();
-      return false;
+    if (!TextUtils.isEmpty(this.c)) {
+      paramTextPaint.setTextSize(Float.valueOf(this.c).floatValue());
     }
   }
 }

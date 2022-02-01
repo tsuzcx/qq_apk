@@ -1,18 +1,33 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class aneh
-  extends anfm
+class aneh
+  implements anoq
 {
-  public aneh(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    super(paramContext, paramQQAppInterface, paramSessionInfo);
-  }
+  aneh(anee paramanee, String paramString) {}
   
-  public anff a(String paramString)
+  public void a(int paramInt)
   {
-    return new aneg(paramString);
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameSubRscHandler", 2, new Object[] { "[onVerifyResult], retCode:", Integer.valueOf(paramInt) });
+      }
+      ApolloCmdChannel localApolloCmdChannel = anbd.a();
+      if (localApolloCmdChannel != null)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("packName", this.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("result", paramInt);
+        localApolloCmdChannel.callbackFromRequest(anee.a(this.jdField_a_of_type_Anee), 0, "cs.file_correctness_check.local", localJSONObject.toString());
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.CmGameSubRscHandler", 1, localThrowable, new Object[0]);
+    }
   }
 }
 

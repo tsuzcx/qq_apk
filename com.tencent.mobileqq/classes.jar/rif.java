@@ -1,130 +1,79 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.VideoBannerItem;
+import android.view.View;
 
 public class rif
-  extends rib
+  implements bcfr
 {
-  public int b;
-  public long b;
-  public int c;
-  public long c;
-  public int d;
-  public int e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h = "";
-  public String i = "";
+  private String jdField_a_of_type_JavaLangString;
+  private qwb jdField_a_of_type_Qwb;
   
-  public rif()
+  public rif(qwb paramqwb)
   {
-    super(2);
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Qwb = paramqwb;
   }
   
-  public static rib b(oidb_cmd0xbc9.BannerItem paramBannerItem)
+  public int a()
   {
-    if (!paramBannerItem.msg_video_banner_item.has()) {
-      return null;
-    }
-    oidb_cmd0xbc9.VideoBannerItem localVideoBannerItem = (oidb_cmd0xbc9.VideoBannerItem)paramBannerItem.msg_video_banner_item.get();
-    rif localrif = new rif();
-    if (localVideoBannerItem.bytes_share_url.has()) {
-      localrif.jdField_f_of_type_JavaLangString = localVideoBannerItem.bytes_share_url.get().toStringUtf8();
-    }
-    if (localVideoBannerItem.uint32_video_duration.has()) {
-      localrif.jdField_b_of_type_Int = localVideoBannerItem.uint32_video_duration.get();
-    }
-    if (localVideoBannerItem.uint32_video_width.has()) {
-      localrif.jdField_c_of_type_Int = localVideoBannerItem.uint32_video_width.get();
-    }
-    if (localVideoBannerItem.uint32_video_height.has()) {
-      localrif.d = localVideoBannerItem.uint32_video_height.get();
-    }
-    if (localVideoBannerItem.bytes_video_vid.has()) {
-      localrif.jdField_g_of_type_JavaLangString = localVideoBannerItem.bytes_video_vid.get().toStringUtf8();
-    }
-    if (localVideoBannerItem.bytes_video_cover.has()) {
-      localrif.jdField_c_of_type_JavaLangString = localVideoBannerItem.bytes_video_cover.get().toStringUtf8();
-    }
-    if (localVideoBannerItem.bytes_inner_uinque_id.has()) {
-      localrif.jdField_e_of_type_JavaLangString = localVideoBannerItem.bytes_inner_uinque_id.get().toStringUtf8();
-    }
-    if (localVideoBannerItem.uint32_busi_type.has()) {
-      localrif.jdField_e_of_type_Int = localVideoBannerItem.uint32_busi_type.get();
-    }
-    if (localVideoBannerItem.bytes_title.has()) {
-      localrif.i = localVideoBannerItem.bytes_title.get().toStringUtf8();
-    }
-    if (localVideoBannerItem.bytes_account_name.has()) {
-      localrif.h = localVideoBannerItem.bytes_account_name.get().toStringUtf8();
-    }
-    if (localVideoBannerItem.uint64_account_uin.has()) {
-      localrif.jdField_b_of_type_Long = localVideoBannerItem.uint64_account_uin.get();
-    }
-    if (localVideoBannerItem.uint32_is_ugc.has()) {
-      localrif.jdField_f_of_type_Int = localVideoBannerItem.uint32_is_ugc.get();
-    }
-    if (localVideoBannerItem.uint64_feeds_id.has()) {
-      localrif.jdField_c_of_type_Long = localVideoBannerItem.uint64_feeds_id.get();
-    }
-    if (localVideoBannerItem.uint32_feeds_type.has()) {
-      localrif.jdField_g_of_type_Int = localVideoBannerItem.uint32_feeds_type.get();
-    }
-    a(localrif, paramBannerItem);
-    a(paramBannerItem, localrif);
-    return localrif;
+    return 0;
   }
   
-  public oidb_cmd0xbc9.BannerItem a()
+  public CharSequence a()
   {
-    oidb_cmd0xbc9.BannerItem localBannerItem = super.a();
-    oidb_cmd0xbc9.VideoBannerItem localVideoBannerItem = new oidb_cmd0xbc9.VideoBannerItem();
-    if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
-      localVideoBannerItem.bytes_share_url.set(ByteStringMicro.copyFromUtf8(this.jdField_f_of_type_JavaLangString));
-    }
-    localVideoBannerItem.uint32_video_duration.set(this.jdField_b_of_type_Int);
-    localVideoBannerItem.uint32_video_width.set(this.jdField_c_of_type_Int);
-    localVideoBannerItem.uint32_video_height.set(this.d);
-    if (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) {
-      localVideoBannerItem.bytes_video_vid.set(ByteStringMicro.copyFromUtf8(this.jdField_g_of_type_JavaLangString));
-    }
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      localVideoBannerItem.bytes_video_cover.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    }
-    if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
-      localVideoBannerItem.bytes_inner_uinque_id.set(ByteStringMicro.copyFromUtf8(this.jdField_e_of_type_JavaLangString));
-    }
-    localVideoBannerItem.uint32_busi_type.set(this.jdField_e_of_type_Int);
-    if (!TextUtils.isEmpty(this.i)) {
-      localVideoBannerItem.bytes_title.set(ByteStringMicro.copyFromUtf8(this.i));
-    }
-    if (!TextUtils.isEmpty(this.h)) {
-      localVideoBannerItem.bytes_account_name.set(ByteStringMicro.copyFromUtf8(this.h));
-    }
-    localVideoBannerItem.uint64_account_uin.set(this.jdField_b_of_type_Long);
-    localVideoBannerItem.uint32_is_ugc.set(this.jdField_f_of_type_Int);
-    localVideoBannerItem.uint64_feeds_id.set(this.jdField_c_of_type_Long);
-    localVideoBannerItem.uint32_feeds_type.set(this.jdField_g_of_type_Int);
-    localBannerItem.msg_video_banner_item.set(localVideoBannerItem);
-    return localBannerItem;
+    return bcni.b(this.jdField_a_of_type_Qwb.a(), this.jdField_a_of_type_JavaLangString, 6, true);
   }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public qwb a()
+  {
+    return this.jdField_a_of_type_Qwb;
+  }
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(View paramView) {}
   
   public boolean a()
   {
-    return this.jdField_f_of_type_Int == 1;
+    return false;
   }
   
-  public String toString()
+  public boolean a(String paramString)
   {
-    return super.toString() + " vid: " + this.jdField_g_of_type_JavaLangString + " puin : " + this.jdField_b_of_type_Long + " busitype " + this.jdField_e_of_type_Int + " accountName : " + this.h + "  shareUrl : " + this.jdField_f_of_type_JavaLangString + " isUgc " + this.jdField_f_of_type_Int + " feedsId " + this.jdField_c_of_type_Long + " feedsType " + this.jdField_g_of_type_Int + " videoTitle: " + this.i;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this.jdField_a_of_type_Qwb.a().contains(paramString);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public CharSequence b()
+  {
+    return "";
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_Qwb.a().toString();
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public CharSequence c()
+  {
+    return anzj.a(2131703566);
+  }
+  
+  public CharSequence d()
+  {
+    return null;
   }
 }
 

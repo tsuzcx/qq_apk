@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import bgmg;
+import bhmi;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class FileUtils$1
@@ -8,7 +8,7 @@ public final class FileUtils$1
 {
   public void run()
   {
-    bgmg.a(BaseApplicationImpl.sApplication, true);
+    bhmi.a(BaseApplicationImpl.sApplication, true);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bfwu;
+import bgwv;
 import com.tencent.mobileqq.data.Setting;
 
 class TroopAvatarWallEditActivity$4$1

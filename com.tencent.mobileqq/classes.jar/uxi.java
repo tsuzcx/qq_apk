@@ -1,36 +1,17 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class uxi
-  implements URLDrawableDownListener
+public class uxi
+  implements CompoundButton.OnCheckedChangeListener
 {
-  uxi(URLDrawableDownListener paramURLDrawableDownListener, long paramLong, String paramString) {}
+  public uxi(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawableDownListener != null) {
-      this.jdField_a_of_type_ComTencentImageURLDrawableDownListener.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    }
-    if (this.jdField_a_of_type_Long > 0L) {
-      vrh.a("image_load_ret", String.valueOf((float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F), "-1", this.jdField_a_of_type_JavaLangString, 5);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawableDownListener != null) {
-      this.jdField_a_of_type_ComTencentImageURLDrawableDownListener.onLoadSuccessed(paramView, paramURLDrawable);
-    }
-    if (this.jdField_a_of_type_Long > 0L) {
-      vrh.a("image_load_ret", String.valueOf((float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F), "0", this.jdField_a_of_type_JavaLangString, 5);
-    }
+    PublicAccountImageCollectionCommentActivity.b(this.a, paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

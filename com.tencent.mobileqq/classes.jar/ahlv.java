@@ -1,18 +1,40 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.MessageForMarketFace;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
-public class ahlv
-  extends afwr
+class ahlv
+  implements bliz
 {
-  public RelativeLayout a;
-  public TextView a;
-  public URLDrawable a;
-  public URLImageView a;
-  public BubbleImageView a;
-  public TextView b;
+  ahlv(ahlt paramahlt, asre paramasre, blir paramblir, MessageForMarketFace paramMessageForMarketFace) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      if (this.jdField_a_of_type_Asre.a.jobType != 1) {
+        break;
+      }
+    }
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (this.jdField_a_of_type_Asre.a.jobType == 3) {}
+      for (boolean bool2 = true;; bool2 = false)
+      {
+        EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Ahlt.b, this.jdField_a_of_type_Ahlt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_Asre.a.epId, bool1, bool2);
+        this.jdField_a_of_type_Blir.cancel();
+        return;
+      }
+      aean.a(this.jdField_a_of_type_Ahlt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahlt.b, this.jdField_a_of_type_Ahlt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Asre.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.uniseq);
+      this.jdField_a_of_type_Blir.cancel();
+      return;
+    }
+  }
 }
 
 

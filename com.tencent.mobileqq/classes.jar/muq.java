@@ -1,87 +1,74 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.highway.config.HwServlet;
-import com.tencent.mobileqq.highway.openup.SessionInfo;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtReq;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.UUID;
+import android.annotation.TargetApi;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build.VERSION;
+import android.view.View;
+import java.io.InputStream;
 
-public abstract class muq
+public class muq
+  extends BitmapDrawable
 {
-  private final int jdField_a_of_type_Int;
-  protected AppInterface a;
-  final String jdField_a_of_type_JavaLangString;
+  private ColorStateList a;
   
-  protected muq(AppInterface paramAppInterface, int paramInt, long paramLong)
+  public muq(Resources paramResources, Bitmap paramBitmap, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = ("FileUpload_" + paramInt + "_" + paramLong);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    super(paramResources, paramBitmap);
+    this.a = paramResources.getColorStateList(paramInt);
+    onStateChange(getState());
   }
   
-  public static void a(AppInterface paramAppInterface)
+  public muq(Resources paramResources, InputStream paramInputStream, int paramInt)
   {
-    if (paramAppInterface != null) {
-      paramAppInterface.getHwEngine().preConnect();
-    }
+    super(paramResources, paramInputStream);
+    this.a = paramResources.getColorStateList(paramInt);
+    onStateChange(getState());
   }
   
-  public static byte[] a(String paramString, AppInterface paramAppInterface)
+  public static muq a(Resources paramResources, int paramInt1, int paramInt2)
   {
-    try
-    {
-      String str = paramAppInterface.getCurrentAccountUin();
-      if (SessionInfo.getInstance(str).getHttpconn_sig_session() != null)
-      {
-        int i = SessionInfo.getInstance(str).getHttpconn_sig_session().length;
-        paramString = new byte[i];
-        System.arraycopy(SessionInfo.getInstance(str).getHttpconn_sig_session(), 0, paramString, 0, i);
-        return paramString;
-      }
-      HwServlet.getConfig(paramAppInterface, str);
-      QLog.w(paramString, 1, "getSig, fail");
-      return null;
-    }
-    finally {}
+    return new muq(paramResources, paramResources.openRawResource(paramInt1), paramInt2);
   }
   
-  protected boolean a(String paramString, mus parammus)
+  public static muq a(Resources paramResources, Bitmap paramBitmap, int paramInt)
   {
-    long l = new File(paramString).length();
-    String str = aoyp.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    if (l == 0L)
-    {
-      parammus.a(-10001, str, "", null);
-      return false;
+    return new muq(paramResources, paramBitmap, paramInt);
+  }
+  
+  @TargetApi(16)
+  public static void a(View paramView, int paramInt1, int paramInt2)
+  {
+    if (paramView == null) {
+      return;
     }
-    Object localObject = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    if ((localObject == null) || (localObject.length == 0))
+    muq localmuq = a(paramView.getResources(), paramInt1, paramInt2);
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      parammus.a(-10003, str, "", null);
-      return false;
+      paramView.setBackground(localmuq);
+      return;
     }
-    byte[] arrayOfByte = aoyp.a(paramString);
-    if ((arrayOfByte == null) || (arrayOfByte.length == 0))
-    {
-      parammus.a(-10002, str, "", null);
-      return false;
-    }
-    mur localmur = new mur(this, str, l, arrayOfByte, parammus);
-    Bdh_extinfo.CommFileExtReq localCommFileExtReq = new Bdh_extinfo.CommFileExtReq();
-    localCommFileExtReq.uint32_action_type.set(0);
-    localCommFileExtReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
-    localObject = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, paramString, 0, (byte[])localObject, arrayOfByte, localmur, localCommFileExtReq.toByteArray());
-    int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask((Transaction)localObject);
+    paramView.setBackgroundDrawable(localmuq);
+  }
+  
+  public boolean isStateful()
+  {
+    return true;
+  }
+  
+  protected boolean onStateChange(int[] paramArrayOfInt)
+  {
+    int i = this.a.getColorForState(paramArrayOfInt, 0);
     if (i != 0) {
-      parammus.a(i, str, "", null);
+      setColorFilter(i, PorterDuff.Mode.MULTIPLY);
     }
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestToUpload, localFile[" + paramString + "], sessionId[" + str + "]");
-    return i == 0;
+    for (;;)
+    {
+      invalidateSelf();
+      return super.onStateChange(paramArrayOfInt);
+      clearColorFilter();
+    }
   }
 }
 

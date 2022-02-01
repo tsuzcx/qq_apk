@@ -1,14 +1,9 @@
-class rmv
-  implements rmy
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$IVideoColumnBannerAction;", "", "onJumpToColumnPlay", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface rmv
 {
-  rmv(rmt paramrmt) {}
-  
-  public void a(int paramInt1, int paramInt2, long paramLong)
-  {
-    rmt.a(this.a).b(paramLong);
-    this.a.a((int)(rmt.a(this.a) * (float)paramLong));
-    rmt.a(this.a).a(rmt.a(this.a), false);
-  }
+  public abstract void a();
 }
 
 

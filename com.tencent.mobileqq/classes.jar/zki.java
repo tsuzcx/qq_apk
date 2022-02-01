@@ -1,14 +1,6 @@
-import android.support.annotation.NonNull;
-
-public class zki
+public abstract interface zki
 {
-  public void a(byte[] paramArrayOfByte) {}
-  
-  @NonNull
-  public byte[] a(int paramInt)
-  {
-    return new byte[paramInt];
-  }
+  public abstract void a();
 }
 
 

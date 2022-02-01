@@ -1,44 +1,24 @@
-import android.view.View;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.15.1;
 
-class ainm
-  implements aqjd
+public class ainm
+  implements Animation.AnimationListener
 {
-  ainm(ainl paramainl) {}
+  ainm(ainh paramainh) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.d("UpComingMsgLogic.UpcomingTimeSelector", 3, "onConfirm: ");
-    long l = System.currentTimeMillis();
-    boolean bool = false;
-    if (ainl.a(this.a) > l) {
-      bool = true;
-    }
-    if (ainl.a(this.a) != null) {
-      ainl.a(this.a).a(ainl.a(this.a), bool);
-    }
-    if (bool) {
-      ainl.a(this.a).dismiss();
-    }
-    int i = (int)(ainl.a(this.a) - System.currentTimeMillis()) / 60000;
-    bcst.b(null, "dc00898", "", "", "0X800AE7F", "0X800AE7F", ainl.a(this.a), i, "", "", "", "");
+    this.a.t = 5;
+    ainh.c(this.a).post(new PublicAccountChatPie.15.1(this));
+    this.a.a.sendEmptyMessage(1);
   }
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    ainl.a(this.a, paramInt1, paramInt2);
-    QLog.d("UpComingMsgLogic.UpcomingTimeSelector", 3, "column: " + paramInt1 + ", row: " + paramInt2);
-    if (paramInt1 == 0) {
-      ainl.a(this.a).a(1);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(View paramView)
-  {
-    ainl.a(this.a).dismiss();
-    bcst.b(null, "dc00898", "", "", "0X800AE80", "0X800AE80", 0, 0, "", "", "", "");
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

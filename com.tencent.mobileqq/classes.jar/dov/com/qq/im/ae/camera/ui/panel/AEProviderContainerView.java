@@ -11,32 +11,32 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
-import bnii;
-import bnmw;
-import bnmx;
-import bnmy;
-import bnmz;
-import bnna;
-import bnvb;
-import bojv;
-import bolb;
-import bosq;
-import bpye;
+import bojq;
+import booh;
+import booi;
+import booj;
+import book;
+import bool;
+import bown;
+import bplq;
+import bpmw;
+import bpul;
+import bqzz;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.ae.mode.AECaptureMode;
 import java.util.ArrayList;
 import java.util.Iterator;
-import zlx;
+import zps;
 
 public class AEProviderContainerView
   extends FrameLayout
 {
   public int a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bnmw(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new booh(this);
   private View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private bnii jdField_a_of_type_Bnii;
-  private bnvb jdField_a_of_type_Bnvb;
+  private bojq jdField_a_of_type_Bojq;
+  private bown jdField_a_of_type_Bown;
   private AEBeautyProviderView jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView;
   private AEFilterProviderView jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView;
   private AECaptureMode jdField_a_of_type_DovComQqImAeModeAECaptureMode = AECaptureMode.NORMAL;
@@ -51,35 +51,35 @@ public class AEProviderContainerView
   public AEProviderContainerView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = zlx.a(getContext(), 195.0F);
+    this.jdField_a_of_type_Int = zps.a(getContext(), 195.0F);
     i();
   }
   
   public AEProviderContainerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = zlx.a(getContext(), 195.0F);
+    this.jdField_a_of_type_Int = zps.a(getContext(), 195.0F);
     i();
   }
   
   public AEProviderContainerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = zlx.a(getContext(), 195.0F);
+    this.jdField_a_of_type_Int = zps.a(getContext(), 195.0F);
     i();
   }
   
   private void i()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131558512, null);
+    View localView = LayoutInflater.from(getContext()).inflate(2131558514, null);
     addView(localView);
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131363360);
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131363384);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131366616);
+    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131366666);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131372985));
-    this.c = localView.findViewById(2131372986);
-    this.d = localView.findViewById(2131364263);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131373098));
+    this.c = localView.findViewById(2131373099);
+    this.d = localView.findViewById(2131364308);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.c);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.d);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidViewView);
@@ -114,7 +114,7 @@ public class AEProviderContainerView
     {
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView = new AEFilterProviderView(getContext());
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.setNeedTabBar(false);
-      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.d(zlx.a(getContext(), 162.0F));
+      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.d(zps.a(getContext(), 162.0F));
       if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView != null) {
         this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView);
       }
@@ -152,7 +152,7 @@ public class AEProviderContainerView
     {
       if (!this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.setController(this.jdField_a_of_type_Bnii);
+        this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.setController(this.jdField_a_of_type_Bojq);
         this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.a(null);
       }
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.setAlpha(1.0F);
@@ -167,12 +167,12 @@ public class AEProviderContainerView
     Object localObject = ObjectAnimator.ofFloat(this, "translationY", new float[] { 0.0F, this.jdField_a_of_type_Int });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.play((Animator)localObject);
-    localAnimatorSet.addListener(new bnmz(this));
+    localAnimatorSet.addListener(new book(this));
     localAnimatorSet.setDuration(300L).start();
-    localObject = bosq.a(this, 1.0F, 0.0F);
+    localObject = bpul.a(this, 1.0F, 0.0F);
     ((Animation)localObject).setStartOffset(0L);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new bnna(this));
+    ((Animation)localObject).setAnimationListener(new bool(this));
     startAnimation((Animation)localObject);
   }
   
@@ -264,8 +264,8 @@ public class AEProviderContainerView
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.setVisibility(8);
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView = null;
     }
-    if (this.jdField_a_of_type_Bnvb != null) {
-      this.jdField_a_of_type_Bnvb.a(196613, new Object[0]);
+    if (this.jdField_a_of_type_Bown != null) {
+      this.jdField_a_of_type_Bown.a(196613, new Object[0]);
     }
     if (QLog.isColorLevel()) {
       QLog.d("AEProviderContainerView", 2, "panel closed");
@@ -277,12 +277,12 @@ public class AEProviderContainerView
     this.jdField_a_of_type_Boolean = true;
     Object localObject = new AnimatorSet();
     ((AnimatorSet)localObject).play(ObjectAnimator.ofFloat(this, "translationY", new float[] { this.jdField_a_of_type_Int, 0.0F }));
-    ((AnimatorSet)localObject).addListener(new bnmx(this));
+    ((AnimatorSet)localObject).addListener(new booi(this));
     ((AnimatorSet)localObject).setDuration(300L).start();
-    localObject = bosq.a(this, 0.0F, 1.0F);
+    localObject = bpul.a(this, 0.0F, 1.0F);
     ((Animation)localObject).setStartOffset(200L);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new bnmy(this));
+    ((Animation)localObject).setAnimationListener(new booj(this));
     startAnimation((Animation)localObject);
   }
   
@@ -298,9 +298,9 @@ public class AEProviderContainerView
     if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView != null) {
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.b();
     }
-    bpye.a().b(null, (Activity)getContext(), 0);
-    bpye.a().a(null, 0);
-    ((bolb)bojv.a(5)).a((Activity)getContext());
+    bqzz.a().b(null, (Activity)getContext(), 0);
+    bqzz.a().a(null, 0);
+    ((bpmw)bplq.a(5)).a((Activity)getContext());
   }
   
   public void h()
@@ -330,10 +330,10 @@ public class AEProviderContainerView
     this.jdField_a_of_type_DovComQqImAeModeAECaptureMode = paramAECaptureMode;
   }
   
-  public void setControllerAndManager(bnii parambnii, bnvb parambnvb)
+  public void setControllerAndManager(bojq parambojq, bown parambown)
   {
-    this.jdField_a_of_type_Bnii = parambnii;
-    this.jdField_a_of_type_Bnvb = parambnvb;
+    this.jdField_a_of_type_Bojq = parambojq;
+    this.jdField_a_of_type_Bown = parambown;
     this.jdField_b_of_type_Boolean = true;
   }
 }

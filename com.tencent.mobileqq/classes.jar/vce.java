@@ -1,27 +1,14 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class vce
-  implements bkhw
+  implements DialogInterface.OnClickListener
 {
-  vce(vcb paramvcb, int[] paramArrayOfInt, bkho parambkho) {}
+  vce(vcb paramvcb) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!aauy.a("showMoreActionSheetClick")) {
-      switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
-      {
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
-      return;
-      vcb.d(this.jdField_a_of_type_Vcb);
-      continue;
-      vol.a().a(vcb.a(this.jdField_a_of_type_Vcb), true);
-      continue;
-      vol.a().a(vcb.a(this.jdField_a_of_type_Vcb), false);
-    }
+    vbr.a(this.a.jdField_a_of_type_Vbr).b(this.a.jdField_a_of_type_Vbr.a().hashCode(), vbr.a(this.a.jdField_a_of_type_Vbr), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
   }
 }
 

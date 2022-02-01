@@ -1,16 +1,37 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.graphics.Canvas;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public abstract class arvc
+public abstract class arvc<D extends aruc>
 {
-  public void a(EmoticonPackage paramEmoticonPackage) {}
+  private ArrayList<arvh> a;
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  private void c(Canvas paramCanvas, D paramD, arul paramarul, float paramFloat1, float paramFloat2)
+  {
+    if (this.a != null)
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        ((arvh)localIterator.next()).a(paramCanvas, paramD, paramarul, paramFloat1, paramFloat2);
+      }
+    }
+  }
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  public abstract arwa a(D paramD);
   
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  public void a() {}
   
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  public final void a(Canvas paramCanvas, D paramD, arul paramarul, float paramFloat1, float paramFloat2)
+  {
+    b(paramCanvas, paramD, paramarul, paramFloat1, paramFloat2);
+    c(paramCanvas, paramD, paramarul, paramFloat1, paramFloat2);
+  }
+  
+  public void a(D paramD) {}
+  
+  public abstract boolean a(aruc paramaruc);
+  
+  public abstract void b(Canvas paramCanvas, D paramD, arul paramarul, float paramFloat1, float paramFloat2);
 }
 
 

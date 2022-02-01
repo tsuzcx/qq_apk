@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
 import android.widget.Toast;
-import anni;
+import anzj;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class CameraCaptureView$12
@@ -11,7 +11,7 @@ class CameraCaptureView$12
   
   public void run()
   {
-    Toast.makeText(BaseApplicationImpl.getContext(), anni.a(2131700104), 1).show();
+    Toast.makeText(BaseApplicationImpl.getContext(), anzj.a(2131700211), 1).show();
   }
 }
 

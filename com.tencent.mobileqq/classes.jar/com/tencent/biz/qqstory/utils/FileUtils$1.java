@@ -3,11 +3,11 @@ package com.tencent.biz.qqstory.utils;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Window;
-import anni;
-import bglp;
-import bgpa;
-import zks;
-import zkt;
+import anzj;
+import bhlq;
+import bhpc;
+import zon;
+import zoo;
 
 public final class FileUtils$1
   implements Runnable
@@ -16,13 +16,13 @@ public final class FileUtils$1
   
   public void run()
   {
-    bgpa localbgpa = bglp.a(this.a, 230);
-    localbgpa.setMessage(anni.a(2131703365));
-    localbgpa.setNegativeButton(anni.a(2131703367), new zks(this));
-    localbgpa.setPositiveButton(anni.a(2131703366), new zkt(this));
-    localbgpa.setCancelable(false);
-    localbgpa.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    localbgpa.show();
+    bhpc localbhpc = bhlq.a(this.a, 230);
+    localbhpc.setMessage(anzj.a(2131703472));
+    localbhpc.setNegativeButton(anzj.a(2131703474), new zon(this));
+    localbhpc.setPositiveButton(anzj.a(2131703473), new zoo(this));
+    localbhpc.setCancelable(false);
+    localbhpc.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    localbhpc.show();
   }
 }
 

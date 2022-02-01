@@ -1,33 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.open.agent.CreateVirtualAccountFragment;
-import com.tencent.open.agent.CreateVirtualAccountFragment.6.1;
-import com.tencent.open.agent.CreateVirtualAccountFragment.6.2;
-import com.tencent.open.model.CreateVirtualResult;
-import com.tencent.qphone.base.util.QLog;
-
 public class bilc
-  extends bior
 {
-  public bilc(CreateVirtualAccountFragment paramCreateVirtualAccountFragment) {}
+  public int a;
+  public bild a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
   
-  public void a(boolean paramBoolean, CreateVirtualResult paramCreateVirtualResult, int paramInt)
+  public bilc(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, int paramInt4, bild parambild)
   {
-    if (this.a.getActivity() == null)
-    {
-      QLog.e("CreateVirtualAccountFragment", 1, "onCreate activity is null");
-      return;
-    }
-    this.a.getActivity().runOnUiThread(new CreateVirtualAccountFragment.6.2(this, paramBoolean, paramCreateVirtualResult, paramInt));
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
-  {
-    if (this.a.getActivity() == null)
-    {
-      QLog.e("CreateVirtualAccountFragment", 1, "onUploadAvatar activity is null");
-      return;
-    }
-    this.a.getActivity().runOnUiThread(new CreateVirtualAccountFragment.6.1(this, paramBoolean, paramString1, paramString2, paramInt));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramInt2;
+    this.jdField_b_of_type_Int = paramInt3;
+    this.d = paramInt4;
+    this.jdField_a_of_type_Bild = parambild;
   }
 }
 

@@ -1,24 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class npa
-  implements View.OnClickListener
+  implements aasd
 {
-  public npa(EqqAccountDetailActivity paramEqqAccountDetailActivity, String paramString, nyl paramnyl) {}
+  public npa(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void onClick(View paramView)
+  public void callback(Bundle paramBundle)
   {
-    EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_Nyl.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Nyl.jdField_a_of_type_JavaLangString.contains(anni.a(2131702970)))) {
-      oat.a(EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
-    }
-    for (;;)
+    if (paramBundle != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      EqqAccountDetailActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Nyl.jdField_a_of_type_JavaLangString);
+      int i = paramBundle.getInt("state");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
     }
   }
 }

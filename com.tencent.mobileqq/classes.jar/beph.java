@@ -1,29 +1,17 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-public class beph
+class beph
+  extends bepm<UserState>
 {
-  public int a;
-  public String a;
-  public ArrayList<beph> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  
-  public beph() {}
-  
-  public beph(String paramString1, String paramString2)
+  beph(beoy parambeoy, UserState paramUserState, List paramList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    super(paramUserState, paramList);
   }
   
-  public void a(String paramString)
+  public void a(UserState paramUserState)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = ((Integer)bepg.a().get(paramString)).intValue();
+    beoy.a(this.a);
   }
 }
 

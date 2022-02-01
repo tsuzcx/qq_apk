@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emosm;
 
-import arpe;
+import ases;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.CustomEmotionBase;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class CustomEmotionRoamingDBManagerBase$2
   implements Runnable
 {
-  public CustomEmotionRoamingDBManagerBase$2(arpe paramarpe, int paramInt, CustomEmotionBase paramCustomEmotionBase) {}
+  public CustomEmotionRoamingDBManagerBase$2(ases paramases, int paramInt, CustomEmotionBase paramCustomEmotionBase) {}
   
   public void run()
   {

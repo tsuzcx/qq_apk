@@ -1,16 +1,13 @@
-import android.app.Activity;
-import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
 public class xuf
-  extends xmr
+  implements xvp
 {
-  public xuf(xue paramxue) {}
+  public xuf(TextureVideoView paramTextureVideoView) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void a(xvo paramxvo, int paramInt)
   {
-    if ((paramInt1 == 66666) && (paramInt2 == -1)) {
-      this.a.a.b().finish();
-    }
+    this.a.f = paramInt;
   }
 }
 

@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emotionintegrate.EmotionDataSource.1;
-import java.util.List;
+import android.os.Bundle;
 
-public abstract class asev
+public final class asev
 {
-  public abstract int a();
-  
-  public abstract List<ases> a(boolean paramBoolean);
-  
-  public abstract void a();
-  
-  public void a(asew paramasew, ases paramases, boolean paramBoolean)
+  public static Bundle a(String paramString1, String paramString2, int paramInt, Bundle paramBundle)
   {
-    ThreadManager.excute(new EmotionDataSource.1(this, paramBoolean, paramasew, paramases), 64, null, true);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("cmd", paramString1);
+    localBundle.putString("callbackid", paramString2);
+    localBundle.putInt("respkey", paramInt);
+    localBundle.putBundle("request", paramBundle);
+    return localBundle;
   }
-  
-  public abstract boolean a();
 }
 
 

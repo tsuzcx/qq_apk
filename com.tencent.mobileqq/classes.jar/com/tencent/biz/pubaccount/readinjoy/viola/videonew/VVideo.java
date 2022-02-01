@@ -23,9 +23,9 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ryx;
-import trh;
-import trj;
+import rpt;
+import tic;
+import tif;
 
 public class VVideo
   extends VComponentContainer<VVideoView>
@@ -34,7 +34,7 @@ public class VVideo
   private String mCurrentVid;
   private String mCurrentVideoUrl;
   private Boolean mIsForNV = Boolean.valueOf(false);
-  private VComponentAdapter.OnVideoViewMethodListener mVideoViewMethodListener = new trh(this);
+  private VComponentAdapter.OnVideoViewMethodListener mVideoViewMethodListener = new tic(this);
   
   public VVideo(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -203,7 +203,7 @@ public class VVideo
     }
   }
   
-  public trj getVideoViewControlListener()
+  public tif getVideoViewControlListener()
   {
     if ((getHostView() != null) && (((VVideoView)getHostView()).a() != null)) {
       return ((VVideoView)getHostView()).a();
@@ -482,7 +482,7 @@ public class VVideo
     View localView;
     if ((getHostView() != null) && (getInstance() != null) && (getInstance().getActivity() != null))
     {
-      ryx.a(getInstance().getActivity(), paramInt1, paramInt2);
+      rpt.a(getInstance().getActivity(), paramInt1, paramInt2);
       localView = getHostView();
       if ((localView != null) && (localView.getScaleY() == 1.0F) && (localView.getScaleX() == 1.0F))
       {
@@ -518,12 +518,12 @@ public class VVideo
           ((FrameLayout.LayoutParams)localView.getLayoutParams()).gravity = 17;
         }
         localView.setLayoutParams(localView.getLayoutParams());
-        paramInt1 = ryx.a(getInstance().getActivity(), paramInt1, paramInt2);
+        paramInt1 = rpt.a(getInstance().getActivity(), paramInt1, paramInt2);
         if (paramInt1 != 2) {
           break label289;
         }
         getVideoViewControlListener().a((VVideoView)getHostView(), "cover");
-        localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), localView.getPaddingRight(), ryx.a(getInstance().getActivity()));
+        localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), localView.getPaddingRight(), rpt.a(getInstance().getActivity()));
       }
       while (paramInt1 != 0) {
         return;

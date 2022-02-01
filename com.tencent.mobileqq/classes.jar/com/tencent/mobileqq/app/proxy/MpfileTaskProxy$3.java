@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.proxy;
 
-import aonf;
+import apav;
 
 public class MpfileTaskProxy$3
   implements Runnable
 {
-  public MpfileTaskProxy$3(aonf paramaonf, String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
+  public MpfileTaskProxy$3(apav paramapav, String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
   
   public void run()
   {

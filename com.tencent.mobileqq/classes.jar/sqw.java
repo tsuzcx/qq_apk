@@ -1,17 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.List;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-public class sqw
-  extends pue
+class sqw
+  implements srh
 {
-  public sqw(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, int paramInt, List paramList)
-  {
-    super(paramString);
-  }
+  sqw(sqr paramsqr) {}
   
-  public void a(ptx paramptx)
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    paramptx.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+    JSONObject localJSONObject = paramProteusItemData.c;
+    if (sqr.a(this.a, localJSONObject))
+    {
+      sqr.a(this.a, paramViewBase, paramContext, paramProteusItemData);
+      return;
+    }
+    sqr.b(this.a, paramViewBase, paramContext, paramProteusItemData);
   }
 }
 

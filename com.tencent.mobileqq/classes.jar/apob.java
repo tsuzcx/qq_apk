@@ -1,29 +1,81 @@
-import com.tencent.ark.ArkEnvironmentManager.Log;
-import com.tencent.qphone.base.util.QLog;
-
-public final class apob
-  implements ArkEnvironmentManager.Log
+public class apob
+  extends apnu
 {
-  public void d(String paramString1, String paramString2)
+  public int a;
+  public String a;
+  public apoc[] a;
+  public int b = -1;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 0;
+  
+  public apob()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfApoc = null;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
+  }
+  
+  public static boolean a(apob paramapob)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramapob != null)
+    {
+      bool1 = bool2;
+      if (paramapob.jdField_a_of_type_Int == 0)
+      {
+        bool1 = bool2;
+        if (paramapob.b == 0)
+        {
+          bool1 = bool2;
+          if (paramapob.jdField_a_of_type_ArrayOfApoc != null)
+          {
+            bool1 = bool2;
+            if (paramapob.jdField_a_of_type_ArrayOfApoc[0].jdField_c_of_type_Int == 0)
+            {
+              bool1 = bool2;
+              if (paramapob.jdField_a_of_type_ArrayOfApoc[0].a != null) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
     }
+    return bool1;
   }
   
-  public void e(String paramString1, String paramString2)
+  public byte[] a()
   {
-    QLog.e(paramString1, 1, paramString2);
+    return this.jdField_a_of_type_ArrayOfApoc[0].a;
   }
   
-  public void i(String paramString1, String paramString2)
+  public String toString()
   {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
+    if (this.jdField_a_of_type_ArrayOfApoc != null)
+    {
+      String str1 = "ImageTags{";
+      int i = 0;
+      for (;;)
+      {
+        str2 = str1;
+        if (i >= this.jdField_a_of_type_ArrayOfApoc.length) {
+          break;
+        }
+        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfApoc[i];
+        i += 1;
+      }
+    }
+    String str2 = "null";
+    return "ARCloudSceneRecogResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
   }
 }
 

@@ -1,22 +1,24 @@
-import feedcloud.FeedCloudMeta.StReply;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.qqcircle.comment.QCircleCommentItemView;
+import feedcloud.FeedCloudMeta.StFeed;
 
-public class uzm
+class uzm
+  extends RecyclerView.ViewHolder
 {
-  public int a;
-  public FeedCloudMeta.StReply a;
-  public int b;
-  
-  public uzm(int paramInt, FeedCloudMeta.StReply paramStReply)
+  private uzm(uzl paramuzl, View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply = paramStReply;
+    super(paramView);
   }
   
-  public uzm(int paramInt1, FeedCloudMeta.StReply paramStReply, int paramInt2)
+  public void a(int paramInt, FeedCloudMeta.StFeed paramStFeed, vat paramvat, aakb paramaakb)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply = paramStReply;
-    this.b = paramInt2;
+    if ((this.itemView instanceof QCircleCommentItemView))
+    {
+      ((QCircleCommentItemView)this.itemView).setFeed(paramStFeed);
+      ((QCircleCommentItemView)this.itemView).setOnCommentElementClickListener(paramaakb);
+      ((QCircleCommentItemView)this.itemView).a(paramvat, paramInt);
+    }
   }
 }
 

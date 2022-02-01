@@ -1,59 +1,110 @@
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenActivityPlugin.1;
+import com.tencent.av.smallscreen.SmallScreenActivityPlugin.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class lzf
 {
-  public static String a;
-  public static String b;
-  public static String c;
-  public static String d;
-  public static String e;
-  public int a;
-  @Deprecated
-  ljz a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  private static volatile lzf jdField_a_of_type_Lzf;
+  VideoController jdField_a_of_type_ComTencentAvVideoController;
+  public VideoAppInterface a;
+  boolean jdField_a_of_type_Boolean = false;
+  public boolean b = true;
   
-  static
+  private lzf(VideoAppInterface paramVideoAppInterface)
   {
-    jdField_b_of_type_JavaLangString = "sharp/small_window/" + "close_flag";
-    jdField_a_of_type_JavaLangString = "sharp/small_window/" + "version";
-    jdField_c_of_type_JavaLangString = "sharp/small_window/" + "use_textureview";
-    jdField_d_of_type_JavaLangString = "sharp/small_window/" + "close_video";
-    jdField_e_of_type_JavaLangString = "sharp/small_window/" + "close_audio";
-    if (QLog.isColorLevel()) {
-      QLog.d("SmallScreenConfigParser", 2, " SmallScreenConfigParser --> key_open_flag = " + jdField_b_of_type_JavaLangString + " , key_version = " + jdField_a_of_type_JavaLangString + " , key_textureview = " + jdField_c_of_type_JavaLangString + " , key_close_video_flag = " + jdField_d_of_type_JavaLangString + " , key_close_audio_flag = " + jdField_e_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
   }
   
-  public lzf()
+  public static lzf a(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Ljz = null;
-  }
-  
-  public boolean a(ljz paramljz)
-  {
+    if (jdField_a_of_type_Lzf == null) {}
     try
     {
-      this.jdField_a_of_type_Int = paramljz.a(jdField_a_of_type_JavaLangString, 0);
-      this.jdField_b_of_type_Int = paramljz.a(jdField_b_of_type_JavaLangString, 0);
-      this.jdField_c_of_type_Int = paramljz.a(jdField_c_of_type_JavaLangString, -1);
-      this.jdField_d_of_type_Int = paramljz.a(jdField_d_of_type_JavaLangString, 0);
-      this.jdField_e_of_type_Int = paramljz.a(jdField_e_of_type_JavaLangString, 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("SmallScreenConfigParser", 2, "value_version = " + this.jdField_a_of_type_Int + " , value_close_flag = " + this.jdField_b_of_type_Int + " , value_use_textureview = " + this.jdField_c_of_type_Int + " ,value_close_video = " + this.jdField_d_of_type_Int + " , value_close_audio = " + this.jdField_e_of_type_Int);
+      if (jdField_a_of_type_Lzf == null) {
+        jdField_a_of_type_Lzf = new lzf(paramVideoAppInterface);
       }
-      return true;
+      return jdField_a_of_type_Lzf;
     }
-    catch (Exception paramljz)
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (lzq.f()) {
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void a(long paramLong, boolean paramBoolean)
+  {
+    boolean bool1 = true;
+    boolean bool2 = VideoController.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
+    if ((QLog.isColorLevel()) || (!bool2) || (paramBoolean)) {
+      QLog.w("SmallScreenActivityPlugin", 1, "onPauseRender, isQuit[" + paramBoolean + "], isScreenOn[" + bool2 + "], seq[" + paramLong + "]");
+    }
+    lff locallff;
+    if (!paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("SmallScreenConfigParser", 2, "parseConfig --> Error");
+      if (!lzq.f()) {
+        break label170;
+      }
+      locallff = this.jdField_a_of_type_ComTencentAvVideoController.a();
+      int i = locallff.d;
+      paramBoolean = bool1;
+      if (i != 2) {
+        if (i != 4) {
+          break label165;
+        }
       }
     }
-    return false;
+    label165:
+    for (paramBoolean = bool1;; paramBoolean = false)
+    {
+      ThreadManager.excute(new SmallScreenActivityPlugin.2(this, paramLong, bool2, this.jdField_a_of_type_ComTencentAvVideoController.a().c(), paramBoolean), 16, null, false);
+      lzq.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp(), locallff);
+      return;
+    }
+    label170:
+    lzq.a(paramLong, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 2);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (lzq.f())
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) || (!lzq.f());
+  }
+  
+  public void b()
+  {
+    long l = AudioHelper.b();
+    if (QLog.isColorLevel()) {
+      QLog.w("SmallScreenActivityPlugin", 1, "onResume, seq[" + l + "]");
+    }
+    if (lzq.f())
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.b = true;
+      ThreadManager.excute(new SmallScreenActivityPlugin.1(this, l), 16, null, false);
+    }
+    lzq.a(l, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 0);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

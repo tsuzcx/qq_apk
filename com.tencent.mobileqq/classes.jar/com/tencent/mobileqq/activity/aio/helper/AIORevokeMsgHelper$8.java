@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agki;
+import agtj;
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
-import biau;
+import bjbs;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -13,22 +13,22 @@ import com.tencent.qphone.base.util.QLog;
 public class AIORevokeMsgHelper$8
   implements Runnable
 {
-  public AIORevokeMsgHelper$8(agki paramagki, int paramInt) {}
+  public AIORevokeMsgHelper$8(agtj paramagtj, int paramInt) {}
   
   public void run()
   {
     if (this.a > 2)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("AIORevokeMsgHelper", 1, new Object[] { "ForwardWXforTroop failed! result: ", Integer.valueOf(this.a), ", type: ", Integer.valueOf(agki.a(this.this$0).a) });
+        QLog.d("AIORevokeMsgHelper", 1, new Object[] { "ForwardWXforTroop failed! result: ", Integer.valueOf(this.a), ", type: ", Integer.valueOf(agtj.a(this.this$0).a) });
       }
-      QQToast.a(agki.a(this.this$0), agki.a(this.this$0).getString(2131693837), 0).b(agki.a(this.this$0).getTitleBarHeight());
+      QQToast.a(agtj.a(this.this$0), agtj.a(this.this$0).getString(2131693854), 0).b(agtj.a(this.this$0).getTitleBarHeight());
     }
     if ((this.a == 0) && (BaseChatItemLayout.a)) {
-      agki.a(this.this$0).a(false, null, false);
+      agtj.a(this.this$0).a(false, null, false);
     }
-    if (agki.a(this.this$0).c != null) {
-      agki.a(this.this$0).c.dismiss();
+    if (agtj.a(this.this$0).c != null) {
+      agtj.a(this.this$0).c.dismiss();
     }
   }
 }

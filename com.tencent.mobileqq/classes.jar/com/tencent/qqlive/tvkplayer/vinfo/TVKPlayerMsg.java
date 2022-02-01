@@ -82,7 +82,6 @@ public class TVKPlayerMsg
   public static final int PLAYER_REALTIME_INFO_TYPE_AD_ENABLE_CLICK = 4;
   public static final int PLAYER_REALTIME_INFO_TYPE_AD_REALTIME_STRATEGY = 5;
   public static final int PLAYER_REALTIME_INFO_TYPE_AD_REQUEST_PARAM = 3;
-  public static final int PLAYER_REALTIME_INFO_TYPE_EnableSetNextMediaInfo = 7;
   public static final int PLAYER_REALTIME_INFO_TYPE_IS_PRELOAD = 1;
   public static final int PLAYER_REALTIME_INFO_TYPE_LOGO_SCENE = 8;
   public static final int PLAYER_REALTIME_INFO_TYPE_SKIP_POS = 6;

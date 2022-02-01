@@ -1,15 +1,20 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-
-public class sxf
-  implements MessageQueue.IdleHandler
+public final class sxf
 {
-  public sxf(FastWebActivity paramFastWebActivity) {}
-  
-  public boolean queueIdle()
+  public static float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    FastWebActivity.e(this.a);
-    return false;
+    paramFloat1 = paramFloat1 / paramFloat4 - 1.0F;
+    return (paramFloat1 * (paramFloat1 * paramFloat1) + 1.0F) * paramFloat3 + paramFloat2;
+  }
+  
+  public static float b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    paramFloat1 /= paramFloat4 / 2.0F;
+    if (paramFloat1 < 1.0F) {
+      return paramFloat1 * (paramFloat3 / 2.0F * paramFloat1 * paramFloat1) + paramFloat2;
+    }
+    paramFloat3 /= 2.0F;
+    paramFloat1 -= 2.0F;
+    return (paramFloat1 * (paramFloat1 * paramFloat1) + 2.0F) * paramFloat3 + paramFloat2;
   }
 }
 

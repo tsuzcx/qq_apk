@@ -1,16 +1,43 @@
-class acuv
+import com.tencent.qphone.base.util.QLog;
+
+public class acuv
+  implements acun
 {
-  public int a;
-  public long a;
-  public acvd a;
-  public String a;
+  private static acuw a;
   
-  public acuv(acuu paramacuu, int paramInt, long paramLong, String paramString, acvd paramacvd)
+  public static void a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Acvd = paramacvd;
+    a = null;
+  }
+  
+  public static void a(acuw paramacuw)
+  {
+    a = paramacuw;
+  }
+  
+  protected String a(String paramString)
+  {
+    if (a == null)
+    {
+      QLog.i("EndCardWebGdtMvWebJsCallHandler", 1, "onGetAdInfo mAction == null");
+      return "";
+    }
+    return a.a(paramString);
+  }
+  
+  protected void a(String paramString)
+  {
+    if (a == null)
+    {
+      QLog.i("EndCardWebGdtMvWebJsCallHandler", 1, "onHandleRewardVideoClick mAction == null");
+      return;
+    }
+    a.a(paramString);
+  }
+  
+  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
+  {
+    return true;
   }
 }
 

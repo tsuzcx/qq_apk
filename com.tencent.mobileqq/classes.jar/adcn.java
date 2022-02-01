@@ -1,36 +1,35 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.qapmsdk.battery.BatteryMonitor;
-import com.tencent.qapmsdk.battery.IBatteryListener;
-import com.tencent.qphone.base.util.QLog.ILogCallback;
-import mqq.util.IServiceCmdCallback;
-import org.jetbrains.annotations.NotNull;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x104.submsgtype0x104.MsgBody;
 
-class adcn
-  implements IBatteryListener, QLog.ILogCallback, IServiceCmdCallback
+public class adcn
+  implements adci
 {
-  @NotNull
-  public String getSosoClassName()
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    return SosoInterface.class.getPackage().getName();
+    submsgtype0x104.MsgBody localMsgBody = new submsgtype0x104.MsgBody();
+    try
+    {
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      paramQQAppInterface.a().a().a(localMsgBody);
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x104 wrong:" + paramQQAppInterface.toString());
+    }
   }
   
-  public void onCmdRequest(String paramString)
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    BatteryMonitor.getInstance().onCmdRequest(paramString);
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
-  
-  public void onCmdResponse(String paramString) {}
-  
-  public void onPrintLog(@NotNull String paramString) {}
-  
-  public void onUsageAlarm(int paramInt1, int paramInt2, int paramInt3, @NotNull String paramString1, @NotNull String paramString2) {}
-  
-  public void onWriteLog(String paramString1, String paramString2)
-  {
-    BatteryMonitor.getInstance().onWriteLog(paramString1, paramString2);
-  }
-  
-  public void onWriteLog(String paramString, byte[] paramArrayOfByte) {}
 }
 
 

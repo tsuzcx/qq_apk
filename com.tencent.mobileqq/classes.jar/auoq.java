@@ -1,10 +1,14 @@
-import android.graphics.Bitmap;
-
-public abstract interface auoq
+final class auoq
+  implements bihs
 {
-  public abstract void a(String paramString);
+  auoq(auoj paramauoj) {}
   
-  public abstract void a(String paramString, Bitmap paramBitmap);
+  public void callback(int paramInt)
+  {
+    if ((paramInt == 1) || (paramInt == 2)) {
+      this.a.a();
+    }
+  }
 }
 
 

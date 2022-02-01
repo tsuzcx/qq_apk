@@ -1,21 +1,21 @@
+import android.view.View;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.widget.AdapterView;
+
 public class aqnu
+  implements bljn
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public aqnu(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public aqnu(String paramString1, String paramString2, String paramString3, String paramString4)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
+    this.a.a();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqnu
  * JD-Core Version:    0.7.0.1
  */

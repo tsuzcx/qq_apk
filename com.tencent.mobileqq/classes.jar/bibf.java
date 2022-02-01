@@ -1,36 +1,28 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.widget.QQToast;
-import java.lang.ref.WeakReference;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class bibf
+class bibf
+  extends fz
 {
-  private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
-  private WeakReference<bibc> jdField_a_of_type_JavaLangRefWeakReference;
+  bibf(bibd parambibd) {}
   
-  public bibf(QQToast paramQQToast, bibc parambibc)
+  public void a(ChatMessage paramChatMessage, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = paramQQToast;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambibc);
-  }
-  
-  private boolean a()
-  {
-    bibc localbibc = (bibc)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    return (localbibc != null) && (localbibc.a());
-  }
-  
-  @Nullable
-  QQToast a()
-  {
-    if (a()) {
-      return this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
+    if ((bibd.a(this.a) < 0) || (bibd.b(this.a) < bibd.a(this.a)))
+    {
+      bibd.a(this.a).shouldStartAnimation = true;
+      bibd.a(this.a).startAnimation(false, false);
+      if (bibd.a(this.a) > 0) {
+        bibd.c(this.a);
+      }
     }
-    return null;
   }
+  
+  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bibf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,74 +1,26 @@
-import android.content.Context;
-import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class bfpp
-  extends bfpn
+  extends bfpu
 {
-  public bfpp(String paramString1, String paramString2, bfpo parambfpo, int paramInt, Bundle paramBundle)
-  {
-    super(paramString1, paramString2, parambfpo, paramInt, paramBundle);
-  }
+  public bfpp(TroopAioKeywordTipBar.4 param4) {}
   
-  protected JSONObject a(HashMap<String, Object>... paramVarArgs)
+  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
   {
-    if (isCancelled()) {
-      return null;
-    }
-    Object localObject = paramVarArgs[0];
-    if (((((HashMap)localObject).get("CONTEXT") instanceof Context)) && ((((HashMap)localObject).get("BUNDLE") instanceof Bundle)))
+    if (!this.a.this$0.a) {}
+    do
     {
-      paramVarArgs = (Context)((HashMap)localObject).get("CONTEXT");
-      localObject = (Bundle)((HashMap)localObject).get("BUNDLE");
-    }
-    for (;;)
-    {
-      try
-      {
-        Bundle localBundle = new Bundle();
-        String str1 = ((Bundle)localObject).getString("Cookie");
-        String str2 = ((Bundle)localObject).getString("Referer");
-        String str3 = ((Bundle)localObject).getString("Origin");
-        if (str1 != null)
-        {
-          localBundle.putString("Cookie", str1);
-          ((Bundle)localObject).remove("Cookie");
-        }
-        if (str2 != null)
-        {
-          localBundle.putString("Referer", str2);
-          ((Bundle)localObject).remove("Referer");
-        }
-        if (str3 != null)
-        {
-          localBundle.putString("Origin", str3);
-          ((Bundle)localObject).remove("Origin");
-        }
-        paramVarArgs = new JSONObject(nlw.a(paramVarArgs, this.a, this.b, (Bundle)localObject, localBundle));
+      return;
+      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
+        break;
       }
-      catch (IOException paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-        paramVarArgs = null;
-        continue;
-      }
-      catch (JSONException paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-        paramVarArgs = null;
-        continue;
-      }
-      catch (OutOfMemoryError paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-      }
-      return paramVarArgs;
-      paramVarArgs = null;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
+    return;
+    bfpj.a(this.a.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
   }
 }
 

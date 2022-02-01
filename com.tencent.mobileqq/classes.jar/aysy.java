@@ -1,9 +1,11 @@
-import android.content.Intent;
-import org.json.JSONObject;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import java.util.List;
 
-public abstract interface aysy
+abstract interface aysy
 {
-  public abstract void a(JSONObject paramJSONObject, int paramInt1, double paramDouble1, double paramDouble2, int paramInt2, Intent paramIntent);
+  public abstract void a(RedTouchItem paramRedTouchItem, int paramInt);
+  
+  public abstract void a(List<RedTouchItem> paramList);
 }
 
 

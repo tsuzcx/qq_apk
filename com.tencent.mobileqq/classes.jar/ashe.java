@@ -1,54 +1,72 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ashe
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+class ashe
+  extends beyf
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aski jdField_a_of_type_Aski;
-  
-  public ashe(View paramView, aski paramaski)
+  ashe(ashd paramashd, Looper paramLooper)
   {
-    super(paramView);
-    this.jdField_a_of_type_Aski = paramaski;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380100));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(asmy.a);
+    super(paramLooper);
   }
   
-  public void a(ashe paramashe, asht paramasht)
+  public void handleMessage(Message paramMessage)
   {
-    String str = "";
-    boolean bool = false;
-    switch (paramasht.mFooterType)
+    Object localObject = (bete)paramMessage.obj;
+    if ((localObject == null) || (((bete)localObject).c != this.a.a())) {}
+    do
     {
-    default: 
-      paramasht = str;
-    }
-    for (;;)
-    {
-      paramashe.jdField_a_of_type_AndroidWidgetTextView.setText(paramasht);
-      paramashe.jdField_a_of_type_AndroidWidgetTextView.setEnabled(bool);
+      do
+      {
+        do
+        {
+          return;
+          switch (paramMessage.what)
+          {
+          case 1002: 
+          case 1006: 
+          case 1007: 
+          default: 
+            return;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("FavroamingManager", 2, "start uploadFace favEmoticon");
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("FavroamingManager", 2, "finish uploadFace favEmoticon resId=" + ((bete)localObject).g);
+        }
+      } while (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet() < this.a.jdField_b_of_type_Int);
+      this.a.f();
       return;
-      paramasht = anni.a(2131703498);
-      continue;
-      paramasht = anni.a(2131703500);
-      bool = true;
-      continue;
-      paramasht = anni.a(2131703499);
+      if (ashd.a(this.a) == null)
+      {
+        QLog.e("FavroamingManager", 1, "app is null");
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FavroamingManager", 2, "STATUS_SEND_AND_SAVE_FINISHED resId=" + ((bete)localObject).g);
+      }
+      paramMessage = ((ashc)this.a.a()).a(((bete)localObject).g);
+      localObject = (anxd)ashd.b(this.a).a(72);
+    } while ((localObject == null) || (paramMessage == null) || (paramMessage.isMarkFace));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramMessage);
+    ((anxd)localObject).a(localArrayList, 1);
+    return;
+    QLog.i("FavroamingManager", 1, "upload fav error:" + ((bete)localObject).g);
+    if (ashd.c(this.a) != null) {}
+    for (int i = bhnv.b(ashd.d(this.a).getApplication());; i = -1)
+    {
+      biah.a("emotionType", "emotionActionFav", "4", "", "", i + "", ((bete)localObject).g, "", "", "");
+      return;
+      QLog.i("FavroamingManager", 1, "upload fav cancel:" + ((bete)localObject).g);
+      return;
     }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Aski != null) {
-      this.jdField_a_of_type_Aski.c();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

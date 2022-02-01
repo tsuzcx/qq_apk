@@ -3,7 +3,7 @@ package com.tencent.mobileqq.microapp.apkg;
 import Wallet.ApkgConfig;
 import android.text.TextUtils;
 import android.widget.LinearLayout;
-import anni;
+import anzj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import java.util.HashMap;
@@ -53,7 +53,7 @@ public class ApkgDebugConstants
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         FormSimpleItem localFormSimpleItem = new FormSimpleItem(paramLinearLayout.getContext());
-        localFormSimpleItem.setLeftText(anni.a(2131699094) + ((ApkgConfig)localEntry.getValue()).app_name);
+        localFormSimpleItem.setLeftText(anzj.a(2131699201) + ((ApkgConfig)localEntry.getValue()).app_name);
         localFormSimpleItem.setOnClickListener(new ApkgDebugConstants.1(paramLinearLayout, localEntry));
         paramLinearLayout.addView(localFormSimpleItem);
       }

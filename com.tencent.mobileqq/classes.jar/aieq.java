@@ -1,15 +1,17 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.qphone.base.util.QLog;
 
-class aieq
-  extends anmu
+public class aieq
+  implements DialogInterface.OnClickListener
 {
-  aieq(aidp paramaidp, ImageView paramImageView) {}
+  public aieq(PhotoListPanel paramPhotoListPanel) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_Aidp.a().a))) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(aoch.a(this.jdField_a_of_type_Aidp.a, paramString, (byte)3));
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
     }
   }
 }

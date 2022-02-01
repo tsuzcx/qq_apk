@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import abey;
-import abfc;
-import adcc;
+import abjc;
+import abjg;
+import adla;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -13,15 +13,15 @@ import android.os.Debug.MemoryInfo;
 import android.os.Process;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import annf;
-import anpr;
-import anps;
-import anpt;
-import anpu;
-import anrr;
-import bcte;
-import bctj;
-import bgln;
+import anzg;
+import aobs;
+import aobt;
+import aobu;
+import aobv;
+import aodx;
+import bdlx;
+import bdmc;
+import bhlo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.startup.step.HackVm;
@@ -44,10 +44,10 @@ public class MemoryManager
   private static List<Pattern> jdField_b_of_type_JavaUtilList;
   private static List<String> jdField_c_of_type_JavaUtilList;
   private int jdField_a_of_type_Int;
-  private anps jdField_a_of_type_Anps;
-  private anpt jdField_a_of_type_Anpt;
+  private aobt jdField_a_of_type_Aobt;
+  private aobu jdField_a_of_type_Aobu;
   private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ConcurrentHashMap<String, anpu> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(0);
+  private ConcurrentHashMap<String, aobv> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(0);
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private int jdField_c_of_type_Int;
@@ -61,7 +61,7 @@ public class MemoryManager
     if (QLog.isColorLevel()) {
       QLog.d("Q.Memory.MemoryManager", 2, "memory manager set need report = " + this.jdField_a_of_type_Boolean);
     }
-    a(abfc.a());
+    a(abjg.a());
   }
   
   public static long a()
@@ -69,11 +69,11 @@ public class MemoryManager
     if (jdField_a_of_type_Long > 0L) {
       return jdField_a_of_type_Long;
     }
-    long l1 = bgln.d();
+    long l1 = bhlo.d();
     jdField_b_of_type_Long = l1;
-    long l2 = bgln.e();
+    long l2 = bhlo.e();
     long l3 = (3L * l1 + 7L * l2) / 10L;
-    long l4 = bgln.f();
+    long l4 = bhlo.f();
     if (l3 <= 157286400L) {
       jdField_a_of_type_Long = Math.min(25165824L, l4);
     }
@@ -124,14 +124,14 @@ public class MemoryManager
     }
   }
   
-  private anpt a()
+  private aobu a()
   {
-    if (this.jdField_a_of_type_Anpt == null)
+    if (this.jdField_a_of_type_Aobu == null)
     {
-      this.jdField_a_of_type_Anpt = new anpt();
-      this.jdField_a_of_type_Anpt.a();
+      this.jdField_a_of_type_Aobu = new aobu();
+      this.jdField_a_of_type_Aobu.a();
     }
-    return this.jdField_a_of_type_Anpt;
+    return this.jdField_a_of_type_Aobu;
   }
   
   public static MemoryManager a()
@@ -147,16 +147,16 @@ public class MemoryManager
     finally {}
   }
   
-  public static void a(int paramInt, anpr paramanpr)
+  public static void a(int paramInt, aobs paramaobs)
   {
     try
     {
       Debug.MemoryInfo[] arrayOfMemoryInfo = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getProcessMemoryInfo(new int[] { paramInt });
       if ((arrayOfMemoryInfo != null) && (arrayOfMemoryInfo.length > 0))
       {
-        paramanpr.jdField_a_of_type_Long = (arrayOfMemoryInfo[0].getTotalPss() * 1024L);
-        paramanpr.jdField_b_of_type_Long = (arrayOfMemoryInfo[0].nativePss * 1024L);
-        paramanpr.jdField_c_of_type_Long = (arrayOfMemoryInfo[0].dalvikPss * 1024L);
+        paramaobs.jdField_a_of_type_Long = (arrayOfMemoryInfo[0].getTotalPss() * 1024L);
+        paramaobs.jdField_b_of_type_Long = (arrayOfMemoryInfo[0].nativePss * 1024L);
+        paramaobs.jdField_c_of_type_Long = (arrayOfMemoryInfo[0].dalvikPss * 1024L);
         return;
       }
     }
@@ -165,9 +165,9 @@ public class MemoryManager
       if (QLog.isColorLevel()) {
         QLog.d("Q.Memory.MemoryManager", 2, "getMemory ex pid=" + paramInt, localException);
       }
-      paramanpr.jdField_a_of_type_Long = 62914560L;
-      paramanpr.jdField_b_of_type_Long = 31457280L;
-      paramanpr.jdField_c_of_type_Long = 31457280L;
+      paramaobs.jdField_a_of_type_Long = 62914560L;
+      paramaobs.jdField_b_of_type_Long = 31457280L;
+      paramaobs.jdField_c_of_type_Long = 31457280L;
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -189,11 +189,11 @@ public class MemoryManager
       while (localIterator.hasNext())
       {
         Object localObject = (Map.Entry)localIterator.next();
-        anpu localanpu = (anpu)((Map.Entry)localObject).getValue();
-        int i = localanpu.jdField_a_of_type_Int;
+        aobv localaobv = (aobv)((Map.Entry)localObject).getValue();
+        int i = localaobv.jdField_a_of_type_Int;
         if (i <= 0)
         {
-          localanpu.a();
+          localaobv.a();
         }
         else
         {
@@ -203,64 +203,64 @@ public class MemoryManager
             throw new IllegalStateException("mode illegal");
           }
           localHashMap.put("startMode", localObject);
-          paramLong2 = bgln.d() / 1024L;
+          paramLong2 = bhlo.d() / 1024L;
           if (paramLong2 <= 0L) {
             throw new IllegalStateException("sysTotalMemory illegal");
           }
           localHashMap.put("sysTotalMemory", String.valueOf(paramLong2));
-          paramLong2 = bgln.f() / 1024L;
+          paramLong2 = bhlo.f() / 1024L;
           if (paramLong2 <= 0L) {
             throw new IllegalStateException("sysClassMemory illegal");
           }
           localHashMap.put("sysClassMemory", String.valueOf(paramLong2));
-          paramLong2 = localanpu.jdField_a_of_type_Long / (i * 1024);
+          paramLong2 = localaobv.jdField_a_of_type_Long / (i * 1024);
           if (paramLong2 <= 0L) {
             throw new IllegalStateException("sysAvailableMemory illegal");
           }
           localHashMap.put("sysAvailableMemory", String.valueOf(paramLong2));
-          paramLong2 = localanpu.jdField_b_of_type_Long / (i * 1024);
+          paramLong2 = localaobv.jdField_b_of_type_Long / (i * 1024);
           if (paramLong2 < 0L) {
             throw new IllegalStateException("qqOtherUsedMemory illegal");
           }
           localHashMap.put("qqOtherUsedMemory", String.valueOf(paramLong2));
-          paramLong2 = localanpu.jdField_c_of_type_Long / (i * 1024);
+          paramLong2 = localaobv.jdField_c_of_type_Long / (i * 1024);
           if (paramLong2 <= 0L) {
             throw new IllegalStateException("qqUsedMemory illegal");
           }
           localHashMap.put("qqUsedMemory", String.valueOf(paramLong2));
-          paramLong2 = localanpu.g / (i * 1024);
+          paramLong2 = localaobv.g / (i * 1024);
           if (paramLong2 <= 0L) {
             throw new IllegalStateException("dalvikPss illegal " + paramLong2);
           }
           localHashMap.put("dalvikPss", String.valueOf(paramLong2));
-          paramLong2 = localanpu.h / (i * 1024);
+          paramLong2 = localaobv.h / (i * 1024);
           if (paramLong2 <= 0L) {
             throw new IllegalStateException("dalvikHeap illegal " + paramLong2);
           }
           localHashMap.put("dalvikHeap", String.valueOf(paramLong2));
-          paramLong2 = localanpu.f / (i * 1024);
+          paramLong2 = localaobv.f / (i * 1024);
           if (paramLong2 <= 0L) {
             throw new IllegalStateException("nativePss illegal " + paramLong2);
           }
           localHashMap.put("nativePss", String.valueOf(paramLong2));
           localHashMap.put("maxHeap", String.valueOf(Runtime.getRuntime().maxMemory() / 1024L));
-          paramLong2 = localanpu.d / (i * 1024);
+          paramLong2 = localaobv.d / (i * 1024);
           if (paramLong2 < 0L) {
             throw new IllegalStateException("imageCacheMax illegal");
           }
           localHashMap.put("imageCacheMax", String.valueOf(paramLong2));
-          paramLong2 = localanpu.e / (i * 1024);
+          paramLong2 = localaobv.e / (i * 1024);
           if (paramLong2 < 0L) {
             throw new IllegalStateException("imageCacheUsed illegal");
           }
           localHashMap.put("imageCacheUsed", String.valueOf(paramLong2));
-          paramLong2 = localanpu.jdField_c_of_type_Int / i;
+          paramLong2 = localaobv.jdField_c_of_type_Int / i;
           if (paramLong2 < 0L) {
             throw new IllegalStateException("imageHitCount illegal");
           }
           localHashMap.put("imageHitCount", String.valueOf(paramLong2));
-          if (localanpu.jdField_c_of_type_Int + localanpu.jdField_b_of_type_Int != 0) {}
-          for (i = localanpu.jdField_c_of_type_Int * 100 / (localanpu.jdField_c_of_type_Int + localanpu.jdField_b_of_type_Int);; i = 0)
+          if (localaobv.jdField_c_of_type_Int + localaobv.jdField_b_of_type_Int != 0) {}
+          for (i = localaobv.jdField_c_of_type_Int * 100 / (localaobv.jdField_c_of_type_Int + localaobv.jdField_b_of_type_Int);; i = 0)
           {
             paramLong2 = i;
             if (paramLong2 >= 0L) {
@@ -269,11 +269,11 @@ public class MemoryManager
             throw new IllegalStateException("imageHitRate illegal");
           }
           localHashMap.put("imageHitRate", String.valueOf(paramLong2));
-          localHashMap.put("guardConfigId", annf.a().a());
+          localHashMap.put("guardConfigId", anzg.a().a());
           localHashMap.put("memoryConfigId", MagnifierSDK.a().a().jdField_a_of_type_JavaLangString);
           localHashMap.put("osVersion", Build.VERSION.RELEASE);
-          localHashMap.put("resolution", bgln.l());
-          if (MagnifierSDK.a().a().jdField_a_of_type_Abey.jdField_a_of_type_Boolean)
+          localHashMap.put("resolution", bhlo.l());
+          if (MagnifierSDK.a().a().jdField_a_of_type_Abjc.jdField_a_of_type_Boolean)
           {
             localObject = "1";
             label840:
@@ -286,9 +286,9 @@ public class MemoryManager
           for (i = 1;; i = 0)
           {
             localHashMap.put("enable_heap_sucide", String.valueOf(i));
-            bctj.a(BaseApplicationImpl.getApplication()).a(null, "actMemory", true, 0L, 0L, localHashMap, null);
-            localanpu.a();
-            localanpu.b();
+            bdmc.a(BaseApplicationImpl.getApplication()).a(null, "actMemory", true, 0L, 0L, localHashMap, null);
+            localaobv.a();
+            localaobv.b();
             break;
             localObject = "0";
             break label840;
@@ -345,8 +345,8 @@ public class MemoryManager
       for (long l1 = l2;; l1 = 0L)
       {
         localEditor.putLong("en_sucide_ab", l1);
-        localSharedPreferences.edit().putString("key_top_act", anrr.a());
-        localSharedPreferences.edit().putString("key_mem_usg", bcte.a().a());
+        localSharedPreferences.edit().putString("key_top_act", aodx.a());
+        localSharedPreferences.edit().putString("key_mem_usg", bdlx.a().a());
         localSharedPreferences.edit().commit();
         return;
         l1 = 0L;
@@ -374,7 +374,7 @@ public class MemoryManager
     long l4 = Runtime.getRuntime().totalMemory();
     long l5 = Runtime.getRuntime().maxMemory();
     float f = (float)l4 * 1.0F / (float)l5;
-    long l6 = bgln.e();
+    long l6 = bhlo.e();
     long l7 = a(Process.myPid());
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("pref_heap_level", 0);
     if (localSharedPreferences.contains("enable_sucide_heap")) {
@@ -424,7 +424,7 @@ public class MemoryManager
         ((HashMap)localObject).put("sys_pss", String.valueOf(localSharedPreferences.getLong("sys_pss", -1L)));
         ((HashMap)localObject).put("enable_sucide_heap_new", String.valueOf(localSharedPreferences.getLong("enable_sucide_heap_new", -1L)));
         ((HashMap)localObject).put("en_sucide_ab", String.valueOf(localSharedPreferences.getLong("en_sucide_ab", -1L)));
-        bctj.a(BaseApplicationImpl.getApplication()).a(null, "HeapLevel", true, 0L, 0L, (HashMap)localObject, null);
+        bdmc.a(BaseApplicationImpl.getApplication()).a(null, "HeapLevel", true, 0L, 0L, (HashMap)localObject, null);
         localSharedPreferences.edit().remove("heap_level").commit();
       }
       localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0);
@@ -456,7 +456,7 @@ public class MemoryManager
     for (int i = 1;; i = 0)
     {
       ((HashMap)localObject).put("en_sucide_ab", String.valueOf(i));
-      bctj.a(BaseApplicationImpl.getApplication()).a(null, "HeapLevel", true, 0L, 0L, (HashMap)localObject, null);
+      bdmc.a(BaseApplicationImpl.getApplication()).a(null, "HeapLevel", true, 0L, 0L, (HashMap)localObject, null);
       localSharedPreferences.edit().putLong("HeapLevelReportLastTime", System.currentTimeMillis()).commit();
       return;
       i = 0;
@@ -468,11 +468,11 @@ public class MemoryManager
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      anpt localanpt = a();
-      localanpt.jdField_a_of_type_Long += paramLong2;
-      localanpt.jdField_b_of_type_Long += paramLong1;
-      localanpt.jdField_a_of_type_Int += 1;
-      localanpt.c();
+      aobu localaobu = a();
+      localaobu.jdField_a_of_type_Long += paramLong2;
+      localaobu.jdField_b_of_type_Long += paramLong1;
+      localaobu.jdField_a_of_type_Int += 1;
+      localaobu.c();
       return;
     }
   }
@@ -486,15 +486,15 @@ public class MemoryManager
     paramQQAppInterface.a(new MemoryManager.AlertMemoryRunner(paramQQAppInterface, paramContext, 2));
   }
   
-  public void a(anps paramanps)
+  public void a(aobt paramaobt)
   {
-    this.jdField_a_of_type_Anps = paramanps;
+    this.jdField_a_of_type_Aobt = paramaobt;
   }
   
   public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_Anps != null) && ("BG_GUARD".equals(paramString))) {
-      this.jdField_a_of_type_Anps.a();
+    if ((this.jdField_a_of_type_Aobt != null) && ("BG_GUARD".equals(paramString))) {
+      this.jdField_a_of_type_Aobt.a();
     }
     if (!this.jdField_a_of_type_Boolean)
     {
@@ -557,10 +557,10 @@ public class MemoryManager
     for (String str = str.substring(0, 1);; str = "")
     {
       localHashMap.put("vmVersion", str);
-      bctj.a(BaseApplicationImpl.getApplication()).a(null, "oomInfo", true, 0L, 0L, localHashMap, null);
+      bdmc.a(BaseApplicationImpl.getApplication()).a(null, "oomInfo", true, 0L, 0L, localHashMap, null);
       localSharedPreferences.edit().putLong("oom_scid_count", 0L);
       localSharedPreferences.edit().remove("leak_actvity_count").commit();
-      abfc.a().d();
+      abjg.a().d();
       return;
     }
   }
@@ -569,11 +569,11 @@ public class MemoryManager
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      anpt localanpt = a();
-      localanpt.jdField_c_of_type_Long += paramLong2;
-      localanpt.d += paramLong1;
-      localanpt.jdField_b_of_type_Int += 1;
-      localanpt.c();
+      aobu localaobu = a();
+      localaobu.jdField_c_of_type_Long += paramLong2;
+      localaobu.d += paramLong1;
+      localaobu.jdField_b_of_type_Int += 1;
+      localaobu.c();
       return;
     }
   }
@@ -583,18 +583,18 @@ public class MemoryManager
     Object localObject = (ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity");
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("LITE_GUARD") == null)
     {
-      localanpu = new anpu();
-      localanpu.a("LITE_GUARD");
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("LITE_GUARD", localanpu);
+      localaobv = new aobv();
+      localaobv.a("LITE_GUARD");
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("LITE_GUARD", localaobv);
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("BG_GUARD") == null)
     {
-      localanpu = new anpu();
-      localanpu.a("BG_GUARD");
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("BG_GUARD", localanpu);
+      localaobv = new aobv();
+      localaobv.a("BG_GUARD");
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("BG_GUARD", localaobv);
     }
     if ("LITE_GUARD".equals(paramString)) {}
-    for (anpu localanpu = (anpu)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("LITE_GUARD"); localanpu == null; localanpu = (anpu)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("BG_GUARD"))
+    for (aobv localaobv = (aobv)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("LITE_GUARD"); localaobv == null; localaobv = (aobv)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("BG_GUARD"))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.Memory.MemoryManager", 2, " curStateMemory == null return with no stat");
@@ -605,10 +605,10 @@ public class MemoryManager
         break label814;
       }
     }
-    long l3 = bgln.e();
-    anpr localanpr = new anpr();
-    a(Process.myPid(), localanpr);
-    long l4 = localanpr.jdField_a_of_type_Long;
+    long l3 = bhlo.e();
+    aobs localaobs = new aobs();
+    a(Process.myPid(), localaobs);
+    long l4 = localaobs.jdField_a_of_type_Long;
     long l1 = 0L;
     label811:
     label814:
@@ -637,19 +637,19 @@ public class MemoryManager
         if ((l3 < 0L) || (l4 < 0L) || (l2 < 0L)) {
           break label144;
         }
-        localanpu.jdField_a_of_type_Long += l3;
-        localanpu.jdField_b_of_type_Long += l2;
-        localanpu.jdField_c_of_type_Long += l4;
-        localanpu.g += localanpr.jdField_c_of_type_Long;
-        localanpu.f += localanpr.jdField_b_of_type_Long;
-        localanpu.h += Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-        localanpu.jdField_a_of_type_Int += 1;
+        localaobv.jdField_a_of_type_Long += l3;
+        localaobv.jdField_b_of_type_Long += l2;
+        localaobv.jdField_c_of_type_Long += l4;
+        localaobv.g += localaobs.jdField_c_of_type_Long;
+        localaobv.f += localaobs.jdField_b_of_type_Long;
+        localaobv.h += Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        localaobv.jdField_a_of_type_Int += 1;
         localObject = BaseApplicationImpl.sImageCache;
-        localanpu.d += ((MQLruCache)localObject).maxSize();
-        localanpu.e += ((MQLruCache)localObject).size();
-        localanpu.jdField_c_of_type_Int += ((MQLruCache)localObject).hitCount();
-        int i = localanpu.jdField_b_of_type_Int;
-        localanpu.jdField_b_of_type_Int = (((MQLruCache)localObject).missCount() + i);
+        localaobv.d += ((MQLruCache)localObject).maxSize();
+        localaobv.e += ((MQLruCache)localObject).size();
+        localaobv.jdField_c_of_type_Int += ((MQLruCache)localObject).hitCount();
+        int i = localaobv.jdField_b_of_type_Int;
+        localaobv.jdField_b_of_type_Int = (((MQLruCache)localObject).missCount() + i);
         l3 = System.currentTimeMillis();
         localObject = BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0);
         l2 = ((SharedPreferences)localObject).getLong("StateMemoryLastTime", 0L);
@@ -663,10 +663,10 @@ public class MemoryManager
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("reportMemoryInfo, start mode =").append(paramString).append("sysTotalMemory=").append(bgln.d()).append(",statCount=").append(localanpu.jdField_a_of_type_Int).append(",sysClassMemory=").append(bgln.f()).append(",sysAvailableMemory=").append(localanpu.jdField_a_of_type_Long).append(",qqOtherUsedMemory=").append(localanpu.jdField_b_of_type_Long).append(",qqUsedMemory=").append(localanpu.jdField_c_of_type_Long).append(",imageCacheMax=").append(localanpu.d).append(",imageCacheUsed=").append(localanpu.e).append(",imageHitCount=").append(localanpu.jdField_c_of_type_Int).append(",imageHitTotal=").append(localanpu.jdField_c_of_type_Int + localanpu.jdField_b_of_type_Int).append("\n");
+          ((StringBuilder)localObject).append("reportMemoryInfo, start mode =").append(paramString).append("sysTotalMemory=").append(bhlo.d()).append(",statCount=").append(localaobv.jdField_a_of_type_Int).append(",sysClassMemory=").append(bhlo.f()).append(",sysAvailableMemory=").append(localaobv.jdField_a_of_type_Long).append(",qqOtherUsedMemory=").append(localaobv.jdField_b_of_type_Long).append(",qqUsedMemory=").append(localaobv.jdField_c_of_type_Long).append(",imageCacheMax=").append(localaobv.d).append(",imageCacheUsed=").append(localaobv.e).append(",imageHitCount=").append(localaobv.jdField_c_of_type_Int).append(",imageHitTotal=").append(localaobv.jdField_c_of_type_Int + localaobv.jdField_b_of_type_Int).append("\n");
           QLog.d("Q.Memory.MemoryManager", 2, ((StringBuilder)localObject).toString());
         }
-        localanpu.b();
+        localaobv.b();
         return;
       }
       catch (IllegalStateException paramString)
@@ -674,8 +674,8 @@ public class MemoryManager
         if (QLog.isColorLevel()) {
           QLog.d("Q.Memory.MemoryManager", 2, "reportMemoryInfo exception", paramString);
         }
-        localanpu.a();
-        localanpu.b();
+        localaobv.a();
+        localaobv.b();
         return;
       }
       catch (Exception paramString) {}
@@ -685,7 +685,7 @@ public class MemoryManager
       QLog.d("Q.Memory.MemoryManager", 2, "reportMemoryInfo exception", paramString);
       return;
       break label820;
-      localanpu = null;
+      localaobv = null;
       break;
     }
   }
@@ -699,18 +699,18 @@ public class MemoryManager
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      localanpt = a();
+      localaobu = a();
       l1 = System.currentTimeMillis();
-      long l2 = localanpt.e;
+      long l2 = localaobu.e;
       if (l1 - l2 > 86400000L) {}
       for (;;)
       {
         try
         {
-          i = localanpt.jdField_a_of_type_Int;
-          j = localanpt.jdField_b_of_type_Int;
+          i = localaobu.jdField_a_of_type_Int;
+          j = localaobu.jdField_b_of_type_Int;
           HashMap localHashMap = new HashMap();
-          localHashMap.put("sysTotalMemory", String.valueOf(bgln.d() / 1024L));
+          localHashMap.put("sysTotalMemory", String.valueOf(bhlo.d() / 1024L));
           if (i != 0) {
             continue;
           }
@@ -733,9 +733,9 @@ public class MemoryManager
           str = "0";
           localHashMap.put("clearRemainMemory", str);
           localHashMap.put("clearCount", String.valueOf(j));
-          bctj.a(BaseApplicationImpl.getApplication()).a(null, "LowMemoryStat", true, 0L, 0L, localHashMap, null);
+          bdmc.a(BaseApplicationImpl.getApplication()).a(null, "LowMemoryStat", true, 0L, 0L, localHashMap, null);
           if (QLog.isColorLevel()) {
-            QLog.d("Q.Memory.MemoryManager", 2, "reportLowMemory, sysTotalMemory=" + String.valueOf(bgln.d() / 1024L) + ", lowWarningMemory=" + localanpt.jdField_b_of_type_Long + ", lowRemainMemory=" + localanpt.jdField_a_of_type_Long + ", lowMemoryCount=" + i + ", clearWarningMemory=" + localanpt.d + ", clearRemainMemory=" + localanpt.jdField_c_of_type_Long + ",clearCount=" + j);
+            QLog.d("Q.Memory.MemoryManager", 2, "reportLowMemory, sysTotalMemory=" + String.valueOf(bhlo.d() / 1024L) + ", lowWarningMemory=" + localaobu.jdField_b_of_type_Long + ", lowRemainMemory=" + localaobu.jdField_a_of_type_Long + ", lowMemoryCount=" + i + ", clearWarningMemory=" + localaobu.d + ", clearRemainMemory=" + localaobu.jdField_c_of_type_Long + ",clearCount=" + j);
           }
         }
         catch (Exception localException)
@@ -747,26 +747,26 @@ public class MemoryManager
             continue;
           }
           QLog.d("Q.Memory.MemoryManager", 2, "reportMemoryInfo exception", localException);
-          localanpt.b();
-          localanpt.e = l1;
+          localaobu.b();
+          localaobu.e = l1;
           continue;
           localObject1 = finally;
           throw localObject1;
         }
         finally
         {
-          localanpt.b();
-          localanpt.e = l1;
+          localaobu.b();
+          localaobu.e = l1;
         }
-        localanpt.c();
+        localaobu.c();
         return;
-        str = String.valueOf(localanpt.jdField_b_of_type_Long / (i * 1024));
+        str = String.valueOf(localaobu.jdField_b_of_type_Long / (i * 1024));
         continue;
-        str = String.valueOf(localanpt.jdField_a_of_type_Long / (i * 1024));
+        str = String.valueOf(localaobu.jdField_a_of_type_Long / (i * 1024));
         continue;
-        str = String.valueOf(localanpt.d / (j * 1024));
+        str = String.valueOf(localaobu.d / (j * 1024));
       }
-      l2 = localanpt.jdField_c_of_type_Long / (j * 1024);
+      l2 = localaobu.jdField_c_of_type_Long / (j * 1024);
       str = String.valueOf(l2);
     }
   }

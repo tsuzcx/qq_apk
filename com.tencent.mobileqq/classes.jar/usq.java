@@ -1,27 +1,38 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import UserGrowth.stSimpleGetFeedListRsp;
+import UserGrowth.stSimpleMetaFeed;
+import android.text.TextUtils;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import java.util.List;
 
 public class usq
-  extends uss
+  implements uel
 {
-  public usq(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
-  {
-    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-  }
+  public usq(WSVerticalDataManager paramWSVerticalDataManager, usf paramusf) {}
   
-  public usp a(int paramInt)
+  public void a(JceStruct paramJceStruct)
   {
-    return new utv(a(), this);
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    uqf.a("WSVerticalDataManagerLog", "onReadCacheCompleted");
+    if (!(paramJceStruct instanceof stSimpleGetFeedListRsp)) {
+      uqf.a("WSVerticalDataManagerLog", "struct not instanceof stSimpleGetFeedListRsp");
+    }
+    do
+    {
+      stSimpleMetaFeed localstSimpleMetaFeed;
+      do
+      {
+        do
+        {
+          return;
+          paramJceStruct = ((stSimpleGetFeedListRsp)paramJceStruct).feeds;
+        } while ((paramJceStruct == null) || (paramJceStruct.size() <= 0));
+        localstSimpleMetaFeed = (stSimpleMetaFeed)paramJceStruct.get(0);
+      } while (!TextUtils.equals(localstSimpleMetaFeed.id, WSVerticalDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager)));
+      WSPublicAccReport.getInstance().getRecommendFullScreenInfo().a(localstSimpleMetaFeed.video_url);
+      uqf.a("WSVerticalDataManagerLog", "onReadCacheCompleted feeds.size() = " + paramJceStruct.size());
+    } while (this.jdField_a_of_type_Usf == null);
+    this.jdField_a_of_type_Usf.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager.a(paramJceStruct), false, true, null);
   }
 }
 

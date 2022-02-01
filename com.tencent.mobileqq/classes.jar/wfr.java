@@ -1,29 +1,114 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.IEventReceiver;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader.3;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public abstract class wfr<T extends IEventReceiver, EVENT extends weu>
-  extends QQUIEventReceiver<T, EVENT>
+public class wfr
 {
-  public wfr(T paramT)
+  public static int a;
+  private static wfr jdField_a_of_type_Wfr;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  
+  private String a(int paramInt)
   {
-    super(paramT);
+    if (paramInt == jdField_a_of_type_Int) {
+      return nmp.a("3408") + "3408" + File.separator + "loading" + File.separator;
+    }
+    return "";
   }
   
-  public final void a(@NonNull T paramT, @NonNull EVENT paramEVENT)
+  public static wfr a()
   {
-    if ((paramEVENT.a != null) && (paramEVENT.a.isFail()))
+    if (jdField_a_of_type_Wfr == null) {
+      jdField_a_of_type_Wfr = new wfr();
+    }
+    return jdField_a_of_type_Wfr;
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    yuk.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource , upzip : %s", Boolean.valueOf(paramBoolean));
+    nmj.b("3408", bplq.a(), new wft(this, paramBoolean), paramBoolean, 0, true);
+  }
+  
+  private void b()
+  {
+    yuk.b("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "unzip now");
+    this.jdField_a_of_type_Boolean = true;
+    ThreadManager.getFileThreadHandler().post(new StoryAlbumResourceDownloader.3(this));
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    HashMap localHashMap = new HashMap();
+    Object localObject1 = new File(a(jdField_a_of_type_Int));
+    Object localObject2;
+    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
-      c(paramT, paramEVENT);
+      localObject1 = ((File)localObject1).listFiles();
+      if (localObject1 != null)
+      {
+        int j = localObject1.length;
+        i = 0;
+        while (i < j)
+        {
+          localObject2 = localObject1[i];
+          localHashMap.put(((File)localObject2).getName(), localObject2);
+          i += 1;
+        }
+      }
+    }
+    localObject1 = new ArrayList();
+    int i = 0;
+    while (i < 50)
+    {
+      localObject2 = (File)localHashMap.get(i + ".png");
+      if (localObject2 != null) {
+        ((List)localObject1).add(((File)localObject2).getAbsolutePath());
+      }
+      i += 1;
+    }
+    this.jdField_a_of_type_JavaUtilList = ((List)localObject1);
+  }
+  
+  public List<String> a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return new ArrayList();
+    }
+    if (paramInt == jdField_a_of_type_Int) {
+      return this.jdField_a_of_type_JavaUtilList;
+    }
+    return new ArrayList();
+  }
+  
+  public void a()
+  {
+    String str = a(jdField_a_of_type_Int);
+    boolean bool1 = nmj.d("3408");
+    boolean bool2 = new File(str).exists();
+    if (bool1)
+    {
+      yuk.d("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkAndUpdateResource , new version exist , unzip now !");
+      b();
       return;
     }
-    b(paramT, paramEVENT);
+    if (bool2)
+    {
+      yuk.d("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkAndUpdateResource , old file exist , check but not unzip now!");
+      Bosses.get().postJob(new wfs(this));
+      return;
+    }
+    yuk.d("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkAndUpdateResource , old file not exist , check and unzip now!");
+    a(true);
   }
-  
-  public abstract void b(@NonNull T paramT, @NonNull EVENT paramEVENT);
-  
-  public abstract void c(@NonNull T paramT, @NonNull EVENT paramEVENT);
 }
 
 

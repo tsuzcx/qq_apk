@@ -1,18 +1,15 @@
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
-class aieu
-  implements QQPermissionCallback
+public class aieu
+  implements bjhv
 {
-  aieu(aidp paramaidp) {}
+  public aieu(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(int paramInt)
   {
-    bglp.a(this.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    aidp.d(this.a);
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

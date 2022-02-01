@@ -1,12 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Interpolator;
+import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
 
-class vwq
-  implements DialogInterface.OnClickListener
+public class vwq
+  implements Interpolator
 {
-  vwq(vwo paramvwo) {}
+  private double jdField_a_of_type_Double;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public vwq(QCircleSlidBottomView paramQCircleSlidBottomView, double paramDouble)
+  {
+    this.jdField_a_of_type_Double = paramDouble;
+  }
+  
+  public float getInterpolation(float paramFloat)
+  {
+    return (float)(Math.pow(2.0D, -24.0D * paramFloat) * Math.sin((paramFloat - this.jdField_a_of_type_Double / 10.0D) * 6.283185307179586D / this.jdField_a_of_type_Double) + 1.0D);
+  }
 }
 
 

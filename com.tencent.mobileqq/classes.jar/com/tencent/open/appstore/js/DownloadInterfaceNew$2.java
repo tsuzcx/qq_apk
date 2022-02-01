@@ -1,8 +1,8 @@
 package com.tencent.open.appstore.js;
 
 import android.os.Build.VERSION;
-import bism;
-import bisy;
+import bjtl;
+import bjtx;
 import com.tencent.smtt.sdk.WebView;
 
 public class DownloadInterfaceNew$2
@@ -19,12 +19,12 @@ public class DownloadInterfaceNew$2
         DownloadInterfaceNew.a(this.this$0).loadUrl(this.a);
         return;
       }
-      DownloadInterfaceNew.a(this.this$0).evaluateJavascript(this.a, new bism(this));
+      DownloadInterfaceNew.a(this.this$0).evaluateJavascript(this.a, new bjtl(this));
       return;
     }
     catch (Exception localException)
     {
-      bisy.a("DownloadInterfaceNew", "[jsCallBack] e>>> ", localException);
+      bjtx.a("DownloadInterfaceNew", "[jsCallBack] e>>> ", localException);
     }
   }
 }

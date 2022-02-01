@@ -1,88 +1,37 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import java.util.ArrayList;
+import java.util.Comparator;
 
-public class aqzg
-  extends aqkz<aqzf>
+class aqzg
+  implements Comparator<Rect>
 {
-  @NonNull
-  public aqzf a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchHotWordConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new aqzf();
-  }
+  aqzg(aqzf paramaqzf) {}
   
-  @Nullable
-  public aqzf a(aqlg[] paramArrayOfaqlg)
+  public int a(Rect paramRect1, Rect paramRect2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchHotWordConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    if (this.a.g.contains(paramRect1)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchHotWordConfProcessor", 2, "onParsed " + paramArrayOfaqlg.length);
+      do
+      {
+        return 1;
+        if (this.a.g.contains(paramRect2)) {
+          return -1;
+        }
+        if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {
+          return -1;
+        }
+      } while (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width());
+      if (paramRect1.width() > paramRect2.width()) {
+        return -1;
       }
-      return aqzf.a(paramArrayOfaqlg[0]);
-    }
-    return null;
-  }
-  
-  public void a(aqzf paramaqzf)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramaqzf == null) {
-        break label43;
-      }
-    }
-    label43:
-    for (paramaqzf = paramaqzf.toString();; paramaqzf = " empty")
-    {
-      QLog.d("SearchHotWordConfProcessor", 2, paramaqzf);
-      return;
-    }
-  }
-  
-  public Class clazz()
-  {
-    return aqzf.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
+    } while (paramRect1.width() < paramRect2.width());
     return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchHotWordConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 433;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqzg
  * JD-Core Version:    0.7.0.1
  */

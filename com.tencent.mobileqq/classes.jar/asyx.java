@@ -1,47 +1,46 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
 public class asyx
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private QQAppInterface a;
+  private int jdField_a_of_type_Int;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private boolean jdField_a_of_type_Boolean;
   
-  public asyx(QQAppInterface paramQQAppInterface)
-  {
-    this.a = paramQQAppInterface;
-  }
+  public asyx(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public void a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, long paramLong, String paramString5, aszc paramaszc)
+  public void onGlobalLayout()
   {
-    atab localatab = this.a.a().a();
-    atac localatac = new atac();
-    localatac.jdField_a_of_type_JavaLangString = paramString4;
-    localatac.jdField_a_of_type_Long = paramLong;
-    localatac.c = paramString5;
-    localatac.b = paramString3;
-    if (paramInt1 != 3000)
+    ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
+    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
+    if (i != this.jdField_a_of_type_Int)
     {
-      localatab.a(paramString1, paramInt1, paramString2, paramInt2, localatac, 5000, 5, new asza(this, paramaszc));
-      return;
+      int j = ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getRootView().getHeight();
+      int k = j - i;
+      if (k <= j / 4) {
+        break label90;
+      }
+      ExtendFriendProfileEditFragment.c(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment, k);
+      this.jdField_a_of_type_Boolean = true;
+      ExtendFriendProfileEditFragment.d(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
     }
-    localatab.a(paramString1, paramString2, localatac, new aszb(this, paramaszc));
-  }
-  
-  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, long paramLong, int paramInt2, aszc paramaszc)
-  {
-    atab localatab = this.a.a().a();
-    atac localatac = new atac();
-    localatac.jdField_a_of_type_JavaLangString = paramString4;
-    localatac.jdField_a_of_type_Long = paramLong;
-    if ((paramInt1 == 3000) || (paramInt1 == 1))
+    for (;;)
     {
-      localatab.a(paramString2, paramString1, localatac, paramInt2, 5000, 3, new asyy(this, paramaszc));
+      this.jdField_a_of_type_Int = i;
       return;
+      label90:
+      if (this.jdField_a_of_type_Boolean) {
+        ExtendFriendProfileEditFragment.e(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
+      }
     }
-    localatab.a(paramString1, paramInt1, paramString2, paramString3, 5000, 3, new asyz(this, paramaszc));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asyx
  * JD-Core Version:    0.7.0.1
  */

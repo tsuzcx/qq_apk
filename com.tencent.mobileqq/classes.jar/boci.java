@@ -1,16 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class boci
-  implements ValueAnimator.AnimatorUpdateListener
+final class boci
+  implements DialogInterface.OnClickListener
 {
-  public boci(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  boci(int paramInt, Activity paramActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AEEditorAILoadingView.a(this.a).setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    if (boch.b(this.jdField_a_of_type_Int))
+    {
+      boch.a(this.jdField_a_of_type_AndroidAppActivity, null, false);
+      return;
+    }
+    boch.b(this.jdField_a_of_type_AndroidAppActivity, "mvip.n.a.zcwy_popup", false);
   }
 }
 

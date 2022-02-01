@@ -1,38 +1,31 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Parcelable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.MessageForPLNews;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
 class ahds
-  implements View.OnClickListener
+  implements ahca
 {
-  ahds(ahdr paramahdr, MessageForPLNews paramMessageForPLNews, String paramString) {}
+  ahds(ahdk paramahdk, ahdx paramahdx, MessageForPoke paramMessageForPoke) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    Object localObject = (ahdt)paramView.getTag();
-    if (localObject == null) {}
+    this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
+    this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
+    this.jdField_a_of_type_Ahdx.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if ((this.jdField_a_of_type_Ahdx.b == ahdk.b()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Ahdk.a instanceof ChatHistoryActivity)) && (!ahdk.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
+      this.jdField_a_of_type_Ahdx.c.setVisibility(0);
+    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+      this.jdField_a_of_type_Ahdx.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+      agej.a -= 1;
       return;
-      localObject = new ProfileActivity.AllInOne(((ahdt)localObject).jdField_a_of_type_JavaLangString, 1);
-      Intent localIntent = new Intent(this.jdField_a_of_type_Ahdr.jdField_a_of_type_AndroidContentContext, PersonalityLabelGalleryActivity.class);
-      localIntent.putExtra("personality_label_allinone", (Parcelable)localObject);
-      localIntent.putExtra("fromType", 2);
-      localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPLNews.frienduin);
-      localIntent.putExtra("nickname", this.jdField_a_of_type_JavaLangString);
-      if (!(this.jdField_a_of_type_Ahdr.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-        localIntent.addFlags(268435456);
-      }
-      this.jdField_a_of_type_Ahdr.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      bcst.b(this.jdField_a_of_type_Ahdr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "3", "", "");
+      this.jdField_a_of_type_Ahdx.c.setVisibility(8);
     }
   }
 }

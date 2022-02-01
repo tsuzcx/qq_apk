@@ -1,8 +1,43 @@
 public class zaj
 {
-  public static boolean a(int paramInt)
+  private static volatile zaj jdField_a_of_type_Zaj;
+  private zak jdField_a_of_type_Zak;
+  
+  public static zaj a()
   {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6);
+    if (jdField_a_of_type_Zaj == null) {}
+    try
+    {
+      if (jdField_a_of_type_Zaj == null) {
+        jdField_a_of_type_Zaj = new zaj();
+      }
+      return jdField_a_of_type_Zaj;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Zak = null;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_Zak != null) {
+      this.jdField_a_of_type_Zak.a(paramString1, paramString2);
+    }
+  }
+  
+  public void a(zak paramzak)
+  {
+    this.jdField_a_of_type_Zak = paramzak;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Zak != null) {
+      this.jdField_a_of_type_Zak.a();
+    }
   }
 }
 

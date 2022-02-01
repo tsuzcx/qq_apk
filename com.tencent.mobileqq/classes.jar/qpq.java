@@ -1,116 +1,49 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
-import tencent.kandian.im.apn.PushComponentExtPB.MsgBody;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushComponentExtDataProcessor;", "", "()V", "convertAdditionalField", "Lorg/json/JSONObject;", "pushExtraData", "", "brief", "convertPacket", "Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushComponentExtData;", "msgBody", "Ltencent/kandian/im/apn/PushComponentExtPB$MsgBody;", "generateActionData", "process0X135PBBuffer", "base64PbBuffer", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qpq
+public class qpq
+  extends ClickableSpan
+  implements skl
 {
-  public static final qpr a = new qpr(null);
+  private int jdField_a_of_type_Int = -1;
+  protected long a;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  boolean jdField_a_of_type_Boolean;
   
-  @NonNull
-  private final qpp a(PushComponentExtPB.MsgBody paramMsgBody)
+  public qpq(ComponentHeaderNewSocial paramComponentHeaderNewSocial, long paramLong, int paramInt)
   {
-    qpp localqpp = new qpp(null, null, null, null, null, null, 63, null);
-    String str;
-    if (paramMsgBody.articleIds.has())
-    {
-      str = paramMsgBody.articleIds.get();
-      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.articleIds.get()");
-      localqpp.jdField_a_of_type_JavaLangString = str;
-    }
-    if (paramMsgBody.foldStatus.has())
-    {
-      str = paramMsgBody.foldStatus.get();
-      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.foldStatus.get()");
-      localqpp.b = str;
-    }
-    if (paramMsgBody.algoId.has())
-    {
-      str = paramMsgBody.algoId.get();
-      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.algoId.get()");
-      localqpp.c = str;
-    }
-    if (paramMsgBody.strategyId.has())
-    {
-      str = paramMsgBody.strategyId.get();
-      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.strategyId.get()");
-      localqpp.d = str;
-    }
-    if (paramMsgBody.subscripts.has())
-    {
-      str = paramMsgBody.subscripts.get();
-      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.subscripts.get()");
-      localqpp.e = str;
-    }
-    if (paramMsgBody.pushExtData.has())
-    {
-      paramMsgBody = paramMsgBody.pushExtData.get().toByteArray();
-      Intrinsics.checkExpressionValueIsNotNull(paramMsgBody, "msgBody.pushExtData.get().toByteArray()");
-      localqpp.jdField_a_of_type_ArrayOfByte = paramMsgBody;
-    }
-    return localqpp;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  @NotNull
-  public final JSONObject a(@NotNull String paramString)
+  public void a(boolean paramBoolean)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "pushExtraData");
-    JSONObject localJSONObject = new JSONObject();
-    if (TextUtils.isEmpty((CharSequence)paramString)) {
-      return localJSONObject;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
+      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
     }
-    paramString = new JSONObject(paramString);
-    localJSONObject.put("id", paramString.optString("id", ""));
-    localJSONObject.put("push_ext_data", paramString);
-    localJSONObject.put("push_rowkey", paramString.optString("push_rowkey", ""));
-    localJSONObject.put("subscripts", paramString.optString("subscripts", ""));
-    localJSONObject.put("article_id", paramString.optString("article_id", ""));
-    return localJSONObject;
   }
   
-  @NotNull
-  public final JSONObject a(@NotNull String paramString1, @NotNull String paramString2)
+  public void onClick(View paramView)
   {
-    Intrinsics.checkParameterIsNotNull(paramString1, "pushExtraData");
-    Intrinsics.checkParameterIsNotNull(paramString2, "brief");
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("brief", paramString2);
-    if (TextUtils.isEmpty((CharSequence)paramString1)) {
-      return localJSONObject;
-    }
-    localJSONObject.put("orangeWord", new JSONObject(paramString1).optString("orangeWord", ""));
-    return localJSONObject;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(this.jdField_a_of_type_Long);
   }
   
-  @NonNull
-  @NotNull
-  public final qpp a(@NotNull String paramString)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "base64PbBuffer");
-    byte[] arrayOfByte = bgku.decode(paramString, 0);
-    Intrinsics.checkExpressionValueIsNotNull(arrayOfByte, "Base64Util.decode(base64…ffer, Base64Util.DEFAULT)");
-    paramString = new PushComponentExtPB.MsgBody();
-    try
+    super.updateDrawState(paramTextPaint);
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.jdField_a_of_type_Int;; i = -1)
     {
-      paramString.mergeFrom(arrayOfByte);
-      return a(paramString);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("RIJPushComponentExtDataProcessor", 2, "process0X135PBBuffer: failed. ", (Throwable)localException);
-        }
-      }
+      paramTextPaint.bgColor = i;
+      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+      return;
     }
   }
 }

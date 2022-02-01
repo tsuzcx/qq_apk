@@ -2,119 +2,123 @@ package com.tencent.mobileqq.vas.gldrawable;
 
 import android.content.Context;
 import android.os.Build.VERSION;
-import bhak;
-import bhbk;
-import bhbm;
-import bhbn;
-import bhbr;
+import bhlo;
+import biaq;
+import bibs;
+import bibu;
+import bibw;
+import bicb;
 import java.io.File;
 import kotlin.Pair;
 
 public class GLDrawableLoaderImpl$3
   implements Runnable
 {
-  public GLDrawableLoaderImpl$3(bhbk parambhbk, String paramString, Context paramContext, bhbm parambhbm, bhbr parambhbr) {}
+  public GLDrawableLoaderImpl$3(bibs parambibs, String paramString, Context paramContext, bibu parambibu, bicb parambicb) {}
   
   public void run()
   {
     boolean bool2 = false;
     boolean bool1 = false;
     Object localObject = new File(this.jdField_a_of_type_JavaLangString);
-    File localFile1 = bhbn.a(this.jdField_a_of_type_AndroidContentContext);
+    File localFile1 = bibw.a(this.jdField_a_of_type_AndroidContentContext);
     try
     {
-      localObject = bhbk.a(this.this$0, (File)localObject, localFile1, "gldrawable.apk");
+      localObject = bibs.a(this.this$0, (File)localObject, localFile1, "gldrawable.apk");
       if (!"sucess".equals(localObject))
       {
-        this.jdField_a_of_type_Bhbm.a("gldrawable_main_init", "error", (String)localObject, -1L);
-        if ((bhbn.a()) || (bhbk.a() > 3))
+        this.jdField_a_of_type_Bibu.a("gldrawable_main_init", "error", (String)localObject, -1L);
+        if ((bibw.a()) || (bibs.a() > 3))
         {
           bool1 = true;
-          bhbk.b(bool1);
-          if (!bhbn.a()) {
+          bibs.b(bool1);
+          if (!bibw.a()) {
             break label113;
           }
-          if (this.jdField_a_of_type_Bhbr != null) {
-            this.jdField_a_of_type_Bhbr.b();
+          if (this.jdField_a_of_type_Bicb != null) {
+            this.jdField_a_of_type_Bicb.b();
           }
         }
         label113:
-        while (this.jdField_a_of_type_Bhbr == null)
+        while (this.jdField_a_of_type_Bicb == null)
         {
           return;
           bool1 = false;
           break;
         }
-        this.jdField_a_of_type_Bhbr.c();
+        this.jdField_a_of_type_Bicb.c();
         return;
       }
       localObject = new File(localFile1, "gldrawable.apk");
-      if (bhbk.a(this.this$0)) {
-        break label339;
+      if (bibs.a(this.this$0)) {
+        break label354;
       }
-      if (!bhbk.b(this.this$0)) {}
+      if (!bibs.b(this.this$0)) {}
       for (localFile1 = new File(localFile1, "/lib/armeabi-v7a");; localFile1 = new File(localFile1, "/lib/arm64-v8a"))
       {
         label173:
-        bhbn.a().a(this.jdField_a_of_type_AndroidContentContext, (File)localObject, localFile1);
-        if (!bhbn.a()) {
-          bhak.a("gldrawable_error_model", new Pair[] { new Pair("api", String.valueOf(Build.VERSION.SDK_INT)), new Pair("so", localFile1.getName()) });
+        bibw.a().a(this.jdField_a_of_type_AndroidContentContext, (File)localObject, localFile1);
+        if (!bibw.a()) {
+          biaq.a("gldrawable_error_model", new Pair[] { new Pair("api", String.valueOf(Build.VERSION.SDK_INT)), new Pair("so", localFile1.getName()) });
         }
-        if ((bhbn.a()) || (bhbk.a() > 3)) {
+        if (bhlo.g()) {
+          bibw.a().a(20);
+        }
+        if ((bibw.a()) || (bibs.a() > 3)) {
           bool1 = true;
         }
-        bhbk.b(bool1);
-        if (!bhbn.a()) {
-          break label377;
+        bibs.b(bool1);
+        if (!bibw.a()) {
+          break label392;
         }
-        if (this.jdField_a_of_type_Bhbr == null) {
+        if (this.jdField_a_of_type_Bicb == null) {
           break;
         }
-        this.jdField_a_of_type_Bhbr.b();
+        this.jdField_a_of_type_Bicb.b();
         return;
       }
-      if (this.jdField_a_of_type_Bhbr == null) {
-        break label337;
+      if (this.jdField_a_of_type_Bicb == null) {
+        break label352;
       }
     }
     finally
     {
-      if (!bhbn.a())
+      if (!bibw.a())
       {
         bool1 = bool2;
-        if (bhbk.a() <= 3) {}
+        if (bibs.a() <= 3) {}
       }
       else
       {
         bool1 = true;
       }
-      bhbk.b(bool1);
-      if (!bhbn.a()) {
-        break label394;
+      bibs.b(bool1);
+      if (!bibw.a()) {
+        break label409;
       }
     }
-    this.jdField_a_of_type_Bhbr.b();
+    this.jdField_a_of_type_Bicb.b();
     for (;;)
     {
-      label337:
+      label352:
       throw localFile2;
-      label339:
-      if (!bhbk.b(this.this$0))
+      label354:
+      if (!bibs.b(this.this$0))
       {
         localFile3 = new File(localFile2, "/lib/x86");
         break label173;
       }
       File localFile3 = new File(localFile3, "/lib/x86_64");
       break label173;
-      label377:
-      if (this.jdField_a_of_type_Bhbr == null) {
+      label392:
+      if (this.jdField_a_of_type_Bicb == null) {
         break;
       }
-      this.jdField_a_of_type_Bhbr.c();
+      this.jdField_a_of_type_Bicb.c();
       return;
-      label394:
-      if (this.jdField_a_of_type_Bhbr != null) {
-        this.jdField_a_of_type_Bhbr.c();
+      label409:
+      if (this.jdField_a_of_type_Bicb != null) {
+        this.jdField_a_of_type_Bicb.c();
       }
     }
   }

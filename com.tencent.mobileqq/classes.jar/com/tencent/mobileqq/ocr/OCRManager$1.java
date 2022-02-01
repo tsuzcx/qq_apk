@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ocr;
 
-import ayfa;
+import ayxt;
 
 public class OCRManager$1
   implements Runnable
 {
-  public OCRManager$1(ayfa paramayfa) {}
+  public OCRManager$1(ayxt paramayxt) {}
   
   public void run()
   {

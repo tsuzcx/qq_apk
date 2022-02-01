@@ -5,8 +5,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anni;
-import bmab;
+import anzj;
+import bnbd;
 import com.tencent.mobileqq.music.SongInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class BroadcastMusicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<BroadcastMusicInfo> CREATOR = new bmab();
+  public static final Parcelable.Creator<BroadcastMusicInfo> CREATOR = new bnbd();
   public BroadcastAudio broadcastAudioUrl;
   public String broadcastID = "";
   public String broadcastName = "";
@@ -148,7 +148,7 @@ public class BroadcastMusicInfo
     {
       localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = anni.a(2131700014);
+        localObject2 = anzj.a(2131700121);
       }
       return localObject2;
     }

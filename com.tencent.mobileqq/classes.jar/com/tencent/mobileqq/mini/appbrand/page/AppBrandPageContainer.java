@@ -10,8 +10,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.Toast;
-import anni;
-import biau;
+import anzj;
+import bjbs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.WindowInfo;
@@ -96,11 +96,11 @@ public final class AppBrandPageContainer
       QLog.e("AppBrandPageContainer", 1, "executeDownSubPack return, activity is null or finishing.");
       return;
     }
-    biau localbiau = new biau(this.appBrandRuntime.activity);
-    localbiau.a(anni.a(2131699405));
-    localbiau.setCancelable(false);
-    localbiau.show();
-    this.appBrandRuntime.apkgInfo.downloadSubPack(paramString1, new AppBrandPageContainer.1(this, paramString1, localWeakReference, paramString2, localbiau));
+    bjbs localbjbs = new bjbs(this.appBrandRuntime.activity);
+    localbjbs.a(anzj.a(2131699512));
+    localbjbs.setCancelable(false);
+    localbjbs.show();
+    this.appBrandRuntime.apkgInfo.downloadSubPack(paramString1, new AppBrandPageContainer.1(this, paramString1, localWeakReference, paramString2, localbjbs));
   }
   
   private AbsAppBrandPage getBrandPage()
@@ -405,7 +405,7 @@ public final class AppBrandPageContainer
     QLog.i("miniapp-start", 1, "navigateTo url=" + paramString + "; aliveWebViewCount : " + BaseAppBrandWebview.aliveWebViewCount);
     if (BaseAppBrandWebview.aliveWebViewCount > 11)
     {
-      Toast.makeText(getContext(), anni.a(2131699403), 0).show();
+      Toast.makeText(getContext(), anzj.a(2131699510), 0).show();
       QLog.e("AppBrandPageContainer", 1, "打开WebView数量超过上限");
       return;
     }

@@ -1,10 +1,24 @@
-import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import java.util.Comparator;
 
-public abstract interface yki
+public class yki
+  implements Comparator<VideoCollectionItem>
 {
-  public abstract Bitmap a(Bitmap paramBitmap);
-  
-  public abstract String a();
+  public int a(VideoCollectionItem paramVideoCollectionItem1, VideoCollectionItem paramVideoCollectionItem2)
+  {
+    if ((paramVideoCollectionItem1.collectionType != paramVideoCollectionItem2.collectionType) && (zof.a(paramVideoCollectionItem1.collectionTime, paramVideoCollectionItem2.collectionTime))) {
+      if (VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem1.collectionType] >= VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem2.collectionType]) {}
+    }
+    do
+    {
+      return -1;
+      return 1;
+      if (paramVideoCollectionItem1.collectionTime < paramVideoCollectionItem2.collectionTime) {
+        return 1;
+      }
+    } while (paramVideoCollectionItem1.collectionTime > paramVideoCollectionItem2.collectionTime);
+    return 0;
+  }
 }
 
 

@@ -1,15 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class yqr
-  implements wld<yqs, wla>
+class yqr
+  implements View.OnClickListener
 {
-  public void a(@NonNull yqs paramyqs, @Nullable wla paramwla, @NonNull ErrorMessage paramErrorMessage)
+  yqr(yqj paramyqj, ytq paramytq) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramErrorMessage.isFail()) {
-      yqp.b("Q.qqstory.MonitorReport", "send monitor fail %s", paramErrorMessage);
-    }
+    yup.a("home_page", "guide_shoot", 0, 0, new String[0]);
+    this.jdField_a_of_type_Yqj.a.a(false, true, 13, null);
+    this.jdField_a_of_type_Ytq.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

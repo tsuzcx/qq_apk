@@ -1,58 +1,58 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import aotc;
-import aotg;
-import aotj;
+import apgs;
+import apgw;
+import apgz;
 
 public class ARVideoRecordUIControllerImpl$8
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$8(aotg paramaotg, int paramInt) {}
+  public ARVideoRecordUIControllerImpl$8(apgw paramapgw, int paramInt) {}
   
   public void run()
   {
-    if (aotg.a(this.this$0) != null) {
-      aotg.a(this.this$0).a(0);
+    if (apgw.a(this.this$0) != null) {
+      apgw.a(this.this$0).a(0);
     }
     if (this.a == 0) {
-      if (aotg.a(this.this$0) != -1) {
-        switch (aotg.a(this.this$0))
+      if (apgw.a(this.this$0) != -1) {
+        switch (apgw.a(this.this$0))
         {
         case 5: 
         default: 
-          aotg.a(this.this$0, -1);
+          apgw.a(this.this$0, -1);
         }
       }
     }
     for (;;)
     {
-      aotg.b(this.this$0, false);
-      if (!aotg.c(this.this$0)) {
-        aotg.a(this.this$0);
+      apgw.b(this.this$0, false);
+      if (!apgw.c(this.this$0)) {
+        apgw.a(this.this$0);
       }
       return;
-      aotg.a("0X8008A56");
-      aotc.a("AR视频已保存", aotg.e);
+      apgw.a("0X8008A56");
+      apgs.a("AR视频已保存", apgw.e);
       break;
-      aotc.a(aotg.h, true);
+      apgs.a(apgw.h, true);
       break;
-      aotg.a("0X8008A56");
-      aotc.a(aotg.h, true);
+      apgw.a("0X8008A56");
+      apgs.a(apgw.h, true);
       break;
-      if (aotg.b(this.this$0) == true)
+      if (apgw.b(this.this$0) == true)
       {
-        aotg.a(this.this$0, false);
+        apgw.a(this.this$0, false);
       }
       else
       {
-        aotg.a("0X8008A56");
-        aotc.a(aotg.h, true);
+        apgw.a("0X8008A56");
+        apgs.a(apgw.h, true);
         continue;
-        aotg.a("0X8008A56");
+        apgw.a("0X8008A56");
         if (this.a == 1) {
-          aotc.a("AR视频已保存", aotg.f);
+          apgs.a("AR视频已保存", apgw.f);
         } else {
-          aotc.a("AR视频已保存", aotg.g);
+          apgs.a("AR视频已保存", apgw.g);
         }
       }
     }

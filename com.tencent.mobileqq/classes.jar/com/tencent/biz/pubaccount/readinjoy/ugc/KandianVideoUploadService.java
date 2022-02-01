@@ -11,8 +11,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import bkfv;
-import bmqa;
+import blha;
+import bnrf;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
@@ -26,65 +26,65 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import mqq.os.MqqHandler;
-import pha;
-import rbe;
-import rja;
-import rjb;
-import rjd;
-import rje;
-import rtm;
-import rtt;
-import rtv;
+import ozs;
+import qry;
+import qzt;
+import qzu;
+import qzw;
+import qzx;
+import rki;
+import rkp;
+import rkr;
 
 public class KandianVideoUploadService
   extends Service
-  implements Handler.Callback, rjd
+  implements Handler.Callback, qzw
 {
-  private static WeakReference<rje> jdField_a_of_type_JavaLangRefWeakReference;
-  private static Map<String, WeakReference<rjb>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static WeakReference<qzx> jdField_a_of_type_JavaLangRefWeakReference;
+  private static Map<String, WeakReference<qzu>> jdField_a_of_type_JavaUtilMap = new HashMap();
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "com.tencent.biz.pubaccount.readinjoy" };
   private static final String[] b = { "kandian", "readinjoy", "post.mp.qq.com " };
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bkfv(Looper.getMainLooper(), this, true);
-  private rbe jdField_a_of_type_Rbe = new rbe();
+  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new blha(Looper.getMainLooper(), this, true);
+  private qry jdField_a_of_type_Qry = new qry();
   private boolean jdField_a_of_type_Boolean;
   
   public static int a()
   {
-    return rja.a().size();
+    return qzt.a().size();
   }
   
   private String a()
   {
-    return bmqa.a(pha.a(), false, true).getString("mLoadingUrl", "");
+    return bnrf.a(ozs.a(), false, true).getString("mLoadingUrl", "");
   }
   
-  private rje a()
+  private qzx a()
   {
-    rje localrje = null;
+    qzx localqzx = null;
     if (jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localrje = (rje)jdField_a_of_type_JavaLangRefWeakReference.get();
+      localqzx = (qzx)jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    return localrje;
+    return localqzx;
   }
   
-  public static void a(Bundle paramBundle, rje paramrje)
+  public static void a(Bundle paramBundle, qzx paramqzx)
   {
     Object localObject = paramBundle.getString("mTaskID");
     localObject = (WeakReference)jdField_a_of_type_JavaUtilMap.get(localObject);
     if (localObject != null) {}
-    for (localObject = (rjb)((WeakReference)localObject).get();; localObject = null)
+    for (localObject = (qzu)((WeakReference)localObject).get();; localObject = null)
     {
       if (localObject != null)
       {
-        paramrje.a(paramBundle, 200, ((rjb)localObject).a);
+        paramqzx.a(paramBundle, 200, ((qzu)localObject).a);
         return;
       }
       if (jdField_a_of_type_JavaUtilMap.size() < 2)
       {
-        paramrje.a(paramBundle, 202, 0.0F);
+        paramqzx.a(paramBundle, 202, 0.0F);
         return;
       }
-      paramrje.a(paramBundle, 201, 0.0F);
+      paramqzx.a(paramBundle, 201, 0.0F);
       return;
     }
   }
@@ -92,9 +92,9 @@ public class KandianVideoUploadService
   private void a(String paramString)
   {
     QLog.d("KandianVideoUploadService", 1, "removeTask!");
-    rjb localrjb = (rjb)((WeakReference)jdField_a_of_type_JavaUtilMap.get(paramString)).get();
-    if (localrjb != null) {
-      localrjb.b();
+    qzu localqzu = (qzu)((WeakReference)jdField_a_of_type_JavaUtilMap.get(paramString)).get();
+    if (localqzu != null) {
+      localqzu.b();
     }
     jdField_a_of_type_JavaUtilMap.remove(paramString);
     if (jdField_a_of_type_JavaUtilMap.size() == 0) {
@@ -118,10 +118,10 @@ public class KandianVideoUploadService
     this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
   }
   
-  public static void a(rje paramrje)
+  public static void a(qzx paramqzx)
   {
-    if (paramrje != null) {
-      jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramrje);
+    if (paramqzx != null) {
+      jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramqzx);
     }
   }
   
@@ -175,7 +175,7 @@ public class KandianVideoUploadService
   protected void a(int paramInt, CharSequence paramCharSequence)
   {
     if (a()) {
-      QQToast.a(getBaseContext(), paramInt, paramCharSequence, 0).b(getResources().getDimensionPixelSize(2131298998));
+      QQToast.a(getBaseContext(), paramInt, paramCharSequence, 0).b(getResources().getDimensionPixelSize(2131299011));
     }
   }
   
@@ -187,7 +187,7 @@ public class KandianVideoUploadService
       paramIntent = jdField_a_of_type_JavaUtilMap.values().iterator();
       while (paramIntent.hasNext())
       {
-        paramString = (rjb)((WeakReference)paramIntent.next()).get();
+        paramString = (qzu)((WeakReference)paramIntent.next()).get();
         QLog.d("KandianVideoUploadService", 1, "startTask");
       }
     }
@@ -214,7 +214,7 @@ public class KandianVideoUploadService
       } while (paramString == null);
       paramIntent = paramIntent.getExtras();
     } while (paramIntent == null);
-    paramString.a(paramIntent, getString(2131718088));
+    paramString.a(paramIntent, getString(2131718221));
     return;
     paramIntent.putExtra("mTaskID", str1);
     paramString = jdField_a_of_type_JavaUtilMap.keySet().iterator();
@@ -227,7 +227,7 @@ public class KandianVideoUploadService
       return;
     }
     if (bool2) {}
-    for (paramIntent = new rtt(this, this, paramIntent);; paramIntent = new rtv(this, this, paramIntent))
+    for (paramIntent = new rkp(this, this, paramIntent);; paramIntent = new rkr(this, this, paramIntent))
     {
       paramString = new WeakReference(paramIntent);
       jdField_a_of_type_JavaUtilMap.put(str1, paramString);
@@ -243,9 +243,9 @@ public class KandianVideoUploadService
   
   public void a(String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, String paramString3, String paramString4)
   {
-    paramString2 = (rjb)((WeakReference)jdField_a_of_type_JavaUtilMap.get(paramString1)).get();
-    if ((paramString2 instanceof rtv)) {}
-    for (paramString2 = ((rtv)paramString2).a;; paramString2 = null)
+    paramString2 = (qzu)((WeakReference)jdField_a_of_type_JavaUtilMap.get(paramString1)).get();
+    if ((paramString2 instanceof rkr)) {}
+    for (paramString2 = ((rkr)paramString2).a;; paramString2 = null)
     {
       paramString3 = a();
       switch (paramInt1)
@@ -263,12 +263,12 @@ public class KandianVideoUploadService
         if (paramString3 != null) {
           paramString3.a(paramString1);
         }
-        a(2, getString(2131717218));
+        a(2, getString(2131717334));
       }
     }
   }
   
-  public void a(String paramString, int paramInt, rtm paramrtm)
+  public void a(String paramString, int paramInt, rki paramrki)
   {
     int i = 1004;
     switch (paramInt)
@@ -281,7 +281,7 @@ public class KandianVideoUploadService
       QLog.d("KandianVideoUploadService", 1, "deliver over!" + paramInt);
       if (paramInt != 0)
       {
-        paramString = (rjb)((WeakReference)jdField_a_of_type_JavaUtilMap.get(paramString)).get();
+        paramString = (qzu)((WeakReference)jdField_a_of_type_JavaUtilMap.get(paramString)).get();
         if (paramString != null) {
           paramString.a(i);
         }
@@ -333,18 +333,18 @@ public class KandianVideoUploadService
     int j;
     if (paramMessage.what == 100)
     {
-      paramMessage = getString(2131717206);
+      paramMessage = getString(2131717322);
       j = 0;
     }
     for (;;)
     {
-      localObject1 = (rjb)((WeakReference)jdField_a_of_type_JavaUtilMap.get(localObject2)).get();
+      localObject1 = (qzu)((WeakReference)jdField_a_of_type_JavaUtilMap.get(localObject2)).get();
       if (localObject1 != null)
       {
-        if (!(localObject1 instanceof rtv)) {
+        if (!(localObject1 instanceof rkr)) {
           break label362;
         }
-        localObject1 = ((rtv)localObject1).a;
+        localObject1 = ((rkr)localObject1).a;
       }
       for (;;)
       {
@@ -362,14 +362,14 @@ public class KandianVideoUploadService
           return true;
           if (paramMessage.what == 101)
           {
-            paramMessage = getString(2131718088);
+            paramMessage = getString(2131718221);
             i = 101;
             j = 0;
             break;
           }
           if (paramMessage.what == 102)
           {
-            paramMessage = getString(2131717208);
+            paramMessage = getString(2131717324);
             i = 102;
             j = 0;
             break;
@@ -383,21 +383,21 @@ public class KandianVideoUploadService
           }
           if (paramMessage.what == 104)
           {
-            paramMessage = getString(2131717213);
+            paramMessage = getString(2131717329);
             i = 104;
             j = 0;
             break;
           }
           if (paramMessage.what == 105)
           {
-            paramMessage = getString(2131717207);
+            paramMessage = getString(2131717323);
             i = 105;
             j = 0;
             break;
           }
           if (paramMessage.what == 106)
           {
-            paramMessage = getString(2131717214);
+            paramMessage = getString(2131717330);
             i = 106;
             j = 0;
             break;
@@ -406,12 +406,12 @@ public class KandianVideoUploadService
           {
             if (this.jdField_a_of_type_Boolean)
             {
-              paramMessage = getString(2131717217);
+              paramMessage = getString(2131717333);
               i = 107;
               j = 0;
               break;
             }
-            paramMessage = getString(2131717216);
+            paramMessage = getString(2131717332);
             i = 107;
             j = 0;
             break;
@@ -424,19 +424,19 @@ public class KandianVideoUploadService
           j = 1;
           paramMessage = (Message)localObject1;
           break;
-          if (!(localObject1 instanceof rtt)) {
+          if (!(localObject1 instanceof rkp)) {
             break label441;
           }
-          localObject1 = ((rtt)localObject1).a;
+          localObject1 = ((rkp)localObject1).a;
           break label87;
           a(1, paramMessage);
           if ((localObject2 != null) && (localObject1 != null)) {
-            ((rje)localObject2).a((Bundle)localObject1, paramMessage);
+            ((qzx)localObject2).a((Bundle)localObject1, paramMessage);
           }
           this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(i);
           return true;
         } while ((localObject2 == null) || (localObject1 == null));
-        ((rje)localObject2).a((Bundle)localObject1, f);
+        ((qzx)localObject2).a((Bundle)localObject1, f);
         return true;
         label441:
         localObject1 = null;
@@ -451,7 +451,7 @@ public class KandianVideoUploadService
   @Nullable
   public IBinder onBind(Intent paramIntent)
   {
-    return this.jdField_a_of_type_Rbe;
+    return this.jdField_a_of_type_Qry;
   }
   
   public void onCreate()
@@ -477,7 +477,7 @@ public class KandianVideoUploadService
       }
     }
     label145:
-    for (Object localObject1 = (rjb)((WeakReference)localObject1).get();; localObject1 = null)
+    for (Object localObject1 = (qzu)((WeakReference)localObject1).get();; localObject1 = null)
     {
       if (localObject1 != null)
       {
@@ -486,7 +486,7 @@ public class KandianVideoUploadService
         {
           Bundle localBundle = paramIntent.getExtras();
           if (localBundle != null) {
-            ((rje)localObject2).a(localBundle, ((rjb)localObject1).a);
+            ((qzx)localObject2).a(localBundle, ((qzu)localObject1).a);
           }
         }
       }

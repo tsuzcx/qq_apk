@@ -1,18 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-
-public class bmaf
-  implements View.OnClickListener
+public abstract interface bmaf
 {
-  public bmaf(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
-  
-  public void onClick(View paramView)
-  {
-    QzoneWebMusicJsPlugin.access$300(this.a, "buttonclick");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void onConfigChange();
 }
 
 

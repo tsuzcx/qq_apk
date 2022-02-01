@@ -1,29 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-class agng
-  implements bhuj
+public class agng
+  implements bdxo
 {
-  agng(agne paramagne) {}
+  public agng(FriendShipWaveView paramFriendShipWaveView) {}
   
   public void a()
   {
-    if ((agne.a(this.a) != null) && (agne.a(this.a).a()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ShortcutBarAIOHelper", 2, "ShortcutBarAioHelper.init  mAppShortcutBarView.setOnScrollChangedListener mAppPanel.reportAppShortcutBarItem()");
-      }
-      agne.a(this.a).d();
-    }
-    for (;;)
-    {
-      if ((agne.a(this.a) != null) && (agne.a(this.a).a())) {
-        agne.a(this.a).d();
-      }
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("ShortcutBarAIOHelper", 2, "ShortcutBarAioHelper.init  mAppShortcutBarView.setOnScrollChangedListener mAppPanel is null");
-      }
-    }
+    int i = (int)(this.a.b - bhgr.a(this.a.jdField_a_of_type_AndroidContentContext, 165.0F) - this.a.jdField_a_of_type_Bdyr.b / 2.0F);
+    int j = (int)(this.a.b - bhgr.a(this.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.jdField_a_of_type_Bdyr.b / 2.0F);
+    int k = (int)(this.a.b - bhgr.a(this.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.jdField_a_of_type_Bdyr.b / 2.0F);
+    bdxw localbdxw = new bdxw(new bdxn[] { new bdxr(450, this.a.jdField_a_of_type_Int / 2, (int)(-this.a.jdField_a_of_type_Bdyr.b / 2.0F), this.a.jdField_a_of_type_Int / 2, i), new bdxr(450, this.a.jdField_a_of_type_Int / 2, i, this.a.jdField_a_of_type_Int / 2, j), new bdxr(450, this.a.jdField_a_of_type_Int / 2, j, this.a.jdField_a_of_type_Int / 2, k) });
+    localbdxw.a(new agnh(this));
+    this.a.jdField_a_of_type_Bdyr.a(new bdxn[] { localbdxw });
   }
 }
 

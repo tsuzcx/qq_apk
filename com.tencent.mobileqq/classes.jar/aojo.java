@@ -1,42 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.TroopManager;
 
 public class aojo
-  extends aojs
 {
-  public aojo(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  public long a;
+  public String a;
   
-  public boolean a()
+  public aojo(TroopManager paramTroopManager, String paramString, long paramLong)
   {
-    try
-    {
-      String str = c((String)this.jdField_a_of_type_JavaUtilHashMap.get("url"));
-      if ((TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("appid"))) || (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("openid"))))
-      {
-        QLog.e("IdentifierWebJumpAction", 1, "identification with illegal params");
-        return true;
-      }
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097E8", "0X80097E8", 0, 0, "", "", (String)this.jdField_a_of_type_JavaUtilHashMap.get("appid"), "");
-      avez.a();
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", str);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      return true;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("IdentifierWebJumpAction", 1, "doAction error: " + localException.getMessage());
-      a("IdentifierWebJumpAction");
-    }
-    return false;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

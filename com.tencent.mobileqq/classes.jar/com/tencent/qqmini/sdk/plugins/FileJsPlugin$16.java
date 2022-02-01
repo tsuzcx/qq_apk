@@ -25,18 +25,18 @@ class FileJsPlugin$16
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l2, this.val$filePath);
       return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "invalid encoding " + this.val$encoding);
     }
-    if (((MiniAppFileManager)FileJsPlugin.access$6800(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$filePath) != 2)
+    if (((MiniAppFileManager)FileJsPlugin.access$6600(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$filePath) != 2)
     {
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l2, this.val$filePath);
       return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "permission denied, open " + this.val$filePath);
     }
     if (this.val$nativeBufferBytes != null) {}
-    for (long l1 = this.val$nativeBufferBytes.length; !((MiniAppFileManager)FileJsPlugin.access$7200(this.this$0).getManager(MiniAppFileManager.class)).isFolderCanWrite(2, l1, FileJsPlugin.access$6900(this.this$0), FileJsPlugin.access$7000(this.this$0), FileJsPlugin.access$7100(this.this$0).getAttachedActivity()); l1 = this.val$data.length())
+    for (long l1 = this.val$nativeBufferBytes.length; !((MiniAppFileManager)FileJsPlugin.access$7000(this.this$0).getManager(MiniAppFileManager.class)).isFolderCanWrite(2, l1, FileJsPlugin.access$6700(this.this$0), FileJsPlugin.access$6800(this.this$0), FileJsPlugin.access$6900(this.this$0).getAttachedActivity()); l1 = this.val$data.length())
     {
       FileJsPlugin.access$1100(this.this$0, this.val$req.event, false, this.val$startMS, l2, this.val$filePath);
       return FileJsPlugin.access$1200(this.this$0, this.val$req, null, "the maximum size of the file storage is exceeded");
     }
-    String str2 = ((MiniAppFileManager)FileJsPlugin.access$7300(this.this$0).getManager(MiniAppFileManager.class)).getUsrPath(this.val$filePath);
+    String str2 = ((MiniAppFileManager)FileJsPlugin.access$7100(this.this$0).getManager(MiniAppFileManager.class)).getUsrPath(this.val$filePath);
     if (!TextUtils.isEmpty(str2)) {}
     for (;;)
     {

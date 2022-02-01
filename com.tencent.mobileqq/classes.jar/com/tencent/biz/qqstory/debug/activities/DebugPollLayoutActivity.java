@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import zlc;
-import zld;
+import zox;
+import zoy;
 
 public class DebugPollLayoutActivity
   extends Activity
@@ -32,8 +32,8 @@ public class DebugPollLayoutActivity
   {
     super.onCreate(paramBundle);
     setContentView(2131558446);
-    paramBundle = zlc.a(this, 1, 1, null);
-    ((FrameLayout)findViewById(2131364961)).addView(paramBundle.a());
+    paramBundle = zox.a(this, 1, 1, null);
+    ((FrameLayout)findViewById(2131365008)).addView(paramBundle.a());
   }
 }
 

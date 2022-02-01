@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.pic;
 
-import ayxv;
-import bcen;
+import bcxf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class PicPreDownloader$ScreenBroadcastReceiver$1
+class PicPreDownloader$ScreenBroadcastReceiver$1
   implements Runnable
 {
-  public PicPreDownloader$ScreenBroadcastReceiver$1(ayxv paramayxv) {}
+  PicPreDownloader$ScreenBroadcastReceiver$1(PicPreDownloader.ScreenBroadcastReceiver paramScreenBroadcastReceiver) {}
   
   public void run()
   {
@@ -18,14 +17,14 @@ public class PicPreDownloader$ScreenBroadcastReceiver$1
       if (localObject1 != null)
       {
         PicPreDownloader localPicPreDownloader = ((QQAppInterface)localObject1).a();
-        localObject1 = (bcen)((QQAppInterface)localObject1).getManager(95);
+        localObject1 = (bcxf)((QQAppInterface)localObject1).getManager(95);
         if (localPicPreDownloader != null)
         {
-          localPicPreDownloader.f();
-          localPicPreDownloader.e();
+          localPicPreDownloader.d();
+          PicPreDownloader.a(localPicPreDownloader);
         }
         if (localObject1 != null) {
-          ((bcen)localObject1).d();
+          ((bcxf)localObject1).d();
         }
       }
       return;
@@ -34,6 +33,7 @@ public class PicPreDownloader$ScreenBroadcastReceiver$1
     {
       for (;;)
       {
+        localException.printStackTrace();
         Object localObject2 = null;
       }
     }

@@ -1,23 +1,517 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.avgame.util.AVGameStep;
+import android.graphics.SurfaceTexture;
+import android.media.AudioManager;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.mediacodec.encoder.EglHandlerThread;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import com.tencent.ttpic.openapi.filter.TextureRender;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.util.WeakReference;
 
-public final class nfw
-  implements Parcelable.Creator<AVGameStep>
+public class nfw
+  implements nek
 {
-  public AVGameStep a(Parcel paramParcel)
+  private EglHandlerThread jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread;
+  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  private volatile Float jdField_a_of_type_JavaLangFloat;
+  private Integer jdField_a_of_type_JavaLangInteger;
+  private String jdField_a_of_type_JavaLangString;
+  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
+  private CopyOnWriteArrayList<WeakReference<nfy>> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private lqe jdField_a_of_type_Lqe;
+  private lwf jdField_a_of_type_Lwf = new lwf();
+  protected nej a;
+  private nfx jdField_a_of_type_Nfx;
+  private nfz jdField_a_of_type_Nfz;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  private RenderBuffer jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  private Integer jdField_b_of_type_JavaLangInteger;
+  private boolean jdField_b_of_type_Boolean;
+  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
+  private volatile boolean c = true;
+  
+  private void a(int paramInt1, int paramInt2)
   {
-    return new AVGameStep(paramParcel);
+    if ((this.jdField_a_of_type_JavaLangInteger == null) || (paramInt1 != this.jdField_a_of_type_JavaLangInteger.intValue()) || (paramInt2 != this.jdField_b_of_type_JavaLangInteger.intValue()))
+    {
+      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt1);
+      this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(paramInt2);
+    }
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if (paramInt1 != 0) {
+        k();
+      }
+      if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null)
+      {
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_a_of_type_JavaLangInteger.intValue(), this.jdField_b_of_type_JavaLangInteger.intValue(), 33984);
+        Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
+        Matrix.scaleM(this.jdField_b_of_type_ArrayOfFloat, 0, 1.0F, -1.0F, 1.0F);
+      }
+      if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender == null) {
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+      }
+      if (this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null)
+      {
+        this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_a_of_type_JavaLangInteger.intValue(), this.jdField_b_of_type_JavaLangInteger.intValue(), 33985);
+        this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(this.jdField_a_of_type_JavaLangInteger.intValue() * this.jdField_b_of_type_JavaLangInteger.intValue() * 3 / 2);
+        this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_JavaLangInteger.intValue() * this.jdField_b_of_type_JavaLangInteger.intValue() * 3 / 2];
+      }
+      if (this.jdField_a_of_type_Lqe == null)
+      {
+        this.jdField_a_of_type_Lqe = new lqe();
+        this.jdField_a_of_type_Lqe.b();
+        this.jdField_a_of_type_Lqe.a(this.jdField_a_of_type_JavaLangInteger.intValue(), this.jdField_b_of_type_JavaLangInteger.intValue());
+      }
+      return;
+    }
   }
   
-  public AVGameStep[] a(int paramInt)
+  private void a(int paramInt1, int paramInt2, long paramLong)
   {
-    return new AVGameStep[paramInt];
+    a(paramInt1 / 16 * 16, paramInt2 / 8 * 8);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.jdField_a_of_type_Nej.a(), this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+    this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+    this.jdField_a_of_type_Lqe.a(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId());
+    GLES20.glReadPixels(0, 0, this.jdField_a_of_type_JavaLangInteger.intValue(), this.jdField_b_of_type_JavaLangInteger.intValue() * 3 / 8, 6408, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+    this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+    this.jdField_a_of_type_JavaNioByteBuffer.get(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_JavaLangInteger.intValue() * this.jdField_b_of_type_JavaLangInteger.intValue() * 3 / 2);
+    this.jdField_a_of_type_JavaNioByteBuffer.clear();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        ((nfy)localWeakReference.get()).a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_JavaLangInteger.intValue(), this.jdField_b_of_type_JavaLangInteger.intValue(), paramLong);
+      }
+    }
+    if (this.jdField_b_of_type_Boolean) {
+      this.jdField_a_of_type_Lwf.a(this.jdField_a_of_type_JavaLangInteger.intValue(), this.jdField_b_of_type_JavaLangInteger.intValue(), 15);
+    }
+  }
+  
+  private void i()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread = new EglHandlerThread("eglHandelr_thread", null);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread.start();
+      this.jdField_a_of_type_Nfx = new nfx(this, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread.getLooper());
+      this.jdField_a_of_type_Nfx.sendEmptyMessage(152);
+    }
+  }
+  
+  private void j()
+  {
+    QLog.d("AVGameMediaPlayerCtrl", 1, "initEgl");
+    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
+    Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
+    this.jdField_a_of_type_Nej.a(this, this.jdField_a_of_type_Nfx);
+  }
+  
+  private void k()
+  {
+    QLog.d("AVGameMediaPlayerCtrl", 1, "unInitEgl");
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null)
+    {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
+    }
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null)
+    {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
+    }
+    if (this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null)
+    {
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
+    }
+    if (this.jdField_a_of_type_Lqe != null)
+    {
+      this.jdField_a_of_type_Lqe.c();
+      this.jdField_a_of_type_Lqe = null;
+    }
+    this.jdField_a_of_type_JavaNioByteBuffer = null;
+    this.jdField_a_of_type_ArrayOfByte = null;
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_Nej != null) {
+      return this.jdField_a_of_type_Nej.a();
+    }
+    return 0L;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    QLog.d("AVGameMediaPlayerCtrl", 1, "relasePlayVideo");
+    if (this.jdField_a_of_type_Nej != null) {
+      this.jdField_a_of_type_Nej.a();
+    }
+    if (this.jdField_a_of_type_Nfx != null) {
+      this.jdField_a_of_type_Nfx.sendEmptyMessage(258);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaLangFloat = Float.valueOf(paramInt3 * 1.0F / paramInt2);
+  }
+  
+  public void a(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2, long paramLong)
+  {
+    if ((this.jdField_a_of_type_Nej == null) || (this.jdField_a_of_type_Nej.a() == null) || (this.jdField_a_of_type_Nej.a() == -1)) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Nej.a().updateTexImage();
+      this.jdField_a_of_type_Nej.a().getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
+    } while (!this.c);
+    a(paramInt1, paramInt2, paramLong);
+  }
+  
+  public void a(TPAudioFrameBuffer paramTPAudioFrameBuffer)
+  {
+    h();
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      if (paramTPAudioFrameBuffer.getChannelLayout() != 3L) {
+        break label273;
+      }
+      m = paramTPAudioFrameBuffer.getSize()[0] / 2;
+      arrayOfByte = new byte[m];
+      j = 0;
+      k = 0;
+      if (j < m)
+      {
+        i2 = (short)paramTPAudioFrameBuffer.data[0][(j * 2)];
+        n = (short)paramTPAudioFrameBuffer.data[0][(j * 2 + 1)];
+        i3 = (short)paramTPAudioFrameBuffer.data[0][(j * 2 + 2)];
+        i1 = (short)paramTPAudioFrameBuffer.data[0][(j * 2 + 3)];
+        i2 = (i2 + i3) / 2;
+        n = (n + i1) / 2;
+        i1 = k + 1;
+        if (i2 > 127)
+        {
+          i = 127;
+          label142:
+          arrayOfByte[k] = i;
+          k = i1 + 1;
+          if (n <= 127) {
+            break label197;
+          }
+          i = 127;
+        }
+        for (;;)
+        {
+          arrayOfByte[i1] = i;
+          j += 2;
+          break;
+          if (i2 < -128)
+          {
+            i = -128;
+            break label142;
+          }
+          i = (byte)i2;
+          break label142;
+          label197:
+          if (n < -128) {
+            i = -128;
+          } else {
+            i = (byte)n;
+          }
+        }
+      }
+      if ((this.jdField_a_of_type_JavaLangFloat.floatValue() < 0.99F) || (this.jdField_a_of_type_JavaLangFloat.floatValue() > 1.01F))
+      {
+        mwx.a();
+        mwx.a(arrayOfByte, this.jdField_a_of_type_JavaLangFloat.floatValue());
+      }
+      mwx.a().a(arrayOfByte, arrayOfByte.length);
+    }
+    label273:
+    while (paramTPAudioFrameBuffer.getChannelLayout() != 4L)
+    {
+      int m;
+      byte[] arrayOfByte;
+      int j;
+      int k;
+      int i2;
+      int n;
+      int i3;
+      int i1;
+      int i;
+      return;
+    }
+    if ((this.jdField_a_of_type_JavaLangFloat.floatValue() < 0.99F) || (this.jdField_a_of_type_JavaLangFloat.floatValue() > 1.01F))
+    {
+      mwx.a();
+      mwx.a(paramTPAudioFrameBuffer.data[0], this.jdField_a_of_type_JavaLangFloat.floatValue());
+    }
+    mwx.a().a(paramTPAudioFrameBuffer.data[0], paramTPAudioFrameBuffer.data[0].length);
+  }
+  
+  public void a(String paramString)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        ((nfy)localWeakReference.get()).a(paramString);
+      }
+    }
+  }
+  
+  public void a(String paramString, long paramLong)
+  {
+    QLog.d("AVGameMediaPlayerCtrl", 1, "playAudioByURL");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Nfz.a(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Nej != null) {
+      this.jdField_a_of_type_Nej.a(this.jdField_a_of_type_JavaLangString, paramLong);
+    }
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      mwx.a(bkdd.a().a());
+      mwx.a().a(3);
+    }
+  }
+  
+  public void a(List<nfv> paramList)
+  {
+    QLog.d("AVGameMediaPlayerCtrl", 1, "setPreLoadVideoResourceInfos infoList:=" + Arrays.toString(paramList.toArray()));
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      nfv localnfv = (nfv)paramList.next();
+      this.jdField_a_of_type_Nfz.a(localnfv.jdField_a_of_type_JavaLangString, localnfv.jdField_a_of_type_Long, 3000L);
+    }
+  }
+  
+  public void a(nfy paramnfy)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((localWeakReference != null) && (paramnfy == localWeakReference.get())) {
+        return;
+      }
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(new WeakReference(paramnfy));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Nej != null) {
+      this.jdField_a_of_type_Nej.a(true);
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        bool1 = bool2;
+        if (this.jdField_a_of_type_Nej.a()) {
+          bool1 = true;
+        }
+      }
+    }
+    do
+    {
+      return bool1;
+      bool1 = bool2;
+    } while (this.jdField_a_of_type_Nej == null);
+    return this.jdField_a_of_type_Nej.a();
+  }
+  
+  public void b()
+  {
+    QLog.d("AVGameMediaPlayerCtrl", 1, "stopVideoPlay");
+    if (this.jdField_a_of_type_Nej != null) {
+      this.jdField_a_of_type_Nej.b();
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        ((nfy)localWeakReference.get()).b(paramString);
+      }
+    }
+  }
+  
+  public void b(String paramString, long paramLong)
+  {
+    QLog.d("AVGameMediaPlayerCtrl", 1, "playVideoByURl");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean)) {}
+    for (;;)
+    {
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        mwx.a(bkdd.a().a());
+        mwx.a().a(3);
+      }
+      return;
+      if (!this.jdField_b_of_type_Boolean) {
+        nfm.b().a(true);
+      }
+      this.jdField_a_of_type_Nfz.a(this.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Nej != null) {
+        this.jdField_a_of_type_Nej.b(this.jdField_a_of_type_JavaLangString, paramLong);
+      }
+    }
+  }
+  
+  public void b(nfy paramnfy)
+  {
+    Object localObject = null;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    if (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((localWeakReference == null) || (paramnfy != localWeakReference.get())) {
+        break label63;
+      }
+      localObject = localWeakReference;
+    }
+    label63:
+    for (;;)
+    {
+      break;
+      if (localObject != null) {
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject);
+      }
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    QLog.d("AVGameMediaPlayerCtrl", 1, "stopVideoSend");
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean)) {}
+    while (this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    nfm.b().a(false);
+  }
+  
+  public void c(String paramString)
+  {
+    bdll.b(null, "dc00898", "", "", "0X800B1F3", "0X800B1F3", 0, 0, "", "", "", "");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        ((nfy)localWeakReference.get()).c(paramString);
+      }
+    }
+  }
+  
+  public void d()
+  {
+    QLog.d("AVGameMediaPlayerCtrl", 1, "init");
+    this.jdField_a_of_type_Nfz = new nfz();
+    this.jdField_a_of_type_Nej = new nej();
+    i();
+  }
+  
+  public void d(String paramString)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        ((nfy)localWeakReference.get()).d(paramString);
+      }
+    }
+  }
+  
+  public void e()
+  {
+    QLog.d("AVGameMediaPlayerCtrl", 1, "doOnResume");
+    this.c = true;
+  }
+  
+  public void f()
+  {
+    QLog.d("AVGameMediaPlayerCtrl", 1, "doOnStop");
+    this.c = false;
+    if (this.jdField_a_of_type_Nfx != null) {
+      this.jdField_a_of_type_Nfx.sendEmptyMessage(258);
+    }
+  }
+  
+  public void g()
+  {
+    QLog.d("AVGameMediaPlayerCtrl", 1, "unInit");
+    if (this.jdField_a_of_type_Nej != null) {
+      this.jdField_a_of_type_Nej.c();
+    }
+    this.jdField_a_of_type_Nfz.a();
+    c();
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread != null)
+    {
+      if (this.jdField_a_of_type_Nfx != null) {
+        this.jdField_a_of_type_Nfx.sendEmptyMessage(153);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread.quitSafely();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread = null;
+    }
+  }
+  
+  public void h()
+  {
+    if (this.jdField_a_of_type_JavaLangFloat != null) {
+      return;
+    }
+    AudioManager localAudioManager = (AudioManager)BaseApplicationImpl.getApplication().getSystemService("audio");
+    int i = localAudioManager.getStreamVolume(0);
+    int j = localAudioManager.getStreamMaxVolume(0);
+    this.jdField_a_of_type_JavaLangFloat = Float.valueOf(i * 1.0F / j);
+    bkdp.d("AVGameMediaPlayerCtrl", "init scaleFacors:=" + this.jdField_a_of_type_JavaLangFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nfw
  * JD-Core Version:    0.7.0.1
  */

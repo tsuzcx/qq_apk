@@ -1,74 +1,72 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
+import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
 
 class bpdv
+  implements bpah
 {
-  int jdField_a_of_type_Int;
-  bozw jdField_a_of_type_Bozw;
-  bozx jdField_a_of_type_Bozx;
-  ykh jdField_a_of_type_Ykh;
-  int b;
-  int c;
-  int d;
-  int e;
-  int f;
+  bpdv(bpds parambpds, bpdw parambpdw, String paramString1, AEEditorDownloadResBean paramAEEditorDownloadResBean, String paramString2, String paramString3) {}
   
-  public bpdv(bpdr parambpdr)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = afur.a(15.0F, parambpdr.a());
-    this.b = afur.a(12.0F, parambpdr.a());
-    this.c = afur.a(2.0F, parambpdr.a());
-    this.d = ((bqja.jdField_a_of_type_Int - this.jdField_a_of_type_Int * 2 - this.b * 5) / 6);
-    this.e = (this.d - this.c * 2);
-    this.f = (this.e * 8 / 5);
-    this.jdField_a_of_type_Ykh = new ykh(afur.a(3.0F, parambpdr.a()), 0, this.f * 1.0F / this.e, null, null);
-    this.jdField_a_of_type_Bozw = ((bozw)parambpdr.a(bozw.class));
-    this.jdField_a_of_type_Bozx = ((bozx)parambpdr.a(bozx.class));
+    if (this.jdField_a_of_type_Bpdw != null) {
+      this.jdField_a_of_type_Bpdw.a(paramInt);
+    }
   }
   
-  public Bitmap a(int paramInt)
+  public void a(bevm parambevm)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Bozw != null) {
-      if (this.jdField_a_of_type_Bozw.a(paramInt))
-      {
-        localObject1 = localObject2;
-        if (this.jdField_a_of_type_Bozx != null)
-        {
-          localObject1 = localObject2;
-          if (!this.jdField_a_of_type_Bozx.a(paramInt)) {}
-        }
+    boolean bool3 = false;
+    if (parambevm == null)
+    {
+      if (this.jdField_a_of_type_Bpdw != null) {
+        this.jdField_a_of_type_Bpdw.a(false);
       }
-      else
+      this.jdField_a_of_type_Bpds.a(this.jdField_a_of_type_JavaLangString, false);
+      return;
+    }
+    boolean bool1;
+    boolean bool2;
+    if (parambevm.a == 0)
+    {
+      bool1 = true;
+      bpam.b(this.jdField_a_of_type_Bpds.c, "downLoadOneResInternal-onDownloadFinish---isSuccess=" + bool1 + ", id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
+      bool2 = bool3;
+      if (bool1)
       {
-        Bitmap localBitmap1 = this.jdField_a_of_type_Bozw.a(paramInt, false);
-        localObject1 = localObject2;
-        if (localBitmap1 != null)
-        {
-          if (this.jdField_a_of_type_Bozx != null) {
-            this.jdField_a_of_type_Bozx.a(paramInt, new Canvas(localBitmap1), localBitmap1.getWidth(), localBitmap1.getHeight());
-          }
-          Bitmap localBitmap2 = zkh.a(localBitmap1, this.e, this.f, false);
-          this.jdField_a_of_type_Bozw.a(localBitmap1);
-          localObject1 = localObject2;
-          if (localBitmap2 != null) {
-            localObject1 = this.jdField_a_of_type_Ykh.a(localBitmap2);
-          }
+        String str = bhmi.c(this.b);
+        if ((str == null) || (!str.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
+          break label321;
         }
       }
     }
-    return localObject1;
-  }
-  
-  public void a(bphc parambphc, bpdw parambpdw)
-  {
-    Bitmap localBitmap = zkh.a(parambphc.c, this.e, this.f, false);
-    parambphc = null;
-    if (localBitmap != null) {
-      parambphc = this.jdField_a_of_type_Ykh.a(localBitmap);
+    for (;;)
+    {
+      try
+      {
+        bool2 = this.jdField_a_of_type_Bpds.a(this.b, this.c, this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId(), this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Bpds.a(bool1, parambevm.b, parambevm.g, this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
+        if (!bool2) {
+          bhmi.a(this.c);
+        }
+        bhmi.d(this.b);
+        bpam.b(this.jdField_a_of_type_Bpds.c, "downLoadOneResInternal-onDownloadFinish---REAL result=" + bool2 + ", id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
+        if (this.jdField_a_of_type_Bpdw != null) {
+          this.jdField_a_of_type_Bpdw.a(bool2);
+        }
+        this.jdField_a_of_type_Bpds.a(this.jdField_a_of_type_JavaLangString, bool2);
+        return;
+        bool1 = false;
+      }
+      catch (Exception localException)
+      {
+        bpam.a(this.jdField_a_of_type_Bpds.c, "downLoadOneResInternal-onDownloadFinish---unZipFile failed, id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId(), localException);
+        localException.printStackTrace();
+        bool2 = bool3;
+        continue;
+      }
+      label321:
+      bpam.d(this.jdField_a_of_type_Bpds.c, "downLoadOneResInternal-onDownloadFinish---MD5 check failed, id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
+      bool2 = bool3;
     }
-    parambpdw.b = parambphc;
   }
 }
 

@@ -1,17 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.tavcut.bean.TextEditorData;
 
-final class bpke
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bpke
 {
-  bpke(bpkg parambpkg) {}
+  public abstract void a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if (this.a != null) {
-      this.a.a(paramValueAnimator);
-    }
-  }
+  public abstract void a(TextEditorData paramTextEditorData);
 }
 
 

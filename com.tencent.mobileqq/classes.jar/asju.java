@@ -1,21 +1,42 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class asju
-  extends RecyclerView.AdapterDataObserver
+class asju
+  extends WtloginObserver
 {
-  public asju(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  asju(asiw paramasiw, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void onChanged()
+  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if (this.a.jdField_a_of_type_Askg.a() == 0)
+    boolean bool2 = true;
+    paramWUserSigInfo = new Bundle();
+    if ((paramInt == 0) && (paramDevlockInfo != null))
     {
-      this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Askh);
-      return;
+      if (paramDevlockInfo.DevSetup != 1) {
+        break label90;
+      }
+      bool1 = true;
+      paramWUserSigInfo.putBoolean("auth_dev_open", bool1);
+      if (paramDevlockInfo.AllowSet != 1) {
+        break label96;
+      }
     }
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Askh);
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(this.a.jdField_a_of_type_Askh);
+    label90:
+    label96:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      paramWUserSigInfo.putBoolean("allow_set", bool1);
+      paramWUserSigInfo.putString("phone_num", paramDevlockInfo.Mobile);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramWUserSigInfo);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      bool1 = false;
+      break;
+    }
   }
 }
 

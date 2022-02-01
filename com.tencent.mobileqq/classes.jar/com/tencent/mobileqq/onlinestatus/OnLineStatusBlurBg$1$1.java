@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import ayos;
-import ayou;
+import azhl;
+import azhn;
 
 class OnLineStatusBlurBg$1$1
   implements Runnable
 {
-  OnLineStatusBlurBg$1$1(OnLineStatusBlurBg.1 param1, ayou paramayou) {}
+  OnLineStatusBlurBg$1$1(OnLineStatusBlurBg.1 param1, azhn paramazhn) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ayou.a(true, ayos.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$1.this$0), this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$1.b);
+    this.jdField_a_of_type_Azhn.a(true, azhl.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$1.this$0), this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$1.b);
   }
 }
 

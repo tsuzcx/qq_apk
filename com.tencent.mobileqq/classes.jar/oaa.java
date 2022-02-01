@@ -1,15 +1,30 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountManager.1;
-import mqq.observer.BusinessObserver;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.2;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.2.1.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class oaa
-  implements BusinessObserver
+  implements TVK_SDKMgr.InstallListener
 {
-  public oaa(PublicAccountManager.1 param1) {}
+  public oaa(ReadInJoyNativeAdAppVideoView.2 param2) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    this.a.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk failed");
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk success");
+    }
+    ReadInJoyNativeAdAppVideoView.a(this.a.this$0).post(new ReadInJoyNativeAdAppVideoView.2.1.1(this));
   }
 }
 

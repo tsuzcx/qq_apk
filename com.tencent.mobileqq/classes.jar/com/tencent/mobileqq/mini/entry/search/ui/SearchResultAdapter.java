@@ -14,8 +14,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bgey;
-import bgtn;
+import bhez;
+import bhtq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -51,16 +51,16 @@ public class SearchResultAdapter
   
   public static Drawable getAvatarDrawable(Context paramContext, String paramString)
   {
-    paramContext = paramContext.getResources().getDrawable(2130840264);
+    paramContext = paramContext.getResources().getDrawable(2130840274);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = paramContext;
     localURLDrawableOptions.mFailedDrawable = paramContext;
-    int i = bgtn.a(12.0F);
+    int i = bhtq.a(12.0F);
     localURLDrawableOptions.mRequestHeight = i;
     localURLDrawableOptions.mRequestWidth = i;
     paramContext = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    paramContext.setTag(bgey.a(bgtn.a(12.0F), bgtn.a(12.0F)));
-    paramContext.setDecodeHandler(bgey.p);
+    paramContext.setTag(bhez.a(bhtq.a(12.0F), bhtq.a(12.0F)));
+    paramContext.setDecodeHandler(bhez.p);
     return paramContext;
   }
   
@@ -97,16 +97,16 @@ public class SearchResultAdapter
     SearchResultAdapter.SearchResultViewHolder localSearchResultViewHolder;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559411, paramViewGroup, false);
+      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559412, paramViewGroup, false);
       localSearchResultViewHolder = new SearchResultAdapter.SearchResultViewHolder();
-      localSearchResultViewHolder.icon = ((ImageView)paramView.findViewById(2131371056));
-      localSearchResultViewHolder.name = ((TextView)paramView.findViewById(2131371057));
-      localSearchResultViewHolder.category = ((TextView)paramView.findViewById(2131371058));
-      localSearchResultViewHolder.desc = ((TextView)paramView.findViewById(2131371055));
-      localSearchResultViewHolder.userNumDesc = ((TextView)paramView.findViewById(2131371068));
-      localSearchResultViewHolder.divider = paramView.findViewById(2131371061);
-      localSearchResultViewHolder.avatarContainer = ((LinearLayout)paramView.findViewById(2131371059));
-      localSearchResultViewHolder.payingFriendsDesc = ((TextView)paramView.findViewById(2131371064));
+      localSearchResultViewHolder.icon = ((ImageView)paramView.findViewById(2131371161));
+      localSearchResultViewHolder.name = ((TextView)paramView.findViewById(2131371162));
+      localSearchResultViewHolder.category = ((TextView)paramView.findViewById(2131371163));
+      localSearchResultViewHolder.desc = ((TextView)paramView.findViewById(2131371160));
+      localSearchResultViewHolder.userNumDesc = ((TextView)paramView.findViewById(2131371173));
+      localSearchResultViewHolder.divider = paramView.findViewById(2131371166);
+      localSearchResultViewHolder.avatarContainer = ((LinearLayout)paramView.findViewById(2131371164));
+      localSearchResultViewHolder.payingFriendsDesc = ((TextView)paramView.findViewById(2131371169));
       paramView.setTag(localSearchResultViewHolder);
     }
     for (;;)

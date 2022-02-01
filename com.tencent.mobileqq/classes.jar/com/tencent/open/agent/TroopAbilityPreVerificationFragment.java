@@ -8,13 +8,13 @@ import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.Window;
-import anni;
-import bglp;
-import bgpa;
-import biau;
-import biom;
-import bion;
-import bioo;
+import anzj;
+import bhlq;
+import bhpc;
+import bjbs;
+import bjpl;
+import bjpm;
+import bjpn;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.OpenID;
@@ -29,8 +29,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import nir;
-import nmf;
+import nkm;
+import noa;
 import tencent.im.oidb.oidb_0xb60.ClientInfo;
 import tencent.im.oidb.oidb_0xb60.GetPrivilegeReq;
 import tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp;
@@ -48,11 +48,11 @@ public abstract class TroopAbilityPreVerificationFragment
   public Bundle a;
   protected Handler a;
   public FragmentActivity a;
-  public bgpa a;
-  protected biau a;
+  public bhpc a;
+  protected bjbs a;
   protected QQAppInterface a;
   public String a;
-  private nmf jdField_a_of_type_Nmf = new bion(this);
+  private noa jdField_a_of_type_Noa = new bjpm(this);
   public String b;
   public String c = "";
   public String d = "";
@@ -100,21 +100,21 @@ public abstract class TroopAbilityPreVerificationFragment
   
   private void e()
   {
-    if ((this.jdField_a_of_type_Bgpa != null) && (!this.jdField_a_of_type_Bgpa.isShowing()))
+    if ((this.jdField_a_of_type_Bhpc != null) && (!this.jdField_a_of_type_Bhpc.isShowing()))
     {
-      this.jdField_a_of_type_Bgpa.show();
+      this.jdField_a_of_type_Bhpc.show();
       return;
     }
-    if (this.jdField_a_of_type_Bgpa == null)
+    if (this.jdField_a_of_type_Bhpc == null)
     {
-      this.jdField_a_of_type_Bgpa = bglp.a(getActivity(), 230);
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new biom(this);
+      this.jdField_a_of_type_Bhpc = bhlq.a(getActivity(), 230);
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new bjpl(this);
     }
-    this.jdField_a_of_type_Bgpa.setMessage(2131694610);
-    this.jdField_a_of_type_Bgpa.setTitle(2131691916);
-    this.jdField_a_of_type_Bgpa.setNegativeButton(anni.a(2131713813), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-    this.jdField_a_of_type_Bgpa.setPositiveButton(anni.a(2131713809), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-    this.jdField_a_of_type_Bgpa.show();
+    this.jdField_a_of_type_Bhpc.setMessage(2131694652);
+    this.jdField_a_of_type_Bhpc.setTitle(2131691920);
+    this.jdField_a_of_type_Bhpc.setNegativeButton(anzj.a(2131713922), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+    this.jdField_a_of_type_Bhpc.setPositiveButton(anzj.a(2131713918), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+    this.jdField_a_of_type_Bhpc.show();
   }
   
   private void f()
@@ -123,7 +123,7 @@ public abstract class TroopAbilityPreVerificationFragment
     this.jdField_a_of_type_AndroidOsBundle.putString("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     if ((localOpenID == null) || (TextUtils.isEmpty(localOpenID.openID)))
     {
-      b(anni.a(2131713808));
+      b(anzj.a(2131713917));
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(this.c);
       QLog.d("TroopAbility.PreVerification", 1, "-->checkAccountDiff, get openId from server.");
       return;
@@ -164,12 +164,12 @@ public abstract class TroopAbilityPreVerificationFragment
     ((oidb_0xb60.ClientInfo)localObject2).sdk_version.set(this.f);
     ((oidb_0xb60.ClientInfo)localObject2).platform.set(1);
     QLog.i("TroopAbility.PreVerification", 1, "send type=" + this.jdField_a_of_type_Int + ", appid=" + this.c);
-    nir.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new bioo(this), ((oidb_0xb60.ReqBody)localObject1).toByteArray(), "OidbSvc.0xb60_1", 2912, 1, null, 0L);
+    nkm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new bjpn(this), ((oidb_0xb60.ReqBody)localObject1).toByteArray(), "OidbSvc.0xb60_1", 2912, 1, null, 0L);
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Nmf);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Noa);
   }
   
   public void a(String paramString)
@@ -183,24 +183,24 @@ public abstract class TroopAbilityPreVerificationFragment
   
   protected void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Nmf);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Noa);
   }
   
   protected void b(String paramString)
   {
-    if (this.jdField_a_of_type_Biau == null) {
-      this.jdField_a_of_type_Biau = new biau(getActivity(), getActivity().getTitleBarHeight());
+    if (this.jdField_a_of_type_Bjbs == null) {
+      this.jdField_a_of_type_Bjbs = new bjbs(getActivity(), getActivity().getTitleBarHeight());
     }
     d();
-    this.jdField_a_of_type_Biau.a(paramString);
+    this.jdField_a_of_type_Bjbs.a(paramString);
     if (getActivity().isResume()) {
-      this.jdField_a_of_type_Biau.show();
+      this.jdField_a_of_type_Bjbs.show();
     }
   }
   
   public void c()
   {
-    b(anni.a(2131713811));
+    b(anzj.a(2131713920));
     g();
   }
   
@@ -213,8 +213,8 @@ public abstract class TroopAbilityPreVerificationFragment
   
   public void d()
   {
-    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing()) && (getActivity().isResume())) {
-      this.jdField_a_of_type_Biau.dismiss();
+    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing()) && (getActivity().isResume())) {
+      this.jdField_a_of_type_Bjbs.dismiss();
     }
   }
   
@@ -244,7 +244,7 @@ public abstract class TroopAbilityPreVerificationFragment
     a();
     if (!a())
     {
-      a(anni.a(2131713803));
+      a(anzj.a(2131713912));
       return;
     }
     f();

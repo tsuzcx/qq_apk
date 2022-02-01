@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.profile.stickynote.vas;
 
 import android.view.View;
-import azio;
+import baba;
 
 public class StickyNoteShopLayout$1$2
   implements Runnable
 {
-  public StickyNoteShopLayout$1$2(azio paramazio) {}
+  public StickyNoteShopLayout$1$2(baba parambaba) {}
   
   public void run()
   {
-    this.a.a.findViewById(2131379631).setVisibility(0);
-    this.a.a.findViewById(2131368322).setVisibility(0);
+    this.a.a.findViewById(2131379806).setVisibility(0);
+    this.a.a.findViewById(2131368396).setVisibility(0);
   }
 }
 

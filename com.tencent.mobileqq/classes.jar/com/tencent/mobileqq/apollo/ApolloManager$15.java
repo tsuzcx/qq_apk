@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo;
 
-import amhd;
+import amsx;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloManager$15
   implements Runnable
 {
-  public ApolloManager$15(amhd paramamhd, String paramString) {}
+  public ApolloManager$15(amsx paramamsx, String paramString) {}
   
   public void run()
   {

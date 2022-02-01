@@ -1,31 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ApolloActionPush;
+import com.tencent.qphone.base.util.QLog;
 
 class amtt
-  implements View.OnClickListener
+  implements amtu
 {
-  amtt(amtp paramamtp) {}
+  amtt(amts paramamts) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
   {
-    if ((amtp.a(this.a).d()) || (amtp.b(this.a)))
+    if ((amts.a(this.a) != null) && (paramApolloActionPush != null))
     {
-      amtp.b(this.a, false);
-      amtp.a(this.a).a();
-      amtp.c(this.a).setVisibility(8);
-      amtp.b(this.a).setVisibility(8);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (amtp.a(this.a).c())
-      {
-        amtp.b(this.a, true);
-        amtp.a(this.a).b();
-        amtp.b(this.a).setVisibility(0);
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
+      }
+      if ((amts.a(this.a).jdField_a_of_type_Int == paramInt) && (paramInt == amts.a(this.a).jdField_a_of_type_Int) && (!TextUtils.isEmpty(amts.a(this.a).jdField_a_of_type_JavaLangString)) && (amts.a(this.a).jdField_a_of_type_JavaLangString.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
+        this.a.a(paramApolloActionPush);
       }
     }
   }

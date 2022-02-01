@@ -11,7 +11,7 @@ public final class PublicAccountUtil$2
   
   public void run()
   {
-    QQToast.a(this.a.getApplicationContext(), this.a.getResources().getString(2131694587), 0).a();
+    QQToast.a(this.a.getApplicationContext(), this.a.getResources().getString(2131694629), 0).a();
   }
 }
 

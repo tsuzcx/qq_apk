@@ -33,6 +33,10 @@ public abstract interface Ad
   
   public abstract String getAppPackageUrl();
   
+  public abstract int getBannerInvalidClickXPercent();
+  
+  public abstract int getBannerInvalidClickYPercent();
+  
   public abstract String getBusinessIdForXiJingOffline();
   
   public abstract String getCanvas();
@@ -46,6 +50,8 @@ public abstract interface Ad
   public abstract String getJSONKeyForXiJingOffline();
   
   public abstract String getJSONUrlForXiJingOffline();
+  
+  public abstract long getMinIntervalMillisBetweenExposureAndClick();
   
   public abstract String getPosId();
   
@@ -94,6 +100,8 @@ public abstract interface Ad
   public abstract boolean isHitFirstLoadImageExp();
   
   public abstract boolean isHitRelationTargetInstallExp();
+  
+  public abstract boolean isHitWithoutInstallSuccessPage();
   
   public abstract boolean isJDProductType();
   

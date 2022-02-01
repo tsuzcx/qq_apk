@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import bipr;
-import bivh;
+import bjqq;
+import bjwg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -40,25 +40,25 @@ public class AccountManage
   
   public void a()
   {
-    Object localObject = bivh.a();
+    Object localObject = bjwg.a();
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         String str = (String)((Iterator)localObject).next();
-        if (!this.jdField_a_of_type_MqqManagerWtloginManager.IsNeedLoginWithPasswd(str, 16))
+        if (!this.jdField_a_of_type_MqqManagerWtloginManager.isNeedLoginWithPasswd(str, 16))
         {
-          QLog.d("open_log", 1, "-->checkLoginHistory-- host login " + bipr.a(str));
+          QLog.d("open_log", 1, "-->checkLoginHistory-- host login " + bjqq.a(str));
         }
-        else if (!this.jdField_a_of_type_MqqManagerWtloginManager.IsNeedLoginWithPasswd(str, 1600001540))
+        else if (!this.jdField_a_of_type_MqqManagerWtloginManager.isNeedLoginWithPasswd(str, 1600001540))
         {
-          QLog.d("open_log", 1, "-->checkLoginHistory-- opensdk login " + bipr.a(str));
+          QLog.d("open_log", 1, "-->checkLoginHistory-- opensdk login " + bjqq.a(str));
         }
         else
         {
-          QLog.d("open_log", 1, "-->checkLoginHistory-- need passwd " + bipr.a(str));
-          bivh.b(str);
+          QLog.d("open_log", 1, "-->checkLoginHistory-- need passwd " + bjqq.a(str));
+          bjwg.b(str);
         }
       }
     }
@@ -74,7 +74,7 @@ public class AccountManage
       localBundle = new Bundle(paramBundle);
       localTicketManager = (TicketManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(2);
       Object localObject2 = localTicketManager.getSkey(paramString);
-      if ((bivh.a(paramString)) || (paramRefreshReason != AccountManage.RefreshReason.useCacheFirst)) {
+      if ((bjwg.a(paramString)) || (paramRefreshReason != AccountManage.RefreshReason.useCacheFirst)) {
         break label461;
       }
       Object localObject1 = null;
@@ -130,7 +130,7 @@ public class AccountManage
           localBundle.putLong("dwSrcAppid", 1600001540L);
           localBundle.putLong("dwDstAppid", 1600001540L);
         }
-        if ((AccountManage.RefreshReason.forceRefreshBy110509 == paramRefreshReason) && (bipr.a(this.jdField_a_of_type_MqqAppAppRuntime, paramString)))
+        if ((AccountManage.RefreshReason.forceRefreshBy110509 == paramRefreshReason) && (bjqq.a(this.jdField_a_of_type_MqqAppAppRuntime, paramString)))
         {
           QLog.d("open_log", 1, "delegateGetTicketNoPasswd 110509 and use540Ticket");
           localBundle.putLong("dwSrcAppid", 1600001540L);
@@ -152,7 +152,7 @@ public class AccountManage
   public void a(String paramString1, SSOAccountObserver paramSSOAccountObserver, String paramString2, AccountManage.RefreshReason paramRefreshReason)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putByteArray("connect_data", bipr.a(paramString2));
+    localBundle.putByteArray("connect_data", bjqq.a(paramString2));
     a(paramString1, paramSSOAccountObserver, paramRefreshReason, localBundle);
   }
 }

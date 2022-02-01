@@ -2,8 +2,8 @@ package com.tencent.mobileqq.vas;
 
 import android.graphics.drawable.Drawable;
 import android.os.Message;
-import bgks;
-import bgmg;
+import bhkt;
+import bhmi;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.os.MqqHandler;
@@ -18,11 +18,11 @@ class PendantInfo$2
     if (QLog.isColorLevel()) {
       QLog.d("PendantInfo", 2, "getDrawable, Runnable in");
     }
-    Object localObject = bgks.b(this.this$0.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    Object localObject = bhkt.b(this.this$0.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
     if (2 == this.jdField_a_of_type_Int) {
-      localObject = bgks.b(this.this$0.jdField_a_of_type_Long, 8);
+      localObject = bhkt.b(this.this$0.jdField_a_of_type_Long, 8);
     }
-    if (bgmg.a((String)localObject))
+    if (bhmi.a((String)localObject))
     {
       if (2 == this.jdField_a_of_type_Int)
       {
@@ -48,7 +48,7 @@ class PendantInfo$2
             } while (!PendantInfo.a((Message)localObject, this.jdField_a_of_type_Long));
             this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
             return;
-            localObject = new File(bgks.b(this.this$0.jdField_a_of_type_Long, 4));
+            localObject = new File(bhkt.b(this.this$0.jdField_a_of_type_Long, 4));
             if (this.this$0.a((File)localObject, this.jdField_a_of_type_Int) > -1) {}
             for (int i = 1;; i = 0)
             {

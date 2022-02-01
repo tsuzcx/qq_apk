@@ -1,35 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.fragment.DeleteFaceFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-public class aulw
-  extends ayeu
+class aulw
+  implements aulo
 {
-  private final FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity = this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment.getActivity();
+  aulw(aulv paramaulv) {}
   
-  public aulw(DeleteFaceFragment paramDeleteFaceFragment, String paramString) {}
-  
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle)
   {
-    if (DeleteFaceFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment))
-    {
-      QLog.e("DeleteFaceFragment", 1, "onFailedResponse, activity is null");
-      return;
+    if (this.a.a != null) {
+      this.a.a.a(paramInt3);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment.b();
-    QLog.e("DeleteFaceFragment", 1, new Object[] { "sendGetTmpKeyRequest error, ", paramString2 });
-    QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString2, 0).a();
   }
   
-  public void a(String paramString1, String paramString2)
+  public void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle)
   {
-    if (DeleteFaceFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment))
-    {
-      QLog.e("DeleteFaceFragment", 1, "getTmpKeySuccess, activity is null");
-      return;
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean);
     }
-    DeleteFaceFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment, paramString2, this.jdField_a_of_type_JavaLangString, paramString1);
   }
 }
 

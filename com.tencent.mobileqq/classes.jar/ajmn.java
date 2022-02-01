@@ -1,28 +1,16 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.GridView;
-import com.tencent.mobileqq.app.BaseActivity;
-
 public class ajmn
+  extends ajmf
 {
-  private BaseActivity a;
+  public String b;
   
-  public ajmn(BaseActivity paramBaseActivity)
+  public ajmn(String paramString)
   {
-    this.a = paramBaseActivity;
+    this.b = paramString;
   }
   
-  public bkho a(AdapterView.OnItemClickListener paramOnItemClickListener)
+  public boolean a()
   {
-    bkho localbkho = (bkho)bkif.a(this.a, null);
-    GridView localGridView = (GridView)View.inflate(this.a, 2131563032, null);
-    localGridView.setBackgroundDrawable(this.a.getResources().getDrawable(2130837574));
-    localGridView.setAdapter(new ajmp(this, null));
-    localGridView.setOnItemClickListener(paramOnItemClickListener);
-    localbkho.a(localGridView);
-    localbkho.c(2131690582);
-    return localbkho;
+    return true;
   }
 }
 

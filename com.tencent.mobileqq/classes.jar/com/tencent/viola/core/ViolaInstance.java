@@ -20,7 +20,6 @@ import com.tencent.viola.bridge.NativeInvokeHelper;
 import com.tencent.viola.commons.IReportDelegate;
 import com.tencent.viola.module.BaseModule;
 import com.tencent.viola.module.ViolaModuleManager;
-import com.tencent.viola.nativevue.NativeVueEngine;
 import com.tencent.viola.ui.action.DOMAction;
 import com.tencent.viola.ui.action.MethodCreateBody;
 import com.tencent.viola.ui.action.MethodUpdateElement;
@@ -632,20 +631,6 @@ public class ViolaInstance
     this.transformCount += 1;
   }
   
-  public boolean initNativeVue(String paramString1, String paramString2)
-  {
-    try
-    {
-      boolean bool = ViolaSDKManager.getInstance().initNativeVue(paramString1, paramString2);
-      return bool;
-    }
-    catch (Exception paramString1)
-    {
-      ViolaLogUtils.e("ViolaInstance", "[initNativeVue] error: " + paramString1.getMessage());
-    }
-    return false;
-  }
-  
   public boolean isCompatMode()
   {
     return this.compatMode;
@@ -1045,45 +1030,32 @@ public class ViolaInstance
     this.mReportDataMap.put(ViolaEnvironment.KEY_RENDER_JS, ViolaEnvironment.JS_START);
   }
   
-  public void renderVueDom(String paramString1, String paramString2)
+  public void renderVueDomDirectly(String paramString)
   {
     boolean bool = true;
-    long l = System.currentTimeMillis();
-    paramString1 = ViolaUtils.getVueDomFromJsSource(paramString1, "@nativeDom");
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      NativeVueEngine.CURRENT_URL = this.mUrl;
-      paramString1 = ViolaSDKManager.getInstance().createVueDom(paramString1, paramString2);
-      ViolaUtils.reportNVCost(System.currentTimeMillis() - l);
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
     for (;;)
     {
       try
       {
-        paramString2 = new MethodCreateBody(new JSONObject(paramString1));
+        MethodCreateBody localMethodCreateBody = new MethodCreateBody(new JSONObject(paramString));
         ViolaSDKManager.getInstance().registerInstanceAndId(this);
-        paramString2.setCreateFromNativeVue(true);
-        ViolaSDKManager.getInstance().getDomManager().postAction(this.mInstanceId, paramString2, true);
-        if (TextUtils.isEmpty(paramString1)) {
-          continue;
+        localMethodCreateBody.setCreateFromNativeVue(true);
+        ViolaSDKManager.getInstance().getDomManager().postAction(this.mInstanceId, localMethodCreateBody, true);
+        if (!TextUtils.isEmpty(paramString))
+        {
+          this.supportNativeVue = bool;
+          return;
         }
-        this.supportNativeVue = bool;
       }
-      catch (Exception paramString1)
+      catch (Exception paramString)
       {
         this.supportNativeVue = false;
-        ViolaLogUtils.e("ViolaInstance", "[renderVueDom] error: " + paramString1.getMessage());
-        continue;
-        paramString1 = "2";
-        continue;
+        ViolaLogUtils.e("ViolaInstance", "[renderVueDom] error: " + paramString.getMessage());
+        return;
       }
-      if (!this.supportNativeVue) {
-        continue;
-      }
-      paramString1 = "1";
-      ViolaUtils.reportNVProcess(paramString1, NativeVueEngine.CURRENT_URL);
-      NativeVueEngine.CURRENT_URL = null;
-      return;
       bool = false;
     }
   }

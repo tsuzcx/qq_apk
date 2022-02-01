@@ -1,10 +1,19 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface yle<T>
+public class yle
+  implements View.OnClickListener
 {
-  public abstract void a(ErrorMessage paramErrorMessage);
+  public yle(StoryMessageListActivity paramStoryMessageListActivity, int paramInt) {}
   
-  public abstract void a(T paramT);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_Int);
+    yup.a("play_video", "del_notice", 0, 0, new String[] { "", "", "", "" });
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.mini.servlet;
 
 import NS_COMM.COMM.StCommonExt;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StInteractiveTemplate;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bguc;
+import bhuf;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -20,8 +21,10 @@ public class ModifyFriendInteractiveStorageServlet
 {
   public static final String KEY_APPID = "key_appid";
   public static final String KEY_EXT = "key_ext";
+  public static final String KEY_INTERACTIVE_TEMPLATE = "key_interactive_template";
   public static final String KEY_OPERATION = "key_operation";
   public static final String KEY_OPNUM = "key_opnum";
+  public static final String KEY_QUIET = "key_quiet";
   public static final String KEY_SHARE_ID = "KEY_SHARE_ID";
   public static final String KEY_TO_USER = "key_to_user";
   public static final String TAG = "ModifyFriendInteractiveStorageServlet";
@@ -42,7 +45,7 @@ public class ModifyFriendInteractiveStorageServlet
           continue;
         }
         localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bguc.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bhuf.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         if (!paramFromServiceMsg.isSuccess()) {
           continue;
@@ -78,39 +81,56 @@ public class ModifyFriendInteractiveStorageServlet
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     this.index = paramIntent.getIntExtra("key_index", -1);
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
-    Object localObject2 = paramIntent.getStringExtra("key_to_user");
-    String str1 = paramIntent.getStringExtra("KEY_SHARE_ID");
-    String str2 = paramIntent.getStringExtra("key_appid");
+    Object localObject2 = paramIntent.getByteArrayExtra("key_ext");
+    String str1 = paramIntent.getStringExtra("key_to_user");
+    String str2 = paramIntent.getStringExtra("KEY_SHARE_ID");
+    String str3 = paramIntent.getStringExtra("key_appid");
     int i = paramIntent.getIntExtra("key_opnum", -1);
-    String str3 = paramIntent.getStringExtra("key_operation");
+    String str4 = paramIntent.getStringExtra("key_operation");
     HashMap localHashMap = (HashMap)paramIntent.getSerializableExtra("key_data");
-    Object localObject1 = null;
-    if (arrayOfByte != null) {
-      localObject1 = new COMM.StCommonExt();
-    }
-    try
-    {
-      ((COMM.StCommonExt)localObject1).mergeFrom(arrayOfByte);
-      localObject2 = new ModifyFriendInteractiveStorageReq((COMM.StCommonExt)localObject1, str2, (String)localObject2, str1, i, str3, localHashMap).encode(paramIntent, this.index, getTraceId());
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new byte[4];
-      }
-      paramPacket.setSSOCommand("LightAppSvc.mini_app_cloudstorage.ModifyFriendInteractiveStorage");
-      paramPacket.putSendData(bguc.a((byte[])localObject1));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      super.onSend(paramIntent, paramPacket);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+    if (localObject2 != null) {}
+    for (Object localObject1 = new COMM.StCommonExt();; localObject1 = null) {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("ModifyFriendInteractiveStorageServlet", 2, "onSend. mergeFrom extData exception!");
+        ((COMM.StCommonExt)localObject1).mergeFrom((byte[])localObject2);
+        bool = paramIntent.getBooleanExtra("key_quiet", false);
+        arrayOfByte = paramIntent.getByteArrayExtra("key_interactive_template");
+        if (arrayOfByte != null) {
+          localObject2 = new CloudStorage.StInteractiveTemplate();
         }
-        localInvalidProtocolBufferMicroException.printStackTrace();
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+      {
+        for (;;)
+        {
+          try
+          {
+            boolean bool;
+            byte[] arrayOfByte;
+            ((CloudStorage.StInteractiveTemplate)localObject2).mergeFrom(arrayOfByte);
+            localObject2 = new ModifyFriendInteractiveStorageReq((COMM.StCommonExt)localObject1, str3, str1, str2, i, str4, localHashMap, bool, (CloudStorage.StInteractiveTemplate)localObject2).encode(paramIntent, this.index, getTraceId());
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = new byte[4];
+            }
+            paramPacket.setSSOCommand("LightAppSvc.mini_app_cloudstorage.ModifyFriendInteractiveStorage");
+            paramPacket.putSendData(bhuf.a((byte[])localObject1));
+            paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+            super.onSend(paramIntent, paramPacket);
+            return;
+            localInvalidProtocolBufferMicroException1 = localInvalidProtocolBufferMicroException1;
+            if (QLog.isColorLevel()) {
+              QLog.e("ModifyFriendInteractiveStorageServlet", 2, "onSend. mergeFrom extData exception!");
+            }
+            localInvalidProtocolBufferMicroException1.printStackTrace();
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+          {
+            QLog.e("ModifyFriendInteractiveStorageServlet", 2, "onSend. mergeFrom interactiveTemplateBytes exception!", localInvalidProtocolBufferMicroException2);
+            continue;
+          }
+          Object localObject3 = null;
+        }
       }
     }
   }

@@ -1,18 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-
-class xvs
-  implements DialogInterface.OnDismissListener
+public abstract interface xvs
 {
-  xvs(xvr paramxvr, VideoViewVideoHolder paramVideoViewVideoHolder) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
-  }
+  public abstract boolean a_(xvo paramxvo, int paramInt1, int paramInt2);
 }
 
 

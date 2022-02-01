@@ -7,8 +7,8 @@ import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
-import bpgs;
-import bpgt;
+import bqin;
+import bqio;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
@@ -22,13 +22,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import yqp;
-import zkh;
+import yuk;
+import zoc;
 
 public class MultiBlockVideoPlayer
   extends ImageViewVideoPlayer
 {
-  private bpgt jdField_a_of_type_Bpgt;
+  private bqio jdField_a_of_type_Bqio;
   private RuntimeException jdField_a_of_type_JavaLangRuntimeException;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
   private final Condition jdField_a_of_type_JavaUtilConcurrentLocksCondition = this.jdField_a_of_type_JavaUtilConcurrentLocksLock.newCondition();
@@ -84,18 +84,18 @@ public class MultiBlockVideoPlayer
           }
           try
           {
-            yqp.c("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "generateVideoFrameBitmap wait for bitmap cache");
+            yuk.c("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "generateVideoFrameBitmap wait for bitmap cache");
             if (!this.jdField_a_of_type_JavaUtilConcurrentLocksCondition.await(200L, TimeUnit.MILLISECONDS))
             {
-              yqp.d("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "generateVideoFrameBitmap current thread [tid=%d] wait time out !!", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
+              yuk.d("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "generateVideoFrameBitmap current thread [tid=%d] wait time out !!", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
               if (this.jdField_a_of_type_JavaLangRuntimeException != null) {
-                yqp.b("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "Client use the bitmap too long time", this.jdField_a_of_type_JavaLangRuntimeException);
+                yuk.b("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "Client use the bitmap too long time", this.jdField_a_of_type_JavaLangRuntimeException);
               }
             }
           }
           catch (InterruptedException localInterruptedException)
           {
-            yqp.b("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "generateVideoFrameBitmap current thread InterruptedException", localInterruptedException);
+            yuk.b("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "generateVideoFrameBitmap current thread InterruptedException", localInterruptedException);
           }
         }
         localBitmap2 = this.b;
@@ -108,7 +108,7 @@ public class MultiBlockVideoPlayer
       this.b = null;
       paramInt1 = localObject2.getVideoFrameBitmap(localBitmap2, paramLong);
       if (paramInt1 != 0) {
-        yqp.e("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "getVideoFrameBitmap error code = %d, frame index = %d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong) });
+        yuk.e("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "getVideoFrameBitmap error code = %d, frame index = %d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong) });
       }
       this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
       return localBitmap2;
@@ -116,7 +116,7 @@ public class MultiBlockVideoPlayer
   }
   
   @NonNull
-  public List<bpgs> a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, float paramFloat)
+  public List<bqin> a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, float paramFloat)
   {
     Object localObject = null;
     WeakReference localWeakReference = VideoSourceHelper.sCurrentRef;
@@ -129,16 +129,16 @@ public class MultiBlockVideoPlayer
     long l = SystemClock.uptimeMillis();
     long[] arrayOfLong = new long[(paramInt1 + 4) * 2];
     int i = ((VideoSourceHelper)localObject).getFirstFrameIndexArray(paramLong, arrayOfLong);
-    yqp.b("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "getFirstFrameIndexArray cost %d ms", Long.valueOf(SystemClock.uptimeMillis() - l));
+    yuk.b("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "getFirstFrameIndexArray cost %d ms", Long.valueOf(SystemClock.uptimeMillis() - l));
     if (i != 0)
     {
-      yqp.e("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "getFirstFrameIndexArray failed %d", new Object[] { Integer.valueOf(i) });
+      yuk.e("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "getFirstFrameIndexArray failed %d", new Object[] { Integer.valueOf(i) });
       return Collections.emptyList();
     }
     i = 0;
     while (i < arrayOfLong.length / 2)
     {
-      yqp.c("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "frame index = " + arrayOfLong[(i * 2)] + ", time = " + arrayOfLong[(i * 2 + 1)]);
+      yuk.c("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "frame index = " + arrayOfLong[(i * 2)] + ", time = " + arrayOfLong[(i * 2 + 1)]);
       i += 1;
     }
     if ((arrayOfLong[(paramInt1 * 2)] != -1L) || (arrayOfLong[(paramInt1 * 2 + 1)] != -1L))
@@ -159,7 +159,7 @@ public class MultiBlockVideoPlayer
         paramInt1 = 0;
         while (paramInt1 < arrayOfLong.length / 2)
         {
-          yqp.c("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "frame index = " + arrayOfLong[(paramInt1 * 2)] + ", time = " + arrayOfLong[(paramInt1 * 2 + 1)]);
+          yuk.c("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "frame index = " + arrayOfLong[(paramInt1 * 2)] + ", time = " + arrayOfLong[(paramInt1 * 2 + 1)]);
           paramInt1 += 1;
         }
       }
@@ -179,24 +179,24 @@ public class MultiBlockVideoPlayer
           if (localBitmap == null) {
             break label571;
           }
-          localObject = zkh.a(localBitmap, paramFloat, false);
+          localObject = zoc.a(localBitmap, paramFloat, false);
           a(localBitmap);
         }
       }
       for (;;)
       {
         if ((paramBoolean) && (localObject == null)) {
-          yqp.e("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "resizeBitmapByScale failed ! please check BitmapUtils.resizeBitmapByScale() ! frame index = %d", new Object[] { Long.valueOf(arrayOfLong[paramInt1]) });
+          yuk.e("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "resizeBitmapByScale failed ! please check BitmapUtils.resizeBitmapByScale() ! frame index = %d", new Object[] { Long.valueOf(arrayOfLong[paramInt1]) });
         }
-        localArrayList.add(new bpgs(paramInt1 / 2, arrayOfLong[paramInt1], arrayOfLong[(paramInt1 + 2)], arrayOfLong[(paramInt1 + 1)], arrayOfLong[(paramInt1 + 3)], (Bitmap)localObject));
+        localArrayList.add(new bqin(paramInt1 / 2, arrayOfLong[paramInt1], arrayOfLong[(paramInt1 + 2)], arrayOfLong[(paramInt1 + 1)], arrayOfLong[(paramInt1 + 3)], (Bitmap)localObject));
         paramInt1 += 2;
         break;
         label571:
-        yqp.e("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "getVideoFrameBitmap failed error ! please check generateVideoFrameBitmapByFrameIndex");
+        yuk.e("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "getVideoFrameBitmap failed error ! please check generateVideoFrameBitmapByFrameIndex");
         localObject = localWeakReference;
       }
     }
-    yqp.b("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "getMultiVideoInfo count = %d, cost %d ms", Integer.valueOf(localArrayList.size()), Long.valueOf(SystemClock.uptimeMillis() - paramLong));
+    yuk.b("Q.qqstory.publish.edit.MultiBlockVideoPlayer", "getMultiVideoInfo count = %d, cost %d ms", Integer.valueOf(localArrayList.size()), Long.valueOf(SystemClock.uptimeMillis() - paramLong));
     return localArrayList;
   }
   
@@ -225,7 +225,7 @@ public class MultiBlockVideoPlayer
   public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
     super.onLoadCancelled(paramView, paramURLDrawable);
-    paramView = this.jdField_a_of_type_Bpgt;
+    paramView = this.jdField_a_of_type_Bqio;
     if (paramView != null) {
       paramView.n();
     }
@@ -234,7 +234,7 @@ public class MultiBlockVideoPlayer
   public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    paramView = this.jdField_a_of_type_Bpgt;
+    paramView = this.jdField_a_of_type_Bqio;
     if (paramView != null) {
       paramView.n();
     }
@@ -243,7 +243,7 @@ public class MultiBlockVideoPlayer
   public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
     super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    paramView = this.jdField_a_of_type_Bpgt;
+    paramView = this.jdField_a_of_type_Bqio;
     if (paramView != null) {
       paramView.n();
     }
@@ -252,15 +252,15 @@ public class MultiBlockVideoPlayer
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
     super.onLoadSuccessed(paramView, paramURLDrawable);
-    paramView = this.jdField_a_of_type_Bpgt;
+    paramView = this.jdField_a_of_type_Bqio;
     if (paramView != null) {
       paramView.j();
     }
   }
   
-  public void setCurrentVideoFragment(bpgs parambpgs)
+  public void setCurrentVideoFragment(bqin parambqin)
   {
-    if (parambpgs != null)
+    if (parambqin != null)
     {
       VideoSourceHelper localVideoSourceHelper = null;
       WeakReference localWeakReference = VideoSourceHelper.sCurrentRef;
@@ -270,16 +270,16 @@ public class MultiBlockVideoPlayer
       if (localVideoSourceHelper == null) {
         throw new MultiBlockVideoPlayer.MultiOperateException("can not find active VideoSourceHelper");
       }
-      int i = localVideoSourceHelper.setCurrentVideoFrameRange(true, parambpgs.a, parambpgs.c, parambpgs.b, parambpgs.d);
+      int i = localVideoSourceHelper.setCurrentVideoFrameRange(true, parambqin.a, parambqin.c, parambqin.b, parambqin.d);
       if (i != 0) {
         throw new MultiBlockVideoPlayer.MultiOperateException("setCurrentVideoFrameRange failed " + i);
       }
     }
   }
   
-  public void setVideoLoadListener(bpgt parambpgt)
+  public void setVideoLoadListener(bqio parambqio)
   {
-    this.jdField_a_of_type_Bpgt = parambpgt;
+    this.jdField_a_of_type_Bqio = parambqio;
   }
 }
 

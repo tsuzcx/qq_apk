@@ -1,46 +1,20 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.widget.DrawerFrame;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class agiu
-  implements View.OnLayoutChangeListener
+  extends anyu
 {
-  agiu(agis paramagis, View paramView) {}
+  agiu(agiq paramagiq) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((paramInt1 == paramInt5) && (paramInt2 == paramInt6) && (paramInt3 == paramInt7) && (paramInt4 == paramInt8)) {
-      return;
-    }
-    paramView = new int[2];
-    paramInt1 = 0;
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
     {
-      this.jdField_a_of_type_AndroidViewView.getLocationInWindow(paramView);
-      paramInt1 = paramView[1] + this.jdField_a_of_type_AndroidViewView.getHeight();
-    }
-    if (agis.a(this.jdField_a_of_type_Agis) != null)
-    {
-      paramInt2 = agis.a(this.jdField_a_of_type_Agis).getRight();
-      label81:
-      if (agis.a(this.jdField_a_of_type_Agis) == null) {
-        break label180;
+      paramString = this.a.a.a(this.a.a.getCurrentAccountUin(), (byte)3, false);
+      if ((paramString != null) && (agiq.a(this.a) != null)) {
+        agiq.a(this.a).setImageBitmap(paramString);
       }
-    }
-    label180:
-    for (paramInt3 = agis.a(this.jdField_a_of_type_Agis).getHeight();; paramInt3 = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseChatDrawer", 2, String.format("setTouchableBound, drawerWidth: %s, drawerHeight: %s, titleBarBottom: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1) }));
-      }
-      if ((paramInt2 <= 0) || (paramInt3 <= 0) || (paramInt1 <= 0)) {
-        break;
-      }
-      agis.a(this.jdField_a_of_type_Agis).setTouchableBound(0, paramInt1, paramInt2, paramInt3);
-      return;
-      paramInt2 = 0;
-      break label81;
     }
   }
 }

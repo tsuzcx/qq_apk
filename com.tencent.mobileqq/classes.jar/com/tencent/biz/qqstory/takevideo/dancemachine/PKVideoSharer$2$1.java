@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.takevideo.dancemachine;
 
-import anni;
+import anzj;
 import com.tencent.mobileqq.widget.QQToast;
-import ywq;
-import ywr;
+import zal;
+import zam;
 
 public class PKVideoSharer$2$1
   implements Runnable
 {
-  public PKVideoSharer$2$1(ywr paramywr) {}
+  public PKVideoSharer$2$1(zam paramzam) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a, 1, anni.a(2131706954), 0).a();
+    QQToast.a(this.a.a.a, 1, anzj.a(2131707063), 0).a();
   }
 }
 

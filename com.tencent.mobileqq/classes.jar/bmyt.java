@@ -1,7 +1,4 @@
-public abstract interface bmyt
-{
-  public abstract void a(int paramInt, String paramString, byte[] paramArrayOfByte);
-}
+public class bmyt {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

@@ -1,17 +1,26 @@
-import android.app.Activity;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
 
 class bays
-  implements EIPCResultCallback
+  extends AnimatorListenerAdapter
 {
-  bays(bayi parambayi) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  bays(bayq parambayq) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (-102 == paramEIPCResult.code) {
-      this.a.mContext.finish();
+    QLog.i("QzoneGiftManager", 1, "onAnimationEnd");
+    if (this.jdField_a_of_type_Boolean) {
+      bayq.a(this.jdField_a_of_type_Bayq, 8);
     }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    QLog.i("QzoneGiftManager", 1, "onAnimationStart");
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

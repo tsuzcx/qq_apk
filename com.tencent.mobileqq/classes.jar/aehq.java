@@ -1,30 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
 
 public class aehq
-  implements Animation.AnimationListener
+  implements DialogInterface.OnCancelListener
 {
-  public aehq(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  public aehq(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.f) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aehq
  * JD-Core Version:    0.7.0.1
  */

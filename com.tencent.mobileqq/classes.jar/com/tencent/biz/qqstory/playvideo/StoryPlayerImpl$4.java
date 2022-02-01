@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import xhf;
-import yqp;
+import xla;
+import yuk;
 
 public class StoryPlayerImpl$4
   implements Runnable
 {
-  public StoryPlayerImpl$4(xhf paramxhf) {}
+  public StoryPlayerImpl$4(xla paramxla) {}
   
   public void run()
   {
-    yqp.b("Q.qqstory.playernew.StoryPlayerImpl", "mStartRequestDataRunnable run");
-    xhf.b(this.this$0);
+    yuk.b("Q.qqstory.playernew.StoryPlayerImpl", "mStartRequestDataRunnable run");
+    xla.b(this.this$0);
   }
 }
 

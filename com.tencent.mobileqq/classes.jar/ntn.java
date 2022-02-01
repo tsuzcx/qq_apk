@@ -1,24 +1,48 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import mqq.util.WeakReference;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.Switch;
 
-public class ntn
-  extends anmu
+class ntn
+  implements CompoundButton.OnCheckedChangeListener
 {
-  WeakReference<AccountDetailActivity> a;
+  ntn(ntc paramntc, oag paramoag, Switch paramSwitch) {}
   
-  public ntn(AccountDetailActivity paramAccountDetailActivity)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a = new WeakReference(paramAccountDetailActivity);
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    AccountDetailActivity localAccountDetailActivity = (AccountDetailActivity)this.a.get();
-    if (localAccountDetailActivity == null) {}
-    while ((localAccountDetailActivity.h) || (!paramBoolean) || (!paramString.equals(localAccountDetailActivity.e))) {
+    if (!this.jdField_a_of_type_Ntc.c)
+    {
+      this.jdField_a_of_type_Ntc.c = true;
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
     }
-    localAccountDetailActivity.R();
+    if (this.jdField_a_of_type_Oag.f == 1) {
+      this.jdField_a_of_type_Ntc.a(this.jdField_a_of_type_Oag, paramBoolean);
+    }
+    for (;;)
+    {
+      ntc.a(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_Oag.a);
+      break;
+      if (this.jdField_a_of_type_Oag.f == 2)
+      {
+        if (paramBoolean) {
+          this.jdField_a_of_type_Ntc.a(this.jdField_a_of_type_Oag, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
+        } else {
+          this.jdField_a_of_type_Ntc.a(this.jdField_a_of_type_Oag, paramBoolean);
+        }
+      }
+      else if (this.jdField_a_of_type_Oag.f == 3)
+      {
+        if (!paramBoolean) {
+          this.jdField_a_of_type_Ntc.a(this.jdField_a_of_type_Oag, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
+        } else {
+          this.jdField_a_of_type_Ntc.a(this.jdField_a_of_type_Oag, paramBoolean);
+        }
+      }
+      else {
+        this.jdField_a_of_type_Ntc.a(this.jdField_a_of_type_Oag, paramBoolean);
+      }
+    }
   }
 }
 

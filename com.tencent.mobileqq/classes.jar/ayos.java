@@ -1,55 +1,46 @@
+import android.annotation.TargetApi;
 import android.graphics.Bitmap;
-import androidx.annotation.NonNull;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.onlinestatus.OnLineStatusBlurBg.1;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.DragShadowBuilder;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public class ayos
+@TargetApi(11)
+class ayos
+  extends View.DragShadowBuilder
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private String jdField_a_of_type_JavaLangString = "";
-  private WeakReference<ayou> jdField_a_of_type_MqqUtilWeakReference;
+  public int a;
   
-  private void a(@NonNull ayot paramayot, Bitmap paramBitmap, int paramInt1, String paramString, int paramInt2)
+  public ayos(aynp paramaynp, View paramView)
   {
-    ThreadManagerV2.postImmediately(new OnLineStatusBlurBg.1(this, paramayot, paramBitmap, paramInt1, paramInt2, paramString), null, false);
+    super(paramView);
+    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Aynp.a.f * 1.4D));
   }
   
-  public void a(@NonNull ayot paramayot, ayou paramayou)
+  public void onDrawShadow(Canvas paramCanvas)
   {
-    if ((paramayot.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (paramayou == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("OnLineStatusBlurBg", 4, "startBlurBg activity or listener is empty");
-      }
-      return;
-    }
-    if (("1103".equals(ThemeUtil.curThemeId)) || ("2920".equals(ThemeUtil.curThemeId)))
-    {
-      i = 1;
-      if (i == 0) {
-        break label120;
-      }
-    }
-    String str;
-    label120:
-    for (int i = paramayot.b;; i = paramayot.jdField_a_of_type_Int)
-    {
-      str = paramayot.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getActivityName() + "_" + i;
-      if (!str.equals(this.jdField_a_of_type_JavaLangString)) {
-        break label128;
-      }
-      paramayou.a(true, this.jdField_a_of_type_AndroidGraphicsBitmap, i);
-      return;
-      i = 0;
-      break;
-    }
-    label128:
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramayou);
-    a(paramayot, awsf.a(paramayot.jdField_a_of_type_ComTencentMobileqqAppBaseActivity), awsf.a(paramayot.jdField_a_of_type_ComTencentMobileqqAppBaseActivity), str, i);
+    getView().setDrawingCacheEnabled(false);
+    getView().setDrawingCacheEnabled(true);
+    Object localObject = new Paint();
+    ((Paint)localObject).setShadowLayer(10.0F, 0.0F, 0.0F, -16777216);
+    paramCanvas.drawRect(new Rect(10, 10, this.jdField_a_of_type_Int + 10, this.jdField_a_of_type_Int + 10), (Paint)localObject);
+    localObject = getView().getDrawingCache();
+    Matrix localMatrix = new Matrix();
+    float f = this.jdField_a_of_type_Int / ((Bitmap)localObject).getWidth();
+    localMatrix.postScale(f, f);
+    paramCanvas.drawBitmap(Bitmap.createBitmap((Bitmap)localObject, 0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), localMatrix, true), 10.0F, 10.0F, null);
+  }
+  
+  public void onProvideShadowMetrics(Point paramPoint1, Point paramPoint2)
+  {
+    int i = this.jdField_a_of_type_Int + 20;
+    int j = this.jdField_a_of_type_Int + 20;
+    paramPoint1.set(i, j);
+    paramPoint2.set(i / 2, j / 2);
   }
 }
 

@@ -1,39 +1,51 @@
-import android.graphics.Rect;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public class askh
-  extends RecyclerView.ItemDecoration
+class askh
+  extends askk
 {
-  private int a;
-  private int b;
-  private int c;
-  private int d;
-  
-  public askh(Fragment paramFragment)
+  askh(askd paramaskd, anwx paramanwx, aslf paramaslf, Object paramObject)
   {
-    this.a = afur.a(11.0F, paramFragment.getResources());
-    this.b = afur.a(11.0F, paramFragment.getResources());
-    this.c = afur.a(8.0F, paramFragment.getResources());
-    this.d = afur.a(8.0F, paramFragment.getResources());
+    super(paramaskd, paramanwx);
   }
   
-  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
+  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp)
   {
-    int i = paramRecyclerView.getAdapter().getItemCount();
-    if (paramRecyclerView.getAdapter().getItemViewType(paramInt) == 6)
-    {
-      paramRect.set(0, this.a, 0, 0);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
       return;
     }
-    if (paramInt == i - 1)
+    ??? = (anwx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    int i = paramEmoticonResp.epId;
+    int j = paramEmoticonResp.timestamp;
+    Object localObject1 = (ArrayList)paramEmoticonResp.data;
+    if ((this.jdField_a_of_type_Aslf.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Aslf.jdField_a_of_type_JavaLangString.equals(paramEmoticonResp.keySeq)))
     {
-      paramRect.set(this.c, this.a, this.d, this.b);
-      return;
+      ((anwx)???).b(this);
+      this.jdField_a_of_type_Aslf.jdField_a_of_type_Boolean = paramBoolean;
+      this.jdField_a_of_type_Aslf.jdField_a_of_type_Int = paramEmoticonResp.resultcode;
+      this.jdField_a_of_type_Aslf.b = paramEmoticonResp.timeoutReason;
     }
-    paramRect.set(this.c, this.a, this.d, 0);
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaLangObject.notify();
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        ??? = askd.a();
+        StringBuilder localStringBuilder = new StringBuilder().append("fetchEmoticonEncryptKeys|net get key backepId=").append(i).append(" tstamp=").append(j).append(" list.size=");
+        if (localObject1 == null)
+        {
+          localObject1 = "null";
+          QLog.d((String)???, 2, localObject1 + " encryptSuccess=" + paramBoolean + " type=" + paramInt + " er.resultCode=" + paramEmoticonResp.resultcode);
+          return;
+        }
+      }
+      localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
+    }
   }
 }
 

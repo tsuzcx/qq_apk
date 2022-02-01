@@ -1,122 +1,28 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public class nya
+  implements bipy
 {
-  public static double a(String paramString, double paramDouble)
-  {
-    double d = paramDouble;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        d = Double.valueOf(paramString.trim()).doubleValue();
-      }
-      return d;
-    }
-    catch (Exception paramString)
-    {
-      do
-      {
-        d = paramDouble;
-      } while (!QLog.isColorLevel());
-      QLog.d("ParseUtil", 2, " parseDouble error message=" + paramString.getMessage());
-    }
-    return paramDouble;
-  }
+  public nya(CustomWebView paramCustomWebView, nyb paramnyb) {}
   
-  public static float a(String paramString, float paramFloat)
+  public void onSetCookiesFinished(String paramString, Bundle paramBundle, long paramLong)
   {
-    float f = paramFloat;
-    try
+    switch (this.jdField_a_of_type_Nyb.a)
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        f = Float.valueOf(paramString.trim()).floatValue();
-      }
-      return f;
+    default: 
+      return;
+    case 1: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString);
+      return;
+    case 2: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrlOriginal(paramString);
+      return;
+    case 3: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadData(paramString, this.jdField_a_of_type_Nyb.c, this.jdField_a_of_type_Nyb.d);
+      return;
     }
-    catch (Exception paramString)
-    {
-      do
-      {
-        f = paramFloat;
-      } while (!QLog.isColorLevel());
-      QLog.d("ParseUtil", 2, " parseFloat error message=" + paramString.getMessage());
-    }
-    return paramFloat;
-  }
-  
-  public static int a(String paramString, int paramInt)
-  {
-    int i = paramInt;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        i = Integer.valueOf(paramString.trim()).intValue();
-      }
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      do
-      {
-        i = paramInt;
-      } while (!QLog.isColorLevel());
-      QLog.d("ParseUtil", 2, " parseInteger error message=" + paramString.getMessage());
-    }
-    return paramInt;
-  }
-  
-  public static int a(String paramString1, String paramString2)
-  {
-    try
-    {
-      if (!TextUtils.isEmpty(paramString1))
-      {
-        int i = Color.parseColor(paramString1.trim());
-        return i;
-      }
-    }
-    catch (Exception paramString1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ParseUtil", 2, " parseColor error message=" + paramString1.getMessage());
-      }
-    }
-    return Color.parseColor(paramString2);
-  }
-  
-  public static long a(String paramString, long paramLong)
-  {
-    long l = paramLong;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        l = Long.valueOf(paramString.trim()).longValue();
-      }
-      return l;
-    }
-    catch (Exception paramString)
-    {
-      do
-      {
-        l = paramLong;
-      } while (!QLog.isColorLevel());
-      QLog.d("ParseUtil", 2, " parseLong error message=" + paramString.getMessage());
-    }
-    return paramLong;
-  }
-  
-  public static String a(JSONObject paramJSONObject, String paramString1, String paramString2)
-  {
-    if ((paramJSONObject == null) || (TextUtils.isEmpty(paramString1))) {}
-    do
-    {
-      return paramString2;
-      paramJSONObject = paramJSONObject.optString(paramString1);
-    } while (TextUtils.isEmpty(paramJSONObject));
-    return paramJSONObject;
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadDataWithBaseURL(paramString, this.jdField_a_of_type_Nyb.b, this.jdField_a_of_type_Nyb.c, this.jdField_a_of_type_Nyb.d, this.jdField_a_of_type_Nyb.e);
   }
 }
 

@@ -1,31 +1,32 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-class wqm
-  implements wld<wqn, wqo>
+public class wqm
+  extends wip
 {
-  private wqm(wqk paramwqk) {}
+  public final int a;
+  public CommentLikeFeedItem a;
+  public final String a;
+  public int b = 0;
+  public int c;
   
-  public void a(@NonNull wqn paramwqn, @Nullable wqo paramwqo, @NonNull ErrorMessage paramErrorMessage)
+  public wqm(int paramInt1, String paramString, int paramInt2)
   {
-    if ((paramwqo != null) && (paramwqo.jdField_a_of_type_Int == 0) && (paramErrorMessage.isSuccess()))
-    {
-      this.a.jdField_a_of_type_JavaUtilList.addAll(paramwqo.jdField_a_of_type_JavaUtilList);
-      yqp.d("VideoFilterManager", "new filter count %d, current total count %d, isEnd=%s, cookie=%s", new Object[] { Integer.valueOf(paramwqo.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), Boolean.valueOf(paramwqo.jdField_a_of_type_Boolean), paramwqo.jdField_a_of_type_JavaLangString });
-      if ((paramwqo.jdField_a_of_type_Boolean) || (paramwqo.jdField_a_of_type_JavaUtilList.isEmpty()))
-      {
-        yqp.d("VideoFilterManager", "get filter full list finish, frequency = %d s", new Object[] { Integer.valueOf(paramwqo.b) });
-        this.a.a(true, paramwqo.b);
-        return;
-      }
-      this.a.c = paramwqo.jdField_a_of_type_JavaLangString;
-      this.a.c();
-      return;
-    }
-    yqp.c("VideoFilterManager", "get filter failed %s", paramErrorMessage);
-    this.a.a(false, 0);
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+  }
+  
+  public wqm(int paramInt1, String paramString, int paramInt2, CommentLikeFeedItem paramCommentLikeFeedItem)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+  }
+  
+  public String toString()
+  {
+    return "InteractionInfoChangeEvent{, feedId=" + this.jdField_a_of_type_JavaLangString + ", what=" + this.b + ", commentLikeFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem + ", commentId=" + this.c + '}';
   }
 }
 

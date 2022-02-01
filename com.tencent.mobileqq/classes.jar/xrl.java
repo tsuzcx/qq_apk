@@ -1,97 +1,57 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.net.Uri;
-import java.nio.ByteBuffer;
-import java.util.Map;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class xrl
+  extends xqm
 {
-  private MediaExtractor a;
+  public xrl(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public xrl()
+  public void d()
   {
-    a();
-  }
-  
-  public final int a()
-  {
-    return this.a.getTrackCount();
-  }
-  
-  public int a(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    return this.a.readSampleData(paramByteBuffer, paramInt);
-  }
-  
-  public long a()
-  {
-    return this.a.getSampleTime();
-  }
-  
-  @TargetApi(16)
-  public MediaFormat a(int paramInt)
-  {
-    MediaFormat localMediaFormat = this.a.getTrackFormat(paramInt);
-    if (localMediaFormat.getString("mime").startsWith("video/")) {
-      localMediaFormat.setFloat("mpx-dar", localMediaFormat.getInteger("width") / localMediaFormat.getInteger("height"));
+    boolean bool = false;
+    super.d();
+    String str1 = this.a.jdField_a_of_type_JavaLangString;
+    String str2 = VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[VideoViewVideoHolder.f(this.a)];
+    if (this.a.a().getVisibility() == 0) {
+      bool = true;
     }
-    return localMediaFormat;
-  }
-  
-  @TargetApi(16)
-  protected void a()
-  {
-    if (this.a != null) {
-      this.a.release();
+    yuk.d(str1, "onResume, current state = %s, startBtn show = %s", new Object[] { str2, Boolean.valueOf(bool) });
+    if (this.a.c()) {
+      this.a.a(10, "onResume");
     }
-    this.a = new MediaExtractor();
   }
   
-  public void a(int paramInt)
+  public void e()
   {
-    this.a.selectTrack(paramInt);
+    super.e();
+    VideoViewVideoHolder.a(this.a, false);
+    yuk.d(this.a.jdField_a_of_type_JavaLangString, "onPause, current state = %s", new Object[] { VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[VideoViewVideoHolder.f(this.a)] });
+    this.a.a(0, true, "onPause");
   }
   
-  public void a(long paramLong, int paramInt)
+  public void g()
   {
-    this.a.seekTo(paramLong, paramInt);
-  }
-  
-  public final void a(Context paramContext, Uri paramUri, Map<String, String> paramMap)
-  {
-    this.a.setDataSource(paramContext, paramUri, paramMap);
-  }
-  
-  public boolean a()
-  {
-    return this.a.advance();
-  }
-  
-  public int b()
-  {
-    return this.a.getSampleTrackIndex();
-  }
-  
-  public long b()
-  {
-    return this.a.getCachedDuration();
-  }
-  
-  public void b()
-  {
-    this.a.release();
-  }
-  
-  public boolean b()
-  {
-    return this.a.hasCacheReachedEndOfStream();
-  }
-  
-  public boolean c()
-  {
-    return false;
+    super.g();
+    VideoViewVideoHolder.a(this.a).removeCallbacksAndMessages(null);
+    this.a.jdField_a_of_type_Xsc.a();
+    this.a.a(0, true, "onDestroy");
+    this.a.jdField_a_of_type_Xtg.a();
+    this.a.jdField_a_of_type_Xtg.e();
+    xiq localxiq = VideoViewVideoHolder.a(this.a);
+    VideoViewVideoHolder.a(this.a, null);
+    if (localxiq != null) {
+      localxiq.a();
+    }
+    if (VideoViewVideoHolder.a(this.a) != null)
+    {
+      VideoViewVideoHolder.a(this.a).recycle();
+      VideoViewVideoHolder.a(this.a, null);
+    }
+    if ((this.a.jdField_a_of_type_Zsd != null) && (this.a.jdField_a_of_type_Zsd.isShowing())) {
+      this.a.jdField_a_of_type_Zsd.dismiss();
+    }
   }
 }
 

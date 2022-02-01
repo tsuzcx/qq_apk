@@ -1,103 +1,107 @@
-import UserGrowth.stCollection;
 import UserGrowth.stSimpleMetaFeed;
-import android.animation.ArgbEvaluator;
-import android.animation.ObjectAnimator;
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
+import UserGrowth.stSimpleMetaGdtAdInfo;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import com.tencent.ad.tangram.util.AdExposureChecker;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class usx
-  extends ueh<uru>
+  extends uuy
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private View b;
+  public AdExposureChecker.ExposureCallback a;
+  public ArrayList<AdExposureChecker> a;
   
-  public usx(Context paramContext, utw paramutw)
+  public usx(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    super(paramContext);
-    if (paramutw != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramutw.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-    }
+    super(paramViewGroup, 2131560017, paramInt, paramWSVerticalPageFragment);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  private boolean b()
+  public FrameLayout a()
   {
-    return (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection.cid));
-  }
-  
-  private boolean c()
-  {
-    return (this.b != null) && (this.b.getVisibility() == 0) && (!a());
-  }
-  
-  private void g()
-  {
-    uqd.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-  }
-  
-  protected void a()
-  {
-    uru localuru = (uru)a();
-    if ((localuru != null) && ((localuru.a() instanceof stSimpleMetaFeed))) {
-      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)localuru.a());
-    }
-  }
-  
-  public boolean a()
-  {
-    return (a() != null) && (((uru)a()).a());
-  }
-  
-  protected int b()
-  {
-    return 2131560014;
-  }
-  
-  protected void b()
-  {
-    if (b())
+    if ((this.jdField_a_of_type_Uek instanceof uth))
     {
-      this.b.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection.name);
-      if (a())
-      {
-        this.b.setBackgroundColor(uov.a(2131165732));
-        return;
+      utq localutq = (utq)this.jdField_a_of_type_Uek;
+      if ((localutq.a() instanceof uuo)) {
+        return ((uuo)localutq.a()).a();
       }
-      this.b.setBackgroundColor(uov.a(2131165354));
-      return;
     }
-    this.b.setVisibility(8);
+    return null;
   }
   
-  protected void c() {}
-  
-  protected void e()
+  public uek<usv> a(int paramInt)
   {
-    this.b = a(2131380495);
-    this.b.setOnClickListener(new usy(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380496));
+    return new uth(a(), this);
   }
   
-  public void f()
+  public void a()
   {
-    if (!c())
+    Object localObject;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      upe.d("AbsWsUIGroup", "fail to meet the requirement of playing collection animation");
-      return;
+      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((AdExposureChecker)((Iterator)localObject).next()).onActivityResume();
+      }
     }
-    if (a() != null) {
-      ((uru)a()).a(true);
+    if (this.jdField_a_of_type_JavaLangObject != null)
+    {
+      localObject = (stSimpleMetaFeed)((usv)this.jdField_a_of_type_JavaLangObject).a();
+      if ((localObject != null) && (((stSimpleMetaFeed)localObject).gdt_ad_type == 1) && (((stSimpleMetaFeed)localObject).gdt_ad_info != null))
+      {
+        usw.a(BaseApplicationImpl.getContext(), (stSimpleMetaFeed)((usv)this.jdField_a_of_type_JavaLangObject).a());
+        ((usv)this.jdField_a_of_type_JavaLangObject).a().isGdtAdVidoReport = false;
+        this.jdField_a_of_type_Uek.a(this.jdField_a_of_type_JavaLangObject);
+      }
     }
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofInt(this.b, "backgroundColor", new int[] { -2147483648, -2139470081 });
-    localObjectAnimator.addListener(new usz(this));
-    localObjectAnimator.setDuration(500L);
-    localObjectAnimator.setEvaluator(new ArgbEvaluator());
-    localObjectAnimator.start();
+  }
+  
+  protected boolean a()
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((AdExposureChecker)((Iterator)localObject).next()).onActivityPause();
+      }
+    }
+    if (this.jdField_a_of_type_JavaLangObject != null)
+    {
+      localObject = (stSimpleMetaFeed)((usv)this.jdField_a_of_type_JavaLangObject).a();
+      stSimpleMetaGdtAdInfo localstSimpleMetaGdtAdInfo = ((usv)this.jdField_a_of_type_JavaLangObject).a();
+      if ((localstSimpleMetaGdtAdInfo != null) && (localObject != null) && (((stSimpleMetaFeed)localObject).gdt_ad_type == 1) && (((stSimpleMetaFeed)localObject).gdt_ad_info != null) && (this.jdField_a_of_type_Ukz != null) && (this.jdField_a_of_type_Ukz.jdField_a_of_type_Ulc != null))
+      {
+        uvt.a((stSimpleMetaFeed)localObject, this.jdField_a_of_type_Ukz);
+        localstSimpleMetaGdtAdInfo.isGdtAdVidoReport = true;
+        this.jdField_a_of_type_Ukz.jdField_a_of_type_Long = this.jdField_a_of_type_Ukz.jdField_a_of_type_Ulc.a();
+      }
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        AdExposureChecker localAdExposureChecker = (AdExposureChecker)localIterator.next();
+        localAdExposureChecker.onActivityDestroy();
+        localAdExposureChecker.setCallback(null);
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = null;
+    }
   }
 }
 

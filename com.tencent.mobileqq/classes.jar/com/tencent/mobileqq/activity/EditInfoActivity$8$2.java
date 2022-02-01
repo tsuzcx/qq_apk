@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity;
 
-import aedp;
+import aemt;
 import android.graphics.Color;
 import android.widget.TextView;
 
 public class EditInfoActivity$8$2
   implements Runnable
 {
-  public EditInfoActivity$8$2(aedp paramaedp, int paramInt) {}
+  public EditInfoActivity$8$2(aemt paramaemt, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aedp.a.a.setText(this.jdField_a_of_type_Aedp.a.jdField_c_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Int > this.jdField_a_of_type_Aedp.a.jdField_c_of_type_Int)
+    this.jdField_a_of_type_Aemt.a.a.setText(this.jdField_a_of_type_Aemt.a.jdField_c_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Int > this.jdField_a_of_type_Aemt.a.jdField_c_of_type_Int)
     {
-      this.jdField_a_of_type_Aedp.a.a.setTextColor(-65536);
-      this.jdField_a_of_type_Aedp.a.rightViewText.setEnabled(false);
+      this.jdField_a_of_type_Aemt.a.a.setTextColor(-65536);
+      this.jdField_a_of_type_Aemt.a.rightViewText.setEnabled(false);
       return;
     }
-    this.jdField_a_of_type_Aedp.a.a.setTextColor(Color.rgb(119, 119, 119));
-    this.jdField_a_of_type_Aedp.a.rightViewText.setEnabled(true);
+    this.jdField_a_of_type_Aemt.a.a.setTextColor(Color.rgb(119, 119, 119));
+    this.jdField_a_of_type_Aemt.a.rightViewText.setEnabled(true);
   }
 }
 

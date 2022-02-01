@@ -1,69 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.campuscircle.CampusCircleReplyActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqqp
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private boolean a;
+  public aqqp(CampusCircleReplyActivity paramCampusCircleReplyActivity) {}
   
-  public static aqqp a(aqlg[] paramArrayOfaqlg)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    aqqp localaqqp = new aqqp();
-    StringBuilder localStringBuilder = new StringBuilder();
-    for (;;)
+    Object localObject = this.a.getResources();
+    TextView localTextView = CampusCircleReplyActivity.a(this.a);
+    if (paramBoolean) {}
+    for (localObject = ((Resources)localObject).getColorStateList(2131166331);; localObject = ((Resources)localObject).getColorStateList(2131166333))
     {
-      try
-      {
-        int j = paramArrayOfaqlg.length;
-        int i = 0;
-        if (i < j)
-        {
-          String str = paramArrayOfaqlg[i].a;
-          QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, new Object[] { "content=", str });
-          JSONObject localJSONObject = new JSONObject(str);
-          if (localJSONObject.has("enable_fake_msg"))
-          {
-            if (localJSONObject.optInt("enable_fake_msg", 0) == 1)
-            {
-              bool = true;
-              localaqqp.a = bool;
-            }
-          }
-          else
-          {
-            localStringBuilder.append("config: ").append(str).append(",");
-            i += 1;
-          }
-        }
-        else
-        {
-          QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, "parse, content:" + localStringBuilder.toString());
-          return localaqqp;
-        }
-      }
-      catch (JSONException paramArrayOfaqlg)
-      {
-        QLog.e("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, "JSONException", paramArrayOfaqlg);
-        return null;
-      }
-      boolean bool = false;
+      localTextView.setTextColor((ColorStateList)localObject);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    new StringBuilder().append("isEnableFakeMsg:").append(this.a);
-    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqqp
  * JD-Core Version:    0.7.0.1
  */

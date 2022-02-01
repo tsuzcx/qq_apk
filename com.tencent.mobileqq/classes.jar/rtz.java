@@ -1,37 +1,48 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
 
 class rtz
-  implements bcfe
+  extends sbh
 {
-  rtz(rtv paramrtv) {}
+  rtz(rsx paramrsx) {}
   
-  public void B_()
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", anni.a(2131706378), null);
-    bceg.a(3, -1500);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
+    if (paramVideoInfo != null) {}
+    try
     {
-      if (paramInt == 0) {
-        break label95;
+      rsx.a(this.a).b(rsx.b(this.a));
+      paramString = new Intent(rsx.a(this.a), ReadInJoyDeliverBiuActivity.class);
+      if ((rsx.a(this.a).jdField_a_of_type_Int == 6) && (paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)) {
+        paramString.putExtra("feedsType", rsx.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType);
       }
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", anni.a(2131706381) + paramInt + "]", null);
-      bceg.a(2, paramInt);
-    }
-    for (;;)
-    {
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", "onDownloadFinish name=" + paramString1 + ", result=" + paramInt + ", filePath=" + paramString2, null);
+      paramString.putExtra("ARG_VIDEO_ARTICLE_ID", rsx.a(this.a).g);
+      paramString.putExtra("biu_src", 2);
+      paramString.putExtra("arg_from_type", 8);
+      paramString.putExtra("arg_article_info", paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      rsx.a(this.a).startActivityForResult(paramString, 102);
+      rsx.a(this.a).overridePendingTransition(0, 0);
       return;
-      label95:
-      rtv.a(this.a, true);
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", anni.a(2131706380) + paramInt + "]", null);
+    }
+    catch (Exception paramVideoInfo)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("VideoFeedsShareController", 2, "innerOpenReadInJoyBiuActivity error exception = " + paramVideoInfo.getMessage());
+      }
+      rsx.a(this.a).b(false);
     }
   }
   
-  public void a(String paramString, long paramLong1, long paramLong2) {}
+  public int c()
+  {
+    return 0;
+  }
 }
 
 

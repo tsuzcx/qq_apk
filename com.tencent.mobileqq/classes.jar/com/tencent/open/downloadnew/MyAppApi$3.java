@@ -1,12 +1,12 @@
 package com.tencent.open.downloadnew;
 
 import android.app.Activity;
-import biwe;
+import bjxd;
 
 public class MyAppApi$3
   implements Runnable
 {
-  public MyAppApi$3(biwe parambiwe, Activity paramActivity) {}
+  public MyAppApi$3(bjxd parambjxd, Activity paramActivity) {}
   
   public void run()
   {

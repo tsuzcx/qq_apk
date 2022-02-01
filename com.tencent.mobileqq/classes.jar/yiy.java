@@ -1,36 +1,32 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 import java.util.List;
 
-public class yiy
-  extends yie
+class yiy
+  extends JobSegment<Integer, ymb>
 {
-  public List<yjy> b = new ArrayList();
-  public boolean e;
+  private yma a;
   
-  public yiy(ErrorMessage paramErrorMessage)
+  public yiy(@NonNull yma paramyma)
   {
-    super(paramErrorMessage);
+    this.a = paramyma;
   }
   
-  public String b()
+  protected void a(JobContext paramJobContext, Integer paramInteger)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.a.a(paramInteger.intValue(), 5);
+    if ((((ymb)localObject).a.size() > 0) || (((ymb)localObject).b))
     {
-      yjy localyjy = (yjy)localIterator.next();
-      localStringBuilder.append("feedId:").append(localyjy.a().feedId);
-      localStringBuilder.append("unionId:").append(localyjy.a().getOwner().getUnionId());
+      yuk.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
+      notifyResult(localObject);
+      return;
     }
-    return localStringBuilder.toString();
-  }
-  
-  public String toString()
-  {
-    return "FeedData{" + super.toString() + "mFeedItems=" + this.b + '}';
+    localObject = new xcy();
+    ((xcy)localObject).a = this.a.a();
+    ((xcy)localObject).b = QQStoryContext.a().b();
+    wow.a().a((wpa)localObject, new yiz(this, paramJobContext, paramInteger));
   }
 }
 

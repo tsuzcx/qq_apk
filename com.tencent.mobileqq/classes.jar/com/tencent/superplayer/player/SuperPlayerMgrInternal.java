@@ -4,10 +4,12 @@ import android.content.Context;
 import android.os.Looper;
 import android.os.Message;
 import android.view.Surface;
-import com.tencent.superplayer.api.SuperPlayerAudioInfo;
 import com.tencent.superplayer.api.SuperPlayerOption;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.view.ISPlayerVideoView;
+import com.tencent.thumbplayer.api.TPTrackInfo;
+import java.util.LinkedList;
+import java.util.Queue;
 
 class SuperPlayerMgrInternal
 {
@@ -21,22 +23,23 @@ class SuperPlayerMgrInternal
   private static final int MSG_SEEK_TO = 23;
   private static final int MSG_SEEK_TO_BY_MODE = 24;
   private static final int MSG_SET_AUDIO_GAIN_RATIO = 31;
-  private static final int MSG_SET_AUDIO_POST_PARAMS = 93;
   private static final int MSG_SET_BUSINESS_DOWNLOAD_STRATEGY = 92;
   private static final int MSG_SET_LOOPBACK = 29;
   private static final int MSG_SET_LOOPBACK_WITH_POSITION = 85;
   private static final int MSG_SET_OUTPUT_MUTE = 27;
   private static final int MSG_SET_PLAY_SPEED_RATIO = 9;
   private static final int MSG_SET_SURFACE = 6;
-  private static final int MSG_SET_X_Y_AXIS = 8;
   private static final int MSG_START = 12;
   private static final int MSG_STOP = 14;
   private static final int MSG_SWITCH_DEFINITION = 88;
   private static final int MSG_UPDATE_PLAYER_VIDEO_VIEW = 5;
   private SuperPlayerMgrInternal.EventHandler mEventHandler;
   private SuperPlayerMgrInternal.SPlayerManagerInternalListener mHandleListener;
+  private volatile boolean mIsNeedBlockMessage = true;
+  private volatile boolean mIsReleased = false;
   private String mLogTag;
   private Looper mLooper;
+  private Queue<Message> mPendingMessages = new LinkedList();
   
   SuperPlayerMgrInternal(String paramString, Looper paramLooper, SuperPlayerMgrInternal.SPlayerManagerInternalListener paramSPlayerManagerInternalListener)
   {
@@ -46,22 +49,68 @@ class SuperPlayerMgrInternal
     this.mHandleListener = paramSPlayerManagerInternalListener;
   }
   
-  private void internalMessage(int paramInt1, int paramInt2, int paramInt3, Object paramObject, boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  private void internalMessage(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    if (paramBoolean2) {
-      this.mEventHandler.removeMessages(paramInt1);
+    for (;;)
+    {
+      Message localMessage;
+      try
+      {
+        boolean bool = this.mIsReleased;
+        if (bool) {
+          return;
+        }
+        localMessage = this.mEventHandler.obtainMessage();
+        localMessage.what = paramInt1;
+        localMessage.arg1 = paramInt2;
+        localMessage.arg2 = paramInt3;
+        localMessage.obj = paramObject;
+        if (isNeedBlockMessage(paramInt1))
+        {
+          this.mPendingMessages.offer(localMessage);
+          continue;
+        }
+        if (paramInt1 != 21) {
+          break label100;
+        }
+      }
+      finally {}
+      this.mIsReleased = true;
+      this.mPendingMessages.clear();
+      label100:
+      this.mEventHandler.sendMessage(localMessage);
+      while (!this.mPendingMessages.isEmpty())
+      {
+        paramObject = (Message)this.mPendingMessages.poll();
+        if (paramObject != null) {
+          this.mEventHandler.sendMessage(paramObject);
+        }
+      }
     }
-    Message localMessage = this.mEventHandler.obtainMessage();
-    localMessage.what = paramInt1;
-    localMessage.arg1 = paramInt2;
-    localMessage.arg2 = paramInt3;
-    localMessage.obj = paramObject;
-    this.mEventHandler.sendMessageDelayed(localMessage, paramLong);
   }
   
   private void internalMessage(int paramInt, Object paramObject)
   {
-    internalMessage(paramInt, 0, 0, paramObject, false, false, 0L);
+    internalMessage(paramInt, 0, 0, paramObject);
+  }
+  
+  private boolean isNeedBlockMessage(int paramInt)
+  {
+    if (this.mIsNeedBlockMessage) {
+      switch (paramInt)
+      {
+      }
+    }
+    for (;;)
+    {
+      return this.mIsNeedBlockMessage;
+      this.mIsNeedBlockMessage = false;
+    }
+  }
+  
+  public void addSubtitleSource(String paramString1, String paramString2, String paramString3)
+  {
+    this.mHandleListener.handleAddSubtitleSource(paramString1, paramString2, paramString3);
   }
   
   int captureImageInTime(long paramLong, int paramInt1, int paramInt2)
@@ -72,6 +121,11 @@ class SuperPlayerMgrInternal
   int captureImageInTime(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     return this.mHandleListener.handleCaptureImageInTime(paramLong, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+  }
+  
+  public void deselectTrack(int paramInt, long paramLong)
+  {
+    this.mHandleListener.handleDeselectTrack(paramInt, paramLong);
   }
   
   int getBufferPercent()
@@ -89,19 +143,24 @@ class SuperPlayerMgrInternal
     return this.mHandleListener.handleGetDuration();
   }
   
+  public long getFileSizeBytes()
+  {
+    return this.mHandleListener.handleGetFileSizeBytes();
+  }
+  
   MediaInfo getMediaInfo()
   {
     return this.mHandleListener.handleGetMediaInfo();
   }
   
-  long getPlayedTime()
-  {
-    return this.mHandleListener.handleGetPlayedTime();
-  }
-  
   String getStreamDumpInfo()
   {
     return this.mHandleListener.handleGetStreamDumpInfo();
+  }
+  
+  public TPTrackInfo[] getTrackInfo()
+  {
+    return this.mHandleListener.handleGetTrackInfo();
   }
   
   int getVideoHeight()
@@ -122,26 +181,6 @@ class SuperPlayerMgrInternal
   boolean isBuffering()
   {
     return this.mHandleListener.handleIsBuffering();
-  }
-  
-  boolean isLoopBack()
-  {
-    return this.mHandleListener.handleIsLoopback();
-  }
-  
-  boolean isOutputMute()
-  {
-    return this.mHandleListener.handleGetOutputMute();
-  }
-  
-  boolean isPausing()
-  {
-    return this.mHandleListener.handleIsPausing();
-  }
-  
-  boolean isPlaying()
-  {
-    return this.mHandleListener.handleIsPlaying();
   }
   
   void openMediaPlayer(Context paramContext, SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong, SuperPlayerOption paramSuperPlayerOption)
@@ -181,22 +220,40 @@ class SuperPlayerMgrInternal
   
   void seekTo(int paramInt)
   {
-    internalMessage(23, paramInt, 0, null, false, false, 0L);
+    internalMessage(23, paramInt, 0, null);
   }
   
   void seekTo(int paramInt1, int paramInt2)
   {
-    internalMessage(24, paramInt1, paramInt2, null, false, false, 0L);
+    internalMessage(24, paramInt1, paramInt2, null);
   }
   
-  void setAudioPostFrameOptionInfo(SuperPlayerAudioInfo paramSuperPlayerAudioInfo)
+  public void selectTrack(int paramInt, long paramLong)
   {
-    internalMessage(93, paramSuperPlayerAudioInfo);
+    this.mHandleListener.handleSelectTrack(paramInt, paramLong);
   }
   
-  public void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     internalMessage(92, new int[] { paramInt1, paramInt2, paramInt3, paramInt4 });
+  }
+  
+  void setIsNeedBlockMessage(boolean paramBoolean)
+  {
+    try
+    {
+      this.mIsNeedBlockMessage = paramBoolean;
+      if (!this.mIsNeedBlockMessage) {
+        while (!this.mPendingMessages.isEmpty())
+        {
+          Message localMessage = (Message)this.mPendingMessages.poll();
+          if (localMessage != null) {
+            this.mEventHandler.sendMessage(localMessage);
+          }
+        }
+      }
+    }
+    finally {}
   }
   
   void setLoopback(boolean paramBoolean)
@@ -226,11 +283,6 @@ class SuperPlayerMgrInternal
   void setSurface(Surface paramSurface)
   {
     internalMessage(6, paramSurface);
-  }
-  
-  void setXYaxis(int paramInt)
-  {
-    internalMessage(8, paramInt, 0, null, false, false, 0L);
   }
   
   void start()

@@ -1,13 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
-public class bpvt
-  implements View.OnClickListener
+public abstract interface bpvt
 {
-  public bpvt(HorizontalAlumbListLayout paramHorizontalAlumbListLayout) {}
+  public abstract int a();
   
-  public void onClick(View paramView) {}
+  public abstract void a(int paramInt, QIMFilterCategoryItem paramQIMFilterCategoryItem);
+  
+  public abstract void a(int paramInt, Object paramObject);
+  
+  public abstract void a(int paramInt, Object... paramVarArgs);
+  
+  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d(int paramInt);
+  
+  public abstract void e(int paramInt);
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void k();
 }
 
 

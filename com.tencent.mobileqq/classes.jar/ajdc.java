@@ -1,19 +1,21 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.qphone.base.util.QLog;
 
-class ajdc
-  implements View.OnLongClickListener
+public class ajdc
+  implements anvi
 {
-  ajdc(ajcz paramajcz, ajdf paramajdf) {}
+  public ajdc(AddContactsView paramAddContactsView) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Ajcz.a != null)
-    {
-      int i = this.jdField_a_of_type_Ajdf.getAdapterPosition();
-      return this.jdField_a_of_type_Ajcz.a.a(paramView, this.jdField_a_of_type_Ajdf, i);
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onGetConfig | isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
     }
-    return false;
+    if ((paramInt == 2) && (paramBoolean))
+    {
+      this.a.d = true;
+      this.a.f();
+    }
   }
 }
 

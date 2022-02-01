@@ -1,29 +1,24 @@
-import android.widget.Filter;
-import android.widget.Filter.FilterResults;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import java.util.List;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-class algu
-  extends Filter
+public class algu
+  implements OnCompositionLoadedListener
 {
-  algu(algt paramalgt) {}
+  public algu(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    paramCharSequence = new Filter.FilterResults();
-    paramCharSequence.values = this.a.a.a;
-    paramCharSequence.count = this.a.a.a.size();
-    return paramCharSequence;
-  }
-  
-  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
-  {
-    if (paramFilterResults.count > 0)
-    {
-      this.a.notifyDataSetChanged();
-      return;
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    if (DrawRedpacketPannelPreviewFragment.d(this.a) != null) {
+      DrawRedpacketPannelPreviewFragment.d(this.a).setImageDrawable(localLottieDrawable);
     }
-    this.a.notifyDataSetInvalidated();
   }
 }
 

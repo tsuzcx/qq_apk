@@ -39,7 +39,7 @@ public class b
     this.h = 1;
     this.j = a.a(paramContext);
     this.k = "beacon";
-    this.l = "3.2.2.18";
+    this.l = "3.2.2.22";
     this.m = "unknown";
     this.o = a(paramContext);
     this.p = c.a(e(paramContext));
@@ -102,7 +102,7 @@ public class b
     //   25: invokevirtual 153	com/tencent/beacon/core/a/f:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   28: astore_0
     //   29: aload_0
-    //   30: invokestatic 158	com/tencent/beacon/core/e/j:c	(Ljava/lang/String;)Z
+    //   30: invokestatic 158	com/tencent/beacon/core/e/j:b	(Ljava/lang/String;)Z
     //   33: istore_1
     //   34: iload_1
     //   35: ifeq +25 -> 60
@@ -172,7 +172,7 @@ public class b
     //   153: aload_2
     //   154: astore_3
     //   155: aload_0
-    //   156: invokestatic 158	com/tencent/beacon/core/e/j:c	(Ljava/lang/String;)Z
+    //   156: invokestatic 158	com/tencent/beacon/core/e/j:b	(Ljava/lang/String;)Z
     //   159: istore_1
     //   160: aload_0
     //   161: astore_3
@@ -340,13 +340,13 @@ public class b
       return localObject;
       str = c(paramContext);
       localObject = str;
-    } while (!j.c(str));
+    } while (!j.b(str));
     return d(paramContext);
   }
   
   public static String i()
   {
-    return "3.2.2.18";
+    return "3.2.2.22";
   }
   
   /* Error */
@@ -356,7 +356,7 @@ public class b
     //   0: aload_0
     //   1: monitorenter
     //   2: getstatic 228	com/tencent/beacon/core/info/b:b	Ljava/lang/String;
-    //   5: invokestatic 158	com/tencent/beacon/core/e/j:c	(Ljava/lang/String;)Z
+    //   5: invokestatic 158	com/tencent/beacon/core/e/j:b	(Ljava/lang/String;)Z
     //   8: ifne +11 -> 19
     //   11: getstatic 228	com/tencent/beacon/core/info/b:b	Ljava/lang/String;
     //   14: astore_1
@@ -366,7 +366,7 @@ public class b
     //   18: areturn
     //   19: aload_0
     //   20: getfield 50	com/tencent/beacon/core/info/b:o	Ljava/lang/String;
-    //   23: invokestatic 158	com/tencent/beacon/core/e/j:c	(Ljava/lang/String;)Z
+    //   23: invokestatic 158	com/tencent/beacon/core/e/j:b	(Ljava/lang/String;)Z
     //   26: ifne +11 -> 37
     //   29: aload_0
     //   30: getfield 50	com/tencent/beacon/core/info/b:o	Ljava/lang/String;
@@ -400,7 +400,7 @@ public class b
     //   0: aload_0
     //   1: monitorenter
     //   2: getstatic 232	com/tencent/beacon/core/info/b:c	Ljava/lang/String;
-    //   5: invokestatic 158	com/tencent/beacon/core/e/j:c	(Ljava/lang/String;)Z
+    //   5: invokestatic 158	com/tencent/beacon/core/e/j:b	(Ljava/lang/String;)Z
     //   8: ifne +11 -> 19
     //   11: getstatic 232	com/tencent/beacon/core/info/b:c	Ljava/lang/String;
     //   14: astore_1
@@ -489,7 +489,7 @@ public class b
     //   0: aload_0
     //   1: monitorenter
     //   2: getstatic 237	com/tencent/beacon/core/info/b:d	Ljava/lang/String;
-    //   5: invokestatic 158	com/tencent/beacon/core/e/j:c	(Ljava/lang/String;)Z
+    //   5: invokestatic 158	com/tencent/beacon/core/e/j:b	(Ljava/lang/String;)Z
     //   8: ifne +11 -> 19
     //   11: getstatic 237	com/tencent/beacon/core/info/b:d	Ljava/lang/String;
     //   14: astore_1

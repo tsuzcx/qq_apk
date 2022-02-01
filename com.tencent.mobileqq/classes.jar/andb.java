@@ -1,13 +1,18 @@
-public final class andb
-  implements andm
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class andb
+  implements View.OnClickListener
 {
-  public andb(andl paramandl) {}
+  andb(anda paramanda) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a != null) {
-      this.a.a(paramInt);
-    }
+    anda.a(this.a, true);
+    this.a.a();
+    anda.a(this.a, -1, -1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

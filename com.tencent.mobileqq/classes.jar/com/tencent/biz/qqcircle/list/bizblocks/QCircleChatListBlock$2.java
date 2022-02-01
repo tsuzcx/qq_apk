@@ -1,7 +1,7 @@
 package com.tencent.biz.qqcircle.list.bizblocks;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import uxx;
+import uzg;
 
 class QCircleChatListBlock$2
   implements Runnable
@@ -10,7 +10,7 @@ class QCircleChatListBlock$2
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = uxx.a(QCircleChatListBlock.access$000(this.this$0));
+    QQAppInterface localQQAppInterface = uzg.a(QCircleChatListBlock.access$000(this.this$0));
     if (localQQAppInterface != null) {
       ((QCircleHandler)localQQAppInterface.a(183)).clearPedPoint();
     }

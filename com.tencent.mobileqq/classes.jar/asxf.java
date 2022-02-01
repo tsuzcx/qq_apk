@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class asxf
-  implements View.OnClickListener
 {
-  public asxf(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
+  public int a;
+  public String a;
   
-  public void onClick(View paramView)
+  public asxf()
   {
-    QfileLocalFilePicTabView.a(this.a, paramView, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

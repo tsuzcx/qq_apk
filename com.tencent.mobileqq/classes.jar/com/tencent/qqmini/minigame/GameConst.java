@@ -14,6 +14,10 @@ public final class GameConst
   public static final int GAME_RUNTIME_MSG_GPKG_LOADED = 2002;
   public static final int GAME_RUNTIME_MSG_GPKG_LOADING = 2001;
   public static final int GAME_RUNTIME_MSG_INIT_RUMTIME = 2021;
+  public static final int GAME_RUNTIME_MSG_PROFILE_END = 2057;
+  public static final int GAME_RUNTIME_MSG_PROFILE_START = 2056;
+  public static final int GAME_RUNTIME_MSG_UPDATE_CHECK_RESULT = 2054;
+  public static final int GAME_RUNTIME_MSG_UPDATE_DOWNLOAD_RESULT = 2055;
 }
 
 

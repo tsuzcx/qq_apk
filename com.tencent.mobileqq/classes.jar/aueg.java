@@ -1,24 +1,10 @@
-import io.flutter.plugin.common.BinaryMessenger;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodCodec;
-
-public class aueg
-  extends auee
+public abstract interface aueg
 {
-  public aueg(String paramString, BinaryMessenger paramBinaryMessenger)
-  {
-    super(paramString, paramBinaryMessenger);
-  }
+  public abstract void a();
   
-  public MethodChannel.MethodCallHandler a()
-  {
-    return new aueh(this);
-  }
+  public abstract void a(int paramInt);
   
-  public MethodCodec a()
-  {
-    return auei.a;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

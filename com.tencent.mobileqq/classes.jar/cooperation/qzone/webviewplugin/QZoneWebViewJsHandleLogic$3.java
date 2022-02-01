@@ -1,24 +1,24 @@
 package cooperation.qzone.webviewplugin;
 
 import android.graphics.BitmapFactory;
-import bhod;
+import bioy;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import cooperation.qzone.util.QZLog;
 import java.io.IOException;
 import java.util.Map;
-import nlw;
+import nnr;
 
 public final class QZoneWebViewJsHandleLogic$3
   implements Runnable
 {
-  public QZoneWebViewJsHandleLogic$3(String paramString, Map paramMap, bhod parambhod, Runnable paramRunnable) {}
+  public QZoneWebViewJsHandleLogic$3(String paramString, Map paramMap, bioy parambioy, Runnable paramRunnable) {}
   
   public void run()
   {
     try
     {
-      Object localObject = nlw.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, "GET", null, null);
+      Object localObject = nnr.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, "GET", null, null);
       if (localObject != null)
       {
         localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
@@ -41,7 +41,7 @@ public final class QZoneWebViewJsHandleLogic$3
         QZLog.e("QZoneWebViewJsHandleLogic", "download pic error", localOutOfMemoryError);
       }
     }
-    this.jdField_a_of_type_Bhod.a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_Bioy.a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

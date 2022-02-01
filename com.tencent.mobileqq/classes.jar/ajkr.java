@@ -1,9 +1,8 @@
-import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
+import com.tencent.mobileqq.activity.contact.connections.ThemeTabLayout;
 
-public abstract class ajkr
-  implements ajkv, ajkw
+public class ajkr
 {
-  ajkr(CommonRefreshLayout paramCommonRefreshLayout) {}
+  public ThemeTabLayout a;
 }
 
 

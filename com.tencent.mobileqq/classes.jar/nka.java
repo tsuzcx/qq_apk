@@ -1,20 +1,21 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import mqq.app.AppRuntime;
+import com.tencent.biz.PoiMapActivity;
 
 public class nka
 {
-  TroopMemberApiService a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public nka(TroopMemberApiService paramTroopMemberApiService)
-  {
-    this.a = paramTroopMemberApiService;
-  }
-  
-  public void a(AppRuntime paramAppRuntime, Bundle paramBundle)
-  {
-    if (paramBundle == null) {}
-  }
+  public nka(PoiMapActivity paramPoiMapActivity) {}
 }
 
 

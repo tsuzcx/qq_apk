@@ -1,9 +1,14 @@
-public final class ayzk
-  extends ayzj
+import android.hardware.Camera;
+import android.hardware.Camera.PictureCallback;
+
+class ayzk
+  implements Camera.PictureCallback
 {
-  protected int a()
+  ayzk(ayzg paramayzg) {}
+  
+  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    return 496;
+    this.a.a(paramArrayOfByte, true);
   }
 }
 

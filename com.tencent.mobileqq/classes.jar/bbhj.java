@@ -1,17 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bbhj
-  implements View.OnClickListener
+public abstract interface bbhj
 {
-  bbhj(bbhi parambbhi, bhzm parambhzm) {}
+  public abstract void a(boku paramboku);
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Bhzm.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(String paramString);
 }
 
 

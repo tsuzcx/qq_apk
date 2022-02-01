@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afur;
-import afzm;
+import agej;
+import agjg;
 import android.view.View;
-import bkps;
+import blqv;
 import com.tencent.widget.XListView;
 
 class MediaPlayerManager$6
@@ -13,11 +13,11 @@ class MediaPlayerManager$6
   
   public void run()
   {
-    afzm localafzm;
+    agjg localagjg;
     float f;
     if (MediaPlayerManager.a(this.this$0) != null)
     {
-      localafzm = MediaPlayerManager.a(this.this$0, MediaPlayerManager.a(this.this$0));
+      localagjg = MediaPlayerManager.a(this.this$0, MediaPlayerManager.a(this.this$0));
       long l = MediaPlayerManager.a(this.this$0).b();
       f = 0.0F;
       if (l > 0L) {
@@ -26,8 +26,8 @@ class MediaPlayerManager$6
       if (MediaPlayerManager.a(this.this$0) != null) {
         break label100;
       }
-      if (localafzm != null) {
-        localafzm.a(MediaPlayerManager.a(this.this$0), -1, null, MediaPlayerManager.a(this.this$0), this.a, f);
+      if (localagjg != null) {
+        localagjg.a(MediaPlayerManager.a(this.this$0), -1, null, MediaPlayerManager.a(this.this$0), this.a, f);
       }
     }
     label100:
@@ -37,8 +37,8 @@ class MediaPlayerManager$6
       return;
       i = MediaPlayerManager.a(MediaPlayerManager.a(this.this$0), MediaPlayerManager.a(this.this$0));
     } while (i > MediaPlayerManager.a(this.this$0).getCount());
-    View localView = afur.a(MediaPlayerManager.a(this.this$0), MediaPlayerManager.a(this.this$0).getHeaderViewsCount() + i);
-    localafzm.a(MediaPlayerManager.a(this.this$0), i, localView, MediaPlayerManager.a(this.this$0), this.a, f);
+    View localView = agej.a(MediaPlayerManager.a(this.this$0), MediaPlayerManager.a(this.this$0).getHeaderViewsCount() + i);
+    localagjg.a(MediaPlayerManager.a(this.this$0), i, localView, MediaPlayerManager.a(this.this$0), this.a, f);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import afud;
-import ajzh;
+import agdv;
+import akkq;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
@@ -16,7 +16,7 @@ import com.tencent.mobileqq.data.ChatMessage;
 
 public class MiniChatLinearLayout
   extends LinearLayout
-  implements ajzh
+  implements akkq
 {
   private CheckBox a;
   protected boolean a;
@@ -43,7 +43,7 @@ public class MiniChatLinearLayout
     }
     if (BaseChatItemLayout.jdField_a_of_type_Boolean)
     {
-      afud.a(this, paramMotionEvent);
+      agdv.a(this, paramMotionEvent);
       return true;
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -58,7 +58,7 @@ public class MiniChatLinearLayout
       }
       this.jdField_a_of_type_AndroidWidgetCheckBox = new CheckBox(getContext());
       this.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(null);
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setId(2131364405);
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setId(2131364449);
       this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(BaseChatItemLayout.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
       paramMiniChatLinearLayout = new LinearLayout.LayoutParams(1, 1);
       addView(this.jdField_a_of_type_AndroidWidgetCheckBox, paramMiniChatLinearLayout);

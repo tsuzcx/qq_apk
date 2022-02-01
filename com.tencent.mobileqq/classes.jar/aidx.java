@@ -1,26 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-class aidx
-  implements Animation.AnimationListener
+public class aidx
 {
-  aidx(aidp paramaidp) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.V = false;
-    this.a.s = 0;
-    this.a.W = false;
-    this.a.af = false;
-    this.a.ae = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a(this.a.n, aidp.b(this.a));
-  }
+  public int a;
+  boolean a = false;
+  boolean b = false;
+  boolean c = false;
+  public boolean d = false;
+  boolean e = false;
+  boolean f = false;
+  boolean g = false;
+  boolean h = false;
+  boolean i = false;
+  boolean j = false;
+  boolean k = false;
 }
 
 

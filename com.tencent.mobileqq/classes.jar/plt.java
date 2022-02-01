@@ -1,18 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 
 public class plt
-  extends anmu
+  implements Animator.AnimatorListener
 {
-  public plt(KandianMergeManager paramKandianMergeManager) {}
+  public plt(VideoView paramVideoView) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramBoolean) && (TextUtils.equals(KandianMergeManager.b(this.a), paramString)) && (!TextUtils.equals(paramString, anhk.aA))) {
-      KandianMergeManager.a(this.a).a(1).notifyUI(4, true, new Object[] { anhk.aA });
+    if (VideoView.access$2700(this.a) != null) {
+      VideoView.access$2700(this.a).setVisibility(4);
+    }
+    if (VideoView.access$2800(this.a) != null) {
+      VideoView.access$2800(this.a).setVisibility(4);
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -136,12 +136,12 @@ public class BasicNetwork
           if (k == 0)
           {
             if (paramIWriteFuncListener == null) {
-              break label381;
+              break label407;
             }
             i = k;
             j = k;
             paramIWriteFuncListener.onWriteHeaders(localHttpDataSource.getResponseHeaders());
-            break label381;
+            break label407;
           }
           k = m;
           if (paramIWriteFuncListener != null)
@@ -155,45 +155,76 @@ public class BasicNetwork
       }
       catch (HttpDataSource.InvalidResponseCodeException localInvalidResponseCodeException)
       {
+        label273:
+        label285:
         try
         {
           if (localInvalidResponseCodeException.responseCode == 307) {
-            break label387;
+            break label413;
           }
           j = n;
           if (localInvalidResponseCodeException.responseCode != 308) {
-            break label336;
+            break label344;
           }
-          break label387;
+          break label413;
         }
         finally {}
-        if (k != 0) {}
-        for (localObject1 = getRedirectUrl(localInvalidResponseCodeException);; localObject1 = null)
+        if (k != 0)
         {
+          localObject1 = getRedirectUrl(localInvalidResponseCodeException);
           if (localObject1 != null) {
-            break label348;
+            break label356;
           }
           throw localInvalidResponseCodeException;
-          if ((paramIWriteFuncListener != null) && (i != 0)) {
-            paramIWriteFuncListener.onWriteBodyEnd();
-          }
+          if ((paramIWriteFuncListener == null) || (i == 0)) {}
+        }
+        try
+        {
+          paramIWriteFuncListener.onWriteBodyEnd();
           Util.closeQuietly((Closeable)localObject2);
           throw paramRequest;
-          if ((paramIWriteFuncListener != null) && (k != 0)) {
+          if ((paramIWriteFuncListener != null) && (k != 0)) {}
+          try
+          {
             paramIWriteFuncListener.onWriteBodyEnd();
+            Util.closeQuietly((Closeable)localObject2);
+            return;
           }
-          Util.closeQuietly((Closeable)localObject2);
-          return;
-          label336:
+          catch (Exception paramRequest)
+          {
+            for (;;)
+            {
+              paramRequest.printStackTrace();
+            }
+          }
+          label344:
           k = 0;
-          break;
+          break label273;
+          localObject1 = null;
+          break label285;
+          label356:
+          if ((paramIWriteFuncListener != null) && (i != 0)) {}
+          try
+          {
+            paramIWriteFuncListener.onWriteBodyEnd();
+            Util.closeQuietly((Closeable)localObject2);
+            n = j;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              localException.printStackTrace();
+            }
+          }
         }
-        label348:
-        if ((paramIWriteFuncListener != null) && (i != 0)) {
-          paramIWriteFuncListener.onWriteBodyEnd();
+        catch (Exception paramIWriteFuncListener)
+        {
+          for (;;)
+          {
+            paramIWriteFuncListener.printStackTrace();
+          }
         }
-        Util.closeQuietly((Closeable)localObject2);
-        n = j;
       }
       finally
       {
@@ -201,10 +232,10 @@ public class BasicNetwork
         {
           i = j;
           continue;
-          label381:
+          label407:
           int m = 1;
           continue;
-          label387:
+          label413:
           j = n + 1;
           if (n < 5) {
             k = 1;

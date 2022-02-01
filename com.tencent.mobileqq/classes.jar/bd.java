@@ -9,7 +9,7 @@ public class bd
   
   public boolean onLongClick(View paramView)
   {
-    afur.n = true;
+    agej.n = true;
     return this.a.a(paramView);
   }
 }

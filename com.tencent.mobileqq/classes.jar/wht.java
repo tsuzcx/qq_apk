@@ -1,27 +1,24 @@
-import java.io.File;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 class wht
-  implements Comparable<wht>
+  implements Animation.AnimationListener
 {
-  public final long a;
-  public final File a;
+  wht(whs paramwhs) {}
   
-  public wht(whs paramwhs, File paramFile)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Long = paramFile.lastModified();
+    this.a.b.setVisibility(8);
+    this.a.d.setVisibility(8);
+    this.a.g.setVisibility(8);
   }
   
-  public int a(wht paramwht)
-  {
-    if (this.jdField_a_of_type_Long < paramwht.jdField_a_of_type_Long) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_Long == paramwht.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return 1;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

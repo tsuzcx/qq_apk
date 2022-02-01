@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.profilecard.vas.view;
 
-import anmw;
-import azfe;
-import bgks;
+import anyw;
+import azxr;
+import bhkt;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -12,17 +12,17 @@ import mqq.os.MqqHandler;
 class VasProfileQVipV5View$1
   implements Runnable
 {
-  VasProfileQVipV5View$1(VasProfileQVipV5View paramVasProfileQVipV5View, azfe paramazfe, boolean paramBoolean) {}
+  VasProfileQVipV5View$1(VasProfileQVipV5View paramVasProfileQVipV5View, azxr paramazxr, boolean paramBoolean) {}
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((anmw)VasProfileQVipV5View.a(this.this$0).getManager(51)).a(this.jdField_a_of_type_Azfe.a.a);
+    ExtensionInfo localExtensionInfo = ((anyw)VasProfileQVipV5View.a(this.this$0).getManager(51)).a(this.jdField_a_of_type_Azxr.a.a);
     VasProfileQVipV5View.1.1 local1 = new VasProfileQVipV5View.1.1(this, localExtensionInfo);
     ThreadManager.getUIHandler().post(local1);
-    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (bgks.b(localExtensionInfo.pendantId)))
+    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (bhkt.b(localExtensionInfo.pendantId)))
     {
       VasProfileQVipV5View.d(this.this$0).addObserver(VasProfileQVipV5View.a(this.this$0));
-      bgks.a(VasProfileQVipV5View.e(this.this$0), this.jdField_a_of_type_Azfe.a.a);
+      bhkt.a(VasProfileQVipV5View.e(this.this$0), this.jdField_a_of_type_Azxr.a.a);
     }
   }
 }

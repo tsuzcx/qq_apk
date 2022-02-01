@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.utils;
 
 import android.os.Handler;
-import anmw;
+import anyw;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 
 final class VipUtils$3
   implements Runnable
 {
-  VipUtils$3(anmw paramanmw, String paramString, VipUtils.UpdateRecentEfficientVipIconTask paramUpdateRecentEfficientVipIconTask) {}
+  VipUtils$3(anyw paramanyw, String paramString, VipUtils.UpdateRecentEfficientVipIconTask paramUpdateRecentEfficientVipIconTask) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Anmw.e(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Anyw.e(this.jdField_a_of_type_JavaLangString);
     ThreadManagerV2.getUIHandlerV2().post(this.jdField_a_of_type_ComTencentMobileqqUtilsVipUtils$UpdateRecentEfficientVipIconTask);
   }
 }

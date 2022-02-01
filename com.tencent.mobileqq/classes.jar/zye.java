@@ -1,13 +1,6 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.richframework.part.block.base.RefreshHeaderView;
-
-public class zye
-  extends RecyclerView.ViewHolder
+public abstract interface zye
 {
-  public zye(RefreshHeaderView paramRefreshHeaderView)
-  {
-    super(paramRefreshHeaderView);
-  }
+  public abstract void a();
 }
 
 

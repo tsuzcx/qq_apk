@@ -1,153 +1,102 @@
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import cooperation.qzone.util.QZLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Build.VERSION;
+import java.io.File;
 
 public class bpxm
-  extends bpen
+  implements brlf
 {
-  private static final SparseArray<bpwx> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  bole jdField_a_of_type_Bole = new bpxn(this);
-  private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
+  int jdField_a_of_type_Int = 1024000;
+  final long jdField_a_of_type_Long;
+  final String jdField_a_of_type_JavaLangString;
+  public Throwable a;
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int = 25;
+  final long jdField_b_of_type_Long;
+  boolean jdField_b_of_type_Boolean;
+  int jdField_c_of_type_Int;
+  boolean jdField_c_of_type_Boolean;
+  int d;
+  int e;
+  int f;
   
-  static
+  public bpxm(String paramString, int paramInt, long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    jdField_a_of_type_AndroidUtilSparseArray.put(3000, bpwx.a(99, 1, 0, bpxm.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(5, bpwx.a(99, 3, 0, bpcv.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(6, bpwx.a(99, 5, 0, bpcv.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(7, bpwx.a(99, 7, 0, bpcv.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(2, bpwx.a(99, 4, 0, bomv.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(30, bpwx.a(99, 6, 0, bpaz.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(28, bpwx.a(99, 9, 0, bpfm.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(29, bpwx.a(99, 8, 0, bpaz.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(4001, bpwx.a(99, 16, 0, bpaz.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3005, bpwx.a(99, 2, 0, bpxm.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3006, bpwx.a(99, 15, 0, bpxm.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3002, bpwx.a(99, 10, 1, bpxm.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3003, bpwx.a(99, 10, 2, bpxm.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3001, bpwx.a(99, 13, 0, bpxm.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3007, bpwx.a(99, 12, 1, bpxm.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3008, bpwx.a(99, 12, 2, bpxm.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3004, bpwx.a(99, 14, 0, bpxm.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3009, bpwx.a(99, 11, 0, bpxm.class));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_Boolean = paramBoolean1;
+    this.jdField_c_of_type_Boolean = paramBoolean2;
   }
   
-  public bpxm(@NonNull bpep parambpep)
+  public brlg a(int paramInt1, int paramInt2)
   {
-    super(parambpep);
-  }
-  
-  private void d()
-  {
-    Iterator localIterator = this.jdField_a_of_type_Bpep.a().iterator();
-    while (localIterator.hasNext())
+    brlg localbrlg = new brlg();
+    if (paramInt1 <= paramInt2) {}
+    for (;;)
     {
-      Object localObject1 = (bpen)localIterator.next();
-      Object localObject2;
-      if ((localObject1 instanceof bpcv))
-      {
-        localObject2 = (bpcv)localObject1;
-        if (!((bpcv)localObject2).a().b())
-        {
-          if (!((bpcv)localObject2).a().a().a()) {
-            this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(5));
-          }
-          if (!((bpcv)localObject2).a().a().a()) {
-            this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1));
-          }
-          if (!((bpcv)localObject2).a().a().a()) {
-            this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
-          }
-        }
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (localFile.exists()) {
+        localFile.delete();
       }
-      if ((localObject1 instanceof bpaz))
-      {
-        localObject1 = (bpaz)localObject1;
-        localObject2 = new JSONObject();
-        ((bpaz)localObject1).a((JSONObject)localObject2);
-        if (((JSONObject)localObject2).has(bpaz.a))
-        {
-          try
-          {
-            localObject1 = ((JSONObject)localObject2).getJSONObject(bpaz.a);
-            if (!((JSONObject)localObject1).has("comboItem")) {
-              break label237;
-            }
-            QZLog.d("QzoneEditVideoPartRepor", 2, new Object[] { "buildReportExtraReserves", " has combo item" });
-            this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(4));
-          }
-          catch (JSONException localJSONException)
-          {
-            QZLog.d("QzoneEditVideoPartRepor", 2, "buildReportExtraReserves", localJSONException);
-          }
-          continue;
-          label237:
-          if (localJSONException.has("musicItem"))
-          {
-            QZLog.d("QzoneEditVideoPartRepor", 2, new Object[] { "buildReportExtraReserves", " has music item" });
-            this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(2));
-          }
-          else if (localJSONException.has("filterItem"))
-          {
-            QZLog.d("QzoneEditVideoPartRepor", 2, new Object[] { "buildReportExtraReserves", " has filter item" });
-          }
-        }
-      }
+      localbrlg.jdField_a_of_type_JavaIoFile = localFile;
+      localbrlg.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      localbrlg.jdField_a_of_type_Float = (960.0F / paramInt2);
+      localbrlg.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localbrlg.jdField_b_of_type_Boolean = a();
+      localbrlg.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+      localbrlg.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+      localbrlg.jdField_c_of_type_Boolean = this.jdField_b_of_type_Boolean;
+      localbrlg.d = this.jdField_c_of_type_Boolean;
+      localbrlg.f = this.jdField_c_of_type_Int;
+      localbrlg.g = this.d;
+      localbrlg.h = this.e;
+      localbrlg.i = this.f;
+      yuk.a("CropVideoActivity", "HWCompressProcessor, step: getEncodeConfig() config.setRotation = " + localbrlg.jdField_b_of_type_Boolean + ", scaleRate=" + localbrlg.jdField_a_of_type_Float + ", videoBitRate=" + localbrlg.jdField_a_of_type_Int + ", videoFrameRate=" + localbrlg.jdField_b_of_type_Int + ", beginTime=" + localbrlg.jdField_a_of_type_Long + ", endTime=" + localbrlg.jdField_b_of_type_Long, ", isMute=" + this.jdField_b_of_type_Boolean, ", accurateSeek=" + this.jdField_c_of_type_Boolean + ", cropX=" + this.jdField_c_of_type_Int + ", cropY=" + this.d + ", cropWidth=" + this.e + ", cropHeight=" + this.f);
+      return localbrlg;
+      paramInt2 = paramInt1;
     }
   }
   
   public void a()
   {
-    super.a();
-    a_(3000, null);
-    ((bolb)bojv.a(5)).a(this.jdField_a_of_type_Bole);
+    yuk.e("CropVideoActivity", "HWCompressProcessor, step: HWCompressProcessor onSuccessed");
   }
   
-  public void a(int paramInt, @NonNull bpsf parambpsf)
+  public void a(int paramInt)
   {
-    super.a(paramInt, parambpsf);
-    if (parambpsf.a.saveMode != 0) {
-      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(7));
+    yuk.b("CropVideoActivity", "HWCompressProcessor, step: HWCompressProcessor onProgress:" + paramInt);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_c_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+    this.f = paramInt4;
+  }
+  
+  public void a(Throwable paramThrowable)
+  {
+    yuk.e("CropVideoActivity", "HWCompressProcessor, step: HWCompressProcessor onFailed");
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
+      bool = true;
     }
-    d();
-    a_(3006, null);
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    if ((paramMessage.what == 9) && (paramMessage.arg1 == 28)) {
-      a_(paramMessage.arg1, null);
+    while (Build.VERSION.SDK_INT <= 19) {
+      return bool;
     }
-    return super.a(paramMessage);
+    return false;
   }
   
-  public void a_(int paramInt, Object paramObject)
+  public void b()
   {
-    super.a_(paramInt, paramObject);
-    paramObject = (bpwx)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (paramObject != null)
-    {
-      if (paramInt == 3006) {
-        paramObject.a(this.jdField_a_of_type_JavaUtilSet);
-      }
-      paramObject.a();
-      return;
-    }
-    QZLog.w("QzoneEditVideoPartRepor", 2, new Object[] { "editVideoStateChanged we are not interested at this edit state " + paramInt });
-  }
-  
-  public void g()
-  {
-    super.g();
-    ((bolb)bojv.a(5)).b(this.jdField_a_of_type_Bole);
+    yuk.c("CropVideoActivity", "HWCompressProcessor, step: HWCompressProcessor onCanceled");
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

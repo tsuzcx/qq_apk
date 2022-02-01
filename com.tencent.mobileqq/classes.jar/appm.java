@@ -1,17 +1,33 @@
-import android.content.Context;
-import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 class appm
-  implements ArkAppMgr.IGetAppPathByNameCallback
+  implements apqg
 {
-  appm(appj paramappj, String paramString, Context paramContext) {}
+  appm(appj paramappj, appn paramappn, ArCloudConfigInfo paramArCloudConfigInfo) {}
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void a()
   {
-    if ((paramInt == 0) && (paramAppPathInfo.path != null)) {
-      ArkAppCacheMgr.getAppIcon(this.jdField_a_of_type_JavaLangString, new appn(this));
+    if (this.jdField_a_of_type_Appn != null) {
+      this.jdField_a_of_type_Appn.f();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Appn != null) {
+      this.jdField_a_of_type_Appn.c(paramInt);
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Appn != null) {}
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Appn != null) {
+      this.jdField_a_of_type_Appn.c(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
     }
   }
 }

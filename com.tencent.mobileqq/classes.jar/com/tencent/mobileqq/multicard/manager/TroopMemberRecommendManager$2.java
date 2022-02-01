@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.multicard.manager;
 
-import awvx;
-import awvy;
+import axoq;
+import axor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.multicard.RecommendPerson;
@@ -14,21 +14,21 @@ import java.util.concurrent.ConcurrentHashMap;
 public class TroopMemberRecommendManager$2
   implements Runnable
 {
-  public TroopMemberRecommendManager$2(awvy paramawvy, String paramString) {}
+  public TroopMemberRecommendManager$2(axor paramaxor, String paramString) {}
   
   public void run()
   {
     Object localObject1 = new LinkedHashMap();
-    EntityManager localEntityManager = awvy.a(this.this$0).a().createEntityManager();
+    EntityManager localEntityManager = axor.a(this.this$0).a().createEntityManager();
     if (localEntityManager != null) {}
     for (;;)
     {
       try
       {
         Object localObject3 = (ArrayList)localEntityManager.query(RecommendPerson.class, true, "troopUin=?", new String[] { this.a }, "cardTypeID", null, "addedIndex asc", null);
-        awvy.a(this.this$0).put(this.a, localObject3);
+        axor.a(this.this$0).put(this.a, localObject3);
         this.this$0.a(this.a, true);
-        localObject3 = this.this$0.a((List)awvy.a(this.this$0).get(this.a), this.a);
+        localObject3 = this.this$0.a((List)axor.a(this.this$0).get(this.a), this.a);
         localObject1 = localObject3;
         localEntityManager.close();
         bool = true;
@@ -44,7 +44,7 @@ public class TroopMemberRecommendManager$2
       {
         localEntityManager.close();
       }
-      awvy.a(this.this$0).notifyUI(1, bool, new Object[] { localObject1, this.a, Integer.valueOf(2) });
+      axor.a(this.this$0).notifyUI(1, bool, new Object[] { localObject1, this.a, Integer.valueOf(2) });
       return;
       boolean bool = false;
     }

@@ -1,179 +1,81 @@
-import android.opengl.GLES20;
-import android.os.Build;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.app.utils.NumberWheelView;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.VerticalGallery.LayoutParams;
+import java.util.ArrayList;
+import java.util.List;
 
 public class apdp
+  extends BaseAdapter
 {
-  int jdField_a_of_type_Int = 0;
-  FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
-  FloatBuffer b;
+  private int jdField_a_of_type_Int = 36;
+  private Context jdField_a_of_type_AndroidContentContext;
+  public List<Integer> a;
   
-  public apdp(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public apdp(NumberWheelView paramNumberWheelView, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    a(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt1, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
+    a(paramInt2, paramInt3);
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public View a(int paramInt)
   {
-    float f1 = (float)(paramFloat2 / (paramFloat4 * 3.141592653589793D) * 360.0D);
-    float f2 = paramFloat1 * (paramFloat4 / 2.0F);
-    float f3 = paramFloat1 * paramFloat3;
-    int i1 = (int)(f1 / 1.0F);
-    float f4 = f1 / 1.0F;
-    this.jdField_a_of_type_Int = (i1 * 3 * 4);
-    Object localObject = new float[this.jdField_a_of_type_Int * 4];
-    float[] arrayOfFloat = new float[this.jdField_a_of_type_Int * 4];
-    QLog.i("AREngine_CylinderSide", 1, "initVertexData. w = " + paramFloat2 + ", h = " + f3 + ", d = " + paramFloat4 + ", angleLen = " + f1 + ", angdegSpan = " + 1.0F + ", ni = " + i1 + ", nf = " + f4);
-    int n = 0;
-    int m = 0;
-    int k = 0;
-    int j = 1;
-    int i = 0;
-    if ((Build.MODEL.equalsIgnoreCase("MI-ONE Plus")) || (Build.MODEL.equalsIgnoreCase("M040")))
-    {
-      j = 0;
-      i = 1;
-    }
-    for (paramFloat1 = 0.0F; Math.ceil(paramFloat1) < f1; paramFloat1 += 1.0F)
-    {
-      double d3 = Math.toRadians(paramFloat1);
-      double d2 = Math.toRadians(paramFloat1 + 1.0F);
-      paramFloat3 = k + 1;
-      paramFloat2 = paramFloat3;
-      double d1 = d2;
-      if (f1 - i1 * 1.0F > 0.01D)
-      {
-        paramFloat2 = paramFloat3;
-        d1 = d2;
-        if (k == i1)
-        {
-          d1 = Math.toRadians(f1 - i1 * 1.0F + paramFloat1);
-          paramFloat2 = k + (f1 - i1 * 1.0F) / 1.0F;
-          QLog.i("AREngine_CylinderSide", 1, "initVertexData. angrad = " + 180.0D * d3 / 3.141592653589793D + ", angradNext = " + 180.0D * d1 / 3.141592653589793D + ", k = " + k + ", kNext = " + paramFloat2);
-        }
-      }
-      int i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d3)));
-      n = i2 + 1;
-      localObject[i2] = ((float)(f2 * Math.sin(d3)));
-      i2 = n + 1;
-      localObject[n] = 0.0F;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (k / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = i;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d1)));
-      n = i2 + 1;
-      localObject[i2] = ((float)(f2 * Math.sin(d1)));
-      i2 = n + 1;
-      localObject[n] = f3;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (paramFloat2 / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = j;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d3)));
-      n = i2 + 1;
-      localObject[i2] = ((float)(f2 * Math.sin(d3)));
-      i2 = n + 1;
-      localObject[n] = f3;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (k / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = j;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d3)));
-      n = i2 + 1;
-      d2 = f2;
-      localObject[i2] = ((float)(Math.sin(d3) * d2));
-      i2 = n + 1;
-      localObject[n] = 0.0F;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (k / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = i;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d1)));
-      n = i2 + 1;
-      localObject[i2] = ((float)(f2 * Math.sin(d1)));
-      i2 = n + 1;
-      localObject[n] = 0.0F;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (paramFloat2 / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = i;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d1)));
-      n = i2 + 1;
-      d2 = f2;
-      localObject[i2] = ((float)(Math.sin(d1) * d2));
-      i2 = n + 1;
-      localObject[n] = f3;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (paramFloat2 / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = j;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      k += 1;
-    }
-    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(localObject.length * 4);
-    localByteBuffer.order(ByteOrder.nativeOrder());
-    this.jdField_a_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
-    this.jdField_a_of_type_JavaNioFloatBuffer.put((float[])localObject);
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-    localObject = ByteBuffer.allocateDirect(arrayOfFloat.length * 4);
-    ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
-    this.b = ((ByteBuffer)localObject).asFloatBuffer();
-    this.b.put(arrayOfFloat);
-    this.b.position(0);
+    return getView(paramInt, null, null);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    GLES20.glVertexAttribPointer(paramInt1, 3, 5126, false, 16, this.jdField_a_of_type_JavaNioFloatBuffer);
-    GLES20.glVertexAttribPointer(paramInt2, 2, 5126, false, 16, this.b);
-    GLES20.glEnableVertexAttribArray(paramInt1);
-    GLES20.glEnableVertexAttribArray(paramInt2);
-    GLES20.glDrawArrays(4, 0, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    while (paramInt1 <= paramInt2)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramInt1));
+      paramInt1 += 1;
+    }
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    if (paramView == null)
+    {
+      localObject1 = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
+      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+    }
+    for (paramView = (WheelTextView)localObject1;; paramView = (View)localObject2)
+    {
+      localObject2 = paramView;
+      if (paramView == null) {
+        localObject2 = (WheelTextView)localObject1;
+      }
+      paramView = String.format("%d", new Object[] { this.jdField_a_of_type_JavaUtilList.get(paramInt) });
+      ((WheelTextView)localObject2).setTextSize(18.0F);
+      ((WheelTextView)localObject2).setTextColor(-7829368);
+      ((WheelTextView)localObject2).setGravity(5);
+      ((WheelTextView)localObject2).setVisibility(0);
+      ((WheelTextView)localObject2).setText(paramView);
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+      return localObject1;
+      localObject1 = paramView;
+    }
   }
 }
 

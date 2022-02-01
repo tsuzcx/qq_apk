@@ -1,39 +1,17 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCirclePrivateMsgShow.StChangePMSettingRsp;
-import qqcircle.QQCirclePrivateMsgShow.StFuelCostRange;
-import qqcircle.QQCirclePrivateMsgShow.StPMSettingData;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class vcs
-  implements Observer<vup<QQCirclePrivateMsgShow.StChangePMSettingRsp>>
+  implements DialogInterface.OnClickListener
 {
-  vcs(vcq paramvcq) {}
+  vcs(vcn paramvcn) {}
   
-  public void a(@Nullable vup<QQCirclePrivateMsgShow.StChangePMSettingRsp> paramvup)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramvup != null) && (paramvup.a() == 3)) {
-      QLog.e("QCirclePrivateMessageSettingContentPart", 1, "onChanged() return success！ retCode : " + ((QQCirclePrivateMsgShow.StChangePMSettingRsp)paramvup.a()).errCode.get() + " , errMsg : " + ((QQCirclePrivateMsgShow.StChangePMSettingRsp)paramvup.a()).errMsg.get());
+    if (paramInt == 1) {
+      this.a.a().finish();
     }
-    while ((paramvup == null) || (paramvup.a() != 4)) {
-      try
-      {
-        vcq.a(this.a, (QQCirclePrivateMsgShow.StPMSettingData)new QQCirclePrivateMsgShow.StPMSettingData().mergeFrom(((QQCirclePrivateMsgShow.StPMSettingData)((QQCirclePrivateMsgShow.StChangePMSettingRsp)paramvup.a()).setting.get()).toByteArray()));
-        vcq.a(this.a, (QQCirclePrivateMsgShow.StFuelCostRange)((QQCirclePrivateMsgShow.StChangePMSettingRsp)paramvup.a()).fuelCostRange.get());
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
-        {
-          localInvalidProtocolBufferMicroException.printStackTrace();
-        }
-      }
-    }
-    vcq.a(this.a, paramvup.a(), paramvup.a());
   }
 }
 

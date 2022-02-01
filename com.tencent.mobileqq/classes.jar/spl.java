@@ -1,56 +1,7 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import kotlin.Metadata;
 
-public class spl
-  implements rje
-{
-  public spl(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
-  
-  public void a(Bundle paramBundle, float paramFloat)
-  {
-    String str = paramBundle.getString("mTaskID");
-    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "");
-    if (this.a.jdField_a_of_type_JavaUtilMap.get(str) != null) {
-      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(str)).a((int)paramFloat);
-    }
-  }
-  
-  public void a(Bundle paramBundle, int paramInt, float paramFloat)
-  {
-    QLog.d("KandianVideoUpload", 1, paramBundle.getString("mTaskID") + "service中的状态:" + paramInt);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 200: 
-      this.a.jdField_a_of_type_Rje.a(paramBundle, (int)paramFloat);
-      return;
-    case 202: 
-      ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
-      return;
-    }
-    rja.b(paramBundle);
-  }
-  
-  public void a(Bundle paramBundle, String paramString)
-  {
-    paramString = paramBundle.getString("mTaskID");
-    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
-    if (this.a.jdField_a_of_type_JavaUtilMap.get(paramString) != null) {
-      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(paramString)).a();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.a();
-    pmh.a().b(true);
-    ReadInJoyBaseListViewGroup.a(this.a, paramString);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/item/NewPtsViewCreator$Companion;", "", "()V", "TAG", "", "fontScale", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class spl {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

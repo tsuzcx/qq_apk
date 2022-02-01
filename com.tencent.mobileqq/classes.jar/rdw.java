@@ -1,36 +1,10 @@
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import java.io.File;
-import java.io.OutputStream;
+import android.graphics.Bitmap;
 
-public class rdw
-  extends bdsh
+public abstract interface rdw
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramDownloadParams = paramDownloadParams.urlStr;
-    if (paramDownloadParams.startsWith("readinjoy_skin_gif://")) {
-      paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif://", "");
-    }
-    for (;;)
-    {
-      paramOutputStream = new File(paramOutputStream);
-      if (!paramOutputStream.exists()) {
-        break;
-      }
-      return paramOutputStream;
-      paramOutputStream = paramDownloadParams;
-      if (paramDownloadParams.startsWith("readinjoy_skin_gif:")) {
-        paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif:", "");
-      }
-    }
-    return null;
-  }
+  public abstract void a();
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    return new rdx(this, paramFile, false, false, 0, 0, 0.0F);
-  }
+  public abstract void a(Bitmap paramBitmap, rdu paramrdu);
 }
 
 

@@ -5,14 +5,14 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
-import bgtn;
+import bhtq;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BubbleViewGroup
   extends ViewGroup
 {
-  public static final int HORIZONTAL_SPACE = bgtn.b(12.0F);
+  public static final int HORIZONTAL_SPACE = bhtq.b(12.0F);
   public static final int MAX_ROW = 3;
   public static final int VERTICAL_SPACE = HORIZONTAL_SPACE;
   private List<BubbleViewGroup.WarpLine> mRowLayoutList;

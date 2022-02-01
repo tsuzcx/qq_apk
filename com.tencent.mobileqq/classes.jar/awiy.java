@@ -1,60 +1,66 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class awiy
-  implements AdapterView.OnItemClickListener
+public class awiy
+  implements IMiniMsgUnreadCallback
 {
-  awiy(awix paramawix) {}
+  public awiy(UiApiPlugin paramUiApiPlugin) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void destroy() {}
+  
+  public void hide() {}
+  
+  public void hideUnread()
   {
-    if (this.a.a.getActionSheet().isShowing()) {
-      this.a.a.getActionSheet().dismiss();
-    }
-    int i;
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131719199;
-      }
-    }
-    for (;;)
+    try
     {
-      if (i != -1) {
-        zvc.a(1, i);
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-        return;
-        if (WXShareHelper.a().b()) {
-          break label175;
-        }
-        i = 2131719200;
-        break;
-        switch ((int)paramLong)
-        {
-        default: 
-          break;
-        case 0: 
-          awix.a(this.a);
-          break;
-        case 1: 
-          awix.b(this.a);
-          break;
-        case 2: 
-          awix.c(this.a);
-          break;
-        case 3: 
-          awix.d(this.a);
-        }
-      }
-      label175:
-      i = -1;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("unReadHide", true);
+      this.a.a("UnRead", localJSONObject);
+      return;
     }
+    catch (Exception localException)
+    {
+      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
+    }
+  }
+  
+  public boolean show(int paramInt)
+  {
+    return false;
+  }
+  
+  public void updateOnBackFromMiniAIO(Bundle paramBundle)
+  {
+    try
+    {
+      paramBundle = new JSONObject();
+      this.a.a("backFromMiniAIO", paramBundle);
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      QLog.d("UiApiPlugin", 1, paramBundle, new Object[0]);
+    }
+  }
+  
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("unReadC", paramInt);
+      localJSONObject.put("unReadHide", paramBoolean);
+      this.a.a("updateUnreadCount", localJSONObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("UiApiPlugin", 2, "mini_msg uiApiPlugin undateUnreadCount = " + paramInt);
+      }
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

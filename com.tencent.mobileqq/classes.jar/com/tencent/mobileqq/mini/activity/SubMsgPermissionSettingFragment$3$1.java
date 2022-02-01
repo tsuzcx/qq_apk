@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.activity;
 
-import biau;
+import bjbs;
 import com.tencent.mobileqq.widget.QQToast;
 
 class SubMsgPermissionSettingFragment$3$1
@@ -12,7 +12,7 @@ class SubMsgPermissionSettingFragment$3$1
   {
     SubMsgPermissionSettingFragment.access$400(this.this$1.this$0).dismiss();
     if (!this.val$isSuc) {
-      QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131693691), 0).a();
+      QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131693708), 0).a();
     }
   }
 }

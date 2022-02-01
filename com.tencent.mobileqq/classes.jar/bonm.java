@@ -1,23 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.7.1;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bonm
-  implements View.OnClickListener
+  implements Observer<bond>
 {
-  public bonm(HummingActivity paramHummingActivity) {}
+  bonm(bonf parambonf) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable bond parambond)
   {
-    if (bonh.b()) {}
-    for (;;)
+    Object localObject = bomz.a(parambond);
+    parambond = new LinkedList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      HummingActivity.a(this.a, 1);
-      HummingActivity.b(this.a);
+      bond localbond = (bond)((Iterator)localObject).next();
+      bonp localbonp = new bonp(null);
+      localbonp.a = bonr.a(localbond);
+      parambond.add(localbonp);
     }
+    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.7.1(this, parambond));
   }
 }
 

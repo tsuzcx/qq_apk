@@ -1,18 +1,23 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import msf.registerproxy.register_proxy.DiscussList;
-import msf.registerproxy.register_proxy.GroupList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bbyu
+class bbyu
+  implements View.OnClickListener
 {
-  public List<register_proxy.GroupList> a;
-  public ConcurrentHashMap<String, ArrayList<String>> a;
-  public List<register_proxy.DiscussList> b;
+  bbyu(bbyl parambbyl) {}
+  
+  public void onClick(View paramView)
+  {
+    if (bbyl.a(this.a) != null) {
+      bbyl.a(this.a, this.a.a);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbyu
  * JD-Core Version:    0.7.0.1
  */

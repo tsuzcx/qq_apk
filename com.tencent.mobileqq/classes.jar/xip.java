@@ -1,24 +1,8 @@
-import android.text.TextUtils;
-import java.util.Collections;
-import java.util.concurrent.ConcurrentHashMap;
-
 public class xip
 {
-  public static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
-  
-  public static void a(String paramString)
+  public static boolean a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    long l;
-    Long localLong;
-    do
-    {
-      return;
-      l = System.currentTimeMillis();
-      localLong = (Long)a.get(paramString);
-    } while ((localLong != null) && (Math.abs(l - localLong.longValue()) <= 120000L));
-    a.put(paramString, Long.valueOf(l));
-    wwy.a(Collections.singletonList(paramString));
+    return paramInt > 1000;
   }
 }
 

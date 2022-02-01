@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.File;
-import nku;
+import nmp;
 
 public class HippyQQFileUtil
 {
@@ -309,7 +309,7 @@ public class HippyQQFileUtil
   
   public static File getOfflineDownloadFile()
   {
-    Object localObject = nku.a("1011");
+    Object localObject = nmp.a("1011");
     if (TextUtils.isEmpty((CharSequence)localObject)) {}
     do
     {

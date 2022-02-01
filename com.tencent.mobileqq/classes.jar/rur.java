@@ -1,46 +1,31 @@
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
 
-public abstract interface rur
+class rur
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  rur(rup paramrup, LinearLayout.LayoutParams paramLayoutParams, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  public abstract void a(VideoInfo paramVideoInfo);
-  
-  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(VideoInfo paramVideoInfo);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void d();
-  
-  public abstract void d(boolean paramBoolean);
-  
-  public abstract void e(boolean paramBoolean);
-  
-  public abstract void f(boolean paramBoolean);
-  
-  public abstract void g(boolean paramBoolean);
-  
-  public abstract void h(boolean paramBoolean);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.bottomMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (!this.b) {
+        break label63;
+      }
+      rup.a(this.jdField_a_of_type_Rup).z.setVisibility(0);
+    }
+    for (;;)
+    {
+      rup.a(this.jdField_a_of_type_Rup).x.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
+      return;
+      label63:
+      rup.a(this.jdField_a_of_type_Rup).y.setVisibility(0);
+    }
+  }
 }
 
 

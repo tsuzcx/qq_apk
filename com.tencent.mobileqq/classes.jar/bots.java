@@ -1,19 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 public class bots
-  implements DialogInterface.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  public bots(MusicProviderView paramMusicProviderView, MusicItemInfo paramMusicItemInfo) {}
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  ImageView b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bots(View paramView)
   {
-    paramDialogInterface.dismiss();
-    MusicProviderView.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_Boty.k();
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362266));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362262));
+    this.b = ((ImageView)paramView.findViewById(2131362268));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131362267));
   }
 }
 

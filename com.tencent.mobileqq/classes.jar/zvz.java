@@ -1,14 +1,14 @@
-import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.view.View;
 
 class zvz
-  implements ViewPropertyAnimatorListener
+  implements blkc
 {
-  public void onAnimationCancel(View paramView) {}
+  zvz(zvy paramzvy, View paramView) {}
   
-  public void onAnimationEnd(View paramView) {}
-  
-  public void onAnimationStart(View paramView) {}
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+  }
 }
 
 

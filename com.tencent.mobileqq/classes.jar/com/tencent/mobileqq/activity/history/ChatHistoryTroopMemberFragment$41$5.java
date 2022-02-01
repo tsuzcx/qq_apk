@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.history;
 
-import ajtj;
-import ajtv;
+import akes;
+import akfe;
 import android.support.v4.app.FragmentActivity;
 import java.util.List;
 
 public class ChatHistoryTroopMemberFragment$41$5
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$41$5(ajtj paramajtj, List paramList) {}
+  public ChatHistoryTroopMemberFragment$41$5(akes paramakes, List paramList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ajtj.a.getActivity().isFinishing()) {}
-    while (this.jdField_a_of_type_Ajtj.a.a == null) {
+    if (this.jdField_a_of_type_Akes.a.getActivity().isFinishing()) {}
+    while (this.jdField_a_of_type_Akes.a.a == null) {
       return;
     }
-    this.jdField_a_of_type_Ajtj.a.a.c = this.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_Ajtj.a.a.a();
+    this.jdField_a_of_type_Akes.a.a.c = this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Akes.a.a.a();
   }
 }
 

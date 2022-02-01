@@ -1,21 +1,32 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import java.util.List;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
 public class bfnr
-  implements bkhw
+  implements View.OnTouchListener
 {
-  public bfnr(BulkSendMessageFragment paramBulkSendMessageFragment, bkho parambkho) {}
+  float jdField_a_of_type_Float = 0.0F;
+  float b = 0.0F;
   
-  public void OnClick(View paramView, int paramInt)
+  public bfnr(NewTroopContactView paramNewTroopContactView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt < this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaUtilList.size())
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
     {
-      paramView = (String)this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaUtilList.get(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramView);
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.b = paramMotionEvent.getRawY();
     }
-    this.jdField_a_of_type_Bkho.dismiss();
+    for (;;)
+    {
+      return false;
+      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a.clearFocus();
+      }
+    }
   }
 }
 

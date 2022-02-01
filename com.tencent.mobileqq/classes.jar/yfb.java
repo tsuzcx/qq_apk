@@ -1,17 +1,75 @@
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.widget.AbsListView;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.qphone.base.util.QLog;
 
 public class yfb
-  implements bkhe
+  extends yii
+  implements yoo
 {
-  public yfb(StoryMemoriesFragment paramStoryMemoriesFragment, zlv paramzlv) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public yfb(Context paramContext, Activity paramActivity, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Zlv.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    super(paramContext, paramActivity, paramInt1, paramInt2);
+    super.a(this);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
+  public static void a(Activity paramActivity, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem)
+  {
+    StringBuilder localStringBuilder1 = null;
+    StringBuilder localStringBuilder2;
+    if ((paramVideoListFeedItem != null) && (paramStoryVideoItem != null))
+    {
+      localStringBuilder2 = new StringBuilder();
+      if (paramStoryVideoItem.mTimeZoneOffsetMillis != 2147483647L)
+      {
+        localStringBuilder2.append(zps.a(paramStoryVideoItem.mCreateTime, paramStoryVideoItem.mTimeZoneOffsetMillis));
+        paramStoryVideoItem = localStringBuilder2;
+        paramVideoListFeedItem = localStringBuilder1;
+        if (localStringBuilder2.length() > 0)
+        {
+          paramVideoListFeedItem = new Intent();
+          paramVideoListFeedItem.putExtra("at_video_text", localStringBuilder2.toString());
+          paramStoryVideoItem = localStringBuilder2;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder1 = new StringBuilder().append("set result ok. At video text is:");
+        if (paramStoryVideoItem != null) {
+          break label146;
+        }
+      }
+      label146:
+      for (paramStoryVideoItem = "";; paramStoryVideoItem = paramStoryVideoItem.toString())
+      {
+        QLog.d("Q.qqstory.detail.FeedItemThumbAdapter", 2, paramStoryVideoItem);
+        paramActivity.setResult(-1, paramVideoListFeedItem);
+        return;
+        localStringBuilder2.append(zps.b(paramStoryVideoItem.mCreateTime));
+        break;
+      }
+      paramStoryVideoItem = null;
+      paramVideoListFeedItem = localStringBuilder1;
+    }
+  }
+  
+  public void a(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt)
+  {
+    if (zps.b()) {
+      return;
+    }
+    a(this.a, paramVideoListFeedItem, paramStoryVideoItem);
+    yup.a("home_page", "choose_video", 0, 0, new String[0]);
+    this.a.finish();
+  }
+  
+  public void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt) {}
 }
 
 

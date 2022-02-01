@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.widget.QQViewPager;
 
 public class bazw
-  implements View.OnClickListener
+  implements bjdq
 {
-  public bazw(EditActivity paramEditActivity) {}
+  public bazw(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public void onClick(View paramView)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt1 == paramInt2) {
+      return;
+    }
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).setCurrentItem(paramInt2);
   }
 }
 

@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.music.SongInfo;
 
-public class axrn
-  extends annz
+class axrn
+  extends axqq
 {
-  public axrn(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  axrn(axrl paramaxrl) {}
   
-  public void b(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public void onPlaySongChanged(SongInfo paramSongInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDismissHotChat.isSuccess=" + paramBoolean + ",groupcode=" + paramString1 + ",result=" + paramInt + ",strError=" + paramString2);
+    if (axrl.a(this.a) != null) {
+      axrl.a(this.a, axrl.a(this.a).a());
     }
-    if ((paramBoolean) && (paramInt == 0) && (NearbyPeopleProfileActivity.a(this.a) != null) && (NearbyPeopleProfileActivity.a(this.a).hotInfo != null) && (paramString1 != null) && (paramString1.equals(NearbyPeopleProfileActivity.a(this.a).hotInfo.troopUin)) && (NearbyPeopleProfileActivity.a(this.a) != null))
-    {
-      NearbyPeopleProfileActivity.a(this.a).strHotChatInfo = "";
-      NearbyPeopleProfileActivity.a(this.a).hotInfo = null;
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    axrl.a(this.a, paramInt);
+    if (paramInt == 2) {
+      axrl.a(this.a, axrl.a(this.a).c());
     }
   }
 }

@@ -1,15 +1,34 @@
-import android.widget.ImageView;
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+import com.tencent.widget.AdapterView;
 
 public class bgyi
+  implements bljo
 {
-  public ImageView a;
-  public String a;
+  public bgyi(WheelPickerLayout paramWheelPickerLayout) {}
   
-  public bgyi(String paramString, ImageView paramImageView)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    WheelPickerLayout.a(this.a, paramView, 1);
+    WheelPickerLayout.a(this.a, paramView, true);
+    if ((paramView != null) && (paramView.getTag() != null))
+    {
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt)
+        {
+          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), false);
+        }
+        paramInt += 1;
+      }
+    }
   }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

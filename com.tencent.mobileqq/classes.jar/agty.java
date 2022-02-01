@@ -1,23 +1,35 @@
-import android.util.LruCache;
-import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.helper.AVGameHelper.1.1;
+import com.tencent.mobileqq.activity.aio.helper.AVGameHelper.1.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class agty
-  extends LruCache<Long, MessageForPoke>
+public class agty
+  extends mxp
 {
-  agty(agtx paramagtx, int paramInt)
+  agty(agtx paramagtx) {}
+  
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    super(paramInt);
+    if ((paramString1 != null) && (agtx.a(this.a).a.equals(paramString1)))
+    {
+      paramString1 = (mxc)agtx.a(this.a).getManager(373);
+      if (paramString1 != null) {
+        paramString1.a(agtx.a(this.a).a, 0, 1);
+      }
+    }
   }
   
-  protected void a(boolean paramBoolean, Long paramLong, MessageForPoke paramMessageForPoke1, MessageForPoke paramMessageForPoke2)
+  public void a(int paramInt, String paramString, mxq parammxq)
   {
-    if ((paramMessageForPoke1 != null) && (!paramMessageForPoke1.isPlayed))
-    {
-      paramMessageForPoke1.setPlayed(this.a.b);
-      paramMessageForPoke1.mFrameState.a = false;
-      paramMessageForPoke1.mFrameState.c = true;
-      paramMessageForPoke1.mUnlimitedState.a = false;
-      paramMessageForPoke1.mUnlimitedState.b = true;
+    ThreadManager.getUIHandler().post(new AVGameHelper.1.1(this, parammxq));
+  }
+  
+  public void b(int paramInt, String paramString1, String paramString2)
+  {
+    if ((paramString2 != null) && (agtx.a(this.a).a.equals(paramString2)) && (agtx.a(this.a) != null)) {
+      ThreadManager.getUIHandler().post(new AVGameHelper.1.2(this, paramInt));
     }
   }
 }

@@ -1,47 +1,25 @@
-import NS_KING_PUBLIC.stAuth;
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import com.tencent.shadow.dynamic.host.PluginManager;
-import cooperation.ilive.plugin.IlivePluginCallback;
-import cooperation.ilive.plugin.IlivePluginManager;
-
-class bleh
-  implements blel
+public class bleh
 {
-  long jdField_a_of_type_Long;
-  Context jdField_a_of_type_AndroidContentContext;
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  EnterCallback jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback;
-  private PluginManager jdField_a_of_type_ComTencentShadowDynamicHostPluginManager;
-  private boolean jdField_a_of_type_Boolean;
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
   
-  public bleh(blef paramblef, PluginManager paramPluginManager, long paramLong, Context paramContext, Bundle paramBundle, EnterCallback paramEnterCallback)
+  bleh()
   {
-    this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager = paramPluginManager;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback = paramEnterCallback;
-  }
-  
-  public void onGetAuthInfo(boolean paramBoolean, stAuth paramstAuth)
-  {
-    blet.b("stAuth");
-    if (paramBoolean)
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        blef.a(this.jdField_a_of_type_Blef, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager, this.jdField_a_of_type_AndroidOsBundle, paramstAuth, this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback);
-      }
-      return;
-    }
-    if (IlivePluginManager.getInstance().getPluginCallback() != null) {
-      IlivePluginManager.getInstance().getPluginCallback().onPluginLoginFail(-1, "auth login fail");
-    }
-    QLog.e("IliveAuthShadowImpl", 1, "[enter] pluginManager auth fail!");
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 4;
   }
 }
 

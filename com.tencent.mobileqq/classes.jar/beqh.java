@@ -1,26 +1,16 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorFragment;
+import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorFragment.7.1;
 
-class beqh
-  extends beqn
+public class beqh
+  implements bemy
 {
-  beqh(beqg parambeqg) {}
+  public beqh(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
   
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  public void a(int paramInt)
   {
-    if (!this.a.a.this$0.a) {}
-    do
-    {
-      return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
-    return;
-    beqc.a(this.a.a.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new WriteTogetherEditorFragment.7.1(this), 100L);
   }
 }
 

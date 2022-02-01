@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.troop.aioapp;
 
-import bemy;
-import bena;
-import benc;
-import bend;
+import bflw;
+import bfly;
+import bfma;
+import bfmb;
 
 public class AioGroupAppsManager$2
   implements Runnable
 {
-  public AioGroupAppsManager$2(bemy parambemy, long paramLong) {}
+  public AioGroupAppsManager$2(bflw parambflw, long paramLong) {}
   
   public void run()
   {
-    bemy.a(this.this$0).a();
-    if (!bend.a(this.this$0.a(this.a))) {
-      benc.a(bemy.a(this.this$0), this.a);
+    bflw.a(this.this$0).a();
+    if (!bfmb.a(this.this$0.a(this.a))) {
+      bfma.a(bflw.a(this.this$0), this.a);
     }
   }
 }

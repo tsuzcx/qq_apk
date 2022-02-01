@@ -1,54 +1,40 @@
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.Calendar;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr.FileUploadMgrObserver.1;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Set;
 
-class bfxv
-  implements bfyn
+public class bfxv
+  implements Observer
 {
-  bfxv(bfxu parambfxu) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  private final void a(Object paramObject)
   {
-    if (bfxu.a(this.a) != null)
+    paramObject = (Object[])paramObject;
+    int i = ((Integer)paramObject[0]).intValue();
+    paramObject = (Object[])paramObject[1];
+    switch (i)
     {
-      if (paramInt1 != 0) {
-        break label212;
-      }
-      if (bfxu.a(this.a) == null) {
-        break label288;
-      }
-      paramInt1 = bfxu.a(this.a).a(bfxu.a(this.a), paramInt2);
-      int i = bfxu.a(this.a).a(bfxu.a(this.a), paramInt2, paramInt1);
-      paramInt2 = paramInt1;
-      paramInt1 = i;
+    default: 
+      return;
     }
-    for (;;)
+    a((Set)paramObject[0]);
+  }
+  
+  protected void a(Set<Long> paramSet) {}
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
     {
-      bfxu.a(this.a).setSelection(1, paramInt2);
-      bfxu.a(this.a).a(1);
-      bfxu.a(this.a).setSelection(2, paramInt1);
-      bfxu.a(this.a).a(2);
-      label212:
-      do
-      {
-        bfxu.a(this.a, bfxu.a(this.a).a(new int[] { bfxu.a(this.a).a(0), bfxu.a(this.a).a(1), bfxu.a(this.a).a(2) }));
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopPickerViewHelper", 2, Arrays.toString(bfxu.a(this.a).a(bfxu.a(this.a).getTimeInMillis())));
-        }
-        return;
-      } while (paramInt1 != 1);
-      if (bfxu.a(this.a) != null) {}
-      for (paramInt1 = bfxu.a(this.a).a(bfxu.a(this.a), bfxu.a(this.a).a(0), paramInt2);; paramInt1 = 0)
-      {
-        bfxu.a(this.a).setSelection(2, paramInt1);
-        bfxu.a(this.a).a(2);
-        break;
-      }
-      label288:
-      paramInt1 = 0;
-      paramInt2 = 0;
+      new Handler(paramObservable).post(new TroopFileUploadMgr.FileUploadMgrObserver.1(this, paramObject));
+      return;
     }
+    a(paramObject);
   }
 }
 

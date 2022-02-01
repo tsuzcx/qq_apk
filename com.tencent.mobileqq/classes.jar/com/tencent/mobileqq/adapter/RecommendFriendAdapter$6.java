@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.adapter;
 
-import ameh;
+import amqb;
 
 public class RecommendFriendAdapter$6
   implements Runnable
 {
-  public RecommendFriendAdapter$6(ameh paramameh) {}
+  public RecommendFriendAdapter$6(amqb paramamqb) {}
   
   public void run()
   {

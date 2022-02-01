@@ -1,15 +1,9 @@
 public class bfep
-  extends bfem
+  extends wnk
 {
-  public int a()
-  {
-    return 0;
-  }
-  
-  public int b()
-  {
-    return -1;
-  }
+  public String a;
+  public String b;
+  public String c;
 }
 
 

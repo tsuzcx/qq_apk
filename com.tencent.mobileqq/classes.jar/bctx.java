@@ -1,27 +1,20 @@
-import android.os.FileObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForTofuBaseProfile;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class bctx
-  extends FileObserver
+public class bctx
+  implements adbf
 {
-  public bctx(String paramString, int paramInt)
+  public MessageRecord a(int paramInt)
   {
-    super(paramString, paramInt);
-  }
-  
-  public void onEvent(int paramInt, String arg2)
-  {
-    QLog.e("UnifiedMonitor.Trace", 1, "dumpTraces onEvent " + ???);
-    synchronized (bctw.a())
-    {
-      notifyAll();
-      return;
+    if (paramInt == -7010) {
+      return new MessageForTofuBaseProfile();
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bctx
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anjx;
-import assm;
-import assn;
-import asso;
-import assp;
-import atvf;
-import bgnt;
-import blja;
+import anvu;
+import atiq;
+import atir;
+import atis;
+import atit;
+import auna;
+import bhnv;
+import bmkd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -36,7 +36,7 @@ public class MPFileVerifyPwdView
   View jdField_a_of_type_AndroidViewView = null;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private assp jdField_a_of_type_Assp;
+  private atit jdField_a_of_type_Atit;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Timer jdField_a_of_type_JavaUtilTimer = new Timer();
   private View jdField_b_of_type_AndroidViewView;
@@ -49,16 +49,16 @@ public class MPFileVerifyPwdView
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public View a(ViewGroup paramViewGroup, assp paramassp)
+  public View a(ViewGroup paramViewGroup, atit paramatit)
   {
-    this.jdField_a_of_type_Assp = paramassp;
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131560910, null).findViewById(2131380465);
+    this.jdField_a_of_type_Atit = paramatit;
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131560941, null).findViewById(2131380651);
     return this.jdField_a_of_type_AndroidViewView;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Assp = null;
+    this.jdField_a_of_type_Atit = null;
     if (this.jdField_a_of_type_JavaUtilTimer != null)
     {
       this.jdField_a_of_type_JavaUtilTimer.cancel();
@@ -69,23 +69,23 @@ public class MPFileVerifyPwdView
   @TargetApi(11)
   public void b()
   {
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131380468);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373127));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131380654);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373240));
     this.jdField_a_of_type_AndroidWidgetTextView.setLongClickable(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.addTextChangedListener(new assm(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.addTextChangedListener(new atiq(this));
     if (Build.VERSION.SDK_INT >= 11)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextIsSelectable(false);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCustomSelectionActionModeCallback(new assn(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setCustomSelectionActionModeCallback(new atir(this));
     }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131380466));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131380652));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371216));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131693789);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371323));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131693806);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#00a5e0"));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new asso(this));
-    if (!bgnt.d(BaseApplicationImpl.getContext())) {
-      atvf.a(BaseApplicationImpl.getContext().getString(2131693946));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new atis(this));
+    if (!bhnv.d(BaseApplicationImpl.getContext())) {
+      auna.a(BaseApplicationImpl.getContext().getString(2131693963));
     }
   }
   
@@ -106,7 +106,7 @@ public class MPFileVerifyPwdView
   {
     String str = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
     if ((str == null) || (str.equals(""))) {
-      atvf.a(BaseApplicationImpl.getContext().getString(2131693808));
+      auna.a(BaseApplicationImpl.getContext().getString(2131693825));
     }
     for (;;)
     {
@@ -116,19 +116,19 @@ public class MPFileVerifyPwdView
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#00a5e0"));
       if (str.length() < 6)
       {
-        atvf.a(BaseApplicationImpl.getContext().getString(2131693809));
+        auna.a(BaseApplicationImpl.getContext().getString(2131693826));
       }
-      else if (!bgnt.d(BaseApplicationImpl.getContext()))
+      else if (!bhnv.d(BaseApplicationImpl.getContext()))
       {
-        atvf.a(BaseApplicationImpl.getContext().getString(2131693946));
+        auna.a(BaseApplicationImpl.getContext().getString(2131693963));
       }
       else
       {
-        anjx localanjx = (anjx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
-        localanjx.a().a(str);
-        this.jdField_a_of_type_Long = localanjx.a().a(2);
-        if (this.jdField_a_of_type_Assp != null) {
-          this.jdField_a_of_type_Assp.a(this.jdField_a_of_type_Long);
+        anvu localanvu = (anvu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
+        localanvu.a().a(str);
+        this.jdField_a_of_type_Long = localanvu.a().a(2);
+        if (this.jdField_a_of_type_Atit != null) {
+          this.jdField_a_of_type_Atit.a(this.jdField_a_of_type_Long);
         }
       }
     }

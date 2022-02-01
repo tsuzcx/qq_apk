@@ -1,274 +1,55 @@
-import VACDReport.ReportBody;
-import VACDReport.ReportHeader;
-import VACDReport.ReportInfo;
-import VACDReport.ReportItem;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
+import android.content.Intent;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Map;
 
-class akwe
-  extends Handler
+public class akwe
+  extends aktq
 {
-  akwe(akwd paramakwd, Looper paramLooper)
+  protected akwe(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    super(paramLooper);
+    super(paramNewPhotoPreviewActivity);
   }
   
-  public void handleMessage(Message arg1)
+  public void initData(Intent paramIntent)
   {
-    Object localObject4 = (Object[])???.obj;
-    if (QLog.isColorLevel()) {
-      QLog.i("VACDReport", 2, "reportThread. handleMessage msg.arg1=" + ???.arg1);
+    int i = ((NewPhotoPreviewActivity)this.mActivity).getIntent().getIntExtra("PhotoConst.CURRENT_SELECTED_INDEX", -1);
+    ArrayList localArrayList1 = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
+    ArrayList localArrayList2 = new ArrayList();
+    if (localArrayList1 != null) {
+      localArrayList2.addAll(localArrayList1);
     }
-    Object localObject5;
-    ReportInfo localReportInfo;
-    long l;
-    switch (???.arg1)
+    super.initData(paramIntent);
+    this.a.paths.clear();
+    this.a.paths = localArrayList2;
+    this.a.totalPicCount = this.a.paths.size();
+    this.a.firstSelectedPostion = i;
+    if (this.a.firstSelectedPostion >= this.a.totalPicCount) {
+      this.a.firstSelectedPostion = -1;
+    }
+    this.mPhotoCommonData.selectedIndex.clear();
+    this.mPhotoCommonData.selectedIndex.add(Integer.valueOf(this.a.firstSelectedPostion));
+    paramIntent = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
+    if (this.mPhotoCommonData.selectedPhotoList == null) {
+      this.mPhotoCommonData.selectedPhotoList = new ArrayList();
+    }
+    for (;;)
     {
-    default: 
+      if ((paramIntent != null) && (!paramIntent.equals(""))) {
+        this.mPhotoCommonData.selectedPhotoList.add(paramIntent);
+      }
+      QLog.d("PhotoPreviewLogicScanEntry", 1, new Object[] { "count=", Integer.valueOf(this.a.totalPicCount), " pos=", Integer.valueOf(this.a.firstSelectedPostion) });
       return;
-    case 1: 
-      synchronized (akwd.a())
-      {
-        ReportHeader localReportHeader = (ReportHeader)localObject4[1];
-        if ((ReportInfo)akwd.a(this.a).get(Long.valueOf(localReportHeader.seqno)) != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("VACDReport", 2, "start report. seqno=" + localReportHeader.seqno + " is exist ignore...");
-          }
-          return;
-        }
-      }
-      localObject5 = (ReportItem)localObject4[2];
-      localObject4 = (String)localObject4[0];
-      localReportInfo = new ReportInfo();
-      localReportInfo.header = localObject1;
-      localReportInfo.body = new ReportBody();
-      if (!TextUtils.isEmpty((CharSequence)localObject4))
-      {
-        localReportInfo.header.sKey = ((String)localObject4);
-        localReportInfo.body.sKey = ((String)localObject4);
-      }
-      localReportInfo.body.reportItems = new ArrayList(16);
-      localReportInfo.body.startTime = localObject1.startTime;
-      if (localObject5 != null)
-      {
-        localReportInfo.body.reportItems.add(localObject5);
-        ((ReportItem)localObject5).seqno = localObject1.seqno;
-        akwd.a(this.a).add(localObject5);
-      }
-      akwd.a(this.a).put(Long.valueOf(localObject1.seqno), localReportInfo);
-      akwd.b(this.a).add(localObject1);
-      akwd.a().notify();
-      return;
-    case 2: 
-      for (;;)
-      {
-        synchronized (akwd.a())
-        {
-          l = ((Long)localObject4[0]).longValue();
-          ??? = (ReportItem)localObject4[2];
-          localObject5 = (ReportInfo)akwd.a(this.a).get(Long.valueOf(l));
-          if (localObject5 != null) {
-            break;
-          }
-          if (QLog.isColorLevel())
-          {
-            localObject4 = new StringBuilder().append("addReportItem. seqno=").append(l).append(" is illegal, step:");
-            if (??? != null)
-            {
-              ??? = ???.step;
-              QLog.d("VACDReport", 2, ???);
-            }
-          }
-          else
-          {
-            return;
-          }
-        }
-        ??? = ".";
-      }
-      if ((((ReportInfo)localObject5).header == null) || (((ReportInfo)localObject5).body == null))
-      {
-        if (QLog.isColorLevel())
-        {
-          localObject4 = new StringBuilder().append("addReportItem. seqno=").append(l).append(" is illegal, step:");
-          if (??? == null) {
-            break label1584;
-          }
-          ??? = ???.step;
-          QLog.d("VACDReport", 2, ???);
-        }
-      }
-      else
-      {
-        if (((ReportInfo)localObject5).body.reportItems == null) {
-          ((ReportInfo)localObject5).body.reportItems = new ArrayList();
-        }
-        ((ReportInfo)localObject5).body.reportItems.add(???);
-        localObject4 = (String)localObject4[1];
-        if (!TextUtils.isEmpty((CharSequence)localObject4))
-        {
-          ((ReportInfo)localObject5).header.sKey = ((String)localObject4);
-          ((ReportInfo)localObject5).body.sKey = ((String)localObject4);
-        }
-        ???.seqno = ((ReportInfo)localObject5).header.seqno;
-        akwd.a(this.a).add(???);
-        akwd.a().notify();
-        return;
-      }
-      break;
-    case 3: 
-      for (;;)
-      {
-        synchronized (akwd.a())
-        {
-          l = ((Long)localObject4[0]).longValue();
-          ??? = (ReportItem)localObject4[1];
-          localObject4 = (ReportInfo)akwd.a(this.a).get(Long.valueOf(l));
-          if (localObject4 != null) {
-            break;
-          }
-          if (QLog.isColorLevel())
-          {
-            localObject4 = new StringBuilder().append("end report. seqno=").append(l).append(" is illegal, step:");
-            if (??? != null)
-            {
-              ??? = ???.step;
-              QLog.d("VACDReport", 2, ???);
-            }
-          }
-          else
-          {
-            return;
-          }
-        }
-        ??? = ".";
-      }
-      if ((((ReportInfo)localObject4).header == null) || (((ReportInfo)localObject4).body == null))
-      {
-        if (QLog.isColorLevel())
-        {
-          localObject4 = new StringBuilder().append("end report. seqno=").append(l).append(" is illegal, step:");
-          if (??? == null) {
-            break label1590;
-          }
-          ??? = ???.step;
-          QLog.d("VACDReport", 2, ???);
-        }
-      }
-      else
-      {
-        if (((ReportInfo)localObject4).body.reportItems == null) {
-          ((ReportInfo)localObject4).body.reportItems = new ArrayList();
-        }
-        ((ReportInfo)localObject4).body.reportItems.add(???);
-        ???.seqno = ((ReportInfo)localObject4).header.seqno;
-        ???.isNormalEnd = true;
-        akwd.a(this.a).add(???);
-        akwd.b(this.a, 5);
-        localObject4 = akwd.b(this.a).obtainMessage();
-        if (localObject4 != null)
-        {
-          ((Message)localObject4).arg1 = 5;
-          ((Message)localObject4).obj = new Object[] { Long.valueOf(l), ??? };
-          akwd.b(this.a).sendMessageDelayed((Message)localObject4, 10000L);
-        }
-        return;
-      }
-      break;
-    case 5: 
-      for (;;)
-      {
-        label848:
-        synchronized (akwd.a())
-        {
-          l = ((Long)localObject4[0]).longValue();
-          ??? = (ReportItem)localObject4[1];
-          localObject4 = (ReportInfo)akwd.a(this.a).get(Long.valueOf(l));
-          if (localObject4 != null) {
-            break;
-          }
-          if (QLog.isColorLevel())
-          {
-            localObject4 = new StringBuilder().append("send report. seqno=").append(l).append(" is illegal, step:");
-            if (??? != null)
-            {
-              ??? = ???.step;
-              QLog.d("VACDReport", 2, ???);
-            }
-          }
-          else
-          {
-            return;
-          }
-        }
-        ??? = ".";
-      }
-      if ((((ReportInfo)localObject4).header == null) || (((ReportInfo)localObject4).body == null)) {
-        if (QLog.isColorLevel())
-        {
-          localObject4 = new StringBuilder().append("send report. seqno=").append(l).append(" is illegal, step:");
-          if (??? == null) {
-            break label1596;
-          }
-        }
-      }
-      break;
+      this.mPhotoCommonData.selectedPhotoList.clear();
     }
-    label1584:
-    label1590:
-    label1596:
-    for (??? = ???.step;; ??? = ".")
-    {
-      QLog.d("VACDReport", 2, ???);
-      return;
-      if (((ReportInfo)localObject4).body.reportItems == null) {
-        ((ReportInfo)localObject4).body.reportItems = new ArrayList();
-      }
-      ((ReportInfo)localObject4).header.totalTime = Math.abs(???.createTime - ((ReportInfo)localObject4).header.createTime);
-      ((ReportInfo)localObject4).body.totalTime = ((ReportInfo)localObject4).header.totalTime;
-      akwd.a(this.a, 0);
-      return;
-      synchronized (akwd.a())
-      {
-        ??? = (ReportHeader)localObject4[1];
-        if ((ReportInfo)akwd.a(this.a).get(Long.valueOf(((ReportHeader)???).seqno)) != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("VACDReport", 2, "single report seqno=" + ((ReportHeader)???).seqno + " is exist ignore...");
-          }
-          return;
-        }
-      }
-      localObject5 = (ReportItem)localObject4[2];
-      localObject4 = (String)localObject4[0];
-      localReportInfo = new ReportInfo();
-      localReportInfo.header = localObject3;
-      localReportInfo.header.sKey = ((String)localObject4);
-      localReportInfo.header.totalTime = 0L;
-      localReportInfo.body = new ReportBody();
-      localReportInfo.body.reportItems = new ArrayList(16);
-      localReportInfo.body.sKey = ((String)localObject4);
-      localReportInfo.body.startTime = localObject3.startTime;
-      localReportInfo.body.totalTime = localReportInfo.header.totalTime;
-      ((ReportItem)localObject5).seqno = localReportInfo.header.seqno;
-      ((ReportItem)localObject5).isNormalEnd = true;
-      localReportInfo.body.reportItems.add(localObject5);
-      akwd.a(this.a).put(Long.valueOf(localObject3.seqno), localReportInfo);
-      akwd.b(this.a).add(localObject3);
-      akwd.a(this.a).add(localObject5);
-      akwd.a(this.a, 1);
-      return;
-      ??? = ".";
-      break;
-      ??? = ".";
-      break label848;
-    }
+  }
+  
+  public void initUI()
+  {
+    super.initUI();
+    ((NewPhotoPreviewActivity)this.mActivity).cancelTv.setVisibility(8);
   }
 }
 

@@ -1,39 +1,39 @@
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqcircle.widgets.QCirclePushRankIndicator;
+import com.tencent.biz.qqcircle.widgets.QCirclePushRankTopView;
+import java.util.List;
+import mqq.util.WeakReference;
+import qqcircle.QQCircleDitto.StItemContainer;
 
 public class wbp
+  implements ViewPager.OnPageChangeListener
 {
-  static int a(int paramInt)
+  private WeakReference<QCirclePushRankTopView> a;
+  
+  public wbp(QCirclePushRankTopView paramQCirclePushRankTopView)
   {
-    return (0xFF00 & paramInt) >> 8;
+    this.a = new WeakReference(paramQCirclePushRankTopView);
   }
   
-  public static void a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (paramFloat1 >= paramFloat2) {
-      throw new IllegalArgumentException("Minimum zoom has to be less than Medium zoom. Call setMinimumZoom() with a more appropriate value");
-    }
-    if (paramFloat2 >= paramFloat3) {
-      throw new IllegalArgumentException("Medium zoom has to be less than Maximum zoom. Call setMaximumZoom() with a more appropriate value");
-    }
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public static boolean a(ImageView.ScaleType paramScaleType)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (paramScaleType == null) {
-      return false;
-    }
-    switch (wbq.a[paramScaleType.ordinal()])
+    if (this.a != null)
     {
-    default: 
-      return true;
+      QCirclePushRankTopView localQCirclePushRankTopView = (QCirclePushRankTopView)this.a.get();
+      if (localQCirclePushRankTopView != null)
+      {
+        paramInt %= QCirclePushRankTopView.a(localQCirclePushRankTopView).a().size();
+        if (QCirclePushRankTopView.a(localQCirclePushRankTopView) != null) {
+          QCirclePushRankTopView.a(localQCirclePushRankTopView).a(paramInt);
+        }
+        QCirclePushRankTopView.a(localQCirclePushRankTopView, paramInt);
+        QCirclePushRankTopView.a(localQCirclePushRankTopView, (QQCircleDitto.StItemContainer)QCirclePushRankTopView.a(localQCirclePushRankTopView).get(paramInt));
+      }
     }
-    throw new IllegalStateException("Matrix scale type is not supported");
-  }
-  
-  public static boolean a(ImageView paramImageView)
-  {
-    return paramImageView.getDrawable() != null;
   }
 }
 

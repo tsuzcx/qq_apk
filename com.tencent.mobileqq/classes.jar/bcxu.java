@@ -1,46 +1,22 @@
 public class bcxu
-  extends bcvu
 {
-  public boolean c;
-  public int o;
-  public int p = 3;
-  
-  public bcxu()
-  {
-    this(null);
-  }
-  
-  public bcxu(String paramString)
-  {
-    super(paramString, "content");
-  }
+  public volatile int a = 0;
+  public int b;
+  public int c = 0;
+  public int d;
   
   public String a()
   {
-    return "Content";
-  }
-  
-  public int b()
-  {
-    return this.p;
-  }
-  
-  public int c()
-  {
-    return 2131379588;
-  }
-  
-  public int e()
-  {
-    if ((this.c) && (this.o != 0)) {
-      return -1;
+    switch (this.a)
+    {
+    default: 
+      return "UNKNOWN_STATUS";
+    case 0: 
+      return "CONFIG_REQUEST_OK";
+    case 1: 
+      return "CONFIG_START_SERVLET";
     }
-    return -8355712;
-  }
-  
-  public int f()
-  {
-    return 28;
+    return "CONFIG_SEND_REQ";
   }
 }
 

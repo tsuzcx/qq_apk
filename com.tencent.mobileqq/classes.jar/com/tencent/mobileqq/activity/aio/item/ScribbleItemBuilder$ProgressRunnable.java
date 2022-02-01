@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahhg;
+import ahqq;
 import android.content.Context;
 import android.os.Handler;
 import com.tencent.mobileqq.data.MessageForScribble;
@@ -11,14 +11,14 @@ class ScribbleItemBuilder$ProgressRunnable
   implements Runnable
 {
   private WeakReference<MessageForScribble> a;
-  private WeakReference<ahhg> b;
+  private WeakReference<ahqq> b;
   private WeakReference<Handler> c;
   private WeakReference<Context> d;
   
-  public ScribbleItemBuilder$ProgressRunnable(MessageForScribble paramMessageForScribble, ahhg paramahhg, Handler paramHandler, Context paramContext)
+  public ScribbleItemBuilder$ProgressRunnable(MessageForScribble paramMessageForScribble, ahqq paramahqq, Handler paramHandler, Context paramContext)
   {
     this.a = new WeakReference(paramMessageForScribble);
-    this.b = new WeakReference(paramahhg);
+    this.b = new WeakReference(paramahqq);
     this.c = new WeakReference(paramHandler);
     this.d = new WeakReference(paramContext);
   }
@@ -29,7 +29,7 @@ class ScribbleItemBuilder$ProgressRunnable
     for (MessageForScribble localMessageForScribble = (MessageForScribble)this.a.get();; localMessageForScribble = null)
     {
       if (this.b != null) {}
-      for (ahhg localahhg = (ahhg)this.b.get();; localahhg = null)
+      for (ahqq localahqq = (ahqq)this.b.get();; localahqq = null)
       {
         if (this.c != null) {}
         for (Handler localHandler = (Handler)this.c.get();; localHandler = null)
@@ -37,13 +37,13 @@ class ScribbleItemBuilder$ProgressRunnable
           if (this.d != null) {}
           for (Context localContext = (Context)this.d.get();; localContext = null)
           {
-            if ((localMessageForScribble == null) || (localHandler == null) || (localahhg == null) || (localContext == null)) {}
+            if ((localMessageForScribble == null) || (localHandler == null) || (localahqq == null) || (localContext == null)) {}
             do
             {
               return;
               ScribbleItemBuilder.a(localMessageForScribble);
-              ScribbleItemBuilder.a(localMessageForScribble, localahhg, localMessageForScribble.mUiProgress, false, localContext, localHandler);
-            } while (!localahhg.a.isShown());
+              ScribbleItemBuilder.a(localMessageForScribble, localahqq, localMessageForScribble.mUiProgress, false, localContext, localHandler);
+            } while (!localahqq.a.isShown());
             localHandler.postDelayed(localMessageForScribble.mUpdateProgressRunnable, 50L);
             return;
           }

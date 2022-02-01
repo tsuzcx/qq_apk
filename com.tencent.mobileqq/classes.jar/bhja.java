@@ -1,28 +1,20 @@
+import android.app.Dialog;
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.widget.ScrollView;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bhja
-  implements View.OnLayoutChangeListener
+  implements View.OnClickListener
 {
-  final int jdField_a_of_type_Int;
-  final WeakReference<ScrollView> jdField_a_of_type_JavaLangRefWeakReference;
+  bhja(bhiu parambhiu, Context paramContext, Dialog paramDialog, QQAppInterface paramQQAppInterface) {}
   
-  private bhja(ScrollView paramScrollView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramScrollView);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    ScrollView localScrollView = (ScrollView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localScrollView != null) && (paramInt4 - paramInt2 > paramInt8 - paramInt6))
-    {
-      localScrollView.smoothScrollTo(0, this.jdField_a_of_type_Int);
-      paramView.removeOnLayoutChangeListener(this);
-    }
+    bhiu.b(this.jdField_a_of_type_Bhiu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidAppDialog);
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B0C8", "0X800B0C8", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

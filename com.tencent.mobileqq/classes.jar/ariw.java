@@ -1,26 +1,88 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class ariw
-  implements CompoundButton.OnCheckedChangeListener
+  extends arac<arix>
 {
-  public ariw(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  @NonNull
+  public arix a(int paramInt)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(aohq.a, 0).edit().putBoolean(aohq.c, paramBoolean).commit();
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    return new arix();
+  }
+  
+  @Nullable
+  public arix a(araj[] paramArrayOfaraj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onParsed");
+    }
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    {
+      paramArrayOfaraj = paramArrayOfaraj[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.d("RichmediaIpv6ConifgProcessor", 2, "onParsed, content:" + paramArrayOfaraj);
+      }
+      return arix.a(paramArrayOfaraj);
+    }
+    return new arix();
+  }
+  
+  public void a(arix paramarix)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onUpdate");
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localQQAppInterface != null)
+    {
+      localQQAppInterface.a().a = paramarix;
+      localQQAppInterface.getHwEngine().ipv6Switch = paramarix.a;
+    }
+  }
+  
+  public Class clazz()
+  {
+    return arix.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onReqFailed");
+    }
+  }
+  
+  public int type()
+  {
+    return 538;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ariw
  * JD-Core Version:    0.7.0.1
  */

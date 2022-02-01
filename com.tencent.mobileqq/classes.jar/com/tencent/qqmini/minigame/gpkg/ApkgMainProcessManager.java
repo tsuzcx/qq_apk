@@ -3,7 +3,7 @@ package com.tencent.qqmini.minigame.gpkg;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.text.TextUtils;
-import com.tencent.qqmini.minigame.manager.GameEnvManager;
+import com.tencent.qqmini.minigame.manager.EnginePackageManager;
 import com.tencent.qqmini.sdk.ipc.AppBrandCmdProxy;
 import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
@@ -136,7 +136,7 @@ public class ApkgMainProcessManager
           return;
         }
         if ((!"cmd_main_process_download_pkg".equals(paramString)) && ("cmd_update_triton_engine".equals(paramString))) {
-          GameEnvManager.checkTritonUpdate();
+          EnginePackageManager.checkTritonUpdate();
         }
       }
     }

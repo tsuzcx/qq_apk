@@ -6,15 +6,15 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import awgp;
-import awgq;
+import awzh;
+import awzi;
 
 public class MagicfaceContainerView
   extends RelativeLayout
 {
-  GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new awgp(this);
+  GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new awzh(this);
   GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  public awgq a;
+  public awzi a;
   boolean jdField_a_of_type_Boolean = false;
   
   public MagicfaceContainerView(Context paramContext)
@@ -46,9 +46,9 @@ public class MagicfaceContainerView
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setMagicfaceGestureListener(awgq paramawgq)
+  public void setMagicfaceGestureListener(awzi paramawzi)
   {
-    this.jdField_a_of_type_Awgq = paramawgq;
+    this.jdField_a_of_type_Awzi = paramawzi;
   }
   
   public void setTouchEffect(boolean paramBoolean)

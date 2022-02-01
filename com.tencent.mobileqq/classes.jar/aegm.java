@@ -1,19 +1,29 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.text.style.ImageSpan;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class aegm
-  implements anxf
+  extends ImageSpan
 {
-  public aegm(FriendProfileCardActivity paramFriendProfileCardActivity, Intent paramIntent) {}
-  
-  public void a(Object paramObject)
+  public aegm(ChatSettingForTroop paramChatSettingForTroop, Drawable paramDrawable, int paramInt)
   {
-    if ((paramObject instanceof String))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
-    }
+    super(paramDrawable, paramInt);
+  }
+  
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  {
+    paramCanvas.save();
+    paramCanvas.translate(bdep.a(5.0F), -bdep.a(2.0F));
+    super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
+    paramCanvas.restore();
+  }
+  
+  public Drawable getDrawable()
+  {
+    return super.getDrawable();
   }
 }
 

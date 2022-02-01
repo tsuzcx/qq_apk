@@ -1,60 +1,69 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class arba
+  extends arac<arbb>
 {
-  public String a;
-  public boolean a;
-  public String[] a;
-  public String b;
-  public String c;
-  
-  public arba(JSONObject paramJSONObject)
+  public static arbb a()
   {
-    try
-    {
-      String str = paramJSONObject.getString("extension");
-      if (str != null) {
-        this.jdField_a_of_type_ArrayOfJavaLangString = str.split("\\|");
-      }
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("text");
-      this.b = paramJSONObject.getString("tShow");
-      this.c = paramJSONObject.getString("tPress");
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      QLog.e("TencentDocLocalCooperationBean", 1, paramJSONObject.getLocalizedMessage(), paramJSONObject);
-    }
+    return (arbb)aran.a().a(457);
   }
   
-  public boolean a(String paramString)
+  @NonNull
+  public arbb a(int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int i;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
-    {
-      bool1 = bool2;
-      if (paramString != null) {
-        i = 0;
-      }
+    return new arbb();
+  }
+  
+  @Nullable
+  public arbb a(araj[] paramArrayOfaraj)
+  {
+    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length == 0)) {
+      return null;
     }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-      {
-        if (paramString.equals(this.jdField_a_of_type_ArrayOfJavaLangString[i])) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
+    paramArrayOfaraj = paramArrayOfaraj[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendTroopConfigProcessor", 2, "RecommendTroopConfigProcessor onParsed, content:" + paramArrayOfaraj);
     }
+    return arbb.a(paramArrayOfaraj);
+  }
+  
+  public void a(arbb paramarbb)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendTroopConfigProcessor", 2, "RecommendTroopConfigProcessor update.");
+    }
+    ((aobl)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(159)).a();
+  }
+  
+  public Class<arbb> clazz()
+  {
+    return arbb.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 457;
   }
 }
 

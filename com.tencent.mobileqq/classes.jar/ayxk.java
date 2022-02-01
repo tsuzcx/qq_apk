@@ -1,34 +1,25 @@
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
-final class ayxk
-  implements bedc
+public class ayxk
+  extends RecyclerView.ItemDecoration
 {
-  ayxk(String paramString1, String paramString2, PhotoSendParams paramPhotoSendParams) {}
+  private int a;
   
-  public void a(bebv parambebv, beck parambeck)
+  public ayxk(int paramInt)
   {
-    int j = 0;
-    if (j < parambeck.a.size())
-    {
-      parambebv = (becx)parambeck.a.get(j);
-      int i = -1;
-      if ((parambebv instanceof becp)) {
-        i = ((becp)parambebv).c;
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("PicAioQzonePreSendMgr", 2, "picPreSendProcess request Result, resultCode:" + i + ", selfUin:" + this.jdField_a_of_type_JavaLangString + ", friendUin:" + this.b + ", md5:" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawMd5 + ", commonInfo:" + parambebv.toString());
-        }
-        j += 1;
-        break;
-        if ((parambebv instanceof becm)) {
-          i = ((becm)parambebv).c;
-        }
-      }
-    }
+    this.a = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.top = this.a;
+    paramRect.bottom = 0;
+    paramRect.left = (this.a / 2);
+    paramRect.right = (this.a / 2);
   }
 }
 

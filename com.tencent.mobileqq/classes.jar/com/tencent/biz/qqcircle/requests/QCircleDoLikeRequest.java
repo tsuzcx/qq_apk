@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import qqcircle.QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData;
-import uxc;
-import uxx;
+import uyn;
+import uzg;
 
 public class QCircleDoLikeRequest
   extends QCircleBaseRequest
@@ -38,12 +38,12 @@ public class QCircleDoLikeRequest
       return;
     }
     this.mReq = new FeedCloudWrite.StDoLikeReq();
-    this.mReq.feed.set(uxx.a(paramStFeed));
+    this.mReq.feed.set(uzg.a(paramStFeed));
     this.mReq.likeType.set(paramInt);
     if (paramStLike != null)
     {
-      paramStLike.vecUser.set(Arrays.asList(new FeedCloudMeta.StUser[] { uxc.a() }));
-      paramStLike.postUser.set(uxc.a());
+      paramStLike.vecUser.set(Arrays.asList(new FeedCloudMeta.StUser[] { uyn.a() }));
+      paramStLike.postUser.set(uyn.a());
       this.mReq.like.set(paramStLike);
     }
     if (paramStComment != null) {
@@ -78,14 +78,14 @@ public class QCircleDoLikeRequest
     }
     this.mIsReward = paramBoolean2;
     this.mReq = new FeedCloudWrite.StDoLikeReq();
-    this.mReq.feed.set(uxx.a(paramStFeed));
+    this.mReq.feed.set(uzg.a(paramStFeed));
     this.mReq.feed.cover.set(paramStFeed.cover.get());
     this.mReq.feed.images.set(paramStFeed.images.get());
     this.mReq.likeType.set(paramInt);
     if (paramStLike != null)
     {
-      paramStLike.vecUser.set(Arrays.asList(new FeedCloudMeta.StUser[] { uxc.a() }));
-      paramStLike.postUser.set(uxc.a());
+      paramStLike.vecUser.set(Arrays.asList(new FeedCloudMeta.StUser[] { uyn.a() }));
+      paramStLike.postUser.set(uyn.a());
       this.mReq.like.set(paramStLike);
     }
     if (paramStDoLikeReqDoPolyLikeBusiReqData != null) {

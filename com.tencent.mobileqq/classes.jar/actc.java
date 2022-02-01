@@ -1,30 +1,16 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.ad.tangram.canvas.views.form.AdFormError;
-import com.tencent.ad.tangram.canvas.views.xijing.AdTextData;
-import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
-import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class actc
-  implements View.OnFocusChangeListener
+class actc
+  implements DialogInterface.OnClickListener
 {
-  public actc(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
+  actc(acsz paramacsz) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a() == null) || (!this.a.a().isValid()))
-    {
-      acqy.b("GdtFormItemTextBoxView", "onFocusChange error");
-      return;
-    }
-    if (paramBoolean)
-    {
-      paramView = new AdFormError(2, -1, this.a.a().title.text);
-      paramView.index = GdtFormItemTextBoxView.a(this.a);
-      GdtFormItemTextBoxView.a(this.a, paramView);
-      return;
-    }
-    GdtFormItemTextBoxView.a(this.a);
+    QLog.i("GdtMvViewController", 1, " DialogInterface onClick onCancel");
+    acsz.a(this.a).a();
   }
 }
 

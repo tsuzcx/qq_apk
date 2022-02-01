@@ -1,11 +1,17 @@
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+
 class aacz
-  implements aaiv
+  implements ViewPager.OnPageChangeListener
 {
-  aacz(aacy paramaacy) {}
+  aacz(aacx paramaacx) {}
   
-  public void a(boolean paramBoolean)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    this.a.jdField_a_of_type_Aacw.a.a(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    aacx.a(this.a, paramInt);
   }
 }
 

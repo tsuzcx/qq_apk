@@ -1,12 +1,12 @@
 package com.tencent.biz.qqcircle.comment;
 
-import vhl;
-import vhm;
+import vjp;
+import vjq;
 
 public class QCircleBaseInputPopupWindow$1$1
   implements Runnable
 {
-  public QCircleBaseInputPopupWindow$1$1(vhm paramvhm) {}
+  public QCircleBaseInputPopupWindow$1$1(vjq paramvjq) {}
   
   public void run()
   {

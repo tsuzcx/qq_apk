@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troopgift;
 
 import android.graphics.Bitmap;
-import bfzc;
-import bfzj;
+import bgzd;
+import bgzk;
 
 public class TroopGiftAnimationController$5$3$1
   implements Runnable
 {
-  public TroopGiftAnimationController$5$3$1(bfzj parambfzj, Bitmap paramBitmap) {}
+  public TroopGiftAnimationController$5$3$1(bgzk parambgzk, Bitmap paramBitmap) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bfzj.a.this$0.a != null) {
-      ((TroopGiftToPersonalSurfaceView)this.jdField_a_of_type_Bfzj.a.this$0.a).setReceiveHeadBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (this.jdField_a_of_type_Bgzk.a.this$0.a != null) {
+      ((TroopGiftToPersonalSurfaceView)this.jdField_a_of_type_Bgzk.a.this$0.a).setReceiveHeadBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
   }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval" android:useLevel="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/e9u" />
-    <item android:drawable="@drawable/e9t" />
-</selector>
+    <gradient android:startColor="#ffe8e8e8" android:endColor="#ffe8e8e8" android:useLevel="false" android:angle="45.0" android:type="linear" android:centerColor="#ffe8e8e8" />
+    <size android:height="20.0dip" android:width="20.0dip" />
+    <stroke android:width="1.0dip" android:color="#ffffffff" />
+</shape>

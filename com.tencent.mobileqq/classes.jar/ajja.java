@@ -1,19 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
 
 class ajja
-  implements View.OnClickListener
+  extends amof
 {
-  ajja(ajiy paramajiy) {}
-  
-  public void onClick(View paramView)
-  {
-    GroupManagerActivity.a(this.a.a);
-    bcst.b(ajiy.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public TextView a;
+  public MayKnowRecommend a;
+  public TroopLabelLayout a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

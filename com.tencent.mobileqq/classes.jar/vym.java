@@ -1,20 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqcircle.widgets.QCircleRocketView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
 
-public class vym
-  implements Animation.AnimationListener
+class vym
+  implements DialogInterface.OnClickListener
 {
-  public vym(QCircleRocketView paramQCircleRocketView, View paramView) {}
+  vym(vyl paramvyl) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    QCircleCommentListView.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView).a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView.getContext().hashCode(), QCircleCommentListView.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
   }
 }
 

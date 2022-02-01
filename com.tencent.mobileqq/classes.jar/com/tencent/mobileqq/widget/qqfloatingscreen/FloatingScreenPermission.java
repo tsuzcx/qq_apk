@@ -11,11 +11,12 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
-import bglp;
-import bgpa;
-import bieo;
-import biep;
-import bier;
+import bhlq;
+import bhpc;
+import bjfm;
+import bjfn;
+import bjfo;
+import bjfq;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Method;
 
@@ -305,15 +306,24 @@ public class FloatingScreenPermission
     if (paramContext == null) {
       return;
     }
-    bier.b();
-    bglp.a(paramContext, 230, paramContext.getString(2131717133), paramContext.getString(2131717131), paramContext.getString(2131717130), paramContext.getString(2131717132), new bieo(paramContext), null).show();
+    bjfq.b();
+    bhlq.a(paramContext, 230, paramContext.getString(2131717250), paramContext.getString(2131717248), paramContext.getString(2131717247), paramContext.getString(2131717249), new bjfm(paramContext), null).show();
+  }
+  
+  public static void enterPermissionRequestDialogCustom(Context paramContext, int paramInt1, int paramInt2)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    bjfq.b();
+    bhlq.a(paramContext, 230, paramContext.getString(paramInt1), paramContext.getString(paramInt2), paramContext.getString(2131717247), paramContext.getString(2131717249), new bjfn(paramContext), null).show();
   }
   
   private static boolean handleVivoPermissionDialog(Context paramContext)
   {
     if (canUseCheckOpForVivo())
     {
-      bglp.a(paramContext, 230, paramContext.getString(2131717133), paramContext.getString(2131698439), paramContext.getString(2131717130), paramContext.getString(2131694163), new biep(paramContext), null).show();
+      bhlq.a(paramContext, 230, paramContext.getString(2131717250), paramContext.getString(2131698543), paramContext.getString(2131717247), paramContext.getString(2131694181), new bjfo(paramContext), null).show();
       return true;
     }
     return false;

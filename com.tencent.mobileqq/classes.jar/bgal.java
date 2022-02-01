@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bgal
-  extends bfss
+  implements View.OnClickListener
 {
-  public bgal(TroopInteractGiftAnimationController.1.1 param1) {}
+  public bgal(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInteractGiftAnimationController", 2, "startInteract: errorCode = " + paramInt);
-    }
+    blgx.b(paramView);
+    this.a.getActivity().doOnBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

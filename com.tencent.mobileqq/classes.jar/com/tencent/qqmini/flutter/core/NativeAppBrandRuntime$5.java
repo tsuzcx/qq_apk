@@ -1,41 +1,19 @@
 package com.tencent.qqmini.flutter.core;
 
-import com.qflutter.log.qflutter_log.QflutterLogPlugin.Log;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import io.flutter.plugin.common.BasicMessageChannel.MessageHandler;
+import io.flutter.plugin.common.BasicMessageChannel.Reply;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 
 class NativeAppBrandRuntime$5
-  implements QflutterLogPlugin.Log
+  implements BasicMessageChannel.MessageHandler<ByteBuffer>
 {
   NativeAppBrandRuntime$5(NativeAppBrandRuntime paramNativeAppBrandRuntime) {}
   
-  public void d(String paramString)
+  public void onMessage(ByteBuffer paramByteBuffer, BasicMessageChannel.Reply<ByteBuffer> paramReply)
   {
-    QMLog.d("miniapp-TISSUE", paramString);
-  }
-  
-  public void e(String paramString)
-  {
-    QMLog.e("miniapp-TISSUE", paramString);
-  }
-  
-  public int getLogLevel()
-  {
-    return 5;
-  }
-  
-  public void i(String paramString)
-  {
-    QMLog.i("miniapp-TISSUE", paramString);
-  }
-  
-  public void v(String paramString)
-  {
-    QMLog.d("miniapp-TISSUE", paramString);
-  }
-  
-  public void w(String paramString)
-  {
-    QMLog.w("miniapp-TISSUE", paramString);
+    QMLog.w("miniapp-TISSUE", new String(paramByteBuffer.array(), Charset.forName("utf8")));
   }
 }
 

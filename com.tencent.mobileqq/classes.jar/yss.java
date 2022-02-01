@@ -1,13 +1,8 @@
-class yss
-  extends bcdu
+import android.graphics.drawable.Drawable;
+
+public abstract interface yss
 {
-  yss(ysm paramysm) {}
-  
-  public void a()
-  {
-    yqp.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
-    this.a.Z_();
-  }
+  public abstract void a(Drawable paramDrawable);
 }
 
 

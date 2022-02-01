@@ -1,17 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
 public class ajct
-  implements View.OnClickListener
+  extends Handler
 {
-  public ajct(TroopRecommendFriendFragment paramTroopRecommendFriendFragment, ajce paramajce) {}
+  public ajct(AddContactsActivity paramAddContactsActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactRecommendtroopTroopRecommendFriendFragment, TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactRecommendtroopTroopRecommendFriendFragment), this.jdField_a_of_type_Ajce.a, TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactRecommendtroopTroopRecommendFriendFragment));
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.jdField_a_of_type_Ajdw.b();
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    txo.a().a(300);
   }
 }
 

@@ -1,156 +1,209 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
 import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import tencent.im.oidb.submsgtype0x138.Submsgtype0x138.MsgBody;
-import trpc.qq_vgame.nofity.AvGameNotify.NotifyMsg;
+import mqq.os.MqqHandler;
 
 public class mzb
-  extends mwm
+  implements Handler.Callback
 {
-  public mzb(AppInterface paramAppInterface)
+  int jdField_a_of_type_Int = -2147483648;
+  Handler jdField_a_of_type_AndroidOsHandler;
+  AVGameAppInterface jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
+  myp jdField_a_of_type_Myp;
+  nag jdField_a_of_type_Nag;
+  nai jdField_a_of_type_Nai;
+  naj<mze> jdField_a_of_type_Naj;
+  nak jdField_a_of_type_Nak;
+  volatile boolean jdField_a_of_type_Boolean = true;
+  int jdField_b_of_type_Int = -2147483648;
+  boolean jdField_b_of_type_Boolean;
+  int c = 0;
+  
+  public mzb(AVGameAppInterface paramAVGameAppInterface, nai paramnai, nak paramnak, nag paramnag, naj<mze> paramnaj)
   {
-    super(paramAppInterface);
+    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
+    this.jdField_a_of_type_Nag = paramnag;
+    this.jdField_a_of_type_Naj = paramnaj;
+    this.jdField_a_of_type_Nai = paramnai;
+    this.jdField_a_of_type_Nak = paramnak;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getUIHandler().getLooper(), this);
   }
   
-  private AvGameNotify.NotifyMsg a(MsgType0x210 paramMsgType0x210)
+  private void a(mze parammze)
   {
-    localObject3 = null;
-    localObject2 = null;
-    Object localObject1 = new Submsgtype0x138.MsgBody();
-    try
+    if (this.jdField_b_of_type_Boolean) {}
+    myp localmyp;
+    do
     {
-      ((Submsgtype0x138.MsgBody)localObject1).mergeFrom(paramMsgType0x210.vProtobuf);
-      if ((((Submsgtype0x138.MsgBody)localObject1).uint32_bussi_type.get() == 1) && (((Submsgtype0x138.MsgBody)localObject1).bytes_msg_data.get() != null)) {
-        paramMsgType0x210 = new AvGameNotify.NotifyMsg();
-      }
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-    {
-      paramMsgType0x210 = localObject2;
-      QLog.d("avgame_logic.GameRoomPushHandler", 1, new Object[] { "parseNotifyMsg ex=", localInvalidProtocolBufferMicroException1.getMessage(), localInvalidProtocolBufferMicroException1 });
-      return paramMsgType0x210;
-    }
-    catch (Exception localException1)
-    {
-      paramMsgType0x210 = localObject3;
-      QLog.d("avgame_logic.GameRoomPushHandler", 1, new Object[] { "parseNotifyMsg ex=", localException1.getMessage(), localException1 });
-      return paramMsgType0x210;
-    }
-    try
-    {
-      localObject1 = (AvGameNotify.NotifyMsg)paramMsgType0x210.mergeFrom(((Submsgtype0x138.MsgBody)localObject1).bytes_msg_data.get().toByteArray());
-      return localObject1;
-    }
-    catch (Exception localException2)
-    {
-      break label146;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
-    {
-      break label114;
-    }
-    QLog.d("avgame_logic.GameRoomPushHandler", 1, String.format("parseNotifyMsg err %d %s", new Object[] { Integer.valueOf(((Submsgtype0x138.MsgBody)localObject1).uint32_bussi_type.get()), ((Submsgtype0x138.MsgBody)localObject1).bytes_msg_data.get() }));
-    return null;
-  }
-  
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    paramObject = (SvcReqPushMsg)decodePacket(paramFromServiceMsg.getWupBuffer(), "req", new SvcReqPushMsg());
-    if (paramObject == null)
-    {
-      paramToServiceMsg = null;
-      if ((paramToServiceMsg == null) || (paramToServiceMsg.size() <= 0)) {
-        break label63;
-      }
-    }
-    label63:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        break label69;
-      }
-      QLog.d("avgame_logic.GameRoomPushHandler", 1, "handleOnlinePush doesn't has msgInfos return");
       return;
-      paramToServiceMsg = paramObject.vMsgInfos;
-      break;
-    }
-    label69:
-    Iterator localIterator = paramToServiceMsg.iterator();
-    label75:
-    Object localObject;
-    while (localIterator.hasNext())
+      localmyp = parammze.a();
+    } while ((localmyp == null) || (localmyp.a(this.jdField_a_of_type_Myp)));
+    this.jdField_a_of_type_Myp = localmyp;
+    if (this.jdField_a_of_type_Int == -2147483648) {}
+    for (int i = 1;; i = this.jdField_a_of_type_Int + 1)
     {
-      localObject = (MsgInfo)localIterator.next();
-      i = ((MsgInfo)localObject).shMsgType;
-      long l = paramObject.lUin;
-      if (paramFromServiceMsg.getUin() != null) {
-        break label231;
+      this.jdField_a_of_type_Int = i;
+      if (this.jdField_b_of_type_Int != -2147483648) {
+        break;
       }
-      paramToServiceMsg = Long.valueOf(this.app.getAccount());
-      label128:
-      paramToServiceMsg.longValue();
-      if (528 == i)
+      this.jdField_b_of_type_Int = parammze.g();
+      this.c = parammze.d();
+      return;
+    }
+  }
+  
+  private void a(mze parammze, int paramInt)
+  {
+    paramInt += 10000;
+    if (paramInt <= 0)
+    {
+      d();
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, paramInt);
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+  }
+  
+  private void b(mze parammze, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("avgame_logic.StatusMonitor", 2, "handleTopicCountReport status=" + parammze.a());
+    }
+    if (paramBoolean) {
+      this.jdField_b_of_type_Boolean = paramBoolean;
+    }
+    switch (parammze.a())
+    {
+    case 5: 
+    case 6: 
+    case 7: 
+    case 8: 
+    case 9: 
+    default: 
+      return;
+    case 1: 
+      f();
+      e();
+      a(parammze);
+      return;
+    case 2: 
+    case 3: 
+    case 4: 
+      a(parammze);
+      return;
+    }
+    f();
+    e();
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  private void d()
+  {
+    long l1 = this.jdField_a_of_type_Nai.b();
+    long l2 = this.jdField_a_of_type_Nai.a();
+    long l3 = SystemClock.elapsedRealtime();
+    long l4 = this.jdField_a_of_type_Nak.a();
+    if ((l3 - l1 < 10000L) && (l2 == l4))
+    {
+      QLog.d("avgame_logic.StatusMonitor", 1, String.format("handleStatusTimeout exit!!! [heartBeatSeq,localSeq]=[%d,%d] [heartBeatTs,curTs]=[%d,%d]", new Object[] { Long.valueOf(l2), Long.valueOf(l4), Long.valueOf(l1), Long.valueOf(l3) }));
+      this.jdField_a_of_type_Nag.a(9, BaseApplicationImpl.getApplication().getString(2131690270), (mze)this.jdField_a_of_type_Naj.a());
+    }
+  }
+  
+  private void e()
+  {
+    this.jdField_a_of_type_Myp = null;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -2147483648;
+    this.jdField_b_of_type_Int = -2147483648;
+    this.c = 0;
+  }
+  
+  private void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("avgame_logic.StatusMonitor", 2, String.format("doReportTopicCountIfNeed [inSnapshotRound=%b count=%d expectCount=%d gType=%d]", new Object[] { Boolean.valueOf(this.jdField_b_of_type_Boolean), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.c) }));
+    }
+    if ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Int == -2147483648) || (this.jdField_b_of_type_Int == -2147483648)) {}
+    while (this.jdField_b_of_type_Int <= this.jdField_a_of_type_Int) {
+      return;
+    }
+    mys.a(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int - this.jdField_a_of_type_Int, this.c);
+  }
+  
+  public void a()
+  {
+    c();
+    b();
+    e();
+  }
+  
+  public void a(mze parammze, boolean paramBoolean)
+  {
+    boolean bool = parammze.c();
+    int j = parammze.a();
+    switch (j)
+    {
+    default: 
+      b();
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("avgame_logic.StatusMonitor", 2, "onStatusChanged " + j);
+      }
+      b(parammze, paramBoolean);
+      return;
+      c();
+      if (bool)
       {
-        paramToServiceMsg = acwk.a(((MsgInfo)localObject).vMsg);
-        if ((paramToServiceMsg.vProtobuf != null) && (paramToServiceMsg.uSubMsgType == 312L))
+        b();
+        int m = parammze.a().a.d * 1000;
+        int k = parammze.a().a.c;
+        int n = parammze.a().d();
+        int i = 0;
+        if (m > n) {
+          i = m - n;
+        }
+        a(parammze, i + k * 1000);
+        continue;
+        c();
+        if (bool)
         {
-          localObject = a(paramToServiceMsg);
-          if (localObject == null) {
-            break label242;
-          }
+          b();
+          a(parammze, parammze.a().a.c * 1000 - parammze.a().e());
         }
       }
     }
-    label231:
-    label242:
-    for (paramToServiceMsg = mxo.a(((AvGameNotify.NotifyMsg)localObject).type.get());; paramToServiceMsg = "null")
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      QLog.d("avgame_logic.GameRoomPushHandler", 1, new Object[] { "handleOnlinePush type=", paramToServiceMsg });
-      if (localObject == null) {
-        break label75;
-      }
-      mxs.a((AVGameAppInterface)this.mApp, (AvGameNotify.NotifyMsg)localObject);
-      break label75;
-      break;
-      paramToServiceMsg = Long.valueOf(paramFromServiceMsg.getUin());
-      break label128;
     }
-  }
-  
-  protected boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null)
+    for (;;)
     {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("OnlinePush.ReqPush");
-    }
-    return !this.allowCmdSet.contains(paramString);
-  }
-  
-  protected Class<? extends anil> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("OnlinePush.ReqPush".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return false;
+      d();
     }
   }
 }

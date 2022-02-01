@@ -6,15 +6,15 @@ import com.tencent.mobileqq.app.ThreadManager;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import ogc;
+import ohk;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sxt;
+import sop;
 
 public class WebFastAdapter$9
   implements Runnable
 {
-  public WebFastAdapter$9(sxt paramsxt) {}
+  public WebFastAdapter$9(sop paramsop) {}
   
   public void run()
   {
@@ -74,9 +74,9 @@ public class WebFastAdapter$9
                 }
               }
               j = i;
-              ogc.a(ogc.a("https://qbdsp.html5.qq.com/ug/stat?st=CgBOEgABiDILFgcxMDY5Mjc2IiAAAAA2JTkuMTQ2LjE0NC42MV8xNTgzMTMzNDQ0Njk1XzExNTYyNzY1MTNCXlyzBFkMgAOdAAAbDBABJgY0MTk3NjI2CTY2NjY2NjY2NkYAUAFsqAw%3D&itemid=ARTICLE_ID&qq=USER_QQ&acttype=ACTION_TYPE", (String)localObject1, "19"));
+              ohk.a(ohk.a("https://qbdsp.html5.qq.com/ug/stat?st=CgBOEgABiDILFgcxMDY5Mjc2IiAAAAA2JTkuMTQ2LjE0NC42MV8xNTgzMTMzNDQ0Njk1XzExNTYyNzY1MTNCXlyzBFkMgAOdAAAbDBABJgY0MTk3NjI2CTY2NjY2NjY2NkYAUAFsqAw%3D&itemid=ARTICLE_ID&qq=USER_QQ&acttype=ACTION_TYPE", (String)localObject1, "19"));
               j = i;
-              ogc.a(ogc.a("https://qbdsp.html5.qq.com/ug/stat?st=CgBOEgABiDILFgcxMDY5Mjc2IiAAAAA2JTkuMTQ2LjE0NC42MV8xNTgzMTMzNDQ0Njk1XzExNTYyNzY1MTNCXlyzBFkMgAOdAAAbDBABJgY0MTk3NjI2CTY2NjY2NjY2NkYAUAFsqAw%3D&itemid=ARTICLE_ID&qq=USER_QQ&acttype=ACTION_TYPE", (String)localObject1, "106"));
+              ohk.a(ohk.a("https://qbdsp.html5.qq.com/ug/stat?st=CgBOEgABiDILFgcxMDY5Mjc2IiAAAAA2JTkuMTQ2LjE0NC42MV8xNTgzMTMzNDQ0Njk1XzExNTYyNzY1MTNCXlyzBFkMgAOdAAAbDBABJgY0MTk3NjI2CTY2NjY2NjY2NkYAUAFsqAw%3D&itemid=ARTICLE_ID&qq=USER_QQ&acttype=ACTION_TYPE", (String)localObject1, "106"));
               j = i;
               ThreadManager.getUIHandler().postDelayed(new WebFastAdapter.9.1(this), 200L);
               k = 1;

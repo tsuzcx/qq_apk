@@ -1,17 +1,19 @@
-class anss
-  implements lxe
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
+
+public class anss
 {
-  anss(ansp paramansp) {}
+  View jdField_a_of_type_AndroidViewView;
+  public ImageView a;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  View b;
   
-  public void a(lxd paramlxd)
-  {
-    paramlxd.a(this.a.a);
-    paramlxd.a();
-  }
+  public anss(ansr paramansr) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anss
  * JD-Core Version:    0.7.0.1
  */

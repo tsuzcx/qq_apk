@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class nsi
-  implements View.OnClickListener
+public class nsi
 {
-  nsi(nre paramnre, String paramString, nyl paramnyl) {}
-  
-  public void onClick(View paramView)
-  {
-    nre.c(this.jdField_a_of_type_Nre, this.jdField_a_of_type_JavaLangString);
-    nre.a(this.jdField_a_of_type_Nre, this.jdField_a_of_type_Nyl.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.qqmini.minigame.task;
 
 import android.content.Context;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
+import com.tencent.mobileqq.triton.TritonPlatform;
 import com.tencent.qqmini.minigame.GameRuntime;
 import com.tencent.qqmini.sdk.annotation.ClassTag;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
@@ -22,24 +22,24 @@ public class InitGameRuntimeTask
   
   public void executeInMainThread()
   {
-    ITTEngine localITTEngine = null;
+    TritonPlatform localTritonPlatform = null;
     GameRuntime localGameRuntime;
     if (getDependTasks() != null)
     {
       localGameRuntime = ((GameRuntimeCreateTask)getRuntimeLoader().getTask(GameRuntimeCreateTask.class)).getGameRuntime();
-      localITTEngine = ((TritonEngineInitTask)getRuntimeLoader().getTask(TritonEngineInitTask.class)).getGameEngine();
+      localTritonPlatform = ((TritonEngineInitTask)getRuntimeLoader().getTask(TritonEngineInitTask.class)).getTritonPlatform();
     }
     for (;;)
     {
       MiniAppInfo localMiniAppInfo = getRuntimeLoader().getMiniAppInfo();
-      if ((localGameRuntime == null) || (localITTEngine == null) || (localMiniAppInfo == null))
+      if ((localGameRuntime == null) || (localTritonPlatform == null) || (localMiniAppInfo == null))
       {
         onTaskFailed();
         return;
       }
       try
       {
-        localGameRuntime.init(localITTEngine);
+        localGameRuntime.init(localTritonPlatform);
         localGameRuntime.loadMiniApp(localMiniAppInfo);
         onTaskSucceed();
         return;

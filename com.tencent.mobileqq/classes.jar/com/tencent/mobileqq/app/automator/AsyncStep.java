@@ -2,10 +2,10 @@ package com.tencent.mobileqq.app.automator;
 
 import android.os.Process;
 import android.os.SystemClock;
-import anzd;
-import anze;
-import bcow;
-import bkpj;
+import aoln;
+import aolo;
+import bdho;
+import blqm;
 import com.tencent.mobileqq.app.automator.step.ActiveAccount;
 import com.tencent.mobileqq.app.automator.step.CheckPublicAccount;
 import com.tencent.mobileqq.app.automator.step.GetSubAccount;
@@ -23,7 +23,7 @@ public class AsyncStep
 {
   protected volatile int a;
   private long jdField_a_of_type_Long;
-  public anzd a;
+  public aoln a;
   public Automator a;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   public String a;
@@ -85,7 +85,7 @@ public class AsyncStep
             return true;
           }
         }
-        if ((bcow.f) && (!anze.a.contains(Integer.valueOf(this.jdField_b_of_type_Int))))
+        if ((bdho.f) && (!aolo.a.contains(Integer.valueOf(this.jdField_b_of_type_Int))))
         {
           long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
           if (QLog.isColorLevel()) {
@@ -156,15 +156,15 @@ public class AsyncStep
     }
   }
   
-  public void c() {}
+  public void b() {}
   
-  public void d() {}
+  public void c() {}
   
   public final void run()
   {
     if (this.jdField_a_of_type_Int == 1)
     {
-      bkpj.a(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+      blqm.a(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 1, this.jdField_a_of_type_JavaLangString + " begin with " + this.jdField_a_of_type_Int);
       }
@@ -172,12 +172,12 @@ public class AsyncStep
     }
     try
     {
-      c();
+      b();
       do
       {
         a(a());
       } while (a());
-      d();
+      c();
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 1, this.jdField_a_of_type_JavaLangString + " cost: " + (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long));
       }
@@ -204,9 +204,9 @@ public class AsyncStep
       {
         break label653;
       }
-      bkpj.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
-      if (this.jdField_a_of_type_Anzd != null) {
-        this.jdField_a_of_type_Anzd.a(this, this.jdField_a_of_type_Int);
+      blqm.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+      if (this.jdField_a_of_type_Aoln != null) {
+        this.jdField_a_of_type_Aoln.a(this, this.jdField_a_of_type_Int);
       }
     }
     try
@@ -219,9 +219,9 @@ public class AsyncStep
     {
       break label250;
     }
-    bkpj.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
-    if (this.jdField_a_of_type_Anzd != null) {
-      this.jdField_a_of_type_Anzd.a(this, this.jdField_a_of_type_Int);
+    blqm.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+    if (this.jdField_a_of_type_Aoln != null) {
+      this.jdField_a_of_type_Aoln.a(this, this.jdField_a_of_type_Int);
     }
   }
 }

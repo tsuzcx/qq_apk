@@ -16,7 +16,7 @@ class GameGrowthGuardianManager$GuardInstructionDialogSkippedRealNameAuthenticat
   protected GameGrowthGuardianManager.DialogAction getNegativeDialogAction()
   {
     QLog.d("GameGrowthGuardianManag", 1, "getNegativeDialogAction() called skipped real name authentication");
-    return new GameGrowthGuardianManager.DialogAction(2131694404, new GameGrowthGuardianManager.GuardInstructionDialogSkippedRealNameAuthenticate.1(this));
+    return new GameGrowthGuardianManager.DialogAction(2131694446, new GameGrowthGuardianManager.GuardInstructionDialogSkippedRealNameAuthenticate.1(this));
   }
   
   protected String getReportSubActionType()

@@ -1,19 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
 
 public class adyt
-  implements DialogInterface.OnClickListener
+  extends anuw
 {
-  public adyt(Conversation paramConversation) {}
+  public adyt(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
+    BaseChatPie.d(this.a, paramBoolean, paramObject);
+  }
+  
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      this.a.aR();
     }
-    bcst.b(this.a.a, "CliOper", "", "", "0X800815E", "0X800815E", 0, 0, "", "", "", "");
-    bcst.b(this.a.a, "CliOper", "", "", "0X8008656", "0X8008656", 0, 0, "", "", "", "");
+  }
+  
+  protected void onImpeach(boolean paramBoolean, String paramString)
+  {
+    ((agss)this.a.a(70)).a();
+    if (paramBoolean)
+    {
+      this.a.a.showDialog(232);
+      return;
+    }
+    this.a.a.showDialog(233);
+  }
+  
+  protected void onSetCalReactiveDays(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays");
+      }
+      this.a.aR();
+    }
   }
 }
 

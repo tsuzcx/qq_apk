@@ -1,6 +1,19 @@
-public abstract interface vst
+import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
+
+class vst
+  implements aaav<FeedCloudRead.StGetBusiInfoRsp>
 {
-  public abstract float a();
+  vst(vss paramvss, QCircleGetTabListRequest paramQCircleGetTabListRequest, aadl paramaadl) {}
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
+  {
+    QLog.d("QCircleFolderPreLoaderTask", 1, "QCircleFolderPreLoaderTask->onReceive: dispatch Success:" + paramBoolean + " |CmdName:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCmdName() + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
+    if (this.jdField_a_of_type_Aadl != null) {
+      this.jdField_a_of_type_Aadl.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetBusiInfoRsp });
+    }
+  }
 }
 
 

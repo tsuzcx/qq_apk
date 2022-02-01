@@ -1,20 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class pwq
-  implements Comparator<ChannelInfo>
+  implements ViewBase.OnClickListener
 {
-  pwq(pwn parampwn) {}
+  pwq(pwn parampwn, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
-      return 0;
+    paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a;
+    if (paramViewBase != null)
+    {
+      rpt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+      pwn.a(this.jdField_a_of_type_Pwn, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, paramViewBase.e, "");
     }
-    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
-      return -1;
-    }
-    return 1;
   }
 }
 

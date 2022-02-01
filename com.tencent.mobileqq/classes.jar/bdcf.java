@@ -1,65 +1,62 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
 public class bdcf
-  extends aqkz<bdcg>
 {
-  public static bdcg a()
+  double a;
+  
+  bdcf(double paramDouble)
   {
-    return (bdcg)aqlk.a().a(610);
+    this.a = paramDouble;
   }
   
-  @NonNull
-  public bdcg a(int paramInt)
+  public boolean a(int[][] paramArrayOfInt)
   {
-    return new bdcg();
-  }
-  
-  @Nullable
-  public bdcg a(aqlg[] paramArrayOfaqlg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("StudyModeConfigProcessor", 2, "[onParsed]");
+    double d2 = 0.0D;
+    int k = paramArrayOfInt.length;
+    int m = paramArrayOfInt[0].length;
+    double[] arrayOfDouble1 = new double[k];
+    double[] arrayOfDouble2 = new double[m];
+    double d1 = 0.0D;
+    int i = 0;
+    int j;
+    while (i < k)
+    {
+      j = 0;
+      while (j < m)
+      {
+        arrayOfDouble1[i] += paramArrayOfInt[i][j];
+        d1 += paramArrayOfInt[i][j];
+        j += 1;
+      }
+      i += 1;
     }
-    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
-      return bdcg.a(paramArrayOfaqlg);
+    i = 0;
+    while (i < m)
+    {
+      j = 0;
+      while (j < k)
+      {
+        arrayOfDouble2[i] += paramArrayOfInt[j][i];
+        j += 1;
+      }
+      i += 1;
     }
-    return null;
-  }
-  
-  public void a(bdcg parambdcg) {}
-  
-  public Class<bdcg> clazz()
-  {
-    return bdcg.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 610;
+    i = 0;
+    while (i < k)
+    {
+      j = 0;
+      while (j < m)
+      {
+        double d4 = 1.0D * arrayOfDouble1[i] * arrayOfDouble2[j] / d1;
+        double d5 = paramArrayOfInt[i][j];
+        double d3 = d2;
+        if (d4 > 0.0D) {
+          d3 = d2 + (d4 - d5) * (d4 - d5) / d4;
+        }
+        j += 1;
+        d2 = d3;
+      }
+      i += 1;
+    }
+    return d2 > this.a + 1.0E-008D;
   }
 }
 

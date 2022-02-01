@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import wpm;
-import wpy;
+import wth;
+import wtt;
 
 class Now$3
   implements Runnable
@@ -10,7 +10,7 @@ class Now$3
   
   public void run()
   {
-    ((wpy)wpm.a(2)).c();
+    ((wtt)wth.a(2)).c();
   }
 }
 

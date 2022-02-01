@@ -1,20 +1,24 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qqstory.utils.FileUtils.1;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import java.io.File;
+import java.util.Comparator;
 
-public class zkt
-  implements DialogInterface.OnClickListener
+public final class zkt
+  implements Comparator<File>
 {
-  public zkt(FileUtils.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent(this.a.a, QQSettingMsgHistoryActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
+    long l = paramFile1.lastModified() - paramFile2.lastModified();
+    if (l > 0L) {
+      return -1;
+    }
+    if (l == 0L) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return true;
   }
 }
 

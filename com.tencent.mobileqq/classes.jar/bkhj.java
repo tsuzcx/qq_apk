@@ -1,24 +1,17 @@
-import com.tencent.widget.AbsListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qidian.QidianProfileCardActivity;
 
 public class bkhj
+  implements DialogInterface.OnClickListener
 {
-  private int a;
+  public bkhj(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  private bkhj(AbsListView paramAbsListView) {}
-  
-  public void a()
-  {
-    this.a = AbsListView.access$200(this.this$0);
-  }
-  
-  public boolean a()
-  {
-    return (this.this$0.hasWindowFocus()) && (AbsListView.access$300(this.this$0) == this.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkhj
  * JD-Core Version:    0.7.0.1
  */

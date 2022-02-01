@@ -1,37 +1,29 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.ValueCallback;
 
-final class bhrf
-  implements ValueCallback<String>
+class bhrf
+  extends Handler
 {
-  bhrf(WebViewFragment paramWebViewFragment) {}
-  
-  public void a(String paramString)
+  bhrf(bhrd parambhrd, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SwiftWebViewUtils", 2, "evaluateJavascript: " + paramString);
-    }
-    Bundle localBundle = new Bundle();
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (String str = paramString.trim();; str = "")
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    synchronized (this.a)
     {
-      if (!TextUtils.isEmpty(str))
-      {
-        paramString = str;
-        if (str.startsWith("\"")) {
-          paramString = str.replaceFirst("\"", "");
-        }
-        str = paramString;
-        if (paramString.endsWith("\"")) {
-          str = paramString.substring(0, paramString.length() - 1);
-        }
-        localBundle.putString("banner_wording", String.format(anni.a(2131713392), new Object[] { str }));
+      if (bhrd.a(this.a) != null) {
+        bhrd.a(this.a).a(bhrd.a(this.a));
       }
-      this.a.goToConversation(localBundle);
-      return;
+      while (!QLog.isDevelopLevel())
+      {
+        super.handleMessage(paramMessage);
+        return;
+      }
+      QLog.d("QQLSActivity", 4, "QQLSSensor handler callback=null");
     }
   }
 }

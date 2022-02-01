@@ -1,12 +1,12 @@
 package dov.com.qq.im.ae.album.logic;
 
-import bngh;
+import bohp;
 import mqq.util.WeakReference;
 
 public class AEPhotoListLogicDefault$8
   implements Runnable
 {
-  public AEPhotoListLogicDefault$8(bngh parambngh) {}
+  public AEPhotoListLogicDefault$8(bohp parambohp) {}
   
   public void run()
   {

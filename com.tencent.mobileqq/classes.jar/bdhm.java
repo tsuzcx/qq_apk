@@ -1,16 +1,10 @@
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
-
-public class bdhm
+public abstract interface bdhm
 {
-  public int a;
-  public TimDocSSOMsg.UinRightInfo a;
-  public String a;
-  public String b;
-  public String c;
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdhm
  * JD-Core Version:    0.7.0.1
  */

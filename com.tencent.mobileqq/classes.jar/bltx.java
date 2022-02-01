@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.IPrePullListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneIPCModule;
-import org.json.JSONObject;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
 public class bltx
-  implements MiniAppPrePullManager.IPrePullListener
+  extends ThreadLocal<Boolean>
 {
-  public bltx(QzoneIPCModule paramQzoneIPCModule) {}
+  public bltx(XRecyclerView paramXRecyclerView) {}
   
-  public void onPrePullCallback(boolean paramBoolean, JSONObject paramJSONObject)
+  protected Boolean a()
   {
-    QLog.d("QzoneIPCModule", 4, String.format("after preload For QQ MINI Program %b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    return Boolean.valueOf(false);
   }
 }
 

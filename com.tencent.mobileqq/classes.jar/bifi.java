@@ -1,48 +1,22 @@
-import android.content.Context;
-import android.media.AudioManager;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-class bifi
-  implements awjk
+public class bifi
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  bifi(bifg parambifg) {}
+  public bifi(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public void a(int paramInt)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("TVKVideoController", 4, new Object[] { "onFocusChange focusType:", Integer.valueOf(paramInt) });
+    if (QLog.isColorLevel()) {
+      QLog.d("HealthBusinessPlugin", 2, "Completion video000");
     }
-    switch (paramInt)
-    {
+    paramTVK_IMediaPlayer.seekTo(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("HealthBusinessPlugin", 2, "Completion video");
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (bifg.a(this.a) == null);
-        ((AudioManager)((Context)bifg.a(this.a).get()).getSystemService("audio")).requestAudioFocus(null, 3, 2);
-        bifg.a(this.a).c();
-        bifg.a(this.a, 1);
-        if (bifg.a(this.a) != null) {
-          bifg.a(this.a).onVideoStart((int)bifg.a(this.a).c());
-        }
-        bifg.a(this.a).postDelayed(this.a.a, 100L);
-        return;
-      } while (bifg.a(this.a) == null);
-      bifg.a(this.a).b();
-      bifg.a(this.a, 4);
-      if (bifg.a(this.a) != null) {
-        bifg.a(this.a).onVideoStop();
-      }
-      bifg.a(this.a).removeCallbacks(this.a.a);
-      return;
-    } while (bifg.a(this.a) == null);
-    bifg.a(this.a).a(true);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
 import android.content.Intent;
 import android.os.Bundle;
-import anvy;
+import aoik;
 import com.tencent.mobileqq.intervideo.groupvideo.plugininterface.IVHostCallback;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
@@ -35,7 +35,7 @@ public class IVCommonInterfaceImpl
   
   public Future<Bundle> getLocation(String paramString)
   {
-    return anvy.a(16).submit(new IVCommonInterfaceImpl.1(this, paramString));
+    return aoik.a(16).submit(new IVCommonInterfaceImpl.1(this, paramString));
   }
   
   public void onHostActivityBackPress()

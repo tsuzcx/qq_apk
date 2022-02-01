@@ -1,104 +1,87 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.view.View;
-import android.view.ViewGroup;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arfy
+  extends arac<arfx>
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  protected final View a;
-  
-  public arfy(View paramView)
+  public static boolean a()
   {
-    if (paramView == null) {
-      throw new IllegalArgumentException("itemView may not be null");
+    arfx localarfx = (arfx)aran.a().a(632);
+    if (localarfx != null) {}
+    for (boolean bool = localarfx.a();; bool = false)
+    {
+      QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, new Object[] { "isEnableFakeMsg = ", Boolean.valueOf(bool) });
+      return bool;
     }
-    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  private View a(View paramView, float paramFloat1, float paramFloat2)
+  @NonNull
+  public arfx a(int paramInt)
   {
-    RectF localRectF = new RectF();
+    return new arfx();
+  }
+  
+  @Nullable
+  public arfx a(araj[] paramArrayOfaraj)
+  {
     int i = 0;
-    Object localObject = null;
-    Iterator localIterator = paramView.getTouchables().iterator();
-    View localView;
-    float f1;
-    if (localIterator.hasNext())
-    {
-      localView = (View)localIterator.next();
-      f1 = localView.getX();
-      float f2 = localView.getY();
-      localRectF.set(f1, f2, localView.getMeasuredWidth() + f1, localView.getMeasuredWidth() + f2);
-      if (!localRectF.contains(paramFloat1, paramFloat2)) {
-        break label160;
-      }
-      if (localView.equals(paramView)) {
-        i = 1;
-      }
-    }
-    label160:
+    if (paramArrayOfaraj == null) {}
     for (;;)
     {
-      break;
-      localObject = localView;
-      if ((localView instanceof ViewGroup))
-      {
-        localObject = a(paramView, paramFloat1 - f1, paramFloat2 - paramFloat1);
-        continue;
-        if ((i != 0) && (localObject == null)) {
-          localObject = paramView;
-        }
+      QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, new Object[] { "onParsed confFiles.length=", Integer.valueOf(i) });
+      if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0)) {
+        break;
       }
-      else
-      {
-        return localObject;
-      }
-      return localObject;
+      new arfx();
+      return arfx.a(paramArrayOfaraj);
+      i = paramArrayOfaraj.length;
+    }
+    return null;
+  }
+  
+  public void a(arfx paramarfx)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 2, "onUpdate " + paramarfx.toString());
     }
   }
   
-  public int a()
+  public Class<arfx> clazz()
   {
-    return this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
+    return arfx.class;
   }
   
-  public View a(argk paramargk)
+  public boolean isAccountRelated()
   {
-    return a(this.jdField_a_of_type_AndroidViewView, paramargk.a(), paramargk.b());
+    return true;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean isNeedCompressed()
   {
-    this.jdField_a_of_type_AndroidViewView.measure(paramInt1, paramInt2);
+    return true;
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public boolean isNeedStoreLargeFile()
   {
-    this.jdField_a_of_type_AndroidViewView.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+    return false;
   }
   
-  public void a(Canvas paramCanvas)
+  public int migrateOldVersion()
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_a_of_type_AndroidViewView.getAlpha() * 255.0F));
-    int i = paramCanvas.saveLayer(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint, 31);
-    this.jdField_a_of_type_AndroidViewView.draw(paramCanvas);
-    paramCanvas.restoreToCount(i);
+    return 0;
   }
   
-  public int b()
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
   {
-    return this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
+    return 632;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arfy
  * JD-Core Version:    0.7.0.1
  */

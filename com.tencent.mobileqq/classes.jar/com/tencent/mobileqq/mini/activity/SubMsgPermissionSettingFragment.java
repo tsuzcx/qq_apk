@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.activity;
 import NS_MINI_INTERFACE.INTERFACE.StGetUserSettingRsp;
 import NS_MINI_INTERFACE.INTERFACE.StSubscribeMessage;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
-import aevv;
+import afez;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -19,8 +19,8 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import anni;
-import biau;
+import anzj;
+import bjbs;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForMini;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.mini.MiniAppInterface;
@@ -51,7 +51,7 @@ public class SubMsgPermissionSettingFragment
   AuthorizeCenter authorizeCenter;
   private boolean autoReSet;
   TextView leftBtnView;
-  private biau mProgress;
+  private bjbs mProgress;
   MiniAppInterface miniAppInterface;
   private CompoundButton.OnCheckedChangeListener onceSubMsgCheckListener = new SubMsgPermissionSettingFragment.2(this);
   private ListView onceSubMsgList;
@@ -118,10 +118,10 @@ public class SubMsgPermissionSettingFragment
     int i = this.authorizeCenter.getAuthFlagFromAuthorize("setting.appMsgSubscribed");
     if (1 != i)
     {
-      this.subMsgTips.setText(anni.a(2131693686));
+      this.subMsgTips.setText(anzj.a(2131693703));
       this.subMsgSwitcher.setOnCheckedChangeListener(this.subMsgCheckListener);
       this.subMsgSwitcher.a().setTag("setting.appMsgSubscribed");
-      this.subMsgSwitcher.setText(anni.a(2131693685));
+      this.subMsgSwitcher.setText(anzj.a(2131693702));
       FormSwitchItem localFormSwitchItem = this.subMsgSwitcher;
       if (i == 2)
       {
@@ -133,9 +133,9 @@ public class SubMsgPermissionSettingFragment
     for (;;)
     {
       if (this.mProgress == null) {
-        this.mProgress = new biau(getActivity());
+        this.mProgress = new bjbs(getActivity());
       }
-      this.mProgress.a(super.getResources().getString(2131694135));
+      this.mProgress.a(super.getResources().getString(2131694153));
       this.mProgress.show();
       MiniAppCmdUtil.getInstance().getUserSetting(this.appId, "", "setting.onceMsgSubscribed", null, new SubMsgPermissionSettingFragment.3(this));
       return;
@@ -151,7 +151,7 @@ public class SubMsgPermissionSettingFragment
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("key_appid", paramString);
-    aevv.a(paramContext, localIntent, PublicFragmentActivityForMini.class, SubMsgPermissionSettingFragment.class);
+    afez.a(paramContext, localIntent, PublicFragmentActivityForMini.class, SubMsgPermissionSettingFragment.class);
   }
   
   public boolean needImmersive()
@@ -163,7 +163,7 @@ public class SubMsgPermissionSettingFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131368947) {
+    if (paramView.getId() == 2131369042) {
       getActivity().finish();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -171,7 +171,7 @@ public class SubMsgPermissionSettingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559413, null);
+    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559414, null);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramLayoutInflater.setFitsSystemWindows(true);
@@ -195,15 +195,15 @@ public class SubMsgPermissionSettingFragment
       getActivity().finish();
       return;
     }
-    this.leftBtnView = ((TextView)paramView.findViewById(2131368947));
-    this.titleView = ((TextView)paramView.findViewById(2131368994));
-    this.leftBtnView.setText(anni.a(2131706693));
-    this.titleView.setText(anni.a(2131706707));
+    this.leftBtnView = ((TextView)paramView.findViewById(2131369042));
+    this.titleView = ((TextView)paramView.findViewById(2131369088));
+    this.leftBtnView.setText(anzj.a(2131706802));
+    this.titleView.setText(anzj.a(2131706816));
     this.leftBtnView.setOnClickListener(this);
-    this.subMsgTips = ((TextView)paramView.findViewById(2131378005));
-    this.subMsgSwitcher = ((FormSwitchItem)paramView.findViewById(2131378004));
-    this.onceSubMsgTips = ((TextView)paramView.findViewById(2131371934));
-    this.onceSubMsgList = ((ListView)paramView.findViewById(2131371933));
+    this.subMsgTips = ((TextView)paramView.findViewById(2131378160));
+    this.subMsgSwitcher = ((FormSwitchItem)paramView.findViewById(2131378159));
+    this.onceSubMsgTips = ((TextView)paramView.findViewById(2131372048));
+    this.onceSubMsgList = ((ListView)paramView.findViewById(2131372047));
     this.authorizeCenter = this.miniAppInterface.getAuthorizeCenter(this.appId);
     if (this.authorizeCenter == null)
     {

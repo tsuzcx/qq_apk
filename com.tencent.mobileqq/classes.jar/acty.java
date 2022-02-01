@@ -1,19 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class acty
-  implements View.OnClickListener
+  implements acun
 {
-  public acty(GdtVideoCeilingTitleBar paramGdtVideoCeilingTitleBar) {}
-  
-  public void onClick(View paramView)
+  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
   {
-    if (GdtVideoCeilingTitleBar.a(this.a) != null) {
-      GdtVideoCeilingTitleBar.a(this.a).a(paramView);
+    Object localObject = null;
+    try
+    {
+      paramString = new JSONObject(paramVarArgs[0]);
+      acvc.a("GdtC2SJsCallHandler", paramString.toString());
+      int i = paramString.optInt("operationType");
+      int j = paramString.optInt("businessType");
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString.getJSONObject("adInfo")));
+      acvi.a(i, j, localAdInfo);
+      if (paramacts != null) {}
+      for (paramString = paramacts.a();; paramString = null)
+      {
+        paramVarArgs = localObject;
+        if (paramacts != null) {
+          paramVarArgs = paramacts.a();
+        }
+        AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "c2sReport", paramVarArgs, new GdtAd(localAdInfo));
+        return true;
+      }
+      return true;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Exception paramacts)
+    {
+      acvc.d("GdtC2SJsCallHandler", "handleJsCallRequest", paramacts);
+    }
   }
 }
 

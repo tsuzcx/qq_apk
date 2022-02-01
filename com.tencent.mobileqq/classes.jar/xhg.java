@@ -1,17 +1,15 @@
 class xhg
-  implements xiz
+  extends xfx
 {
-  xhg(xhf paramxhf) {}
-  
-  public void a()
+  xhg(xgp paramxgp, String paramString1, String paramString2, boolean paramBoolean, xhy paramxhy)
   {
-    xhf.a(this.a);
+    super(paramString1, paramString2, paramBoolean);
   }
   
-  public void a(xix paramxix, String paramString, boolean paramBoolean)
+  public boolean b()
   {
-    yqp.d("Q.qqstory.playernew.StoryPlayerImpl", "onGroupDataDelete, groupId=%s, vid=%s", new Object[] { paramxix.a, paramString });
-    xhf.a(this.a).a(paramxix, paramString, paramBoolean);
+    this.jdField_a_of_type_Xhy.d = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 

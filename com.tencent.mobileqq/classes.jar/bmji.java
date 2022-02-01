@@ -1,24 +1,21 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-public final class bmji
+public class bmji
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public Map<String, String> a;
+  public bmji(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public bmji()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public String toString()
-  {
-    return "ctrl:[cmd = " + this.jdField_a_of_type_Int + ", data = " + this.jdField_a_of_type_JavaUtilMap + "]";
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmji
  * JD-Core Version:    0.7.0.1
  */

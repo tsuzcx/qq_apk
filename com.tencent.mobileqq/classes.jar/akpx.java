@@ -1,21 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
 public class akpx
-  implements aklz
+  implements DialogInterface.OnClickListener
 {
-  public akpx(QzoneHbFragment paramQzoneHbFragment) {}
+  public akpx(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void a() {}
-  
-  public void a(Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramObject instanceof Bitmap))
-    {
-      paramObject = QzoneHbFragment.a(this.a).obtainMessage();
-      paramObject.what = 102;
-      QzoneHbFragment.a(this.a).sendMessage(paramObject);
-    }
+    this.a.a = null;
   }
 }
 

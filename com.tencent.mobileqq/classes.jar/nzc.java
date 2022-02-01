@@ -1,13 +1,18 @@
-import android.widget.Toast;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class nzc
-  implements qzc
+  implements View.OnClickListener
 {
-  nzc(nzb paramnzb) {}
+  nzc(nyy paramnyy) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    tti.a(this.a.a.a, paramString, 0).show();
+    this.a.a.dismiss();
+    nyy.c(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

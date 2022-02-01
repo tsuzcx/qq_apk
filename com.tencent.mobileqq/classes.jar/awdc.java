@@ -1,30 +1,48 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.intervideo.nowproxy.customized_interface.IShadow;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.1;
+import com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.2;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import java.util.concurrent.ExecutorService;
 
 public class awdc
-  implements URLDrawable.URLDrawableListener
+  implements IShadow
 {
-  public awdc(LoginWelcomeManager paramLoginWelcomeManager, awdg paramawdg, RecentUser paramRecentUser) {}
+  private avzc a;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  private void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "tryShowCGRU drawable onLoadSuccessed");
+    try
+    {
+      awde.a().a().b("enter_shadow_err").c(paramString).b();
+      ThreadManagerV2.getUIHandlerV2().post(new NowShadowImpl.2(this));
+      return;
     }
-    this.jdField_a_of_type_Awdg.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Awdg.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
-    this.jdField_a_of_type_Awdg.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(null);
-    LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeManager, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
+  
+  public avzc a(Context paramContext, String paramString1, String paramString2)
+  {
+    return avzl.a(paramContext, paramString1, paramString2);
+  }
+  
+  public void enter(Context paramContext, long paramLong, String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    aoik.b(192).execute(new NowShadowImpl.1(this, paramContext, paramString1, paramString2, paramLong, paramBundle, paramEnterCallback));
+  }
+  
+  public boolean hasPluginManager()
+  {
+    return this.a != null;
+  }
+  
+  public void setILoggerFactory() {}
 }
 
 

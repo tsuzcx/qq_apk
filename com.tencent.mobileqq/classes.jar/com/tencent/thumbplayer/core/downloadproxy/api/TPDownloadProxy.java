@@ -164,7 +164,7 @@ public class TPDownloadProxy
         TPListenerManager.getInstance().initHandler();
         if ((TextUtils.isEmpty(paramTPDLProxyInitParam.getDataDir())) && (!TextUtils.isEmpty(this.mCurrentStoragePath)))
         {
-          j = TPDownloadProxyNative.getInstance().initService(this.mServiceType, (String)localObject, this.mCurrentStoragePath, paramTPDLProxyInitParam.getConfigDir());
+          j = TPDownloadProxyNative.getInstance().initService(this.mServiceType, (String)localObject, this.mCurrentStoragePath, paramTPDLProxyInitParam.getConfigStr());
           paramTPDLProxyInitParam = new IntentFilter();
           paramTPDLProxyInitParam.addAction("android.intent.action.SCREEN_OFF");
           paramTPDLProxyInitParam.addAction("android.intent.action.SCREEN_ON");
@@ -190,7 +190,7 @@ public class TPDownloadProxy
       finally {}
       this.mCurrentStoragePath = paramTPDLProxyInitParam.getDataDir();
       label366:
-      int j = TPDownloadProxyNative.getInstance().initService(this.mServiceType, str1, paramTPDLProxyInitParam.getDataDir(), paramTPDLProxyInitParam.getConfigDir());
+      int j = TPDownloadProxyNative.getInstance().initService(this.mServiceType, str1, paramTPDLProxyInitParam.getDataDir(), paramTPDLProxyInitParam.getConfigStr());
     }
   }
   

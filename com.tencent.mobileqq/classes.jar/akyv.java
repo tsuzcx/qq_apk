@@ -1,28 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
-class akyv
-  implements View.OnClickListener
+public class akyv
+  extends Handler
 {
-  akyv(akyh paramakyh, aysb paramaysb) {}
+  public akyv(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (akyh.a(this.jdField_a_of_type_Akyh).app.getExtOnlineStatus() > 40001L) {
-      ayqb.a(akyh.a(this.jdField_a_of_type_Akyh).app, 40001L, false, "br_close");
+    super.handleMessage(paramMessage);
+    if (this.a.b()) {
+      if (QLog.isColorLevel()) {
+        QLog.i("RedPacketKuaKuaFragment", 2, "handleMessage:getActivity() == null || getActivity().isFinishing()");
+      }
     }
-    for (;;)
+    do
     {
-      aypy.a("0X800AF9F", (int)this.jdField_a_of_type_Aysb.a);
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.jdField_a_of_type_Akyh.a(28, 0);
-      this.jdField_a_of_type_Akyh.a(28, null);
-      ayqb.c();
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("RedPacketKuaKuaFragment", 2, "handleMessage() returned:输入完成");
+      }
+    } while (NetConnInfoCenter.getServerTime() - this.a.c < this.a.b);
+    if (TextUtils.isEmpty(this.a.a.getText().toString()))
+    {
+      this.a.a(anzj.a(2131704868));
+      return;
     }
+    bmrq.a(this.a.getActivity().app, "tenpay.com", new akyw(this));
   }
 }
 

@@ -19,20 +19,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import azde;
-import azfe;
-import azfl;
-import azlh;
-import azml;
-import aznd;
-import azqi;
-import bcnj;
-import bgdg;
-import bghy;
-import bglf;
-import bgtn;
-import biab;
-import biai;
+import azvr;
+import azxr;
+import azxy;
+import badt;
+import baex;
+import bafp;
+import baiy;
+import bdgb;
+import bhdh;
+import bhhz;
+import bhlg;
+import bhtq;
+import bhyu;
+import bjaz;
+import bjbg;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -63,11 +64,11 @@ public class ProfileCardMoreInfoView
   private Resources jdField_a_of_type_AndroidContentResResources;
   private Handler jdField_a_of_type_AndroidOsHandler;
   LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  public azfe a;
-  private azlh jdField_a_of_type_Azlh;
-  public azqi a;
-  private biab jdField_a_of_type_Biab;
-  private final biai jdField_a_of_type_Biai = new biai(this);
+  public azxr a;
+  private badt jdField_a_of_type_Badt;
+  public baiy a;
+  private bjaz jdField_a_of_type_Bjaz;
+  private final bjbg jdField_a_of_type_Bjbg = new bjbg(this);
   public BaseActivity a;
   public QQAppInterface a;
   public AbsProfileHeaderView a;
@@ -88,14 +89,14 @@ public class ProfileCardMoreInfoView
   public ProfileCardMoreInfoView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Azqi = new azqi();
+    this.jdField_a_of_type_Baiy = new baiy();
     a(paramContext);
   }
   
   public ProfileCardMoreInfoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Azqi = new azqi();
+    this.jdField_a_of_type_Baiy = new baiy();
     a(paramContext);
   }
   
@@ -103,22 +104,32 @@ public class ProfileCardMoreInfoView
   {
     if ((paramViewGroup != null) && (paramInt1 > 0) && (!TextUtils.isEmpty(paramCharSequence)))
     {
-      ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561402, null);
-      View localView = localViewGroup.findViewById(2131368138);
-      TextView localTextView = (TextView)localViewGroup.findViewById(2131368563);
+      ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561443, null);
+      View localView = localViewGroup.findViewById(2131368212);
+      TextView localTextView = (TextView)localViewGroup.findViewById(2131368636);
       localView.setBackgroundResource(paramInt1);
-      if ((paramCharSequence instanceof String)) {
-        localTextView.setText(((String)paramCharSequence).trim());
-      }
-      for (;;)
+      if (this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqDataCard != null)
       {
+        paramInt1 = this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqDataCard.lhLevel;
+        if (!(paramCharSequence instanceof String)) {
+          break label181;
+        }
+      }
+      label181:
+      for (paramCharSequence = bhyu.a(bhyu.a(this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqDataCard), paramInt1, true, ((String)paramCharSequence).trim());; paramCharSequence = bhyu.a(bhyu.a(this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqDataCard), paramInt1, true, paramCharSequence))
+      {
+        localTextView.setText(paramCharSequence);
+        bhyu.a(localTextView, bhyu.a(this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqDataCard), paramInt1);
         paramViewGroup.addView(localViewGroup);
         if (paramInt2 == 1) {
-          azml.a(localTextView);
+          baex.a(localTextView);
         }
-        a("map_key_phone", null, localTextView, null);
+        if (bhyu.a(this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqDataCard) != 1) {
+          a("map_key_phone", null, localTextView, null);
+        }
         return localViewGroup;
-        localTextView.setText(paramCharSequence);
+        paramInt1 = -1;
+        break;
       }
     }
     return null;
@@ -130,19 +141,19 @@ public class ProfileCardMoreInfoView
       return null;
     }
     String str = paramCardContactInfo.c;
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561405, null);
-    View localView = localViewGroup.findViewById(2131368826);
-    TextView localTextView = (TextView)localViewGroup.findViewById(2131368563);
-    ImageView localImageView = (ImageView)localViewGroup.findViewById(2131362936);
+    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561446, null);
+    View localView = localViewGroup.findViewById(2131368913);
+    TextView localTextView = (TextView)localViewGroup.findViewById(2131368636);
+    ImageView localImageView = (ImageView)localViewGroup.findViewById(2131362954);
     localView.setVisibility(0);
-    localView.setBackgroundResource(2130845778);
+    localView.setBackgroundResource(2130845793);
     localTextView.setText(str);
     paramViewGroup.addView(localViewGroup);
     str = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131691140);
-    if (this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 33) {}
+    if (this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 33) {}
     for (paramViewGroup = paramCardContactInfo.c;; paramViewGroup = paramCardContactInfo.jdField_a_of_type_JavaLangString + " " + paramCardContactInfo.c)
     {
-      azml.a(localTextView, str, paramViewGroup);
+      baex.a(localTextView, str, paramViewGroup);
       a("map_key_phone", null, localTextView, localImageView);
       return localViewGroup;
     }
@@ -171,16 +182,16 @@ public class ProfileCardMoreInfoView
     return String.format("%s(%s)", new Object[] { paramTextView, paramString2 });
   }
   
-  public static String a(azfe paramazfe)
+  public static String a(azxr paramazxr)
   {
-    Object localObject2 = paramazfe.jdField_a_of_type_ArrayOfJavaLangString[4];
+    Object localObject2 = paramazxr.jdField_a_of_type_ArrayOfJavaLangString[4];
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = paramazfe.jdField_a_of_type_ArrayOfJavaLangString[0];
+      localObject1 = paramazxr.jdField_a_of_type_ArrayOfJavaLangString[0];
     }
     localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
+      localObject2 = paramazxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
     }
     return localObject2;
   }
@@ -198,7 +209,7 @@ public class ProfileCardMoreInfoView
         break label145;
       }
       localObject = paramArrayOfString[j];
-      if (!this.jdField_a_of_type_Azqi.a((String)localObject)) {
+      if (!this.jdField_a_of_type_Baiy.a((String)localObject)) {
         break label61;
       }
     }
@@ -209,7 +220,7 @@ public class ProfileCardMoreInfoView
       i = paramArrayOfString.length;
       break;
       label61:
-      this.jdField_a_of_type_Azqi.a((String)localObject, paramHashMap);
+      this.jdField_a_of_type_Baiy.a((String)localObject, paramHashMap);
       if (((!"map_key_sig".equals(localObject)) || (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null) || (!this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.a("map_key_sign"))) && ((!"map_key_account_base_info".equals(localObject)) || (!a())))
       {
         localObject = (View)paramHashMap.get(localObject);
@@ -231,23 +242,23 @@ public class ProfileCardMoreInfoView
     paramContext = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics();
     this.jdField_a_of_type_Float = paramContext.density;
     this.jdField_b_of_type_Float = Math.min(paramContext.widthPixels, paramContext.heightPixels);
-    this.jdField_c_of_type_Float = (this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297164) + this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297471) + this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297472));
+    this.jdField_c_of_type_Float = (this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297176) + this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297483) + this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297484));
     float f = this.jdField_a_of_type_Float;
-    int i = this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297468);
-    int j = this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297469);
+    int i = this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297480);
+    int j = this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297481);
     this.d = (7.0F * f + i + j);
     this.e = (this.jdField_b_of_type_Float - this.jdField_c_of_type_Float - this.d);
-    this.jdField_a_of_type_Azqi.a(this);
+    this.jdField_a_of_type_Baiy.a(this);
   }
   
   private boolean a()
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Azfe != null)
+    if (this.jdField_a_of_type_Azxr != null)
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_Azfe.jdField_a_of_type_Long == azfl.jdField_a_of_type_Long) {
+      if (this.jdField_a_of_type_Azxr.jdField_a_of_type_Long == azxy.jdField_a_of_type_Long) {
         bool1 = true;
       }
     }
@@ -268,7 +279,7 @@ public class ProfileCardMoreInfoView
     }
     for (boolean bool = true;; bool = false)
     {
-      if (bcnj.a()) {
+      if (bdgb.a()) {
         bool = false;
       }
       if ((bool) && (getChildCount() == 0)) {
@@ -300,7 +311,7 @@ public class ProfileCardMoreInfoView
           ((LinearLayout.LayoutParams)localObject1).topMargin = ((int)(this.jdField_a_of_type_Float * 6.0F));
           ((LinearLayout.LayoutParams)localObject1).bottomMargin = ((int)(this.jdField_a_of_type_Float * 6.0F));
           this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, paramView);
-          paramView.setBackgroundResource(2130850072);
+          paramView.setBackgroundResource(2130850084);
           addView(paramView);
           return bool;
           i += 1;
@@ -318,22 +329,22 @@ public class ProfileCardMoreInfoView
     }
     Rect localRect = new Rect();
     paramView.getGlobalVisibleRect(localRect);
-    return localRect.intersect(new Rect(0, 0, bgtn.a(), bgtn.b()));
+    return localRect.intersect(new Rect(0, 0, bhtq.a(), bhtq.b()));
   }
   
-  private boolean a(azfe paramazfe)
+  private boolean a(azxr paramazxr)
   {
     boolean bool = false;
     try
     {
-      if (this.jdField_a_of_type_Azlh != null) {
-        bool = this.jdField_a_of_type_Azlh.a(paramazfe);
+      if (this.jdField_a_of_type_Badt != null) {
+        bool = this.jdField_a_of_type_Badt.a(paramazxr);
       }
       return bool;
     }
-    catch (Exception paramazfe)
+    catch (Exception paramazxr)
     {
-      QLog.e("ProfileCardMoreInfoView", 1, "notifyContainerDataUpdate fail.", paramazfe);
+      QLog.e("ProfileCardMoreInfoView", 1, "notifyContainerDataUpdate fail.", paramazxr);
     }
     return false;
   }
@@ -344,21 +355,21 @@ public class ProfileCardMoreInfoView
     if (!b()) {
       return this.jdField_a_of_type_JavaUtilHashMap.remove("map_key_tag") != null;
     }
-    if (this.jdField_a_of_type_Azfe.b) {
+    if (this.jdField_a_of_type_Azxr.b) {
       return this.jdField_a_of_type_JavaUtilHashMap.remove("map_key_tag") != null;
     }
     Object localObject2 = (View)this.jdField_a_of_type_JavaUtilHashMap.get("map_key_tag");
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561438, null);
+      localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561479, null);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_tag", localObject1);
       bool1 = true;
     }
-    localObject2 = (AdaptiveLayout)((View)localObject1).findViewById(2131378260);
-    int j = getResources().getDimensionPixelSize(2131298465);
+    localObject2 = (AdaptiveLayout)((View)localObject1).findViewById(2131378417);
+    int j = getResources().getDimensionPixelSize(2131298478);
     int i = 7;
-    if (this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
+    if (this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
       i = 8;
     }
     int k;
@@ -366,26 +377,26 @@ public class ProfileCardMoreInfoView
     {
       ((AdaptiveLayout)localObject2).setGap(j, j);
       this.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[i];
-      k = getResources().getDimensionPixelSize(2131298463);
-      int m = getResources().getDimensionPixelSize(2131298466);
-      int n = getResources().getDimensionPixelSize(2131298469);
+      k = getResources().getDimensionPixelSize(2131298476);
+      int m = getResources().getDimensionPixelSize(2131298479);
+      int n = getResources().getDimensionPixelSize(2131298482);
       j = 0;
       if (j < i)
       {
         localObject1 = new TextView(getContext());
         this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[j] = localObject1;
-        ((TextView)localObject1).setBackgroundResource(2130847029);
+        ((TextView)localObject1).setBackgroundResource(2130847046);
         ((TextView)localObject1).setPadding(m, m, m, m);
         ((TextView)localObject1).setTextSize(0, k);
         ((TextView)localObject1).setTextColor(-16777216);
         ((TextView)localObject1).setGravity(17);
         if (7 == j)
         {
-          k = getResources().getDimensionPixelSize(2131298470);
+          k = getResources().getDimensionPixelSize(2131298483);
           ((TextView)localObject1).setTextSize(0, k);
-          ((TextView)localObject1).setTag(new azde(47, null));
+          ((TextView)localObject1).setTag(new azvr(47, null));
           ((TextView)localObject1).setText("+");
-          ((TextView)localObject1).setOnClickListener(this.jdField_a_of_type_Azfe.jdField_a_of_type_AndroidViewView$OnClickListener);
+          ((TextView)localObject1).setOnClickListener(this.jdField_a_of_type_Azxr.jdField_a_of_type_AndroidViewView$OnClickListener);
           ((TextView)localObject1).setPadding(n, 0, n, 0);
         }
         for (;;)
@@ -461,7 +472,7 @@ public class ProfileCardMoreInfoView
   
   private boolean a(Card paramCard, boolean paramBoolean)
   {
-    if ((paramCard != null) && (ProfileActivity.AllInOne.a(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))) {}
+    if ((paramCard != null) && (ProfileActivity.AllInOne.a(this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
       if ((a()) || (c())) {
@@ -477,7 +488,7 @@ public class ProfileCardMoreInfoView
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject2 = this.jdField_a_of_type_Azqi.a("map_key_account_base_info");
+        localObject2 = this.jdField_a_of_type_Baiy.a("map_key_account_base_info");
         localObject1 = localObject2;
         if (localObject2 != null)
         {
@@ -490,7 +501,7 @@ public class ProfileCardMoreInfoView
       {
         if (localObject1 == null)
         {
-          localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561401, null);
+          localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561442, null);
           this.jdField_a_of_type_JavaUtilHashMap.put("map_key_account_base_info", localObject1);
           paramBoolean = true;
         }
@@ -501,46 +512,47 @@ public class ProfileCardMoreInfoView
           localViewGroup1.removeAllViews();
           ViewGroup localViewGroup2 = (ViewGroup)((ViewGroup)localObject1).findViewById(2131361869);
           TextView localTextView;
-          if ((ProfileActivity.AllInOne.j(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) || (ProfileActivity.AllInOne.k(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))
+          if ((ProfileActivity.AllInOne.j(this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) || (ProfileActivity.AllInOne.k(this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))
           {
             localObject1 = null;
-            localObject1 = a(localViewGroup1, 2130845756, (CharSequence)localObject1, 0);
+            localObject1 = a(localViewGroup1, 2130845771, (CharSequence)localObject1, 0);
             if (localObject1 != null)
             {
-              localTextView = (TextView)((ViewGroup)localObject1).findViewById(2131368563);
+              localTextView = (TextView)((ViewGroup)localObject1).findViewById(2131368636);
               if (localTextView != null)
               {
-                if (!this.jdField_a_of_type_Azfe.b) {
-                  break label582;
+                if (!this.jdField_a_of_type_Azxr.b) {
+                  break label634;
                 }
-                localObject1 = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.jdField_a_of_type_Azfe.jdField_a_of_type_JavaLangString, paramCard.uin);
+                localObject1 = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.jdField_a_of_type_Azxr.jdField_a_of_type_JavaLangString, paramCard.uin);
                 if ((localObject1 == null) || (!TextUtils.isEmpty(((TroopMemberInfo)localObject1).troopnick)) || (TextUtils.isEmpty(paramCard.strReMark))) {
-                  break label537;
+                  break label589;
                 }
                 localObject1 = paramCard.strNick;
                 label351:
                 localObject2 = localObject1;
                 if (TextUtils.isEmpty((CharSequence)localObject1)) {
-                  localObject2 = bglf.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramCard.uin, false);
+                  localObject2 = bhlg.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramCard.uin, false);
                 }
-                if (!TroopInfo.isQidianPrivateTroop(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azfe.jdField_a_of_type_JavaLangString)) {
-                  break label565;
+                if (!TroopInfo.isQidianPrivateTroop(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azxr.jdField_a_of_type_JavaLangString)) {
+                  break label617;
                 }
               }
             }
           }
-          label516:
-          label537:
-          label565:
+          label568:
+          label589:
+          label617:
           for (localObject1 = localObject2;; localObject1 = a(localTextView, (String)localObject2, paramCard.uin))
           {
-            localTextView.setText((CharSequence)localObject1);
-            bghy.a(localTextView, paramCard.uin, (String)localObject2);
+            localTextView.setText(bhyu.a(bhyu.a(this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqDataCard), this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqDataCard.lhLevel, false, (CharSequence)localObject1));
+            bhyu.a(localTextView, bhyu.a(this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqDataCard), this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqDataCard.lhLevel);
+            bhhz.a(localTextView, paramCard.uin, (String)localObject2);
             if (d()) {
-              a(localViewGroup1, 2130845765, bghy.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Azfe), 1);
+              b(localViewGroup1, 2130845780, bhhz.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Azxr), 1);
             }
-            if ((TroopInfo.isQidianPrivateTroop(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azfe.jdField_a_of_type_JavaLangString)) || (d())) {
-              break label915;
+            if ((TroopInfo.isQidianPrivateTroop(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azxr.jdField_a_of_type_JavaLangString)) || (d())) {
+              break label967;
             }
             int j = localViewGroup1.getChildCount();
             i = 0;
@@ -562,8 +574,8 @@ public class ProfileCardMoreInfoView
             localObject1 = paramCard.strReMark;
             break label351;
           }
-          label582:
-          if ((this.jdField_a_of_type_Azfe.jdField_a_of_type_ArrayOfJavaLangString != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Azfe.jdField_a_of_type_ArrayOfJavaLangString[5])) && (!TextUtils.equals(this.jdField_a_of_type_Azfe.jdField_a_of_type_ArrayOfJavaLangString[5], paramCard.strNick))) {}
+          label634:
+          if ((this.jdField_a_of_type_Azxr.jdField_a_of_type_ArrayOfJavaLangString != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Azxr.jdField_a_of_type_ArrayOfJavaLangString[5])) && (!TextUtils.equals(this.jdField_a_of_type_Azxr.jdField_a_of_type_ArrayOfJavaLangString[5], paramCard.strNick))) {}
           for (int i = 1;; i = 0)
           {
             if ((!TextUtils.isEmpty(paramCard.strReMark)) || (i != 0))
@@ -582,42 +594,42 @@ public class ProfileCardMoreInfoView
             localObject1 = paramCard.uin;
             localObject2 = null;
             break;
-            localObject2 = aznd.i(this.jdField_a_of_type_Azfe);
+            localObject2 = bafp.i(this.jdField_a_of_type_Azxr);
             if (TextUtils.isEmpty((CharSequence)localObject2)) {
-              break label516;
+              break label568;
             }
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append((String)localObject2);
-            localObject2 = aznd.j(this.jdField_a_of_type_Azfe);
-            if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.equals((CharSequence)localObject2, bght.d[14])))
+            localObject2 = bafp.j(this.jdField_a_of_type_Azxr);
+            if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.equals((CharSequence)localObject2, bhhu.d[14])))
             {
               if (((StringBuilder)localObject1).length() > 0) {
                 ((StringBuilder)localObject1).append(" ");
               }
               ((StringBuilder)localObject1).append((String)localObject2);
             }
-            a(localViewGroup1, 2130845769, ((StringBuilder)localObject1).toString(), 1);
-            break label516;
-            localObject2 = aznd.b(this.jdField_a_of_type_Azfe);
+            b(localViewGroup1, 2130845784, ((StringBuilder)localObject1).toString(), 1);
+            break label568;
+            localObject2 = bafp.b(this.jdField_a_of_type_Azxr);
             if (TextUtils.isEmpty((CharSequence)localObject2)) {
-              break label516;
+              break label568;
             }
             localObject1 = localObject2;
             if (paramCard.schoolVerifiedFlag) {
-              localObject1 = bghy.a((String)localObject2, true, 2130845163, 2131298105, 2131298104, getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+              localObject1 = bhhz.a((String)localObject2, true, 2130845178, 2131298117, 2131298116, getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
             }
-            a(localViewGroup1, 2130845774, (CharSequence)localObject1, 1);
-            break label516;
-            localObject1 = aznd.f(this.jdField_a_of_type_Azfe);
+            b(localViewGroup1, 2130845789, (CharSequence)localObject1, 1);
+            break label568;
+            localObject1 = bafp.f(this.jdField_a_of_type_Azxr);
             if (TextUtils.isEmpty((CharSequence)localObject1)) {
-              break label516;
+              break label568;
             }
-            a(localViewGroup1, 2130845764, (CharSequence)localObject1, 1);
-            break label516;
-            label915:
-            localViewGroup2.setTag(new azde(66, paramCard.uin));
-            localViewGroup2.setOnClickListener(this.jdField_a_of_type_Biai);
-            a("map_key_account_base_info", (TextView)localViewGroup2.findViewById(2131361870), (ImageView)localViewGroup2.findViewById(2131362936), null);
+            b(localViewGroup1, 2130845779, (CharSequence)localObject1, 1);
+            break label568;
+            label967:
+            localViewGroup2.setTag(new azvr(66, paramCard.uin));
+            localViewGroup2.setOnClickListener(this.jdField_a_of_type_Bjbg);
+            a("map_key_account_base_info", (TextView)localViewGroup2.findViewById(2131361870), (ImageView)localViewGroup2.findViewById(2131362954), null);
             return paramBoolean;
           }
         }
@@ -629,8 +641,8 @@ public class ProfileCardMoreInfoView
   private boolean a(ArrayList<ProfileActivity.CardContactInfo> paramArrayList)
   {
     int k = 0;
-    Object localObject1 = this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqDataContactCard;
-    if ((ProfileActivity.AllInOne.i(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) || (this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 80)) {}
+    Object localObject1 = this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqDataContactCard;
+    if ((ProfileActivity.AllInOne.i(this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) || (this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 80)) {}
     for (int i = 1;; i = 0)
     {
       if ((localObject1 == null) || (paramArrayList == null) || (paramArrayList.isEmpty())) {
@@ -642,13 +654,13 @@ public class ProfileCardMoreInfoView
       ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_JavaUtilHashMap.get("map_key_phone");
       if (localViewGroup == null)
       {
-        localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561418, null);
+        localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561459, null);
         this.jdField_a_of_type_JavaUtilHashMap.put("map_key_phone", localViewGroup);
       }
       for (boolean bool = true;; bool = false)
       {
-        if (this.jdField_a_of_type_Azfe.jdField_a_of_type_Bgdg.a != null) {
-          this.jdField_a_of_type_Azfe.jdField_a_of_type_Bgdg.a.clear();
+        if (this.jdField_a_of_type_Azxr.jdField_a_of_type_Bhdh.a != null) {
+          this.jdField_a_of_type_Azxr.jdField_a_of_type_Bhdh.a.clear();
         }
         Object localObject2;
         label226:
@@ -657,28 +669,28 @@ public class ProfileCardMoreInfoView
         {
           i = 1;
           localViewGroup.removeAllViews();
-          localObject2 = a(localViewGroup, 2130845756, ((ContactCard)localObject1).nickName, 1);
+          localObject2 = a(localViewGroup, 2130845771, ((ContactCard)localObject1).nickName, 1);
           if (localObject2 != null)
           {
             if (i == 0) {
               break label410;
             }
-            azfl.a((View)localObject2, "background", this.jdField_a_of_type_Azfe.jdField_a_of_type_Azfl, "commonItemTopBorderBackground");
+            azxy.a((View)localObject2, "background", this.jdField_a_of_type_Azxr.jdField_a_of_type_Azxy, "commonItemTopBorderBackground");
           }
           localObject2 = this.jdField_a_of_type_AndroidContentContext;
           int m = ((ContactCard)localObject1).bSex;
-          if (!bghy.b()) {
+          if (!bhhz.b()) {
             break label421;
           }
           j = 0;
           label247:
-          localObject1 = a(localViewGroup, 2130845765, bghy.a((Context)localObject2, m, j, ((ContactCard)localObject1).strCountry, ((ContactCard)localObject1).strProvince, ((ContactCard)localObject1).strCity), 1);
+          localObject1 = b(localViewGroup, 2130845780, bhhz.a((Context)localObject2, m, j, ((ContactCard)localObject1).strCountry, ((ContactCard)localObject1).strProvince, ((ContactCard)localObject1).strCity), 1);
           if (localObject1 != null)
           {
             if (i == 0) {
               break label430;
             }
-            azfl.a((View)localObject1, "background", this.jdField_a_of_type_Azfe.jdField_a_of_type_Azfl, "commonItemTopBorderBackground");
+            azxy.a((View)localObject1, "background", this.jdField_a_of_type_Azxr.jdField_a_of_type_Azxy, "commonItemTopBorderBackground");
           }
           label309:
           m = paramArrayList.size();
@@ -694,33 +706,58 @@ public class ProfileCardMoreInfoView
             if (i == 0) {
               break label441;
             }
-            azfl.a((View)localObject2, "background", this.jdField_a_of_type_Azfe.jdField_a_of_type_Azfl, "commonItemTopBorderBackground");
+            azxy.a((View)localObject2, "background", this.jdField_a_of_type_Azxr.jdField_a_of_type_Azxy, "commonItemTopBorderBackground");
           }
         }
         for (;;)
         {
-          ((ViewGroup)localObject2).setTag(new azde(4, localObject1));
-          ((ViewGroup)localObject2).setOnClickListener(this.jdField_a_of_type_Azfe.jdField_a_of_type_AndroidViewView$OnClickListener);
+          ((ViewGroup)localObject2).setTag(new azvr(4, localObject1));
+          ((ViewGroup)localObject2).setOnClickListener(this.jdField_a_of_type_Azxr.jdField_a_of_type_AndroidViewView$OnClickListener);
           j += 1;
           break label318;
           i = 0;
           break;
           label410:
-          ((ViewGroup)localObject2).setBackgroundResource(2130839435);
+          ((ViewGroup)localObject2).setBackgroundResource(2130839443);
           break label226;
           label421:
           j = ((ContactCard)localObject1).bAge;
           break label247;
           label430:
-          ((ViewGroup)localObject1).setBackgroundResource(2130839435);
+          ((ViewGroup)localObject1).setBackgroundResource(2130839443);
           break label309;
           label441:
-          ((ViewGroup)localObject2).setBackgroundResource(2130839434);
+          ((ViewGroup)localObject2).setBackgroundResource(2130839442);
         }
         label452:
         return bool;
       }
     }
+  }
+  
+  private ViewGroup b(ViewGroup paramViewGroup, int paramInt1, CharSequence paramCharSequence, int paramInt2)
+  {
+    if ((paramViewGroup != null) && (paramInt1 > 0) && (!TextUtils.isEmpty(paramCharSequence)))
+    {
+      ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561443, null);
+      View localView = localViewGroup.findViewById(2131368212);
+      TextView localTextView = (TextView)localViewGroup.findViewById(2131368636);
+      localView.setBackgroundResource(paramInt1);
+      if ((paramCharSequence instanceof String)) {
+        localTextView.setText(((String)paramCharSequence).trim());
+      }
+      for (;;)
+      {
+        paramViewGroup.addView(localViewGroup);
+        if (paramInt2 == 1) {
+          baex.a(localTextView);
+        }
+        a("map_key_phone", null, localTextView, null);
+        return localViewGroup;
+        localTextView.setText(paramCharSequence);
+      }
+    }
+    return null;
   }
   
   private void b()
@@ -788,29 +825,29 @@ public class ProfileCardMoreInfoView
         label302:
         j = 0;
         break label101;
-        if ((!(localView4 instanceof ProfileContentTitleView)) && ((!(localView4 instanceof ViewGroup)) || (localView4.getTag(2131367214) != Boolean.TRUE))) {
+        if ((!(localView4 instanceof ProfileContentTitleView)) && ((!(localView4 instanceof ViewGroup)) || (localView4.getTag(2131367265) != Boolean.TRUE))) {
           if ((localView4 instanceof ProfileCardFavorShowView))
           {
             localObject = (ProfileCardFavorShowView)localView4;
             if ((i != 0) && (!d())) {
-              azfl.a(((ProfileCardFavorShowView)localObject).b, "background", this.jdField_a_of_type_Azfe.jdField_a_of_type_Azfl, "commonItemTopBorderBackground");
+              azxy.a(((ProfileCardFavorShowView)localObject).b, "background", this.jdField_a_of_type_Azxr.jdField_a_of_type_Azxy, "commonItemTopBorderBackground");
             } else {
-              ((ProfileCardFavorShowView)localObject).b.setBackgroundResource(2130839434);
+              ((ProfileCardFavorShowView)localObject).b.setBackgroundResource(2130839442);
             }
           }
           else if (i != 0)
           {
             if (!d()) {
-              azfl.a(localView4, "background", this.jdField_a_of_type_Azfe.jdField_a_of_type_Azfl, "commonItemTopBorderBackground");
+              azxy.a(localView4, "background", this.jdField_a_of_type_Azxr.jdField_a_of_type_Azxy, "commonItemTopBorderBackground");
             }
           }
           else
           {
-            localObject = localView4.findViewById(2131374279);
+            localObject = localView4.findViewById(2131374416);
             if (localObject != null) {
-              ((View)localObject).setBackgroundResource(2130839434);
+              ((View)localObject).setBackgroundResource(2130839442);
             }
-            localView4.setBackgroundResource(2130839434);
+            localView4.setBackgroundResource(2130839442);
           }
         }
       }
@@ -825,10 +862,10 @@ public class ProfileCardMoreInfoView
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Azfe != null)
+    if (this.jdField_a_of_type_Azxr != null)
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_Azfe.jdField_a_of_type_Long == azfl.f) {
+      if (this.jdField_a_of_type_Azxr.jdField_a_of_type_Long == azxy.f) {
         bool1 = true;
       }
     }
@@ -839,10 +876,10 @@ public class ProfileCardMoreInfoView
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Azfe != null)
+    if (this.jdField_a_of_type_Azxr != null)
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_Azfe.jdField_a_of_type_Long == azfl.k) {
+      if (this.jdField_a_of_type_Azxr.jdField_a_of_type_Long == azxy.k) {
         bool1 = true;
       }
     }
@@ -852,8 +889,8 @@ public class ProfileCardMoreInfoView
   private boolean d()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Azfe != null) {
-      bool = azfl.a(this.jdField_a_of_type_Azfe.jdField_a_of_type_Long);
+    if (this.jdField_a_of_type_Azxr != null) {
+      bool = azxy.a(this.jdField_a_of_type_Azxr.jdField_a_of_type_Long);
     }
     return bool;
   }
@@ -912,18 +949,18 @@ public class ProfileCardMoreInfoView
     QLog.d("ProfileCardMoreInfoView", 4, "onResume");
   }
   
-  public void a(azfe paramazfe, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, boolean paramBoolean, biab parambiab)
+  public void a(azxr paramazxr, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, boolean paramBoolean, bjaz parambjaz)
   {
-    this.jdField_a_of_type_Azfe = paramazfe;
+    this.jdField_a_of_type_Azxr = paramazxr;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
     this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Biab = parambiab;
+    this.jdField_a_of_type_Bjaz = parambjaz;
   }
   
-  public void a(azfe paramazfe, boolean paramBoolean, String... paramVarArgs)
+  public void a(azxr paramazxr, boolean paramBoolean, String... paramVarArgs)
   {
-    if (paramazfe == null)
+    if (paramazxr == null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("ProfileCardMoreInfoView", 2, "update info is null");
@@ -931,7 +968,7 @@ public class ProfileCardMoreInfoView
       return;
     }
     if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-      if ((paramazfe.b) && (TroopInfo.isQidianPrivateTroop(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramazfe.jdField_a_of_type_JavaLangString)))
+      if ((paramazxr.b) && (TroopInfo.isQidianPrivateTroop(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramazxr.jdField_a_of_type_JavaLangString)))
       {
         paramVarArgs = this.jdField_b_of_type_ArrayOfJavaLangString;
         label56:
@@ -952,14 +989,14 @@ public class ProfileCardMoreInfoView
       break label56;
       if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null) {
         i = 0;
-      } else if ((paramazfe.b) && (TroopInfo.isQidianPrivateTroop(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramazfe.jdField_a_of_type_JavaLangString))) {
+      } else if ((paramazxr.b) && (TroopInfo.isQidianPrivateTroop(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramazxr.jdField_a_of_type_JavaLangString))) {
         i = a(paramVarArgs, this.jdField_b_of_type_ArrayOfJavaLangString);
       } else {
         i = paramVarArgs.length;
       }
     }
     label145:
-    this.jdField_a_of_type_Azqi.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramazfe, new ProfileCardMoreInfoView.1(this));
+    this.jdField_a_of_type_Baiy.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramazxr, new ProfileCardMoreInfoView.1(this));
     int j = paramVarArgs.length;
     int i = 0;
     boolean bool2 = false;
@@ -982,7 +1019,7 @@ public class ProfileCardMoreInfoView
       {
         if ("map_key_tag".equals(str))
         {
-          bool1 = a(paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard);
+          bool1 = a(paramazxr.jdField_a_of_type_ComTencentMobileqqDataCard);
           if (bool2) {
             break label449;
           }
@@ -993,7 +1030,7 @@ public class ProfileCardMoreInfoView
         }
         if ("map_key_phone".equals(str))
         {
-          bool1 = a(paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaUtilArrayList);
+          bool1 = a(paramazxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaUtilArrayList);
           if (bool2) {
             break label461;
           }
@@ -1004,7 +1041,7 @@ public class ProfileCardMoreInfoView
         }
         if ("map_key_account_base_info".equals(str))
         {
-          bool1 = a(paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard, paramBoolean);
+          bool1 = a(paramazxr.jdField_a_of_type_ComTencentMobileqqDataCard, paramBoolean);
           if (bool2) {
             break label473;
           }
@@ -1026,7 +1063,7 @@ public class ProfileCardMoreInfoView
         bool1 = bool2;
       }
       continue;
-      paramBoolean = a(paramazfe);
+      paramBoolean = a(paramazxr);
       if ((bool2) || (paramBoolean)) {
         b();
       }
@@ -1059,19 +1096,19 @@ public class ProfileCardMoreInfoView
   {
     try
     {
-      azfl localazfl = this.jdField_a_of_type_Azfe.jdField_a_of_type_Azfl;
-      if ((localazfl != null) && (localazfl.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (localazfl.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0))
+      azxy localazxy = this.jdField_a_of_type_Azxr.jdField_a_of_type_Azxy;
+      if ((localazxy != null) && (localazxy.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (localazxy.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0))
       {
-        this.jdField_b_of_type_JavaUtilHashMap.put(paramString, String.valueOf(this.jdField_a_of_type_Azfe.jdField_a_of_type_Azfl.o));
-        azfl.a(paramTextView, "color", this.jdField_a_of_type_Azfe.jdField_a_of_type_Azfl, "commonItemTitleColor");
-        azfl.a(paramView, "color", this.jdField_a_of_type_Azfe.jdField_a_of_type_Azfl, "commonItemContentColor");
-        azfl.a(paramImageView, "src", this.jdField_a_of_type_Azfe.jdField_a_of_type_Azfl, "commonItemMoreSrc");
+        this.jdField_b_of_type_JavaUtilHashMap.put(paramString, String.valueOf(this.jdField_a_of_type_Azxr.jdField_a_of_type_Azxy.o));
+        azxy.a(paramTextView, "color", this.jdField_a_of_type_Azxr.jdField_a_of_type_Azxy, "commonItemTitleColor");
+        azxy.a(paramView, "color", this.jdField_a_of_type_Azxr.jdField_a_of_type_Azxy, "commonItemContentColor");
+        azxy.a(paramImageView, "src", this.jdField_a_of_type_Azxr.jdField_a_of_type_Azxy, "commonItemMoreSrc");
         return;
       }
       if (d())
       {
-        this.jdField_b_of_type_JavaUtilHashMap.put(paramString, String.valueOf(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId));
-        this.jdField_a_of_type_Azqi.a(paramString, paramTextView, paramView, paramImageView);
+        this.jdField_b_of_type_JavaUtilHashMap.put(paramString, String.valueOf(this.jdField_a_of_type_Azxr.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId));
+        this.jdField_a_of_type_Baiy.a(paramString, paramTextView, paramView, paramImageView);
         return;
       }
     }
@@ -1085,25 +1122,25 @@ public class ProfileCardMoreInfoView
     }
     this.jdField_b_of_type_JavaUtilHashMap.put(paramString, String.valueOf(0));
     if (paramTextView != null) {
-      paramTextView.setTextColor(getResources().getColorStateList(2131167060));
+      paramTextView.setTextColor(getResources().getColorStateList(2131167070));
     }
     if ((paramView instanceof TextView)) {
-      ((TextView)paramView).setTextColor(getResources().getColorStateList(2131166986));
+      ((TextView)paramView).setTextColor(getResources().getColorStateList(2131166990));
     }
     while (paramImageView != null)
     {
-      paramImageView.setImageResource(2130839273);
+      paramImageView.setImageResource(2130839281);
       return;
       if ((paramView instanceof SingleLineTextView)) {
-        ((SingleLineTextView)paramView).setTextColor(getResources().getColorStateList(2131166986));
+        ((SingleLineTextView)paramView).setTextColor(getResources().getColorStateList(2131166990));
       }
     }
   }
   
-  public boolean a(azfl paramazfl)
+  public boolean a(azxy paramazxy)
   {
-    if (paramazfl == null) {}
-    for (paramazfl = "0"; this.jdField_b_of_type_JavaUtilHashMap.size() > 0; paramazfl = String.valueOf(paramazfl.o))
+    if (paramazxy == null) {}
+    for (paramazxy = "0"; this.jdField_b_of_type_JavaUtilHashMap.size() > 0; paramazxy = String.valueOf(paramazxy.o))
     {
       Iterator localIterator = this.jdField_b_of_type_JavaUtilHashMap.keySet().iterator();
       String str;
@@ -1113,7 +1150,7 @@ public class ProfileCardMoreInfoView
           break;
         }
         str = (String)localIterator.next();
-      } while (((String)this.jdField_b_of_type_JavaUtilHashMap.get(str)).equals(paramazfl));
+      } while (((String)this.jdField_b_of_type_JavaUtilHashMap.get(str)).equals(paramazxy));
       return false;
     }
     return true;
@@ -1125,9 +1162,9 @@ public class ProfileCardMoreInfoView
     QLog.i("ProfileCardMoreInfoView", 2, "ProfileCardMoreInfoView change=" + paramBoolean + " l=" + paramInt1 + " t=" + paramInt2 + " r=" + paramInt3 + " b=" + paramInt4);
   }
   
-  public void setContentContainer(azlh paramazlh)
+  public void setContentContainer(badt parambadt)
   {
-    this.jdField_a_of_type_Azlh = paramazlh;
+    this.jdField_a_of_type_Badt = parambadt;
   }
 }
 

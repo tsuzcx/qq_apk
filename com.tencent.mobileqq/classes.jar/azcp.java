@@ -1,70 +1,44 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.PrecoverResource;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.graphics.Matrix;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.view.Gravity;
+import com.tencent.mobileqq.ocr.view.gesture.Settings;
 
-class azcp
-  extends QIPCModule
+public class azcp
 {
-  azcp(azco paramazco, String paramString)
+  private static final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private static final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private static final Rect b = new Rect();
+  
+  public static void a(Matrix paramMatrix, Settings paramSettings, Rect paramRect)
   {
-    super(paramString);
+    jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramSettings.e(), paramSettings.f());
+    paramMatrix.mapRect(jdField_a_of_type_AndroidGraphicsRectF);
+    int i = Math.round(jdField_a_of_type_AndroidGraphicsRectF.width());
+    int j = Math.round(jdField_a_of_type_AndroidGraphicsRectF.height());
+    jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramSettings.a(), paramSettings.b());
+    Gravity.apply(paramSettings.g(), i, j, jdField_a_of_type_AndroidGraphicsRect, paramRect);
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public static void a(azcn paramazcn, Settings paramSettings, Rect paramRect)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PrecoverIPCServer", 2, new Object[] { "onCall, action=" + paramString + ", params=" + paramBundle + ", callbackId=", Integer.valueOf(paramInt) });
-    }
-    if (paramBundle == null) {
-      QLog.d("PrecoverIPCServer", 1, new Object[] { "onCall, params is null!!. action=" + paramString + ", callbackId=", Integer.valueOf(paramInt) });
-    }
-    do
-    {
-      Object localObject;
-      do
-      {
-        do
-        {
-          return null;
-          if (azco.a(this.a) == null)
-          {
-            QLog.d("PrecoverIPCServer", 1, new Object[] { "onCall, mManager is null!!. action=" + paramString + ", callbackId=", Integer.valueOf(paramInt) });
-            return null;
-          }
-          paramBundle.putString("key_action", paramString);
-          if (azcn.a.equals(paramString)) {
-            return azco.a(this.a, paramBundle, paramInt);
-          }
-          if (azcn.b.equals(paramString))
-          {
-            paramString = azco.a(this.a, paramBundle, paramInt);
-            if (paramString.isSuccess())
-            {
-              localObject = (PrecoverResource)paramBundle.getParcelable("resource");
-              if (QLog.isColorLevel()) {
-                QLog.d("PrecoverIPCServer", 2, "onCall, params.getParcelable, res=" + localObject);
-              }
-              if (azco.a(this.a).a().a((PrecoverResource)localObject, new Object[] { "PrecoverIPCServer_MODEL", Integer.valueOf(paramInt) })) {
-                return EIPCResult.createResult(11, paramBundle);
-              }
-              paramBundle.putInt("errCode", -2);
-              paramBundle.putString("errDesc", "args invalid or file already exist!");
-              azco.a(this.a).callbackResult(paramInt, EIPCResult.createResult(-2, paramBundle));
-            }
-            return paramString;
-          }
-        } while (!azcn.c.equals(paramString));
-        paramString = paramBundle.getString("businessId");
-        localObject = paramBundle.getString("md5");
-      } while ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty((CharSequence)localObject)));
-      paramString = azco.a(this.a).a().a((String)localObject);
-    } while (paramString == null);
-    paramBundle.putLong("key_total", paramString.a);
-    paramBundle.putLong("key_loaded", paramString.b);
-    return EIPCResult.createSuccessResult(paramBundle);
+    paramazcn.a(jdField_a_of_type_AndroidGraphicsMatrix);
+    a(jdField_a_of_type_AndroidGraphicsMatrix, paramSettings, paramRect);
+  }
+  
+  public static void a(Settings paramSettings, Point paramPoint)
+  {
+    a(paramSettings, b);
+    Gravity.apply(paramSettings.g(), 0, 0, b, jdField_a_of_type_AndroidGraphicsRect);
+    paramPoint.set(jdField_a_of_type_AndroidGraphicsRect.left, jdField_a_of_type_AndroidGraphicsRect.top);
+  }
+  
+  public static void a(Settings paramSettings, Rect paramRect)
+  {
+    jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramSettings.a(), paramSettings.b());
+    Gravity.apply(paramSettings.g(), paramSettings.c(), paramSettings.d(), jdField_a_of_type_AndroidGraphicsRect, paramRect);
   }
 }
 

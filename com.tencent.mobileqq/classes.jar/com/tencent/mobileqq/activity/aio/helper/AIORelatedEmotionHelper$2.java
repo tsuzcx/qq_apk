@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agkh;
+import agti;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.widget.XPanelContainer;
 
 public class AIORelatedEmotionHelper$2
   implements Runnable
 {
-  public AIORelatedEmotionHelper$2(agkh paramagkh) {}
+  public AIORelatedEmotionHelper$2(agti paramagti) {}
   
   public void run()
   {
-    agkh.a(this.this$0).a().a(37);
+    agti.a(this.this$0).a().a(37);
   }
 }
 

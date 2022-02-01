@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import bewt;
+import bfwn;
 
 public class TroopFileDownloadMgr$FileDownloadMgrObserver$1
   implements Runnable
 {
-  public TroopFileDownloadMgr$FileDownloadMgrObserver$1(bewt parambewt, Object paramObject) {}
+  public TroopFileDownloadMgr$FileDownloadMgrObserver$1(bfwn parambfwn, Object paramObject) {}
   
   public void run()
   {
-    bewt.a(this.this$0, this.a);
+    bfwn.a(this.this$0, this.a);
   }
 }
 

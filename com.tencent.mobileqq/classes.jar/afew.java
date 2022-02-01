@@ -1,28 +1,10 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.widget.TextView;
 
 public class afew
-  extends RecyclerView.ItemDecoration
+  extends amof
 {
-  private int jdField_a_of_type_Int;
-  
-  public afew(afen paramafen, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    paramRect.right = this.jdField_a_of_type_Int;
-    paramRect.bottom = this.jdField_a_of_type_Int;
-    paramRect.left = this.jdField_a_of_type_Int;
-    if (paramRecyclerView.getChildPosition(paramView) != 0) {
-      paramRect.right = this.jdField_a_of_type_Int;
-    }
-  }
+  public afeq a;
+  public TextView a;
 }
 
 

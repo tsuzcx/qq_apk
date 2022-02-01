@@ -1,31 +1,29 @@
 package com.tencent.mobileqq.location.util;
 
 import android.os.Handler;
-import awbj;
-import bgsg;
+import awub;
+import bhsi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public final class LocationReportUtil$1
   implements Runnable
 {
-  public LocationReportUtil$1(boolean paramBoolean) {}
-  
   public void run()
   {
-    if (awbj.a())
+    if (awub.a())
     {
       if (QLog.isColorLevel()) {
         QLog.d("LocationReportUtil", 2, new Object[] { "run: invoked. need stop report. ", " reporting: ", Boolean.valueOf(this.a) });
       }
       return;
     }
-    long l = System.currentTimeMillis() / 1000L - awbj.a();
-    bgsg.a(BaseApplicationImpl.getApplication(), this.a, (int)l);
+    long l = System.currentTimeMillis() / 1000L - awub.a();
+    bhsi.a(BaseApplicationImpl.getApplication(), this.a, (int)l);
     if (QLog.isColorLevel()) {
       QLog.d("LocationReportUtil", 2, new Object[] { "updateLocationBgReport.run: invoked. ", " sProcBgAliveTimeSecond: ", Long.valueOf(l), " reporting: ", Boolean.valueOf(this.a) });
     }
-    awbj.a().postDelayed(this, 30000L);
+    awub.a().postDelayed(this, 30000L);
   }
 }
 

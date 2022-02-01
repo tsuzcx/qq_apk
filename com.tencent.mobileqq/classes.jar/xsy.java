@@ -1,19 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.annotation.NonNull;
+import android.view.View;
 
-class xsy
-  implements DialogInterface.OnDismissListener
+public abstract interface xsy
 {
-  xsy(xsw paramxsw, VideoViewVideoHolder paramVideoViewVideoHolder) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
-    xsw.a(this.jdField_a_of_type_Xsw).a = xsw.a(this.jdField_a_of_type_Xsw).a();
-  }
+  public abstract void a(@NonNull View paramView, int paramInt);
 }
 
 

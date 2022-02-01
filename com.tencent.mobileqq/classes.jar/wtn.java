@@ -1,65 +1,52 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqQQStoryGuide;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspQQStoryGuide;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.os.Handler;
+import com.tencent.biz.qqstory.model.TrimmableManager.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class wtn
-  extends wlf
+  implements wsp
 {
-  public static String a = wjz.a("StorySvc.new_user_guide");
-  public String b;
-  public String c;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+  private CopyOnWriteArraySet<wsq> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
   
-  public wtn(String paramString1, String paramString2)
+  public wtn()
   {
-    this.b = paramString1;
-    this.c = paramString2;
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new wto());
   }
   
-  public String a()
+  private void b(int paramInt)
   {
-    return a;
+    yuk.d("TrimmableManager", "trimMemory : level = %d", new Object[] { Integer.valueOf(paramInt) });
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+    while (localIterator.hasNext()) {
+      ((wsq)localIterator.next()).a(paramInt);
+    }
+    System.gc();
   }
   
-  public wla a(byte[] paramArrayOfByte)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    qqstory_service.RspQQStoryGuide localRspQQStoryGuide = new qqstory_service.RspQQStoryGuide();
-    try
-    {
-      localRspQQStoryGuide.mergeFrom(paramArrayOfByte);
-      return new wto(localRspQQStoryGuide);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new TrimmableManager.1(this, paramInt));
   }
   
-  protected byte[] a()
+  public void a(wsq paramwsq)
   {
-    qqstory_service.ReqQQStoryGuide localReqQQStoryGuide = new qqstory_service.ReqQQStoryGuide();
-    try
-    {
-      localReqQQStoryGuide.to_uid.set(Long.valueOf(this.b).longValue());
-      localReqQQStoryGuide.version.set(this.c);
-      return localReqQQStoryGuide.toByteArray();
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        localReqQQStoryGuide.to_uid.set(0L);
-      }
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramwsq);
   }
   
-  public String toString()
+  public void b() {}
+  
+  public void b(wsq paramwsq)
   {
-    return "QQStoryGuideRequest{toUid='" + this.b + '\'' + "version='" + this.c + '\'' + '}';
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramwsq);
   }
 }
 

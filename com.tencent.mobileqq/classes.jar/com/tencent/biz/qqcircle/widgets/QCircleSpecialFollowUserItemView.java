@@ -1,15 +1,15 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import aauy;
+import aazb;
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import bglp;
-import bgpa;
+import bhlq;
+import bhpc;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -20,11 +20,10 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import feedcloud.FeedCloudMeta.StRelationInfo;
 import qqcircle.QQCircleRelation.RelationBiz;
-import uxk;
-import uxo;
-import uxx;
-import vyp;
-import vyq;
+import uyx;
+import uzg;
+import wcb;
+import wcc;
 
 public class QCircleSpecialFollowUserItemView
   extends QCircleBaseWidgetView<FeedCloudMeta.StRelationInfo>
@@ -44,7 +43,7 @@ public class QCircleSpecialFollowUserItemView
   
   public int a()
   {
-    return 2131560783;
+    return 2131560809;
   }
   
   protected String a()
@@ -54,12 +53,12 @@ public class QCircleSpecialFollowUserItemView
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView = ((QCircleAvatarView)paramView.findViewById(2131373929));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373932));
-    this.b = ((TextView)paramView.findViewById(2131373931));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131373933));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView = ((QCircleAvatarView)paramView.findViewById(2131374068));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374071));
+    this.b = ((TextView)paramView.findViewById(2131374070));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131374072));
     this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundURL("https://sola.gtimg.cn/aoi/sola/20200619175130_E9peEWVngd.png");
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131373930);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131374069);
     this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
@@ -77,7 +76,7 @@ public class QCircleSpecialFollowUserItemView
     int i = 0;
     super.a(paramStRelationInfo, paramInt);
     this.jdField_a_of_type_JavaLangString = paramStRelationInfo.id.get();
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView.setAvatar(uxx.a(getContext()), this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView.setAvatar(uzg.a(getContext()), this.jdField_a_of_type_JavaLangString);
     Object localObject = localTextView;
     if (paramStRelationInfo.busiData.get() != null) {
       localObject = new QQCircleRelation.RelationBiz();
@@ -128,7 +127,7 @@ public class QCircleSpecialFollowUserItemView
         continue;
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
         this.b.setText("");
-        bool1 = uxx.a(getContext(), this.jdField_a_of_type_JavaLangString);
+        bool1 = uzg.a(getContext(), this.jdField_a_of_type_JavaLangString);
         bool2 = false;
         continue;
         label342:
@@ -139,24 +138,24 @@ public class QCircleSpecialFollowUserItemView
   
   public void onClick(View paramView)
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (aauy.a("QCircleSpecialFollowUse"))) {}
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (aazb.a("QCircleSpecialFollowUse"))) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       switch (paramView.getId())
       {
-      case 2131373931: 
+      case 2131374070: 
       default: 
         break;
-      case 2131373929: 
-      case 2131373932: 
-        Intent localIntent = new Intent();
-        localIntent.putExtra("key_to_uin", this.jdField_a_of_type_JavaLangString);
-        uxo.a(new uxk().a(this.jdField_a_of_type_JavaLangString).a(), localIntent);
+      case 2131374068: 
+      case 2131374071: 
+        QCircleInitBean localQCircleInitBean = new QCircleInitBean();
+        localQCircleInitBean.setUin(this.jdField_a_of_type_JavaLangString);
+        uyx.b(paramView.getContext(), localQCircleInitBean);
         break;
-      case 2131373930: 
-        bglp.a(getContext(), 230, "提示", "取消后需要重新去他人的主页进行设置，确定取消吗？", "放弃", "确定", new vyp(this), new vyq(this)).show();
+      case 2131374069: 
+        bhlq.a(getContext(), 230, "提示", "取消后需要重新去他人的主页进行设置，确定取消吗？", "放弃", "确定", new wcb(this), new wcc(this)).show();
       }
     }
   }

@@ -4,27 +4,27 @@ import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.SegHead;
 
 public class HwResponse
 {
-  public int buzRetCode;
+  public int buzRetCode = 0;
   public long cacheCost;
-  public String cmd;
-  public int errCode;
-  public String errDesc;
+  public String cmd = null;
+  public int errCode = 0;
+  public String errDesc = null;
   public long htCost;
   public int hwSeq = -1;
-  public boolean isFinish;
+  public boolean isFinish = false;
   public boolean isIpv6;
   public int mBuCmdId = -1;
   public byte[] mBuExtendinfo;
   public byte[] mRespData;
   public int mTransId = -1;
-  public boolean needReUpload;
+  public boolean needReUpload = false;
   public int range;
   public long recvTime;
   public long reqCost;
-  public int respLength;
-  public int retCode;
-  public CSDataHighwayHead.SegHead segmentResp;
-  public boolean shouldRetry;
+  public int respLength = 0;
+  public int retCode = 0;
+  public CSDataHighwayHead.SegHead segmentResp = null;
+  public boolean shouldRetry = false;
   public long switchCost;
   
   public String dumpRespInfo()

@@ -1,29 +1,58 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import android.content.Context;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel;
 
 public class assn
-  implements ActionMode.Callback
 {
-  public assn(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private EditText jdField_a_of_type_AndroidWidgetEditText;
+  private asmr jdField_a_of_type_Asmr;
+  private asso jdField_a_of_type_Asso;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public assn(Context paramContext)
   {
-    return false;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public assn a(EditText paramEditText)
   {
-    return false;
+    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    return this;
   }
   
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public assn a(asmr paramasmr)
   {
-    return false;
+    this.jdField_a_of_type_Asmr = paramasmr;
+    return this;
+  }
+  
+  public assn a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+    return this;
+  }
+  
+  public SystemAndEmojiUniversalPanel a()
+  {
+    SystemAndEmojiUniversalPanel localSystemAndEmojiUniversalPanel = (SystemAndEmojiUniversalPanel)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559141, null);
+    a(localSystemAndEmojiUniversalPanel);
+    return localSystemAndEmojiUniversalPanel;
+  }
+  
+  public void a(SystemAndEmojiUniversalPanel paramSystemAndEmojiUniversalPanel)
+  {
+    if (paramSystemAndEmojiUniversalPanel == null) {
+      return;
+    }
+    paramSystemAndEmojiUniversalPanel.setEmoticonCallback(this.jdField_a_of_type_Asmr);
+    paramSystemAndEmojiUniversalPanel.setDispatchKeyEventListener(this.jdField_a_of_type_Asso);
+    paramSystemAndEmojiUniversalPanel.setShowDeleteButton(this.jdField_a_of_type_AndroidWidgetEditText);
+    paramSystemAndEmojiUniversalPanel.setShowCommonUsedSystemEmoji(this.jdField_a_of_type_Boolean);
+    paramSystemAndEmojiUniversalPanel.setFilterSysFaceBeyond255Enable(this.b);
+    paramSystemAndEmojiUniversalPanel.a();
   }
 }
 

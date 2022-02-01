@@ -1,14 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
-class aiep
-  implements DialogInterface.OnDismissListener
+public class aiep
+  implements DialogInterface.OnClickListener
 {
-  aiep(aidp paramaidp) {}
+  public aiep(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c = null;
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

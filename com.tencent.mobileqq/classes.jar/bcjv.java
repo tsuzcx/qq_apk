@@ -1,170 +1,58 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import java.util.Set;
 
 public class bcjv
+  extends bcia
 {
-  public static HashMap<String, WeakReference<Drawable>> a;
-  private static boolean a;
-  public static String[] a;
-  
-  static
+  public bcjv(aoof paramaoof, bcie parambcie, Set<String> paramSet)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "Le X620", "Nexus 5X", "ZTE A2017", "PRA-AL00X" };
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    super(paramaoof, parambcie, paramSet);
   }
   
-  public static Drawable a(Context paramContext, String paramString)
+  public void b(bcfr parambcfr, bcnz parambcnz)
   {
-    Object localObject1 = null;
-    Object localObject2;
-    if (jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+    boolean bool = true;
+    super.b(parambcfr, parambcnz);
+    if (parambcnz.c() != null)
     {
-      localObject2 = (Drawable)((WeakReference)jdField_a_of_type_JavaUtilHashMap.get(paramString)).get();
-      localObject1 = localObject2;
-      if (localObject2 != null) {
-        return localObject2;
+      parambcfr = (bcen)parambcfr;
+      if ((this.a == null) || (!this.a.contains(parambcfr.b()))) {
+        break label144;
       }
     }
-    if (paramString.equals("fivea")) {
-      paramContext = paramContext.getResources().getDrawable(2130842097);
-    }
-    for (;;)
+    label138:
+    label144:
+    for (int i = 1;; i = 0)
     {
-      localObject2 = paramContext;
-      if (paramContext == null) {
+      if (!TextUtils.isEmpty(parambcfr.c()))
+      {
+        parambcnz.c().setText(parambcfr.c());
+        i = 1;
+      }
+      parambcfr = parambcnz.c();
+      int j;
+      if (i != 0)
+      {
+        j = 0;
+        parambcfr.setVisibility(j);
+        parambcfr = parambcnz.a();
+        if (i != 0) {
+          break label138;
+        }
+      }
+      for (;;)
+      {
+        parambcfr.setClickable(bool);
+        if (parambcnz.a() != null) {
+          parambcnz.a().setVisibility(8);
+        }
+        return;
+        j = 8;
         break;
-      }
-      jdField_a_of_type_JavaUtilHashMap.put(paramString, new WeakReference(paramContext));
-      return paramContext;
-      if (paramString.equals("palmup"))
-      {
-        paramContext = paramContext.getResources().getDrawable(2130842098);
-      }
-      else if (paramString.equals("qheart"))
-      {
-        paramContext = paramContext.getResources().getDrawable(2130842099);
-      }
-      else
-      {
-        paramContext = localObject1;
-        if (!paramString.equals("")) {
-          paramContext = new BitmapDrawable(atwl.a(bchn.a() + paramString + ".png"));
-        }
-      }
-    }
-  }
-  
-  public static bamz a(bamz parambamz)
-  {
-    if ((!c()) || (!b())) {}
-    for (int i = 1; i == 0; i = 0) {
-      return parambamz;
-    }
-    bamz localbamz = new bamz();
-    localbamz.jdField_a_of_type_Int = parambamz.jdField_a_of_type_Int;
-    localbamz.jdField_a_of_type_JavaLangString = parambamz.jdField_a_of_type_JavaLangString;
-    localbamz.jdField_a_of_type_JavaUtilList = new ArrayList();
-    parambamz = parambamz.jdField_a_of_type_JavaUtilList.iterator();
-    if (i != 0) {
-      while (parambamz.hasNext())
-      {
-        PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)parambamz.next();
-        if (!localPtvTemplateInfo.hasGesture()) {
-          localbamz.jdField_a_of_type_JavaUtilList.add(localPtvTemplateInfo);
-        }
-      }
-    }
-    return localbamz;
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (jdField_a_of_type_Boolean == paramBoolean) {
-      return;
-    }
-    jdField_a_of_type_Boolean = paramBoolean;
-    bgsg.a(BaseApplicationImpl.getApplication().getSharedPreferences("GestureRecognitionUtils", 4).edit().putBoolean("shared_gesture_recognize_result", paramBoolean));
-  }
-  
-  public static boolean a()
-  {
-    boolean bool2 = false;
-    String str = Build.MODEL;
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (arrayOfString[i].contains(str)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GestureRecognitionUtils", 2, "isPhoneInBlackList ： phone = " + str + ", result=" + bool1);
-        }
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
-  public static boolean b()
-  {
-    boolean bool = bchg.a().a();
-    if (!bool) {
-      bchg.a().b();
-    }
-    QLog.d("GestureRecognitionUtils", 2, "GestureRecognitionUtils check gestureResource ready " + bool);
-    return bool;
-  }
-  
-  public static boolean c()
-  {
-    boolean bool1;
-    if ((loz.a(8, 1400000L)) || (loz.a(4, 2150000L)))
-    {
-      bool1 = true;
-      QLog.d("GestureRecognitionUtils", 2, "GestureRecognitionUtils check condition 2 +cpuNumber is" + bool1);
-      lod locallod = lod.a();
-      if ((locallod == null) || (locallod.b())) {
-        break label196;
-      }
-    }
-    label196:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      if (Build.VERSION.SDK_INT > 17) {}
-      for (boolean bool3 = true;; bool3 = false)
-      {
-        boolean bool4 = bclh.d();
-        boolean bool5 = a();
-        QLog.d("GestureRecognitionUtils", 2, "GestureRecognitionUtils isSupportGestureFilter faceFilterCheck: " + true + ";checkDeviceSupport:" + bool1 + ":inBlackLists:" + bool2 + ":isSDKEnable:" + bool3 + ":isNotInShortVideoBlackWhiteList:" + bool4 + ":isHardCodePhoneInBlackList" + bool5);
-        if ((bool1) && (!bool2) && (bool3) && (bool4) && (!bool5))
-        {
-          return true;
-          bool1 = false;
-          break;
-        }
-        return false;
+        bool = false;
       }
     }
   }

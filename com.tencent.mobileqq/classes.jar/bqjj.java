@@ -1,29 +1,15 @@
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Random;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class bqjj
+class bqjj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private static final SimpleDateFormat a = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.CHINESE);
+  bqjj(bqji parambqji) {}
   
-  public static String a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    synchronized (a)
-    {
-      int i = new Random().nextInt(10000);
-      String str = a.format(new Date()) + "_" + i;
-      return str;
-    }
-  }
-  
-  public static String a(File paramFile)
-  {
-    if (paramFile == null) {
-      return null;
-    }
-    return paramFile.getName();
+    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.k();
   }
 }
 

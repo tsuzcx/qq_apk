@@ -1,32 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
 
-class befv
-  implements View.OnClickListener
+public class befv
+  extends Handler
 {
-  private befw jdField_a_of_type_Befw;
-  private befx jdField_a_of_type_Befx;
-  
-  public befv(befx parambefx)
+  public befv(ShareAppLogHelper paramShareAppLogHelper, Looper paramLooper)
   {
-    this.jdField_a_of_type_Befx = parambefx;
+    super(paramLooper);
   }
   
-  public void a(befw parambefw)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Befw = parambefw;
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i = ((Integer)paramView.getTag()).intValue();
-    befx.a(this.jdField_a_of_type_Befx, i);
-    if (this.jdField_a_of_type_Befw != null) {
-      this.jdField_a_of_type_Befw.a((befy)befx.a(this.jdField_a_of_type_Befx).get(i));
+    switch (paramMessage.what)
+    {
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (ShareAppLogHelper.a(this.a) == null);
+        ShareAppLogHelper.a(this.a).a((String)paramMessage.obj);
+        return;
+      } while (ShareAppLogHelper.a(this.a) == null);
+      ShareAppLogHelper.a(this.a).a(((Integer)paramMessage.obj).intValue());
+      return;
+    } while (ShareAppLogHelper.a(this.a) == null);
+    ShareAppLogHelper.a(this.a).b(((Integer)paramMessage.obj).intValue());
   }
 }
 

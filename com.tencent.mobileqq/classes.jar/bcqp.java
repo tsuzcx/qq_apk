@@ -1,22 +1,29 @@
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
-import java.io.File;
-import java.util.Comparator;
+import android.os.Parcel;
 
 public class bcqp
-  implements Comparator<File>
 {
-  public bcqp(MigrateSubscribeDB paramMigrateSubscribeDB) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  public int a(File paramFile1, File paramFile2)
+  public void a(Parcel paramParcel)
   {
-    long l = paramFile2.lastModified() - paramFile1.lastModified();
-    if (l > 0L) {
-      return 1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
+    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeInt(this.c);
+  }
+  
+  public void b(Parcel paramParcel)
+  {
+    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.jdField_b_of_type_Int = paramParcel.readInt();
+    this.c = paramParcel.readInt();
   }
 }
 

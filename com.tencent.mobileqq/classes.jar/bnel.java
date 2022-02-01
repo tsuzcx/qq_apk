@@ -1,31 +1,85 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import dov.com.qq.im.ae.AEPituCameraUnit.30;
+import android.text.TextUtils;
+import com.tencent.component.network.downloader.strategy.IPConfigStrategy;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-public class bnel
-  implements DialogInterface.OnClickListener
+class bnel
+  extends IPConfigStrategy
+  implements bmaf
 {
-  public bnel(AEPituCameraUnit.30 param30) {}
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private ReadWriteLock jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock = new ReentrantReadWriteLock();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bnel()
   {
-    bnzb.b("AEPituCameraUnit", "PermissionDialog--onClick which=" + paramInt);
-    Activity localActivity = bndy.a(this.a.this$0).a();
-    if (paramInt == 1)
-    {
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", localActivity.getPackageName(), null));
-      localActivity.startActivity(localIntent);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
+    a();
+    QzoneConfig.getInstance().addListener(this);
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "DownloadDirectIP");
+    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist");
+    a(this.jdField_a_of_type_JavaUtilMap, "PhotoABSvrList", "DownloadDirectIP_a");
+    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist_a");
+    a(this.jdField_a_of_type_JavaUtilMap, "PhotoABSvrList", "DownloadDirectIP_b");
+    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist_b");
+    a(this.jdField_a_of_type_JavaUtilMap, "VideoSvrList", "DownloadDirectIPVideo");
+    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "video_masterIplist");
+    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "optimumip_qzvv", "video_host_qzvv", "qzvv.video.qq.com");
+    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "qzpb.qq.com", "video_host_qzpb", "qzpb.qq.com");
+    super.setConfig(this.jdField_a_of_type_JavaUtilMap);
+  }
+  
+  private void a(Map<String, String> paramMap, String paramString1, String paramString2)
+  {
+    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
       return;
-      localActivity.finish();
     }
+    String str = paramString1 + "||" + paramString2;
+    paramString1 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePluginDownloadIPStracyConfig", 2, "addConfigItem, key=" + str + ", content=" + paramString1);
+    }
+    paramMap.put(str, paramString1);
+  }
+  
+  private void a(Map<String, String> paramMap, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
+      return;
+    }
+    Object localObject = null;
+    paramString4 = QzoneConfig.getInstance().getConfig(paramString1, paramString3, paramString4);
+    paramString3 = paramString1 + "||" + paramString2;
+    paramString2 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
+    paramString1 = localObject;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = localObject;
+      if (!TextUtils.isEmpty(paramString4)) {
+        paramString1 = paramString2.replace("ips", paramString4);
+      }
+    }
+    if (TextUtils.isEmpty(paramString1))
+    {
+      paramMap.put(paramString3, paramString2);
+      return;
+    }
+    paramMap.put(paramString3, paramString1);
+  }
+  
+  public void onConfigChange()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneIPStracyConfig", 2, "QzoneIPStracyConfig receive change");
+    }
+    a();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import aobo;
+import aonz;
 import com.tencent.image.AbstractVideoImage;
 
 class DynamicAvatarManager$8$1
@@ -10,7 +10,7 @@ class DynamicAvatarManager$8$1
   
   public void run()
   {
-    if (!aobo.b) {
+    if (!aonz.b) {
       AbstractVideoImage.resumeAll();
     }
   }

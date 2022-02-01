@@ -1,11 +1,10 @@
-public class bbhe
+import android.support.annotation.NonNull;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.CircleProgress;
+
+public abstract interface bbhe
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  public abstract boolean a(@NonNull TextView paramTextView, @NonNull CircleProgress paramCircleProgress, long paramLong, float paramFloat);
 }
 
 

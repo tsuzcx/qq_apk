@@ -12,7 +12,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
-import bgtn;
+import bhtq;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class MiniAppDialog
@@ -76,8 +76,8 @@ public class MiniAppDialog
     paramBundle = getWindow().getAttributes();
     paramBundle.height = -2;
     paramBundle.gravity = 81;
-    int i = bgtn.a();
-    int j = bgtn.b();
+    int i = bhtq.a();
+    int j = bhtq.b();
     if (i < j) {}
     for (;;)
     {

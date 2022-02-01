@@ -1,19 +1,40 @@
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StReply;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.util.WeakReference;
 
-public class uzc
+class uzc
+  implements View.OnClickListener
 {
-  public static int d = 3;
-  public int a;
-  public ExtraTypeInfo a;
-  public FeedCloudMeta.StComment a;
-  public FeedCloudMeta.StFeed a;
-  public FeedCloudMeta.StReply a;
-  public String a;
-  public int b;
-  public int c = -1;
+  uzc(uyy paramuyy) {}
+  
+  public void onClick(View paramView)
+  {
+    uze localuze;
+    if (uyy.a(this.a) != null)
+    {
+      localuze = (uze)uyy.a(this.a).get();
+      if (localuze != null) {
+        switch (paramView.getId())
+        {
+        }
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localuze.a(uzf.a);
+      continue;
+      localuze.a(uzf.b);
+      continue;
+      localuze.a(uzf.c);
+      continue;
+      localuze.a(uzf.d);
+      continue;
+      localuze.a(uzf.e);
+    }
+  }
 }
 
 

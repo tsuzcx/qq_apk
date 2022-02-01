@@ -1,65 +1,73 @@
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.os.IBinder;
 
-public class bnyk
+class bnyk
+  implements bnyi
 {
-  public static String a()
+  private IBinder a;
+  
+  bnyk(IBinder paramIBinder)
   {
-    Date localDate = new Date();
-    return new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(localDate);
+    this.a = paramIBinder;
   }
   
-  public static String a(int paramInt)
+  /* Error */
+  public void a(java.lang.String paramString, android.os.Bundle paramBundle)
   {
-    if (paramInt == 1) {
-      return "1";
-    }
-    return "2";
+    // Byte code:
+    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_3
+    //   4: aload_3
+    //   5: ldc 25
+    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_3
+    //   11: aload_1
+    //   12: invokevirtual 32	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   15: aload_2
+    //   16: ifnull +33 -> 49
+    //   19: aload_3
+    //   20: iconst_1
+    //   21: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   24: aload_2
+    //   25: aload_3
+    //   26: iconst_0
+    //   27: invokevirtual 42	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
+    //   30: aload_0
+    //   31: getfield 15	bnyk:a	Landroid/os/IBinder;
+    //   34: iconst_1
+    //   35: aload_3
+    //   36: aconst_null
+    //   37: iconst_1
+    //   38: invokeinterface 48 5 0
+    //   43: pop
+    //   44: aload_3
+    //   45: invokevirtual 51	android/os/Parcel:recycle	()V
+    //   48: return
+    //   49: aload_3
+    //   50: iconst_0
+    //   51: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   54: goto -24 -> 30
+    //   57: astore_1
+    //   58: aload_3
+    //   59: invokevirtual 51	android/os/Parcel:recycle	()V
+    //   62: aload_1
+    //   63: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	64	0	this	bnyk
+    //   0	64	1	paramString	java.lang.String
+    //   0	64	2	paramBundle	android.os.Bundle
+    //   3	56	3	localParcel	android.os.Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   4	15	57	finally
+    //   19	30	57	finally
+    //   30	44	57	finally
+    //   49	54	57	finally
   }
   
-  public static String a(Long paramLong)
+  public IBinder asBinder()
   {
-    float f = (float)paramLong.longValue() / 1000.0F;
-    return new DecimalFormat("0.00").format(f);
-  }
-  
-  public static HashMap<String, String> a(HashMap<String, String> paramHashMap1, HashMap<String, String> paramHashMap2)
-  {
-    paramHashMap1 = new HashMap(paramHashMap1);
-    Iterator localIterator = paramHashMap2.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      paramHashMap1.put(str, paramHashMap2.get(str));
-    }
-    return paramHashMap1;
-  }
-  
-  public static void a()
-  {
-    bnyp.a().a("AEKIT_CAMERA_FIRST_LAUNCH", 1, 0);
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = false;
-    if (bnyp.a().a("AEKIT_CAMERA_FIRST_LAUNCH", 0, 0) == 0) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public static boolean b()
-  {
-    if (bnyp.a().a("sp_key_ae_camera_launch_mark", 0)) {
-      return false;
-    }
-    bnyp.a().a("sp_key_ae_camera_launch_mark", true, 0);
-    return true;
+    return this.a;
   }
 }
 

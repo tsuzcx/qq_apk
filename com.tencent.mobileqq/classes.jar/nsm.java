@@ -1,86 +1,55 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.BubbleViewLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagRequset;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
 
 public class nsm
-  extends BaseAdapter
 {
-  public nsm(nsl paramnsl) {}
-  
-  public nyl a(int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, AccountDetail paramAccountDetail)
   {
-    return (nyl)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1 = this.a.jdField_a_of_type_AndroidContentContext.getResources();
-    int i = afur.a(200.0F, (Resources)localObject1);
-    int j = afur.a(140.0F, (Resources)localObject1);
-    int k = afur.a(12.0F, (Resources)localObject1);
-    Object localObject2;
-    if (paramView == null)
-    {
-      paramView = new nsn(this);
-      localObject1 = new BubbleViewLayout(this.a.jdField_a_of_type_AndroidContentContext);
-      ((BubbleViewLayout)localObject1).setRadius(6.0F);
-      ((BubbleViewLayout)localObject1).a(false);
-      ((View)localObject1).setLayoutParams(new AbsListView.LayoutParams(j, i));
-      localObject2 = new URLImageView(this.a.jdField_a_of_type_AndroidContentContext);
-      ((URLImageView)localObject2).setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-      ((URLImageView)localObject2).setImageDrawable(new ColorDrawable(Color.parseColor("#33000000")));
-      ((URLImageView)localObject2).setScaleType(ImageView.ScaleType.CENTER_CROP);
-      ((ViewGroup)localObject1).addView((View)localObject2);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localObject2);
-      localObject2 = new TextView(this.a.jdField_a_of_type_AndroidContentContext);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(12, -1);
-      localLayoutParams.addRule(14, -1);
-      localLayoutParams.setMargins(k, 0, k, k);
-      ((TextView)localObject2).setLayoutParams(localLayoutParams);
-      ((TextView)localObject2).setTextColor(-1);
-      ((TextView)localObject2).setTextSize(2, 16.0F);
-      ((TextView)localObject2).setMaxLines(2);
-      ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
-      ((ViewGroup)localObject1).addView((View)localObject2);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject2);
-      ((View)localObject1).setTag(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseInfoModel", 2, "saveAccountDetailToDBAndCache");
+    }
+    EntityManager localEntityManager = paramQQAppInterface.a().createEntityManager();
+    if ((paramAccountDetail != null) && (paramAccountDetail.getId() != -1L)) {
+      if (!localEntityManager.update(paramAccountDetail)) {
+        localEntityManager.drop(AccountDetail.class);
+      }
     }
     for (;;)
     {
-      localObject2 = a(paramInt);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(URLDrawable.getDrawable(((nyl)localObject2).e, null, null, true));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((nyl)localObject2).a);
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject2 = (nsn)paramView.getTag();
-      localObject1 = paramView;
-      paramView = (View)localObject2;
+      localEntityManager.close();
+      paramQQAppInterface = (aody)paramQQAppInterface.getManager(56);
+      if ((paramQQAppInterface != null) && (paramAccountDetail != null))
+      {
+        paramQQAppInterface.a(paramAccountDetail);
+        if (paramAccountDetail.followType == 1) {
+          paramQQAppInterface.a(PublicAccountInfo.createPublicAccount(paramAccountDetail, 0L));
+        }
+      }
+      return;
+      localEntityManager.persist(paramAccountDetail);
     }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, oag paramoag, int paramInt)
+  {
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), ocj.class);
+    localNewIntent.putExtra("cmd", "set_function_flag");
+    mobileqq_mp.SetFunctionFlagRequset localSetFunctionFlagRequset = new mobileqq_mp.SetFunctionFlagRequset();
+    localSetFunctionFlagRequset.version.set(1);
+    localSetFunctionFlagRequset.uin.set((int)Long.parseLong(paramString));
+    localSetFunctionFlagRequset.type.set(paramoag.e);
+    localSetFunctionFlagRequset.value.set(paramInt);
+    localSetFunctionFlagRequset.account_type.set(1);
+    localNewIntent.putExtra("data", localSetFunctionFlagRequset.toByteArray());
+    localNewIntent.setObserver(new nsn(paramQQAppInterface, paramoag, paramInt, paramString));
+    paramQQAppInterface.startServlet(localNewIntent);
   }
 }
 

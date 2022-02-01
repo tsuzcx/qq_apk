@@ -12,7 +12,7 @@ class ExcitingTransferEngine$8
     while (localExcitingRecvJobContent.mListener == null) {
       return;
     }
-    localExcitingRecvJobContent.mListener.OnOneSlotComplete(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete);
+    localExcitingRecvJobContent.mListener.onOneSlotComplete(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete);
   }
 }
 

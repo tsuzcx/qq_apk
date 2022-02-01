@@ -1,58 +1,37 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import java.io.File;
+import android.os.Bundle;
+import org.json.JSONObject;
 
-public class acue
-  extends URLDrawableParams
+class acue
+  implements aasd
 {
-  Context a;
+  acue(acud paramacud, acts paramacts, String paramString, String[] paramArrayOfString, aasb paramaasb) {}
   
-  public acue(Context paramContext, File paramFile)
+  public void callback(Bundle paramBundle)
   {
-    super(paramContext);
-    this.a = paramContext;
-    bdzx.a = paramFile;
-    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new bdua(paramFile);
-  }
-  
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
-  {
-    boolean bool = true;
-    if (("http".equals(paramString)) || ("https".equals(paramString)))
+    String str1 = paramBundle.getString("phone");
+    String str2 = paramBundle.getString("name");
+    String str3 = paramBundle.getString("city");
+    String str4 = paramBundle.getString("area");
+    paramBundle = new JSONObject();
+    try
     {
-      if (BaseApplicationImpl.sProcessId == 1) {}
+      paramBundle.put("phone", str1);
+      paramBundle.put("name", str2);
+      paramBundle.put("city", str3);
+      paramBundle.put("area", str4);
+      paramBundle = paramBundle.toString();
+      acvc.a("GdtGetUserInfoHandler", "handleJsCallRequest() called with: webPlugin = [" + this.jdField_a_of_type_Acts + "], callback = [" + this.jdField_a_of_type_JavaLangString + "], args = [" + this.jdField_a_of_type_ArrayOfJavaLangString + "], result = [" + paramBundle + "]");
+      this.jdField_a_of_type_Acts.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+      this.jdField_a_of_type_Aasb.b();
+      return;
+    }
+    catch (Exception localException)
+    {
       for (;;)
       {
-        return new bdvl(bool, paramObject);
-        bool = false;
+        acvc.d("GdtGetUserInfoHandler", localException.toString());
       }
     }
-    return null;
-  }
-  
-  public String doGetLocalFilePath(String paramString)
-  {
-    return null;
-  }
-  
-  public ApngSoLoader getApngSoLoader()
-  {
-    return bgzd.a();
-  }
-  
-  public Drawable getDefaultLoadingDrawable()
-  {
-    return this.a.getResources().getDrawable(2130847826);
-  }
-  
-  public Drawable getDefualtFailedDrawable()
-  {
-    return this.a.getResources().getDrawable(2130847826);
   }
 }
 

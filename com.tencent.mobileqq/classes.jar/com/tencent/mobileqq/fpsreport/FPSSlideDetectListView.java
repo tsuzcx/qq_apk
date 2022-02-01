@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.fpsreport;
 
-import adce;
+import adlc;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import bgoa;
+import bhoc;
 import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class FPSSlideDetectListView
   extends SlideDetectListView
 {
   private long jdField_a_of_type_Long;
-  private adce jdField_a_of_type_Adce;
+  private adlc jdField_a_of_type_Adlc;
   private String jdField_a_of_type_JavaLangString;
   private boolean f;
   
@@ -24,8 +24,8 @@ public class FPSSlideDetectListView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.jdField_a_of_type_Adce != null) {
-      this.jdField_a_of_type_Adce.b();
+    if (this.jdField_a_of_type_Adlc != null) {
+      this.jdField_a_of_type_Adlc.b();
     }
   }
   
@@ -35,23 +35,23 @@ public class FPSSlideDetectListView
     if (this.f)
     {
       this.f = false;
-      bgoa.a(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis());
+      bhoc.a(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis());
     }
   }
   
   public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_Adce != null) {
-      this.jdField_a_of_type_Adce.a(paramInt);
+    if (this.jdField_a_of_type_Adlc != null) {
+      this.jdField_a_of_type_Adlc.a(paramInt);
     }
   }
   
   public void setActTAG(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Adce = new adce();
-    this.jdField_a_of_type_Adce.a(paramString);
+    this.jdField_a_of_type_Adlc = new adlc();
+    this.jdField_a_of_type_Adlc.a(paramString);
     setStartTime(SystemClock.uptimeMillis());
   }
   

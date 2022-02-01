@@ -1,31 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.12.1;
+import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.12.1.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class wie
-  extends SimpleJob<Object>
+public class wie
+  implements zki
 {
-  wie(why paramwhy, String paramString)
-  {
-    super(paramString);
-  }
+  public wie(AlbumGalleryCapturePart.12.1 param1) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a()
   {
-    paramVarArgs = ((wpj)wpm.a(5)).a();
-    paramJobContext = new ArrayList(paramVarArgs.size());
-    paramVarArgs = paramVarArgs.iterator();
-    while (paramVarArgs.hasNext()) {
-      paramJobContext.add(new wjr((StoryVideoItem)paramVarArgs.next()));
-    }
-    this.a.a(paramJobContext);
-    yqp.c("Q.qqstory.publish.upload:StoryVideoUploadManager", "had load local task size " + paramJobContext.size());
-    return null;
+    wia.a(this.a.a.a, -1L);
+    ThreadManager.getUIHandler().post(new AlbumGalleryCapturePart.12.1.1.1(this));
   }
 }
 

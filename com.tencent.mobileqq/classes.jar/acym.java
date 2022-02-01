@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CustomFace;
-import tencent.im.msg.im_msg_body.Elem;
+import android.view.View;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
 
 public class acym
-  extends aczg
+  implements acyd
 {
-  public int a()
-  {
-    return 1000;
-  }
+  public acym(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  public void a(View paramView)
   {
-    new bbzc().a(paramList, paramList1, paramStringBuilder, paramMsg, paramBoolean2);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return paramElem.hc_flash_pic.has();
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    this.a.a();
   }
 }
 

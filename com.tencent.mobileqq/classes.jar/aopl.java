@@ -1,25 +1,26 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class aopl
-  extends bbxe
+  extends MqqHandler
 {
-  BrowserAppInterface a;
+  private WeakReference<Handler.Callback> a;
   
-  public aopl(BrowserAppInterface paramBrowserAppInterface)
+  private aopl(Looper paramLooper, Handler.Callback paramCallback)
   {
-    this.a = paramBrowserAppInterface;
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
   }
   
-  public AppInterface a()
+  public void handleMessage(Message paramMessage)
   {
-    return this.a;
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    super.b(paramToServiceMsg, null, avqx.class);
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
+    }
   }
 }
 

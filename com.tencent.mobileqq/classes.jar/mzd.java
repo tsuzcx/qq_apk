@@ -1,36 +1,60 @@
-import java.util.HashMap;
+import androidx.annotation.NonNull;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import trpc.qq_vgame.common.AvGameCommon.QuestionFeedbackInfo;
 
-public abstract interface mzd
+public class mzd
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2, myc parammyc);
+  public int a;
+  public String a;
+  public String b = "";
   
-  public abstract void a(long paramLong, String paramString1, boolean paramBoolean, String paramString2, int paramInt);
+  public mzd()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+  }
   
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
   
-  public abstract void a(String paramString, int paramInt, myc parammyc);
+  public void a(String paramString1, String paramString2, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public abstract void a(String paramString, myc parammyc);
+  protected void a(mzd parammzd)
+  {
+    this.jdField_a_of_type_JavaLangString = parammzd.jdField_a_of_type_JavaLangString;
+    this.b = parammzd.b;
+    this.jdField_a_of_type_Int = parammzd.jdField_a_of_type_Int;
+  }
   
-  public abstract void a(HashMap<String, String> paramHashMap);
+  public void a(AvGameCommon.QuestionFeedbackInfo paramQuestionFeedbackInfo)
+  {
+    if (paramQuestionFeedbackInfo == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramQuestionFeedbackInfo.content.get();
+    this.jdField_a_of_type_Int = paramQuestionFeedbackInfo.duration.get();
+    this.b = paramQuestionFeedbackInfo.content_md5.get();
+  }
   
-  public abstract void a(myc parammyc);
+  public String b()
+  {
+    return this.b;
+  }
   
-  public abstract void a(myc parammyc, int paramInt);
-  
-  public abstract boolean a(int paramInt, String paramString, myc parammyc);
-  
-  public abstract void b(String paramString, myc parammyc);
-  
-  public abstract void b(myc parammyc);
-  
-  public abstract void c(myc parammyc, int paramInt);
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.b).append(",").append(this.jdField_a_of_type_Int).append("s").append("]");
+    return localStringBuilder.toString();
+  }
 }
 
 

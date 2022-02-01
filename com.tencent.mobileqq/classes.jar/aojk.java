@@ -1,30 +1,6 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.qphone.base.util.QLog;
-
-public class aojk
-  extends aojs
+public abstract interface aojk
 {
-  public aojk(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 2016, null);
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("HttpOpenMiniAppAndAdAction", 1, "doAction error: " + localException.getMessage());
-      a("HttpOpenMiniAppAndAdAction");
-    }
-    return false;
-  }
+  public abstract void a(Object paramObject);
 }
 
 

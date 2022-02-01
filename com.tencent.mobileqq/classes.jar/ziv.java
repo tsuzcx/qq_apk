@@ -1,299 +1,130 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.util.AndroidRuntimeException;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher.1;
-import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher.2;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMCameraCaptureActivity;
-import dov.com.tencent.mobileqq.richmedia.capture.activity.CaptureQmcfSoDownloadActivity;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tribe.async.async.JobContext;
 
 public class ziv
+  extends ziu<zih, zih>
 {
-  private Bundle a(Bundle paramBundle, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  public final String a;
+  private boolean a;
+  
+  public ziv(String paramString)
   {
-    paramBundle.putInt("capture_intent_mode", paramInt2);
-    if ((paramInt2 == 0) || (paramInt2 == 1))
-    {
-      paramBundle.putInt("cameraDirection", paramInt1);
-      paramBundle.putInt("firsttab", paramInt3);
-      paramBundle.putInt("secondtab", paramInt4);
-      paramBundle.putString("itemid", paramString1);
-      paramBundle.putBoolean("qim_camera_open_specific", paramBoolean);
-    }
-    for (;;)
-    {
-      yqp.c("Q.qqstory.publish.StoryPublishLauncher", "initLaunchArgs captureMode=%s, tabType=%d, category=%d, itemId=%s, openSpecific=%b", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, Boolean.valueOf(paramBoolean) });
-      return paramBundle;
-      if (paramInt2 == 3) {
-        paramBundle.putString("story_capture_album_id", paramString3);
-      }
-    }
+    this(true, paramString);
   }
   
-  public static QQAppInterface a()
+  public ziv(boolean paramBoolean)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    throw new AndroidRuntimeException("mobile qq main process only");
+    this(paramBoolean, null);
   }
   
-  public static ziv a()
+  public ziv(boolean paramBoolean, String paramString)
   {
-    return new ziv();
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  private void a(boolean paramBoolean)
+  protected void a(JobContext paramJobContext, zih paramzih)
   {
-    int i = bnpy.a(bnpt.b);
-    HashMap localHashMap;
-    if (i != 0)
-    {
-      ThreadManager.excute(new StoryPublishLauncher.1(this, paramBoolean), 128, null, false);
-      if ((paramBoolean) && (i == 1))
-      {
-        i = 1;
-        localHashMap = new HashMap();
-        if (!paramBoolean) {
-          break label185;
-        }
-        str = "1";
-        label55:
-        localHashMap.put("videoSoUsable", str);
-        if (i == 0) {
-          break label191;
-        }
-        str = "1";
-        label71:
-        localHashMap.put("videoAndFilterReady", str);
-        bctj.a(BaseApplication.getContext()).a("", "actShortVideoSoDownload", true, 0L, 0L, localHashMap, "");
-      }
+    boolean bool2 = false;
+    int i = 1;
+    String str = this.jdField_a_of_type_JavaLangString;
+    paramJobContext = str;
+    if (str == null) {
+      paramJobContext = zix.a(paramzih.jdField_a_of_type_Int, paramzih.jdField_b_of_type_JavaLangString, ".jpg");
     }
-    else
-    {
-      i = bnpy.a(bnpt.c);
-      if (i != 0)
-      {
-        ThreadManager.excute(new StoryPublishLauncher.2(this), 128, null, false);
-        localHashMap = new HashMap();
-        if (i != 1) {
-          break label197;
-        }
-      }
-    }
-    label185:
-    label191:
-    label197:
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("ptuSoReady", str);
-      bctj.a(BaseApplication.getContext()).a("", "actShortVideoPtuSoDownload", true, 0L, 0L, localHashMap, "");
-      QQStoryContext.a().b();
-      return;
-      i = 0;
-      break;
-      str = "0";
-      break label55;
-      str = "0";
-      break label71;
-    }
-  }
-  
-  private boolean a(Context paramContext)
-  {
-    boolean bool = false;
-    if (!bann.a())
-    {
-      yqp.b("Q.qqstory.publish.StoryPublishLauncher", "checkApiVersionDialog false");
-      bglp.a(paramContext, 230).setMessage(anni.a(2131713248)).setPositiveButton(2131694081, new ziw(this)).show();
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public static boolean b()
-  {
-    return bcls.a(a(), BaseApplicationImpl.getContext());
-  }
-  
-  public void a(Activity paramActivity, Bundle paramBundle, int paramInt)
-  {
-    if (a().d())
-    {
-      bnzb.c("Q.qqstory.publish.StoryPublishLauncher", "【2131718094】");
-      QQToast.a(paramActivity, 0, 2131718094, 0).a();
-    }
-    while (a(paramActivity)) {
-      return;
-    }
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    boolean bool;
-    if (localBundle.getInt("entrance_type") == 104)
-    {
-      bool = bqjb.a(a());
-      a(localBundle);
-      if (!bool) {
-        break label113;
-      }
-      bnzb.b("Q.qqstory.publish.StoryPublishLauncher", "【Choose】 QIMCameraCaptureActivity");
-      QIMCameraCaptureActivity.a(paramActivity, localBundle, paramInt);
-    }
-    for (;;)
-    {
-      a(bool);
-      return;
-      bool = bnqf.a();
-      break;
-      label113:
-      bnzb.b("Q.qqstory.publish.StoryPublishLauncher", "【Choose】 CaptureQmcfSoDownloadActivity");
-      CaptureQmcfSoDownloadActivity.a(paramActivity, bncn.class.getName(), localBundle, paramInt, localBundle.getBoolean("resource_need_all_wait", false));
-    }
-  }
-  
-  public void a(Activity paramActivity, Bundle paramBundle, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt5)
-  {
-    a(paramActivity, a(paramBundle, paramInt1, paramInt2, paramInt3, paramInt4, paramString1, paramString2, paramString3, paramBoolean), paramInt5);
-  }
-  
-  public void a(Context paramContext, Bundle paramBundle)
-  {
-    if (a().d())
-    {
-      bnzb.c("Q.qqstory.publish.StoryPublishLauncher", "【2131718094】");
-      QQToast.a(paramContext, 0, 2131718094, 0).a();
-    }
-    while (a(paramContext)) {
-      return;
-    }
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    boolean bool;
-    if (localBundle.getInt("entrance_type") == 104)
-    {
-      bool = bqjb.a(a());
-      a(localBundle);
-      if (!bool) {
-        break label108;
-      }
-      bnzb.b("Q.qqstory.publish.StoryPublishLauncher", "【Choose】 QIMCameraCaptureActivity");
-      QIMCameraCaptureActivity.a(paramContext, localBundle);
-    }
-    for (;;)
-    {
-      a(bool);
-      return;
-      bool = bnqf.a();
-      break;
-      label108:
-      bnzb.b("Q.qqstory.publish.StoryPublishLauncher", "【Choose】 CaptureQmcfSoDownloadActivity");
-      CaptureQmcfSoDownloadActivity.a(paramContext, bncn.class.getName(), localBundle, localBundle.getBoolean("resource_need_all_wait", false));
-    }
-  }
-  
-  public void a(@NonNull Bundle paramBundle)
-  {
-    if (!paramBundle.containsKey("entrance_type")) {
-      yqp.b("Q.qqstory.publish.StoryPublishLauncher", "do not has entrance type", new Throwable());
-    }
-    if (!paramBundle.containsKey("edit_video_type")) {
-      paramBundle.putInt("edit_video_type", 10002);
-    }
-    if (!paramBundle.containsKey("ability_flag")) {
-      paramBundle.putInt("ability_flag", 1);
-    }
-    if (!paramBundle.containsKey("enable_multi_fragment"))
-    {
-      paramBundle.putBoolean("enable_multi_fragment", true);
-      if (!paramBundle.containsKey("capture_max_duration")) {
-        paramBundle.putLong("capture_max_duration", 60000L);
-      }
-    }
-    if (!paramBundle.containsKey("capture_max_duration")) {
-      paramBundle.putLong("capture_max_duration", 10000L);
-    }
-    paramBundle.putBoolean("camera_peak_is_alive", bncl.a(BaseApplicationImpl.getContext()));
-  }
-  
-  @Deprecated
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean a(Activity paramActivity, Bundle paramBundle, int paramInt)
-  {
-    boolean bool2 = true;
-    if (a().d())
-    {
-      QQToast.a(paramActivity, 0, 2131718094, 0).a();
-      bool2 = false;
-      return bool2;
-    }
-    if (a(paramActivity)) {
-      return false;
+    if ((this.jdField_a_of_type_Boolean) && (paramzih.jdField_a_of_type_Boolean)) {
+      yuk.b("Q.qqstory.publish.edit.MergePicSegment", "merge has doodle");
     }
     boolean bool1;
-    if ((paramBundle != null) && (paramBundle.getInt("entrance_type") == 104))
-    {
-      bool1 = bqjb.a(a());
-      label63:
-      yqp.a("Q.qqstory.publish.StoryPublishLauncher", "launchForResult, videoSoUsable=%s, filterOk=%s", Boolean.valueOf(bool1), Boolean.valueOf(b()));
-      QQStoryContext.a().b();
-      if (paramBundle != null) {
-        break label133;
-      }
-      paramBundle = new Bundle();
-    }
-    label133:
     for (;;)
     {
-      a(paramBundle);
-      if (bool1) {
-        break;
+      try
+      {
+        bool1 = zoc.a(zoc.c(paramzih.jdField_a_of_type_Zil.jdField_a_of_type_AndroidGraphicsBitmap, paramzih.jdField_a_of_type_Zil.jdField_b_of_type_AndroidGraphicsBitmap), paramJobContext);
+        i = 0;
+        bool2 = true;
+        bbgf.d = bool2;
+        if ((i != 0) || (bool1)) {
+          break;
+        }
+        yuk.e("Q.qqstory.publish.edit.MergePicSegment", "save err");
+        super.notifyError(new ErrorMessage(-1, anzj.a(2131705444)));
+        return;
       }
-      CaptureQmcfSoDownloadActivity.a(paramActivity, bncn.class.getName(), paramBundle, paramInt, true, true);
-      return false;
-      bool1 = bnqf.a();
-      break label63;
+      catch (Throwable paramJobContext)
+      {
+        yuk.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext);
+        paramJobContext = null;
+        bool1 = false;
+        continue;
+      }
+      if (paramzih.jdField_a_of_type_Zil.jdField_a_of_type_Int > 0)
+      {
+        yuk.b("Q.qqstory.publish.edit.MergePicSegment", "merge use display");
+        try
+        {
+          bool1 = zoc.a(paramzih.jdField_a_of_type_Zil.jdField_a_of_type_AndroidGraphicsBitmap, paramJobContext);
+          i = 0;
+          bool2 = true;
+        }
+        catch (Throwable paramJobContext)
+        {
+          for (;;)
+          {
+            yuk.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext);
+            paramJobContext = null;
+            bool1 = false;
+          }
+        }
+      }
+      else
+      {
+        yuk.b("Q.qqstory.publish.edit.MergePicSegment", "merge use origin");
+        paramJobContext = paramzih.jdField_a_of_type_Zil.jdField_a_of_type_JavaLangString;
+        yuq.b("0X80075C9");
+        paramzih.jdField_a_of_type_Zil.jdField_b_of_type_Boolean = true;
+        bool1 = false;
+      }
     }
+    paramzih.jdField_a_of_type_Zil.jdField_b_of_type_JavaLangString = paramJobContext;
+    paramzih.jdField_a_of_type_Zil.jdField_a_of_type_Boolean = bool1;
+    if ((paramzih.jdField_a_of_type_Int == 3) && (bool1)) {
+      a(paramzih, paramzih.jdField_a_of_type_Zil.jdField_a_of_type_JavaLangString, paramJobContext);
+    }
+    super.notifyResult(paramzih);
   }
   
-  public void b(Context paramContext, Bundle paramBundle)
+  public void a(zih paramzih, String paramString1, String paramString2)
   {
-    if (a().d())
+    double d1;
+    double d2;
+    if (((paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditTakePhotoSource)) && (((EditTakePhotoSource)paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).b != 4.9E-324D) && (((EditTakePhotoSource)paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a != 4.9E-324D))
     {
-      bnzb.c("Q.qqstory.publish.StoryPublishLauncher", "【2131718094】");
-      QQToast.a(paramContext, 0, 2131718094, 0).a();
-      QLog.e("Q.qqstory.publish.StoryPublishLauncher", 1, "launchForPreview failed: isVideoChatting");
-      return;
+      d1 = ((EditTakePhotoSource)paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).b;
+      d2 = ((EditTakePhotoSource)paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a;
+      if (!TextUtils.isEmpty(paramString1)) {
+        if (!bnjp.a(paramString1, paramString2)) {
+          bnjp.b(paramString2, d2, d1);
+        }
+      }
     }
-    if (a(paramContext))
+    do
     {
-      QLog.e("Q.qqstory.publish.StoryPublishLauncher", 1, "launchForPreview failed: not support short video");
-      return;
-    }
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    a(localBundle);
-    QIMCameraCaptureActivity.a(paramContext, localBundle);
+      do
+      {
+        return;
+        bnjp.b(paramString2, d2, d1);
+        return;
+      } while ((!(paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditLocalPhotoSource)) || (TextUtils.isEmpty(paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a.a())) || (bnjp.a(paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a.a(), paramString2)));
+      paramzih = ((EditLocalPhotoSource)paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a;
+    } while (paramzih == null);
+    bnjp.a(paramString2, paramzih.longitude / 1000000.0D, paramzih.latitude / 1000000.0D);
   }
 }
 

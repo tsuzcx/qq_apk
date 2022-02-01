@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ark.API;
 
-import apgu;
-import apgx;
-import aphd;
+import apuk;
+import apun;
+import aput;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class ArkAppDeviceModule$ObserverMethod$5$2
   implements Runnable
 {
-  public ArkAppDeviceModule$ObserverMethod$5$2(aphd paramaphd) {}
+  public ArkAppDeviceModule$ObserverMethod$5$2(aput paramaput) {}
   
   public void run()
   {

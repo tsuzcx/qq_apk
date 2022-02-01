@@ -1,19 +1,13 @@
-import com.tribe.async.dispatch.Dispatcher;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.qq.im.ae.play.EditTextViewer;
 
-class boyr
-  extends bjer
+public class boyr
+  implements DialogInterface.OnDismissListener
 {
-  boyr(boyq paramboyq) {}
+  public boyr(EditTextViewer paramEditTextViewer) {}
   
-  public void a()
-  {
-    wfo.a().dispatch(new boys(1, true));
-  }
-  
-  public void b()
-  {
-    wfo.a().dispatch(new boys(1, false));
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

@@ -1,13 +1,13 @@
-public class atcu
+import java.io.File;
+
+public abstract interface atcu
+  extends bhue
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
+  public abstract void a(File paramFile);
   
-  public atcu(boolean paramBoolean, int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void f(int paramInt);
 }
 
 

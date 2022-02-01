@@ -1,17 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
+import com.tencent.widget.FadeIconImageView;
 
 public class akcr
-  implements DialogInterface.OnClickListener
+  extends akbz
 {
-  public akcr(BindVerifyActivity paramBindVerifyActivity) {}
+  public static final int[] a;
+  public static final int[] b = { 2131364399 };
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    paramDialogInterface.dismiss();
-    this.a.setResult(0);
-    this.a.finish();
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131690657 };
+  }
+  
+  public akcr(FragmentActivity paramFragmentActivity)
+  {
+    super(paramFragmentActivity);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(8);
+  }
+  
+  protected int[] a()
+  {
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return jdField_a_of_type_ArrayOfInt;
   }
 }
 

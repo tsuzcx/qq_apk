@@ -531,13 +531,18 @@ public class l
       {
         localWUserSigInfo._login_bitmap = 2;
         l1 = 2L;
+        localObject2 = paramToServiceMsg.getAttribute("to_login_uin_encrypt");
+        if (localObject2 != null) {
+          WtloginHelper.setExtraLoginTlvValue(localWUserSigInfo, 1346, (byte[])localObject2);
+        }
         long l2 = 16L;
         localObject2 = (String)paramToServiceMsg.getAttribute("process", null);
         if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals("com.tencent.mobileqq:openSdk"))) {
-          break label327;
+          break label399;
         }
+        m = ((Integer)paramToServiceMsg.getAttribute("puzzle_verify_code", Integer.valueOf(0))).intValue();
         l2 = 1600001540L;
-        m = 0;
+        QLog.d("MSF.C.WTLoginCenter", 1, "WTLoginCenter login --> CanWebVerify=" + m);
         e.SetCanWebVerify(m);
         localObject2 = new long[0];
         if (com.tencent.mobileqq.msf.core.a.a.aY())
@@ -561,7 +566,7 @@ public class l
         continue;
         localWUserSigInfo._login_bitmap = 0;
         continue;
-        label327:
+        label399:
         int m = 130;
       }
     }

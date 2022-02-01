@@ -4,18 +4,18 @@ import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
-import rmz;
-import rnb;
-import rni;
+import rdu;
+import rdw;
+import red;
 
 public class SystemCaptureProxy$2
   implements Runnable
 {
-  public SystemCaptureProxy$2(rni paramrni, rmz paramrmz, rnb paramrnb) {}
+  public SystemCaptureProxy$2(red paramred, rdu paramrdu, rdw paramrdw) {}
   
   public void run()
   {
-    if (rni.a(this.this$0))
+    if (red.a(this.this$0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("SystemCaptureProxy", 2, "capture return for released.");
@@ -23,16 +23,16 @@ public class SystemCaptureProxy$2
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("SystemCaptureProxy", 2, "capture captureTask:" + this.jdField_a_of_type_Rmz + "  useScaleAPI:" + rni.b(this.this$0));
+      QLog.d("SystemCaptureProxy", 2, "capture captureTask:" + this.jdField_a_of_type_Rdu + "  useScaleAPI:" + red.b(this.this$0));
     }
     for (Object localObject = null;; localObject = localBitmap2)
     {
       try
       {
-        if ((!rni.b(this.this$0)) || (Build.VERSION.SDK_INT < 27)) {
+        if ((!red.b(this.this$0)) || (Build.VERSION.SDK_INT < 27)) {
           break label167;
         }
-        localBitmap2 = rni.a(this.this$0).getScaledFrameAtTime(this.jdField_a_of_type_Rmz.c * 1000, 0, this.jdField_a_of_type_Rmz.d, this.jdField_a_of_type_Rmz.e);
+        localBitmap2 = red.a(this.this$0).getScaledFrameAtTime(this.jdField_a_of_type_Rdu.c * 1000, 0, this.jdField_a_of_type_Rdu.d, this.jdField_a_of_type_Rdu.e);
         localObject = localBitmap2;
       }
       catch (Error localError)
@@ -40,8 +40,8 @@ public class SystemCaptureProxy$2
         for (;;)
         {
           Bitmap localBitmap2;
-          rni.a(this.this$0, false);
-          Bitmap localBitmap1 = rni.a(this.this$0, rni.a(this.this$0), this.jdField_a_of_type_Rmz);
+          red.a(this.this$0, false);
+          Bitmap localBitmap1 = red.a(this.this$0, red.a(this.this$0), this.jdField_a_of_type_Rdu);
         }
       }
       catch (Throwable localThrowable)
@@ -49,19 +49,19 @@ public class SystemCaptureProxy$2
         for (;;)
         {
           label167:
-          QLog.e("SystemCaptureProxy", 1, "capture failed for captureTask" + this.jdField_a_of_type_Rmz, localThrowable);
+          QLog.e("SystemCaptureProxy", 1, "capture failed for captureTask" + this.jdField_a_of_type_Rdu, localThrowable);
         }
-        this.jdField_a_of_type_Rnb.a();
+        this.jdField_a_of_type_Rdw.a();
       }
-      if (this.jdField_a_of_type_Rnb == null) {
+      if (this.jdField_a_of_type_Rdw == null) {
         break;
       }
       if ((localObject == null) || (localObject.isRecycled())) {
         break label256;
       }
-      this.jdField_a_of_type_Rnb.a(localObject, this.jdField_a_of_type_Rmz);
+      this.jdField_a_of_type_Rdw.a(localObject, this.jdField_a_of_type_Rdu);
       return;
-      localBitmap2 = rni.a(this.this$0, rni.a(this.this$0), this.jdField_a_of_type_Rmz);
+      localBitmap2 = red.a(this.this$0, red.a(this.this$0), this.jdField_a_of_type_Rdu);
     }
     label256:
   }

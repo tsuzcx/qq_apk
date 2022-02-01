@@ -1,17 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.Map;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class sql
-  extends pue
+class sql
+  implements ViewFactory.FoundClickableViewListener
 {
-  public sql(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Map paramMap)
-  {
-    super(paramString);
-  }
+  sql(sqk paramsqk) {}
   
-  public void a(ptx paramptx)
+  public void onFound(ViewBase paramViewBase)
   {
-    paramptx.a(this.jdField_a_of_type_JavaUtilMap);
+    paramViewBase.setOnClickListener(new sqm(this));
   }
 }
 

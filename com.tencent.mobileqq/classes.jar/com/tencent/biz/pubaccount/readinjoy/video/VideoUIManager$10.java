@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import sfq;
+import rwu;
 
 public class VideoUIManager$10
   implements Runnable
 {
-  public VideoUIManager$10(sfq paramsfq) {}
+  public VideoUIManager$10(rwu paramrwu) {}
   
   public void run()
   {
-    sfq.g(this.this$0);
+    rwu.g(this.this$0);
   }
 }
 

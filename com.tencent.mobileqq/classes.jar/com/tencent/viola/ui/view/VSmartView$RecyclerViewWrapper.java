@@ -1,11 +1,12 @@
 package com.tencent.viola.ui.view;
 
-import android.support.v7.widget.RecyclerView;
+import com.tencent.viola.ui.view.list.VRecyclerView;
 
 class VSmartView$RecyclerViewWrapper
 {
   boolean ignoreScrollEvent = true;
-  RecyclerView recyclerView;
+  int lastContentOffset = -1;
+  VRecyclerView recyclerView;
 }
 
 

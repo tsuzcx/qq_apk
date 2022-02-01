@@ -1,32 +1,18 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class afii
-  implements bknm
+  extends aogx
 {
-  public afii(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public afii(QQSettingMe paramQQSettingMe) {}
   
-  public void a(bknl parambknl)
+  public void a()
   {
-    boolean bool = false;
-    switch (parambknl.a)
-    {
-    default: 
-      return;
-    case 0: 
-      parambknl = this.a;
-      if (!this.a.d) {
-        bool = true;
-      }
-      parambknl.d = bool;
-      awhv.a().b(this.a.app, this.a.d);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoChangedObserver");
     }
-    parambknl = new Intent(this.a, TroopAssisSettingActivity.class);
-    parambknl.setFlags(67108864);
-    this.a.startActivity(parambknl);
-    bcst.b(this.a.app, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
+    this.a.c(this.a.a.getCurrentAccountUin());
   }
 }
 

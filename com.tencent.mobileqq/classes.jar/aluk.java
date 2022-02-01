@@ -1,20 +1,80 @@
-import com.tencent.mobileqq.data.CommonlyUsedTroop;
-import java.util.Comparator;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.activity.richmedia.FlowActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class aluk
-  implements Comparator<CommonlyUsedTroop>
+  extends alui
+  implements aian
 {
-  protected aluk(aluh paramaluh) {}
+  int jdField_a_of_type_Int = -1;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
+  public aluk(FlowActivity paramFlowActivity)
   {
-    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
-      return 1;
+    super(paramFlowActivity);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    PanelIconLinearLayout localPanelIconLinearLayout = new PanelIconLinearLayout(paramViewGroup.getContext(), null);
+    localPanelIconLinearLayout.setPanelIconListener(this);
+    int i = (int)(40.0F * paramViewGroup.getResources().getDisplayMetrics().density + 0.5F);
+    Object localObject = new RelativeLayout.LayoutParams(-1, -2);
+    ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131366921);
+    paramViewGroup.addView(localPanelIconLinearLayout, (ViewGroup.LayoutParams)localObject);
+    localPanelIconLinearLayout.setCustomHeight(i);
+    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowActivity.getIntent().getExtras();
+    if ((paramViewGroup != null) && (paramViewGroup.containsKey("selected_item")))
+    {
+      this.jdField_a_of_type_Int = paramViewGroup.getInt("selected_item");
+      if (paramViewGroup.containsKey("selected_data"))
+      {
+        localObject = (ArrayList)paramViewGroup.getSerializable("selected_data");
+        localPanelIconLinearLayout.a.clear();
+        localPanelIconLinearLayout.a.addAll((Collection)localObject);
+      }
+      localPanelIconLinearLayout.b();
+      localPanelIconLinearLayout.setSelected(this.jdField_a_of_type_Int);
+      if (paramViewGroup.containsKey("flow_key_need_poke_red")) {
+        localPanelIconLinearLayout.setShowRed(23, paramViewGroup.getBoolean("flow_key_need_poke_red"));
+      }
+      this.jdField_a_of_type_AndroidViewView = localPanelIconLinearLayout;
+      return;
     }
-    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
-      return -1;
+    throw new RuntimeException("No pass args SELECTED_ITEM");
+  }
+  
+  public void a(Object paramObject)
+  {
+    Intent localIntent = ((FlowActivity)a()).getIntent();
+    if ((paramObject == null) || (!(paramObject instanceof Integer))) {
+      return;
     }
-    return 0;
+    int i = ((Integer)paramObject).intValue();
+    QLog.d("XPanel", 2, " FlowPlusPanel  onPanelIconClick  i==" + i + "panelType===" + this.jdField_a_of_type_Int);
+    localIntent.putExtra("click_item", i);
+    ((FlowActivity)a()).setResult(1000, localIntent);
+    ((FlowActivity)a()).finish();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
 }
 

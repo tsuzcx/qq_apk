@@ -1,90 +1,71 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Message;
 import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoSpreadGroupList;
-import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.EditGifImage;
+import com.tencent.image.AbstractGifImage.DoAccumulativeRunnable;
+import com.tencent.image.NativeGifImage;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.widget.FastAnimationDrawable;
 
 public class yvb
-  extends ytw
+  extends yxr
+  implements View.OnClickListener
 {
-  public SparseArray<wrd> a;
+  protected double a;
+  protected final int a;
+  protected LinearLayout a;
+  protected SeekBar a;
+  protected TextView a;
+  protected boolean a;
+  protected int b;
+  protected TextView b;
+  protected int c;
+  protected int d = 50;
+  protected int e = -1;
+  protected int f;
+  protected int g;
   
-  public yvb(@NonNull yty paramyty)
+  public yvb(@NonNull yxt paramyxt)
   {
-    super(paramyty);
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(6);
-  }
-  
-  @NonNull
-  private List<Long> a(@NonNull List<String> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      String str = (String)paramList.next();
-      try
-      {
-        localArrayList.add(Long.valueOf(Long.valueOf(str).longValue()));
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        yqp.e("Q.qqstory.publish.edit.EditVideoPermission", "can't format uin:%s", new Object[] { str });
-      }
-    }
-    return localArrayList;
+    super(paramyxt);
+    this.jdField_a_of_type_Int = AbstractGifImage.DoAccumulativeRunnable.DELAY;
   }
   
   private void f()
   {
-    Activity localActivity = a().getActivity();
-    if (localActivity != null)
-    {
-      Intent localIntent = new Intent(localActivity, ShareToActivity.class);
-      wrd localwrd = (wrd)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Yty.a());
-      if (!wrd.a(localwrd)) {
-        localIntent.putStringArrayListExtra("share_to_group_key", new ArrayList(localwrd.a));
-      }
-      localActivity.startActivityForResult(localIntent, 5555);
+    this.f = bnlj.f;
+    this.g = (this.c * bnlj.g);
+    this.jdField_a_of_type_Double = ((this.f - this.g) / 100.0D);
+    if (QLog.isColorLevel()) {
+      QLog.d("EditGifSpeedControl", 2, "calculateSpeedChangeByLimit | defaultY:" + this.c + " maxSpeed:" + this.f + " minSpeed:" + this.g + " k1:" + this.jdField_a_of_type_Double);
     }
   }
   
-  private void g()
+  public void a()
   {
-    yrc localyrc = (yrc)super.a(yrc.class);
-    if (wrd.a((wrd)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Yty.a())))
-    {
-      localyrc.b(2130846824);
-      return;
+    super.a();
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
+    NativeGifImage.QZONE_DELAY = -1;
+    this.jdField_b_of_type_Int = 50;
+    if (QLog.isColorLevel()) {
+      QLog.d("EditGifSpeedControl", 2, "onCreate | defaultX:" + this.jdField_b_of_type_Int + " defaultY:" + this.c + " delayTime:" + this.e);
     }
-    localyrc.b(2130846825);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == 5555)
-    {
-      if (paramInt2 == 1)
-      {
-        paramIntent = paramIntent.getStringArrayListExtra("share_to_group_key");
-        if (paramIntent != null) {
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_Yty.a(), new wrd(paramIntent));
-        }
-      }
-      this.jdField_a_of_type_Yty.a(0);
-      g();
-    }
+    f();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131377258));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131377253));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131377254));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)a(2131367555));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new yvc(this));
   }
   
   public void a(int paramInt, Object paramObject)
@@ -92,60 +73,123 @@ public class yvb
     switch (paramInt)
     {
     default: 
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       return;
     }
-    f();
+    if (this.e == -1)
+    {
+      if (!this.jdField_a_of_type_Yxt.a.jdField_a_of_type_Boolean) {
+        break label193;
+      }
+      paramInt = (int)this.jdField_a_of_type_Yxt.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a();
+      this.e = paramInt;
+      this.c = paramInt;
+    }
+    for (NativeGifImage.QZONE_DELAY = paramInt;; NativeGifImage.QZONE_DELAY = paramInt)
+    {
+      f();
+      paramInt = (int)((this.c - this.g) / this.jdField_a_of_type_Double);
+      this.d = paramInt;
+      this.jdField_b_of_type_Int = paramInt;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "editVideoStateChanged | delayTime:" + this.e + " barPosition:" + this.d);
+      }
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.d);
+      this.c = this.e;
+      this.jdField_b_of_type_Int = this.d;
+      return;
+      label193:
+      paramInt = NativeGifImage.GIF_DEFAULT_DELAY;
+      this.e = paramInt;
+      this.c = paramInt;
+    }
   }
   
-  public void a(int paramInt, @NonNull zem paramzem)
+  public void a(@NonNull zih paramzih)
   {
-    super.a(paramInt, paramzem);
-    ??? = (wrd)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (wrd.a((wrd)???)) {}
-    for (;;)
-    {
-      return;
-      List localList = a(((wrd)???).a);
-      if (localList.size() > 0) {}
-      synchronized (this.jdField_a_of_type_Yty)
+    if (this.e == -1) {
+      if (this.jdField_a_of_type_Yxt.a.jdField_a_of_type_Boolean)
       {
-        qqstory_struct.VideoSpreadGroupList localVideoSpreadGroupList = new qqstory_struct.VideoSpreadGroupList();
-        byte[] arrayOfByte = paramzem.a.spreadGroupBytes;
-        if (arrayOfByte != null) {}
-        try
-        {
-          localVideoSpreadGroupList.mergeFrom(paramzem.a.spreadGroupBytes);
-          localVideoSpreadGroupList.group_list.set(localList);
-          localVideoSpreadGroupList.visibility_type.set(2);
-          localVideoSpreadGroupList.setHasFlag(true);
-          paramzem.a.spreadGroupBytes = localVideoSpreadGroupList.toByteArray();
-          yqp.d("Q.qqstory.publish.edit.EditVideoPermission", "editVideoPrePublish fragment index = %d, qq-group count %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(localList.size()) });
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("zivonchen", 2, "editVideoPrePublish fragmentIndex = " + paramInt + ", shareGroupArray: " + paramzem.a.spreadGroupBytes);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          for (;;)
-          {
-            yqp.c("Q.qqstory.publish.edit.EditVideoPermission", "editVideoPrePublish error", localInvalidProtocolBufferMicroException);
-          }
+        paramzih.a.jdField_b_of_type_Int = ((int)this.jdField_a_of_type_Yxt.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a());
+        paramzih.a.c = this.jdField_a_of_type_Boolean;
+        if (QLog.isColorLevel()) {
+          QLog.d("EditGifSpeedControl", 2, "editVideoPrePublish | get defaultY:" + this.c + " isDelayTimeChange:" + this.jdField_a_of_type_Boolean);
         }
       }
     }
+    do
+    {
+      return;
+      zil localzil = paramzih.a;
+      if (NativeGifImage.GIF_DEFAULT_DELAY != -1) {}
+      for (int i = NativeGifImage.GIF_DEFAULT_DELAY;; i = bnlj.d)
+      {
+        localzil.jdField_b_of_type_Int = i;
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "editVideoPrePublish | get delayTime:" + this.e + " isDelayTimeChange:" + this.jdField_a_of_type_Boolean);
+      }
+      paramzih.a.jdField_b_of_type_Int = this.e;
+      paramzih.a.c = this.jdField_a_of_type_Boolean;
+      if (this.e < this.c)
+      {
+        LpReportInfo_pf00064.allReport(628, 5, 3);
+        return;
+      }
+    } while (this.e <= this.c);
+    LpReportInfo_pf00064.allReport(628, 5, 2);
   }
   
-  protected boolean a(Message paramMessage)
+  public boolean a()
   {
-    switch (paramMessage.what)
+    boolean bool = false;
+    if (this.jdField_a_of_type_Yxt.jdField_b_of_type_Int == 21)
+    {
+      NativeGifImage.QZONE_DELAY = this.c;
+      if (this.jdField_a_of_type_Yxt.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
+        this.jdField_a_of_type_Yxt.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a(NativeGifImage.QZONE_DELAY);
+      }
+      this.e = this.c;
+      this.d = this.jdField_b_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "onBackPressed | delayTime:" + this.e + " barPosition:" + this.d);
+      }
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_Yxt.a(0);
+      bool = true;
+      LpReportInfo_pf00064.allReport(628, 5, 4);
+    }
+    return bool;
+  }
+  
+  public void d()
+  {
+    super.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("EditGifSpeedControl", 2, "onDestroy | DEFAULT_DELAY:" + this.jdField_a_of_type_Int);
+    }
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = this.jdField_a_of_type_Int;
+    NativeGifImage.QZONE_DELAY = -1;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
     }
     for (;;)
     {
-      return super.a(paramMessage);
-      g();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      if (this.jdField_a_of_type_Yxt.jdField_b_of_type_Int == 21)
+      {
+        this.jdField_a_of_type_Yxt.a(0);
+        continue;
+        a();
+      }
     }
   }
 }

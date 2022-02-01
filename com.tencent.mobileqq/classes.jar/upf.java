@@ -1,125 +1,50 @@
-import UserGrowth.stLinkStragegyArgs;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.1;
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.2;
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.3;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
-import cooperation.qzone.LocalMultiProcConfig;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
 
 public class upf
 {
-  private static int a()
+  public static Intent a(String paramString1, String paramString2)
   {
-    if (!a(b(), c(), 0)) {
-      return 0;
+    paramString1 = new Intent("android.intent.action.VIEW", Uri.parse(paramString1));
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramString1.setPackage(paramString2);
     }
-    return LocalMultiProcConfig.getInt("weishi_usergrowth", b(), 0);
+    paramString1.setFlags(536870912);
+    paramString1.putExtra("big_brother_source_key", "biz_src_jc_gzh_weishi");
+    return paramString1;
   }
   
-  public static stLinkStragegyArgs a()
+  public static void a(Activity paramActivity)
   {
-    stLinkStragegyArgs localstLinkStragegyArgs = new stLinkStragegyArgs();
-    localstLinkStragegyArgs.hasInstalledWeish = zmi.a(BaseApplicationImpl.getApplication().getApplicationContext());
-    localstLinkStragegyArgs.todayClickCount = b();
-    localstLinkStragegyArgs.todayEnterCount = a();
-    localstLinkStragegyArgs.todayLastLinkId = c();
-    return localstLinkStragegyArgs;
-  }
-  
-  public static void a()
-  {
-    a(b(), c());
-  }
-  
-  public static void a(int paramInt)
-  {
-    ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.1(paramInt));
-  }
-  
-  private static void a(String paramString1, String paramString2)
-  {
-    ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.2(paramString1, paramString2));
-  }
-  
-  private static boolean a(String paramString1, String paramString2, int paramInt)
-  {
-    long l = LocalMultiProcConfig.getLong("weishi_usergrowth", paramString2, 0L);
-    boolean bool = bmii.a(System.currentTimeMillis(), l);
-    if (!bool) {
-      ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.3(paramString1, paramInt, paramString2));
-    }
-    return bool;
-  }
-  
-  private static int b()
-  {
-    if (!a(d(), e(), 0)) {
-      return 0;
-    }
-    return LocalMultiProcConfig.getInt("weishi_usergrowth", d(), 0);
-  }
-  
-  private static String b()
-  {
-    return "key_open_recommend_page_count_" + h();
-  }
-  
-  public static void b()
-  {
-    a(d(), e());
-  }
-  
-  private static int c()
-  {
-    if (!a(f(), g(), -1)) {
-      return -1;
-    }
-    return LocalMultiProcConfig.getInt("weishi_usergrowth", f(), -1);
-  }
-  
-  private static String c()
-  {
-    return "key_open_recommend_page_time_" + h();
-  }
-  
-  private static String d()
-  {
-    return "key_click_recommend_card_count_" + h();
-  }
-  
-  private static String e()
-  {
-    return "key_click_recommend_card_time_" + h();
-  }
-  
-  private static String f()
-  {
-    return "key_last_link_type_" + h();
-  }
-  
-  private static String g()
-  {
-    return "key_last_link_time_" + h();
-  }
-  
-  private static String h()
-  {
-    String str2 = "";
-    String str3 = DeviceUtils.getVersionName(BaseApplicationImpl.getContext());
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    String str1 = str2;
-    if (localAppRuntime != null)
+    String str1 = ugd.a().b();
+    String str2 = ugd.a().a();
+    uqf.d("AppMarketUtils", "goAppMarket :\npackageName = " + str2 + "\nurl = " + str1);
+    try
     {
-      str1 = str2;
-      if (!TextUtils.isEmpty(localAppRuntime.getAccount())) {
-        str1 = bisz.a(localAppRuntime.getAccount());
-      }
+      paramActivity.startActivity(a(str1, str2));
+      return;
     }
-    return str1 + "_" + str3;
+    catch (Exception paramActivity)
+    {
+      uqf.d("AppMarketUtils", "goAppMarket error messaage = " + paramActivity.getMessage());
+    }
+  }
+  
+  public static boolean a(Activity paramActivity)
+  {
+    if (paramActivity == null) {
+      uqf.d("AppMarketUtils", "tryGoAppMarket:activity = null");
+    }
+    do
+    {
+      return false;
+      paramActivity = ugd.a().b();
+      String str = ugd.a().a();
+      uqf.c("AppMarketUtils", "goAppMarket:\nappStorePackageName = " + str + "\nappStoreVendorId =" + ugd.a().b() + "\nappStoreScheme =" + paramActivity);
+    } while ((TextUtils.isEmpty(paramActivity)) || (paramActivity.startsWith("http")));
+    return true;
   }
 }
 

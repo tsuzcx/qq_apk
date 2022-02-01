@@ -1,19 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qqcircle.transition.QCircleTransitionInnerLayout;
-
-class vkw
-  implements ValueAnimator.AnimatorUpdateListener
+public class vkw
+  extends zzy
 {
-  vkw(vks paramvks) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public String a()
   {
-    int i = (int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * 255.0F);
-    if ((vks.a(this.a) != null) && (vks.a(this.a).getBackground() != null)) {
-      vks.a(this.a).getBackground().setAlpha(i);
-    }
+    return "QCircleStrategy";
+  }
+  
+  public String b()
+  {
+    return uym.e;
   }
 }
 

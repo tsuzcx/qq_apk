@@ -12,28 +12,28 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import mqq.app.AppRuntime;
-import pha;
-import sfb;
-import sfd;
-import sff;
-import six;
-import trl;
-import trm;
-import tro;
-import trp;
-import trq;
+import ozs;
+import rwf;
+import rwh;
+import rwj;
+import sab;
+import tih;
+import tii;
+import tik;
+import til;
+import tim;
 
 public class VideoPlayManager
-  implements sff
+  implements rwj
 {
   private int jdField_a_of_type_Int = 1000;
   private Context jdField_a_of_type_AndroidContentContext;
-  private List<trq> jdField_a_of_type_JavaUtilList;
-  private Set<sfb> jdField_a_of_type_JavaUtilSet = new ArraySet();
-  private sfd jdField_a_of_type_Sfd;
-  private trm jdField_a_of_type_Trm = new trm(this, null);
-  private tro jdField_a_of_type_Tro = new tro(this);
-  private trp jdField_a_of_type_Trp;
+  private List<tim> jdField_a_of_type_JavaUtilList;
+  private Set<rwf> jdField_a_of_type_JavaUtilSet = new ArraySet();
+  private rwh jdField_a_of_type_Rwh;
+  private tii jdField_a_of_type_Tii = new tii(this, null);
+  private tik jdField_a_of_type_Tik = new tik(this);
+  private til jdField_a_of_type_Til;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   private boolean c = true;
@@ -44,100 +44,100 @@ public class VideoPlayManager
   public VideoPlayManager(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Sfd = new sfd();
-    this.jdField_a_of_type_Sfd.a(this);
+    this.jdField_a_of_type_Rwh = new rwh();
+    this.jdField_a_of_type_Rwh.a(this);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  private sfb a(trp paramtrp)
+  private rwf a(til paramtil)
   {
     Object localObject;
     if (this.jdField_a_of_type_AndroidContentContext == null) {
       localObject = null;
     }
-    sfb localsfb;
+    rwf localrwf;
     do
     {
       do
       {
         return localObject;
-        localsfb = new sfb(this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
-        localsfb.a(this.jdField_a_of_type_Trm);
-        localObject = localsfb;
-      } while (paramtrp == null);
-      localObject = localsfb;
-    } while (!paramtrp.jdField_f_of_type_Boolean);
-    localsfb.e(true);
-    return localsfb;
+        localrwf = new rwf(this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
+        localrwf.a(this.jdField_a_of_type_Tii);
+        localObject = localrwf;
+      } while (paramtil == null);
+      localObject = localrwf;
+    } while (!paramtil.jdField_f_of_type_Boolean);
+    localrwf.e(true);
+    return localrwf;
   }
   
-  private void a(sfb paramsfb)
+  private void a(rwf paramrwf)
   {
-    if (paramsfb == null) {}
+    if (paramrwf == null) {}
     do
     {
       return;
-      paramsfb.a(null);
-      paramsfb.n();
-    } while (paramsfb.j());
-    paramsfb.j();
-    ThreadManager.excute(new VideoPlayManager.2(this, paramsfb), 64, null, false);
+      paramrwf.a(null);
+      paramrwf.n();
+    } while (paramrwf.j());
+    paramrwf.j();
+    ThreadManager.excute(new VideoPlayManager.2(this, paramrwf), 64, null, false);
   }
   
-  private void d(trp paramtrp)
+  private void d(til paramtil)
   {
-    if (trp.a(paramtrp) == null)
+    if (til.a(paramtil) == null)
     {
-      ThreadManager.post(new VideoPlayManager.1(this, paramtrp), 5, null, true);
+      ThreadManager.post(new VideoPlayManager.1(this, paramtil), 5, null, true);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("Viola.VideoPlayManager", 2, "VideoFeedsPlayManager innerPlayVideo hit cache");
     }
-    trp.a(paramtrp).a(paramtrp.jdField_a_of_type_Trl);
-    e(paramtrp);
+    til.a(paramtil).a(paramtil.jdField_a_of_type_Tih);
+    e(paramtil);
   }
   
-  private void e(trp paramtrp)
+  private void e(til paramtil)
   {
-    if ((paramtrp == null) || (trp.a(paramtrp) == null)) {
+    if ((paramtil == null) || (til.a(paramtil) == null)) {
       return;
     }
-    paramtrp.jdField_a_of_type_AndroidViewViewGroup.setKeepScreenOn(true);
+    paramtil.jdField_a_of_type_AndroidViewViewGroup.setKeepScreenOn(true);
     if (QLog.isColorLevel()) {
       QLog.d("Viola.VideoPlayManager", 2, "VideoFeedsPlayManager innerPlayVideo videoView null");
     }
-    if (paramtrp.jdField_a_of_type_Six == null)
+    if (paramtil.jdField_a_of_type_Sab == null)
     {
-      trp.a(paramtrp).a(paramtrp.jdField_a_of_type_AndroidViewViewGroup);
-      Object localObject = trp.a(paramtrp).a();
-      if ((localObject == null) || (((six)localObject).a() == null))
+      til.a(paramtil).a(paramtil.jdField_a_of_type_AndroidViewViewGroup);
+      Object localObject = til.a(paramtil).a();
+      if ((localObject == null) || (((sab)localObject).a() == null))
       {
         localObject = this.jdField_a_of_type_JavaUtilList.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((trq)((Iterator)localObject).next()).a(paramtrp, 123, 99, null);
+          ((tim)((Iterator)localObject).next()).a(paramtil, 123, 99, null);
         }
-        trp.a(paramtrp, null);
+        til.a(paramtil, null);
         return;
       }
-      paramtrp.jdField_a_of_type_Six = ((six)localObject);
-      ((six)localObject).a().setId(2131376024);
+      paramtil.jdField_a_of_type_Sab = ((sab)localObject);
+      ((sab)localObject).a().setId(2131376164);
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((trq)((Iterator)localObject).next()).b(paramtrp);
+        ((tim)((Iterator)localObject).next()).b(paramtil);
       }
     }
-    trp.a(paramtrp).b(paramtrp.jdField_f_of_type_Int);
-    trp.a(paramtrp).d(this.e);
-    trp.a(paramtrp).c(paramtrp.jdField_a_of_type_Boolean);
-    paramtrp.jdField_a_of_type_Six.a().setVisibility(0);
-    ThreadManager.excute(new VideoPlayManager.PlayStartVideoRunnable(this, paramtrp), 64, null, true);
+    til.a(paramtil).b(paramtil.jdField_f_of_type_Int);
+    til.a(paramtil).d(this.e);
+    til.a(paramtil).c(paramtil.jdField_a_of_type_Boolean);
+    paramtil.jdField_a_of_type_Sab.a().setVisibility(0);
+    ThreadManager.excute(new VideoPlayManager.PlayStartVideoRunnable(this, paramtil), 64, null, true);
   }
   
   public int a()
   {
     if (a()) {
-      return trp.a(this.jdField_a_of_type_Trp).b();
+      return til.a(this.jdField_a_of_type_Til).b();
     }
     return -1;
   }
@@ -145,24 +145,24 @@ public class VideoPlayManager
   public long a()
   {
     if (a()) {
-      return trp.a(this.jdField_a_of_type_Trp).b();
+      return til.a(this.jdField_a_of_type_Til).b();
     }
     return 0L;
   }
   
-  public trp a()
+  public til a()
   {
-    return this.jdField_a_of_type_Trp;
+    return this.jdField_a_of_type_Til;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Trp != null) && (trp.a(this.jdField_a_of_type_Trp) != null))
+    if ((this.jdField_a_of_type_Til != null) && (til.a(this.jdField_a_of_type_Til) != null))
     {
-      trp.a(this.jdField_a_of_type_Trp).d();
+      til.a(this.jdField_a_of_type_Til).d();
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((trq)localIterator.next()).d(this.jdField_a_of_type_Trp);
+        ((tim)localIterator.next()).d(this.jdField_a_of_type_Til);
       }
       if (QLog.isColorLevel()) {
         QLog.d("Viola.VideoPlayManager", 2, "innerChangeCoverImageView: getCurVideoPlayer().start() ");
@@ -172,47 +172,55 @@ public class VideoPlayManager
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Trp != null) && (trp.a(this.jdField_a_of_type_Trp) != null) && (d()))
+    if ((this.jdField_a_of_type_Til != null) && (til.a(this.jdField_a_of_type_Til) != null) && (d()))
     {
-      trp.a(this.jdField_a_of_type_Trp).f();
+      til.a(this.jdField_a_of_type_Til).f();
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((trq)localIterator.next()).a(this.jdField_a_of_type_Trp, paramInt);
+        ((tim)localIterator.next()).a(this.jdField_a_of_type_Til, paramInt);
       }
     }
   }
   
-  public void a(trp paramtrp)
+  public void a(til paramtil)
   {
-    this.jdField_a_of_type_Trp = paramtrp;
-    paramtrp = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramtrp.hasNext()) {
-      ((trq)paramtrp.next()).a(this.jdField_a_of_type_Trp, false);
+    this.jdField_a_of_type_Til = paramtil;
+    paramtil = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramtil.hasNext()) {
+      ((tim)paramtil.next()).a(this.jdField_a_of_type_Til, false);
     }
   }
   
-  public void a(trq paramtrq)
+  public void a(tim paramtim)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramtrq);
+    this.jdField_a_of_type_JavaUtilList.add(paramtim);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.e = paramBoolean;
-    if (a()) {
-      trp.a(this.jdField_a_of_type_Trp).d(paramBoolean);
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_Til != null) {
+        d(this.jdField_a_of_type_Til);
+      }
+      return;
     }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((tim)localIterator.next()).a(this.jdField_a_of_type_Til, 123, 99, null);
+    }
+    this.jdField_a_of_type_Til = null;
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Trp != null) && (trp.a(this.jdField_a_of_type_Trp) != null);
+    return (this.jdField_a_of_type_Til != null) && (til.a(this.jdField_a_of_type_Til) != null);
   }
   
   public long b()
   {
     if (a()) {
-      return trp.a(this.jdField_a_of_type_Trp).a();
+      return til.a(this.jdField_a_of_type_Til).a();
     }
     return 0L;
   }
@@ -224,110 +232,102 @@ public class VideoPlayManager
   
   public void b(int paramInt)
   {
-    if ((this.jdField_a_of_type_Trp != null) && (trp.a(this.jdField_a_of_type_Trp) != null) && ((c()) || (b())))
+    if ((this.jdField_a_of_type_Til != null) && (til.a(this.jdField_a_of_type_Til) != null) && ((c()) || (b())))
     {
-      trp.a(this.jdField_a_of_type_Trp).e();
+      til.a(this.jdField_a_of_type_Til).e();
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((trq)localIterator.next()).b(this.jdField_a_of_type_Trp, paramInt);
+        ((tim)localIterator.next()).b(this.jdField_a_of_type_Til, paramInt);
       }
     }
   }
   
-  public void b(trp paramtrp)
+  public void b(til paramtil)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Viola.VideoPlayManager", 2, "VideoFeedsPlayManager playVideo");
     }
     Iterator localIterator;
-    if ((paramtrp != null) && (paramtrp.jdField_a_of_type_Trl != null))
+    if ((paramtil != null) && (paramtil.jdField_a_of_type_Tih != null))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("Viola.VideoPlayManager", 2, "playVideo() vid=" + paramtrp.jdField_a_of_type_Trl.a);
+        QLog.d("Viola.VideoPlayManager", 2, "playVideo() vid=" + paramtil.jdField_a_of_type_Tih.a);
       }
       if (QLog.isColorLevel()) {
-        QLog.d("Viola.VideoPlayManager", 2, "playVideo: playerParam=" + paramtrp);
+        QLog.d("Viola.VideoPlayManager", 2, "playVideo: playerParam=" + paramtil);
       }
-      this.jdField_a_of_type_Trp = paramtrp;
+      this.jdField_a_of_type_Til = paramtil;
       localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     }
     while (localIterator.hasNext())
     {
-      ((trq)localIterator.next()).a(this.jdField_a_of_type_Trp, true);
+      ((tim)localIterator.next()).a(this.jdField_a_of_type_Til, true);
       continue;
       if (QLog.isColorLevel()) {
         QLog.d("Viola.VideoPlayManager", 2, "playVideo() error, playerParam or videoInfo is null");
       }
       return;
     }
-    if ((this.jdField_a_of_type_Sfd != null) && (!this.jdField_a_of_type_Sfd.a()))
+    if ((this.jdField_a_of_type_Rwh != null) && (!this.jdField_a_of_type_Rwh.a()))
     {
-      this.jdField_a_of_type_Sfd.a();
+      this.jdField_a_of_type_Rwh.a();
       return;
     }
-    d(paramtrp);
+    d(paramtil);
   }
   
   public void b(boolean paramBoolean)
   {
+    this.e = paramBoolean;
     if (a()) {
-      trp.a(this.jdField_a_of_type_Trp).c(paramBoolean);
+      til.a(this.jdField_a_of_type_Til).d(paramBoolean);
     }
   }
   
   public boolean b()
   {
-    return (a()) && (trp.a(this.jdField_a_of_type_Trp).d());
+    return (a()) && (til.a(this.jdField_a_of_type_Til).d());
   }
   
   public void c()
   {
     if (a())
     {
-      a(trp.a(this.jdField_a_of_type_Trp));
+      a(til.a(this.jdField_a_of_type_Til));
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((trq)localIterator.next()).e(this.jdField_a_of_type_Trp);
+        ((tim)localIterator.next()).e(this.jdField_a_of_type_Til);
       }
-      this.jdField_a_of_type_Trp.jdField_a_of_type_AndroidViewViewGroup.setKeepScreenOn(false);
-      this.jdField_a_of_type_Trp = null;
+      this.jdField_a_of_type_Til.jdField_a_of_type_AndroidViewViewGroup.setKeepScreenOn(false);
+      this.jdField_a_of_type_Til = null;
     }
-    this.jdField_a_of_type_Tro.removeMessages(0);
+    this.jdField_a_of_type_Tik.removeMessages(0);
   }
   
   public void c(int paramInt)
   {
     if (a()) {
-      trp.a(this.jdField_a_of_type_Trp).b(paramInt);
+      til.a(this.jdField_a_of_type_Til).b(paramInt);
     }
   }
   
-  public void c(trp paramtrp)
+  public void c(til paramtil)
   {
-    if (paramtrp != null) {
-      a(trp.a(paramtrp));
+    if (paramtil != null) {
+      a(til.a(paramtil));
     }
   }
   
   public void c(boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      if (this.jdField_a_of_type_Trp != null) {
-        d(this.jdField_a_of_type_Trp);
-      }
-      return;
+    if (a()) {
+      til.a(this.jdField_a_of_type_Til).c(paramBoolean);
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((trq)localIterator.next()).a(this.jdField_a_of_type_Trp, 123, 99, null);
-    }
-    this.jdField_a_of_type_Trp = null;
   }
   
   public boolean c()
   {
-    return (a()) && (trp.a(this.jdField_a_of_type_Trp).e());
+    return (a()) && (til.a(this.jdField_a_of_type_Til).e());
   }
   
   public void d()
@@ -347,13 +347,13 @@ public class VideoPlayManager
   public void d(int paramInt)
   {
     if (a()) {
-      trp.a(this.jdField_a_of_type_Trp).a(paramInt);
+      til.a(this.jdField_a_of_type_Til).a(paramInt);
     }
   }
   
   public boolean d()
   {
-    return (a()) && (trp.a(this.jdField_a_of_type_Trp).f());
+    return (a()) && (til.a(this.jdField_a_of_type_Til).f());
   }
   
   public void e()
@@ -370,7 +370,7 @@ public class VideoPlayManager
       return;
       if (this.jdField_f_of_type_Boolean)
       {
-        AppRuntime localAppRuntime = pha.a();
+        AppRuntime localAppRuntime = ozs.a();
         if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {}
         for (boolean bool = ((QQAppInterface)localAppRuntime).d();; bool = false)
         {
@@ -398,32 +398,32 @@ public class VideoPlayManager
     }
     this.b = true;
     c();
-    if (this.jdField_a_of_type_Trp != null)
+    if (this.jdField_a_of_type_Til != null)
     {
-      if (trp.a(this.jdField_a_of_type_Trp) != null)
+      if (til.a(this.jdField_a_of_type_Til) != null)
       {
-        trp.a(this.jdField_a_of_type_Trp).l();
-        trp.a(this.jdField_a_of_type_Trp, null);
+        til.a(this.jdField_a_of_type_Til).l();
+        til.a(this.jdField_a_of_type_Til, null);
       }
-      this.jdField_a_of_type_Trp = null;
+      this.jdField_a_of_type_Til = null;
     }
     if (this.jdField_a_of_type_JavaUtilSet != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
       while (localIterator.hasNext())
       {
-        sfb localsfb = (sfb)localIterator.next();
-        if ((localsfb != null) && (!localsfb.i())) {
-          localsfb.l();
+        rwf localrwf = (rwf)localIterator.next();
+        if ((localrwf != null) && (!localrwf.i())) {
+          localrwf.l();
         }
       }
     }
-    if (this.jdField_a_of_type_Sfd != null)
+    if (this.jdField_a_of_type_Rwh != null)
     {
-      this.jdField_a_of_type_Sfd.b();
-      this.jdField_a_of_type_Sfd = null;
+      this.jdField_a_of_type_Rwh.b();
+      this.jdField_a_of_type_Rwh = null;
     }
-    this.jdField_a_of_type_Tro.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Tik.removeCallbacksAndMessages(null);
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_AndroidContentContext = null;
   }

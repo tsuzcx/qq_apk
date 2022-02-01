@@ -1,45 +1,15 @@
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class afau
-  extends AccountObserver
+  implements DialogInterface.OnClickListener
 {
-  public afau(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  public afau(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte1, paramInt2, paramArrayOfByte2);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginFailed ");
-    }
-    RegisterChooseLoginActivity.a(this.a);
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    super.onLoginSuccess(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginSuccess ");
-    }
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    super.onLoginTimeout(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginTimeout ");
-    }
-    RegisterChooseLoginActivity.a(this.a);
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    super.onUserCancel(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onUserCancel ");
-    }
-    RegisterChooseLoginActivity.a(this.a);
+    this.a.finish();
   }
 }
 

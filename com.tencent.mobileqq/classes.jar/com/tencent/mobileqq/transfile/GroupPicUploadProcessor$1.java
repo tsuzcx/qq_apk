@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.transfile;
 
-import bdvb;
+import betv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class GroupPicUploadProcessor$1
   implements Runnable
 {
-  public GroupPicUploadProcessor$1(bdvb parambdvb) {}
+  public GroupPicUploadProcessor$1(betv parambetv) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.sApplication, 2131689882, 1).a();
+    QQToast.a(BaseApplicationImpl.sApplication, 2131689888, 1).a();
   }
 }
 

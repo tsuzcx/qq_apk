@@ -1,22 +1,21 @@
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
+import com.tencent.qphone.base.util.QLog;
+
 public class ajgs
+  implements ajgk
 {
-  public ajjf a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
+  public ajgs(TroopView paramTroopView) {}
   
-  public ajgs(ajjf paramajjf)
+  public void a(View paramView, int paramInt)
   {
-    this.a = paramajjf;
-  }
-  
-  public String toString()
-  {
-    return this.b;
+    if (QLog.isColorLevel()) {
+      QLog.i("addContacts.TroopView", 2, "AddContactTroopClassifyAdapter.onItemClickListener onItemClick. position:" + paramInt);
+    }
+    TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
+    TroopView.b(this.a, paramInt);
+    TroopView.a(this.a).setCurrentItem(paramInt, false);
   }
 }
 

@@ -1,49 +1,46 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
 
-public final class bphl
-  extends bpio
+public class bphl
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public static final String a = bphl.class.getSimpleName();
+  public bphl(AEEditorFilterControlPanel paramAEEditorFilterControlPanel) {}
   
-  public bphl(DoodleView paramDoodleView)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    super(paramDoodleView);
+    if ((paramBoolean) && (paramSeekBar.getVisibility() == 0))
+    {
+      if (AEEditorFilterControlPanel.a(this.a) != null) {
+        AEEditorFilterControlPanel.a(this.a).setText(paramInt + "%");
+      }
+      if (AEEditorFilterControlPanel.a(this.a) != null) {
+        AEEditorFilterControlPanel.a(this.a).a(this.a.a(), paramInt / 100.0F);
+      }
+    }
   }
   
-  public String a()
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    return a;
+    if (AEEditorFilterControlPanel.a(this.a) != null) {
+      AEEditorFilterControlPanel.a(this.a).setVisibility(0);
+    }
+    if (AEEditorFilterControlPanel.a(this.a) != null) {
+      AEEditorFilterControlPanel.a(this.a).s();
+    }
   }
   
-  public void a() {}
-  
-  protected void a(Canvas paramCanvas) {}
-  
-  public void a(Canvas paramCanvas, float paramFloat) {}
-  
-  public boolean a()
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    return true;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return true;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void b(Canvas paramCanvas) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    yqp.b(a, "EmptyLayer handle touch event.");
-    return false;
+    if (AEEditorFilterControlPanel.a(this.a) != null) {
+      AEEditorFilterControlPanel.a(this.a).setVisibility(4);
+    }
+    if (AEEditorFilterControlPanel.a(this.a) != null) {
+      AEEditorFilterControlPanel.a(this.a).t();
+    }
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

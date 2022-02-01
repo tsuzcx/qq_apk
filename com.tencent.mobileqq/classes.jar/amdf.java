@@ -1,24 +1,81 @@
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.widget.Switch;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import tencent.im.nearfield_discuss.nearfield_discuss.UserProfile;
 
-class amdf
-  extends View.AccessibilityDelegate
+public class amdf
+  extends BaseAdapter
 {
-  amdf(amdc paramamdc) {}
+  amdg jdField_a_of_type_Amdg;
+  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public amdf(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    if (paramView != null)
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramCreateFaceToFaceDiscussionActivity.jdField_a_of_type_AndroidContentContext);
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size() < 50) {
+      return this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size() + 1;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList == null) {
+      return null;
+    }
+    return (nearfield_discuss.UserProfile)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      paramView = (Switch)paramView.findViewById(2131363933);
-      if ((paramView != null) && (paramView.getVisibility() != 8))
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561228, null);
+      this.jdField_a_of_type_Amdg = new amdg(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity);
+      this.jdField_a_of_type_Amdg.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368212));
+      this.jdField_a_of_type_Amdg.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371647));
+      paramView.setTag(this.jdField_a_of_type_Amdg);
+    }
+    label238:
+    for (;;)
+    {
+      if ((paramInt == getCount() - 1) && (getCount() < 50)) {
+        CreateFaceToFaceDiscussionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, paramView);
+      }
+      for (;;)
       {
-        paramAccessibilityNodeInfo.setCheckable(true);
-        paramAccessibilityNodeInfo.setChecked(paramView.isChecked());
-        paramAccessibilityNodeInfo.setClassName(Switch.class.getName());
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        this.jdField_a_of_type_Amdg = ((amdg)paramView.getTag());
+        if (!this.jdField_a_of_type_Amdg.jdField_a_of_type_Boolean) {
+          break label238;
+        }
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561228, null);
+        this.jdField_a_of_type_Amdg = new amdg(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity);
+        this.jdField_a_of_type_Amdg.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368212));
+        this.jdField_a_of_type_Amdg.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371647));
+        paramView.setTag(this.jdField_a_of_type_Amdg);
+        this.jdField_a_of_type_Amdg.jdField_a_of_type_Boolean = false;
+        break;
+        CreateFaceToFaceDiscussionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, paramView, (nearfield_discuss.UserProfile)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.get(paramInt));
       }
     }
   }

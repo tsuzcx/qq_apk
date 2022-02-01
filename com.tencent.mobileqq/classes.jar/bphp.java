@@ -1,30 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
 
-class bphp
-  implements Animator.AnimatorListener
+public abstract interface bphp
 {
-  bphp(bphn parambphn) {}
+  public abstract void a(int paramInt, float paramFloat);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.a = false;
-  }
+  public abstract void a(int paramInt, AEEditorFilterBean paramAEEditorFilterBean);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a = false;
-  }
+  public abstract boolean a(int paramInt, AEEditorFilterBean paramAEEditorFilterBean);
   
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.a.a = true;
-  }
+  public abstract boolean f();
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a = true;
-  }
+  public abstract void r();
+  
+  public abstract void s();
+  
+  public abstract void t();
+  
+  public abstract void u();
 }
 
 

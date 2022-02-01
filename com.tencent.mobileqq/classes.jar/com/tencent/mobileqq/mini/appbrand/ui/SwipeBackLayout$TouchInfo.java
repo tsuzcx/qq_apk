@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
 import androidx.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class SwipeBackLayout$TouchInfo
 {
@@ -17,6 +19,27 @@ public class SwipeBackLayout$TouchInfo
     this.endX = paramInt3;
     this.endY = paramInt4;
     this.duration = paramLong;
+  }
+  
+  public String toJsonStr()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("tsx", this.startX);
+      localJSONObject.put("tsy", this.startY);
+      localJSONObject.put("tex", this.endX);
+      localJSONObject.put("tey", this.endY);
+      localJSONObject.put("td", this.duration);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
   
   @NonNull

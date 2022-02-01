@@ -1,21 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
-class bhee
-  implements Drawable.Callback
+public class bhee
+  implements DialogInterface.OnKeyListener
 {
-  bhee(bhed parambhed, bheb parambheb) {}
+  public bhee(UpgradeActivity paramUpgradeActivity) {}
   
-  public void invalidateDrawable(Drawable paramDrawable)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.jdField_a_of_type_Bheb != null) {
-      this.jdField_a_of_type_Bheb.a(paramDrawable);
+    if (paramInt == 4) {
+      this.a.a();
     }
+    return false;
   }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong) {}
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable) {}
 }
 
 

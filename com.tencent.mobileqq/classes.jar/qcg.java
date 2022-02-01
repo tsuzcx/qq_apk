@@ -1,21 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class qcg
   implements ViewBase.OnClickListener
 {
-  qcg(qcf paramqcf, pxk parampxk, Container paramContainer) {}
+  qcg(qcf paramqcf) {}
   
   public void onClick(ViewBase paramViewBase)
   {
-    paramViewBase = this.jdField_a_of_type_Pxk.a();
-    String str = paramViewBase.mSocialFeedInfo.a.f;
-    pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
-    snh.a(paramViewBase, (int)paramViewBase.mChannelID);
-    ube.a(paramViewBase);
+    qcf.a(this.a, false);
+    qcf.a(this.a);
+    ocd.a(null, ozs.a() + "", "0X800984B", "0X800984B", 0, 0, "1", "", "", "", false);
   }
 }
 

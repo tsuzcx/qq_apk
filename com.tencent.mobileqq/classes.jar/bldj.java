@@ -1,191 +1,71 @@
-import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import com.qq.jce.wup.BasicClassTypeUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.groupvideo.GVideoPluginInstallerActivity;
-import cooperation.groupvideo.GVideoProxyActivity;
-import cooperation.plugin.PluginInfo;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bldj
+class bldj
+  extends bldo
 {
-  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  private boolean b;
+  
+  bldj(bldg parambldg)
   {
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
-    }
-    try
-    {
-      paramString = Class.forName("com.gvideo.com.tencent.av.app.GroupVideoAppInterface");
-      paramBaseApplicationImpl = paramString;
-    }
-    catch (ClassNotFoundException paramString)
-    {
-      for (;;)
-      {
-        try
-        {
-          QLog.e("GroupVideoLog", 1, "*createGroupVideoAppInterface load class fail");
-          return null;
-        }
-        catch (ClassNotFoundException paramBaseApplicationImpl)
-        {
-          paramBaseApplicationImpl.printStackTrace();
-        }
-        paramString = paramString;
-        paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "group_video_plugin.apk");
-        paramBaseApplicationImpl = paramString.loadClass("com.gvideo.com.tencent.av.app.GroupVideoAppInterface");
-        BasicClassTypeUtil.setClassLoader(true, paramString);
-      }
-      do
-      {
-        return null;
-        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppInterface)));
-      paramBaseApplicationImpl = (AppInterface)paramBaseApplicationImpl;
-      return paramBaseApplicationImpl;
-    }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    if (paramBaseApplicationImpl != null) {}
+    super(parambldg, null);
   }
   
-  public static void a(AppRuntime paramAppRuntime, ServiceConnection paramServiceConnection)
+  public void a()
   {
-    if ((paramAppRuntime == null) || (paramServiceConnection == null)) {
+    if (this.jdField_a_of_type_Boolean) {
+      bldg.a(this.jdField_a_of_type_Bldg).a();
+    }
+    if (this.b) {
+      bldg.d(this.jdField_a_of_type_Bldg);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (TextUtils.isEmpty(paramString2)) {}
+    do
+    {
       return;
-    }
-    try
-    {
-      paramAppRuntime.getApplication().unbindService(paramServiceConnection);
-      return;
-    }
-    catch (IllegalArgumentException paramAppRuntime)
-    {
-      QLog.d("GroupVideoHelper", 2, "unbindService error" + paramAppRuntime.getMessage());
-    }
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, Class paramClass, ServiceConnection paramServiceConnection, String paramString)
-  {
-    if ((paramAppRuntime == null) || (paramServiceConnection == null)) {
-      return;
-    }
-    paramClass = new Intent(paramAppRuntime.getApplication(), paramClass);
-    paramClass.putExtra("useSkinEngine", 1);
-    paramClass.putExtra("userQqResources", 2);
-    blfq localblfq = new blfq(1);
-    localblfq.b = "group_video_plugin.apk";
-    localblfq.d = PluginInfo.k;
-    localblfq.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localblfq.e = paramString;
-    localblfq.jdField_a_of_type_AndroidContentIntent = paramClass;
-    localblfq.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    blfh.c(paramAppRuntime.getApplication(), localblfq);
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    if (paramContext != null)
-    {
-      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-      if (paramContext != null)
-      {
-        paramContext = paramContext.iterator();
-        while (paramContext.hasNext()) {
-          if ("com.tencent.mobileqq:groupvideo".compareTo(((ActivityManager.RunningAppProcessInfo)paramContext.next()).processName) == 0) {
-            return true;
-          }
-        }
+      if ((paramInt4 == 1) || (paramInt4 == 2)) {
+        break;
       }
-    }
-    return false;
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, Activity paramActivity, Intent paramIntent, int paramInt)
-  {
-    if ((paramAppInterface == null) || (paramActivity == null)) {
-      return false;
-    }
-    if ((paramIntent != null) && (paramIntent.getIntExtra("Type", 0) == 0)) {
-      paramIntent.putExtra("isInviteMode", true);
+    } while (!QLog.isColorLevel());
+    QLog.d("QQProtect.QSec", 2, String.format("Invalid mode: %d", new Object[] { Integer.valueOf(paramInt4) }));
+    return;
+    blcz localblcz = bldg.a(this.jdField_a_of_type_Bldg).a(paramInt1);
+    if (localblcz != null) {
+      bldg.a(this.jdField_a_of_type_Bldg).a(localblcz.jdField_a_of_type_Int, false);
     }
     for (;;)
     {
-      GVideoProxyActivity.a(paramActivity, paramIntent, GVideoProxyActivity.a(paramActivity), "com.gvideo.com.tencent.av.ui.GroupVideoActivity", paramAppInterface.getCurrentAccountUin(), paramInt);
-      return true;
+      localblcz.jdField_a_of_type_Int = paramInt1;
+      localblcz.jdField_b_of_type_Int = paramInt2;
+      localblcz.c = paramInt3;
+      localblcz.jdField_b_of_type_JavaLangString = paramString1;
+      localblcz.jdField_a_of_type_JavaLangString = paramString2;
+      bldg.a(this.jdField_a_of_type_Bldg).a(localblcz, false);
+      this.jdField_a_of_type_Boolean = true;
+      if ((paramInt4 != 1) || (bldg.a(this.jdField_a_of_type_Bldg).a(paramInt1) != 1)) {
+        break;
+      }
+      this.b = true;
+      bldl localbldl = (bldl)bldg.a(this.jdField_a_of_type_Bldg).get(Integer.valueOf(paramInt1));
+      if (localbldl == null) {
+        break label236;
+      }
+      bldg.a(this.jdField_a_of_type_Bldg, localbldl, paramString2, paramString1);
+      if (localbldl.d == 0) {
+        break;
+      }
+      bldg.a(this.jdField_a_of_type_Bldg).remove(Integer.valueOf(localbldl.jdField_a_of_type_Int));
+      return;
+      localblcz = new blcz();
     }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, int paramInt)
-  {
-    if ((paramQQAppInterface == null) || (!(paramContext instanceof Activity))) {
-      return false;
-    }
-    paramContext = (Activity)paramContext;
-    blfh localblfh = (blfh)paramQQAppInterface.getManager(27);
-    if (localblfh == null) {
-      return false;
-    }
-    if (localblfh.isPlugininstalled("group_video_plugin.apk")) {
-      return a(paramQQAppInterface, paramContext, paramIntent, paramInt);
-    }
-    paramIntent.setClass(paramContext, GVideoPluginInstallerActivity.class);
-    paramContext.startActivityForResult(paramIntent, paramInt);
-    return true;
+    label236:
+    paramString1 = bldg.a(this.jdField_a_of_type_Bldg, localblcz);
+    bldg.a(this.jdField_a_of_type_Bldg, paramString1);
   }
 }
 

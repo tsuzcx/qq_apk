@@ -1,35 +1,41 @@
-import com.tencent.av.ReqGroupVideo.ReqCreateShareUrl;
-import com.tencent.av.ReqGroupVideo.RspCreateShareUrl;
-import com.tencent.av.common.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.os.Bundle;
+import android.os.RemoteCallbackList;
+import android.os.RemoteException;
+import com.tencent.av.service.QQServiceForAV;
 import com.tencent.qphone.base.util.QLog;
 
 class lxx
-  extends lfz<ReqGroupVideo.ReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl>
+  extends nkq
 {
-  lxx(lxv paramlxv) {}
+  lxx(lxw paramlxw, String paramString, int paramInt) {}
   
-  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqCreateShareUrl paramReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl paramRspCreateShareUrl, Object paramObject)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle arg3)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    paramReqCreateShareUrl = paramRspCreateShareUrl.share_url_with_no_sig.get().toStringUtf8();
-    paramObject = paramRspCreateShareUrl.share_url.get().toStringUtf8();
-    paramRspCreateShareUrl = (common.ErrorInfo)paramRspCreateShareUrl.result.get();
-    int i = lfw.a(paramRspCreateShareUrl);
-    QLog.w("ShareChat", 1, "requestGetUrlFromServer.callback, result[" + i + "], bytes_errmsg[" + paramRspCreateShareUrl.bytes_errmsg.get().toStringUtf8() + "], share_url_with_no_sig[" + paramReqCreateShareUrl + "], share_url[" + paramObject + "], seq[" + paramLong + "]");
-    if (i == 0)
-    {
-      this.a.c = paramObject;
-      this.a.b = paramReqCreateShareUrl;
-      bgoh.a().a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, this.a.c);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "sendNearbyVideoChatPbReq, cmd " + this.jdField_a_of_type_JavaLangString + "==>onResult, errorCode:" + paramInt);
     }
-    for (;;)
+    synchronized (this.jdField_a_of_type_Lxw.a.a)
     {
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+      int j = this.jdField_a_of_type_Lxw.a.a.beginBroadcast();
+      int i = 0;
+      for (;;)
+      {
+        if (i < j) {
+          try
+          {
+            ((lwx)this.jdField_a_of_type_Lxw.a.a.getBroadcastItem(i)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt, paramArrayOfByte);
+            i += 1;
+          }
+          catch (RemoteException paramArrayOfByte)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "callBack RemoteException", paramArrayOfByte);
+            }
+          }
+        }
+      }
+      this.jdField_a_of_type_Lxw.a.a.finishBroadcast();
       return;
-      if (i != 11001) {}
     }
   }
 }

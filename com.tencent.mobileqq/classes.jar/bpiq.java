@@ -1,20 +1,6 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
-
-public class bpiq
-  implements bpir
+class bpiq
 {
-  public void a(List<bpio> paramList, DoodleView paramDoodleView)
-  {
-    bphm localbphm = new bphm(paramDoodleView);
-    bphk localbphk = new bphk(paramDoodleView);
-    bphy localbphy = new bphy(paramDoodleView);
-    paramDoodleView = new bpic(paramDoodleView);
-    paramList.add(localbphm);
-    paramList.add(localbphk);
-    paramList.add(localbphy);
-    paramList.add(paramDoodleView);
-  }
+  static final bpio a = new bpio(null);
 }
 
 

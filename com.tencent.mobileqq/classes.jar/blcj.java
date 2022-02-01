@@ -1,10 +1,16 @@
-import com.tencent.TMG.sdk.AVContext.StartParam;
+import android.util.Pair;
 
-public class blcj
-  extends AVContext.StartParam
+final class blcj
+  implements blck
 {
-  public int a;
-  public long a;
+  public Pair<String, String> a(String paramString)
+  {
+    int i = paramString.indexOf(':');
+    if ((i <= 0) || (i >= paramString.length())) {
+      return null;
+    }
+    return new Pair(paramString.substring(0, i).trim(), paramString.substring(i + 1).trim());
+  }
 }
 
 

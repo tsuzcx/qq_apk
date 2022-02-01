@@ -1,38 +1,28 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class bgha
+final class bgha
+  implements DialogInterface.OnClickListener
 {
-  public static String a(Context paramContext)
-  {
-    if (paramContext == null) {}
-    do
-    {
-      return null;
-      paramContext = paramContext.getFilesDir();
-    } while (paramContext == null);
-    return paramContext.getParent() + "/lib/";
-  }
+  bgha(Context paramContext, String paramString) {}
   
-  public static void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramString != null) && ((paramString.contains("NativeGifFactory")) || (paramString.contains("NativeGifIndex8")) || (paramString.contains("libkIndexGif")) || (paramString.contains("libskia"))))
-    {
-      BaseApplicationImpl.getApplication().getSharedPreferences("early_qq.android.native.gif", 4).edit().putBoolean("use_new_gif_so", false).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("GifSoLoader", 2, String.format("Crash in libkIndexGif support library at %s process!", new Object[] { BaseApplicationImpl.getMobileQQ().getQQProcessName() }));
-      }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setClass(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgha
  * JD-Core Version:    0.7.0.1
  */

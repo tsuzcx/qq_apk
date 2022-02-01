@@ -1,8 +1,15 @@
-import android.support.v4.view.PagerAdapter;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
 
-public abstract interface xpa
+public class xpa
+  extends ztl
 {
-  public abstract void a(PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
+  public xpa(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
+  
+  public boolean a(boolean paramBoolean)
+  {
+    StoryPlayerCommentListView.a(this.a).a(StoryPlayerCommentListView.a(this.a).a());
+    return true;
+  }
 }
 
 

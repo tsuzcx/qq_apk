@@ -76,7 +76,7 @@ public class ChirpWrapper
     //   35: aload_0
     //   36: aload_2
     //   37: iconst_0
-    //   38: invokestatic 88	bgmg:a	(Ljava/lang/String;Ljava/lang/String;Z)V
+    //   38: invokestatic 88	bhmi:a	(Ljava/lang/String;Ljava/lang/String;Z)V
     //   41: ldc 2
     //   43: monitorexit
     //   44: iconst_1

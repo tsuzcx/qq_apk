@@ -4,7 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 import kotlin.Metadata;
-import twz;
+import txb;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class FluencyOptUtils$addUrlStrToCache$1
@@ -17,7 +17,7 @@ public final class FluencyOptUtils$addUrlStrToCache$1
     try
     {
       URL localURL = new URL(this.a);
-      twz.a(twz.a).put(this.a, localURL);
+      txb.a(txb.a).put(this.a, localURL);
       return;
     }
     catch (MalformedURLException localMalformedURLException) {}

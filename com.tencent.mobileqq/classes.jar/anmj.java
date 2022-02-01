@@ -1,18 +1,10 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mfsdk.MagnifierSDK;
 
 public class anmj
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public anmj(FrameHelperActivity paramFrameHelperActivity) {}
-  
-  public void onGlobalLayout()
+  public static String a()
   {
-    if ((this.a.c.getVisibility() == 0) && ((this.a.c() instanceof ReadinjoyTabFrame))) {
-      this.a.c.setVisibility(8);
-    }
+    return MagnifierSDK.a().a().b();
   }
 }
 

@@ -1,12 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.RectF;
+import com.tencent.biz.qqcircle.transition.QCircleTransitionImageView;
 
-class vvr
-  implements DialogInterface.OnClickListener
+public class vvr
+  implements vvm
 {
-  vvr(vvp paramvvp) {}
+  public vvr(QCircleTransitionImageView paramQCircleTransitionImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public float a()
+  {
+    return QCircleTransitionImageView.b(this.a).top;
+  }
 }
 
 

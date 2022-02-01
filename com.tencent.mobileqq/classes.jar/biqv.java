@@ -1,58 +1,17 @@
-import android.text.TextUtils;
+import android.os.Bundle;
 
-public class biqv
+class biqv
+  implements aasd
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  biqv(biqq parambiqq) {}
   
-  public biqv(String paramString1, String paramString2, int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public boolean a(String paramString1, String paramString2, int paramInt)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramString1))
+    int i = paramBundle.getInt("fontSize", 1);
+    if (i != this.a.b)
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break label58;
-      }
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      if (!bool1)
-      {
-        this.jdField_a_of_type_JavaLangString = paramString1;
-        this.b = paramString2;
-        this.jdField_a_of_type_Int = paramInt;
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-      }
-      return bool1;
-      label58:
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Int == paramInt)
-      {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_JavaLangString.equals(paramString1))
-        {
-          bool1 = bool2;
-          if (this.b.equals(paramString2))
-          {
-            bool1 = bool2;
-            if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L) {
-              bool1 = true;
-            }
-          }
-        }
-      }
+      this.a.b = i;
+      this.a.b(this.a.b);
     }
   }
 }

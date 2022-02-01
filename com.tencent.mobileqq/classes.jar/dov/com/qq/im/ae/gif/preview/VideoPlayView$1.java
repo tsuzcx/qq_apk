@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.gif.preview;
 
-import bntv;
+import bovh;
 
 class VideoPlayView$1
   implements Runnable

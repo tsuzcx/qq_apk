@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.vashealth;
 
-import anni;
-import bhfe;
-import bhod;
+import anzj;
+import bifp;
+import bioy;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class HealthStepCounterPlugin$4
   implements Runnable
 {
-  public HealthStepCounterPlugin$4(bhfe parambhfe) {}
+  public HealthStepCounterPlugin$4(bifp parambifp) {}
   
   public void run()
   {
     QQToast localQQToast = new QQToast(this.this$0.mRuntime.a().getContext());
-    QQToast.a(this.this$0.mRuntime.a().getContext(), anni.a(2131704249), 0).b((int)(localQQToast.b() * 2.5D));
+    QQToast.a(this.this$0.mRuntime.a().getContext(), anzj.a(2131704356), 0).b((int)(localQQToast.b() * 2.5D));
   }
 }
 

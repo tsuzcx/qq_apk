@@ -1,270 +1,264 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.photo.PeakService;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.util.BinderWarpper;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import android.os.Bundle;
+import android.util.Base64;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.org.pb.oidb_0xe96.RspBody;
+import com.tencent.qphone.base.util.QLog;
+import face.FaceForeignIp.AvailableResponse;
+import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0x9ae.cmd0x9ae.RspBody;
+import tencent.im.oidb.oidb_0x5e1.RspBody;
+import tencent.im.oidb.oidb_0x87a.RspBody;
+import tencent.im.oidb.oidb_0x87c.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class ayxn
+  implements BusinessObserver
 {
-  private static HashSet<Integer> a = new HashSet();
-  private static HashSet<Integer> b = new HashSet();
-  private static HashSet<Integer> c = new HashSet();
+  public void a() {}
   
-  static
-  {
-    a.add(Integer.valueOf(1008));
-    a.add(Integer.valueOf(1007));
-    a.add(Integer.valueOf(1009));
-    a.add(Integer.valueOf(1006));
-    a.add(Integer.valueOf(1027));
-    a.add(Integer.valueOf(1031));
-    a.add(Integer.valueOf(1034));
-    a.add(Integer.valueOf(1038));
-    a.add(Integer.valueOf(1036));
-    a.add(Integer.valueOf(1037));
-    a.add(Integer.valueOf(1039));
-    a.add(Integer.valueOf(1040));
-    a.add(Integer.valueOf(1041));
-    a.add(Integer.valueOf(1043));
-    a.add(Integer.valueOf(1048));
-    a.add(Integer.valueOf(1));
-    a.add(Integer.valueOf(2));
-    a.add(Integer.valueOf(3));
-    a.add(Integer.valueOf(5));
-    a.add(Integer.valueOf(6));
-    a.add(Integer.valueOf(7));
-    a.add(Integer.valueOf(1050));
-    a.add(Integer.valueOf(1051));
-    a.add(Integer.valueOf(1052));
-    a.add(Integer.valueOf(1053));
-    b.add(Integer.valueOf(1045));
-    c.add(Integer.valueOf(1042));
-    c.add(Integer.valueOf(1047));
-    c.add(Integer.valueOf(1054));
-    c.add(Integer.valueOf(1044));
-    c.add(Integer.valueOf(1049));
-  }
+  public void a(oidb_0xe96.RspBody paramRspBody) {}
   
-  static aywt a(int paramInt, QQAppInterface paramQQAppInterface)
+  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse) {}
+  
+  public void a(String paramString1, int paramInt, String paramString2) {}
+  
+  public void a(String paramString1, String paramString2) {}
+  
+  public void a(cmd0x9ae.RspBody paramRspBody) {}
+  
+  public void a(oidb_0x5e1.RspBody paramRspBody) {}
+  
+  public void a(oidb_0x87a.RspBody paramRspBody) {}
+  
+  public void a(oidb_0x87c.RspBody paramRspBody) {}
+  
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(byte[] paramArrayOfByte) {}
+  
+  public void b() {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    aywp localaywp = null;
-    if (a.contains(Integer.valueOf(paramInt))) {
-      localaywp = new aywp(paramQQAppInterface);
+    String str = paramBundle.getString("cmd");
+    if (!paramBoolean)
+    {
+      localObject = paramBundle.getString("dataErrorMsg", "");
+      paramInt = paramBundle.getInt("dataErrorCode");
+      QLog.e("LoginVerifyObserver", 1, "LoginVerifyObserver onReceive error, code is : " + paramInt + ", error msg is : " + (String)localObject + " cmd is : " + str);
+      a(str, paramInt, (String)localObject);
     }
     do
     {
-      return localaywp;
-      if (b.contains(Integer.valueOf(paramInt))) {
-        return new ayws(paramQQAppInterface);
-      }
-    } while (!c.contains(Integer.valueOf(paramInt)));
-    return new aywq(paramQQAppInterface, paramInt);
-  }
-  
-  public static aywt a(ayxx paramayxx, QQAppInterface paramQQAppInterface)
-  {
-    if (paramayxx == null)
-    {
-      ayxi.b("PicBusiManager", "launch", "error,req == null");
-      return null;
-    }
-    aywt localaywt = a(paramayxx.jdField_b_of_type_Int, paramQQAppInterface);
-    if (localaywt == null)
-    {
-      ayxi.b("PicBusiManager", "launch", "error,busiInterface == null,req.busiType:" + paramayxx.jdField_b_of_type_Int);
-      return null;
-    }
-    localaywt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    localaywt.jdField_a_of_type_Ayxx = paramayxx;
-    localaywt.jdField_a_of_type_JavaLangString = paramayxx.jdField_a_of_type_JavaLangString;
-    localaywt.jdField_b_of_type_JavaLangString = paramayxx.jdField_b_of_type_JavaLangString;
-    localaywt.a(paramayxx.jdField_a_of_type_Ayyq);
-    ayxi.a("PicBusiManager", "launch", "cmd:" + paramayxx.jdField_a_of_type_Int + ",busiType:" + paramayxx.jdField_b_of_type_Int + "localUUID:" + paramayxx.jdField_a_of_type_JavaLangString);
-    switch (paramayxx.jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      return localaywt;
-      paramQQAppInterface = a(paramQQAppInterface);
-      Intent localIntent = new Intent(BaseApplication.getContext(), PeakService.class);
-      localIntent.putExtra("ServiceAction", 1);
-      localIntent.putExtra("CompressInfo", paramayxx.jdField_a_of_type_ComTencentMobileqqPicCompressInfo);
-      localIntent.putExtra("CompressConfig", paramQQAppInterface);
-      if (paramayxx.jdField_a_of_type_Ahur != null) {
-        localIntent.putExtra("CompressCallback", new BinderWarpper(paramayxx.jdField_a_of_type_Ahur.asBinder()));
-      }
-      try
+      return;
+      QLog.d("LoginVerifyObserver", 1, "LoginVerifyObserver success, cmd is : " + str);
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle == null)
       {
-        BaseApplication.getContext().startService(localIntent);
+        QLog.e("LoginVerifyObserver", 1, "LoginVerifyObserver onReceive success but data is null");
+        a(str, -1, "data is null");
+        return;
       }
-      catch (Exception paramayxx)
+      if ("getTmpkey".equals(str))
       {
-        ayxi.b("PicBusiManager", "launch", "error,req == null" + paramayxx.getStackTrace());
-      }
-      continue;
-      localaywt.d(paramayxx);
-      continue;
-      localaywt.a(paramayxx);
-      continue;
-      localaywt.c(paramayxx);
-      continue;
-      localaywt.a(paramayxx);
-      continue;
-      localaywt.a(paramayxx.jdField_a_of_type_JavaUtilArrayList);
-    }
-  }
-  
-  static ayxh a(int paramInt)
-  {
-    aywp localaywp = null;
-    if (a.contains(Integer.valueOf(paramInt))) {
-      localaywp = new aywp();
-    }
-    do
-    {
-      return localaywp;
-      if (b.contains(Integer.valueOf(paramInt))) {
-        return new ayws();
-      }
-    } while (!c.contains(Integer.valueOf(paramInt)));
-    return new aywq(paramInt);
-  }
-  
-  public static ayxr a(int paramInt, Intent paramIntent)
-  {
-    ayxh localayxh = a(paramInt);
-    if (localayxh == null) {
-      return null;
-    }
-    return localayxh.a(paramIntent);
-  }
-  
-  public static ayxr a(int paramInt1, MessageForPic paramMessageForPic, int paramInt2, String paramString1, String paramString2, String paramString3)
-  {
-    ayxh localayxh = a(paramInt1);
-    if (localayxh == null) {
-      return null;
-    }
-    return localayxh.a(paramMessageForPic, paramInt2, paramString1, paramString2, paramString3);
-  }
-  
-  public static ayxx a(int paramInt1, int paramInt2)
-  {
-    return a(paramInt1, 0, paramInt2);
-  }
-  
-  public static ayxx a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    ayxx localayxx = new ayxx();
-    localayxx.jdField_a_of_type_Int = paramInt1;
-    localayxx.d = paramInt2;
-    localayxx.jdField_b_of_type_Int = paramInt3;
-    return localayxx;
-  }
-  
-  public static ayyg a(int paramInt, Intent paramIntent)
-  {
-    ayxh localayxh = a(paramInt);
-    if (localayxh == null) {
-      return null;
-    }
-    return localayxh.a(paramIntent);
-  }
-  
-  public static CompressInfo a(int paramInt, Intent paramIntent)
-  {
-    ayxh localayxh = a(paramInt);
-    if (localayxh == null) {
-      return null;
-    }
-    return localayxh.a(paramIntent);
-  }
-  
-  public static ArrayList<ayxr> a(int paramInt1, MessageForMixedMsg paramMessageForMixedMsg, int paramInt2, String paramString1, String paramString2, String paramString3)
-  {
-    ayxh localayxh = a(paramInt1);
-    if (localayxh == null) {
-      return null;
-    }
-    return localayxh.a(paramMessageForMixedMsg, paramInt2, paramString1, paramString2, paramString3);
-  }
-  
-  public static int[] a(QQAppInterface paramQQAppInterface)
-  {
-    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.picCompressArgConfig.name(), "9|960|960|960|960|960|960|80|70|70");
-    ayxi.a("PicBusiManager", "getCompressConfigFromServer", "compressConfig = " + str);
-    if (!TextUtils.isEmpty(str)) {}
-    for (;;)
-    {
-      try
-      {
-        Integer[] arrayOfInteger = new Integer[10];
-        Arrays.fill(arrayOfInteger, Integer.valueOf(0));
-        int i = DeviceProfileManager.a(str, arrayOfInteger, new ankp());
-        paramQQAppInterface = paramQQAppInterface.c();
-        if ((!TextUtils.isEmpty(paramQQAppInterface)) && (i >= arrayOfInteger.length))
+        try
         {
-          if (Integer.parseInt(String.valueOf(paramQQAppInterface.charAt(paramQQAppInterface.length() - 1))) > arrayOfInteger[0].intValue()) {
-            continue;
-          }
-          if (arrayOfInteger[1].intValue() >= 960) {
-            ayzb.e = arrayOfInteger[1].intValue();
-          }
-          if (arrayOfInteger[2].intValue() >= 960) {
-            ayzb.f = arrayOfInteger[2].intValue();
-          }
-          if (arrayOfInteger[3].intValue() >= 960) {
-            ayzb.g = arrayOfInteger[3].intValue();
-          }
-          if (arrayOfInteger[4].intValue() >= 960) {
-            ayzb.h = arrayOfInteger[4].intValue();
-          }
-          if (arrayOfInteger[5].intValue() >= 960) {
-            ayzb.i = arrayOfInteger[5].intValue();
-          }
-          if (arrayOfInteger[6].intValue() >= 960) {
-            ayzb.j = arrayOfInteger[6].intValue();
-          }
-          if ((arrayOfInteger[7].intValue() > 0) && (arrayOfInteger[7].intValue() <= 100)) {
-            ayzb.jdField_a_of_type_Int = arrayOfInteger[7].intValue();
-          }
-          if ((arrayOfInteger[8].intValue() > 0) && (arrayOfInteger[8].intValue() <= 100)) {
-            ayzb.jdField_b_of_type_Int = arrayOfInteger[8].intValue();
-          }
-          if ((arrayOfInteger[9].intValue() > 0) && (arrayOfInteger[9].intValue() <= 100)) {
-            ayzb.c = arrayOfInteger[9].intValue();
+          paramBundle = new JSONObject(new String(paramBundle));
+          paramInt = paramBundle.optInt("ret", -1);
+          if (paramInt == 0)
+          {
+            a(paramBundle.optString("openid"), paramBundle.optString("tmpkey"));
+            return;
           }
         }
+        catch (JSONException paramBundle)
+        {
+          QLog.e("LoginVerifyObserver", 1, "getTmpKey error : JSONException " + paramBundle.getMessage());
+          a(str, -1, paramBundle.getMessage());
+          return;
+        }
+        paramBundle = paramBundle.optString("errmsg");
+        a(str, paramInt, paramBundle);
+        QLog.e("LoginVerifyObserver", 1, "getTmpError, ret : " + paramInt + "  error : " + paramBundle);
+        return;
       }
-      catch (NumberFormatException paramQQAppInterface)
+      if ("getAppConfig".equals(str))
       {
-        paramQQAppInterface.printStackTrace();
-        continue;
+        try
+        {
+          paramBundle = new JSONObject(new String(paramBundle));
+          paramInt = paramBundle.optInt("ret", -1);
+          if (paramInt == 0)
+          {
+            a(Base64.decode(paramBundle.optString("appconf_rsp"), 11));
+            return;
+          }
+        }
+        catch (JSONException paramBundle)
+        {
+          QLog.e("LoginVerifyObserver", 1, "getAppconf error : JSONException " + paramBundle.getMessage());
+          a(str, -1, paramBundle.getMessage());
+          return;
+        }
+        paramBundle = paramBundle.optString("errmsg");
+        a(str, paramInt, paramBundle);
+        QLog.e("LoginVerifyObserver", 1, "getAppconf, ret : " + paramInt + "  error : " + paramBundle);
+        return;
       }
-      paramQQAppInterface = new int[9];
-      paramQQAppInterface[0] = ayzb.e;
-      paramQQAppInterface[1] = ayzb.f;
-      paramQQAppInterface[2] = ayzb.g;
-      paramQQAppInterface[3] = ayzb.h;
-      paramQQAppInterface[4] = ayzb.i;
-      paramQQAppInterface[5] = ayzb.j;
-      paramQQAppInterface[6] = ayzb.jdField_a_of_type_Int;
-      paramQQAppInterface[7] = ayzb.jdField_b_of_type_Int;
-      paramQQAppInterface[8] = ayzb.c;
-      ayxi.a("PicBusiManager", "getCompressConfigFromServer", "result = " + Arrays.toString(paramQQAppInterface));
-      return paramQQAppInterface;
-      ayxi.a("PicBusiManager", "getCompressConfigFromServer", "current uin do not match");
-    }
+      if ("isIpForeign".equals(str))
+      {
+        for (;;)
+        {
+          try
+          {
+            paramBundle = new JSONObject(new String(paramBundle));
+            paramInt = paramBundle.optInt("ret", -1);
+            if (paramInt != 0) {
+              break;
+            }
+            paramBundle = Base64.decode(paramBundle.optString("available_rsp"), 11);
+            localObject = new FaceForeignIp.AvailableResponse();
+            ((FaceForeignIp.AvailableResponse)localObject).mergeFrom(paramBundle);
+            paramInt = ((FaceForeignIp.AvailableResponse)localObject).ret.get();
+            paramBundle = ((FaceForeignIp.AvailableResponse)localObject).msg.get();
+            if (paramInt != 1)
+            {
+              paramBoolean = true;
+              a(paramBoolean, paramBundle);
+              return;
+            }
+          }
+          catch (Exception paramBundle)
+          {
+            QLog.e("LoginVerifyObserver", 1, new Object[] { "IP_IS_FOREIGN_HTTPS error : ", paramBundle.getMessage() });
+            a(str, -1, paramBundle.getMessage());
+            return;
+          }
+          paramBoolean = false;
+        }
+        paramBundle = paramBundle.optString("errmsg");
+        QLog.e("LoginVerifyObserver", 1, new Object[] { "IP_IS_FOREIGN_HTTPS, ret : ", Integer.valueOf(paramInt), " error : ", paramBundle });
+        a(str, paramInt, paramBundle);
+        return;
+      }
+      if ("FaceRecognition.Available".equals(str))
+      {
+        localObject = new FaceForeignIp.AvailableResponse();
+        for (;;)
+        {
+          try
+          {
+            ((FaceForeignIp.AvailableResponse)localObject).mergeFrom(paramBundle);
+            paramInt = ((FaceForeignIp.AvailableResponse)localObject).ret.get();
+            paramBundle = ((FaceForeignIp.AvailableResponse)localObject).msg.get();
+            if (paramInt != 1)
+            {
+              paramBoolean = true;
+              a(paramBoolean, paramBundle);
+              return;
+            }
+          }
+          catch (InvalidProtocolBufferMicroException paramBundle)
+          {
+            QLog.e("LoginVerifyObserver", 1, new Object[] { "AvailableResponse merge from data error : ", paramBundle.getMessage() });
+            a(str, -1, paramBundle.getMessage());
+            return;
+          }
+          paramBoolean = false;
+        }
+      }
+      if ("FaceRecognition.SecureCheck".equals(str))
+      {
+        localObject = new FaceSecureCheck.SecureCheckResponse();
+        try
+        {
+          ((FaceSecureCheck.SecureCheckResponse)localObject).mergeFrom(paramBundle);
+          paramInt = ((FaceSecureCheck.SecureCheckResponse)localObject).uint32_errcode.get();
+          if (paramInt != 0)
+          {
+            paramBundle = ((FaceSecureCheck.SecureCheckResponse)localObject).str_err_msg.get();
+            a(str, paramInt, paramBundle);
+            QLog.e("LoginVerifyObserver", 1, "sso result error, ret : " + paramInt + "  error : " + paramBundle);
+            return;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramBundle)
+        {
+          QLog.e("LoginVerifyObserver", 1, new Object[] { "SecureCheckResponse merge from data error : ", paramBundle.getMessage() });
+          return;
+        }
+        a((FaceSecureCheck.SecureCheckResponse)localObject);
+        return;
+      }
+      try
+      {
+        localObject = new oidb_sso.OIDBSSOPkg();
+        ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom(paramBundle);
+        paramInt = ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get();
+        if (paramInt != 0)
+        {
+          paramBundle = ((oidb_sso.OIDBSSOPkg)localObject).str_error_msg.get();
+          a(str, paramInt, paramBundle);
+          QLog.e("LoginVerifyObserver", 1, "sso result error, ret : " + paramInt + "  error : " + paramBundle);
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        a(str, -1, paramBundle.getMessage());
+        return;
+      }
+      paramBundle = ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get().toByteArray();
+      if ("OidbSvc.0x5e1_295".equals(str))
+      {
+        localObject = new oidb_0x5e1.RspBody();
+        ((oidb_0x5e1.RspBody)localObject).mergeFrom(paramBundle);
+        a((oidb_0x5e1.RspBody)localObject);
+        return;
+      }
+      if ("OidbSvc.0x87c_108".equals(str))
+      {
+        localObject = new oidb_0x87c.RspBody();
+        ((oidb_0x87c.RspBody)localObject).mergeFrom(paramBundle);
+        a((oidb_0x87c.RspBody)localObject);
+        return;
+      }
+      if ("OidbSvc.0x87a_108".equals(str))
+      {
+        localObject = new oidb_0x87a.RspBody();
+        ((oidb_0x87a.RspBody)localObject).mergeFrom(paramBundle);
+        a((oidb_0x87a.RspBody)localObject);
+        return;
+      }
+      if ("OidbSvc.0x587_63".equals(str))
+      {
+        b();
+        return;
+      }
+      if ("OidbSvc.0xe96_0".equals(str))
+      {
+        localObject = new oidb_0xe96.RspBody();
+        ((oidb_0xe96.RspBody)localObject).mergeFrom(paramBundle);
+        a((oidb_0xe96.RspBody)localObject);
+        return;
+      }
+      if ("OidbSvc.0xe9a_0".equals(str))
+      {
+        a();
+        return;
+      }
+    } while ((!"OidbSvc.0x9ae_13".equals(str)) && (!"OidbSvc.0x9ae_14".equals(str)));
+    Object localObject = new cmd0x9ae.RspBody();
+    ((cmd0x9ae.RspBody)localObject).mergeFrom(paramBundle);
+    a((cmd0x9ae.RspBody)localObject);
   }
 }
 

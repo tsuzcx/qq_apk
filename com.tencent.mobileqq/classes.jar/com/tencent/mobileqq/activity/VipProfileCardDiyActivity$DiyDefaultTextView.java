@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import afrc;
+import agag;
 import android.content.Context;
 import android.widget.TextView;
 

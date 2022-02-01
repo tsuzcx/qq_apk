@@ -1,28 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.TextView;
-import dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView;
-import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Matrix;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
 public class bohz
-  implements Animator.AnimatorListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bohz(AEEditorTextControlPanel paramAEEditorTextControlPanel, TextView paramTextView) {}
+  public bohz(AECropperImageView paramAECropperImageView, Matrix paramMatrix, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    AEEditorTextControlPanel.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel).c();
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.getImageMatrix();
+    float f2 = AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView, this.jdField_a_of_type_AndroidGraphicsMatrix, 2);
+    float f3 = AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView, this.jdField_a_of_type_AndroidGraphicsMatrix, 5);
+    paramValueAnimator.postTranslate(this.jdField_a_of_type_Float * f1 - (f2 - this.b), f1 * this.c - (f3 - this.d));
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.setImageMatrix(paramValueAnimator);
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.invalidate();
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    AEEditorTextControlPanel.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel).c();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,23 +1,10 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
-
-class apoz
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class apoz
 {
-  apoz(apoy paramapoy) {}
+  public long b = 0L;
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public String toString()
   {
-    if (paramBitmap != null)
-    {
-      this.a.a.b.setVisibility(0);
-      this.a.a.a.setVisibility(0);
-      this.a.a.a.setImageBitmap(paramBitmap);
-      return;
-    }
-    this.a.a.a.setVisibility(8);
+    return "ARLocalRecogResultBase{recogType = " + this.b + '}';
   }
 }
 

@@ -50,7 +50,7 @@ class NearbyGuideActivity$8
     //   69: aload 5
     //   71: iload 4
     //   73: iload 4
-    //   75: invokestatic 56	bgmo:a	(Ljava/io/InputStream;II)D
+    //   75: invokestatic 56	bhmq:a	(Ljava/io/InputStream;II)D
     //   78: d2i
     //   79: putfield 60	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   82: iload_3
@@ -64,7 +64,7 @@ class NearbyGuideActivity$8
     //   97: aload_0
     //   98: getfield 16	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity$8:a	Ljava/lang/String;
     //   101: aload 9
-    //   103: invokestatic 70	bggl:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   103: invokestatic 70	bhgm:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   106: astore 8
     //   108: aload 8
     //   110: astore 6
@@ -77,7 +77,7 @@ class NearbyGuideActivity$8
     //   125: invokevirtual 76	android/graphics/Bitmap:getWidth	()I
     //   128: aload 8
     //   130: invokevirtual 79	android/graphics/Bitmap:getHeight	()I
-    //   133: invokestatic 82	bgmo:a	(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
+    //   133: invokestatic 82	bhmq:a	(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
     //   136: astore 6
     //   138: aload 6
     //   140: ifnonnull +142 -> 282
@@ -85,7 +85,7 @@ class NearbyGuideActivity$8
     //   144: getfield 14	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity$8:this$0	Lcom/tencent/mobileqq/nearby/guide/NearbyGuideActivity;
     //   147: iconst_1
     //   148: ldc 83
-    //   150: invokestatic 88	anni:a	(I)Ljava/lang/String;
+    //   150: invokestatic 88	anzj:a	(I)Ljava/lang/String;
     //   153: invokevirtual 91	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity:a	(ILjava/lang/String;)V
     //   156: return
     //   157: astore 8

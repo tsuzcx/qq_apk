@@ -1,107 +1,41 @@
-import android.os.SystemClock;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.video.column.VideoColumnGuideManager.fetchGuideBgImg.1;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class ryp
-  extends GestureDetector.SimpleOnGestureListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$fetchGuideBgImg$1$1", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/IBitmapCallback;", "onFail", "", "request", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageRequest;", "exception", "", "onProgress", "progress", "", "onSuccess", "bitmap", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/CloseableBitmap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ryp
+  implements sum
 {
-  public ryp(VideoFeedsGestureLayout paramVideoFeedsGestureLayout) {}
+  public void a(@Nullable suo paramsuo, int paramInt) {}
   
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  public void a(@Nullable suo paramsuo, @Nullable Throwable paramThrowable)
   {
-    switch (paramMotionEvent.getAction())
+    StringBuilder localStringBuilder = new StringBuilder().append("fetch guide bg img fail: ");
+    if (paramThrowable != null) {}
+    for (paramsuo = paramThrowable.getMessage();; paramsuo = null)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (VideoFeedsGestureLayout.a(this.a) != null)
-      {
-        VideoFeedsGestureLayout.a(this.a, SystemClock.uptimeMillis());
-        VideoFeedsGestureLayout.a(this.a).a(this.a, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-      }
+      QLog.e("VideoColumnGuideManager", 1, paramsuo);
+      return;
     }
   }
   
-  public void onLongPress(MotionEvent paramMotionEvent)
+  public void a(@Nullable suo paramsuo, @Nullable suk paramsuk)
   {
-    if (VideoFeedsGestureLayout.a(this.a) != null) {
-      VideoFeedsGestureLayout.a(this.a).b(this.a);
-    }
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    paramFloat1 = 1.0F;
-    int i = ryx.b(VideoFeedsGestureLayout.a(this.a))[0];
-    i = ryx.b(VideoFeedsGestureLayout.a(this.a))[1];
-    paramFloat2 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
-    float f = paramMotionEvent2.getX() - paramMotionEvent1.getX();
-    if (VideoFeedsGestureLayout.a(this.a) == 0)
+    rym localrym = this.a.this$0;
+    if (paramsuk != null) {}
+    for (paramsuo = paramsuk.a();; paramsuo = null)
     {
-      if (Math.abs(f) - Math.abs(paramFloat2) >= 0.0F) {
-        break label154;
+      rym.a(localrym, paramsuo);
+      rym.a(this.a.this$0, true);
+      paramsuo = rym.a(this.a.this$0);
+      if (paramsuo != null) {
+        paramsuo.setImageBitmap(rym.a(this.a.this$0));
       }
-      if (paramMotionEvent1.getX() >= this.a.getWidth() / 2) {
-        break label142;
-      }
-      VideoFeedsGestureLayout.a(this.a, 2);
+      rym.b(this.a.this$0);
+      return;
     }
-    switch (VideoFeedsGestureLayout.a(this.a))
-    {
-    default: 
-    case 1: 
-    case 2: 
-      label142:
-      label154:
-      do
-      {
-        return false;
-        VideoFeedsGestureLayout.a(this.a, 1);
-        break;
-        VideoFeedsGestureLayout.a(this.a, 3);
-        break;
-      } while (VideoFeedsGestureLayout.a(this.a) == null);
-      paramFloat2 /= this.a.getHeight() / 2;
-      if (Math.abs(paramFloat2) > 1.0F) {
-        if (paramFloat2 <= 1.0F) {
-          break;
-        }
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.a.a(VideoFeedsGestureLayout.a(this.a), paramFloat1);
-      return false;
-      paramFloat1 = -1.0F;
-      continue;
-      if (VideoFeedsGestureLayout.a(this.a) == null) {
-        break;
-      }
-      paramFloat2 = f / (this.a.getWidth() / 4 * 3);
-      if (Math.abs(paramFloat2) > 1.0F) {
-        if (paramFloat2 <= 1.0F) {}
-      }
-      for (;;)
-      {
-        this.a.a(VideoFeedsGestureLayout.a(this.a), paramFloat1);
-        return false;
-        paramFloat1 = -1.0F;
-        continue;
-        paramFloat1 = paramFloat2;
-      }
-      paramFloat1 = paramFloat2;
-    }
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if ((VideoFeedsGestureLayout.a(this.a) != null) && (SystemClock.uptimeMillis() - VideoFeedsGestureLayout.a(this.a) > 500L)) {
-      VideoFeedsGestureLayout.a(this.a).a(this.a);
-    }
-    return false;
   }
 }
 

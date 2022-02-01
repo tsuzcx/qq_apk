@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.apollo.view;
 
-import java.util.List;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 class ApolloPanel$40
   implements Runnable
 {
-  ApolloPanel$40(ApolloPanel paramApolloPanel, List paramList) {}
+  ApolloPanel$40(ApolloPanel paramApolloPanel) {}
   
   public void run()
   {
-    ApolloPanel.e(this.this$0);
-    ApolloPanel.a(this.this$0).setGuideType(1);
-    ApolloPanel.a(this.this$0).setActions(this.a);
+    this.this$0.a.aJ();
   }
 }
 

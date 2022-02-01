@@ -1,35 +1,32 @@
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.QuickLoginActivity;
-import mqq.observer.AccountObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class aezw
-  extends AccountObserver
+  implements DialogInterface.OnClickListener
 {
-  public aezw(QuickLoginActivity paramQuickLoginActivity) {}
+  public aezw(NotificationActivity paramNotificationActivity) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Toast.makeText(this.a.getApplicationContext(), "login failure! check you qq and password!", 0).show();
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login suc", 0).show();
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login outtime", 0).show();
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login cancel", 0).show();
+    try
+    {
+      bdll.b(null, "P_CliOper", "Safe_StartAppCheck", "", "DIALOG_PACKAGE_INVALID", "LeftButton", 0, 0, "", "", "", "");
+      this.a.finish();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aezw
  * JD-Core Version:    0.7.0.1
  */

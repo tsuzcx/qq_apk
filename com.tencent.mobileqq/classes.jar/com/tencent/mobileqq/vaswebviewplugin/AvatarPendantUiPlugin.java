@@ -6,11 +6,11 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anni;
-import arph;
-import bcst;
-import bghy;
-import bgmo;
+import anzj;
+import asev;
+import bdll;
+import bhhz;
+import bhmq;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -31,7 +31,7 @@ public class AvatarPendantUiPlugin
   void OnActivityResume()
   {
     super.OnActivityResume();
-    this.activity.setTitle(anni.a(2131699684));
+    this.activity.setTitle(anzj.a(2131699791));
   }
   
   public String decodeUrl(String paramString)
@@ -44,7 +44,7 @@ public class AvatarPendantUiPlugin
       paramString = null;
       return paramString;
     }
-    String str = paramString.replace("[client]", "androidQQ").replace("[version]", "8.4.1.4680").replace("[system]", Build.VERSION.RELEASE).replace("[device]", Build.DEVICE);
+    String str = paramString.replace("[client]", "androidQQ").replace("[version]", "8.4.5.4745").replace("[system]", Build.VERSION.RELEASE).replace("[device]", Build.DEVICE);
     Intent localIntent = super.getInfoIntent();
     if (localIntent.getBooleanExtra("key_update_flag", false)) {}
     for (paramString = "1";; paramString = "0")
@@ -74,7 +74,7 @@ public class AvatarPendantUiPlugin
           }
           paramMap = new Bundle();
           paramMap.putString("path", paramString);
-          paramString = arph.a("changeAvatar", sCallbackId, sJsHandler.getIPCResponseKey(), paramMap);
+          paramString = asev.a("changeAvatar", sCallbackId, sJsHandler.getIPCResponseKey(), paramMap);
           paramMap = new JSONObject();
           try
           {
@@ -106,7 +106,7 @@ public class AvatarPendantUiPlugin
   public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if ((paramLong == 32L) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("_bid=160"))) {
-      bcst.b(null, "CliOper", "", "", "PendantMarket", "StartLoad", 0, 0, "", "", "", "");
+      bdll.b(null, "CliOper", "", "", "PendantMarket", "StartLoad", 0, 0, "", "", "", "");
     }
     return super.handleEvent(paramString, paramLong, paramMap);
   }
@@ -124,12 +124,12 @@ public class AvatarPendantUiPlugin
         if (sUploadPhotoUri == null) {
           break label394;
         }
-        paramIntent = bgmo.b(this.activity, sUploadPhotoUri);
-        paramInt1 = Math.min(482, bghy.a(this.activity));
+        paramIntent = bhmq.b(this.activity, sUploadPhotoUri);
+        paramInt1 = Math.min(482, bhhz.a(this.activity));
         localObject = new Intent();
         ((Intent)localObject).putExtra("keyFromPendantPhoto", true);
         ((Intent)localObject).putExtra("Business_Origin", 100);
-        PhotoUtils.a((Intent)localObject, this.activity, QQBrowserActivity.class.getName(), paramInt1, paramInt1, 1080, 1080, paramIntent, bghy.a());
+        PhotoUtils.a((Intent)localObject, this.activity, QQBrowserActivity.class.getName(), paramInt1, paramInt1, 1080, 1080, paramIntent, bhhz.a());
         sUploadPhotoUri = null;
         return true;
       }

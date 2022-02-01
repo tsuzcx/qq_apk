@@ -1,485 +1,80 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgTabServerInitStep;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.os.AsyncTask;
+import android.view.View;
+import com.tencent.mobileqq.activity.fling.ScreenCapture;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 
 public class ajzy
-  extends QIPCModule
-  implements Handler.Callback
+  extends AsyncTask<String, Void, Boolean>
 {
-  private static ajzy jdField_a_of_type_Ajzy;
-  private long jdField_a_of_type_Long;
-  private ajzz jdField_a_of_type_Ajzz;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private boolean jdField_a_of_type_Boolean;
-  private ajzz b;
-  private ajzz c;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   
-  private ajzy()
+  public ajzy(View paramView)
   {
-    super("MiniMsgIPCServer");
-    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("mini_msg", 0);
-    localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper(), this);
+    if (paramView != null)
+    {
+      Context localContext = paramView.getContext();
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+      paramView.setDrawingCacheEnabled(true);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramView.getDrawingCache();
+      ScreenCapture.setSnapFile(localContext, false);
+    }
   }
   
-  public static ajzy a()
+  protected Boolean a(String... paramVarArgs)
   {
-    if (jdField_a_of_type_Ajzy == null) {}
+    Boolean localBoolean = Boolean.FALSE;
+    if (isCancelled()) {}
+    while ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      return localBoolean;
+    }
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    paramVarArgs = new File(paramVarArgs[0]);
+    File localFile = paramVarArgs.getParentFile();
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
     try
     {
-      if (jdField_a_of_type_Ajzy == null) {
-        jdField_a_of_type_Ajzy = new ajzy();
-      }
-      return jdField_a_of_type_Ajzy;
+      paramVarArgs = new FileOutputStream(paramVarArgs);
+      localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, paramVarArgs);
+      paramVarArgs.flush();
+      paramVarArgs.close();
+      paramVarArgs = Boolean.TRUE;
+      return paramVarArgs;
     }
-    finally {}
-  }
-  
-  public static void a(int paramInt)
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      ((ajzw)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(147)).a(Integer.valueOf(paramInt));
-    }
-  }
-  
-  private void a(int paramInt, Bundle paramBundle)
-  {
-    long l = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_Long > l) && (this.jdField_a_of_type_Long - l < 5000L)) {
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
+    catch (IOException paramVarArgs)
     {
-      ajzz localajzz = this.jdField_a_of_type_Ajzz;
-      if ((localObject == null) || (localajzz == null)) {
-        break;
-      }
-      if (paramBundle == null) {
-        paramBundle = new Bundle();
-      }
-      for (;;)
+      paramVarArgs.printStackTrace();
+    }
+    return localBoolean;
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localView != null)
       {
-        localObject = ((QQAppInterface)localObject).a();
-        if (localObject != null) {}
-        for (int i = ((QQMessageFacade)localObject).c();; i = 0)
-        {
-          paramBundle.putInt("param_cmd", 0);
-          paramBundle.putInt("param_proc_badge_count", i);
-          localObject = new EIPCResult();
-          ((EIPCResult)localObject).data = paramBundle;
-          callbackResult(paramInt, (EIPCResult)localObject);
-          paramBundle.putInt("param_proc_badge_count", i);
-          QIPCServerHelper.getInstance().callClient(ajzz.a(localajzz), ajzz.b(localajzz), "action_sync_unreadcount", paramBundle, null);
-          if (this.c != null) {
-            QIPCServerHelper.getInstance().callClient(ajzz.a(this.c), ajzz.b(this.c), "action_sync_unreadcount", paramBundle, null);
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("MiniMsgIPCServer", 2, "doNotifyUnreadState unread = " + i);
-          return;
+        if (paramBoolean.booleanValue()) {
+          ScreenCapture.setSnapFile(localView.getContext(), true);
         }
+        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+        localView.setDrawingCacheEnabled(false);
+        localView.destroyDrawingCache();
       }
     }
   }
   
-  private void a(Bundle paramBundle)
-  {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(ajzz.a(this.c), ajzz.b(this.c), "actionMiniCreateUpdatableMsgCallback", paramBundle, null);
-    }
-  }
-  
-  private void b(Bundle paramBundle)
-  {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(ajzz.a(this.c), ajzz.b(this.c), "actionMiniReportEvent", paramBundle, null);
-    }
-  }
-  
-  private void c(Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Ajzz != null)
-    {
-      String str1 = paramBundle.getString("param_proc_name");
-      String str2 = paramBundle.getString("param_proc_modulename");
-      paramBundle.getString("param_proc_businame");
-      if ((str1 != null) && (str1.equals(this.jdField_a_of_type_Ajzz.a())) && (str2 != null) && (str2.equals(this.jdField_a_of_type_Ajzz.b()))) {
-        this.jdField_a_of_type_Boolean = false;
-      }
-    }
-  }
-  
-  private void d(Bundle paramBundle)
-  {
-    String str1 = paramBundle.getString("param_proc_name");
-    String str2 = paramBundle.getString("param_proc_modulename");
-    int i = paramBundle.getInt("param_proc_businame");
-    this.jdField_a_of_type_Ajzz = new ajzz(str1, str2);
-    this.b = new ajzz(str1, "aio_client_module");
-    if (("mini_app_client_module".equals(str2) | "mini_sdk_client_module".equals(str2))) {
-      this.c = new ajzz(str1, str2);
-    }
-    this.jdField_a_of_type_Ajzz.a = i;
-    this.jdField_a_of_type_Boolean = true;
-    boolean bool = paramBundle.getBoolean("param_proc_first_start", false);
-    if (QLog.isColorLevel())
-    {
-      QLog.d("MiniMsgIPCServer", 2, str1 + "doOnProcForeGround isFirst = " + bool);
-      QLog.d("MiniMsgIPCServer", 2, "moduleName:" + str2);
-    }
-    if (bool) {
-      a();
-    }
-  }
-  
-  private void e()
-  {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(ajzz.a(this.c), ajzz.b(this.c), "actionMiniDirectShareFailCallback", null, null);
-    }
-  }
-  
-  private void e(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return;
-    }
-    String str = paramBundle.getString("param_proc_uin");
-    int j = paramBundle.getInt("param_proc_uin_type");
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (paramBundle = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramBundle = null)
-    {
-      ajzz localajzz = this.b;
-      if ((paramBundle == null) || (localajzz == null)) {
-        break;
-      }
-      paramBundle = paramBundle.a();
-      if (paramBundle != null) {}
-      for (int i = paramBundle.a(j, str);; i = 0)
-      {
-        paramBundle = new Bundle();
-        paramBundle.putString("param_proc_uin", str);
-        paramBundle.putInt("param_proc_uin_type", j);
-        paramBundle.putInt("param_proc_single_con_badge_count", i);
-        if (QLog.isColorLevel()) {
-          QLog.d("mini_msg_IPCServer", 2, "doNotifySingleConUnreadState uin = " + str + "; unread = " + i);
-        }
-        QIPCServerHelper.getInstance().callClient(ajzz.a(localajzz), ajzz.b(localajzz), "action_sync_single_con_unread_count", paramBundle, null);
-        if (this.c == null) {
-          break;
-        }
-        QIPCServerHelper.getInstance().callClient(ajzz.a(this.c), ajzz.b(this.c), "action_sync_single_con_unread_count", paramBundle, null);
-        return;
-      }
-    }
-  }
-  
-  private void f()
-  {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(ajzz.a(this.c), ajzz.b(this.c), "actionMiniDirectShareSucCallback", null, null);
-    }
-  }
-  
-  private void g()
-  {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(ajzz.a(this.c), ajzz.b(this.c), "actionMiniShareSucCallback", null, null);
-    }
-  }
-  
-  private void h()
-  {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(ajzz.a(this.c), ajzz.b(this.c), "actionMiniShareFailCallback", null, null);
-    }
-  }
-  
-  private void i()
-  {
-    long l = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_Long > l) && (this.jdField_a_of_type_Long - l < 5000L)) {
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
-    {
-      ajzz localajzz = this.jdField_a_of_type_Ajzz;
-      if ((localObject == null) || (localajzz == null)) {
-        break;
-      }
-      localObject = ((QQAppInterface)localObject).a();
-      if (localObject != null) {}
-      for (int i = ((QQMessageFacade)localObject).c();; i = 0)
-      {
-        localObject = new Bundle();
-        ((Bundle)localObject).putInt("param_proc_badge_count", i);
-        if (QLog.isColorLevel()) {
-          QLog.d("mini_msg_IPCServer", 2, "doNotifyUnreadState unread = " + i);
-        }
-        QIPCServerHelper.getInstance().callClient(ajzz.a(localajzz), ajzz.b(localajzz), "action_sync_unreadcount", (Bundle)localObject, null);
-        if (this.c == null) {
-          break;
-        }
-        QIPCServerHelper.getInstance().callClient(ajzz.a(this.c), ajzz.b(this.c), "action_sync_unreadcount", (Bundle)localObject, null);
-        return;
-      }
-    }
-  }
-  
-  private void j()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
-    {
-      ajzz localajzz = this.jdField_a_of_type_Ajzz;
-      if ((localObject != null) && (localajzz != null))
-      {
-        localObject = new Bundle();
-        if (QLog.isColorLevel()) {
-          QLog.d("mini_msg_IPCServer", 2, "doNotifyGoToConversation  ");
-        }
-        QIPCServerHelper.getInstance().callClient(ajzz.a(localajzz), ajzz.b(localajzz), "action_mini_msgtab_notify_to_conversation", (Bundle)localObject, null);
-      }
-      return;
-    }
-  }
-  
-  private void k()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
-    {
-      ajzz localajzz = this.jdField_a_of_type_Ajzz;
-      QQMessageFacade localQQMessageFacade = ((QQAppInterface)localObject).a();
-      if (localQQMessageFacade != null) {}
-      for (int i = localQQMessageFacade.c();; i = 0)
-      {
-        if ((localObject != null) && (localajzz != null))
-        {
-          localObject = new Bundle();
-          ((Bundle)localObject).putInt("param_proc_badge_count", i);
-          if (QLog.isColorLevel()) {
-            QLog.d("MiniMsgIPCServer", 2, "doNotifyUnreadState unread = " + i);
-          }
-          QIPCServerHelper.getInstance().callClient(ajzz.a(localajzz), ajzz.b(localajzz), "action_msg_tab_back_refresh", (Bundle)localObject, null);
-        }
-        return;
-      }
-    }
-  }
-  
-  private void l()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
-    {
-      ajzz localajzz = this.jdField_a_of_type_Ajzz;
-      QQMessageFacade localQQMessageFacade = ((QQAppInterface)localObject).a();
-      if (localQQMessageFacade != null) {}
-      for (int i = localQQMessageFacade.c();; i = 0)
-      {
-        if ((localObject != null) && (localajzz != null))
-        {
-          localObject = new Bundle();
-          ((Bundle)localObject).putInt("param_proc_badge_count", i);
-          if (QLog.isColorLevel()) {
-            QLog.d("mini_msg_IPCServer", 2, "notifyGetUnread unread = " + i);
-          }
-          QIPCServerHelper.getInstance().callClient(ajzz.a(localajzz), ajzz.b(localajzz), "action_get_unread", (Bundle)localObject, null);
-        }
-        return;
-      }
-    }
-  }
-  
-  public ajzz a()
-  {
-    return this.jdField_a_of_type_Ajzz;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-  }
-  
-  void a(String paramString, int paramInt)
-  {
-    Message localMessage = Message.obtain();
-    localMessage.what = 11;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param_proc_uin", paramString);
-    localBundle.putInt("param_proc_uin_type", paramInt);
-    localMessage.setData(localBundle);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-  }
-  
-  public void c()
-  {
-    j();
-  }
-  
-  public void d()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
-    {
-      ajzz localajzz = this.jdField_a_of_type_Ajzz;
-      if ((localObject != null) && (localajzz != null))
-      {
-        localObject = new Bundle();
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniMsgIPCServer", 2, "notifyFromMiniAIOToAIO ");
-        }
-        QIPCServerHelper.getInstance().callClient(ajzz.a(localajzz), ajzz.b(localajzz), "action_mini_aio_to_aio", (Bundle)localObject, null);
-      }
-      return;
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      d((Bundle)paramMessage.obj);
-      continue;
-      c((Bundle)paramMessage.obj);
-      continue;
-      if (MiniMsgTabServerInitStep.jdField_a_of_type_Boolean)
-      {
-        i();
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("MiniMsgIPCServer", 2, "isAfterActionB = " + MiniMsgTabServerInitStep.jdField_a_of_type_Boolean);
-        continue;
-        e(paramMessage.getData());
-        continue;
-        if (MiniMsgTabServerInitStep.jdField_a_of_type_Boolean)
-        {
-          a(paramMessage.arg1, (Bundle)paramMessage.obj);
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.d("MiniMsgIPCServer", 2, "isAfterActionB = " + MiniMsgTabServerInitStep.jdField_a_of_type_Boolean);
-          continue;
-          k();
-          continue;
-          g();
-          continue;
-          h();
-          continue;
-          l();
-          continue;
-          j();
-          continue;
-          b((Bundle)paramMessage.obj);
-          continue;
-          f();
-          continue;
-          e();
-          continue;
-          a((Bundle)paramMessage.obj);
-        }
-      }
-    }
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if ((QLog.isColorLevel()) && (paramBundle != null)) {
-      QLog.d("MiniMsgIPCServer", 2, new Object[] { "MiniMsgIPCServer : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
-    }
-    Message localMessage = Message.obtain();
-    localMessage.obj = paramBundle;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (!paramString.equalsIgnoreCase("cmd_proc_foregound")) {
-        break label125;
-      }
-      localMessage.what = 1;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      return null;
-      label125:
-      if (paramString.equalsIgnoreCase("cmd_proc_backgound"))
-      {
-        localMessage.what = 2;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_refresh_mini_badge"))
-      {
-        localMessage.what = 4;
-        localMessage.arg1 = paramInt;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_msg_tab_back_refresh"))
-      {
-        localMessage.what = 8;
-        localMessage.arg1 = paramInt;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_mini_share_suc"))
-      {
-        localMessage.what = 6;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_mini_share_fail"))
-      {
-        localMessage.what = 7;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_get_unread"))
-      {
-        localMessage.what = 8;
-        localMessage.arg1 = paramInt;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_mini_clear_business"))
-      {
-        if (paramBundle != null) {
-          a(paramBundle.getInt("PARAM_CMD_BUSIID"));
-        }
-      }
-      else if (paramString.equalsIgnoreCase("cmd_mini_report_event"))
-      {
-        localMessage.what = 10;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_mini_direct_share_suc"))
-      {
-        localMessage.what = 12;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_mini_direct_share_fail"))
-      {
-        localMessage.what = 13;
-      }
-      else if (paramString.equals("cmd_mini_create_updatable_msg_callback"))
-      {
-        localMessage.what = 14;
-      }
-    }
-  }
+  protected void onCancelled() {}
 }
 
 

@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import svg;
-import tkf;
+import smj;
+import tay;
 
 public class RecommendFeedsDiandianEntranceManager$EntranceIconInfo
-  implements Parcelable, tkf
+  implements Parcelable, tay
 {
-  public static final Parcelable.Creator<EntranceIconInfo> CREATOR = new svg();
+  public static final Parcelable.Creator<EntranceIconInfo> CREATOR = new smj();
   public int a;
   public RecommendFeedsDiandianEntranceManager.ExtraInfo a;
   public String a;
@@ -47,7 +47,7 @@ public class RecommendFeedsDiandianEntranceManager$EntranceIconInfo
     return localEntranceIconInfo;
   }
   
-  public void a(String paramString)
+  public void b(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
   }

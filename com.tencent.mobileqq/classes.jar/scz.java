@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
-
-class scz
-  implements DialogInterface.OnShowListener
+public abstract interface scz
 {
-  scz(scw paramscw) {}
+  public abstract void a(int paramInt);
   
-  public void onShow(DialogInterface paramDialogInterface)
-  {
-    sce.a(this.a.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
-    sce.a(this.a.a).getWindow().clearFlags(8);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

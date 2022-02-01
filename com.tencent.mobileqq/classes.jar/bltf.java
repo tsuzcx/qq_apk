@@ -1,9 +1,16 @@
-final class bltf
-  extends awej<blte, Void>
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bltf
+  implements View.OnClickListener
 {
-  protected blte a(Void paramVoid)
+  bltf(blte paramblte) {}
+  
+  public void onClick(View paramView)
   {
-    return new blte(null);
+    this.a.b(true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

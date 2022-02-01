@@ -1,7 +1,7 @@
 package com.tencent.qidian.data;
 
-import bjft;
-import bjhi;
+import bkgt;
+import bkii;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -33,7 +33,7 @@ public class QidianProfileUiInfo
   public static final int CONFIG_INFO_TYPE_TEXT = 1;
   private static final String TAG = "QidianProfileUiInfo";
   public byte[] infoByte;
-  public List<bjhi> mConfigGroupInfos;
+  public List<bkii> mConfigGroupInfos;
   @unique
   public String uin = "";
   
@@ -42,10 +42,10 @@ public class QidianProfileUiInfo
     Object localObject3;
     try
     {
-      Object localObject1 = (bjft)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(165);
+      Object localObject1 = (bkgt)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(165);
       if (this.infoByte != null)
       {
-        if (((bjft)localObject1).c(this.uin, true)) {
+        if (((bkgt)localObject1).c(this.uin, true)) {
           break label164;
         }
         localObject1 = new mobileqq_qidian.GetUserDetailInfoRspBody();
@@ -60,7 +60,7 @@ public class QidianProfileUiInfo
             localObject1 = ((List)localObject3).iterator();
             while (((Iterator)localObject1).hasNext())
             {
-              localObject3 = new bjhi((mobileqq_qidian.ConfigGroupInfo)((Iterator)localObject1).next());
+              localObject3 = new bkii((mobileqq_qidian.ConfigGroupInfo)((Iterator)localObject1).next());
               this.mConfigGroupInfos.add(localObject3);
             }
           }
@@ -87,7 +87,7 @@ public class QidianProfileUiInfo
           localObject2 = ((List)localObject3).iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            localObject3 = new bjhi((mobileqq_qidian.ConfigGroupInfo)((Iterator)localObject2).next());
+            localObject3 = new bkii((mobileqq_qidian.ConfigGroupInfo)((Iterator)localObject2).next());
             this.mConfigGroupInfos.add(localObject3);
           }
         }
@@ -123,7 +123,7 @@ public class QidianProfileUiInfo
     initList();
   }
   
-  public List<bjhi> getConfigGroupInfos()
+  public List<bkii> getConfigGroupInfos()
   {
     if (this.mConfigGroupInfos == null)
     {

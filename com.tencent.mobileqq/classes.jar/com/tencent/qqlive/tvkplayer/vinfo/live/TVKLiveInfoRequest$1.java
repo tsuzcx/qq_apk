@@ -19,8 +19,8 @@ class TVKLiveInfoRequest$1
     TVKLogUtil.w("MediaPlayerMgr[TVKLiveInfoRequest.java]", "livecgi error = " + paramIOException.toString());
     if (TVKLiveInfoRequest.access$000(this.this$0) <= 3)
     {
-      if (TVKLiveInfoRequest.access$100(this.this$0) == TVKLiveInfoRequest.UrlState.MasterUrl) {
-        TVKLiveInfoRequest.access$102(this.this$0, TVKLiveInfoRequest.UrlState.ReServerUrl);
+      if (TVKLiveInfoRequest.access$100(this.this$0) == 1) {
+        TVKLiveInfoRequest.access$102(this.this$0, 2);
       }
       for (;;)
       {
@@ -29,7 +29,7 @@ class TVKLiveInfoRequest$1
         TVKLogUtil.w("MediaPlayerMgr[TVKLiveInfoRequest.java]", " retry count " + TVKLiveInfoRequest.access$000(this.this$0));
         this.this$0.execute();
         return;
-        TVKLiveInfoRequest.access$102(this.this$0, TVKLiveInfoRequest.UrlState.MasterUrl);
+        TVKLiveInfoRequest.access$102(this.this$0, 1);
       }
     }
     paramIOException = new TVKLiveVideoInfo();
@@ -53,7 +53,7 @@ class TVKLiveInfoRequest$1
           return;
         }
         TVKLiveInfoRequest.access$402(this.this$0, 0);
-        TVKLiveInfoRequest.access$102(this.this$0, TVKLiveInfoRequest.UrlState.MasterUrl);
+        TVKLiveInfoRequest.access$102(this.this$0, 1);
         TVKLiveInfoRequest.access$002(this.this$0, 1);
         try
         {

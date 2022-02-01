@@ -1,94 +1,46 @@
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PrecoverResource;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.manager.Manager;
 
 public class azux
-  implements Manager
+  extends bezs
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  List<azut> jdField_a_of_type_JavaUtilList = null;
-  List<String> b = null;
+  beum jdField_a_of_type_Beum;
+  PrecoverResource jdField_a_of_type_ComTencentMobileqqDataPrecoverResource;
   
-  public azux(QQAppInterface paramQQAppInterface)
+  public azux(QQAppInterface paramQQAppInterface, PrecoverResource paramPrecoverResource, beum parambeum)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    a();
+    super(paramQQAppInterface, paramPrecoverResource.md5);
+    this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource = paramPrecoverResource;
+    this.jdField_a_of_type_Beum = parambeum;
   }
   
-  public azut a(String paramString)
+  protected void realCancel()
   {
-    if (bgsp.a(paramString)) {}
-    while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverResDownloader", 2, "DownloadTask realCancel");
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    azut localazut;
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localazut = (azut)localIterator.next();
-    } while ((localazut.f == null) || (!localazut.f.equalsIgnoreCase(paramString)));
-    for (paramString = localazut;; paramString = null) {
-      return paramString;
+    azut localazut = (azut)this.app.getManager(179);
+    if ((localazut != null) && (localazut.a() != null)) {
+      localazut.a().a(this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource.md5);
     }
   }
   
-  public void a()
+  protected void realStart()
   {
-    String str = azuv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    QLog.i("QAssistantManager", 2, "loadConfigFromLoacl config is " + str);
-    a(str);
-  }
-  
-  public void a(String paramString)
-  {
-    if (bgsp.a(paramString)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverResDownloader", 2, "DownloadTask realStart");
     }
-    if (this.jdField_a_of_type_JavaUtilList == null)
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      label26:
-      if (this.b != null) {
-        break label81;
-      }
-      this.b = new ArrayList();
-    }
-    for (;;)
-    {
-      paramString = azuv.a(paramString, this.b);
-      if (paramString == null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilList.addAll(paramString);
-      return;
-      this.jdField_a_of_type_JavaUtilList.clear();
-      break label26;
-      label81:
-      this.b.clear();
+    azut localazut = (azut)this.app.getManager(179);
+    if ((localazut != null) && (localazut.a() != null)) {
+      localazut.a().a(this);
     }
   }
   
-  public boolean a(String paramString)
+  public String toString()
   {
-    if ((bgsp.a(paramString)) || (this.b == null)) {
-      return false;
-    }
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      if (((String)localIterator.next()).equalsIgnoreCase(paramString)) {
-        return true;
-      }
-    }
-    return false;
+    return "[DownloadTask] req=" + this.jdField_a_of_type_Beum + ", res=" + this.jdField_a_of_type_ComTencentMobileqqDataPrecoverResource;
   }
-  
-  public void onDestroy() {}
 }
 
 

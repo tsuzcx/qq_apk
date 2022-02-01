@@ -1,15 +1,10 @@
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-
-public class bbmt
+class bbmt
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  bbmc jdField_a_of_type_Bbmc;
+  bbmo jdField_a_of_type_Bbmo;
+  bbmp jdField_a_of_type_Bbmp;
   
-  public bbmt(HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
+  private bbmt(bbmq parambbmq) {}
 }
 
 

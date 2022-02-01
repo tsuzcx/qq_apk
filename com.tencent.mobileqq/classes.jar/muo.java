@@ -1,12 +1,17 @@
-public class muo
+import android.telephony.PhoneStateListener;
+import android.telephony.SignalStrength;
+
+class muo
+  extends PhoneStateListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
+  muo(mum parammum) {}
+  
+  public void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
+  {
+    super.onSignalStrengthsChanged(paramSignalStrength);
+    this.a.c = this.a.a(paramSignalStrength);
+    this.a.d = this.a.b(paramSignalStrength);
+  }
 }
 
 

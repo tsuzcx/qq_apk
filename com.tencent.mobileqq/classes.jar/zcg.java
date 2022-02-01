@@ -1,40 +1,31 @@
-import android.content.Context;
 import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class zcg
-  extends zce<zcf>
+class zcg
+  implements woy<xcn, xel>
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370258);
+  zcg(zbz paramzbz) {}
   
-  zcg(zcf paramzcf, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public void a(@NonNull xcn paramxcn, @Nullable xel paramxel, @NonNull ErrorMessage paramErrorMessage)
   {
-    super(paramContext, paramViewGroup);
-  }
-  
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131561778, paramViewGroup, false);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-  }
-  
-  public void a(zcf paramzcf, int paramInt)
-  {
-    super.a(paramzcf, paramInt);
-    if (paramzcf != null)
+    yuk.b("DoodleEmojiManager", "fireRequestEmojiPackList, result : " + paramxel + ", errorMsg = " + paramErrorMessage);
+    synchronized (this.a.jdField_b_of_type_JavaLangObject)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramzcf.a());
-      return;
+      if (!TextUtils.equals(paramxcn.a, this.a.jdField_b_of_type_JavaLangString))
+      {
+        yuk.d("DoodleEmojiManager", "cookie mismatch ! ignore this response : " + paramxel);
+        return;
+      }
+      if ((paramxel == null) || (paramErrorMessage.isFail()))
+      {
+        yuk.d("DoodleEmojiManager", "get emoji error : " + paramxel + ", " + paramErrorMessage);
+        return;
+      }
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    this.a.jdField_b_of_type_JavaLangString = paramxel.a;
+    this.a.a(TextUtils.isEmpty(paramxcn.a), paramxel, false);
   }
 }
 

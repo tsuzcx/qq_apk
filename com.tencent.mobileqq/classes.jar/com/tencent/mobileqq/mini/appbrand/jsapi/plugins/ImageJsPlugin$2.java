@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import anni;
-import bglp;
-import bgpa;
+import anzj;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 
 class ImageJsPlugin$2
@@ -12,9 +12,9 @@ class ImageJsPlugin$2
   
   public void run()
   {
-    bgpa localbgpa = bglp.a(this.this$0.jsPluginEngine.getActivityContext(), 230, anni.a(2131704524), anni.a(2131704523), anni.a(2131704525), anni.a(2131704522), new ImageJsPlugin.2.1(this), new ImageJsPlugin.2.2(this));
-    localbgpa.setCanceledOnTouchOutside(false);
-    localbgpa.show();
+    bhpc localbhpc = bhlq.a(this.this$0.jsPluginEngine.getActivityContext(), 230, anzj.a(2131704631), anzj.a(2131704630), anzj.a(2131704632), anzj.a(2131704629), new ImageJsPlugin.2.1(this), new ImageJsPlugin.2.2(this));
+    localbhpc.setCanceledOnTouchOutside(false);
+    localbhpc.show();
   }
 }
 

@@ -1,17 +1,45 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.ark.open.ArkAppInfo.AppTemplateView;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class agyy
-  extends ahbl
+public final class agyy
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  agyy(agwz paramagwz)
+  protected WeakReference<agyw> a;
+  
+  public agyy(WeakReference<agyw> paramWeakReference)
   {
-    super(paramagwz, null);
+    this.a = paramWeakReference;
   }
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    return new ahch(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    paramObject = (agyw)this.a.get();
+    if (paramObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAppContainer", 1, "onGetAppPathByName.wrapper == null");
+      }
+      return;
+    }
+    String str1 = paramObject.a(paramString);
+    if (paramAppPathInfo != null) {}
+    for (paramString = paramAppPathInfo.path;; paramString = null)
+    {
+      paramObject.a.getAppFromLocal = false;
+      paramObject.a.endOfGetApp = System.currentTimeMillis();
+      if ((paramAppPathInfo != null) && (paramAppPathInfo.appTempInfo != null))
+      {
+        String str2 = paramAppPathInfo.appTempInfo.template;
+        str2 = paramAppPathInfo.appTempInfo.templateView;
+        agyw.a(paramObject).view = str2;
+      }
+      agyw.a(paramAppPathInfo);
+      paramObject.a(paramString, paramInt, str1);
+      return;
+    }
   }
 }
 

@@ -1,28 +1,128 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
+import android.graphics.drawable.Animatable;
+import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class afnv
-  extends anvm
+  extends RecyclerView.Adapter<afnt>
 {
-  public afnv(TroopRequestActivity paramTroopRequestActivity) {}
+  private int jdField_a_of_type_Int;
+  List<afnu> jdField_a_of_type_JavaUtilList;
   
-  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
+  public afnv(List<afnu> paramList)
   {
-    if (this.a.isFinishing()) {
-      return;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+    this.jdField_a_of_type_Int = bdgb.c();
+  }
+  
+  private void a(int paramInt)
+  {
+    afnu localafnu = a(paramInt);
+    if (localafnu != null) {
+      if (localafnu.jdField_a_of_type_Boolean) {
+        break label44;
+      }
     }
-    if (paramBoolean)
+    label44:
+    for (boolean bool = true;; bool = false)
     {
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131718153), 0).a();
-      this.a.c.setVisibility(8);
+      if (a(localafnu, paramInt, bool)) {
+        afnr.a(this.jdField_a_of_type_Afnr).a(localafnu.jdField_a_of_type_Int);
+      }
       return;
     }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131718150), 0).a();
+  }
+  
+  public afnt a(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = afnr.a(this.jdField_a_of_type_Afnr).getLayoutInflater().inflate(2131562923, paramViewGroup, false);
+    return new afnt(this.jdField_a_of_type_Afnr, paramViewGroup);
+  }
+  
+  public afnu a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (afnu)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public void a(afnt paramafnt, int paramInt)
+  {
+    afnu localafnu = a(paramInt);
+    if (localafnu == null)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramafnt, paramInt, getItemId(paramInt));
+      return;
+    }
+    if (localafnu.jdField_a_of_type_Boolean)
+    {
+      paramafnt.b.setVisibility(0);
+      ViewCompat.setAccessibilityDelegate(paramafnt.jdField_a_of_type_ComTencentImageURLImageView, new afnw(this));
+      label54:
+      afnr.a(this.jdField_a_of_type_Afnr, paramafnt.jdField_a_of_type_ComTencentImageURLImageView, localafnu);
+      if (!localafnu.b) {
+        break label142;
+      }
+      paramafnt.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      ((Animatable)paramafnt.jdField_a_of_type_AndroidViewView.getBackground()).start();
+    }
+    for (;;)
+    {
+      paramafnt.itemView.setOnClickListener(new afny(this, paramInt));
+      break;
+      paramafnt.b.setVisibility(8);
+      ViewCompat.setAccessibilityDelegate(paramafnt.jdField_a_of_type_ComTencentImageURLImageView, new afnx(this));
+      break label54;
+      label142:
+      paramafnt.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      ((Animatable)paramafnt.jdField_a_of_type_AndroidViewView.getBackground()).stop();
+    }
+  }
+  
+  public void a(List<afnu> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public boolean a(afnu paramafnu, int paramInt, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Int == paramInt)
+    {
+      notifyItemChanged(paramInt);
+      return false;
+    }
+    paramafnu.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramafnu.jdField_a_of_type_Boolean) {
+      if (this.jdField_a_of_type_Int >= 0) {
+        break label46;
+      }
+    }
+    for (this.jdField_a_of_type_Int = paramInt;; this.jdField_a_of_type_Int = paramInt)
+    {
+      notifyItemChanged(paramInt);
+      return true;
+      label46:
+      paramafnu = a(this.jdField_a_of_type_Int);
+      if (paramafnu != null)
+      {
+        paramafnu.jdField_a_of_type_Boolean = false;
+        paramafnu.b = false;
+        notifyItemChanged(this.jdField_a_of_type_Int);
+      }
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

@@ -9,9 +9,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class cp
-  implements atve
+  implements aumz
 {
-  public cp(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity, anjx paramanjx) {}
+  public cp(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity, anvu paramanvu) {}
   
   public void a()
   {
@@ -68,10 +68,10 @@ public class cp
       }
     }
     if ((localObject2 != null) && (localObject2.size() > 0)) {
-      this.jdField_a_of_type_Anjx.a(localObject2, true);
+      this.jdField_a_of_type_Anvu.a(localObject2, true);
     }
     if ((localObject1 != null) && (localObject1.size() > 0)) {
-      this.jdField_a_of_type_Anjx.a(localObject1);
+      this.jdField_a_of_type_Anvu.a(localObject1);
     }
     LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity);
   }

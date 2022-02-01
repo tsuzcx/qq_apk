@@ -1,99 +1,31 @@
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
 
-public class atua
-  extends attx
+class atua
+  implements DialogInterface.OnClickListener
 {
-  private MessageForTroopFile a;
+  atua(atty paramatty, long paramLong, UUID paramUUID, ChatMessage paramChatMessage, Activity paramActivity) {}
   
-  public atua(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramQQAppInterface, paramChatMessage);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile = ((MessageForTroopFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-  }
-  
-  public long a()
-  {
-    bety localbety = bfsj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    if (localbety == null) {
-      return 0L;
-    }
-    return localbety.c;
-  }
-  
-  public attu a()
-  {
-    attz localattz = new attz(bfsj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile));
-    localattz.a(new atub(this));
-    return localattz;
-  }
-  
-  public String a()
-  {
-    bety localbety = bfsj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    if (localbety != null) {
-      return localbety.jdField_a_of_type_JavaLangString;
-    }
-    return "";
-  }
-  
-  public boolean a()
-  {
-    bety localbety = bfsj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.frienduin);
-    if (localbety == null)
+    switch (paramInt)
     {
-      QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload : file info is null. uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq + "]");
-      return false;
+    default: 
+      return;
+    case 0: 
+      paramDialogInterface = bgrn.a(this.jdField_a_of_type_Atty.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+      paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaUtilUUID));
+      this.jdField_a_of_type_Atty.c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      this.jdField_a_of_type_Atty.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_Atty.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atty.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+      return;
     }
-    QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload: uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq + "] fileId[" + localbety.e + "]");
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l);
-    localTroopFileTransferManager.a(localbety.e, localbety.g, localbety.c, localbety.h);
-    if ((localbety.b == 10) || (localbety.b == 9)) {
-      if (localbety.jdField_a_of_type_JavaUtilUUID != null) {
-        localTroopFileTransferManager.c(localbety.jdField_a_of_type_JavaUtilUUID);
-      }
-    }
-    for (;;)
-    {
-      return true;
-      QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload : resumeDownload error, infoId is null");
-      return false;
-      if (localbety.b != 7) {
-        break;
-      }
-      localTroopFileTransferManager.a(localbety.e, localbety.g, localbety.c, localbety.h);
-    }
-    QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload : can not handle file info status[" + localbety.b + ",download error");
-    return false;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.frienduin + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq;
-  }
-  
-  public boolean b()
-  {
-    bety localbety = bfsj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    if (localbety == null) {
-      QLog.i("TroopFileSaveModel<QFile>", 1, "stopDownload : file info is null. uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq + "]");
-    }
-    while ((localbety.b != 8) && (localbety.b != 9) && (localbety.b != 10)) {
-      return false;
-    }
-    long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.frienduin);
-    TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l).d(localbety.jdField_a_of_type_JavaUtilUUID);
-    return true;
-  }
-  
-  public boolean c()
-  {
-    bety localbety = bfsj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    return (localbety != null) && (localbety.b == 8);
+    new bfsf(this.jdField_a_of_type_Long, this.jdField_a_of_type_Atty.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity).a(this.jdField_a_of_type_JavaUtilUUID);
   }
 }
 

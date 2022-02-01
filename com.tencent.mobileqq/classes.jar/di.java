@@ -10,7 +10,7 @@ public class di
   {
     if ((paramList != null) && (paramList.size() > 0) && (paramString != null))
     {
-      ((anjx)paramQQAppInterface.a(8)).a((ArrayList)paramList, "printer", paramString.getBytes(), Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue());
+      ((anvu)paramQQAppInterface.a(8)).a((ArrayList)paramList, "printer", paramString.getBytes(), Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue());
       return true;
     }
     return false;

@@ -1,60 +1,22 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class wxx
-  extends wvq
-  implements wld<wzl, xbb>
+public final class wxx
+  extends QQUIEventReceiver<wxp, wvm>
 {
-  protected String a;
-  protected List<String> a;
-  
-  public wxx(String paramString, List<String> paramList)
+  public wxx(@NonNull wxp paramwxp)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
+    super(paramwxp);
   }
   
-  public void a()
+  public void a(@NonNull wxp paramwxp, @NonNull wvm paramwvm)
   {
-    wzl localwzl = new wzl();
-    localwzl.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    wlb.a().a(localwzl, this);
+    paramwxp.a.a(paramwvm.a);
   }
   
-  public void a(@NonNull wzl paramwzl, @Nullable xbb paramxbb, @NonNull ErrorMessage paramErrorMessage)
+  public Class acceptEventClass()
   {
-    paramwzl = new wxy();
-    if ((paramxbb == null) || (paramErrorMessage.isFail()))
-    {
-      c();
-      wfo.a().dispatch(paramwzl);
-      return;
-    }
-    b();
-    paramxbb.jdField_a_of_type_JavaUtilList = ((wpj)wpm.a(5)).a(paramxbb.jdField_a_of_type_JavaUtilList);
-    paramwzl.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramxbb = paramxbb.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramxbb.hasNext())
-    {
-      paramErrorMessage = (StoryVideoItem)paramxbb.next();
-      paramErrorMessage = new ygo(paramErrorMessage.mVid, paramErrorMessage);
-      paramwzl.jdField_a_of_type_JavaUtilList.add(paramErrorMessage);
-    }
-    wfo.a().dispatch(paramwzl);
-  }
-  
-  public String toString()
-  {
-    return "VidToSimpleInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + ", mCollectionId=" + this.jdField_a_of_type_JavaLangString + '}';
+    return wvm.class;
   }
 }
 

@@ -1,14 +1,29 @@
-import java.io.File;
-import java.io.FileFilter;
-
 class bpjb
-  implements FileFilter
+  implements bpky
 {
   bpjb(bpja parambpja) {}
   
-  public boolean accept(File paramFile)
+  public void a(int paramInt)
   {
-    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
+    if (paramInt == 0)
+    {
+      bpja.a(this.a, true);
+      bpja.a(this.a, 1, true, false);
+      bozr.a().c((int)(bpja.a(this.a) * 100.0F));
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    bpja.a(this.a, false);
+    if (bpja.a(this.a)) {
+      bpja.a(this.a, 2, bpja.b(this.a), false);
+    }
+    for (;;)
+    {
+      bozr.a().d((int)(bpja.b(this.a) * 100.0F));
+      return;
+      bpja.a(this.a, 2, bpja.b(this.a), true);
+    }
   }
 }
 

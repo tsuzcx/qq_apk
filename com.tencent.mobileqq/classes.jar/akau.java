@@ -1,18 +1,41 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
+import mqq.os.MqqHandler;
 
 public class akau
-  extends akaj
+  extends AccountObserver
 {
-  public akau(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
-  }
+  public akau(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  protected void y()
+  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
   {
-    this.a = "MiniPieForNearby";
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
+      if (paramString2 == null)
+      {
+        i = 0;
+        QLog.e("Q.history.C2CAllFragment", 2, i);
+      }
+    }
+    else
+    {
+      paramString1 = this.a.a.obtainMessage(39);
+      if (!paramBoolean) {
+        break label103;
+      }
+    }
+    label103:
+    for (int i = 1;; i = 0)
+    {
+      paramString1.arg1 = i;
+      paramString1.arg2 = 0;
+      this.a.a.sendMessage(paramString1);
+      return;
+      i = paramString2.length();
+      break;
+    }
   }
 }
 

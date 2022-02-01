@@ -1,15 +1,9 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-
-class bomn
-  extends AnimatorListenerAdapter
+public class bomn
+  extends boml
 {
-  bomn(boml paramboml) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  bomm a()
   {
-    this.a.b.setVisibility(8);
+    return new bomo();
   }
 }
 

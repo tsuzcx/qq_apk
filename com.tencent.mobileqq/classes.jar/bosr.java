@@ -1,21 +1,44 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Color;
-import android.view.View;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+import java.util.ArrayList;
+import java.util.List;
 
-final class bosr
-  implements ValueAnimator.AnimatorUpdateListener
+public class bosr
+  extends BaseFilter
 {
-  final int jdField_a_of_type_Int = Color.red(this.d);
-  final int b = Color.green(this.d);
-  final int c = Color.blue(this.d);
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private List<Frame> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  bosr(int paramInt, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bosr()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  }
+  
+  public Frame a()
+  {
+    float f1 = 2.0F / this.jdField_a_of_type_JavaUtilList.size();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      float f2 = -1.0F + i * f1;
+      float f3 = f2 + f1;
+      setPositions(new float[] { f2, -1.0F, f2, 1.0F, f3, 1.0F, f3, -1.0F });
+      Frame localFrame = (Frame)this.jdField_a_of_type_JavaUtilList.get(i);
+      RenderProcess(localFrame.getTextureId(), localFrame.width, localFrame.height, this.jdField_a_of_type_JavaUtilList.size() * 64, 64, -1, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+      i += 1;
+    }
+    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+  }
+  
+  public void a(List<Frame> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void clearGLSLSelf()
+  {
+    super.clearGLSLSelf();
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
   }
 }
 

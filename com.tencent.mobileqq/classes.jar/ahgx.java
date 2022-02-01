@@ -1,11 +1,13 @@
-import android.content.Context;
-import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface ahgx
+final class ahgx
+  implements ahky
 {
-  public abstract void a(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, String paramString);
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  {
+    return attw.a(paramQQAppInterface, paramChatMessage);
+  }
 }
 
 

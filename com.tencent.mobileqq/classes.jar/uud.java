@@ -1,23 +1,16 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class uud
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnClickListener
 {
-  uud(uuc paramuuc) {}
+  uud(uub paramuub) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    upe.b("WSVerticalVideoOperationRightItemView", "itemView onDoubleTap");
-    uuc.a(this.a, paramMotionEvent);
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    upe.b("WSVerticalVideoOperationRightItemView", "itemView onSingleTapConfirmed");
-    uuc.a(this.a);
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    uub.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

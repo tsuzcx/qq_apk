@@ -1,13 +1,10 @@
-public class aota
+public abstract interface aota
 {
-  public long a;
-  public boolean a;
+  public abstract void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3);
   
-  public aota(long paramLong, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public abstract void b(int paramInt, boolean paramBoolean, Object paramObject);
+  
+  public abstract void c(int paramInt, boolean paramBoolean, Object paramObject);
 }
 
 

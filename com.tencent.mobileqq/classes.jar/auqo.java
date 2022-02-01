@@ -1,20 +1,18 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class auqo
-  implements anil
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public void a() {}
+  public auqo(QFileDebugSettingFragment paramQFileDebugSettingFragment, QQAppInterface paramQQAppInterface) {}
   
-  public void a(auqr paramauqr) {}
-  
-  protected void a(boolean paramBoolean, auqr paramauqr) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBoolean, (auqr)paramObject);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

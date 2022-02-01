@@ -1,60 +1,35 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
-public class nfb
-  extends RecyclerView.Adapter<nfe>
+class nfb
+  implements EIPCOnGetConnectionListener
 {
-  private List<myi> jdField_a_of_type_JavaUtilList = new ArrayList(0);
-  
-  public nfb(List<myi> paramList)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  public myi a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (myi)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public nfe a(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558726, paramViewGroup, false);
-    return new nfe(this, paramViewGroup, (ImageView)paramViewGroup.findViewById(2131363145), (ImageView)paramViewGroup.findViewById(2131363146), (TextView)paramViewGroup.findViewById(2131363147));
-  }
-  
-  public void a(nfe paramnfe, int paramInt)
-  {
-    myi localmyi = a(paramInt);
-    paramnfe.jdField_a_of_type_Myi = localmyi;
-    new.a(localmyi.c, paramnfe.jdField_a_of_type_AndroidWidgetImageView);
-    if ((localmyi.b != null) && (localmyi.b.length() > 0)) {
-      new.a(localmyi.b, paramnfe.b);
-    }
-    for (;;)
+    if (paramEIPCConnection == null) {}
+    do
     {
-      paramnfe.itemView.setOnClickListener(new nfc(this, localmyi));
-      paramnfe.itemView.setOnTouchListener(new nfd(this));
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramnfe, paramInt, getItemId(paramInt));
       return;
-      paramnfe.jdField_a_of_type_AndroidWidgetTextView.setText(localmyi.a);
-      paramnfe.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
+      if (QLog.isDevelopLevel()) {
+        QLog.i("AVGameServerIPCModule", 4, "onConnectBind, [" + paramEIPCConnection.procName + "]");
+      }
+    } while (!TextUtils.equals(paramEIPCConnection.procName, "com.tencent.mobileqq:avgame"));
+    nez.a(1);
   }
   
-  public int getItemCount()
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    if (paramEIPCConnection == null) {}
+    do
+    {
+      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("AVGameServerIPCModule", 4, "onConnectUnbind, [" + paramEIPCConnection.procName + "]");
+      }
+    } while (!TextUtils.equals(paramEIPCConnection.procName, "com.tencent.mobileqq:avgame"));
+    nez.a(2);
   }
 }
 

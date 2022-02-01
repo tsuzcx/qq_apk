@@ -1,12 +1,19 @@
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class bgcn
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
+  public bgcn(ReciteRecordLayout paramReciteRecordLayout) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a(this.a.a);
+    if (ReciteRecordLayout.a(this.a) != null) {
+      ReciteRecordLayout.a(this.a).f();
+    }
+  }
 }
 
 

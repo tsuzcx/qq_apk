@@ -1,26 +1,82 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.videostory.video.FrameVideoHelper;
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
 class akiw
-  implements aaxg
+  implements blih
 {
-  akiw(akiv paramakiv, LocalMediaInfo paramLocalMediaInfo, FrameVideoHelper paramFrameVideoHelper) {}
+  int jdField_a_of_type_Int = 0;
+  int b;
+  int c = 0;
   
-  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
+  akiw(akir paramakir)
   {
-    ((NewPhotoListActivity)this.jdField_a_of_type_Akiv.a.mActivity).cancleProgressDailog();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", paramLong);
-    localBundle.putBoolean("VIDEO_STORY_PHOTO_LIST_TO_EDIT", true);
-    localBundle.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", paramArrayList);
-    ((NewPhotoListActivity)this.jdField_a_of_type_Akiv.a.mActivity).getIntent().putExtra("VIDEO_STORY_MEDIA_TYPE", 100);
-    akit.a(this.jdField_a_of_type_Akiv.a, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, localBundle);
-    this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.a();
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    this.jdField_b_of_type_Int = paramInt3;
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("C2CMessageSearchDialog", 2, "onScrollStateChanged, reach bottom, scrollState " + paramInt + " firstVisibleItem: " + this.c + ", lastItem:" + this.jdField_a_of_type_Int + ", totalItemCount = " + this.jdField_b_of_type_Int + ", mIsComplete: " + this.jdField_a_of_type_Akir.d + ", requesting:" + this.jdField_a_of_type_Akir.jdField_c_of_type_Boolean + ", mSearchMode: " + this.jdField_a_of_type_Akir.jdField_b_of_type_Int + ", mCurrentKeyword: " + this.jdField_a_of_type_Akir.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_b_of_type_Int == 0) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.jdField_a_of_type_Int != this.jdField_b_of_type_Int) || (paramInt != 0));
+      if ((this.c != 0) && (!this.jdField_a_of_type_Akir.jdField_c_of_type_Boolean))
+      {
+        this.jdField_a_of_type_Akir.jdField_c_of_type_Boolean = true;
+        if (this.jdField_a_of_type_Akir.jdField_b_of_type_Int == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("C2CMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageLocal >>>>> isComplete: " + this.jdField_a_of_type_Akir.d);
+          }
+          this.jdField_a_of_type_Akir.jdField_a_of_type_Akip.a(this.jdField_a_of_type_Akir.jdField_a_of_type_Long, this.jdField_a_of_type_Akir.jdField_a_of_type_JavaLangString, 2);
+          this.jdField_a_of_type_Akir.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Akir.jdField_a_of_type_AndroidContentContext.getString(2131717756));
+          this.jdField_a_of_type_Akir.jdField_b_of_type_AndroidViewView.setVisibility(0);
+          this.jdField_a_of_type_Akir.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373040).setVisibility(0);
+          this.jdField_a_of_type_Akir.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("C2CMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageInCloud >>>>> isComplete: " + this.jdField_a_of_type_Akir.d);
+        }
+        if (this.jdField_a_of_type_Akir.d)
+        {
+          this.jdField_a_of_type_Akir.jdField_c_of_type_AndroidWidgetTextView.setText(anzj.a(2131700197));
+          this.jdField_a_of_type_Akir.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373040).setVisibility(8);
+          this.jdField_a_of_type_Akir.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          this.jdField_a_of_type_Akir.jdField_b_of_type_AndroidViewView.setVisibility(0);
+          return;
+        }
+        this.jdField_a_of_type_Akir.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Akir.jdField_a_of_type_AndroidContentContext.getString(2131717755));
+        this.jdField_a_of_type_Akir.jdField_b_of_type_AndroidViewView.setVisibility(0);
+        this.jdField_a_of_type_Akir.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373040).setVisibility(0);
+        this.jdField_a_of_type_Akir.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.jdField_a_of_type_Akir.jdField_a_of_type_Long = System.currentTimeMillis();
+        this.jdField_a_of_type_Akir.b(2);
+        VipUtils.a(this.jdField_a_of_type_Akir.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history", "ChatSearch", "Slip_resultup", 0, 0, new String[0]);
+        return;
+      }
+    } while ((this.c != 0) || (this.jdField_a_of_type_Akir.jdField_c_of_type_Boolean) || (!this.jdField_a_of_type_Akir.d) || (this.jdField_a_of_type_Akir.jdField_b_of_type_Int != 1));
+    this.jdField_a_of_type_Akir.jdField_c_of_type_AndroidWidgetTextView.setText(anzj.a(2131700202));
+    this.jdField_a_of_type_Akir.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373040).setVisibility(8);
+    this.jdField_a_of_type_Akir.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_Akir.jdField_b_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

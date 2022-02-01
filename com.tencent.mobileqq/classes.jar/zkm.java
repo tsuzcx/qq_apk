@@ -1,14 +1,14 @@
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
-final class zkm
-  extends ThreadLocal<DateFormat>
+public abstract interface zkm
 {
-  protected DateFormat a()
-  {
-    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(SlideItemInfo paramSlideItemInfo);
+  
+  public abstract void a(String paramString);
 }
 
 

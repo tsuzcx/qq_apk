@@ -1,18 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
-class aieo
-  implements DialogInterface.OnClickListener
+public class aieo
+  extends RecyclerView.OnScrollListener
 {
-  aieo(aidp paramaidp, PublicAccountInfo paramPublicAccountInfo, anrs paramanrs) {}
+  public aieo(PhotoListPanel paramPhotoListPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs = false;
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected = true;
-    this.jdField_a_of_type_Anrs.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
-    this.jdField_a_of_type_Aidp.a(2, null);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.l = paramInt;
   }
 }
 

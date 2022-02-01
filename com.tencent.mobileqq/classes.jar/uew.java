@@ -1,30 +1,30 @@
-import android.graphics.drawable.Drawable;
+import NS_KING_SOCIALIZE_META.stMetaPerson;
+import UserGrowth.stSimpleComment;
+import UserGrowth.stSimpleMetaComment;
+import UserGrowth.stSimpleMetaPerson;
+import android.text.TextUtils;
 
 public class uew
-  implements arxd
 {
-  public void a(arxg paramarxg) {}
-  
-  public void a(arxg paramarxg1, arxg paramarxg2, Drawable paramDrawable) {}
-  
-  public boolean a(arxg paramarxg)
+  public static stMetaPerson a(stSimpleMetaPerson paramstSimpleMetaPerson)
   {
-    return false;
+    return new stMetaPerson(paramstSimpleMetaPerson.id, paramstSimpleMetaPerson.type, paramstSimpleMetaPerson.uid, paramstSimpleMetaPerson.createtime, paramstSimpleMetaPerson.nick, paramstSimpleMetaPerson.avatar, paramstSimpleMetaPerson.sex, "", "", "", "", "", "", -1, 0, "");
   }
   
-  public void b() {}
-  
-  public void b(arxg paramarxg) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
+  public static stSimpleComment a(stSimpleMetaComment paramstSimpleMetaComment, stSimpleMetaPerson paramstSimpleMetaPerson)
+  {
+    stSimpleMetaPerson localstSimpleMetaPerson = paramstSimpleMetaComment.poster;
+    if (TextUtils.isEmpty(localstSimpleMetaPerson.nick)) {}
+    for (;;)
+    {
+      return new stSimpleComment(paramstSimpleMetaComment.id, paramstSimpleMetaComment.wording, paramstSimpleMetaComment.poster_id, a(paramstSimpleMetaPerson), paramstSimpleMetaComment.dingNum, paramstSimpleMetaComment.isDing, paramstSimpleMetaComment.feedId, null);
+      paramstSimpleMetaPerson = localstSimpleMetaPerson;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uew
  * JD-Core Version:    0.7.0.1
  */

@@ -7,15 +7,15 @@ import java.util.HashMap;
 
 public class Packet
 {
-  private String SSOCommand;
   private String account = "0";
   private HashMap<String, Object> attributes = new HashMap();
   public boolean autoResend;
   private UniPacket client = new UniPacket(true);
   private boolean noResponse;
-  public boolean quickSendEnable;
+  public boolean quickSendEnable = false;
   public int quickSendStrategy = 0;
   private byte[] sendData;
+  private String ssoCommand;
   private long timeout = 30000L;
   
   Packet(String paramString)
@@ -92,7 +92,7 @@ public class Packet
   
   public void setSSOCommand(String paramString)
   {
-    this.SSOCommand = paramString;
+    this.ssoCommand = paramString;
   }
   
   public void setServantName(String paramString)
@@ -107,9 +107,9 @@ public class Packet
   
   public ToServiceMsg toMsg()
   {
-    if (this.SSOCommand != null)
+    if (this.ssoCommand != null)
     {
-      ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.account, this.SSOCommand);
+      ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.account, this.ssoCommand);
       if (this.timeout > 0L) {
         localToServiceMsg.setTimeout(this.timeout);
       }

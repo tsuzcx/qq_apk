@@ -1,8 +1,6 @@
 public abstract interface agra
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString);
 }
 
 

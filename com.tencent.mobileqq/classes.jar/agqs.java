@@ -1,9 +1,10 @@
-import com.tencent.biz.pubaccount.ecshopassit.view.QggMinusOneViewTitleLayout;
-
-public class agqs
-  extends agqe
+final class agqs
+  implements agql<agqr>
 {
-  public QggMinusOneViewTitleLayout a;
+  public agqr a(agqi paramagqi)
+  {
+    return new agqr(paramagqi);
+  }
 }
 
 

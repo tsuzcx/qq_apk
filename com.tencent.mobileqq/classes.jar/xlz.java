@@ -1,129 +1,93 @@
-import android.content.Context;
-import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.ViewConfigurationCompat;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
+import android.graphics.PorterDuff.Mode;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.VideoCoverImgBorder;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import java.util.TimeZone;
 
-public class xlz
+class xlz
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private VideoCoverImgBorder jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder;
   private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = -1;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private float d;
   
-  public xlz(Context paramContext, String paramString)
+  public xlz(xly paramxly, View paramView)
   {
-    this.jdField_c_of_type_Int = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(paramContext));
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder = ((VideoCoverImgBorder)paramView.findViewById(2131363571));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378847));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setOnClickListener(new xma(this, paramxly));
   }
   
-  public int a(MotionEvent paramMotionEvent)
+  private void a(String paramString, int paramInt)
   {
-    int i = 3;
-    int j = paramMotionEvent.getAction() & 0xFF;
-    if ((j == 3) || (j == 1))
+    if (TextUtils.isEmpty(paramString))
     {
-      Log.v(this.jdField_a_of_type_JavaLangString, "Intercept done!");
-      i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Int = -1;
-      return i;
+      zps.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder, paramString, VideoCoverListBar.a(this.jdField_a_of_type_Xly.a), VideoCoverListBar.a(this.jdField_a_of_type_Xly.a), VideoCoverListBar.c(this.jdField_a_of_type_Xly.a), VideoCoverListBar.d(this.jdField_a_of_type_Xly.a), "VideoCoverList");
+      return;
     }
-    if (j != 0)
+    zps.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder, paramString, VideoCoverListBar.a(this.jdField_a_of_type_Xly.a), VideoCoverListBar.b(this.jdField_a_of_type_Xly.a), VideoCoverListBar.c(this.jdField_a_of_type_Xly.a), VideoCoverListBar.d(this.jdField_a_of_type_Xly.a), "VideoCoverList");
+  }
+  
+  public void a(int paramInt)
+  {
+    yuk.a("Q.qqstory.player:VideoCoverListBar", "bindView, position=%d", Integer.valueOf(paramInt));
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Xly.a(paramInt);
+    Object localObject = VideoCoverListBar.a(this.jdField_a_of_type_Xly.a).b(this.jdField_a_of_type_JavaLangString);
+    if (localObject == null)
     {
-      if (this.jdField_a_of_type_Int != 0)
-      {
-        Log.v(this.jdField_a_of_type_JavaLangString, "Intercept returning true! " + this.jdField_a_of_type_Int);
-        return this.jdField_a_of_type_Int;
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        Log.v(this.jdField_a_of_type_JavaLangString, "Intercept returning false!");
-        return 0;
-      }
-    }
-    switch (j)
-    {
+      localObject = new StoryVideoItem();
+      ((StoryVideoItem)localObject).mVid = this.jdField_a_of_type_JavaLangString;
     }
     for (;;)
     {
-      return this.jdField_a_of_type_Int;
-      j = this.jdField_b_of_type_Int;
-      if (j != -1)
+      if (!TextUtils.isEmpty(((StoryVideoItem)localObject).getThumbUrl()))
       {
-        j = MotionEventCompat.findPointerIndex(paramMotionEvent, j);
-        float f1 = MotionEventCompat.getX(paramMotionEvent, j);
-        float f3 = f1 - this.jdField_a_of_type_Float;
-        float f4 = Math.abs(f3);
-        float f2 = MotionEventCompat.getY(paramMotionEvent, j);
-        float f5 = f2 - this.jdField_b_of_type_Float;
-        float f6 = Math.abs(f5);
-        Log.v(this.jdField_a_of_type_JavaLangString, "Moved x to " + f1 + "," + f2 + " diff=" + f4 + "," + f6 + ", mTouchSlop=" + this.jdField_c_of_type_Int);
-        if ((f4 > this.jdField_c_of_type_Int) && (f4 > f6))
-        {
-          Log.v(this.jdField_a_of_type_JavaLangString, "Starting drag horizontal !");
-          if (f3 > 0.0F)
-          {
-            label325:
-            this.jdField_a_of_type_Int = i;
-            if (f3 <= 0.0F) {
-              break label368;
-            }
-          }
-          label368:
-          for (f1 = this.jdField_c_of_type_Float + this.jdField_c_of_type_Int;; f1 = this.jdField_c_of_type_Float - this.jdField_c_of_type_Int)
-          {
-            this.jdField_a_of_type_Float = f1;
-            this.jdField_b_of_type_Float = f2;
-            break;
-            i = 1;
-            break label325;
-          }
+        a(zpp.a(((StoryVideoItem)localObject).getThumbUrl()), paramInt);
+        if (!((StoryVideoItem)localObject).isUploadFail()) {
+          break label177;
         }
-        if ((f6 > this.jdField_c_of_type_Int) && (f6 > f4))
-        {
-          Log.v(this.jdField_a_of_type_JavaLangString, "Starting drag vertical !");
-          if (f5 > 0.0F)
-          {
-            i = 4;
-            label421:
-            this.jdField_a_of_type_Int = i;
-            this.jdField_a_of_type_Float = f1;
-            if (f5 <= 0.0F) {
-              break label464;
-            }
-          }
-          label464:
-          for (f1 = this.d + this.jdField_c_of_type_Int;; f1 = this.d - this.jdField_c_of_type_Int)
-          {
-            this.jdField_b_of_type_Float = f1;
-            break;
-            i = 2;
-            break label421;
-          }
-          f1 = paramMotionEvent.getX();
-          this.jdField_c_of_type_Float = f1;
-          this.jdField_a_of_type_Float = f1;
-          f1 = paramMotionEvent.getY();
-          this.d = f1;
-          this.jdField_b_of_type_Float = f1;
-          this.jdField_b_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, 0);
-          this.jdField_a_of_type_Boolean = false;
-          this.jdField_a_of_type_Int = 0;
-          if (this.jdField_a_of_type_AndroidViewMotionEvent != null) {
-            this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
-          }
-          this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-          Log.v(this.jdField_a_of_type_JavaLangString, "Down at " + this.jdField_a_of_type_Float + "," + this.jdField_b_of_type_Float + " mIsBeingDragged=" + this.jdField_a_of_type_Int + "mIsUnableToDrag=" + this.jdField_a_of_type_Boolean);
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setState(0);
+      }
+      for (;;)
+      {
+        if ((!VideoCoverListBar.a(this.jdField_a_of_type_Xly.a).a()) && (!VideoCoverListBar.a(this.jdField_a_of_type_Xly.a).b())) {
+          break label246;
         }
+        this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.clearColorFilter();
+        return;
+        a(zpp.a(yuh.a(((StoryVideoItem)localObject).mVideoLocalThumbnailPath)), paramInt);
+        break;
+        label177:
+        if (TextUtils.isEmpty(VideoCoverListBar.a(this.jdField_a_of_type_Xly.a))) {
+          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setState(2);
+        } else if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, VideoCoverListBar.a(this.jdField_a_of_type_Xly.a))) {
+          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setState(1);
+        } else {
+          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setState(2);
+        }
+      }
+      label246:
+      if ((xiz.b((StoryVideoItem)localObject)) || (((StoryVideoItem)localObject).mErrorCode != 0))
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setColorFilter(1711276032, PorterDuff.Mode.SRC_ATOP);
+        return;
+      }
+      long l2 = ((StoryVideoItem)localObject).mCreateTime;
+      long l1;
+      if (((StoryVideoItem)localObject).mTimeZoneOffsetMillis != 2147483647L) {
+        l1 = ((StoryVideoItem)localObject).mTimeZoneOffsetMillis;
+      }
+      for (boolean bool = true;; bool = false)
+      {
+        localObject = yor.a(l2, l1, bool, false, true);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setColorFilter(1711276032, PorterDuff.Mode.SRC_ATOP);
+        return;
+        l1 = TimeZone.getDefault().getRawOffset();
       }
     }
   }

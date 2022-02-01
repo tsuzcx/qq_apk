@@ -1,13 +1,18 @@
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
 class xhh
-  implements xmd
+  extends xft
 {
-  xhh(xhf paramxhf) {}
+  xhh(xgp paramxgp, StoryVideoItem paramStoryVideoItem, xhy paramxhy)
+  {
+    super(paramStoryVideoItem);
+  }
   
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3) {}
+  public boolean b()
+  {
+    this.jdField_a_of_type_Xhy.e = ((String)a("result"));
+    return true;
+  }
 }
 
 

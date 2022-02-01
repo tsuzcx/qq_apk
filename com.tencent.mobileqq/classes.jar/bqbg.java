@@ -1,18 +1,21 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.widget.TextView;
 
-public class bqbg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class bqbg
+  implements DialogInterface.OnCancelListener
 {
-  public bqbg(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bqbg(bqav parambqav) {}
   
-  public void onGlobalLayout()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    ThreadManager.post(this.a, 8, null, false);
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    bqav.b(this.a).R();
+    bqav.a(this.a).setVisibility(0);
+    if (bqav.a(this.a) != null) {
+      bqav.a(this.a).startAnimation(bqav.a(this.a));
+    }
+    bqav.c(this.a);
+    bqav.a(this.a, true);
   }
 }
 

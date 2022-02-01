@@ -1,22 +1,31 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class bppl
-  extends Handler
+public class bppl
+  implements bppm
 {
-  private WeakReference<bppk> a;
+  private File a;
   
-  public bppl(WeakReference<bppk> paramWeakReference)
+  public void a()
   {
-    this.a = paramWeakReference;
+    try
+    {
+      bppq localbppq = (bppq)bplq.a().c(10);
+      localbppq.a(this.a);
+      localbppq.a(7000.0F);
+      localbppq.c();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("HumVoiceRecognizer", 2, "recognize: invoked. info: throwable = " + localThrowable);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(File paramFile)
   {
-    if (this.a.get() != null) {
-      bppk.a((bppk)this.a.get());
-    }
+    this.a = paramFile;
   }
 }
 

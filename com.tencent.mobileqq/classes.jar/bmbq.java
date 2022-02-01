@@ -1,187 +1,203 @@
-import android.opengl.GLES20;
-import android.opengl.Matrix;
-import java.nio.FloatBuffer;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class bmbq
+public class bmbq
 {
-  protected int a;
-  protected bmbj a;
-  protected bmbr a;
-  protected bmbu a;
-  protected FloatBuffer a;
-  protected boolean a;
-  protected float[] a;
-  protected float b;
-  protected int b;
-  protected FloatBuffer b;
-  protected float[] b;
-  protected float c;
-  protected int c;
-  protected float d;
-  protected int d;
-  protected float e;
-  protected int e;
-  protected float f;
-  protected int f;
-  protected int g = 1;
-  protected int h;
-  protected int i;
+  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+  private static final Map<String, String> jdField_a_of_type_JavaUtilMap;
+  public static volatile boolean a;
+  private static Map<String, bmbr> b;
   
-  public bmbq(boolean paramBoolean)
+  static
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[16];
-    this.jdField_b_of_type_ArrayOfFloat = new float[16];
-    this.jdField_d_of_type_Float = 1.0F;
-    this.jdField_f_of_type_Float = 360.0F;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    jdField_a_of_type_JavaUtilArrayList.add("index");
+    jdField_a_of_type_JavaUtilArrayList.add("fav");
+    jdField_a_of_type_JavaUtilArrayList.add("category");
+    jdField_a_of_type_JavaUtilArrayList.add("more");
+    jdField_a_of_type_JavaUtilArrayList.add("group");
+    jdField_a_of_type_JavaUtilMap = new HashMap(5);
+    jdField_a_of_type_JavaUtilMap.put("NavConfig", "index");
+    jdField_a_of_type_JavaUtilMap.put("FavNavConfig", "fav");
+    jdField_a_of_type_JavaUtilMap.put("CateNavConfig", "category");
+    jdField_a_of_type_JavaUtilMap.put("MoreNavConfig", "more");
+    jdField_a_of_type_JavaUtilMap.put("GroupNavConfig", "group");
+    jdField_a_of_type_Boolean = a();
   }
   
-  public float a()
+  public static File a()
   {
-    return this.jdField_f_of_type_Float;
+    return new File(BaseApplicationImpl.getApplication().getFilesDir(), "comic_config/");
   }
   
-  public abstract int a();
-  
-  public FloatBuffer a()
+  public static String a(String paramString)
   {
-    return this.jdField_a_of_type_JavaNioFloatBuffer;
-  }
-  
-  protected abstract void a();
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_d_of_type_Float = paramFloat;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_b_of_type_Float += paramFloat1;
-    this.jdField_c_of_type_Float += paramFloat2;
-  }
-  
-  public void a(int paramInt)
-  {
-    a();
-    if ((this.jdField_a_of_type_JavaNioFloatBuffer == null) || (this.jdField_b_of_type_JavaNioFloatBuffer == null)) {
-      b();
+    if (jdField_a_of_type_Boolean) {
+      return new File(c(), paramString).getAbsolutePath();
     }
-    c(paramInt);
-    e();
-    f();
-    g();
+    return null;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public static List<bmbr> a()
   {
-    this.h = paramInt1;
-    this.i = paramInt2;
-  }
-  
-  public void a(bmbj parambmbj)
-  {
-    this.jdField_a_of_type_Bmbj = parambmbj;
-  }
-  
-  public void a(bmbr parambmbr)
-  {
-    this.jdField_a_of_type_Bmbr = parambmbr;
-  }
-  
-  public void a(bmbu parambmbu)
-  {
-    this.jdField_a_of_type_Bmbu = parambmbu;
-  }
-  
-  protected float[] a()
-  {
-    float[] arrayOfFloat = new float[16];
-    Matrix.setIdentityM(arrayOfFloat, 0);
-    Matrix.multiplyMM(arrayOfFloat, 0, this.jdField_b_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_ArrayOfFloat, 0);
-    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-    return arrayOfFloat;
-  }
-  
-  public abstract int b();
-  
-  public FloatBuffer b()
-  {
-    return this.jdField_b_of_type_JavaNioFloatBuffer;
-  }
-  
-  protected abstract void b();
-  
-  public void b(float paramFloat)
-  {
-    this.jdField_e_of_type_Float = paramFloat;
-    if (this.jdField_e_of_type_Int == 1)
+    Object localObject = a();
+    if ((localObject != null) && (!((Map)localObject).isEmpty()))
     {
-      if ((this instanceof bmbp)) {
-        this.jdField_d_of_type_Float = 0.5228754F;
+      ArrayList localArrayList = new ArrayList();
+      localObject = ((Map)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        bmbr localbmbr = (bmbr)((Iterator)localObject).next();
+        if (localbmbr.jdField_a_of_type_Int >= 0) {
+          localArrayList.add(localbmbr);
+        }
+      }
+      Collections.sort(localArrayList);
+      return localArrayList;
+    }
+    return null;
+  }
+  
+  public static Map<String, bmbr> a()
+  {
+    if (b == null) {
+      a();
+    }
+    return b;
+  }
+  
+  public static JSONObject a()
+  {
+    String str = bhmi.a(new File(a(), "vipComic_nav_config.json"));
+    if (!TextUtils.isEmpty(str)) {
+      return new JSONObject(str);
+    }
+    return null;
+  }
+  
+  public static void a()
+  {
+    for (;;)
+    {
+      int i;
+      try
+      {
+        JSONObject localJSONObject1 = a();
+        if (localJSONObject1 != null)
+        {
+          if (b != null) {
+            b.clear();
+          }
+          b = new HashMap();
+          Iterator localIterator = localJSONObject1.keys();
+          if (localIterator.hasNext())
+          {
+            String str = (String)localIterator.next();
+            Object localObject = localJSONObject1.optJSONArray(str);
+            if ((localObject == null) || (((JSONArray)localObject).length() <= 0)) {
+              continue;
+            }
+            i = ((JSONArray)localObject).length() - 1;
+            if (i < 0) {
+              continue;
+            }
+            JSONObject localJSONObject2 = ((JSONArray)localObject).optJSONObject(i);
+            if ((localJSONObject2 == null) || (!birz.a(localJSONObject2, str))) {
+              break label247;
+            }
+            localObject = new bmbr();
+            ((bmbr)localObject).jdField_a_of_type_JavaLangString = localJSONObject2.optString("tabKey");
+            if ((TextUtils.isEmpty(((bmbr)localObject).jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_JavaUtilMap.containsKey(str))) {
+              ((bmbr)localObject).jdField_a_of_type_JavaLangString = ((String)jdField_a_of_type_JavaUtilMap.get(str));
+            }
+            ((bmbr)localObject).jdField_a_of_type_Int = localJSONObject2.optInt("sequence");
+            ((bmbr)localObject).b = localJSONObject2.optString("tabName");
+            ((bmbr)localObject).c = localJSONObject2.optString("tabUrl");
+            ((bmbr)localObject).d = localJSONObject2.optString("tabIcon");
+            b.put(str, localObject);
+            continue;
+          }
+        }
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.e("VipComicNavConfigHelper", 1, localJSONException, new Object[0]);
+      }
+      label247:
+      i -= 1;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (a()) {
+      a();
+    }
+    for (;;)
+    {
+      if (!b()) {
+        ((VasQuickUpdateManager)paramQQAppInterface.getManager(184)).downloadItem(100L, "vipComic_nav_tabIcon.zip", "helper");
+      }
+      return;
+      ((VasQuickUpdateManager)paramQQAppInterface.getManager(184)).downloadItem(100L, "vipComic_nav_config.json", "helper");
+    }
+  }
+  
+  public static boolean a()
+  {
+    return b().exists();
+  }
+  
+  public static File b()
+  {
+    return new File(a(), "vipComic_nav_config.json");
+  }
+  
+  public static boolean b()
+  {
+    jdField_a_of_type_Boolean = c();
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static File c()
+  {
+    return new File(a(), "tab_icons/");
+  }
+  
+  private static boolean c()
+  {
+    Object localObject1 = a();
+    if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
+    {
+      Object localObject2 = c().list();
+      if ((localObject2 != null) && (localObject2.length > 0))
+      {
+        localObject2 = Arrays.asList((Object[])localObject2);
+        localObject1 = ((Map)localObject1).values().iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          if (!((List)localObject2).contains(((bmbr)((Iterator)localObject1).next()).d)) {
+            return false;
+          }
+        }
+        return true;
       }
     }
-    else {
-      return;
-    }
-    this.jdField_d_of_type_Float = 0.4142652F;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_f_of_type_Int = paramInt;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public abstract void c();
-  
-  protected void c(int paramInt)
-  {
-    this.jdField_b_of_type_Int = GLES20.glGetAttribLocation(paramInt, "aPosition");
-    this.jdField_c_of_type_Int = GLES20.glGetUniformLocation(paramInt, "uProjectMatrix");
-    this.jdField_d_of_type_Int = GLES20.glGetAttribLocation(paramInt, "aTextureCoord");
-  }
-  
-  public int d()
-  {
-    return this.g;
-  }
-  
-  public abstract void d();
-  
-  public void d(int paramInt)
-  {
-    this.jdField_e_of_type_Int = paramInt;
-  }
-  
-  protected void e()
-  {
-    if (a() != null)
-    {
-      a().position(0);
-      GLES20.glVertexAttribPointer(this.jdField_b_of_type_Int, a(), 5126, false, 0, a());
-      GLES20.glEnableVertexAttribArray(this.jdField_b_of_type_Int);
-    }
-  }
-  
-  protected void f()
-  {
-    if (b() != null)
-    {
-      b().position(0);
-      GLES20.glVertexAttribPointer(this.jdField_d_of_type_Int, b(), 5126, false, 0, b());
-      GLES20.glEnableVertexAttribArray(this.jdField_d_of_type_Int);
-    }
-  }
-  
-  protected void g()
-  {
-    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-    Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
+    return false;
   }
 }
 

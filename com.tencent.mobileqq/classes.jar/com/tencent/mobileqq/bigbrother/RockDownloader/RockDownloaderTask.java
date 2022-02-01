@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.bigbrother.RockDownloader;
 
-import apvy;
+import aqjo;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 import java.io.Serializable;
 import mqq.app.AppRuntime;
@@ -8,13 +8,13 @@ import mqq.app.AppRuntime;
 public class RockDownloaderTask
   implements Serializable
 {
-  private int ProcessID;
-  private int TaskCheckLevel = -1;
   private RockDownloadInfo downloadInfo;
   private boolean isMainProcess;
-  private apvy queryAPKListener;
+  private int processID;
+  private aqjo queryAPKListener;
   private RockDownloadListener rockDownloadListener;
   private AppRuntime runtime;
+  private int taskCheckLevel = -1;
   
   public RockDownloadInfo getDownloadInfo()
   {
@@ -23,10 +23,10 @@ public class RockDownloaderTask
   
   public int getProcessID()
   {
-    return this.ProcessID;
+    return this.processID;
   }
   
-  public apvy getQueryAPKListener()
+  public aqjo getQueryAPKListener()
   {
     return this.queryAPKListener;
   }
@@ -43,7 +43,7 @@ public class RockDownloaderTask
   
   public int getTaskCheckLevel()
   {
-    return this.TaskCheckLevel;
+    return this.taskCheckLevel;
   }
   
   public boolean isMainProcess()
@@ -63,12 +63,12 @@ public class RockDownloaderTask
   
   public void setProcessID(int paramInt)
   {
-    this.ProcessID = paramInt;
+    this.processID = paramInt;
   }
   
-  public void setQueryAPKListener(apvy paramapvy)
+  public void setQueryAPKListener(aqjo paramaqjo)
   {
-    this.queryAPKListener = paramapvy;
+    this.queryAPKListener = paramaqjo;
   }
   
   public void setRockDownloadListener(RockDownloadListener paramRockDownloadListener)
@@ -83,7 +83,7 @@ public class RockDownloaderTask
   
   public void setTaskCheckLevel(int paramInt)
   {
-    this.TaskCheckLevel = paramInt;
+    this.taskCheckLevel = paramInt;
   }
 }
 

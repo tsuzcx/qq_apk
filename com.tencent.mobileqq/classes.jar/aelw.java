@@ -1,22 +1,34 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aelw
-  extends aelh
+  extends anxe
 {
-  public aelw(JumpActivity paramJumpActivity)
-  {
-    super(paramJumpActivity);
-  }
+  public aelw(EditActivity paramEditActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.b.o();
+    EditActivity.a(this.a);
+    if (paramBoolean)
+    {
+      paramObject = (CustomEmotionData)paramObject;
+      if (paramObject != null)
+      {
+        ((ashd)this.a.app.getManager(103)).c(paramObject);
+        EditActivity.b(this.a);
+      }
+    }
+    while (!(paramObject instanceof String)) {
+      return;
+    }
+    QQToast.a(this.a, 1, (String)paramObject, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelw
  * JD-Core Version:    0.7.0.1
  */

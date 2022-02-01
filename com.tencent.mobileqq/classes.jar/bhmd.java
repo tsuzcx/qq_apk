@@ -1,39 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bhmd
-  implements nix
+final class bhmd
+  implements View.OnClickListener
 {
-  bhmd(bhmb parambhmb) {}
+  bhmd(bhpc parambhpc) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    Object localObject = this.a.mRuntime.a(this.a.mRuntime.a());
-    if (paramBoolean) {
-      if (this.a.a)
-      {
-        if ((localObject != null) && ((localObject instanceof bhsw))) {
-          ((bhsw)localObject).setWarnToastVisible(true, 1, 2131691301);
-        }
-      }
-      else {
-        bhmb.a(this.a);
-      }
+    if (this.a != null) {
+      this.a.dismiss();
     }
-    while ((localObject == null) || (!(localObject instanceof bhsw))) {
-      for (;;)
-      {
-        return;
-        localObject = QQToast.a(BaseApplicationImpl.getContext(), 1, 2131691301, 1);
-        ((QQToast)localObject).b(((QQToast)localObject).c());
-      }
-    }
-    ((bhsw)localObject).setWarnToastVisible(false, 0, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhmd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aevv;
-import aevw;
+import afez;
+import affa;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,11 +17,11 @@ import java.util.Iterator;
 public class PublicFragmentActivityForPeak
   extends PublicFragmentActivity
 {
-  private ArrayList<WeakReference<aevw>> a;
+  private ArrayList<WeakReference<affa>> a;
   
   public static void b(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    aevv.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, paramClass);
+    afez.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, paramClass);
   }
   
   @Override
@@ -35,12 +35,12 @@ public class PublicFragmentActivityForPeak
   public void doOnBackPressed()
   {
     Object localObject1 = super.a();
-    if ((localObject1 instanceof aevw))
+    if ((localObject1 instanceof affa))
     {
       if (this.a == null) {
         this.a = new ArrayList(2);
       }
-      this.a.add(new WeakReference((aevw)localObject1));
+      this.a.add(new WeakReference((affa)localObject1));
     }
     if (this.a != null)
     {
@@ -50,9 +50,9 @@ public class PublicFragmentActivityForPeak
         Object localObject2 = (WeakReference)((Iterator)localObject1).next();
         if (localObject2 != null)
         {
-          localObject2 = (aevw)((WeakReference)localObject2).get();
+          localObject2 = (affa)((WeakReference)localObject2).get();
           if (localObject2 != null) {
-            ((aevw)localObject2).onBackPressed();
+            ((affa)localObject2).onBackPressed();
           }
         }
       }

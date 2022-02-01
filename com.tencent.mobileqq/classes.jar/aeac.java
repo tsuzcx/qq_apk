@@ -1,31 +1,35 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
-public class aeac
-  extends AccountObserver
+final class aeac
+  implements DialogInterface.OnClickListener
 {
-  public aeac(Conversation paramConversation) {}
+  aeac(aeca paramaeca, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, aebz paramaebz) {}
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null)
+    int i = mvd.b(this.jdField_a_of_type_Aeca.jdField_a_of_type_Int);
+    String str;
+    if ((this.jdField_a_of_type_Aeca.jdField_a_of_type_JavaUtilMap != null) && (i == 1))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, String.format("onOnlineStatusChanged, currentStatus = %s", new Object[] { paramStatus }));
+      str = (String)this.jdField_a_of_type_Aeca.jdField_a_of_type_JavaUtilMap.get("MultiAVType");
+      if (str == null) {}
+    }
+    for (paramInt = Integer.valueOf(str).intValue();; paramInt = 0)
+    {
+      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, i, paramInt);
+      this.jdField_a_of_type_Aeca.d = false;
+      this.jdField_a_of_type_Aeca.e = false;
+      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aebz, this.jdField_a_of_type_Aeca);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.dismiss();
       }
-      this.a.a.a("AccountObserver.onOnlineStatusChanged");
+      return;
     }
-  }
-  
-  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, String.format("onOnlineStatusPush, currentStatus = %s , extOnlineStatus = %d", new Object[] { paramStatus, Long.valueOf(paramLong) }));
-    }
-    this.a.a.a("AccountObserver.onOnlineStatusPush");
   }
 }
 

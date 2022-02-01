@@ -100,6 +100,8 @@ public class MiniProgramLpReportDC04239
   public static final String PAGE_VIEW_SUB_ACTION_SHOW = "show";
   public static final String PAGE_VIEW_SUB_ACTION_SHOW_FAIL = "show_fail";
   public static final String PAGE_VIEW_SUB_ACTION_UNLOAD = "unload";
+  public static final String PAY_WX_ACTION = "wechat_pay";
+  public static final String PAY_WX_SUB_ACTION_LAUNCH = "launch_wechatpay";
   public static final String PROFILE_CARD_ACTION = "id_card";
   public static final String RETAIN_DIALOG_ACTION_TYPE = "minigame_popup";
   public static final String RETAIN_DIALOG_RESERVES_CLICK = "click";
@@ -108,6 +110,7 @@ public class MiniProgramLpReportDC04239
   public static final String RETAIN_DIALOG_SUB_ACTION_EXPOSE = "popup";
   public static final String RETAIN_DIALOG_SUB_ACTION_ICON = "icon";
   public static final String RETAIN_DIALOG_SUB_ACTION_MORE = "moregame";
+  public static final String SCOPE_ACTION = "scope";
   public static final String SHARE_ALERT_RESERVERS_ACTION = "show";
   public static final String SYS_ALERT_ACTION = "sys_alert";
   private static final String TAG = "MiniProgramLpReportDC04239";
@@ -116,7 +119,7 @@ public class MiniProgramLpReportDC04239
   public static final String USER_CLICK_SUB_ACTION_MORE_BUTTON = "more_button";
   public static final String USER_CLICK_SUB_ACTION_SHARE_ALERT = "share_alert";
   private static long mRecordDurationInterval = ;
-  private static Runnable recordDurationRunnable = new MiniProgramLpReportDC04239.15();
+  private static Runnable recordDurationRunnable = new MiniProgramLpReportDC04239.16();
   private static MiniAppConfig showMiniAppConfig;
   
   public static void deleteRecordDurationMsg()
@@ -313,20 +316,14 @@ public class MiniProgramLpReportDC04239
   
   public static void reportByQQqunInfo(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(MiniProgramReportHelper.newUserInfoEntries());
-    localArrayList.addAll(MiniProgramReportHelper.newQQqunInfoBusinessEntries(paramString1, paramString2, paramString3, paramString4));
-    localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
-    paramString1 = MiniProgramReportHelper.newSingleReportData(2, localArrayList, null);
-    MiniProgramReporter.getInstance().addData(paramString1);
-    MiniProgramReporter.getInstance().flush();
+    reportWithGroupId(paramString1, paramString2, paramString3, "", paramString4);
   }
   
   public static void reportByQQqunInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
     paramString1 = new ArrayList();
     paramString1.addAll(MiniProgramReportHelper.newUserInfoEntries());
-    paramString1.addAll(MiniProgramReportHelper.newQQqunInfoBusinessEntries(paramString5, paramString6, paramString7, paramString8));
+    paramString1.addAll(MiniProgramReportHelper.newQQqunInfoBusinessEntries(paramString5, paramString6, paramString7, "", paramString8));
     paramString1.addAll(MiniProgramReportHelper.newGenericEntries());
     paramString1 = MiniProgramReportHelper.newSingleReportData(2, paramString1, null);
     MiniProgramReporter.getInstance().addData(paramString1);
@@ -389,6 +386,11 @@ public class MiniProgramLpReportDC04239
   public static void reportUserClick(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04239.1(paramString3, paramString4, paramString5, paramString1, paramMiniAppConfig, paramString2));
+  }
+  
+  public static void reportWithGroupId(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04239.15(paramString1, paramString2, paramString3, paramString4, paramString5));
   }
   
   private static void sendRecordDurationMsg()

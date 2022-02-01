@@ -1,43 +1,46 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.viola.lottie.KdLottieView;
-import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
-import com.tencent.viola.adapter.HttpResponse;
-import com.tencent.viola.adapter.IHttpAdapter.OnHttpListener;
-import com.tencent.viola.ui.component.VLottie.IVLottieLoadListener;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.Map;
-import org.json.JSONObject;
+import java.util.Set;
 
 public class tmq
-  implements IHttpAdapter.OnHttpListener
+  implements AladdinConfigHandler
 {
-  public tmq(KdLottieView paramKdLottieView, VLottie.IVLottieLoadListener paramIVLottieLoadListener) {}
-  
-  public void onHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
-  
-  public void onHttpFinish(HttpResponse paramHttpResponse)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    int i = Integer.parseInt(paramHttpResponse.statusCode);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (i == 200) {
-      bool1 = bool2;
-    }
-    try
+    QLog.d("AdConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = pan.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      if (paramHttpResponse.originalData != null)
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("AdConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (paramInt1 == 185)
       {
-        paramHttpResponse = new JSONObject(new String(paramHttpResponse.originalData, "utf-8"));
-        bool1 = true;
-        LottieComposition.Factory.fromJson(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaLottieKdLottieView.getContext().getResources(), paramHttpResponse, new tmr(this));
+        if ((TextUtils.equals(str1, "adcard_style")) && (!TextUtils.isEmpty(str2))) {
+          bnrf.a("sp_key_ad_imax_style", str2.trim());
+        }
       }
-      this.jdField_a_of_type_ComTencentViolaUiComponentVLottie$IVLottieLoadListener.onResult(bool1);
-      return;
+      else if ((paramInt1 == 188) && (TextUtils.equals(str1, "ad_exposure_supplement")) && (!TextUtils.isEmpty(str2))) {
+        bnrf.a("readinjjoy_ad_supplement_config", str2.trim());
+      }
     }
-    catch (Exception paramHttpResponse) {}
+    return true;
   }
   
-  public void onHttpStart() {}
+  public void onWipeConfig(int paramInt)
+  {
+    if (paramInt == 185) {
+      bnrf.a("sp_key_ad_imax_style", "0");
+    }
+    while (paramInt != 188) {
+      return;
+    }
+    bnrf.a("readinjjoy_ad_supplement_config", "0");
+  }
 }
 
 

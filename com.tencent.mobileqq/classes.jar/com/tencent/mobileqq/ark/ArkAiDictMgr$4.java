@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ark;
 
-import apmp;
-import apms;
-import bgtl;
+import aqaf;
+import aqai;
+import bhto;
 import com.tencent.common.app.AppInterface;
 import com.tencent.wordsegment.WordSegment;
 import java.io.File;
@@ -17,18 +17,18 @@ public final class ArkAiDictMgr$4
   {
     try
     {
-      if (!apmp.a(this.a)) {
+      if (!aqaf.a(this.a)) {
         break label263;
       }
-      String str1 = apms.a();
+      String str1 = aqai.a();
       if (str1 == null)
       {
         ArkAppCenter.c("ArkApp.Dict", String.format(Locale.CHINA, "reloadWordData, local dict config not available", new Object[0]));
         return;
       }
-      if ((apmp.b() != null) && (apmp.b().equals(str1)))
+      if ((aqaf.b() != null) && (aqaf.b().equals(str1)))
       {
-        ArkAppCenter.c("ArkApp.Dict", String.format(Locale.CHINA, "reloadWordData, dict already loaded, dict-id=%s", new Object[] { apmp.b() }));
+        ArkAppCenter.c("ArkApp.Dict", String.format(Locale.CHINA, "reloadWordData, dict already loaded, dict-id=%s", new Object[] { aqaf.b() }));
         return;
       }
     }
@@ -37,7 +37,7 @@ public final class ArkAiDictMgr$4
       ArkAppCenter.c("ArkApp.Dict", "reloadWordData, UnsatisfiedLinkError, err:" + localUnsatisfiedLinkError.getMessage());
       return;
     }
-    String str2 = apmp.a(localUnsatisfiedLinkError);
+    String str2 = aqaf.a(localUnsatisfiedLinkError);
     if (!new File(str2).exists())
     {
       ArkAppCenter.c("ArkApp.Dict", String.format(Locale.CHINA, "reloadWordData, local dict file not available, dict-id=%s", new Object[] { localUnsatisfiedLinkError }));
@@ -51,10 +51,10 @@ public final class ArkAiDictMgr$4
       return;
     }
     ArkAppCenter.c("ArkApp.Dict", String.format(Locale.CHINA, String.format("reloadWordData success, dict-id=%s", new Object[] { localUnsatisfiedLinkError }), new Object[0]));
-    apmp.b(localUnsatisfiedLinkError);
+    aqaf.b(localUnsatisfiedLinkError);
     if (this.a != null)
     {
-      bgtl.a(this.a);
+      bhto.a(this.a);
       return;
       label263:
       ArkAppCenter.c("ArkApp.Dict", String.format("reloadWordData, dict flag is off", new Object[0]));

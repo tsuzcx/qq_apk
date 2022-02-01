@@ -4,39 +4,39 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import bbio;
-import bbmy;
-import bbtj;
-import bbtx;
-import bbvg;
-import blkh;
-import blkk;
-import blkm;
+import bcbi;
+import bcfr;
+import bcmc;
+import bcmq;
+import bcnz;
+import bmlk;
+import bmln;
+import bmlp;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 
 public class FavoriteSearchFragment
-  extends BaseSearchFragment<blkk>
+  extends BaseSearchFragment<bmln>
 {
-  private bbtx a;
+  private bcmq a;
   
   public int a()
   {
     return 60;
   }
   
-  public bbio<bbmy, bbvg> a()
+  public bcbi<bcfr, bcnz> a()
   {
-    return new blkh(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aobu);
+    return new bmlk(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aoof);
   }
   
-  public bbtj<blkk> a()
+  public bcmc<bmln> a()
   {
     return new FavoriteSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
   public String a()
   {
-    return blkm.b;
+    return bmlp.b;
   }
   
   public void a(String paramString)
@@ -45,23 +45,23 @@ public class FavoriteSearchFragment
     if (!TextUtils.isEmpty(paramString)) {
       this.c = paramString;
     }
-    while ((this.jdField_a_of_type_Bbtj == null) || (this.jdField_a_of_type_ComTencentWidgetListView == null))
+    while ((this.jdField_a_of_type_Bcmc == null) || (this.jdField_a_of_type_ComTencentWidgetListView == null))
     {
-      if ((this.jdField_a_of_type_Bbtj != null) && (this.jdField_a_of_type_ComTencentWidgetListView != null))
+      if ((this.jdField_a_of_type_Bcmc != null) && (this.jdField_a_of_type_ComTencentWidgetListView != null))
       {
-        this.jdField_a_of_type_Bbtj.b();
-        FavoriteSearchEngine localFavoriteSearchEngine = (FavoriteSearchEngine)this.jdField_a_of_type_Bbtj;
-        this.jdField_a_of_type_Bbtx.a = paramString;
-        localFavoriteSearchEngine.a(this.jdField_a_of_type_Bbtx, this);
+        this.jdField_a_of_type_Bcmc.b();
+        FavoriteSearchEngine localFavoriteSearchEngine = (FavoriteSearchEngine)this.jdField_a_of_type_Bcmc;
+        this.jdField_a_of_type_Bcmq.a = paramString;
+        localFavoriteSearchEngine.a(this.jdField_a_of_type_Bcmq, this);
         this.jdField_d_of_type_Int += 1;
       }
       return;
     }
-    this.jdField_a_of_type_Bbio.a(null);
+    this.jdField_a_of_type_Bcbi.a(null);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_d_of_type_AndroidViewView.setVisibility(8);
     this.b.setVisibility(8);
-    this.jdField_a_of_type_Bbtj.b();
+    this.jdField_a_of_type_Bcmc.b();
     g_(false);
     f_(false);
     a();
@@ -74,7 +74,7 @@ public class FavoriteSearchFragment
     paramBundle.putBoolean("bMore", true);
     paramBundle.putBoolean("bSearchNet", true);
     paramBundle.putInt("iNumber", 12);
-    this.jdField_a_of_type_Bbtx = new bbtx(this.c, paramBundle);
+    this.jdField_a_of_type_Bcmq = new bcmq(this.c, paramBundle);
   }
 }
 

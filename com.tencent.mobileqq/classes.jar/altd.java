@@ -1,22 +1,25 @@
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class altd
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public altd(SelectMemberActivity paramSelectMemberActivity, ArrayList paramArrayList) {}
+  public altd(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
-    ((anwd)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.a(20)).a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c, this.jdField_a_of_type_JavaUtilArrayList, "");
-    SelectMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.show();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d("Clk_invite");
+    if (EditLocalVideoActivity.a(this.a) != null) {
+      EditLocalVideoActivity.a(this.a).setVisibility(0);
+    }
+    if (EditLocalVideoActivity.a(this.a) != null) {
+      EditLocalVideoActivity.a(this.a).setVisibility(0);
+    }
+    if ((EditLocalVideoActivity.a(this.a) != null) && (EditLocalVideoActivity.a(this.a) != 1)) {
+      EditLocalVideoActivity.a(this.a, false);
+    }
   }
 }
 

@@ -1,33 +1,26 @@
-import android.os.Bundle;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajgi
-  implements View.OnClickListener
+  extends RecyclerView.ItemDecoration
 {
-  public ajgi(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
+  private int a;
+  private int b;
   
-  public void onClick(View paramView)
+  public ajgi(int paramInt1, int paramInt2)
   {
-    Object localObject;
-    if ((paramView.getTag() instanceof ajeo))
-    {
-      localObject = (ajeo)paramView.getTag();
-      if (localObject != null) {
-        break label30;
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label30:
-      localObject = TroopInfoActivity.a(((ajeo)localObject).b, 4);
-      ((Bundle)localObject).putInt("t_s_f", 1002);
-      bfup.a(this.a.getActivity(), (Bundle)localObject, 2);
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.right = this.a;
+    if (paramRecyclerView.getChildPosition(paramView) == 0) {
+      paramRect.left = this.b;
     }
   }
 }

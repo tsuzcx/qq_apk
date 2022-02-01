@@ -1,33 +1,16 @@
-class ysr
-  implements zbb
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ysr
 {
-  ysr(ysm paramysm) {}
+  public List<LocalMediaInfo> a = new ArrayList();
   
-  public void a()
+  private ysr(@NonNull List<LocalMediaInfo> paramList)
   {
-    yqp.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击重新拉取地理贴纸");
-    ysm.a(this.a);
-  }
-  
-  public void a(String paramString)
-  {
-    yqp.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载：" + paramString);
-    yty localyty = this.a.a;
-    if (this.a.a.a()) {}
-    for (String str = "2";; str = "1")
-    {
-      localyty.a("download_face", 0, 0, new String[] { str, paramString });
-      yqv.b("0X80075DD");
-      if (!((yye)wpm.a(8)).a(paramString, true)) {
-        yqp.d("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载启动失败");
-      }
-      return;
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    yqp.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载取消：" + paramString);
+    znw.a(paramList);
+    this.a = paramList;
   }
 }
 

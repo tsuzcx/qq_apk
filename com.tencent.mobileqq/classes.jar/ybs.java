@@ -1,27 +1,38 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class ybs
-  extends ParallelJobSegment<String, ybo>
+public class ybs
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, xac>
 {
-  public int a;
-  
-  public ybs(ybm paramybm, int paramInt)
+  public ybs(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    super("RequestLikeListSegment");
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull xac paramxac)
   {
-    ycg localycg = new ycg();
-    localycg.jdField_a_of_type_JavaLangString = paramString;
-    localycg.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Int != -1) {
-      localycg.c = this.jdField_a_of_type_Int;
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramxac.jdField_a_of_type_JavaLangString)) {
+      return;
     }
-    wlb.a().a(localycg, new ybt(this, paramJobContext, paramString));
+    if ((paramxac.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramxac.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "update sharegroup info: " + paramxac.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.toString());
+      }
+      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramxac.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      return;
+    }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramxac);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xac.class;
   }
 }
 

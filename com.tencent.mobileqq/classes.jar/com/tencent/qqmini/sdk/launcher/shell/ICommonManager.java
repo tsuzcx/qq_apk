@@ -6,6 +6,8 @@ import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public abstract interface ICommonManager
 {
+  public abstract void addActivityResultListener(IActivityResultListener paramIActivityResultListener);
+  
   public abstract void fetchPeriodicCacheIfNeed(MiniAppInfo paramMiniAppInfo);
   
   public abstract EngineChannel getChannelForType(int paramInt);

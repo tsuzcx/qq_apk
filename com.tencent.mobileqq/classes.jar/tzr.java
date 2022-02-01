@@ -1,40 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.ProfileParams;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil.10.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
-final class tzr
-  implements DialogInterface.OnClickListener
+public final class tzr
+  implements BusinessObserver
 {
-  tzr(Activity paramActivity, ProfileParams paramProfileParams, QQAppInterface paramQQAppInterface) {}
+  tzr(QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
     }
-    do
-    {
-      do
-      {
-        return;
-        ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, false, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
-      } while ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing()));
-      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      return;
-    } while (tzo.a == null);
-    tzo.a.dismiss();
-    tzo.a = null;
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    tzo.d(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams);
+    ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountUtil.10.1(this, paramBoolean, paramBundle), 10L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tzr
  * JD-Core Version:    0.7.0.1
  */

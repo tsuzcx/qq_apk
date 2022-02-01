@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.aio.confess;
 
-import agfr;
+import agos;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
-import bhmv;
-import bhos;
-import bhql;
-import bhta;
+import binq;
+import bipn;
+import birg;
+import bitv;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
@@ -23,9 +23,9 @@ public class ConfessHalfScreenActivity$ConfessBrowserFragment
   private int jdField_a_of_type_Int;
   private boolean jdField_a_of_type_Boolean;
   
-  public bhos createComponentsProvider()
+  public bipn createComponentsProvider()
   {
-    return new bhos(this, 127, new agfr(this));
+    return new bipn(this, 127, new agos(this));
   }
   
   public int doCreateLoopStep_Final(Bundle paramBundle)
@@ -40,7 +40,7 @@ public class ConfessHalfScreenActivity$ConfessBrowserFragment
   {
     this.mUIStyle.c = 0L;
     int i = super.doCreateLoopStep_InitUIContent(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131167224);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131167247);
     if ((this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
       ((RefreshView)this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup).a(false);
     }
@@ -57,7 +57,7 @@ public class ConfessHalfScreenActivity$ConfessBrowserFragment
       QLog.d("WebLog_WebViewFragment", 2, "ConfessBrowserFragment doOnCreate = ");
     }
     boolean bool = super.doOnCreate(paramBundle);
-    this.mPluginEngine.a(new String[] { "sayHonest", bhta.a, "QQApi", "ui", "share", "PublicAccountJs" });
+    this.mPluginEngine.a(new String[] { "sayHonest", bitv.a, "QQApi", "ui", "share", "PublicAccountJs" });
     return bool;
   }
   

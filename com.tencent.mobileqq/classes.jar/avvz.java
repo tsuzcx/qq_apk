@@ -1,31 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Handler;
+import com.tencent.mobileqq.hotpic.VideoBaseItem.2.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-final class avvz
-  implements bdvv
+public class avvz
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public void a(bdws parambdws, bdwt parambdwt)
+  avvz(avvx paramavvx) {}
+  
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if ((parambdws == null) || (parambdwt == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(parambdws instanceof bdvs));
-      parambdws = (bdvs)parambdws;
-      parambdws.jdField_a_of_type_Long += parambdwt.c;
-      parambdwt.c = 0L;
-      parambdwt = "bytes=" + parambdws.jdField_a_of_type_Long + "-";
-      parambdws.jdField_a_of_type_JavaUtilHashMap.put("Range", parambdwt);
-      parambdwt = parambdws.jdField_a_of_type_JavaLangString;
-      if (parambdwt.contains("range="))
-      {
-        String str = parambdwt.substring(0, parambdwt.lastIndexOf("range="));
-        parambdws.jdField_a_of_type_JavaLangString = (str + "range=" + parambdws.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ListenTogether.downloader", 2, "IBreakDownFix, " + parambdwt);
+    avvx.a(this.a).post(new VideoBaseItem.2.1(this));
   }
 }
 

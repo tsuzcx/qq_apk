@@ -1,67 +1,88 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.danmaku.core.DanmakuManager;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class arei
-  implements Handler.Callback
+  extends arac<areh>
 {
-  private WeakReference<DanmakuManager> a;
+  public static final String a = avln.a + "GameCenterMsgConfigProcessor";
   
-  private arei(DanmakuManager paramDanmakuManager)
+  public static areh a()
   {
-    this.a = new WeakReference(paramDanmakuManager);
+    return (areh)aran.a().a(608);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  @NonNull
+  public areh a(int paramInt)
   {
-    DanmakuManager localDanmakuManager = (DanmakuManager)this.a.get();
-    if (localDanmakuManager == null) {
-      return false;
+    QLog.i(a, 1, "[migrateOldOrDefaultContent] type:" + paramInt);
+    areh.a();
+    return new areh();
+  }
+  
+  @Nullable
+  public areh a(araj[] paramArrayOfaraj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, "[onParsed]");
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 1: 
-      DanmakuManager.a(localDanmakuManager, paramMessage);
-      DanmakuManager.a(localDanmakuManager);
-      return false;
-    case 2: 
-      DanmakuManager.a(localDanmakuManager);
-      return false;
-    case 4: 
-      DanmakuManager.b(localDanmakuManager);
-      return false;
-    case 3: 
-      DanmakuManager.c(localDanmakuManager);
-      return false;
-    case 5: 
-      DanmakuManager.b(localDanmakuManager, paramMessage);
-      return false;
-    case 6: 
-      DanmakuManager.d(localDanmakuManager);
-      return false;
-    case 7: 
-      DanmakuManager.e(localDanmakuManager);
-      return false;
-    case 8: 
-      DanmakuManager.f(localDanmakuManager);
-      return false;
-    case 9: 
-      DanmakuManager.g(localDanmakuManager);
-      return false;
-    case 10: 
-      DanmakuManager.h(localDanmakuManager);
-      return false;
+    paramArrayOfaraj = areh.a(paramArrayOfaraj);
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if ((localAppRuntime != null) && (paramArrayOfaraj != null)) {
+      ((avld)localAppRuntime.getManager(358)).a(paramArrayOfaraj);
     }
-    DanmakuManager.i(localDanmakuManager);
+    return paramArrayOfaraj;
+  }
+  
+  public void a(areh paramareh)
+  {
+    QLog.i(a, 1, "[onUpdate]");
+  }
+  
+  public Class<areh> clazz()
+  {
+    return areh.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
     return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public void onReqNoReceive()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "onReqNoReceive: type=" + type());
+    }
+  }
+  
+  public int type()
+  {
+    return 608;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arei
  * JD-Core Version:    0.7.0.1
  */

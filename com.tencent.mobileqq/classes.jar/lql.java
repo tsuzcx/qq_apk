@@ -1,177 +1,157 @@
-import android.util.Log;
-import android.util.Pair;
-import com.tencent.aekit.openrender.internal.Frame;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Vector;
-import org.jetbrains.annotations.NotNull;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 
-public abstract class lql
-  extends lqs
+@TargetApi(16)
+public class lql
+  implements lqc
 {
-  private String jdField_a_of_type_JavaLangString = getClass().getSimpleName() + "-" + Integer.toHexString(hashCode());
-  private List<Pair<lql, Integer>> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private Vector<lqp> jdField_a_of_type_JavaUtilVector;
-  private lqn jdField_a_of_type_Lqn;
-  private boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int;
+  public final SurfaceTexture a;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  private boolean jdField_a_of_type_Boolean = true;
+  private final float[] jdField_a_of_type_ArrayOfFloat;
+  private final float[] b;
   
-  public lql(int paramInt)
+  public lql(SurfaceTexture paramSurfaceTexture)
   {
-    this.jdField_a_of_type_JavaUtilVector = new Vector(paramInt);
-    this.jdField_a_of_type_JavaUtilVector.setSize(paramInt);
-  }
-  
-  private void a(lqp paramlqp, int paramInt, long paramLong)
-  {
-    if (a(paramlqp, paramInt))
-    {
-      a(this.jdField_a_of_type_JavaUtilVector, paramLong);
-      this.jdField_a_of_type_JavaUtilVector.clear();
-      this.jdField_a_of_type_JavaUtilVector.setSize(this.jdField_a_of_type_JavaUtilVector.capacity());
+    if (QLog.isColorLevel()) {
+      QLog.i("SurfaceTag", 2, "SurfacePreRender");
     }
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
+    lpc.a("SurfaceMode");
+    this.jdField_a_of_type_ArrayOfFloat = new float[16];
+    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
+    this.jdField_a_of_type_Boolean = true;
+    this.b = new float[16];
+    Matrix.setIdentityM(this.b, 0);
+    Matrix.scaleM(this.b, 0, -1.0F, -1.0F, 1.0F);
   }
   
-  private boolean a(lqp paramlqp, int paramInt)
+  public lpx a(lpq paramlpq, lpc paramlpc, lpx paramlpx)
   {
-    this.jdField_a_of_type_JavaUtilVector.set(paramInt, paramlqp);
-    paramInt = 0;
-    while (paramInt < this.jdField_a_of_type_JavaUtilVector.size())
+    try
     {
-      if (this.jdField_a_of_type_JavaUtilVector.get(paramInt) == null) {
-        return false;
-      }
-      paramInt += 1;
-    }
-    return true;
-  }
-  
-  @NotNull
-  protected abstract Frame a(List<lqp> paramList, long paramLong);
-  
-  public lql a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilVector.clear();
-    this.jdField_a_of_type_JavaUtilVector.setSize(this.jdField_a_of_type_JavaUtilVector.capacity());
-    return this;
-  }
-  
-  public lql a(lql paramlql, int paramInt)
-  {
-    Log.d(this.jdField_a_of_type_JavaLangString, "addTarget: " + paramlql);
-    if (paramInt >= paramlql.jdField_a_of_type_JavaUtilVector.size())
-    {
-      Log.e(this.jdField_a_of_type_JavaLangString, "addTarget: targetIndex=" + paramInt + ", target inputCount=" + this.jdField_a_of_type_JavaUtilVector.size() + ", out of bounds");
-      return this;
-    }
-    this.jdField_a_of_type_JavaUtilList.add(new Pair(paramlql, Integer.valueOf(paramInt)));
-    paramlql.a(this.jdField_a_of_type_Lqr);
-    return this;
-  }
-  
-  protected abstract void a();
-  
-  public void a(List<lqp> paramList, long paramLong)
-  {
-    int j = 0;
-    Object localObject = a(paramList, paramLong);
-    lqp locallqp = null;
-    int i = 0;
-    if (i < paramList.size())
-    {
-      if (((lqp)paramList.get(i)).jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame == localObject) {
-        locallqp = (lqp)paramList.get(i);
-      }
-      for (;;)
+      paramlpc.a(this.jdField_a_of_type_ArrayOfFloat);
+      if (paramlpc.jdField_a_of_type_Boolean != this.jdField_a_of_type_Boolean)
       {
-        i += 1;
-        break;
-        ((lqp)paramList.get(i)).a();
-      }
-    }
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-      if (this.jdField_a_of_type_Lqr.a.a != null) {
-        this.jdField_a_of_type_Lqr.a.a.a((Frame)localObject, this);
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (locallqp != null)
-      {
-        locallqp.a();
-        return;
-        if (locallqp == null)
+        this.jdField_a_of_type_Boolean = paramlpc.jdField_a_of_type_Boolean;
+        if (this.jdField_a_of_type_Boolean)
         {
-          locallqp = lqp.a((Frame)localObject);
-          locallqp.a(this.jdField_a_of_type_JavaUtilList.size());
+          Matrix.setIdentityM(this.b, 0);
+          Matrix.scaleM(this.b, 0, -1.0F, -1.0F, 1.0F);
         }
+      }
+      else
+      {
+        int i = paramlpc.b;
+        int j = paramlpc.jdField_a_of_type_Int;
+        GLES20.glBindFramebuffer(36160, paramlpx.jdField_a_of_type_Int);
+        GLES20.glViewport(0, 0, i, j);
+        GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+        GLES20.glClear(16640);
+        if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null) {
+          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, this.b);
+        }
+        GLES20.glBindFramebuffer(36160, 0);
+      }
+    }
+    catch (Throwable paramlpq)
+    {
+      try
+      {
         for (;;)
         {
-          localObject = new ArrayList();
-          i = j;
-          while (i < paramList.size())
-          {
-            if (((lqp)paramList.get(i)).jdField_a_of_type_JavaUtilList != null) {
-              ((List)localObject).addAll(((lqp)paramList.get(i)).jdField_a_of_type_JavaUtilList);
-            }
-            i += 1;
+          if (Build.VERSION.SDK_INT >= 19) {
+            paramlpc.jdField_a_of_type_AndroidGraphicsSurfaceTexture.releaseTexImage();
           }
-          locallqp.a(this.jdField_a_of_type_JavaUtilList.size());
-          locallqp.a();
+          return paramlpx;
+          paramlpq = paramlpq;
+          if (QLog.isDevelopLevel()) {
+            QLog.i("SurfaceTag", 4, "render, surface[" + paramlpc.jdField_a_of_type_AndroidGraphicsSurfaceTexture + "]", paramlpq);
+          }
         }
-        locallqp.jdField_a_of_type_JavaUtilList = ((List)localObject);
-        paramList = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramList.hasNext())
-        {
-          localObject = (Pair)paramList.next();
-          ((lql)((Pair)localObject).first).a(locallqp, ((Integer)((Pair)localObject).second).intValue(), paramLong);
-        }
+        Matrix.setIdentityM(this.b, 0);
+        Matrix.scaleM(this.b, 0, 1.0F, -1.0F, 1.0F);
       }
-    }
-  }
-  
-  public void a(lqr paramlqr)
-  {
-    super.a(paramlqr);
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      Log.d(this.jdField_a_of_type_JavaLangString, "init: ");
-      a();
-      if (this.jdField_a_of_type_Lqn != null)
+      catch (Throwable paramlpq)
       {
-        this.jdField_a_of_type_Lqn.a();
-        this.jdField_a_of_type_Lqn = null;
+        while (!QLog.isDevelopLevel()) {}
+        QLog.i("SurfaceTag", 4, "render", paramlpq);
       }
-      this.jdField_a_of_type_Boolean = true;
     }
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    return paramlpx;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    this.jdField_a_of_type_Int = GlUtil.createTexture(36197);
+    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {}
+    try
     {
-      ((lql)((Pair)this.jdField_a_of_type_JavaUtilList.get(i)).first).a(this.jdField_a_of_type_Lqr);
-      i += 1;
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.detachFromGLContext();
+    }
+    catch (Throwable localThrowable1)
+    {
+      try
+      {
+        for (;;)
+        {
+          this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.attachToGLContext(this.jdField_a_of_type_Int);
+          if (QLog.isColorLevel()) {
+            QLog.i("SurfaceTag", 2, "genTexture");
+          }
+          return;
+          localThrowable1 = localThrowable1;
+          QLog.i("SurfaceTag", 2, "genTexture1", localThrowable1);
+        }
+      }
+      catch (Throwable localThrowable2)
+      {
+        for (;;)
+        {
+          QLog.i("SurfaceTag", 2, "genTexture2", localThrowable2);
+        }
+      }
     }
   }
   
-  protected abstract void b();
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public boolean a(lpc paramlpc)
+  {
+    return (paramlpc != null) && (paramlpc.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) && (paramlpc.jdField_a_of_type_AndroidGraphicsSurfaceTexture == this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+  }
+  
+  public void b() {}
   
   public void c()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {}
+    try
     {
-      Log.d(this.jdField_a_of_type_JavaLangString, "destroy: ");
-      b();
-      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.detachFromGLContext();
+      int[] arrayOfInt = new int[1];
+      arrayOfInt[0] = this.jdField_a_of_type_Int;
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+      if (QLog.isColorLevel()) {
+        QLog.i("SurfaceTag", 2, "delTexture");
+      }
+      return;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((lql)((Pair)localIterator.next()).first).c();
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.i("SurfaceTag", 2, "delTexture", localThrowable);
+      }
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilVector.clear();
-    this.jdField_a_of_type_JavaUtilVector.setSize(this.jdField_a_of_type_JavaUtilVector.capacity());
   }
 }
 

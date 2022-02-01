@@ -1,29 +1,27 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchView;
-import com.tencent.mobileqq.activity.phone.PhoneMatchView.1;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akea
-  extends aywi
+  implements View.OnClickListener
 {
-  public akea(PhoneMatchView.1 param1) {}
+  public akea(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, int paramInt1, int paramInt2) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.this$0.a(paramBoolean, paramInt, "onUploadContact");
-  }
-  
-  protected void b(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContact");
-  }
-  
-  protected void c(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUploadContactNotBind");
-  }
-  
-  protected void d(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContactNotBind");
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), TroopMemberListActivity.class);
+    localIntent.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.c);
+    localIntent.putExtra("param_from", 15);
+    localIntent.putExtra("param_seq_days", ChatHistoryTroopMemberFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment));
+    localIntent.putExtra("param_seq_name", ChatHistoryTroopMemberFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment));
+    localIntent.putExtra("TROOP_INFO_MEMBER_NUM", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.startActivityForResult(localIntent, 4);
+    bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().app, "dc00899", "Grp_mber", "", "mber_list", "clk_inacentry", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.c, "" + this.b, "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

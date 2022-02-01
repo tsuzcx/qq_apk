@@ -1,13 +1,15 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public abstract interface xkx
+class xkx
+  extends AnimatorListenerAdapter
 {
-  public abstract void a();
+  xkx(xkw paramxkw) {}
   
-  public abstract void a(@NonNull ycb paramycb, ErrorMessage paramErrorMessage, boolean paramBoolean);
-  
-  public abstract void a(@NonNull ycb paramycb, boolean paramBoolean);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+  }
 }
 
 

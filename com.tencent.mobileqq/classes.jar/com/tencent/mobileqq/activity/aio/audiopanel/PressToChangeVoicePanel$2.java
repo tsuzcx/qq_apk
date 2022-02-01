@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import arno;
-import arnz;
-import aroo;
-import bcst;
+import asde;
+import asdn;
+import asec;
+import bdll;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.startup.step.AVSoUtils;
 import com.tencent.qphone.base.util.QLog;
-import lkw;
-import mts;
+import llk;
+import mur;
 
 final class PressToChangeVoicePanel$2
   implements Runnable
@@ -21,29 +21,29 @@ final class PressToChangeVoicePanel$2
     if (!this.jdField_a_of_type_Boolean)
     {
       if (PressToChangeVoicePanel.jdField_a_of_type_JavaLangString == null) {
-        PressToChangeVoicePanel.jdField_a_of_type_JavaLangString = mts.a(BaseApplicationImpl.sApplication);
+        PressToChangeVoicePanel.jdField_a_of_type_JavaLangString = mur.a(BaseApplicationImpl.sApplication);
       }
       if (QLog.isColorLevel()) {
         QLog.d("AIOAudioPanel", 2, "checkVcSo async:" + PressToChangeVoicePanel.jdField_a_of_type_JavaLangString);
       }
     }
-    if ((PressToChangeVoicePanel.jdField_a_of_type_JavaLangString != null) || (lkw.f() <= 2)) {}
+    if ((PressToChangeVoicePanel.jdField_a_of_type_JavaLangString != null) || (llk.f() <= 2)) {}
     for (;;)
     {
       try
       {
-        arnz localarnz = ((arno)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(77)).a(aroo.e());
-        if (localarnz == null) {
+        asdn localasdn = ((asde)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(77)).a(asec.e());
+        if (localasdn == null) {
           continue;
         }
-        localarnz.a(false);
+        localasdn.a(false);
       }
       catch (Exception localException)
       {
         QLog.e("AIOAudioPanel", 1, "voiceChang checkVcSo Exception:" + localException.getMessage());
         continue;
       }
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
+      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
       return;
       QLog.e("AIOAudioPanel", 1, "voiceChang checkVcSo null == earlyHandler:");
       continue;

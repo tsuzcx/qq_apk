@@ -1,104 +1,70 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
+import android.graphics.Bitmap;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.opengl.GLES20;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.common.GifUtil;
+import com.tencent.filter.BaseFilter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.view.RendererUtils;
+import dov.com.qq.im.ae.gif.video.VideoGIFCreator.1;
+import dov.com.qq.im.video.GifEncoder;
+import java.io.File;
 
 public class bovz
-  extends QIPCModule
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  private static bovz jdField_a_of_type_Bovz;
-  public static boolean a;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean b;
+  public bovz(VideoGIFCreator.1 param1, String paramString) {}
   
-  private bovz()
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    super("PeakIpcModuleClient");
-    b();
-  }
-  
-  /* Error */
-  public static bovz a()
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 22	bovz:jdField_a_of_type_Bovz	Lbovz;
-    //   6: ifnonnull +25 -> 31
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: getstatic 22	bovz:jdField_a_of_type_Bovz	Lbovz;
-    //   15: ifnonnull +13 -> 28
-    //   18: new 2	bovz
-    //   21: dup
-    //   22: invokespecial 24	bovz:<init>	()V
-    //   25: putstatic 22	bovz:jdField_a_of_type_Bovz	Lbovz;
-    //   28: ldc 2
-    //   30: monitorexit
-    //   31: getstatic 22	bovz:jdField_a_of_type_Bovz	Lbovz;
-    //   34: astore_0
-    //   35: ldc 2
-    //   37: monitorexit
-    //   38: aload_0
-    //   39: areturn
-    //   40: astore_0
-    //   41: ldc 2
-    //   43: monitorexit
-    //   44: aload_0
-    //   45: athrow
-    //   46: astore_0
-    //   47: ldc 2
-    //   49: monitorexit
-    //   50: aload_0
-    //   51: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   34	5	0	localbovz	bovz
-    //   40	5	0	localObject1	Object
-    //   46	5	0	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	28	40	finally
-    //   28	31	40	finally
-    //   41	44	40	finally
-    //   3	12	46	finally
-    //   31	35	46	finally
-    //   44	46	46	finally
-  }
-  
-  public static void a()
-  {
-    bovz localbovz = a();
-    if (!jdField_a_of_type_Boolean)
+    QLog.d(bovy.a(), 4, "gif creator onFrameAvailable()");
+    paramSurfaceTexture.updateTexImage();
+    bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).RenderProcess(bovy.c(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0), 960, 480, -1, 0.0D, bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0));
+    bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a(true);
+    paramSurfaceTexture = bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a(bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0), 480, 480);
+    if (bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0) != null)
     {
-      QIPCClientHelper.getInstance().register(localbovz);
-      jdField_a_of_type_Boolean = true;
+      GLES20.glEnable(3042);
+      GLES20.glBlendFunc(770, 771);
+      float f1 = bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).jdField_a_of_type_Float * 2.0F - 1.0F;
+      float f2 = bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).b * 2.0F - 1.0F;
+      float f3 = bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).c * 2.0F + f1;
+      float f4 = bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).d * 2.0F + f2;
+      bovy.b(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).setPositions(new float[] { f1, f2, f1, f4, f3, f4, f3, f2 });
+      bovy.b(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).RenderProcess(bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).jdField_a_of_type_Int, paramSurfaceTexture.width, paramSurfaceTexture.height, -1, 0.0D, paramSurfaceTexture);
+      GLES20.glDisable(3042);
     }
-  }
-  
-  private void b()
-  {
-    QIPCClientHelper.getInstance().getClient().connect(new bowa(this));
-    QIPCClientHelper.getInstance().getClient().addListener(new bowb(this));
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    if (("action_update_status".equals(paramString)) && (paramBundle != null))
+    paramSurfaceTexture = bovy.c(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).RenderProcess(paramSurfaceTexture.getTextureId(), bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0), bovy.b(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0));
+    Bitmap localBitmap = RendererUtils.saveTexture(paramSurfaceTexture);
+    paramSurfaceTexture.unlock();
+    bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a(localBitmap, 55);
+    localBitmap.recycle();
+    QLog.d(bovy.a(), 4, "gif creator decodeToSurface()");
+    if (!bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a())
     {
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      paramInt = paramBundle.getInt("key_status");
-      int i = paramBundle.getInt("key_progress");
-      paramString = paramBundle.getString("uin");
-      int j = paramBundle.getInt("uintype");
-      paramBundle.getString("key_file_md5");
-      long l = paramBundle.getLong("key_uinsequence");
-      bptr.a().a(paramString, j, paramInt, i, l);
-      localBundle.putBoolean("key_result", false);
+      QLog.d(bovy.a(), 4, "gifEncoder.close() start");
+      bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a();
+      QLog.d(bovy.a(), 4, "gifEncoder.close() end");
+      QLog.d(bovy.a(), 4, "gif encode complete");
+      paramSurfaceTexture = boez.b + File.separator + System.currentTimeMillis() + "_compressed.gif";
+      auog.c(paramSurfaceTexture);
+      QLog.d(bovy.a(), 4, "gif compress start");
+      int i = GifUtil.compressGif(this.jdField_a_of_type_JavaLangString, paramSurfaceTexture, 30);
+      QLog.d(bovy.a(), 4, "gif compress end, ret = " + i);
+      auog.c(this.jdField_a_of_type_JavaLangString);
+      if (i <= 0) {
+        break label563;
+      }
+      bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a(paramSurfaceTexture);
     }
-    return EIPCResult.createSuccessResult(localBundle);
+    for (;;)
+    {
+      this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0.a();
+      return;
+      label563:
+      bovy.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a();
+    }
   }
 }
 

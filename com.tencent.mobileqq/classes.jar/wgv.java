@@ -1,105 +1,56 @@
-import android.annotation.TargetApi;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import java.util.HashMap;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import java.util.List;
 
-@TargetApi(14)
-public class wgv
+public abstract class wgv<Config extends whd>
 {
-  public int a;
-  public long a;
-  public bdvs a;
-  public MessageForShortVideo a;
-  public String a;
-  public Map<String, Object> a;
-  public wgo a;
-  public wgu a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g = 1;
+  protected wgg a;
+  private Config a;
   
-  public wgv()
+  protected List<wgh> a()
   {
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    return paramInt + "_" + paramString;
-  }
-  
-  public static wgv a(String paramString, int paramInt)
-  {
-    return a(paramString, null, paramInt, false);
-  }
-  
-  public static wgv a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    return a(paramString, null, paramInt, paramBoolean);
-  }
-  
-  private static wgv a(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
-  {
-    wgv localwgv = new wgv();
-    StoryVideoItem localStoryVideoItem = ((wpj)wpm.a(5)).a(paramString1);
-    if ((localStoryVideoItem != null) && (localStoryVideoItem.isMine()))
-    {
-      localwgv.e = wgw.a(paramString1, localStoryVideoItem.mCreateTime, paramInt, false, false);
-      localwgv.f = wgw.a(paramString1, localStoryVideoItem.mCreateTime, paramInt, true, false);
-      localwgv.jdField_b_of_type_Int = 0;
-      localwgv.jdField_b_of_type_JavaLangString = paramString1;
-      localwgv.jdField_a_of_type_Int = paramInt;
-      localwgv.jdField_a_of_type_JavaLangString = a(paramString1, paramInt);
-      if (!paramBoolean) {
-        break label159;
-      }
+    if (this.jdField_a_of_type_Wgg != null) {
+      return this.jdField_a_of_type_Wgg.a();
     }
-    label159:
-    for (paramString1 = "";; paramString1 = paramString2)
+    return null;
+  }
+  
+  protected abstract List<wgg> a(@NonNull List<wgh> paramList);
+  
+  public Config a()
+  {
+    return this.jdField_a_of_type_Whd;
+  }
+  
+  public void a(wgg paramwgg)
+  {
+    if (paramwgg.b() > 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      localwgv.jdField_c_of_type_JavaLangString = paramString1;
-      if (paramBoolean) {
-        paramString2 = "";
-      }
-      localwgv.jdField_d_of_type_JavaLangString = paramString2;
-      localwgv.jdField_c_of_type_Boolean = paramBoolean;
-      return localwgv;
-      localwgv.e = wgw.a(paramString1, paramInt, false, false);
-      localwgv.f = wgw.a(paramString1, paramInt, true, false);
-      break;
+      znw.a(bool);
+      this.jdField_a_of_type_Wgg = paramwgg;
+      return;
     }
   }
   
-  public boolean equals(Object paramObject)
+  public void a(Config paramConfig)
   {
-    if ((paramObject instanceof wgv))
-    {
-      paramObject = (wgv)paramObject;
-      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) {
-        return true;
-      }
-    }
-    return false;
+    this.jdField_a_of_type_Whd = paramConfig;
   }
   
-  public String toString()
+  public List<wgg> b()
   {
-    return "DownloadTask{vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", fileType=" + wes.a(this.jdField_a_of_type_Int) + ", status=" + this.jdField_b_of_type_Int + ", downloadUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", localPath='" + this.e + '\'' + ", localTmpPath='" + this.f + '\'' + '}';
+    List localList = a();
+    if ((localList == null) || (localList.size() == 0))
+    {
+      yuk.d("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "data is null");
+      return null;
+    }
+    if ((a() != null) && (localList.size() < a().b))
+    {
+      yuk.d("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "too little data");
+      return null;
+    }
+    return a(a());
   }
 }
 

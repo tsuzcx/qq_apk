@@ -1,17 +1,14 @@
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnPreparedListener;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IMediaPlayer.OnPreparedListener;
+import com.tencent.open.downloadnew.WebViewDownloadListener.1;
+import com.tencent.smtt.sdk.ValueCallback;
 
-class bjxz
-  implements IMediaPlayer.OnPreparedListener
+public class bjxz
+  implements ValueCallback<String>
 {
-  bjxz(bjxx parambjxx, ReliableVideoPlayer.OnPreparedListener paramOnPreparedListener) {}
+  public bjxz(WebViewDownloadListener.1 param1) {}
   
-  public void onPrepared(IMediaPlayer paramIMediaPlayer)
+  public void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnPreparedListener != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnPreparedListener.onPrepared(this.jdField_a_of_type_Bjxx);
-    }
+    bjtx.a("WebViewDownloadListener", "[onReceiveValue]:" + paramString);
   }
 }
 

@@ -1,16 +1,16 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class auix
-  extends GridLayoutManager.SpanSizeLookup
+  implements View.OnClickListener
 {
-  auix(auiw paramauiw) {}
+  auix(auiv paramauiv) {}
   
-  public int getSpanSize(int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.getItemViewType(paramInt) == auis.b) {
-      return 5;
-    }
-    return 1;
+    auiv.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

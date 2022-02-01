@@ -1,55 +1,77 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import QC.BubbleInfo;
+import QC.BubbleRecommendRsp;
+import QC.ItemBase;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.hiboom.FontBubble;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class avqq
-  implements BusinessObserver
+  implements avqz<BubbleRecommendRsp>
 {
-  public avqq(UiApiPlugin paramUiApiPlugin, Integer paramInteger, String paramString1, String paramString2) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public int a()
   {
-    Object localObject;
-    if (paramBoolean)
+    return 4;
+  }
+  
+  public String a(Context paramContext)
+  {
+    return bhyk.a(paramContext, "bubble", "mvip.gongneng.android.bubble.index_dynamic_tab");
+  }
+  
+  public String a(FontBubble paramFontBubble)
+  {
+    return bhyk.a("bubblePreview").replace("[id]", Integer.toString(paramFontBubble.bubbleId));
+  }
+  
+  public List<FontBubble> a(QQAppInterface paramQQAppInterface, BubbleRecommendRsp paramBubbleRecommendRsp)
+  {
+    int j = 0;
+    paramQQAppInterface = ((anyw)paramQQAppInterface.getManager(51)).a(paramQQAppInterface.getAccount());
+    int i;
+    if (paramQQAppInterface == null)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localObject = new oidb_sso.OIDBSSOPkg();
-      }
+      QLog.e("FontBubbleManager", 1, "BubbleController no ExtensionInfo");
+      i = 0;
     }
-    try
+    for (;;)
     {
-      paramBundle = (oidb_sso.OIDBSSOPkg)((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramBundle);
-      paramInt = paramBundle.uint32_result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "handleOidb0x716_48Rsp, resultCode:" + paramInt);
+      paramQQAppInterface = new ArrayList();
+      if (paramBubbleRecommendRsp.vItems == null) {
+        break;
       }
-      paramBundle = paramBundle.bytes_bodybuffer.get().toByteArray();
-      if (paramInt == 0)
+      paramBubbleRecommendRsp = paramBubbleRecommendRsp.vItems.iterator();
+      while (paramBubbleRecommendRsp.hasNext())
       {
-        localObject = new byte[4];
-        System.arraycopy(paramBundle, 0, localObject, 0, 4);
-        paramBundle = ByteBuffer.wrap((byte[])localObject).getInt() + "";
-        if (this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a == null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a = aanz.a();
-          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a.a();
-        }
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a.a(this.jdField_a_of_type_JavaLangInteger, this.jdField_a_of_type_JavaLangString, this.b, new avqr(this, paramBundle));
+        BubbleInfo localBubbleInfo = (BubbleInfo)paramBubbleRecommendRsp.next();
+        FontBubble localFontBubble = new FontBubble();
+        localFontBubble.viewType = 1;
+        localFontBubble.fontId = i;
+        localFontBubble.engine = j;
+        localFontBubble.bubbleId = localBubbleInfo.item.itemId;
+        localFontBubble.name = localBubbleInfo.name;
+        localFontBubble.feeType = localBubbleInfo.feeType;
+        localFontBubble.payUrl = localBubbleInfo.payUrl;
+        localFontBubble.title = localBubbleInfo.title;
+        localFontBubble.msg = localBubbleInfo.msg;
+        localFontBubble.btn = localBubbleInfo.btn;
+        localFontBubble.picUrl = localBubbleInfo.strPicUrl;
+        localFontBubble.panelType = 4;
+        paramQQAppInterface.add(localFontBubble);
       }
-      return;
+      i = (int)paramQQAppInterface.uVipFont;
+      j = paramQQAppInterface.vipFontType;
     }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "pkg.mergeFrom:" + paramBundle.toString());
-    }
+    return paramQQAppInterface;
+  }
+  
+  public void a(aogu paramaogu)
+  {
+    paramaogu.e();
   }
 }
 

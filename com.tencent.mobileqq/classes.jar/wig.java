@@ -1,13 +1,17 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public final class wig
+class wig
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public StoryVideoItem a;
-  public StoryVideoItem b;
+  wig(wia paramwia) {}
   
-  public String toString()
+  public void onGlobalLayout()
   {
-    return "{mFakeStoryVideoItem=" + this.a + ", mSucStoryVideoItem=" + this.b + '}';
+    int i = wia.a(this.a).getHeight();
+    if (i != wia.b(this.a)) {
+      wia.a(this.a, i);
+    }
   }
 }
 

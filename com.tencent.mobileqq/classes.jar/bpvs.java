@@ -1,23 +1,26 @@
-import android.app.Activity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public class bpvs
-  extends RecyclerView.OnScrollListener
+final class bpvs
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private boolean jdField_a_of_type_Boolean;
+  float jdField_a_of_type_Float = 1.0F;
+  final View jdField_a_of_type_AndroidViewView;
   
-  public bpvs(HorizontalAlumbListLayout paramHorizontalAlumbListLayout) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  bpvs(View paramView)
   {
-    if ((paramInt == 1) && (!this.jdField_a_of_type_Boolean))
-    {
-      if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout.a != null) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout.a.getActivity() != null)) {
-        yqu.a("video_edit_new", "swap_albumbar", this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout.a.getActivity().getIntent(), new String[0]);
-      }
-      this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_Float = f;
+    this.jdField_a_of_type_AndroidViewView.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d("PressScaleAnimDelegate ", 2, "do scale animtion, scale=" + f);
     }
   }
 }

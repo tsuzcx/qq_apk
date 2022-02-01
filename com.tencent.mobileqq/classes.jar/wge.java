@@ -1,37 +1,114 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-class wge
-  implements wld<wzt, xbe>
+public class wge
+  extends wga
 {
-  wge(wfy paramwfy, wgh paramwgh, String paramString) {}
-  
-  public void a(@NonNull wzt paramwzt, @Nullable xbe paramxbe, @NonNull ErrorMessage paramErrorMessage)
+  public wge(int paramInt, wgu paramwgu)
   {
-    yqp.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response " + paramxbe);
-    if ((paramErrorMessage.isFail()) || (paramxbe == null))
+    super(2);
+    this.jdField_a_of_type_JavaLangString = "Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter";
+    this.jdField_a_of_type_Boolean = false;
+    Object localObject = new wgz();
+    ((wgz)localObject).a(paramInt);
+    ((wgz)localObject).a(paramwgu);
+    a((wgv)localObject);
+    paramwgu = new wgy();
+    localObject = ((wfv)wth.a(30)).c();
+    if (localObject != null)
     {
-      yqp.e("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response error!");
-      this.jdField_a_of_type_Wgh.a(true);
-      return;
-    }
-    paramwzt = (wpj)wpm.a(5);
-    if (paramxbe.a != null)
-    {
-      paramErrorMessage = paramxbe.a.iterator();
-      while (paramErrorMessage.hasNext()) {
-        ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        whf localwhf = (whf)((Iterator)localObject).next();
+        switch (localwhf.a)
+        {
+        default: 
+          break;
+        case 2: 
+          paramwgu.a(localwhf);
+          break;
+        case 4: 
+          paramwgu.b(localwhf);
+          break;
+        case 3: 
+          paramwgu.c(localwhf);
+        }
       }
     }
-    paramxbe.a = paramwzt.a(paramxbe.a);
-    ((wfy)wpm.a(28)).a(paramxbe.b);
-    this.jdField_a_of_type_Wfy.c(this.jdField_a_of_type_JavaLangString, 0);
-    this.jdField_a_of_type_Wgh.a(true);
+    paramwgu.a(new whd());
+    a(paramwgu);
   }
+  
+  private static boolean a(String paramString1, String paramString2)
+  {
+    return (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(paramString1, paramString2));
+  }
+  
+  public static boolean a(@NonNull wgg paramwgg, int paramInt)
+  {
+    Object localObject = paramwgg.a();
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      AddressItem localAddressItem = ((wgh)((List)localObject).get(0)).a;
+      localObject = ((wgh)((List)localObject).get(((List)localObject).size() - 1)).a;
+      if ((localAddressItem == null) || (localObject == null))
+      {
+        yuk.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "initAlbumNameByPOI find no poi item :" + paramwgg);
+        paramwgg.b = "";
+        return false;
+      }
+      if ((paramInt <= 5) && (a(localAddressItem.building, ((AddressItem)localObject).building)))
+      {
+        paramwgg.b = localAddressItem.building;
+        return true;
+      }
+      if ((paramInt <= 4) && (a(localAddressItem.district, ((AddressItem)localObject).district)))
+      {
+        paramwgg.b = localAddressItem.district;
+        return true;
+      }
+      if ((paramInt <= 3) && (a(localAddressItem.city, ((AddressItem)localObject).city)))
+      {
+        paramwgg.b = localAddressItem.city;
+        return true;
+      }
+      if ((paramInt <= 2) && (a(localAddressItem.province, ((AddressItem)localObject).province)))
+      {
+        paramwgg.b = localAddressItem.province;
+        return true;
+      }
+      if ((paramInt <= 1) && (a(localAddressItem.country, ((AddressItem)localObject).country)))
+      {
+        paramwgg.b = localAddressItem.country;
+        return true;
+      }
+    }
+    paramwgg.b = "";
+    return false;
+  }
+  
+  protected List<wgh> a()
+  {
+    yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get start Pic list=" + super.a().size());
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = super.a().iterator();
+    while (localIterator.hasNext())
+    {
+      wgh localwgh = (wgh)localIterator.next();
+      if (localwgh.a != null) {
+        localArrayList.add(localwgh);
+      }
+    }
+    yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get end Pic list=" + localArrayList.size());
+    return localArrayList;
+  }
+  
+  protected void c(List<wgg> paramList) {}
 }
 
 

@@ -1,28 +1,21 @@
+import android.text.TextUtils;
+import android.widget.ImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
 
-final class agxt
-  implements ahbm
+class agxt
+  extends anyu
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  agxt(agxr paramagxr) {}
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((paramChatMessage instanceof MessageForLightVideo)) {
-      return 103;
-    }
-    switch (((MessageForShortVideo)paramChatMessage).busiType)
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
     {
-    default: 
-      return 29;
-    case 1: 
-      return 38;
-    case 2: 
-      return 46;
-    case 1007: 
-      return 40;
+      paramString = this.a.a.a(this.a.a.getCurrentAccountUin(), (byte)3, false);
+      if ((paramString != null) && (agxr.a(this.a) != null)) {
+        agxr.a(this.a).setImageBitmap(paramString);
+      }
     }
-    return 41;
   }
 }
 

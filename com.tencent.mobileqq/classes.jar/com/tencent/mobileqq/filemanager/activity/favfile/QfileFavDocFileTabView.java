@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.activity.favfile;
 
 import android.content.Context;
-import asve;
-import asvi;
-import bcst;
+import atli;
+import atlm;
+import bdll;
 
 public class QfileFavDocFileTabView
   extends QfileFavFileTabView
 {
-  public QfileFavDocFileTabView(Context paramContext, asvi paramasvi, asve paramasve)
+  public QfileFavDocFileTabView(Context paramContext, atlm paramatlm, atli paramatli)
   {
-    super(paramContext, paramasvi, paramasve);
+    super(paramContext, paramatlm, paramatli);
   }
   
   protected void a(boolean paramBoolean)
   {
-    bcst.b(this.a, "dc00898", "", "", "0X800AFA9", "0X800AFA9", 0, 0, "", "", "", "");
+    bdll.b(this.a, "dc00898", "", "", "0X800AFA9", "0X800AFA9", 0, 0, "", "", "", "");
   }
   
   protected int b()

@@ -1,35 +1,127 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import com.tencent.av.VideoConstants;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import mqq.app.MobileQQ;
 
 public class afll
-  implements View.OnClickListener
+  extends AsyncTask<String, Void, HashMap<Integer, Integer>>
 {
-  public afll(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public afll(ScoreQAVFragment paramScoreQAVFragment) {}
   
-  public void onClick(View paramView)
+  protected HashMap<Integer, Integer> a(String... paramVarArgs)
   {
-    if ((this.a.d == 15) && (TroopMemberListActivity.a(this.a).size() > 0))
+    int i = 0;
+    if ((this.a.jdField_d_of_type_JavaLangString == null) || (this.a.jdField_d_of_type_JavaLangString.isEmpty()))
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("param_deleted_uins", TroopMemberListActivity.a(this.a));
-      this.a.setResult(-1, localIntent);
-      if ((this.a.e == null) || (!this.a.e.equals(this.a.app.getCurrentAccountUin()))) {
-        break label166;
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "mSelfUin is null!");
+      }
+      return null;
+    }
+    paramVarArgs = bhsi.e(this.a.jdField_d_of_type_JavaLangString);
+    this.a.b = paramVarArgs.getString(VideoConstants.h, "");
+    paramVarArgs = mtz.a();
+    this.a.b(paramVarArgs);
+    paramVarArgs = lbx.b(270).a;
+    this.a.a(paramVarArgs);
+    if (this.a.e.isEmpty())
+    {
+      this.a.e = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131695233);
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "mProblem_Video config data is invalid, use default!");
       }
     }
-    label166:
-    for (int i = 0;; i = 1)
+    if (this.a.f.isEmpty())
     {
-      bcst.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.b, "" + i, "1", TroopMemberListActivity.a(this.a).toString());
-      this.a.finish();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      this.a.f = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131695231);
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "mProblem_Audio config data is invalid, use default!");
+      }
     }
+    if (this.a.g.isEmpty())
+    {
+      this.a.g = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131695232);
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "mProblem_Net config data is invalid, use default!");
+      }
+    }
+    if (this.a.jdField_d_of_type_Long == 0L) {
+      paramVarArgs = this.a.e + "/" + this.a.f + "/" + this.a.g;
+    }
+    try
+    {
+      this.a.jdField_a_of_type_JavaUtilList = Arrays.asList(paramVarArgs.split("/"));
+      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
+      {
+        i = 0;
+        if (i >= this.a.jdField_a_of_type_JavaUtilList.size()) {
+          break label778;
+        }
+      }
+    }
+    catch (Exception paramVarArgs)
+    {
+      try
+      {
+        do
+        {
+          for (;;)
+          {
+            paramVarArgs = ((String)this.a.jdField_a_of_type_JavaUtilList.get(i)).split(",");
+            this.a.jdField_a_of_type_JavaUtilList.set(i, paramVarArgs[1]);
+            int j = Integer.parseInt(paramVarArgs[0]);
+            this.a.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(j));
+            i += 1;
+            continue;
+            paramVarArgs = this.a.f + "/" + this.a.g;
+          }
+          paramVarArgs = paramVarArgs;
+          paramVarArgs.printStackTrace();
+        } while (!QLog.isColorLevel());
+        QLog.i("ScoreActivity", 2, "parse exception : " + paramVarArgs.getMessage());
+      }
+      catch (Exception paramVarArgs)
+      {
+        for (;;)
+        {
+          paramVarArgs.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.i("ScoreActivity", 2, "parse exception : " + paramVarArgs.getMessage());
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "processDataTask mDatas is invalid, use default!");
+      }
+      this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
+      this.a.jdField_a_of_type_JavaUtilList.add(anzj.a(2131712459));
+      this.a.jdField_a_of_type_JavaUtilList.add(anzj.a(2131712452));
+      this.a.jdField_a_of_type_JavaUtilList.add(anzj.a(2131712455));
+      this.a.jdField_a_of_type_JavaUtilList.add(anzj.a(2131712458));
+      this.a.jdField_a_of_type_JavaUtilList.add(anzj.a(2131712453));
+      this.a.jdField_a_of_type_JavaUtilList.add(anzj.a(2131712457));
+      this.a.jdField_a_of_type_JavaUtilList.add(anzj.a(2131712454));
+      this.a.jdField_a_of_type_JavaUtilList.add(anzj.a(2131712456));
+      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+      {
+        this.a.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(i));
+        i += 1;
+      }
+    }
+    label778:
+    return this.a.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  protected void a(HashMap<Integer, Integer> paramHashMap)
+  {
+    super.onPostExecute(paramHashMap);
   }
 }
 

@@ -1,18 +1,25 @@
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import java.util.ArrayList;
+
 public class bhrt
 {
-  public int a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  
-  public String toString()
+  public static ShareActionSheetBuilder.ActionSheetItem a(int paramInt, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList)
   {
-    return "url=" + this.jdField_a_of_type_JavaLangString + " ,method=" + this.b + " ,jsonHeader=" + this.c + " ,body=" + this.d + " ," + this.e + " ,rspBase64=" + this.jdField_a_of_type_Boolean + " ,timeout=" + this.jdField_a_of_type_Int + " ,userInfo=" + this.jdField_a_of_type_JavaLangObject;
+    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = ShareActionSheetBuilder.ActionSheetItem.build(paramInt);
+    paramArrayList.add(localActionSheetItem);
+    return localActionSheetItem;
+  }
+  
+  public static ShareActionSheetBuilder.ActionSheetItem a(int paramInt1, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList, String paramString, int paramInt2)
+  {
+    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = a(paramInt1, paramArrayList);
+    paramArrayList = paramString;
+    if (paramString == null) {
+      paramArrayList = "";
+    }
+    localActionSheetItem.argus = paramArrayList;
+    localActionSheetItem.firstLineCount = paramInt2;
+    return localActionSheetItem;
   }
 }
 

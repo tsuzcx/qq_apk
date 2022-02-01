@@ -23,6 +23,49 @@ public class WtloginServlet
   extends MSFServlet
   implements Constants.Action
 {
+  private void handleSMSAction(int paramInt, Intent paramIntent, String paramString)
+  {
+    switch (paramInt)
+    {
+    case 2115: 
+    case 2116: 
+    default: 
+      return;
+    case 2112: 
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_RefreshSMSData(paramString, paramIntent.getStringExtra("userAccount"), 30000L));
+      return;
+    case 2113: 
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CheckSMSAndGetSt(paramString, paramIntent.getStringExtra("userAccount"), paramIntent.getByteArrayExtra("userInput"), 30000L));
+      return;
+    case 2114: 
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CheckSMSAndGetStExt(paramString, paramIntent.getStringExtra("userAccount"), paramIntent.getByteArrayExtra("userInput"), 30000L));
+      return;
+    case 2117: 
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_RegGetSMSVerifyLoginAccount(paramString, paramIntent.getByteArrayExtra("msgchk"), paramIntent.getByteArrayExtra("nick"), paramIntent.getStringExtra("lhuin"), paramIntent.getStringExtra("unBindlhUin"), paramIntent.getStringExtra("appVersion"), 30000L));
+      return;
+    case 2118: 
+      paramString = MsfMsgUtil.get_wt_CheckSMSVerifyLoginAccount(paramString, paramIntent.getStringExtra("userAccount"), paramIntent.getStringExtra("countryCode"), paramIntent.getIntExtra("appid", 0), 30000L);
+      byte[] arrayOfByte = paramIntent.getByteArrayExtra("verifyToken");
+      if (arrayOfByte != null) {
+        paramString.addAttribute("verifyToken", arrayOfByte);
+      }
+      sendToMSF(paramIntent, paramString);
+      return;
+    case 2119: 
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_RefreshSMSVerifyLoginCode(paramString, paramIntent.getStringExtra("countryCode"), paramIntent.getStringExtra("userAccount"), 30000L));
+      return;
+    case 2120: 
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_VerifySMSVerifyLoginCode(paramString, paramIntent.getStringExtra("countryCode"), paramIntent.getStringExtra("userAccount"), paramIntent.getStringExtra("code"), 30000L));
+      return;
+    case 2121: 
+      paramString = MsfMsgUtil.get_wt_GetStViaSMSVerifyLogin(paramString, paramIntent.getStringExtra("countryCode"), paramIntent.getStringExtra("userAccount"), paramIntent.getIntExtra("appid", 0), 30000L);
+      paramString.addAttribute("from_where", paramIntent.getStringExtra("from_where"));
+      sendToMSF(paramIntent, paramString);
+      return;
+    }
+    sendToMSF(paramIntent, MsfMsgUtil.get_wt_GetSubaccountStViaSMSVerifyLogin(paramString, paramIntent.getStringExtra("mainaccount"), paramIntent.getStringExtra("countryCode"), paramIntent.getStringExtra("userAccount"), paramIntent.getIntExtra("appid", 0), 30000L));
+  }
+  
   private void onRecvAskDevLockSms(Intent paramIntent, FromServiceMsg paramFromServiceMsg, Bundle paramBundle)
   {
     if (paramFromServiceMsg.isSuccess())
@@ -222,10 +265,10 @@ public class WtloginServlet
       }
       localObject2 = paramFromServiceMsg.getAttribute("resp_logini_ret");
       if ((localObject2 == null) || (!(localObject2 instanceof Integer))) {
-        break label636;
+        break label650;
       }
     }
-    label636:
+    label650:
     for (int i = ((Integer)localObject2).intValue();; i = 0)
     {
       localObject2 = paramFromServiceMsg.getAttribute("resp_login_lhsig");
@@ -613,91 +656,57 @@ public class WtloginServlet
   {
     super.service(paramIntent);
     int i = paramIntent.getIntExtra("action", 0);
-    Object localObject1 = MsfServiceSdk.get().getMsfServiceName();
-    Object localObject2;
+    String str = MsfServiceSdk.get().getMsfServiceName();
     switch (i)
     {
     default: 
+      handleSMSAction(i, paramIntent, str);
       return;
     case 2100: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_GetStWithPasswd((String)localObject1, paramIntent.getStringExtra("uin"), paramIntent.getLongExtra("appid", 0L), paramIntent.getStringExtra("passwd"), 30000L));
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_GetStWithPasswd(str, paramIntent.getStringExtra("uin"), paramIntent.getLongExtra("appid", 0L), paramIntent.getStringExtra("passwd"), 30000L));
       return;
     case 2101: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_GetStWithoutPasswd((String)localObject1, paramIntent.getStringExtra("uin"), paramIntent.getLongExtra("dwSrcAppid", 0L), paramIntent.getLongExtra("dwDstAppid", 0L), 30000L));
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_GetStWithoutPasswd(str, paramIntent.getStringExtra("uin"), paramIntent.getLongExtra("dwSrcAppid", 0L), paramIntent.getLongExtra("dwDstAppid", 0L), 30000L));
       return;
     case 2208: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_GetOpenKeyWithoutPasswd((String)localObject1, paramIntent.getStringExtra("uin"), paramIntent.getLongExtra("dwSrcAppid", 0L), paramIntent.getLongExtra("dwDstAppid", 0L), 30000L));
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_GetOpenKeyWithoutPasswd(str, paramIntent.getStringExtra("uin"), paramIntent.getLongExtra("dwSrcAppid", 0L), paramIntent.getLongExtra("dwDstAppid", 0L), 30000L));
       return;
     case 2102: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CheckPictureAndGetSt((String)localObject1, paramIntent.getStringExtra("uin"), paramIntent.getByteArrayExtra("userInput"), 30000L));
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CheckPictureAndGetSt(str, paramIntent.getStringExtra("uin"), paramIntent.getByteArrayExtra("userInput"), 30000L));
       return;
     case 2103: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_RefreshPictureData((String)localObject1, paramIntent.getStringExtra("uin"), 30000L));
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_RefreshPictureData(str, paramIntent.getStringExtra("uin"), 30000L));
       return;
     case 2104: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_VerifyCode((String)localObject1, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("appid", 0L), paramIntent.getBooleanExtra("close", false), paramIntent.getByteArrayExtra("code"), paramIntent.getIntArrayExtra("tlv"), paramIntent.getIntExtra("version", 0), 30000L));
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_VerifyCode(str, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("appid", 0L), paramIntent.getBooleanExtra("close", false), paramIntent.getByteArrayExtra("code"), paramIntent.getIntArrayExtra("tlv"), paramIntent.getIntExtra("version", 0), 30000L));
       return;
     case 2105: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CloseCode((String)localObject1, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("appid", 0L), paramIntent.getByteArrayExtra("code"), paramIntent.getIntExtra("version", 0), paramIntent.getStringArrayListExtra("data"), 30000L));
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CloseCode(str, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("appid", 0L), paramIntent.getByteArrayExtra("code"), paramIntent.getIntExtra("version", 0), paramIntent.getStringArrayListExtra("data"), 30000L));
       return;
     case 2213: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CancelCode((String)localObject1, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("appid", 0L), paramIntent.getByteArrayExtra("code"), 30000L));
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CancelCode(str, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("appid", 0L), paramIntent.getByteArrayExtra("code"), 30000L));
       return;
     case 2106: 
-      localObject2 = (WFastLoginInfo)((NewIntent)paramIntent).intentMap.get("fastLoginInfo");
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_GetA1WithA1((String)localObject1, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("dwSrcAppid", 0L), paramIntent.getLongExtra("dwSubSrcAppid", 0L), paramIntent.getByteArrayExtra("dstAppName"), paramIntent.getLongExtra("dwDstSsoVer", 0L), paramIntent.getLongExtra("dwDstAppid", 0L), paramIntent.getLongExtra("dwSubDstAppid", 0L), paramIntent.getByteArrayExtra("dstAppVer"), paramIntent.getByteArrayExtra("dstAppSign"), (WFastLoginInfo)localObject2, 30000L));
+      WFastLoginInfo localWFastLoginInfo = (WFastLoginInfo)((NewIntent)paramIntent).intentMap.get("fastLoginInfo");
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_GetA1WithA1(str, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("dwSrcAppid", 0L), paramIntent.getLongExtra("dwSubSrcAppid", 0L), paramIntent.getByteArrayExtra("dstAppName"), paramIntent.getLongExtra("dwDstSsoVer", 0L), paramIntent.getLongExtra("dwDstAppid", 0L), paramIntent.getLongExtra("dwSubDstAppid", 0L), paramIntent.getByteArrayExtra("dstAppVer"), paramIntent.getByteArrayExtra("dstAppSign"), localWFastLoginInfo, 30000L));
       return;
     case 2108: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CheckDevLockStatus((String)localObject1, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("subAppid", 0L), 30000L));
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CheckDevLockStatus(str, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("subAppid", 0L), 30000L));
       return;
     case 2109: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_AskDevLockSms((String)localObject1, paramIntent.getStringExtra("userAccount"), 30000L));
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_AskDevLockSms(str, paramIntent.getStringExtra("userAccount"), 30000L));
       return;
     case 2110: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CheckDevLockSms((String)localObject1, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("subAppid", 0L), paramIntent.getStringExtra("smsCode"), paramIntent.getByteArrayExtra("sppKey"), 30000L));
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CheckDevLockSms(str, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("subAppid", 0L), paramIntent.getStringExtra("smsCode"), paramIntent.getByteArrayExtra("sppKey"), 30000L));
       return;
     case 2111: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CloseDevLock((String)localObject1, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("subAppid", 0L), 30000L));
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CloseDevLock(str, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("subAppid", 0L), 30000L));
       return;
     case 2125: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_setRegDevLockFlag((String)localObject1, paramIntent.getIntExtra("flag", 0), 30000L));
-      return;
-    case 2129: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_SetDevlockMobileType((String)localObject1, paramIntent.getIntExtra("mobile_type", 0), 30000L));
-      return;
-    case 2112: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_RefreshSMSData((String)localObject1, paramIntent.getStringExtra("userAccount"), 30000L));
-      return;
-    case 2113: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CheckSMSAndGetSt((String)localObject1, paramIntent.getStringExtra("userAccount"), paramIntent.getByteArrayExtra("userInput"), 30000L));
-      return;
-    case 2114: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CheckSMSAndGetStExt((String)localObject1, paramIntent.getStringExtra("userAccount"), paramIntent.getByteArrayExtra("userInput"), 30000L));
-      return;
-    case 2117: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_RegGetSMSVerifyLoginAccount((String)localObject1, paramIntent.getByteArrayExtra("msgchk"), paramIntent.getByteArrayExtra("nick"), paramIntent.getStringExtra("lhuin"), paramIntent.getStringExtra("unBindlhUin"), paramIntent.getStringExtra("appVersion"), 30000L));
-      return;
-    case 2118: 
-      localObject1 = MsfMsgUtil.get_wt_CheckSMSVerifyLoginAccount((String)localObject1, paramIntent.getStringExtra("userAccount"), paramIntent.getStringExtra("countryCode"), paramIntent.getIntExtra("appid", 0), 30000L);
-      localObject2 = paramIntent.getByteArrayExtra("verifyToken");
-      if (localObject2 != null) {
-        ((ToServiceMsg)localObject1).addAttribute("verifyToken", localObject2);
-      }
-      sendToMSF(paramIntent, (ToServiceMsg)localObject1);
-      return;
-    case 2119: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_RefreshSMSVerifyLoginCode((String)localObject1, paramIntent.getStringExtra("countryCode"), paramIntent.getStringExtra("userAccount"), 30000L));
-      return;
-    case 2120: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_VerifySMSVerifyLoginCode((String)localObject1, paramIntent.getStringExtra("countryCode"), paramIntent.getStringExtra("userAccount"), paramIntent.getStringExtra("code"), 30000L));
-      return;
-    case 2121: 
-      localObject1 = MsfMsgUtil.get_wt_GetStViaSMSVerifyLogin((String)localObject1, paramIntent.getStringExtra("countryCode"), paramIntent.getStringExtra("userAccount"), paramIntent.getIntExtra("appid", 0), 30000L);
-      ((ToServiceMsg)localObject1).addAttribute("from_where", paramIntent.getStringExtra("from_where"));
-      sendToMSF(paramIntent, (ToServiceMsg)localObject1);
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_setRegDevLockFlag(str, paramIntent.getIntExtra("flag", 0), 30000L));
       return;
     }
-    sendToMSF(paramIntent, MsfMsgUtil.get_wt_GetSubaccountStViaSMSVerifyLogin((String)localObject1, paramIntent.getStringExtra("mainaccount"), paramIntent.getStringExtra("countryCode"), paramIntent.getStringExtra("userAccount"), paramIntent.getIntExtra("appid", 0), 30000L));
+    sendToMSF(paramIntent, MsfMsgUtil.get_wt_SetDevlockMobileType(str, paramIntent.getIntExtra("mobile_type", 0), 30000L));
   }
 }
 

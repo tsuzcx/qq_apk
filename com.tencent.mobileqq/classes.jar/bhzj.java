@@ -1,9 +1,16 @@
-public class bhzj
+import com.tencent.image.URLDrawableHandler;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+class bhzj
+  implements EIPCResultCallback
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  bhzj(bhzi parambhzi, URLDrawableHandler paramURLDrawableHandler) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    this.jdField_a_of_type_Bhzi.a(this.jdField_a_of_type_ComTencentImageURLDrawableHandler, false);
+  }
 }
 
 

@@ -1,14 +1,16 @@
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class aiiw
-  implements Comparator<aiis>
+class aiiw
+  implements DialogInterface.OnClickListener
 {
-  public int a(aiis paramaiis1, aiis paramaiis2)
+  aiiw(aiit paramaiit) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramaiis1 == null) || (paramaiis2 == null)) {
-      return 0;
-    }
-    return Float.compare(paramaiis1.a(), paramaiis2.a());
+    paramDialogInterface.dismiss();
+    bhmi.d(this.a.g);
+    this.a.g = "";
   }
 }
 

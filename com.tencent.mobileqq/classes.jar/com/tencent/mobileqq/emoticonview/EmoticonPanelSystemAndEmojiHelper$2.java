@@ -8,12 +8,12 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
-import aryv;
+import asoj;
 
 public class EmoticonPanelSystemAndEmojiHelper$2
   implements Runnable
 {
-  public EmoticonPanelSystemAndEmojiHelper$2(aryv paramaryv) {}
+  public EmoticonPanelSystemAndEmojiHelper$2(asoj paramasoj) {}
   
   public void run()
   {

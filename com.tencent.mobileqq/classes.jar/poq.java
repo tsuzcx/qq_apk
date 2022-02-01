@@ -1,27 +1,9 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.List;
 
-public class poq
-  implements View.OnClickListener
+public abstract interface poq
 {
-  public poq(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, String paramString) {}
-  
-  public void onClick(View paramView)
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity(), QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity().startActivity(localIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyChannelPanelFragment", 2, "info.mChannelJumpUrl:" + this.jdField_a_of_type_JavaLangString);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract List<ArticleInfo> a(int paramInt, List<ArticleInfo> paramList1, List<ArticleInfo> paramList2);
 }
 
 

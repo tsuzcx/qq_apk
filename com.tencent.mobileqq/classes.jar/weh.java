@@ -1,52 +1,20 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import com.tencent.biz.qqcircle.widgets.feed.QCircleTimeLineFeedItemView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import feedcloud.FeedCloudMeta.StFeed;
 
-class weh
-  extends RecyclerView.OnScrollListener
+public class weh
+  extends GridLayoutManager.SpanSizeLookup
 {
-  private long jdField_a_of_type_Long;
-  private final long b = 20L;
+  public weh(QCircleTimeLineFeedItemView paramQCircleTimeLineFeedItemView) {}
   
-  weh(wef paramwef) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public int getSpanSize(int paramInt)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((paramInt == 1) && (wef.b(this.jdField_a_of_type_Wef)))
-    {
-      yqp.b("FredguoFix", "set needAnimated to false, break animation");
-      wef.a(this.jdField_a_of_type_Wef).a(wef.a(this.jdField_a_of_type_Wef));
-      wef.b(this.jdField_a_of_type_Wef, false);
-      wef.a(this.jdField_a_of_type_Wef, false);
+    if (((this.a.a() instanceof FeedCloudMeta.StFeed)) && (((FeedCloudMeta.StFeed)this.a.a()).type.get() == 2) && (((FeedCloudMeta.StFeed)this.a.a()).images.size() > 1)) {
+      return 1;
     }
-    if (paramInt == 0)
-    {
-      wef.d(this.jdField_a_of_type_Wef, false);
-      this.jdField_a_of_type_Long = 0L;
-      if (wef.a(this.jdField_a_of_type_Wef).a(paramRecyclerView.getLayoutManager()) == null) {
-        return;
-      }
-      if (wef.c(this.jdField_a_of_type_Wef))
-      {
-        yqp.b("FredguoFix", "animated to false, play animation done");
-        wef.a(this.jdField_a_of_type_Wef, false);
-        wef.a(this.jdField_a_of_type_Wef).a(wef.a(this.jdField_a_of_type_Wef));
-      }
-      this.jdField_a_of_type_Wef.d();
-      return;
-    }
-    wef.d(this.jdField_a_of_type_Wef, true);
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    long l = System.currentTimeMillis();
-    if (Math.abs(l - this.jdField_a_of_type_Long) >= 20L)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Wef.d();
-    }
+    return 2;
   }
 }
 

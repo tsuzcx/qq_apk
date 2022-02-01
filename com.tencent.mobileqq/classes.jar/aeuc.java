@@ -1,30 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import QQService.DiscussMemberInfo;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity.FaceObserver.1;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class aeuc
-  implements DialogInterface.OnClickListener
+public class aeuc
+  extends anyu
 {
-  aeuc(aeua paramaeua) {}
+  private aeuc(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    paramDialogInterface.dismiss();
-    if (!bgnt.d(this.a.a))
+    if ((!paramBoolean) || (this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.app.getCurrentAccountUin().equals(paramString))) {}
+    label192:
+    for (;;)
     {
-      PhoneUnityChangeActivity.a(this.a.a, 2131693991);
       return;
+      Object localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      do
+      {
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+      } while (!String.valueOf(((DiscussMemberInfo)((Iterator)localObject).next()).Uin).equals(paramString));
+      for (int i = 1;; i = 0)
+      {
+        if ((i == 0) || (this.a.jdField_a_of_type_JavaUtilArrayList.contains(paramString))) {
+          break label192;
+        }
+        this.a.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        localObject = new StringBuilder();
+        JoinDiscussionActivity localJoinDiscussionActivity = this.a;
+        localJoinDiscussionActivity.f = (localJoinDiscussionActivity.f + paramString + ";");
+        if (this.a.jdField_a_of_type_JavaUtilArrayList.size() != this.a.b) {
+          break;
+        }
+        ThreadManager.post(new JoinDiscussionActivity.FaceObserver.1(this), 8, null, true);
+        return;
+      }
     }
-    if (this.a.a.b == null)
-    {
-      this.a.a.b = new aeud(this);
-      this.a.a.app.registObserver(this.a.a.b);
-    }
-    PhoneUnityChangeActivity.a(this.a.a).a(true, false);
-    PhoneUnityChangeActivity.a(this.a.a, 2131717771, 0L, true);
-    bcst.b(this.a.a.app, "CliOper", "", "", "0X8005B81", "0X8005B81", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.model;
 
-import aovf;
-import apap;
-import apeo;
+import apiv;
+import apof;
+import apse;
 
 public class QQARSession$21
   implements Runnable
 {
-  public QQARSession$21(apeo paramapeo, int paramInt) {}
+  public QQARSession$21(apse paramapse, int paramInt) {}
   
   public void run()
   {
-    if ((apeo.b(this.this$0)) && (this.this$0.a == 2) && (apeo.a(this.this$0) != null))
+    if ((apse.b(this.this$0)) && (this.this$0.a == 2) && (apse.a(this.this$0) != null))
     {
-      aovf localaovf = new aovf(apeo.a(this.this$0));
-      apeo.a(this.this$0).a(0, localaovf, this.a);
+      apiv localapiv = new apiv(apse.a(this.this$0));
+      apse.a(this.this$0).a(0, localapiv, this.a);
     }
   }
 }

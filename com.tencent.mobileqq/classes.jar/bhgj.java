@@ -1,10 +1,11 @@
-final class bhgj
+abstract class bhgj
 {
-  static final bhgh a = new bhgh(null);
+  public int a;
+  public byte[] a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhgj
  * JD-Core Version:    0.7.0.1
  */

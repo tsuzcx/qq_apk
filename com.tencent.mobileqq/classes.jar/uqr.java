@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-class uqr
-  implements View.OnClickListener
+final class uqr
+  implements DialogInterface.OnCancelListener
 {
-  uqr(uqp paramuqp) {}
+  uqr(upd paramupd) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    uqp.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    uqi.b(this.a);
   }
 }
 

@@ -1,22 +1,29 @@
-import android.support.v4.app.FragmentActivity;
+import android.util.SparseArray;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class azim
-  implements View.OnClickListener
 {
-  public azim(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  private SparseArray<View> a = new SparseArray();
   
-  public void onClick(View paramView)
+  public View a(int paramInt)
   {
-    this.a.a(1);
-    StickyNotePublishFragment.a(this.a).setImageResource(2130837535);
-    StickyNotePublishFragment.a(this.a).setContentDescription(this.a.getActivity().getString(2131690186));
-    bcst.b(null, "dc00898", "", "", "0X800AB2D", "0X800AB2D", 0, 0, "0", "0", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.size() > 0)
+    {
+      View localView = (View)this.a.get(paramInt);
+      if (localView != null) {
+        this.a.remove(paramInt);
+      }
+      return localView;
+    }
+    return null;
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    if (this.a.size() >= 3) {
+      return;
+    }
+    this.a.put(paramInt, paramView);
   }
 }
 

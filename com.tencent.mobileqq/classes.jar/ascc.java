@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class ascc
-  implements awnd<Void, List<asac>>
+  extends Handler
 {
-  ascc(asca paramasca) {}
-  
-  public List<asac> a(Void paramVoid)
+  ascc(asca paramasca, Looper paramLooper)
   {
-    paramVoid = ((awmr)this.a.a.getManager(14)).a(false, asca.a(this.a), false);
-    ArrayList localArrayList = new ArrayList();
-    if (paramVoid != null) {
-      localArrayList.addAll(paramVoid);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    return localArrayList;
+    do
+    {
+      return;
+    } while (asca.c(this.a));
+    QLog.e("VoiceInputHelper", 1, "checkPermission uncertain");
+    this.a.onGetError(1830002);
   }
 }
 

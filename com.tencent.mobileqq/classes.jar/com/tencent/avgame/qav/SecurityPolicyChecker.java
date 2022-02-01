@@ -6,9 +6,9 @@ import com.tencent.avgame.gamelogic.data.Player;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
-import myc;
-import nel;
-import neq;
+import mze;
+import nge;
+import ngk;
 
 public class SecurityPolicyChecker
 {
@@ -42,36 +42,36 @@ public class SecurityPolicyChecker
     }
   }
   
-  public void a(myc parammyc, String paramString)
+  public void a(mze parammze, String paramString)
   {
     Player localPlayer;
-    if (parammyc != null)
+    if (parammze != null)
     {
-      int i = parammyc.a();
+      int i = parammze.a();
       if ((i != 0) && (i != 10))
       {
-        localPlayer = parammyc.b();
-        if ((localPlayer == null) || (!parammyc.b(localPlayer.uin))) {}
+        localPlayer = parammze.b();
+        if ((localPlayer == null) || (!parammze.b(localPlayer.uin))) {}
       }
     }
-    for (parammyc = localPlayer.uin;; parammyc = null)
+    for (parammze = localPlayer.uin;; parammze = null)
     {
       boolean bool2 = false;
       boolean bool1 = bool2;
       if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString))
       {
         bool1 = bool2;
-        if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, parammyc)) {
+        if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, parammze)) {
           bool1 = true;
         }
       }
-      this.jdField_a_of_type_JavaLangString = parammyc;
+      this.jdField_a_of_type_JavaLangString = parammze;
       if (bool1)
       {
         if (this.jdField_a_of_type_JavaLangRunnable == null) {
           this.jdField_a_of_type_JavaLangRunnable = new SecurityPolicyChecker.CheckCameraTask(null);
         }
-        neq.a().b().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+        ngk.a().b().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
       }
       if (QLog.isColorLevel()) {
         QLog.i("SecurityPolicyChecker", 2, "setPlayer1, [" + this.jdField_a_of_type_JavaLangString + "," + bool1 + "]");
@@ -80,9 +80,9 @@ public class SecurityPolicyChecker
     }
   }
   
-  public void a(nel paramnel)
+  public void a(nge paramnge)
   {
-    ThreadManager.excute(new SecurityPolicyChecker.1(this, new WeakReference(paramnel)), 16, null, false);
+    ThreadManager.excute(new SecurityPolicyChecker.1(this, new WeakReference(paramnge)), 16, null, false);
   }
   
   public boolean a()

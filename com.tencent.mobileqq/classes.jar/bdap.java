@@ -1,86 +1,109 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import android.media.MediaFormat;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdap
-  extends bcvu
 {
-  String aq;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  public boolean a;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  public boolean b;
+  public boolean c;
+  boolean d;
+  boolean e;
+  boolean f;
+  boolean g;
   
-  public bdap()
+  public bdap(SVHwEncoder.HwEncode paramHwEncode) {}
+  
+  public void a()
   {
-    this(null);
+    a("releaseMuxer[resetValidData]");
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.c = false;
+    this.d = false;
+    this.e = false;
+    this.f = false;
+    this.g = false;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
   }
   
-  public bdap(String paramString)
+  public void a(MediaFormat paramMediaFormat)
   {
-    super(paramString, "remark");
+    if ((paramMediaFormat.containsKey("csd-0")) && (paramMediaFormat.containsKey("csd-1"))) {
+      this.d = true;
+    }
   }
   
-  public String a()
+  public void a(String paramString)
   {
-    return "Remark";
+    if (QLog.isColorLevel()) {
+      QLog.d("SVHwEncoder", 2, paramString + ": mHasKeyFrame=" + this.jdField_a_of_type_Boolean + " mVideoFirst=" + this.jdField_b_of_type_Boolean + " mFirstIsKey=" + this.c + " mVideoConfigOK=" + this.d + " mAudioConfigOK=" + this.e + " mVideoMuxeredframeCount=" + SVHwEncoder.HwEncode.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mAudioMuxeredframeCount=" + SVHwEncoder.HwEncode.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mVideoOrderError=" + this.f + " mAudioOrderError=" + this.g + " mVideoOrderErrorCnt=" + this.jdField_a_of_type_Int + " mAudioOrderErrorCnt=" + this.jdField_b_of_type_Int);
+    }
   }
   
-  public void a(ObjectInput paramObjectInput)
+  boolean a()
   {
-    super.a(paramObjectInput);
-    this.aq = paramObjectInput.readUTF();
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("releaseMuxer[audioSpecOK]", "mNeedEncodeAudio=" + SVHwEncoder.HwEncode.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mAudioConfigOK=" + this.e);
+    if (SVHwEncoder.HwEncode.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode)) {
+      return this.e;
+    }
+    return true;
   }
   
-  public void a(ObjectOutput paramObjectOutput)
+  public boolean a(long paramLong, boolean paramBoolean)
   {
-    super.a(paramObjectOutput);
-    if (this.aq == null) {}
-    for (String str = "";; str = this.aq)
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (paramBoolean)
     {
-      paramObjectOutput.writeUTF(str);
-      return;
+      if (this.jdField_a_of_type_Long <= paramLong) {
+        break label83;
+      }
+      this.f = true;
+      this.jdField_a_of_type_Int += 1;
+    }
+    label83:
+    for (paramBoolean = bool1;; paramBoolean = false)
+    {
+      this.jdField_a_of_type_Long = paramLong;
+      return paramBoolean;
+      if (this.jdField_b_of_type_Long > paramLong)
+      {
+        this.g = true;
+        this.jdField_b_of_type_Int += 1;
+      }
+      for (paramBoolean = bool2;; paramBoolean = false)
+      {
+        this.jdField_b_of_type_Long = paramLong;
+        return paramBoolean;
+      }
     }
   }
   
-  public void a(XmlSerializer paramXmlSerializer)
+  public void b(MediaFormat paramMediaFormat)
   {
-    super.a(paramXmlSerializer);
-    if (!TextUtils.isEmpty(this.aq)) {
-      paramXmlSerializer.attribute(null, "url", this.aq);
+    if (paramMediaFormat.containsKey("csd-0")) {
+      this.e = true;
     }
   }
   
-  public boolean a(bcxj parambcxj)
+  boolean b()
   {
-    if (parambcxj == null) {
-      return true;
-    }
-    this.aq = parambcxj.a("bgColor");
-    return super.a(parambcxj);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.this$0.a("releaseMuxer[videoSpecOK]", "mNeedEncodeVideo=" + SVHwEncoder.HwEncode.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode) + " mVideoConfigOK=" + this.d);
+    return (!SVHwEncoder.HwEncode.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode)) || ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.c) && (this.d) && (!this.f));
   }
   
-  public int b()
+  public boolean c()
   {
-    return 1;
-  }
-  
-  public int c()
-  {
-    return 2131379866;
-  }
-  
-  public int e()
-  {
-    return Color.rgb(128, 128, 128);
-  }
-  
-  public int f()
-  {
-    return 24;
-  }
-  
-  public String g()
-  {
-    return this.aq;
+    return (a()) && (b());
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
 import mqq.os.MqqHandler;
-import tue;
+import tug;
 
 class ServiceAccountFolderActivity$2
   implements Runnable
 {
-  ServiceAccountFolderActivity$2(ServiceAccountFolderActivity paramServiceAccountFolderActivity, tue paramtue) {}
+  ServiceAccountFolderActivity$2(ServiceAccountFolderActivity paramServiceAccountFolderActivity, tug paramtug) {}
   
   public void run()
   {

@@ -16,12 +16,12 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import wev;
-import yqp;
+import wiq;
+import yuk;
 
 public class LikeEntry
   extends Entity
-  implements Comparable<LikeEntry>, wev
+  implements Comparable<LikeEntry>, wiq
 {
   public static final int ROLE_NORMAL = 0;
   public static final int ROLE_VIP = 2;
@@ -114,7 +114,7 @@ public class LikeEntry
       }
       catch (Exception paramString)
       {
-        yqp.e("Q.qqstory:LikeEntry", String.format("Parse json error , %s", new Object[] { paramString.getMessage() }));
+        yuk.e("Q.qqstory:LikeEntry", String.format("Parse json error , %s", new Object[] { paramString.getMessage() }));
       }
     }
   }

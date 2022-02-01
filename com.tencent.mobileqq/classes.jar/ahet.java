@@ -1,20 +1,21 @@
-import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
-import feedcloud.FeedCloudMeta.StUser;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 
 class ahet
-  implements vxd
+  implements aunx
 {
-  ahet(ahes paramahes, ahev paramahev) {}
+  ahet(ahed paramahed) {}
   
-  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
+  public void onClick(View paramView)
   {
-    paramStUser = this.jdField_a_of_type_Ahev.a;
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramStUser.setClickable(paramBoolean);
-      return;
-    }
+    paramView = new Intent();
+    paramView.putExtra("uin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    paramView.putExtra("uinname", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+    bnrt.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView, "com.tencent.device.activities.DeviceGroupChatConfirmActivity", -1, null, SmartDevicePluginProxyActivity.class);
   }
 }
 

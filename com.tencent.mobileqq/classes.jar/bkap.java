@@ -1,38 +1,41 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Date;
+import cooperation.wadl.ipc.WadlResult;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-final class bkap
-  extends bkat
+public class bkap
+  extends bkaj
 {
-  bkap(bkao parambkao)
+  private WeakReference<bkaq> a;
+  
+  public bkap()
   {
-    super(null);
+    super(false, null);
   }
   
-  public boolean a(String paramString, bkbm parambkbm)
+  public void a(bkaq parambkaq)
   {
-    if (this.a.size() >= this.a.maxSize())
-    {
-      bkao.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Cache not load completely.");
-      }
-      return false;
+    this.a = new WeakReference(parambkaq);
+  }
+  
+  public void onQueryCallback(ArrayList<WadlResult> paramArrayList)
+  {
+    super.onQueryCallback(paramArrayList);
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((bkaq)this.a.get()).a(paramArrayList);
     }
-    if (parambkbm.a > new Date().getTime())
+  }
+  
+  public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
+  {
+    super.onWadlTaskStatusChanged(paramWadlResult);
+    if ((paramWadlResult == null) || (paramWadlResult.a == null)) {}
+    int i;
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, parambkbm.toString() }));
-      }
-      this.a.put(paramString, parambkbm);
-    }
-    for (;;)
-    {
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, parambkbm.toString() }));
-      }
-    }
+      return;
+      i = bkan.a(paramWadlResult.b);
+    } while ((this.a == null) || (this.a.get() == null));
+    ((bkaq)this.a.get()).a(i, paramWadlResult);
   }
 }
 

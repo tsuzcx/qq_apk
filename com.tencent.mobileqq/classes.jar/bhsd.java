@@ -1,30 +1,62 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
 public class bhsd
-  implements bhse
 {
-  public bhsd(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState, long paramLong) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  public void a(String paramString)
+  private void a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Int = 10003;
+    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_JavaLangString = paramString;
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.g = true;
-    }
-    for (;;)
+  }
+  
+  private void a(View paramView)
+  {
+    if (paramView != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = false;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Bhrq.d = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Boolean = true;
+      paramView = paramView.getParent();
+      if ((paramView != null) && ((paramView instanceof ViewGroup))) {
+        a((ViewGroup)paramView);
+      }
     }
+  }
+  
+  private void a(ViewGroup paramViewGroup)
+  {
+    if (paramViewGroup != null) {
+      paramViewGroup.removeAllViews();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(paramInt);
+    }
+  }
+  
+  public void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
+  {
+    a(this.jdField_a_of_type_AndroidViewView);
+    a(paramView);
+    if (paramView != null) {
+      paramView.setLayoutParams(paramLayoutParams);
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a();
+  }
+  
+  public void a(RelativeLayout paramRelativeLayout)
+  {
+    a(this.jdField_a_of_type_AndroidViewViewGroup);
+    a(paramRelativeLayout);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
+    a();
   }
 }
 

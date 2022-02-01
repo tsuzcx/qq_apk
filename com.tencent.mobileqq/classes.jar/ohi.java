@@ -1,29 +1,34 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener.1;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener.2;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class ohi
-  extends Handler
+public class ohi
+  implements svx
 {
-  private WeakReference<ohg> a;
+  public ohi(ohf paramohf) {}
   
-  public ohi(ohg paramohg)
+  public void a(boolean paramBoolean)
   {
-    this.a = new WeakReference(paramohg);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ohg localohg = (ohg)this.a.get();
-    if ((localohg == null) || (!localohg.b())) {
-      return;
-    }
-    switch (paramMessage.what)
+    AppInterface localAppInterface;
+    if ((ohf.a(this.a) instanceof BaseActivity))
     {
-    default: 
+      localAppInterface = ((BaseActivity)ohf.a(this.a)).getAppInterface();
+      if ((localAppInterface != null) && (ohf.a(this.a) != null) && (!paramBoolean))
+      {
+        qtq localqtq = (qtq)localAppInterface.getManager(270);
+        if ((localqtq.a() != 1) || (!localqtq.b())) {
+          break label87;
+        }
+        ThreadManager.post(new KanDianViewController.PullRefreshCompleteListener.1(this), 8, null, true);
+      }
+    }
+    label87:
+    while (((qtw)localAppInterface.getManager(261)).a() != 1) {
       return;
     }
-    localohg.b();
+    ThreadManager.post(new KanDianViewController.PullRefreshCompleteListener.2(this), 8, null, true);
   }
 }
 

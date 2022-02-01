@@ -1,25 +1,21 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 
-final class ampl
-  implements BusinessObserver
+public class ampl
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    try
-    {
-      paramInt = paramBundle.getInt("extra_result_code");
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameUtil", 1, new Object[] { "[reportGameData] retCode=", Integer.valueOf(paramInt) });
-      }
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      QLog.e("cmgame_process.CmGameUtil", 1, "[reportGameData] onReceive, exception=", paramBundle);
-    }
-  }
+  public int a = 1;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public MayKnowRecommend a;
+  public String a;
+  public boolean a;
+  public TextView b;
+  public String b;
+  public TextView c;
+  public TextView d;
 }
 
 

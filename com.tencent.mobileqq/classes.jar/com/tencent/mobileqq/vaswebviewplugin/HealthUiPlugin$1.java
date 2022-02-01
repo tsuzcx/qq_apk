@@ -3,12 +3,12 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
-import bcrt;
-import bgmg;
-import bgnt;
-import bgwh;
-import bgwl;
-import bhod;
+import bdkl;
+import bhmi;
+import bhnv;
+import bhwl;
+import bhwp;
+import bioy;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.net.URLEncoder;
@@ -35,10 +35,10 @@ class HealthUiPlugin$1
         if (!bool) {
           try
           {
-            Object localObject1 = new File(this.this$0.mRuntime.a().getApplicationContext().getFilesDir(), bgwh.c.a);
+            Object localObject1 = new File(this.this$0.mRuntime.a().getApplicationContext().getFilesDir(), bhwl.c.a);
             if ((localObject1 != null) && (((File)localObject1).exists()))
             {
-              localObject1 = new JSONObject(bgmg.a((File)localObject1)).getJSONObject("data").getJSONArray("jdUploadLog");
+              localObject1 = new JSONObject(bhmi.a((File)localObject1)).getJSONObject("data").getJSONArray("jdUploadLog");
               if (localObject1 != null)
               {
                 int j = ((JSONArray)localObject1).length();
@@ -69,7 +69,7 @@ class HealthUiPlugin$1
       }
       try
       {
-        i = bgnt.a(this.this$0.mRuntime.a().getApplicationContext());
+        i = bhnv.a(this.this$0.mRuntime.a().getApplicationContext());
         if (i == 0) {
           continue;
         }
@@ -90,8 +90,8 @@ class HealthUiPlugin$1
       {
         try
         {
-          ((StringBuilder)localObject2).append("jd").append("|").append(URLEncoder.encode(this.val$url, "UTF-8")).append("|").append(???).append("|").append("android").append("|").append("8.4.1").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
-          bcrt.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
+          ((StringBuilder)localObject2).append("jd").append("|").append(URLEncoder.encode(this.val$url, "UTF-8")).append("|").append(???).append("|").append("android").append("|").append("8.4.5").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
+          bdkl.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
           if ((!this.val$url.contains("91160.com")) && (!this.val$url.contains("guahao.com"))) {
             continue;
           }
@@ -115,8 +115,8 @@ class HealthUiPlugin$1
                 QLog.d("HealthUiPlugin", 2, "report guahao url \n" + (String)localObject5);
               }
               Object localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append("jiankang").append("|").append((String)localObject5).append("|").append(???).append("|").append("android").append("|").append("8.4.1").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
-              bcrt.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
+              ((StringBuilder)localObject2).append("jiankang").append("|").append((String)localObject5).append("|").append(???).append("|").append("android").append("|").append("8.4.5").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
+              bdkl.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
               return;
               localObject3 = finally;
               throw localObject3;

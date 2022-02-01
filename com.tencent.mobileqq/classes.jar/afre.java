@@ -1,44 +1,49 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class afre
-  implements View.OnClickListener
+  implements bliz
 {
-  public afre(VisitorsActivity paramVisitorsActivity, CardProfile paramCardProfile, azhm paramazhm, int paramInt) {}
+  public afre(TroopAssisSettingActivity paramTroopAssisSettingActivity, int paramInt, TroopInfo paramTroopInfo, blir paramblir) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = 1;
-    int j;
-    int k;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
+    switch (paramInt)
     {
-      j = 1;
-      k = this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bIsLastVoteCharged;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type != 3) {
-        break label143;
+    default: 
+      paramInt = -1;
+      if (this.jdField_a_of_type_Int != paramInt)
+      {
+        if (!bhnv.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getActivity())) {
+          break label218;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_Bhru.b.clear();
+        axan.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, paramInt);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_Bhru.c.put(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, Boolean.valueOf(true));
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_Amro.notifyDataSetChanged();
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.b();
+        axan.a().c(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
+        bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, "P_CliOper", "Grp_msg", "", "set_page", "Clk_setmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, String.valueOf(paramInt - 1), "", "");
       }
-      if (!((axda)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getManager(207)).c(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID)) {
-        break label138;
-      }
+      break;
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a(this.jdField_a_of_type_Azhm, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bVoteCnt, i);
-      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app, "CliOper", "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID), "like_mall", "like_list_view", j, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.jdField_a_of_type_Blir.dismiss();
       return;
-      j = 0;
+      paramInt = 1;
       break;
-      label138:
-      i = 0;
-      continue;
-      label143:
-      i = k;
+      paramInt = 4;
+      break;
+      paramInt = 2;
+      break;
+      paramInt = 3;
+      break;
+      label218:
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getActivity(), 2131693965, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getTitleBarHeight());
     }
   }
 }

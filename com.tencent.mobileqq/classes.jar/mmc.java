@@ -1,22 +1,25 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import com.tencent.av.ui.VideoNetStateBar;
+import com.tencent.qphone.base.util.QLog;
 
-class mmc
-  implements View.OnKeyListener
+public class mmc
+  extends lef
 {
-  mmc(mlz parammlz) {}
+  public mmc(VideoNetStateBar paramVideoNetStateBar) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  protected void a(long paramLong1, long paramLong2)
   {
-    if (paramKeyEvent.getAction() == 0) {}
-    switch (paramInt)
-    {
-    default: 
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNetStateBar", 2, "onCreateRoomSuc-->GroupID=" + paramLong2);
     }
-    mlz.b(this.a);
-    return true;
+    this.a.i();
+  }
+  
+  protected void b(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNetStateBar", 2, "onEnterRoomSuc-->GroupID=" + paramLong2);
+    }
+    this.a.i();
   }
 }
 

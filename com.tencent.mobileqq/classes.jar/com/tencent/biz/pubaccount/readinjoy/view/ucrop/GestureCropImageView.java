@@ -5,8 +5,8 @@ import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
-import tgb;
-import tgc;
+import swv;
+import sww;
 
 public class GestureCropImageView
   extends CropImageView
@@ -37,8 +37,8 @@ public class GestureCropImageView
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new tgb(this, null), null, true);
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(getContext(), new tgc(this, null));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new swv(this, null), null, true);
+    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(getContext(), new sww(this, null));
   }
   
   public float c()

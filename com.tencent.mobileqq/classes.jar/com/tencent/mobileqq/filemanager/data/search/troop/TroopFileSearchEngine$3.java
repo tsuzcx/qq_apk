@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.data.search.troop;
 
-import atih;
-import atiz;
-import atjd;
-import bbtk;
-import bewg;
+import auab;
+import auat;
+import auax;
+import bcmd;
+import bfwa;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,11 +13,11 @@ import java.util.List;
 public class TroopFileSearchEngine$3
   implements Runnable
 {
-  public TroopFileSearchEngine$3(atiz paramatiz, boolean paramBoolean, List paramList) {}
+  public TroopFileSearchEngine$3(auat paramauat, boolean paramBoolean, List paramList) {}
   
   public void run()
   {
-    if (atiz.a(this.this$0) == null) {
+    if (auat.a(this.this$0) == null) {
       QLog.i("TroopFileSearchEngine<QFile>", 4, "notifyFileSearchFinish. listener is null");
     }
     Object localObject;
@@ -26,32 +26,32 @@ public class TroopFileSearchEngine$3
       localObject = new ArrayList();
       if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
       {
-        if (atiz.a(this.this$0) == null) {
-          atiz.b(this.this$0, new ArrayList());
+        if (auat.a(this.this$0) == null) {
+          auat.b(this.this$0, new ArrayList());
         }
-        atiz.a(this.this$0).addAll(this.jdField_a_of_type_JavaUtilList);
-        Iterator localIterator = atiz.a(this.this$0).iterator();
+        auat.a(this.this$0).addAll(this.jdField_a_of_type_JavaUtilList);
+        Iterator localIterator = auat.a(this.this$0).iterator();
         while (localIterator.hasNext())
         {
-          bewg localbewg = (bewg)localIterator.next();
-          ((List)localObject).add(new atjd(atiz.a(this.this$0), atiz.a(this.this$0), atiz.a(this.this$0), localbewg));
+          bfwa localbfwa = (bfwa)localIterator.next();
+          ((List)localObject).add(new auax(auat.a(this.this$0), auat.a(this.this$0), auat.a(this.this$0), localbfwa));
         }
       }
-      atiz.a(this.this$0).a((List)localObject, 1);
+      auat.a(this.this$0).a((List)localObject, 1);
     }
     for (;;)
     {
-      long l = System.currentTimeMillis() - atiz.a(this.this$0);
-      localObject = atiz.a(this.this$0).b();
-      if ((!((String)localObject).equals(atiz.a(this.this$0))) && (l >= 800L))
+      long l = System.currentTimeMillis() - auat.a(this.this$0);
+      localObject = auat.a(this.this$0).b();
+      if ((!((String)localObject).equals(auat.a(this.this$0))) && (l >= 800L))
       {
-        QLog.e("TroopFileSearchEngine<QFile>", 2, "notifyFileSearchFinish currentKeyword[" + (String)localObject + "] mLastKeyWord[" + atiz.a(this.this$0) + "] timeInterval[" + l + "]");
-        atiz.a(this.this$0);
-        atiz.a(this.this$0, (String)localObject);
-        atiz.a(this.this$0, atiz.a(this.this$0));
+        QLog.e("TroopFileSearchEngine<QFile>", 2, "notifyFileSearchFinish currentKeyword[" + (String)localObject + "] mLastKeyWord[" + auat.a(this.this$0) + "] timeInterval[" + l + "]");
+        auat.a(this.this$0);
+        auat.a(this.this$0, (String)localObject);
+        auat.a(this.this$0, auat.a(this.this$0));
       }
       return;
-      atiz.a(this.this$0).a(new ArrayList(), 6);
+      auat.a(this.this$0).a(new ArrayList(), 6);
     }
   }
 }

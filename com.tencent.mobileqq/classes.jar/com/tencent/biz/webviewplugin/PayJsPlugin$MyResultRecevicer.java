@@ -3,19 +3,20 @@ package com.tencent.biz.webviewplugin;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bhod;
+import bioy;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class PayJsPlugin$MyResultRecevicer
   extends ResultReceiver
 {
-  protected PayJsPlugin a;
+  private WeakReference<PayJsPlugin> a;
   
   public PayJsPlugin$MyResultRecevicer(PayJsPlugin paramPayJsPlugin, Handler paramHandler)
   {
     super(paramHandler);
-    this.a = paramPayJsPlugin;
+    this.a = new WeakReference(paramPayJsPlugin);
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
@@ -26,7 +27,8 @@ public class PayJsPlugin$MyResultRecevicer
       QLog.i("JsBridge.JsHandle.PayJsHandler", 2, "MyResultRecevicer receive = " + this);
       QLog.i("JsBridge.JsHandle.PayJsHandler", 2, "resultCode = " + paramInt + " resultData = " + paramBundle);
     }
-    if ((this.a == null) || (paramBundle == null)) {}
+    PayJsPlugin localPayJsPlugin = (PayJsPlugin)this.a.get();
+    if ((localPayJsPlugin == null) || (paramBundle == null)) {}
     String str1;
     do
     {
@@ -58,20 +60,20 @@ public class PayJsPlugin$MyResultRecevicer
             str1 = paramBundle.getString("callbackSn");
             paramBundle = paramBundle.getString("result");
           }
-        } while ((this.a.mRuntime == null) || (this.a.mRuntime.a() == null) || (str1 == null) || (paramBundle == null));
-        this.a.mRuntime.a().loadUrl("javascript:window.JsBridge&&JsBridge.callback('" + str1 + "',{'r':0,'result':" + paramBundle + "});");
+        } while ((localPayJsPlugin.mRuntime == null) || (localPayJsPlugin.mRuntime.a() == null) || (str1 == null) || (paramBundle == null));
+        localPayJsPlugin.mRuntime.a().loadUrl("javascript:window.JsBridge&&JsBridge.callback('" + str1 + "',{'r':0,'result':" + paramBundle + "});");
         return;
         str1 = paramBundle.getString("callbackSn");
         str2 = paramBundle.getString("result");
         paramBundle.getBoolean("isChoosePubAcc", false);
         paramBundle.getString("pubAcc");
-      } while ((this.a.mRuntime == null) || (this.a.mRuntime.a() == null) || (str1 == null) || (str2 == null));
-      this.a.mRuntime.a().loadUrl("javascript:window.JsBridge&&JsBridge.callback('" + str1 + "',{'r':0,'result':" + str2 + "});");
+      } while ((localPayJsPlugin.mRuntime == null) || (localPayJsPlugin.mRuntime.a() == null) || (str1 == null) || (str2 == null));
+      localPayJsPlugin.mRuntime.a().loadUrl("javascript:window.JsBridge&&JsBridge.callback('" + str1 + "',{'r':0,'result':" + str2 + "});");
       return;
       str1 = paramBundle.getString("callback");
       paramBundle = paramBundle.getString("retData");
-    } while ((this.a.mRuntime == null) || (this.a.mRuntime.a() == null) || (str1 == null) || (paramBundle == null));
-    this.a.a(str1, paramBundle);
+    } while ((localPayJsPlugin.mRuntime == null) || (localPayJsPlugin.mRuntime.a() == null) || (str1 == null) || (paramBundle == null));
+    localPayJsPlugin.a(str1, paramBundle);
   }
 }
 

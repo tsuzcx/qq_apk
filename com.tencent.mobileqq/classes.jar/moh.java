@@ -1,15 +1,6 @@
-import com.tencent.av.ui.funchat.zimu.ZimuViewPacMan;
-
-public class moh
+public abstract interface moh
 {
-  public int a;
-  public int b;
-  
-  public moh(ZimuViewPacMan paramZimuViewPacMan, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void e(int paramInt);
 }
 
 

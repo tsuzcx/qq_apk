@@ -1,25 +1,60 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.VideoInfo;
 import java.util.ArrayList;
+import java.util.List;
 
-public class rnx
-  implements AdapterView.OnItemClickListener
+class rnx
+  extends rlj<VideoInfo>
 {
-  public rnx(EditVideoFragment paramEditVideoFragment) {}
+  rnx(rnu paramrnu) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected String a()
   {
-    EditVideoFragment.a(this.a, (ColumnInfo)EditVideoFragment.a(this.a).get(paramInt));
-    if (EditVideoFragment.a(this.a) != null) {
-      EditVideoFragment.a(this.a).columnId = EditVideoFragment.a(this.a).columnID;
+    return "video_feeds";
+  }
+  
+  protected List<VideoInfo> a()
+  {
+    return rnu.a(this.a);
+  }
+  
+  public List<rwo> a(int paramInt, boolean paramBoolean)
+  {
+    ArrayList localArrayList1 = new ArrayList();
+    if (paramInt >= 0)
+    {
+      List localList = rnu.a(this.a);
+      ArrayList localArrayList2;
+      if (rnu.a(this.a) != null)
+      {
+        localArrayList2 = ((VideoInfo)localList.get(rnu.a(this.a).c)).c;
+        if (localArrayList2 != null) {
+          a(rnu.a(this.a).b - 1, true, localArrayList2, localArrayList1);
+        }
+      }
+      a(paramInt, paramBoolean, localList, localArrayList1);
+      if (rnu.a(this.a) != null)
+      {
+        localArrayList2 = ((VideoInfo)localList.get(rnu.a(this.a).c)).c;
+        if (localArrayList2 != null) {
+          b(rnu.a(this.a).b - 1, false, localArrayList2, localArrayList1);
+        }
+      }
+      b(paramInt - 1, paramBoolean, localList, localArrayList1);
     }
-    EditVideoFragment.a(this.a).notifyDataSetChanged();
-    EditVideoFragment.a(this.a);
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    return localArrayList1;
+  }
+  
+  protected rwf a()
+  {
+    if ((rnu.a(this.a) != null) && (rnu.a(this.a).a != null)) {
+      return rnu.a(this.a).a.a;
+    }
+    return null;
+  }
+  
+  protected rwo a(VideoInfo paramVideoInfo)
+  {
+    return new rwo(paramVideoInfo.jdField_a_of_type_JavaLangString, paramVideoInfo.g, paramVideoInfo.jdField_a_of_type_Int, paramVideoInfo.d);
   }
 }
 

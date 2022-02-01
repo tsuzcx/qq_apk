@@ -1,40 +1,48 @@
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.mediafocus.MediaFocusController;
-import com.tencent.mobileqq.mediafocus.MediaFocusController.1;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.Stack;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import cooperation.plugin.PluginInfo;
+import cooperation.troop.TroopManageProxyActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class awja
-  implements EIPCResultCallback
+  implements aasd
 {
-  public awja(MediaFocusController.1 param1, long paramLong) {}
+  public awja(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void callback(Bundle paramBundle)
   {
-    boolean bool1;
-    boolean bool2;
-    long l;
-    if (paramEIPCResult.data != null)
+    int i = 12;
+    if (paramBundle != null)
     {
-      bool1 = paramEIPCResult.data.getBoolean("isProcessRunning");
-      bool2 = paramEIPCResult.data.getBoolean("isItemExist");
-      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-      if ((!bool1) || (!bool2)) {
-        break label75;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MediaFocusController", 2, new Object[] { "notifyFocusChanged not the same process but existed, cost:", Long.valueOf(l) });
+      if (paramBundle.getBoolean("isSuccess"))
+      {
+        paramBundle = new Intent();
+        paramBundle.putExtra("troop_uin", this.jdField_a_of_type_JavaLangString);
+        if (this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a() != null) {
+          i = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().switchRequestCode(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin, (byte)12);
+        }
+        TroopManageProxyActivity.a("troop_manage_plugin.apk", PluginInfo.j, TroopManageProxyActivity.class, this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a(), paramBundle, TroopManageProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a()), "com.tencent.mobileqq.activity.TroopSetJoinTypeActivity", this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().getAccount(), i);
       }
     }
-    return;
-    label75:
-    MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0).pop();
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusController", 2, new Object[] { "notifyFocusChanged isProcessRun:", Boolean.valueOf(bool1), " ,isItmeExist:", Boolean.valueOf(bool2), " ,stack:", Integer.valueOf(MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0).size()), " ,cost:", Long.valueOf(l) });
+    else {
+      return;
     }
-    MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0, this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.a);
+    paramBundle = new JSONObject();
+    try
+    {
+      paramBundle.put("gc", this.jdField_a_of_type_JavaLangString);
+      paramBundle.put("ret", 1);
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.m, new String[] { paramBundle.toString() });
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
   }
 }
 

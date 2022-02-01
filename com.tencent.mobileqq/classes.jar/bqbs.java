@@ -1,6 +1,13 @@
+import android.graphics.Canvas;
+
 public abstract interface bqbs
+  extends bqgj
 {
-  public abstract void a();
+  public abstract int a(int paramInt);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3);
 }
 
 

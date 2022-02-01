@@ -17,15 +17,15 @@ import android.view.ViewParent;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import arxd;
-import asac;
-import asaf;
-import asak;
-import asct;
-import ascv;
-import ascy;
-import asda;
-import bgtn;
+import asmr;
+import aspq;
+import aspt;
+import aspy;
+import assh;
+import assj;
+import assm;
+import asso;
+import bhtq;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -42,13 +42,13 @@ public class SystemAndEmojiUniversalPanel
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ascy(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new assm(this);
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private arxd jdField_a_of_type_Arxd;
-  private asaf jdField_a_of_type_Asaf;
-  private asct jdField_a_of_type_Asct;
-  private asda jdField_a_of_type_Asda;
+  private asmr jdField_a_of_type_Asmr;
+  private aspt jdField_a_of_type_Aspt;
+  private assh jdField_a_of_type_Assh;
+  private asso jdField_a_of_type_Asso;
   private EmotionPanelListView jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView;
   private boolean jdField_a_of_type_Boolean;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
@@ -75,7 +75,7 @@ public class SystemAndEmojiUniversalPanel
   
   private int a()
   {
-    int j = this.jdField_a_of_type_Asaf.jdField_b_of_type_Int;
+    int j = this.jdField_a_of_type_Aspt.jdField_b_of_type_Int;
     int i = j;
     if (this.jdField_a_of_type_Boolean)
     {
@@ -83,7 +83,7 @@ public class SystemAndEmojiUniversalPanel
       i = j;
       if (QLog.isColorLevel())
       {
-        QLog.d("EmoticonUniversalPanel", 2, "multiWindowMode: " + this.jdField_a_of_type_Asaf.jdField_b_of_type_Int + "->" + j);
+        QLog.d("EmoticonUniversalPanel", 2, "multiWindowMode: " + this.jdField_a_of_type_Aspt.jdField_b_of_type_Int + "->" + j);
         i = j;
       }
     }
@@ -124,7 +124,7 @@ public class SystemAndEmojiUniversalPanel
     }
   }
   
-  private void a(List<asac> paramList, ListView paramListView)
+  private void a(List<aspq> paramList, ListView paramListView)
   {
     if ((paramListView != null) && (paramList != null) && (paramList.size() > 0))
     {
@@ -136,10 +136,10 @@ public class SystemAndEmojiUniversalPanel
       int i = j;
       while ((i < j + 35) && (i < paramList.size()))
       {
-        paramListView = (asac)paramList.get(i);
-        if ((paramListView instanceof ascv))
+        paramListView = (aspq)paramList.get(i);
+        if ((paramListView instanceof assj))
         {
-          paramListView = (ascv)paramListView;
+          paramListView = (assj)paramListView;
           if ((paramListView.jdField_c_of_type_Int != 3) && (paramListView.jdField_b_of_type_Int != -1))
           {
             paramListView = paramListView.a(false);
@@ -158,10 +158,10 @@ public class SystemAndEmojiUniversalPanel
       i = j;
       while ((i >= 0) && (i > j - 35) && (i < paramList.size()))
       {
-        paramListView = (asac)paramList.get(i);
-        if ((paramListView instanceof ascv))
+        paramListView = (aspq)paramList.get(i);
+        if ((paramListView instanceof assj))
         {
-          paramListView = (ascv)paramListView;
+          paramListView = (assj)paramListView;
           if ((paramListView.jdField_c_of_type_Int != 3) && (paramListView.jdField_b_of_type_Int != -1))
           {
             paramListView = paramListView.a(getContext(), this.jdField_a_of_type_Float);
@@ -230,9 +230,9 @@ public class SystemAndEmojiUniversalPanel
   {
     setBackgroundColor(getResources().getColor(2131165623));
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.d = bgtn.a(5.0F);
-    this.jdField_a_of_type_Asaf = new asaf(7, 7, null);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131365325));
+    this.d = bhtq.a(5.0F);
+    this.jdField_a_of_type_Aspt = new aspt(7, 7, null);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131365369));
     ImageButton localImageButton;
     if (this.jdField_a_of_type_AndroidWidgetEditText != null)
     {
@@ -248,17 +248,17 @@ public class SystemAndEmojiUniversalPanel
     {
       localImageButton.setEnabled(bool);
       this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView = ((EmotionPanelListView)findViewById(2131365953));
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView = ((EmotionPanelListView)findViewById(2131365998));
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView.setDivider(null);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView.setEdgeEffectEnabled(false);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView.setSelector(2130850667);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView.setSelector(2130850683);
       int i = a();
-      this.jdField_a_of_type_Asct = new asct(null, getContext(), i, 1, this.jdField_a_of_type_Asaf.jdField_a_of_type_Int, this.jdField_a_of_type_Arxd, null, 0);
-      this.jdField_a_of_type_Asct.b(b());
-      this.jdField_a_of_type_Asct.d = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Asct.jdField_a_of_type_Asaf = this.jdField_a_of_type_Asaf;
-      this.jdField_a_of_type_Asct.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView.setAdapter(this.jdField_a_of_type_Asct);
+      this.jdField_a_of_type_Assh = new assh(null, getContext(), i, 1, this.jdField_a_of_type_Aspt.jdField_a_of_type_Int, this.jdField_a_of_type_Asmr, null, 0);
+      this.jdField_a_of_type_Assh.b(b());
+      this.jdField_a_of_type_Assh.d = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Assh.jdField_a_of_type_Aspt = this.jdField_a_of_type_Aspt;
+      this.jdField_a_of_type_Assh.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView.setAdapter(this.jdField_a_of_type_Assh);
       a(i);
       return;
     }
@@ -268,7 +268,7 @@ public class SystemAndEmojiUniversalPanel
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((this.jdField_a_of_type_Asda != null) && (this.jdField_a_of_type_Asda.a(paramKeyEvent))) {
+    if ((this.jdField_a_of_type_Asso != null) && (this.jdField_a_of_type_Asso.a(paramKeyEvent))) {
       return true;
     }
     return super.dispatchKeyEvent(paramKeyEvent);
@@ -284,8 +284,8 @@ public class SystemAndEmojiUniversalPanel
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() == 2131365325) && (this.jdField_a_of_type_Arxd != null)) {
-      this.jdField_a_of_type_Arxd.b();
+    if ((paramView.getId() == 2131365369) && (this.jdField_a_of_type_Asmr != null)) {
+      this.jdField_a_of_type_Asmr.b();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -334,8 +334,8 @@ public class SystemAndEmojiUniversalPanel
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonUniversalPanel", 2, "onMeasure: oldWidth=" + paramInt2 + " newWidth=" + paramInt1);
       }
-      asak.a().a();
-      asak.jdField_a_of_type_Int = paramInt1;
+      aspy.a().a();
+      aspy.jdField_a_of_type_Int = paramInt1;
       if (paramInt1 / localDisplayMetrics.widthPixels >= 0.66F) {
         break label140;
       }
@@ -345,21 +345,21 @@ public class SystemAndEmojiUniversalPanel
     {
       this.jdField_a_of_type_Boolean = bool;
       this.jdField_a_of_type_Int = paramInt1;
-      if ((this.jdField_a_of_type_Asct != null) && (this.jdField_a_of_type_AndroidWidgetImageButton != null)) {
+      if ((this.jdField_a_of_type_Assh != null) && (this.jdField_a_of_type_AndroidWidgetImageButton != null)) {
         ThreadManagerV2.getUIHandlerV2().post(new SystemAndEmojiUniversalPanel.2(this));
       }
       return;
     }
   }
   
-  public void setDispatchKeyEventListener(asda paramasda)
+  public void setDispatchKeyEventListener(asso paramasso)
   {
-    this.jdField_a_of_type_Asda = paramasda;
+    this.jdField_a_of_type_Asso = paramasso;
   }
   
-  public void setEmoticonCallback(arxd paramarxd)
+  public void setEmoticonCallback(asmr paramasmr)
   {
-    this.jdField_a_of_type_Arxd = paramarxd;
+    this.jdField_a_of_type_Asmr = paramasmr;
   }
   
   public void setFilterSysFaceBeyond255Enable(boolean paramBoolean)

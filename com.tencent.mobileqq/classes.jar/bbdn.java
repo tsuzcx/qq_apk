@@ -1,119 +1,118 @@
-import android.content.res.ColorStateList;
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.profile.view.ClickPreventableTextView;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
+import java.util.ArrayList;
 
 public class bbdn
-  extends ClickableSpan
-  implements bbdo
 {
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private bbdp jdField_a_of_type_Bbdp;
-  private Object jdField_a_of_type_JavaLangObject;
-  private boolean jdField_a_of_type_Boolean;
-  private ColorStateList jdField_b_of_type_AndroidContentResColorStateList;
-  private boolean jdField_b_of_type_Boolean;
+  private static volatile bbdn a;
   
-  public bbdn(bbdp parambbdp, ColorStateList paramColorStateList1, ColorStateList paramColorStateList2, Object paramObject)
+  public static bbdn a()
   {
-    this.jdField_a_of_type_Bbdp = parambbdp;
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList1;
-    this.jdField_b_of_type_AndroidContentResColorStateList = paramColorStateList2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public bbdn(bbdp parambbdp, ColorStateList paramColorStateList, Object paramObject)
-  {
-    this(parambbdp, paramColorStateList, null, paramObject);
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public void a(View paramView, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ClickColorTopicSpan", 2, String.format("setPressed %b", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (a == null) {}
+    try
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      paramView.invalidate();
+      if (a == null) {
+        a = new bbdn();
+      }
+      return a;
     }
+    finally {}
   }
   
-  public void a(boolean paramBoolean)
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Intent paramIntent)
   {
-    if (this.jdField_b_of_type_Boolean != paramBoolean) {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((paramView instanceof ClickPreventableTextView)) {
-      if (!((ClickPreventableTextView)paramView).a()) {}
-    }
-    while (this.jdField_a_of_type_Bbdp == null)
-    {
-      return;
-      ((ClickPreventableTextView)paramView).a();
-    }
-    this.jdField_a_of_type_Bbdp.a(this, paramView);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if ((this.jdField_a_of_type_JavaLangObject instanceof Pair))
-    {
-      Pair localPair = (Pair)this.jdField_a_of_type_JavaLangObject;
-      localStringBuilder.append("id=").append(localPair.first).append(",");
-      localStringBuilder.append("topic=").append((String)localPair.second).append(",");
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    if (this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    paramTextPaint.setUnderlineText(false);
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[] { 16842919 }, 0);
-        paramTextPaint.setColor(i);
-        label54:
-        if (this.jdField_b_of_type_AndroidContentResColorStateList == null) {
-          break label130;
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          break label115;
-        }
+    long l = paramIntent.getLongExtra("FORWARD_MSG_UNISEQ", 0L);
+    if (l == 0L) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReplyMsgSender", 2, "sendReplyMessage uniseq=0");
       }
     }
-    label115:
-    for (int i = this.jdField_b_of_type_AndroidContentResColorStateList.getColorForState(new int[] { 16842919 }, 0);; i = this.jdField_b_of_type_AndroidContentResColorStateList.getColorForState(new int[0], 0))
+    ChatMessage localChatMessage;
+    do
     {
-      paramTextPaint.bgColor = i;
       return;
-      i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[0], 0);
-      break;
-      paramTextPaint.setColor(-16777216);
-      break label54;
+      localChatMessage = ((bbdj)paramQQAppInterface.getManager(340)).a(l);
+      if (localChatMessage != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ReplyMsgSender", 2, "sendReplyMessage chatMessage is null");
+    return;
+    a(paramQQAppInterface, localChatMessage, paramSessionInfo, 0, paramIntent.getIntExtra("KEY_MSG_FORWARD_ID", 0), true);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString1, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList1, aeau paramaeau, MessageRecord paramMessageRecord, String paramString2, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList2)
+  {
+    MessageForReplyText localMessageForReplyText = new MessageForReplyText();
+    localMessageForReplyText.msg = paramString1;
+    localMessageForReplyText.istroop = paramSessionInfo.jdField_a_of_type_Int;
+    localMessageForReplyText.msgtype = -1049;
+    localMessageForReplyText.atInfoList = paramArrayList1;
+    localMessageForReplyText.mSourceMsgInfo = paramaeau.a;
+    localMessageForReplyText.setSourceMessageRecord(paramMessageRecord);
+    localMessageForReplyText.isBarrageMsg = paramaeau.jdField_d_of_type_Boolean;
+    localMessageForReplyText.barrageTimeLocation = paramaeau.b;
+    localMessageForReplyText.barrageSourceMsgType = paramaeau.jdField_d_of_type_Int;
+    if ((!TextUtils.isEmpty(paramString2)) && (paramArrayList2 != null) && (!paramArrayList2.isEmpty()))
+    {
+      localMessageForReplyText.saveExtInfoToExtStr("sens_reply_special_msg", paramString2);
+      localMessageForReplyText.saveExtInfoToExtStr("sens_reply_special_at_list", bgme.a(paramArrayList2));
     }
-    label130:
-    paramTextPaint.bgColor = 0;
+    int i = 2;
+    if (!TextUtils.isEmpty(paramaeau.a.mSourceMsgTroopName)) {
+      i = 0;
+    }
+    a(paramQQAppInterface, localMessageForReplyText, paramSessionInfo, i, 0, false);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, SessionInfo paramSessionInfo, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    new ArrayList(1).add(paramChatMessage);
+    ArrayList localArrayList = new ArrayList(1);
+    localArrayList.add(paramChatMessage);
+    paramChatMessage = new axpl();
+    paramChatMessage.jdField_a_of_type_Int = paramInt1;
+    paramChatMessage.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    paramChatMessage.jdField_a_of_type_JavaUtilList = localArrayList;
+    paramChatMessage.jdField_a_of_type_JavaUtilMap = null;
+    paramChatMessage.g = paramInt2;
+    paramChatMessage.b = 8;
+    paramChatMessage.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = new MessageForStructing();
+    paramChatMessage.jdField_a_of_type_Boolean = paramBoolean;
+    new bbdm(paramQQAppInterface).e(paramChatMessage);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, SessionInfo paramSessionInfo, int paramInt)
+  {
+    if (paramMessageForMixedMsg == null) {
+      return;
+    }
+    if (paramMessageForMixedMsg.getReplyMessage(paramQQAppInterface) != null)
+    {
+      new ArrayList(1).add(paramMessageForMixedMsg);
+      ArrayList localArrayList = new ArrayList(1);
+      localArrayList.add(paramMessageForMixedMsg);
+      paramMessageForMixedMsg = new axpl();
+      paramMessageForMixedMsg.jdField_a_of_type_Int = 0;
+      paramMessageForMixedMsg.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+      paramMessageForMixedMsg.jdField_a_of_type_JavaUtilList = localArrayList;
+      paramMessageForMixedMsg.jdField_a_of_type_JavaUtilMap = null;
+      paramMessageForMixedMsg.b = 9;
+      paramMessageForMixedMsg.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = new MessageForStructing();
+      new bbdk(paramQQAppInterface).e(paramMessageForMixedMsg);
+      return;
+    }
+    ((axey)paramQQAppInterface.getManager(174)).a(paramSessionInfo, paramMessageForMixedMsg, false, paramInt);
   }
 }
 

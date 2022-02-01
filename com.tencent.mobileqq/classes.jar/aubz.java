@@ -1,84 +1,79 @@
-import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import java.util.HashMap;
 
-final class aubz
-  implements UploadManager.IUploadStatusListener
+public abstract class aubz
+  extends aubd
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<aubw> jdField_a_of_type_MqqUtilWeakReference;
+  protected String a;
+  protected String b;
+  protected int d;
+  protected long d;
+  protected long e;
+  protected long f;
+  protected long g;
   
-  private aubz(aubw paramaubw, String paramString)
+  public aubz(QQAppInterface paramQQAppInterface)
   {
-    if (paramaubw == null) {}
-    for (paramaubw = null;; paramaubw = new WeakReference(paramaubw))
-    {
-      this.jdField_a_of_type_MqqUtilWeakReference = paramaubw;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      return;
-    }
+    super(paramQQAppInterface);
   }
   
-  public void onUploadJobAdded(String paramString, long paramLong) {}
+  protected abstract int a();
   
-  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
+  protected HashMap<String, String> a()
   {
-    aubw localaubw;
-    if (this.jdField_a_of_type_MqqUtilWeakReference == null)
-    {
-      localaubw = null;
-      if ((localaubw != null) && (!aubw.a(localaubw))) {
-        break label39;
-      }
-    }
-    label39:
-    while (aubw.a(localaubw) == null)
-    {
-      return;
-      localaubw = (aubw)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      break;
-    }
-    if (paramBoolean)
-    {
-      switch (paramStatusInfo.state)
-      {
-      default: 
-        label80:
-        paramString = null;
-      }
-      while (paramString != null)
-      {
-        aubw.a(localaubw).sendMessage(paramString);
-        return;
-        if (paramStatusInfo.errorCode == 1810002)
-        {
-          if (!QLog.isColorLevel()) {
-            break label80;
-          }
-          QLog.i("WeiyunShareProcessController<FileAssistant>", 2, "upload is canceled, for file:" + this.jdField_a_of_type_JavaLangString);
-          paramString = null;
-          continue;
-        }
-        paramString = new Message();
-        paramString.what = 3;
-        paramString.obj = new Object[] { Integer.valueOf(paramStatusInfo.errorCode), paramStatusInfo.errorMsg };
-        continue;
-        paramString = new Message();
-        paramString.what = 2;
-        paramString.obj = new Object[] { paramStatusInfo, this.jdField_a_of_type_JavaLangString };
-      }
-    }
-    if (paramStatusInfo.totalSize <= 0L) {}
-    for (float f = 0.0F;; f = (float)paramStatusInfo.currSize / (float)paramStatusInfo.totalSize)
-    {
-      paramString = new Message();
-      paramString.what = 4;
-      paramString.obj = new Object[] { Float.valueOf(f) };
-      break;
-    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_ReportVer", String.valueOf(1));
+    localHashMap.put("param_TransferType", String.valueOf(a()));
+    localHashMap.put("param_Platform", String.valueOf(2));
+    localHashMap.put("param_AppType", String.valueOf(0));
+    localHashMap.put("param_Result", String.valueOf(this.jdField_d_of_type_Int));
+    localHashMap.put("param_FileName", String.valueOf(this.a));
+    localHashMap.put("param_Suffix", String.valueOf(this.b));
+    localHashMap.put("param_TargetUin", String.valueOf(this.e));
+    localHashMap.put("param_GroupCode", String.valueOf(this.f));
+    localHashMap.put("param_FileSize", String.valueOf(this.g));
+    return localHashMap;
+  }
+  
+  public void a()
+  {
+    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] reportNetError no implement. please check call");
+  }
+  
+  public void a(long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3)
+  {
+    this.e = paramLong1;
+    this.f = paramLong2;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.g = paramLong3;
+  }
+  
+  protected boolean a()
+  {
+    return false;
+  }
+  
+  protected HashMap<String, String> b()
+  {
+    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] getOldReportData no implement. please check call");
+    return null;
+  }
+  
+  public void b()
+  {
+    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] reportUserCancel no implement. please check call");
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_d_of_type_Int = paramInt;
+  }
+  
+  public void c(long paramLong)
+  {
+    this.jdField_d_of_type_Long = paramLong;
   }
 }
 

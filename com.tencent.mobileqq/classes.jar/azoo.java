@@ -1,28 +1,64 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Comparator;
-import tencent.im.oidb.oidb_0xd9f.oidb_0xd9f.TopicItem;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.TroopRemindSettingData;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
-class azoo
-  implements Comparator<oidb_0xd9f.TopicItem>
+public class azoo
+  extends OGAbstractDao
 {
-  azoo(azol paramazol) {}
-  
-  public int a(oidb_0xd9f.TopicItem paramTopicItem1, oidb_0xd9f.TopicItem paramTopicItem2)
+  public azoo()
   {
-    if (paramTopicItem1 == null) {}
-    do
+    this.columnLen = 2;
+  }
+  
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
+  {
+    paramEntity = (TroopRemindSettingData)paramEntity;
+    if (paramNoColumnErrorHandler == null)
     {
-      return 1;
-      if (paramTopicItem2 == null) {
-        return -1;
+      paramEntity.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
+      paramEntity.isOpenState = paramCursor.getInt(paramCursor.getColumnIndex("isOpenState"));
+      return paramEntity;
+    }
+    int i = paramCursor.getColumnIndex("troopUin");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("troopUin", String.class));
+    }
+    for (;;)
+    {
+      i = paramCursor.getColumnIndex("isOpenState");
+      if (i != -1) {
+        break;
       }
-    } while (paramTopicItem1.uint32_frd_num.get() <= paramTopicItem2.uint32_frd_num.get());
-    return -1;
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isOpenState", Integer.TYPE));
+      return paramEntity;
+      paramEntity.troopUin = paramCursor.getString(i);
+    }
+    paramEntity.isOpenState = paramCursor.getInt(i);
+    return paramEntity;
+  }
+  
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
+  {
+    paramEntity = (TroopRemindSettingData)paramEntity;
+    paramContentValues.put("troopUin", paramEntity.troopUin);
+    paramContentValues.put("isOpenState", Integer.valueOf(paramEntity.isOpenState));
+  }
+  
+  public String getCreateTableSql(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,troopUin TEXT UNIQUE ,isOpenState INTEGER)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azoo
  * JD-Core Version:    0.7.0.1
  */

@@ -2,22 +2,22 @@ package com.tencent.biz.qqcircle.bizparts.danmaku.text;
 
 import android.graphics.Typeface;
 import android.view.View;
-import vgl;
-import vgo;
-import vhc;
+import vip;
+import vis;
+import vjg;
 
 public class TextCellLayout$4$1
   implements Runnable
 {
-  public TextCellLayout$4$1(vgo paramvgo, Typeface paramTypeface) {}
+  public TextCellLayout$4$1(vis paramvis, Typeface paramTypeface) {}
   
   public void run()
   {
-    vgl.a(this.jdField_a_of_type_Vgo.a, this.jdField_a_of_type_AndroidGraphicsTypeface);
-    View localView = vgl.a(this.jdField_a_of_type_Vgo.a).a();
+    vip.a(this.jdField_a_of_type_Vis.a, this.jdField_a_of_type_AndroidGraphicsTypeface);
+    View localView = vip.a(this.jdField_a_of_type_Vis.a).a();
     if (localView != null)
     {
-      this.jdField_a_of_type_Vgo.a.b();
+      this.jdField_a_of_type_Vis.a.b();
       localView.requestLayout();
     }
   }

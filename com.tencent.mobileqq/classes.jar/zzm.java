@@ -1,8 +1,31 @@
-public class zzm
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPropertyAnimatorCompat;
+import android.support.v4.view.ViewPropertyAnimatorListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import java.util.ArrayList;
+
+class zzm
+  extends zzu
 {
-  public static String a = "Initialed";
-  public static String b = "Loading";
-  public static String c = "Done";
+  zzm(zzl paramzzl, RecyclerView.ViewHolder paramViewHolder, ViewPropertyAnimatorCompat paramViewPropertyAnimatorCompat)
+  {
+    super(null);
+  }
+  
+  public void onAnimationEnd(View paramView)
+  {
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPropertyAnimatorCompat.setListener((ViewPropertyAnimatorListener)null);
+    ViewCompat.setAlpha(paramView, 1.0F);
+    this.jdField_a_of_type_Zzl.dispatchRemoveFinished(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    zzl.d(this.jdField_a_of_type_Zzl).remove(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    zzl.a(this.jdField_a_of_type_Zzl);
+  }
+  
+  public void onAnimationStart(View paramView)
+  {
+    this.jdField_a_of_type_Zzl.dispatchRemoveStarting(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+  }
 }
 
 

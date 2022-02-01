@@ -1,12 +1,13 @@
 package com.tencent.hippy.qq.update;
 
 import android.text.TextUtils;
+import bdgx;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
 
@@ -18,7 +19,9 @@ public class HippyQQLibraryManager
   public static final int STATE_UNLOAD = 0;
   private static long mLastUpdateTime;
   private final String[] SO_LIST = { "libmtt_shared.so", "libmttv8.so", "libhippybridge.so", "libflexbox.so" };
+  private final String[] SO_NAME = { "mtt_shared", "mttv8", "hippybridge", "flexbox" };
   private String mCDNPath;
+  private String mCommonPackagePath;
   private List<HippyQQLibraryManager.LibraryLoadListener> mLibraryLoadListeners = new ArrayList();
   private int mLoadState = 0;
   private String mOfflinePath;
@@ -61,11 +64,6 @@ public class HippyQQLibraryManager
     } while ((mLastUpdateTime > 0L) && (l2 > 0L) && (l2 < 3600000L));
     mLastUpdateTime = l1;
     ThreadManager.post(new HippyQQLibraryManager.3(this, localQQAppInterface), 8, null, true);
-  }
-  
-  private void downloadFromCDN()
-  {
-    ThreadManager.post(new HippyQQLibraryManager.4(this), 8, null, true);
   }
   
   private AppRuntime getAppRuntime()
@@ -157,12 +155,26 @@ public class HippyQQLibraryManager
   
   private void onDownloadFail(int paramInt)
   {
-    HippyQQEngine.runTaskInUIThread(new HippyQQLibraryManager.2(this, paramInt));
+    this.mLoadState = 0;
+    if (this.mLibraryLoadListeners != null)
+    {
+      Iterator localIterator = this.mLibraryLoadListeners.iterator();
+      while (localIterator.hasNext()) {
+        ((HippyQQLibraryManager.LibraryLoadListener)localIterator.next()).onLoadFail(-8, "SoLoadManager load failed, resCode=" + paramInt);
+      }
+    }
   }
   
   private void onDownloadSuccess()
   {
-    HippyQQEngine.runTaskInUIThread(new HippyQQLibraryManager.1(this));
+    this.mLoadState = 2;
+    if (this.mLibraryLoadListeners != null)
+    {
+      Iterator localIterator = this.mLibraryLoadListeners.iterator();
+      while (localIterator.hasNext()) {
+        ((HippyQQLibraryManager.LibraryLoadListener)localIterator.next()).onLoadSuccess();
+      }
+    }
   }
   
   private void removeLibraryLoadListener(HippyQQLibraryManager.LibraryLoadListener paramLibraryLoadListener)
@@ -172,6 +184,22 @@ public class HippyQQLibraryManager
     }
   }
   
+  public String getCoreJsFilePath(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.mCommonPackagePath))) {}
+    do
+    {
+      File localFile;
+      do
+      {
+        return null;
+        localFile = new File(this.mCommonPackagePath);
+      } while ((localFile == null) || (!localFile.exists()));
+      paramString = new File(localFile, paramString);
+    } while ((paramString == null) || (!paramString.exists()));
+    return paramString.getAbsolutePath();
+  }
+  
   public boolean isLibraryLoaded()
   {
     return this.mLoadState == 2;
@@ -179,46 +207,25 @@ public class HippyQQLibraryManager
   
   public void loadLibraryIfNeed(HippyQQLibraryManager.LibraryLoadListener paramLibraryLoadListener)
   {
-    int j = 0;
-    int i;
     switch (this.mLoadState)
     {
-    default: 
-      i = j;
     }
-    for (;;)
+    do
     {
-      if (i != 0)
-      {
-        addLibraryLoadListener(paramLibraryLoadListener);
-        downloadFromCDN();
-      }
-      checkOfflineUpdate();
       return;
-      if (checkAndLoadLibrary())
-      {
-        if (paramLibraryLoadListener != null) {
-          paramLibraryLoadListener.onLoadSuccess();
-        }
-        this.mLoadState = 2;
-        i = j;
-      }
-      else
-      {
-        this.mLoadState = 1;
-        i = 1;
-        continue;
-        addLibraryLoadListener(paramLibraryLoadListener);
-        i = j;
-        continue;
-        i = j;
-        if (paramLibraryLoadListener != null)
-        {
-          paramLibraryLoadListener.onLoadSuccess();
-          i = j;
-        }
-      }
-    }
+      this.mLoadState = 1;
+      addLibraryLoadListener(paramLibraryLoadListener);
+      bdgx.a().a(this.SO_NAME, new HippyQQLibraryManager.2(this));
+      return;
+      addLibraryLoadListener(paramLibraryLoadListener);
+      return;
+    } while (paramLibraryLoadListener == null);
+    paramLibraryLoadListener.onLoadSuccess();
+  }
+  
+  public void preDownload()
+  {
+    bdgx.a().b(this.SO_NAME, new HippyQQLibraryManager.1(this));
   }
 }
 

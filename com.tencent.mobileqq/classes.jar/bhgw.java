@@ -1,29 +1,65 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 public class bhgw
-  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public bhgw(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  private bhgy jdField_a_of_type_Bhgy;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public bhgw(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel())
-    {
-      paramTVK_IMediaPlayer = new StringBuilder();
-      paramTVK_IMediaPlayer.append("video player error model=" + paramInt1);
-      paramTVK_IMediaPlayer.append(",what=" + paramInt2);
-      paramTVK_IMediaPlayer.append(",extra=" + paramInt3);
-      paramTVK_IMediaPlayer.append(",detailInfo=" + paramString);
-      QLog.d("VipVideoPlayActivity", 2, paramTVK_IMediaPlayer.toString());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private bhgy a()
+  {
+    bhgy localbhgy = new bhgy(new bhgx(this));
+    if (QLog.isColorLevel()) {
+      QLog.i("FetchInfoListManager", 2, "createFetchInfoListManager fm: " + localbhgy);
     }
-    long l1 = SystemClock.elapsedRealtime();
-    long l2 = VipVideoPlayActivity.b(this.a);
-    this.a.a("play_error", paramInt1, paramInt2, l1 - l2, paramString);
-    return false;
+    return localbhgy;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bhgy != null)
+    {
+      this.jdField_a_of_type_Bhgy.a();
+      this.jdField_a_of_type_Bhgy = null;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Bhgy == null) {
+      this.jdField_a_of_type_Bhgy = a();
+    }
+    this.jdField_a_of_type_Bhgy.a(2, paramString, null, null, null);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Bhgy == null) {
+      this.jdField_a_of_type_Bhgy = a();
+    }
+    this.jdField_a_of_type_Bhgy.a(3, paramString1, paramString2, paramString3, paramBundle);
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.jdField_a_of_type_Bhgy == null) {
+      this.jdField_a_of_type_Bhgy = a();
+    }
+    this.jdField_a_of_type_Bhgy.a(1, paramString, null, null, null);
+  }
+  
+  public void c(String paramString)
+  {
+    if (this.jdField_a_of_type_Bhgy == null) {
+      this.jdField_a_of_type_Bhgy = a();
+    }
+    this.jdField_a_of_type_Bhgy.a(4, paramString, null, null, null);
   }
 }
 

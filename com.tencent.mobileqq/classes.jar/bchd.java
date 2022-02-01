@@ -1,367 +1,447 @@
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.Build;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import android.util.Base64;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.qmcf.QmcfManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.search.mostused.MostUsedSearch;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.video.decode.ShortVideoSoLoad;
-import dov.com.qq.im.ae.SessionWrap;
-import java.nio.ByteBuffer;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.app.Packet;
-import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.ReqBody;
-import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.RspBody;
-import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.UdcUinData;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class bchd
 {
-  private static bchd jdField_a_of_type_Bchd;
-  private int jdField_a_of_type_Int = -1;
-  private String jdField_a_of_type_JavaLangString;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static final Comparator<bchg> jdField_a_of_type_JavaUtilComparator = new bche();
+  private static final Comparator<MostUsedSearch> b = new bchf();
+  private String jdField_a_of_type_JavaLangString = "";
+  private ArrayList<MostUsedSearch> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
   private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
   
-  public static bchd a()
+  bchd(String paramString)
   {
-    if (jdField_a_of_type_Bchd == null) {
-      jdField_a_of_type_Bchd = new bchd();
-    }
-    return jdField_a_of_type_Bchd;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static boolean a(int paramInt)
+  public static int a(String paramString1, String paramString2)
   {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 3000);
-  }
-  
-  public static boolean a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    boolean bool;
-    if (paramBoolean) {
-      if (paramInt2 == 5)
-      {
-        paramBoolean = true;
-        if (paramInt2 != 6) {
-          break label55;
-        }
-        bool = true;
-        label19:
-        switch (paramInt1)
-        {
-        }
+    paramString1 = paramString1.toLowerCase();
+    paramString2 = paramString2.toLowerCase();
+    int j = paramString2.indexOf(paramString1);
+    int k = paramString1.length();
+    int m = paramString2.length();
+    int i = 0;
+    if (j == 0)
+    {
+      if (k == m) {
+        i = 2;
       }
     }
-    label55:
-    label67:
-    label82:
-    do
-    {
-      return false;
-      paramBoolean = false;
-      break;
-      bool = false;
-      break label19;
-      if (paramInt2 == 3)
-      {
-        paramBoolean = true;
-        if (paramInt2 != 4) {
-          break label82;
-        }
-      }
-      for (bool = true;; bool = false)
-      {
-        break;
-        paramBoolean = false;
-        break label67;
-      }
-      return paramBoolean;
-      return bool;
-    } while ((!paramBoolean) && (!bool));
-    return true;
-  }
-  
-  public static boolean a(AppInterface paramAppInterface)
-  {
-    if (VideoEnvironment.a() == null) {}
-    do
-    {
-      do
-      {
-        return false;
-        if (ShortVideoUtils.a()) {
-          break;
-        }
-        ShortVideoUtils.a(paramAppInterface);
-      } while (!ShortVideoUtils.a());
-    } while ((bnpy.a(bnpt.b) == 2) || (bcls.a() == 2));
-    return true;
-  }
-  
-  public static boolean b(AppInterface paramAppInterface)
-  {
-    paramAppInterface = VideoEnvironment.a();
-    if (TextUtils.isEmpty(paramAppInterface)) {}
-    do
-    {
-      String str;
-      do
-      {
-        return false;
-        if (ShortVideoUtils.a()) {
-          break;
-        }
-        str = ShortVideoSoLoad.getShortVideoSoPath(VideoEnvironment.a());
-      } while (!bgmg.a(str + paramAppInterface));
-    } while ((bnpy.a(bnpt.b) == 2) || (bcls.a() == 2));
-    return true;
-  }
-  
-  public static boolean c()
-  {
-    boolean bool1 = QmcfManager.getInstance().hasQmcfEntrance(2);
-    boolean bool2 = bool1;
-    int i;
-    if (bool1)
-    {
-      i = bckf.a();
-      if (i <= 0) {
-        break label77;
-      }
+    else {
+      return i;
     }
-    label77:
-    for (bool1 = true;; bool1 = false)
-    {
-      bool2 = bool1;
-      if (!bool1)
-      {
-        QmcfManager.getInstance().setQmcfMobileNotSupport(bckf.jdField_a_of_type_JavaLangString);
-        QLog.d("DanceGameVideoManager", 1, String.format("isDanceGameSupport supportFrameType[%d], gpuinfo[%s], model[%s]", new Object[] { Integer.valueOf(i), bckf.jdField_a_of_type_JavaLangString, Build.MODEL }));
-        bool2 = bool1;
-      }
-      return bool2;
-    }
+    return 1;
   }
   
-  public void a(int paramInt, String paramString)
+  private String a()
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getRuntime().getApplication().getSharedPreferences("danceConfig", 4).edit();
-    localEditor.putInt(paramString + "_max_score", paramInt);
-    localEditor.commit();
-    this.jdField_a_of_type_Int = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("DanceGameVideoManager", 2, "updateDanceMaxScore maxScore:" + this.jdField_a_of_type_Int + " ,new:" + paramInt);
-    }
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(Activity paramActivity, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    if (a(paramQQAppInterface))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("DanceGameVideoManager", 2, "jumpToVideoPreview by danceVideo tail");
-      }
-      paramQQAppInterface = null;
-      if (paramSessionInfo != null) {
-        paramQQAppInterface = new SessionWrap(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.d, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.b);
-      }
-      paramQQAppInterface = bnbe.a(paramQQAppInterface, paramActivity.getClass().getName(), 10000, 100, true, 10, "");
-      ziv.a().a(paramActivity, paramQQAppInterface, 11);
-    }
-  }
-  
-  public void a(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
-  {
+    Object localObject1 = new ByteArrayOutputStream();
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
     try
     {
-      if ((!paramFromServiceMsg.isSuccess()) || (paramArrayOfByte == null)) {
-        break label297;
-      }
-      paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom(paramArrayOfByte);
-      if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.uint32_result.has())) {
-        break label252;
-      }
-      j = paramFromServiceMsg.uint32_result.get();
-      if (j != 0) {
-        break label197;
-      }
-      paramArrayOfByte = ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-      paramFromServiceMsg = new oidb_0x5eb.RspBody();
-      paramFromServiceMsg.mergeFrom(paramArrayOfByte.array());
-      k = paramFromServiceMsg.rpt_msg_uin_data.size();
-      i = 0;
+      new ObjectOutputStream((OutputStream)localObject1).writeObject(this.jdField_a_of_type_JavaUtilArrayList);
+      localObject1 = new String(Base64.encode(((ByteArrayOutputStream)localObject1).toByteArray(), 0));
+      return localObject1;
     }
-    catch (Exception paramFromServiceMsg)
+    catch (IOException localIOException)
     {
+      QLog.e("MostUsedCahce", 2, " toSerialsString IOException: " + localIOException.toString());
+      return null;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      QLog.e("MostUsedCahce", 2, " toSerialsString IllegalArgumentException : " + localIllegalArgumentException.toString());
+      return null;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    }
+  }
+  
+  public static ArrayList<bchg> a(ArrayList<bchg> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+      return paramArrayList;
+    }
+    QLog.d("MostUsedCahcesortAndDuplicate", 2, "sortAndDuplicate begin: size: " + paramArrayList.size());
+    Collections.sort(paramArrayList, jdField_a_of_type_JavaUtilComparator);
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = new HashMap();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      bchg localbchg = (bchg)paramArrayList.next();
+      int i = localbchg.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.identifyType * 100 + localbchg.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.businessType;
+      HashMap localHashMap;
+      if (((HashMap)localObject).containsKey(Integer.valueOf(i)))
+      {
+        localHashMap = (HashMap)((HashMap)localObject).get(Integer.valueOf(i));
+        if (localHashMap.containsKey(localbchg.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.identify)) {
+          QLog.d("MostUsedCahce", 2, "more high level exsit " + localbchg.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.identify);
+        } else {
+          localHashMap.put(localbchg.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.identify, localbchg);
+        }
+      }
+      else
+      {
+        localHashMap = new HashMap();
+        localHashMap.put(localbchg.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.identify, localbchg);
+        ((HashMap)localObject).put(Integer.valueOf(i), localHashMap);
+      }
+    }
+    if ((((HashMap)localObject).values() != null) && (((HashMap)localObject).values().size() > 0))
+    {
+      paramArrayList = ((HashMap)localObject).values().iterator();
+      while (paramArrayList.hasNext())
+      {
+        localObject = (HashMap)paramArrayList.next();
+        if ((localObject != null) && (((HashMap)localObject).values() != null) && (((HashMap)localObject).values().size() > 0))
+        {
+          localObject = ((HashMap)localObject).values().iterator();
+          while (((Iterator)localObject).hasNext()) {
+            localArrayList.add((bchg)((Iterator)localObject).next());
+          }
+        }
+      }
+    }
+    Collections.sort(localArrayList, jdField_a_of_type_JavaUtilComparator);
+    QLog.d("MostUsedCahcesortAndDuplicate", 2, "sortAndDuplicate sorted: size: " + localArrayList.size());
+    return localArrayList;
+  }
+  
+  private void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    try
+    {
+      paramString = new ObjectInputStream(new ByteArrayInputStream(Base64.decode(paramString.getBytes(), 0)));
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+      }
+      this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)paramString.readObject());
+      long l = NetConnInfoCenter.getServerTimeMillis();
+      a(this.jdField_a_of_type_JavaUtilArrayList, 1000, l - 604800000L);
+      return;
+    }
+    catch (IOException paramString)
+    {
+      QLog.e("MostUsedCahce", 2, " fromSerialsString IOException : " + paramString.toString());
+      return;
+    }
+    catch (ClassNotFoundException paramString)
+    {
+      QLog.e("MostUsedCahce", 2, " fromSerialsString ClassNotFoundException : " + paramString.toString());
+      return;
+    }
+    catch (IllegalArgumentException paramString)
+    {
+      QLog.e("MostUsedCahce", 2, " fromSerialsString IllegalArgumentException : " + paramString.toString());
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    }
+  }
+  
+  public static void a(ArrayList<MostUsedSearch> paramArrayList, int paramInt, long paramLong)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {}
+    label105:
+    for (;;)
+    {
+      return;
+      Collections.sort(paramArrayList, b);
+      int i = paramArrayList.size() - 1;
       for (;;)
       {
-        int j;
-        int k;
-        int i;
-        String str;
-        int m;
-        label197:
-        label252:
-        this.jdField_a_of_type_JavaLangString = paramFromServiceMsg.getMessage();
-        QLog.e("DanceGameVideoManager", 1, "handleGetDanceMaxScore exception: ", paramFromServiceMsg);
-        continue;
-        paramFromServiceMsg = "no pkg result";
-        continue;
-        label297:
-        this.jdField_a_of_type_JavaLangString = ("msg fail " + paramFromServiceMsg.getBusinessFailCode());
-        continue;
-        i += 1;
-      }
-    }
-    if (i < k)
-    {
-      paramArrayOfByte = (oidb_0x5eb.UdcUinData)paramFromServiceMsg.rpt_msg_uin_data.get(i);
-      str = String.valueOf(paramArrayOfByte.uint64_uin.get());
-      if (paramArrayOfByte.uint32_dance_max_score.has())
-      {
-        m = paramArrayOfByte.uint32_dance_max_score.get();
-        a(m, str);
-        if (QLog.isColorLevel()) {
-          QLog.d("DanceGameVideoManager", 2, new Object[] { "handleGetDanceMaxScore uin:", str, " maxScore:", Integer.valueOf(m) });
+        if (i < 0) {
+          break label105;
         }
-      }
-    }
-    else
-    {
-      for (this.jdField_a_of_type_JavaLangString = ("error ret " + j);; this.jdField_a_of_type_JavaLangString = paramFromServiceMsg)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("DanceGameVideoManager", 2, new Object[] { "handleGetDanceMaxScore result: ", this.jdField_a_of_type_JavaLangString });
-        }
-        return;
-        if (paramFromServiceMsg != null) {
+        MostUsedSearch localMostUsedSearch = (MostUsedSearch)paramArrayList.get(i);
+        if ((localMostUsedSearch != null) && (localMostUsedSearch.latestUsedTime >= paramLong) && (i < paramInt)) {
           break;
         }
-        paramFromServiceMsg = "no pkg";
+        paramArrayList.remove(i);
+        QLog.d("MostUsedCahce", 2, "list  remove " + i);
+        i -= 1;
       }
     }
   }
   
-  public void a(Packet paramPacket, String paramString)
+  public ArrayList<bchg> a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Object localObject = new oidb_0x5eb.ReqBody();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Long.valueOf(Long.parseLong(paramString)));
-    ((oidb_0x5eb.ReqBody)localObject).rpt_uint64_uins.set(localArrayList);
-    ((oidb_0x5eb.ReqBody)localObject).uint32_req_dance_max_score.set(1);
-    paramString = new oidb_sso.OIDBSSOPkg();
-    paramString.uint32_command.set(1515);
-    paramString.uint32_service_type.set(203);
-    paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x5eb.ReqBody)localObject).toByteArray()));
-    paramString = paramString.toByteArray();
-    localObject = ByteBuffer.allocate(paramString.length + 4);
-    ((ByteBuffer)localObject).putInt(paramString.length + 4);
-    ((ByteBuffer)localObject).put(paramString);
-    paramPacket.putSendData(((ByteBuffer)localObject).array());
-    paramPacket.setSSOCommand("OidbSvc.0x5eb_203");
+    if (!this.jdField_a_of_type_Boolean) {
+      b(paramQQAppInterface);
+    }
+    paramQQAppInterface = new ArrayList();
+    if (TextUtils.isEmpty(paramString.trim())) {
+      return paramQQAppInterface;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    int i = 0;
+    for (;;)
+    {
+      int j;
+      try
+      {
+        if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+          break label243;
+        }
+        MostUsedSearch localMostUsedSearch = (MostUsedSearch)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        int k = a(paramString, localMostUsedSearch.orgKey);
+        if (k != 0)
+        {
+          j = 0;
+          if (j < localMostUsedSearch.items.size())
+          {
+            MostUsedSearchItem localMostUsedSearchItem = (MostUsedSearchItem)localMostUsedSearch.items.get(j);
+            long l = NetConnInfoCenter.getServerTimeMillis();
+            if (localMostUsedSearchItem.timeStamp >= l - 604800000L)
+            {
+              bchg localbchg = new bchg(this);
+              localbchg.jdField_a_of_type_Boolean = false;
+              localbchg.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem = new MostUsedSearchItem(localMostUsedSearchItem);
+              localbchg.jdField_a_of_type_Int = k;
+              paramQQAppInterface.add(localbchg);
+            }
+            else
+            {
+              QLog.d("MostUsedCahce", 2, "key:" + paramString + "temp timeStamp over time " + localMostUsedSearchItem.timeStamp);
+            }
+          }
+        }
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      }
+      i += 1;
+      continue;
+      label243:
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      paramQQAppInterface = a(paramQQAppInterface);
+      if (paramQQAppInterface == null)
+      {
+        QLog.e("MostUsedCahce", 2, "sorted size  is NULL ");
+        return paramQQAppInterface;
+      }
+      QLog.i("MostUsedCahce", 2, "Result size  is " + paramQQAppInterface.size());
+      return paramQQAppInterface;
+      j += 1;
+    }
   }
   
-  public void a(Packet paramPacket, String paramString, int paramInt)
+  /* Error */
+  public void a()
   {
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(13);
-    long l = Long.parseLong(paramString);
-    this.jdField_b_of_type_Int = paramInt;
-    localByteBuffer.putInt(bgjw.a(l)).put((byte)0).putShort((short)1).putShort((short)27245).putShort((short)2).putShort((short)paramInt);
-    paramString = new oidb_sso.OIDBSSOPkg();
-    paramString.uint32_command.set(1279);
-    paramString.uint32_service_type.set(9);
-    paramString.uint32_result.set(0);
-    paramString.str_client_version.set(AppSetting.f());
-    paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localByteBuffer.array()));
-    paramString = paramString.toByteArray();
-    localByteBuffer = ByteBuffer.allocate(paramString.length + 4);
-    localByteBuffer.putInt(paramString.length + 4);
-    localByteBuffer.put(paramString);
-    paramPacket.putSendData(localByteBuffer.array());
-    paramPacket.setSSOCommand("OidbSvc.0x4ff_203");
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 44	bchd:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   4: invokeinterface 75 1 0
+    //   9: aload_0
+    //   10: getfield 39	bchd:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   13: ifnull +10 -> 23
+    //   16: aload_0
+    //   17: getfield 39	bchd:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   20: invokevirtual 232	java/util/ArrayList:clear	()V
+    //   23: aload_0
+    //   24: getfield 44	bchd:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   27: invokeinterface 100 1 0
+    //   32: getstatic 22	bchd:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   35: astore_1
+    //   36: aload_1
+    //   37: monitorenter
+    //   38: aload_0
+    //   39: iconst_0
+    //   40: putfield 271	bchd:jdField_a_of_type_Boolean	Z
+    //   43: aload_1
+    //   44: monitorexit
+    //   45: ldc 102
+    //   47: iconst_2
+    //   48: ldc_w 322
+    //   51: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   54: return
+    //   55: astore_1
+    //   56: aload_0
+    //   57: getfield 44	bchd:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   60: invokeinterface 100 1 0
+    //   65: aload_1
+    //   66: athrow
+    //   67: astore_2
+    //   68: aload_1
+    //   69: monitorexit
+    //   70: aload_2
+    //   71: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	72	0	this	bchd
+    //   55	14	1	localObject2	Object
+    //   67	4	2	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   9	23	55	finally
+    //   38	45	67	finally
+    //   68	70	67	finally
   }
   
-  public void a(boolean paramBoolean)
+  public void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    SharedPreferences.Editor localEditor;
+    String str;
+    do
+    {
+      return;
+      localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication()).edit();
+      str = "MostUsed" + this.jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin();
+      if (!this.jdField_a_of_type_Boolean) {
+        b(paramQQAppInterface);
+      }
+      paramQQAppInterface = a();
+    } while (TextUtils.isEmpty(paramQQAppInterface));
+    localEditor.putString(str, paramQQAppInterface);
+    localEditor.apply();
   }
   
-  public boolean a()
+  public boolean a(QQAppInterface paramQQAppInterface, MostUsedSearchItem paramMostUsedSearchItem)
   {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void b(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
-  {
+    if (!this.jdField_a_of_type_Boolean) {
+      b(paramQQAppInterface);
+    }
+    if ((paramMostUsedSearchItem == null) || (TextUtils.isEmpty(paramMostUsedSearchItem.searchKey))) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    int i = 0;
     for (;;)
     {
       try
       {
-        if ((!paramFromServiceMsg.isSuccess()) || (paramArrayOfByte == null)) {
-          continue;
+        if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+          break label328;
         }
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom(paramArrayOfByte);
-        if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.uint32_result.has())) {
-          continue;
-        }
-        int i = paramFromServiceMsg.uint32_result.get();
-        if (i == 0)
+        paramQQAppInterface = (MostUsedSearch)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        if (paramMostUsedSearchItem.searchKey.equals(paramQQAppInterface.orgKey))
         {
-          long l = bgjw.a(ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray()).getInt());
-          if (this.jdField_b_of_type_Int > this.jdField_a_of_type_Int)
+          int j = 0;
+          long l2 = 0L;
+          i = 0;
+          if (i < paramQQAppInterface.items.size())
           {
-            a(this.jdField_b_of_type_Int, String.valueOf(Long.valueOf(l)));
-            this.jdField_b_of_type_Boolean = true;
+            MostUsedSearchItem localMostUsedSearchItem = (MostUsedSearchItem)paramQQAppInterface.items.get(i);
+            long l1;
+            if (l2 == 0L)
+            {
+              l1 = localMostUsedSearchItem.timeStamp;
+              if (MostUsedSearchItem.isSameIdentityItem(localMostUsedSearchItem, paramMostUsedSearchItem))
+              {
+                localMostUsedSearchItem.timeStamp = paramMostUsedSearchItem.timeStamp;
+                i = 0;
+                if (i == 0) {
+                  break label333;
+                }
+                if (paramQQAppInterface.items.size() > 2) {
+                  paramQQAppInterface.items.remove(j);
+                }
+                paramQQAppInterface.items.add(paramMostUsedSearchItem);
+                paramQQAppInterface.latestUsedTime = paramMostUsedSearchItem.timeStamp;
+                break label333;
+                if (i == 0)
+                {
+                  paramQQAppInterface = new MostUsedSearch();
+                  paramQQAppInterface.orgKey = paramMostUsedSearchItem.searchKey;
+                  paramQQAppInterface.items.add(paramMostUsedSearchItem);
+                  paramQQAppInterface.latestUsedTime = paramMostUsedSearchItem.timeStamp;
+                  this.jdField_a_of_type_JavaUtilArrayList.add(paramQQAppInterface);
+                }
+                l1 = NetConnInfoCenter.getServerTimeMillis();
+                a(this.jdField_a_of_type_JavaUtilArrayList, 1000, l1 - 604800000L);
+                return true;
+              }
+            }
+            else
+            {
+              l1 = l2;
+              if (l2 <= localMostUsedSearchItem.timeStamp) {
+                continue;
+              }
+              l1 = localMostUsedSearchItem.timeStamp;
+              j = i;
+              continue;
+            }
+            i += 1;
+            l2 = l1;
+            continue;
           }
         }
-        this.jdField_a_of_type_JavaLangString = ("error ret " + i);
+        else
+        {
+          i += 1;
+          continue;
+        }
+        i = 1;
       }
-      catch (Exception paramFromServiceMsg)
+      finally
       {
-        this.jdField_a_of_type_JavaLangString = paramFromServiceMsg.getMessage();
-        QLog.e("DanceGameVideoManager", 1, "handleSetDanceMaxScore exception: ", paramFromServiceMsg);
-        continue;
-        paramFromServiceMsg = "no pkg result";
-        continue;
-        this.jdField_a_of_type_JavaLangString = ("msg fail " + paramFromServiceMsg.getBusinessFailCode());
-        continue;
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("DanceGameVideoManager", 2, new Object[] { "handleSetDanceMaxScore result: ", this.jdField_a_of_type_JavaLangString });
-      }
-      return;
-      if (paramFromServiceMsg != null) {
-        continue;
-      }
-      paramFromServiceMsg = "no pkg";
-      this.jdField_a_of_type_JavaLangString = paramFromServiceMsg;
+      continue;
+      label328:
+      i = 0;
+      continue;
+      label333:
+      i = 1;
     }
   }
   
-  public boolean b()
+  public void b(QQAppInterface paramQQAppInterface)
   {
-    return this.jdField_a_of_type_Boolean;
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        return;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        QLog.e("MostUsedCahce", 2, "mCacheName  null");
+        return;
+      }
+    }
+    QLog.d("MostUsedCahce", 2, "list  init");
+    paramQQAppInterface = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp().getBaseContext()).getString("MostUsed" + this.jdField_a_of_type_JavaLangString + paramQQAppInterface.getCurrentAccountUin(), "");
+    if (!TextUtils.isEmpty(paramQQAppInterface)) {
+      a(paramQQAppInterface);
+    }
   }
 }
 

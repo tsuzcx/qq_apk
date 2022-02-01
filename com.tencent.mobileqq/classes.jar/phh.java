@@ -1,6 +1,28 @@
-public abstract interface phh
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
+import com.tencent.qphone.base.util.QLog;
+
+public class phh
+  implements Animation.AnimationListener
 {
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2);
+  public phh(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a(this.a.a);
+    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment show info");
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment Repeat animation");
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment start animation");
+  }
 }
 
 

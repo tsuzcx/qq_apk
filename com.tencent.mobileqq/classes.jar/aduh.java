@@ -1,28 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
-class aduh
-  implements View.OnClickListener
+public class aduh
+  implements DialogInterface.OnClickListener
 {
-  aduh(aduc paramaduc, asbq paramasbq) {}
+  public aduh(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramView != null) && ((paramView instanceof ImageView)))
-    {
-      View localView = (View)paramView.getParent();
-      Object localObject = paramView.getTag();
-      String str = arze.o.replace("[epId]", this.jdField_a_of_type_Asbq.a.epId).replace("[eId]", this.jdField_a_of_type_Asbq.a.eId);
-      if (this.jdField_a_of_type_Aduc.a.a == null) {
-        this.jdField_a_of_type_Aduc.a.a = new adun(this.jdField_a_of_type_Aduc.a);
-      }
-      this.jdField_a_of_type_Aduc.a.a.a(1, localView, localObject, str);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.cancel();
   }
 }
 

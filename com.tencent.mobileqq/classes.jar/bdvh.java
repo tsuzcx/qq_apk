@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-class bdvh
-  implements ITransCallbackForReport
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/StudyModeSwitchDialogConfigProcessor$Companion;", "", "()V", "CONFIG_ID", "", "shouldShowStudyModeSwitchDialog", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bdvh
 {
-  bdvh(bdvf parambdvf) {}
-  
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public final boolean a()
   {
-    this.a.a("actRichMediaNetMonitor_pttUp", false, paramInt, paramString1, paramString2, this.a.c, this.a.l, null);
+    Object localObject = aran.a().a(619);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
+    return ((bdvi)localObject).a();
   }
 }
 

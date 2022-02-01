@@ -1,17 +1,34 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agyj
-  extends ahbl
+public class agyj
+  implements View.OnClickListener
 {
-  agyj(agwz paramagwz)
-  {
-    super(paramagwz, null);
-  }
+  public agyj(ApolloItemBuilder paramApolloItemBuilder) {}
   
-  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new ahen(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, agwz.a(this.a));
+    if (amsx.a(this.a.a.getApplication()))
+    {
+      ApolloUtil.a(paramView.getContext(), null, "aio", annv.ah, null);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    if (!amsx.c(this.a.a.getApplication())) {}
+    for (String str = annv.U;; str = annv.V + bmbh.b)
+    {
+      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+      VasWebviewUtil.openQQBrowserActivity(paramView.getContext(), str, -1L, localIntent, false, -1);
+      break;
+    }
   }
 }
 

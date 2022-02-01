@@ -1,62 +1,78 @@
-import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.PopupWindow;
-import android.widget.PopupWindow.OnDismissListener;
+import android.os.Bundle;
+import android.widget.Button;
+import com.tencent.biz.troop.file.MoveFileActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class aaup
+  extends aavg
 {
-  protected Context a;
-  protected Drawable a;
-  protected View a;
-  protected WindowManager a;
-  protected PopupWindow a;
+  public aaup(MoveFileActivity paramMoveFileActivity) {}
   
-  public aaup(Context paramContext)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List<bfrs> paramList, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(paramContext);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchInterceptor(new aauq(this));
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      throw new IllegalStateException("setContentView was not called with a view to display.");
+    this.a.a(true);
+    if ((!paramBoolean1) || (paramList == null)) {
+      return;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new BitmapDrawable());
+    MoveFileActivity.a(this.a, paramInt3);
+    MoveFileActivity.a(this.a, paramBoolean2);
+    paramBoolean1 = paramBundle.getBoolean("isFirstPage");
+    paramByteStringMicro = paramList.iterator();
+    while (paramByteStringMicro.hasNext())
+    {
+      paramBundle = (bfrs)paramByteStringMicro.next();
+      if (MoveFileActivity.a(this.a).c.get(paramBundle.b) == null)
+      {
+        paramBundle.a = UUID.randomUUID();
+        MoveFileActivity.a(this.a).c.put(paramBundle.b, paramBundle);
+      }
+    }
+    if (paramBoolean1)
+    {
+      MoveFileActivity.a(this.a).clear();
+      if (!MoveFileActivity.c(this.a).equals("/"))
+      {
+        paramByteStringMicro = new bfrs();
+        paramByteStringMicro.c = anzj.a(2131705791);
+        paramByteStringMicro.b = "/";
+        paramByteStringMicro.d = true;
+        paramByteStringMicro.f = -1;
+        MoveFileActivity.a(this.a).add(paramByteStringMicro);
+      }
+    }
+    MoveFileActivity.b(this.a, paramInt1);
+    if (!MoveFileActivity.c(this.a).equals("/"))
+    {
+      paramInt1 = paramList.size() - 1;
+      if (paramInt1 >= 0)
+      {
+        if (!((bfrs)paramList.get(paramInt1)).b.equals(MoveFileActivity.c(this.a))) {
+          break label389;
+        }
+        if (MoveFileActivity.a(this.a) == -1)
+        {
+          MoveFileActivity.c(this.a, paramInt1 + MoveFileActivity.a(this.a).size() - 1);
+          MoveFileActivity.a(this.a).setEnabled(true);
+          MoveFileActivity.a(this.a).setBackgroundResource(2130839312);
+          MoveFileActivity.a(this.a).setTextAppearance(this.a.getActivity(), 2131755342);
+        }
+      }
+      MoveFileActivity.a(this.a).addAll(MoveFileActivity.a(this.a).size() - 1, paramList);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(this.jdField_a_of_type_AndroidViewView);
+      MoveFileActivity.a(this.a).notifyDataSetChanged();
       return;
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      label389:
+      paramInt1 -= 1;
+      break;
+      MoveFileActivity.a(this.a).addAll(paramList);
     }
-  }
-  
-  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
-  {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(paramOnDismissListener);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-  }
-  
-  public void b(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(paramView);
   }
 }
 

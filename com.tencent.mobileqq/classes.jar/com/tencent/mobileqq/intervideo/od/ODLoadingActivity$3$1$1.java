@@ -2,12 +2,12 @@ package com.tencent.mobileqq.intervideo.od;
 
 import android.view.View;
 import android.widget.FrameLayout;
-import avli;
+import awdt;
 
 public class ODLoadingActivity$3$1$1
   implements Runnable
 {
-  public ODLoadingActivity$3$1$1(avli paramavli) {}
+  public ODLoadingActivity$3$1$1(awdt paramawdt) {}
   
   public void run()
   {

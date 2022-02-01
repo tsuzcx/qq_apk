@@ -1,10 +1,6 @@
-public abstract interface wfa<T>
+public abstract interface wfa
 {
-  public abstract void a();
-  
-  public abstract void a(wfb<T> paramwfb);
-  
-  public abstract void c();
+  public abstract void a(float paramFloat1, float paramFloat2);
 }
 
 

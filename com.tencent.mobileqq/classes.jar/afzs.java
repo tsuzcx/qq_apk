@@ -1,19 +1,10 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
 public class afzs
+  extends Handler
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public RedTouch a;
-  public String a;
-  public boolean a;
-  public int b;
-  public ImageView b;
-  public String b;
-  public String c;
+  public afzs(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
 }
 
 

@@ -1,32 +1,53 @@
-import android.text.TextUtils;
+import com.tencent.avgame.gamelogic.QualityReporter.1;
+import com.tencent.avgame.gamelogic.QualityReporter.2;
+import com.tencent.avgame.gamelogic.QualityReporter.3;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class mys
-  implements aqny
+public class mys
 {
-  mys(myr parammyr) {}
+  public static long a;
   
-  public void a(int paramInt)
+  public static void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AvGameResDownloadManager", 2, "onGetConfigFinished result:" + paramInt);
-    }
-    if (paramInt == 0)
+    long l = Math.abs(System.currentTimeMillis() - a);
+    HashMap localHashMap;
+    String str;
+    if ((a == 0L) || (l > myx.a * 3))
     {
-      String str1 = aqnx.a().a();
-      String str2 = aqnx.a().b();
+      localHashMap = new HashMap();
+      if (a != 0L) {
+        break label121;
+      }
+      str = "1";
+      localHashMap.put("report_key_param_is_local_heart_beat_stop", str);
       if (QLog.isColorLevel()) {
-        QLog.i("AvGameResDownloadManager", 2, "onGetConfigFinished url:" + str1 + " md5:" + str2);
+        if (a != 0L) {
+          break label127;
+        }
       }
-      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
-      {
-        myr.a(this.a).b(110);
-        return;
-      }
-      this.a.a(new myu(str1, str2));
-      return;
     }
-    myr.a(this.a).b(paramInt);
+    label121:
+    label127:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("QualityReporter", 2, String.format("reportHeartBeatExp [isStop，duration]=[%b,%d]", new Object[] { Boolean.valueOf(bool), Long.valueOf(l) }));
+      ThreadManager.post(new QualityReporter.3(l, localHashMap), 5, null, false);
+      return;
+      str = "0";
+      break;
+    }
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    ThreadManager.post(new QualityReporter.2(paramInt1, paramInt2, paramInt3, paramInt4), 5, null, false);
+  }
+  
+  public static void a(boolean paramBoolean, int paramInt)
+  {
+    ThreadManager.post(new QualityReporter.1(paramBoolean, paramInt), 5, null, false);
   }
 }
 

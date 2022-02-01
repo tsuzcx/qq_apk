@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import advt;
+import aeev;
 
 public class ChatHistoryViewBase$1
   implements Runnable
 {
-  public ChatHistoryViewBase$1(advt paramadvt) {}
+  public ChatHistoryViewBase$1(aeev paramaeev) {}
   
   public void run()
   {

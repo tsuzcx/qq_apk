@@ -1,42 +1,61 @@
-import android.content.Intent;
-import com.tencent.mobileqq.data.QzoneCommonIntent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.QzoneExternalRequest;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class arii
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public int a;
+  public String a;
+  public String b = "";
+  public String c = "";
+  public String d = "https://sou.qq.com/kandian.html?_bid=2958&_wv=3&keyword=$KEYWORD$";
+  
+  public arii()
   {
-    if (paramIntent == null) {}
-    while (!(paramIntent instanceof QzoneCommonIntent)) {
-      return;
-    }
-    paramIntent = (QzoneCommonIntent)paramIntent;
-    paramIntent.getProcessor().a(this, paramIntent, paramFromServiceMsg);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public static arii a(String paramString)
   {
-    if ((paramIntent instanceof QzoneCommonIntent))
+    arii localarii = new arii();
+    try
     {
-      blrw localblrw = ((QzoneCommonIntent)paramIntent).getRequest();
-      byte[] arrayOfByte = localblrw.encode();
-      paramIntent = arrayOfByte;
-      if (arrayOfByte == null) {
-        paramIntent = new byte[4];
+      JSONObject localJSONObject = new JSONObject(paramString);
+      localarii.jdField_a_of_type_JavaLangString = localJSONObject.optString("kQQPASearchDiscoverPageUrl");
+      localarii.b = localJSONObject.optString("kQQPASearchListTitleIconUrl");
+      localarii.c = localJSONObject.optString("kQQPAClickAssociationalWordWebUrl");
+      localarii.jdField_a_of_type_Int = localJSONObject.optInt("kQQPAClickAssociationalWordToWebSearch", 1);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoySearchJumpurlConfBean", 2, new Object[] { "loadConfig292Data json = ", paramString });
       }
-      paramPacket.setTimeout(30000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + localblrw.uniKey());
-      paramPacket.putSendData(paramIntent);
+      localarii.d = localJSONObject.optString("kQQPASearchJumpUrl", "https://sou.qq.com/kandian.html?_bid=2958&_wv=3&keyword=$KEYWORD$");
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoySearchJumpurlConfBean", 2, "loadConfig292Data(). readinjoy_search_jump_url=" + localarii.d + ", discoveryPageUrl = " + localarii.jdField_a_of_type_JavaLangString);
+      }
     }
+    catch (Exception paramString)
+    {
+      do
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ReadInjoySearchJumpurlConfBean", 2, "loadPublicAccountCenterUrlConfig error", paramString);
+        }
+        localarii.d = "https://sou.qq.com/kandian.html?_bid=2958&_wv=3&keyword=$KEYWORD$";
+      } while (!QLog.isColorLevel());
+      QLog.d("ReadInjoySearchJumpurlConfBean", 2, "loadConfig292Data(). use the default url. exception=" + paramString.getStackTrace());
+    }
+    return localarii;
+    return localarii;
+  }
+  
+  public String toString()
+  {
+    return "kQQPASearchDiscoverPageUrl = " + this.jdField_a_of_type_JavaLangString + "kQQPASearchListTitleIconUrl = " + this.b + "kQQPAClickAssociationalWordWebUrl = " + this.c + "kQQPAClickAssociationalWordToWebSearch = " + this.jdField_a_of_type_Int + "kQQPASearchJumpUrl = " + this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arii
  * JD-Core Version:    0.7.0.1
  */

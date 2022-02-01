@@ -1,45 +1,12 @@
-import android.support.annotation.NonNull;
-
-public class aixu
+public abstract interface aixu
 {
-  public int a;
-  public boolean a;
-  public int b = 0;
+  public abstract void a(int paramInt);
   
-  public aixu()
-  {
-    this.jdField_a_of_type_Int = 23;
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public abstract void a(String paramString);
   
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public abstract void c();
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 23;
-    this.b = 0;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Int = 23;
-    this.b = 0;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "TabLayoutStatus{tabId=" + this.jdField_a_of_type_Int + ", tabPosition=" + this.b + ", display='" + this.jdField_a_of_type_Boolean + '\'' + '}';
-  }
+  public abstract void d();
 }
 
 

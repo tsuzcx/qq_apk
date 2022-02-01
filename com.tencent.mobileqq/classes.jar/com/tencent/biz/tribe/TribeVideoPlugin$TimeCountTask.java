@@ -1,6 +1,6 @@
 package com.tencent.biz.tribe;
 
-import aanm;
+import aaro;
 import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;

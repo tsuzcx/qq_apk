@@ -1,32 +1,25 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.qphone.base.util.QLog;
 
 public class afhq
-  implements PopupWindow.OnDismissListener
+  extends BroadcastReceiver
 {
-  public afhq(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public afhq(QQSettingMe paramQQSettingMe) {}
   
-  public void onDismiss()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.b = null;
-    Object localObject;
-    if ((TextPreviewTranslateActivity.a(this.a) != null) && (TextPreviewTranslateActivity.a(this.a).size() > 1))
-    {
-      localObject = this.a.getResources();
-      if (!TextPreviewTranslateActivity.a(this.a)) {
-        break label76;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: intent=" + paramIntent.toString());
     }
-    label76:
-    for (int i = 2130845625;; i = 2130846156)
+    if ((paramIntent != null) && (paramIntent.getBooleanExtra("key_pay_action_result", false)))
     {
-      localObject = ((Resources)localObject).getDrawable(i);
-      TextPreviewTranslateActivity.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: need update ");
+      }
+      this.a.x();
     }
   }
 }

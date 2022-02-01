@@ -7,9 +7,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
-import arpd;
-import arph;
-import bhod;
+import aser;
+import asev;
+import bioy;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
@@ -54,7 +54,7 @@ public class MessageRoamJsPlugin
   
   private boolean handleGetRoam(String paramString)
   {
-    sendRemoteReq(arph.a("getRoam", paramString, this.mOnRemoteResp.key, new Bundle()), false, false);
+    sendRemoteReq(asev.a("getRoam", paramString, this.mOnRemoteResp.key, new Bundle()), false, false);
     return true;
   }
   
@@ -171,7 +171,7 @@ public class MessageRoamJsPlugin
         }
       }
     }
-    else if ((paramLong == 8589934601L) && ((paramString.startsWith("https://mapp.3g.qq.com/touch/psw/verify.jsp")) || (paramString.startsWith("https://mapp.3g.qq.com/touch/psw/create.jsp"))))
+    else if ((paramLong == 8589934601L) && ((paramString.contains("mapp.3g.qq.com/touch/psw/create.jsp")) || (paramString.contains("mapp.3g.qq.com/touch/psw/verify.jsp"))))
     {
       this.browserActivity.setResult(3000);
       this.browserActivity.finish();
@@ -347,7 +347,7 @@ public class MessageRoamJsPlugin
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("pwd", paramString);
-    sendRemoteReq(arph.a("notifyGetMsgRoam", "notifyGetMsgRoam", this.mOnRemoteResp.key, localBundle), true, false);
+    sendRemoteReq(asev.a("notifyGetMsgRoam", "notifyGetMsgRoam", this.mOnRemoteResp.key, localBundle), true, false);
   }
   
   public void onCreate()

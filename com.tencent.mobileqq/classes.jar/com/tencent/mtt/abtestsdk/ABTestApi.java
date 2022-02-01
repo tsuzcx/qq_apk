@@ -134,11 +134,6 @@ public class ABTestApi
     ABTestManager.IS_SDK_HAS_INIT = true;
   }
   
-  public static boolean isFirstHitExpByName(String paramString)
-  {
-    return true;
-  }
-  
   public static void reportExpExpose(RomaExpEntity paramRomaExpEntity)
   {
     String str1 = paramRomaExpEntity.getExpName();

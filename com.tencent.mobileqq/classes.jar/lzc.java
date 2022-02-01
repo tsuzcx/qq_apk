@@ -1,46 +1,92 @@
 import android.content.Context;
-import android.view.Display;
-import com.tencent.av.camera.CameraUtils;
-import com.tencent.av.smallscreen.SmallScreenVideoControlUI;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 
 class lzc
-  extends mbh
+  implements ShareActionSheet.OnItemClickListener
 {
-  public lzc(lyy paramlyy, Context paramContext, int paramInt)
+  long jdField_a_of_type_Long = 0L;
+  Context jdField_a_of_type_AndroidContentContext;
+  
+  public lzc(lyw paramlyw, Context paramContext)
   {
-    super(paramContext, paramInt);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    int j = 0;
-    try
+    paramShareActionSheet = this.jdField_a_of_type_AndroidContentContext;
+    if (this.jdField_a_of_type_AndroidContentContext == null) {}
+    do
     {
-      i = (this.a.jdField_a_of_type_AndroidViewDisplay.getRotation() * 90 + paramInt) % 360;
-      if (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI != null) {
-        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI.b(i);
-      }
-      if (this.a.jdField_a_of_type_Lzd != null) {
-        this.a.jdField_a_of_type_Lzd.a(paramInt, paramBoolean);
-      }
-      if (this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils != null) {
-        this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a(paramInt);
-      }
-      this.a.g = paramInt;
       return;
-    }
-    catch (Exception localException)
+      if (this.jdField_a_of_type_Lyw.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
+        this.jdField_a_of_type_Lyw.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
+      }
+    } while (this.jdField_a_of_type_Lyw.jdField_a_of_type_Lzb == null);
+    int i;
+    int j;
+    switch (paramActionSheetItem.action)
     {
-      for (;;)
-      {
-        int i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("SmallScreenVideoController", 2, "onVideoOrientationChanged e = " + localException);
-          i = j;
+    default: 
+      return;
+    case 1: 
+      i = 4;
+      this.jdField_a_of_type_Lyw.jdField_a_of_type_Int = i;
+      if ((i == 2) || (i == 3)) {
+        if (!WXShareHelper.a().a()) {
+          j = 2131719399;
         }
       }
+      break;
+    }
+    for (;;)
+    {
+      if (j != -1)
+      {
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(j), 0).a();
+        this.jdField_a_of_type_Lyw.a(this.jdField_a_of_type_Lyw.jdField_a_of_type_Int, this.jdField_a_of_type_Lyw.b, 3);
+        return;
+        i = 0;
+        break;
+        i = 72;
+        break;
+        i = 73;
+        break;
+        i = 1;
+        break;
+        i = 3;
+        break;
+        i = 2;
+        break;
+        i = 5;
+        break;
+        i = 7;
+        break;
+        i = 26;
+        break;
+        i = 6;
+        break;
+        if (WXShareHelper.a().b()) {
+          break label414;
+        }
+        j = 2131719400;
+        continue;
+      }
+      QLog.w("ShareChat", 1, "onItemClick, mChoosedChannel[" + this.jdField_a_of_type_Lyw.jdField_a_of_type_Int + "], position[], id[" + i + "], seq[" + this.jdField_a_of_type_Long + "], mChoosedLinkType[" + this.jdField_a_of_type_Lyw.b + "]");
+      if (this.jdField_a_of_type_Lyw.b == -1)
+      {
+        this.jdField_a_of_type_Lyw.c(this.jdField_a_of_type_Long, paramShareActionSheet, paramActionSheetItem);
+        return;
+      }
+      this.jdField_a_of_type_Lyw.a(this.jdField_a_of_type_Long, paramShareActionSheet, paramActionSheetItem);
+      return;
+      label414:
+      j = -1;
     }
   }
 }

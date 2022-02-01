@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store;
 
-import amtf;
+import anez;
 import com.tencent.mobileqq.apollo.process.ui.framework.FrameworkView;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,7 +15,7 @@ class ApolloGameActivity$1
     try
     {
       ApolloGameActivity.a(this.this$0).g();
-      ApolloGameActivity.a(this.this$0, amtf.a(this.this$0, ApolloGameActivity.a(this.this$0), ApolloGameActivity.a(this.this$0), this.this$0, ApolloGameActivity.a(this.this$0)));
+      ApolloGameActivity.a(this.this$0, anez.a(this.this$0, ApolloGameActivity.a(this.this$0), ApolloGameActivity.a(this.this$0), this.this$0, ApolloGameActivity.a(this.this$0)));
       return;
     }
     catch (Throwable localThrowable)

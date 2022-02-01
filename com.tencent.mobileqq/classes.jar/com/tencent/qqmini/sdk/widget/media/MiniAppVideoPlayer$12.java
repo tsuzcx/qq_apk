@@ -10,7 +10,7 @@ class MiniAppVideoPlayer$12
   public void run()
   {
     MiniAppVideoPlayer.access$700(this.this$0).setVisibility(8);
-    MiniAppVideoPlayer.access$4200(this.this$0);
+    MiniAppVideoPlayer.access$4300(this.this$0);
   }
 }
 

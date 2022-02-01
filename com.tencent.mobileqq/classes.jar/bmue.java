@@ -1,119 +1,45 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.msf.service.protocol.security.CustomSigContent;
+import com.tencent.msf.service.protocol.security.RespondCustomSig;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.observer.AccountObserver;
 
-public class bmue
-  extends bmuf
+final class bmue
+  extends AccountObserver
 {
-  private float a;
-  private float b;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
+  bmue(String paramString, anui paramanui) {}
   
-  public bmue(String paramString, View paramView)
+  public void onChangeToken(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    super(paramString, paramView);
-  }
-  
-  private void a(String paramString)
-  {
-    try
+    if ((paramBoolean) && (paramHashMap != null))
     {
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setTextSize(0, a(paramString));
-      return;
+      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
+      if ((paramHashMap != null) && (paramHashMap.SigList != null)) {
+        break label30;
+      }
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  private int b(String paramString)
-  {
-    int j = 3;
-    if (TextUtils.isEmpty(paramString)) {
-      throw new RuntimeException(getClass().getName() + " setGravity value can not be null");
-    }
-    int i;
-    if ("center".equals(paramString)) {
-      i = 17;
-    }
-    do
-    {
-      do
-      {
-        return i;
-        i = j;
-      } while ("left".equals(paramString));
-      i = j;
-    } while (!"right".equals(paramString));
-    return 5;
-  }
-  
-  private void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    ((TextView)this.jdField_a_of_type_AndroidViewView).setTextColor(Color.parseColor(paramString));
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    super.a(paramString1, paramString2);
-    if (!(this.jdField_a_of_type_AndroidViewView instanceof TextView)) {}
-    do
+    for (;;)
     {
       return;
-      if ("content".equals(paramString1))
+      label30:
+      int i = 0;
+      while (i < paramHashMap.SigList.size())
       {
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(paramString2);
-        return;
+        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
+        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
+        {
+          localObject = new String(((CustomSigContent)localObject).SigContent);
+          OpenID localOpenID = new OpenID();
+          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
+          localOpenID.openID = ((String)localObject);
+          if (this.jdField_a_of_type_Anui != null) {
+            this.jdField_a_of_type_Anui.onUpdate(1, true, localOpenID);
+          }
+        }
+        i += 1;
       }
-      if ("text_color".equals(paramString1))
-      {
-        b(paramString2);
-        return;
-      }
-      if ("text_align".equals(paramString1))
-      {
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setGravity(b(paramString2));
-        return;
-      }
-      if ("max_lines".equals(paramString1))
-      {
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setMaxLines(Integer.parseInt(paramString2));
-        return;
-      }
-      if ("shadow_color".equals(paramString1))
-      {
-        this.jdField_c_of_type_Int = Color.parseColor(paramString2);
-        return;
-      }
-      if ("shadow_x".equals(paramString1))
-      {
-        this.jdField_a_of_type_Float = Float.parseFloat(paramString2);
-        return;
-      }
-      if ("shadow_y".equals(paramString1))
-      {
-        this.b = Float.parseFloat(paramString2);
-        return;
-      }
-      if ("shadow_radius".equals(paramString1))
-      {
-        this.jdField_c_of_type_Float = Float.parseFloat(paramString2);
-        return;
-      }
-    } while (!"text_size".equals(paramString1));
-    a(paramString2);
-  }
-  
-  protected void b()
-  {
-    super.b();
-    ((TextView)this.jdField_a_of_type_AndroidViewView).setShadowLayer(this.jdField_c_of_type_Float, this.jdField_a_of_type_Float, this.b, this.jdField_c_of_type_Int);
+    }
   }
 }
 

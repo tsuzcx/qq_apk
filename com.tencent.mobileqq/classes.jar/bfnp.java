@@ -1,16 +1,32 @@
-import android.view.MotionEvent;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
 public class bfnp
-  implements View.OnTouchListener
+  implements View.OnKeyListener
 {
-  public bfnp(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  public bfnp(NewTroopContactView paramNewTroopContactView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    return false;
+    if (paramInt == 67)
+    {
+      if (paramKeyEvent.getAction() != 0) {
+        break label35;
+      }
+      this.a.jdField_a_of_type_Boolean = TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText());
+    }
+    for (;;)
+    {
+      return false;
+      label35:
+      if ((paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean)) {
+        this.a.jdField_a_of_type_Bfns.a();
+      }
+    }
   }
 }
 

@@ -1,25 +1,16 @@
-import android.os.Parcel;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
 
-public abstract class alfh
+public class alfh
+  implements aghj
 {
-  public abstract void a(Object paramObject, Parcel paramParcel, ArrayList<Field> paramArrayList);
+  public alfh(RedPacketManager paramRedPacketManager, IRedPacket.OnGetSkinListener paramOnGetSkinListener) {}
   
-  abstract void a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
-  
-  public boolean a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
+  public void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    a(paramObject, paramArrayList, paramParcel);
-    if (b(paramObject, paramArrayList, paramParcel)) {
-      b(paramObject, paramArrayList, paramParcel);
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener.onGetSkin(paramRedPacketInfo);
   }
-  
-  abstract void b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
-  
-  abstract boolean b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
 }
 
 

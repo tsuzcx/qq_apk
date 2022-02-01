@@ -1,106 +1,99 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiResReloader.1;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.view.View;
+import android.view.ViewGroup;
 import java.util.ArrayList;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import mqq.os.MqqHandler;
+import java.util.Iterator;
 
 public class arvn
-  implements Handler.Callback
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  private arvo jdField_a_of_type_Arvo;
-  protected ArrayList<Integer> a;
-  private final Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  protected final View a;
   
-  public arvn(arvo paramarvo)
+  public arvn(View paramView)
   {
-    this.jdField_a_of_type_Arvo = paramarvo;
+    if (paramView == null) {
+      throw new IllegalArgumentException("itemView may not be null");
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public void a()
+  private View a(View paramView, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10001);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    try
+    RectF localRectF = new RectF();
+    int i = 0;
+    Object localObject = null;
+    Iterator localIterator = paramView.getTouchables().iterator();
+    View localView;
+    float f1;
+    if (localIterator.hasNext())
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList == null)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        b();
+      localView = (View)localIterator.next();
+      f1 = localView.getX();
+      float f2 = localView.getY();
+      localRectF.set(f1, f2, localView.getMeasuredWidth() + f1, localView.getMeasuredWidth() + f2);
+      if (!localRectF.contains(paramFloat1, paramFloat2)) {
+        break label160;
       }
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt)))
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(0, Integer.valueOf(paramInt));
-        if (QLog.isColorLevel()) {
-          QLog.d("QQSysAndEmojiResReloader", 2, new Object[] { "addReloadDrawable idx:", Integer.valueOf(paramInt), " ,size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
-        }
+      if (localView.equals(paramView)) {
+        i = 1;
       }
-      return;
     }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
-  }
-  
-  protected void b()
-  {
-    ThreadManager.getSubThreadHandler().post(new QQSysAndEmojiResReloader.1(this));
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return false;
-    } while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0));
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    label160:
     for (;;)
     {
-      try
+      break;
+      localObject = localView;
+      if ((localView instanceof ViewGroup))
       {
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
-          break label162;
-        }
-        i = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).intValue();
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-        if (i <= -1) {
-          break;
-        }
-        if (this.jdField_a_of_type_Arvo != null) {
-          this.jdField_a_of_type_Arvo.a(i);
-        }
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-        {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(10001, 300L);
-          return false;
+        localObject = a(paramView, paramFloat1 - f1, paramFloat2 - paramFloat1);
+        continue;
+        if ((i != 0) && (localObject == null)) {
+          localObject = paramView;
         }
       }
-      finally
+      else
       {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+        return localObject;
       }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("QQSysAndEmojiResReloader", 2, "finish reloading");
-      return false;
-      label162:
-      int i = -1;
+      return localObject;
     }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
+  }
+  
+  public View a(arvz paramarvz)
+  {
+    return a(this.jdField_a_of_type_AndroidViewView, paramarvz.a(), paramarvz.b());
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidViewView.measure(paramInt1, paramInt2);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_AndroidViewView.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_a_of_type_AndroidViewView.getAlpha() * 255.0F));
+    int i = paramCanvas.saveLayer(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint, 31);
+    this.jdField_a_of_type_AndroidViewView.draw(paramCanvas);
+    paramCanvas.restoreToCount(i);
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
   }
 }
 

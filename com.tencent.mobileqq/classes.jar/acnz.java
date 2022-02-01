@@ -1,18 +1,25 @@
-import android.app.Activity;
-import android.app.Application;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.Ad;
+import com.tencent.ad.tangram.canvas.report.AdRefreshCallback;
+import com.tencent.ad.tangram.canvas.report.AdReportAdapter;
+import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
+import com.tencent.gdtad.aditem.GdtAd;
 
-class acnz
-  implements DialogInterface.OnDismissListener
+public class acnz
+  implements AdReportAdapter
 {
-  acnz(acnw paramacnw) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void downloadReport(Ad paramAd, String paramString, int paramInt, boolean paramBoolean, AdAppBtnData paramAdAppBtnData)
   {
-    acnw.a(this.a).setIntent(acnw.a(this.a));
-    acnw.a(this.a).getApplication().unregisterActivityLifecycleCallbacks(acnw.a(this.a));
-    acnw.a(this.a).o();
+    if ((!(paramAd instanceof GdtAd)) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    acwp.a().a(paramString, (GdtAd)paramAd, paramAdAppBtnData);
+    acwp.a().a((GdtAd)paramAd, paramInt, paramBoolean);
+  }
+  
+  public AdRefreshCallback getAdReportAdapter()
+  {
+    return acwp.a();
   }
 }
 

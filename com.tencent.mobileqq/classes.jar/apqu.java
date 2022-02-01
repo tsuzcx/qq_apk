@@ -1,12 +1,13 @@
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import java.util.List;
 
-public class apqu
-  extends akhj
+public abstract interface apqu
+  extends apqn
 {
-  public apqu(AlbumListFragment paramAlbumListFragment)
-  {
-    super(paramAlbumListFragment);
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void a(List<apqk> paramList, long paramLong);
+  
+  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2);
 }
 
 

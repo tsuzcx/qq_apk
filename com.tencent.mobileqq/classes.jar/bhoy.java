@@ -1,6 +1,22 @@
-public abstract interface bhoy
+class bhoy
+  implements agyz
 {
-  public abstract bhos getComponentProvider();
+  bhoy(bhox parambhox) {}
+  
+  public boolean a(agyw paramagyw)
+  {
+    if (this.a.isShowing())
+    {
+      this.a.dismiss();
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(agyw paramagyw, String paramString1, String paramString2)
+  {
+    return false;
+  }
 }
 
 

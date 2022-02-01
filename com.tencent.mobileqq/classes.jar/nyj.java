@@ -1,22 +1,18 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
 
-public class nyj
-  extends ContentObserver
+public final class nyj
+  implements Parcelable.Creator<EncryptUinInfo>
 {
-  public nyj(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView, Handler paramHandler)
+  public EncryptUinInfo a(Parcel paramParcel)
   {
-    super(paramHandler);
+    return new EncryptUinInfo(paramParcel);
   }
   
-  public void onChange(boolean paramBoolean)
+  public EncryptUinInfo[] a(int paramInt)
   {
-    super.onChange(paramBoolean);
-    if (ReadInJoyNativeAdAppVideoView.a(this.a) != null) {
-      ReadInJoyNativeAdAppVideoView.a(this.a).post(new ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1(this));
-    }
+    return new EncryptUinInfo[paramInt];
   }
 }
 

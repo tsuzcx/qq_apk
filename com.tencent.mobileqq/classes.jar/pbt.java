@@ -1,16 +1,38 @@
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class pbt
-  extends pcm
+public class pbt
+  implements AladdinConfigHandler
 {
-  pbt(pbe parampbe, List paramList)
+  public static boolean a()
   {
-    super(parampbe, null);
+    return ((Boolean)bnrf.a("use_new_report_channel_for_1160", Boolean.valueOf(false))).booleanValue();
   }
   
-  void a(pcp parampcp)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    parampcp.onCommentListLoad(1, true, this.jdField_a_of_type_JavaUtilList, pbe.a(this.jdField_a_of_type_Pbe), 3, 3);
+    QLog.d("RIJNewReportChannelConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = pan.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("RIJNewReportChannelConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "enable_1160_use_new_report_service")) {
+        bnrf.a("use_new_report_channel_for_1160", Boolean.valueOf(TextUtils.equals(str2, "1")));
+      }
+    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bnrf.a("use_new_report_channel_for_1160", Boolean.valueOf(false));
   }
 }
 

@@ -1,21 +1,28 @@
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import UserGrowth.stSimpleGetFeedListReq;
+import UserGrowth.stSimpleGetFeedListRsp;
+import java.util.ArrayList;
 
-final class uoy
-  extends ClickableSpan
+public class uoy
+  extends ukl<stSimpleGetFeedListRsp>
 {
-  uoy(String paramString) {}
-  
-  public void onClick(@NonNull View paramView)
+  public uoy(String paramString1, byte paramByte1, byte paramByte2, ArrayList<String> paramArrayList, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    upg.a(uov.a(), "biz_src_jc_gzh_weishi", "weishi://profile?person_id=" + this.a);
-  }
-  
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
+    super("SimpleGetFeedList", paramInt);
+    stSimpleGetFeedListReq localstSimpleGetFeedListReq = new stSimpleGetFeedListReq();
+    localstSimpleGetFeedListReq.attach_info = paramString1;
+    localstSimpleGetFeedListReq.isrefresh = paramByte1;
+    localstSimpleGetFeedListReq.isfirst = paramByte2;
+    localstSimpleGetFeedListReq.channel_info = "from_android_qq";
+    localstSimpleGetFeedListReq.context_feedids = paramArrayList;
+    localstSimpleGetFeedListReq.scene = paramInt;
+    localstSimpleGetFeedListReq.gdt_args = paramString2;
+    localstSimpleGetFeedListReq.rowkey = paramString3;
+    localstSimpleGetFeedListReq.session = paramString4;
+    localstSimpleGetFeedListReq.push_info = paramString5;
+    localstSimpleGetFeedListReq.linkStragetyArgs = uqg.a();
+    localstSimpleGetFeedListReq.qqNum = uqt.a();
+    this.a = localstSimpleGetFeedListReq;
+    uqf.d("RecommendRequest", "stSimpleGetFeedListReq  = " + localstSimpleGetFeedListReq.toString());
   }
 }
 

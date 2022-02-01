@@ -1,6 +1,8 @@
+import android.view.MotionEvent;
+
 public abstract interface bllt
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2);
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

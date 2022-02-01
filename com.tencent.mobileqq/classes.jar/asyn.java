@@ -1,17 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
 
-class asyn
-  implements bkhw
+public class asyn
+  implements asyr
 {
-  asyn(asym paramasym, int paramInt, FileManagerEntity paramFileManagerEntity) {}
+  public asyn(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    bcst.b(this.jdField_a_of_type_Asym.a, "dc00898", "", "", "0X800A7F3", "0X800A7F3", this.jdField_a_of_type_Int, 0, "", "", "", "");
-    this.jdField_a_of_type_Asym.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    this.jdField_a_of_type_Asym.a();
+    ExtendFriendFragment.b(this.a);
   }
 }
 

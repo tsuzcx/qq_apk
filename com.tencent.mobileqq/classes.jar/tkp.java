@@ -1,14 +1,9 @@
-public class tkp
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+
+public abstract interface tkp
 {
-  public static String a()
-  {
-    return "0123456789";
-  }
-  
-  public static String b()
-  {
-    return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  }
+  public abstract void a(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity);
 }
 
 

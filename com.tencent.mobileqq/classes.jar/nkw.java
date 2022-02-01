@@ -1,52 +1,62 @@
-import android.content.Intent;
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RspBody;
+import tencent.im.oidb.cmd0x791.oidb_0x791.SetRedDotRes;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-final class nkw
-  implements nkl
+class nkw
+  implements BusinessObserver
 {
-  nkw(WeakReference paramWeakReference, String paramString1, int paramInt, String paramString2) {}
+  nkw(nku paramnku) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject;
-    if (paramString != null)
-    {
-      paramString = (beaw)paramString.getManager(193);
-      localObject = this.jdField_a_of_type_JavaLangString;
-      if (!BidDownloader.a(paramInt)) {
-        break label172;
-      }
-    }
-    label172:
-    for (long l = this.jdField_a_of_type_Int;; l = -1L)
-    {
-      paramString.a((String)localObject, l);
-      QLog.i(nkv.jdField_a_of_type_JavaLangString, 1, "finish predown bid=" + this.b + ", code=" + paramInt);
-      nkv.a();
-      if (nkv.b() == 0)
+    if (paramBoolean) {
+      try
       {
-        paramString = new Intent("com.tencent.process.tmdownloader.exit");
-        localObject = new ArrayList();
-        ((ArrayList)localObject).add("com.tencent.mobileqq:TMAssistantDownloadSDKService");
-        paramString.putStringArrayListExtra("procNameList", (ArrayList)localObject);
-        paramString.putExtra("verify", nkv.a((ArrayList)localObject, false));
-        if (QLog.isColorLevel()) {
-          QLog.d(nkv.jdField_a_of_type_JavaLangString, 2, "sendBroadcast to close TMAssistant sdk process");
+        Object localObject = paramBundle.getByteArray("data");
+        paramBundle = new oidb_sso.OIDBSSOPkg();
+        paramBundle.mergeFrom((byte[])localObject);
+        if ((paramBundle != null) && (paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()))
+        {
+          if (paramBundle.bytes_bodybuffer.get() == null) {
+            return;
+          }
+          localObject = new oidb_0x791.RspBody();
+          ((oidb_0x791.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
+          localObject = (oidb_0x791.SetRedDotRes)((oidb_0x791.RspBody)localObject).msg_set_reddot_res.get();
+          if (localObject != null)
+          {
+            paramBundle = "";
+            localObject = ((oidb_0x791.SetRedDotRes)localObject).rpt_uint64_failed_uin.get().iterator();
+            while (((Iterator)localObject).hasNext())
+            {
+              long l = ((Long)((Iterator)localObject).next()).longValue();
+              paramBundle = paramBundle + String.valueOf(l) + ",";
+            }
+            if ((!TextUtils.isEmpty(paramBundle)) && (QLog.isColorLevel()))
+            {
+              QLog.d("SplashActivityQ.qqstory.redPoint", 2, "reportRedTouchHasClick failed result is:" + paramBundle);
+              return;
+            }
+          }
         }
-        BaseApplicationImpl.getContext().sendBroadcast(paramString);
       }
-      return;
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
     }
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

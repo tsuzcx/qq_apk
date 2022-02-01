@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
 
-class avzb
-  implements DialogInterface.OnDismissListener
+public final class avzb
+  implements Parcelable.Creator<IVPluginInfo>
 {
-  avzb(avza paramavza) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public IVPluginInfo a(Parcel paramParcel)
   {
-    this.a.a.finish();
+    return new IVPluginInfo(paramParcel);
+  }
+  
+  public IVPluginInfo[] a(int paramInt)
+  {
+    return new IVPluginInfo[paramInt];
   }
 }
 

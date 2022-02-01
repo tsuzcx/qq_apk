@@ -1,125 +1,67 @@
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
+import com.tencent.qphone.base.util.ROMUtil;
 
 public class bhnl
-  extends bhqx
 {
-  public bhnl(WebViewFragment paramWebViewFragment, int paramInt)
+  public static Intent a(Context paramContext)
   {
-    super(paramInt);
+    if (("MIUI".equals(ROMUtil.getRomName())) && (Build.VERSION.SDK_INT > 19)) {
+      return d(paramContext);
+    }
+    if (("SMARTISAN".equals(ROMUtil.getRomName())) || ("360".equals(ROMUtil.getRomName()))) {
+      return c(paramContext);
+    }
+    return b(paramContext);
   }
   
-  public int a()
+  public static Intent b(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WebLog_WebViewFragment", 2, "TASK_ID_BROWSER_ACTIVITY_RUN_ONCE.");
-    }
-    long l;
-    boolean bool7;
-    boolean bool8;
-    boolean bool9;
-    boolean bool10;
-    boolean bool6;
-    if (Build.VERSION.SDK_INT < 19)
+    Intent localIntent;
+    if (Build.VERSION.SDK_INT >= 26)
     {
-      l = System.currentTimeMillis();
-      bool7 = false;
-      bool8 = false;
-      bool9 = false;
-      bool10 = false;
-      bool6 = false;
-      bool2 = bool6;
-      bool3 = bool7;
-      bool4 = bool8;
-      bool5 = bool9;
+      localIntent = new Intent();
+      localIntent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+      localIntent.putExtra("android.provider.extra.APP_PACKAGE", paramContext.getPackageName());
+      localIntent.putExtra("android.provider.extra.CHANNEL_ID", paramContext.getApplicationInfo().uid);
+      return localIntent;
     }
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      try
-      {
-        Object localObject = Class.forName("android.webkit.WebViewCore");
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        Field localField = ((Class)localObject).getDeclaredField("sWebCoreHandler");
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        localField.setAccessible(true);
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        localObject = (Handler)localField.get(localObject);
-        bool1 = bool10;
-        if (localObject == null) {
-          continue;
-        }
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        localObject = ((Handler)localObject).getLooper();
-        bool1 = bool10;
-        if (localObject == null) {
-          continue;
-        }
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        bool1 = bool10;
-        if (((Looper)localObject).getThread().getState() != Thread.State.WAITING) {
-          continue;
-        }
-        bool1 = true;
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        bool1 = bool2;
-        localClassNotFoundException.printStackTrace();
-        continue;
-      }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        bool1 = bool3;
-        localNoSuchFieldException.printStackTrace();
-        continue;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        bool1 = bool4;
-        localIllegalAccessException.printStackTrace();
-        continue;
-      }
-      catch (ClassCastException localClassCastException)
-      {
-        boolean bool1 = bool5;
-        localClassCastException.printStackTrace();
-        continue;
-        if (!bool1) {
-          continue;
-        }
-        int i = 0;
-        continue;
-      }
-      bool2 = bool1;
-      bool3 = bool1;
-      bool4 = bool1;
-      bool5 = bool1;
-      bcst.b(null, "P_CliOper", "BizTechReport", "", "web", "webcore_wait", 0, 1, i, "", "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "check if WebViewCordThread is waiting: " + bool1 + ", cost: " + (System.currentTimeMillis() - l));
-      }
-      return 1;
-      i = 1;
+      localIntent = new Intent();
+      localIntent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+      localIntent.putExtra("app_package", paramContext.getPackageName());
+      localIntent.putExtra("app_uid", paramContext.getApplicationInfo().uid);
+      return localIntent;
     }
+    if (Build.VERSION.SDK_INT >= 19) {
+      return c(paramContext);
+    }
+    return c(paramContext);
+  }
+  
+  public static Intent c(Context paramContext)
+  {
+    Intent localIntent = new Intent();
+    localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+    localIntent.setData(Uri.parse("package:" + paramContext.getPackageName()));
+    return localIntent;
+  }
+  
+  public static Intent d(Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT < 21) {
+      return c(paramContext);
+    }
+    Intent localIntent = new Intent("android.intent.action.MAIN");
+    localIntent.setClassName("com.android.settings", "com.android.settings.Settings$NotificationFilterActivity");
+    localIntent.putExtra("appName", paramContext.getResources().getString(paramContext.getApplicationInfo().labelRes));
+    localIntent.putExtra("packageName", paramContext.getPackageName());
+    return localIntent;
   }
 }
 

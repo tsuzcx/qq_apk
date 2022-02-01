@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.12.1;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aedc
-  extends aniz
+  implements View.OnClickListener
 {
-  public aedc(EditInfoActivity paramEditInfoActivity) {}
+  public aedc(ChatHistory paramChatHistory) {}
   
-  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
+  public void onClick(View paramView)
   {
-    if (!this.a.j) {}
-    do
+    long l = System.currentTimeMillis();
+    if (l - this.a.b > 1000L)
     {
-      return;
-      this.a.j = false;
-      this.a.runOnUiThread(new EditInfoActivity.12.1(this, paramBoolean, paramCard));
-    } while (!QLog.isColorLevel());
-    QLog.d("EditInfoActivity", 2, String.format("onGetDetailInfo, isSuccess: %s, resultCode:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
+      this.a.b = l;
+      this.a.b();
+      bdll.b(this.a.app, "CliOper", "", "", "0X800568D", "0X800568D", this.a.k, 0, "", "", "", "");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

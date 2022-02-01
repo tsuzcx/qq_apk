@@ -1,9 +1,8 @@
-public class bgka
+public abstract interface bgka
 {
-  public int a;
-  public String a;
-  public int b = -3000;
-  public int c;
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

@@ -1,37 +1,13 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
 
-public class auak
+class auak
+  implements auar
 {
-  private static auak jdField_a_of_type_Auak;
-  public static String a;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new aual(this, "Module_WeiyunDownloadService");
-  private ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  auak(auaj paramauaj) {}
   
-  public static auak a()
+  public void a()
   {
-    if (jdField_a_of_type_Auak == null) {}
-    try
-    {
-      jdField_a_of_type_Auak = new auak();
-      return jdField_a_of_type_Auak;
-    }
-    finally {}
-  }
-  
-  private QQAppInterface a()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    return null;
-  }
-  
-  public QIPCModule a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
+    FileSelectorSearchGroupFragment.a(this.a.a).a();
   }
 }
 

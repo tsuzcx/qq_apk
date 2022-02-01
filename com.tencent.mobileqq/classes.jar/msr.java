@@ -1,16 +1,18 @@
-import android.app.PendingIntent;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.utils.InviteBaseData;
 
-class msr
+public final class msr
+  implements Parcelable.Creator<InviteBaseData>
 {
-  public final int a;
-  public final PendingIntent a;
-  public final String a;
-  
-  public msr(int paramInt, String paramString, PendingIntent paramPendingIntent)
+  public InviteBaseData a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
+    return new InviteBaseData(paramParcel);
+  }
+  
+  public InviteBaseData[] a(int paramInt)
+  {
+    return new InviteBaseData[paramInt];
   }
 }
 

@@ -1,22 +1,13 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
 public class akmu
-  extends bdzy
+  implements DialogInterface.OnClickListener
 {
-  public akmu(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  public akmu(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFialed(paramURLDrawable, paramThrowable);
-    this.a.b();
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    super.onLoadSuccessed(paramURLDrawable);
-    this.a.d();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

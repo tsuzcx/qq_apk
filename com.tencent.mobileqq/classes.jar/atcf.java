@@ -1,31 +1,25 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.UUID;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class atcf
-  implements DialogInterface.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/utils/ColdPalaceHelper$Companion;", "", "()V", "COLD_PALACE_IMAGE_URL", "", "PUNISH_FOREVER", "", "PUNISH_NONE", "SP_FILE", "SP_KEY_ME_IN_COLD_PALACE_TIMES", "SP_KEY_PUNISH_LEFT_TIME", "SP_KEY_PUNISH_TIME_SINCE", "SP_KEY_SHOW_GRAY_TIP_ENTRY", "SP_KEY_SKILL_TIP", "SP_KEY_SKILL_USEUP_TIP", "SP_KEY_SKILL_USEUP_TITLE", "SP_KEY_WARN_ME_FORBBIDEN", "SP_KEY_WARN_ME_IN_COLDPALACE", "TAG", "type_skill_tip", "", "type_skill_useup_tip", "type_skill_useup_title", "type_warn_free_time_tip", "type_warn_me_forbbiden", "type_warn_me_in_coldpalace_tip", "getHelper", "Lcom/tencent/mobileqq/extendfriend/utils/ColdPalaceHelper;", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "isExtendMsgRspType", "", "ntRspType", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class atcf
 {
-  atcf(atcd paramatcd, long paramLong, UUID paramUUID, ChatMessage paramChatMessage, Activity paramActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @JvmStatic
+  @NotNull
+  public final atce a(@NotNull QQAppInterface paramQQAppInterface)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface = bfrm.a(this.jdField_a_of_type_Atcd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
-      paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaUtilUUID));
-      this.jdField_a_of_type_Atcd.c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      this.jdField_a_of_type_Atcd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_Atcd.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atcd.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-      return;
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    paramQQAppInterface = paramQQAppInterface.getManager(264);
+    if (paramQQAppInterface == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.extendfriend.ExtendFriendManager");
     }
-    new besy(this.jdField_a_of_type_Long, this.jdField_a_of_type_Atcd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity).a(this.jdField_a_of_type_JavaUtilUUID);
+    paramQQAppInterface = ((asvi)paramQQAppInterface).a();
+    Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "extendFriendManager.coldPalaceHelper");
+    return paramQQAppInterface;
   }
 }
 

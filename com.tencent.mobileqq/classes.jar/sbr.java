@@ -1,60 +1,44 @@
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public class sbr
-  implements View.OnLayoutChangeListener
+class sbr
+  extends sbh
 {
-  public sbr(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
+  sbr(sbi paramsbi) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    this.a.removeOnLayoutChangeListener(this);
-    if ((VideoFeedsRecyclerView.a(this.a) != null) && (VideoFeedsRecyclerView.a(this.a)))
+    sbi.a(this.a, false);
+    paramActionSheetItem = paramString + "&sourcefrom=6";
+    paramString = paramActionSheetItem;
+    if (paramBaseArticleInfo.qzoneShareUrl != null)
     {
-      paramInt1 = 0;
-      if (VideoFeedsRecyclerView.a(this.a) != 0) {
-        break label228;
+      paramString = paramActionSheetItem;
+      if (paramBaseArticleInfo.qzoneShareUrl.contains("kandianshare.html5.qq.com")) {
+        paramString = paramBaseArticleInfo.qzoneShareUrl;
       }
     }
-    label227:
-    label228:
-    label244:
-    do
+    paramBaseArticleInfo = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
+    paramBaseArticleInfo.putExtra("big_brother_source_key", ozs.f(0));
+    paramBaseArticleInfo.putExtra("normal", true);
+    try
     {
-      paramInt1 = (int)(this.a.getHeight() * 0.3D);
-      break label227;
-      paramView = VideoFeedsRecyclerView.a(this.a).getLayoutParams();
-      paramView.height = paramInt1;
-      VideoFeedsRecyclerView.a(this.a).setLayoutParams(paramView);
-      if (VideoFeedsRecyclerView.a(this.a) == 0)
-      {
-        paramView = this.a.getLayoutManager().findViewByPosition(1);
-        if ((paramView != null) && (paramView.getHeight() > 0) && (VideoFeedsRecyclerView.b(this.a)))
-        {
-          paramInt1 = paramView.getHeight();
-          paramInt1 = (int)(this.a.getHeight() / 2.0F - paramInt1 / 2.0F);
-          VideoFeedsRecyclerView.a(this.a, paramInt1);
-          if ((!VideoFeedsRecyclerView.a(this.a).a(1)) || (VideoFeedsRecyclerView.a(this.a).b() == 1)) {
-            break label244;
-          }
-        }
-        for (paramInt1 = 1;; paramInt1 = 0)
-        {
-          if ((paramInt1 == 0) && (VideoFeedsRecyclerView.a(this.a) != null) && (VideoFeedsRecyclerView.a(this.a).b() != 1)) {
-            this.a.a(this.a.getChildViewHolder(paramView));
-          }
-          return;
-          if (VideoFeedsRecyclerView.a(this.a) != 1) {
-            break;
-          }
-          paramInt1 = 0;
-          break;
-        }
-      }
-    } while (VideoFeedsRecyclerView.a(this.a) != 1);
-    VideoFeedsRecyclerView.a(this.a, VideoFeedsRecyclerView.b(this.a));
+      sbi.a(this.a).startActivity(paramBaseArticleInfo);
+      return;
+    }
+    catch (ActivityNotFoundException paramBaseArticleInfo)
+    {
+      zyx.a(1, 2131694663);
+    }
+  }
+  
+  public int c()
+  {
+    return 7;
   }
 }
 

@@ -1,21 +1,28 @@
-import android.support.annotation.IntRange;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.widget.XPanelContainer;
+import mqq.os.MqqHandler;
 
-public abstract interface agde
+public class agde
+  extends aole
 {
-  @IntRange(from=0L, to=3L)
-  public abstract int a();
+  public agde(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  public abstract void a();
-  
-  public abstract void a(agdf paramagdf);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public void a(int paramInt)
+  {
+    this.a.e();
+    SendBirthdayWishesActivity.a(this.a, paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.a);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 0) {
+      this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+    }
+    if (paramInt != 2)
+    {
+      SendBirthdayWishesActivity.a(this.a).removeCallbacks(SendBirthdayWishesActivity.a(this.a));
+      SendBirthdayWishesActivity.a(this.a).postDelayed(SendBirthdayWishesActivity.a(this.a), 600L);
+    }
+  }
 }
 
 

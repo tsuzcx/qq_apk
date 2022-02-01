@@ -1,26 +1,30 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
 
-public class yof
-  extends QQUIEventReceiver<ynm, wxv>
+class yof
+  extends LruCache<yoh, Drawable>
 {
-  public yof(@NonNull ynm paramynm)
+  yof(yoe paramyoe, int paramInt)
   {
-    super(paramynm);
+    super(paramInt);
   }
   
-  public void a(@NonNull ynm paramynm, @NonNull wxv paramwxv)
+  protected int a(yoh paramyoh, Drawable paramDrawable)
   {
-    if ((paramwxv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramwxv.jdField_a_of_type_JavaUtilList == null)) {
-      return;
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
+      {
+        int i = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * i;
+        yoq.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramyoh, " size=", Integer.valueOf(i) });
+        return i;
+      }
     }
-    paramynm.a(paramwxv);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wxv.class;
+    return 524288;
   }
 }
 

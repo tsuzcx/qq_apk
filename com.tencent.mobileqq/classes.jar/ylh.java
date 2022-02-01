@@ -1,97 +1,61 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.biz.qqstory.widget.StoryCoverView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ylh
-  implements ymk
+  extends blpw
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  protected wvo a;
-  private yko jdField_a_of_type_Yko;
-  private ylj jdField_a_of_type_Ylj;
-  protected yln a;
-  protected yml a;
-  protected ymm a;
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  StoryCoverView jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView;
+  String jdField_a_of_type_JavaLangString;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  String jdField_b_of_type_JavaLangString;
+  TextView c;
+  TextView d;
+  TextView e;
+  TextView f;
   
-  public ylh(ylj paramylj)
+  public ylh(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
   {
-    this.jdField_a_of_type_Ylj = paramylj;
-    this.jdField_a_of_type_Yko = new yko();
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363109));
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131378826));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371805));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364772));
+    this.c = ((TextView)paramView.findViewById(2131371917));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369928);
+    this.d = ((TextView)paramView.findViewById(2131378876));
+    this.e = ((TextView)paramView.findViewById(2131380738));
+    this.f = ((TextView)paramView.findViewById(2131380739));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369944);
+    paramView.setOnClickListener(this);
+    paramView.setOnLongClickListener(this);
   }
   
-  public Object a()
+  public void a(int paramInt)
   {
-    return null;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public String a()
+  public void onClick(View paramView)
   {
-    return getClass().getSimpleName();
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.onItemClick(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    yqp.c("GetMyStoryDesFromVidListStep", "GetMyStoryDesFromVidListStep");
-    if (this.jdField_a_of_type_Yln == null)
-    {
-      if (this.jdField_a_of_type_Ymm != null)
-      {
-        this.jdField_a_of_type_Ymm.a(a());
-        return;
-      }
-      yqp.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
-      return;
-    }
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_Yln.a);
-    this.jdField_a_of_type_Wvo = wvo.a(localArrayList);
-    this.jdField_a_of_type_Wvo.a("GetMyStoryDesFromVidListStep");
-    this.jdField_a_of_type_Wvo.a(new yli(this, localArrayList));
-    this.jdField_a_of_type_Wvo.b();
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
   }
-  
-  public void a(Object paramObject)
-  {
-    boolean bool2 = true;
-    if ((paramObject instanceof yln))
-    {
-      this.jdField_a_of_type_Yln = ((yln)paramObject);
-      return;
-    }
-    paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
-    if (this.jdField_a_of_type_Yln == null)
-    {
-      bool1 = true;
-      yqp.e("GetMyStoryDesFromVidListStep", bool1);
-      paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
-      if (this.jdField_a_of_type_Yln != null) {
-        break label96;
-      }
-    }
-    label96:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      zkb.a(bool1, new Object[0]);
-      return;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  public void a(yml paramyml)
-  {
-    this.jdField_a_of_type_Yml = paramyml;
-  }
-  
-  public void a(ymm paramymm)
-  {
-    this.jdField_a_of_type_Ymm = paramymm;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 

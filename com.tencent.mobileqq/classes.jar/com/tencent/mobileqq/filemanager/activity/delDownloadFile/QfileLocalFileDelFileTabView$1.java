@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity.delDownloadFile;
 
-import asuy;
-import atvg;
-import atxz;
+import atlc;
+import aunb;
+import aupu;
 import com.tencent.util.Pair;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -22,14 +22,14 @@ public class QfileLocalFileDelFileTabView$1
     this.this$0.jdField_b_of_type_Boolean = true;
     this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
     this.this$0.jdField_b_of_type_JavaUtilLinkedHashMap.clear();
-    TreeMap localTreeMap = new TreeMap(new asuy(this));
+    TreeMap localTreeMap = new TreeMap(new atlc(this));
     Iterator localIterator = QfileLocalFileDelFileTabView.a(this.this$0).iterator();
     while (localIterator.hasNext())
     {
-      atxz localatxz = (atxz)localIterator.next();
-      QfileLocalFileDelFileTabView.a(this.this$0, localatxz.a(), localatxz, this.this$0.jdField_b_of_type_JavaUtilList, ((Integer)this.this$0.jdField_a_of_type_ComTencentUtilPair.second).intValue(), localTreeMap, 1000, null);
+      aupu localaupu = (aupu)localIterator.next();
+      QfileLocalFileDelFileTabView.a(this.this$0, localaupu.a(), localaupu, this.this$0.jdField_b_of_type_JavaUtilList, ((Integer)this.this$0.jdField_a_of_type_ComTencentUtilPair.second).intValue(), localTreeMap, 1000, null);
     }
-    atvg.a(localTreeMap, ((Integer)this.this$0.jdField_a_of_type_ComTencentUtilPair.second).intValue(), this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap, this.this$0.jdField_b_of_type_JavaUtilLinkedHashMap, this.this$0.jdField_a_of_type_JavaUtilList);
+    aunb.a(localTreeMap, ((Integer)this.this$0.jdField_a_of_type_ComTencentUtilPair.second).intValue(), this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap, this.this$0.jdField_b_of_type_JavaUtilLinkedHashMap, this.this$0.jdField_a_of_type_JavaUtilList);
     QfileLocalFileDelFileTabView.a(this.this$0, new QfileLocalFileDelFileTabView.1.2(this));
   }
 }

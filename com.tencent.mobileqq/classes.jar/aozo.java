@@ -1,76 +1,37 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 public class aozo
-  extends apae
+  extends aoxg
 {
-  public int a;
-  public String a;
-  public aozp[] a;
-  public int b = -1;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e = 0;
-  
-  public aozo()
+  public aozo(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfAozp = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
+    super(paramQQAppInterface, paramContext);
   }
   
-  public static boolean a(aozo paramaozo)
+  private boolean C()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramaozo != null)
-    {
-      bool1 = bool2;
-      if (paramaozo.jdField_a_of_type_Int == 0)
-      {
-        bool1 = bool2;
-        if (paramaozo.b == 0)
-        {
-          bool1 = bool2;
-          if (paramaozo.jdField_a_of_type_ArrayOfAozp != null)
-          {
-            bool1 = bool2;
-            if (paramaozo.jdField_a_of_type_ArrayOfAozp[0].jdField_c_of_type_Int == 0)
-            {
-              bool1 = bool2;
-              if (paramaozo.jdField_a_of_type_ArrayOfAozp[0].a != null) {
-                bool1 = true;
-              }
-            }
-          }
-        }
-      }
-    }
-    return bool1;
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
+    String str3 = bmsw.a();
+    bmud.a(this.jdField_a_of_type_AndroidContentContext, str1, null, 0, str2, str3);
+    return true;
   }
   
-  public String toString()
+  public boolean a()
   {
-    if (this.jdField_a_of_type_ArrayOfAozp != null)
+    try
     {
-      String str1 = "ImageTags{";
-      int i = 0;
-      for (;;)
-      {
-        str2 = str1;
-        if (i >= this.jdField_a_of_type_ArrayOfAozp.length) {
-          break;
-        }
-        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfAozp[i];
-        i += 1;
-      }
+      boolean bool = C();
+      return bool;
     }
-    String str2 = "null";
-    return "ARCloudMarkerRecogResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
+    catch (Exception localException)
+    {
+      QLog.e("QzoneRedpocketShareAction", 1, "doAction error: " + localException.getMessage());
+      a("QzoneRedpocketShareAction");
+    }
+    return false;
   }
 }
 

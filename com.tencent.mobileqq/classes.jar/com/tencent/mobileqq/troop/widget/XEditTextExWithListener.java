@@ -3,13 +3,13 @@ package com.tencent.mobileqq.troop.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
-import bfyo;
+import bgyp;
 import com.tencent.widget.XEditTextEx;
 
 public class XEditTextExWithListener
   extends XEditTextEx
 {
-  private bfyo a;
+  private bgyp a;
   
   public XEditTextExWithListener(Context paramContext)
   {
@@ -30,9 +30,9 @@ public class XEditTextExWithListener
     return bool;
   }
   
-  public void setOnKeyPreImeListener(bfyo parambfyo)
+  public void setOnKeyPreImeListener(bgyp parambgyp)
   {
-    this.a = parambfyo;
+    this.a = parambgyp;
   }
 }
 

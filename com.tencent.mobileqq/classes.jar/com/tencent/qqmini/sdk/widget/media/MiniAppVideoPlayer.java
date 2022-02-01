@@ -75,6 +75,7 @@ import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Queue;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -84,6 +85,7 @@ public class MiniAppVideoPlayer
   extends FrameLayout
   implements MediaPlayer.OnPreparedListener, Handler.Callback, View.OnClickListener
 {
+  private static final int MSG_TASK_FULL_SCREEN = 2004;
   private static final int MSG_WHAT_HIDE = 2003;
   private static final int MSG_WHAT_PLAYING = 2002;
   public static final String NOTIFY_STATUS_RESET = "resetPlayer";
@@ -139,6 +141,7 @@ public class MiniAppVideoPlayer
   boolean isResetPath = false;
   public boolean isShowBasicControl = true;
   public boolean isShowControlBar = true;
+  public boolean isVideoPrepared = false;
   private int lastBufferProgress = 0;
   private int lastNavBarVisibility = 8;
   public String lastPoster;
@@ -190,6 +193,7 @@ public class MiniAppVideoPlayer
   public boolean showPlayBtn = true;
   public boolean showProgress = true;
   private ViewGroup.LayoutParams smallLayoutParams;
+  private Queue<Message> taskQueueRunAfterVideoPrepared = new LinkedList();
   public String title;
   private TextView titleTv;
   private TextView totalTimeTv;
@@ -748,85 +752,85 @@ public class MiniAppVideoPlayer
     //   0: aconst_null
     //   1: astore 6
     //   3: aload_1
-    //   4: invokestatic 1159	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: invokestatic 1171	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   7: ifne +130 -> 137
     //   10: aload_1
-    //   11: ldc_w 1161
-    //   14: invokevirtual 762	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   11: ldc_w 1173
+    //   14: invokevirtual 777	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   17: ifeq +120 -> 137
-    //   20: getstatic 715	android/os/Build$VERSION:SDK_INT	I
+    //   20: getstatic 730	android/os/Build$VERSION:SDK_INT	I
     //   23: bipush 15
     //   25: if_icmple +112 -> 137
-    //   28: new 1163	java/io/FileInputStream
+    //   28: new 1175	java/io/FileInputStream
     //   31: dup
     //   32: aload_0
-    //   33: getfield 1100	com/tencent/qqmini/sdk/widget/media/MiniAppVideoPlayer:mUrls	Ljava/lang/String;
-    //   36: invokespecial 1165	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   33: getfield 1115	com/tencent/qqmini/sdk/widget/media/MiniAppVideoPlayer:mUrls	Ljava/lang/String;
+    //   36: invokespecial 1177	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   39: astore_3
-    //   40: new 724	android/media/MediaExtractor
+    //   40: new 739	android/media/MediaExtractor
     //   43: dup
-    //   44: invokespecial 1166	android/media/MediaExtractor:<init>	()V
+    //   44: invokespecial 1178	android/media/MediaExtractor:<init>	()V
     //   47: astore 5
     //   49: aload 5
     //   51: aload_3
-    //   52: invokevirtual 1170	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   55: invokevirtual 1174	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   52: invokevirtual 1182	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   55: invokevirtual 1186	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;)V
     //   58: aload 5
-    //   60: invokestatic 1176	com/tencent/qqmini/sdk/widget/media/MiniAppVideoPlayer:getAndSelectVideoTrackIndex	(Landroid/media/MediaExtractor;)I
+    //   60: invokestatic 1188	com/tencent/qqmini/sdk/widget/media/MiniAppVideoPlayer:getAndSelectVideoTrackIndex	(Landroid/media/MediaExtractor;)I
     //   63: istore_2
     //   64: iload_2
     //   65: iconst_m1
     //   66: if_icmple +53 -> 119
     //   69: aload 5
     //   71: iload_2
-    //   72: invokevirtual 747	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   72: invokevirtual 762	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
     //   75: astore_1
     //   76: aload_1
-    //   77: ldc_w 1178
-    //   80: invokevirtual 1181	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   77: ldc_w 1190
+    //   80: invokevirtual 1193	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   83: ifeq +14 -> 97
     //   86: aload_0
     //   87: aload_1
-    //   88: ldc_w 1178
-    //   91: invokevirtual 1185	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   94: putfield 1121	com/tencent/qqmini/sdk/widget/media/MiniAppVideoPlayer:rotation	I
+    //   88: ldc_w 1190
+    //   91: invokevirtual 1197	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   94: putfield 1136	com/tencent/qqmini/sdk/widget/media/MiniAppVideoPlayer:rotation	I
     //   97: aload_0
     //   98: aload_1
-    //   99: ldc_w 1187
-    //   102: invokevirtual 1185	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   105: putfield 1117	com/tencent/qqmini/sdk/widget/media/MiniAppVideoPlayer:originWidth	I
+    //   99: ldc_w 1199
+    //   102: invokevirtual 1197	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   105: putfield 1132	com/tencent/qqmini/sdk/widget/media/MiniAppVideoPlayer:originWidth	I
     //   108: aload_0
     //   109: aload_1
-    //   110: ldc_w 1189
-    //   113: invokevirtual 1185	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   116: putfield 1119	com/tencent/qqmini/sdk/widget/media/MiniAppVideoPlayer:originHeight	I
+    //   110: ldc_w 1201
+    //   113: invokevirtual 1197	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   116: putfield 1134	com/tencent/qqmini/sdk/widget/media/MiniAppVideoPlayer:originHeight	I
     //   119: aload_3
     //   120: ifnull +7 -> 127
     //   123: aload_3
-    //   124: invokevirtual 1192	java/io/FileInputStream:close	()V
+    //   124: invokevirtual 1204	java/io/FileInputStream:close	()V
     //   127: aload 5
     //   129: ifnull +8 -> 137
     //   132: aload 5
-    //   134: invokevirtual 1195	android/media/MediaExtractor:release	()V
+    //   134: invokevirtual 1207	android/media/MediaExtractor:release	()V
     //   137: return
     //   138: astore 4
     //   140: aconst_null
     //   141: astore_3
     //   142: aload 6
     //   144: astore_1
-    //   145: ldc 25
-    //   147: ldc_w 1197
+    //   145: ldc 27
+    //   147: ldc_w 1209
     //   150: aload 4
-    //   152: invokestatic 1203	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   152: invokestatic 1215	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   155: pop
     //   156: aload_3
     //   157: ifnull +7 -> 164
     //   160: aload_3
-    //   161: invokevirtual 1192	java/io/FileInputStream:close	()V
+    //   161: invokevirtual 1204	java/io/FileInputStream:close	()V
     //   164: aload_1
     //   165: ifnull -28 -> 137
     //   168: aload_1
-    //   169: invokevirtual 1195	android/media/MediaExtractor:release	()V
+    //   169: invokevirtual 1207	android/media/MediaExtractor:release	()V
     //   172: return
     //   173: astore_1
     //   174: aconst_null
@@ -836,11 +840,11 @@ public class MiniAppVideoPlayer
     //   179: aload 4
     //   181: ifnull +8 -> 189
     //   184: aload 4
-    //   186: invokevirtual 1192	java/io/FileInputStream:close	()V
+    //   186: invokevirtual 1204	java/io/FileInputStream:close	()V
     //   189: aload_3
     //   190: ifnull +7 -> 197
     //   193: aload_3
-    //   194: invokevirtual 1195	android/media/MediaExtractor:release	()V
+    //   194: invokevirtual 1207	android/media/MediaExtractor:release	()V
     //   197: aload_1
     //   198: athrow
     //   199: astore_1
@@ -1196,6 +1200,7 @@ public class MiniAppVideoPlayer
       this.videoPlayerStatusObserver = new MiniAppVideoPlayer.VideoPlayerStatusObserver(this);
       this.mVideoGestureLayout = new VideoGestureLayout(this.mContext);
       this.mVideoGestureLayout.setContentDescription("VideoGestureLayout");
+      updateVideoGestureSetting();
       this.video_container.setVideoGestureListener(getVideoGestureListener());
       this.playerSeekBar.setOnSeekBarChangeListener(getSeekBarChangeListener());
       addView(this.view);
@@ -1236,13 +1241,41 @@ public class MiniAppVideoPlayer
   {
     QMLog.d("MiniAppVideoPlayer", "start");
     avoidLockScreen();
-    if ((this.mVideoPlayer != null) && (this.mVideoPlayer.getCurrentPostion() > 0L)) {
+    IMiniAppContext localIMiniAppContext;
+    if ((this.mVideoPlayer != null) && (this.mVideoPlayer.getCurrentPostion() > 0L))
+    {
       this.mVideoPlayer.start();
+      if (this.mMiniAppContext != null)
+      {
+        localIMiniAppContext = (IMiniAppContext)this.mMiniAppContext.get();
+        if ((localIMiniAppContext == null) || (!localIMiniAppContext.isMiniGame())) {
+          break label86;
+        }
+        callbackVideoStateChange("play");
+      }
     }
     for (;;)
     {
       this.isPause = false;
       return;
+      localIMiniAppContext = null;
+      break;
+      try
+      {
+        label86:
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("data", this.data);
+        if (localIMiniAppContext != null) {
+          localIMiniAppContext.performAction(ServiceSubscribeEvent.obtain("onVideoPlay", localJSONObject.toString(), this.webviewId));
+        }
+        this.pageWebview.evaluateSubscribeJS("onVideoPlay", localJSONObject.toString(), this.webviewId);
+        QMLog.d("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoPlay = " + localJSONObject.toString());
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      continue;
       play((this.initialTime * 1000.0D));
     }
   }
@@ -1274,9 +1307,11 @@ public class MiniAppVideoPlayer
     if (this.showCenterPlayBtn)
     {
       this.play_status_img.setVisibility(0);
+      this.video_img.setVisibility(0);
       return;
     }
     this.play_status_img.setVisibility(8);
+    this.video_img.setVisibility(8);
   }
   
   private void updateDanmuView()
@@ -1385,6 +1420,16 @@ public class MiniAppVideoPlayer
       label102:
       this.centerControlIv.setVisibility(8);
       this.controlIv.setVisibility(0);
+    }
+  }
+  
+  private void updateVideoGestureSetting()
+  {
+    if (this.video_container != null)
+    {
+      this.video_container.setEnablePageGesture(this.pageGesture);
+      this.video_container.setEnableProgressGesture(this.enableProgressGesture);
+      this.video_container.setEnablePlayGesture(this.enablePlayGesture);
     }
   }
   
@@ -1501,6 +1546,13 @@ public class MiniAppVideoPlayer
   
   public void fullScreen()
   {
+    if (!this.isVideoPrepared)
+    {
+      Message localMessage = new Message();
+      localMessage.what = 2004;
+      this.taskQueueRunAfterVideoPrepared.add(localMessage);
+      return;
+    }
     this.handler.post(new MiniAppVideoPlayer.14(this));
   }
   
@@ -1558,7 +1610,7 @@ public class MiniAppVideoPlayer
           localJSONObject.put("duration", this.mVideoPlayer.getDuration() / 1000.0D);
           localJSONObject.put("videoId", this.videoId);
           if (this.mMiniAppContext == null) {
-            break label316;
+            break label320;
           }
           paramMessage = (IMiniAppContext)this.mMiniAppContext.get();
           if (paramMessage != null) {
@@ -1572,11 +1624,14 @@ public class MiniAppVideoPlayer
           paramMessage.printStackTrace();
         }
         break;
-        label316:
         paramMessage = null;
       }
+    case 2003: 
+      label320:
+      this.playingPopView.setVisibility(4);
+      return true;
     }
-    this.playingPopView.setVisibility(4);
+    fullScreen();
     return true;
   }
   
@@ -1615,12 +1670,13 @@ public class MiniAppVideoPlayer
     this.showPlayBtn = paramJSONObject.optBoolean("showPlayBtn", this.showPlayBtn);
     this.showFullScreenBtn = paramJSONObject.optBoolean("showFullScreenBtn", this.showFullScreenBtn);
     this.enableProgressGesture = paramJSONObject.optBoolean("enableProgressGesture", this.enableProgressGesture);
+    updateVideoGestureSetting();
     JSONObject localJSONObject;
     if (!this.isFullScreen)
     {
       localJSONObject = paramJSONObject.optJSONObject("position");
       if (localJSONObject == null) {
-        break label626;
+        break label630;
       }
       this.videoX = localJSONObject.optInt("left", this.videoX);
       this.videoY = localJSONObject.optInt("top", this.videoY);
@@ -1635,7 +1691,7 @@ public class MiniAppVideoPlayer
       resetMuteImage();
       updateVideoPosition();
       return;
-      label626:
+      label630:
       this.videoX = paramJSONObject.optInt("x", this.videoX);
       this.videoY = paramJSONObject.optInt("y", this.videoY);
       this.videoWidth = paramJSONObject.optInt("width", this.videoWidth);
@@ -1743,38 +1799,7 @@ public class MiniAppVideoPlayer
     }
     this.pauseByUser = false;
     start();
-    IMiniAppContext localIMiniAppContext;
-    if (this.mMiniAppContext != null)
-    {
-      localIMiniAppContext = (IMiniAppContext)this.mMiniAppContext.get();
-      if ((localIMiniAppContext == null) || (!localIMiniAppContext.isMiniGame())) {
-        break label95;
-      }
-      callbackVideoStateChange("play");
-    }
-    for (;;)
-    {
-      sendTimingMsg(200L);
-      return;
-      localIMiniAppContext = null;
-      break;
-      try
-      {
-        label95:
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("videoId", this.videoId);
-        localJSONObject.put("data", this.data);
-        if (localIMiniAppContext != null) {
-          localIMiniAppContext.performAction(ServiceSubscribeEvent.obtain("onVideoPlay", localJSONObject.toString(), this.webviewId));
-        }
-        this.pageWebview.evaluateSubscribeJS("onVideoPlay", localJSONObject.toString(), this.webviewId);
-        QMLog.d("MiniAppVideoPlayer", "operate start evaluateSubcribeJS onVideoPlay = " + localJSONObject.toString());
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    sendTimingMsg(200L);
   }
   
   public void play()
@@ -1795,33 +1820,13 @@ public class MiniAppVideoPlayer
     avoidLockScreen();
     this.loadingView.setVisibility(0);
     this.playingBefore = true;
+    this.isVideoPrepared = false;
     this.mVideoPlayer.stop();
     if (this.enableDanmu) {
       this.mVideoPlayer.startPlayDanmu();
     }
     this.mVideoPlayer.openMediaPlayerByUrl(getContext(), this.mUrls, paramLong);
     this.play_status_img.setVisibility(8);
-    if (this.mMiniAppContext != null) {}
-    for (IMiniAppContext localIMiniAppContext = (IMiniAppContext)this.mMiniAppContext.get(); (localIMiniAppContext != null) && (localIMiniAppContext.isMiniGame()); localIMiniAppContext = null)
-    {
-      callbackVideoStateChange("play");
-      return;
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("data", this.data);
-      if (localIMiniAppContext != null) {
-        localIMiniAppContext.performAction(ServiceSubscribeEvent.obtain("onVideoPlay", localJSONObject.toString(), this.webviewId));
-      }
-      this.pageWebview.evaluateSubscribeJS("onVideoPlay", localJSONObject.toString(), this.webviewId);
-      QMLog.d("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoPlay = " + localJSONObject.toString());
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
   }
   
   public void playDanmu(String paramString, int paramInt)
@@ -1922,6 +1927,7 @@ public class MiniAppVideoPlayer
     if ((paramBoolean) && (this.isFullScreen)) {
       smallScreen();
     }
+    this.isVideoPrepared = false;
     if (this.mVideoPlayer != null) {
       this.mVideoPlayer.stop();
     }

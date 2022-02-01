@@ -1,21 +1,84 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
 
-class svz
-  implements View.OnClickListener
+public class svz
+  extends svv
 {
-  svz(svy paramsvy) {}
-  
-  public void onClick(View paramView)
+  public svz(Context paramContext)
   {
-    RIJRedPacketManager.a().a(this.a.a, 2, 0, 0);
-    FastWebActivity.a(this.a.a).b(2, FastWebActivity.a(this.a.a), this.a.a.a.innerUniqueID);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramContext);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298761);
+  }
+  
+  public View a(ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_Aayo == null) {
+      this.jdField_a_of_type_Aayo = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559652, paramViewGroup, false));
+    }
+    return (View)this.jdField_a_of_type_Aayo;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Aayo == null) {
+      return;
+    }
+    this.jdField_a_of_type_Aayo.a(0L);
+    this.jdField_a_of_type_Aayo.aq_();
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    super.a(paramInt, paramBoolean);
+    if (this.jdField_a_of_type_Aayo == null) {
+      return;
+    }
+    if (paramInt == 100)
+    {
+      this.jdField_a_of_type_Aayo.b(0L);
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Aayo.aq_();
+      return;
+    }
+    this.jdField_a_of_type_Aayo.c(0L);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Aayo == null) {
+      return;
+    }
+    this.jdField_a_of_type_Aayo.a(0L);
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (this.jdField_a_of_type_Aayo == null) {
+      return;
+    }
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      this.jdField_a_of_type_Aayo.a(0, paramString);
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Aayo.a(0);
+      return;
+    }
+    this.jdField_a_of_type_Aayo.a(2);
   }
 }
 

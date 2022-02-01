@@ -1,43 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class auai
-  extends atdl
+  implements View.OnTouchListener
 {
-  asyw jdField_a_of_type_Asyw = null;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public auai(FileSelectorSearchGroupFragment paramFileSelectorSearchGroupFragment) {}
   
-  public auai(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    b();
-  }
-  
-  public int a()
-  {
-    return 4;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Asyw != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Asyw);
-    }
-  }
-  
-  public boolean a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_JavaLangString, this.b);
-    return true;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Asyw = new auaj(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Asyw);
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

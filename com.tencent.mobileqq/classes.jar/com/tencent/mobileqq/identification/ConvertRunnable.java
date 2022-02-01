@@ -7,34 +7,34 @@ import android.graphics.YuvImage;
 import android.media.MediaFormat;
 import android.opengl.EGL14;
 import android.support.annotation.RequiresApi;
-import atwl;
-import aveo;
-import banz;
-import batj;
-import batv;
-import batx;
-import bcie;
-import bgjw;
+import auog;
+import avwq;
+import bbgs;
+import bbmc;
+import bbmo;
+import bbmq;
+import bdaw;
+import bhjx;
 import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
 import java.lang.ref.WeakReference;
-import zga;
-import zkr;
+import zjv;
+import zom;
 
 @RequiresApi(api=18)
 public class ConvertRunnable
-  implements batv, Runnable
+  implements bbmo, Runnable
 {
   private static int e = 0;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private batx jdField_a_of_type_Batx;
+  private bbmq jdField_a_of_type_Bbmq;
   private QQFilterRenderManager jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<aveo> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<avwq> jdField_a_of_type_JavaLangRefWeakReference;
   private volatile boolean jdField_a_of_type_Boolean;
   private byte[][] jdField_a_of_type_Array2dOfByte;
   private int jdField_b_of_type_Int;
@@ -48,21 +48,21 @@ public class ConvertRunnable
     if (e != 0) {
       return e;
     }
-    if (bcie.a().a(17)) {
+    if (bdaw.a().a(17)) {
       e = 17;
     }
     for (;;)
     {
       return e;
-      if (bcie.a().a(842094169)) {
+      if (bdaw.a().a(842094169)) {
         e = 842094169;
-      } else if (bcie.a().a(20)) {
+      } else if (bdaw.a().a(20)) {
         e = 20;
-      } else if (bcie.a().a(4)) {
+      } else if (bdaw.a().a(4)) {
         e = 4;
-      } else if (bcie.a().a(256)) {
+      } else if (bdaw.a().a(256)) {
         e = 256;
-      } else if (bcie.a().a(16)) {
+      } else if (bdaw.a().a(16)) {
         e = 16;
       }
     }
@@ -74,7 +74,7 @@ public class ConvertRunnable
     paramArrayOfByte = new ByteArrayOutputStream();
     ((YuvImage)localObject).compressToJpeg(new Rect(0, 0, paramInt1, paramInt2), 80, paramArrayOfByte);
     localObject = BitmapFactory.decodeByteArray(paramArrayOfByte.toByteArray(), 0, paramArrayOfByte.size());
-    bgjw.a(paramArrayOfByte);
+    bhjx.a(paramArrayOfByte);
     return localObject;
   }
   
@@ -82,15 +82,15 @@ public class ConvertRunnable
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      aveo localaveo = (aveo)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localaveo != null)
+      avwq localavwq = (avwq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localavwq != null)
       {
-        zga localzga = new zga();
-        localzga.jdField_a_of_type_Long = this.jdField_b_of_type_Long;
-        localzga.jdField_a_of_type_Int = paramInt;
-        localzga.b = paramString;
-        localzga.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
-        localaveo.a(localzga);
+        zjv localzjv = new zjv();
+        localzjv.jdField_a_of_type_Long = this.jdField_b_of_type_Long;
+        localzjv.jdField_a_of_type_Int = paramInt;
+        localzjv.b = paramString;
+        localzjv.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+        localavwq.a(localzjv);
       }
     }
   }
@@ -105,7 +105,7 @@ public class ConvertRunnable
   
   private boolean b()
   {
-    if ((this.jdField_a_of_type_Batx == null) || (this.d >= this.jdField_a_of_type_Array2dOfByte.length)) {}
+    if ((this.jdField_a_of_type_Bbmq == null) || (this.d >= this.jdField_a_of_type_Array2dOfByte.length)) {}
     int i;
     do
     {
@@ -121,7 +121,7 @@ public class ConvertRunnable
         this.jdField_a_of_type_AndroidGraphicsBitmap = null;
       }
     } while (i <= 0);
-    this.jdField_a_of_type_Batx.a(3553, i, null, null, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Bbmq.a(3553, i, null, null, this.jdField_a_of_type_Long);
     this.jdField_a_of_type_Long += 50000000L;
     return true;
   }
@@ -149,10 +149,10 @@ public class ConvertRunnable
         QLog.d("identification_convert", 2, "run, start convert, taskid:" + this.jdField_b_of_type_Long + " create bitmap cost: " + (l2 - l1) + " ms");
       }
       l1 = System.currentTimeMillis();
-      this.jdField_a_of_type_Batx = new batx();
-      batj localbatj = new batj(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, banz.a().a(1) * 1000, 1, false, 270);
-      localbatj.a(EGL14.eglGetCurrentContext());
-      this.jdField_a_of_type_Batx.a(localbatj, this);
+      this.jdField_a_of_type_Bbmq = new bbmq();
+      bbmc localbbmc = new bbmc(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, bbgs.a().a(1) * 1000, 1, false, 270);
+      localbbmc.a(EGL14.eglGetCurrentContext());
+      this.jdField_a_of_type_Bbmq.a(localbbmc, this);
       l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d("identification_convert", 2, "run, init encoder, taskid:" + this.jdField_b_of_type_Long + "  encoder init cost: " + (l2 - l1) + " ms");
@@ -179,8 +179,8 @@ public class ConvertRunnable
         this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
         this.jdField_a_of_type_AndroidGraphicsBitmap = null;
       }
-    } while (this.jdField_a_of_type_Batx == null);
-    this.jdField_a_of_type_Batx.b();
+    } while (this.jdField_a_of_type_Bbmq == null);
+    this.jdField_a_of_type_Bbmq.b();
   }
   
   public void a(String paramString)
@@ -195,13 +195,13 @@ public class ConvertRunnable
         QLog.d("identification_convert", 2, "onEncodeFinish:" + this.jdField_b_of_type_Long + " file:" + this.jdField_a_of_type_JavaLangString);
       }
       this.jdField_c_of_type_Int = 0;
-      if (atwl.a(this.jdField_a_of_type_JavaLangString))
+      if (auog.a(this.jdField_a_of_type_JavaLangString))
       {
-        l = atwl.a(this.jdField_a_of_type_JavaLangString);
+        l = auog.a(this.jdField_a_of_type_JavaLangString);
         if (QLog.isColorLevel()) {
           QLog.d("identification_convert", 2, "onEncodeFinish, file exist, size:" + l + " file:" + this.jdField_a_of_type_JavaLangString);
         }
-        paramString = this.jdField_a_of_type_Batx.a();
+        paramString = this.jdField_a_of_type_Bbmq.a();
         a(this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, paramString);
       }
     }
@@ -212,10 +212,10 @@ public class ConvertRunnable
         this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceDestroyed();
         this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = null;
       }
-      if (this.jdField_a_of_type_Batx != null)
+      if (this.jdField_a_of_type_Bbmq != null)
       {
-        this.jdField_a_of_type_Batx.c();
-        this.jdField_a_of_type_Batx = null;
+        this.jdField_a_of_type_Bbmq.c();
+        this.jdField_a_of_type_Bbmq = null;
       }
       return;
       if (!QLog.isColorLevel()) {
@@ -223,7 +223,7 @@ public class ConvertRunnable
       }
       QLog.d("identification_convert", 2, "onEncodeFinish, file not exist:" + this.jdField_b_of_type_Long + " file:" + this.jdField_a_of_type_JavaLangString);
       break;
-      zkr.g(paramString);
+      zom.g(paramString);
     }
   }
   
@@ -247,8 +247,8 @@ public class ConvertRunnable
       if (QLog.isColorLevel()) {
         QLog.d("identification_convert", 2, "onEncodeFrame, mRun is false, tasid." + this.jdField_b_of_type_Long);
       }
-      if (this.jdField_a_of_type_Batx != null) {
-        this.jdField_a_of_type_Batx.b();
+      if (this.jdField_a_of_type_Bbmq != null) {
+        this.jdField_a_of_type_Bbmq.b();
       }
     }
     do
@@ -260,8 +260,8 @@ public class ConvertRunnable
       if (QLog.isColorLevel()) {
         QLog.d("identification_convert", 2, "onEncodeFrame, stop recoder");
       }
-      if (this.jdField_a_of_type_Batx != null) {
-        this.jdField_a_of_type_Batx.b();
+      if (this.jdField_a_of_type_Bbmq != null) {
+        this.jdField_a_of_type_Bbmq.b();
       }
     } while (!QLog.isColorLevel());
     QLog.d("identification_convert", 2, "onEncodeFrame, stop recoder, taskid:" + this.jdField_b_of_type_Long);

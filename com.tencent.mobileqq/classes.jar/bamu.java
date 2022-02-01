@@ -1,15 +1,10 @@
-public class bamu
+public abstract interface bamu
 {
-  public int a;
-  public String a;
-  public String b;
+  public abstract bamv a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  public bamu(int paramInt, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

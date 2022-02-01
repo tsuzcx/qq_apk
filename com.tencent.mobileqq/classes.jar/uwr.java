@@ -1,16 +1,21 @@
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionActivity;
 
 public class uwr
+  extends Handler
 {
-  public int a;
-  public String a;
-  public ArrayList<uwt> a;
-  public uws a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  public uwr(PublicAccountImageCollectionActivity paramPublicAccountImageCollectionActivity) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    PublicAccountImageCollectionActivity.a(this.a);
+  }
 }
 
 

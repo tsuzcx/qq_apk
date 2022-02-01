@@ -1,33 +1,33 @@
-import android.os.AsyncTask;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import android.content.Context;
+import com.tencent.image.AbstractGifImage;
 
-class bckp
-  extends AsyncTask<String, Integer, Boolean>
+public class bckp
+  extends bcko
 {
-  bckp(bckg parambckg) {}
-  
-  protected Boolean a(String... paramVarArgs)
+  protected bckm a(Context paramContext)
   {
-    if (bckg.a(this.a) != null)
-    {
-      bckg.a(this.a).h = 1;
-      long l = bckg.a(this.a).a;
-      paramVarArgs = bckg.a(this.a).e;
-      int i = bckg.a(this.a).g;
-      Bundle localBundle = new Bundle();
-      localBundle.putLong("VALUE_MSG_UINSEQ", l);
-      localBundle.putString("VALUE_MSG_FRIENDUIN", paramVarArgs);
-      localBundle.putInt("VALUE_MSG_ISTROOP", i);
-      localBundle.putString("VALUE_MSG_VIDEO_ID", bckg.a(this.a).c);
-      bckr.a().a("CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT", localBundle);
-    }
-    return Boolean.valueOf(true);
+    return new bcpb(this, paramContext);
   }
   
-  protected void a(Boolean paramBoolean)
+  public void a(String paramString1, String paramString2, String paramString3)
   {
-    this.a.b(bckg.a(this.a));
+    super.a(paramString1, paramString2, paramString3);
+    paramString1 = a();
+    if (paramString1 != null) {
+      paramString1.e();
+    }
+  }
+  
+  public void b()
+  {
+    super.b();
+    AbstractGifImage.pauseAll();
+  }
+  
+  public void c()
+  {
+    super.c();
+    AbstractGifImage.resumeAll();
   }
 }
 

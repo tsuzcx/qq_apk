@@ -1,28 +1,83 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class atwm
-  implements Comparator<FileInfo>
+class atwm
+  extends atpa
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  atwm(atwl paramatwl) {}
+  
+  protected void b(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, Bundle paramBundle)
   {
-    if (paramFileInfo1.c()) {
-      if (paramFileInfo2.c()) {
-        break label25;
-      }
-    }
-    label25:
-    while (paramFileInfo1.b() > paramFileInfo2.b())
+    label275:
+    for (;;)
     {
-      return -1;
-      if (paramFileInfo2.c()) {
-        return 1;
+      try
+      {
+        String str1;
+        if (atyt.a)
+        {
+          paramString6 = "183.61.37.13";
+          str1 = "443";
+          paramString5 = null;
+          paramString4 = paramString5;
+          if (atyt.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+          {
+            paramString4 = paramString5;
+            if (paramBundle != null)
+            {
+              String str2 = paramBundle.getString("strHttpsDomain");
+              short s2 = paramBundle.getShort("httpsPort", (short)0);
+              paramString4 = paramString5;
+              if (!TextUtils.isEmpty(str2))
+              {
+                short s1 = s2;
+                if (s2 == 0) {
+                  s1 = 443;
+                }
+                paramString4 = new Bundle();
+                paramString4.putBoolean("ishttps", true);
+                paramString4.putString("httpsdomain", str2);
+                paramString4.putShort("httpsport", s1);
+              }
+            }
+          }
+          paramString5 = paramString4;
+          if (auoo.a())
+          {
+            paramString5 = paramString4;
+            if (paramBundle != null)
+            {
+              paramBundle = paramBundle.getString("IPv6Dns");
+              paramString5 = paramString4;
+              if (paramString4 == null) {
+                paramString5 = new Bundle();
+              }
+              paramString5.putString("ipv6domain", paramBundle);
+            }
+          }
+          if (this.a.jdField_a_of_type_Atib != null) {
+            this.a.jdField_a_of_type_Atib.a(paramBoolean, paramString6, str1, paramInt1, paramString1, paramString3, paramString2, this.a.jdField_a_of_type_JavaLangString, paramString5);
+          }
+        }
+        else
+        {
+          if ((paramString4 == null) || (paramString4.length() <= 0)) {
+            break label275;
+          }
+          str1 = String.valueOf(paramInt2);
+          paramString6 = paramString4;
+          continue;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.e("OfflinePreviewController<FileAssistant>", 2, " callback is null");
+          continue;
+          paramString4 = paramString5;
+        }
       }
+      finally {}
     }
-    if (paramFileInfo1.b() == paramFileInfo2.b()) {
-      return 0;
-    }
-    return 1;
   }
 }
 

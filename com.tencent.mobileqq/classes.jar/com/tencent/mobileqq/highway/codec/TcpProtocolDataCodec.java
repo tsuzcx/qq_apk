@@ -36,7 +36,7 @@ public class TcpProtocolDataCodec
   private static final int VERSION_CODE_2 = 2;
   protected IProtocolCodecListener codecListener;
   protected byte[] revData;
-  public String versionCode;
+  public String versionCode = null;
   
   private CSDataHighwayHead.DataHighwayHead buildHWHead(HwRequest paramHwRequest)
   {

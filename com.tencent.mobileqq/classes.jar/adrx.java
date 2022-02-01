@@ -1,13 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 
-public final class adrx
-  implements DialogInterface.OnClickListener
+public class adrx
+  implements DialogInterface.OnDismissListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adrx(AddAccountActivity paramAddAccountActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
-    mqw.b();
+    AddAccountActivity.c(this.a, false);
   }
 }
 

@@ -1,24 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class asmq
-  implements DialogInterface.OnClickListener
+public class asmq
+  extends asmu
 {
-  asmq(BaseActivity paramBaseActivity, boolean paramBoolean, azfw paramazfw) {}
+  public static int b = 165;
+  public int a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Drawable a(Context paramContext, float paramFloat)
   {
-    String str = asml.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
-    if (this.jdField_a_of_type_Boolean) {
-      asme.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Azfw.jdField_a_of_type_Int, this.jdField_a_of_type_Azfw.b, this.jdField_a_of_type_Azfw.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      asme.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, str);
-    }
+    return askx.a(this.a);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  {
+    int i = paramEditText.getSelectionStart();
+    int j = paramEditText.getSelectionEnd();
+    paramEditText.getEditableText().replace(i, j, behh.a(this.a));
+    paramEditText.requestFocus();
   }
 }
 

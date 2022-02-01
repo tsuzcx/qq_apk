@@ -1,17 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class nsb
-  implements View.OnClickListener
+public abstract interface nsb
 {
-  nsb(nsa paramnsa) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.a(this.a.a.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a();
 }
 
 

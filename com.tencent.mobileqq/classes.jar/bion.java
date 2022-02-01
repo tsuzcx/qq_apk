@@ -1,27 +1,55 @@
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.open.agent.TroopAbilityPreVerificationFragment;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import tencent.im.opengroup.AppUrlOpenGroup.RspBody;
 
 public class bion
-  extends nmf
+  implements BusinessObserver
 {
-  public bion(TroopAbilityPreVerificationFragment paramTroopAbilityPreVerificationFragment) {}
+  public bion(WebViewFragment paramWebViewFragment) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    QLog.d("TroopAbility.PreVerification", 1, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID);
-    if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-    {
-      if (!paramOpenID.openID.equals(this.a.b))
-      {
-        this.a.d();
-        TroopAbilityPreVerificationFragment.a(this.a);
-        return;
-      }
-      this.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, " checkAppUrl,onReceive:isSuccess=" + paramBoolean);
+    }
+    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
+    while (!paramBoolean) {
       return;
     }
-    this.a.c(anni.a(2131713805));
+    this.a.mStatistics.m = true;
+    paramBundle = paramBundle.getByteArray("data");
+    Object localObject = new AppUrlOpenGroup.RspBody();
+    try
+    {
+      ((AppUrlOpenGroup.RspBody)localObject).mergeFrom(paramBundle);
+      this.a.troopAppName = ((AppUrlOpenGroup.RspBody)localObject).bytes_app_name.get().toStringUtf8();
+      this.a.troopAppCompanyName = ((AppUrlOpenGroup.RspBody)localObject).bytes_company.get().toStringUtf8();
+      this.a.troopAppInfoUrl = ((AppUrlOpenGroup.RspBody)localObject).bytes_info_url.get().toStringUtf8();
+      this.a.troopAppShareUrl = ((AppUrlOpenGroup.RspBody)localObject).bytes_share_url.get().toStringUtf8();
+      if (this.a.mSwiftTitleUI.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 8) {
+        this.a.mSwiftTitleUI.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      }
+      if (this.a.mSwiftTitleUI.jdField_b_of_type_AndroidViewViewGroup.getVisibility() != 0) {
+        this.a.mSwiftTitleUI.jdField_b_of_type_AndroidViewViewGroup.setVisibility(0);
+      }
+      paramBundle = (TextView)this.a.mSwiftTitleUI.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131379036);
+      localObject = (TextView)this.a.mSwiftTitleUI.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131378968);
+      paramBundle.setText(this.a.mSwiftTitleUI.jdField_b_of_type_AndroidWidgetTextView.getText());
+      ((TextView)localObject).setText(2131718817);
+      this.a.mSwiftTitleUI.a.setVisibility(0);
+      this.a.mSwiftTitleUI.a.setImageResource(2130840291);
+      return;
+    }
+    catch (Exception paramBundle) {}catch (InvalidProtocolBufferMicroException paramBundle) {}
   }
 }
 

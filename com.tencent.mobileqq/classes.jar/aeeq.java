@@ -1,12 +1,24 @@
-import android.widget.ImageView;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
 
-class aeeq
+public class aeeq
+  implements DialogInterface.OnClickListener
 {
-  aeeo jdField_a_of_type_Aeeo;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  String jdField_a_of_type_JavaLangString;
+  public aeeq(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  aeeq(aeep paramaeep) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    {
+      this.a.jdField_a_of_type_AndroidAppDialog.cancel();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask.a(false);
+      }
+    }
+  }
 }
 
 

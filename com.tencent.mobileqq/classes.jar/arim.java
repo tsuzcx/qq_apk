@@ -1,50 +1,80 @@
-import android.content.Context;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ShareHotChatGrayTips;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
 
 public class arim
-  extends ClickableSpan
+  extends arac<arin>
 {
-  private anoc jdField_a_of_type_Anoc;
-  private ShareHotChatGrayTips jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<Context> b;
-  
-  public arim(QQAppInterface paramQQAppInterface, Context paramContext, ShareHotChatGrayTips paramShareHotChatGrayTips, String paramString)
+  @NonNull
+  public arin a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips = paramShareHotChatGrayTips;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Anoc = new anoc((BaseActivity)paramContext, paramQQAppInterface, null);
+    return new arin();
   }
   
-  public void onClick(View paramView)
+  @Nullable
+  public arin a(araj[] paramArrayOfaraj)
   {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (((Context)this.b.get() != null) && (this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips != null))
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[onParsed]");
+    }
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
     {
-      paramView = ((HotChatManager)paramView.getManager(60)).a(this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips.mTroopUin);
-      this.jdField_a_of_type_Anoc.a(paramView);
+      arin localarin = new arin();
+      localarin.a(paramArrayOfaraj);
+      return localarin;
+    }
+    return new arin();
+  }
+  
+  public void a(arin paramarin)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[onUpdate]");
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public Class<arin> clazz()
   {
-    paramTextPaint.setColor(-12541697);
-    paramTextPaint.setUnderlineText(false);
+    return arin.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)ozs.a();
+    if (localQQAppInterface != null)
+    {
+      String str = localQQAppInterface.c();
+      return bhsi.N(localQQAppInterface.getApp(), str);
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 368;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arim
  * JD-Core Version:    0.7.0.1
  */

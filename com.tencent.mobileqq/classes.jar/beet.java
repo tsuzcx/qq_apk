@@ -1,28 +1,35 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 
-class beet
-  implements View.OnClickListener
+public class beet
+  implements blop
 {
-  beet(bees parambees, int paramInt) {}
+  public beet(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void onClick(View paramView)
+  public void a(bloo parambloo)
   {
-    Object localObject = new Intent(this.jdField_a_of_type_Bees.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity(), QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", ((beff)this.jdField_a_of_type_Bees.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).b);
-    this.jdField_a_of_type_Bees.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity().startActivity((Intent)localObject);
-    if (this.jdField_a_of_type_Bees.jdField_a_of_type_Befh.c == 31) {}
-    for (localObject = "1";; localObject = "2")
+    int i;
+    switch (parambloo.a)
     {
-      bcst.b(null, "dc00899", "Grp_tribe", "", "video_player", "Clk_tribe", 0, 0, this.jdField_a_of_type_Bees.jdField_a_of_type_Befh.d, ((beff)this.jdField_a_of_type_Bees.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a + "", "", (String)localObject);
-      EventCollector.getInstance().onViewClicked(paramView);
+    case 2131364620: 
+    default: 
+      i = 0;
+    }
+    for (;;)
+    {
+      bdll.b(this.a.app, "dc00898", "", "", "0X8009C65", "0X8009C65", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "" + i);
       return;
+      becb.a(this.a.app, "0X800993B");
+      becb.a(this.a.app, this.a, 1, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
+      i = 1;
+      continue;
+      becb.a(this.a.app, "0X800993C");
+      becb.a(this.a.app, this.a, 2, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
+      i = 2;
+      continue;
+      becb.a(this.a.app, "0X800993C");
+      becb.a(this.a.app, this.a, 3, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
+      i = 3;
     }
   }
 }

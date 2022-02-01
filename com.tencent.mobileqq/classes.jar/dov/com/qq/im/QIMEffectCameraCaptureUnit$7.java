@@ -1,12 +1,12 @@
 package dov.com.qq.im;
 
-import bojv;
-import bolb;
-import boyn;
-import bpye;
-import bpyf;
-import bpyg;
-import bqgc;
+import bplq;
+import bpmw;
+import bqai;
+import bqzz;
+import braa;
+import brab;
+import brhn;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
@@ -30,20 +30,20 @@ class QIMEffectCameraCaptureUnit$7
     {
       return;
       localVideoFilterViewPager.setCaptureScene(0);
-      Object localObject = ((bolb)bojv.a(5)).a;
-      bqgc localbqgc = (bqgc)bojv.a(3);
+      Object localObject = ((bpmw)bplq.a(5)).a;
+      brhn localbrhn = (brhn)bplq.a(3);
       if (localObject != null)
       {
-        localObject = ((bpyf)localObject).a(0);
+        localObject = ((braa)localObject).a(0);
         if (localObject != null)
         {
-          localVideoFilterViewPager.a(((bpyg)localObject).c);
+          localVideoFilterViewPager.a(((brab)localObject).c);
           localVideoFilterViewPager.b();
         }
       }
-      bpye.a().a(null);
-      bpye.a().a(null, this.this$0.jdField_a_of_type_Boyn.a(), 0);
-      boke.c = 0;
+      bqzz.a().a(null);
+      bqzz.a().a(null, this.this$0.jdField_a_of_type_Bqai.a(), 0);
+      bplz.c = 0;
     } while (!QLog.isColorLevel());
     QLog.d("QIMEffectCameraCaptureUnit", 2, "onResourceDownload update filterpager end");
   }

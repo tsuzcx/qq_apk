@@ -1,25 +1,42 @@
-import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class ardo
-  implements nix
+public class ardo
 {
-  ardo(ardm paramardm, niw[] paramArrayOfniw) {}
+  private boolean a;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public static ardo a(String paramString)
   {
-    if (!paramBoolean)
-    {
-      ardm.a(this.jdField_a_of_type_Ardm).removeCallbacks(ardm.a(this.jdField_a_of_type_Ardm));
-      ardm.a(this.jdField_a_of_type_Ardm).run();
-      if (this.jdField_a_of_type_ArrayOfNiw[0] != null) {
-        this.jdField_a_of_type_ArrayOfNiw[0].a();
-      }
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
     }
+    try
+    {
+      ardo localardo = new ardo();
+      if (new JSONObject(paramString).optInt("isDefaultOpen", 1) == 1) {}
+      for (;;)
+      {
+        localardo.a = bool;
+        return localardo;
+        bool = false;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("DarkModeConfigProcessor", 2, "DarkModeConfigBean parse error", paramString);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ardo
  * JD-Core Version:    0.7.0.1
  */

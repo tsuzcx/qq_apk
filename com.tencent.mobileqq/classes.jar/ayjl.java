@@ -1,32 +1,32 @@
-import android.graphics.Matrix;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
+import android.app.Activity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
 
-public abstract interface ayjl
+public class ayjl
+  extends abkg
 {
-  public abstract void a(Matrix paramMatrix);
+  public ayjl(PicBrowserActivity paramPicBrowserActivity) {}
   
-  public abstract void a(MotionEvent paramMotionEvent);
+  public abjn a(Activity paramActivity, abjt paramabjt)
+  {
+    return super.a(paramActivity, paramabjt);
+  }
   
-  public abstract void a(ScaleGestureDetector paramScaleGestureDetector);
+  public abjp a(Activity paramActivity, abjt paramabjt)
+  {
+    return new ayjn((PicBrowserActivity)paramActivity, paramabjt);
+  }
   
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public abjt a(Activity paramActivity)
+  {
+    paramActivity = new ayjt(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
+    paramActivity.a(this.a.jdField_b_of_type_Int);
+    return paramActivity;
+  }
   
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean a(ScaleGestureDetector paramScaleGestureDetector);
-  
-  public abstract void b(MotionEvent paramMotionEvent);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean b(ScaleGestureDetector paramScaleGestureDetector);
-  
-  public abstract void c(MotionEvent paramMotionEvent);
-  
-  public abstract boolean c(MotionEvent paramMotionEvent);
+  public abju a(Activity paramActivity, abjt paramabjt)
+  {
+    return null;
+  }
 }
 
 

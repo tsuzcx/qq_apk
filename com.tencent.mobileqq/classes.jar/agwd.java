@@ -1,40 +1,124 @@
-import android.app.Activity;
-import android.content.Context;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.PatchedButton;
 
-class agwd
-  extends ClickableSpan
+public class agwd
+  extends agwl
 {
-  private WeakReference<QQAppInterface> a;
-  private WeakReference<Context> b;
+  private boolean c;
   
-  agwd(QQAppInterface paramQQAppInterface, Context paramContext)
+  public agwd(BaseChatPie paramBaseChatPie)
   {
-    this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
+    super(paramBaseChatPie);
+  }
+  
+  public int a()
+  {
+    return 2130846219;
+  }
+  
+  protected void a()
+  {
+    if (!this.c) {
+      return;
+    }
+    super.a();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (!this.c) {
+      return;
+    }
+    super.a(paramInt1, paramInt2);
+  }
+  
+  public void a(TextView paramTextView)
+  {
+    if (!this.c) {
+      return;
+    }
+    super.a(paramTextView);
+  }
+  
+  public void a(Boolean paramBoolean)
+  {
+    if (!this.c) {
+      return;
+    }
+    super.a(paramBoolean);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!this.c) {
+      return;
+    }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  protected void b()
+  {
+    this.b = true;
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.c = true;
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.c = false;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (!this.c) {}
+    boolean bool;
+    do
+    {
+      return;
+      super.b(paramBoolean);
+      bool = c();
+      if (!paramBoolean) {
+        break;
+      }
+    } while (bool);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.setBackgroundResource(2130838182);
+    return;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.setBackgroundResource(2130838182);
+  }
+  
+  public boolean b()
+  {
+    return this.c;
+  }
+  
+  public void d()
+  {
+    if (!this.c) {
+      return;
+    }
+    super.d();
   }
   
   public void onClick(View paramView)
   {
-    paramView = (QQAppInterface)this.a.get();
-    if (((this.b.get() instanceof Activity)) && (paramView != null))
+    super.onClick(paramView);
+    switch (paramView.getId())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GrayTipsItemBuilder", 2, "handleHotChatToSeeTip span click ");
-      }
-      HotChatManager.a(null, false);
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bdll.b(null, "dc00898", "", "", "0X800A48A", "0X800A48A", 0, 0, "", "", "", "");
+    }
   }
 }
 

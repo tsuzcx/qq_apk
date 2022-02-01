@@ -3,7 +3,7 @@ package cooperation.qzone.plugin;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import bmek;
+import bnfm;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
 
@@ -15,7 +15,7 @@ public class QZonePatchService
     if (QLog.isColorLevel()) {
       QLog.d("QZonePluginManger", 2, "QZonePatchService onBind");
     }
-    return bmek.a().a();
+    return bnfm.a().a();
   }
   
   public void onCreate()

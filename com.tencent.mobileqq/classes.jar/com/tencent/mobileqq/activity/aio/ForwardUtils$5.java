@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio;
 
-import ayxn;
-import ayxx;
+import azqb;
+import azqk;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 final class ForwardUtils$5
   implements Runnable
 {
-  ForwardUtils$5(ayxx paramayxx, QQAppInterface paramQQAppInterface) {}
+  ForwardUtils$5(azqk paramazqk, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    ayxn.a(this.jdField_a_of_type_Ayxx, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    azqb.a(this.jdField_a_of_type_Azqk, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

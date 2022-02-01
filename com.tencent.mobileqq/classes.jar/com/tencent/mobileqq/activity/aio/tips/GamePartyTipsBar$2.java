@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import ailk;
+import aivd;
 import android.widget.TextView;
 
 public class GamePartyTipsBar$2
   implements Runnable
 {
-  public GamePartyTipsBar$2(ailk paramailk, String paramString) {}
+  public GamePartyTipsBar$2(aivd paramaivd, String paramString) {}
   
   public void run()
   {
-    ailk.a(this.this$0).setText(this.a);
+    aivd.a(this.this$0).setText(this.a);
   }
 }
 

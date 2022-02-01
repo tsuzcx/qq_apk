@@ -20,6 +20,7 @@ public class g
   private Context c;
   private volatile boolean d = false;
   private volatile boolean e = false;
+  private boolean f = true;
   
   public static g a()
   {
@@ -67,9 +68,13 @@ public class g
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     this.c = paramContext.getApplicationContext();
-    if (!this.d) {
-      d.a().a(this);
+    if (this.f) {
+      this.f = false;
     }
+    while (this.d) {
+      return;
+    }
+    d.a().a(this);
   }
   
   public void run()

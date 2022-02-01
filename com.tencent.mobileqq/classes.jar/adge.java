@@ -1,12 +1,25 @@
-class adge
-  implements adez
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
+import com.tencent.qphone.base.util.QLog;
+
+public class adge
+  implements adci
 {
-  adge(adgd paramadgd) {}
-  
-  public void a(awlp paramawlp, int paramInt)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    adgd.a(this.a, paramawlp);
-    adgd.a(this.a, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0xd7");
+    }
+    ((MsgBoxInterFollowManager)paramQQAppInterface.getManager(202)).decode0xd7InteractAndFollowMsg(paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramadan.a(), paramMsgType0x210);
+    return null;
   }
 }
 

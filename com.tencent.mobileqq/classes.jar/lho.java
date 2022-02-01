@@ -1,78 +1,248 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.SparseIntArray;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.pendant.EffectPendantTipsImpl.1;
-import com.tencent.av.business.manager.pendant.EffectPendantTipsImpl.2;
-import com.tencent.av.business.manager.pendant.EffectPendantTipsImpl.3;
-import com.tencent.av.business.manager.pendant.EffectPendantTipsImpl.4;
-import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class lho
-  implements lhn
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  boolean jdField_a_of_type_Boolean;
+  public static lho a;
+  public int a;
+  public List<lhp> a;
+  public boolean a;
+  public int b = 0;
   
-  public lho(Context paramContext)
+  public lho()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Boolean = paramContext.getSharedPreferences("effects_face_file", 4).getBoolean("key_frist_use_Face" + VideoController.a().a().getCurrentAccountUin(), false);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.MOUTH_OPEN.value, 2131694818);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.EYEBROWS_RAISE.value, 2131694816);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.BLINK.value, 2131694815);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.HEAD_SHAKE.value, 2131694819);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.KISS.value, 2131694817);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(100, 2131694806);
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public String a(Context paramContext, int paramInt)
+  public static int a()
   {
-    Integer localInteger = Integer.valueOf(this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt));
-    if (localInteger.intValue() > 0) {
-      return paramContext.getResources().getString(localInteger.intValue());
+    lho locallho = a();
+    if (locallho != null) {
+      return locallho.b;
+    }
+    return 3;
+  }
+  
+  public static List<lhp> a()
+  {
+    lho locallho = a();
+    if (locallho != null) {
+      return locallho.jdField_a_of_type_JavaUtilList;
     }
     return null;
   }
   
-  public void a(int paramInt)
+  public static lho a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.3(this, paramInt));
+    if ((jdField_a_of_type_Lho == null) || (jdField_a_of_type_Lho.jdField_a_of_type_Boolean)) {
+      jdField_a_of_type_Lho = b();
+    }
+    return jdField_a_of_type_Lho;
   }
   
-  public void a(Drawable paramDrawable, String paramString)
+  public static boolean a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.2(this, paramString, paramDrawable));
+    lho locallho = a();
+    return (locallho != null) && (locallho.jdField_a_of_type_Int == 1);
   }
   
-  public void a(VideoAppInterface paramVideoAppInterface)
+  private static lho b()
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    int i1 = 3;
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC!");
+    }
+    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.AVPanCfg.name());
+    QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC dpcValue: " + str);
+    ArrayList localArrayList = new ArrayList();
+    int i;
+    int k;
+    int m;
+    int n;
+    if (!TextUtils.isEmpty(str)) {
+      for (;;)
+      {
+        try
+        {
+          Object localObject1 = str.split("\\|");
+          if ((localObject1 != null) && (localObject1.length >= 3))
+          {
+            j = avuq.a(localObject1[0], 0);
+            localObject3 = localObject1[1];
+            i = j;
+          }
+          try
+          {
+            if (!TextUtils.isEmpty((CharSequence)localObject3))
+            {
+              i = j;
+              localObject3 = ((String)localObject3).split("-");
+              k = 0;
+              i = j;
+              if (k < localObject3.length)
+              {
+                Object localObject4 = localObject3[k];
+                i = j;
+                if (TextUtils.isEmpty((CharSequence)localObject4)) {
+                  break label623;
+                }
+                i = j;
+                localObject4 = ((String)localObject4).split("_");
+                i = j;
+                if (localObject4.length < 2) {
+                  break label615;
+                }
+                i = j;
+                m = avuq.a(localObject4[0], 0);
+                i = j;
+                n = avuq.a(localObject4[1], 0);
+                label204:
+                if ((m <= 0) || (n <= 0)) {
+                  break label623;
+                }
+                i = j;
+                localArrayList.add(new lhp(n, m));
+                break label623;
+              }
+            }
+            i = j;
+            k = avuq.a(localObject1[2], 3);
+            i = j;
+            label249:
+            if (localArrayList.size() == 0)
+            {
+              localArrayList.add(new lhp(215, 4));
+              localArrayList.add(new lhp(150, 8));
+            }
+            localObject1 = new lho();
+            ((lho)localObject1).jdField_a_of_type_Int = i;
+            ((lho)localObject1).b = k;
+            ((lho)localObject1).jdField_a_of_type_JavaUtilList = localArrayList;
+            if ((str == null) || (str.isEmpty())) {
+              bool = true;
+            }
+            ((lho)localObject1).jdField_a_of_type_Boolean = bool;
+            return localObject1;
+          }
+          catch (Exception localException1)
+          {
+            j = i;
+          }
+          if ((localObject1 == null) || (localObject1.length != 1)) {
+            continue;
+          }
+          j = avuq.a(localObject1[0], 0);
+          i = j;
+          QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC configs.length == 1");
+          k = i1;
+          i = j;
+          continue;
+        }
+        catch (Exception localException2)
+        {
+          Object localObject3;
+          Object localObject2;
+          int j = 0;
+          continue;
+          m = 0;
+          n = 0;
+          continue;
+        }
+        k = i1;
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC exception:", localException1);
+          k = i1;
+          i = j;
+          continue;
+          if ((localException1 != null) && (localException1.length == 2))
+          {
+            j = avuq.a(localException1[0], 0);
+            localObject2 = localException1[1];
+            i = j;
+            if (!TextUtils.isEmpty((CharSequence)localObject2))
+            {
+              i = j;
+              localObject2 = ((String)localObject2).split("-");
+              k = 0;
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      i = j;
+      if (k < localObject2.length)
+      {
+        localObject3 = localObject2[k];
+        i = j;
+        if (TextUtils.isEmpty((CharSequence)localObject3)) {
+          break label630;
+        }
+        i = j;
+        localObject3 = ((String)localObject3).split("_");
+        i = j;
+        if (localObject3.length >= 2)
+        {
+          i = j;
+          m = avuq.a(localObject3[0], 0);
+          i = j;
+          n = avuq.a(localObject3[1], 0);
+          if ((m <= 0) || (n <= 0)) {
+            break label630;
+          }
+          i = j;
+          localArrayList.add(new lhp(n, m));
+          break label630;
+        }
+      }
+      else
+      {
+        i = j;
+        QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC configs.length == 2");
+        k = i1;
+        i = j;
+        break label249;
+      }
+      i = 0;
+      k = i1;
+      break label249;
+      label615:
+      m = 0;
+      n = 0;
+      break label204;
+      label623:
+      k += 1;
+      break;
+      label630:
+      k += 1;
+    }
   }
   
-  public void a(String paramString)
+  public String toString()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.1(this, paramString));
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new EffectPendantTipsImpl.4(this), paramInt);
-  }
-  
-  public void c(int paramInt)
-  {
-    a(paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hotVideoSwitch: ").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" mPanoramaEffectMemory: ").append(this.b);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    String str = "";
+    while (localIterator.hasNext())
+    {
+      lhp locallhp = (lhp)localIterator.next();
+      if (locallhp != null) {
+        str = str + locallhp.b + "_" + locallhp.jdField_a_of_type_Int + "-";
+      }
+    }
+    localStringBuilder.append(" hotVideoBlurMemory: ").append(str);
+    return localStringBuilder.toString();
   }
 }
 

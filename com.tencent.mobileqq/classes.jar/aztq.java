@@ -1,6 +1,27 @@
-public abstract interface aztq
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+
+class aztq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(byte[] paramArrayOfByte);
+  aztq(azti paramazti, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
+    do
+    {
+      return;
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-azti.a(this.jdField_a_of_type_Azti) * (1.0F - f));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_Azti.f);
+    this.b.setAlpha(f);
+  }
 }
 
 

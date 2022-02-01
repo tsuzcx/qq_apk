@@ -1,12 +1,17 @@
-public abstract interface bous
+class bous
+  implements bouz
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  bous(boun paramboun) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void c(int paramInt1, int paramInt2, int paramInt3);
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (boun.a(this.a))
+    {
+      boun.a(this.a, paramBoolean1, paramBoolean2);
+      return;
+    }
+    boun.b(this.a, paramBoolean1, paramBoolean2);
+  }
 }
 
 

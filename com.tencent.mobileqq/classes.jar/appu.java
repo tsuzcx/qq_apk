@@ -1,30 +1,28 @@
-import android.app.Dialog;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.concurrent.ConcurrentHashMap;
-
-class appu
-  implements View.OnClickListener
+public class appu
 {
-  appu(appt paramappt) {}
+  public int a;
+  public long a;
+  public beum a;
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "";
+  public String d;
   
-  public void onClick(View paramView)
+  public appu()
   {
-    if ((appt.a(this.a) == 0) && (!TextUtils.isEmpty(appt.a(this.a))))
-    {
-      appt.a(this.a).put(appt.b(this.a), Integer.valueOf(1));
-      WebViewFragment localWebViewFragment = this.a.mRuntime.a();
-      if (localWebViewFragment != null) {
-        localWebViewFragment.webView.loadUrl(appt.a(this.a));
-      }
-      appt.a(this.a, null);
-    }
-    appt.a(this.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", md5='").append(this.b).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

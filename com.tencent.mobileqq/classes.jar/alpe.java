@@ -1,22 +1,17 @@
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.widget.MyGridView;
+import com.tencent.widget.SingleLineTextView;
+
 public class alpe
+  extends alnv
 {
-  public int a;
-  public boolean a;
-  
-  public static int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 90: 
-    default: 
-      return 0;
-    case 0: 
-      return 270;
-    case 180: 
-      return 90;
-    }
-    return 180;
-  }
+  public ImageView a;
+  public TextView a;
+  public DragTextView a;
+  public MyGridView a;
+  public SingleLineTextView a;
 }
 
 

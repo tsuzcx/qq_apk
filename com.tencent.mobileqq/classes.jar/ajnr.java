@@ -1,35 +1,22 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.TroopActiveLayout;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import com.tencent.mobileqq.widget.FolderTextView;
+import com.tencent.widget.SingleLineTextView;
 
-class ajnr
-  implements View.OnClickListener
+public class ajnr
 {
-  ajnr(ajnk paramajnk, int paramInt, ArrayList paramArrayList) {}
-  
-  public void onClick(View paramView)
-  {
-    if (!ajnk.a(this.jdField_a_of_type_Ajnk))
-    {
-      if (this.jdField_a_of_type_Int != 1) {
-        break label48;
-      }
-      SDKSetEmotionPreviewFragment.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0), ajnk.a(this.jdField_a_of_type_Ajnk), null);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label48:
-      Intent localIntent = new Intent();
-      localIntent.putStringArrayListExtra("path_list", this.jdField_a_of_type_JavaUtilArrayList);
-      PublicFragmentActivity.a(ajnk.a(this.jdField_a_of_type_Ajnk), localIntent, SDKSetEmotionPreviewFragment.class);
-    }
-  }
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TroopActiveLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout;
+  TroopLabelLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
+  FolderTextView jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView;
+  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
 }
 
 

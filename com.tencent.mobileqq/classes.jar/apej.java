@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
+import com.tencent.mobileqq.applets.data.AppletItem;
 
 public final class apej
-  implements Parcelable.Creator<ArWebInfo>
+  implements Parcelable.Creator<AppletItem>
 {
-  public ArWebInfo a(Parcel paramParcel)
+  public AppletItem a(Parcel paramParcel)
   {
-    return new ArWebInfo(paramParcel);
+    return new AppletItem(paramParcel);
   }
   
-  public ArWebInfo[] a(int paramInt)
+  public AppletItem[] a(int paramInt)
   {
-    return new ArWebInfo[paramInt];
+    return new AppletItem[paramInt];
   }
 }
 

@@ -1,29 +1,17 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class anhy
-  implements View.OnSystemUiVisibilityChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public anhy(BaseActivity paramBaseActivity) {}
+  public anhy(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
-  {
-    if (paramInt == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      BaseActivity.mIsInMultiScreen = bool;
-      this.a.onMultiWindowModeChanged(BaseActivity.mIsInMultiScreen);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("qqBaseActivity", 4, "onSystemUiVisibilityChange:" + paramInt + ",Activity name:" + getClass().getName());
-      }
-      return;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhy
  * JD-Core Version:    0.7.0.1
  */

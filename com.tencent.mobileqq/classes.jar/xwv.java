@@ -1,40 +1,15 @@
-public class xwv
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class xwv
+  implements DialogInterface.OnClickListener
 {
-  public static void a(String paramString1, String paramString2)
-  {
-    yqp.b(paramString1, paramString2);
-  }
+  xwv(xwr paramxwr) {}
   
-  public static void a(String paramString1, String paramString2, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    yqp.a(paramString1, paramString2, paramObject);
-  }
-  
-  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2) {}
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    yqp.d(paramString1, paramString2);
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject)
-  {
-    yqp.a(paramString1, paramString2, paramObject);
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
-  {
-    yqp.a(paramString1, paramString2, paramObject1, paramObject2);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    yqp.e(paramString1, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
-  {
-    yqp.a(paramString1, paramString2, paramObject1, paramObject2);
+    xwr.a(this.a);
+    yup.a("play_video", "clk_window", 0, 0, new String[0]);
   }
 }
 

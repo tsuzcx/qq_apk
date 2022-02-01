@@ -1,24 +1,8 @@
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import java.util.List;
 
-public class boyw
-  extends bojn
+public abstract interface boyw
 {
-  private bhhh jdField_a_of_type_Bhhh;
-  private PtvTemplateManager.PtvTemplateInfo jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
-  
-  public PtvTemplateManager.PtvTemplateInfo a()
-  {
-    return this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
-  }
-  
-  public void a() {}
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Bhhh != null) {
-      this.jdField_a_of_type_Bhhh.onDestroy();
-    }
-  }
+  public abstract void a(List<boyx> paramList);
 }
 
 

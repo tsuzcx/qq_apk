@@ -1,45 +1,82 @@
-import android.app.Activity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DataBridgeInvokeHandler.isFollowUin..inlined.also.lambda.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DataBridgeInvokeHandler.register.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DataBridgeInvokeHandler.register.2;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DataBridgeInvokeHandler.register.3;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DataBridgeInvokeHandler.register.4;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DataBridgeInvokeHandler.register.5;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-public class tgs
-  extends tgq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DataBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "followUin", "", "params", "Lorg/json/JSONObject;", "callback", "", "invokeJs", "isFollow", "", "isFollowUin", "nameSpace", "register", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tgs
+  extends tgo
 {
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private tgt jdField_a_of_type_Tgt;
-  private List<String> b;
-  protected boolean b;
+  public static final tgt a = new tgt(null);
   
-  public tgs(Activity paramActivity, tgt paramtgt, List<String> paramList1, List<String> paramList2)
+  public tgs(@NotNull BridgeModule paramBridgeModule)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_Tgt = paramtgt;
-    this.jdField_a_of_type_JavaUtilList = paramList1;
-    this.jdField_b_of_type_JavaUtilList = paramList2;
+    super(paramBridgeModule);
   }
   
-  public View a(LayoutInflater paramLayoutInflater)
+  private final void a(JSONObject paramJSONObject, String paramString)
   {
-    paramLayoutInflater = (LinearLayout)paramLayoutInflater.inflate(2131560132, null);
-    RecyclerView localRecyclerView = (RecyclerView)paramLayoutInflater.findViewById(2131364906);
-    pgd localpgd = new pgd(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_Tgt);
-    localRecyclerView.setLayoutManager(new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity));
-    localRecyclerView.setAdapter(localpgd);
-    return paramLayoutInflater;
-  }
-  
-  public void b(View paramView)
-  {
-    if (!this.jdField_b_of_type_Boolean)
+    if (paramJSONObject != null)
     {
-      a();
-      this.jdField_b_of_type_Boolean = true;
+      paramJSONObject = paramJSONObject.optString("uin");
+      if (paramJSONObject != null) {
+        ThreadManagerV2.excute((Runnable)new DataBridgeInvokeHandler.isFollowUin..inlined.also.lambda.1(paramJSONObject, this, paramString), 16, null, true);
+      }
     }
-    a(paramView);
+  }
+  
+  private final void a(boolean paramBoolean, String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject().put("follow", paramBoolean);
+    a(paramString, new JSONObject().put("response", localJSONObject).put("ret", 0));
+  }
+  
+  private final void b(JSONObject paramJSONObject, String paramString)
+  {
+    boolean bool1 = true;
+    String str1;
+    if (paramJSONObject != null)
+    {
+      str1 = paramJSONObject.optString("uin");
+      if (str1 != null) {
+        if (paramJSONObject.optInt("isUgc") != 1) {
+          break label65;
+        }
+      }
+    }
+    for (;;)
+    {
+      String str2 = paramJSONObject.optString("avatarUrl");
+      boolean bool2 = paramJSONObject.optBoolean("blackScene");
+      rpt.a(ozs.a(), str1, bool1, str2, bool2);
+      a(paramString, null);
+      return;
+      label65:
+      bool1 = false;
+    }
+  }
+  
+  @NotNull
+  public String a()
+  {
+    return "data";
+  }
+  
+  public void a()
+  {
+    a("ssoRequest", (Function2)new DataBridgeInvokeHandler.register.1(this));
+    a("getUserInfo", (Function2)new DataBridgeInvokeHandler.register.2(this));
+    a("getPerformance", (Function2)new DataBridgeInvokeHandler.register.3(this));
+    a("isFollowUin", (Function2)new DataBridgeInvokeHandler.register.4((tgs)this));
+    a("followUin", (Function2)new DataBridgeInvokeHandler.register.5((tgs)this));
   }
 }
 

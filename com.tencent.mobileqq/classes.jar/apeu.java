@@ -1,8 +1,28 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface apeu
+class apeu
+  implements ServiceConnection
 {
-  public abstract void a(ARCommonConfigInfo paramARCommonConfigInfo);
+  apeu(apet paramapet) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    apet.a(this.a, aplu.a(paramIBinder));
+    if (QLog.isColorLevel()) {
+      QLog.d("ARGlobalRemoteManager", 2, "onServiceConnected ARGlobalRemoteManager=" + apet.a(this.a));
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    apet.a(this.a, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARGlobalRemoteManager", 2, "onServiceDisconnected ARGlobalRemoteManager=" + apet.a(this.a));
+    }
+  }
 }
 
 

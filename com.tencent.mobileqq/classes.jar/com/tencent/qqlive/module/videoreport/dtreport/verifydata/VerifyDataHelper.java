@@ -10,11 +10,11 @@ import java.util.regex.Pattern;
 
 public class VerifyDataHelper
 {
-  private static final String KEEP_FIELD_A = "^[Aa][0-9]+";
+  private static final String KEEP_FIELD_A = "^[Aa][0-9].*";
   private static final String KEEP_FIELD_DT = "dt_";
   private static final String KEEP_FIELD_RQD = "rqd_";
   private static final String TAG = "DT_DataCheck";
-  private static final String WARNING = " 参数key不能为空，且不能以^[Aa][0-9]+, dt_, rqd_开头";
+  private static final String WARNING = " 参数key不能为空，且不能以^[Aa][0-9].*, dt_, rqd_开头";
   
   public static void checkMap(Map<String, ?> paramMap)
   {
@@ -22,7 +22,7 @@ public class VerifyDataHelper
     if (!((Boolean)paramMap.second).booleanValue())
     {
       paramMap = (String)paramMap.first;
-      doCrash("invalid input key:" + paramMap + "," + " 参数key不能为空，且不能以^[Aa][0-9]+, dt_, rqd_开头");
+      doCrash("invalid input key:" + paramMap + "," + " 参数key不能为空，且不能以^[Aa][0-9].*, dt_, rqd_开头");
     }
   }
   
@@ -38,7 +38,7 @@ public class VerifyDataHelper
   private static boolean isValidKey(String paramString)
   {
     if ((paramString == null) || (paramString.length() == 0)) {}
-    while ((paramString.startsWith("dt_")) || (paramString.startsWith("rqd_")) || (Pattern.matches("^[Aa][0-9]+", paramString))) {
+    while ((paramString.startsWith("dt_")) || (paramString.startsWith("rqd_")) || (Pattern.matches("^[Aa][0-9].*", paramString))) {
       return false;
     }
     return true;

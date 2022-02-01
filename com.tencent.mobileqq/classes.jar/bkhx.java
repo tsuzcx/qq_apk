@@ -1,8 +1,18 @@
-import android.view.View;
-
-public abstract interface bkhx
+class bkhx
+  extends bkia
 {
-  public abstract void a(View paramView, int paramInt, String paramString);
+  bkhx(bkhw parambkhw) {}
+  
+  protected void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    if (paramBoolean)
+    {
+      bkhw.a(this.a);
+      return;
+    }
+    bkhw.b(this.a);
+  }
 }
 
 

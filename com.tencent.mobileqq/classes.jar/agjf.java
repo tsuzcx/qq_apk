@@ -1,147 +1,42 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class agjf
+  implements MediaPlayer.OnCompletionListener
 {
-  private static agjf jdField_a_of_type_Agjf;
-  private SparseArray<agje> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  public agjf(MediaPlayerManager paramMediaPlayerManager) {}
   
-  private agje a(long paramLong, boolean paramBoolean)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    int i = this.jdField_a_of_type_AndroidUtilSparseArray.size() - 1;
-    while (i >= 0)
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      agje localagje = (agje)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-      if ((localagje != null) && (localagje.a(paramLong, paramBoolean))) {
-        return localagje;
-      }
-      i -= 1;
-    }
-    return null;
-  }
-  
-  public static agjf a()
-  {
-    if (jdField_a_of_type_Agjf == null) {}
-    try
-    {
-      if (jdField_a_of_type_Agjf == null) {
-        jdField_a_of_type_Agjf = new agjf();
-      }
-      return jdField_a_of_type_Agjf;
-    }
-    finally {}
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-  }
-  
-  public void a(long paramLong1, long paramLong2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOrderManager", 2, "mapUniSeqId:: newSeq -> " + paramLong1 + ", originSeq -> " + paramLong2 + ", id -> " + paramInt);
-    }
-    agje localagje = (agje)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localagje != null) {
-      localagje.a(paramLong1, paramLong2);
-    }
-  }
-  
-  public void a(SessionInfo paramSessionInfo, String paramString, int paramInt)
-  {
-    a(paramSessionInfo, paramString, new ArrayList(), 1, paramInt);
-  }
-  
-  public void a(SessionInfo paramSessionInfo, String paramString, List<MessageRecord> paramList, int paramInt1, int paramInt2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-        localArrayList.add(Long.valueOf(localMessageRecord.uniseq));
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardOrderManager", 2, "onPreForward :: mr.uniseq -> " + localMessageRecord.uniseq + ", forwardID -> " + paramInt2);
-        }
+      localStringBuilder = new StringBuilder().append("[SilkPlayer]mFinishListener, onCompletion , mp == null ? ");
+      if (paramMediaPlayer != null) {
+        break label109;
       }
     }
-    if (paramInt1 == 1) {}
-    for (paramList = new agjl();; paramList = new agjg())
+    label109:
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt2, paramList.a(paramSessionInfo, paramString, localArrayList, paramInt2));
-      return;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOrderManager", 2, "onSendResult newSeq -> " + paramLong + ", mForwardEntities.size() => " + this.jdField_a_of_type_AndroidUtilSparseArray.size());
-    }
-    agje localagje = a(paramLong, false);
-    if ((localagje != null) && (localagje.a(paramQQAppInterface, paramLong))) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(localagje.a);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
-  {
-    agje localagje = (agje)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localagje != null) {
-      localagje.a(paramQQAppInterface, paramLong);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    try
-    {
-      agje localagje = a(paramMessageRecord.uniseq, true);
-      if (localagje != null) {
-        localagje.a(paramQQAppInterface, paramMessageRecord);
+      QLog.i("MediaPlayerManager", 2, bool);
+      bhkm.a = null;
+      if ((MediaPlayerManager.a(this.a) != null) && ((MediaPlayerManager.a(this.a) instanceof MessageForPtt))) {
+        ((MessageForPtt)MediaPlayerManager.a(this.a)).playProgress = 0.0F;
+      }
+      if ((MediaPlayerManager.a(this.a) == null) || (!MediaPlayerManager.a(this.a))) {
+        break;
       }
       return;
     }
-    finally {}
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, List<MessageRecord> paramList)
-  {
-    if (paramList != null) {
-      try
-      {
-        if (paramList.size() > 0)
-        {
-          paramList = paramList.iterator();
-          while (paramList.hasNext()) {
-            a(paramQQAppInterface, (MessageRecord)paramList.next());
-          }
-        }
-      }
-      finally {}
-    }
-  }
-  
-  public void a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, int paramInt)
-  {
-    try
-    {
-      ((agje)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).b(paramMessageRecord1.uniseq, paramMessageRecord2.uniseq);
-      return;
-    }
-    finally {}
+    MediaPlayerManager.a(this.a, null);
+    this.a.e();
   }
 }
 

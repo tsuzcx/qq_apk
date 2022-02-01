@@ -1,35 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-
 public class amyc
-  extends bhhe
 {
-  public amyc(ApolloCardWindow paramApolloCardWindow) {}
+  public int a;
+  public String a;
   
-  public void onDoneFile(bhhf parambhhf)
+  public amyc(String paramString, int paramInt)
   {
-    if (parambhhf == null) {
-      return;
-    }
-    try
-    {
-      ??? = parambhhf.a().getString("path");
-      String str = parambhhf.a().getString("url");
-      parambhhf = this.a.a((String)???);
-      str = bita.d(str);
-      synchronized (ApolloCardWindow.a)
-      {
-        ApolloCardWindow.a.put(str, parambhhf);
-        return;
-      }
-      return;
-    }
-    catch (Exception parambhhf)
-    {
-      QLog.e("ApolloCardWindow", 1, "onDoneFile error:", parambhhf);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

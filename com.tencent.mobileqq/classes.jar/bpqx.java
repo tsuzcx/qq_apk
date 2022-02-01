@@ -1,27 +1,31 @@
-import android.annotation.TargetApi;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.util.Log;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-public class bpqx
+class bpqx
+  extends wve
 {
-  @TargetApi(16)
-  public static int a(MediaExtractor paramMediaExtractor)
+  bpqx(bpqw parambpqw, String paramString)
   {
-    int j = paramMediaExtractor.getTrackCount();
-    int i = 0;
-    while (i < j)
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    super.onLocationFinish(paramInt, paramSosoLbsInfo);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      MediaFormat localMediaFormat = paramMediaExtractor.getTrackFormat(i);
-      String str = localMediaFormat.getString("mime");
-      if (str.startsWith("video/"))
-      {
-        Log.d("VideoUtils", "Extractor selected track " + i + " (" + str + "): " + localMediaFormat);
-        return i;
+      this.a.jdField_a_of_type_Bpqv.jdField_a_of_type_Double = paramSosoLbsInfo.a.jdField_a_of_type_Double;
+      this.a.jdField_a_of_type_Bpqv.b = paramSosoLbsInfo.a.b;
+      yuk.b("FacePoiManager", "onLocationUpdate() latitude=" + this.a.jdField_a_of_type_Bpqv.jdField_a_of_type_Double + " longitude=" + this.a.jdField_a_of_type_Bpqv.b);
+      if (this.a.jdField_a_of_type_Boolean) {
+        this.a.jdField_a_of_type_Bpqv.a();
       }
-      i += 1;
+      return;
     }
-    return -1;
+    this.a.jdField_a_of_type_Bpqv.jdField_a_of_type_Double = 0.0D;
+    this.a.jdField_a_of_type_Bpqv.b = 0.0D;
+    yuk.b("FacePoiManager", "onLocationUpdate() error");
+    this.a.jdField_a_of_type_Bpqv.jdField_a_of_type_Bpqy.a(false, false, null, null);
   }
 }
 

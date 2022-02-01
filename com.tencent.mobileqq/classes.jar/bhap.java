@@ -1,86 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
 public class bhap
 {
-  private static bhap jdField_a_of_type_Bhap;
-  private List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private List<String> b = new CopyOnWriteArrayList();
+  public int a;
+  public bhap a;
+  public String a;
+  public ArrayList<bhap> a;
+  public String b;
   
-  public bhap()
+  private bhap() {}
+  
+  public bhap(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilList.add("vip.qq.com");
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
   }
   
-  public static bhap a()
+  public String a()
   {
-    if (jdField_a_of_type_Bhap == null) {}
-    try
+    String str = this.jdField_a_of_type_JavaLangString;
+    bhap localbhap = this;
+    while (localbhap.jdField_a_of_type_Bhap != null)
     {
-      if (jdField_a_of_type_Bhap == null) {
-        jdField_a_of_type_Bhap = new bhap();
-      }
-      return jdField_a_of_type_Bhap;
+      localbhap = localbhap.jdField_a_of_type_Bhap;
+      str = localbhap.jdField_a_of_type_JavaLangString + "-" + str;
     }
-    finally {}
+    return str;
   }
   
-  public void a(JSONArray paramJSONArray)
+  public void a(bhap parambhap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipLongMsgShareDomainHelper", 2, "setConfigData data = " + paramJSONArray);
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     }
-    if ((paramJSONArray != null) && (paramJSONArray.length() > 0))
-    {
-      int i = 0;
-      for (;;)
-      {
-        if (i >= paramJSONArray.length()) {
-          return;
-        }
-        try
-        {
-          Object localObject = paramJSONArray.getJSONObject(i);
-          if (localObject != null)
-          {
-            localObject = ((JSONObject)localObject).optString("domain", "");
-            this.b.add(localObject);
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            QLog.e("VipLongMsgShareDomainHelper", 1, "setConfigData exception ", localException);
-          }
-        }
-        i += 1;
-      }
-    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambhap);
   }
   
-  public boolean a(String paramString)
+  public boolean a(bhap parambhap)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    Object localObject2 = this.b;
-    Object localObject1 = localObject2;
-    if (((List)localObject2).isEmpty()) {
-      localObject1 = this.jdField_a_of_type_JavaUtilList;
-    }
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
+    if ((parambhap != null) && (parambhap.jdField_a_of_type_Int + 1 == this.jdField_a_of_type_Int))
     {
-      localObject2 = (String)((Iterator)localObject1).next();
-      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (paramString.endsWith((String)localObject2))) {
-        return true;
-      }
+      this.jdField_a_of_type_Bhap = parambhap;
+      return true;
     }
     return false;
   }

@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.emoticonview.EmotionPreviewInfo;
 
-class asqa
-  implements DialogInterface.OnClickListener
+public final class asqa
+  implements Parcelable.Creator<EmotionPreviewInfo>
 {
-  asqa(aspz paramaspz) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public EmotionPreviewInfo a(Parcel paramParcel)
   {
-    Face2FaceAddFriendActivity.e(this.a.a);
+    return new EmotionPreviewInfo(paramParcel);
+  }
+  
+  public EmotionPreviewInfo[] a(int paramInt)
+  {
+    return new EmotionPreviewInfo[paramInt];
   }
 }
 

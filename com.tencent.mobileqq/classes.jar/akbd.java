@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.activity.ProfileActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
+import java.lang.ref.WeakReference;
 
-class akbd
-  implements QQPermissionCallback
+public class akbd
+  implements DialogInterface.OnCancelListener
 {
-  akbd(akbb paramakbb) {}
+  private final WeakReference<ChatHistoryC2CDateFragment> a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  akbd(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment)
   {
-    bglp.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+    this.a = new WeakReference(paramChatHistoryC2CDateFragment);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a.a = ProfileActivity.a(this.a.a, 5);
+    ChatHistoryC2CDateFragment localChatHistoryC2CDateFragment = (ChatHistoryC2CDateFragment)this.a.get();
+    if ((localChatHistoryC2CDateFragment != null) && (localChatHistoryC2CDateFragment.getActivity() != null) && (!localChatHistoryC2CDateFragment.getActivity().isFinishing())) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

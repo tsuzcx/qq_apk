@@ -1,40 +1,63 @@
-import android.support.annotation.UiThread;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class uku<V extends uch>
-  implements uck<V>
+public class uku
+  implements INetInfoHandler
 {
-  private WeakReference<V> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  private WSPlayerManager a;
   
-  @UiThread
-  public V a()
+  public uku(WSPlayerManager paramWSPlayerManager)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      return null;
-    }
-    return (uch)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    this.a = paramWSPlayerManager;
   }
   
-  public void a()
+  private void a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    if ((this.a != null) && (this.a.a() != null))
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      ukz localukz = this.a.a();
+      if ((!this.a.f()) && (!this.a.e())) {
+        break label55;
+      }
+      this.a.b(localukz, false);
     }
+    label55:
+    while (!this.a.g()) {
+      return;
+    }
+    this.a.a();
   }
   
-  @UiThread
-  public void a(V paramV)
+  public void onNetMobile2None()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramV);
-    this.jdField_a_of_type_Boolean = false;
+    uqf.b("WSPlayerForNetInfoHandler", "onNetMobile2None");
   }
   
-  public void b()
+  public void onNetMobile2Wifi(String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
+    uqf.b("WSPlayerForNetInfoHandler", "onNetMobile2Wifi s:" + paramString);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    uqf.b("WSPlayerForNetInfoHandler", "onNetNone2Mobile s:" + paramString);
+    a();
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    uqf.b("WSPlayerForNetInfoHandler", "onNetNone2Wifi s:" + paramString);
+    a();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    uqf.b("WSPlayerForNetInfoHandler", "onNetWifi2Mobile s:" + paramString);
+  }
+  
+  public void onNetWifi2None()
+  {
+    uqf.b("WSPlayerForNetInfoHandler", "onNetWifi2None");
   }
 }
 

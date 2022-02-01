@@ -1,61 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.SeekBar;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.superplayer.api.ISuperPlayer;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.teamwork.PadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class beeh
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public beeh(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public beeh(GroupTeamWorkListActivity paramGroupTeamWorkListActivity, PadInfo paramPadInfo) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    paramMessage = (beeq)paramMessage.obj;
-    long l1;
-    long l2;
-    befh localbefh;
-    if (this.a.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying())
-    {
-      l1 = this.a.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs();
-      l2 = this.a.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs();
-      paramMessage.jdField_a_of_type_AndroidWidgetSeekBar.setMax((int)l1);
-      paramMessage.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)l2);
-      this.a.b(paramMessage);
-      paramMessage = (befe)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramMessage.jdField_a_of_type_Int);
-      if ((paramMessage instanceof befh))
-      {
-        localbefh = (befh)paramMessage;
-        if ((!this.a.d) && (l2 >= l1 * 0.8D))
-        {
-          this.a.d = true;
-          if (localbefh.h == 0) {
-            break label271;
-          }
-          paramMessage = "" + localbefh.h;
-          if (localbefh.c != 31) {
-            break label277;
-          }
-        }
-      }
+    if (!bhnv.g(BaseApplicationImpl.getContext())) {
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131691989), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299011));
     }
-    label271:
-    label277:
-    for (String str = "1";; str = "2")
-    {
-      bcst.b(null, "dc00899", "Grp_tribe", "", "video_player", "vv_active", this.a.c, 0, localbefh.d, "" + localbefh.b, paramMessage, str);
-      if (this.a.h < l1 - 100L) {
-        this.a.h = ((int)l2);
-      }
+    while (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Beee == null) {
       return;
-      paramMessage = "";
-      break;
+    }
+    paramDialogInterface = becb.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.domainId, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.padId);
+    if (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).getCheckBoxState()) {
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Beee.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Long, paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.pad_url, true);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(1);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Beee.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Long, paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.pad_url, false);
     }
   }
 }

@@ -1,12 +1,11 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-
-public class zxy
-  extends RecyclerView.ViewHolder
+final class zxy
+  extends zxw
 {
-  public zxy(zxx paramzxx, View paramView)
+  zxy(zyf paramzyf) {}
+  
+  public void a()
   {
-    super(paramView);
+    this.a.a();
   }
 }
 

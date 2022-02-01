@@ -1,101 +1,36 @@
-import android.database.Cursor;
-import com.tencent.mobileqq.app.SQLiteOpenHelper;
-import com.tencent.mobileqq.data.Ability;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
-import com.tencent.mobileqq.persistence.OGEntityManager;
-import com.tencent.mobileqq.persistence.TableBuilder;
-import com.tencent.mobileqq.utils.SecurityUtile;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.now.message.MessageReceivingAdapter;
+import com.tencent.mobileqq.now.widget.DecoratorViewPager;
 
-public class aywd
-  extends QQEntityManagerFactory
+class aywd
+  implements ViewPager.OnPageChangeListener
 {
-  public aywd(String paramString)
-  {
-    super(paramString);
-  }
+  private boolean jdField_a_of_type_Boolean;
   
-  private void a(String paramString, android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
+  aywd(aywc paramaywc) {}
+  
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    System.currentTimeMillis();
-    Cursor localCursor1 = paramSQLiteDatabase.rawQuery("select distinct tbl_name from Sqlite_master", null);
-    ArrayList localArrayList = new ArrayList();
-    if (localCursor1 != null)
+    if ((paramInt1 == 2) && (paramFloat > 0.4F))
     {
-      while (localCursor1.moveToNext())
+      if (this.jdField_a_of_type_Boolean)
       {
-        String str = SecurityUtile.decode(localCursor1.getString(0));
-        Cursor localCursor2 = paramSQLiteDatabase.rawQuery("select sql from sqlite_master where type=? and name=?", new String[] { "table", str });
-        if (localCursor2 != null) {
-          for (;;)
-          {
-            try
-            {
-              if (!str.startsWith("mr_slow_")) {
-                continue;
-              }
-              localObject = MessageRecord.class;
-              OGEntityManager.extractedStatementByReflect(localArrayList, str, localCursor2, (Class)localObject);
-            }
-            catch (ClassNotFoundException localClassNotFoundException)
-            {
-              Object localObject;
-              continue;
-            }
-            localCursor2.close();
-            break;
-            localObject = Class.forName(paramString + "." + str);
-          }
-        }
+        this.jdField_a_of_type_Boolean = false;
+        aywc.a(this.jdField_a_of_type_Aywc);
       }
-      localCursor1.close();
+      aywc.a(this.jdField_a_of_type_Aywc).setCurrentItem(2);
     }
-    com.tencent.mobileqq.app.SQLiteDatabase.beginTransactionLog();
-    paramSQLiteDatabase.beginTransaction();
-    try
-    {
-      paramString = localArrayList.iterator();
-      while (paramString.hasNext()) {
-        paramSQLiteDatabase.execSQL((String)paramString.next());
-      }
-      paramSQLiteDatabase.setTransactionSuccessful();
+    if (paramFloat == 0.0F) {
+      this.jdField_a_of_type_Boolean = true;
     }
-    finally
-    {
-      paramSQLiteDatabase.endTransaction();
-      com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
-    }
-    paramSQLiteDatabase.endTransaction();
-    com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
   }
   
-  public SQLiteOpenHelper build(String paramString)
+  public void onPageSelected(int paramInt)
   {
-    if (this.dbHelper == null)
-    {
-      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, "slowtable_" + paramString + ".db", null, 1);
-      this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
-    }
-    return this.dbHelper;
-  }
-  
-  public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
-  {
-    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new Ability()));
-  }
-  
-  public String getPackageName()
-  {
-    return getClass().getPackage().getName();
-  }
-  
-  public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    a(getPackageName(), paramSQLiteDatabase);
+    aywc.a(this.jdField_a_of_type_Aywc, paramInt);
+    aywc.a(this.jdField_a_of_type_Aywc, aywc.a(this.jdField_a_of_type_Aywc).a(paramInt));
   }
 }
 

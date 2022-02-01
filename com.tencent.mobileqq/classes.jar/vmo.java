@@ -1,51 +1,18 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
-import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
-import feedcloud.FeedCloudMeta.StNotice;
-import feedcloud.FeedCloudMeta.StOperation;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
 
 public class vmo
-  extends vmh
+  implements vxz
 {
-  private QCircleFollowView a;
+  public vmo(QCircleContentOperationView paramQCircleContentOperationView) {}
   
-  public vmo(int paramInt)
+  public void a(String paramString)
   {
-    super(paramInt);
-  }
-  
-  protected String a()
-  {
-    return "QCircleFollowMessagePresenter";
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
-    {
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      }
-      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView != null) {
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      }
-    }
-  }
-  
-  void b(Context paramContext, View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView = ((QCircleFollowView)paramView.findViewById(2131373802));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setFollowStateChangeListener(new vmp(this));
-  }
-  
-  void b(FeedCloudMeta.StNotice paramStNotice, int paramInt)
-  {
-    paramStNotice = (FeedCloudMeta.StUser)paramStNotice.operation.opUser.get();
-    if (paramStNotice != null) {
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setUserData(paramStNotice);
-    }
+    QCircleInitBean localQCircleInitBean = new QCircleInitBean();
+    localQCircleInitBean.setUin(paramString);
+    localQCircleInitBean.setFromReportBean(this.a.a().clone());
+    uyx.b(this.a.getContext(), localQCircleInitBean);
   }
 }
 

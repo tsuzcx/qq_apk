@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atan;
-import atbk;
+import atsi;
+import attf;
 import java.util.HashMap;
 
 public class QFileMsgForwardManager$4
@@ -9,14 +9,14 @@ public class QFileMsgForwardManager$4
 {
   public void run()
   {
-    atbk localatbk = null;
-    if (atan.a(this.this$0).containsKey(Long.valueOf(this.a))) {
-      localatbk = (atbk)atan.a(this.this$0).get(Long.valueOf(this.a));
+    attf localattf = null;
+    if (atsi.a(this.this$0).containsKey(Long.valueOf(this.a))) {
+      localattf = (attf)atsi.a(this.this$0).get(Long.valueOf(this.a));
     }
-    if (localatbk != null)
+    if (localattf != null)
     {
-      localatbk.b();
-      localatbk.d();
+      localattf.b();
+      localattf.d();
     }
   }
 }

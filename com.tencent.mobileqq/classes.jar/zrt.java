@@ -1,41 +1,24 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
+
 public class zrt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  int jdField_a_of_type_Int = 0;
-  short jdField_a_of_type_Short = 0;
-  byte[] jdField_a_of_type_ArrayOfByte = null;
+  public zrt(NeoVideoRecordButton paramNeoVideoRecordButton) {}
   
-  public zrt() {}
-  
-  public zrt(int paramInt, short paramShort, byte[] paramArrayOfByte)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Short = paramShort;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte.length + 4;
-  }
-  
-  public long a()
-  {
-    return zvc.a(this.jdField_a_of_type_ArrayOfByte);
-  }
-  
-  public String a()
-  {
-    return new String(this.jdField_a_of_type_ArrayOfByte);
-  }
-  
-  public String toString()
-  {
-    return String.format("{t: %s, l: %s, v: %s}", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Short.valueOf(this.jdField_a_of_type_Short), this.jdField_a_of_type_ArrayOfByte });
+    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
+    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
+    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
+    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
+    NeoVideoRecordButton.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zrt
  * JD-Core Version:    0.7.0.1
  */

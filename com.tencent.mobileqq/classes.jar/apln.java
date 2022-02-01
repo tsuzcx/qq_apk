@@ -1,32 +1,56 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.os.IInterface;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public abstract class apln
-  implements aple
+public abstract interface apln
+  extends IInterface
 {
-  private final long jdField_a_of_type_Long;
-  private final String jdField_a_of_type_JavaLangString;
+  public abstract ARCommonConfigInfo a();
   
-  public apln(String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  public abstract ArConfigInfo a();
   
-  public Bundle a()
-  {
-    Bundle localBundle = new Bundle();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localBundle.putString("Uin", this.jdField_a_of_type_JavaLangString);
-    }
-    localBundle.putLong("ViewHandle", this.jdField_a_of_type_Long);
-    return localBundle;
-  }
+  public abstract ArEffectConfig a();
   
-  public String a()
-  {
-    return "QQ.GetNickname";
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(aplq paramaplq);
+  
+  public abstract void a(aplw paramaplw);
+  
+  public abstract void a(aplz paramaplz);
+  
+  public abstract void a(apmc paramapmc);
+  
+  public abstract void a(ArConfigInfo paramArConfigInfo);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(aplq paramaplq);
+  
+  public abstract void b(aplw paramaplw);
+  
+  public abstract void b(aplz paramaplz);
+  
+  public abstract void b(apmc paramapmc);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract boolean c();
+  
+  public abstract void d();
+  
+  public abstract boolean d();
 }
 
 

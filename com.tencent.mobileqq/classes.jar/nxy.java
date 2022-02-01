@@ -1,35 +1,15 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils.2;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nxy
-  implements BusinessObserver
+class nxy
+  implements DialogInterface.OnClickListener
 {
-  public nxy(NativeAdUtils.2 param2) {}
+  nxy(nxo paramnxo, JsResult paramJsResult) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if ((localWebSsoResponseBody.ret.has()) && (localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
-          QLog.d("NativeAdUtils", 2, " new report success");
-        }
-      }
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
   }
 }
 

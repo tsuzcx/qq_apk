@@ -1,54 +1,20 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.2;
-import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.3;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.QfavPluginProxyService;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
 
 public class atgq
-  extends atdl
+  implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private blko jdField_a_of_type_Blko = new atgr(this);
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int = 80;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
+  public atgq(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
   
-  public atgq(Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QfavPluginProxyService.a().a(3, this.jdField_a_of_type_Blko);
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QfavFilePreviewController.2(this), 300000L);
+    this.a.a.b();
   }
   
-  public int a()
-  {
-    return 4;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    QfavPluginProxyService.a().b(3, this.jdField_a_of_type_Blko);
-  }
-  
-  public boolean a()
-  {
-    if (3 != this.jdField_a_of_type_Int)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("QfavFilePreviewController", 4, "sendCS: oldState = " + this.jdField_a_of_type_Int + ", newState = STATE_REQUESTING.");
-      }
-      this.jdField_a_of_type_Int = 1;
-      return true;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QfavFilePreviewController.3(this), 2000L);
-    return true;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

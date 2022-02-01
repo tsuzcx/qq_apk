@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageForSafeGrayTips;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-class ahzj
-  implements DialogInterface.OnClickListener
+public class ahzj
+  implements ahyf
 {
-  ahzj(ahzf paramahzf) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    paramDialogInterface.dismiss();
-    abru.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.g);
-    this.a.g = "";
+    if ((paramMessageRecord instanceof MessageForSafeGrayTips)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("GrayTipsItemBuilder", 2, "getItemView MessageForSafeGrayTips");
+      }
+    }
+    for (paramMessageRecord = (MessageForSafeGrayTips)paramMessageRecord;; paramMessageRecord = null)
+    {
+      paramahed.a(paramMessageRecord, paramahfq.b);
+      return;
+    }
   }
 }
 

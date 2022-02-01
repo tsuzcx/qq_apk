@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.ugc;
 
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
 import java.util.List;
-import rkf;
-import rki;
+import raz;
+import rbc;
 
 public class ReadInJoyDraftboxFragment$1$1$1
   implements Runnable
 {
-  public ReadInJoyDraftboxFragment$1$1$1(rki paramrki, List paramList) {}
+  public ReadInJoyDraftboxFragment$1$1$1(rbc paramrbc, List paramList) {}
   
   public void run()
   {
-    ReadInJoyDraftboxFragment.a(this.jdField_a_of_type_Rki.a.this$0).clear();
+    ReadInJoyDraftboxFragment.a(this.jdField_a_of_type_Rbc.a.this$0).clear();
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
       int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
@@ -20,12 +20,12 @@ public class ReadInJoyDraftboxFragment$1$1$1
       {
         ReadInJoyDraftboxItem localReadInJoyDraftboxItem = (ReadInJoyDraftboxItem)this.jdField_a_of_type_JavaUtilList.get(i);
         if (ReadInJoyDraftboxFragment.a(localReadInJoyDraftboxItem)) {
-          ReadInJoyDraftboxFragment.a(this.jdField_a_of_type_Rki.a.this$0).add(localReadInJoyDraftboxItem);
+          ReadInJoyDraftboxFragment.a(this.jdField_a_of_type_Rbc.a.this$0).add(localReadInJoyDraftboxItem);
         }
         i -= 1;
       }
     }
-    ReadInJoyDraftboxFragment.a(this.jdField_a_of_type_Rki.a.this$0).notifyDataSetChanged();
+    ReadInJoyDraftboxFragment.a(this.jdField_a_of_type_Rbc.a.this$0).notifyDataSetChanged();
   }
 }
 

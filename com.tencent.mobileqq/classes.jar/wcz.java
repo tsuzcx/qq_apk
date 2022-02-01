@@ -1,51 +1,93 @@
-public class wcz
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
+import com.tencent.biz.qqcircle.widgets.QCirclePaiTongKuanIconView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StImage;
+
+public abstract class wcz
+  extends wcw
 {
-  private long jdField_a_of_type_Long = -1L;
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
-  private long b;
-  public String b;
+  public FrameLayout a;
+  public ImageView a;
+  public SeekBar a;
+  public TextView a;
+  public QCirclePaiTongKuanIconView a;
+  public URLImageView a;
+  public vup a;
+  public View b;
+  public ImageView b;
   
-  public wcz()
+  protected void a(FeedCloudMeta.StFeed paramStFeed)
   {
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    Object localObject = uyn.a(paramStFeed.id.get());
+    paramStFeed = paramStFeed.cover.picUrl.get();
+    if (localObject != null) {
+      paramStFeed = ((FeedCloudMeta.StFeed)localObject).cover.picUrl.get();
+    }
+    for (;;)
+    {
+      localObject = "";
+      if ((this.jdField_a_of_type_ComTencentImageURLImageView.getTag(2131373939) instanceof String)) {
+        localObject = (String)this.jdField_a_of_type_ComTencentImageURLImageView.getTag(2131373939);
+      }
+      this.jdField_a_of_type_ComTencentImageURLImageView.setTag(2131373939, paramStFeed);
+      if (!((String)localObject).equals(paramStFeed))
+      {
+        paramStFeed = new vrd().a(paramStFeed).a(this.jdField_a_of_type_ComTencentImageURLImageView).b(false).a(true).c(this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams().width).b(this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams().height);
+        QCircleFeedPicLoader.a().a(paramStFeed, new wda(this));
+      }
+      return;
+    }
   }
   
-  public long a()
+  public void a(Object paramObject1, Object paramObject2)
   {
-    return this.jdField_a_of_type_Long;
+    if (((paramObject1 instanceof RecyclerView.ViewHolder)) && ((paramObject2 instanceof FeedCloudMeta.StFeed)) && (this.jdField_a_of_type_Vup != null)) {
+      this.jdField_a_of_type_Vup.a((RecyclerView.ViewHolder)paramObject1, (FeedCloudMeta.StFeed)paramObject2);
+    }
   }
   
-  public void a(long paramLong)
+  public void a(vup paramvup)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Vup = paramvup;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public long b()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
-  }
-  
-  public String toString()
-  {
-    return "ScanInfo{lastAlbum=" + this.jdField_a_of_type_Long + ", lastPic=" + this.jdField_b_of_type_Long + ", isIncScan=" + this.jdField_a_of_type_Boolean + '}';
+    float f2 = 0.8F;
+    Object localObject;
+    if (this.b != null)
+    {
+      localObject = this.b;
+      if (paramBoolean)
+      {
+        f1 = 0.8F;
+        ((ImageView)localObject).setAlpha(f1);
+      }
+    }
+    else if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      if (!paramBoolean) {
+        break label60;
+      }
+    }
+    label60:
+    for (float f1 = f2;; f1 = 1.0F)
+    {
+      ((TextView)localObject).setAlpha(f1);
+      return;
+      f1 = 1.0F;
+      break;
+    }
   }
 }
 

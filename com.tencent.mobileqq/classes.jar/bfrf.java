@@ -1,57 +1,47 @@
-import android.graphics.Color;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.data.TroopFeedItem;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.GroupBusinessMsg;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfrf
+  extends bfrg
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  
-  public bfrf()
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public static bfrf a(im_msg_body.GroupBusinessMsg paramGroupBusinessMsg)
-  {
-    bfrf localbfrf = new bfrf();
-    localbfrf.jdField_a_of_type_Int = paramGroupBusinessMsg.uint32_flags.get();
-    localbfrf.jdField_a_of_type_JavaLangString = paramGroupBusinessMsg.bytes_head_url.get().toStringUtf8();
-    localbfrf.jdField_b_of_type_JavaLangString = paramGroupBusinessMsg.bytes_head_clk_url.get().toStringUtf8();
-    localbfrf.jdField_c_of_type_JavaLangString = paramGroupBusinessMsg.bytes_nick.get().toStringUtf8();
-    localbfrf.jdField_d_of_type_JavaLangString = paramGroupBusinessMsg.bytes_rank.get().toStringUtf8();
-    try
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {}
+    for (;;)
     {
-      localbfrf.jdField_b_of_type_Int = Color.parseColor(paramGroupBusinessMsg.bytes_nick_color.get().toStringUtf8());
-      localbfrf.jdField_c_of_type_Int = Color.parseColor(paramGroupBusinessMsg.bytes_rank_color.get().toStringUtf8());
-      localbfrf.jdField_d_of_type_Int = Color.parseColor(paramGroupBusinessMsg.bytes_rank_bgcolor.get().toStringUtf8());
-      return localbfrf;
+      return null;
+      localTroopFeedItem.type = 99;
+      try
+      {
+        localTroopFeedItem.linkUrl = paramJSONObject.optString("open_url");
+        if (paramJSONObject.has("app_id"))
+        {
+          localTroopFeedItem.ex_1 = ("" + paramJSONObject.getLong("app_id"));
+          if ((!wjb.i()) && (localTroopFeedItem.isStoryType()))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("TroopFeedParserHelperQ.qqstory.tag_api_limit", 2, "当前系统api：" + Build.VERSION.SDK_INT + ",低于14");
+            return null;
+          }
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return null;
+      }
     }
-    catch (Exception paramGroupBusinessMsg)
-    {
-      QLog.e(bfre.jdField_a_of_type_JavaLangString, 2, "the color string cannot parse to color. " + paramGroupBusinessMsg.getMessage());
-    }
-    return localbfrf;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("TroopBusinessMessage");
-    localStringBuilder.append(",").append("nick").append("=").append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(",").append("flag").append("=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(",").append("clk").append("=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(",").append("head").append("=").append(this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    paramJSONObject = paramJSONObject.getJSONObject("content");
+    localTroopFeedItem.content = paramJSONObject.getString("body");
+    localTroopFeedItem.title = paramJSONObject.getString("title");
+    localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
+    return localTroopFeedItem;
   }
 }
 

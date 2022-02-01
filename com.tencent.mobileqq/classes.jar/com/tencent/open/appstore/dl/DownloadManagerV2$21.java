@@ -1,26 +1,26 @@
 package com.tencent.open.appstore.dl;
 
-import bisa;
-import bisy;
-import bivz;
+import bjsz;
+import bjtx;
+import bjwy;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 public class DownloadManagerV2$21
   implements Runnable
 {
-  public DownloadManagerV2$21(bisa parambisa, DownloadInfo paramDownloadInfo) {}
+  public DownloadManagerV2$21(bjsz parambjsz, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
     try
     {
-      bisy.b("DownloadManagerV2", "[getApkCodeAsync]" + this.a.e + " begin getApkCode ......");
-      bisa.a(this.this$0).a(this.a.jdField_b_of_type_JavaLangString, this.a.e, this.a.jdField_b_of_type_Int, bisa.a(this.this$0));
+      bjtx.b("DownloadManagerV2", "[getApkCodeAsync]" + this.a.e + " begin getApkCode ......");
+      bjsz.a(this.this$0).a(this.a.jdField_b_of_type_JavaLangString, this.a.e, this.a.jdField_b_of_type_Int, bjsz.a(this.this$0));
       return;
     }
     catch (Exception localException)
     {
-      bisy.c("DownloadManagerV2", "[getApkCodeAsync] >>>", localException);
+      bjtx.c("DownloadManagerV2", "[getApkCodeAsync] >>>", localException);
     }
   }
 }

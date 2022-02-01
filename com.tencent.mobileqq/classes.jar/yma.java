@@ -1,66 +1,35 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.Vector;
+import java.util.List;
 
-@Deprecated
 public class yma
-  extends ymh
-  implements Handler.Callback
 {
-  public volatile int a;
-  protected Handler a;
-  protected ErrorMessage a;
-  private String a;
-  protected LinkedHashMap<String, ymk> a;
-  protected Vector<ymk> a;
-  protected boolean a;
-  private Handler b = new Handler(paramLooper, this);
-  private Handler c;
+  private static ylx jdField_a_of_type_Ylx = new ylx();
+  public int a;
+  private String jdField_a_of_type_JavaLangString = "";
+  public List<ylw> a;
+  public boolean a;
+  private int b;
   
-  public yma(Looper paramLooper)
+  public yma()
   {
-    this.jdField_a_of_type_JavaLangString = "ParallelStepExecutor";
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    this.jdField_a_of_type_JavaUtilVector = new Vector();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  private void b(String paramString)
+  public yma(yma paramyma)
   {
-    if (paramString == null) {
-      yqp.e("Q.qqstory.home.ParallelStepExecutor", "occur error ! step key is null!!");
-    }
-    do
-    {
-      return;
-      yqp.e("Q.qqstory.home.ParallelStepExecutor", "%s have been finish", new Object[] { paramString });
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramString);
-    } while (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() != 0);
-    yqp.b("Q.qqstory.home.ParallelStepExecutor", "all step have finish");
-    if (this.jdField_a_of_type_Ymi != null)
-    {
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(100);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label99;
-      }
-      this.jdField_a_of_type_Ymj.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
-    }
-    for (;;)
-    {
-      d();
-      return;
-      label99:
-      this.jdField_a_of_type_Ymi.a();
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramyma.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_JavaLangString = paramyma.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramyma.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Int = paramyma.jdField_a_of_type_Int;
+    this.b = paramyma.b;
+  }
+  
+  private boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
   
   public String a()
@@ -68,188 +37,147 @@ public class yma
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public yma a(ymi paramymi)
+  public ymb a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Ymi = paramymi;
-    return this;
-  }
-  
-  public yma a(ymj paramymj)
-  {
-    this.jdField_a_of_type_Ymj = paramymj;
-    return this;
-  }
-  
-  public yma a(ymk paramymk)
-  {
-    yqp.a("Q.qqstory.home.ParallelStepExecutor", "add Step:%s", paramymk.a());
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramymk.a(), paramymk);
-    this.jdField_a_of_type_Int = 0;
-    return this;
-  }
-  
-  /* Error */
-  public void a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 61
-    //   4: ldc 133
-    //   6: iconst_1
-    //   7: anewarray 73	java/lang/Object
-    //   10: dup
-    //   11: iconst_0
-    //   12: aload_0
-    //   13: getfield 33	yma:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
-    //   16: invokevirtual 84	java/util/LinkedHashMap:size	()I
-    //   19: invokestatic 139	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   22: aastore
-    //   23: invokestatic 141	yqp:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   26: aload_0
-    //   27: getfield 52	yma:jdField_a_of_type_Int	I
-    //   30: iconst_2
-    //   31: if_icmpne +13 -> 44
-    //   34: ldc 61
-    //   36: ldc 143
-    //   38: invokestatic 69	yqp:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   41: aload_0
-    //   42: monitorexit
-    //   43: return
-    //   44: aload_0
-    //   45: iconst_1
-    //   46: putfield 52	yma:jdField_a_of_type_Int	I
-    //   49: aload_0
-    //   50: getfield 145	yma:c	Landroid/os/Handler;
-    //   53: ifnonnull +18 -> 71
-    //   56: aload_0
-    //   57: new 40	android/os/Handler
-    //   60: dup
-    //   61: invokestatic 148	android/os/Looper:myLooper	()Landroid/os/Looper;
-    //   64: aload_0
-    //   65: invokespecial 55	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
-    //   68: putfield 145	yma:c	Landroid/os/Handler;
-    //   71: aload_0
-    //   72: getfield 33	yma:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
-    //   75: invokevirtual 152	java/util/LinkedHashMap:entrySet	()Ljava/util/Set;
-    //   78: invokeinterface 158 1 0
-    //   83: astore_1
-    //   84: aload_1
-    //   85: invokeinterface 164 1 0
-    //   90: ifeq -49 -> 41
-    //   93: aload_1
-    //   94: invokeinterface 168 1 0
-    //   99: checkcast 170	java/util/Map$Entry
-    //   102: invokeinterface 173 1 0
-    //   107: checkcast 122	ymk
-    //   110: astore_2
-    //   111: aload_2
-    //   112: aload_0
-    //   113: invokeinterface 176 2 0
-    //   118: aload_2
-    //   119: aload_0
-    //   120: invokeinterface 179 2 0
-    //   125: aload_0
-    //   126: getfield 57	yma:b	Landroid/os/Handler;
-    //   129: iconst_2
-    //   130: aload_2
-    //   131: invokevirtual 183	android/os/Handler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
-    //   134: invokevirtual 188	android/os/Message:sendToTarget	()V
-    //   137: goto -53 -> 84
-    //   140: astore_1
-    //   141: aload_0
-    //   142: monitorexit
-    //   143: aload_1
-    //   144: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	145	0	this	yma
-    //   83	11	1	localIterator	Iterator
-    //   140	4	1	localObject	Object
-    //   110	21	2	localymk	ymk
-    // Exception table:
-    //   from	to	target	type
-    //   2	41	140	finally
-    //   44	71	140	finally
-    //   71	84	140	finally
-    //   84	137	140	finally
-  }
-  
-  public void a(ErrorMessage paramErrorMessage)
-  {
-    yqp.e("Q.qqstory.home.ParallelStepExecutor", "occur error:%s", new Object[] { paramErrorMessage.getErrorMessage() });
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    a(paramErrorMessage.extraMsg);
-  }
-  
-  public void a(String paramString)
-  {
+    boolean bool = true;
+    int i;
+    ArrayList localArrayList;
     for (;;)
     {
       try
       {
-        int i = this.jdField_a_of_type_Int;
-        if (i == 3) {
-          return;
-        }
-        if (this.c != null)
+        ymb localymb1 = new ymb();
+        if (paramInt1 == 0)
         {
-          this.c.obtainMessage(1, paramString).sendToTarget();
+          localymb1.jdField_a_of_type_Boolean = bool;
+          if (this.jdField_a_of_type_JavaUtilList.size() <= paramInt1) {
+            break label330;
+          }
+          i = paramInt2;
+          if (paramInt1 + paramInt2 > this.jdField_a_of_type_JavaUtilList.size()) {
+            i = this.jdField_a_of_type_JavaUtilList.size() - paramInt1;
+          }
+          if ((paramInt1 + i >= this.jdField_a_of_type_JavaUtilList.size()) && (a())) {
+            localymb1.b = true;
+          }
+          localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+          localymb1.jdField_a_of_type_JavaUtilList = localArrayList.subList(paramInt1, paramInt1 + i);
+          paramInt2 = paramInt1 + i;
+          if (paramInt2 >= this.jdField_a_of_type_JavaUtilList.size()) {
+            break label309;
+          }
+          ylw localylw1 = (ylw)this.jdField_a_of_type_JavaUtilList.get(paramInt2);
+          Iterator localIterator = localymb1.jdField_a_of_type_JavaUtilList.iterator();
+          if (!localylw1.b) {
+            break label309;
+          }
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          ylw localylw2 = (ylw)localIterator.next();
+          if ((!localylw2.b) || (!localylw2.c.equals(localylw1.c))) {
+            continue;
+          }
+          localIterator.remove();
+          yuk.d("Q.qqstory.home.data.FeedListPageLoaderBase", "remove one fail info:%s", new Object[] { localylw2 });
           continue;
         }
-        yqp.e("Q.qqstory.home.ParallelStepExecutor", "there is no mCompletedHandler !!!!");
+        bool = false;
       }
       finally {}
-      b(paramString);
+    }
+    if (localymb2.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      localymb2.jdField_a_of_type_JavaUtilList = localArrayList.subList(paramInt1, paramInt1 + i);
+      yuk.d("Q.qqstory.home.data.FeedListPageLoaderBase", "bad luck for you have too much fail %s", new Object[] { localymb2.jdField_a_of_type_JavaUtilList });
+    }
+    for (;;)
+    {
+      label309:
+      this.b = (localymb2.jdField_a_of_type_JavaUtilList.size() + paramInt1);
+      return localymb2;
+      label330:
+      localymb2.b = a();
     }
   }
   
-  public void b() {}
+  public void a()
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaLangString = "";
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Int = 0;
+      this.b = 0;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(List<ylw> paramList, String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      yuk.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId list:set next cookie data count:%d, cookie:%s, isEnd:%b", new Object[] { Integer.valueOf(paramList.size()), paramString, Boolean.valueOf(paramBoolean) });
+      yuk.a("Q.qqstory.home.data.FeedListPageLoaderBase", "add feed list:%s", paramList);
+      return;
+    }
+    finally
+    {
+      paramList = finally;
+      throw paramList;
+    }
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_a_of_type_Int = this.b;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
   
   public void c()
   {
     try
     {
-      this.jdField_a_of_type_Int = 3;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(100);
-      if (this.c != null) {
-        this.c.removeMessages(1);
+      if (yuk.a()) {
+        yuk.a("Q.qqstory.home.data.FeedListPageLoaderBase", "before sort curpos:%d -- %s", Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilList);
       }
-      if (this.b != null) {
-        this.b.removeMessages(2);
+      Collections.sort(this.jdField_a_of_type_JavaUtilList, jdField_a_of_type_Ylx);
+      if (yuk.a()) {
+        yuk.a("Q.qqstory.home.data.FeedListPageLoaderBase", "after* sort curpos:%d -- %s", Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilList);
       }
-      yqp.b("Q.qqstory.home.ParallelStepExecutor", "reset!");
-      if (this.jdField_a_of_type_JavaUtilVector.size() > 0)
-      {
-        yqp.b("Q.qqstory.home.ParallelStepExecutor", "reset premissSteps");
-        ((ymk)this.jdField_a_of_type_JavaUtilVector.get(0)).c();
-        this.jdField_a_of_type_JavaUtilVector.clear();
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        ymk localymk = (ymk)((Map.Entry)localIterator.next()).getValue();
-        if (localymk != null) {
-          localymk.c();
-        }
-      }
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+      return;
     }
     finally {}
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public String toString()
   {
-    switch (paramMessage.what)
+    try
     {
+      String str = "FeedIdListCache{mFeedIdListCache=" + this.jdField_a_of_type_JavaUtilList + ", mFeedIdNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mIsEnd=" + this.jdField_a_of_type_Boolean + ", mCurFeedIdPosition=" + this.jdField_a_of_type_Int + ", mTempFeedIdPosition=" + this.b + '}';
+      return str;
     }
-    for (;;)
+    finally
     {
-      return true;
-      b((String)paramMessage.obj);
-      continue;
-      ((ymk)paramMessage.obj).a();
+      localObject = finally;
+      throw localObject;
     }
   }
 }

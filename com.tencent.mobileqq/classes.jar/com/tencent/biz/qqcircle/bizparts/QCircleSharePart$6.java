@@ -3,7 +3,7 @@ package com.tencent.biz.qqcircle.bizparts;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import aobu;
+import aoof;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -13,15 +13,15 @@ import feedcloud.FeedCloudMeta.StImage;
 import feedcloud.FeedCloudMeta.StShare;
 import feedcloud.FeedCloudMeta.StUser;
 import java.util.Map;
-import nlw;
-import uzn;
-import vde;
-import vdl;
+import nnr;
+import vbd;
+import vfi;
+import vfp;
 
 public class QCircleSharePart$6
   implements Runnable
 {
-  public QCircleSharePart$6(vde paramvde, Map paramMap, Runnable paramRunnable) {}
+  public QCircleSharePart$6(vfi paramvfi, Map paramMap, Runnable paramRunnable) {}
   
   private void a(Bitmap paramBitmap)
   {
@@ -34,7 +34,7 @@ public class QCircleSharePart$6
       {
         double d = Math.sqrt(8000.0D / (i * j));
         localBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)(i * d), (int)(d * j), true);
-        if (vde.a(this.this$0).jdField_a_of_type_Int != 1) {
+        if (vfi.a(this.this$0).jdField_a_of_type_Int != 1) {
           paramBitmap.recycle();
         }
       }
@@ -49,19 +49,19 @@ public class QCircleSharePart$6
   {
     try
     {
-      if (vde.a(this.this$0) == null) {
+      if (vfi.a(this.this$0) == null) {
         return;
       }
-      if (vde.a(this.this$0).jdField_a_of_type_Int == 1)
+      if (vfi.a(this.this$0).jdField_a_of_type_Int == 1)
       {
         QLog.d("QCircleSharePart", 1, "shareToWeChat share user icon");
-        aobu localaobu = new aobu(this.this$0.a(), (AppInterface)BaseApplicationImpl.getApplication().getRuntime());
-        localBitmap = localaobu.a(1, vde.a(this.this$0).jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.id.get(), 1, (byte)1);
+        aoof localaoof = new aoof(this.this$0.a(), (AppInterface)BaseApplicationImpl.getApplication().getRuntime());
+        localBitmap = localaoof.a(1, vfi.a(this.this$0).jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.id.get(), 1, (byte)1);
         if (localBitmap == null)
         {
           QLog.d("QCircleSharePart", 1, "shareToWeChat share user icon(need decode task)");
-          localaobu.a(new vdl(this, localaobu));
-          localaobu.a(vde.a(this.this$0).jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.id.get(), 200, false, 1, true, (byte)1, 1);
+          localaoof.a(new vfp(this, localaoof));
+          localaoof.a(vfi.a(this.this$0).jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.id.get(), 200, false, 1, true, (byte)1, 1);
           return;
         }
       }
@@ -82,7 +82,7 @@ public class QCircleSharePart$6
       return;
     }
     QLog.d("QCircleSharePart", 1, "shareToWeChat share url icon");
-    byte[] arrayOfByte = nlw.a(BaseApplicationImpl.getContext(), vde.a(this.this$0).jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.share.cover.picUrl.get(), "GET", null, null);
+    byte[] arrayOfByte = nnr.a(BaseApplicationImpl.getContext(), vfi.a(this.this$0).jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.share.cover.picUrl.get(), "GET", null, null);
     if (arrayOfByte != null) {
       a(BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length));
     }

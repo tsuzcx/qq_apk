@@ -1,85 +1,61 @@
-import android.os.Message;
-import com.tencent.mobileqq.mp.bigFileUpload.BigFileExtRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
 class rti
-  extends bdzm
+  implements sgx
 {
-  rti(rth paramrth) {}
+  rti(rsx paramrsx, VideoInfo paramVideoInfo) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    bduk localbduk = (bduk)paramMessage.obj;
-    if ((localbduk == null) || (localbduk.jdField_b_of_type_Int != 24) || (localbduk.c != 54)) {}
-    while ((rth.a(this.a) == null) || (localbduk.jdField_b_of_type_Long != rth.a(this.a))) {
-      return;
-    }
-    switch (paramMessage.what)
+    paramView = ozs.a();
+    AdvertisementInfo localAdvertisementInfo;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)
     {
-    case 1004: 
-    default: 
-      return;
-    case 1001: 
-      paramMessage = new JSONObject();
-      try
-      {
-        paramMessage.put("uniseq", rth.a(this.a));
-        paramMessage.put("localPath", rth.a(this.a));
-        rth.a(this.a).a(paramMessage.toString());
-        return;
+      if (rsx.a(this.jdField_a_of_type_Rsx).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
+        rpt.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
       }
-      catch (Exception localException)
+      pfa.a().a(Long.valueOf(paramView).longValue(), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.makeDislikeParam(paramArrayList, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g));
+      localAdvertisementInfo = nzq.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo);
+      if ((paramObject == null) || (!(paramObject instanceof DislikeInfo))) {
+        break label304;
+      }
+    }
+    label301:
+    label304:
+    for (long l = ((DislikeInfo)paramObject).a;; l = 0L)
+    {
+      paramView = "";
+      int i = 0;
+      if (i < paramArrayList.size())
       {
-        for (;;)
-        {
-          QLog.e("RIJUGC.RIJUgcVideoUploader", 1, "uploadListener.onStart, e=" + QLog.getStackTraceString(localException));
+        paramObject = (DislikeInfo)paramArrayList.get(i);
+        if (paramObject == null) {
+          break label301;
+        }
+        paramObject = paramView + paramObject.a;
+        paramView = paramObject;
+        if (i != paramArrayList.size() - 1) {
+          paramView = paramObject + ",";
         }
       }
-    case 1002: 
-      if (QLog.isColorLevel()) {
-        QLog.d("RIJUGC.RIJUgcVideoUploader", 2, "mVideoTransProcessorHandler transfer=" + localException.e + ", total=" + localException.jdField_a_of_type_Long);
-      }
-      rth.a(this.a).a((float)localException.e * 100.0F / (float)localException.jdField_a_of_type_Long);
-      return;
-    case 1003: 
-      QLog.i("RIJUGC.RIJUgcVideoUploader", 1, "mVideoTransProcessorHandler send finished!");
-      paramMessage = new bigFileUpload.BigFileExtRsp();
       for (;;)
       {
-        try
-        {
-          paramMessage.mergeFrom(localException.jdField_a_of_type_ArrayOfByte);
-          int i = paramMessage.int32_retcode.get();
-          QLog.d("RIJUGC.RIJUgcVideoUploader", 1, "mVideoTransProcessorHandler rsp.errorCode:" + i);
-          if (i != 0) {
-            continue;
-          }
-          if (!paramMessage.bytes_download_url.has()) {
-            continue;
-          }
-          paramMessage = paramMessage.bytes_download_url.get().toStringUtf8();
-          rth.a(this.a).a(paramMessage);
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.e("RIJUGC.RIJUgcVideoUploader", 1, "upload success but parse exception, e=" + QLog.getStackTraceString(paramMessage));
-          continue;
-          QLog.e("RIJUGC.RIJUgcVideoUploader", 1, "mVideoTransProcessorHandler rsp.error info:" + paramMessage.bytes_msg.get().toStringUtf8());
-          rth.a(this.a).a(localException.g, paramMessage.bytes_msg.get().toStringUtf8());
-          continue;
-        }
-        rth.a(this.a);
-        return;
-        rth.a(this.a).a(-1, "not has download url");
+        i += 1;
+        break;
+        nzq.a(new tlx().a(rsx.a(this.jdField_a_of_type_Rsx)).a(nzq.c).b(nzq.R).a(localAdvertisementInfo).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo).a(l).a(paramView).a());
+        QQToast.a(rsx.a(this.jdField_a_of_type_Rsx), -1, rsx.a(this.jdField_a_of_type_Rsx).getString(2131698588), 0).b(rsx.a(this.jdField_a_of_type_Rsx).getResources().getDimensionPixelSize(2131299011));
+        rsx.a(this.jdField_a_of_type_Rsx).dismiss();
+        return true;
       }
     }
-    QLog.e("RIJUGC.RIJUgcVideoUploader", 1, "mVideoTransProcessorHandler send error:" + localException.g);
-    rth.a(this.a).a(localException.g, "");
-    rth.a(this.a);
   }
 }
 

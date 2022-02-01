@@ -1,84 +1,16 @@
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
 
-public class oqf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class oqf
+  implements ViewBase.OnClickListener
 {
-  private static String a = "https://img.nfa.qq.com/gmaster_prod/15910560/gmaster_3v18id3oaaw0_full_star.png";
-  private static String b = "https://img.nfa.qq.com/gmaster_prod/15910560/gmaster_4wn7qj0hara0_half_star.png";
-  private static String c = "https://img.nfa.qq.com/gmaster_prod/15910560/gmaster_ol3wqukwhr4_empty_star.png";
+  oqf(otd paramotd, otp paramotp) {}
   
-  private static String a(float paramFloat, int paramInt)
+  public final void onClick(ViewBase paramViewBase)
   {
-    float f1 = paramInt;
-    float f2 = paramInt;
-    if (paramFloat <= f1) {
-      return c;
-    }
-    if ((paramFloat > f1) && (paramFloat <= f2 + 0.5F)) {
-      return b;
-    }
-    return a;
-  }
-  
-  private static void a(float paramFloat, JSONObject paramJSONObject)
-  {
-    String str1 = a(paramFloat, 0);
-    String str2 = a(paramFloat, 1);
-    String str3 = a(paramFloat, 2);
-    String str4 = a(paramFloat, 3);
-    String str5 = a(paramFloat, 4);
-    try
-    {
-      paramJSONObject.put("star1", str1);
-      paramJSONObject.put("star2", str2);
-      paramJSONObject.put("star3", str3);
-      paramJSONObject.put("star4", str4);
-      paramJSONObject.put("star5", str5);
-      return;
-    }
-    catch (Exception paramJSONObject) {}
-  }
-  
-  private static void a(JSONObject paramJSONObject)
-  {
-    String str1 = paramJSONObject.optString("full_star");
-    String str2 = paramJSONObject.optString("half_star");
-    paramJSONObject = paramJSONObject.optString("empty_star");
-    if (!TextUtils.isEmpty(str1)) {
-      a = str1;
-    }
-    if (!TextUtils.isEmpty(str2)) {
-      b = str2;
-    }
-    if (!TextUtils.isEmpty(paramJSONObject)) {
-      c = paramJSONObject;
-    }
-  }
-  
-  public static void a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
-  {
-    if ((paramJSONObject1 == null) || (paramJSONObject2 == null)) {}
-    do
-    {
-      return;
-      a(paramJSONObject1);
-      if (paramJSONObject1.has("app_score_num"))
-      {
-        a((float)paramJSONObject1.optDouble("app_score_num"), paramJSONObject2);
-        return;
-      }
-    } while (!paramJSONObject1.has("ad_guide_text"));
-    paramJSONObject1 = paramJSONObject1.optString("ad_guide_text");
-    try
-    {
-      paramJSONObject2.put("ad_guide_text", paramJSONObject1);
-      return;
-    }
-    catch (JSONException paramJSONObject1)
-    {
-      paramJSONObject1.printStackTrace();
-    }
+    oqy.a(this.jdField_a_of_type_Otd, this.jdField_a_of_type_Otp);
   }
 }
 

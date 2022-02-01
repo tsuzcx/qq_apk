@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import pmg;
+import pez;
 
 public class ReadInJoyFollowingMemberPrefetcher$1
   implements Runnable
 {
-  public ReadInJoyFollowingMemberPrefetcher$1(pmg parampmg) {}
+  public ReadInJoyFollowingMemberPrefetcher$1(pez parampez) {}
   
   public void run()
   {
-    pmg.a(this.this$0);
+    pez.a(this.this$0);
   }
 }
 

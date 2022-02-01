@@ -1,22 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
-import com.tencent.widget.XPanelContainer;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
 
 public class avbj
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Handler.Callback
 {
-  public avbj(HotPicMainPanel paramHotPicMainPanel, int paramInt) {}
+  public avbj(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean handleMessage(Message paramMessage)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i == this.jdField_a_of_type_Int) {
-      AbstractGifImage.resumeAll();
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
     }
-    XPanelContainer.jdField_a_of_type_Int = i;
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.requestLayout();
+    if ((this.a.jdField_a_of_type_Bhpc != null) && (this.a.jdField_a_of_type_Bhpc.isShowing()) && (this.a.jdField_a_of_type_Avbr != null)) {
+      this.a.jdField_a_of_type_Avbr.a();
+    }
+    return true;
   }
 }
 

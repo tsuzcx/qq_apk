@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMarkerClickListener;
-import com.tencent.tencentmap.mapsdk.maps.model.Marker;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aexw
-  implements TencentMap.OnMarkerClickListener
+class aexw
+  implements DialogInterface.OnClickListener
 {
-  public aexw(QQMapActivity paramQQMapActivity) {}
+  aexw(aexv paramaexv) {}
   
-  public boolean onMarkerClick(Marker paramMarker)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    if ((paramInt == 1) && (this.a.a(aexv.a(this.a)))) {}
   }
 }
 

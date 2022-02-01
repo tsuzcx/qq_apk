@@ -1,78 +1,23 @@
-import android.graphics.Rect;
-import android.text.Spannable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class ayge
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class ayge
+  implements aygn
 {
-  public ayge(OCRResultFragmentNew paramOCRResultFragmentNew, EditText paramEditText) {}
+  ayge(aygb paramaygb) {}
   
-  public void onGlobalLayout()
+  public void a(aygm paramaygm)
   {
-    Object localObject = new FrameLayout.LayoutParams(-1, -1);
-    OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew).findViewById(2131367058).setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = new Rect();
-    this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.b.getWindowVisibleDisplayFrame((Rect)localObject);
-    int j = this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.b.getRootView().getHeight();
-    int k = j - ((Rect)localObject).bottom;
-    StringBuilder localStringBuilder;
-    if (k != OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew))
-    {
-      OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew, k);
-      if (k <= j * 0.15D) {
-        break label269;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.c.setVisibility(8);
-      try
-      {
-        localObject = this.jdField_a_of_type_AndroidWidgetEditText.getText();
-        bdob[] arrayOfbdob = (bdob[])((Spannable)localObject).getSpans(0, ((Spannable)localObject).length(), bdob.class);
-        if ((arrayOfbdob != null) && (arrayOfbdob.length > 0))
-        {
-          int m = arrayOfbdob.length;
-          int i = 0;
-          while (i < m)
-          {
-            ((Spannable)localObject).removeSpan(arrayOfbdob[i]);
-            i += 1;
-          }
-        }
-        if (!QLog.isColorLevel()) {
-          break label268;
-        }
-      }
-      catch (Exception localException)
-      {
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew, this.jdField_a_of_type_AndroidWidgetEditText.getText(), true));
-        localException.printStackTrace();
-      }
-      localStringBuilder = new StringBuilder().append("OnGlobalLayoutListener showKeyboard:");
-      if (k <= j * 0.15D) {
-        break label341;
-      }
+    if (this.a.jdField_a_of_type_Aygk != null) {
+      this.a.jdField_a_of_type_Aygk.a();
     }
-    label268:
-    label269:
-    label341:
-    for (boolean bool = true;; bool = false)
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
+    paramaygm = aygb.a(this.a).a;
+    if (this.a.c()) {}
+    for (int i = 1;; i = 2)
     {
-      QLog.d("OCRResultFragmentNew", 2, bool);
+      ayel.a(paramaygm, i);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.c.setVisibility(0);
-      apfg.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.c, false, 0);
-      if (this.jdField_a_of_type_AndroidWidgetEditText.hasSelection()) {
-        this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-      }
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew, this.jdField_a_of_type_AndroidWidgetEditText.getText(), true));
-      break;
     }
   }
 }

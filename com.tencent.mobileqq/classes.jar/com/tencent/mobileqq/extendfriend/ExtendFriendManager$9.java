@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.extendfriend;
 
-import aoor;
-import asfu;
-import asgc;
+import apch;
+import asvi;
+import asvq;
 
 public class ExtendFriendManager$9
   implements Runnable
 {
-  public ExtendFriendManager$9(asfu paramasfu) {}
+  public ExtendFriendManager$9(asvi paramasvi) {}
   
   public void run()
   {
-    aoor.a(new asgc(this, "extend_friend", false));
+    apch.a(new asvq(this, "extend_friend", false));
   }
 }
 

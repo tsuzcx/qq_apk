@@ -1,33 +1,24 @@
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import java.util.ArrayList;
 
-public class akvg
-  implements akul
+class akvg
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public akvg(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
+  akvg(akvf paramakvf, Intent paramIntent, ArrayList paramArrayList) {}
   
-  public void a()
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineBegin---");
+    ((NewPhotoListActivity)this.jdField_a_of_type_Akvf.mActivity).cancleProgressDailog();
+    if (bqyp.a(this.jdField_a_of_type_Akvf.mActivity, paramLocalMediaInfo))
+    {
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
+      PhotoUtils.a(this.jdField_a_of_type_Akvf.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
     }
-    DrawRedpacketPannelPreviewFragment.a(this.a, false);
-    DrawRedpacketPannelPreviewFragment.a(this.a);
-    DrawRedpacketPannelPreviewFragment.d(this.a).setTextColor(Color.parseColor("#878B99"));
-    DrawRedpacketPannelPreviewFragment.d(this.a).setText(anni.a(2131702324));
   }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineFinish---");
-    }
-    DrawRedpacketPannelPreviewFragment.c(this.a);
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
 }
 
 

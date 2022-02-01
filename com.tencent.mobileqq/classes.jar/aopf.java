@@ -1,18 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoWifi;
-
-public final class aopf
-  implements Parcelable.Creator<SosoInterface.SosoWifi>
+class aopf
+  extends anwt
 {
-  public SosoInterface.SosoWifi a(Parcel paramParcel)
-  {
-    return new SosoInterface.SosoWifi(paramParcel);
-  }
+  private aopf(aope paramaope) {}
   
-  public SosoInterface.SosoWifi[] a(int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    return new SosoInterface.SosoWifi[paramInt];
+    this.a.b(1007, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
   }
 }
 

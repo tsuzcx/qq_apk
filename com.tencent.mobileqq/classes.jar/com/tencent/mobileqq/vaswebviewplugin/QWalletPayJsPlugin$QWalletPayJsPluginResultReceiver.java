@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import akwr;
+import alig;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -42,7 +42,7 @@ public class QWalletPayJsPlugin$QWalletPayJsPluginResultReceiver
       if (localActivity == null) {
         break;
       }
-      paramBundle = akwr.a(paramInt, paramBundle, localActivity);
+      paramBundle = alig.a(paramInt, paramBundle, localActivity);
     } while (paramBundle == null);
     QWalletPayJsPlugin.access$000(this.mJsPlugin, paramBundle.toString());
     return;

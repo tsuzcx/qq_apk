@@ -1,9 +1,11 @@
+import android.graphics.drawable.Drawable;
+
 public class agfw
 {
-  long a;
-  long b;
-  long c;
-  long d;
+  public int a;
+  public Drawable a;
+  public String a;
+  public boolean a;
 }
 
 

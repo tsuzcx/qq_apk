@@ -1,27 +1,19 @@
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class uxm
-  extends JSONObject
+  implements View.OnClickListener
 {
-  public uxm(uxl paramuxl, String paramString)
-  {
-    super(paramString);
-  }
+  public uxm(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public int getInt(String paramString)
+  public void onClick(View paramView)
   {
-    if (!has(paramString)) {
-      return 0;
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
     }
-    return super.getInt(paramString);
-  }
-  
-  public String getString(String paramString)
-  {
-    if (!has(paramString)) {
-      return "";
-    }
-    return super.getString(paramString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend;
 
-import aiki;
-import aikk;
-import aikl;
+import aiub;
+import aiud;
+import aiue;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bctj;
-import bgsp;
+import bdmc;
+import bhsr;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -22,9 +22,9 @@ public class ScenesRecommendManager
   extends BroadcastReceiver
   implements Manager
 {
-  aikk jdField_a_of_type_Aikk;
+  aiud jdField_a_of_type_Aiud;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  List<aiki> jdField_a_of_type_JavaUtilList = null;
+  List<aiub> jdField_a_of_type_JavaUtilList = null;
   
   public ScenesRecommendManager() {}
   
@@ -41,64 +41,64 @@ public class ScenesRecommendManager
     return (ScenesRecommendManager)paramQQAppInterface.getManager(364);
   }
   
-  private void a(aiki paramaiki)
+  private void a(aiub paramaiub)
   {
-    QLog.i("ScenesRecommendManager", 0, "doScenesEmotionRecommend ScenesRecommendItem is " + paramaiki.a());
-    if (this.jdField_a_of_type_Aikk == null) {
+    QLog.i("ScenesRecommendManager", 0, "doScenesEmotionRecommend ScenesRecommendItem is " + paramaiub.a());
+    if (this.jdField_a_of_type_Aiud == null) {
       return;
     }
-    this.jdField_a_of_type_Aikk.a(paramaiki);
+    this.jdField_a_of_type_Aiud.a(paramaiub);
   }
   
   private boolean a(String paramString)
   {
-    if (this.jdField_a_of_type_Aikk == null) {
+    if (this.jdField_a_of_type_Aiud == null) {
       return false;
     }
-    return this.jdField_a_of_type_Aikk.a(paramString);
+    return this.jdField_a_of_type_Aiud.a(paramString);
   }
   
-  private aiki b(String paramString)
+  private aiub b(String paramString)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       return null;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    aiki localaiki;
+    aiub localaiub;
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
-      localaiki = (aiki)localIterator.next();
-    } while ((localaiki.d() == null) || (!localaiki.d().equalsIgnoreCase(paramString)));
-    for (paramString = localaiki;; paramString = null) {
+      localaiub = (aiub)localIterator.next();
+    } while ((localaiub.d() == null) || (!localaiub.d().equalsIgnoreCase(paramString)));
+    for (paramString = localaiub;; paramString = null) {
       return paramString;
     }
   }
   
-  public aiki a(String paramString)
+  public aiub a(String paramString)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       return null;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    aiki localaiki;
+    aiub localaiub;
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
-      localaiki = (aiki)localIterator.next();
-    } while ((localaiki.a() == null) || (!localaiki.a().equalsIgnoreCase(paramString)));
-    for (paramString = localaiki;; paramString = null) {
+      localaiub = (aiub)localIterator.next();
+    } while ((localaiub.a() == null) || (!localaiub.a().equalsIgnoreCase(paramString)));
+    for (paramString = localaiub;; paramString = null) {
       return paramString;
     }
   }
   
   public void a()
   {
-    String str = aikl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    String str = aiue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     QLog.i("ScenesRecommendManager", 0, "loadConfigFromLoacl config is " + str);
     a(str);
   }
@@ -115,7 +115,7 @@ public class ScenesRecommendManager
     }
     localHashMap.put("kov", str);
     localHashMap.put("result", paramInt + "");
-    paramString = bctj.a(BaseApplication.getContext());
+    paramString = bdmc.a(BaseApplication.getContext());
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
@@ -124,14 +124,14 @@ public class ScenesRecommendManager
     }
   }
   
-  public void a(aikk paramaikk)
+  public void a(aiud paramaiud)
   {
-    this.jdField_a_of_type_Aikk = paramaikk;
+    this.jdField_a_of_type_Aiud = paramaiud;
   }
   
   public void a(String paramString)
   {
-    if (bgsp.a(paramString)) {
+    if (bhsr.a(paramString)) {
       return;
     }
     if (this.jdField_a_of_type_JavaUtilList == null) {
@@ -139,7 +139,7 @@ public class ScenesRecommendManager
     }
     for (;;)
     {
-      paramString = aikl.a(paramString);
+      paramString = aiue.a(paramString);
       if (paramString == null) {
         break;
       }

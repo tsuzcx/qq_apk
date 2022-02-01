@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import bccg;
-import bcst;
+import bcuy;
+import bdll;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class Leba$7
@@ -11,9 +11,9 @@ class Leba$7
   
   public void run()
   {
-    bccg localbccg = (bccg)this.this$0.a.getManager(12);
-    if ((localbccg != null) && ((localbccg.a(601L)) || ((this.a > 0L) && (localbccg.a(this.a))))) {
-      bcst.b(this.this$0.a, "CliOper", "", "", "app_center", "new_exposure", 0, 0, "", "", "", "");
+    bcuy localbcuy = (bcuy)this.this$0.a.getManager(12);
+    if ((localbcuy != null) && ((localbcuy.a(601L)) || ((this.a > 0L) && (localbcuy.a(this.a))))) {
+      bdll.b(this.this$0.a, "CliOper", "", "", "app_center", "new_exposure", 0, 0, "", "", "", "");
     }
   }
 }

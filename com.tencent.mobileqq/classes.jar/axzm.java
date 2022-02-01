@@ -1,14 +1,10 @@
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class axzm
-  extends axxt
+final class axzm
+  implements DialogInterface.OnClickListener
 {
-  public TextView g;
-  
-  public axzm(axzl paramaxzl)
-  {
-    super(paramaxzl);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

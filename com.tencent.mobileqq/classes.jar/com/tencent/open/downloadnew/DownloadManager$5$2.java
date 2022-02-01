@@ -1,26 +1,26 @@
 package com.tencent.open.downloadnew;
 
-import bisy;
-import bivr;
-import bivx;
+import bjtx;
+import bjwq;
+import bjww;
 
 public class DownloadManager$5$2
   implements Runnable
 {
-  public DownloadManager$5$2(bivx parambivx, long paramLong1, long paramLong2, String paramString) {}
+  public DownloadManager$5$2(bjww parambjww, long paramLong1, long paramLong2, String paramString) {}
   
   public void run()
   {
     int i = (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b);
-    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Bivx.a.c(this.jdField_a_of_type_JavaLangString, i);
+    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Bjww.a.c(this.jdField_a_of_type_JavaLangString, i);
     if (localDownloadInfo == null) {
-      bisy.d("DownloadManager_", "OnDownloadSDKTaskProgressChanged info == null");
+      bjtx.d("DownloadManager_", "OnDownloadSDKTaskProgressChanged info == null");
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bivx.a.a(2, localDownloadInfo);
+      this.jdField_a_of_type_Bjww.a.a(2, localDownloadInfo);
       return;
-      bisy.a("DownloadManager_", "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.f);
+      bjtx.a("DownloadManager_", "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.f);
     }
   }
 }

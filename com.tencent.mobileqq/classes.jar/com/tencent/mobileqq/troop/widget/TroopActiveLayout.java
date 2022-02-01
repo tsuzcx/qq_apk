@@ -15,8 +15,8 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bclx;
-import bglc;
+import bdep;
+import bhld;
 import com.tencent.commonsdk.cache.Sizeable;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -28,7 +28,7 @@ public class TroopActiveLayout
   extends View
   implements Handler.Callback
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842489, 2130842490, 2130842490, 2130842491, 2130842492, 2130842493 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842502, 2130842503, 2130842503, 2130842504, 2130842505, 2130842506 };
   private int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
@@ -58,12 +58,12 @@ public class TroopActiveLayout
   public TroopActiveLayout(Context arg1, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(???, paramAttributeSet, paramInt);
-    Sizeable localSizeable = bglc.a("TroopActiveLayout_cache");
+    Sizeable localSizeable = bhld.a("TroopActiveLayout_cache");
     paramAttributeSet = localSizeable;
     if (!(localSizeable instanceof TroopActiveLayout.SizeableBitmapCache))
     {
       paramAttributeSet = new TroopActiveLayout.SizeableBitmapCache(41702);
-      bglc.a("TroopActiveLayout_cache", paramAttributeSet);
+      bhld.a("TroopActiveLayout_cache", paramAttributeSet);
     }
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache = ((TroopActiveLayout.SizeableBitmapCache)paramAttributeSet);
     this.jdField_a_of_type_AndroidContentContext = ???;
@@ -71,7 +71,7 @@ public class TroopActiveLayout
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.jdField_b_of_type_Int / 2 + 1);
-      this.c = bclx.a(3.0F);
+      this.c = bdep.a(3.0F);
       this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(this.jdField_b_of_type_Int / 2 + 1);
       this.jdField_b_of_type_AndroidOsHandler = new Handler(ThreadManagerV2.getSubThreadLooper(), this);
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();

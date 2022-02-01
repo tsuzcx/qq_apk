@@ -1,18 +1,8 @@
-import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class osw
-  implements View.OnClickListener
-{
-  osw(ost paramost) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
-}
+public abstract interface osw
+  extends View.OnClickListener, osq
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,18 +1,26 @@
 package com.tencent.qqmini.minigame;
 
 import android.os.Handler;
-import com.tencent.mobileqq.triton.sdk.FPSCallback;
-import com.tencent.qqmini.sdk.report.MiniGamePerformanceStatics;
+import com.tencent.mobileqq.triton.TritonEngine;
+import com.tencent.mobileqq.triton.engine.EngineState;
+import com.tencent.mobileqq.triton.statistic.StatisticsManager;
+import com.tencent.qqmini.sdk.core.utils.thread.ThreadPools;
 
 class GameRuntime$1
-  implements FPSCallback
+  implements Runnable
 {
   GameRuntime$1(GameRuntime paramGameRuntime) {}
   
-  public void onFPSChange(float paramFloat)
+  public void run()
   {
-    GameRuntime.access$000(this.this$0).onGetFps(paramFloat);
-    GameRuntime.access$200(this.this$0).post(new GameRuntime.1.1(this, paramFloat));
+    if ((GameRuntime.access$000(this.this$0) != null) && (GameRuntime.access$000(this.this$0).getState() != EngineState.DESTROYED))
+    {
+      float f = GameRuntime.access$000(this.this$0).getStatisticsManager().getCurrentFPS();
+      if (GameRuntime.access$100(this.this$0) != null) {
+        GameRuntime.access$100(this.this$0).updateMonitorFPSText(f);
+      }
+    }
+    ThreadPools.getMainThreadHandler().postDelayed(this, 1000L);
   }
 }
 

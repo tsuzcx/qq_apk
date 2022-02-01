@@ -1,152 +1,41 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.Map;
-
 public class xvm
-  extends AbsVideoInfoWidget
-  implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean e;
+  private double jdField_a_of_type_Double = 1.0D;
+  private long jdField_a_of_type_Long;
   
-  public xvm(ViewGroup paramViewGroup)
+  public xvm()
   {
-    super(paramViewGroup);
+    a();
   }
   
-  public String a()
+  private long b()
   {
-    return "UploadStatusVideoInfoWidget";
+    return (System.nanoTime() / 1000L * this.jdField_a_of_type_Double);
   }
   
-  public void a(View paramView)
+  public double a()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131380812));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380814));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131380813));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380815));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    return this.jdField_a_of_type_Double;
   }
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public long a()
   {
-    if (paramStoryVideoItem.isUploadFail())
-    {
-      j();
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      switch (paramStoryVideoItem.mUpLoadFailedError)
-      {
-      default: 
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131698522);
-      }
-      while (this.e)
-      {
-        this.e = false;
-        yqu.a("play_video", "retrypub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from), "", "", paramStoryVideoItem.mVid });
-        return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131698524);
-      }
-      yqu.a("play_video", "exp_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from), "", "", paramStoryVideoItem.mVid });
-      return;
-    }
-    if (paramStoryVideoItem.isUploading())
-    {
-      j();
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      int i = wik.a().a(paramStoryVideoItem.mVid);
-      if (i >= 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131714597) + i + "%");
-      }
-      for (;;)
-      {
-        wik.a().a(paramStoryVideoItem.mVid, new xvn(this));
-        return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131714599));
-      }
-    }
-    k();
+    return b() - this.jdField_a_of_type_Long;
   }
   
-  public void a(@NonNull Map<Subscriber, String> paramMap)
+  public long a(long paramLong)
   {
-    paramMap.put(new xvo(this), "");
+    return paramLong - a();
   }
   
-  public void a(@NonNull xne paramxne, @NonNull StoryVideoItem paramStoryVideoItem)
+  public void a()
   {
-    a(paramStoryVideoItem);
+    a(0L);
   }
   
-  public boolean a(@NonNull xne paramxne, @NonNull StoryVideoItem paramStoryVideoItem)
+  public void a(long paramLong)
   {
-    return (paramStoryVideoItem.isUploadFail()) || (paramStoryVideoItem.isUploading());
-  }
-  
-  public int b()
-  {
-    return 2131561868;
-  }
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void onClick(View paramView)
-  {
-    StoryVideoItem localStoryVideoItem;
-    if (this.jdField_a_of_type_Xne != null)
-    {
-      localStoryVideoItem = this.jdField_a_of_type_Xne.a();
-      if (localStoryVideoItem != null) {
-        break label41;
-      }
-      yqp.d(this.b, "video item not found ,click error..");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localStoryVideoItem = null;
-      break;
-      label41:
-      switch (paramView.getId())
-      {
-      default: 
-        break;
-      case 2131380812: 
-        switch (localStoryVideoItem.mUploadStatus)
-        {
-        }
-        break;
-      }
-    }
-    if (!xfe.a(localStoryVideoItem, b())) {
-      yqu.a("play_video", "retrypub_fail", 0, 0, new String[0]);
-    }
-    for (;;)
-    {
-      yqu.a("play_video", "clk_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from) });
-      yqp.b(this.b, "on retry click !");
-      break;
-      this.e = true;
-    }
+    this.jdField_a_of_type_Long = (b() - paramLong);
   }
 }
 

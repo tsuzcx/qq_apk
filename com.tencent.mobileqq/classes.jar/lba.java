@@ -1,6 +1,10 @@
-class lba
+import android.os.Bundle;
+
+public abstract interface lba
 {
-  private static lax a = new lax(null);
+  public abstract void a();
+  
+  public abstract void a(Bundle paramBundle);
 }
 
 

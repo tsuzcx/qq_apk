@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.structmsg;
 
-import bcvo;
+import bdoh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.medalwall.MedalWallMng;
 
 public class AbsShareMsg$1$1
   implements Runnable
 {
-  public AbsShareMsg$1$1(bcvo parambcvo, QQAppInterface paramQQAppInterface) {}
+  public AbsShareMsg$1$1(bdoh parambdoh, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

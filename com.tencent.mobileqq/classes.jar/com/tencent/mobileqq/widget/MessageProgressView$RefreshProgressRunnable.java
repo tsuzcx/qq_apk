@@ -2,7 +2,7 @@ package com.tencent.mobileqq.widget;
 
 import android.os.SystemClock;
 import android.support.v4.view.ViewCompat;
-import bhye;
+import bizc;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageProgressView$RefreshProgressRunnable
@@ -77,8 +77,8 @@ public class MessageProgressView$RefreshProgressRunnable
             if (QLog.isColorLevel()) {
               QLog.e("MessageProgressView", 2, " stopAnim in run key=" + this.jdField_a_of_type_JavaLangString);
             }
-            if (this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.jdField_a_of_type_Bhye != null) {
-              this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.jdField_a_of_type_Bhye.a(this.jdField_a_of_type_JavaLangString);
+            if (this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.jdField_a_of_type_Bizc != null) {
+              this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.jdField_a_of_type_Bizc.a(this.jdField_a_of_type_JavaLangString);
             }
           }
           else if (this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView != null)

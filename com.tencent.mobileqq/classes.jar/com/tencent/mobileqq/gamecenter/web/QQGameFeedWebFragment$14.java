@@ -1,41 +1,33 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import aceh;
-import ampj;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import auue;
-import com.tencent.mobileqq.gamecenter.protocol.GmpEnterInfoRsp;
-import com.tencent.mobileqq.gamecenter.view.NavBarQQGamePub;
+import android.os.SystemClock;
+import avmc;
+import avoc;
+import blhn;
+import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
 
 class QQGameFeedWebFragment$14
   implements Runnable
 {
-  QQGameFeedWebFragment$14(QQGameFeedWebFragment paramQQGameFeedWebFragment, GmpEnterInfoRsp paramGmpEnterInfoRsp) {}
+  QQGameFeedWebFragment$14(QQGameFeedWebFragment paramQQGameFeedWebFragment, int paramInt) {}
   
   public void run()
   {
-    if ((this.this$0.getActivity() != null) && (!this.this$0.getActivity().isFinishing()) && (this.this$0.isAdded()) && (this.this$0.a != null))
+    if (QQGameFeedWebFragment.a(this.this$0) != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GameWebPage", 1, "show game enter icon");
+      String str = avmc.a();
+      if (blhn.a(str))
+      {
+        str = QQGameFeedWebFragment.a(this.this$0, str, QQGameFeedWebFragment.a(this.this$0), this.a);
+        if (QLog.isColorLevel()) {
+          QLog.d("GameWebPage", 1, "paramUrl = " + str);
+        }
+        this.this$0.f = SystemClock.elapsedRealtime();
+        this.this$0.d = System.currentTimeMillis();
+        QQGameFeedWebFragment.a(this.this$0).setmTimeBeforeLoadUrl(System.currentTimeMillis());
+        QQGameFeedWebFragment.a(this.this$0).loadUrl(str);
       }
-      this.this$0.a.setCurType(1);
-      this.this$0.a.a(false);
-      this.this$0.a.a(this.a.icon, this.a.content, this.a.url);
-      this.this$0.a.setmBubbleid(this.a.bubble_id);
-      auue.a(this.a);
-      HashMap localHashMap = new HashMap();
-      if (!TextUtils.isEmpty(this.a.bubble_id)) {
-        localHashMap.put(Integer.valueOf(2), this.a.bubble_id);
-      }
-      localHashMap.put(Integer.valueOf(3), "3");
-      localHashMap.put(Integer.valueOf(4), "8");
-      localHashMap.put(Integer.valueOf(24), "1");
-      aceh.a(ampj.a(), "770", "207021", "", "77002", "1", "160", localHashMap);
     }
   }
 }

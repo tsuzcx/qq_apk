@@ -1,42 +1,66 @@
+import android.text.Editable;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.PinnedFooterExpandableListView;
 
 public class alrz
-  implements bkmy
+  implements View.OnFocusChangeListener
 {
-  public alrz(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  public alrz(LoginView paramLoginView) {}
   
-  public void a()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.a.a = true;
-    FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
-  }
-  
-  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
-  {
-    if (!this.a.a)
-    {
-      if (paramInt - 1 >= 0) {
-        paramPinnedFooterExpandableListView.b(paramInt - 1);
-      }
-      for (;;)
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
+      if (true == paramBoolean)
       {
-        this.a.a = true;
-        FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendTeamListInnerFrameNew", 2, "header group unusal: " + paramInt);
+        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.length());
+        if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.isPopupShowing()) {
+          this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.dismissDropDown();
         }
+        if ((this.a.b != null) && (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length() > 0)) {
+          this.a.b.setVisibility(0);
+        }
+        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
+        if (!alri.a(alri.a)) {}
       }
     }
-    if (paramPinnedFooterExpandableListView.c(paramInt))
+    while (paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText)
     {
-      paramPinnedFooterExpandableListView.b(paramInt);
+      return;
+      if ((LoginView.a(this.a).isActive(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView)) && (QLog.isColorLevel())) {
+        QLog.d("InputMethodRelativeLayout", 2, "isActive(mAutoTextAccount)");
+      }
+      this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setHint("");
+      return;
+      if ((this.a.b != null) && (this.a.b.isShown())) {
+        this.a.b.setVisibility(8);
+      }
+      paramView = new SpannableString(anzj.a(2131706441));
+      paramView.setSpan(new AbsoluteSizeSpan(17, true), 0, paramView.length(), 33);
+      this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setHint(paramView);
       return;
     }
-    paramPinnedFooterExpandableListView.a(paramInt);
+    if (true == paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.getText().length());
+      this.a.c.setVisibility(0);
+      if (LoginView.a(this.a).isActive(this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText)) {
+        LoginView.a(this.a).showSoftInput(this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText, 2);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setHint("");
+      return;
+    }
+    this.a.c.setVisibility(8);
+    paramView = new SpannableString(anzj.a(2131705247));
+    paramView.setSpan(new AbsoluteSizeSpan(17, true), 0, paramView.length(), 33);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setHint(paramView);
   }
 }
 

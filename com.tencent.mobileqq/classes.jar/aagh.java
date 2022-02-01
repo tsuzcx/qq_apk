@@ -1,17 +1,21 @@
-import android.app.Activity;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
 import android.view.View;
-import com.tencent.biz.subscribe.comment.SubscribeCommentInputPopupWindow.1.1;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aagh
-  implements aaeo
+class aagh
+  implements View.OnClickListener
 {
-  aagh(aagg paramaagg) {}
+  aagh(aagg paramaagg, CertifiedAccountMeta.StUser paramStUser) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    if (this.a.isShowing()) {
-      aagg.a(this.a).runOnUiThread(new SubscribeCommentInputPopupWindow.1.1(this));
-    }
+    abbe.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + aapa.a(this.jdField_a_of_type_Aagg.getExtraTypeInfo()), "clk_shop", 0, 0, new String[0]);
+    aaej.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,31 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class smf
-  implements bkle
+  implements View.OnClickListener
 {
-  public smf(ChannelClassificationListView paramChannelClassificationListView) {}
+  public smf(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    JSONObject localJSONObject;
-    if (paramInt == 4098) {
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("channelid", ChannelClassificationListView.a(this.a));
-      oat.a(null, pha.a() + "", "0X8009934", "0X8009934", 0, 0, "", "", "", localJSONObject.toString(), false);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    PublicTransFragmentActivity.a(this.a.a(), ReadInJoyChannelPanelFragment.class);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

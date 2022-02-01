@@ -1,63 +1,56 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class bcml
+class bcml
+  implements Comparator<bcfn>
 {
-  public static void a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, float paramFloat5, float paramFloat6)
-  {
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(paramFloat5, paramFloat6);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0, paramFloat1, 0, paramFloat2, 0, paramFloat3, 0, paramFloat4);
-    localAnimationSet.addAnimation(localAlphaAnimation);
-    localAnimationSet.addAnimation(localTranslateAnimation);
-    localAnimationSet.setDuration(paramInt);
-    localAnimationSet.setFillEnabled(true);
-    localAnimationSet.setFillBefore(true);
-    localAnimationSet.setFillAfter(true);
-    paramView.startAnimation(localAnimationSet);
-  }
+  bcml(bcmk parambcmk) {}
   
-  public static void a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, Animation.AnimationListener paramAnimationListener)
+  public int a(bcfn parambcfn1, bcfn parambcfn2)
   {
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat3, paramFloat4, 1, 0.5F, 1, 0.5F);
-    localScaleAnimation.setDuration(paramInt);
-    localScaleAnimation.setFillEnabled(true);
-    localScaleAnimation.setFillBefore(true);
-    localScaleAnimation.setFillAfter(true);
-    if (paramAnimationListener != null) {
-      localScaleAnimation.setAnimationListener(paramAnimationListener);
+    int i = -1;
+    Object localObject = (axfr)this.a.a.getManager(11);
+    parambcfn1 = ((axfr)localObject).c(((bcej)parambcfn1).e());
+    parambcfn2 = ((axfr)localObject).c(((bcej)parambcfn2).e());
+    if ((parambcfn1 == null) || (parambcfn2 == null)) {
+      if ((parambcfn1 == null) && (parambcfn2 == null)) {
+        i = 0;
+      }
     }
-    paramView.startAnimation(localScaleAnimation);
-  }
-  
-  public static void a(View paramView, boolean paramBoolean)
-  {
-    a(paramView, paramBoolean, 200);
-  }
-  
-  public static void a(View paramView, boolean paramBoolean, int paramInt)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.2F, 1.0F);
-    localAlphaAnimation.setDuration(paramInt);
-    localAlphaAnimation.setFillAfter(paramBoolean);
-    paramView.startAnimation(localAlphaAnimation);
-  }
-  
-  public static void b(View paramView, boolean paramBoolean)
-  {
-    b(paramView, paramBoolean, 200);
-  }
-  
-  public static void b(View paramView, boolean paramBoolean, int paramInt)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.2F);
-    localAlphaAnimation.setFillAfter(paramBoolean);
-    localAlphaAnimation.setDuration(paramInt);
-    paramView.startAnimation(localAlphaAnimation);
+    boolean bool2;
+    do
+    {
+      do
+      {
+        return i;
+        if (parambcfn2 == null) {}
+        for (i = -1;; i = 1) {
+          return i;
+        }
+        if ((parambcfn1.uin.equals("0")) && (parambcfn2.uin.equals("0"))) {
+          break;
+        }
+        if ((!parambcfn1.uin.equals("0")) && (!parambcfn2.uin.equals("0"))) {
+          return 0;
+        }
+      } while (!parambcfn2.uin.equals("0"));
+      return 1;
+      if (!parambcfn1.uin.equals("0")) {
+        break;
+      }
+      localObject = (anyw)this.a.a.getManager(51);
+      boolean bool1 = ((anyw)localObject).a(parambcfn1.unifiedCode, true);
+      bool2 = ((anyw)localObject).a(parambcfn2.unifiedCode, true);
+      if ((!bool1) && (!bool2)) {
+        break;
+      }
+      if ((bool1) && (bool2)) {
+        return 0;
+      }
+    } while (bool2);
+    return 1;
+    return 0;
   }
 }
 

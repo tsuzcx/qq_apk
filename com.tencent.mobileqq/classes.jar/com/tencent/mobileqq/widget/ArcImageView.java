@@ -45,7 +45,7 @@ public class ArcImageView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167279));
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167302));
       this.jdField_a_of_type_Int = ((int)(getResources().getDisplayMetrics().density * 1.5F));
       this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int);
       return;
@@ -65,7 +65,7 @@ public class ArcImageView
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850388);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850400);
       }
       postInvalidate();
     }

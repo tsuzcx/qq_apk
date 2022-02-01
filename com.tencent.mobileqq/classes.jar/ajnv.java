@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
+import com.tencent.widget.AbsListView;
 
 class ajnv
-  implements DialogInterface.OnClickListener
+  implements blih
 {
-  ajnv(ajnk paramajnk) {}
+  ajnv(ajnu paramajnu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private boolean a(AbsListView paramAbsListView)
   {
-    if (paramInt == 0) {
-      ajnk.a(this.a);
+    return (paramAbsListView.getChildAt(paramAbsListView.getChildCount() - 1) == this.a.a) && (this.a.a.getBottom() == this.a.a.getBottom());
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (a(paramAbsListView))) {
+      this.a.f();
     }
   }
 }

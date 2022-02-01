@@ -1,6 +1,5 @@
 package com.tencent.ttpic.trigger;
 
-import android.util.Log;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.ttpic.model.CharmRange;
 import com.tencent.ttpic.openapi.PTDetectInfo;
@@ -88,7 +87,6 @@ public class StyleChildTriggerCtrlItem
   
   public String getTriggeredPhoto()
   {
-    Log.e("yk", "getTriggeredPhoto");
     Iterator localIterator = this.triggerCtrlItemMap.entrySet().iterator();
     while (localIterator.hasNext())
     {

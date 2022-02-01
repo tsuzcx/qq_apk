@@ -7,15 +7,15 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bkpg;
-import bkph;
+import blqj;
+import blqk;
 
 public class LabelTextView
   extends TextView
-  implements bkph
+  implements blqk
 {
   private int jdField_a_of_type_Int = 2147483647;
-  protected bkpg a;
+  protected blqj a;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
@@ -48,9 +48,9 @@ public class LabelTextView
   
   private void b()
   {
-    this.jdField_a_of_type_Bkpg = new bkpg();
-    this.jdField_a_of_type_Bkpg.a(true);
-    this.jdField_a_of_type_Bkpg.a(bkpg.c);
+    this.jdField_a_of_type_Blqj = new blqj();
+    this.jdField_a_of_type_Blqj.a(true);
+    this.jdField_a_of_type_Blqj.a(blqj.c);
   }
   
   public void a_(Canvas paramCanvas)
@@ -60,9 +60,9 @@ public class LabelTextView
   
   public void draw(Canvas paramCanvas)
   {
-    if ((this.b) && (this.jdField_a_of_type_Bkpg != null))
+    if ((this.b) && (this.jdField_a_of_type_Blqj != null))
     {
-      this.jdField_a_of_type_Bkpg.a(paramCanvas, this);
+      this.jdField_a_of_type_Blqj.a(paramCanvas, this);
       return;
     }
     super.draw(paramCanvas);

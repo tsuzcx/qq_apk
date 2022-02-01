@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app.proxy;
 
-import aonc;
+import apas;
 
 public class DataLineMsgProxy$11
   implements Runnable
 {
-  public DataLineMsgProxy$11(aonc paramaonc, long paramLong) {}
+  public DataLineMsgProxy$11(apas paramapas, long paramLong) {}
   
   public void run()
   {
-    aonc.b(this.this$0, this.a);
+    apas.b(this.this$0, this.a);
   }
 }
 

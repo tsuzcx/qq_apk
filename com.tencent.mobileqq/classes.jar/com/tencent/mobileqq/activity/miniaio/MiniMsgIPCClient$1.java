@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import avmi;
+import awet;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class MiniMsgIPCClient$1
@@ -10,7 +10,7 @@ class MiniMsgIPCClient$1
   
   public void run()
   {
-    avmi.a().a(BaseApplicationImpl.getContext());
+    awet.a().a(BaseApplicationImpl.getContext());
   }
 }
 

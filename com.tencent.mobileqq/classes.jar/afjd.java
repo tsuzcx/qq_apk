@@ -1,16 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.QuickLoginActivity;
+import mqq.observer.AccountObserver;
 
-class afjd
-  implements DialogInterface.OnClickListener
+public class afjd
+  extends AccountObserver
 {
-  afjd(afjb paramafjb, bgpa parambgpa) {}
+  public afjd(QuickLoginActivity paramQuickLoginActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2)
   {
-    bcst.b(this.jdField_a_of_type_Afjb.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Afjb.a.a, "", "", "");
-    this.jdField_a_of_type_Bgpa.cancel();
+    Toast.makeText(this.a.getApplicationContext(), "login failure! check you qq and password!", 0).show();
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    Toast.makeText(this.a.getApplicationContext(), "login suc", 0).show();
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    Toast.makeText(this.a.getApplicationContext(), "login outtime", 0).show();
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    Toast.makeText(this.a.getApplicationContext(), "login cancel", 0).show();
   }
 }
 

@@ -1,74 +1,97 @@
-import android.support.annotation.NonNull;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.DownloadResult.Status;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class bnpt
+class bnpt
+  implements Downloader.DownloadListener
 {
-  public static final bnpt a;
-  public static final bnpt[] a;
-  public static final bnpt b;
-  public static final bnpt[] b;
-  public static final bnpt c;
-  public final int a;
-  public final String a;
-  public final boolean a;
-  public final int b;
-  public final String b;
-  public boolean b;
-  public final int c;
+  bnpt(bnps parambnps, String paramString) {}
   
-  static
+  public void onDownloadCanceled(String paramString)
   {
-    jdField_a_of_type_Bnpt = new bnpt(-1, "215Config");
-    jdField_b_of_type_Bnpt = new bnpt(0, "AEBasePackage", "new_qq_android_native_short_filter_", 84107, 841);
-    jdField_c_of_type_Bnpt = new bnpt(1, "AEAdditionalPackage", "new_qq_android_native_ptu_res_", 84107, 841);
-    jdField_a_of_type_ArrayOfBnpt = new bnpt[] { jdField_a_of_type_Bnpt, jdField_b_of_type_Bnpt, jdField_c_of_type_Bnpt };
-    jdField_b_of_type_ArrayOfBnpt = a();
-  }
-  
-  private bnpt(int paramInt, String paramString)
-  {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private bnpt(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3)
-  {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  private static bnpt[] a()
-  {
-    LinkedList localLinkedList = new LinkedList();
-    bnpt[] arrayOfbnpt = jdField_a_of_type_ArrayOfBnpt;
-    int j = arrayOfbnpt.length;
-    int i = 0;
-    while (i < j)
-    {
-      bnpt localbnpt = arrayOfbnpt[i];
-      if (localbnpt.jdField_a_of_type_Boolean) {
-        localLinkedList.add(localbnpt);
-      }
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, "onDownloadCanceled:" + paramString);
     }
-    return (bnpt[])localLinkedList.toArray(new bnpt[0]);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("code", -1);
+      localJSONObject.put("message", paramString);
+      bnps.a(this.jdField_a_of_type_Bnps).callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadCanceled : " + paramString.getMessage());
+    }
   }
   
-  @NonNull
-  public String toString()
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    return "{index:" + this.jdField_a_of_type_Int + ", description:" + this.jdField_a_of_type_JavaLangString + ", resPrefix:" + this.jdField_b_of_type_JavaLangString + ", resVersionLimit:" + this.jdField_b_of_type_Int + ", resVersion:" + this.jdField_c_of_type_Int + ", isPackage:" + this.jdField_a_of_type_Boolean + "}";
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, "onDownloadFailed:" + paramString);
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString = new JSONObject();
+        if (paramDownloadResult == null) {
+          continue;
+        }
+        DownloadResult.Status localStatus = paramDownloadResult.getStatus();
+        if (localStatus == null) {
+          continue;
+        }
+        paramString.put("code", localStatus.failReason);
+        paramString.put("message", paramDownloadResult.getDetailDownloadInfo());
+      }
+      catch (Exception paramString)
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadFailed : " + paramString.getMessage());
+        return;
+        paramString.put("code", -1);
+        paramString.put("message", "DownloadFailed");
+        continue;
+      }
+      bnps.b(this.jdField_a_of_type_Bnps).callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
+      paramString.put("code", -1);
+    }
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, new Object[] { "onDownloadProgress: ", paramString + " : " + paramLong + " : " + paramFloat });
+    }
+  }
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, "onDownloadSucceed");
+    }
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("code", 0);
+      paramString.put("message", "success");
+      bnps.c(this.jdField_a_of_type_Bnps).callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadSucceed : " + paramString.getMessage());
+    }
   }
 }
 

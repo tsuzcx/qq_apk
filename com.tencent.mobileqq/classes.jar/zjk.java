@@ -1,61 +1,21 @@
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
 public class zjk
+  implements Comparator<RecentUser>
 {
-  public View a;
-  public View b;
+  public zjk(ShareToActivity paramShareToActivity) {}
   
-  public zjk(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.b = paramView.findViewById(2131369846);
-  }
-  
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
-  {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_JavaUtilArrayList.iterator();
-    float f = 0.0F;
-    if (localIterator.hasNext())
-    {
-      switch (((TroopStoryItemInfo)localIterator.next()).itemType)
-      {
-      }
-      for (;;)
-      {
-        break;
-        if ((zkk.b(paramTroopStoryItemInfo.publishTime)) || (zkk.d(paramTroopStoryItemInfo.publishTime)))
-        {
-          f = zlx.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 44.0F) + f;
-        }
-        else
-        {
-          f = zlx.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 71.0F) + f;
-          continue;
-          f = zlx.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
-          continue;
-          f = zlx.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 70.0F) + f;
-          continue;
-          f = zlx.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
-        }
-      }
+    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
+      return -1;
     }
-    int i = (int)(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_Float - f);
-    paramTroopStoryItemInfo = (LinearLayout.LayoutParams)this.b.getLayoutParams();
-    if (i <= 0)
-    {
-      paramTroopStoryItemInfo.height = 0;
-      this.b.setLayoutParams(paramTroopStoryItemInfo);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
+    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
+      return 1;
     }
-    paramTroopStoryItemInfo.height = i;
-    this.b.setLayoutParams(paramTroopStoryItemInfo);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    return 0;
   }
 }
 

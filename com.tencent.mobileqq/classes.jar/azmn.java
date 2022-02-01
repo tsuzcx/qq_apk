@@ -1,45 +1,20 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-public class azmn
+class azmn
 {
-  public List<azmo> a = new ArrayList(1);
+  azmn(azmm paramazmm, boolean paramBoolean) {}
   
-  public String a(String paramString)
+  @QQPermissionDenied(1)
+  public void denied() {}
+  
+  @QQPermissionGrant(1)
+  public void grant()
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      azmo localazmo = (azmo)localIterator.next();
-      if ((paramString != null) && (paramString.equals(localazmo.a))) {
-        return localazmo.b;
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      ((azic)azmm.a(this.jdField_a_of_type_Azmm).getManager(369)).a(9);
     }
-    return null;
-  }
-  
-  public void a(bguh parambguh)
-  {
-    if (parambguh != null)
-    {
-      parambguh.a();
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        parambguh.a(2131365147, ((azmo)localIterator.next()).a, 0);
-      }
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.a.add(new azmo(paramString1, paramString2));
-  }
-  
-  public String toString()
-  {
-    return Arrays.toString(this.a.toArray());
   }
 }
 

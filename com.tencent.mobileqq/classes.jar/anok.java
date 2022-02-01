@@ -1,51 +1,15 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class anok
+final class anok
+  implements anje
 {
-  static SimpleDateFormat a;
-  static SimpleDateFormat b;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
+  anok(anom paramanom, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, amxm paramamxm, int[] paramArrayOfInt) {}
   
-  static
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-    jdField_b_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-  }
-  
-  public static long a(String paramString)
-  {
-    try
-    {
-      l = jdField_a_of_type_JavaTextSimpleDateFormat.parse(paramString).getTime();
-      return l;
+    if (this.jdField_a_of_type_Anom != null) {
+      this.jdField_a_of_type_Anom.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Amxm.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, 22);
     }
-    catch (Exception localException)
-    {
-      long l;
-      localException.printStackTrace();
-      try
-      {
-        l = jdField_b_of_type_JavaTextSimpleDateFormat.parse(paramString).getTime();
-        return l;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    return 0L;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_b_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_Long).append(",").append(this.jdField_b_of_type_Long).append("]");
-    return localStringBuilder.toString();
   }
 }
 

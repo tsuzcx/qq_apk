@@ -1,39 +1,78 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.List;
 
 class yjm
-  extends wfr<yjc, ycf>
+  extends SimpleJob<Object>
 {
-  yjm(yjc paramyjc)
+  yjm(yjl paramyjl, String paramString)
   {
-    super(paramyjc);
+    super(paramString);
   }
   
-  public void a(@NonNull yjc paramyjc, @NonNull ycf paramycf)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    Object localObject = paramyjc.a(paramycf.jdField_a_of_type_JavaLangString);
-    if ((localObject == null) || (paramycf.jdField_a_of_type_Boolean))
+    long l = System.currentTimeMillis();
+    paramJobContext = (wsu)wth.a(19);
+    paramVarArgs = paramJobContext.a(wzn.a(this.a.jdField_b_of_type_JavaLangString));
+    boolean bool;
+    wzr localwzr;
+    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1))
     {
-      yqp.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramycf.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramycf.jdField_a_of_type_Boolean) });
-      return;
+      bool = true;
+      List localList = paramJobContext.a(this.a.jdField_b_of_type_JavaLangString, null, 10L);
+      localwzr = new wzr(this.a.c, new ErrorMessage());
+      localwzr.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
+      localwzr.jdField_b_of_type_Boolean = true;
+      localwzr.c = true;
+      localwzr.e = true;
+      localwzr.jdField_a_of_type_Boolean = false;
+      localwzr.jdField_a_of_type_JavaUtilList = localList;
+      if (localList.size() <= 0) {
+        break label246;
+      }
+      paramJobContext = (VideoCollectionItem)localList.get(localList.size() - 1);
+      label156:
+      if (paramJobContext != null) {
+        break label251;
+      }
+      localwzr.jdField_a_of_type_Boolean = true;
+      this.a.jdField_b_of_type_Boolean = true;
+      label174:
+      wjj.a().dispatch(localwzr);
+      this.a.a(localList, false);
+      if (!localwzr.jdField_a_of_type_Boolean) {
+        break label294;
+      }
     }
-    if (!(localObject instanceof yht))
+    label294:
+    for (paramJobContext = "true";; paramJobContext = "false")
     {
-      yqp.e(this.TAG, "that is error type!");
-      return;
+      yuk.d("Q.qqstory.memories:MemoryDataPuller", "Req first page local data ,isEnd = %s ,spend time = %d", new Object[] { paramJobContext, Long.valueOf(System.currentTimeMillis() - l) });
+      this.a.d();
+      return null;
+      bool = false;
+      break;
+      label246:
+      paramJobContext = null;
+      break label156;
+      label251:
+      if ((paramVarArgs != null) && (paramJobContext.dbIndex >= paramVarArgs.maxCollectionIndex))
+      {
+        localwzr.jdField_a_of_type_Boolean = bool;
+        this.a.jdField_b_of_type_Boolean = true;
+        break label174;
+      }
+      localwzr.jdField_a_of_type_Boolean = false;
+      break label174;
     }
-    localObject = (yht)localObject;
-    ((CommentLikeFeedItem)((yht)localObject).a).mLikeCount = paramycf.b;
-    ((yht)localObject).b(paramycf.jdField_a_of_type_JavaUtilList, true);
-    yjc.a(paramyjc).b(paramycf.jdField_a_of_type_JavaLangString);
   }
-  
-  public Class acceptEventClass()
-  {
-    return ycf.class;
-  }
-  
-  public void b(@NonNull yjc paramyjc, @NonNull ycf paramycf) {}
 }
 
 

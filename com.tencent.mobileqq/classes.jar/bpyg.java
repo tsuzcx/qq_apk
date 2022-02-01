@@ -1,15 +1,16 @@
-import dov.com.qq.im.capture.data.FilterCategory;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bpyg
+public abstract interface bpyg
 {
-  public QIMFilterCategoryItem a;
-  public ArrayList<FilterCategory> a = new ArrayList();
-  public QIMFilterCategoryItem b;
-  public ArrayList<FilterCategory> b = new ArrayList();
-  public ArrayList<QIMFilterCategoryItem> c = new ArrayList();
-  public ArrayList<QIMFilterCategoryItem> d = new ArrayList();
+  public abstract Activity a();
+  
+  public abstract SessionInfo a();
+  
+  public abstract QQAppInterface a();
+  
+  public abstract boolean a();
 }
 
 

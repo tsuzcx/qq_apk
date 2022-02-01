@@ -1,20 +1,59 @@
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class adpq
-  implements biap
+  implements adpm
 {
-  public adpq(BaseChatPie paramBaseChatPie) {}
+  adpn jdField_a_of_type_Adpn;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   
-  public void a(Bundle paramBundle)
+  private void a()
   {
-    this.a.a.b(false);
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
+      try
+      {
+        if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
+        {
+          IntentFilter localIntentFilter = new IntentFilter();
+          localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update");
+          localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update_batch");
+          adpr localadpr = new adpr(this);
+          BaseApplicationImpl.getContext().registerReceiver(localadpr, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+          this.jdField_a_of_type_AndroidContentBroadcastReceiver = localadpr;
+        }
+        return;
+      }
+      finally {}
+    }
   }
   
-  public void b(Bundle paramBundle)
+  public void a(adpn paramadpn)
   {
-    this.a.a.b(true);
+    this.jdField_a_of_type_Adpn = paramadpn;
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    a();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("key", paramString1);
+    localBundle.putInt("type", paramInt);
+    localBundle.putString("appid", paramString2);
+    adne.a(2, localBundle, null);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    a();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("key", paramString1);
+    localBundle.putInt("type", paramInt);
+    localBundle.putString("appid", paramString2);
+    localBundle.putString("api", paramString3);
+    adne.a(3, localBundle, null);
   }
 }
 

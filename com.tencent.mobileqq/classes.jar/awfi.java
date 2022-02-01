@@ -1,88 +1,128 @@
-import android.os.Vibrator;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.ShowReactiveActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.CountDownLatch;
+import java.util.Locale;
+import org.json.JSONObject;
 
-class awfi
-  implements awfu
+public class awfi
+  extends WebViewPlugin
 {
-  awfi(awfh paramawfh) {}
-  
-  public void a()
+  public awfi()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Action", 2, "fun startMagicPlay begins, sumPlayTimes:" + this.a.jdField_c_of_type_Int + ",actionGlobalData.openSound:" + this.a.jdField_a_of_type_Awfj.d);
-    }
-    Object localObject;
-    if (this.a.jdField_c_of_type_Int == 0)
+    this.mPluginNameSpace = "emojiEggSetting";
+  }
+  
+  private void a(int paramInt, String... paramVarArgs)
+  {
+    try
     {
-      this.a.b();
-      if ((this.a.jdField_a_of_type_Awfx.c != null) && (this.a.jdField_a_of_type_Awfx.c.length() > 0) && (this.a.jdField_a_of_type_Awfj.d))
+      Activity localActivity = this.mRuntime.a();
+      paramVarArgs = new JSONObject(paramVarArgs[0]).optString("frd_uin");
+      if (!TextUtils.isEmpty(paramVarArgs))
       {
-        if (this.a.jdField_a_of_type_Awfx.e > 0)
+        Intent localIntent = agej.a(new Intent(localActivity, SplashActivity.class), new int[] { 2 });
+        localIntent.putExtra("uin", paramVarArgs);
+        if (paramInt == 1) {
+          localIntent.putExtra("KEY_SHOULD_SHOW_KEYBOARD", true);
+        }
+        for (;;)
         {
-          localObject = this.a.jdField_a_of_type_Awfx;
-          ((awfx)localObject).e -= 1;
+          localIntent.putExtra("uintype", 0);
+          localActivity.startActivity(localIntent);
+          return;
+          if (paramInt == 2) {
+            localIntent.putExtra("KEY_SHOULD_SHOW_PLUS_PANEL", true);
+          }
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("Action", 2, "fun startMagicPlay begins, start play Sound.");
-        }
-        this.a.jdField_a_of_type_Awgj.a(this.a.jdField_a_of_type_Awfx.c, this.a.jdField_a_of_type_Awfx.e);
-      }
-      if (this.a.jdField_a_of_type_Awfx.a)
-      {
-        this.a.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)BaseApplicationImpl.getContext().getSystemService("vibrator"));
-        if (this.a.jdField_a_of_type_Awfx.h != -1) {
-          break label311;
-        }
-        this.a.jdField_a_of_type_AndroidOsVibrator.vibrate(new long[] { 0L, 1000L }, 0);
-      }
-    }
-    for (;;)
-    {
-      localObject = this.a;
-      ((awfh)localObject).jdField_c_of_type_Int += 1;
-      if (QLog.isColorLevel()) {
-        QLog.d("Action", 2, "fun startMagicPlay ends, sumPlayTimes:" + this.a.jdField_c_of_type_Int);
       }
       return;
-      label311:
-      this.a.jdField_a_of_type_AndroidOsVibrator.vibrate(this.a.jdField_a_of_type_Awfx.h * 1000);
+    }
+    catch (Exception paramVarArgs)
+    {
+      QLog.e("IntimatePlugin", 1, "gotoC2C exception e = ", paramVarArgs);
     }
   }
   
-  public void b()
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Action", 2, "func endMagicPlay begins, isStop:" + this.a.jdField_c_of_type_Boolean + ",timeout:" + this.a.jdField_a_of_type_Int + ",playTimes:" + this.a.jdField_b_of_type_Int + ",sumPlayTimes:" + this.a.jdField_c_of_type_Int + ",isTimeout:" + this.a.jdField_b_of_type_Boolean);
+      QLog.d("IntimatePlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
     }
-    if (this.a.jdField_c_of_type_Boolean) {
-      this.a.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-    }
-    do
+    if ("emojiEggSetting".equals(paramString2))
     {
-      return;
-      if (this.a.jdField_a_of_type_Int == -1)
+      if (!"showVC".equals(paramString3)) {}
+    }
+    else
+    {
+      for (;;)
       {
-        if (this.a.jdField_b_of_type_Int == -1)
+        int i;
+        try
         {
-          this.a.jdField_a_of_type_Awgj.a(this.a.jdField_a_of_type_Awfx);
-          return;
+          paramJsBridgeListener = this.mRuntime.a();
+          i = new JSONObject(paramVarArgs[0]).optInt("entry");
+          paramString1 = new Intent(paramJsBridgeListener, ShowReactiveActivity.class);
+          paramString1.putExtra("entry", i);
+          paramJsBridgeListener.startActivity(paramString1);
+          return true;
         }
-        if (this.a.jdField_b_of_type_Int > this.a.jdField_c_of_type_Int)
+        catch (Exception paramJsBridgeListener)
         {
-          this.a.jdField_a_of_type_Awgj.a(this.a.jdField_a_of_type_Awfx);
-          return;
+          QLog.e("IntimatePlugin", 1, "openConfessAIO exception e = ", paramJsBridgeListener);
+          return false;
         }
-        if (this.a.jdField_b_of_type_Int == this.a.jdField_c_of_type_Int)
+        if ("interactionScore".equals(paramString2))
         {
-          this.a.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-          return;
+          if ("gotoChat".equals(paramString3))
+          {
+            a(1, paramVarArgs);
+            return true;
+          }
+          if ("gotoCall".equals(paramString3))
+          {
+            a(2, paramVarArgs);
+            return true;
+          }
+          if (!"saveConnectionsSwitch".equals(paramString3)) {
+            continue;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("IntimatePlugin", 2, "IntimatePlugin: METHOD_SAVE_CONNECTIONS_SWITCH called");
+          }
+          try
+          {
+            paramJsBridgeListener = this.mRuntime.a();
+            if (paramJsBridgeListener != null)
+            {
+              i = new JSONObject(paramVarArgs[0]).optInt("flag");
+              paramJsBridgeListener.getApp().getSharedPreferences("mayknow_connections_switch", 4).edit().putInt("key_mayknow_connections_switch", i).commit();
+              return true;
+            }
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            QLog.e("IntimatePlugin", 2, "IntimatePlugin: METHOD_SAVE_CONNECTIONS_SWITCH called exception");
+            return true;
+          }
         }
       }
-    } while (this.a.jdField_b_of_type_Boolean);
-    this.a.jdField_a_of_type_Awgj.a(this.a.jdField_a_of_type_Awfx);
+      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    }
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
   }
 }
 

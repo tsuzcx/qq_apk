@@ -1,33 +1,23 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeiq
-  implements View.OnClickListener
+  extends aogl
 {
-  public aeiq(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public aeiq(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt)
   {
-    switch (paramView.getId())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, new Object[] { "onRegPrxyUpdateLoginDevStatus int iState = ", Integer.valueOf(paramInt) });
     }
-    for (;;)
+    if (paramInt == 1)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.a.a.a(29, 2);
+      this.a.a.a(-1, null);
       return;
-      ((baif)this.a.app.getManager(36)).b("100190.100194");
-      Intent localIntent = new Intent();
-      localIntent.putExtra("set_display_type", 1);
-      PublicFragmentActivity.a(this.a.getActivity(), localIntent, QQSettingMsgClearFragment.class);
-      bcst.b(this.a.app, "CliOper", "", "", "0X800A1F2", "0X800A1F2", 0, 0, "", "", "", "");
-      bcst.b(this.a.app, "CliOper", "", "", "Setting_tab", "My_settab_log", 0, 0, "", "", "", "");
     }
+    this.a.a.k();
   }
 }
 

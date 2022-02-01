@@ -1,29 +1,76 @@
-import android.content.Context;
-import android.view.KeyEvent;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimTipsInfo;
+import java.lang.ref.WeakReference;
+import java.util.List;
+import mqq.app.TicketManagerImpl;
+import mqq.os.MqqHandler;
 
 public class akok
-  implements TextView.OnEditorActionListener
+  extends MqqHandler
 {
-  public akok(TransactionActivity paramTransactionActivity) {}
+  private WeakReference<ContactListView> a;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public akok(ContactListView paramContactListView)
   {
-    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
-    {
-      if (TransactionActivity.a(this.a).isEnabled()) {
-        TransactionActivity.a(this.a).performClick();
-      }
-      if (TransactionActivity.a(this.a) != null) {
-        ((InputMethodManager)TransactionActivity.a(this.a).getSystemService("input_method")).hideSoftInputFromWindow(TransactionActivity.c(this.a).getWindowToken(), 0);
+    this.a = new WeakReference(paramContactListView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ContactListView localContactListView = (ContactListView)this.a.get();
+    if (localContactListView == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ContactListView", 2, "UiHandler() handleMessage a == null");
       }
     }
-    return false;
+    do
+    {
+      do
+      {
+        return;
+        switch (paramMessage.what)
+        {
+        case 3: 
+        case 7: 
+        default: 
+          throw new RuntimeException("Unknown message: " + paramMessage.what);
+        case 1: 
+          if ((ContactListView.a(localContactListView)) && (!localContactListView.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.f()))
+          {
+            localContactListView.g();
+            ContactListView.a(localContactListView, false);
+          }
+          localContactListView.j();
+          return;
+        case 2: 
+          localContactListView.j();
+        }
+      } while (bhnv.d(localContactListView.getContext()));
+      localContactListView.i();
+      localContactListView.b(anzj.a(2131701403));
+      return;
+      localContactListView.b = ((List)paramMessage.obj);
+      localContactListView.jdField_a_of_type_Amnr.a(localContactListView.b);
+      localContactListView.jdField_a_of_type_Amnr.notifyDataSetChanged();
+      return;
+      paramMessage = ContactListView.a(localContactListView).getAccount();
+      localObject = (TicketManagerImpl)ContactListView.a(localContactListView).getManager(2);
+    } while (localObject == null);
+    Object localObject = ((TicketManagerImpl)localObject).getA2(paramMessage);
+    if (QLog.isColorLevel()) {
+      QLog.i("ContactListView", 2, "a2 = " + (String)localObject);
+    }
+    QQPimGetTipsInfoIPC.a().a(ContactListView.a(localContactListView), ContactListView.a(localContactListView), paramMessage, (String)localObject);
+    return;
+    ContactListView.a(localContactListView, (QQPimTipsInfo)paramMessage.obj);
+    return;
+    localContactListView.i();
+    localContactListView.l();
   }
 }
 

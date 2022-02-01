@@ -2,7 +2,7 @@ package com.tencent.mobileqq.filemanager.util;
 
 import android.os.Handler;
 import android.os.Looper;
-import atwd;
+import aunt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -10,15 +10,15 @@ import com.tencent.qphone.base.util.QLog;
 public final class FileManagerUtil$20
   implements Runnable
 {
-  public FileManagerUtil$20(FileManagerEntity paramFileManagerEntity, atwd paramatwd, QQAppInterface paramQQAppInterface) {}
+  public FileManagerUtil$20(FileManagerEntity paramFileManagerEntity, aunt paramaunt, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
       QLog.w("CHECK_FILE_EXISTED", 1, "checkFileExisted: entity is null");
-      if (this.jdField_a_of_type_Atwd != null) {
-        this.jdField_a_of_type_Atwd.a(false);
+      if (this.jdField_a_of_type_Aunt != null) {
+        this.jdField_a_of_type_Aunt.a(false);
       }
     }
     do

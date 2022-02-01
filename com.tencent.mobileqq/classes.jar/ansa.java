@@ -1,12 +1,17 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import java.util.List;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.39.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class ansa
+  implements amtj
 {
-  public int a;
-  public long a;
-  public List<PublicAccountInfo> a;
-  public boolean a;
+  public ansa(ApolloPanel paramApolloPanel) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    QLog.d("ApolloPanel", 2, "onStatusUpdate, currentStatus=" + paramInt + "， is3dAvailable=" + paramBoolean);
+    this.a.post(new ApolloPanel.39.1(this));
+  }
 }
 
 

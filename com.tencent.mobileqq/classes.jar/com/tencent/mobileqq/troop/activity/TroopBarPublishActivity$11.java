@@ -3,10 +3,10 @@ package com.tencent.mobileqq.troop.activity;
 import android.graphics.Color;
 import android.os.Build.VERSION;
 import android.widget.TextView;
-import anni;
-import bcst;
-import bggq;
-import bgsg;
+import anzj;
+import bdll;
+import bhgr;
+import bhsi;
 import com.tencent.biz.qqstory.view.widget.TipsView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.tribe.view.TEditText;
@@ -20,13 +20,13 @@ class TroopBarPublishActivity$11
   {
     TroopBarPublishActivity localTroopBarPublishActivity = this.this$0;
     TEditText localTEditText = this.this$0.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText;
-    String str = anni.a(2131713891);
-    int j = bggq.a(this.this$0, 71.0F);
+    String str = anzj.a(2131714000);
+    int j = bhgr.a(this.this$0, 71.0F);
     if (Build.VERSION.SDK_INT < 19)
     {
-      i = bggq.a(this.this$0, 20.0F);
-      TipsView.a(localTroopBarPublishActivity, localTEditText, str, 1, 1, j, i, bggq.a(this.this$0, 20.0F), 5000, Color.argb(204, 0, 0, 0));
-      bgsg.b(this.this$0, this.this$0.app.getCurrentAccountUin(), "tribe_video_post_has_show_tips", true);
+      i = bhgr.a(this.this$0, 20.0F);
+      TipsView.a(localTroopBarPublishActivity, localTEditText, str, 1, 1, j, i, bhgr.a(this.this$0, 20.0F), 5000, Color.argb(204, 0, 0, 0));
+      bhsi.b(this.this$0, this.this$0.app.getCurrentAccountUin(), "tribe_video_post_has_show_tips", true);
       if ((this.this$0.jdField_b_of_type_AndroidWidgetTextView == null) || (this.this$0.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0)) {
         break label157;
       }
@@ -34,7 +34,7 @@ class TroopBarPublishActivity$11
     label157:
     for (int i = 2;; i = 1)
     {
-      bcst.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_guide", i, 0, "", "", "", "");
+      bdll.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_guide", i, 0, "", "", "", "");
       return;
       i = 0;
       break;

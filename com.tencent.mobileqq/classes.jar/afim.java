@@ -1,53 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import java.lang.ref.WeakReference;
 
 public class afim
-  implements bkhw
+  implements abjh
 {
-  public afim(TroopAssistantActivity paramTroopAssistantActivity, int paramInt, String paramString, bkho parambkho) {}
+  WeakReference<QQSettingMe> a;
   
-  public void OnClick(View paramView, int paramInt)
+  public afim(QQSettingMe paramQQSettingMe)
   {
-    if (!bgnt.d(BaseApplication.getContext()))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a = new biax(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a.b(2, 2131693948, 1500);
+    this.a = new WeakReference(paramQQSettingMe);
+  }
+  
+  public int a()
+  {
+    QQSettingMe localQQSettingMe = (QQSettingMe)this.a.get();
+    if (localQQSettingMe != null) {
+      return localQQSettingMe.a();
     }
-    try
-    {
-      if (this.jdField_a_of_type_Bkho != null) {
-        this.jdField_a_of_type_Bkho.dismiss();
-      }
-      return;
-      int i = -1;
-      switch (paramInt)
-      {
-      default: 
-        paramInt = i;
-      }
-      while (paramInt != this.jdField_a_of_type_Int)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app.a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
-        break;
-        paramInt = 1;
-        continue;
-        paramInt = 4;
-        continue;
-        paramInt = 2;
-        continue;
-        paramInt = 3;
-      }
-    }
-    catch (Exception paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("TroopAssistantActivity", 2, paramView.toString());
-    }
+    return 0;
   }
 }
 

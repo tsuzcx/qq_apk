@@ -1,31 +1,11 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
+import com.tencent.ad.tangram.version.AdVersionAdapter;
 
 public class acod
-  implements acpf
+  implements AdVersionAdapter
 {
-  public acod(GdtMotiveVideoFragment paramGdtMotiveVideoFragment) {}
-  
-  public Activity a()
+  public String getAppVersion()
   {
-    return this.a.getActivity();
-  }
-  
-  public void a()
-  {
-    Activity localActivity = a();
-    if (localActivity != null) {
-      localActivity.finish();
-    }
-  }
-  
-  public void a(int paramInt, Intent paramIntent)
-  {
-    Activity localActivity = a();
-    if (localActivity != null) {
-      localActivity.setResult(paramInt, paramIntent);
-    }
+    return acvf.a();
   }
 }
 

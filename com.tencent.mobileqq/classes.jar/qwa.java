@@ -1,19 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.net.URL;
 
-class qwa
-  implements View.OnClickListener
+public class qwa
 {
-  qwa(qvz paramqvz, RecommendFollowInfo paramRecommendFollowInfo) {}
+  private int jdField_a_of_type_Int;
+  private URL jdField_a_of_type_JavaNetURL;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public void onClick(View paramView)
+  public int a()
   {
-    ComponentContentRecommend.a(this.jdField_a_of_type_Qvz.a, "0X80094DA", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-    this.jdField_a_of_type_Qvz.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public URL a()
+  {
+    return this.jdField_a_of_type_JavaNetURL;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(URL paramURL)
+  {
+    this.jdField_a_of_type_JavaNetURL = paramURL;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.b = paramInt;
   }
 }
 

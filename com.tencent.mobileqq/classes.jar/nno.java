@@ -1,41 +1,24 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.app.Activity;
+import android.view.View;
 
-public class nno
-  implements SensorEventListener
+class nno
+  implements bliz
 {
-  protected byte a;
-  protected String a;
+  nno(nnj paramnnj, Activity paramActivity, String paramString, blir paramblir) {}
   
-  public nno(SensorAPIJavaScript paramSensorAPIJavaScript, byte paramByte, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Byte = paramByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    switch (this.jdField_a_of_type_Byte)
+    switch (paramInt)
     {
-    default: 
-      return;
-    case 0: 
-      f1 = paramSensorEvent.values[0];
-      float f2 = paramSensorEvent.values[1];
-      float f3 = paramSensorEvent.values[2];
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1), String.valueOf(f2), String.valueOf(f3) });
-      return;
-    case 1: 
-      f1 = paramSensorEvent.values[0];
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
-      return;
     }
-    float f1 = paramSensorEvent.values[0];
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
+    for (;;)
+    {
+      this.jdField_a_of_type_Blir.dismiss();
+      return;
+      nnj.c(this.jdField_a_of_type_Nnj, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      nnj.a(this.jdField_a_of_type_Nnj, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

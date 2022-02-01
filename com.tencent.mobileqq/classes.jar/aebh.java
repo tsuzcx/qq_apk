@@ -1,22 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aebh
-  implements DialogInterface.OnClickListener
+public final class aebh
+  implements bhor
 {
-  public aebh(DialogActivity paramDialogActivity) {}
+  public aebh(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList conform to setting.");
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent("android.settings.IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS", Uri.parse("package:" + this.a.getPackageName()));
-    this.a.startActivity(paramDialogInterface);
-    this.a.finish();
+    this.jdField_a_of_type_AndroidOsBundle.putInt("MeetingStasks", paramInt);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

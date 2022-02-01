@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import org.json.JSONObject;
-import ult;
+import umr;
 
 public class WSPushOpModel
   implements Parcelable
 {
-  public static final Parcelable.Creator<WSPushOpModel> CREATOR = new ult();
+  public static final Parcelable.Creator<WSPushOpModel> CREATOR = new umr();
   public int a;
   public String a;
   

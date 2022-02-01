@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import com.tencent.qphone.base.util.QLog;
-import ouj;
+import omw;
 
 class ReadInJoyListViewGroup$22
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyListViewGroup$22
   
   public void run()
   {
-    ouj.a().a();
+    omw.a().a();
     QLog.d("ReadInJoyListViewGroup", 2, "transformCommentBiuCard | in recommend feeds and transform ");
   }
 }

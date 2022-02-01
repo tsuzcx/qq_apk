@@ -1,22 +1,18 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.widget.AbsListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akbp
-  extends akbu
+class akbp
+  implements View.OnClickListener
 {
-  public akbp(AvatarPendantActivity paramAvatarPendantActivity)
-  {
-    super(paramAvatarPendantActivity);
-  }
+  akbp(akbo paramakbo, akbr paramakbr) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    if (this.a.e == AvatarPendantActivity.d) {}
-    while (Build.VERSION.SDK_INT < 14) {
-      return;
-    }
-    this.a.b();
+    String str = String.valueOf(this.jdField_a_of_type_Akbr.a.getText());
+    akbo.a(this.jdField_a_of_type_Akbo, str);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -2,20 +2,27 @@ package com.tencent.biz.qqcircle.picload;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import vou;
+import com.tencent.qphone.base.util.QLog;
+import vrd;
 
 class QCircleFeedPicLoader$6
   implements Runnable
 {
-  QCircleFeedPicLoader$6(QCircleFeedPicLoader paramQCircleFeedPicLoader, vou paramvou, Drawable paramDrawable) {}
+  QCircleFeedPicLoader$6(QCircleFeedPicLoader paramQCircleFeedPicLoader, vrd paramvrd, Drawable paramDrawable) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Vou.c())
+    if (this.jdField_a_of_type_Vrd.c())
     {
-      this.jdField_a_of_type_Vou.a().setImageDrawable(null);
-      this.jdField_a_of_type_Vou.a().setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      if (this.jdField_a_of_type_Vrd.a() != null)
+      {
+        this.jdField_a_of_type_Vrd.a().setImageDrawable(null);
+        this.jdField_a_of_type_Vrd.a().setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      }
+      QLog.i(QCircleFeedPicLoader.a, 1, "seq = " + this.jdField_a_of_type_Vrd.a() + " cacheKey = " + this.jdField_a_of_type_Vrd.b() + " showDrawable time " + (System.currentTimeMillis() - this.jdField_a_of_type_Vrd.a.longValue()) + "pic is valid");
+      return;
     }
+    QLog.i(QCircleFeedPicLoader.a, 1, "seq = " + this.jdField_a_of_type_Vrd.a() + " cacheKey = " + this.jdField_a_of_type_Vrd.b() + " showDrawable time " + (System.currentTimeMillis() - this.jdField_a_of_type_Vrd.a.longValue()) + "pic is unValid");
   }
 }
 

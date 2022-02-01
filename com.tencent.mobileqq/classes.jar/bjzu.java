@@ -1,122 +1,43 @@
-import com.tencent.qav.QavDef.MultiUserInfo;
-import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy.MultiUserInfo;
-import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy.VoIPListener;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import mqq.manager.WtloginManager;
+import mqq.observer.SSOAccountObserver;
 
 class bjzu
-  extends bjcp
+  extends SSOAccountObserver
 {
-  bjzu(bjzs parambjzs) {}
+  bjzu(bjzo parambjzo, OpenSDKAppInterface paramOpenSDKAppInterface, bjzw parambjzw) {}
   
-  public void onEnterRoom()
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if (bjzs.a(this.a) != null) {
-      bjzs.a(this.a).onEnterRoom();
-    }
-  }
-  
-  public void onError(int paramInt)
-  {
-    if (bjzs.a(this.a) != null) {
-      bjzs.a(this.a).onError(paramInt);
-    }
-  }
-  
-  public void onUserAudioAvailable(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
-  {
-    if (bjzs.a(this.a) != null)
+    if (paramBundle == null) {}
+    for (Object localObject = "null";; localObject = Integer.valueOf(paramBundle.getInt("code")))
     {
-      VoIPProxy.MultiUserInfo localMultiUserInfo = null;
-      if (paramMultiUserInfo != null)
-      {
-        localMultiUserInfo = new VoIPProxy.MultiUserInfo();
-        localMultiUserInfo.mMicOn = paramMultiUserInfo.mMicOn;
-        localMultiUserInfo.mOpenId = paramMultiUserInfo.mOpenId;
-        localMultiUserInfo.mUin = paramMultiUserInfo.mUin;
-      }
-      bjzs.a(this.a).onUserAudioAvailable(localMultiUserInfo, paramBoolean);
+      QLog.d("SSOAccountObserver", 1, new Object[] { "-->getTicketNoPasswd onFailed", ", action", Integer.valueOf(paramInt1), ", code=", localObject });
+      this.jdField_a_of_type_Bjzw.a(paramString, paramBundle);
+      return;
     }
   }
   
-  public void onUserEnter(QavDef.MultiUserInfo paramMultiUserInfo)
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
   {
-    if (bjzs.a(this.a) != null)
-    {
-      VoIPProxy.MultiUserInfo localMultiUserInfo = null;
-      if (paramMultiUserInfo != null)
-      {
-        localMultiUserInfo = new VoIPProxy.MultiUserInfo();
-        localMultiUserInfo.mMicOn = paramMultiUserInfo.mMicOn;
-        localMultiUserInfo.mOpenId = paramMultiUserInfo.mOpenId;
-        localMultiUserInfo.mUin = paramMultiUserInfo.mUin;
-      }
-      bjzs.a(this.a).onUserEnter(localMultiUserInfo);
+    QLog.d("SSOAccountObserver", 1, "-->getTicketNoPasswd onGetTicketNoPasswd");
+    if ((!paramBundle.getBoolean("fake_callback")) && (paramInt == 4096)) {
+      bjwg.a(paramString, System.currentTimeMillis());
     }
-  }
-  
-  public void onUserExit(QavDef.MultiUserInfo paramMultiUserInfo)
-  {
-    if (bjzs.a(this.a) != null)
-    {
-      VoIPProxy.MultiUserInfo localMultiUserInfo = null;
-      if (paramMultiUserInfo != null)
-      {
-        localMultiUserInfo = new VoIPProxy.MultiUserInfo();
-        localMultiUserInfo.mMicOn = paramMultiUserInfo.mMicOn;
-        localMultiUserInfo.mOpenId = paramMultiUserInfo.mOpenId;
-        localMultiUserInfo.mUin = paramMultiUserInfo.mUin;
-      }
-      bjzs.a(this.a).onUserExit(localMultiUserInfo);
-    }
-  }
-  
-  public void onUserSpeaking(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
-  {
-    if (bjzs.a(this.a) != null)
-    {
-      VoIPProxy.MultiUserInfo localMultiUserInfo = null;
-      if (paramMultiUserInfo != null)
-      {
-        localMultiUserInfo = new VoIPProxy.MultiUserInfo();
-        localMultiUserInfo.mMicOn = paramMultiUserInfo.mMicOn;
-        localMultiUserInfo.mOpenId = paramMultiUserInfo.mOpenId;
-        localMultiUserInfo.mUin = paramMultiUserInfo.mUin;
-      }
-      bjzs.a(this.a).onUserSpeaking(localMultiUserInfo, paramBoolean);
-    }
-  }
-  
-  public void onUserUpdate(List<QavDef.MultiUserInfo> paramList)
-  {
-    if (bjzs.a(this.a) != null)
-    {
-      ArrayList localArrayList = null;
-      if (paramList != null)
-      {
-        localArrayList = new ArrayList();
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          QavDef.MultiUserInfo localMultiUserInfo = (QavDef.MultiUserInfo)paramList.next();
-          if (localMultiUserInfo != null)
-          {
-            VoIPProxy.MultiUserInfo localMultiUserInfo1 = new VoIPProxy.MultiUserInfo();
-            localMultiUserInfo1.mMicOn = localMultiUserInfo.mMicOn;
-            localMultiUserInfo1.mOpenId = localMultiUserInfo.mOpenId;
-            localMultiUserInfo1.mUin = localMultiUserInfo.mUin;
-            localArrayList.add(localMultiUserInfo1);
-          }
-        }
-      }
-      bjzs.a(this.a).onUserUpdate(localArrayList);
-    }
+    WtloginManager localWtloginManager = (WtloginManager)this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getManager(1);
+    bjzb localbjzb = new bjzb();
+    localbjzb.jdField_b_of_type_JavaLangString = new String(paramArrayOfByte);
+    localbjzb.jdField_a_of_type_JavaLangString = Long.toString(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(localWtloginManager, paramString));
+    localbjzb.jdField_a_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp");
+    localbjzb.jdField_b_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp_key");
+    this.jdField_a_of_type_Bjzw.a(localbjzb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjzu
  * JD-Core Version:    0.7.0.1
  */

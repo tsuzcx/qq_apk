@@ -1,45 +1,51 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.AnimationPoint;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class zsd
-  implements View.OnLongClickListener
+  extends ReportDialog
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new zsf(this);
-  View jdField_a_of_type_AndroidViewView;
+  protected TextView a;
+  protected AnimationPoint a;
   
-  public zsd(QRCardActivity paramQRCardActivity) {}
-  
-  @SuppressLint({"ServiceCast", "NewApi"})
-  void a(String paramString)
+  public zsd(Context paramContext)
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (Build.VERSION.SDK_INT < 11) {
-        ((android.text.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
-      }
-    }
-    else {
-      return;
-    }
-    ((android.content.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
+    super(paramContext, 2131755016);
+    View localView = LayoutInflater.from(paramContext).inflate(2131561792, null);
+    localView.setOnTouchListener(new zse(this));
+    super.setContentView(localView);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362692));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367800));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setRadius(zps.a(paramContext, 25.0F));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setLoopTime(2000L);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(4000L);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new zsf(this, paramContext));
   }
   
-  public boolean onLongClick(View paramView)
+  public void a(String paramString)
   {
-    if (paramView == null) {
-      return false;
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    paramView.setSelected(true);
-    bguh localbguh = new bguh();
-    localbguh.a(2131365147, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getString(2131691140), 2130838920);
-    bgkw.a(paramView, localbguh, this.jdField_a_of_type_AndroidViewView$OnClickListener, new zse(this, paramView));
-    return true;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setIsVertical(paramBoolean);
+  }
+  
+  public void dismiss()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.b();
+    super.dismiss();
+  }
+  
+  public void show()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.a();
+    super.show();
   }
 }
 

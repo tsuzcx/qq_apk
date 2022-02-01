@@ -1,32 +1,16 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.qphone.base.util.QLog;
 
 class aacs
-  extends RecyclerView.OnScrollListener
+  implements aaav<T>
 {
-  aacs(aacp paramaacp) {}
+  aacs(aacr paramaacr, String paramString, VSBaseRequest paramVSBaseRequest, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onReceive(boolean paramBoolean, long paramLong, String paramString, T paramT)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((this.a.a instanceof StaggeredGridLayoutManager))
-    {
-      paramRecyclerView = (StaggeredGridLayoutManager)this.a.a;
-      int[] arrayOfInt = new int[paramRecyclerView.getColumnCountForAccessibility(null, null)];
-      paramRecyclerView.findFirstVisibleItemPositions(arrayOfInt);
-      if ((this.a.getLocalPosition(arrayOfInt[0]) <= 0) && (!aacp.b(this.a)))
-      {
-        aacp.a(this.a, true);
-        paramRecyclerView.invalidateSpanAssignments();
-      }
-      if (arrayOfInt[0] > 2) {
-        aacp.a(this.a, false);
-      }
-    }
+    QLog.d(this.jdField_a_of_type_Aacr.getLogTag(), 1, this.jdField_a_of_type_JavaLangString + "onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + this.b);
+    this.jdField_a_of_type_Aacr.handleResponse(paramBoolean, this.jdField_a_of_type_Boolean, paramLong, this.jdField_a_of_type_JavaLangString, paramString, paramT);
   }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 

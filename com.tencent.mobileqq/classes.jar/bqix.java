@@ -1,18 +1,19 @@
-import android.opengl.EGLContext;
+import android.graphics.Bitmap;
 
 public class bqix
 {
-  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  public bqji a;
-  private Object jdField_a_of_type_JavaLangObject;
+  public final int c;
+  public final Bitmap c;
   
-  public void a()
+  public bqix(int paramInt, Bitmap paramBitmap)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = null;
-      return;
-    }
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public String toString()
+  {
+    return "VideoFragmentInfo{blockIndex=" + this.jdField_c_of_type_Int + '}';
   }
 }
 

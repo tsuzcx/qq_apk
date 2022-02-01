@@ -1,19 +1,34 @@
-public final class bkga
+import android.util.Log;
+import com.tencent.qg.qq.GameDemoFragment;
+import com.tencent.qg.sdk.QGGLSurfaceView;
+import com.tencent.qg.sdk.QGRenderer.QGEventListener;
+import com.tencent.qg.sdk.doraemon.DoraemonApiWrapper;
+
+public class bkga
+  implements QGRenderer.QGEventListener
 {
-  public final String a;
-  public final String b;
-  public final String c;
+  public bkga(GameDemoFragment paramGameDemoFragment) {}
   
-  public bkga(String paramString1, String paramString2, String paramString3)
+  public void onCanvasCreated()
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    Log.d("ejecta", "Event: Canvas was created");
+    this.a.a.init();
+    String[] arrayOfString = GameDemoFragment.a(this.a);
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = arrayOfString[i];
+      GameDemoFragment.a(this.a).loadJavaScriptFileFromSDCard(str);
+      i += 1;
+    }
   }
+  
+  public void onDrawFrame() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkga
  * JD-Core Version:    0.7.0.1
  */

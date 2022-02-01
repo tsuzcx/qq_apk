@@ -1,17 +1,19 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.8.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
-import mqq.os.MqqHandler;
+import android.support.annotation.Nullable;
+import java.io.File;
 
 public class xqx
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+  extends wip
 {
-  xqx(xqp paramxqp) {}
+  @Nullable
+  public final File a;
+  public final String a;
+  public final boolean a;
   
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public xqx(String paramString, boolean paramBoolean, File paramFile)
   {
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.8.1(this, paramTVK_IMediaPlayer));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
   }
 }
 

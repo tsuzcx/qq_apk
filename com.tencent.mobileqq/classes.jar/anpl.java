@@ -1,16 +1,48 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.io.File;
+import java.io.FileInputStream;
 
-class anpl
-  implements BusinessObserver
+final class anpl
+  implements anje
 {
-  anpl(anpk paramanpk, String paramString) {}
+  anpl(String paramString, String[] paramArrayOfString, anpj paramanpj) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "setRecommendTroopDeleted uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
+      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
+      if (paramArrayOfInt.exists()) {
+        try
+        {
+          paramString = anpk.a(this.jdField_a_of_type_ArrayOfJavaLangString);
+          if (anpk.a(this.jdField_a_of_type_JavaLangString))
+          {
+            paramArrayOfInt = anpk.a(paramArrayOfInt, paramString);
+            this.jdField_a_of_type_Anpj.a(0, paramString, paramArrayOfInt);
+          }
+          while (QLog.isColorLevel())
+          {
+            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString });
+            return;
+            this.jdField_a_of_type_Anpj.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
+          }
+          this.jdField_a_of_type_Anpj.a(-1, null, null);
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
+          return;
+        }
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Anpj.a(-1, null, null);
     }
   }
 }

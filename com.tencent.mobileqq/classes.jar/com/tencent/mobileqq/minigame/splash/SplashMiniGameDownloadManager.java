@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.splash;
 
-import beaw;
+import bezv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,8 +16,8 @@ public class SplashMiniGameDownloadManager
     {
       try
       {
-        beaw localbeaw = (beaw)paramQQAppInterface.getManager(193);
-        if (localbeaw.a())
+        bezv localbezv = (bezv)paramQQAppInterface.getManager(193);
+        if (localbezv.a())
         {
           String str = "minigame_splash_png";
           if (paramInt == 1)
@@ -25,7 +25,7 @@ public class SplashMiniGameDownloadManager
             str = "minigame_splash_video";
             i = 10087;
             QLog.i("SplashMiniGameDownloadMgr", 1, "downloadPicAGifAVideoRes request appid" + paramString1);
-            localbeaw.a(i, "prd", paramString2, 0, paramString2, paramString3, 2, 0, false, new SplashMiniGameDownloadManager.1(paramQQAppInterface, str, paramString1, paramInt, paramString3, paramString2));
+            localbezv.a(i, "prd", paramString2, 0, paramString2, paramString3, 2, 0, false, new SplashMiniGameDownloadManager.1(paramQQAppInterface, str, paramString1, paramInt, paramString3, paramString2));
           }
         }
         else

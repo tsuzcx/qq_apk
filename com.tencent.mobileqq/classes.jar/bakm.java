@@ -1,14 +1,22 @@
 import android.view.View;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class bakm
-  implements bkpq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$onBindViewHolder$1$1"}, k=3, mv={1, 1, 16})
+final class bakm
+  implements View.OnClickListener
 {
-  public bakm(IosTimepicker paramIosTimepicker) {}
+  bakm(bakg parambakg, bakf parambakf, bakh parambakh, int paramInt) {}
   
-  public void a(View paramView, int paramInt)
+  public final void onClick(View paramView)
   {
-    IosTimepicker.a(this.a, paramView, 1);
+    bakg localbakg = this.jdField_a_of_type_Bakg;
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "view");
+    localbakg.a(paramView, (bakz)bakf.a(this.jdField_a_of_type_Bakf).get(this.jdField_a_of_type_Int));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

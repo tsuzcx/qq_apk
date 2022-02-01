@@ -1,12 +1,18 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-
-public abstract interface bcgb
+public class bcgb
 {
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat);
+  public int a;
+  public CharSequence a;
+  public String a;
+  public boolean a;
+  public int b;
+  public CharSequence b;
+  public String b;
+  public int c;
+  public CharSequence c;
+  public String c;
+  public int d;
   
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo, int paramInt);
-  
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean);
+  public bcgb(bcga parambcga) {}
 }
 
 

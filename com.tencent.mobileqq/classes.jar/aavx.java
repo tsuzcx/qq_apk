@@ -1,29 +1,60 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.troopgift.AIOGiftPanelContainer.2;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aavx
-  extends Handler
+  extends bgst
 {
-  private WeakReference<SquareRoundImageView> a;
+  public aavx(AIOGiftPanelContainer.2 param2, bgsu parambgsu, long paramLong, bgot parambgot) {}
   
-  private aavx(Looper paramLooper, SquareRoundImageView paramSquareRoundImageView)
+  public void a(int paramInt, String paramString)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramSquareRoundImageView);
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOGiftPanelContainer", 2, "onError() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", errorCode = " + paramInt + ", errorMsg = " + paramString);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    if (paramMessage.what == 1)
-    {
-      paramMessage = (SquareRoundImageView)this.a.get();
-      if (paramMessage != null) {
-        SquareRoundImageView.a(paramMessage);
-      }
+    long l = System.currentTimeMillis();
+    int i = this.jdField_a_of_type_Bgsu.a(this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int == 5) {
+      aawm.a(paramString2);
     }
+    do
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AIOGiftPanelContainer", 2, "onGetExtraData() , configURL = " + paramString1 + ", serverVer=" + paramInt + ", localVer=" + i + ", exIds=" + paramString2);
+        }
+        QLog.d("TroopGiftPanel.time", 1, "onGetExtraData, time=" + (l - this.jdField_a_of_type_Long) + ", total=" + (l - this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Long));
+        this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_Aawm = aawm.a(this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+        if ((paramInt > i) || (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_Aawm == null)) {
+          break;
+        }
+        aavw.a(this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0, true);
+        this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.a(0);
+        return;
+        if ((this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int == 6) || (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int == 4)) {
+          aawm.a(paramString2, this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+        }
+      }
+    } while (TextUtils.isEmpty(paramString1));
+    Object localObject = new File(antf.bs);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
+    }
+    localObject = antf.bs + "troopGiftConfig.tmp";
+    paramString1 = new bihu(paramString1, new File((String)localObject));
+    paramString1.b = 3;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("filePath", (String)localObject);
+    this.jdField_a_of_type_Bgot.a().a(paramString1, new aavy(this, l, paramString2, paramInt), localBundle);
   }
 }
 

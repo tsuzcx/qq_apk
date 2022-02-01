@@ -1,41 +1,35 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.emosm.Client;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class arpc
-  extends Handler
 {
-  public arpc(Client paramClient, Looper paramLooper)
+  public static int a = 1;
+  public static int b = 2;
+  public int c = b;
+  
+  private static arpc b(String paramString)
   {
-    super(paramLooper);
+    arpc localarpc = new arpc();
+    try
+    {
+      localarpc.c = new JSONObject(paramString).optInt("action", b);
+      return localarpc;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("UinSearchConfProcessor", 1, paramString, new Object[0]);
+    }
+    return localarpc;
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      do
-      {
-        return;
-        this.a.onRespFromServer(paramMessage.getData());
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_CLIENT_RESP");
-      return;
-      this.a.onPushMsgFromServer(paramMessage.getData());
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_SERVER_DOWNLOAD_STATE");
+    return this.c == a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arpc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import aypo;
+import azih;
 
 class OnlineStatusPermissionManager$1$1
   implements Runnable
@@ -9,7 +9,7 @@ class OnlineStatusPermissionManager$1$1
   
   public void run()
   {
-    aypo.a(this.a.this$0);
+    azih.a(this.a.this$0);
   }
 }
 

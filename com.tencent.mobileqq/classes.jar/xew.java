@@ -1,15 +1,36 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoSimpleInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class xew
-  implements xfa
+public class xew
+  extends wov
 {
-  xew(xev paramxev) {}
+  public List<StoryVideoItem> a = new ArrayList();
   
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  public xew(qqstory_service.RspSimpleInfoList paramRspSimpleInfoList)
   {
-    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
+    super(paramRspSimpleInfoList.result);
+    paramRspSimpleInfoList = paramRspSimpleInfoList.video_list.get();
+    if (paramRspSimpleInfoList != null)
+    {
+      paramRspSimpleInfoList = paramRspSimpleInfoList.iterator();
+      while (paramRspSimpleInfoList.hasNext())
+      {
+        qqstory_struct.StoryVideoSimpleInfo localStoryVideoSimpleInfo = (qqstory_struct.StoryVideoSimpleInfo)paramRspSimpleInfoList.next();
+        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+        localStoryVideoItem.convertFrom("Q.qqstory.net:GetSimpleInfoListResponse", localStoryVideoSimpleInfo);
+        this.a.add(localStoryVideoItem);
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    return "GetSimpleInfoListResponse{mVideoItemList=" + this.a + '}';
   }
 }
 

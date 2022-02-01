@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contacts.base.tabs;
 
-import ajhu;
-import ajhx;
-import ajhy;
-import ajhz;
+import ajtd;
+import ajtg;
+import ajth;
+import ajti;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.graphics.Rect;
@@ -13,7 +13,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bkhe;
+import blih;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -24,12 +24,12 @@ import com.tencent.widget.AbsListView;
 
 public abstract class ContactsBaseFragment
   extends ReportV4Fragment
-  implements ajhu, bkhe
+  implements ajtd, blih
 {
   public static Rect a;
   private int a;
-  protected ajhy a;
-  public ajhz a;
+  protected ajth a;
+  public ajti a;
   public BaseActivity a;
   public QQAppInterface a;
   public boolean a;
@@ -51,14 +51,14 @@ public abstract class ContactsBaseFragment
   
   public abstract void a();
   
-  public void a(ajhy paramajhy)
+  public void a(ajth paramajth)
   {
-    this.jdField_a_of_type_Ajhy = paramajhy;
+    this.jdField_a_of_type_Ajth = paramajth;
   }
   
-  public void a(ajhz paramajhz)
+  public void a(ajti paramajti)
   {
-    this.jdField_a_of_type_Ajhz = paramajhz;
+    this.jdField_a_of_type_Ajti = paramajti;
   }
   
   public void a(BaseActivity paramBaseActivity)
@@ -68,6 +68,9 @@ public abstract class ContactsBaseFragment
   
   public void a(QQAppInterface paramQQAppInterface)
   {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramQQAppInterface != this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      e();
+    }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     d();
   }
@@ -121,7 +124,9 @@ public abstract class ContactsBaseFragment
   
   public void g()
   {
-    e();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      e();
+    }
   }
   
   public void onAttach(Activity paramActivity)
@@ -149,7 +154,7 @@ public abstract class ContactsBaseFragment
     this.jdField_b_of_type_AndroidViewView = a(paramLayoutInflater, paramBundle);
     paramLayoutInflater = a();
     if ((paramLayoutInflater != null) && (Build.VERSION.SDK_INT >= 14)) {
-      paramLayoutInflater.setAccessibilityDelegate(new ajhx(this));
+      paramLayoutInflater.setAccessibilityDelegate(new ajtg(this));
     }
     if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean))
     {
@@ -170,10 +175,13 @@ public abstract class ContactsBaseFragment
       QLog.d("Contacts.BaseFragment", 2, "pos:" + b() + " onDestroy");
     }
     super.onDestroy();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      e();
+    }
     this.jdField_b_of_type_AndroidViewView = null;
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Ajhy != null) {
-      this.jdField_a_of_type_Ajhy.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Ajth != null) {
+      this.jdField_a_of_type_Ajth.a(this.jdField_a_of_type_Int);
     }
   }
   

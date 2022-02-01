@@ -1,26 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class anir
-  extends azjc
+public class anir
+  implements amwb
 {
-  anir(anip paramanip, long paramLong)
+  public anir(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    super(paramLong);
+    if (this.a.a != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsStateActivity", 2, "apolloguestActivity stop loop");
+      }
+      this.a.a.getRenderImpl().a(0L);
+    }
   }
   
-  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
-  {
-    paramUploadImageSize = azjb.a(paramAbstractUploadTask.uploadFilePath);
-    if (paramUploadImageSize != null)
-    {
-      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
-      paramUploadImageSize.recycle();
-      return paramAbstractUploadTask;
-    }
-    return new IUploadConfig.UploadImageSize(640, 1136, 100);
-  }
+  public void a(int paramInt, String paramString) {}
 }
 
 

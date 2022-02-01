@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.anim.friendship.impl;
 
-import agcu;
-import agdt;
+import agmu;
+import agnt;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
@@ -12,14 +12,14 @@ import com.tencent.mobileqq.dinifly.LottieDrawable;
 public class LottieAnimDirector$5
   implements Runnable
 {
-  public LottieAnimDirector$5(agcu paramagcu) {}
+  public LottieAnimDirector$5(agmu paramagmu) {}
   
   public void run()
   {
-    if (agcu.a(this.this$0) != null) {
-      agcu.a(this.this$0).a(agcu.a(this.this$0) + "icon_close.png");
+    if (agmu.a(this.this$0) != null) {
+      agmu.a(this.this$0).a(agmu.a(this.this$0) + "icon_close.png");
     }
-    if ((agcu.a(this.this$0) == null) || (agcu.a(this.this$0).isAnimating())) {
+    if ((agmu.a(this.this$0) == null) || (agmu.a(this.this$0).isAnimating())) {
       return;
     }
     FriendShipLayout localFriendShipLayout = this.this$0.a();
@@ -29,26 +29,26 @@ public class LottieAnimDirector$5
         localFriendShipLayout.removeAllViews();
       }
       this.this$0.a(0);
-      agcu.a(this.this$0, new ImageView(this.this$0.a()));
-      agcu.a(this.this$0).setScaleType(ImageView.ScaleType.CENTER_CROP);
+      agmu.a(this.this$0, new ImageView(this.this$0.a()));
+      agmu.a(this.this$0).setScaleType(ImageView.ScaleType.CENTER_CROP);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
       localLayoutParams.gravity = 81;
       View localView = new View(this.this$0.a());
       localView.setBackgroundColor(-16777216);
       localFriendShipLayout.addView(localView, localLayoutParams);
-      localFriendShipLayout.addView(agcu.a(this.this$0), localLayoutParams);
-      agcu.a(this.this$0).setImageDrawable(agcu.a(this.this$0));
-      agcu.a(this.this$0).a(localView);
-      agcu.a(this.this$0).a(localFriendShipLayout);
+      localFriendShipLayout.addView(agmu.a(this.this$0), localLayoutParams);
+      agmu.a(this.this$0).setImageDrawable(agmu.a(this.this$0));
+      agmu.a(this.this$0).a(localView);
+      agmu.a(this.this$0).a(localFriendShipLayout);
     }
-    if (agcu.a(this.this$0).isAnimating()) {
-      agcu.a(this.this$0).cancelAnimation();
+    if (agmu.a(this.this$0).isAnimating()) {
+      agmu.a(this.this$0).cancelAnimation();
     }
-    if (agcu.a(this.this$0).a()) {
-      agcu.a(this.this$0).b();
+    if (agmu.a(this.this$0).a()) {
+      agmu.a(this.this$0).b();
     }
-    agcu.a(this.this$0).playAnimation();
-    agcu.a(this.this$0).a();
+    agmu.a(this.this$0).playAnimation();
+    agmu.a(this.this$0).a();
   }
 }
 

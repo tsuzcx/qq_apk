@@ -1,43 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.support.annotation.Nullable;
+import java.lang.ref.WeakReference;
 
 class wmi
-  implements wnp
 {
-  wmi(wmf paramwmf, int paramInt, CommentEntry paramCommentEntry) {}
+  private WeakReference<wmh> a;
   
-  public void a(int paramInt, Bundle paramBundle)
+  public wmi(wmh paramwmh)
   {
-    a(-1, anni.a(2131703185));
+    this.a = new WeakReference(paramwmh);
   }
   
-  public void a(int paramInt, String paramString)
+  @Nullable
+  public wmh a()
   {
-    QQToast.a(BaseApplication.getContext(), 1, anni.a(2131703208) + paramInt, 0).a();
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    this.jdField_a_of_type_Wmf.e();
-    if (QLog.isColorLevel()) {
-      QLog.e("FeedCommentLego", 2, new Object[] { "ReqGetLikeList ErrorCode:", Integer.valueOf(paramInt), " | ErrorMsg: ", paramString });
-    }
+    return (wmh)this.a.get();
   }
-  
-  public void a(MessageMicro paramMessageMicro)
-  {
-    this.jdField_a_of_type_Wmf.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Wmf.e();
-    this.jdField_a_of_type_Wmf.jdField_a_of_type_Woj.d(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-    wnb.a().a();
-    this.jdField_a_of_type_Wmf.a(false, null);
-    QQToast.a(BaseApplication.getContext(), 2, anni.a(2131703209), 0).a();
-    wmf.a(this.jdField_a_of_type_Wmf.jdField_a_of_type_Int, 2, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.feedId, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.commentId);
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

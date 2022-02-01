@@ -1,17 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.BaseSearchActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.TextView;
+import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
 
 public class bbhx
-  implements View.OnClickListener
+  extends Animation
 {
-  public bbhx(BaseSearchActivity paramBaseSearchActivity) {}
+  public bbhx(CircleBarView paramCircleBarView) {}
   
-  public void onClick(View paramView)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.applyTransformation(paramFloat, paramTransformation);
+    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
+    CircleBarView.b(this.a, 30.0F);
+    if (CircleBarView.a(this.a) != null)
+    {
+      if (CircleBarView.a(this.a) != null) {
+        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
+      }
+      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
+    }
+    this.a.postInvalidate();
   }
 }
 

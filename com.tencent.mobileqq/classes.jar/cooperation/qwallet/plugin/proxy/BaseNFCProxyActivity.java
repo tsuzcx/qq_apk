@@ -10,9 +10,9 @@ import android.nfc.NfcAdapter;
 import android.nfc.NfcAdapter.ReaderCallback;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import anni;
-import bglp;
-import bgpa;
+import anzj;
+import bhlq;
+import bhpc;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -31,7 +31,7 @@ public class BaseNFCProxyActivity
   
   private void showNoNfcDialog(String paramString1, String paramString2)
   {
-    bglp.a(this, 0, paramString1, paramString2, anni.a(2131699850), anni.a(2131699851), new BaseNFCProxyActivity.1(this), new BaseNFCProxyActivity.2(this)).show();
+    bhlq.a(this, 0, paramString1, paramString2, anzj.a(2131699957), anzj.a(2131699958), new BaseNFCProxyActivity.1(this), new BaseNFCProxyActivity.2(this)).show();
   }
   
   @Override

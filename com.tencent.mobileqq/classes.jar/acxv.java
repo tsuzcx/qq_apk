@@ -1,8 +1,6 @@
-import msf.msgcomm.msg_comm.Msg;
-
 public abstract interface acxv
 {
-  public abstract void a(msg_comm.Msg paramMsg, bbzl parambbzl);
+  public abstract void a(boolean paramBoolean);
 }
 
 

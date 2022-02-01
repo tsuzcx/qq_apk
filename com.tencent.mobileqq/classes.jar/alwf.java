@@ -1,16 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-
 public class alwf
-  implements DialogInterface.OnClickListener
 {
-  public alwf(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.s();
-  }
+  public static final String a = bigv.a(antf.aZ);
+  public static final String b = antf.bi;
+  public static final String c = bigv.a(antf.bj);
+  public static final String d = bfcj.a(antf.ba);
+  public static final String e = antf.bn;
+  public static final String f = antf.bu;
 }
 
 

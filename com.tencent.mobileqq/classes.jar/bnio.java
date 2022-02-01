@@ -1,14 +1,17 @@
+import android.content.Context;
+
 public class bnio
-  extends bnim
 {
-  public int a(int paramInt)
+  public static Context a;
+  
+  public static Context a()
   {
-    return paramInt * -1;
+    return a;
   }
   
-  public boolean a(int paramInt)
+  public static void a(Context paramContext)
   {
-    return paramInt < 0;
+    a = paramContext;
   }
 }
 

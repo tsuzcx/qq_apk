@@ -3,14 +3,14 @@ package com.tencent.mobileqq.mini.widget.media.danmu;
 import android.content.Context;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
-import bgtn;
+import bhtq;
 
 public class AnimationHelper
 {
   public static Animation createTranslateAnim(Context paramContext, int paramInt1, int paramInt2)
   {
     paramContext = new TranslateAnimation(paramInt1, paramInt2, 0.0F, 0.0F);
-    paramContext.setDuration((Math.abs(paramInt2 - paramInt1) * 1.0F / bgtn.a() * 3000.0F));
+    paramContext.setDuration((Math.abs(paramInt2 - paramInt1) * 1.0F / bhtq.a() * 3000.0F));
     paramContext.setInterpolator(new DecelerateAccelerateInterpolator());
     paramContext.setFillAfter(true);
     return paramContext;

@@ -1,24 +1,69 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import android.content.Context;
+import android.util.Base64;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aivr
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements aiwf
 {
-  public aivr(TroopView paramTroopView) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onGlobalLayout()
+  public aivr(Context paramContext)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public int a()
+  {
+    return 66;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      TroopView.a(this.a);
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558651, null);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362521));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362520));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847351);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aivs(this));
     }
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof String))) {
+      paramVarArgs = new String(Base64.decode((String)paramVarArgs[0], 0));
+    }
+    try
+    {
+      paramVarArgs = new JSONObject(paramVarArgs);
+      String str = paramVarArgs.getString("content");
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      this.jdField_a_of_type_JavaLangString = paramVarArgs.getString("url");
+      label150:
+      return this.jdField_a_of_type_AndroidViewView;
+    }
+    catch (JSONException paramVarArgs)
+    {
+      break label150;
+    }
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 17;
   }
 }
 

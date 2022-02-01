@@ -1,14 +1,14 @@
 package dov.com.qq.im.aeeditor.manage;
 
-import bgmg;
-import bobx;
+import bhmi;
+import bpds;
 import java.io.File;
 import java.io.IOException;
 
 public class AEEditorResourceDownloader$1
   implements Runnable
 {
-  public AEEditorResourceDownloader$1(bobx parambobx) {}
+  public AEEditorResourceDownloader$1(bpds parambpds) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class AEEditorResourceDownloader$1
     if (!new File(str).exists()) {}
     try
     {
-      bgmg.a(str);
+      bhmi.a(str);
       return;
     }
     catch (IOException localIOException)

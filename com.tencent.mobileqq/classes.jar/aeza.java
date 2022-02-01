@@ -1,58 +1,81 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.fragment.NearbyBaseFragment;
+import com.tencent.mobileqq.nearby.home.NearbyTabInfo;
+import com.tencent.mobileqq.widget.TabBarView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aeza
-  implements bdpo
+  implements ViewPager.OnPageChangeListener
 {
-  public aeza(QQSettingMe paramQQSettingMe) {}
+  public aeza(NearbyActivity paramNearbyActivity) {}
   
-  public void a(Bundle paramBundle)
-  {
-    this.a.n();
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public void b(Bundle paramBundle)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    int i = paramBundle.getInt("start_status");
-    if (i == 1) {
-      this.a.n();
+    if (QLog.isColorLevel()) {
+      axxb.a("onPageSelected", new Object[] { Integer.valueOf(this.a.b), Integer.valueOf(this.a.f), Integer.valueOf(paramInt) });
     }
-    do
+    Object localObject = this.a;
+    int i = ((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabIndex;
+    ((NearbyActivity)localObject).b = i;
+    NearbyBaseFragment.b = i;
+    if ((this.a.h == 0L) && (this.a.b == 2))
     {
-      do
+      this.a.h = System.currentTimeMillis();
+      if (QLog.isDevelopLevel()) {
+        axxb.a("WebSpeedTrace", "mClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.h) });
+      }
+    }
+    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.b == 1))
+    {
+      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (QLog.isDevelopLevel()) {
+        axxb.a("WebSpeedTrace", "mNowClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.jdField_a_of_type_Long) });
+      }
+    }
+    if (this.a.f != paramInt) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, true);
+    }
+    if (this.a.f != -1)
+    {
+      i = this.a.f;
+      if (this.a.f != this.a.c) {
+        break label475;
+      }
+      i = 9;
+    }
+    for (;;)
+    {
+      if (TextUtils.equals(anzj.a(2131705983), ((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabName)) {
+        i = 11;
+      }
+      int j = ((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).reportId;
+      if (j != 0)
       {
-        return;
-        if (i == 2)
-        {
-          this.a.n();
-          return;
+        if (QLog.isColorLevel()) {
+          axxb.a("report_switch_tab", new Object[] { ((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabName, Integer.valueOf(j) });
         }
-      } while (i != 3);
-      if (!(this.a.jdField_b_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
-        break;
+        i = j;
       }
-      i = paramBundle.getInt("percent");
-      paramBundle = String.valueOf(i) + "%";
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramBundle);
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QQSettingRedesign", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
-    return;
-    if (QQSettingMe.f(this.a)) {}
-    for (Drawable localDrawable = this.a.a.getResources().getDrawable(2130846055);; localDrawable = this.a.a.getResources().getDrawable(2130846056))
-    {
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
-      if (!(localDrawable instanceof Animatable)) {
-        break;
+      axxb.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "switch_tab", i);
+      localObject = this.a.a(paramInt);
+      if (((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabType == 7)
+      {
+        ((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).showRedRot = false;
+        NearbyActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(this.a.f));
       }
-      ((Animatable)localDrawable).start();
-      break;
+      if (localObject != null) {
+        ((NearbyBaseFragment)localObject).aP_();
+      }
+      return;
+      label475:
+      i += 1;
     }
   }
 }

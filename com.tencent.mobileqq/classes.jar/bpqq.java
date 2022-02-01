@@ -1,6 +1,8 @@
 public abstract interface bpqq
 {
-  public abstract void a(String paramString);
+  public abstract void a(float paramFloat, String paramString, int paramInt);
+  
+  public abstract void a(boolean paramBoolean, String paramString, bqpa parambqpa);
 }
 
 

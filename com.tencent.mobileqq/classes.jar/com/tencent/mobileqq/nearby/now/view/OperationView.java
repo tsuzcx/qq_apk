@@ -5,15 +5,15 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
-import axnd;
-import axop;
+import ayfx;
+import ayhj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.now.model.VideoData;
 
 public class OperationView
   extends FrameLayout
 {
-  axop jdField_a_of_type_Axop;
+  ayhj jdField_a_of_type_Ayhj;
   public QQAppInterface a;
   VideoData jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData;
   
@@ -32,20 +32,20 @@ public class OperationView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public axop a()
+  public ayhj a()
   {
-    return this.jdField_a_of_type_Axop;
+    return this.jdField_a_of_type_Ayhj;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Axop = new axop(LayoutInflater.from(getContext()).inflate(2131561285, this, true), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Ayhj = new ayhj(LayoutInflater.from(getContext()).inflate(2131561323, this, true), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
   public void a(VideoData paramVideoData)
   {
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
-    this.jdField_a_of_type_Axop.a(paramVideoData);
+    this.jdField_a_of_type_Ayhj.a(paramVideoData);
   }
   
   public void a(boolean paramBoolean)
@@ -53,45 +53,45 @@ public class OperationView
     if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) {
       return;
     }
-    this.jdField_a_of_type_Axop.a(paramBoolean);
+    this.jdField_a_of_type_Ayhj.a(paramBoolean);
   }
   
   public void b()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a != 4) {
-      this.jdField_a_of_type_Axop.a();
+      this.jdField_a_of_type_Ayhj.a();
     }
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Axop.b();
+    this.jdField_a_of_type_Ayhj.b();
   }
   
   public void setCurrentAnchorUin(long paramLong)
   {
-    if (this.jdField_a_of_type_Axop != null) {
-      this.jdField_a_of_type_Axop.b(paramLong);
+    if (this.jdField_a_of_type_Ayhj != null) {
+      this.jdField_a_of_type_Ayhj.b(paramLong);
     }
   }
   
-  public void setOnCloseListener(axnd paramaxnd)
+  public void setOnCloseListener(ayfx paramayfx)
   {
-    if (this.jdField_a_of_type_Axop != null) {
-      this.jdField_a_of_type_Axop.a(paramaxnd);
+    if (this.jdField_a_of_type_Ayhj != null) {
+      this.jdField_a_of_type_Ayhj.a(paramayfx);
     }
   }
   
   public void setOnCommentClickListener(View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_Axop != null) {
-      this.jdField_a_of_type_Axop.a(paramOnClickListener);
+    if (this.jdField_a_of_type_Ayhj != null) {
+      this.jdField_a_of_type_Ayhj.a(paramOnClickListener);
     }
   }
   
   public void setVideoPageSource(int paramInt)
   {
-    this.jdField_a_of_type_Axop.c(paramInt);
+    this.jdField_a_of_type_Ayhj.c(paramInt);
   }
   
   public void setWatchCount(int paramInt)
@@ -100,7 +100,7 @@ public class OperationView
     while (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a == 1) {
       return;
     }
-    this.jdField_a_of_type_Axop.b(paramInt);
+    this.jdField_a_of_type_Ayhj.b(paramInt);
   }
 }
 

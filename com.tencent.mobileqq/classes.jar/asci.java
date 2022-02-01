@@ -1,30 +1,48 @@
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.text.TextUtils;
 
-class asci
-  implements awnc<EmoticonPackage>
+public class asci
 {
-  asci(asch paramasch, int paramInt1, int paramInt2, EditText paramEditText, QQAppInterface paramQQAppInterface) {}
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public asci() {}
+  
+  public asci(long paramLong, int paramInt)
   {
-    char[] arrayOfChar1 = arpm.a(this.jdField_a_of_type_Int, this.b);
-    char[] arrayOfChar2 = new char[5];
-    arrayOfChar2[0] = '\024';
-    arrayOfChar2[1] = arrayOfChar1[3];
-    arrayOfChar2[2] = arrayOfChar1[2];
-    arrayOfChar2[3] = arrayOfChar1[1];
-    arrayOfChar2[4] = arrayOfChar1[0];
-    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.isAPNG == 2)) {
-      arrayOfChar2[1] = 'ǿ';
-    }
-    int i = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-    int j = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-    this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, String.valueOf(arrayOfChar2));
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X800717E", 0, 0, this.jdField_a_of_type_Int + "", this.b + "", "", "");
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public asci(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramString3;
+    this.d = paramString4;
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DoutuItem uuid:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", md5").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", fileId").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", url").append(this.c);
+    localStringBuilder.append(",key:").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(",count:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",picUin:").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 

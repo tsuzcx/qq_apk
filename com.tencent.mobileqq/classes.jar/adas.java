@@ -1,44 +1,54 @@
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.RichStatusTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import com.tencent.mobileqq.data.SystemMsg;
 
-public class adas
-  implements acxp
+class adas
 {
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MsgInfo jdField_a_of_type_OnlinePushPackMsgInfo;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private int c;
+  
+  public adas(adan paramadan, MsgInfo paramMsgInfo, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_OnlinePushPackMsgInfo = paramMsgInfo;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+  }
+  
   public int a()
   {
-    return 1009;
+    return this.jdField_b_of_type_Int;
   }
   
-  public boolean a()
+  public long a()
   {
-    return false;
+    return this.jdField_b_of_type_Long;
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public adas a()
   {
-    msg_svc.RichStatusTmp localRichStatusTmp = new msg_svc.RichStatusTmp();
-    localRichStatusTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = paramQQAppInterface.a().j(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null)
+    this.jdField_a_of_type_Adan.a.a().a().a(3);
+    if (this.jdField_a_of_type_Int != 45)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SameStateRoutingType", 2, "sameState------>" + bgmj.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
-      }
-      localRichStatusTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+      this.jdField_a_of_type_Adan.a.a().a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg, this.jdField_a_of_type_OnlinePushPackMsgInfo.lFromUin, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, null);
+      this.jdField_b_of_type_Long = 9998L;
+      this.c = 32769;
+      this.jdField_b_of_type_Int = SystemMsg.getTroopSystemMsgType(this.jdField_a_of_type_Int);
     }
-    paramRoutingHead.rich_status_tmp.set(localRichStatusTmp);
-    return true;
+    bdzi.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, this.jdField_a_of_type_Adan.a);
+    return this;
   }
   
   public int b()
   {
-    return 0;
+    return this.c;
   }
 }
 

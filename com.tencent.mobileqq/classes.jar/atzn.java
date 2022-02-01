@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-class atzn
-  implements auco
+public abstract class atzn
 {
-  atzn(atzj paramatzj) {}
+  public abstract int a();
   
-  public void a(String paramString, long paramLong)
-  {
-    if (auck.a(paramString))
-    {
-      bcti.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-0");
-      return;
-    }
-    bcti.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-1");
-  }
+  public abstract String a();
+  
+  public abstract HashMap<String, ArrayList<MessageRecord>> a();
+  
+  public abstract void a(int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2);
+  
+  public abstract void a(String paramString, List<MessageRecord> paramList, MessageRecord paramMessageRecord, int paramInt);
+  
+  protected void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap1, HashMap<String, ArrayList<MessageRecord>> paramHashMap2) {}
+  
+  public abstract String b();
 }
 
 

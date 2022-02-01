@@ -1,8 +1,22 @@
-public abstract interface vvb
+import com.tencent.biz.qqcircle.requests.QCircleBaseRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.qphone.base.util.BaseApplication;
+
+public class vvb
+  implements aadq<QCircleBaseRequest, vuz>
 {
-  public abstract void a();
+  public String a()
+  {
+    return "QCircleSenderReqInterceptor";
+  }
   
-  public abstract void b();
+  public void a(QCircleBaseRequest paramQCircleBaseRequest, vuz paramvuz)
+  {
+    if ((paramQCircleBaseRequest == null) || (paramvuz == null)) {
+      return;
+    }
+    VSNetworkHelper.a().a(BaseApplication.getContext(), paramQCircleBaseRequest, new vvc(this, paramvuz, paramQCircleBaseRequest));
+  }
 }
 
 

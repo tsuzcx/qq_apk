@@ -1,16 +1,16 @@
 package com.tencent.biz.qqcircle.bizparts;
 
 import android.widget.ImageView;
-import vcb;
+import vdr;
 
 public class QCirclePersonalTitleBarPart$9
   implements Runnable
 {
-  public QCirclePersonalTitleBarPart$9(vcb paramvcb) {}
+  public QCirclePersonalTitleBarPart$9(vdr paramvdr) {}
   
   public void run()
   {
-    vcb.b(this.this$0).setVisibility(8);
+    vdr.b(this.this$0).setVisibility(8);
   }
 }
 

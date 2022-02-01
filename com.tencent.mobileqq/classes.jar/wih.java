@@ -1,21 +1,22 @@
-import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import mqq.os.MqqHandler;
 
-public final class wih
+public class wih
+  extends SimpleJob<Void>
 {
-  public ShareGroupFeedItem a;
-  public VideoListFeedItem a;
-  public ArrayList<wig> a;
+  wih(wia paramwia) {}
   
-  public wih()
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    return "ShareGroupFakeItem{mFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem + ", mSucFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem + ", mVideos=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
+    paramJobContext = (wfv)wth.a(30);
+    paramVarArgs = paramJobContext.b();
+    ThreadManager.getUIHandler().post(new AlbumGalleryCapturePart.7.1(this, paramVarArgs, paramJobContext));
+    return null;
   }
 }
 

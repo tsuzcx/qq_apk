@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
-import bgmg;
+import bhmi;
 import cooperation.qzone.LocalMultiProcConfig;
-import uen;
+import uep;
 
 public class WeiShiCacheManager$11
   implements Runnable
 {
-  public WeiShiCacheManager$11(uen paramuen) {}
+  public WeiShiCacheManager$11(uep paramuep) {}
   
   public void run()
   {
     LocalMultiProcConfig.putLong("weishi_usergrowth", "key_red_msg_valid_timestamp", System.currentTimeMillis());
     LocalMultiProcConfig.putInt("weishi_usergrowth", "key_red_msg_valid_count", 0);
-    bgmg.a(uen.d(this.this$0), false);
+    bhmi.a(uep.d(this.this$0), false);
   }
 }
 

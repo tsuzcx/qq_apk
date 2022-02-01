@@ -1,26 +1,17 @@
+import android.os.Handler;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.2.1;
 
 public class wvv
+  implements woy<wwr, wws>
 {
-  public int a;
-  public long a;
-  public String a;
+  wvv(wvs paramwvs) {}
   
-  public wvv(wvs paramwvs, String paramString)
+  public void a(@NonNull wwr paramwwr, @Nullable wws paramwws, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    paramwvs = ((woz)wpm.a(19)).a(paramString);
-    if (paramwvs != null) {
-      a(paramwvs);
-    }
-  }
-  
-  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
-  {
-    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
-    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
-    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
+    this.a.b.post(new MsgTabNodeListLoader.2.1(this, paramwwr, paramwws, paramErrorMessage));
   }
 }
 

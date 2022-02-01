@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bgmg;
+import bhmi;
 import com.tencent.qphone.base.util.QLog;
 
 class GdtVideoCommonView$6
@@ -25,8 +25,8 @@ class GdtVideoCommonView$6
     GdtVideoCommonView.c(this.this$0).setVisibility(0);
     if (GdtVideoCommonView.b(this.this$0) > 0L)
     {
-      String str = bgmg.a(GdtVideoCommonView.b(this.this$0));
-      str = String.format(GdtVideoCommonView.a(this.this$0).getString(2131689548), new Object[] { str });
+      String str = bhmi.a(GdtVideoCommonView.b(this.this$0));
+      str = String.format(GdtVideoCommonView.a(this.this$0).getString(2131689549), new Object[] { str });
       GdtVideoCommonView.b(this.this$0).setText(str);
       GdtVideoCommonView.b(this.this$0).setVisibility(0);
       GdtVideoCommonView.b(this.this$0).setVisibility(8);

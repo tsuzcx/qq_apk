@@ -1,18 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.QWalletHelper;
 
-public class agjw
-  implements View.OnClickListener
+final class agjw
+  extends aojs
 {
-  public agjw(AIOLongShotHelper paramAIOLongShotHelper) {}
+  agjw(SessionInfo paramSessionInfo) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
   {
-    AIOLongShotHelper.a(this.a).performClick();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBoolean)
+    {
+      QWalletHelper.saveLastUpdateToopMemberNumTime(this.a.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("PlusPanelUtils", 2, "onOIDB0X88D_0_Ret 群uin：" + this.a.a + " 群成员个数：" + paramTroopInfo.wMemberNum);
+      }
+    }
   }
 }
 

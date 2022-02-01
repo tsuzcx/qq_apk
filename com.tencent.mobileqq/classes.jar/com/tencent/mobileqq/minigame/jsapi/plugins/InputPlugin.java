@@ -6,7 +6,6 @@ import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.jsapi.callbacks.PluginResultCallback;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
-import java.lang.ref.WeakReference;
 import java.util.Set;
 
 public class InputPlugin
@@ -22,7 +21,7 @@ public class InputPlugin
   private static final Set<String> S_EVENT_MAP = new InputPlugin.1();
   private static final String TAG = "[minigame] InputPlugin";
   private long lastShowInputTime;
-  private WeakReference<JsRuntime> mJsRuntimeRef;
+  private JsRuntime mJsRuntime;
   
   public String handleNativeRequest(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
   {
@@ -32,7 +31,7 @@ public class InputPlugin
       return "{}";
     }
     GameActivity localGameActivity = (GameActivity)this.jsPluginEngine.getActivityContext();
-    this.mJsRuntimeRef = new WeakReference(paramJsRuntime);
+    this.mJsRuntime = paramJsRuntime;
     if ("showKeyboard".equals(paramString1)) {
       if (System.currentTimeMillis() - this.lastShowInputTime > 1000L)
       {
@@ -53,7 +52,9 @@ public class InputPlugin
   
   public void invokeCallback(int paramInt, String paramString)
   {
-    ((JsRuntime)this.mJsRuntimeRef.get()).evaluateCallbackJs(paramInt, paramString);
+    if (this.mJsRuntime != null) {
+      this.mJsRuntime.evaluateCallbackJs(paramInt, paramString);
+    }
   }
   
   public void onCreate(BaseJsPluginEngine paramBaseJsPluginEngine)
@@ -68,7 +69,9 @@ public class InputPlugin
   
   public void subscribeCallback(String paramString1, String paramString2)
   {
-    ((JsRuntime)this.mJsRuntimeRef.get()).evaluateSubcribeJS(paramString1, paramString2, -1);
+    if (this.mJsRuntime != null) {
+      this.mJsRuntime.evaluateSubcribeJS(paramString1, paramString2, -1);
+    }
   }
   
   public Set<String> supportedEvents()

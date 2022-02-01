@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
 class vzi
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  vzi(vzh paramvzh) {}
+  vzi(vzh paramvzh, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    QCircleFeedCommentWidget.a(this.jdField_a_of_type_Vzh.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a(this.jdField_a_of_type_Vzh.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext().hashCode(), this.jdField_a_of_type_Vzh.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Vzh.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Vzh.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, this.jdField_a_of_type_Int, QCircleFeedCommentWidget.a(this.jdField_a_of_type_Vzh.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget));
   }
 }
 

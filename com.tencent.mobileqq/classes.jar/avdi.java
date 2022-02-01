@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.10;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public class avdi
-  implements DialogInterface.OnClickListener
+class avdi
+  extends RecyclerView.ViewHolder
 {
-  public avdi(PresenceInterfaceImpl.10 param10) {}
+  public int a = avdb.b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public avdi(View paramView)
   {
-    QLog.d("PresenceInterfaceImpl", 2, "user click button");
+    super(paramView);
+    paramView.setTag(this);
   }
 }
 

@@ -1,28 +1,70 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.animation.AnimationUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class adlc
-  implements bkhw
 {
-  public adlc(AddRequestActivity paramAddRequestActivity, bkho parambkho) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = -1L;
+  private String jdField_a_of_type_JavaLangString;
+  private StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
+  private final CopyOnWriteArrayList<String> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkho.dismiss();
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 1) {
       return;
-      if (bgnt.d(BaseApplication.getContext())) {
-        abao.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a, null, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.getCurrentAccountUin(), 20010, null);
-      } else {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131693948, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
+    }
+    new adld(this).execute(new Void[0]);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      if (paramInt == 2)
+      {
+        this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
+        this.jdField_a_of_type_Int = 0;
       }
+    }
+    else {
+      return;
+    }
+    if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Int > 0))
+    {
+      long l = AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long;
+      if ((l > 1000L) || ((l >= 500L) && ("actFPSRecent".equals(this.jdField_a_of_type_JavaLangString))))
+      {
+        paramInt = (int)Math.floor(this.jdField_a_of_type_Int * 1000 / ((float)l * 1.0F));
+        this.jdField_a_of_type_JavaLangStringBuffer.setLength(0);
+        this.jdField_a_of_type_JavaLangStringBuffer.append("FPSCalculator ").append(this.jdField_a_of_type_JavaLangString).append(" frameCount :").append(this.jdField_a_of_type_Int).append(",diffTime :").append(l).append(" fps:").append(paramInt);
+        this.jdField_a_of_type_JavaLangStringBuffer.append(",aioBusiness=").append(bhoc.a());
+        if (QLog.isDevelopLevel()) {
+          QLog.e("FPSCalculator", 4, this.jdField_a_of_type_JavaLangStringBuffer.toString());
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_JavaLangStringBuffer.toString());
+        if ((paramInt > 0) && (!"".equals(this.jdField_a_of_type_JavaLangString))) {
+          bhoc.a(this.jdField_a_of_type_JavaLangString, paramInt, bhoc.a());
+        }
+        if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 100) {
+          a();
+        }
+      }
+    }
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      this.jdField_a_of_type_Int += 1;
     }
   }
 }

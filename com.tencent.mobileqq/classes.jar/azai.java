@@ -1,9 +1,18 @@
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+
 public final class azai
-  extends ayzn
+  implements Parcelable.Creator<OcrRecogResult>
 {
-  protected int a()
+  public OcrRecogResult a(Parcel paramParcel)
   {
-    return 517;
+    return new OcrRecogResult(paramParcel);
+  }
+  
+  public OcrRecogResult[] a(int paramInt)
+  {
+    return new OcrRecogResult[paramInt];
   }
 }
 

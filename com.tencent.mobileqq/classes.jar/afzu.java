@@ -1,18 +1,29 @@
-import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class afzu
-  implements bcpg
+  extends azov
 {
-  public afzu(PlusPanel paramPlusPanel, abqn paramabqn) {}
+  public afzu(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public void a()
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel, this.jdField_a_of_type_Abqn);
-  }
-  
-  public void b()
-  {
-    PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel, this.jdField_a_of_type_Abqn);
+    if (QLog.isColorLevel()) {
+      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
+    }
+    this.a.a();
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        VerifyPhoneNumActivity.a(this.a, true);
+        VerifyPhoneNumActivity.c(this.a);
+        return;
+      }
+      VerifyPhoneNumActivity.c(this.a);
+      return;
+    }
+    VerifyPhoneNumActivity.c(this.a);
   }
 }
 

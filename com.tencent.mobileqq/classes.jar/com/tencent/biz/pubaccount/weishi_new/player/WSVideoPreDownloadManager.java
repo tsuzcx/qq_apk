@@ -13,44 +13,44 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import ukd;
-import ukg;
-import uki;
-import ukl;
-import ukm;
-import ukn;
-import upe;
+import ulb;
+import ule;
+import ulg;
+import ulj;
+import ulk;
+import ull;
+import uqf;
 
 public class WSVideoPreDownloadManager
-  implements uki
+  implements ulg
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private TVK_ICacheMgr.IPreloadCallback jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCallback;
   private TVK_ICacheMgr jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
   private TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
   private String jdField_a_of_type_JavaLangString;
-  private List<ukn> jdField_a_of_type_JavaUtilList;
+  private List<ull> jdField_a_of_type_JavaUtilList;
   private Set<String> jdField_a_of_type_JavaUtilSet;
-  private ukg jdField_a_of_type_Ukg;
-  private ukm jdField_a_of_type_Ukm;
+  private ule jdField_a_of_type_Ule;
+  private ulk jdField_a_of_type_Ulk;
   
   public WSVideoPreDownloadManager(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Ukg = new ukg();
-    this.jdField_a_of_type_Ukg.a(this);
-    if (!this.jdField_a_of_type_Ukg.a())
+    this.jdField_a_of_type_Ule = new ule();
+    this.jdField_a_of_type_Ule.a(this);
+    if (!this.jdField_a_of_type_Ule.a())
     {
-      this.jdField_a_of_type_Ukg.a();
+      this.jdField_a_of_type_Ule.a();
       return;
     }
     c();
     e();
   }
   
-  private void a(ukn paramukn)
+  private void a(ull paramull)
   {
-    if ((paramukn == null) || (TextUtils.isEmpty(paramukn.b))) {}
+    if ((paramull == null) || (TextUtils.isEmpty(paramull.b))) {}
     TVK_ICacheMgr localTVK_ICacheMgr;
     TVK_UserInfo localTVK_UserInfo;
     TVK_PlayerVideoInfo localTVK_PlayerVideoInfo;
@@ -60,21 +60,21 @@ public class WSVideoPreDownloadManager
       localTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
       if (localTVK_ICacheMgr == null)
       {
-        upe.d("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][innerDoPreDownload] start preload ERROR cacheMgr == null!");
+        uqf.d("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][innerDoPreDownload] start preload ERROR cacheMgr == null!");
         return;
       }
-      String str = ukd.a(paramukn.b);
+      String str = ulb.a(paramull.b);
       localTVK_UserInfo = new TVK_UserInfo("", "");
       localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, str, "");
       localTVK_PlayerVideoInfo.setConfigMap("cache_duration", "2");
-      localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", ukd.jdField_a_of_type_JavaLangString);
-      if (paramukn.jdField_a_of_type_Int > 0) {
-        localTVK_PlayerVideoInfo.setConfigMap("duration", String.valueOf(paramukn.jdField_a_of_type_Int));
+      localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", ulb.jdField_a_of_type_JavaLangString);
+      if (paramull.jdField_a_of_type_Int > 0) {
+        localTVK_PlayerVideoInfo.setConfigMap("duration", String.valueOf(paramull.jdField_a_of_type_Int));
       }
-      upe.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][innerDoPreDownload] START DOWNLOAD!! duration:" + paramukn.jdField_a_of_type_Int + ", vid:" + str + ", title:" + paramukn.c + ", url:" + paramukn.b);
-    } while (TextUtils.isEmpty(paramukn.b));
-    int i = localTVK_ICacheMgr.preLoadVideoByUrlWithResult(this.jdField_a_of_type_AndroidContentContext, paramukn.b, localTVK_UserInfo, localTVK_PlayerVideoInfo);
-    upe.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][innerDoPreDownload] result:" + i);
+      uqf.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][innerDoPreDownload] START DOWNLOAD!! duration:" + paramull.jdField_a_of_type_Int + ", vid:" + str + ", title:" + paramull.c + ", url:" + paramull.b);
+    } while (TextUtils.isEmpty(paramull.b));
+    int i = localTVK_ICacheMgr.preLoadVideoByUrlWithResult(this.jdField_a_of_type_AndroidContentContext, paramull.b, localTVK_UserInfo, localTVK_PlayerVideoInfo);
+    uqf.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][innerDoPreDownload] result:" + i);
   }
   
   private void c()
@@ -83,7 +83,7 @@ public class WSVideoPreDownloadManager
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory != null) {
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.getCacheMgr(this.jdField_a_of_type_AndroidContentContext);
     }
-    upe.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][initCacheMgr] mFactory=" + this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory + ", mCacheMgr=" + this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr);
+    uqf.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][initCacheMgr] mFactory=" + this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory + ", mCacheMgr=" + this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr);
     if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory != null) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr == null)) {}
   }
   
@@ -99,17 +99,17 @@ public class WSVideoPreDownloadManager
     }
     this.jdField_a_of_type_JavaUtilSet = new HashSet();
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    upe.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][initSerialPreDownload] setPreloadCallback");
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(new ukl(this));
+    uqf.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][initSerialPreDownload] setPreloadCallback");
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(new ulj(this));
   }
   
   private void f()
   {
-    upe.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][releaseSerialPreDownload]");
+    uqf.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][releaseSerialPreDownload]");
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr != null)
     {
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.removePreloadCallback();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.releasePreload(ukd.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.releasePreload(ulb.jdField_a_of_type_Int);
     }
   }
   
@@ -128,7 +128,7 @@ public class WSVideoPreDownloadManager
     //   18: aload_2
     //   19: iconst_0
     //   20: invokeinterface 228 2 0
-    //   25: checkcast 74	ukn
+    //   25: checkcast 74	ull
     //   28: astore_1
     //   29: aload_2
     //   30: iconst_0
@@ -137,7 +137,7 @@ public class WSVideoPreDownloadManager
     //   37: aload_1
     //   38: ifnull +13 -> 51
     //   41: aload_1
-    //   42: getfield 77	ukn:b	Ljava/lang/String;
+    //   42: getfield 77	ull:b	Ljava/lang/String;
     //   45: invokestatic 83	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   48: ifeq +41 -> 89
     //   51: aload_0
@@ -156,11 +156,11 @@ public class WSVideoPreDownloadManager
     //   74: invokevirtual 236	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   77: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   80: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   83: invokestatic 93	upe:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   83: invokestatic 93	uqf:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   86: goto -49 -> 37
     //   89: aload_0
     //   90: aload_1
-    //   91: getfield 77	ukn:b	Ljava/lang/String;
+    //   91: getfield 77	ull:b	Ljava/lang/String;
     //   94: putfield 56	com/tencent/biz/pubaccount/weishi_new/player/WSVideoPreDownloadManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   97: aload_0
     //   98: aload_0
@@ -174,10 +174,10 @@ public class WSVideoPreDownloadManager
     //   117: ldc 241
     //   119: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   122: aload_1
-    //   123: getfield 148	ukn:c	Ljava/lang/String;
+    //   123: getfield 148	ull:c	Ljava/lang/String;
     //   126: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   129: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: invokestatic 156	upe:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   132: invokestatic 156	uqf:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   135: aload_0
     //   136: aconst_null
     //   137: putfield 56	com/tencent/biz/pubaccount/weishi_new/player/WSVideoPreDownloadManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -191,24 +191,24 @@ public class WSVideoPreDownloadManager
     //   154: ldc 243
     //   156: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: aload_1
-    //   160: getfield 148	ukn:c	Ljava/lang/String;
+    //   160: getfield 148	ull:c	Ljava/lang/String;
     //   163: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   166: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   169: invokestatic 156	upe:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   169: invokestatic 156	uqf:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   172: aload_0
     //   173: aload_1
-    //   174: invokespecial 245	com/tencent/biz/pubaccount/weishi_new/player/WSVideoPreDownloadManager:a	(Lukn;)V
+    //   174: invokespecial 245	com/tencent/biz/pubaccount/weishi_new/player/WSVideoPreDownloadManager:a	(Lull;)V
     //   177: return
     //   178: ldc 85
     //   180: ldc 247
-    //   182: invokestatic 156	upe:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   182: invokestatic 156	uqf:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   185: return
     //   186: astore_2
     //   187: goto -128 -> 59
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	190	0	this	WSVideoPreDownloadManager
-    //   28	146	1	localukn	ukn
+    //   28	146	1	localull	ull
     //   4	26	2	localList	List
     //   56	18	2	localException1	Exception
     //   186	1	2	localException2	Exception
@@ -220,12 +220,12 @@ public class WSVideoPreDownloadManager
   
   public void a()
   {
-    upe.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][destroy]");
+    uqf.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][destroy]");
     ThreadManager.post(new WSVideoPreDownloadManager.1(this), 5, null, true);
-    if (this.jdField_a_of_type_Ukg != null)
+    if (this.jdField_a_of_type_Ule != null)
     {
-      this.jdField_a_of_type_Ukg.b();
-      this.jdField_a_of_type_Ukg = null;
+      this.jdField_a_of_type_Ule.b();
+      this.jdField_a_of_type_Ule = null;
     }
   }
   
@@ -236,7 +236,7 @@ public class WSVideoPreDownloadManager
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Ukm == null) {}
+    if (this.jdField_a_of_type_Ulk == null) {}
     List localList;
     do
     {
@@ -244,12 +244,12 @@ public class WSVideoPreDownloadManager
       if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr == null) {
         break;
       }
-      localList = this.jdField_a_of_type_Ukm.a(paramInt, paramBoolean);
+      localList = this.jdField_a_of_type_Ulk.a(paramInt, paramBoolean);
     } while ((localList == null) || (localList.size() <= 0));
-    upe.f("WS_VIDEO_PRE_DL", ">>>>>>[WSVideoPreDownloadManager.java][requestPreDownload] START!! preDownloadList size:" + localList.size());
+    uqf.f("WS_VIDEO_PRE_DL", ">>>>>>[WSVideoPreDownloadManager.java][requestPreDownload] START!! preDownloadList size:" + localList.size());
     ThreadManager.post(new WSVideoPreDownloadManager.PreDownloadSerialTask(this, localList), 5, null, true);
     return;
-    upe.d("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][requestPreDownload] is off or mCacheMgr is null, return!");
+    uqf.d("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][requestPreDownload] is off or mCacheMgr is null, return!");
   }
   
   public void a(TVK_ICacheMgr.IPreloadCallback paramIPreloadCallback)
@@ -257,9 +257,9 @@ public class WSVideoPreDownloadManager
     this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCallback = paramIPreloadCallback;
   }
   
-  public void a(ukm paramukm)
+  public void a(ulk paramulk)
   {
-    this.jdField_a_of_type_Ukm = paramukm;
+    this.jdField_a_of_type_Ulk = paramulk;
   }
   
   public void a(boolean paramBoolean)
@@ -274,11 +274,11 @@ public class WSVideoPreDownloadManager
     if (localTVK_ICacheMgr == null) {
       return false;
     }
-    Object localObject = ukd.a(paramString);
+    Object localObject = ulb.a(paramString);
     TVK_UserInfo localTVK_UserInfo = new TVK_UserInfo("", "");
     localObject = new TVK_PlayerVideoInfo(2, (String)localObject, "");
     ((TVK_PlayerVideoInfo)localObject).setConfigMap("cache_duration", "2");
-    ((TVK_PlayerVideoInfo)localObject).setConfigMap("cache_servers_type", ukd.jdField_a_of_type_JavaLangString);
+    ((TVK_PlayerVideoInfo)localObject).setConfigMap("cache_servers_type", ulb.jdField_a_of_type_JavaLangString);
     String[] arrayOfString = new String[6];
     arrayOfString[0] = "msd";
     arrayOfString[1] = "hd";
@@ -301,24 +301,24 @@ public class WSVideoPreDownloadManager
       {
         for (;;)
         {
-          upe.d("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][checkIsCached] Exception url:" + paramString + ", cacheMgr.isVideoCached Exception:" + localException.getMessage());
+          uqf.d("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][checkIsCached] Exception url:" + paramString + ", cacheMgr.isVideoCached Exception:" + localException.getMessage());
         }
         j += 1;
       }
       if ((i == 2) || (i == 1))
       {
-        upe.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][checkIsCached] return TRUE! cacheStatus:" + i + ", definition:" + str + ", url:" + paramString);
+        uqf.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][checkIsCached] return TRUE! cacheStatus:" + i + ", definition:" + str + ", url:" + paramString);
         return true;
       }
     }
-    upe.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][checkIsCached] return FALSE! url:" + paramString);
+    uqf.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][checkIsCached] return FALSE! url:" + paramString);
     return false;
   }
   
   public void b()
   {
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.stopCacheData(ukd.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.stopCacheData(ulb.jdField_a_of_type_Int);
     }
   }
 }

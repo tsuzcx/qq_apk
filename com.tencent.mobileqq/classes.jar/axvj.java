@@ -1,19 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
 
-class axvj
-  implements DialogInterface.OnClickListener
+public class axvj
+  implements aasd
 {
-  axvj(axvh paramaxvh, bgpa parambgpa) {}
+  public axvj(NearbyJsInterface paramNearbyJsInterface, aasb paramaasb, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bgpa.dismiss();
-    this.jdField_a_of_type_Axvh.a.a.c();
-    paramInt = ((Integer)axdz.a(this.jdField_a_of_type_Axvh.a.a.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
-    bcst.b(this.jdField_a_of_type_Axvh.a.a.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, axei.a(this.jdField_a_of_type_Axvh.a.a.j), paramInt + "", "", "");
+    paramBundle = paramBundle.getString("nearbyVideoConfig");
+    this.jdField_a_of_type_Aasb.b(new axvk(this, paramBundle));
   }
 }
 

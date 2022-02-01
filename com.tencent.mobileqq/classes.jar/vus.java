@@ -1,57 +1,69 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.Window;
+import android.view.View;
+import feedcloud.FeedCloudMeta.StFeed;
 
 public class vus
-  extends bkho
 {
-  public vus(Context paramContext)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private View jdField_a_of_type_AndroidViewView;
+  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
+  private long b;
+  private long c;
+  
+  public int a()
   {
-    super(paramContext);
+    return this.jdField_a_of_type_Int;
   }
   
-  public static vus a(Context paramContext)
+  public long a()
   {
-    paramContext = new vus(paramContext);
-    if (Build.VERSION.SDK_INT != 23) {
-      paramContext.getWindow().setWindowAnimations(2131755013);
-    }
-    return paramContext;
+    return this.jdField_a_of_type_Long;
   }
   
-  protected int a()
+  public View a()
   {
-    return super.a();
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  protected int a(int paramInt)
+  public FeedCloudMeta.StFeed a()
   {
-    if ((paramInt == 3) || (paramInt == 8)) {
-      return super.a(paramInt);
-    }
-    return this.a.getColor(2131166771);
+    return this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
   }
   
-  public Drawable a(int paramInt)
+  public void a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return this.a.getDrawable(2130848934);
-    }
-    return this.a.getDrawable(2130848931);
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  protected int b()
+  public void a(int paramInt)
   {
-    return super.b();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected int c()
+  public void a(long paramLong)
   {
-    return 2131562588;
+    this.b = paramLong;
+    this.c = (this.b - this.jdField_a_of_type_Long);
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(FeedCloudMeta.StFeed paramStFeed)
+  {
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
+  }
+  
+  public long b()
+  {
+    return this.b;
+  }
+  
+  public long c()
+  {
+    return this.c;
   }
 }
 

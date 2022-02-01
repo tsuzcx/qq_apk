@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app;
 
-import anjh;
-import anjl;
+import anve;
+import anvi;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class ConditionSearchManager$3
   implements Runnable
 {
-  public ConditionSearchManager$3(anjh paramanjh, boolean paramBoolean) {}
+  public ConditionSearchManager$3(anve paramanve, boolean paramBoolean) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ConditionSearchManager$3
       ((LinkedList)localObject).addAll(this.this$0.a);
       localObject = ((LinkedList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((anjl)((Iterator)localObject).next()).a(1, this.a);
+        ((anvi)((Iterator)localObject).next()).a(1, this.a);
       }
     }
     if ((this.a) && (this.this$0.c)) {

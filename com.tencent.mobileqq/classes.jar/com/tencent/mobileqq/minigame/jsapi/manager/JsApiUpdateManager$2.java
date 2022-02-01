@@ -6,12 +6,11 @@ import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.minigame.gpkg.GpkgManager.Info;
 import com.tencent.mobileqq.minigame.gpkg.GpkgManager.OnInitGpkgListener;
 import com.tencent.mobileqq.minigame.gpkg.MiniGamePkg;
-import com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine;
 
 final class JsApiUpdateManager$2
   implements GpkgManager.OnInitGpkgListener
 {
-  JsApiUpdateManager$2(GameJsPluginEngine paramGameJsPluginEngine) {}
+  JsApiUpdateManager$2(MiniAppFileManager paramMiniAppFileManager, JsApiUpdateManager.IUpdateListener paramIUpdateListener) {}
   
   public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong) {}
   
@@ -19,12 +18,14 @@ final class JsApiUpdateManager$2
   {
     if ((paramInt == 0) && (paramMiniGamePkg != null))
     {
-      MiniAppFileManager.getInstance().initFileManager(paramMiniGamePkg, true);
+      if (this.val$fileManager != null) {
+        this.val$fileManager.initFileManager(paramMiniGamePkg, true);
+      }
       ThreadManagerV2.excute(new JsApiUpdateManager.2.1(this), 16, null, true);
-      JsApiUpdateManager.access$200(this.val$gameJsPluginEngine, true);
+      JsApiUpdateManager.access$200(this.val$callback, true);
       return;
     }
-    JsApiUpdateManager.access$200(this.val$gameJsPluginEngine, false);
+    JsApiUpdateManager.access$200(this.val$callback, false);
   }
 }
 

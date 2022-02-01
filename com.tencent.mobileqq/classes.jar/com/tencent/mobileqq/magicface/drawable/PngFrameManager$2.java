@@ -2,14 +2,14 @@ package com.tencent.mobileqq.magicface.drawable;
 
 import android.os.Handler;
 import android.os.Message;
-import arpm;
-import arze;
-import awew;
-import awfc;
-import awfd;
-import awmr;
-import bhhf;
-import bhhh;
+import asfa;
+import asos;
+import awxo;
+import awxu;
+import awxv;
+import axfj;
+import bihu;
+import bihw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import java.io.File;
@@ -17,13 +17,13 @@ import java.io.File;
 public class PngFrameManager$2
   implements Runnable
 {
-  public PngFrameManager$2(awew paramawew, awfc paramawfc) {}
+  public PngFrameManager$2(awxo paramawxo, awxu paramawxu) {}
   
   public void run()
   {
-    File localFile = new File(arze.r.replace("[epId]", this.a.jdField_a_of_type_JavaLangString));
-    awmr localawmr = (awmr)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
-    ??? = localawmr.a(this.a.jdField_a_of_type_JavaLangString);
+    File localFile = new File(asos.r.replace("[epId]", this.a.jdField_a_of_type_JavaLangString));
+    axfj localaxfj = (axfj)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
+    ??? = localaxfj.a(this.a.jdField_a_of_type_JavaLangString);
     Object localObject1 = ???;
     if (??? == null)
     {
@@ -38,22 +38,22 @@ public class PngFrameManager$2
         if (!localFile.exists()) {
           break label165;
         }
-        this.a.jdField_a_of_type_Int = this.this$0.jdField_a_of_type_Awfd.a(localFile);
+        this.a.jdField_a_of_type_Int = this.this$0.jdField_a_of_type_Awxv.a(localFile);
         this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(224, this.a).sendToTarget();
         ((EmoticonPackage)localObject1).rscType = this.a.jdField_a_of_type_Int;
-        localawmr.a((EmoticonPackage)localObject1);
+        localaxfj.a((EmoticonPackage)localObject1);
       }
       label165:
-      bhhf localbhhf;
+      bihu localbihu;
       do
       {
         return;
-        localbhhf = new bhhf(arpm.a(this.a.jdField_a_of_type_JavaLangString), localFile);
-        localbhhf.j = true;
-      } while ((bhhh.a(localbhhf, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 0) || (this.this$0.jdField_a_of_type_Awfd == null) || (this.this$0.jdField_a_of_type_AndroidOsHandler == null));
-      this.a.jdField_a_of_type_Int = this.this$0.jdField_a_of_type_Awfd.a(localFile);
+        localbihu = new bihu(asfa.a(this.a.jdField_a_of_type_JavaLangString), localFile);
+        localbihu.j = true;
+      } while ((bihw.a(localbihu, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 0) || (this.this$0.jdField_a_of_type_Awxv == null) || (this.this$0.jdField_a_of_type_AndroidOsHandler == null));
+      this.a.jdField_a_of_type_Int = this.this$0.jdField_a_of_type_Awxv.a(localFile);
       ((EmoticonPackage)localObject1).rscType = this.a.jdField_a_of_type_Int;
-      localawmr.a((EmoticonPackage)localObject1);
+      localaxfj.a((EmoticonPackage)localObject1);
       this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(224, this.a).sendToTarget();
     }
   }

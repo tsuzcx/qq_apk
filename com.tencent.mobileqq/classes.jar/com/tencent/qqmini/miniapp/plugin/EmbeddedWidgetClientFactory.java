@@ -17,6 +17,25 @@ public class EmbeddedWidgetClientFactory
   private ConcurrentHashMap<Long, EmbeddedWidgetClientHolder> embeddedWidgetClientHolderMap = new ConcurrentHashMap();
   private ConcurrentHashMap<Integer, Long> mappingTableMap = new ConcurrentHashMap();
   
+  private boolean doEventByWidgetId(String paramString, IMiniAppContext paramIMiniAppContext, int paramInt, JSONObject paramJSONObject, long paramLong, IJsService paramIJsService)
+  {
+    if ((this.embeddedWidgetClientHolderMap != null) && (this.embeddedWidgetClientHolderMap.containsKey(Long.valueOf(paramLong))))
+    {
+      EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)this.embeddedWidgetClientHolderMap.get(Long.valueOf(paramLong));
+      if (localEmbeddedWidgetClientHolder != null)
+      {
+        localEmbeddedWidgetClientHolder.handleEmbeddedWidgetEvent(paramString, paramIMiniAppContext, paramJSONObject, paramInt, paramIJsService);
+        return true;
+      }
+    }
+    else
+    {
+      QMLog.e("miniapp-embedded", "handleInsertEmbeddedWidgetEvent x5WidgetId is not exist");
+      return false;
+    }
+    return false;
+  }
+  
   public IEmbeddedWidgetClient createWidgetClient(String paramString, Map<String, String> paramMap, IEmbeddedWidget paramIEmbeddedWidget)
   {
     try
@@ -41,25 +60,32 @@ public class EmbeddedWidgetClientFactory
     return this.embeddedWidgetClientHolderMap;
   }
   
-  public boolean handleEmbeddedWidgetEvent(String paramString1, String paramString2, int paramInt)
+  public boolean handleEmbeddedWidgetDestory(long paramLong)
+  {
+    if ((this.embeddedWidgetClientHolderMap != null) && (this.embeddedWidgetClientHolderMap.containsKey(Long.valueOf(paramLong))))
+    {
+      QMLog.d("miniapp-embedded", "embeddedWidgetClientHolderMap remove " + paramLong);
+      this.embeddedWidgetClientHolderMap.remove(Long.valueOf(paramLong));
+    }
+    return true;
+  }
+  
+  public boolean handleEmbeddedWidgetEvent(String paramString1, IMiniAppContext paramIMiniAppContext, String paramString2, int paramInt, IJsService paramIJsService)
   {
     try
     {
+      QMLog.e("miniapp-embedded", "handleEmbeddedWidgetEvent event : " + paramString1 + "; jsonParams : " + paramString2);
       paramString2 = new JSONObject(paramString2);
       int i = paramString2.optInt("viewId", -1);
-      if ((this.mappingTableMap != null) && (this.mappingTableMap.containsKey(Integer.valueOf(i))))
-      {
-        long l = ((Long)this.mappingTableMap.get(Integer.valueOf(i))).longValue();
-        if ((this.embeddedWidgetClientHolderMap != null) && (this.embeddedWidgetClientHolderMap.containsKey(Long.valueOf(l))))
-        {
-          EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)this.embeddedWidgetClientHolderMap.get(Long.valueOf(l));
-          if (localEmbeddedWidgetClientHolder != null)
-          {
-            localEmbeddedWidgetClientHolder.handleEmbeddedWidgetEvent(paramString1, paramString2, paramInt);
-            return true;
-          }
-        }
+      long l = paramString2.optLong("x5WidgetId", -1L);
+      if (l != -1L) {
+        return doEventByWidgetId(paramString1, paramIMiniAppContext, paramInt, paramString2, l, paramIJsService);
       }
+      if ((this.mappingTableMap != null) && (this.mappingTableMap.containsKey(Integer.valueOf(i)))) {
+        return doEventByWidgetId(paramString1, paramIMiniAppContext, paramInt, paramString2, ((Long)this.mappingTableMap.get(Integer.valueOf(i))).longValue(), paramIJsService);
+      }
+      QMLog.e("miniapp-embedded", "handleInsertEmbeddedWidgetEvent view is not exist");
+      return false;
     }
     catch (Throwable paramString1)
     {
@@ -86,6 +112,11 @@ public class EmbeddedWidgetClientFactory
           localEmbeddedWidgetClientHolder.handleInsertEmbeddedWidgetEvent(paramString1, paramIMiniAppContext, paramString2, paramIJsService);
           return true;
         }
+      }
+      else
+      {
+        QMLog.e("miniapp-embedded", "handleInsertEmbeddedWidgetEvent x5WidgetId is not exist");
+        return false;
       }
     }
     catch (Throwable paramString1)

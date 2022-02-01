@@ -1,6 +1,30 @@
-public abstract interface wbh
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
+import feedcloud.FeedCloudMeta.StUser;
+
+public class wbh
+  extends ClickableSpan
 {
-  public abstract void a(float paramFloat);
+  public wbh(QCirclePushAsyncTextView paramQCirclePushAsyncTextView, FeedCloudMeta.StUser paramStUser) {}
+  
+  public void onClick(@NonNull View paramView)
+  {
+    if (QCirclePushAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushAsyncTextView) != null) {
+      QCirclePushAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushAsyncTextView).a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser);
+    }
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(-16777216);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setFakeBoldText(QCirclePushAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushAsyncTextView));
+    paramTextPaint.setTextSize(bdep.a(12.0F));
+  }
 }
 
 

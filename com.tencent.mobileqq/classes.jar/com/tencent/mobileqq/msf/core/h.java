@@ -14,6 +14,7 @@ import com.tencent.mobileqq.msf.core.a.c.a;
 import com.tencent.mobileqq.msf.core.net.b;
 import com.tencent.mobileqq.msf.core.net.g;
 import com.tencent.mobileqq.msf.core.quicksend.QuickSendStrategy;
+import com.tencent.mobileqq.msf.sdk.y;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -2292,22 +2293,24 @@ public class h
           if (localConnectivityManager != null)
           {
             localObject = localConnectivityManager.getNetworkInfo((Network)localObject);
-            if (localObject != null)
+            if (localObject != null) {}
+            for (int i1 = ((NetworkInfo)localObject).getSubtype();; i1 = ((TelephonyManager)BaseApplication.getContext().getSystemService("phone")).getNetworkType())
             {
-              int i2 = ((NetworkInfo)localObject).getSubtype() + 100;
+              i2 = y.a(i1);
               i1 = i2;
-              if (i2 <= 254) {
-                break label178;
+              if (i2 != 20) {
+                i1 = i2 + 100;
+              }
+              i2 = i1;
+              if (i1 <= 254) {
+                break label189;
               }
               if (!QLog.isColorLevel()) {
-                break label174;
+                break;
               }
               QLog.d("LightTcpSender", 2, "error,netWorkType is " + 254);
-              i1 = 254;
-              break label178;
+              break;
             }
-            i1 = ((TelephonyManager)BaseApplication.getContext().getSystemService("phone")).getNetworkType();
-            break label178;
           }
         }
         else
@@ -2324,10 +2327,9 @@ public class h
         return 0;
       }
       return 0;
-      label174:
-      int i1 = 254;
-      label178:
-      b1 = (byte)i1;
+      int i2 = 254;
+      label189:
+      b1 = (byte)i2;
     }
     return b1;
   }

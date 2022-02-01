@@ -1,23 +1,15 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
-
-public class zrf
-  implements Animator.AnimatorListener
+class zrf
 {
-  public zrf(RotateCircleImageView paramRotateCircleImageView) {}
+  public int a;
+  public byte[] a;
+  public int b;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    RotateCircleImageView.b(this.a).start();
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

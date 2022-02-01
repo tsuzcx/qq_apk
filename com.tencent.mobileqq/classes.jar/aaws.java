@@ -1,187 +1,42 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Environment;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.util.QZLog;
-import java.io.File;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aaws
 {
-  private static aaws jdField_a_of_type_Aaws;
-  public static String a;
-  private Map<String, aawu> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  public String a;
+  public ArrayList<Integer> a;
+  public ArrayList<Object> b;
   
-  private aaws()
-  {
-    a(BaseApplicationImpl.getContext());
-  }
-  
-  public static aaws a()
+  public aaws(JSONObject paramJSONObject)
   {
     try
     {
-      if (jdField_a_of_type_Aaws == null) {
-        jdField_a_of_type_Aaws = new aaws();
+      if (paramJSONObject.has("name")) {
+        this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
       }
-      aaws localaaws = jdField_a_of_type_Aaws;
-      return localaaws;
-    }
-    finally {}
-  }
-  
-  private String a(Context paramContext)
-  {
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-    {
-      paramContext = paramContext.getExternalFilesDir("video_story");
-      if (paramContext != null) {
-        jdField_a_of_type_JavaLangString = paramContext.getAbsolutePath();
-      }
-    }
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-    {
-      paramContext = Environment.getExternalStorageDirectory().getAbsolutePath();
-      jdField_a_of_type_JavaLangString = paramContext + "/Tencent/MobileQQ/" + "video_story";
-    }
-    QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "intDownLoadRoot" + jdField_a_of_type_JavaLangString);
-    return null;
-  }
-  
-  public String a(String paramString)
-  {
-    try
-    {
-      paramString = paramString.split("/");
-      paramString = paramString[(paramString.length - 1)];
-      paramString = paramString.substring(0, paramString.indexOf(".zip"));
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return "";
-  }
-  
-  public void a(aawd paramaawd)
-  {
-    if (paramaawd != null) {
-      a(paramaawd.a(), null);
-    }
-  }
-  
-  public void a(aawf paramaawf)
-  {
-    if (paramaawf != null) {
-      a(paramaawf.a(), null);
-    }
-  }
-  
-  public void a(String paramString, Downloader.DownloadListener paramDownloadListener)
-  {
-    QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:" + paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:url is empty" });
-    }
-    String str1;
-    String str2;
-    aawu localaawu;
-    bhhk localbhhk;
-    bhhf localbhhf;
-    Bundle localBundle;
-    do
-    {
-      do
+      if (paramJSONObject.has("packageIDs"))
       {
-        do
+        paramJSONObject = paramJSONObject.optJSONArray("packageIDs");
+        int j = paramJSONObject.length();
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        this.b = new ArrayList();
+        int i = 0;
+        while (i < j)
         {
-          return;
-          str1 = a(paramString);
-          if (TextUtils.isEmpty(str1))
-          {
-            QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:prefixId is empty" });
-            return;
-          }
-          QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:prefixId:" + str1);
-          if (b(str1))
-          {
-            QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:resource has download");
-            return;
-          }
-          if (c(str1))
-          {
-            QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:resource on download");
-            return;
-          }
-          if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-          {
-            QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:mDownLoadRoot is empty" });
-            return;
-          }
-          str2 = jdField_a_of_type_JavaLangString + "/" + str1 + ".zip";
-        } while (TextUtils.isEmpty(paramString));
-        localaawu = new aawu(this, null);
-        this.jdField_a_of_type_JavaUtilMap.put(str1, localaawu);
-        localbhhk = ((bhhh)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(47)).a(1);
-      } while (localbhhk == null);
-      localbhhf = new bhhf(paramString, new File(str2));
-      localbhhf.b = 1;
-      localBundle = new Bundle();
-    } while (localbhhk == null);
-    localbhhk.a(localbhhf, new aawt(this, paramDownloadListener, str2, localaawu, str1, paramString), localBundle);
-  }
-  
-  public boolean a(String paramString)
-  {
-    paramString = a(paramString);
-    if (!TextUtils.isEmpty(paramString)) {
-      return b(paramString);
+          this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramJSONObject.getInt(i)));
+          i += 1;
+        }
+      }
+      return;
     }
-    return false;
-  }
-  
-  public String b(String paramString)
-  {
-    return jdField_a_of_type_JavaLangString + "/" + a(paramString);
-  }
-  
-  public boolean b(String paramString)
-  {
-    Object localObject = jdField_a_of_type_JavaLangString + "/" + paramString;
-    if (new File((String)localObject + ".zip").exists())
+    catch (Exception paramJSONObject)
     {
-      QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "upZip failed:" + paramString);
-      return false;
-    }
-    boolean bool2;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      bool2 = new File((String)localObject).exists();
-      bool1 = bool2;
-      if (bool2)
-      {
-        localObject = new aawu(this, null);
-        aawu.a((aawu)localObject, 0);
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopGiftAioPanelData", 2, "PersonalTabItemInfo json:", paramJSONObject);
       }
     }
-    for (boolean bool1 = bool2;; bool1 = false) {
-      return bool1;
-    }
-  }
-  
-  public boolean c(String paramString)
-  {
-    paramString = (aawu)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {
-      return (aawu.a(paramString) == -1) || (aawu.a(paramString) == 1);
-    }
-    return false;
   }
 }
 

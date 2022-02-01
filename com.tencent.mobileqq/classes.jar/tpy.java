@@ -1,7 +1,39 @@
-import kotlin.Metadata;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DataBridgeInvokeHandler$Companion;", "", "()V", "FOLLOW_UIN", "", "GET_CLIPBOARD", "GET_PERFORMANCE", "GET_USER_INFO", "IS_FOLLOW_UIN", "NS_DATA", "SET_CLIPBOARD", "SSO_REQUEST", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tpy {}
+public class tpy
+{
+  public static String a(String paramString1, Context paramContext, String paramString2)
+  {
+    if (paramContext != null) {
+      return paramContext.getSharedPreferences(paramString1, 0).getString(paramString2, "");
+    }
+    return "";
+  }
+  
+  public static void a(String paramString1, Context paramContext, String paramString2)
+  {
+    if (paramContext != null)
+    {
+      paramString1 = paramContext.getSharedPreferences(paramString1, 0).edit();
+      paramString1.remove(paramString2);
+      paramString1.apply();
+    }
+  }
+  
+  public static void a(String paramString1, Context paramContext, String paramString2, String paramString3)
+  {
+    b(paramString1, paramContext, paramString2, paramString3);
+  }
+  
+  private static void b(String paramString1, Context paramContext, String paramString2, String paramString3)
+  {
+    paramString1 = paramContext.getSharedPreferences(paramString1, 0).edit();
+    paramString1.putString(paramString2, paramString3);
+    paramString1.apply();
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

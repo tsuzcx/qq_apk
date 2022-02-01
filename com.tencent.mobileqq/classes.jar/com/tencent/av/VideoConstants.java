@@ -1,10 +1,10 @@
 package com.tencent.av;
 
 import android.os.Build;
-import ldh;
+import ldo;
 
 public class VideoConstants
-  extends ldh
+  extends ldo
 {
   public static int a;
   public static String a;
@@ -30,6 +30,7 @@ public class VideoConstants
   
   static
   {
+    boolean bool2 = true;
     jdField_a_of_type_Boolean = true;
     jdField_a_of_type_JavaLangString = "qua_report_current";
     jdField_b_of_type_JavaLangString = "qua_report_exception";
@@ -49,7 +50,38 @@ public class VideoConstants
     j = "qav_business_flag";
     k = "qav_touin";
     l = "qav_commited";
-    jdField_c_of_type_Boolean = Build.MODEL.equalsIgnoreCase("OXF-AN10");
+    boolean bool1 = bool2;
+    if (!Build.MODEL.equalsIgnoreCase("OXF-AN10"))
+    {
+      bool1 = bool2;
+      if (!Build.MODEL.equalsIgnoreCase("OXF-AN00"))
+      {
+        bool1 = bool2;
+        if (!Build.MODEL.equalsIgnoreCase("OXP-AN00"))
+        {
+          bool1 = bool2;
+          if (!Build.MODEL.equalsIgnoreCase("MI 9 SE"))
+          {
+            bool1 = bool2;
+            if (!Build.MODEL.equalsIgnoreCase("Mi 10"))
+            {
+              bool1 = bool2;
+              if (!Build.MODEL.equalsIgnoreCase("PBAM00")) {
+                if (!Build.MODEL.equalsIgnoreCase("PACM00")) {
+                  break label187;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    label187:
+    for (bool1 = bool2;; bool1 = false)
+    {
+      jdField_c_of_type_Boolean = bool1;
+      return;
+    }
   }
 }
 

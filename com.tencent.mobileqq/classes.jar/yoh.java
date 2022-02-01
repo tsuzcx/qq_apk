@@ -1,29 +1,37 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.graphics.drawable.Drawable;
 
 public class yoh
-  extends QQUIEventReceiver<ynm, xmf>
 {
-  public yoh(@NonNull ynm paramynm)
-  {
-    super(paramynm);
-  }
+  public int a;
+  public Drawable a;
+  public String a;
+  public yod a;
+  public int b;
   
-  public void a(@NonNull ynm paramynm, @NonNull xmf paramxmf)
+  public String a()
   {
-    yqp.a(this.TAG, "play video groupId=%s, %s", paramxmf.jdField_a_of_type_Xix, paramxmf.b);
-    if ((ynm.a(paramynm).equals(paramxmf.jdField_a_of_type_JavaLangString)) && ((paramxmf.jdField_a_of_type_Xix instanceof xim)))
-    {
-      yib localyib = ((xim)paramxmf.jdField_a_of_type_Xix).a;
-      if (localyib != null) {
-        paramynm.a(localyib.jdField_a_of_type_JavaLangString, paramxmf.b, true);
-      }
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return "?";
     }
+    if (this.jdField_a_of_type_Yod == null) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    return yos.a(new Object[] { this.jdField_a_of_type_JavaLangString, "/", this.jdField_a_of_type_Yod.a() });
   }
   
-  public Class acceptEventClass()
+  public boolean equals(Object paramObject)
   {
-    return xmf.class;
+    return a().equals(((yoh)paramObject).a());
+  }
+  
+  public int hashCode()
+  {
+    return a().hashCode();
+  }
+  
+  public String toString()
+  {
+    return a();
   }
 }
 

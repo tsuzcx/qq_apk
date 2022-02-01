@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class okc
-  implements View.OnClickListener
+  implements nmg
 {
-  public okc(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public okc(ReadInJoyFeedsActivity.1 param1) {}
   
-  public void onClick(View paramView)
+  public void loaded(String paramString, int paramInt)
   {
-    pha.a(paramView.getContext(), "https://kandian.qq.com/mqq/vue/configPush?_wv=3&x5PreFetch=1&_bid=2378", null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

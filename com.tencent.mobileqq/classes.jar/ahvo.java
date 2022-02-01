@@ -1,4 +1,18 @@
-public abstract interface ahvo {}
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class ahvo
+  implements View.OnTouchListener
+{
+  ahvo(ahvl paramahvl, agjk paramagjk) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.jdField_a_of_type_Agjk.onTouch(paramView, paramMotionEvent);
+    return false;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

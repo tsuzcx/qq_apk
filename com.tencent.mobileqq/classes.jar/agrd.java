@@ -1,17 +1,13 @@
-import android.os.Bundle;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.ark.ArkViewModelBase.AppInfo;
-import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper;
-import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper.2.1;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
 
 public class agrd
-  extends audo
+  implements agri
 {
-  public agrd(ArkFlashChatContainerWrapper paramArkFlashChatContainerWrapper) {}
+  public agrd(ColorPicker paramColorPicker, agrg paramagrg) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    ArkDispatchTask.getInstance().postDelayed(ArkFlashChatContainerWrapper.a(this.a).name, new ArkFlashChatContainerWrapper.2.1(this, paramBoolean, paramBundle), 1000L);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.onClick(this.jdField_a_of_type_Agrg.a);
   }
 }
 

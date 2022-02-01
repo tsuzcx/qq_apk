@@ -24,18 +24,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import ayfa;
-import ayfc;
-import ayht;
-import ayhw;
-import ayhx;
-import ayhy;
-import ayhz;
-import ayia;
-import bcst;
-import bgfz;
-import bgjr;
-import bgme;
+import ayxt;
+import ayxv;
+import azam;
+import azap;
+import azaq;
+import azar;
+import azas;
+import azat;
+import bdll;
+import bhga;
+import bhjs;
+import bhmg;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -55,10 +55,10 @@ public class OCRTextSearchActivity
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  ayfc jdField_a_of_type_Ayfc = new ayhw(this);
-  public ayht a;
-  public ayhz a;
-  private ayia jdField_a_of_type_Ayia = new ayia(this, null);
+  ayxv jdField_a_of_type_Ayxv = new azap(this);
+  public azam a;
+  public azas a;
+  private azat jdField_a_of_type_Azat = new azat(this, null);
   public SearchResultFragment a;
   String jdField_a_of_type_JavaLangString;
   View jdField_b_of_type_AndroidViewView;
@@ -70,7 +70,7 @@ public class OCRTextSearchActivity
   {
     this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment = null;
     this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager = null;
-    this.jdField_a_of_type_Ayht = new ayhy(this);
+    this.jdField_a_of_type_Azam = new azar(this);
   }
   
   public static void a(BaseActivity paramBaseActivity, String paramString)
@@ -82,7 +82,7 @@ public class OCRTextSearchActivity
     localIntent.putExtra("keyWord", paramString);
     paramBaseActivity.startActivity(localIntent);
     paramBaseActivity.overridePendingTransition(0, 0);
-    bgjr.a(false);
+    bhjs.a(false);
   }
   
   private void c()
@@ -103,13 +103,13 @@ public class OCRTextSearchActivity
     this.jdField_a_of_type_JavaLangString = null;
     c(str1);
     a(true);
-    bcst.b(null, "dc00898", "", "", "0X80082EE", "0X80082EE", 0, 0, "", "", "", "");
+    bdll.b(null, "dc00898", "", "", "0X80082EE", "0X80082EE", 0, 0, "", "", "", "");
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Ayia);
-    this.app.addObserver(this.jdField_a_of_type_Ayfc);
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Azat);
+    this.app.addObserver(this.jdField_a_of_type_Ayxv);
   }
   
   public void a(int paramInt)
@@ -139,10 +139,10 @@ public class OCRTextSearchActivity
       return;
     }
     this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_a_of_type_Ayia);
+    this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_a_of_type_Azat);
     this.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
     this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Ayia);
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Azat);
   }
   
   public void a(boolean paramBoolean)
@@ -165,26 +165,26 @@ public class OCRTextSearchActivity
   @TargetApi(14)
   protected void b()
   {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131376807));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131376944));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setFitsSystemWindows(true);
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131376997));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366102));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131377136));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366151));
     this.jdField_a_of_type_AndroidWidgetEditText.setHintTextColor(-1431918938);
     this.jdField_a_of_type_AndroidWidgetEditText.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368135));
-    bgfz.a(this.jdField_a_of_type_AndroidWidgetEditText, getString(2131691016));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368209));
+    bhga.a(this.jdField_a_of_type_AndroidWidgetEditText, getString(2131691016));
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageButton.getLayoutParams();
-    localLayoutParams.width = ((int)bgme.a(this, 22.0F));
-    localLayoutParams.height = ((int)bgme.a(this, 22.0F));
+    localLayoutParams.width = ((int)bhmg.a(this, 22.0F));
+    localLayoutParams.height = ((int)bhmg.a(this, 22.0F));
     this.jdField_a_of_type_AndroidWidgetImageButton.setLayoutParams(localLayoutParams);
-    ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363719)).setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369045));
+    ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363745)).setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369134));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131377058));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131376449);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131377197));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131376581);
     if (this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager == null) {
       this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager = ((InputMethodManager)super.getSystemService("input_method"));
     }
@@ -192,9 +192,9 @@ public class OCRTextSearchActivity
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
     this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine(true);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new ayhx(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new azaq(this));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370529);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131370633);
     if ("1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"))) {
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
     }
@@ -211,7 +211,7 @@ public class OCRTextSearchActivity
     } while (this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment != null);
     this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment = new SearchResultFragment();
     FragmentTransaction localFragmentTransaction = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction();
-    localFragmentTransaction.add(2131376449, this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment, "search_result");
+    localFragmentTransaction.add(2131376581, this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment, "search_result");
     localFragmentTransaction.commitAllowingStateLoss();
   }
   
@@ -243,9 +243,9 @@ public class OCRTextSearchActivity
   
   public void c(String paramString)
   {
-    ayfa localayfa = (ayfa)this.app.getManager(228);
-    this.c = ayfa.a(this.app);
-    localayfa.a(this.c, paramString, SystemClock.elapsedRealtime());
+    ayxt localayxt = (ayxt)this.app.getManager(228);
+    this.c = ayxt.a(this.app);
+    localayxt.a(this.c, paramString, SystemClock.elapsedRealtime());
     this.jdField_b_of_type_JavaLangString = paramString;
   }
   
@@ -281,8 +281,8 @@ public class OCRTextSearchActivity
   public void doOnConfigurationChanged(Configuration paramConfiguration)
   {
     super.doOnConfigurationChanged(paramConfiguration);
-    if (this.jdField_a_of_type_Ayhz != null) {
-      this.jdField_a_of_type_Ayhz.onConfigurationChanged(paramConfiguration);
+    if (this.jdField_a_of_type_Azas != null) {
+      this.jdField_a_of_type_Azas.onConfigurationChanged(paramConfiguration);
     }
   }
   
@@ -290,7 +290,7 @@ public class OCRTextSearchActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidSupportV4AppFragmentManager = getSupportFragmentManager();
-    setContentView(2131561342);
+    setContentView(2131561381);
     b();
     Object localObject = getIntent();
     if (localObject == null) {
@@ -309,8 +309,8 @@ public class OCRTextSearchActivity
         a(true);
         this.jdField_a_of_type_Int = 1;
       }
-      this.jdField_a_of_type_Ayhz = new ayhz(this);
-      this.jdField_a_of_type_Ayhz.a(false);
+      this.jdField_a_of_type_Azas = new azas(this);
+      this.jdField_a_of_type_Azas.a(false);
     } while (paramBundle == null);
     this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment = ((SearchResultFragment)this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentByTag("search_result"));
     return true;
@@ -318,7 +318,7 @@ public class OCRTextSearchActivity
   
   public void doOnDestroy()
   {
-    this.app.removeObserver(this.jdField_a_of_type_Ayfc);
+    this.app.removeObserver(this.jdField_a_of_type_Ayxv);
   }
   
   public void doOnNewIntent(Intent paramIntent)
@@ -350,7 +350,7 @@ public class OCRTextSearchActivity
   
   public void doOnStart()
   {
-    this.jdField_a_of_type_Ayhz.onStart();
+    this.jdField_a_of_type_Azas.onStart();
   }
   
   public void finish()

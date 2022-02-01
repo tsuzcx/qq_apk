@@ -29,7 +29,7 @@ class eg
     for (;;)
     {
       localDataLineMsgSet.setPaused(true);
-      ((anjx)this.a.a.a(8)).a(localDataLineMsgSet.getGroupId(), l, false);
+      ((anvu)this.a.a.a(8)).a(localDataLineMsgSet.getGroupId(), l, false);
       ee.a(this.a, localek, localDataLineMsgSet);
       break;
       QLog.e("DatalineSessionAdapterUseNewFileBubble", 1, "stop recv but no sessionid");

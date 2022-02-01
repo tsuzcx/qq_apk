@@ -1,17 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class auqv
-  extends RecyclerView.ViewHolder
+public class auqv
+  implements CompoundButton.OnCheckedChangeListener
 {
-  auqv(auqu paramauqu, View paramView)
-  {
-    super(paramView);
-  }
+  public auqv(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
   
-  public String toString()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return super.toString();
+    atul.a().e(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

@@ -1,43 +1,59 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class bffa
-  extends bfgb<ArithmeticViewHolder, bfej>
+  extends arac<bfez>
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private ArithmeticViewHolder jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder;
-  
-  public bffa(XMediaEditor paramXMediaEditor, Context paramContext)
+  @NonNull
+  public bfez a(int paramInt)
   {
-    super(paramXMediaEditor);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    QLog.d("TroopActiveRankingConfigProcessor", 2, "migrateOldOrDefaultContent, type = " + paramInt);
+    return new bfez();
   }
   
-  public ArithmeticViewHolder a(ViewGroup paramViewGroup)
+  @Nullable
+  public bfez a(araj[] paramArrayOfaraj)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder = new ArithmeticViewHolder(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor, this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561580, paramViewGroup, false));
-    return this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder;
-  }
-  
-  public void a(View paramView, ArithmeticViewHolder paramArithmeticViewHolder) {}
-  
-  public void a(bfej parambfej)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopActiveRankingConfigProcessor", 2, "onParsed");
     }
+    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
+      return bfez.a(paramArrayOfaraj[0].a);
+    }
+    return null;
   }
   
-  public void a(ArithmeticViewHolder paramArithmeticViewHolder, bfej parambfej, int paramInt)
+  public void a(bfez parambfez) {}
+  
+  public Class<bfez> clazz()
   {
-    paramArithmeticViewHolder.a(parambfej, paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a() != 0) {
-      paramArithmeticViewHolder.itemView.setPadding(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0);
-    }
+    return bfez.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TroopActiveRankingConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 664;
   }
 }
 

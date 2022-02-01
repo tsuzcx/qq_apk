@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.10.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayml
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public ayml(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  ayml(aymj paramaymj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    aypy.a("0X800AF9C", 2);
-    paramDialogInterface.dismiss();
-    AccountOnlineStateActivity.b(this.a);
+    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://nearby.qq.com/nearby-visitor/index.html?_proxy=1&_wwv=128");
+    this.a.a.startActivity(localIntent);
+    aymj.a(this.a, null);
+    ThreadManager.post(new NearbyProfileDisplayTribePanel.10.1(this), 5, null, false);
+    bdll.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

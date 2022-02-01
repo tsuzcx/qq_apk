@@ -1,42 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bja" android:background="@drawable/hd0" android:paddingLeft="16.0dip" android:paddingTop="16.0dip" android:paddingRight="16.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.qqmini.minigame.widget.DragLinearLayout android:id="@id/bei" android:background="@drawable/bug" android:layout_width="140.0dip" android:layout_height="25.0dip" android:layout_marginTop="80.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n27" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/n26" android:layout_width="26.0dip" android:layout_height="26.0dip" android:scaleType="fitXY" />
-        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/n29" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="" android:singleLine="true" />
-        <View android:id="@id/j0s" android:background="#80878b99" android:layout_width="0.5dip" android:layout_height="11.5dip" android:layout_marginLeft="8.0dip" />
-        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:ellipsize="end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="申请" android:singleLine="true" />
-    </LinearLayout>
-    <ImageView android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n1w" android:visibility="visible" android:layout_width="19.0dip" android:layout_height="19.0dip" android:src="@drawable/f3m" android:scaleType="fitXY" android:layout_alignParentRight="true" />
-    <TextView android:textSize="20.0sp" android:textColor="#ff03081a" android:id="@id/a19" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="获取你的手机号码" android:layout_below="@id/n27" />
-    <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n23" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/a19">
-        <View android:id="@id/n1y" android:background="#ffd8d8d8" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="20.0dip" />
-        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n2d" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="20.0dip">
-            <TextView android:textSize="15.0sp" android:textColor="#ff000000" android:id="@id/n2_" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="\ 123456789" android:layout_centerVertical="true" />
-            <TextView android:textSize="15.0sp" android:textColor="#ff979797" android:id="@id/n2c" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="QQ绑定号码" android:layout_toRightOf="@id/n2_" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/n2g" android:visibility="visible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/f3o" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        </RelativeLayout>
-        <View android:id="@id/n1z" android:background="#ffd8d8d8" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_below="@id/n2d" />
-        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n2e" android:layout_width="fill_parent" android:layout_height="61.0dip" android:layout_below="@id/n1z">
-            <TextView android:textSize="15.0sp" android:textColor="#ff000000" android:id="@id/n2a" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="23456789" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/n2h" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/f3o" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        </RelativeLayout>
-        <View android:id="@id/n20" android:background="#ffd8d8d8" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_below="@id/n2e" />
-        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n2f" android:layout_width="fill_parent" android:layout_height="61.0dip" android:layout_below="@id/n20">
-            <TextView android:textSize="15.0sp" android:textColor="#ff000000" android:id="@id/n2b" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="\ 123456789" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/n2i" android:visibility="visible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/f3o" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        </RelativeLayout>
-        <View android:id="@id/n21" android:background="#ffd8d8d8" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_below="@id/n2f" />
-        <TextView android:textSize="15.0sp" android:textColor="#ff083f80" android:id="@id/n22" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="使用其他号码" android:layout_below="@id/n21" />
-    </RelativeLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/n1r" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="36.0dip" android:layout_below="@id/n23">
-        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:gravity="center" android:id="@id/n28" android:background="@drawable/hd1" android:layout_width="fill_parent" android:layout_height="45.0dip" android:text="拒绝" android:singleLine="true" android:layout_weight="1.0" />
-        <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/n2j" android:background="@drawable/hd2" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="7.0dip" android:text="允许" android:singleLine="true" android:layout_weight="1.0" />
-    </LinearLayout>
-    <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n1x" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/n1s" android:layout_width="10.0dip" android:layout_height="18.0dip" android:layout_marginTop="6.0dip" android:src="@drawable/f3l" android:scaleType="fitXY" />
-        <TextView android:textSize="20.0dip" android:textColor="#ff000000" android:id="@id/n1v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="授权说明" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="15.0sp" android:textColor="#ff000000" android:id="@id/n1t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="1.授权后，小程序将获取QQ绑定手机号或添加的手机号信息，为你提供相应服务。" android:layout_below="@id/n1v" />
-        <TextView android:textSize="15.0sp" android:textColor="#ff000000" android:id="@id/n1u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="2.该小程序如有不恰当行为，可向平台投诉。" android:layout_below="@id/n1t" />
-    </RelativeLayout>
-</RelativeLayout>
+    <TextView android:textSize="14.0sp" android:textColor="@android:color/white" android:gravity="left" android:id="@id/bej" android:paddingLeft="10.0dip" android:paddingTop="3.0dip" android:paddingRight="10.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="已连接" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="14.0sp" android:textColor="@android:color/white" android:gravity="right" android:id="@id/beh" android:paddingLeft="10.0dip" android:paddingTop="3.0dip" android:paddingRight="10.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="已结束" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</com.tencent.qqmini.minigame.widget.DragLinearLayout>

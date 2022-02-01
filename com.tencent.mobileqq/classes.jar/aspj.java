@@ -1,18 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class aspj
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aspj(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, asqw paramasqw) {}
+  public aspj(EmotionKeywordLayout paramEmotionKeywordLayout) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    bghy.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_Asqw.e, 1);
-    EventCollector.getInstance().onViewClicked(paramView);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionKeywordLayout", 2, "hide:offset=" + f);
+    }
+    if (EmotionKeywordLayout.a(this.a) != null) {
+      EmotionKeywordLayout.a(this.a).setTranslationY(f);
+    }
   }
 }
 

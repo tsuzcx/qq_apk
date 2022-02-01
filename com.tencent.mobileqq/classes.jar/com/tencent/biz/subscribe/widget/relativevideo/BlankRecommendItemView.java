@@ -3,18 +3,19 @@ package com.tencent.biz.subscribe.widget.relativevideo;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFollowRcmd;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import aaae;
-import aalq;
-import aalr;
-import aaxb;
+import aaec;
+import aaej;
+import aapr;
+import aaps;
+import abbe;
 import android.content.Context;
 import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import bclx;
-import bkfj;
+import bdep;
+import blgn;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.biz.subscribe.widget.textview.FollowTextView;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -26,7 +27,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import zzx;
 
 public class BlankRecommendItemView
   extends BaseWidgetView<CertifiedAccountMeta.StFollowRcmd>
@@ -37,7 +37,7 @@ public class BlankRecommendItemView
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private FollowTextView jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView;
   private SquareImageView jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
-  private ArrayList<aalr> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<aaps> jdField_a_of_type_JavaUtilArrayList;
   private boolean jdField_a_of_type_Boolean;
   private TextView b;
   private TextView c;
@@ -65,17 +65,12 @@ public class BlankRecommendItemView
   
   public int a()
   {
-    return 2131558764;
+    return 2131558762;
   }
   
   public View.OnClickListener a()
   {
     return null;
-  }
-  
-  public View a()
-  {
-    return this;
   }
   
   @RequiresApi(api=8)
@@ -85,11 +80,11 @@ public class BlankRecommendItemView
       return;
     }
     CertifiedAccountMeta.StUser localStUser = (CertifiedAccountMeta.StUser)paramStFollowRcmd.user.get();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getLayoutParams().width = bclx.a(36.0F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getLayoutParams().height = bclx.a(36.0F);
-    zzx.a(localStUser.icon.get(), this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getLayoutParams().width = bdep.a(36.0F);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getLayoutParams().height = bdep.a(36.0F);
+    aaec.a(localStUser.icon.get(), this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(localStUser.nick.get());
-    this.b.setText(String.format("%s%s", new Object[] { this.b.getContext().getString(2131718326), a(paramStFollowRcmd.fansCount.get()) }));
+    this.b.setText(String.format("%s%s", new Object[] { this.b.getContext().getString(2131718462), a(paramStFollowRcmd.fansCount.get()) }));
     String str = paramStFollowRcmd.reason.get();
     if (TextUtils.isEmpty(str)) {
       str = localStUser.desc.get();
@@ -99,44 +94,49 @@ public class BlankRecommendItemView
       this.c.setText(str);
       this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setUserData(localStUser);
       this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setExtraTypeInfo(a());
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setFollowStateChangeListener(new aalq(this, localStUser));
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setFollowStateChangeListener(new aapr(this, localStUser));
       paramStFollowRcmd = paramStFollowRcmd.feedList.get();
       int i = 0;
       if (i < 3)
       {
-        if (bkfj.a(i, paramStFollowRcmd)) {
-          ((aalr)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(null);
+        if (blgn.a(i, paramStFollowRcmd)) {
+          ((aaps)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(null);
         }
         for (;;)
         {
           i += 1;
           break;
-          ((aalr)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a((CertifiedAccountMeta.StFeed)paramStFollowRcmd.get(i));
+          ((aaps)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a((CertifiedAccountMeta.StFeed)paramStFollowRcmd.get(i));
         }
       }
-      aaxb.b(localStUser.id.get(), "auth_follow", "blank_content_exp", 0, 0, new String[] { "", this.jdField_a_of_type_Int + "", localStUser.nick.get(), str });
+      abbe.b(localStUser.id.get(), "auth_follow", "blank_content_exp", 0, 0, new String[] { "", this.jdField_a_of_type_Int + "", localStUser.nick.get(), str });
       return;
     }
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)findViewById(2131369035));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379523));
-    this.b = ((TextView)findViewById(2131379522));
-    this.c = ((TextView)findViewById(2131379524));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131365599);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)findViewById(2131369129));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379692));
+    this.b = ((TextView)findViewById(2131379691));
+    this.c = ((TextView)findViewById(2131379693));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131365642);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.b.setOnClickListener(this);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView = ((FollowTextView)findViewById(2131379673));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView = ((FollowTextView)findViewById(2131379848));
     if (this.jdField_a_of_type_JavaUtilArrayList == null) {
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new aalr(this, findViewById(2131376649), 1));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new aalr(this, findViewById(2131376650), 2));
-    this.jdField_a_of_type_JavaUtilArrayList.add(new aalr(this, findViewById(2131376651), 3));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new aaps(this, findViewById(2131376782), 1));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new aaps(this, findViewById(2131376783), 2));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new aaps(this, findViewById(2131376784), 3));
+  }
+  
+  public View b()
+  {
+    return this;
   }
   
   protected void onAttachedToWindow()
@@ -154,11 +154,11 @@ public class BlankRecommendItemView
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       CertifiedAccountMeta.StFollowRcmd localStFollowRcmd = (CertifiedAccountMeta.StFollowRcmd)a();
-      aaae.a(getContext(), (CertifiedAccountMeta.StUser)localStFollowRcmd.user.get());
-      if (2131369035 == paramView.getId()) {
-        aaxb.b(localStFollowRcmd.user.id.get(), "auth_follow", "blank_head_clk", 0, 0, new String[] { "", "", localStFollowRcmd.user.nick.get() });
-      } else if (2131379523 == paramView.getId()) {
-        aaxb.b(localStFollowRcmd.user.id.get(), "auth_follow", "blank_name_clk", 0, 0, new String[] { "", "", localStFollowRcmd.user.nick.get() });
+      aaej.a(getContext(), (CertifiedAccountMeta.StUser)localStFollowRcmd.user.get());
+      if (2131369129 == paramView.getId()) {
+        abbe.b(localStFollowRcmd.user.id.get(), "auth_follow", "blank_head_clk", 0, 0, new String[] { "", "", localStFollowRcmd.user.nick.get() });
+      } else if (2131379692 == paramView.getId()) {
+        abbe.b(localStFollowRcmd.user.id.get(), "auth_follow", "blank_name_clk", 0, 0, new String[] { "", "", localStFollowRcmd.user.nick.get() });
       }
     }
   }
@@ -182,9 +182,9 @@ public class BlankRecommendItemView
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        aalr localaalr = (aalr)localIterator.next();
-        if (localaalr != null) {
-          localaalr.a();
+        aaps localaaps = (aaps)localIterator.next();
+        if (localaaps != null) {
+          localaaps.a();
         }
       }
     }

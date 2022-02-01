@@ -1,18 +1,14 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.SwipListView;
+import android.view.animation.Animation;
 
 class okw
-  implements View.OnClickListener
+  extends blgm
 {
-  okw(okv paramokv, View paramView) {}
+  okw(oku paramoku, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Okv.a).a(this.jdField_a_of_type_AndroidViewView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

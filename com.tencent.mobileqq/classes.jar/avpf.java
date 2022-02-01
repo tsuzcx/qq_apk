@@ -1,36 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
+import android.support.annotation.DrawableRes;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
 
-public class avpf
-  extends Handler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/growth/GrowthUtil;", "", "()V", "INVALID_DRAWABLE_ID", "", "getDrawableIdByWns", "wnsPicId", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class avpf
 {
-  avpe a;
+  public static final avpf a = new avpf();
   
-  protected avpf(avpe paramavpe)
+  @JvmStatic
+  @DrawableRes
+  public static final int a(int paramInt)
   {
-    this.a = paramavpe;
-  }
-  
-  protected void a()
-  {
-    this.a = null;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    switch (paramInt)
     {
     default: 
-      return;
-    case 1: 
-      paramMessage = (String)paramMessage.obj;
-      this.a.a(paramMessage);
-      return;
+      return -1;
+    case 1001: 
+      return 2130848142;
+    case 1002: 
+      return 2130848143;
+    case 1003: 
+      return 2130848144;
+    case 1004: 
+      return 2130848145;
     }
-    this.a.a();
+    return 2130848146;
   }
 }
 

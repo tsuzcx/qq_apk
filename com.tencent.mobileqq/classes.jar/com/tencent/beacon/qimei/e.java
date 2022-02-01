@@ -94,7 +94,7 @@ public class e
       paramArrayOfByte = new com.tencent.beacon.core.wup.a(paramArrayOfByte);
       QimeiPackage localQimeiPackage = new QimeiPackage();
       localQimeiPackage.readFrom(paramArrayOfByte);
-      boolean bool = j.c(localQimeiPackage.qimei);
+      boolean bool = j.b(localQimeiPackage.qimei);
       if (!bool)
       {
         com.tencent.beacon.core.e.d.d("[qimei] Async return qimei: %s", new Object[] { localQimeiPackage.qimei });
@@ -133,7 +133,7 @@ public class e
   public void d()
   {
     e();
-    if (j.c(a.a(this.c).c())) {
+    if (j.b(a.a(this.c).c())) {
       com.tencent.beacon.core.a.g.a().a(this.c, this.f);
     }
   }

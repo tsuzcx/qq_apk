@@ -1,19 +1,20 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
-public final class adsi
-  implements bhva
+public class adsi
+  implements DialogInterface.OnClickListener
 {
-  public adsi(Context paramContext) {}
+  public adsi(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.startActivity(paramClickableColorSpanTextView);
+    if (AddFriendLogicActivity.d(this.a) == 1)
+    {
+      this.a.finish();
+      return;
+    }
+    AddFriendLogicActivity.a(this.a);
   }
 }
 

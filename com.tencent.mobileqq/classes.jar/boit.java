@@ -1,11 +1,16 @@
+import dov.com.qq.im.ae.camera.AEVideoCaptureResult;
+
 public abstract interface boit
-  extends boip
 {
-  public abstract void q();
+  public abstract void a(int paramInt);
   
-  public abstract void v();
+  public abstract void a(bbhq parambbhq);
   
-  public abstract void w();
+  public abstract void a(AEVideoCaptureResult paramAEVideoCaptureResult);
+  
+  public abstract void l();
+  
+  public abstract void m();
 }
 
 

@@ -1,42 +1,20 @@
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaFormat;
+import java.nio.ByteBuffer;
 
-public abstract interface log
+public class log
 {
-  public abstract int a(int paramInt, boolean paramBoolean1, lpa paramlpa, boolean paramBoolean2);
+  public int a;
+  public MediaCodec.BufferInfo a;
+  public MediaFormat a;
+  public ByteBuffer a;
+  public boolean a;
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(PendantItem paramPendantItem, VideoMaterial paramVideoMaterial);
-  
-  public abstract void a(FilterDesc paramFilterDesc);
-  
-  public abstract void a(low paramlow, lpa paramlpa);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(lon paramlon);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt1, int paramInt2);
-  
-  public abstract boolean c();
-  
-  public abstract boolean d();
+  public log(lof paramlof)
+  {
+    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+    this.jdField_a_of_type_Boolean = true;
+  }
 }
 
 

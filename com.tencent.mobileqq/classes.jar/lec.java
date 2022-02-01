@@ -1,6 +1,8 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class lec
@@ -10,14 +12,16 @@ class lec
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.a.a() != null) && (paramIntent != null))
+    if ((paramIntent != null) && ("com.tencent.av.EXIT_VIDEO_PROCESS".equals(paramIntent.getAction())))
     {
-      long l = mtl.a(paramIntent);
-      paramContext = paramIntent.getStringExtra("camera_id");
-      int i = paramIntent.getIntExtra("availability", 1);
-      this.a.a(paramContext, i);
-      if (QLog.isColorLevel()) {
-        QLog.w("GCameraAvailabilityMonitor", 1, "CameraAvailabilityReceiver, id[" + paramContext + "], available[" + i + "], seq[" + l + "]");
+      long l = muk.a(paramIntent);
+      QLog.w("GAudioExitMonitor", 1, "onReceive.EXIT_VIDEO_ACTION, seq[" + l + "]");
+      paramContext = leb.a(this.a).a();
+      if (paramContext != null)
+      {
+        paramContext.a(false, 202, new int[] { paramContext.a().D });
+        paramContext.b(202);
+        paramContext.d(1011);
       }
     }
   }

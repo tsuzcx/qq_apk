@@ -1,8 +1,8 @@
 package com.tencent.biz.qqcircle.fragments.hybird;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import aakz;
-import aaxb;
+import aapa;
+import abbe;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -13,11 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import aqcb;
-import bgnt;
-import bhql;
-import bhqo;
-import bidh;
+import aqre;
+import bhnv;
+import birg;
+import birj;
+import bjef;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.comment.CommentBottomBar;
@@ -26,22 +26,22 @@ import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
-import uxc;
-import uxx;
-import vlu;
+import uyn;
+import uzg;
+import vny;
 
 public class QCircleHybirdFragment
   extends WebViewFragment
 {
   private static final String jdField_a_of_type_JavaLangString = QCircleHybirdFragment.class.getSimpleName();
   private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-  private aakz jdField_a_of_type_Aakz;
+  private aapa jdField_a_of_type_Aapa;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  protected aqcb a;
+  protected aqre a;
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
   private CommentBottomBar jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar;
   private StatusView jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView;
-  private vlu jdField_a_of_type_Vlu;
+  private vny jdField_a_of_type_Vny;
   
   private void a()
   {
@@ -80,7 +80,7 @@ public class QCircleHybirdFragment
     {
       long l = getIntent().getLongExtra("PERF_OPEN_PAGE_TIME", 0L);
       if (l != 0L) {
-        aaxb.a("subscribe_open_h5_page_time", aaxb.a(0L, System.currentTimeMillis() - l));
+        abbe.a("subscribe_open_h5_page_time", abbe.a(0L, System.currentTimeMillis() - l));
       }
       this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = ((ExtraTypeInfo)getIntent().getSerializableExtra("key_subscribe_intent_extra_type_info"));
     }
@@ -138,7 +138,7 @@ public class QCircleHybirdFragment
     if (getHostActivity() != null) {
       getHostActivity().sendBroadcast(paramString);
     }
-    a(uxc.a());
+    a(uyn.a());
   }
   
   public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
@@ -174,22 +174,22 @@ public class QCircleHybirdFragment
     getWebView().setHorizontalScrollBarEnabled(false);
     getWebView().getSettings().setDefaultTextEncodingName("utf-8");
     getWebView().getSettings().setUserAgentString(getWebView().getSettings().getUserAgentString() + " QQ_APP_Subscribe");
-    if (bgnt.g(getActivity())) {
+    if (bhnv.g(getActivity())) {
       getWebView().getSettings().setCacheMode(2);
     }
-    if ((this.mUIStyleHandler != null) && (this.mUIStyleHandler.jdField_a_of_type_Bidh != null)) {
-      this.mUIStyleHandler.jdField_a_of_type_Bidh.a(false);
+    if ((this.mUIStyleHandler != null) && (this.mUIStyleHandler.jdField_a_of_type_Bjef != null)) {
+      this.mUIStyleHandler.jdField_a_of_type_Bjef.a(false);
     }
     if (!this.mUIStyle.m) {
-      uxx.a(getActivity());
+      uzg.a(getActivity());
     }
     if (getActivity() != null)
     {
-      this.jdField_a_of_type_Vlu = new vlu(this);
+      this.jdField_a_of_type_Vny = new vny(this);
       paramBundle = new IntentFilter();
       paramBundle.addAction("action_update_web_user_follow_state");
       paramBundle.addAction("action_update_web_tag_follow_state");
-      getActivity().registerReceiver(this.jdField_a_of_type_Vlu, paramBundle);
+      getActivity().registerReceiver(this.jdField_a_of_type_Vny, paramBundle);
     }
     a();
     return i;
@@ -197,10 +197,10 @@ public class QCircleHybirdFragment
   
   public int doCreateLoopStep_InitData(Bundle paramBundle)
   {
-    this.mUIStyleHandler.jdField_a_of_type_Bhqo.D = false;
-    this.mUIStyleHandler.jdField_a_of_type_Bhqo.f = true;
-    this.mUIStyleHandler.b = uxx.b(false);
-    this.jdField_a_of_type_Aakz = new aakz(getHostActivity());
+    this.mUIStyleHandler.jdField_a_of_type_Birj.D = false;
+    this.mUIStyleHandler.jdField_a_of_type_Birj.f = true;
+    this.mUIStyleHandler.b = uzg.b(false);
+    this.jdField_a_of_type_Aapa = new aapa(getHostActivity());
     c();
     return super.doCreateLoopStep_InitData(paramBundle);
   }
@@ -227,7 +227,7 @@ public class QCircleHybirdFragment
     }
     for (;;)
     {
-      aaxb.a(this.uin, str, "clk_return", 0, 0, new String[] { "", "" });
+      abbe.a(this.uin, str, "clk_return", 0, 0, new String[] { "", "" });
       super.doOnBackEvent();
       return;
       str = "auth_image";
@@ -247,22 +247,22 @@ public class QCircleHybirdFragment
     if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
     }
-    if (this.jdField_a_of_type_Aqcb != null) {
-      this.jdField_a_of_type_Aqcb.c();
+    if (this.jdField_a_of_type_Aqre != null) {
+      this.jdField_a_of_type_Aqre.c();
     }
-    if (this.jdField_a_of_type_Aakz != null) {
-      this.jdField_a_of_type_Aakz.a();
+    if (this.jdField_a_of_type_Aapa != null) {
+      this.jdField_a_of_type_Aapa.a();
     }
-    if ((getActivity() != null) && (this.jdField_a_of_type_Vlu != null)) {
-      getActivity().unregisterReceiver(this.jdField_a_of_type_Vlu);
+    if ((getActivity() != null) && (this.jdField_a_of_type_Vny != null)) {
+      getActivity().unregisterReceiver(this.jdField_a_of_type_Vny);
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Aqcb != null) {
-      this.jdField_a_of_type_Aqcb.b();
+    if (this.jdField_a_of_type_Aqre != null) {
+      this.jdField_a_of_type_Aqre.b();
     }
   }
   
@@ -277,8 +277,8 @@ public class QCircleHybirdFragment
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Aqcb != null) {
-      this.jdField_a_of_type_Aqcb.a();
+    if (this.jdField_a_of_type_Aqre != null) {
+      this.jdField_a_of_type_Aqre.a();
     }
   }
 }

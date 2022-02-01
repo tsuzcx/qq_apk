@@ -1,32 +1,101 @@
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build.VERSION;
+import java.io.InputStream;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
+
 public class bamx
+  extends InputStream
+  implements bamu
 {
-  public int a;
-  public bamy a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c = "";
+  protected int a;
+  protected Context a;
+  protected bamv a;
+  protected PipedInputStream a;
+  protected PipedOutputStream a;
+  protected byte[] a;
+  protected byte[] b;
+  protected byte[] c;
+  protected byte[] d = new byte[1];
   
-  public bamx()
+  public bamx(Context paramContext)
   {
-    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public boolean a()
+  public int a(byte[] paramArrayOfByte, int paramInt)
   {
-    return this.jdField_a_of_type_Int == 0;
+    return read(paramArrayOfByte, paramInt, paramArrayOfByte.length);
   }
   
-  public boolean b()
+  public bamv a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    return (this.jdField_a_of_type_Bamy == null) || (this.jdField_a_of_type_Bamy.d == 2);
+    this.jdField_a_of_type_Bamv.jdField_a_of_type_Int = 0;
+    int j = paramInt2;
+    int i = paramInt1;
+    paramInt1 = j;
+    while (paramInt2 > 0)
+    {
+      if (paramInt2 > 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available()) {
+        paramInt1 = 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available();
+      }
+      a(paramArrayOfByte, i, paramInt1);
+      i += paramInt1;
+      paramInt1 = paramInt2 - paramInt1;
+      paramInt2 = paramInt1;
+    }
+    return this.jdField_a_of_type_Bamv;
   }
   
-  public String toString()
+  public void a()
   {
-    return "SubtitleItem{id=" + this.jdField_a_of_type_Int + " name=" + this.jdField_b_of_type_JavaLangString + " isShow=" + this.jdField_a_of_type_Boolean + " pos=" + this.jdField_b_of_type_Int + "}";
+    if (this.jdField_a_of_type_JavaIoPipedOutputStream != null)
+    {
+      this.jdField_a_of_type_JavaIoPipedOutputStream.close();
+      this.jdField_a_of_type_JavaIoPipedOutputStream = null;
+    }
+    close();
+  }
+  
+  @TargetApi(9)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaIoPipedOutputStream = new PipedOutputStream();
+    if (Build.VERSION.SDK_INT <= 8)
+    {
+      this.jdField_a_of_type_JavaIoPipedInputStream = new bhos(this.jdField_a_of_type_JavaIoPipedOutputStream, 1920);
+      return;
+    }
+    this.jdField_a_of_type_JavaIoPipedInputStream = new PipedInputStream(this.jdField_a_of_type_JavaIoPipedOutputStream, 1920);
+  }
+  
+  protected void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaIoPipedOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
+    while (this.jdField_a_of_type_JavaIoPipedInputStream.available() >= this.jdField_a_of_type_Int)
+    {
+      paramInt1 = a(this.c, this.jdField_a_of_type_Bamv.jdField_a_of_type_Int);
+      paramArrayOfByte = this.jdField_a_of_type_Bamv;
+      paramArrayOfByte.jdField_a_of_type_Int = (paramInt1 + paramArrayOfByte.jdField_a_of_type_Int);
+    }
+  }
+  
+  public void close()
+  {
+    if (this.jdField_a_of_type_JavaIoPipedInputStream != null)
+    {
+      this.jdField_a_of_type_JavaIoPipedInputStream.close();
+      this.jdField_a_of_type_JavaIoPipedInputStream = null;
+    }
+  }
+  
+  public int read()
+  {
+    if (read(this.d, 0, 1) == 1) {
+      return this.d[0] & 0xFF;
+    }
+    return -1;
   }
 }
 

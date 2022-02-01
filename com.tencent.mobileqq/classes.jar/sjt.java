@@ -1,13 +1,13 @@
-import android.graphics.Bitmap;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import android.view.animation.Interpolator;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$CaptureViewCallback;", "", "onCaptureFailed", "", "onCaptureSuccess", "bitmap", "Landroid/graphics/Bitmap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface sjt
+public final class sjt
+  implements Interpolator
 {
-  public abstract void a();
-  
-  public abstract void a(@NotNull Bitmap paramBitmap);
+  public float getInterpolation(float paramFloat)
+  {
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
+  }
 }
 
 

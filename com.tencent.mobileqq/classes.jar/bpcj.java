@@ -1,16 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
+import dov.com.qq.im.aeeditor.lyric.interaction.MoreLyricLayout;
+import dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView;
 
-class bpcj
-  implements View.OnClickListener
+public class bpcj
+  implements bpcu
 {
-  bpcj(bpcg parambpcg) {}
+  private bpcj(MoreLyricLayout paramMoreLyricLayout) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong)
   {
-    this.a.a.a(22);
-    EventCollector.getInstance().onViewClicked(paramView);
+    bpam.a("MoreLyricLayout", "onScroll() position => " + paramLong);
+    MoreLyricLayout.a(this.a);
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    MoreLyricLayout.a(this.a, paramLong1);
+    String str = LyricWithBuoyView.a((int)paramLong1);
+    TextView localTextView = null;
+    if (MoreLyricLayout.a(this.a) != null) {
+      localTextView = MoreLyricLayout.a(this.a).a();
+    }
+    if (localTextView != null) {
+      localTextView.setText(str);
+    }
   }
 }
 

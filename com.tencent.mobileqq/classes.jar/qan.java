@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.net.URL;
 
-class qan
-  implements View.OnClickListener
+final class qan
+  implements uyg
 {
-  qan(qam paramqam, String paramString, ArticleInfo paramArticleInfo) {}
+  qan(Runnable paramRunnable) {}
   
-  public void onClick(View paramView)
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable) {}
+  
+  public void a(URL paramURL, suk paramsuk)
   {
-    pha.a(qam.a(this.jdField_a_of_type_Qam), this.jdField_a_of_type_JavaLangString);
-    qam.a(1, pha.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a != null) {
+      this.a.run();
+    }
   }
 }
 

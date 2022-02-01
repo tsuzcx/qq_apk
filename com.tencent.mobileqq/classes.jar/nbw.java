@@ -1,19 +1,24 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.avgame.gameroom.stage.guessaction.GuessActionStageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
 
-public class nbw
-  implements View.OnClickListener
+class nbw
+  implements View.OnTouchListener
 {
-  public nbw(GuessActionStageView paramGuessActionStageView) {}
+  nbw(nbt paramnbt) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null) {
-      this.a.a.onClick(paramView);
+    switch (paramMotionEvent.getActionMasked())
+    {
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

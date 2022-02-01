@@ -1,73 +1,36 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 
 public class ayem
 {
-  private final Bundle a = ayek.a.a();
+  private static ayem jdField_a_of_type_Ayem = new ayem();
+  static boolean jdField_a_of_type_Boolean;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   
-  public ayem()
+  public static void a(Context paramContext, String paramString)
   {
-    this.a.putString("tid", "personal_live_base");
-    this.a.putString("bid", "b_sng_im_personal_live");
-    this.a.putString("KEY_START_SRC", "default");
+    jdField_a_of_type_Ayem.jdField_a_of_type_AndroidContentSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy(paramString, 0);
+    jdField_a_of_type_Boolean = true;
   }
   
-  public ayem a(int paramInt)
+  public static void a(String paramString, boolean paramBoolean)
   {
-    return a("obj1", paramInt);
+    SharedPreferences.Editor localEditor = jdField_a_of_type_Ayem.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    localEditor.putBoolean(paramString, paramBoolean);
+    localEditor.commit();
   }
   
-  public ayem a(String paramString)
+  public static boolean a(String paramString, boolean paramBoolean)
   {
-    this.a.putString("module", paramString);
-    return this;
-  }
-  
-  public ayem a(String paramString, int paramInt)
-  {
-    this.a.putString(paramString, String.valueOf(paramInt));
-    return this;
-  }
-  
-  public ayem a(String paramString1, String paramString2)
-  {
-    String str = paramString2;
-    if (paramString2 == null) {
-      str = "null";
+    try
+    {
+      boolean bool = jdField_a_of_type_Ayem.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(paramString, paramBoolean);
+      return bool;
     }
-    this.a.putString(paramString1, str.replace("&", "_"));
-    return this;
-  }
-  
-  public void a()
-  {
-    ayek.a.a(this.a);
-  }
-  
-  public ayem b(String paramString)
-  {
-    this.a.putString("action", paramString);
-    return this;
-  }
-  
-  public ayem c(String paramString)
-  {
-    this.a.putString("source", paramString);
-    return this;
-  }
-  
-  public ayem d(String paramString)
-  {
-    return a("obj2", paramString);
-  }
-  
-  public ayem e(String paramString)
-  {
-    return a("obj3", paramString);
-  }
-  
-  public String toString()
-  {
-    return "ReportTask{map=" + this.a + '}';
+    catch (ClassCastException paramString) {}
+    return paramBoolean;
   }
 }
 
